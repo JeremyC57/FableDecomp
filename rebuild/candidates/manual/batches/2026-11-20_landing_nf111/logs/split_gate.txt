@@ -1,0 +1,10 @@
+existing 00528760 new= ['??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z'] | others: {'?GetDef@CGameDefinitionManager@NFactory007f1b70@@QAEXABUCCharString@2@': ['007f1b70']}
+existing 0053e8e0 new= ['??_GCMenuEntry@NUISystem@@UAEPAXI@Z'] | others: {'??_ECMenuEntry@NUISystem@@UAEPAXI@Z': ['0053e8c0', '0053e8d0']}
+existing 00543c70 new= ['??_ECIconText@NUISystem@@UAEPAXI@Z', '??_GCIconText@NUISystem@@UAEPAXI@Z'] | others: {}
+existing 0054c1b0 new= ['??_GCSlider@NUISystem@@UAEPAXI@Z'] | others: {'??_ECSlider@NUISystem@@UAEPAXI@Z': ['0054c140', '0054c150']}
+existing 0054e1c0 new= ['??_GCFrontEndButton@NUISystem@@UAEPAXI@Z'] | others: {'??_ECFrontEndButton@NUISystem@@UAEPAXI@Z': ['0054e1a0', '0054e1b0']}
+existing 005540d0 new= ['??_ECTable@NUISystem@@UAEPAXI@Z', '??_GCTable@NUISystem@@UAEPAXI@Z'] | others: {}
+existing 00555140 new= ['??_GCMorphingSprite@NUISystem@@UAEPAXI@Z'] | others: {'??_ECMorphingSprite@NUISystem@@UAEPAXI@Z': ['00555120', '00555130']}
+existing 0055a3a0 new= ['??_GCScrollBar@NUISystem@@UAEPAXI@Z'] | others: {'??_ECScrollBar@NUISystem@@UAEPAXI@Z': ['0055a380', '0055a390']}
+existing 0055b850 new= ['??_GCClickable@NUISystem@@UAEPAXI@Z'] | others: {'??_ECClickable@NUISystem@@UAEPAXI@Z': ['0055b830', '0055b840']}
+gate: 0 created split(s)

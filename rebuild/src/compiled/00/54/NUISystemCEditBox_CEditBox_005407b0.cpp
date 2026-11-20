@@ -1,59 +1,50 @@
-// NUISystem::CEditBox constructor native5407B0,311bytes. Actual Component/Observer/Manager/CIV/string headers.
-// Native RTTI1245DE4 confirms base CChangingStateComponent (52CC50), not propagated CDraggableInto.
-// Native RTTI1246B8C CEditBox; secondary tables1246B64 observer+4 and1246B5C secondary+18.
-// Base ends15C vs donor18C. Lists are single-head4 vs donor12; derived fields thereafter donor-40.
-// Manager actualVT1230134 slot2=55CA40 CObservable::AddObserver(CObserver*), PDB5D5E70.
-// Observer52DA20 ObserveEvent(EEvent), events33/34; no invented event semantic names.
-// Actual LoadAndReturnDef()const530EC0 lowered to hidden result storage pointer/ret4; returned EAX is same storage.
-// Definition charlimit1D0/usesIME1D4/disallow1D5/password1CD vs donor1F8/1FC/1FD/1F5.
-// CUIDef actual CIV unsignedlong IVRefCount4; GetRefCount()const returns signedlong (FableWin PDB1909400).
-// Delete()const slot1; ReleaseReference is a local void helper, not actual signedlong Release().
-// Actual CUIDef header absent after full include/repo filename search; raw PDB UIDef projection retained.
-// PDB ctor5A77D0 CChangingStateComponent QAE@J and5BA230 CEditBox QAE@J prove long argument.
-// Full-width host PMFs retained.
-// Leaf: EditBoxNative
-#include <stddef.h>
-#include "rebuild_abi.h"
-#define CComponent CComponentDonor
-#include "engine/_quarantine/CComponent.h"
-#undef CComponent
-#include "engine/CObserver.h"
-#include "engine/CManager.h"
-#include "engine/CIVCountedPointeeBase.h"
-#include "fable_string.h"
-namespace NUISystem {enum EEvent {NativeEvent33=33,NativeEvent34=34};}
-struct ObserverNative {void*VTable;unsigned char EventsToObserve[12];bool PreventObservation;unsigned char Alignment[3];void ObserveEvent(NUISystem::EEvent);};
-namespace NUISystem {class CManager:public ::CManager {public:static CManager* __fastcall GetInstance(); //0041E5F2 (Ego_r.pdb / FableWin.pdb)
- typedef void(CManager::*AddObserverMethod)(ObserverNative*);void AddObserver(ObserverNative*p){(this->*static_cast<AddObserverMethod*>(__vftable)[2])(p);}};}
-extern const unsigned char EditBoxVTable[],EditBoxObserverVTable[],EditBoxSecondaryVTable[];
-struct EditBoxBaseNative {void*VTable;ObserverNative Observer;void*SecondaryVTable;unsigned char Unrecovered1C[0x15c-0x1c];void InitializeChangingStateComponent(long);EditBoxBaseNative(long def){InitializeChangingStateComponent(def);VTable=(void*)EditBoxVTable;Observer.VTable=(void*)EditBoxObserverVTable;SecondaryVTable=(void*)EditBoxSecondaryVTable;}};
-struct ActionNode {ActionNode*Next,*Previous;void*Action;void*CountInfo;};
-extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
-struct ActionList {ActionNode*Head;ActionList():Head(0){ActionNode*p=static_cast<ActionNode*>(malloc(sizeof(ActionNode)));p->Next=p;p->Previous=p;Head=p;}};
-#pragma pack(push,1)
-struct UIDefNative:CIVCountedPointeeBase {unsigned char Unrecovered08[0x1cd-8];bool PasswordBox;unsigned char Alignment[2];long EditBoxCharLimit;bool EditBoxUsesIME,DisallowSpaceAsFirstChar;
- typedef void(UIDefNative::*DeleteMethod)()const;void DecRef()const{--const_cast<UIDefNative*>(this)->IVRefCount;}long GetRefCount()const{return IVRefCount;}
- void ReleaseReference()const{DecRef();if(GetRefCount()==0)(this->*static_cast<DeleteMethod*>(__vftable)[1])();}
-};
-#pragma pack(pop)
-struct DefinitionResultStorage {const UIDefNative*Data;~DefinitionResultStorage(){if(Data)Data->ReleaseReference();}const UIDefNative*operator->()const{return Data;}};
-struct EditBoxNative:EditBoxBaseNative {ActionList ActionsOnEnter,ActionsOnEscape;CWideString Text;long CursorPos,LeftMostCharacter,RightMostCharacter,Adjustment;bool Active,IsPasswordBox,UsesIME,DisallowSpaceAsFirstChar,DeleteAllOnKeyPress;long MaxLength;CWideString AllowedCharacters,ForbiddenCharacters;
- DefinitionResultStorage*LoadAndReturnDefResultStorage(DefinitionResultStorage*)const;EditBoxNative(long);
-};
-#ifdef _MSC_VER
-FABLE_STATIC_ASSERT(sizeof(ObserverNative)==20);
-FABLE_STATIC_ASSERT(sizeof(ActionNode)==16);
-FABLE_STATIC_ASSERT(offsetof(EditBoxNative,ActionsOnEnter)==0x15c);
-FABLE_STATIC_ASSERT(offsetof(EditBoxNative,Text)==0x164);
-FABLE_STATIC_ASSERT(offsetof(EditBoxNative,MaxLength)==0x180);
-FABLE_STATIC_ASSERT(offsetof(EditBoxNative,ForbiddenCharacters)==0x188);
-FABLE_STATIC_ASSERT(offsetof(UIDefNative,EditBoxCharLimit)==0x1d0);
-FABLE_STATIC_ASSERT(sizeof(UIDefNative::DeleteMethod)==4);
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CManager::AddObserverMethod)==4);
-#endif
-EditBoxNative::EditBoxNative(long def):EditBoxBaseNative(def),CursorPos(0),LeftMostCharacter(0),RightMostCharacter(0),Adjustment(0),Active(true),IsPasswordBox(false),UsesIME(false),DeleteAllOnKeyPress(false),MaxLength(50){
- NUISystem::CManager::GetInstance()->AddObserver(&Observer);Observer.ObserveEvent(NUISystem::NativeEvent33);Observer.ObserveEvent(NUISystem::NativeEvent34);
- DefinitionResultStorage definition;LoadAndReturnDefResultStorage(&definition);
- if(definition->EditBoxCharLimit>0)MaxLength=definition->EditBoxCharLimit;
- UsesIME=definition->EditBoxUsesIME;DisallowSpaceAsFirstChar=definition->DisallowSpaceAsFirstChar;IsPasswordBox=definition->PasswordBox;
+// NUISystem::CEditBox::CEditBox(long def) -- the changing-state base, the edit state cleared (max length 50), register with the UI manager
+//   for key-down / char-down events, then take the char limit, IME, leading-space and password settings from the UI def
+// Leaf: ??0CEditBox@NUISystem@@QAE@J@Z
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005407B0, thiscall, `ret 4`. Callees: CChangingStateComponent(long) 0x0052CC50, CManager::GetInstance
+//   0x0041E5F2 (+ slot 2 AddObserver), CObserver::ObserveEvent 0x0052DA20 (x2, UI_EVENT_KEY_DOWN 33 / UI_EVENT_CHAR_DOWN 34),
+//   CComponent::LoadAndReturnDef 0x00530EC0 (hidden result), the STLport list sentinels (malloc), the CDefPointer release.
+// Identity (two sources): Ego_r.pdb / FableWin.pdb ??0CEditBox@NUISystem@@QAE@J@Z; the only caller CManager::CreateComponent 0x0041D21B (landed,
+//   already binding this spelling) constructs the edit box here; the body stores CEditBox's vtables 0x01246B8C / 0x01246B64 / 0x01246B5C
+//   and initialises exactly the engine/NUISystem_CEditBox.h members (CursorPos +0x168 ... MaxLength +0x180) and reads the CUIDef members
+//   PasswordBox / EditBoxCharLimit / EditBoxUsesIME / DisallowSpaceAsFirstChar (engine/NUISystem_CUIDef.h).
+// Was: EditBoxNative::EditBoxNative over local EditBoxBaseNative / ObserverNative / UIDefNative / ActionList models (base lists, a quarantine
+//   CComponent under a renaming macro), binding 0x0052CC50 as ?InitializeChangingStateComponent@EditBoxBaseNative@@QAEXJ@Z
+//   (rebuild/src/compiled/00/54/NUISystemCEditBox_CEditBox_005407b0.cpp).
+// Header: engine/NUISystem_CEditBox.h, engine/NUISystem_CUIDef.h (FABLE_RETAIL_CUIDEF), engine/NUISystem_CManager.h, engine/CDefPointer.h.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DBOXF
+#define FABLE_RETAIL_CUIDEF
+#define FABLE_RETAIL_STLP_LIST
+#include "engine/CDefPointer.h"
+#include "engine/NUISystem_CUIDef.h"
+#include "engine/NUISystem_CEditBox.h"
+#include "engine/NUISystem_CManager.h"
+namespace NUISystem {
+CEditBox::CEditBox(long def)
+    : CChangingStateComponent(def)
+    , CursorPos(0)
+    , LeftMostCharacter(0)
+    , RightMostCharacter(0)
+    , Adjustment(0)
+    , Active(true)
+    , IsPasswordBox(false)
+    , UsesIME(false)
+    , DeleteAllOnKeyPress(false)
+    , MaxLength(50)
+{
+    CManager::GetInstance()->AddObserver(this);
+    ObserveEvent(UI_EVENT_KEY_DOWN);
+    ObserveEvent(UI_EVENT_CHAR_DOWN);
+    CDefPointer<const CUIDef> definition = LoadAndReturnDef();
+    if (definition->EditBoxCharLimit > 0)
+        MaxLength = definition->EditBoxCharLimit;
+    UsesIME = definition->EditBoxUsesIME;
+    DisallowSpaceAsFirstChar = definition->DisallowSpaceAsFirstChar;
+    IsPasswordBox = definition->PasswordBox;
+}
 }

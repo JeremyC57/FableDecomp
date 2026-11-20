@@ -51,6 +51,16 @@ protected:
     unsigned char Damageable:1, Killable:1, RespondToHits:1, EvadeAllHits:1,
         NegateAllHits:1, AbleToBeEngagedInCombat:1;
 public:
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_HEALTHOVERTIMEHELPER
+    // Opt-in (NF111, row 0x005283C0 ~_List_base<CHealthOverTimeHelper>): Ego_r.pdb nested CThingPhysical::CHealthOverTimeHelper, sizeof 8
+    // (FramesLeftForAddingHealth long +0, HealthLeftToAdd float +4; struct_layouts_egor.tsv), the element type of HealthOverTimeEffects
+    // (+0x98, kept opaque above). Its members IsFinished / Update (Ego_r.pdb) are not declared. No layout change.
+    class CHealthOverTimeHelper {
+    public:
+        long FramesLeftForAddingHealth;                                  // +0x0
+        float HealthLeftToAdd;                                           // +0x4
+    };
+#endif
 #if defined(FABLE_RETAIL_CTHINGPHYSICAL_CTOR) || defined(FABLE_RETAIL_CTHINGGAMEOBJECT_CTOR)
     // Retail opt-in (chunk 1021, row 0x0083D460 CThingMarker::Create): Ego_r.pdb ??0CThingPhysical@@QAE@K@Z (0x005325E0 = retail
     // 0x005296B0), out of line (`push 0Bh ; mov ecx,esi ; call 0x005296B0`, 0x0083D47D). Declaration only: no layout change.

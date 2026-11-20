@@ -1,0 +1,95 @@
+addr       parity           behav  name
+004ab130   MATCH            PASS   CScriptThing::IsAlive
+0051dfe0   MATCH            PASS   CThingManager::RemoveFromPhysicalList
+0051e2d0   MATCH            PASS   _global::GetMember_dword0xd8_0051e2d0
+005283c0   RELOCATION_MATCH PASS   std::_List_base<CThingPhysical::CHealthOverTimeHelper, std::allocator<CThingPhysical::CHealthOverTimeHelper>>::~_List_base
+00528760   RELOCATION_MATCH PASS   CDefinitionManager::GetDef<CThingBaseDef>
+00529940   RELOCATION_MATCH PASS   CThingGameObject::vfunc_38
+0052d710   WARN RELOC_NAME: ??_ECChangingStateComponent@NUISystem@@UAEPAXI@Z -> 0052d770 labelled 'NUISystem::CChangingStateComponent::`scalar_deleting_destructor''
+0052d710   RELOCATION_MATCH PASS   _unattributed::Override_0052d770
+0052f100   RELOCATION_MATCH PASS   NUISystem::CComponent::GetName
+0053c7d9   WARN RELOC_NAME: ?erase@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCList@NUISystem@@U?$_Nonconst_traits@PAVCList@NUISystem@@@std@@@2@U32@@Z -> 0053c7b9 labelled 'std_list_node_unlink'
+0053c7d9   RELOCATION_MATCH PASS   std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>::pop_front
+0053e4e0   RELOCATION_MATCH PASS   NUISystem::CMenuEntry::~CMenuEntry
+0053e8e0   WARN STANDIN_LEAF ??_GCMenuEntry@NUISystem@@UAEPAXI@Z (catalog NUISystem::CMenuEntry::`scalar_deleting_destructor'; names another function)
+0053e8e0   RELOCATION_MATCH PASS   NUISystem::CMenuEntry::`scalar_deleting_destructor'
+0053fe30   MATCH            PASS   NUISystem::CEditBox::SetPasswordBox
+005407b0   WARN STANDIN_LEAF ??0CEditBox@NUISystem@@QAE@J@Z (catalog CEditBox; names another function)
+005407b0   RELOCATION_MATCH PASS   CEditBox
+00540cf0   RELOCATION_MATCH PASS   NUISystem::CEditBox::GetText
+00540d10   MATCH            PASS   NUISystem::CEditBox::IsActive
+00540d20   MATCH            PASS   NUISystem::CEditBox::SetMaxLength
+00543530   WARN STANDIN_LEAF ??4CEnginePrimitive2DText@@QAEAAV0@ABV0@@Z (catalog STextRecord_00543530::operator=; names another function)
+00543530   RELOCATION_MATCH PASS   STextRecord_00543530::operator=
+00543b40   WARN RELOC_NAME: ??_ECIconText@NUISystem@@UAEPAXI@Z -> 00543c70 labelled 'NUISystem::CIconText::`scalar_deleting_destructor''
+00543b40   RELOCATION_MATCH PASS   _unattributed::Override_00543c70
+00543c70   WARN STANDIN_LEAF ??_GCIconText@NUISystem@@UAEPAXI@Z (catalog NUISystem::CIconText::`scalar_deleting_destructor'; names another function)
+00543c70   RELOCATION_MATCH PASS   NUISystem::CIconText::`scalar_deleting_destructor'
+0054b360   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0054b360   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCAction@NUISystem@@@@@std@@YIXPAV?$CCountedPointer@VCAction@NUISystem@@@@0ABU__false_type@0@@Z -> 0054a1c0 labelled 'std::__destroy_aux<CCountedPointer<NUISystem::CAction>*>'
+0054b360   RELOCATION_MATCH PASS   NUISystem::CSlider::~CSlider
+0054c1b0   WARN STANDIN_LEAF ??_GCSlider@NUISystem@@UAEPAXI@Z (catalog NUISystem::CSlider::`vector deleting destructor'; names another function)
+0054c1b0   RELOCATION_MATCH PASS   NUISystem::CSlider::`vector deleting destructor'
+0054ded0   WARN RELOC_NAME: ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+0054ded0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCAction@NUISystem@@@@@std@@YIXPAV?$CCountedPointer@VCAction@NUISystem@@@@0ABU__false_type@0@@Z -> 0054a1c0 labelled 'std::__destroy_aux<CCountedPointer<NUISystem::CAction>*>'
+0054ded0   RELOCATION_MATCH PASS   NUISystem::CFrontEndButton::~CFrontEndButton
+0054e1c0   WARN STANDIN_LEAF ??_GCFrontEndButton@NUISystem@@UAEPAXI@Z (catalog NUISystem::CFrontEndButton::`scalar_deleting_destructor'; names another function)
+0054e1c0   RELOCATION_MATCH PASS   NUISystem::CFrontEndButton::`scalar_deleting_destructor'
+0054ff10   MATCH            PASS   NUISystem::CText::GetValue
+0054ff20   MATCH            PASS   NUISystem::CText::GetFont
+0054ffe0   MATCH            PASS   NUISystem::CText::GetTextWindow
+00550a00   WARN STANDIN_LEAF ??1CEnginePrimitive2DAnimatingMesh@@QAE@XZ (catalog std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>; names another function)
+00550a00   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00553fe0   WARN RELOC_NAME: ??_ECTable@NUISystem@@UAEPAXI@Z -> 005540d0 labelled 'NUISystem::CTable::`scalar_deleting_destructor''
+00553fe0   RELOCATION_MATCH PASS   _unattributed::Override_005540d0
+005540d0   WARN STANDIN_LEAF ??_GCTable@NUISystem@@UAEPAXI@Z (catalog NUISystem::CTable::`scalar_deleting_destructor'; names another function)
+005540d0   RELOCATION_MATCH PASS   NUISystem::CTable::`scalar_deleting_destructor'
+00555140   WARN STANDIN_LEAF ??_GCMorphingSprite@NUISystem@@UAEPAXI@Z (catalog NUISystem::CMorphingSprite::`vector deleting destructor'; names another function)
+00555140   RELOCATION_MATCH PASS   NUISystem::CMorphingSprite::`vector deleting destructor'
+0055a3a0   WARN STANDIN_LEAF ??_GCScrollBar@NUISystem@@UAEPAXI@Z (catalog NUISystem::CScrollBar::`vector deleting destructor'; names another function)
+0055a3a0   RELOCATION_MATCH PASS   NUISystem::CScrollBar::`vector deleting destructor'
+0055b850   RELOCATION_MATCH PASS   NUISystem::CClickable::`scalar deleting destructor'
+0055c200   WARN RELOC_NAME: ??_ECHoverable@NUISystem@@UAEPAXI@Z -> 0055c4a0 labelled 'NUISystem::CHoverable::`scalar_deleting_destructor''
+0055c200   RELOCATION_MATCH PASS   _unattributed::Override_0055c4a0
+  WARN leaf '~CAggregate_005bc216' matches no symbol in 005bc216.obj; graded the largest function
+  WARN leaf '~CAggregate_005bc216' matches no symbol in 005bc216.obj; graded the largest function
+005bc216   WARN RELOC_NAME: ??1CMember_004ac8f0@@QAE@XZ -> 004ac8f0 labelled 'CRetailTree_erase004aba70::~CRetailTree_erase004aba70'
+005bc216   WARN RELOC_NAME: ??1CEnginePrimitive2DAnimatingMesh@@QAE@XZ -> 00550a00 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+005bc216   WARN STANDIN_LEAF ??1CAggregate_005bc216@@QAE@XZ (catalog _unattributed::~CAggregate_005bc216; address-only name)
+005bc216   RELOCATION_MATCH PASS   _unattributed::~CAggregate_005bc216
+
+WINS: 34
+  004ab130 MATCH CScriptThing::?IsAlive@CScriptThing@@UBE_NXZ
+  0051dfe0 MATCH _global::?RemoveFromPhysicalList@CThingManager@@QAEXAAVCThingPhysical@@@Z
+  0051e2d0 MATCH _global::?GetSerialiseVersion@CThingManager@@QBEJXZ
+  005283c0 RELOCATION_MATCH _global::??1?$_List_base@VCHealthOverTimeHelper@CThingPhysical@@V?$allocator@VCHealthOverTimeHelper@CThingPhysical@@@std@@@std@@QAE@XZ
+  00528760 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+  00529940 RELOCATION_MATCH CThingGameObject::?GetThingStandingOn@CThingGameObject@@UAEPAVCThing@@XZ
+  0052d710 RELOCATION_MATCH _unattributed::??_ECChangingStateComponent@NUISystem@@WBI@AEPAXI@Z
+  0052f100 RELOCATION_MATCH NUISystem::CComponent::?GetName@CComponent@NUISystem@@UAE?AVCCharString@@XZ
+  0053c7d9 RELOCATION_MATCH list<NUISystem::CList*::?pop_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ
+  0053e4e0 RELOCATION_MATCH NUISystem::CMenuEntry::??1CMenuEntry@NUISystem@@UAE@XZ
+  0053e8e0 RELOCATION_MATCH NUISystem::CMenuEntry::??_GCMenuEntry@NUISystem@@UAEPAXI@Z
+  0053fe30 MATCH _gapscan::?SetPasswordBox@CEditBox@NUISystem@@UAEX_N@Z
+  005407b0 RELOCATION_MATCH NUISystem_CEditBox::??0CEditBox@NUISystem@@QAE@J@Z
+  00540cf0 RELOCATION_MATCH CBankFile::?GetText@CEditBox@NUISystem@@UAE?AVCWideString@@XZ
+  00540d10 MATCH _gapscan::?IsActive@CEditBox@NUISystem@@UAE_NXZ
+  00540d20 MATCH _gapscan::?SetMaxLength@CEditBox@NUISystem@@UAEXJ@Z
+  00543530 RELOCATION_MATCH STextRecord_00543530::??4CEnginePrimitive2DText@@QAEAAV0@ABV0@@Z
+  00543b40 RELOCATION_MATCH _unattributed::??_ECIconText@NUISystem@@WBI@AEPAXI@Z
+  00543c70 RELOCATION_MATCH NUISystem::CIconText::??_GCIconText@NUISystem@@UAEPAXI@Z
+  0054b360 RELOCATION_MATCH NUISystem::CSlider::??1CSlider@NUISystem@@UAE@XZ
+  0054c1b0 RELOCATION_MATCH NUISystem::CSlider::??_GCSlider@NUISystem@@UAEPAXI@Z
+  0054ded0 RELOCATION_MATCH NUISystem::CFrontEndButton::??1CFrontEndButton@NUISystem@@UAE@XZ
+  0054e1c0 RELOCATION_MATCH NUISystem::CFrontEndButton::??_GCFrontEndButton@NUISystem@@UAEPAXI@Z
+  0054ff10 MATCH _gapscan::?GetValue@CText@NUISystem@@UAEABVCWideString@@XZ
+  0054ff20 MATCH _gapscan::?GetFont@CText@NUISystem@@UAEAAV?$CCountedPointer@VCFontBank@@@@XZ
+  0054ffe0 MATCH _gapscan::?GetTextWindow@CText@NUISystem@@UAEAAVC2DBoxF@@XZ
+  00550a00 RELOCATION_MATCH _global::??1CEnginePrimitive2DAnimatingMesh@@QAE@XZ
+  00553fe0 RELOCATION_MATCH _unattributed::??_ECTable@NUISystem@@WBI@AEPAXI@Z
+  005540d0 RELOCATION_MATCH NUISystem::CTable::??_GCTable@NUISystem@@UAEPAXI@Z
+  00555140 RELOCATION_MATCH NUISystem::CMorphingSprite::??_GCMorphingSprite@NUISystem@@UAEPAXI@Z
+  0055a3a0 RELOCATION_MATCH NUISystem::CScrollBar::??_GCScrollBar@NUISystem@@UAEPAXI@Z
+  0055b850 RELOCATION_MATCH NUISystem::CClickable::??_GCClickable@NUISystem@@UAEPAXI@Z
+  0055c200 RELOCATION_MATCH _unattributed::??_ECHoverable@NUISystem@@WBI@AEPAXI@Z
+  005bc216 RELOCATION_MATCH _unattributed::~CAggregate_005bc216

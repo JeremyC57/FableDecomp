@@ -1,126 +1,33 @@
-// NUISystem::CSlider::~CSlider() -- if the value moved, push the starting value back into every action's target and re-run the actions; delete the back/select action lists; destroy the action vector and the sprite base
-// Leaf: ??1CSlider@NUISystem
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
-// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
-// Retail 0x0054B360, 328 bytes, ret. Callees: CManager::GetInstance 0x0041E5F2 and its ExecuteAction (slot 14,
-// +0x38), list<CCountedPointer<CAction> >::clear 0x005356A0, free 0x00BFEA14, operator delete 0x00BFE9BC, the action
-// range destroyer 0x0054A1C0 (__fastcall first/last + allocator reference), CSprite::~CSprite 0x0041AB40.
-// Vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8 at +0 / +4 / +0x18. Epsilon float 0x0129BA3C.
-// Layout: the landed RevertValue 0x0054ABE0 model (retail = PDB - 0x30 up to Actions): Value +0x1A4, Move +0x1AC,
-// OldValue +0x1AD, StartValue +0x1B5 (unaligned, pack(1)), Actions +0x1C0, PActionsOnBack +0x1CC, PActionsOnSelect +0x1D0.
-// Shape: the C2DVector twin of the landed CTextSlider::~CTextSlider 0x00549A00. The "moved" test is `!(StartValue ==
-// Value)` with an inline epsilon operator== written with `<=` (`test ah,41h ; jp` / `jnp`); a `>`/`||` operator!= gives
-// `je`/`jne` instead.
-#include <math.h>
-extern "C" void __cdecl free(void* block);       // 0x00BFEA14
-void operator delete(void* p);                   // 0x00BFE9BC
-#include "engine/CCountedPointer.h"
-struct CActionAllocator {                        // std::allocator<CCountedPointer<CAction> > (empty)
-    CActionAllocator() { }
-};
-namespace NUISystem { class CAction; }
-namespace std {
-struct __false_type { __false_type() { } };
-template <class _ForwardIterator>
-void __fastcall __destroy_aux(_ForwardIterator __first, _ForwardIterator __last, const __false_type&);   // 0x0054A1C0 (std::__destroy_aux<T*>)
-}
-template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() const { return _M_start; }
-    unsigned int size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned int n) const { return *(begin() + n); }
-    ~CRetailVector()
-    {
-        std::__destroy_aux(_M_start, _M_finish, std::__false_type());
-        if (_M_start)
-            free(_M_start);
-    }
-};
-template <class T> struct CRetailList {          // STLport list: the header-node pointer
-    void* _M_node;
-    void clear();                                // 0x005356A0
-    ~CRetailList()
-    {
-        clear();
-        if (_M_node)
-            free(_M_node);
-    }
-};
-extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C
-#pragma pack(push, 1)
-class C2DVector { public:
-    float X, Y;
-    bool operator==(const C2DVector& v) const
-    {
-        return fabs(X - v.X) <= DELTA_NOTIONAL_ZERO && fabs(Y - v.Y) <= DELTA_NOTIONAL_ZERO;
-    }
-};
-#pragma pack(pop)
-struct CComponent;
-struct ISpritePrimary {
-    virtual void v000();
-};
-struct CObserver {
-    virtual void v000();
-    unsigned char _pad04[0x10];
-};
-struct ISpriteSecondaryB {
-    virtual void v000();
-};
-struct CSprite : ISpritePrimary, CObserver, ISpriteSecondaryB {
-    unsigned char _pad1c[0x184 - 0x1c];
-    ~CSprite();                                  // 0x0041AB40
-};
-namespace NUISystem {
-#pragma pack(push, 1)
-class CSlider : public CSprite { public:                       // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
-    C2DVector     Dimensions;                    // +0x184
-    C2DVector     Min;                           // +0x18c
-    C2DVector     Max;                           // +0x194
-    C2DVector     Step;                          // +0x19c
-    C2DVector     Value;                         // +0x1a4
-    bool          Move;                          // +0x1ac
-    C2DVector     OldValue;                      // +0x1ad
-    C2DVector     StartValue;                    // +0x1b5
-    unsigned char _pad1bd[3];
-    CRetailVector<CCountedPointer<CAction> > Actions;          // +0x1c0
-    CRetailList<CCountedPointer<CAction> >*  PActionsOnBack;   // +0x1cc
-    CRetailList<CCountedPointer<CAction> >*  PActionsOnSelect; // +0x1d0
-    long          PDefAction;                    // +0x1d4 EActionType
-    CComponent*   PLeftArrow;                    // +0x1d8
-    CComponent*   PRightArrow;                   // +0x1dc
-    C2DVector     PreviousValue;                 // +0x1e0
-    CComponent*   PAcceptButton;                 // +0x1e8
-    virtual void v000();
-    ~CSlider();
-};
-#pragma pack(pop)
-}
-struct CSliderValue { unsigned char _pad[8]; float Value; };                    // +0x08
-struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };           // +0x08
-struct CSliderTargetRef { CSliderTarget* Target; };                             // +0x00
-namespace NUISystem {
-class CAction { public:
-    virtual void v00();
-    CSliderTargetRef* PTarget;                   // +0x04
-};
-}
-namespace NUISystem { class CManager { public:
-    static CManager* __fastcall GetInstance();   // 0x0041E5F2
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13();
-    virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action);   // slot 14 (+0x38)
-}; }
+// NUISystem::CSlider::~CSlider() -- if the value moved, push the starting value back into every action's target and re-run the actions;
+//   delete the back / select action lists; then the member and CSprite base destructors
+// Leaf: ??1CSlider@NUISystem@@UAE@XZ
+// Flags: /Gr
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0054B360, 328 bytes, `ret`. Callees: CManager::GetInstance 0x0041E5F2 and its slot 14 (+0x38),
+//   list<CCountedPointer<CAction> >::clear 0x005356A0, free 0x00BFEA14, operator delete 0x00BFE9BC, __destroy_aux 0x0054A1C0 (`__fastcall`:
+//   first ecx, last edx, the __false_type tag on the stack), CSprite::~CSprite 0x0041AB40; the shared epsilon DELTA_NOTIONAL_ZERO 0x0129BA3C.
+// Identity (two sources): Ego_r.pdb / FableWin.pdb ??1CSlider@NUISystem@@UAE@XZ (virtual: CSlider's vtable 0x01248D04 slot 0 is the ??_G
+//   0x0054C1B0, which calls this body); the body stores the three CSlider vptrs 0x01248D04 / 0x01248CE0 / 0x01248CD8.
+// Was: the same body on a local pack(1) CSlider / CSprite / CRetailVector / CRetailList / CManager model whose non-virtual declaration
+//   gave ??1CSlider@NUISystem@@QAE@XZ (rebuild/src/compiled/00/54/NUISystemCSlider_CSlider_0054b360.cpp).
+// Now: the destructor as the matched thunk row 0x0054C140 defines it on the shared engine/NUISystem_CSlider.h (CSprite base,
+//   std::vector / std::list members, CActionParamFloat target). /Gr: retail calls the STLport __destroy_aux as `__fastcall` (the landed
+//   0x0054A1C0 row is a /Gr TU); without /Gr VC7.1 pushes first / last (DIFFER 333v328).
+// Header: engine/NUISystem_CSlider.h.
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/NUISystem_CSlider.h"
+#include "engine/NUISystem_CClickable.h"
+#include "engine/NUISystem_CActionParamFloat.h"
+#include "engine/NUISystem_CManager.h"
 namespace NUISystem {
 CSlider::~CSlider()
 {
     if (!(StartValue == Value)) {
         for (unsigned int i = 0; i < Actions.size(); ++i) {
-            Actions[i]->PTarget->Target->Value->Value = StartValue.X;
-            CManager::GetInstance()->ExecuteAction(Actions[i]);
+            static_cast<CActionParamFloat*>(Actions[i]->UIActionParams.front())->Value = StartValue.X;
+            CManager::GetInstance()->Action(Actions[i]);
         }
         Move = true;
     }

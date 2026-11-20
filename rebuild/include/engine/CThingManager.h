@@ -63,6 +63,11 @@ private:
 public:
 #endif
     void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
+#ifdef FABLE_RETAIL_CTHINGMANAGER_REMOVEFROMPHYSICALLIST
+    // Opt-in (NF111, row 0x0051DFE0): Ego_r.pdb 0x00527F00 / FableWin.pdb 0x01D40AC0 ?RemoveFromPhysicalList@CThingManager@@QAEXAAVCThingPhysical@@@Z
+    // (public; the retail body is an empty `ret 4`; its only caller is ~CThingPhysical 0x006A5D50). Declaration only: no layout change.
+    void RemoveFromPhysicalList(class CThingPhysical& thing);           // 0x0051DFE0
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_SAVEGAMESTATE
     // Opt-in (chunk 2052, row 0x0049F4C0 CWorld::SaveGameStateInternal): Ego_r.pdb ?SaveGameState@CThingManager@@QAEXAAVCPersistContext@@@Z,
     // out of line at 0x00524290. Declaration only.

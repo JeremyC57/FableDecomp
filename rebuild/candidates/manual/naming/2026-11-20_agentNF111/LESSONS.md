@@ -1,0 +1,13 @@
+# NF111 lessons (one line each)
+- A claimed `??_E...UAEPAXI@Z` on a self row is the weak alias of `??_G`: author the self row with leaf `??_G` and let the {4}/{24} thunks bind `??_E` (precedent 0x00546F00).
+- Emit a `??_G` / adjustor thunk row from the ctor or dtor TU of the class (the one that emits the vtable) on the shared NUISystem_* header; an opaque TU inlines the dtor (0x0054E1C0 DIFFER 50v30).
+- Fixing a dtor leaf QAE->UAE moves the ??_G that calls it: claim and hand back the ??_G row in the same pass or you create a split (0x0054E1C0, 0x0053E8E0).
+- STLport `__destroy_aux` 0x0054A1C0 is __fastcall: NUISystem dtors that call it need `// Flags: /Gr` (~CSlider, ~CFrontEndButton).
+- In-class inline virtuals: nf86/NF92 anonymous-namespace qualified call under `#pragma inline_depth(0)`; implicit dtors need `#pragma optimize("s", on)` instead (inline_depth(0) out-of-lines the member dtors too).
+- An implicit dtor whose member's dtor retail inlines needs that member's IMPLICIT_DTOR opt-in as well (0x00550A00 C3DOrientationInterpolator).
+- By-name GetDef<T> instantiations: GETDEF_NAME_INLINE + CDEFPOINTER_SETDYNAMICCAST_REREAD (the 0x00410890 recipe); GETDEF_NAME_BODY gives DIFFER 112v104.
+- STLport member instantiations (pop_front, ~_List_base) land as explicit instantiations over stlport/fable_containers.h, with LIST_ERASE_NOINLINE where retail calls erase.
+- engine/CText.h needs FABLE_RETAIL_DEF_CLASS_BASE, CIVCOUNTEDPOINTER and CENGINEPERSISTENTPRIMITIVEBASE before CTEXT + LAYOUT compile; read the header's #error list before the first grade.
+- tools/st.py treats `-` as stdin: always run record scripts with `< /dev/null`, or they hang in the background.
+- After a container restart the first wine grade can stall while wineserver starts: wait for it, do not kill it.
+- Check folds with an exe xref scan plus RTTI COL names for every referencing vtable before treating a claim as one identity.

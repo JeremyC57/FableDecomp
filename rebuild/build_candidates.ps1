@@ -8681,9 +8681,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051e2d0'
-        Module = '_global'
-        Source = '00/51/global_DrawGetEnvironment_0051e2d0.cpp'
-        TestSource = '00/51/global_DrawGetEnvironment_0051e2d0_test.cpp'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_GetSerialiseVersion_0051e2d0.cpp'
+        TestSource = '00/51/CThingManager_GetSerialiseVersion_0051e2d0_test.cpp'
         PassPattern = 'AUTO_TINY_0051e2d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -40423,9 +40423,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00550a00'
-        Module = '_global'
-        Source = '00/55/global_Destval_00550a00.cpp'
-        TestSource = '00/55/global_Destval_00550a00_test.cpp'
+        Module = 'CEnginePrimitive2DAnimatingMesh'
+        Source = '00/55/CEnginePrimitive2DAnimatingMesh_CEnginePrimitive2DAnimatingMesh_00550a00.cpp'
+        TestSource = '00/55/CEnginePrimitive2DAnimatingMesh_CEnginePrimitive2DAnimatingMesh_00550a00_test.cpp'
         PassPattern = 'DUALDV550A_OK'
     }
     [pscustomobject]@{
@@ -68542,9 +68542,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051dfe0'
-        Module = '_global'
-        Source = '00/51/E2_E2_0051dfe0.cpp'
-        TestSource = '00/51/E2_E2_0051dfe0_test.cpp'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_RemoveFromPhysicalList_0051dfe0.cpp'
+        TestSource = '00/51/CThingManager_RemoveFromPhysicalList_0051dfe0_test.cpp'
         PassPattern = 'OK_0051dfe0'
     }
     [pscustomobject]@{
@@ -79284,6 +79284,7 @@ $catalog = @(
         Source = '00/54/NUISystemCFrontEndButton_scalardeletingdestructor_0054e1c0.cpp'
         TestSource = '00/54/NUISystemCFrontEndButton_scalardeletingdestructor_0054e1c0_test.cpp'
         PassPattern = 'PASS_0054e1c0'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '0054ec70'
@@ -87429,9 +87430,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005283c0'
-        Module = '_global'
-        Source = '00/52/CGuiControlTreePane_SortTreeRecursively_005283c0.cpp'
-        TestSource = '00/52/CGuiControlTreePane_SortTreeRecursively_005283c0_test.cpp'
+        Module = 'std::_List_base<CThingPhysical::CHealthOverTimeHelper, std::allocator<CThingPhysical::CHealthOverTimeHelper>>'
+        Source = '00/52/stdListbase_Listbase_005283c0.cpp'
+        TestSource = '00/52/stdListbase_Listbase_005283c0_test.cpp'
         PassPattern = 'PASS_005283c0'
     }
     [pscustomobject]@{
@@ -91954,8 +91955,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0052f100'
         Module = 'NUISystem::CComponent'
-        Source = '00/52/CBankFile_GetBankHandle_0052f100.cpp'
-        TestSource = '00/52/CBankFile_GetBankHandle_0052f100_test.cpp'
+        Source = '00/52/NUISystemCComponent_GetName_0052f100.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetName_0052f100_test.cpp'
         PassPattern = 'PASS_0052f100'
     }
     [pscustomobject]@{
@@ -93951,9 +93952,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053c7d9'
-        Module = 'list<NUISystem::CList*'
-        Source = '00/53/listNUISystemCList_popfront_0053c7d9.cpp'
-        TestSource = '00/53/listNUISystemCList_popfront_0053c7d9_test.cpp'
+        Module = 'std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>'
+        Source = '00/53/stdlist_popfront_0053c7d9.cpp'
+        TestSource = '00/53/stdlist_popfront_0053c7d9_test.cpp'
         PassPattern = 'PASS_0053c7d9'
     }
     [pscustomobject]@{
@@ -97236,23 +97237,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053fe30'
-        Module = '_gapscan'
-        Source = '00/53/gapscan_sub0053fe30_0053fe30.cpp'
-        TestSource = '00/53/gapscan_sub0053fe30_0053fe30_test.cpp'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/53/NUISystemCEditBox_SetPasswordBox_0053fe30.cpp'
+        TestSource = '00/53/NUISystemCEditBox_SetPasswordBox_0053fe30_test.cpp'
         PassPattern = 'PASS_0053fe30'
     }
     [pscustomobject]@{
         Address = '00540d10'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub00540d10_00540d10.cpp'
-        TestSource = '00/54/gapscan_sub00540d10_00540d10_test.cpp'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_IsActive_00540d10.cpp'
+        TestSource = '00/54/NUISystemCEditBox_IsActive_00540d10_test.cpp'
         PassPattern = 'PASS_00540d10'
     }
     [pscustomobject]@{
         Address = '00540d20'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub00540d20_00540d20.cpp'
-        TestSource = '00/54/gapscan_sub00540d20_00540d20_test.cpp'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_SetMaxLength_00540d20.cpp'
+        TestSource = '00/54/NUISystemCEditBox_SetMaxLength_00540d20_test.cpp'
         PassPattern = 'PASS_00540d20'
     }
     [pscustomobject]@{
@@ -97425,23 +97426,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0054ff10'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub0054ff10_0054ff10.cpp'
-        TestSource = '00/54/gapscan_sub0054ff10_0054ff10_test.cpp'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_GetValue_0054ff10.cpp'
+        TestSource = '00/54/NUISystemCText_GetValue_0054ff10_test.cpp'
         PassPattern = 'PASS_0054ff10'
     }
     [pscustomobject]@{
         Address = '0054ff20'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub0054ff20_0054ff20.cpp'
-        TestSource = '00/54/gapscan_sub0054ff20_0054ff20_test.cpp'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_GetFont_0054ff20.cpp'
+        TestSource = '00/54/NUISystemCText_GetFont_0054ff20_test.cpp'
         PassPattern = 'PASS_0054ff20'
     }
     [pscustomobject]@{
         Address = '0054ffe0'
-        Module = '_gapscan'
-        Source = '00/54/gapscan_sub0054ffe0_0054ffe0.cpp'
-        TestSource = '00/54/gapscan_sub0054ffe0_0054ffe0_test.cpp'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_GetTextWindow_0054ffe0.cpp'
+        TestSource = '00/54/NUISystemCText_GetTextWindow_0054ffe0_test.cpp'
         PassPattern = 'PASS_0054ffe0'
     }
     [pscustomobject]@{
@@ -158207,9 +158208,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052d710'
-        Module = '_unattributed'
-        Source = '00/52/unattributed_Override0052d770_0052d710.cpp'
-        TestSource = '00/52/unattributed_Override0052d770_0052d710_test.cpp'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_vectordeletingdestructoradjustor24_0052d710.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_vectordeletingdestructoradjustor24_0052d710_test.cpp'
         PassPattern = '0052d710_TEST PASS'
     }
     [pscustomobject]@{
@@ -158228,23 +158229,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00543b40'
-        Module = '_unattributed'
-        Source = '00/54/unattributed_Override00543c70_00543b40.cpp'
-        TestSource = '00/54/unattributed_Override00543c70_00543b40_test.cpp'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_vectordeletingdestructoradjustor24_00543b40.cpp'
+        TestSource = '00/54/NUISystemCIconText_vectordeletingdestructoradjustor24_00543b40_test.cpp'
         PassPattern = '00543b40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00553fe0'
-        Module = '_unattributed'
-        Source = '00/55/unattributed_Override005540d0_00553fe0.cpp'
-        TestSource = '00/55/unattributed_Override005540d0_00553fe0_test.cpp'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_vectordeletingdestructoradjustor24_00553fe0.cpp'
+        TestSource = '00/55/NUISystemCTable_vectordeletingdestructoradjustor24_00553fe0_test.cpp'
         PassPattern = '00553fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0055c200'
-        Module = '_unattributed'
-        Source = '00/55/unattributed_Override0055c4a0_0055c200.cpp'
-        TestSource = '00/55/unattributed_Override0055c4a0_0055c200_test.cpp'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_vectordeletingdestructoradjustor24_0055c200.cpp'
+        TestSource = '00/55/NUISystemCHoverable_vectordeletingdestructoradjustor24_0055c200_test.cpp'
         PassPattern = '0055c200_TEST PASS'
     }
     [pscustomobject]@{
@@ -158320,8 +158321,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00529940'
         Module = 'CThingGameObject'
-        Source = '00/52/CThingGameObject_vfunc38_00529940.cpp'
-        TestSource = '00/52/CThingGameObject_vfunc38_00529940_test.cpp'
+        Source = '00/52/CThingGameObject_GetThingStandingOn_00529940.cpp'
+        TestSource = '00/52/CThingGameObject_GetThingStandingOn_00529940_test.cpp'
         PassPattern = '00529940_TEST PASS'
     }
     [pscustomobject]@{
@@ -177685,8 +177686,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00528760'
         Module = 'CDefinitionManager'
-        Source = '00/52/CDefinitionManager_GetDef00528760_00528760.cpp'
-        TestSource = '00/52/CDefinitionManager_GetDef00528760_00528760_test.cpp'
+        Source = '00/52/CDefinitionManager_GetDef_00528760.cpp'
+        TestSource = '00/52/CDefinitionManager_GetDef_00528760_test.cpp'
         PassPattern = '00528760_TEST PASS'
     }
     [pscustomobject]@{
@@ -191710,9 +191711,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00540cf0'
-        Module = 'CBankFile'
-        Source = '00/54/CBankFile_GetBankHandle_00540cf0.cpp'
-        TestSource = '00/54/CBankFile_GetBankHandle_00540cf0_test.cpp'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_GetText_00540cf0.cpp'
+        TestSource = '00/54/NUISystemCEditBox_GetText_00540cf0_test.cpp'
         PassPattern = '00540cf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -199642,9 +199643,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00543530'
-        Module = 'STextRecord_00543530'
-        Source = '00/54/STextRecord00543530_operator_00543530.cpp'
-        TestSource = '00/54/STextRecord00543530_operator_00543530_test.cpp'
+        Module = 'CEnginePrimitive2DText'
+        Source = '00/54/CEnginePrimitive2DText_operator_00543530.cpp'
+        TestSource = '00/54/CEnginePrimitive2DText_operator_00543530_test.cpp'
         PassPattern = '00543530_TEST PASS'
     }
     [pscustomobject]@{
@@ -229089,6 +229090,7 @@ $catalog = @(
         Source = '00/54/NUISystemCFrontEndButton_CFrontEndButton_0054ded0.cpp'
         TestSource = '00/54/NUISystemCFrontEndButton_CFrontEndButton_0054ded0_test.cpp'
         PassPattern = '0054ded0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '00580371'
@@ -237005,7 +237007,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005407b0'
-        Module = 'NUISystem_CEditBox'
+        Module = 'NUISystem::CEditBox'
         Source = '00/54/NUISystemCEditBox_CEditBox_005407b0.cpp'
         TestSource = '00/54/NUISystemCEditBox_CEditBox_005407b0_test.cpp'
         PassPattern = '005407b0_TEST PASS'
@@ -253845,6 +253847,7 @@ $catalog = @(
         Source = '00/54/NUISystemCSlider_CSlider_0054b360.cpp'
         TestSource = '00/54/NUISystemCSlider_CSlider_0054b360_test.cpp'
         PassPattern = '0054b360_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '0054ba20'

@@ -302,3 +302,5 @@ CThingTrackNode.h STATTYPEFLAGS). A's holds on CThingSearchTools.h, NThingMap_CT
 2026-11-20 A->B: nf112 landed (20 rows). The CUIScreenUnitConverter statics are private (`@@0`): Ego_d PUB32 plus FableWin.pdb's class record
 (LF_STMEMBER ... attrs = private). Rows that bind them `@@2` (or as ScreenWidth / ScreenHeight / g_dimW / g_dimH) are queued for respelling
 (q list in NAME_FIXES_QUEUE, tag land1120nf112). Tell me if any of those binders is one of your re-ports.
+2026-11-20 A->B: nf111 landed (PRIORITY slice 3, 34 rows; add-only opt-ins in CThingManager.h, CThingPhysical.h; three rows got `/Gr`). New agents:
+NF114 (NF112's leftovers + the CUIScreenUnitConverter private statics), NF115 (PRIORITY slice 5); claims in COORDINATION_CLAIMS.tsv.

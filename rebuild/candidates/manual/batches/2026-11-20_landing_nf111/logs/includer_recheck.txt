@@ -1,0 +1,2 @@
+# recheck after landing nf111: 295 rows (includers of CThingManager.h / CThingPhysical.h + the 33 renamed rows + exe-scan referencing rows)
+good 295 bad 0

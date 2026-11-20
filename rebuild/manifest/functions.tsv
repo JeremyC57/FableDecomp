@@ -8808,7 +8808,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0051e100	AllocateNewThingUID	CThingManager	__thiscall	__uint64	4	CThingManager *,long,bool,bool	1	yes	accepted									
 0051e210	RemapUIDForSerialisation	CThingManager	__thiscall	__uint64	5	CThingManager *,bool,bool,ulong,__uint64	1	yes	accepted									
 0051e2c0	GetLevelBeingLoaded	CThingManager	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\global_DrawGetEnvironment_0051e2c0.cpp
-0051e2d0	GetMember_dword0xd8_0051e2d0	_global	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\global_DrawGetEnvironment_0051e2d0.cpp
+0051e2d0	GetSerialiseVersion	CThingManager	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\global_DrawGetEnvironment_0051e2d0.cpp
 0051e2e0	IsSerialisingGameState	CThingManager	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CTCInventoryBase_GetCanItemBeQuickAssigned_0051e2e0.cpp
 0051e2f0	ActivateThings	CThingManager	__thiscall	void	2	CThingManager *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 0051e480	PeekThingSearchTools	CThingManager	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CPixelShader_CountReferences_0051e480.cpp
@@ -9000,7 +9000,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005298c0	`scalar_deleting_destructor'	CThingGameObject	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_005298c0.cpp
 005298e0	AssignTarget_005298e0	_unattributed	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 00529930	GetThingStandingOn	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00529940	vfunc_38	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00529940	GetThingStandingOn	CThingGameObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00529990	IsAffectedByDamage	CThingBuilding	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005299a0	`scalar_deleting_destructor'	CThingBuilding	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_005299a0.cpp
 005299c0	CThingVillage	CThingVillage	__thiscall	undefined	1	CThingObject *	0	yes	accepted									
@@ -9119,7 +9119,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052d620	StdList_Ctor_0052d620	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_StdListInitialize_0052d620.cpp
 0052d6b0	find	CRetailTree_ulongkey	unknown	undefined	0		0	yes	accepted									
 0052d700	`vector deleting destructor'	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052d710	Override_0052d770	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052d710	`vector deleting destructor'`adjustor{24}'	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052d740	LinkedList_InsertNode	_global	unknown	undefined	0		0	yes	accepted									
 0052d770	`scalar_deleting_destructor'	NUISystem::CChangingStateComponent	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 0052d7b0	ObserveAllEvents	NUISystem::CObserver	__thiscall	void	1	CObserver *	1	yes	accepted									
@@ -9460,7 +9460,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053e8b0	vfunc_154	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8c0	`vector deleting destructor'	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8d0	`vector deleting destructor'	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053e8e0	`scalar_deleting_destructor'	NUISystem::CMenuEntry	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053e8e0.cpp
+0053e8e0	`scalar deleting destructor'	NUISystem::CMenuEntry	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053e8e0.cpp
 0053e950	~CScrollingViewport	NUISystem::CScrollingViewport	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
 0053e9a0	NUISystem::CScrollingViewport::vfunc_1	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ebf0	ChangeState	NUISystem::CScrollingViewport	__thiscall	void	2	CScrollingViewport *,ulong	1	yes	accepted									
@@ -9487,7 +9487,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005402c0	GetTextComponent	NUISystem::CEditBox	__thiscall	CComponent *	1	CEditBox *	1	yes	accepted									
 00540320	KeyPressed	CEditBox	__thiscall	void	2	CEditBox *,wchar_t	1	yes	accepted									
 00540620	Initialise	NUISystem::CEditBox	__thiscall	void	1	CEditBox *	1	yes	accepted									
-005407b0	CEditBox	_global	__thiscall	undefined	2	CEditBox *,long	0	yes	accepted									
+005407b0	CEditBox	NUISystem::CEditBox	__thiscall	undefined	2	CEditBox *,long	0	yes	accepted									
 005408f0	~CEditBox	NUISystem::CEditBox	__thiscall	void	1	CEditBox *	1	yes	accepted									
 00540980	UpdateDisplayText	NUISystem::CEditBox	__thiscall	void	1	CEditBox *	1	yes	accepted									
 00540cf0	GetText	NUISystem::CEditBox	__thiscall	CCharString	1	CBankFile *	1	yes	accepted									
@@ -9535,7 +9535,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00542780	AddIcon	NUISystem::CIconText	__thiscall	void	4	CIconText *,long,long,EIconFlags	1	yes	accepted									
 00542a30	Draw	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005430f0	InitIcons	NUISystem::CIconText	__thiscall	void	1	CIconText *	1	yes	accepted									
-00543530	operator=	STextRecord_00543530	__thiscall	CEnginePrimitive2DText *	2	CEnginePrimitive2DText *,CEnginePrimitive2DText *	1	yes	accepted									
+00543530	operator=	CEnginePrimitive2DText	__thiscall	CEnginePrimitive2DText *	2	CEnginePrimitive2DText *,CEnginePrimitive2DText *	1	yes	accepted									
 00543700	__copy<NUISystem::CIconText::CEmbeddedIcon*,NUISystem::CIconText::CEmbeddedIcon*,int>	std	__fastcall	CActionInputControl *	3	CActionInputControl *,CActionInputControl *,CActionInputControl *	1	yes	accepted									
 00543810	__uninitialized_copy	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00543870	__uninitialized_fill_n	std	__fastcall	void	2	CAnimatedBlock *,ulong	1	yes	accepted									
@@ -9551,9 +9551,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00543ae0	SetTextWindow	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543b10	GetAlignment	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543b30	`vector deleting destructor'`adjustor{4}'	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00543b40	Override_00543c70	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00543b40	`vector deleting destructor'`adjustor{24}'	NUISystem::CIconText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00543b70	_M_insert_overflow	std::vector<NUISystem::CIconText::CEmbeddedIcon, std::allocator<NUISystem::CIconText::CEmbeddedIcon>>	unknown	undefined	0		0	yes	accepted									
-00543c70	`scalar_deleting_destructor'	NUISystem::CIconText	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_00543c70.cpp
+00543c70	`scalar deleting destructor'	NUISystem::CIconText	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_00543c70.cpp
 00543c90	PushBack_SRecord28_00543c90	CRetailVector_SRecord28	__thiscall	void	1	CScriptModuleTransitionBetweenPoints *	1	yes	accepted									
 00543cf0	~CParticleEffect	NUISystem::CParticleEffect	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
 00543d30	Initialise	NUISystem::CParticleEffect	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
@@ -9716,7 +9716,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054c140	`vector deleting destructor'`adjustor{4}'	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c150	`vector deleting destructor'`adjustor{24}'	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054c160	AddAction	NUISystem::CSlider	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054c1b0	`vector deleting destructor'	NUISystem::CSlider	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054c1b0.cpp
+0054c1b0	`scalar deleting destructor'	NUISystem::CSlider	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054c1b0.cpp
 0054c1d0	CListArrow	NUISystem::CListArrow	__thiscall	undefined	2	CComponentContainer *,long	0	yes	accepted									
 0054c250	Initialise	NUISystem::CListArrow	__thiscall	void	1	CEngine *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CEngine_ChangeCameraAngle_0054c250.cpp
 0054c270	ChangeState	NUISystem::CListArrow	__thiscall	void	2	CListArrow *,ulong	1	yes	accepted									
@@ -9754,7 +9754,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054e190	IsClickable	NUISystem::CClickable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e1a0	`vector deleting destructor'	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e1b0	`vector deleting destructor'	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054e1c0	`scalar_deleting_destructor'	NUISystem::CFrontEndButton	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054e1c0.cpp
+0054e1c0	`scalar deleting destructor'	NUISystem::CFrontEndButton	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054e1c0.cpp
 0054e1e0	AddAction	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e230	AddActionOnDelete	NUISystem::CFrontEndButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054e280	ProcessEvent	NUISystem::CFrontEndScreen	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9820,7 +9820,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005508b0	`scalar deleting destructor'	C3DAnimationState	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005508d0	C3DOrientationInterpolator	C3DOrientationInterpolator	__thiscall	undefined	3	C3DOrientationInterpolator *,CRightHandedSet *,CRightHandedSet *	0	yes	accepted									
 00550940	CEnginePrimitive2DStaticMesh	CEnginePrimitive2DStaticMesh	__thiscall	undefined	8	CEnginePrimitive2DStaticMesh *,__uint64,ulong,C2DBoxF *,C3DOrientationInterpolator *,EEngineInterpolationSet,uchar,CRGBColour	0	yes	accepted									
-00550a00	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_Destval_00550a00.cpp
+00550a00	~CEnginePrimitive2DAnimatingMesh	CEnginePrimitive2DAnimatingMesh	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_Destval_00550a00.cpp
 00550a20	C3DAnimationInterpolator	C3DAnimationInterpolator	__thiscall	undefined	4	CEnginePrimitiveAnimation *,C3DAnimationInterpolator *,C3DPositionInterpolator *,C3DOrientationInterpolator *	0	yes	accepted									
 00550a70	CEnginePrimitive2DAnimatingMesh	CEnginePrimitive2DAnimatingMesh	__thiscall	undefined	4	CEnginePrimitiveAnimation *,C3DAnimationInterpolator *,C3DPositionInterpolator *,C3DOrientationInterpolator *	0	yes	accepted									
 00550b80	GetMeshIndex	NUISystem::CMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9865,9 +9865,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00553ee0	map	std::map<NUISystem::ETableSprites, CCountedPointer<NUISystem::CComponent>, std::less<NUISystem::ETableSprites>, std::allocator<std::pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent>>>>	unknown	undefined	0		0	yes	accepted									
 00553f20	~CRetailTree_erase00553690	CRetailTree_erase00553690	unknown	undefined	0		0	yes	accepted									
 00553fd0	`vector deleting destructor'`adjustor{4}'	NUISystem::CTable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00553fe0	Override_005540d0	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00553fe0	`vector deleting destructor'`adjustor{24}'	NUISystem::CTable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00554030	operator[]	std::map<NUISystem::ETableSprites,CCountedPointer<NUISystem::CComponent> >	unknown	undefined	0		0	yes	accepted									
-005540d0	`scalar_deleting_destructor'	NUISystem::CTable	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_005540d0.cpp
+005540d0	`scalar deleting destructor'	NUISystem::CTable	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_005540d0.cpp
 005540f0	Initialise	NUISystem::CMorphingSprite	__thiscall	void	1	CMemoryDataOutputStream *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CMemoryDataOutputStream_Clear_005540f0.cpp
 00554110	InternalChanged	NUISystem::CMorphingSprite	__thiscall	bool	1	CMorphingSprite *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CMorphingSprite_InternalChanged_00554110.cpp
 00554130	ChangeGraphic	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9887,7 +9887,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00555110	GetGRaphicIndices	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00555120	`vector deleting destructor'`adjustor{4}'	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00555130	`vector deleting destructor'`adjustor{24}'	NUISystem::CMorphingSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00555140	`vector deleting destructor'	NUISystem::CMorphingSprite	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_00555140.cpp
+00555140	`scalar deleting destructor'	NUISystem::CMorphingSprite	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_00555140.cpp
 00555180	CScrollableList	NUISystem::CScrollableList	__thiscall	undefined	2	CTCHeroPodium *,CThing *	0	yes	accepted									
 005551d0	CScrollableList	NUISystem::CScrollableList	unknown	undefined	0		0			discovered	gapscan							
 00555220	Update	NUISystem::CScrollableList	__thiscall	void	2	CScrollableList *,float	1	yes	accepted									
@@ -10004,7 +10004,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055a370	vfunc_132	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a380	`vector deleting destructor'`adjustor{4}'	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a390	`vector deleting destructor'`adjustor{24}'	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055a3a0	`vector deleting destructor'	NUISystem::CScrollBar	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0.cpp
+0055a3a0	`scalar deleting destructor'	NUISystem::CScrollBar	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0.cpp
 0055a3d0	Initialise	NUISystem::CDraggable	__thiscall	void	1	CClickable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CClickable_Initialise_0055a3d0.cpp
 0055a3e0	Update	NUISystem::CDraggable	__thiscall	void	2	CDraggable *,float	1	yes	accepted									
 0055a510	ProcessEvent	NUISystem::CDraggable	__thiscall	void	2	CDraggable *,EEvent	1	yes	accepted									
@@ -10056,7 +10056,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055bde0	OnDeactivate	NUISystem::CHoverable	__thiscall	void	1	CAIStateGroup_MinionBehaviourCrowdBase *	1	yes	accepted									
 0055bf10	UpdateHovering	NUISystem::CHoverable	__thiscall	void	1	CHoverable *	1	yes	accepted									
 0055c1f0	`vector deleting destructor'	NUISystem::CHoverable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055c200	Override_0055c4a0	_unattributed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0055c200	`vector deleting destructor'`adjustor{24}'	NUISystem::CHoverable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055c280	StdList_Clear_0055c280	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CGuiControlTreePane_SortTreeRecursively_0055c280.cpp
 0055c2e0	StdList_Ctor_0055c2e0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_CircularLinkedListInitializeSmall_0055c2e0.cpp
 0055c300	StdList_Clear_0055c300	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CGuiControlTreePane_SortTreeRecursively_0055c300.cpp
