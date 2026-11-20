@@ -401601,6 +401601,13 @@ $catalog = @(
         TestSource = '00/ad/CVertexGroupBlockOptimiser_ReorderInput_00ad9980_test.cpp'
         PassPattern = '00ad9980_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008e03b0'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpSpeed'
+        Source = '00/8e/NCreatureModeCModeGuildmasterPowerUpSpeed_OnActivate_008e03b0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeGuildmasterPowerUpSpeed_OnActivate_008e03b0_test.cpp'
+        PassPattern = '008e03b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
