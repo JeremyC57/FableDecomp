@@ -386,3 +386,16 @@ First case: 0x00A1A170 CNavigatorAStar::IsEqual (landing nf150).
 
 Cases: 0x0121F0E0 / 0x01229BE0 CTCAIScratchpad::ActiveGossipCategories (nf89; clashes at HEAD), 0x0121E030 / 0x01229280
 CCreatureActionBase::RegisteredActionEvents (nf164).
+
+## 2026-11-20 advisor decision (owner delegated): `engine/_quarantine/<Class>.h` is not a shared header for the local-model rule
+- gen_class_headers.py writes a class to `_quarantine/` when donor and retail disagree on its layout (a GetSizeofClass size
+  conflict, or more conflicting files than agreeing ones). Such headers are kept off the rewriter path.
+- The verifier's shared-header test (verify_and_land.shared_header_redefinitions, the SHARED_HEADER_AVAILABLE warning) does not
+  flag a local model of a quarantined class. Landed 0x0096CD70 models CAIStateGroup_EatAtTable locally with no warning.
+  So for the rule a quarantined class is header-less: a row may model it locally, in the landed sibling's shape (q11715).
+- A quarantine header may still take declaration-only opt-ins for callers (nf160, CEngineLandscapeMap). It never models
+  `this`, a base or a by-value member of a landed row.
+- Take any spelling that passes such a class as an argument from the PDB symbol, not from the header: the 2026-10-26
+  class-key pass left most CAIStateGroup_* / CCombatSequence* keys unproven.
+- The end state is each such header's promotion to `engine/` (queued). Until then, the generator's hand-edit guard covers only
+  `engine/` (RETAIL_MARK). A regeneration would overwrite a hand opt-in in `_quarantine/` (queued as a tools item).
