@@ -39808,3 +39808,11 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z	00a786c0	00a78800
 ?_M_insert_overflow@?$vector@PAVCNavRegion@@V?$allocator@PAVCNavRegion@@@std@@@std@@IAEXPAPAVCNavRegion@@ABQAV3@ABU__true_type@2@I_N@Z	00a814b0	00a78800
 ??1CNavConnectorNode@@QAE@XZ	00a780b0	00a82fa0
+??_7?$CEntityScriptBinding@VCQ_PrisonRaceScript@NScript@@@@6B@	012dc950	00ddae40
+?Alloc@CPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddb4a0	00ddae40
+?Alloc@CPrisonRaceStartingGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddc500	00ddae40
+?Alloc@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddc2d0	00ddae40
+?Alloc@CPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddbf90	00ddae40
+?Alloc@CPrisonRacer@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddc3e0	00ddae40
+?Alloc@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ddc5e0	00ddae40
+?WatchForHeroWinOrLose@CQ_PrisonRaceScript@NScript@@QAEXXZ	00ddb2f0	00ddae40

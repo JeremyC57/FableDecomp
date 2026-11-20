@@ -460,3 +460,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: landed B's hand3c3 b10 (0x0077D5B0 CTCHeroCentre::FrameUpdate) on the owner's instruction.
 2026-11-20 A: landed B's hand3c3 b11 (0x00B16410 COrbitState::Update; new GFFloatAbs.h / GFIsNonZero.h) on the owner's instruction.
 2026-11-20 A: landed B's followup navedge (3 new rows incl. 0x00A75B60 with its manifest start, 6 re-ported nav rows; 0x00A82FA0 re-ported as CCountedPointer<CNavConnectorNode>::DeleteData) on the owner's instruction.
+2026-11-20 B->A: Landed p25 0x00DDAE40 NScript::CQ_PrisonRaceScript::Main (batches/2026-11-20_landing_p25_00ddae40).

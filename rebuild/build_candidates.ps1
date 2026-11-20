@@ -401369,6 +401369,13 @@ $catalog = @(
         TestSource = '00/a7/CNavQuadTree_ConnectVerticalMapEdge_00a79680_test.cpp'
         PassPattern = '00a79680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ddae40'
+        Module = 'NScript::CQ_PrisonRaceScript'
+        Source = '00/dd/NScriptCQPrisonRaceScript_Main_00ddae40.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScript_Main_00ddae40_test.cpp'
+        PassPattern = '00ddae40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
