@@ -454,3 +454,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: NF148 handed back (q11817 / q11785 done). New agent NF151 (CShaderRenderManager / CEngineLightingManager PRIORITY entries, 18; takes the stale Account B lock on 0x0098B930).
 2026-11-20 A: nf146 landed (13 rows; q4283 / q4285 / q11812 / q11818 closed; q11817 lands with nf148).
 2026-11-20 A: reserved 25 parked rows for Account B to finish authoring (owner's instruction; the 25 closest to retail by length; claim line account B, UNMATCHED status reserved (acctB), A locks acctB).
+2026-11-20 A: NF150 handed back (13 of 15 done). New agent NF152 (CDisplayManager / CEngineResourceManager / CEngineShadowRenderer PRIORITY entries, 17).
