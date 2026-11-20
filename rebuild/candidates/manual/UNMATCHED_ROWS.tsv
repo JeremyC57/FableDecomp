@@ -602,7 +602,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a1cc30	CNavigatorAStar	ConstructFinalRoute	640	parked	egod e05: parked	2	rebuild/candidates/manual/pending/2026-11-17_egod_open/e05/00a1cc30.cpp	original
 00a1d6e0	CNavigatorAStar	CalculateNavigableWidthOfLine	1872	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a1d6e0.cpp	original
 00a1e110	CNavigatorAStar	MoveTowardNextWayPoint	608	parked	DIFFER(596v601)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a1e110.cpp	original
-00a1e5c0	_global	CNavigatorAStar_MoveTowardGoal	5440	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(5437v5437)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a1e5c0.cpp	original
 00a23190	CRightHandedSet	Interpolate	1904	parked	DIFFER(366v1508)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/00a23190.cpp	original
 00a24cd0	C3DMeshInfo	?Reset@C3DMeshInfo@@EAEXXZ	112	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a24cd0.cpp	original
 00a25040	CMeshBankStateBlock	CMeshBankStateBlock::CreateCRC	992	parked	DIFFER(942v990)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a25040.cpp	original

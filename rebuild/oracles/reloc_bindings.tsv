@@ -39564,3 +39564,16 @@ _z_inflateInit_	00c02310	00a3a840
 ?SendStateAndReset@CNavigatorSwitch@@QAEXXZ	00c2a890	00c14dd0
 ?Step@CActionSummonerLightning_00c14dd0@@QAEXXZ	00c14d80	00c14dd0
 ?Update@CSecond_00c14dd0@@QAEXXZ	00c2bca0	00c14dd0
+?CalculateRoute@CNavigatorAStar@@AAE_N_N@Z	00a1d290	00a1e5c0
+?CullWayPoints@CNavigatorAStar@@AAEXJ@Z	00a1c010	00a1e5c0
+?GFGetSign@@YIJM@Z	00437160	00a1e5c0
+?GetSquaredDist@C2DLineF@@QAEMABVC2DVector@@@Z	00a57770	00a1e5c0
+?Initialise@CNavigatorAStar@@AAEXPBVCANavQuadTreeNode@@0ABVC2DVector@@10ABVC3DVector@@_N3M@Z	00a1ceb0	00a1e5c0
+?IsActionPoint@CNavigatorManager@@QBE_NABVC2DVector@@@Z	00a150a0	00a1e5c0
+?IsCurrentNavigabilityBetter@CSteeringAgent@@QAE_NXZ	00a1a1a0	00a1e5c0
+?MoveTowardNextWayPoint@CNavigatorAStar@@AAEXABVC3DVector@@MMAAV2@_N222@Z	00a1e110	00a1e5c0
+?UpdateGoal@CNavigatorAStar@@QAEXABVC3DVector@@VC2DVector@@1@Z	00a1e030	00a1e5c0
+?pop_front@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXXZ	00a219e0	00a1e5c0
+?push_back@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXABVCNavWayPoint@@@Z	00a22010	00a1e5c0
+?push_front@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAEXABVCNavWayPoint@@@Z	00a21fc0	00a1e5c0
+?size@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QBEIXZ	006cd240	00a1e5c0

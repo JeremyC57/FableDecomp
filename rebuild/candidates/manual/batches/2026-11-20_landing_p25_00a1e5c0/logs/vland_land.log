@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00a1e5c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00a1e5c0   WARN RELOC_NAME: ?size@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QBEIXZ -> 006cd240 labelled 'CGuiControlTreePane::SortTreeRecursively'
+00a1e5c0   WARN RELOC_NAME: ?IsConnectedToRegion@CNavRegion@@QBE_NABV1@@Z -> 00a77780 labelled 'NavigationGraph_BreadthFirstSearch'
+00a1e5c0   RELOCATION_MATCH PASS   CalculateAndMoveToPosProximity
+
+WINS: 1
+  00a1e5c0 RELOCATION_MATCH CNavigatorAStar::?CalculateAndMoveToPosProximity@CNavigatorAStar@@AAE?AW4ENavigatorReturn@@ABVC3DVector@@0MMAAV3@_N222222M@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CNavigatorAStar_CalculateAndMoveToPosProximity_00a1e5c0

@@ -401564,6 +401564,13 @@ $catalog = @(
         TestSource = '00/7b/NThingShotCTCShotDefinitionThrow_OnSubShotTrigger_007bd2d1_test.cpp'
         PassPattern = '007bd2d1_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a1e5c0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CalculateAndMoveToPosProximity_00a1e5c0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CalculateAndMoveToPosProximity_00a1e5c0_test.cpp'
+        PassPattern = '00a1e5c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
