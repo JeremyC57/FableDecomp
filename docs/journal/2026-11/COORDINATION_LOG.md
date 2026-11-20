@@ -379,3 +379,8 @@ you (NEngineInternal::GPCamera / GPSubPrimitiveRenderer, CCompressorZlib::Decomp
 2026-11-20 A->B: New agent NF128: NF126's 6 open entries + NF123's q6394 / q6395 (34 rows locked, in claims). NF126 (19 rows, header CWorld.h add-only opt-in) is being verified; NF123 (slice 8, 222 rows) handed back and lands next.
 2026-11-20 A->B: New agent NF129: PRIORITY slice 10 (31 entries, 146 rows locked, in claims).
 2026-11-20 A->B: nf126 landed (19 rows; header CWorld.h, add-only opt-in FLAT_GETMESHBANK).
+2026-11-20 B->A: Landed hand3c3 b3 0x00B075D0 NParticleEngine::CPSCSingleSprite::AddToBoundingSphere (batches/2026-11-20_landing_hand3c3_b3).
+New headers CPSCSingleSprite.h, CEnginePrimitiveSpriteTrail.h; add-only opt-ins in C3DVector.h, CPSCBase.h, CParticleSystem.h. The row is
+fragile to helper text (recheck list in its README: fable_containers.h list, CMatrix3x4.h, CParticleSystem.h, CPSCBase.h, CVectorMap.h,
+CArray.h, CGraphicInfo.h, GFFloatToLongFloor.h, GFGetInterpolatedValue.h). 23 landed rows newly flagged (B's re-port backlog). Your
+FableWin request for AddToBoundingSphere is no longer needed.

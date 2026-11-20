@@ -66,7 +66,7 @@ address	grade	bytes	test	grades_used	notes
 00ae29d0	OPEN	726	-	1	baseline draft DIFFER(726v726) hunks=15 difflines=62
 00b012e0	RELOCATION_MATCH	1296	PASS(vland; g++ portable PASS)	11 (hand3c)	hand3c: shared GFPackFloat (FableWin /Od call shape) + GROUPPRODUCT opt-in; shared CPSCBase(+new opt-in CPSCBASE_CTOR)/CRGBColour/CEnginePrimitiveHandle/CParticleEmitterManager [LANDED 58b05aba99]
 00b05c60	RELOCATION_MATCH	429	PASS(vland; g++ portable PASS)	13 (hand3c)	hand3c: FableWin else-if FaceMe2D arm (folded) keeps byte in al; shared CPSCSplineBase/CParticleSystem + GFUnpackFloat; new opt-ins CPSCSPLINEBASE_GETCOMPONENTCOST, CPARTICLESYSTEM_SCALEPARTICLEDIMENSIONS_FLOAT_INLINE; render cost poly+pixel [LANDED 58b05aba99]
-00b075d0	OPEN	977	-	1	baseline draft DIFFER(962v977) hunks=64 difflines=360
+00b075d0	RELOCATION_MATCH	977	PASS(vland strict)	1	hand3c3 b3 [LANDED batches/2026-11-20_landing_hand3c3_b3]
 00b079b0	OPEN	2032	-	1	baseline draft DIFFER(2034v2032) hunks=44 difflines=87
 00b103f0	RELOCATION_MATCH	1463	PASS(vland; g++ portable PASS)	2 (hand3c)	hand3c: shared GFPackFloat GROUP_PRODUCT + shared CPSCEmitterGeneric (new opt-ins CPSCEMITTERGENERIC_CTOR, CPARTICLEUPDATEPARAMDESC_CTOR, CPSCBASE_CTOR) [LANDED 58b05aba99]
 00b16410	OPEN	1671	-	1	baseline draft DIFFER(1674v1671) hunks=52 difflines=176

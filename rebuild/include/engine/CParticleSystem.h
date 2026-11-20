@@ -59,7 +59,24 @@ public:CParticleSystem();virtual ~CParticleSystem();
  // CPSCSingleSprite::PreparePrimitives 0x00B087C0: ?ScaleParticleDimensions@...@QBEXAAVC2DVector@@@Z 0x00AF8F00 (the sprite size),
  // ?ScaleParticleDimensions@...@QBEXAAK@Z 0x00B05B80 (the trail length) and ?GetUnscaledWorldTransform@...@QBEXAAVCMatrix3x4@@@Z
  // 0x00B05840, out of line; ?GetNormalisedTime@...@QBEMXZ inline (the +0x50 bit 3 test, then the +0x5C read).
+ #ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALEPARTICLEDIMENSIONS_C2DVECTOR_INLINE
+ // Opt-in (hand3c3 row 0x00B075D0 CPSCSingleSprite::AddToBoundingSphere, audit 2026-11-20; needs FABLE_RETAIL_CPARTICLESYSTEM_SCALE and
+ // engine/C2DVector.h): the C2DVector& overload as the header inline it is -- Ego_d.pdb lines 243..250 of the particle-system header
+ // (244 the test, 246 `scale`, 247 / 248 the two products; parameter `dim`, local `scale`), a COMDAT of the first psc_*.obj that
+ // uses it, like the float overload above. VC7.1 declines to inline this body (retail calls 0x00AF8F00 from 0x00B0794B) but must
+ // see it: declaration only is 976v977. The emitted COMDAT equals retail 0x00AF8F00 (117 bytes, no relocation).
+ void ScaleParticleDimensions(C2DVector& dim) const
+ {
+  if (ScaleParticles)
+  {
+   float scale = ((Scale.X > Scale.Y ? Scale.X : Scale.Y) > Scale.Z ? (Scale.X > Scale.Y ? Scale.X : Scale.Y) : Scale.Z);
+   dim.X *= scale;
+   dim.Y *= scale;
+  }
+ }
+ #else
  void ScaleParticleDimensions(C2DVector&) const;
+ #endif
  void ScaleParticleDimensions(unsigned long&) const;
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALEVECTOR
  // Opt-in (wfD6, row 0x00B01900): FableWin ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAVC3DVector@@@Z, inline in retail

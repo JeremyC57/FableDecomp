@@ -1,0 +1,27 @@
+diff --git a/rebuild/include/engine/CPSCBase.h b/rebuild/include/engine/CPSCBase.h
+index f9589d6dc..c69ee73fd 100644
+--- a/rebuild/include/engine/CPSCBase.h
++++ b/rebuild/include/engine/CPSCBase.h
+@@ -33,6 +33,22 @@ public: virtual ~CParticleUpdateParamDesc();
+  // (inline in retail: CPSCSingleSprite::PreparePrimitives 0x00B08AxA `call [edx+4]` through Callback with Index pushed). No layout change.
+  bool GetUpdateParam(C3DVector& out,float time,bool local,const CParticleUpdateParameters<K,V>& params,unsigned long flags)const{return Callback->GetUpdateParam(out,Index,time,local,params,flags);}
+ #endif
++#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_GETUPDATEPARAM_NESTED
++ // Opt-in (hand3c3, row 0x00B075D0 CPSCSingleSprite::AddToBoundingSphere): the same member in its original statement shape.
++ // Ego_d.pdb: static member MaxRecursion (const unsigned long), parameters dest / interp / tangent / params / nested, line table
++ // 126..133 (assert 274 bytes, the test 11 = `mov eax,[nested] ; cmp eax,[MaxRecursion] ; jae`, the forwarding return 55 = with
++ // `nested + 1`, `return false` 2). The limit is 10: the out-of-line copy of the caller, 0x00AF3080, compares the depth with 10
++ // and pushes depth + 1. A caller that passes a literal 0 gets the test folded and `push 1` (0x00B0771F). Replaces the flat
++ // forwarder above (do not define both).
++ bool GetUpdateParam(C3DVector& dest,float interp,bool tangent,const CParticleUpdateParameters<K,V>& params,unsigned long nested)const{
++  if(nested<MaxRecursion){
++   return Callback->GetUpdateParam(dest,Index,interp,tangent,params,nested+1);
++  }
++  return false;
++ }
++private: static const unsigned long MaxRecursion=10;
++public:
++#endif
+ #ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMDESC_ISNULL
+  // Opt-in (wfE8 6th agent, row 0x00B10B10): FableWin.pdb ?IsNull@?$CParticleUpdateParamDesc@KK@NParticleEngine@@QBE_NXZ (inline in retail:
+  // GenerateParticle tests the Callback word before each GetUpdateParam, 0x00B1150x / 0x00B1178x). No layout change.
