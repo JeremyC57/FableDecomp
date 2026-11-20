@@ -17,6 +17,8 @@
 //   0x008C0EA0 effect block (by-value CDefPointer copy, same-TU GetSubDef stand-in, zeroed sub-def and effect id per bodyguard) and a same-TU
 //   CalcAndLookup stand-in that places the effect-id zero store.
 //   The effect and the component go on the guildmaster (ParentThing), once per bodyguard, exactly as retail does.
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS); the local CModeStandBase leaves namespace NCreatureMode (the real class is global, RTTI .?AVCModeStandBase@@).
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CTCBase;
@@ -99,7 +101,6 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
 }
 #pragma auto_inline(on)
 
-namespace NCreatureMode { struct CModeBase; }
 class CThing { public:
     // (presence bits, emitter driver, def and dead flag as in the landed 0x008DAE10 model)
     unsigned char _pad00[0x10];
@@ -200,17 +201,15 @@ class CTCHealLife { public:
     void SetAICast(long spellLevel);                  // 0x007C3EA0 ?SetAICast@CTCHealLife@@QAEXJ@Z (Ego_r.pdb / FableWin.pdb; NF28: was SetState)
 };
 
-namespace NCreatureMode {
-struct CModeBase {                                    // vtable 0x012673CC
-    virtual ~CModeBase();
-    CThing*       m_pThing;                           // +0x04
-    unsigned char _pad08[0x14];
-    CWorld* GetWorld() const;                         // 0x0073A680
-};
-struct CModeStandBase : CModeBase {
+#include "engine/ETCInterfaceType.h"
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
+struct CModeStandBase : CTCCreatureModeManager::CModeBase {
     unsigned char _pad1c[0x4c];                       // +0x1c .. +0x68
-    void OnActivate();                                // 0x008621A0
+    virtual void OnActivate();                        // 0x008621A0
 };
+
+namespace NCreatureMode {
 struct CModeGuildmasterPowerUpHeal : CModeStandBase {
     virtual void OnActivate();
 };
@@ -218,16 +217,16 @@ struct CModeGuildmasterPowerUpHeal : CModeStandBase {
 void CModeGuildmasterPowerUpHeal::OnActivate()
 {
     CModeStandBase::OnActivate();
-    if (m_pThing->m_type == 1)
-        ((CThingAICreature*)m_pThing)->SuspendAI(true, this);
+    if (ParentThing.m_type == 1)
+        ((CThingAICreature*)&ParentThing)->SuspendAI(true, this);
     CCreatureVector bodyguards;
     long bodyguardDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_GUILDMASTER_BODYGUARD");
     {
         CThingFilter_HasDefGlobalIndex filter(bodyguardDef);
-        const C3DVector& pos = m_pThing->GetPos();
+        const C3DVector& pos = ParentThing.GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
         C2DBoxI area(centre.X - 20, centre.Y - 20, centre.X + 20, centre.Y + 20);
-        CWorld* world = GetWorld();
+        CWorld* world = &GetWorld();
         world->ThingSearchTools->GetAllThingsInRoughArea(area, filter, bodyguards);
     }
     for (unsigned long i = 0; i < bodyguards.size(); ++i) {
@@ -235,7 +234,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
         if (guard && !(guard->m_flags91 & 1)) {
             CDefPointer<CSpecialEffectsDef> effects;
             long effect = 0;
-            m_pThing->GetDef()->GetSubDef(&effects);
+            ParentThing.GetDef()->GetSubDef(&effects);
             if (effects.Object) {
                 bool found;
                 {
@@ -243,15 +242,15 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
                     found = effects->GetEffectFromString(name, effect);
                 }
                 if (found) {
-                    CThing* healEffect = CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false);
+                    CThing* healEffect = CTCDParticleEmitter::Create(effect, ParentThing.GetPos(), false);
                     if (healEffect && !(healEffect->m_flags91 & 1) && healEffect->HasTC(0x4b)) {
                         CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)healEffect->PTCDriver;
-                        emitter->AttachToThing(*m_pThing, 10, "", 0, 0.0f);
+                        emitter->AttachToThing(ParentThing, 10, "", 0, 0.0f);
                     }
                 }
             }
-            if (!m_pThing->HasTC(0x99)) {
-                CTCHealLife* heal = (CTCHealLife*)m_pThing->AddTC("CTCHealLife", true, 0);
+            if (!ParentThing.HasTC(0x99)) {
+                CTCHealLife* heal = (CTCHealLife*)ParentThing.AddTC("CTCHealLife", true, 0);
                 heal->SetAICast(1);
             }
         }

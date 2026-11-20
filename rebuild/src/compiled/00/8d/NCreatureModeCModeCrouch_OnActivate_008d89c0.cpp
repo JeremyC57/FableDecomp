@@ -1,5 +1,5 @@
 // NCreatureMode::CModeCrouch::OnActivate() -- point the two-group filter at ("CROUCH", the primary-slot weapon's animation group), raise the crouch byte of the interface-0x36 component, then the base activation
-// Leaf: ?OnActivate@CModeCrouch
+// Leaf: ?OnActivate@CModeCrouch@NCreatureMode@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D89C0, 228 bytes (+ int3 padding), `ret`; vtable 0x01267B34 slot 5.
 // Callees: CVectorMap::LowerBound (const) @ 0x004365B0 (inlined HasTC + GetTC for CTCCarrying 0x46 and CTCWeapon 0x48),
@@ -13,6 +13,8 @@
 //   then the dword `test ch,1`, one-ternary returned GetTC, a same-TU lower_bound stand-in so every key shares the one frame
 //   word; the weapon component is a named local (esi); the "CROUCH" temporary is built before the group-name call (a
 //   literal bound to a const CCharString& parameter); the 0x36 component is the out-parameter GetInterface (`mov eax,[eax+4]`).
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -31,7 +33,7 @@ struct CAnimFilterOf2Groups {                  // Ego_r.pdb 0x14
     void SetGroups(const CCharString& group1, const CCharString& group2);   // 0x0073E040
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -79,32 +81,28 @@ struct CTCInterface36 {                        // interface type 0x36 (two byte 
     bool          m_flag10;                    // +0x10
 };
 
-struct CModeBase {                             // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThing*       ParentThing;                 // +0x04
-    unsigned char _body[0x14];
-    void OnActivate();                         // 0x0073AAC0
-};
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
-struct CModeCrouch : CModeBase {               // vtable 0x01267B34
+struct CModeCrouch : CTCCreatureModeManager::CModeBase {               // vtable 0x01267B34
     CCharString          SneakAnimName;        // +0x1c
     CAnimFilterOf2Groups Filter;               // +0x20
-    void OnActivate();
+    virtual void OnActivate();
 };
 }
 
 void NCreatureMode::CModeCrouch::OnActivate()
 {
-    if (ParentThing->HasTC(0x46)) {
-        CThing* weapon = ParentThing->GetTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
+    if (ParentThing.HasTC(0x46)) {
+        CThing* weapon = ParentThing.GetTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
         if (weapon != 0 && weapon->HasTC(0x48)) {
             CTCWeapon* weaponTC = weapon->GetTC<CTCWeapon>(0x48);
             Filter.SetGroups("CROUCH", weaponTC->GetAnimationGroupName());
         }
     }
     CTCInterface36* tc;
-    if (ParentThing->GetInterface(&tc, 0x36))
+    if (ParentThing.GetInterface(&tc, 0x36))
         tc->m_crouching = true;
     CModeBase::OnActivate();
 }

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::DatabaseCopy(const CPSCBase* other) -- copy another spline component's settings: the cardinal spline, then the random-offset and position-parameter data (allocated on demand, bound to this spline, settings copied) or released when the source has none
-// Leaf: DatabaseCopy
+// Leaf: ?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22530, 308 bytes (+ int3 padding), `ret 4` / tail `jmp`.
 // Callees: CArray<C3DVector>::operator= 0x0075B8D0 (spline points, offset limits / speeds), operator new 0x00BFEA1A,
@@ -13,20 +13,17 @@
 //   (0x18): MaintainSplineShape +8, SplinePosParam +0xc.
 // Shape: the implicit spline assignment; the data copies are inline member assignments (ResetEachFrame first); the
 //   release-to-null clears Info before Data.
+// Naming (NF126, 2026-11-20, q4802): the local CArray<T> (hand-declared operator=) and CCardinalSpline models replaced by the shared
+//   engine/CCardinalSpline.h (the 0x00B211B0 recipe defines): the copies now bind the self rows' STLport spellings vector<C3DVector>::operator=
+//   0x0075B8D0 and vector<unsigned long>::operator= 0x0045BC09 (the CArray<T> elements are std::vector<T> through engine/CArray.h).
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
-#include "engine/C3DVector.h"
-template <class T> class CArray { public:                   // STLport vector<T> (12 bytes in retail)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CArray& operator=(const CArray& other);          // 0x0075B8D0 (C3DVector) / 0x0045BC09 (unsigned long)
-};
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;                 // +0x00
-    float             Tension;                       // +0x0C
-    bool              EndPointsConnected;            // +0x10
-};
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#include "engine/CCardinalSpline.h"
 struct SCountBlock {
     long  m_references;                              // +0
     void (__fastcall* m_pfnDestroy)(void*);          // +4

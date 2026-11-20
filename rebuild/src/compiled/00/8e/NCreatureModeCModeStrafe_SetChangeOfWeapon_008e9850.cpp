@@ -1,5 +1,5 @@
 // NCreatureMode::CModeStrafe::SetChangeOfWeapon(CThing* weapon) -- take the new weapon's id and animation group into the strafe filter ("STAND" and -1 with no weapon thing), rebuild the combination anims, recompute the aiming frame count / centre from the projectile-aim animation's length, then clear the strafing combination anims
-// Leaf: SetChangeOfWeapon
+// Leaf: ?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -19,6 +19,8 @@
 // Shape: HasTC + one-ternary GetTC (key homed in the dead `weapon` slot); the aim entry is a named local held across
 //   the getter call (edi), the components a named local and the bank an inline accessor (`mov eax,[eax+3Ch] ; push ;
 //   mov ecx,eax`); the centre re-reads AimingNumFrames.
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS); the stand-in CGlobalComponents (GetAnimBank) is the world: engine/CWorld.h with the NF126 overlay opt-in FABLE_RETAIL_CWORLD_FLAT_GETMESHBANK (FableWin ?GetMeshBank@CWorld@@QAEPAVCMeshDataBank@@XZ).
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -51,7 +53,7 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     }
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -89,11 +91,6 @@ class CMeshDataBank { public:
 public:
     const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
-struct CGlobalComponents {
-    unsigned char _pad00[0x3c];
-    CMeshDataBank*    AnimBank;                    // +0x3c
-    CMeshDataBank* GetAnimBank() const { return AnimBank; }
-};
 
 namespace NAnimationEntryBodge {
 class CAnimEntryLite { public:
@@ -109,16 +106,14 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-struct CModeBase {                             // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThing*       ParentThing;                 // +0x04
-    unsigned char _body[0x14];
-    CGlobalComponents* GetGlobalComponents() const;   // 0x0073A680
-};
+#define FABLE_RETAIL_CWORLD_FLAT_GETMESHBANK
+#include "engine/CWorld.h"
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
 
-struct CModeStrafe : CModeBase {               // vtable 0x01268588
+struct CModeStrafe : CTCCreatureModeManager::CModeBase {               // vtable 0x01268588
     float              AnimMovementDistance;   // +0x1c
     void*              StrafeAnimName;         // +0x20 (CCharString)
     long               AnimIndex;              // +0x24
@@ -150,8 +145,8 @@ void CModeStrafe::SetChangeOfWeapon(CThing* weapon)
     NAnimationEntryBodge::CAnimEntryLite* aim = PAnimProjectileAim.Data;
     AimingNumFrames = 0;
     if (aim) {
-        CGlobalComponents* components = GetGlobalComponents();
-        AimingNumFrames = (long)(CMainGameComponent::GetConstantFPS() * components->GetAnimBank()->PeekAnimation(aim->AnimIndex)->Seconds);
+        CWorld& world = GetWorld();
+        AimingNumFrames = (long)(CMainGameComponent::GetConstantFPS() * world.GetMeshBank()->PeekAnimation(aim->AnimIndex)->Seconds);
     }
     AimingCenterFrame = AimingNumFrames / 2;
     ClearStrafingCombinationAnims(false);

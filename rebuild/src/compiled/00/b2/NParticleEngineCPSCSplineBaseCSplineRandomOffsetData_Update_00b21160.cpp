@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update() -- unless offsets are applied only at start-up: keeps the current spline as the previous one, optionally resets the current spline to the initial one, then re-offsets the spline positions
-// Leaf: Update
+// Leaf: ?Update@CSplineRandomOffsetData@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21160, 79 bytes (+1 int3 padding). Callees: retail
 // CArray<C3DVector>::operator= @ 0x0075B8D0 (manifest "Std_Vector_Assign"; self-test, /12 sizes), and
@@ -10,25 +10,17 @@
 // Shape: CCardinalSpline's assignment is the memberwise copy (out-of-line CArray assignment, then Tension and
 // EndPointsConnected through registers) inlined at both sites; the bool flags are `mov al ; test al,al` tests; the
 // final member call is a sibling-call `jmp`.
-#include "engine/C3DVector.h"
+// Naming (NF126, 2026-11-20, q4802): the local CArray<T> (hand-declared operator=, bound 0x0075B8D0 as ??4?$CArray@VC3DVector@@@@QAEAAV0@ABV0@@Z)
+//   and CCardinalSpline models replaced by the shared engine/CCardinalSpline.h (the 0x00B211B0 recipe defines): the spline copies are the
+//   implicit CCardinalSpline::operator=, whose ControlPoints copy calls std::vector<C3DVector>::operator= 0x0075B8D0 (Ego_r.pdb + FableWin.pdb).
 
-template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray& operator=(const CArray& other);              // 0x0075B8D0 for T = C3DVector
-};
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#include "engine/CCardinalSpline.h"
 
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;                     // +0x0
-    float             Tension;                           // +0xC
-    bool              EndPointsConnected;                // +0x10
-    CCardinalSpline& operator=(const CCardinalSpline& other)
-    {
-        ControlPoints = other.ControlPoints;
-        Tension = other.Tension;
-        EndPointsConnected = other.EndPointsConnected;
-        return *this;
-    }
-};
 
 struct CSplineRandomOffsetData {
     CCardinalSpline*   InitialSpline;                    // +0x00

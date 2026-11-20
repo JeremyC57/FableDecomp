@@ -47919,9 +47919,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e7290'
-        Module = 'CModeDragonBase'
-        Source = '00/8e/CModeDragonBase_OnActivate_008e7290.cpp'
-        TestSource = '00/8e/CModeDragonBase_OnActivate_008e7290_test.cpp'
+        Module = 'NCreatureMode::CModeDragonBase'
+        Source = '00/8e/NCreatureModeCModeDragonBase_OnActivate_008e7290.cpp'
+        TestSource = '00/8e/NCreatureModeCModeDragonBase_OnActivate_008e7290_test.cpp'
         PassPattern = 'DRAGON_ONACTIVATE_OK'
     }
     [pscustomobject]@{
@@ -271791,8 +271791,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008dbb30'
         Module = 'NCreatureMode::CModeDragonFlying'
-        Source = '00/8d/CModeDragonFlying_OnActivate_008dbb30.cpp'
-        TestSource = '00/8d/CModeDragonFlying_OnActivate_008dbb30_test.cpp'
+        Source = '00/8d/NCreatureModeCModeDragonFlying_OnActivate_008dbb30.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDragonFlying_OnActivate_008dbb30_test.cpp'
         PassPattern = '008dbb30_TEST PASS'
     }
     [pscustomobject]@{

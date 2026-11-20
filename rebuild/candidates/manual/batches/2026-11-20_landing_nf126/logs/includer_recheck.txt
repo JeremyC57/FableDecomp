@@ -1,0 +1,4 @@
+# recheck after landing nf126: 748 rows = gate referencing rows (18 targets) + renamed rows + 638 direct includers of CWorld.h
+good 747 bad 1
+007e2a60	007e2a60   DIFFER(707v707)  PASS   CTCFineDialogue::GlobalUpdate
+# 0x007E2A60 DIFFER(707v707) is pre-existing (on hold since earlier landings; GOTCHAS / FINDINGS_LOG)

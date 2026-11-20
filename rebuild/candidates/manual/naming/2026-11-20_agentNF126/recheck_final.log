@@ -1,0 +1,119 @@
+addr       parity           behav  name
+008d6760   RELOCATION_MATCH PASS   NCreatureMode::CModeExplosiveForcePushed::OnActivate
+008d89c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d89c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008d89c0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+008d89c0   WARN RELOC_NAME: ?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z -> 0073e040 labelled 'CAnimFilterOf2Groups::SetCurrentGroupNames'
+008d89c0   RELOCATION_MATCH PASS   NCreatureMode::CModeCrouch::OnActivate
+008d9480   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008d9480   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d9480   WARN SHARED_HEADER_AVAILABLE CTCEmoteIcon (engine/CTCEmoteIcon.h)
+008d9480   WARN RELOC_NAME: ?InvalidateAllAbilityTimers@CTCInterface30@@QAEXXZ -> 007340b0 labelled 'CTCCombat::OnKnockDown'
+008d9480   RELOCATION_MATCH PASS   NCreatureMode::CModeKnockedDown::OnActivate
+008d9e30   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef (engine/CSpecialEffectsDef.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CScorpionKingBattleDef (engine/CScorpionKingBattleDef.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008d9e30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008d9e30   RELOCATION_MATCH PASS   NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+008da2e0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CScorpionKingBattleDef (engine/CScorpionKingBattleDef.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008da2e0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008da2e0   RELOCATION_MATCH PASS   NCreatureMode::CModeScorpionKingExhausted::OnActivate
+008dbb30   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008dbb30   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008dbb30   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+008dbb30   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008dbb30   WARN RELOC_NAME: ?GetAnimateThing@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ -> 0070b460 labelled 'CTCAnimationComplex::GetAnimation'
+008dbb30   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonFlying::OnActivate
+008dc600   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008dc600   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonStrafe::OnActivate
+008dc6c0   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonStrafeBurninate::OnActivate
+008ddd70   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef (engine/CSpecialEffectsDef.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasDefGlobalIndex (engine/CThingFilter_HasDefGlobalIndex.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CTCHealLife (engine/CTCHealLife.h)
+008ddd70   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008ddd70   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAUCCreatureVector@@@Z -> 008e3eb0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature, std::vector<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_HasDefGlobalIndex>'
+008ddd70   RELOCATION_MATCH PASS   NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate
+008de6a0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008de6a0   RELOCATION_MATCH PASS   NCreatureMode::CModeRockTrollVulnerable::OnActivate
+008e7290   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonBase::OnActivate
+008e7390   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CTCMapwho (engine/CTCMapwho.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CTCWeaponTrail (engine/CTCWeaponTrail.h)
+008e7390   WARN SHARED_HEADER_AVAILABLE CTCWillResponse (engine/CTCWillResponse.h)
+008e7390   RELOCATION_MATCH PASS   NCreatureMode::CModeIntangible::OnActivate
+008e9850   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e9850   WARN RELOC_NAME: ?SetGroup@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z -> 0073dff0 labelled 'CAnimFilterOfGroup::SetCurrentGroupName'
+008e9850   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::SetChangeOfWeapon
+00b20fd0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+00b21090   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex
+00b21160   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update
+00b22100   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00b22100   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b22100   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary
+00b22310   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00b22310   WARN SHARED_HEADER_AVAILABLE CPSCBase (engine/CPSCBase.h)
+00b22310   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b22310   WARN RELOC_NAME: ??4CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEAAV012@ABV012@@Z -> 00b20b60 labelled 'CSplineData_00b20b60::CopyFrom'
+00b22310   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::InterpolateTo
+00b22530   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00b22530   WARN SHARED_HEADER_AVAILABLE CPSCBase (engine/CPSCBase.h)
+00b22530   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b22530   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::DatabaseCopy
+
+WINS: 19
+  008d6760 RELOCATION_MATCH NCreatureMode::CModeExplosiveForcePushed::?OnActivate@CModeExplosiveForcePushed@NCreatureMode@@UAEXXZ
+  008d89c0 RELOCATION_MATCH NCreatureMode::CModeCrouch::?OnActivate@CModeCrouch@NCreatureMode@@UAEXXZ
+  008d9480 RELOCATION_MATCH NCreatureMode::CModeKnockedDown::?OnActivate@CModeKnockedDown@NCreatureMode@@UAEXXZ
+  008d9e30 RELOCATION_MATCH NCreatureMode::CModeScorpionKingTailPlunge::?OnActivate@CModeScorpionKingTailPlunge@NCreatureMode@@UAEXXZ
+  008da2e0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingExhausted::?OnActivate@CModeScorpionKingExhausted@NCreatureMode@@UAEXXZ
+  008dbb30 RELOCATION_MATCH NCreatureMode::CModeDragonFlying::?OnActivate@CModeDragonFlying@NCreatureMode@@UAEXXZ
+  008dc600 RELOCATION_MATCH NCreatureMode::CModeDragonStrafe::?OnActivate@CModeDragonStrafe@NCreatureMode@@UAEXXZ
+  008dc6c0 RELOCATION_MATCH NCreatureMode::CModeDragonStrafeBurninate::?OnActivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ
+  008ddd70 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpHeal::?OnActivate@CModeGuildmasterPowerUpHeal@NCreatureMode@@UAEXXZ
+  008de6a0 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::?OnActivate@CModeRockTrollVulnerable@NCreatureMode@@UAEXXZ
+  008e7290 RELOCATION_MATCH CModeDragonBase::?OnActivate@CModeDragonBase@NCreatureMode@@UAEXXZ
+  008e7390 RELOCATION_MATCH NCreatureMode::CModeIntangible::?OnActivate@CModeIntangible@NCreatureMode@@UAEXXZ
+  008e9850 RELOCATION_MATCH NCreatureMode::CModeStrafe::?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z
+  00b20fd0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+  00b21090 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::?GetPointAtIndex@CSplineRandomOffsetData@@QAEXAAVC3DVector@@JM@Z
+  00b21160 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::?Update@CSplineRandomOffsetData@@QAEXXZ
+  00b22100 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
+  00b22310 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b22530 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@@Z

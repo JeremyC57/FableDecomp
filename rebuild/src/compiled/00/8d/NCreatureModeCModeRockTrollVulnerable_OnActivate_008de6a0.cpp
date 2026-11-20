@@ -1,5 +1,5 @@
 // NCreatureMode::CModeRockTrollVulnerable::OnActivate() -- set the recovery count to five seconds of frames, base activation, then suspend the troll's animation and set it performing the "vulnerable into" action
-// Leaf: ?OnActivate@CModeRockTrollVulnerable
+// Leaf: ?OnActivate@CModeRockTrollVulnerable@NCreatureMode@@UAEXXZ
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DE6A0, 90 bytes (+ int3 padding), `ret`; vtable 0x01285774 slot 5.
@@ -13,6 +13,8 @@
 //   bRecovering +0x30.
 // Shape: the frame count is computed before the base call (VC7.1 hoists the fild above the frame set-up); PCreature is held in
 //   edi for the suspend and the SetCurrentAction receiver and re-read for the action's ctor argument.
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
 class CCreatureActionBase;
 
 class CThingAICreature { public:
@@ -42,20 +44,17 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    void*         ParentThing;             // +0x04
-    unsigned char _body[0x14];
-    void OnActivate();                     // 0x0073AAC0
-};
+#include "engine/ETCInterfaceType.h"
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
-struct CModeRockTrollVulnerable : CModeBase {   // vtable 0x01285774
+struct CModeRockTrollVulnerable : CTCCreatureModeManager::CModeBase {   // vtable 0x01285774
     long                RecoveryCount;     // +0x1c
     unsigned char       Filter[0x0c];      // +0x20 CAnimFilterOfGroup
     CThingCreatureBase* PCreature;         // +0x2c
     bool                bRecovering;       // +0x30
-    void OnActivate();
+    virtual void OnActivate();
 };
 }
 

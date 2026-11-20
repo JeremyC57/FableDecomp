@@ -1,5 +1,5 @@
 // NCreatureMode::CModeIntangible::OnActivate() -- the creature turns intangible: suspend physics, hide it from mapwho, drop its physics flags, make it un-willable and untargetable; a player creature also suspends its animation and remembers its Damageable bit; record the boss phase and clear the weapon trails
-// Leaf: ?OnActivate@CModeIntangible
+// Leaf: ?OnActivate@CModeIntangible@NCreatureMode@@UAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E7390, 344 bytes (padded to 352), `ret`; vtable 0x01268514 slot 5.
@@ -13,9 +13,11 @@
 // Layout: as OnDeactivate 0x008E74F0 (Ego_r.pdb CModeIntangible; CThingPhysical::Damageable bit 0 of +0xBC).
 // Shape: the boss lookup is the landed FrameUpdate (0x008E7600) one-ternary HasTC + GetTC on the const map; the weapon-trail
 //   lookup is the same ternary on the non-const map (component straight into ecx, `this` register reused for the thing).
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
 #include "fable_compiler.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase { public:
@@ -106,47 +108,41 @@ class CTCWillResponse { public:
     static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 };
 
-struct CModeBase {                              // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThing*       ParentThing;                  // +0x04
-    unsigned char WeaponBasedFilter[0x0c];      // +0x08 CAnimFilterOfGroup
-    long          FramesBeforeRemovingSelf;     // +0x14
-    bool          Active;                       // +0x18
-    void OnActivate();                          // 0x0073AAC0
-};
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
-struct CModeIntangible : CModeBase {            // vtable 0x01268514
+struct CModeIntangible : CTCCreatureModeManager::CModeBase {            // vtable 0x01268514
     unsigned char _pad1c[0x14];
     long          Timer;                        // +0x30
     long          BossPhase;                    // +0x34
     bool          WasDamageable;                // +0x38
     CCountedPointer<CCreatureActionBase> PActionOnDeactivate;   // +0x3c
-    void OnActivate();
+    virtual void OnActivate();
 };
 
 void CModeIntangible::OnActivate()
 {
-    ParentThing->PhysicsTC->SetPhysicsActive(false);
+    ParentThing.PhysicsTC->SetPhysicsActive(false);
     CModeBase::OnActivate();
-    ParentThing->SetAsDrawable(false);
+    ParentThing.SetAsDrawable(false);
     CTCMapwho* mapwho;
-    if (ParentThing->GetInterface(&mapwho, 0x3a))
+    if (ParentThing.GetInterface(&mapwho, 0x3a))
         mapwho->InMapwho = 0;
-    ParentThing->PhysicsTC->SetFlag85Bit2(false);
-    ParentThing->PhysicsTC->SetPhysicsFlags(0x20);
-    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(ParentThing, true);
+    ParentThing.PhysicsTC->SetFlag85Bit2(false);
+    ParentThing.PhysicsTC->SetPhysicsFlags(0x20);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(&ParentThing, true);
     CTCTargeted* targeted;
-    if (ParentThing->GetInterface(&targeted, 9))
+    if (ParentThing.GetInterface(&targeted, 9))
         targeted->Targetable = false;
-    CThing* thing = ParentThing;
+    CThing* thing = &ParentThing;
     if (thing->m_type == 1) {
         ((CThingAICreature*)thing)->SuspendAI(true, this);
         WasDamageable = thing->Damageable;
     }
-    if (((const CThing*)ParentThing)->HasTC(0xad))
-        BossPhase = ((const CThing*)ParentThing)->GetTC<CTCBoss>(0xad)->GetBossPhase();
-    if (ParentThing->HasTC(0x4c))
-        ParentThing->GetTC<CTCWeaponTrail>(0x4c)->ClearAllWeaponTrails();
+    if (((const CThing&)ParentThing).HasTC(0xad))
+        BossPhase = ((const CThing&)ParentThing).GetTC<CTCBoss>(0xad)->GetBossPhase();
+    if (ParentThing.HasTC(0x4c))
+        ParentThing.GetTC<CTCWeaponTrail>(0x4c)->ClearAllWeaponTrails();
 }
 }

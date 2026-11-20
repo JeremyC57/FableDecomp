@@ -14,26 +14,20 @@
 //   +0x24, SplinePosParamData +0x2c).
 // Shape: the point arrays reach GFInterpolateArray as by-value copies (an inline GetControlPoints), the zero vector is the
 //   default-value argument; the random-offset branch tests own data before t, the position-parameter branch t first.
+// Naming (NF126, 2026-11-20, q4802): the local CArray<T> (hand-declared copy ctor / operator=) and CCardinalSpline models replaced by the
+//   shared engine/CCardinalSpline.h (the 0x00B211B0 recipe defines; Get/SetTension, Get/SetControlPoints): the calls now bind the self rows'
+//   STLport spellings vector<C3DVector> copy 0x006F0810 / operator= 0x0075B8D0 and vector<unsigned long>::operator= 0x0045BC09.
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
-#include "engine/C3DVector.h"
-template <class T> class CArray;
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#include "engine/CCardinalSpline.h"
 namespace NParticleEngine { template <class T> CArray<T> __fastcall GFInterpolateArray(const CArray<T>& a, const CArray<T>& b, float t, const T& defaultValue); }
-template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray(const CArray& other);                       // 0x006F0810 (T = C3DVector)
-    ~CArray() { if (m_begin) free(m_begin); }
-    long Size() const { return (long)(m_end - m_begin); }
-    CArray& operator=(const CArray& other);            // 0x0075B8D0 (T = C3DVector)
-};
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;                   // +0x00
-    CArray<C3DVector> GetControlPoints() const { return ControlPoints; }
-    float             Tension;                         // +0x0c
-    bool              EndPointsConnected;              // +0x10
-};
 struct SCountBlock {
     long  m_references;
     void (__fastcall* m_pfnDestroy)(void*);
@@ -96,8 +90,8 @@ class CPSCSplineBase : public CPSCBase { public:
 void CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t)
 {
     const CPSCSplineBase* source = static_cast<const CPSCSplineBase*>(&other);
-    Spline.Tension = (1.0f - t) * Spline.Tension + t * source->Spline.Tension;
-    Spline.ControlPoints = NParticleEngine::GFInterpolateArray(Spline.GetControlPoints(), source->Spline.GetControlPoints(), t, C3DVector(0.0f, 0.0f, 0.0f));
+    Spline.SetTension((1.0f - t) * Spline.GetTension() + t * source->Spline.GetTension());
+    Spline.SetControlPoints(NParticleEngine::GFInterpolateArray(Spline.GetControlPoints(), source->Spline.GetControlPoints(), t, C3DVector(0.0f, 0.0f, 0.0f)));
 
     if (SplineRandomOffsetData.Data && source->SplineRandomOffsetData.Data)
         SplineRandomOffsetData->InterpolateTo(*source->SplineRandomOffsetData.Data, t);

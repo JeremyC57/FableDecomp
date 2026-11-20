@@ -796,6 +796,12 @@ public:
     CGameScriptInterface*       PGameScriptInterface_ptr;    // +0x38 scoped_ptr<CGameScriptInterface>::ptr
     CMeshDataBank*              PMainMeshBank_Data;          // +0x3c CCountedPointer<CMeshDataBank>::Data
     CCPPointerInfo*             PMainMeshBank_Info;          // +0x40 CCountedPointer<CMeshDataBank>::Info
+#ifdef FABLE_RETAIL_CWORLD_FLAT_GETMESHBANK
+    // NF126 opt-in (row 0x008E9850 NCreatureMode::CModeStrafe::SetChangeOfWeapon): FableWin.pdb ?GetMeshBank@CWorld@@QAEPAVCMeshDataBank@@XZ
+    // (public; inline in retail: the caller loads [world+3Ch] into eax, then moves it to ecx for PeekAnimation). Same body as the retail
+    // section's GetMeshBank above. No layout change.
+    CMeshDataBank* GetMeshBank(){return PMainMeshBank_Data;}
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
     // Retail opt-in (Codex pass17): original public const getter, donor1D0CE90/native field44h.
     C3DAnimationManager* GetAnimationManager()const{return PAnimationManager;}

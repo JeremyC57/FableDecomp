@@ -1,5 +1,5 @@
 // NCreatureMode::CModeScorpionKingExhausted::OnActivate() -- the scorpion king tires: stand-mode activation, clear the type-9 component's active flag, recovery countdown = the battle def's exhaustion time in frames, re-apply the weapon filter, switch its physics to mode 8, clear thing flag bit 0 at +0xbc and, when no action is running, reset the creature's current action
-// Leaf: OnActivate
+// Leaf: ?OnActivate@CModeScorpionKingExhausted@NCreatureMode@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -18,10 +18,12 @@
 // time and released at the end without a null test (`dec [ebp+4] ; jne`); the component is HasTC + a returned GetTC with
 // the end/hit choice as one ternary (the landed 0x008D8F30 idiom; null when absent, written unconditionally); ParentThing
 // is read into a local once for the flag clear and the IsPerformingAnyAction call.
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
 #include "fable_compiler.h"
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -128,16 +130,12 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThingCreatureBase* ParentThing;       // +0x04
-    unsigned char       _body[0x14];
-    void OnActivate();                     // 0x0073AAC0
-};
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
-struct CModeStandBase : CModeBase {        // retail sizeof 0x68
+struct CModeStandBase : CTCCreatureModeManager::CModeBase {        // retail sizeof 0x68
     unsigned char _stand[0x4c];
-    void OnActivate();                     // 0x008621A0
+    virtual void OnActivate();                     // 0x008621A0
 };
 
 class CAnimFilterOfGroup { public:                // vtable 0x01267568
@@ -153,25 +151,25 @@ struct CModeScorpionKingExhausted : CModeStandBase {
     CAnimFilterOfGroup    Filter;          // +0x6c
     CCreatureController*  PCreature;       // +0x78
     bool                  bRecovering;     // +0x7c
-    void OnActivate();
+    virtual void OnActivate();
 };
 
 void CModeScorpionKingExhausted::OnActivate()
 {
     CModeStandBase::OnActivate();
-    CDefClassBase* thingDef = ParentThing->PDef;
+    CDefClassBase* thingDef = ParentThing.PDef;
     CDefPointer<CScorpionKingBattleDef> out;
     thingDef->GetSubDef(&out);
     CDefHolder<CScorpionKingBattleDef> def(out.Object);
     float exhaustedTime = def->ExhaustedTime;
     CTCActiveFlag* flag = 0;
-    if (ParentThing->HasTC(9))
-        flag = ParentThing->GetTC<CTCActiveFlag>(9);
+    if (ParentThing.HasTC(9))
+        flag = ParentThing.GetTC<CTCActiveFlag>(9);
     flag->m_active = false;
     RecoveryCount = (long)(exhaustedTime * CMainGameComponent::GetConstantFPS());
     CModeBase::OnActivate();
-    ParentThing->PPhysics->SetPhysicsMode(8);
-    CThingCreatureBase* parent = ParentThing;
+    ParentThing.PPhysics->SetPhysicsMode(8);
+    CThingCreatureBase* parent = static_cast<CThingCreatureBase*>(&ParentThing);
     parent->m_flagsBC &= ~1;
     if (!parent->IsPerformingAnyAction())
         PCreature->ResetCurrentAction(false);

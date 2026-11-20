@@ -6,21 +6,21 @@
 // spline/vector headers exist. Array assignment0075B8D0; spline evaluator00A567A0.
 // Stable-count path evaluates current into a discarded local before evaluating previous toout;
 // changed count snapshots current and evaluates current. Third float parameter is unused.
-class C3DVector { public: float X, Y, Z; };
-template<class T> class CArray { public:
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray& operator=(const CArray& other);
-    long Size() const { return (long)(m_end-m_begin); }
-};
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;
-    float Tension;
-    bool EndPointsConnected;
-    void GetSplinePosition(C3DVector&,float) const; //00A567A0
-    CCardinalSpline& operator=(const CCardinalSpline& other) {
-        ControlPoints=other.ControlPoints; Tension=other.Tension; EndPointsConnected=other.EndPointsConnected; return *this;
-    }
-};
+// Name fix (NF124, 2026-11-20, q4802): the local C3DVector / CArray / CCardinalSpline models (CArray hand-declared operator= bound
+//   0x0075B8D0 as ??4?$CArray@VC3DVector@@@@QAEAAV0@ABV0@@Z) replaced by the shared engine/CCardinalSpline.h (CArray.h, C3DVector.h;
+//   opt-in FABLE_RETAIL_CCARDINALSPLINE_GETSPLINEPOSITION), the 0x00B211B0 InterpolateTo recipe: the spline copy is the implicit
+//   CCardinalSpline::operator=, whose ControlPoints copy calls std::vector<C3DVector>::operator= 0x0075B8D0 (Ego_r.pdb + FableWin.pdb
+//   ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z); the counts are GetControlPointCount().
+// Shape (NF126, 2026-11-20): the previous spline's count is read into a local first and compared on the left
+//   (`prevCount != ThisSpline.GetControlPointCount()`): retail spills This into ebx, Prev into eax and emits `cmp eax,ebx`; the 0x00B211B0
+//   order (`This != prevCount`) gives `cmp ebx,eax` here (NF124 work/: DIFFER 177v177, the only difference).
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CCARDINALSPLINE_GETSPLINEPOSITION
+#include "engine/CCardinalSpline.h"
 struct CSplineRandomOffsetData {
     CCardinalSpline* InitialSpline;
     CCardinalSpline ThisSpline;
@@ -33,6 +33,7 @@ struct CSplineRandomOffsetData {
 };
 void CSplineRandomOffsetData::GetPointAtPos(C3DVector* out,float position,float time) {
     if(OffsetOnlyAtStartup) {ThisSpline.GetSplinePosition(*out,position);return;}
-    if(PreviousSpline.ControlPoints.Size()!=ThisSpline.ControlPoints.Size()) {PreviousSpline=ThisSpline;ThisSpline.GetSplinePosition(*out,position);}
+    long prevCount=PreviousSpline.GetControlPointCount();
+    if(prevCount!=ThisSpline.GetControlPointCount()) {PreviousSpline=ThisSpline;ThisSpline.GetSplinePosition(*out,position);}
     else {C3DVector current;ThisSpline.GetSplinePosition(current,position);PreviousSpline.GetSplinePosition(*out,position);}
 }

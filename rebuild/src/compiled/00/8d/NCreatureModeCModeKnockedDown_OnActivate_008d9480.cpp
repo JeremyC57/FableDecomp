@@ -1,5 +1,5 @@
 // NCreatureMode::CModeKnockedDown::OnActivate() -- show emote icon 8 (priority 0, 0.1 s, full scale and alpha), reset the interface-0x30 component's ability timers, suspend a player creature's animation, then the base activation
-// Leaf: ?OnActivate@CModeKnockedDown
+// Leaf: ?OnActivate@CModeKnockedDown@NCreatureMode@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D9480, 166 bytes (+ int3 padding), `ret`; vtable 0x01267E78 slot 5.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: type 0x45 = bit 5 of +0x28 = CTCEmoteIcon, type 0x30 = bit 16
@@ -9,10 +9,12 @@
 // Name: FableWin.pdb `?OnActivate@CModeKnockedDown@NCreatureMode@@UAEXXZ` (slot 5).
 // Shape: the emote lookup is the out-parameter GetInterface (`mov eax,[eax+4] ; push ... ; mov ecx,eax`), the 0x30 lookup
 //   the HasTC + one-ternary GetTC on the non-const map (component straight into ecx); ParentThing is re-read for each block.
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
 #include "fable_compiler.h"
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -62,28 +64,24 @@ struct CTCInterface30 {                    // interface type 0x30
     void InvalidateAllAbilityTimers();     // 0x007340B0
 };
 
-struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
-    CThing*       ParentThing;             // +0x04
-    unsigned char _body[0x14];
-    void OnActivate();                     // 0x0073AAC0
-};
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
-struct CModeKnockedDown : CModeBase {      // vtable 0x01267E78
+struct CModeKnockedDown : CTCCreatureModeManager::CModeBase {      // vtable 0x01267E78
     unsigned char Filter[0x0c];            // +0x1c CAnimFilterOfGroup
-    void OnActivate();
+    virtual void OnActivate();
 };
 }
 
 void NCreatureMode::CModeKnockedDown::OnActivate()
 {
     CTCEmoteIcon* emote;
-    if (ParentThing->GetInterface(&emote, 0x45))
+    if (ParentThing.GetInterface(&emote, 0x45))
         emote->SetEmoteIcon(CTCEmoteIcon::EMOTE_PRIORITY_NONE, 0, 0.1f, 1.0f, 0xff);
-    if (ParentThing->HasTC(0x30))
-        ParentThing->GetTC<CTCInterface30>(0x30)->InvalidateAllAbilityTimers();
-    if (ParentThing->m_type == 1)
-        ParentThing->SuspendAI(true, 0);
+    if (ParentThing.HasTC(0x30))
+        ParentThing.GetTC<CTCInterface30>(0x30)->InvalidateAllAbilityTimers();
+    if (ParentThing.m_type == 1)
+        ParentThing.SuspendAI(true, 0);
     CModeBase::OnActivate();
 }

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary(CDataInputStream& in) -- read the two flags and the offset count, size and fill the offset limit/speed arrays, then either snapshot the current spline as the previous one or clear the previous spline's points
-// Leaf: ReadBinary@CSplineRandomOffsetData
+// Leaf: ?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22100, 528 bytes, `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 (slow path of each inlined Read),
@@ -11,12 +11,16 @@
 //   uninitialised C3DVector() slot, the loop stores through `*(begin() + i)` (the array start is loaded before the
 //   Read3DVector call), and the else arm is the inline STLport clear() = erase(begin(), end()) whose copy loop runs
 //   over the empty [finish, finish) range.
+// Naming (NF126, 2026-11-20, q4802): the local CArray<T> (hand-declared operator= / resize, inline erase / clear) and CCardinalSpline
+//   models replaced by the shared engine/CCardinalSpline.h (the 0x00B211B0 recipe defines; DeleteAllControlPoints, opt-in
+//   FABLE_RETAIL_CCARDINALSPLINE_APPENDCONTROLPOINT): the calls now bind the self rows' STLport spellings vector<C3DVector>::operator=
+//   0x0075B8D0 and vector<C3DVector>::resize 0x0075C040.
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-#include "engine/C3DVector.h"
 
+#include "engine/C3DVector.h"
 class CDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
@@ -46,38 +50,14 @@ private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
-template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    CArray& operator=(const CArray& other);                                  // 0x0075B8D0
-    void resize(unsigned int newSize, const C3DVector& value = C3DVector());  // 0x0075C040
-    static FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
-    {
-        for (long n = last - first; n > 0; --n) {
-            *result = *first;
-            ++first;
-            ++result;
-        }
-        return result;
-    }
-    FABLE_FORCEINLINE T* erase(T* first, T* last)
-    {
-        T* i = copy(last, _M_finish, first);
-        _M_finish = i;
-        return first;
-    }
-    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
-};
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CCARDINALSPLINE_APPENDCONTROLPOINT
+#include "engine/CCardinalSpline.h"
 
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;    // +0x00
-    float             Tension;          // +0x0C
-    bool              EndPointsConnected; // +0x10
-};
 
 namespace NParticleEngine {
 class CPSCSplineBase { public:
@@ -107,6 +87,6 @@ void CPSCSplineBase::CSplineRandomOffsetData::ReadBinary(CDataInputStream& in)
     if (OffsetOnlyAtStartup)
         PreviousSpline = ThisSpline;
     else
-        PreviousSpline.ControlPoints.clear();
+        PreviousSpline.DeleteAllControlPoints();
 }
 }

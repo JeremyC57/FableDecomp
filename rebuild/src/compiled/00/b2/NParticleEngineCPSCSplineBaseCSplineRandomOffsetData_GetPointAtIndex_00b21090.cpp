@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex(C3DVector& out, long index, float time) -- copy control point `index` of the current spline (or of last frame's spline) into `out`
-// Leaf: GetPointAtIndex
+// Leaf: ?GetPointAtIndex@CSplineRandomOffsetData@@QAEXAAVC3DVector@@JM@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B21090, 197 bytes, `ret 0Ch` (the time argument is unused).
 // Identity: Ego_r.pdb `?GetPointAtIndex@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVC3DVector@@JM@Z`.
@@ -9,22 +9,17 @@
 //   with the current one (control-point counts differ, ThisSpline's count computed first), it is re-snapshotted
 //   (array, Tension, EndPointsConnected) and the current point is returned; else last frame's point. The 12-byte
 //   C3DVector copies are POD dword moves; the model is the native 20-byte CCardinalSpline of the landed siblings.
-#include "engine/C3DVector.h"
-template<class T> class CArray { public:
-    T* m_begin; T* m_end; T* m_capacity;
-    CArray& operator=(const CArray& other);                 // 0x0075B8D0
-    long Size() const { return (long)(m_end - m_begin); }
-    T* begin_() const { return m_begin; }
-    T& operator[](long i) { return *(begin_() + i); }
-};
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;
-    float Tension;
-    bool EndPointsConnected;
-    CCardinalSpline& operator=(const CCardinalSpline& other) {
-        ControlPoints = other.ControlPoints; Tension = other.Tension; EndPointsConnected = other.EndPointsConnected; return *this;
-    }
-};
+// Naming (NF126, 2026-11-20, q4802): the local CArray<T> (hand-declared operator=, bound 0x0075B8D0 as ??4?$CArray@VC3DVector@@@@QAEAAV0@ABV0@@Z)
+//   and CCardinalSpline models replaced by the shared engine/CCardinalSpline.h (the 0x00B211B0 recipe defines; GetControlPoint /
+//   GetControlPointCount, opt-in FABLE_RETAIL_CCARDINALSPLINE_CONTROLPOINT): the spline copy is the implicit CCardinalSpline::operator=,
+//   whose ControlPoints copy calls std::vector<C3DVector>::operator= 0x0075B8D0 (Ego_r.pdb + FableWin.pdb).
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CCARDINALSPLINE_CONTROLPOINT
+#include "engine/CCardinalSpline.h"
 struct CSplineRandomOffsetData {
     CCardinalSpline* InitialSpline;
     CCardinalSpline ThisSpline;
@@ -37,11 +32,11 @@ struct CSplineRandomOffsetData {
 };
 void CSplineRandomOffsetData::GetPointAtIndex(C3DVector& out, long index, float time)
 {
-    if (OffsetOnlyAtStartup) { out = ThisSpline.ControlPoints[index]; return; }
-    if (PreviousSpline.ControlPoints.Size() != ThisSpline.ControlPoints.Size()) {
+    if (OffsetOnlyAtStartup) { out = ThisSpline.GetControlPoint(index); return; }
+    if (PreviousSpline.GetControlPointCount() != ThisSpline.GetControlPointCount()) {
         PreviousSpline = ThisSpline;
-        out = ThisSpline.ControlPoints[index];
+        out = ThisSpline.GetControlPoint(index);
     }
     else
-        out = PreviousSpline.ControlPoints[index];
+        out = PreviousSpline.GetControlPoint(index);
 }

@@ -1,5 +1,5 @@
 // NCreatureMode::CModeDragonFlying::OnActivate() -- start a flying leg: suspend a player creature's animation, clear the interface-0x3a flag, make the dragon un-willable, measure the leg, prime the flight animation and its playback rate
-// Leaf: OnActivate
+// Leaf: ?OnActivate@CModeDragonFlying@NCreatureMode@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -18,6 +18,8 @@
 //   speeds +0x1c/+0x20.
 // Shape: the 0x5a component pointer is zero-initialised and GetInterface's result is not tested; the playback rate is
 //   1 / (AnimLength * frames per second) clamped to [0, 1] and written to both speeds.
+// Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
+//   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
 #include "fable_compiler.h"
 #include <math.h>
 
@@ -56,19 +58,12 @@ public:
 
 #include "engine/C3DVector.h"
 
-struct CModeBase {
-    virtual void v00();
-    virtual void v01();
-    virtual void AnimUpdate(CAnimateThing& anim);   // slot 2
-    CThing*       ParentThing;              // +0x04
-    unsigned char _pad08[0x10];
-    bool          Active;                   // +0x18
-    void OnActivate();                      // 0x0073AAC0
-};
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#include "engine/CTCCreatureModeManager.h"
 
 namespace NCreatureMode {
 
-struct CModeDragonFlying : CModeBase {
+struct CModeDragonFlying : CTCCreatureModeManager::CModeBase {
     unsigned char _pad1c[0x18];
     long          FlapCounter;                      // +0x34
     unsigned char Filter[0x0c];                     // +0x38 CAnimFilterOfGroup
@@ -83,7 +78,7 @@ struct CModeDragonFlying : CModeBase {
     float         AnimLength;                       // +0x7c
     unsigned char _pad80[0x10];
     bool          FirstFrame;                       // +0x90
-    void OnActivate();
+    virtual void OnActivate();
 };
 
 FABLE_FORCEINLINE float Distance(const C3DVector& a, const C3DVector& b)
@@ -96,17 +91,17 @@ FABLE_FORCEINLINE float Distance(const C3DVector& a, const C3DVector& b)
 void CModeDragonFlying::OnActivate()
 {
     CModeBase::OnActivate();
-    if (ParentThing->GetType() == 1)
-        ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
+    if (ParentThing.GetType() == 1)
+        ((CThingAICreature*)&ParentThing)->SuspendAI(true, this);
     CTCFlagged* flagged;
-    if (ParentThing->GetTC(TCI_MAPWHO, &flagged))
+    if (ParentThing.GetTC(TCI_MAPWHO, &flagged))
         flagged->m_flag = 0;
-    SetThingAsNotBloodyWillableAtAll(ParentThing, true);
+    SetThingAsNotBloodyWillableAtAll(&ParentThing, true);
     DistanceToTravel = Distance(Destination, StartPos);
     Acceleration = 0.0f;
     StartSpeed = Speed;
     CTCAnimationComplex* animation = 0;
-    ParentThing->GetTC(TCI_ANIMATION, &animation);
+    ParentThing.GetTC(TCI_ANIMATION, &animation);
     CAnimateThing* anim = animation->GetAnimateThing();
     AnimUpdate(*anim);
     AnimLength = animation->GetAnimDuration(animation->GetAnimIndex());
