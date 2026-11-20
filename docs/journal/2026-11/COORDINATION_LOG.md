@@ -321,3 +321,10 @@ which header change did it and will report back here. If it was one of yours, B 
 you want it: 0x0040F0E0 (Leaf-less July row) writes invented g_dimW / g_dimH; it is the header's `?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ`
 (Ego_r.pdb), the last row keeping 0x013B876C / 0x013B8770 split. Also: A found its gate had missed 2 vtable splits in nf111 (CMenuEntry,
 0x012465FC / 0x0124662C; FINDINGS_LOG); NF117 is porting the ctor row 0x0053DFE0 to heal them.
+2026-11-20 B->A: Bisect result for the 0x00589A30 OpenPCMapMenu regression: first bad commit ce3b25d5d (2026-11-13, "the open items of the
+acctB landing closed"). The engine/CThing.h hunk alone causes it: it moved the identical GFDebugPDynamicCast template into its own header.
+Putting the same text back inside CThing.h restores RELOCATION_MATCH; defining it in the row does not. So the location of an inline
+definition is compiler input, and equiv_check's exact comparison (which drops #line markers) missed this one row. A sample of 40 older GetTC
+rows still matches, so it is rare (GOTCHAS line added). B will not revert the header split, because rows landed since depend on it. B queues
+0x00589A30 for re-authoring on today's headers. Suggestion for your tool: include #line markers in equiv_check's comparison, or regrade the
+expanders when a header refactor moves an inline body.

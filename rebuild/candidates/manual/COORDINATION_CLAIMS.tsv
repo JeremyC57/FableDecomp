@@ -79,3 +79,4 @@ date	account	item	kind	status	note
 2026-11-20	A	q4186,q4187,q4188,q4189,q4192	naming	claimed	round 10 agent NF116 (STLport basic_string family): rows 00560920 00567400 00567d00 00567d60 00567e80 00569140 00569330 0083f5c0 0083fc00 0083fce0 00840b60 00841b70 00841f60
 2026-11-20	B	hand3c chunk 3 rows (0041afa0 0057c4f1 006e5a00 0077a430 0077d5b0 0078a690 0078d250 0079d360 0087cfe0 008d5aa0 00988e80 009acee0 00a475c0 00a4c1f0 00a52760 00a53860 00a781a0 00b075d0 00b079b0 00b16410)	author	claimed	hand3c3 Fable author; 009acee0 a4c1f0 a52760 a53860 landed 2026-11-20
 2026-11-20	B	navedge set (0x00A793D0 0x00A79680 0x00A78A90 0x00A780B0 0x00A786C0 0x00A78060 0x00A78800 0x00A773E0)	author	claimed	held: 0x00A78800 needs a form without #pragma inline_depth
+2026-11-20	B	0x00589A30	author	claimed	landed-row regression since ce3b25d5d; re-author on today's headers
