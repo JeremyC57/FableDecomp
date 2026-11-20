@@ -401639,6 +401639,13 @@ $catalog = @(
         TestSource = '00/6f/CGetBestAttackerForProng_operator_006f2de0_test.cpp'
         PassPattern = '006f2de0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006e7eb0'
+        Module = '_global'
+        Source = '00/6e/global_GetPreferredCombatDistanceForAttacker_006e7eb0.cpp'
+        TestSource = '00/6e/global_GetPreferredCombatDistanceForAttacker_006e7eb0_test.cpp'
+        PassPattern = '006e7eb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

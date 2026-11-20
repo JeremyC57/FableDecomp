@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006e7eb0	?GetPreferredCombatDistanceForAttacker@?A0xd8b789b9@@YIMABVCThingCreatureBase@@0@Z	this row (new catalog row, RELOCATION_MATCH 57/57); Ego_r.pdb / FableWin.pdb name with __fastcall (YI); Ego_d.pdb parameters (defender, attacker) and float distance (type 0x40). New label (no label yet)	none
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	the shared engine/C3DVector.h extern (1e-4f); vland RELOC_NAME warning in vland.log; same line as the 0x006F2DE0 batch. Labels-DB respell only	labels DB ?g_NormaliseEpsilon@@3MB
