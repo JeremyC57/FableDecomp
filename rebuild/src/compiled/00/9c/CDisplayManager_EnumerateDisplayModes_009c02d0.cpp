@@ -307,9 +307,9 @@ public:
     long RefreshRate;                               // +0x0C
     bool operator<(const CDisplayModeDesc& other) const;
 };
-
+#include "engine/IDirect3D9.h"   // IDirect3D9 (d3d9.h slots 6/7); engine/Direct3D9Types.h: _D3DFORMAT, D3DDISPLAYMODE
 struct CPixelFormatInfo {                           // 36 bytes
-    long D3DFormat;                                 // +0x00
+    _D3DFORMAT D3DFormat;                           // +0x00
     long Info[8];
 };
 extern CPixelFormatInfo g_PixelFormatTable[];       // 0x0129BA40
@@ -317,28 +317,28 @@ extern CPixelFormatInfo g_PixelFormatTable[];       // 0x0129BA40
 class CPixelFormat {
 public:
     long FormatIndex;
-    long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].D3DFormat; }
+    _D3DFORMAT GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].D3DFormat; }
 public:
     unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
-struct D3DDISPLAYMODE {
-    unsigned int Width;
-    unsigned int Height;
-    unsigned int RefreshRate;
-    long Format;
-};
 
-struct IDirect3D9 {
-    virtual long __stdcall QueryInterface(void*, void**) = 0;
-    virtual unsigned long __stdcall AddRef() = 0;
-    virtual unsigned long __stdcall Release() = 0;
-    virtual long __stdcall RegisterSoftwareDevice(void*) = 0;
-    virtual unsigned int __stdcall GetAdapterCount() = 0;
-    virtual long __stdcall GetAdapterIdentifier(unsigned int, unsigned long, void*) = 0;
-    virtual unsigned int __stdcall GetAdapterModeCount(unsigned int Adapter, long Format) = 0;
-    virtual long __stdcall EnumAdapterModes(unsigned int Adapter, long Format, unsigned int Mode, D3DDISPLAYMODE* pMode) = 0;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class CDisplayManager {
 public:
@@ -355,7 +355,7 @@ void CDisplayManager::EnumerateDisplayModes(CArray<CDisplayModeDesc>& modes, C2D
     std::set<CDisplayModeDesc> found;
     for (unsigned int i = 0; i < BackBufferFormats.size(); ++i) {
         CPixelFormat format = BackBufferFormats[i];
-        long d3dFormat = format.GetD3DFormat();
+        _D3DFORMAT d3dFormat = format.GetD3DFormat();
         long count = D3D->GetAdapterModeCount(0, d3dFormat);
         for (long mode = 0; mode < count; ++mode) {
             D3DDISPLAYMODE desc;

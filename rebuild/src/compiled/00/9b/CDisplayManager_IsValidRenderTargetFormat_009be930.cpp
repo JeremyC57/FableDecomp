@@ -8,21 +8,21 @@
 // first) through an inline table accessor (a direct subscript in the call or named locals loads the D3D interface and
 // its vtable before the formats; the accessor keeps them after, with the render-target format parked in esi), and the
 // result is `SUCCEEDED(hr)` as a bool through a full register (`setge dl ; mov al,dl`).
-struct IDirect3D9 {
-    virtual long __stdcall QueryInterface(const void* iid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-    virtual long __stdcall RegisterSoftwareDevice(void* initializeFunction);
-    virtual unsigned long __stdcall GetAdapterCount();
-    virtual long __stdcall GetAdapterIdentifier(unsigned long adapter, unsigned long flags, void* identifier);
-    virtual unsigned long __stdcall GetAdapterModeCount(unsigned long adapter, long format);
-    virtual long __stdcall EnumAdapterModes(unsigned long adapter, long format, unsigned long mode, void* displayMode);
-    virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, void* displayMode);
-    virtual long __stdcall CheckDeviceType(unsigned long adapter, long devType, long adapterFormat, long backBufferFormat, int windowed);
-    virtual long __stdcall CheckDeviceFormat(unsigned long adapter, long devType, long adapterFormat, unsigned long usage, long resourceType, long checkFormat);
-    virtual long __stdcall CheckDeviceMultiSampleType(unsigned long adapter, long devType, long surfaceFormat, int windowed, long multiSampleType, unsigned long* qualityLevels);
-    virtual long __stdcall CheckDepthStencilMatch(unsigned long adapter, long devType, long adapterFormat, long renderTargetFormat, long depthStencilFormat);   // slot 12
-};
+// IDirect3D9: the shared header (d3d9.h slot order and SDK parameter types; engine/IDirect3D9.h).
+#include "engine/IDirect3D9.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class CPixelFormat { public:
     long FormatIndex;                  // +0
@@ -35,17 +35,17 @@ class CDisplayManager { public:
     unsigned char _pad[0x54];          // +0x00 vptr, SystemManager, PRenderManager, surfaces, back-buffer copy texture
     IDirect3D9*   D3D;                 // +0x54
     void*         D3DDevice;           // +0x58
-    long          D3DDeviceCaps_DeviceType;       // +0x5c D3DCAPS9::DeviceType
+    D3DDEVTYPE    D3DDeviceCaps_DeviceType;       // +0x5c D3DCAPS9::DeviceType
     unsigned long D3DDeviceCaps_AdapterOrdinal;   // +0x60 D3DCAPS9::AdapterOrdinal
     unsigned char _caps[0x1b8 - 0x64]; // +0x64 the rest of D3DCAPS9, dimensions, flags, formats, window handle
     unsigned long CurrentMode_Width;   // +0x1b8 D3DDISPLAYMODE
     unsigned long CurrentMode_Height;  // +0x1bc
     unsigned long CurrentMode_RefreshRate;   // +0x1c0
-    long          CurrentMode_Format;  // +0x1c4
+    D3DFORMAT     CurrentMode_Format;  // +0x1c4
     bool IsValidRenderTargetFormat(const CPixelFormat& renderTargetFormat, const CPixelFormat& depthStencilFormat);
 };
 
-static inline long GetD3DFormat(const CPixelFormat& format)
+static inline D3DFORMAT GetD3DFormat(const CPixelFormat& format)
 {
     return GD3DFormats[format.FormatIndex].D3DFormat;
 }

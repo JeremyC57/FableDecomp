@@ -306,9 +306,9 @@ public:
 template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
 
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
-
+#include "engine/IDirect3D9.h"   // IDirect3D9 (slot 11 CheckDeviceMultiSampleType); engine/Direct3D9Types.h: _D3DFORMAT, D3DCAPS9
 struct CPixelFormatInfo {                           // 36 bytes
-    long D3DFormat;                                 // +0x00
+    _D3DFORMAT D3DFormat;                           // +0x00
     long Info[8];
 };
 extern CPixelFormatInfo g_PixelFormatTable[];       // 0x0129BA40
@@ -316,29 +316,29 @@ extern CPixelFormatInfo g_PixelFormatTable[];       // 0x0129BA40
 class CPixelFormat {
 public:
     long FormatIndex;
-    long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].D3DFormat; }
+    _D3DFORMAT GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].D3DFormat; }
 };
 
-struct IDirect3D9 {
-    virtual long __stdcall QueryInterface(void*, void**) = 0;
-    virtual unsigned long __stdcall AddRef() = 0;
-    virtual unsigned long __stdcall Release() = 0;
-    virtual long __stdcall RegisterSoftwareDevice(void*) = 0;
-    virtual unsigned int __stdcall GetAdapterCount() = 0;
-    virtual long __stdcall GetAdapterIdentifier(unsigned int, unsigned long, void*) = 0;
-    virtual unsigned int __stdcall GetAdapterModeCount(unsigned int, long) = 0;
-    virtual long __stdcall EnumAdapterModes(unsigned int, long, unsigned int, void*) = 0;
-    virtual long __stdcall GetAdapterDisplayMode(unsigned int, void*) = 0;
-    virtual long __stdcall CheckDeviceType(unsigned int, long, long, long, int) = 0;
-    virtual long __stdcall CheckDeviceFormat(unsigned int, long, long, unsigned long, long, long) = 0;
-    virtual long __stdcall CheckDeviceMultiSampleType(unsigned int Adapter, long DeviceType, long SurfaceFormat,
-                                                      int Windowed, long MultiSampleType, unsigned long* pQualityLevels) = 0;
-};
 
-struct D3DCAPS9 {
-    long DeviceType;                                // +0x00
-    unsigned int AdapterOrdinal;                    // +0x04
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class CDisplayManager {
 public:
@@ -347,8 +347,8 @@ public:
     unsigned char _pad_000[0x54];
     IDirect3D9* D3D;                                // +0x54
     unsigned char _pad_058[0x5C - 0x58];
-    D3DCAPS9 D3DDeviceCaps;                         // +0x5C (first members only)
-    unsigned char _pad_064[0x298 - 0x64];
+    D3DCAPS9 D3DDeviceCaps;                         // +0x5C (0x130 bytes)
+    unsigned char _pad_18c[0x298 - 0x18C];
     CArray<CPixelFormat> BackBufferFormats;         // +0x298
     CArray<ESurfaceMultisampleType> MultisampleTypes;   // +0x2A4
 };
@@ -360,7 +360,7 @@ void CDisplayManager::EnumerateAntiAliasingModes(CArray<ESurfaceMultisampleType>
         for (unsigned int j = 0; j < MultisampleTypes.size(); ++j) {
             ESurfaceMultisampleType type = MultisampleTypes[j];
             if (D3D->CheckDeviceMultiSampleType(0, D3DDeviceCaps.DeviceType, BackBufferFormats[i].GetD3DFormat(), 0,
-                                                type, 0) == 0)
+                                                (D3DMULTISAMPLE_TYPE)type, 0) == 0)
                 found.insert(MultisampleTypes[j]);
         }
     }

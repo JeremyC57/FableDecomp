@@ -17,24 +17,24 @@
 #include <stdlib.h>
 #pragma intrinsic(abs)
 
-struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9 slots up to CheckDepthStencilMatch
-    virtual long __stdcall QueryInterface(const void* iid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-    virtual long __stdcall RegisterSoftwareDevice(void* initializeFunction);
-    virtual unsigned long __stdcall GetAdapterCount();
-    virtual long __stdcall GetAdapterIdentifier(unsigned long adapter, unsigned long flags, void* identifier);
-    virtual unsigned long __stdcall GetAdapterModeCount(unsigned long adapter, long format);
-    virtual long __stdcall EnumAdapterModes(unsigned long adapter, long format, unsigned long mode, void* displayMode);
-    virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, void* displayMode);
-    virtual long __stdcall CheckDeviceType(unsigned long adapter, long devType, long adapterFormat, long backBufferFormat, int windowed);
-    virtual long __stdcall CheckDeviceFormat(unsigned long adapter, long devType, long adapterFormat, unsigned long usage,
-                                             long resourceType, long checkFormat);   // slot 10 (+0x28)
-    virtual long __stdcall CheckDeviceMultiSampleType(unsigned long adapter, long devType, long surfaceFormat, int windowed,
-                                                      long multiSampleType, unsigned long* qualityLevels);
-    virtual long __stdcall CheckDepthStencilMatch(unsigned long adapter, long devType, long adapterFormat,
-                                                  long renderTargetFormat, long depthStencilFormat);   // slot 12 (+0x30)
-};
+// IDirect3D9: the shared header (d3d9.h slot order and SDK parameter types; engine/IDirect3D9.h).
+#include "engine/IDirect3D9.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 enum { D3DUSAGE_DEPTHSTENCIL = 2, D3DRTYPE_SURFACE = 1 };
 
@@ -52,7 +52,7 @@ class CDisplayManager { public:
     unsigned char _pad[0x54];                      // vptr slot, SystemManager, PRenderManager, surfaces, back-buffer copy texture
     IDirect3D9*   D3D;                             // +0x54
     void*         D3DDevice;                       // +0x58
-    long          DeviceType;                      // +0x5c D3DDeviceCaps.DeviceType
+    D3DDEVTYPE    DeviceType;                      // +0x5c D3DDeviceCaps.DeviceType
     unsigned long AdapterOrdinal;                  // +0x60 D3DDeviceCaps.AdapterOrdinal
 private:   // name-fix pass (2026-11-12): private in both PDBs (ABE), so the compiled symbol matches the Leaf line (was public: QBE)
     CPixelFormat GetClosestDepthBufferFormat(const _D3DDISPLAYMODE& mode, long bitDepth) const;

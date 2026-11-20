@@ -10,20 +10,20 @@
 // first supported record; VC strength-reduces the
 // cursor to &info->BitDepth (esi = 0x0129BA48), keeps the constant 1 in ebx for the four `> 1` channel tests and returns it as
 // the true result (`mov al,bl`).
-struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9 slots up to CheckDeviceFormat
-    virtual long __stdcall QueryInterface(const void* iid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-    virtual long __stdcall RegisterSoftwareDevice(void* initializeFunction);
-    virtual unsigned long __stdcall GetAdapterCount();
-    virtual long __stdcall GetAdapterIdentifier(unsigned long adapter, unsigned long flags, void* identifier);
-    virtual unsigned long __stdcall GetAdapterModeCount(unsigned long adapter, long format);
-    virtual long __stdcall EnumAdapterModes(unsigned long adapter, long format, unsigned long mode, void* displayMode);
-    virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, void* displayMode);
-    virtual long __stdcall CheckDeviceType(unsigned long adapter, long devType, long adapterFormat, long backBufferFormat, int windowed);
-    virtual long __stdcall CheckDeviceFormat(unsigned long adapter, long devType, long adapterFormat, unsigned long usage,
-                                             long resourceType, long checkFormat);   // slot 10 (+0x28)
-};
+// IDirect3D9: the shared header (d3d9.h slot order and SDK parameter types; engine/IDirect3D9.h).
+#include "engine/IDirect3D9.h"
+
+
+
+
+
+
+
+
+
+
+
+
 
 enum { D3DRTYPE_TEXTURE = 3 };
 
@@ -39,10 +39,10 @@ class CDisplayManager { public:
     unsigned char _pad[0x54];                      // vptr slot, SystemManager, PRenderManager, surfaces, back-buffer copy texture
     IDirect3D9*   D3D;                             // +0x54
     void*         D3DDevice;                       // +0x58
-    long          DeviceType;                      // +0x5c D3DDeviceCaps.DeviceType
+    D3DDEVTYPE    DeviceType;                      // +0x5c D3DDeviceCaps.DeviceType
     unsigned long AdapterOrdinal;                  // +0x60 D3DDeviceCaps.AdapterOrdinal
     unsigned char _caps[0x1c4 - 0x64];             // rest of the caps, extents, flags, formats, window handle, mode size
-    long          CurrentModeFormat;               // +0x1c4 CurrentMode.Format
+    D3DFORMAT     CurrentModeFormat;               // +0x1c4 CurrentMode.Format
     bool GetBestAlphaTextureFormat(unsigned long bitDepth, CPixelFormat& out);
 };
 
