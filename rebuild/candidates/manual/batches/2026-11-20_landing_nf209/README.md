@@ -35,10 +35,12 @@ FP-COMBATMAP leftovers). Its files are in `naming/2026-11-20_agentNF209/`, with 
   - The vtables have no owner object.
 - Link (`logs/link_landing.log`): 1 LNK2005, the same as HEAD (`logs/link_control_head.log`). 0x00E2AB30's inline ctor copy is byte-identical
   (113 = 113) to the strong definition in 0x00E299F0. They clash only when both objects link, as in the agent's
-  `logs/agent_q4860_link_new.log`. That is accepted as debt (nf181 / nf184), and porting 0x00E299F0 is queued.
+  `logs/agent_q4860_link_new.log`. Coordinator re-run: q.py of the row source at 0x00E299F0 grades RELOCATION_MATCH, and cmpbody gives
+  113 = 113 with equal bytes and relocations. That is accepted as debt (nf181 / nf184), and porting 0x00E299F0 is queued.
 - Held (advisor rule, pick-any): 0x0047DB73 (q11772). Its RELOCATION_MATCH draft newly defines an 8-byte
   `?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z` COMDAT. The address 0x004118C0 is the retail out-of-line HasTC, which landed 0x00488620
-  defines as 58 bytes. It needs a declaration-only HasTC opt-in first.
+  defines as 58 bytes. It needs a declaration-only HasTC opt-in first. Coordinator check: the HEAD source of 0x0047DB73 never calls HasTC (it used a local struct), so
+  the copy is new, not HEAD debt (nf203 does not apply). Advisor decision (owner delegated): the hold stands.
 - Returned: q11760 / q11873. The 0x006D41F0 self row reaches DIFFER 307v295 after 3 forms (an inline split around 0x004115A0); /d2inlT 61..64
   is untried. q4389 was not reached.
 - Queued: 0x004118C0 HasTC (catalog row missing), 0x00CBD4E0 `?OnPersist@CScriptBase@@` (FableWin + the vtable slots).
