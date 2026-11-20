@@ -57087,7 +57087,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121dfe0	UNKNOWN_THREAT_OPINION_SOURCE	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e000	g_CStatic_00687180_013ba89c	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e010	`dynamic initializer for 'GlobalUpdateTCs''	CTCBase	unknown	undefined	0		0			discovered	gapscan							
-0121e030	g_tree_013ba8bc	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121e030	`dynamic initializer for 'RegisteredActionEvents''	CCreatureActionBase	unknown	undefined	0		0			discovered	gapscan							
 0121e070	g_tree_013ba8c8	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e0b0	g_CStatic_01229340_01229340	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e0c0	MAIN_SIGN_POST_DEF_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
@@ -57565,7 +57565,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01229250	AtexitDtor_CCharString_at_013ba898_01229250	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01229250_01229250.cpp
 01229260	`dynamic atexit destructor for 'GlobalUpdateTCs''	CTCBase	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01229260_01229260.cpp
 01229270	Static_ResetRings_on_013ba89c_01229270	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01229270_01229270.cpp
-01229280	CParticleMorphs_Tree_Deleter_01229280	_unattributed	unknown	undefined	0		0	yes	accepted									
+01229280	`dynamic atexit destructor for 'RegisteredActionEvents''	CCreatureActionBase	unknown	undefined	0		0	yes	accepted									
 012292e0	CSoundPair_Tree_Deleter_012292e0	_unattributed	unknown	undefined	0		0	yes	accepted									
 01229340	`dynamic_atexit_destructor_for_'DEFAULT_CAMERA_MODE_DEF''	`anonymous_namespace'::`anonymous_namespace'	unknown	undefined	0		0	yes	accepted									
 01229370	_$E2	_global	unknown	undefined	0		0	unmeasured	review-medium									

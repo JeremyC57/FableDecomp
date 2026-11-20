@@ -26,14 +26,21 @@
 // Names (objdump-checked): ?InitialiseActionEvents@CCreatureActionBase@@AAEXXZ, ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,
 //   ?GetWorld@CThing@@IAEAAVCWorld@@XZ (non-const: the result calls the non-const GetGameCamera; PeekWorld is the const twin),
 //   ?GetGameEventManager@NAnimationEvents@@YIAAVCManager@1@XZ (probable: Ego_r has Game/Sound twins of this shape),
-//   NAnimationEvents::CManager::GetEventNames / GetEventTimeInSeconds (Ego_r QBE spellings). The map type (map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >
-//   CCreatureActionBase::RegisteredActionEvents, Ego_r.pdb static) and its STLport _M_find are modelled descriptively here
-//   (one-word node view); see NOTES.md.
+//   NAnimationEvents::CManager::GetEventNames / GetEventTimeInSeconds (Ego_r QBE spellings).
+// agentNF164 (q4516): the static map is the private static CCreatureActionBase::RegisteredActionEvents,
+//   std::map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> > (both PDBs: `dynamic initializer for
+//   'CCreatureActionBase::RegisteredActionEvents'`; engine/CCreatureActionBase.h declares it private, the landed 0x006932B0 binds the same
+//   ?RegisteredActionEvents@CCreatureActionBase@@0V?$map@... spelling). Respelled in place on this row's existing local CCreatureActionBase
+//   (was the descriptive CRegisteredActionEventMap view): the map is the shared stlport/fable_map.h template and the lookup is map::find
+//   with the declaration-only _M_find (FABLE_RETAIL_STLP_TREE_MFIND_DECL, owner decision D1 member-template spelling), the out-of-line
+//   0x00696340 call; the local std::vector / allocator model is replaced by stlport/fable_containers.h.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 void* __cdecl operator new(unsigned int size);
-inline void* operator new(unsigned int, void* where) { return where; }
 class CCharStringData { public: char* PData; unsigned long StringLength; };
 class CCharString {
 public:
@@ -43,27 +50,6 @@ public:
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
     FABLE_FORCEINLINE long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
 };
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport vector<CCharString> (12 bytes)
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    static FABLE_FORCEINLINE void _Destroy(_Tp* first, _Tp* last)
-    {
-        for (; first != last; ++first)
-            first->~_Tp();
-    }
-    FABLE_FORCEINLINE ~vector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
-}
 namespace NAnimationEvents {
 class CManager {
 public:
@@ -156,17 +142,6 @@ template <> __declspec(noinline) void CActionEventPointer::Reset(NCreatureAction
         Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
 }
 #pragma auto_inline(on)
-struct SRegisteredActionEventNode {                         // map node: key +0x10, CCountedPointer value +0x14
-    unsigned char _pad[0x10];
-    CCharString Key;                                        // +0x10
-    CActionEventPointer Event;                              // +0x14
-};
-struct CRegisteredActionEventMap {                          // descriptive view of the static map
-    SRegisteredActionEventNode* Header;                     // end()
-    long Count;
-    SRegisteredActionEventNode* Find(const CCharString& key);   // 0x00696340
-};
-
 class CCreatureActionBase {
 public:
     virtual void UnprovenSlot00(); virtual void UnprovenSlot01(); virtual void UnprovenSlot02(); virtual void UnprovenSlot03();
@@ -177,8 +152,8 @@ public:
     CIntelligentPointer<CThingCreatureBase> PCreature;      // +0x08
     unsigned char _pad10[0x84 - 0x10];
     CActionEventVector ActionEvents;                        // +0x84
-    static CRegisteredActionEventMap RegisteredActionEvents;   // 0x013BA8BC
 private:
+    static std::map<CCharString, CActionEventPointer> RegisteredActionEvents;   // 0x013BA8BC (private static, both PDBs)
     void InitialiseActionEvents();
 };
 
@@ -195,16 +170,16 @@ void CCreatureActionBase::InitialiseActionEvents()
     NAnimationEvents::CManager* manager = &NAnimationEvents::GetGameEventManager();
     std::vector<CCharString> names;
     manager->GetEventNames(animation, names);
-    for (CCharString* it = names._M_start; it != names._M_finish; ++it) {
+    for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
         long end = it->FindCharPos(' ');
         if (end == -1)
             end = it->GetLength();
         CCharString hook = it->GetSubString(0, end);
-        SRegisteredActionEventNode* node = RegisteredActionEvents.Find(hook);
-        if (node != RegisteredActionEvents.Header) {
+        std::map<CCharString, CActionEventPointer>::iterator node = RegisteredActionEvents.find(hook);
+        if (node != RegisteredActionEvents.end()) {
             float seconds = manager->GetEventTimeInSeconds(animation, *it);
             long frame = (long)(GetAnimDelayTime() + frames_per_second * seconds);
-            NCreatureAction::CActionEventBase* prototype = node->Event.Data;
+            NCreatureAction::CActionEventBase* prototype = (*node).second.Data;
             CActionEventPointer event;
             event.Reset(prototype->Alloc(frame, *PCreature.operator->(), *camera_manager));
             if (event->SetDataFromString(*it))

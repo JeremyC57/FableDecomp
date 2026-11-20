@@ -1,0 +1,86 @@
+006946c0 new: 23
+    ??$_Destroy@PAVCCharString@@@std@@YAXPAVCCharString@@0@Z
+    ??$_Destroy@VCCharString@@@std@@YAXPAVCCharString@@@Z
+    ??$__destroy@PAVCCharString@@V1@@std@@YAXPAVCCharString@@00@Z
+    ??$__destroy_aux@PAVCCharString@@@std@@YAXPAVCCharString@@0ABU__false_type@0@@Z
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPo
+    ??0?$_STLP_alloc_proxy@PAVCCharString@@V1@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@PAVCCharString@@@Z
+    ??0?$_Vector_base@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z
+    ??0?$allocator@VCCharString@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VCCharString@@@std@@QAE@XZ
+    ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z TABLE:00414de0
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVCCharString@@V1@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VCCharString@@@std@@QAE@XZ
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPo
+    ?begin@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@XZ
+    ?deallocate@?$allocator@VCCharString@@@std@@QAEXPAVCCharString@@I@Z
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedP
+    ?end@?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCA
+    ?end@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@XZ
+    ?find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCounted
+    ?find@?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC
+00842b60 new: 0
+00842bc0 new: 0
+00842f70 new: 0
+00845900 new: 0
+00846100 new: 0
+00846410 new: 0
+00849140 new: 0
+008491e0 new: 0
+00849380 new: 0
+008579d0 new: 0
+008b93d0 new: 1
+    ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
+0092d600 new: 0
+0092d7c0 new: 0
+0121e030 new: 23
+    ??$_Destroy@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventB
+    ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPoi
+    ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAE@XZ
+    ??0?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@QAE@XZ
+    ??0?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??1?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@QAE@XZ
+    ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPoi
+    ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@
+    ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAE@XZ
+    ??1?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@QAE@XZ
+    ??1?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@QAE@XZ
+    ??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@QAEPAXI@Z
+    ?RegisteredActionEvents@CCreatureActionBase@@0V?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pai
+    ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharStri
+    ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCou
+    ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$
+    ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCounte
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pai
+01229280 new: 23
+    ??$_Destroy@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventB
+    ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPoi
+    ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAE@XZ
+    ??0?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@QAE@XZ
+    ??0?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??1?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@QAE@XZ
+    ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPoi
+    ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@
+    ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAE@XZ
+    ??1?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@QAE@XZ
+    ??1?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCAct
+    ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@QAE@XZ
+    ??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@QAEPAXI@Z
+    ?RegisteredActionEvents@CCreatureActionBase@@0V?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pai
+    ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharStri
+    ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCou
+    ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$
+    ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCounte
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pai

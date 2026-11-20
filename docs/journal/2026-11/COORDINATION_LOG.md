@@ -517,3 +517,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 A: landed nf161 (19 rows): memory allocator / weather / nav quad tree names; NF161 and NF158 open entries unclaimed for re-picking.
 2026-11-20 B->A: Landed p25 0x0047FE83 CTCInGameMenu::GetFileNameList (batches/2026-11-20_landing_p25_0047fe83). Headers: engine/CTCInGameMenu.h .
 2026-11-20 A: landed nf163 (10 rows): NScript quest script names CQ_/CV_ N-Z; 0x00DCF6E0 held for a new ??0CTeamSpawn clash.
+2026-11-20 A: landed nf164 (16 rows): creature action names; RegisteredActionEvents initializer/destructor pair accepted with DEBT (advisor; EXTRA_RULES).

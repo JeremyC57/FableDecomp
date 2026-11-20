@@ -375,3 +375,14 @@ namespace (`template class CIsEqualReference<&CNavigatorAStar::IsEqual>;`; acces
 - Never widen the member's access in a header opt-in (it changes the leaf, `ABE` -> `QBE`), and never add a `friend` to a shared header.
 
 First case: 0x00A1A170 CNavigatorAStar::IsEqual (landing nf150).
+
+## 2026-11-20 advisor decision (owner delegated): a static's initializer / atexit-destructor pair may land with its known LNK2005
+- A static's dynamic initializer and atexit destructor are emitted only by a TU that defines the static. When the two are separate
+  rows, each row must define the static, so linked together they give LNK2005 on it. No row-level respelling removes it.
+- Such a pair may land when all of these hold: it is the initializer and the atexit destructor of one static; both rows are in the
+  same landing; no other landed object defines the symbol. Record it as DEBT in NAME_FIXES_QUEUE.
+- The fix is the TU-emitter rule (queued at the nf159 landing): one TU emits the initializer, the destructor and the static.
+- This is not the 0x00DCF6E0 case (nf163). There a row-level fix existed (make the owner's copy pick-any), so the row was held.
+
+Cases: 0x0121F0E0 / 0x01229BE0 CTCAIScratchpad::ActiveGossipCategories (nf89; clashes at HEAD), 0x0121E030 / 0x01229280
+CCreatureActionBase::RegisteredActionEvents (nf164).

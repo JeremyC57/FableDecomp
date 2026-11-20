@@ -21,6 +21,9 @@
 //   point is a second uninitialised local in the same frame word.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return; engine/CCreatureActionBase.h FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS), respelled in place on this
+//   row's local CCreatureActionBase (was ?GetPWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ).
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -117,7 +120,9 @@ class CCreatureActionBase { public:
     float RunningTimeSeconds;                       // +0x40
     float LastRunningTimeSeconds;                   // +0x44
     unsigned char _pad48[0xa8 - 0x48];
-    CWorld* GetPWorld();                            // 0x00692940
+protected:
+    CWorld& GetWorld();                             // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
+public:
     void UpdateActionRunningTime();                 // 0x00692480
 };
 
@@ -132,7 +137,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 void CCombatActionBase::UpdateActionRunningTime()
 {
     CGameCameraManager* cameraManager;
-    if (GetPWorld()->GetCurrentGameCamera()->GetCameraManager(&cameraManager)
+    if (GetWorld().GetCurrentGameCamera()->GetCameraManager(&cameraManager)
         && PCameraPoint.GetPItem() != 0
         && !(((CThing*)PCameraPoint.GetPItem())->m_flags91 & 1)
         && cameraManager->IsUsingScriptedCameraMode()) {
@@ -151,11 +156,11 @@ void CCombatActionBase::UpdateActionRunningTime()
         float step = RunningTimeSeconds - LastRunningTimeSeconds;
         float frameTime = 1.0f / framesPerSecond;
         if (step > 0.0001f) {
-            if (!GetPWorld()->PBulletTime->IsRunning() || GetPWorld()->PBulletTime->IsTimeForFullUpdate()) {
+            if (!GetWorld().PBulletTime->IsRunning() || GetWorld().PBulletTime->IsTimeForFullUpdate()) {
                 long frames = (long)(1.0f / (step / frameTime));
                 if (frames < 1)
                     frames = 1;
-                GetPWorld()->GetBulletTime()->SetBulletTimeSlowdownMultiplier(frames, this, 0.5f);
+                GetWorld().GetBulletTime()->SetBulletTimeSlowdownMultiplier(frames, this, 0.5f);
             }
         }
         return;

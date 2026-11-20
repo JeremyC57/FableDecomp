@@ -9,6 +9,9 @@
 // manager into a third (ebp; a bare object expression would be evaluated after the arguments), then the eight arguments go right to left: 5, 0.0f, 0.0f, the receiving thing, the creature,
 // its position, 0x10, 0x14. Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4): PReceivingThing (engine-header name,
 // PDB +0xb4) is at +0xa8, so `this` is modelled locally.
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return; engine/CCreatureActionBase.h FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS), respelled in place on this
+//   row's local CCreatureActionBase (was ?GetPWorld@CCreatureActionBase@@QBEPAVCWorld@@XZ).
 class C3DVector;
 class CMessageEvent;
 
@@ -52,7 +55,9 @@ class CCreatureActionBase { public:                // engine/CCreatureActionBase
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
-    CWorld* GetPWorld() const;              // 0x00692940
+protected:
+    CWorld& GetWorld();                     // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
+public:
 };
 
 class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:
@@ -66,6 +71,6 @@ void CCreatureAction_GiveItemToThing::Initialise()
     CCreatureActionBase::Initialise();
     CThing* pCreatureThing = PCreature.GetPItem();
     CThing* pCreature = PCreature.GetPItem();
-    CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: retail resolves the manager (ebp) before the arguments
+    CMessageEventManager* pManager = GetWorld().m_pMessageEventManager;   // named: retail resolves the manager (ebp) before the arguments
     pManager->AddMessage(MESSAGE_EVENT_PLAYER_INTERACTION, 0x10, pCreature->PeekPos(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
 }

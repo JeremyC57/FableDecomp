@@ -32,6 +32,9 @@
 //   event's buyer goes through the intelligent pointer's inline conversion (fetched before the push of `false`); the shopkeeper
 //   is an inline CTCShop accessor (`lea ecx,[eax+10h]`); the message manager is a named local after a named buyer local.
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return; engine/CCreatureActionBase.h FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS), respelled in place on this
+//   row's local CCreatureActionBase (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ).
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CMessageEvent;
 #include "fable_compiler.h"
@@ -198,7 +201,9 @@ class CCreatureActionBase { public:                            // retail sizeof 
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                  // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0xa8 - 0x10];
-    CWorld* GetWorld();                                 // 0x00692940
+protected:
+    CWorld& GetWorld();                                  // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
+public:
 };
 struct CCreatureAction_BuyThingFromShop : CCreatureActionBase {
     CBaseIntelligentPointer PTarget;                    // +0xa8 the stock item on display
@@ -238,7 +243,7 @@ void CCreatureAction_BuyThingFromShop::PerformAction()
                 if (shopKeeper && shopKeeper->GetInterface(&events, 0x42))
                     events->AddEvent(new NEntityEvents::CEventSoldItem(PCreature, ((CThing*)PTarget.GetPItem()), false));
                 CThing* buyer = ((CThing*)PCreature.GetPItem());
-                CMessageEventManager* manager = GetWorld()->MessageEventManager;
+                CMessageEventManager* manager = GetWorld().MessageEventManager;
                 manager->AddMessage((EMessageEventType)(0x13), 1000, buyer->GetPos(), ((CThing*)PCreature.GetPItem()), 0, 0.0f, 0.0f, 0);
             }
         }

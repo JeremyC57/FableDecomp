@@ -18,6 +18,9 @@
 //   member, then links a fresh 12-byte sentinel through a local before storing it. The item offset is a 12-byte
 //   C3DVector with only X/Y assigned (keeps retail's frame); the name, player, offset and position live in a block of
 //   their own so the "" CCharString dies right after Create.
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return), respelled in place on this row's local CCreatureActionBase (was
+//   ?GetPWorld@CCreatureActionBase@@QBEPAUCRandomSource@@XZ, cast to CWorld* at each use; the casts are gone).
 #include "fable_compiler.h"
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_POPBACK
@@ -167,8 +170,8 @@ protected:
     // NF155 (q4745 follow-up): Ego_r.pdb 0x00519290 + FableWin.pdb 0x01DB6430 ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ (protected,
     // returns a reference; out of line at 0x00692930, the self row re-ported in the same hand-back).
     CPlayer& GetPlayer();                                    // 0x00692930
+    CWorld& GetWorld();                                      // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
 public:
-    CRandomSource* GetPWorld() const;                        // 0x00692940
 };
 struct CCreatureAction_Undress : CCreatureActionBase {
     virtual void PerformAction();
@@ -193,8 +196,8 @@ void CCreatureAction_Undress::PerformAction()
         long item = worn.back();
         modifiers->RemoveAppearanceModifier(item);
         C3DVector velocity;
-        velocity.X = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
-        velocity.Y = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
+        velocity.X = 0.2f - GFFloatRandom(0.4f, GetWorld().GetWorldSeed());
+        velocity.Y = 0.2f - GFFloatRandom(0.4f, GetWorld().GetWorldSeed());
         velocity.Z = 0.15f;
         CThingObject* thing;
         {

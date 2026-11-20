@@ -7,11 +7,14 @@
 // message-event manager), CMessageEventManager::AddMessage(CMessageEventDef*, const C3DVector*, CThing*, CThing*, long) @ 0x00687730.
 // Shape: the landed IS_THING_ALIVE idiom on PReceiver; the post goes through an inline PostMessage(def, sender, receiver) helper whose
 // body FIRST takes `CWorld* world = GetWorld()` into a local: that puts the world call after the three register arguments and before the
-// pushes (a chained `GetWorld()->Manager->AddMessage(...)` pushes first and fetches the manager last, 106v110); then retail calls PCreature.GetPItem() once and DROPS the result (the eax of the first
+// pushes (a chained `GetWorld().Manager->AddMessage(...)` pushes first and fetches the manager last, 106v110); then retail calls PCreature.GetPItem() once and DROPS the result (the eax of the first
 // call is overwritten by the receiver fetch) -- a discarded expression statement in the source; the AddMessage arguments are evaluated right
 // to left (receiver into ebx, sender into edi, the def word into ebp) before the manager is fetched through GetWorld().
 // Members: MessageDef at +0xa8 is a counted def pointer (the copy constructor 0x00982750 bumps the count at +4), Position at +0xac,
 // PReceiver at +0xb8 (an intelligent pointer), Extra at +0xc0. No engine header for this class; modelled locally (retail CCreatureActionBase is 0xa8 bytes).
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return; engine/CCreatureActionBase.h FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS), respelled in place on this
+//   row's local CCreatureActionBase (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ).
 class CMessageEventDef;
 #include "engine/C3DVector.h"
 #include "engine/CThing.h"
@@ -44,7 +47,9 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
-    CWorld* GetWorld();                     // 0x00692940
+protected:
+    CWorld& GetWorld();                      // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
+public:
 };
 
 class CCreatureAction_SendMessage : public CCreatureActionBase { public:
@@ -55,7 +60,7 @@ class CCreatureAction_SendMessage : public CCreatureActionBase { public:
     virtual void PerformAction();
     void PostMessage(CMessageEventDef* def, CThing* sender, CThing* receiver)
     {
-        CWorld* world = GetWorld();
+        CWorld* world = &GetWorld();
         world->MessageEventManager->AddMessage(*def, Position, sender, receiver, Extra);
     }
 };

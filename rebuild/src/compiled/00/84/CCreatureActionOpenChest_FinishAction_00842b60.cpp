@@ -4,6 +4,9 @@
 // (thiscall; propagated STL label in the manifest), CMessageEventManager::AddMessage @ 0x00687540 on the world's manager at +0x60 (result dropped), CCreatureActionBase::FinishAction @ 0x00694430 (non-virtual).
 // Shape: a 12-byte frame for the zero vector built by its inline constructor; the message's eight arguments pushed right to left.
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return; engine/CCreatureActionBase.h FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS), respelled in place on this
+//   row's local CCreatureActionBase (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ).
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CMessageEvent;
 class CThing;
@@ -22,7 +25,9 @@ class CWorld { public:
 class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00694430
-    CWorld* GetWorld();                     // 0x00692940
+protected:
+    CWorld& GetWorld();                      // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
+public:
 };
 class CCreatureAction_OpenChest : public CCreatureActionBase { public:
     virtual void FinishAction();
@@ -33,7 +38,7 @@ void CCreatureAction_OpenChest::FinishAction()
 {
     if (!IsChestOpen()) {
         C3DVector origin;
-        CWorld* world = GetWorld();          // named: retail fetches the world before pushing the arguments
+        CWorld* world = &GetWorld();          // named: retail fetches the world before pushing the arguments
         world->m_pMessages->AddMessage((EMessageEventType)(72), 50, origin, 0, 0, 0.0f, 0.0f, 0);
     }
     CCreatureActionBase::FinishAction();

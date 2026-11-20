@@ -1,0 +1,68 @@
+address	change	grade	test	grades_used	entries	note
+00692910	none	n/a	n/a	1 (census)	q5101	not-a-binder: self leaf right (?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ)
+00692940	none	n/a	n/a	1 (census)	q5102	not-a-binder: self leaf right (?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ)
+00692990	none	n/a	n/a	1 (census)	q11934	not-a-binder: self leaf right (?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ)
+006932b0	none	n/a	n/a	1 (census)	q4516	not-a-binder: census: binds the PDB RegisteredActionEvents spelling (right)
+006946c0	respell in place (static map type on stlport/fable_map.h)	RELOCATION_MATCH	PASS	2 (1 grade + vland)	q4516	ported: static now the private std::map spelling (was 2UCRegisteredActionEventMap); lookup is map::find over _M_find DECL (0x00696340 binds the D1 ??$_M_find spelling, NAME_FIXES); local std::vector/allocator model replaced by the shared stlport header
+0078b070	none	n/a	n/a	1 (census)	q5101	not-a-binder: census: binds the PDB PeekDefinitionManager IBE spelling (right)
+00842b60	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00842bc0	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00842f70	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetPWorld@CCreatureActionBase@@QBEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00842fd0	none	n/a	n/a	1 (census)	q5101	not-a-binder: census: binds the PDB PeekDefinitionManager IBE spelling (right)
+00844260	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008442f0	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+00844380	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+00844410	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+00845900	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetPWorld@CCreatureActionBase@@QBEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00846100	callee respell in place (GetWorld IAE)	RELOCATION_MATCH (vland; q.py DIFFER(687v686) is the oracle cut, same at HEAD)	PASS	2 (1 grade + vland b3)	q5102 q5101	ported (q5102): binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (was GetPWorld QBEPAUCRandomSource + casts); q5101 part still binds ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ (remaining binder, not attempted: local CDefinitionManager port)
+00846410	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102 q5101	ported (q5102): binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (was GetPWorld QBEPAUCRandomSource + casts); q5101 part still binds ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ (remaining binder, not attempted: local CDefinitionManager port)
+00847df0	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+00849140	callee respell in place (PeekDefinitionManager IBE + GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5101 q5102	ported: binds both PDB spellings at 0x00692910 / 0x00692940 (were GetPDefinitionManager / GetPWorld QBE); manager on shared engine/CGameDefinitionManager.h
+008491e0	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00849380	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00849700	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008553c0	none	n/a	n/a	1 (census)	q5101	not-a-binder: census: binds the PDB PeekDefinitionManager IBE spelling (right)
+008559e0	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008579d0	callee respell in place (GetWorld IAE)	RELOCATION_MATCH	PASS	2 (1 grade + vland b3)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ at 0x00692940 (was ?GetPWorld@CCreatureActionBase@@QAEPAVCWorld@@XZ) on its local CCreatureActionBase; symbol diff vs HEAD: only that callee
+00859660	none	n/a	n/a	1 (census)	q5101 q5102	not-a-binder: census: binds PeekDefinitionManager IBE and GetWorld IAE (both right)
+00865c20	none	n/a	n/a	0	q5101	open: remaining wrong binder of 0x00692910, not attempted (header port; APPLIED q5101)
+0087ca30	none	n/a	n/a	1 (census)	q5101	not-a-binder: census: binds the PDB PeekDefinitionManager IBE spelling (right)
+0087f3a0	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008b93d0	port onto shared headers (+ NF164 retail-class opt-in)	RELOCATION_MATCH	PASS	2 (1 grade + recheck_final)	q5102	ported: binds ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (was ?GetWorld@CCombatActionBase@@QAEPAVCWorld@@XZ); own leaf unchanged (UAE); local models dropped
+008bc1a0	none	n/a	n/a	1 (census)	q5102 q11934	not-a-binder: census: binds GetWorld IAE and PeekThingSearchTools IBE (both right)
+008bf800	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008c0900	none	n/a	n/a	0	q5102	open: remaining wrong binder of 0x00692940, not attempted (header port; APPLIED q5102)
+008c1600	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008c4fd0	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008c6430	none	n/a	n/a	0	q5102	open: remaining wrong binder of 0x00692940, not attempted (header port; APPLIED q5102)
+008c64f0	none	n/a	n/a	1 (census)	q5101 q5102	not-a-binder: census: binds PeekDefinitionManager IBE and GetWorld IAE (both right)
+008c6860	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008c8180	none	n/a	n/a	0	q5101	open: remaining wrong binder of 0x00692910, not attempted (header port; APPLIED q5101)
+008c89d0	none	n/a	n/a	0	q5101	open: remaining wrong binder of 0x00692910, not attempted (header port; APPLIED q5101)
+008cb620	none	n/a	n/a	0	q5101	open: remaining wrong binder of 0x00692910, not attempted (header port; APPLIED q5101)
+008cb780	none	n/a	n/a	0	q5101	open: remaining wrong binder of 0x00692910, not attempted (header port; APPLIED q5101)
+008cdd40	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008f3100	none	n/a	n/a	0	q5102	open: remaining wrong binder of 0x00692940, not attempted (header port; APPLIED q5102)
+008f3310	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+008f3630	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+009104d0	none	n/a	n/a	1 (census)	q4995	not-a-binder: census: binds the PDB SetSeat IAE spelling
+0091b010	none	n/a	n/a	1 (census)	q11697	not-a-binder: self leaf right (AAE)
+0091b170	none	n/a	n/a	1 (census)	q11696 q11697	not-a-binder: self leaf right (UAE); binds AcquireWorkSpot AAE (right)
+0092d600	callee access respell in place (FindFreeBed protected)	RELOCATION_MATCH	PASS	2 (1 grade + vland)	q5017	ported: binds ?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z (was QAE) on its existing local CAIStateGroup_GoToBed
+0092d6f0	none	n/a	n/a	1 (census)	q5017	not-a-binder: census: binds ?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z (right)
+0092d7c0	callee access respell in place (FindFreeBed protected)	RELOCATION_MATCH	PASS	2 (1 grade + vland)	q5017	ported: binds ?FindFreeBed@CAIStateGroup_GoToBed@@IAE_N_N@Z (was QAE) on its existing local CAIStateGroup_GoToBed; lock claimed (was released)
+0092da20	none	n/a	n/a	1 (census)	q5017	not-a-binder: census: binds the IAE spelling (right)
+0093d3a0	none	n/a	n/a	1 (census)	q11693	not-a-binder: self leaf right (ABE)
+0093d800	none	n/a	n/a	1 (census)	q11693	not-a-binder: census: binds the ABE spelling (right)
+0093db10	none	n/a	n/a	1 (census)	q11694	not-a-binder: self leaf right (MBE)
+00945bd0	none	n/a	n/a	1 (census)	q4995	not-a-binder: census: binds the PDB SetSeat IAE spelling
+0094b8b0	none	n/a	n/a	1 (census)	q4995	not-a-binder: census: binds the PDB SetSeat IAE spelling
+009551a0	none	n/a	n/a	1 (census)	q11779	not-a-binder: census: binds the IAE spelling (right)
+00956960	none	n/a	n/a	1 (census)	q11878	not-a-binder: self leaf right (UBE)
+00964360	none	n/a	n/a	1 (census)	q11781	not-a-binder: self leaf right (ABE)
+00964da0	none	n/a	n/a	1 (census)	q11781	not-a-binder: census: binds the ABE spelling (right)
+009692c0	none	n/a	n/a	1 (census)	q4953	not-a-binder: census: binds ?GetPaymentFinishedMessage@CAIStateGroup_TavernKeeper@@QAE_NXZ (right)
+0096cd70	none	n/a	n/a	1 (census)	q11715	not-a-binder: census: binds ?Eat@CAIStateGroup_EatAtTable@@IAE_NPAVCThing@@@Z (right)
+0096dbc0	none	n/a	n/a	1 (census)	q5102	not-a-binder: census: binds the PDB GetWorld IAE spelling (right)
+0121e030	self rename + respell (static on engine/CCreatureActionBase.h)	RELOCATION_MATCH	PASS	2 (1 grade + vland)	q4516	ported: defines the private static RegisteredActionEvents (was g_tree_013ba8bc CRetailTree_node0x1c stand-in); RENAMES s1
+01229280	self rename + respell (static on engine/CCreatureActionBase.h)	RELOCATION_MATCH	PASS	2 (1 grade + vland)	q4516	ported: same definition; _M_erase 0x00696900 now binds the PDB spelling the 0x00696900 row defines (was Erase_00696900@CRetailTree); RENAMES s1

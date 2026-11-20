@@ -148315,9 +148315,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121e030'
-        Module = '_static_init'
-        Source = '01/21/staticinit_gtree013ba8bc_0121e030.cpp'
-        TestSource = '01/21/staticinit_gtree013ba8bc_0121e030_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '01/21/CCreatureActionBase_dynamicinitializerforRegisteredActionEvents_0121e030.cpp'
+        TestSource = '01/21/CCreatureActionBase_dynamicinitializerforRegisteredActionEvents_0121e030_test.cpp'
         PassPattern = '0121e030_TEST PASS'
     }
     [pscustomobject]@{
@@ -176967,9 +176967,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01229280'
-        Module = '_unattributed'
-        Source = '01/22/unattributed_CParticleMorphsTreeDeleter01229280_01229280.cpp'
-        TestSource = '01/22/unattributed_CParticleMorphsTreeDeleter01229280_01229280_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '01/22/CCreatureActionBase_dynamicatexitdestructorforRegisteredActionEvents_01229280.cpp'
+        TestSource = '01/22/CCreatureActionBase_dynamicatexitdestructorforRegisteredActionEvents_01229280_test.cpp'
         PassPattern = '01229280_TEST PASS'
     }
     [pscustomobject]@{

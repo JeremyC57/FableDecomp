@@ -11,6 +11,9 @@
 // into a third before the arguments); IS_THING_ALIVE on both pointers; `this` spills to the frame (`mov [esp+0Ch],ebp`) because ebp
 // walks on to &PTarget; the `new` null test selects 0 for AddEvent (the landed ShowItemToThing shape).
 // Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return; engine/CCreatureActionBase.h FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS), respelled in place on this
+//   row's local CCreatureActionBase (was ?GetPWorld@CCreatureActionBase@@QBEPAVCWorld@@XZ).
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 #include "fable_compiler.h"
 class C3DVector;
@@ -94,7 +97,9 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
-    CWorld* GetPWorld() const;                  // 0x00692940
+protected:
+    CWorld& GetWorld();                         // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
+public:
 };
 class CCreatureAction_PlayerInteractionGreet : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PTarget;            // +0xa8
@@ -111,7 +116,7 @@ void CCreatureAction_PlayerInteractionGreet::PerformAction()
             events->AddEvent(new NEntityEvents::CEventTalkedToBy(PTarget.GetPItem()));
         CThing* pCreatureThing = PCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();
-        CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;
+        CMessageEventManager* pManager = GetWorld().m_pMessageEventManager;
         pManager->AddMessage((EMessageEventType)(0x14), 0x10, pCreature->PeekPos(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 0);
     }
 }

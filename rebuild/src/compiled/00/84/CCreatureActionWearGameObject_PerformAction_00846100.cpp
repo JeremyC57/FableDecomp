@@ -18,6 +18,9 @@
 //   ??1CLongList@@, ?remove@CLongList@@, ?GetConflictingModifiers@..).
 // Layout: same local models as the landed CCreatureAction_Undress::PerformAction (0x00846410); thing +0x60 physics TC,
 //   +0x8c def index (word).
+// agentNF164 (q5102): CCreatureActionBase::GetWorld 0x00692940 takes its PDB spelling ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (Ego_r.pdb +
+//   FableWin.pdb protected, CWorld& return), respelled in place on this row's local CCreatureActionBase (was
+//   ?GetPWorld@CCreatureActionBase@@QBEPAUCRandomSource@@XZ, cast to CWorld* at each use; the casts are gone).
 #include "fable_compiler.h"
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_REMOVE_DECL
@@ -190,8 +193,8 @@ protected:
     // NF155 (q4745 follow-up): Ego_r.pdb 0x00519290 + FableWin.pdb 0x01DB6430 ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ (protected,
     // returns a reference; out of line at 0x00692930, the self row re-ported in the same hand-back).
     CPlayer& GetPlayer();                                    // 0x00692930
+    CWorld& GetWorld();                                      // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
 public:
-    CRandomSource* GetPWorld() const;                        // 0x00692940
 };
 struct CCreatureAction_WearGameObject : CCreatureActionBase {
     virtual void PerformAction();
@@ -216,8 +219,8 @@ void CCreatureAction_WearGameObject::PerformAction()
                 modifiers->RemoveAppearanceModifier(id);
                 worn.remove(id);
                 C3DVector velocity;
-                velocity.X = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
-                velocity.Y = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
+                velocity.X = 0.2f - GFFloatRandom(0.4f, GetWorld().GetWorldSeed());
+                velocity.Y = 0.2f - GFFloatRandom(0.4f, GetWorld().GetWorldSeed());
                 velocity.Z = 0.15f;
                 CThingObject* thing;
                 {

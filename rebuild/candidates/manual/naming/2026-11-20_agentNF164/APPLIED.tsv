@@ -1,0 +1,26 @@
+entry	address	status	binders_respelled	note
+q11693	0x0093D3A0	done-already	0	Both PDBs ABE (Ego_r 0x00961030 / FableWin 0x02B8EF80); self row 0x0093D3A0 already ABE (NF137); census: its one REFS binder 0x0093D800 binds ABE (HEAD compile).
+q11694	0x0093DB10	done-already	0	Both PDBs MBE (Ego_r 0x00961A40 / FableWin 0x02B90F10); self row 0x0093DB10 defines ?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z (HEAD compile, objdump); no REFS binder.
+q11695	0x0093DC10	open	0	not started
+q11696	0x0091B170	done-already	0	Both PDBs UAE (Ego_r 0x0093EA50 / FableWin 0x02BCB360); self row 0x0091B170 defines the claim (HEAD compile, objdump); no REFS binder.
+q11697	0x0091B010	done-already	0	Both PDBs AAE (Ego_r 0x0093E8C0 / FableWin 0x02BCB790); self row 0x0091B010 defines the claim (HEAD compile); census: its one REFS binder 0x0091B170 binds it.
+q11714	0x0092A0C0	deferred	0	deferred: held by NF161 (row 0x0092A8A0, hand-back pending landing). Census (HEAD objects): 0x0092A8A0 binds ?GetDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ; 0x0092B360 / 0x0092B3E0 bind ?GetDummy@CAIStateGroup_SkillPractice@@QAE_NXZ; the self row keeps its stand-in leaf. Nothing changed (the family moves whole)
+q11715	0x0096C9A0	open	0	not started
+q11779	0x00954220	open	0	not started
+q11781	0x00964360	done-already	0	Both PDBs ABE returning CThing* (Ego_r 0x00988C30 / FableWin 0x02C3AE50); self row 0x00964360 defines the claim (HEAD compile); census: its one REFS binder 0x00964DA0 binds it.
+q11783	0x0093DC10	open	0	not started
+q11878	0x00956960	done-already	0	Both PDBs UBE (Ego_r 0x0097B4B0 / FableWin 0x02BF6900); self row 0x00956960 defines the claim (HEAD compile); no REFS binder.
+q11895	0x00956720	open	0	not started
+q11896	0x00956730	open	0	not started
+q11934	0x00692990	open	0	not started
+q11937	0x00917330	open	0	not started
+q11938	0x009429C0	open	0	not started
+q11939	0x00966A90	open	0	not started
+q11940	0x009681A0	open	0	not started
+q11941	0x0090FC50	open	0	not started
+q4516	0x013BA8BC	done	3	Both PDBs name the initializer/atexit destructor of CCreatureActionBase::RegisteredActionEvents; the 4 REFS binders now all bind the private 0V?$map spelling (0x006932B0 already did; 0x0121E030 / 0x01229280 self-renamed to the static definition; 0x006946C0 respelled in place). vland RELOCATION_MATCH PASS x3 (work/b1.log). 0x00696340 / 0x00696900 callee spellings shrink (NOTES)
+q4953	0x00968460	done-already	0	Both PDBs QAE (Ego_r 0x0098DDA0 / FableWin 0x02C48040, Finished before Cancelled as 0x00968460 before twin 0x00968510); self row 0x00968460 Leaf is the claim; census: the one REFS binder 0x009692C0 binds it (HEAD compile). The wrong spellings in the queue line are stale labels.
+q4995	0x009106E0	done-already	0	Both PDBs IAE (Ego_r 0x00935700 / FableWin 0x02B731A0); self row Leaf is the claim; census: all 3 REFS binders (0x009104D0, 0x00945BD0, 0x0094B8B0) bind it (HEAD compiles).
+q5017	0x0092D1F0	done	2	Both PDBs IAE (Ego_r 0x00950460 / FableWin 0x02B51F70); self 0x0092D1F0 not landed (catalog only); 0x0092D600 / 0x0092D7C0 respelled QAE->IAE (access-only, in place), 0x0092D6F0 / 0x0092DA20 already IAE: all 4 REFS binders on one spelling. vland RELOCATION_MATCH PASS x2 (work/b2.log)
+q5101	0x00692910	open	1	partial: 1 of 8 wrong binders respelled (0x00849140, recheck_final). Remaining wrong binders, not attempted (each needs a header port; the split does not grow): 0x00846100 0x00846410 0x008C8180 0x008C89D0 (bind ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ on a local CDefinitionManager: CCharString, CDefPointer, CDefBase/CDefClassBase and the def types must move to fable_string.h / engine/CDefPointer.h / CDefClassBase.h / CDefinitionManager.h + CGameDefinitionManager.h first; a cast through an incomplete CGameDefinitionManager was rejected), 0x00865C20 (?GetDefinitionManager@CCombatActionBase@@QAEPAVCGameDefinitionManager@@XZ, local CCombatActionBase: port onto CCombatAction_GenericStrikeResponseBase.h needs a typed DustTravelDirection, a FrameUpdate declaration and a CCreatureActionBase::GetWorldMap opt-in), 0x008CB780 (?GetDefinitionManager@CCombatActionBase@@QAEPAVCDefinitionManager@@XZ), 0x008CB620 (?GetPDefinitionManager@CCreatureAction_UnsheatheWeapons@@QBEPAVCDefinitionManager@@XZ). Already right: 0x0078B070 0x00842FD0 0x008553C0 0x00859660 0x0087CA30 0x008C64F0; self 0x00692910 right
+q5102	0x00692940	open	11	partial: 11 of 14 wrong binders respelled (10 in place on their local CCreatureActionBase, 0x008B93D0 ported onto the shared headers + NF164 opt-in; recheck_final). Remaining wrong binders, not attempted (header ports): 0x008C0900 (?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ; local CCombatActionBase / CDefinitionManager / CWorld; engine/CCreatureAction_BriarRoseShotFarOutof.h has a _CLASS retail mode), 0x008F3100 (?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ; no derived-class header), 0x008C6430 (?GetPWorld@CCreatureAction_TrollWhackGroundBase@@QBEPAVCWorld@@XZ; needs a TrollProjectileAttack retail-class opt-in, CDefPointer<CMeleeCombatAbilityDef> and CreateShot 0x007C0AD0 spellings). Already right: 22 REFS rows (STATUS not-a-binder); self 0x00692940 right

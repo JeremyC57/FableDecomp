@@ -9,6 +9,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASEPHYSICALSHIELDSPELL
+// NF164 opt-in (q5102, row 0x008B93D0 FinishAction): the polymorphic retail class, RTTI .?AVCCreatureAction_ReleasePhysicalShieldSpell@@ :
+// CCombatActionBase (ghidra_out/rtti_bases.tsv; vtable 0x0127C09C slot 4 = 0x008B93D0), no own data (retail sizeof 0x114 = CCombatActionBase).
+// Ego_r.pdb + FableWin.pdb ?FinishAction@CCreatureAction_ReleasePhysicalShieldSpell@@UAEXXZ. Declaration only; needs engine/CCombatActionBase.h
+// (FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_CCOMBATACTIONBASE_MELEE). The generated opaque model stays in the #else.
+#include "engine/CCombatActionBase.h"
+class CCreatureAction_ReleasePhysicalShieldSpell : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                         // 0x008B93D0
+};
+#else
+
 #pragma pack(push, 1)
 class CCreatureAction_ReleasePhysicalShieldSpell {
 public:
@@ -27,7 +39,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleasePhysicalShieldSpell) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleasePhysicalShieldSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ReleasePhysicalShieldSpell) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ReleasePhysicalShieldSpell, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CCREATUREACTION_RELEASEPHYSICALSHIELDSPELL
 #endif // FABLE_ENGINE_CCREATUREACTION_RELEASEPHYSICALSHIELDSPELL_H
