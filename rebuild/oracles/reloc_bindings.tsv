@@ -40028,3 +40028,11 @@ _time	00bfed22	008405f0
 ??_7CCreatureAction_VillagerAttackKnockdown@@6B@	01298f74	0097cf90
 ??_7CCreatureAction_BeetleTakeOff@@6B@	012995ec	00982c10
 ??_7CCreatureAction_BeetleLand@@6B@	01299734	00982c70
+??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x267481f1@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x267481f1@@JJ@Z	0078b7c0	0078a690
+?AttemptToFireRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	0078a5d0	0078a690
+?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a390	0078a690
+?GetDamageMultiplierFromThingAtBuildUpTime@?A0x267481f1@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	0078a690
+?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@ABE_NXZ	00789e60	0078a690
+?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ	005da950	0078a690
+?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a2c0	0078a690
+?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z	0066b1d0	0078a690

@@ -1,0 +1,28 @@
+diff --git a/rebuild/include/engine/CTCWeapon.h b/rebuild/include/engine/CTCWeapon.h
+index 4511603d3..d6f851620 100644
+--- a/rebuild/include/engine/CTCWeapon.h
++++ b/rebuild/include/engine/CTCWeapon.h
+@@ -102,6 +102,12 @@ public:
+     bool IsAnalogueLoading() const;                          // 0x005DA8F0
+     bool IsProjectileWeaponLoaded() const;                   // 0x005DA980
+ #endif
++#ifdef FABLE_RETAIL_CTCWEAPON_AUTOLOADING
++    // Retail opt-in (hand3c3, row 0x0078A690 CTCHeroRangedAttacks::FrameUpdate): ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ
++    // (FableWin.pdb 0x0239B3E0, Ego_r.pdb 0x0063A790 tc_weapon.obj #25, Ego_d.pdb), out of line in retail at 0x005DA950 (landed).
++    // Declaration only: no layout change.
++    bool IsProjectileWeaponAutoLoading() const;              // 0x005DA950
++#endif
+ #ifdef FABLE_RETAIL_CTCWEAPON_MEMBERS
+     // Retail opt-in (chunk 1002, row 0x005CB2B0 CTCInventoryWeapons::SetThingAsActiveWeapon): the Ego_r.pdb members after the CTCBase part
+     // (struct_layouts_egor.tsv, sizeof 0x28, the same offsets as the generated default branch below): the row writes Wielded +0x24
+@@ -163,6 +169,10 @@ public:
+     // (public const; the retail branch declares it under FABLE_RETAIL_CTCWEAPON_LOADING) on this generated layout, for the self row that
+     // reads WeaponDef_Object +0x0C / ProjectileWeaponLoaded +0x10. Declaration only: no layout change.
+     bool IsProjectileWeaponLoaded() const;                   // 0x005DA980
++#endif
++#ifdef FABLE_RETAIL_CTCWEAPON_AUTOLOADING
++    // Same opt-in as in the retail branch above, on this generated layout. Declaration only: no layout change.
++    bool IsProjectileWeaponAutoLoading() const;              // 0x005DA950
+ #endif
+     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+     unsigned char    _pad_0x04[0x4];                         // +0x04

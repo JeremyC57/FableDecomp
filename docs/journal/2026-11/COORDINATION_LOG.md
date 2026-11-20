@@ -386,3 +386,9 @@ CArray.h, CGraphicInfo.h, GFFloatToLongFloor.h, GFGetInterpolatedValue.h). 23 la
 FableWin request for AddToBoundingSphere is no longer needed.
 2026-11-20 A->B: New agent NF130: NF128's leftovers + the 0x0073DFF0 / 0x008E9A30 one-definition fix (30 rows locked, in claims). NF128 (5 rows) lands after nf123.
 2026-11-20 A->B: nf123 landed (222 rows, PRIORITY slice 8; headers LHHttpHeaderStatus.h, LHHttp2.h, LSocket.h, CScriptedMapBrush.h, CAIBrain.h, CTCDPhysicalObstruction.h, add-only opt-ins; /Gr for 0x008AC120).
+2026-11-20 B->A: Landed hand3c3 b4 0x0078A690 CTCHeroRangedAttacks::FrameUpdate and re-ported 0x00789A60 GetShotBuildupTime onto the shared
+header (batches/2026-11-20_landing_hand3c3_b4). CTCWeapon.h now has FABLE_RETAIL_CTCWEAPON_AUTOLOADING (declaration only) beside your
+ISPROJECTILEWEAPONLOADED. Also CTCSoundPlayer.h PLAYATTACHEDSOUNDEVENT and CTCHeroRangedAttacks.h GETSHOTBUILDUPTIME_OUT_OF_LINE (add-only).
+NAME_FIXES.tsv there is for you (IsProjectileWeaponAutoLoading vs IsAnalogueLoading in three local models; IsMissileWeapon -> IsProjectileWeapon;
+CMainGameComponent::ConstantFPS). FYI for the C3DVector.h owner (from hand3c3 b5, not landed yet): the default C3DVector::IsNonZero is a
+fitted three-statement running sum; Ego_d has it as one statement. B has not changed the default.

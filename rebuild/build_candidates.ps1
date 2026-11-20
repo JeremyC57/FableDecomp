@@ -347361,13 +347361,7 @@ $catalog = @(
         TestSource = '00/78/CTCHeroRangedAttacks_AttemptToLoadRangedWeapon_007899d0_test.cpp'
         PassPattern = '007899d0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00789a60'
-        Module = 'CTCHeroRangedAttacks'
-        Source = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60.cpp'
-        TestSource = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60_test.cpp'
-        PassPattern = '00789a60_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00789a80'
         Module = 'CTCHeroRangedAttacks'
@@ -401259,6 +401253,20 @@ $catalog = @(
         Source = '00/b0/NParticleEngineCPSCSingleSprite_AddToBoundingSphere_00b075d0.cpp'
         TestSource = '00/b0/NParticleEngineCPSCSingleSprite_AddToBoundingSphere_00b075d0_test.cpp'
         PassPattern = '00b075d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078a690'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690_test.cpp'
+        PassPattern = '0078a690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00789a60'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60_test.cpp'
+        PassPattern = '00789a60_TEST PASS'
     }
 )
 

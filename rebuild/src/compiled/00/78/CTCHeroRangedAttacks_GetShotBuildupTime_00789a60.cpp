@@ -1,59 +1,49 @@
 // CTCHeroRangedAttacks::GetShotBuildupTime() const -- seconds the hero has spent aiming the current shot (aiming timer frames / frames per second)
 // Leaf: ?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ
-// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
-//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00789A60, 10 bytes, plain `ret` (float on the x87 stack).
-// Identity: Ego_r.pdb `?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ`, by the donor TU order (GetProjectileTargetingZoomParameter
-//   0x790A30, GetShotBuildupTime 0x790A40, GetPullBackAmount 0x790A60, GetShotAccuracyFraction 0x790A70; retail 0x00789A50 reads
-//   ProjectileWeaponZoomParameter +0x40, 0x00789A70 PullBackAmount +0x20). Its caller 0x00899C5F fetches the component as
-//   interface 0x81 (CTCHeroRangedAttacks::GetInterfaceType 0x0078AF40). Catalog label `CTCTalk::GetCurrentSpeechDuration`
-//   was propagated (CTCTalk +0x18 is its Attitude enum).
-// Layout: as the landed CTCHeroRangedAttacks ctor 0x00789BB0 (Ego_r.pdb CTCHeroRangedAttacks, 0x4C bytes, no containers so
-//   the PDB offsets hold in retail; no engine header exists for the class).
-// Globals: CMainGameComponent::GetConstantFPS() 0x01375550 (long, 15).
-// Shape: a long divided as float by a long global: `fild [this+18h] ; fidiv [g]`.
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-class CThing;
-class CThingCreatureBase;
-class CHeroCombatDef;
-template<class T> class CDefPointer { public:
-    T* Object;
-};
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                            // +0x04
-    bool ToBeRemoved;                               // +0x08
-    bool IsInGlobalUpdateTCs;                       // +0x09
-};
-class CTCHeroRangedAttacks : public CTCBase { public:             // vtable 0x0126BAF4
-    CThingCreatureBase* PParentCreature;            // +0x0c
-    CDefPointer<const CHeroCombatDef> PHeroCombatDef;   // +0x10
-    bool  FireCycleInProgress;                      // +0x14
-    bool  Aiming;                                   // +0x15
-    bool  FireQueued;                               // +0x16
-    bool  Loading;                                  // +0x17
-    long  AimingTimer;                              // +0x18
-    long  PullBackTimer;                            // +0x1c
-    float PullBackAmount;                           // +0x20
-    float Accuracy;                                 // +0x24
-    float DamageMultiplier;                         // +0x28
-    bool  Decapitate;                               // +0x2c
-    long  ButtonReleaseCancelTimer;                 // +0x30
-    float ButtonPressure;                           // +0x34
-    float LastButtonPressure;                       // +0x38
-    float ProjectileWeaponZLockPressure;            // +0x3c
-    float ProjectileWeaponZoomParameter;            // +0x40
-    long  ProjectileWeaponFirstPersonZoomModeIndex; // +0x44
-    unsigned long BowDrawbackSoundID;               // +0x48
-    float GetShotBuildupTime() const;
-};
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00789A60, 10 bytes: `fild dword [ecx+18h] ; fidiv dword [CMainGameComponent::ConstantFPS] ; ret`.
+// Identity (re-port onto the shared header, audit 2026-11-20; landed before on a row-local class model): Ego_r.pdb / FableWin.pdb
+//   ?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ; Ego_d.pdb procedure in tc_hero_ranged_attacks (file id 2496, the .cpp of
+//   FrameUpdate; lines 751..753, debug length 42, no local). An ordinary member of that .cpp, expanded by FrameUpdate 0x0078A690
+//   (0x0078A861 `fild` / 0x0078A868 `fidiv`), whose row carries this text as a same-TU copy.
+// Bracket: `((float)AimingTimer)` is byte-required in the FrameUpdate expansion (0x0078A868: without it the fidiv is scheduled after
+//   `test eax,eax`, DIFFER 1097v1097) and byte-neutral here (the same 10 bytes with or without it); it is written here so that
+//   the address has one text.
+// Globals: 0x01375550 CMainGameComponent::ConstantFPS (protected static long) through the inline static GetConstantFPS().
+#define FABLE_RETAIL_FIRE_RANGED_WEAPON
+#define FABLE_RETAIL_CTCHERORANGEDATTACKS_GETSHOTBUILDUPTIME_OUT_OF_LINE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_GET_ORIGINAL_CHAIN
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CTCWEAPON
+#define FABLE_RETAIL_CTCWEAPON_MEMBERS
+#define FABLE_RETAIL_CTCWEAPON_LOADING
+#define FABLE_RETAIL_CTCWEAPON_AUTOLOADING
+#define FABLE_RETAIL_CTCCARRYING_MEMBERS
+#define FABLE_RETAIL_CTCSOUNDPLAYER
+#define FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSOUNDEVENT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#define FABLE_RETAIL_C3DVECTOR_SQUARE_GROUPED_PASS23
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#include "stlport/fable_containers.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCHeroRangedAttacks.h"
 
 float CTCHeroRangedAttacks::GetShotBuildupTime() const
 {
-    return (float)AimingTimer / CMainGameComponent::GetConstantFPS();
+    return ((float)AimingTimer) / CMainGameComponent::GetConstantFPS();
 }
