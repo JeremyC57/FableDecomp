@@ -28,11 +28,15 @@ VC7.1 cross-jumps the three tail sprite blocks into the first one (0x00649887, 0
 - Callees use FableWin / Ego_r spellings: GetScreenFadeOutColour, GetScreenFadeOutAlpha, IsScreenFullyFadedOut, IsScreenFadeOut, IsDisplayingMiniMapOnRegionLoad, IsPerformingRegionLoad, IsPaused, IsDisplayingText, IsFlagSet, IsInCutscene, IsCutsceneSkippable, IsCutsceneSkippableWhilePaused, IsDisplayingItems, IsOverridingScreenFade, PeekPControlledCreature, PeekDisplayEngine.
 - Globals:
   - VIRTUAL_SCREEN_WIDTH / VIRTUAL_SCREEN_HEIGHT are Ego_r.pdb publics.
-  - g_bSaveLoadFailed (0x013B89C0) is descriptive. It is the name three landed rows already use for that address: 0x00416953, 0x00498490, 0x004A5A40.
+  - g_bSaveLoadFailed (0x013B89C0) is descriptive. Three landed rows already use this name for that address: 0x00416953, 0x00498490, 0x004A5A40. A fourth landed row, 0x00499D90 CProgressDisplay::StopProgress, spells it `g_ProgressBlackScreenB`; that spelling needs a respell to keep one name per address.
 
 **Compile mode:** `#pragma optimize("s", on)`, with retail's biased frame `lea ebp,[esp-74h]`. Flags: none.
 
-**Inline-budget:** none; the source has no inline control device. IS_THING_ALIVE's out-of-line body comes from the existing shared ThingAlive.h contract FABLE_RETAIL_IS_THING_ALIVE_NOINLINE. Retail calls the COMDAT 0x0043DBF0 twice, and the TU-mate 0x00649E8B uses the same contract.
+**Inline-budget (line 2, amended after landing b43998c2a):** two existing shared-header contracts, no flag, no pragma:
+- FABLE_RETAIL_IS_THING_ALIVE_NOINLINE (engine/ThingAlive.h, __declspec(noinline)): retail calls the COMDAT 0x0043DBF0 twice (0x00649666, 0x006497D3). Without it: DIFFER(977v938).
+- FABLE_RETAIL_CTHING_GETTC_EXPANDED (engine/CThing.h, PeekTC<T> FABLE_FORCEINLINE, owner decision 2026-11-01). Without it: DIFFER(901v938).
+
+The TU-mate 0x00649E8B uses both. The landed text said "none" on a later line. `amend_landed_006495a8.cpp` / `amend.diff` is the comment-only respell: line 2 now names both devices, and the old two lines are removed. It rechecks as RELOCATION_MATCH PASS (`vland_amend.log`, `--recheck-landed`).
 
 ## Header overlay (`hdr/`, `hdr.diff`)
 
@@ -60,6 +64,8 @@ The overlay is add-only: 45 `+` lines, no `-` lines. pin_asserts.py pinned 0, be
 | phero initialised at its declaration, before the save/load test | DIFFER(908v938) |
 | `= 0` on the two component pointers removed | still RELOCATION_MATCH. Kept for Ego_d's `and [x],0` lines 1420 / 1450. |
 | FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_COPY (a device) | still RELOCATION_MATCH: not needed, not used |
+| FABLE_RETAIL_IS_THING_ALIVE_NOINLINE removed | DIFFER(977v938) |
+| FABLE_RETAIL_CTHING_GETTC_EXPANDED removed | DIFFER(901v938) |
 
 ## Test (`test/006495a8.cpp`, links the real row object)
 

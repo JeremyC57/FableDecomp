@@ -1,4 +1,5 @@
 // NPlayerGui::CDrawScreenFade::Draw(const CEnginePrimitivePrepareInfo& info) -- the full-screen fade box: black over the virtual screen while the save/load-failed flag is set; else, unless the hero's quest-completion UI overrides the fade, while the display engine's screen fade is active, its colour (alpha from the engine) over the virtual screen grown by 8 units -- layer 3 when the full fade-out was drawn and the region-load minimap shows during a region load, layer 8 while the hero's receive-items UI is displaying or the subtitles show text with flag 8, layer 3 in a skippable-while-paused cutscene while paused, else layer M1 (remembering a fully opaque fade-out); with no fade, clear the remembered fade-out
+// Inline-budget: __declspec(noinline) through the header opt-in FABLE_RETAIL_IS_THING_ALIVE_NOINLINE (engine/ThingAlive.h) -- retail calls the IS_THING_ALIVE<const CThingPlayerCreature*> COMDAT 0x0043DBF0 out of line twice (0x00649666, 0x006497D3); without it DIFFER(977v938). Also the CThing.h header contract FABLE_RETAIL_CTHING_GETTC_EXPANDED (PeekTC<T> __forceinline, owner decision 2026-11-01: no out-of-line PeekTC in Ego_r.pdb or Fable.exe; without it DIFFER(901v938)). Both are the contracts the TU-mate CDrawFishingGame::Draw 0x00649E8B uses. No flag, no pragma.
 // Leaf: ?Draw@CDrawScreenFade@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006495A8, 938 bytes, thiscall, `ret 4`; size TU (#pragma optimize("s"): biased ebp frame `lea ebp,[esp-74h]`).
@@ -18,8 +19,6 @@
 //   CSubtitleRenderer::IsCutsceneSkippable 0x0048DE44, CEnginePrimitive2DSprite ctor 0x0041BEB0, CIEngine::SetPersistentPrimitive (slot 23).
 // Data: g_bSaveLoadFailed 0x013B89C0 (descriptive name, as the landed rows 0x00416953 / 0x00498490 / 0x004A5A40 spell it), VIRTUAL_SCREEN_WIDTH
 //   0x013961E8 / VIRTUAL_SCREEN_HEIGHT 0x013961F0 (Ego_r.pdb publics ?VIRTUAL_SCREEN_WIDTH@@3NA / ..HEIGHT..), 8.0f 0x0125916C, -8.0f 0x0125A298.
-// Inline-budget: none -- no inline control device. IS_THING_ALIVE's noinline body is the shared ThingAlive.h contract
-//   FABLE_RETAIL_IS_THING_ALIVE_NOINLINE (retail calls the COMDAT 0x0043DBF0 twice), as the TU-mate CDrawFishingGame::Draw 0x00649E8B uses it.
 // Overlays (add-only opt-ins): CDisplayEngine.h FABLE_RETAIL_CDISPLAYENGINE_SCREENFADE_DRAW, CFadeInFadeOutBase.h ..._GETCOLOUR,
 //   CSubtitleRenderer.h ..._SKIPPABLEWHILEPAUSED, CWorld.h FABLE_RETAIL_CWORLD_SCREENFADE_CALLEES, CTCQuestCompletionUI.h
 //   ..._ISOVERRIDINGSCREENFADE, CTCHeroReceiveItems.h ..._ISDISPLAYINGITEMS.
