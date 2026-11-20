@@ -9,6 +9,10 @@
 // Layout: rebuild/include/engine/CAnimComponentSetCreatureMode.h is data-only (Mode +0x08, EMode), so the polymorphic class
 // is modelled locally.
 // Leaf: ?Initialise@CAnimComponentSetCreatureMode@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   ParseLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0
@@ -41,15 +45,9 @@ class CStringParser : public CBaseClass { public:                  // retail 0x2
 
 class CPersistContext;
 
-void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
-// The parse step as an inline helper: its local is homed in the caller's dead argument slot.
-inline long ParseLong(CPersistContext& context, CStringParser& parser)
-{
-    long value;
-    TransferIn(&context, &parser, &value);
-    return value;
-}
 
 class CAnimComponentBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -67,7 +65,7 @@ bool CAnimComponentSetCreatureMode::Initialise(CPersistContext& context, const C
 {
     Reset();
     CStringParser parser(text, 0, CCharString("", -1), 0);
-    long mode = ParseLong(context, parser);
+    long mode = CPersistTraitsSLONG::TransferIn(context, parser);
     if (mode) {
         Mode = mode;
         return true;

@@ -18,6 +18,9 @@
 //   referenced once per exit and its slot outranks the conditional-temp flag ([ebp-8], as retail); the binary cases are
 //   mode 2 = TransferMapIn(PLoadStream) and mode 3 = TransferMapOut(PSaveStream) (the parked source had them swapped,
 //   which the masked jump-target diff hid).
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferInLong_009e2590(CPersistContext*, CStringParser*, long*) (0x009E2590) replaced by the shared
+//   engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY): the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (the landed self spelling of 0x009E2590).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -84,7 +87,8 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x0040E510 for CCharString
     void TransferOut(CPersistContext& context, CCharString& out, const T& value); // 0x0040E630 for CCharString
 };
-void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 void __fastcall TransferOutLong_009e2560(CPersistContext* context, CCharString* out, long* value);       // 0x009E2560
 
 struct SMapNode {                                      // STLport _Rb_tree_node<pair<const CCharString, long> >
@@ -177,7 +181,7 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
                 traits.TransferIn(*this, parser, key);
                 if (parser.ReadAsSymbol() == "]") {
                     long value;
-                    TransferInLong_009e2590(this, &parser, &value);
+                    CPersistTraitsSLONG::TransferIn(*this, parser, value);
                     SetAsFoundItem();
                     map.erase(key);
                     map.insert(CStringLongPair(key, value));

@@ -1,7 +1,18 @@
 #ifndef FABLE_ENGINE_CPERSISTTRAITS_H
 #define FABLE_ENGINE_CPERSISTTRAITS_H
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+// NF136 partial mode (2026-11-20, q5199 / q5220): only CPersistTraitsSLONG (Ego_r.pdb / FableWin.pdb static __fastcall
+// ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z = 0x009E2590 and its inline long-returning overload), for
+// landed rows that model CCharString / CStringParser / CPersistContext locally and called 0x009E2590 through a free stand-in declaration.
+// The generic CPersistTraits<T> family below needs the retail stream / string models, so this mode leaves it out (like
+// FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY). Do not combine with a full include of this header in the same TU.
+class CPersistContext;
+class CStringParser;
+class CCharString;
+#else
 #include "engine/CPersistContext.h"
 #include "engine/C3DVector.h"
+#endif
 // Original TPI proves every traits class has DefaultVal at zero and these
 // exact overloads. CPersistTraitsSLONG is a stateless static method family.
 class CPersistTraitsSLONG {
@@ -16,6 +27,7 @@ public:
     static void __fastcall TransferOut(CPersistContext&,CCharString&,const long&);
 #endif
 };
+#ifndef FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
 template<class T> class CPersistTraits {
 public:
     T DefaultVal;
@@ -486,6 +498,7 @@ template<class T> void FABLE_FASTCALL GFSerialiseVectorBinaryIn(CMemoryDataInput
         traits.TransferBinaryIn(is,vec[i]);
 }
 #endif
+#endif // FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
 #endif
 
 #if defined(FABLE_RETAIL_PASS22_CPSCLIGHT_DATABASE_SERIALISE) && !defined(FABLE_PASS22_CPSCLIGHT_VECTOR_TRAITS_BODY)

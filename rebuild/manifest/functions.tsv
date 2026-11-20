@@ -12108,7 +12108,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005d80f3	RbTreeIterator_PreIncrement_005d80f3	_global	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CRegion_SetMiniMapRegionExitTextOffsetX_005d80f3.cpp
 005d811a	pair	std::pair<CWideString, long>	unknown	undefined	0		0			discovered	gapscan							
 005d8135	ScalarDeletingDtor_005d8135	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CLandscapeBackgroundPatch_vectordeletingdestructor_005d8135.cpp
-005d8167	TransferIn	CPersistTraits<EInputKey>	__thiscall	void	4	CPersistTraits<EInputKey> *,CPersistContext *,CStringParser *,EInputKey *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CPersistTraitsEInputKey_TransferIn_005d8167.cpp
+005d8167	TransferIn	CPersistTraits<long>	__thiscall	void	4	CPersistTraits<EInputKey> *,CPersistContext *,CStringParser *,EInputKey *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CPersistTraitsEInputKey_TransferIn_005d8167.cpp
 005d8185	TransferOut	CPersistTraits<EInputKey>	__thiscall	void	4	CPersistTraits<long> *,CPersistContext *,CCharString *,long *	1	yes	accepted									
 005d81b9	RbTreeIterator_PostIncrement_005d81b9	_global	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CRegion_SetMiniMapRegionExitTextOffsetX_005d81b9.cpp
 005d8218	Distance_005d8218	_global	unknown	undefined	0		0	yes	accepted									
@@ -15106,7 +15106,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00678760	TransferIn	CPersistTraits<std::list<CReactionMatch*> >	__thiscall	void	4	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CPersistContext *,CStringParser *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
 00679560	COpinionReactionManagerDef	COpinionReactionManagerDef	unknown	undefined	0		0	yes	accepted									
 00679740	Transfer	COpinionReactionManagerDef	__thiscall	void	2	COpinionReactionManagerDef *,CPersistContext &	1	yes	accepted									
-00679910	TransferIn	CPersistTraits<EInputKey>	__thiscall	void	4	CPersistTraits<EInputKey> *,CPersistContext *,CStringParser *,EInputKey *	1	yes	accepted									
+00679910	TransferIn	CPersistTraits<EOpinion>	__thiscall	void	4	CPersistTraits<EInputKey> *,CPersistContext *,CStringParser *,EInputKey *	1	yes	accepted									
 0067a450	`scalar deleting destructor'	CReactionMatch_SecondaryAxisMRShifted	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0067a470	`scalar deleting destructor'	CReactionMatch_SecondaryAxisCentredMRShifted	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0067a490	`scalar deleting destructor'	CReactionMatch_AsymmetricPyramid	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -49255,15 +49255,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdca60	sub_00cdca60	_global	unknown	undefined	0		0			discovered	gapscan							
 00cdca70	Transfer<EPostSavePosition>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdcb50	TransferBinaryIn_00cdcb50	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00cdcbe0	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00cdcbe0	TransferIn	CPersistContext_TransferableComponent<EGameflowPosition>	unknown	undefined	0		0			discovered	gapscan							
 00cdcc00	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00cdcc20	Transfer<EArcheryState>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdcd00	TransferBinaryIn_00cdcd00	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00cdcd90	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00cdcd90	TransferIn	CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>	unknown	undefined	0		0			discovered	gapscan							
 00cdcdb0	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00cdcdd0	Transfer<EHeroSoulsPosition>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdceb0	TransferBinaryIn_00cdceb0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00cdcf40	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00cdcf40	TransferIn	CPersistContext_TransferableComponent<EPlaceInHeroSouls>	unknown	undefined	0		0			discovered	gapscan							
 00cdcf60	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00cdcf80	TransferVector<bool>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00cdd0a0	Resize	CPersistContext_TransferableVector<bool>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
@@ -52702,7 +52702,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e38d80	OnPersist	NScript::CV_AssassinAttacksScript::CM_AssassinTrigger	unknown	undefined	0		0			discovered	gapscan							
 00e38dd0	Transfer<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00e38eb0	TransferBinaryIn_00e38eb0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00e38f40	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00e38f40	TransferIn	CPersistContext_TransferableComponent<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>	unknown	undefined	0		0			discovered	gapscan							
 00e38f60	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00e38f80	Init	NScript::CV_AssassinAttacksScript::CAttackingAssassin	__thiscall	void	1	CAttackingAssassin *	1	yes	accepted									
 00e39100	Fire_CDispatcher_00e39100	_unattributed	unknown	undefined	0		0			discovered	gapscan							
@@ -53569,7 +53569,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e9e110	OnPersist	NScript::CV_IntroductionToTrophiesScript	unknown	undefined	0		0			discovered	gapscan							
 00e9e270	Transfer<EOpinionCurrent>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00e9e350	TransferBinaryIn_00e9e350	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00e9e3e0	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00e9e3e0	TransferIn	CPersistContext_TransferableComponent<NScript::CV_IntroductionToTrophiesScript::BriarRoseOpinion>	unknown	undefined	0		0			discovered	gapscan							
 00e9e400	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00e9e420	Main	NScript::CV_IntroductionToTrophiesScript::CBriarRose	unknown	undefined	0		0			discovered	gapscan							
 00e9fb40	Alloc	NScript::CV_IntroductionToTrophiesScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
@@ -53784,11 +53784,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eb6520	OnPersist	NScript::CV_MurderTwistFinalScript	unknown	undefined	0		0			discovered	gapscan							
 00eb65a0	Transfer<ESheriffState>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00eb6680	TransferBinaryIn_00eb6680	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00eb6710	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00eb6710	TransferIn	CPersistContext_TransferableComponent<NScript::CV_MurderTwistFinalScript::ESheriffState>	unknown	undefined	0		0			discovered	gapscan							
 00eb6730	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00eb6750	Transfer<EAssassinState>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00eb6830	TransferBinaryIn_00eb6830	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00eb68c0	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00eb68c0	TransferIn	CPersistContext_TransferableComponent<NScript::CV_MurderTwistFinalScript::EAssassinState>	unknown	undefined	0		0			discovered	gapscan							
 00eb68e0	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00eb6900	OnPersist	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff	unknown	undefined	0		0			discovered	gapscan							
 00eb6980	OnPersist	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin	unknown	undefined	0		0			discovered	gapscan							
@@ -55353,7 +55353,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f2d330	Transfer	CFeatDef	unknown	undefined	0		0			discovered	gapscan							
 00f2d4d0	Transfer<EKNAttackType>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00f2d5b0	TransferBinaryIn_00f2d5b0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
-00f2d640	TransferIn_CTransferableLong_009e2590	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00f2d640	TransferIn	CPersistContext_TransferableComponent<EFeatAttackType>	unknown	undefined	0		0			discovered	gapscan							
 00f2d660	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00f2d680	Copy	CFeatDef	unknown	undefined	0		0			discovered	gapscan							
 00f2d690	_M_allocate_and_copy<CFeatDef const *>	std::vector<CFeatDef, std::allocator<CFeatDef>>	unknown	undefined	0		0	yes	accepted									

@@ -15,6 +15,9 @@
 //   temporary's destructor); the CPersistTraits<CCharString> object (CCharString DefaultVal) is built after the "Name" test and
 //   destroyed on every later exit; the discarded 8-byte insert result inside the loops gives the `and esp,-8` frame (GOTCHAS); each
 //   count + loop is its own block, so the count's frame word is reused by the later temporaries.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration PersistTransferInLong(CPersistContext&, CStringParser&, long*) (0x009E2590) replaced by the shared
+//   engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY): the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (the landed self spelling of 0x009E2590).
 class CCharString { public:
     void* m_pData;
     CCharString();                                     // 0x0099E4B0
@@ -25,7 +28,8 @@ class CStringParser { public:
     bool SkipPastString(const CCharString& name);          // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
 };
 class CPersistContext;
-void __fastcall PersistTransferInLong(CPersistContext& context, CStringParser& parser, long* value);   // 0x009E2590
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -72,7 +76,7 @@ void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParse
         if (!parser.SkipPastString("NumberOfAllies"))
             return;
         long numberOfAllies;
-        PersistTransferInLong(context, parser, &numberOfAllies);
+        CPersistTraitsSLONG::TransferIn(context, parser, numberOfAllies);
         for (long i = 0; i < numberOfAllies; ++i) {
             if (!parser.SkipPastString("Ally"))
                 return;
@@ -85,7 +89,7 @@ void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParse
         if (!parser.SkipPastString("NumberOfEnemies"))
             return;
         long numberOfEnemies;
-        PersistTransferInLong(context, parser, &numberOfEnemies);
+        CPersistTraitsSLONG::TransferIn(context, parser, numberOfEnemies);
         for (long i = 0; i < numberOfEnemies; ++i) {
             if (!parser.SkipPastString("Enemy"))
                 return;

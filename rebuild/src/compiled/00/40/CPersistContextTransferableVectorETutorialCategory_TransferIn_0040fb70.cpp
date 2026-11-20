@@ -7,10 +7,14 @@
 //   CPersistTraits<T>().TransferIn(context, parser);` -- the vector start is read into a local before the call (esi;
 //   `(*TransVector)[index] = ...` reads it after the call), the parsed value is homed in the dead parser slot.
 //   PDB: TransferableVector { vptr; vector<T>* TransVector; }.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferInLong(CPersistContext&, CStringParser&, long*) (0x009E2590) replaced by the shared
+//   engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY): the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (the landed self spelling of 0x009E2590).
 class CPersistContext;
 class CStringParser;
 class CCharString;
-void __fastcall TransferInLong(CPersistContext& context, CStringParser& parser, long* value);   // 0x009E2590
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 enum ETutorialCategory { };                             // enumerators not needed here
 namespace std {
 template <class _Tp> class allocator { };
@@ -29,7 +33,7 @@ public:
     T TransferIn(CPersistContext& context, CStringParser& parser)
     {
         long value;
-        TransferInLong(context, parser, &value);
+        CPersistTraitsSLONG::TransferIn(context, parser, value);
         return (T)value;
     }
 };

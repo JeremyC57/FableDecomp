@@ -14,6 +14,12 @@ public:
  CPixelFormat(long r,long g,long b,long a) { Initialise(r,g,b,a,false); }
  void Initialise(long,long,long,long,bool);                     // 0x009E3790 ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z (Ego_r + FableWin)
  void Initialise(_D3DFORMAT);
+#ifdef FABLE_RETAIL_CPIXELFORMAT_FINDFORMATINFOINDEX
+ // NF136 opt-in (q4290, row 0x009BE420 CDisplayManager::ClearRenderTarget): Ego_r.pdb 0x00B35470 / FableWin.pdb 0x0308CAB0
+ // ?FindFormatInfoIndexFromD3DFormat@CPixelFormat@@SIJW4_D3DFORMAT@@@Z (public static __fastcall: format in ecx, returns the GD3DFormats
+ // index or -1; retail 0x009E3620, called out of line at 0x009BE44A). Declaration only: no layout change.
+ static long __fastcall FindFormatInfoIndexFromD3DFormat(_D3DFORMAT format);   // 0x009E3620
+#endif
 #if defined(FABLE_RETAIL_CPIXELFORMAT_BYTECOLOURDEPTH_OUTOFLINE) && !defined(FABLE_RETAIL_CPIXELFORMAT_CONVERT)
  // Retail opt-in (chunk 1023, row 0x00B67270 CEngineLandscapeRenderer::BuildBlendingTables): Ego_r.pdb / FableWin.pdb
  // ?GetByteColourDepth@CPixelFormat@@QBEKXZ called out of line at 0x009E3800 in that TU (`lea ecx,[ebp-0Ch] ; call` at 0x00B67294;

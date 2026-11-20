@@ -1,0 +1,4 @@
+existing 009e2590 new= ['?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z'] | others: {'?ReadInteger@N006d41f0@@YIXPAUCPersistContext@1@PAUParser@1@PAI@Z': ['006d41f0']}
+existing 009e4710 new= ['?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ'] | others: {'?clear@list_T_009e4830@std@@QAEXXZ': ['009e4830'], '?clear@list_T_009e48f0@std@@QAEXXZ': ['009e48f0']}
+existing 0129ba40 new= ['?GD3DFormats@@3QBVCD3DFormatInfo@@B'] | others: {'?g_texFormatTable@@3PAIA': ['009be8f0'], '?g_PixelFormatTable@@3PAUSPixelFormatInfo@@A': ['009bfb30'], '?g_PixelFormatTable@@3PAUCPixelFormatInfo@@A': ['009c02d0', '009c05c0']}
+gate: 0 created split(s)

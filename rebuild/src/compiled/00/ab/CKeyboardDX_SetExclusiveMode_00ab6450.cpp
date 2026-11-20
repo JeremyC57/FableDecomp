@@ -10,6 +10,10 @@
 // Model: retail CKeyboardDX layout (maintained-event list +0x340c, device +0x3418, Acquired +0x3610); the focus test as the
 // landed CKeyboardDX::UpdateAcquired 0x00AB6100. The argument is unused (the level is always 6).
 // Shape: the main window is read into a local first (inline, the device and its vtable are fetched after the call).
+// NF136 (2026-11-20, q3887): the local CMaintainedEventList stand-in (whose clear() bound 0x009E4710 as ?clear@CMaintainedEventList@@QAEXXZ)
+//   replaced in place by the retail member type std::list<CMaintainedEvent> (Ego_r.pdb MaintainedEventsList) from stlport/fable_containers.h
+//   with FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE: the call binds ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ
+//   (the landed 0x00A66990 / 0x00A66F80 spelling).
 struct IDirectInputDevice8_Retail {                // COM: __stdcall methods, `this` pushed
     virtual long __stdcall QueryInterface(void* iid, void** out);
     virtual unsigned long __stdcall AddRef();
@@ -36,17 +40,16 @@ class CSystemManager { public:
     bool HasInputFocus();                          // 0x009A4FB0
 };
 CSystemManager* __fastcall GFGetSystemManager();      // 0x009A4EC0
-struct CMaintainedEventList {                      // STLport list<CMaintainedEvent>
-    void* m_pNode;
-    void clear();                                  // 0x009E4710
-};
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "engine/CMaintainedEvent.h"
+#include "stlport/fable_containers.h"
 class CKeyboardDX {
 public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual void SetHasInputFocus(bool focus);     // slot 3 (+0xc)
     virtual bool SetExclusiveMode(bool exclusive);
     unsigned char               _pad04[0x340c - 4];
-    CMaintainedEventList        MaintainedEventsList;   // +0x340c
+    std::list<CMaintainedEvent>        MaintainedEventsList;   // +0x340c
     unsigned char               _pad3410[8];
     IDirectInputDevice8_Retail* DKeyboard;         // +0x3418
     unsigned char               KeyStates[0x100];  // +0x341c

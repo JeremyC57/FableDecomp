@@ -14,6 +14,9 @@
 //   0x00A385A0 (FableWin.pdb / Ego_r.pdb ?AddSymbolDirty@CCRCSymbolMap@@QAEXABVCCharString@@J@Z), CCRCSymbolMap::Error 0x00A381D0 (member varargs, `this` on the stack) with the global file name 0x013D27E8.
 // Layout: CStringParser retail 0x28 bytes (the landed ParseBuffer 0x00A38E50 model; the engine header carries the
 //   12-byte PDB list): the error line is the dword at +0x24. CPersistContext per Ego_r.pdb (0x2c bytes).
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferInLong_009e2590(CPersistContext*, CStringParser*, long*) (0x009E2590) replaced by the shared
+//   engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY): the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (the landed self spelling of 0x009E2590).
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
@@ -89,7 +92,8 @@ class CPersistContext { public:                               // 0x2c bytes
     CPersistContext(CStringParser& parser, void (__fastcall* callback)(const CCharString&), bool reportErrors,
                     const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* text);   // 0x009BADD0
 };
-void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 class CCRCSymbolMap { public:
     static CWideString CurrentFilename;                                             // 0x013D27E8
     void AddSymbolDirty(const CCharString& name, long value);                       // 0x00A385A0
@@ -151,7 +155,7 @@ bool CCRCSymbolMap::ParseEnum(CStringParser& parser, const CCharString& wantedNa
         } else if (item.Type == 1 && item.GetSymbol() == "=") {
             CPersistContext context(parser, 0, true, 0, 0, 0);
             long read;
-            TransferInLong_009e2590(&context, &parser, &read);
+            CPersistTraitsSLONG::TransferIn(context, parser, read);
             value = read;
             AddSymbolDirty(valueName, read);
             if (!parser.ReadNextItem(item)) {

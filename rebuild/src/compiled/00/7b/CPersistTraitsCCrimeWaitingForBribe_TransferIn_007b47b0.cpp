@@ -13,6 +13,10 @@
 // Shape: the landed CPersistTraits<pair<EReactionSpeechType,long>>::TransferIn 0x00755F40 model -- inline CCharString
 //   operator== (null data compares the literal with "" through the strcmp intrinsic), each long read into the dead
 //   argument slots through an inline by-value reader, the closing ")" read and compared with the result discarded.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   TransferInLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
@@ -36,13 +40,8 @@ class CStringParser { public:
     CCharString ReadAsSymbol();                         // 0x009BA790
 };
 class CPersistContext;
-void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-FABLE_FORCEINLINE long TransferInLong(CPersistContext& context, CStringParser& parser)
-{
-    long value;
-    TransferIn(&context, &parser, &value);
-    return value;
-}
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE = 0 };
 class CCrimeWaitingForBribe {                           // Ego_r.pdb, 8 bytes
@@ -61,9 +60,9 @@ template <>
 void CPersistTraits<CCrimeWaitingForBribe>::TransferIn(CPersistContext& context, CStringParser& parser, CCrimeWaitingForBribe& value)
 {
     if (parser.ReadAsSymbol() == "(") {
-        value.DeedHandle = TransferInLong(context, parser);
+        value.DeedHandle = CPersistTraitsSLONG::TransferIn(context, parser);
         if (parser.ReadAsSymbol() == ",") {
-            value.Type = (EOpinionDeedType)TransferInLong(context, parser);
+            value.Type = (EOpinionDeedType)CPersistTraitsSLONG::TransferIn(context, parser);
             if (parser.ReadAsSymbol() == ")") { }
         }
     }

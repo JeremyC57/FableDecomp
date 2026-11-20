@@ -11,6 +11,10 @@
 //   the dead parser- and context-argument slots through an inline by-value TransferInLong() helper (two named locals
 //   in the body take a fresh frame slot for the second) and are copied into the pair afterwards; the closing ")" is read and
 //   discarded. Speed-optimised (default) TU.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   TransferInLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
@@ -31,13 +35,8 @@ class CStringParser { public:
     CCharString ReadAsSymbol();                         // 0x009BA790
 };
 class CPersistContext;
-void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-FABLE_FORCEINLINE long TransferInLong(CPersistContext* context, CStringParser* parser)
-{
-    long value;
-    TransferIn(context, parser, &value);
-    return value;
-}
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
 enum EReactionSpeechType { REACTION_SPEECH_NONE = 0 };
 template<class A, class B> struct pair {
@@ -53,9 +52,9 @@ template<> struct CPersistTraits<pair<EReactionSpeechType, long> > {
 void CPersistTraits<pair<EReactionSpeechType, long> >::TransferIn(CPersistContext* context, CStringParser* parser, pair<EReactionSpeechType, long>* value)
 {
     if (parser->ReadAsSymbol() == "(") {
-        value->first = (EReactionSpeechType)TransferInLong(context, parser);
+        value->first = (EReactionSpeechType)CPersistTraitsSLONG::TransferIn(*context, *parser);
         if (parser->ReadAsSymbol() == ",") {
-            value->second = TransferInLong(context, parser);
+            value->second = CPersistTraitsSLONG::TransferIn(*context, *parser);
             parser->ReadAsSymbol();
         }
     }

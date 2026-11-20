@@ -61978,9 +61978,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005d8167'
-        Module = 'CPersistTraits<EInputKey>'
-        Source = '00/5d/CPersistTraitsEInputKey_TransferIn_005d8167.cpp'
-        TestSource = '00/5d/CPersistTraitsEInputKey_TransferIn_005d8167_test.cpp'
+        Module = 'CPersistTraits<long>'
+        Source = '00/5d/CPersistTraits_TransferIn_005d8167.cpp'
+        TestSource = '00/5d/CPersistTraits_TransferIn_005d8167_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -63489,8 +63489,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0057f93e'
         Module = 'CPersistContext_TransferableComponent<EHeroTrainingStatus>'
-        Source = '00/57/CPersistContextTransferableComponentEHeroTrainingStatus_TransferIn_0057f93e.cpp'
-        TestSource = '00/57/CPersistContextTransferableComponentEHeroTrainingStatus_TransferIn_0057f93e_test.cpp'
+        Source = '00/57/CPersistContextTransferableComponent_TransferIn_0057f93e.cpp'
+        TestSource = '00/57/CPersistContextTransferableComponent_TransferIn_0057f93e_test.cpp'
         PassPattern = 'PARITY_OK_0057f93e'
     }
     [pscustomobject]@{
@@ -153629,85 +153629,85 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004059f0'
         Module = 'CPersistContext_TransferableComponent<unsigned char>'
-        Source = '00/40/CPersistContextTransferableComponentunsignedchar_TransferIn_004059f0.cpp'
-        TestSource = '00/40/CPersistContextTransferableComponentunsignedchar_TransferIn_004059f0_test.cpp'
+        Source = '00/40/CPersistContextTransferableComponent_TransferIn_004059f0.cpp'
+        TestSource = '00/40/CPersistContextTransferableComponent_TransferIn_004059f0_test.cpp'
         PassPattern = '004059f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0040e8f0'
         Module = 'CPersistContext_TransferableComponent<long>'
-        Source = '00/40/CPersistContextTransferableComponentlong_TransferIn_0040e8f0.cpp'
-        TestSource = '00/40/CPersistContextTransferableComponentlong_TransferIn_0040e8f0_test.cpp'
+        Source = '00/40/CPersistContextTransferableComponent_TransferIn_0040e8f0.cpp'
+        TestSource = '00/40/CPersistContextTransferableComponent_TransferIn_0040e8f0_test.cpp'
         PassPattern = '0040e8f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0040f950'
         Module = 'CPersistContext_TransferableComponent<unsigned long>'
-        Source = '00/40/CPersistContextTransferableComponentunsignedlong_TransferIn_0040f950.cpp'
-        TestSource = '00/40/CPersistContextTransferableComponentunsignedlong_TransferIn_0040f950_test.cpp'
+        Source = '00/40/CPersistContextTransferableComponent_TransferIn_0040f950.cpp'
+        TestSource = '00/40/CPersistContextTransferableComponent_TransferIn_0040f950_test.cpp'
         PassPattern = '0040f950_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004aa320'
         Module = 'CPersistContext_TransferableComponent<CWorld::ESaveType>'
-        Source = '00/4a/CPersistContextTransferableComponentCWorldESaveType_TransferIn_004aa320.cpp'
-        TestSource = '00/4a/CPersistContextTransferableComponentCWorldESaveType_TransferIn_004aa320_test.cpp'
+        Source = '00/4a/CPersistContextTransferableComponent_TransferIn_004aa320.cpp'
+        TestSource = '00/4a/CPersistContextTransferableComponent_TransferIn_004aa320_test.cpp'
         PassPattern = '004aa320_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004b8660'
         Module = 'CPersistContext_TransferableComponent<int>'
-        Source = '00/4b/CPersistContextTransferableComponentint_TransferIn_004b8660.cpp'
-        TestSource = '00/4b/CPersistContextTransferableComponentint_TransferIn_004b8660_test.cpp'
+        Source = '00/4b/CPersistContextTransferableComponent_TransferIn_004b8660.cpp'
+        TestSource = '00/4b/CPersistContextTransferableComponent_TransferIn_004b8660_test.cpp'
         PassPattern = '004b8660_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004cbde0'
         Module = 'CPersistContext_TransferableComponent<signed char>'
-        Source = '00/4c/CPersistContextTransferableComponentsignedchar_TransferIn_004cbde0.cpp'
-        TestSource = '00/4c/CPersistContextTransferableComponentsignedchar_TransferIn_004cbde0_test.cpp'
+        Source = '00/4c/CPersistContextTransferableComponent_TransferIn_004cbde0.cpp'
+        TestSource = '00/4c/CPersistContextTransferableComponent_TransferIn_004cbde0_test.cpp'
         PassPattern = '004cbde0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00685840'
         Module = 'CPersistContext_TransferableComponent<EOpinionAttitudeType>'
-        Source = '00/68/CPersistContextTransferableComponentEOpinionAttitudeType_TransferIn_00685840.cpp'
-        TestSource = '00/68/CPersistContextTransferableComponentEOpinionAttitudeType_TransferIn_00685840_test.cpp'
+        Source = '00/68/CPersistContextTransferableComponent_TransferIn_00685840.cpp'
+        TestSource = '00/68/CPersistContextTransferableComponent_TransferIn_00685840_test.cpp'
         PassPattern = '00685840_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0077fda0'
         Module = 'CPersistContext_TransferableComponent<EHeroCentreDoorType>'
-        Source = '00/77/CPersistContextTransferableComponentEHeroCentreDoorType_TransferIn_0077fda0.cpp'
-        TestSource = '00/77/CPersistContextTransferableComponentEHeroCentreDoorType_TransferIn_0077fda0_test.cpp'
+        Source = '00/77/CPersistContextTransferableComponent_TransferIn_0077fda0.cpp'
+        TestSource = '00/77/CPersistContextTransferableComponent_TransferIn_0077fda0_test.cpp'
         PassPattern = '0077fda0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007b4180'
         Module = 'CPersistContext_TransferableComponent<ECrimeSeverity>'
-        Source = '00/7b/CPersistContextTransferableComponentECrimeSeverity_TransferIn_007b4180.cpp'
-        TestSource = '00/7b/CPersistContextTransferableComponentECrimeSeverity_TransferIn_007b4180_test.cpp'
+        Source = '00/7b/CPersistContextTransferableComponent_TransferIn_007b4180.cpp'
+        TestSource = '00/7b/CPersistContextTransferableComponent_TransferIn_007b4180_test.cpp'
         PassPattern = '007b4180_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdcbe0'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_TransferInCTransferableLong009e2590_00cdcbe0.cpp'
-        TestSource = '00/cd/unattributed_TransferInCTransferableLong009e2590_00cdcbe0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<EGameflowPosition>'
+        Source = '00/cd/CPersistContextTransferableComponent_TransferIn_00cdcbe0.cpp'
+        TestSource = '00/cd/CPersistContextTransferableComponent_TransferIn_00cdcbe0_test.cpp'
         PassPattern = '00cdcbe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdcd90'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_TransferInCTransferableLong009e2590_00cdcd90.cpp'
-        TestSource = '00/cd/unattributed_TransferInCTransferableLong009e2590_00cdcd90_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>'
+        Source = '00/cd/CPersistContextTransferableComponent_TransferIn_00cdcd90.cpp'
+        TestSource = '00/cd/CPersistContextTransferableComponent_TransferIn_00cdcd90_test.cpp'
         PassPattern = '00cdcd90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00cdcf40'
-        Module = '_unattributed'
-        Source = '00/cd/unattributed_TransferInCTransferableLong009e2590_00cdcf40.cpp'
-        TestSource = '00/cd/unattributed_TransferInCTransferableLong009e2590_00cdcf40_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<EPlaceInHeroSouls>'
+        Source = '00/cd/CPersistContextTransferableComponent_TransferIn_00cdcf40.cpp'
+        TestSource = '00/cd/CPersistContextTransferableComponent_TransferIn_00cdcf40_test.cpp'
         PassPattern = '00cdcf40_TEST PASS'
     }
     [pscustomobject]@{
@@ -153726,9 +153726,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e38f40'
-        Module = '_unattributed'
-        Source = '00/e3/unattributed_TransferInCTransferableLong009e2590_00e38f40.cpp'
-        TestSource = '00/e3/unattributed_TransferInCTransferableLong009e2590_00e38f40_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>'
+        Source = '00/e3/CPersistContextTransferableComponent_TransferIn_00e38f40.cpp'
+        TestSource = '00/e3/CPersistContextTransferableComponent_TransferIn_00e38f40_test.cpp'
         PassPattern = '00e38f40_TEST PASS'
     }
     [pscustomobject]@{
@@ -153747,30 +153747,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e9e3e0'
-        Module = '_unattributed'
-        Source = '00/e9/unattributed_TransferInCTransferableLong009e2590_00e9e3e0.cpp'
-        TestSource = '00/e9/unattributed_TransferInCTransferableLong009e2590_00e9e3e0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_IntroductionToTrophiesScript::BriarRoseOpinion>'
+        Source = '00/e9/CPersistContextTransferableComponent_TransferIn_00e9e3e0.cpp'
+        TestSource = '00/e9/CPersistContextTransferableComponent_TransferIn_00e9e3e0_test.cpp'
         PassPattern = '00e9e3e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb6710'
-        Module = '_unattributed'
-        Source = '00/eb/unattributed_TransferInCTransferableLong009e2590_00eb6710.cpp'
-        TestSource = '00/eb/unattributed_TransferInCTransferableLong009e2590_00eb6710_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_MurderTwistFinalScript::ESheriffState>'
+        Source = '00/eb/CPersistContextTransferableComponent_TransferIn_00eb6710.cpp'
+        TestSource = '00/eb/CPersistContextTransferableComponent_TransferIn_00eb6710_test.cpp'
         PassPattern = '00eb6710_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00eb68c0'
-        Module = '_unattributed'
-        Source = '00/eb/unattributed_TransferInCTransferableLong009e2590_00eb68c0.cpp'
-        TestSource = '00/eb/unattributed_TransferInCTransferableLong009e2590_00eb68c0_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<NScript::CV_MurderTwistFinalScript::EAssassinState>'
+        Source = '00/eb/CPersistContextTransferableComponent_TransferIn_00eb68c0.cpp'
+        TestSource = '00/eb/CPersistContextTransferableComponent_TransferIn_00eb68c0_test.cpp'
         PassPattern = '00eb68c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00f2d640'
-        Module = '_unattributed'
-        Source = '00/f2/unattributed_TransferInCTransferableLong009e2590_00f2d640.cpp'
-        TestSource = '00/f2/unattributed_TransferInCTransferableLong009e2590_00f2d640_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<EFeatAttackType>'
+        Source = '00/f2/CPersistContextTransferableComponent_TransferIn_00f2d640.cpp'
+        TestSource = '00/f2/CPersistContextTransferableComponent_TransferIn_00f2d640_test.cpp'
         PassPattern = '00f2d640_TEST PASS'
     }
     [pscustomobject]@{
@@ -174943,9 +174943,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e4710'
-        Module = 'std::list<CMaintainedEvent>'
-        Source = '00/9e/stdlistCMaintainedEvent_clear_009e4710.cpp'
-        TestSource = '00/9e/stdlistCMaintainedEvent_clear_009e4710_test.cpp'
+        Module = 'std::_List_base<CMaintainedEvent, std::allocator<CMaintainedEvent>>'
+        Source = '00/9e/stdListbase_clear_009e4710.cpp'
+        TestSource = '00/9e/stdListbase_clear_009e4710_test.cpp'
         PassPattern = '009e4710_TEST PASS'
     }
     [pscustomobject]@{
@@ -207716,8 +207716,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004aa3f0'
         Module = 'CPersistContext_TransferableComponent<double>'
-        Source = '00/4a/CPersistContextTransferableComponentdouble_TransferIn_004aa3f0.cpp'
-        TestSource = '00/4a/CPersistContextTransferableComponentdouble_TransferIn_004aa3f0_test.cpp'
+        Source = '00/4a/CPersistContextTransferableComponent_TransferIn_004aa3f0.cpp'
+        TestSource = '00/4a/CPersistContextTransferableComponent_TransferIn_004aa3f0_test.cpp'
         PassPattern = '004aa3f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -207730,8 +207730,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004cbd00'
         Module = 'CPersistContext_TransferableComponent<short>'
-        Source = '00/4c/CPersistContextTransferableComponentshort_TransferIn_004cbd00.cpp'
-        TestSource = '00/4c/CPersistContextTransferableComponentshort_TransferIn_004cbd00_test.cpp'
+        Source = '00/4c/CPersistContextTransferableComponent_TransferIn_004cbd00.cpp'
+        TestSource = '00/4c/CPersistContextTransferableComponent_TransferIn_004cbd00_test.cpp'
         PassPattern = '004cbd00_TEST PASS'
     }
     [pscustomobject]@{
@@ -265310,8 +265310,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ad7b0'
         Module = 'CPersistContext_TransferableComponent<EScriptingStateGroups>'
-        Source = '00/7a/CPersistContextTransferableComponentEScriptingStateGroups_TransferIn_007ad7b0.cpp'
-        TestSource = '00/7a/CPersistContextTransferableComponentEScriptingStateGroups_TransferIn_007ad7b0_test.cpp'
+        Source = '00/7a/CPersistContextTransferableComponent_TransferIn_007ad7b0.cpp'
+        TestSource = '00/7a/CPersistContextTransferableComponent_TransferIn_007ad7b0_test.cpp'
         PassPattern = '007ad7b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -277625,9 +277625,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00679910'
-        Module = 'CPersistTraits<EInputKey>'
-        Source = '00/67/CPersistTraitsEInputKey_TransferIn_00679910.cpp'
-        TestSource = '00/67/CPersistTraitsEInputKey_TransferIn_00679910_test.cpp'
+        Module = 'CPersistTraits<EOpinion>'
+        Source = '00/67/CPersistTraits_TransferIn_00679910.cpp'
+        TestSource = '00/67/CPersistTraits_TransferIn_00679910_test.cpp'
         PassPattern = '00679910_TEST PASS'
     }
     [pscustomobject]@{

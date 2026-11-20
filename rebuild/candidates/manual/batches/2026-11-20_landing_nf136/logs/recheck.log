@@ -1,0 +1,53 @@
+addr       parity           behav  name
+004059f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<unsigned char>::TransferIn
+0040e8f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<long>::TransferIn
+0040f950   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<unsigned long>::TransferIn
+0040fb70   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<ETutorialCategory>::TransferIn
+00463334   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+00475026   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+0047550f   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+004aa320   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<CWorld::ESaveType>::TransferIn
+004aa3f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<double>::TransferIn
+004b8660   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<int>::TransferIn
+004cbd00   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<short>::TransferIn
+004cbde0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<signed char>::TransferIn
+00566330   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>::TransferIn
+0057f6e9   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::TransferIn
+0057f93e   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EHeroTrainingStatus>::TransferIn
+00580194   RELOCATION_MATCH PASS   CPersistTraits<CHeroMarriageInfo>::TransferIn
+005d8167   RELOCATION_MATCH PASS   CPersistTraits<long>::TransferIn
+005dc3c0   RELOCATION_MATCH PASS   CAnimComponentFlags::Initialise
+005dc450   RELOCATION_MATCH PASS   CAnimComponentTransitionInTime::Initialise
+005dc4d0   RELOCATION_MATCH PASS   CAnimComponentDelayTime::Initialise
+005dc550   RELOCATION_MATCH PASS   CAnimComponentCombatHandedness::Initialise
+005dc650   RELOCATION_MATCH PASS   CAnimComponentCombatComboChain::Initialise
+005dc730   RELOCATION_MATCH PASS   CAnimComponentCombatRecoil::Initialise
+005dc9b0   RELOCATION_MATCH PASS   CAnimComponentSetCreatureMode::Initialise
+005e8cc0   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CUnprovenEnum4_005e8cc0>::TransferIn
+006144c0   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::TransferIn
+00679910   RELOCATION_MATCH PASS   CPersistTraits<EOpinion>::TransferIn
+00685840   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EOpinionAttitudeType>::TransferIn
+00686240   RELOCATION_MATCH PASS   CPersistTraits<CAppearanceModifierGraphics::CEntry>::TransferIn
+006ba480   RELOCATION_MATCH PASS   CPersistTraits<CFaction>::TransferIn
+00755f40   RELOCATION_MATCH PASS   CPersistTraits<std::pair<EReactionSpeechType, long> >::TransferIn
+0077fda0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EHeroCentreDoorType>::TransferIn
+007ad7b0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EScriptingStateGroups>::TransferIn
+007b4180   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<ECrimeSeverity>::TransferIn
+007b47b0   RELOCATION_MATCH PASS   CPersistTraits<CCrimeWaitingForBribe>::TransferIn
+009be420   RELOCATION_MATCH PASS   CDisplayManager::ClearRenderTarget
+009e42c0   RELOCATION_MATCH PASS   CMemoryDataOutputStream::Clear
+009e4420   RELOCATION_MATCH PASS   CJoystick::~CJoystick
+009e4710   RELOCATION_MATCH PASS   std::_List_base<CMaintainedEvent, std::allocator<CMaintainedEvent>>::clear
+00a38670   RELOCATION_MATCH PASS   CCRCSymbolMap::ParseEnum
+00a66860   RELOCATION_MATCH PASS   CMemoryDataOutputStream::Clear
+00a66c00   RELOCATION_MATCH PASS   CMemoryDataOutputStream::Clear
+00ab5710   RELOCATION_MATCH PASS   CMouseDX::SetExclusiveMode
+00ab6450   RELOCATION_MATCH PASS   CKeyboardDX::SetExclusiveMode
+00cdcbe0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EGameflowPosition>::TransferIn
+00cdcd90   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CQ_SunnyvaleMasterData::ArcheryOpenState>::TransferIn
+00cdcf40   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EPlaceInHeroSouls>::TransferIn
+00e38f40   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>::TransferIn
+00e9e3e0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_IntroductionToTrophiesScript::BriarRoseOpinion>::TransferIn
+00eb6710   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_MurderTwistFinalScript::ESheriffState>::TransferIn
+00eb68c0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<NScript::CV_MurderTwistFinalScript::EAssassinState>::TransferIn
+00f2d640   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EFeatAttackType>::TransferIn

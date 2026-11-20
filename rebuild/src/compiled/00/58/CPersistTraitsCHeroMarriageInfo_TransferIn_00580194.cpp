@@ -19,6 +19,10 @@
 // (FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO), binding the protected static ?Compare@?$CBasicString@D@@KIJPBD0@Z (0x00411570).
 // Were local CBasicStringChar / CCharString models (Compare as a public static of the stand-in). The local CStringParser /
 // CPersistContext models are pre-existing.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   TransferInLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
 #define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO
@@ -41,13 +45,8 @@ private: public:
 class CPersistContext { public:
     void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
-void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-FABLE_FORCEINLINE long TransferInLong(CPersistContext* context, CStringParser* parser)
-{
-    long value;
-    TransferIn(context, parser, &value);
-    return value;
-}
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
 enum EMarriageState { MARRIAGE_STATE_NONE = 0 };
 class CHeroMarriageInfo {                              // 0x18 bytes
@@ -90,7 +89,7 @@ void CPersistTraits<CHeroMarriageInfo>::TransferIn(CPersistContext* context, CSt
         if (parser->ReadAsSymbol() == ",") {
             value->MaritalHomeUID = ((CStringParser*)parser)->ReadAsUHUGE();
             if (parser->ReadAsSymbol() == ",") {
-                value->State = (EMarriageState)TransferInLong(context, parser);
+                value->State = (EMarriageState)CPersistTraitsSLONG::TransferIn(*context, *parser);
                 if (parser->ReadAsSymbol() == ",") {
                     {
                         CPersistTraits<bool> boolTraits;

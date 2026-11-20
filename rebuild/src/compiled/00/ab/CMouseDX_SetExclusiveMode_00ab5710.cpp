@@ -12,6 +12,10 @@
 //   hoists the shared CreateDevice argument pushes above the branch; early `return false`s place an exit mid-body); the
 //   window handle comes through an inline CSystemManager accessor (a named local swaps eax/ecx); the buffer-size
 //   DIPROPDWORD is a frame local filled in declaration order; c_dfDIMouse2 falls back to c_dfDIMouse.
+// NF136 (2026-11-20, q3887): the local CMaintainedEventList stand-in (whose clear() bound 0x009E4710 as ?clear@CMaintainedEventList@@QAEXXZ)
+//   replaced in place by the retail member type std::list<CMaintainedEvent> (Ego_r.pdb MaintainedEventsList) from stlport/fable_containers.h
+//   with FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE: the call binds ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ
+//   (the landed 0x00A66990 / 0x00A66F80 spelling).
 struct GUID { unsigned long Data1; unsigned short Data2, Data3; unsigned char Data4[8]; };
 struct DIDATAFORMAT { unsigned long dwSize, dwObjSize, dwFlags, dwDataSize, dwNumObjs; void* rgodf; };
 struct DIPROPHEADER { unsigned long dwSize, dwHeaderSize, dwObj, dwHow; };
@@ -54,15 +58,14 @@ class CSystemManager { public:
 };
 CSystemManager* __fastcall GFGetSystemManager();    // 0x009A4EC0
 
-struct CMaintainedEventList {                       // STLport list<CMaintainedEvent> (sentinel pointer)
-    void* _M_node;
-    void clear();                                   // 0x009E4710
-};
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "engine/CMaintainedEvent.h"
+#include "stlport/fable_containers.h"
 
 struct CMouseDX {
     virtual void v000();
     unsigned char         _pad0004[0x340c - 0x04];  // CMouse: EventStore, NoStoredEvents, NoEventScansRunning
-    CMaintainedEventList  MaintainedEventsList;     // +0x340c
+    std::list<CMaintainedEvent>  MaintainedEventsList;     // +0x340c
     unsigned char         _pad3410[0x341c - 0x3410];// InputManager, Pos
     IDirectInputDevice8W* DMouse;                   // +0x341c
     CInputManagerDX*      InputManagerDX;           // +0x3420

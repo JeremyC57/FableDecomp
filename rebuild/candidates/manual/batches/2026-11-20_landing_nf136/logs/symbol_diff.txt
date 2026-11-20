@@ -1,0 +1,96 @@
+004059f0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@E@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+0040e8f0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@J@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+0040f950 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+0040fb70 new: 0
+00463334 new: 0
+00475026 new: 0
+0047550f new: 0
+004aa320 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4ESaveType@CWorld@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+004aa3f0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+004b8660 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@H@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+004cbd00 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@F@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+004cbde0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@C@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00566330 new: 0
+0057f6e9 new: 0
+0057f93e new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EHeroTrainingStatus@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00580194 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005d8167 new: 1
+    ?TransferIn@?$CPersistTraits@J@@QAEXAAVCPersistContext@@AAVCStringParser@@AAJ@Z TABLE:005d8167
+005dc3c0 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005dc450 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005dc4d0 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005dc550 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005dc650 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005dc730 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005dc9b0 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+005e8cc0 new: 0
+006144c0 new: 0
+00679910 new: 1
+    ?TransferIn@?$CPersistTraits@W4EOpinion@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAW4EOpinion@@@Z TABLE:00679910
+00685840 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EOpinionAttitudeType@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00686240 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+006ba480 new: 0
+00755f40 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+0077fda0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EHeroCentreDoorType@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+007ad7b0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+007b4180 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4ECrimeSeverity@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+007b47b0 new: 1
+    ?TransferIn@CPersistTraitsSLONG@@SIJAAVCPersistContext@@AAVCStringParser@@@Z
+009be420 new: 3
+    ?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z TABLE:009be420
+    ?GetAsD3DPixelFormat@CPixelFormat@@QBE?AW4_D3DFORMAT@@XZ
+    ?GetD3DCOLOR@CRGBColour@@QBEKXZ
+009e42c0 new: 0
+009e4420 new: 5
+    ??1?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@VCMaintainedEvent@@@std@@U12@V?$allocator@U?$_List_node@VCMaintainedEvent@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@VCMaintainedEvent@@@std@@@std@@QAE@XZ
+    ??1?$list@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAE@XZ
+    ?deallocate@?$allocator@U?$_List_node@VCMaintainedEvent@@@std@@@std@@QAEXPAU?$_List_node@VCMaintainedEvent@@@2@I@Z
+009e4710 new: 2
+    ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ TABLE:009e4710
+    ?deallocate@?$allocator@U?$_List_node@VCMaintainedEvent@@@std@@@std@@QAEXPAU?$_List_node@VCMaintainedEvent@@@2@I@Z
+00a38670 new: 0
+00a66860 new: 0
+00a66c00 new: 0
+00ab5710 new: 0
+00ab6450 new: 0
+00cdcbe0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EGameflowPosition@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00cdcd90 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00cdcf40 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EPlaceInHeroSouls@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00e38f40 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00e9e3e0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00eb6710 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4ESheriffState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00eb68c0 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EAssassinState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+00f2d640 new: 1
+    ?TransferIn@?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z

@@ -8,7 +8,11 @@
 //   CStringParser*, long*) 0x009E2590 (`__fastcall`), list<CStringParserCommentBoundaries>::~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
 // Shape (family M157, representative 0x005DC450): the landed CAnimComponentSetCreatureMode::Initialise 0x005DC9B0 /
 //   CAnimComponentFlags::Initialise 0x005DC3C0 -- `Reset(); CStringParser parser(text, 0, CCharString("", -1), 0);
-//   Delay = ParseLong(context, parser); return true;` (the parsed long homed in the dead text slot). Speed TU.
+//   Delay = CPersistTraitsSLONG::TransferIn(context, parser); return true;` (the parsed long homed in the dead text slot). Speed TU.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   ParseLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
 class CCharString {
 public:
     void* m_pData;
@@ -38,13 +42,8 @@ public:
                   long baseLineOffset);                   // 0x00404720
 };
 class CPersistContext;
-void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-inline long ParseLong(CPersistContext& context, CStringParser& parser)
-{
-    long value;
-    TransferIn(&context, &parser, &value);
-    return value;
-}
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 class CAnimComponentBase {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -61,6 +60,6 @@ bool CAnimComponentDelayTime::Initialise(CPersistContext& context, const CCharSt
 {
     Reset();
     CStringParser parser(text, 0, CCharString("", -1), 0);
-    Delay = ParseLong(context, parser);
+    Delay = CPersistTraitsSLONG::TransferIn(context, parser);
     return true;
 }

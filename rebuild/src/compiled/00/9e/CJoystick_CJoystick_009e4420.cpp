@@ -11,28 +11,14 @@
 // Shape: an empty user destructor: the vtable store, then the members in reverse order -- the list's inline destructor
 //   (`clear(); if (node) free(node);`) and the inlined `dec edi ; jne` array-destructor loop walking back from +0xd04
 //   in 0x34-byte steps (CInputEvent's destructor is declared, not inline, so each element is a call).
-extern "C" void __cdecl free(void* block);
-class CInputEvent {
-public:
-    unsigned char _data[0x34];
-    CInputEvent();                                 // 0x00A04410
-    ~CInputEvent();                                // 0x00A03B30 (empty, out of line)
-};
-struct SMaintainedNode {
-    SMaintainedNode* m_pNext;
-    SMaintainedNode* m_pPrev;
-    unsigned char    m_data[0x38];
-};
-struct CMaintainedEventList {
-    SMaintainedNode* m_pNode;
-    void clear();                                  // 0x009E4710
-    ~CMaintainedEventList()
-    {
-        clear();
-        if (m_pNode)
-            free(m_pNode);
-    }
-};
+// NF136 (2026-11-20, q3887): the local CInputEvent model and the CMaintainedEventList / SMaintainedNode stand-ins (whose clear() bound
+//   0x009E4710 as ?clear@CMaintainedEventList@@QAEXXZ) replaced by engine/CInputEvent.h (??0 / ??1CInputEvent@@QAE@XZ, unchanged spellings)
+//   and the retail member type std::list<CMaintainedEvent> from stlport/fable_containers.h with FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE:
+//   the inline STLport ~_List_base (clear(); deallocate the sentinel) binds ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ.
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "engine/CInputEvent.h"
+#include "engine/CMaintainedEvent.h"
+#include "stlport/fable_containers.h"
 class CInputManager;
 class CJoystick {
 public:
@@ -40,7 +26,7 @@ public:
     CInputEvent          EventStore[64];           // +0x04
     CInputManager*       InputManager;             // +0xd04
     bool                 ExclusiveMode;            // +0xd08
-    CMaintainedEventList MaintainedEventsList;     // +0xd0c
+    std::list<CMaintainedEvent> MaintainedEventsList;     // +0xd0c
     long                 NoStoredEvents;           // +0xd10
     long                 NoEventScansRunning;      // +0xd14
     ~CJoystick();

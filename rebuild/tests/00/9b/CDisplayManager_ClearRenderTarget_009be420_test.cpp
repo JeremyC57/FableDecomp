@@ -1,73 +1,41 @@
 #include <stdio.h>
+#include <string.h>
+// Behaviour test for 0x009BE420 CDisplayManager::ClearRenderTarget (links the row object).
+// NF136 (2026-11-20, q4290): rewritten on the shared headers the row now uses (engine/CDisplayManager.h, engine/CPixelFormat.h,
+//   engine/CD3DFormatInfo.h); the checks and the PassPattern are unchanged. The manager is a zeroed block with D3DDevice (+0x58) and
+//   DepthBufferFormat (+0x1AC) written in place; the device is a fake object whose slot 43 (+0xAC) is the Clear fixture.
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_SIGNED
+#define FABLE_RETAIL_CPIXELFORMAT_FINDFORMATINFOINDEX
+#define FABLE_RETAIL_CRGBCOLOUR_GETD3DCOLOR
+#include "engine/CRGBColour.h"
+#include "engine/IDirect3DDevice9.h"
+#include "engine/CDisplayManager.h"
 
-#include "rebuild_abi.h"
-
-class CRGBColour
-{ public:
-    fable_u32 value;
+extern const CD3DFormatInfo GD3DFormats[2] = {
+    {(_D3DFORMAT)75, PF_TYPE_DEPTH, 32, 0, 0, 0, 0, 0, false},
+    {(_D3DFORMAT)77, PF_TYPE_DEPTH, 32, 0, 0, 0, 0, 1, false},
 };
 
-struct FablePixelFormatInfo
+static long g_observedFormat = 0;
+
+long __fastcall CPixelFormat::FindFormatInfoIndexFromD3DFormat(_D3DFORMAT format)
 {
-    fable_i32 d3dFormat00;
-    fable_u8 unknown04[0x18];
-    fable_i32 supportsDepthStencil1C;
-    fable_u32 unknown20;
-};
-
-FablePixelFormatInfo
-    g_FablePixelFormatInfoTable_0129BA40[2] = {};
-
-static fable_i32 g_observedFormat = 0;
-
-fable_i32 __fastcall
-FableFindFormatInfoIndexFromD3DFormat_009E3620(
-    fable_i32 d3dFormat)
-{
-    g_observedFormat = d3dFormat;
+    g_observedFormat = (long)format;
     return 1;
 }
 
-struct FableDisplayDevice;
-typedef long (__stdcall *FableDisplayDeviceClearCall)(
-    FableDisplayDevice* device,
-    fable_u32 rectangleCount,
-    void* rectangles,
-    fable_u32 clearFlags,
-    fable_u32 colour,
-    float depth,
-    fable_u32 stencil);
-
-struct FableDisplayDevice
-{
-    FableDisplayDeviceClearCall* vtable;
-};
-
-struct CDisplayManagerClearRenderTargetView
-{
-    fable_u8 unknown000[0x58];
-    FableDisplayDevice* displayDevice58;
-    fable_u8 unknown05C[0x150];
-    fable_u32 depthFormatIndex1AC;
-
-    void ClearRenderTarget(
-        const CRGBColour& colour,
-        fable_u32 requestedFlags);
-};
+struct FakeDevice { void** vtable; };
 
 static int g_clearCalls = 0;
-static fable_u32 g_observedFlags = 0;
-static fable_u32 g_observedColour = 0;
+static unsigned long g_observedFlags = 0;
+static unsigned long g_observedColour = 0;
 static float g_observedDepth = 0.0f;
 
-static long __stdcall ClearFixture(
-    FableDisplayDevice*,
-    fable_u32 rectangleCount,
-    void* rectangles,
-    fable_u32 clearFlags,
-    fable_u32 colour,
-    float depth,
-    fable_u32 stencil)
+static long __stdcall ClearFixture(FakeDevice*, unsigned long rectangleCount, const void* rectangles, unsigned long clearFlags,
+                                   unsigned long colour, float depth, unsigned long stencil)
 {
     ++g_clearCalls;
     if (rectangleCount != 0 || rectangles != 0 || stencil != 0)
@@ -78,11 +46,9 @@ static long __stdcall ClearFixture(
     return 0;
 }
 
-static int VerifyFlags(
-    CDisplayManagerClearRenderTargetView& display,
-    const CRGBColour& colour,
-    fable_u32 requested,
-    fable_u32 expected)
+static double g_storage[(sizeof(CDisplayManager) + 7) / 8];
+
+static int VerifyFlags(CDisplayManager& display, const CRGBColour& colour, unsigned long requested, unsigned long expected)
 {
     display.ClearRenderTarget(colour, requested);
     return g_observedFlags == expected ? 0 : 1;
@@ -90,16 +56,20 @@ static int VerifyFlags(
 
 int main()
 {
-    FableDisplayDeviceClearCall vtable[0x2C] = {};
-    vtable[0x2B] = ClearFixture;
-    FableDisplayDevice device = {vtable};
-    CDisplayManagerClearRenderTargetView display = {};
-    display.displayDevice58 = &device;
-    display.depthFormatIndex1AC = 0;
+    void* vtable[0x2C];
+    memset(vtable, 0, sizeof vtable);
+    vtable[0x2B] = (void*)&ClearFixture;
+    FakeDevice device = {vtable};
+    memset(g_storage, 0, sizeof g_storage);
+    unsigned char* raw = (unsigned char*)g_storage;
+    FakeDevice* devicePointer = &device;
+    long depthFormatIndex = 0;
+    memcpy(raw + 0x58, &devicePointer, 4);
+    memcpy(raw + 0x1AC, &depthFormatIndex, 4);
+    CDisplayManager& display = *(CDisplayManager*)raw;
 
-    g_FablePixelFormatInfoTable_0129BA40[0].d3dFormat00 = 75;
-    g_FablePixelFormatInfoTable_0129BA40[1].supportsDepthStencil1C = 1;
-    const CRGBColour colour = {0xA1B2C3D4};
+    CRGBColour colour;
+    colour.IntValue = 0xA1B2C3D4;
 
     if (VerifyFlags(display, colour, 1, 2) != 0 ||
         VerifyFlags(display, colour, 2, 4) != 0 ||
@@ -111,7 +81,7 @@ int main()
     }
     if (g_clearCalls != 4 ||
         g_observedFormat != 75 ||
-        g_observedColour != colour.value ||
+        g_observedColour != colour.IntValue ||
         g_observedDepth != 1.0f)
     {
         printf("FABLETLC_DISPLAY_CLEAR_TARGET_BEHAVIOR FAIL code=2\n");

@@ -8,13 +8,17 @@
 // enum element. The vector's data pointer is read into esi BEFORE the call (a named local), the parsed value lands
 // in the dead `parser` argument slot ([ebp+0Ch]) and is stored into first[index] afterwards. The module keeps the
 // EBP frame (`optimize("y", off)`) and is size-optimised.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferEnumIn_009e2590(CPersistContext*, CStringParser*, long*) (0x009E2590) replaced by the shared
+//   engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY): the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (the landed self spelling of 0x009E2590).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CPersistContext;
 class CStringParser;
 class CCharString;
 
-void __fastcall TransferEnumIn_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
 typedef long ECategory;                                // CHeroLogBook::CHeroLogBookEntry::ECategory
 
@@ -36,6 +40,6 @@ void CPersistContext_TransferableVector::TransferIn(CPersistContext* context, CS
 {
     ECategory* first = TransVector->m_pFirst;
     long value;
-    TransferEnumIn_009e2590(context, parser, &value);
+    CPersistTraitsSLONG::TransferIn(*context, *parser, value);
     first[index] = value;
 }

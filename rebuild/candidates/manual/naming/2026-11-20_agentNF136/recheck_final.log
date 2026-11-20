@@ -1,0 +1,183 @@
+addr       parity           behav  name
+004059f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<unsigned char>::TransferIn
+0040e8f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<long>::TransferIn
+0040f950   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<unsigned long>::TransferIn
+0040fb70   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+0040fb70   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorGenericType (engine/CPersistContext_TransferableVectorGenericType.h)
+0040fb70   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+0040fb70   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<ETutorialCategory>::TransferIn
+00463334   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00463334   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00463334   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00463334   WARN RELOC_NAME: ?clear@CStringLongMap@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+00463334   WARN RELOC_NAME: ?TransferMapOut_0046367a@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 0046367a labelled 'GFSerialiseMultiMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00463334   WARN RELOC_NAME: ?TransferMapIn_00463732@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 00463732 labelled '_global::GFSerialiseMultiMapBinaryIn'
+00463334   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+00475026   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00475026   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00475026   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00475026   WARN RELOC_NAME: ?clear@CStringLongMap@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+00475026   WARN RELOC_NAME: ?TransferMapOut_004314c8@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 004314c8 labelled 'GFSerialiseMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00475026   WARN RELOC_NAME: ?TransferMapIn_0043151d@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 0043151d labelled '_global::GFSerialiseMapBinaryIn'
+00475026   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+0047550f   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+0047550f   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+0047550f   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0047550f   WARN RELOC_NAME: ?find_00475861@CStringLongMap@@QAEPAUSMapNode@@ABVCCharString@@@Z -> 00475861 labelled 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >::_M_find'
+0047550f   WARN RELOC_NAME: ?insert_004758e3@CStringLongMap@@QAE?AUCStringLongInsertResult@@ABUCStringLongPair@@@Z -> 004758e3 labelled 'std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::less<CCharString>>::insert_unique'
+0047550f   WARN RELOC_NAME: ?TransferMapOut_00475a51@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 00475a51 labelled 'GFSerialiseMapBinaryOut<EGameAction, CCharString, std::less<CCharString>>'
+0047550f   WARN RELOC_NAME: ?TransferMapIn_00475aa6@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 00475aa6 labelled '_global::GFSerialiseMapBinaryIn'
+0047550f   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+004aa320   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<CWorld::ESaveType>::TransferIn
+004aa3f0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<double>::TransferIn
+004b8660   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<int>::TransferIn
+004cbd00   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<short>::TransferIn
+004cbde0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<signed char>::TransferIn
+00566330   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+00566330   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00566330   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorGenericType (engine/CPersistContext_TransferableVectorGenericType.h)
+00566330   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+00566330   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>::TransferIn
+0057f6e9   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+0057f6e9   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::TransferIn
+0057f93e   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EHeroTrainingStatus>::TransferIn
+00580194   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00580194   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00580194   WARN SHARED_HEADER_AVAILABLE CHeroMarriageInfo (engine/CHeroMarriageInfo.h)
+00580194   RELOCATION_MATCH PASS   CPersistTraits<CHeroMarriageInfo>::TransferIn
+005d8167   RELOCATION_MATCH PASS   CPersistTraits<EInputKey>::TransferIn
+005dc3c0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc3c0   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc3c0   WARN SHARED_HEADER_AVAILABLE CAnimComponentFlags (engine/CAnimComponentFlags.h)
+005dc3c0   RELOCATION_MATCH PASS   CAnimComponentFlags::Initialise
+005dc450   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc450   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc450   WARN SHARED_HEADER_AVAILABLE CAnimComponentTransitionInTime (engine/CAnimComponentTransitionInTime.h)
+005dc450   RELOCATION_MATCH PASS   CAnimComponentTransitionInTime::Initialise
+005dc4d0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc4d0   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc4d0   WARN SHARED_HEADER_AVAILABLE CAnimComponentDelayTime (engine/CAnimComponentDelayTime.h)
+005dc4d0   RELOCATION_MATCH PASS   CAnimComponentDelayTime::Initialise
+005dc550   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc550   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness (engine/CAnimComponentCombatHandedness.h)
+005dc550   RELOCATION_MATCH PASS   CAnimComponentCombatHandedness::Initialise
+005dc650   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc650   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc650   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatComboChain (engine/CAnimComponentCombatComboChain.h)
+005dc650   RELOCATION_MATCH PASS   CAnimComponentCombatComboChain::Initialise
+005dc730   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc730   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc730   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatRecoil (engine/CAnimComponentCombatRecoil.h)
+005dc730   RELOCATION_MATCH PASS   CAnimComponentCombatRecoil::Initialise
+005dc9b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc9b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc9b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentSetCreatureMode (engine/CAnimComponentSetCreatureMode.h)
+005dc9b0   RELOCATION_MATCH PASS   CAnimComponentSetCreatureMode::Initialise
+005e8cc0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005e8cc0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorGenericType (engine/CPersistContext_TransferableVectorGenericType.h)
+005e8cc0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+005e8cc0   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CUnprovenEnum4_005e8cc0>::TransferIn
+006144c0   WARN SHARED_HEADER_AVAILABLE CHeroLogBook (engine/CHeroLogBook.h)
+006144c0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+006144c0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVectorGenericType (engine/CPersistContext_TransferableVectorGenericType.h)
+006144c0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+006144c0   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::TransferIn
+00679910   RELOCATION_MATCH PASS   CPersistTraits<EInputKey>::TransferIn
+00685840   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EOpinionAttitudeType>::TransferIn
+00686240   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00686240   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+00686240   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00686240   RELOCATION_MATCH PASS   CPersistTraits<CAppearanceModifierGraphics::CEntry>::TransferIn
+006ba480   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+006ba480   WARN SHARED_HEADER_AVAILABLE CFaction (engine/CFaction.h)
+006ba480   RELOCATION_MATCH PASS   CPersistTraits<CFaction>::TransferIn
+00755f40   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00755f40   RELOCATION_MATCH PASS   CPersistTraits<std::pair<EReactionSpeechType, long> >::TransferIn
+0077fda0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EHeroCentreDoorType>::TransferIn
+007ad7b0   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<EScriptingStateGroups>::TransferIn
+007b4180   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<ECrimeSeverity>::TransferIn
+007b47b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+007b47b0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+007b47b0   RELOCATION_MATCH PASS   CPersistTraits<CCrimeWaitingForBribe>::TransferIn
+009be420   RELOCATION_MATCH PASS   CDisplayManager::ClearRenderTarget
+009e42c0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+009e42c0   RELOCATION_MATCH PASS   CMemoryDataOutputStream::Clear
+009e4420   WARN SHARED_HEADER_AVAILABLE CJoystick (engine/CJoystick.h)
+009e4420   RELOCATION_MATCH PASS   CJoystick::~CJoystick
+009e4710   RELOCATION_MATCH PASS   std::_List_base<CMaintainedEvent, std::allocator<CMaintainedEvent>>::clear
+00a38670   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+00a38670   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00a38670   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00a38670   RELOCATION_MATCH PASS   CCRCSymbolMap::ParseEnum
+00a66860   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00a66860   RELOCATION_MATCH PASS   CMemoryDataOutputStream::Clear
+00a66c00   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00a66c00   RELOCATION_MATCH PASS   CMemoryDataOutputStream::Clear
+00ab5710   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab5710   WARN SHARED_HEADER_AVAILABLE CMouseDX (engine/CMouseDX.h)
+00ab5710   RELOCATION_MATCH PASS   CMouseDX::SetExclusiveMode
+00ab6450   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab6450   WARN RELOC_NAME: ?HasInputFocus@CSystemManager@@QAE_NXZ -> 009a4fb0 labelled 'CSystemManager::IsApplicationInputFocus'
+00ab6450   RELOCATION_MATCH PASS   CKeyboardDX::SetExclusiveMode
+00cdcbe0   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00cdcd90   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00cdcf40   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00e38f40   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00e9e3e0   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00eb6710   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00eb68c0   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+00f2d640   RELOCATION_MATCH PASS   _unattributed::TransferIn_CTransferableLong_009e2590
+
+WINS: 52
+  004059f0 RELOCATION_MATCH CPersistContext_TransferableComponent<unsigned char>::?TransferIn@?$CPersistContext_TransferableComponent@E@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  0040e8f0 RELOCATION_MATCH CPersistContext_TransferableComponent<long>::?TransferIn@?$CPersistContext_TransferableComponent@J@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  0040f950 RELOCATION_MATCH CPersistContext_TransferableComponent<unsigned long>::?TransferIn@?$CPersistContext_TransferableComponent@K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  0040fb70 RELOCATION_MATCH CPersistContext_TransferableVector<ETutorialCategory>::?TransferIn@?$CPersistContext_TransferableVector@W4ETutorialCategory@@@@EAEXAAVCPersistContext@@AAVCStringParser@@J@Z
+  00463334 RELOCATION_MATCH CPersistContext::TransferMap
+  00475026 RELOCATION_MATCH CPersistContext::TransferMap
+  0047550f RELOCATION_MATCH CPersistContext::TransferMap
+  004aa320 RELOCATION_MATCH CPersistContext_TransferableComponent<CWorld::ESaveType>::?TransferIn@?$CPersistContext_TransferableComponent@W4ESaveType@CWorld@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  004aa3f0 RELOCATION_MATCH CPersistContext_TransferableComponent<double>::?TransferIn@?$CPersistContext_TransferableComponent@N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  004b8660 RELOCATION_MATCH CPersistContext_TransferableComponent<int>::?TransferIn@?$CPersistContext_TransferableComponent@H@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  004cbd00 RELOCATION_MATCH CPersistContext_TransferableComponent<short>::?TransferIn@?$CPersistContext_TransferableComponent@F@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  004cbde0 RELOCATION_MATCH CPersistContext_TransferableComponent<signed char>::?TransferIn@?$CPersistContext_TransferableComponent@C@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00566330 RELOCATION_MATCH CPersistContext_TransferableVector<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>::?TransferIn@?$CPersistContext_TransferableVector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@@EAEXAAVCPersistContext@@AAVCStringParser@@J@Z
+  0057f6e9 RELOCATION_MATCH CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::TransferIn
+  0057f93e RELOCATION_MATCH CPersistContext_TransferableComponent<EHeroTrainingStatus>::?TransferIn@?$CPersistContext_TransferableComponent@W4EHeroTrainingStatus@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00580194 RELOCATION_MATCH CPersistTraits<CHeroMarriageInfo>::?TransferIn@?$CPersistTraits@VCHeroMarriageInfo@@
+  005d8167 RELOCATION_MATCH CPersistTraits<EInputKey>::?TransferIn@?$CPersistTraits@J@@QAEXAAVCPersistContext@@AAVCStringParser@@AAJ@Z
+  005dc3c0 RELOCATION_MATCH CAnimComponentFlags::?Initialise@CAnimComponentFlags@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc450 RELOCATION_MATCH CAnimComponentTransitionInTime::?Initialise@CAnimComponentTransitionInTime@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc4d0 RELOCATION_MATCH CAnimComponentDelayTime::?Initialise@CAnimComponentDelayTime@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc550 RELOCATION_MATCH CAnimComponentCombatHandedness::?Initialise@CAnimComponentCombatHandedness@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc650 RELOCATION_MATCH CAnimComponentCombatComboChain::?Initialise@CAnimComponentCombatComboChain@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc730 RELOCATION_MATCH CAnimComponentCombatRecoil::?Initialise@CAnimComponentCombatRecoil@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc9b0 RELOCATION_MATCH CAnimComponentSetCreatureMode::?Initialise@CAnimComponentSetCreatureMode@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005e8cc0 RELOCATION_MATCH CPersistContext_TransferableVector<CUnprovenEnum4_005e8cc0>::?TransferIn@?$CPersistContext_TransferableVector@W4CUnprovenEnum4_005e8cc0@@@@EAEXAAVCPersistContext@@AAVCStringParser@@J@Z
+  006144c0 RELOCATION_MATCH CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>::?TransferIn@?$CPersistContext_TransferableVector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@@EAEXAAVCPersistContext@@AAVCStringParser@@J@Z
+  00679910 RELOCATION_MATCH CPersistTraits<EInputKey>::?TransferIn@?$CPersistTraits@W4EOpinion@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAW4EOpinion@@@Z
+  00685840 RELOCATION_MATCH CPersistContext_TransferableComponent<EOpinionAttitudeType>::?TransferIn@?$CPersistContext_TransferableComponent@W4EOpinionAttitudeType@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00686240 RELOCATION_MATCH CPersistTraits<CAppearanceModifierGraphics::CEntry>::?TransferIn@
+  006ba480 RELOCATION_MATCH CPersistTraits<CFaction>::?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCFaction@@@Z
+  00755f40 RELOCATION_MATCH CPersistTraits<std::pair<EReactionSpeechType, long> >::TransferIn
+  0077fda0 RELOCATION_MATCH CPersistContext_TransferableComponent<EHeroCentreDoorType>::?TransferIn@?$CPersistContext_TransferableComponent@W4EHeroCentreDoorType@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  007ad7b0 RELOCATION_MATCH CPersistContext_TransferableComponent<EScriptingStateGroups>::?TransferIn@?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  007b4180 RELOCATION_MATCH CPersistContext_TransferableComponent<ECrimeSeverity>::?TransferIn@?$CPersistContext_TransferableComponent@W4ECrimeSeverity@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  007b47b0 RELOCATION_MATCH CPersistTraits<CCrimeWaitingForBribe>::?TransferIn@?$CPersistTraits@VCCrimeWaitingForBribe@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCrimeWaitingForBribe@@@Z
+  009be420 RELOCATION_MATCH CDisplayManager::?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z
+  009e42c0 RELOCATION_MATCH CMemoryDataOutputStream::Clear
+  009e4420 RELOCATION_MATCH CJoystick::??1CJoystick
+  009e4710 RELOCATION_MATCH std::list<CMaintainedEvent>::?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ
+  00a38670 RELOCATION_MATCH CCRCSymbolMap::?ParseEnum@CCRCSymbolMap@@IAE_NAAVCStringParser@@ABVCCharString@@@Z
+  00a66860 RELOCATION_MATCH CMemoryDataOutputStream::Clear
+  00a66c00 RELOCATION_MATCH CMemoryDataOutputStream::Clear
+  00ab5710 RELOCATION_MATCH CMouseDX::?SetExclusiveMode@CMouseDX@@UAE_N_N@Z
+  00ab6450 RELOCATION_MATCH CKeyboardDX::?SetExclusiveMode@CKeyboardDX@@UAE_N_N@Z
+  00cdcbe0 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4EGameflowPosition@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00cdcd90 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00cdcf40 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4EPlaceInHeroSouls@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e38f40 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00e9e3e0 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00eb6710 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4ESheriffState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00eb68c0 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4EAssassinState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  00f2d640 RELOCATION_MATCH _unattributed::?TransferIn@?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z

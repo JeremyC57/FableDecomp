@@ -1,21 +1,25 @@
 // CMemoryDataOutputStream::Clear  @ 0x00a66860
 // push esi; mov esi,ecx; lea ecx,[esi+0x340c]; call sub; mov [esi+0x3404],0; pop esi; ret
+// NF136 (2026-11-20, q3887): the stand-in member struct MemberBuffer (whose Clear() bound 0x009E4710 as ?Clear@MemberBuffer@@QAEXXZ) replaced in place by
+//   the retail member type std::list<CMaintainedEvent> (the MaintainedEventsList of CKeyboard / CMouse / CJoystick, Ego_r.pdb layouts) from
+//   stlport/fable_containers.h with FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE: the call now binds STLport's _List_base<CMaintainedEvent>::clear,
+//   ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ (the landed 0x00A66990 / 0x00A66F80 spelling).
+//   The row's own (propagated) name is unchanged: see NF136 NOTES.
 
-struct MemberBuffer {
-    char pad[0x40];
-    void Clear();   // non-virtual, __fastcall  -> direct call
-};
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#include "engine/CMaintainedEvent.h"
+#include "stlport/fable_containers.h"
 
 class CMemoryDataOutputStream { public:
     char   pad0[0x3404];   // 0x0000 .. 0x3403
     int    m_size;         // 0x3404
     char   pad1[4];        // 0x3408 .. 0x340b
-    MemberBuffer m_buffer; // 0x340c
+    std::list<CMaintainedEvent> m_buffer; // 0x340c
     void Clear();
 };
 
 void CMemoryDataOutputStream::Clear()
 {
-    m_buffer.Clear();
+    m_buffer.clear();
     m_size = 0;
 }

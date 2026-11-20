@@ -11,6 +11,10 @@
 //   strcmp intrinsic, otherwise CBasicString<char>::operator==); the longs come through the inline by-value TransferInLong()
 //   helper (its local in the parser slot); the float traits is a block-local object whose real TransferIn body is in the TU
 //   (VC7.1 then homes its `this` on the value slot); the closing ")" is read and discarded. Speed-optimised (default) TU.
+// NF136 (2026-11-20, q5199 / q5220): the free stand-in declaration TransferIn(CPersistContext*, CStringParser*, long*) and the local
+//   TransferInLong helper replaced by the shared engine/CPersistTraits.h CPersistTraitsSLONG (partial mode FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY):
+//   its inline long-returning TransferIn(context, parser) over the static __fastcall Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z (0x009E2590, the landed self spelling).
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
@@ -47,13 +51,8 @@ class CPersistContext { public:                               // Ego_r.pdb, 0x2C
     void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
 enum { PARSED_ITEM_SYMBOL = 2 };
-void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-FABLE_FORCEINLINE long TransferInLong(CPersistContext* context, CStringParser* parser)
-{
-    long value;
-    TransferIn(context, parser, &value);
-    return value;
-}
+#define FABLE_RETAIL_CPERSISTTRAITS_SLONG_ONLY
+#include "engine/CPersistTraits.h"
 
 class CAppearanceModifierGraphics {
 public:
@@ -100,23 +99,23 @@ void CPersistTraits<CAppearanceModifierGraphics::CEntry>::TransferIn(CPersistCon
                                                                      CAppearanceModifierGraphics::CEntry* value)
 {
     if (parser->ReadAsSymbol() == "(") {
-        value->Long00 = TransferInLong(context, parser);
+        value->Long00 = CPersistTraitsSLONG::TransferIn(*context, *parser);
         if (parser->ReadAsSymbol() == ",") {
             {
                 CPersistTraits<float> floatTraits;
                 floatTraits.TransferIn(*context, *parser, value->Float04);
             }
             if (parser->ReadAsSymbol() == ",") {
-                value->Long08 = TransferInLong(context, parser);
+                value->Long08 = CPersistTraitsSLONG::TransferIn(*context, *parser);
                 if (parser->ReadAsSymbol() == ",") {
-                    value->Long0C = TransferInLong(context, parser);
+                    value->Long0C = CPersistTraitsSLONG::TransferIn(*context, *parser);
                     if (parser->ReadAsSymbol() == ",") {
                         {
                             CPersistTraits<float> floatTraits;
                             floatTraits.TransferIn(*context, *parser, value->Float10);
                         }
                         if (parser->ReadAsSymbol() == ",") {
-                            value->Long14 = TransferInLong(context, parser);
+                            value->Long14 = CPersistTraitsSLONG::TransferIn(*context, *parser);
                             parser->ReadAsSymbol();
                         }
                     }
