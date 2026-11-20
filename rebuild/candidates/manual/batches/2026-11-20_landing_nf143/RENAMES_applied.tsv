@@ -1,0 +1,28 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x009FBFB0	CResource	ListRemove	?ListRemove@CResource@@AAEXXZ	CResource::ListRemove	?ListRemove@CResource_Methods@@QAEXXZ	Ego_r.pdb 0x00B6BE60 + FableWin.pdb 0x031772B0 (private AAE); donor order ListInsert, ListRemove = retail 0x009FBF90, 0x009FBFB0; body unlinks PrevResource +0xC / NextResource +0x10; ported onto engine/CResource.h (FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE declares it); MATCH + PASS; every REFS row binds AAE except the July candidates-header rows 0x00BEC000 / 0x00BEC470 / 0x00BEC950 (existing, NAME_FIXES)
+0x009FBF90	CResource	ListInsert	?ListInsert@CResource@@AAEXPAV1@0@Z	CResource::ListInsert	?ListInsert@CResource_Methods@@QAEXPAVCResource@@0@Z	Ego_r.pdb 0x00B6BE40 + FableWin.pdb 0x03176F70 (private AAE); donor order as ListRemove; body links prev / next; ported onto engine/CResource.h; MATCH + PASS; every REFS row binds AAE except the three July candidates-header rows (existing, NAME_FIXES)
+0x00A0B710	CShaderRenderManager	UpdateLightGlobals	?UpdateLightGlobals@CShaderRenderManager@@QAEXABVCWideString@@@Z	CShaderRenderManager::UpdateLightGlobals	?UpdateLightGlobals@CShaderRenderManager@@QAEXABVCCharString@@@Z	own parameter const CCharString& -> const CWideString& (two sources: the body hands the parameter unchanged in edx to CAFile::ConvertPathToFullPath, whose parameter is const CWideString& in Ego_r.pdb 0x00B00D80 + FableWin.pdb 0x02FEF590; the byte-sibling CSoundBankLH::Load 0x00A0B630 takes const CWideString&); catalog name kept (propagated; NAME_FIXES); no row or vtable references 0x00A0B710 (exe scan), so no binder follows; RELOCATION_MATCH + PASS
+# Section 2
+0x00A25530	?ListRemove@CResource@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x00A25530	?ListInsert@CResource@@QAEXPAV1@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x00A25E70	?ListRemove@CResource@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x00A25E70	?ListInsert@CResource@@QAEXPAV1@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x00A269C0	?ListRemove@CResource@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x00A269C0	?ListInsert@CResource@@QAEXPAV1@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x00A26A50	?ListRemove@CResource@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x00A26A50	?ListInsert@CResource@@QAEXPAV1@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x00A26C60	?ListRemove@CResource@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x00A26C60	?ListInsert@CResource@@QAEXPAV1@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x00A42FC0	?ListRemove@CResource@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x00A42FC0	?ListInsert@CResource@@QAEXPAV1@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x009C8FB0	?ListRemove@CResourceMethods@@QAEXXZ	?ListRemove@CResource@@AAEXXZ	0x009FBFB0
+0x009C8FB0	?ListInsert@CResourceMethods@@QAEXPAVCResource@@0@Z	?ListInsert@CResource@@AAEXPAV1@0@Z	0x009FBF90
+0x00A0B710	?ConvertPathToFullPath@@YI?AVCWideString@@ABVCCharString@@@Z	?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z	0x00999110
+0x00406610	?fromLit@CWSraw@@QAEXPBG@Z	??0CWideString@@QAE@PBG@Z	0x0099B6B0
+0x00406610	@WSctor_0099aed0@4	??0CWideString@@QAE@XZ	0x0099AED0
+0x00406610	@WSdtor_0099b510@4	??1CWideString@@QAE@XZ	0x0099B510
+0x00406610	_FmtWide_0099ba70	?Sprintf@CWideString@@QAAXPBGZZ	0x0099BA70
+0x00406610	?combine@CWSraw@@QAEXABU1@@Z	??0CWideString@@QAE@ABV0@@Z	0x0099B720
+0x00406610	?AddWide_0099be70@@YI?AVCWideString@@PAUCWSraw@@0@Z	??H@YI?AVCWideString@@ABV0@0@Z	0x0099BE70
+0x00406610	?kFmtSave_0122de44@@3QBGB	??_C@_15KNBIKKIN@?$AA?$CF?$AAd?$AA?$AA@ (the literal L"%d")	0x0122DE44
+0x00406610	?kSavePrefix_0122de90@@3QBGB	??_C@_19IDJEODAK@?$AAS?$AAa?$AAv?$AAe?$AA?$AA@ (the literal L"Save")	0x0122DE90

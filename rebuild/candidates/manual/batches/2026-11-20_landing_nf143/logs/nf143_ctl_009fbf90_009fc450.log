@@ -1,0 +1,2 @@
+head_009fc450.obj : error LNK2005: "public: void __thiscall CResource_Methods::ListInsert(class CResource *,class CResource *)" (?ListInsert@CResource_Methods@@QAEXPAVCResource@@0@Z) already defined in head_009fbf90.obj
+ctl_009fbf90_009fc450.dll : fatal error LNK1169: one or more multiply defined symbols found

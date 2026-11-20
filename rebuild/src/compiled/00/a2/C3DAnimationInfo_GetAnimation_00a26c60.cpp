@@ -1,4 +1,8 @@
 // C3DAnimationInfo::GetAnimation(const C3DMesh2&) const -- touch the animation data, return the cached instance for the mesh, else build one
+// Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are private CResource members in Ego_r.pdb / FableWin.pdb
+//   (?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z); the row's local CResource declares them private and the
+//   touch (FableWin.pdb's inline CResource::TouchResource body) is a public inline CResource member, the 0x00A262B0 form (was public
+//   QAE declarations and a Touch on the derived class).
 // Grade: RELOCATION_MATCH (retry helper C) -- the instance map's _Rb_tree::find 0x00A2ADC0 given its real same-TU noinline
 // body behind an inline find() wrapper (the 00b83750 lever), then -- on that base -- Data->Animations read at the call and
 // at the end() test instead of through a map reference local: retail's early key store into the dead mesh slot and
@@ -23,8 +27,11 @@ class CResource { public:
     CResource* NextResource;               // +0x10
     unsigned long ResourceSize;            // +0x14
     unsigned long LastUsedFrame;           // +0x18
+private:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
+public:
+    void Touch();
 };
 class CResourceList { public:
     long m_pad0;                           // +0
@@ -34,6 +41,14 @@ class CResourceList { public:
     long MaximumMemory;                    // +0x28
     unsigned long CurrentFrame;            // +0x2c
 };
+inline void CResource::Touch()
+{
+    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
+        ListRemove();
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
+        LastUsedFrame = ResourceList->CurrentFrame;
+    }
+}
 #include "engine/CCountedPointer.h"
 class C3DAnimation2;
 struct CAnimationNode {                    // STLport _Rb_tree_node<pair<const unsigned long, CCountedPointer<C3DAnimation2> > >
@@ -74,14 +89,6 @@ __declspec(noinline) CAnimationMap::iterator CAnimationMap::TreeFind(const unsig
 #pragma auto_inline(on)
 struct CAnimationData : CResource {
     CAnimationMap Animations;              // +0x1c
-    void Touch()
-    {
-        if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-            ListRemove();
-            ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
-            LastUsedFrame = ResourceList->CurrentFrame;
-        }
-    }
 };
 class C3DMesh2 { public:
     unsigned char _pad[0xe8];

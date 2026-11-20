@@ -1,4 +1,8 @@
 // C3DAnimationInfo::GetAnimationStats() -- make sure the animation data is decoded (loading it synchronously if needed), touch it in its resource list and return its counted stats pointer
+// Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are private CResource members in Ego_r.pdb / FableWin.pdb
+//   (?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z); the row's local CResource declares them private and the
+//   touch (FableWin.pdb's inline CResource::TouchResource body) is a public inline CResource member, the 0x00A262B0 form (was public
+//   QAE declarations and a Touch on the derived class).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A269C0, 144 bytes. Callees: C3DAnimationInfo::BeginLoading 0x00A26730 (bool),
 // CResource::AddToResourceList 0x009FC440 (`if (ResourceList) ResourceList->...(this)`),
@@ -20,8 +24,11 @@ class CResource { public:
     CResource* NextResource;               // +0x10
     unsigned long ResourceSize;            // +0x14
     unsigned long LastUsedFrame;           // +0x18
+private:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
+public:
+    void Touch();
     void RemoveFromResourceList();              // 0x009FC440
 };
 
@@ -33,6 +40,14 @@ class CResourceList { public:
     long MaximumMemory;                    // +0x28
     unsigned long CurrentFrame;            // +0x2c
 };
+inline void CResource::Touch()
+{
+    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
+        ListRemove();
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
+        LastUsedFrame = ResourceList->CurrentFrame;
+    }
+}
 
 #include "engine/CCountedPointer.h"
 
@@ -45,14 +60,6 @@ struct CAnimationData : CResource {
     CCountedPointer<const C3DAnimationStats> Stats;    // +0x28
     CAsyncLoadTask* LoadTask;                          // +0x30
     void BuildSharedAnimation();                       // 0x00A24D70
-    void Touch()
-    {
-        if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-            ListRemove();
-            ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
-            LastUsedFrame = ResourceList->CurrentFrame;
-        }
-    }
 };
 
 class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets

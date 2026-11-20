@@ -1,0 +1,29 @@
+00405f00 new: 1
+    ?ReferenceGFIntToWideString@?A0x1150141a@@YA?AVCWideString@@J@Z
+004065f0 new: 1
+    ?ReferenceGetManualSaveBaseFileName@?A0xdbb2db98@@YA?AVCWideString@@ABVCUserProfileManager@@@Z
+00406610 new: 2
+    ?GFIntToWideString@@YI?AVCWideString@@J@Z TABLE:00405f00
+    ?GetManualSaveBaseFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+009c8fb0 new: 2
+    ?GetCurrentFrame@CResourceList@@QBEKXZ
+    ?TouchResource@CResource@@QAEXXZ
+009fbf90 new: 1
+    ?ListInsert@CResource@@AAEXPAV1@0@Z TABLE:009fbf90
+009fbfb0 new: 1
+    ?ListRemove@CResource@@AAEXXZ TABLE:009fbfb0
+009fc170 new: 0
+00a0b710 new: 1
+    ?UpdateLightGlobals@CShaderRenderManager@@QAEXABVCWideString@@@Z
+00a25530 new: 1
+    ?Touch@CResource@@QAEXXZ
+00a25e70 new: 1
+    ?Touch@CResource@@QAEXXZ
+00a269c0 new: 1
+    ?Touch@CResource@@QAEXXZ
+00a26a50 new: 1
+    ?Touch@CResource@@QAEXXZ
+00a26c60 new: 1
+    ?Touch@CResource@@QAEXXZ
+00a42fc0 new: 1
+    ?Touch@CResource@@QAEXXZ

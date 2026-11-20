@@ -1,4 +1,8 @@
 // C3DMeshInfo::GetMesh(CCountedPointer<const C3DMesh2>&, unsigned long lod, unsigned long flags) const -- hand out the mesh of the requested LOD (clamped and walked down to one with data), touching it; otherwise start loading it (unless flag 4), optionally wait for it (flag 0x10 + 1|2), fall back to any lower then higher LOD that already has a mesh, or (flag 1 without 4) block on the load and build it
+// Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are private CResource members in Ego_r.pdb / FableWin.pdb
+//   (?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z); the row's local CResource declares them private and the
+//   touch (FableWin.pdb's inline CResource::TouchResource body) is a public inline CResource member, the 0x00A262B0 form (was public
+//   QAE declarations and a Touch on the derived class).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A25E70, length 755 bytes (`ret 0Ch`, returns bool).
 // Callees: BeginLoading 0x00A256F0 (urgent = flag 0x20), CCountedPointer<const C3DMesh2>::operator= 0x00A2ACC0 (byte-identical
 //   COMDAT, manifest "CCountedPointer<CDiskFileWin32>::operator="), CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0,
@@ -32,8 +36,11 @@ class CResource { public:
     CResource* NextResource;               // +0x10
     unsigned long ResourceSize;            // +0x14
     unsigned long LastUsedFrame;           // +0x18
+private:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
+public:
+    void Touch();
     void SetAsUnloadable();                // 0x009FBF50
     void RemoveFromResourceList();              // 0x009FC440
 };
@@ -45,6 +52,14 @@ class CResourceList { public:
     long MaximumMemory;                    // +0x28
     unsigned long CurrentFrame;            // +0x2c
 };
+FABLE_FORCEINLINE void CResource::Touch()
+{
+    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
+        ListRemove();
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
+        LastUsedFrame = ResourceList->CurrentFrame;
+    }
+}
 void __cdecl operator delete(void* p);     // 0x00BFE9BC
 struct SCountBlock {
     long m_references;                             // +0
@@ -80,14 +95,6 @@ class C3DMeshLODInfo : public CResource { public:
     unsigned char LOD;                     // +0x30
     bool UsedMeshStats;                    // +0x31
     bool BuildMesh(bool a, bool b);        // 0x00A24520
-    FABLE_FORCEINLINE void Touch()
-    {
-        if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-            ListRemove();
-            ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
-            LastUsedFrame = ResourceList->CurrentFrame;
-        }
-    }
 };
 struct CMeshData {
     virtual void v00();

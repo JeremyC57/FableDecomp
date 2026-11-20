@@ -1,4 +1,5 @@
-// CShaderRenderManager::UpdateLightGlobals(const CCharString& name) -- when the owner's device exists, convert the name to a full wide path and create a resource from it with a fixed 16-byte descriptor, keeping the handle
+// CShaderRenderManager::UpdateLightGlobals(const CWideString& name) -- when the owner's device exists, convert the name to a full wide path and create a resource from it with a fixed 16-byte descriptor, keeping the handle
+// Leaf: ?UpdateLightGlobals@CShaderRenderManager@@QAEXABVCWideString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0B710, length 124 bytes (`ret 4`).
 // Callees: CAFile::ConvertPathToFullPath @ 0x00999110 (`__fastcall`, hidden result in ecx, path in edx),
 // the wide string's character accessor @ 0x0099AF10, ~CWideString @ 0x0099B510, the device's virtual slot 10 (+0x28).
@@ -7,13 +8,14 @@
 // Shape: the converted string lives in the dead argument slot (VC reuses it once `name` has been loaded into edx).
 // The descriptor's bytes are all cleared first and the third set afterwards (store order +8,+9,+b..+e then +a=1).
 // The device is a named local read after the conversion: it and its vtable go into esi/ebx before the pushes.
-class CCharString { public: void* m_pData; };
-class CWideString { public:
-    void* m_pData;
-    const unsigned short* GetAsCharArray() const;   // 0x0099AF10
-    ~CWideString();                           // 0x0099B510
-};
-CWideString __fastcall ConvertPathToFullPath(const CCharString& path);   // 0x00999110
+// NF143 (2026-11-20, q4283): CAFile::ConvertPathToFullPath 0x00999110 is the static fastcall
+//   ?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z (Ego_r.pdb 0x00B00D80 + FableWin.pdb 0x02FEF590; engine/CAFile.h
+//   FABLE_RETAIL_CAFILE), taking const CWideString&. This row hands its own parameter straight through in edx (no conversion code),
+//   so the parameter is const CWideString& too, as in the byte-sibling CSoundBankLH::Load 0x00A0B630; the row moves onto fable_string.h
+//   (was a local CCharString / CWideString model and a free ConvertPathToFullPath(const CCharString&) stand-in). Nothing in Fable.exe
+//   references this address (no call, no vtable slot), so the own-leaf change binds no other row.
+#define FABLE_RETAIL_CAFILE
+#include "engine/CAFile.h"
 
 struct SCreateDesc {
     long a;                                   // +0x0 = 2
@@ -30,10 +32,10 @@ class CShaderRenderManager { public:
     unsigned char _pad[0xc];
     COwner* m_pOwner;                         // +0x0c
     long    m_handle;                         // +0x10
-    void UpdateLightGlobals(const CCharString& name);
+    void UpdateLightGlobals(const CWideString& name);
 };
 
-void CShaderRenderManager::UpdateLightGlobals(const CCharString& name)
+void CShaderRenderManager::UpdateLightGlobals(const CWideString& name)
 {
     if (m_pOwner->m_pDevice) {
         SCreateDesc d;
@@ -46,7 +48,7 @@ void CShaderRenderManager::UpdateLightGlobals(const CCharString& name)
         d.f5 = false;
         d.f6 = false;
         d.f2 = true;
-        CWideString w = ConvertPathToFullPath(name);
+        CWideString w = CAFile::ConvertPathToFullPath(name);
         CDevice* dev = m_pOwner->m_pDevice;
         m_handle = dev->Create(w.GetAsCharArray(), &d);
     }

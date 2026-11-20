@@ -1,4 +1,8 @@
 // CLipSyncDataBank::GetLipSyncData(long index) -- make sure entry `index` is decoded (start loading it when the bank holds it, build it), touch it in its resource list and return its counted data pointer
+// Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are private CResource members in Ego_r.pdb / FableWin.pdb
+//   (?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z); the row's local CResource declares them private and the
+//   touch (FableWin.pdb's inline CResource::TouchResource body) is a public inline CResource member, the 0x00A262B0 form (was public
+//   QAE declarations and a Touch on the derived class).
 // Leaf: GetLipSyncData
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
@@ -24,8 +28,11 @@ class CResource { public:
     CResource* NextResource;               // +0x10
     unsigned long ResourceSize;            // +0x14
     unsigned long LastUsedFrame;           // +0x18
+private:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
+public:
+    void Touch();
     void AddToResourceList();              // 0x009FC440
 };
 
@@ -37,6 +44,14 @@ class CResourceList { public:
     long MaximumMemory;                    // +0x28
     unsigned long CurrentFrame;            // +0x2c
 };
+inline void CResource::Touch()
+{
+    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
+        ListRemove();
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
+        LastUsedFrame = ResourceList->CurrentFrame;
+    }
+}
 
 #include "engine/CCountedPointer.h"
 
@@ -47,14 +62,6 @@ class CLipSyncDataBank;
 struct CLipSyncEntryData : CResource {
     CCountedPointer<const CLipSyncData> LipSync;       // +0x1c
     void BuildLipSync();                               // 0x00A42EA0
-    void Touch()
-    {
-        if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-            ListRemove();
-            ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
-            LastUsedFrame = ResourceList->CurrentFrame;
-        }
-    }
 };
 
 // agentNF20 (2026-11-11): BeginLoading is Ego_r.pdb / FableWin.pdb ?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z

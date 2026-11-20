@@ -1,0 +1,69 @@
+addr       parity           behav  name
+009fbfb0   MATCH            PASS   CResource::ListRemove
+009fbf90   MATCH            PASS   CResource::ListInsert
+009fc170   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+009fc170   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+009fc170   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009fc170   RELOCATION_MATCH PASS   CResourceList::UnloadNextResource
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+009c8fb0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+009c8fb0   RELOCATION_MATCH PASS   NGameText::CDataBankTextEntry::BuildText
+00a25530   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a25530   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a25530   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+00a25530   WARN SHARED_HEADER_AVAILABLE C3DMeshStats (engine/C3DMeshStats.h)
+00a25530   WARN SHARED_HEADER_AVAILABLE C3DMesh2 (engine/C3DMesh2.h)
+00a25530   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo (engine/C3DMeshLODInfo.h)
+00a25530   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo (engine/C3DMeshInfo.h)
+00a25530   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a25530   RELOCATION_MATCH PASS   C3DMeshInfo::GetMeshStats
+00a25e70   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE C3DMesh2 (engine/C3DMesh2.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo (engine/C3DMeshLODInfo.h)
+00a25e70   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo (engine/C3DMeshInfo.h)
+00a25e70   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a25e70   RELOCATION_MATCH PASS   C3DMeshInfo::GetMesh
+00a269c0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a269c0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a269c0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+00a269c0   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+00a269c0   RELOCATION_MATCH PASS   C3DAnimationInfo::GetAnimationStats
+00a26a50   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a26a50   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a26a50   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+00a26a50   RELOCATION_MATCH PASS   C3DAnimationInfo::TouchAnimation
+00a26c60   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a26c60   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a26c60   WARN SHARED_HEADER_AVAILABLE C3DMesh2 (engine/C3DMesh2.h)
+00a26c60   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+00a26c60   RELOCATION_MATCH PASS   C3DAnimationInfo::GetAnimation
+00a42fc0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+00a42fc0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a42fc0   WARN SHARED_HEADER_AVAILABLE CLipSyncDataBank (engine/CLipSyncDataBank.h)
+00a42fc0   RELOCATION_MATCH PASS   CLipSyncDataBank::GetLipSyncData
+00a0b710   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00a0b710   RELOCATION_MATCH PASS   CShaderRenderManager::UpdateLightGlobals
+00406610   RELOCATION_MATCH PASS   CUserProfileManager::GetManualSaveFileName
+004065f0   RELOCATION_MATCH PASS   CUserProfileManager::GetManualSaveBaseFileName
+00405f00   RELOCATION_MATCH PASS   _global::GFIntToWideString
+
+WINS: 14
+  009fbfb0 MATCH CResource::?ListRemove@CResource@@AAEXXZ
+  009fbf90 MATCH CResource::?ListInsert@CResource@@AAEXPAV1@0@Z
+  009fc170 RELOCATION_MATCH CResourceList::?UnloadNextResource@CResourceList@@QAE_NK@Z
+  009c8fb0 RELOCATION_MATCH NGameText::CDataBankTextEntry::BuildText
+  00a25530 RELOCATION_MATCH C3DMeshInfo::GetMeshStats
+  00a25e70 RELOCATION_MATCH C3DMeshInfo::GetMesh
+  00a269c0 RELOCATION_MATCH C3DAnimationInfo::GetAnimationStats
+  00a26a50 RELOCATION_MATCH C3DAnimationInfo::TouchAnimation
+  00a26c60 RELOCATION_MATCH C3DAnimationInfo::GetAnimation@C3DAnimationInfo
+  00a42fc0 RELOCATION_MATCH CLipSyncDataBank::GetLipSyncData
+  00a0b710 RELOCATION_MATCH CShaderRenderManager::?UpdateLightGlobals@CShaderRenderManager@@QAEXABVCWideString@@@Z
+  00406610 RELOCATION_MATCH CUserProfileManager::?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+  004065f0 RELOCATION_MATCH CUserProfileManager::?GetManualSaveBaseFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  00405f00 RELOCATION_MATCH _global::?GFIntToWideString@@YI?AVCWideString@@J@Z

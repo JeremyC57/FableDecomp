@@ -111,6 +111,15 @@ public:
     CWideString GetManualSaveFileName(long slot) const;                  // 0x00406610
     CWideString GetManualSaveDisplayName(long slot) const;               // 0x00406AE0
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_GETMANUALSAVEBASEFILENAME_INLINE
+    // NF143 opt-in (q4285, row 0x00406610 GetManualSaveFileName): Ego_r.pdb 0x00405250 / FableWin.pdb 0x0187B570
+    // ?GetManualSaveBaseFileName@CUserProfileManager@@QBE?AVCWideString@@XZ (retail 0x004065F0: L"Save" through 0x0099B6B0; donor order
+    // GetManualSaveBaseFileName, GetManualSaveFileName = retail 0x004065F0, 0x00406610). Retail expands it in its TU-mate 0x00406610
+    // (0x0040664B..0x00406654, the left operand of the CWideString operator+ built after the right one); no call or address reference
+    // reaches 0x004065F0 in Fable.exe (it is the TU's unreferenced out-of-line copy; row 0x004065F0 emits it as the pick-any COMDAT).
+    // The body is visible here so the one-TU-per-row build can expand it; needs FABLE_RETAIL_CWIDESTRING (implicit literal conversion).
+    CWideString GetManualSaveBaseFileName() const { return L"Save"; }    // 0x004065F0
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVESLOTS
     // Retail opt-in (bwf2 row 0x004830A1 CTCInGameMenu::OpenInGameMenu): Ego_r.pdb / FableWin.pdb save-slot name helpers, out of line.
     // The four already declared by the second FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES block (chunk 2003, same spellings and

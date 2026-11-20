@@ -19,21 +19,19 @@
 // Shape: the touch is an inline CResource member; the stream arguments evaluate right to left (size pushed before the
 // GetData call); the file-data release is an inline CCountedPointer Clear() on the member (block re-read after the
 // decrement, deleter through the block, then the block and object words zeroed).
+// Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are the private CResource members
+//   ?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z (Ego_r.pdb / FableWin.pdb), reached through the inline
+//   CResource::TouchResource (engine/CResourceList.h FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE), as the byte-twin BuildGroup 0x009C8700
+//   spells it; the local CResourceMethods view bound them as public CResourceMethods members (its MarkAsUsed was this touch). The
+//   header-less CResourceMethods token stays as the base of the row's local NGameText::CTextEntry (base list unchanged).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
 #include "engine/CResource.h"
 #include "engine/CResourceList.h"
 
 struct CResourceMethods : CResource {
-    static CResource* GetHead(CResourceList* list) { return reinterpret_cast<CResource*>(list->Head); }
-    void ListRemove();                                   // 0x009FBFB0
-    void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
-    void MarkAsUsed()
-    {
-        if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-            ListRemove();
-            ListInsert(GetHead(ResourceList)->PrevResource, GetHead(ResourceList));
-            LastUsedFrame = ResourceList->CurrentFrame;
-        }
-    }
 };
 
 class CBankFileAsyncData { public:
@@ -100,7 +98,7 @@ class CDataBankTextEntry { public:
 
 void NGameText::CDataBankTextEntry::BuildText() const
 {
-    PText->MarkAsUsed();
+    PText->TouchResource();
     if (PText->PFileData.Object) {
         if (!PText->PFileData->IsFinished())
             PText->PFileData->WaitUntilFinished();

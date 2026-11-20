@@ -1,64 +1,57 @@
 #include <cstdio>
-// Name-fix pass (2026-11-12, NF29): the row returns the shared CWideString (fable_string.h) and declares GetManualSaveFileName through
-//   engine/CUserProfileManager.h (SAVENAMES); this test defines the CWideString members the link needs and observes them with counters.
+#include <cstdarg>
+// Behaviour test for 0x00406610 CUserProfileManager::GetManualSaveFileName(long) const.
+// NF143 (2026-11-20, q4285): rewritten on the shared headers the row now uses (fable_string.h with FABLE_RETAIL_CWIDESTRING,
+//   engine/GFIntToWideString.h, engine/CUserProfileManager.h SAVENAMES + GETMANUALSAVEBASEFILENAME_INLINE). The test defines the
+//   out-of-line CWideString members the row calls (default / copy / literal constructors, destructor, Sprintf, operator+) as recording
+//   fakes and checks retail's order: number string, Sprintf(L"%d", slot), copy into the right operand, its destructor, L"Save" for the
+//   left operand, operator+(left, right), then both operands destroyed.
+#define FABLE_RETAIL_CWIDESTRING
 #include "fable_string.h"
 #define FABLE_RETAIL_CUSERPROFILEMANAGER_SAVENAMES
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_GETMANUALSAVEBASEFILENAME_INLINE
 #include "engine/CUserProfileManager.h"
 
-struct CWSraw {
-    void* storage;
-    void combine(const CWSraw& a);
-    void fromLit(const unsigned short* lit);
-};
-
-
-extern "C" void __fastcall WSctor_0099aed0(CWSraw* self);
-extern "C" void __fastcall WSdtor_0099b510(CWSraw* self);
-extern "C" void __cdecl   FmtWide_0099ba70(CWSraw* out, const unsigned short* fmt, long slot);
-extern      CWideString __fastcall AddWide_0099be70(CWSraw* left, CWSraw* right);
-
-extern const unsigned short kFmtSave_0122de44[] = { 'S','a','v','e',' ','%','d',0 };
-extern const unsigned short kSavePrefix_0122de90[] = { 'S','a','v','e',0 };
-
-
-// ---- fakes to observe modeled behavior ----
+static int g_seq = 0, g_defaultCtor = 0, g_sprintf = 0, g_copy = 0, g_lit = 0, g_add = 0, g_dtor = 0, g_dtorAtAdd = -1;
 static long g_slot = -1;
-static int  g_seq = 0;
-static int  g_ctorSeen = 0, g_combineSeen = 0, g_fromLitSeen = 0, g_addSeen = 0;
-static int  g_dtorCount = 0;
-static const CWideString* g_addResult = 0; static const CWideString* g_lastCopyFrom = 0; static int g_wideCopies = 0;
+static bool g_fmtOk = false, g_litOk = false, g_argsOk = false, g_sprintfThisOk = false, g_copyFromOk = false;
+static const CWideString* g_number = 0;
+static const CWideString* g_right = 0;
+static const CWideString* g_left = 0;
 
-void __fastcall WSctor_0099aed0(CWSraw* s){ s->storage=(void*)0x1; g_ctorSeen = ++g_seq; }
-void __fastcall WSdtor_0099b510(CWSraw* s){ (void)s; ++g_dtorCount; }
-void __cdecl FmtWide_0099ba70(CWSraw* out, const unsigned short* fmt, long slot){
-    out->storage=(void*)0x2; g_slot=slot; (void)fmt;
+CWideString::CWideString() { if (!g_number) { g_number = this; g_defaultCtor = ++g_seq; } }
+void __cdecl CWideString::Sprintf(const wchar_t* format, ...)
+{
+    va_list args; va_start(args, format); g_slot = va_arg(args, long); va_end(args);
+    g_fmtOk = format[0] == '%' && format[1] == 'd' && format[2] == 0;
+    g_sprintfThisOk = this == g_number; g_sprintf = ++g_seq;
 }
-void CWSraw::combine(const CWSraw& a){ this->storage=(void*)0x3; g_combineSeen = ++g_seq; (void)a; }
-void CWSraw::fromLit(const unsigned short* lit){ this->storage=(void*)0x4; g_fromLitSeen = ++g_seq; (void)lit; }
-CWideString __fastcall AddWide_0099be70(CWSraw* left, CWSraw* right){
-    g_addSeen = ++g_seq;
-    // left must be the fromLit string (0x4), right the combine string (0x3)
-    if (left->storage != (void*)0x4 || right->storage != (void*)0x3) g_addSeen = -1;
-    CWideString r; g_addResult = &r; return r;
+CWideString::CWideString(const CWideString& other) { g_copyFromOk = &other == g_number; g_right = this; g_copy = ++g_seq; }
+CWideString::CWideString(const wchar_t* text)
+{
+    g_litOk = text[0] == 'S' && text[1] == 'a' && text[2] == 'v' && text[3] == 'e' && text[4] == 0;
+    g_left = this; g_lit = ++g_seq;
 }
-// out-of-line defs for the CWideString special members the link needs (declared in fable_string.h)
-CWideString::CWideString(){ }
-CWideString::CWideString(const CWideString& o){ g_lastCopyFrom = &o; ++g_wideCopies; }
-CWideString::~CWideString(){ }
+CWideString::~CWideString() { ++g_dtor; }
+CWideString FABLE_FASTCALL operator+(const CWideString& left, const CWideString& right)
+{
+    g_argsOk = &left == g_left && &right == g_right; g_dtorAtAdd = g_dtor; g_add = ++g_seq;
+    return CWideString();
+}
 
-int main(){
+int main()
+{
     static double storage[64];                    // the manager's bytes are never read by the method
     const CUserProfileManager* mgr = (const CUserProfileManager*)storage;
-    CWideString out = mgr->GetManualSaveFileName(7);
-    bool ok = g_addResult != 0
-           && g_slot == 7
-           && g_ctorSeen == 1
-           && g_combineSeen == 2
-           && g_fromLitSeen == 3
-           && g_addSeen == 4
-           && g_dtorCount == 3;   // dtor(a) + ScopedWS lit + ScopedWS combine
+    {
+        CWideString out = mgr->GetManualSaveFileName(7);
+    }
+    bool ok = g_slot == 7 && g_fmtOk && g_litOk && g_argsOk && g_sprintfThisOk && g_copyFromOk
+           && g_defaultCtor == 1 && g_sprintf == 2 && g_copy == 3 && g_lit == 4 && g_add == 5
+           && g_dtorAtAdd == 1            // the number string is destroyed before L"Save" is built
+           && g_dtor == 4;                // number, both operands, and the result
     if (ok) printf("00406610_TEST PASS\n");
-    else printf("FAIL slot=%ld ctor=%d comb=%d lit=%d add=%d dtor=%d\n",
-                g_slot,g_ctorSeen,g_combineSeen,g_fromLitSeen,g_addSeen,g_dtorCount);
+    else printf("FAIL slot=%ld ctor=%d spr=%d copy=%d lit=%d add=%d dtorAtAdd=%d dtor=%d fmt=%d lit=%d args=%d\n",
+                g_slot, g_defaultCtor, g_sprintf, g_copy, g_lit, g_add, g_dtorAtAdd, g_dtor, g_fmtOk, g_litOk, g_argsOk);
     return 0;
 }

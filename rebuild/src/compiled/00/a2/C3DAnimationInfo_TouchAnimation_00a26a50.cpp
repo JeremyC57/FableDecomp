@@ -1,4 +1,8 @@
 // C3DAnimationInfo::TouchAnimation() -- marks the animation data as used this frame: moves it to the tail of its resource list and stamps LastUsedFrame; starts loading when the data or its shared animation is missing
+// Name (NF143, q4942 / q4943): ListRemove 0x009FBFB0 / ListInsert 0x009FBF90 are private CResource members in Ego_r.pdb / FableWin.pdb
+//   (?ListRemove@CResource@@AAEXXZ / ?ListInsert@CResource@@AAEXPAV1@0@Z); the row's local CResource declares them private and the
+//   touch (FableWin.pdb's inline CResource::TouchResource body) is a public inline CResource member, the 0x00A262B0 form (was public
+//   QAE declarations and a Touch on the derived class).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A26A50, length 75 bytes.
 // Callees: CResource::ListRemove @ 0x009FBFB0; CResource::ListInsert @ 0x009FBF90 (prev, next);
 // C3DAnimationInfo::BeginLoading @ 0x00A26730 (bool).
@@ -17,8 +21,11 @@ class CResource { public:
     CResource* NextResource;               // +0x10
     unsigned long ResourceSize;            // +0x14
     unsigned long LastUsedFrame;           // +0x18
+private:
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
+public:
+    void Touch();
 };
 
 class CResourceList { public:
@@ -29,6 +36,14 @@ class CResourceList { public:
     long MaximumMemory;                    // +0x28
     unsigned long CurrentFrame;            // +0x2c
 };
+inline void CResource::Touch()
+{
+    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
+        ListRemove();
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
+        LastUsedFrame = ResourceList->CurrentFrame;
+    }
+}
 
 struct CAnimationData : CResource {
     unsigned char Animations[0xc];         // +0x1c map<unsigned long, CCountedPointer<C3DAnimation2>> (12 bytes in retail)
@@ -52,11 +67,5 @@ void C3DAnimationInfo::TouchAnimation()
         BeginLoading(false);
         return;
     }
-    if (data->ResourceList == 0)
-        return;
-    if (data->LastUsedFrame == data->ResourceList->CurrentFrame)
-        return;
-    data->ListRemove();
-    data->ListInsert(data->ResourceList->Head.PrevResource, &data->ResourceList->Head);
-    data->LastUsedFrame = data->ResourceList->CurrentFrame;
+    data->Touch();
 }

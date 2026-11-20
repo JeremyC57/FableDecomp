@@ -1,0 +1,8 @@
+# recheck after landing nf143: 265 rows = gate referencing rows (after dropping universal targets 0x0099B6B0, 0x0099AED0, 0x0099B510, 0x0099B720: CWideString ctor / dtor, 257-918 rows each, all already bound) + renamed rows + 49 direct includers of engine/CUserProfileManager.h
+good 260 bad 5
+00be6f70	00be6f70   DIFFER(198v2654) PASS   CLandscapeBackgroundPatch::Render
+00bec000	00bec000   DIFFER(319v1124) PASS   CEnginePrimitiveManagerMeshBase::PreloadDiffuseTexture
+00bec470	00bec470   DIFFER(467v526)  PASS   CEnginePrimitiveManagerMeshBase::PreloadBumpTexture
+00bec950	00bec950   DIFFER(517v578)  PASS   CEnginePrimitiveManagerMeshBase::GetOverlaidTextures
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground
+# all five grade the same DIFFER with the HEAD headers (FABLE_HDR_OVERLAY=pre/include_before): pre-existing (old landscape rows and the July candidates-header rows)

@@ -1,0 +1,2 @@
+head_009fc020.obj : error LNK2005: "public: void __thiscall CResource_Methods::ListRemove(void)" (?ListRemove@CResource_Methods@@QAEXXZ) already defined in head_009fbfb0.obj
+ctl_009fbfb0_009fc020.dll : fatal error LNK1169: one or more multiply defined symbols found

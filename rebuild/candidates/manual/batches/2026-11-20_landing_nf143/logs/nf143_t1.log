@@ -1,0 +1,3 @@
+head_009fc170.obj : error LNK2005: "private: void __thiscall CResource::ListInsert(class CResource *,class CResource *)" (?ListInsert@CResource@@AAEXPAV1@0@Z) already defined in new_009fbf90.obj
+head_009fc170.obj : error LNK2005: "private: void __thiscall CResource::ListRemove(void)" (?ListRemove@CResource@@AAEXXZ) already defined in new_009fbfb0.obj
+t1.dll : fatal error LNK1169: one or more multiply defined symbols found
