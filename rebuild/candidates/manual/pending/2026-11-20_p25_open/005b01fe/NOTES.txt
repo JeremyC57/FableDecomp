@@ -1,0 +1,16 @@
+0x005B01FE CTCInventoryTrade::SellItemPC: parked by p25J (Account B), 2026-11-20. Best: 005b01fe.cpp, DIFFER(2222v2222), 6 diff lines.
+No header change. It uses the existing opt-in FABLE_RETAIL_CTCINVENTORYTRADE_SELLITEM for the PDB enumerators (MENU_TYPE_CLOTHING/WEAPONS/ITEMS).
+- Draft d0 (hand867): DIFFER(2217v2222), 56 lines.
+- Residue (a), the usable-flag `sete al; test al,al; jne` at 0x005B07F5, is CLOSED by Ego_d's buy-back loop locals: `bool is_list_empty = it->second.second == 0;`,
+  a separate `if (!is_list_empty) PeekTC(.., &ptc_inventory_base)`, then `bool can_buy = !is_list_empty && money >= price && ptc_inventory_base &&
+  IsSpace..; if (can_buy) {..}` (the bool is read twice, so it is materialised). Result 2222v2222.
+- Renamed to Ego_d's locals (pcomponent, quantity, rTextBank, items, item_def_index, XString, sold_pentry, sold_type, sold_pparent, upper_menu_entry,
+  sold_v, new_title, new_subtitles, p_text, new_tot, ptc_shop, pplayer, ptc_hero_stats, items_value, pinventory_item_is_in, found_sell,
+  buy_pparent, result, endit, pgold, pgold_real, count, dummy_pointer, value_pair, pframesell). All byte-neutral.
+  Ego_d's def_index (long) is not placed: no use for it was found.
+- Residue (b): the Buy-total sum. Retail is 1E4h+1E8h+1E0h (Weapons, Items, Clothes = source order, as in the landed 0x005A6769); ours is 1E8h+1E0h+1E4h.
+  - The c2 IL dump shows the operands are IND(temp), where the temps are the `lea t,&this->X` made at the zeroing (L90..92). symlog: kind-15 #1178/1180/1182.
+  - Source order of the sum, zeroing order, chain form and switch case order all do not matter (the sort is total).
+  - Zeroing TotSpecialItemsToBuy first (evidence/c3.cpp) fixes the sum, because the three temps shift by +2, but moves the 1F8h store first (retail: last).
+  - So retail has one more kind-15 temporary before the zeroing, from text not yet found. Dummy int locals never move it (they are a different pool).
+FINDINGS: 2026-11-20 (Account B p25J, 0x005B01FE CTCInventoryTrade::SellItemPC, parked) DIFFER(2217v2222) -> DIFFER(2222v2222) with Ego_d's is_list_empty / can_buy locals (the double-read bool gives retail's `sete al; test al,al`). The last residue is a three-member sum order at 0x005B0992. c2 keys those operands by the address temporaries made at the member zeroing (kind-15 temps), so the sum flips with the temporaries pool count before that point (zeroing TotSpecialItemsToBuy first fixes it but misplaces its store), not with source order. Work: Account B scratch w26/p25J/parked/005b01fe.
