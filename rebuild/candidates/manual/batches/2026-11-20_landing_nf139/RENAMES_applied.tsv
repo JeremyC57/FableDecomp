@@ -1,0 +1,20 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x009BEDC0	CDisplayManager	GetRenderTargetDimensions	?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ	CDisplayManager::GetRenderTargetDimensions	?GetRenderTargetDimensions@CDisplayManagerRenderTargetDimensionsView@@QBE?BVC2DExtentsI@@XZ	q4291 (NF139): Ego_r.pdb 0x00B242A0 + FableWin.pdb 0x03022ED0; body reads RenderTargetDimensions +0x194/+0x198 (engine/CDisplayManager.h); 54 landed callers bind it; moved off the View stand-in; MATCH
+0x009BEF20	CDisplayManager	BeginRender	?BeginRender@CDisplayManager@@QAE_NXZ	CDisplayManager::BeginRender	?BeginRender@CDisplayManagerBeginRenderView@@QAE_NXZ	q4292 / q6168 (NF139): Ego_r.pdb 0x00B23C30 + FableWin.pdb 0x0301EBA0; body: BeginScene slot 41 on D3DDevice +0x58, CRenderManagerCore::BeginRender on PRenderManager +0x08, Rendering +0x214 = true, returns bool; moved off the View stand-in; RELOCATION_MATCH
+0x009E3790	CPixelFormat	Initialise	?Initialise@CPixelFormat@@QAEXJJJJ_N@Z	CPixelFormat::Initialise	?Initialise@CPixelFormat_Methods@@QAEXJJJJ_N@Z	q4295 (NF139): Ego_r.pdb 0x00B35630 + FableWin.pdb 0x0308D290 (`ret 14h`, five arguments); engine/CPixelFormat.h declares it; 16 landed callers bind it; moved off the CPixelFormat_Methods stand-in; RELOCATION_MATCH
+0x009F9F70	CTexture	Uninitialise	?Uninitialise@CTexture@@QAEXXZ	CTexture::Uninitialise	?Uninitialise@CTextureUninitialiseView@@QAEXXZ	q4296 (NF139): Ego_r.pdb 0x00B69E70 + FableWin.pdb 0x030DE280; body releases PD3DTexture and clears AllocationSource (engine/CTexture.h layout); 40 landed callers bind it; moved off the View stand-in; MATCH
+0x00A03B30	CInputEvent	~CInputEvent	??1CInputEvent@@QAE@XZ	CInputEvent::~CInputEvent	?M@C00a03b30@@QAEXXZ	q4299 (NF139): Ego_r.pdb 0x00B6E5F0 + FableWin.pdb 0x0317B590, ordered right before GetType (Ego_r 0x00B6E600 / retail 0x00A03B40); body a lone `ret` (empty destructor, engine/CInputEvent.h declares it out of line); 45 landed callers bind it; MATCH
+0x009FA1C0	CTexture	operator=	??4CTexture@@QAEABV0@ABV0@@Z	CTexture::operator=	??4CTextureAssignmentView@@QAEAAU0@AAU0@@Z	q4659 (NF139): Ego_r.pdb 0x00B6A110 + FableWin.pdb 0x030D9F10 (const reference result); body = expanded Uninitialise + bitfield copy + AddRef (engine/CTexture.h declares it); 11 landed callers bind it; MATCH
+0x009CC2A0	CBankFile	ReadEntryData	?ReadEntryData@CBankFile@@QAEXKKPAXK@Z	CBankFile::ReadEntryData	?ReadEntryData@CBankFile_Retail@@QAEXKKPAXK@Z	q6308 (NF139): Ego_r.pdb 0x00B19FA0 + FableWin.pdb 0x02F92080; engine/CBankFile.h READENTRYDATA declares it; all 5 landed callers bind it; moved off the CBankFile_Retail stand-in; RELOCATION_MATCH
+# Section 2
+0x00499880	?ToggleRendering@CDisplayManager@@QAEXXZ	?BeginRender@CDisplayManager@@QAE_NXZ	0x009BEF20
+0x009BEF20	?BeginRender@CRenderManagerCore@@QAEXXZ	?BeginRender@CRenderManagerCore@@QAE_NXZ	0x00A0B480
+0x009DE6F0	??4CTexture@@QAEAAV0@ABV0@@Z	??4CTexture@@QAEABV0@ABV0@@Z	0x009FA1C0
+0x0049AE30	??4CTexture@@QAEAAV0@ABV0@@Z	??4CTexture@@QAEABV0@ABV0@@Z	0x009FA1C0
+0x0049B3B0	??4CTexture@@QAEAAV0@ABV0@@Z	??4CTexture@@QAEABV0@ABV0@@Z	0x009FA1C0
+0x0049B3B0	??1CTexture@@QAE@XZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x0049B480	??1CTexture@@QAE@XZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x0049B5A0	??1CTexture@@QAE@XZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x0049B7F0	??1CTexture@@QAE@XZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x00495620	??1CTexture@@QAE@XZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70
+0x009E1650	??1CTexture@@QAE@XZ	?Uninitialise@CTexture@@QAEXXZ	0x009F9F70

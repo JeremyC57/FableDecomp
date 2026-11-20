@@ -1,0 +1,8 @@
+existing 009bedc0 new= ['?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ'] | others: {'?GetRenderTargetDimensions@CDisplayManagerNative@@QBEPAVC2DExtentsI@@A': ['00405650'], '?GetDims@Device@@QAEXPAUDims@@@Z': ['0040f0e0']}
+existing 009bef20 new= ['?BeginRender@CDisplayManager@@QAE_NXZ'] | others: {'?BeginRender@CDisplayManager@@QAEXXZ': ['00499d90']}
+existing 009e3790 new= ['?Initialise@CPixelFormat@@QAEXJJJJ_N@Z'] | others: {'?Init@Temp@@QAEXHHHHH@Z': ['0066ca80']}
+UNGRADED 009f9f70 009e15e0
+existing 009f9f70 new= ['?Uninitialise@CTexture@@QAEXXZ'] | others: {'?Dtor_009f9f70@T@@QAEXXZ': ['0041bb00'], '@FableMemberDtor_009c1ac0@4': ['009c1ac0'], '@FableMemberDtor_009c2520@4': ['009c2520'], '?Invoke_009f9f70@AutoTinyThunkTarget@@QAEXXZ': ['0122a600']}
+existing 009fa1c0 new= ['??4CTexture@@QAEABV0@ABV0@@Z'] | others: {'??4SMember08_24@@QAEAAU0@ABU0@@Z': ['0082cd00']}
+existing 00a03b30 new= ['??1CInputEvent@@QAE@XZ'] | others: {'@FableMemberDtor_009e45d0@4': ['009e45d0'], '?CLandscapeBackgroundPatch_dtor_00a03b30@@YIXPAVCLandscapeBackgroundPa': ['009f61c0']}
+gate: 0 created split(s)

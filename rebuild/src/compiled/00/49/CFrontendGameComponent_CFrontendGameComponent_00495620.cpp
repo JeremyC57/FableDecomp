@@ -50,10 +50,8 @@ struct CWideStringVector {                                 // STLport vector<CWi
             free(_M_start);
     }
 };
-class CTexture { public:
-    unsigned char _data[8];
-    ~CTexture();                                           // 0x009F9F70
-};
+#define FABLE_RETAIL_CTEXTURE
+#include "engine/CTexture.h"   // NF139: was a local CTexture model (out-of-line ~CTexture bound ??1CTexture at 0x009F9F70)
 class CGraphicDataBank; class CFontBank;
 enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
 struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768 / 0x0123875C

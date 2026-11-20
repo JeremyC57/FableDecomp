@@ -12,16 +12,8 @@
 // Shape: STLport 4.6 `resize(n) { resize(n, _Tp()); }` over the inline `resize(n, x) { if (n < size()) erase(begin() + n,
 //   end()); else insert(end(), n - size(), x); }`: the default texture (two zero words) in the 8-byte frame, its address
 //   pushed to the fill-insert, and its destructor on both exits.
-struct IDirect3DTexture9;
-
-class CTexture {
-public:
-    IDirect3DTexture9* PD3DTexture;                     // +0x00
-    unsigned long      ByteLength : 28;                 // +0x04 bits 0..27
-    unsigned long      AllocationSource : 4;            // +0x04 bits 28..31
-    CTexture() : PD3DTexture(0) { ByteLength = 0; AllocationSource = 0; }
-    ~CTexture();                                        // 0x009F9F70
-};
+#define FABLE_RETAIL_CTEXTURE
+#include "engine/CTexture.h"
 
 namespace std {
 template <class _Tp>

@@ -14,15 +14,9 @@
 //   exits are tail-duplicated (empty tail: `mov eax,ecx`).
 // Label correction: catalogued as `Vector_EraseRange` (right idea); the element is CTexture.
 #include "fable_compiler.h"
-struct IDirect3DTexture9;
 
-class CTexture { public:
-    IDirect3DTexture9* PD3DTexture;                     // +0x00
-    unsigned long      ByteLength : 28;                 // +0x04
-    unsigned long      AllocationSource : 4;
-    CTexture& operator=(const CTexture& other);         // 0x009FA1C0
-    ~CTexture();                                        // 0x009F9F70
-};
+#define FABLE_RETAIL_CTEXTURE
+#include "engine/CTexture.h"   // NF139: was a local CTexture model (out-of-line ~CTexture bound ??1CTexture at 0x009F9F70)
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 

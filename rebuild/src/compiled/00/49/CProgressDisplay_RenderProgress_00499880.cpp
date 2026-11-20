@@ -1,7 +1,7 @@
 // CProgressDisplay::RenderProgress(const CCharString& textTag, float progress, bool showText, bool force) -- render one progress-screen frame: inside a render-state capture block, (re)start rendering, set a full-screen viewport, clear to black when full screen, draw the progress unless debug display is on, then restore the viewport, render target and rendering state
 // Leaf: ?RenderProgress@CProgressDisplay@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00499880, 489 bytes + padding (`ret 10h`). Callees: GFGetSystemManager 0x009A4EC0, the render
-// manager's 0x00A0AA60 / 0x00A0B560 / 0x009DA9F0 / 0x00A0AA90, the display manager's 0x009BEF20 / 0x009BE420 / 0x009BF220 / 0x009BEF50 /
+// manager's 0x00A0AA60 / 0x00A0B560 / 0x009DA9F0 / 0x00A0AA90, the display manager's 0x009BEF20 (BeginRender, result dropped) / 0x009BE420 / 0x009BF220 / 0x009BEF50 /
 // 0x009BEEB0 / 0x009BF160, CSystemManager 0x009A6460, CRenderTarget(const CSurface&, const CSurface&) 0x00A10DC0, CSurface::Uninitialise
 // 0x009F2E20, ~CBaseClass 0x0099A2E0, CProgressDisplay 0x00498490, CRenderStateManager::RestoreCaptureBlock 0x00A05840. Names of the
 // callees without a PDB/landed name are descriptive.
@@ -57,7 +57,7 @@ class CDisplayManager { public:
     C2DBoxI        ViewportBox;                             // +0x1f4
     unsigned char  _pad204[0x214 - 0x204];
     bool           Rendering;                               // +0x214
-    void ToggleRendering();                                 // 0x009BEF20 (descriptive)
+    bool BeginRender();                                     // 0x009BEF20 Ego_r.pdb / FableWin.pdb ?BeginRender@CDisplayManager@@QAE_NXZ (NF139: was the label ToggleRendering)
 public:
     bool SetRenderTargetAsBackScreen();   // 0x009BF220
     void EndRender();   // 0x009BEF50
@@ -147,7 +147,7 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
         settings->Flag = false;
     }
     if (!wasRendering)
-        display->ToggleRendering();
+        display->BeginRender();
     C2DBoxI oldViewport = display->ViewportBox;
     CRenderTarget oldTarget(display->RenderTargetSurface, display->RenderTargetDepthBuffer);
     renderer->SetViewport(C2DBoxF(0.0f, 0.0f, (float)g_ProgressScreenWidth, (float)g_ProgressScreenHeight));
@@ -162,7 +162,7 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
     renderer->SetViewport(oldViewport);
     display->SetRenderTarget(oldTarget);
     if (wasRendering)
-        display->ToggleRendering();
+        display->BeginRender();
     if (FullScreen)
         GFGetSystemManager()->TextSettings->Flag = savedFlag;
 }

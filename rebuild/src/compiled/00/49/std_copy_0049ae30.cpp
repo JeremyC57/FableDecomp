@@ -11,7 +11,7 @@ class CTexture {                                         // Ego_r.pdb, 8 bytes
 public:
     IDirect3DTexture9* PD3DTexture;                      // +0x00
     unsigned long Bits;                                  // +0x04 ByteLength:28 / AllocationSource:4
-    CTexture& operator=(const CTexture& other);          // 0x009FA1C0
+    const CTexture& operator=(const CTexture& other);    // 0x009FA1C0 (NF139: Ego_r.pdb / FableWin.pdb ??4CTexture@@QAEABV0@ABV0@@Z returns const&)
 };
 
 namespace std {

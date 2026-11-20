@@ -1,4 +1,5 @@
 // CPixelFormat::Initialise(long rBits, long gBits, long bBits, long aBits, bool linear) -- pick the first RGB-type (PFType 2) D3D format descriptor whose R/G/B/alpha bit counts match and store its index; leave FormatIndex unchanged when none does
+// Leaf: ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E3790, length 87 bytes.
 // Identity: Ego_r.pdb `?Initialise@CPixelFormat@@QAEXJJJJ_N@Z` (`ret 14h` = five arguments; the
 // `linear` flag is not read by this build).
@@ -10,16 +11,15 @@
 // record's RBits (`mov eax,offset table+10h`) with a parallel index in edx; the terminator test
 // reads the NEXT record's BitDepth (`cmp [eax-8],-1` after `add eax,24h`); `this` is spilled to the
 // `push ecx` slot and only written on the found path. `this` from engine/CPixelFormat.h.
+// NF139 (2026-11-20, q4295): moved off the CPixelFormat_Methods stand-in onto the retail branch of engine/CPixelFormat.h, which declares
+//   this member (Ego_r.pdb 0x00B35630 + FableWin.pdb 0x0308D290); 16 landed callers already bind the spelling.
+#define FABLE_RETAIL_CPIXELFORMAT
 #include "engine/CPixelFormat.h"
 
 #include "engine/CD3DFormatInfo.h"   // CD3DFormatInfo + GD3DFormats 0x0129BA40 (NF28: was a local struct model and g_D3DFormatInfo)
 
 
-struct CPixelFormat_Methods : CPixelFormat {
-    void Initialise(long rBits, long gBits, long bBits, long aBits, bool linear);
-};
-
-void CPixelFormat_Methods::Initialise(long rBits, long gBits, long bBits, long aBits, bool linear)
+void CPixelFormat::Initialise(long rBits, long gBits, long bBits, long aBits, bool linear)
 {
     long index = 0;
     const CD3DFormatInfo* info = GD3DFormats;

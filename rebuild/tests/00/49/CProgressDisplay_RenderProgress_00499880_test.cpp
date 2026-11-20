@@ -70,7 +70,7 @@ class CDisplayManager { public:
     C2DBoxI        ViewportBox;                             // +0x1f4
     unsigned char  _pad204[0x214 - 0x204];
     bool           Rendering;                               // +0x214
-    void ToggleRendering();                                 // 0x009BEF20 (descriptive)
+    bool BeginRender();                                     // 0x009BEF20 (NF139: PDB name, was the label ToggleRendering)
     void Clear(const CRGBColour& colour, unsigned long flags);   // 0x009BE420
     void BeginFrame();                                      // 0x009BF220 (descriptive)
     void EndFrame();                                        // 0x009BEF50 (descriptive)
@@ -154,7 +154,7 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
         settings->Flag = false;
     }
     if (!wasRendering)
-        display->ToggleRendering();
+        display->BeginRender();
     C2DBoxI oldViewport = display->ViewportBox;
     CRenderTarget oldTarget(display->RenderTargetSurface, display->RenderTargetDepthBuffer);
     renderer->SetViewport(C2DBoxF(0.0f, 0.0f, (float)g_ProgressScreenWidth, (float)g_ProgressScreenHeight));
@@ -169,7 +169,7 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
     renderer->SetViewport(oldViewport);
     display->SetRenderTarget(oldTarget);
     if (wasRendering)
-        display->ToggleRendering();
+        display->BeginRender();
     if (FullScreen)
         GFGetSystemManager()->TextSettings->Flag = savedFlag;
 }
@@ -187,7 +187,7 @@ bool CRenderManager::IsDeviceLost() const { return s_lost; }
 void CRenderManager::SetViewport(const C2DBoxF& b) { s_box = b; L("VF"); }
 void CRenderManager::SetViewport(const C2DBoxI& b) { s_restoredX1 = b.X1; L("VI"); }
 void CRenderManager::Flush(bool) { L("F"); }
-void CDisplayManager::ToggleRendering() { L("T"); }
+bool CDisplayManager::BeginRender() { L("T"); return true; }
 void CDisplayManager::Clear(const CRGBColour& c, unsigned long f) { s_clearA = c.A; if (f == 7 && !c.R && !c.G && !c.B) L("C"); }
 void CDisplayManager::BeginFrame() { L("B"); }
 void CDisplayManager::EndFrame() { L("E"); }
