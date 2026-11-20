@@ -126930,8 +126930,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00723730'
         Module = 'CTCPhysicsStandard'
-        Source = '00/72/CCreatureActionTrollWhackGroundBase_Initialise_00723730.cpp'
-        TestSource = '00/72/CCreatureActionTrollWhackGroundBase_Initialise_00723730_test.cpp'
+        Source = '00/72/CTCPhysicsStandard_UpdateInterpolation_00723730.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_UpdateInterpolation_00723730_test.cpp'
         PassPattern = '00723730_TEST PASS'
     }
     [pscustomobject]@{

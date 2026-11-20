@@ -1,0 +1,34 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00723730	CTCPhysicsStandard	UpdateInterpolation	?UpdateInterpolation@CTCPhysicsStandard@@MAEXXZ	CTCPhysicsStandard::UpdateInterpolation	?Initialise@CCreatureAction_TrollWhackGroundBase_Methods@@QAEXXZ	Ego_r.pdb 0x0073A570 + FableWin.pdb 0x02526850 (protected virtual); only referenced by slot 94 of vtable 0x01265F84 (and its derived copies 0x012662E4 / 0x0126648C); base slot 94 = 0x006AF780; ported onto engine/CTCPhysicsStandard.h (NF154 opt-in FABLE_RETAIL_CTCPHYSICSSTANDARD_UPDATEINTERPOLATION); RELOCATION_MATCH; q3906/q5088
+0x00751820	CTCLook	GetHeadSettingsSlowInFastOut	?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z	CTCLook::GetHeadSettingsSlowInFastOut	?GetHeadSettingsSlowInFastOut@CTCLook@@QBEXAAM0MMMMM@Z	Ego_r.pdb 0x00763510 + FableWin.pdb 0x025B1C80 (private const); referencers 0x00752120 (already ABE) and 0x00752190 (respelled here); local model access respelled in place; q11660
+0x00752190	CTCLook	ChangeHeadAngleYZ	?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z	CTCLook::ChangeHeadAngleYZ	?ChangeHeadAngleYZ@CTCLook@@QAEXMM@Z	Ego_r.pdb 0x00763D10 + FableWin.pdb 0x025B2420 (private); only referencer 0x007528A0 respelled here; q11662
+0x00752200	CTCLook	ChangeEyeAngles	?ChangeEyeAngles@CTCLook@@AAEXMM@Z	CTCLook::ChangeEyeAngles	?ChangeEyeAngles@CTCLook@@QAEXMM@Z	Ego_r.pdb 0x00763DB0 + FableWin.pdb 0x025B24B0 (private); referencers 0x00753040 (already AAE), 0x00753080 and 0x00752930 (respelled here); the row had no Leaf line (added); q11664
+0x00753080	CTCLook	FrameUpdateOverriddenByParent	?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ	CTCLook::FrameUpdateOverriddenByParent	?FrameUpdateOverriddenByParent@CTCLook@@QAEXXZ	Ego_r.pdb 0x00765310 + FableWin.pdb 0x025AE140 (private); only referencer 0x00753C70 respelled here (it also binds q5146/q5148); outside the entries, closes the 0x00753080 spelling; Leaf line added
+0x00752930	CTCLook	SetEyesLooking	?SetEyesLooking@CTCLook@@AAEXABVC3DVector@@@Z	CTCLook::SetEyesLooking	?SetEyesLooking@CTCLook@@QAEXABVC3DVector@@@Z	Ego_r.pdb 0x00764A90 + FableWin.pdb 0x025AFEE0 (private); only referencer 0x007530D0 already binds AAE (closes an existing split); outside the entries, row touched for q11664
+0x00800540	CTCPreCalculatedNavigationRoute	CalculateRouteFromTo	?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@ABEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	CTCPreCalculatedNavigationRoute::CalculateRouteFromTo	?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@QAEXABVC3DVector@@0AAUCRoute@@@Z	Ego_r.pdb 0x007F3F10 + FableWin.pdb 0x026C1C20 (private const, STLport vector<pair<C2DVector,unsigned char> >&); needed to pass the route to CTCCreatureNavigation::CalculateRouteFromTo (q4533); only referencer 0x008006D0 (bound ...0AAUCNavStepVector@@@Z: existing split) respelled here; local CTCBase model replaced by engine/CTCBase.h retail
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00723730	?InitialiseBase@CCreatureAction_TrollWhackGroundBase_Methods@@QAEXXZ	?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ	0x006AF780
+0x008FD050	?OnStateGroupRemoved@CTCBase@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	0x006CB6B0
+0x00713740	?OnStateGroupRemoved@CTCBaseAny@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	0x006CB6B0
+0x0089BDF0	?Reset@CTCType7@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	0x006CB6B0
+0x00714730	?ResetNavigation@CTCNavigator@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	0x006CB6B0
+0x0089B780	?Reset@CTCWalk@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	0x006CB6B0
+0x00665DF0	?ResetNavigator@CTCCreatureNavigation@@QAEXXZ	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	0x006CB6B0
+0x0089B780	?FindNearestWalkablePos@CTCWalk@@QAE_NABVC3DVector@@MPAV2@@Z	?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	0x006CB8E0
+0x00800540	?CalculateRouteFromTo@CTCNavigationBase@@QBEXABVC3DVector@@0AAUCRoute@@@Z	?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	0x006CB9B0
+0x008006D0	?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@QAEXABVC3DVector@@0AAUCNavStepVector@@@Z	?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@ABEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	0x00800540
+0x0097F5B0	?SetUpRoute@CTCNavigation@@QAEXABVC3DVector@@00@Z	?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z	0x006CB9C0
+0x007E27F0	?AddToGlobalUpdateList@CTCBase@@QAEXXZ	?AddToGlobalTCs@CTCBase@@QAEXXZ	0x00686ED0
+0x006CF920	?AddToGlobalUpdateTCs@CTCWife@@QAEXXZ	?AddToGlobalTCs@CTCBase@@QAEXXZ	0x00686ED0
+0x005DAB10	?GetGameSubsystem@CTCWeapon_Getters@@QAEPAUCGameSubsystem@@XZ	?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	0x00686D60
+0x0075B2D0	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@QAEXABUCGraphicDataRef@@@Z	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z	0x006B05A0
+0x00724010	?CreatePPhysicsMeshInfo@CTCPhysicsStandard@@QAEXABUCGraphicDataRef@@@Z	?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z	0x006B05A0
+0x00753C70	?FrameUpdateHeadLookAtPos@CTCLook@@QAEXABVC3DVector@@_N@Z	?FrameUpdateHeadLookAtPos@CTCLook@@AAEXABVC3DVector@@_N@Z	0x007530D0
+0x00753C70	?FrameUpdateHeadInterested@CTCLook@@QAEXXZ	?FrameUpdateHeadInterested@CTCLook@@AAEXXZ	0x00753380
+0x00753C70	?FrameUpdateOverriddenByParent@CTCLook@@QAEXXZ	?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ	0x00753080
+0x006A7640	?IsNavLineOfSight@CTCCreatureNavigation@@QAE_NPBVC3DVector@@ABV2@@Z	?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z	0x006CB610
+0x00752190	?GetHeadSettingsSlowInFastOut@CTCLook@@QAEXPAM0MMMMM@Z	?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z	0x00751820
+0x007528A0	?ChangeHeadAngleYZ@CTCLook@@QAEXMM@Z	?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z	0x00752190
+0x00753080	?ChangeEyeAngles@CTCLook@@QAEXMM@Z	?ChangeEyeAngles@CTCLook@@AAEXMM@Z	0x00752200
+0x00752930	?ChangeEyeAngles@CTCLook@@QAEXMM@Z	?ChangeEyeAngles@CTCLook@@AAEXMM@Z	0x00752200

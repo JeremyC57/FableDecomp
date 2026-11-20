@@ -1,0 +1,45 @@
+address	change	grade	test	grades_used	entries	note
+0x005DAB10	callee respell	RELOCATION_MATCH	PASS	4	q4964	ported: GetGameSubsystem stand-in + local CGameSubsystem view dropped -> PeekComponent() (engine/CTCBase.h _COMPONENT over FABLE_RETAIL_CTCWEAPON) + CMainGameComponent::IsEditorActive (engine/CMainGameComponent.h _EDITOR); form 1 failed (flat CTCWeapon has no CTCBase base)
+0x00665DF0	callee respell (in place)	RELOCATION_MATCH	PASS	3	q4260	ported: local CTCCreatureNavigation model: ResetNavigator (in no PDB) -> InterruptNavigation
+0x006A7640	callee respell (in place)	RELOCATION_MATCH	PASS	3	q5159	ported: local CTCCreatureNavigation model: IsNavLineOfSight(const C3DVector*, ...) -> IsPosNavLineOfSightToPos(const C3DVector&, const C3DVector&) const
+0x006CF920	callee respell (in place)	RELOCATION_MATCH	PASS	3	q4722	ported: CTCWife::AddToGlobalUpdateTCs stand-in -> AddToGlobalTCs declared in the pre-existing local CTCBase model
+0x00713740	callee respell	RELOCATION_MATCH	PASS	4	q4260	ported: CTCBaseAny::OnStateGroupRemoved -> CTCCreatureNavigation::InterruptNavigation (header); C3DVector.h added
+0x00714730	callee respell	RELOCATION_MATCH	PASS	3	q4260	ported: CTCNavigator stand-in dropped -> engine/CTCCreatureNavigation.h; the row-local CThing::GetInterface<T> COMDAT now instantiates on CTCCreatureNavigation (forceinline, unreferenced)
+0x00723730	self rename + callee respell (port onto engine/CTCPhysicsStandard.h)	RELOCATION_MATCH	PASS	3	q3906 q5088	ported: was ?Initialise@CCreatureAction_TrollWhackGroundBase_Methods@@QAEXXZ calling the stand-in InitialiseBase; now ?UpdateInterpolation@CTCPhysicsStandard@@MAEXXZ calling ?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ; overlay opt-in FABLE_RETAIL_CTCPHYSICSSTANDARD_UPDATEINTERPOLATION; test unchanged (standalone stand-in model, no class token)
+0x00724010	callee respell (in place)	RELOCATION_MATCH	PASS	3	q4976	ported: declaration moved from the CTCPhysicsStandard stand-in to the local CTCPhysicsBase model, protected, const CEngineGraphic&; the CGraphicDataRef view passed as CEngineGraphic
+0x00751820	self rename (in place)	RELOCATION_MATCH	PASS	3	q11660	ported: QBE -> ABE (private const); Leaf line made full
+0x00751E80	self rename (in place), held back	RELOCATION_MATCH (draft)	-	2	q11661	blocked: one definition: engine/CTCLook.h defines GetTurningAngles in-class (private, noinline); the landed includer 0x00752E00 (SetBodyMoving, calls the in-class GetTurningAnglesAndCheckForTurningBody) emits ?GetTurningAngles@CTCLook@@AAE_NAAM0@Z as a pick-any COMDAT; the respelled self row would define it NoDuplicates (llvm-readobj) -> LNK2005. Draft graded RELOCATION_MATCH, kept in work/ (work/00751e80_blocked.cpp)
+0x00752190	self rename + callee respell (in place)	RELOCATION_MATCH	PASS	3	q11660 q11662	ported: self QAEXMM -> AAEXMM; callee GetHeadSettingsSlowInFastOut QAEXPAM0MMMMM -> ABEXAAM0MMMMM
+0x00752200	self rename (in place)	RELOCATION_MATCH	PASS	3	q11664	ported: QAEXMM -> AAEXMM; Leaf line added
+0x007525C0	callee respell (in place), held back	RELOCATION_MATCH (draft)	-	2	q11661	blocked: family of 0x00751E80 (one definition, see there); the row itself (landed nf120) already defines ?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z NoDuplicates while 0x00752E00 emits it pick-any: an existing clash (work/007525c0_blocked.cpp)
+0x007528A0	callee respell (in place)	RELOCATION_MATCH	PASS	3	q11662	ported: ChangeHeadAngleYZ private (AAE)
+0x00752930	self rename + callee respell (in place)	RELOCATION_MATCH	PASS	3	q11664	ported: ChangeEyeAngles private; own SetEyesLooking QAE -> AAE (both PDBs; only caller 0x007530D0 already AAE)
+0x00753080	self rename + callee respell (in place)	RELOCATION_MATCH	PASS	3	q11664	ported: ChangeEyeAngles private; own FrameUpdateOverriddenByParent QAE -> AAE (both PDBs; only caller 0x00753C70 follows)
+0x00753C70	callee respell x3 (in place)	RELOCATION_MATCH	PASS	3	q5146 q5148	ported: FrameUpdateHeadLookAtPos / FrameUpdateHeadInterested / FrameUpdateOverriddenByParent private (AAE)
+0x0075B2D0	callee respell (in place)	RELOCATION_MATCH	PASS	3	q4976	ported: local CTCPhysicsBase model: CreatePPhysicsMeshInfo protected, const CEngineGraphic& (engine/CEngineGraphic.h)
+0x007E27F0	callee respell (in place)	RELOCATION_MATCH	PASS	3	q4722	ported: local CTCBase model AddToGlobalUpdateList -> AddToGlobalTCs
+0x00800540	self rename + callee respell	RELOCATION_MATCH	PASS	3	q4533	ported: CTCNavigationBase stand-in -> engine/CTCCreatureNavigation.h CalculateRouteFromTo (vector&); own signature to the PDB private const vector& form; local CTCBase model replaced by engine/CTCBase.h retail (+_COMPONENT)
+0x008006D0	callee respell	RELOCATION_MATCH	PASS	3	q4533	ported: extra lock (claimed NF154): only caller of 0x00800540; declaration respelled in place to the PDB spelling; local CNavStepVector view passed by reinterpret_cast to the vector&
+0x0089B780	callee respell x2	RELOCATION_MATCH	PASS	3	q4260 q4494	ported: CTCWalk stand-in dropped -> engine/CTCCreatureNavigation.h InterruptNavigation + GetNearestNavigablePosTo (const, C3DVector& out)
+0x0089BDF0	callee respell	RELOCATION_MATCH	PASS	3	q4260	ported: CTCType7::Reset stand-in dropped -> engine/CTCCreatureNavigation.h InterruptNavigation
+0x008FD050	callee respell	RELOCATION_MATCH	PASS	4	q4260	ported: InterruptNavigation via engine/CTCCreatureNavigation.h; local CTCBase stand-in model dropped (header CTCBase); C3DVector.h added (the header default path names C3DVector undeclared)
+0x0097F5B0	callee respell	RELOCATION_MATCH	PASS	3	q4534	ported: CTCNavigation::SetUpRoute stand-in -> engine/CTCCreatureNavigation.h InitialiseFromPreCalculatedRoute; local route model +0x20 retyped in place to the STLport vector<pair<C2DVector,uchar> > Route
+0x0049D150	none	-	-	0	q5139	not-a-binder: self row already ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z; census: all 6 referencers bind it
+0x0057CB7E	none	-	-	0	q11771	not-a-binder: census: binds ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ (and GetPWorldSeed right); the reloc_bindings witness GetDefinitions@CTCHeroStats is stale
+0x006869D0	none	-	-	0	q11771	not-a-binder: self row already right; census: all 204 referencers bind the PDB spelling
+0x00686D20	none	-	-	0	q4045	not-a-binder: self row already right; census: 38 of 39 referencers right; 0x007E00D0 held by NF153
+0x00686D60	none	-	-	0	q4964	not-a-binder: self row already right; census: 41 right + 0x005DAB10 ported
+0x00686D90	none	-	-	0	q5087	not-a-binder: self row already right; census: all 30 referencers right
+0x00686DA0	none	-	-	0	q4721 q5040	not-a-binder: self row already right; census: all 23 referencers right
+0x00686ED0	none	-	-	0	q4722	not-a-binder: self row already right; census: 17 right + 0x007E27F0 / 0x006CF920 ported
+0x006AF780	none	-	-	0	q3906 q5088	not-a-binder: self row already right; referencers 0x00759970 right, 0x00723730 ported
+0x006AFD40	none	-	-	0	q5019 q5069	not-a-binder: self row already right; census: all 3 referencers right
+0x006B05A0	none	-	-	0	q4976	not-a-binder: self row already right; 0x006B08E0 right, 0x00724010 / 0x0075B2D0 ported
+0x006CB610	none	-	-	0	q5159	not-a-binder: self row already right; 5 right + 0x006A7640 ported
+0x006CB6B0	none	-	-	0	q4260	not-a-binder: self row already right; 0x00666EF0 right (NF155 lock, not touched); six binders ported
+0x006CB8E0	none	-	-	0	q4494	not-a-binder: self row already right; 0x00659800 / 0x00666EF0 / 0x008334F0 right, 0x0089B780 ported
+0x006CB9B0	none	-	-	0	q4533	not-a-binder: self row already right; only referencer 0x00800540 ported
+0x006CB9C0	none	-	-	0	q4534	not-a-binder: self row already right; only referencer 0x0097F5B0 ported
+0x007530D0	none	-	-	0	q5146	not-a-binder: self row already AAE; binds SetEyesLooking AAE; referencers 0x00753380 right, 0x00753C70 ported
+0x00753380	none	-	-	0	q5148	not-a-binder: self row already AAE; only referencer 0x00753C70 ported
+0x007E00D0	none	-	-	0	q4045	blocked: held by NF153 (lock); binds ?GetRegionManager@CTCTeleporter@@QAEPAUCRegionManager@@XZ at 0x00686D20 -> NAME_FIXES

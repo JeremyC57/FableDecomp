@@ -1,4 +1,5 @@
 // CTCLook::FrameUpdateOverriddenByParent() -- per-frame update while the parent overrides looking: a head state with bit 0 set re-centres the head unless bit 3 is also set; otherwise the head is forced to state 1 (OneFrameDelay on change, stop timer cancelled), re-centred and the eye angles zeroed; finally the body turn state is forced to 1
+// Leaf: ?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753080, length 79 bytes.
 // Callees: CTCLook::CentreHead @ 0x007528A0, CTCLook::ChangeEyeAngles(float, float) @ 0x00752200 (pushed 0, 0 = 0.0f, 0.0f).
 // Layout (local model, no engine header): HeadTurnState +0x48, BodyTurnState +0x4c, TimeToStopLooking +0xb4,
@@ -7,6 +8,9 @@
 // the inline setters are the same change-tested forms as in StopLooking (0x00751B80).
 // NF120 (PRIORITY q5145): CentreHead 0x007528A0 is private in both PDBs (Ego_r.pdb 0x007649D0 / FableWin.pdb 0x025AFD60 ?CentreHead@CTCLook@@AAEXXZ);
 //   the local model's declaration is respelled in place (was public, QAEXXZ).
+// NF154 (PRIORITY q11664): ChangeEyeAngles 0x00752200 is private in both PDBs (Ego_r 0x00763DB0 / FableWin 0x025B24B0
+//   ?ChangeEyeAngles@CTCLook@@AAEXMM@Z; was QAEXMM), and so is this row (Ego_r 0x00765310 / FableWin 0x025AE140
+//   ?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ; was QAEXXZ; its only caller 0x00753C70 is respelled with it). Respelled in place.
 class CTCLook { public:
     unsigned char _pad_0x00[0x48];
     long          HeadTurnState;                 // +0x48
@@ -28,7 +32,6 @@ class CTCLook { public:
     }
 private:
     void CentreHead();                                       // 0x007528A0
-public:
     void ChangeEyeAngles(float angleXY, float angleYZ);      // 0x00752200
     void FrameUpdateOverriddenByParent();
 };

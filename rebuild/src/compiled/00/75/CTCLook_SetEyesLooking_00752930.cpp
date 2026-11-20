@@ -1,5 +1,8 @@
 // CTCLook::SetEyesLooking(const C3DVector& pos) -- point the eyes at pos: the eye angles are the differences from the head facing (body facing + head angle, wrapped) to the direction head->pos, or to the recovery angles when pos is the head position
-// Leaf: ?SetEyesLooking@CTCLook@@QAEXABVC3DVector@@@Z
+// Leaf: ?SetEyesLooking@CTCLook@@AAEXABVC3DVector@@@Z
+// Name (NF154): Ego_r.pdb 0x00764A90 / FableWin.pdb 0x025AFEE0 ?SetEyesLooking@CTCLook@@AAEXABVC3DVector@@@Z (private; was QAE); the
+//   only caller 0x007530D0 already binds it. The callee ChangeEyeAngles 0x00752200 is private too (PRIORITY q11664, ?ChangeEyeAngles@CTCLook@@AAEXMM@Z,
+//   Ego_r 0x00763DB0 / FableWin 0x025B24B0; was QAEXMM). Local model respelled in place.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752930, length 462 bytes (+ int3 padding), `ret 4`, esp frame.
 // Callees: the physics TC's GetFacingAngleXY / GetFacingAngleYZ (slots 63 / 64, +0xFC / +0x100), _CIfmod @ 0x00BFEB28 (the
@@ -90,6 +93,7 @@ class CTCLook { public:
             return PParentCreature->GetHeadPos(false);
         return CachedHeadPos;
     }
+private:
     void ChangeEyeAngles(float xy, float yz);   // 0x00752200
     void SetEyesLooking(const C3DVector& pos);
 };

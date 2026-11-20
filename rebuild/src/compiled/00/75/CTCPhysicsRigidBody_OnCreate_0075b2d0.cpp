@@ -7,6 +7,9 @@
 //   non-virtually), CTCPhysicsRigidBody::InitialiseBody @ 0x0075B000 (tail jump).
 // Layout: as the ctor 0x0075AA80: PPhysicsMeshInfo +0x64, RHSet +0x68, OldRHSet +0x80, OffsetVector +0x98 (C2DVector);
 //   CThing +0x64 PGraphicAppearance, whose graphic data reference sits at +0x44; CThingPhysicsMeshInfo ToCentre +0x08.
+// Callee respelled (NF154, PRIORITY q4976): 0x006B05A0 is ?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z (Ego_r.pdb
+//   0x006ED4C0 / FableWin.pdb 0x02470D50: protected, const CEngineGraphic&, engine/CEngineGraphic.h BankIndex +0 / Type +0xd); was ?CreatePPhysicsMeshInfo@CTCPhysicsBase@@QAEXABUCGraphicDataRef@@@Z.
+//   The pre-existing local CTCPhysicsBase model's declaration is respelled in place.
 // Shape: the set copy is an implicit POD assignment; the zero offset is an inline `OffsetVector.Set(0.0f, 0.0f)` member
 //   (two stores from one zero register; stores through the member's `this` keep the ParentThing load AFTER them, as
 //   retail -- direct member stores let VC hoist `mov edx,[esi+4]` above the last RHSet pair; a `C2DVector(0, 0)`
@@ -24,7 +27,7 @@ class CThingPhysicsMeshInfo { public:
     float          RenderSizeX;                 // +0x04
     C3DVector      ToCentre;                    // +0x08
 };
-struct CGraphicDataRef;
+#include "engine/CEngineGraphic.h"
 namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     unsigned char _pad00[0x44];
@@ -55,7 +58,9 @@ class CTCPhysicsBase { public:
     virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
     CThing*   ParentThing;                      // +0x04
     unsigned char _pad08[0x38];
-    void CreatePPhysicsMeshInfo(const CGraphicDataRef& graphic);   // 0x006B05A0
+protected:
+    void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B05A0
+public:
 };
 struct CTCPhysicsRigidBody : CTCPhysicsBase {
     void*           CollisionNormal[3];         // +0x40
@@ -75,7 +80,7 @@ void CTCPhysicsRigidBody::OnCreate()
     OffsetVector.Set(0.0f, 0.0f);
     CTCGraphicAppearance* graphic = ParentThing->GetTCGraphicAppearance();
     if (graphic)
-        CreatePPhysicsMeshInfo(*(const CGraphicDataRef*)graphic->GraphicData);
+        CreatePPhysicsMeshInfo(*(const CEngineGraphic*)graphic->GraphicData);
     const C3DVector& centre = GetPhysicsMeshInfo()->ToCentre;
     OffsetVector.X = centre.X;
     OffsetVector.Y = centre.Y;

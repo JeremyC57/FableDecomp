@@ -1,5 +1,11 @@
 // CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, vector<pair<C2DVector,uchar> >& route) -- when the game is running and both ends lie in the same world-map region, spawn the placeholder navigation creature at the owner's position, let its navigation component compute the route, then kill the creature
-// Leaf: CalculateRouteFromTo
+// Leaf: ?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@ABEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z
+// Name (NF154, PRIORITY q4533): the navigation call 0x006CB9B0 is ?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z
+//   (Ego_r.pdb 0x00701430 / FableWin.pdb 0x0247B150; PNavigator slot 14 forward; engine/CTCCreatureNavigation.h), was the stand-in
+//   ?CalculateRouteFromTo@CTCNavigationBase@@QBEXABVC3DVector@@0AAUCRoute@@@Z. Its route argument is this row's own: the row takes the PDB
+//   signature (Ego_r.pdb 0x007F3F10 / FableWin.pdb 0x026C1C20, private const, STLport vector<pair<C2DVector, unsigned char> >&; was
+//   ?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@QAEXABVC3DVector@@0AAUCRoute@@@Z), and its only caller 0x008006D0 is respelled
+//   with it. The local CTCBase model is replaced by engine/CTCBase.h's retail branch (PeekComponent / PeekWorldMap declared there).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00800540, 400 bytes (`ret 0xc`).
@@ -17,7 +23,6 @@
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
-struct CRoute;                                          // STLport vector<pair<C2DVector, unsigned char> >
 class CTCBase;
 
 #include "engine/CVectorMap.h"
@@ -40,9 +45,6 @@ class CThingAICreatureInit { public:
         : OriginalThing(original), PreviousThing(previous), ScriptName(scriptName), OverridingBrainName(overridingBrainName),
           PlayerCharacter(playerCharacter), Drawable(drawable), PlaceAtEndOfList(true), EnableCreatureAutoPlacing(false),
           HomeBuilding(0), WorkBuilding(0) {}
-};
-struct CTCNavigationBase {                              // interface 7 (descriptive)
-    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CRoute& route) const;   // 0x006CB9B0
 };
 
 class CThingAICreature : public CThing {
@@ -67,22 +69,17 @@ class CWorldMap { public:
     virtual long GetMapNumberAt(const C3DVector& pos) const;   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long mapNumber) const;        // 0x004FC190
 };
-class CTCBase {
-public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04
-protected:
-    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ
-public:
-protected:
-    const CWorldMap& PeekWorldMap() const;   // 0x00686D20 (Ego_r.pdb CTCBase, protected)
-};
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE_COMPONENT
+#define FABLE_RETAIL_CTCCREATURENAVIGATION
+#include "engine/CTCBase.h"
+#include "engine/CTCCreatureNavigation.h"
 class CTCPreCalculatedNavigationRoute : public CTCBase {
-public:
-    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CRoute& route);
+private:
+    void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, std::vector<std::pair<C2DVector, unsigned char>, std::allocator<std::pair<C2DVector, unsigned char> > >& route) const;
 };
 
-void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CRoute& route)
+void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, std::vector<std::pair<C2DVector, unsigned char>, std::allocator<std::pair<C2DVector, unsigned char> > >& route) const
 {
     if (!PeekComponent().IsEditorActive())
         return;
@@ -101,7 +98,7 @@ void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from
         creature = CThingAICreature::Create(defIndex, ParentThing->GetPos(), 4,
             CThingAICreatureInit(0, 0, false, script, brain, true));
     }
-    const CTCNavigationBase* navigation;
+    const CTCCreatureNavigation* navigation;
     creature->PeekTC(TCI_NAVIGATION, &navigation);
     navigation->CalculateRouteFromTo(from, to, route);
     creature->Kill(false);

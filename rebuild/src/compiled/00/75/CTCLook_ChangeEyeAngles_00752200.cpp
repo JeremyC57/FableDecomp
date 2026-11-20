@@ -1,4 +1,7 @@
 // CTCLook::ChangeEyeAngles(float xy, float yz) -- set the eye angles, each clamped to half the def's eye turn range (degrees / 360); flag the change and poke the graphic appearance when either angle moved
+// Leaf: ?ChangeEyeAngles@CTCLook@@AAEXMM@Z
+// Name (NF154, PRIORITY q11664): Ego_r.pdb 0x00763DB0 / FableWin.pdb 0x025B24B0 ?ChangeEyeAngles@CTCLook@@AAEXMM@Z (private); was public
+//   (QAEXMM). Local model respelled in place; the callers 0x00753040 (already), 0x00753080 and 0x00752930 (respelled with it) bind it.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
@@ -60,6 +63,7 @@ class CTCLook { public:
     C3DVector PosToLookAt;                      // +0x68
     C3DVector DirectionToLookIn;                // +0x74
     bool  EyeAnglesChanged;                     // +0x80
+private:
     void ChangeEyeAngles(float xy, float yz);
 };
 

@@ -5,13 +5,16 @@
 // Callees: CThing::GetPos @ 0x004C73D0 (out of line), CTCCreatureNavigation line-of-sight query @ 0x006CB610
 // (`__fastcall(const C3DVector* from, const C3DVector& to)`; the manifest's "CScriptThing::operator==" is propagated).
 // Layout: PDB CThingFilter_IsNavLineOfSightToThing { C3DVector* Pos; CTCCreatureNavigation* PTCNav; }.
+// Callee respelled (NF154, PRIORITY q5159): 0x006CB610 is ?IsPosNavLineOfSightToPos@CTCCreatureNavigation@@QBE_NABVC3DVector@@0@Z (Ego_r.pdb
+//   0x007010D0 / FableWin.pdb 0x02477C30: public const, two const C3DVector&; a PNavigator slot-10 forward); was the stand-in
+//   ?IsNavLineOfSight@CTCCreatureNavigation@@QAE_NPBVC3DVector@@ABV2@@Z. The local model's declaration is respelled in place.
 // Shape: right-to-left: the thing's position first, then PTCNav into ecx, the pushes, Pos last.
 #include "engine/C3DVector.h"
 
 #include "engine/CThing.h"
 
 class CTCCreatureNavigation { public:
-    bool IsNavLineOfSight(const C3DVector* from, const C3DVector& to);   // 0x006CB610
+    bool IsPosNavLineOfSightToPos(const C3DVector& from, const C3DVector& to) const;   // 0x006CB610
 };
 
 class CThingFilter_IsNavLineOfSightToThing { public:
@@ -22,5 +25,5 @@ class CThingFilter_IsNavLineOfSightToThing { public:
 
 bool CThingFilter_IsNavLineOfSightToThing::operator()(CThing* thing) const
 {
-    return PTCNav->IsNavLineOfSight(Pos, thing->GetPos());
+    return PTCNav->IsPosNavLineOfSightToPos(*Pos, thing->GetPos());
 }

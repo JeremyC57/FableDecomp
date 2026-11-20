@@ -11,6 +11,8 @@
 // Leaf: ?CentreHead@CTCLook@@AAEXXZ
 // Name (NF120, PRIORITY q5145): Ego_r.pdb 0x007649D0 / FableWin.pdb 0x025AFD60 ?CentreHead@CTCLook@@AAEXXZ (private); the landed callers
 //   0x00753040 / 0x00753380 bind it, 0x00753080 / 0x00753C70 are respelled with it. Was public (QAEXXZ); local model respelled in place.
+// Callee respelled (NF154, PRIORITY q11662): ChangeHeadAngleYZ 0x00752190 is private in both PDBs (?ChangeHeadAngleYZ@CTCLook@@AAEXMM@Z,
+//   Ego_r 0x00763D10 / FableWin 0x025B2420; was QAEXMM); the unused GetHeadSettingsSlowInFastOut declaration takes the PDB form.
 #include <math.h>
 struct SLookAnglePair { float XY; float YZ; };
 extern SLookAnglePair g_HeadTurnSpeedTargetAcquired;   // 0x01382680 (.data tunables)
@@ -59,12 +61,10 @@ class CTCLook { public:
     unsigned char _padA1[0xb4 - 0xa1];          // CachedHeadPos, HeadCacheTimer
     long  TimeToStopLooking;                    // +0xb4 (PDB +0xb8)
     bool  OneFrameDelay;                        // +0xb8 (PDB +0xbc)
-    void GetHeadSettingsSlowInFastOut(float* angle, float* velocity, float acceleration, float maxSpeed, float target, float minAngle, float maxAngle);   // 0x00751820
 private:
+    void GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float target, float minAngle, float maxAngle) const;   // 0x00751820
     void ChangeHeadAngleXY(float targetAngle, float time);   // 0x00752120
-public:
     void ChangeHeadAngleYZ(float targetAngle, float time);   // 0x00752190
-private:
     void CentreHead();
 };
 

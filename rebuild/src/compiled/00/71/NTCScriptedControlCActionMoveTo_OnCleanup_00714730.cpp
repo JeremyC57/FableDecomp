@@ -3,6 +3,9 @@
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Layout: CActionMoveTo offsets are the PDB's (+0x24 PTargetThing, +0x34 PTCOldPhysics, +0x45/+0x46/+0x48/+0x4c); the creature is
 // re-read through the owning control at +4 (its +4), as in the landed CActionLeadCreature::OnActivate 0x007122D0.
+// Callee respelled (NF154, PRIORITY q4260): 0x006CB6B0 is ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ (Ego_r.pdb 0x007010F0 /
+//   FableWin.pdb 0x02478510; the interface-7 component is CTCCreatureNavigation, TCI_NAVIGATION; the body forwards to PNavigator +0xC
+//   slot 18 Interrupt), declared by engine/CTCCreatureNavigation.h; was the stand-in ?ResetNavigation@CTCNavigator@@QAEXXZ.
 #include "fable_compiler.h"
 class CCharString {
 public:
@@ -58,7 +61,7 @@ struct CTCUserActionPointBase {
 public:
     void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
 public:  };   // 0x007FEF40
-struct CTCNavigator { void ResetNavigation(); };                         // 0x006CB6B0
+#include "engine/CTCCreatureNavigation.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -147,7 +150,7 @@ void CActionMoveTo::OnCleanup()
         if (creature && !(creature->Flags91 & 1))
             creature->PPhysics->SetPushableByHero(PreviousPushableByHero);
     }
-    CTCNavigator* navigator;
+    CTCCreatureNavigation* navigator;
     if (PControl->PThing->GetInterface(&navigator, 7))
-        navigator->ResetNavigation();
+        navigator->InterruptNavigation();
 }

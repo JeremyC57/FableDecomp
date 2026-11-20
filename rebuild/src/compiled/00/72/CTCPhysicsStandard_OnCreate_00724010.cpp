@@ -16,8 +16,12 @@
 //   (protected const, STLport vector<CThing*>&; the self row now emits it). The made-up CThingPtrVector is replaced by the shared
 //   stlport/fable_containers.h vector, and the pre-existing local CTCPhysicsStandard model's declaration of that member is respelled
 //   (protected, const, std::vector<CThing*>&); the rest of the local view is unchanged.
+// Callee respelled (NF154, PRIORITY q4976): 0x006B05A0 is ?CreatePPhysicsMeshInfo@CTCPhysicsBase@@IAEXABVCEngineGraphic@@@Z (Ego_r.pdb
+//   0x006ED4C0 / FableWin.pdb 0x02470D50: protected, const CEngineGraphic&, engine/CEngineGraphic.h BankIndex +0 / Type +0xd); was ?CreatePPhysicsMeshInfo@CTCPhysicsStandard@@QAEXABUCGraphicDataRef@@@Z (a CTCPhysicsStandard stand-in).
+//   The pre-existing local CTCPhysicsBase model's declaration is respelled in place.
 #include "fable_compiler.h"
 #include <math.h>
+#include "engine/CEngineGraphic.h"
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class C3DVector { public:
     float X, Y, Z;
@@ -94,6 +98,9 @@ protected:
     CWorldMap& GetWorldMap();                         // 0x006AF620 Ego_r.pdb ?GetWorldMap@CTCPhysicsBase@@IAEAAVCWorldMap@@XZ
 public:
     float GetMass() const;                            // 0x006AFE00 Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ
+protected:
+    void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B05A0
+public:
 };
 struct CTCPhysicsStandard : public CTCPhysicsBase {
     virtual void v0b(); virtual void v0c(); virtual void v0d();   // 1-3 (slot 0: ~CTCBase)
@@ -138,7 +145,6 @@ struct CTCPhysicsStandard : public CTCPhysicsBase {
     unsigned char   NavigationLayers : 1;
     unsigned char   PushableByHero : 1;
 
-    void CreatePPhysicsMeshInfo(const CGraphicDataRef& graphic);   // 0x006B05A0
     void BaseOnCreate();                            // 0x006B0780 CTCPhysicsBase::OnCreate
     float GetAirResistance();                       // 0x006AFDE0
 protected:
@@ -158,10 +164,10 @@ void CTCPhysicsStandard::OnCreate()
         unsigned char type = data.Type;
         if (type == 5) {
             if (data.Index && ((C3DMeshInfo*)((CMeshDataBank*)bank)->PeekStaticMesh(data.Index))->HasPhysicsMesh())
-                CreatePPhysicsMeshInfo(data);
+                CreatePPhysicsMeshInfo(*(const CEngineGraphic*)&data);
         } else if (type == 4) {
             if (data.Index && ((C3DMeshInfo*)((CMeshDataBank*)bank)->PeekAnimatedMesh(data.Index))->HasPhysicsMesh())
-                CreatePPhysicsMeshInfo(data);
+                CreatePPhysicsMeshInfo(*(const CEngineGraphic*)&data);
         }
     }
     BaseOnCreate();

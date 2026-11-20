@@ -76,12 +76,14 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+// NF154 (PRIORITY q4722): 0x00686ED0 is ?AddToGlobalTCs@CTCBase@@QAEXXZ (Ego_r.pdb 0x006B2420 / FableWin.pdb 0x02191680); the local model's
+//   declaration is respelled in place (was the stand-in ?AddToGlobalUpdateList@CTCBase@@QAEXXZ).
 class CTCBase {
 public:
     virtual void v00();
     CThing* Thing;                                      // +0x04
     unsigned char _pad08[4];
-    void AddToGlobalUpdateList();                       // 0x00686ED0
+    void AddToGlobalTCs();                              // 0x00686ED0
 protected:
     const CWorldMap& PeekWorldMap() const;              // 0x00686D20
 };
@@ -135,7 +137,7 @@ void CTCFineDialogue::Show(long fine, long money, CTCVillage* village)
         text += amount;
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*CMainGameComponent::Get()->PFontBank, text, 0x24, 0.0f, false, 1);
         WaitingForConfirmation = true;
-        AddToGlobalUpdateList();
+        AddToGlobalTCs();
     } else {
         CWideString amount = CMainGameComponent::Get()->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_FINE_LACK_FUNDS");
         NGameText::ConstructString(amount, fine);

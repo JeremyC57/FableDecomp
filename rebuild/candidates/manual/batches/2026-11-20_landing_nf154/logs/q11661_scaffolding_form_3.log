@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00751e80   DIFFER(136v306)  PASS   CTCLook::GetTurningAngles
+007525c0   DIFFER(94v115)   PASS   CTCLook::GetTurningAnglesAndCheckForTurningBody
+
+WINS: 0

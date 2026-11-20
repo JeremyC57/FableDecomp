@@ -9,6 +9,10 @@
 //   CTCPerceiveThing::ResetPerceptionVariables 0x00744DB0, CGameCameraManager::ResetCamera 0x0069A990, CTCCreatureGenerator::InitialiseCreatureGenerator
 //   0x0074B770, CTCCarrying::UpdateCarriedObjects 0x006A1D60; game-interface slots 418 (+0x688) and 474 (+0x768).
 // Layout: the landed MakeHeroCarryItemInHand / SetHeroHandLampAsLit thing model (component mask +0x20, map +0x44, dead bit +0x91); CGameEvent per Ego_r.pdb (landed 0x00690C70).
+// Callees respelled (NF154, PRIORITY q4260 / q4494): the kind-7 component is CTCCreatureNavigation (engine/CTCCreatureNavigation.h):
+//   0x006CB6B0 ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ (Ego_r 0x007010F0 / FableWin 0x02478510; was ?Reset@CTCWalk@@QAEXXZ) and
+//   0x006CB8E0 ?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z (Ego_r 0x00701340 / FableWin 0x02478D30, PNavigator
+//   slot 8 forward; was ?FindNearestWalkablePos@CTCWalk@@QAE_NABVC3DVector@@MPAV2@@Z).
 // Shape: the walk-component lookup (kind 7) uses the ternary entry pick so the component loads straight into ecx; the other lookups use the eax join.
 #include "fable_compiler.h"
 extern "C" int __cdecl puts(const char* text);
@@ -129,10 +133,7 @@ struct CPhysicsObject {
     VPAD16(a) VPAD8(b) VPAD4(c) VPAD2(d) VPAD1(e)  // 0..30
     virtual void SetPosition(const C3DVector& pos);   // slot 31 (+0x7c)
 };
-struct CTCWalk {
-    void Reset();                                  // 0x006CB6B0
-    bool FindNearestWalkablePos(const C3DVector& pos, float radius, C3DVector* out);   // 0x006CB8E0
-};
+#include "engine/CTCCreatureNavigation.h"
 class CTCPerceiveThing { public: void ResetPerceptionVariables(); };   // 0x00744DB0
 class CTCCreatureGenerator { public:
     unsigned char _pad[0xa1];
@@ -211,10 +212,10 @@ void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, c
         event.Player = T(thing.GetThing())->PlayerNumber;
         World->HandleMoveHeroToRegionGameEvent(event);
     } else if (T(object)->Flags6c & 8) {
-        CTCWalk* walk = 0;
+        CTCCreatureNavigation* walk = 0;
         if (object->HasTC(7)) {
-            walk = (CTCWalk*)object->m_tcs.FindPick(7);
-            walk->Reset();
+            walk = (CTCCreatureNavigation*)object->m_tcs.FindPick(7);
+            walk->InterruptNavigation();
         }
         ((CTeleportThing*)object)->SetAsGameStatePersisted(false);
         bool creature = T(object)->IsCreature();
@@ -226,7 +227,7 @@ void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, c
         physics->SetPosition(pos);
         if (keepOnGround && walk) {
             C3DVector ground;
-            if (walk->FindNearestWalkablePos(pos, 0.8f, &ground))
+            if (walk->GetNearestNavigablePosTo(pos, 0.8f, ground))
                 physics->SetPosition(ground);
         }
         if (creature) {
