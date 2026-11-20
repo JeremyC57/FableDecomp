@@ -1,126 +1,78 @@
 // CAIStateGroup_MazeRangedCombat::Update @ 0x009551A0, 280 retail bytes.
+// Leaf: ?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ
 // Attempt a shot, play SPECIAL_IDLE on success, retry while eligible, and
 // terminate when the action sequence ends.
-#ifdef _MSC_VER
+// Retail CCreatureActionBase is 0xa8 (the donor header says 0xb4); retail CCombatActionBase is 0x114 (the donor layout is 0x12c).
+// Neighboring landed constructors 009566c0 and 008b7ff0 establish those offsets and lifetimes. Retail expands the ThrowShotObject
+// constructor (0x009566C0) here: the base constructor 0x00857F30 with 150 and the SWORD_SWING sound pair, then the vftable 0x012944D4 store.
+// NF137 (2026-11-20, q5021): moved onto the shared headers. AIAction_PerformActionAndWait 0x0097DB70 now binds the PDB
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb
+//   0x02892570; engine/CAIStateGroupBase.h PERFORMACTION), was the MazeRangedMethods stand-in over the CCreatureActionBaseRetail chain.
+//   The CCreatureActionBaseRetail / CCombatActionBaseRetail / _ThrowShotObjectRetail / _PlayCombatAnimationRetail stand-ins, the local
+//   CBaseIntelligentPointer / CIntelligentPointer / CSoundPair models and the host-adapter branch are gone for engine/CCombatActionBase.h,
+//   engine/CCreatureAction_PlayCombatAnimation.h (retail mode), engine/CCreatureAction_ThrowShotObject.h (overlay opt-in
+//   FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS: the retail class with its inline constructor) and engine/CIntelligentPointer.h.
+//   Terminate 0x008FCF40 now binds ?Terminate@CAIStateGroupBase@@QAEXXZ. The MazeRangedMethods stand-in is gone for the retail class (overlay
+//   opt-in FABLE_RETAIL_CAISTATEGROUP_MAZERANGEDCOMBAT on the quarantine CAIStateGroup_MazeBase retail mode, as landed 0x00954F40): own leaf
+//   now the PDB ?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ (Ego_r.pdb 0x00979BB0 + FableWin.pdb 0x02BF6400) and the CanRun 0x00954220
+//   stand-in now the PDB ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ (Ego_r.pdb 0x009789D0 + FableWin.pdb 0x02BF6110).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS
+#define FABLE_RETAIL_CAISTATEGROUP_MAZERANGEDCOMBAT
 #include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-#include "engine/CAIStateGroup_MazeRangedCombat.h"
+#include "engine/CThingAICreature.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
 #include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
 #include "engine/CCreatureAction_ThrowShotObject.h"
 #include "engine/CCreatureAction_PlayCombatAnimation.h"
-#else
-// Host-test adapters: VC7.1 compiles against the shared donor headers above;
-// the retail offsets below are explicit so the same body can run on a 64-bit host.
-class CAIBrain { public: unsigned char pad[0x18]; void* Creature; };
-class CAIStateGroupBase { public:
-    void* __vftable;
-    CAIBrain* PBrain;
-    char _tail[12];
-};
-struct CAIStateGroup_MazeRangedCombat { unsigned char raw[0x24]; };
-class CCreatureActionBase { public: };
-class CCreatureAction_ThrowShotObject { public: };
-class CCreatureAction_PlayCombatAnimation { public: };
-#endif
+#include "engine/CAIStateGroup_MazeRangedCombat.h"
 
-class CThing;
-class CThingCreatureBase;
-#ifndef _MSC_VER
-class CCharString { public:
-    void* data;
-    CCharString(const char*, long);
-    ~CCharString();
-};
-#endif
-class CSoundPair { public:
-    long first, last;
-    CSoundPair() : first(0), last(0) {}
-};
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase*, const CCharString&); // 0x008561A0
-
-struct CCharStringLiteral {
-    CCharString value;
-    CCharStringLiteral(const char* text) : value(text, -1) {} // CCharString ctor/dtor 0x0099EBF0/0x0099EAE0
-};
-
-// Retail CCreatureActionBase is 0xa8 (the donor header says 0xb4); retail
-// CCombatActionBase is 0x114 (the donor layout is 0x12c). Neighboring landed
-// constructors 009566c0 and 008b7ff0 establish those offsets and lifetimes.
-struct CCreatureActionBaseRetail {
-    virtual ~CCreatureActionBaseRetail(); // 0x00693EF0
-    unsigned char body[0xa4];
-};
-struct CCombatActionBaseRetail : CCreatureActionBaseRetail {
-    unsigned char combat[0x6c];
-    CCombatActionBaseRetail(CThingCreatureBase*, CThing*, long, const CSoundPair&); // 0x00857F30
-    CCombatActionBaseRetail(CThingCreatureBase*, long, const CSoundPair&); // 0x00858030
-    virtual ~CCombatActionBaseRetail(); // 0x0062E900
-    void SetCombatAnimation(const CCharString&);
-};
-// CCreatureAction_ThrowShotObject ctor: 0x009566C0.
-struct CCreatureAction_ThrowShotObjectRetail : CCombatActionBaseRetail {
-    CCreatureAction_ThrowShotObjectRetail(CThingCreatureBase* owner, CThing* thing)
-        : CCombatActionBaseRetail(owner, thing, 150,
-            GetSoundPair(owner, CCharStringLiteral("SWORD_SWING").value)) {}
-};
-struct CCreatureAction_PlayCombatAnimationRetail : CCombatActionBaseRetail {
-    unsigned char loop;
-    unsigned char flag;
-    unsigned char started;
-    CCreatureAction_PlayCombatAnimationRetail(CThingCreatureBase*, const CCharString&, bool); // 0x008B7FF0
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-// The donor Maze record is flattened/nonpolymorphic. Model the retail base
-// and observed members without adding a second vptr.
-struct MazeRangedMethods : CAIStateGroupBase {
-    CIntelligentPointer<CThing> PTarget; // +0x14 (retail)
-#ifdef _MSC_VER
-    unsigned char _pad_0x1c[4];
-#endif
-    long LastCompletedPhase; // +0x20 (retail)
-    CAIBrain* Brain() const { return PBrain; }
-    CIntelligentPointer<CThing>& Target() { return PTarget; }
-    bool CanRun(); // 0x00954220
-    long AIAction_PerformActionAndWait(CCreatureActionBaseRetail*, bool); // 0x0097DB70
-    void Terminate(); // 0x008FCF40
-    void Update();
-};
-
-void MazeRangedMethods::Update() {
-    long result = 2;
+void CAIStateGroup_MazeRangedCombat::Update() {
+    EAIActionReturn result = AI_ACTION_FINISHED;
     do {
-        if (CanRun()) {
-            CThingCreatureBase* creature = (CThingCreatureBase*)Brain()->Creature;
+        if (IsStillRunnable()) {
+            CThingAICreature& creature = GetCreature();
             result = AIAction_PerformActionAndWait(
-                &CCreatureAction_ThrowShotObjectRetail(creature, Target().GetPItem()), false);
+                CCreatureAction_ThrowShotObject(creature, *PTargetThing.Get()), false);
         } else {
             Terminate();
         }
-        if (CanRun() && result == 2) {
+        if (IsStillRunnable() && result == AI_ACTION_FINISHED) {
             CCharString animation("SPECIAL_IDLE", -1);
-            CThingCreatureBase* creature = (CThingCreatureBase*)Brain()->Creature;
+            CThingAICreature& creature = GetCreature();
             result = AIAction_PerformActionAndWait(
-                &CCreatureAction_PlayCombatAnimationRetail(creature, animation, true), false);
+                CCreatureAction_PlayCombatAnimation(creature, animation, true), false);
         } else {
             Terminate();
         }
-    } while (CanRun() && result == 2);
+    } while (IsStillRunnable() && result == AI_ACTION_FINISHED);
     Terminate();
 }

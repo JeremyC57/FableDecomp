@@ -19,6 +19,13 @@
 // (the GETNAME_ALLOC statics are not in this branch).
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 class CAIStateGroup_CreatureAdvanceInCover : public CAIStateGroup_CreatureUseCoverBase {
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_GETCOVERTHINGLIST
+    // NF137 nested opt-in (2026-11-20, q4994 / q5140 binder, row 0x00978FD0): Ego_r.pdb 0x0099DD10 + FableWin.pdb 0x02C155C0
+    // ?GetCoverThingList@CAIStateGroup_CreatureAdvanceInCover@@UAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z, the public
+    // override of the base's slot 23 (needs FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_COVERLIST). Declaration only.
+public:
+    virtual void GetCoverThingList(std::vector<CThing*>& things);       // slot 23 0x00978FD0
+#endif
 #ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREADVANCEINCOVER_UPDATE
     // NF68 opt-in (row 0x009790F0): Ego_r.pdb ?Update@CAIStateGroup_CreatureAdvanceInCover@@UAEXXZ and the protected
     // ?IsStillRunnable@CAIStateGroup_CreatureAdvanceInCover@@IAE_NXZ (0x00978F10). Declarations only.
@@ -30,7 +37,7 @@ protected:
 protected:
     virtual bool IsRunnableLeaf();                                       // 0x00978E60
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureAdvanceInCover) == 0x4c);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_CreatureAdvanceInCover) == 0x4c);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

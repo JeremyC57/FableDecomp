@@ -1,5 +1,5 @@
 // CIsSeatWithSpaceOwnedBy::operator()(CThing*) const -- the thing-pointer twin of 0x00945E70: the thing must not be in limbo; then a seat (type-flag bit 16 or 17), owned by POwner (its owned-entity component, kind 0x33, names POwner; with no POwner the seat must be unowned), whose user-action-point component (kind 0x2d) still has a free point
-// Leaf: ??RCIsSeatWithSpaceOwnedBy@@QBE_NPAVCThing@@@Z
+// Leaf: ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009109B0, 219 bytes, `ret 4` (the thing-pointer twin of the landed 0x00945E70; same body after the first test).
 // Callees: the thing's virtual type-flags getter (slot 48, +0xc0, called twice), the const component-map LowerBound @
@@ -14,6 +14,11 @@
 //   arm's compare jumps into the unowned arm's `jne`. The owner is read through a direct component-map Find (the mask was
 //   already tested as ownedBit; the out-parameter GetInterface form pops edi early and compares from memory); the
 //   free-point test returns through its own `mov al,1` exit.
+// NF137 (2026-11-20, q4993): own leaf respelled in place to the PDB ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z (Ego_r.pdb 0x00935940 +
+//   FableWin.pdb 0x02B75380: the filter of GetAllLeafThings<CThingObject, vector<CThingObject*>, CIsSeatWithSpaceOwnedBy>, whose landed row
+//   0x00910A90 already binds this spelling), was ??RCIsSeatWithSpaceOwnedBy@@QBE_NPAVCThing@@@Z. The parameter is the object by const reference
+//   (the same pointer on the stack); the body still reads it through the row-local CThing model (a port onto engine/CThing.h / CThingObject.h is
+//   the follow-up; CThingObject is only forward-declared here, so no new local model).
 #include "fable_compiler.h"
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -78,14 +83,16 @@ FABLE_FORCEINLINE CThing* GetOwnerOf(const CThing* thing)
     CTCOwnedEntity* owned = (CTCOwnedEntity*)thing->m_tcs.Find(0x33);
     return (CThing*)owned->POwner.GetPItem();
 }
+class CThingObject;                                // engine/CThingObject.h (only its address is passed here)
 class CIsSeatWithSpaceOwnedBy {
 public:
     CThing* POwner;                                // +0x00
-    bool operator()(CThing* thing) const;
+    bool operator()(const CThingObject& thing_object) const;
 };
 
-bool CIsSeatWithSpaceOwnedBy::operator()(CThing* thing) const
+bool CIsSeatWithSpaceOwnedBy::operator()(const CThingObject& thing_object) const
 {
+    const CThing* thing = (const CThing*)&thing_object;   // the row-local CThing view of the object
     if (!thing->InLimbo) {
         if (((unsigned char)(thing->GetThingTypeFlags() >> 16) & 1) || ((unsigned char)(thing->GetThingTypeFlags() >> 17) & 1)) {
             unsigned long ownedBit = thing->HasTC(0x33);

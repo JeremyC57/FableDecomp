@@ -1,4 +1,8 @@
 // CAIStateGroup_MeleeCombatNearby2::IsStillRunnable(bool) -- still runnable when the base says so AND the enemy
+// Leaf: ?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z
+// NF137 (2026-11-20, q5030): the base call 0x0093D800 now binds the PDB ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z (in place on
+//   the row-local base: protected virtual const), was QAE; own leaf respelled in place to the PDB protected virtual const
+//   ?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z (Ego_r.pdb 0x00961A40 + FableWin.pdb 0x02B90F10), was QAE (no landed referrer).
 // and the creature stand on the same navigation region (the region lookup takes each thing's position).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DB10, length 94 bytes (+ int3 padding), `ret 4`.
 // Callees: CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool) @ 0x0093D800 (the argument forwarded),
@@ -48,15 +52,17 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;         // +0x14 CIntelligentPointer<CThingCreatureBase>
-    bool IsStillRunnable(bool checkEnemy);  // 0x0093D800
+protected:
+    virtual bool IsStillRunnable(bool checkEnemy) const;  // 0x0093D800
 };
 
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroup_MeleeCombatNearbyBase {
     bool Archer;                            // +0x1c
-    bool IsStillRunnable(bool checkEnemy);
+protected:
+    virtual bool IsStillRunnable(bool checkEnemy) const;
 };
 
-bool CAIStateGroup_MeleeCombatNearby2::IsStillRunnable(bool checkEnemy)
+bool CAIStateGroup_MeleeCombatNearby2::IsStillRunnable(bool checkEnemy) const
 {
     if (CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(checkEnemy)) {
         CThing* enemy = PEnemy.GetPItem();

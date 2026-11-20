@@ -9,6 +9,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS
+// NF137 opt-in (2026-11-20, q5021, row 0x009551A0 CAIStateGroup_MazeRangedCombat::Update): the polymorphic retail class on CCombatActionBase
+// (ghidra_out/rtti_bases.tsv .?AVCCreatureAction_ThrowShotObject@@ : CCombatActionBase; no own members, sizeof 0x114 as below) with its
+// two-argument constructor, Ego_r.pdb 0x0097B320 + FableWin.pdb 0x02BF6850 ??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z.
+// Its body is inline here: retail expands it inside 0x009551A0 (the base constructor 0x00857F30 with 150 and the SWORD_SWING sound pair,
+// then the vftable 0x012944D4 store), out of line at 0x009566C0. Needs engine/CCombatActionBase.h (FABLE_RETAIL_CCOMBATACTIONBASE_MELEE +
+// _SOUNDCTOR + _TARGETCTOR) and fable_string.h first.
+class CCreatureAction_ThrowShotObject : public CCombatActionBase {
+public:
+    CCreatureAction_ThrowShotObject(CThingCreatureBase& creature, CThing& thing)
+        : CCombatActionBase(creature, thing, 150, GetSoundPair(creature, "SWORD_SWING")) { }   // 0x009566C0
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ThrowShotObject) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ThrowShotObject {
 public:
@@ -27,7 +41,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ThrowShotObject) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ThrowShotObject, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ThrowShotObject) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ThrowShotObject, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_THROWSHOTOBJECT_H

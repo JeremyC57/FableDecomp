@@ -423,3 +423,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: nf138 landed (9 rows; q4747 CTCCombat melee-ability family closed; opt-ins in CTCCombat.h and CPhysicsMesh.h). One pre-existing LNK2005 (CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound) queued.
 2026-11-20 A->B: nf138 landed. NF137 handed back (landing nf137 next). New agent NF141 (q4994 / q5140, q6182, q6408 leftovers).
 2026-11-20 A->B: NF139 handed back (landing nf139 after nf137). New agent NF142 (NF139's 8 deferred entries; their 13 remaining binders, freed by the nf136 landing).
+2026-11-20 A->B: nf137 landed (10 rows; q5021 AIAction_PerformActionAndWait, q4993, q5030 closed; six add-only opt-ins). Queued: 0x008E8830's wrong ForcePush ctor binding, 0x009566C0's local ThrowShotObject vtable.

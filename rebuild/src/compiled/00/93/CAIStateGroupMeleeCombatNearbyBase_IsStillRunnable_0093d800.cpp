@@ -1,4 +1,9 @@
 // CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool) -- still runnable while the enemy lives, the creature's 0x30 component is engaged, the enemy can be engaged and is the creature's combat target, a perceived enemy is still seen/smelt or directly sensed, (when asked) the creature is a registered combatant, and the enemy is within the 0xAA component's range; once the enemy is running away its stealth component is flagged and the state stops
+// Leaf: ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z
+// NF137 (2026-11-20, q5030): own leaf respelled in place to the PDB protected virtual const ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z
+//   (Ego_r.pdb 0x009613E0 + FableWin.pdb 0x02B8E5B0; engine/CAIStateGroup_MeleeCombatNearbyBase.h _MOVE declares the same), was UAE; the callee
+//   IsEnemyRunningAway 0x0093D3A0 now binds the PDB private const ?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ (its self row
+//   moves with it). Its callers 0x0093DB10 / 0x0093DC10 move in the same hand-back.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D800, length 637 bytes (+ int3 padding), `ret 4` (virtual).
@@ -112,11 +117,13 @@ class CAIStateGroupBase { public:
 };
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;             // +0x14
-    bool IsEnemyRunningAway();                  // 0x0093D3A0
-    virtual bool IsStillRunnable(bool checkCombatant);
+private:
+    bool IsEnemyRunningAway() const;            // 0x0093D3A0
+protected:
+    virtual bool IsStillRunnable(bool checkCombatant) const;
 };
 
-bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant)
+bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant) const
 {
     if (IS_THING_ALIVE(PEnemy)) {
         const CTCCombatEngage* engage;

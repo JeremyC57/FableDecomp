@@ -1,0 +1,2 @@
+# recheck after landing nf137: 272 rows = gate referencing rows (after dropping universal targets 0x00A01B50 GetPItem 2715 rows, 0x004C73D0 GetPos 879, 0x0062E900 ~CCombatActionBase 470, 0x008FCF40 Terminate 191, 0x00857F30 CCombatActionBase() 156: all already bound, none grew) + renamed rows + 25 direct includers of the six overlay headers
+good 272 bad 0
