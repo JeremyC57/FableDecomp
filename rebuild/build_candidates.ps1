@@ -401419,6 +401419,20 @@ $catalog = @(
         TestSource = '00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Main_00e25f70_test.cpp'
         PassPattern = '00e25f70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ec4a00'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Main_00ec4a00.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Main_00ec4a00_test.cpp'
+        PassPattern = '00ec4a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76e90'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_HeroFlashesLamp_00e76e90.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_HeroFlashesLamp_00e76e90_test.cpp'
+        PassPattern = '00e76e90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

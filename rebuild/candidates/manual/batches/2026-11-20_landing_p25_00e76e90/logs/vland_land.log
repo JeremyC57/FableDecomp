@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e76e90   RELOCATION_MATCH PASS   HeroFlashesLamp
+
+WINS: 1
+  00e76e90 RELOCATION_MATCH NScript::CV_ExposeMayorScript::?HeroFlashesLamp@CV_ExposeMayorScript@NScript@@QAEXJ@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVExposeMayorScript_HeroFlashesLamp_00e76e90

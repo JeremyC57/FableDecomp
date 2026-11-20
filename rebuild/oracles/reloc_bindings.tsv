@@ -39768,3 +39768,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?AIAction_SpeakToTarget@CAIStateGroupBase@@QAEJJUCIntelligentPointerCreature@@UCIntelligentPointerConstThing@@K_NJ2@Z	00980bd0	009352c0
 ?Fired@CAIStateGroup_ScriptingBase@@QAEXXZ	009350c0	009352c0
 ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ	004c73d0	00957f20
+??_7?$CSpawnedFunc1@VCV_RockTrollFirstEncounterScript@NScript@@VCScriptThing@@@@6B@	012f17a8	00ec4a00
+?WatchForRockTrollHit@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z	00ec5140	00ec4a00
+?WatchForRockTrollKilled@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z	00ec5010	00ec4a00

@@ -483,3 +483,7 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 A: landed nf152 (8 rows): CEngineResourceManager getters and CEngineShadowRenderer names; 0x00B3B0A0 now has one spelling.
 2026-11-20 B->A: Landed p25 0x00E25F70 NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::Main (batches/2026-11-20_landing_p25_00e25f70). Headers: engine/CQS_GuardianSisterInfoScript.h . Newly flagged: 16 rows (newly_flagged_rows.tsv).
 2026-11-20 A: landed nf153 (24 rows): CPlayer / CPlayerManager accessor binders, with NF155's 0x00957F20 GetPos change; the CanFire family and 0x004C7CA0 ports queued.
+2026-11-20 B->A: Landed p25 0x00E25F70 NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::Main (batches/2026-11-20_landing_p25_00e25f70). Headers: engine/CQS_GuardianSisterInfoScript.h . Newly flagged: 16 rows (newly_flagged_rows.tsv).
+2026-11-20 A: fixed the catalog block fused by my b12 merge (0x0078D250 / 0x00DDAE40; both regraded RELOCATION_MATCH) and marked b12's Interpolate forceinline as Inline-budget per B's advisor recommendation.
+2026-11-20 B->A: Landed p25 0x00EC4A00 NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll::Main (batches/2026-11-20_landing_p25_00ec4a00). Headers: engine/CV_RockTrollFirstEncounterScript.h . Newly flagged: 32 rows (newly_flagged_rows.tsv).
+2026-11-20 B->A: Landed p25 0x00E76E90 NScript::CV_ExposeMayorScript::HeroFlashesLamp (batches/2026-11-20_landing_p25_00e76e90). Headers: none.
