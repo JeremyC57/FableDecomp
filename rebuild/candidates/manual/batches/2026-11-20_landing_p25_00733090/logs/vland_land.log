@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00733090   MATCH            PASS   IsActive
+007330a0   RELOCATION_MATCH PASS   SetAsActive
+007330c0   RELOCATION_MATCH PASS   SetAsFinished
+007330e0   MATCH            PASS   Reset
+
+WINS: 4
+  00733090 MATCH CCombatAbility::?IsActive@CCombatAbility@@QBE_NXZ
+  007330a0 RELOCATION_MATCH CCombatAbility::?SetAsActive@CCombatAbility@@QAEXABVCCombatAbilityData@@@Z
+  007330c0 RELOCATION_MATCH CCombatAbility::?SetAsFinished@CCombatAbility@@QAEXABVCCombatAbilityData@@@Z
+  007330e0 MATCH CCombatAbility::?Reset@CCombatAbility@@QAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CCombatAbility_IsActive_00733090
+  CCombatAbility_SetAsActive_007330a0
+  CCombatAbility_SetAsFinished_007330c0
+  CCombatAbility_Reset_007330e0

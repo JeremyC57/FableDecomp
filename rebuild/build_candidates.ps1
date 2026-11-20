@@ -401702,6 +401702,34 @@ $catalog = @(
         TestSource = '00/c7/CFloatReverbParameterTranslator_UpdateReflectionsDelay_00c77b30_test.cpp'
         PassPattern = '00c77b30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00733090'
+        Module = 'CCombatAbility'
+        Source = '00/73/CCombatAbility_IsActive_00733090.cpp'
+        TestSource = '00/73/CCombatAbility_IsActive_00733090_test.cpp'
+        PassPattern = '00733090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007330a0'
+        Module = 'CCombatAbility'
+        Source = '00/73/CCombatAbility_SetAsActive_007330a0.cpp'
+        TestSource = '00/73/CCombatAbility_SetAsActive_007330a0_test.cpp'
+        PassPattern = '007330a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007330c0'
+        Module = 'CCombatAbility'
+        Source = '00/73/CCombatAbility_SetAsFinished_007330c0.cpp'
+        TestSource = '00/73/CCombatAbility_SetAsFinished_007330c0_test.cpp'
+        PassPattern = '007330c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007330e0'
+        Module = 'CCombatAbility'
+        Source = '00/73/CCombatAbility_Reset_007330e0.cpp'
+        TestSource = '00/73/CCombatAbility_Reset_007330e0_test.cpp'
+        PassPattern = '007330e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

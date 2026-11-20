@@ -106,6 +106,16 @@ private:
  typedef std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility> TCombatAbilityData;
  typedef std::multimap<ECombatAbilityDataType,TCombatAbilityData> TCombatAbilityList;
  TCombatAbilityList CombatAbilities;
+#ifdef FABLE_RETAIL_CTCCOMBAT_GETHITCOUNTERATTACK
+ // Opt-in (p25N, row 0x00733CF0): Ego_r.pdb / FableWin.pdb the private non-const
+ // ?GetCombatAbilityData@CTCCombat@@AAE_NAAV?$_Tree_iterator@..@W4ECombatAbilityInterfaceType@@@Z (retail 0x00733620, landed; Ego_d.pdb
+ // parameters ittybitty, interface_type) and the public ?UpdateGetHitCounterAttack@CTCCombat@@QAEXABVCThingCreatureBase@@@Z (retail
+ // 0x00733CF0; Ego_d.pdb parameter hit_by). Needs engine/ECombatAbilityInterfaceType.h. Declarations only: no layout change.
+ bool GetCombatAbilityData(TCombatAbilityList::iterator& ittybitty, ECombatAbilityInterfaceType interface_type);   // 0x00733620
+public:
+ void UpdateGetHitCounterAttack(const CThingCreatureBase& hit_by);     // 0x00733CF0
+private:
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_SHOTOVERRIDE
  // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): the boss AI writes ShotOverrideType (+0x7c)
  // directly (`mov [eax+7Ch],edx` on the GetTC<CTCCombat> result) and neither PDB name set has an accessor for it, so the member is
