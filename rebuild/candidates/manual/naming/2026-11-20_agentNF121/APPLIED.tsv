@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q4469	0x006A1060	deferred: held by NF118 (row left: 0x006A1E00)	8	self leaf respelled QAE_NPAV -> claim (RENAMES s1) and 8 binders respelled (005c3a95 QBE_NPAV; 006647f0 0069f9e0 0078e9c0 00793ec0 008ba3c0 008c6a50 009647c0 QAE_NPAV); 9 REFS rows already bound the claim; 004804de not-a-binder (byte coincidence). Split shrinks 3 -> 2 spellings: only 0x006A1E00 (held by NF118) still binds QAE_NPAV (NAME_FIXES recipe). Self rename applied although one REFS row cannot move: the claim is already the majority spelling (9 rows before), so no new spelling appears (NOTES)
+q4470	0x006A1490	done	1	self leaf QAE_NPAV -> claim; 005c3a95 QBE_NPAV -> claim; 005c552c already on it: all 3 rows (self + 2 REFS) on the claim; no header opt-in needed (no finished row uses one)
+q4471	0x006A1120	done	1	self leaf QAE -> QBE (const); 006648d0 respelled; 005c552c / 005cb2b0 already on it: all 4 rows on the claim
+q4472	0x006A19B0	done	0	self leaf QAEXPAV -> QAEXAAV (claim); all 26 REFS rows (incl. 006a1e00) already bind the claim (HEAD probe)
+q4473	0x006A11F0	done-already	0	self row already defines the claim; all 14 REFS rows bind it (HEAD probe); the wrong FindThingByID spelling is gone from rebuild/src/compiled and reloc_bindings
+q4984	0x006A1540	done-already	0	self row already defines the claim; all 14 REFS rows bind it (HEAD probe); the YI free-function and CGSISheatheHeroWeapons_Target spellings survive only in comments

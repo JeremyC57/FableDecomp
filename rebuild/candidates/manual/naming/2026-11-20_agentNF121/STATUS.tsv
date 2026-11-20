@@ -1,0 +1,59 @@
+address	change	grade	test	grades_used	entries	note
+0x004804DE	none	-	-	1	q4469	not-a-binder: exe-scan hit at 0x00482563 is a byte coincidence (or dword [ebp+60h],10h ; push 0 encodes 60 10 6A 00); the HEAD object binds none of the six addresses
+0x00487DE0	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x004A3740	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x005C36C2	none	RELOCATION_MATCH	PASS	1	q4469 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a11f0:?GetThingInCarrySlot
+0x005C3A95	respell local model: IsCarryingThing QBE_NPAV -> QBE_NABV, IsCarriedThingInPrimarySlot QBE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469 q4470	ported: calls deref'd (grades: HEAD probe + b1 + recheck_final)
+0x005C552C	none	RELOCATION_MATCH	PASS	1	q4469 q4470 q4471 q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a1120:?GetCarriedThing 006a1490:?IsCarriedThingInPrimarySlot 006a19b0:?RemoveThing
+0x005CB128	none	RELOCATION_MATCH	PASS	1	q4469 q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a19b0:?RemoveThing
+0x005CB2B0	none	RELOCATION_MATCH	PASS	1	q4471 q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1120:?GetCarriedThing 006a19b0:?RemoveThing
+0x005CB974	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x00663990	none	RELOCATION_MATCH	PASS	1	q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot
+0x006647F0	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x006648D0	respell local model: GetCarriedThing QAE -> QBE (const)	RELOCATION_MATCH	PASS	3	q4471	ported: IsCarryingThing(long) 0x006A10A0 still QAE_NJ (outside slice; NAME_FIXES) (grades: HEAD probe + b1 + recheck_final)
+0x00694430	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x0069F9E0	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x006A1060	self rename QAE_NPAV -> QBE_NABV (in-place local model: const FindThing/begin/end)	RELOCATION_MATCH	PASS	4	q4469	ported: Leaf line added; RENAMES s1 (grades: HEAD probe + HEAD self grade + b1 + recheck_final)
+0x006A1120	self rename QAEPAV..J -> QBEPAV..J (const)	RELOCATION_MATCH	PASS	4	q4471	ported: Leaf line added; RENAMES s1 (grades: HEAD probe + HEAD self grade + b1 + recheck_final)
+0x006A11F0	none	RELOCATION_MATCH	PASS	2	q4473	not-a-binder: self row already defines ?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z (HEAD object)
+0x006A1490	self rename QAE_NPAV -> QBE_NABV (in-place local model: const FindValue, key ctor const CThing*)	RELOCATION_MATCH	PASS	4	q4470	ported: Leaf line added; RENAMES s1 (grades: HEAD probe + HEAD self grade + b1 + recheck_final)
+0x006A1540	none	RELOCATION_MATCH	PASS	2	q4984	not-a-binder: self row already defines ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z (HEAD object)
+0x006A16A0	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x006A19B0	self rename QAEXPAV -> QAEXAAV (CThing&)	RELOCATION_MATCH	PASS	4	q4472	ported: Leaf line added; RENAMES s1 (grades: HEAD probe + HEAD self grade + b1 + recheck_final)
+0x006A1E00	none (held by NF118)	RELOCATION_MATCH (HEAD, read-only)	PASS	1	q4469	deferred: held by NF118; still binds ?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z (NAME_FIXES recipe)
+0x006CA380	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x00705150	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x00733100	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x0073A9F0	none	RELOCATION_MATCH	PASS	1	q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot
+0x0078E9C0	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x00793EC0	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x007ED0A0	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x00805890	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x00845CE0	none	RELOCATION_MATCH	PASS	1	q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x00846090	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x00847C90	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x0084A5F0	none	RELOCATION_MATCH	PASS	1	q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot
+0x00859040	none	RELOCATION_MATCH	PASS	1	q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot
+0x008916A0	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x00895190	none	RELOCATION_MATCH	PASS	1	q4469 q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x00897FA0	none	RELOCATION_MATCH	PASS	1	q4469 q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a19b0:?RemoveThing
+0x008B7BA0	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x008BA3C0	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x008C6860	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x008C6A50	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x008CB780	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x008D5300	none	RELOCATION_MATCH	PASS	1	q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x008D5480	none	RELOCATION_MATCH	PASS	1	q4472	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a19b0:?RemoveThing
+0x008D5790	none	RELOCATION_MATCH	PASS	1	q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x008FD1B0	none	RELOCATION_MATCH	PASS	1	q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot
+0x0090E5D0	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x00929340	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x0092DA20	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x0093B1D0	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon
+0x009644F0	none	RELOCATION_MATCH	PASS	1	q4469 q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x009647C0	respell local model: IsCarryingThing QAE_NPAV -> QBE_NABV	RELOCATION_MATCH	PASS	3	q4469	ported: in-place; call(s) deref'd (grades: HEAD probe + b1 + recheck_final)
+0x00965640	none	RELOCATION_MATCH	PASS	1	q4469 q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x009658B0	none	RELOCATION_MATCH	PASS	1	q4469	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing
+0x00966030	none	RELOCATION_MATCH	PASS	1	q4469 q4472 q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1060:?IsCarryingThing 006a11f0:?GetThingInCarrySlot 006a19b0:?RemoveThing
+0x00968BC0	none	RELOCATION_MATCH	PASS	1	q4473	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a11f0:?GetThingInCarrySlot
+0x0096B600	none	RELOCATION_MATCH	PASS	1	q4984	not-a-binder: HEAD object already binds the claimed spelling(s) for 006a1540:?IsThingCarryingWeapon

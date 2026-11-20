@@ -31,7 +31,7 @@ struct CThingVector {                           // STLport vector<CThing*> (12 b
 
 class CTCCarrying { public:
     void GetWeapons_006a22d0(CThingVector* things, bool flag);   // 0x006A22D0
-    bool IsCarryingThing(CThing* thing);                        // 0x006A1060
+    bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
     static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
 };
 
@@ -90,7 +90,7 @@ void CThingCreatureBase::SheatheAllWeapons()
     carrying->GetWeapons_006a22d0(&weapons, false);
     for (CThing** it = weapons.begin(); it != weapons.end(); ++it) {
         CThing* weapon = *it;
-        if (IS_THING_ALIVE(weapon) && !carrying->IsCarryingThing(weapon))
+        if (IS_THING_ALIVE(weapon) && !carrying->IsCarryingThing(*weapon))
             weapon->Kill(true);
     }
 }

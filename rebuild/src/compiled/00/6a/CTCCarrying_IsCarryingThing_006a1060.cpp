@@ -1,4 +1,7 @@
-// CTCCarrying::IsCarryingThing(CThing* thing) -- linear search of the carry-slot map for an entry whose intelligent pointer resolves to the thing
+// CTCCarrying::IsCarryingThing(const CThing& thing) const -- linear search of the carry-slot map for an entry whose intelligent pointer resolves to the thing
+// Leaf: ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z
+// Naming (NF121, 2026-11-20): Ego_r.pdb / FableWin.pdb ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z (const, by const
+//   reference; the (long) overload is 0x006A10A0); was QAE_NPAV. Same bytes (the reference is the pushed pointer).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A1060, length 58 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (landed). 24 callers.
 // Layout: Ego_r.pdb CTCCarrying: CarrySlots (CVectorMap<long, CIntelligentPointer<CThing>>) at +0xc -- the
@@ -38,25 +41,25 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     SCarrySlotEntry* m_pEnd;
     bool             m_compare;
     bool             m_dirty;
-    SCarrySlotEntry* begin() { return m_pFirst; }
-    SCarrySlotEntry* end() { return m_pLast; }
+    SCarrySlotEntry* begin() const { return m_pFirst; }
+    SCarrySlotEntry* end() const { return m_pLast; }
 };
 
 class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c
-    FABLE_FORCEINLINE SCarrySlotEntry* FindThing(CThing* thing)
+    FABLE_FORCEINLINE SCarrySlotEntry* FindThing(const CThing* thing) const
     {
         for (SCarrySlotEntry* it = CarrySlots.begin(); it != CarrySlots.end(); ++it)
             if (it->second.GetPItem() == thing)
                 return it;
         return CarrySlots.end();
     }
-    bool IsCarryingThing(CThing* thing);
+    bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060
 };
 
-bool CTCCarrying::IsCarryingThing(CThing* thing)
+bool CTCCarrying::IsCarryingThing(const CThing& thing) const
 {
-    return FindThing(thing) != CarrySlots.end();
+    return FindThing(&thing) != CarrySlots.end();
 }

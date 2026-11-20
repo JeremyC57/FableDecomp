@@ -1,0 +1,16 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x006A1060	CTCCarrying	IsCarryingThing	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	CTCCarrying::IsCarryingThing	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	Ego_r.pdb + FableWin.pdb publics name only this spelling for the member (no CThing* overload exists); body compares the carry slots' GetPItem() with the thing's address (the reference is the pushed pointer: same bytes, RELOCATION_MATCH); old leaf read from the HEAD object (objdump -t); in-place respell of the row's existing local CTCCarrying model (NF121); const, the (long) overload is 0x006A10A0
+0x006A1490	CTCCarrying	IsCarriedThingInPrimarySlot	?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z	CTCCarrying::IsCarriedThingInPrimarySlot	?IsCarriedThingInPrimarySlot@CTCCarrying@@QAE_NPAVCThing@@@Z	Ego_r.pdb + FableWin.pdb publics name only this spelling for the member (no CThing* overload exists); body compares the carry slots' GetPItem() with the thing's address (the reference is the pushed pointer: same bytes, RELOCATION_MATCH); old leaf read from the HEAD object (objdump -t); in-place respell of the row's existing local CTCCarrying model (NF121); the local key wrapper's ctor now takes const CThing*: its existing C cast to CBaseObject* is unchanged in text but now also drops const
+0x006A1120	CTCCarrying	GetCarriedThing	?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z	CTCCarrying::GetCarriedThing	?GetCarriedThing@CTCCarrying@@QAEPAVCThing@@J@Z	Ego_r.pdb + FableWin.pdb: const member; landed callers 0x005C552C / 0x005CB2B0 (engine/CTCCarrying.h) already bind QBE; body only reads the carry slots; old leaf from the HEAD object; in-place respell (NF121)
+0x006A19B0	CTCCarrying	RemoveThing	?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z	CTCCarrying::RemoveThing	?RemoveThing@CTCCarrying@@QAEXPAVCThing@@@Z	Ego_r.pdb + FableWin.pdb: CThing& parameter; all 26 landed referencing rows already bind it (HEAD probe); same bytes; old leaf from the HEAD object; in-place respell (NF121)
+# Section 2
+0x005C3A95	?IsCarryingThing@CTCCarrying@@QBE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x005C3A95	?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NPAVCThing@@@Z	?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1490
+0x006647F0	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x0069F9E0	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x0078E9C0	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x00793EC0	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x008BA3C0	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x008C6A50	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x009647C0	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	0x006A1060
+0x006648D0	?GetCarriedThing@CTCCarrying@@QAEPAVCThing@@J@Z	?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z	0x006A1120

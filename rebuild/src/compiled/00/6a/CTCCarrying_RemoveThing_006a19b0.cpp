@@ -1,4 +1,7 @@
-// CTCCarrying::RemoveThing(CThing* thing) -- finds the carry slot holding the thing and, when found, removes the thing from that slot
+// CTCCarrying::RemoveThing(CThing& thing) -- finds the carry slot holding the thing and, when found, removes the thing from that slot
+// Leaf: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z
+// Naming (NF121, 2026-11-20): Ego_r.pdb / FableWin.pdb ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (by reference; was the
+//   CThing* spelling QAEXPAV); the 26 landed callers already bind it. Same bytes (the reference is the pushed pointer).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A19B0, length 65 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCCarrying::RemoveThingInCarrySlot(long, bool)
 // @ 0x006A16A0 (manifest; `ret 8`). 38 callers, among them CTCCarryable::OnKill 0x00705150.
@@ -52,12 +55,12 @@ class CTCCarrying { public:
         return CarrySlots.end();
     }
     class CThing* RemoveThingInCarrySlot(long slot, bool dropped);   // 0x006A16A0 (Ego_r/FableWin ?RemoveThingInCarrySlot@CTCCarrying@@QAEPAVCThing@@J_N@Z)
-    void RemoveThing(CThing* thing);
+    void RemoveThing(CThing& thing);                // 0x006A19B0
 };
 
-void CTCCarrying::RemoveThing(CThing* thing)
+void CTCCarrying::RemoveThing(CThing& thing)
 {
-    SCarrySlotEntry* it = FindThing(thing);
+    SCarrySlotEntry* it = FindThing(&thing);
     if (it != CarrySlots.end())
         RemoveThingInCarrySlot(it->first, false);
 }

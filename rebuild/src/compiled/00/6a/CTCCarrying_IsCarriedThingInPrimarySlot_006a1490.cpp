@@ -1,4 +1,7 @@
-// CTCCarrying::IsCarriedThingInPrimarySlot(CThing* thing) -- find the carry slot holding the thing and report whether that slot's def is a primary slot
+// CTCCarrying::IsCarriedThingInPrimarySlot(const CThing& thing) const -- find the carry slot holding the thing and report whether that slot's def is a primary slot
+// Leaf: ?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z
+// Naming (NF121, 2026-11-20): Ego_r.pdb / FableWin.pdb ?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z (const, by
+//   const reference); was QAE_NPAV. Same bytes (the reference is the pushed pointer).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A1490, 173 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, ::SetPItem @ 0x00A01B90, ::GetPItem @ 0x00A01B50,
 // ::~CBaseIntelligentPointer @ 0x00A01C10 (key vtable 0x01237F1C), CDefinitionManager::Get @ 0x0044C6B0 (static),
@@ -24,7 +27,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>
     virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointer(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 struct SCarrySlotEntry {                                // pair<long, CIntelligentPointer<CThing>>, 12 bytes
     long                    first;
@@ -34,7 +37,7 @@ struct CCarrySlotMap {                                  // retail CVectorMap<lon
     SCarrySlotEntry* m_pFirst;
     SCarrySlotEntry* m_pLast;
     SCarrySlotEntry* m_pEnd;
-    FABLE_FORCEINLINE SCarrySlotEntry* FindValue(const CBaseIntelligentPointer& value)
+    FABLE_FORCEINLINE SCarrySlotEntry* FindValue(const CBaseIntelligentPointer& value) const
     {
         for (SCarrySlotEntry* it = m_pFirst; it != m_pLast; ++it)
             if (((CThing*)it->second.GetPItem()) == ((CThing*)value.GetPItem()))
@@ -77,12 +80,12 @@ class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad04[0x0c - 0x04];                  // CTCBase state
     CCarrySlotMap CarrySlots;                           // +0x0c
-    bool IsCarriedThingInPrimarySlot(CThing* thing);
+    bool IsCarriedThingInPrimarySlot(const CThing& thing) const;   // 0x006A1490
 };
 
-bool CTCCarrying::IsCarriedThingInPrimarySlot(CThing* thing)
+bool CTCCarrying::IsCarriedThingInPrimarySlot(const CThing& thing) const
 {
-    SCarrySlotEntry* slot = CarrySlots.FindValue(CIntelligentPointer(thing));
+    SCarrySlotEntry* slot = CarrySlots.FindValue(CIntelligentPointer(&thing));
     if (slot != CarrySlots.m_pLast) {
         bool primary;
         {

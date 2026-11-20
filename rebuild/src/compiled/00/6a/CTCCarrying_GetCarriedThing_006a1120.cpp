@@ -1,5 +1,8 @@
-// CTCCarrying::GetCarriedThing(long defIndex) -- the first carried thing whose def index (+0x8c) matches, or null
+// CTCCarrying::GetCarriedThing(long defIndex) const -- the first carried thing whose def index (+0x8c) matches, or null
 // Retry 10b (getsw sweep, FIXES B-15): the def index is read through an inline getter `GetDefIndex()`; the plain member read gives the parked register/scheduling difference.
+// Leaf: ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z
+// Naming (NF121, 2026-11-20): Ego_r.pdb / FableWin.pdb ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z (const member; was QAE);
+//   the landed callers 0x005C552C / 0x005CB2B0 bind it, 0x006648D0 respelled in the same hand-back.
 //
 // Retail 0x006A1120, 129 bytes (`ret 4`). Callee: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (twice per slot, a third time for the hit).
@@ -50,10 +53,10 @@ class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c
-    CThing* GetCarriedThing(long defIndex);
+    CThing* GetCarriedThing(long defIndex) const;   // 0x006A1120
 };
 
-CThing* CTCCarrying::GetCarriedThing(long defIndex)
+CThing* CTCCarrying::GetCarriedThing(long defIndex) const
 {
     for (unsigned long i = 0; i < CarrySlots.size(); ++i)
     {

@@ -355,3 +355,4 @@ NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapo
 0x0072A860 is CTCSpecialAbilities::IsChargingUpAbility (not GetAbilityMutexLock). If you pick up the pass24 draft 0x008E9B70, its
 0x0072A860 call should use IsChargingUpAbility; the STRAFE_CALLS_PASS24 opt-in still declares GetAbilityMutexLock.
 2026-11-20 A->B: New agent NF123: PRIORITY slice 8 (32 entries, 47 rows locked, in claims).
+2026-11-20 A->B: nf121 landed (13 rows, CTCCarrying family; no header change).

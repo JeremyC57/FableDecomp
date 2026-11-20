@@ -41,7 +41,7 @@ struct CTCStealable {                           // interface 0x47
 class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
     void RemoveThingFromPrimarySlot(bool drop); // 0x006A1E00
-    bool IsCarryingThing(CThing* thing);        // 0x006A1060
+    bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
 };
 struct CTCEscapeFlags {                         // interface 0xAA
     unsigned char _pad[0x6b];
@@ -178,7 +178,7 @@ void CAIStateGroup_StealStealableItem::Update()
         reinterpret_cast<CThing*>(PPreviouslyCarriedItem.GetPItem())->Kill(true);
     long done = AIAction_PerformActionAndWait(action, false);
     if (IS_THING_ALIVE(PEscapePoint) && IS_THING_ALIVE(PStealableItem) && done == 2
-        && carrying->IsCarryingThing(reinterpret_cast<CThing*>(PStealableItem.GetPItem()))) {
+        && carrying->IsCarryingThing(*reinterpret_cast<CThing*>(PStealableItem.GetPItem()))) {
         C3DVector escapePos = ((CThing*)(reinterpret_cast<CThing*>(PEscapePoint.GetPItem())))->GetPos();
         if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, escapePos, 1.0f, arrived, AI_MOVEMENT_RUNNING, true, false, true, 0, true, 0.0f) == 2) {
             ReachedDestination = true;

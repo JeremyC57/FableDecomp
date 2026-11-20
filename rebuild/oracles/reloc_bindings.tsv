@@ -8557,8 +8557,6 @@ _s_oneOver360	01238e00	00878ce0
 ?IsUpdateNeeded@CThingBodyReorienter@@QAE_NXZ	00863250	006622d0
 ?SetFlag_00863260@CThingBodyReorienter@@QAEX_N@Z	00863260	006622d0
 ?UpdateBodyReorienation@CThingBodyReorienter@@QAEXXZ	00863e10	006622d0
-?GetWeapons_006a22d0@CTCCarrying@@QAEXPAUCThingVector@@_N@Z	006a22d0	006647f0
-?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	006a1060	006647f0
 ?GetRandomSeed_004c7ae0@CThing@@QAEPAKXZ	004c7ae0	007038d0
 ?OnDie@CThingPhysical@@QAEXXZ	006a4cf0	007038d0
 ?Update@CTCShotDefinitionBase@@QAEXXZ	007c21a0	00704150
@@ -17125,7 +17123,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_UseObject@@QAE@ABV0@@Z	006a0d50	006a0d20
 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@ABV0@@Z	006a0e80	006a0e50
 ?GetDef@CDefinitionManager@@QAEXJPAV?$CDefPointer@VCCarrySlotDef@@@@@Z	006a3060	006a1330
-?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@VCCarrySlotDef@@@@@Z	006a3060	006a1490
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCCarryingDef@@@@@Z	006a2fa0	006a2540
 ?iter_swap@std@@YIXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@@0@Z	006a2d40	006a3440
 ?__adjust_heap@std@@YIXPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@@HHU2@UCKeyPairCompareLess@@@Z	006a3300	006a34a0
@@ -29342,10 +29339,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ	00686df0	005c00a0
 ?OnCreate@CTCInventoryBase_Weapons@@UAEXXZ	005c0121	005c3057
 ?SetPDef@CTCInventoryBase_Weapons@@QAEXJ@Z	005bdb4d	005c3057
-?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NPAVCThing@@@Z	006a1490	005c3a95
-?IsCarryingThing@CTCCarrying@@QBE_NPAVCThing@@@Z	006a1060	005c3a95
-?RefreshActiveWeaponData@CTCInventoryWeapons@@QBEXXZ	005c30d3	005c3a95
-?Transfer@CPersistContext@@QAEXPBDPAJ@Z	005cc300	005c3a95
 ?OnCreate@CTCInventoryBase_Stats@@UAEXXZ	005c0121	005cd33f
 ?SetPDef@CTCInventoryBase_Stats@@QAEXJ@Z	005bdb4d	005cd33f
 ??0?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z	005d85de	005cdd86
@@ -30729,13 +30722,6 @@ __aullrem	00bfebb0	00770e80
 ?RefreshScriptThings@CRedefinerList@NUISystem@@QAEXABUCActionInputVector@@@Z	00556a40	00557000
 ?UpdateUndefinedWarning@CRedefinerList@NUISystem@@QAEXM@Z	00556810	00557000
 ?IsCurfewTime@CTCVillage@@QBE_NXZ	00658db3	00658e73
-?GetCarriedThing@CTCCarrying@@QAEPAVCThing@@J@Z	006a1120	006648d0
-?IsCarryingThing@CTCCarrying@@QAE_NJ@Z	006a10a0	006648d0
-?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z	00845ce0	0069f9e0
-?IsMainPlayer@CPlayer@@QAE_NXZ	00487520	0069f9e0
-?OnNotCarried@CTC1A@@QAEXXZ	005d8e50	0069f9e0
-?PrepareWeaponSheathing@CTCInventoryWeapons@@QAEXXZ	005c552c	0069f9e0
-?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	006a1e00	0069f9e0
 ?PerformSequenceReset@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	006ea2c0	006ea450
 ?OnCollision@CThingGameObject@@QAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	00839080	007037d0
 ??0CCreatureAction_PickUpGenericBox@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	00843700	007153b0
@@ -30749,8 +30735,6 @@ __aullrem	00bfebb0	00770e80
 ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@PAVCThingCreatureBase@@@Z	00845ce0	0084a5f0
 ?BlendInLevel@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QBEXAAVCBlendedEnvironmentTheme@2@ABV32@MABVCEnvironmentThemeResourcePallette@2@@Z	008886e0	008889c0
 ?GetLevelTheme@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXAAVCBlendedEnvironmentTheme@2@MABVCEnvironmentThemeResourcePallette@2@@Z	008884d0	008889c0
-?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ	006a1270	008ba3c0
-?ResetState@CTCEnflame@@QAEXXZ	007a44c0	008ba3c0
 ?GoToLibrary@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092ace0	0092b110
 ?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092ae70	0092b110
 ?LookAtMap@CAIStateGroup_ApprenticeHero@@QAE_NXZ	0092afe0	0092b110
@@ -36623,7 +36607,6 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?TOTAL_FRAMES_TO_RUN@?A0x39d7b2b6@@3JB	013bb738	0095e470
 ?CurrentStateIsOffPodiumType@CTCCreatureGroupBoastingCrowd@@QBE_NXZ	007841c0	0095e900
 ?GetNearbyDirectedPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@M0MPAV2@@Z	006cb780	0095e900
-??1CCreatureAction_PickUpGenericBox@@UAE@XZ	007120d0	009647c0
 ?FillJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968fa0	00969470
 ?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z	007ba1d0	00969470
 ?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968860	00969470
@@ -40089,3 +40072,16 @@ __imp__setsockopt@20	01440534	008f8cc0
 ??$GFSerialiseVectorBinaryOut@U?$pair@VCCharString@@J@std@@@@YIXAAVCDataOutputStream@@AAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z	006d3a30	006d4c00
 ??_7?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@@@6B@	0125ed48	006d4c00
 ?GetCurrentStateGroupScriptPriority@CAIBrain@@QBE?AW4EScriptAIPriority@@XZ	0088b760	006d5ad0
+?RefreshActiveWeaponData@CTCInventoryWeapons@@QBEXXZ	005c30d3	005c3a95
+?Transfer@CPersistContext@@QAEXPBDPAJ@Z	005cc300	005c3a95
+?GetWeapons_006a22d0@CTCCarrying@@QAEXPAUCThingVector@@_N@Z	006a22d0	006647f0
+?IsCarryingThing@CTCCarrying@@QAE_NJ@Z	006a10a0	006648d0
+?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z	00845ce0	0069f9e0
+?IsMainPlayer@CPlayer@@QAE_NXZ	00487520	0069f9e0
+?OnNotCarried@CTC1A@@QAEXXZ	005d8e50	0069f9e0
+?PrepareWeaponSheathing@CTCInventoryWeapons@@QAEXXZ	005c552c	0069f9e0
+?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z	006a1e00	0069f9e0
+?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@VCCarrySlotDef@@@@@Z	006a3060	006a1490
+?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ	006a1270	008ba3c0
+?ResetState@CTCEnflame@@QAEXXZ	007a44c0	008ba3c0
+??1CCreatureAction_PickUpGenericBox@@UAE@XZ	007120d0	009647c0

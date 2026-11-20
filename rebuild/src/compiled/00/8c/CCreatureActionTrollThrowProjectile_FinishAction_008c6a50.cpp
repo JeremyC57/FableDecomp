@@ -16,7 +16,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCCarrying { public:
-    bool IsCarryingThing(CThing* thing);        // 0x006A1060
+    bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
 };
 class CTCCombat { public:
     unsigned char _pad[0x7c];
@@ -50,7 +50,7 @@ void CCreatureAction_TrollThrowProjectile::FinishAction()
 {
     CTCCarrying* carrying;
     if (PCreature.Get()->GetTC(TCI_CARRYING, &carrying)) {
-        if (PShot.Get() && !PShot.Get()->IsDead() && carrying->IsCarryingThing(PShot.Get()))
+        if (PShot.Get() && !PShot.Get()->IsDead() && carrying->IsCarryingThing(*PShot.Get()))
             PShot.Get()->Kill(true);
     }
     CTCCombat* combat;

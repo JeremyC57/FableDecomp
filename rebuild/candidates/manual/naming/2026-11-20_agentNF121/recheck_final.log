@@ -1,0 +1,113 @@
+addr       parity           behav  name
+006a19b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a19b0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a19b0   RELOCATION_MATCH PASS   CTCCarrying::RemoveThing
+006a1120   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a1120   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a1120   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a1120   RELOCATION_MATCH PASS   CTCCarrying::GetCarriedThing
+006a1060   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a1060   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a1060   RELOCATION_MATCH PASS   CTCCarrying::IsCarryingThing
+006a1490   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a1490   WARN SHARED_HEADER_AVAILABLE CCarrySlotDef (engine/CCarrySlotDef.h)
+006a1490   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006a1490   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+006a1490   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+006a1490   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006a1490   RELOCATION_MATCH PASS   CTCCarrying::IsCarriedThingInPrimarySlot
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheItemFromInventory (engine/CCreatureAction_UnsheatheItemFromInventory.h)
+0069f9e0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0069f9e0   WARN RELOC_NAME: ?PrepareWeaponSheathing@CTCInventoryWeapons@@QAEXXZ -> 005c552c labelled 'CTCInventoryWeapons::RemoveWeaponsFromSheathes'
+0069f9e0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory::PerformAction
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0078e9c0   WARN SHARED_HEADER_AVAILABLE CTCDivineWrath (engine/CTCDivineWrath.h)
+0078e9c0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0078e9c0   RELOCATION_MATCH PASS   CTCDivineWrath::UnsheatheWeapon
+00793ec0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00793ec0   WARN SHARED_HEADER_AVAILABLE CTCUnholyPower (engine/CTCUnholyPower.h)
+00793ec0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+00793ec0   RELOCATION_MATCH PASS   CTCUnholyPower::UnsheatheWeapon
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ba3c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillEnflameSpell (engine/CCreatureAction_CastWillEnflameSpell.h)
+008ba3c0   WARN RELOC_NAME: ?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ -> 006a1270 labelled 'CTCCarrying::IsPrimarySlotFree'
+008ba3c0   WARN RELOC_NAME: ?OnShowEnded@CTCShowableItem@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+008ba3c0   WARN RELOC_NAME: ?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ -> 0073a840 labelled 'CTCCreatureModeManager::RestartCurrentMode'
+008ba3c0   WARN RELOC_NAME: ?ResetState@CTCEnflame@@QAEXXZ -> 007a44c0 labelled 'CTCWillEnflame::CancelMove'
+008ba3c0   RELOCATION_MATCH PASS   CCreatureAction_CastWillEnflameSpell::FinishAction
+008c6a50   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008c6a50   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+008c6a50   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c6a50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollThrowProjectile (engine/CCreatureAction_TrollThrowProjectile.h)
+008c6a50   RELOCATION_MATCH PASS   CCreatureAction_TrollThrowProjectile::FinishAction
+009647c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickUpGenericBox (engine/CCreatureAction_PickUpGenericBox.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_StealStealableItem (engine/CAIStateGroup_StealStealableItem.h)
+009647c0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::Update
+006647f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006647f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006647f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006647f0   WARN RELOC_NAME: ?GetWeapons_006a22d0@CTCCarrying@@QAEXPAUCThingVector@@_N@Z -> 006a22d0 labelled 'CTCCarrying::RemoveAllThingsInPrimarySlot'
+006647f0   RELOCATION_MATCH PASS   CThingCreatureBase::SheatheAllWeapons
+006648d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006648d0   RELOCATION_MATCH PASS   CThingCreatureBase::UnsheatheWeapon
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3a95   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+005c3a95   RELOCATION_MATCH PASS   CTCInventoryWeapons::OnSerialise
+
+WINS: 13
+  006a19b0 RELOCATION_MATCH CTCCarrying::?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z
+  006a1120 RELOCATION_MATCH CTCCarrying::?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z
+  006a1060 RELOCATION_MATCH CTCCarrying::?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z
+  006a1490 RELOCATION_MATCH CTCCarrying::?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z
+  0069f9e0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
+  0078e9c0 RELOCATION_MATCH CTCDivineWrath::?UnsheatheWeapon@CTCDivineWrath@@QAEXXZ
+  00793ec0 RELOCATION_MATCH CTCUnholyPower::?UnsheatheWeapon@CTCUnholyPower@@QAEXXZ
+  008ba3c0 RELOCATION_MATCH CCreatureAction_CastWillEnflameSpell::?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+  008c6a50 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?FinishAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+  009647c0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?Update@CAIStateGroup_StealStealableItem@@UAEXXZ
+  006647f0 RELOCATION_MATCH CThingCreatureBase::SheatheAllWeapons
+  006648d0 RELOCATION_MATCH CThingCreatureBase::?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z
+  005c3a95 RELOCATION_MATCH CTCInventoryWeapons::OnSerialise@CTCInventoryWeapons

@@ -1,0 +1,2 @@
+# recheck after landing nf121: 28 exe-scan referencing / renamed rows (no header changed)
+good 28 bad 0

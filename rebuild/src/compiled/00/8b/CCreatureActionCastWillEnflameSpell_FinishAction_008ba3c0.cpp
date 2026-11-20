@@ -99,7 +99,7 @@ class CTCCarrying { public:
     bool IsPrimarySlotEmpty();                        // 0x006A1270
     CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
     void RemoveThing(CThing& thing);                  // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
-    bool IsCarryingThing(CThing* thing);              // 0x006A1060
+    bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
     CThing* RemoveThingFromPrimarySlot(bool unused);  // 0x006A1E00
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
@@ -148,13 +148,13 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
                 carrying->RemoveThing(*thing);
             CTCShowableItem* showable;
             if (thing->GetInterface(&showable, 0x1a)) {
-                if (!carrying->IsCarryingThing(thing))
+                if (!carrying->IsCarryingThing(*thing))
                     showable->OnShowEnded();
             }
             if (!carrying->IsPrimarySlotEmpty())
                 carrying->RemoveThingFromPrimarySlot(false);
         }
-        if (carrying->IsCarryingThing(((CThing*)item.GetPItem())))
+        if (carrying->IsCarryingThing(*((CThing*)item.GetPItem())))
             carrying->RemoveThing(*((CThing*)item.GetPItem()));
         CDefPointer<const CCarryableDef> carryDef;
         ((CThing*)item.GetPItem())->GetDef()->GetSubDef(&carryDef);
