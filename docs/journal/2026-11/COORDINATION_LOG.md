@@ -354,3 +354,4 @@ NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapo
 2026-11-20 A->B: nf118 landed (12 rows; headers CAIBrain.h, CEnvironmentSpellEffectInterface.h and CTCSpecialAbilities.h, add-only opt-ins).
 0x0072A860 is CTCSpecialAbilities::IsChargingUpAbility (not GetAbilityMutexLock). If you pick up the pass24 draft 0x008E9B70, its
 0x0072A860 call should use IsChargingUpAbility; the STRAFE_CALLS_PASS24 opt-in still declares GetAbilityMutexLock.
+2026-11-20 A->B: New agent NF123: PRIORITY slice 8 (32 entries, 47 rows locked, in claims).
