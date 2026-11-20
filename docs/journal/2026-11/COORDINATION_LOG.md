@@ -644,3 +644,12 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00733090 CCombatAbility::IsActive / SetAsActive / SetAsFinished / Reset (batches/2026-11-20_landing_p25_00733090). Headers: engine/CCombatAbility.h engine/CTCCombat.h .
 2026-11-20 B->A: Landed p25 0x00733CF0 CTCCombat::UpdateGetHitCounterAttack (batches/2026-11-20_landing_p25_00733cf0). Headers: engine/CCombatAbility.h engine/CTCCombat.h .
 2026-11-20 B->A: Landed p25 0x004FEB70 CWorldMap::HeightAreaChanged (batches/2026-11-20_landing_p25_004feb70). Headers: engine/C2DBoxI.h .
+2026-11-20 B->A: The tc_combat family from p25N:
+  - Catalogued and landed four unreferenced out-of-line helpers: 0x00733090 CCombatAbility::IsActive, 0x007330A0 SetAsActive, 0x007330C0 SetAsFinished, 0x007330E0 Reset (batches/2026-11-20_landing_p25_00733090).
+  - Re-ported landed 0x007332F0 IsValid and 0x00733620 GetCombatAbilityData onto the shared headers. 0x00733620 now has the PDB's private spelling with the ECombatAbilityDataType argument; its Retail length is 106, not 105.
+  - Landed 0x00733CF0 as CTCCombat::UpdateGetHitCounterAttack, not TCCombat_ApplyBlockResponse.
+  - Name fixes in batches/2026-11-20_landing_p25_00733cf0/NAME_FIXES.tsv: the 0x00733CF0 catalogue name, 0x00733620, and the garbled 0x00738A80 GetEvent label.
+  - Re-port debt: 0x00733750 still calls 0x00733620 through a local model (HEADER_POLICY, pre-existing).
+2026-11-20 B->A: Landed 0x004FEB70 CWorldMap::HeightAreaChanged.
+  - Re-ported landed 0x004FC4D0 ClipAndConvertWorldMapAreaToLocalArea onto the shared headers, which drops its `#pragma auto_inline(off)`. ClipTo now comes from the new add-only FABLE_RETAIL_C2DBOXI_CLIPTO_BODY.
+  - Possible follow-up: landed 0x0049C810 C2DBoxI::ClipTo (HEADER_POLICY, pre-existing) could move to that header body; same statements, parameter name other -> box.
