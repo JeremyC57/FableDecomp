@@ -65,7 +65,7 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer() const;                  // 0x00449960
+    const CPlayer& GetMainPlayer() const;                  // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (Ego_r / FableWin; NF153: was QBEPAV)
 };
 class CMainGameComponent {
 protected:
@@ -97,7 +97,7 @@ extern NUISystem::CComponent*  g_pUndoMousePointer;  // 0x013B8B00
 
 void __fastcall EnsureUndoAbility()
 {
-    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
     if (IS_THING_ALIVE(hero)) {
         CTCInventoryExperience* inventory;
         hero->GetTC(TCI_INVENTORY_EXPERIENCE, &inventory);

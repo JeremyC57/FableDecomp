@@ -1,10 +1,7 @@
 #include <cstdio>
-
-struct Helper18
-{
-    int v;
-    int GetValue();
-};
+// NF153: MyPlayer is the shared engine/CPlayer.h CPlayer (as the row); its GetJoystickDeviceNumber() const 0x00487510 is stubbed below.
+#define FABLE_RETAIL_PLAYER
+#include "engine/CPlayer.h"
 
 struct Helper24
 {
@@ -16,23 +13,25 @@ struct Helper24
 struct CInputProcessGameBase
 {
     char pad0[0x18];
-    Helper18* MyPlayer;
+    CPlayer* MyPlayer;
     char pad1[0x24 - 0x1C];
     Helper24* PGamePlayerInterface;
 
     bool IsOtherQuickAccessItemButtonHeld(long param);
 };
 
-int Helper18::GetValue() { return v; }
+static long g_device = 7;
+long CPlayer::GetJoystickDeviceNumber() const { return g_device; }   // stub of 0x00487510
 bool Helper24::Check(long b, int a) { return a == expectA && b == expectB; }
 
 int main()
 {
-    Helper18 h18; h18.v = 7;
+    static double playerBuf[0x100];
+    CPlayer* player = (CPlayer*)playerBuf;
     Helper24 h24; h24.expectA = 7; h24.expectB = 42;
 
     CInputProcessGameBase obj;
-    obj.MyPlayer = &h18;
+    obj.MyPlayer = player;
     obj.PGamePlayerInterface = &h24;
 
     bool r1 = obj.IsOtherQuickAccessItemButtonHeld(42);

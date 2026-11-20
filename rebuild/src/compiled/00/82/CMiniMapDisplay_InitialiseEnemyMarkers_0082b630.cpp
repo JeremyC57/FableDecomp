@@ -83,7 +83,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetPlayer();                          // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (Ego_r / FableWin; NF153: was the stand-in GetPlayer)
 };
 struct CThingLists {
     unsigned char _pad00[0x14];
@@ -122,7 +122,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseEnemyMarkers()
 {
     if (m_pRegion) {
-        CThing* hero = CMainGameComponent::Get()->PPlayerManager->GetPlayer()->GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CWorld* world = CMainGameComponent::Get()->PWorld;
             CWorldMap* worldMap = world->GetWorldMap();

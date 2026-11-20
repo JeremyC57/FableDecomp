@@ -1,0 +1,25 @@
+004496b0 new: 0
+0047d9e3 new: 0
+0047e941 new: 0
+0056fbed new: 0
+00570009 new: 0
+005701da new: 0
+005af64e new: 1
+    ?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ
+005e3ea0 new: 0
+005ee99d new: 0
+0065b0b4 new: 0
+00687c90 new: 0
+007b1eb0 new: 0
+007e00d0 new: 0
+0082a960 new: 0
+0082b630 new: 0
+008902b0 new: 0
+00895b60 new: 0
+0089d690 new: 0
+0089d6f0 new: 0
+0090eec0 new: 0
+0090f290 new: 0
+0090f470 new: 0
+009352c0 new: 0
+00957f20 new: 0

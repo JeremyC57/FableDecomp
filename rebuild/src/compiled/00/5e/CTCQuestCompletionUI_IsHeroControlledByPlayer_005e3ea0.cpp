@@ -9,11 +9,11 @@
 // 0x0083BE90), CPlayer::GetCurrentMode() const @ 0x00633BE0 (EPlayerMode).
 // Shape: a switch over the mode with every false case listed and `default: return true` -- VC7.1 builds the `sub 4 ; cmp 21h ; ja`
 // range test, a byte index table and a two-entry jump table (index 0 = the false block, index 1 = the default true block).
-typedef long EPlayerMode;
+#include "engine/EPlayerMode.h"   // NF153: the PDB enum (was `typedef long EPlayerMode`, which bound ?GetCurrentMode@CPlayer@@QBEJXZ)
 
 class CPlayer {
 public:
-    EPlayerMode GetCurrentMode() const;                 // 0x00633BE0
+    EPlayerMode GetCurrentMode() const;                 // 0x00633BE0 ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ (Ego_r / FableWin)
 };
 
 class CPlayerManager {

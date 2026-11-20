@@ -1,7 +1,7 @@
 // CGameScriptInterface::HeroPlayOracleMinigame() const -- Dispatch to the live main-player character component.
 // Leaf: ?HeroPlayOracleMinigame@CGameScriptInterface@@UBEXXZ
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
-// Identity: own virtual const PDB API, component263 and CTCOracleMinigame::PlayGame callee007e5d20. Player accessor00487dc0 retains established GetPPlayerCharacter binding, distinct from duplicate GetPControlledCreature00487dd0.
+// Identity: own virtual const PDB API, component263 and CTCOracleMinigame::PlayGame callee007e5d20. Player accessor 0x00487DC0 is CPlayer::GetPControlledCreature() const (Ego_r + FableWin ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ; body `add ecx,2Ch ; jmp GetPItem`, ControlledCreature +0x2C; NF153: was bound under FableWin's inline GetPControlledCreature, which is +0x34 and never out of line).
 #define CGameScriptInterface CGameScriptInterface_HeaderLayout
 #include "engine/CGameScriptInterface.h"
 #undef CGameScriptInterface
@@ -34,11 +34,11 @@ class CTCEnemy:public CTCBase {public:bool FriendsWithEverythingFlag,EnableFollo
 #undef CTCOracleMinigame
 // Layout: shared player/player-manager/oracle headers supply external receiver layout only. No instance fields are read on them; genuine methods restore original symbols.
 class CThingPlayerCreature:public CThing {};
-class CPlayer:public CPlayer_HeaderLayout {public:CThingPlayerCreature* GetPPlayerCharacter()const;};
+class CPlayer:public CPlayer_HeaderLayout {public:CThingPlayerCreature* GetPControlledCreature()const;};
 class CPlayerManager:public CPlayerManager_HeaderLayout {public:CPlayer& GetMainPlayer();};
 class CTCOracleMinigame:public CTCOracleMinigame_HeaderLayout {public:void PlayGame();};
 // Layout: no active CTCSpecialAbilities header; external method receiver only, no instance fields accessed.
 class CTCSpecialAbilities:public CTCBase {public:void CancelAbilitiesForCutscene();void ResumeAbilitiesForCutscene();};
 // Layout: genuine script vptr+0, PlayerManager+0x14 from shared header; no other owner fields read. CThing Dead bit0 at+0x91 is retail, donor+0xa1.
 class CGameScriptInterface {public:virtual void HeroPlayOracleMinigame()const;unsigned char Prefix[0x10];CPlayerManager* PlayerManager;unsigned char RemainingOwnerFields[0x38];};
-void CGameScriptInterface::HeroPlayOracleMinigame()const{CThingPlayerCreature* thing=PlayerManager->GetMainPlayer().GetPPlayerCharacter();if(thing && !thing->IsDead()){CTCOracleMinigame* component;if(thing->GetTC(TCI_ORACLE_MINIGAME, &component))component->PlayGame();}}
+void CGameScriptInterface::HeroPlayOracleMinigame()const{CThingPlayerCreature* thing=PlayerManager->GetMainPlayer().GetPControlledCreature();if(thing && !thing->IsDead()){CTCOracleMinigame* component;if(thing->GetTC(TCI_ORACLE_MINIGAME, &component))component->PlayGame();}}

@@ -72,6 +72,7 @@
 #define FABLE_RETAIL_CTCHERO_TITLE
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER   // NF153: retail calls the non-const GetMainPlayer 0x00449970 (FableWin ?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ, inline)
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
 #define FABLE_RETAIL_CPLAYERMANAGER
 #define FABLE_RETAIL_PLAYER
@@ -203,7 +204,7 @@ void CTCInventoryTrade::BuyItem(CComponent* entry, long count)
     RefreshNameAndTitle(entry, buyRecord.first, buyRecord.second);
 
     // the entry's selection arrow goes when the shop has none left, or the hero can hold no more of a normal item
-    CThingPlayerCreature* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     NInventory::CTCInventoryBase* inventory = 0;
     ETCInterfaceType inventoryType = CTCInventoryItem::GetInventoryType(buyRecord.first);
     hero->GetTC(inventoryType, &inventory);

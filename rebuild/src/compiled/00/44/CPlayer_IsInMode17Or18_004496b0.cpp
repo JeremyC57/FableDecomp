@@ -7,13 +7,17 @@
 // EPlayerMode enumerator names are not in any local source, so the method and enumerators are named behaviourally.
 // Layout: engine/CPlayer.h (GetCurrentMode is out of line in retail and declared only here).
 // Shape: one `||` return expression (an if/return-true form or a `?:` chain is 3-4 bytes shorter).
+// NF153: GetCurrentMode is the shared header's CPlayer member (FABLE_RETAIL_PLAYER: Ego_r / FableWin
+//   ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ; was redeclared on the stand-in CPlayer_Methods), and the modes are the PDB
+//   enumerators of engine/EPlayerMode.h (0x11 PLAYER_MODE_FREEZE_CONTROLS, 0x12 PLAYER_MODE_SPECIAL_ABILITY_FREEZE_CONTROLS; was a
+//   local enum with made-up names). The predicate itself keeps its descriptive stand-in name (see NOTES).
+#define FABLE_RETAIL_PLAYER
 #include "engine/CPlayer.h"
-enum EPlayerMode { PLAYER_MODE_17 = 0x11, PLAYER_MODE_18 = 0x12 };
+#include "engine/EPlayerMode.h"
 struct CPlayer_Methods : CPlayer {
-    EPlayerMode GetCurrentMode() const;
     bool IsInMode17Or18() const;
 };
 bool CPlayer_Methods::IsInMode17Or18() const
 {
-    return GetCurrentMode() == PLAYER_MODE_17 || GetCurrentMode() == PLAYER_MODE_18;
+    return GetCurrentMode() == PLAYER_MODE_FREEZE_CONTROLS || GetCurrentMode() == PLAYER_MODE_SPECIAL_ABILITY_FREEZE_CONTROLS;
 }

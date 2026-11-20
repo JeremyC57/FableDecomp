@@ -1,18 +1,18 @@
 // test for 004496b0 CPlayer mode predicate
 #include <stdio.h>
+#define FABLE_RETAIL_PLAYER
 #include "engine/CPlayer.h"
-enum EPlayerMode { PLAYER_MODE_17 = 0x11, PLAYER_MODE_18 = 0x12 };
+#include "engine/EPlayerMode.h"
 struct CPlayer_Methods : CPlayer {
-    EPlayerMode GetCurrentMode() const;
     bool IsInMode17Or18() const;
 };
 bool CPlayer_Methods::IsInMode17Or18() const
 {
-    return GetCurrentMode() == PLAYER_MODE_17 || GetCurrentMode() == PLAYER_MODE_18;
+    return GetCurrentMode() == PLAYER_MODE_FREEZE_CONTROLS || GetCurrentMode() == PLAYER_MODE_SPECIAL_ABILITY_FREEZE_CONTROLS;
 }
 
 static int g_mode; static int g_calls;
-EPlayerMode CPlayer_Methods::GetCurrentMode() const { ++g_calls; return (EPlayerMode)g_mode; }
+EPlayerMode CPlayer::GetCurrentMode() const { ++g_calls; return (EPlayerMode)g_mode; }   // stub of 0x00633BE0
 int main()
 {
     static double buf[0x1000];

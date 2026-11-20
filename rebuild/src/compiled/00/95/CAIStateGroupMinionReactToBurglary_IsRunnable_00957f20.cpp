@@ -24,6 +24,15 @@
 //   whose landed row 0x005ED300 and its constructor's RTTI vtable .?AV?$CIntelligentPointer@$$CBVCThing@@@@ name the instance), and the
 //   home pointer the shared CBaseIntelligentPointer (GetPItem 0x00A01B50, ~ 0x00A01C10).
 #include "fable_compiler.h"
+// NF153: the retail CThing chain (as the self row 0x00487DD0) so the shared engine/CThingPlayerCreature.h gives
+//   PeekPControlledCreature()'s return type its CThing base.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
 class CTCBase;
 class CThing;
 class CWorld;
@@ -36,6 +45,7 @@ class CWorld;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
 #include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -86,7 +96,7 @@ struct CHomeOwner {
 };
 
 class CPlayer { public:                         // (was the stand-in CPlayerManager: 0x0049D9D0 returns the world's CPlayer)
-    CThing* GetPlayerCharacter() const;         // 0x00487DD0 (Ego_r.pdb: CPlayer::PeekPControlledCreature, see NOTES)
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ (Ego_r / FableWin; NF153: was the stand-in GetPlayerCharacter)
 };
 class CWorld { public:
     unsigned char _pad[0x1c];
@@ -112,7 +122,7 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     bool sleepTime = clock->IsTimeBetween(start, end);
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();
     if (sleepTime && home != 0) {
-        CThing* player = GetWorld().PeekMyPlayer()->GetPlayerCharacter();
+        const CThing* player = GetWorld().PeekMyPlayer()->PeekPControlledCreature();
         if (player != 0 && !player->IsDead() && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), player, false) &&
             home->IsPointInside(((CThingPos*)player)->GetPosition())) {
             CIntelligentPointer<const CThing> burglar(player);

@@ -45,7 +45,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetPMainPlayer();                  // 0x00449960
+    const CPlayer& GetMainPlayer() const;       // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (Ego_r / FableWin; NF153: was the stand-in GetPMainPlayer)
 };
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
@@ -72,7 +72,7 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
-    CPlayerManager* GetPPlayerManager_008fcf80();        // 0x008FCF80
+    protected: const CPlayerManager& PeekPlayerManager() const; public:   // 0x008FCF80 ?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CAIStateGroupBase.h; NF153: was the stand-in GetPPlayerManager_008fcf80)
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   protected: // 0x0097D6F0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
@@ -89,7 +89,7 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
 
 void CAIStateGroup_MinionHasInformation::Update()
 {
-    CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || hero->IsDead()) {
         Terminate();
         return;

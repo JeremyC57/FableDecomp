@@ -37,7 +37,7 @@ public:
     void ConfirmedVideoOptionsChanged();                    // 0x0047D012
 };
 class CPlayer { public: CThing* GetPPlayerCharacterThing() const; };   // 0x00487B70
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };  // 0x00449960
+class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };  // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (Ego_r / FableWin; NF153: was QBEPAV)
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
@@ -50,7 +50,7 @@ private: public:
 
 void __fastcall VideoOptionsChangedConfirmed()
 {
-    CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer()->GetPPlayerCharacterThing();
+    CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().GetPPlayerCharacterThing();
     if (IS_THING_ALIVE<CThing*>(thing)) {
         CTCInGameMenu* menu = 0;
         thing->GetTC(TCI_IN_GAME_MENU, &menu);

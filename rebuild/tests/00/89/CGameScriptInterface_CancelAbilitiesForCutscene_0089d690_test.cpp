@@ -3,7 +3,7 @@
 #include <string.h>
 // CGameScriptInterface::CancelAbilitiesForCutscene() const -- Dispatch to the live main-player character component.
 // Leaf: ?CancelAbilitiesForCutscene@CGameScriptInterface@@UBEXXZ
-// Identity: own virtual const PDB API, component167 and CTCSpecialAbilities::CancelAbilitiesForCutscene callee0072bc60. Player accessor00487dc0 retains established GetPPlayerCharacter binding, distinct from duplicate GetPControlledCreature00487dd0.
+// Identity: own virtual const PDB API, component167 and CTCSpecialAbilities::CancelAbilitiesForCutscene callee0072bc60. Player accessor 0x00487DC0 is CPlayer::GetPControlledCreature() const (Ego_r + FableWin ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ; body `add ecx,2Ch ; jmp GetPItem`, ControlledCreature +0x2C; NF153: was bound under FableWin's inline GetPControlledCreature, which is +0x34 and never out of line).
 #define CGameScriptInterface CGameScriptInterface_HeaderLayout
 #ifndef FABLE_ENGINE_CGAMESCRIPTINTERFACE_H
 #define FABLE_ENGINE_CGAMESCRIPTINTERFACE_H
@@ -423,18 +423,18 @@ public:
 #undef CTCOracleMinigame
 // Layout: shared player/player-manager/oracle headers supply external receiver layout only. No instance fields are read on them; genuine methods restore original symbols.
 class CThingPlayerCreature:public CThing {};
-class CPlayer:public CPlayer_HeaderLayout {public:CThingPlayerCreature* GetPPlayerCharacter()const;};
+class CPlayer:public CPlayer_HeaderLayout {public:CThingPlayerCreature* GetPControlledCreature()const;};
 class CPlayerManager:public CPlayerManager_HeaderLayout {public:CPlayer& GetMainPlayer();};
 class CTCOracleMinigame:public CTCOracleMinigame_HeaderLayout {public:void PlayGame();};
 // Layout: no active CTCSpecialAbilities header; external method receiver only, no instance fields accessed.
 class CTCSpecialAbilities:public CTCBase {public:void CancelAbilitiesForCutscene();void ResumeAbilitiesForCutscene();};
 // Layout: genuine script vptr+0, PlayerManager+0x14 from shared header; no other owner fields read. CThing Dead bit0 at+0x91 is retail, donor+0xa1.
 class CGameScriptInterface {public:virtual void CancelAbilitiesForCutscene()const;unsigned char Prefix[0x10];CPlayerManager* PlayerManager;unsigned char RemainingOwnerFields[0x38];};
-void CGameScriptInterface::CancelAbilitiesForCutscene()const{CThingPlayerCreature* thing=PlayerManager->GetMainPlayer().GetPPlayerCharacter();if(thing && !thing->Dead){CTCSpecialAbilities* component;if(thing->GetTC((ETCInterfaceType)167,&component))component->CancelAbilitiesForCutscene();}}
+void CGameScriptInterface::CancelAbilitiesForCutscene()const{CThingPlayerCreature* thing=PlayerManager->GetMainPlayer().GetPControlledCreature();if(thing && !thing->Dead){CTCSpecialAbilities* component;if(thing->GetTC((ETCInterfaceType)167,&component))component->CancelAbilitiesForCutscene();}}
 
 static CPlayer* expectedPlayer;static CPlayerManager* expectedManager;static CThingPlayerCreature* returnedThing;static const void* expectedComponent;static int managerCalls,playerCalls,calls,bad;
 CPlayer& CPlayerManager::GetMainPlayer(){++managerCalls;if(this!=expectedManager)bad=1;return *expectedPlayer;}
-CThingPlayerCreature* CPlayer::GetPPlayerCharacter()const{++playerCalls;if(this!=expectedPlayer)bad=1;return returnedThing;}
+CThingPlayerCreature* CPlayer::GetPControlledCreature()const{++playerCalls;if(this!=expectedPlayer)bad=1;return returnedThing;}
 void CTCSpecialAbilities::CancelAbilitiesForCutscene(){++calls;if(this!=expectedComponent)bad=1;}
 int main(){CGameScriptInterface api;CPlayer player;CPlayerManager manager;CThingPlayerCreature thing;CTCSpecialAbilities component;expectedPlayer=&player;expectedManager=&manager;expectedComponent=&component;api.PlayerManager=&manager;memset(thing.UsingComponents,0,sizeof(thing.UsingComponents));
 std::pair<ETCInterfaceType,CTCBase*> entries[2];entries[0].first=(ETCInterfaceType)167;entries[0].second=(CTCBase*)&component;entries[1].first=(ETCInterfaceType)274;entries[1].second=0;thing.Components.Data._M_start=entries;thing.Components.Data._M_finish=entries+1;thing.Components.Data._M_end_of_storage._M_data=entries+2;

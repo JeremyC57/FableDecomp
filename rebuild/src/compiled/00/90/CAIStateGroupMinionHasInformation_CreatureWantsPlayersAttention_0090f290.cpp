@@ -77,6 +77,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
+class CPlayerManager;
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -95,6 +96,7 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+    protected: const CPlayerManager& PeekPlayerManager() const; public:   // 0x008FCF80 ?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CAIStateGroupBase.h; NF153: was the stand-in CAIStateGroupBaseP::GetPPlayerManager)
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
@@ -111,10 +113,9 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0 (+0x2c intelligent pointer -> GetPItem)
 };
 class CPlayerManager { public:
-    CPlayer* GetCurrentPlayer_00449960();                // 0x00449960
+    const CPlayer& GetMainPlayer() const;       // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (Ego_r / FableWin; NF153: was the stand-in GetCurrentPlayer_00449960)
 };
 struct CAIStateGroupBaseP : CAIStateGroupBase {
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF80 (PBrain->+0x20)
 };
 
 class CTCPerceiveThing { public:                       // interface type 0x34
@@ -160,7 +161,7 @@ bool CAIStateGroup_MinionHasInformation::CreatureWantsPlayersAttention()
 {
     if (((CThingCreatureFlags*)PBrain->PCreature)->HasInformationFlag()) {
         if (!((CThingCreatureFlags*)PBrain->PCreature)->InformationGivenFlag()) {
-            CThing* hero = GetPPlayerManager()->GetCurrentPlayer_00449960()->GetPControlledCreature();
+            CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
             if (hero != 0 && !(hero->m_flags91 & 1)) {
                 CThingB* creature = (CThingB*)PBrain->PCreature;
                 if (creature->HasTC(0x34))
