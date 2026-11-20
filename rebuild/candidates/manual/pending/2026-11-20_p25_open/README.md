@@ -19,5 +19,6 @@ entry cites "Account B scratch w26/...", the files are here. Rulings: docs/journ
 | 0x007602F0 | NShape::IsShapeConvex | DIFFER(1126v1126) | epilogue pop / fadd order; flips only with a float local Ego_d does not list (bracket_closing_angle.cpp); closing2 fixed with a named Ego_d iterator (p25O) |
 | 0x005B01FE | CTCInventoryTrade::SellItemPC | DIFFER(2222v2222) | Buy-total sum operand order: operands are IND(address temps) made at the member zeroing, in a total order not given by the bare temp number; three all-member zeroing orders fix the sum but misplace a store (cause unmeasured) |
 | 0x00763060 | NShape::FractureShape | DIFFER(1132v1146) | find_if start increment at the loop top v retail peeled into the preheader; only texts that contradict Ego_d reach it (fitted match kept as evidence/bracket_match_anchor.cpp); helpers 0x00760020 / 0x00760190 landed |
+| 0x008E18D0 | NCreatureMode::CModeThunderLightningStorm::UpdateLightningBeams | DIFFER(2045v2073) | loop-2 and sky-block LowerBound sites have the same instantiation, f and score but opposite retail decisions; callee texts proven (fastcall STL uninitialized helpers needed); no T matches (best T64..66 2149); the do{}while(0) version is a device |
 
 All stay `reserved (acctB ...)` in UNMATCHED_ROWS.tsv for a return pass. NAME_FIXES found on the way are in the coordination log.

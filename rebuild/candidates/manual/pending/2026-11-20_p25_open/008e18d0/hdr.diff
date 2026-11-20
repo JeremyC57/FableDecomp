@@ -1,0 +1,44 @@
+--- a/rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
++++ b/rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
+@@ -42,7 +42,12 @@
+ #else
+     CParticleUpdateParameters() { }
+ #endif
++#ifndef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR
+     virtual ~CParticleUpdateParameters();                    // 0x006E2500
++#endif
++    // FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR (row 0x008E18D0): the destructor is compiler-generated (landed 0x006E2500,
++    // Ego_r.pdb has no user body), so a TU that defines it leaves it implicit: VC7.1 may then expand it (CBaseClass dtor 0x0099A2E0 per
++    // param desc, free, free, ~CBaseClass) at a site and call the COMDAT 0x006E2500 at another.
+     void Update() { VectorParams.Update(); UpdateParams.Update(); }
+ };
+ }
+--- a/rebuild/include/stlport/fable_containers.h
++++ b/rebuild/include/stlport/fable_containers.h
+@@ -448,7 +448,7 @@
+ // Native 00769930/007698c0 take first/last in ecx/edx and result/tag on the stack.
+ template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
+ #else
+-#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
++#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI) || defined(FABLE_RETAIL_STLP_UNINIT_FASTCALL)
+ template<class I,class O> inline O FABLE_FASTCALL __uninitialized_copy(I first,I last,O result,const __false_type&) {
+ #else
+ template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+@@ -467,7 +467,7 @@
+ #endif
+ }
+ #else
+-#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
++#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI) || defined(FABLE_RETAIL_STLP_UNINIT_FASTCALL)
+ template<class T> inline T* FABLE_FASTCALL __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+ #else
+ template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+@@ -499,7 +499,7 @@
+     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
+ }
+ #else
+-#ifdef FABLE_RETAIL_STLP_PASS22_FLARE_ABI
++#if defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI) || defined(FABLE_RETAIL_STLP_UNINIT_FASTCALL)
+ // Native00B8EE20 has first/count in ECX/EDX and value/tag on stack,RET8.
+ template<class I,class N,class T> inline I FABLE_FASTCALL __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+ #else
