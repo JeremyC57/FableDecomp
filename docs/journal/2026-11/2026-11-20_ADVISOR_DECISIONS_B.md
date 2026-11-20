@@ -233,3 +233,11 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - a landed DrawPreparePrimitivesForRendering sibling with the two-load shape;
   - one respelling pass on the call expression within Ego_d's locals.
   - The hook is justified only if a sibling with the same spelling matches.
+
+## 0x005B01FE CTCInventoryTrade::SellItemPC (p25O): temp numbering decides the sum order
+- **Ruling: no allocator reversing yet.**
+  1. Complete the text first: Ego_d's two 12-B lines 7350/7351 and def_index are required, not fitted, so every temp-number measurement without them is provisional.
+  2. Widen the target to −1/−2 temps as well as +2/+3.
+  3. Read the existing symbol log first: the extra call's temp numbers, the statements behind the temps just below #1178, and the function's first temp number (TU carry-over?).
+  - Hook 0x107636A2 only if those leave it open.
+- **0x004FEB70 (p25N):** the 260v261 draft's `long map` / `CMap* pmap` are not Ego_d locals, so it cannot be the base. Ego_d's TPI types for map_list / it decide the single-load form.
