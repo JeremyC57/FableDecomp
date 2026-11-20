@@ -58,3 +58,17 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   `// Inferred: dead conditional temporary --`.
 - **Lead:** FableWin's callee list (debug build) could name the real construct. It is not in pending/2026-11-19_fablewin_callees_for_B.tsv;
   Account A was asked.
+
+## 0x00E9E420 CV_IntroductionToTrophiesScript::CBriarRose::Main: a redundant second read (2026-11-20)
+- **Evidence:** the trophy test is `mov al,[eax+49h]` at 0x00E9F3FE, and `mov ecx,esi` is hoisted above the intro test's jne at 0x00E9F234.
+  Ours gives `mov cl` with no hoist; about 40 spellings of the condition keep cl. A byte read once is a code-gen temporary and takes cl,
+  because the base pointer is live at the load. A byte read twice, with a merge that survives to c2, becomes a global candidate and takes al.
+  Only a second read of DoneBriarTrophySpeech at the blather arm's first T-check, whose two outcomes cross-jump, matches.
+- **Ruling: it may land as `// Inferred: redundant second read --`, on the 0x00E97070 terms.** It is plain C++ that uses only a member and
+  a call the function already has: no flag, pragma, device or invented type, which separates it from 0x00D01630.
+- **Required:**
+  - the smallest matching spelling (bare ternary, else `==true`), with every spelling in the ablation;
+  - an Ego_d line-size check of that T-check line, citing the line on a surplus, else the label says "retail-only, not in Ego_d";
+  - the label cites both retail sites, says the bytes fix the read's position and merge but not its spelling, and gives DIFFER(5923v5915)
+    without it;
+  - arm-mutants that are unreachable at run time are listed as such, not as killed, and must still fail the byte grade.
