@@ -401296,6 +401296,13 @@ $catalog = @(
         TestSource = '00/57/CTCHeroStats_ApplyBonusItemEffects_0057c4f1_test.cpp'
         PassPattern = '0057c4f1_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a781a0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_UpdateLines_00a781a0.cpp'
+        TestSource = '00/a7/CNavQuadTree_UpdateLines_00a781a0_test.cpp'
+        PassPattern = '00a781a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

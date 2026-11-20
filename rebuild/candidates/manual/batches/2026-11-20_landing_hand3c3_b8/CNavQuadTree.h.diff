@@ -1,0 +1,16 @@
+diff --git a/rebuild/include/engine/CNavQuadTree.h b/rebuild/include/engine/CNavQuadTree.h
+index e75a1b59f..ba741e8f0 100644
+--- a/rebuild/include/engine/CNavQuadTree.h
++++ b/rebuild/include/engine/CNavQuadTree.h
+@@ -101,6 +101,11 @@ private:
+     void ClearNodes();                                                   // 0x00A792E0
+ #endif
+     bool IsAreaBlockedByLines(const C2DBoxF& area, const std::vector<const std::list<C2DLineF>*>& lineLists) const;  // 0x00A76F30
++#ifdef FABLE_RETAIL_CNAVQUADTREE_UPDATELINES
++    // Opt-in (hand3c3, row 0x00A781A0): Ego_r.pdb / Ego_d.pdb ?UpdateLines@CNavQuadTree@@ABEXAAV?$vector@V?$list@VC2DLineF@@..@std@@..@std@@
++    // ABV?$vector@VC2DLineF@@..@3@ABVC2DBoxI@@@Z (private const; Ego_d parameters line_lists, lines, update_area). Declaration only.
++    void UpdateLines(std::vector<std::list<C2DLineF> >& line_lists, const std::vector<C2DLineF>& lines, const C2DBoxI& update_area) const;   // 0x00A781A0
++#endif
+     void SetUpRegions(long mapIndex);                                    // 0x00A7A0A0
+ };
+ FABLE_STATIC_ASSERT_AT(89, sizeof(CNavQuadTree) == 0x88);

@@ -39943,3 +39943,4 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 ?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z	006a6290	0057c4f1
 ?SetActionSpeedMultiplier@CTCHaste@@QAEXPAXM@Z	005812ae	0057c4f1
 ?SetTimeOfDay@CGameTimeManager@@QAEXM@Z	006bb810	0057c4f1
+??0?$vector@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@I@Z	00a80360	00a781a0
