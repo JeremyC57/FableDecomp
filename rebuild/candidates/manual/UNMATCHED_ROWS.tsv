@@ -76,7 +76,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005aceda	CTCInventoryTrade	ConstructActualInventoryPC	1067	parked	DIFFER(1113v1067)	5	rebuild/candidates/manual/pending/2026-11-10_linux_handSND2/differ/005aceda.cpp	original
 005b01fe	CTCInventoryTrade	SellItemPC	2222	parked	DIFFER(2217v2222)	13	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/005b01fe.cpp	original
 005b9641	CTCInventoryClothing	DrawPreparePrimitivesForRendering	1455	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005b9641.cpp	gapscan/boundary
-005bfd5e	CTCInventoryBase	OnSerialise	425	parked	DIFFER(424v425)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005bfd5e.cpp	original
+005bfd5e	CTCInventoryBase	OnSerialise	425	reserved (acctB p25F, 2026-11-20)	DIFFER(424v425)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/005bfd5e.cpp	original
 005c0a98	CPersistTraits<NInventory::CItem>	TransferBinaryOut	396	parked	DIFFER(368v369)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/005c0a98.cpp	original
 005ca68e	CTCInventoryWeapons	SetupActiveWeaponsOnCarrier	1535	parked	DIFFER(1538v1535)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005ca68e.cpp	original
 005cd4c4	CTCInventoryStats	BuildHeroClass	499	parked	DIFFER(483v499)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/005cd4c4.cpp	original
@@ -190,7 +190,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0070d940	CAnimateThing	CalcInterpolatedMeshAnim	2400	parked		0	rebuild/candidates/manual/pending/2026-11-05_linux_hand785/differ/0070d940.test.cpp	original
 0070e2a0	CAnimateThing	CalcCachedAnims	640	parked	codex pass24 PARKED: The placement of the second blend-state temporary differs across seven frame-reference sites.	14	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0070e2a0/0070e2a0.cpp	original
 0070e710	CAnimateThing	CAnimateThing	416	parked	DIFFER(420v416)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0070e710.cpp	original
-00714370	CActionMoveTo	OnActivate	960	parked	DIFFER(950v948)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00714370.cpp	original
+00714370	CActionMoveTo	OnActivate	960	reserved (acctB p25F, 2026-11-20)	DIFFER(950v948)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00714370.cpp	original
 0071d020	CTCHeroMorph	OnSerialise	912	parked	DIFFER(942v911)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/0071d020.verify.cpp	original
 00723e50	_global	CCharacter_UpdateOrientation	320	parked	DIFFER(306v310)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723e50.cpp	original
 00725f10	CThingSearchTools	GetAllThingsInRoughArea	592	parked	DIFFER(733v590)	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/00725f10.cpp	original
@@ -632,7 +632,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a57140	C2DLineF	GetPointOnInfiniteLine	96	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a57140.cpp	original
 00a571a0	C2DLineF	GetPointOnLine	656	parked	codex pass24 PARKED: From 00A57210 the optional output tests and temporary x87 values differ. The public const leaf and optional output pointee types agree with both donors.	15	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00a571a0/00a571a0.cpp	original
 00a58790	CSphere	GetFirstIntersectionWithFiniteLine	720	parked	DIFFER(699v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a58790.cpp	original
-00a58b50	NBBBMaths::CSphere	GetFirstIntersectionWithTriangle	2208	parked	DIFFER(2211v2207)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00a58b50.cpp	original
+00a58b50	NBBBMaths::CSphere	GetFirstIntersectionWithTriangle	2208	reserved (acctB p25F, 2026-11-20)	DIFFER(2211v2207)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand793/differ/00a58b50.cpp	original
 00a5a9d0	std	transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous	208	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a5a9d0.cpp	original
 00a5c360	_global	GFNormalise3DVectors	432	parked	DIFFER(386v421)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a5c360.cpp	original
 00a60410	_global	GFRemoveComments	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand504/differ/00a60410.cpp	original
@@ -924,7 +924,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ef5840	NScript::CPersonalScript_EmptyScript::CBanditWalker	Main	736	parked	DIFFER(768v727)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ef5840.cpp	gapscan/boundary
 00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3280	parked	DIFFER(3409v3265)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef5ff0.cpp	gapscan/boundary
 00ef9280	NScript::Cjoss_test_scriptsScript	Main	3168	parked	DIFFER(1972v3158)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef9280.cpp	gapscan/boundary
-00efa4f0	NScript::Cbandit_level_cutsceneScript	Main	1376	parked	DIFFER(1365v1362)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00efa4f0.cpp	gapscan/boundary
+00efa4f0	NScript::Cbandit_level_cutsceneScript	Main	1376	reserved (acctB p25F, 2026-11-20)	DIFFER(1365v1362)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00efa4f0.cpp	gapscan/boundary
 00f00c90	NScript::COracleMinigameTestScript::COracleSpectator	Main	1216	parked	DIFFER(1190v1203)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00f00c90.cpp	original
 00f03980	NScript::CQ_AmbushTradersScript::CAT_Phase1Guard	Main	1440	parked	DIFFER(1448v1434)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/hdr/00f03980.cpp	original
 00f04000	NScript::CQ_AmbushTradersScript::CAT_Phase1Archer	Main	640	parked	DIFFER(624v630)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00f04000.cpp	original
