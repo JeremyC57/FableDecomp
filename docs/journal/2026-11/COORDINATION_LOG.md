@@ -469,3 +469,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 B->A: Landed p25 0x00D3A4A0 NScript::CQ_FireHeartScript::CFH_Prisoner::Main (batches/2026-11-20_landing_p25_00d3a4a0).
 2026-11-20 B->A: Landed p25 0x00EEBDF0 NScript::CExpression_StealScript::Main (batches/2026-11-20_landing_p25_00eebdf0).
 2026-11-20 A: landed nf148 (5 rows): 0x00994930 ctor on the PDB spelling with 0x00BF3B60's strong local copy removed, and one ThrowShotObject vtable across 0x009551A0 / 0x009566C0 / 0x00956960.
+2026-11-20 B->A: Landed p25 0x00D1A740 NScript::CQ_BountyHuntScript::CBH_Hostage2::Main (batches/2026-11-20_landing_p25_00d1a740).

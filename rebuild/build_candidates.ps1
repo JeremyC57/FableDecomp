@@ -401402,6 +401402,14 @@ $catalog = @(
         TestSource = '00/ee/NScriptCExpressionStealScript_Main_00eebdf0_test.cpp'
         PassPattern = '00eebdf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d1a740'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d1a740_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
