@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::SetPrimitiveAnimation(CEnginePrimitiveHandle& handle, const CEnginePrimitiveAnimation& animation) -- hands the animation to the handle's internal primitive (virtual SetAnimation) and, when the primitive sits in the scene grid, re-files it there
-// Leaf: SetPrimitiveAnimation
+// Leaf: ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31E90, length 45 bytes (`ret 8`, `this` unused).
 // Signature from Ego_r.pdb: ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z;
 // reached from CEngine::SetPrimitiveAnimation @ 0x00B23BE0 (`mov ecx,[g_pEnginePrimitiveRenderer 0x01436E80] ; jmp`).
@@ -11,6 +11,9 @@
 // EnginePrimitiveFlags (+0x0C) in edx.
 // Model: engine/CEngineInternalPrimitiveBase.h carries the vptr as a data member, so the primitive classes that are
 // called virtually here are modelled locally (same offsets: Type +8, EnginePrimitiveFlags +0x0C, GridPos.Level +0x24).
+// NF150: the member declaration comes from the header opt-in (was a local CEnginePrimitiveRenderer_Methods stand-in);
+// Ego_r.pdb / FableWin.pdb spelling.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPRIMITIVEANIMATION
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CEnginePrimitive;
@@ -77,11 +80,7 @@ public:
     CEngineInternalPrimitiveBase* GetInternalPrimitive() const { return static_cast<CEngineInternalPrimitiveBase*>(Data); }
 };
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void SetPrimitiveAnimation(CEnginePrimitiveHandle& handle, const CEnginePrimitiveAnimation& animation);
-};
-
-void CEnginePrimitiveRenderer_Methods::SetPrimitiveAnimation(CEnginePrimitiveHandle& handle, const CEnginePrimitiveAnimation& animation)
+void CEnginePrimitiveRenderer::SetPrimitiveAnimation(CEnginePrimitiveHandle& handle, const CEnginePrimitiveAnimation& animation)
 {
     CEngineInternalPrimitiveBase* primitive = handle.GetInternalPrimitive();
     if (primitive) {

@@ -1,0 +1,2 @@
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground
+good 95 bad 1

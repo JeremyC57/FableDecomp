@@ -1,0 +1,4 @@
+UNGRADED 00a0ad40 00bf4570
+existing 00a0af40 new= ['?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z'] | others: {'?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z': ['00bb8090']}
+existing 00b324a0 new= ['?SetPersistentPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K_N@Z'] | others: {'?RealSet@CGlobalTarget@@QAEXPAVCEnginePrimitiveHandle@@PAVCEnginePrimi': ['00b23bc0']}
+gate: 0 created split(s)

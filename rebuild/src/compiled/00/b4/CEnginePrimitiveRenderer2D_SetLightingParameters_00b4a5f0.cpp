@@ -1,4 +1,7 @@
-// CEnginePrimitiveRenderer2D::Set2DLighting(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back) -- store the 2D ambient / diffuse / back light colours and the normalised light direction
+// CEnginePrimitiveRenderer2D::SetLightingParameters(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back) -- store the 2D ambient / diffuse / back light colours and the normalised light direction
+// Leaf: ?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+// NF150: member respelled in place on the row's existing local model (was Set2DLighting): Ego_r.pdb / FableWin.pdb
+//   ?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z, target of CEngine::Set2DPrimitiveLightingParameters 0x00B23EB0 (`ret 10h`).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4A5F0, length 122 bytes (+ int3 padding).
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place, on the stored LightVector; manifest label "GetScaled" is propagated).
@@ -18,10 +21,10 @@ class CEnginePrimitiveRenderer2D { public:
     CRGBFloatColour DiffuseLightColour;      // +0x5c
     CRGBFloatColour BackLightColour;         // +0x6c
     C3DVector       LightVector;             // +0x7c
-    void Set2DLighting(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back);
+    void SetLightingParameters(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back);
 };
 
-void CEnginePrimitiveRenderer2D::Set2DLighting(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back)
+void CEnginePrimitiveRenderer2D::SetLightingParameters(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back)
 {
     AmbientLightColour = ambient;
     DiffuseLightColour = diffuse;

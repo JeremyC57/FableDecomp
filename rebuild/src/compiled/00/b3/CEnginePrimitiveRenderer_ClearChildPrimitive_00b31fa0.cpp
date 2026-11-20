@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::ClearChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id) -- removes child `id` from the handle's internal primitive (no-op for an empty handle)
-// Leaf: ClearChildPrimitive
+// Leaf: ?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31FA0, length 24 bytes (`ret 8`, `this` unused).
 // Signature from Ego_r.pdb: ?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z;
 // reached from CEngine::ClearChildPrimitive @ 0x00B23C60 (`mov ecx,[g_pEnginePrimitiveRenderer 0x01436E80] ; jmp`).
@@ -7,6 +7,9 @@
 // Shape: the forwarded id is re-pushed through eax; one shared `ret 8`.
 // Model: engine/CEngineInternalPrimitiveBase.h carries the vptr as a data member, so the virtually-called primitive
 // classes are modelled locally.
+// NF150: the member declaration comes from the header opt-in (was a local CEnginePrimitiveRenderer_Methods stand-in);
+// Ego_r.pdb / FableWin.pdb spelling.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_CLEARCHILDPRIMITIVE
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CEnginePrimitive;
@@ -73,11 +76,7 @@ public:
     CEngineInternalPrimitiveBase* GetInternalPrimitive() const { return static_cast<CEngineInternalPrimitiveBase*>(Data); }
 };
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void ClearChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id);
-};
-
-void CEnginePrimitiveRenderer_Methods::ClearChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id)
+void CEnginePrimitiveRenderer::ClearChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id)
 {
     CEngineInternalPrimitiveBase* internal = handle.GetInternalPrimitive();
     if (internal)

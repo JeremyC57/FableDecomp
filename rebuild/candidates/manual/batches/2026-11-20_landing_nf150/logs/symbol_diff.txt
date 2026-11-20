@@ -1,0 +1,32 @@
+00a0ad40 new: 1
+    ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z TABLE:00a0ad40
+00a0aea0 new: 3
+    ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z
+    ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z TABLE:009a0cf0
+    ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z TABLE:00a0aea0
+00a0af40 new: 1
+    ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z TABLE:00a0af40
+00a14e20 new: 1
+    ?FrameUpdate@CNavigatorManager@@QAEXXZ TABLE:00a14e20
+00a1a170 new: 2
+    ?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z TABLE:00a1a170
+    ?Reference@?$CIsEqualReference@$1?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z@?A0x41a7eb1d@@SAP8CNavigatorAStar@@BE_NPBVCANavQuadTreeNode@@0@ZXZ
+00a1e370 new: 0
+00b31e90 new: 1
+    ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z TABLE:00b31e90
+00b31ec0 new: 1
+    ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z TABLE:00b31ec0
+00b31ef0 new: 1
+    ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z TABLE:00b31ef0
+00b31f20 new: 1
+    ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z TABLE:00b31f20
+00b31f50 new: 1
+    ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z TABLE:00b31f50
+00b31f70 new: 1
+    ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z TABLE:00b31f70
+00b31fa0 new: 1
+    ?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z TABLE:00b31fa0
+00b32e90 new: 1
+    ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z TABLE:00b32e90
+00b4a5f0 new: 1
+    ?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z TABLE:00b4a5f0

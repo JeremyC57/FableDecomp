@@ -153,7 +153,8 @@ class CNavigatorExternalInterface { public:
     virtual long GetLayerAt(const C3DVector& position);   // slot 16 (+0x40)
 };
 class CSteeringAgent { public:
-    void SetGoal(const CNavWayPoint& goal, const CNavWayPoint& next);   // 0x00A20970
+    // NF150: respelled in place to Ego_r.pdb / FableWin.pdb ?SetGoal@CSteeringAgent@@QAEXABVC2DVector@@0@Z (the way points' Position, +0).
+    void SetGoal(const C2DVector& goal, const C2DVector& next);         // 0x00A20970
 };
 extern long NumberOfPeopleCalculatingRoute;        // 0x013D27B0 (both PDBs: S_LDATA32 long NumberOfPeopleCalculatingRoute, lib_navigator_a_star)
 class CNavigatorAStar { public:
@@ -206,8 +207,8 @@ void CNavigatorAStar::InitialiseFromPreCalculatedRoute(const C3DVector& from, co
     for (unsigned long i = 0; i < route.size(); ++i)
         Route.push_back(CNavWayPoint(route[i]));
     CalculateNavigableWidthOfLine(from);
-    SteeringAgent->SetGoal(Route._M_node->_M_next->_M_data,
-                           Route.size() > 1 ? Route._M_node->_M_next->_M_next->_M_data : Route._M_node->_M_next->_M_data);
+    SteeringAgent->SetGoal(Route._M_node->_M_next->_M_data.Position,
+                           Route.size() > 1 ? Route._M_node->_M_next->_M_next->_M_data.Position : Route._M_node->_M_next->_M_data.Position);
     StringLeadPosition = route[0].first;
     SlowedDownForLastPoint = true;
     LastWayPointVisited = route[0].first;

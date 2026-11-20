@@ -41144,9 +41144,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b31e90	SetPrimitiveAnimation	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00b31ec0	SetPrimitivePosition	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00b31ef0	AddChildPrimitive	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
-00b31f20	SetChildPrimitive	CEnginePrimitiveRenderer_Methods	unknown	undefined	0		0	unmeasured	accepted									
+00b31f20	SetChildPrimitive	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00b31f50	GetChildPrimitiveHandle	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
-00b31f70	SetChildPrimitive	CEnginePrimitiveRenderer_Methods	unknown	undefined	0		0	unmeasured	accepted									
+00b31f70	SetChildPrimitive	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00b31fa0	ClearChildPrimitive	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00b31fc0	ClearAllChildPrimitives	CEnginePrimitiveRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00b31fe0	Forward_UpdateRepeatedStaticMesh_via0x290_00b31fe0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b3\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b31fe0.cpp

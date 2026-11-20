@@ -88,6 +88,58 @@ public:
                                                const class CEngineFadeDistance&, long, const class CRGBColour&, long, float, bool,
                                                unsigned long);
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDPRIMITIVE
+    // NF150 opt-in (row 0x00B32E90): Ego_r.pdb / FableWin.pdb ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z, the
+    // tail-jump target of CEngine::AddPrimitive 0x00B23BB0 (`ret 4`). Declaration only; no layout change.
+    void AddPrimitive(const class CEnginePrimitive& primitive);                                                  // 0x00B32E90
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPERSISTENTPRIMITIVE
+    // NF150 opt-in (row 0x00B32E90, its callee): Ego_r.pdb / FableWin.pdb
+    // ?SetPersistentPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K_N@Z (landed 0x00B324A0, `ret 10h`).
+    // Declaration only.
+    void SetPersistentPrimitive(class CEnginePrimitiveHandle& handle, const class CEnginePrimitive& primitive, unsigned long flags,
+                                bool nonPersistent);                                                             // 0x00B324A0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPRIMITIVEANIMATION
+    // NF150 opt-in (row 0x00B31E90): Ego_r.pdb / FableWin.pdb
+    // ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z (target of
+    // CEngine::SetPrimitiveAnimation 0x00B23BE0, `ret 8`). Declaration only.
+    void SetPrimitiveAnimation(class CEnginePrimitiveHandle& handle, const class CEnginePrimitiveAnimation& animation);   // 0x00B31E90
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPRIMITIVEPOSITION
+    // NF150 opt-in (row 0x00B31EC0): Ego_r.pdb / FableWin.pdb
+    // ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z (target of
+    // CEngine::SetPrimitivePosition 0x00B23BF0, `ret 8`). Declaration only.
+    void SetPrimitivePosition(class CEnginePrimitiveHandle& handle, const class CEnginePrimitivePosition& position);   // 0x00B31EC0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDCHILDPRIMITIVE
+    // NF150 opt-in (row 0x00B31EF0): Ego_r.pdb / FableWin.pdb
+    // ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z (target of
+    // CEngine::AddChildPrimitive 0x00B23C20, `ret 0Ch`). Declaration only.
+    unsigned long AddChildPrimitive(class CEnginePrimitiveHandle& handle, const class CEnginePrimitive& primitive,
+                                    unsigned long flags);                                                        // 0x00B31EF0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETCHILDPRIMITIVE
+    // NF150 opt-in (rows 0x00B31F20 / 0x00B31F70): Ego_r.pdb / FableWin.pdb, both overloads
+    // ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z (five arguments, `ret 14h`,
+    // target of CEngine::SetChildPrimitive 0x00B23C30) and ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z
+    // (four arguments, `ret 10h`, target of 0x00B23C50). Declarations only.
+    void SetChildPrimitive(class CEnginePrimitiveHandle& handle, unsigned long id, class CEnginePrimitiveHandle& childHandle,
+                           const class CEnginePrimitive& primitive, unsigned long flags);                        // 0x00B31F20
+    void SetChildPrimitive(class CEnginePrimitiveHandle& handle, unsigned long id, const class CEnginePrimitive& primitive,
+                           unsigned long flags);                                                                 // 0x00B31F70
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_GETCHILDPRIMITIVEHANDLE
+    // NF150 opt-in (row 0x00B31F50): Ego_r.pdb / FableWin.pdb
+    // ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z (target of CEngine::GetChildPrimitiveHandle
+    // 0x00B23C40, `ret 0Ch`). Declaration only.
+    void GetChildPrimitiveHandle(class CEnginePrimitiveHandle& handle, unsigned long id, class CEnginePrimitiveHandle& childHandle);   // 0x00B31F50
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_CLEARCHILDPRIMITIVE
+    // NF150 opt-in (row 0x00B31FA0): Ego_r.pdb / FableWin.pdb ?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z
+    // (target of CEngine::ClearChildPrimitive 0x00B23C60, `ret 8`). Declaration only.
+    void ClearChildPrimitive(class CEnginePrimitiveHandle& handle, unsigned long id);                          // 0x00B31FA0
+#endif
 #ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
     bool GetBlockOnLoad() const {return BlockOnLoad;}
 #endif
@@ -234,6 +286,58 @@ public:
     class CEnginePrimitiveHandle AddStaticMesh(const class C3DMeshInfo*, const class C3DMeshInfo*, const class CMatrix3x4&, float,
                                                const class CEngineFadeDistance&, long, const class CRGBColour&, long, float, bool,
                                                unsigned long);
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDPRIMITIVE
+    // NF150 opt-in (row 0x00B32E90): Ego_r.pdb / FableWin.pdb ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z, the
+    // tail-jump target of CEngine::AddPrimitive 0x00B23BB0 (`ret 4`). Declaration only; no layout change.
+    void AddPrimitive(const class CEnginePrimitive& primitive);                                                  // 0x00B32E90
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPERSISTENTPRIMITIVE
+    // NF150 opt-in (row 0x00B32E90, its callee): Ego_r.pdb / FableWin.pdb
+    // ?SetPersistentPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K_N@Z (landed 0x00B324A0, `ret 10h`).
+    // Declaration only.
+    void SetPersistentPrimitive(class CEnginePrimitiveHandle& handle, const class CEnginePrimitive& primitive, unsigned long flags,
+                                bool nonPersistent);                                                             // 0x00B324A0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPRIMITIVEANIMATION
+    // NF150 opt-in (row 0x00B31E90): Ego_r.pdb / FableWin.pdb
+    // ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z (target of
+    // CEngine::SetPrimitiveAnimation 0x00B23BE0, `ret 8`). Declaration only.
+    void SetPrimitiveAnimation(class CEnginePrimitiveHandle& handle, const class CEnginePrimitiveAnimation& animation);   // 0x00B31E90
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPRIMITIVEPOSITION
+    // NF150 opt-in (row 0x00B31EC0): Ego_r.pdb / FableWin.pdb
+    // ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z (target of
+    // CEngine::SetPrimitivePosition 0x00B23BF0, `ret 8`). Declaration only.
+    void SetPrimitivePosition(class CEnginePrimitiveHandle& handle, const class CEnginePrimitivePosition& position);   // 0x00B31EC0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDCHILDPRIMITIVE
+    // NF150 opt-in (row 0x00B31EF0): Ego_r.pdb / FableWin.pdb
+    // ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z (target of
+    // CEngine::AddChildPrimitive 0x00B23C20, `ret 0Ch`). Declaration only.
+    unsigned long AddChildPrimitive(class CEnginePrimitiveHandle& handle, const class CEnginePrimitive& primitive,
+                                    unsigned long flags);                                                        // 0x00B31EF0
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETCHILDPRIMITIVE
+    // NF150 opt-in (rows 0x00B31F20 / 0x00B31F70): Ego_r.pdb / FableWin.pdb, both overloads
+    // ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z (five arguments, `ret 14h`,
+    // target of CEngine::SetChildPrimitive 0x00B23C30) and ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z
+    // (four arguments, `ret 10h`, target of 0x00B23C50). Declarations only.
+    void SetChildPrimitive(class CEnginePrimitiveHandle& handle, unsigned long id, class CEnginePrimitiveHandle& childHandle,
+                           const class CEnginePrimitive& primitive, unsigned long flags);                        // 0x00B31F20
+    void SetChildPrimitive(class CEnginePrimitiveHandle& handle, unsigned long id, const class CEnginePrimitive& primitive,
+                           unsigned long flags);                                                                 // 0x00B31F70
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_GETCHILDPRIMITIVEHANDLE
+    // NF150 opt-in (row 0x00B31F50): Ego_r.pdb / FableWin.pdb
+    // ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z (target of CEngine::GetChildPrimitiveHandle
+    // 0x00B23C40, `ret 0Ch`). Declaration only.
+    void GetChildPrimitiveHandle(class CEnginePrimitiveHandle& handle, unsigned long id, class CEnginePrimitiveHandle& childHandle);   // 0x00B31F50
+#endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERER_CLEARCHILDPRIMITIVE
+    // NF150 opt-in (row 0x00B31FA0): Ego_r.pdb / FableWin.pdb ?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z
+    // (target of CEngine::ClearChildPrimitive 0x00B23C60, `ret 8`). Declaration only.
+    void ClearChildPrimitive(class CEnginePrimitiveHandle& handle, unsigned long id);                          // 0x00B31FA0
 #endif
     void*                                            __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                    _pad_0x04[0x4]; // +0x04

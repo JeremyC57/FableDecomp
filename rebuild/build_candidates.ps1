@@ -40438,9 +40438,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a14e20'
-        Module = '_global'
-        Source = '00/a1/CGameEventPackage_Clear_00a14e20.cpp'
-        TestSource = '00/a1/CGameEventPackage_Clear_00a14e20_test.cpp'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_FrameUpdate_00a14e20.cpp'
+        TestSource = '00/a1/CNavigatorManager_FrameUpdate_00a14e20_test.cpp'
         PassPattern = '00a14e20_TEST PASS'
     }
     [pscustomobject]@{
@@ -224804,8 +224804,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b4a5f0'
         Module = 'CEnginePrimitiveRenderer2D'
-        Source = '00/b4/CEnginePrimitiveRenderer2D_Set2DLighting_00b4a5f0.cpp'
-        TestSource = '00/b4/CEnginePrimitiveRenderer2D_Set2DLighting_00b4a5f0_test.cpp'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_SetLightingParameters_00b4a5f0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_SetLightingParameters_00b4a5f0_test.cpp'
         PassPattern = '00b4a5f0_TEST PASS'
     }
     [pscustomobject]@{

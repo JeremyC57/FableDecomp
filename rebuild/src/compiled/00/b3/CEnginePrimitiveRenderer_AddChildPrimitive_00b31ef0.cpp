@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::AddChildPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned long flags) -- adds a child primitive to the handle's internal primitive and returns the child id (0 for an empty handle)
-// Leaf: AddChildPrimitive
+// Leaf: ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31EF0, length 34 bytes (`ret 0Ch`, `this` unused).
 // Signature from Ego_r.pdb: ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z;
 // reached from CEngine::AddChildPrimitive @ 0x00B23C20 (`mov ecx,[g_pEnginePrimitiveRenderer 0x01436E80] ; jmp`).
@@ -8,6 +8,9 @@
 // returned directly (both `ret 0Ch` exits kept: the stack arguments forbid a tail jump).
 // Model: engine/CEngineInternalPrimitiveBase.h carries the vptr as a data member, so the virtually-called primitive
 // classes are modelled locally.
+// NF150: the member declaration comes from the header opt-in (was a local CEnginePrimitiveRenderer_Methods stand-in);
+// Ego_r.pdb / FableWin.pdb spelling.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDCHILDPRIMITIVE
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CEnginePrimitive;
@@ -74,11 +77,7 @@ public:
     CEngineInternalPrimitiveBase* GetInternalPrimitive() const { return static_cast<CEngineInternalPrimitiveBase*>(Data); }
 };
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    unsigned long AddChildPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned long flags);
-};
-
-unsigned long CEnginePrimitiveRenderer_Methods::AddChildPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned long flags)
+unsigned long CEnginePrimitiveRenderer::AddChildPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned long flags)
 {
     CEngineInternalPrimitiveBase* internal = handle.GetInternalPrimitive();
     if (!internal)

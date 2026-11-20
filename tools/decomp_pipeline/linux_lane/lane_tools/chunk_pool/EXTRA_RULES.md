@@ -363,3 +363,15 @@ Rules for the source:
 - Never use it for its side effects (GOTCHAS: it changes float parameter forwarding and scratch rotation).
 
 First case: 0x005DC340 CAnimationSet::GetAnim (hand4f b2).
+
+## 2026-11-20 advisor decision (owner delegated): explicit-instantiation scaffolding for private members
+
+The nf86 / nf88 pick-any scaffolding (GOTCHAS) names the COMDAT member from an anonymous-namespace helper. When that member is private and
+the derived-class helper cannot name it, a row may instead name it as the template argument of an explicit instantiation in an anonymous
+namespace (`template class CIsEqualReference<&CNavigatorAStar::IsEqual>;`; access is not checked there, C++03 14.7.2/8):
+
+- Only for a private member the derived-class helper cannot name; otherwise use the nf86 / nf88 form.
+- Mark it `// Fidelity: scaffolding, not retail`. Check with objdump that the helper symbol is in the per-TU `?A0x...` namespace.
+- Never widen the member's access in a header opt-in (it changes the leaf, `ABE` -> `QBE`), and never add a `friend` to a shared header.
+
+First case: 0x00A1A170 CNavigatorAStar::IsEqual (landing nf150).

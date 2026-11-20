@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::SetChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle, const CEnginePrimitive& primitive, unsigned long flags) -- sets child `id` of the handle's internal primitive and hands back the child's handle (no-op for an empty handle)
-// Leaf: ?SetChildPrimitive@CEnginePrimitiveRenderer_Methods@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z
+// Leaf: ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31F20, length 39 bytes (`ret 14h`, `this` unused).
 // Signature from Ego_r.pdb: ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z;
 // reached from CEngine::SetChildPrimitive @ 0x00B23C30 (`mov ecx,[g_pEnginePrimitiveRenderer 0x01436E80] ; jmp`).
@@ -8,6 +8,9 @@
 // Shape: the four forwarded arguments are re-pushed right to left through eax; one shared `ret 14h`.
 // Model: engine/CEngineInternalPrimitiveBase.h carries the vptr as a data member, so the virtually-called primitive
 // classes are modelled locally.
+// NF150: the member declaration comes from the header opt-in (was a local CEnginePrimitiveRenderer_Methods stand-in);
+// Ego_r.pdb / FableWin.pdb spelling.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETCHILDPRIMITIVE
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CEnginePrimitive;
@@ -74,11 +77,7 @@ public:
     CEngineInternalPrimitiveBase* GetInternalPrimitive() const { return static_cast<CEngineInternalPrimitiveBase*>(Data); }
 };
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void SetChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle, const CEnginePrimitive& primitive, unsigned long flags);
-};
-
-void CEnginePrimitiveRenderer_Methods::SetChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle, const CEnginePrimitive& primitive, unsigned long flags)
+void CEnginePrimitiveRenderer::SetChildPrimitive(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle, const CEnginePrimitive& primitive, unsigned long flags)
 {
     CEngineInternalPrimitiveBase* internal = handle.GetInternalPrimitive();
     if (internal)

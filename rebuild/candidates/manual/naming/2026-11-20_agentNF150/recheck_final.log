@@ -1,0 +1,73 @@
+addr       parity           behav  name
+00b32e90   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b32e90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00b32e90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b32e90   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer::AddPrimitive
+00b31e90   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31e90   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31e90   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31e90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31e90   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer::SetPrimitiveAnimation
+00b31ec0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31ec0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31ec0   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31ec0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31ec0   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer::SetPrimitivePosition
+00b31ef0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31ef0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31ef0   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31ef0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31ef0   MATCH            PASS   CEnginePrimitiveRenderer::AddChildPrimitive
+00b31f20   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31f20   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31f20   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31f20   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31f20   MATCH            PASS   CEnginePrimitiveRenderer_Methods::SetChildPrimitive
+00b31f50   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31f50   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31f50   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31f50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31f50   MATCH            PASS   CEnginePrimitiveRenderer::GetChildPrimitiveHandle
+00b31f70   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31f70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31f70   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31f70   MATCH            PASS   CEnginePrimitiveRenderer_Methods::SetChildPrimitive
+00b31fa0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b31fa0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b31fa0   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b31fa0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b31fa0   MATCH            PASS   CEnginePrimitiveRenderer::ClearChildPrimitive
+00b4a5f0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b4a5f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D (engine/CEnginePrimitiveRenderer2D.h)
+00b4a5f0   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer2D::SetLightingParameters
+00a14e20   MATCH            PASS   CNavigatorManager::FrameUpdate
+00a1a170   RELOCATION_MATCH PASS   CNavigatorAStar::IsEqual
+00a1e370   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a1e370   WARN SHARED_HEADER_AVAILABLE CNavWayPoint (engine/CNavWayPoint.h)
+00a1e370   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+00a1e370   WARN SHARED_HEADER_AVAILABLE CNavigatorExternalInterface (engine/CNavigatorExternalInterface.h)
+00a1e370   WARN SHARED_HEADER_AVAILABLE CSteeringAgent (engine/CSteeringAgent.h)
+00a1e370   WARN SHARED_HEADER_AVAILABLE CNavigatorAStar (engine/CNavigatorAStar.h)
+00a1e370   WARN RELOC_NAME: ?NumberOfPeopleCalculatingRoute@@3JA -> 013d27b0 labelled 'g_AStarSearchesInProgress'
+00a1e370   RELOCATION_MATCH PASS   CNavigatorAStar::InitialiseFromPreCalculatedRoute
+00a0ad40   RELOCATION_MATCH PASS   CRenderManagerCore::DrawCurrentBuffersIndexed
+00a0aea0   RELOCATION_MATCH PASS   CRenderManagerCore::DrawAsIndexedTris
+00a0af40   RELOCATION_MATCH PASS   CRenderManagerCore::DrawAsIndexedTris
+
+WINS: 15
+  00b32e90 RELOCATION_MATCH CEnginePrimitiveRenderer::?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z
+  00b31e90 RELOCATION_MATCH CEnginePrimitiveRenderer::?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z
+  00b31ec0 RELOCATION_MATCH CEnginePrimitiveRenderer::?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z
+  00b31ef0 MATCH CEnginePrimitiveRenderer::?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+  00b31f20 MATCH CEnginePrimitiveRenderer::?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z
+  00b31f50 MATCH CEnginePrimitiveRenderer::?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z
+  00b31f70 MATCH CEnginePrimitiveRenderer::?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z
+  00b31fa0 MATCH CEnginePrimitiveRenderer::?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z
+  00b4a5f0 RELOCATION_MATCH CEnginePrimitiveRenderer2D::?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+  00a14e20 MATCH _global::?FrameUpdate@CNavigatorManager@@QAEXXZ
+  00a1a170 RELOCATION_MATCH CNavigatorAStar::?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z
+  00a1e370 RELOCATION_MATCH CNavigatorAStar::?InitialiseFromPreCalculatedRoute@CNavigatorAStar@@
+  00a0ad40 RELOCATION_MATCH CRenderManagerCore::?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z
+  00a0aea0 RELOCATION_MATCH CRenderManagerCore::?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z
+  00a0af40 RELOCATION_MATCH CRenderManagerCore::?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z

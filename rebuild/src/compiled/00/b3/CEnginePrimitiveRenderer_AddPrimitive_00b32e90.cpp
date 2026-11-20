@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer::AddPrimitive(const CEnginePrimitive&) -- adds a one-off primitive: registers it as a persistent primitive under a temporary handle (flags 4, transient) and drops the handle
+// Leaf: ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B32E90, length 134 bytes (+ int3 padding).
 // Signature from Ego_r.pdb: ?AddPrimitive@CEnginePrimitiveRenderer@@QAEXABVCEnginePrimitive@@@Z (`ret 4`).
 // Callees: 0x0099A2D0 CBaseClass::CBaseClass(), 0x00B324A0 CEnginePrimitiveRenderer::SetPersistentPrimitive(
@@ -59,15 +60,13 @@ public:
 };
 
 class CEnginePrimitive;
+// NF150: the member declarations come from engine/CEnginePrimitiveRenderer.h (was a local CEnginePrimitiveRenderer_Methods stand-in):
+// AddPrimitive and its callee SetPersistentPrimitive 0x00B324A0, Ego_r.pdb / FableWin.pdb spellings.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_ADDPRIMITIVE
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPERSISTENTPRIMITIVE
 #include "engine/CEnginePrimitiveRenderer.h"
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void SetPersistentPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive,
-                                unsigned long flags, bool transient);    // 0x00B324A0
-    void AddPrimitive(const CEnginePrimitive& primitive);
-};
-
-void CEnginePrimitiveRenderer_Methods::AddPrimitive(const CEnginePrimitive& primitive)
+void CEnginePrimitiveRenderer::AddPrimitive(const CEnginePrimitive& primitive)
 {
     CEnginePrimitiveHandle handle;
     SetPersistentPrimitive(handle, primitive, 4, true);

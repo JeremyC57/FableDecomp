@@ -1,0 +1,56 @@
+address	change	grade	test	grades_used	entries	note
+0x00B32E90	self rename _Methods -> CEnginePrimitiveRenderer::AddPrimitive on CEnginePrimitiveRenderer.h opt-ins ADDPRIMITIVE + SETPERSISTENTPRIMITIVE; callee 0x00B324A0 respelled to its own leaf (RENAMES s2)	RELOCATION_MATCH	PASS	2	q4583	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31E90	self rename _Methods -> CEnginePrimitiveRenderer::SetPrimitiveAnimation (opt-in SETPRIMITIVEANIMATION)	RELOCATION_MATCH	PASS	1	q4584	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31EC0	self rename _Methods -> CEnginePrimitiveRenderer::SetPrimitivePosition (opt-in SETPRIMITIVEPOSITION)	RELOCATION_MATCH	PASS	1	q4585	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31EF0	self rename _Methods -> CEnginePrimitiveRenderer::AddChildPrimitive (opt-in ADDCHILDPRIMITIVE)	MATCH	PASS	1	q4586	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31F20	self rename _Methods -> CEnginePrimitiveRenderer::SetChildPrimitive 5-arg (opt-in SETCHILDPRIMITIVE); catalog module changes	MATCH	PASS	2	q4587	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31F50	self rename _Methods -> CEnginePrimitiveRenderer::GetChildPrimitiveHandle (opt-in GETCHILDPRIMITIVEHANDLE)	MATCH	PASS	1	q4588	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31F70	self rename _Methods -> CEnginePrimitiveRenderer::SetChildPrimitive 4-arg (opt-in SETCHILDPRIMITIVE); catalog module changes	MATCH	PASS	1	q4589	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B31FA0	self rename _Methods -> CEnginePrimitiveRenderer::ClearChildPrimitive (opt-in CLEARCHILDPRIMITIVE)	MATCH	PASS	1	q4590	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00B4A5F0	self leaf Set2DLighting -> SetLightingParameters, in place on the existing local model (file name moves)	RELOCATION_MATCH	PASS	1	q4594	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00A14E20	self rename C::Clear -> CNavigatorManager::FrameUpdate on engine/CNavigatorManager.h; new header-based test (same PassPattern); file name moves	MATCH	PASS	1	q4758	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00A1A170	self leaf QAE -> ABE (private const) on engine/CNavigatorAStar.h SEARCH_PASS23 inline, emitted pick-any by scaffolding; strong form LNK2005 vs 0x00A1CEB0 (link/)	RELOCATION_MATCH	PASS	4	q5008	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00A1E370	binder: local CSteeringAgent::SetGoal respelled in place to (const C2DVector&, const C2DVector&), call passes .Position	RELOCATION_MATCH	PASS	3	q4498	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00A0AD40	self rename _Methods (long) -> CRenderManagerCore::DrawCurrentBuffersIndexed (void) on the retail branch of engine/CRenderManagerCore.h (no overlay)	RELOCATION_MATCH	PASS	2	q4548	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00A0AEA0	self rename _Methods -> CRenderManagerCore::DrawAsIndexedTris(const CTexture**,...,void*,long) on the retail branch (DRAWASINDEXEDTRIS + FORCEINLINE_HELPERS)	RELOCATION_MATCH	PASS	2	q6237	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00A0AF40	self rename _Methods -> CRenderManagerCore::DrawAsIndexedTris(const void*,long,long,void*,long) on the retail branch (DRAWASINDEXEDTRIS_USER)	RELOCATION_MATCH	PASS	3	q6297	ported; defined-symbol diff vs HEAD: own leaf only (plus header pick-any COMDATs / the scaffolding helper)
+0x00BB8090	binder port onto CRenderManager.h + inline CRenderStateManager setters (3 forms)	DIFFER(1407v1407)	-	3	q6297	blocked/port: residue = test/or operand order in one SetRenderState expansion at 0x00BB83C1..C7 (retail test eax,esi / or esi,eax; built test esi,eax / or eax,esi); f1 plain, f2 +SETRENDERSTATE_DESIRED (same 3 lines), f3 +DESIRED+BOOKMARK+ADDSTATE_DIRTY (2 blocks). HEAD matched with a row-local SetState reading the capture mask into a named local; next idea: an add-only nested opt-in SetRenderState that reads CurrentBookmarkMask into a local. Classes still local: CRenderManagerCoreView (-> CRenderManager), CShaderRenderManager, C3DVector, CArray, self stand-in CEnginePrimitiveManagerParticleDecalGroupMethods. Drafts work/00bb8090_f1..f3.cpp
+0x00BF4570	none (probe only)	DIFFER(316v4431) at HEAD	-	0	q4548	blocked: authoring. Legacy no-Leaf candidates-header row (316-byte model of a 4431-byte function, not relocation-checked); retail calls 0x00A0AD40 at 0x00BF55EF (ecx = [0x01436E18], four arguments); the row models that draw with its free 2-argument helper ?DrawLandscapeForegroundEntry@@YAXKK@Z. Not touched (NAME_FIXES)
+0x00A20970	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4498	not-a-binder: self row: leaf already ?SetGoal@CSteeringAgent@@QAEXABVC2DVector@@0@Z
+0x00A1CEB0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4498	not-a-binder: binds ?SetGoal@CSteeringAgent@@QAEXABVC2DVector@@0@Z (census)
+0x00A1E030	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4498	not-a-binder: binds the PDB spelling (census)
+0x00B63010	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4548	not-a-binder: binds ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z (census)
+0x00B70230	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4548	not-a-binder: binds the PDB spelling (census)
+0x00BEACA0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4548	not-a-binder: binds the PDB spelling (census)
+0x00B23BB0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4583	not-a-binder: binds the PDB spelling (census)
+0x00B23BE0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4584	not-a-binder: binds the PDB spelling
+0x00B23BF0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4585	not-a-binder: binds the PDB spelling
+0x00B23C20	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4586	not-a-binder: binds the PDB spelling
+0x00B23C30	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4587	not-a-binder: binds the PDB spelling
+0x00B23C40	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4588	not-a-binder: binds the PDB spelling
+0x00B23C50	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4589	not-a-binder: binds the PDB spelling
+0x00B23C60	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4590	not-a-binder: binds the PDB spelling
+0x00B23EB0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4594	not-a-binder: binds ?SetLightingParameters@CEnginePrimitiveRenderer2D@@... (census)
+0x004A5A40	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q4758	not-a-binder: binds ?FrameUpdate@CNavigatorManager@@QAEXXZ (census)
+0x00A1ABF0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q5008	not-a-binder: binds ?IsEqual@CNavigatorAStar@@ABE_NPBVCANavQuadTreeNode@@0@Z (census)
+0x009FA780	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B5CA70	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237,q6297	not-a-binder: binds both ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (0x00A0AEA0) and ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (0x00A0AF40) (census)
+0x00B5E0F0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B5E700	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B5FAB0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237,q6297	not-a-binder: binds both ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (0x00A0AEA0) and ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (0x00A0AF40) (census)
+0x00B61690	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B63260	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B63530	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B87870	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B88BC0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B89C30	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00B8B780	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00BAE2D0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00BC8A60	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x00F39A50	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6237	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z (census)
+0x009A25D0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6297	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (census)
+0x009D8CF0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6297	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (census)
+0x00B5A3F0	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6297	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (census)
+0x00B5AF80	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6297	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (census)
+0x00BB8750	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6297	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (census)
+0x00BBAC60	none	HEAD RELOCATION_MATCH/MATCH (census)	PASS	0	q6297	not-a-binder: binds ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (census)

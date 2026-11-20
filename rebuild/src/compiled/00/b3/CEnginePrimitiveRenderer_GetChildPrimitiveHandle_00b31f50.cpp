@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle) -- fetches the handle of child `id` of the handle's internal primitive (no-op for an empty handle)
-// Leaf: GetChildPrimitiveHandle
+// Leaf: ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31F50, length 29 bytes (`ret 0Ch`, `this` unused).
 // Signature from Ego_r.pdb: ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z;
 // reached from CEngine::GetChildPrimitiveHandle @ 0x00B23C40 (`mov ecx,[g_pEnginePrimitiveRenderer 0x01436E80] ; jmp`).
@@ -7,6 +7,9 @@
 // Shape: two forwarded arguments re-pushed right to left through eax; one shared `ret 0Ch`.
 // Model: engine/CEngineInternalPrimitiveBase.h carries the vptr as a data member, so the virtually-called primitive
 // classes are modelled locally.
+// NF150: the member declaration comes from the header opt-in (was a local CEnginePrimitiveRenderer_Methods stand-in);
+// Ego_r.pdb / FableWin.pdb spelling.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_GETCHILDPRIMITIVEHANDLE
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CEnginePrimitive;
@@ -73,11 +76,7 @@ public:
     CEngineInternalPrimitiveBase* GetInternalPrimitive() const { return static_cast<CEngineInternalPrimitiveBase*>(Data); }
 };
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle);
-};
-
-void CEnginePrimitiveRenderer_Methods::GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle)
+void CEnginePrimitiveRenderer::GetChildPrimitiveHandle(CEnginePrimitiveHandle& handle, unsigned long id, CEnginePrimitiveHandle& childHandle)
 {
     CEngineInternalPrimitiveBase* internal = handle.GetInternalPrimitive();
     if (internal)

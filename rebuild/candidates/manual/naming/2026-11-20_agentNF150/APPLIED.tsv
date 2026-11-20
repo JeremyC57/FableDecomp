@@ -1,0 +1,16 @@
+entry	address	status	binders_respelled	note
+q4498	0x00A20970	done	1	self already right; binder 0x00A1E370 respelled CNavWayPoint -> C2DVector (RENAMES s2); 0x00A1CEB0 / 0x00A1E030 already right
+q4548	0x00A0AD40	blocked	0	blocked: authoring, row left 0x00BF4570 (legacy no-Leaf candidates-header row, DIFFER 316v4431 at HEAD, not relocation-checked: its free helper ?DrawLandscapeForegroundEntry@@YAXKK@Z models the retail draw call 0x00BF55EF -> 0x00A0AD40). Self ported (RENAMES s1); binders 0x00B63010 / 0x00B70230 / 0x00BEACA0 already bind the PDB spelling. Coordinator decision: land the self rename with the row left (NOTES)
+q4583	0x00B32E90	done	0	self ported; binder 0x00B23BB0 already right; callee 0x00B324A0 respelled to its own leaf (RENAMES s2)
+q4584	0x00B31E90	done	0	self ported; binder 0x00B23BE0 already right
+q4585	0x00B31EC0	done	0	self ported; binder 0x00B23BF0 already right
+q4586	0x00B31EF0	done	0	self ported; binder 0x00B23C20 already right
+q4587	0x00B31F20	done	0	self ported; binder 0x00B23C30 already right; catalog module was the stand-in
+q4588	0x00B31F50	done	0	self ported; binder 0x00B23C40 already right
+q4589	0x00B31F70	done	0	self ported; binder 0x00B23C50 already right; catalog module was the stand-in
+q4590	0x00B31FA0	done	0	self ported; binder 0x00B23C60 already right
+q4594	0x00B4A5F0	done	0	self leaf respelled in place; binder 0x00B23EB0 already right
+q4758	0x00A14E20	done	0	self re-landed on engine/CNavigatorManager.h; binder 0x004A5A40 already right
+q5008	0x00A1A170	done	0	self ABE via header inline + pick-any scaffolding (one-definition with 0x00A1CEB0, link-proved); binder 0x00A1ABF0 already right
+q6237	0x00A0AEA0	done	0	self ported (signature from both PDBs); all 15 binders already right. Queue columns were shifted: correct = ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z
+q6297	0x00A0AF40	blocked	0	self ported (RENAMES s1); rows left: 0x00BB8090 blocked/port (still binds ?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z; existing split, not created; the self rename moves the address onto the spelling the 8 other binders use)

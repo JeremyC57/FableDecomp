@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::SetPrimitivePosition(CEnginePrimitiveHandle& handle, const CEnginePrimitivePosition& position) -- hands the position to the handle's internal primitive (virtual SetPosition) and, when the primitive sits in the scene grid, re-files it there
-// Leaf: SetPrimitivePosition
+// Leaf: ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B31EC0, length 45 bytes (`ret 8`, `this` unused).
 // Signature from Ego_r.pdb: ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z;
 // reached from CEngine::SetPrimitivePosition @ 0x00B23BF0 (`mov ecx,[g_pEnginePrimitiveRenderer 0x01436E80] ; jmp`).
@@ -9,6 +9,9 @@
 // IsInGrid() is the signed GridPos.Level byte >= 0, UpdatePosition takes the primitive in ecx and its flags in edx.
 // Model: engine/CEngineInternalPrimitiveBase.h carries the vptr as a data member, so the virtually-called primitive
 // classes are modelled locally (same offsets: EnginePrimitiveFlags +0x0C, GridPos.Level +0x24).
+// NF150: the member declaration comes from the header opt-in (was a local CEnginePrimitiveRenderer_Methods stand-in);
+// Ego_r.pdb / FableWin.pdb spelling.
+#define FABLE_RETAIL_CENGINEPRIMITIVERENDERER_SETPRIMITIVEPOSITION
 #include "engine/CEnginePrimitiveRenderer.h"
 
 class CEnginePrimitive;
@@ -75,11 +78,7 @@ public:
     CEngineInternalPrimitiveBase* GetInternalPrimitive() const { return static_cast<CEngineInternalPrimitiveBase*>(Data); }
 };
 
-struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
-    void SetPrimitivePosition(CEnginePrimitiveHandle& handle, const CEnginePrimitivePosition& position);
-};
-
-void CEnginePrimitiveRenderer_Methods::SetPrimitivePosition(CEnginePrimitiveHandle& handle, const CEnginePrimitivePosition& position)
+void CEnginePrimitiveRenderer::SetPrimitivePosition(CEnginePrimitiveHandle& handle, const CEnginePrimitivePosition& position)
 {
     CEngineInternalPrimitiveBase* primitive = handle.GetInternalPrimitive();
     if (primitive) {
