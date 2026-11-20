@@ -8,7 +8,7 @@ all 79 listed rows: $W/base/grades.txt.
 0x009BE870 GetBestCompressedAlphaTextureFormat (IDirect3D9); 0x009BFB30 ResetDevice (IDirect3D9 + CVsyncCallbackTimer).
 
 ## CPSCSingleSprite / CEnginePrimitiveSpriteTrail -- 13 addresses left (b5 header opt-ins carry over; work from batches/b5/hdr)
-- 0x00B0A140 ??_G (snapshot in batches/b6/src, landed text only). It is a free fastcall stand-in. The real
+- 0x00B0A140 ??_G (snapshot in batches/b6/src, landed text only). [2026-11-20, A, advisor decision (owner delegated): option (b) -- not landed; port 0x00B0A160 first, then the ??_G in the 0x00BB1740 pattern, both in the CPSCSingleSprite slice.] It is a free fastcall stand-in. The real
   ??_GCPSCSingleSprite@NParticleEngine@@UAEPAXI@Z (calls ??1 0x00B0A160, then global operator delete) is emitted with the vtable. The
   ctor 0x00B09360 and dtor 0x00B0A160 are out of line, so this row's TU only emits it if it holds the destructor's definition. Two
   options for main: (a) grade it from the dtor TU text with `// Leaf: ??_G...` (GOTCHAS line 163 precedent; the source duplicates

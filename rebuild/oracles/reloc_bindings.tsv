@@ -19789,7 +19789,6 @@ _kOctaveScale	0125a4dc	00c6bdc0
 ??$__uninitialized_fill_n@PAV?$CIntelligentPointer@VCThingCreatureBase@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCThingCreatureBase@@@@PAV1@IABV1@ABU__false_type@0@@Z	0074cd10	0074d600
 ??$__uninitialized_copy@PBUAttackParticleAndEndPoints@@PAU1@@std@@YIPAUAttackParticleAndEndPoints@@PBU1@0PAU1@ABU__false_type@0@@Z	007698c0	0076a030
 ??$__uninitialized_copy@PBUGoodsPlace@CTCShop@@PAU12@@std@@YIPAUGoodsPlace@CTCShop@@PBU12@0PAU12@ABU__false_type@0@@Z	007770c0	00777430
-?_M_insert_overflow@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@IAEXPAPAVCThingObject@@ABQAV3@ABU__true_type@2@I_N@Z	0074f900	0077ec20
 ??0CTCTrapBase@@QAE@AAVCThing@@@Z	0078918d	00787dbc
 ??_7CTCMeleeTrap@@6B@	0126b884	00787dbc
 ??$fill_n@PAPAVCThingGameObject@@IPAV1@@std@@YIPAPAVCThingGameObject@@PAPAV1@IABQAV1@@Z	00788c87	00788ffc
@@ -39808,3 +39807,4 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z	00a786c0	00a78800
 ?_M_insert_overflow@?$vector@PAVCNavRegion@@V?$allocator@PAVCNavRegion@@@std@@@std@@IAEXPAPAVCNavRegion@@ABQAV3@ABU__true_type@2@I_N@Z	00a814b0	00a78800
 ??1CNavConnectorNode@@QAE@XZ	00a780b0	00a82fa0
+?_M_insert_overflow@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@IAEXPAPAVCThingObject@@ABQAV3@ABU__true_type@2@I_N@Z	0074f900	0077ec20

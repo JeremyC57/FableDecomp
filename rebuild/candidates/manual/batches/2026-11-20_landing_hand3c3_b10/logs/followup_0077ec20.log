@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0077ec20   RELOCATION_MATCH PASS   GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>
+
+WINS: 1
+  0077ec20 RELOCATION_MATCH CThingSearchTools::??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z

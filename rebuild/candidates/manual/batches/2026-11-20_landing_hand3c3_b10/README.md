@@ -68,3 +68,11 @@ card / manager state; both are compared with the row's after every case. 60,000 
 - `SetFeatIndex(..); SetQuestName(..);` swapped -- two independent member stores of the same card component;
 - `continue;` removed in the no-dummy-def branch -- pquest_card is still NULL there, so the `if (pquest_card)` block that follows is
   skipped either way (the `break` mutant of the same line is killed).
+
+## Follow-up (Account A, 2026-11-20; advisor decision, owner delegated): 0x0077EC20 re-ported
+The b10 landing added the first binding of 0x0077EC20 under the real spelling
+??$GetAllLeafThings@VCThingObject@@...VCThingFilter_HasTC@@@CThingSearchTools@@QBEX...@Z, while the landed self row defined the instance on
+the local CThingSearchToolsMethods stand-in (non-const QAE): two names for one address (vland RELOC_NAME). The self row is re-ported in
+the landed 0x00910A90 form (engine/CThingSearchTools.h LEAFBODY body with b10's define pair, explicit instantiation; B's recipe):
+RELOCATION_MATCH PASS under strict headers (`logs/followup_0077ec20.log`); its oracle label now names the instance. 0x004AC940 (the other
+RELOC_NAME warning) gained no binding: that warning is a stale catalog label only.
