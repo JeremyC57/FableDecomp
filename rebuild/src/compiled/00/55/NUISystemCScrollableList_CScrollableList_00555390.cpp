@@ -11,105 +11,19 @@
 // The STLport list header node comes from the CRT malloc import thunk 0x00BFEA0E (not ::operator new).
 // Local CObserver: engine/CObserver.h is the Ego_r donor (16-byte set, 0x18 bytes); the retail STLport set is 12 bytes,
 // so the native CObserver is 0x14 bytes and the header does not fit.
-#include <stddef.h>
-extern "C" void* __cdecl malloc(size_t);                 // 0x00BFEA0E
-namespace NUISystem {
-struct CDeletionParents {
-    struct Node { Node* Next; Node* Previous; void* Parent; };
-    Node* Head;
-    CDeletionParents() { Node* head=(Node*)malloc(sizeof(Node)); head->Next=head; head->Previous=head; Head=head; }
-    CDeletionParents(const CDeletionParents&); //0042BF06
-    ~CDeletionParents(); //0042ABCA
-};
-class CDeletion { public:
-    unsigned long Method;
-    CDeletionParents AssociatedParents;
-    CDeletion() { Method=2; }
-    CDeletion(const CDeletion&); //0042CD84
-};
-struct CUIInterface { virtual ~CUIInterface() {} };
-class CObserver { public: virtual ~CObserver() {} unsigned char EventsToObserve[0xc]; bool PreventObservation; unsigned char ObserverPadding[3]; };
-class CActionParam { public: virtual ~CActionParam() {} };
-class CComponent : public CUIInterface,public CObserver,public CActionParam { public:
-    unsigned char ComponentState[0x134-0x1c];
-    virtual void v01();
-    virtual void v02();
-    virtual void v03();
-    virtual void v04();
-    virtual void v05();
-    virtual void v06();
-    virtual void v07();
-    virtual void v08();
-    virtual void v09();
-    virtual void v10();
-    virtual void v11();
-    virtual void v12();
-    virtual void v13();
-    virtual void v14();
-    virtual void v15();
-    virtual void v16();
-    virtual void v17();
-    virtual void v18();
-    virtual void v19();
-    virtual void v20();
-    virtual void v21();
-    virtual void v22();
-    virtual void v23();
-    virtual void v24();
-    virtual void v25();
-    virtual void v26();
-    virtual void v27();
-    virtual void v28();
-    virtual void v29();
-    virtual void v30();
-    virtual void v31();
-    virtual void v32();
-    virtual void v33();
-    virtual void v34();
-    virtual void v35();
-    virtual void v36();
-    virtual void v37();
-    virtual void v38();
-    virtual void v39();
-    virtual void v40();
-    virtual void v41();
-    virtual void v42();
-    virtual void v43();
-    virtual void v44();
-    virtual void v45();
-    virtual void v46();
-    virtual void v47();
-    virtual void v48();
-    virtual void v49();
-    virtual void v50();
-    virtual void v51();
-    virtual void v52();
-    virtual void v53();
-    virtual void v54();
-    virtual void v55();
-    virtual void v56();
-    virtual void v57();
-    virtual void v58();
-    virtual void v59();
-    virtual void v60();
-    virtual void v61();
-    virtual void SetDeletion(CDeletion); //slot62/00531E90
-};
-class CChangingStateComponent : public CComponent { public:
-    unsigned char ChangingState[0x15c-0x134];
-    ~CChangingStateComponent(); //0052CCF0
-};
-class CScrollableList : public CChangingStateComponent { public:
-    unsigned char ListLayout[0x10];
-    float ScrollTimer;
-    CComponent* PUpArrow;
-    CComponent* PDownArrow;
-    bool ScrollUp,ScrollDown;
-    virtual ~CScrollableList();
-};
-CScrollableList::~CScrollableList() {
+// NF156 (2026-11-20, q4776): the local CDeletionParents / CDeletion / CUIInterface / CObserver / CActionParam / CComponent /
+//   CChangingStateComponent / CScrollableList models replaced by the shared headers: engine/NUISystem_CScrollableList.h (PUpArrow
+//   +0x170 / PDownArrow +0x174) and engine/NUISystem_CDeletion.h with its in-class constructors (FABLE_RETAIL_CDELETION_INLINE: retail
+//   expands the default constructor here -- the head node malloc'd in place -- and calls the copy constructor 0x0042CD84) over the
+//   STLport list<CComponent*> (~list 0x0042ABCA out of line with its body visible, FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE). The deletion
+//   method 2 is CDeletion::UI_DELETE_ALL_INSTANCES. Was ??1CDeletionParents@NUISystem@@QAE@XZ.
+#define FABLE_RETAIL_CDELETION_INLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#include "engine/NUISystem_CScrollableList.h"
+#include "engine/NUISystem_CDeletion.h"
+NUISystem::CScrollableList::~CScrollableList() {
     CDeletion deletion;
+    deletion.Method = CDeletion::UI_DELETE_ALL_INSTANCES;
     if (PUpArrow) { PUpArrow->SetDeletion(deletion); PUpArrow=0; }
     if (PDownArrow) { PDownArrow->SetDeletion(deletion); PDownArrow=0; }
-}
 }

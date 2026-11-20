@@ -13,11 +13,14 @@ class CWideString { public:
     long GetLength() const;                        // 0x0099B220
     ~CWideString();                                // 0x0099B510
 };
-struct CIMECalls {
-    bool IsIMEActive();                            // 0x00404C50
-    void FinaliseString(bool commit);              // 0x00404B50
-};
-extern CIMECalls* GFGetIME();                      // 0x00404A80
+// NF156 (2026-11-20, q6170): the IME accessor 0x00404A80 is NUISystem::CIME::Get() (Ego_r.pdb 0x00404100 + FableWin.pdb
+//   ?Get@CIME@NUISystem@@SIAAV12@XZ, static fastcall, returns the singleton by reference; the self row and 7 landed callers bind it);
+//   moved off the free ?GFGetIME@@YAPAUCIMECalls@@XZ / CIMECalls stand-ins onto the shared fable_ime.h (FABLE_RETAIL_CIME, with the
+//   _ISIMEACTIVE and the NF156 _FINALISESTRING opt-ins), as the landed twin Cancel 0x00851860.
+#define FABLE_RETAIL_CIME
+#define FABLE_RETAIL_CIME_ISIMEACTIVE
+#define FABLE_RETAIL_CIME_FINALISESTRING
+#include "fable_ime.h"
 struct CVirtualKeyboard_Methods : CVirtualKeyboard {
     CWideString GetProfileName() const;            // 0x00851890
     void Confirm();
@@ -28,7 +31,7 @@ void CVirtualKeyboard_Methods::Confirm()
     if (accept) {
         this->Done = true;
         this->Canceled = false;
-        if (GFGetIME()->IsIMEActive())
-            GFGetIME()->FinaliseString(true);
+        if (NUISystem::CIME::Get().IsIMEActive())
+            NUISystem::CIME::Get().FinaliseString(true);
     }
 }

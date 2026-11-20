@@ -1,0 +1,83 @@
+addr       parity           behav  name
+0047d648   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0047d648   RELOCATION_MATCH PASS   CTCInGameMenu::IsLoadMenuReceivingInput
+0047d6f2   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0047d6f2   RELOCATION_MATCH PASS   CTCInGameMenu::IsSaveComponentReceivingInput
+004854df   RELOCATION_MATCH PASS   NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::CActionParamCCountedPointer
+0052c870   RELOCATION_MATCH PASS   NUISystem::CChangingStateComponent::IsPositionIndependent
+0052ecc0   RELOCATION_MATCH PASS   NUISystem::CComponent::GetTargetRelativeRenderZoom
+00531e90   RELOCATION_MATCH PASS   NUISystem::CComponent::SetDeletion
+0053fc30   WARN SHARED_HEADER_AVAILABLE CObserver (engine/CObserver.h)
+0053fc30   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0053fc30   RELOCATION_MATCH PASS   NUISystem::CScrollingViewport::`scalar deleting destructor'
+0054ec70   RELOCATION_MATCH PASS   NUISystem::CViewport::`scalar deleting destructor'
+00555390   RELOCATION_MATCH PASS   NUISystem::CScrollableList::~CScrollableList
+005836d2   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+005836d2   RELOCATION_MATCH PASS   CTCInventory::IsQuitMenuReceivingInput
+0058376c   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+0058376c   RELOCATION_MATCH PASS   CTCInventory::IsSaveMenuReceivingInput
+00595356   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00595356   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::ResetSlidersToProfileValues
+00595845   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00595845   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+00595845   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00595845   WARN SHARED_HEADER_AVAILABLE CObserver (engine/CObserver.h)
+00595845   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00595845   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00595845   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::GotoNewProfileScreen
+00596550   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00596550   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00596550   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::GetScoreboardOptionsToProfile
+005966f2   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+005966f2   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::CanAcceptOptionChanges
+0059db82   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0059db82   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+0059db82   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059db82   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+0059db82   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+0059db82   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities
+0059e6bd   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0059e6bd   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+0059e6bd   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059e6bd   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+0059e6bd   WARN RELOC_NAME: ??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+0059e6bd   RELOCATION_MATCH PASS   CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+005ae6af   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005ae6af   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshDescriptions
+005ae9de   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005ae9de   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshBuyDescriptionsPC
+005aeaee   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005aeaee   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshSellDescriptionsPC
+005c39f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005c39f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c39f0   WARN RELOC_NAME: ??1CClothingItemMap@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005c39f0   WARN RELOC_NAME: ??1CRetailHandleVector@@QAE@XZ -> 00440c40 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+005c39f0   RELOCATION_MATCH PASS   CTCInventoryWeapons::~CTCInventoryWeapons
+00851920   RELOCATION_MATCH PASS   CVirtualKeyboard::Confirm
+00485524   WARN STANDIN_LEAF ??_G?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@UAEPAXI@Z (catalog NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::`scalar_deleting_destructor'; names another function)
+00485524   RELOCATION_MATCH PASS   NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::`scalar_deleting_destructor'
+
+WINS: 23
+  0047d648 RELOCATION_MATCH CTCInGameMenu::IsLoadMenuReceivingInput
+  0047d6f2 RELOCATION_MATCH CTCInGameMenu::IsSaveComponentReceivingInput
+  004854df RELOCATION_MATCH NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::??0?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@QAE@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  0052c870 RELOCATION_MATCH NUISystem::CChangingStateComponent::?IsPositionIndependent@CChangingStateComponent@NUISystem@@UBE_NXZ
+  0052ecc0 RELOCATION_MATCH NUISystem::CComponent::?GetTargetRelativeRenderZoom@CComponent@NUISystem@@UBE?AVC2DVector@@XZ
+  00531e90 RELOCATION_MATCH NUISystem::CComponent::?SetDeletion@CComponent@NUISystem@@UAEXVCDeletion@2@@Z
+  0053fc30 RELOCATION_MATCH NUISystem::CScrollingViewport::??_GCScrollingViewport@NUISystem@@UAEPAXI@Z
+  0054ec70 RELOCATION_MATCH NUISystem::CViewport::??_GCViewport@NUISystem@@UAEPAXI@Z
+  00555390 RELOCATION_MATCH NUISystem::CScrollableList::??1CScrollableList
+  005836d2 RELOCATION_MATCH CTCInventory::IsQuitMenuReceivingInput
+  0058376c RELOCATION_MATCH CTCInventory::?IsSaveMenuReceivingInput@CTCInventory@@QAE_NXZ
+  00595356 RELOCATION_MATCH NUISystem::CFrontEndManager::?ResetSlidersToProfileValues@CFrontEndManager@NUISystem@@QAEXXZ
+  00595845 RELOCATION_MATCH NUISystem::CFrontEndManager::?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ
+  00596550 RELOCATION_MATCH NUISystem::CFrontEndManager::?GetScoreboardOptionsToProfile@CFrontEndManager@NUISystem@@QAEXXZ
+  005966f2 RELOCATION_MATCH NUISystem::CFrontEndManager::?CanAcceptOptionChanges@CFrontEndManager@NUISystem@@QAE_NXZ
+  0059db82 RELOCATION_MATCH CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade
+  0059e6bd RELOCATION_MATCH CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+  005ae6af RELOCATION_MATCH CTCInventoryTrade::?RefreshDescriptions@CTCInventoryTrade@@QAEXXZ
+  005ae9de RELOCATION_MATCH CTCInventoryTrade::?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z
+  005aeaee RELOCATION_MATCH CTCInventoryTrade::?RefreshSellDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z
+  005c39f0 RELOCATION_MATCH CTCInventoryWeapons::??1CTCInventoryWeapons
+  00851920 RELOCATION_MATCH CVirtualKeyboard::?Confirm@CVirtualKeyboard_Methods@@QAEXXZ
+  00485524 RELOCATION_MATCH NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>::??_G?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@UAEPAXI@Z

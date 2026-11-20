@@ -13,6 +13,9 @@
 // Retail layout (Ego_r.pdb minus 0x34): CViewport 0x188 bytes, PScrollBar +0x188, PScrollBarOutside +0x18C,
 // Changed +0x190, OffsetToUseAbove +0x194, OffsetToUseUnder +0x198 (same model as the landed constructor).
 // Leaf: ??_GCScrollingViewport@NUISystem@@UAEPAXI@Z
+// Naming (NF156, 2026-11-20, q4683): the base destructor 0x0054EAC0 is ??1CViewport@NUISystem@@UAE@XZ (Ego_r.pdb S_PUB32 + FableWin.pdb;
+//   landed 0x0053E950 binds it), so the row's existing local CViewport model moved into namespace NUISystem in place (was the global
+//   ??1CViewport@@UAE@XZ). The object defines no CViewport symbol (objdump -t).
 
 #include "fable_compiler.h"
 void __cdecl operator delete(void* block);       // 0x00BFE9BC
@@ -30,11 +33,13 @@ struct IViewportSecondaryB {                     // the secondary base at +0x18
     virtual void b00();
 };
 
+namespace NUISystem {
 struct CViewport : IViewportPrimary, CObserver, IViewportSecondaryB {   // retail 0x188 bytes
     unsigned char _pad1c[0x188 - 0x1c];
     CViewport(void* def);                        // 0x0054EA00
     virtual ~CViewport();                        // 0x0054EAC0
 };
+}
 
 namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();

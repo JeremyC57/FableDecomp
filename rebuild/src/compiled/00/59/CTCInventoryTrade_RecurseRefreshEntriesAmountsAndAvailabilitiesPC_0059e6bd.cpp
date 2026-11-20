@@ -21,7 +21,13 @@
 // (nf44 entry 53). The row's own leaf is now the PDB symbol: the real map parameter (AAV?$map@..., was AAUCListMap@@) and the PDB
 // access (AAE private, as engine/CTCInventoryTrade.h and the landed callers bind it; was QAE).
 #define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
 #include "stlport/fable_map.h"
+// NF156 (2026-11-20, q4776): the local CActionParamList stand-in replaced by the shared STLport std::list<NUISystem::CComponent*>
+//   (stlport/fable_containers.h; ~list 0x0042ABCA out of line, FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE). The 8-byte object at
+//   0x0042BED4 / 0x0042CD84 is NUISystem::CDeletion (catalog + FableWin.pdb ??0CDeletion@NUISystem@@QAE@XZ / ..@ABV01@@Z; the landed
+//   0x0041E6D3 / 0x00545B10 bind them), so the member is CDeletion::AssociatedParents, list<CComponent*> (Ego_r.pdb member type,
+//   engine/NUISystem_CDeletion.h), not a list of CActionParam*. The row-local N_0042bed4::CAction stand-in itself is left (NOTES).
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,13 +36,9 @@ class CCharString { public:
 };
 namespace NUISystem {
 class CComponent;
-struct CActionParamList {                       // STLport list<CActionParam*> (one node pointer)
-    void* _M_node;
-    ~CActionParamList();                        // 0x0042ABCA
-};
 namespace N_0042bed4 { struct CAction {                                // retail 8 bytes: ActionType +0, UIActionParams +4
     long             ActionType;
-    CActionParamList UIActionParams;
+    std::list<CComponent*> UIActionParams;
     CAction();                                  // 0x0042BED4
     CAction(const CAction& other);              // 0x0042CD84
 }; } using N_0042bed4::CAction;

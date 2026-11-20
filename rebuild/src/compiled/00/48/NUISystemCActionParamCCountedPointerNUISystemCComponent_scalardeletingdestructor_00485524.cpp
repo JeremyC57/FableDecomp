@@ -6,7 +6,8 @@
 //   operator delete 0x00BFE9BC on flags & 1.
 // Names: Ego_r.pdb / FableWin.pdb ??0?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@QAE@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z,
 //   ??1..UAE@XZ (virtual), ??_E.. (the debug build's vector deleting form); retail emits the scalar form here. Value +8 (the
-//   ctor's CCountedPointer& argument; the ctor's type value UI_ACTION_PARAM_TYPE_COMPONENT is assumed, not graded). Was landed as an extern "C" stand-in calling
+//   ctor's CCountedPointer& argument; the ctor's type value is UI_ACTION_PARAM_TYPE_COUNTED_POINTER, as retail's out-of-line ctor 0x004854DF stores it (nf156 landing:
+//   this TU's pick-any copy of that ctor must have the same body as 0x004854DF's)). Was landed as an extern "C" stand-in calling
 //   @SplitBranch_BaseSubObject_dtor@4 (catalog module CLandscapeBackgroundSubNodeSplitBranch, propagated).
 // Release: 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA; the destructor
 //   is the 5-byte jmp COMDAT 0x00429C53, Ego_r ??1 5 bytes).
@@ -16,7 +17,7 @@
 namespace NUISystem {
 template <class T> class CActionParamCCountedPointer : public CActionParam {
 public:
-    CActionParamCCountedPointer(CCountedPointer<T>& value) : CActionParam(UI_ACTION_PARAM_TYPE_COMPONENT), Value(value) { }
+    CActionParamCCountedPointer(CCountedPointer<T>& value) : CActionParam(UI_ACTION_PARAM_TYPE_COUNTED_POINTER), Value(value) { }
     virtual ~CActionParamCCountedPointer() { }
     CCountedPointer<T> Value;                                           // +0x08
 };

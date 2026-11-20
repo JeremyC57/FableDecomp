@@ -46,7 +46,11 @@ namespace NUISystem { class CComponent; }
 
 namespace std {
 
-template <class _Tp> class list {
+// NF156 (2026-11-20, q4776): in-place respell of this row-local list model to STLport 4.6's two template parameters (class allocator,
+//   declared only), so the destructor binds 0x0042ABCA as ??1?$list@PAVCComponent@NUISystem@@V?$allocator@..@std@@@std@@QAE@XZ, the
+//   catalog / self-row spelling (was ??1?$list@PAVCComponent@NUISystem@@@std@@QAE@XZ).
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {
 public:
     void* _M_node;                                                                     // +0x00 (STLport, 4 bytes)
     ~list();                                                                           // 0x0042ABCA

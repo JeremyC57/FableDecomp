@@ -1,0 +1,38 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004854DF	NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>	CActionParamCCountedPointer	??0?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@QAE@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	CActionParamCCountedPointer::CActionParamCCountedPointer	??0CActionParamCCountedPointer@@QAE@ABUCCountedPointer@@@Z	Ego_r.pdb + FableWin.pdb name sets; engine/NUISystem_CActionParamCCountedPointer.h; the landed referencers (0x004804DE 0x004830A1 0x005C3E91 0x005C47D5) already bind this spelling (reloc_bindings.tsv has no other), so the address ends on one spelling; graded RELOCATION_MATCH
+0x0052C870	NUISystem::CChangingStateComponent	IsPositionIndependent	?IsPositionIndependent@CChangingStateComponent@NUISystem@@UBE_NXZ	CChangingStateComponent::IsPositionIndependent	?IsPositionIndependent@CChangingStateComponent@@QAE_NXZ	Ego_r.pdb S_PUB32 + FableWin.pdb; engine/NUISystem_CChangingStateComponent.h override of CComponent slot 102; calls the base CComponent::IsPositionIndependent 0x0052F1A0 non-virtually; exe scan: no landed referencer; graded RELOCATION_MATCH
+0x0052ECC0	NUISystem::CComponent	GetTargetRelativeRenderZoom	?GetTargetRelativeRenderZoom@CComponent@NUISystem@@UBE?AVC2DVector@@XZ	NUISystem::CSprite::vfunc_123	?GetTargetRelativeRenderZoom@CComponent@NUISystem@@UBE?AUVec@@XZ	Ego_r.pdb S_PUB32 + FableWin.pdb; CComponent vtable 0x0124608C slot 123 (engine/NUISystem_CComponent.h slot 123), CSprite slot 123 inherits it; exe scan: no landed row references 0x0052ECC0; graded RELOCATION_MATCH on the shared headers
+0x0054EC70	NUISystem::CViewport	`scalar deleting destructor'	??_GCViewport@NUISystem@@UAEPAXI@Z	NUISystem::CViewport::`scalar_deleting_destructor'	?ScalarDeletingDestructor@CViewport@@QAEPAXI@Z	compiler-generated ??_G: slot 0 of the primary vtable 0x01249A5C (RTTI .?AVCViewport@NUISystem@@), target of the landed adjustor thunks 0x0054EC50 / 0x0054EC60 (??_E); calls ??1CViewport@NUISystem@@UAE@XZ 0x0054EAC0 (Ego_r.pdb + FableWin.pdb); catalog name respelled with a space (the twin rows spell `vector deleting destructor`); objdump -t of the graded object
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x0047D648	??0CComponentList@@QAE@ABUSAllocator@@@Z	??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	0x0042ABAF
+0x0047D648	??1CComponentList@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x0047D6F2	??0CComponentList@@QAE@ABUSAllocator@@@Z	??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	0x0042ABAF
+0x0047D6F2	??1CComponentList@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x004854DF	??0CCountedPointer@@QAE@ABU0@@Z	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z	0x00428928
+0x004854DF	??_7CActionParamCCountedPointer@@6B@	??_7?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@6B@	0x01236794
+0x0052C870	?IsIndependentByDefault@CChangingStateComponent@@QAE_NXZ	?IsPositionIndependent@CComponent@NUISystem@@UBE_NXZ	0x0052F1A0
+0x0052ECC0	?ConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AUVec@@U3@@Z	?ConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z	0x0052E580
+0x0052ECC0	?GetUIScale@CManager@NUISystem@@QBE?AUVec@@XZ	?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ	0x0041CF47
+0x00531E90	??1CComponentList@NUISystem@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x00531E90	??4CComponentList@NUISystem@@QAEAAU01@ABU01@@Z	??4?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAV01@ABV01@@Z	0x00535800
+0x0053FC30	??1CViewport@@UAE@XZ	??1CViewport@NUISystem@@UAE@XZ	0x0054EAC0
+0x0054EC70	?Dtor@CViewport@@QAEXXZ	??1CViewport@NUISystem@@UAE@XZ	0x0054EAC0
+0x00555390	??1CDeletionParents@NUISystem@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x005836D2	??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z	??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	0x0042ABAF
+0x005836D2	??1CEntryList@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x0058376C	??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z	??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	0x0042ABAF
+0x0058376C	??1CEntryList@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x00595356	?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	0x0059B039
+0x00595845	?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	0x0059B039
+0x00596550	?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	0x0059B039
+0x005966F2	?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ	0x0059B039
+0x0059DB82	??1CActionParamList@NUISystem@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x0059E6BD	??1CActionParamList@NUISystem@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x005AE6AF	??1?$list@PAVCComponent@NUISystem@@@std@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x005AE9DE	??1?$list@PAVCComponent@NUISystem@@@std@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x005AEAEE	??1?$list@PAVCComponent@NUISystem@@@std@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x005C39F0	??1CComponentList@@QAE@XZ	??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0x0042ABCA
+0x00851920	?FinaliseString@CIMECalls@@QAEX_N@Z	?FinaliseString@CIME@NUISystem@@QAEX_N@Z	0x00404B50
+0x00851920	?GFGetIME@@YAPAUCIMECalls@@XZ	?Get@CIME@NUISystem@@SIAAV12@XZ	0x00404A80
+0x00851920	?IsIMEActive@CIMECalls@@QAE_NXZ	?IsIMEActive@CIME@NUISystem@@QBE_NXZ	0x00404C50

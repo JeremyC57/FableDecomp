@@ -43,11 +43,12 @@ public:
 };
 #pragma pack(pop)
 
-struct SComponentListNode;
-struct CComponentList {                              // std::list<NUISystem::CComponent*> (head pointer)
-    SComponentListNode* m_pNode;
-    ~CComponentList();                               // 0x0042ABCA
-};
+// NF156 (2026-11-20, q4776): the local CComponentList stand-in replaced by the shared STLport std::list<NUISystem::CComponent*>
+//   (stlport/fable_containers.h); ~list 0x0042ABCA stays out of line with its body visible (FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, as
+//   the landed list<CComponent*> callers 0x00583815 / 0x005A887D).
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#include "stlport/fable_containers.h"
+namespace NUISystem { class CComponent; }
 struct CClothingItemMap {                            // std::map<NUISystem::CComponent*, long> (12 bytes)
     void* _M_header; unsigned long _M_node_count; unsigned char _M_key_compare;
     ~CClothingItemMap();                             // 0x004DD1C4
@@ -92,7 +93,7 @@ public:
     NUISystemComponent*        PAssignedMeleeMenuEntry;    // +0x18C
     NUISystemComponent*        PRangedList;          // +0x190
     NUISystemComponent*        PMeleeList;           // +0x194
-    CComponentList             AvailableWeaponsEntries;   // +0x198
+    std::list<NUISystem::CComponent*> AvailableWeaponsEntries;   // +0x198
     virtual void v00();
     virtual ~CTCInventoryWeapons();
 };

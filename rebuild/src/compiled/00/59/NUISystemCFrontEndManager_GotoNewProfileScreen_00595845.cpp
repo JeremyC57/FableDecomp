@@ -43,7 +43,11 @@ public:
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~vector();                                           // 0x00412130 for CWideString (??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ)
 };
-template <class T> class deque {
+// NF156 (2026-11-20, q6171): in-place respell of this row-local deque model to STLport 4.6's two template parameters (class allocator,
+//   declared only), so back() binds 0x0059B039 as ?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@
+//   QAEAAPAVCComponent@NUISystem@@XZ, the self-row / Ego_r.pdb spelling (was ?back@?$deque@PAVCComponent@NUISystem@@@std@@QAE..).
+template <class T> class allocator;
+template <class T, class _Alloc = allocator<T> > class deque {
 public:
     unsigned char _body[0x28];
     T& back();                                           // 0x0059B039 for CComponent*

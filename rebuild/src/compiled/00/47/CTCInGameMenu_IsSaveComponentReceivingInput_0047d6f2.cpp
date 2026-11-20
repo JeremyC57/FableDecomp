@@ -25,24 +25,20 @@ public:
     CCharString(const CCharString& other);
 };
 
+// NF156 (2026-11-20, q4776): the local CComponentList / SComponentListNode / SAllocator stand-ins replaced by the shared STLport
+//   std::list<NUISystem::CComponent*> (stlport/fable_containers.h), with the define set of the landed list<CComponent*> callers
+//   0x00583815 / 0x005838DD (ctor 0x0042ABAF and ~list 0x0042ABCA out of line with their bodies visible).
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+#include "stlport/fable_containers.h"
 namespace NUISystem { class CComponent; }
-struct SAllocator { SAllocator() { } };
-struct SComponentListNode {
-    SComponentListNode*    m_pNext;
-    SComponentListNode*    m_pPrev;
-    NUISystem::CComponent* m_data;
-};
-struct CComponentList {                                   // STLport list<NUISystem::CComponent*>: the node pointer only
-    SComponentListNode* m_pNode;
-    CComponentList(const SAllocator& allocator = SAllocator());   // 0x0042ABAF
-    ~CComponentList();                                    // 0x0042ABCA
-};
 
 namespace NUISystem {
 class CComponent {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void FindChildrenByName(CCharString name, CComponentList& found);   // slot 5 (+0x14)
+    virtual void FindChildrenByName(CCharString name, std::list<CComponent*>& found);   // slot 5 (+0x14)
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
@@ -83,10 +79,10 @@ public:
 bool CTCInGameMenu::IsSaveComponentReceivingInput()
 {
     for (unsigned long i = 0; i < Components.size(); ++i) {
-        CComponentList found;
+        std::list<NUISystem::CComponent*> found;
         Components[i]->FindChildrenByName(CCharString("COMPONENT_SAVE", -1), found);
-        for (SComponentListNode* node = found.m_pNode->m_pNext; node != found.m_pNode; node = node->m_pNext) {
-            NUISystem::CComponent* child = node->m_data;
+        for (std::list<NUISystem::CComponent*>::iterator it = found.begin(); it != found.end(); ++it) {
+            NUISystem::CComponent* child = *it;
             if (child && child->GetState() == 3)
                 return true;
         }
