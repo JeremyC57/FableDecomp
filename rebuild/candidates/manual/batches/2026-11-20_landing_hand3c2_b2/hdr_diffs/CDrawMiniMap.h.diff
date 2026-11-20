@@ -1,0 +1,33 @@
+diff --git a/rebuild/include/engine/CDrawMiniMap.h b/rebuild/include/engine/CDrawMiniMap.h
+index ef15e82ee..4602eea55 100644
+--- a/rebuild/include/engine/CDrawMiniMap.h
++++ b/rebuild/include/engine/CDrawMiniMap.h
+@@ -67,6 +67,15 @@ FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, RegionExits) == 0x154);
+ // ?Draw@CDrawMiniMap@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z (retail 0x00648820); CPlayerGui holds it as the counted
+ // pointer +0x160 (engine/CPlayerGui.h). Needs only engine/NPlayerGui_CDrawBase.h.
+ #include "engine/NPlayerGui_CDrawBase.h"
++#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWMINIMAP_REGIONEXITS
++// Nested opt-in (hand3c2, row 0x0064DD9A NPlayerGui::CDrawMiniMap::UpdateRegionExitNames): Ego_r.pdb
++// ?UpdateRegionExitNames@CDrawMiniMap@NPlayerGui@@IAEXABVCRegion@@@Z (protected; FableWin.pdb same spelling) and RegionExits typed as
++// its PDB type vector<pair<C3DVector,CCharString> > (retail STLport 12 bytes at +0x154: the row clears it through
++// vector::erase 0x00656837 and appends through push_back 0x00656EF2). Same offsets, same size.
++#include "fable_string.h"
++#include "engine/C3DVector.h"
++class CRegion;
++#endif
+ class CEnginePrimitivePrepareInfo;
+ namespace NPlayerGui {
+ class CDrawMiniMap : public CDrawBase {
+@@ -93,7 +102,12 @@ protected:
+     unsigned char FadeInOut[0x1c];                                       // +0x100 CFadeInFadeOutBase
+     unsigned char TextFadeInOut[0x1c];                                   // +0x11c CFadeInFadeOutBase
+     unsigned char ScreenPosFadeInOut[0x1c];                              // +0x138 CFadeInFadeOutBase
++#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWMINIMAP_REGIONEXITS
++    std::vector<std::pair<C3DVector,CCharString> > RegionExits;           // +0x154
++    void UpdateRegionExitNames(const CRegion& region);                   // 0x0064DD9A
++#else
+     unsigned char RegionExits[0xc];                                      // +0x154 vector<pair<C3DVector,CCharString> >
++#endif
+ };
+ }
+ FABLE_STATIC_ASSERT_AT(93, sizeof(NPlayerGui::CDrawMiniMap) == 0x160);

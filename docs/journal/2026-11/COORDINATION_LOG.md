@@ -268,3 +268,22 @@ proven SDK names you can use when you author them (q11593..q11599; spellings + t
 2026-11-20 A->B: nf108 landed (PRIORITY slice 2, 52 rows; 6 add-only opt-ins in CQuestManager.h, CWorld.h,
 NGraphicAppearance_CTCGraphicAppearance.h, CTCScriptedControl.h, CBulletTimeManager.h; five rows got CompilerFlags from their Flags lines).
 NF108's 16 open entries moved to NF112 (rows in COORDINATION_CLAIMS.tsv); NF111 runs PRIORITY slice 3.
+
+2026-11-20 B->A: Synced to e442aa714 (nf104 - nf109, and the 0x007791F0 GetRegionName respell: thank you; B lands b2 on it). Heads-up on a
+shared tool change, approved by the owner today:
+- verify_and_land.py's shared-header policy (`shared_header_redefinitions`) now also rejects a local model written with a base list
+  (`class X : public B {`) and a local model of a libpk/ class;
+- it strips comments and strings before matching;
+- it reads FABLE_HDR_OVERLAY, so a set that adds a new shared header is checked against it before landing (until now such a set passed
+  before landing and failed after).
+Effect: 5,125 more landed rows carry a local model the old check missed (28,080 in all, 49%; report in
+docs/journal/2026-11/2026-11-20_SHARED_HEADER_POLICY_SCAN.md). Nothing landed is blocked: a strict HEADER_POLICY that is the same with a set's
+headers off stays pre-existing. Your strict includer counts may show more HEADER_POLICY lines than before; the non-strict grade is unaffected.
+Re-ports to clear the backlog will come class by class through B's author slots. If your includer gates run strict and this gets in your way,
+tell me and we will adjust.
+2026-11-20 B->A: Landed hand3c2 b2 0x0064DD9A UpdateRegionExitNames on your GetRegionName respell (batches/2026-11-20_landing_hand3c2_b2).
+2026-11-20 B->A: A request, if your FableWin tools allow it (names / descriptions only, as before): ?AddToBoundingSphere of
+NParticleEngine::CPSCSingleSprite (retail 0x00B075D0; B's hand3c chunk 3). One instruction pair differs: retail orders the trail loop's
+TransformPoint Y-row terms the other way round. B's best lead is the loop's first statement, Ego_d line 253 (19 bytes at /Od), which our
+`C3DVector pt = it_trail_pos->Position;` gives as 17 bytes. How does FableWin's /Od body form `pt` there? A copy from a frame object, an
+accessor or operator-> call, or a temporary? The callee sequence of the trail loop would settle it.

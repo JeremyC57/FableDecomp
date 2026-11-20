@@ -1,0 +1,38 @@
+src	1	    RegionExits.clear();\n	    ;\n
+src	1	world_map.GetRegionNumberFromName(region.GetName())	world_map.GetRegionNumberFromName(CCharString("Region1x"))
+src	1	CThingFilter_HasTC(CTCDRegionExit::StatGetInterfaceType())	CThingFilter_HasTC(CTCActionUseScriptedHook::StatGetInterfaceType())
+src	1	== region_number)	!= region_number)
+src	2	== region_number)	!= region_number)
+src	1	pthing->GetCurrentMapNumber()) == region_number	pthing->GetCurrentMapNumber() + 10) == region_number
+src	2	pthing->GetCurrentMapNumber()) == region_number	pthing->GetCurrentMapNumber() + 10) == region_number
+src	1	if (ptcd_region_exit->IsActive())	if (!ptcd_region_exit->IsActive())
+src	1	if (region.GetMiniMapRegionExitTextOffset(exit_name, text_offset))	if (!region.GetMiniMapRegionExitTextOffset(exit_name, text_offset))
+src	2	if (region.GetMiniMapRegionExitTextOffset(exit_name, text_offset))	if (!region.GetMiniMapRegionExitTextOffset(exit_name, text_offset))
+src	1	region.GetMiniMapRegionExitTextOffset(exit_name, text_offset)	region.GetMiniMapRegionExitTextOffset(ptcd_region_exit->GetDisplayName(), text_offset)
+src	1	exit_pos.X += text_offset.X;	exit_pos.X += text_offset.Y;
+src	1	exit_pos.Y += text_offset.Y;	exit_pos.Z += text_offset.Y;
+src	2	exit_pos.X += text_offset.X;	exit_pos.X -= text_offset.X;
+src	2	exit_pos.Y += text_offset.Y;	exit_pos.Y = text_offset.Y;
+src	1	std::pair<C3DVector, CCharString>(exit_pos, display_name)	std::pair<C3DVector, CCharString>(exit_pos, exit_name)
+src	2	std::pair<C3DVector, CCharString>(exit_pos, display_name)	std::pair<C3DVector, CCharString>(exit_pos, exit_name)
+src	1	C3DVector exit_pos = pthing->GetPos();	C3DVector exit_pos = (*exit_list.begin())->GetPos();
+src	2	C3DVector exit_pos = pthing->GetPos();	C3DVector exit_pos = (*objects_list.begin())->GetPos();
+src	1	            const CTCActionUseScriptedHook* ptc_scripted_hook;\n            pthing->PeekTC(&ptc_scripted_hook);\n            if (ptc_scripted_hook->IsUsable())	            const CTCActionUseScriptedHook* ptc_scripted_hook;\n            pthing->PeekTC(&ptc_scripted_hook);\n            if (!ptc_scripted_hook->IsUsable())
+src	1	                if (pentrance)	                if (!pentrance)
+src	1	                if (pentrance)	                if (true)
+src	1	GetAllThings<CThing>(CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>(), objects_list)	GetAllThings<CThing>(CThingFilter_HasTC(CTCActionUseScriptedHook::StatGetInterfaceType()), objects_list)
+src	1	objects_list);\n    for (std::list<const CThing*>::const_iterator it = objects_list.begin()	exit_list);\n    for (std::list<const CThing*>::const_iterator it = objects_list.begin()
+src	1	                RegionExits.push_back(	                if (0) RegionExits.push_back(
+src	1	                    RegionExits.push_back(	                    if (0) RegionExits.push_back(
+src	1	const CCharString& exit_name = ptc_scripted_hook->GetRegionEntranceName();	const CCharString& exit_name = ptc_scripted_hook->GetRegionEntranceDisplayName();
+src	1	const CCharString& display_name = ptc_scripted_hook->GetRegionEntranceDisplayName();	const CCharString& display_name = ptc_scripted_hook->GetRegionEntranceName();
+src	1	const CCharString& exit_name = ptcd_region_exit->GetRegionName();	const CCharString& exit_name = ptcd_region_exit->GetDisplayName();
+# audit mutants (2026-11-19): header bodies the row object carries + extra row decisions
+hdr:engine/CThingFilter_HasTCOfLeafType.h	1	            return true;\n        return false;	            return false;\n        return false;
+hdr:engine/CThingFilter_HasTCOfLeafType.h	1	        if (test_thing.GetTCOfLeafType(&ptc_type))	        if (!test_thing.GetTCOfLeafType(&ptc_type))
+hdr:engine/CTCDRegionExit.h	1	bool IsActive() const { return Active; }	bool IsActive() const { return true; }
+hdr:engine/CThing.h	1	*result=static_cast<T*>(PTCDriver);	*result=static_cast<T*>(PTCDriver)+1;
+src	1	                    exit_pos.Y += text_offset.Y;	                    exit_pos.Y += text_offset.X;
+src	2	        const CThing* pthing = *it;	        const CThing* pthing = *objects_list.begin();
+src	1	const CCharString& display_name = ptcd_region_exit->GetDisplayName();	const CCharString& display_name = ptcd_region_exit->GetRegionName();
+src	1	pthing->GetPos();	pthing->GetPos(); exit_pos.Z += 1.0f;

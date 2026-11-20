@@ -124,7 +124,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0064b8b3	CDrawTargetInfo	Draw	1426	parked	DIFFER(11v1426)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064b8b3.cpp	original
 0064ccb3	CDrawStamina	Draw	1526	parked	DIFFER(11v1526)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064ccb3.cpp	original
 0064d7a6	CDrawQuickAccessIcons	DrawChargeGraphic	388	parked	DIFFER(393v388)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/0064d7a6.cpp	original
-0064dd9a	NPlayerGui::CDrawMiniMap	UpdateRegionExitNames	580	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(521v580)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064dd9a.alt.cpp	original
 0064e2cc	CDrawSpiritsHealth	Draw	1395	parked	DIFFER(11v1395)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0064e2cc.cpp	original
 0064fdb4	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::vfunc_0	2593	parked	DIFFER(2593v2593)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0064fdb4.cpp	gapscan/boundary
 00650c1d	CQuestInfoElementCounterList	DrawAt	635	parked	DIFFER(639v635)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00650c1d.cpp	original

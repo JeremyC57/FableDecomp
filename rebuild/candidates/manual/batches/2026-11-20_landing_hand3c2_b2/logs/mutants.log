@@ -1,0 +1,38 @@
+baseline SURVIVED
+KILLED |     RegionExits.clear();  ->     ; 
+KILLED | world_map.GetRegionNumberFromName(region.GetName()) -> world_map.GetRegionNumberFromName(CCharString("Reg
+KILLED | CThingFilter_HasTC(CTCDRegionExit::StatGetInterfaceType()) -> CThingFilter_HasTC(CTCActionUseScriptedHook::StatG
+KILLED | == region_number) -> != region_number)
+KILLED | == region_number) -> != region_number)
+KILLED | pthing->GetCurrentMapNumber()) == region_number -> pthing->GetCurrentMapNumber() + 10) == region_numb
+KILLED | pthing->GetCurrentMapNumber()) == region_number -> pthing->GetCurrentMapNumber() + 10) == region_numb
+KILLED | if (ptcd_region_exit->IsActive()) -> if (!ptcd_region_exit->IsActive())
+KILLED | if (region.GetMiniMapRegionExitTextOffset(exit_name, text_offset)) -> if (!region.GetMiniMapRegionExitTextOffset(exit_na
+KILLED | if (region.GetMiniMapRegionExitTextOffset(exit_name, text_offset)) -> if (!region.GetMiniMapRegionExitTextOffset(exit_na
+KILLED | region.GetMiniMapRegionExitTextOffset(exit_name, text_offset) -> region.GetMiniMapRegionExitTextOffset(ptcd_region_
+KILLED | exit_pos.X += text_offset.X; -> exit_pos.X += text_offset.Y;
+KILLED | exit_pos.Y += text_offset.Y; -> exit_pos.Z += text_offset.Y;
+KILLED | exit_pos.X += text_offset.X; -> exit_pos.X -= text_offset.X;
+KILLED | exit_pos.Y += text_offset.Y; -> exit_pos.Y = text_offset.Y;
+KILLED | std::pair<C3DVector, CCharString>(exit_pos, display_name) -> std::pair<C3DVector, CCharString>(exit_pos, exit_n
+KILLED | std::pair<C3DVector, CCharString>(exit_pos, display_name) -> std::pair<C3DVector, CCharString>(exit_pos, exit_n
+KILLED | C3DVector exit_pos = pthing->GetPos(); -> C3DVector exit_pos = (*exit_list.begin())->GetPos(
+KILLED | C3DVector exit_pos = pthing->GetPos(); -> C3DVector exit_pos = (*objects_list.begin())->GetP
+KILLED |             const CTCActionUseScriptedHook* ptc_scripted_hook;         ->             const CTCActionUseScriptedHook* ptc_sc
+KILLED |                 if (pentrance) ->                 if (!pentrance)
+KILLED |                 if (pentrance) ->                 if (true)
+KILLED | GetAllThings<CThing>(CThingFilter_HasTCOfLeafType<CTCActionUseScripted -> GetAllThings<CThing>(CThingFilter_HasTC(CTCActionU
+KILLED | objects_list);     for (std::list<const CThing*>::const_iterator it =  -> exit_list);     for (std::list<const CThing*>::con
+KILLED |                 RegionExits.push_back( ->                 if (0) RegionExits.push_back(
+KILLED |                     RegionExits.push_back( ->                     if (0) RegionExits.push_back(
+KILLED | const CCharString& exit_name = ptc_scripted_hook->GetRegionEntranceNam -> const CCharString& exit_name = ptc_scripted_hook->
+KILLED | const CCharString& display_name = ptc_scripted_hook->GetRegionEntrance -> const CCharString& display_name = ptc_scripted_hoo
+KILLED | const CCharString& exit_name = ptcd_region_exit->GetRegionName(); -> const CCharString& exit_name = ptcd_region_exit->G
+KILLED | [engine/CThingFilter_HasTCOfLeafType.h]             return true;         return false; ->             return false;         return false;
+KILLED | [engine/CThingFilter_HasTCOfLeafType.h]         if (test_thing.GetTCOfLeafType(&ptc_type)) ->         if (!test_thing.GetTCOfLeafType(&ptc_type)
+KILLED | [engine/CTCDRegionExit.h] bool IsActive() const { return Active; } -> bool IsActive() const { return true; }
+KILLED | [engine/CThing.h] *result=static_cast<T*>(PTCDriver); -> *result=static_cast<T*>(PTCDriver)+1;
+KILLED |                     exit_pos.Y += text_offset.Y; ->                     exit_pos.Y += text_offset.X;
+KILLED |         const CThing* pthing = *it; ->         const CThing* pthing = *objects_list.begin
+KILLED | const CCharString& display_name = ptcd_region_exit->GetDisplayName(); -> const CCharString& display_name = ptcd_region_exit
+KILLED | pthing->GetPos(); -> pthing->GetPos(); exit_pos.Z += 1.0f;

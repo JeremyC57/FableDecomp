@@ -1,0 +1,16 @@
+diff --git a/rebuild/include/engine/CRegion.h b/rebuild/include/engine/CRegion.h
+index e53e1e8f4..fccac5d23 100644
+--- a/rebuild/include/engine/CRegion.h
++++ b/rebuild/include/engine/CRegion.h
+@@ -81,6 +81,11 @@ public: const CCharString& GetName() const { return Name; }
+     unsigned long GetWorldMapNameGraphic() const;                // 0x006BC380
+ #endif
+     const std::map<CCharString,C2DVector>& GetMiniMapRegionExitTextOffsets() const { return MiniMapRegionExitTextOffsets; }
++#ifdef FABLE_RETAIL_CREGION_MINIMAPREGIONEXITTEXTOFFSET
++    // Opt-in (hand3c2, row 0x0064DD9A NPlayerGui::CDrawMiniMap::UpdateRegionExitNames): Ego_r.pdb
++    // ?GetMiniMapRegionExitTextOffset@CRegion@@QBE_NABVCCharString@@AAVC2DVector@@@Z, out of line (0x006BC350, landed). Declaration only.
++    bool GetMiniMapRegionExitTextOffset(const CCharString& exit_name, C2DVector& text_offset) const;   // 0x006BC350
++#endif
+     const std::vector<long>& GetMaps() const { return Maps; }
+     std::vector<long>& GetVisMaps() { return VisMaps; }
+ };

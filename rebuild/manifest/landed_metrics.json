@@ -1,12 +1,12 @@
 {
-  "catalog_rows": 56821,
+  "catalog_rows": 56822,
   "known_functions": 57842,
   "original_functions": 49567,
-  "landed_known": 56821,
-  "landed_original": 48662,
-  "landed_genuine_known": 56820,
-  "landed_genuine_original": 48661,
-  "genuine": 56048,
+  "landed_known": 56822,
+  "landed_original": 48663,
+  "landed_genuine_known": 56821,
+  "landed_genuine_original": 48662,
+  "genuine": 56049,
   "retail_asm": 321,
   "toolchain_library": 451,
   "asm_bake": 1,
@@ -14,16 +14,16 @@
   "vendor_library": 9,
   "vendor_source": 606,
   "missing_source": 0,
-  "matched_bytes": 8897952,
-  "matched_bytes_genuine": 8897473,
-  "unlanded_bytes_estimate": 1163021,
+  "matched_bytes": 8898532,
+  "matched_bytes_genuine": 8898053,
+  "unlanded_bytes_estimate": 1162441,
   "split": {
     "game": {
       "known": 52340,
-      "landed": 51385,
-      "landed_genuine": 51384,
-      "matched_bytes_genuine": 8265645,
-      "unlanded_bytes_estimate": 1128119
+      "landed": 51386,
+      "landed_genuine": 51385,
+      "matched_bytes_genuine": 8266225,
+      "unlanded_bytes_estimate": 1127539
     },
     "lionhead_library": {
       "known": 4241,
