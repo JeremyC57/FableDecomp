@@ -1462,3 +1462,7 @@ against CODAApi.lib, or stay compiled C++?
   - With the proven texts, no T matches (T<=63 1976, T64..66 2149v2073 with 544 diff lines, T>=68 2277). The loop-2 and sky LowerBound sites share instantiation, f (6.25, inside GetTC's HasTC test) and score but take opposite retail decisions, so the heuristic inliner cannot reproduce retail from this text.
   - Calc's called and expanded sites all pass constant arguments. Ego_d and FableWin are both 3407 B (same revision).
   - The do{}while(0) device does not match either (T60 2117). Files: pending/2026-11-20_p25_open/008e18d0.
+- 2026-11-20 (Account B p25N, 0x00833C00, open) c2prio_x on p25H's v2 (DIFFER(2296v2300)):
+  - `info` (#15) is split by the driver right after the const 0xff (#3) takes ebx. There is no write to its allowed set before the split (not the callee-saved mask), and it gets ebp only later, as piece #83.
+  - Retail keeps info in ebp and loads [ebp+34h] twice per Engine call (the vtable into ebx mid-pushes, `this` into ecx before the call); ours makes one Engine temp per call that spans the argument calls.
+  - The cause of the split is unmeasured.
