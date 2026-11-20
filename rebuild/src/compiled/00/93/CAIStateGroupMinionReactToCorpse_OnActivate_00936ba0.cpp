@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // creature mode 15.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00936BA0, length 103 bytes (+ int3 padding). Vtable slot 2.
-// Callees: the creature's life-state getter @ 0x00662010 (`[this+0E0h]+0F0h`; manifest "CPixelShader::
+// Callees: CThingCreatureBase::GetProperty() const @ 0x00662010 (`[this+0E0h]+0F0h`; manifest "CPixelShader::
 // CountReferences" is propagated), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x31 =
 // CTCCreatureModeManager, bit 17 of the bitset dword at +0x24), CTCCreatureModeManager::AddMode @ 0x0073AE10.
 // Shape: `if (state != 3) { GetInterface(&modes, 0x31); modes->AddMode(15); }` -- the creature is re-read from
@@ -70,9 +70,10 @@ class CAIStateGroupBase { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CThingCreatureState {
-    long GetLifeState();                        // 0x00662010
-};
+// 0x00662010 (NF115, PRIORITY q4488; was the stand-in CThingCreatureState::GetLifeState): FableWin.pdb / Ego_r.pdb
+// ?GetProperty@CThingCreatureBase@@QBEKXZ (the creature def's Property), declared by the shared flattened header (NF115 opt-in).
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETPROPERTY
+#include "engine/CThingCreatureBase.h"
 
 class CTCCreatureModeManager { public:                 // interface type 0x31
     bool AddMode(unsigned long mode);           // 0x0073AE10
@@ -84,7 +85,7 @@ struct CAIStateGroup_MinionReactToCorpse : CAIStateGroupBase {
 
 void CAIStateGroup_MinionReactToCorpse::OnActivate()
 {
-    if (((CThingCreatureState*)PBrain->PCreature)->GetLifeState() != 3) {
+    if (((CThingCreatureBase*)PBrain->PCreature)->GetProperty() != 3) {
         CTCCreatureModeManager* pModes;
         PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
         pModes->AddMode(15);

@@ -1,0 +1,2 @@
+# recheck after landing nf115: 1160 rows (includers of CThingSearchTools.h / CThingCreatureBase.h + the 13 renamed rows + exe-scan referencing rows)
+good 1159 bad 1: 0x007E2A60 DIFFER(707v707), the known on-hold row (pre-existing)

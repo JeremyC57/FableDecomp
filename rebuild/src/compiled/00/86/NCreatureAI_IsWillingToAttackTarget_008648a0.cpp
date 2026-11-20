@@ -8,7 +8,7 @@
 // Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) const 0x00485815 (same-TU noinline
 //   stand-in, as the sibling 0x00864B30: the def stays in ebp, the target spills), CVectorMap::LowerBound const
 //   0x004365B0, CTCVillageMember::GetPVillage() const 0x007EE540 (called twice), CThingAICreature::
-//   GetCurrentStateGroupType() const 0x00662010, CTCCreatureOpinionOfHero::IsHeroOpinionEnemy() const 0x006827A0 and
+//   CThingCreatureBase::GetProperty() const 0x00662010, CTCCreatureOpinionOfHero::IsHeroOpinionEnemy() const 0x006827A0 and
 //   IsWillingToAttackHeroOnOpinion() const 0x006817F0, CTCScriptedControl::IsActionListEmpty() const 0x007122C0,
 //   CTCOpinionSource::PeekWitnessWillNotAttack(const CThingAICreature*) const 0x008640C0; the def's virtual slot 1.
 // Layout: CThing ThingType +0x10 (2 = creature), UsingComponents +0x20, Components +0x44, PBaseDef +0x70; CCreatureDef
@@ -150,13 +150,13 @@ public:
     }
 };
 
-enum EAIStateGroupType { AI_STATE_GROUP_TYPE_3 = 3 };
-
-class CThingCreatureBase : public CThing { };
-class CThingAICreature : public CThingCreatureBase {
+class CThingCreatureBase : public CThing {
 public:
-    EAIStateGroupType GetCurrentStateGroupType() const;     // 0x00662010
+    // 0x00662010 (NF115, PRIORITY q4488; was CThingAICreature::GetCurrentStateGroupType, a guess): FableWin.pdb / Ego_r.pdb
+    // ?GetProperty@CThingCreatureBase@@QBEKXZ, the creature def's Property (`[this+0E0h]+0F0h`); 3 is the guard property.
+    unsigned long GetProperty() const;                       // 0x00662010
 };
+class CThingAICreature : public CThingCreatureBase { };
 
 class CTCScriptedControl {                                  // interface type 0x1F
 public:
@@ -201,7 +201,7 @@ bool __fastcall IsWillingToAttackTarget(const CThingAICreature* creature, const 
     if (creature->HasTC(0x23)) {
         const CTCVillageMember* village_member = (const CTCVillageMember*)creature->PeekTC(0x23);
         if (target->ThingType == 2 && village_member->GetPVillage() && village_member->GetPVillage()->IsEnemyBecauseOfCrime) {
-            if (creature->GetCurrentStateGroupType() != 3) {
+            if (creature->GetProperty() != 3) {
                 if (!creature->HasTC(0x4f) ||
                     !((const CTCCreatureOpinionOfHero*)creature->PeekTC(0x4f))->IsHeroOpinionEnemy())
                     return false;
@@ -215,7 +215,7 @@ bool __fastcall IsWillingToAttackTarget(const CThingAICreature* creature, const 
         }
         const CTCSummonableCreature* summonable;
         if (!scripted && !(creature->PeekTC(0xa0, &summonable) && summonable->HasBeenSummoned) &&
-            creature->HasTC(0x4f) && creature->GetCurrentStateGroupType() != 3) {
+            creature->HasTC(0x4f) && creature->GetProperty() != 3) {
             const CTCOpinionSource* opinion_source;
             if (target->PeekTC(0x50, &opinion_source) && opinion_source->PeekWitnessWillNotAttack(creature))
                 return false;

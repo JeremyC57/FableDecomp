@@ -1,5 +1,5 @@
 // CPersistContext::TransferVector<ENavigatorType>(vector<ENavigatorType>& vec) -- unnamed binary-only vector transfer: CRC check, then the binary vector reader (Mode 2) or writer (any other mode)
-// Leaf: ??$TransferVector@W4ENavigatorType@@@CPersistContext@@QAEXAAV?$vector@
+// Leaf: ??$TransferVector@W4ENavigatorType@@@CPersistContext@@QAEXAAV?$vector@W4ENavigatorType@@V?$allocator@W4ENavigatorType@@@std@@@std@@@Z
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006724B0, 37 bytes, `ret 4`; ecx = the context, one pushed vector address; no frame.
 // Identity (T = ENavigatorType): sole caller CThingCreatureDef::Transfer (0x00671600) at 0x00671742 passes +0xC8 after the float

@@ -32899,8 +32899,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00662010'
         Module = 'CThingCreatureBase'
-        Source = '00/66/CPixelShader_CountReferences_00662010.cpp'
-        TestSource = '00/66/CPixelShader_CountReferences_00662010_test.cpp'
+        Source = '00/66/CThingCreatureBase_GetProperty_00662010.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetProperty_00662010_test.cpp'
         PassPattern = '00662010_TEST PASS'
     }
     [pscustomobject]@{
@@ -125556,9 +125556,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006604eb'
-        Module = '_global'
-        Source = '00/66/global_ListPushFrontWrapper006604eb_006604eb.cpp'
-        TestSource = '00/66/global_ListPushFrontWrapper006604eb_006604eb_test.cpp'
+        Module = 'std::list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature> > >'
+        Source = '00/66/stdlist_pushback_006604eb.cpp'
+        TestSource = '00/66/stdlist_pushback_006604eb_test.cpp'
         PassPattern = 'LISTPUSH_006604eb_PASS'
     }
     [pscustomobject]@{
@@ -149938,9 +149938,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0069c3d0'
-        Module = 'CCountedPointer_005ecf50'
-        Source = '00/69/CCountedPointer005ecf50_Reset_0069c3d0.cpp'
-        TestSource = '00/69/CCountedPointer005ecf50_Reset_0069c3d0_test.cpp'
+        Module = 'CCountedPointer<NCameraModes::CScriptModuleBase>'
+        Source = '00/69/CCountedPointer_Reset_0069c3d0.cpp'
+        TestSource = '00/69/CCountedPointer_Reset_0069c3d0_test.cpp'
         PassPattern = '0069c3d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -175132,44 +175132,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065f9e0'
-        Module = '_unattributed'
-        Source = '00/65/unattributed_ConstructCRangeString0065f9e0_0065f9e0.cpp'
-        TestSource = '00/65/unattributed_ConstructCRangeString0065f9e0_0065f9e0_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_findif_0065f9e0.cpp'
+        TestSource = '00/65/std_findif_0065f9e0_test.cpp'
         PassPattern = '0065f9e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065fa0a'
-        Module = '_unattributed'
-        Source = '00/65/unattributed_ConstructCRangeString0065fa0a_0065fa0a.cpp'
-        TestSource = '00/65/unattributed_ConstructCRangeString0065fa0a_0065fa0a_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_findif_0065fa0a.cpp'
+        TestSource = '00/65/std_findif_0065fa0a_test.cpp'
         PassPattern = '0065fa0a_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065fa34'
-        Module = '_unattributed'
-        Source = '00/65/unattributed_ConstructCRangeString0065fa34_0065fa34.cpp'
-        TestSource = '00/65/unattributed_ConstructCRangeString0065fa34_0065fa34_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_findif_0065fa34.cpp'
+        TestSource = '00/65/std_findif_0065fa34_test.cpp'
         PassPattern = '0065fa34_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065fa5e'
-        Module = '_unattributed'
-        Source = '00/65/unattributed_ConstructCRangeString0065fa5e_0065fa5e.cpp'
-        TestSource = '00/65/unattributed_ConstructCRangeString0065fa5e_0065fa5e_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_findif_0065fa5e.cpp'
+        TestSource = '00/65/std_findif_0065fa5e_test.cpp'
         PassPattern = '0065fa5e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065fa88'
-        Module = '_unattributed'
-        Source = '00/65/unattributed_ConstructCRangeString0065fa88_0065fa88.cpp'
-        TestSource = '00/65/unattributed_ConstructCRangeString0065fa88_0065fa88_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_findif_0065fa88.cpp'
+        TestSource = '00/65/std_findif_0065fa88_test.cpp'
         PassPattern = '0065fa88_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065fab2'
-        Module = '_unattributed'
-        Source = '00/65/unattributed_ConstructCRangeString0065fab2_0065fab2.cpp'
-        TestSource = '00/65/unattributed_ConstructCRangeString0065fab2_0065fab2_test.cpp'
+        Module = 'std'
+        Source = '00/65/std_findif_0065fab2.cpp'
+        TestSource = '00/65/std_findif_0065fab2_test.cpp'
         PassPattern = '0065fab2_TEST PASS'
     }
     [pscustomobject]@{
@@ -233800,8 +233800,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0065f744'
         Module = 'CThingSearchTools'
-        Source = '00/65/CThingSearchTools_GetPBestThingCThingFilterHasTCCThingCompareNeare_0065f744.cpp'
-        TestSource = '00/65/CThingSearchTools_GetPBestThingCThingFilterHasTCCThingCompareNeare_0065f744_test.cpp'
+        Source = '00/65/CThingSearchTools_GetPBestThing_0065f744.cpp'
+        TestSource = '00/65/CThingSearchTools_GetPBestThing_0065f744_test.cpp'
         PassPattern = '0065f744_TEST PASS'
     }
     [pscustomobject]@{

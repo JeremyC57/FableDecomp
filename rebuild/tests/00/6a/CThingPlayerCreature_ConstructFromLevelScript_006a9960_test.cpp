@@ -15,9 +15,9 @@ class CThingCreatureBase { public:
     bool ConstructFromLevelScript(const char* script) { (void)script; return m_baseOk; }
 };
 class CThingPlayerCreature : public CThingCreatureBase { public:
-    bool vfunc_4(const char* script);
+    bool ConstructFromLevelScript(const char* script);
 };
-bool CThingPlayerCreature::vfunc_4(const char* script)
+bool CThingPlayerCreature::ConstructFromLevelScript(const char* script)
 {
     if (CThingCreatureBase::ConstructFromLevelScript(script))
     {
@@ -35,11 +35,11 @@ int main()
     CThingCreatureDef d; d.MaxHealth = 120.0f;
     CThingPlayerCreature c; c.PDef.m_pDef = &d; c.MaxHealth = 1.0f; c.Health = 0.0f;
     c.DeletedOnOwnerLevelOutOfScope = 1; c.Drawable = 0; c._flags92_2 = 0; c.m_baseOk = false;
-    if (c.vfunc_4("x") || c.MaxHealth != 1.0f || c.Drawable) bad = 1;
+    if (c.ConstructFromLevelScript("x") || c.MaxHealth != 1.0f || c.Drawable) bad = 1;
     c.m_baseOk = true;
-    if (!c.vfunc_4("x") || c.MaxHealth != 120.0f || c.Health != 120.0f || !c.Drawable || !c.DeletedOnOwnerLevelOutOfScope) bad = 2;
+    if (!c.ConstructFromLevelScript("x") || c.MaxHealth != 120.0f || c.Health != 120.0f || !c.Drawable || !c.DeletedOnOwnerLevelOutOfScope) bad = 2;
     c.Health = 30.0f; d.MaxHealth = 150.0f;
-    if (!c.vfunc_4("x") || c.MaxHealth != 150.0f || c.Health != 30.0f) bad = 3;
+    if (!c.ConstructFromLevelScript("x") || c.MaxHealth != 150.0f || c.Health != 30.0f) bad = 3;
     if (bad) { std::printf("006a9960_TEST FAIL\n"); return 1; }
     std::printf("006a9960_TEST PASS\n");
     return 0;

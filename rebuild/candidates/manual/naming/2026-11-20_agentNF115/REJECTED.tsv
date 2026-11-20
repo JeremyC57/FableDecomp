@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q5218	0x00671BE0	??$__unique_copy@PAW4ENavigatorType@@PAW41@U?$equal_to@W4ENavigatorType@@@std@@@std@@YIPAW4ENavigatorType@@PAW41@00U?$equal_to@W4ENavigatorType@@@0@@Z	rejected AS POSED (amended form applied): the posed parameter list omits STLport's 5th parameter `const forward_iterator_tag&`; retail ends `ret 0Ch` under /Gr (result + empty predicate + tag reference on the stack) and STLport 4.6 _algo.c unique_copy dispatches to the forward_iterator_tag overload. Applied ...@0@ABUforward_iterator_tag@0@@Z (MATCH).

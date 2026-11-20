@@ -8,7 +8,7 @@
 // Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) const 0x00485815 (a same-TU
 //   noinline stand-in, the landed AddWound 0x00757B30 model: VC7.1 then keeps the def in ebx across the later calls and
 //   spills the target; external, the def is re-read from its slot), CVectorMap::LowerBound const
-//   0x004365B0, CTCScriptedControl::IsActionListEmpty() const 0x007122C0, CThingAICreature::GetCurrentStateGroupType()
+//   0x004365B0, CTCScriptedControl::IsActionListEmpty() const 0x007122C0, CThingCreatureBase::GetProperty()
 //   const 0x00662010 (`[this+0E0h]+0F0h`), CTCOpinionSource::PeekWitnessWillOverrideFactionEnemy(const
 //   CThingAICreature*) const 0x008640F0 (landed), CTCCreatureOpinionOfHero::IsFactionEnemyToHeroOverriddenOnOpinion()
 //   const 0x00681850 (PDB name set; the catalog's "IsWillingToAttackHeroOnOpinion" belongs to its twin 0x006817F0, which
@@ -146,13 +146,13 @@ public:
     }
 };
 
-enum EAIStateGroupType { AI_STATE_GROUP_TYPE_3 = 3 };
-
-class CThingCreatureBase : public CThing { };
-class CThingAICreature : public CThingCreatureBase {
+class CThingCreatureBase : public CThing {
 public:
-    EAIStateGroupType GetCurrentStateGroupType() const;     // 0x00662010
+    // 0x00662010 (NF115, PRIORITY q4488; was CThingAICreature::GetCurrentStateGroupType, a guess): FableWin.pdb / Ego_r.pdb
+    // ?GetProperty@CThingCreatureBase@@QBEKXZ, the creature def's Property (`[this+0E0h]+0F0h`); 3 is the guard property.
+    unsigned long GetProperty() const;                       // 0x00662010
 };
+class CThingAICreature : public CThingCreatureBase { };
 
 class CTCScriptedControl {                                  // interface type 0x1F
 public:
@@ -184,7 +184,7 @@ bool __fastcall IsOverridingFactionEnemyOnTarget(const CThingAICreature* creatur
             const CTCScriptedControl* scripted_control = (const CTCScriptedControl*)creature->PeekTC(0x1f);
             scripted = scripted_control->Locked || !scripted_control->IsActionListEmpty();
         }
-        if (!scripted && creature->HasTC(0x4f) && creature->GetCurrentStateGroupType() != 3) {
+        if (!scripted && creature->HasTC(0x4f) && creature->GetProperty() != 3) {
             const CTCOpinionSource* opinion_source;
             if (target->PeekTC(0x50, &opinion_source) && opinion_source->PeekWitnessWillOverrideFactionEnemy(creature))
                 return true;

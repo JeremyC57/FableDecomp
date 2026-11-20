@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetNavigationLevelAt(const C3DVector&) const -- the world map's navigation layer at a position
-// Leaf: GetNavigationLevelAt@CThingCreatureBase
+// Leaf: ?GetNavigationLevelAt@CThingCreatureBase@@QBEJABVC3DVector@@@Z
 // Retail: Fable.exe @ 0x00661D20, 22 bytes, `ret 4`. Catalog label NUISystem::CFrontEndManager::CreateComponent is wrong.
 // Callers pass a thing's own position (`mov ecx,thing ; call 0x004C73D0 ; push eax ; mov ecx,thing ; call here`:
 // CThingPlayerCreature 0x006AA49C, CCombatManager::GetPreferredPos 0x006EA90D, CThingAICreature 0x0083432D, AI state group

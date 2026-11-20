@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // react to (an undiscovered one unless the creature is already in life state 3); remember it in PPerson.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00937D20, length 122 bytes (+ int3 padding). Vtable slot 11.
-// Callees: the creature's life-state getter @ 0x00662010 (`[this+0E0h]+0F0h`), FindUnconsciousPerson @ 0x00937C20
+// Callees: CThingCreatureBase::GetProperty() const @ 0x00662010 (`[this+0E0h]+0F0h`), FindUnconsciousPerson @ 0x00937C20
 // (state 3) / FindUndiscoveredUnconsciousPerson @ 0x00937B10, then the converting CIntelligentPointer temporary
 // (vtable 0x0123E7D8 = CIntelligentPointer<CThingCreatureBase>): CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x00A01B10, SetPItem @ 0x00A01B90 (twice), GetPItem @ 0x00A01B50, ~CBaseIntelligentPointer @ 0x00A01C10.
@@ -88,9 +88,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     FABLE_FORCEINLINE CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThingCreatureState {
-    long GetLifeState();                        // 0x00662010
-};
+// 0x00662010 (NF115, PRIORITY q4488; was the stand-in CThingCreatureState::GetLifeState): FableWin.pdb / Ego_r.pdb
+// ?GetProperty@CThingCreatureBase@@QBEKXZ (the creature def's Property), declared by the shared flattened header (NF115 opt-in).
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETPROPERTY
+#include "engine/CThingCreatureBase.h"
 
 struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
     CIntelligentPointerThing PPerson;           // +0x14 CIntelligentPointer<CThingCreatureBase>
@@ -102,7 +103,7 @@ struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
 bool CAIStateGroup_MinionReactToUnconsciousPerson::IsRunnable()
 {
     CThing* person;
-    if (((CThingCreatureState*)PBrain->PCreature)->GetLifeState() == 3)
+    if (((CThingCreatureBase*)PBrain->PCreature)->GetProperty() == 3)
         person = FindUnconsciousPerson();
     else
         person = FindUndiscoveredUnconsciousPerson();

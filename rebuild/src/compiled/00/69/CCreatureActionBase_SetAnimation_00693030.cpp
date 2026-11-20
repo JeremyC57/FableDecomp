@@ -23,7 +23,7 @@ class C3DAnimationInfo:public C3DAnimationInfo_PDB { public:void BeginLoading(bo
 class CMeshDataBank:public CMeshDataBank_PDB { public:const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //A242C0 donorB60570
 class CWorld { public:unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
 class CThingCreatureBase { public:
-    float GetAnimDuration(long); //0x006627F0
+    float GetAnimDuration(long) const; //0x006627F0 (NF115, PRIORITY q3885: the PDB const member ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z)
     CWorld* GetWorld(); //0x004C7AB0
 };
 class CBaseObject;

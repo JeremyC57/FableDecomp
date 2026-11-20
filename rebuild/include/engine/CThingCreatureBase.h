@@ -609,6 +609,12 @@ public:
     // line in retail at 0x006633A0. Declaration only; no layout change.
     void ClearCurrentAction();                                           // 0x006633A0
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETPROPERTY
+    // NF115 opt-in (PRIORITY q4488; rows 0x0065C781, 0x00936BA0, 0x00937D20) for the flattened view, the same declaration as the retail
+    // branch: FableWin.pdb / Ego_r.pdb ?GetProperty@CThingCreatureBase@@QBEKXZ, out of line in retail at 0x00662010 (`mov eax,[ecx+0E0h] ;
+    // mov eax,[eax+0F0h]`: the creature def's Property). Declaration only; no layout change.
+    unsigned long GetProperty() const;                                   // 0x00662010
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
     // NF55 opt-in (2026-11-17, row 0x00692BC0 CCreatureActionBase::GetFrameUpdateTime) for the flattened view, the same declaration as the
     // retail branch's UPDATEANIMATION block: Ego_r.pdb / FableWin.pdb ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ, out of line

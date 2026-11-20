@@ -69,8 +69,11 @@ public:
         return it->second;
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
-    long GetVillagerState();                    // 0x00662010 (descriptive)
 };
+// 0x00662010 (NF115, PRIORITY q4488; was the descriptive CThing::GetVillagerState): FableWin.pdb / Ego_r.pdb
+// ?GetProperty@CThingCreatureBase@@QBEKXZ (the creature def's Property), declared by the shared flattened header (NF115 opt-in).
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETPROPERTY
+#include "engine/CThingCreatureBase.h"
 class CBaseObject;
 struct CBaseIntelligentPointer {
     void* _vfptr;
@@ -226,7 +229,7 @@ void CTCVillage::FrameUpdate()
         NumWorkingVillagers = 0;
         SNode<CBaseIntelligentPointer>* end = VillagePeople;
         for (SNode<CBaseIntelligentPointer>* node = end->_M_next; node != end; node = node->_M_next) {
-            if (IS_THING_ALIVE_Villager(node->_M_data) && ((CThing*)node->_M_data.GetPItem())->GetVillagerState() == 3)
+            if (IS_THING_ALIVE_Villager(node->_M_data) && ((CThingCreatureBase*)node->_M_data.GetPItem())->GetProperty() == 3)
                 ++NumWorkingVillagers;
         }
         UpdateMirroredCrimeData();

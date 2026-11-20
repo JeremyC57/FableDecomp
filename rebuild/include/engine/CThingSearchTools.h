@@ -173,8 +173,21 @@ public:
         for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
             T* thing=static_cast<T*>(*it);
             unsigned long mask=T::StatGetTypeFlags();
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY_NULLTEST
+            // NF115 nested opt-in (PRIORITY q4495, row 0x0065F744 GetPBestThing<CThingFilter_HasTC,CThingCompare_Nearest,CThingAICreature>):
+            // retail tests the re-read element for null after the scan and type tests and before the filter (0x0065F776 `test edi,edi ; je`;
+            // the CThing instance 0x004AC2C0 has the same `test esi,esi ; je` at 0x004AC304). FableWin.pdb's local record of another
+            // GetPBestThing instance (binary_compose filter, CThing** out) lists pbest_thing, flags, class_list, { it; { temp_thing; { tthing } } }
+            // (the ALLTHINGSBODY_EGOD shape): the element is read again as tthing for the filter. Inferred: the null test on tthing.
+            if(thing->IsIncludedInThingScans() && (thing->GetTypeFlags()&mask)==mask) {
+                T* tthing=static_cast<T*>(*it);
+                if(tthing && filter(*tthing))
+                    best=compare(best,tthing);
+            }
+#else
             if(thing->IsIncludedInThingScans() && (thing->GetTypeFlags()&mask)==mask && filter(*thing))
                 best=compare(best,thing);
+#endif
         }
         *out=best;
         return best!=0;

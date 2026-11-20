@@ -1,5 +1,11 @@
 // CPersistContext::Transfer(const char* name, COpinionTransientOffset& value) -- transfer a COpinionTransientOffset with an all-zero default
-// Leaf: Transfer
+// Leaf: ??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@@Z
+// Names (NF115, PRIORITY q6540): both members are CPersistContext member templates in Ego_r.pdb / FableWin.pdb: this row is
+//   ??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@@Z (two-argument, was the non-template
+//   ?Transfer@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@@Z) and its callee 0x00685F80 is
+//   ??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@ABV1@@Z (the landed 0x00685F80 row and
+//   0x00684610 bind it). In-place respelling of the landed local model: the two members are declared as the member templates and this
+//   row is the explicit instantiation of the two-argument one.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006861C0, length 53 bytes (+ int3 padding), `ret 8`.
 // Callees: CPersistContext::Transfer<COpinionTransientOffset>(const char*, COpinionTransientOffset&, const COpinionTransientOffset&)
 //   @ 0x00685F80 (landed; its catalog label "Transfer<signed char>" is propagated). The catalog label of this row,
@@ -50,11 +56,12 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
 
-    void Transfer(const char* name, COpinionTransientOffset& value, const COpinionTransientOffset& defaultValue);   // 0x00685F80
-    void Transfer(const char* name, COpinionTransientOffset& value);
+    template<class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00685F80 for COpinionTransientOffset
+    template<class T> void Transfer(const char* name, T& value);
 };
 
-void CPersistContext::Transfer(const char* name, COpinionTransientOffset& value)
+template<class T> void CPersistContext::Transfer(const char* name, T& value)
 {
-    Transfer(name, value, COpinionTransientOffset());
+    Transfer(name, value, T());
 }
+template void CPersistContext::Transfer<COpinionTransientOffset>(const char*, COpinionTransientOffset&);

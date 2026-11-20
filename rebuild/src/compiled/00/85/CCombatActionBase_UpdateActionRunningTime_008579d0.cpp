@@ -90,7 +90,7 @@ class CWorld { public:
 };
 
 class CThingCreatureBase { public:
-    float GetAnimDuration(long animIndex);          // 0x006627F0
+    float GetAnimDuration(long animIndex) const;    // 0x006627F0 (NF115, PRIORITY q3885: the PDB const member ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z)
 };
 
 class CBaseObject;

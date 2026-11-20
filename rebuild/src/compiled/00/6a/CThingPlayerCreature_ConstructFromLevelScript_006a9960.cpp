@@ -1,4 +1,9 @@
 // CThingPlayerCreature::ConstructFromLevelScript(const char*) -- base construct step, then MaxHealth from the creature def, Health filled when it is still 0, and the Drawable flag set
+// Leaf: ?ConstructFromLevelScript@CThingPlayerCreature@@UAE_NPBD@Z
+// Names (NF115, PRIORITY q6411): Ego_r.pdb / FableWin.pdb ?ConstructFromLevelScript@CThingPlayerCreature@@UAE_NPBD@Z (public virtual; was the
+//   stand-in leaf vfunc_4) overriding ?ConstructFromLevelScript@CThingCreatureBase@@UAE_NPBD@Z 0x00662930 (both PDB name sets public virtual;
+//   the 0x00662930 self row and 0x008315C0 bind it). The base call stays direct (qualified). In-place respelling of the landed local
+//   model: the member is declared virtual, so the model's vptr now takes the first 4 bytes of the old leading pad (offsets unchanged).
 // Retail: Fable.exe 0x006A9960, 82 bytes (CThingPlayerCreature vtable 0x012457FC slot 4).
 // Callees: CThingCreatureBase 0x00662930 (manifest "ConstructFromLevelScript", the direct base call);
 // float pool 0x0122DEDC = 0.0f.
@@ -19,7 +24,7 @@ template <class T> class CDefPointer { public:
 };
 
 class CThingCreatureBase { public:
-    unsigned char                   _pad00[0x92];
+    unsigned char                   _pad04[0x92 - 4];    // +0x04 (the vptr is +0x00)
     unsigned char                   DeletedOnOwnerLevelOutOfScope : 1;   // +0x92 bit 0
     unsigned char                   Drawable : 1;                        // +0x92 bit 1
     unsigned char                   _flags92_2 : 6;
@@ -28,14 +33,14 @@ class CThingCreatureBase { public:
     float                           Health;              // +0xb4
     unsigned char                   _padb8[0x28];
     CDefPointer<CThingCreatureDef>  PDef;                // +0xe0
-    bool ConstructFromLevelScript(const char* script);   // 0x00662930
+    virtual bool ConstructFromLevelScript(const char* script);   // 0x00662930
 };
 
 class CThingPlayerCreature : public CThingCreatureBase { public:
-    bool vfunc_4(const char* script);
+    virtual bool ConstructFromLevelScript(const char* script);   // vtable 0x012457FC slot 4
 };
 
-bool CThingPlayerCreature::vfunc_4(const char* script)
+bool CThingPlayerCreature::ConstructFromLevelScript(const char* script)
 {
     if (CThingCreatureBase::ConstructFromLevelScript(script))
     {
