@@ -1,0 +1,28 @@
+addr       parity           behav  name
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterNoGroup (engine/CAnimFilterNoGroup.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimSet (engine/CAnimSet.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCContainerRewardHero (engine/CTCContainerRewardHero.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCChest (engine/CTCChest.h)
+007502d0   WARN RELOC_NAME: ?Reset@CAnimateThing@@QAEXXZ -> 0070ec30 labelled 'CAnimateThing::ClearAllAnims'
+007502d0   WARN RELOC_NAME: ?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+007502d0   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXEKJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+007502d0   RELOCATION_MATCH PASS   CTCChest::InitClosed
+
+WINS: 1
+  007502d0 RELOCATION_MATCH CTCChest::?InitClosed@CTCChest@@AAEXXZ

@@ -31,3 +31,10 @@ Agent NF173 (round 10) handed back 44 entries: 21 done, 1 done-already, 7 blocke
   - q5111 (0x00C2DA10) waits for 0x00C3AA40's real name (its fields are CBufferedRangeReader's in libpk/CSegmentFile.h): queued.
   - 0x00AE0050's `// Inferred: ... ? true : false` stands (retail normalises the bool with `test al,al ; setne al`; the plain return
     measured DIFFER(21v26)).
+
+## nf173b follow-up (2026-11-20): 0x007502D0 reverted
+The advisor's pick-any rule (EXTRA_RULES 2026-11-20) found that 0x007502D0's in-place Set -> Init respell made its object emit the
+retail-named `??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z` with a 59-byte body, against the self row 0x005B33F4's 49 bytes (before
+nf173 the copy carried a non-retail `long` spelling). The row is back at its pre-nf173 source: RELOCATION_MATCH PASS
+(`logs/nf173b_revert_007502d0_recheck.log`), binding table unchanged. q6391 / q6462 go back to the queue (39 of 40 referencers bind
+Init; the respell needs the ctor declaration-only or a shared CAnimInit header).
