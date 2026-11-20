@@ -1,0 +1,3 @@
+existing 00c1bd10 new= ['??0CSoundPlayParameters@@QAE@XZ'] | others: {'??0CRecordBuilder_00c16310@@QAE@XZ': ['00c16310']}
+existing 00c51a20 new= ['?Apply@AudioEnvironment@N00c52840@@QAEXPAU_CHANGES@@I@Z', '?QueueCommit@CEAXManager@@QAEXPAU_CHANGES@@PAUCEAXVoice@@@Z'] | others: {'?QueueCommit@CEAXManager@@QAEXKPAUCEAXVoice@@@Z': ['00c51f00', '00c52980']}
+gate: 0 created split(s)

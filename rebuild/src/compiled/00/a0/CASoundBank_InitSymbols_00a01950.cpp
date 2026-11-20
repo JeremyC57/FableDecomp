@@ -1,6 +1,6 @@
 // CASoundBank::InitSymbols(const CWideString&) -- build the symbol-file path (drive + directory + name + "."), show the "Sound Bank: Init Symbols" progress line, create the CRC symbol map and fill it: from the binary cache when enabled, else from the text file (optionally writing the binary cache back)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01950, length 332 bytes (`ret 4`).
-// Callees: CWideString() @ 0x0099AED0 (x3), SplitPath @ 0x00997620 (__fastcall: path in ecx, drive in edx, directory / name /
+// Callees: CWideString() @ 0x0099AED0 (x3), CAFile::SplitPath @ 0x00997620 (static __fastcall: path in ecx, drive in edx, directory / name /
 //          extension on the stack), operator+(const CWideString&, const CWideString&) @ 0x0099BE70 (x2) and
 //          operator+(const CWideString&, const wchar_t*) @ 0x0099BF30 (both __fastcall, hidden result in ecx), ~CWideString
 //          @ 0x0099B510, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, DisplayProgress @ 0x009E9F40
@@ -16,20 +16,9 @@
 //          conversions from literals (both homed in the dead argument slot); the map is `new` with the null test around
 //          the constructor, handed to the counted pointer, and the loads go through the counted pointer's Data.
 // Layout: Ego_r.pdb CASoundBank (12 bytes): vptr, CCountedPointer<CCRCSymbolMap> PSymbolMap +0x04 {Data, Info}.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                       // 0x0099AED0
-    ~CWideString();                                      // 0x0099B510
-};
-CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);   // 0x0099BF30 (the lane has no native wchar_t)
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
-    CWideString* extension);                             // 0x00997620
+#define FABLE_RETAIL_CCHARSTRING             // the retail CCharString(const char*, long = -1) conversion (fable_string.h)
+#define FABLE_RETAIL_CAFILE_SPLITPATH_WIDE
+#include "engine/CAFile.h"   // CAFile::SplitPath(const CWideString&, ...) 0x00997620 (Ego_r.pdb); CWideString / CCharString / operator+ from fable_string.h
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 void* __cdecl operator new(unsigned int size);           // 0x00BFEA1A
 
@@ -61,8 +50,8 @@ void CASoundBank::InitSymbols(const CWideString& path)
     CWideString drive;
     CWideString directory;
     CWideString name;
-    SplitPath(path, &drive, &directory, &name, 0);
-    CWideString symbolPath = drive + directory + name + (const unsigned short*)L".";
+    CAFile::SplitPath(path, &drive, &directory, &name, 0);
+    CWideString symbolPath = drive + directory + name + L".";
     DisplayProgress("Sound Bank: Init Symbols", false, -1.0f, false);
     PSymbolMap.Reset(new CCRCSymbolMap);
     if (g_bLoadBinarySoundSymbols) {

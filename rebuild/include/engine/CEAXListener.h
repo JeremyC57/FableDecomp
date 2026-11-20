@@ -31,6 +31,10 @@ public:
  int GetEAX4FXSlot(unsigned long,unsigned long,void*,unsigned long,unsigned long*); // 0x00C66330
  void AddToChangesList(IDENTIFIER,unsigned long,void*,long); // 0x00C5FFB0
  void SetEAX4ErrorCode(long code){m_lEAX4ErrorCode=code;}
+#ifdef FABLE_RETAIL_CEAXLISTENER_REMOVESOURCE
+ // 0x00C5FF60 (landed row; descriptive name kept for one address, one name: GameCODA 2.10 calls it DeleteBuffer, NAME_FIXES NF165).
+ long RemoveSource(CEAXBuffer*);
+#endif
  // No SDK record yet for the rows below: pass 11 descriptive method names, class respelled.
  void ClearEvents(); // 00c60410
  long CommitDeferredSettings(); // 00c67f60

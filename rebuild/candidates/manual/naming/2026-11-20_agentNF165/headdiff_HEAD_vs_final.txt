@@ -1,0 +1,65 @@
+== 00401f30
+  REF-   ?PathExists@CWideString@@QBE_NXZ
+  REF+   ?PathExists@CAFile@@SI_NABVCWideString@@@Z
+== 004a05c0
+  REF-   ?SplitPath@@YIXABVCWideString@@PAV1@111@Z
+  REF+   ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z
+== 00665f90
+  REF-   ?SetVoiceChannel@CTCCreatureSound@@QAEXABVCCharString@@@Z
+  REF+   ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z
+== 0066ca80
+  REF-   ?Check@CWideString@@QAE_NXZ
+  REF+   ?PathExists@CAFile@@SI_NABVCWideString@@@Z
+== 00997800
+  REF-   ?SplitPath@@YIXABVCWideString@@PAV1@111@Z
+  REF+   ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z
+== 00a01950
+  REF-   ?SplitPath@@YIXABVCWideString@@PAV1@111@Z
+  REF+   ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z
+== 00c1bae0
+  DEF-   ?CanCollideWithLandscape@CTCPhysicsStandard@@QAE_NXZ
+  DEF+   ?GetStreamed@CSoundPlayParameters@@QBE_NXZ
+== 00c1bd10
+  DEF-   ??0CClass_00c1bd10@@QAE@XZ
+  DEF+   ??0CSoundPlayParameters@@QAE@XZ
+  REF-   ?Initialise@CClass_00c1bd10@@QAEXXZ
+  REF+   ?Initialise@CSoundPlayParameters@@QAEXXZ
+== 00c1e970
+  DEF-   ?CCombatSequenceBase_IsBoastSequence@@YIIPAVCCombatSequenceBase@@I@Z
+  DEF+   ?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z
+== 00c1e990
+  DEF-   ?CombatSequence_AlignDuration@@YIKPAVCCombatSequenceBase@@KK@Z
+  DEF+   ?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z
+  REF-   ?CCombatSequenceBase_IsBoastSequence@@YIKPAVCCombatSequenceBase@@K@Z
+  REF+   ?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z
+== 00c1e9c0
+  REF-   ?CCombatSequenceBase_IsBoastSequence@@YIKPAVCCombatSequenceBase@@K@Z
+  REF+   ?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z
+== 00c1e9f0
+  REF-   ?CombatSequence_AlignDuration@@YIJPAVCCombatSequenceBase@@JJ@Z
+  REF+   ?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z
+== 00c27b70
+  DEF-   ?CanCollideWithThingsOneWay@CTCPhysicsStandard@@QAEJXZ
+  DEF+   ?GetTrackBit0@CPKVoiceParams@@QBE_NXZ
+== 00c27b80
+  DEF-   ?CanCollideWithLandscape@CTCPhysicsStandard@@QAEJXZ
+  DEF+   ?GetTrackBit1@CPKVoiceParams@@QBE_NXZ
+== 00c27b90
+  DEF-   ?GetU1@CGenericVertex_LandscapeBg@@QAEIXZ
+  DEF+   ?GetTrackBit2@CPKVoiceParams@@QBE_NXZ
+== 00c44170
+  REF-   ?Remove@CRegistrationList@@QAEJJ@Z
+  REF+   ?RemoveSource@CEAXListener@@QAEJPAVCEAXBuffer@@@Z
+== 00c51eb0
+  REF-   ?SetSlotProperty@CEAXFXSlots@@QAEJKKPAXKPAPAU_CHANGES@@@Z
+  REF+   ?SetEffectProperty_00c68f90@CEAXListener@@QAEJKKPBXKPAPAU_CHANGES@@@Z
+== 00c52840
+  REF-   ?Apply@AudioEnvironment@N00c52840@@QAEXII@Z
+  REF-   ?Set@PropertyInterface@N00c52840@@QAEHIIPBXIPAI@Z
+  REF+   ?Apply@AudioEnvironment@N00c52840@@QAEXPAU_CHANGES@@I@Z
+  REF+   ?SetEffectProperty_00c68f90@CEAXListener@@QAEJKKPBXKPAPAU_CHANGES@@@Z
+== 00c54f30
+  REF-   ?Process@CBlockEffect_00c6c530@@QAEXPAUSAudioBlock@@0@Z
+  REF-   ?Process@CBlockFilter_00c6c0f0@@QAEXPAUSAudioBlock@@@Z
+  REF+   ?Process@CSalIIRFilter@@QAEXPAF@Z
+  REF+   ?Process@CSalIIRFilter@@QAEXPAFPBF@Z

@@ -32729,9 +32729,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27b90'
-        Module = 'CGenericVertex_LandscapeBg'
-        Source = '00/c2/CGenericVertexLandscapeBg_GenericVertexGetU1_00c27b90.cpp'
-        TestSource = '00/c2/CGenericVertexLandscapeBg_GenericVertexGetU1_00c27b90_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_GetTrackBit2_00c27b90.cpp'
+        TestSource = '00/c2/CPKVoiceParams_GetTrackBit2_00c27b90_test.cpp'
         PassPattern = 'GENVTX_U1_OK'
     }
     [pscustomobject]@{
@@ -48199,9 +48199,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c1e970'
-        Module = 'CCombatSequenceBase'
-        Source = '00/c1/CCombatSequenceBase_IsBoastSequence_00c1e970.cpp'
-        TestSource = '00/c1/CCombatSequenceBase_IsBoastSequence_00c1e970_test.cpp'
+        Module = '_global'
+        Source = '00/c1/global_GetStreamBlockOffset_00c1e970.cpp'
+        TestSource = '00/c1/global_GetStreamBlockOffset_00c1e970_test.cpp'
         PassPattern = 'BOAST_MODULO_OK'
     }
     [pscustomobject]@{
@@ -48808,9 +48808,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c1bae0'
-        Module = 'CTCPhysicsStandard'
-        Source = '00/c1/CTCPhysicsStandard_CanCollideWithLandscape_00c1bae0.cpp'
-        TestSource = '00/c1/CTCPhysicsStandard_CanCollideWithLandscape_00c1bae0_test.cpp'
+        Module = 'CSoundPlayParameters'
+        Source = '00/c1/CSoundPlayParameters_GetStreamed_00c1bae0.cpp'
+        TestSource = '00/c1/CSoundPlayParameters_GetStreamed_00c1bae0_test.cpp'
         PassPattern = 'CANCOLLIDE_OK'
     }
     [pscustomobject]@{
@@ -183112,9 +183112,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27b80'
-        Module = 'CTCPhysicsStandard'
-        Source = '00/c2/CTCPhysicsStandard_CanCollideWithLandscape_00c27b80.cpp'
-        TestSource = '00/c2/CTCPhysicsStandard_CanCollideWithLandscape_00c27b80_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_GetTrackBit1_00c27b80.cpp'
+        TestSource = '00/c2/CPKVoiceParams_GetTrackBit1_00c27b80_test.cpp'
         PassPattern = '00c27b80_TEST PASS'
     }
     [pscustomobject]@{
@@ -184365,9 +184365,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c1bd10'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_CClass00c1bd10_00c1bd10.cpp'
-        TestSource = '00/c1/unattributed_CClass00c1bd10_00c1bd10_test.cpp'
+        Module = 'CSoundPlayParameters'
+        Source = '00/c1/CSoundPlayParameters_CSoundPlayParameters_00c1bd10.cpp'
+        TestSource = '00/c1/CSoundPlayParameters_CSoundPlayParameters_00c1bd10_test.cpp'
         PassPattern = '00c1bd10_TEST PASS'
     }
     [pscustomobject]@{
@@ -184379,9 +184379,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27b70'
-        Module = 'CTCPhysicsStandard'
-        Source = '00/c2/CTCPhysicsStandard_CanCollideWithThingsOneWay_00c27b70.cpp'
-        TestSource = '00/c2/CTCPhysicsStandard_CanCollideWithThingsOneWay_00c27b70_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_GetTrackBit0_00c27b70.cpp'
+        TestSource = '00/c2/CPKVoiceParams_GetTrackBit0_00c27b70_test.cpp'
         PassPattern = '00c27b70_TEST PASS'
     }
     [pscustomobject]@{
@@ -275440,6 +275440,7 @@ $catalog = @(
         Source = '00/c5/CPersistContextTransferableVectorCSoundBankEntry_Resize_00c52840.cpp'
         TestSource = '00/c5/CPersistContextTransferableVectorCSoundBankEntry_Resize_00c52840_test.cpp'
         PassPattern = '00c52840_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '00cb68c0'
@@ -304889,8 +304890,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c1e990'
         Module = '_global'
-        Source = '00/c1/global_CombatSequenceAlignDuration_00c1e990.cpp'
-        TestSource = '00/c1/global_CombatSequenceAlignDuration_00c1e990_test.cpp'
+        Source = '00/c1/global_GetStreamBlockTail_00c1e990.cpp'
+        TestSource = '00/c1/global_GetStreamBlockTail_00c1e990_test.cpp'
         PassPattern = '00c1e990_TEST PASS'
     }
     [pscustomobject]@{

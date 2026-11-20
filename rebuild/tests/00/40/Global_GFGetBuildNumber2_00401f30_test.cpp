@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stddef.h>
 // Behaviour spies for the callees GFGetBuildNumber2 (0x00401F30) binds: the two string classes' ctors and
-// destructors, CWideString::PathExists, the CDiskFileWin32 ctor/Close and the base destructor.
+// destructors, CAFile::PathExists, the CDiskFileWin32 ctor/Close and the base destructor.
 class CAFile;
 class CWideString
 {
 public:
     CWideString(const wchar_t* text);
     ~CWideString();
-    bool PathExists() const;
     void* PStringData;
 };
 class CCharString
@@ -28,6 +27,7 @@ class CAFile : public CBaseClassNonCopyable
 {
 public:
     virtual void Close() = 0;
+    static bool __fastcall PathExists(const CWideString& path);
 };
 enum FileAccessType { };
 class CDiskFileWin32 : public CAFile
@@ -87,9 +87,9 @@ CWideString::CWideString(const wchar_t* text)
     Record(EVENT_ASSIGN_WIDE, this, text, 0, 0);
 }
 
-bool CWideString::PathExists() const
+bool __fastcall CAFile::PathExists(const CWideString& path)
 {
-    Record(EVENT_PATH_EXISTS, this, 0, 0, 0);
+    Record(EVENT_PATH_EXISTS, &path, 0, 0, 0);
     return gPathExists;
 }
 

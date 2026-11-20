@@ -1,0 +1,73 @@
+addr       parity           behav  name
+00401f30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00401f30   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00401f30   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00401f30   RELOCATION_MATCH PASS   GFGetBuildNumber2
+004a05c0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CDriveManager (engine/CDriveManager.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004a05c0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004a05c0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004a05c0   RELOCATION_MATCH PASS   CWorld::SaveGameState
+00665f90   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+00665f90   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00665f90   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+00665f90   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+00665f90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00665f90   RELOCATION_MATCH PASS   CThingCreatureBase::PlayCreatureContinuousSounds
+0066ca80   WARN SHARED_HEADER_AVAILABLE CRegionMinimap (engine/CRegionMinimap.h)
+0066ca80   RELOCATION_MATCH PASS   CRegionMinimap::LoadRegionMinimapTGAFile
+00997800   RELOCATION_MATCH PASS   _global::ReplacePathExtension
+00a01950   WARN SHARED_HEADER_AVAILABLE CASoundBank (engine/CASoundBank.h)
+00a01950   RELOCATION_MATCH PASS   CASoundBank::InitSymbols
+00c1bae0   MATCH            PASS   CSoundPlayParameters::GetStreamed
+00c1bd10   RELOCATION_MATCH PASS   CSoundPlayParameters::CSoundPlayParameters
+00c1e970   WARN STANDIN_LEAF ?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z (catalog CCombatSequenceBase::IsBoastSequence; names another function)
+00c1e970   MATCH            PASS   CCombatSequenceBase::IsBoastSequence
+00c1e990   WARN RELOC_NAME: ?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z -> 00c1e970 labelled 'CCombatSequenceBase::IsBoastSequence'
+00c1e990   WARN STANDIN_LEAF ?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z (catalog _global::CombatSequence_AlignDuration; names another function)
+00c1e990   RELOCATION_MATCH PASS   _global::CombatSequence_AlignDuration
+00c1e9c0   WARN RELOC_NAME: ?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z -> 00c1e970 labelled 'CCombatSequenceBase::IsBoastSequence'
+00c1e9c0   RELOCATION_MATCH PASS   CSequenceClient00c1e9f0::GetSequencePhase
+00c1e9f0   WARN RELOC_NAME: ?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z -> 00c1e990 labelled '_global::CombatSequence_AlignDuration'
+00c1e9f0   RELOCATION_MATCH PASS   CSequenceClient00c1e9f0::GetAlignedDuration
+00c27b70   MATCH            PASS   CPKVoiceParams::GetTrackBit0
+00c27b80   MATCH            PASS   CPKVoiceParams::GetTrackBit1
+00c27b90   MATCH            PASS   CPKVoiceParams::GetTrackBit2
+  WARN leaf 'Destructor_Extended' matches no symbol in 00c44170.obj; graded the largest function
+  WARN leaf 'Destructor_Extended' matches no symbol in 00c44170.obj; graded the largest function
+00c44170   WARN RELOC_NAME: ?Shutdown@CMarkedBufferOwner@@QAEXXZ -> 00c43810 labelled 'CAudioObject::ReleaseQueue'
+00c44170   WARN RELOC_NAME: ?Cleanup@CMarkedBufferOwner@@QAEXXZ -> 00c436c0 labelled 'CAudioObject::Reset'
+00c44170   WARN RELOC_NAME: ?ReleaseOwnedMemory@@YAXPAX@Z -> 00c3c370 labelled 'CodaFree'
+00c44170   WARN STANDIN_LEAF ?Close@CMarkedBufferOwner@@UAEXXZ (catalog CExclusiveAssert::CExclusiveAssert::Destructor_Extended; names another function)
+00c44170   RELOCATION_MATCH PASS   CExclusiveAssert::CExclusiveAssert::Destructor_Extended
+00c51eb0   RELOCATION_MATCH PASS   CEAXManager::SetFXSlotProperty
+00c52840   WARN RELOC_NAME: ?Probe@AudioEnvironment@N00c52840@@QAEHXZ -> 00c4e2f0 labelled '_unattributed::CreateProgress_00c4e2f0'
+00c52840   WARN RELOC_NAME: ?Apply@AudioEnvironment@N00c52840@@QAEXPAU_CHANGES@@I@Z -> 00c51a20 labelled 'CEAXManager::QueueCommit'
+00c52840   WARN STANDIN_LEAF ?InitialiseReverb@AudioEnvironment@N00c52840@@QAEHXZ (catalog CPersistContext_TransferableVector<CSoundBankEntry>::Resize; names another function)
+00c52840   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CSoundBankEntry>::Resize
+00c54f30   RELOCATION_MATCH PASS   CAudioSource::MixBlock
+
+WINS: 19
+  00401f30 RELOCATION_MATCH _global::?GFGetBuildNumber2@@YAXXZ
+  004a05c0 RELOCATION_MATCH CWorld::?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z
+  00665f90 RELOCATION_MATCH CThingCreatureBase::?PlayCreatureContinuousSounds@CThingCreatureBase
+  0066ca80 RELOCATION_MATCH CRegionMinimap::LoadRegionMinimapTGAFile
+  00997800 RELOCATION_MATCH _global::ReplacePathExtension
+  00a01950 RELOCATION_MATCH CASoundBank::InitSymbols
+  00c1bae0 MATCH CTCPhysicsStandard::?GetStreamed@CSoundPlayParameters@@QBE_NXZ
+  00c1bd10 RELOCATION_MATCH _unattributed::??0CSoundPlayParameters@@QAE@XZ
+  00c1e970 MATCH CCombatSequenceBase::?GetStreamBlockOffset@@YIKPAVCStreamBlockReader@@K@Z
+  00c1e990 RELOCATION_MATCH _global::?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z
+  00c1e9c0 RELOCATION_MATCH CSequenceClient00c1e9f0::?GetSequencePhase@CSequenceClient00c1e9f0@@QAEJXZ
+  00c1e9f0 RELOCATION_MATCH CSequenceClient00c1e9f0::GetAlignedDuration
+  00c27b70 MATCH CTCPhysicsStandard::?GetTrackBit0@CPKVoiceParams@@QBE_NXZ
+  00c27b80 MATCH CTCPhysicsStandard::?GetTrackBit1@CPKVoiceParams@@QBE_NXZ
+  00c27b90 MATCH CGenericVertex_LandscapeBg::?GetTrackBit2@CPKVoiceParams@@QBE_NXZ
+  00c44170 RELOCATION_MATCH CMarkedBufferOwner::Destructor_Extended
+  00c51eb0 RELOCATION_MATCH CEAXManager::?SetFXSlotProperty@CEAXManager@@QAEJKKPAXKPAUCEAXVoice@@@Z
+  00c52840 RELOCATION_MATCH CPersistContext_TransferableVector<CSoundBankEntry>::InitialiseReverb
+  00c54f30 RELOCATION_MATCH CAudioSource::?MixBlock@CAudioSource@@QAEXPAVCAudioRingBuffer@@PAX_N@Z

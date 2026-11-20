@@ -6,14 +6,15 @@
 // Identity (descriptive; GameCODA/libpk have no PDB or RTTI): slot 12 of the software mixer voice vtable (0x012B8B40),
 //   the "voice mixer" the landed CAudioSource::ApplyVolume 0x00C54EA0 names as its only caller (call 0x00C54FD2). The
 //   catalog's `AudioBuffer_ApplyGainFilter` is a propagated description. The second argument is never read.
-// Callees: CAudioSource::ApplyVolume 0x00C54EA0, the +0x230 / +0x224 block processors 0x00C6C530 / 0x00C6C0F0
-//   (unlanded, descriptive), the stream's slot 2, CAudioRingBuffer::CommitRead 0x00C5CF20; globals g_pAudioMaster
+// Callees: CAudioSource::ApplyVolume 0x00C54EA0, the +0x230 / +0x224 CSalIIRFilter members (GameCODA 2.10 SDK names,
+//   engine/CSalIIRFilter.h): Process(short*, const short*) 0x00C6C530 and Process(short*) 0x00C6C0F0, the stream's slot 2, CAudioRingBuffer::CommitRead 0x00C5CF20; globals g_pAudioMaster
 //   0x0143BC2C (scaler +0x17C, mix format +0x58) and g_pEAXManager 0x0143BB70 (EAX version +0xE8), as the landed rows spell them.
-// Shape: two `__declspec(align(16))` 0x100-byte blocks give the realigned ebp frame, and their char arrays the /GS
+// Shape: two `__declspec(align(16))` 0x100-byte blocks give the realigned ebp frame, and their short arrays the /GS
 //   cookie (64-float blocks compile the same body with no cookie, 221v245); the block copy is the implicit
 //   struct assignment (`rep movsd`, 0x40 dwords); the two effect arms tail-merge into one ApplyVolume call.
-struct SAudioBlock {                               // one mix block: 0x100 bytes of PCM (0x80 16-bit frames)
-    unsigned char m_bytes[0x100];
+#include "engine/CSalIIRFilter.h"
+struct SAudioBlock {                               // one mix block: 0x80 16-bit frames (the SDK's short[128] buffers)
+    short m_samples[0x80];
 };
 
 class CAudioRingBuffer {                           // vtable 0x012B8FC4, 0x20 bytes (landed ctor 0x00C5D0A0)
@@ -58,20 +59,12 @@ struct CDecodedStream {
     virtual void Write(SAudioBlock* block, long* format);   // slot 2 (+0x08)
 };
 
-struct CBlockEffect_00c6c530 {                     // +0x230
-    void Process(SAudioBlock* out, SAudioBlock* in);        // 0x00C6C530
-};
-struct CBlockFilter_00c6c0f0 {                     // +0x224
-    void Process(SAudioBlock* block);              // 0x00C6C0F0
-};
-
 struct CAudioSource {
     void*                 __vftable;               // +0x00
     unsigned char         _pad4[0x21c];
     CDecodedStream*       m_pStream;               // +0x220
-    CBlockFilter_00c6c0f0 m_filter;                // +0x224
-    unsigned char         _pad225[0x230 - 0x225];
-    CBlockEffect_00c6c530 m_effect;                // +0x230
+    CSalIIRFilter         m_filter;                // +0x224 (12 bytes)
+    CSalIIRFilter         m_effect;                // +0x230
     void ApplyVolume(void* dest);                  // 0x00C54EA0
     void MixBlock(CAudioRingBuffer* ring, void* context, bool effects);
 };
@@ -84,15 +77,15 @@ void CAudioSource::MixBlock(CAudioRingBuffer* ring, void* context, bool effects)
     if (effects) {
         CVolumeScaler* scaler = g_pAudioMaster->m_pScaler;
         if (scaler) {
-            m_effect.Process(&processed, &block);
+            m_effect.Process(processed.m_samples, block.m_samples);
             if (scaler->m_bEnabled)
                 ApplyVolume(&processed);
         } else if (g_pEAXManager && g_pEAXManager->m_version == 1) {
-            m_effect.Process(&processed, &block);
+            m_effect.Process(processed.m_samples, block.m_samples);
             ApplyVolume(&processed);
         }
     }
-    m_filter.Process(&block);
+    m_filter.Process(block.m_samples);
     m_pStream->Write(&block, &g_pAudioMaster->m_pMixFormat->m_format);
     ring->CommitRead(0x80);
 }

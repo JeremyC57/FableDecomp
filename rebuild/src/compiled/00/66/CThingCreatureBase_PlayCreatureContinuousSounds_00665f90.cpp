@@ -6,7 +6,7 @@
 //   instantiation; the sub-def type is not recovered), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the
 //   inlined GetInterface for interface type 0x10 = bit 16 of the bitset word at +0x20), GFIntToCharString(long) @ 0x0099F830
 //   and operator+(const char*, const CCharString&) @ 0x0099F690 (both `__fastcall`, hidden result in ecx; "VOICE"
-//   @ 0x0125ABFC), the sound component's channel setter @ 0x0066A9D0 and CSoundInfo::PlaySound-shaped player @ 0x0066BD00
+//   @ 0x0125ABFC), the sound component's CTCSoundPlayer::SetVoiceName @ 0x0066A9D0 and CTCSoundPlayer::PlayAttachedCriteria @ 0x0066BD00
 //   ("SE_CREATURE_CONTINUOUS" @ 0x0125ABE4, then 0, 0, 0, -1), CCharString(const char*, long) @ 0x0099EBF0, ~CCharString
 //   @ 0x0099EAE0, the def's virtual slot 1 (+4) at a zero count.
 // Globals: the round-robin voice counter 0x013BA874 (`(n + 1) % 8`, signed).
@@ -65,11 +65,9 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CTCSoundPlayer { public:
+class CTCSoundPlayer { public:             // interface type 0x10
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
-};
-struct CTCCreatureSound {                   // interface type 0x10
-    void SetVoiceChannel(const CCharString& channel);                       // 0x0066A9D0
+    void SetVoiceName(const CCharString& name);                             // 0x0066A9D0 (Ego_r + FableWin ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z)
 };
 class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
@@ -95,12 +93,12 @@ void CThingCreatureBase::PlayCreatureContinuousSounds()
 {
     CDefPointer<CCreatureSoundSubDef> def;
     if (PDef->GetSubDef(&def) && HasTC(0x10)) {
-        CTCCreatureSound* sound = (CTCCreatureSound*)GetTC(0x10);
+        CTCSoundPlayer* sound = (CTCSoundPlayer*)GetTC(0x10);
         {
             CCharString voice = "VOICE" + GFIntToCharString(g_CreatureContinuousSoundVoice + 1);
             g_CreatureContinuousSoundVoice = (g_CreatureContinuousSoundVoice + 1) % 8;
-            sound->SetVoiceChannel(voice);
-            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("SE_CREATURE_CONTINUOUS", 0, 0, 0, -1);
+            sound->SetVoiceName(voice);
+            sound->PlayAttachedCriteria("SE_CREATURE_CONTINUOUS", 0, 0, 0, -1);
         }
     }
 }

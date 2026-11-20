@@ -1,7 +1,7 @@
 // GFGetBuildNumber2() -- load the full build version string from full_build_version.txt, if the file exists
 // Leaf: ?GFGetBuildNumber2@@YAXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00401F30, 162 bytes.
-// Callees: CWideString::CWideString(const wchar_t*) @ 0x0099B6B0, CWideString::PathExists() const @ 0x00999230,
+// Callees: CWideString::CWideString(const wchar_t*) @ 0x0099B6B0, CAFile::PathExists(const CWideString&) @ 0x00999230 (static __fastcall),
 //   CWideString::~CWideString @ 0x0099B510, CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, unsigned long)
 //   @ 0x0099AD80, CCharString::CCharString(CAFile*, long) @ 0x0099FA50, CCharString::operator= @ 0x0099EFB0,
 //   CCharString::~CCharString @ 0x0099EAE0, CDiskFileWin32::Close @ 0x0099A920 (virtual in the PDB, called directly from
@@ -30,7 +30,6 @@ class CWideString
 public:
     CWideString(const wchar_t* text);               // 0x0099B6B0
     ~CWideString();                                 // 0x0099B510
-    bool PathExists() const;                        // 0x00999230
     void* PStringData;
 };
 
@@ -53,6 +52,7 @@ class CAFile : public CBaseClassNonCopyable
 {
 public:
     virtual void Close() = 0;
+    static bool __fastcall PathExists(const CWideString& path);   // 0x00999230 (Ego_r + FableWin ?PathExists@CAFile@@SI_NABVCWideString@@@Z)
 };
 
 enum FileAccessType { };                            // the enumerators are not in the name sets: the retail values are cast
@@ -94,7 +94,7 @@ void __cdecl GFGetBuildNumber2()
 
     // Does the version file exist at all?
     new (pathText.Raw) CWideString(L"full_build_version.txt");
-    const bool pathExists = pathText.Get().PathExists();
+    const bool pathExists = CAFile::PathExists(pathText.Get());
     pathText.Get().~CWideString();
 
     if (pathExists)

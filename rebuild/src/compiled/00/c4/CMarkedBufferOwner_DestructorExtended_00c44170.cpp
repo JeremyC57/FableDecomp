@@ -19,8 +19,9 @@ struct CMarkedBuffer {void* Block;void* Cursor;long Count;long Used;void* Marks;
  void Release(); //00c44550
 };
 typedef void (__stdcall* PFNMARK)(CMarkedBufferOwner*,void*,void*);
-struct CRegistrationList {long Remove(long);}; //00c5ff60
-struct CRegistrationContext {unsigned char ContextPrefix[0xe4];CRegistrationList* Registrations;};
+#define FABLE_RETAIL_CEAXLISTENER_REMOVESOURCE
+#include "engine/CEAXListener.h" // +0xe4: the GameCODA CEAXListener (D3); RemoveSource 0x00C5FF60
+struct CRegistrationContext {unsigned char ContextPrefix[0xe4];CEAXListener* Registrations;};
 extern CRegistrationContext* gRegistrationContext; //0143bb70
 void __cdecl ReleaseOwnedMemory(void*); //00c3c370 calls configured free callback
 struct CMarkedBufferOwner {
@@ -33,7 +34,7 @@ struct CMarkedBufferOwner {
  unsigned char OwnerState[0x3c];CResourceLink* Resource;CMarkedBuffer Buffer;
  unsigned char BufferState[0xc];CReferenceLease* Lease;
  unsigned char OpenState[0x58];PFNMARK MarkCallback;void* MarkContext;
- void* StateCallback;void* StateContext;unsigned char RegistrationState[0x10];void* OwnedMemory;long RegistrationID;
+ void* StateCallback;void* StateContext;unsigned char RegistrationState[0x10];void* OwnedMemory;CEAXBuffer* RegistrationID;
  void Shutdown(); //00c43810
  void Cleanup(); //00c436c0
  bool AllocateMarks(long,PFNMARK,void*);
@@ -51,7 +52,7 @@ void CMarkedBufferOwner::Close(){
   Handle=-1;
  }
  if(Handle&0x2000){
-  if(gRegistrationContext)gRegistrationContext->Registrations->Remove(RegistrationID);
+  if(gRegistrationContext)gRegistrationContext->Registrations->RemoveSource(RegistrationID);
   if(OwnedMemory){ReleaseOwnedMemory(OwnedMemory);OwnedMemory=0;}
  }
 }

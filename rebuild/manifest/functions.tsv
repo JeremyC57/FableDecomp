@@ -44549,8 +44549,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c1e850	FinishWithDynamicTextures	CEngineScreenEffectOutlineGlow	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 00c1e8d0	Add	CPtrArray<CBlendEntry*>	__thiscall	vector<CActionInputControl,std::allocator<CActionInputControl>_> *	1	CUserProfileManager *	1	yes	accepted									
 00c1e900	Remove	CPtrArray	unknown	undefined	0		0	yes	accepted									
-00c1e970	IsBoastSequence	CCombatSequenceBase	__thiscall	bool	1	CCombatSequenceBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CCombatSequenceBase_IsBoastSequence_00c1e970.cpp
-00c1e990	CombatSequence_AlignDuration	_global	unknown	undefined	0		0	yes	accepted									
+00c1e970	GetStreamBlockOffset	_global	__thiscall	bool	1	CCombatSequenceBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c1\CCombatSequenceBase_IsBoastSequence_00c1e970.cpp
+00c1e990	GetStreamBlockTail	_global	unknown	undefined	0		0	yes	accepted									
 00c1e9c0	GetSequencePhase	CSequenceClient00c1e9f0	__thiscall	long	3	CWorldMap *,long,long	1	yes	accepted									
 00c1e9f0	GetAlignedDuration	CSequenceClient00c1e9f0	__thiscall	bool	2	CThingFilter_In3DRange *,CThing *	1	yes	accepted									
 00c1ea20	IsUnreferenced	CScriptOwnerThing	__thiscall	wchar_t	1	CManager *	1	yes	accepted									

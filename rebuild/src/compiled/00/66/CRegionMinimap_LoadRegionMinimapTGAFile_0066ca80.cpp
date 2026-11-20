@@ -12,9 +12,7 @@
 #include "engine/C2DExtentsI.h"
 #include "engine/CPixelFormat.h"
 #include "engine/CSurface.h"
-class CWideString { public:
-    bool Check();               // 0x999230 : thiscall bool()
-};
+#include "engine/CAFile.h"   // CAFile::PathExists(const CWideString&) 0x00999230 (Ego_r + FableWin, static __fastcall); fable_string.h CWideString
 
 struct CRegionMinimap {
     int    RegionMinimapSize;            // +0x00
@@ -30,7 +28,7 @@ void CRegionMinimap::LoadRegionMinimapTGAFile(CWideString* ws)
 
     this->sub.InitialiseAsImage(C2DExtentsI(this->RegionMinimapSize, this->RegionMinimapSize), t, false);
 
-    if (ws->Check()) {
+    if (CAFile::PathExists(*ws)) {
         this->sub.LoadFromBitmapFileToPreallocatedSurface(*ws, 1);
     }
 }

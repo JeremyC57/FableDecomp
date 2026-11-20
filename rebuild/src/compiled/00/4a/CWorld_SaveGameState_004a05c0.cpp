@@ -2,7 +2,7 @@
 // Leaf: ?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A05C0, 448 bytes, `ret 0Ch` (FableWin.pdb ?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z).
 // Callees: GFGetTime 0x009E1BC0 (__fastcall double, discarded), CWideString(const CWideString&) 0x0099B720, CWideString()
-//   0x0099AED0, SplitPath 0x00997620 (__fastcall), wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CUserProfileManager::Get
+//   0x0099AED0, CAFile::SplitPath 0x00997620 (static __fastcall), wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CUserProfileManager::Get
 //   0x0040D2A0 + GetPathNameFromFileName 0x00408120, operator!=(const wchar16*) 0x0099B150, operator= 0x0099B7D0, the engine
 //   memory-pool getter (virtual slot 72, +0x120), CHandleBasedMemoryPool::BeginShutdown(float) 0x00A02220 / EndShutdown
 //   0x00A02370, CWorld::SaveGameStateInternal 0x0049F4C0, SaveHeroStateInternal 0x004A00E0, operator+(const CWideString&,
@@ -37,9 +37,10 @@ public:
     bool operator!=(const wchar16* text) const;         // 0x0099B150
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);   // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
-                          CWideString* extension);  // 0x00997620
-class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };   // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+    static void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
+                                     CWideString* extension);  // 0x00997620 (Ego_r + FableWin ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z)
+};
 
 class CUserProfileManager {
 public:
@@ -104,7 +105,7 @@ void CWorld::SaveGameState(const CWideString& name, bool questScreens, bool flag
     CWideString drive;
     CWideString directory;
     CWideString fileName;
-    SplitPath(name, &drive, &directory, &fileName, 0);
+    CAFile::SplitPath(name, &drive, &directory, &fileName, 0);
     if (directory.PStringData == 0) {
         if (wcscmp(s_Empty, s_Empty) == 0)
             goto empty;
