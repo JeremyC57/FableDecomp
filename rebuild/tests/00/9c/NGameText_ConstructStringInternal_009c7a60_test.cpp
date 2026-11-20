@@ -1,67 +1,90 @@
-// 009c7a60 NGameText::ConstructStringInternal
-// Flags: /O2 /Oy /W3 /GS
-// Leaf: ConstructStringInternal
-#include "fable_compiler.h"
-#include <stdarg.h>
-#include <stdlib.h>
-#include <wchar.h>
-namespace NGameText {
-// Layout: wide strings one dword; integer conversion writes 64-byte stack buffer.
-// Shape: index is initialised before the va_list and the first-argument test is the while condition itself (no
-//   enclosing if); va_arg is read inside the body before ++index, while key is still alive. The default CWideString
-//   constructor is only declared here (retail calls 0x0099AED0 in another TU; an in-TU body lets VC reuse ecx).
-struct CWideStringData{unsigned short*text;unsigned length,capacity;int refs;};
-extern int g_CWideStringInstanceCount_013BCA20;
-struct CWideString {CWideStringData* data;CWideString();CWideString(const CWideString&);CWideString(const char*);CWideString(const unsigned short*);CWideString&operator+=(const CWideString&);~CWideString();void UnassignString();void __cdecl Format(const unsigned short*,...);bool Contains(const CWideString&)const;void Replace(const CWideString&,const CWideString&);};
-__declspec(noinline) CWideString::CWideString(const CWideString&other):data(0){++g_CWideStringInstanceCount_013BCA20;if(&other!=this&&other.data!=data){if(data)UnassignString();if(other.data){data=other.data;++data->refs;}}}
-__declspec(noinline) CWideString::~CWideString(){CWideStringData*storage=data;if(storage){--storage->refs;if(storage->refs<=0){storage=data;if(storage){if(storage->text)free(storage->text);delete storage;}}data=0;}--g_CWideStringInstanceCount_013BCA20;}
-extern const unsigned short Empty[]; // retail129a8e0 UTF16 empty string
-__declspec(noinline) bool CWideString::Contains(const CWideString&rhs)const{const unsigned short*needle=rhs.data?rhs.data->text:Empty;const unsigned short*haystack=data?data->text:Empty;return wcsstr((const wchar_t*)haystack,(const wchar_t*)needle)!=0;}
-__declspec(noinline) CWideString __fastcall operator+(const unsigned short*left,const CWideString&right){CWideString result(left);result+=right;return result;}
-void __fastcall FormatNumber_AddThousandsSeparators(int,unsigned short*);
-extern const unsigned short FormatNumber[],Prefix[];
-FABLE_FORCEINLINE CWideString FormatIndex(int index){CWideString n;n.Format(FormatNumber,index);return n;}
-bool __cdecl ConstructStringInternal(CWideString&output,int first,...){bool result=true;int index=1;va_list args;va_start(args,first);int number=first;while(number!=-1){CWideString key=Prefix+FormatIndex(index);if(!output.Contains(key)){result=false;break;}unsigned short buffer[32];FormatNumber_AddThousandsSeparators(number,buffer);output.Replace(key,CWideString(buffer));number=va_arg(args,int);++index;}va_end(args);return result;}
-
-}
-
-
-#include <assert.h>
+// Behaviour test for 0x009C7A60 NGameText::ConstructStringInternal(CWideString&, long, ...).
+// NF146 (2026-11-20, q4285): rewritten on the shared header the row now uses (fable_string.h with FABLE_RETAIL_CWIDESTRING; the row also
+//   expands engine/GFIntToWideString.h). It links the row object and defines the out-of-line callees the row binds (CWideString default /
+//   copy / text constructors, destructor, Sprintf, operator+(const wchar_t*, const CWideString&), Contains, Replace, and the separator
+//   formatter 0x00A0DAC0) as small fakes over a string table, then checks the %1..%n replacement, the -1 terminator, the early false
+//   return when a placeholder is missing, thousands separators, and that every temporary string is destroyed.
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <new>
-void* __cdecl operator new[](unsigned int);
-void __cdecl operator delete[](void*);
-namespace NGameText {
-// Fixture models owned UTF-16 strings and the ASCII numeric formatting domain used here.
-#pragma pack(push,1)
-typedef CWideStringData Data;
-#pragma pack(pop)
-CWideString::CWideString():data(0){++g_CWideStringInstanceCount_013BCA20;}
-static int replacements;int g_CWideStringInstanceCount_013BCA20;
-static unsigned Length(const unsigned short*p){unsigned n=0;while(p[n])++n;return n;}
-static void Release(void*v){Data*d=(Data*)v;if(d&&--d->refs<=0){free(d->text);delete d;}}
-static void Set(CWideString&w,const unsigned short*p){unsigned n=Length(p);Data*d=new Data;d->text=(unsigned short*)malloc((n+1)*2);assert(d->text);memcpy(d->text,p,(n+1)*2);d->length=n;d->capacity=n+1;d->refs=1;Release(w.data);w.data=d;}
-const unsigned short Empty[]={0};
-static const unsigned short* Text(const CWideString&w){return w.data?((Data*)w.data)->text:Empty;}
-static void SetAscii(CWideString&w,const char*p){unsigned short buffer[512];unsigned n=0;for(;p[n];++n){assert(n<511&&(unsigned char)p[n]<128);buffer[n]=(unsigned char)p[n];}buffer[n]=0;Set(w,buffer);}
-static bool Equal(const CWideString&w,const char*p){const unsigned short*t=Text(w);unsigned n=0;for(;p[n];++n)if(t[n]!=(unsigned char)p[n])return false;return t[n]==0;}
-static bool Starts(const unsigned short*a,const unsigned short*b){for(;*b;++a,++b)if(*a!=*b)return false;return true;}
-void CWideString::UnassignString(){Release(data);data=0;}CWideString::CWideString(const char*p):data(0){++g_CWideStringInstanceCount_013BCA20;SetAscii(*this,p);}
+#include <stdarg.h>
+#include <string.h>
+#define FABLE_RETAIL_CWIDESTRING
+#include "fable_string.h"
 
-void CWideString::Replace(const CWideString&from,const CWideString&to){++replacements;const unsigned short*a=Text(*this),*f=Text(from),*t=Text(to);unsigned short buffer[512];unsigned n=0,k=Length(f);assert(k);while(*a){if(Starts(a,f)){for(unsigned j=0;t[j];++j){assert(n<511);buffer[n++]=t[j];}a+=k;}else{assert(n<511);buffer[n++]=*a++;}}buffer[n]=0;Set(*this,buffer);}
-const unsigned short FormatNumber[]={37,100,0},Prefix[]={37,0};
-void __cdecl CWideString::Format(const unsigned short*format,...){assert(format[0]=='%'&&format[1]=='d'&&!format[2]);va_list args;va_start(args,format);int n=va_arg(args,int);va_end(args);char buffer[64];sprintf(buffer,"%d",n);SetAscii(*this,buffer);}
-CWideString::CWideString(const unsigned short*p):data(0){++g_CWideStringInstanceCount_013BCA20;Set(*this,p);}CWideString&CWideString::operator+=(const CWideString&w){unsigned short buffer[512];unsigned n=Length(Text(*this)),m=Length(Text(w));assert(n+m<512);memcpy(buffer,Text(*this),n*2);memcpy(buffer+n,Text(w),(m+1)*2);Set(*this,buffer);return *this;}
-static unsigned short thousandsSeparator=',';
-void __fastcall FormatNumber_AddThousandsSeparators(int n,unsigned short*p){char digits[32];sprintf(digits,"%d",n);int length=(int)strlen(digits);for(int j=0;j<=length;++j)p[j]=(unsigned char)digits[j];int separators=(length-1)/3;if(separators>0){unsigned short*dest=p+length+separators;unsigned short*src=p+length;for(int count=0;count<length;++count){*dest=*src;if(count&&count%3==0){--dest;*dest=thousandsSeparator;}--dest;--src;}}}
+namespace NGameText { bool __cdecl ConstructStringInternal(CWideString& output, long first, ...); }
+
+struct Slot { const CWideString* owner; unsigned short text[128]; };
+static Slot g_slots[64];
+static int g_alive = 0, g_replacements = 0, g_fail = 0;
+static unsigned short g_separator = ',';
+static unsigned Len(const unsigned short* p) { unsigned n = 0; while (p[n]) ++n; return n; }
+static Slot* Find(const CWideString* s) { for (int i = 0; i < 64; ++i) if (g_slots[i].owner == s) return &g_slots[i]; return 0; }
+static Slot* Make(const CWideString* s, const unsigned short* t)
+{
+    for (int i = 0; i < 64; ++i) if (!g_slots[i].owner) {
+        g_slots[i].owner = s; unsigned n = t ? Len(t) : 0; if (n > 127) { ++g_fail; n = 127; }
+        if (t) memcpy(g_slots[i].text, t, n * 2); g_slots[i].text[n] = 0; ++g_alive; return &g_slots[i];
+    }
+    ++g_fail; return 0;
 }
-int main(){using namespace NGameText;assert(sizeof(Data)==16);
-{CWideString w("%1 then %2");assert(ConstructStringInternal(w,-1)&&Equal(w,"%1 then %2")&&replacements==0);assert(ConstructStringInternal(w,7,-8,-1)&&Equal(w,"7 then -8")&&replacements==2);}
-assert(!g_CWideStringInstanceCount_013BCA20);
-{CWideString w("%1 %1 %2");assert(ConstructStringInternal(w,0,2147483647,-1)&&Equal(w,"0 0 2,147,483,647"));}
-{CWideString w("%1 done");int before=replacements;assert(!ConstructStringInternal(w,-2147483647-1,9,-1)&&Equal(w,"-2,147,483,648 done")&&replacements==before+1);}
-{CWideString w("unchanged");int before=replacements;assert(!ConstructStringInternal(w,5,-1)&&Equal(w,"unchanged")&&replacements==before);}
-{CWideString w("%1");{CWideString copy(w);assert(((Data*)w.data)->refs==2);assert(ConstructStringInternal(copy,11,-1)&&Equal(copy,"11")&&Equal(w,"%1"));}assert(((Data*)w.data)->refs==1);}
-{CWideString w("%1/%2");assert(ConstructStringInternal(w,1234567,-999,-1)&&Equal(w,"1,234,567/-,999"));}{CWideString w("%1");thousandsSeparator='.';assert(ConstructStringInternal(w,1234,-1)&&Equal(w,"1.234"));thousandsSeparator=',';}assert(!g_CWideStringInstanceCount_013BCA20);puts("009c7a60_TEST PASS");return 0;}
+static const unsigned short* T(const CWideString& s) { Slot* x = Find(&s); if (!x) { ++g_fail; static unsigned short z = 0; return &z; } return x->text; }
+static void SetT(const CWideString& s, const unsigned short* t) { Slot* x = Find(&s); unsigned n = Len(t); if (!x || n > 127) { ++g_fail; return; } memmove(x->text, t, n * 2); x->text[n] = 0; }
+static void Ascii(unsigned short* d, const char* s) { while ((*d++ = (unsigned char)*s++) != 0) { } }
+static bool Eq(const CWideString& s, const char* a) { const unsigned short* t = T(s); unsigned i = 0; for (; a[i]; ++i) if (t[i] != (unsigned char)a[i]) return false; return t[i] == 0; }
+static bool Starts(const unsigned short* a, const unsigned short* b) { for (; *b; ++a, ++b) if (*a != *b) return false; return true; }
+
+CWideString::CWideString() { Make(this, 0); }
+CWideString::CWideString(const CWideString& other) { Make(this, T(other)); }
+CWideString::CWideString(const wchar_t* text) { Make(this, (const unsigned short*)text); }
+CWideString::~CWideString() { Slot* x = Find(this); if (x) { x->owner = 0; --g_alive; } else ++g_fail; }
+void __cdecl CWideString::Sprintf(const wchar_t* format, ...)
+{
+    if (!(format[0] == '%' && format[1] == 'd' && format[2] == 0)) ++g_fail;
+    va_list args; va_start(args, format); long n = va_arg(args, long); va_end(args);
+    char b[32]; sprintf(b, "%ld", n); unsigned short w[32]; Ascii(w, b); SetT(*this, w);
+}
+CWideString FABLE_FASTCALL operator+(const wchar_t* left, const CWideString& right)
+{
+    unsigned short b[128]; unsigned n = Len((const unsigned short*)left); memcpy(b, left, n * 2); memcpy(b + n, T(right), (Len(T(right)) + 1) * 2);
+    return CWideString((const wchar_t*)b);
+}
+bool CWideString::Contains(const CWideString& other) const
+{
+    const unsigned short* h = T(*this); const unsigned short* n = T(other);
+    for (; *h; ++h) if (Starts(h, n)) return true; return false;
+}
+void CWideString::Replace(const CWideString& search, const CWideString& replacement)
+{
+    ++g_replacements; const unsigned short* a = T(*this); const unsigned short* f = T(search); const unsigned short* r = T(replacement);
+    unsigned short b[128]; unsigned n = 0, k = Len(f);
+    while (*a) { if (k && Starts(a, f)) { for (unsigned j = 0; r[j]; ++j) b[n++] = r[j]; a += k; } else b[n++] = *a++; }
+    b[n] = 0; SetT(*this, b);
+}
+void __fastcall FormatNumberWithSeparators(long value, unsigned short* text)
+{
+    char d[32]; sprintf(d, "%ld", value); int len = (int)strlen(d), o = 0;
+    for (int i = 0; i < len; ++i) { text[o++] = (unsigned char)d[i]; int left = len - 1 - i; if (left > 0 && left % 3 == 0 && d[i] != '-') text[o++] = g_separator; }
+    text[o] = 0;
+}
+
+int main()
+{
+    using NGameText::ConstructStringInternal;
+    unsigned short w[64];
+    bool ok = true;
+    { Ascii(w, "%1 then %2"); CWideString s((const wchar_t*)w);
+      ok = ok && ConstructStringInternal(s, -1) && Eq(s, "%1 then %2") && g_replacements == 0;
+      ok = ok && ConstructStringInternal(s, 7, -8, -1) && Eq(s, "7 then -8") && g_replacements == 2; }
+    ok = ok && g_alive == 0;
+    { Ascii(w, "%1 %1 %2"); CWideString s((const wchar_t*)w);
+      ok = ok && ConstructStringInternal(s, 0, 2147483647L, -1) && Eq(s, "0 0 2,147,483,647"); }
+    { Ascii(w, "%1 done"); CWideString s((const wchar_t*)w); int before = g_replacements;
+      ok = ok && !ConstructStringInternal(s, 1234L, 9, -1) && Eq(s, "1,234 done") && g_replacements == before + 1; }
+    { Ascii(w, "unchanged"); CWideString s((const wchar_t*)w); int before = g_replacements;
+      ok = ok && !ConstructStringInternal(s, 5, -1) && Eq(s, "unchanged") && g_replacements == before; }
+    { Ascii(w, "%1"); CWideString s((const wchar_t*)w); g_separator = '.';
+      ok = ok && ConstructStringInternal(s, 1234, -1) && Eq(s, "1.234"); g_separator = ','; }
+    ok = ok && g_alive == 0 && g_fail == 0;
+    if (ok) printf("009c7a60_TEST PASS\n"); else printf("009c7a60_TEST FAIL alive=%d fail=%d repl=%d\n", g_alive, g_fail, g_replacements);
+    return ok ? 0 : 1;
+}

@@ -1,5 +1,5 @@
 // CAIStateGroup_StealStealableItem::FindPStealableItem() -- nearest object with the stealable property and a free action point
-// Leaf: ?FindPStealableItem@CAIStateGroup_StealStealableItem_Methods@@QAEPAVCThingObject@@XZ
+// Leaf: ?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964360, length 107 bytes (+ int3 padding).
 // Callees: CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
@@ -19,6 +19,11 @@
 //   noinline GetPBestThing<Filter,Compare,T> body of engine/CThingSearchTools.h (BESTTHING_BODY; retail compiled it in this TU) under its PDB
 //   template spelling (Ego_r.pdb 0x00988B00 + FableWin.pdb 0x02C3B050, QBE), was a QAE stand-in with a made-up search helper; the comparator
 //   is engine/CThingCompare_Nearest.h, the filter pair engine/CFilter_Bind2.h; the two filters have no shared header and stay row-local.
+// NF146 (2026-11-20, q11812): leaf-only self rename onto the retail class: the _Methods stand-in is gone and the row defines
+//   ?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ (Ego_r.pdb 0x00988C30 + FableWin.pdb 0x02C3AE50, private const;
+//   engine/CAIStateGroup_StealStealableItem.h FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPSTEALABLEITEM, NF141), the spelling its
+//   only landed referrer 0x00964DA0 binds since nf141. The search keeps CThingObject as its template argument (0x00964230's instance
+//   spelling unchanged); the result converts to the PDB's CThing* on return.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -38,6 +43,7 @@
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
 #define FABLE_RETAIL_CAIBRAIN_GETCREATURE
 #define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM
+#define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM_FINDPSTEALABLEITEM
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY
@@ -72,11 +78,7 @@ class CThingFilter_HasFreeActionPoint { public:        // empty filter (no share
 
 typedef CFilter_Bind2<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint> CStealableFilter;
 
-struct CAIStateGroup_StealStealableItem_Methods : CAIStateGroup_StealStealableItem {
-    CThingObject* FindPStealableItem();
-};
-
-CThingObject* CAIStateGroup_StealStealableItem_Methods::FindPStealableItem()
+CThing* CAIStateGroup_StealStealableItem::FindPStealableItem() const
 {
     CThingObject* item = 0;
     CThingCompare_Nearest compare(GetCreature().GetPos());

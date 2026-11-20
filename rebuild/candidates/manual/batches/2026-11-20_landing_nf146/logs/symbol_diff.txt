@@ -1,0 +1,24 @@
+0041c780 new: 1
+    ?ReferenceListIteratorBaseCtor@?A0x608a638a@@YAXPAU_List_node_base@std@@@Z
+0041c7a0 new: 2
+    ?ReferenceListIteratorIncr@?A0xc3e50954@@YAP8_List_iterator_base@std@@AEXXZXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+0041c7c0 new: 2
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ?ReferenceListIteratorNotEqual@?A0xd3da3d1e@@YAP8_List_iterator_base@std@@BE_NABU23@@ZXZ
+004a0370 new: 0
+0055fc90 new: 0
+0072e710 new: 0
+0072e940 new: 0
+00885f50 new: 0
+00964360 new: 1
+    ?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ TABLE:00964360
+009c7a60 new: 2
+    ?ConstructStringInternal@NGameText@@YA_NAAVCWideString@@JZZ TABLE:009c7a60
+    ?GFIntToWideString@@YI?AVCWideString@@J@Z TABLE:00405f00
+009c7b70 new: 1
+    ?ConstructString@NGameText@@YI_NAAVCWideString@@J@Z TABLE:009c7b70
+009c7b80 new: 1
+    ?ConstructString@NGameText@@YI_NAAVCWideString@@JJ@Z TABLE:009c7b80
+009f2dd0 new: 1
+    ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z TABLE:009f2dd0

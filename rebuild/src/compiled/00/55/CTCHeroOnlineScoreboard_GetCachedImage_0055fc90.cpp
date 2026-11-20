@@ -1,6 +1,9 @@
 // CTCHeroOnlineScoreboard::GetCachedImage(const CWideString&, long) -- returns the logo texture for an id: from PictureCache when present, else (loading SaveDir\<folder>\<id>\logo.* into a new 256x256 A8R8G8B8 texture when the file exists) caching the result first
 // Leaf: GetCachedImage
 // Flags: /GS
+// Naming (NF146, 2026-11-20, q4283): 0x009F2DD0 respelled in place in the existing local CSurface from void to the PDB bool return
+//   ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z (Ego_r.pdb 0x00B46AA0 + FableWin.pdb 0x030C9340; the
+//   spelling the other landed callers and the self row bind); the result is unused here, so no byte changes.
 // Retail: Fable.exe @ 0x0055FC90, 560 bytes, `ret 0Ch` (hidden CTexturePointer result), /GS cookie (find data).
 // Ego_r.pdb `?GetCachedImage@CTCHeroOnlineScoreboard@@AAE?AV?$CCountedPointer@VCTexture@@@@ABVCWideString@@J@Z`.
 // Callees: map<long,CTexturePointer>::find 0x00566F00 (iterator by hidden pointer) / operator[] 0x005698A0,
@@ -66,7 +69,7 @@ class CSurface { public:
     void*         PAllocatedMemory;
     virtual ~CSurface() { Uninitialise(); }
     void Uninitialise();                             // 0x009F2E20
-    void LoadFromBitmapFileToPreallocatedSurface(const CWideString& filename, unsigned long flags);   // 0x009F2DD0
+    bool LoadFromBitmapFileToPreallocatedSurface(const CWideString& filename, unsigned long flags);   // 0x009F2DD0
 };
 class CTexture { public:
     void*         PD3DTexture;

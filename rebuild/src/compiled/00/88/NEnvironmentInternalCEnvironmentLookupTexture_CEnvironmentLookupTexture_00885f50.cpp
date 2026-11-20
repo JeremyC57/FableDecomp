@@ -2,6 +2,9 @@
 // Leaf: ??0CEnvironmentLookupTexture
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Flags: /GS
+// Naming (NF146, 2026-11-20, q4283): 0x009F2DD0 respelled in place in the existing local CSurface from void to the PDB bool return
+//   ?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z (Ego_r.pdb 0x00B46AA0 + FableWin.pdb 0x030C9340; the
+//   spelling the other landed callers and the self row bind); the result is unused here, so no byte changes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00885F50, length 384 bytes (body 0x178), `ret 4`, /GS (cookie 0x0139C8A8, check
 //   0x00BFE9F9).
 // PDB: ??0CEnvironmentLookupTexture@NEnvironmentInternal@@QAE@VCWideString@@@Z.
@@ -65,7 +68,7 @@ public:
     virtual void v00();
     virtual ~CSurface() { Uninitialise(); }
     void Uninitialise();                            // 0x009F2E20
-    void LoadFromBitmapFileToPreallocatedSurface(const CWideString& filename, unsigned long flags);   // 0x009F2DD0
+    bool LoadFromBitmapFileToPreallocatedSurface(const CWideString& filename, unsigned long flags);   // 0x009F2DD0
     void CopyToMemory(void* destination, long pitch);   // 0x009F3520
 public:
     bool InitialiseAsImage(const C2DExtentsI&, const CPixelFormat&, bool);   // 0x009F3230

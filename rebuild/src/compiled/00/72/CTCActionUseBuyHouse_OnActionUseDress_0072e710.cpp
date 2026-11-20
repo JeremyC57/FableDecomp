@@ -13,6 +13,9 @@
 // Shape: no frame -- the symbol string is homed in the dead `money` slot and the wide text in the dead `house` slot; each
 // arm builds its own text and calls SetText, and VC7.1 tail-merges the two SetText calls (the arms only push different
 // flags, 4 = confirm, 2 = plain), so the shared tail destroys the text once.
+// Naming (NF146, 2026-11-20, q4285): 0x009C7B70 respelled to the PDB overload ?ConstructString@NGameText@@YI_NAAVCWideString@@J@Z
+//   (Ego_r.pdb 0x00B15970 + FableWin.pdb 0x02F6EB80; CWideString&, the self row's leaf and what the other 13 landed callers bind), was
+//   the global ?ConstructString@@YI_NPAVCWideString@@J@Z (pointer; same bytes).
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -22,7 +25,7 @@ class CWideString { public:
     unsigned short* m_pData;
     ~CWideString();                                     // 0x0099B510
 };
-bool __fastcall ConstructString(CWideString* text, long value);   // 0x009C7B70
+namespace NGameText { bool __fastcall ConstructString(CWideString& text, long value); }   // 0x009C7B70
 namespace NGameText {
 class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;  // 0x009C95E0
@@ -76,12 +79,12 @@ void CTCActionUseBuyHouse::OnActionUseDress(CTCBuyableHouse* house, long money)
     long price = house->GetPriceForNextDressLevel();
     if (price != -1 && price <= money) {
         CWideString text = CMainGameComponent::Get()->TextBank->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_DRESS_IMPROVE");
-        ConstructString(&text, price);
+        NGameText::ConstructString(text, price);
         WaitingForConfirmation = true;
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, 4, 0.0f, false, true);
     } else {
         CWideString text = CMainGameComponent::Get()->TextBank->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_DRESS_LACK_FUNDS");
-        ConstructString(&text, price);
+        NGameText::ConstructString(text, price);
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->Font, text, 2, 0.0f, false, true);
     }
 }

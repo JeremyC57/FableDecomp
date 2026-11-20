@@ -1,0 +1,71 @@
+addr       parity           behav  name
+009f2dd0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009f2dd0   WARN RELOC_ALIAS: _D3DXLoadSurfaceFromFileW@32 -> 00bfefbc is the import thunk 'D3DX9_25.DLL::D3DXLoadSurfaceFromFileW'
+009f2dd0   RELOCATION_MATCH PASS   CSurface::LoadFromBitmapFileToPreallocatedSurface
+00885f50   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00885f50   WARN RELOC_NAME: ?GetSurfaceExtents@@YI?AVC2DExtentsI@@ABVC2DCoordI@@ABVCPixelFormat@@@Z -> 009f3220 labelled 'CanMove'
+00885f50   RELOCATION_MATCH PASS   NEnvironmentInternal::CEnvironmentLookupTexture::CEnvironmentLookupTexture
+0055fc90   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+0055fc90   WARN RELOC_NAME: ?GetSaveDir@@YI?AVCWideString@@XZ -> 0041a5b0 labelled 'NResourceDirectoryNames::GetScoreboardImageCacheDir'
+0055fc90   WARN RELOC_NAME: ??ACPictureMap@@QAEAAUCTexturePointer@@ABJ@Z -> 005698a0 labelled '_global::RBTree_SearchOrCreate'
+0055fc90   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::GetCachedImage
+009c7a60   RELOCATION_MATCH PASS   NGameText::ConstructStringInternal
+009c7b70   RELOCATION_MATCH PASS   NGameText::ConstructString
+009c7b80   RELOCATION_MATCH PASS   NGameText::ConstructString
+0072e710   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0072e710   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0072e710   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0072e710   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0072e710   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+0072e710   RELOCATION_MATCH PASS   CTCActionUseBuyHouse::OnActionUseDress
+0072e940   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0072e940   RELOCATION_MATCH PASS   CTCActionUseBuyHouse::OnActionUseMain
+004a0370   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CTCRegionDisplay (engine/CTCRegionDisplay.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+004a0370   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004a0370   WARN RELOC_NAME: ?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$vector@PBVCThing@@@@@Z -> 004ad780 labelled 'GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>'
+004a0370   RELOCATION_MATCH PASS   CWorld::DisplayCollectableRentInformation
+00964360   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::FindPStealableItem
+0041c780   MATCH            PASS   std::_List_iterator_base::_List_iterator_base
+0041c7a0   WARN STANDIN_LEAF ?_M_incr@_List_iterator_base@std@@QAEXXZ (catalog std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>::begin; names another function)
+0041c7a0   MATCH            PASS   std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>::begin
+0041c7c0   WARN STANDIN_LEAF ??9_List_iterator_base@std@@QBE_NABU01@@Z (catalog std::_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>,0>_>_>::operator!=; names another function)
+0041c7c0   MATCH            PASS   std::_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>,0>_>_>::operator!=
+
+WINS: 13
+  009f2dd0 RELOCATION_MATCH CSurface::?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAE_NABVCWideString@@K@Z
+  00885f50 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentLookupTexture::??0CEnvironmentLookupTexture
+  0055fc90 RELOCATION_MATCH CTCHeroOnlineScoreboard::GetCachedImage
+  009c7a60 RELOCATION_MATCH NGameText::?ConstructStringInternal@NGameText@@YA_NAAVCWideString@@JZZ
+  009c7b70 RELOCATION_MATCH _global::?ConstructString@NGameText@@YI_NAAVCWideString@@J@Z
+  009c7b80 RELOCATION_MATCH _global::?ConstructString@NGameText@@YI_NAAVCWideString@@JJ@Z
+  0072e710 RELOCATION_MATCH CTCActionUseBuyHouse::OnActionUseDress
+  0072e940 RELOCATION_MATCH CTCActionUseBuyHouse::?OnActionUseMain@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@J@Z
+  004a0370 RELOCATION_MATCH CWorld::DisplayCollectableRentInformation
+  00964360 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ
+  0041c780 MATCH std::_List_iterator_base::??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+  0041c7a0 MATCH list<NUISystem::CList*::?_M_incr@_List_iterator_base@std@@QAEXXZ
+  0041c7c0 MATCH _Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString::??9_List_iterator_base@std@@QBE_NABU01@@Z

@@ -18,6 +18,9 @@
 //   landed 0x007795A0); CThing interface bitset +0x20 / map +0x44 / Dead bit +0x91 (landed GetInterface model).
 // Shape: GetInterface writes through an out pointer and the house pointer is used without a null test (its home
 //   slot is shared with the filter and the lookup key, hence the load before the loop).
+// Naming (NF146, 2026-11-20, q4285): 0x009C7B80 respelled to the PDB overload ?ConstructString@NGameText@@YI_NAAVCWideString@@JJ@Z
+//   (Ego_r.pdb 0x00B15980 + FableWin.pdb 0x02F6EBB0, the self row's leaf and what the other 4 landed callers bind), was the global
+//   ?ConstructString@@YI_NAAVCWideString@@JJ@Z.
 #include "fable_compiler.h"
 #define CWorld CWorld_PDB
 #include "engine/CWorld.h"
@@ -33,7 +36,7 @@ class CWideString { public:
     const CWideString& operator=(const CWideString& other);  // 0x0099B7D0
     ~CWideString();                                    // 0x0099B510
 };
-bool __fastcall ConstructString(CWideString& text, long value0, long value1);   // 0x009C7B80
+namespace NGameText { bool __fastcall ConstructString(CWideString& text, long value0, long value1); }   // 0x009C7B80
 namespace NGameText {
 class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
@@ -155,7 +158,7 @@ void CWorld::DisplayCollectableRentInformation()
             CTCRegionDisplay* display;
             if (hero->GetInterface(&display, 0x8e) && display) {
                 CWideString text = CMainGameComponent::Get()->TextBank->GetTextBySymbol("TEXT_GUI_COLLECTABLE_RENT");
-                ConstructString(text, collectableRent, maxRent);
+                NGameText::ConstructString(text, collectableRent, maxRent);
                 display->CurrentAreaNameExtra = text;
             }
         }

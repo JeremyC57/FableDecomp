@@ -1,0 +1,2 @@
+# recheck after landing nf146: 143 rows = gate referencing rows + renamed rows (no header overlay)
+good 143 bad 0

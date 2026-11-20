@@ -1,27 +1,49 @@
 // 009c7a60 NGameText::ConstructStringInternal
 // Flags: /O2 /Oy /W3 /GS
-// Leaf: ConstructStringInternal
+// Leaf: ?ConstructStringInternal@NGameText@@YA_NAAVCWideString@@JZZ
+// Shape: index is initialised before the va_list and the first-argument test is the while condition itself (no enclosing if); va_arg
+//   is read inside the body before ++index, while key is still alive. The placeholder is L"%" (0x0129B470) + the index through the inline
+//   GFIntToWideString (default constructor, Sprintf(L"%d") with the format at 0x0122DE44, copy into the result, destructor).
+// Naming (NF146, 2026-11-20, q4285): ported off the row-local NGameText::CWideString / CWideStringData model (and its four same-TU
+//   noinline member copies) onto fable_string.h (FABLE_RETAIL_CWIDESTRING); the header-only form matches, so no same-TU copy is needed.
+//   Own leaf to the PDB ?ConstructStringInternal@NGameText@@YA_NAAVCWideString@@JZZ (Ego_r.pdb 0x00B157D0 + FableWin.pdb 0x02F6E140:
+//   CWideString&, long, ...), the spelling the landed 0x009C7BA0 binds; was ?ConstructStringInternal@NGameText@@YA_NAAUCWideString@1@HZZ.
+//   Callees now bind the plain CWideString spellings other landed rows bind (0x0099AED0, 0x0099BA70 Sprintf, 0x0099B720, 0x0099B510,
+//   0x0099BFF0, 0x0099AF20 Contains, 0x0099B6B0, 0x0099C1E0 Replace); the made-up FormatIndex helper is the PDB inline GFIntToWideString
+//   (engine/GFIntToWideString.h); the separator formatter 0x00A0DAC0 takes its landed self spelling FormatNumberWithSeparators(long,
+//   unsigned short*) (descriptive, no PDB name), was the NGameText::FormatNumber_AddThousandsSeparators stand-in; the two format strings
+//   are the retail literals L"%d" / L"%" (read from Fable.exe), were the FormatNumber / Prefix data stand-ins.
+#define FABLE_RETAIL_CWIDESTRING
 #include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/GFIntToWideString.h"
 #include <stdarg.h>
-#include <stdlib.h>
-#include <wchar.h>
+
+void __fastcall FormatNumberWithSeparators(long value, unsigned short* text);   // 0x00A0DAC0
+
 namespace NGameText {
-// Layout: wide strings one dword; integer conversion writes 64-byte stack buffer.
-// Shape: index is initialised before the va_list and the first-argument test is the while condition itself (no
-//   enclosing if); va_arg is read inside the body before ++index, while key is still alive. The default CWideString
-//   constructor is only declared here (retail calls 0x0099AED0 in another TU; an in-TU body lets VC reuse ecx).
-struct CWideStringData{unsigned short*text;unsigned length,capacity;int refs;};
-struct CWideString {CWideStringData* data;CWideString();CWideString(const CWideString&);CWideString(const char*);CWideString(const unsigned short*);CWideString&operator+=(const CWideString&);~CWideString();void UnassignString();void __cdecl Format(const unsigned short*,...);bool Contains(const CWideString&)const;void Replace(const CWideString&,const CWideString&);protected:
-    static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
-};
-__declspec(noinline) CWideString::CWideString(const CWideString&other):data(0){++NoStrings;if(&other!=this&&other.data!=data){if(data)UnassignString();if(other.data){data=other.data;++data->refs;}}}
-__declspec(noinline) CWideString::~CWideString(){CWideStringData*storage=data;if(storage){--storage->refs;if(storage->refs<=0){storage=data;if(storage){if(storage->text)free(storage->text);delete storage;}}data=0;}--NoStrings;}
-extern const unsigned short Empty[]; // retail129a8e0 UTF16 empty string
-__declspec(noinline) bool CWideString::Contains(const CWideString&rhs)const{const unsigned short*needle=rhs.data?rhs.data->text:Empty;const unsigned short*haystack=data?data->text:Empty;return wcsstr((const wchar_t*)haystack,(const wchar_t*)needle)!=0;}
-__declspec(noinline) CWideString __fastcall operator+(const unsigned short*left,const CWideString&right){CWideString result(left);result+=right;return result;}
-void __fastcall FormatNumber_AddThousandsSeparators(int,unsigned short*);
-extern const unsigned short FormatNumber[],Prefix[];
-FABLE_FORCEINLINE CWideString FormatIndex(int index){CWideString n;n.Format(FormatNumber,index);return n;}
-bool __cdecl ConstructStringInternal(CWideString&output,int first,...){bool result=true;int index=1;va_list args;va_start(args,first);int number=first;while(number!=-1){CWideString key=Prefix+FormatIndex(index);if(!output.Contains(key)){result=false;break;}unsigned short buffer[32];FormatNumber_AddThousandsSeparators(number,buffer);output.Replace(key,CWideString(buffer));number=va_arg(args,int);++index;}va_end(args);return result;}
+
+bool __cdecl ConstructStringInternal(CWideString& output, long first, ...)
+{
+    bool result = true;
+    long index = 1;
+    va_list args;
+    va_start(args, first);
+    long number = first;
+    while (number != -1) {
+        CWideString key = L"%" + GFIntToWideString(index);
+        if (!output.Contains(key)) {
+            result = false;
+            break;
+        }
+        unsigned short buffer[32];
+        FormatNumberWithSeparators(number, buffer);
+        output.Replace(key, CWideString(buffer));
+        number = va_arg(args, long);
+        ++index;
+    }
+    va_end(args);
+    return result;
+}
 
 }

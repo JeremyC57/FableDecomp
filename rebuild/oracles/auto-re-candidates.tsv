@@ -10564,7 +10564,7 @@ address	name	length	bytes
 0042a2b9	CCountedPointer<NUISystem::CMesh>::SetStaticCast<NUISystem::CComponent>	17	8b442404ff7004ff30e873f1ffffc20400
 0042a2ca	CCountedPointer<NUISystem::CText>::SetStaticCast<NUISystem::CComponent>	17	8b442404ff7004ff30e888f1ffffc20400
 0042a2db	CCountedPointer<NUISystem::CList>::SetStaticCast<NUISystem::CComponent>	17	8b442404ff7004ff30e89df1ffffc20400
-0041c7c0	std::_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>,0>_>_>::operator!=	22	8b018b542404568b3233c93bc60f95c18ac15ec20400
+0041c7c0	std::_List_iterator_base::operator!=	22	8b018b542404568b3233c93bc60f95c18ac15ec20400
 0041c830	std::_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>,0>_>_>::operator!=	22	8b018b542404568b3233c93bc60f95c18ac15ec20400
 00416268	CMainGameComponent::BeginInputLoading	23	ff7424048b0d88833b0168e4853b01e874ea5d00c20400
 0041627f	CMainGameComponent::BeginInputLoading	23	ff7424048b0d88833b0168e4853b01e87dfb5d00c20400
@@ -10932,7 +10932,7 @@ address	name	length	bytes
 00968170	_global::Dtor_CCreatureActionBaseBase_00968170	22	568bf18d8ea8000000e8929a09008bce5ee96abdd2ff
 0041d207	NUISystem::CManager::ClearActionParams	20	568bf18d4e60e82fcf00008d4e5c5ee94dcf0000
 0042bec0	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	20	568bf18d4e0ce85aedffff8d4e045ee951edffff
-0041c7a0	std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>::begin	7	8b018b108911c3
+0041c7a0	std::_List_iterator_base::_M_incr	7	8b018b108911c3
 0041c7b0	std::_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>::operator--	8	8b018b50048911c3
 0041cf1f	_global::SetMember_byte0xc8_0041cf1f	13	8a4424048881c8000000c20400
 0042d930	CIVCountedPointeeBase::Delete	11	85c974068b016a01ff10c3

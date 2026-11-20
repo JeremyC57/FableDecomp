@@ -40557,9 +40557,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c7b80'
-        Module = '_global'
-        Source = '00/9c/global_ConstructString_009c7b80.cpp'
-        TestSource = '00/9c/global_ConstructString_009c7b80_test.cpp'
+        Module = 'NGameText'
+        Source = '00/9c/NGameText_ConstructString_009c7b80.cpp'
+        TestSource = '00/9c/NGameText_ConstructString_009c7b80_test.cpp'
         PassPattern = 'CONSTRSTR_OK'
     }
     [pscustomobject]@{
@@ -41026,9 +41026,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c7b70'
-        Module = '_global'
-        Source = '00/9c/global_ConstructString_009c7b70.cpp'
-        TestSource = '00/9c/global_ConstructString_009c7b70_test.cpp'
+        Module = 'NGameText'
+        Source = '00/9c/NGameText_ConstructString_009c7b70.cpp'
+        TestSource = '00/9c/NGameText_ConstructString_009c7b70_test.cpp'
         PassPattern = '009c7b70_TEST PASS'
     }
     [pscustomobject]@{
@@ -74187,9 +74187,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041c7c0'
-        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
-        Source = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0.cpp'
-        TestSource = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0_test.cpp'
+        Module = 'std::_List_iterator_base'
+        Source = '00/41/stdListiteratorbase_operator_0041c7c0.cpp'
+        TestSource = '00/41/stdListiteratorbase_operator_0041c7c0_test.cpp'
         PassPattern = 'PASS_0041c7c0'
     }
     [pscustomobject]@{
@@ -76763,9 +76763,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041c7a0'
-        Module = 'list<NUISystem::CList*'
-        Source = '00/41/listNUISystemCList_begin_0041c7a0.cpp'
-        TestSource = '00/41/listNUISystemCList_begin_0041c7a0_test.cpp'
+        Module = 'std::_List_iterator_base'
+        Source = '00/41/stdListiteratorbase_Mincr_0041c7a0.cpp'
+        TestSource = '00/41/stdListiteratorbase_Mincr_0041c7a0_test.cpp'
         PassPattern = 'PASS_0041c7a0'
     }
     [pscustomobject]@{

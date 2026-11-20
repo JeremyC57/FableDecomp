@@ -20,6 +20,9 @@
 // slots; the confirm flag is a named bool tested before the SetText flags; each MARITAL/plain symbol pick is an
 // if/else of two whole `text += GetTextBySymbol("...")` statements that VC7.1 cross-jumps (`push -1 ; jle ;
 // push A ; jmp ; push B` then one shared call), not a ternary inside the call (that loads the pointer into eax).
+// Naming (NF146, 2026-11-20, q4285): 0x009C7B70 respelled to the PDB overload ?ConstructString@NGameText@@YI_NAAVCWideString@@J@Z
+//   (Ego_r.pdb 0x00B15970 + FableWin.pdb 0x02F6EB80; CWideString&, the self row's leaf and what the other 13 landed callers bind), was
+//   the global ?ConstructString@@YI_NPAVCWideString@@J@Z (pointer; same bytes).
 #include <stddef.h>
 #include "engine/CTCBuyableHouse.h"
 
@@ -46,7 +49,7 @@ class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 
-bool __fastcall ConstructString(CWideString* text, long value);   // 0x009C7B70
+namespace NGameText { bool __fastcall ConstructString(CWideString& text, long value); }   // 0x009C7B70
 class CFontBank;
 namespace NGameText {
 class CDataBank { public:
@@ -127,7 +130,7 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
         else
             text = CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_SELL");
     }
-    ConstructString(&text, ((CTCBuyableHouseCalls*)house)->GetPrice());
+    NGameText::ConstructString(text, ((CTCBuyableHouseCalls*)house)->GetPrice());
     if (text != L"") {
         if (confirm) {
             WaitingForConfirmation = true;

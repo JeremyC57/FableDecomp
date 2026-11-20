@@ -4853,8 +4853,6 @@ __imp__GetWindowRect@8	01440308	009bed10
 ?DestroyRange_009c6d60@@YIXPAUCBufferChunk_009c7150@@0ABUCRetailAllocator_009c7150@@@Z	009c6d60	009c7150
 ?DestroyRange@@YIXPAUSStringPair8@@0ABUSAllocator@@@Z	009c6d60	009c76d0
 ?Erase@?$CArray@USStringPair8@@@@QAEXPAUSStringPair8@@0@Z	009c7150	009c76d0
-?ConstructStringHelper@@YAXPAX0H@Z	009c7a60	009c7b70
-_FableStringCtor_9c7b80	009c7a60	009c7b80
 ?IsFinished@CBankFileAsyncData@@QBE_NXZ	009d54e0	009c7be0
 ?Sizeof@CBankFileAsyncData@@QBEKXZ	009d5620	009c7d90
 ?Sizeof@CCharString@@QBEKXZ	0099e500	009c7d90
@@ -4999,8 +4997,6 @@ _atexit	004012bc	009f0240
 ?g_clearFn1@@3P6GXPAX@ZA	0143fe10	009f26b0
 ?g_perfStatsObject@@3HA	013caa70	009f26b0
 ?GetAllocationSize@CMemoryAllocator@@QAEKPAX@Z	009f2390	009f2920
-?ConvertPathToFullPath@@YI?AVCWideString@@ABUCCharString@@@Z	00999110	009f2dd0
-_D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?GetByteColourDepth@CPixelFormat@@QBEKXZ	009e3800	009f4120
 ??_7CInkeyBuffer@@6B@	0129c784	009f49b0
 ??_7CScratchBuffer@@6B@	0129c790	009f4a00
@@ -8097,7 +8093,6 @@ _isdigit	00bfeda6	009b9ee0
 _isalpha	00bfedb8	009b9fc0
 ?GetVertexShader@CShaderDataBank@@QBEPAVCShaderBankEntry@@K@Z	00a61fa0	00a5d510
 ?EndSerialising@CTCBase@@QAEX_NAAVCCharString@@@Z	006869e0	00686e10
-?GetPriceForNextDressLevel@CTCBuyableHouse@@QBEJXZ	006bf920	0072e710
 ?GetMapNumberFromMapUID@CWorldMap@@QBEJK@Z	004fb920	00779340
 __aullshr	00bfecf0	00779340
 ??1CPhysicsMeshObject@@UAE@XZ	00a127d0	007e30a0
@@ -8708,10 +8703,6 @@ __CIacos	00bfeba2	0084cdf0
 ?_M_clear@CMusicEntryVector@@QAEXXZ	00460ea7	00460d75
 ??_7CEnvironmentThemeDef@@6B@	01236244	0047318d
 ?_M_clear@CExplosionRingVector@@QAEXXZ	004e3088	004e2f56
-?CopyToMemory@CSurface@@QAEXPAXJ@Z	009f3520	00885f50
-?LoadFromBitmapFileToPreallocatedSurface@CSurface@@QAEXABVCWideString@@K@Z	009f2dd0	00885f50
-?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z	0099a6a0	00885f50
-?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	0099a960	00885f50
 ??1CEngineMap@@QAE@XZ	00b42a90	00b42b10
 ?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ	00bdbff0	00b42b10
 ?OnMapVisibilityChanged@CEngineLandscapeMap@@QAEX_N@Z	00bdc3c0	00b42b10
@@ -8942,8 +8933,6 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?ThreadProc@CThreadedFileManager@@SAXPAX@Z	0098f380	0098f3a0
 __beginthread	00bfed3a	0098f3a0
 _wcsncmp	00bfeb0a	004071c0
-?GetCurrentCollectableRentValue@CTCBuyableHouse@@QAEJXZ	006c0160	004a0370
-?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ	006c0270	004a0370
 ?_M_insert_overflow@CBlurredAttitudesDefVector@@QAEXPAUCBlurredAttitudesDef@@ABU2@ABU__false_type@@K_N@Z	0067cb20	0067cc50
 ?__copy_backward@@YIPAUCBlurredAttitudesDef@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	0067c8b0	0067cc50
 ?fill@@YIXPAUCBlurredAttitudesDef@@0ABU1@@Z	0067c720	0067cc50
@@ -9126,7 +9115,6 @@ __CItanh	00bfece2	008ee790
 ?WatchForHostage1Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16920	00d167c0
 ?SetAsIndirectlyAwareOfPerceivedThing@CTCPerceiveThing@@QAEXXZ	007449e0	0084a720
 ?Interpolate@CScreenFilterParams@@QBE?AU1@ABU1@M@Z	00882fe0	008859f0
-?GetPrice@CTCBuyableHouseCalls@@QAEJXZ	006c0120	0072e940
 ?OnHeroApproachPodiumArea@CTCBoastingCrowdControl@@QAEXXZ	00783bc0	007828e0
 ??1CInitBaseClass@@UAE@XZ	0099a410	009a5800
 ?CanDoProperSignedConversion@CSurface@@QAE_NPBVC2DBoxI@@0PBVCPixelFormat@@@Z	009f35d0	009f37e0
@@ -15833,8 +15821,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetAutoSaveQuestStartPathName@CUserProfileManager@@QBE?AVCWideString@@XZ	00407fd0	004a0180
 ?GetAutoSaveRegionLeavingFileName@CUserProfileManager@@QBE?AVCWideString@@XZ	00406730	004a0180
 ?GetAutoSaveRegionLeavingPathName@CUserProfileManager@@QBE?AVCWideString@@XZ	004080b0	004a0180
-?ConstructString@@YI_NAAVCWideString@@JJ@Z	009c7b80	004a0370
-?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$vector@PBVCThing@@@@@Z	004ad780	004a0370
 ?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z	004a05c0	004a0850
 ?GetAutoSaveCheckPointFileName@CUserProfileManager@@QBE?AVCWideString@@XZ	004066f0	004a0bb0
 ?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z	004a21f0	004a2d70
@@ -16823,8 +16809,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetStrafeAnimName@CTCFireballSpell@@QBE?AVCCharString@@XZ	007c85f0	0072b870
 ?GetStrafeAnimName@CTCWillLightning@@QBE?AVCCharString@@XZ	0079f610	0072b870
 ?KillReclaimedUndead@CTCSpecialAbilities@@QAEXPAVCThing@@@Z	0072b3b0	0072c3c0
-?ConstructString@@YI_NPAVCWideString@@J@Z	009c7b70	0072e710
-?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z	00492e4b	0072e710
 ?SetupFromData@CTCDummyVillager@@QAEXKPAVCThingBuilding@@0_N@Z	0072f170	0072f2f0
 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z	007325d0	00731e20
 ?_M_find@CSoundMap@@QBEPAU_Node@1@ABVCCharString@@@Z	0042b467	007329e0
@@ -17265,7 +17249,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?HasSphereSphereCollidedAt@CTCPhysicsBase_Methods@@QAE_NPAU1@ABVC3DVector@@1@Z	008803e0	00880800
 ??F?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Nonconst_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@QAEAAU01@XZ	00882e50	00883fd0
 ?_M_insert@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@AAE?AU?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Nonconst_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@2@PAU_Rb_tree_node_base@2@0ABQAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@0@Z	00883920	00883fd0
-?GetSurfaceExtents@@YI?AVC2DExtentsI@@ABVC2DCoordI@@ABVCPixelFormat@@@Z	009f3220	00885f50
 ?GetColour@CEnvironmentLookupTexture@@QBE?AVCRGBFloatColour@@JJ@Z	008860d0	008865c0
 ?resize@?$vector@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@V?$allocator@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@std@@@std@@QAEXIABUCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@Z	00889440	00887330
 ?Blend@CBlendedEnvironmentTheme@NEnvironmentInternal@@QBEXAAV12@ABV12@M@Z	00887b70	00888260
@@ -29681,17 +29664,6 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 _g_emptyWideStringData	0129a8e0	0099bdb0
 ?UnassignString@CWideString@@IAEXXZ	0099b4d0	0099c120
 ?g_RampMaximum@@3MB	0129b3f0	009beaa0
-??0CWideString@NGameText@@QAE@ABU01@@Z	0099b720	009c7a60
-??0CWideString@NGameText@@QAE@PBG@Z	0099b6b0	009c7a60
-??0CWideString@NGameText@@QAE@XZ	0099aed0	009c7a60
-??1CWideString@NGameText@@QAE@XZ	0099b510	009c7a60
-??HNGameText@@YI?AUCWideString@0@PBGABU10@@Z	0099bff0	009c7a60
-?Contains@CWideString@NGameText@@QBE_NABU12@@Z	0099af20	009c7a60
-?Format@CWideString@NGameText@@QAAXPBGZZ	0099ba70	009c7a60
-?FormatNumber@NGameText@@3QBGB	0122de44	009c7a60
-?FormatNumber_AddThousandsSeparators@NGameText@@YIXHPAG@Z	00a0dac0	009c7a60
-?Prefix@NGameText@@3QBGB	0129b470	009c7a60
-?Replace@CWideString@NGameText@@QAEXABU12@0@Z	0099c1e0	009c7a60
 ?g_ACosTable@@3PAMA	013cb530	00a0db60
 ?g_ASinTable@@3PAMA	013cc540	00a0db60
 ?FindNearestNavigableNode@CNavigatorBase@@QBEPAVCANavQuadTreeNode@@PAV2@0ABVC3DVector@@MPAVCNavigatorManager@@@Z	00a475c0	00a1bca0
@@ -38329,10 +38301,6 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?Clear@CRenderManagerCore@@QAEXABVCRGBColour@@K@Z	009d8cf0	00b87680
 ?g_pRenderManagerCore@@3PAUCRenderManagerCore@@A	01436e18	00b87680
 ??RCThingFilter_IsInQuestOrNullQuest@@QBE_NABVCThing@@@Z	006a7c60	005185f0
-??ACPictureMap@@QAEAAUCTexturePointer@@ABJ@Z	005698a0	0055fc90
-?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KJ_N2@Z	009fa280	0055fc90
-?Reset@CTexturePointer@@QAEXPAVCTexture@@@Z	005669c0	0055fc90
-?find@CPictureMap@@QAE?AUiterator@1@ABJ@Z	00566f00	0055fc90
 ?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B	013bac30	00670d50
 ?SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B	013bac34	00670d50
 ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@YI_NABV?$CIntelligentPointer@VCThingObject@@@@@Z	0078b2a0	0078b070
@@ -39663,7 +39631,6 @@ _c_dfDIMouse2	012addfc	00ab5710
 ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z	0093d800	0093db10
 ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ	00954220	009551a0
 ??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z	00957170	00956fe0
-??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z	00964230	00964360
 ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	009793d0	00978fd0
 ??$GetPFirstThingInRoughArea@VCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@$$CBVCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@PAPBVCThingAICreature@@@Z	00987430	009863e0
 ??0CThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QAE@ABVCThingAICreature@@M_N@Z	00986ed0	009863e0
@@ -39827,3 +39794,20 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?g_pShaderBankStateBlock@@3PAUCShaderBankStateBlock@@A	01436e44	00b24690
 ?g_pVideoOptionsListener@@3PAUCEngineVideoOptionsListener@@A	01436e54	00b24690
 ?g_pVideoOptionsSink@@3PAUCEngineVideoOptionsSink@@A	01436e58	00b24690
+?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$vector@PBVCThing@@@@@Z	004ad780	004a0370
+?GetCurrentCollectableRentValue@CTCBuyableHouse@@QAEJXZ	006c0160	004a0370
+?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ	006c0270	004a0370
+??ACPictureMap@@QAEAAUCTexturePointer@@ABJ@Z	005698a0	0055fc90
+?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KJ_N2@Z	009fa280	0055fc90
+?Reset@CTexturePointer@@QAEXPAVCTexture@@@Z	005669c0	0055fc90
+?find@CPictureMap@@QAE?AUiterator@1@ABJ@Z	00566f00	0055fc90
+?GetPriceForNextDressLevel@CTCBuyableHouse@@QBEJXZ	006bf920	0072e710
+?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z	00492e4b	0072e710
+?GetPrice@CTCBuyableHouseCalls@@QAEJXZ	006c0120	0072e940
+?CopyToMemory@CSurface@@QAEXPAXJ@Z	009f3520	00885f50
+?GetSurfaceExtents@@YI?AVC2DExtentsI@@ABVC2DCoordI@@ABVCPixelFormat@@@Z	009f3220	00885f50
+?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z	0099a6a0	00885f50
+?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	0099a960	00885f50
+??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z	00964230	00964360
+?FormatNumberWithSeparators@@YIXJPAG@Z	00a0dac0	009c7a60
+_D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
