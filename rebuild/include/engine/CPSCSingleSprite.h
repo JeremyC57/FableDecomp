@@ -20,6 +20,43 @@ public:
     virtual bool AddToBoundingSphere(C3DBoundingSphere& bsphere, const float interpolate, CParticleSystem& system,
                                      const CParticleUpdateParameters<unsigned long, unsigned long>& params);   // 0x00B075D0
 #endif
+#ifdef FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
+    // Opt-in (Account B re-port, 2026-11-20, the CPSCSingleSprite rows of the shared-header backlog): the class's member functions, Ego_r.pdb
+    // names and mangled signatures (?..@CPSCSingleSprite@NParticleEngine@@ ...; access from the mangling: U = public virtual, S = public static,
+    // I = protected), retail addresses where landed. GetComponentType has no Ego_r symbol of its own (folded) and is the CPSCBase slot.
+    // Declarations only: every virtual is an override of a CPSCBase slot, so no layout change.
+    CPSCSingleSprite();                                                                              // 0x00B09360
+    static CPSCBase* FABLE_FASTCALL Alloc();                                                         // 0x00AF7DF0
+    virtual CPSCBase* DatabaseClone() const;                                                         // 0x00B0A190
+    virtual CCharString GetClassTypeName() const;
+    virtual EPSCType GetComponentType() const;                                                       // 0x00B0A0F0
+    virtual EPSCSubType GetComponentSubType() const;                                                 // 0x00B0A100
+    virtual CCharString GetGUIName() const;
+    virtual void Update(CParticleSystem&, const CParticleUpdateParameters<unsigned long, unsigned long>&, bool&);
+    virtual void PreparePrimitives(const float, const CEnginePrimitivePrepareInfo&, CParticleSystem&,
+                                   const CParticleUpdateParameters<unsigned long, unsigned long>&, CEnginePrimitiveHandle&);   // 0x00B087C0
+    virtual void InterpolateTo(const CPSCBase&, const float);                                        // 0x00B062A0
+    virtual void ReadBinary(CDataInputStream&);                                                      // 0x00B068F0
+    virtual void WriteBinary(CDataOutputStream&) const;                                              // 0x00B06060
+    virtual void DatabaseSerialise(CPersistContext&, const CEmitterDatabaseSerialiseInfo&);
+    virtual void DatabaseCopy(const CPSCBase&);                                                      // 0x00B05EA0
+#ifndef FABLE_RETAIL_CPSCSINGLESPRITE_ADDTOBOUNDINGSPHERE
+    virtual bool AddToBoundingSphere(C3DBoundingSphere&, const float, CParticleSystem&,
+                                     const CParticleUpdateParameters<unsigned long, unsigned long>&);   // 0x00B075D0
+#endif
+    virtual void GetComponentCost(CParticleSystemCost&, const CParticleSystem&, const float, const float);   // 0x00B05C60
+    virtual void EnterTimelineEnd();                                                                 // 0x00B0A130
+    virtual bool Initialise(CIEngine*, CParticleSystem&, const CParticleUpdateParameters<unsigned long, unsigned long>&,
+                            CEnginePrimitiveHandle&);                                                // 0x00B094B0
+    virtual void ClearAllPrimitives(CIEngine*, CEnginePrimitiveHandle&);                             // 0x00B07570
+    virtual ~CPSCSingleSprite();                                                                     // 0x00B0A160
+protected:
+    bool GetEndPos(const CParticleUpdateParameters<unsigned long, unsigned long>&, C3DVector&);
+    float SmoothFadeValue(float) const;                                                              // 0x00B05E10
+    void AddTrailPosition(const C3DVector&, float);                                                  // 0x00B081A0
+    void SetTrailPositionsFromSpline(CParticleSystem&, const CParticleUpdateParameters<unsigned long, unsigned long>&,
+                                     float, float);                                                  // 0x00B08250
+#endif
 protected:
     long          SpriteBankIndex;              // +0x34
     CRGBColour    StartColour;                  // +0x38
@@ -66,5 +103,5 @@ protected:
     CArray<long>  PrimIDList;                   // +0x12c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NParticleEngine::CPSCSingleSprite) == 0x138);
+FABLE_STATIC_ASSERT_AT(69, sizeof(NParticleEngine::CPSCSingleSprite) == 0x138);
 #endif

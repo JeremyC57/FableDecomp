@@ -5700,7 +5700,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?CDecal_OpDelete@@YIXPAUCDecal@@@Z	00af8ad0	00af7ca0
 ??0CPSCRenderSprite@@QAE@XZ	00afb7c0	00af7d10
 ??0CPSCRenderMesh@@QAE@XZ	00b012e0	00af7d80
-??0CPSCSingleSprite@@QAE@XZ	00b09360	00af7df0
 ??0CClass_00b0c9c0@@QAE@XZ	00b0c9c0	00af7e60
 ??0CPSCEmitterGeneric@@QAE@XZ	00b103f0	00af7ed0
 ??0CClass_00b16eb0@@QAE@XZ	00b16eb0	00af7f40
@@ -18143,7 +18142,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Helper_af8780@@YIXPAVCInputProcessManager@@@Z	00af8780	00af89a0
 ?SubCleanup@@YIXPAVCInputProcessManager@@@Z	00af8860	00af89f0
 ??0SMeshCreateInfo@@QAE@JABVCMatrix3x4@@KK@Z	00afead0	00aff0a0
-?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXABVCPSCBase@2@@Z	00b22530	00b05ea0
 ?GetEmitterCost@CParticleEmitter@NParticleEngine@@QAEXAAVCParticleSystemCost@2@@Z	00aed020	00b0c7b0
 ??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0074ca20	00b1a640
 ?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@@Z	00b22530	00b1afc0
@@ -39834,3 +39832,5 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?TreeFind@CAnimationMap@@QAE?AUiterator@1@ABK@Z	00a2adc0	00a26c60
 ?BuildLipSync@CLipSyncEntryData@@QAEXXZ	00a42ea0	00a42fc0
 ?EntryExists@CLipSyncDataBank@@QAE_NJ@Z	009cc190	00a42fc0
+??0CPSCSingleSprite@NParticleEngine@@QAE@XZ	00b09360	00af7df0
+?DatabaseCopy@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@@Z	00b22530	00b05ea0

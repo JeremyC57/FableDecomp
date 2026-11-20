@@ -40562,7 +40562,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b05c20	GFInterpolate	NParticleEngine	__fastcall	long	3	long,long,float	1	yes	accepted									
 00b05c60	GetComponentCost	NParticleEngine::CPSCSingleSprite	__thiscall	void	5	CPSCSingleSprite *,CParticleSystemCost *,CParticleSystem *,float,float	1	yes	accepted									
 00b05e10	SmoothFadeValue	NParticleEngine::CPSCSingleSprite	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
-00b05ea0	vfunc_18	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b05ea0	DatabaseCopy	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b06060	WriteBinary	NParticleEngine::CPSCSingleSprite	__thiscall	void	2	CPSCSingleSprite *,CDataOutputStream *	1	yes	accepted									
 00b062a0	InterpolateTo	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b068f0	ReadBinary	NParticleEngine::CPSCSingleSprite	__thiscall	void	2	CPSCSingleSprite *,CDataInputStream *	1	yes	accepted									

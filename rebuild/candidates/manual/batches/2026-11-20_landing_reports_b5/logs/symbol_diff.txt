@@ -1,0 +1,16 @@
+00af7df0 new: 1
+    ?Alloc@CPSCSingleSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ TABLE:00af7df0
+00b05e10 new: 0
+00b05ea0 new: 1
+    ?DatabaseCopy@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+00b07570 new: 5
+    ??A?$CArray@J@@QAEAAJI@Z
+    ?ClearAllPrimitives@CPSCSingleSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
+    ?IsNull@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBE_NXZ
+    ?IsNull@CEnginePrimitiveHandle@@QBE_NXZ
+    ?size@?$vector@JV?$allocator@J@std@@@std@@QBEIXZ
+00b0a0f0 new: 0
+00b0a100 new: 0
+00b0a130 new: 0
+00b0a190 new: 1
+    ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ

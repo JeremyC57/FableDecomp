@@ -1,54 +1,35 @@
-// NParticleEngine::CPSCSingleSprite::ClearAllPrimitives(CEngineInterface*, const CPrimitiveGroupHandle&) -- when the group handle is live, removes every sprite primitive id in PrimIDList from it through the engine
+// NParticleEngine::CPSCSingleSprite::ClearAllPrimitives(CIEngine* pengine, CEnginePrimitiveHandle& system_group) -- when the system group handle is live, clears every sprite child primitive in PrimIDList from it through the engine
+// Leaf: ?ClearAllPrimitives@CPSCSingleSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B07570, length 93 bytes.
-// Callees: the engine interface's virtual slot 30 (+0x78), called as (group handle, primitive id).
-// Identity: slot 29 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (rtti-vtables.tsv); the CPSCBase
-// default for slot 29 (0x00AF2AC0) is an empty `ret 8`, and the CPSCRenderSprite override (0x00AFADC0)
-// uses the same first argument as an engine object (its slot 31 releases a handle).
-// Layout: Ego_r.pdb CPSCSingleSprite PrimIDList (CArray<long>) at +0x138; the retail object is 0xc
-// bytes smaller before it (12-byte CArray in the spline/trail members), so the array is at +0x12c.
-// The handle's second word is the referenced group (tested for null before anything else).
-// Shape: /O2 loop (aligned head `lea ebx,[ebx]`), the engine argument loaded into ebx only after the
-// entry test, the element count re-read every iteration (the virtual call may change the array),
-// unsigned index compare (`jb`).
-struct CPrimitiveGroupHandle {              // intelligent handle: {link, group}
-    void* m_pLink;                          // +0x00
-    void* m_pGroup;                         // +0x04
-};
-
-struct CEngineInterface {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
-    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void RemovePrimitive(const CPrimitiveGroupHandle& group, long primitiveId);   // slot 30 (+0x78)
-};
-
-template<class T> class CArray { public:           // retail CArray<T>: three pointers
-    T* m_pData;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long Size() const { return (unsigned long)(m_pLast - m_pData); }
-    T& operator[](unsigned long index) { return m_pData[index]; }
-};
-
-struct CBase {
-    virtual ~CBase();
-};
-
+// Callees: CIEngine slot 30 (+0x78) ?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z (engine/CIEngine.h), called as
+//   (system group handle, primitive id).
+// Identity: slot 29 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (rtti-vtables.tsv); Ego_r.pdb
+//   ?ClearAllPrimitives@CPSCSingleSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z; the CPSCBase default for
+//   slot 29 (0x00AF2AC0) is an empty `ret 8`. Parameter and loop-index names from Ego_d.pdb (pengine, system_group, c).
+// Re-port (Account B, 2026-11-20): the shared engine/CPSCSingleSprite.h / CIEngine.h / CEnginePrimitiveHandle.h replace the local
+//   CEngineInterface (`RemovePrimitive` at slot 30), CPrimitiveGroupHandle {m_pLink, m_pGroup} and CArray models; the handle test is
+//   the header's inline IsNull() (CIVCountedPointer Data at +4, the word the old model called m_pGroup).
+// Layout: PrimIDList (CArray<long>) at retail +0x12c (Ego_r +0x138; the retail object is 0xc bytes smaller before it).
+// Shape: /O2 loop (aligned head `lea ebx,[ebx]`), the engine argument loaded into ebx only after the entry test, the element count
+//   re-read every iteration (the virtual call may change the array), unsigned index compare (`jb`).
+#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
+#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_DATA
+#define FABLE_RETAIL_CIENGINE
+#include "engine/CPSCSingleSprite.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/CIEngine.h"
 namespace NParticleEngine {
-class CPSCSingleSprite : public CBase { public:           // vtable 0x0129FB84
-    unsigned char _body[0x128];             // +0x04 .. +0x12c (CPSCBase part, sprite settings, trail primitive)
-    CArray<long>  PrimIDList;               // +0x12c
-    void ClearAllPrimitives(CEngineInterface* engine, const CPrimitiveGroupHandle& group);
-};
-
-void CPSCSingleSprite::ClearAllPrimitives(CEngineInterface* engine, const CPrimitiveGroupHandle& group)
+void CPSCSingleSprite::ClearAllPrimitives(CIEngine* pengine, CEnginePrimitiveHandle& system_group)
 {
-    if (group.m_pGroup) {
-        for (unsigned long i = 0; i < PrimIDList.Size(); ++i)
-            engine->RemovePrimitive(group, PrimIDList[i]);
+    if (!system_group.IsNull()) {
+        for (unsigned long c = 0; c < PrimIDList.size(); ++c)
+            pengine->ClearChildPrimitive(system_group, PrimIDList[c]);
     }
 }
 }

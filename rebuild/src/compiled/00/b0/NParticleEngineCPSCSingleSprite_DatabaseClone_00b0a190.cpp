@@ -1,32 +1,19 @@
-// NParticleEngine::CPSCSingleSprite::DatabaseClone() -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
-// Leaf: ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@
-// Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/b0/CThingTrackNode_DrawIsDrawable_00b0a190.cpp: vtable slot 2 of NParticleEngine::CPSCSingleSprite; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
-namespace NParticleEngine { class CPSCSingleSprite; }
-using NParticleEngine::CPSCSingleSprite;
-
-struct IDrawableObj {
-    // A vtbl of __fastcall member functions. Slot 0x12 (byte offset 0x48)
-    // takes one stack arg (the node) with 'this' in ecx.
-    int Draw(CPSCSingleSprite* node);   // placeholder shape; real dispatch via vtbl
-};
-
-// helper: __fastcall on the node, returns the drawable object
-extern IDrawableObj* __fastcall GetDrawableObject_00af7df0(CPSCSingleSprite* self);
-
+// NParticleEngine::CPSCSingleSprite::DatabaseClone() const -- allocate a fresh component of this class (Alloc 0x00AF7DF0) and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
+// Leaf: ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A190, 24 bytes: push esi ; mov esi,ecx ; call Alloc ; mov edx,[eax] ; push esi ; mov ecx,eax ;
+//   call [edx+48h] ; ... ret.
+// Identity: vtable slot 2 of NParticleEngine::CPSCSingleSprite (0x0129FB84); Ego_r.pdb ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ;
+//   Ego_d.pdb local `psc` (debug length 41). Slot 18 (+0x48) is CPSCBase::DatabaseCopy (engine/CPSCBase.h), the sprite override 0x00B05EA0.
+// Re-port (Account B, 2026-11-20): on the shared engine/CPSCSingleSprite.h. The landed text was a stand-in (an IDrawableObj model with
+//   the slot called through a member-function-pointer table and Alloc bound as `GetDrawableObject_00af7df0`).
+#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
+#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
+#include "engine/CPSCSingleSprite.h"
 namespace NParticleEngine {
-class CPSCSingleSprite { public:
-    IDrawableObj* DatabaseClone();
-};
-}
-
-// vtable modeled as an array of member-function pointers so the call is __fastcall
-// (ecx = obj, one stack arg) with no edx setup.
-typedef int (IDrawableObj::*Slot)(CPSCSingleSprite* node);
-
-IDrawableObj* NParticleEngine::CPSCSingleSprite::DatabaseClone()
+CPSCBase* CPSCSingleSprite::DatabaseClone() const
 {
-    IDrawableObj* obj = GetDrawableObject_00af7df0(this);
-    Slot* vtbl = *(Slot**)obj;
-    (obj->*vtbl[0x12])(this);
-    return obj;
+    CPSCBase* psc = Alloc();
+    psc->DatabaseCopy(*this);
+    return psc;
+}
 }

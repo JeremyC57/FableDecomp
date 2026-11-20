@@ -448,3 +448,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: landed B's reports_b4 0x00BACE10 onto CEngineSubPrimitiveSprite.h (batches/2026-11-20_landing_reports_b4); 0x00BB1740 held (its scaffolding emits the constructor 0x00BACE10 owns), queued with the fix.
 2026-11-20 A: NF147 handed back (landing after nf146). New agent NF149 (PRIORITY pick list: CIndexBuffer / CVertexBuffer, 8 entries).
 2026-11-20 A: RP1 handed back (29 rows; 0x009C0E50 waits for option B). New agent NF150 (PRIORITY pick list, 15 entries).
+2026-11-20 A: landed B's reports_b5 (8 CPSCSingleSprite rows onto engine/CPSCSingleSprite.h; MEMBERS opt-ins in CPSCSingleSprite.h / CPSCSplineBase.h; 0x00B05EA0 vfunc_18 -> DatabaseCopy).

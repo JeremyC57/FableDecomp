@@ -273538,8 +273538,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b05ea0'
         Module = 'NParticleEngine::CPSCSingleSprite'
-        Source = '00/b0/NParticleEngineCPSCSingleSprite_vfunc18_00b05ea0.cpp'
-        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_vfunc18_00b05ea0_test.cpp'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_DatabaseCopy_00b05ea0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_DatabaseCopy_00b05ea0_test.cpp'
         PassPattern = '00b05ea0_TEST PASS'
     }
     [pscustomobject]@{

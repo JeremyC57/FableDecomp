@@ -1,0 +1,2 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00B05EA0	NParticleEngine::CPSCSingleSprite	DatabaseCopy	?DatabaseCopy@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z	NParticleEngine::CPSCSingleSprite::vfunc_18		B reports_b5: vtable 0x0129FB84 slot 18 = CPSCBase::DatabaseCopy (engine/CPSCBase.h order); DatabaseClone 0x00B0A190 calls [edx+48h]; Ego_r.pdb ?DatabaseCopy@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z

@@ -1,19 +1,17 @@
-// NParticleEngine::CPSCSingleSprite::Alloc() -- factory: new CPSCSingleSprite with the default constructor @ 0x00B09360 out of line
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7DF0, oracle length 27 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push 0x138 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CPSCSingleSprite::CPSCSingleSprite ; N: xor eax,eax ; ret
-// A no-argument factory: allocates sizeof(CPSCSingleSprite) = 0x138 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
-// (which returns `this`). The class is named from the constructor's manifest label when that label
-// is unique. One of 11 bodies of this shape.
-struct CPSCSingleSprite {
-    unsigned char _body[0x138];       // sizeof(CPSCSingleSprite) = 0x138
-    CPSCSingleSprite();                               // 0x00B09360
-};
-
-CPSCSingleSprite* CPSCSingleSprite_Alloc()
+// NParticleEngine::CPSCSingleSprite::Alloc() -- the component factory: a new CPSCSingleSprite (default constructor 0x00B09360, out of line)
+// Leaf: ?Alloc@CPSCSingleSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7DF0, 27 bytes: push 0x138 ; call operator new ; test eax,eax ; pop ecx ; je N ;
+//   mov ecx,eax ; jmp CPSCSingleSprite::CPSCSingleSprite ; N: xor eax,eax ; ret
+// Identity: Ego_r.pdb ?Alloc@CPSCSingleSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ (public static __fastcall, returns CPSCBase*); the
+//   particle-component registry (CPSCManager::RegisterPSCs 0x00AF8170) stores it, and DatabaseClone 0x00B0A190 calls it.
+// Re-port (Account B, 2026-11-20): on the shared engine/CPSCSingleSprite.h (sizeof 0x138 asserted there). The landed text was a free
+//   cdecl stand-in `CPSCSingleSprite* CPSCSingleSprite_Alloc()` over a 0x138-byte struct (no arguments, so the same code).
+#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
+#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
+#include "engine/CPSCSingleSprite.h"
+namespace NParticleEngine {
+CPSCBase* FABLE_FASTCALL CPSCSingleSprite::Alloc()
 {
     return new CPSCSingleSprite;
+}
 }

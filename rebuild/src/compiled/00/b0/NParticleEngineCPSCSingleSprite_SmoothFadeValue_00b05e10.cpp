@@ -11,11 +11,10 @@
 // Globals: cosine table GFastCosTable @ 0x013CD550 (1025 floats); constants 0.5f 0x0122F59C, 1024.0f 0x01230010, 1.0f 0x0122DED8.
 #include "engine/GFFloatToLongNear.h"
 extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
+#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
+#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
+#include "engine/CPSCSingleSprite.h"
 namespace NParticleEngine {
-class CPSCSingleSprite {
-protected:
-    float SmoothFadeValue(float t) const;
-};
 float CPSCSingleSprite::SmoothFadeValue(float t) const
 {
     t = t * 0.5f;
