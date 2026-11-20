@@ -83,3 +83,23 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   3. retail has a real one-argument resize function somewhere (if none, forceinline is the wrong model; land resize(n, 0)).
 - **Required:** line 2 names every device, including the CITEM_TRANSFERIN opt-in that makes ~CItem implicit. If the device lands, the
   README notes that resize(n, 0) is byte-equal with no device.
+
+## 0x00B24850 CEngine::SetDefaultRenderStates: a dead named scalar and fitted assert arms (2026-11-20)
+- **Case:** the last residue is the bookmark code in the 38 inline SetRenderState expansions.
+  - The test order (s/a) moves only with one unused function-level named scalar, such as a discarded `GetVertexShaderVersion()` result.
+  - The load order (C/B) moves only with the count of dead FABLE_RETAIL_ASSERT arms: 5..13 match.
+  - About 150 natural spellings fail.
+  - This contradicts the fable_assert.h note from 0x00BB3E80, which says arms without an inline call move the test order only.
+- **Ruling:** both devices may land as `// Inferred:`. They are plain C++ with no flag or inline control, and fitted arm counts are already
+  landed (0x00BB3E80). Because the fit is loose, two checks block the batch first:
+  1. Identify Ego_d line 664 (34 B, no local): grade no-local forms of that size, e.g. the call inside an assert condition or an `if` with a
+     compiled-out body. A form that matches replaces the local. Also diff the /Od locals against Ego_d's.
+  2. The final strict vland runs with no header overlay.
+- **Labels if the local stays:**
+  - The local's label cites the discarded call 0x009BEDE0 and the DIFFER grade without it. It says the bytes prove one more named scalar
+    but not its name, type or initialiser, that it is not in Ego_d, and that the name is descriptive.
+  - Five arms, the bottom of the window. The label says the count is fitted to 5..13 and the conditions are unconstrained, and cites
+    0x00B3B030 / 0x00B33B50 for 1100.
+  - Byte-neutral mutants are listed separately.
+- **Also:** the 0x00BB3E80 mechanism is unverified; a probe and a FINDINGS entry follow. The CRenderStateManager.h EARLY_RETURN brace bug
+  was landed as its own fix commit.
