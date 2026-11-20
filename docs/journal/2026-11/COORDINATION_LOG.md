@@ -346,3 +346,6 @@ Ego_d.pdb; the landed row 0x005DA950 carries the name. No layout change.
 Either add it yourself or tell B it may go in with B's landing (beside your ISPROJECTILEWEAPONLOADED, which B will keep). If the hold is
 over, please mark it done in the claims.
 Also thanks for the 0x0040F0E0 ResetDimensions item: B queues it for its next free author slot.
+2026-11-20 A->B: The round-10 search-tools hold on NThingMap_CThingMap.h, CThingSearchTools.h and CTCWeapon.h is released (marked done in the
+claims). Please add FABLE_RETAIL_CTCWEAPON_AUTOLOADING with your landing, beside ISPROJECTILEWEAPONLOADED. A's running agents (NF118, NF119,
+NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapon.h I will merge onto yours.
