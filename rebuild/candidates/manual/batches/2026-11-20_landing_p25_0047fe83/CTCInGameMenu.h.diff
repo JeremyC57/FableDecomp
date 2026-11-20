@@ -1,0 +1,24 @@
+diff --git a/rebuild/include/engine/CTCInGameMenu.h b/rebuild/include/engine/CTCInGameMenu.h
+index a8a15ddc1..0207d65f6 100644
+--- a/rebuild/include/engine/CTCInGameMenu.h
++++ b/rebuild/include/engine/CTCInGameMenu.h
+@@ -84,7 +84,19 @@ private:
+     bool          InGameMenuOpen;                                    // +0x0c
+ #ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVELOAD
+ #if defined(FABLE_RETAIL_CTCINGAMEMENU_OPENMENU) || defined(FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME)
++#ifdef FABLE_RETAIL_CTCINGAMEMENU_ACTIVESCREEN
++    // p25A opt-in (row 0x0047FE83 GetFileNameList): the nested enum CTCInGameMenu::EScreenType (Ego_r layout types ActiveScreen EScreenType; field list 0x3309B in
++    // Ego_d.pdb: SCREEN_IN_GAME_MENU 0 .. SCREEN_OPTIONS 4) and ActiveScreen +0x18 (the generated header's offset; the landed ctors
++    // 0x0047DF8A / 0x0047E07F zero it there); the row reads `cmp [esi+18h],3` / `cmp [esi+18h],0`. Needs the SAVELOAD layout.
++public:
++    enum EScreenType { SCREEN_IN_GAME_MENU = 0, SCREEN_RETURN_TO_GAME = 1, SCREEN_SAVE_GAME = 2, SCREEN_LOAD_GAME = 3, SCREEN_OPTIONS = 4 };
++private:
++    unsigned char _pad_0x0d[0x18 - 0x0d];
++    EScreenType   ActiveScreen;                                      // +0x18
++    unsigned char _pad_0x1c[0x28 - 0x1c];
++#else
+     unsigned char _pad_0x0d[0x28 - 0x0d];
++#endif
+     std::vector<CWideString> FileNames;                              // +0x28
+ #ifdef FABLE_RETAIL_CTCINGAMEMENU_SAVEGAME
+     // Ego_r / FableWin original member; STLport vector is twelve bytes in retail.

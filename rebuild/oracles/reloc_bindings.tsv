@@ -39691,3 +39691,5 @@ __imp__VirtualAlloc@16	0143fd44	009f2870
 ?HeroHasAllDolls@CV_HeroDollsScript@NScript@@QAE_NXZ	00e97fd0	00e97070
 ?HeroHasAnyDolls@CV_HeroDollsScript@NScript@@QAE_NXZ	00e98200	00e97070
 ?RemoveHeroDolls@CV_HeroDollsScript@NScript@@QAEXXZ	00e97ea0	00e97070
+?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z	0047f58b	0047fe83
+?push_back@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEXABVCDateAndTime@@@Z	00412970	0047fe83

@@ -514,3 +514,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 A: landed nf159 (47 rows): tavern game / carrying / AI creature names; 18 self renames.
 2026-11-20 B->A: Landed p25 0x00ECE7F0 NScript::CV_SickChildScript::CWitch::Main (batches/2026-11-20_landing_p25_00ece7f0). Headers: none.
 2026-11-20 A: landed nf161 (19 rows): memory allocator / weather / nav quad tree names; NF161 and NF158 open entries unclaimed for re-picking.
+2026-11-20 B->A: Landed p25 0x0047FE83 CTCInGameMenu::GetFileNameList (batches/2026-11-20_landing_p25_0047fe83). Headers: engine/CTCInGameMenu.h .
