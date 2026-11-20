@@ -9,18 +9,22 @@
 // `this` each iteration), advancing the cursor before the old node's value is destroyed
 // (@ 0x0065D507) and the node freed (free @ 0x00BFEA14, the argument popped into ecx: a size
 // TU), then links the head to itself. The manifest label is propagated. One of 11 bodies.
+// Leaf: ?clear@CRetailList_CValue_0065d507@@QAEXXZ
+// Naming (NF180, 2026-11-20): the node value was the CValue_0065d507 stand-in; it is the shared CCountedPointer<CVillageTaskPatrol>
+//   (engine/CCountedPointer.h, FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY: the destructor called out of line), so the call binds
+//   ??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ, the spelling the self row 0x0065D507 defines (FableWin.pdb). The list is still the row-local
+//   CRetailList_CValue_0065d507 (STLport list<CCountedPointer<CVillageTaskPatrol> >::clear); its own leaf is unchanged (see NOTES).
 extern "C" void __cdecl free(void* block);
 
-struct CValue_0065d507 {
-    void* m_data;
-    ~CValue_0065d507();                             // 0x0065D507
-};
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CVillageTaskPatrol;
 
 struct CRetailList_CValue_0065d507 {
     struct node {
         node* next;                        // +0
         node* prev;                        // +4
-        CValue_0065d507 value;                      // +0x8
+        CCountedPointer<CVillageTaskPatrol> value;// +0x8
     };
     node* head;
     void clear();
@@ -32,7 +36,7 @@ void CRetailList_CValue_0065d507::clear()
     while (n != head) {
         node* victim = n;
         n = n->next;
-        victim->value.~CValue_0065d507();
+        victim->value.~CCountedPointer<CVillageTaskPatrol>();
         free(victim);
     }
     head->next = head;

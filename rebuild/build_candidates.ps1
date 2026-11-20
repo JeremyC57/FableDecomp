@@ -18484,16 +18484,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065e951'
-        Module = '_global'
-        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e951.cpp'
-        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e951_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskPatrol>'
+        Source = '00/65/CCountedPointer_scalardeletingdestructor_0065e951.cpp'
+        TestSource = '00/65/CCountedPointer_scalardeletingdestructor_0065e951_test.cpp'
         PassPattern = 'AUTO_TINY_0065e951_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065e96d'
-        Module = '_global'
-        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e96d.cpp'
-        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e96d_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskPickCrops>'
+        Source = '00/65/CCountedPointer_scalardeletingdestructor_0065e96d.cpp'
+        TestSource = '00/65/CCountedPointer_scalardeletingdestructor_0065e96d_test.cpp'
         PassPattern = 'AUTO_TINY_0065e96d_TEST PASS'
     }
     [pscustomobject]@{
@@ -40753,9 +40753,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00515700'
-        Module = 'CRegion'
-        Source = '00/51/CRegion_SetMiniMapRegionExitTextOffsetX_00515700.cpp'
-        TestSource = '00/51/CRegion_SetMiniMapRegionExitTextOffsetX_00515700_test.cpp'
+        Module = 'std::map<CCharString, long>'
+        Source = '00/51/stdmap_find_00515700.cpp'
+        TestSource = '00/51/stdmap_find_00515700_test.cpp'
         PassPattern = 'MM_515700_OK'
     }
     [pscustomobject]@{
@@ -46868,9 +46868,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb77e0'
-        Module = 'CVectorMap<T_24_00cb77e0>'
-        Source = '00/cb/CVectorMap_T_24_00cb77e0_Sort_00cb77e0.cpp'
-        TestSource = '00/cb/CVectorMap_T_24_00cb77e0_Sort_00cb77e0_test.cpp'
+        Module = 'CVectorMap<CCharString, CScriptInfo, CKeyPairCompareLess<CCharString, CScriptInfo>>'
+        Source = '00/cb/CVectorMap_Sort_00cb77e0.cpp'
+        TestSource = '00/cb/CVectorMap_Sort_00cb77e0_test.cpp'
         PassPattern = '00cb77e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -89603,9 +89603,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb7800'
-        Module = '_global'
-        Source = '00/cb/CTCVillage_OnInitialActivate_00cb7800.cpp'
-        TestSource = '00/cb/CTCVillage_OnInitialActivate_00cb7800_test.cpp'
+        Module = 'CVectorMap<CCharString, CScriptInfo, CKeyPairCompareLess<CCharString, CScriptInfo>>'
+        Source = '00/cb/CVectorMap_Update_00cb7800.cpp'
+        TestSource = '00/cb/CVectorMap_Update_00cb7800_test.cpp'
         PassPattern = 'PASS_00cb7800'
     }
     [pscustomobject]@{
@@ -92112,9 +92112,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ef360'
-        Module = 'CRegion'
-        Source = '00/9e/CRegion_SetMiniMapRegionExitTextOffsetX_009ef360.cpp'
-        TestSource = '00/9e/CRegion_SetMiniMapRegionExitTextOffsetX_009ef360_test.cpp'
+        Module = 'std::map<CCharString, CCharString>'
+        Source = '00/9e/stdmap_find_009ef360.cpp'
+        TestSource = '00/9e/stdmap_find_009ef360_test.cpp'
         PassPattern = 'PASS_009ef360'
     }
     [pscustomobject]@{
@@ -170501,9 +170501,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb7780'
-        Module = '_global'
-        Source = '00/cb/global_SortSElement2400cb7780_00cb7780.cpp'
-        TestSource = '00/cb/global_SortSElement2400cb7780_00cb7780_test.cpp'
+        Module = 'std'
+        Source = '00/cb/std_sort_00cb7780.cpp'
+        TestSource = '00/cb/std_sort_00cb7780_test.cpp'
         PassPattern = '00cb7780_TEST PASS'
     }
     [pscustomobject]@{
@@ -276108,8 +276108,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00cb6fd0'
         Module = 'std::vector<std::pair<CCharString,CScriptInfo>>'
-        Source = '00/cb/STLvectorSTLpairCCharStringCScriptInfo_Minsertoverflow_00cb6fd0.cpp'
-        TestSource = '00/cb/STLvectorSTLpairCCharStringCScriptInfo_Minsertoverflow_00cb6fd0_test.cpp'
+        Source = '00/cb/stdvector_Minsertoverflow_00cb6fd0.cpp'
+        TestSource = '00/cb/stdvector_Minsertoverflow_00cb6fd0_test.cpp'
         PassPattern = '00cb6fd0_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,0 +1,72 @@
+00515700 new: 3
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@s
+    ?find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCChar
+    ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U
+0065e951 new: 2
+    ??_G?$CCountedPointer@VCVillageTaskPatrol@@@@QAEPAXI@Z
+    ?EmitDeletingDestructor@?A0x5c1e2ee8@@YAXPAV?$CCountedPointer@VCVillageTaskPatrol@@@@@Z
+0065e96d new: 2
+    ??_G?$CCountedPointer@VCVillageTaskPickCrops@@@@QAEPAXI@Z
+    ?EmitDeletingDestructor@?A0xa563437a@@YAXPAV?$CCountedPointer@VCVillageTaskPickCrops@@@@@Z
+0065fe9a new: 1
+    ??_G?$CCountedPointer@VCVillageTaskPatrol@@@@QAEPAXI@Z
+0065fecb new: 1
+    ??_G?$CCountedPointer@VCVillageTaskPickCrops@@@@QAEPAXI@Z
+009ef360 new: 3
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@
+    ?find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVC
+    ?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@
+009f0500 new: 7
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@s
+    ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c820
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QBEAAU?$pair@$$CBVCCharString@@K@1@XZ
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharS
+    ?end@?$map@VCCharString@@KU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?
+    ?find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCChar
+    ?find@?$map@VCCharString@@KU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U
+009f0570 new: 6
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@s
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharS
+    ?end@?$map@VCCharString@@KU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?
+    ?find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCChar
+    ?find@?$map@VCCharString@@KU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U
+009f05a0 new: 7
+    ??0?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@s
+    ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z TABLE:0041c830
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QBEAAU?$pair@$$CBVCCharString@@K@1@XZ
+    ?end@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharS
+    ?end@?$map@VCCharString@@KU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?
+    ?find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCChar
+    ?find@?$map@VCCharString@@KU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U
+00cb5d80 new: 4
+    ?Sort@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ
+    ?Update@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ
+    ?begin@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@XZ
+    ?end@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@XZ
+00cb6fd0 new: 12
+    ??$_Construct@U?$pair@VCCharString@@VCScriptInfo@@@std@@U12@@std@@YAXPAU?$pair@VCCharString@@VCScriptInfo@@@0@ABU10@@Z
+    ??$__uninitialized_copy@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@VCScriptInfo@@@0@PAU10@00ABU__false_type@0@@Z TABLE:00cb60f0
+    ??$__uninitialized_fill_n@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@IU12@@std@@YIPAU?$pair@VCCharString@@VCScriptInfo@@@0@PAU10@IABU10@ABU__false_type@0@@Z TABLE:00cb61
+    ??$max@I@std@@YAABIABI0@Z
+    ??0?$pair@VCCharString@@VCScriptInfo@@@std@@QAE@ABU01@@Z TABLE:00cb5f50
+    ??0CScriptInfo@@QAE@ABV0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1CScriptInfo@@QAE@XZ
+    ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VCScrip
+    ?_M_set@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VCScriptInfo@@@2@00
+    ?allocate@?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@IPBX@Z
+    ?size@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QBEIXZ
+00cb7210 new: 0
+00cb7780 new: 2
+    ??$__lg@H@std@@YAHH@Z
+    ??$sort@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@0V?$CKeyPairCom
+00cb77e0 new: 3
+    ?Sort@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ
+    ?begin@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@XZ
+    ?end@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@XZ
+00cb7800 new: 4
+    ?Sort@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ
+    ?Update@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ
+    ?begin@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@XZ
+    ?end@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@2@XZ

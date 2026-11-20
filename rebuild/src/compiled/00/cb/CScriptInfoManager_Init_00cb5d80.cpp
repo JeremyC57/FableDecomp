@@ -1,5 +1,5 @@
 // CScriptInfoManager::Init() -- install the script definition manager, register the script defs and load them, register every script class and sort the script table
-// Leaf: Init
+// Leaf: ?Init@CScriptInfoManager@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB5D80, length 182 bytes (`ret`).
 // PDB: ?Init@CScriptInfoManager@@QAEXXZ.
 // Callees: operator new @ 0x00BFEA1A (0xd0 bytes) + CScriptDefinitionManager::CScriptDefinitionManager @ 0x00CD3F00 (vtable
@@ -13,14 +13,18 @@
 // comparator +0x10, Dirty +0x11), CodeSectionNames +0x14.
 // Shape: the progress texts are implicit CCharString conversions (built before the trailing constants, in the one
 // `push ecx` frame word); the table sort is CVectorMap's inline "sort if dirty".
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-};
-namespace NProgressDisplay {
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
-}
+// Naming (NF180, 2026-11-20, q4221): the local CCharString / CScriptInfoManager / CScriptMap (SScriptEntry blobs, an empty local
+//   CKeyPairCompareLess, the Sort_SElement24_00cb7780 stand-in) replaced by the shared fable_string.h, engine/CScriptInfoManager.h,
+//   engine/CVectorMap.h (FABLE_RETAIL_CVECTORMAP_SORT: Update = sort if Dirty, expanded) and engine/NProgressDisplay.h, so the table sort
+//   binds the STLport std::sort<pair<CCharString, CScriptInfo>*, CKeyPairCompareLess<..> > spelling its self row 0x00CB7780 defines.
+//   The definition-manager declarations are the landed row's, unchanged.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_SORT_FASTCALL
+#define FABLE_RETAIL_CVECTORMAP_SORT
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/NProgressDisplay.h"
+#include "engine/CScriptInfoManager.h"
 
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 
@@ -37,36 +41,6 @@ public:
 void __fastcall GFSetPDefinitionManager(CDefinitionManager* manager);   // 0x00CD3F40
 CDefinitionManager* GFGetPDefinitionManager();                          // 0x00CD3EF0 (no arguments; landed callers declare it plain)
 
-struct SScriptEntry { unsigned char _body[0x18]; };    // pair<CCharString, CScriptInfo>
-struct CKeyPairCompareLess { };                        // empty comparator, passed by value
-void __fastcall Sort_SElement24_00cb7780(SScriptEntry* first, SScriptEntry* last, CKeyPairCompareLess comp);   // 0x00CB7780
-
-struct CScriptMap {                                    // CVectorMap<CCharString, CScriptInfo, CKeyPairCompareLess<..>>
-    SScriptEntry*       _M_start;                      // +0x00
-    SScriptEntry*       _M_finish;                     // +0x04
-    SScriptEntry*       _M_end_of_storage;             // +0x08
-    CKeyPairCompareLess Compare;                       // +0x0c
-    bool                Dirty;                         // +0x0d
-    void Sort()
-    {
-        if (Dirty) {
-            Sort_SElement24_00cb7780(_M_start, _M_finish, Compare);
-            Dirty = false;
-        }
-    }
-};
-
-class CScriptInfoManager {
-public:
-    long          CurrentScriptID;                     // +0x00
-    CScriptMap    Scripts;                             // +0x04
-    unsigned char CodeSectionNames[0x0c];              // +0x14 vector<CCharString>
-    void Init();
-protected:                                         // NF35: Ego_r + FableWin IAE (protected)
-    void RegisterDefs();                               // 0x00F2A0F0
-    void RegisterScripts();                            // 0x00CD52D0
-};
-
 void CScriptInfoManager::Init()
 {
     GFSetPDefinitionManager(new CScriptDefinitionManager());
@@ -75,5 +49,5 @@ void CScriptInfoManager::Init()
     GFGetPDefinitionManager()->LoadDefinitions();
     NProgressDisplay::DisplayProgress("Registering Scripts", -1.0f, false, false);
     RegisterScripts();
-    Scripts.Sort();
+    Scripts.Update();
 }

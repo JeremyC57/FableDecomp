@@ -1,0 +1,44 @@
+addr       parity           behav  name
+00515700   WARN STANDIN_LEAF ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z (catalog CRegion::SetMiniMapRegionExitTextOffsetX; names another function)
+00515700   RELOCATION_MATCH PASS   CRegion::SetMiniMapRegionExitTextOffsetX
+0065e951   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_0065e951
+0065e96d   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_0065e96d
+0065fe9a   RELOCATION_MATCH PASS   CRetailList_CValue_0065d507::clear
+0065fecb   RELOCATION_MATCH PASS   CRetailList_CValue_0065d533::clear
+0083eee0   RELOCATION_MATCH PASS   LHHttp2::GetUntilCRLF
+009ef360   WARN STANDIN_LEAF ?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@ABVCCharString@@@Z (catalog CRegion::SetMiniMapRegionExitTextOffsetX; names another function)
+009ef360   RELOCATION_MATCH PASS   CRegion::SetMiniMapRegionExitTextOffsetX
+009f0500   RELOCATION_MATCH PASS   CCodeSectionManager::GetHandleFromLongName
+009f0570   RELOCATION_MATCH PASS   CCodeSectionManager::IsSectionRegisteredLongName
+009f05a0   RELOCATION_MATCH PASS   CCodeSectionManager::RegisterSection
+00cb5d80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00cb5d80   WARN SHARED_HEADER_AVAILABLE CScriptDefinitionManager (engine/CScriptDefinitionManager.h)
+00cb5d80   WARN RELOC_NAME: ?GFSetPDefinitionManager@@YIXPAVCDefinitionManager@@@Z -> 00cd3f40 labelled 'CEngineSubPrimitiveBase::operator_new'
+00cb5d80   WARN RELOC_NAME: ?GFGetPDefinitionManager@@YAPAVCDefinitionManager@@XZ -> 00cd3ef0 labelled '_global::GetGlobal_0143e920_00cd3ef0'
+00cb5d80   RELOCATION_MATCH PASS   CScriptInfoManager::Init
+00cb6fd0   RELOCATION_MATCH PASS   std::vector<std::pair<CCharString,CScriptInfo>>::_M_insert_overflow
+00cb7210   WARN SHARED_HEADER_AVAILABLE CScriptInfo (engine/CScriptInfo.h)
+00cb7210   RELOCATION_MATCH PASS   std::vector<std::pair<CCharString, CScriptInfo>, std::allocator<std::pair<CCharString, CScriptInfo>>>::push_back
+00cb7780   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@U12@HV?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@00HV?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z -> 00cb7310 labelled 'std::__introsort_loop<std::pair<CCharString,CScriptInfo>*,std::pair<CCharString,CScriptInfo>,int,CKeyPairCompareLess<CCharString,CScriptInfo> >'
+00cb7780   WARN RELOC_NAME: ??$__final_insertion_sort@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z -> 00cb70e0 labelled 'std::__final_insertion_sort<std::pair<CCharString, CScriptInfo> *, CKeyPairCompareLess<CCharString, CScriptInfo>>'
+00cb7780   RELOCATION_MATCH PASS   _global::Sort_SElement24_00cb7780
+00cb77e0   RELOCATION_MATCH PASS   CVectorMap<T_24_00cb77e0>::Sort
+00cb7800   RELOCATION_MATCH PASS   _global::CVectorMap_SortIfDirty_00cb7800
+
+WINS: 16
+  00515700 RELOCATION_MATCH CRegion::?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z
+  0065e951 RELOCATION_MATCH _global::??_G?$CCountedPointer@VCVillageTaskPatrol@@@@QAEPAXI@Z
+  0065e96d RELOCATION_MATCH _global::??_G?$CCountedPointer@VCVillageTaskPickCrops@@@@QAEPAXI@Z
+  0065fe9a RELOCATION_MATCH CRetailList_CValue_0065d507::?clear@CRetailList_CValue_0065d507@@QAEXXZ
+  0065fecb RELOCATION_MATCH CRetailList_CValue_0065d533::?clear@CRetailList_CValue_0065d533@@QAEXXZ
+  0083eee0 RELOCATION_MATCH LHHttp2::?GetUntilCRLF@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@PADPAK@Z
+  009ef360 RELOCATION_MATCH CRegion::?find@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@ABVCCharString@@@Z
+  009f0500 RELOCATION_MATCH CCodeSectionManager::?GetHandleFromLongName@CCodeSectionManager@@QAEKVCCharString@@@Z
+  009f0570 RELOCATION_MATCH CCodeSectionManager::?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z
+  009f05a0 RELOCATION_MATCH CCodeSectionManager::?RegisterSection@CCodeSectionManager@@QAEKVCCharString@@0_N1@Z
+  00cb5d80 RELOCATION_MATCH CScriptInfoManager::?Init@CScriptInfoManager@@QAEXXZ
+  00cb6fd0 RELOCATION_MATCH std::vector<std::pair<CCharString,CScriptInfo>>::?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VCScriptInfo@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00cb7210 RELOCATION_MATCH std::vector<pair<CCharString,CScriptInfo> >::?push_back@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@VCScriptInfo@@@2@@Z
+  00cb7780 RELOCATION_MATCH _global::??$sort@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z
+  00cb77e0 RELOCATION_MATCH CVectorMap<T_24_00cb77e0>::?Sort@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ
+  00cb7800 RELOCATION_MATCH _global::?Update@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEXXZ

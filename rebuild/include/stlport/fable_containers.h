@@ -1939,6 +1939,13 @@ template<class _RandomAccessIter,class _Compare>
 inline void __unguarded_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
     __unguarded_insertion_sort_aux(__first,__last,(typename iterator_traits<_RandomAccessIter>::value_type*)0,__comp);
 }
+#ifdef FABLE_RETAIL_STLP_SORT_FINAL_INSERTION_OUTOFLINE
+// NF180 nested opt-in (row 0x00CB7780 sort<pair<CCharString, CScriptInfo>*, CKeyPairCompareLess<CCharString, CScriptInfo> >): that
+// sort COMDAT calls __final_insertion_sort out of line (0x00CB70E0, landed ??$__final_insertion_sort@...@std@@YIX..., __fastcall:
+// first in ecx, last in edx, the comparator pushed) instead of expanding it. A declaration only.
+template<class _RandomAccessIter,class _Compare>
+void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp);
+#else
 template<class _RandomAccessIter,class _Compare>
 #if defined(_MSC_VER)
 __forceinline
@@ -1952,6 +1959,7 @@ void __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIter __last,_
     } else
         __insertion_sort(__first,__last,__comp);
 }
+#endif
 template<class _RandomAccessIter,class _Compare>
 void __fastcall sort(_RandomAccessIter __first,_RandomAccessIter __last,_Compare __comp) {
     if(__first!=__last) {

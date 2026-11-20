@@ -14,26 +14,25 @@
 // the global object [0x013CAA68].
 // Label: the manifest's "CTCCameraPointScriptedSpline::AddAnimIndexToAvailableAnimList" is propagated and rejected.
 // Shape: the head (end) is read into esi BEFORE the call, so it is a named local.
+// Naming (NF180, 2026-11-20, q4394): the local CNameTree / SNameNode stand-ins (FindNode bound to 0x009D2DD0 as
+//   ?FindNode@CNameTree@@...) replaced by the shared STLport map (stlport/fable_map.h, _M_find out of line: FABLE_RETAIL_STLP_TREE_MFIND_DECL),
+//   so the lookup binds ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@..., the spelling the self
+//   row 0x009D2DD0 defines. CCodeSectionManager has no shared header: the row-local model keeps its token, its map member now typed
+//   std::map<CCharString, unsigned long> (Ego_r.pdb LongNameToHandle).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
 #include "fable_string.h"
-
-struct SNameNode;
-
-struct CNameTree {                                  // VC6 Dinkumware map<CCharString, ...>: {head, size}
-    SNameNode*    m_head;
-    unsigned long m_size;
-    SNameNode* FindNode(const CCharString& key);    // 0x009D2DD0
-};
+#include "stlport/fable_map.h"
 
 class CCodeSectionManager {                         // no shared header (the landed 0x009F0500 models it locally too)
 public:
     unsigned char _pad[0x10];                       // vptr +0x00, ShortNameToHandle +0x04
-    CNameTree     LongNameToHandle;                 // +0x10
+    std::map<CCharString, unsigned long> LongNameToHandle;   // +0x10
     bool IsSectionRegisteredLongName(CCharString longName);
 };
 
 bool CCodeSectionManager::IsSectionRegisteredLongName(CCharString longName)
 {
-    SNameNode* end = LongNameToHandle.m_head;
-    SNameNode* const& node = LongNameToHandle.FindNode(longName);
-    return node != end;
+    return LongNameToHandle.find(longName) != LongNameToHandle.end();
 }

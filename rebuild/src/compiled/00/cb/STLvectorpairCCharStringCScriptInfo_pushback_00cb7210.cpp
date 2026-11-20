@@ -11,6 +11,8 @@
 // Shape: with room left, placement new under VC's null test copies the pair through its copy constructor, which must be
 //   `__forceinline` (the landed row found the implicit and a plain inline one both emitted out of line here); then finish
 //   is re-read and advanced by 24. The overflow path gets the empty __false_type temporary homed in the dead `x` slot.
+// Naming (NF180, 2026-11-20, q4077): _M_insert_overflow is STLport 4.6's protected member (_vector.h), so the call binds
+//   ?_M_insert_overflow@...@IAEXPAU...@Z, the spelling the shared-header row 0x00CB6FD0 defines (was the public QAE stand-in).
 #include "fable_compiler.h"
 #include <stddef.h>
 
@@ -61,7 +63,9 @@ public:
     _Tp* _M_start;                                      // +0x00
     _Tp* _M_finish;                                     // +0x04
     _Tp* _M_end_of_storage;                             // +0x08
+protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);   // 0x00CB6FD0
+public:
     void push_back(const _Tp& __x)
     {
         if (_M_finish != _M_end_of_storage) {
