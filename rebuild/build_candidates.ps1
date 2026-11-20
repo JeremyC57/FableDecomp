@@ -32954,23 +32954,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d64a0'
-        Module = 'CTCInventoryAbilities'
-        Source = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d64a0.cpp'
-        TestSource = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d64a0_test.cpp'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetExperienceSpentOnStat_006d64a0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetExperienceSpentOnStat_006d64a0_test.cpp'
         PassPattern = '006d64a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006d6510'
-        Module = 'CTCInventoryAbilities'
-        Source = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6510.cpp'
-        TestSource = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6510_test.cpp'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetStatExperience_006d6510.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetStatExperience_006d6510_test.cpp'
         PassPattern = '006d6510_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006d6520'
-        Module = 'CTCInventoryAbilities'
-        Source = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6520.cpp'
-        TestSource = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6520_test.cpp'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetTrainableStatLevel_006d6520.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetTrainableStatLevel_006d6520_test.cpp'
         PassPattern = '006d6520_TEST PASS'
     }
     [pscustomobject]@{

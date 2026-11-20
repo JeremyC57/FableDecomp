@@ -29,15 +29,7 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-template <class T> struct CRetailVector {   // STLport vector (12 bytes)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CRetailVector() { if (_M_start) free(_M_start); }
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-};
+#include "stlport/fable_containers.h"                // std::vector<CThing*> (STLport 4.6, 12 bytes; NF125 q5137)
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -90,7 +82,7 @@ class CTCCreatureModeManager { public:             // interface type 0x31
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
 class CTCCarrying { public:                        // interface type 0x46
-    void GetCarriedThings(CRetailVector<CThing*>& things);   // 0x006A2220
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220 (Ego_r.pdb)
 };
 class CTCWeaponTrail { public:                     // interface type 0x4c
     void ClearAllWeaponTrails();            // 0x0076E150
@@ -133,8 +125,8 @@ void CCreatureAction_UndeadIdleUnderground::Initialise()
     PCreature.GetPItem()->Slot28(0);
     CTCCarrying* pCarrying;
     if (PCreature.GetPItem()->GetInterface(&pCarrying, 0x46)) {
-        CRetailVector<CThing*> things;
-        pCarrying->GetCarriedThings(things);
+        std::vector<CThing*> things;
+        pCarrying->GetAllCarriedThings(things);
         for (CThing** it = things.begin(); it != things.end(); ++it) {
             CThing* thing = *it;
             if (thing && !(thing->m_flags91 & 1)) {

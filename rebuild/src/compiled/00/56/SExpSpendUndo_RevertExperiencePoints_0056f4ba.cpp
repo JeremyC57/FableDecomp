@@ -1,5 +1,5 @@
 // SExpSpendUndo::RevertExperiencePoints(CTCHeroExperience* experience) -- undoes the last recorded spend: gives the hero back the last spent general / strength / skill / will amounts, takes them off the running totals, pops the four undo lists and drops one level
-// Leaf: RevertExperiencePoints
+// Leaf: ?RevertExperiencePoints@SExpSpendUndo@@QAEXPAVCTCHeroExperience@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056F4BA, 221 bytes, __fastcall, `ret 4`; Ego_r.pdb ?RevertExperiencePoints@SExpSpendUndo@@QAEXPAVCTCHeroExperience@@@Z.
 // Pragma: #pragma optimize("y", off) + ("s", on) -- frame-pointer size TU (unaligned entry, `push ebp ; mov ebp,esp`, the
 //   last-node pointer spilled into the dead argument slot [ebp+8]), as the landed TU-mate 0x005724CD.
@@ -11,16 +11,16 @@
 // Layout: as SExpSpendUndo::SaveBefore 0x0056E93D (Ego_r.pdb names, 4-byte STLport lists).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-enum EHeroExperienceStatCategory { HERO_STAT_STRENGTH = 0, HERO_STAT_SKILL = 1, HERO_STAT_WILL = 2 };
 
-struct CTCHeroExperience_Calls {                      // engine/CTCHeroExperience.h is data-only; call view (as the landed TU-mate 0x005724CD)
-    unsigned char _pad00[0x14];
-    long ExperiencePointsAvailableToSpend;            // +0x14
-    long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }
-    long GetStatExperience(EHeroExperienceStatCategory category) const;                 // 0x006D6510
-    void ForceSpendableExperienceTo(long amount);                                       // 0x006D6470
-    void ForceTrainableStatExperienceTo(EHeroExperienceStatCategory category, long amount);  // 0x006D6830
-};
+// Header (NF125 round 10): CTCHeroExperience is the shared engine/CTCHeroExperience.h retail model (was a local call-view stand-in
+//   named CTCHeroExperience_Calls); GetExperiencePointsAvailableToSpend is its inline getter (+0x14).
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#define FABLE_RETAIL_EHEROTRAINABLESTATTYPE
+#define FABLE_RETAIL_CTCHEROEXPERIENCE_FORCEEXPERIENCE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHeroExperience.h"
 
 struct SLongListNode {                                // STLport _List_node<long>
     SLongListNode* _M_next;                           // +0x0
@@ -59,12 +59,12 @@ struct SExpSpendUndo {                                // Ego_r.pdb SExpSpendUndo
     long aSkill;                                      // +0x2c
     long aWill;                                       // +0x30
     SExpSpendUndo(const SExpSpendUndo& other);
-    void SaveBefore(CTCHeroExperience_Calls* experience);
-    void SaveAfter(CTCHeroExperience_Calls* experience);
-    void RevertExperiencePoints(CTCHeroExperience_Calls* experience);
+    void SaveBefore(CTCHeroExperience* experience);
+    void SaveAfter(CTCHeroExperience* experience);
+    void RevertExperiencePoints(CTCHeroExperience* experience);
 };
 
-void SExpSpendUndo::RevertExperiencePoints(CTCHeroExperience_Calls* experience)
+void SExpSpendUndo::RevertExperiencePoints(CTCHeroExperience* experience)
 {
     experience->ForceSpendableExperienceTo(Generals.back() + experience->GetExperiencePointsAvailableToSpend());
     experience->ForceTrainableStatExperienceTo(HERO_STAT_STRENGTH, Strengths.back() + experience->GetStatExperience(HERO_STAT_STRENGTH));

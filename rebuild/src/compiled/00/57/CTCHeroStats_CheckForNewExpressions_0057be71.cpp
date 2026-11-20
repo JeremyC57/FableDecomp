@@ -8,7 +8,9 @@
 //          CThingPlayerCreature::LearnExpression(const CCharString&, long, bool) @ 0x006AC430,
 //          CTCHeroStats::GetPercentageThroughRenownLevel() @ 0x0057AAD9, CTCHeroStats::GetMoralityCategory() @ 0x0057A6B8,
 //          std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound const @ 0x004365B0,
-//          CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x006D6520.
+//          CTCHeroExperience::GetTrainableStatLevel(EHeroTrainableStatType) const @ 0x006D6520 (NF125: Ego_r.pdb / FableWin.pdb;
+//          the component is the hero experience, interface 0x68, and stat 5 is HERO_STAT_SKILL_STEALTH; was a local
+//          CTCInventoryAbilities::GetAbilityLevel_006d6520 stand-in).
 // Globals: 0.5f @ 0x0122F59C. Strings: the EXPRESSION_* names 0x0124F520..0x0124F6BC.
 // Shape: each renown level teaches one expression plus a second once the hero is more than half-way through the
 // level; the morality category teaches the evil gestures below 0..3 and the good ones above 3..6; ability 5's level
@@ -38,9 +40,11 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
     bool LearnExpression(const CCharString& name, long index, bool notify);   // 0x006AC430
 };
 
-class CTCInventoryAbilities { public:
-    long GetAbilityLevel_006d6520(long ability) const;              // 0x006D6520
-};
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#define FABLE_RETAIL_EHEROTRAINABLESTATTYPE
+#include "engine/CTCHeroExperience.h"
 
 class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
@@ -98,9 +102,9 @@ void CTCHeroStats::CheckForNewExpressions()
         hero->LearnExpression("EXPRESSION_SATURDAY_NIGHT_FEVER", -1, false);
     if (morality > 6)
         hero->LearnExpression("EXPRESSION_BALLET", -1, false);
-    const CTCInventoryAbilities* abilities;
-    if (ParentThing->PeekTC(TCI_HERO_EXPERIENCE, &abilities)) {
-        long stealth = abilities->GetAbilityLevel_006d6520(5);
+    const CTCHeroExperience* experience;
+    if (ParentThing->PeekTC(TCI_HERO_EXPERIENCE, &experience)) {
+        long stealth = experience->GetTrainableStatLevel(HERO_STAT_SKILL_STEALTH);
         if (stealth >= 3)
             hero->LearnExpression("EXPRESSION_STEAL", -1, false);
         if (stealth >= 6)

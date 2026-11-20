@@ -1,0 +1,97 @@
+addr       parity           behav  name
+004bfb40   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+004bfb40   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc (engine/CEnginePrimitiveThemeChannelDesc.h)
+004bfb40   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearance::SetLightingChannel
+004bfe20   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+004bfe20   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearance::ClearMeshEffect
+004c0240   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004c0240   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+004c0240   WARN SHARED_HEADER_AVAILABLE CEngineMeshEffect (engine/CEngineMeshEffect.h)
+004c0240   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+004c0240   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect
+0056e93d   RELOCATION_MATCH PASS   SExpSpendUndo::SaveBefore
+0056f4ba   RELOCATION_MATCH PASS   SExpSpendUndo::RevertExperiencePoints
+0056f597   RELOCATION_MATCH PASS   SExpSpendUndo::SaveAfter
+0056fad7   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+0056fad7   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0056fad7   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0056fad7   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0056fad7   WARN RELOC_NAME: ?PrepareScreen@CTCInventoryExperience@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+0056fad7   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0056fad7   RELOCATION_MATCH PASS   CTCInventoryExperience::OpenInventory
+005721fa   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005721fa   RELOCATION_MATCH PASS   CTCInventoryExperience::UpdateExperienceSpendLevelUp
+005724cd   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005724cd   RELOCATION_MATCH PASS   CTCInventoryExperience::InitialiseExperienceSpendValues
+005746f7   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005746f7   RELOCATION_MATCH PASS   CTCInventoryExperience::SpendExperienceOnStat
+0057be71   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0057be71   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0057be71   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+0057be71   RELOCATION_MATCH PASS   CTCHeroStats::CheckForNewExpressions
+0057c239   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0057c239   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+0057c239   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0057c239   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+0057c239   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0057c239   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+0057c239   RELOCATION_MATCH PASS   CTCHeroStats::GetTradeSkill
+005ee887   WARN SHARED_HEADER_AVAILABLE CTCHeroMorph (engine/CTCHeroMorph.h)
+005ee887   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+005ee887   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005ee887   RELOCATION_MATCH PASS   CTCInventoryAbilities::UpdateWillMorph
+006d64a0   MATCH            PASS   CTCHeroExperience::GetExperienceSpentOnStat
+006d6510   MATCH            PASS   CTCHeroExperience::GetStatExperience
+006d6520   MATCH            PASS   CTCHeroExperience::GetTrainableStatLevel
+0070d1a0   RELOCATION_MATCH PASS   CAnimSet::Init
+0079b9d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0079b9d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0079b9d0   WARN SHARED_HEADER_AVAILABLE CTCEnemy (engine/CTCEnemy.h)
+0079b9d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0079b9d0   WARN SHARED_HEADER_AVAILABLE CTCSummonSpell (engine/CTCSummonSpell.h)
+0079b9d0   RELOCATION_MATCH PASS   CTCSummonSpell::FrameUpdate
+007aa6b0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+007aa6b0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+007aa6b0   RELOCATION_MATCH PASS   CTCAssassinRush::OnInitialActivate
+007cf110   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007cf110   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+007cf110   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+007cf110   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+007cf110   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007cf110   RELOCATION_MATCH PASS   CTCCreatureTintEffect::CTCCreatureTintEffect
+007e0bf0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+007e0bf0   RELOCATION_MATCH PASS   CTCEffectOnDie::FrameUpdate
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CTCWeaponTrail (engine/CTCWeaponTrail.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ec4f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UndeadIdleUnderground (engine/CCreatureAction_UndeadIdleUnderground.h)
+008ec4f0   RELOCATION_MATCH PASS   CCreatureAction_UndeadIdleUnderground::Initialise
+
+WINS: 22
+  004bfb40 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::SetLightingChannel
+  004bfe20 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::ClearMeshEffect
+  004c0240 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::SetPMeshEffect
+  0056e93d RELOCATION_MATCH SExpSpendUndo::?SaveBefore@SExpSpendUndo@@QAEXPAVCTCHeroExperience@@@Z
+  0056f4ba RELOCATION_MATCH SExpSpendUndo::?RevertExperiencePoints@SExpSpendUndo@@QAEXPAVCTCHeroExperience@@@Z
+  0056f597 RELOCATION_MATCH SExpSpendUndo::?SaveAfter@SExpSpendUndo@@QAEXPAVCTCHeroExperience@@@Z
+  0056fad7 RELOCATION_MATCH CTCInventoryExperience::?OpenInventory@CTCInventoryExperience@@QAEXXZ
+  005721fa RELOCATION_MATCH CTCInventoryExperience::UpdateExperienceSpendLevelUp
+  005724cd RELOCATION_MATCH CTCInventoryExperience::InitialiseExperienceSpendValues
+  005746f7 RELOCATION_MATCH CTCInventoryExperience::SpendExperienceOnStat
+  0057be71 RELOCATION_MATCH CTCHeroStats::CheckForNewExpressions
+  0057c239 RELOCATION_MATCH CTCHeroStats::GetTradeSkill
+  005ee887 RELOCATION_MATCH CTCInventoryAbilities::?UpdateWillMorph@CTCInventoryAbilities@@QAEXXZ
+  006d64a0 MATCH CTCInventoryAbilities::?GetExperienceSpentOnStat@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z
+  006d6510 MATCH CTCInventoryAbilities::?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z
+  006d6520 MATCH CTCInventoryAbilities::?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z
+  0070d1a0 RELOCATION_MATCH CAnimSet::?Init@CAnimSet@@AAEXAAVCAnimateThing@@ABVCAnimInit@@M@Z
+  0079b9d0 RELOCATION_MATCH CTCSummonSpell::FrameUpdate
+  007aa6b0 RELOCATION_MATCH CTCAssassinRush::OnInitialActivate
+  007cf110 RELOCATION_MATCH CTCCreatureTintEffect::??0CTCCreatureTintEffect@@QAE@AAVCThing@@@Z
+  007e0bf0 RELOCATION_MATCH CTCEffectOnDie::?FrameUpdate@CTCEffectOnDie@@QAEXXZ
+  008ec4f0 RELOCATION_MATCH CCreatureAction_UndeadIdleUnderground::Initialise

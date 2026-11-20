@@ -4,18 +4,15 @@
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 0Ch ; pop edi`, `inc dword ptr [ebp-4]`), as the landed TU-mate
 //   CTCInventoryExperience::UpdateExperienceSpendLevelUp @ 0x005721FA.
 // Callees: CTCInventoryExperience::GetTCHeroExperience() @ 0x0056FF3D, GetTCInventoryAbilities() @ 0x0056FFC5,
-//   CTCHeroExperience::GetStatExperience(EHeroStat) @ 0x006D6510, GetTrainableStatLevel(EHeroTrainableStatType)
-//   @ 0x006D64A0, GetCostToUpgradeTrainableStat @ 0x006D67B0 (the first two carry the propagated manifest label
-//   CTCInventoryAbilities::GetAbilityLevel), CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EE136,
+//   CTCHeroExperience::GetStatExperience(EHeroExperienceStatCategory) @ 0x006D6510, GetExperienceSpentOnStat(EHeroTrainableStatType)
+//   @ 0x006D64A0 (NF125: Ego_r.pdb donor order + the +0x44 ExperienceSpentOnStats read; was spelled GetTrainableStatLevel, the name of
+//   0x006D6520), GetCostToUpgradeTrainableStat @ 0x006D67B0 (all three const, Ego_r.pdb / FableWin.pdb), CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EE136,
 //   GetExperienceCostToUpgradeAbility(EHeroAbility, long, bool) @ 0x005EE77C; the general pool reads the inline
 //   GetExperiencePointsAvailableToSpend (CTCHeroExperience +0x14, engine/CTCHeroExperience.h).
 // Layout: the three retail ExperienceSpendValues vectors (+0x1E0 pool, +0x1EC stats, +0x1F8 ability; 12-byte STLport
 //   vectors of 12-byte {current, initial, levelUp} records) as the landed TU-mate 0x005721FA.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-enum EHeroStat { HERO_STAT_NULL };
-enum EHeroTrainableStatType { HERO_TRAINABLE_STAT_NULL };
-enum EHeroAbility { HERO_ABILITY_NULL };
 struct ExperienceSpendInfo {
     long currentSpend;      // +0x0
     long initialSpend;      // +0x4
@@ -28,14 +25,15 @@ struct SSpendInfoVector {
     ExperienceSpendInfo* begin() { return _M_start; }
     ExperienceSpendInfo& operator[](long n) { return *(begin() + n); }   // STLport: *(begin() + n)
 };
-struct CTCHeroExperience_Calls {
-    unsigned char _pad00[0x14];
-    long ExperiencePointsAvailableToSpend;                                              // +0x14
-    long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }
-    long GetStatExperience(EHeroStat stat) const;                                       // 0x006D6510
-    long GetTrainableStatLevel(EHeroTrainableStatType stat) const;                      // 0x006D64A0
-    long GetCostToUpgradeTrainableStat(EHeroTrainableStatType stat) const;              // 0x006D67B0
-};
+// Header (NF125 round 10): CTCHeroExperience is the shared engine/CTCHeroExperience.h retail model (was a local call-view
+//   stand-in); the local CTCInventoryExperience view declares GetTCHeroExperience private, as Ego_r.pdb (AAE).
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#define FABLE_RETAIL_EHEROTRAINABLESTATTYPE
+#define FABLE_RETAIL_CTCHEROEXPERIENCE_SPENTONSTAT
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHeroExperience.h"
 struct CTCInventoryAbilities_Calls {
     long GetAbilityLevel(EHeroAbility ability) const;                                   // 0x005EE136
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b);  // 0x005EE77C
@@ -45,7 +43,9 @@ class CTCInventoryExperience { public:
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     SSpendInfoVector ExperienceSpendValuesStats;    // +0x1EC
     SSpendInfoVector ExperienceSpendValuesAbility;  // +0x1F8
-    CTCHeroExperience_Calls* GetTCHeroExperience();                 // 0x0056FF3D
+private:
+    CTCHeroExperience* GetTCHeroExperience();                  // 0x0056FF3D (private: Ego_r.pdb AAE)
+public:
     CTCInventoryAbilities_Calls* GetTCInventoryAbilities();         // 0x0056FFC5
     void InitialiseExperienceSpendValues();
 };
@@ -58,14 +58,14 @@ void CTCInventoryExperience::InitialiseExperienceSpendValues()
             ExperienceSpendValuesPool[3].initialSpend = GetTCHeroExperience()->GetExperiencePointsAvailableToSpend();
             ExperienceSpendValuesPool[3].levelUpSpend = 0;
         } else {
-            ExperienceSpendValuesPool[i].currentSpend = GetTCHeroExperience()->GetStatExperience((EHeroStat)i);
-            ExperienceSpendValuesPool[i].initialSpend = GetTCHeroExperience()->GetStatExperience((EHeroStat)i);
+            ExperienceSpendValuesPool[i].currentSpend = GetTCHeroExperience()->GetStatExperience((EHeroExperienceStatCategory)i);
+            ExperienceSpendValuesPool[i].initialSpend = GetTCHeroExperience()->GetStatExperience((EHeroExperienceStatCategory)i);
             ExperienceSpendValuesPool[i].levelUpSpend = 0;
         }
     }
     for (i = 0; i < 10; ++i) {
-        ExperienceSpendValuesStats[i].currentSpend = GetTCHeroExperience()->GetTrainableStatLevel((EHeroTrainableStatType)i);
-        ExperienceSpendValuesStats[i].initialSpend = GetTCHeroExperience()->GetTrainableStatLevel((EHeroTrainableStatType)i);
+        ExperienceSpendValuesStats[i].currentSpend = GetTCHeroExperience()->GetExperienceSpentOnStat((EHeroTrainableStatType)i);
+        ExperienceSpendValuesStats[i].initialSpend = GetTCHeroExperience()->GetExperienceSpentOnStat((EHeroTrainableStatType)i);
         ExperienceSpendValuesStats[i].levelUpSpend = GetTCHeroExperience()->GetCostToUpgradeTrainableStat((EHeroTrainableStatType)i);
     }
     for (i = 1; i < 20; ++i) {

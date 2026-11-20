@@ -1,0 +1,7 @@
+# NF125 lessons (one line each)
+- A free `__fastcall Name(S*)` stand-in shared by several getters (three addresses, one symbol) re-authors in one form each once the shared header has a layout branch WITHOUT the inline bodies the out-of-line definitions need: add a new `#elif` layout opt-in rather than editing the inline one.
+- Removing a `X_Calls` call-view stand-in also rebinds every OTHER callee declared on it (GetTCHeroExperience, Force*, Upgrade*, SpendExperience): run refs.py on each side target first and make the local accessor's access match the PDB (private AAE) or it mints a new spelling.
+- The binder's own same-TU noinline copy of a callee body (0x0070D780's CAnimSet::Init) is a ready template for porting that callee's self row; FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE reproduces an old row's hand-written same-TU noinline _M_insert_overflow stand-in.
+- STLport vector members (_M_start / _M_finish) are not accessible through the shared std::vector: rewrite `v._M_start` walks as begin()/end() iterators (same bytes; C2248 otherwise).
+- A row whose first `std::` use precedes the include that brings fable_containers.h needs an explicit `#include "stlport/fable_containers.h"` there; its std-namespaced tags do not clash with a row's global local `__false_type` / iterator tags.
+- vland reports a test PASS for self-contained tests that copy the old model verbatim; leave them (a rewrite would need a local model of a shared-header class).

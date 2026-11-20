@@ -4,7 +4,7 @@
 // Retail 0x007AA6B0, 368 bytes, 8-aligned ebp frame, `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (interfaces 0x31 mode manager, 0x46 inventory),
 // CTCCreatureModeManager::AddMode 0x0073AE10, CTCGraphicAppearance::SetAlpha(uchar) 0x004BFAC0, the inventory's item
-// collector 0x006A2220 (vector<CThing*>&), CBaseIntelligentPointer ctor/SetPItem/dtor 0x00A01B10/0x00A01B90/0x00A01C10
+// collector CTCCarrying::GetAllCarriedThings 0x006A2220 (vector<CThing*>&), CBaseIntelligentPointer ctor/SetPItem/dtor 0x00A01B10/0x00A01B90/0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C), vector<CIntelligentPointer<CThing>>::push_back 0x004AD520, free
 // 0x00BFEA14, the thing's 0x00833A10 (bool, bool), CTCAssassinRush::UpdateDirectionOverride 0x007A9960.
 // Layout = Ego_r.pdb CTCAssassinRush: ParentThing +4, PDef +0x14 (def alpha byte +0x74), ItemAlphaList +0x64; CThing
@@ -47,9 +47,12 @@ class CThingAICreature { public:
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                      // 0x0073AE10
 };
-class CTCInventory { public:
-    void GetAllItems(CRetailVector<CThing*>& items);       // 0x006A2220
-};
+// NF125 (round 10, q5137): the component behind interface 0x46 (TCI_CARRYING) is CTCCarrying (engine/CTCCarrying.h, ALLCARRIED opt-in:
+//   Ego_r.pdb ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z 0x006A2220); was a local
+//   CTCInventory::GetAllItems stand-in. The item list is std::vector<CThing*> (stlport/fable_containers.h).
+#define FABLE_RETAIL_CTCCARRYING_ALLCARRIED
+#include "stlport/fable_containers.h"
+#include "engine/CTCCarrying.h"
 class CSpecialAbilitiesAssassinRushDef { public:
     unsigned char _pad00[0x74];
     unsigned char Alpha;                                   // +0x74
@@ -75,10 +78,10 @@ void CTCAssassinRush::OnInitialActivate()
     if (thing->GetTCGraphicAppearance())
         thing->GetTCGraphicAppearance()->SetAlpha(PDef->Alpha);
     if (thing->HasTC(TCI_CARRYING)) {
-        CTCInventory* inventory = ((CTCInventory*)&thing->GetTC(TCI_CARRYING));
-        CRetailVector<CThing*> items;
-        inventory->GetAllItems(items);
-        for (CThing** it = items._M_start, ** end = items._M_finish; it != end; ++it) {
+        CTCCarrying* carrying = ((CTCCarrying*)&thing->GetTC(TCI_CARRYING));
+        std::vector<CThing*> items;
+        carrying->GetAllCarriedThings(items);
+        for (std::vector<CThing*>::iterator it = items.begin(), end = items.end(); it != end; ++it) {
             CThing* item = *it;
             if (item && !item->IsDead()) {
                 ItemAlphaList.push_back(CIntelligentPointer<CThing>(item));

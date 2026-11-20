@@ -11,8 +11,6 @@
 // into ebx before the getter call for the level-up store and re-read after it for the initial-spend copy.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-enum EHeroTrainableStatType { HERO_TRAINABLE_STAT_NULL };
-enum EHeroAbility { HERO_ABILITY_NULL };
 struct ExperienceSpendInfo {
     long currentSpend;      // +0x0
     long initialSpend;      // +0x4
@@ -25,9 +23,14 @@ struct SSpendInfoVector {
     ExperienceSpendInfo* begin() { return _M_start; }
     ExperienceSpendInfo& operator[](long n) { return *(begin() + n); }   // STLport: *(begin() + n)
 };
-struct CTCHeroExperience_Calls {
-    long GetCostToUpgradeTrainableStat(EHeroTrainableStatType stat);                  // 0x006D67B0
-};
+// Header (NF125 round 10): CTCHeroExperience is the shared engine/CTCHeroExperience.h retail model (was a local call-view
+//   stand-in); the local CTCInventoryExperience view declares GetTCHeroExperience private, as Ego_r.pdb (AAE).
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCHEROEXPERIENCE
+#define FABLE_RETAIL_EHEROTRAINABLESTATTYPE
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCHeroExperience.h"
 struct CTCInventoryAbilities_Calls {
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b);   // 0x005EE77C
 };
@@ -36,7 +39,9 @@ class CTCInventoryExperience { public:
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     SSpendInfoVector ExperienceSpendValuesStats;    // +0x1EC
     SSpendInfoVector ExperienceSpendValuesAbility;  // +0x1F8
-    CTCHeroExperience_Calls* GetTCHeroExperience();                 // 0x0056FF3D
+private:
+    CTCHeroExperience* GetTCHeroExperience();                  // 0x0056FF3D (private: Ego_r.pdb AAE)
+public:
     CTCInventoryAbilities_Calls* GetTCInventoryAbilities();         // 0x0056FFC5
     void UpdateExperienceSpendLevelUp();
 };

@@ -18,6 +18,9 @@ enum EHeroTrainableStatType;                                             // MS f
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE
 #include "stlport/fable_containers.h"
 #endif
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATVECTORS
+#include "stlport/fable_containers.h"
+#endif
 class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHeroStatsDef;
 #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS
 #include "engine/CHeroStatsDef.h"
@@ -124,6 +127,20 @@ public:
 #else
     long GetStatExperience(EHeroExperienceStatCategory)const;
 #endif
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_SPENTONSTAT
+    // NF125 opt-in (rows 0x006D64A0 self, 0x005724CD InitialiseExperienceSpendValues): Ego_r.pdb 0x00587C10 / FableWin.pdb 0x01EEFBE0
+    // ?GetExperienceSpentOnStat@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z (public const), out of line at retail 0x006D64A0 (Ego_r donor
+    // order ForceSpendableExperienceTo / GetExperienceSpentOnStat = retail 0x006D6470 / 0x006D64A0; the body reads ExperienceSpentOnStats +0x44).
+    long GetExperienceSpentOnStat(EHeroTrainableStatType)const;                // 0x006D64A0
+#endif
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_FORCEEXPERIENCE
+    // NF125 opt-in (rows 0x0056F4BA SExpSpendUndo::RevertExperiencePoints): Ego_r.pdb 0x00587BE0 / 0x00587E80, FableWin.pdb 0x01EEF510 /
+    // 0x01EF5720 ?ForceSpendableExperienceTo@CTCHeroExperience@@QAEXJ@Z and
+    // ?ForceTrainableStatExperienceTo@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z (public), out of line at retail 0x006D6470 /
+    // 0x006D6830. Declarations only.
+    void ForceSpendableExperienceTo(long);                                     // 0x006D6470
+    void ForceTrainableStatExperienceTo(EHeroExperienceStatCategory,long);     // 0x006D6830
+#endif
     long GetTrainableStatPossibleLevelUpAmount(EHeroTrainableStatType,float&);
     // Chunk 735 (AddAbilityToList(PC)): ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z 0x006D7B80.
     long GetAbilityPossibleLevelUpAmount(EHeroAbility,float&);
@@ -178,6 +195,11 @@ public: virtual ~CTCHeroExperience();
 private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;unsigned char StatExperiencePoints[12],TrainableStatLevels[12];float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];std::list<std::pair<EDamageAttribute,long> > AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
 #elif defined(FABLE_RETAIL_CTCHEROEXPERIENCE_BLOCK_THRESHOLDS)
 private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;std::vector<long> StatExperiencePoints,TrainableStatLevels;float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;unsigned char ExperienceSpentOnStats[12];unsigned long AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
+#elif defined(FABLE_RETAIL_CTCHEROEXPERIENCE_STATVECTORS)
+// NF125 opt-in (rows 0x006D64A0 / 0x006D6510 / 0x006D6520, the out-of-line stat getters): BLOCK_THRESHOLDS' vector layout without its inline
+// GetTrainableStatLevel / GetTrainableStatMaxLevel bodies, and Ego_r.pdb ExperienceSpentOnStats as std::vector<long> (+0x44, retail STLport
+// 12 bytes; 0x006D64A0 indexes `[eax+ecx*4]` off its _M_start). Needs stlport/fable_containers.h (included above).
+private:long FishingLevel,TotalExperiencePoints,ExperiencePointsAvailableToSpend;std::vector<long> StatExperiencePoints,TrainableStatLevels;float ExperienceMultiplierParam,LastExperienceMultiplierParam;long ExperienceAttenuationTimer;bool AbleToGainExperience;unsigned long Pickups;std::vector<long> ExperienceSpentOnStats;unsigned long AttackHistory;CDefPointer<const CHeroExperienceDef> PDef;CDefPointer<const CHeroCombatDef> PHeroCombatDef;CDefPointer<const CHeroStatsDef> PHeroStatsDef;
 #elif defined(FABLE_RETAIL_CTCHEROEXPERIENCE_STATEXPERIENCE)
 // Chunk 764 (row 0x006D7B80 GetAbilityPossibleLevelUpAmount): Ego_r.pdb StatExperiencePoints is std::vector<long> (+0x18, retail
 // STLport 12 bytes; the row indexes `[ecx+eax*4]` off _M_start). Needs stlport/fable_containers.h (included above).

@@ -363,3 +363,4 @@ NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapo
 2026-11-20 A->B: nf122 landed (54 rows; headers NScreenEffect_CScreenEffectPriorityStack.h, CGameTimeManager.h, CTCRegionFollower.h, CTCDParticleEmitter.h, add-only opt-ins).
 2026-11-20 A->B: nf124 landed (3 rows; headers CTCEnemy.h, CTCCreatureModeManager.h, NCreatureMode_CModeSitFloor.h, add-only opt-ins).
 2026-11-20 A->B: New agent NF127: PRIORITY slice 9 (31 entries, 80 rows locked, in claims). NF125's 22-row hand-back (header CTCHeroExperience.h, add-only opt-ins) is being verified.
+2026-11-20 A->B: nf125 landed (22 rows, the CTCHeroExperience family; header CTCHeroExperience.h, add-only opt-ins).

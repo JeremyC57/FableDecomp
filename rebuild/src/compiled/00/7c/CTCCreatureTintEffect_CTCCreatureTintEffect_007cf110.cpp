@@ -22,7 +22,7 @@
 // Shape: the landed CTCDrainLife constructor (0x007C30E0) pattern: init-list zeroes after the vtable store, the def name
 //   a named CCharString in its own block (homed in the dead `parent` slot, like the interface key, the copy's tag and
 //   its result). Interface 0x46 is CTCCarrying (bitset byte +0x28 bit 6). The local vector<CThing*> lives in the `if`
-//   block: GetCarriedThings, reserve(size()), copy(begin, end, back_inserter(TintList)), then its null-tested free.
+//   block: GetAllCarriedThings, reserve(size()), copy(begin, end, back_inserter(TintList)), then its null-tested free.
 //   The copy loop __copy (0x007CE1F0, same TU, back_insert_iterator returned by hidden pointer in ecx) has a
 //   same-TU stand-in body (AppendThing = push_back of the converted CIntelligentPointer): with only a declaration
 //   VC7.1 homes the hidden result in the dead `index` slot instead of the dead `parent` slot.
@@ -118,9 +118,10 @@ inline O copy(I first, I last, O result)
     return __copy_aux(first, last, result, __false_type());
 }
 
+#include "stlport/fable_containers.h"                // std::vector<CThing*> (STLport 4.6, 12 bytes; NF125 q5137)
 class CTCCarrying {
 public:
-    void GetCarriedThings(CRetailVector<CThing*>& things);   // 0x006A2220
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220 (Ego_r.pdb; NF125 q5137)
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -172,8 +173,8 @@ CTCCreatureTintEffect::CTCCreatureTintEffect(CThing& parent)
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     if (ParentThing->HasTC(0x46)) {
         CTCCarrying* carrying = ParentThing->GetTC<CTCCarrying>(0x46);
-        CRetailVector<CThing*> things;
-        carrying->GetCarriedThings(things);
+        std::vector<CThing*> things;
+        carrying->GetAllCarriedThings(things);
         TintList.reserve(things.size());
         copy(things.begin(), things.end(), back_inserter(TintList));
     }

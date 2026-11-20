@@ -7,7 +7,7 @@
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
 // Callees: std::bitset::test @ 0x00410DE0 (thing interface presence, +0x20), the CONST
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (+0x44), CTCHeroExperience::
-//          GetTrainableStatLevel(long) @ 0x006D6520 (reads TrainableStatLevels[stat], retail +0x24; manifest label
+//          GetTrainableStatLevel(EHeroTrainableStatType) const @ 0x006D6520 (reads TrainableStatLevels[stat], retail +0x24; manifest label
 //          "CTCInventoryAbilities::GetAbilityLevel" is propagated), CTCBase::GetDefinitionManager() @ 0x006869D0
 //          (+0xDC its CHeroStatsDef).
 // Shape: the parent thing is reached as `const CThing*` (a const method), so the HasTC + GetTC lookup is the
@@ -67,8 +67,9 @@ class CGameDefinitionManager { public:
     const CHeroStatsDef* GetHeroStatsDef() const { return PHeroStatsDef; }
 };
 
+#include "engine/EHeroTrainableStatType.h"
 class CTCHeroExperience { public:
-    unsigned long GetTrainableStatLevel(long stat) const;  // 0x006D6520
+    long GetTrainableStatLevel(EHeroTrainableStatType stat) const;  // 0x006D6520 (Ego_r.pdb / FableWin.pdb QBE)
 };
 
 class CTCBase
@@ -88,7 +89,7 @@ float CTCHeroStats::GetTradeSkill() const
 {
     const CThing* thing = ParentThing;
     if (thing->HasTC(0x68)) {
-        unsigned long level = thing->GetTC<const CTCHeroExperience>(0x68)->GetTrainableStatLevel(5);
+        unsigned long level = thing->GetTC<const CTCHeroExperience>(0x68)->GetTrainableStatLevel(HERO_STAT_SKILL_STEALTH);
         const CHeroStatsDef* def = GetDefinitionManager().GetHeroStatsDef();
         if (level < def->TradeSkillForGuileLevel.size())
             return def->TradeSkillForGuileLevel[level];

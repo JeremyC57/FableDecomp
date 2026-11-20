@@ -5,7 +5,7 @@
 // Shape: the carried-things loop reads First then Last into named locals before the loop (retail's ecx/eax order, end kept in ebp); the minion test is the nested `if (GetPItem()) { if (!Dead) {...; return;} }` form with the RemoveTC tail last; the faction name is passed as `const char*` (built before the push).
 // Callees: owner frame vslot 70 (+0x118), CThing::GetPos 0x004C73D0, CTCSummonSpell::CreateMinion 0x0079ACC0, GetPItem 0x00A01B50,
 //   LowerBound 0x0040F020, CCharString ctor/dtor, CTCEnemy::SetFaction 0x0076C810, __ftol2, CTCGraphicAppearance::SetAlpha 0x004BFAC0,
-//   CTCCarrying::CollectCarrySlots 0x006A2220, free 0x00BFEA14, CThing::RemoveTC 0x004C9840
+//   CTCCarrying::GetAllCarriedThings 0x006A2220 (Ego_r.pdb; was a CollectCarrySlots stand-in), free 0x00BFEA14, CThing::RemoveTC 0x004C9840
 #include "fable_compiler.h"
 extern "C" void free(void* p);
 class CTCBase;
@@ -76,15 +76,9 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-struct CThingVector {
-    CThing** First;
-    CThing** Last;
-    CThing** EndOfStorage;
-    CThingVector() : First(0), Last(0), EndOfStorage(0) { }
-    ~CThingVector() { if (First) free(First); }
-};
+#include "stlport/fable_containers.h"                // std::vector<CThing*> (STLport 4.6, 12 bytes; NF125 q5137)
 class CTCEnemy { public: void SetFaction(const CCharString& faction); };          // 0x0076C810
-class CTCCarrying { public: void CollectCarrySlots(CThingVector* things); };      // 0x006A2220
+class CTCCarrying { public: void GetAllCarriedThings(std::vector<CThing*>& things) const; };   // 0x006A2220 (Ego_r.pdb)
 #pragma pack(push, 1)
 class CTCSummonSpell { public:
     virtual void v00();
@@ -128,10 +122,10 @@ void CTCSummonSpell::FrameUpdate()
                 CThing* minion = Minion.GetPItem();
                 if (minion->m_presentBits[0x46 >> 5] & (1UL << (0x46 & 31))) {
                     minion->GetInterface(0x46, &carrying);
-                    CThingVector carried;
-                    carrying->CollectCarrySlots(&carried);
-                    CThing** it = carried.First;
-                    CThing** end = carried.Last;
+                    std::vector<CThing*> carried;
+                    carrying->GetAllCarriedThings(carried);
+                    std::vector<CThing*>::iterator it = carried.begin();
+                    std::vector<CThing*>::iterator end = carried.end();
                     for (; it != end; ++it) {
                         CTCGraphicAppearance* a = (*it)->Appearance;
                         if (a)

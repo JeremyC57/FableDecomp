@@ -28,15 +28,9 @@ class CTCGraphicAppearance { public:
 }
 using NGraphicAppearance::CTCGraphicAppearance;
 
-struct CThingVector {                           // STLport vector<CThing*> (12 bytes)
-    CThing** _M_start;
-    CThing** _M_finish;
-    CThing** _M_end_of_storage;
-    CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CThingVector() { if (_M_start) free(_M_start); }
-};
+#include "stlport/fable_containers.h"           // std::vector<CThing*> (STLport 4.6, 12 bytes; NF125 q5137)
 class CTCCarrying { public:                            // interface 0x46
-    void GetCarriedThings(CThingVector& things);    // 0x006A2220
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220 (Ego_r.pdb)
 };
 class CTCEffectOnDie { public:
     virtual void v00();
@@ -70,9 +64,9 @@ void CTCEffectOnDie::FrameUpdate()
                 CThing* thing = ParentThing;
                 if (thing->HasTC(TCI_CARRYING)) {
                     CTCCarrying* carrying = ((CTCCarrying*)&thing->GetTC(TCI_CARRYING));
-                    CThingVector things;
-                    carrying->GetCarriedThings(things);
-                    for (CThing** it = things._M_start, **end = things._M_finish; it != end; ++it) {
+                    std::vector<CThing*> things;
+                    carrying->GetAllCarriedThings(things);
+                    for (std::vector<CThing*>::iterator it = things.begin(), end = things.end(); it != end; ++it) {
                         CTCGraphicAppearance* carried = (*it)->GetTCGraphicAppearance();
                         if (carried)
                             carried->SetAlpha((unsigned char)(long)alpha);

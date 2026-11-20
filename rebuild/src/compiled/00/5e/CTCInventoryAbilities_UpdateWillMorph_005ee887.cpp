@@ -26,9 +26,10 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CTCHeroMorph { public:                                // interface type 3
     void SetWillMorphAmount(float amount);           // 0x0071BE80
 };
+#include "engine/EHeroTrainableStatType.h"
 class CTCHeroExperience { public:                           // interface type 0x68
-    long GetTrainableStatMaxLevel(long stat);        // 0x006D6770
-    long GetTrainableStatLevel(long stat);           // 0x006D6520
+    long GetTrainableStatMaxLevel(EHeroTrainableStatType stat) const;   // 0x006D6770 (Ego_r.pdb / FableWin.pdb QBE)
+    long GetTrainableStatLevel(EHeroTrainableStatType stat) const;      // 0x006D6520 (Ego_r.pdb / FableWin.pdb QBE)
 };
 struct SAbilityEntry {                               // pair<long, CDefPointer<const CHeroAbilityDef>>
     long Level;                                      // +0x00
@@ -72,8 +73,8 @@ void CTCInventoryAbilities::UpdateWillMorph()
     }
     CTCHeroExperience* experience;
     if (ParentThing->GetTC(TCI_HERO_EXPERIENCE, &experience)) {
-        possible += experience->GetTrainableStatMaxLevel(9);
-        reached += experience->GetTrainableStatLevel(9);
+        possible += experience->GetTrainableStatMaxLevel(HERO_STAT_WILL_MAGIC_POWER);
+        reached += experience->GetTrainableStatLevel(HERO_STAT_WILL_MAGIC_POWER);
     }
     if (possible > 0)
         morph->SetWillMorphAmount((float)reached / possible);

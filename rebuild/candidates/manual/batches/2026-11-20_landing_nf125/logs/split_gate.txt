@@ -1,0 +1,5 @@
+existing 0056ff3d new= ['?GetTCHeroExperience@CTCInventoryExperience@@AAEPAVCTCHeroExperience@@XZ'] | others: {'?GetTCHeroExperience@CTCInventoryExperience_Methods@@QAEPAUCTCHeroExpe': ['00572672']}
+existing 006a2220 new= ['?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z'] | others: {'?GetAllCarriedThings@CTCCarrying@NRemap006a23e0@@QAEXAAUObjects@2@@Z': ['006a23e0']}
+existing 00710980 new= ['?_M_insert_overflow@?$vector@FV?$allocator@F@std@@@std@@IAEXPAFABFABU__true_type@2@I_N@Z'] | others: {'?_M_insert_overflow@?$vector@F@@QAEXPAFABFABU__true_type@@I_N@Z': ['0070d2f0']}
+existing 00710f70 new= ['?_M_insert_overflow@?$vector@VCTransitionBlendAlpha@@V?$allocator@VCTransitionBlendAlpha@@@std@@@std@@IAEXPAVCTransitionBlendAlpha@@ABV3@ABU__false_type@2@I_N@Z'] | others: {'?_M_insert_overflow@?$vector@VCTransitionBlendAlpha@@@@QAEXPAVCTransit': ['0070d2f0']}
+gate: 0 created split(s)

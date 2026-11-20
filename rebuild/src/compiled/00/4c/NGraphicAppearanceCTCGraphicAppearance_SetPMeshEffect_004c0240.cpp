@@ -25,6 +25,7 @@ class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
+#include "stlport/fable_containers.h"                // std::vector<CThing*> (STLport 4.6, 12 bytes)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
@@ -55,27 +56,9 @@ public:
     }
 };
 
-template <class T> struct CAllocator { CAllocator() { } };  // STLport allocator<T> (empty)
-template <class T> struct CAllocProxy : CAllocator<T> {     // STLport _STLP_alloc_proxy<T*, T, allocator<T> >
-    T* m_data;
-    CAllocProxy(const CAllocator<T>& alloc, T* p) : CAllocator<T>(alloc), m_data(p) { }
-};
-template <class T> struct CVectorBase {                     // STLport _Vector_base<T, allocator<T> >
-    T* _M_start;
-    T* _M_finish;
-    CAllocProxy<T> _M_end_of_storage;
-    CVectorBase(const CAllocator<T>& alloc) : _M_start(0), _M_finish(0), _M_end_of_storage(alloc, 0) { }
-    ~CVectorBase() { if (_M_start) free(_M_start); }
-};
-template <class T> struct CRetailVector : CVectorBase<T> {  // STLport vector<T> (12 bytes)
-    CRetailVector() : CVectorBase<T>(CAllocator<T>()) { }
-    T* begin() const { return this->_M_start; }
-    unsigned int size() const { return this->_M_finish - this->_M_start; }
-    T& operator[](unsigned int n) const { return *(begin() + n); }
-};
 
 class CTCCarrying { public:
-    void GetAllCarriedThings(CRetailVector<CThing*>& things) const;   // 0x006A2220
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;   // 0x006A2220
 };
 
 class CEngineMeshEffect { public:
@@ -151,7 +134,7 @@ void CTCGraphicAppearance::SetPMeshEffect(CIVCountedPointer<CEngineMeshEffect> e
     }
     CTCCarrying* carrying;
     if (effectsCarriedItems && ParentThing->GetInterface(&carrying, 0x46)) {
-        CRetailVector<CThing*> carried;
+        std::vector<CThing*> carried;
         carrying->GetAllCarriedThings(carried);
         for (unsigned int i = 0; i < carried.size(); ++i) {
             CThing* thing = carried[i];

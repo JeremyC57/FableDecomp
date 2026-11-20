@@ -14,7 +14,7 @@
 // the hero experience component 0x68), the sound system (0x013B8394) slot 46 (+0xB8, SetGainFader(long, float,
 // float) as named in the landed CThingSoundEmitter rows) for categories 0x10 and 0x80 with (0.0f, 500.0f), the
 // tutorial sound handle map clear 0x005795C3 (+0x134; manifest "CTCCarryable::OnKill" is propagated),
-// CTCHeroExperience::GetStatExperience(long) 0x006D6510, this's slot 87 (+0x15C) given 1.
+// CTCHeroExperience::GetStatExperience(EHeroExperienceStatCategory) const 0x006D6510, this's slot 87 (+0x15C) given 1.
 // Shape: the experience component pointer is an uninitialised out local (the miss path re-reads the key's frame
 // word, as in the landed SaveExperienceValuesForCountDown 0x00570161); the map clear sits inside the sound block.
 // Layout (retail; Ego_r.pdb names, the PDB's 16-byte containers are 12 in retail): TutorialSoundHandles +0x134,
@@ -31,10 +31,11 @@ class CTCBase;
 #include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+#include "engine/EHeroExperienceStatCategory.h"
 class CTCHeroExperience { public:                           // interface type 0x68
     unsigned char _pad_0x00[0x14];
     long GeneralExperience;                          // +0x14
-    long GetStatExperience(long stat);               // 0x006D6510
+    long GetStatExperience(EHeroExperienceStatCategory stat_category) const;   // 0x006D6510 (Ego_r.pdb / FableWin.pdb QBE)
 };
 
 namespace NUISystem { class CManager { public:
@@ -283,8 +284,8 @@ void CTCInventoryExperience::OpenInventory()
         TutorialSoundHandles.clear();
     }
     OrigGeneral = experience->GeneralExperience;
-    OrigStrength = experience->GetStatExperience(0);
-    OrigSkill = experience->GetStatExperience(1);
-    OrigWill = experience->GetStatExperience(2);
+    OrigStrength = experience->GetStatExperience(HERO_STAT_STRENGTH);
+    OrigSkill = experience->GetStatExperience(HERO_STAT_SKILL);
+    OrigWill = experience->GetStatExperience(HERO_STAT_WILL);
     SetScreenActive(1);
 }

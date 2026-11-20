@@ -1,0 +1,2 @@
+# recheck after landing nf125: 89 rows = gate referencing rows (17 targets) + renamed rows + 64 direct includers of CTCHeroExperience.h
+good 89 bad 0
