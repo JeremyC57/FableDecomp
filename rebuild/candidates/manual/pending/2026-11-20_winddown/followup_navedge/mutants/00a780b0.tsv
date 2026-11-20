@@ -1,0 +1,11 @@
+# row-source mutants (mut.py: the test links the mutated row object)
+src	1	Neighbour1->Neighbours.end(), Neighbour2);	Neighbour1->Neighbours.end(), Neighbour1);
+src	1	< Neighbour1->Neighbours.Size - 1)	< Neighbour1->Neighbours.Size)
+src	1	< Neighbour2->Neighbours.Size - 1)	< Neighbour2->Neighbours.Size - 2)
+src	1	Neighbour1->Neighbours.Start[Neighbour1->Neighbours.Size - 1]	Neighbour1->Neighbours.Start[0]
+src	1	    Neighbour2->Neighbours.pop_back();\n	
+src	1	    Neighbour1->Neighbours.pop_back();\n	    Neighbour2->Neighbours.pop_back();\n
+src	1	pregion1->RemoveConnectionToRegion(*pregion2);	pregion2->RemoveConnectionToRegion(*pregion1);
+src	1	std::swap(*neighbour2s_pointer_to_1, Neighbour2->Neighbours.Start[Neighbour2->Neighbours.Size - 1]);	std::swap(*neighbour1s_pointer_to_2, Neighbour2->Neighbours.Start[Neighbour2->Neighbours.Size - 1]);
+src	1	Neighbour2->Neighbours.end(), Neighbour1);	Neighbour2->Neighbours.end(), Neighbour2);
+src	1	    pregion1->RemoveConnectionToRegion(*pregion2);\n	

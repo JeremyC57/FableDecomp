@@ -1,0 +1,310 @@
+baseline SURVIVED
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle = (settings.RotateSpeed + RotateSpeedRan
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle -= (settings.RotateSpeed + RotateSpeedRa
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += (settings.RotateSpeed - RotateSpeedRa
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += (settings.RotateSpeed) * GetOneOverTi
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += (RotateSpeedRandomValue) * GetOneOver
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += (settings.RotateSpeed + RotateSpeedRa
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += settings.RotateSpeed + RotateSpeedRan
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += (settings.RotateStart + RotateSpeedRa
+KILLED | NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneO -> NextAngle += (settings.RotateSpeed + RotateSpeedRa
+KILLED |     FromPosition = ToPosition;  ->     /**/; 
+KILLED |     FromPosition = ToPosition;  ->     FromPosition = NextPosition; 
+KILLED |     ToPosition = NextPosition;  ->     /**/; 
+KILLED |     ToPosition = NextPosition;  ->     ToPosition = FromPosition; 
+KILLED |     FromPosition = ToPosition;     ToPosition = NextPosition;  ->     ToPosition = NextPosition;     FromPosition = 
+KILLED | if (settings.Enabled) -> if (!settings.Enabled)
+KILLED | if (settings.Enabled) -> if (true)
+KILLED | if (settings.Enabled) -> if (settings.CycleFlag)
+KILLED | if (GFIsNonZero(settings.SqueezeAngle)) -> if (!GFIsNonZero(settings.SqueezeAngle))
+KILLED | if (GFIsNonZero(settings.SqueezeAngle)) -> if (true)
+KILLED | if (GFIsNonZero(settings.SqueezeAngle)) -> if (GFIsNonZero(settings.SqueezeScale))
+KILLED | if (GFIsNonZero(settings.SqueezeAngle)) -> if (settings.SqueezeAngle > DELTA_NOTIONAL_ZERO)
+KILLED | float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle); -> float temp_x = GFFastSin(NextAngle + settings.Sque
+KILLED | float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle); -> float temp_x = GFFastCos(NextAngle - settings.Sque
+KILLED | float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle); -> float temp_x = GFFastCos(NextAngle);
+KILLED | float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle); -> float temp_x = GFFastCos(settings.SqueezeAngle);
+KILLED | float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings -> float temp_y = GFFastCos(NextAngle + settings.Sque
+KILLED | float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings -> float temp_y = GFFastSin(NextAngle - settings.Sque
+KILLED | float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings -> float temp_y = GFFastSin(NextAngle) * settings.Squ
+KILLED | float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings -> float temp_y = GFFastSin(NextAngle + settings.Sque
+KILLED | float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings -> float temp_y = GFFastSin(NextAngle + settings.Sque
+SURVIVED | float cos_a = GFFastCos(-settings.SqueezeAngle); -> float cos_a = GFFastCos(settings.SqueezeAngle);
+KILLED | float cos_a = GFFastCos(-settings.SqueezeAngle); -> float cos_a = GFFastSin(-settings.SqueezeAngle);
+KILLED | float cos_a = GFFastCos(-settings.SqueezeAngle); -> float cos_a = GFFastCos(-settings.SqueezeScale);
+KILLED | float sin_a = GFFastSin(-settings.SqueezeAngle); -> float sin_a = GFFastSin(settings.SqueezeAngle);
+KILLED | float sin_a = GFFastSin(-settings.SqueezeAngle); -> float sin_a = GFFastCos(-settings.SqueezeAngle);
+KILLED | next_pos_2d.X = temp_x * cos_a + temp_y * sin_a; -> next_pos_2d.X = temp_x * cos_a - temp_y * sin_a;
+KILLED | next_pos_2d.X = temp_x * cos_a + temp_y * sin_a; -> next_pos_2d.X = temp_x * cos_a;
+KILLED | next_pos_2d.X = temp_x * cos_a + temp_y * sin_a; -> next_pos_2d.X = temp_y * sin_a;
+KILLED | next_pos_2d.X = temp_x * cos_a + temp_y * sin_a; -> next_pos_2d.X = temp_x * sin_a + temp_y * cos_a;
+KILLED | next_pos_2d.X = temp_x * cos_a + temp_y * sin_a; -> next_pos_2d.X = temp_y * cos_a + temp_x * sin_a;
+KILLED | next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a; -> next_pos_2d.Y = temp_y * cos_a + temp_x * sin_a;
+KILLED | next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a; -> next_pos_2d.Y = temp_y * cos_a;
+KILLED | next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a; -> next_pos_2d.Y = temp_x * sin_a - temp_y * cos_a;
+KILLED | next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a; -> next_pos_2d.Y = temp_x * cos_a - temp_y * sin_a;
+KILLED | next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a; -> next_pos_2d.X = temp_y * cos_a - temp_x * sin_a;
+KILLED | next_pos_2d.X = GFFastCos(NextAngle); -> next_pos_2d.X = GFFastSin(NextAngle);
+KILLED | next_pos_2d.X = GFFastCos(NextAngle); -> next_pos_2d.X = GFFastCos(-NextAngle) * settings.S
+KILLED | next_pos_2d.X = GFFastCos(NextAngle); -> next_pos_2d.X = GFFastCos(NextAngle + 0.5f);
+KILLED | next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale; -> next_pos_2d.Y = GFFastCos(NextAngle) * settings.Sq
+KILLED | next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale; -> next_pos_2d.Y = GFFastSin(NextAngle);
+KILLED | next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale; -> next_pos_2d.Y = GFFastSin(-NextAngle) * settings.S
+KILLED | next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale; -> next_pos_2d.Y = GFFastSin(NextAngle) * settings.Ra
+KILLED | float radius = settings.Radius; -> float radius = settings.Expand;
+KILLED | float radius = settings.Radius; -> float radius = 1.0f;
+KILLED | float radius = settings.Radius; -> float radius = -settings.Radius;
+KILLED | if (GFIsNonZero(settings.Expand)) -> if (!GFIsNonZero(settings.Expand))
+KILLED | if (GFIsNonZero(settings.Expand)) -> if (true)
+KILLED | if (GFIsNonZero(settings.Expand)) -> if (GFIsNonZero(settings.Radius))
+KILLED | if (GFIsNonZero(settings.Expand)) -> if (settings.Expand > DELTA_NOTIONAL_ZERO)
+KILLED | if (GFIsNonZero(settings.CycleTime)) -> if (!GFIsNonZero(settings.CycleTime))
+KILLED | if (GFIsNonZero(settings.CycleTime)) -> if (true)
+KILLED | if (GFIsNonZero(settings.CycleTime)) -> if (GFIsNonZero(settings.Expand))
+KILLED | if (GFIsNonZero(settings.CycleTime)) -> if (settings.CycleTime > DELTA_NOTIONAL_ZERO)
+KILLED | if (settings.CycleFlag) -> if (!settings.CycleFlag)
+KILLED | if (settings.CycleFlag) -> if (settings.Enabled)
+KILLED | if (settings.CycleFlag) -> if (false)
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius = (1.0f - GFFastCos(time_secs / settings.Cy
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius -= (1.0f - GFFastCos(time_secs / settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f + GFFastCos(time_secs / settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (GFFastCos(time_secs / settings.CycleTim
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastSin(time_secs / settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastCos(time_secs * settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastCos(time_secs)) * settings
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastCos(time_secs / settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastCos(time_secs / settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastCos(time_secs / settings.C
+KILLED | radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * setting -> radius += (1.0f - GFFastCos(time_secs / settings.C
+KILLED | if (time_secs > settings.CycleTime) time_secs = settings.CycleTime; -> /**/;
+KILLED | if (time_secs > settings.CycleTime) time_secs = settings.CycleTime; -> if (time_secs < settings.CycleTime) time_secs = se
+KILLED | if (time_secs > settings.CycleTime) time_secs = settings.CycleTime; -> time_secs = settings.CycleTime;
+KILLED | if (time_secs > settings.CycleTime) time_secs = settings.CycleTime; -> if (time_secs > settings.CycleTime) time_secs = 0.
+KILLED | if (time_secs > settings.CycleTime) time_secs = settings.CycleTime; -> if (time_secs > settings.Expand) time_secs = setti
+KILLED | if (time_secs > settings.CycleTime) time_secs = settings.CycleTime; -> if (time_secs > settings.CycleTime * 0.5f) time_se
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius = GFFastSin(time_secs / settings.CycleTime 
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius -= GFFastSin(time_secs / settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastCos(time_secs / settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastSin(time_secs / settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastSin(time_secs / settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastSin(time_secs * settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastSin(time_secs / settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastSin(time_secs / settings.CycleTime
+KILLED | radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings -> radius += GFFastSin(time_secs * 0.25f) * settings.
+KILLED | next_pos_2d.X *= radius; -> /**/;
+KILLED | next_pos_2d.X *= radius; -> next_pos_2d.X = radius;
+KILLED | next_pos_2d.X *= radius; -> next_pos_2d.X *= settings.Radius;
+KILLED | next_pos_2d.Y *= radius; -> /**/;
+KILLED | next_pos_2d.Y *= radius; -> next_pos_2d.Y *= -radius;
+KILLED | next_pos_2d.Y *= radius; -> next_pos_2d.Y *= settings.Radius;
+KILLED | next_pos_2d.Clear(); -> /**/;
+KILLED | next_pos_2d.Clear(); -> next_pos_2d.X = 1.0f; next_pos_2d.Y = 0.0f;
+KILLED | next_pos_2d.Clear(); -> next_pos_2d.X = 0.0f; next_pos_2d.Y = 1.0f;
+KILLED | long orient = settings.Type & 3; -> long orient = settings.Type & 1;
+KILLED | long orient = settings.Type & 3; -> long orient = settings.Type & 7;
+KILLED | long orient = settings.Type & 3; -> long orient = settings.Type;
+KILLED | long orient = settings.Type & 3; -> long orient = (settings.Type >> 1) & 3;
+KILLED | long orient = settings.Type & 3; -> long orient = settings.Type & 2;
+KILLED | long orient = settings.Type & 3; -> long orient = 0;
+KILLED |     case 0:         NextPosition.Initialise ->     case 3:         NextPosition.Initialise
+KILLED |     case 1:         NextPosition.Initialise ->     case 3:         NextPosition.Initialise
+KILLED |     case 2:         NextPosition.Initialise ->     case 3:         NextPosition.Initialise
+KILLED |     case 2:         NextPosition.Initialise ->     default:         NextPosition.Initialise
+KILLED | NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);         b -> NextPosition.Initialise(next_pos_2d.X, next_pos_2d
+KILLED | NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);         b -> NextPosition.Initialise(next_pos_2d.X, 0.0f, next_
+KILLED | NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f); -> NextPosition.Initialise(next_pos_2d.Y, next_pos_2d
+KILLED | NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f); -> NextPosition.Initialise(next_pos_2d.X, next_pos_2d
+KILLED | NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f); -> NextPosition.Initialise(next_pos_2d.X, next_pos_2d
+KILLED | NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f); -> NextPosition.Initialise(next_pos_2d.X, 0.0f, next_
+KILLED | NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f); -> /**/;
+KILLED | NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y); -> NextPosition.Initialise(next_pos_2d.Y, 0.0f, next_
+KILLED | NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y); -> NextPosition.Initialise(next_pos_2d.X, NextPositio
+KILLED | NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y); -> NextPosition.Initialise(0.0f, next_pos_2d.X, next_
+KILLED | NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y); -> /**/;
+KILLED | NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y); -> NextPosition.Initialise(0.0f, next_pos_2d.Y, next_
+KILLED | NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y); -> NextPosition.Initialise(NextPosition.X, next_pos_2
+KILLED | NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y); -> NextPosition.Initialise(next_pos_2d.X, next_pos_2d
+KILLED | NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y); -> /**/;
+KILLED | if (settings.Type & 4) -> if (!(settings.Type & 4))
+KILLED | if (settings.Type & 4) -> if (settings.Type & 8)
+KILLED | if (settings.Type & 4) -> if (settings.Type & 12)
+KILLED | if (settings.Type & 4) -> if (settings.Type & 2)
+KILLED | if (settings.Type & 4) -> if (settings.Type >= 4)
+KILLED | if (settings.Type & 4) -> if (true)
+KILLED | if (settings.Type & 4) -> if (false)
+KILLED | parent_transform.TransformPoint(NextPosition); -> /**/;
+KILLED | parent_transform.TransformPoint(NextPosition); -> NextPosition += parent_transform.GetTranslation();
+KILLED | parent_transform.TransformPoint(NextPosition); -> parent_transform.TransformPoint(NextPosition); par
+KILLED | NextPosition += parent_transform.GetTranslation(); -> /**/;
+KILLED | NextPosition += parent_transform.GetTranslation(); -> NextPosition = parent_transform.GetTranslation();
+KILLED | NextPosition += parent_transform.GetTranslation(); -> NextPosition += -parent_transform.GetTranslation()
+KILLED | NextPosition += parent_transform.GetTranslation(); -> NextPosition += ToPosition;
+KILLED |     case 0:         parent_transform.PreZRotate ->     case 3:         parent_transform.PreZRotate
+KILLED |     case 1:         parent_transform.PreYRotate ->     case 3:         parent_transform.PreYRotate
+KILLED |     case 2:         parent_transform.PreXRotate ->     case 3:         parent_transform.PreXRotate
+KILLED |     case 2:         parent_transform.PreXRotate ->     default:         parent_transform.PreXRotate
+KILLED | parent_transform.PreZRotate(-NextAngle);         break; -> parent_transform.PreZRotate(-NextAngle);
+KILLED | parent_transform.PreYRotate(-NextAngle);         break; -> parent_transform.PreYRotate(-NextAngle);
+KILLED | parent_transform.PreZRotate(-NextAngle); -> parent_transform.PreZRotate(NextAngle);
+KILLED | parent_transform.PreZRotate(-NextAngle); -> parent_transform.PreYRotate(-NextAngle);
+KILLED | parent_transform.PreZRotate(-NextAngle); -> parent_transform.PreXRotate(-NextAngle);
+KILLED | parent_transform.PreZRotate(-NextAngle); -> /**/;
+KILLED | parent_transform.PreZRotate(-NextAngle); -> parent_transform.PreZRotate(-NextAngle * 0.5f);
+KILLED | parent_transform.PreYRotate(-NextAngle); -> parent_transform.PreYRotate(NextAngle);
+KILLED | parent_transform.PreYRotate(-NextAngle); -> parent_transform.PreZRotate(-NextAngle);
+KILLED | parent_transform.PreYRotate(-NextAngle); -> parent_transform.PreXRotate(-NextAngle);
+KILLED | parent_transform.PreYRotate(-NextAngle); -> /**/;
+KILLED | parent_transform.PreXRotate(-NextAngle); -> parent_transform.PreXRotate(NextAngle);
+KILLED | parent_transform.PreXRotate(-NextAngle); -> parent_transform.PreYRotate(-NextAngle);
+KILLED | parent_transform.PreXRotate(-NextAngle); -> parent_transform.PreZRotate(-NextAngle);
+KILLED | parent_transform.PreXRotate(-NextAngle); -> /**/;
+KILLED | parent_transform.PreXRotate(-NextAngle); -> parent_transform.PreXRotate(-RotateSpeedRandomValu
+KILLED | parent_transform.SetTranslateOnly(NextPosition); -> /**/;
+KILLED | parent_transform.SetTranslateOnly(NextPosition); -> parent_transform.SetTranslateOnly(ToPosition);
+KILLED | parent_transform.SetTranslateOnly(NextPosition); -> parent_transform.SetTranslateOnly(FromPosition);
+KILLED |     FromTangent = ToTangent;  ->     /**/; 
+KILLED |     FromTangent = ToTangent;  ->     FromTangent = NextPosition; 
+KILLED |     FromTangent = ToTangent;     ToTangent = (NextPosition - FromPosit ->     ToTangent = (NextPosition - FromPosition) * 0.
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> /**/;
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> ToTangent = (NextPosition - ToPosition) * 0.5f;
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> ToTangent = (FromPosition - NextPosition) * 0.5f;
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> ToTangent = (NextPosition + FromPosition) * 0.5f;
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> ToTangent = (NextPosition - FromPosition);
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> ToTangent = (NextPosition - FromPosition) * 0.25f;
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> ToTangent = NextPosition * 0.5f;
+KILLED | ToTangent = (NextPosition - FromPosition) * 0.5f; -> FromTangent = (NextPosition - FromPosition) * 0.5f
+KILLED | [engine/CMatrix3x4.h]         const float cosA = GFCos(angle); ->         const float cosA = GFSin(angle);
+KILLED | [engine/CMatrix3x4.h]         const float sinA = GFSin(angle); ->         const float sinA = GFCos(angle);
+KILLED | [engine/CMatrix3x4.h]         const float sinA = GFSin(angle); ->         const float sinA = -GFSin(angle);
+KILLED | [engine/CMatrix3x4.h]         const float cosA = GFCos(angle); ->         const float cosA = GFSin(angle);
+KILLED | [engine/CMatrix3x4.h]         const float sinA = GFSin(angle); ->         const float sinA = GFCos(angle);
+KILLED | [engine/CMatrix3x4.h]         const float sinA = GFSin(angle); ->         const float sinA = -GFSin(angle);
+KILLED | [engine/CMatrix3x4.h]         const float cosA = GFCos(angle); ->         const float cosA = GFSin(angle);
+KILLED | [engine/CMatrix3x4.h]         const float sinA = GFSin(angle); ->         const float sinA = GFCos(angle);
+KILLED | [engine/CMatrix3x4.h]         const float sinA = GFSin(angle); ->         const float sinA = -GFSin(angle);
+KILLED | [engine/CMatrix3x4.h]         tmp = E21 * sinA; ->         tmp = E21 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E21 * sinA; ->         tmp = E21;
+KILLED | [engine/CMatrix3x4.h]         E21 *= cosA; ->         E21 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E21 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E21 *= cosA; ->         E21 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E21 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E21 -= E31 * sinA; ->         E21 += E31 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E21 -= E31 * sinA; ->         E21 -= E31 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E21 -= E31 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E21 -= E31 * sinA; ->         E21 -= E32 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E31 *= cosA; ->         E31 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E31 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E31 *= cosA; ->         E31 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E31 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E31 += tmp; ->         E31 -= tmp;
+KILLED | [engine/CMatrix3x4.h]         E31 += tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         tmp = E22 * sinA; ->         tmp = E22 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E22 * sinA; ->         tmp = E22;
+KILLED | [engine/CMatrix3x4.h]         E22 *= cosA; ->         E22 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E22 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E22 *= cosA; ->         E22 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E22 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E22 -= E32 * sinA; ->         E22 += E32 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E22 -= E32 * sinA; ->         E22 -= E32 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E22 -= E32 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E22 -= E32 * sinA; ->         E22 -= E33 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E32 *= cosA; ->         E32 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E32 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E32 *= cosA; ->         E32 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E32 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E32 += tmp; ->         E32 -= tmp;
+KILLED | [engine/CMatrix3x4.h]         E32 += tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         tmp = E23 * sinA; ->         tmp = E23 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E23 * sinA; ->         tmp = E23;
+KILLED | [engine/CMatrix3x4.h]         E23 *= cosA; ->         E23 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E23 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E23 *= cosA; ->         E23 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E23 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E23 -= E33 * sinA; ->         E23 += E33 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E23 -= E33 * sinA; ->         E23 -= E33 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E23 -= E33 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E23 -= E33 * sinA; ->         E23 -= E31 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E33 *= cosA; ->         E33 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E33 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E33 *= cosA; ->         E33 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E33 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E33 += tmp; ->         E33 -= tmp;
+KILLED | [engine/CMatrix3x4.h]         E33 += tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         tmp = E11 * sinA; ->         tmp = E11 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E11 * sinA; ->         tmp = E11;
+KILLED | [engine/CMatrix3x4.h]         tmp = E11 * sinA; ->         tmp = E11 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E11 * sinA; ->         tmp = E11;
+KILLED | [engine/CMatrix3x4.h]         E11 *= cosA; ->         E11 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E11 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E11 *= cosA; ->         E11 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E11 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E11 += E31 * sinA; ->         E11 -= E31 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E11 += E31 * sinA; ->         E11 += E31 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E11 += E31 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E11 += E31 * sinA; ->         E11 += E32 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E31 -= tmp; ->         E31 += tmp;
+KILLED | [engine/CMatrix3x4.h]         E31 -= tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         tmp = E12 * sinA; ->         tmp = E12 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E12 * sinA; ->         tmp = E12;
+KILLED | [engine/CMatrix3x4.h]         tmp = E12 * sinA; ->         tmp = E12 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E12 * sinA; ->         tmp = E12;
+KILLED | [engine/CMatrix3x4.h]         E12 *= cosA; ->         E12 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E12 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E12 *= cosA; ->         E12 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E12 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E12 += E32 * sinA; ->         E12 -= E32 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E12 += E32 * sinA; ->         E12 += E32 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E12 += E32 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E12 += E32 * sinA; ->         E12 += E33 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E32 -= tmp; ->         E32 += tmp;
+KILLED | [engine/CMatrix3x4.h]         E32 -= tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         tmp = E13 * sinA; ->         tmp = E13 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E13 * sinA; ->         tmp = E13;
+KILLED | [engine/CMatrix3x4.h]         tmp = E13 * sinA; ->         tmp = E13 * cosA;
+KILLED | [engine/CMatrix3x4.h]         tmp = E13 * sinA; ->         tmp = E13;
+KILLED | [engine/CMatrix3x4.h]         E13 *= cosA; ->         E13 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E13 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E13 *= cosA; ->         E13 *= sinA;
+KILLED | [engine/CMatrix3x4.h]         E13 *= cosA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E13 += E33 * sinA; ->         E13 -= E33 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E13 += E33 * sinA; ->         E13 += E33 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E13 += E33 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E13 += E33 * sinA; ->         E13 += E31 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E33 -= tmp; ->         E33 += tmp;
+KILLED | [engine/CMatrix3x4.h]         E33 -= tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E11 -= E21 * sinA; ->         E11 += E21 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E11 -= E21 * sinA; ->         E11 -= E21 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E11 -= E21 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E11 -= E21 * sinA; ->         E11 -= E22 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E21 += tmp; ->         E21 -= tmp;
+KILLED | [engine/CMatrix3x4.h]         E21 += tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E12 -= E22 * sinA; ->         E12 += E22 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E12 -= E22 * sinA; ->         E12 -= E22 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E12 -= E22 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E12 -= E22 * sinA; ->         E12 -= E23 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E22 += tmp; ->         E22 -= tmp;
+KILLED | [engine/CMatrix3x4.h]         E22 += tmp; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E13 -= E23 * sinA; ->         E13 += E23 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E13 -= E23 * sinA; ->         E13 -= E23 * cosA;
+KILLED | [engine/CMatrix3x4.h]         E13 -= E23 * sinA; ->         /**/;
+KILLED | [engine/CMatrix3x4.h]         E13 -= E23 * sinA; ->         E13 -= E21 * sinA;
+KILLED | [engine/CMatrix3x4.h]         E23 += tmp; ->         E23 -= tmp;
+KILLED | [engine/CMatrix3x4.h]         E23 += tmp; ->         /**/;
+KILLED | [engine/C2DVector.h] void Clear() { X=0.0f; Y=0.0f; } -> void Clear() { X=0.0f; }
+KILLED | [engine/C2DVector.h] void Clear() { X=0.0f; Y=0.0f; } -> void Clear() { Y=0.0f; }
+KILLED | [engine/C2DVector.h] void Clear() { X=0.0f; Y=0.0f; } -> void Clear() { X=1.0f; Y=0.0f; }
+KILLED | [engine/C2DVector.h] void Clear() { X=0.0f; Y=0.0f; } -> void Clear() { X=0.0f; Y=1.0f; }
+KILLED | [engine/GFFloatAbs.h] *(unsigned long*)&n &= 0x7fffffff; -> /**/;
+SURVIVED | [engine/GFFloatAbs.h] *(unsigned long*)&n &= 0x7fffffff; -> *(unsigned long*)&n &= 0x7ffffffe;
+KILLED | [engine/GFFloatAbs.h] *(unsigned long*)&n &= 0x7fffffff; -> *(unsigned long*)&n &= 0x3fffffff;
+KILLED | [engine/GFFloatAbs.h] *(unsigned long*)&n &= 0x7fffffff; -> *(unsigned long*)&n &= 0xffffffff;
+KILLED | [engine/GFFloatAbs.h] *(unsigned long*)&n &= 0x7fffffff; -> *(unsigned long*)&n |= 0x80000000;
+KILLED | [engine/GFFloatAbs.h] *(unsigned long*)&n &= 0x7fffffff; -> *(unsigned long*)&n ^= 0x80000000;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return GFFloatAbs(n) >= DELTA_NOTIONAL_ZERO;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return GFFloatAbs(n) < DELTA_NOTIONAL_ZERO;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return n > DELTA_NOTIONAL_ZERO;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return GFFloatAbs(n) > 0.0f;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO * 2.0f;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO * 0.5f;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return true;
+KILLED | [engine/GFIsNonZero.h] return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO; -> return false;

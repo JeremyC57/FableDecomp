@@ -1,0 +1,22 @@
+src	1	it->second = !blocked;	it->second = blocked;
+src	1	if (node_should_be_blocked != Blocked)	if (node_should_be_blocked == Blocked)
+src	1	bool node_should_be_blocked = !IsEveryUniqueIDOpen();	bool node_should_be_blocked = IsEveryUniqueIDOpen();
+src	1	        Blocked = node_should_be_blocked;\n	        Blocked = !node_should_be_blocked;\n
+src	1	if (regions_connecting_to[c1] != pmy_old_region)	if (regions_connecting_to[c1] == pmy_old_region)
+src	1	pmy_old_region->RemoveConnectionToRegion(*regions_connecting_to[c1]);	pmy_old_region->SetAsConnectedToRegion(*regions_connecting_to[c1]);
+src	1	ForceRegionTo(NULL);	ForceRegionTo(pmy_old_region);
+src	1	ForceRegionTo(*regions_connecting_to.begin());	ForceRegionTo(*(regions_connecting_to.end() - 1));
+src	1	if (regions_connecting_to[c1] != pmy_region)	if (regions_connecting_to[c1] == pmy_region)
+src	1	pmy_region->SetAsConnectedToRegion(*regions_connecting_to[c1]);	pmy_region->RemoveConnectionToRegion(*regions_connecting_to[c1]);
+src	1	                    c1++;\n	                    c1 += 2;\n
+src	1	            ++neighbour_it;\n	            neighbour_it += 2;\n
+src	1	pneighbour->GetNodeType() == NAV_NODE_SWITCHABLE	pneighbour->GetNodeType() != NAV_NODE_SWITCHABLE
+src	2	!pneighbour->IsNavigable()	pneighbour->IsNavigable()
+src	1	if (pswitchable_neighbour->IsEveryUniqueIDOpen())	if (!pswitchable_neighbour->IsEveryUniqueIDOpen())
+src	1	pnon_const_switchable_neighbour->Unlock(*regions_connecting_to.begin());	pnon_const_switchable_neighbour->Unlock(*(regions_connecting_to.end() - 1));
+src	1	                Blocked = true;\n	                Blocked = false;\n
+src	1	if (pneighbour->GetRegion())	if (!pneighbour->GetRegion())
+src	1	if (!UniqueIDsOpen[c1].second)	if (UniqueIDsOpen[c1].second)
+src	1	    for (long c1 = 0; c1 < UniqueIDsOpen.size(); c1++)	    for (long c1 = 1; c1 < UniqueIDsOpen.size(); c1++)
+src	1	    PRegion = (CNavRegion*)pregion;	    PRegion = 0;
+src	1	for (long c1 = 0; c1 < regions_connecting_to.size(); c1++)\n            {	for (long c1 = 0; c1 + 1 < regions_connecting_to.size(); c1++)\n            {

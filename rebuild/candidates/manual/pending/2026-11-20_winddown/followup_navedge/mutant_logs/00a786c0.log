@@ -1,0 +1,9 @@
+baseline SURVIVED
+KILLED |             pconnection->AddConnection();             return; ->             return;
+KILLED |             pconnection->AddConnection();             return; ->             pconnection->AddConnection();
+KILLED | new CNavRegionConnection(*this, region) -> new CNavRegionConnection(region, *this)
+KILLED |     region.AddConnectionToConnectionList(Connections.back());  -> 
+KILLED | region.AddConnectionToConnectionList(Connections.back()); -> AddConnectionToConnectionList(Connections.back());
+KILLED | NumberOfConnections(1) -> NumberOfConnections(0)
+KILLED | GetRegionConnectedTo(*this) == &region) { -> GetRegionConnectedTo(*this) != &region) {
+KILLED |         AddConnectionToConnectionList(connection);  ->         region.AddConnectionToConnectionList(conne

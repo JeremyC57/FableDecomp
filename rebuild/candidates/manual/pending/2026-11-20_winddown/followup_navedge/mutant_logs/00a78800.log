@@ -1,0 +1,23 @@
+baseline SURVIVED
+KILLED | it->second = !blocked; -> it->second = blocked;
+KILLED | if (node_should_be_blocked != Blocked) -> if (node_should_be_blocked == Blocked)
+KILLED | bool node_should_be_blocked = !IsEveryUniqueIDOpen(); -> bool node_should_be_blocked = IsEveryUniqueIDOpen(
+KILLED |         Blocked = node_should_be_blocked;  ->         Blocked = !node_should_be_blocked; 
+KILLED | if (regions_connecting_to[c1] != pmy_old_region) -> if (regions_connecting_to[c1] == pmy_old_region)
+SAME_CODE | pmy_old_region->RemoveConnectionToRegion(*regions_connecting_to[c1]); -> pmy_old_region->SetAsConnectedToRegion(*regions_co
+KILLED | ForceRegionTo(NULL); -> ForceRegionTo(pmy_old_region);
+KILLED | ForceRegionTo(*regions_connecting_to.begin()); -> ForceRegionTo(*(regions_connecting_to.end() - 1));
+KILLED | if (regions_connecting_to[c1] != pmy_region) -> if (regions_connecting_to[c1] == pmy_region)
+SAME_CODE | pmy_region->SetAsConnectedToRegion(*regions_connecting_to[c1]); -> pmy_region->RemoveConnectionToRegion(*regions_conn
+KILLED |                     c1++;  ->                     c1 += 2; 
+KILLED(timeout) |             ++neighbour_it;  ->             neighbour_it += 2; 
+KILLED | pneighbour->GetNodeType() == NAV_NODE_SWITCHABLE -> pneighbour->GetNodeType() != NAV_NODE_SWITCHABLE
+SAME_CODE | !pneighbour->IsNavigable() -> pneighbour->IsNavigable()
+KILLED | if (pswitchable_neighbour->IsEveryUniqueIDOpen()) -> if (!pswitchable_neighbour->IsEveryUniqueIDOpen())
+KILLED | pnon_const_switchable_neighbour->Unlock(*regions_connecting_to.begin() -> pnon_const_switchable_neighbour->Unlock(*(regions_
+KILLED |                 Blocked = true;  ->                 Blocked = false; 
+KILLED | if (pneighbour->GetRegion()) -> if (!pneighbour->GetRegion())
+KILLED | if (!UniqueIDsOpen[c1].second) -> if (UniqueIDsOpen[c1].second)
+KILLED |     for (long c1 = 0; c1 < UniqueIDsOpen.size(); c1++) ->     for (long c1 = 1; c1 < UniqueIDsOpen.size(); c
+KILLED |     PRegion = (CNavRegion*)pregion; ->     PRegion = 0;
+KILLED | for (long c1 = 0; c1 < regions_connecting_to.size(); c1++)             -> for (long c1 = 0; c1 + 1 < regions_connecting_to.s

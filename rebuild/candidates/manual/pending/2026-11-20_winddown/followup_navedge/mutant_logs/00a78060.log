@@ -1,0 +1,8 @@
+baseline SURVIVED
+KILLED | &region == FirstRegion ? *SecondRegion : *FirstRegion -> &region == FirstRegion ? *FirstRegion : *SecondReg
+KILLED | if (--NumberOfConnections == 0) { -> if (--NumberOfConnections == 1) {
+KILLED |             SecondRegion->RemoveConnectionFromConnectionList(this);  -> 
+KILLED | FirstRegion->RemoveConnectionFromConnectionList(this); -> SecondRegion->RemoveConnectionFromConnectionList(t
+KILLED | GetRegionConnectedTo(*this) == &region) { -> GetRegionConnectedTo(region) == &region) {
+KILLED |             pconnection->RemoveConnection();             return; ->             pconnection->RemoveConnection();
+KILLED | if (--NumberOfConnections == 0) { -> if (NumberOfConnections-- == 0) {

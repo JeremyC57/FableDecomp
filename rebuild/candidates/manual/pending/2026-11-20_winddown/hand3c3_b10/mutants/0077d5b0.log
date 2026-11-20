@@ -1,0 +1,142 @@
+baseline SURVIVED
+KILLED |     if (WaitingForTutorialToFinish)  ->     if (!WaitingForTutorialToFinish) 
+KILLED | if (!CPlayerGui::Get().GetSubtitleRenderer().IsDisplayingText()) -> if (CPlayerGui::Get().GetSubtitleRenderer().IsDisp
+KILLED | if (!CPlayerGui::Get().GetSubtitleRenderer().IsDisplayingText()) -> if (true)
+KILLED | if (!PeekWorld().IsPaused()) -> if (PeekWorld().IsPaused())
+KILLED | if (!PeekWorld().IsPaused()) -> if (true)
+KILLED |                 WaitingForTutorialToFinish = false;  ->                 /**/; 
+KILLED |                 WaitingForTutorialToFinish = false;  ->                 WaitingForTutorialToFinish = true;
+KILLED | if (phero->HasTC(TCI_INVENTORY_EXPERIENCE)) -> if (!phero->HasTC(TCI_INVENTORY_EXPERIENCE))
+KILLED | if (phero->HasTC(TCI_INVENTORY_EXPERIENCE)) -> if (true)
+KILLED | if (phero->HasTC(TCI_INVENTORY_EXPERIENCE)) -> if (phero->HasTC(TCI_QUEST_CARD))
+KILLED | CGameEvent game_event(0x1a); -> CGameEvent game_event(0x1b);
+KILLED | game_event.AddULONG(0xb); -> game_event.AddULONG(0xc);
+KILLED | game_event.AddULONG(0xb); -> /**/;
+KILLED | game_event.AddULONG(0xb); -> game_event.AddUBYTE(0xb);
+KILLED | game_event.SetPlayer(PeekPlayerManager().GetMainPlayerNumber()); -> /**/;
+KILLED | game_event.SetPlayer(PeekPlayerManager().GetMainPlayerNumber()); -> game_event.SetPlayer(PeekPlayerManager().GetMainPl
+KILLED | CMainGameComponent::Get()->AddGameEvent(game_event); -> /**/;
+KILLED |                     game_event.AddULONG(0xb);                     game ->                     game_event.SetPlayer(PeekPlaye
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> else if (FrameQuestCardListFrom != 0 || CQuestMana
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> else if (FrameQuestCardListFrom == 0 || !CQuestMan
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> else if (FrameQuestCardListFrom == 0 && CQuestMana
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> else if (FrameQuestCardListFrom == 0)
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> else if (CQuestManager::Get().GetQuestCardsNeedUpd
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> else
+KILLED | else if (FrameQuestCardListFrom == 0 || CQuestManager::Get().GetQuestC -> if (FrameQuestCardListFrom == 0 || CQuestManager::
+KILLED | it != QuestCards.end(); ++it) -> it + 1 != QuestCards.end(); ++it)
+KILLED | it = QuestCards.begin(); it != QuestCards.end() -> it = QuestCards.begin() + 1; it != QuestCards.end(
+KILLED |             if (IS_THING_ALIVE(pquest_card)) ->             if (!IS_THING_ALIVE(pquest_card))
+KILLED |             if (IS_THING_ALIVE(pquest_card)) ->             if (pquest_card != 0)
+KILLED |                 pquest_card->Kill(false); ->                 pquest_card->Kill(true);
+KILLED |                 pquest_card->Kill(false); ->                 /**/;
+KILLED |         QuestCards.clear(); ->         /**/;
+KILLED | QuestCards.reserve(quest_card_types.size()); -> /**/;
+KILLED | QuestCards.reserve(quest_card_types.size()); -> QuestCards.reserve(quest_card_types.size() + 1);
+KILLED | QuestCards.reserve(quest_card_types.size()); -> QuestCards.reserve(QuestCardPositions.size());
+KILLED |         QuestCards.clear();  ->         QuestCards.reserve(0); QuestCards.clear();
+KILLED | CThingFilter_HasTC(TCI_QUEST_CARD) -> CThingFilter_HasTC(TCI_INVENTORY_EXPERIENCE)
+KILLED | PeekThingSearchTools().GetAllLeafThings<CThingObject>(CThingFilter_Has -> /**/;
+KILLED | long position_index = 0; -> long position_index = 1;
+KILLED | if (!QuestCardPositions.empty()) -> if (QuestCardPositions.empty())
+KILLED | if (!QuestCardPositions.empty()) -> if (true)
+KILLED | it != quest_card_types.end(); ++it) -> it != quest_card_types.end(); ++it, ++it)
+KILLED | it = quest_card_types.begin(); it != quest_card_types.end() -> it = ++quest_card_types.begin(); it != quest_card_
+KILLED | CThingObject* pquest_card = NULL; -> CThingObject* pquest_card = existing_quest_cards.s
+KILLED | const CCharString& def_name = it->DefName; -> const CCharString& def_name = it->ScriptName;
+KILLED |                 if (def_index > 0)                 {                   ->                 if (def_index >= 0)               
+KILLED |                 if (def_index > 0)                 {                   ->                 if (def_index > 1)                
+KILLED |                 if (def_index > 0)                 {                   ->                 if (def_index <= 0)               
+KILLED | for (long c1 = 0; c1 < existing_quest_cards.size(); c1++) -> for (long c1 = 1; c1 < existing_quest_cards.size()
+KILLED | for (long c1 = 0; c1 < existing_quest_cards.size(); c1++) -> for (long c1 = 0; c1 + 1 < existing_quest_cards.si
+KILLED | for (long c1 = 0; c1 < existing_quest_cards.size(); c1++) -> for (long c1 = 1; c1 < existing_quest_cards.size()
+KILLED | for (long c1 = 0; c1 < existing_quest_cards.size(); c1++) -> for (long c1 = 0; c1 + 1 < existing_quest_cards.si
+KILLED | for (long c1 = 0; c1 < existing_quest_cards.size(); c1++) -> for (long c1 = 1; c1 < existing_quest_cards.size()
+KILLED | for (long c1 = 0; c1 < existing_quest_cards.size(); c1++) -> for (long c1 = 0; c1 + 1 < existing_quest_cards.si
+KILLED | if (existing_quest_cards[c1]->GetDefGlobalIndex() == def_index) -> if (existing_quest_cards[c1]->GetDefGlobalIndex() 
+KILLED | if (existing_quest_cards[c1]->GetDefGlobalIndex() == def_index) -> if (true)
+KILLED | if (existing_quest_cards[c1]->GetDefGlobalIndex() == def_index) -> if (existing_quest_cards[c1]->GetDefGlobalIndex() 
+KILLED | if (existing_quest_cards[c1]->GetDefGlobalIndex() == def_index) -> if (true)
+KILLED |                             pquest_card = existing_quest_cards[c1];    ->                             pquest_card = existing
+KILLED |                             pquest_card = existing_quest_cards[c1];    ->                             break; 
+KILLED |                             pquest_card = existing_quest_cards[c1];    ->                             pquest_card = existing
+KILLED |                     if (!pquest_card)                     {            ->                     if (pquest_card)              
+KILLED |                     if (!pquest_card)                     {            ->                     if (true)                     
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index + 1, 
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index + 1, 
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> pquest_card = CThingObject::Create(def_index, Ques
+KILLED | pquest_card = CThingObject::Create(def_index, QuestCardPositions[posit -> CThingObject::Create(def_index, QuestCardPositions
+KILLED | def_index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("O -> def_index = CGameDefinitionManager::Get().GetDefGl
+KILLED | def_index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("O -> def_index = CGameDefinitionManager::Get().GetDefGl
+KILLED |                     if (def_index > 0)                     {           ->                     if (def_index >= 0)           
+KILLED |                     if (def_index > 0)                     {           ->                     if (true)                     
+KILLED | existing_quest_cards[c1]->PeekTC(&ptc_existing_quest_card); -> /**/;
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetFeatIndex() != it-
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetFeatIndex() == it-
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetFeatIndex() == it-
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetFeatIndex() == it-
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetScriptQuestName() 
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetFeatIndex() == it-
+KILLED | if (ptc_existing_quest_card->GetFeatIndex() == it->FeatIndex && ptc_ex -> if (ptc_existing_quest_card->GetFeatIndex() == it-
+KILLED |                                     pquest_card = existing_quest_cards ->                                     pquest_card = 
+KILLED |                                     pquest_card = existing_quest_cards ->                                     break; 
+KILLED |                         if (!pquest_card)                         {    ->                         if (true)                 
+KILLED |                             pquest_card->GetTC(&ptc_quest_card);       ->                             /**/;                 
+KILLED |                             if (ptc_quest_card)  ->                             if (!ptc_quest_card) 
+KILLED | ptc_quest_card->SetFeatIndex(it->FeatIndex); -> /**/;
+KILLED | ptc_quest_card->SetFeatIndex(it->FeatIndex); -> ptc_quest_card->SetFeatIndex(it->FeatIndex + 1);
+KILLED | ptc_quest_card->SetQuestName(def_name); -> /**/;
+KILLED | ptc_quest_card->SetQuestName(def_name); -> ptc_quest_card->SetQuestName(it->ScriptName);
+KILLED | ptc_quest_card->SetQuestName(def_name); -> ptc_quest_card->SetScriptQuestName(def_name);
+KILLED | ptc_quest_card->SetScriptQuestName(it->ScriptName); -> /**/;
+KILLED | ptc_quest_card->SetScriptQuestName(it->ScriptName); -> ptc_quest_card->SetScriptQuestName(it->DefName);
+KILLED | ptc_quest_card->SetScriptQuestName(it->ScriptName); -> ptc_quest_card->SetQuestName(it->ScriptName);
+KILLED | ptc_quest_card->SetScriptQuestName(it->ScriptName); -> /**/;
+KILLED | ptc_quest_card->SetScriptQuestName(it->ScriptName); -> ptc_quest_card->SetScriptQuestName(it->DefName);
+KILLED | ptc_quest_card->SetScriptQuestName(it->ScriptName); -> ptc_quest_card->SetQuestName(it->ScriptName);
+SURVIVED |                                 ptc_quest_card->SetFeatIndex(it->FeatI ->                                 ptc_quest_card->Se
+KILLED |                                 ptc_quest_card->SetQuestName(def_name) ->                                 ptc_quest_card->Se
+KILLED |                         continue;  ->                         break; 
+SURVIVED |                         continue;  ->                         /**/; 
+KILLED |                 if (pquest_card)  ->                 if (!pquest_card) 
+KILLED | if (ptc_quest_card->GetFeatIndex() == -1) -> if (ptc_quest_card->GetFeatIndex() != -1)
+KILLED | if (ptc_quest_card->GetFeatIndex() == -1) -> if (ptc_quest_card->GetFeatIndex() == 0)
+KILLED | if (ptc_quest_card->GetFeatIndex() == -1) -> if (ptc_quest_card->GetFeatIndex() <= -1 || true)
+KILLED | if (ptc_quest_card->GetFeatIndex() == -1) -> if (false)
+KILLED | QuestCards.push_back(CIntelligentPointer<CThing>(pquest_card)); -> /**/;
+KILLED | QuestCards.push_back(CIntelligentPointer<CThing>(pquest_card)); -> QuestCards.push_back(CIntelligentPointer<CThing>(p
+KILLED | QuestCards.push_back(CIntelligentPointer<CThing>(pquest_card)); -> QuestCards.push_back(CIntelligentPointer<CThing>(N
+KILLED | if (position_index < QuestCardPositions.size() - 1) -> if (position_index <= QuestCardPositions.size() - 
+KILLED | if (position_index < QuestCardPositions.size() - 1) -> if (position_index < QuestCardPositions.size())
+KILLED | if (position_index < QuestCardPositions.size() - 1) -> if (position_index + 1 < QuestCardPositions.size()
+KILLED | if (position_index < QuestCardPositions.size() - 1) -> if (true)
+KILLED | if (position_index < QuestCardPositions.size() - 1) -> if (false)
+KILLED |                         position_index++; ->                         position_index += 2;
+KILLED |                     if (position_index < QuestCardPositions.size() - 1 ->                 }                     if (position
+KILLED | if (std::find(QuestCards.begin(), QuestCards.end(), CIntelligentPointe -> if (std::find(QuestCards.begin(), QuestCards.end()
+KILLED | if (std::find(QuestCards.begin(), QuestCards.end(), CIntelligentPointe -> if (true)
+KILLED | if (std::find(QuestCards.begin(), QuestCards.end(), CIntelligentPointe -> if (std::find(QuestCards.begin() + (QuestCards.siz
+KILLED | if (std::find(QuestCards.begin(), QuestCards.end(), CIntelligentPointe -> if (std::find(QuestCards.begin(), QuestCards.end()
+KILLED |                 existing_quest_cards[c1]->Kill(false); ->                 existing_quest_cards[c1]->Kill(tru
+KILLED |                 existing_quest_cards[c1]->Kill(false); ->                 /**/;
+KILLED |                 existing_quest_cards[c1]->Kill(false); ->                 existing_quest_cards[0]->Kill(fals
+KILLED | FrameQuestCardListFrom = PeekWorld().GetFrame(); -> /**/;
+KILLED | FrameQuestCardListFrom = PeekWorld().GetFrame(); -> FrameQuestCardListFrom = PeekWorld().GetFrame() + 
+KILLED | CQuestManager::Get().SetQuestCardsNeedUpdating(false); -> /**/;
+KILLED | CQuestManager::Get().SetQuestCardsNeedUpdating(false); -> CQuestManager::Get().SetQuestCardsNeedUpdating(tru
+KILLED | [engine/CTCQuestCard.h] long GetFeatIndex() const { return FeatIndex; } -> long GetFeatIndex() const { return FeatIndex + 1; 
+KILLED | [engine/CTCQuestCard.h] void SetFeatIndex(long feat_index) { FeatIndex = feat_index; -> void SetFeatIndex(long feat_index) { }
+KILLED | [engine/CTCQuestCard.h] void SetQuestName(const CCharString& name) { QuestName = nam -> void SetQuestName(const CCharString& name) { Objec
+KILLED | [engine/CTCQuestCard.h] void SetScriptQuestName(const CCharString& name) { ScriptQue -> void SetScriptQuestName(const CCharString& name) {
+KILLED | [engine/CQuestManager.h] bool GetQuestCardsNeedUpdating() const { return QuestCardsNe -> bool GetQuestCardsNeedUpdating() const { return Da
+KILLED | [engine/CGameEvent.h] void AddULONG(unsigned long value) { AddData(sizeof(value),  -> void AddULONG(unsigned long value) { AddData(2, &v
+KILLED |                     if (def_index > 0)                     {           ->                     if (def_index > 1)            

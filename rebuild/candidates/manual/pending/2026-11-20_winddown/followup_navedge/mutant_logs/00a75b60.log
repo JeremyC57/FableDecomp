@@ -1,0 +1,3 @@
+baseline SURVIVED
+KILLED |     PRegion = (CNavRegion*)pregion; ->     PRegion = 0;
+KILLED |     PRegion = (CNavRegion*)pregion; ->     PRegion = (CNavRegion*)((const char*)pregion +

@@ -1,0 +1,24 @@
+== NUISystem::CSprite::Draw (debug length 1712)
+  bprel -304 type 0x32d56 this
+  bprel +8 type 0x161e7 engine
+  bprel +12 type 0x2fa3 p_handle
+  bprel +16 type 0x12 layer
+  bprel +20 type 0x412 pprimitive_index
+  bprel +24 type 0x161e9 pparent
+  bprel -65 type 0x30 is_independent
+  bprel -64 type 0xd19a range
+  bprel -56 type 0x246c render_layer
+  bprel -52 type 0xb239 clip_box
+  bprel -36 type 0x9b09 size
+  bprel -25 type 0x30 is_layerindependent
+  bprel -24 type 0x9b09 position
+  bprel -16 type 0x9983 colour
+  {
+    bprel -76 type 0x9b09 move
+  {
+    bprel -164 type 0xcb8e primitive
+  {
+    bprel -252 type 0xcb8e primitive
+    {
+      bprel -260 type 0x9e4d frame
+      bprel -256 type 0x42a7 pinfo

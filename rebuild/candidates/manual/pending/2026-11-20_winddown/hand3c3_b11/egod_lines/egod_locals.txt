@@ -1,0 +1,14 @@
+== NParticleEngine::CPSCOrbit::COrbitState::Update (debug length 1306)
+  bprel -116 type 0x6eb7d this
+  bprel +8 type 0x6eb7f settings
+  bprel +12 type 0x2b8a parent_transform
+  bprel +16 type 0x40 time_secs
+  bprel -24 type 0x9b09 next_pos_2d
+  bprel -16 type 0x12 orient
+  {
+    bprel -28 type 0x40 radius
+    {
+      bprel -44 type 0x40 temp_y
+      bprel -40 type 0x40 cos_a
+      bprel -36 type 0x40 temp_x
+      bprel -32 type 0x40 sin_a

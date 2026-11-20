@@ -1,0 +1,52 @@
+== CScriptConversation::FrameUpdate (debug length 3572)
+  bprel -344 type 0x59565 this   [CScriptConversation*]
+  bprel -29 type 0x30 decrement_frame_counter   [bool]
+  bprel -28 type 0x9a77 ptalker   [CThing*]
+  bprel -24 type 0x9a77 plistener   [CThing*]
+  bprel -20 type 0x411ef ptc_talker_look   [CTCLook*]
+  bprel -13 type 0x30 ready_for_next_line   [bool]
+  {
+    bprel -30 type 0x30 in_cutscene   [bool]
+    {
+      bprel -36 type 0x9a77 ptalker   [CThing*]
+      {
+        bprel -40 type 0x411f3 ptc_talk   [CTCTalk*]
+  {
+    bprel -48 type 0x9a77 ptalker   [CThing*]
+    bprel -44 type 0x26b02 ptc_talk   [const CTCTalk*]
+  {
+    bprel -52 type 0x9a77 ptalker   [CThing*]
+    {
+      bprel -60 type 0x40a63 ptc_talker_targeting   [CTCTargetingBase*]
+      bprel -56 type 0x9a77 ptalked_to   [CThing*]
+      {
+        bprel -64 type 0x40a63 ptc_talked_to_targeting   [CTCTargetingBase*]
+  {
+    bprel -84 type 0x1ab2d text_bank   [const NGameText::CDataBank&]
+    bprel -80 type 0x9a77 ptalker   [CThing*]
+    bprel -76 type 0x22 text_index   [unsigned long]
+    bprel -72 type 0x9a77 plistener   [CThing*]
+    bprel -68 type 0x40 speech_duration   [float]
+    {
+      bprel -92 type 0x39dba ptext_entry   [CIVCountedPointer<NGameText::CTextEntry const >]
+      {
+        bprel -100 type 0x12 random_index   [long]
+        bprel -96 type 0xbaf7 group_entries   [const CArray<long>&]
+      {
+        bprel -101 type 0x30 speech_played   [bool]
+        {
+          bprel -112 type 0x233e text_of_message   [CWideString]
+        {
+          bprel -120 type 0x233e text_of_message   [CWideString]
+    {
+      bprel -124 type 0x411f3 ptc_talk   [CTCTalk*]
+      {
+        bprel -132 type 0x233e text_of_message   [CWideString]
+      {
+        bprel -140 type 0x233e display_text   [CWideString]
+    {
+      bprel -148 type 0x40a63 ptc_listener_targeting   [CTCTargetingBase*]
+      bprel -144 type 0x40a63 ptc_talker_targeting   [CTCTargetingBase*]
+  {
+    bprel -152 type 0x411ef ptc_listener_look   [CTCLook*]
+== CScriptConversation::FrameUpdate: no complete record

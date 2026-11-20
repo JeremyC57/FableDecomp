@@ -6,6 +6,15 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
+## Account B, 2026-11-20 (wind-down)
+- Landed today on FullDecomp-B: hand-authoring chunks hand3c2 (complete) and most of hand3c3; re-ports of CGenericException (9) and IDirect3D9 (13);
+  the regressed 0x00589A30 re-authored. Batches: `rebuild/candidates/manual/batches/2026-11-20_*`.
+- Matched but not landed (audit pending), with resume notes: `rebuild/candidates/manual/pending/2026-11-20_winddown/README.md`.
+- Owner rules from today: the widened HEADER_POLICY (base-list classes, libpk/, overlay); a matched row whose new header flags landed local copies
+  lands anyway, and the flagged rows go to the re-port backlog (`newly_flagged_rows.tsv` in each batch). GOTCHAS has today's c2 findings
+  (symbol-number order, the inline-frequency heuristic, the CBankFile.h assert-pin conflict).
+- Open regression: 0x007E2A60 (CBankFile.h assert names; do not repin, re-author the row).
+
 ## State
 - **2026-11-10 codex20nf:** Codex pass 15 name fixes applied to 71 landed rows (all RELOCATION_MATCH + tests); see `rebuild/candidates/manual/naming/2026-11-10_codex20nf/README.md`. Open: fixes [5]-[10] + the missed-binder sweep + the three Codex-parked rows (0x0064FDB4, 0x00651273, 0x00E5E350), handed to an agent (`$S/w22/agentNF/`); chunk 1001 landed 172 libpk functions from 38 split gap-scan rows (`batches/2026-11-10_landing_n/`), chunk 900 landed 10 (six strmbase thunks with vendor proof, two CODA + two CCutsceneDef splits; `_landing_o/`; 0x005C8459 parked). Coverage 55,292 / 57,788. Queue `land1011n` holds the chunks' 8 name fixes.
 - **2026-11-10 Codex pass 16 handed out:** 40 parked near misses reserved in `pending/2026-11-10_codex_pass16/RESERVED.tsv` (zip built from the scratch builder `codex1110/build.py`). Agents running: agentNF (Codex fixes [5]-[10], missed-binder sweep, the three pass-15 parked rows), agentSCR (0x005C8459 / 0x005C9A95 / 0x005B8743).

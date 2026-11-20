@@ -1,0 +1,130 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CScriptConversation.h	2026-11-13 08:07:19.178365235 +0000
++++ parked/006e5a00/hdr/engine/CScriptConversation.h	2026-11-20 06:56:57.727550592 +0000
+@@ -6,6 +6,64 @@
+ // Retail evidence: 1 trusted landed function(s); reconciliation clean.
+ // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+ // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
++#ifdef FABLE_RETAIL_CSCRIPTCONVERSATION_CLASS
++// Retail opt-in (hand3c3, row 0x006E5A00 CScriptConversation::FrameUpdate): the class with its real member types, in place of
++// the generated opaque layout below (which stays the default). Members: Ego_r.pdb CScriptConversation / nested CConversationLine
++// (PersonSpeaking, PersonSpokenTo, LineToSay, ShowSubtitle) with retail's 12-byte STLport vectors (PeopleInConversation +0x08,
++// Conversation +0x14, CurrentLine +0x20, FramesLeftBeforeNewLine +0x24, SoundIn2D +0x28, StartedCurrentLineSpeech +0x29,
++// PlayDuringCutScenes +0x2A; sizeof 0x2C). Member functions: Ego_r.pdb / Ego_d.pdb ?FrameUpdate@CScriptConversation@@QAEXXZ
++// (0x006E5A00), ?OnCleanup@..@@QAEX_N@Z (0x006E5690), ?AddPersonToConversation@..@@QAEXAAVCThing@@@Z (0x006E5790),
++// ?AddLineToConversation@..@@QAEXABVCThing@@PBV2@ABVCCharString@@_N@Z (0x006E58A0) and the private
++// ?GetCurrentSpeaker@..@@AAEPAVCThing@@XZ (0x006E55B0), ?GetCurrentListener@..@@AAEPAVCThing@@XZ (0x006E55D0) and
++// ?IsValid@..@@ABE_NXZ (0x006E5600). GetCurrentSpeaker / GetCurrentListener carry their bodies (the landed rows' text): FrameUpdate
++// calls each out of line at some sites and expands it at others.
++#include "fable_string.h"
++#include "stlport/fable_containers.h"
++#include "engine/CIntelligentPointer.h"
++class CThing;
++class CScriptConversationManager;
++class CScriptConversation {
++public:
++    class CConversationLine {
++    public:
++        long        PersonSpeaking;                                     // +0x00
++        long        PersonSpokenTo;                                     // +0x04
++        CCharString LineToSay;                                          // +0x08
++        bool        ShowSubtitle;                                       // +0x0c
++    };
++    void FrameUpdate();                                                 // 0x006E5A00
++    void OnCleanup(bool stop_speech);                                   // 0x006E5690
++    void AddPersonToConversation(CThing& person);                       // 0x006E5790
++    void AddLineToConversation(const CThing& speaker, const CThing* listener, const CCharString& line, bool show_subtitle);   // 0x006E58A0
++private:
++    CThing* GetCurrentSpeaker()                                         // 0x006E55B0
++    {
++        if (CurrentLine > -1)
++            return PeopleInConversation[Conversation[CurrentLine].PersonSpeaking].Get();
++        return 0;
++    }
++    CThing* GetCurrentListener()                                        // 0x006E55D0
++    {
++        if (CurrentLine > -1) {
++            long person = Conversation[CurrentLine].PersonSpokenTo;
++            if (person > -1)
++                return PeopleInConversation[person].Get();
++        }
++        return 0;
++    }
++    bool IsValid() const;                                               // 0x006E5600
++    CScriptConversationManager*                Manager;                 // +0x00
++    long                                       ConversationIndex;       // +0x04
++    std::vector<CIntelligentPointer<CThing> >  PeopleInConversation;    // +0x08
++    std::vector<CConversationLine>             Conversation;            // +0x14
++    long                                       CurrentLine;             // +0x20
++    long                                       FramesLeftBeforeNewLine; // +0x24
++    bool                                       SoundIn2D;               // +0x28
++    bool                                       StartedCurrentLineSpeech;   // +0x29
++    bool                                       PlayDuringCutScenes;     // +0x2a
++};
++FABLE_STATIC_ASSERT(sizeof(CScriptConversation) == 0x2c);
++#else
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
+@@ -38,4 +96,5 @@
+ FABLE_STATIC_ASSERT(offsetof(CScriptConversation, StartedCurrentLineSpeech) == 0x29);
+ FABLE_STATIC_ASSERT(offsetof(CScriptConversation, PlayDuringCutScenes) == 0x2a);
+ 
++#endif // FABLE_RETAIL_CSCRIPTCONVERSATION_CLASS
+ #endif // FABLE_ENGINE_CSCRIPTCONVERSATION_H
+--- /home/user/FableDecomp/rebuild/include/engine/CScriptConversationManager.h	2026-11-13 08:07:19.178365235 +0000
++++ parked/006e5a00/hdr/engine/CScriptConversationManager.h	2026-11-20 06:56:57.727729046 +0000
+@@ -11,6 +11,12 @@
+ class CScriptConversationManager {
+ public:
+     CScriptConversationManager();                                              // 0x006E6150
++#ifdef FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_REMOVECONVERSATION
++    // Opt-in (hand3c3, row 0x006E5A00 CScriptConversation::FrameUpdate): Ego_r.pdb / Ego_d.pdb
++    // ?RemoveConversation@CScriptConversationManager@@QAEXJ_N@Z, out of line in retail at 0x006E5990 (landed; FrameUpdate pushes 0
++    // and its ConversationIndex, with Manager in ecx, at four exits). Declaration only.
++    void RemoveConversation(long conversation_index, bool stop_speech);        // 0x006E5990
++#endif
+ private:
+     std::map<long, CScriptConversation> Conversations;                         // +0x00
+     long NextConversationIndex;                                                // +0x0C
+--- /home/user/FableDecomp/rebuild/include/engine/NGameText_CDataBank.h	2026-11-19 17:56:30.524709132 +0000
++++ parked/006e5a00/hdr/engine/NGameText_CDataBank.h	2026-11-20 07:12:39.514349664 +0000
+@@ -58,6 +58,13 @@
+     CCharString SpeechBank;                                                        // +0x1C
+     CCharString Narrator;                                                          // +0x20
+     CCharString SoundName;                                                         // +0x24
++#ifdef FABLE_RETAIL_NGAMETEXT_TEXTENTRY_SPEECH_ACCESSORS
++    // Nested opt-in (hand3c3, row 0x006E5A00 CScriptConversation::FrameUpdate): FableWin.pdb
++    // ?GetNarrator@CTextEntry@NGameText@@QBEABVCCharString@@XZ and ?GetSoundName@CTextEntry@NGameText@@QBEABVCCharString@@XZ, inline in
++    // retail (0x006E5D22 `add ecx,24h`, 0x006E5DAD `add eax,20h`). No PDB names a getter for SpeechBank.
++    const CCharString& GetNarrator() const { return Narrator; }
++    const CCharString& GetSoundName() const { return SoundName; }
++#endif
+ #endif
+ };
+ #ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+--- /dev/null	2026-11-19 22:44:36.873458147 +0000
++++ parked/006e5a00/hdr/engine/CLipSyncDataBankEntry.h	2026-11-20 07:12:39.519266829 +0000
+@@ -0,0 +1,23 @@
++#ifndef FABLE_ENGINE_CLIPSYNCDATABANKENTRY_H
++#define FABLE_ENGINE_CLIPSYNCDATABANKENTRY_H
++// CLipSyncDataBankEntry (hand3c3, row 0x006E5A00 CScriptConversation::FrameUpdate): one record of CLipSyncDataBank::Entries
++// (CArray<CLipSyncDataBankEntry>, +0x164). Ego_r.pdb struct layout (ghidra_out/struct_layouts_egor.tsv): 8 bytes, Data +0
++// (CIVCountedPointer<CLipSyncDataBankEntry::CData>), Duration +4 (float); the landed row 0x00A42980 BeginLoading models it the same way.
++// FableWin.pdb ?GetDuration@CLipSyncDataBankEntry@@QBEMXZ (inline in retail: 0x006E5D6A `mov eax,[eax+4]`),
++// ?IsLoaded@CLipSyncDataBankEntry@@QBE_NXZ, ?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z (private; the bank calls it).
++// The nested CData (a CResource, 0x34 bytes) is only declared here: rows that build or destroy one define it.
++#include "rebuild_abi.h"
++#include "engine/CIVCountedPointer.h"
++class CLipSyncDataBank;
++class CLipSyncDataBankEntry {
++public:
++    class CData;
++    float GetDuration() const { return Duration; }
++    bool IsLoaded() const;
++private:
++    friend class CLipSyncDataBank;
++    void BeginLoading(unsigned long index, CLipSyncDataBank& bank);          // 0x00A42980
++    CIVCountedPointer<CData> Data;                                           // +0x00
++    float                    Duration;                                       // +0x04
++};
++#endif

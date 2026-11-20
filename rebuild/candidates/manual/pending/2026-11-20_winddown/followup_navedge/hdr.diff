@@ -1,0 +1,123 @@
+--- /dev/null	2026-11-19 22:44:36.873458147 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w25/followup/batches/navedge/hdr/engine/CNavConnectorNode.h	2026-11-20 07:08:52.033385276 +0000
+@@ -0,0 +1,19 @@
++#ifndef FABLE_ENGINE_CNAVCONNECTORNODE_H
++#define FABLE_ENGINE_CNAVCONNECTORNODE_H
++// CNavConnectorNode (new header, hand3c2, rows 0x00A793D0 / 0x00A79680 CNavQuadTree::ConnectHorizantalMapEdge / ConnectVerticalMapEdge):
++// Ego_r.pdb members (struct_layouts_egor.tsv, 8 bytes): Neighbour1 +0, Neighbour2 +4 (CNavNavigableLeafNode*); the rows allocate it
++// with `new(8)` (0x00A794BD). Ego_r.pdb ??0CNavConnectorNode@@QAE@PBVCANavQuadTreeNode@@0@Z (retail 0x00A78A90, the rows' call after
++// the new; parameter names Ego_d.pdb) and ??1CNavConnectorNode@@QAE@XZ (non-virtual; the counted pointer's DeleteData 0x00A82FA0
++// destroys it). Declarations only.
++#include "rebuild_abi.h"
++class CANavQuadTreeNode;
++class CNavNavigableLeafNode;
++class CNavConnectorNode {
++public:
++    CNavNavigableLeafNode* Neighbour1;                                   // +0x00
++    CNavNavigableLeafNode* Neighbour2;                                   // +0x04
++    CNavConnectorNode(const CANavQuadTreeNode* neighbour1, const CANavQuadTreeNode* neighbour2);   // 0x00A78A90
++    ~CNavConnectorNode();
++};
++FABLE_STATIC_ASSERT(sizeof(CNavConnectorNode) == 8);
++#endif
+--- rebuild/include/engine/CNavNavigableLeafNode.h	2026-11-18 00:13:23.085051312 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w25/followup/batches/navedge/hdr/engine/CNavNavigableLeafNode.h	2026-11-20 07:08:52.033412180 +0000
+@@ -25,6 +25,19 @@
+     CSmallVector() : Start(0), Size(0) { }
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CSMALLVECTOR_RESIZE
++    // Re-port opt-in (2026-11-19, rows 0x00A78A90 / 0x00A780B0 CNavConnectorNode ctor / dtor): Ego_r.pdb
++    // ?resize@?$CSmallVector@PBVCANavQuadTreeNode@@$07@@QAEXJABQBVCANavQuadTreeNode@@@Z (0x00A7DB10, out of line) and FableWin.pdb's
++    // ?push_back@..@@QAEXABQBVCANavQuadTreeNode@@@Z / ?pop_back@..@@QAEXXZ / ?begin@ / ?end@..@@QAEPAPBVCANavQuadTreeNode@@XZ (debug only:
++    // inline in release). Retail expands push_back as resize(Size + 1) with the default fill stored per call, then the element store
++    // through the re-read size (0x00A78AA5..0x00A78AC5), and pop_back as resize(Size - 1) (the call at 0x00A78160). Inferred: the default argument
++    // `fill = T()` (the landed rows' spelling; the zero temporary is built at every call site). Not with FABLE_RETAIL_CSMALLVECTOR_ITERATORS_PASS23.
++    void resize(long size, const T& fill = T());                         // 0x00A7DB10
++    void push_back(const T& value) { resize(Size + 1); Start[Size - 1] = value; }
++    void pop_back() { resize(Size - 1); }
++    T* begin() { return Start; }
++    T* end() { return Start + Size; }
++#endif
+     T*          Start;
+     signed char Size;
+ };
+@@ -39,6 +52,17 @@
+     CNavNavigableLeafNode(const C2DVector& pos, unsigned char quad_tree_level, unsigned char nav_layer, unsigned char preferability_cost)
+         : CANavQuadTreeNode(pos, quad_tree_level, nav_layer), PRegion(0), PreferabilityCost(preferability_cost) { }
+ #endif
++#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_REGION
++    // Opt-in (followup, row 0x00A78800 CNavSwitchableLeafNode::SetAsBlocked): Ego_r.pdb / FableWin.pdb ?GetRegion@CNavNavigableLeafNode@@
++    // UBEPBVCNavRegion@@XZ, the class-body inline of the header (Ego_d.pdb: one line, 221, in the header's file record, not the .cpp's;
++    // retail out of line only through the vtable) and ?ForceRegionTo@CNavNavigableLeafNode@@IAEXPBVCNavRegion@@@Z (protected, defined in
++    // lib_nav_quad_tree.cpp: Ego_d lines 412..414, parameter pregion; retail 0x00A75B60 between RemoveRegionZero 0x00A75B50 and
++    // SetUpNeighbours 0x00A75B70, as FableWin.pdb orders them). Declarations and the one-line accessor only.
++    virtual const CNavRegion* GetRegion() const { return PRegion; }
++protected:
++    void ForceRegionTo(const CNavRegion* pregion);                                 // 0x00A75B60
++public:
++#endif
+     CNavRegion*                               PRegion;                           // +0x10
+     CSmallVector<const CANavQuadTreeNode*, 8> Neighbours;                        // +0x14
+     unsigned char                             PreferabilityCost;                 // +0x1c
+--- rebuild/include/engine/CNavQuadTree.h	2026-11-20 06:31:28.238294274 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w25/followup/batches/navedge/hdr/engine/CNavQuadTree.h	2026-11-20 07:08:52.033431701 +0000
+@@ -106,6 +106,13 @@
+     // ABV?$vector@VC2DLineF@@..@3@ABVC2DBoxI@@@Z (private const; Ego_d parameters line_lists, lines, update_area). Declaration only.
+     void UpdateLines(std::vector<std::list<C2DLineF> >& line_lists, const std::vector<C2DLineF>& lines, const C2DBoxI& update_area) const;   // 0x00A781A0
+ #endif
++#ifdef FABLE_RETAIL_CNAVQUADTREE_CONNECTMAPEDGES
++    // hand3c2 opt-in (rows 0x00A793D0 / 0x00A79680): Ego_r.pdb / FableWin.pdb ?ConnectHorizantalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z
++    // and ?ConnectVerticalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z (private, the PDB spelling "Horizantal"); parameter names
++    // Ego_d.pdb. Declarations only.
++    void ConnectHorizantalMapEdge(float this_map_y, float adjacent_map_y, const class CNavigatorManager& nav_manager);   // 0x00A793D0
++    void ConnectVerticalMapEdge(float this_map_x, float adjacent_map_x, const class CNavigatorManager& nav_manager);     // 0x00A79680
++#endif
+     void SetUpRegions(long mapIndex);                                    // 0x00A7A0A0
+ };
+ FABLE_STATIC_ASSERT_AT(89, sizeof(CNavQuadTree) == 0x88);
+--- rebuild/include/engine/CNavRegion.h	2026-11-13 08:07:19.174365235 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w25/followup/batches/navedge/hdr/engine/CNavRegion.h	2026-11-20 07:08:52.033455118 +0000
+@@ -12,6 +12,24 @@
+     std::list<CCountedPointer<CNavRegionConnection> > Connections;      // +0x4
+     long MostRecentSearchID;                                             // +0x8
+     CNavRegion(long mapIndex, long internalIndex);                       // 0x00A78680 ??0CNavRegion@@QAE@JJ@Z
++#ifdef FABLE_RETAIL_CNAVREGION_CONNECTIONS
++    // Re-port opt-in (2026-11-19, rows 0x00A786C0 / 0x00A78060 and their callers 0x00A78A90 / 0x00A780B0 / 0x00A78800): Ego_r.pdb
++    // ?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z (0x00A786C0) and ?RemoveConnectionToRegion@CNavRegion@@QAEXAAV1@@Z (0x00A78060), both
++    // taking the other region by REFERENCE, `ret 4`; and the two private list helpers: ?RemoveConnectionFromConnectionList@CNavRegion@@
++    // AAEXPBVCNavRegionConnection@@@Z (0x00A77710, landed) and ?AddConnectionToConnectionList@CNavRegion@@AAEXAAV?$CCountedPointer@
++    // VCNavRegionConnection@@@@@Z (Ego_r 0x00BBE490; no retail copy: 0x00A786C0 expands the list push_back at both sites). The connection
++    // record reaches the private helpers (its inline RemoveConnection calls 0x00A77710 on both regions, 0x00A7809B / 0x00A780A4), so it
++    // is a friend (Inferred: C++ access requires it; no public wrapper exists in any PDB). AddConnectionToConnectionList is an Ego_d.pdb
++    // GPROC32 (28 debug bytes, lines 87..89: one statement = the push_back; parameter `pconnection`); RemoveConnectionFromConnectionList's
++    // Ego_d parameter is `pconnection_to_remove` (audit h3c2b).
++    void SetAsConnectedToRegion(CNavRegion& region);                     // 0x00A786C0
++    void RemoveConnectionToRegion(CNavRegion& region);                   // 0x00A78060
++private:
++    friend class CNavRegionConnection;
++    void AddConnectionToConnectionList(CCountedPointer<CNavRegionConnection>& pconnection) { Connections.push_back(pconnection); }
++    void RemoveConnectionFromConnectionList(const CNavRegionConnection* pconnection_to_remove);   // 0x00A77710
++public:
++#endif
+ #ifdef FABLE_RETAIL_CNAVREGION_ISCONNECTED
+     // Retail opt-in (chunk 875, row 0x00A1E5C0 CNavigatorAStar::CalculateAndMoveToPosProximity): Ego_r.pdb / FableWin.pdb
+     // ?IsConnectedToRegion@CNavRegion@@QBE_NABV1@@Z, out of line at 0x00A77780 (`push eax ; mov ecx,eax ; call 0x00A77780`,
+--- rebuild/include/engine/CNavSwitchableLeafNode.h	2026-11-18 00:13:23.085051312 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/923afea2-3bc0-53db-a7ad-a8bbc78e03e2/scratchpad/w25/followup/batches/navedge/hdr/engine/CNavSwitchableLeafNode.h	2026-11-20 07:08:52.033471585 +0000
+@@ -21,6 +21,15 @@
+                            const std::vector<unsigned __int64>& unique_ids);                    // 0x00A79930
+ #endif
+     void SetAsBlocked(unsigned __int64 uniqueID, bool blocked);                  // 0x00A78800
++#ifdef FABLE_RETAIL_CNAVSWITCHABLELEAFNODE_SETASBLOCKED
++    // Re-port opt-in (audit h3c2b, 2026-11-20, rows 0x00A78800 SetAsBlocked / 0x00A773E0 IsEveryUniqueIDOpen): the two private members
++    // SetAsBlocked calls. Ego_r.pdb ?IsEveryUniqueIDOpen@CNavSwitchableLeafNode@@ABE_NXZ (0x00A773E0) and
++    // ?Unlock@CNavSwitchableLeafNode@@AAEXPBVCNavRegion@@@Z (0x00A77420; Ego_d.pdb parameter pregion). Declarations only.
++private:
++    bool IsEveryUniqueIDOpen() const;                                            // 0x00A773E0
++    void Unlock(const CNavRegion* pregion);                                      // 0x00A77420
++public:
++#endif
+     CVectorMap<unsigned __int64, bool> UniqueIDsOpen;                            // +0x20
+ };
+ FABLE_STATIC_ASSERT_AT(20, sizeof(CNavSwitchableLeafNode) == 0x30);

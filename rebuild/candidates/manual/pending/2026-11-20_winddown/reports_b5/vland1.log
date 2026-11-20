@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00af7df0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::Alloc
+00b05e10   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::SmoothFadeValue
+00b05ea0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::vfunc_18
+00b07570   MATCH            PASS   NParticleEngine::CPSCSingleSprite::ClearAllPrimitives
+00b0a0f0   MATCH            PASS   NParticleEngine::CPSCSingleSprite::GetComponentType
+00b0a100   MATCH            PASS   NParticleEngine::CPSCSingleSprite::GetComponentSubType
+00b0a130   MATCH            PASS   NParticleEngine::CPSCSingleSprite::EnterTimelineEnd
+00b0a190   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::DatabaseClone
+
+WINS: 8
+  00af7df0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?Alloc@CPSCSingleSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ
+  00b05e10 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?SmoothFadeValue@CPSCSingleSprite@NParticleEngine@@IBEMM@Z
+  00b05ea0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?DatabaseCopy@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00b07570 MATCH NParticleEngine::CPSCSingleSprite::?ClearAllPrimitives@CPSCSingleSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
+  00b0a0f0 MATCH NParticleEngine::CPSCSingleSprite::?GetComponentType@CPSCSingleSprite@NParticleEngine@@UBE?AW4EPSCType@2@XZ
+  00b0a100 MATCH NParticleEngine::CPSCSingleSprite::?GetComponentSubType@CPSCSingleSprite@NParticleEngine@@UBE?AW4EPSCSubType@2@XZ
+  00b0a130 MATCH NParticleEngine::CPSCSingleSprite::?EnterTimelineEnd@CPSCSingleSprite@NParticleEngine@@UAEXXZ
+  00b0a190 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?DatabaseClone@CPSCSingleSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ

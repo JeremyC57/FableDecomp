@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0077d5b0   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z -> 0077ec20 labelled 'GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>'
+0077d5b0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0077d5b0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 1
+  0077d5b0 RELOCATION_MATCH CTCHeroCentre::?FrameUpdate@CTCHeroCentre@@UAEXXZ

@@ -1,0 +1,8 @@
+# row-source mutants (mut.py: the test links the mutated row object)
+src	1	        if (!UniqueIDsOpen[c1].second)\n            return false;	        if (UniqueIDsOpen[c1].second)\n            return false;
+src	1	    for (long c1 = 0; c1 < UniqueIDsOpen.size(); c1++)	    for (long c1 = 1; c1 < UniqueIDsOpen.size(); c1++)
+src	1	    for (long c1 = 0; c1 < UniqueIDsOpen.size(); c1++)	    for (long c1 = 0; c1 + 1 < UniqueIDsOpen.size(); c1++)
+src	1	            return false;\n	            return true;\n
+src	1	    return true;\n}	    return false;\n}
+src	1	        if (!UniqueIDsOpen[c1].second)	        if (!UniqueIDsOpen[0].second)
+src	1	    for (long c1 = 0; c1 < UniqueIDsOpen.size(); c1++)	    for (long c1 = 0; c1 <= UniqueIDsOpen.size(); c1++)

@@ -1,0 +1,208 @@
+baseline SURVIVED
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A > 0 || (RenderZoom.X <= 0.0f &&
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if ((RenderZoom.X <= 0.0f && RenderZoom.Y <= 0.0f)
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0)
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f |
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 && (RenderZoom.X <= 0.0f &
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X < 0.0f &&
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f &
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X > 0.0f &&
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f &
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f))
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.Y <= 0.0f))
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.R <= 0 || (RenderZoom.X <= 0.0f &
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 1 || (RenderZoom.X <= 0.0f &
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RelativeRenderZoom.X <
+KILLED | if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f && RenderZoom.Y <= 0. -> if (RenderColour.A <= 0 || (RenderZoom.X <= 0.0f &
+KILLED | if (NoRenderNextFrame == 1) -> if (NoRenderNextFrame != 1)
+KILLED | if (NoRenderNextFrame == 1) -> if (NoRenderNextFrame != 0)
+KILLED | if (NoRenderNextFrame == 1) -> if (NoRenderNextFrame >= 1)
+KILLED | if (NoRenderNextFrame == 1) -> if (true)
+KILLED | if (NoRenderNextFrame == 1) -> if (false)
+KILLED |             if (p_handle)             {                 engine.ClearCh ->             if (!p_handle)             {          
+KILLED | engine.ClearChildPrimitive(*p_handle, (*pprimitive_index)++); -> engine.ClearChildPrimitive(*p_handle, *pprimitive_
+KILLED | engine.ClearChildPrimitive(*p_handle, (*pprimitive_index)++); -> engine.ClearChildPrimitive(*p_handle, ++(*pprimiti
+KILLED | engine.ClearChildPrimitive(*p_handle, (*pprimitive_index)++); -> engine.ClearChildPrimitive(Handle, (*pprimitive_in
+KILLED | engine.ClearChildPrimitive(*p_handle, (*pprimitive_index)++); -> (*pprimitive_index)++;
+KILLED | engine.ClearChildPrimitive(*p_handle, (*pprimitive_index)++); -> engine.ClearChildPrimitive(*p_handle, (*pprimitive
+KILLED |                 Handle.Clear();  ->                 /**/; 
+KILLED |             return;         }         else  ->             /**/;         }         else 
+KILLED |             NoRenderNextFrame = 1; ->             NoRenderNextFrame = 0;
+KILLED |             NoRenderNextFrame = 1; ->             /**/;
+KILLED |         NoRenderNextFrame = 0; ->         NoRenderNextFrame = 1;
+KILLED |         NoRenderNextFrame = 0; ->         /**/;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (Width != 0) ? Size.X : (float)Width;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = Size.X;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (float)Width;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (Width == 0) ? Size.X : (float)(long)Widt
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (Height == 0) ? Size.X : (float)Width;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (Width == 0) ? Size.X : (float)Height;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (Width == 0) ? Size.Y : (float)Width;
+KILLED | size.X = (Width == 0) ? Size.X : (float)Width; -> size.X = (Width == 0) ? RenderZoom.X : (float)Widt
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (Height != 0) ? Size.Y : (float)Height;
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = Size.Y;
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (float)Height;
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (Height == 0) ? Size.Y : (float)(long)Hei
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (Width == 0) ? Size.Y : (float)Height;
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (Height == 0) ? Size.Y : (float)Width;
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (Height == 0) ? Size.X : (float)Height;
+KILLED | size.Y = (Height == 0) ? Size.Y : (float)Height; -> size.Y = (Height == 0) ? RenderZoom.Y : (float)Hei
+KILLED | C2DVector position = RelativeRenderPosition; -> C2DVector position = RenderPosition;
+KILLED | C2DVector position = RelativeRenderPosition; -> C2DVector position = RelativeParentPosition;
+KILLED | C2DVector position = RelativeRenderPosition; -> C2DVector position(RelativeRenderPosition.Y, Relat
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X, size.Y * RelativeRenderZ
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RelativeRenderZoom.X, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RelativeRenderZoom.Y, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RelativeRenderZoom.X, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.Y * RelativeRenderZoom.X, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RelativeRenderZoom.X, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.Y * RelativeRenderZoom.Y, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RenderZoom.X, size.Y * 
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RelativeRenderZoom.X, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X + RelativeRenderZoom.X, s
+KILLED | C2DExtentsF range(size.X * RelativeRenderZoom.X, size.Y * RelativeRend -> C2DExtentsF range(size.X * RelativeRenderZoom.X, s
+KILLED | C2DBoxF clip_box(position, range); -> C2DBoxF clip_box(position, C2DExtentsF(range.Y, ra
+KILLED | C2DBoxF clip_box(position, range); -> C2DBoxF clip_box(position, C2DExtentsF(0.0f, 0.0f)
+KILLED | C2DBoxF clip_box(position, range); -> C2DBoxF clip_box(C2DVector(0.0f, 0.0f), range);
+KILLED | C2DBoxF clip_box(position, range); -> C2DBoxF clip_box(C2DVector(range.X, range.Y), C2DE
+KILLED | CRGBColour colour = RenderColour; -> CRGBColour colour = Colour;
+KILLED | CRGBColour colour = RenderColour; -> CRGBColour colour = ParentColour;
+KILLED | if (IsPositionIsCenter()) -> if (!IsPositionIsCenter())
+KILLED | if (IsPositionIsCenter()) -> if (IsPositionIsCenter(), true)
+KILLED | if (IsPositionIsCenter()) -> if (IsPositionIsCenter(), false)
+KILLED | if (IsPositionIsCenter()) -> if (IsIndependent())
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X + range.X * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X * 0.25f, posit
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X, position.Y - 
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.Y * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.Y - range.Y * 0.5f, positi
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X, position.Y - range.Y * 
+KILLED | C2DVector move(position.X - range.X * 0.5f, position.Y - range.Y * 0.5 -> C2DVector move(position.X - range.X * 0.5f, positi
+KILLED |         clip_box.Move(move);  ->         /**/; 
+KILLED |         clip_box.Move(move);  ->         clip_box.Move(position); 
+KILLED | clip_box.TLX = (float)GFFloatToLongNear(clip_box.TLX); -> /**/;
+KILLED | clip_box.TLX = (float)GFFloatToLongNear(clip_box.TLX); -> clip_box.TLX = (float)(long)(clip_box.TLX);
+KILLED | clip_box.TLX = (float)GFFloatToLongNear(clip_box.TLX); -> clip_box.TLX = (float)GFFloatToLongNear(clip_box.T
+KILLED | clip_box.TLX = (float)GFFloatToLongNear(clip_box.TLX); -> clip_box.TLX = (float)GFFloatToLongNear(clip_box.T
+KILLED | clip_box.TLY = (float)GFFloatToLongNear(clip_box.TLY); -> /**/;
+KILLED | clip_box.TLY = (float)GFFloatToLongNear(clip_box.TLY); -> clip_box.TLY = (float)(long)(clip_box.TLY);
+KILLED | clip_box.TLY = (float)GFFloatToLongNear(clip_box.TLY); -> clip_box.TLY = (float)GFFloatToLongNear(clip_box.T
+KILLED | clip_box.TLY = (float)GFFloatToLongNear(clip_box.TLY); -> clip_box.TLY = (float)GFFloatToLongNear(clip_box.T
+KILLED | clip_box.BRX = (float)GFFloatToLongNear(clip_box.BRX); -> /**/;
+KILLED | clip_box.BRX = (float)GFFloatToLongNear(clip_box.BRX); -> clip_box.BRX = (float)(long)(clip_box.BRX);
+KILLED | clip_box.BRX = (float)GFFloatToLongNear(clip_box.BRX); -> clip_box.BRX = (float)GFFloatToLongNear(clip_box.B
+KILLED | clip_box.BRX = (float)GFFloatToLongNear(clip_box.BRX); -> clip_box.BRX = (float)GFFloatToLongNear(clip_box.B
+KILLED | clip_box.BRY = (float)GFFloatToLongNear(clip_box.BRY); -> /**/;
+KILLED | clip_box.BRY = (float)GFFloatToLongNear(clip_box.BRY); -> clip_box.BRY = (float)(long)(clip_box.BRY);
+KILLED | clip_box.BRY = (float)GFFloatToLongNear(clip_box.BRY); -> clip_box.BRY = (float)GFFloatToLongNear(clip_box.B
+KILLED | clip_box.BRY = (float)GFFloatToLongNear(clip_box.BRY); -> clip_box.BRY = (float)GFFloatToLongNear(clip_box.B
+KILLED | bool is_independent = IsIndependent(); -> bool is_independent = !IsIndependent();
+KILLED | bool is_independent = IsIndependent(); -> bool is_independent = IsLayerIndependent();
+KILLED | bool is_independent = IsIndependent(); -> bool is_independent = (IsIndependent(), false);
+KILLED | bool is_layerindependent = IsLayerIndependent(); -> bool is_layerindependent = !IsLayerIndependent();
+KILLED | bool is_layerindependent = IsLayerIndependent(); -> bool is_layerindependent = IsIndependent();
+KILLED | bool is_layerindependent = IsLayerIndependent(); -> bool is_layerindependent = (IsLayerIndependent(), 
+KILLED |     bool is_independent = IsIndependent();     bool is_layerindependen ->     bool is_layerindependent = IsLayerIndependent(
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent || 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (is_independent && !
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent) ? 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_layerindependen
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | EEngine2DLayer render_layer = (!is_independent && !is_layerindependent -> EEngine2DLayer render_layer = (!is_independent && 
+KILLED | if (!PTexture.IsNull()) -> if (PTexture.IsNull())
+KILLED | if (!PTexture.IsNull()) -> if (false)
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, clip_box, EN
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTextur -> CEnginePrimitive2DSprite primitive(0, C2DBoxF(posi
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, EN
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, C2DBoxF(posi
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, GraphicI -> CEnginePrimitive2DSprite primitive(0, clip_box, re
+KILLED | if (p_handle && pprimitive_index) -> if (p_handle)
+KILLED | if (p_handle && pprimitive_index) -> if (pprimitive_index)
+KILLED | if (p_handle && pprimitive_index) -> if (p_handle || pprimitive_index)
+KILLED | if (p_handle && pprimitive_index) -> if (!(p_handle && pprimitive_index))
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(*p_handle, *pprimitive_in
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(*p_handle, ++(*pprimitive
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(*p_handle, (*pprimitive_i
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(Handle, (*pprimitive_inde
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> (*pprimitive_index)++;
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetPersistentPrimitive(*p_handle, primitive
+KILLED | engine.SetPersistentPrimitive(Handle, primitive, 0xc0); -> engine.SetPersistentPrimitive(Handle, primitive, 0
+KILLED | engine.SetPersistentPrimitive(Handle, primitive, 0xc0); -> /**/;
+KILLED | engine.SetPersistentPrimitive(Handle, primitive, 0xc0); -> engine.SetPersistentPrimitive(Handle, primitive, 0
+KILLED | if (p_handle && pprimitive_index) -> if (p_handle)
+KILLED | if (p_handle && pprimitive_index) -> if (pprimitive_index)
+KILLED | if (p_handle && pprimitive_index) -> if (p_handle || pprimitive_index)
+KILLED | if (p_handle && pprimitive_index) -> if (!(p_handle && pprimitive_index))
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(*p_handle, *pprimitive_in
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(*p_handle, ++(*pprimitive
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(*p_handle, (*pprimitive_i
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetChildPrimitive(Handle, (*pprimitive_inde
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> (*pprimitive_index)++;
+KILLED | engine.SetChildPrimitive(*p_handle, (*pprimitive_index)++, primitive,  -> engine.SetPersistentPrimitive(*p_handle, primitive
+KILLED | engine.SetPersistentPrimitive(Handle, primitive, 0xc0); -> engine.SetPersistentPrimitive(Handle, primitive, 0
+KILLED | engine.SetPersistentPrimitive(Handle, primitive, 0xc0); -> /**/;
+KILLED | engine.SetPersistentPrimitive(Handle, primitive, 0xc0); -> engine.SetPersistentPrimitive(Handle, primitive, 0
+KILLED | if (GraphicIndex > 0) -> if (GraphicIndex > 1)
+KILLED | if (GraphicIndex > 0) -> if (true)
+KILLED | if (GraphicIndex > 0) -> if (false)
+KILLED | const CGraphicInfoFrame* pinfo = CManager::GetInstance()->GetGraphicsB -> const CGraphicInfoFrame* pinfo = CManager::GetInst
+KILLED | const CGraphicInfoFrame* pinfo = CManager::GetInstance()->GetGraphicsB -> const CGraphicInfoFrame* pinfo = CManager::GetInst
+KILLED | const CGraphicInfoFrame* pinfo = CManager::GetInstance()->GetGraphicsB -> const CGraphicInfoFrame* pinfo = CManager::GetInst
+KILLED | pinfo->BeginLoading(0, 0x10); -> /**/;
+KILLED | pinfo->BeginLoading(0, 0x10); -> pinfo->BeginLoading(0, 0x11);
+KILLED | pinfo->BeginLoading(0, 0x10); -> pinfo->BeginLoading(1, 0x10);
+KILLED | pinfo->BeginLoading(0, 0x10); -> pinfo->BeginLoading(0x10, 0);
+KILLED |             pinfo->BeginLoading(0, 0x10);             pinfo->GetFrame( ->             pinfo->GetFrame(frame, 0, 0x11);      
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> /**/;
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> pinfo->GetFrame(frame, 0, 0x10);
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> pinfo->GetFrame(frame, 0, 0x1);
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> pinfo->GetFrame(frame, 0, 0x15);
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> pinfo->GetFrame(frame, 0, 0x19);
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> pinfo->GetFrame(frame, 1, 0x11);
+KILLED | pinfo->GetFrame(frame, 0, 0x11); -> pinfo->GetFrame(frame, 0, 0x11); pinfo->GetFrame(f
+KILLED | [engine/C2DBoxF.h]     BRX += pos.X - TLX; ->     BRX += pos.X + TLX;
+KILLED | [engine/C2DBoxF.h]     BRX += pos.X - TLX; ->     BRX = pos.X - TLX;
+KILLED | [engine/C2DBoxF.h]     BRY += pos.Y - TLY; ->     BRY += pos.X - TLY;
+KILLED | [engine/C2DBoxF.h]     BRY += pos.Y - TLY; ->     /**/;
+KILLED | [engine/C2DBoxF.h]     TLX = pos.X;     TLY = pos.Y; } #endif #if defined(FABLE ->     TLX = pos.Y;     TLY = pos.Y; } #endif #if def
+KILLED | [engine/C2DBoxF.h]     TLX = pos.X;     TLY = pos.Y; } #endif #if defined(FABLE ->     TLX = pos.X; } #endif #if defined(FABLE_RETAIL
+KILLED | [engine/CEnginePrimitive2DSprite.h] BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Fla -> BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(
+KILLED | [engine/CEnginePrimitive2DSprite.h] BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Fla -> BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(
+KILLED | [engine/CEnginePrimitive2DSprite.h] BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Fla -> BlendMode(blend),Colour(b,g,r,alpha),ClipBoxIsPos(
+SURVIVED | [engine/CEnginePrimitive2DSprite.h] BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Fla -> BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(
+KILLED | [engine/CEnginePrimitive2DSprite.h] :CEnginePrimitive((EEnginePrimitiveType)34,id,interpolation) -> :CEnginePrimitive((EEnginePrimitiveType)34,id,inte

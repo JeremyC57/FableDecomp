@@ -1,0 +1,149 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CMatrix3x4.h	2026-11-19 17:56:30.504709131 +0000
++++ hdr/engine/CMatrix3x4.h	2026-11-20 06:25:26.182602613 +0000
+@@ -12,6 +12,10 @@
+ // (0x01D129F0), inline in retail; the bodies (in-place copy to xx/yy/zz locals, X as one expression, Y / Z accumulated) are the
+ // forms 0x00AE0070 ApplyTransform expands (Codex pass 12, FableWin locals xx/yy/zz).
+ #include "engine/C3DVector.h"
++#ifdef FABLE_RETAIL_CMATRIX3X4_PREROTATE
++#include "engine/GFSin.h"
++#include "engine/GFCos.h"
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
+ #include "engine/CPlane.h"
+ #endif
+@@ -142,6 +146,86 @@
+     // (thiscall, out of line at 0x00A55F90; the landed C3DVector::Rotate 0x00A13C60 calls it). A declaration only: no layout change.
+     void SetFromVectorAndAngle(const C3DVector& axis,float angle);         // 0x00A55F90
+ #endif
++#ifdef FABLE_RETAIL_CMATRIX3X4_PREROTATE
++    // Retail opt-in (hand3c3, row 0x00B16410 NParticleEngine::CPSCOrbit::COrbitState::Update): FableWin.pdb / Ego_d.pdb
++    // ?PreXRotate@CMatrix3x4@@QAEXM@Z (FableWin 0x02F50A10), ?PreYRotate@CMatrix3x4@@QAEXM@Z (0x02F50B70) and
++    // ?PreZRotate@CMatrix3x4@@QAEXM@Z (0x02F50CD0), inline in retail (no Fable.exe copy; expanded at 0x00B168BA / 0x00B16933 /
++    // 0x00B169A6). The angle is in revolutions (GFSin / GFCos scale by the double TWO_PI: `fmul qword ptr [124F2B8h] ; fcos ; fsin`).
++    // Ego_d.pdb: parameter `const float angle`, locals `const float sinA`, `float tmp`, `const float cosA`; line tables 513..535 /
++    // 540..562 / 567..589 = two 15-byte lines (the GFSin / GFCos calls), then per column five lines of 12 / 15 / 21 / 15 / 15 bytes:
++    // tmp = a * sinA; a *= cosA; a -+= b * sinA; b *= cosA; b +-= tmp. FITTED: cosA is declared before sinA (retail computes
++    // `fcos` first and keeps both on the x87 stack; with sinA first VC7.1 spills the cosine to memory, 1726 bytes for the 1671-byte
++    // row). No layout change.
++    void PreXRotate(const float angle) {
++        const float cosA = GFCos(angle);
++        const float sinA = GFSin(angle);
++        float tmp;
++
++        tmp = E21 * sinA;
++        E21 *= cosA;
++        E21 -= E31 * sinA;
++        E31 *= cosA;
++        E31 += tmp;
++
++        tmp = E22 * sinA;
++        E22 *= cosA;
++        E22 -= E32 * sinA;
++        E32 *= cosA;
++        E32 += tmp;
++
++        tmp = E23 * sinA;
++        E23 *= cosA;
++        E23 -= E33 * sinA;
++        E33 *= cosA;
++        E33 += tmp;
++    }
++    void PreYRotate(const float angle) {
++        const float cosA = GFCos(angle);
++        const float sinA = GFSin(angle);
++        float tmp;
++
++        tmp = E11 * sinA;
++        E11 *= cosA;
++        E11 += E31 * sinA;
++        E31 *= cosA;
++        E31 -= tmp;
++
++        tmp = E12 * sinA;
++        E12 *= cosA;
++        E12 += E32 * sinA;
++        E32 *= cosA;
++        E32 -= tmp;
++
++        tmp = E13 * sinA;
++        E13 *= cosA;
++        E13 += E33 * sinA;
++        E33 *= cosA;
++        E33 -= tmp;
++    }
++    void PreZRotate(const float angle) {
++        const float cosA = GFCos(angle);
++        const float sinA = GFSin(angle);
++        float tmp;
++
++        tmp = E11 * sinA;
++        E11 *= cosA;
++        E11 -= E21 * sinA;
++        E21 *= cosA;
++        E21 += tmp;
++
++        tmp = E12 * sinA;
++        E12 *= cosA;
++        E12 -= E22 * sinA;
++        E22 *= cosA;
++        E22 += tmp;
++
++        tmp = E13 * sinA;
++        E13 *= cosA;
++        E13 -= E23 * sinA;
++        E23 *= cosA;
++        E23 += tmp;
++    }
++#endif
+ #ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY
+     // Retail opt-in (chunk 895, row 0x00BEBAA0 CEngineInternalPrimitiveMeshBase::CalcObjectMatrix): Ego_r.pdb / FableWin.pdb
+     // ?SetTranslateOnly@CMatrix3x4@@QAEXABVC3DVector@@@Z, inline in retail (no out-of-line copy: the row stores the translation
+--- /home/user/FableDecomp/rebuild/include/engine/C2DVector.h	2026-11-19 17:56:30.494655121 +0000
++++ hdr/engine/C2DVector.h	2026-11-20 06:08:34.166333111 +0000
+@@ -34,6 +34,12 @@
+ #endif
+     C2DVector(float x,float y) : X(x),Y(y) { }
+     C2DVector(const C2DVector& p) : X(p.X),Y(p.Y) { }
++#ifdef FABLE_RETAIL_C2DVECTOR_CLEAR
++    // Nested opt-in (hand3c3, row 0x00B16410 NParticleEngine::CPSCOrbit::COrbitState::Update): FableWin.pdb / Ego_d.pdb
++    // ?Clear@C2DVector@@QAEXXZ (FableWin 0x01F72120), inline in retail (no Fable.exe copy). Ego_d: one 26-byte line = two separate
++    // zero stores (`X=Y=0.0f` would be 24; C3DVector::Clear's line is 34 = three stores).
++    void Clear() { X=0.0f; Y=0.0f; }
++#endif
+ #ifdef FABLE_RETAIL_C2DVECTOR_INITIALISE
+     // Nested opt-in (chunk 768, row 0x00A76770 CNavQuadTreeNode::GetLeafNodeAt): FableWin.pdb ?Initialise@C2DVector@@QAEXMM@Z (inline in
+     // retail: the arguments are built right to left, Y first, then X and Y are stored).
+--- /dev/null	2026-11-19 22:44:36.873458147 +0000
++++ hdr/engine/GFFloatAbs.h	2026-11-20 06:36:59.619538145 +0000
+@@ -0,0 +1,15 @@
++#ifndef FABLE_ENGINE_GFFLOATABS_H
++#define FABLE_ENGINE_GFFLOATABS_H
++#include "fable_compiler.h"
++// FableWin.pdb / Ego_d.pdb ?GFFloatAbs@@YIMM@Z (FableWin 0x01F43D00), inline in retail: the sign bit of the by-value argument
++// cleared in place (`mov eax,[n] ; and eax,7FFFFFFFh ; mov [n],eax ; fld [n]`; e.g. 0x00B1646A..0x00B1647C in
++// NParticleEngine::CPSCOrbit::COrbitState::Update). Ego_d.pdb: parameter `n`, line table 323..326 = 3 / 11 / 3 / 4 bytes
++// (an 11-byte and-assign statement, then a 3-byte `return n;`). This is the debug builds' body, the sign-bit mask, NOT
++// `(float)fabs(n)` (that would be one `fld ; fabs` statement, and retail's expansions have no `fabs`); the b7 audit read the same
++// mask body in both debug PDBs' builds.
++inline float FABLE_FASTCALL GFFloatAbs(float n)
++{
++    *(unsigned long*)&n &= 0x7fffffff;
++    return n;
++}
++#endif
+--- /dev/null	2026-11-19 22:44:36.873458147 +0000
++++ hdr/engine/GFIsNonZero.h	2026-11-20 06:08:34.171320879 +0000
+@@ -0,0 +1,13 @@
++#ifndef FABLE_ENGINE_GFISNONZERO_H
++#define FABLE_ENGINE_GFISNONZERO_H
++#include "engine/GFFloatAbs.h"
++// FableWin.pdb / Ego_d.pdb ?GFIsNonZero@@YI_NM@Z (FableWin 0x02F50800), inline in retail: GFFloatAbs(n) against
++// ?DELTA_NOTIONAL_ZERO@@3MB 0x0129BA3C (1e-4f) (`fld [n] ; fcomp [129BA3Ch] ; fnstsw ax ; test ah,41h`; e.g. 0x00B1647C in
++// NParticleEngine::CPSCOrbit::COrbitState::Update, whose Ego_d call lines are 26 bytes = one bool call and a test).
++// Ego_d.pdb: parameter `n`, line table 330..332 = 4 / 46 / 6 bytes (one return statement).
++extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (1e-4f)
++inline bool FABLE_FASTCALL GFIsNonZero(float n)
++{
++    return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;
++}
++#endif

@@ -1,0 +1,6 @@
+# audit mutants (2026-11-19)
+src	1	C2DExtentsF(MapWidth, MapHeight)	C2DExtentsF(MapHeight, MapWidth)
+src	1	(neighbour_map_node->GetRegionID() >> 16)	(my_map_node->GetRegionID() >> 16)
+src	1	const CANavQuadTreeNode* my_map_node = GetNodeAt(	const CANavQuadTreeNode* my_map_node = nav_manager.GetNodeAt(
+src	1	current_y < quad_tree_area.BRY;	current_y < quad_tree_area.BRX - 0.25f;
+src	1	current_y += 0.5f;	current_y += 0.5f; current_y += 0.0f;

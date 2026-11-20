@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00a75b60   OUTSIDE_MANIFEST -      CNavNavigableLeafNode::ForceRegionTo
+00a773e0   MATCH            PASS   CNavSwitchableLeafNode::IsEveryUniqueIDOpen
+00a78060   RELOCATION_MATCH PASS   CNavRegion::RemoveConnectionToRegion
+00a780b0   RELOCATION_MATCH PASS   CNavConnectorNode::~CNavConnectorNode
+00a786c0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCNavRegionConnection@@@@SIXPAX@Z -> 00a7c0a0 labelled '_global::OperatorDelete_thunk_00a7c0a0'
+00a786c0   RELOCATION_MATCH PASS   CNavRegion::SetAsConnectedToRegion
+00a78800   RELOCATION_MATCH PASS   CNavSwitchableLeafNode::SetAsBlocked
+00a78a90   RELOCATION_MATCH PASS   CNavConnectorNode::CNavConnectorNode
+00a793d0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCNavConnectorNode@@@@SIXPAX@Z -> 00a82fa0 labelled '_global::DeleteObject_00a82fa0'
+00a793d0   RELOCATION_MATCH PASS   ConnectHorizantalMapEdge
+00a79680   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCNavConnectorNode@@@@SIXPAX@Z -> 00a82fa0 labelled '_global::DeleteObject_00a82fa0'
+00a79680   RELOCATION_MATCH PASS   ConnectVerticalMapEdge
+
+WINS: 8
+  00a773e0 MATCH CNavSwitchableLeafNode::?IsEveryUniqueIDOpen@CNavSwitchableLeafNode@@ABE_NXZ
+  00a78060 RELOCATION_MATCH CNavRegion::?RemoveConnectionToRegion@CNavRegion@@QAEXAAV1@@Z
+  00a780b0 RELOCATION_MATCH CNavConnectorNode::??1CNavConnectorNode@@QAE@XZ
+  00a786c0 RELOCATION_MATCH CNavRegion::?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z
+  00a78800 RELOCATION_MATCH CNavSwitchableLeafNode::?SetAsBlocked@CNavSwitchableLeafNode@@QAEX_K_N@Z
+  00a78a90 RELOCATION_MATCH CNavConnectorNode::??0CNavConnectorNode@@QAE@PBVCANavQuadTreeNode@@0@Z
+  00a793d0 RELOCATION_MATCH CNavQuadTree::?ConnectHorizantalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z
+  00a79680 RELOCATION_MATCH CNavQuadTree::?ConnectVerticalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z

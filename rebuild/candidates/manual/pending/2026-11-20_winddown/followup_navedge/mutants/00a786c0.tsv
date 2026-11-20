@@ -1,0 +1,9 @@
+# row-source mutants (mut.py: the test links the mutated row object)
+src	1	            pconnection->AddConnection();\n            return;	            return;
+src	1	            pconnection->AddConnection();\n            return;	            pconnection->AddConnection();
+src	1	new CNavRegionConnection(*this, region)	new CNavRegionConnection(region, *this)
+src	1	    region.AddConnectionToConnectionList(Connections.back());\n	
+src	1	region.AddConnectionToConnectionList(Connections.back());	AddConnectionToConnectionList(Connections.back());
+src	1	NumberOfConnections(1)	NumberOfConnections(0)
+src	1	GetRegionConnectedTo(*this) == &region) {	GetRegionConnectedTo(*this) != &region) {
+src	1	        AddConnectionToConnectionList(connection);\n	        region.AddConnectionToConnectionList(connection);\n
