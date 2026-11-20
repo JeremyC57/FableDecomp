@@ -42,6 +42,33 @@ bool FABLE_FASTCALL ConstructString(CWideString&,long,long,long);
 bool FABLE_FASTCALL ConstructString(CWideString& text, const std::vector<CWideString>& args);   // 0x009C7C20
 #endif
 class CDataBankTextEntry;
+#if defined(FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY) && defined(FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT)
+// Nested opt-in (p25N, row 0x009C9170 CDataBank::Validate and its TU-mates GetPTextEntry 0x009C9070 / BeginLoadingText 0x009C8630 /
+// GetTextInfo 0x009C7D00 / IsLoaded 0x009C7BE0 / GetText 0x009C7A40): CTextEntry is a CResource like CGroupEntry (ghidra_out/rtti_bases.tsv:
+// .?AVCTextEntry@NGameText@@ : CResource@0, CIVCountedPointeeBase@0;
+// struct_layouts_egor.tsv CTextEntry, 72 bytes: 28 bytes of base, SpeechBank +28, Narrator +32, SoundName +36, Text +40 (CWideString),
+// Tags +44 (CArray<CTextTag>, 16 bytes in Ego_r, 12 in retail), PFileData, Owner). Retail offsets: Text +0x28 (GetText 0x009C7A40
+// `add ecx,28h`; Validate 0x009C9217 `lea edx,[ebx+28h]`), PFileData +0x38 (GetPTextEntry 0x009C9070, IsLoaded 0x009C7BE0), Owner +0x40.
+// The text entry's TouchResource (FableWin.pdb ?TouchResource@CResource@@QAEXXZ, inline; 0x009C9119..0x009C914C) is CResource's.
+// Needs FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY.
+}
+#include "engine/CResource.h"
+namespace NGameText {
+class CTextEntry : public CResource {
+public:
+    CWideString GetText() const;                                                   // 0x009C7A40
+    CCharString SpeechBank;                                                        // +0x1C
+    CCharString Narrator;                                                          // +0x20
+    CCharString SoundName;                                                         // +0x24
+    CWideString Text;                                                              // +0x28
+    unsigned char Tags[0x38 - 0x2c];                                               // +0x2C CArray<CTextTag>
+    CCountedPointer<CBankFileAsyncData> PFileData;                                 // +0x38
+    CDataBankTextEntry* Owner;                                                     // +0x40
+};
+FABLE_STATIC_ASSERT_AT(68, offsetof(CTextEntry, Text) == 0x28);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CTextEntry, PFileData) == 0x38);
+FABLE_STATIC_ASSERT_AT(70, sizeof(CTextEntry) == 0x44);
+#else
 class CTextEntry : public CIVCountedPointeeBase {
 public:
     CWideString GetText() const;                                                   // 0x009C7A40
@@ -60,6 +87,7 @@ public:
     CCharString SoundName;                                                         // +0x24
 #endif
 };
+#endif
 #ifdef FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
 // Opt-in (row 0x009C9280): Ego_r.pdb CDataBankEntry (an empty tag, 1 byte) and CDataBankTextEntry (8 bytes: PText +0, NarratorIndex +4);
 // inline ?GetNarratorIndex@CDataBankTextEntry@NGameText@@QBEJXZ is named only by FableWin.pdb (fablewin_pdb_names.tsv /
@@ -71,6 +99,15 @@ public:
     long NarratorIndex;                                                            // +0x04
     long GetNarratorIndex() const { return NarratorIndex; }
     bool IsLoaded() const;                                                         // 0x009C7BE0
+#ifdef FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY
+    // Nested opt-in (p25N, row 0x009C9170): Ego_r.pdb 0x00B16820 / 0x00B17870 private const ?BeginLoading@CDataBankTextEntry@NGameText@@ABEXKAAVCDataBank@2@@Z
+    // (0x009C8340) and ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (0x009C8FB0), as CDataBankGroupEntry's pair; CDataBank calls them.
+    friend class CDataBank;
+private:
+    void BeginLoading(unsigned long id, CDataBank& bank) const;                    // 0x009C8340
+    void BuildText() const;                                                        // 0x009C8FB0
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
 // Nested opt-in (agentNF69, row 0x009C8890 GetPGroupEntry): Ego_r.pdb CDataBankGroupEntry (4 bytes: PGroup, a CIVCountedPointer<CGroupEntry>)
@@ -184,6 +221,9 @@ public:
     const CDataBankTextEntry* GetTextInfo(unsigned long textId) const;             // 0x009C7D00
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long textId, bool a) const;   // 0x009C9070
     const CWideString GetTextBySymbol(const CCharString& symbol) const;            // 0x009C95E0
+#ifdef FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY
+    void Validate();                                                               // 0x009C9170 ?Validate@CDataBank@NGameText@@QAEXXZ (both PDBs)
+#endif
 };
 #ifdef FABLE_RETAIL_NGAMETEXT_CONSTRUCTSTRING
 // Retail opt-in (chunk 890, row 0x00498490 CProgressDisplay::DrawRetailDisplay): Ego_r.pdb 0x00B156F0

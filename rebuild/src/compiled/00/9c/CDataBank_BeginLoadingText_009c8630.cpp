@@ -1,41 +1,48 @@
-// CDataBank::BeginLoadingText(unsigned long index) -- start the asynchronous load of a text entry: only when the bank entry's data type is the text type (0) and the entry record exists
-// Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8630, length 42 bytes.
-// Callees: CBankFile::GetEntryDataType(unsigned long) @ 0x009CC210 (on `this`), CDataBankTextEntry::BeginLoading(unsigned long, CDataBank*) @ 0x009C8340
-// (ecx = the entry record, arguments pushed right to left: the bank, then the index).
-// Shape: the index stays in edi across the type call and indexes the Entries table (first word of the CArray at
-// +0x1e0 in retail, PDB +0x254); `test eax,eax ; jne` is the type-0 test, then the null test of the record and
-// the two pushes `push esi ; push edi`. The group sibling @ 0x009C8220 tests for type 1 and calls 0x009C80F0.
-struct CDataBank;
+// NGameText::CDataBank::BeginLoadingText(unsigned long entry_index) const -- start the asynchronous load of a text entry: only when the bank entry's data type is the text type (0) and the entry record exists
+// Leaf: ?BeginLoadingText@CDataBank@NGameText@@QBEXK@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8630, length 43 bytes (to the `ret 4` ending at 0x009C865B; the old line said 42).
+// Identity: Ego_r.pdb 0x00B16C80 / FableWin.pdb 0x02F70FE0 ?BeginLoadingText@CDataBank@NGameText@@QBEXK@Z (const, namespace NGameText; the
+//   landed file defined the global non-const ?BeginLoadingText@CDataBank@@QAEXK@Z, NAME_FIXES.tsv). Callees: CBankFile::GetEntryDataType
+//   0x009CC210 (through GetTextInfo, expanded) and the private const ?BeginLoading@CDataBankTextEntry@NGameText@@ABEXKAAVCDataBank@2@@Z
+//   0x009C8340 (Ego_r.pdb 0x00B16820; ecx = the record, pushes: the bank, then the index).
+// Re-port (p25N, 2026-11-20): onto engine/NGameText_CDataBank.h (overlay opt-in FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY declares BeginLoading /
+//   BuildText as CDataBankGroupEntry's pair is declared), as the landed sibling BeginLoadingGroup 0x009C8220 is written. Was a local model.
+// Same-TU body: GetTextInfo, a verbatim copy of the row 0x009C7D00; without it the call is not expanded: DIFFER(32v43).
+// Text: Ego_d.pdb (databank.cpp, file id 432) locals entry_index / info; lines 406 / 407 / 409 = 15 / 6 / 16 bytes at /Od, this text the same.
+// Define block: the databank.cpp rows' common block (0x009C9170 Validate and its TU-mates).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER
+#define FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#define FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+#define FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+#define FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+#include "fable_string.h"
+#include "engine/NGameText_CDataBank.h"
 
-struct CDataBankTextEntry {
-    void BeginLoading(unsigned long index, CDataBank* bank);    // 0x009C8340
-};
-
-#include "engine/CArray.h"
-
-class CBankFile
+namespace NGameText {
+// Fidelity: same-TU strong definition of 0x009C7D00 (retail TU-mate)
+const CDataBankTextEntry* CDataBank::GetTextInfo(unsigned long index) const
 {
-public:
-    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
-};
-class CBankFileAsync : public CBankFile
-{
-public:
-};
-
-struct CDataBank : public CBankFileAsync {                      // CBankFile base (0x90 bytes in retail) + the text-bank state
-    void*                       __vftable;               // +0x000
-    unsigned char               _bankFile[0x1e0 - 4];    // +0x004 .. +0x1e0
-    CArray<CDataBankTextEntry*> Entries;                 // +0x1e0 (PDB name; CDataBankEntry* in the PDB)
-    void BeginLoadingText(unsigned long index);
-};
-
-void CDataBank::BeginLoadingText(unsigned long index)
-{
-    if (GetEntryDataType(index) == 0) {
-        CDataBankTextEntry* entry = Entries[index];
-        if (entry)
-            entry->BeginLoading(index, this);
+    if (GetEntryDataType(index) == 0)
+    {
+        return static_cast<const CDataBankTextEntry*>(Entries[index]);
     }
+    return 0;
+}
+
+void CDataBank::BeginLoadingText(unsigned long entry_index) const
+{
+    const CDataBankTextEntry* info = GetTextInfo(entry_index);
+    if (info)
+    {
+        info->BeginLoading(entry_index, const_cast<CDataBank&>(*this));
+    }
+}
 }

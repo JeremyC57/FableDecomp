@@ -1,182 +1,96 @@
-// NGameText::CDataBank::GetPTextEntry(unsigned long,bool) const, retail 0x009C9070.
+// NGameText::CDataBank::GetPTextEntry(unsigned long index, bool wait) const -- the text entry a bank index names: flush the pending bank reads; when the entry is loaded (or the caller waits) build it (a first load: begin loading, build, trim the resource cache; or a finished read), touch it in its resource list and return a counted pointer to it; otherwise start loading it and return null
 // Leaf: ?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z
-// Recovered PDB identity egor31452/debug 0x00B17AB0.
-// NF174 (q11869): the callee 0x009C8FB0 is the private const ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (Ego_r.pdb 0x00B17870 +
-//   FableWin.pdb 0x02F747F0); the local declaration moves under private: with CDataBank as friend (was the public non-const QAEXXZ). The old authored assembly
-// bootstrap remains untouched; this is the independent pure C++03 candidate.
-#include "fable_compiler.h"
-#define CResource CResourcePdb
-#include "engine/CResource.h"
-#undef CResource
-#define CResourceList CResourceListPdb
-#include "engine/CResourceList.h"
-#undef CResourceList
-#define CBankFile CBankFilePdb
-#include "engine/CBankFile.h"
-#undef CBankFile
-#include <stddef.h>
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009C9070, 245 bytes, thiscall (`ret 0Ch`: hidden result, index, wait).
+// Identity: Ego_r.pdb 0x00B17AB0 / FableWin.pdb carry the Leaf symbol. Callees (both PDBs' spellings): CBankFile::GetEntryDataType 0x009CC210,
+//   CBankFileAsync::AsyncUpdatePending 0x009D68B0, CBankFileAsyncData::IsFinished 0x009D54E0, CDataBank::BeginLoadingText 0x009C8630,
+//   CDataBankTextEntry::BeginLoading 0x009C8340 / BuildText 0x009C8FB0 (private const, ABEX..), CResourceList::MakeFreeSpace 0x009FC4F0,
+//   CResource::ListRemove 0x009FBFB0 / ListInsert 0x009FBF90.
+// Re-port (p25N, 2026-11-20): onto engine/NGameText_CDataBank.h (overlay opt-in FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY: CTextEntry : CResource,
+//   ghidra_out/rtti_bases.tsv; PFileData +0x38) and Ego_d.pdb's text, for the same-TU copy in 0x009C9170 Validate. Was a local model of
+//   CResource / CResourceList / CIVCountedPointer / CBankFile / CDataBank under renaming macros (an "independent pure C++03 candidate").
+// Same-TU bodies (verbatim copies): IsLoaded 0x009C7BE0, GetTextInfo 0x009C7D00 (both expanded: 0x009C9077.., 0x009C9097..) and
+//   BeginLoadingText 0x009C8630 (called on the not-loaded path, expanded on the first-load path 0x009C90D5..0x009C90F0). Each one
+//   declaration-only: DIFFER(232v245) / (236v245) / (221v245).
+// Text oracle: Ego_d.pdb (databank.cpp, file id 432) locals this, index, wait, text_info; 16 line records, lines 162..187. This text gives
+//   the same records in the same order: 15 / 10 / 8 / 23 / 15 / 12 / 8 / 16 / 27 / 8 / 15 / 17 / 12 / 11 bytes at /Od against Ego_d's
+//   15 / 10 / 8 / 27 / 15 / 12 / 8 / 25 / 22 / 8 / 15 / 26 / 12 / 20 (Ego_d is a VC10 build: the counted-pointer and base-adjust lines
+//   differ). The 27-byte line 167 is the IsLoaded() call (the expanded expression is one 94-byte line); the not-loaded BeginLoadingText
+//   is the fall-through after the loaded block (line 183), and there is no `else` record.
+// Define block: the databank.cpp rows' common block (0x009C9170 Validate and its TU-mates). Release spelling: the TU-mate 0x009C9280's
+//   FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES + FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER (this row expands no release).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER
+#define FABLE_RETAIL_NGAMETEXT_DATABANK_GROUPTEXT
+#define FABLE_RETAIL_NGAMETEXT_GETPGROUPENTRY
+#define FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#define FABLE_RETAIL_CRESOURCE_TOUCHRESOURCE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CRESOURCELIST_MAKEFREESPACE
+#define FABLE_RETAIL_C3DANIMATIONINFO_BUILD
+#include "fable_string.h"
+#include "engine/NGameText_CDataBank.h"
 
-class CResource;
-class CResourceList;
-class CResource { public:
-    virtual ~CResource() {}
-    mutable long References;                  // +4, original CIV reference count
-    CResourceList* ResourceList;              // +8
-    CResource* PrevResource;                  // +c
-    CResource* NextResource;                  // +10
-    unsigned long ResourceSize;                // +14
-    unsigned long LastUsedFrame;               // +18
-    long Release() const { return --References; }
-    void AddRef() const { ++References; }
-    virtual void Delete() const { delete const_cast<CResource*>(this); }
-private:
-    void ListRemove();                        // 0x009FBFB0
-public:
-private:
-    void ListInsert(CResource*a0, CResource*a1);  // 0x009FBF90
-public:
-    FABLE_FORCEINLINE void SetAsMRU();
-};
-class CResourceList { public:
-    void* VTable;                              // +0
-    CResource Head;                            // +4, genuine 0x1c-byte resource
-    unsigned long ResourceCount;               // +20
-    long AllocatedMemory;                      // +24
-    long MaximumMemory;                        // +28
-    unsigned long CurrentFrame;                // +2c
-    unsigned long DebugStatsFrame;             // +30
-    unsigned long UnloadDelay;                 // +34
-    unsigned long UnloadedThisFrame;           // +38
-    bool MakeFreeSpace(unsigned long);         // 0x009FC4F0
-};
-FABLE_STATIC_ASSERT(sizeof(CResource)==0x1c);
-FABLE_STATIC_ASSERT(sizeof(CResourceList)==0x3c);
-FABLE_STATIC_ASSERT(offsetof(CResourceList,Head)==0x04);
-FABLE_STATIC_ASSERT(offsetof(CResourceList,ResourceCount)==0x20);
-FABLE_STATIC_ASSERT(offsetof(CResourceList,CurrentFrame)==0x2c);
-FABLE_STATIC_ASSERT(offsetof(CResourceList,UnloadedThisFrame)==0x38);
-FABLE_STATIC_ASSERT(sizeof(CResourcePdb)==sizeof(CResource));
-FABLE_STATIC_ASSERT(sizeof(CResourceListPdb)==sizeof(CResourceList));
-FABLE_FORCEINLINE void CResource::SetAsMRU()
-{
-    if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
-        ListRemove();
-        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
-        LastUsedFrame=ResourceList->CurrentFrame;
-    }
-}
-class CBankFileAsyncData { public:
-    bool IsFinished() const;                 // 0x009D54E0
-};
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall *Destroy)(void*);
-    void* Object;
-};
-template<class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-};
 namespace NGameText {
-class CTextEntry : public CResource { public:
-    unsigned char _pad1c[0x38 - 0x1c];
-    CCountedPointer<CBankFileAsyncData> PFileData; // +38, 8-byte holder
-    void* Owner;                              // +40
-};
-}
-FABLE_STATIC_ASSERT(offsetof(NGameText::CTextEntry,PFileData)==0x38);
-FABLE_STATIC_ASSERT(offsetof(NGameText::CTextEntry,Owner)==0x40);
-FABLE_STATIC_ASSERT(sizeof(NGameText::CTextEntry)==0x44);
-struct CCountedInfo {
-    long RefCount;
-    void (__fastcall *Destroy)(void*);
-    void* Object;
-};
-template<class T> class CIVCountedPointer { public:
-    T* Object;
-    CIVCountedPointer() : Object(0) {}
-    explicit CIVCountedPointer(T* object) : Object(object)
-    { if (Object) ++((CResource*)Object)->References; }
-    CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
-    { if (Object) ++((CResource*)Object)->References; }
-    ~CIVCountedPointer()
+// Fidelity: same-TU strong definition of 0x009C7BE0 (retail TU-mate)
+bool CDataBankTextEntry::IsLoaded() const
+{
+    if (!PText.IsNull())
     {
-        if (Object) {
-            CResource* resource=(CResource*)Object;
-            if (resource->Release()==0) resource->Delete();
-            Object=0;
+        if (PText->PFileData.IsNull() || PText->PFileData->IsFinished())
+        {
+            return true;
         }
     }
-};
-namespace NGameText { class CDataBank; }
-namespace NGameText {
-class CDataBankTextEntry { public:
-    ::CIVCountedPointer<CTextEntry> PText;    // +0
-    long NarratorIndex;                       // +4
-    void BeginLoading(unsigned long, NGameText::CDataBank&); // 0x009C8340
-private:
-    friend class CDataBank;                   // the PDB members are private; CDataBank calls them (as CDataBankGroupEntry)
-    void BuildText() const;                   // 0x009C8FB0 ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (NF174 q11869)
-};
+    return false;
 }
-struct CPointerVector {
-    NGameText::CDataBankTextEntry** First;
-    NGameText::CDataBankTextEntry** Last;
-    NGameText::CDataBankTextEntry** End;
-    NGameText::CDataBankTextEntry* operator[](unsigned long i) const { return First[i]; }
-};
-class CBankFile { public:
-    virtual ~CBankFile() {}
-    unsigned long GetEntryDataType(unsigned long) const; // 0x009CC210
-};
-class CBankFileAsync : public CBankFile { public:
-    void AsyncUpdatePending();                // 0x009D68B0
-};
-namespace NGameText {
-class CDataBank : public CBankFileAsync { public:
-    // CBankFilePdb is 0x174 in debug; the retail bank base contract places
-    // this row's resource list at +0x168, so retain a documented retail
-    // overlay instead of inheriting the debug container extent.
-    unsigned char _pad04[0x168 - 4];
-    CResourceList ResourceList;               // +168
-    unsigned char _pad1a4[0x3c];
-    CPointerVector Entries;                   // +1e0
-    void BeginLoadingText(unsigned long);      // 0x009C8630
-    ::CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long, bool) const;
-};
 
-};
-
-using NGameText::CDataBankTextEntry;
-using NGameText::CTextEntry;
-::CIVCountedPointer<const NGameText::CTextEntry>
-NGameText::CDataBank::GetPTextEntry(unsigned long id, bool allowPending) const
+// Fidelity: same-TU strong definition of 0x009C7D00 (retail TU-mate)
+const CDataBankTextEntry* CDataBank::GetTextInfo(unsigned long index) const
 {
-    if (GetEntryDataType(id) == 0) {
-        CDataBankTextEntry* entry = Entries[id];
-        if (entry) {
-            ((CDataBank*)this)->AsyncUpdatePending();
-            if ((!entry->PText.Object ||
-                 (entry->PText.Object->PFileData.Data &&
-                  !entry->PText.Object->PFileData.Data->IsFinished())) && !allowPending) {
-                ((CDataBank*)this)->BeginLoadingText(id);
-            } else {
-                if (!entry->PText.Object) {
-                    if (GetEntryDataType(id) == 0) {
-                        CDataBankTextEntry* current = Entries[id];
-                        if (current)
-                            current->BeginLoading(id, *(CDataBank*)this);
-                    }
-                    entry->BuildText();
-                    ((CDataBank*)this)->ResourceList.MakeFreeSpace(0);
-                } else if (entry->PText.Object->PFileData.Data) {
-                    entry->BuildText();
-                }
+    if (GetEntryDataType(index) == 0)
+    {
+        return static_cast<const CDataBankTextEntry*>(Entries[index]);
+    }
+    return 0;
+}
 
-                entry->PText.Object->SetAsMRU();
-                return CIVCountedPointer<const CTextEntry>(entry->PText.Object);
+// Fidelity: same-TU strong definition of 0x009C8630 (retail TU-mate)
+void CDataBank::BeginLoadingText(unsigned long entry_index) const
+{
+    const CDataBankTextEntry* info = GetTextInfo(entry_index);
+    if (info)
+    {
+        info->BeginLoading(entry_index, const_cast<CDataBank&>(*this));
+    }
+}
+
+CIVCountedPointer<const CTextEntry> CDataBank::GetPTextEntry(unsigned long index, bool wait) const
+{
+    const CDataBankTextEntry* text_info = GetTextInfo(index);
+    if (text_info)
+    {
+        const_cast<CDataBank*>(this)->AsyncUpdatePending();
+        if (text_info->IsLoaded() || wait)
+        {
+            if (text_info->PText.IsNull())
+            {
+                BeginLoadingText(index);
+                text_info->BuildText();
+                const_cast<CDataBank*>(this)->ResourceList.MakeFreeSpace(0);
             }
+            else if (!text_info->PText->PFileData.IsNull())
+            {
+                text_info->BuildText();
+            }
+            text_info->PText->TouchResource();
+            return text_info->PText;
         }
+        BeginLoadingText(index);
     }
     return CIVCountedPointer<const CTextEntry>();
+}
 }
