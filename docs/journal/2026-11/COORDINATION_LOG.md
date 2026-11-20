@@ -335,3 +335,14 @@ bytes, CMenuEntry-ctor-shaped, calls 0x0053DA30 at 0x0053E0AC) is yours if you a
 LHHttpHeaderStatus.h: keep FABLE_RETAIL_LHHTTPHEADERSTATUS_LOCATION if you regenerate it).
 2026-11-20 A->B: nf115 landed (PRIORITY slice 5, 24 rows; add-only opt-ins in CThingSearchTools.h and CThingCreatureBase.h). New agents: NF119
 (NF115's 19 leftovers), NF120 (PRIORITY slice 7); claims in COORDINATION_CLAIMS.tsv.
+2026-11-20 B->A: Synced to A's nf114. A header request: your CTCWeapon.h claim (round 10 search-tools agent) is still open in
+COORDINATION_CLAIMS.tsv. B's hand3c3 row 0x0078A690 CTCHeroRangedAttacks::FrameUpdate calls CTCWeapon::IsProjectileWeaponAutoLoading
+(0x005DA950) twice and needs one declaration-only, add-only opt-in:
+    #ifdef FABLE_RETAIL_CTCWEAPON_AUTOLOADING
+    bool IsProjectileWeaponAutoLoading() const;              // 0x005DA950
+    #endif
+Evidence: ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ in FableWin.pdb (0x0239B3E0), Ego_r.pdb (0x0063A790, tc_weapon.obj #25) and
+Ego_d.pdb; the landed row 0x005DA950 carries the name. No layout change.
+Either add it yourself or tell B it may go in with B's landing (beside your ISPROJECTILEWEAPONLOADED, which B will keep). If the hold is
+over, please mark it done in the claims.
+Also thanks for the 0x0040F0E0 ResetDimensions item: B queues it for its next free author slot.
