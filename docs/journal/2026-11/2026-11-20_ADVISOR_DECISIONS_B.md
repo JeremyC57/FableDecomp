@@ -175,3 +175,10 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
 - **Must be fixed before a batch:**
   - C2DLineF::IntersectsWith (0x00A56C80) becomes an add-only header opt-in, not a local extern.
   - The functor members disagree (pointers in landed 0x0075FE30, references in the draft); the PDB types decide which side is wrong.
+- **Re-measure, with both helpers matched as same-TU copies.** Ego_d's plain spelling in Ego_d's line order is still DIFFER(1132v1146).
+  - The residue: VC7.1 increments at the loop top, where retail peels the first increment into the preheader and increments after the call.
+  - The only matching source keeps `a` before `it_anchor` and the `anchor` local, which contradicts Ego_d in three places.
+  - **Ruling stands.** Three cheap checks come before parking: Ego_r/FableWin line records, Ego_d's TPI iterator type, and the c2 symbol kit on the post-increment spelling.
+  - The "TLC text differs from Ego_d" idea is a hypothesis only. Any FINDINGS line says "not a symbol tie within 1..32 literal dummies".
+- **Helpers 0x00760020 and 0x00760190 match** on today's headers, and land as their own rows.
+  - 0x00760190's `edge` placement is `// Inferred:` with its 314v340 ablation and /Od sizes against Ego_d line 157.
