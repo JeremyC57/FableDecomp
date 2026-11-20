@@ -222,6 +222,21 @@ protected:
 protected:
     const CWorld& PeekWorld() const;                                     // 0x00692950
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_GETPLAYER
+    // NF155 opt-in (q4745, row 0x00692930): Ego_r.pdb 0x00519290 + FableWin.pdb 0x01DB6430 ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ
+    // (protected; Ego_r lists it right before GetWorld 0x005192A0, as retail 0x00692930 before GetWorld 0x00692940), out of line in retail
+    // (`add ecx,8 ; call GetPItem ; mov ecx,eax ; jmp CThing::GetPlayer 0x004C7A30`). Declaration only.
+protected:
+    CPlayer& GetPlayer();                                                // 0x00692930
+#endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_PEEKTHINGSEARCHTOOLS
+    // NF155 opt-in (q5083, row 0x00692990): Ego_r.pdb 0x00519300 + FableWin.pdb 0x01DB6530
+    // ?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ (protected const; right after GetThingManager in both PDBs, as
+    // retail 0x00692990 after 0x00692980), out of line in retail (`add ecx,8 ; call GetPItem ; mov ecx,eax ; jmp
+    // CThing::PeekThingSearchTools 0x004C7A60`). Declaration only.
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;              // 0x00692990
+#endif
 #if defined(FABLE_RETAIL_CCREATUREACTIONBASE_HASPERFORMEDACTION) && !defined(FABLE_RETAIL_EXPRESSION_FRAME)
     // Retail opt-in (chunk Q17, row 0x008BF500): Ego_r.pdb ?HasPerformedAction@CCreatureActionBase@@QBE_NXZ (public const), out of line in
     // retail at 0x006925A0 (`mov al,[ecx+62h] ; ret`). Declaration only (the EXPRESSION_FRAME opt-in declares the same member).

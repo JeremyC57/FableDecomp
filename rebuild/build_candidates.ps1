@@ -1046,16 +1046,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006620f0'
-        Module = 'CTCPhysicsBase'
-        Source = '00/66/CTCPhysicsBase_GetAirResistance_006620f0.cpp'
-        TestSource = '00/66/CTCPhysicsBase_GetAirResistance_006620f0_test.cpp'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetDefHoverMediumSpeed_006620f0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetDefHoverMediumSpeed_006620f0_test.cpp'
         PassPattern = 'CTCPhysicsBase_006620f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00662100'
-        Module = 'CTCPhysicsBase'
-        Source = '00/66/CTCPhysicsBase_GetAirResistance_00662100.cpp'
-        TestSource = '00/66/CTCPhysicsBase_GetAirResistance_00662100_test.cpp'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetDefHoverFastSpeed_00662100.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetDefHoverFastSpeed_00662100_test.cpp'
         PassPattern = 'CTCPhysicsBase_00662100_TEST PASS'
     }
     [pscustomobject]@{
@@ -32919,9 +32919,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006620e0'
-        Module = 'CTCPhysicsBase'
-        Source = '00/66/CTCPhysicsBase_GetAirResistance_006620e0.cpp'
-        TestSource = '00/66/CTCPhysicsBase_GetAirResistance_006620e0_test.cpp'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetDefHoverSlowSpeed_006620e0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetDefHoverSlowSpeed_006620e0_test.cpp'
         PassPattern = '006620e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -33815,9 +33815,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00692930'
-        Module = '_global'
-        Source = '00/69/global_Destval_00692930.cpp'
-        TestSource = '00/69/global_Destval_00692930_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetPlayer_00692930.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetPlayer_00692930_test.cpp'
         PassPattern = '00692930_TEST PASS'
     }
     [pscustomobject]@{
@@ -33829,9 +33829,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00692990'
-        Module = '_global'
-        Source = '00/69/global_Destval_00692990.cpp'
-        TestSource = '00/69/global_Destval_00692990_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_PeekThingSearchTools_00692990.cpp'
+        TestSource = '00/69/CCreatureActionBase_PeekThingSearchTools_00692990_test.cpp'
         PassPattern = '00692990_TEST PASS'
     }
     [pscustomobject]@{

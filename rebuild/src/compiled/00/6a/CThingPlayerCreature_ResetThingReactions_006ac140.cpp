@@ -31,11 +31,16 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     virtual void v00();
 };
 
+class CThingSearchTools;
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags;                                  // +0x91 (bit 2 active, 3 in world, 0 dead, 5 limbo)
     unsigned char _pad92[0xf4 - 0x92];
     CIntelligentPointer<CThingCreatureBase> m_reactionTarget;          // +0xf4 (descriptive)
+protected:
+    // NF155 (q5082): Ego_r.pdb / FableWin.pdb ?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ (protected, out of line at
+    // 0x004C7A50, engine/CThing.h); was declared on CThingPlayerCreature returning a pointer.
+    CThingSearchTools& GetThingSearchTools();               // 0x004C7A50
 };
 
 struct SThingNode {                                         // STLport list<CThing*> node, 12 bytes
@@ -98,14 +103,13 @@ void CThingSearchTools::GetAllLeafThings(const CThingFilter_None&, CThingList& o
 #pragma auto_inline(on)
 
 class CThingPlayerCreature : public CThing { public:
-    CThingSearchTools* GetThingSearchTools();               // 0x004C7A50
     void ResetThingReactions();
 };
 
 void CThingPlayerCreature::ResetThingReactions()
 {
     CThingList things;
-    GetThingSearchTools()->GetAllLeafThings(CThingFilter_None(), things);
+    GetThingSearchTools().GetAllLeafThings(CThingFilter_None(), things);
     for (SThingNode* node = things._M_node->_M_next; node != things._M_node; node = node->_M_next) {
         CThing* thing = node->_M_data;
         thing->m_reactionTarget = CIntelligentPointer<CThingCreatureBase>(0);

@@ -14,6 +14,9 @@ class CDefPointeeBase;
 class CTCDriverBase;
 struct CTCGraphicAppearance;
 class CTCPhysicsBase;
+#ifdef FABLE_RETAIL_QUARANTINE_CTHING_GETPOS
+class C3DVector;
+#endif
 
 #pragma pack(push, 1)
 class CThing {
@@ -48,34 +51,39 @@ public:
     unsigned char         PausedDuringCutscenes[0x1];        // +0x92 bitfield group: uchar:1
     unsigned char         AddingTCsPermitted[0x1];           // +0x93 bitfield group: uchar:1
     unsigned char         InitialisationStage[0x4];          // +0x94 bitfield group: uchar:3
+#ifdef FABLE_RETAIL_QUARANTINE_CTHING_GETPOS
+    // NF155 opt-in (q4046, row 0x00927C80): Ego_r.pdb / FableWin.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ (public const, out of line at
+    // 0x004C73D0, as engine/CThing.h declares it). Declaration only: no layout change.
+    const C3DVector& GetPos() const;                         // 0x004C73D0
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CThing) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CThing, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CThing, UniqueID) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CThing, UsingComponents) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CThing, Components) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CThing, UpdateComponentsList) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CThing, SerialisationSectionName_PStringData) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CThing, PTCDriver) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CThing, PhysicsTC) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CThing, PTCGraphicAppearance) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CThing, WorldFrameCreatedAt) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CThing, ThingTypeFlags) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CThing, PBaseDef_Object) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CThing, ScriptName_PStringData) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CThing, ScriptData_PStringData) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CThing, RenderListPrev) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CThing, RenderListNext) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CThing, UpdateListPrev) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CThing, UpdateListNext) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CThing, DefGlobalIndex) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CThing, CurrentMapNumber) == 0x8e);
-FABLE_STATIC_ASSERT(offsetof(CThing, PlayerNumber) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CThing, CreatedBySerialisation) == 0x91);
-FABLE_STATIC_ASSERT(offsetof(CThing, PausedDuringCutscenes) == 0x92);
-FABLE_STATIC_ASSERT(offsetof(CThing, AddingTCsPermitted) == 0x93);
-FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0x94);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CThing) == 0x98);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CThing, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CThing, UniqueID) == 0x18);
+FABLE_STATIC_ASSERT_AT(57, offsetof(CThing, UsingComponents) == 0x20);
+FABLE_STATIC_ASSERT_AT(58, offsetof(CThing, Components) == 0x44);
+FABLE_STATIC_ASSERT_AT(59, offsetof(CThing, UpdateComponentsList) == 0x54);
+FABLE_STATIC_ASSERT_AT(60, offsetof(CThing, SerialisationSectionName_PStringData) == 0x58);
+FABLE_STATIC_ASSERT_AT(61, offsetof(CThing, PTCDriver) == 0x5c);
+FABLE_STATIC_ASSERT_AT(62, offsetof(CThing, PhysicsTC) == 0x60);
+FABLE_STATIC_ASSERT_AT(63, offsetof(CThing, PTCGraphicAppearance) == 0x64);
+FABLE_STATIC_ASSERT_AT(64, offsetof(CThing, WorldFrameCreatedAt) == 0x68);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CThing, ThingTypeFlags) == 0x6c);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CThing, PBaseDef_Object) == 0x70);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CThing, ScriptName_PStringData) == 0x74);
+FABLE_STATIC_ASSERT_AT(68, offsetof(CThing, ScriptData_PStringData) == 0x78);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CThing, RenderListPrev) == 0x7c);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CThing, RenderListNext) == 0x80);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CThing, UpdateListPrev) == 0x84);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CThing, UpdateListNext) == 0x88);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CThing, DefGlobalIndex) == 0x8c);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CThing, CurrentMapNumber) == 0x8e);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CThing, PlayerNumber) == 0x90);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CThing, CreatedBySerialisation) == 0x91);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CThing, PausedDuringCutscenes) == 0x92);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CThing, AddingTCsPermitted) == 0x93);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CThing, InitialisationStage) == 0x94);
 
 #endif // FABLE_ENGINE_CTHING_H

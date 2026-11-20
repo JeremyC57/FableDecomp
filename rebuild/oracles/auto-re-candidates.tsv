@@ -152,8 +152,8 @@ address	name	length	bytes
 0041c972	_global::SetMember_dword0x138_0041c972	13	8b442404898138010000c20400
 0041c994	_global::SetMember_dword0x13c_0041c994	13	8b44240489813c010000c20400
 0041ca31	_global::SetMember_dword0x134_0041ca31	13	8b442404898134010000c20400
-006620f0	CTCPhysicsBase::GetAirResistance	13	8b81e0000000d980a8000000c3
-00662100	CTCPhysicsBase::GetAirResistance	13	8b81e0000000d980ac000000c3
+006620f0	CThingCreatureBase::GetDefHoverMediumSpeed	13	8b81e0000000d980a8000000c3
+00662100	CThingCreatureBase::GetDefHoverFastSpeed	13	8b81e0000000d980ac000000c3
 00662190	CTCPhysicsBase::GetAirResistance	13	8b81e0000000d980f4000000c3
 005bc0c6	std::_Destroy<CEngineTextureMorph *>	13	518d44240350e8affeffff59c3
 008fd000	CAIStateGroupBase::PeekThingSearchTools	13	8b41048b481c8b51248b4220c3
@@ -4669,7 +4669,7 @@ address	name	length	bytes
 00662010	CThingCreatureBase::GetProperty	13	8b81e00000008b80f0000000c3
 006623f0	CThingCreatureBase::GetMeleeWeaponDef	13	8b81e00000008b80d8000000c3
 00662400	CThingCreatureBase::GetRangedWeaponDef	13	8b81e00000008b80e0000000c3
-006620e0	CTCPhysicsBase::GetAirResistance	13	8b81e0000000d980a4000000c3
+006620e0	CThingCreatureBase::GetDefHoverSlowSpeed	13	8b81e0000000d980a4000000c3
 00633be0	CPlayer::GetCurrentMode	13	8b81100200008b48048b4108c3
 00643be2	NPlayerGui::GFToScreen	13	8bc18b0a89088b4a04894804c3
 005bc4cb	_global::SetMember_dword0xb8_005bc4cb	13	8b4424048981b8000000c20400
@@ -4799,7 +4799,7 @@ address	name	length	bytes
 00692920	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	15	83c108e828f236008bc8e9e150e3ff
 00692930	CCreatureActionBase::GetPlayer	15	83c108e818f236008bc8e9f150e3ff
 00692950	CCreatureActionBase::PeekWorld	15	83c108e8f8f136008bc8e95151e3ff
-00692990	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	15	83c108e8b8f136008bc8e9c150e3ff
+00692990	CCreatureActionBase::PeekThingSearchTools	15	83c108e8b8f136008bc8e9c150e3ff
 00692880	CCreatureActionBase::OverrideFaceWithDefault	15	8b4974e88899f4ffc1e80483e001c3
 007e72d0	CScriptGameResourceObjectScriptedThingBase::SummonerLightningOrbAttackTarget	15	8b490885c974058b01ff6008c20400
 007e72e0	CScriptGameResourceObjectScriptedThingBase::FireProjectileWeaponAtTarget	15	8b490885c974058b01ff600cc20400

@@ -163,7 +163,11 @@ class CCreatureActionBase { public:
     CIntelligentPointer<CThing> PCreature;                       // +0x08
     CThing* GetCreature() const { return PCreature.GetPItem(); }
     CDefinitionManager* GetPDefinitionManager() const;       // 0x00692910
-    CPlayer* GetPlayer() const;                              // 0x00692930
+protected:
+    // NF155 (q4745 follow-up): Ego_r.pdb 0x00519290 + FableWin.pdb 0x01DB6430 ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ (protected,
+    // returns a reference; out of line at 0x00692930, the self row re-ported in the same hand-back).
+    CPlayer& GetPlayer();                                    // 0x00692930
+public:
     CRandomSource* GetPWorld() const;                        // 0x00692940
 };
 struct CCreatureAction_Undress : CCreatureActionBase {
@@ -195,7 +199,7 @@ void CCreatureAction_Undress::PerformAction()
         CThingObject* thing;
         {
             CCharString name("");
-            long player = GetPlayer()->ID;
+            long player = GetPlayer().ID;
             C3DVector offset;
             offset.X = velocity.X;
             offset.Y = velocity.Y;

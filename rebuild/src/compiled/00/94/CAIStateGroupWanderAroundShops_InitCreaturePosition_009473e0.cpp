@@ -32,7 +32,7 @@ class CThingPhysical : public CThing { public:
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 // CIntelligentPointerThing = the shared CIntelligentPointer<CThing> (engine/CIntelligentPointer.h).
 class CThingCreatureBase { public:
-    bool AutoPlaceNearBuilding(CThingBuilding* building, float radius);   // 0x00666EF0
+    bool AutoPlaceNearBuilding(const CThingBuilding* building, float radius);   // 0x00666EF0 (NF155 q4723: Ego_r + FableWin take a const building, PBV)
     bool AutoPlaceNear(const C3DVector& position, float radius);          // 0x00665DF0
 };
 class CAIBrain { public:

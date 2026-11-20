@@ -6,7 +6,7 @@
 // Callees: CThingCreatureBase::GetSex() const 0x00661FF0 (as landed; manifest "CPixelShader::CountReferences" propagated);
 //   CVectorMap LowerBound const 0x004365B0 (inlined const GetTC, interface 0xF = CTCTalk); CCharString(const CCharString&)
 //   0x0099EC30 and ~CCharString 0x0099EAE0; Compare(const char*, const char*) 0x00411570 (__fastcall, the inlined CCharString
-//   equality, as landed); CThing::GetRandomSeed() 0x004C7AE0 (as landed); GFFloatRandom(float, unsigned long*) 0x004978A0
+//   equality, as landed); CThing::GetPWorldSeed() const 0x004C7AE0 (NF155: Ego_r / FableWin, protected); GFFloatRandom(float, unsigned long*) 0x004978A0
 //   (__fastcall); CCharString(const char*, long) 0x0099EBF0; CThing::AddTC(const CCharString&, bool, CTCParamsBase*)
 //   0x004C9D60 (as landed).
 // Data: g_CCharString_013bab2c = "AM3" (0x013BAB2C, landed static initialiser); "CTCWife" 0x0123A700.
@@ -63,6 +63,10 @@ public:
     virtual void v00();
 public:
     CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+protected:
+    // NF155 (q4259): Ego_r.pdb / FableWin.pdb ?GetPWorldSeed@CThing@@IBEPAKXZ (protected const, out of line at 0x004C7AE0, engine/CThing.h);
+    // was declared on CThingAICreature as GetRandomSeed.
+    unsigned long* GetPWorldSeed() const;               // 0x004C7AE0
 };
 class CThingPhysical : public CThing
 {
@@ -111,7 +115,6 @@ public:
         return false;
     }
     ESex GetSex() const;                                // 0x00661FF0 (CThingCreatureBase)
-    unsigned long* GetRandomSeed();                     // 0x004C7AE0 (CThing)
     void AutoSetupSexuality(float maleChance);
 };
 
@@ -125,7 +128,7 @@ void CThingAICreature::AutoSetupSexuality(float maleChance)
     } else if (GetSex() == SEX_MALE) {
         const CTCTalk* talk;
         bool marriageable = GetInterface(&talk, 0xf) && talk->GetDialogueVoice() == g_CCharString_013bab2c &&
-                            GFFloatRandom(1.0f, GetRandomSeed()) < maleChance;
+                            GFFloatRandom(1.0f, GetPWorldSeed()) < maleChance;
         if (marriageable) {
             CanBeCourted = true;
             CanBeMarried = true;

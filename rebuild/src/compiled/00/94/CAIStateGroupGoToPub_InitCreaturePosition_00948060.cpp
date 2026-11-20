@@ -25,7 +25,7 @@ class CThingBuilding;
 class CThingObject;
 class CThingAICreature;
 class CThingCreatureBase : public CThing { public:
-    bool AutoPlaceNearBuilding(CThingBuilding* building, float distance);   // 0x00666EF0
+    bool AutoPlaceNearBuilding(const CThingBuilding* building, float distance);   // 0x00666EF0 (NF155 q4723: Ego_r + FableWin take a const building, PBV)
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {

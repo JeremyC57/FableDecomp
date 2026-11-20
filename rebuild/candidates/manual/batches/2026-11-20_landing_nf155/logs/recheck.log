@@ -1,0 +1,128 @@
+addr       parity           behav  name
+006620e0   MATCH            PASS   CThingCreatureBase::GetDefHoverSlowSpeed
+006620f0   MATCH            PASS   CThingCreatureBase::GetDefHoverMediumSpeed
+00662100   MATCH            PASS   CThingCreatureBase::GetDefHoverFastSpeed
+00692930   RELOCATION_MATCH PASS   CCreatureActionBase::GetPlayer
+00692990   RELOCATION_MATCH PASS   CCreatureActionBase::PeekThingSearchTools
+006ac140   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006ac140   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006ac140   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+006ac140   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+006ac140   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+006ac140   RELOCATION_MATCH PASS   CThingPlayerCreature::ResetThingReactions
+007038d0   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+007038d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007038d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+007038d0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+007038d0   WARN RELOC_NAME: ?SetSpin_006a4dc0@CThing@@QAEXPBVC3DVector@@@Z -> 006a4dc0 labelled '_global::Forward_ApplyAcceleration_via0x60_006a4dc0'
+007038d0   WARN RELOC_NAME: ?OnDie@CThingPhysical@@QAEXXZ -> 006a4cf0 labelled 'CThingPhysical::Kill'
+007038d0   RELOCATION_MATCH PASS   CThingObject::OnDie
+00744730   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+00744730   RELOCATION_MATCH PASS   CTCPerceiveThing::SetLastAwareInfo
+008330d0   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+008330d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008330d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008330d0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+008330d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008330d0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008330d0   RELOCATION_MATCH PASS   CThingAICreature::AutoSetupSexuality
+008424d0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008424d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008424d0   RELOCATION_MATCH PASS   CCreatureAction_LookThroughWindow::PerformAction
+00846100   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00846100   WARN RELOC_NAME: ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+00846100   WARN RELOC_NAME: ?GetPWorld@CCreatureActionBase@@QBEPAUCRandomSource@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+00846100   RELOCATION_MATCH PASS   CCreatureAction_WearGameObject::PerformAction
+00846410   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00846410   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00846410   WARN RELOC_NAME: ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+00846410   WARN RELOC_NAME: ?GetPWorld@CCreatureActionBase@@QBEPAUCRandomSource@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+00846410   WARN RELOC_NAME: ?SetVelocity@CThingObject@@QAEXABVC3DVector@@@Z -> 006a4dc0 labelled '_global::Forward_ApplyAcceleration_via0x60_006a4dc0'
+00846410   RELOCATION_MATCH PASS   CCreatureAction_Undress::PerformAction
+0084a7e0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+0084a7e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0084a7e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0084a7e0   RELOCATION_MATCH PASS   CCreatureAction_AlertAllNearbyToThing::PerformAction
+008c5490   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008c5490   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008c5490   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008c5490   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c5490   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionCharge (engine/CCreatureAction_ScorpionCharge.h)
+008c5490   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionChargeInto (engine/CCreatureAction_ScorpionChargeInto.h)
+008c5490   WARN SHARED_HEADER_AVAILABLE CTCPhysicalShieldSpell (engine/CTCPhysicalShieldSpell.h)
+008c5490   RELOCATION_MATCH PASS   CCreatureAction_ScorpionChargeInto::FinishAction
+008c74f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CTrollBattleDef (engine/CTrollBattleDef.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+008c74f0   WARN RELOC_NAME: ?GetTrollBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCTrollBattleDef@@@@@Z -> 008c78f0 labelled 'CDefClassBase::GetSubDef<CTrollBattleDef>'
+008c74f0   RELOCATION_MATCH PASS   CCreatureAction_RockTrollFallToDeath::FinishAction
+00927c80   WARN SHARED_HEADER_AVAILABLE CTCShopKeeper (engine/CTCShopKeeper.h)
+00927c80   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+00927c80   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00927c80   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00927c80   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroup_ShopkeeperWatchPlayer@@QAEPAVCPlayerManager@@XZ -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+00927c80   RELOCATION_MATCH PASS   CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable
+009473e0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+009473e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009473e0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009473e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WanderAroundShops (engine/CAIStateGroup_WanderAroundShops.h)
+009473e0   RELOCATION_MATCH PASS   CAIStateGroup_WanderAroundShops::InitCreaturePosition
+00948060   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CTCAIScratchpad (engine/CTCAIScratchpad.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity (engine/CTCOwnedEntity.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00948060   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GoToPub (engine/CAIStateGroup_GoToPub.h)
+00948060   WARN RELOC_NAME: ?GetObjectWithScriptName@CAIStateGroup_GoToPub@@IAEPAVCThingObject@@ABVCCharString@@@Z -> 00947eb0 labelled 'CAIStateGroup_GoToPub_FindMarkerByName'
+00948060   RELOCATION_MATCH PASS   CAIStateGroup_GoToPub::InitCreaturePosition
+
+WINS: 18
+  006620e0 MATCH CThingCreatureBase::?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ
+  006620f0 MATCH CThingCreatureBase::?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ
+  00662100 MATCH CThingCreatureBase::?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ
+  00692930 RELOCATION_MATCH CCreatureActionBase::?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ
+  00692990 RELOCATION_MATCH CCreatureActionBase::?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ
+  006ac140 RELOCATION_MATCH CThingPlayerCreature::ResetThingReactions
+  007038d0 RELOCATION_MATCH CThingObject::?OnDie@CThingObject
+  00744730 RELOCATION_MATCH CTCPerceiveThing::?CTCPerceiveThing_SetLastAwareInfo@@YIXPAVCTCPerceiveThing@@@Z
+  008330d0 RELOCATION_MATCH CThingAICreature::AutoSetupSexuality
+  008424d0 RELOCATION_MATCH CCreatureAction_LookThroughWindow::PerformAction
+  00846100 RELOCATION_MATCH CCreatureAction_WearGameObject::PerformAction
+  00846410 RELOCATION_MATCH CCreatureAction_Undress::?PerformAction@CCreatureAction_Undress@@UAEXXZ
+  0084a7e0 RELOCATION_MATCH CCreatureAction_AlertAllNearbyToThing::PerformAction
+  008c5490 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::FinishAction
+  008c74f0 RELOCATION_MATCH CCreatureAction_RockTrollFallToDeath::FinishAction
+  00927c80 RELOCATION_MATCH CAIStateGroup_ShopkeeperWatchPlayer::?IsRunnable@CAIStateGroup_ShopkeeperWatchPlayer@@QAE_NXZ
+  009473e0 RELOCATION_MATCH CAIStateGroup_WanderAroundShops::?InitCreaturePosition@CAIStateGroup_WanderAroundShops
+  00948060 RELOCATION_MATCH CAIStateGroup_GoToPub::?InitCreaturePosition@CAIStateGroup_GoToPub@@UAE_NXZ

@@ -1,0 +1,29 @@
+006620e0 new: 3
+    ??C?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+    ?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ TABLE:006620e0
+006620f0 new: 3
+    ??C?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+    ?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ TABLE:006620f0
+00662100 new: 3
+    ??C?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+    ?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ TABLE:00662100
+00692930 new: 1
+    ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ TABLE:00692930
+00692990 new: 1
+    ?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ TABLE:00692990
+006ac140 new: 0
+007038d0 new: 0
+00744730 new: 0
+008330d0 new: 0
+008424d0 new: 0
+00846100 new: 0
+00846410 new: 0
+0084a7e0 new: 0
+008c5490 new: 0
+008c74f0 new: 0
+00927c80 new: 0
+009473e0 new: 0
+00948060 new: 0
