@@ -7,10 +7,12 @@
 // dummy's StateType = 4 and CurrentBookmarkMask = 1 are body assignments (they store after the member ctors, and
 // InitFlags, an argument, stores after the zero words).
 // Model: local polymorphic model; offsets from engine/CRenderStateManager.h (which holds the vptr as a plain word).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct IDirect3DDevice9;
 
 struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                         // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                         // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

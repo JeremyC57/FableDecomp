@@ -10,10 +10,12 @@
 //        handle's address (edi) escapes to Allocate and is re-read for Lock and GetPointerFromHandle.
 // Layout: Ego_r.pdb CTemporaryBuffer (0x18): Data +0x04, MemoryPool +0x08, MemoryHandle +0x0c, ScratchBuffer +0x10,
 //         AllocateType +0x14.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 void* __cdecl operator new[](unsigned int size);   // 0x00BFEB22
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                   // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                   // 0x0099A2F0
 };
 class CScratchBuffer { public:
     unsigned char _pad00[8];

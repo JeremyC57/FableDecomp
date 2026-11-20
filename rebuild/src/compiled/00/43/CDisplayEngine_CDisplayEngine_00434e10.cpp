@@ -12,6 +12,8 @@
 // Shape: members in declaration order (one ebx zero register), the two camera vectors built as temporaries in the frame (the direction
 // first: right-to-left), the CFadeInFadeOutBase inline ctor assigning its members in the body (Active, Duration, StartFrame, FadingOut, FadingIn) and
 // then `Colour = CRGBColour(0, 0, 0, 255)` (the temporary built byte-wise in a frame word and copied as a dword); the readiness count, fade duration, world pointer and the gamma trio are assigned in the body (stored out of declaration order).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "engine/C3DVector.h"
 class CRGBColour { public:
     unsigned char R, G, B, A;
@@ -56,7 +58,7 @@ class CDisplayEngineInit { public:
 };
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
 };
 class CDisplayEngine : public CBaseClassNonCopyable {   // vtable 0x01231574
 public:

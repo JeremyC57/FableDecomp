@@ -1,10 +1,12 @@
 // CMemoryDataInputStream::CMemoryDataInputStream(const CCharString& text) -- the CBaseClassNonCopyable base (0x0099A2F0), the stream state zeroed (+4..+0x14), this class's vtable (0x0123675C), then the source set from the string: its chars (the empty literal 0x0129AAF4 for a null string) at +0xc / +0x18, the position (+4) and flags (+0x10) cleared, its length at +8 / +0x14
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00995F50, length 96 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Shape: the zeroing state is a second, non-polymorphic base; the two accessors are inlined with their own null tests (length first: the arguments of the inline setter are evaluated right to left), `ret 4`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "fable_compiler.h"
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00

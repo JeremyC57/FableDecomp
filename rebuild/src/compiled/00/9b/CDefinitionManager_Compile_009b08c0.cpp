@@ -17,6 +17,8 @@
 //   layout (the rename pattern of the landed CompileString / RecompileAllDefs rows), with its callees at their PDB access (IAE for
 //   CheckDependencies / CreateSymbolsFromPathList / DoCompilePathList / RemoveUnusedMemory) on std::vector<CWideString>.
 // Globals: bytes 0x013CA7D8 (load binary definitions) and 0x0138E188 (save binary definitions), descriptive names.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #define CDefinitionManager CDefinitionManagerLayout
 #include "engine/CDefinitionManager.h"
 #undef CDefinitionManager
@@ -27,7 +29,7 @@ struct CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
 public:
-    CBaseClassNonCopyable();                             // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                             // 0x0099A2F0
 };
 class CWideString { public:
     void* PStringData;

@@ -40,7 +40,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    CCreatureActionBase(CThingCreatureBase* owner, const CSoundPair& sound, long c, long d);   // 0x00693C70
+    CCreatureActionBase(CThingCreatureBase& owner, const CSoundPair& sound, long c, long d);   // 0x00693C70 (NF181 q11676: creature by reference, Ego_r.pdb 0x0051B2E0 + FableWin.pdb 0x01DB5A50)
 };
 
 #pragma pack(push, 1)
@@ -54,7 +54,7 @@ class CCreatureAction_ActivateQuest : public CCreatureActionBase { public:   // 
 #pragma pack(pop)
 
 CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest(CThingCreatureBase* owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources)
-    : CCreatureActionBase(owner, CSoundPair(), 0, 0)
+    : CCreatureActionBase(*owner, CSoundPair(), 0, 0)
     , ScriptName(scriptName)
     , LoadResources(loadResources)
     , PObjectToUse(objectToUse)

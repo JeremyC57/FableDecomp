@@ -13,6 +13,8 @@
 //   A local model is used because the header's flattened members cannot run the member constructors.
 // Shape: the init block is read through one reference (+0 / +8 / +0xc); the list ctor is STLport's
 //   `_M_node(0)` then a malloc'd sentinel linked to itself.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include <stdlib.h>
 
 class CMainGameComponent;
@@ -52,7 +54,7 @@ class CWorldInit { public:
 };
 
 struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

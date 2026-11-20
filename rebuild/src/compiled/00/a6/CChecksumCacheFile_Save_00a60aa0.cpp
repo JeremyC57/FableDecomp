@@ -19,11 +19,13 @@
 // unnamed temporary passed straight to the stream; the explicit Close precedes the inline destructors.
 // Layout: retail CChecksumCacheFile of the landed ctor 0x00A61150: Filename +0, Entries {header +4, count +8},
 // BufferSize +0x10, NeedsSaving +0x14; node value {CWideString name +0x10, CDateAndTime +0x14, checksum +0x30}.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
 public:
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 class CCharString { public:
     void* PStringData;

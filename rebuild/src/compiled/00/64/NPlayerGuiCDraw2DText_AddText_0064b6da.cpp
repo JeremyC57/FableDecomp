@@ -43,8 +43,8 @@ class CEnginePrimitive2DText { public:                    // 0x2c bytes
     CWideString   m_text;                          // +0x24
     CFontBank*    m_pFont;                         // +0x28
     CEnginePrimitive2DText(unsigned __int64 id, const C2DVector& pos, EEngine2DLayer layer, float depth,
-                           const CWideString& text, CFontBank* font, const CRGBColour& colour,
-                           EEngineInterpolationSet interpolation);   // 0x00543910
+                           const CWideString& text, const CFontBank& font, const CRGBColour& colour,
+                           EEngineInterpolationSet interpolation);   // 0x00543910 (NF181 q4907: const CFontBank&, Ego_r.pdb 0x005BD060 + FableWin.pdb 0x020FC03E)
 };
 struct CTextList {
     void push_back(const CEnginePrimitive2DText& text);   // 0x006561C8
@@ -69,16 +69,16 @@ void CDraw2DText::AddText(const C2DVector& position, const CWideString& text, CF
     if (shadow) {
         C2DVector shadowPos;
         shadowPos = pos + C2DVector(1.0f, 1.0f);
-        CEnginePrimitive2DText t1(0, shadowPos, (EEngine2DLayer)(layer + 1), depth, text, font, CRGBColour(0, 0, 0, colour.A), ENGINE_INTERPOLATION_SET_0);
+        CEnginePrimitive2DText t1(0, shadowPos, (EEngine2DLayer)(layer + 1), depth, text, *font, CRGBColour(0, 0, 0, colour.A), ENGINE_INTERPOLATION_SET_0);
         Texts.push_back(t1);
         shadowPos = pos + C2DVector(1.0f, -1.0f);
-        CEnginePrimitive2DText t2(0, shadowPos, (EEngine2DLayer)(layer + 1), depth, text, font, CRGBColour(0, 0, 0, colour.A), ENGINE_INTERPOLATION_SET_0);
+        CEnginePrimitive2DText t2(0, shadowPos, (EEngine2DLayer)(layer + 1), depth, text, *font, CRGBColour(0, 0, 0, colour.A), ENGINE_INTERPOLATION_SET_0);
         Texts.push_back(t2);
         shadowPos = pos + C2DVector(-1.0f, 1.0f);
-        CEnginePrimitive2DText t3(0, shadowPos, (EEngine2DLayer)(layer + 1), depth, text, font, CRGBColour(0, 0, 0, colour.A), ENGINE_INTERPOLATION_SET_0);
+        CEnginePrimitive2DText t3(0, shadowPos, (EEngine2DLayer)(layer + 1), depth, text, *font, CRGBColour(0, 0, 0, colour.A), ENGINE_INTERPOLATION_SET_0);
         Texts.push_back(t3);
     }
-    CEnginePrimitive2DText t(0, pos, layer, depth, text, font, colour, ENGINE_INTERPOLATION_SET_0);
+    CEnginePrimitive2DText t(0, pos, layer, depth, text, *font, colour, ENGINE_INTERPOLATION_SET_0);
     Texts.push_back(t);
 }
 }

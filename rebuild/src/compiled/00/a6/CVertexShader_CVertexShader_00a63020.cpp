@@ -3,6 +3,8 @@
 // it is a flattened data-only record, so the native virtual constructor uses this equivalent view.
 // PDB CVertexShaderData fields: VertexDeclaration+4, VertexShader+8, FormatDecl+c, ReferenceCount+10.
 // GFGetSystemManager009A4EC0 -> PDisplayManager+60 -> D3DDevice+58; CBaseClassNonCopyable ctor0099A2F0 (RTTI vtable0129A7C4, deleting destructor0099A470).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "engine/CVertexShader.h"
 struct D3DVertexElement;
 struct D3DVertexShader;
@@ -28,7 +30,7 @@ struct CShaderBytecodeArray {
 };
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable(); // vtable0129A7C4 slot0, deleting destructor0099A470
-    CBaseClassNonCopyable(); // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public: // 0x0099A2F0
 };
 struct CVertexShaderData : CBaseClassNonCopyable {
     D3DVertexDeclaration* VertexDeclaration;

@@ -9,6 +9,8 @@
 //   CDataInputStream state names (+4..+0x14); modelled locally like the landed ctor 0x00995DC0 (the header is data only).
 // Shape: the scoped_ptr reset stores the new pointer before deleting the old one; the trailing ResetStream() is the
 //   inline position reset shared with OpenMemorySource (0x00996A40).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "fable_compiler.h"
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 class CACompressor { public:                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
@@ -29,7 +31,7 @@ private:
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                    // 0x0099A2F0
 };
 
 class CDataInputStream : public CBaseClassNonCopyable { public:               // CDataStream/CDataInputStream state (engine/CDataInputStream.h names)

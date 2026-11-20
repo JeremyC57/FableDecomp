@@ -19,6 +19,8 @@
 //   by copy (no NRVO), the bad-length arm returns a copy of the empty string after its own Close().
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
 //   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include <stddef.h>
 void* __cdecl operator new[](unsigned int size);            // 0x00BFEB22
 void __cdecl operator delete[](void* block);                // 0x00BFEB1C
@@ -37,7 +39,7 @@ public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 public:
-    CBaseClassNonCopyable();                                // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                // 0x0099A2F0
 protected:
     virtual ~CBaseClassNonCopyable();   // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (Ego_r / FableWin protected virtual; naming wave 25)
 };

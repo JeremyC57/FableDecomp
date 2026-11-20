@@ -1,0 +1,17 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+head_00996be0.obj : error LNK2005: "public: __thiscall CMemoryDataOutputStream::CMemoryDataOutputStream(void)" (??0CMemoryDataOutputStream@@QAE@XZ) already defined in head_00996af0.obj
+own_00401630.obj : error LNK2005: "public: virtual __thiscall CDiskFileWin32::~CDiskFileWin32(void)" (??1CDiskFileWin32@@UAE@XZ) already defined in head_0055d070.obj
+own_00415c30.obj : error LNK2005: "public: __thiscall CDiskFileWin32::CDiskFileWin32(void)" (??0CDiskFileWin32@@QAE@XZ) already defined in head_0055d070.obj
+own_00436560.obj : error LNK2005: "public: __thiscall CFadeInFadeOutBase::CFadeInFadeOutBase(void)" (??0CFadeInFadeOutBase@@QAE@XZ) already defined in head_00434e10.obj
+own_004aa840.obj : error LNK2005: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in head_00905360.obj
+own_006e7b40.obj : error LNK2005: "public: __thiscall CScriptThing::CScriptThing(void)" (??0CScriptThing@@QAE@XZ) already defined in head_006e7740.obj
+own_00993b10.obj : error LNK2005: "public: virtual __thiscall CDataStream::~CDataStream(void)" (??1CDataStream@@UAE@XZ) already defined in head_00996be0.obj
+own_00993b20.obj : error LNK2005: "public: __thiscall CDataInputStream::CDataInputStream(void)" (??0CDataInputStream@@QAE@XZ) already defined in head_00994700.obj
+own_00996b30.obj : error LNK2005: "public: virtual __thiscall CMemoryDataOutputStream::~CMemoryDataOutputStream(void)" (??1CMemoryDataOutputStream@@UAE@XZ) already defined in head_00996be0.obj
+own_009ce180.obj : error LNK2005: "public: virtual __thiscall CBankFile::~CBankFile(void)" (??1CBankFile@@UAE@XZ) already defined in head_009cd480.obj
+own_009fbec0.obj : error LNK2005: "public: __thiscall CResource::CResource(void)" (??0CResource@@QAE@XZ) already defined in head_009fc5f0.obj
+own_009fc570.obj : error LNK2005: "public: __thiscall CResourceList::CResourceList(void)" (??0CResourceList@@QAE@XZ) already defined in head_009fc5f0.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 680 LNK2001 + 269 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

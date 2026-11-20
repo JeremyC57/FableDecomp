@@ -14,6 +14,8 @@
 // the same offsets as here); a constructor needs the class hierarchy itself, hence the local model.
 // Leaf: ??0CFileDataInputStream
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 
 void* __cdecl operator new[](unsigned int size);         // 0x00BFEB22 (MSVCR71 import thunk)
 void __cdecl operator delete[](void* block);              // 0x00BFEB1C
@@ -31,7 +33,7 @@ public:
 class CBaseClassNonCopyable
 {
 public:
-    CBaseClassNonCopyable();                              // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                              // 0x0099A2F0
     protected:
     virtual ~CBaseClassNonCopyable();
     public:

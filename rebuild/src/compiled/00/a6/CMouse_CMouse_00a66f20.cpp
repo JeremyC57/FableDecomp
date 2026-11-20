@@ -9,11 +9,13 @@
 //   NoEventScansRunning +0x3408, MaintainedEventsList +0x340C, InputManager +0x3410 (the PDB's +0x3418 is the 12-byte list).
 // Shape: the two counters and the manager pointer are body assignments (NoEventScansRunning first), after the member list's inline
 //   _List_base ctor (zero store, malloc, self-link, publish).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 class CBaseClassNonCopyable {
 public:
-    CBaseClassNonCopyable();                            // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                            // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 class CInputManager;

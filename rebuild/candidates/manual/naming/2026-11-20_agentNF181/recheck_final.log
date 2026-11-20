@@ -1,0 +1,454 @@
+addr       parity           behav  name
+00434e10   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00434e10   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+00434e10   WARN SHARED_HEADER_AVAILABLE CLetterBoxModeInfo (engine/CLetterBoxModeInfo.h)
+00434e10   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+00434e10   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00434e10   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00434e10   RELOCATION_MATCH PASS   CDisplayEngine::CDisplayEngine
+00485420   WARN STANDIN_LEAF ??_GCMemoryDataInputStream@@UAEPAXI@Z (catalog CMemoryDataInputStream::`scalar_deleting_destructor'; names another function)
+00485420   RELOCATION_MATCH PASS   CMemoryDataInputStream::`scalar_deleting_destructor'
+00485cf1   RELOCATION_MATCH PASS   CPersistContextReadSection::~CPersistContextReadSection
+004a67d0   WARN SHARED_HEADER_AVAILABLE CWorldInit (engine/CWorldInit.h)
+004a67d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+004a67d0   WARN SHARED_HEADER_AVAILABLE CIDrawWorld (engine/CIDrawWorld.h)
+004a67d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004a67d0   RELOCATION_MATCH PASS   CWorld::CWorld
+0055d070   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0055d070   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+0055d070   RELOCATION_MATCH PASS   CTCPhotojournalCapture::GetDescription
+0064b6da   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0064b6da   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0064b6da   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DText (engine/CEnginePrimitive2DText.h)
+0064b6da   WARN RELOC_NAME: ?push_back@CTextList@@QAEXABVCEnginePrimitive2DText@@@Z -> 006561c8 labelled 'Lua_Closure_Factory'
+0064b6da   RELOCATION_MATCH PASS   NPlayerGui::CDraw2DText::AddText
+00686800   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00686800   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00686800   RELOCATION_MATCH PASS   CTCBase::CTCBase
+00693c70   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00693c70   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00693c70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00693c70   RELOCATION_MATCH PASS   CCreatureActionBase::CCreatureActionBase
+0069f230   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0069f230   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0069f230   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0069f230   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseObject (engine/CCreatureAction_UseObject.h)
+0069f230   RELOCATION_MATCH PASS   CCreatureAction_UseObject::CCreatureAction_UseObject
+006e7740   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006e7740   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+006e7740   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+006e7740   WARN RELOC_NAME: ?SetGameScriptInterface@@YIXPAVCGameScriptInterface@@@Z -> 00cbe0c0 labelled 'SetDSTGame'
+006e7740   RELOCATION_MATCH PASS   CGameScriptInterface::CGameScriptInterface
+00714730   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00714730   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00714730   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+00714730   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00714730   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00714730   RELOCATION_MATCH PASS   NTCScriptedControl::CActionMoveTo::OnCleanup
+00715710   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+00715710   RELOCATION_MATCH PASS   NTCScriptedControl::CActionFollowCreature::OnActivate
+00778d60   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00778d60   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00778d60   WARN SHARED_HEADER_AVAILABLE CTCParamsPhysicsBase (engine/CTCParamsPhysicsBase.h)
+00778d60   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00778d60   RELOCATION_MATCH PASS   CTCDCameraPoint::Construct
+00779d20   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CTCParamsPhysicsBase (engine/CTCParamsPhysicsBase.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00779d20   WARN SHARED_HEADER_AVAILABLE CTCDExperienceOrb (engine/CTCDExperienceOrb.h)
+00779d20   RELOCATION_MATCH PASS   CTCDExperienceOrb::Construct
+0080c250   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0080c250   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0080c250   WARN SHARED_HEADER_AVAILABLE CTCParamsPhysicsBase (engine/CTCParamsPhysicsBase.h)
+0080c250   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+0080c250   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+0080c250   RELOCATION_MATCH PASS   CTCDExplosion::Construct
+00820cc0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00820cc0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00820cc0   WARN SHARED_HEADER_AVAILABLE CHeightMap (engine/CHeightMap.h)
+00820cc0   WARN SHARED_HEADER_AVAILABLE CIDrawMap (engine/CIDrawMap.h)
+00820cc0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00820cc0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00820cc0   RELOCATION_MATCH PASS   CMap::CMap
+008224e0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+008224e0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+008224e0   WARN SHARED_HEADER_AVAILABLE CHeightMap (engine/CHeightMap.h)
+008224e0   WARN SHARED_HEADER_AVAILABLE CIDrawMap (engine/CIDrawMap.h)
+008224e0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+008224e0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+008224e0   RELOCATION_MATCH PASS   CMap::CMap
+00842460   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00842460   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00842460   RELOCATION_MATCH PASS   CCreatureAction_ActivateZTarget::CCreatureAction_ActivateZTarget
+00843f50   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00843f50   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00843f50   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00843f50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ActivateQuest (engine/CCreatureAction_ActivateQuest.h)
+00843f50   RELOCATION_MATCH PASS   CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest
+00854610   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00854610   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00854610   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritHitResponse (engine/CCreatureAction_SpiritHitResponse.h)
+00854610   RELOCATION_MATCH PASS   CCreatureAction_SpiritHitResponse::CCreatureAction_SpiritHitResponse
+00854660   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00854660   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00854660   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritReturnToHero (engine/CCreatureAction_SpiritReturnToHero.h)
+00854660   RELOCATION_MATCH PASS   CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero
+008546c0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008546c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008546c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritAttack (engine/CCreatureAction_SpiritAttack.h)
+008546c0   RELOCATION_MATCH PASS   CCreatureAction_SpiritAttack::CCreatureAction_SpiritAttack
+00857f30   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00857f30   WARN RELOC_NAME: ?InitialiseStrikeState@CCombatActionBase@@QAEXXZ -> 008561c0 labelled 'CCombatActionBase::ResetStrikeState'
+00857f30   RELOCATION_MATCH PASS   CCombatActionBase::CCombatActionBase
+00885f50   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00885f50   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00885f50   WARN RELOC_NAME: ?GetSurfaceExtents@@YI?AVC2DExtentsI@@ABVC2DCoordI@@ABVCPixelFormat@@@Z -> 009f3220 labelled 'CanMove'
+00885f50   RELOCATION_MATCH PASS   NEnvironmentInternal::CEnvironmentLookupTexture::CEnvironmentLookupTexture
+008a8e40   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008a8e40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008a8e40   RELOCATION_MATCH PASS   CGameScriptInterface::EntityDecapitate
+008f63c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+008f63c0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell (engine/CHeightMapCell.h)
+008f63c0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+008f63c0   WARN SHARED_HEADER_AVAILABLE CHeightMap (engine/CHeightMap.h)
+008f63c0   RELOCATION_MATCH PASS   CHeightMap::CHeightMap
+00904e20   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00904e20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00904e20   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+00904e20   RELOCATION_MATCH PASS   CScriptGameResourceObjectScriptedThing::DropGenericBox
+00905360   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00905360   RELOCATION_MATCH PASS   NTCScriptedControl::CActionPerformExpression::CActionPerformExpression
+009211d0   RELOCATION_MATCH PASS   CAIStateGroup_BeetleToggleHover::Update
+00951b20   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonTakeOffIntoFlying (engine/CCreatureAction_DragonTakeOffIntoFlying.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackDragon (engine/CAIStateGroup_JackDragon.h)
+00951b20   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::FlyOutOfGround
+009568e0   WARN STANDIN_LEAF ??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z (catalog CCreatureAction_ThrowShotObject::`scalar_deleting_destructor'; names another function)
+009568e0   RELOCATION_MATCH PASS   CCreatureAction_ThrowShotObject::`scalar_deleting_destructor'
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverHornetQueenTakeDamage (engine/CAIStateGroup_HoverHornetQueenTakeDamage.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0095b280   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonRoar (engine/CCreatureAction_DragonRoar.h)
+0095b280   WARN RELOC_NAME: ?IsCombatant@CThing@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0095b280   WARN RELOC_NAME: ??0CCreatureAction_DragonRoar@@QAE@PAVCThing@@0@Z -> 0095cac0 labelled 'CCreatureAction_WaspQueenLashOutAttack::CCreatureAction_WaspQueenLashOutAttack'
+0095b280   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueenTakeDamage::Update
+00982c70   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00982c70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00982c70   RELOCATION_MATCH PASS   CCreatureAction_BeetleLand::CCreatureAction_BeetleLand
+0098ab00   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0098ab00   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+0098ab00   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool (engine/CSimpleMemoryPool.h)
+0098ab00   WARN SHARED_HEADER_AVAILABLE CPixelShader (engine/CPixelShader.h)
+0098ab00   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+0098ab00   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+0098ab00   RELOCATION_MATCH PASS   CShaderRenderManager::CShaderRenderManager
+0098f3a0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0098f3a0   WARN RELOC_NAME: ?ThreadProc@CThreadedFileManager@@SAXPAX@Z -> 0098f380 labelled 'CThreadedFileManager::BeginThread'
+0098f3a0   WARN RELOC_ALIAS: __beginthread -> 00bfed3a is the import thunk 'MSVCR71.DLL::_beginthread'
+0098f3a0   RELOCATION_MATCH PASS   CThreadedFileManager::CThreadedFileManager
+00991910   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00991910   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00991910   WARN SHARED_HEADER_AVAILABLE CResourceBank (engine/CResourceBank.h)
+00991910   WARN SHARED_HEADER_AVAILABLE CASoundManager (engine/CASoundManager.h)
+00991910   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+00991910   RELOCATION_MATCH PASS   CASoundManager::CASoundManager
+00994700   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00994700   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00994700   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream (engine/CFileDataInputStream.h)
+00994700   RELOCATION_MATCH PASS   CFileDataInputStream::CFileDataInputStream
+00994930   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00994930   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00994930   RELOCATION_MATCH PASS   CMemoryDataInputStream::CMemoryDataInputStream
+00995dc0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00995dc0   WARN SHARED_HEADER_AVAILABLE CDataStream (engine/CDataStream.h)
+00995dc0   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::CCompressedMemoryDataInputStream
+00995ee0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00995ee0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00995ee0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00995ee0   RELOCATION_MATCH PASS   CMemoryDataInputStream::CMemoryDataInputStream
+00995f50   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00995f50   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00995f50   RELOCATION_MATCH PASS   CMemoryDataInputStream::CMemoryDataInputStream
+00996990   WARN SHARED_HEADER_AVAILABLE CACompressor (engine/CACompressor.h)
+00996990   WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)
+00996990   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00996990   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00996990   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::CCompressedMemoryDataInputStream
+00996af0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00996af0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00996af0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00996af0   RELOCATION_MATCH PASS   CMemoryDataOutputStream::CMemoryDataOutputStream
+00996be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00996be0   WARN SHARED_HEADER_AVAILABLE CDataStream (engine/CDataStream.h)
+00996be0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00996be0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00996be0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00996be0   WARN RELOC_NAME: ?ReadWithChunking@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z -> 009964e0 labelled 'CDataInputStream::CopyTo'
+00996be0   RELOCATION_MATCH PASS   CDataInputStream::ReadString
+009a4140   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009a4140   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+009a4140   RELOCATION_MATCH PASS   CFontBank::CFontBank
+009b08c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream (engine/CFileDataInputStream.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009b08c0   RELOCATION_MATCH PASS   CDefinitionManager::Compile
+009bdb00   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009bdb00   WARN SHARED_HEADER_AVAILABLE CXMVPlayer (engine/CXMVPlayer.h)
+009bdb00   RELOCATION_MATCH PASS   CXMVPlayer::CXMVPlayer
+009cd480   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009cd480   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray (engine/CPackedUIntArray.h)
+009cd480   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009cd480   RELOCATION_MATCH PASS   CBankFile::CBankFile
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009ce8d0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009ce8d0   WARN RELOC_NAME: ?WriteZeros@CBankFile@@QAEXK@Z -> 009ccb20 labelled 'CBankFile::WritePadding'
+009ce8d0   RELOCATION_MATCH PASS   CBankFile::BeginUpdateEntries
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CFileDataOutputStream (engine/CFileDataOutputStream.h)
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+009d4ce0   RELOCATION_MATCH PASS   CDefStringTable::SaveTable
+009e27e0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009e27e0   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+009e27e0   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+009e27e0   RELOCATION_MATCH PASS   CVertexBufferBase::CVertexBufferBase
+009e5c90   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009e5c90   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009e5c90   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+009e5c90   WARN RELOC_NAME: ?clear@CSymbolVectorMap@@QAEXXZ -> 009e79e0 labelled 'CVectorMap::DeallocateMemory'
+009e5c90   WARN RELOC_NAME: ?SortSymbols@@YIXPAUSSymbolEntry@@0UCSymbolCompare@@@Z -> 009e7e40 labelled 'std::sort<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, CCompareString<CSymbolMap::CSymbolInfo>>'
+009e5c90   RELOCATION_MATCH PASS   CSymbolMap::LoadFromFile
+009e99c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009e99c0   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+009e99c0   RELOCATION_MATCH PASS   CMemoryFile::CMemoryFile
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CChecksum (engine/CChecksum.h)
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009f5bd0   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+009f5bd0   RELOCATION_MATCH PASS   CInputManager::CInputManager
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CResourceBank (engine/CResourceBank.h)
+009fc5f0   RELOCATION_MATCH PASS   CResourceBank::CResourceBank
+00a05970   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a05970   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00a05970   RELOCATION_MATCH PASS   CRenderStateManager::CRenderStateManager
+00a0d290   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a0d290   WARN SHARED_HEADER_AVAILABLE CAInputProcess (engine/CAInputProcess.h)
+00a0d290   RELOCATION_MATCH PASS   CAInputProcess::CAInputProcess
+00a373b0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a373b0   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+00a373b0   WARN SHARED_HEADER_AVAILABLE CClassTypeInfo (engine/CClassTypeInfo.h)
+00a373b0   WARN SHARED_HEADER_AVAILABLE CClassFactory (engine/CClassFactory.h)
+00a373b0   RELOCATION_MATCH PASS   CClassFactory::CClassFactory
+00a5d870   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a5d870   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a5d870   WARN SHARED_HEADER_AVAILABLE CShaderResource (engine/CShaderResource.h)
+00a5d870   RELOCATION_MATCH PASS   CShaderResource::CShaderResource
+00a5f430   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a5f430   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBankEntry (engine/CStreamingFontDataBankEntry.h)
+00a5f430   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00a5f430   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a5f430   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBank (engine/CStreamingFontDataBank.h)
+00a5f430   RELOCATION_MATCH PASS   CStreamingFontDataBank::NotifyEntryAdded
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CDateAndTime (engine/CDateAndTime.h)
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CDataStream (engine/CDataStream.h)
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00a60aa0   RELOCATION_MATCH PASS   CChecksumCacheFile::Save
+00a63020   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00a63020   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a63020   WARN SHARED_HEADER_AVAILABLE CShaderBase (engine/CShaderBase.h)
+00a63020   RELOCATION_MATCH PASS   CVertexShader::CVertexShader
+00a636c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a636c0   WARN SHARED_HEADER_AVAILABLE CFontDataBankEntry (engine/CFontDataBankEntry.h)
+00a636c0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a636c0   WARN SHARED_HEADER_AVAILABLE CFontDataBank (engine/CFontDataBank.h)
+00a636c0   RELOCATION_MATCH PASS   CFontDataBank::NotifyEntryAdded
+00a66930   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a66930   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a66930   WARN SHARED_HEADER_AVAILABLE CMaintainedEvent (engine/CMaintainedEvent.h)
+00a66930   WARN SHARED_HEADER_AVAILABLE CKeyboard (engine/CKeyboard.h)
+00a66930   RELOCATION_MATCH PASS   CKeyboard::CKeyboard
+00a66f20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a66f20   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a66f20   WARN SHARED_HEADER_AVAILABLE CMaintainedEvent (engine/CMaintainedEvent.h)
+00a66f20   WARN SHARED_HEADER_AVAILABLE CMouse (engine/CMouse.h)
+00a66f20   RELOCATION_MATCH PASS   CMouse::CMouse
+00a6a360   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a6a360   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00a6a360   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00a6a360   WARN SHARED_HEADER_AVAILABLE CTextureManager (engine/CTextureManager.h)
+00a6a360   RELOCATION_MATCH PASS   CTextureManager::CTextureManager
+00a76370   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a76370   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a76370   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode (engine/CANavQuadTreeNode.h)
+00a76370   RELOCATION_MATCH PASS   CANavQuadTreeNode::CANavQuadTreeNode
+00a768c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a768c0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode (engine/CANavQuadTreeNode.h)
+00a768c0   WARN SHARED_HEADER_AVAILABLE CNavBlockedQuadTreeNode (engine/CNavBlockedQuadTreeNode.h)
+00a768c0   RELOCATION_MATCH PASS   CNavBlockedQuadTreeNode::CNavBlockedQuadTreeNode
+00a772d0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a772d0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00a772d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a772d0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode (engine/CANavQuadTreeNode.h)
+00a772d0   WARN SHARED_HEADER_AVAILABLE CNavRegion (engine/CNavRegion.h)
+00a772d0   WARN SHARED_HEADER_AVAILABLE CNavNavigableLeafNode (engine/CNavNavigableLeafNode.h)
+00a772d0   RELOCATION_MATCH PASS   CNavNavigableLeafNode::CNavNavigableLeafNode
+00a98860   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a98860   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a98860   RELOCATION_MATCH PASS   CTemporaryBuffer::CTemporaryBuffer
+00aa8360   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00aa8360   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00aa8360   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00aa8360   RELOCATION_MATCH PASS   CChunkedFileSuperChunk::CChunkedFileSuperChunk
+00b0a210   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00b0a210   WARN SHARED_HEADER_AVAILABLE CRandomAcceleration (engine/CRandomAcceleration.h)
+00b0a210   RELOCATION_MATCH PASS   NParticleEngine::CRandomAcceleration::CRandomAcceleration
+00b81ad0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00b81ad0   WARN SHARED_HEADER_AVAILABLE CEngineSimulationBase (engine/CEngineSimulationBase.h)
+00b81ad0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b81ad0   WARN SHARED_HEADER_AVAILABLE CEngineClothSimulationMeshBase (engine/CEngineClothSimulationMeshBase.h)
+00b81ad0   RELOCATION_MATCH PASS   CEngineClothSimulationMeshBase::CEngineClothSimulationMeshBase
+00b94a80   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00b94a80   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b94a80   RELOCATION_MATCH PASS   CEngineScene::CEngineScene
+00be26c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00be26c0   RELOCATION_MATCH PASS   CLocalDetailObjectCollectionType::CLocalDetailObjectCollectionType
+00cd4ac0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00cd4ac0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00cd4ac0   WARN SHARED_HEADER_AVAILABLE CEmptyData (engine/CEmptyData.h)
+00cd4ac0   RELOCATION_MATCH PASS   NScript::CEmptyData::Alloc
+00cd4b20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00cd4b20   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00cd4b20   WARN SHARED_HEADER_AVAILABLE Cjoss_test_scriptsData (engine/Cjoss_test_scriptsData.h)
+00cd4b20   RELOCATION_MATCH PASS   NScript::Cjoss_test_scriptsData::Alloc
+00cd4b80   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00cd4b80   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00cd4b80   WARN SHARED_HEADER_AVAILABLE CDanyalTestScriptsData (engine/CDanyalTestScriptsData.h)
+00cd4b80   RELOCATION_MATCH PASS   NScript::CDanyalTestScriptsData::Alloc
+
+WINS: 78
+  00434e10 RELOCATION_MATCH CDisplayEngine::CDisplayEngine
+  00485420 RELOCATION_MATCH CMemoryDataInputStream::??_GCMemoryDataInputStream@@UAEPAXI@Z
+  00485cf1 RELOCATION_MATCH CPersistContextReadSection::??1CPersistContextReadSection@@QAE@XZ
+  004a67d0 RELOCATION_MATCH CWorld::CWorld
+  0055d070 RELOCATION_MATCH CTCPhotojournalCapture::?GetDescription@CTCPhotojournalCapture@@SI?AVCWideString@@ABV2@@Z
+  0064b6da RELOCATION_MATCH NPlayerGui::CDraw2DText::AddText
+  00686800 RELOCATION_MATCH CTCBase::??0CTCBase@@QAE@AAVCThing@@@Z
+  00693c70 RELOCATION_MATCH CCreatureActionBase::??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z
+  0069f230 RELOCATION_MATCH CCreatureAction_UseObject::CCreatureAction_UseObject
+  006e7740 RELOCATION_MATCH CGameScriptInterface::??0CGameScriptInterface
+  00714730 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::OnCleanup
+  00715710 RELOCATION_MATCH NTCScriptedControl::CActionFollowCreature::?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+  00778d60 RELOCATION_MATCH CTCDCameraPoint::?Construct@CTCDCameraPoint@@QAEXABVC3DVector@@@Z
+  00779d20 RELOCATION_MATCH CTCDExperienceOrb::Construct
+  0080c250 RELOCATION_MATCH CTCDExplosion::?Construct@CTCDExplosion@@AAEXABVC3DVector@@@Z
+  00820cc0 RELOCATION_MATCH CMap::??0CMap
+  008224e0 RELOCATION_MATCH CMap::??0CMap
+  00842460 RELOCATION_MATCH CCreatureAction_ActivateZTarget::CCreatureAction_ActivateZTarget
+  00843f50 RELOCATION_MATCH CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest
+  00854610 RELOCATION_MATCH CCreatureAction_SpiritHitResponse::CCreatureAction_SpiritHitResponse
+  00854660 RELOCATION_MATCH CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero
+  008546c0 RELOCATION_MATCH CCreatureAction_SpiritAttack::CCreatureAction_SpiritAttack
+  00857f30 RELOCATION_MATCH CCombatActionBase::??0CCombatActionBase
+  00885f50 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentLookupTexture::??0CEnvironmentLookupTexture
+  008a8e40 RELOCATION_MATCH CGameScriptInterface::?EntityDecapitate@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008f63c0 RELOCATION_MATCH CHeightMap::??0CHeightMap
+  00904e20 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::DropGenericBox
+  00905360 RELOCATION_MATCH NTCScriptedControl::CActionPerformExpression::??0CActionPerformExpression
+  009211d0 RELOCATION_MATCH CAIStateGroup_BeetleToggleHover::?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ
+  00951b20 RELOCATION_MATCH CAIStateGroup_JackDragon::?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ
+  009568e0 RELOCATION_MATCH CCreatureAction_ThrowShotObject::??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z
+  0095b280 RELOCATION_MATCH CAIStateGroup_HoverHornetQueenTakeDamage::Update
+  00982c70 RELOCATION_MATCH CCreatureAction_BeetleLand::??0CCreatureAction_BeetleLand@@QAE@AAVCThingCreatureBase@@@Z
+  0098ab00 RELOCATION_MATCH CShaderRenderManager::??0CShaderRenderManager
+  0098f3a0 RELOCATION_MATCH CThreadedFileManager::??0CThreadedFileManager
+  00991910 RELOCATION_MATCH CASoundManager::??0CASoundManager@@QAE@ABUCSoundManagerInit@@_N@Z
+  00994700 RELOCATION_MATCH CFileDataInputStream::??0CFileDataInputStream
+  00994930 RELOCATION_MATCH CMemoryDataInputStream::??0CMemoryDataInputStream@@QAE@PBXK@Z
+  00995dc0 RELOCATION_MATCH CCompressedMemoryDataInputStream::CCompressedMemoryDataInputStream
+  00995ee0 RELOCATION_MATCH CMemoryDataInputStream::CMemoryDataInputStream
+  00995f50 RELOCATION_MATCH CMemoryDataInputStream::CMemoryDataInputStream
+  00996990 RELOCATION_MATCH CCompressedMemoryDataInputStream::??0CCompressedMemoryDataInputStream
+  00996af0 RELOCATION_MATCH CMemoryDataOutputStream::CMemoryDataOutputStream
+  00996be0 RELOCATION_MATCH CDataInputStream::ReadString
+  009a4140 RELOCATION_MATCH CFontBank::CFontBank
+  009b08c0 RELOCATION_MATCH CDefinitionManager::?Compile@CDefinitionManager@@QAEXXZ
+  009bdb00 RELOCATION_MATCH CXMVPlayer::??0CXMVPlayer
+  009cd480 RELOCATION_MATCH CBankFile::??0CBankFile
+  009ce8d0 RELOCATION_MATCH CBankFile::BeginUpdateEntries
+  009d4ce0 RELOCATION_MATCH CDefStringTable::?SaveTable@CDefStringTable@@QAEX_N@Z
+  009e27e0 RELOCATION_MATCH CVertexBufferBase::CVertexBufferBase
+  009e5c90 RELOCATION_MATCH CSymbolMap::?LoadFromFile@CSymbolMap@@QAE_NABVCWideString@@@Z
+  009e99c0 RELOCATION_MATCH CMemoryFile::CMemoryFile
+  009f5bd0 RELOCATION_MATCH CInputManager::??0CInputManager
+  009fc5f0 RELOCATION_MATCH CResourceBank::CResourceBank
+  00a05970 RELOCATION_MATCH CRenderStateManager::CRenderStateManager
+  00a0d290 RELOCATION_MATCH CAInputProcess::CAInputProcess
+  00a373b0 RELOCATION_MATCH CClassFactory::??0CClassFactory@@IAE@E@Z
+  00a5d870 RELOCATION_MATCH CShaderResource::??0CShaderResource
+  00a5f430 RELOCATION_MATCH CStreamingFontDataBank::?NotifyEntryAdded@CStreamingFontDataBank@@MAEXKKABV?$CArray@D@@@Z
+  00a60aa0 RELOCATION_MATCH CChecksumCacheFile::?Save@CChecksumCacheFile@@AAEXXZ
+  00a63020 RELOCATION_MATCH CVertexShader::CVertexShader
+  00a636c0 RELOCATION_MATCH CFontDataBank::?NotifyEntryAdded@CFontDataBank@@MAEXKKABV?$CArray@D@@@Z
+  00a66930 RELOCATION_MATCH CKeyboard::??0CKeyboard@@QAE@AAVCInputManager@@_N@Z
+  00a66f20 RELOCATION_MATCH CMouse::??0CMouse@@QAE@AAVCInputManager@@_N@Z
+  00a6a360 RELOCATION_MATCH CTextureManager::??0CTextureManager
+  00a76370 RELOCATION_MATCH CANavQuadTreeNode::CANavQuadTreeNode
+  00a768c0 RELOCATION_MATCH CNavBlockedQuadTreeNode::CNavBlockedQuadTreeNode
+  00a772d0 RELOCATION_MATCH CNavNavigableLeafNode::??0CNavNavigableLeafNode
+  00a98860 RELOCATION_MATCH CTemporaryBuffer::CTemporaryBuffer
+  00aa8360 RELOCATION_MATCH CChunkedFileSuperChunk::??0CChunkedFileSuperChunk
+  00b0a210 RELOCATION_MATCH NParticleEngine::CRandomAcceleration::??0CRandomAcceleration
+  00b81ad0 RELOCATION_MATCH CEngineClothSimulationMeshBase::??0CEngineClothSimulationMeshBase
+  00b94a80 RELOCATION_MATCH CEngineScene::??0CEngineScene@@QAE@MKMMABVCCharString@@@Z
+  00be26c0 RELOCATION_MATCH CLocalDetailObjectCollectionType::CLocalDetailObjectCollectionType
+  00cd4ac0 RELOCATION_MATCH NScript::CEmptyData::?Alloc@CEmptyData@NScript@@SIPAVCScriptDataBase@@XZ
+  00cd4b20 RELOCATION_MATCH NScript::Cjoss_test_scriptsData::?Alloc@Cjoss_test_scriptsData@NScript@@SIPAVCScriptDataBase@@XZ
+  00cd4b80 RELOCATION_MATCH NScript::CDanyalTestScriptsData::?Alloc@CDanyalTestScriptsData@NScript@@SIPAVCScriptDataBase@@XZ

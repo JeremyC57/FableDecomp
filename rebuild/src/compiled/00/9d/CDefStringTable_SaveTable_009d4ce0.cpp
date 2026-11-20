@@ -19,11 +19,13 @@
 // Shape: the lock branch is the inlined STLport `map::clear()` (`if (count) { _M_erase(root); leftmost = header;
 // root = 0; rightmost = header; count = 0; }`, the header re-read after each store) and then the Locked store, all
 // before the stream's and the file's inline destructors.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
 public:
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 class CWideString { public:
     void* PStringData;

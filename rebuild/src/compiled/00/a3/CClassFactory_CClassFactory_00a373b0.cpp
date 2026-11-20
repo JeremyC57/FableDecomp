@@ -12,11 +12,13 @@
 // NoAllocatedClasses +0x14, ClassList +0x18 (4-byte STLport list: header-node pointer).
 // Shape: the vector is the STLport `_Vector_base` model (ebx zero words); the list is `_List_base`: the proxy nulls the
 // node word, the header is malloc'd and linked to itself; NoAllocatedClasses is cleared in the body, before the resize.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
-    CBaseClassNonCopyable();                                 // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

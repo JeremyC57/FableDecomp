@@ -21,6 +21,8 @@
 // Shape: the file object sets its open flag in the constructor BODY (an init-list store is scheduled before the Open
 // pushes); the result flag is a frame byte set to `true` only on a good parse; the set clear is STLport's inline
 // `_Rb_tree::clear`; the buffer is `n ? malloc(n) : 0` plus an inline memset; the file object's user destructor closes it.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 extern "C" void* __cdecl memset(void* dst, int value, unsigned int size);
@@ -41,7 +43,7 @@ void __fastcall GFRemoveComments(char* buffer, const char* start, const char* en
 class CBaseClassNonCopyable {
 public:
     virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
-    CBaseClassNonCopyable();                                               // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                               // 0x0099A2F0
 };
 enum FileAccessType { FILE_ACCESS_NULL = 0, FILE_ACCESS_READ = 1, FILE_ACCESS_READ_WRITE = 2, FILE_ACCESS_READ_WRITE_CREATE = 3, FILE_ACCESS_CREATE = 4 };   // engine/CAFile.h
 class CASuspendableProcess;

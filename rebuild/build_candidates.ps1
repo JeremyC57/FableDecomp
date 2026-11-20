@@ -276469,6 +276469,7 @@ $catalog = @(
         Source = '00/9b/CDefinitionManager_Compile_009b08c0.cpp'
         TestSource = '00/9b/CDefinitionManager_Compile_009b08c0_test.cpp'
         PassPattern = '009b08c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '008f4d60'

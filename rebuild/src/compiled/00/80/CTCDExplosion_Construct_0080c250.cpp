@@ -14,6 +14,8 @@
 // The position member is copied by C3DVector's user copy ctor (the implicit copy picks other registers).
 // Shape: CBaseClassNonCopyable is the polymorphic root (its ctor stores a vtable), so the vptr is shared at +0; the params object is a stack local built by an inline ctor over the out-of-line non-copyable base (position copied
 // as three dwords, then the vtable store, then the set's six constant floats); its implicit dtor calls the base dtor only.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
@@ -24,7 +26,7 @@ struct CBaseClassNonCopyable {                  // polymorphic: its out-of-line 
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
 public:
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
 };
 class CTCParamsBase : public CBaseClassNonCopyable { public:
 };

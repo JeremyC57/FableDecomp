@@ -1,0 +1,5 @@
+GREW 01238c6c 15 -> 16 ??_7CThingPointer@@6B@ row 00693c70 SAME
+GREW 00994700 1 -> 2 ??0CFileDataInputStream@@QAE@PAVCDiskFileWin32@@K@Z row 009b08c0 SAME
+GREW 00994780 1 -> 2 ??1CFileDataInputStream@@QAE@XZ row 009b08c0 SAME
+GREW f8db543c 0 -> 1 ??_7CNavBlockedQuadTreeNode@@6B@ row 00a768c0 SAME
+shrank [('0099a300', 30, 29), ('0099a2f0', 3, 2), ('0129dd3c', 1, 0), ('00543910', 2, 1), ('00693c70', 2, 1), ('0066a560', 2, 1)]

@@ -1,5 +1,8 @@
-// CCreatureAction_BeetleLand::CCreatureAction_BeetleLand(CThingCreatureBase*) -- base CCombatActionBase(owner, 0, zeroed CSoundPair), own vtable (0x01299734, rtti-vtables.tsv), then the animation name "LAND"
+// CCreatureAction_BeetleLand::CCreatureAction_BeetleLand(CThingCreatureBase&) -- base CCombatActionBase(owner, 0, zeroed CSoundPair), own vtable (0x01299734, rtti-vtables.tsv), then the animation name "LAND"
+// Leaf: ??0CCreatureAction_BeetleLand@@QAE@AAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00982C70, length 96 bytes.
+// NF181 (2026-11-20, q11740): creature by reference (Ego_r.pdb 0x009A3280 + FableWin.pdb 0x02C809F0
+//   ??0CCreatureAction_BeetleLand@@QAE@AAVCThingCreatureBase@@@Z); was the pointer form.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "LAND"), CCombatActionBase::SetCombatAnimation
 // @ 0x008574D0 (manifest label "CTCInGameMenu::SetPDef" is propagated; the landed combat-action shells name it so),
@@ -33,11 +36,11 @@ public:
 
 class CCreatureAction_BeetleLand : public CCombatActionBase { public:             // vtable 0x01299734; adds no data
     virtual void v00();
-    CCreatureAction_BeetleLand(CThingCreatureBase* owner);
+    CCreatureAction_BeetleLand(CThingCreatureBase& owner);
 };
 
-CCreatureAction_BeetleLand::CCreatureAction_BeetleLand(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 0, CSoundPair())
+CCreatureAction_BeetleLand::CCreatureAction_BeetleLand(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 0, CSoundPair())
 {
     {
         CCharString name("LAND");         // conversion-constructor length default (-1), re-addressed with lea

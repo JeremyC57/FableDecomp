@@ -1,9 +1,11 @@
 // CMemoryDataOutputStream::CMemoryDataOutputStream() -- the CDataOutputStream base inline (CBaseClassNonCopyable @ 0x0099A2F0, its vtable 0x0129A6E0, its line terminator CCharString at +4 built from "\r\n" @ 0x012397F8 with CCharString(const char*, long) @ 0x0099EBF0), this class's vtable (0x0129A788), then the four dwords +8..+0x14 cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00996AF0, length 64 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CCharString::CCharString(const char*, long) @ 0x0099EBF0. Shape: `this` in esi, the base vtable stored before the string constructor call, one zero register, `ret`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 class CCharString { public:
     void* m_pStringData;

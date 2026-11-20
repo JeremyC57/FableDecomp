@@ -8,7 +8,7 @@
 // ~CCombatActionBase 0x0062E900. No null test on t.
 // Layout: CThing flag bytes +0x6c / +0x91 and CCombatActionBase as the landed 0x008C92C0 model; UsingComponents +0x20 as
 // the matched 0x0089A330 row. Interface 0xd1 (CTCDecapitation is the likely class), the +0xbc flag and the action class
-// (ctor 0x0066A560) are not confirmed; the action is modelled as CCreatureAction_Decapitate.
+// (ctor 0x0066A560) are not confirmed; the action class is CCombatAction_GenericResponseToDecapitation (NF181, PDB ctor).
 // Shape: /O2 (16-aligned entry).
 // Name fix (agentNF7 2026-11-10): SetCurrentAction 0x006644F0 takes const CCreatureActionBase& (Ego_r.pdb); the local CCombatActionBase stand-in (no base) replaced by the shared engine/CCombatActionBase.h, so the temporary's dtor binds ??1CCombatActionBase@@UAE@XZ 0x0062E900.
 class CThing { public:
@@ -35,9 +35,11 @@ class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CCreatureAction_Decapitate : CCombatActionBase {       // retail sizeof 0x114 (name not recovered)
-    CCreatureAction_Decapitate(CThing* victim);          // 0x0066A560
-};
+// NF181 (2026-11-20, q4263): the action is the shared engine/CCombatAction_GenericResponseToDecapitation.h class (Ego_r.pdb
+//   0x00545DC0 + FableWin.pdb 0x01D91640 ??0CCombatAction_GenericResponseToDecapitation@@QAE@AAVCThingCreatureBase@@@Z; the
+//   self row 0x0066A560 and landed 0x00667450 bind it), replacing the CCreatureAction_Decapitate(CThing*) stand-in.
+#define FABLE_RETAIL_CCOMBATACTIONGENERICRESPONSETODECAPITATION
+#include "engine/CCombatAction_GenericResponseToDecapitation.h"
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
@@ -54,7 +56,7 @@ void CGameScriptInterface::EntityDecapitate(const CScriptThing& thing) const
         if (t->HasTC(0xd1) && (t->m_flags6c & 0xf) && (t->m_flagsbc & 2))
         {
             CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(t);
-            creature->SetCurrentAction(CCreatureAction_Decapitate(t));
+            creature->SetCurrentAction(CCombatAction_GenericResponseToDecapitation(*creature));
         }
     }
 }

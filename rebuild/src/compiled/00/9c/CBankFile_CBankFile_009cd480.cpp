@@ -19,13 +19,15 @@
 // Leaf: ??0CBankFile
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
 struct CBaseClassNonCopyable {
     protected:
     virtual ~CBaseClassNonCopyable();
     public:
-    CBaseClassNonCopyable();                         // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                         // 0x0099A2F0
 };
 
 class CCharString { public:

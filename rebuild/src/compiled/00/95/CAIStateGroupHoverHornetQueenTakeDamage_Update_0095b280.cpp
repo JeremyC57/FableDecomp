@@ -85,12 +85,12 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 class CCreatureActionBase { public:
-    void* __vftable;
+    virtual ~CCreatureActionBase();             // vptr +0x00 (Ego_r.pdb ??1CCreatureActionBase@@UAE@XZ: virtual)
     unsigned char _body[0xa4];                  // +0x04..+0xa7
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();               // 0x0062E900 (NF181 q4411: virtual, Ego_r.pdb / FableWin.pdb ??1CCombatActionBase@@UAE@XZ)
 };
 class CCreatureAction_DragonRoar : public CCombatActionBase { public:
     CCreatureAction_DragonRoar(CThing* creature, CThing* target);   // 0x0095CAC0

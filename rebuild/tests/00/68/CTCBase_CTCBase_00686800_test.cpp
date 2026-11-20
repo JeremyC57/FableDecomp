@@ -5,7 +5,7 @@
 #include <new>
 static int g_base, g_dtor;
 class CThing { public: int dummy; };
-class CBaseClassNonCopyable { public: CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); };
+class CBaseClassNonCopyable { protected: CBaseClassNonCopyable(); public: virtual ~CBaseClassNonCopyable(); };   // NF181: ctor protected (IAE), as the row
 CBaseClassNonCopyable::CBaseClassNonCopyable() { ++g_base; }
 CBaseClassNonCopyable::~CBaseClassNonCopyable() { }
 class CTCBase : public CBaseClassNonCopyable {

@@ -17,6 +17,8 @@
 //   the 8-byte temporary gives retail's `and esp,-8` aligned frame (VC7.1 still loads the value from the constant
 //   pool); a plain double local or literal leaves the frame unaligned. In the inner loop the device id is cleared
 //   before the time is stored (that order gives retail's edx = time array, ecx = id array).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);                                  // 0x00BFEA0E
 extern "C" unsigned long __cdecl _beginthread(void (__cdecl* start)(void*), unsigned int stackSize, void* arg);   // 0x00BFED3A
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(void* section);   // IAT 0x0143FEE4
@@ -72,7 +74,7 @@ struct CRITICAL_SECTION_MODEL {                             // RTL_CRITICAL_SECT
 };
 
 struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                                // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

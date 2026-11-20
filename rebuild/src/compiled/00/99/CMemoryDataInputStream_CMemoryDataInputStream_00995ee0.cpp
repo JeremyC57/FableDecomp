@@ -9,9 +9,11 @@
 // CArray<char> Data (+8, STLport {start, finish, end_of_storage}): GetData() is
 // `size() ? start : (char*)this` (24e select), size() is finish - start. (With the two bases listed
 // directly in the derived init list the arguments are evaluated after the first base call.)
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 
 struct CArrayChar {                                // CArray<char> (STLport vector<char>)

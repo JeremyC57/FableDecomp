@@ -13,11 +13,13 @@
 // Shape: the 5-byte ChunkType cleared by an inline memset (`mov [edi],edx ; mov [edi+4],dl`, the intrinsic's own zero
 // and destination copy), the type copied by a 4-byte memcpy whose store lands after the derived vtable store; the
 // derived members all share the eax zero of the base's Parent store.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include <string.h>
 
 struct CBaseClassNonCopyable {                  // vtable 0x0129A7C4
     virtual ~CBaseClassNonCopyable();
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
 };
 
 #include "engine/CArray.h"

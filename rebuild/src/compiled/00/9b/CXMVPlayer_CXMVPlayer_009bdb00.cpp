@@ -10,10 +10,12 @@
 // list = the sentinel pointer only; node = links + 28-byte CSubTitle = 0x24).
 // Shape: vtable store, then the counted pointer's inline zeroing constructor, then the STLport list
 // constructor (`node = 0 ; n = allocate ; n->next = n->prev = n ; node = n`).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 struct CBaseClassNonCopyable {                              // vtable 0x0129A7C4
-    CBaseClassNonCopyable();                                // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                // 0x0099A2F0
     virtual void v00();
 };
 

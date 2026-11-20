@@ -41,7 +41,7 @@ public:
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
-    CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long a, long b);   // 0x00693C70
+    CCreatureActionBase(CThingCreatureBase& creature, const CSoundPair& sounds, long a, long b);   // 0x00693C70 (NF181 q11676: creature by reference, Ego_r.pdb 0x0051B2E0 + FableWin.pdb 0x01DB5A50)
 };
 
 class CCreatureAction_UseObject : public CCreatureActionBase { public:
@@ -59,7 +59,7 @@ class CCreatureAction_UseObject : public CCreatureActionBase { public:
 };
 
 CCreatureAction_UseObject::CCreatureAction_UseObject(CThingCreatureBase* creature, CThing* usedThing, bool allowTurn)
-    : CCreatureActionBase(creature, CSoundPair(), 0, 0)
+    : CCreatureActionBase(*creature, CSoundPair(), 0, 0)
     , PUsedThing(usedThing)
     , PreviousPhysicsComponent(0)
     , Proximity(0)

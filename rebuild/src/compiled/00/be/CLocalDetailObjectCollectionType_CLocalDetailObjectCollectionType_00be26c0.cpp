@@ -1,13 +1,15 @@
 // CLocalDetailObjectCollectionType::CLocalDetailObjectCollectionType(const CLocalDetailObjectCollectionType& other) -- copy constructor: the CBaseClassNonCopyable base default-constructed (0x0099A2F0), this class's vtable (0x012A7D94), the seven dwords +4..+0x1c copied memberwise and the 13-dword block at +0x20 copied as a block (`rep movsd`)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE26C0, length 83 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Shape: `this` in ebx, the source in eax, the dwords moved in pairs through ecx/edx, `ret 4`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct SCollectionBlock_00be2680 {                 // 0x34 bytes of plain data at +0x20
     long m_words[13];
 };
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 
 class CLocalDetailObjectCollectionType : public CBaseClassNonCopyable { public:   // vtable 0x012A7D94

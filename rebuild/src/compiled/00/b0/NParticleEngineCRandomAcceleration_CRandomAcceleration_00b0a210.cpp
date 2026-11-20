@@ -10,11 +10,13 @@
 // Shape: each draw is the engine's linear-congruential step written back to the seed before and after the rotate
 // (seed = seed * 0x24A1 + 0x24DF; seed = GFROR13(seed)), the low byte stored; the indices are drawn before the time
 // offsets; OldOffset is assigned a zero C3DVector temporary (three frame words copied through registers).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "engine/C3DVector.h"
 long __fastcall GFROR13(unsigned long);  // 0x00497890
 
 struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                             // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                             // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

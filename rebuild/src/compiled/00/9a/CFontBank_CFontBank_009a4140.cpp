@@ -6,13 +6,15 @@
 // Layout from engine/CFontBank.h: FontHeight +0x04 (not initialised here), Name +0x08, PManager
 // +0x0c (not initialised here). The base runs, the vtable is stored, the name is constructed
 // out of line and `this` is returned.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "fable_string.h"
 
 class CFontManager;
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                // 0x0099A2F0
 };
 
 class CFontBank : public CBaseClassNonCopyable { public:  // vtable 0x0129AB38

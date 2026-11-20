@@ -51,7 +51,7 @@
 #include "engine/CAIStateGroup_BeetleToggleHover.h"
 
 class CCreatureAction_BeetleLand : public CCombatActionBase { public:
-    CCreatureAction_BeetleLand(CThingCreatureBase* creature);      // 0x00982C70
+    CCreatureAction_BeetleLand(CThingCreatureBase& creature);      // 0x00982C70 (NF181 q11740: by reference, Ego_r.pdb 0x009A3280 + FableWin.pdb 0x02C809F0)
 };
 
 class CCreatureAction_BeetleTakeOff : public CCombatActionBase { public:
@@ -61,7 +61,7 @@ class CCreatureAction_BeetleTakeOff : public CCombatActionBase { public:
 void CAIStateGroup_BeetleToggleHover::Update()
 {
     if (IsLanding) {
-        AIAction_PerformActionAndWait(CCreatureAction_BeetleLand(&GetCreature()), false);
+        AIAction_PerformActionAndWait(CCreatureAction_BeetleLand(GetCreature()), false);
     } else {
         AIAction_PerformActionAndWait(CCreatureAction_BeetleTakeOff(&GetCreature()), false);
     }

@@ -16,6 +16,8 @@
 //         CDiskFileWin32 as in the landed OpenFileReadWrite (0x1C bytes, Opened +0x14, Pathname +0x18).
 // Shape: the retail-mode arm returns with its own epilogue; Align(length) - length is the inline CBankFile::Align; the
 //        path parts are locals in SplitPath's argument order (drive, directory, name, extension) inside the `if`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 typedef unsigned short wchar16;
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
@@ -23,7 +25,7 @@ struct CBaseClassNonCopyable {
     protected:
     virtual ~CBaseClassNonCopyable();
     public:
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 
 class CWideString {

@@ -12,13 +12,15 @@
 // Shape: `while (index >= size()) push_back(0);` with the inline STLport push_back (placement new null test, the
 // zero value temporary and the __true_type tag both in the dead `index` slot, which retail addresses twice); the new
 // entry's ctor inline; the table store, then the base-class call.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 
 struct CBankFileEntryInfo;
 template <class T> class CArray;
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
-    CBaseClassNonCopyable();                        // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                        // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

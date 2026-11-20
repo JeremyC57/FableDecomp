@@ -7,6 +7,8 @@
 // Shape: base call, vtable, the position copied memberwise (ecx, edx: a user copy constructor;
 // a POD copy schedules the level byte store before Position.Y), the two byte
 // arguments, then LeafNode = true and Blocked = false, all in init-list order. `ret 0Ch`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}   // memberwise: one register per dword
@@ -16,7 +18,7 @@ struct CBaseClassNonCopyable {
     protected:
     virtual ~CBaseClassNonCopyable();
     public:
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
 };
 
 class CANavQuadTreeNode : public CBaseClassNonCopyable { public:

@@ -10,9 +10,11 @@
 // The Shaders CArray is an STLport vector built by its default constructor (_Vector_base(allocator_type()) with the
 // _STLP_alloc_proxy end-of-storage): that structure puts `lea ecx,[esi+18h]` after the third zero store as in retail
 // (a plain three-pointer CArray schedules it right after the first -- the 24i "lane gap").
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {                  // vtable 0x0129A7C4
     virtual ~CBaseClassNonCopyable();
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
 };
 
 class CShaderDataBank;

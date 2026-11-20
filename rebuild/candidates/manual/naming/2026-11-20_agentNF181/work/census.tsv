@@ -1,0 +1,355 @@
+target	row	status	bound
+0062e900	00739cc0	WRONG	?Dtor@CCreatureAction_BlockBroken@@QAEXXZ
+0062e900	007c9180	WRONG	??1CCreatureActionBase@N_0062e900@@UAE@XZ
+0062e900	007f05f0	WRONG	?Dtor@CCombatAction_GenericStrikeResponseKnockdownRecover@@QAEXXZ
+0062e900	00868350	WRONG	??1CBase_0062e900@@QAE@XZ
+0062e900	008c9690	WRONG	??1CBase_0062e900@@QAE@XZ
+0062e900	008ced90	WRONG	??1CBase_0062e900@@QAE@XZ
+0062e900	008cedd0	WRONG	??1CBase_0062e900@@QAE@XZ
+0062e900	00920960	WRONG	??1CCreatureActionBase@N_0062e900@@QAE@XZ
+0062e900	00956380	WRONG	??1CCreatureAction_CastWillLightningSpell@@QAE@XZ
+0062e900	0095b280	WRONG	??1CCombatActionBase@@QAE@XZ
+0062e900	009704b0	WRONG	?Dtor@CCreatureAction_SummonerChargeSuccess@@QAEXXZ
+0062e900	008ced20	SKIPPED(held)	
+0099e4b0	00406070	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00413280	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	0044a570	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	0047a750	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	004cb0d0	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	004d3826	WRONG	??0CMember_0099e4b0@@QAE@XZ
+0099e4b0	0050b470	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00525ff0	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	006d41f0	WRONG	??0CCharString@N006d41f0@@QAE@XZ
+0099e4b0	0074c6d0	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00822690	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00869fa0	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	009a9930	WRONG	?Initialise@CClass_009a9930@@QAEXXZ
+0099e4b0	009aa240	WRONG	?Initialise@CClass_009aa240@@QAEXXZ
+0099e4b0	009bde70	WRONG	?Release@SubB@@QAE_JXZ
+0099e4b0	009c97a0	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	009cb910	WRONG	?HelperReset@C3DAnimationBlendState@@QAEXXZ
+0099e4b0	00a16d50	WRONG	?Init@SubInit@@QAEXXZ
+0099e4b0	00bf8d50	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00cb7840	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00cd4580	WRONG	??0CCharStringMember@@QAE@XZ
+0099e4b0	00463334	SKIPPED(held)	
+0099e4b0	005c2118	SKIPPED(held)	
+0099e4b0	008d8620	SKIPPED(held)	
+0099e4b0	009f05a0	SKIPPED(held)	
+0099e4b0	00dcd160	SKIPPED(held)	
+0099e4b0	00ece7f0	SKIPPED(held)	
+0099a2e0	004371f0	WRONG	?Dtor@CBaseClass@@QAEXXZ
+0099a2e0	0043e520	WRONG	?Dtor@CWStringParser@@QAEXXZ
+0099a2e0	004c2130	WRONG	?Dtor@C3DOrientationInterpolator@@QAEXXZ
+0099a2e0	004c7000	WRONG	?Dtor@CMessageBase@@QAEXXZ
+0099a2e0	004cb780	WRONG	?Dtor@CMessageClearPrimitives@@QAEXXZ
+0099a2e0	00529cc0	WRONG	?OnDie@CInventoryItemBase@@QAEXXZ
+0099a2e0	005d9f50	WRONG	?Dtor@CMessageOnPickup@@QAEXXZ
+0099a2e0	006953c0	WRONG	?Dtor@CActionEventBase@@QAEXXZ
+0099a2e0	006954d0	WRONG	?Dtor@CActionEventCameraShake@@QAEXXZ
+0099a2e0	00695540	WRONG	?Dtor@CActionEventSound@@QAEXXZ
+0099a2e0	006955b0	WRONG	?Dtor@CActionEventShot@@QAEXXZ
+0099a2e0	006e1ad0	WRONG	?Dtor@CParticleUpdateParamDesc@@QAEXXZ
+0099a2e0	007a6be0	WRONG	?Dtor@CMessageOnMeshReplaced@@QAEXXZ
+0099a2e0	00904540	WRONG	??1CBase@@UAE@XZ
+0099a2e0	00918150	WRONG	??1CCharString@@QAE@XZ
+0099a2e0	0098c390	WRONG	?Dtor@CShaderConstantRange@@QAEXXZ
+0099a2e0	00a006e0	WRONG	??1CBase_0099a2e0@@QAE@XZ
+0099a2e0	00a5e650	WRONG	?BaseOnDie@CTCInventoryItem@@QAEXXZ
+0099a2e0	00a90fc0	WRONG	??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+0099a2e0	00a91390	WRONG	??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ
+0099a2e0	00aab9a0	WRONG	?Dtor@CASoundEmitter@@QAEXXZ
+0099a2e0	00aacf70	WRONG	?Dtor@CASoundReceiver@@QAEXXZ
+0099a2e0	00aad0d0	WRONG	?Dtor@CSoundReceiverLH@@QAEXXZ
+0099a2e0	00af5900	WRONG	??1CBase@NParticleEngine@@QAE@XZ
+0099a2e0	00ba7f40	WRONG	??1CBase_0099a2e0@@QAE@XZ
+0099a2e0	00be8d20	WRONG	?Dtor@CTesselationData@@QAEXXZ
+0099a2e0	009fd9b0	SKIPPED(held)	
+0099a2e0	00a68910	SKIPPED(held)	
+0099a2e0	00d44cb0	SKIPPED(held)	
+0099a2e0	00d45060	SKIPPED(held)	
+0099a2e0	00d496f0	SKIPPED(held)	
+0099a2e0	00d49a20	SKIPPED(held)	
+0099a2e0	00d50c60	SKIPPED(held)	
+0099a2e0	00d55e90	SKIPPED(held)	
+0099a2e0	00d6c830	SKIPPED(held)	
+0099a2e0	00daa260	SKIPPED(held)	
+0099a2e0	00daa700	SKIPPED(held)	
+0099a2e0	00dbeb20	SKIPPED(held)	
+0099a2e0	00dc8c80	SKIPPED(held)	
+0099a2e0	00dcd1d0	SKIPPED(held)	
+0099a2e0	00dcf700	SKIPPED(held)	
+0099a2e0	00dd4ad0	SKIPPED(held)	
+0099a2e0	00ddae40	SKIPPED(held)	
+0099a2e0	00e0a820	SKIPPED(held)	
+0099a2e0	00e12f20	SKIPPED(held)	
+0099a2e0	00e1cfd0	SKIPPED(held)	
+0099a2e0	00e54e90	SKIPPED(held)	
+0099a2e0	00e7c010	SKIPPED(held)	
+0099a2e0	00e96660	SKIPPED(held)	
+0099a2e0	00e97070	SKIPPED(held)	
+0099a2e0	00e9aeb0	SKIPPED(held)	
+0099a2e0	00e9e420	SKIPPED(held)	
+0099a2e0	00ea8130	SKIPPED(held)	
+0099a2e0	00ece7f0	SKIPPED(held)	
+0099a430	006582df	WRONG	?CVillageTaskBase_Destruct@@YIXPAX@Z
+0099a430	00687210	WRONG	??1CMember_0099a430@@QAE@XZ
+0099a430	00687730	WRONG	??1CBaseObject@@UAE@XZ
+0099a430	00718840	WRONG	?CScriptConversation_dtor@@YIXPAVCScriptConversation@@@Z
+0099a430	00a379e0	WRONG	?CClass_dtor@@YIXPAVCClass@@@Z
+0099a430	00d2d060	WRONG	?DestroyCBaseObject@ScriptResource@@QAEXXZ
+0099a430	00d732f0	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00dc21f0	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00ddd030	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00deb000	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00e1bc70	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb10c0	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb15c0	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb19c0	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb23e0	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb3740	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb4f80	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00eb5d50	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00ef3f00	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00efc500	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00efeb60	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00f14770	WRONG	??1CBaseObjectDtor@@UAE@XZ
+0099a430	00ce15e0	SKIPPED(held)	
+0099a430	00d1a740	SKIPPED(held)	
+0099a430	00d22880	SKIPPED(held)	
+0099a430	00d246c0	SKIPPED(held)	
+0099a430	00d29db0	SKIPPED(held)	
+0099a430	00d2a180	SKIPPED(held)	
+0099a430	00d496f0	SKIPPED(held)	
+0099a430	00d49a20	SKIPPED(held)	
+0099a430	00d50c60	SKIPPED(held)	
+0099a430	00d55e90	SKIPPED(held)	
+0099a430	00daa260	SKIPPED(held)	
+0099a430	00daa700	SKIPPED(held)	
+0099a430	00dbf2d0	SKIPPED(held)	
+0099a430	00dd1af0	SKIPPED(held)	
+0099a430	00dd4ad0	SKIPPED(held)	
+0099a430	00df0750	SKIPPED(held)	
+0099a430	00df0b70	SKIPPED(held)	
+0099a430	00df4be0	SKIPPED(held)	
+0099a430	00e0a820	SKIPPED(held)	
+0099a430	00e12330	SKIPPED(held)	
+0099a430	00e12f20	SKIPPED(held)	
+0099a430	00e17840	SKIPPED(held)	
+0099a430	00e1cd40	SKIPPED(held)	
+0099a430	00e292c0	SKIPPED(held)	
+0099a430	00e3e720	SKIPPED(held)	
+0099a430	00e54e90	SKIPPED(held)	
+0099a430	00e72630	SKIPPED(held)	
+0099a430	00e96660	SKIPPED(held)	
+0099a430	00e97070	SKIPPED(held)	
+0099a430	00e9aeb0	SKIPPED(held)	
+0099a430	00e9e420	SKIPPED(held)	
+0099a430	00ec4a00	SKIPPED(held)	
+0099a430	00ece7f0	SKIPPED(held)	
+0099a430	00ee76f0	SKIPPED(held)	
+0099a430	00ee7a20	SKIPPED(held)	
+0099a2f0	00434e10	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	004a67d0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	005177e0	WRONG	??0CBaseClass@N_0099a2f0@@QAE@XZ
+0099a2f0	0055d070	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00686800	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	006b4900	WRONG	??0CBaseObject@N_0099a2f0@@QAE@XZ
+0099a2f0	006e7740	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00714730	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00715710	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00778d60	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00779d20	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	0080c250	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00820cc0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	008224e0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00885f50	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	008f63c0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00904540	WRONG	??0CBase@@QAE@XZ
+0099a2f0	00904e20	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00905360	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	0098ab00	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	0098f3a0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00991910	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00993b20	WRONG	??0CBaseClass@N_0099a2f0@@QAE@XZ
+0099a2f0	00994700	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00994930	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00995dc0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00995ee0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00995f50	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00996990	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00996af0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00996be0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009a4140	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009b08c0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009bdb00	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009cd480	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009ce8d0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009d4ce0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009d58d0	WRONG	??0CBase@@QAE@XZ
+0099a2f0	009e27e0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009e2e30	WRONG	??0CBaseObject@N_0099a2f0@@QAE@XZ
+0099a2f0	009e5c90	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009e99c0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009f5bd0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	009fc5f0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a05970	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a0bac0	WRONG	??0CBaseClass@N_0099a2f0@@QAE@XZ
+0099a2f0	00a0d290	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a373b0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a5c570	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a5d870	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a5f430	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a60aa0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a63020	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a636c0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a66930	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a66f20	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a6a360	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a76370	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a768c0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a772d0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00a98860	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00aa8360	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00b0a210	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00b81ad0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00b94a80	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00be26c0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00cd4ac0	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00cd4b20	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00cd4b80	WRONG	??0CBaseClassNonCopyable@@QAE@XZ
+0099a2f0	00b94540	SKIPPED(held)	
+0099a2f0	00bade40	SKIPPED(held)	
+00857f30	0066a690	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00739a00	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0074dac0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00855af0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0085c190	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0087cf90	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0087fd20	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0087fdf0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008b7f80	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008b8200	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008b83e0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008b84a0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008b8500	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bb0b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bb130	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bce50	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bcfb0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfa60	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfac0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfb20	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfb80	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfbe0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfc40	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfca0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfd00	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfd60	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008bfda0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c27b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c39a0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c4ea0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c4f50	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c7390	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c7400	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c9410	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c94d0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c95b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008c9cc0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ca7c0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008cbca0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008cbcf0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008cbd90	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ccb80	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ccc10	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ccc70	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008cccd0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ccd30	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ce040	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008ce290	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008e45b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008e4640	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008e46d0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008e49c0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008e6a70	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008e6bb0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008eda90	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	008f4d00	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009067b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00906a80	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00906b40	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00908000	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009080b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009081f0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00908270	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009082d0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00908340	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009083a0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00908400	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00908c80	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00909e30	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00909fd0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0090a1f0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0090a690	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0090a700	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00925330	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00925440	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009254c0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00925560	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009255e0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00925700	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00953120	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009531c0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00953260	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00953300	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00953370	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009535b0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00953630	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00957170	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0095cb80	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009621f0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00962920	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0096af60	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0096c010	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0096db60	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0096ddb0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0096ff10	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	009702d0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00976f30	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00976fc0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	00977060	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0097b3f0	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0097c760	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0097c830	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0097c920	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+00857f30	0097cf90	WRONG	??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z
+009fe380	00be6f70	FAIL:DIFFER(198v2654)	
+009fe380	00bec000	FAIL:DIFFER(319v1124)	
+009fe380	00bec470	FAIL:DIFFER(467v526)	
+009fe380	00bec950	FAIL:DIFFER(517v578)	
+009fe380	00bf4570	FAIL:DIFFER(316v4431)	
+00993b10	00485420	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00485cf1	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00521240	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	006f9f90	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	009ad6e0	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	009c8700	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	009c8fb0	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00a42ea0	WRONG	??1CMemoryDataInputStream@@QAE@XZ
+00993b10	00a4df10	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00a62120	WRONG	??1CMemoryDataInputStream@@QAE@XZ
+00993b10	00a9b740	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00ac3bd0	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00ac3e00	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00adfdc0	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00bdc180	WRONG	??1CMemoryDataInputStream@@QAE@XZ
+00993b10	00bdc510	FAIL:DIFFER(1044v1131)	
+00993b10	00bde390	WRONG	??1CMemoryDataInputStream@@QAE@XZ
+00993b10	00bde860	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00be7d70	FAIL:DIFFER(1437v2983)	
+00993b10	00be8920	FAIL:DIFFER(328v365)	
+00993b10	00bf3b60	FAIL:DIFFER(825v1480)	
+00993b10	00bf8030	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00993b10	00bf84c0	WRONG	??1CMemoryDataInputStream@@UAE@XZ
+00aa8360	00ac0c00	WRONG	??0NativeSuperChunk@@QAE@PBD@Z

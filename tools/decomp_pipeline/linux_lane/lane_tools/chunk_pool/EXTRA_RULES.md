@@ -409,3 +409,11 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   landed row's copy at HEAD, a further change lands and the port onto the shared header is queued (nf176 0x00502170).
 - Landings check it: every symbol a changed row newly defines that the binding table maps to another address is compared with its owner
   (`symdiff.txt` TABLE: lines; `$S/tools/cmpbody.py`).
+- Ownership comes from the address, not from a table line (advisor, nf181). A binding-table line made by another row's stand-in
+  binder is a split to queue, not proof that the address owns the symbol. Before holding on a DIFF, check two things. First, what does
+  the changed row itself bind at that address (gate pairs)? Second, what does the address's body say (the vtable it stores, the row's
+  Leaf)? If the row binds the owner's own Leaf there, and the address's body is another function, the new copy has no owner: it lands,
+  and the wrong table lines and labels are queued (nf181 0x00485CF1 / 0x00485420 against 0x00993B10 = ~CDataStream and 0x009BBBF0 =
+  CheckUnknownSymbols). A row that binds the copied symbol itself at a retail site, with different bytes, is held.
+- Copies with no table line (a self leaf of an unreferenced owner) are compared by hand against the owner's object (nf181 0x009568E0
+  against 0x009566C0).

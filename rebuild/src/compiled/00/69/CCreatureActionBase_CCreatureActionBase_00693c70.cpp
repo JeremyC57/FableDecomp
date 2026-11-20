@@ -1,5 +1,7 @@
-// CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, const CSoundPair&, long, long) -- the base creature-action constructor: attach the creature, one-frame total/action time, the interruption group and priority, the sound pair, no pause (-1 frame/timer), empty containers, a fresh default animation entry, and the next unique action id
-// Leaf: ??0CCreatureActionBase
+// CCreatureActionBase::CCreatureActionBase(CThingCreatureBase&, const CSoundPair&, long, long) -- the base creature-action constructor: attach the creature, one-frame total/action time, the interruption group and priority, the sound pair, no pause (-1 frame/timer), empty containers, a fresh default animation entry, and the next unique action id
+// Leaf: ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z
+// NF181 (2026-11-20, q11676): creature by reference (Ego_r.pdb 0x0051B2E0 + FableWin.pdb 0x01DB5A50); every landed caller binds
+//   this spelling (HEAD probe + this hand-back), was the pointer form.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00693C70, 321 bytes (336 with padding). `ret 10h`; vtable 0x01259D24.
@@ -126,11 +128,11 @@ class CCreatureActionBase : public CBaseObject { public:  // vtable 0x01259D24
     CVector<CThingPointer> DependentThings;             // +0x9c
     virtual void v00();
     static long NextActionID;               // 0x013BA8B4
-    CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long interruptionGroupID, long interruptionPriority);
+    CCreatureActionBase(CThingCreatureBase& creature, const CSoundPair& sounds, long interruptionGroupID, long interruptionPriority);
 };
 
-CCreatureActionBase::CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long interruptionGroupID, long interruptionPriority)
-    : PCreature(creature)
+CCreatureActionBase::CCreatureActionBase(CThingCreatureBase& creature, const CSoundPair& sounds, long interruptionGroupID, long interruptionPriority)
+    : PCreature(&creature)
     , TotalTime(1)
     , ActionTime(1)
     , AnimDelayTime(0)

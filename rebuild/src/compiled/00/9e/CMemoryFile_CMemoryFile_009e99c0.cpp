@@ -7,11 +7,13 @@
 // std::copy(begin, end, back_inserter(DataBuffer)) whose inlined body calls the SGI
 // __copy(first, last, result, random_access_iterator_tag(), (ptrdiff_t*)0) (0x009E9900, __fastcall with
 // the hidden result in ecx; the result and the empty tag share the dead `other` argument slot).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class CWideStringData;
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                        // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                        // 0x0099A2F0
 };
 
 class CWideString { public:

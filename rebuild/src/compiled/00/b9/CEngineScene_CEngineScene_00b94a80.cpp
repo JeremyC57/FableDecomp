@@ -17,6 +17,8 @@
 // the header, allocates it, the tree zeroes its count, `_M_empty_initialize` colours it red and links it to itself through
 // re-reads of the header member); the scalars are body assignments, the name assigned last; the statement order is
 // load-bearing (MaxAveragePrimitivesPerCell after the occlusion defaults puts its store after theirs).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 class CCharStringData;
@@ -31,7 +33,7 @@ private:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
-    CBaseClassNonCopyable();                                 // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

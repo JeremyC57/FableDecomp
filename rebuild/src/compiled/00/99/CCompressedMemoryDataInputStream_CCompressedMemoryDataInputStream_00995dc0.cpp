@@ -9,13 +9,15 @@
 // only, so the class is modelled locally with the same offsets. The two init-list scalars are
 // stored before the vtable; the scoped pointer is a member object with an inline constructor, so
 // its null store sinks below the vtable store (GOTCHAS: embedded members follow the vtable).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "engine/CCompressedMemoryDataInputStream.h"
 
 class CCompressorZlib;
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                    // 0x0099A2F0
 };
 
 struct CDataStream : CBaseClassNonCopyable {                    // vtable 0x0129A69C (dead store here)

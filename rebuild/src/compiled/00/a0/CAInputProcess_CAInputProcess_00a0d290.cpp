@@ -7,6 +7,8 @@
 // Shape: the manager pointer is zeroed BEFORE the vtable store, so it belongs to an inlined
 // intermediate base constructor (its own vtable store is dead and dropped); the three zero stores
 // after the vtable are the list position member's inline constructor, all from one zeroed eax.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class CInputProcessManager;
 class CBaseClass;
 
@@ -14,7 +16,7 @@ struct CBaseClassNonCopyable {
     protected:
     virtual ~CBaseClassNonCopyable();
     public:
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
 };
 
 struct CInputProcessOwner : CBaseClassNonCopyable {

@@ -18,6 +18,8 @@
 // Shape: init list in declaration order (VC7.1 interleaves the argument stores around the vtable store); the
 // ThingSearchTools initialiser reads the world argument, not the member; the CScriptThing default ctor is inline here;
 // the STLport map is the landed CRetailMap model (`_M_header` zeroed, malloc, empty-initialise).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
@@ -33,7 +35,7 @@ class CWorld { public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
-    CBaseClassNonCopyable();              // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:              // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();     // 0x0099A300
 };
 

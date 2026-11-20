@@ -79,7 +79,7 @@ class CCreatureActionBase { public:
 class CCreatureAction_DragonTakeOffIntoFlying : public CCreatureActionBase { public:
     unsigned char _takeoff[0x10];
     CCreatureAction_DragonTakeOffIntoFlying(CThingCreatureBase* creature, const CVector3DList& route);   // 0x009533E0
-    ~CCreatureAction_DragonTakeOffIntoFlying();  // 0x00953470
+    virtual ~CCreatureAction_DragonTakeOffIntoFlying();  // 0x00953470 (virtual: Ego_r.pdb / FableWin.pdb ??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ)
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

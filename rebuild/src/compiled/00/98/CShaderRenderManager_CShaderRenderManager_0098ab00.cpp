@@ -18,11 +18,13 @@
 //   root/leftmost/rightmost, re-reading the header member after every store through it. The malloc's
 //   `add esp,4` is delayed to the end of the constructor.
 // No engine header exists for CShaderRenderManager.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
-    CBaseClassNonCopyable();                                 // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                 // 0x0099A2F0
     protected:
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300
     public:

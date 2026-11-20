@@ -9,6 +9,8 @@
 //   LeafNode +0xe, Blocked +0xf. Modelled locally (the header is a flat pad record).
 // Shape: std::advance over the bidirectional region iterator; the resize fill value and each neighbour index are homed in
 //   the dead `level` argument slot.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
@@ -20,7 +22,7 @@ public:
 };
 struct CBaseClassNonCopyable {                     // vtable 0x0129A7C4
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 class CANavQuadTreeNode : public CBaseClassNonCopyable {   // vtable 0x0129CBBC
 public:

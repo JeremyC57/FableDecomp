@@ -77,7 +77,7 @@ class CSoundPair { public:                         // two sound ids
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    CCreatureActionBase(CThingCreatureBase* owner, const CSoundPair& sound, long interruptionGroup, long interruptionPriority);   // 0x00693C70
+    CCreatureActionBase(CThingCreatureBase& owner, const CSoundPair& sound, long interruptionGroup, long interruptionPriority);   // 0x00693C70 (NF181 q11676: creature by reference, Ego_r.pdb 0x0051B2E0 + FableWin.pdb 0x01DB5A50)
 };
 
 class CCombatActionBase : public CCreatureActionBase { public:   // vtable 0x01259E44
@@ -99,7 +99,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // vtable 0x012
     void InitialiseStrikeState();                   // 0x008561C0
 };
 CCombatActionBase::CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
-    : CCreatureActionBase(owner, sound, 100, actionCode)
+    : CCreatureActionBase(*owner, sound, 100, actionCode)
     , SentMissedEvent(false)
     , HasResetMeleeCombatAbilityEffects(false)
     , ActiveStrikeEventIndex(-1)

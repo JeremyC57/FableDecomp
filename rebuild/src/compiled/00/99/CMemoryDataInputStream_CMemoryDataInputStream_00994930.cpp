@@ -4,9 +4,11 @@
 //   0x030849C0 ??0CMemoryDataInputStream@@QAE@PBXK@Z (also engine/CMemoryDataInputStream.h); was ??0CMemoryDataInputStream@@QAE@PBEJ@Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00994930, length 48 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Shape: the five state stores precede this class's vtable store (a second, non-polymorphic base with an inline constructor), the data copy at +0x18 follows it, `ret 8`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 
 struct SMemoryStreamState_00994930 {              // a second, non-polymorphic base: its stores precede the derived vtable store

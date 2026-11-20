@@ -10,11 +10,13 @@
 // `CBase`). Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Vtable 0x0125BE0C = CTCBase (rtti-vtables.tsv). Shape: the ParentThing store and
 // the two byte stores (`xor al,al`) precede the vtable store; `this` is returned. The chunk label
 // "CEngineSubPrimitive2DClockSprite" is propagated.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class CThing;
 
 class CBaseClassNonCopyable {                     // vtable 0x0129A7C4
 public:
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();              // slot 0 (the scalar deleting destructor 0x0099A470)
 };
 

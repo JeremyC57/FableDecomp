@@ -13,6 +13,8 @@
 // Shape: the landed CActionFireProjectileWeapon (0x00716790) / CM_HiddenBooty::Init (0x00E93080) models: novtable
 // CAction intermediate with ebx-zero stores, inline CScriptThing default ctor and destructor; the dead-bit test on the
 // raw target pointer is inline.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "fable_compiler.h"
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 
@@ -23,7 +25,7 @@ void __cdecl operator delete(void* p);             // 0x00BFE9BC
 
 struct CBaseClassNonCopyable {                      // the action root
     virtual void v00();
-    CBaseClassNonCopyable();                        // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                        // 0x0099A2F0
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

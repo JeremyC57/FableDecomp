@@ -19,6 +19,8 @@
 //   +0x14, Pathname +0x18); CSurface (0x10).
 // Shape: a local CDiskFileWin32 (inline ctor clearing Opened, inline virtual dtor = Close), the 18-byte TGA header buffer,
 //   two CPixelFormat(8,8,8,8) temporaries sharing one slot, the size as a C2DCoordI local.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class CWideString {
 public:
     void* PStringData;
@@ -27,7 +29,7 @@ public:
 };
 class CBaseClassNonCopyable {
 public:
-    CBaseClassNonCopyable();                        // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                        // 0x0099A2F0
     protected:
     virtual ~CBaseClassNonCopyable();               // 0x0099A300
     public:

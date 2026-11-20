@@ -7,6 +7,8 @@
 // vector<CInputEvent>::erase009F67E0 twice; vtables129C79C/122D06C.
 // The native file->CAFile->NonCopyable->BaseClass hierarchy is independently RTTI-proven.
 // All fixed-width int members project native32-bit long storage on the full-width host.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #define CDiskFileWin32 DonorCDiskFileWin32
 #include "engine/CDiskFileWin32.h"
 #undef CDiskFileWin32
@@ -60,7 +62,7 @@ enum FileAccessType { FILE_READ=1,FILE_WRITE=2 };
 #else
 #define NATIVE_NOVTABLE
 #endif
-struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); };
+struct CBaseClassNonCopyable : CBaseClass { protected: CBaseClassNonCopyable(); public: virtual ~CBaseClassNonCopyable(); };
 struct NATIVE_NOVTABLE CAFile : CBaseClassNonCopyable {
     virtual ~CAFile();
     virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;

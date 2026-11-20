@@ -14,6 +14,8 @@
 // (GOTCHAS chunk 166), the out pointer homed in the dead `position` slot; the graphic is a 3-dword + word struct copy.
 // GetSubDef is a CDefClassBase template instantiated in this TU, so its real body is defined here (auto_inline off,
 // noinline): name temp -> virtual slot 14 index lookup -> definition manager GetDef -> ref-counted assignment to *out.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
@@ -24,7 +26,7 @@ struct CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
 public:
-    CBaseClassNonCopyable();                            // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                            // 0x0099A2F0
 };
 class CTCParamsBase : public CBaseClassNonCopyable { public: };
 class CTCParamsPhysicsBase : public CTCParamsBase { public:           // vtable 0x0125C818

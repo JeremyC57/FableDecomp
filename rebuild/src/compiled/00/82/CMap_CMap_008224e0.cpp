@@ -12,6 +12,8 @@
 //   height-map size = game-map size * 4, world position = area minimum; then the containers are cleared, the maps built and
 //   the file loaded. The vectors use the STLport _Vector_base + _STLP_alloc_proxy model. WorldPos is assigned from a
 //   C2DCoordI(x, y) temporary (both words loaded before the stores; a plain struct copy interleaves them).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
 class CWorld;
@@ -101,7 +103,7 @@ public:
 
 class CBaseClassNonCopyable {
 public:
-    CBaseClassNonCopyable();                            // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                            // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

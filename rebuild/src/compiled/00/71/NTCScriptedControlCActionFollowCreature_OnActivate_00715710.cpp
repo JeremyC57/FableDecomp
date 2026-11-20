@@ -8,6 +8,8 @@
 //   OnActivate is its virtual (?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and 0x00713D50 is the private
 //   SetAsSneaking (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z, was an invented global SetSneaking).
 //   Same bytes.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "fable_compiler.h"
 class CCharString {
 public:
@@ -25,7 +27,7 @@ public:
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v000); 0x0099A300
 public:
-    CBaseClassNonCopyable();                         // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                         // 0x0099A2F0
 };
 class CPhysicsSnapshot : public CBaseClassNonCopyable {   // vtable 0x0125C818
 public:

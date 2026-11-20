@@ -16,6 +16,8 @@
 // Shape: the two vectors need the STLport _Vector_base + _STLP_alloc_proxy model (the end-of-storage zero store is then
 //   scheduled after `lea edi,[esi+10h]`); game-map size = world size / 4 (`* 0.25f`, truncated), height-map size = game-map size * 4; the two containers are
 //   cleared again in the body through their out-of-line clear()/erase().
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
 class CWorld;
@@ -103,7 +105,7 @@ public:
 
 class CBaseClassNonCopyable {
 public:
-    CBaseClassNonCopyable();                            // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                            // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

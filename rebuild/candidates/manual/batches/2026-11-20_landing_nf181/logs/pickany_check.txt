@@ -1,0 +1,12 @@
+OK  00485420 -> 00485400 ??0CMemoryDataInputStream@@QAE@XZ sizes 25 25 
+DIFF 00485420 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+MISSING 00485420 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00485420 0123675c ??_7CMemoryDataInputStream@@6B@
+DIFF 00485cf1 -> 00993b10 ??1CDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00485cf1 -> 00993b10 ??1CMemoryDataInputStream@@UAE@XZ sizes 5 11 owner leaf ??1CDataStream@@UAE@XZ
+DIFF 00485cf1 -> 009bbbf0 ??1CPersistContext@@QAE@XZ sizes 1 207 owner leaf ?CheckUnknownSymbols@CPersistContext@@QAEXXZ
+MISSING 009568e0 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 009568e0 012944d4 ??_7CCreatureAction_ThrowShotObject@@6B@
+manual 009568e0 -> 009566c0 ??0CCreatureAction_ThrowShotObject: sizes 87 87 bytes equal True relocs equal True
+manual 009568e0 -> 009566c0 ??_7CCreatureAction_ThrowShotObject@@6B@: sizes 280 280 bytes equal True relocs equal True
+manual 009568e0 -> 009566c0 ??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z: sizes 30 30 bytes equal True relocs equal True

@@ -18,13 +18,15 @@
 // ResourceList +0x04 (CResourceList: MaximumMemory +0x28, UnloadDelay +0x34).
 // Shape: member initialisers in declaration order (one zero register, ebx; the shared `true` in al); the new-expression's
 // null test feeds Reset; the counted pointer's operator-> re-reads Data for each use.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include <stddef.h>
 
 void* __cdecl operator new(size_t size);       // 0x00BFEA1A
 
 class CBaseClassNonCopyable {
 public:
-    CBaseClassNonCopyable();                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                    // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 

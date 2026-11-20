@@ -13,6 +13,8 @@
 // Activated and Terminated before the derived vtable store, ActionID = -1 and ActionPluggedIn = false after it
 // (Ego_r.pdb CActionBase 0xc / CActionDropGenericBox 0x14). The zero register is hoisted above the null test.
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #include "fable_compiler.h"
 #include <stddef.h>
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
@@ -76,7 +78,7 @@ class CTCScriptedControl;
 class CBaseClassNonCopyable {                      // vtable 0x0129A7C4
 public:
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 
 namespace NTCScriptedControl {

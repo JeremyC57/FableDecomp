@@ -1,0 +1,97 @@
+00434e10 new: 0
+00485420 new: 7
+    ??0CMemoryDataInputStream@@QAE@XZ TABLE:00485400
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CMemoryDataInputStream@@6B@ TABLE:0123675c
+    ??_GCMemoryDataInputStream@@UAEPAXI@Z
+    ?GetPosition@CDataInputStream@@UBEKXZ
+    ?ReferenceMemoryDataInputStreamVtable@?A0x4c811902@@YAXPAX@Z
+00485cf1 new: 3
+    ??1CDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CMemoryDataInputStream@@UAE@XZ TABLE:00993b10
+    ??1CPersistContext@@QAE@XZ TABLE:009bbbf0
+004a67d0 new: 0
+0055d070 new: 0
+0064b6da new: 0
+00686800 new: 0
+00693c70 new: 1
+    ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z TABLE:00693c70
+0069f230 new: 0
+006e7740 new: 0
+00714730 new: 0
+00715710 new: 0
+00778d60 new: 0
+00779d20 new: 0
+0080c250 new: 0
+00820cc0 new: 0
+008224e0 new: 0
+00842460 new: 0
+00843f50 new: 0
+00854610 new: 0
+00854660 new: 0
+008546c0 new: 0
+00857f30 new: 0
+00885f50 new: 0
+008a8e40 new: 1
+    ??1CCombatAction_GenericResponseToDecapitation@@UAE@XZ
+008f63c0 new: 0
+00904e20 new: 0
+00905360 new: 0
+009211d0 new: 0
+00951b20 new: 0
+009568e0 new: 5
+    ??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CCreatureAction_ThrowShotObject@@6B@ TABLE:012944d4
+    ??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z
+    ?ReferenceThrowShotObjectVtable@?A0x79ecbc32@@YAXPAXAAVCThingCreatureBase@@AAVCThing@@@Z
+0095b280 new: 1
+    ??1CCreatureAction_DragonRoar@@UAE@XZ
+00982c70 new: 1
+    ??0CCreatureAction_BeetleLand@@QAE@AAVCThingCreatureBase@@@Z TABLE:00982c70
+0098ab00 new: 0
+0098f3a0 new: 0
+00991910 new: 0
+00994700 new: 0
+00994930 new: 0
+00995dc0 new: 0
+00995ee0 new: 0
+00995f50 new: 0
+00996990 new: 0
+00996af0 new: 0
+00996be0 new: 0
+009a4140 new: 0
+009b08c0 new: 0
+009bdb00 new: 0
+009cd480 new: 0
+009ce8d0 new: 0
+009d4ce0 new: 0
+009e27e0 new: 0
+009e5c90 new: 0
+009e99c0 new: 0
+009f5bd0 new: 0
+009fc5f0 new: 0
+00a05970 new: 0
+00a0d290 new: 0
+00a373b0 new: 0
+00a5d870 new: 0
+00a5f430 new: 0
+00a60aa0 new: 0
+00a63020 new: 0
+00a636c0 new: 0
+00a66930 new: 0
+00a66f20 new: 0
+00a6a360 new: 0
+00a76370 new: 0
+00a768c0 new: 0
+00a772d0 new: 0
+00a98860 new: 0
+00aa8360 new: 0
+00b0a210 new: 0
+00b81ad0 new: 0
+00b94a80 new: 0
+00be26c0 new: 0
+00cd4ac0 new: 0
+00cd4b20 new: 0
+00cd4b80 new: 0

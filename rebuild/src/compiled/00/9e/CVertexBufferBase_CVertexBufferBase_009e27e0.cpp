@@ -8,11 +8,13 @@
 // init-list scalars are stored before the vtable; the params member has an inline constructor
 // (bias zeroes share the zero register, scales are the 1.0f immediate loaded once), so its stores
 // sink below the vtable store.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct IDirect3DVertexBuffer9;
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                                    // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                                    // 0x0099A2F0
 };
 
 class CVertexCompressionParams { public:

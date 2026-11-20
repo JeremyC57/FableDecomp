@@ -14,6 +14,8 @@
 // Shape: the count guard is the inline 64-bit `0 <= n <= 0x7FFFFFFF` predicate over `((__int64)SizeY + 1) *
 //   ((__int64)x + 1)` with x a named local (homed in the dead `size` argument slot); the resize takes a frame
 //   CHeightMapCell() whose user constructor is empty; NoMapUpdateAreas and Clear() run only inside the guard.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class CWorld;
 class CMap;
 
@@ -21,7 +23,7 @@ struct CBaseClassNonCopyable {
     protected:
     virtual ~CBaseClassNonCopyable();
     public:
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 
 struct SHeightMapSize {                            // the map's cell counts and its world seed

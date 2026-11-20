@@ -14,9 +14,11 @@
 //         Initialised +0x04, PoolCount +0x08, PreallocSizes +0x0c, PreallocPools +0x4c, FailedAllocations +0x58c, BufferSize
 //         +0x5cc, TextureBuffer +0x5d0. CPreallocTexturePool: CResourceList 0x3c, Count +0x3c, MaxSize +0x40, PoolIndex +0x44,
 //         Textures +0x48.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                   // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                   // 0x0099A2F0
 };
 class CResourceList { public:                         // vtable 0x0129C808, 0x3c bytes
     virtual void v00();

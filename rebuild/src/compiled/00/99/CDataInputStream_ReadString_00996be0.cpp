@@ -16,6 +16,8 @@
 // CDataStream dtor stores its vtable, then the out-of-line base dtor). The terminating zero byte is an inline
 // by-value WriteUBYTE parameter homed in the dead `length` slot; the data pointer is the vector's `size ? first :
 // (char*)this` GetData; the result string is a named local copied out (no NRVO in VC7.1).
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 #define CDataInputStream CDataInputStreamLayout
 #include "engine/CDataInputStream.h"
 #undef CDataInputStream
@@ -31,7 +33,7 @@ class CCharString { public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
-    CBaseClassNonCopyable();                      // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                      // 0x0099A2F0
     protected:
     virtual ~CBaseClassNonCopyable();             // 0x0099A300
     public:

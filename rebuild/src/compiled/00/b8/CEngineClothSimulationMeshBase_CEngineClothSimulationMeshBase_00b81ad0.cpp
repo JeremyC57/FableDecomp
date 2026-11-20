@@ -11,6 +11,8 @@
 // Shape: the vector is a member object with an inline zeroing ctor; the three arguments are init-list members; the
 //   matrices are identity-filled in the body (Current, Inverse, Last: retail's store order) by an inline SetIdentity (a chained off-diagonal zero assignment stored high to
 //   low, then the diagonal m[8], m[4], m[0]) with 0.0f/1.0f held in eax/ecx.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 class C3DMeshInfo;
 class CEngineInternalPrimitiveMeshBase;
 
@@ -28,7 +30,7 @@ extern SPhysicsSettings* g_pPhysicsSettings;           // 0x01436E68
 
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                           // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                           // 0x0099A2F0
 };
 
 class CEngineSimulationBase : public CBaseClassNonCopyable { public: // vtable 0x012A38FC

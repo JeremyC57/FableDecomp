@@ -1,0 +1,221 @@
+== 00434e10
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 004a67d0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 0055d070
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00686800
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 006e7740
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00714730
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00715710
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00778d60
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00779d20
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 0080c250
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00820cc0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 008224e0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00885f50
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 008f63c0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00904e20
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00905360
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 0098ab00
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 0098f3a0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00991910
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00994700
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00994930
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00995dc0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00995ee0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00995f50
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00996990
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00996af0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00996be0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009a4140
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009b08c0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009bdb00
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009cd480
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009ce8d0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009d4ce0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009e27e0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009e5c90
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009e99c0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009f5bd0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 009fc5f0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a05970
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a0d290
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a373b0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a5d870
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a5f430
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a60aa0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a63020
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a636c0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a66930
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a66f20
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a6a360
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a76370
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a768c0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a772d0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00a98860
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00aa8360
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00b0a210
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00b81ad0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00b94a80
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00be26c0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00cd4ac0
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00cd4b20
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00cd4b80
+  und < ??0CBaseClassNonCopyable@@QAE@XZ
+  und > ??0CBaseClassNonCopyable@@IAE@XZ
+== 00693c70
+  (no HEAD obj)
+  def > ??0C3DVector@@QAE@XZ
+  def > ??0CAnimationEntryPointer@@QAE@XZ
+  def > ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z
+  def > ??0CCreaturePointer@@QAE@PAVCThingCreatureBase@@@Z
+  def > ??0CCutSceneEventMap@@QAE@XZ
+  def > ??0CThingPointer@@QAE@XZ
+  def > ??1CCreaturePointer@@UAE@XZ
+  def > ??1CThingPointer@@UAE@XZ
+  def > ??_7CCreatureActionBase@@6B@
+  def > ??_7CCreaturePointer@@6B@
+  def > ??_7CThingPointer@@6B@
+  def > ??_GCCreatureActionBase@@UAEPAXI@Z
+  def > ??_GCCreaturePointer@@UAEPAXI@Z
+  def > ??_GCThingPointer@@UAEPAXI@Z
+  und > ??0CAnimationEntry@@QAE@JJJJ@Z
+  und > ??0CBaseIntelligentPointer@@QAE@XZ
+  und > ??0CBaseObject@@IAE@XZ
+  und > ??1CBaseIntelligentPointer@@UAE@XZ
+  und > ??1CBaseObject@@MAE@XZ
+  und > ??2@YAPAXI@Z
+  und > ??3@YAXPAX@Z
+  und > ??_ECCreatureActionBase@@UAEPAXI@Z
+  und > ??_ECCreaturePointer@@UAEPAXI@Z
+  und > ??_ECThingPointer@@UAEPAXI@Z
+  und > ??_GCCreatureActionBase@@UAEPAXI@Z
+  und > ??_GCCreaturePointer@@UAEPAXI@Z
+  und > ??_GCThingPointer@@UAEPAXI@Z
+  und > ?NextActionID@CCreatureActionBase@@2JA
+  und > ?Reset@CAnimationEntryPointer@@QAEXPAVCAnimationEntry@@@Z
+  und > ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z
+  und > ?Validate@CBaseObject@@UBEXXZ
+  und > ?v00@CCreatureActionBase@@UAEXXZ
+  und > ?v00@CCreaturePointer@@UAEXXZ
+  und > ?v00@CThingPointer@@UAEXXZ
+  und > __fltused
+  und > _malloc

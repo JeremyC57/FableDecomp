@@ -1,9 +1,11 @@
 // CNavBlockedQuadTreeNode::CNavBlockedQuadTreeNode(bool c, bool d) -- the CANavQuadTreeNode base inline (CBaseClassNonCopyable @ 0x0099A2F0; x and y set to -1.0f, the bytes +0xc / +0xd from the arguments, +0xe / +0xf set), then this class's vtable (0x0129DD3C)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A768C0, length 64 bytes.
 // Vtable 0x0129DD3C names the class. Shape: `this` in esi, -1.0f through one integer register for both stores, the vtable store sunk below the member stores, `ret 8`.
+// NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
+//   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
 struct CBaseClassNonCopyable {
     virtual void v00();
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+    protected: CBaseClassNonCopyable(); public:                       // 0x0099A2F0
 };
 class CANavQuadTreeNode : public CBaseClassNonCopyable { public: // vtable 0x0129CBBC
     virtual void v00();

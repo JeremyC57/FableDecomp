@@ -10,7 +10,7 @@ public:
 };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 static int g_ctor, g_dtor, g_calls;
-class CBaseClassNonCopyable { protected: virtual ~CBaseClassNonCopyable(); public: CBaseClassNonCopyable(); };
+class CBaseClassNonCopyable { protected: virtual ~CBaseClassNonCopyable(); CBaseClassNonCopyable(); };   // NF181: ctor protected (IAE), as the row
 CBaseClassNonCopyable::CBaseClassNonCopyable() { ++g_ctor; }
 CBaseClassNonCopyable::~CBaseClassNonCopyable() { ++g_dtor; }
 class CTCParamsBase : public CBaseClassNonCopyable { public: };
