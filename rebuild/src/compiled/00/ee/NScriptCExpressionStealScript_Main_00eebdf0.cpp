@@ -22,13 +22,13 @@
 //   EXPRESSION_STEAL 0x0124F534; floats 1.0f 0x0122DED8, 100.0f 0x01230A08. Enumerators: MINIGAME_STEAL 5, HERO_STAT_SKILL_STEALTH 5,
 //   OPINION_DEED_TYPE_CRIME_THEFT 6.
 // Layout: engine/CExpression_StealScript.h (Game +0x40).
-// Header contract bodies: inline CScriptThing::IsAlive (the landed IsAlive text), inline CIsThingConscious ctor / dtor; the movie dtor
-//   out of line (FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR, retail calls 0x006E7B80).
+// Header contract bodies: inline CScriptThing::IsAlive (the landed IsAlive text), inline CIsThingConscious ctor / dtor. The movie dtor is the
+//   header's plain inline body: retail calls 0x006E7B80, and this TU's COMDAT of it is byte-equal (relocations only). The former
+//   FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR opt-in is not needed (device ablation, 2026-11-20).
 // No `// Inferred:` lines: the first compile of this text matched.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_BASE_OBJECT
-#define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR
 #include <stdlib.h>
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"

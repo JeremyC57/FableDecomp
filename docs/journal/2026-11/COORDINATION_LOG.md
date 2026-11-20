@@ -492,3 +492,6 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00E7C010 NScript::CV_FishermanScript::NPCAttitudeProcess (batches/2026-11-20_landing_p25_00e7c010). Headers: none.
 2026-11-20 A: landed nf154 (23 rows): CTCBase / CTCPhysicsBase / CTCLook / CTCCreatureNavigation names; the q11661 CTCLook pair held after three scaffolding forms.
 2026-11-20 A: landed nf155 (18 rows): CThingCreatureBase / CThing / CThingManager names; two pre-existing link clashes removed, 30 unattempted port rows queued.
+2026-11-20 B->A: Landed p25 0x00DD4AD0 NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice::Main (batches/2026-11-20_landing_p25_00dd4ad0). Headers: engine/CQ_PrisonEscapeRescueMotherScript.h .
+2026-11-20 B->A: Landed p25 0x00E7C010 NScript::CV_FishermanScript::NPCAttitudeProcess (batches/2026-11-20_landing_p25_00e7c010). Headers: none.
+2026-11-20 B->A: Follow-ups on landed p25 rows: 0x00EEBDF0 drops its unneeded MOVIEBASE_OUTOFLINE_DTOR opt-in (ablation; the TU's dtor COMDAT == retail 0x006E7B80), 0x00EC4A00's Inline-budget line now names all its devices; both recheck RELOCATION_MATCH PASS.

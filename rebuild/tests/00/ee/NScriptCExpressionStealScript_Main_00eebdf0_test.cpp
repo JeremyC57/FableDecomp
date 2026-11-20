@@ -16,7 +16,7 @@ extern "C" void __cdecl VirtualTrap() { printf("FAIL unexpected virtual / trap c
 #pragma comment(linker, "/alternatename:??_GCPredicateBase@NScript@@UAEPAXI@Z=_VirtualTrap")
 #pragma comment(linker, "/alternatename:?Validate@CBaseObject@@UBEXXZ=_VirtualTrap")
 #pragma comment(linker, "/alternatename:??_GCScriptGameResourceObjectBase@@UAEPAXI@Z=_VirtualTrap")
-#pragma comment(linker, "/alternatename:??1CBaseObject@@MAE@XZ=_VirtualTrap")
+#pragma comment(linker, "/alternatename:??1CBaseObject@@MAE@XZ=@MovieDtor@8")
 #pragma comment(linker, "/alternatename:??_GCIsThingConscious@NScript@@UAEPAXI@Z=_VirtualTrap")
 #pragma comment(linker, "/alternatename:?Clone@CIsThingConscious@NScript@@UBEPAVCPredicateBase@2@XZ=_VirtualTrap")
 #pragma comment(linker, "/alternatename:??RCIsThingConscious@NScript@@UBE_NXZ=@FilterCallOp@8")
@@ -24,7 +24,6 @@ extern "C" void __cdecl VirtualTrap() { printf("FAIL unexpected virtual / trap c
 #pragma comment(linker, "/alternatename:??0CScriptThing@@QAE@ABV0@@Z=@ThingCopy@12")
 #pragma comment(linker, "/alternatename:??1CScriptThing@@UAE@XZ=@ThingDtor@8")
 #pragma comment(linker, "/alternatename:??0CBaseObject@@IAE@XZ=@BaseObjectCtor@8")
-#pragma comment(linker, "/alternatename:??1CScriptGameResourceObjectMovieBase@@UAE@XZ=@MovieDtor@8")
 #pragma comment(linker, "/alternatename:??0CCharString@@QAE@PBDJ@Z=@StrCtor@16")
 #pragma comment(linker, "/alternatename:??1CCharString@@QAE@XZ=@StrDtor@8")
 #pragma comment(linker, "/alternatename:?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ=@IsTerm@8")
@@ -81,7 +80,7 @@ extern "C" void* __fastcall BaseObjectCtor(void* m, void*) { movieAddr = m; ++li
 extern "C" void __fastcall MovieDtor(void** m, void*)
 {
     if (m != movieAddr) Bad("movie dtor receiver");
-    if (m[2] != 0 || m[3] != 0) Bad("movie PImp zeroed by the ctor");
+    if (m[2] != 0 || m[3] != 0) Bad("movie PImp released and zeroed by the dtor");   // the row's movie dtor COMDAT (retail 0x006E7B80) ends in ~CBaseObject
     --liveMovies; Ev('b');
 }
 extern "C" int __cdecl rand(void) { Ev('?'); return randVals[randPos++]; }

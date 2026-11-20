@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e7c010   RELOCATION_MATCH PASS   NPCAttitudeProcess
+
+WINS: 1
+  00e7c010 RELOCATION_MATCH NScript::CV_FishermanScript::?NPCAttitudeProcess@CV_FishermanScript@NScript@@QAEXVCScriptThing@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVFishermanScript_NPCAttitudeProcess_00e7c010
