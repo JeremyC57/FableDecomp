@@ -97,3 +97,7 @@ imgui.ini
 rebuild/candidates/manual/batches/*/oracle.tsv
 rebuild/candidates/manual/batches/*/*_oracle.tsv
 rebuild/candidates/manual/pending/*/oracle.tsv
+
+# Preprocessor / permuter scratch (anneal.py and permuter_score.py write these next to their input; 42 were committed by 88a15fb806)
+*.pre.cpp
+_anneal/
