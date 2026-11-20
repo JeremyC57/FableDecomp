@@ -1,13 +1,15 @@
-// std::basic_string<char>::append<const char*>(const char* first, const char* last, const forward_iterator_tag&) -- STLport range append: grow into a fresh size+max(size, n)+1 block when the range does not fit, else copy it after the old end and move the terminator
-// Leaf: ??$append@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD0ABUforward_iterator_tag@1@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00567D60, 281 bytes (the int3 VC7.1 emits after the final noreturn call included), `ret 0Ch` (returns *this).
+// std::basic_string<char>::append<char*>(char* first, char* last, const forward_iterator_tag&) -- STLport range append: grow into a fresh size+max(size, n)+1 block when the range does not fit, else copy it after the old end and move the terminator
+// Leaf: ??$append@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABUforward_iterator_tag@1@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00567400, 281 bytes (the int3 VC7.1 emits after the final noreturn call included), `ret 0Ch`.
 // Identity: the STLport 4.6 member template `basic_string<char>::append(_ForwardIter, _ForwardIter, const
-//   forward_iterator_tag&)` for `const char*` (landed before as the descriptive CNetString_Retail::Append; the
-//   catalog/manifest "CTCElectrocutedEffect::ReplaceString" was propagated). The byte-identical `<char*>` instance is
-//   0x00567400. `const char*` ranges reach here: `append(const char*)` / `operator+=(const char*)` (the HTTP header code
-//   0x0083FC4B / 0x0083FC63), operator+(string, const char*)'s literal half 0x00841BF2, and the non-template STLport
-//   `assign(const char*, const char*)` 0x005693B0's `append(__f + size(), __l)`. Landed 0x00841B70 binds
-//   `??$append@PBD@...` here.
+//   forward_iterator_tag&)` for `char*` (catalogued first as the propagated "CTCElectrocutedEffect::InsertStringRange",
+//   then as the un-instanced "std::basic_string<char>::append" with a `<const char*>` explicit instantiation). The two
+//   byte-identical retail bodies are the two iterator instances: `append(const basic_string&)` forwards
+//   `(__s._M_start, __s._M_finish)` (char*), so operator+(string, string) 0x00569690 calls here twice, operator+(string,
+//   const char*) 0x00841B70 calls here for its string half and 0x00567D60 for its `const char*` half, and
+//   `_M_assign_dispatch<char*>` 0x00569140 appends here; the non-template `assign(const char*, const char*)` 0x005693B0
+//   appends through the `<const char*>` instance 0x00567D60. Landed 0x00841B70 / 0x00569140 / 0x0083FCE0 already bind
+//   `??$append@PAD@...` (or `_M_append@PAD`) here and `??$append@PBD@...` at 0x00567D60.
 // Callees: malloc 0x00BFEA0E (allocator<char>::allocate, null for 0), memmove 0x00BFEAE6 (__ucopy_trivial),
 //   free 0x00BFEA14 (_M_deallocate_block), _String_base<char>::_M_throw_length_error() const 0x00565A30 (the exceptions-off
 //   puts("basic_string"); abort(), called through `this`; never returns).
@@ -71,6 +73,7 @@ public:
     size_type capacity() const { return (this->_M_end_of_storage._M_data - this->_M_start) - 1; }
     void _M_construct_null(_CharT* __p) { *__p = 0; }
 
+private:
     template <class _ForwardIter>
     basic_string& append(_ForwardIter __first, _ForwardIter __last, const forward_iterator_tag&)
     {
@@ -102,8 +105,9 @@ public:
         }
         return *this;
     }
+public:
 };
 
-template basic_string<char>& basic_string<char>::append<const char*>(const char*, const char*, const forward_iterator_tag&);
+template basic_string<char>& basic_string<char>::append<char*>(char*, char*, const forward_iterator_tag&);
 
 }

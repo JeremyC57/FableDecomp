@@ -1,4 +1,6 @@
 // CTCInventoryMap::ConstructPCMapList(bool check_only, bool* has_regions) -- build the PC map / teleport list: one branch entry per region to show (world-map regions, or teleporter regions plus quest-card and guild-seal recall targets), each with subtitle, description, zoom or teleport sub-list and mini map, the world-map zoom states and the region markers
+// NF114 (2026-11-20, q11634..q11638): CUIScreenUnitConverter's five statics are private (`@@0`: Ego_d.pdb PUB32 + FableWin.pdb
+//   LF_STMEMBER attrs = private; DefaultBackBufferWidth / Height are the original names of the 640 / 480 words 0x01375CD4 / 0x01375CD8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0060EEB0, 10,254 bytes, thiscall `ret 8`, esp frame 0x2B8 (no EH frame). Graded RELOCATION_MATCH (acctC agentC4) on today's rebuild/include + the agentC4 hdr/ overlay. Pair: the same-TU CreateMapMarkers 0x005FF190 body below must stay visible (without it the frame and colouring change); it is that row's source.
 // Leaf: ?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
@@ -44,7 +46,7 @@
 #define FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_SUB
 #define FABLE_RETAIL_CRGBCOLOUR
 #define FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE
-#define FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE
+#define FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE
 #define FABLE_RETAIL_CACTION_INLINE_CTOR

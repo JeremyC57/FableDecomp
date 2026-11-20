@@ -1,0 +1,2 @@
+address	claim	reason
+0x0053DA30	catalog name CMenuEntry::InitializeRumbleActions	in neither Ego_r.pdb nor FableWin.pdb (publics, symbols, types: 0 hits); the PDB member is GetDataFromDef (see RENAMES s1)

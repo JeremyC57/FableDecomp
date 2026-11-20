@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x004299A8	?SetIsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@SIX_N@Z	FableWin.pdb (0x018516DC / 0x01AE527F) + Ego_r match of 0x004299A8 (ghidra_out tsv); the landed self row 004299a8 defines it; NF114 saw it in passing while respelling 004299a8 (q11634), 0041e3f6 graded by NF114	0041e3f6 (NUISystem::CManager::CManager) declares it as a free function `void __fastcall SetIsUsingRelativeCoords(bool)` ; NF114 graded the HEAD source once: RELOCATION_MATCH, it binds ?SetIsUsingRelativeCoords@@YIX_N@Z at +0xcd

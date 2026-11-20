@@ -83,6 +83,11 @@ public:
     void SetProxySettings(const std::string&,unsigned short);            // 0x0083F870
     LH_RETURN SetConnectionDetails(const std::string&,unsigned short);   // 0x0083FB20
 #endif
+#ifdef FABLE_RETAIL_LHHTTP2_OPEN
+    // NF116 opt-in (row 0x0083FB20 SetConnectionDetails): Ego_r.pdb / FableWin.pdb ?Open@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@XZ
+    // (0x0083F9B0, public), called out of line. Declaration only, no layout change.
+    LH_RETURN Open();                                                    // 0x0083F9B0
+#endif
     LH_HTTP_STATUS PrepareRequest(HTTP_REQUEST_TYPE,const std::string&,LHHttpHeaders*,const std::string&,unsigned long);
     LH_HTTP_STATUS ReceiveHeaderAsync();
 #ifdef FABLE_RETAIL_LHHTTP2_GETHEADER

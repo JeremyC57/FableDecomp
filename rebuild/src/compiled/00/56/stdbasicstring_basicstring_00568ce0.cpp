@@ -56,8 +56,10 @@ public:
         _M_range_initialize(__s._M_start, __s._M_finish);
     }
 
+private:
     template <class _ForwardIter>
     void _M_range_initialize(_ForwardIter __f, _ForwardIter __l, const forward_iterator_tag&);   // <char*> 0x00567D00
+public:
     template <class _InputIter> void _M_range_initialize(_InputIter __f, _InputIter __l)
     {
         _M_range_initialize(__f, __l, random_access_iterator_tag());

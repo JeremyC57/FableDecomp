@@ -220,6 +220,7 @@ public:
         return _Self(this->_M_start + __pos, this->_M_start + __pos + (min)(__n, size() - __pos));
     }
 
+private:
     template <class _ForwardIter>
     void _M_range_initialize(_ForwardIter __f, _ForwardIter __l, const forward_iterator_tag&)   // 0x005672D0 / 0x00567D00
     {
@@ -228,11 +229,14 @@ public:
         this->_M_finish = uninitialized_copy(__f, __l, this->_M_start);
         _M_terminate_string();
     }
+public:
     template <class _InputIter> void _M_range_initialize(_InputIter __f, _InputIter __l)
     {
         _M_range_initialize(__f, __l, forward_iterator_tag());
     }
+private:
     template <class _InputIter> _Self& _M_assign_dispatch(_InputIter __f, _InputIter __l, const __false_type&);   // 0x00569140
+public:
     _Self& operator=(const _Self& __s)
     {
         if (&__s != this)

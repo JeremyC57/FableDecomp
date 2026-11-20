@@ -1,4 +1,4 @@
-// Behaviour test for NUISystem::CMenuEntry::InitializeRumbleActions (0x0053DA30): copy the repeat setting and add one action
+// Behaviour test for NUISystem::CMenuEntry::GetDataFromDef (0x0053DA30): copy the repeat setting and add one action
 // per non-zero rumble id to the matching list; the def reference is released at the end.
 #include <cstdio>
 

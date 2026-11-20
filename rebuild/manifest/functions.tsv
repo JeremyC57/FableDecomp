@@ -9441,7 +9441,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053d6c0	OnObserverRemove	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053d720	GoForward	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053d970	OnUnhovered	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053da30	InitializeRumbleActions	NUISystem::CMenuEntry	unknown	undefined	0		0	yes	accepted									
+0053da30	GetDataFromDef	NUISystem::CMenuEntry	unknown	undefined	0		0	yes	accepted									
 0053dcd0	AddThingActionParam	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053dd50	AddUIActionParam	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ddd0	vfunc_156	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -10224,7 +10224,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00567240	__find	std	unknown	undefined	0		0	yes	accepted									
 005672d0	_M_range_initialize<const char*>	std::basic_string<char>	unknown	undefined	0		0	yes	accepted									
 00567350	__destroy_aux<CTCHeroOnlineScoreboard::CActivity *>	std	__thiscall	void	3	vector<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>,std::allocator<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_>_> *,pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *,pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *	1	yes	accepted									
-00567400	append<char *>	std::basic_string<char, std::char_traits<char>, std::allocator<char>>	unknown	undefined	0		0	yes	accepted									
+00567400	append<char*>	std::basic_string<char>	unknown	undefined	0		0	yes	accepted									
 00567520	ScalarDeletingDestructor_CBufferOwner_00567520	_unattributed	__thiscall	void *	2	CLandscapeBackgroundLoadTask *,uint	1	yes	accepted									
 00567560	vector	std::vector<unsigned char>	unknown	undefined	0		0	yes	accepted									
 005676c0	_Rb_tree	std::_Rb_tree<CUnprovenKey_005676c0,CUnprovenValue_005676c0,CUnprovenKeyOfValue_005676c0,std::less<CUnprovenKey_005676c0>,std::allocator<CUnprovenValue_005676c0> >	unknown	undefined	0		0	yes	accepted									
@@ -10240,8 +10240,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00567af0	_M_insert	std::_Rb_tree<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float>, std::_Select1st<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float> >, std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity >, std::allocator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float> > >	unknown	undefined	0		0	yes	accepted									
 00567bb0	insert_unique	std::_Rb_tree<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity,std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float >,std::_Select1st<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float > >,std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity >,std::allocator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float > > >	unknown	undefined	0		0	yes	accepted									
 00567d00	_M_range_initialize<char *>	std::basic_string<char, std::char_traits<char>, std::allocator<char>>	unknown	undefined	0		0	yes	accepted									
-00567d60	append<char const *>	std::basic_string<char, std::char_traits<char>, std::allocator<char>>	unknown	undefined	0		0	yes	accepted									
-00567e80	_M_append_dispatch	CRetailString	unknown	undefined	0		0			discovered	boundary							
+00567d60	append<const char*>	std::basic_string<char>	unknown	undefined	0		0	yes	accepted									
+00567e80	_M_append_dispatch<char*>	std::basic_string<char>	unknown	undefined	0		0			discovered	boundary							
 00567e90	_M_deallocate_block	CRetailString	unknown	undefined	0		0			discovered	boundary							
 00567ea0	StdVector_Construct	_global	unknown	undefined	0		0	unmeasured	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\global_StdVectorConstruct_00567ea0.cpp
 00567eb0	map	std::map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float, std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>, std::allocator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, float>>>	unknown	undefined	0		0	yes	accepted									
@@ -10269,11 +10269,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00568e70	__uninitialized_copy	std	unknown	undefined	0		0	yes	accepted									
 00568f10	__uninitialized_fill_n	std	unknown	undefined	0		0	yes	accepted									
 00568fc0	InsertGrow_00568fc0	STL::Vector16_quest16	unknown	undefined	0		0	yes	accepted									
-00569140	_M_assign_dispatch	std::basic_string	unknown	undefined	0		0	yes	accepted									
+00569140	_M_assign_dispatch<char*>	std::basic_string<char>	unknown	undefined	0		0	yes	accepted									
 00569220	map	std::map<long, CCountedPointer<CTexture>, std::less<long>, std::allocator<std::pair<long const, CCountedPointer<CTexture>>>>	unknown	undefined	0		0	yes	accepted									
 00569260	~CRetailTree_erase00567980	CRetailTree_erase00567980	unknown	undefined	0		0	yes	accepted									
 005692b0	operator[]	std::map<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float, std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity >, std::allocator<std::pair<const CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, float > > >	unknown	undefined	0		0	yes	accepted									
-00569330	Substr	CNetString_Retail	unknown	undefined	0		0	yes	accepted									
+00569330	substr	std::basic_string<char>	unknown	undefined	0		0	yes	accepted									
 005693b0	assign	std::basic_string<char, std::char_traits<char>, std::allocator<char>>	unknown	undefined	0		0	yes	accepted									
 00569450	_M_insert_overflow	std::vector<std::pair<int,CWideString>>	unknown	undefined	0		0	yes	accepted									
 00569550	resize_with_fill	std::vector_QuestPair_::std::vector_QuestPair_	unknown	undefined	0		0	yes	accepted									
@@ -24949,8 +24949,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083eee0	GetUntilCRLF	LHHttp2	__thiscall	LH_HTTP_STATUS	3	LHHttp2 *,char *,ulong *	1	yes	accepted									
 0083efe0	ReceiveDocumentAsync	LHNetworkLib::LHHttp2	__thiscall	LH_HTTP_STATUS	1	LHHttp2 *	1	yes	accepted									
 0083f420	ParseLocationData	LHNetworkLib::LHHttpHeaderStatus	unknown	undefined	0		0	yes	accepted									
-0083f5c0	GetHost_0083f5c0	CHttpUrl_0083f420	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
-0083f600	GetPath_0083f600	CHttpUrl_0083f420	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
+0083f5c0	GetLocationHost	LHNetworkLib::LHHttpHeaderStatus	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
+0083f600	GetLocationURI	LHNetworkLib::LHHttpHeaderStatus	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
 0083f640	GetLocationPort	LHNetworkLib::LHHttpHeaderStatus	__thiscall	ushort	1	LHHttpHeaderStatus *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\LHHttpHeaderStatus_GetLocationPort_0083f640.cpp
 0083f650	GetHeader	LHNetworkLib::LHHttpHeaders	unknown	undefined	0		0	yes	accepted									
 0083f870	SetProxySettings	LHNetworkLib::LHHttp2	unknown	undefined	0		0	yes	accepted									
@@ -24978,11 +24978,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00841820	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00841900	__find_if	std	unknown	undefined	0		0	yes	accepted									
 00841a70	PushBack_dword_00841a70	_global	unknown	undefined	0		0	yes	accepted									
-00841b70	operator+	std	unknown	undefined	0		0	yes	accepted									
-00841c50	operator+	std	unknown	undefined	0		0	yes	accepted									
+00841b70	operator+<char,std::char_traits<char>,std::allocator<char> >	std	unknown	undefined	0		0	yes	accepted									
+00841c50	operator+<char,std::char_traits<char>,std::allocator<char> >	std	unknown	undefined	0		0	yes	accepted									
 00841de0	__copy<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const*,std::basic_string<char,std::char_traits<char>,std::allocator<char> >*,int>	std	__fastcall	CMapDesc *	4	CMapDesc *,CMapDesc *,CMapDesc *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00841e90	LAddress	LHNetworkLib::LAddress	__thiscall	undefined	1	CContainedBank *	0	yes	accepted									
-00841ee0	LAddress	LAddress	unknown	undefined	0		0	yes	accepted									
+00841ee0	LAddress	LHNetworkLib::LAddress	unknown	undefined	0		0	yes	accepted									
 00841f60	operator=	LAddress	__thiscall	LAddress *	2	LAddress *,LAddress *	1	yes	accepted									
 00841fc0	erase	std::vector	unknown	undefined	0		0	yes	accepted									
 00842120	PerformAction	CCreatureAction_PerformExpression	__thiscall	void	1	CCreatureAction_PerformExpression *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CCreatureActionPerformExpression_PerformAction_00842120.cpp

@@ -1324,3 +1324,9 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-20 (landing nf108 includer recheck): 0x00BE7D70 CLandscapeBackgroundPatch::Load grades DIFFER(1437v2983) PASS; its source and its
   includes (`<stddef.h>`, `rebuild_abi.h` via the hand732 candidates header) are untouched by nf108, so it is pre-existing. It is also the
   Leaf-less row left on q4453.
+- 2026-11-20: nf111 created two name splits its gate missed (section-2 parser bug, now fixed): 0x012465FC and 0x0124662C (CMenuEntry vtables) are
+  bound as `...6BCActionParam@1@@` / `...6BCUIInterface@1@@` by 0x0053E4E0 and as `...6BCClickableBase2@1@@` / `...6BCClickableBase0@1@@` by the
+  older all-local ctor row 0x0053DFE0. Heal: port 0x0053DFE0 onto engine/NUISystem_CMenuEntry.h (agent NF117). Every other nf111 target was
+  re-checked against the reloc_bindings spelling sets: no other split created.
+- 2026-11-20: the two nf111 CMenuEntry vtable splits are healed by landing nf117 (0x0053DFE0 ported onto engine/NUISystem_CMenuEntry.h; 0x0053DA30
+  is CMenuEntry::GetDataFromDef). 0x0124662C / 0x01246604 / 0x012465FC now carry one spelling each.

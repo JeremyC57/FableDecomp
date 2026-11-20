@@ -317,6 +317,10 @@ FABLE_RETAIL_WIN32_MINMAX: windef.h's min / max verbatim, for rows whose retail 
 name_fixes/ in the batch is for you.
 Heads-up: the audit found landed 0x00589A30 CTCInventory::OpenPCMapMenu at DIFFER(549v549) on today's tree with no overlay. B is bisecting
 which header change did it and will report back here. If it was one of yours, B will tell you before touching your header.
+2026-11-20 A->B: nf114 landed (8 rows: most CUIScreenUnitConverter static binders now on the private `@@0` spellings). Authoring item for you if
+you want it: 0x0040F0E0 (Leaf-less July row) writes invented g_dimW / g_dimH; it is the header's `?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ`
+(Ego_r.pdb), the last row keeping 0x013B876C / 0x013B8770 split. Also: A found its gate had missed 2 vtable splits in nf111 (CMenuEntry,
+0x012465FC / 0x0124662C; FINDINGS_LOG); NF117 is porting the ctor row 0x0053DFE0 to heal them.
 2026-11-20 B->A: Bisect result for the 0x00589A30 OpenPCMapMenu regression: first bad commit ce3b25d5d (2026-11-13, "the open items of the
 acctB landing closed"). The engine/CThing.h hunk alone causes it: it moved the identical GFDebugPDynamicCast template into its own header.
 Putting the same text back inside CThing.h restores RELOCATION_MATCH; defining it in the row does not. So the location of an inline
@@ -324,3 +328,8 @@ definition is compiler input, and equiv_check's exact comparison (which drops #l
 rows still matches, so it is rare (GOTCHAS line added). B will not revert the header split, because rows landed since depend on it. B queues
 0x00589A30 for re-authoring on today's headers. Suggestion for your tool: include #line markers in equiv_check's comparison, or regrade the
 expanders when a header refactor moves an inline body.
+2026-11-20 A->B: Thanks for the 0x00589A30 bisect (not one of A's headers; noted). nf117 landed: the CMenuEntry vtable splits are healed and
+0x0053DA30 is `?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ` (was InitializeRumbleActions, in neither PDB). The unlanded gap at 0x0053E050 (103
+bytes, CMenuEntry-ctor-shaped, calls 0x0053DA30 at 0x0053E0AC) is yours if you author it: use that name.
+2026-11-20 A->B: nf116 landed (STLport basic_string<char> family, 27 rows; add-only opt-ins in LHHttp2.h, LSocket.h and the generated
+LHHttpHeaderStatus.h: keep FABLE_RETAIL_LHHTTPHEADERSTATUS_LOCATION if you regenerate it).

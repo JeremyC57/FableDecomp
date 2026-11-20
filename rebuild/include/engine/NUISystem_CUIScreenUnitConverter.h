@@ -61,7 +61,11 @@ public:
     {
         if (IsUsingRelativeCoords)
         {
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
+            float t = x / DefaultBackBufferWidth;            // NF114: the private original name (Ego_d PUB32 / FableWin LF_STMEMBER)
+#else
             float t = x / ScreenWidth;
+#endif
             return t * BackBufferWidth;
         }
         return x;
@@ -70,7 +74,11 @@ public:
     {
         if (IsUsingRelativeCoords)
         {
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
+            float t = y / DefaultBackBufferHeight;            // NF114: the private original name (Ego_d PUB32 / FableWin LF_STMEMBER)
+#else
             float t = y / ScreenHeight;
+#endif
             return t * BackBufferHeight;
         }
         return y;
@@ -99,8 +107,14 @@ public:
     // order at 0x0061FB58 / 0x0061FB5E (c2 symbol-record ids: the two expanded per-axis helpers add folded parameter records with no byte).
     // ConvertX / ConvertY bodies: Inferred (FableWin 15i / 45b each; this text 13i / 42b at /Od -- the flag test and the two-step divide /
     // multiply are what the retail copy 0x0052E580 shows; the exact debug text is not pinned).
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
+    // NF114: the same bodies on the private original names (Ego_d PUB32 / FableWin LF_STMEMBER DefaultBackBufferWidth / Height).
+    static float __fastcall ConvertX(float x) { if (IsUsingRelativeCoords) { x /= DefaultBackBufferWidth; x *= BackBufferWidth; } return x; }
+    static float __fastcall ConvertY(float y) { if (IsUsingRelativeCoords) { y /= DefaultBackBufferHeight; y *= BackBufferHeight; } return y; }
+#else
     static float __fastcall ConvertX(float x) { if (IsUsingRelativeCoords) { x /= ScreenWidth; x *= BackBufferWidth; } return x; }
     static float __fastcall ConvertY(float y) { if (IsUsingRelativeCoords) { y /= ScreenHeight; y *= BackBufferHeight; } return y; }
+#endif
     static C2DVector __fastcall ConvertVector(C2DVector v)         // 0x0052E580 (out-of-line copy)
     {
         C2DVector result = v;

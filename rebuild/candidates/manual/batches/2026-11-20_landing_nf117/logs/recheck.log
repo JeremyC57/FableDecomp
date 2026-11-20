@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0053da30   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0053da30   RELOCATION_MATCH PASS   NUISystem::CMenuEntry::GetDataFromDef
+0053dfe0   RELOCATION_MATCH PASS   NUISystem::CMenuEntry::CMenuEntry
+
+WINS: 2
+  0053da30 RELOCATION_MATCH NUISystem::CMenuEntry::?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ
+  0053dfe0 RELOCATION_MATCH NUISystem::CMenuEntry::??0CMenuEntry@NUISystem@@QAE@J@Z

@@ -194,6 +194,7 @@ public:
     void _M_initialize_dispatch(_InIter __f, _InIter __l, const __false_type&) { _M_range_initialize(__f, __l); }
     template <class _InputIter>
     void _M_range_initialize(_InputIter __f, _InputIter __l) { _M_range_initialize(__f, __l, forward_iterator_tag()); }
+private:
     template <class _ForwardIter>
     void _M_range_initialize(_ForwardIter __f, _ForwardIter __l, const forward_iterator_tag&)
     {                                                                                  // 0x00567D00 for char*
@@ -202,6 +203,7 @@ public:
         this->_M_finish = uninitialized_copy(__f, __l, this->_M_start);
         _M_terminate_string();
     }
+public:
     void _M_construct_null(_CharT* __p) { *__p = _CharT(); }
     void _M_terminate_string() { _M_construct_null(this->_M_finish); }
 };

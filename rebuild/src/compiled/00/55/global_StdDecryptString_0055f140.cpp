@@ -86,6 +86,7 @@ public:
         return last == first ? result : (C*)memmove(result, first, (last - first) * sizeof(C)) + (last - first);
     }
     void _M_terminate_string() { *_M_finish = 0; }
+private:
     template <class It> __declspec(noinline) void _M_range_initialize(It f, It l, const forward_iterator_tag&)   // <char*> 0x00567D00 (same-TU body)
     {
         int n = l - f;
@@ -93,6 +94,7 @@ public:
         _M_finish = __copy_trivial(f, l, _M_start);
         _M_terminate_string();
     }
+public:
     const C* c_str() const { return _M_start; }
     unsigned int size() const { return _M_finish - _M_start; }
 };

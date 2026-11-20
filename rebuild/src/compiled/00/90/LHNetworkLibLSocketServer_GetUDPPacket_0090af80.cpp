@@ -47,7 +47,9 @@ public:
     _CharT* _M_start;                                       // +0x00
     _CharT* _M_finish;                                      // +0x04
     _STLP_alloc_proxy<_CharT*, _CharT, _Alloc> _M_end_of_storage;   // +0x08
+private:
     template <class _InputIter> basic_string& _M_assign_dispatch(_InputIter __f, _InputIter __l, const __false_type&);   // <char*> 0x00569140
+public:
     template <class _InputIter> basic_string& assign(_InputIter __first, _InputIter __last)
     {
         return _M_assign_dispatch(__first, __last, __false_type());

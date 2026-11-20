@@ -1,0 +1,7 @@
+# NF114 lessons (one line each)
+- Probe the never-probed entries first: q4449 / q4524 / q4452 (55 / 73 / 128 REFS rows) had only 11 / 17 / 5 wrong binders; REFS size is not the work size.
+- Private static data respells in three cheap ways: an opt-in swap where the row is already on the header and reads the data inside the class's inline members; `private:` in place inside a pre-existing local model whose code is a member; the header's public inline member for an outside caller. All 8 rows matched first time.
+- When two #if branches of a header declare the same statics under different names, the inline bodies under a third opt-in (CONVERTXY_INLINE) need an arm per branch: check the opt-in combination compiles before swapping a row's define.
+- Prove an overlay arm is default-safe with `cpp -P` of the header through orig/ and hdr/ under each existing opt-in combination (identical output).
+- A shared-header template operator() that retail expands (CFilter_Bind3) can be forced by a member-specific FABLE_FORCEINLINE opt-in (fable_string.h precedent); it took 0x00516200 from 130 to 423 bytes, the CThing scan-test spelling (SCANINCLUSION_ISALIVE) did the rest but one register swap.
+- Read the binders before planning a port: q4975 / q4449 / q4452 binders carry 8-25 local classes each, so each is a port, not a respell; a self-row re-land on STLport can also add a THIRD spelling at a callee (0x004C2AD0) and must wait.

@@ -1,4 +1,8 @@
 // NUISystem::CParticleEffect::Draw(long, long, long, long, long) -- keep the running emitter on the component: pick the front-end layer for its depth (offset by the draw depth unless the component is independent or suppressed) and move the emitter to its position, rescaled from the display to the virtual screen size when that override is on
+// NF114 (2026-11-20, q11634..q11638): the five CUIScreenUnitConverter statics were invented globals here (g_bScreenSizeOverride /
+//   g_OverrideScreenWidth / Height / g_DisplayWidth / Height, read by local ScaleScreenX / ScaleScreenY helpers); they are the class's private
+//   statics (Ego_d.pdb PUB32 + FableWin.pdb LF_STMEMBER, `@@0`), read here through the class's own inline per-axis converters ConvertX /
+//   ConvertY (Ego_r.pdb / FableWin.pdb ?ConvertX@CUIScreenUnitConverter@NUISystem@@SIMM@Z / ?ConvertY@..@@SIMM@Z), the header bodies.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543EE0, length 192 bytes (`ret 14h`). Virtual: slot 2 of
 // NUISystem::CParticleEffect's vtable 0x0124735C.
@@ -13,11 +17,14 @@
 // for its depth, with the default axes (Up (0,0,1), Forward (0,1,0)); callers start it only when the state's
 // info exists, wants an effect and none is running. The manager getter is called after the arguments are pushed (VC
 // evaluates the object expression of a member call last), the axes are built between the pushes.
-// Shape: the position is a copy of the component's and each axis is rescaled through an inline helper written as
-// `float r; if (override) r = (v / display) * virtual; else r = v; return r;` reading the copy (X's load forwards to the
-// member, Y's comes from the copied word). The if/else keeps a real store in the untaken arm, so VC7.1 re-tests the flag
-// for Y and shares one fstp per axis; a `?:` helper lets it drop Y's self-assignment and jump-thread the second test.
+// Shape: the position is a copy of the component's and each axis is rescaled through the class's inline ConvertX / ConvertY
+// (engine header FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY_INLINE bodies: the flag test, the divide by the default
+// 640 / 480, the multiply by the back-buffer size) reading the copy (X's load forwards to the member, Y's comes from the copied word).
+// (Before NF114 the row wrote these as local `float r; if (override) r = ...; else r = v; return r;` helpers over invented globals.)
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
+#define FABLE_RETAIL_CUISCREENUNITCONVERTER_CONVERTXY_INLINE
+#include "engine/NUISystem_CUIScreenUnitConverter.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
@@ -255,13 +262,6 @@ public:
     virtual void Draw(long target, long a, long layerOffset, long c, long component);
 };
 
-extern bool  g_bScreenSizeOverride;                // 0x013B8768
-extern float g_OverrideScreenWidth;                // 0x013B876C
-extern float g_OverrideScreenHeight;               // 0x013B8770
-extern float g_DisplayWidth;                       // 0x01375CD4
-extern float g_DisplayHeight;                      // 0x01375CD8
-static inline float ScaleScreenX(float x) { float r; if (g_bScreenSizeOverride) r = (x / g_DisplayWidth) * g_OverrideScreenWidth; else r = x; return r; }
-static inline float ScaleScreenY(float y) { float r; if (g_bScreenSizeOverride) r = (y / g_DisplayHeight) * g_OverrideScreenHeight; else r = y; return r; }
 
 
 void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long component)
@@ -275,8 +275,8 @@ void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long c
         else
             layer = CManager::GetInstance()->GetLayer(Depth);
         C2DVector position = Position;
-        position.X = ScaleScreenX(position.X);
-        position.Y = ScaleScreenY(position.Y);
+        position.X = CUIScreenUnitConverter::ConvertX(position.X);
+        position.Y = CUIScreenUnitConverter::ConvertY(position.Y);
         Emitter->Set2DPosition(&position, layer);
     }
 }

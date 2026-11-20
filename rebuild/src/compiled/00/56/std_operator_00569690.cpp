@@ -118,6 +118,7 @@ public:
     void _M_construct_null(_CharT* __p) { *__p = 0; }
     void _M_terminate_string() { _M_construct_null(this->_M_finish); }
 
+private:
     template <class _ForwardIter>
     __declspec(noinline) void _M_range_initialize(_ForwardIter __f, _ForwardIter __l, const forward_iterator_tag&)
     {                                                                                          // <char*> 0x00567D00
@@ -126,12 +127,14 @@ public:
         this->_M_finish = uninitialized_copy(__f, __l, this->_M_start);
         _M_terminate_string();
     }
+public:
     template <class _InputIter> void _M_range_initialize(_InputIter __f, _InputIter __l)
     {
         _M_range_initialize(__f, __l, forward_iterator_tag());
     }
 
     size_type capacity() const { return (this->_M_end_of_storage._M_data - this->_M_start) - 1; }
+private:
     template <class _ForwardIter>
     __declspec(noinline) _Self& append(_ForwardIter __first, _ForwardIter __last, const forward_iterator_tag&)
     {                                                                                          // <char*> 0x00567400
@@ -163,6 +166,7 @@ public:
         }
         return *this;
     }
+public:
     template <class _InputIter> _Self& append(_InputIter __first, _InputIter __last)
     {
         return append(__first, __last, forward_iterator_tag());

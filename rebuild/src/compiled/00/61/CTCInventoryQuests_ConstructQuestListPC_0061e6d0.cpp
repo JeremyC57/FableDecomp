@@ -1,4 +1,6 @@
 // CTCInventoryQuests::ConstructQuestListPC(NUISystem::CComponent* parent, const std::vector<CThing*>& quests, NUISystem::CList* list, QuestScreenType type, NUISystem::CList* frame_list) -- build the PC quest list: one menu entry per quest card (core, optional, vignette order) with its minimap, description text, rewards, boasts and take / delete actions, then the world-map zoom state and region markers
+// NF114 (2026-11-20, q11634..q11638): CUIScreenUnitConverter's five statics are private (`@@0`: Ego_d.pdb PUB32 + FableWin.pdb
+//   LF_STMEMBER attrs = private; DefaultBackBufferWidth / Height are the original names of the 640 / 480 words 0x01375CD4 / 0x01375CD8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0061E6D0, 12,356 bytes, thiscall `ret 0x14`.
 // Leaf: ?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z
 // Evidence for the non-obvious spellings (the landed twin 0x0061B610 CTCInventoryQuests::ConstructQuestList is the model; each header
@@ -63,7 +65,7 @@
 #define FABLE_RETAIL_C2DVECTOR
 #define FABLE_RETAIL_CRGBCOLOUR
 #define FABLE_RETAIL_CRGBCOLOUR_CTOR4_INITIALISE
-#define FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE
+#define FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE_CONVERTXY
