@@ -1,0 +1,84 @@
+0041641f new: 0
+00417568 new: 0
+009a1660 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+009a4350 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+009a59a0 new: 0
+009bfb30 new: 1
+    ?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z TABLE:009bfb30
+009bfe70 new: 1
+    ??0CCreateDeviceParameters@CDisplayManager@@QAE@ABU01@@Z TABLE:009c11a0
+009bff40 new: 2
+    ??0CCreateDeviceParameters@CDisplayManager@@QAE@ABU01@@Z TABLE:009c11a0
+    ?SetDisplayMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@ABVC2DExtentsI@@KW4ESurfaceMultisampleType@@K@Z TABLE:009bff40
+009c0020 new: 2
+    ??0CCreateDeviceParameters@CDisplayManager@@QAE@ABU01@@Z TABLE:009c11a0
+    ?SetExclusiveMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@_N@Z TABLE:009c0020
+009c00c0 new: 0
+009c11a0 new: 4
+    ??0C2DExtentsI@@QAE@ABV0@@Z
+    ??0CCreateDeviceParameters@CDisplayManager@@QAE@ABU01@@Z TABLE:009c11a0
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ?ReferenceCreateDeviceParametersCopy@?A0xbb5c2f6a@@YAXABUCCreateDeviceParameters@CDisplayManager@@PAU23@@Z
+009c5310 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+009c6020 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+009c6d60 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+009d52d0 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+009d61f0 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+009f2000 new: 1
+    ?EnterSynchronisation@CMemoryAllocator@@KIXXZ TABLE:009f2000
+009f2010 new: 1
+    ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ TABLE:009f2010
+00a02190 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+00a02220 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+00a02370 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00a02570 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00b24690 new: 0
+00bd9af0 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00bd9b90 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+00bd9c40 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00bd9ce0 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+00bda150 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Deallocate@CMemoryAllocator@@SIXPAX@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+00bda360 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00bda3d0 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00bda470 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z
+00f370c0 new: 1
+    ?Allocate@CMemoryAllocator@@SIPAXKK@Z

@@ -15,7 +15,9 @@ class CInputManager { public:
     virtual bool SetExclusiveMode(bool exclusive);  // slot 1
 };
 class CDisplayManager { public:
-    long SetExclusiveMode(bool exclusive);          // 0x009C0020 (ECreateDeviceSuccess)
+    // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum in CDisplayManager (Ego_d.pdb LF_ENUM enumerators).
+    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
+    ECreateDeviceSuccess SetExclusiveMode(bool exclusive);   // 0x009C0020 ?SetExclusiveMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@_N@Z
 };
 
 class CSystemManager { public:

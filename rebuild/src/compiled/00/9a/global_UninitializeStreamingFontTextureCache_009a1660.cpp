@@ -1,5 +1,9 @@
 // UninitializeStreamingFontTextureCache() -- frees the streaming-font glyph cache: its four lookup arrays and the cache block taken from the global memory allocator
 // Leaf: ?UninitializeStreamingFontTextureCache@@YIXXZ
+// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD rows forced their GFFree
+//   helper) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
+//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A1660, 188 bytes (+ int3 padding), plain `ret`. Ego_r PDB name:
 // `?UninitializeStreamingFontTextureCache@@YIXXZ` (a global `__fastcall` with no arguments).
 // Callees: operator delete[] @ 0x00BFEB1C (MSVCR71 import thunk, x4), CMemoryAllocator::EnterSynchronisation
@@ -15,41 +19,22 @@
 // block is loaded into esi before the lock call, the allocator `delete` keeps the pointer in esi for the operator
 // delete call; then the block pointer is nulled.
 #include "fable_compiler.h"
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+// NF140 (q4197 / q4198): the frees are the inline public static CMemoryAllocator::Deallocate(block) (FableWin.pdb ?Deallocate@CMemoryAllocator@@SIXPAX@Z,
+// out of line at 0x009A4350; engine/CMemoryAllocator.h opt-in FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, the body of the landed 0x009F2B20).
+#define FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE
+#include "engine/CMemoryAllocator.h"
 void __cdecl operator delete[](void* block);    // 0x00BFEB1C (MSVCR71 import thunk; the lane <new> lacks it)
 
-class CMemoryAllocator {
-public:
-    void InternalDeallocate(void* block);                   // 0x009F2920
-    unsigned long GetNoAllocations();                       // 0x009F1F10
-    ~CMemoryAllocator();                                    // 0x009F2310
-    static void __fastcall operator delete(void* block);    // 0x009F1F90 (VirtualFree(p, 0, MEM_RELEASE))
-    static void __fastcall EnterSynchronisation();          // 0x009F2000
-    static void __fastcall LeaveSynchronisation();          // 0x009F2010
-};
-
-extern CMemoryAllocator* g_pGlobalAllocator;               // 0x013CAA90
-extern bool              g_bDestroyAllocatorWhenEmpty;     // 0x013CAA94
 
 extern void*           g_pStreamingFontCacheMemory;        // 0x013BDA24
 extern unsigned long*  g_pStreamingFontCacheDwordTable;    // 0x013BDA34 ((n + 1) dwords)
 extern unsigned char*  g_pStreamingFontCacheByteTable;     // 0x013BDA38
 extern unsigned long*  g_pStreamingFontCachePairTable;     // 0x013BDA3C (8-byte records)
 extern unsigned short* g_pStreamingFontCacheWordTable;     // 0x013BDA40
-
-FABLE_FORCEINLINE void __fastcall GFFreeFromGlobalAllocator(void* block)   // 0x009A4350 (inlined here)
-{
-    CMemoryAllocator::EnterSynchronisation();
-    if (block && g_pGlobalAllocator) {
-        g_pGlobalAllocator->InternalDeallocate(block);
-        if (g_bDestroyAllocatorWhenEmpty) {
-            if (g_pGlobalAllocator->GetNoAllocations() == 0) {
-                delete g_pGlobalAllocator;
-                g_pGlobalAllocator = 0;
-            }
-        }
-    }
-    CMemoryAllocator::LeaveSynchronisation();
-}
 
 void __fastcall UninitializeStreamingFontTextureCache()
 {
@@ -62,7 +47,7 @@ void __fastcall UninitializeStreamingFontTextureCache()
         g_pStreamingFontCacheByteTable = 0;
         delete[] g_pStreamingFontCachePairTable;
         g_pStreamingFontCachePairTable = 0;
-        GFFreeFromGlobalAllocator(g_pStreamingFontCacheMemory);
+        CMemoryAllocator::Deallocate(g_pStreamingFontCacheMemory);
         g_pStreamingFontCacheMemory = 0;
     }
 }

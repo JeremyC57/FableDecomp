@@ -34263,7 +34263,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c0880	CDisplayManager	CDisplayManager	unknown	undefined	0		0	yes	accepted									
 009c0e50	Init	CDisplayManager	__thiscall	void	3	CDisplayManager *,CDisplayManagerInit *,bool	1	yes	accepted									
 009c1050	SetClientWindow	CDisplayManager	__thiscall	bool	2	CDisplayManager *,HWND__ *	1	yes	accepted									
-009c11a0	CCreateDeviceParameters	CCreateDeviceParameters	__thiscall	undefined	2	CCreateDeviceParameters *,CCreateDeviceParameters *	0	yes	accepted									
+009c11a0	CCreateDeviceParameters	CDisplayManager::CCreateDeviceParameters	__thiscall	undefined	2	CCreateDeviceParameters *,CCreateDeviceParameters *	0	yes	accepted									
 009c1220	sub_009c1220	_global	unknown	undefined	0		0			discovered	gapscan							
 009c1810	`scalar deleting destructor'	CPairedNodeLists	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009c1810.cpp
 009c1860	operator()	std::less	unknown	undefined	0		0	yes	accepted									
@@ -35213,8 +35213,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f1f10	GetAllocationCount	CMemoryAllocator	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\DrawGetEnvironment_DrawGetEnvironment_009f1f10.cpp
 009f1f40	Nop_ret4_009f1f40	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f40.cpp
 009f1f90	operator_delete	CMemoryAllocator	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_operatordelete_009f1f90.cpp
-009f2000	GFEnterAllocatorLock	_global	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\std_DestvalCFlash_009f2000.cpp
-009f2010	GFLeaveAllocatorLock	_global	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
+009f2000	EnterSynchronisation	CMemoryAllocator	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\std_DestvalCFlash_009f2000.cpp
+009f2010	LeaveSynchronisation	CMemoryAllocator	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 009f2080	Nop_ret4_009f2080	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f2080.cpp
 009f20b0	CMemoryAllocator	CMemoryAllocator	__thiscall	undefined	2	CMemoryAllocator *,void *	0	yes	accepted									
 009f2310	~CMemoryAllocator	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted									

@@ -1,7 +1,7 @@
-// CDisplayManager::SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, long refreshRate) -- return 2 (succeeded, nothing to do) when the requested mode is the current one, else reset the device with the last creation parameters changed to the new size (at least 32x32), depth, refresh rate and multisampling
-// Leaf: SetDisplayMode
+// CDisplayManager::SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, unsigned long refreshRate) -- return 2 (succeeded, nothing to do) when the requested mode is the current one, else reset the device with the last creation parameters changed to the new size (at least 32x32), depth, refresh rate and multisampling
+// Leaf: ?SetDisplayMode@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@1@ABVC2DExtentsI@@KW4ESurfaceMultisampleType@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BFF40, length 222 bytes, `ret 10h`.
-// Callees: CPixelFormat::GetColourDepth() @ 0x009E3820, CDisplayManager::ResetDevice(CCreateDeviceParameters*)
+// Callees: CPixelFormat::GetColourDepth() @ 0x009E3820, CDisplayManager::ResetDevice(const CCreateDeviceParameters&) (private)
 // @ 0x009BFB30.
 // Layout: PDB CDisplayManager: BackBufferDimensions +0x18c, MultisampleType +0x1a4, BackBufferFormat +0x1a8, RefreshRate
 // +0x1c8; LastDeviceCreationParameters at retail +0x268 (PDB +0x270: the DeviceResetCallbacks list before it is a 4-byte
@@ -25,27 +25,29 @@ struct CPresentationIntervalDesc {
     long Interval;                                 // +0x04
 };
 enum ESurfaceMultisampleType { MULTISAMPLE_NONE = 0 };
-enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 1, CREATE_DEVICE_SUCCEEDED = 2 };
 struct HWND__;
-struct CCreateDeviceParameters {
-    HWND__* WinHandle;                             // +0x00
-    C2DExtentsI BackBufferDimensions;              // +0x04
-    long BackBufferBitDepth;                       // +0x0c
-    long ZBufferBitDepth;                          // +0x10
-    long BackBufferCount;                          // +0x14
-    long RefreshRate;                              // +0x18
-    bool ExclusiveMode;                            // +0x1c
-    CPresentationIntervalDesc PresentationInterval;   // +0x20
-    ESurfaceMultisampleType MultisampleType;       // +0x28
-    CCreateDeviceParameters() { }
-    CCreateDeviceParameters(const CCreateDeviceParameters& o)
-        : WinHandle(o.WinHandle), BackBufferDimensions(o.BackBufferDimensions), BackBufferBitDepth(o.BackBufferBitDepth),
-          ZBufferBitDepth(o.ZBufferBitDepth), BackBufferCount(o.BackBufferCount), RefreshRate(o.RefreshRate),
-          ExclusiveMode(o.ExclusiveMode), PresentationInterval(o.PresentationInterval), MultisampleType(o.MultisampleType) { }
-};
 
 class CDisplayManager {
 public:
+    // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum and the parameter block in CDisplayManager
+    // (?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z); enumerators as Ego_d.pdb LF_ENUM.
+    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
+    struct CCreateDeviceParameters {
+        HWND__* WinHandle;                             // +0x00
+        C2DExtentsI BackBufferDimensions;              // +0x04
+        long BackBufferBitDepth;                       // +0x0c
+        long ZBufferBitDepth;                          // +0x10
+        long BackBufferCount;                          // +0x14
+        long RefreshRate;                              // +0x18
+        bool ExclusiveMode;                            // +0x1c
+        CPresentationIntervalDesc PresentationInterval;   // +0x20
+        ESurfaceMultisampleType MultisampleType;       // +0x28
+        CCreateDeviceParameters() { }
+        CCreateDeviceParameters(const CCreateDeviceParameters& o)
+            : WinHandle(o.WinHandle), BackBufferDimensions(o.BackBufferDimensions), BackBufferBitDepth(o.BackBufferBitDepth),
+              ZBufferBitDepth(o.ZBufferBitDepth), BackBufferCount(o.BackBufferCount), RefreshRate(o.RefreshRate),
+              ExclusiveMode(o.ExclusiveMode), PresentationInterval(o.PresentationInterval), MultisampleType(o.MultisampleType) { }
+    };
     unsigned char _pad0[0x18c];
     C2DExtentsI BackBufferDimensions;              // +0x18c
     unsigned char _pad1[0x10];
@@ -55,15 +57,17 @@ public:
     long RefreshRate;                              // +0x1c8
     unsigned char _pad3[0x268 - 0x1cc];
     CCreateDeviceParameters LastDeviceCreationParameters;   // +0x268
-    ECreateDeviceSuccess ResetDevice(CCreateDeviceParameters* parameters);   // 0x009BFB30
-    ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, long refreshRate);
+private:
+    ECreateDeviceSuccess ResetDevice(const CCreateDeviceParameters& parameters);   // 0x009BFB30 (private, AAE)
+public:
+    ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, unsigned long refreshRate);
 };
 
-ECreateDeviceSuccess CDisplayManager::SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, long refreshRate)
+CDisplayManager::ECreateDeviceSuccess CDisplayManager::SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample, unsigned long refreshRate)
 {
     if (size.X == BackBufferDimensions.X && size.Y == BackBufferDimensions.Y && bitDepth == BackBufferFormat.GetColourDepth()
         && refreshRate == RefreshRate && multisample == MultisampleType)
-        return CREATE_DEVICE_SUCCEEDED;
+        return CREATE_DEVICE_SUCCESS;
     CCreateDeviceParameters parameters = LastDeviceCreationParameters;
     parameters.BackBufferDimensions = size;
     if (parameters.BackBufferDimensions.X < 32)
@@ -73,5 +77,5 @@ ECreateDeviceSuccess CDisplayManager::SetDisplayMode(const C2DExtentsI& size, un
     parameters.BackBufferBitDepth = bitDepth;
     parameters.RefreshRate = refreshRate;
     parameters.MultisampleType = multisample;
-    return ResetDevice(&parameters);
+    return ResetDevice(parameters);
 }

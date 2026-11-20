@@ -2,8 +2,8 @@
 // buffer of `size` bytes when rendering headless, else an empty pool) and return its index
 // Leaf: AddScratchPool
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F370C0, length 166 bytes (padded to 176), `ret 4`.
-// Callees: GFCreateGlobalAllocator @ 0x009F2870, GFEnterAllocatorLock @ 0x009F2000, CMemoryAllocator::InternalAllocate
-// @ 0x009F2A40 (alignment/flags 9), GFLeaveAllocatorLock @ 0x009F2010, the STLport vector<CScratchPool>
+// Callees: CMemoryAllocator::Create @ 0x009F2870, CMemoryAllocator::EnterSynchronisation @ 0x009F2000, CMemoryAllocator::InternalAllocate
+// @ 0x009F2A40 (alignment/flags 9), CMemoryAllocator::LeaveSynchronisation @ 0x009F2010, the STLport vector<CScratchPool>
 // _M_insert_overflow @ 0x00F380E0. Globals: g_HeadlessRendering byte 0x0143E968 (landed 0x00F37440's name), the global
 // allocator 0x013CAA90. Graphics layer.
 // Retail layout (PDB names; the PDB CArrays are 16 bytes, retail STLport vectors 12): Resources +4, MemoryPages +0x10,
@@ -11,15 +11,13 @@
 // +0x34, ShutdownFlag +0x40.
 // Shape: the pool local filled per arm; push_back is the inline STLport form (placement-new null test, the
 // overflow helper with the __true_type tag in the dead `size` slot); the index is `size() - 1`.
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+#include "engine/CMemoryAllocator.h"
 
-class CMemoryAllocator { public:
-    void* InternalAllocate(long size, unsigned long flags, bool flag);   // 0x009F2A40
-};
-extern CMemoryAllocator* g_pGlobalAllocator;        // 0x013CAA90
 extern char g_HeadlessRendering;                    // 0x0143E968
-void __cdecl GFCreateGlobalAllocator();             // 0x009F2870
-void __cdecl GFEnterAllocatorLock();                // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();                // 0x009F2010
 
 struct __true_type { __true_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -69,11 +67,7 @@ long CGPUScratchBufferTextureManager::AddScratchPool(long size)
 {
     CScratchPool pool;
     if (g_HeadlessRendering) {
-        if (!g_pGlobalAllocator)
-            GFCreateGlobalAllocator();
-        GFEnterAllocatorLock();
-        unsigned char* buffer = (unsigned char*)g_pGlobalAllocator->InternalAllocate(size, 9, false);
-        GFLeaveAllocatorLock();
+        unsigned char* buffer = (unsigned char*)CMemoryAllocator::Allocate(size, 9);
         pool.Buffer = buffer;
         pool.BufferSize = size;
     } else {

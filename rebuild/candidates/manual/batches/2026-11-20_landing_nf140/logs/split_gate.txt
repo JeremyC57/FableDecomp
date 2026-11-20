@@ -1,0 +1,6 @@
+existing 009f1f90 new= ['??3CMemoryAllocator@@KIXPAX@Z'] | others: {'?FreeThis@CMemoryAllocator@@QAEXXZ': ['009a0ae0']}
+existing 009f2310 new= ['??1CMemoryAllocator@@IAE@XZ'] | others: {'?Destroy@CMemoryAllocator@@QAEXXZ': ['009a0ae0'], '??1CMemoryAllocator@@QAE@XZ': ['0122a9a0']}
+existing 013caa70 new= ['?g_allocatorLock@@3PAEA'] | others: {'?g_allocatorLock_013caa70@@3PAEA': ['009f2550', '009f2660'], '?g_perfStatsObject@@3HA': ['009f26b0', '009f26d0']}
+existing 013caa90 new= ['?PMemoryAllocator@CMemoryAllocator@@1PAV1@A'] | others: {'?g_pGlobalAllocator@@3PAVCMemoryAllocator@@A': ['00415e85'], '?g_iface@@3PAUIface@@A': ['00416047'], '?g_pMemoryAllocator@@3PAVCMemoryAllocator@@A': ['004189c2'], '?Allocator@CMemoryAllocator@@1PAV1@A': ['009f2870', '009f2b20', '009f2be0'], '?g_pGlobalAllocator_013caa90@@3PAUCMemoryAllocator_00a65330@@A': ['00a65330'], '?g_pGlobalAllocator_013caa90@@3PAUCMemoryAllocator_00a66260@@A': ['00a66260'], '?g_pGlobalMemoryManager@@3PAUCGlobalMemoryManager@@A': ['00a663d0'], '?g_pGlobalAllocator_013caa90@@3PAVCMemoryAllocator@@A': ['00a67f60', '00a682e0', '00a68370'], '?PAllocator@CMemoryAllocator@@1PAV1@A': ['0122a9a0']}
+existing 013caa94 new= ['?DestroyWhenEmpty@CMemoryAllocator@@1_NA'] | others: {'?ShuttingDown@CMemoryAllocator@@1_NA': ['0122a9a0']}
+gate: 0 created split(s)

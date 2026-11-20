@@ -1,6 +1,10 @@
 // CHandleBasedMemoryPool::Uninitialise() -- return the pool's unaligned buffer to the global allocator (destroying the allocator when it is flagged to die empty), delete the critical section of a multi-threaded pool and zero the bookkeeping
+// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD rows forced their GFFree
+//   helper) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
+//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A02190, length 143 bytes.
-// Callees: GFEnterAllocatorLock 0x009F2000 / GFLeaveAllocatorLock 0x009F2010, CMemoryAllocator::InternalDeallocate 0x009F2920,
+// Callees: CMemoryAllocator::EnterSynchronisation 0x009F2000 / CMemoryAllocator::LeaveSynchronisation 0x009F2010, CMemoryAllocator::InternalDeallocate 0x009F2920,
 // GetAllocationCount 0x009F1F10, ~CMemoryAllocator 0x009F2310, operator delete 0x009F1F90, DeleteCriticalSection (IAT 0x0143FDE4).
 // Shape: GFFreeFromGlobalAllocator (0x009A4350) inlined -- its own null test of the block repeats the caller's; zero in ebx.
 // Layout: engine/CHandleBasedMemoryPool.h puts the critical section at +0x450 behind a 16-byte Handles CArray;
@@ -9,48 +13,19 @@
 // Globals: the global CMemoryAllocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94 (as the
 // landed GFFreeFromGlobalAllocator 0x009A4350 / CFileInstaller::InitBuffers 0x009C5310).
 #include "fable_compiler.h"
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+// NF140 (q4197 / q4198): the frees are the inline public static CMemoryAllocator::Deallocate(block) (FableWin.pdb ?Deallocate@CMemoryAllocator@@SIXPAX@Z,
+// out of line at 0x009A4350; engine/CMemoryAllocator.h opt-in FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, the body of the landed 0x009F2B20).
+#define FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE
+#include "engine/CMemoryAllocator.h"
 struct _RTL_CRITICAL_SECTION_Retail { long m_words[6]; };   // 24 bytes
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);   // IAT 0x0143FEE4
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);       // IAT 0x0143FDE4
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);        // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);        // IAT 0x0143FE10
-
-class CMemoryAllocator { public:
-    void* InternalAllocate(long size, unsigned long flags, bool flag);   // 0x009F2A40
-    void InternalDeallocate(void* block);          // 0x009F2920
-    long GetAllocationCount();                     // 0x009F1F10
-    ~CMemoryAllocator();                           // 0x009F2310
-    static void __fastcall operator delete(void* block);   // 0x009F1F90
-};
-void __cdecl GFCreateGlobalAllocator();            // 0x009F2870
-void __cdecl GFEnterAllocatorLock();               // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;               // 0x013CAA90
-extern bool              g_bDestroyAllocatorWhenEmpty_013caa94;     // 0x013CAA94
-
-FABLE_FORCEINLINE void* GFAllocateFromGlobalAllocator(long size, unsigned long flags)
-{
-    if (!g_pGlobalAllocator_013caa90)
-        GFCreateGlobalAllocator();
-    GFEnterAllocatorLock();
-    void* block = g_pGlobalAllocator_013caa90->InternalAllocate(size, flags, false);
-    GFLeaveAllocatorLock();
-    return block;
-}
-FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
-{
-    GFEnterAllocatorLock();
-    if (block && g_pGlobalAllocator_013caa90) {
-        g_pGlobalAllocator_013caa90->InternalDeallocate(block);
-        if (g_bDestroyAllocatorWhenEmpty_013caa94) {
-            if (g_pGlobalAllocator_013caa90->GetAllocationCount() == 0) {
-                delete g_pGlobalAllocator_013caa90;
-                g_pGlobalAllocator_013caa90 = 0;
-            }
-        }
-    }
-    GFLeaveAllocatorLock();
-}
 
 struct CHeader {                                  // CHandleBasedMemoryPool::CHeader, 32 bytes in front of every area
     long           Handle;                         // +0x00
@@ -101,7 +76,7 @@ class CHandleBasedMemoryPool { public:
 void CHandleBasedMemoryPool::Uninitialise()
 {
     if (UnalignedBuffer) {
-        GFFreeFromGlobalAllocator(UnalignedBuffer);
+        CMemoryAllocator::Deallocate(UnalignedBuffer);
         UnalignedBuffer = 0;
     }
     Buffer = 0;

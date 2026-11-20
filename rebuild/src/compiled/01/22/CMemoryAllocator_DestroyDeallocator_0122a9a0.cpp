@@ -38,7 +38,9 @@ protected:
     static bool ShuttingDown;                             // 0x013CAA94
 };
 
-void __fastcall CMemoryAllocator::Destroy()
+// Inline (landing nf140): Destroy is a header inline (engine/CMemoryAllocator.h), so this TU's copy is a pick-any COMDAT, not a strong
+//   definition that clashes with the header's copy in the q4197 / q4198 rows.
+inline void __fastcall CMemoryAllocator::Destroy()
 {
     delete PAllocator;
     PAllocator = 0;

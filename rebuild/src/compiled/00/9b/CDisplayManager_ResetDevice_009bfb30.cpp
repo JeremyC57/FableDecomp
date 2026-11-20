@@ -1,5 +1,5 @@
 // CDisplayManager::ResetDevice(const CCreateDeviceParameters&) -- remember the parameters, release the device-dependent surfaces and the back-buffer copy texture, re-pick the display mode, refill the present parameters (multisample validated against the device, interval only when exclusive), reset the device (device-lost reports 1 and sets the lost flag), re-read the adapter refresh rate and re-wrap the back / depth buffers, then rebuild the copy textures and run the post-reset callbacks
-// Leaf: ResetDevice
+// Leaf: ?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
@@ -89,17 +89,6 @@ struct CPresentationIntervalDesc {
     bool PresentImmediateIfSyncMissed;
     long VSyncCount;
 };
-struct CCreateDeviceParameters {
-    void*                     WinHandle;            // +0x00
-    C2DExtentsI               BackBufferDimensions; // +0x04
-    long                      BackBufferBitDepth;   // +0x0c
-    long                      ZBufferBitDepth;      // +0x10
-    long                      BackBufferCount;      // +0x14
-    long                      RefreshRate;          // +0x18
-    bool                      ExclusiveMode;        // +0x1c
-    CPresentationIntervalDesc PresentationInterval; // +0x20
-    long                      MultisampleType;      // +0x28
-};
 class CSurface { public:
     void*              _vtable;
     IDirect3DSurface9* PD3DSurface;
@@ -115,9 +104,22 @@ class CTexture { public: void* _vtable; void* PD3DTexture; void Uninitialise(); 
 struct C2DExtentsIRet { long X; long Y; };
 class CVsyncCallbackTimer { public: IDirect3DDevice9* Device; };
 struct CD3DFailure { CD3DFailure() {} };
-enum ECreateDeviceResult { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_LOST = 1, CREATE_DEVICE_OK = 2 };
 
 class CDisplayManager { public:
+    // NF140 (q4056): Ego_r.pdb / FableWin.pdb ?ResetDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z:
+    // the result enum and the parameter block are nested in CDisplayManager (enumerators as Ego_d.pdb LF_ENUM / engine/CDisplayManager.h).
+    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
+    struct CCreateDeviceParameters {
+        void*                     WinHandle;            // +0x00
+        C2DExtentsI               BackBufferDimensions; // +0x04
+        long                      BackBufferBitDepth;   // +0x0c
+        long                      ZBufferBitDepth;      // +0x10
+        long                      BackBufferCount;      // +0x14
+        long                      RefreshRate;          // +0x18
+        bool                      ExclusiveMode;        // +0x1c
+        CPresentationIntervalDesc PresentationInterval; // +0x20
+        long                      MultisampleType;      // +0x28
+    };
     void*             _vtable;                     // +0x00
     void*             SystemManager;               // +0x04
     void*             PRenderManager;              // +0x08
@@ -163,11 +165,10 @@ class CDisplayManager { public:
 private:
     void PreDeviceReset();                         // 0x009BF500
     bool PostDeviceReset();                        // 0x009BF550
-public:
-    ECreateDeviceResult ResetDevice(const CCreateDeviceParameters& params);
+    ECreateDeviceSuccess ResetDevice(const CCreateDeviceParameters& params);
 };
 
-ECreateDeviceResult CDisplayManager::ResetDevice(const CCreateDeviceParameters& params)
+CDisplayManager::ECreateDeviceSuccess CDisplayManager::ResetDevice(const CCreateDeviceParameters& params)
 {
     LastDeviceCreationParameters = params;
     PreDeviceReset();
@@ -212,7 +213,7 @@ ECreateDeviceResult CDisplayManager::ResetDevice(const CCreateDeviceParameters& 
     if (result < 0) {
         if (result == (long)0x88760868) {
             DeviceLostFlag = true;
-            return CREATE_DEVICE_LOST;
+            return CREATE_DEVICE_DEVICE_LOST;
         }
         DeviceLostFlag = false;
         return CREATE_DEVICE_FAILED;
@@ -242,5 +243,5 @@ ECreateDeviceResult CDisplayManager::ResetDevice(const CCreateDeviceParameters& 
     ExclusiveMode = params.ExclusiveMode;
     if (!SetupDepthAndBackBufferTextures())
         return CREATE_DEVICE_FAILED;
-    return PostDeviceReset() ? CREATE_DEVICE_OK : CREATE_DEVICE_FAILED;
+    return PostDeviceReset() ? CREATE_DEVICE_SUCCESS : CREATE_DEVICE_FAILED;
 }
