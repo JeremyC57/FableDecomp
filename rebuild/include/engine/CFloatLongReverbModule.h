@@ -12,6 +12,11 @@ private:
  int m_iMyFaderToken; // +0x24
 public:
  virtual ~CFloatLongReverbModule();
+#ifdef FABLE_RETAIL_CFLOATLONGREVERBMODULE_TOKEN
+ // Retail opt-in (NF109, q11604): SDK 2.10 CodeView public inline ?Token@CFloatLongReverbModule@@QBEHXZ (the CODAApiDbg.lib fading
+ // CFloatLongReverb::Process calls it out of line; the release 0x00C75AB0 expands the m_iMyFaderToken load).
+ int Token() const { return m_iMyFaderToken; }
+#endif
 #ifdef FABLE_RETAIL_CFLOATLONGREVERBMODULE_PROCESS
  // Retail opt-in (NF102, q11558): SDK 2.10 CodeView public
  // ?Process@CFloatLongReverbModule@@QAEXPBUCFloatLongReverbModuleParams@@PBVCFloatCyclicBuffer@@PAM2I@Z (native 0x00C891A0).

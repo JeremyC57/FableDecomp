@@ -47686,29 +47686,29 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c74850	CFilter_Setup	_global	unknown	undefined	0		0	yes	accepted									
 00c74ab0	Set_LpButterworth2	CFloatFilterParams	unknown	undefined	0		0	yes	accepted									
 00c74bb0	Set_HighPass	CFloatFilterParams	unknown	undefined	0		0	yes	accepted									
-00c74ce0	Apply	CDspGain	__fastcall	void	4	CCharString *,float,bool,bool	1	yes	accepted									
-00c74d30	Crossfade	CDspGain	unknown	undefined	0		0	yes	accepted									
+00c74ce0	Process	CFloatFilter	__fastcall	void	4	CCharString *,float,bool,bool	1	yes	accepted									
+00c74d30	Process	CFloatFilter	unknown	undefined	0		0	yes	accepted									
 00c74ee0	Math_IsPrimeNumber	_global	unknown	undefined	0		0	yes	accepted									
-00c74f60	CDelayLine	CDelayLine	unknown	undefined	0		0	unmeasured	review-low									
-00c75000	Detach	CStereoDelayLine	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CQGuildTrainingSkillScript_Init_00c75000.cpp
+00c74f60	CFloatAllpassSection	CFloatAllpassSection	unknown	undefined	0		0	unmeasured	review-low									
+00c75000	Release	CFloatDiffuser	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CQGuildTrainingSkillScript_Init_00c75000.cpp
 00c75010	Clear	CFloatDiffuser	unknown	undefined	0		0	yes	accepted									
 00c75050	CQ_GuildTrainingSkillScript_InitializePrimeHashTables	_global	unknown	undefined	0		0	yes	accepted									
 00c75140	Process	CFloatDiffuser	unknown	undefined	0		0	yes	accepted									
-00c75400	~CDelayLine	CDelayLine	unknown	undefined	0		0	unmeasured	review-low									
-00c75410	CStereoDelayLine	CStereoDelayLine	unknown	undefined	0		0	yes	accepted									
-00c75440	~CStereoDelayLine	CStereoDelayLine	__thiscall	CItem	2	CPersistTraits<NInventory::CItem> *,CMemoryDataInputStream *	1	yes	accepted									
-00c75470	`scalar deleting destructor'	CDelayLine	unknown	undefined	0		0			discovered	gapscan							
-00c754a0	`scalar deleting destructor'	CStereoDelayLine	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c754a0.cpp
+00c75400	~CFloatAllpassSection	CFloatAllpassSection	unknown	undefined	0		0	unmeasured	review-low									
+00c75410	CFloatDiffuser	CFloatDiffuser	unknown	undefined	0		0	yes	accepted									
+00c75440	~CFloatDiffuser	CFloatDiffuser	__thiscall	CItem	2	CPersistTraits<NInventory::CItem> *,CMemoryDataInputStream *	1	yes	accepted									
+00c75470	`scalar deleting destructor'	CFloatAllpassSection	unknown	undefined	0		0			discovered	gapscan							
+00c754a0	`scalar deleting destructor'	CFloatDiffuser	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c754a0.cpp
 00c75530	CReverbDiffuserStage	CReverbDiffuserStage	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00c75590	`scalar deleting destructor'	CVtable_012bf07c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c75590.cpp
 00c755b0	CQ_GuildTrainingSkillScript_InitializeSkillSlots	_global	unknown	undefined	0		0	yes	accepted									
 00c75670	Clear	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
-00c756c0	UpdateGain	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
+00c756c0	ProcessInputFilter	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
 00c75820	ProcessInputFilter	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
 00c75980	CReverbDiffuser	CReverbDiffuser	__thiscall	undefined	1	WaypointData *	0	yes	accepted									
 00c75a00	`scalar deleting destructor'	CReverbDiffuser	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c75a00.cpp
-00c75a20	Process	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
-00c75ab0	ProcessRamped	CReverbDiffuser	unknown	undefined	0		0	yes	accepted									
+00c75a20	Process	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
+00c75ab0	Process	CFloatLongReverb	unknown	undefined	0		0	yes	accepted									
 00c75c30	Create	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
 00c75ca0	Clear	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
 00c75ce0	Process	CFloatShortReverb	unknown	undefined	0		0	yes	accepted									
@@ -47731,8 +47731,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c76b60	Process	CFloatEcho	unknown	undefined	0		0	yes	accepted									
 00c76c20	Process	CFloatEcho	unknown	undefined	0		0	yes	accepted									
 00c76dd0	CQ_GuildTrainingSkillScript_DeactivateSkillByIndex	_global	unknown	undefined	0		0	yes	accepted									
-00c76e90	FFT_ComputeRealTransform	_global	unknown	undefined	0		0	yes	accepted									
-00c770b0	FFT_ComputeComplexTransform	_global	unknown	undefined	0		0	yes	accepted									
+00c76e90	Process	CFloatPitch	unknown	undefined	0		0	yes	accepted									
+00c770b0	Process	CFloatPitch	unknown	undefined	0		0	yes	accepted									
 00c77410	sub_00c77410	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c77430	sub_00c77430	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c77440	CVtable_012bf0c8	CVtable_012bf0c8	__thiscall	undefined	1	CGameJoystickManager *	0	yes	accepted									

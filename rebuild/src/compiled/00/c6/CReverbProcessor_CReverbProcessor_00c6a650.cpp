@@ -1,5 +1,7 @@
 // CReverbProcessor::CReverbProcessor() -- EH-framed constructor of the libpk software reverb (vtable 0x012B9594): the settings-block base (0x00C77440, state 0), the 2-channel / 48 kHz format member (+0x28, state 1), input and output gains (+0x6c / +0x80), the tap bank (+0x94, 0x00C6A280), the diffuser (+0x144, 0x00C75980), the pre-delay (+0x1e0), four comb filters (+0x1f8, `__ehvec_ctor` 0x00C69880 / 0x00C698A0), the late delay (+0x248) and the stereo delay line (+0x25c, 0x00C75410); no pooled memory, not ready; settings blocks of 0x234 bytes
 // Leaf: ??0CReverbProcessor@@QAE@XZ
+// Vendor naming (NF109, q11607): the +0x25c member is the shared-header GameCODA 2.10 CFloatDiffuser (CodeView CFloatReverbDspEngine::m_diffuser; was the local
+//   CStereoDelayLine / CDelayLine stand-ins): binds ??0CFloatDiffuser@@QAE@XZ 0x00C75410 (SDK CodeView spellings; see those rows).
 // Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
 //   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
 // Flags: /EHsc
@@ -21,6 +23,9 @@
 //   overwrites it: VC7.1 drops the dead root store, as for every inlined root constructor here. The gains, pre-delay and
 //   late delay are inline (CVtable_012bf050::CVtable_012bf050 plus the vtable store); the trailing members are an initialiser list
 //   and the block size a body assignment.
+#define FABLE_RETAIL_PASS22_FLOATREVERB_CREATE
+#define FABLE_RETAIL_CFLOATDIFFUSER_CTOR
+#include "engine/CFloatDiffuser.h"
 extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
 extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
 class CCodaObjectBase {                                       // the libpk root: its allocator hooks
@@ -110,23 +115,6 @@ public:
     unsigned char _body[0x10];
 };
 
-class CDelayLine {                                      // vtable 0x012BF074, 0x10 bytes
-public:
-    CDelayLine();                                       // 0x00C74F60
-    virtual ~CDelayLine();                              // 0x00C75400
-    float*       m_data;                                // +0x04
-    unsigned int m_size;                                // +0x08
-    unsigned int m_pos;                                 // +0x0c
-};
-
-class CStereoDelayLine {                                // vtable 0x012BF078, 0x24 bytes
-public:
-    CStereoDelayLine();                                 // 0x00C75410
-    virtual ~CStereoDelayLine();                        // 0x00C75440
-    void Detach();                                      // 0x00C75000: both lines' data and size zeroed
-    CDelayLine m_lines[2];                              // +0x04
-};
-
 struct SReverbRing {                                    // the comb filters' shared delay ring
     float*        m_data;
     unsigned long m_length;
@@ -148,7 +136,7 @@ public:
     CReverbPreDelay  m_preDelay;                        // +0x1e0
     CCombFilter      m_combs[4];                        // +0x1f8
     CReverbDelay     m_delay;                           // +0x248
-    CStereoDelayLine m_stereoDelay;                     // +0x25c
+    CFloatDiffuser   m_stereoDelay;                     // +0x25c (CodeView m_diffuser; that name is the +0x144 stand-in here)
     void*            m_pMemory;                         // +0x280 pooled delay memory
     unsigned long    m_memoryBytes;                     // +0x284
     unsigned long    m_288;                             // +0x288

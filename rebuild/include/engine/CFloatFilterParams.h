@@ -6,6 +6,12 @@ class CFloatFilterParams {
 #ifdef FABLE_RETAIL_CREVERBFNSSSE_APPLYFILTERORDER2_QUAD
  friend class CReverbFnsSSE;
 #endif
+#ifdef FABLE_RETAIL_CFLOATFILTERPARAMS_FRIEND_CFLOATFILTER
+ // Retail opt-in (NF109, q11600 / q11601): CFloatFilter::Process (both overloads, native 0x00C74CE0 / 0x00C74D30) reads m_fGain / m_fA /
+ // m_fB directly: the CODAApiDbg.lib /Od bodies load params+0 / +4 / +0x10 with no accessor call (GetGain / GetA0 / GetB0 return a
+ // float, not the arrays ApplyFilter takes). C++ needs this access grant; the CodeView field list has no friend record.
+ friend class CFloatFilter;
+#endif
 #ifdef FABLE_RETAIL_CFLOATREVERBPARAMETERTRANSLATOR_UPDATEDECAYTIMES
 public:
  void Set_ShelfLfHf(float fLFRatio,float fFreqLF,float fHFRatio,float fFreqHF,unsigned int uiSamplesPerSecond);

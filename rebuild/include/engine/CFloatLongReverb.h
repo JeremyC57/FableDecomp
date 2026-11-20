@@ -33,6 +33,14 @@ private:
  void ProcessInputFilter(unsigned int,struct CFloatLongReverbParams*,const struct CFloatLongReverbParams*,CFloatCyclicBuffer*,unsigned int,unsigned int);
 public:
 #endif
+#ifdef FABLE_RETAIL_CFLOATLONGREVERB_PROCESSINPUTFILTER
+private:
+ // Retail opt-in (NF109, q11602): SDK 2.10 CodeView private
+ // ?ProcessInputFilter@CFloatLongReverb@@AAEXIPBUCFloatLongReverbParams@@PAVCFloatCyclicBuffer@@I@Z (native 0x00C756C0; the release
+ // CFloatLongReverb::Process overloads 0x00C75A20 / 0x00C75AB0 call it at REL32 +0x23 / +0x4f).
+ void ProcessInputFilter(unsigned int,const struct CFloatLongReverbParams*,CFloatCyclicBuffer*,unsigned int);
+public:
+#endif
 #ifdef FABLE_RETAIL_CFLOATLONGREVERB_PROCESS
  // Retail opt-in (NF105, family of q11522): SDK 2.10 CodeView public ?MatchToken@CFloatLongReverb@@QBE_NH@Z (the Dbg
  // CFloatReverbDspEngine::ProcessLongReverb calls it; the release 0x00C6A200 expands the two token compares) and the two Process

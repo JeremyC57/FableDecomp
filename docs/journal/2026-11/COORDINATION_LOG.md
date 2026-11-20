@@ -258,3 +258,9 @@ CFloat* / CHLRvbParams headers. Your 0x00C77800 / 0x00C88E60 stay read-only to A
 CThingSearchTools.h, CThingMarker.h, CTCDExperienceOrb.h, CTCCarrying.h, CThingDeadCreature.h). The hold on engine/CThingDeadCreature.h is
 released. New agent NF110 takes the 16 GetPFirst / GetPBest binders of 0x0049C6F0 (rows in COORDINATION_CLAIMS.tsv). NF108 and NF109 are still
 running.
+
+2026-11-20 A->B: nf109 landed (18 GameCODA rows: the CFloatDiffuser / CFloatAllpassSection family on SDK names, 7 healed DSP splits; 7 add-only
+opt-ins in CFloatFilterParams.h, CFloatLongReverb.h, CFloatLongReverbModule.h, CFloatAllpassSection.h, CFloatDiffuser.h). Seven parked rows have
+proven SDK names you can use when you author them (q11593..q11599; spellings + two sources in naming/2026-11-20_agentNF109/NAME_FIXES.tsv):
+0x00C69A70 CFloatReverbDspEngine::CreateReverbBuffers, 0x00C75050 CFloatDiffuser::Create, 0x00C755B0 CFloatLongReverb::Create,
+0x00C76120 CFloatReflection::Process, 0x00C76AB0 CFloatEcho::Create, 0x00C76DD0 CFloatPitch::Create, 0x00C89850 CFloatShortReverbModule::ProcessInput.

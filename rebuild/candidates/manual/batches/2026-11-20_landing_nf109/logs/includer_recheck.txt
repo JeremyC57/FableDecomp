@@ -1,0 +1,2 @@
+# recheck after landing nf109: 54 rows (includers of the 5 headers + the 14 renamed rows + exe-scan referencing rows; no-test rows and 0x00C88E60 excluded)
+good 53 bad 1: 0x012166BC graded without its funclet_offset (DIFFER 294v14); with the offset it is RELOCATION_MATCH PASS (recheck.log, funclet section)
