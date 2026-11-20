@@ -213,7 +213,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00759f80	CTCPhysicsRigidBody	Integrate	976	parked	DIFFER(730v975)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00759f80.cpp	original
 0075aaf0	CTCPhysicsRigidBody	CheckForCollisions	608	parked	DIFFER(607v593)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0075aaf0.cpp	original
 0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	parked	DIFFER(1092v1146)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0075ddf0.cpp	original
-00760020	_global	IsLineIntersectingWithOthersInList	368	reserved (acctB p25L, 2026-11-20)	DIFFER(367v360)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00760020.cpp	original
 00760190	_global	IsTriangleWithPointsInside	352	reserved (acctB p25L, 2026-11-20)	DIFFER(324v340)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand478/differ/00760190.cpp	original
 007602f0	NShape	IsShapeConvex	1136	reserved (acctB p25J, 2026-11-20)	DIFFER(1125v1126)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/007602f0/007602f0.cpp	original
 00762620	NShape::CShape	StatOnSerialise	1168	parked	DIFFER(1182v1160)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00762620.cpp	original

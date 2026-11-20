@@ -39426,3 +39426,4 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?$S1@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4IA	014378a8	00b7f0f0
 ?lowEndColour@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VCRGBFloatColour@@A	01437888	00b7f0f0
 ?lowEndConstant@?6??SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ@4VC4DVector@@A	01437898	00b7f0f0
+?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z	00a56c80	00760020

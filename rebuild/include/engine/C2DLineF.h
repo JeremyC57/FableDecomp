@@ -22,6 +22,16 @@ public:
     float GetLowestY() const { return (float)Min<double>(Point1.Y, Point2.Y); }
     float GetHighestY() const { return (float)Max<double>(Point1.Y, Point2.Y); }
     bool IntersectsWith(const C2DBoxF& box) const;                       // 0x00A57BD0
+#ifdef FABLE_RETAIL_C2DLINEF_FROM3D
+    // Retail opt-in (p25J, row 0x00763060 NShape::FractureShape): FableWin.pdb ??0C2DLineF@@QAE@ABVC3DVector@@0@Z, inline in retail (the
+    // two end points' X / Y copied into the argument temporaries). Needs FABLE_RETAIL_C2DVECTOR_FROM3D. No layout change.
+    C2DLineF(const C3DVector& point1, const C3DVector& point2) : Point1(point1), Point2(point2) { }
+#endif
+#ifdef FABLE_RETAIL_C2DLINEF_INTERSECTS_LINE
+    // Retail opt-in (p25L, rows 0x00760020 NShape::IsLineIntersectingWithOthersInList / 0x00763060): FableWin.pdb and Ego_r.pdb
+    // ?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z, out of line in retail at 0x00A56C80 (landed). Declaration only.
+    bool IntersectsWith(const C2DLineF& line, C2DVector& intersection, float tolerance) const;   // 0x00A56C80
+#endif
 #ifdef FABLE_RETAIL_C2DLINEF_SQUAREDDIST
     // Retail opt-in (chunk 875, row 0x00A1E5C0 CNavigatorAStar::CalculateAndMoveToPosProximity): Ego_r.pdb / FableWin.pdb
     // ??0C2DLineF@@QAE@ABVC2DVector@@0@Z (inline in retail: the two end points copied member-wise into the frame, 0x00A1F330..
