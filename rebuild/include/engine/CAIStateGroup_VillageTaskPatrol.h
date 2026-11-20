@@ -1,9 +1,11 @@
 #ifndef FABLE_ENGINE_CAISTATEGROUP_VILLAGETASKPATROL_H
 #define FABLE_ENGINE_CAISTATEGROUP_VILLAGETASKPATROL_H
 // New header (p25M, row 0x0093F3C0 Update) from the PDB layouts: Ego_r.pdb CAIStateGroup_VillageTaskPatrol, sizeof 0x20
-// (ghidra_out/struct_layouts_egor.tsv: CAIStateGroupBase 0x14, PTCVillageMember +0x14, CIntelligentPointer<CVillageTaskPatrol> PTask
-// +0x18, vtable 0x0128B090 in retail); methods from FableWin.pdb ?..@CAIStateGroup_VillageTaskPatrol@@ (Initialise, Update, IsRunnable,
-// OnReplace, InitCreaturePosition, Alloc, GetName, ctor, dtor). Vtable 0x0128BA64 (RTTI .?AVCAIStateGroup_VillageTaskPatrol@@).
+// (ghidra_out/struct_layouts_egor.tsv: CAIStateGroupBase 0x14, PTCVillageMember +0x14, PTask +0x18 = CIntelligentPointer<CVillageTaskPatrol>,
+// whose own vtable is 0x0128B090); methods from FableWin.pdb ?..@CAIStateGroup_VillageTaskPatrol@@ (Initialise, Update, IsRunnable,
+// OnReplace, InitCreaturePosition -- also Ego_r 0x00962D70 --, Alloc, GetName, ctor, dtor). The class vtable is 0x0128BA64 (RTTI
+// .?AVCAIStateGroup_VillageTaskPatrol@@): slot 1 Initialise 0x0093EED0, 3 InitCreaturePosition 0x0093EF30, 10 OnReplace 0x0093EE40,
+// 11 IsRunnable 0x0093EDF0, 12 Update 0x0093F3C0.
 #include "engine/CAIStateGroupBase.h"
 class CTCVillageMember; class CVillageTaskPatrol;
 class CAIStateGroup_VillageTaskPatrol:public CAIStateGroupBase {

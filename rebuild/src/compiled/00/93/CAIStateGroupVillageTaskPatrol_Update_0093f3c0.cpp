@@ -1,5 +1,5 @@
 // CAIStateGroup_VillageTaskPatrol::Update() -- take the village's best patrol task for the creature, draw a weapon if it carries none, then walk the patrol track node by node (from the node nearest the creature; the track start after an end node), locking the task at each arrival, glancing at the next node when it lies ahead and idling 0.5..1.5 seconds there, for as long as the task stays assigned to the creature
-// Inline-budget: no flag, no pragma, no device. Plain inline header members decide expanded vs called, each ablated (README): the CIntelligentPointer (T*) constructor and FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN's operator= (GetPItem + SetPItem in place; without: the implicit copy, DIFFER(1150v1185)), CVillageTaskPatrol::SetTaskAsLocked (new FABLE_RETAIL_CVILLAGETASKPATROL_SETLOCKED_INLINE opt-in, the 0x0093F5D7 store; declaration only: DIFFER(1188v1185)), CAIStateGroupBase::GetCreature via FABLE_RETAIL_CAIBRAIN_GETCREATURE (without: DIFFER(1213v1185)), IS_THING_ALIVE, C3DVector operator- / Dot / Normalise with the inline GFFastOneOverSqrt (0x0093F6B7..0x0093F71A), CThingTrackNode IsTrackEnd / PeekNextNode, CTCPhysicsBase GetPhysicsTC, CRightHandedSet::GetForward, CMainGameComponent::GetConstantFPS. Out of line as in retail: the CTCVillage / CTCVillageMember / CVillageTaskPatrol / CThingTrackNode / CAIStateGroupBase calls listed below.
+// Inline-budget: no flag, no pragma, no device. Ablated header contracts that decide expanded vs called (README): FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN's inline operator= (GetPItem + SetPItem in place; without: the implicit copy, DIFFER(1150v1185)); the new FABLE_RETAIL_CVILLAGETASKPATROL_SETLOCKED_INLINE SetTaskAsLocked (the 0x0093F5D7 store; declaration only: DIFFER(1188v1185)); CAIStateGroupBase::GetCreature's body via FABLE_RETAIL_CAIBRAIN_GETCREATURE (without: DIFFER(1213v1185)); IS_THING_ALIVE (the explicit `== 0 || IsDead()` form: DIFFER(1176v1185)). Default plain-inline header members, not ablated: the CIntelligentPointer (T*) constructor, C3DVector operator- / Dot / Normalise with GFFastOneOverSqrt (0x0093F6B7..0x0093F71A), CThingTrackNode IsTrackEnd / PeekNextNode, CThing::GetPhysicsTC, CRightHandedSet::GetForward, CMainGameComponent::GetConstantFPS. Out of line as in retail: the calls listed under Callees.
 // Leaf: ?Update@CAIStateGroup_VillageTaskPatrol@@UAEXXZ
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093F3C0, 1185 bytes, thiscall, ebp frame aligned to 8 (`and esp,0FFFFFFF8h ; sub esp,150h`: the 0x118
@@ -10,7 +10,7 @@
 // Ego_d.pdb (debug length 2114, lines 68..161, egod_lines/): locals pvillage; block { track_node_target (CIntelligentPointer<const
 //   CThingTrackNode>, vtable 0x0125A894); block { ret, current_dir, wait_till (long), desired_dir; block { nav_route_calculated } } }.
 //   Shapes read from the /Od sizes: `Terminate();` 11 B / `return;` 5 B at lines 75 / 76 (outside the block), 11 / 20 B (with the
-//   track_node_target destructor) at 102/103, 117/118, 143/144, 154/155; 106 (4 B) nav_route_calculated = false; 109 (10 B) the do-while
+//   track_node_target destructor) at 102/103, 117/118, 143/144, 154/155; 97 (7 B) the `ret` initialiser; 106 (4 B) nav_route_calculated = false; 109 (10 B) the do-while
 //   test; 120 (21 B) PTask->SetTaskAsLocked(); 133 / 134 / 135 (45 / 5 / 8 B) desired_dir, its Z = 0, Normalise; 149 (14 B) the idle loop
 //   test; 159 / 160 the block's destructor then Terminate().
 // Callees: CTCVillageMember::GetPVillage 0x007EE540, CTCVillage::GetBestPatrolTaskForThing 0x00658E90, CTCVillage::SetPatrolTaskAsAcceptedByThing
@@ -30,7 +30,8 @@
 // Overlay (add-only opt-ins): engine/CTCVillage.h FABLE_RETAIL_CTCVILLAGE_PATROLTASK; engine/CThingTrackNode.h
 //   FABLE_RETAIL_CTHINGTRACKNODE_PEEK_START; engine/CVillageTaskPatrol.h FABLE_RETAIL_CVILLAGETASKPATROL_SETLOCKED_INLINE; NEW
 //   engine/CAIStateGroup_VillageTaskPatrol.h (PDB layout).
-// Inferred: the statement text (Ego_d gives locals, scopes and per-line sizes only); `desired_dir.Dot(current_dir)` (the swapped receiver
+// Inferred: the statement text (Ego_d gives locals, scopes and per-line sizes only); `ret`'s initial AI_ACTION_FAILED (Torch 0x0093EA90's text;
+//   Ego_d line 97 is a 7-byte store; without it the bytes are the same); `desired_dir.Dot(current_dir)` (the swapped receiver
 //   and the FPS-first wait expression grade the same).
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING
@@ -104,7 +105,7 @@ void CAIStateGroup_VillageTaskPatrol::Update()
         CIntelligentPointer<const CThingTrackNode> track_node_target(PTask->GetNearestNode(GetCreature().GetPos()));
         while (PTask != 0 && PTask->IsCreatureAssignedToTask(GetCreature()))
         {
-            EAIActionReturn ret;
+            EAIActionReturn ret = AI_ACTION_FAILED;
             do
             {
                 if (PTask == 0 || !PTask->IsCreatureAssignedToTask(GetCreature()) || !IS_THING_ALIVE(track_node_target))
