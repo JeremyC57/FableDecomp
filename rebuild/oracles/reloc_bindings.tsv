@@ -39738,3 +39738,6 @@ _ONE_OVER_360	01238e00	00878b60
 ??1CVectorList@@QAE@XZ	0048ca60	008faa80
 ?g_EvasionSampleOffsets@@3QBVC3DVector@@B	013893ac	008faa80
 ??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@ABVCCharString@@1@Z	0084b7c0	00969cb0
+?DressedAsBandit@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e72f00	00e72630
+?DressedAsEvilMage@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e731f0	00e72630
+?DressedAsGoodKnight@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e730a0	00e72630

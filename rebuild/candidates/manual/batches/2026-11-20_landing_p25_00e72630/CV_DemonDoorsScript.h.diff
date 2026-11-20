@@ -1,0 +1,26 @@
+diff --git a/rebuild/include/engine/CV_DemonDoorsScript.h b/rebuild/include/engine/CV_DemonDoorsScript.h
+index 5c5a29766..cc654293d 100644
+--- a/rebuild/include/engine/CV_DemonDoorsScript.h
++++ b/rebuild/include/engine/CV_DemonDoorsScript.h
+@@ -158,6 +158,14 @@ public:
+         virtual CScriptBase* GetParentScript() const;
+     private:
+         virtual void Main();
++#ifdef FABLE_RETAIL_CDF_THREESUITS
++        // Retail opt-in (chunk 834): the three private outfit tests Main 0x00E72630 calls on `this` (ecx = esi):
++        //   Ego_r.pdb / FableWin.pdb ?DressedAsBandit@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ (0x00E72F00),
++        //   ?DressedAsGoodKnight@...@@AAE_NXZ (0x00E730A0), ?DressedAsEvilMage@...@@AAE_NXZ (0x00E731F0); non-virtual, no layout change.
++        bool DressedAsBandit();
++        bool DressedAsGoodKnight();
++        bool DressedAsEvilMage();
++#endif
+     protected:
+         NScript::CV_DemonDoorsScript & ParentClass;
+     protected:
+@@ -176,5 +184,5 @@ public:
+     };
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NScript::CV_DemonDoorsScript) == 0x48);
++FABLE_STATIC_ASSERT_AT(179, sizeof(NScript::CV_DemonDoorsScript) == 0x48);
+ #endif

@@ -1,0 +1,6 @@
+set	address	class	header
+00e72630	00e72560	CV_DemonDoorsScript::CDF_ThreeSuits	engine/CV_DemonDoorsScript.h (CDF_THREESUITS opt-in)
+00e72630	00e72610	CV_DemonDoorsScript::CDF_ThreeSuits	engine/CV_DemonDoorsScript.h (CDF_THREESUITS opt-in)
+00e72630	00e72f00	CV_DemonDoorsScript::CDF_ThreeSuits	engine/CV_DemonDoorsScript.h (CDF_THREESUITS opt-in)
+00e72630	00e730a0	CV_DemonDoorsScript::CDF_ThreeSuits	engine/CV_DemonDoorsScript.h (CDF_THREESUITS opt-in)
+00e72630	00e731f0	CV_DemonDoorsScript::CDF_ThreeSuits	engine/CV_DemonDoorsScript.h (CDF_THREESUITS opt-in)
