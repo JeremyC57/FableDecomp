@@ -639,6 +639,12 @@ public:
     // mov eax,[eax+0F0h]`: the creature def's Property). Declaration only; no layout change.
     unsigned long GetProperty() const;                                   // 0x00662010
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_FINISHCURRENTACTION
+    // NF191 opt-in (q11936; row 0x00890C80) for the flattened view, the same declaration as the retail branch's FINISHACTION block:
+    // FableWin.pdb / Ego_r.pdb (0x0053D510) ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ, out of line in retail at 0x00662650.
+    // Declaration only; no layout change.
+    void FinishCurrentAction();                                          // 0x00662650
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
     // NF55 opt-in (2026-11-17, row 0x00692BC0 CCreatureActionBase::GetFrameUpdateTime) for the flattened view, the same declaration as the
     // retail branch's UPDATEANIMATION block: Ego_r.pdb / FableWin.pdb ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ, out of line

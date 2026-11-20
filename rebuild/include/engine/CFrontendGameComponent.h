@@ -22,7 +22,19 @@ public:
     // symbol), `__fastcall` with the vector in ecx. Declaration only. The includer has std::vector and CWideString in scope.
     static void __fastcall GetProfileNames(std::vector<CWideString>& names);   // 0x004959E0
 #endif
+#ifdef FABLE_RETAIL_CFRONTENDGAMECOMPONENT_CLEARSTRING
+    // Retail opt-in (NF191, row 0x004944C0): Ego_r.pdb 0x0049D0E0 + FableWin.pdb 0x01A46A80 ?ClearString@CFrontendGameComponent@@AAEXXZ
+    // (private). Ego_r.pdb layout: char String[128] +0x168, long StringPos +0x1E8; the rest stays opaque. Same size as the default path.
+private:
+    void ClearString();                                                      // 0x004944C0
+    unsigned char _body_010[0x168 - 0x10];
+    char String[128];                                                         // +0x168
+    long StringPos;                                                           // +0x1E8
+    unsigned char _body_1ec[0x1e60 - 0x1ec];
+};
+#else
 private:
     unsigned char _body[0x1e60 - 0x10];
 };
+#endif
 #endif

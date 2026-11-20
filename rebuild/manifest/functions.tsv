@@ -4186,7 +4186,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00494490	RejectInputAction	CFrontendGameComponent	unknown	undefined	0		0			accepted	gapscan							
 004944a0	ReturnFalse_ret0_004944a0	_global	unknown	undefined	0		0			accepted	gapscan							
 004944b0	ReturnFalse_ret0_004944b0	_global	unknown	undefined	0		0			accepted	gapscan							
-004944c0	ClearTextInput	CFrontendGameComponent	unknown	undefined	0		0			accepted	gapscan							
+004944c0	ClearString	CFrontendGameComponent	unknown	undefined	0		0			accepted	gapscan							
 004944e0	ProcessTextInputCharacter	CFrontendGameComponent	unknown	undefined	0		0			accepted	gapscan							
 00494520	GetMaxVisibleProfileNumber	CFrontendGameComponent	__thiscall	long	1	CFrontendGameComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendGameComponent_GetMaxVisibleProfileNumber_00494520.cpp
 00494560	ShowMoreProfiles	CFrontendGameComponent	__thiscall	void	1	CFrontendGameComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendGameComponent_ShowMoreProfiles_00494560.cpp
@@ -22067,7 +22067,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007aebe0	operator[]	std::map<CCharString, std::vector<CCharString, std::allocator<CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>	__thiscall	CArray<CMeshDataBank::CLipSyncEntry> *	2	map<CCharString,CArray<CMeshDataBank::CLipSyncEntry>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CArray<CMeshDataBank::CLipSyncEntry>_>_>_> *,CCharString *	1	yes	accepted									
 007aed10	GetBossPhase	CTCBoss	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\global_DrawGetEnvironment_007aed10.cpp
 007aed20	IncrementBossPhase	CTCBoss	__thiscall	void	1	CTCBoss *	1	yes	accepted									
-007aed30	IncrementBossPhase	CTCBoss	__thiscall	void	1	CTCBoss *	1	yes	accepted									
+007aed30	IncrementStrikesSinceHitHero	CTCBoss	__thiscall	void	1	CTCBoss *	1	yes	accepted									
 007aed40	Getter_007aed40	CTCBoss	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\global_DrawGetEnvironment_007aed40.cpp
 007aed50	ResetStrikesSinceHitHero	CTCBoss	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\Clear_Clear_007aed50.cpp
 007aed80	FrameUpdate	CTCRockTrollShield	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

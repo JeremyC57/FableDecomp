@@ -14467,7 +14467,7 @@ address	name	length	bytes
 00494490	CFrontendGameComponent::RejectInputAction	5	32c0c20400
 004944a0	_global::ReturnFalse_ret0_004944a0	3	32c0c3
 004944b0	_global::ReturnFalse_ret0_004944b0	3	32c0c3
-004944c0	CFrontendGameComponent::ClearTextInput	26	8bd15733c0b9200000008dba68010000f3ab8982e80100005fc3
+004944c0	CFrontendGameComponent::ClearString	26	8bd15733c0b9200000008dba68010000f3ab8982e80100005fc3
 004944e0	CFrontendGameComponent::ProcessTextInputCharacter	60	668b5424046683fa088b81e8010000751685c07e24488981e8010000c684086801000000c2040083f87f7d0d88940868010000ff81e8010000c20400
 0059a959	FrontEndHistoryDequeIterator::SetNode	23	8b44240489410c8b008941040580000000894108c20400
 0059a970	FrontEndHistoryDequeIterator::BlockEndSlot	8	8b44240483c008c3
@@ -26263,7 +26263,7 @@ address	name	length	bytes
 0071ab10	CTCEmoteIcon::OnCreate	15	c7410c00000000c7411c02000000c3
 00c35450	_unattributed::ResetPair_00c35450	15	c7411003000000c7410800000000c3
 007aed20	CTCBoss::IncrementBossPhase	11	8a412184c07403ff4118c3
-007aed30	CTCBoss::IncrementBossPhase	11	8a412084c07403ff4114c3
+007aed30	CTCBoss::IncrementStrikesSinceHitHero	11	8a412084c07403ff4114c3
 007bee10	NThingShot::CTCShotDefinitionThrow::GetShotDamage	10	8b4138d94054d84944c3
 00a35f70	_unattributed::GetScaledTargetValue_00a35f70	10	8b4104d94034d84974c3
 009f7730	CFourierAnalysis::GetSelfUnoptimised_009f7730	16	558bec51894dfc8b45fc8be55dc20400

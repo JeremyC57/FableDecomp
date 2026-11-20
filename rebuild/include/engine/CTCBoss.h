@@ -48,6 +48,11 @@ public:
  void SetCountingStrikesSinceHitHero(bool counting){BCountStrikes=counting;}
  void ResetStrikesSinceHitHero();                                      // 0x007AED50
 #endif
+#ifdef FABLE_RETAIL_CTCBOSS_INCREMENTSTRIKESSINCEHITHERO
+ // NF191 opt-in (q12153, row 0x007AED30): Ego_r.pdb 0x007B0680 + FableWin.pdb 0x026D1330 ?IncrementStrikesSinceHitHero@CTCBoss@@QAEXXZ,
+ // between IncrementBossPhase (Ego_r 0x007B0670 = retail 0x007AED20) and GetStrikesSinceHitHero (0x007AED40). Declaration only.
+ void IncrementStrikesSinceHitHero();                                  // 0x007AED30
+#endif
 #ifdef FABLE_RETAIL_CTCBOSS_EFFECTS
  // Retail opt-in (chunk Q2, row 0x008E0A10 NCreatureMode::CModeScorpionKingVulnerable::FrameUpdate): Ego_r.pdb / FableWin.pdb
  // ?IncrementBossPhase@CTCBoss@@QAEXXZ (0x007AED20), ?IsReadyForPhaseChange@CTCBoss@@QBE_NXZ (0x007AEE90), ?CountEffects@CTCBoss@@QAEJXZ

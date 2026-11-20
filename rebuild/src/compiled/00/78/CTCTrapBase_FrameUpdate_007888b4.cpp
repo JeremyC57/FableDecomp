@@ -1,3 +1,8 @@
+// Naming (NF191, 2026-11-20, q4492): the row-local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h;
+//   the hit pair's key is CIntelligentPointer<CThing> (pair<CIntelligentPointer<CThing>, long>, as the comment already said), and the
+//   liveness test is the IS_THING_ALIVE template declaration (the out-of-line instance 0x004CC340): it binds the FableWin.pdb
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z (was the stand-in
+//   ?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z). Other row-local models unchanged.
 #pragma optimize("s", on)
 // CTCTrapBase::FrameUpdate() -- advance the trap opener by the owner's update time, age the hit-things list (drop dead or expired entries), update the trigger things and the trigger, then the trap's own update
 // Leaf: ?FrameUpdate@CTCTrapBase
@@ -14,18 +19,14 @@
 class CThing;
 class CWorld;
 
-#pragma pack(push, 1)
-struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
-    void* _vfptr;
-    CThing* m_pItem;
-};
-#pragma pack(pop)
-
-bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
+class CBaseObject;
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // 0x004CC340
 float __fastcall GetUpdateTimeForThing(CThing* thing, CWorld* world);   // 0x00787C62
 
 struct SHitThing {                                      // pair<CIntelligentPointer<CThing>, long>
-    CBaseIntelligentPointer first;
+    CIntelligentPointer<CThing> first;
     long second;
 };
 struct CHitThingVector {
@@ -71,7 +72,7 @@ void CTCTrapBase::FrameUpdate()
     CThing* thing = ParentThing;
     TrapOpener.Update(GetUpdateTimeForThing(thing, (&GetWorld())));
     for (SHitThing* it = HitThings.begin(); it != HitThings.end(); ) {
-        if (it->second != 0 && IS_THING_ALIVE_004cc340(it->first)) {
+        if (it->second != 0 && IS_THING_ALIVE(it->first)) {
             --it->second;
             ++it;
         } else {

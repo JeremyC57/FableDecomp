@@ -1,0 +1,32 @@
+004944c0 new: 1
+    ?ClearString@CFrontendGameComponent@@AAEXXZ
+005c30d3 new: 0
+005c311a new: 0
+005c4769 new: 0
+005c99fd new: 0
+0064be45 new: 1
+    ?Update@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ TABLE:0064be45
+0068eb20 new: 0
+00739cc0 new: 0
+00787d94 new: 0
+007888b4 new: 0
+007aed30 new: 1
+    ?IncrementStrikesSinceHitHero@CTCBoss@@QAEXXZ
+007bd80a new: 3
+    ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+    ??C?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+007bdac7 new: 0
+007f05f0 new: 0
+007fc820 new: 0
+00890c80 new: 0
+00920960 new: 3
+    ??1CCreatureAction_RiseUp@@UAE@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+00957170 new: 2
+    ??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z TABLE:00957170
+    ??_GCCreatureAction_BriarRoseShotFarInto@@UAEPAXI@Z
+009704b0 new: 0
+00a156d0 new: 1
+    ?AddNavigationMap@CNavigatorManager@@QAEXJABVCNavigationAreaInit@@@Z TABLE:00a156d0

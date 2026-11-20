@@ -30163,8 +30163,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004944c0'
         Module = 'CFrontendGameComponent'
-        Source = '00/49/CFrontendGameComponent_ClearTextInput_004944c0.cpp'
-        TestSource = '00/49/CFrontendGameComponent_ClearTextInput_004944c0_test.cpp'
+        Source = '00/49/CFrontendGameComponent_ClearString_004944c0.cpp'
+        TestSource = '00/49/CFrontendGameComponent_ClearString_004944c0_test.cpp'
         PassPattern = 'CFrontendGameComponent_ClearTextInput_004944c0_test PASS'
     }
     [pscustomobject]@{
@@ -184576,8 +184576,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007aed30'
         Module = 'CTCBoss'
-        Source = '00/7a/CTCBoss_IncrementBossPhase_007aed30.cpp'
-        TestSource = '00/7a/CTCBoss_IncrementBossPhase_007aed30_test.cpp'
+        Source = '00/7a/CTCBoss_IncrementStrikesSinceHitHero_007aed30.cpp'
+        TestSource = '00/7a/CTCBoss_IncrementStrikesSinceHitHero_007aed30_test.cpp'
         PassPattern = '007aed30_TEST PASS'
     }
     [pscustomobject]@{

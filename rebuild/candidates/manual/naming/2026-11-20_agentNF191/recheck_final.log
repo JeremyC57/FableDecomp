@@ -1,0 +1,83 @@
+addr       parity           behav  name
+004944c0   WARN STANDIN_LEAF ?ClearString@CFrontendGameComponent@@AAEXXZ (catalog CFrontendGameComponent::ClearTextInput; names another function)
+004944c0   MATCH            PASS   CFrontendGameComponent::ClearTextInput
+005c30d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c30d3   WARN RELOC_NAME: ?RefreshItemData@CTCInventoryBase_Retail@@QAEXPAVCThing@@@Z -> 005bf414 labelled 'NInventory::CTCInventoryBase::UpdateItemStatsForThing'
+005c30d3   RELOCATION_MATCH PASS   CTCInventoryWeapons::RefreshActiveWeaponData
+005c311a   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c311a   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c311a   RELOCATION_MATCH PASS   CTCInventoryWeapons::GetItemOfTypeInInventory
+005c4769   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c4769   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+005c4769   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c4769   RELOCATION_MATCH PASS   CTCInventoryWeapons::GetActiveMeleeWeaponDamage
+005c99fd   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c99fd   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c99fd   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConfiscateItems
+0064be45   RELOCATION_MATCH PASS   NPlayerGui::CDrawMeleeActionButtonEffects::Update
+0068eb20   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068eb20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0068eb20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0068eb20   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0068eb20   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0068eb20   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+0068eb20   WARN SHARED_HEADER_AVAILABLE CTCHeroRangedAttacks (engine/CTCHeroRangedAttacks.h)
+0068eb20   RELOCATION_MATCH PASS   NInputProcess::IsThingToKeepStrafing
+00739cc0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CCreatureAction_BlockBroken@@QAEPAXI@Z (catalog CCreatureAction_BlockBroken::`scalar_deleting_destructor'; names another function)
+00739cc0   RELOCATION_MATCH PASS   CCreatureAction_BlockBroken::`scalar_deleting_destructor'
+00787d94   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00787d94   WARN SHARED_HEADER_AVAILABLE CTCTrapBase (engine/CTCTrapBase.h)
+00787d94   RELOCATION_MATCH PASS   CTCTrapBase::OnKill
+007888b4   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+007888b4   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007888b4   WARN SHARED_HEADER_AVAILABLE CTCTrapBase (engine/CTCTrapBase.h)
+007888b4   RELOCATION_MATCH PASS   CTCTrapBase::FrameUpdate
+007aed30   WARN STANDIN_LEAF ?IncrementStrikesSinceHitHero@CTCBoss@@QAEXXZ (catalog CTCBoss::IncrementBossPhase; names another function)
+007aed30   MATCH            PASS   CTCBoss::IncrementBossPhase
+007bd80a   RELOCATION_MATCH PASS   NThingShot::CTCShotDefinitionDrainLife::~CTCShotDefinitionDrainLife
+007bdac7   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007bdac7   WARN RELOC_NAME: ??$IS_THING_ALIVE_00436380@PAVCThing@@@@YI_NABQAVCThing@@@Z -> 00436380 labelled '_global::IsThingAlive_ptr_00436380'
+007bdac7   RELOCATION_MATCH PASS   NThingShot::CTCShotDefinitionDrainLife::UpdateCollision
+007f05f0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CCombatAction_GenericStrikeResponseKnockdownRecover@@QAEPAXI@Z (catalog CCombatAction_GenericStrikeResponseKnockdownRecover::`scalar_deleting_destructor'; names another function)
+007f05f0   RELOCATION_MATCH PASS   CCombatAction_GenericStrikeResponseKnockdownRecover::`scalar_deleting_destructor'
+007fc820   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+007fc820   RELOCATION_MATCH PASS   CTCKraken::SetPhase
+00890c80   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+00890c80   RELOCATION_MATCH PASS   CGameScriptInterface::EntityUnsheatheMeleeWeapon
+00920960   RELOCATION_MATCH PASS   CAIStateGroup_CreatureIdleUnderground::OnReplace
+00957170   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseShotFarInto::CCreatureAction_BriarRoseShotFarInto
+009704b0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CCreatureAction_SummonerChargeSuccess@@QAEPAXI@Z (catalog ?A0xe09fd86b::CCreatureAction_SummonerChargeSuccess::`scalar_deleting_destructor'; names another function)
+009704b0   RELOCATION_MATCH PASS   ?A0xe09fd86b::CCreatureAction_SummonerChargeSuccess::`scalar_deleting_destructor'
+00a156d0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a156d0   WARN SHARED_HEADER_AVAILABLE C2DCoordI (engine/C2DCoordI.h)
+00a156d0   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00a156d0   WARN SHARED_HEADER_AVAILABLE CNavQuadTree (engine/CNavQuadTree.h)
+00a156d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a156d0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+00a156d0   RELOCATION_MATCH PASS   CNavigatorManager::AddNavigationMap
+
+WINS: 20
+  004944c0 MATCH CFrontendGameComponent::?ClearString@CFrontendGameComponent@@AAEXXZ
+  005c30d3 RELOCATION_MATCH CTCInventoryWeapons::RefreshActiveWeaponData
+  005c311a RELOCATION_MATCH CTCInventoryWeapons::GetItemOfTypeInInventory@CTCInventoryWeapons
+  005c4769 RELOCATION_MATCH CTCInventoryWeapons::GetActiveMeleeWeaponDamage
+  005c99fd RELOCATION_MATCH CTCInventoryWeapons::ConfiscateItems@CTCInventoryWeapons
+  0064be45 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::?Update@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXXZ
+  0068eb20 RELOCATION_MATCH NInputProcess::?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z
+  00739cc0 RELOCATION_MATCH CCreatureAction_BlockBroken::?ScalarDeletingDestructor@CCreatureAction_BlockBroken@@QAEPAXI@Z
+  00787d94 RELOCATION_MATCH CTCTrapBase::?OnKill@CTCTrapBase@@UAEXXZ
+  007888b4 RELOCATION_MATCH CTCTrapBase::?FrameUpdate@CTCTrapBase
+  007aed30 MATCH CTCBoss::?IncrementStrikesSinceHitHero@CTCBoss@@QAEXXZ
+  007bd80a RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::??1CTCShotDefinitionDrainLife
+  007bdac7 RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::UpdateCollision
+  007f05f0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdownRecover::?ScalarDeletingDestructor@CCombatAction_GenericStrikeResponseKnockdownRecover@@QAEPAXI@Z
+  007fc820 RELOCATION_MATCH CTCKraken::?SetPhase@CTCKraken@@QAEXJ@Z
+  00890c80 RELOCATION_MATCH CGameScriptInterface::EntityUnsheatheMeleeWeapon
+  00920960 RELOCATION_MATCH CAIStateGroup_CreatureIdleUnderground::?OnReplace@CAIStateGroup_CreatureIdleUnderground@@UAEXXZ
+  00957170 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarInto::??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z
+  009704b0 RELOCATION_MATCH ?A0xe09fd86b::CCreatureAction_SummonerChargeSuccess::?ScalarDeletingDestructor@CCreatureAction_SummonerChargeSuccess@@QAEPAXI@Z
+  00a156d0 RELOCATION_MATCH CNavigatorManager::?AddNavigationMap@CNavigatorManager@@QAEXJABVCNavigationAreaInit@@@Z

@@ -1,0 +1,2 @@
+GREW 00436380 3 -> 4 ??$IS_THING_ALIVE_00436380@PAVCThing@@@@YI_NABQAVCThing@@@Z row 007bdac7 SAME
+shrank [('004cc340', 9, 5), ('00662650', 4, 3), ('00446b10', 2, 1)]
