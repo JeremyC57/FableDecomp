@@ -1,0 +1,18 @@
+--- /home/user/FableDecomp/rebuild/include/engine/NInventory_CTCInventoryBase.h	2026-11-20 14:18:06.311856312 +0000
++++ engine/NInventory_CTCInventoryBase.h	2026-11-20 17:15:35.884557006 +0000
+@@ -694,7 +694,15 @@
+ #endif
+  long GlobalDefIndex,SelectedCategoryIndex;
+  const CGraphicDataBank* GraphicManager;
++#ifdef FABLE_RETAIL_CTCINVENTORYBASE_SERIALISED
++ // Retail opt-in (p25F, row 0x005BFD5E OnSerialise): Ego_r.pdb CTCInventoryBase +128 SerialisedItems
++ // CCountedPointer<std::vector<NInventory::CItem> > and +136 SerialisedSelectedItems CCountedPointer<std::vector<CCharString> >
++ // (retail +0x78 / +0x80, Reset 0x005C29CE / 0x005C1E91). Needs FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED (CItem, CCountedPointer).
++ CCountedPointer<std::vector<CItem> > SerialisedItems;
++ CCountedPointer<std::vector<CCharString> > SerialisedSelectedItems;
++#else
+  unsigned char SerialisedItems[8],SerialisedSelectedItems[8];
++#endif
+  bool Dying,CategoryMoving;
+  float CategoryMovement,CategoryMovementDirection;
+ #ifdef FABLE_RETAIL_CTCINVENTORYBASE_CONFISCATED
