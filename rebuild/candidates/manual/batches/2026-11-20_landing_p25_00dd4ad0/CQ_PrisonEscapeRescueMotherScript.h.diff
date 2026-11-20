@@ -1,0 +1,33 @@
+diff --git a/rebuild/include/engine/CQ_PrisonEscapeRescueMotherScript.h b/rebuild/include/engine/CQ_PrisonEscapeRescueMotherScript.h
+index 757edc1f9..08ab9c466 100644
+--- a/rebuild/include/engine/CQ_PrisonEscapeRescueMotherScript.h
++++ b/rebuild/include/engine/CQ_PrisonEscapeRescueMotherScript.h
+@@ -103,4 +103,28 @@ private:
+ FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner) == 0x20);
+ #endif
+ 
++#ifdef FABLE_RETAIL_CQ_PRISONESCAPERESCUEMOTHERSCRIPT_PRISONERACCOMPLICE
++// Retail opt-in (p25A, row 0x00DD4AD0): Ego_r.pdb CPrisonerAccomplice (32 bytes: CEntityScriptBase 0x14, ParentClass +0x14,
++// PMasterData +0x18, ReleasedAndFollowing +0x1c; the retail new size 0x20 in Alloc 0x00DD49A0). Entity vtable 0x012DBEF0 (read
++// from retail .rdata): 0 scalar deleting dtor 0x00DD4AB0, 1 Main 0x00DD4AD0, 2 Init 0x00DD4A50, 3 GetParentScript 0x00DD4A40,
++// 4 OnPersist 0x00DD9490, 5 / 6 CEntityScriptBase::OnPredicateFail 0x00CDEBD0 / OnInterrupted 0x00CDEBE0 (not overridden).
++// Same member set as the CPrisoner opt-in above. Declarations only; existing includers do not define the macro.
++#include "engine/CEntityScriptBase.h"
++namespace NScript {
++class CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice : public CEntityScriptBase {
++public:
++    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_PrisonEscapeRescueMotherScript&, CScriptDataBase*, const CScriptThing&);   // 0x00DD49A0
++    virtual CScriptBase* GetParentScript() const;                        // slot 3 0x00DD4A40
++protected:
++    CQ_PrisonEscapeRescueMotherScript& ParentClass;                      // +0x14
++    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
++private:
++    bool ReleasedAndFollowing;                                           // +0x1c
++    virtual void Init();                                                 // slot 2 0x00DD4A50
++    virtual void OnPersist(CPersistContext&);                            // slot 4 0x00DD9490
++    virtual void Main();                                                 // slot 1 0x00DD4AD0
++};
++}
++FABLE_STATIC_ASSERT(sizeof(NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice) == 0x20);
++#endif
+ #endif
