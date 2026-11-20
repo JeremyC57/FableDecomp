@@ -1,0 +1,58 @@
+p25E notes (Account B), 2026-11-20
+Workspaces: r3 (0x00859EF0, copy of p25D/r3) and r4 (0x008DBC80, copy of p25D/r4). env: source r3/env.sh (W=r3, overlay r3/hdr; r3/hdr0 = pristine copies).
+== 0x00859EF0 CCombatActionBase::OnAnimationLoaded ==
+Evidence found:
+ - 0x007AED30 = CTCBoss::IncrementStrikesSinceHitHero (FableWin 0x026D1330 + Ego_r + Ego_d; body inc StrikesSinceHit+0x14 gated by BCountStrikes+0x20).
+   Landed file CTCBoss_IncrementBossPhase_007aed30.cpp has the WRONG name (NAME_FIXES). p25D note "IncrementBossPhase" was wrong.
+ - 0x0085AB00 = CTCFlourishTarget::SetAttacker(const CThing&) (FableWin 0x02828860 + Ego_d). Landed as unattributed AssignTarget (NAME_FIXES).
+ - SetAsCullNegativeXAxisMovement / SetAsCullAllYAxisMovement: FableWin 5-byte bodies + Ego_d procnames -> inline public setters.
+ - 0x004C9840 = CThing::RemoveTC(TCI_FLOURISH_TARGET 256); 0x004C9D60 AddTC("CTCFlourishTarget", true, NULL).
+ - Retail expands SetUpCombatAnimationNotes (0x00859EC0; Ego_d line 1516 calls it) -> same-TU definition; landed body names m_keepActionTime = HasPerformAction (+0xde) (NAME_FIXES).
+ - IS_THING_ALIVE(PTarget) (engine/ThingAlive.h) expands at 3 sites, the 4th (after things non-empty) is called 0x004CC340 -- v2 reproduces this naturally.
+ - filter = anon-namespace CThingFilter_IsValidCombatSpline(long, CThing&) (Ego_r ctor ??0..@?A0xad05d24c@@QAE@JAAVCThing@@@Z).
+ - pcam_man via GetWorld().GetGameCamera()->GetCameraManager(&pcam_man) (CAIGameCameraBase slot 9). Facing: direction.GetAngleXY() -> GetPhysicsTC()->SetFacingAngleXY.
+ - knockdown cond = pcombat->MeleeKnockdown (+9); CameraPan +0x51 && !PCreature->HasTC(TCI_BULLET_TIME); EnvironmentTheme > 0 -> TransitionToThemeAllChannels(2, theme, (float)BlendInFrames).
+ - Ego_d locals listing is sorted by bprel; lines in r3/egod_lines/00859ef0.lines.txt.
+Overlay r3/hdr (add-only): CCombatActionBase.h _ONANIMATIONLOADED; CTCFlourishTarget.h _SETTERS; CTCBoss.h _INCREMENTSTRIKES;
+  NCameraModes_CScriptModuleBase.h _SETTERS + _CSCRIPTMODULESPLINE (pin_asserts at tools/decomp_pipeline/linux_lane/lane_tools/lane_merge/pin_asserts.py).
+Grades: v2 (shared headers) DIFFER(1222v1196): frame 0x28 v 0x20 (phand 0x20 / pcombat 0x24 not sharing 0x1c), things/pkofxdef reloads.
+  v3 (experiment: braces + dummy bool) frame 0x20 -- NOT acceptable (dummy local).
+Next (advisor): make same-TU bodies visible: GetDef 0x0085ABB0 noinline (Fidelity line), GetAllThings ALLTHINGSBODY(_EGOD), GetComponent body (check 0x0085AD30 row) -> may give slot sharing.
+2026-11-20 later: v5 (v4b + header GetComponent body opt-in + CIVCOUNTEDPOINTER_GET + CVECTORMAP_ORIGINAL_FIND) DIFFER(1195v1196), frame 0x20 OK.
+  GetComponent overlay body verified RELOCATION_MATCH vs 0x00669CB0 / 0x00738A00 (workspace w26/p25E/gc).
+  Residue = regalloc only (vptr eax/edx, lea swaps, handedness push order, KnockDownEffects CSE, filter store order). Messaged main.
+  main's advice: (1) KnockDownEffects CSE -> look for a named local/reference (Ego_d line sizes around 1597-1600);
+  (2) symbol-number class -> shape of the visible template bodies vs Ego_d/FableWin text; (3) same-TU copy must be verbatim or say what differs.
+  NAME_FIXES in r3/NAME_FIXES.tsv (0x007AED30, 0x0085AB00, 0x00859EC0 member, 0x0085AFD0 filter).
+Row 2 (r4) started: headers exist for CRightHandedSet/CAnimSet/CAnimateThing/CTCAnimationComplex/CTCLook/CThingCreatureBase/CCardinalSpline/GFAngles; no header for CModeDragonFlying(Base) (local model OK).
+== Row 2 0x008DBC80 CModeDragonFlying::FrameUpdate (r4) ==
+ r4/src/v3.cpp: shared headers for CRightHandedSet (_CRIGHTHANDEDSET + _SET + _INTERPOLATE), CAnimSet/CAnimateThing (LOOK_HEAD_ANIM,
+   CANIMSET_TYPE + STRAFE_ACCESSORS_PASS24 for GetPercentageComplete/SetInternalAlpha, CANIMATETHING_MAINANIM GetMainAnim),
+   CTCAnimationComplex (NEW overlay opt-in r4/hdr _ANIMDURATION: Ego_r QBE GetAnimIndex/GetAnimDuration 0x0070B490/0x0070B4A0),
+   CTCLook (needs C3DVECTOR_NOT_EQUAL, CLOOKDEF, CDEFSTRINGTABLE), CThingCreatureBase (_SETCURRENTACTION_COUNTED), CCardinalSpline
+   (_GETSPLINEPOSITION, GetControlPointCount), C3DVector::GetAngleXY (ANGLE_BODIES: the atan2*1/(2pi) + wrap = retail constants).
+   Local models only for CModeDragonFlyingBase / CModeDragonFlying (no header).
+ Grades: d0 2323v2319 (310 lines); v1 (rhs via ctor temp) 2350, frame 0x98; v3 (rhs.Set, end_forward local = Ego_d end_rhs/end_forward)
+   DIFFER(2321v2319), 189 diff lines, frame 0x8c OK.
+ v3 residue: direction Normalise x87 operand order (0x008DBE0B) + frame-slot order (direction retail [esp+44h] v ours [esp+20h]),
+   and the store order copying up/forward into rhs (0x008DC1BB) and near 0x008DC427..0x008DC496 -- symbol-number class.
+   All 11 C3DVECTOR_NORMALISE_* respellings measured: none helps (189..195 lines) -> do NOT respell.
+ Next: Ego_d locals (r4/egod_lines/008dbc80.locals.txt: 22 top-level + 3 blocks; lines in .lines.txt) -- Ego_d has extra locals
+   (vector_travelled, dist_to_target, percentage_complete_per_frame, vector_to_dest, ideal_movement_direction, anim_length_in_frames)
+   that may be dead-but-counted in retail; their expressions are unknown (later revision). Check FableWin's /Od body of this proc if present.
+== Final state at hand-back (2026-11-20) ==
+Row 1 candidate: r3/src/v5b.cpp = v5 minus CVECTORMAP_ORIGINAL_FIND (neutral in the row: 1195v1196, same 105 diff lines; keep ORIGINAL_FIND only
+  in the header comment about the 0x00669CB0 / 0x00738A00 matches). Fidelity copy annotated (member respell only).
+  Fixed: CTCFlourishTarget.h overlay comment now cites FableWin debug\combat_action_base.obj 0x028288E0 / 0x02828900 (18-byte /Od bodies);
+  the earlier "5-byte" rows were link thunks. CAnimComponentMap base verified: Ego_d 0x28FE = CIVCountedPointeeBase.
+  /Od line sizes (r3/tmp/odl_v5b.txt, VC7.1 /Od /EHsc) vs Ego_d: every line within the VC10 +3/this-load offset EXCEPT
+  1600 (GetDef: Ego_d 482 v ours 37) and 1605 (GetCameraManager: 521 v 42); 1525/1580 (PAnimEntry.Get()) are +7 (21 v 14).
+  Row 2 has the same outliers on its two ignored-bool GetTC lines (4982: 491, 5125: 499). All four sit on bool-returning out-param calls
+  whose result retail ignores -> a debug-only check macro around/after them (no repo macro; VERIFY not found). Measured in row 1:
+  FABLE_RETAIL_ASSERT_DEAD_ARM asserts after the calls (x7) and `if (!call) { ASSERT_ARM }` (x8): both no effect (105 lines).
+  FableWin.exe is not on this machine (fwcalls impossible); _fablewin_api.tsv has no callees for either proc.
+  Dead ends (measured, no effect): top-level declaration order; (*PCreature)./.Get()->/static_cast/enum-typed load; filter ctor body form.
+Row 2 candidate: r4/src/v3.cpp DIFFER(2321v2319). Dead ends: 11 Normalise respellings; Ego_d anim_length_in_frames named local.
+Unbuilt for both rows: test, mutants, strict vland, line-2 Inline-budget ablations (GFRANDOM_OUTOFLINE, CIntelligentPointer
+  CTOR/ASSIGN_OUTOFLINE, CCOUNTEDPOINTER_CALLED_CTOR, C3DVECTOR_ANGLE_BODIES, GETDEF_GLOBAL_BODY, ALLTHINGSBODY_EGOD, GETCOMPONENT_BODY),
+  pin_asserts on the overlays (r3/hdr vs r3/hdr0; r4/hdr vs r4/hdr0), newly_flagged_rows.tsv.

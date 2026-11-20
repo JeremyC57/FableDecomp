@@ -15,6 +15,15 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   (symbol-number order, the inline-frequency heuristic, the CBankFile.h assert-pin conflict).
 - Open regression: 0x007E2A60 (CBankFile.h assert names; do not repin, re-author the row).
 
+## Account B, 2026-11-20 (the 25 reserved parked rows, p25 run)
+- Of A's 25 reserved rows: 22 landed (`batches/2026-11-20_landing_p25_*`), 3 deferred (0x0064FDB4, 0x00D01630, 0x00B0DC20). Replacement rows
+  B reserved: 6 landed, 4 open. Best sources, notes and hdr.diff of all 7 open rows: `rebuild/candidates/manual/pending/2026-11-20_p25_open/`.
+- Advisor rulings under the owner's delegation (fitted dead temporaries, a redundant second read, fitted assert arms, a reference local,
+  a mid-body inline_depth region, resize spelling): `docs/journal/2026-11/2026-11-20_ADVISOR_DECISIONS_B.md`.
+- Mechanisms recorded in FINDINGS_LOG (2026-11-20): bool-byte register by read count, assert arms shift c2 symbol numbers by +64, mod-2048
+  symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
+- Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
+
 ## Account A, 2026-11-20 (naming round 10, landings nf148-nf174)
 - Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf170, 524 rows),
   B's b12 / reports_b4 rows, and the engine/CSpawnedFunc1.h include fix (5 rows that did not compile at HEAD now match; 67/67 includers good).

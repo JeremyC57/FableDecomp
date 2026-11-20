@@ -1,0 +1,46 @@
+0x0064FDB4 CQuestInfoElementBar::DrawAt (p25A, 2026-11-20)
+Draft (handNF = codex_released, identical): DIFFER(2593v2593), /Os /d2inlS200 + inline_depth(0) round the hero predicate; byte size equal, residue = frame 0x164 v retail 0x16C and slot homes (114 hunks, 36 non-offset).
+Ego_d.pdb: proc 3977 B, locals phero / gui_def / graphic_bank / bar_sprite_width,height / max_graphic_height / left_sprite_width,height / right_sprite_width,height / total_bar_width / left_sprite_pos / bar_tl_pos / right_sprite_pos / inner_bar_tl_pos / value_as_percentage / bar_left_box, bar_middle_box, bar_right_box (outer) / bar_left_sprite, bar_right_sprite (outer) / left_sprite_box, left_sprite, layer, left_sprite_scaled_width,height, ptc_targeting / right_sprite_box, right_sprite / bar_middle_sprite / bar_inner_box, bar_inner_sprite, interp_colour. Line table in egod_lines.tsv.
+Retail frame (slot map, tools/slotmap.py): every sprite box is built in ONE slot [ebp+0x28..0x37] (temporaries, no copy); scoped sprites share [ebp-0xFC]; bar_left_sprite [ebp-0x54], bar_right_sprite [ebp-0xA8]; right_sprite_pos [ebp+0xC] is reused for the inner bar (only X re-assigned, 0x00650341: the draft's `fillPos.X = barPos.X`); an 8-byte hole at [ebp+0x38..0x3F] (never addressed) sits between the box slot and the floor helper's 0.5f / GetTC key slot [ebp+0x44].
+Grades:
+ d1 = draft + separate inner position copy: DIFFER(2593v2593), frame 0x164, 130 hunks; slot map: retail 0..0x34 = ours +8 consistently, retail 0x40/0x44 (helper temps) after vs ours before the 0x48..0x57 group; the only missing piece is the 8-byte hole.
+ d2/d3 (outer right_sprite_height): no frame change.  d1 with /Os, /Os /d2inlS20, /d2inlS60: frame 0x164 (S<60 also 2547 B).
+ v1 (Ego_d names, named outer boxes, corner ctor): DIFFER(2586v2593), frame 0x190 (named boxes get their own slots).
+ v2 (named boxes + GFToScreen copies, C2DExtentsF): DIFFER(2619v2593), frame 0x170 (extra copies; retail builds the box in place).
+ v4 / d4 (box temporaries without the named size/end vectors): DIFFER(2593v2593), frame 0x170, slot order scrambled (155 hunks).
+Reading: the residue is VC7.1 frame packing (which temporaries / inlined-helper locals -- GFFloatToLongFloor's asm-twin locals, the expanded GetTC -- get which slots), not code. Closest: d1.
+ d1 with /Os /d2inlS100, /Os /d2inlS200 /d2inlT100: frame 0x164 (130 hunks); /O1: 2547 B, frame 0x164.
+
+Bounded round 2 (2026-11-20, coordinator's dead-8-byte-object hypothesis). Tools: tools/holes.py on retail tmp/fdb4.dis and on our
+streams (oursfull.sh over `g.py --full`), tools/slotmap.py.
+ Retail frame: 3 sprites at [ebp-0xFC/-0xA8/-0x54] (3 x 0x54, end at 0), scalars [ebp+0x00..0x6F] with ONE never-addressed range
+  [ebp+0x38..0x3F] (no access of any width, no lea). Ours d0 and d1 (verified with holes.py): sprites -0xF4/-0xA0/-0x4C, scalars
+  [ebp+0x08..0x6F] contiguous, no hole -- the same 0x68 bytes of scalars, so the whole residue is retail's extra 8 dead bytes.
+ Not alignment: retail has no qword / double access and nothing in the frame needs 8-byte alignment.
+ Hole owner (step 1): landed siblings that pass a C2DBoxF temporary to the sprite ctor 0x0041BEB0 have no dead slot beside the box:
+  Timer::DrawAt 0x006507D5 (frame 0xA0; box at -0x4C, every word addressed; -0x24 / -0x1C are lea-passed 8-byte objects) and
+  CSubtitleRenderer::DrawButtonGraphics 0x0048E78E (frame 0x16C, bias 0x68; 3 sprites + scalars -8..0x67, every word addressed).
+  So the hole is DrawAt's own, not a shared-header residue. (0x00597DF7 not checked.)
+ Callee-body visibility (the StatBar 0x00646762 precedent, frame 0x38 v 0x40): our TU already sees the const LowerBound body
+  (engine/CVectorMap.h noinline, 0x004365B0, takes &key [ebp+0x44]); the sprite ctor is engine code (declaration in retail too).
+  The two template callees the draft only declares were given bodies, kept out of line with auto_inline(off):
+  h1 = IS_THING_ALIVE<CIntelligentPointer<T>> (0x00655D04) + operator==(CBaseObject*, CIntelligentPointer<T>&) (0x00654CB9 fold):
+       DIFFER(2636v2593), frame 0x164;  h2 = operator== only: DIFFER(2595v2593), frame 0x164. Neither opens a hole.
+ Ego_d 8-byte locals v retail slots: left_sprite_pos [0x58/0x5C], bar_tl_pos [0x4C/0x50], right_sprite_pos [0x0C/0x10].
+  inner_bar_tl_pos has no slot of its own: its X is copied into right_sprite_pos.X's slot [ebp+0xC] at 0x00650341 and its Y is read
+  from bar_tl_pos.Y [ebp+0x50]. HYPOTHESIS (not proven): the hole is inner_bar_tl_pos's reserved home -- it is the only Ego_d
+  C2DVector without an 8-byte home and the hole is 8 bytes. Ego_d line 3572 (15 B, right after the Graphic2 block) is INFERRED from
+  its size alone to be its copy-construction.
+ Variants (all /Os /d2inlS200 + the scoped predicate):
+  f1/f2 = d0 + `C2DVector inner_bar_tl_pos(barPos);` never read, before / after `fillPos.X=barPos.X;`: byte-identical to d0
+        (VC7.1 drops the unread local completely; no reserved slot). frame 0x164, 114 hunks.
+  e1..e5 = d1 with one named end vector made a temporary: e1 / e5 frame 0x170 (+0xC, live slots at ebp-4..+7), e2..e4 0x164.
+  g1/g2 = d1 with innerPos default-declared at the top (after / before the other three) and assigned later: 2599 B, frame 0x164.
+  g3 = innerPos(position) declared with the other three, `innerPos.X=barPos.X` later: frame 0x16C but 2596 B and no hole
+        (a live 8-byte object, not retail's dead one; 146 hunks).
+ Step 3 (calibrate VC7.1's slot-order rule on a landed sibling, then move the declaration of the 0x48..0x57 owner): NOT attempted.
+  The two landed siblings above have no dead slot to calibrate against, and moving bar_tl_pos / total_bar_width / layer cannot
+  create an unaddressed 8 bytes by itself; it would only reorder the live ones.
+ Result: no admissible dead local found. HYPOTHESIS: the hole is an 8-byte reservation VC7.1 leaves for an object whose every access
+  was removed after layout; no spelling tried (unread local, default-declared local, temporary ends, early declaration, callee bodies)
+  reproduces it. Closest stays d1 (2593v2593, frame 0x164). Deferred with 0x00D01630.
