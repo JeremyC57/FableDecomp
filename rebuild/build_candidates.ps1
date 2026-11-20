@@ -401632,6 +401632,13 @@ $catalog = @(
         TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferBinaryOut_005c0a98_test.cpp'
         PassPattern = '005c0a98_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006f2de0'
+        Module = 'CGetBestAttackerForProng'
+        Source = '00/6f/CGetBestAttackerForProng_operator_006f2de0.cpp'
+        TestSource = '00/6f/CGetBestAttackerForProng_operator_006f2de0_test.cpp'
+        PassPattern = '006f2de0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

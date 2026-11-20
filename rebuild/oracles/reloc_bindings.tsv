@@ -39507,3 +39507,5 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?ConvertToVBFormatStatic@C3DPrimitive2@@QAEXPAXKKPAVCVertexCompressionParams@@@Z	00a92740	00a931f0
 ?AddSubChunk@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z	00aa84f0	00ac0c00
 ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z	00ac1460	00ac0c00
+?GetAttackerProngSelectionCompareValue@?A0xef3322dc@@YIMABVC3DVector@@000@Z	006e7f00	006f2de0
+?GetAttackerProngSelectionCurrentWeaponBaseCompareValue@?A0xef3322dc@@YIMABVCThing@@_N@Z	006e9f60	006f2de0

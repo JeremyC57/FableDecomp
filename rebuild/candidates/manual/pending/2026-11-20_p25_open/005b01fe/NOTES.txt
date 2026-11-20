@@ -8,9 +8,16 @@ No header change. It uses the existing opt-in FABLE_RETAIL_CTCINVENTORYTRADE_SEL
   sold_v, new_title, new_subtitles, p_text, new_tot, ptc_shop, pplayer, ptc_hero_stats, items_value, pinventory_item_is_in, found_sell,
   buy_pparent, result, endit, pgold, pgold_real, count, dummy_pointer, value_pair, pframesell). All byte-neutral.
   Ego_d's def_index (long) is not placed: no use for it was found.
-- Residue (b): the Buy-total sum. Retail is 1E4h+1E8h+1E0h (Weapons, Items, Clothes = source order, as in the landed 0x005A6769); ours is 1E8h+1E0h+1E4h.
-  - The c2 IL dump shows the operands are IND(temp), where the temps are the `lea t,&this->X` made at the zeroing (L90..92). symlog: kind-15 #1178/1180/1182.
-  - Source order of the sum, zeroing order, chain form and switch case order all do not matter (the sort is total).
-  - Zeroing TotSpecialItemsToBuy first (evidence/c3.cpp) fixes the sum, because the three temps shift by +2, but moves the 1F8h store first (retail: last).
-  - So retail has one more kind-15 temporary before the zeroing, from text not yet found. Dummy int locals never move it (they are a different pool).
-FINDINGS: 2026-11-20 (Account B p25J, 0x005B01FE CTCInventoryTrade::SellItemPC, parked) DIFFER(2217v2222) -> DIFFER(2222v2222) with Ego_d's is_list_empty / can_buy locals (the double-read bool gives retail's `sete al; test al,al`). The last residue is a three-member sum order at 0x005B0992. c2 keys those operands by the address temporaries made at the member zeroing (kind-15 temps), so the sum flips with the temporaries pool count before that point (zeroing TotSpecialItemsToBuy first fixes it but misplaces its store), not with source order. Work: Account B scratch w26/p25J/parked/005b01fe.
+- Residue (b): the Buy-total sum. Retail is 1E4h+1E8h+1E0h (Weapons, Items, Clothes = the source order, as in the landed 0x005A6769);
+  ours is 1E8h+1E0h+1E4h. What was MEASURED:
+  - The c2 IL dump shows each operand is IND(address temp). The temps are the `lea t,&this->X` made at the zeroing (L90..92); symlog numbers
+    them kind-15 #1178 (Items), #1180 (Weapons), #1182 (Clothes). The IL sum order is Items, Clothes, Weapons (#1178, #1182, #1180): neither
+    ascending nor descending, so the sort key is not the bare temp number.
+  - Sum operand order, case order, chain form and the six I/W/C zeroing orders give identical bytes (the sort is total).
+  - Three zeroing orders of all four members fix the sum: SIWC (c3), WISC (z07) and WCSI (z09). Each moves a store out of retail's
+    1E8h/1E4h/1E0h/1F8h order (r4/z4). Dummy int locals never move it.
+  - The landed sibling 0x005A6769 (same `W + I + C` text, retail order) also has IND(temp) operands (tmp/c2p/sib.il L24/L51), so
+    "this-relative versus temp" is not the difference.
+  - HYPOTHESIS (unmeasured): the temporaries pool state before the zeroing differs from retail, i.e. retail allocates more or different
+    kind-15 temps earlier. Next: symlog c3/z07/z09 against a1 to read the key change, then look for the earlier text that matches it.
+FINDINGS: 2026-11-20 (Account B p25J, 0x005B01FE CTCInventoryTrade::SellItemPC, parked) DIFFER(2217v2222) -> DIFFER(2222v2222) with Ego_d's is_list_empty / can_buy locals (the double-read bool gives retail's `sete al; test al,al`). The last residue is a three-member sum order at 0x005B0992. Its operands are IND(address temporaries) made at the member zeroing, and c2's order is total. The order follows the zeroing statement order of all four members (SIWC / WISC / WCSI fix it, each misplacing a store), not the sum's source order; hypothesis, unmeasured: retail's temporaries pool differs before the zeroing. Work: Account B scratch w26/p25J/parked/005b01fe.

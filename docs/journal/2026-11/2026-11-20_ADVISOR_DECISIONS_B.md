@@ -153,3 +153,13 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The GFSqr label cites Ego_d's corroboration: c_c's line is 34 B longer than c_a's, as the call form's are.
   - `(n*n)` stays FITTED.
 - **Not blocking:** regrade the parked 0x00A4EFC0 with this row's C3DVector set.
+
+## 0x006F2DE0 CGetBestAttackerForProng::operator(): a shared anonymous helper's local type (2026-11-20)
+- **Case:** the row needs GetPreferredCombatDistanceForAttacker's local as `float distance`: Ego_d type 0x40, and `double` gives
+  DIFFER(379v375). The landed 0x006E89B0 carries an `// Inferred:` `double`; with `float` it regrades DIFFER(344v344).
+- **Ruling:** `float` stands, because Ego_d's type and this row's expansion are two sources and the landed `double` is a fit. Before landing,
+  compare the helper's emitted out-of-line copy with retail's copy if one exists:
+  - equal: land, and queue 0x006E89B0 as B's re-port;
+  - different: one bounded sweep for a spelling that satisfies both;
+  - no retail copy: land `float` with the conflict stated.
+- **Labels:** the helper here is not verbatim, so it gets `// Inferred:`, not `// Fidelity:`. Line 2 says how the helper expands.

@@ -49,6 +49,13 @@ public:
   // in retail. Declaration only: no layout change.
   bool IsOuterRing(const CCombatTypeDef& defender_combat_type_def) const;
 #endif
+#ifdef FABLE_RETAIL_CCOMBATRING_GETTERS
+  // Opt-in (p25K, row 0x006F2DE0 CGetBestAttackerForProng::operator()): Ego_d.pdb / FableWin.pdb (0x0243A9D0 / 0x0243A9F0)
+  // ?GetIndex@CCombatRing@CDefendingCombatantInfo@@QBEJXZ and ?GetRotationAngle@CCombatRing@CDefendingCombatantInfo@@QBEMXZ, expanded in
+  // retail (0x006F2E38 `mov ecx,[ebp+8]`, 0x006F2E4F `mov eax,[ebp]`). Inferred bodies (each returns its member).
+  long GetIndex() const { return Index; }
+  float GetRotationAngle() const { return RotationAngle; }
+#endif
   float RotationAngle;float DeltaRotation;long Index;float RingThickness;std::vector<CProng> Prongs;};
  class CCombatWheel {public:
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
