@@ -49,7 +49,11 @@ namespace NUISystem {
 class CComponent;
 }
 namespace std {
-template <class T> class deque {
+// NF156 (2026-11-20, q6171): in-place respell of this row-local deque model to STLport 4.6's two template parameters (class allocator,
+//   declared only), so back() binds 0x0059B039 as ?back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@
+//   QAEAAPAVCComponent@NUISystem@@XZ, the self-row / Ego_r.pdb spelling (was ?back@?$deque@PAVCComponent@NUISystem@@@std@@QAE..).
+template <class T> class allocator;
+template <class T, class _Alloc = allocator<T> > class deque {
 public:
     unsigned char _body[0x28];
     T& back();                                           // 0x0059B039 for NUISystem::CComponent*

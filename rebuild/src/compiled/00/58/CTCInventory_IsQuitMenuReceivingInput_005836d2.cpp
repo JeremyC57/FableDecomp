@@ -14,43 +14,18 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-class CCharStringData;
-
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length);      // 0x0099EBF0
-    CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
-    ~CCharString();
-};
-
-struct CStateQuery {                                 // secondary base of a menu entry
-    virtual void v00();
-    virtual void v01();
-    virtual bool IsInState(long state);              // slot 2 (+0x08)
-};
-
-struct CComponentBase {
-    virtual void v00();
-};
-
-struct CMenuEntry : CComponentBase, CStateQuery {
-};
-
-template <class T> struct CListAllocator {
-    CListAllocator() {}
-};
-
-struct CEntryList {                                  // std::list<CMenuEntry*> (retail head-only)
-    struct SNode { SNode* _M_next; SNode* _M_prev; CMenuEntry* _M_data; };
-    SNode* _M_node;
-    explicit CEntryList(const CListAllocator<CMenuEntry*>& a = CListAllocator<CMenuEntry*>());   // 0x0042ABAF
-    ~CEntryList();                                   // 0x0042ABCA
-};
-
-struct CMenuScreen {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void FindEntries(CCharString name, CEntryList& out);   // slot 5 (+0x14)
-};
+// NF156 (2026-11-20, q4776): the local CEntryList / CListAllocator / CMenuEntry / CStateQuery / CComponentBase / CMenuScreen /
+//   CCharString models replaced by the shared headers: the list is STLport std::list<NUISystem::CComponent*> (ctor 0x0042ABAF /
+//   ~list 0x0042ABCA out of line, the 0x00583815 define set), the screen search is NUISystem::CComponent::FindAllChildren (slot 5,
+//   engine/NUISystem_CComponent.h), and the entry's second-base slot 2 is CObserver::IsObservingEvent (the CObserver sub-object at
+//   +4; the stand-in called it IsInState(2)). Was ??1CEntryList@@QAE@XZ / ??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+#include "stlport/fable_containers.h"
+#include "engine/NUISystem_CComponent.h"
+using NUISystem::CComponent;
 
 template <class T> struct CRetailVector {            // STLport vector (12 bytes)
     T* _M_start;
@@ -65,7 +40,7 @@ class CTCInventory { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x4];
-    CRetailVector<CMenuScreen*> Screens;             // +0x0C
+    CRetailVector<CComponent*> Screens;              // +0x0C
 
     bool IsQuitMenuReceivingInput() const;
 };
@@ -73,11 +48,11 @@ class CTCInventory { public:
 bool CTCInventory::IsQuitMenuReceivingInput() const
 {
     for (unsigned long i = 0; i < Screens.size(); ++i) {
-        CEntryList entries;
-        Screens[i]->FindEntries(CCharString("PC_UI_MENU_ENTRY_LOAD_CONFIRM", -1), entries);
-        for (CEntryList::SNode* node = entries._M_node->_M_next; node != entries._M_node; node = node->_M_next) {
-            CMenuEntry* entry = node->_M_data;
-            if (entry && entry->IsInState(2))
+        std::list<CComponent*> entries;
+        Screens[i]->FindAllChildren(CCharString("PC_UI_MENU_ENTRY_LOAD_CONFIRM", -1), entries);
+        for (std::list<CComponent*>::iterator it = entries.begin(); it != entries.end(); ++it) {
+            CComponent* entry = *it;
+            if (entry && entry->IsObservingEvent(NUISystem::UI_EVENT_LEFT))
                 return true;
         }
     }

@@ -1,0 +1,218 @@
+0047d648 new: 21
+    ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_n
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QBEAAPAVCComponent@NUISystem@@XZ
+    ??E?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAEAAU01@XZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?allocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@IPBX@Z
+    ?begin@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+    ?end@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@N
+0047d6f2 new: 21
+    ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_n
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QBEAAPAVCComponent@NUISystem@@XZ
+    ??E?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAEAAU01@XZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?allocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@IPBX@Z
+    ?begin@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+    ?end@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@N
+004854df new: 9
+    ??0?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@QAE@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z TABLE:004854df
+    ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z TABLE:00428928
+    ??0CActionParam@NUISystem@@QAE@W4EActionParamType@1@@Z
+    ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ TABLE:004291de
+    ??1CActionParam@NUISystem@@UAE@XZ
+    ??_7?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@6B@ TABLE:01236794
+    ??_7CActionParam@NUISystem@@6B@ TABLE:0122f83c
+    ??_G?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@UAEPAXI@Z
+    ??_GCActionParam@NUISystem@@UAEPAXI@Z
+0052c870 new: 1
+    ?IsPositionIndependent@CChangingStateComponent@NUISystem@@UBE_NXZ
+0052ecc0 new: 3
+    ??0C2DVector@@QAE@ABV0@@Z
+    ??0C2DVector@@QAE@MM@Z
+    ?GetTargetRelativeRenderZoom@CComponent@NUISystem@@UBE?AVC2DVector@@XZ
+00531e90 new: 6
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ TABLE:0042a18f
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+0053fc30 new: 0
+0054ec70 new: 32
+    ??$_Destroy@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0@Z
+    ??$__destroy@PAPAVCComponent@NUISystem@@PAV12@@std@@YAXPAPAVCComponent@NUISystem@@00@Z
+    ??$__destroy_aux@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0ABU__true_type@0@@Z
+    ??0?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAE@XZ
+    ??0?$_STLP_alloc_proxy@PAPAVCComponent@NUISystem@@PAV12@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@PAPAVCComponent@N
+    ??0?$_Vector_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??0?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z
+    ??0CEnginePrimitiveHandle@@QAE@XZ
+    ??0CViewport@NUISystem@@QAE@J@Z TABLE:0054ea00
+    ??0__true_type@std@@QAE@XZ
+    ??1?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAPAVCComponent@NUISystem@@PAV12@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??1?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1CEnginePrimitiveHandle@@UAE@XZ
+    ??C?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBEPAVCEnginePersistentPrimitiveBase@@XZ
+    ??_7CEnginePrimitiveHandle@@6B@ TABLE:0122f598
+    ??_7CViewport@NUISystem@@6BCActionParam@1@@ TABLE:01249a30
+    ??_7CViewport@NUISystem@@6BCObserver@1@@ TABLE:01249a38
+    ??_7CViewport@NUISystem@@6BCUIInterface@1@@ TABLE:01249a5c
+    ??_ECViewport@NUISystem@@W3AEPAXI@Z
+    ??_ECViewport@NUISystem@@WBI@AEPAXI@Z
+    ??_GCEnginePrimitiveHandle@@UAEPAXI@Z
+    ??_GCViewport@NUISystem@@UAEPAXI@Z
+    ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ
+    ?IsNull@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBE_NXZ
+    ?Release@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAEXXZ
+    ?Release@CIVCountedPointeeBase@@QBEJXZ
+    ?deallocate@?$allocator@PAVCComponent@NUISystem@@@std@@QAEXPAPAVCComponent@NUISystem@@I@Z
+00555390 new: 34
+    ??$_M_insert_dispatch@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCC
+    ??$insert@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUI
+    ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABU01@@Z
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_n
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0CDeletion@NUISystem@@QAE@ABV01@@Z TABLE:0042cd84
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@QBEABQAVCComponent@NUISystem@@XZ
+    ??E?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@QAEAAU01@XZ
+    ?_M_create_node@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@ABQAVCComponent@NUISystem
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?allocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@IPBX@Z
+    ?begin@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent
+    ?begin@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QBE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NU
+    ?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ TABLE:0042a18f
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+    ?end@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QBE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUIS
+    ?get_allocator@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QBE?AV?$allocator@PAVCComponent@NUISystem@@@2@XZ
+    ?insert@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponen
+005836d2 new: 24
+    ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_n
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??A?$CRetailVector@PAVCComponent@NUISystem@@@@QBEAAPAVCComponent@NUISystem@@K@Z
+    ??D?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QBEAAPAVCComponent@NUISystem@@XZ
+    ??E?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAEAAU01@XZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?allocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@IPBX@Z
+    ?begin@?$CRetailVector@PAVCComponent@NUISystem@@@@QBEPAPAVCComponent@NUISystem@@XZ
+    ?begin@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+    ?end@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@N
+    ?size@?$CRetailVector@PAVCComponent@NUISystem@@@@QBEKXZ
+0058376c new: 22
+    ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_n
+    ??0?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z TABLE:0042abaf
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVCComponent@NUISystem@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??ACScreenVector@@QBEAAPAVCComponent@NUISystem@@K@Z
+    ??D?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QBEAAPAVCComponent@NUISystem@@XZ
+    ??E?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@QAEAAU01@XZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?allocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCComponent@NUISystem@@@2@IPBX@Z
+    ?begin@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+    ?end@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@N
+00595356 new: 1
+    ?top@?$stack@PAVCComponent@NUISystem@@V?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ
+00595845 new: 1
+    ?top@?$stack@PAVCComponent@NUISystem@@V?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ
+00596550 new: 1
+    ?top@?$stack@PAVCComponent@NUISystem@@V?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ
+005966f2 new: 1
+    ?top@?$stack@PAVCComponent@NUISystem@@V?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@XZ
+0059db82 new: 6
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ TABLE:0042a18f
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+0059e6bd new: 6
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ TABLE:0042a18f
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+005ae6af new: 0
+005ae9de new: 0
+005aeaee new: 0
+005c39f0 new: 6
+    ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ TABLE:0042abca
+    ?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ TABLE:0042a18f
+    ?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z
+00851920 new: 0
+00485524 new: 0

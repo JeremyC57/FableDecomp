@@ -5,36 +5,25 @@
 //   propagated twin), CCharString(const char*, long) 0x0099EBF0 for the by-value name argument, the screen's virtual
 //   slot 5 (+0x14) entry search, and the entry's second-base virtual slot 2 (+0x08) state query.
 // Local model: the CTCInventory screen vector sits at +0x0c (retail); no engine/ header declares these members.
+// Leaf: ?IsSaveMenuReceivingInput@CTCInventory@@QAE_NXZ
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CCharStringData;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length);       // 0x0099EBF0
-    CCharString(const CCharString& other);
-    ~CCharString();
-};
-struct CStateQuery {
-    virtual void v00(); virtual void v01();
-    virtual bool IsInState(long state);              // slot 2
-};
-struct CComponentBase { virtual void v00(); };
-struct CMenuEntry : CComponentBase, CStateQuery {};
-template<class T> struct CListAllocator { CListAllocator() {} };
-struct CEntryList {
-    struct SNode { SNode* next; SNode* prev; CMenuEntry* data; };
-    SNode* node;
-    explicit CEntryList(const CListAllocator<CMenuEntry*>& a = CListAllocator<CMenuEntry*>()); // 0x0042ABAF
-    ~CEntryList(); // 0x0042ABCA
-};
-struct CMenuScreen {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void FindEntries(CCharString name, CEntryList& out); // slot 5, 0x14
-};
+// NF156 (2026-11-20, q4776): the local CEntryList / CListAllocator / CMenuEntry / CStateQuery / CComponentBase / CMenuScreen /
+//   CCharString models replaced by the shared headers: the list is STLport std::list<NUISystem::CComponent*> (ctor 0x0042ABAF /
+//   ~list 0x0042ABCA out of line, the 0x00583815 define set), the screen search is NUISystem::CComponent::FindAllChildren (slot 5,
+//   engine/NUISystem_CComponent.h), and the entry's second-base slot 2 is CObserver::IsObservingEvent (the CObserver sub-object at
+//   +4; the stand-in called it IsInState(1) / (2)). Was ??1CEntryList@@QAE@XZ / ??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
+#include "stlport/fable_containers.h"
+#include "engine/NUISystem_CComponent.h"
+using NUISystem::CComponent;
 struct CScreenVector {
-    CMenuScreen** first; CMenuScreen** last;
+    CComponent** first; CComponent** last;
     unsigned long size() const { return (unsigned long)(last - first); }
-    CMenuScreen*& operator[](unsigned long n) const { return first[n]; }
+    CComponent*& operator[](unsigned long n) const { return first[n]; }
 };
 class CTCInventory { public:
     unsigned char _pad[0x0c];
@@ -45,13 +34,13 @@ bool CTCInventory::IsSaveMenuReceivingInput()
 {
     unsigned long i = 0;
     for (; i < Screens.size(); ++i) {
-        CEntryList entries;
-        Screens[i]->FindEntries(CCharString("COMPONENT_SAVE", -1), entries);
-        for (CEntryList::SNode* node = entries.node->next; node != entries.node; node = node->next) {
-            CMenuEntry* entry = node->data;
+        std::list<CComponent*> entries;
+        Screens[i]->FindAllChildren(CCharString("COMPONENT_SAVE", -1), entries);
+        for (std::list<CComponent*>::iterator it = entries.begin(); it != entries.end(); ++it) {
+            CComponent* entry = *it;
             if (entry) {
-                CStateQuery* query = entry;                      // second base, +0x04
-                if (query->IsInState(1) || query->IsInState(2)) {
+                NUISystem::CObserver* query = entry;                 // second base, +0x04
+                if (query->IsObservingEvent(NUISystem::UI_EVENT_DOWN) || query->IsObservingEvent(NUISystem::UI_EVENT_LEFT)) {
                     return true;
                 }
             }

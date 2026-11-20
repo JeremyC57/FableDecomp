@@ -56,6 +56,11 @@ namespace NUISystem
         // out of line at 0x00404C50 (called at 0x005403BF on CIME::Get()). Declaration only.
         bool IsIMEActive() const;                                           // 0x00404C50
 #endif
+#ifdef FABLE_RETAIL_CIME_FINALISESTRING
+        // NF156 opt-in (2026-11-20, q6170, row 0x00851920 CVirtualKeyboard::Confirm): Ego_r.pdb S_PUB32 + FableWin.pdb
+        // ?FinaliseString@CIME@NUISystem@@QAEX_N@Z, out of line at 0x00404B50 (landed row). Declaration only.
+        void FinaliseString(bool commit);                                   // 0x00404B50
+#endif
     private:
         void Reset();
         bool             EnableIME;                       // +0x00
@@ -91,4 +96,4 @@ namespace NUISystem
 
 #endif // FABLE_RETAIL_CIME
 
-FABLE_STATIC_ASSERT(sizeof(NUISystem::CIME) == 0x54);
+FABLE_STATIC_ASSERT_AT(94, sizeof(NUISystem::CIME) == 0x54);

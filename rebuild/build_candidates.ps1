@@ -190389,9 +190389,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004854df'
-        Module = 'CActionParamCCountedPointer'
-        Source = '00/48/CActionParamCCountedPointer_CActionParamCCountedPointer_004854df.cpp'
-        TestSource = '00/48/CActionParamCCountedPointer_CActionParamCCountedPointer_004854df_test.cpp'
+        Module = 'NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>'
+        Source = '00/48/NUISystemCActionParamCCountedPointer_CActionParamCCountedPointer_004854df.cpp'
+        TestSource = '00/48/NUISystemCActionParamCCountedPointer_CActionParamCCountedPointer_004854df_test.cpp'
         PassPattern = '004854df_TEST PASS'
     }
     [pscustomobject]@{
@@ -193318,9 +193318,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052c870'
-        Module = 'CChangingStateComponent'
-        Source = '00/52/CChangingStateComponent_IsPositionIndependent_0052c870.cpp'
-        TestSource = '00/52/CChangingStateComponent_IsPositionIndependent_0052c870_test.cpp'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_IsPositionIndependent_0052c870.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_IsPositionIndependent_0052c870_test.cpp'
         PassPattern = '0052c870_TEST PASS'
     }
     [pscustomobject]@{
@@ -273193,9 +273193,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052ecc0'
-        Module = 'NUISystem::CSprite'
-        Source = '00/52/NUISystemCSprite_vfunc123_0052ecc0.cpp'
-        TestSource = '00/52/NUISystemCSprite_vfunc123_0052ecc0_test.cpp'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetTargetRelativeRenderZoom_0052ecc0.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetTargetRelativeRenderZoom_0052ecc0_test.cpp'
         PassPattern = '0052ecc0_TEST PASS'
     }
     [pscustomobject]@{

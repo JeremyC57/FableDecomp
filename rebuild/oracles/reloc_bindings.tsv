@@ -1,5 +1,4 @@
 symbol	target	address
-?GetUIScale@CManager@NUISystem@@QBE?AUVec@@XZ	0041cf47	0052ecc0
 ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z	009ade10	00430096
 ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	00403c60	0040f0a0
 ?Sprintf@CWideString@@QAAXPBGZZ	0099ba70	004945b0
@@ -620,15 +619,11 @@ _FreeThing@4	00451b82	00453630
 @Symbol_dtor@4	0099b510	0047b880
 ??4MemberB@@QAEAAU0@ABU0@@Z	0047be50	0047c600
 ?Detach_0047c6a0@CTCCarryable@@QAEXI@Z	0047c6a0	0047c880
-??0CComponentList@@QAE@ABUSAllocator@@@Z	0042abaf	0047d6f2
-??1CComponentList@@QAE@XZ	0042abca	0047d6f2
 ??4CBaseTableDef@@QAEAAV0@ABV0@@Z	0099b720	00485125
 ?ReleaseData@CCountedPointerNUISystemCAction_0048524c@@QAEXXZ	004850f9	0048524c
 ??0CBase_00993b20@@QAE@XZ	00993b20	00485400
 ??_7CMemoryDataInputStream@@6B@	0123675c	00485400
 ?__copy_trivial@@YIPAXPBX0PAX@Z	00405ba0	00485468
-??0CCountedPointer@@QAE@ABU0@@Z	00428928	004854df
-??_7CActionParamCCountedPointer@@6B@	01236794	004854df
 ?Helper@CForwarder_004855f1@@QAEPAXPAXABUSScalarTag@@J@Z	0048528f	004855f1
 ?Helper@CForwarder_0048563d@@QAEPAXPAXABUSScalarTag@@J@Z	00485372	0048563d
 ??0value_type@CRetailList_node0x18@@QAE@ABU01@@Z	004853bd	00485a46
@@ -1372,7 +1367,6 @@ _FableHelp_515700@4	0042b467	00515700
 ?Erase@CRbTree_0052c4b0@@QAEXPAUSRbNodeBase@@@Z	00527860	0052c4b0
 ?resize@CMarkerRecordVector@@QAEXKABUSMarkerRecord@@@Z	0052c630	0052c6a0
 ?Update@CComponent@NUISystem@@QAEXM@Z	00531ec0	0052c7e0
-?IsIndependentByDefault@CChangingStateComponent@@QAE_NXZ	0052f1a0	0052c870
 ?IsIndependentByDefault40@CChangingStateComponent@@QAE_NXZ	0052f1b0	0052c8b0
 ??0CComponent@NUISystem@@QAE@J@Z	005334a0	0052cc50
 ??_7CChangingStateComponent@NUISystem@@6BCComponentRoot@1@@	01245de4	0052cc50
@@ -1410,10 +1404,6 @@ _FableHelp_515700@4	0042b467	00515700
 ??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryA_0053f120@@@	012468ac	0053f120
 ??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryB_0053f120@@@	012468a4	0053f120
 ?GetDataFromDef@CScrollingViewport@NUISystem@@QAEXXZ	0053ed40	0053f120
-??1CViewport@@UAE@XZ	0054eac0	0053fc30
-??_7CScrollingViewport@NUISystem@@6BCObserver@@@	012468ac	0053fc30
-??_7CScrollingViewport@NUISystem@@6BIViewportPrimary@@@	012468d4	0053fc30
-??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryB@@@	012468a4	0053fc30
 ??1CChangingStateComponent@NUISystem@@UAE@XZ	0052ccf0	00541870
 ??_7CDynamicList@NUISystem@@6BCComponentRoot@1@@	01246e44	00541870
 ??_7CDynamicList@NUISystem@@6BIComponentA@1@@	01246e20	00541870
@@ -1669,8 +1659,6 @@ _helper@16	005810da	00581266
 ?GetContextSensitiveType@@YI?AW4EContextSensitiveType@@J@Z	005d9b90	00581d8e
 ?ContextSensitivePreferredItems@CTCInventory@@2UCPreferredItemVector@@A	013b8b40	005829cd
 ?erase@CPreferredItemVector@@QAEPAUCPreferredItem@@PAU2@@Z	0059310d	005829cd
-??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z	0042abaf	005836d2
-??1CEntryList@@QAE@XZ	0042abca	005836d2
 ?IsAugmentation@@YI_NJ@Z	005d97f0	005849ea
 ?AssignThingPC@CTCInventory@@QAEXJKPAUCComponent@@@Z	00584b86	00584edc
 ?Close@CTCMapMenu@@QAEXXZ	005fad30	00584fe3
@@ -4177,10 +4165,6 @@ __imp__GetTickCount@0	0143fdfc	008f9e60
 ??$Transfer@W4EActionRegisteredType@@@CPersistContext@@QAEXAAW4EActionRegisteredType@@@Z	004586eb	004585fe
 ??$Transfer@W4EHitLocationCodelet@@@CPersistContext@@QAEXAAW4EHitLocationCodelet@@@Z	0045878f	004585fe
 ??0?$CRetailVector@J@@QAE@ABU0@@Z	00514160	0051a900
-??1CDeletionParents@NUISystem@@QAE@XZ	0042abca	00555390
-??_7CScrollableList@NUISystem@@6BCActionParam@1@@	0124a700	00555390
-??_7CScrollableList@NUISystem@@6BCObserver@1@@	0124a708	00555390
-??_7CScrollableList@NUISystem@@6BCUIInterface@1@@	0124a72c	00555390
 ?RemoveFromInterface@CAInputProcess@@QAEXXZ	00a0d2d0	00633420
 ?g_OverheadValueExpiryFrames@@3MA	013bae68	007b7a70
 ??_7CTCWillResponse@@6B@	01270534	007e3c70
@@ -8082,8 +8066,6 @@ __aullshr	00bfecf0	00779340
 ?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ	0057aad9	0057d8be
 ?SetRenownChange_00437920@CPlayerGui@@QAEXJ@Z	00437920	0057d8be
 ?UpgradeRenownLevel@CTCHeroStats@@QAEXXZ	0057cae9	0057d8be
-??_7CTCInventoryWeapons@@6BCBase@NHeroInformationScreens@@@	01253fe0	005c39f0
-??_7CTCInventoryWeapons@@6BCTCInventoryBase@NInventory@@@	01253ff4	005c39f0
 ?GetAbilityMoralityCostFactor@CTCInventoryAbilities@@QAEMW4EHeroAbility@@@Z	005edff7	005ee6bf
 N_004ab4f0	004ab4f0	006c5e90
 ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJ_N@Z	00683650	006c5e90
@@ -9960,7 +9942,6 @@ _g_FableImeSymbolColour_013B7CE4	013b7ce4	00405350
 _g_FableImeSymbolHeight_013B7CF0	013b7cf0	00405350
 _g_FableImeSymbolPlacement_013B7CF2	013b7cf2	00405350
 _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
-?ConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AUVec@@U3@@Z	0052e580	0052ecc0
 ?EditActive_013b8ab0@@3_NA	013b8ab0	005401b0
 ?Enable@CIME@NUISystem@@QAEX_N@Z	00404f40	005401b0
 ?SetEditBoxRegion@CIME@NUISystem@@QAEXJJJJ@Z	00404bb0	005401b0
@@ -10763,8 +10744,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?g_PendingLoadedGlyphs@NStreamingFontBankGlobals@@3PAUSPendingLoadedGlyph@1@A	013c82f8	0122a610
 ?Find@NUISystem@@YI?AUSSetIterator@1@U21@0ABQAVCComponent@1@ABUSInputIteratorTag@1@@Z	00534f20	00531b40
 ?Rebalance_for_erase@NUISystem@@YAPAUSSetNode@1@PAU21@AAPAU21@11@Z	0042a34e	00531b40
-??1CComponentList@NUISystem@@QAE@XZ	0042abca	00531e90
-??4CComponentList@NUISystem@@QAEAAU01@ABU01@@Z	00535800	00531e90
 ?insert@?$CRetailVector@U?$CCountedPointer@VCComponent@NUISystem@@@NUISystem@@@NUISystem@@QAEPAU?$CCountedPointer@VCComponent@NUISystem@@@2@PAU32@ABU32@@Z	00535b10	00533ba0
 ??0CLongList@@QAE@ABU0@@Z	00579a1c	00579c35
 ?Seek@PKCBufferedReader@@QAE_NK@Z	00c4aa40	00c4afd0
@@ -17083,7 +17062,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__copy@@YIPAV?$CCountedPointer@UCPredicateHolderElement@@@@PAV1@00ABUrandom_access_iterator_tag@@PAH@Z	0084f330	0084f570
 ??0CPhysicsForceModelBase@NCameraModes@@QAE@AAVCBase@1@ABVCGameCameraManager@@AAVCPhysicsState@1@@Z	00850410	00850580
 ?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ	004069e0	00851770
-?GetProfileName@CVirtualKeyboard_Methods@@QBE?AVCWideString@@XZ	00851890	00851920
 ?SetUpTransitionCamera@CScriptModuleTransitionBetweenPoints@NCameraModes@@QAEXABVC3DVector@@000JM@Z	00851ed0	008524c0
 ?GetHelperPointOrCentre@CTCGraphicAppearance@@QBE?AVC3DVector@@M@Z	004c1060	008531e0
 ?CCreatureActionBase_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z	00694d10	008546a0
@@ -27237,7 +27215,6 @@ __vsnwprintf	00bfed9a	0099bb80
 ??1SMember70@@QAE@XZ	0042b7d7	0041e641
 ??1SMember88@@QAE@XZ	0042ce63	0041e641
 ?ClearErrorMessage@CManager@NUISystem@@QAEXXZ	0041ce6a	0041e641
-??_7?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@6B@	01236794	00485524
 ?Initialise@CViewport@NUISystem@@UAEXXZ	0054e640	0053f810
 ??$_M_find@W4EHeroTrainableStatType@@@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@1@ABW4EHeroTrainableStatType@@@Z	00579114	005729d8
 ?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z	00427216	005729d8
@@ -30137,10 +30114,6 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ?GetAbilityPDef@CTCInventoryAbilities@@QBE?AV?$CDefPointer@$$CBVCHeroAbilityDef@@@@W4EHeroAbility@@@Z	005edfd9	0056fe7c
 ?DEFAULT_DEATH_RECOVERY_MARKER_NAME@?A0xde901311@@3VCCharString@@A	013b8b0c	0057a5a5
 ?GetDisplayName@CRegion@@QBEABVCCharString@@XZ	006bbf20	0057a989
-?BUY_ITEM_DESC_STRING@?A0xde29c088@@3VCCharString@@A	013b8b80	005ae6af
-?SELL_ITEM_DESC_STRING@?A0xde29c088@@3VCCharString@@A	013b8b7c	005ae6af
-?BUY_ITEM_DESC_STRING@?A0x7e030b97@@3VCCharString@@A	013b8b80	005ae9de
-?SELL_ITEM_DESC_STRING@?A0x5cd8cad6@@3VCCharString@@A	013b8b7c	005aeaee
 ?GetInventoryItemDef@CItem_Methods@@QBE?AV?$CIVCountedPointer@UCInventoryItemDef_Retail@@@@XZ	005bd82e	005bd8a0
 ?GetInventoryText@CTCInventoryBase@@QAE?AVCWideString@@K@Z	005bd273	005bdac5
 ?IsUsableBy@CTCWeapon@@QBE_NPAVCThing@@@Z	005dab10	005dabe0
@@ -34150,9 +34123,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ??9CCharString@@QBE_NABV0@@Z	0099e900	00595a06
 ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z	0041db1d	00595a06
 ?ResetToDefaultValueWithPrefix@CText@NUISystem@@QAEXABVCWideString@@@Z	0054f580	00595ad9
-?GFCharStringToInt@@YIJABVCCharString@@@Z	0099e7f0	00596550
-?GetScoreboardEditBox@CFrontEndManager@NUISystem@@IAE?AVCWideString@@ABVCCharString@@@Z	00596379	00596550
-?CanAcceptChanges@CRedefinerList@NUISystem@@SI_NXZ	00556540	005966f2
 ??0CVirtualKeyboard@@QAE@PAVCComponent@NUISystem@@@Z	00851700	00596917
 ?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z	00596763	00596917
 ?Initialize@CVirtualKeyboard@@QAEJXZ	00851770	00596917
@@ -35289,7 +35259,6 @@ _wcscpy	00bfed76	00999850
 ??0CUIState@NUISystem@@QAE@ABVCUIStateDef@1@@Z	0052f440	005331a0
 ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z	0041d21b	005331a0
 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	00428b10	005331a0
-?RecurseRefreshEntriesAmountsAndAvailabilitiesPC@CTCInventoryTrade@@AAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@PAVCList@2@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@5@@3@@Z	0059e6bd	0059e6bd
 ??_7CUIDef@NUISystem@@6B@	01259f8c	006301a0
 ?_M_erase@?$CRbTree@$01@@QAEXPAUCRbTreeNode@@@Z	0042fe07	006301a0
 ?_M_erase@?$CRbTree@$0A@@@QAEXPAUCRbTreeNode@@@Z	00630a10	006301a0
@@ -39754,3 +39723,25 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?LowerBound@CCreatureInterfaceMap@@QAEPAUCVectorMapEntry@@PAJ@Z	0040f020	00927c80
 ?ShopkeeperWatchRadius@@3MA	0138cb60	00927c80
 ?g_WanderAroundShopsChance@@3KA	0138ce34	009473e0
+??_7?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@6B@	01236794	004854df
+?IsPositionIndependent@CComponent@NUISystem@@UBE_NXZ	0052f1a0	0052c870
+??4?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAV01@ABV01@@Z	00535800	00531e90
+??_7CScrollingViewport@NUISystem@@6BCObserver@@@	012468ac	0053fc30
+??_7CScrollingViewport@NUISystem@@6BIViewportPrimary@@@	012468d4	0053fc30
+??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryB@@@	012468a4	0053fc30
+??_7CScrollableList@NUISystem@@6BCActionParam@1@@	0124a700	00555390
+??_7CScrollableList@NUISystem@@6BCObserver@1@@	0124a708	00555390
+??_7CScrollableList@NUISystem@@6BCUIInterface@1@@	0124a72c	00555390
+?GFCharStringToInt@@YIJABVCCharString@@@Z	0099e7f0	00596550
+?GetScoreboardEditBox@CFrontEndManager@NUISystem@@IAE?AVCWideString@@ABVCCharString@@@Z	00596379	00596550
+?CanAcceptChanges@CRedefinerList@NUISystem@@SI_NXZ	00556540	005966f2
+??0CAction@N_0042bed4@NUISystem@@QAE@ABU012@@Z	0042cd84	0059db82
+??0CAction@N_0042bed4@NUISystem@@QAE@XZ	0042bed4	0059db82
+?RecurseRefreshEntriesAmountsAndAvailabilitiesPC@CTCInventoryTrade@@AAE?AU?$pair@KK@std@@PAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@PAVCList@2@U?$less@PAVCComponent@NUISystem@@@std@@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@5@@3@@Z	0059e6bd	0059e6bd
+?BUY_ITEM_DESC_STRING@?A0xa9c0a853@@3VCCharString@@A	013b8b80	005ae6af
+?SELL_ITEM_DESC_STRING@?A0xa9c0a853@@3VCCharString@@A	013b8b7c	005ae6af
+?BUY_ITEM_DESC_STRING@?A0x09ea634c@@3VCCharString@@A	013b8b80	005ae9de
+?SELL_ITEM_DESC_STRING@?A0x2b31a20d@@3VCCharString@@A	013b8b7c	005aeaee
+??_7CTCInventoryWeapons@@6BCBase@NHeroInformationScreens@@@	01253fe0	005c39f0
+??_7CTCInventoryWeapons@@6BCTCInventoryBase@NInventory@@@	01253ff4	005c39f0
+?GetProfileName@CVirtualKeyboard_Methods@@QBE?AVCWideString@@XZ	00851890	00851920

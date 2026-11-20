@@ -3841,7 +3841,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0048548b	CIVCountedPointer_Release_0048548b	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048548b.cpp
 004854af	CIVCountedPointer_Release_004854af	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004854af.cpp
 004854c7	CIVCountedPointer_Release_004854c7	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004854c7.cpp
-004854df	CActionParamCCountedPointer	CActionParamCCountedPointer	__thiscall	undefined	2	CActionParamString *,CWideString *	0	yes	accepted									
+004854df	CActionParamCCountedPointer	NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>	__thiscall	undefined	2	CActionParamString *,CWideString *	0	yes	accepted									
 0048550c	CIVCountedPointer_Release_0048550c	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048550c.cpp
 00485524	`scalar_deleting_destructor'	NUISystem::CActionParamCCountedPointer<NUISystem::CComponent>	__thiscall	void *	2	CLandscapeBackgroundSubNodeSplitBranch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CLandscapeBackgroundSubNodeSplitBranch_scalardeletingdestructor_00485524.cpp
 004855a3	clear	std::_List_base<NUISystem::CList *, std::allocator<NUISystem::CList *>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CGuiControlTreePane_SortTreeRecursively_004855a3.cpp
@@ -9098,7 +9098,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052c730	Initialise	NUISystem::CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted									
 0052c780	vfunc_138	NUISystem::CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
 0052c7e0	Update	NUISystem::CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,float	1	yes	accepted									
-0052c870	IsPositionIndependent	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
+0052c870	IsPositionIndependent	NUISystem::CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
 0052c8b0	IsStateFlag40Independent	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
 0052c8f0	ChangedState	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052c920	ProcessChangeState	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted									
@@ -9187,7 +9187,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052ebb0	ChangeZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052ec20	ChangeZoomDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
 0052ec60	ChangeColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052ecc0	vfunc_123	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052ecc0	GetTargetRelativeRenderZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052ee00	GetTargetRenderPosition	CComponent	__thiscall	C2DVector	1	CComponent *	1	yes	accepted									
 0052eec0	GetTargetRelativeRenderPosition	_global	__thiscall	C2DVector	1	CComponent *	1	yes	accepted									
 0052efe0	GetType	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9777,7 +9777,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0054eac0	~CViewport	NUISystem::CViewport	__thiscall	void	1	CMesh *	1	yes	accepted									
 0054ec50	`vector deleting destructor'	NUISystem::CViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ec60	`vector deleting destructor'	NUISystem::CViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0054ec70	`scalar_deleting_destructor'	NUISystem::CViewport	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054ec70.cpp
+0054ec70	`scalar deleting destructor'	NUISystem::CViewport	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_0054ec70.cpp
 0054ec90	Initialise	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054eca0	Update	NUISystem::CText	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0054ecb0	CanScroll	NUISystem::CText	__thiscall	float	3	CText *,bool,C2DBoxF *	1	yes	accepted									
