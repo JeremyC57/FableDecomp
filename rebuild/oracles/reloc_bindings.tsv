@@ -39873,3 +39873,4 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?Initialise@CIndexBuffer@@QAEXKKJJJ@Z	00ac1f70	00bda360
 ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ	00bda150	00bda360
 ?_M_insert_overflow@?$CRetailVector@UCScratchPool@CGPUScratchBufferTextureManager@@@@QAEXPAUCScratchPool@CGPUScratchBufferTextureManager@@ABU23@ABU__true_type@@K_N@Z	00f380e0	00f370c0
+??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@AAVCTexture@@W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@6@Z	0041bf60	0041afa0

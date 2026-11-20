@@ -1,5 +1,5 @@
 address	grade	bytes	test	grades_used	notes
-0041afa0	OPEN	1455	-	1	baseline draft DIFFER(1014v1455) hunks=11 difflines=704
+0041afa0	RELOCATION_MATCH	1455	PASS(vland strict)	1	hand3c3 b9 [LANDED batches/2026-11-20_landing_hand3c3_b9]
 00439bb0	RELOCATION_MATCH	592	PASS(vland strict)	4	hand3c: FableWin 0x01A814F0 shape on shared headers (CPlayerGui MEMBERS+CTOR, CStatBar, CTCHeroStats BRIBE/GETMONEY, GetTC expanded); new opt-ins CPLAYERGUI_UPDATEMONEY, NPLAYERGUI_CSTATBAR_CHANGETEXTS; tail as three member-order stores [b15 LANDED]
 0052ee00	MATCH	192	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x0229BB60 shape on shared NUISystem_CComponent.h + FABLE_RETAIL_C2DVECTOR [b7 LANDED 4347aa3597]
 0057c4f1	RELOCATION_MATCH	1192	PASS(vland strict)	1	hand3c3 b7 [LANDED batches/2026-11-20_landing_hand3c3_b7]

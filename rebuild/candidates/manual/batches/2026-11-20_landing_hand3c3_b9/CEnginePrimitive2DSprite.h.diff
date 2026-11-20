@@ -1,38 +1,7 @@
---- /home/user/FableDecomp/rebuild/include/engine/C2DBoxF.h	2026-11-17 11:03:21.334915017 +0000
-+++ hdr/engine/C2DBoxF.h	2026-11-20 05:25:24.736836111 +0000
-@@ -82,6 +82,13 @@
-  C2DBoxF(const class C2DVector& centre,float radius);
-  class C2DBoxI ToC2DBoxI() const;                                       // 0x00A55A30
- #endif
-+#ifdef FABLE_RETAIL_C2DBOXF_MOVE
-+ // Nested opt-in (hand3c3, row 0x0041AFA0 NUISystem::CSprite::Draw): Ego_r.pdb / FableWin.pdb / Ego_d.pdb
-+ // ?Move@C2DBoxF@@QAEXABVC2DVector@@@Z (parameter `pos`; four statements in the Ego_d line table), an inline header function whose
-+ // out-of-line COMDAT copy is 0x0041A810 (landed; CMovie::Draw calls it) and which CSprite::Draw expands in place
-+ // (0x0041B141..0x0041B16F). Body follows the class.
-+ void Move(const class C2DVector& pos);
-+#endif
- #ifdef FABLE_RETAIL_C2DBOXF_SETTERS
-  // Nested opt-in (wfE9-9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): FableWin.pdb ?SetTLPos@C2DBoxF@@QAEXABVC2DVector@@@Z,
-  // ?SetWidth@C2DBoxF@@QAEXM@Z, ?SetHeight@C2DBoxF@@QAEXM@Z (FableWin 0x020DF960 / 0x020DF990 / 0x020DF9C0, emitted right after
-@@ -124,6 +131,16 @@
- inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
- #endif
- #endif
-+#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_MOVE)
-+#include "engine/C2DVector.h"
-+inline void C2DBoxF::Move(const C2DVector& pos)
-+{
-+    BRX += pos.X - TLX;
-+    BRY += pos.Y - TLY;
-+    TLX = pos.X;
-+    TLY = pos.Y;
-+}
-+#endif
- #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_SETTERS) && !defined(FABLE_RETAIL_C2DBOXF_SETTLPOS)
- #include "engine/C2DVector.h"
- inline void C2DBoxF::SetTLPos(const C2DVector& pos) { TLX = pos.X; TLY = pos.Y; }
---- /home/user/FableDecomp/rebuild/include/engine/CEnginePrimitive2DSprite.h	2026-11-17 11:03:21.374915019 +0000
-+++ hdr/engine/CEnginePrimitive2DSprite.h	2026-11-20 05:25:24.737101355 +0000
+diff --git a/rebuild/include/engine/CEnginePrimitive2DSprite.h b/rebuild/include/engine/CEnginePrimitive2DSprite.h
+index b45d937fa..ec47e012c 100644
+--- a/rebuild/include/engine/CEnginePrimitive2DSprite.h
++++ b/rebuild/include/engine/CEnginePrimitive2DSprite.h
 @@ -19,6 +19,9 @@
  #include "engine/CRGBColour.h"
  class CTexture;
@@ -43,7 +12,7 @@
  // Original values recovered from both raw donor TPI sets; see ORIGINAL_RENDER_ENUMS.json.
  enum EEngine2DLayer {
      ENGINE_2D_RANGE_SIZE=16,
-@@ -50,6 +53,7 @@
+@@ -50,6 +53,7 @@ enum EEngine2DLayer {
      ENGINE_2D_NULL_LAYER=-1,
      ENGINE_2D_LAYER_FIRST=0
  };
@@ -51,10 +20,11 @@
  enum EEnginePrimitiveBlendMode {
      ENGINE_PRIMITIVE_BLEND_SOLID=0,
      ENGINE_PRIMITIVE_BLEND_BOOLEAN_ALPHA=1,
-@@ -90,6 +94,15 @@
+@@ -89,6 +93,15 @@ public:
+     // two angles, four colour bytes, flags, &uv start, &uv end, 0x004399C4..0x00439A29). Needs ENUM_CTORS. Declaration only.
      CEnginePrimitive2DSprite(unsigned __int64,const C2DVector&,EEngine2DLayer,CTexture&,EEnginePrimitiveBlendMode,EEngineInterpolationSet,
          float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);   // 0x0043FA20
- #endif
++#endif
 +#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_BOX_CTOR
 +    // Retail opt-in (hand3c3, row 0x0041AFA0 NUISystem::CSprite::Draw): Ego_r.pdb / FableWin.pdb
 +    // ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@AAVCTexture@@W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@6@Z,
@@ -63,11 +33,10 @@
 +    // class. Needs ENUM_CTORS.
 +    CEnginePrimitive2DSprite(unsigned __int64,const C2DBoxF&,EEngine2DLayer,CTexture&,EEnginePrimitiveBlendMode,EEngineInterpolationSet,
 +        float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);   // 0x0041BF60
-+#endif
+ #endif
      // Retail opt-in (Codex 2026-11-09): both PDBs retain enum parameter types;
      // native0041beb0 takes a box,00493ac2 takes a position. Same16 arguments.
- #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_HIGHLIGHT_BODY
-@@ -161,6 +174,17 @@
+@@ -161,6 +174,19 @@ inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 id,co
       EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(true),Flags(flags),Texture(&texture),UVOffsetsStart(uv_start),
       UVOffsetsEnd(uv_end){}
  #endif
@@ -75,12 +44,14 @@
 +// The inline body of the texture / box ctor declared above (same member-init style as the other two bodies: ClipBox(box), bank and
 +// frame zero, ClipBoxIsPos false, Texture(&texture)). Compiled out of line from the CSprite::Draw row it grades RELOCATION_MATCH
 +// against 0x0041BF60 (167 bytes). Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR, FABLE_RETAIL_C2DBOXF_COPY, FABLE_RETAIL_CRGBCOLOUR.
-+inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 id,const C2DBoxF&box,EEngine2DLayer layer,CTexture&texture,
-+        EEnginePrimitiveBlendMode blend,EEngineInterpolationSet interpolation,float start_angle,float end_angle,
-+        unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long flags,const C2DVector&uv_start,const C2DVector&uv_end)
-+    :CEnginePrimitive((EEnginePrimitiveType)34,id,interpolation),ClipBox(box),Layer(layer),BankIndex(0),Frame(0),StartAngle(start_angle),
-+     EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(false),Flags(flags),Texture(&texture),UVOffsetsStart(uv_start),
-+     UVOffsetsEnd(uv_end){}
++// Parameter names as Ego_d.pdb lists them for this overload (the 195-byte debug copy, one line-table entry: header line 1191).
++inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 uid,const C2DBoxF&clip_box,EEngine2DLayer layer,CTexture&texture,
++        EEnginePrimitiveBlendMode blend_mode,EEngineInterpolationSet interp_set,float start_angle,float end_angle,
++        unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long sprite_2d_flags,const C2DVector&uv_offsets_start,
++        const C2DVector&uv_offsets_end)
++    :CEnginePrimitive((EEnginePrimitiveType)34,uid,interp_set),ClipBox(clip_box),Layer(layer),BankIndex(0),Frame(0),StartAngle(start_angle),
++     EndAngle(end_angle),BlendMode(blend_mode),Colour(r,g,b,alpha),ClipBoxIsPos(false),Flags(sprite_2d_flags),Texture(&texture),
++     UVOffsetsStart(uv_offsets_start),UVOffsetsEnd(uv_offsets_end){}
 +#endif
  #if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS) && defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_CTOR_BODY)
  // Retail opt-in (wfA2-5, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): the inline body of the box ctor declared above

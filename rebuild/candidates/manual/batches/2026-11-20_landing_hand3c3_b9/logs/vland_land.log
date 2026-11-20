@@ -5,3 +5,6 @@ addr       parity           behav  name
 
 WINS: 1
   0041afa0 RELOCATION_MATCH NUISystem::CSprite::?Draw@CSprite@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NUISystemCSprite_Draw_0041afa0

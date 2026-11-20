@@ -22,6 +22,9 @@
 //   (1404 bytes against 1455), and no /d2inlT window gives retail: T75 changes nothing, T80 / T88 expand the bank pointer's
 //   destructor instead (retail calls 0x004194B5) and still call Clear (1438), T100 expands both (1489). Hence the existing
 //   FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_FORCEINLINE_CLEAR opt-in (same text, forced).
+// The texture test is `PTexture.Get()`: Ego_d line 156 is 25 bytes, a call whose pointer result is tested (this text at /Od: 25;
+//   `!PTexture.IsNull()` is 28, with the bool widening), and FableWin's ui_sprite.obj is the object that carries
+//   ?Get@?$CCountedPointer@VCTexture@@@@QBEPAVCTexture@@XZ (and ??D, the `*PTexture` of the constructor argument). Same retail bytes.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CCHARSTRING
@@ -140,7 +143,7 @@ void CSprite::Draw(CIEngine& engine, CEnginePrimitiveHandle* p_handle, long laye
 
     EEngine2DLayer render_layer = (!is_independent && !is_layerindependent) ? CManager::GetInstance()->GetLayer(Layer + layer) : CManager::GetInstance()->GetLayer(Layer);
 
-    if (!PTexture.IsNull())
+    if (PTexture.Get())
     {
         CEnginePrimitive2DSprite primitive(0, clip_box, render_layer, *PTexture, ENGINE_PRIMITIVE_BLEND_ALPHA, ENGINE_INTERPOLATION_SET_DEFAULT, Angle, Angle,
                                            colour.A, colour.R, colour.G, colour.B, Sprite2DFlag, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));

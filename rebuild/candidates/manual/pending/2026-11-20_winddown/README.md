@@ -6,7 +6,6 @@ oracle with `$S/stage/audit_roll/tools/mkland.py`, or vland's own oracle path, b
 
 | folder | rows | state | what is left |
 |---|---|---|---|
-| hand3c3_b9 | 0x0041AFA0 NUISystem::CSprite::Draw | matched, strict PASS | audit; check the `#ifndef` guard round EEngine2DLayer in CEnginePrimitive2DSprite.h (device question) |
 | hand3c3_b10 | 0x0077D5B0 CTCHeroCentre::FrameUpdate (/GS) | matched (rev 2: same-TU GetAllLeafThings == 0x0077EC20) | audit |
 | hand3c3_b11 | 0x00B16410 COrbitState::Update (/d2inlT230) | matched | audit; new GFFloatAbs.h (sign-bit mask) and GFIsNonZero.h |
 | hand3c3_b12 | 0x0078D250 CTCBerserk::FrameUpdate | matched | audit: the CRGBColour INTERPOLATE_FORCEINLINE opt-in (device question); the CHitParameters COMDAT is 242 v 178 B. The new CThingFilter_CanBeHitByEpicSpell.h flags 7 rows |
