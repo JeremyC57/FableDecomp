@@ -47,15 +47,17 @@ class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260E
     void Construct();                                  // 0x006E7B60
     void Destroy();                                    // 0x006E7B80
 };
-struct CCutsceneCastMap {                              // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
-    void* _body[3];
-    void Construct();                                  // 0x00CDBF70
-    void Destroy();                                    // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -114,8 +116,8 @@ void NScript::CQ_NewOakValeIntroScript::PostAttackStuff()
     CScriptGameResourceObjectScriptedThingBase hero;
     hero.Construct();
     Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
-    CCutsceneCastMap cast;
-    cast.Construct();
+    {   // Inferred: scope of the cast map; retail calls ~map 0x00CDBFB0 after the movie handle and before the hero handle's dtor (the old by-hand order)
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["HERO"] = hero;
     CScriptGameResourceObjectMovieBase movie;
     movie.Construct();
@@ -127,7 +129,7 @@ void NScript::CQ_NewOakValeIntroScript::PostAttackStuff()
     Game->FixMovieSequenceCamera(false);
     game->PauseAllNonScriptedEntities(false);
     movie.Destroy();
-    cast.Destroy();
+    }
     hero.Destroy();
     }
     Game->SetVillageLimbo(Game->GetThingWithScriptName("V_OakVale"), false);

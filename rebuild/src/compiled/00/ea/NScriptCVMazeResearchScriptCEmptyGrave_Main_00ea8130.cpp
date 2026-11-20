@@ -59,15 +59,17 @@ class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
     virtual ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
-struct CCutsceneFlagMap { void* _body[3]; };            // map<CCharString, bool>
-struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
-    void* _body[3];
-    CCutsceneCastMap();                                 // 0x00CDBF70
-    ~CCutsceneCastMap();                                // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -92,7 +94,7 @@ public:
     bool             BookRead;                          // +0x49 (PDB +0x5d)
     unsigned char    _pad4a[2];
     CScriptThing     Sword;                             // +0x4c (PDB +0x60)
-    CCutsceneFlagMap cs_flags;                          // +0x58 (PDB +0x6c)
+    std::map<CCharString, bool> cs_flags;                          // +0x58 (PDB +0x6c)
     void UnLimboSword();                                // 0x00EA85E0
     FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { AddSpawnedFunction(func, region); }
 public:
@@ -144,7 +146,7 @@ void NScript::CV_MazeResearchScript::CEmptyGrave::Main()
                 {
                     CScriptGameResourceObjectScriptedThingBase hero;
                     Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
-                    CCutsceneCastMap cast;
+                    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
                     cast["HERO"] = hero;
                     CScriptGameResourceObjectMovieBase movie;
                     Game->StartMovieSequence("", movie);

@@ -219,6 +219,13 @@ public:
 private:
     void _M_empty_initialize(){this->_M_header._M_data->_M_color=false;this->_M_header._M_data->_M_parent=0;this->_M_header._M_data->_M_left=this->_M_header._M_data;this->_M_header._M_data->_M_right=this->_M_header._M_data;}
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+    // NF178b opt-in (2026-11-20): the tree destructor declared only. VC7.1 instantiates ~_Rb_tree (and through it clear / _M_erase)
+    // from the map constructor and emits them as pick-any COMDATs even where nothing calls them (only .debug$F refers); the 0x00CD3699
+    // clear copy that makes is 51 bytes, retail's /Os body 41. Users: the cut-scene cast-map rows that already take
+    // FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY (their leaf calls ~map 0x00CDBFB0; no ~_Rb_tree use is inlined in them).
+    ~_Rb_tree();
+#else
 #ifdef FABLE_RETAIL_STLP_TREE_CTOR_DTOR_OUTOFLINE
 #ifdef _MSC_VER
     __declspec(noinline)
@@ -226,6 +233,7 @@ public:
     ~_Rb_tree(){clear();}
 #else
     ~_Rb_tree(){clear();}
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN
     FABLE_FORCEINLINE   // with map::begin below
@@ -602,6 +610,10 @@ public:
 #endif
 #endif
 };
+#ifndef FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+// (NF178b opt-in, 2026-11-20: FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY leaves _M_erase declared but not defined in the TU, so the
+// TU references the owner row's COMDAT instead of emitting its own pick-any copy. Users: the 34 cut-scene cast-map rows, whose
+// map<CCharString, CScriptGameResourceObjectScriptedThingBase> _M_erase is row 0x00CD344A; retail calls it out of line there.)
 #ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
 // Original STLport4.6.2 _tree.c lines633..646, actual reference-returning child accessors.
 template<class K,class V,class KeyOfValue,class Compare,class A>
@@ -625,6 +637,7 @@ void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
         x=y;
     }
 }
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_MCOPY_BODY
 // NF61 opt-in: STLport 4.6.2 stl/_tree.c _M_copy (structural copy; x and p must be non-null). Exceptions are off in retail
@@ -900,7 +913,13 @@ public:
     // `bool empty() const { return _M_t.empty(); }` (the node count +4 tested in place).
     bool empty() const { return _M_t.empty(); }
 #endif
+#ifdef FABLE_RETAIL_STLP_MAP_CLEAR_DECL_ONLY
+    // NF178 opt-in (2026-11-20, row 0x00E3E720 CV_BordelloScript::PlayCutscene): retail calls the map<CCharString, CCharString>
+    // clear COMDAT 0x009AACE0 out of line there (`lea ecx,[csargs] ; call`), as landed 0x00D7C470 binds it. Declaration only.
+    void clear();
+#else
     void clear(){_M_t.clear();}
+#endif
     iterator find(const K& key){return _M_t.find(key);}
     pair<iterator,bool> insert(const value_type& value){return _M_t.insert_unique(value);}
     iterator insert(iterator position,const value_type& value){return _M_t.insert_unique(position,value);}

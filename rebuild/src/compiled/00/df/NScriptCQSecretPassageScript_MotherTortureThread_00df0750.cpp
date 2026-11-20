@@ -122,15 +122,17 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
     // implicit destructor; out of line: 0x006E7B80
 };
 
-struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
-    void* _body[3];
-    CCutsceneCastMap();                                 // 0x00CDBF70
-    ~CCutsceneCastMap();                                // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
@@ -176,7 +178,7 @@ void CQ_SecretPassageScript::MotherTortureThread()
     CScriptGameResourceObjectScriptedThingBase motherHandle;
     GSI->StartScriptingEntity(GSI->GetHero(), hero, (EScriptAIPriority)4);
     GSI->StartScriptingEntity(mother, motherHandle, (EScriptAIPriority)4);
-    CCutsceneCastMap cast;
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["Hero"] = hero;
     cast["Mother"] = motherHandle;
     CScriptGameResourceObjectMovieBase movie;

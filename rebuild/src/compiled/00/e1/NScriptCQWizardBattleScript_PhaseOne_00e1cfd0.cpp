@@ -14,6 +14,18 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #include "fable_compiler.h"
+// vector<CScriptThing> and the cast map: the shared STLport 4.6 containers (stlport/fable_containers.h / fable_map.h, retail
+//   branch): ~vector<CScriptThing> forced inline (FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE, the old local model's VEC_DTOR) and its
+//   erase(first, last) 0x008AC9D0 out of line (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE), as the old local model.
+#define FABLE_RETAIL_STLP_VECTOR_DTOR_FORCEINLINE
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -47,34 +59,6 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
     ~CScriptThing() {}
 };
-namespace std {
-template<class T> inline void _Destroy(T* first, T* last)
-{
-    for (; first != last; ++first)
-        first->~T();
-}
-template<class T> class allocator { };
-template<class T, class A = allocator<T> > class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-#ifndef VEC_DTOR
-#define VEC_DTOR FABLE_FORCEINLINE
-#endif
-    VEC_DTOR ~vector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-    T* erase(T* first, T* last);                        // 0x008AC9D0 for CScriptThing
-    void clear() { erase(_M_start, _M_finish); }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T& operator[](unsigned int n) { return _M_start[n]; }
-};
-}
 class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 0x10 bytes
     void* _body[4];
     void Construct();                                  // 0x007E72A0 (out-of-line ctor)
@@ -86,15 +70,10 @@ class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260E
     void Construct();                                  // 0x006E7B60
     void Destroy();                                    // 0x006E7B80
 };
-struct CCutsceneCastMap {                              // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
-    void* _body[3];
-    void Construct();                                  // 0x00CDBF70
-    void Destroy();                                    // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -173,8 +152,8 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
     CScriptGameResourceObjectScriptedThingBase hero;
     hero.Construct();
     Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
-    CCutsceneCastMap cast;
-    cast.Construct();
+    {   // Inferred: scope of the cast map; retail calls ~map 0x00CDBFB0 after the movie handle and before the hero handle's dtor (the old by-hand order)
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["Hero"] = hero;
     CScriptGameResourceObjectMovieBase movie;
     movie.Construct();
@@ -184,7 +163,7 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
     RunCutsceneMacro("CS_WIZARD_BATTLE_INTRO", cast, 0, 0, false, true);
     game->PauseAllNonScriptedEntities(false);
     movie.Destroy();
-    cast.Destroy();
+    }
     hero.Destroy();
     }
     Maze = Game->GetThingWithScriptName("HKC_Maze");

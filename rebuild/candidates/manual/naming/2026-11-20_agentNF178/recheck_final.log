@@ -1,0 +1,252 @@
+addr       parity           behav  name
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ce15e0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce15e0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00ce15e0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00ce15e0   RELOCATION_MATCH PASS   NScript::CPersonalScript_GlobalThingsScript::CTargetForKey::Main
+00d22880   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d22880   WARN SHARED_HEADER_AVAILABLE CQ_BreakSiegeScript (engine/CQ_BreakSiegeScript.h)
+00d22880   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d22880   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d22880   RELOCATION_MATCH PASS   NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::Main
+00d29db0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00d29db0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d29db0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d29db0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d29db0   WARN SHARED_HEADER_AVAILABLE CQ_EndGameScript (engine/CQ_EndGameScript.h)
+00d29db0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d29db0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d29db0   RELOCATION_MATCH PASS   NScript::CQ_EndGameScript::CMK_GHC_HERO3::Main
+00d2a180   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00d2a180   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d2a180   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d2a180   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d2a180   WARN SHARED_HEADER_AVAILABLE CQ_EndGameScript (engine/CQ_EndGameScript.h)
+00d2a180   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d2a180   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d2a180   RELOCATION_MATCH PASS   NScript::CQ_EndGameScript::CMazeJournal::Main
+00d44cb0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00d44cb0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d44cb0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingScript::RunArrivalCutscene
+00d496f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d496f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d496f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d496f0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d496f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d496f0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingScript::RunSaveXPCutscene
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d49a20   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d49a20   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d49a20   RELOCATION_MATCH PASS   CQ_GuildTrainingScript::RunSaveXPCutscene2
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d49d50   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d49d50   RELOCATION_MATCH PASS   CQ_GuildTrainingScript::RunCeremonyCutscene
+00d50c60   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d50c60   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d50c60   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+00d55e90   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d55e90   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d55e90   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d55e90   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d55e90   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00d55e90   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingMeleeScript (engine/CQ_GuildTrainingMeleeScript.h)
+00d55e90   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d55e90   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingMeleeScript::Main
+00da0230   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00da0230   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00da0230   WARN SHARED_HEADER_AVAILABLE CQ_MinionCampScript (engine/CQ_MinionCampScript.h)
+00da0230   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::DoMission
+00da9c70   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CQ_MinionClifftopChaseScript (engine/CQ_MinionClifftopChaseScript.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00da9c70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00da9c70   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard::Main
+00daa260   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00daa260   WARN SHARED_HEADER_AVAILABLE CQ_MinionClifftopChaseScript (engine/CQ_MinionClifftopChaseScript.h)
+00daa260   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator::Main
+00daa700   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00daa700   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00daa700   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00daa700   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00daa700   WARN SHARED_HEADER_AVAILABLE CQ_MinionClifftopChaseScript (engine/CQ_MinionClifftopChaseScript.h)
+00daa700   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner::Main
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CQ_NewOakValeIntroScript (engine/CQ_NewOakValeIntroScript.h)
+00dbeb20   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00dbeb20   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00dbeb20   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::PostAttackStuff
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dbf2d0   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript (engine/CQ_OakValeBanditRaidScript.h)
+00dbf2d0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00dbf2d0   RELOCATION_MATCH PASS   NScript::CQ_OakValeBanditRaidScript::Main
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CQ_OpeningGraveyardSecretPassageScript (engine/CQ_OpeningGraveyardSecretPassageScript.h)
+00dc8c80   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00dc8c80   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase'
+00dc8c80   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dc8c80   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00dc8c80   RELOCATION_MATCH PASS   NScript::CQ_OpeningGraveyardSecretPassageScript::CheckDoor
+00dd1af0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00dd1af0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dd1af0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dd1af0   WARN SHARED_HEADER_AVAILABLE CQ_OrchardFarmRaidScript (engine/CQ_OrchardFarmRaidScript.h)
+00dd1af0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00dd1af0   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::DoMultiplierCutscene
+00df0750   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00df0750   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00df0750   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00df0750   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00df0750   RELOCATION_MATCH PASS   NScript::CQ_SecretPassageScript::MotherTortureThread
+00df0b70   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00df0b70   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00df0b70   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00df0b70   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00df0b70   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00df0b70   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00df0b70   RELOCATION_MATCH PASS   CQ_SecretPassageScript::PrisonEscape
+00df4be0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00df4be0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00df4be0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00df4be0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00df4be0   WARN SHARED_HEADER_AVAILABLE CIsThingConscious (engine/CIsThingConscious.h)
+00df4be0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00df4be0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00df4be0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00df4be0   RELOCATION_MATCH PASS   NScript::CQ_TentacleKrakenBossFightScript::CTheKraken::Main
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript (engine/CQ_TraderEscortScript.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e0ad40   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00e0ad40   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase'
+00e0ad40   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00e0ad40   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e0ad40   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::CRockTrollTrigger::Main
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CQ_WizardBattleScript (engine/CQ_WizardBattleScript.h)
+00e1cfd0   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00e1cfd0   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase'
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e1cfd0   RELOCATION_MATCH PASS   NScript::CQ_WizardBattleScript::PhaseOne
+00e8b020   WARN SHARED_HEADER_AVAILABLE CV_FisticuffsClubScript (engine/CV_FisticuffsClubScript.h)
+00e8b020   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e8b020   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::CRingFighter::Main
+00e96660   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e96660   WARN RELOC_NAME: ?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z -> 00e96c30 labelled 'NScript::CV_HauntedHouseScript::SendBodyguardsToTheRightPlace'
+00e96660   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e96660   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00e96660   RELOCATION_MATCH PASS   CM_HeroInsideHouse::Main
+00e9a270   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e9a270   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e9a270   RELOCATION_MATCH PASS   CV_HeroDuelScript::WatchForHeroEnteringCave
+00e9aeb0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00e9aeb0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e9aeb0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e9aeb0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e9aeb0   RELOCATION_MATCH PASS   NScript::CV_HeroDuelScript::SecondFleeCutscene
+00ea8130   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ea8130   RELOCATION_MATCH PASS   NScript::CV_MazeResearchScript::CEmptyGrave::Main
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ee76f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00ee76f0   RELOCATION_MATCH PASS   NScript::CV_TrophyDealerScript::CTrophyDealerInCave::Main
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ee7a20   RELOCATION_MATCH PASS   NScript::CV_TrophyDealerScript::CDemonDoorFace::Main
+
+WINS: 30
+  00ce15e0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CTargetForKey::?Main@CTargetForKey@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00d22880 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::?Main@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d29db0 RELOCATION_MATCH NScript::CQ_EndGameScript::CMK_GHC_HERO3::?Main@CMK_GHC_HERO3@CQ_EndGameScript@NScript@@EAEXXZ
+  00d2a180 RELOCATION_MATCH NScript::CQ_EndGameScript::CMazeJournal::?Main@CMazeJournal@CQ_EndGameScript@NScript@@EAEXXZ
+  00d44cb0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?RunArrivalCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  00d496f0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?RunSaveXPCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  00d49a20 RELOCATION_MATCH CQ_GuildTrainingScript::?RunSaveXPCutscene2@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  00d49d50 RELOCATION_MATCH CQ_GuildTrainingScript::?RunCeremonyCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+  00d50c60 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+  00d55e90 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::?Main@CQ_GuildTrainingMeleeScript@NScript@@UAEXXZ
+  00da0230 RELOCATION_MATCH NScript::CQ_MinionCampScript::?DoMission@CQ_MinionCampScript@NScript@@QAEXXZ
+  00da9c70 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard::?Main@CMinionWarningGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00daa260 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator::?Main@CMinionFieldGenerator@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00daa700 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner::?Main@CMinionTrollSummoner@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00dbeb20 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::PostAttackStuff
+  00dbf2d0 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::Main
+  00dc8c80 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CheckDoor
+  00dd1af0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::DoMultiplierCutscene
+  00df0750 RELOCATION_MATCH NScript::CQ_SecretPassageScript::MotherTortureThread
+  00df0b70 RELOCATION_MATCH CQ_SecretPassageScript::PrisonEscape
+  00df4be0 RELOCATION_MATCH NScript::CQ_TentacleKrakenBossFightScript::CTheKraken::?Main@CTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ
+  00e0ad40 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CRockTrollTrigger::?Main@CRockTrollTrigger@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e1cfd0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::PhaseOne
+  00e8b020 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CRingFighter::?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e96660 RELOCATION_MATCH CM_HeroInsideHouse::?Main@CM_HeroInsideHouse@
+  00e9a270 RELOCATION_MATCH CV_HeroDuelScript::?WatchForHeroEnteringCave@CV_HeroDuelScript@@QAEXXZ
+  00e9aeb0 RELOCATION_MATCH NScript::CV_HeroDuelScript::?SecondFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ
+  00ea8130 RELOCATION_MATCH NScript::CV_MazeResearchScript::CEmptyGrave::?Main@CEmptyGrave@CV_MazeResearchScript@NScript@@EAEXXZ
+  00ee76f0 RELOCATION_MATCH NScript::CV_TrophyDealerScript::CTrophyDealerInCave::?Main@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@EAEXXZ
+  00ee7a20 RELOCATION_MATCH NScript::CV_TrophyDealerScript::CDemonDoorFace::?Main@CDemonDoorFace@CV_TrophyDealerScript@NScript@@EAEXXZ

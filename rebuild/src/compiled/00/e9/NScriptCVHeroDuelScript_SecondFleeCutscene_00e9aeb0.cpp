@@ -1,4 +1,6 @@
 // CV_HeroDuelScript::SecondFleeCutscene() -- hide the health bar, drop Thunder's minimap marker, take Thunder and then the hero under scripted control, play CS_GIBBETHILL_HERODUEL_FLEE with both cast inside a paused movie sequence, then restore Thunder's cutscene behaviour and flag that he entered the cave first
+// Leaf: ?SecondFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ
+// (Leaf line added by NF178, 2026-11-20: the symbol the HEAD object defines; the row had none.)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9AEB0, 0x387 bytes, plain `ret`.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CBaseObject 0x0099A380 / ~ 0x0099A430, the handle's IsValid 0x00CD23B9 /
@@ -73,15 +75,17 @@ struct CHeldMovie {                                     // holder: its forceinli
     FABLE_FORCEINLINE ~CHeldMovie() {}
 };
 
-struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
-    void* _body[3];
-    CCutsceneCastMap();                                 // 0x00CDBF70
-    ~CCutsceneCastMap();                                // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -132,7 +136,7 @@ void NScript::CV_HeroDuelScript::SecondFleeCutscene()
         if (IsActiveThreadTerminating())
             return;
         {
-            CCutsceneCastMap cast;
+            std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
             cast["HERO"] = heroHandle;
             cast["THUNDER"] = thunderHandle;
             CHeldMovie movie;

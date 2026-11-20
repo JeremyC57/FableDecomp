@@ -1,0 +1,19 @@
+rechecked 60 of 981
+rechecked 120 of 981
+rechecked 180 of 981
+rechecked 240 of 981
+rechecked 300 of 981
+rechecked 360 of 981
+rechecked 420 of 981
+rechecked 480 of 981
+rechecked 540 of 981
+rechecked 600 of 981
+rechecked 660 of 981
+rechecked 720 of 981
+rechecked 780 of 981
+rechecked 840 of 981
+rechecked 900 of 981
+rechecked 960 of 981
+rechecked 981 of 981
+recheck done
+--- bad

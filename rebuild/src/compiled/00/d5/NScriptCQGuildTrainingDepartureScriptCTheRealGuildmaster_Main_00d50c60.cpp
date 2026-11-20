@@ -114,17 +114,17 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
     CScriptGameResourceObjectMovieBase() { }
     // implicit destructor; out-of-line copies: ctor 0x006E7B60, dtor 0x006E7B80
 };
-struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
-    void*         _M_header;
-    unsigned long _M_node_count;
-    unsigned char _M_key_compare;
-    CCutsceneCastMap();                                // 0x00CDBF70
-    ~CCutsceneCastMap();                               // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -310,7 +310,7 @@ void NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main()
             if (IsActiveThreadTerminating()) return;
         }
         if (IsActiveThreadTerminating()) return;
-        CCutsceneCastMap cast;
+        std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
         cast["GM"] = scripted;
         cast["HERO"] = hero;
         CScriptGameResourceObjectMovieBase movie;

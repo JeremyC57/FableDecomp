@@ -1,4 +1,6 @@
 // CQ_GuildTrainingScript::RunCeremonyCutscene() -- once the fresco dome is loaded, create Whisper and the guildmaster at their ceremony markers, take Whisper, the guildmaster and the hero under scripted control (Whisper in the hero faction), cast them as WHIS / GM / HERO and play CS_GUILD_CEREMONY in a paused movie sequence with the camera fixed, then remove Whisper and the guildmaster
+// Leaf: ?RunCeremonyCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+// (Leaf line added by NF178, 2026-11-20: the symbol the HEAD object defines; the row had none.)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D49D50, length 1304 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, CBaseObject ctor
@@ -40,15 +42,17 @@ class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vta
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
     virtual ~CScriptGameResourceObjectMovieBase();      // 0x006E7B80
 };
-struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
-    void* _body[3];
-    CCutsceneCastMap();                                 // 0x00CDBF70
-    ~CCutsceneCastMap();                                // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -107,7 +111,7 @@ void CQ_GuildTrainingScript::RunCeremonyCutscene()
     }
     if (IsActiveThreadTerminating())
         return;
-    CCutsceneCastMap cast;
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["HERO"] = heroHandle;
     cast["WHIS"] = whisperHandle;
     cast["GM"] = guildmasterHandle;

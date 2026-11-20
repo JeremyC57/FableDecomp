@@ -1,4 +1,6 @@
 // CQ_GuildTrainingScript::RunArrivalCutscene() -- set the evening, create the rival hero at the maze marker, take him and the hero under scripted control, cast them as "MAZE" and "HERO", play CS_GUILD_ARRIVE in a paused movie sequence with the camera fixed, fade out without the region-change fade or region text, then remove the rival
+// Leaf: ?RunArrivalCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+// (Leaf line added by NF178, 2026-11-20: the symbol the HEAD object defines; the row had none.)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: only Game (+0x40, right after the 0x40-byte retail CScriptBase) is touched; no rebuild/include/engine header exists for the class.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D44CB0, length 944 bytes; called from 0x00D3BE0B.
@@ -52,15 +54,17 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                    // 0x006E7AB0
 };
-struct CCutsceneCastMap {                                   // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
-    void* _body[3];
-    CCutsceneCastMap();                                     // 0x00CDBF70
-    ~CCutsceneCastMap();                                    // 0x00CDBFB0
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   no-argument ctor 0x00CDBF70, ~map 0x00CDBFB0 and operator[] 0x00CD3D2E (the last two declared only, as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -106,7 +110,7 @@ void CQ_GuildTrainingScript::RunArrivalCutscene()
         }
         if (IsActiveThreadTerminating())
             return;
-        CCutsceneCastMap cast;
+        std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
         cast["MAZE"] = maze;
         cast["HERO"] = hero;
         CScriptGameResourceObjectMovieBase movie;

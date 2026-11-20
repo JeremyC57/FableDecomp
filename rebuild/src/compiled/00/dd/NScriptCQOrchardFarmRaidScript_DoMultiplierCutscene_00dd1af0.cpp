@@ -58,35 +58,18 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
     // implicit destructor
 };
 
-struct _Rb_tree_node_base {
-    char                _M_color;
-    _Rb_tree_node_base* _M_parent;
-    _Rb_tree_node_base* _M_left;
-    _Rb_tree_node_base* _M_right;
-};
 
-struct _Rb_tree_base {
-    _Rb_tree_node_base* _M_header;
-    FABLE_FORCEINLINE _Rb_tree_base() : _M_header(0) { _M_header = (_Rb_tree_node_base*)malloc(0x24); }
-};
-
-struct CCutsceneCastMap : _Rb_tree_base {               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
-    unsigned long       _M_node_count;
-    unsigned char       _M_key_compare;
-    FABLE_FORCEINLINE CCutsceneCastMap() : _M_node_count(0)
-    {
-        _M_header->_M_color = 0;
-        _M_header->_M_parent = 0;
-        _M_header->_M_left = _M_header;
-        _M_header->_M_right = _M_header;
-    }
-    ~CCutsceneCastMap();                                // 0x00CDBFB0
-    void _M_erase(_Rb_tree_node_base* root);            // 0x00CD344A
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
-struct CCutsceneFlagMap;
-struct CCutsceneArgMap;
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
+// Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
+//   ctor expanded here (as the old local model), ~map 0x00CDBFB0 and operator[] 0x00CD3D2E declared only (as 0x00D29880).
+#define FABLE_RETAIL_STLP_MAP
+// The tree destructor, clear 0x00CD3699 and _M_erase 0x00CD344A are other rows' COMDATs: declaration only here (NF178b).
+#define FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY
+#define FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_DTOR_DECL_ONLY
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
+void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>& cast, std::map<CCharString, bool>* flags,
+                                 std::map<CCharString, CCharString>* args, bool a5, bool a6);   // 0x00CBFB7D
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETutorialCategory { TUTORIAL_CATEGORY_COMBAT_MULTIPLIER = 9 };
@@ -118,7 +101,7 @@ void CQ_OrchardFarmRaidScript::DoMultiplierCutscene()
 {
     CScriptGameResourceObjectScriptedThingBase hero;
     GSI->StartScriptingEntity(GSI->GetHero(), hero, (EScriptAIPriority)4);
-    CCutsceneCastMap cast;
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["HERO"] = hero;
     CScriptGameResourceObjectMovieBase movie;
     {

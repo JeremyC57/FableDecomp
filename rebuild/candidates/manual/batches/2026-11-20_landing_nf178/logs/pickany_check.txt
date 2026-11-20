@@ -1,0 +1,2 @@
+MISSING 00dc8c80 008ac5a0 ??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV?$allocator@VCScriptThing@@@1@@Z owner leaf None True False
+MISSING 00df0b70 008ac5a0 ??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV?$allocator@VCScriptThing@@@1@@Z owner leaf None True False
