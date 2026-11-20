@@ -401529,6 +401529,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT150'
         PassPattern = '00b94540_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e9e420'
+        Module = 'NScript::CV_IntroductionToTrophiesScript::CBriarRose'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Main_00e9e420.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Main_00e9e420_test.cpp'
+        PassPattern = '00e9e420_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
