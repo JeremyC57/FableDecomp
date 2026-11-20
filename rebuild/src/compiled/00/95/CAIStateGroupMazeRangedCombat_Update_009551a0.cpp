@@ -16,6 +16,9 @@
 //   opt-in FABLE_RETAIL_CAISTATEGROUP_MAZERANGEDCOMBAT on the quarantine CAIStateGroup_MazeBase retail mode, as landed 0x00954F40): own leaf
 //   now the PDB ?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ (Ego_r.pdb 0x00979BB0 + FableWin.pdb 0x02BF6400) and the CanRun 0x00954220
 //   stand-in now the PDB ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ (Ego_r.pdb 0x009789D0 + FableWin.pdb 0x02BF6110).
+//   NF148 (2026-11-20, q11785, one vtable): also defines FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE / _INITIALISE, so this object's
+//   ??_7CCreatureAction_ThrowShotObject@@6B@ COMDAT holds the retail overrides at slots 11 / 12 (0x00956960 Clone, 0x008B66D0 Initialise; were
+//   the inherited CCombatActionBase::Clone / CCreatureActionBase::Initialise), identical to the copies 0x009566C0 and 0x00956960 emit.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CTHING
@@ -39,6 +42,8 @@
 #define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
 #define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION
 #define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS
+#define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE
+#define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_INITIALISE
 #define FABLE_RETAIL_CAISTATEGROUP_MAZERANGEDCOMBAT
 #include "fable_string.h"
 #include "engine/fable_ai_action_enums.h"

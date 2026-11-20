@@ -20,8 +20,22 @@ class CCreatureAction_ThrowShotObject : public CCombatActionBase {
 public:
     CCreatureAction_ThrowShotObject(CThingCreatureBase& creature, CThing& thing)
         : CCombatActionBase(creature, thing, 150, GetSoundPair(creature, "SWORD_SWING")) { }   // 0x009566C0
+#ifdef FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE
+    // NF148 opt-in (2026-11-20, q11785): Ego_r.pdb 0x0097B4B0 + FableWin.pdb 0x02BF6900
+    // ?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ (public virtual const, over the protected
+    // CCombatActionBase::Clone), retail 0x00956960 = vftable 0x012944D4 slot 11 (+0x2C). Declaration only; no layout change.
+    // One vtable: every row that emits ??_7CCreatureAction_ThrowShotObject@@6B@ from the _CLASS opt-in defines _CLONE and _INITIALISE
+    // together (0x009551A0, 0x009566C0, 0x00956960), so its COMDAT copies are identical.
+    virtual CCreatureActionBase* Clone() const;                           // 0x00956960
+#endif
+#ifdef FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_INITIALISE
+    // NF148 opt-in (2026-11-20, q11785): Ego_r.pdb 0x008EF1D0 + FableWin.pdb 0x029FFB90
+    // ?Initialise@CCreatureAction_ThrowShotObject@@UAEXXZ, retail 0x008B66D0 (the THROW_OBJECT animation, then the base Initialise)
+    // = vftable 0x012944D4 slot 12 (+0x30). Declaration only; no layout change.
+    virtual void Initialise();                                            // 0x008B66D0
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ThrowShotObject) == 0x114);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCreatureAction_ThrowShotObject) == 0x114);
 #else
 #pragma pack(push, 1)
 class CCreatureAction_ThrowShotObject {

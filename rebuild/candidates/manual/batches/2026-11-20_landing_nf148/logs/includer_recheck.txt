@@ -1,0 +1,4 @@
+00bdc510	00bdc510   DIFFER(1044v1131) PASS   CEngineLandscapeMap::UpdateForeground
+00be7d70	00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load
+00be8920	00be8920   DIFFER(328v365)  PASS   CLandscapeBackgroundPatch::LoadCompressed
+good 166 bad 3

@@ -1,10 +1,13 @@
+// Leaf: ?LoadForegroundPatch@CEngineLandscapePatch@@QAE?AW4LS_LOADING_STATUS@@V?$CForegroundCountedPointer@VCBankFileAsyncEntry@@@@@Z
+// NF148 (2026-11-20, q11817; coordinator decision, advisor rules, owner delegated): the row no longer defines
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (its strong local copy clashed, LNK2005, with 0x00994930 renamed to that PDB leaf: Ego_r.pdb
+//   0x00AFCA20 + FableWin.pdb 0x030849C0). Retail calls the constructor out of line here (call 0x00994930 at 0x00BF3C2E and 0x00BF3D69),
+//   so the declaration in candidates/landscape_patch_load_foreground_compiled.h is all this TU sees. The Read8 / Read16 / Read32 helpers
+//   stay: retail expands the stream's inline read (with CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 on overflow), they are in no
+//   name source and no other row defines them. Grade unchanged in kind: DIFFER, an old candidates-model row (porting it onto
+//   engine/CMemoryDataInputStream.h is authoring).
 #include <new>
 #include "candidates/landscape_patch_load_foreground_compiled.h"
-
-CMemoryDataInputStream::CMemoryDataInputStream(const void* data, unsigned long size)
-    : Data(static_cast<const fable_u8*>(data)), Size(size), Position(0)
-{
-}
 
 bool CMemoryDataInputStream::Read8(fable_u8& value)
 {

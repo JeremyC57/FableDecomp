@@ -160,6 +160,12 @@ protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& c
     // retail at 0x00857F30 (the first branch above declares the same constructor). Declaration only; no layout change.
 public: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long priority, const CSoundPair& sound);   // 0x00857F30
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+    // NF148 opt-in (2026-11-20, q11785, row 0x00956960 CCreatureAction_ThrowShotObject::Clone): Ego_r.pdb 0x00545FD0 + FableWin.pdb
+    // 0x01D919A0 ??0CCombatActionBase@@QAE@ABV0@@Z, out of line in retail at 0x0062F3B0 (the derived classes' implicit copy constructors
+    // call it, then store their own vftable). The first branch above declares it too. Declaration only; no layout change.
+public: CCombatActionBase(const CCombatActionBase& other);               // 0x0062F3B0
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;

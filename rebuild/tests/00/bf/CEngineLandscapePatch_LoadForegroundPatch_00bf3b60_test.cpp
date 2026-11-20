@@ -24,6 +24,13 @@ static void ReleaseBank(void*) { ++g_bankReleases; }
 bool CBankFileAsyncData::IsFinished() { return g_finished; }
 const fable_u8* CBankFileAsyncData::GetData() { return g_compressed; }
 
+// NF148 (q11817): the row calls this constructor out of line (retail 0x00994930, a separate row), so the test supplies it on the
+// candidates model the row compiles against.
+CMemoryDataInputStream::CMemoryDataInputStream(const void* data, unsigned long size)
+    : Data(static_cast<const fable_u8*>(data)), Size(size), Position(0)
+{
+}
+
 CForegroundCountedPointer<CBankFileAsyncData> CBankFileAsyncEntry::BeginReadDataAutoAlloc(
     unsigned long offset,
     unsigned long size)

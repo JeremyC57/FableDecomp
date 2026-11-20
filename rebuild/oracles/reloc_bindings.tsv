@@ -39595,7 +39595,6 @@ _c_dfDIMouse2	012addfc	00ab5710
 ?SetAsRunningAwayFromCombat@CTCStealth@@QAEXXZ	007470e0	0093d800
 ?GetRegionAtPosition@CThing@@QAEJABVC3DVector@@@Z	00661d20	0093db10
 ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z	0093d800	0093db10
-?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ	00954220	009551a0
 ??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z	00957170	00956fe0
 ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	009793d0	00978fd0
 ??$GetPFirstThingInRoughArea@VCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@$$CBVCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@PAPBVCThingAICreature@@@Z	00987430	009863e0
@@ -39727,7 +39726,6 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ??0CModeDragonFlying@@QAE@PAVCThingCreatureBase@@ABUCC3DVectorVector@@ABVC3DVector@@MUCCountedActionPointer@@@Z	008e1150	00950c30
 ??0CModeSleepBed@NCreatureMode@@QAE@PAVCThing@@ABVCCharString@@1@Z	0084b7c0	00969cb0
 ??0CCreatureAction_BriarRoseInvulnerableTeleport@@QAE@AAVCThingCreatureBase@@0@Z	008e8c50	008e8830
-??_7CCreatureAction_ThrowShotObject@@6B@	012944d4	009566c0
 ??3CMemoryAllocator@@KIXPAX@Z	009f1f90	009a1660
 ?GetNoAllocations@CMemoryAllocator@@QAEKXZ	009f1f10	009a1660
 ?g_pStreamingFontCacheByteTable@@3PAEA	013bda38	009a1660
@@ -39825,3 +39823,5 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?MakeComment@CFH_Prisoner@CQ_FireHeartScript@NScript@@AAEXXZ	00d3ace0	00d3a4a0
 ?MakeRoundStartComment@CFH_Prisoner@CQ_FireHeartScript@NScript@@AAEXXZ	00d3a9b0	00d3a4a0
 ?UpdateHistory@CQ_FireHeartScript@NScript@@QAEX_N@Z	00d3a920	00d3a4a0
+??_7CCreatureAction_ThrowShotObject@@6B@	012944d4	009551a0
+?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ	00954220	009551a0

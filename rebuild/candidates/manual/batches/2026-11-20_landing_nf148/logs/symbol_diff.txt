@@ -1,0 +1,9 @@
+009551a0 new: 0
+009566c0 new: 1
+    ?ReferenceThrowShotObjectCtor@?A0x5028553c@@YAXPAXAAVCThingCreatureBase@@AAVCThing@@@Z
+00956960 new: 2
+    ??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z
+    ?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ
+00994930 new: 1
+    ??0CMemoryDataInputStream@@QAE@PBXK@Z TABLE:00994930
+00bf3b60 new: 0

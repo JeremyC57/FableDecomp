@@ -1,0 +1,8 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00994930	CMemoryDataInputStream	CMemoryDataInputStream	??0CMemoryDataInputStream@@QAE@PBXK@Z	CMemoryDataInputStream::CMemoryDataInputStream	??0CMemoryDataInputStream@@QAE@PBEJ@Z	Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0 ??0CMemoryDataInputStream@@QAE@PBXK@Z; engine/CMemoryDataInputStream.h declares (const void*, unsigned long); NF131 / NF141 draft regraded RELOCATION_MATCH on the 2026-11-20 tree; 33 of 36 exe-scan referencers bind PBXK
+0x00956960	CCreatureAction_ThrowShotObject	Clone	?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ThrowShotObject::Clone	?Clone@CCreatureAction_ThrowShotObject@@QAEPAVCCombatActionBase@@XZ	Ego_r.pdb 0x0097B4B0 + FableWin.pdb 0x02BF6900; retail vftable 0x012944D4 slot 11 (+0x2C) = 0x00956960; body new(0x114) + CCombatActionBase copy ctor 0x0062F3B0 + vftable store; no landed row references 0x00956960 (exe scan), the three vtable emitters bind the new spelling
+# Section 2
+0x009551A0	?Clone@CCombatActionBase@@MBEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ	0x00956960
+0x009551A0	?Initialise@CCreatureActionBase@@UAEXXZ	?Initialise@CCreatureAction_ThrowShotObject@@UAEXXZ	0x008B66D0
+0x009566C0	?Clone@CCombatActionBase@@MBEPAVCCreatureActionBase@@XZ	?Clone@CCreatureAction_ThrowShotObject@@UBEPAVCCreatureActionBase@@XZ	0x00956960
+0x009566C0	?Initialise@CCreatureActionBase@@UAEXXZ	?Initialise@CCreatureAction_ThrowShotObject@@UAEXXZ	0x008B66D0

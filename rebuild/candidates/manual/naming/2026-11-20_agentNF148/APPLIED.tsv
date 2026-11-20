@@ -1,0 +1,3 @@
+entry	address	status	binders_respelled	note
+q11817	0x00994930	done	0	0x00BF3B60 one-definition re-port (ctor definition removed) + 0x00994930 self leaf PBXK; link proof new 0x00994930 + new 0x00BF3B60 + tree 0x009FF590: no LNK2005 (control with HEAD 0x00BF3B60: LNK2005, exit 145)
+q11785	0x012944D4	done	2	one override pair (Clone slot 11, Initialise slot 12, both PDBs + the retail vftable) defined by 0x009551A0, 0x009566C0, 0x00956960: the three vtable COMDATs are byte- and relocation-identical; all three RELOCATION_MATCH + PASS (work/b2.log)

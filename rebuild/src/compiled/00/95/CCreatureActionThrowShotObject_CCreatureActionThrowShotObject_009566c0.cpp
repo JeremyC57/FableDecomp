@@ -12,6 +12,8 @@
 //   inside 0x009551A0); the row's local CCharString / CSoundPair / CCombatActionBase / CCreatureAction_ThrowShotObject models (with a
 //   placeholder virtual v00) are gone, so this object's ??_7CCreatureAction_ThrowShotObject@@6B@ COMDAT is the header class's, as in
 //   0x009551A0.
+//   NF148 (2026-11-20, q11785, one vtable): also defines FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE / _INITIALISE (slots 11 / 12 =
+//   0x00956960 / 0x008B66D0), so this vtable COMDAT is identical to the 0x009551A0 and 0x00956960 copies.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CTHING
@@ -26,6 +28,8 @@
 #define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
 #define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
 #define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLASS
+#define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE
+#define FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_INITIALISE
 #include <new>
 #include "fable_string.h"
 #include "engine/fable_ai_action_enums.h"
