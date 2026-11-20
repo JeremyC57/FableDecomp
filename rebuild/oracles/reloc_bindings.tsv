@@ -22354,7 +22354,8 @@ _icomp	00ca1bc0	00ca1be0
 ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7410	00d9f6c0
 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	00d44cb0
 ?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z	007e73f0	00d9f6c0
-?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00e1d690_read_buf	00c00d50	00c01090
+?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00e1d690
+_read_buf	00c00d50	00c01090
 ?g_soundLock@@3VPKCCriticalSection@@A	0143bafc	00c27890
 _CODA_IsSourcePlaying@4	00c35ca0	00c27890
 ?FindDeviceInterfaceCallback@CDSoundAccelerationQuery@@SGHPAUDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA@@PAX@Z	00c5daa0	00c5db40
