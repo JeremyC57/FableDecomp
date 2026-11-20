@@ -17,6 +17,9 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// Naming (NF162, 2026-11-20, q6380): the callee 0x00CB7E50 respelled in place in the row's existing local CScriptBase model from the
+//   invented Add to ?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z (Ego_r.pdb name set; the landed self
+//   row 0x00CB7E50 and 305 of the 333 landed referencers bind it).
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
@@ -79,8 +82,8 @@ class CScriptBase { public:                                        // retail 0x4
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
-    void Add(CSpawnedFuncBase* func, const CCharString& name);   // 0x00CB7E50
-    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { Add(func, region); }
+    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& name);   // 0x00CB7E50
+    FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { AddSpawnedFunction(func, region); }
 };
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* Game;                             // +0x40

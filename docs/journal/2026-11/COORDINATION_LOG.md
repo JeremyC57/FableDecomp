@@ -513,3 +513,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 A: landed nf161 (19 rows): memory allocator / weather / nav quad tree names; NF161 and NF158 open entries unclaimed for re-picking.
 2026-11-20 B->A: Landed p25 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest (batches/2026-11-20_landing_p25_0055f710). Headers: none.
 2026-11-20 B->A: Landed p25 0x00E97070 NScript::CV_HeroDollsScript::CBS_Teacher::Main (batches/2026-11-20_landing_p25_00e97070). Headers: engine/CV_HeroDollsScript.h . Newly flagged: 15 rows (newly_flagged_rows.tsv).
+2026-11-20 A: landed nf162 (25 rows): NScript quest script names CQ_/CV_ A-M; LNK2005 9 -> 4 against HEAD.

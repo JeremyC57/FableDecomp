@@ -1,0 +1,77 @@
+addr       parity           behav  name
+00d3ab00   RELOCATION_MATCH PASS   CFH_Prisoner::GetEndCutscene
+00d3abe0   RELOCATION_MATCH PASS   GetEndSpeech
+00d8e990   RELOCATION_MATCH PASS   CQ_HobbeCaveScript::WatchForTermination
+00e2bac0   WARN STANDIN_LEAF ?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ (catalog CV_AmbushScamScript::AssignMoralityEtcForEvilEnding; names another function)
+00e2bac0   RELOCATION_MATCH PASS   CV_AmbushScamScript::AssignMoralityEtcForEvilEnding
+00e2bb10   RELOCATION_MATCH PASS   CV_AmbushScamScript::AssignMoralityEtcForEvilEnding
+00e38f60   RELOCATION_MATCH PASS   _unattributed::TransferOut_CTransferableLong_009e2560
+00e3e6b0   RELOCATION_MATCH PASS   NScript::CV_BordelloScript::GetHeroStatusTextTag
+00e69f90   WARN STANDIN_LEAF ?WatchForQuestInfoDisplayConditions@CV_ChapelOfEvilScript@NScript@@QAEXXZ (catalog NScript::CV_ChapelOfEvilScript::WatchForQuestInfoDisplay; names another function)
+00e69f90   RELOCATION_MATCH PASS   NScript::CV_ChapelOfEvilScript::WatchForQuestInfoDisplay
+00e6a0b0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::WatchForInsideChapel
+00e6a340   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::WatchForWeaponUnsheathed
+00e6a7f0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::DoMission
+00e6a9e0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::EndMission
+00e7f410   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e7f410   WARN RELOC_NAME: ?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ -> 00e7fd50 labelled 'FishingCompetition_Initialize'
+00e7f410   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker::Main
+00e7f730   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e7f730   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::GenerateCompetitionEntry
+00e7f7d0   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::GetNextPrizeCategoryWeight
+00e80f10   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e80f10   WARN RELOC_NAME: ?CheckForRod@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAE_NXZ -> 00e81a60 labelled 'CFishCompOrganiser::CheckForFish'
+00e80f10   WARN RELOC_NAME: ?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ -> 00e7fd50 labelled 'FishingCompetition_Initialize'
+00e80f10   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::CFishCompOrganiser::AskForFish
+00e9e270   RELOCATION_MATCH PASS   CPersistContext::Transfer<EOpinionCurrent>
+00e9e400   RELOCATION_MATCH PASS   _unattributed::TransferOut_CTransferableLong_009e2560
+00ea7460   RELOCATION_MATCH PASS   CV_LostTraderScript::WatchForQuestFailureState
+00ea8130   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ea8130   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ea8130   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00ea8130   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00ea8130   RELOCATION_MATCH PASS   NScript::CV_MazeResearchScript::CEmptyGrave::Main
+00eb6730   RELOCATION_MATCH PASS   _unattributed::TransferOut_CTransferableLong_009e2560
+00eb68e0   RELOCATION_MATCH PASS   _unattributed::TransferOut_CTransferableLong_009e2560
+00edc450   WARN STANDIN_LEAF ?DoMission@CV_TempleOfLightScript@NScript@@QAEXXZ (catalog CV_ChapelOfEvilScript::DoMission; names another function)
+00edc450   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::DoMission
+00f058d0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f058d0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::WatchForRegionChange
+00f081e0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00f081e0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00f081e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFunc1 (engine/CSpawnedFunc1.h)
+00f081e0   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00f081e0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f081e0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00f081e0   WARN RELOC_NAME: ??1CScriptThingParam@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00f081e0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::BanditHireSetup
+
+WINS: 25
+  00d3ab00 RELOCATION_MATCH CFH_Prisoner::?GetEndCutscene@CFH_Prisoner@CQ_FireHeartScript@NScript@@ABEXAAVCCharString@@@Z
+  00d3abe0 RELOCATION_MATCH CFH_Prisoner::?GetEndSpeech@CFH_Prisoner@CQ_FireHeartScript@NScript@@ABEXAAVCCharString@@@Z
+  00d8e990 RELOCATION_MATCH CQ_HobbeCaveScript::?WatchForTermination@CQ_HobbeCaveScript@NScript@@QAEXXZ
+  00e2bac0 RELOCATION_MATCH CV_AmbushScamScript::?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ
+  00e2bb10 RELOCATION_MATCH CV_AmbushScamScript::?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@NScript@@QAEXXZ
+  00e38f60 RELOCATION_MATCH _unattributed::?TransferOut@?$CPersistContext_TransferableComponent@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00e3e6b0 RELOCATION_MATCH NScript::CV_BordelloScript::GetHeroStatusTextTag
+  00e69f90 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForQuestInfoDisplayConditions@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00e6a0b0 RELOCATION_MATCH CV_ChapelOfEvilScript::?WatchForInsideChapel@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00e6a340 RELOCATION_MATCH CV_ChapelOfEvilScript::?WatchForWeaponUnsheathed@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00e6a7f0 RELOCATION_MATCH CV_ChapelOfEvilScript::?DoMission@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00e6a9e0 RELOCATION_MATCH CV_ChapelOfEvilScript::?EndMission@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00e7f410 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker::?Main@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@EAEXXZ
+  00e7f730 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::GenerateCompetitionEntry
+  00e7f7d0 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::?GetNextPrizeCategoryWeight@CV_FishingCompetitionScript@NScript@@QAEMXZ
+  00e80f10 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::?AskForFish@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXXZ
+  00e9e270 RELOCATION_MATCH CPersistContext::??$Transfer@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@CPersistContext@@QAEXPBDAAW4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@ABW4123@@Z
+  00e9e400 RELOCATION_MATCH _unattributed::?TransferOut@?$CPersistContext_TransferableComponent@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00ea7460 RELOCATION_MATCH CV_LostTraderScript::?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z
+  00ea8130 RELOCATION_MATCH NScript::CV_MazeResearchScript::CEmptyGrave::?Main@CEmptyGrave@CV_MazeResearchScript@NScript@@EAEXXZ
+  00eb6730 RELOCATION_MATCH _unattributed::?TransferOut@?$CPersistContext_TransferableComponent@W4ESheriffState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00eb68e0 RELOCATION_MATCH _unattributed::?TransferOut@?$CPersistContext_TransferableComponent@W4EAssassinState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00edc450 RELOCATION_MATCH CV_ChapelOfEvilScript::?DoMission@CV_TempleOfLightScript@NScript@@QAEXXZ
+  00f058d0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?WatchForRegionChange@CQ_AmbushTradersScript@NScript@@QAEXXZ
+  00f081e0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?BanditHireSetup@CQ_AmbushTradersScript@NScript@@QAEJABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z

@@ -79,17 +79,21 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+#include "engine/CScriptBase.h"                         // CScriptBase::AddSpawnedFunction 0x00CB7E50
+// Naming (NF162, 2026-11-20, q6380): the row-local CV_MazeResearchScript (no engine header exists for it) now sits on the shared
+//   CScriptBase (retail 0x40 bytes; narrow rule: a header-less local class may keep its token on a shared base), so the spawn binds
+//   ?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z (Ego_r.pdb; the self row 0x00CB7E50 and 305 landed
+//   referencers) instead of the invented ?AddSpawnedFunction@CV_MazeResearchScript@NScript@@...
 namespace NScript {
-class CV_MazeResearchScript {
+class CV_MazeResearchScript : public CScriptBase {
 public:
-    unsigned char    _pad[0x48];
+    unsigned char    _pad40[8];                         // +0x40 Game / MasterScriptData (unused here)
     bool             SwordTaken;                        // +0x48 (PDB +0x5c)
     bool             BookRead;                          // +0x49 (PDB +0x5d)
     unsigned char    _pad4a[2];
     CScriptThing     Sword;                             // +0x4c (PDB +0x60)
     CCutsceneFlagMap cs_flags;                          // +0x58 (PDB +0x6c)
     void UnLimboSword();                                // 0x00EA85E0
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     FABLE_FORCEINLINE void SpawnFunction(CSpawnedFuncBase* func, const CCharString& region = CCharString("")) { AddSpawnedFunction(func, region); }
 public:
     class CEmptyGrave;               // the entity class below (naming wave 35)

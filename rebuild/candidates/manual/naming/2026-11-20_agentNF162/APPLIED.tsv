@@ -1,0 +1,27 @@
+entry	address	status	binders_respelled	note
+q11710	0x00D3AB00	done	0	self row renamed onto the shared header opt-in that Account B added since; sole binder 0x00D3A4A0 already binds it
+q11711	0x00D3ABE0	done	0	self row renamed onto the shared header opt-in (signature per both PDBs); sole binder 0x00D3A4A0 already binds it
+q11750	0x00E9E400	done	0	self row renamed to the FableWin.pdb template instance on the shared headers; no landed row references the address (vtable dword only)
+q11752	0x00E38F60	done	0	self row renamed to the FableWin.pdb template instance on the shared headers; no landed row references the address (vtable dword only)
+q11753	0x00EB6730	done	0	self row renamed to the FableWin.pdb template instance on the shared headers; no landed row references the address (vtable dword only)
+q11754	0x00EB68E0	done	0	self row renamed to the FableWin.pdb template instance on the shared headers; no landed row references the address (vtable dword only)
+q11758	0x00E9E270	done	0	self row renamed to the PDB spelling on the shared headers; its only binder 0x00E9E110 already binds it (existing self-vs-binder split removed); family with 0x00E9E400 (vtable COMDAT)
+q4636	0x00E3E320	done	1	self row already NScript-spelled; 5 of 6 landed referencers already bound the PDB spelling; 0x00E3E6B0 ported onto engine/CV_BordelloScript.h
+q4751	0x00E2BAC0	done	0	self row renamed to Good@NScript and ported onto the header; sole binder 0x00E2B090 already binds it
+q4752	0x00E2BB10	done	0	self row renamed into NScript and ported onto the header; sole binder 0x00E2B090 already binds it
+q6159	0x00E7F7D0	done	1	self leaf renamed; sole binder 0x00E7F730 respelled; address ends on one spelling
+q6160	0x00E7FD50	done	2	both landed referencers (0x00E7F410, 0x00E80F10) respelled together; self is a parked row (no landed row): NAME_FIXES
+q6267	0x00D8E990	done	0	self row renamed into NScript on the shared header; sole binder 0x00D8DD10 already binds it
+q6268	0x00E69F90	done	0	self row renamed on the shared header; sole binder 0x00E693F0 already binds it
+q6270	0x00E6A0B0	done	0	self row renamed into NScript on the shared header; sole binder 0x00E693F0 already binds it
+q6271	0x00E6A340	done	0	self row renamed into NScript on the shared header; sole binder 0x00E693F0 already binds it
+q6272	0x00E6A7F0	done	0	self row renamed into NScript on the shared header; sole binder 0x00E693F0 already binds it
+q6273	0x00E6A9E0	done	1	self row renamed into NScript on the shared header; its only binder 0x00E6A7F0 respelled (same hand-back)
+q6274	0x00E6AF20	blocked	0	rows left: 0x00E6AAC0 (binder: binds the stand-in ?WatchForAcolyteHit@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z; port blocked after 3 forms, see STATUS) and 0x00E6AF20 (self rename waits for its only binder, no-split rule)
+q6275	0x00EDC450	done	0	self row renamed to the TempleOfLight class on the shared header; sole binder 0x00EDB190 already binds it; its stand-in callees respelled (section 2)
+q6380	0x00CB7E50	blocked	2	binders respelled: 0x00F081E0 (in-place Add -> AddSpawnedFunction on its local CScriptBase model), 0x00EA8130 (header-less local CV_MazeResearchScript re-based on the shared CScriptBase). Census: 305 of 333 landed referencers already bind the PDB spelling. Rows left (blocked/port, stand-in Add on a local model of a header class, CSpawnedFunc1 two-view shape): 0x00D167C0 0x00D169E0 0x00D16BB0 0x00D16DC0 0x00D9D4F0 0x00DA7D30 0x00E1F3E0 0x00E38F80 0x00E6AAC0 0x00E9DAC0 0x00EDC720 0x00F083A0 0x00F08A30 0x00F08C30 0x00F09640. 5 rows SRC_FAIL at HEAD (CSpawnedFunc1.h missing fable_compiler.h include): 0x00D16460 0x00E0DAA0 0x00E76920 0x00F09420 0x00F09530 (their sources spell it right). No address rename: each port only shrinks the existing split
+q6385	0x00E7FD50	rejected	0	RefreshCompetition in no PDB; superseded by q6160 (GenerateSignText)
+q6501	0x00F05A10	done	1	the one wrong binder 0x00F058D0 respelled (0x00F0D630 / 0x00F0F680 already bind the NScript spelling); 0x00F05A10 has no landed self row
+q6516	0x00EA7460	done	0	self row renamed into NScript on the shared header; sole binder 0x00EA59E0 already binds it
+q6526	0x00E337C0	done-already	0	self row and both landed referencers (0x00E33720, 0x00E33EA0) already on ?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ; reloc_bindings has only that spelling
+q6531	0x00E1FEB0	done-already	0	self row and both landed referencers (0x00E1FCF0, 0x00E1FEF0) already on ?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ; catalog CQR_EscortTraderScript::ResetTraderRandomSpeechTime; reloc_bindings has only that spelling

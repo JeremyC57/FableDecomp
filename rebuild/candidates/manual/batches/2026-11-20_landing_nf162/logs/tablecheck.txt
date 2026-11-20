@@ -1,0 +1,6 @@
+GREW 012f7ebc 3 -> 4 ??_7?$CSpawnedFunc1@VCQ_AmbushTradersScript@NScript@@UCScriptThingParam@@@@6B@ row 00f081e0 SAME
+GREW 00f07b80 1 -> 2 ?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingParam@@@Z row 00f081e0 SAME
+GREW 00e7f7d0 0 -> 1 ?GetNextPrizeCategoryWeight@CV_FishingCompetitionScript@NScript@@QAEMXZ row 00e7f730 DIFF before=['?GetPrizeThreshold@CV_FishingCompetitionScript@NScript@@QAEMXZ']
+GREW 00edc640 0 -> 1 ?EndMission@CV_TempleOfLightScript@NScript@@QAEXXZ row 00edc450 DIFF before=['?EndMission_00edc640@CV_ChapelOfEvilScript@@QAEXXZ']
+GREW 00edc5a0 0 -> 1 ?WatchForLeaving@CV_TempleOfLightScript@NScript@@QAEXXZ row 00edc450 DIFF before=['?WatchForLeaving_00edc5a0@CV_ChapelOfEvilScript@@QAEXXZ']
+shrank [('00cb7e50', 21, 18), ('00f05a10', 2, 1), ('012e8094', 2, 1), ('00e7f730', 2, 1), ('00e7fd50', 2, 1), ('00e7fb80', 2, 1), ('00e7f7f0', 2, 1), ('012ee458', 2, 1), ('00ea85e0', 2, 1)]

@@ -17,6 +17,9 @@
 //   (CV_FishingCompetitionScript, retail = PDB - 0x14), PMasterData +0x18.
 // Naming wave 35: identity reg 00e7e447 "BountyHuntActivationChecker" in 00e7e370; Alloc 00e7ec90; vtable 012ea5e8 slot 1; PDB ?Main@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBountyHuntActivationChecker::Main (wave3/labels_alloc.tsv); PDB ?Main@CBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CBountyHuntActivationChecker@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_FishingCompetitionScript moved into NScript); same bytes.
+// Naming (NF162, 2026-11-20, q6160): the callee 0x00E7FD50 respelled in place from the descriptive RefreshCompetition (in no PDB) to
+//   ?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ (Ego_r.pdb + FableWin.pdb name sets; the body builds the sign text
+//   "TEXT_QST_B15_FISH_SIGN_INFO_NORMAL" / "..._HEROWON" and hands it to SetReadableObjectText (slot 713) on the "FishCompSign" thing).
 #include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
@@ -61,7 +64,7 @@ public:
     long AttackDayCount;                               // +0x58
     long HitCount;                                     // +0x5c
     void GenerateCompetitionEntry();                   // 0x00E7F730
-    void RefreshCompetition();                         // 0x00E7FD50
+    void GenerateSignText();                         // 0x00E7FD50
 public:
     class CBountyHuntActivationChecker; // the entity class below (naming wave 35)
 };
@@ -102,12 +105,12 @@ void NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker::Main()
             if (!ParentClass->CompetitionWon) {
                 if (IsActiveThreadTerminating())
                     return;
-                ParentClass->RefreshCompetition();
+                ParentClass->GenerateSignText();
             }
         } else if (ParentClass->CompetitionWon) {
             if (IsActiveThreadTerminating())
                 return;
-            ParentClass->RefreshCompetition();
+            ParentClass->GenerateSignText();
             return;
         } else if (!ParentClass->CompetitionRunning) {
             if (IsActiveThreadTerminating())
@@ -117,14 +120,14 @@ void NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker::Main()
             if (IsActiveThreadTerminating())
                 return;
             Game->CreateCreature("CREATURE_FISHERMAN", Game->GetThingWithScriptName("MK_FC_ORG").GetPos(), "FishCompOrganiser", false);
-            ParentClass->RefreshCompetition();
+            ParentClass->GenerateSignText();
             ParentClass->OrganiserRanAway = false;
             ParentClass->CommentIRanAway = true;
         } else {
             if (IsActiveThreadTerminating())
                 return;
             ParentClass->GenerateCompetitionEntry();
-            ParentClass->RefreshCompetition();
+            ParentClass->GenerateSignText();
         }
     }
     if (ParentClass->AttackCounter > 0) {

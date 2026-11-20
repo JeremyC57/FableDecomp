@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q6385	0x00E7FD50	?RefreshCompetition@CV_FishingCompetitionScript@NScript@@QAEXXZ	RefreshCompetition is in no PDB name set (Ego_r / FableWin / Ego_d: 0 hits; the 2026-11-05x label claimed Ego_r wrongly). Both PDBs name the function at this place GenerateSignText and the retail body builds the fish-competition sign text (q6160); superseded by q6160, applied instead

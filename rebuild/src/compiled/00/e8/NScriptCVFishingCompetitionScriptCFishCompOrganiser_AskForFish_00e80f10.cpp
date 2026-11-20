@@ -8,7 +8,7 @@
 //   copy 0x0099EC30 / operator= 0x0099EFB0 / operator=(const char*) 0x0099EFE0; operator+(CCharString, CCharString) 0x0099F570 and
 //   operator+(const char*, CCharString) 0x0099F690; GFIntToCharString 0x0099F830; map<CCharString, CCharString>::operator[] 0x009AC700;
 //   CBasicString<char>::Compare 0x00411570 (the inline `prizeName == "OBJECT_FISHING_ROD_UPGRADED"`, null arm as `repe cmpsb`);
-//   CV_FishingCompetitionScript::RefreshCompetition 0x00E7FD50; interface slots 7 NewScriptFrame, 39 MsgIsQuestionAnsweredYesOrNo,
+//   CV_FishingCompetitionScript::GenerateSignText 0x00E7FD50; interface slots 7 NewScriptFrame, 39 MsgIsQuestionAnsweredYesOrNo,
 //   114 GiveHeroYesNoQuestion, 296 SetQuestCardObjective, 655 GetActiveQuestName, 728 UpdateOnlineScore_FishingCompo,
 //   729 UpdateScore_FishingCompetition (ghidra_out/cgsi_slots_aligned.tsv); pGlobalScriptDef 0x0143E90C (FishPrizeDefNames +0x5ac,
 //   FishPrizeWeights +0x5d0, engine/CScriptDef.h).
@@ -20,6 +20,9 @@
 //   GENERIC cut-scene tail; the CheckForRod test is written negated (retail falls through into the no-rod arm); the same-size test
 //   is `weight == BiggestFish` (BiggestFish loaded first for fucompp); the prize band loop is VC's four-way unroll of
 //   `for (i = FishingPrizes; i >= 0 && prize == 0; --i)`.
+// Naming (NF162, 2026-11-20, q6160): the callee 0x00E7FD50 respelled in place from the descriptive RefreshCompetition (in no PDB) to
+//   ?GenerateSignText@CV_FishingCompetitionScript@NScript@@QAEXXZ (Ego_r.pdb + FableWin.pdb name sets; the body builds the sign text
+//   "TEXT_QST_B15_FISH_SIGN_INFO_NORMAL" / "..._HEROWON" and hands it to SetReadableObjectText (slot 713) on the "FishCompSign" thing).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFSTRINGTABLE
@@ -61,7 +64,7 @@ public:
     CCharString Winner;                                      // +0x68
     float BiggestFish;                                       // +0x6c
     float BiggestCompetitorFish;                             // +0x70
-    void RefreshCompetition();                               // 0x00E7FD50
+    void GenerateSignText();                               // 0x00E7FD50
     class CFishCompOrganiser : public CEntityScriptBase {
     public:
         CV_FishingCompetitionScript* ParentClass;            // +0x14
@@ -222,7 +225,7 @@ void CV_FishingCompetitionScript::CFishCompOrganiser::AskForFish()
             if (IsActiveThreadTerminating()) return;
             ParentClass->BiggestCompetitorFish = weight;
             ParentClass->Winner = "HERO";
-            ParentClass->RefreshCompetition();
+            ParentClass->GenerateSignText();
         }
     } else {
         if (IsActiveThreadTerminating()) return;

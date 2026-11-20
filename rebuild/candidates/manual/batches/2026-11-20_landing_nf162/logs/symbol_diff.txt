@@ -1,0 +1,58 @@
+00d3ab00 new: 1
+    ?GetEndCutscene@CFH_Prisoner@CQ_FireHeartScript@NScript@@ABEXAAVCCharString@@@Z TABLE:00d3ab00
+00d3abe0 new: 1
+    ?GetEndSpeech@CFH_Prisoner@CQ_FireHeartScript@NScript@@ABEXAAVCCharString@@@Z TABLE:00d3abe0
+00d8e990 new: 1
+    ?WatchForTermination@CQ_HobbeCaveScript@NScript@@QAEXXZ TABLE:00d8e990
+00e2bac0 new: 1
+    ?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ TABLE:00e2bac0
+00e2bb10 new: 1
+    ?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@NScript@@QAEXXZ TABLE:00e2bb10
+00e38f60 new: 1
+    ?TransferOut@?$CPersistContext_TransferableComponent@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+00e3e6b0 new: 0
+00e69f90 new: 1
+    ?WatchForQuestInfoDisplayConditions@CV_ChapelOfEvilScript@NScript@@QAEXXZ TABLE:00e69f90
+00e6a0b0 new: 1
+    ?WatchForInsideChapel@CV_ChapelOfEvilScript@NScript@@QAEXXZ TABLE:00e6a0b0
+00e6a340 new: 2
+    ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+    ?WatchForWeaponUnsheathed@CV_ChapelOfEvilScript@NScript@@QAEXXZ TABLE:00e6a340
+00e6a7f0 new: 5
+    ??0?$CSpawnedFunc@VCV_ChapelOfEvilScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_ChapelOfEvilScript@NScript@@P823@AEXXZ@Z
+    ??_7?$CSpawnedFunc@VCV_ChapelOfEvilScript@NScript@@@@6B@ TABLE:012e8094
+    ??_G?$CSpawnedFunc@VCV_ChapelOfEvilScript@NScript@@@@UAEPAXI@Z
+    ?DoMission@CV_ChapelOfEvilScript@NScript@@QAEXXZ TABLE:00e6a7f0
+    ?SuspendableProcess@?$CSpawnedFunc@VCV_ChapelOfEvilScript@NScript@@@@UAEXXZ
+00e6a9e0 new: 2
+    ?EndMission@CV_ChapelOfEvilScript@NScript@@QAEXXZ TABLE:00e6a9e0
+    ?IsInDarkwoodChapel@?A0x333f8de5@@YA_NPAVCV_ChapelOfEvilScript@NScript@@@Z
+00e7f410 new: 0
+00e7f730 new: 0
+00e7f7d0 new: 1
+    ?GetNextPrizeCategoryWeight@CV_FishingCompetitionScript@NScript@@QAEMXZ TABLE:00e7f7d0
+00e80f10 new: 0
+00e9e270 new: 5
+    ??$Transfer@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@CPersistContext@@QAEXPBDAAW4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@ABW4123@@Z 
+    ??0?$CPersistContext_TransferableComponent@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@QAE@AAW4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@
+    ??0?$CPersistTraits@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@QAE@XZ
+    ??_7?$CPersistContext_TransferableComponent@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@6B@ TABLE:012ed7d4
+    ?TransferBinaryOut@?$CPersistTraits@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@QAEXAAVCDataOutputStream@@W4BriarRoseOpinion@CV_IntroductionToTrophiesSc
+00e9e400 new: 1
+    ?TransferOut@?$CPersistContext_TransferableComponent@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+00ea7460 new: 1
+    ?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z TABLE:00ea7460
+00ea8130 new: 0
+00eb6730 new: 1
+    ?TransferOut@?$CPersistContext_TransferableComponent@W4ESheriffState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+00eb68e0 new: 1
+    ?TransferOut@?$CPersistContext_TransferableComponent@W4EAssassinState@CV_MurderTwistFinalScript@NScript@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+00edc450 new: 5
+    ??0?$CSpawnedFunc@VCV_TempleOfLightScript@NScript@@@@QAE@ABVCCharString@@KPAVCV_TempleOfLightScript@NScript@@P823@AEXXZ@Z
+    ??_7?$CSpawnedFunc@VCV_TempleOfLightScript@NScript@@@@6B@ TABLE:012f3c7c
+    ??_G?$CSpawnedFunc@VCV_TempleOfLightScript@NScript@@@@UAEPAXI@Z
+    ?DoMission@CV_TempleOfLightScript@NScript@@QAEXXZ TABLE:00edc450
+    ?SuspendableProcess@?$CSpawnedFunc@VCV_TempleOfLightScript@NScript@@@@UAEXXZ
+00f058d0 new: 1
+    ?WatchForRegionChange@CQ_AmbushTradersScript@NScript@@QAEXXZ TABLE:00f058d0
+00f081e0 new: 0

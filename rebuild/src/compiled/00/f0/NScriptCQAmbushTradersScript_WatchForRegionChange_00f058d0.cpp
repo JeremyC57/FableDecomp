@@ -1,5 +1,5 @@
 // NScript::CQ_AmbushTradersScript::WatchForRegionChange() -- script thread: wait for each region load; on Gibbet Woods, the Deserted Farm or Bowerstone Jail refresh the spies' allegiances
-// Leaf: ?WatchForRegionChange@CQ_AmbushTradersScript@@
+// Leaf: ?WatchForRegionChange@CQ_AmbushTradersScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F058D0, 308 bytes. Identity: the catalog label CV_ChapelOfEvilScript::WatchForLeaving
 //   is wrong -- the thread registration at 0x00F02CEE stores this address under the name "WatchForRegionChange" (0x012F7C48)
 //   and the body calls ?RefreshSpyAllegiences@CQ_AmbushTradersScript@NScript@@ (0x00F05A10).
@@ -65,11 +65,13 @@ struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* Game;                             // +0x40
     void*                 Data;                             // +0x44
 };
+namespace NScript {
 struct CQ_AmbushTradersScript : CQuestScriptBase {
     void RefreshSpyAllegiences();                           // 0x00F05A10
     void WatchForRegionChange();
 };
-void CQ_AmbushTradersScript::WatchForRegionChange()
+}
+void NScript::CQ_AmbushTradersScript::WatchForRegionChange()
 {
     CCharString region;
     while (!IsActiveThreadTerminating()) {
