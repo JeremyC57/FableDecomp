@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0047fe83   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z -> 00411b00 labelled 'vector_push_back_copy'
+0047fe83   WARN RELOC_NAME: ?GetMaxSaveSlots@CUserProfileManager@@QBEJXZ -> 004067b0 labelled '_global::ReturnConst_50_004067b0'
+0047fe83   WARN RELOC_NAME: ?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z -> 00407360 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+0047fe83   RELOCATION_MATCH PASS   GetFileNameList
+
+WINS: 1
+  0047fe83 RELOCATION_MATCH CTCInGameMenu::?GetFileNameList@CTCInGameMenu@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInGameMenu_GetFileNameList_0047fe83

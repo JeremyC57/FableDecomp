@@ -114,7 +114,12 @@ def function_relocs(objdump, objpath, leaf, length, with_labels=False):
 _OPS = {"2": "operator new", "3": "operator delete", "_U": "operator new[]", "_V": "operator delete[]", "4": "operator=",
         "8": "operator==", "9": "operator!=", "A": "operator[]", "C": "operator->", "D": "operator*", "E": "operator++",
         "F": "operator--", "G": "operator-", "H": "operator+", "I": "operator&", "M": "operator<", "O": "operator>",
-        "R": "operator()", "X": "operator*=", "Y": "operator+=", "Z": "operator-=", "_7": "vftable", "_R": "rtti"}
+        "R": "operator()", "X": "operator*=", "Y": "operator+=", "Z": "operator-=", "_7": "vftable", "_R": "rtti",
+        # the rest of the VC operator codes (a `??B<Class>` conversion operator was parsed as a function named "B<Class>")
+        "5": "operator>>", "6": "operator<<", "7": "operator!", "B": "operator conversion", "J": "operator->*",
+        "K": "operator/", "L": "operator%", "N": "operator<=", "P": "operator>=", "Q": "operator,", "S": "operator~",
+        "T": "operator^", "U": "operator|", "V": "operator&&", "W": "operator||", "_0": "operator/=", "_1": "operator%=",
+        "_2": "operator>>=", "_3": "operator<<=", "_4": "operator&=", "_5": "operator|=", "_6": "operator^="}
 
 def sym_identity(sym):
     """(kind, leaf, class) from a VC mangled name or a C symbol. kind in ctor/dtor/op/func/vftable/rtti/c."""

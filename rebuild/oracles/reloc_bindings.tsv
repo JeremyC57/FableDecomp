@@ -39564,6 +39564,14 @@ _ONE_OVER_360	01238e00	00878b60
 ?AddGossip@CV_BookCollectingScript@NScript@@QAEXVCCharString@@000@Z	00e55c60	00e54e90
 ?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z	00e55ce0	00e54e90
 ?LookForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXXZ	00e57530	00e54e90
+??0LHHttp2@LHNetworkLib@@QAE@XZ	00840f50	0055f710
+?CryptoMatic@?A0xb2e9ac23@@YIHPBDPADH0D@Z	0055e2c0	0055f710
+?PrepareRequest@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@W4HTTP_REQUEST_TYPE@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLHHttpHeaders@2@1K@Z	008400b0	0055f710
+?SetConnectionDetails@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z	0083fb20	0055f710
+?SetProxySettings@LHHttp2@LHNetworkLib@@QAEXABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z	0083f870	0055f710
+?HeroHasAllDolls@CV_HeroDollsScript@NScript@@QAE_NXZ	00e97fd0	00e97070
+?HeroHasAnyDolls@CV_HeroDollsScript@NScript@@QAE_NXZ	00e98200	00e97070
+?RemoveHeroDolls@CV_HeroDollsScript@NScript@@QAEXXZ	00e97ea0	00e97070
 ?$S1@?1??GetText@CTCTavernGame@@QAE?AVCWideString@@K@Z@4IA	013b8c4c	005e9e70
 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@VCTavernGameDef@@@@@Z	005ed4a0	005ea100
 ?AddGameEvent@CMainGameComponent@@QAEXPAVCGameEvent@@@Z	0041649c	005eadc0
@@ -39677,3 +39685,5 @@ __imp__VirtualAlloc@16	0143fd44	009f2870
 ??_7?$CSpawnedFunc1@VCQ_AmbushTradersScript@NScript@@UCScriptThingParam@@@@6B@	012f7ebc	00f081e0
 ??_7CScriptThingParam@@6B@	01238c8c	00f081e0
 ?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingParam@@@Z	00f07b80	00f081e0
+?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z	0047f58b	0047fe83
+?push_back@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEXABVCDateAndTime@@@Z	00412970	0047fe83

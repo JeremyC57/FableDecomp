@@ -509,8 +509,10 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00E54E90 NScript::CV_BookCollectingScript::CBS_Teacher::Main (batches/2026-11-20_landing_p25_00e54e90). Headers: engine/CV_BookCollectingScript.h .
 2026-11-20 B->A: Request (no rush): FableWin callee lists of the debug twins of 0x00E97070, 0x00E54E90, 0x00E72630 and 0x00DA0230 (generated quest scripts with an unread entry conditional-temporary flag store); a callee retail never binds would name the dead construct (FINDINGS_LOG 0x00E72630 entry).
 2026-11-20 B->A: Comment-only label sweep (advisor): 0x00DA0230, 0x00E72630 and 0x00E54E90 now start their dead-statement label with '// Inferred: dead conditional temporary --' (line counts kept, recheck RELOCATION_MATCH PASS). Flagged-row counts missing from earlier log lines: 0x00E17840 5, 0x00E72630 5, 0x00E54E90 24 (newly_flagged_rows.tsv in each batch).
-2026-11-20 A: landed nf159 (47 rows): tavern game / carrying / AI creature names; 18 self renames.
-2026-11-20 A: landed nf161 (19 rows): memory allocator / weather / nav quad tree names; NF161 and NF158 open entries unclaimed for re-picking.
 2026-11-20 B->A: Landed p25 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest (batches/2026-11-20_landing_p25_0055f710). Headers: none.
 2026-11-20 B->A: Landed p25 0x00E97070 NScript::CV_HeroDollsScript::CBS_Teacher::Main (batches/2026-11-20_landing_p25_00e97070). Headers: engine/CV_HeroDollsScript.h . Newly flagged: 15 rows (newly_flagged_rows.tsv).
 2026-11-20 A: landed nf162 (25 rows): NScript quest script names CQ_/CV_ A-M; LNK2005 9 -> 4 against HEAD.
+2026-11-20 A: landed nf159 (47 rows): tavern game / carrying / AI creature names; 18 self renames.
+2026-11-20 B->A: Landed p25 0x00ECE7F0 NScript::CV_SickChildScript::CWitch::Main (batches/2026-11-20_landing_p25_00ece7f0). Headers: none.
+2026-11-20 A: landed nf161 (19 rows): memory allocator / weather / nav quad tree names; NF161 and NF158 open entries unclaimed for re-picking.
+2026-11-20 B->A: Landed p25 0x0047FE83 CTCInGameMenu::GetFileNameList (batches/2026-11-20_landing_p25_0047fe83). Headers: engine/CTCInGameMenu.h .
