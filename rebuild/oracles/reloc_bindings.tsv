@@ -24798,7 +24798,6 @@ __imp__CreateEventA@16	0143fec4	00c5e650
 ?SendMessage012b4170@CNavigatorSwitch@@QAEXXZ	00c2a750	00c2a890
 ?SendState@CNavigatorSwitch@@QAEXE@Z	00c2a7a0	00c2a890
 ?GFGetInterpolatedColour@@YA?AVCRGBColour@@V1@0K@Z	00a44250	00b1bda0
-_TWO_PI	0124f2b8	0087aa10
 ??1CVtable_012b3404@@UAE@XZ	00c1eb10	00c1d8b0
 ??_7CVtable_012b32a0@@6B@	012b32a0	00c1d8b0
 ??_7CVtable_012b33a4@@6B@	012b33a4	00c1e080
@@ -39447,10 +39446,8 @@ _time	00bfed22	008405f0
 ?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ	00662100	008ea500
 ?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ	006620f0	008ea500
 ?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ	006620e0	008ea500
-??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x267481f1@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x267481f1@@JJ@Z	0078b7c0	0078a690
 ?AttemptToFireRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	0078a5d0	0078a690
 ?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a390	0078a690
-?GetDamageMultiplierFromThingAtBuildUpTime@?A0x267481f1@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	0078a690
 ?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@ABE_NXZ	00789e60	0078a690
 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ	005da950	0078a690
 ?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a2c0	0078a690
@@ -39894,3 +39891,6 @@ _c_dfDIMouse2	012addfc	00ab5710
 ??$GetPFirstThingInRoughArea@VCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@$$CBVCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@PAPBVCThingAICreature@@@Z	00987430	009863e0
 ??0CThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QAE@ABVCThingAICreature@@M_N@Z	00986ed0	009863e0
 ?OpinionReactionCommentRadius@@3MA	0122ded4	009863e0
+??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x277421ce@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x277421ce@@JJ@Z	0078b7c0	0078a690
+?GetDamageMultiplierFromThingAtBuildUpTime@?A0x277421ce@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	0078a690
+_TWO_PI	0124f2b8	008185b0

@@ -1,0 +1,27 @@
+addr       parity           behav  name
+008185b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008185b0   WARN STANDIN_LEAF ??$GetRootsNumerically@VCVeryRandomFunctionToFindThePointOnAnElipseThatIsClosestToAPoint@?A0x87afe4f3@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCVeryRandomFunctionToFindThePointOnAnElipseThatIsClosestToAPoint@?A0x87afe4f3@@JJ@Z (catalog ::; names another function)
+008185b0   RELOCATION_MATCH PASS   ::
+0087aa10   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0087aa10   RELOCATION_MATCH PASS   NMaths::GetRootsNumerically<class `anonymous namespace'::CTanMethod>
+0087aff0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0087aff0   RELOCATION_MATCH PASS   NMaths::GetRootsNumerically<class `anonymous namespace'::CCotMethod>
+  WARN leaf '??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x0524c104@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x0524c104@@JJ@Z' matches no symbol in 0078b7c0.obj; graded the largest function
+  WARN leaf '??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x0524c104@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x0524c104@@JJ@Z' matches no symbol in 0078b7c0.obj; graded the largest function
+0078b7c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0078b7c0   RELOCATION_MATCH PASS   NMaths::GetRootsNumerically<CAnalyseRootsOfBowPullBackFunction>
+0078a690   RELOCATION_MATCH PASS   CTCHeroRangedAttacks::FrameUpdate
+
+WINS: 5
+  008185b0 RELOCATION_MATCH ::??$GetRootsNumerically@VCVeryRandomFunctionToFindThePointOnAnElipseThatIsClosestToAPoint@?A0x
+  0087aa10 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCTanMethod@?A0x
+  0087aff0 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCCotMethod@?A0x
+  0078b7c0 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x0524c104@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x0524c104@@JJ@Z
+  0078a690 RELOCATION_MATCH CTCHeroRangedAttacks::?FrameUpdate@CTCHeroRangedAttacks@@UAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  global_function_008185b0
+  NMaths_CTanMethod_0087aa10
+  NMaths_CCotMethod_0087aff0
+  NMaths_GetRootsNumericallyCAnalyseRootsOfBowPullBackFun_0078b7c0
+  CTCHeroRangedAttacks_FrameUpdate_0078a690

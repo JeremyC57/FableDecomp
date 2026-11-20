@@ -375929,14 +375929,7 @@ $catalog = @(
         TestSource = '00/62/CTCQuickAccessMenu_ConstructItemCategoryList_00626e40_test.cpp'
         PassPattern = '00626e40_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '0078b7c0'
-        Module = 'NMaths'
-        Source = '00/78/NMaths_GetRootsNumericallyCAnalyseRootsOfBowPullBackFun_0078b7c0.cpp'
-        TestSource = '00/78/NMaths_GetRootsNumericallyCAnalyseRootsOfBowPullBackFun_0078b7c0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Gr'
-        PassPattern = '0078b7c0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '008400b0'
         Module = 'LHNetworkLib::LHHttp2'
@@ -380089,22 +380082,8 @@ $catalog = @(
         TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_InterpolateTo_00b1bda0_test.cpp'
         PassPattern = '00b1bda0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '0087aa10'
-        Module = 'NMaths'
-        Source = '00/87/NMaths_GetRootsNumericallyCTanMethod_0087aa10.cpp'
-        TestSource = '00/87/NMaths_GetRootsNumericallyCTanMethod_0087aa10_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Gr'
-        PassPattern = '0087aa10_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '0087aff0'
-        Module = 'NMaths'
-        Source = '00/87/NMaths_GetRootsNumericallyCCotMethod_0087aff0.cpp'
-        TestSource = '00/87/NMaths_GetRootsNumericallyCCotMethod_0087aff0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Gr'
-        PassPattern = '0087aff0_TEST PASS'
-    }
+
+
     [pscustomobject]@{
         Address = '00434a10'
         Module = 'CDisplayEngine'
@@ -401219,13 +401198,7 @@ $catalog = @(
         TestSource = '00/b0/NParticleEngineCPSCSingleSprite_AddToBoundingSphere_00b075d0_test.cpp'
         PassPattern = '00b075d0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '0078a690'
-        Module = 'CTCHeroRangedAttacks'
-        Source = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690.cpp'
-        TestSource = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690_test.cpp'
-        PassPattern = '0078a690_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00789a60'
         Module = 'CTCHeroRangedAttacks'
@@ -401302,6 +401275,45 @@ $catalog = @(
         Source = '00/a7/CNavQuadTree_UpdateLines_00a781a0.cpp'
         TestSource = '00/a7/CNavQuadTree_UpdateLines_00a781a0_test.cpp'
         PassPattern = '00a781a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008185b0'
+        Module = ''
+        Source = '00/81/NMaths_GetRootsNumericallyCVeryRandomFunctionToFindThe_008185b0.cpp'
+        TestSource = '00/81/NMaths_GetRootsNumericallyCVeryRandomFunctionToFindThe_008185b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '008185b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087aa10'
+        Module = 'NMaths'
+        Source = '00/87/NMaths_GetRootsNumericallyCTanMethod_0087aa10.cpp'
+        TestSource = '00/87/NMaths_GetRootsNumericallyCTanMethod_0087aa10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0087aa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087aff0'
+        Module = 'NMaths'
+        Source = '00/87/NMaths_GetRootsNumericallyCCotMethod_0087aff0.cpp'
+        TestSource = '00/87/NMaths_GetRootsNumericallyCCotMethod_0087aff0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0087aff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078b7c0'
+        Module = 'NMaths'
+        Source = '00/78/NMaths_GetRootsNumericallyCAnalyseRootsOfBowPullBackFun_0078b7c0.cpp'
+        TestSource = '00/78/NMaths_GetRootsNumericallyCAnalyseRootsOfBowPullBackFun_0078b7c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0078b7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078a690'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690_test.cpp'
+        PassPattern = '0078a690_TEST PASS'
     }
 )
 
