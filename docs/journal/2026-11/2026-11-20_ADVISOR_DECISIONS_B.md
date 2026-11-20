@@ -49,3 +49,12 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   tokens.
 - **Required:** the comment states that the bytes prove a conditional temporary existed and constrain neither its content nor its placement.
   Mutants of the dead line are reported separately. No new relocation or binding.
+
+## 0x00E97070 CV_HeroDollsScript::CBS_Teacher::Main: a new dead statement (2026-11-20)
+- **Ruling: a new dead statement that Ego_d lacks may land as `// Inferred:`.** Landed 0x00DA0230 is already such a statement.
+- **Cheaper forms come first:** the probe and the inline-body check; every existing dead position (Ego_d lines with /Od bytes but no retail
+  bytes); placement at an inner endless-loop tail before "after a break"; and operands already live in the function, with an empty body.
+- **Label:** all four dead-conditional-temporary rows (0x00DA0230, 0x00E72630, 0x00E54E90, 0x00E97070) start their label with
+  `// Inferred: dead conditional temporary --`.
+- **Lead:** FableWin's callee list (debug build) could name the real construct. It is not in pending/2026-11-19_fablewin_callees_for_B.tsv;
+  Account A was asked.

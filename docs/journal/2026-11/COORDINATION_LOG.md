@@ -506,3 +506,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00E72630 NScript::CV_DemonDoorsScript::CDF_ThreeSuits::Main (batches/2026-11-20_landing_p25_00e72630). Headers: engine/CV_DemonDoorsScript.h .
 2026-11-20 A: landed nf158 (21 rows): GetParticleEmitterManager and the emitter-manager family on the PDB spellings, CPerItemData counted-pointer destructor from the shared header.
 2026-11-20 B->A: Landed p25 0x00E54E90 NScript::CV_BookCollectingScript::CBS_Teacher::Main (batches/2026-11-20_landing_p25_00e54e90). Headers: engine/CV_BookCollectingScript.h .
+2026-11-20 B->A: Request (no rush): FableWin callee lists of the debug twins of 0x00E97070, 0x00E54E90, 0x00E72630 and 0x00DA0230 (generated quest scripts with an unread entry conditional-temporary flag store); a callee retail never binds would name the dead construct (FINDINGS_LOG 0x00E72630 entry).
