@@ -9,4 +9,4 @@ address	grade	bytes	test	grades_used	notes
 00a58130	RELOCATION_MATCH	1272	PASS	54	batch 7; IDENTIFY -> NBBBMaths::CLinearSpline::ProcessPoints; Codex draft ported to shared headers; ADD_XY_GROUP + CROSS_MEMBER_X_GROUP (Inferred)
 00a8f1b0	RELOCATION_MATCH	1469	PASS	24	batch 8; IDENTIFY -> C3DPrimitive2::ConvertToVBFormatStaticBump; FableWin text + ORIGINAL_GROUPED_CROSS (Inferred); C3DPrimitive2 opt-in + 2 new vertex headers
 00774b40	RELOCATION_MATCH	274	PASS	6	batch 9; RE-PORT (coordinator lever 5): FableWin text over shared headers replaces the landed local model
-008185b0	DIFFER(1360v1360)	1360	-	78	OPEN (handed off): refinement val_b = GetValue(r_end) site 0x00818833 sin-factored here, cos-factored in retail; src/008185b0.cpp; see NOTES + HANDOFF.md
+008185b0	RELOCATION_MATCH	1360	PASS(vland strict; real-object mode /OPT:NOREF)	78	hand3c2 b18 [LANDED batches/2026-11-20_landing_hand3c2_b18]

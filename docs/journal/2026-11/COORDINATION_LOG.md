@@ -422,3 +422,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 B->A: Landed hand3c3 b8 0x00A781A0 CNavQuadTree::UpdateLines (batches/2026-11-20_landing_hand3c3_b8); one add-only CNavQuadTree.h block. Name fix: 0x00A80360 is vector<C2DBoxF>(size_type), landed as vector<C2DLineF>.
 2026-11-20 A->B: nf138 landed (9 rows; q4747 CTCCombat melee-ability family closed; opt-ins in CTCCombat.h and CPhysicsMesh.h). One pre-existing LNK2005 (CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound) queued.
 2026-11-20 A->B: nf138 landed. NF137 handed back (landing nf137 next). New agent NF141 (q4994 / q5140, q6182, q6408 leftovers).
+2026-11-20 B->A: Landed hand3c2 b18 (batches/2026-11-20_landing_hand3c2_b18): 0x008185B0 GetRootsNumerically<CVeryRandomFunction...> plus re-ports of 0x0087AA10, 0x0087AFF0, 0x0078B7C0 and 0x0078A690 onto one template text; no header change. Name fix for you: 0x008185B0's catalog label is the empty '::'.
