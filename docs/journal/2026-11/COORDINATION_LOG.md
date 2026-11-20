@@ -317,3 +317,7 @@ FABLE_RETAIL_WIN32_MINMAX: windef.h's min / max verbatim, for rows whose retail 
 name_fixes/ in the batch is for you.
 Heads-up: the audit found landed 0x00589A30 CTCInventory::OpenPCMapMenu at DIFFER(549v549) on today's tree with no overlay. B is bisecting
 which header change did it and will report back here. If it was one of yours, B will tell you before touching your header.
+2026-11-20 A->B: nf114 landed (8 rows: most CUIScreenUnitConverter static binders now on the private `@@0` spellings). Authoring item for you if
+you want it: 0x0040F0E0 (Leaf-less July row) writes invented g_dimW / g_dimH; it is the header's `?ResetDimensions@CUIScreenUnitConverter@NUISystem@@SIXXZ`
+(Ego_r.pdb), the last row keeping 0x013B876C / 0x013B8770 split. Also: A found its gate had missed 2 vtable splits in nf111 (CMenuEntry,
+0x012465FC / 0x0124662C; FINDINGS_LOG); NF117 is porting the ctor row 0x0053DFE0 to heal them.

@@ -1,4 +1,6 @@
 // NUISystem::CComponent::Update(float deltaTime) -- advance the component's clock and its zoom / position / colour transitions, then push this component's render zoom, position and colour down to its position children and to every child it owns (live and dying), update those children and act on their deletion requests
+// NF114 (2026-11-20, q11634..q11638): CUIScreenUnitConverter's five statics are private (`@@0`: Ego_d.pdb PUB32 + FableWin.pdb
+//   LF_STMEMBER attrs = private; DefaultBackBufferWidth / Height are the original names of the 640 / 480 words 0x01375CD4 / 0x01375CD8).
 // Grade: RELOCATION_MATCH (wfD5 successor 5, 2026-11-15) -- rule-clean: no __assume device; last-resort devices a (FITTED guards), c (k = 2 unused locals) and d (2 dead FABLE_RETAIL_ASSERT arms), all marked below.
 // EVIDENCED: ConvertVector written through ConvertX / ConvertY (existing opt-in FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE_CONVERTXY of the matched row 0x0061E6D0, FableWin ConvertVector 28i/81b v this text 27i/77b v the direct-global text 29i/95b): it closes the loop-3 `ParentPosition + Position` X pair at 0x005329E8 (the expanded per-axis helpers add c2 records in loop 3, the only loop that expands ConvertVector).
 // FITTED (device a, no bytes): loop 1 has its iterator declared first and THREE redundant `if (it != PositionChildren.end())` entry tests that c2 folds into the loop's own entry test (same device as the landed 0x00607330 / staged 0x005FF190 single guards). They lower c2's static frequency after loop 1 (for-loop leak 5 -> 1.5 = 1/2 + 1/4 + 1/8 + 5/8; measured window from the inline trace: loop-2 divisor k in (3.20, 4.27)), so VC7.1 calls ConvertVector at the four loop-2 sites and ~_List_base at the two loop-2 CDeletion sites and expands vector::erase in loop 3, as retail (106 calls). One or two guards leave the loop-2 sites expanded (3918 / 3898 bytes), four overshoot (3610); a loop-2 guard never folds (+16 bytes, every spelling).
@@ -25,7 +27,7 @@
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE
 #define FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR_INLINE_CONVERTXY
-#define FABLE_RETAIL_CUISCREENUNITCONVERTER_INLINE
+#define FABLE_RETAIL_CUISCREENUNITCONVERTER_ORIGINAL_DIMENSIONS
 #define FABLE_RETAIL_ASSERT_DEAD_ARM
 #include "fable_assert.h"
 #include "engine/C2DVector.h"

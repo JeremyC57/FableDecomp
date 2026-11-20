@@ -1,4 +1,6 @@
 // NUISystem::CUIScreenUnitConverter::SetIsUsingRelativeCoords(bool relative) -- switch coordinate mode; entering relative mode re-reads the render-target size
+// NF114 (2026-11-20, q11634..q11638): CUIScreenUnitConverter's five statics are private (`@@0`: Ego_d.pdb PUB32 + FableWin.pdb
+//   LF_STMEMBER attrs = private; DefaultBackBufferWidth / Height are the original names of the 640 / 480 words 0x01375CD4 / 0x01375CD8).
 // Leaf: ?SetIsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@SIX_N@Z
 // Retail: Fable.exe @ 0x004299A8, 60 bytes, `ret` (static __fastcall, flag in cl); one caller (0x0041E4C2); Ego_r.pdb
 // ?SetIsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@SIX_N@Z.
@@ -30,10 +32,11 @@ public:
 CSystemManager* __fastcall GFGetSystemManager();         // 0x009A4EC0
 namespace NUISystem {
 class CUIScreenUnitConverter {
-public:
+private:
     static bool  IsUsingRelativeCoords;                  // 0x013B8768
     static float BackBufferWidth;                        // 0x013B876C
     static float BackBufferHeight;                       // 0x013B8770
+public:
     static void __fastcall SetIsUsingRelativeCoords(bool relative);
 };
 void __fastcall CUIScreenUnitConverter::SetIsUsingRelativeCoords(bool relative)

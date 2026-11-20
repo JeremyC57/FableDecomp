@@ -9605,11 +9605,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?IsKeyboardEventInQueue@CInputManager@@QBE_NW4EInputEventType@@W4EInputKey@@AAVCInputEvent@@@Z	009f50a0	0041e16e
 ?RemoveEventFromQueue@CInputManager@@QAEXABVCInputEvent@@@Z	009f4f70	0041e16e
 ?ShowErrorMessage@CManager@NUISystem@@QAEXJ@Z	0041db84	0041e61b
-?BackBufferHeight@CUIScreenUnitConverter@NUISystem@@2MA	013b8770	004299a8
-?BackBufferWidth@CUIScreenUnitConverter@NUISystem@@2MA	013b876c	004299a8
-?GFGetSystemManager@@YIPAVCSystemManager@@XZ	009a4ec0	004299a8
-?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ	009bedc0	004299a8
-?IsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@2_NA	013b8768	004299a8
 ??M?$CBasicString@D@@QBE_NABV0@@Z	00429950	0042aab3
 ??0?$pair@$$CBVCCharString@@J@std@@QAE@ABU01@@Z	004297db	0042b587
 ??0?$pair@$$CBKVCUIState@NUISystem@@@std@@QAE@ABU01@@Z	0042a944	0042bdf0
@@ -28785,8 +28780,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?OpenFileReadWrite@CBankFileAsync@@QAEXABVCWideString@@KK@Z	009d5200	00502170
 ?g_WADBuildEnabled@@3_NA	01375459	00502170
 ?g_WADBuildLevels@@3_NA	0137545a	00502170
-?ScreenHeight@CUIScreenUnitConverter@NUISystem@@2MA	01375cd8	0052f5c0
-?ScreenWidth@CUIScreenUnitConverter@NUISystem@@2MA	01375cd4	0052f5c0
 ?ProcessEvent@CClickable@NUISystem@@UAEXW4EEvent@2@@Z	0055ad60	0053d200
 ?g_IgnoreInputDelay@NUISystem@@3_NA	013b8aa8	0053d200
 ?g_LastInputTime@NUISystem@@3NA	013b8aa0	0053d200
@@ -31951,12 +31944,6 @@ _FmtWide_0099ba70	0099ba70	00406610
 ?Get@CParticleEmitterManager@@SAPAV1@XZ	00aeaaf0	00543d30
 ?Initialise@CChangingStateComponent@NUISystem@@UAEXXZ	0052c730	00543d30
 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXJ@Z	0052cf40	00543df0
-?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXPBVC2DVector@@W4EEngine2DLayer@@@Z	00aed090	00543ee0
-?g_DisplayHeight@NUISystem@@3MA	01375cd8	00543ee0
-?g_DisplayWidth@NUISystem@@3MA	01375cd4	00543ee0
-?g_OverrideScreenHeight@NUISystem@@3MA	013b8770	00543ee0
-?g_OverrideScreenWidth@NUISystem@@3MA	013b876c	00543ee0
-?g_bScreenSizeOverride@NUISystem@@3_NA	013b8768	00543ee0
 ?InternalChanged@CSprite@NUISystem@@UAEXXZ	0052c780	00554110
 ?CopyPos@CMap@@IAEXABV1@ABVC2DCoordI@@1@Z	0081f240	0063dfd0
 ?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z	00aeb6d0	00643d8c
@@ -40121,3 +40108,6 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?GFNormalise3DVectors@NVectorMath@@YAXPBVC4DVector@@KPAV2@KK@Z	00a5c360	00989cb0
 ?SetInverseOfUniformScaleRotationTranslation@CMatrix4x4@@QAEMABV1@@Z	00a5d000	00989cb0
 ?GFGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z	00a56670	00a567a0
+?GFGetSystemManager@@YIPAVCSystemManager@@XZ	009a4ec0	004299a8
+?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ	009bedc0	004299a8
+?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXPBVC2DVector@@W4EEngine2DLayer@@@Z	00aed090	00543ee0

@@ -1,4 +1,6 @@
 // NUISystem::CComponent::UpdateZoom(float deltaTime) -- advance the zoom transition (eased from the initial to the target zoom over ZoomTime, snapping to the target at the end), then rebuild the render zoom and relative render zoom (own zoom, scaled by the parent zooms unless parent zoom is ignored, screen-converted for a screen-zoomed component) and apply the UI scale on a root or zoom-ignoring component
+// NF114 (2026-11-20, q11634..q11638): CUIScreenUnitConverter's five statics are private (`@@0`: Ego_d.pdb PUB32 + FableWin.pdb
+//   LF_STMEMBER attrs = private; DefaultBackBufferWidth / Height are the original names of the 640 / 480 words 0x01375CD4 / 0x01375CD8).
 // Leaf: UpdateZoom
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052F5C0, 826 bytes (832 with padding), `ret 4`.
 // Callees: the component's virtual slots 103 (+0x19c, zoom ignored) and 116 (+0x1d0, zoom screen-converted; slot names
@@ -37,15 +39,16 @@ class C2DVector { public:
 
 namespace NUISystem {
 class CUIScreenUnitConverter {
-public:
+private:
     static bool      IsUsingRelativeCoords;             // 0x013B8768
     static float     BackBufferWidth;                   // 0x013B876C
     static float     BackBufferHeight;                  // 0x013B8770
-    static float     ScreenWidth;                       // 0x01375CD4 (640)
-    static float     ScreenHeight;                      // 0x01375CD8 (480)
+    static float     DefaultBackBufferWidth;                       // 0x01375CD4 (640)
+    static float     DefaultBackBufferHeight;                      // 0x01375CD8 (480)
+public:
     static C2DVector __fastcall ConvertVector(C2DVector v);   // 0x0052E580
-    static float ConvertWidth(float x) { if (IsUsingRelativeCoords) return x / ScreenWidth * BackBufferWidth; return x; }
-    static float ConvertHeight(float y) { if (IsUsingRelativeCoords) return y / ScreenHeight * BackBufferHeight; return y; }
+    static float ConvertX(float x) { if (IsUsingRelativeCoords) return x / DefaultBackBufferWidth * BackBufferWidth; return x; }
+    static float ConvertY(float y) { if (IsUsingRelativeCoords) return y / DefaultBackBufferHeight * BackBufferHeight; return y; }
 };
 class CManager {
 public:
@@ -217,8 +220,8 @@ void CComponent::UpdateZoom(float deltaTime)
         RenderZoom.X = Zoom.X * ParentZoom.X;
         RenderZoom.Y = Zoom.Y * ParentZoom.Y;
         if (IsZoomScreenConverted()) {
-            RelativeRenderZoom.X = CUIScreenUnitConverter::ConvertWidth(Zoom.X) * RelativeParentZoom.X;
-            RelativeRenderZoom.Y = CUIScreenUnitConverter::ConvertHeight(Zoom.Y) * RelativeParentZoom.Y;
+            RelativeRenderZoom.X = CUIScreenUnitConverter::ConvertX(Zoom.X) * RelativeParentZoom.X;
+            RelativeRenderZoom.Y = CUIScreenUnitConverter::ConvertY(Zoom.Y) * RelativeParentZoom.Y;
         } else {
             RelativeRenderZoom.X = Zoom.X * RelativeParentZoom.X;
             RelativeRenderZoom.Y = Zoom.Y * RelativeParentZoom.Y;

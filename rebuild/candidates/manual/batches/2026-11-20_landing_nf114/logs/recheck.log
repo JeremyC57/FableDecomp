@@ -1,0 +1,38 @@
+addr       parity           behav  name
+004299a8   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+004299a8   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004299a8   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+004299a8   RELOCATION_MATCH PASS   NUISystem::CUIScreenUnitConverter::SetIsUsingRelativeCoords
+0052e530   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0052e530   RELOCATION_MATCH PASS   NUISystem::CUIScreenUnitConverter::UnConvertVector
+0052e580   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0052e580   RELOCATION_MATCH PASS   NUISystem::CUIScreenUnitConverter::ConvertVector
+0052f5c0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0052f5c0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0052f5c0   RELOCATION_MATCH PASS   NUISystem::CComponent::UpdateZoom
+00531ec0   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00531ec0   WARN RELOC_NAME: ??$__find@PAV?$CCountedPointer@VCComponent@NUISystem@@@@V1@@std@@YIPAV?$CCountedPointer@VCComponent@NUISystem@@@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z -> 00534eb0 labelled 'std::__find<CCountedPointer<NUISystem::CComponent>*,CCountedPointer<NUISystem::CComponent> >'
+00531ec0   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@VCComponent@NUISystem@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCComponent@NUISystem@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00535000 labelled 'std::__copy<CCountedPointer<NUISystem::CComponent>*, CCountedPointer<NUISystem::CComponent>*, int>'
+00531ec0   RELOCATION_MATCH PASS   NUISystem::CComponent::Update
+00543ee0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00543ee0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00543ee0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00543ee0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00543ee0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00543ee0   RELOCATION_MATCH PASS   NUISystem::CParticleEffect::Draw
+0060eeb0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+0060eeb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0060eeb0   RELOCATION_MATCH PASS   CTCInventoryMap::ConstructPCMapList
+0061e6d0   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+0061e6d0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0061e6d0   RELOCATION_MATCH PASS   CTCInventoryQuests::ConstructQuestListPC
+
+WINS: 8
+  004299a8 RELOCATION_MATCH NUISystem::CUIScreenUnitConverter::?SetIsUsingRelativeCoords@CUIScreenUnitConverter@NUISystem@@SIX_N@Z
+  0052e530 RELOCATION_MATCH NUISystem::CUIScreenUnitConverter::?UnConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z
+  0052e580 RELOCATION_MATCH NUISystem::CUIScreenUnitConverter::?ConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z
+  0052f5c0 RELOCATION_MATCH NUISystem::CComponent::UpdateZoom
+  00531ec0 RELOCATION_MATCH NUISystem::CComponent::?Update@CComponent@NUISystem@@UAEXM@Z
+  00543ee0 RELOCATION_MATCH NUISystem::CParticleEffect::Draw
+  0060eeb0 RELOCATION_MATCH CTCInventoryMap::?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z
+  0061e6d0 RELOCATION_MATCH CTCInventoryQuests::?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@PAVCList@3@W4QuestScreenType@@2@Z
