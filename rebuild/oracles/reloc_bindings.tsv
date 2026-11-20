@@ -39374,3 +39374,7 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??_7C3DAnimFileXLoader@@6B@	0129e1e4	00aa4710
 ??_7C3DAnimFileXSequenceChunk@@6B@	0129e194	00aa4710
 ??_7C3DMeshFileMapChunk@@6B@	0129ee34	00abfe50
+??$IS_THING_DEAD@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	00836be0	00960120
+??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z	00654d58	00960120
+?LogDeedReactionPlayingSpeech@COpinionReactionManager@@QAEXW4EOpinionDeedType@@_N@Z	006feae0	00960120
+_sc_DefaultReflectionData	012bf0e0	00c77b30

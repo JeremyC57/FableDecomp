@@ -219,3 +219,17 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The hook is saved with the c2 kit before use.
 - **No more untargeted respellings** (33 negative). The row stays reserved.
 - **Name:** the catalogue says Audio_PlaySourceAndProcessQueue, p25N says CAudioSource::UpdateStream; a two-source NAME_FIXES line is needed, or one name kept consistently.
+
+## 0x00960120 CAIStateGroup_DeedReactionRoot::Update (p25O): a per-TU forceinline opt-in v /d2inlS25
+- **Facts.** /d2inlS25 matches the row by expanding CCharString::IsEmpty, but it breaks the TU-mate 0x009609B0 IsRunnable at every S 21..100 (and T275/T290). FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY matches both with no flag.
+- **Ruling: land with the opt-in.** FABLE_FORCEINLINE header opt-ins are a landed family (TEXT_EQ, EQUALSCI, LESS), and the owner allows inline controls for inline-budget residues. Line 2 names it, with the grade without it and the S25 alternative.
+- **Condition met.** The opt-in had to hold across the TU. FableWin's ai_state_group_deed_reaction_root.obj lists the TU, and none of its landed rows has an IsEmpty site, so nothing contradicts it. The flag form is kept as evidence.
+
+## 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering (p25N): `info` spilled v retail ebp
+- **Measured.** No write to info's allowed set before the driver splits it, so it is not the callee-saved mask. The split follows #3 taking ebx. Retail loads info.Engine twice per call (the vtable into ebx mid-pushes, then `this` into ecx); ours keeps one Engine temp across the argument calls.
+- **Ruling: no split-path hook, no park yet.** One bounded source-level pass:
+  - /Od loads at the Engine call lines;
+  - a retail per-site table;
+  - a landed DrawPreparePrimitivesForRendering sibling with the two-load shape;
+  - one respelling pass on the call expression within Ego_d's locals.
+  - The hook is justified only if a sibling with the same spelling matches.

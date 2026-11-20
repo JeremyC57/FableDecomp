@@ -1,0 +1,3 @@
+set	address	class	header
+COpinionDeedReaction.h	006c5d70	COpinionDeedReaction	engine/COpinionDeedReaction.h (landed local model in CTCHeroOpinionDeedLog::~CTCHeroOpinionDeedLog, rebuild/src/compiled/00/6c/CTCHeroOpinionDeedLog_CTCHeroOpinionDeedLog_006c5d70.cpp:224)
+COpinionReactionManager.h	00681500	COpinionReactionManager	engine/COpinionReactionManager.h FABLE_RETAIL_COPINIONREACTIONMANAGER_DEEDREACTIONS (landed local class model with the retail offsets; see NAME_FIXES.tsv)
