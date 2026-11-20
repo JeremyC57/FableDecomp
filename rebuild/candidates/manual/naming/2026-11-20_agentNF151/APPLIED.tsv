@@ -1,0 +1,19 @@
+entry	address	status	binders_respelled	note
+q11717	0x00988020	done	0	self row ported onto the shared headers and renamed to the PDB leaf (Ego_r + FableWin); all 57 landed binders already bind it (probe), so the address ends on one spelling; MATCH + PASS
+q11730	0x00987FE0	done-already	0	binder 0x00B5E700 already binds ?EnableVertexShaders / ?DisableVertexShaders@CShaderRenderManager@@QAEXXZ (probe); self rows correct (nf133)
+q11731	0x00987FE0	done	1	binder 0x00B61690 ported onto engine/CShaderRenderManager.h: binds ?Enable/DisableVertexShaders@CShaderRenderManager@@QAEXXZ; CShaderEnableState stand-in gone
+q11732	0x00987FE0	done	1	binder 0x00B88BC0 ported onto engine/CShaderRenderManager.h: binds ?Enable/DisableVertexShaders@CShaderRenderManager@@QAEXXZ; CShaderEnableState stand-in gone (with 0x00B61690 the last two CShaderEnableState binders: split closed)
+q11733	0x00987FE0	done-already	0	binder 0x00BCB800 already binds ?EnableVertexShaders / ?DisableVertexShaders@CShaderRenderManager@@QAEXXZ (probe); self rows correct (nf133)
+q11738	0x0098B420	done	0	self row now defines ?AllocateLights@CShaderRenderManager@@AAEXKK@Z; its only landed caller 0x0098B5E0 already binds AAE: split closed
+q4499	0x00B44FE0	done	0	self row moved to the PDB spelling (private, nested CManagerLocalLight, const C3DVector&); both landed callers already bound it: split closed
+q4500	0x00B44CE0	done	0	self row moved to the private PDB spelling; both landed callers already bound it: split closed
+q4506	0x00B49DF0	done	1	self row already the std::vector spelling; the last CPointerVector binder 0x00B47FD0 ported onto the shared header (binds the std::vector spelling): split closed
+q4508	0x00989830	done-already	0	self row 0x00989830 already ?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z (Ego_r 0x00AE6020 + FableWin 0x030339F0); probe (work/probe_all.tsv): both landed referencers 00b44f20 / 00b46c80 bind it
+q4541	0x00988140	deferred	9	self row already the PDB spelling; 9 of 10 wrong binders respelled (00b54310 00b6e3e0 00b75ca0 00b76bc0 00b77e20 PBV; 00b63010 00b63260 00b61690 00b88bc0 PAV); 0x00BB8090 left: deferred: held by NF150 (NAME_FIXES.tsv). Existing split shrinks 3 -> 2 spellings
+q4543	0x00989700	done-already	0	self row already ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ (Ego_r 0x00AE5A00 + FableWin 0x03036F20); probe: all 25 measurable referencers (009e1280 included, UpdateFlag8State gone) bind it; 00be6f70 / 00bf4570 are July candidates-header rows (see STATUS)
+q4564	0x00B44D50	done-already	0	self row already ?DisablePointLights@CEngineLightingManager@@QAEXXZ (Ego_r 0x009B9BB0 + FableWin 0x02CF2B80); probe: both referencers 00b32230 / 00b751f0 bind it (the _Methods spelling is gone)
+q4565	0x00B44F20	done	1	self row PBV -> ABV and the last pointer-spelling binder 0x00BBC0B0 respelled (family handed back together): self + all 6 measured referencers on one spelling (0x00BF4570 is not-a-binder)
+q4649	0x00989CB0	done	1	self row already AAE; the last wrong binder 0x009E1280 respelled in place (QAE -> AAE); same row also fixed for 0x009894B0 / 0x00989540, whose self rows moved to AAE too
+q4651	0x0098B930	done	1	self row already AAE (Account B re-port); the last wrong binder 0x00B99670 ported onto the header, reaching it through SetVertexShaderConstantsDirect: 69 of 69 measurable referencers bind AAE
+q4669	0x013BC470	blocked	5	SingletonInstance (Ego_d PUB32 + Ego_r/FableWin dynamic initializer/atexit names) now defined by 0x01223D00 on the shared header; binders respelled: 0x00B61690, 0x00B88BC0, 0x00BBC130, 0x00B6B0B0 (+ the definition row). Rows left: 0x009BEF80 (blocked: authoring, a naked asm bake; NAME_FIXES). Split 5 -> 2 spellings
+q4696	0x00989B00	done-already	0	self row already ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKMMMM@Z (Ego_r 0x00AE6350 + FableWin 0x03034E50); probe: all 38 referencers (00b52160 included) bind it

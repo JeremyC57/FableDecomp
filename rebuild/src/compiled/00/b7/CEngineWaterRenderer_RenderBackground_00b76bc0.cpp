@@ -1,4 +1,5 @@
 // CEngineWaterRenderer::RenderBackground(float time) -- bind the water bump map on stages 0/1 and the environment map on stage 2 with their blend states, pick the high-end or low-end background shaders, upload the four water bone matrices and either the bump constant (high end) or the low-end colour pixel constants, then draw the alphaed and the opaque background patch lists
+// NF151 (2026-11-20, q4541): the row-local CShaderRenderManager declaration respelled in place to ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z (0x00988140; Ego_r.pdb 0x00AE47A0 + FableWin.pdb 0x030325A0: const CPixelShader&).
 // NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool) and ?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z (0x0098A7F0; Ego_r.pdb 0x00AE5F80 + FableWin.pdb 0x03032D30: matrix by const reference).
 // Leaf: ?RenderBackground@CEngineWaterRenderer@@AAEXM@Z
 // NF79 (round 7, q10973): the lighting object 0x01436E9C is NEngineInternal::GPLightingManager (Ego_d.pdb PUB32
@@ -64,7 +65,7 @@ class CPixelShader;
 class CShaderRenderManager {
 public:
     void ApplyVertexShader(const CVertexShader& shader, bool force);   // 0x00988020
-    void ApplyPixelShader(const CPixelShader* shader);                 // 0x00988140
+    void ApplyPixelShader(const CPixelShader& shader);                 // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
     void SetBoneTransform(unsigned long index, const CMatrix3x4& matrix);                        // 0x0098A7F0
 
@@ -454,10 +455,10 @@ void CEngineWaterRenderer::RenderBackground(float time)
     SetState(g_pRenderManagerCore->m_state2fac, g_renderStateValue_01396dd0, g_pRenderManagerCore);
     if (HighendWaterEnabled) {
         NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*reinterpret_cast<const CVertexShader*>(BackgroundVertexShader), false);
-        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(BackgroundPixelShader));
+        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*reinterpret_cast<const CPixelShader*>(BackgroundPixelShader));
     } else {
         NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*reinterpret_cast<const CVertexShader*>(WaterBackgroundLowEndVertexShader), false);
-        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(WaterLowEndPixelShader));
+        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*reinterpret_cast<const CPixelShader*>(WaterLowEndPixelShader));
     }
     NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
     NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, BoneMatrix0);

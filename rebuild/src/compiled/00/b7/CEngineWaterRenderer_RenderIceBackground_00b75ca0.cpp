@@ -1,4 +1,5 @@
 // CEngineWaterRenderer::RenderIceBackground(float time) -- bind the ice bump map and environment map, set the ice blend states and shaders, upload the bump-scale constant and the four ice bone matrices, flush the shader state and draw the alphaed then the opaque ice background patch lists
+// NF151 (2026-11-20, q4541): the row-local CShaderRenderManager declaration respelled in place to ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z (0x00988140; Ego_r.pdb 0x00AE47A0 + FableWin.pdb 0x030325A0: const CPixelShader&).
 // NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool) and ?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z (0x0098A7F0; Ego_r.pdb 0x00AE5F80 + FableWin.pdb 0x03032D30: matrix by const reference).
 // Leaf: RenderIceBackground
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -72,7 +73,7 @@ class CPixelShader;
 class CShaderRenderManager {
 public:
     void ApplyVertexShader(const CVertexShader& shader, bool force);   // 0x00988020
-    void ApplyPixelShader(const CPixelShader* shader);                 // 0x00988140
+    void ApplyPixelShader(const CPixelShader& shader);                 // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
     void SetBoneTransform(unsigned long index, const CMatrix3x4& matrix);                        // 0x0098A7F0
 
@@ -200,7 +201,7 @@ void CEngineWaterRenderer::RenderIceBackground(float time)
     NEngineInternal::GPRenderManager->SetTextureUVModeU(1, TEXTURE_UV_MIRROR);
     NEngineInternal::GPRenderManager->SetTextureUVModeV(1, TEXTURE_UV_CLAMP);
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*reinterpret_cast<const CVertexShader*>(IceBackgroundVertexShader), false);
-    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(IceBackgroundPixelShader));
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*reinterpret_cast<const CPixelShader*>(IceBackgroundPixelShader));
     float bump = 0.0f;
     if (EnableBumpMap)
         bump = IceBumpScale * 0.5f;

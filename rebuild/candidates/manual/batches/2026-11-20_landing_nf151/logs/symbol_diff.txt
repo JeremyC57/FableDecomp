@@ -1,0 +1,79 @@
+00988020 new: 2
+    ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z TABLE:00988020
+    ?IsSoftwareProcessingEnabled@CRenderStateManager@@QAE_NXZ
+009894b0 new: 1
+    ?UpdateWorldSpaceTextureTransform@CShaderRenderManager@@AAEXXZ TABLE:009894b0
+00989540 new: 1
+    ?UpdateObjectSpaceFogTransform@CShaderRenderManager@@AAEXXZ TABLE:00989540
+0098b420 new: 1
+    ?AllocateLights@CShaderRenderManager@@AAEXKK@Z TABLE:0098b420
+009e1280 new: 0
+00b44ce0 new: 1
+    ?ResetAlreadyFoundFlags@CEngineLightingManager@@AAEXJJJJ@Z TABLE:00b44ce0
+00b44f20 new: 1
+    ?SetupShaderPointLights@CEngineLightingManager@@QAEXABVCEngineLocalLightArray@@@Z TABLE:00b44f20
+00b44fe0 new: 1
+    ?ClipLightCountAndBuildLightArray@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@PAUCManagerLocalLight@1@JABVC3DVector@@JABVCEnginePrimitiveThemeChannelDesc@@@Z TA
+00b47fd0 new: 20
+    ??$_Construct@PAUCManagerLocalLight@CEngineLightingManager@@PAU12@@std@@YAXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU12@@Z
+    ??$_Destroy@PAPAUCManagerLocalLight@CEngineLightingManager@@@std@@YAXPAPAUCManagerLocalLight@CEngineLightingManager@@0@Z
+    ??$__destroy@PAPAUCManagerLocalLight@CEngineLightingManager@@PAU12@@std@@YAXPAPAUCManagerLocalLight@CEngineLightingManager@@00@Z
+    ??$__destroy_aux@PAPAUCManagerLocalLight@CEngineLightingManager@@@std@@YAXPAPAUCManagerLocalLight@CEngineLightingManager@@0ABU__true_type@0@@Z
+    ??$fill_n@PAPAUCManagerLocalLight@CEngineLightingManager@@IPAU12@@std@@YAPAPAUCManagerLocalLight@CEngineLightingManager@@PAPAU12@IABQAU12@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0CManagerLocalLight@CEngineLightingManager@@QAE@ABVC3DVector@@MMABVCRGBFloatColour@@K@Z
+    ??0__true_type@std@@QAE@XZ
+    ??2CManagerLocalLight@CEngineLightingManager@@SIPAXI@Z
+    ??_7CManagerLocalLight@CEngineLightingManager@@6B@ TABLE:012a2228
+    ??_H@YGXPAXIHP6EPAX0@Z@Z TABLE:004038c0
+    ?Alloc@?$CDynamicObjectHeap@$0EI@$0BA@@@QAEPAXJ@Z
+    ?_M_clear@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXXZ
+    ?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLi
+    ?_M_set@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineL
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?allocate@?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@QAEPAPAUCManagerLocalLight@CEngineLightingManager@@IPBX@Z
+    ?deallocate@?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@QAEXPAPAUCManagerLocalLight@CEngineLightingManager@@I@Z
+    ?push_back@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@QAEXABQAUCManagerLocalLight@CEngi
+    ?size@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@QBEIXZ
+00b54310 new: 0
+00b61690 new: 9
+    ??0CScopedShadersEnable@@QAE@_N0@Z
+    ??1CScopedShadersEnable@@QAE@XZ
+    ?Get@CShaderRenderManager@@SIAAV1@XZ
+    ?GetAsCArray@?$CArray@VCVertexShaderConstant@@@@QAEPAVCVertexShaderConstant@@XZ
+    ?GetZeroSizeArray@?$CArray@VCVertexShaderConstant@@@@AAEPAVCVertexShaderConstant@@XZ
+    ?SetPixelShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?SetVertexShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?front@?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QAEAAVCVertexShaderConstant@@XZ
+    ?size@?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QBEIXZ
+00b63010 new: 0
+00b63260 new: 0
+00b6b0b0 new: 6
+    ??0CScopedShadersEnable@@QAE@_N0@Z
+    ??1CScopedShadersEnable@@QAE@XZ
+    ?Get@CShaderRenderManager@@SIAAV1@XZ
+    ?PeekVertexShaderConstantLayout@CShaderRenderManager@@QAEJXZ
+    ?SetPixelShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?SetVertexShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+00b6e3e0 new: 0
+00b75ca0 new: 0
+00b76bc0 new: 0
+00b77e20 new: 0
+00b88bc0 new: 9
+    ??0CScopedShadersEnable@@QAE@_N0@Z
+    ??1CScopedShadersEnable@@QAE@XZ
+    ?Get@CShaderRenderManager@@SIAAV1@XZ
+    ?GetAsCArray@?$CArray@VCVertexShaderConstant@@@@QAEPAVCVertexShaderConstant@@XZ
+    ?GetZeroSizeArray@?$CArray@VCVertexShaderConstant@@@@AAEPAVCVertexShaderConstant@@XZ
+    ?SetPixelShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?SetVertexShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?front@?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QAEAAVCVertexShaderConstant@@XZ
+    ?size@?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QBEIXZ
+00b99670 new: 1
+    ?SetVertexShaderConstantsDirect@CShaderRenderManager@@QAEXKPBXK@Z
+00bbc0b0 new: 0
+00bbc130 new: 2
+    ?Get@CShaderRenderManager@@SIAAV1@XZ
+    ?PeekVertexShaderConstantLayout@CShaderRenderManager@@QAEJXZ
+01223d00 new: 1
+    ?SingletonInstance@CShaderRenderManager@@0V1@A TABLE:013bc470

@@ -1,4 +1,5 @@
 // CEngineSkyRenderer::RenderSprite(CTexture* texture, const C3DVector& centre, const C3DVector& right, const C3DVector& up, CRGBColour colour) -- draw one camera-facing sky sprite as an indexed quad: four coloured, textured vertices at centre -/+ right +/- up, the sky-sprite pixel and vertex shaders, PrepareForRender(0), then DrawAsIndexedTris
+// NF151 (2026-11-20, q4541): the row-local CShaderRenderManager declaration respelled in place to ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z (0x00988140; Ego_r.pdb 0x00AE47A0 + FableWin.pdb 0x030325A0: const CPixelShader&).
 // NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: RenderSprite
 // Flags: /GS
@@ -60,7 +61,7 @@ class CPixelShader;
 class CShaderRenderManager {
 public:
     void ApplyVertexShader(const CVertexShader& shader, bool force);                  // 0x00988020
-    void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
+    void ApplyPixelShader(const CPixelShader& shader);                                // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, const C4DVector* value);   // 0x00989B50
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
@@ -171,7 +172,7 @@ void CEngineSkyRenderer_Methods::RenderSprite(CTexture* texture, const C3DVector
     indices[3] = 0;
     indices[4] = 2;
     indices[5] = 3;
-    NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)SkySpritePixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*(CPixelShader*)SkySpritePixelShader);
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)SkySpriteVertexShader, false);
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
     NEngineInternal::GPRenderManager->DrawAsIndexedTris(const_cast<const CTexture**>(&texture), 1, verts, 0x18, 4, indices, 2);

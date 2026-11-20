@@ -31,6 +31,9 @@ extern CDynamicObjectHeap<72,16> LOCAL_HEAP_CEngineLightingManager__ManagerLocal
 #include "engine/CEngineComponent.h"
 #include "engine/CEnginePrimitiveThemeChannelDesc.h"
 class C3DBoundingBox;
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_ADDLIGHTPRIMITIVE
+class CEngineInternalPrimitiveLight;
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART
 class CEngineCamera;
 #endif
@@ -183,6 +186,11 @@ public:
     void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
     void DisablePointLights();                                           // 0x00B44D50
     void UpdateGlobalLightingStates();                                   // 0x00B46C80
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_ADDLIGHTPRIMITIVE
+    // NF151 opt-in (row 0x00B47FD0): Ego_r.pdb 0x009BD400 / FableWin.pdb 0x02CEFE10
+    // ?AddLightPrimitive@CEngineLightingManager@@QAEXABVCEngineInternalPrimitiveLight@@@Z (the point-light overload). Declaration only.
+    void AddLightPrimitive(const CEngineInternalPrimitiveLight& light);   // 0x00B47FD0
+#endif
 #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT
     // Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupShaderSpotLight@CEngineLightingManager@@QAEXABVCMatrix3x4@@@Z (0x00B47390).
     void SetupShaderSpotLight(const CMatrix3x4& transform);              // 0x00B47390

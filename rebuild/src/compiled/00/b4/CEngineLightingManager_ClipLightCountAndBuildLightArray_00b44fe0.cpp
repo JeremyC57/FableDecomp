@@ -1,5 +1,10 @@
-// CEngineLightingManager::ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount, const C2DVector& position, long maxLights, const CEnginePrimitiveThemeChannelDesc& theme) -- weight each candidate light by the primitive's theme channels; when there are more lights than fit, score them by weight / max(1, XY distance squared), re-link them sorted by score and keep maxLights; copy the kept light elements (colour scaled by the weight when blending) into a frame-pool CEngineLocalLightArray, or return the shared empty array
-// Leaf: ClipLightCountAndBuildLightArray
+// CEngineLightingManager::ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount, const C3DVector& position, long maxLights, const CEnginePrimitiveThemeChannelDesc& theme) -- weight each candidate light by the primitive's theme channels; when there are more lights than fit, score them by weight / max(1, XY distance squared), re-link them sorted by score and keep maxLights; copy the kept light elements (colour scaled by the weight when blending) into a frame-pool CEngineLocalLightArray, or return the shared empty array
+// Leaf: ?ClipLightCountAndBuildLightArray@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@PAUCManagerLocalLight@1@JABVC3DVector@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+// Name fix (NF151, q4499): Ego_r.pdb 0x009B9EB0 + FableWin.pdb 0x02CF1C00 spell it private, with the nested struct
+//   CEngineLightingManager::CManagerLocalLight and the centre as const C3DVector& (both callers pass a C3DVector: GetLightsInSphere 0x00B45FB0
+//   the sphere centre, GetLightsInArea 0x00B46280 box.GetCenter(), and both already bind this spelling). Respelled in place in the row's
+//   existing local models (the local C2DVector, used only for this parameter, is gone; the XY distance reads X / Y of the C3DVector, the same
+//   code; the nested light's slot-0 virtual takes its Ego_r name Delete).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B44FE0, 485 bytes (+int3 padding), `ret 14h`. Called from 0x00B4626C and 0x00B46648.
 // Callees: CSimpleMemoryPool::Allocate 0x00A5C910 on the engine's frame pool (CEngine 0x01436EA4, pool at retail +0x130;
@@ -14,13 +19,6 @@
 //   lights->Next`) for retail's register use, and its inner test keeps the loop-invariant `maxLights > 0`; the copy loop is
 //   `while (light && i < maxLights)` and the weight scaling an inline CRGBFloatColour::operator*= (retail's strength-reduced
 //   element pointer biased to the colour's B word).
-class C2DVector { public:
-    float X, Y;
-    C2DVector() {}
-    C2DVector(float x, float y) : X(x), Y(y) {}
-    C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
-    float GetLengthSquared() const { return X * X + Y * Y; }
-};
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #include "engine/C3DVector.h"
 class CRGBFloatColour { public:
@@ -48,20 +46,12 @@ class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelBlendFactor;
     unsigned char Pad;
 };
-static inline float DistanceSquaredXY(const C3DVector& a, const C2DVector& b)
+static inline float DistanceSquaredXY(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;
     float dy = a.Y - b.Y;
     return dx * dx + dy * dy;
 }
-struct CManagerLocalLight {
-    virtual void v00();
-    CEngineLocalLightElement LightElement;         // +0x04
-    CManagerLocalLight*      NextLocalLight;       // +0x38
-    float                    ClippingScore;        // +0x3c
-    float                    ThemeWeight;          // +0x40
-    bool                     AlreadyFoundFlag;     // +0x44
-};
 class CSimpleMemoryPool { public:
     void* Allocate(unsigned long size);            // 0x00A5C910
 };
@@ -72,14 +62,23 @@ class CEngine { public:
 namespace NEngineInternal { extern CEngine* GPEngine; }                         // 0x01436EA4
 
 class CEngineLightingManager { public:
+    struct CManagerLocalLight {                    // Ego_r.pdb U, nested
+        virtual void Delete();
+        CEngineLocalLightElement LightElement;     // +0x04
+        CManagerLocalLight*      NextLocalLight;   // +0x38
+        float                    ClippingScore;    // +0x3c
+        float                    ThemeWeight;      // +0x40
+        bool                     AlreadyFoundFlag; // +0x44
+    };
     unsigned char          _pad[0x44ec];
     CEngineLocalLightArray EmptyLightArray;        // +0x44ec
-    CEngineLocalLightArray* ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount, const C2DVector& position,
+private:
+    CEngineLocalLightArray* ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount, const C3DVector& position,
                                                              long maxLights, const CEnginePrimitiveThemeChannelDesc& theme);
 };
 
 CEngineLocalLightArray* CEngineLightingManager::ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount,
-    const C2DVector& position, long maxLights, const CEnginePrimitiveThemeChannelDesc& theme)
+    const C3DVector& position, long maxLights, const CEnginePrimitiveThemeChannelDesc& theme)
 {
     if (theme.ChannelBlendFactor > 0 || lightCount + 1 > maxLights) {
         for (CManagerLocalLight* light = lights; light; light = light->NextLocalLight) {

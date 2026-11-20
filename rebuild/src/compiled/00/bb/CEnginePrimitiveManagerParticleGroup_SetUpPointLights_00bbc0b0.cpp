@@ -1,4 +1,6 @@
 // CEnginePrimitiveManagerParticleGroup::SetUpPointLights() -- once per frame, fetches up to five lights around the current group's bounding sphere, remembers their count and uploads them as shader point lights; returns the light count
+// NF151 (2026-11-20, q4565): the row-local CEngineLightingManager declaration respelled in place to
+//   ?SetupShaderPointLights@CEngineLightingManager@@QAEXABVCEngineLocalLightArray@@@Z (0x00B44F20; Ego_r.pdb 0x009B9D90 + FableWin.pdb 0x02CF0EE0: const reference).
 // Leaf: ?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
@@ -6,7 +8,7 @@
 // Signature from Ego_r.pdb: ?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ.
 // Callees: 0x00B46B90 CEngineLightingManager::GetLightsInSphereFast(const C3DBoundingSphere&, long,
 // const CEnginePrimitiveThemeChannelDesc&) -> CEngineLocalLightArray* (its first byte is the light count),
-// 0x00B44F20 CEngineLightingManager::SetupShaderPointLights(CEngineLocalLightArray*), both on the global lighting
+// 0x00B44F20 CEngineLightingManager::SetupShaderPointLights(const CEngineLocalLightArray&), both on the global lighting
 // manager @ 0x01436E9C.
 // Layout: PDB CEnginePrimitiveManagerParticleGroup (0x28): CEnginePrimitiveManager {vptr, SceneList +4, Enable +8},
 // PointLightsSet +0xc, PointLightCount (signed char) +0xd, CurrentWorldPos +0xe (unaligned, as the retail word loads at
@@ -31,7 +33,7 @@ class CEngineLightingManager {
 public:
     CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& sphere, long maxLights,
                                                   const CEnginePrimitiveThemeChannelDesc& channels);   // 0x00B46B90
-    void SetupShaderPointLights(CEngineLocalLightArray* lights);   // 0x00B44F20
+    void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
 };
 namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; }   // 0x01436E9C ?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A
 
@@ -65,7 +67,7 @@ long CEnginePrimitiveManagerParticleGroup::SetUpPointLights()
         CEngineLocalLightArray* lights = NEngineInternal::GPLightingManager->GetLightsInSphereFast(
             C3DBoundingSphere(CurrentWorldPos, CurrentBSRadius), 5, channels);
         PointLightCount = lights->Count;
-        NEngineInternal::GPLightingManager->SetupShaderPointLights(lights);
+        NEngineInternal::GPLightingManager->SetupShaderPointLights(*lights);
         PointLightsSet = true;
     }
     return PointLightCount;

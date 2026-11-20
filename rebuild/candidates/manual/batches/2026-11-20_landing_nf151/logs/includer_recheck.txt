@@ -1,0 +1,4 @@
+009bef80	no verdict line
+00be6f70	00be6f70   DIFFER(198v2654) PASS   CLandscapeBackgroundPatch::Render
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground
+good 156 bad 3

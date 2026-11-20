@@ -1,5 +1,8 @@
 // CShaderRenderManager::UpdateWorldSpaceTextureTransform() -- upload each active texture transform (at most four float4 rows) to its layout register range and move the texture dirty bit from 0x1000 to 0x800
-// Leaf: UpdateWorldSpaceTextureTransform
+// Leaf: ?UpdateWorldSpaceTextureTransform@CShaderRenderManager@@AAEXXZ
+// Name fix (NF151, 2026-11-20): Ego_r.pdb + FableWin.pdb ?UpdateWorldSpaceTextureTransform@CShaderRenderManager@@AAEXXZ (private, as engine/CShaderRenderManager.h);
+//   the declaration in this row's existing local model moves under `private:` in place; every landed referencer (009e1280, 00ba1b00,
+//   00ba5260, 00bb2540) binds the AAE spelling after NF151.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009894B0, length 144 bytes (137 + int3 padding).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, +0x178).
 // Shape: `for (i = 0; i < TextureTransformCount; ++i)` (counter homed in the frame word, edi = i*12, ebx the
@@ -130,6 +133,7 @@ class CShaderRenderManager { public:
     unsigned long                TextureTransformCount;     // +0x38c
     unsigned char                _pad390[0x3d8 - 0x390];
     unsigned int                 UpdateFlags;               // +0x3d8
+private:
     void UpdateWorldSpaceTextureTransform();
 };
 

@@ -1,4 +1,9 @@
 // CEnginePrimitiveManagerRepeatedStaticMeshes::UploadShaderConstants(CEngineInternalPrimitiveRepeatedStaticMesh&, const C4DVector*, const C4DVector*, long) -- sets vertex-shader constants 1 (fade-scaled alpha transform) and 2 (1, -1, 1, 0), then uploads the object offsets and matrices to their constant registers
+// NF151 (2026-11-20, q4651): ported onto engine/CShaderRenderManager.h. The private SetVSConstants 0x0098B930 (Ego_r.pdb / FableWin.pdb
+//   ?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z) is reached as retail's other outside callers reach it, through the public inline
+//   ?SetVertexShaderConstantsDirect@CShaderRenderManager@@QAEXKPBXK@Z (opt-in FABLE_RETAIL_CSHADERRENDERMANAGER_SETVERTEXSHADERCONSTANTSDIRECT_INLINE,
+//   the landed 0x00B99300 form; the header comment cites UploadShaderConstants 0x00B996DE / 0x00B996FC); the local CShaderRenderManager and
+//   C4DVector models are gone.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B99670, length 147 bytes (+ int3 padding).
 // Signature from Ego_r.pdb: ?UploadShaderConstants@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PBVC4DVector@@1J@Z
 // (`ret 10h`, `this` unused).
@@ -13,7 +18,6 @@
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
 
-class C4DVector { public: float X, Y, Z, W; };
 struct SViewRecord_01436e80 {
     unsigned char _pad[0x88];
     float         m_fadeDistanceScale;                   // +0x88
@@ -35,11 +39,8 @@ namespace NEngineInternal { extern CEnginePrimitiveRenderer* GPPrimitiveRenderer
 #include "engine/CEngineVSConstantLayoutRepeatedMesh.h"
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
-class CShaderRenderManager {
-public:
-    void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
-    void SetVSConstants(long reg, const void* data, unsigned long count);                         // 0x0098B930
-};
+#define FABLE_RETAIL_CSHADERRENDERMANAGER_SETVERTEXSHADERCONSTANTSDIRECT_INLINE
+#include "engine/CShaderRenderManager.h"
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; }     // 0x01436E14
 
 struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveManagerRepeatedStaticMeshes {
@@ -54,6 +55,6 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::UploadShaderConstants(
         1, primitive.AlphaTransformMult / ((SViewRecord_01436e80*)NEngineInternal::GPPrimitiveRenderer)->m_fadeDistanceScale, 0.0f, 0.0f,
         primitive.AlphaTransformOffset);
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(2, 1.0f, -1.0f, 1.0f, 0.0f);
-    NEngineInternal::GPShaderRenderManager->SetVSConstants(NEngineInternal::GPResourceManager->PeekVSConstantLayoutRepeatedMesh().ObjectMatricies.Offset, matrices, count);
-    NEngineInternal::GPShaderRenderManager->SetVSConstants(NEngineInternal::GPResourceManager->PeekVSConstantLayoutRepeatedMesh().ObjectOffsets.Offset, offsets, count);
+    NEngineInternal::GPShaderRenderManager->SetVertexShaderConstantsDirect(NEngineInternal::GPResourceManager->PeekVSConstantLayoutRepeatedMesh().ObjectMatricies.Offset, matrices, count);
+    NEngineInternal::GPShaderRenderManager->SetVertexShaderConstantsDirect(NEngineInternal::GPResourceManager->PeekVSConstantLayoutRepeatedMesh().ObjectOffsets.Offset, offsets, count);
 }

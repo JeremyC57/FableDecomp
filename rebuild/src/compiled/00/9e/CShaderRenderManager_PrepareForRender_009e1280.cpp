@@ -1,4 +1,7 @@
 // CShaderRenderManager::PrepareForRender(unsigned long renderFlags) -- before a draw, push every piece of shader state whose dirty bit is set (vertex-shader constants, pixel shader, transforms, fog, lights, ambient...), steered by the draw's render flags
+// NF151 (2026-11-20, q4649): in place in the existing local model, three callees move under `private:` to their Ego_r.pdb / FableWin.pdb
+//   spellings ?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z (0x00989CB0), ?UpdateWorldSpaceTextureTransform@..@@AAEXXZ (0x009894B0),
+//   ?UpdateObjectSpaceFogTransform@..@@AAEXXZ (0x00989540); every other landed binder (0x00BA1B00 ...) already binds them.
 // Leaf: PrepareForRender
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E1280, length 411 bytes (`ret 4`).
 // Callees: the CShaderRenderManager updaters named in the model (manifest labels; 0x0098A8E0 is propagated from
@@ -34,13 +37,13 @@ class CShaderRenderManager { public:
     unsigned long DirtyFlags;                      // +0x3d8
 private:
     void UpdateBoneTransform();                    // 0x0098A8E0 Ego_r.pdb / FableWin.pdb ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ (private; NF127 q4545, was UpdateFlag20State)
-public:
-    void UpdateWorldSpaceTextureTransform();       // 0x009894B0
+private:
+    void UpdateWorldSpaceTextureTransform();       // 0x009894B0 (Ego_r + FableWin private, NF151)
 private:
     void UpdateObjectSpaceTextureTransform();      // 0x00989230
-public:
-    void UpdateObjectSpaceFogTransform();          // 0x00989540
-    void UpdateObjectSpaceLighting(unsigned long renderFlags);   // 0x00989CB0
+private:
+    void UpdateObjectSpaceFogTransform();          // 0x00989540 (Ego_r + FableWin private, NF151)
+    void UpdateObjectSpaceLighting(unsigned long renderFlags);   // 0x00989CB0 (Ego_r + FableWin private, NF151 q4649)
 private:
     void UpdateLocalisedSphereMapping();           // 0x00988E80 (FableWin.pdb + Ego_r.pdb private)
 public:

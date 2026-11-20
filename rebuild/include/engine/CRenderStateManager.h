@@ -794,7 +794,15 @@ public:
     void SetSoftwareVertexProcessing(bool);
     void SetShadowFunc(SHADOW_FUNC);
     void SetSolidOffsetEnable(bool);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_ISSOFTWAREPROCESSINGENABLED_INLINE
+    // NF151 opt-in (row 0x00988020 CShaderRenderManager::ApplyVertexShader): FableWin.pdb ?IsSoftwareProcessingEnabled@CRenderStateManager@@QAE_NXZ
+    // (0x03031E10, inline; no Ego_r.pdb or Fable.exe copy) expanded in place: the SoftwareVertexProcessing state's current value
+    // (core +0x2908 = DeviceState +0x2818 + 0xF0, CStateInfo::CurrentState) tested non-zero (`mov edx,[ecx+2908h] ; test edx,edx ; setne dl`,
+    // 0x00988042). Body only, no layout change.
+    bool IsSoftwareProcessingEnabled() { return DeviceState.SoftwareVertexProcessing.CurrentState != 0; }
+#else
     bool IsSoftwareProcessingEnabled();
+#endif
     void SetStippleEnable(bool);
     void SetStipplePattern(unsigned long *);
     void SetMultiSampleMode(MULTI_SAMPLE_MODE);

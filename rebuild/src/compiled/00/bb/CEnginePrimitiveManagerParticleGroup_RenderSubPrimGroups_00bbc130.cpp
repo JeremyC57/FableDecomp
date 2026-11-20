@@ -1,4 +1,7 @@
 // CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPrimitiveBase& primitive, ERenderPassType pass, const CMatrix3x4& transform) -- render a particle group's member primitive by type: nested groups recurse over their children, sprites and sprite trails go straight to their managers (the trail restoring the vertex-shader constant layout), everything else through its manager's virtual sub-primitive render
+// NF151 (2026-11-20, q4669): the local CShaderRenderManager model and its `g_ShaderRenderManager` global are replaced by
+//   engine/CShaderRenderManager.h: the singleton is the private static ?SingletonInstance@CShaderRenderManager@@0V1@A (0x013BC470) reached through
+//   the inline ?Get@CShaderRenderManager@@SIAAV1@XZ, the current layout through the inline PeekVertexShaderConstantLayout (+0x08).
 // Leaf: ?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
 // NF95 (part 2, q11381): 0x01436EB0 is NEngineInternal::GPVideoOptions (FableWin.pdb public ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B,
 //   FableWin 0x04AC8094; Ego_r.pdb data order GPLightingManager / GPEngine / GPVideoOptions; CEngine::SetVideoOptions 0x00B24690 stores
@@ -73,13 +76,10 @@ class CEngineVideoOptions { public:                  // Ego_r.pdb, 0x34 bytes
 };
 namespace NEngineInternal { extern const CEngineVideoOptions* GPVideoOptions; }   // 0x01436EB0 (NF95 q11381: FableWin.pdb ?GPVideoOptions@NEngineInternal@@3PBVCEngineVideoOptions@@B)
 
-class CShaderRenderManager {
-public:
-    unsigned char _pad00[8];
-    long          CurrentVSConstantLayoutIndex;     // +0x08
-    void SetVertexShaderConstantLayout(long layout);   // 0x0098B5E0
-};
-extern CShaderRenderManager g_ShaderRenderManager;  // 0x013BC470
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT
+#include "engine/CShaderRenderManager.h"
 
 struct SGroupMember {
     long                          Key;              // +0x08 of the node
@@ -123,9 +123,9 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
         CEnginePrimitiveManagerParticleSpriteTrailGroup* manager = (CEnginePrimitiveManagerParticleSpriteTrailGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(29);
         CEngineSubPrimitiveBase subPrimitive(primitive);
         manager->RenderSingleSpriteTrail(&subPrimitive, pass);
-        long layout = g_ShaderRenderManager.CurrentVSConstantLayoutIndex;
-        g_ShaderRenderManager.SetVertexShaderConstantLayout(5);
-        g_ShaderRenderManager.SetVertexShaderConstantLayout(layout);
+        long layout = CShaderRenderManager::Get().PeekVertexShaderConstantLayout();
+        CShaderRenderManager::Get().SetVertexShaderConstantLayout(5);
+        CShaderRenderManager::Get().SetVertexShaderConstantLayout(layout);
         break;
     }
     case 30: {

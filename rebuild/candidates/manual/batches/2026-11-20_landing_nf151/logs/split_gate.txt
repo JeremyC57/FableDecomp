@@ -1,0 +1,18 @@
+UNGRADED 00987fe0 00bf4570
+UNGRADED 00988020 00be6f70
+UNGRADED 00988020 00bf4570
+UNGRADED 009880e0 00bf4570
+UNGRADED 00988110 00bf4570
+UNGRADED 00988140 00be6f70
+UNGRADED 00988140 00bf4570
+existing 00988140 new= ['?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z'] | others: {'?ApplyPixelShader@CShaderRenderManager@@QAEXPAVCPixelShader@@@Z': ['00bb8090']}
+UNGRADED 00988190 00bf4570
+existing 00988290 new= ['?ResetWorldTransform@CShaderRenderManager@@AAEXXZ', '?ResetWorldTransform@CShaderRenderManager@@QAEXXZ'] | others: {}
+UNGRADED 0098b930 00be6f70
+UNGRADED 0098b930 00bf4570
+UNGRADED 00b44f20 00bf4570
+existing 00b48f90 new= ['?CreateMoreBlocks@?$CDynamicObjectHeap@$0EI@$0BA@@@AAEXXZ'] | others: {'?CreateMoreBlocks@?$CDynamicObjectHeap@$0EI@$0BA@@@QAEXXZ': ['00b49610']}
+UNGRADED 013bc470 009bef80
+UNGRADED 013bc470 00bf4570
+existing 01436fb0 new= ['?LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight@@3V?$CDynamicObjectHeap@$0EI@$0BA@@@A'] | others: {'?g_LocalLightHeap@@3U?$CDynamicObjectHeap@$0EI@$0BA@@@A': ['00b47980'], '?LocalLightHeap@@3V?$CDynamicObjectHeap@$0EI@$0BA@@@A': ['00b49a40'], '?g_LocalLightHeap@@3V?$CDynamicObjectHeap@$0EI@$0BA@@@A': ['00b49fe0'], '?g_AutoTinyFieldMethodsObject_01436fb0@@3UAutoTinyFieldMethodsTarget@@': ['0122ad20']}
+gate: 0 created split(s)

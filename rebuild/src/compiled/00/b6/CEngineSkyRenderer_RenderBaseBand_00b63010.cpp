@@ -1,4 +1,5 @@
 // CEngineSkyRenderer::RenderBaseBand() -- draw the sky's base band inside a render-state capture block: apply the base-band vertex/pixel shaders, upload the current environment's base-band colour to user vertex constant 0, clear the tracked states +0x28b8/+0x28cc, flush the shader state (PrepareForRender(0) inlined) and draw the band's 0x24 indexed triangles
+// NF151 (2026-11-20, q4541): the row-local CShaderRenderManager declaration respelled in place to ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z (0x00988140; Ego_r.pdb 0x00AE47A0 + FableWin.pdb 0x030325A0: const CPixelShader&).
 // NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: RenderBaseBand
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B63010, length 592 bytes (body 0x245 + int3 padding), plain `ret`.
@@ -55,7 +56,7 @@ class CPixelShader;
 class CShaderRenderManager {
 public:
     void ApplyVertexShader(const CVertexShader& shader, bool force);                  // 0x00988020
-    void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
+    void ApplyPixelShader(const CPixelShader& shader);                                // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, const C4DVector* value);   // 0x00989B50
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
@@ -165,7 +166,7 @@ void CEngineSkyRenderer_Methods::RenderBaseBand()
     CRenderStateScopedCaptureBlock capture_block;
     SEnvironmentSettings* settings = g_pEngineState_01436e8c->m_pEnvironmentProvider->GetCurrentEnvironment()->GetSettings();
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)BaseBandVertexShader, false);
-    NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)BaseBandPixelShader);
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*(CPixelShader*)BaseBandPixelShader);
     SSkySettings* sky = settings->m_pSky;
     C4DVector colour = sky->BaseBandColour;
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, &colour);

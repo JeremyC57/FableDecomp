@@ -4,6 +4,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+// NF151 (q11738): AllocateLights is private now (Ego_r / FableWin AAE); the test opens access to drive it. Self-contained test.
+#define private public
 // ---- source (verbatim) ----
 // CShaderRenderManager::AllocateLights(unsigned long numLights, unsigned long numEntriesPerLight) -- grow the light table (keeping the existing lights, defaulting new ones) and the per-light entry buffer from the frame pool, and size the light-constant vector
 // Shape: the STLport vector<CLight>(n) ctor 0x0098CCC0 and __copy 0x0098C2F0 are template instantiations of this TU, so
@@ -11,7 +13,10 @@ static int fails = 0;
 //   homes the first copy's tag in the dead numLights argument slot and lays the resize value over the old-lights vector
 //   (0x48 frame). The pool guard is a nested conditional (count ? (64-bit product > 0xFFFFFFFF ? 0 : Allocate) : 0),
 //   which drops the never-taken jb of the && spelling.
-// Leaf: AllocateLights
+// Leaf: ?AllocateLights@CShaderRenderManager@@AAEXKK@Z
+// Name fix (NF151, q11738): Ego_r.pdb 0x00AE7900 + FableWin.pdb 0x03038AA0 ?AllocateLights@CShaderRenderManager@@AAEXKK@Z (private, as
+//   engine/CShaderRenderManager.h); the declaration in this row's existing local model moves under `private:` in place (its only landed
+//   caller 0x0098B5E0 already binds the AAE spelling). The row stays a local model (the stand-in callees own their addresses).
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 struct CLight {                                    // 0x38 bytes
@@ -106,6 +111,7 @@ class CShaderRenderManager { public:
     CSimpleMemoryPool Pool;                        // +0x178
     unsigned char     _pad179[0x27];
     C4DVectorVector   LightConstants;              // +0x1a0
+private:
     void AllocateLights(unsigned long numLights, unsigned long numEntriesPerLight);
 };
 

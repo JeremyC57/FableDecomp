@@ -20695,7 +20695,7 @@ address	name	length	bytes
 0121eca0	_static_init::g_CCharString_013bad28	22	b928ad3b01e806f877ff68b0992201e808261eff59c3
 0121ef30	_static_init::g_CStatic_009e5200_013badb4	22	b9b4ad3b01e8c6627cff68209b2201e878231eff59c3
 01223ce0	_static_init::g_CStatic_0098dd10_013bc444	22	b944c43b01e826a076ff68b0a42201e8c8d51dff59c3
-01223d00	_static_init::g_CShaderRenderManager_013bc470	22	b970c43b01e8f66d76ff68c0a42201e8a8d51dff59c3
+01223d00	CShaderRenderManager::`dynamic initializer for 'SingletonInstance''	22	b970c43b01e8f66d76ff68c0a42201e8a8d51dff59c3
 01223d20	_static_init::g_CThreadedFileManager_013bc870	22	b970c83b01e876b676ff68d0a42201e888d51dff59c3
 01223d80	_static_init::NFile::CurrentPath	22	b910ca3b01e8467177ff68e0a42201e828d51dff59c3
 01223ff0	_$E1 = dynamic initializer for 'GSystemManager'	22	b918a63c01e8463478ff6880a62201e8b8d21dff59c3

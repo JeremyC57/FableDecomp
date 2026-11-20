@@ -7,6 +7,10 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_TYPED
+#include "engine/C3DVector.h"
+#include "engine/CRGBFloatColour.h"
+#endif
 
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveLight {
@@ -29,6 +33,12 @@ public:
     unsigned char _pad_0x3c[0x4];                            // +0x3c
     unsigned char _pad_0x40[0x4];                            // +0x40
     unsigned char _pad_0x44[0x4];                            // +0x44
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_TYPED
+    // NF151 opt-in (row 0x00B47FD0 CEngineLightingManager::AddLightPrimitive): the two Ego_r.pdb members typed (C3DVector WorldPos +0x48,
+    // CRGBFloatColour Colour +0x54, the PDB types the flattened names spell out); same offsets and size.
+    C3DVector       WorldPos;                                // +0x48
+    CRGBFloatColour Colour;                                  // +0x54
+#else
     float         WorldPos_X;                                // +0x48 C3DVector::X
     float         WorldPos_Y;                                // +0x4c C3DVector::Y
     float         WorldPos_Z;                                // +0x50 C3DVector::Z
@@ -36,23 +46,29 @@ public:
     float         Colour_G;                                  // +0x58 CRGBFloatColour::G
     float         Colour_B;                                  // +0x5c CRGBFloatColour::B
     float         Colour_A;                                  // +0x60 CRGBFloatColour::A
+#endif
     float         Radius;                                    // +0x64
     float         SpotRadius;                                // +0x68
     unsigned long ChannelMask;                               // +0x6c
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveLight) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_X) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_Y) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_Z) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_R) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_G) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_B) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_A) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Radius) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, SpotRadius) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, ChannelMask) == 0x6c);
+FABLE_STATIC_ASSERT_AT(45, sizeof(CEngineInternalPrimitiveLight) == 0x70);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CEngineInternalPrimitiveLight, __vftable) == 0x0);
+#ifndef FABLE_RETAIL_CENGINEINTERNALPRIMITIVELIGHT_TYPED
+FABLE_STATIC_ASSERT_AT(47, offsetof(CEngineInternalPrimitiveLight, WorldPos_X) == 0x48);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CEngineInternalPrimitiveLight, WorldPos_Y) == 0x4c);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CEngineInternalPrimitiveLight, WorldPos_Z) == 0x50);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CEngineInternalPrimitiveLight, Colour_R) == 0x54);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CEngineInternalPrimitiveLight, Colour_G) == 0x58);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CEngineInternalPrimitiveLight, Colour_B) == 0x5c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CEngineInternalPrimitiveLight, Colour_A) == 0x60);
+#else
+FABLE_STATIC_ASSERT_AT(47, offsetof(CEngineInternalPrimitiveLight, WorldPos) == 0x48);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CEngineInternalPrimitiveLight, Colour) == 0x54);
+#endif
+FABLE_STATIC_ASSERT_AT(54, offsetof(CEngineInternalPrimitiveLight, Radius) == 0x64);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CEngineInternalPrimitiveLight, SpotRadius) == 0x68);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CEngineInternalPrimitiveLight, ChannelMask) == 0x6c);
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVELIGHT_H

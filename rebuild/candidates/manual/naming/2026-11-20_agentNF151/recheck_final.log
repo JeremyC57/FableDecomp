@@ -1,0 +1,143 @@
+addr       parity           behav  name
+00988020   MATCH            PASS   CShaderRenderManager::ApplyVertexShader
+009894b0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+009894b0   WARN SHARED_HEADER_AVAILABLE CMatrix4x4 (engine/CMatrix4x4.h)
+009894b0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+009894b0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+009894b0   MATCH            PASS   CShaderRenderManager::UpdateWorldSpaceTextureTransform
+00989540   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00989540   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00989540   WARN SHARED_HEADER_AVAILABLE CMatrix4x4 (engine/CMatrix4x4.h)
+00989540   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00989540   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00989540   MATCH            PASS   CShaderRenderManager::UpdateObjectSpaceFogTransform
+0098b420   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+0098b420   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool (engine/CSimpleMemoryPool.h)
+0098b420   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+0098b420   WARN RELOC_NAME: ??0CLightVector@@QAE@K@Z -> 0098ccc0 labelled 'std::vector<CLightInfo>::vector'
+0098b420   WARN RELOC_NAME: ?LightCopy@@YIPAUCLight@@PBU1@0PAU1@ABUrandom_access_iterator_tag@@PAH@Z -> 0098c2f0 labelled '_global::Copy_SElement56_0098c2f0'
+0098b420   RELOCATION_MATCH PASS   CShaderRenderManager::AllocateLights
+009e1280   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+009e1280   RELOCATION_MATCH PASS   CShaderRenderManager::PrepareForRender
+00b44ce0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b44ce0   MATCH            PASS   CEngineLightingManager::ResetAlreadyFoundFlags
+00b44f20   WARN SHARED_HEADER_AVAILABLE CShaderLight (engine/CShaderLight.h)
+00b44f20   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b44f20   RELOCATION_MATCH PASS   CEngineLightingManager::SetupShaderPointLights
+00b44fe0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b44fe0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc (engine/CEnginePrimitiveThemeChannelDesc.h)
+00b44fe0   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool (engine/CSimpleMemoryPool.h)
+00b44fe0   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b44fe0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b44fe0   RELOCATION_MATCH PASS   CEngineLightingManager::ClipLightCountAndBuildLightArray
+00b47fd0   RELOCATION_MATCH PASS   CEngineLightingManager::AddLightPrimitive
+00b54310   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b54310   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b54310   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b54310   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b54310   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b54310   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b54310   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b54310   RELOCATION_MATCH PASS   CEngineWeatherRenderer::RenderMist
+00b61690   RELOCATION_MATCH PASS   CEngineScreenEffectGlowRenderer::ShowGlowTexture
+00b63010   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b63010   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b63010   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b63010   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b63010   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b63010   WARN SHARED_HEADER_AVAILABLE CEnvironment (engine/CEnvironment.h)
+00b63010   RELOCATION_MATCH PASS   CEngineSkyRenderer::RenderBaseBand
+00b63260   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00b63260   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b63260   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00b63260   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b63260   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b63260   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b63260   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b63260   RELOCATION_MATCH PASS   CEngineSkyRenderer::RenderSprite
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b6b0b0   RELOCATION_MATCH PASS   CEngineLandscapeRenderer::Render
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b6e3e0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b6e3e0   RELOCATION_MATCH PASS   CEngineWaterRenderer::RenderIceBumpMap
+00b75ca0   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b75ca0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b75ca0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b75ca0   RELOCATION_MATCH PASS   CEngineWaterRenderer::RenderIceBackground
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00b76bc0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b76bc0   WARN RELOC_NAME: ?g_renderStateValue_01396dc8@@3KA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b76bc0   RELOCATION_MATCH PASS   CEngineWaterRenderer::RenderBackground
+00b77e20   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CWaterPatchMesh (engine/CWaterPatchMesh.h)
+00b77e20   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b77e20   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b77e20   RELOCATION_MATCH PASS   CEngineWaterRenderer::RenderSeaNonReflectiveForeground
+00b88bc0   RELOCATION_MATCH PASS   CEngineScreenEffectDisplacementRenderer::ShowDisplacementTexture
+00b99670   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedStaticMeshes::UploadShaderConstants
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc (engine/CEnginePrimitiveThemeChannelDesc.h)
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00bbc0b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleGroup (engine/CEnginePrimitiveManagerParticleGroup.h)
+00bbc0b0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::SetUpPointLights
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveBase (engine/CEngineSubPrimitiveBase.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteGroup (engine/CEnginePrimitiveManagerParticleSpriteGroup.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteTrailGroup (engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00bbc130   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleGroup (engine/CEnginePrimitiveManagerParticleGroup.h)
+00bbc130   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups
+01223d00   WARN RELOC_CONFLICT: _$E2 -> 0122a4c0 here, 01228930 in landed 01219f00
+01223d00   WARN RELOC_NAME: _$E2 -> 0122a4c0 labelled '_global::AtexitDtor_CShaderRenderManager_at_013bc470_0122a4c0'
+01223d00   RELOCATION_MATCH PASS   _static_init::g_CShaderRenderManager_013bc470
+
+WINS: 23
+  00988020 MATCH CShaderRenderManager::?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z
+  009894b0 MATCH CShaderRenderManager::?UpdateWorldSpaceTextureTransform@CShaderRenderManager@@AAEXXZ
+  00989540 MATCH CShaderRenderManager::?UpdateObjectSpaceFogTransform@CShaderRenderManager@@AAEXXZ
+  0098b420 RELOCATION_MATCH CShaderRenderManager::?AllocateLights@CShaderRenderManager@@AAEXKK@Z
+  009e1280 RELOCATION_MATCH CShaderRenderManager::PrepareForRender
+  00b44ce0 MATCH CEngineLightingManager::?ResetAlreadyFoundFlags@CEngineLightingManager@@AAEXJJJJ@Z
+  00b44f20 RELOCATION_MATCH CEngineLightingManager::?SetupShaderPointLights@CEngineLightingManager@@QAEXABVCEngineLocalLightArray@@@Z
+  00b44fe0 RELOCATION_MATCH CEngineLightingManager::?ClipLightCountAndBuildLightArray@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@PAUCManagerLocalLight@1@JABVC3DVector@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+  00b47fd0 RELOCATION_MATCH CEngineLightingManager::?AddLightPrimitive@CEngineLightingManager@@QAEXABVCEngineInternalPrimitiveLight@@@Z
+  00b54310 RELOCATION_MATCH CEngineWeatherRenderer::RenderMist
+  00b61690 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::ShowGlowTexture
+  00b63010 RELOCATION_MATCH CEngineSkyRenderer::RenderBaseBand
+  00b63260 RELOCATION_MATCH CEngineSkyRenderer::RenderSprite
+  00b6b0b0 RELOCATION_MATCH CEngineLandscapeRenderer::Render
+  00b6e3e0 RELOCATION_MATCH CEngineWaterRenderer::RenderIceBumpMap
+  00b75ca0 RELOCATION_MATCH CEngineWaterRenderer::RenderIceBackground
+  00b76bc0 RELOCATION_MATCH CEngineWaterRenderer::?RenderBackground@CEngineWaterRenderer@@AAEXM@Z
+  00b77e20 RELOCATION_MATCH CEngineWaterRenderer::RenderSeaNonReflectiveForeground
+  00b88bc0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::ShowDisplacementTexture
+  00b99670 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::UploadShaderConstants
+  00bbc0b0 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?SetUpPointLights@CEnginePrimitiveManagerParticleGroup@@QAEJXZ
+  00bbc130 RELOCATION_MATCH CEnginePrimitiveManagerParticleGroup::?RenderSubPrimGroups@CEnginePrimitiveManagerParticleGroup@@IAEXAAVCEngineInternalPrimitiveBase@@W4ERenderPassType@@ABVCMatrix3x4@@@Z
+  01223d00 RELOCATION_MATCH _static_init::_$E1

@@ -1,4 +1,7 @@
 // CEngineLandscapeRenderer::Render(const CEngineRenderParams& params) -- render the landscape for one pass: force vertex and
+// NF151 (2026-11-20, q4669): the local CShaderRenderManager model, its `g_ShaderRenderManager` global and the CShaderStatesScope helper are
+//   replaced by engine/CShaderRenderManager.h + engine/CScopedShadersEnable.h (the landed 0x00B5E700 / 0x00B5FAB0 form): the singleton is the
+//   private static ?SingletonInstance@CShaderRenderManager@@0V1@A (0x013BC470) through the inline Get(), the layout through PeekVertexShaderConstantLayout.
 //   pixel shaders on for the scope (restored on exit), open a render-state capture block, then for the foreground pass (0x40)
 //   render the sorted patches and (if enabled) every visible map's foreground under its own capture block with vertex-shader
 //   constant layout 2; for the background pass (4) set the common states and (if enabled) update the lighting and render every
@@ -41,57 +44,11 @@ class CRenderStateManager { public:
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
-class CShaderRenderManager { public:
-    unsigned char _pad000[0x08];
-    long          VertexShaderConstantLayout;    // +0x08
-    unsigned char _pad00c[0x390 - 0x0c];
-    bool          VertexShadersEnabled;          // +0x390
-    bool          PixelShadersEnabled;           // +0x391
-    unsigned char _pad392[0x3a0 - 0x392];
-    void EnableVertexShaders();                  // 0x00987FE0
-    void DisableVertexShaders();                 // 0x009880E0
-    void EnablePixelShaders();                   // 0x00988110
-    void DisablePixelShaders();                  // 0x00988190
-    void SetVertexShaderConstantLayout(long layout);   // 0x0098B5E0
-    void SetVertexShadersEnabled(bool enable, bool* old)
-    {
-        if (old)
-            *old = VertexShadersEnabled;
-        if (enable != VertexShadersEnabled) {
-            if (enable)
-                EnableVertexShaders();
-            else
-                DisableVertexShaders();
-        }
-    }
-    void SetPixelShadersEnabled(bool enable, bool* old)
-    {
-        if (old)
-            *old = PixelShadersEnabled;
-        if (enable != PixelShadersEnabled) {
-            if (enable)
-                EnablePixelShaders();
-            else
-                DisablePixelShaders();
-        }
-    }
-};
-extern CShaderRenderManager g_ShaderRenderManager;   // 0x013BC470
-
-struct CShaderStatesScope {
-    bool OldVertexShaders;                       // +0x00
-    bool OldPixelShaders;                        // +0x01
-    CShaderStatesScope(bool vertexShaders, bool pixelShaders)
-    {
-        g_ShaderRenderManager.SetVertexShadersEnabled(vertexShaders, &OldVertexShaders);
-        g_ShaderRenderManager.SetPixelShadersEnabled(pixelShaders, &OldPixelShaders);
-    }
-    ~CShaderStatesScope()
-    {
-        g_ShaderRenderManager.SetVertexShadersEnabled(OldVertexShaders, 0);
-        g_ShaderRenderManager.SetPixelShadersEnabled(OldPixelShaders, 0);
-    }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT
+#include "engine/CShaderRenderManager.h"
+#include "engine/CScopedShadersEnable.h"
 
 class CEngineLandscapeMap { public:
     void RenderForeground();                     // 0x00BDC2D0
@@ -139,7 +96,7 @@ public:
 void CEngineLandscapeRenderer::Render(const CEngineRenderParams& params)
 {
     CEngineMapList& maps = NEngineInternal::GPEngineWorldMap->VisibleMapList;
-    CShaderStatesScope shaderStates(true, true);
+    CScopedShadersEnable shaderStates(true, true);
     g_pRenderStateManager->CreateCaptureBlock();
     switch (params.Pass) {
     case 0x40:
@@ -148,11 +105,11 @@ void CEngineLandscapeRenderer::Render(const CEngineRenderParams& params)
             g_pRenderStateManager->CreateCaptureBlock();
             SetupCommonStates();
             SetupForegroundStates();
-            long layout = g_ShaderRenderManager.VertexShaderConstantLayout;
-            g_ShaderRenderManager.SetVertexShaderConstantLayout(2);
+            long layout = CShaderRenderManager::Get().PeekVertexShaderConstantLayout();
+            CShaderRenderManager::Get().SetVertexShaderConstantLayout(2);
             for (_List_iterator it = maps.begin(); it != maps.end(); ++it)
                 (*it)->LandscapeMap->RenderForeground();
-            g_ShaderRenderManager.SetVertexShaderConstantLayout(layout);
+            CShaderRenderManager::Get().SetVertexShaderConstantLayout(layout);
             g_pRenderStateManager->RestoreCaptureBlock();
         }
         PostRenderClearRenderStates();

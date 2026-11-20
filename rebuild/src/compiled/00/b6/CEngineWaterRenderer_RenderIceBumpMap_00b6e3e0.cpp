@@ -1,4 +1,5 @@
 // CEngineWaterRenderer::RenderIceBumpMap() -- apply the ice bump-map shaders and draw the 14-vertex bump quad twice, first with the X/Y and then the Y/Z channel-select pixel constants, setting the blend states between the passes and clearing the first one after
+// NF151 (2026-11-20, q4541): the row-local CShaderRenderManager declaration respelled in place to ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z (0x00988140; Ego_r.pdb 0x00AE47A0 + FableWin.pdb 0x030325A0: const CPixelShader&).
 // NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: RenderIceBumpMap
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -50,7 +51,7 @@ class CPixelShader;
 class CShaderRenderManager {
 public:
     void ApplyVertexShader(const CVertexShader& shader, bool force);   // 0x00988020
-    void ApplyPixelShader(const CPixelShader* shader);                 // 0x00988140
+    void ApplyPixelShader(const CPixelShader& shader);                 // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
 
     void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
@@ -156,7 +157,7 @@ class CEngineWaterRenderer { public:                      // retail layout (thre
 void CEngineWaterRenderer::RenderIceBumpMap()
 {
     NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*reinterpret_cast<const CVertexShader*>(IceBumpmapVertexShader), false);
-    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(IceBumpmapPixelShader));
+    NEngineInternal::GPShaderRenderManager->ApplyPixelShader(*reinterpret_cast<const CPixelShader*>(IceBumpmapPixelShader));
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(1.0f, 0.0f, 0.0f, 0.0f));
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(6, C4DVector(0.0f, 1.0f, 0.0f, 0.0f));
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);

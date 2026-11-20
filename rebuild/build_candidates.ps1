@@ -144871,9 +144871,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01223d00'
-        Module = '_static_init'
-        Source = '01/22/staticinit_gCShaderRenderManager013bc470_01223d00.cpp'
-        TestSource = '01/22/staticinit_gCShaderRenderManager013bc470_01223d00_test.cpp'
+        Module = 'CShaderRenderManager'
+        Source = '01/22/CShaderRenderManager_dynamicinitializerforSingletonInstance_01223d00.cpp'
+        TestSource = '01/22/CShaderRenderManager_dynamicinitializerforSingletonInstance_01223d00_test.cpp'
         PassPattern = '01223d00_TEST PASS'
     }
     [pscustomobject]@{

@@ -57299,7 +57299,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01223cb0	sub_01223cb0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 01223cc0	CShaderStats::NoneStr	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01223ce0	g_CStatic_0098dd10_013bc444	_static_init	unknown	undefined	0		0			discovered	gapscan							
-01223d00	g_CShaderRenderManager_013bc470	_static_init	unknown	undefined	0		0			discovered	gapscan							
+01223d00	`dynamic initializer for 'SingletonInstance''	CShaderRenderManager	unknown	undefined	0		0			discovered	gapscan							
 01223d20	g_CThreadedFileManager_013bc870	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01223d40	g_tree_013bca04	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01223d80	NFile::CurrentPath	_static_init	unknown	undefined	0		0			discovered	gapscan							

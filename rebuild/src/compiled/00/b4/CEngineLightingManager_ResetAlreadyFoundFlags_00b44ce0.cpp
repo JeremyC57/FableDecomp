@@ -1,4 +1,8 @@
 // CEngineLightingManager::ResetAlreadyFoundFlags(long minX, long minY, long maxX, long maxY) -- clears the "already found" flag of every local light linked into the given rectangle of the 16x16 light lookup grid
+// Leaf: ?ResetAlreadyFoundFlags@CEngineLightingManager@@AAEXJJJJ@Z
+// Name fix (NF151, q4500): Ego_r.pdb 0x009B9B40 + FableWin.pdb 0x02CF1B50 ?ResetAlreadyFoundFlags@CEngineLightingManager@@AAEXJJJJ@Z (private);
+//   the declaration in this row's existing local model moves under `private:` in place; both landed callers (GetLightsInSphere 0x00B45FB0,
+//   GetLightsInArea 0x00B46280) already bind the AAE spelling.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B44CE0, length 107 bytes (112 with padding). No calls.
 // Shape: the outer loop runs over the second coordinate (minY..maxY, inclusive `jle`, maxY re-read from its slot), the
 // inner over the first (minX..maxX); VC strength-reduces the inner loop into a down-counter (`maxX - minX + 1`) and a
@@ -21,6 +25,7 @@ struct CLocalLightElementLink {
 class CEngineLightingManager { public:
     unsigned char           _pad000[0xec];
     CLocalLightElementLink* m_lightLookupGrid[16][16];   // +0xEC
+private:
     void ResetAlreadyFoundFlags(long minX, long minY, long maxX, long maxY);
 };
 

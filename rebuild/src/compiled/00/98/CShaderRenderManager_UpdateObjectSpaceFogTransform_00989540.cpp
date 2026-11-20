@@ -1,4 +1,8 @@
 // CShaderRenderManager::UpdateObjectSpaceFogTransform() -- transform the world fog plane (+0x370) by the world matrix (+0x1f0), upload it to the layout's fog register and flip the update flags (clear 0x4000, set 0x2000)
+// Leaf: ?UpdateObjectSpaceFogTransform@CShaderRenderManager@@AAEXXZ
+// Name fix (NF151, 2026-11-20): Ego_r.pdb + FableWin.pdb ?UpdateObjectSpaceFogTransform@CShaderRenderManager@@AAEXXZ (private, as engine/CShaderRenderManager.h);
+//   the declaration in this row's existing local model moves under `private:` in place; every landed referencer (009e1280, 00ba1b00,
+//   00ba5260, 00bb2540) binds the AAE spelling after NF151.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989540, length 247 bytes.
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
 // Layout: as the landed UpdateWorldTransform 0x00988E30 (retail = PDB - 0x10 here: D3DDevice +0x1d4, WorldMatrix +0x1f0,
@@ -42,6 +46,7 @@ class CShaderRenderManager { public:
     unsigned char                _pad380[0x58];
     unsigned long                UpdateFlags;               // +0x3d8
 
+private:
     void UpdateObjectSpaceFogTransform();
 };
 
