@@ -774,7 +774,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c2cbd0	_global	CQ_GuildTrainingPreMeleeScript_Initialize	144	parked	Codex pass 23 (whole parent in the 0x012139DB draft): 132/132, 10 bytes differ (owner-load permutation)	1	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012139db/012139db.cpp	original
 00c35290	_gapscan	sub_00c35290	224	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c35290.cpp	gapscan/boundary
 00c371c0	_global	CTCTavernGame_OnStateUpdate	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand505/differ/00c371c0.cpp	original
-00c3a7d0	CRampedParam_00c3a8f0	Advance	288	reserved (acctB p25N, 2026-11-20)	DIFFER(272v273)	6	rebuild/candidates/manual/pending/2026-11-04_linux_hand768/differ/00c3a7d0.cpp	original
 00c3da60	CCombatActionManager	CreateEnvironmentCombatAction	288	parked	DIFFER(261v282)	3	rebuild/candidates/manual/pending/2026-10-20_linux_hand231/differ/00c3da60.cpp	original
 00c40d10	CEffectOwner_00c40750	CommitProperties	272	parked	DIFFER(252v272)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand774/differ/00c40d10.test.cpp	original
 00c425e0	_global	Hero_ProcessExperienceBlockParry	224	parked	Codex pass 23 (whole parent in the 0x012152D0 draft): 221 v 217, extra receiver lea and scratch order	1	rebuild/candidates/manual/pending/2026-11-16_codex_pass23_open/012152d0/012152d0.cpp	original

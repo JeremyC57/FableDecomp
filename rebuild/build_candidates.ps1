@@ -401751,6 +401751,13 @@ $catalog = @(
         TestSource = '00/9c/NGameTextCDataBank_Validate_009c9170_test.cpp'
         PassPattern = '009c9170_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c3a7d0'
+        Module = 'CRampedParam'
+        Source = '00/c3/CRampedParam_ApplyGainToFrame_00c3a7d0.cpp'
+        TestSource = '00/c3/CRampedParam_ApplyGainToFrame_00c3a7d0_test.cpp'
+        PassPattern = '00c3a7d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

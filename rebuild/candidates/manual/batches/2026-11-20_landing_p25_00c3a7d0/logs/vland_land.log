@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00c3a7d0   RELOCATION_MATCH PASS   ApplyGainToFrame
+
+WINS: 1
+  00c3a7d0 RELOCATION_MATCH CRampedParam::?ApplyGainToFrame@CRampedParam@@QAEXAAVCCodaFrame@@K@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CRampedParam_ApplyGainToFrame_00c3a7d0

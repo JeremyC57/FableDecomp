@@ -662,3 +662,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
     - The catalogue return types of 0x009C7A40 / 0x009C9070 are wrong.
     - Landed 0x009C8340 BeginLoading defines the public pointer form, but both PDBs say `...ABEXKAAVCDataBank@2@@Z`, so it needs a respell before these rows link together. It is also HEADER_POLICY (pre-existing).
   - Follow-up for whoever owns it: landed 0x009C8890 GetPGroupEntry has the same Ego_d record table as GetPTextEntry, and the same mismatches (one-line `bool loaded`, an early return, parameter names id / allow_pending / entry v Ego_d index / wait / group_info). 0x009C8220 BeginLoadingGroup is similar.
+2026-11-20 B->A: Landed p25 0x00C3A7D0 CRampedParam::ApplyGainToFrame (batches/2026-11-20_landing_p25_00c3a7d0). Headers: libpk/CFader.h .

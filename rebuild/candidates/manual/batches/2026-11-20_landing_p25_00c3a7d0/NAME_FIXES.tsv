@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c3a7d0	?ApplyGainToFrame@CRampedParam@@QAEXAAVCCodaFrame@@K@Z	descriptive (libpk: no PDB, RTTI or SDK source names this function); this = libpk/CFader.h CRampedParam, frame = libpk/CCodaFrameStreamer.h CCodaFrame; the body applies the clamped ramp gain to the frame's samples	catalogue: Advance on module CRampedParam_00c3a8f0 (propagated placeholder class); labels: AudioLib_ApplyGainEnvelope_00c3a7d0
