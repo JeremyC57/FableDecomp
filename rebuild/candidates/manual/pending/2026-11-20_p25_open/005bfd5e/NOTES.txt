@@ -1,0 +1,18 @@
+0x005BFD5E NInventory::CTCInventoryBase::OnSerialise -- PARKED (p25F, 2026-11-20) at DIFFER(425v425), pure register rotation.
+best.cpp on overlay hdr/ (add-only FABLE_RETAIL_CTCINVENTORYBASE_SERIALISED, hdr.diff); existing opt-ins PASS22, PDEF+GETPDEF_INLINE,
+STLP_VECTOR (reserve decl), CDEFSTRING_OUTOFLINE_CONVERSION (needed: the conversion temp's hidden pointer is pushed first, as retail).
+Residue: retail this=ebx / zero=esi / count+member-address temps=edi; ours edi / ebx / esi (best_diff.txt, 98 lines, registers only).
+Classification:
+ - Not a symbol tie: 0..32 dummy named scalars at function entry and 1..4 before the loop (diagnostic only) never move it.
+ - Not library text: the TU's push_back<CCharString> COMDAT is retail 0x0044BFF0's text compiled with a frame (retail's copy is from a
+   non-frame TU); push_back / reserve / Reset / erase are all calls in both.
+ - The entry store [ebp-8]=0 is natural: the conditional-temporary flag of the two `new std::vector<..>` (removing them removes it); its slot
+   is shared with the CCharString conversion temporary.
+ - One flip: a call-free loop body (push_back(...) -> reserve(c1)) gives this=ebx.
+ - No change: count signed / size_type / const / after the names vector, `0 <` compare, erase(begin,end), named CDefString / CCharString
+   locals (426 / 445), static_cast (442), size() in loop bound (432).
+ - Ego_d lines 2727 / 2732 (31 B each, after each loading TransferVector) have no retail bytes; not pursued (rotation is not a symbol tie).
+FINDINGS-ready: 2026-11-20 (Account B p25F, 0x005BFD5E CTCInventoryBase::OnSerialise, parked) Ported to engine/NInventory_CTCInventoryBase.h
+ (add-only SERIALISED opt-in), DIFFER(425v425): only a callee-saved register rotation is left (this/zero/count = ebx/esi/edi in retail,
+ edi/ebx/esi ours). A dummy-local sweep (0..32) never moves it, so it is not a c2 symbol-number tie; the retail entry store mov [ebp-8],0
+ is the new-expression conditional-temporary flag sharing the conversion temporary's slot. A call-free loop body flips `this` to ebx.
