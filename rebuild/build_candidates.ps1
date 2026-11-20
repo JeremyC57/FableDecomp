@@ -401478,6 +401478,13 @@ $catalog = @(
         TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_Main_00e72630_test.cpp'
         PassPattern = '00e72630_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e54e90'
+        Module = 'NScript::CV_BookCollectingScript::CBS_Teacher'
+        Source = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_Main_00e54e90.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_Main_00e54e90_test.cpp'
+        PassPattern = '00e54e90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

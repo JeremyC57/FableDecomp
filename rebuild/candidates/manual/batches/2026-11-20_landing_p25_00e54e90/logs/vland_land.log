@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e54e90   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e54e90 RELOCATION_MATCH NScript::CV_BookCollectingScript::CBS_Teacher::?Main@CBS_Teacher@CV_BookCollectingScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVBookCollectingScriptCBSTeacher_Main_00e54e90
