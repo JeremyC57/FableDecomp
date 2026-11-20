@@ -16,62 +16,25 @@
 // Shape: the body is one `if (PathExists)` with the failure return after it (retail places that block last); the signature and
 //   validation checks sit in their own blocks so the two trailing words reuse the signature's frame slot and the dead
 //   validation argument slot, as retail.
+// NF134 (2026-11-20, q6180 / q6181): ported onto the shared engine/CAFile.h, CDiskFileWin32.h (DEFAULTCTOR, inline dtor), CDataInputStream.h
+//   (inline Read) and CFileDataInputStream.h (template: landed 0x00B3C5D0 / 0x009A8840): the stream binds ??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z
+//   0x00994700 (Ego_r.pdb 0x00AFC7D0 + FableWin.pdb 0x030836B0) and ??1CFileDataInputStream@@UAE@XZ 0x00994780 (both PDBs, virtual), the file is
+//   passed as CAFile& (CDiskFileWin32 : CAFile, RTTI). Was the row-local CWideString / CAFile / CBaseClassNonCopyable / CDiskFileWin32 /
+//   CDataInputStream / CFileDataInputStream models and a (CAFile*) cast.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_CDISKFILEWIN32
+#define FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CFILEDATAINPUTSTREAM
+#include "fable_string.h"
+#include "engine/CAFile.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CFileDataInputStream.h"
 extern "C" int __cdecl memcmp(const void*, const void*, unsigned int);
-extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
-#pragma intrinsic(memcmp, memcpy)
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                     // 0x0099AED0
-    ~CWideString();                                    // 0x0099B510
-};
-class CAFile { public:
-    static bool __fastcall PathExists(const CWideString& path);   // 0x00999230
-};
-class CASuspendableProcess;
-class CBaseClassNonCopyable {
-protected:
-    CBaseClassNonCopyable();                           // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();                  // 0x0099A300
-};
-enum FileAccessType { FILE_ACCESS_READ = 1 };
-class CDiskFileWin32 : public CBaseClassNonCopyable { public:       // vtable 0x0122D06C
-    FileAccessType AccessType;                         // +0x04
-    long Position;                                     // +0x08
-    long Length;                                       // +0x0c
-    void* WinFileHandle;                               // +0x10
-    bool Opened;                                       // +0x14
-    CWideString Pathname;                              // +0x18
-    CDiskFileWin32() : CBaseClassNonCopyable(), Pathname() { Opened = false; }
-    virtual ~CDiskFileWin32() { Close(); }
-    virtual void Open(const CWideString&, FileAccessType, unsigned long);   // slot 1, 0x0099A6A0
-    virtual void Close();                                                   // slot 2, 0x0099A920
-};
-class CDataInputStream { public:
-    void* __vftable;
-    unsigned long StreamPos;                            // +0x04
-    long StreamSize;                                    // +0x08
-    const unsigned char* CurrentSourcePtr;              // +0x0c
-    unsigned long SourceChunkStreamPos;                 // +0x10
-    long SourceChunkBytesRemaining;                     // +0x14
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* dst, long size) {
-        __int64 np = (__int64)(StreamPos + size);
-        if (!IsValidPosition(np)) return;
-        if (SourceChunkBytesRemaining >= size) {
-            memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
-        } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
-    }
-private:
-    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
-};
-class CFileDataInputStream : public CDataInputStream { public:
-    CAFile* File;                                       // +0x18
-    void* Buffer;                                       // +0x1c
-    long BufferSize;                                    // +0x20
-    CFileDataInputStream(CAFile* file, long bufferSize);   // 0x00994700
-    ~CFileDataInputStream();                              // 0x00994780
-};
+#pragma intrinsic(memcmp)
 struct CBankFile_Retail {
     virtual void s0();
     CWideString GetRecoveryFilePath();                 // 0x009CBFE0
@@ -85,7 +48,7 @@ bool CBankFile_Retail::ReadRecoveryFile(unsigned long validation)
     if (CAFile::PathExists(path)) {
         CDiskFileWin32 file;
         file.Open(path, FILE_ACCESS_READ, 4);
-        CFileDataInputStream stream((CAFile*)&file, 0x4000);
+        CFileDataInputStream stream(file, 0x4000);
         unsigned long header;
         {
             char signature[] = "BREC";

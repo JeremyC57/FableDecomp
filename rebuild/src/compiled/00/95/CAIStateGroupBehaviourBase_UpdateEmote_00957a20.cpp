@@ -18,6 +18,10 @@
 //          inline GetCreature() accessor: its brain load schedules before the zero pushes). Always returns true.
 // Layout: engine/CAIStateGroupBehaviourBase.h (TriggerTime +0x28, RandomWaitTime +0x2C, ThisSpeechDuration +0x30) behind
 //          engine/CAIStateGroupBase.h.
+// NF134 (2026-11-20, q5021): AIAction_PerformActionAndWait 0x0097DB70 respelled in place onto the row-local CAIStateGroupBase as the PDB
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb
+//   0x02892570: protected, const CCreatureActionBase&, EAIActionReturn; engine/fable_ai_action_enums.h); was the derived stand-in
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBehaviourBaseMethods@@QAEJPAVCCreatureActionBase@@_N@Z.
 #include "engine/CAIStateGroupBehaviourBase.h"
 
 class CTCBase;
@@ -61,9 +65,11 @@ class CDisplayEngine { public:
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
+#include "engine/fable_ai_action_enums.h"
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 Ego_r.pdb 0x00847E20 / FableWin.pdb 0x0288DA10 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (protected const; NF127 q5141)
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool stopWhenReplaced);   // 0x0097DB70
 };
 struct CAIStateGroupBehaviourBaseMethods : public CAIStateGroupBase, CAIStateGroupBehaviourBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
@@ -77,7 +83,6 @@ struct CAIStateGroupBehaviourBaseMethods : public CAIStateGroupBase, CAIStateGro
         *seed = rotated;
         return rotated % range;
     }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
     bool UpdateEmote();
 };
 
@@ -92,7 +97,7 @@ bool CAIStateGroupBehaviourBaseMethods::UpdateEmote()
         RandomWaitTime = (float)Random(100) * 0.03f + 2.0f;
         if (GFFloatRandom(1.0f, GetPWorldSeed()) < 0.25f) {
             CCharString animation("ST_EMOTE");
-            AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), animation,
+            AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation,
                 CSoundPair(), false, true, false, 0, 0), false);
         }
     }

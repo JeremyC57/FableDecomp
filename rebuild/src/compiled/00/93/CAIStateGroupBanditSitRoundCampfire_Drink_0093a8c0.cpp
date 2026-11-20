@@ -15,6 +15,10 @@
 //          `result == 2` returned int-width. A same-TU LowerBound stand-in lets the elapsed-frame fild temporary reuse
 //          the lookup key's slot as retail.
 // Layout: the landed Singsong model (PBrain +4); the drunk component's level at +0x10.
+// NF134 (2026-11-20, q5021): AIAction_PerformActionAndWait 0x0097DB70 respelled in place onto the row-local CAIStateGroupBase as the PDB
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb
+//   0x02892570: protected, const CCreatureActionBase&, EAIActionReturn; engine/fable_ai_action_enums.h); was the derived stand-in
+//   ?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActionBase@@_N@Z.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -79,17 +83,18 @@ class CAIBrain
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;                   // +0x18
 };
+#include "engine/fable_ai_action_enums.h"
 class CAIStateGroupBase {                         // Ego_r / RTTI base of CAIStateGroup_BanditSitRoundCampfire (offset 0)
 public:
     virtual void v00();
 protected:
     unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait);   // 0x0097DB70
 };
 struct CAIStateGroup_BanditSitRoundCampfire : public CAIStateGroupBase {
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     void DestroyItem(const CCharString& slot);      // 0x008FD1B0
 private:
     bool Drink();                               // private (Ego_r.pdb 0x0095DD10 / FableWin.pdb 0x02B7F7B0 AAE_NXZ)
@@ -106,7 +111,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::Drink()
         CCharString intoAnim("ST_SITTING_TAKE_BOTTLE_FROM_POCKET");
         CThingCreatureBase* creature = PBrain->Creature;
         result = AIAction_PerformActionAndWait(
-            &CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+            CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
                                                         false, false, false), false);
     }
     DestroyItem("CARRY_SLOT_RIGHT_HAND");

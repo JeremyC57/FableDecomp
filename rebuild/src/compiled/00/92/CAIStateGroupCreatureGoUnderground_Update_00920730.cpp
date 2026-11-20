@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureGoUnderground::Update() -- perform the go-underground action, then terminate
+// Leaf: ?Update@CAIStateGroup_CreatureGoUnderground@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00920730, length 59 bytes (+ int3 padding).
 // Callees: CCreatureAction_GoUnderground::CCreatureAction_GoUnderground(CThingCreatureBase*)
 // @ 0x008EC6A0, CAIStateGroupBase::AIAction_PerformActionAndWait(CCreatureActionBase*, bool)
@@ -10,38 +11,51 @@
 // the temporary (0x114 bytes); the creature is read into a named local first (that is what keeps
 // it in eax rather than ecx for the push). Taking a temporary's address is the VC extension the retail
 // code relied on (C4238).
-class CThingCreatureBase;
+// NF134 (2026-11-20, q5021): ported onto the shared headers (template: landed 0x009208E0 CAIStateGroup_CreatureIdleUnderground::OnActivate):
+//   engine/CAIStateGroupBase.h (retail members + PERFORMACTION: ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z,
+//   Ego_r.pdb 0x00848940 + FableWin.pdb 0x02892570; GetCreature, Terminate 0x008FCF40), engine/CCombatActionBase.h and
+//   engine/CCreatureAction_UndeadReturnToEarth.h: the action built at 0x008EC6A0 is ??0CCreatureAction_UndeadReturnToEarth@@QAE@AAVCThingCreatureBase@@@Z
+//   (catalog + landed binder 0x0074ACE0), destroyed through ~CCombatActionBase 0x0062E900. Was the namespaced N_0062e900 / N_008ec6a0 stand-ins
+//   and a local CAIStateGroupBase / CAIBrain model.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCREATUREACTION_UNDEADRETURNTOEARTH_CLASS
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CThingAICreature.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_UndeadReturnToEarth.h"
 
-namespace N_0062e900 { struct CCreatureActionBase {
-    virtual void v00();
-    unsigned char _body[0x110];             // +0x4..+0x113
-    ~CCreatureActionBase();                 // 0x0062E900
-}; } using N_0062e900::CCreatureActionBase;
-
-namespace N_008ec6a0 { struct CCreatureAction_GoUnderground : CCreatureActionBase {
-    CCreatureAction_GoUnderground(CThingCreatureBase* creature);    // 0x008EC6A0
-}; } using N_008ec6a0::CCreatureAction_GoUnderground;
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThingCreatureBase* Creature;           // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                       // +0x04
-    unsigned char _pad[0xc];                // +0x08..+0x13
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
-    void Terminate();                       // 0x008FCF40
-};
-
-struct CAIStateGroup_CreatureGoUnderground : CAIStateGroupBase {
-    virtual void Update();
+class CAIStateGroup_CreatureGoUnderground : public CAIStateGroupBase {   // RTTI : CAIStateGroupBase
+protected:
+    virtual void Update();                  // ?Update@CAIStateGroup_CreatureGoUnderground@@MAEXXZ (Ego_r.pdb 0x009435D0 + FableWin.pdb 0x02C23CD0: protected)
 };
 
 void CAIStateGroup_CreatureGoUnderground::Update()
 {
-    CThingCreatureBase* creature = PBrain->Creature;
-    AIAction_PerformActionAndWait(&CCreatureAction_GoUnderground(creature), false);
+    AIAction_PerformActionAndWait(CCreatureAction_UndeadReturnToEarth(GetCreature()), false);
     Terminate();
 }

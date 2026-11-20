@@ -1,0 +1,77 @@
+0091f0d0 new: 4
+    ??1CCreatureAction_CastPhysicalShieldSpell@@UAE@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ
+00920730 new: 4
+    ??1CCreatureAction_UndeadReturnToEarth@@UAE@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?Update@CAIStateGroup_CreatureGoUnderground@@MAEXXZ
+009211d0 new: 5
+    ??1CCreatureAction_BeetleLand@@UAE@XZ
+    ??1CCreatureAction_BeetleTakeOff@@UAE@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ
+0093a5c0 new: 0
+0093a8c0 new: 0
+00951b20 new: 0
+00956380 new: 0
+00957a20 new: 0
+00967a20 new: 0
+0098b5e0 new: 26
+    ??$_Destroy@PAVC4DVector@@@std@@YAXPAVC4DVector@@0@Z
+    ??$_Destroy@VC4DVector@@@std@@YAXPAVC4DVector@@@Z
+    ??$__copy@PAVC4DVector@@PAV1@H@std@@YIPAVC4DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+    ??$__copy_ptrs@PAVC4DVector@@PAV1@@std@@YAPAVC4DVector@@PAV1@00ABU__false_type@0@@Z
+    ??$__destroy@PAVC4DVector@@V1@@std@@YAXPAVC4DVector@@00@Z
+    ??$__destroy_aux@PAVC4DVector@@@std@@YAXPAVC4DVector@@0ABU__false_type@0@@Z
+    ??0C4DVector@@QAE@MMMM@Z
+    ??0CBaseClass@@QAE@ABV0@@Z
+    ??0CShaderConstantRange@@QAE@ABV0@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??0bidirectional_iterator_tag@std@@QAE@XZ
+    ??0forward_iterator_tag@std@@QAE@XZ
+    ??0random_access_iterator_tag@std@@QAE@XZ
+    ??1CShaderConstantRange@@UAE@XZ
+    ??A?$CArray@PBVCVertexShaderConstantLayout@@@@QAEAAPBVCVertexShaderConstantLayout@@I@Z
+    ??_7CBaseClass@@6B@ TABLE:01231710
+    ??_7CShaderConstantRange@@6B@ TABLE:0129a04c
+    ??_GCBaseClass@@UAEPAXI@Z
+    ??_GCShaderConstantRange@@UAEPAXI@Z
+    ?GetLightArray@CVertexShaderConstantLayout@@QBE?AVCShaderConstantRange@@XZ
+    ?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z TABLE:0098b5e0
+    ?begin@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEPAVC4DVector@@XZ
+    ?end@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEPAVC4DVector@@XZ
+    ?erase@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEPAVC4DVector@@PAV3@0@Z TABLE:0098cf70
+    ?resize@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEXIABVC4DVector@@@Z TABLE:0098da90
+    ?size@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QBEIXZ
+009d0380 new: 6
+    ??0CAFile@@QAE@XZ
+    ??1CAFile@@UAE@XZ TABLE:0099a300
+    ??_7CAFile@@6B@ TABLE:0122eccc
+    ??_GCAFile@@UAEPAXI@Z
+    ?GetLength@CDiskFileWin32@@UBEJXZ
+    ?GetPosition@CDiskFileWin32@@UBEJXZ
+009d4c30 new: 6
+    ??0CAFile@@QAE@XZ
+    ??1CAFile@@UAE@XZ TABLE:0099a300
+    ??_7CAFile@@6B@ TABLE:0122eccc
+    ??_GCAFile@@UAEPAXI@Z
+    ?GetLength@CDiskFileWin32@@UBEJXZ
+    ?GetPosition@CDiskFileWin32@@UBEJXZ
+00a62120 new: 0
+00b5e700 new: 12
+    ??0CScopedShadersEnable@@QAE@_N0@Z
+    ??0CScopedVertexShaderConstantLayout@@QAE@J@Z
+    ??1CScopedShadersEnable@@QAE@XZ
+    ??1CScopedVertexShaderConstantLayout@@QAE@XZ
+    ?Get@CShaderRenderManager@@SIAAV1@XZ
+    ?GetAsCArray@?$CArray@VCVertexShaderConstant@@@@QAEPAVCVertexShaderConstant@@XZ
+    ?GetZeroSizeArray@?$CArray@VCVertexShaderConstant@@@@AAEPAVCVertexShaderConstant@@XZ
+    ?PeekVertexShaderConstantLayout@CShaderRenderManager@@QAEJXZ
+    ?SetPixelShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?SetVertexShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z
+    ?front@?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QAEAAVCVertexShaderConstant@@XZ
+    ?size@?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QBEIXZ

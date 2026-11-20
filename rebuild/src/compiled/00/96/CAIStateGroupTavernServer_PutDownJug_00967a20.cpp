@@ -14,6 +14,10 @@
 // the action is a named local in its own block with the `!= 2` result in bl across its destructor and FreeBarPoint.
 // Engine header names (rebuild/include/engine/CAIStateGroup_TavernServer.h; flattened base, modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+// NF134 (2026-11-20, q5021): AIAction_PerformActionAndWait 0x0097DB70 respelled in place onto the row-local CAIStateGroupBase as the PDB
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb
+//   0x02892570: protected, const CCreatureActionBase&, EAIActionReturn; engine/fable_ai_action_enums.h); was the derived stand-in
+//   ?AIAction_PerformActionAndWait@CAIStateGroup_TavernServer@@QAEJPAVCCreatureActionBase@@_N@Z.
 class CTCBase;
 class CWorld;
 
@@ -54,6 +58,8 @@ class CAIBrain { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
+#include "engine/fable_ai_action_enums.h"
+class CCreatureActionBase;
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -73,6 +79,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
+protected:
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool interruptible);   // 0x0097DB70
+public:
     // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
     unsigned long Random(unsigned long range)
     {
@@ -125,7 +134,6 @@ struct CAIStateGroup_TavernServer : CAIStateGroupBase {
     CBaseIntelligentPointer PPub;                   // +0x34
     long JugIndex;                                  // +0x3c
     long ServingActionPointIndex;                   // +0x40
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool interruptible);   // 0x0097DB70
     void FreeBarPoint();                            // 0x00967110
     bool PutDownJug();
 };
@@ -136,7 +144,7 @@ bool CAIStateGroup_TavernServer::PutDownJug()
     bool failed;
     {
         CCreatureAction_PutDownJug action(creature);
-        failed = AIAction_PerformActionAndWait(&action, false) != 2;
+        failed = AIAction_PerformActionAndWait(action, false) != 2;
     }
     FreeBarPoint();
     if (failed)

@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A62120, 688 bytes (678 + int3 padding), `ret 0Ch`; vtable 0x0129D698.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 (base), CCharString() 0x0099E4B0,
 //   CBankFile::GetEntryDataSize 0x009CC240, malloc 0x00BFEA0E, CBankFile::ReadEntryData 0x009CC2A0,
-//   CMemoryDataInputStream(void*, ulong) 0x00994930, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0,
+//   CMemoryDataInputStream(const void*, ulong) 0x00994930, CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0,
 //   CArray<unsigned long>::resize(n, const T&) 0x00464931, CMemoryDataInputStream::ReadNullTerminatedString 0x00995D30
 //   (devirtualised on the local stream), CCharString(const CCharString&) 0x0099EC30, vector<CCharString>::
 //   _M_insert_overflow 0x00433530, ~CCharString 0x0099EAE0, CCharString::operator= 0x0099EFB0,
@@ -19,6 +19,8 @@
 //   end-of-storage is the allocator proxy with its own ctor (member-init store order); CArray::GetData is
 //   `size() > 0 ? _M_start : this`; push_back is inline with a `__false_type()` temporary passed to a same-TU member-template
 //   _M_insert_overflow body (the empty-tag rule: the tag shares the name's slot, as retail).
+// NF134 (2026-11-20, q6182): the local CMemoryDataInputStream constructor declaration respelled in place to the PDB
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0; engine/CMemoryDataInputStream.h); was PAXK.
 #include "fable_compiler.h"
 // Naming (NF129, 2026-11-20, q4249): ReadNullTerminatedString is virtual in both PDBs (?ReadNullTerminatedString@CMemoryDataInputStream@@UAE?AVCCharString@@XZ,
 //   Ego_r 0x00AFDBE0 / FableWin 0x03084F50), overriding CDataInputStream's virtual; the local model's vtable data member becomes the
@@ -64,7 +66,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     long                 SourceChunkStreamPos;               // +0x10
     long                 m_remaining;                        // +0x14
     long                 _field18;                           // +0x18
-    CMemoryDataInputStream(void* data, unsigned long size);  // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930 ??0CMemoryDataInputStream@@QAE@PBXK@Z
     ~CMemoryDataInputStream();                               // 0x00993B10
     virtual CCharString ReadNullTerminatedString();          // 0x00995D30 (Ego_r / FableWin UAE: virtual; called directly on the local)
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }

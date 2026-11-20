@@ -10,6 +10,8 @@
 // Layout: Ego_r.pdb CAIStateGroup_JackDragon (packed): PEnemy +0x14, PInvisibleBodgeCreature +0x44, CurrentState +0x5c,
 // GoLeft +0x60, PreviousFlightPos +0x65, DragonPosOutOfGround1/2/3Left/3Right/4Left/4Right +0x72/+0x7e/+0x8a/+0x96/+0xa2/+0xae.
 // Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
+// NF134 (2026-11-20, q5021): AIAction_PerformActionAndWait 0x0097DB70 declared protected in place (access only), binding the PDB
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb 0x02892570).
 #include <stdlib.h>
 #pragma pack(push, 1)
 class C3DVector { public:
@@ -91,8 +93,8 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
 protected:
     CWorld& GetWorld() const;                        protected: // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
-public:
-    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
+protected:
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70 (protected: Ego_r.pdb + FableWin.pdb IAE)
     void Terminate();                           // 0x008FCF40
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)

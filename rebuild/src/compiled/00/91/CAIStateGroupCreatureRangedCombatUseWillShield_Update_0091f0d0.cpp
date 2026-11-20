@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureRangedCombatUseWillShield::Update() -- casts the physical shield spell (and waits for it), then terminates the state group
+// Leaf: ?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091F0D0, length 97 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 on "" @ 0x0122D70E,
 // CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase*, long, bool,
@@ -12,53 +13,56 @@
 // constructor's returned `this` pushed as the action, the base destructor after the call). Frame 0x128 = the
 // string (+0) and the 0x124-byte retail action (+4).
 // Model: local (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h is a flattened base blob).
-class CThingCreatureBase;
+// NF134 (2026-11-20, q5021): ported onto the shared headers (as 0x00920730 here, template landed 0x009208E0):
+//   engine/CAIStateGroupBase.h (PERFORMACTION: ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z,
+//   Ego_r.pdb 0x00848940 + FableWin.pdb 0x02892570), engine/CCombatActionBase.h and engine/CCreatureAction_CastPhysicalShieldSpell.h
+//   (_CTOR: ??0CCreatureAction_CastPhysicalShieldSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@JM@Z, Ego_r.pdb 0x008F3C30 + FableWin.pdb
+//   0x02A188D0, as the landed 0x008E0060 binds it; the temporary's implicit destructor calls ~CCombatActionBase 0x0062E900). Was the namespaced
+//   N_0062e900 stand-in and a local CCharString / CAIStateGroupBase / CAIBrain model.
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELD
+#define FABLE_RETAIL_CCREATUREACTION_CASTPHYSICALSHIELD_CTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CThingAICreature.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_CastPhysicalShieldSpell.h"
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
-
-namespace N_0062e900 { struct CCreatureActionBase {
-    virtual void v00();
-    unsigned char _body[0x120];                             // +0x04..+0x123
-    ~CCreatureActionBase();                                 // 0x0062E900
-}; } using N_0062e900::CCreatureActionBase;
-
-class CCreatureAction_CastPhysicalShieldSpell : public CCreatureActionBase { public:
-    CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase* caster, long spellLevel, bool force,
-        const CCharString& soundName, long repeat, float duration);            // 0x008BB6F0
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThingCreatureBase* Creature;                           // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                                       // +0x04
-    long ScriptAIPriority;                                  // +0x08
-    void* Name_PStringData;                                 // +0x0c
-    unsigned char Terminated;                               // +0x10
-    unsigned char Priority;                                 // +0x11
-    unsigned char Enabled;                                  // +0x12
-    unsigned char _pad_0x13;
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
-    void Terminate();                                       // 0x008FCF40
-};
-
-struct CAIStateGroup_CreatureRangedCombatUseWillShield : CAIStateGroupBase {
-    virtual void Update();
+class CAIStateGroup_CreatureRangedCombatUseWillShield : public CAIStateGroupBase {   // RTTI : CAIStateGroupBase
+protected:
+    virtual void Update();                  // ?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ (Ego_r.pdb 0x00942F40 + FableWin.pdb 0x02C193F0: protected)
 };
 
 void CAIStateGroup_CreatureRangedCombatUseWillShield::Update()
 {
     {
-        CCharString soundName("", -1);
-        CThingCreatureBase* creature = PBrain->Creature;
-        AIAction_PerformActionAndWait(&CCreatureAction_CastPhysicalShieldSpell(creature, 2, true, soundName, 5, 0.0f), false);
+        CCharString sound_name("", -1);
+        CThingAICreature& creature = GetCreature();
+        AIAction_PerformActionAndWait(CCreatureAction_CastPhysicalShieldSpell(creature, 2, true, sound_name, 5, 0.0f), false);
     }
     Terminate();
 }

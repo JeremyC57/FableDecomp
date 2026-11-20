@@ -1,0 +1,83 @@
+addr       parity           behav  name
+0091f0d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureRangedCombatUseWillShield (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h)
+0091f0d0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombatUseWillShield::Update
+00920730   RELOCATION_MATCH PASS   CAIStateGroup_CreatureGoUnderground::Update
+009211d0   RELOCATION_MATCH PASS   CAIStateGroup_BeetleToggleHover::Update
+0093a5c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093a5c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0093a5c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayIntoLoopOutOfAnimation (engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h)
+0093a5c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093a5c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093a5c0   WARN RELOC_NAME: ??1CCreatureAction_PlayAnimationBase@@QAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+0093a5c0   RELOCATION_MATCH PASS   CAIStateGroup_BanditSitRoundCampfire::Eat
+0093a8c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093a8c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0093a8c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0093a8c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayIntoLoopOutOfAnimation (engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h)
+0093a8c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093a8c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093a8c0   WARN RELOC_NAME: ??1CCreatureAction_PlayAnimationBase@@QAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+0093a8c0   WARN RELOC_NAME: ?g_DrunkennessPerFrame@@3MA -> 013bae70 labelled 'float const CTCDrunkenness::DrunkennessDeltaPerFrameOfDrinking'
+0093a8c0   RELOCATION_MATCH PASS   CAIStateGroup_BanditSitRoundCampfire::Drink
+00951b20   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonTakeOffIntoFlying (engine/CCreatureAction_DragonTakeOffIntoFlying.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00951b20   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackDragon (engine/CAIStateGroup_JackDragon.h)
+00951b20   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::FlyOutOfGround
+00956380   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillLightningSpell (engine/CCreatureAction_CastWillLightningSpell.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattleRespondToLightning (engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h)
+00956380   WARN RELOC_NAME: ??1CCreatureAction_CastWillLightningSpell@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+00956380   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::Update
+00957a20   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00957a20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00957a20   RELOCATION_MATCH PASS   CAIStateGroupBehaviourBase::UpdateEmote
+00967a20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00967a20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00967a20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00967a20   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernServer (engine/CAIStateGroup_TavernServer.h)
+00967a20   RELOCATION_MATCH PASS   CAIStateGroup_TavernServer::PutDownJug
+0098b5e0   RELOCATION_MATCH PASS   CShaderRenderManager::SetVertexShaderConstantLayout
+009d0380   RELOCATION_MATCH PASS   CBankFile::ReadRecoveryFile
+009d4c30   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+009d4c30   RELOCATION_MATCH PASS   CDefStringTable::LoadTable
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CShaderDataBank (engine/CShaderDataBank.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry::CShaderBankEntry
+00b5e700   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::ShowBlurTexture
+
+WINS: 14
+  0091f0d0 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatUseWillShield::?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ
+  00920730 RELOCATION_MATCH CAIStateGroup_CreatureGoUnderground::?Update@CAIStateGroup_CreatureGoUnderground@@MAEXXZ
+  009211d0 RELOCATION_MATCH CAIStateGroup_BeetleToggleHover::?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ
+  0093a5c0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::Eat@CAIStateGroup_BanditSitRoundCampfire
+  0093a8c0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::Drink
+  00951b20 RELOCATION_MATCH CAIStateGroup_JackDragon::?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ
+  00956380 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::?Update@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXXZ
+  00957a20 RELOCATION_MATCH CAIStateGroupBehaviourBase::?UpdateEmote@CAIStateGroupBehaviourBaseMethods@@QAE_NXZ
+  00967a20 RELOCATION_MATCH CAIStateGroup_TavernServer::?PutDownJug@CAIStateGroup_TavernServer@@QAE_NXZ
+  0098b5e0 RELOCATION_MATCH CShaderRenderManager::?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z
+  009d0380 RELOCATION_MATCH CBankFile::?ReadRecoveryFile@CBankFile_Retail@@QAE_NK@Z
+  009d4c30 RELOCATION_MATCH CDefStringTable::LoadTable
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00b5e700 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::ShowBlurTexture

@@ -1,0 +1,40 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0098B5E0	CShaderRenderManager	SetVertexShaderConstantLayout	?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z	CShaderRenderManager::SetVertexShaderConstantLayout	?SetVertexShaderConstantLayout@CShaderRenderManagerSetLayoutView@@QAEXH@Z	q4650 (NF134): Ego_r.pdb 0x00AE7D60 + FableWin.pdb 0x03030910; engine/CShaderRenderManager.h declares it; re-authored on the shared header (RELOCATION_MATCH + PASS); leaf-only (catalog name already right, file name unchanged); all 17 REFS rows bind the PDB spelling after this hand-back (0x00B5E700 ported here, the other 15 already)
+0x009211D0	CAIStateGroup_BeetleToggleHover	Update	?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ	CAIStateGroup_BeetleToggleHover::Update	?Update@CAIStateGroup_BeetleToggleHover@@UAEXXZ	q5021 follow-on (NF134): Ego_r.pdb 0x009440A0 + FableWin.pdb 0x02C2C800 ?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ (protected virtual); leaf-only access fix made while porting the row for q5021 (catalog name already right, file name unchanged); exe scan finds no landed row referencing the address
+0x00920730	CAIStateGroup_CreatureGoUnderground	Update	?Update@CAIStateGroup_CreatureGoUnderground@@MAEXXZ	CAIStateGroup_CreatureGoUnderground::Update	?Update@CAIStateGroup_CreatureGoUnderground@@UAEXXZ	q5021 follow-on (NF134): Ego_r.pdb 0x009435D0 + FableWin.pdb 0x02C23CD0 ?Update@CAIStateGroup_CreatureGoUnderground@@MAEXXZ (protected virtual); leaf-only access fix made while porting the row for q5021 (catalog name already right, file name unchanged); exe scan finds no landed row referencing the address
+0x0091F0D0	CAIStateGroup_CreatureRangedCombatUseWillShield	Update	?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ	CAIStateGroup_CreatureRangedCombatUseWillShield::Update	?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@UAEXXZ	q5021 follow-on (NF134): Ego_r.pdb 0x00942F40 + FableWin.pdb 0x02C193F0 ?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ (protected virtual); leaf-only access fix made while porting the row for q5021 (catalog name already right, file name unchanged); exe scan finds no landed row referencing the address
+# Section 2
+0x00B5E700	?SetVertexShaderConstantLayout@CShaderEnableState@@QAEXJ@Z	?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z	0x0098B5E0
+0x00B5E700	?g_ShaderRenderManager@@3UCShaderEnableState@@A	?SingletonInstance@CShaderRenderManager@@0V1@A	0x013BC470
+0x00B5E700	?EnableVertexShaders@CShaderEnableState@@QAEXXZ	?EnableVertexShaders@CShaderRenderManager@@QAEXXZ	0x00987FE0
+0x00B5E700	?DisableVertexShaders@CShaderEnableState@@QAEXXZ	?DisableVertexShaders@CShaderRenderManager@@QAEXXZ	0x009880E0
+0x00B5E700	?EnablePixelShaders@CShaderEnableState@@QAEXXZ	?EnablePixelShaders@CShaderRenderManager@@QAEXXZ	0x00988110
+0x00B5E700	?DisablePixelShaders@CShaderEnableState@@QAEXXZ	?DisablePixelShaders@CShaderRenderManager@@QAEXXZ	0x00988190
+0x00B5E700	?ApplyPixelShader@CShaderRenderManager@@QAEXPAVCPixelShader@@@Z	?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z	0x00988140
+0x00B5E700	?ResetWorldTransform@CShaderRenderManager@@AAEXXZ	?ResetWorldTransform@CShaderRenderManager@@QAEXXZ	0x00988290
+0x0098B5E0	??9CShaderConstantRangeView@@QBE_NABU0@@Z	??9CShaderConstantRange@@QBE_NABV0@@Z	0x00987D70
+0x0098B5E0	?AllocateLights@CShaderRenderManagerSetLayoutView@@QAEXII@Z	?AllocateLights@CShaderRenderManager@@AAEXKK@Z	0x0098B420
+0x0098B5E0	?resize@C4DVectorVectorView@@QAEXIABUC4DVectorView@@@Z	?resize@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEXIABVC4DVector@@@Z	0x0098DA90
+0x0098B5E0	?Destroy@CShaderConstantRangeView@@QAEXXZ	??1CBaseClass@@UAE@XZ	0x0099A2E0
+0x0098B5E0	?GFClear4DVectors@NVectorMath@@YAXPAUC4DVectorView@@IABU2@@Z	?GFClear4DVectors@NVectorMath@@YAXPAVC4DVector@@KABV2@@Z	0x00A5C300
+0x0098B5E0	?g_CShaderConstantRangeVtable@@3PAPAXA	??_7CShaderConstantRange@@6B@	0x0129A04C
+0x00A62120	??0CMemoryDataInputStream@@QAE@PAXK@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00951B20	?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x00967A20	?AIAction_PerformActionAndWait@CAIStateGroup_TavernServer@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x0093A5C0	?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x0093A8C0	?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x00957A20	?AIAction_PerformActionAndWait@CAIStateGroupBehaviourBaseMethods@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x00956380	?AIAction_PerformActionAndWait@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE?AW4EAIActionReturn@@AAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x00920730	?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAEJPAUCCreatureActionBase@N_0062e900@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x00920730	??1CCreatureActionBase@N_0062e900@@QAE@XZ	??1CCombatActionBase@@UAE@XZ	0x0062E900
+0x0091F0D0	?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAEJPAUCCreatureActionBase@N_0062e900@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x0091F0D0	??1CCreatureActionBase@N_0062e900@@QAE@XZ	??1CCombatActionBase@@UAE@XZ	0x0062E900
+0x009211D0	?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAEJPAUCCreatureActionBase@N_0062e900@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x009211D0	??1CCreatureActionBase@N_0062e900@@QAE@XZ	??1CCombatActionBase@@UAE@XZ	0x0062E900
+0x00920730	??0CCreatureAction_GoUnderground@N_008ec6a0@@QAE@PAVCThingCreatureBase@@@Z	??0CCreatureAction_UndeadReturnToEarth@@QAE@AAVCThingCreatureBase@@@Z	0x008EC6A0
+0x0091F0D0	??0CCreatureAction_CastPhysicalShieldSpell@@QAE@PAVCThingCreatureBase@@J_NABVCCharString@@JM@Z	??0CCreatureAction_CastPhysicalShieldSpell@@QAE@AAVCThingCreatureBase@@J_NABVCCharString@@JM@Z	0x008BB6F0
+0x009D0380	??0CFileDataInputStream@@QAE@PAVCAFile@@J@Z	??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z	0x00994700
+0x009D0380	??1CFileDataInputStream@@QAE@XZ	??1CFileDataInputStream@@UAE@XZ	0x00994780
+0x009D4C30	??0CFileDataInputStream@@QAE@PAVCDiskFileWin32@@K@Z	??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z	0x00994700
+0x009D4C30	??1CFileDataInputStream@@QAE@XZ	??1CFileDataInputStream@@UAE@XZ	0x00994780
+0x009D4C30	??0CBaseClassNonCopyable@@QAE@XZ	??0CBaseClassNonCopyable@@IAE@XZ	0x0099A2F0

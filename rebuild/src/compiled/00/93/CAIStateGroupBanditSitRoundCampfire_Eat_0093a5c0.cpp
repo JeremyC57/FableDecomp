@@ -7,6 +7,10 @@
 //   CCreatureAction_PlayIntoLoopOutOfAnimation 0x008427E0 / base dtor 0x00693EF0, AIAction_PerformActionAndWait 0x0097DB70,
 //   DestroyItem 0x008FD1B0. Shape: Drink's action block verbatim, the second stage under `if (result == 2)`; bool return.
 // Layout: the landed Drink/Singsong model (PBrain +4, creature +0x18).
+// NF134 (2026-11-20, q5021): AIAction_PerformActionAndWait 0x0097DB70 respelled in place onto the row-local CAIStateGroupBase as the PDB
+//   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb
+//   0x02892570: protected, const CCreatureActionBase&, EAIActionReturn; engine/fable_ai_action_enums.h); was the derived stand-in
+//   ?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActionBase@@_N@Z.
 class CThingCreatureBase
 { public:
     unsigned char _pad0[0x20];
@@ -42,17 +46,18 @@ class CAIBrain
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;                   // +0x18
 };
+#include "engine/fable_ai_action_enums.h"
 class CAIStateGroupBase {                         // Ego_r / RTTI base of CAIStateGroup_BanditSitRoundCampfire (offset 0)
 public:
     virtual void v00();
 protected:
     unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait);   // 0x0097DB70
 };
 struct CAIStateGroup_BanditSitRoundCampfire : public CAIStateGroupBase {
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     void DestroyItem(const CCharString& slot);      // 0x008FD1B0
 private:
     bool Eat();                                 // private (Ego_r.pdb 0x0095DA00 / FableWin.pdb 0x02B7F440 AAE_NXZ)
@@ -68,7 +73,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::Eat()
         CCharString intoAnim("ST_CHICKEN_COOKING_INTO");
         CThingCreatureBase* creature = PBrain->Creature;
         result = AIAction_PerformActionAndWait(
-            &CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+            CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
                                                         false, false, false), false);
     }
     if (result == 2) {
@@ -78,7 +83,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::Eat()
         CCharString intoAnim("ST_CHICKEN_EATING_INTO");
         CThingCreatureBase* creature = PBrain->Creature;
         result = AIAction_PerformActionAndWait(
-            &CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, eatDuration,
+            CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, eatDuration,
                                                         false, false, false), false);
     }
     DestroyItem("CARRY_SLOT_RIGHT_HAND");

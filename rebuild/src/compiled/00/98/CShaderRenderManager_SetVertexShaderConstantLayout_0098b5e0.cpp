@@ -1,266 +1,118 @@
-#include "rebuild_abi.h"
+// CShaderRenderManager::SetVertexShaderConstantLayout(long index) -- select vertex constant layout `index` (-1: the null layout); when a
+// layout was current, mark the shader state the new layout's constant ranges invalidate (world matrix, fog transform, ambient, fog colour,
+// camera position, lights, light globals, combined projection), recount / reallocate the lights and reset the light buffer and globals.
+// Leaf: ?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0098B5E0.
+// NF134 (2026-11-20, q4650): re-authored on engine/CShaderRenderManager.h (Ego_r.pdb 0x00AE7D60 + FableWin.pdb 0x03030910
+//   ?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z; members CurrentVSConstantLayout +0x4, CurrentVSConstantLayoutIndex +0x8,
+//   VertexShaderConstantLayouts +0xC, NullConstantLayout +0x18, Lights +0x164, LightBuffer +0x168, LightCount +0x16C, AllocatedLights +0x170,
+//   AllocatedLightSize +0x174, LightGlobals +0x194, UpdateFlags +0x3D8) and engine/CVertexShaderConstantLayout.h (friend access to the
+//   CShaderConstantRange members). Was the row-local CShaderRenderManagerSetLayoutView / CVertexShaderConstantLayoutView /
+//   CShaderConstantRangeView / C4DVectorView model.
+// Callees: ??9CShaderConstantRange@@QBE_NABV0@@Z 0x00987D70 (FableWin.pdb 0x03031230; the light-globals test is the one comparison
+//   VC7.1 kept out of line), ?AllocateLights@CShaderRenderManager@@AAEXKK@Z 0x0098B420 (Ego_r.pdb 0x00AE7900 + FableWin.pdb 0x03038AA0),
+//   std::vector<C4DVector>::resize 0x0098DA90 (STLport, out of line), ?GFClear4DVectors@NVectorMath@@YAXPAVC4DVector@@KABV2@@Z 0x00A5C300,
+//   ~CBaseClass 0x0099A2E0 (the implicit ~CShaderConstantRange of the GetLightArray() temporary; vftable ??_7CShaderConstantRange@@6B@
+//   0x0129A04C stored by its implicit copy).
+#define FABLE_RETAIL_CSHADERCONSTANTRANGE_IMPLICIT_COPY
+#define FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT_GETLIGHTARRAY_INLINE
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#include "engine/CShaderRenderManager.h"
+#include "engine/NVectorMath.h"
 
-// Retail constant-layout transition and light-buffer invalidation view.
-struct CShaderConstantRangeView
+void CShaderRenderManager::SetVertexShaderConstantLayout(long index)
 {
-    void* vtable00;
-    fable_i32 offset04;
-    fable_u32 count08;
-
-    void Destroy();
-    bool operator!=(const CShaderConstantRangeView& other) const;
-};
-
-extern void* g_CShaderConstantRangeVtable[];
-
-struct CVertexShaderConstantLayoutView
-{
-    void* vtable00;
-    CShaderConstantRangeView reserved04;
-    CShaderConstantRangeView user10;
-    CShaderConstantRangeView compression1C;
-    CShaderConstantRangeView ambient28;
-    CShaderConstantRangeView fogColour34;
-    CShaderConstantRangeView cameraPos40;
-    fable_u32 lightSize4C;
-    CShaderConstantRangeView lightArray50;
-    CShaderConstantRangeView lightGlobals5C;
-    CShaderConstantRangeView lightAttenuations68;
-    CShaderConstantRangeView combinedProjectionMatrix74;
-    CShaderConstantRangeView fogTransform80;
-    CShaderConstantRangeView worldMatrix8C;
-    fable_u8 unknown98[0xB4];
-};
-
-FABLE_STATIC_ASSERT(sizeof(CVertexShaderConstantLayoutView) == 0x14C);
-
-struct CVertexShaderConstantLayoutVectorView
-{
-    CVertexShaderConstantLayoutView** begin00;
-    CVertexShaderConstantLayoutView** end04;
-    CVertexShaderConstantLayoutView** capacity08;
-};
-
-struct C4DVectorView
-{
-    float x;
-    float y;
-    float z;
-    float w;
-};
-
-union CSetLayoutLocal
-{
-    CShaderConstantRangeView range;
-    C4DVectorView vector;
-};
-
-struct C4DVectorVectorView
-{
-    C4DVectorView* begin00;
-    C4DVectorView* end04;
-    C4DVectorView* capacity08;
-
-    fable_u32 size() const
-    {
-        return static_cast<fable_u32>(end04 - begin00);
-    }
-
-    void resize(fable_u32 count, const C4DVectorView& value);
-};
-
-struct CLightInfoView
-{
-    fable_u8 unknown00[0x35];
-    bool needsUpdate35;
-    fable_u8 unknown36[2];
-};
-
-FABLE_STATIC_ASSERT(sizeof(CLightInfoView) == 0x38);
-
-namespace NVectorMath
-{
-    void FABLE_CDECL GFClear4DVectors(
-        C4DVectorView* vectors,
-        fable_u32 count,
-        const C4DVectorView& value);
-}
-
-struct CShaderRenderManagerSetLayoutView
-{
-    void* vtable00;
-    CVertexShaderConstantLayoutView* currentLayout04;
-    fable_i32 currentLayoutIndex08;
-    CVertexShaderConstantLayoutVectorView layouts0C;
-    CVertexShaderConstantLayoutView nullLayout18;
-    CLightInfoView* lights164;
-    C4DVectorView* lightBuffer168;
-    fable_u32 lightCount16C;
-    fable_u32 allocatedLightCount170;
-    fable_u32 allocatedLightSize174;
-    fable_u8 lightPool178[0x1C];
-    C4DVectorVectorView lightGlobals194;
-    fable_u8 unknown1A0[0x238];
-    fable_u32 updateFlags3D8;
-
-    void AllocateLights(fable_u32 count, fable_u32 lightSize);
-    void SetVertexShaderConstantLayout(fable_i32 index);
-};
-
-FABLE_STATIC_ASSERT(
-    sizeof(CShaderRenderManagerSetLayoutView) == 0x3DC);
-
-void CShaderRenderManagerSetLayoutView::
-SetVertexShaderConstantLayout(fable_i32 index)
-{
-    CSetLayoutLocal local;
-
     if (index == -1)
     {
-        currentLayoutIndex08 = -1;
-        currentLayout04 = &nullLayout18;
+        CurrentVSConstantLayoutIndex = -1;
+        CurrentVSConstantLayout = &NullConstantLayout;
         return;
     }
 
-    CVertexShaderConstantLayoutView* newLayout =
-        layouts0C.begin00[index];
+    CVertexShaderConstantLayout* new_layout =
+        const_cast<CVertexShaderConstantLayout*>(VertexShaderConstantLayouts[index]);
 
-    if (currentLayout04 != 0)
+    if (CurrentVSConstantLayout != 0)
     {
-        updateFlags3D8 |= 4;
+        UpdateFlags |= 4;
 
-        if (
-            currentLayout04->worldMatrix8C.offset04 !=
-                newLayout->worldMatrix8C.offset04 ||
-            currentLayout04->worldMatrix8C.count08 !=
-                newLayout->worldMatrix8C.count08)
+        if (CurrentVSConstantLayout->WorldMatrix.Offset != new_layout->WorldMatrix.Offset ||
+            CurrentVSConstantLayout->WorldMatrix.Count != new_layout->WorldMatrix.Count)
         {
-            updateFlags3D8 |= 0x10;
+            UpdateFlags |= 0x10;
         }
 
-        if (
-            currentLayout04->fogTransform80.offset04 !=
-                newLayout->fogTransform80.offset04 ||
-            currentLayout04->fogTransform80.count08 !=
-                newLayout->fogTransform80.count08)
+        if (CurrentVSConstantLayout->FogTransform.Offset != new_layout->FogTransform.Offset ||
+            CurrentVSConstantLayout->FogTransform.Count != new_layout->FogTransform.Count)
         {
-            updateFlags3D8 |= 0x6000;
+            UpdateFlags |= 0x6000;
         }
 
-        if (
-            currentLayout04->ambient28.offset04 !=
-                newLayout->ambient28.offset04 ||
-            currentLayout04->ambient28.count08 !=
-                newLayout->ambient28.count08)
+        if (CurrentVSConstantLayout->Ambient.Offset != new_layout->Ambient.Offset ||
+            CurrentVSConstantLayout->Ambient.Count != new_layout->Ambient.Count)
         {
-            updateFlags3D8 |= 4;
+            UpdateFlags |= 4;
         }
 
-        if (
-            currentLayout04->fogColour34.offset04 !=
-                newLayout->fogColour34.offset04 ||
-            currentLayout04->fogColour34.count08 !=
-                newLayout->fogColour34.count08)
+        if (CurrentVSConstantLayout->FogColour.Offset != new_layout->FogColour.Offset ||
+            CurrentVSConstantLayout->FogColour.Count != new_layout->FogColour.Count)
         {
-            updateFlags3D8 |= 0x20000;
+            UpdateFlags |= 0x20000;
         }
 
-        if (
-            currentLayout04->cameraPos40.offset04 !=
-                newLayout->cameraPos40.offset04 ||
-            currentLayout04->cameraPos40.count08 !=
-                newLayout->cameraPos40.count08)
+        if (CurrentVSConstantLayout->CameraPos.Offset != new_layout->CameraPos.Offset ||
+            CurrentVSConstantLayout->CameraPos.Count != new_layout->CameraPos.Count)
         {
-            updateFlags3D8 |= 8;
+            UpdateFlags |= 8;
         }
 
-        const fable_u32 lightSize = newLayout->lightSize4C;
-        if (
-            currentLayout04->lightSize4C != lightSize ||
-            currentLayout04->lightArray50.offset04 !=
-                newLayout->lightArray50.offset04 ||
-            currentLayout04->lightArray50.count08 !=
-                newLayout->lightArray50.count08 ||
-            currentLayout04->lightGlobals5C !=
-                newLayout->lightGlobals5C)
+        const unsigned long light_size = new_layout->LightSize;
+        if (CurrentVSConstantLayout->LightSize != light_size ||
+            CurrentVSConstantLayout->LightArray.Offset != new_layout->LightArray.Offset ||
+            CurrentVSConstantLayout->LightArray.Count != new_layout->LightArray.Count ||
+            CurrentVSConstantLayout->LightGlobals != new_layout->LightGlobals)
         {
-            if (static_cast<fable_i32>(lightSize) > 0)
+            if (static_cast<long>(light_size) > 0)
             {
+                LightCount = new_layout->GetLightArray().Count / light_size;
+
+                if (LightCount > AllocatedLights || light_size > AllocatedLightSize)
                 {
-                    local.range.offset04 =
-                        newLayout->lightArray50.offset04;
-                    local.range.count08 =
-                        newLayout->lightArray50.count08;
-                    local.range.vtable00 =
-                        g_CShaderConstantRangeVtable;
-                    lightCount16C =
-                        local.range.count08 / lightSize;
-                    local.range.Destroy();
+                    AllocateLights(LightCount, light_size);
                 }
 
-                if (
-                    lightCount16C > allocatedLightCount170 ||
-                    lightSize > allocatedLightSize174)
+                for (unsigned long light = 0; light < LightCount; ++light)
                 {
-                    AllocateLights(lightCount16C, lightSize);
+                    Lights[light].UpdateFlag = true;
                 }
 
-                for (
-                    fable_u32 light = 0;
-                    light < lightCount16C;
-                    ++light)
-                {
-                    lights164[light].needsUpdate35 = true;
-                }
-
-                local.vector.x = 0.0f;
-                local.vector.y = 0.0f;
-                local.vector.z = 0.0f;
-                local.vector.w = 1.0f;
-                NVectorMath::GFClear4DVectors(
-                    lightBuffer168,
-                    lightCount16C * lightSize,
-                    local.vector);
+                NVectorMath::GFClear4DVectors(LightBuffer, LightCount * light_size, C4DVector(0.0f, 0.0f, 0.0f, 1.0f));
             }
-            updateFlags3D8 |= 0x700;
+            UpdateFlags |= 0x700;
         }
 
-        const CShaderConstantRangeView& currentLightGlobals =
-            currentLayout04->lightGlobals5C;
-        if (
-            currentLightGlobals.offset04 !=
-                newLayout->lightGlobals5C.offset04 ||
-            currentLightGlobals.count08 !=
-                newLayout->lightGlobals5C.count08)
+        const CShaderConstantRange& current_light_globals = CurrentVSConstantLayout->LightGlobals;
+        if (current_light_globals.Offset != new_layout->LightGlobals.Offset ||
+            current_light_globals.Count != new_layout->LightGlobals.Count)
         {
-            fable_u32 count =
-                newLayout->lightGlobals5C.count08;
-            if (count <= lightGlobals194.size())
+            unsigned long count = new_layout->LightGlobals.Count;
+            if (count <= LightGlobals.size())
             {
-                count = lightGlobals194.size();
+                count = LightGlobals.size();
             }
 
-            local.vector.x = 0.0f;
-            local.vector.y = 0.0f;
-            local.vector.z = 0.0f;
-            local.vector.w = 1.0f;
-            lightGlobals194.resize(count, local.vector);
-            updateFlags3D8 |= 0x400;
+            LightGlobals.resize(count, C4DVector(0.0f, 0.0f, 0.0f, 1.0f));
+            UpdateFlags |= 0x400;
         }
 
-        const CShaderConstantRangeView&
-            currentCombinedProjectionMatrix =
-                currentLayout04->combinedProjectionMatrix74;
-        if (
-            currentCombinedProjectionMatrix.offset04 !=
-                newLayout->combinedProjectionMatrix74.offset04 ||
-            currentCombinedProjectionMatrix.count08 !=
-                newLayout->combinedProjectionMatrix74.count08)
+        const CShaderConstantRange& current_combined_projection_matrix = CurrentVSConstantLayout->CombinedProjectionMatrix;
+        if (current_combined_projection_matrix.Offset != new_layout->CombinedProjectionMatrix.Offset ||
+            current_combined_projection_matrix.Count != new_layout->CombinedProjectionMatrix.Count)
         {
-            updateFlags3D8 |= 0x80;
+            UpdateFlags |= 0x80;
         }
     }
 
-    currentLayout04 = newLayout;
-    currentLayoutIndex08 = index;
+    CurrentVSConstantLayout = new_layout;
+    CurrentVSConstantLayoutIndex = index;
 }

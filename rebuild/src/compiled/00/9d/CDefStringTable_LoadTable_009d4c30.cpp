@@ -11,40 +11,21 @@
 // (vptr 0x0122D06C, Opened +0x14, Pathname +0x18), modelled with its virtual Open/Close as in the landed
 // CBankFile::GetLastModifiedTime (0x009CBC50) family: Opened is cleared in the ctor body, the dtor calls Close().
 // Shape: two flag stores scheduled before the stream's destructor; Open's arguments push right to left.
-struct CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
-public:
-    CBaseClassNonCopyable();                       // 0x0099A2F0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                 // 0x0099AED0
-    ~CWideString();                                // 0x0099B510
-};
-class CAFile {
-public:
-    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
-};   // 0x00999230
-enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
-    long        AccessType;                        // +0x04
-    long        Position;                          // +0x08
-    long        Length;                            // +0x0c
-    void*       WinFileHandle;                     // +0x10
-    bool        Opened;                            // +0x14
-    CWideString Pathname;                          // +0x18
-    CDiskFileWin32() { Opened = false; }
-    virtual ~CDiskFileWin32() { Close(); }
-    virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
-    virtual void Close();                          // 0x0099A920
-};
-class CFileDataInputStream { public:                      // 0x24 bytes
-    void* __vftable;
-    unsigned char _body[0x20];
-    CFileDataInputStream(CDiskFileWin32* file, unsigned long bufferSize);   // 0x00994700
-    ~CFileDataInputStream();                       // 0x00994780
-};
+// NF134 (2026-11-20, q6180 / q6181): ported onto the shared engine/CAFile.h, CDiskFileWin32.h (DEFAULTCTOR, inline dtor) and
+//   CFileDataInputStream.h (template: landed 0x00B3C5D0): the stream binds ??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z 0x00994700 (Ego_r.pdb
+//   0x00AFC7D0 + FableWin.pdb 0x030836B0) and ??1CFileDataInputStream@@UAE@XZ 0x00994780 (both PDBs, virtual); the file is passed as CAFile&
+//   (CDiskFileWin32 : CAFile, RTTI). Was the row-local CBaseClassNonCopyable / CWideString / CAFile / CDiskFileWin32 / CFileDataInputStream models.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CAFILE
+#define FABLE_RETAIL_CDISKFILEWIN32
+#define FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CFILEDATAINPUTSTREAM
+#include "fable_string.h"
+#include "engine/CAFile.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CFileDataInputStream.h"
 
 class CDefStringTable {
 public:
@@ -61,7 +42,7 @@ void CDefStringTable::LoadTable(bool readOnly)
     if (CAFile::PathExists(TableFilename)) {
         CDiskFileWin32 file;
         file.Open(TableFilename, FILE_ACCESS_READ, 4);
-        CFileDataInputStream stream(&file, 0x4000);
+        CFileDataInputStream stream(file, 0x4000);
         ReadTable(&stream);
         Locked = true;
         ReadOnly = readOnly;

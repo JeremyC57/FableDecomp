@@ -1,0 +1,10 @@
+# recheck after landing nf134: 267 rows = gate referencing rows (after dropping universal targets 0x0099A2E0 ~CBaseClass 786 rows, 0x0062E900 ~CCombatActionBase 470, 0x0099A2F0 CBaseClassNonCopyable() 300: all already bound, none of their sets grew) + renamed rows + 16 direct includers of CVertexShaderConstantLayout.h
+good 260 bad 7, all pre-existing: six landscape no-Leaf DIFFERs (same sizes as in nf127 / nf131 with HEAD headers) and 0x009BEF80 (old naked-asm row, NOT_GENUINE; regraded alone)
+009bef80	no verdict line
+00bdc510	00bdc510   DIFFER(1044v1131) PASS   CEngineLandscapeMap::UpdateForeground
+00be6f70	00be6f70   DIFFER(198v2654) PASS   CLandscapeBackgroundPatch::Render
+00be7d70	00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load
+00be8920	00be8920   DIFFER(328v365)  PASS   CLandscapeBackgroundPatch::LoadCompressed
+00bf3b60	00bf3b60   DIFFER(809v1480) PASS   CEngineLandscapePatch::LoadForegroundPatch
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground
+009bef80   NOT_GENUINE      -      CDisplayManager::SetViewport
