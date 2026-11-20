@@ -401447,6 +401447,13 @@ $catalog = @(
         TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Main_00dd4ad0_test.cpp'
         PassPattern = '00dd4ad0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e7c010'
+        Module = 'NScript::CV_FishermanScript'
+        Source = '00/e7/NScriptCVFishermanScript_NPCAttitudeProcess_00e7c010.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScript_NPCAttitudeProcess_00e7c010_test.cpp'
+        PassPattern = '00e7c010_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
