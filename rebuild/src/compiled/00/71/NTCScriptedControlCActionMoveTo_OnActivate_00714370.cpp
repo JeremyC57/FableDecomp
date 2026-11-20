@@ -1,7 +1,7 @@
 // NTCScriptedControl::CActionMoveTo::OnActivate() -- start the move: let the creature move, swap in the navigator physics (keeping the old component), claim a free action point of the target or widen the proximity by both radii, stop hero pushing, and start a pre-calculated route
 // Inline-budget: header opt-in FABLE_RETAIL_CTCPARAMSPHYSICSBASE_INLINE_CTOR (add-only, CTCParamsPhysicsBase.h): retail expands the
 //   CTCParamsPhysicsBase(position, rhs) ctor in place (0x00714428: CBaseClassNonCopyable() 0x0099A2F0, the copies, vtable 0x0125C818),
-//   where the header default declares it only (the other callers call 0x006A06E0). Without it: DIFFER (README ablation). No flag.
+//   where the header default declares it only (the other callers call 0x006A06E0). Without it: DIFFER(878v948). No flag.
 // Leaf: ?OnActivate@CActionMoveTo@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00714370, 948 bytes, plain `ret`, frame 0x50; vtable slot 2 of CActionMoveTo.
 // Identity: Ego_r.pdb ?OnActivate@CActionMoveTo@NTCScriptedControl@@UAEXXZ. Locals and blocks = Ego_d.pdb (debug length 2234): ptc_physics;
@@ -14,7 +14,7 @@
 //   0x00800500 (bool: NAME_FIXES) / GetRouteDestination 0x008004D0, CThing::GetPos 0x004C73D0, CTCCreatureNavigation::
 //   InitialiseFromPreCalculatedRoute 0x006CB9C0; virtual CTCBase slot 22 GetClassTypeName, CTCPhysicsBase slots 72 GetRHSet / 83
 //   IsPushableByHero / 84 SetAsPushableByHero, CScriptThing slots 11 GetPThing / 75 IsAlive.
-// Shape: the carryable and route look-ups are the const PeekTC (retail calls the const LowerBound 0x004365B0 for 0x47 / 0xA6, the
+// Shape: the carryable and route look-ups are the const PeekTC of the default CThing.h branch (FABLE_RETAIL_CTHING_GETTC_EXPANDED is byte-neutral and not used) (retail calls the const LowerBound 0x004365B0 for 0x47 / 0xA6, the
 //   non-const one for 0x2D / 7); the route component is used whether or not the look-up found it (retail 0x007146C8 reads the key slot).
 //   Proximity = std::max (the STLport reference-returning max: retail selects the address, 0x007145F9..0x00714603); a plain conditional
 //   expression gives DIFFER(936v948).
@@ -23,7 +23,6 @@
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_CTHING
-#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #define FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE
 #define FABLE_RETAIL_CACTIONMOVETO_ONACTIVATE
 #define FABLE_RETAIL_CTCPARAMSPHYSICSBASE_INLINE_CTOR
@@ -109,8 +108,7 @@ void CActionMoveTo::OnActivate()
         } else {
             CThing* ptarget_thing = PTargetThing.GetPThing();
             if ((ptarget_thing->GetTypeFlags() & 8) || ptarget_thing->GetType() == 5 || ptarget_thing->GetType() == 3) {
-                float radii = GetParentThing().GetPhysicsTC()->GetRadius() + ptarget_thing->GetPhysicsTC()->GetRadius();
-                Proximity = std::max(Proximity, radii);
+                Proximity = std::max(Proximity, GetParentThing().GetPhysicsTC()->GetRadius() + ptarget_thing->GetPhysicsTC()->GetRadius());
             }
         }
     }

@@ -1,6 +1,13 @@
 # 0x00714370 NTCScriptedControl::CActionMoveTo::OnActivate (p25F)
 
 **Grade:** RELOCATION_MATCH (948/948), no flag.
+
+**Revision 2 (after main landed revision 1 in a28016b16):** the batch now holds a refined source, and main should replace the landed one with it.
+- The `radii` local, which is not in Ego_d, is gone: `Proximity = std::max(Proximity, <sum of the two GetRadius()>)`.
+- FABLE_RETAIL_CTHING_GETTC_EXPANDED is dropped: it was byte-neutral, and the default CThing.h GetTC / PeekTC branch gives the same bytes.
+- Line 2 now carries the measured DIFFER(878v948).
+- Re-verified: strict vland with `--recheck-landed` (the row is now catalogued) passes, the test passes, and the mutants are 19/19 killed.
+  The std::max mutant is `std::max(Proximity, ` -> `(`.
 - The strict vland run passes (LANDVERIFY_STRICT_HEADERS=1, overlay `hdr/`, fresh LANDVERIFY_WORK; `vland.log`), with no warnings.
 - The real-object behaviour test passes.
 - **NAME_FIXES:** one. 0x00800500 is ?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ (returns bool), not the landed QBEJXZ (long).
@@ -48,6 +55,8 @@
 | final source | RELOCATION_MATCH |
 | without FABLE_RETAIL_CTCPARAMSPHYSICSBASE_INLINE_CTOR (the ctor declared only, so it is called) | DIFFER(878v948) |
 | `Proximity < radii ? radii : Proximity` instead of std::max | DIFFER(936v948) |
+| with a named `float radii` local (revision 1) | RELOCATION_MATCH (neutral; dropped, not in Ego_d) |
+| with FABLE_RETAIL_CTHING_GETTC_EXPANDED (revision 1) | RELOCATION_MATCH (neutral; dropped) |
 
 - The other three opt-ins are declarations and an accessor; they decide no inlining. There are no flags or pragmas.
 

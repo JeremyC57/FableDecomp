@@ -1,0 +1,36 @@
+p25F NOTES (Account B, 2026-11-20)
+env: source $W/env.sh ; g.py <addr> <src> "idea" --flags ... ; per-row overlays hdrs/<row>/ (row 1 now uses empty $W/hdr)
+GOTCHA: any cl compile error under /O2 makes cl.exe spin forever (wine crash). Preflight with: timeout 60 python3 tmp/clt.py /Od /Fod.obj file.cpp (in tmp/q/<addr>).
+  Never pkill cl.exe bare (shared wineserver).
+Row 1 0x00EFA4F0: draft header engine/Cbandit_level_cutsceneScript.h never in repo; v4/v5 = local class model like landed ctor 0x00EFA420.
+  c2 trace: movie dtor sites f=.625,.3125,.156,.078,.039,.0195,.0195; c=19; T74 expands 4 (retail 3). /d2inlT36..51 RELOCATION_MATCH (v3/v4).
+  v4 + T36: the 3 header devices (pause/movie forceinline ctor, ~CCountedPointer spec) each byte-neutral -> v5 drops all; v5 sweep in tmp/ab2.out.
+  use_preload (Ego_d 214=4B, 219=12B) and _Fail_Val: byte-neutral, Ego_d-sourced. while(true) form at T40 = 1318 (needs trace check).
+  TODO: v5 window, trace v2, cmpcomdat movie dtor, line-2 label + // Flags:, real-object test, mutants, vland, README.
+Row 3 0x005BFD5E: draft is local model; strict needs NInventory_CTCInventoryBase.h port. Names: IsSaving 0x004AEF50, PeekWorld 0x00686A80,
+  GetDefinitionManager 0x006869D0, SerialisedItems +0x78 / SerialisedSelectedItems +0x80, Reset 0x005C29CE/0x005C1E91, TransferVector<CCharString> 0x0049B8D0.
+  Ego_d: params this,context,in_game; locals items, selected_items, selected_item_def_names, {c1}. Residue: entry mov [ebp-8],esi (dead cond-temp flag?).
+Row 2 0x00714370: local model; port onto NTCScriptedControl_CActionMoveTo.h + CThing GetTC; residue frame +4, call-arg schedule.
+Row 4 0x00A58B50: draft overlay hdrs/a58b50 NBBBMaths_CSphere.h (repo has engine/CSphere.h instead). x87/regalloc residue.
+[17:40] Row 1 LANDED (cb8cb184d). Side check 0x00D01630 done and reported (no T works; side/d01630/).
+Row 3: port probe/5bfd5e/q6.cpp (= src/005bfd5e.best.cpp) on overlay hdrs/5bfd5e (add-only FABLE_RETAIL_CTCINVENTORYBASE_SERIALISED, diff tmp/5bfd5e_hdr.diff)
+  + header opt-ins PASS22, PDEF, GETPDEF_INLINE, STLP_VECTOR (reserve), CDEFSTRING_OUTOFLINE_CONVERSION (fixes the hidden-ptr push order).
+  DIFFER(425v425), residue = pure register rotation (retail this=ebx zero=esi count=edi; ours edi/ebx/esi).
+  Entry store [ebp-8]=0 comes naturally: carrier = the two `new std::vector<..>` in the else branch (x2 without them: store gone).
+  x1 (loop body push_back -> reserve(c1)) flips this to ebx. Tried no-change: count signed/size_type/const/after names, 0<x, erase(begin,end),
+  named CDefString/CCharString local, static_cast, loop-bound size() (432).
+  Ego_d lines 2727 / 2732 (31 B each, after each loading Transfer) have no retail bytes: unknown statements (later revision?).
+[18:30] Row 2 0x00714370 DONE: batches/00714370 (RELOCATION_MATCH, no flag, strict vland PASS, 19/19 mutants). Reported to main.
+Row 3 0x005BFD5E PARKED per coordinator: parked/005bfd5e (register rotation, not a symbol tie; FINDINGS line in its NOTES).
+Row 4 0x00A58B50 RESUME POINT (parked/00a58b50/):
+  - v1_on_CSphere.cpp = draft ported from the never-landed engine/NBBBMaths_CSphere.h onto repo engine/CSphere.h with add-only opt-in
+    FABLE_RETAIL_CSPHERE_TRIANGLE (overlay hdr/, 1 assert pinned). Strict-header clean. Still DIFFER(2211v2207), /Gr (v1_diff.txt).
+  - Residue (draft notes): this/points-start register swap (ebx/edi), coef_b X-vs-Y load order, coef_c s.Y-vs-s.X load order -- the
+    c2 symbol-number class (cf. FINDINGS 0x00A1E5C0 mod-2048 wrap).
+  - NEXT: rewrite with Ego_d's locals/blocks (00a58b50.locals.txt / .tsv): plane_normal, plane_dist, distance_plane_to_point; block
+    {sphere_rad_sqr, circle_centre, intersections, circle_rad_sqr, num_enclosed_pts, y_axis, trig_prime, circle_rad, x_axis};
+    loop {c1 {c_c, c_b, p1, p2, line, desc, c_a {lambda2, lambda1 {int_pos}{int_pos}}}}; three {intersect2d} result blocks; {it {pt}}.
+    The draft has none of these names and fitted the coef_c term order; Ego_d's local count may fix the x87 order like 0x00A1E5C0.
+  - Devices in the draft still unlabelled: local std::back_insert_iterator/back_inserter/transform declarations (check
+    stlport headers for an opt-in first) and `template<> inline __declspec(noinline) vector<C2DVector>::push_back` (an inline-budget
+    device: needs a ladder attempt -- FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE is already defined; test whether that alone suffices).
