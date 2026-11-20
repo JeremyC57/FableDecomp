@@ -137,7 +137,7 @@ private:
 }
 
 // Fidelity: same-TU strong definition of 0x00859EC0 (retail TU-mate)
-// The landed body differs only in one member spelling: HasPerformAction (+0xDE, the MELEE header) for the landed local model's m_keepActionTime (NAME_FIXES.tsv).
+// Verbatim: the coordinator re-ported 0x00859EC0 onto engine/CCombatActionBase.h with this TU's define set (HasPerformAction +0xDE, NAME_FIXES.tsv).
 void CCombatActionBase::SetUpCombatAnimationNotes()
 {
     SetupCombatStrikeEvents();
