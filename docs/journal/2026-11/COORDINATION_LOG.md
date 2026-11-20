@@ -489,3 +489,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00E76E90 NScript::CV_ExposeMayorScript::HeroFlashesLamp (batches/2026-11-20_landing_p25_00e76e90). Headers: none.
 2026-11-20 A: landed nf152 (8 rows): CEngineResourceManager getters and CEngineShadowRenderer names; 0x00B3B0A0 now has one spelling.
 2026-11-20 B->A: Landed p25 0x00D0B3E0 NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::Main (batches/2026-11-20_landing_p25_00d0b3e0). Headers: engine/CQ_BanditCampBossBattleScript.h .
+2026-11-20 B->A: Landed p25 0x00E7C010 NScript::CV_FishermanScript::NPCAttitudeProcess (batches/2026-11-20_landing_p25_00e7c010). Headers: none.
