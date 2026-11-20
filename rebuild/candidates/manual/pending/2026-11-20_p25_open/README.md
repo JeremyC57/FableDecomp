@@ -12,7 +12,6 @@ entry cites "Account B scratch w26/...", the files are here. Rulings: docs/journ
 | 0x00B0DC20 | NParticleEngine::CPSCUpdateNormal::Update | DIFFER(5604v5602) | SetOrientation copy folded to [esi+4] with no earlier same-member read (/d2inlT200) |
 | 0x00C73050 | Audio_PlaySourceAndProcessQueue (CAudioSource stream update) | DIFFER(672v672) | tail-item temp edi v retail edx: c2 masks it to callee-saved when a per-tuple counter hits 3 at `!sound->IsLooping()` (p25N/NOTES.txt, hook c2prio_x.py); 8 targeted respellings negative (/d2inlT150) |
 | 0x00A4EFC0 | C3DAnimationSequenceData::InitialiseFromFileData | DIFFER(3481v3491) | expanded CQuaternion _M_insert_overflow register tie; two c2 symbol-number ties (/Gr) |
-| 0x00859EF0 | CCombatActionBase::OnAnimationLoaded | DIFFER(1195v1196) | register / schedule only; Ego_d has 480-520 B lines on discarded-bool calls (1600, 1605) we cannot spell |
 | 0x008DBC80 | NCreatureMode::CModeDragonFlying::FrameUpdate | DIFFER(2321v2319) | Normalise x87 order, direction slot, set store order; same oversize-line pattern (4982, 5125) |
 | 0x005BFD5E | CTCInventoryBase::OnSerialise | DIFFER(425v425) | callee-saved register rotation only; not a symbol tie (symlog: dummies renumber the pool, bytes never move); parked for good |
 | 0x00833C00 | CThingAICreature::DrawPreparePrimitivesForRendering | DIFFER(2296v2300) | retail keeps `info` in ebp and re-reads info.Engine after each primitive temporary; ours spills it; frame one dword off |
