@@ -401695,6 +401695,13 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupDeedReactionRoot_Update_00960120_test.cpp'
         PassPattern = '00960120_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c77b30'
+        Module = 'CFloatReverbParameterTranslator'
+        Source = '00/c7/CFloatReverbParameterTranslator_UpdateReflectionsDelay_00c77b30.cpp'
+        TestSource = '00/c7/CFloatReverbParameterTranslator_UpdateReflectionsDelay_00c77b30_test.cpp'
+        PassPattern = '00c77b30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

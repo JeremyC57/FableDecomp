@@ -631,3 +631,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Newly flagged: 0x006C5D70 ~CTCHeroOpinionDeedLog (local COpinionDeedReaction model) and 0x00681500 (local manager model).
   - New per-TU opt-in FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY, chosen over /d2inlS25 because the flag breaks the TU-mate 0x009609B0 at every value and no landed mate has an IsEmpty site.
 2026-11-20 B->A: Reclaimed 0x00C73050, 0x008E18D0, 0x007602F0 and 0x00763060, which B parked earlier today. The owner wants them worked until they match, so they are reserved for B again.
+2026-11-20 B->A: Landed p25 0x00C77B30 CFloatReverbParameterTranslator::UpdateReflectionsDelay (batches/2026-11-20_landing_p25_00c77b30). Headers: engine/ReflectionData.h engine/ReverbMath.h .

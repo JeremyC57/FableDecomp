@@ -817,7 +817,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c76880	_global	DSP_TransformWithFilterCoefficients	560	parked	DIFFER(500v513)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/00c76880.test.cpp	original
 00c76ab0	_global	CQ_GuildTrainingSkillScript_ActivateSkillByIndex	176	parked	DIFFER(171v175)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c76ab0.cpp	original
 00c76dd0	_global	CQ_GuildTrainingSkillScript_DeactivateSkillByIndex	192	parked	DIFFER(182v186)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c76dd0.cpp	original
-00c77b30	CReverbProcessor	UpdateLineLengths	208	reserved (acctB p25N, 2026-11-20)	DIFFER(194v193)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c77b30.cpp	original
 00c77c80	CReverbProcessor	UpdateLineAndTapLengths	272	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand609/differ/00c77c80.cpp	original
 00c780c0	_global	Audio_Channel_ComputeEnvelope_Amplitude	144	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand445/differ/00c780c0.cpp	original
 00c89850	CReverbFilterTap	ProcessRamp	592	parked	DIFFER(607v588)	2	rebuild/candidates/manual/pending/2026-11-08_linux_hand869/differ/00c89850.cpp	original
