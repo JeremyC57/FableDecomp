@@ -15,6 +15,10 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CVillageTaskCarryCrate;
+// Name fix (NF202, 2026-11-20, q12232): the element release this row calls is CCountedPointer<CVillageTaskCarryCrate>::ReleaseData (FableWin.pdb
+//   ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ + the body: the destructor is the 5-byte `jmp` COMDAT(s) 0x0065E379 / 0x0065F93E);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: the destructor stays inline and expands to that out-of-line call.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 
 namespace std {

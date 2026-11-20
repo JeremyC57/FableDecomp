@@ -19,16 +19,10 @@ class CScriptThing
     CScriptThingVTable* m_pVTable;
 };
 
-class CScriptConversationManager
-{
-public:
-    void AddLineToConversation(
-        long               conversationId,
-        CThing*            pSpeaker,
-        CThing*            pListener,
-        const CCharString* pLine,
-        bool               playDuringCutScenes);
-};
+// NF202 (2026-11-20, q12195): the callee comes from engine/CScriptConversationManager.h with its PDB signature
+// (?AddLineToConversation@CScriptConversationManager@@QAEXJABVCThing@@PBV2@ABVCCharString@@_N@Z), as the row declares it.
+#define FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_ADDLINETOCONVERSATION
+#include "engine/CScriptConversationManager.h"
 
 struct CGSIAddLineToConversationWorld
 {
@@ -62,17 +56,17 @@ static bool  g_SeenFlag        = false;
 
 void CScriptConversationManager::AddLineToConversation(
     long               conversationId,
-    CThing*            pSpeaker,
-    CThing*            pListener,
-    const CCharString* pLine,
+    const CThing&      speaker,
+    const CThing*      pListener,
+    const CCharString& line,
     bool               playDuringCutScenes)
 {
     ++g_AddCalls;
     g_SeenManager  = this;
     g_SeenId       = conversationId;
-    g_SeenSpeaker  = pSpeaker;
-    g_SeenListener = pListener;
-    g_SeenLine     = pLine;
+    g_SeenSpeaker  = const_cast<CThing*>(&speaker);
+    g_SeenListener = const_cast<CThing*>(pListener);
+    g_SeenLine     = &line;
     g_SeenFlag     = playDuringCutScenes;
 }
 
@@ -172,7 +166,9 @@ int main()
     if ((unsigned char*)pAvailSlot - pSpeakerVT != 0x12C)
         return Fail("IsAvailable slot offset");
 
-    CScriptConversationManager manager;
+    // The manager is only a receiver here: raw storage, so its out-of-line constructor (0x006E6150) is not linked.
+    static double managerStorage[(sizeof(CScriptConversationManager) + sizeof(double) - 1) / sizeof(double)];
+    CScriptConversationManager& manager = *reinterpret_cast<CScriptConversationManager*>(managerStorage);
     CGSIAddLineToConversationWorld world;
     unsigned char* pWorld = (unsigned char*)&world;
     for (i = 0; i < (int)sizeof(CGSIAddLineToConversationWorld); ++i)

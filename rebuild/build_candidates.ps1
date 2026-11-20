@@ -18470,9 +18470,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065e919'
-        Module = '_global'
-        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e919.cpp'
-        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e919_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskTorch>'
+        Source = '00/65/CCountedPointer_scalardeletingdestructor_0065e919.cpp'
+        TestSource = '00/65/CCountedPointer_scalardeletingdestructor_0065e919_test.cpp'
         PassPattern = 'AUTO_TINY_0065e919_TEST PASS'
     }
     [pscustomobject]@{
@@ -18498,16 +18498,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065e989'
-        Module = '_global'
-        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e989.cpp'
-        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e989_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskSecuritySweep>'
+        Source = '00/65/CCountedPointer_scalardeletingdestructor_0065e989.cpp'
+        TestSource = '00/65/CCountedPointer_scalardeletingdestructor_0065e989_test.cpp'
         PassPattern = 'AUTO_TINY_0065e989_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0065e9a5'
-        Module = '_global'
-        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e9a5.cpp'
-        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e9a5_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskCarryCrate>'
+        Source = '00/65/CCountedPointer_scalardeletingdestructor_0065e9a5.cpp'
+        TestSource = '00/65/CCountedPointer_scalardeletingdestructor_0065e9a5_test.cpp'
         PassPattern = 'AUTO_TINY_0065e9a5_TEST PASS'
     }
     [pscustomobject]@{
@@ -28788,9 +28788,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac1460'
-        Module = '_global'
-        Source = '00/ac/global_DeleteData_00ac1460.cpp'
-        TestSource = '00/ac/global_DeleteData_00ac1460_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileMapChunk>'
+        Source = '00/ac/CCountedPointer_DeleteData_00ac1460.cpp'
+        TestSource = '00/ac/CCountedPointer_DeleteData_00ac1460_test.cpp'
         PassPattern = 'AUTO_TINY_00ac1460_TEST PASS'
     }
     [pscustomobject]@{
@@ -47190,9 +47190,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00871d30'
-        Module = 'CTCLook'
-        Source = '00/87/CTCLook_UpdateLookTimer_00871d30.cpp'
-        TestSource = '00/87/CTCLook_UpdateLookTimer_00871d30_test.cpp'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/87/NCameraModesCStringAndCageBase_GetZCoord_00871d30.cpp'
+        TestSource = '00/87/NCameraModesCStringAndCageBase_GetZCoord_00871d30_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = 'LOOKTIMER_OK'
     }
@@ -49413,8 +49413,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00485aa7'
         Module = 'std::vector<NUISystem::CComponent*>'
-        Source = '00/48/stdvectorNUISystemCComponent_erase_00485aa7.cpp'
-        TestSource = '00/48/stdvectorNUISystemCComponent_erase_00485aa7_test.cpp'
+        Source = '00/48/stdvector_erase_00485aa7.cpp'
+        TestSource = '00/48/stdvector_erase_00485aa7_test.cpp'
         PassPattern = 'LISTBOX_SELECT_OK'
     }
     [pscustomobject]@{
@@ -64526,9 +64526,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579d97'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/57/LTextTreeWalkThrough_BuildTreeArray_00579d97.cpp'
-        TestSource = '00/57/LTextTreeWalkThrough_BuildTreeArray_00579d97_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >'
+        Source = '00/57/stdRbtree_Merase_00579d97.cpp'
+        TestSource = '00/57/stdRbtree_Merase_00579d97_test.cpp'
         PassPattern = 'LTextTreeWalkThrough_00579d97_TEST PASS'
     }
     [pscustomobject]@{
@@ -73795,9 +73795,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065d574'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d574.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d574_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskTorch>'
+        Source = '00/65/CCountedPointer_ReleaseData_0065d574.cpp'
+        TestSource = '00/65/CCountedPointer_ReleaseData_0065d574_test.cpp'
         PassPattern = 'PASS_0065d574'
     }
     [pscustomobject]@{
@@ -73809,16 +73809,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0065d5cc'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5cc.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5cc_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskSecuritySweep>'
+        Source = '00/65/CCountedPointer_ReleaseData_0065d5cc.cpp'
+        TestSource = '00/65/CCountedPointer_ReleaseData_0065d5cc_test.cpp'
         PassPattern = 'PASS_0065d5cc'
     }
     [pscustomobject]@{
         Address = '0065d5f8'
-        Module = '_global'
-        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5f8.cpp'
-        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5f8_test.cpp'
+        Module = 'CCountedPointer<CVillageTaskCarryCrate>'
+        Source = '00/65/CCountedPointer_ReleaseData_0065d5f8.cpp'
+        TestSource = '00/65/CCountedPointer_ReleaseData_0065d5f8_test.cpp'
         PassPattern = 'PASS_0065d5f8'
     }
     [pscustomobject]@{
@@ -84101,9 +84101,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0053c9bc'
-        Module = 'std'
-        Source = '00/53/std_list_T_0053c9bc_dtor_0053c9bc.cpp'
-        TestSource = '00/53/std_list_T_0053c9bc_dtor_0053c9bc_test.cpp'
+        Module = 'std::list<NUISystem::CList*>'
+        Source = '00/53/stdlist_list_0053c9bc.cpp'
+        TestSource = '00/53/stdlist_list_0053c9bc_test.cpp'
         PassPattern = '0053c9bc_TEST PASS'
     }
     [pscustomobject]@{
@@ -87671,9 +87671,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f9f50'
-        Module = '_global'
-        Source = '00/8f/CGuiControlTreePane_SortTreeRecursively_008f9f50.cpp'
-        TestSource = '00/8f/CGuiControlTreePane_SortTreeRecursively_008f9f50_test.cpp'
+        Module = 'std::_List_base<LHNetworkLib::LSocket*>'
+        Source = '00/8f/stdListbase_Listbase_008f9f50.cpp'
+        TestSource = '00/8f/stdListbase_Listbase_008f9f50_test.cpp'
         PassPattern = 'PASS_008f9f50'
     }
     [pscustomobject]@{
@@ -149512,9 +149512,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a9cf40'
-        Module = 'CCountedPointer_00a99ff0'
-        Source = '00/a9/CCountedPointer00a99ff0_Reset_00a9cf40.cpp'
-        TestSource = '00/a9/CCountedPointer00a99ff0_Reset_00a9cf40_test.cpp'
+        Module = 'CCountedPointer<CChunkedFileChunk>'
+        Source = '00/a9/CCountedPointer_Reset_00a9cf40.cpp'
+        TestSource = '00/a9/CCountedPointer_Reset_00a9cf40_test.cpp'
         PassPattern = '00a9cf40_TEST PASS'
     }
     [pscustomobject]@{
@@ -340483,29 +340483,29 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a98be0'
         Module = 'C3DAnimFileLoader'
-        Source = '00/a9/C3DAnimFileLoader_AddRootSubChunkType_00a98be0.cpp'
-        TestSource = '00/a9/C3DAnimFileLoader_AddRootSubChunkType_00a98be0_test.cpp'
+        Source = '00/a9/C3DAnimFileLoader_RegisterRootSubChunkType_00a98be0.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_RegisterRootSubChunkType_00a98be0_test.cpp'
         PassPattern = '00a98be0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a98c80'
         Module = 'C3DAnimFileLoader'
-        Source = '00/a9/C3DAnimFileLoader_AddObjectSubChunkType_00a98c80.cpp'
-        TestSource = '00/a9/C3DAnimFileLoader_AddObjectSubChunkType_00a98c80_test.cpp'
+        Source = '00/a9/C3DAnimFileLoader_RegisterObjectSubChunkType_00a98c80.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_RegisterObjectSubChunkType_00a98c80_test.cpp'
         PassPattern = '00a98c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a98d20'
         Module = 'C3DAnimFileLoader'
-        Source = '00/a9/C3DAnimFileLoader_AddHelpersSubChunkType_00a98d20.cpp'
-        TestSource = '00/a9/C3DAnimFileLoader_AddHelpersSubChunkType_00a98d20_test.cpp'
+        Source = '00/a9/C3DAnimFileLoader_RegisterHelpersSubChunkType_00a98d20.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_RegisterHelpersSubChunkType_00a98d20_test.cpp'
         PassPattern = '00a98d20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a98dc0'
         Module = 'C3DAnimFileLoader'
-        Source = '00/a9/C3DAnimFileLoader_AddMovementVectorSubChunkType_00a98dc0.cpp'
-        TestSource = '00/a9/C3DAnimFileLoader_AddMovementVectorSubChunkType_00a98dc0_test.cpp'
+        Source = '00/a9/C3DAnimFileLoader_RegisterMovementVectorSubChunkType_00a98dc0.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_RegisterMovementVectorSubChunkType_00a98dc0_test.cpp'
         PassPattern = '00a98dc0_TEST PASS'
     }
     [pscustomobject]@{

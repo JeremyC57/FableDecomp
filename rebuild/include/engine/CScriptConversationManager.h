@@ -8,13 +8,23 @@
 #include "rebuild_abi.h"
 #include "stlport/fable_map.h"
 #include "engine/CScriptConversation.h"
+#ifdef FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_ADDLINETOCONVERSATION
+class CThing;
+class CCharString;
+#endif
 class CScriptConversationManager {
 public:
     CScriptConversationManager();                                              // 0x006E6150
+#ifdef FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_ADDLINETOCONVERSATION
+    // Per-TU opt-in (NF202, q12195; rows 0x006E5950 self / 0x00890750 caller): Ego_r.pdb 0x0070EE80 + FableWin.pdb 0x02409E00
+    // ?AddLineToConversation@CScriptConversationManager@@QAEXJABVCThing@@PBV2@ABVCCharString@@_N@Z. Declaration only.
+    void AddLineToConversation(long conversation, const CThing& speaker, const CThing* listener, const CCharString& line,
+                               bool play_during_cut_scenes);                  // 0x006E5950
+#endif
 private:
     std::map<long, CScriptConversation> Conversations;                         // +0x00
     long NextConversationIndex;                                                // +0x0C
     bool AlwaysShowText;                                                       // +0x10
 };
-FABLE_STATIC_ASSERT(sizeof(CScriptConversationManager) == 0x14);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CScriptConversationManager) == 0x14);
 #endif

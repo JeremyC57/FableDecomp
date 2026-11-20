@@ -11,16 +11,22 @@
 // TU), then links the head to itself. The manifest label is propagated. One of 11 bodies.
 extern "C" void __cdecl free(void* block);
 
-struct CValue_0065d5f8 {
-    void* m_data;
-    ~CValue_0065d5f8();                             // 0x0065D5F8
-};
+// Name fix (NF202, 2026-11-20, q12232): the element release at 0x0065D5F8 is CCountedPointer<CVillageTaskCarryCrate>::ReleaseData (FableWin.pdb
+//   ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ + the body: the destructor is the 5-byte `jmp` COMDAT(s) 0x0065E379 / 0x0065F93E at /Os,
+//   `~CCountedPointer() { ReleaseData(); }`, as engine/CCountedPointer.h documents for CComponent / CAction / CMeshDataBank);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (Data zeroed before Info).
+//   The node value is the shared CCountedPointer<CVillageTaskCarryCrate> (was the CValue_0065d5f8 stand-in with an out-of-line destructor); the
+//   list type keeps its landed CRetailList_CValue_0065d5f8 token (in-place, as NF180 0x0065FE9A).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CVillageTaskCarryCrate;
+
 
 struct CRetailList_CValue_0065d5f8 {
     struct node {
         node* next;                        // +0
         node* prev;                        // +4
-        CValue_0065d5f8 value;                      // +0x8
+        CCountedPointer<CVillageTaskCarryCrate> value;                      // +0x8
     };
     node* head;
     void clear();
@@ -32,7 +38,7 @@ void CRetailList_CValue_0065d5f8::clear()
     while (n != head) {
         node* victim = n;
         n = n->next;
-        victim->value.~CValue_0065d5f8();
+        victim->value.~CCountedPointer<CVillageTaskCarryCrate>();
         free(victim);
     }
     head->next = head;

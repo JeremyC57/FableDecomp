@@ -103,6 +103,10 @@ class CVillageTaskCarryCrate { public:
     unsigned char _body[0x20];
     CVillageTaskCarryCrate(CThing* stack, bool pickUp, long crateType);   // 0x0065EF94
 };
+// Name fix (NF202, 2026-11-20, q12232): the element release this row calls is CCountedPointer<CVillageTaskCarryCrate>::ReleaseData (FableWin.pdb
+//   ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ + the body: the destructor is the 5-byte `jmp` COMDAT(s) 0x0065E379 / 0x0065F93E);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: the destructor stays inline and expands to that out-of-line call.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 typedef CCountedPointer<CVillageTaskCarryCrate> CCountedPointerTask;   // ctor 0x0065E33B / dtor 0x0065D5F8 out of line (size TU)
 struct CCrateTaskList {

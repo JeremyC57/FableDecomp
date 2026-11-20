@@ -1,6 +1,7 @@
 // CPersistContext::Transfer(const char* name, CDefIndex& value, const CDefIndex& defaultValue) -- CRC-check the key, then by mode: text load (optionally seeding the default first), text save, binary load through CPersistTraits<CDefIndex>, binary save of the index; any other mode just takes the default
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CC1E8, length 150 bytes.
-// Leaf: Transfer
+// Leaf: ??$Transfer@VCDefIndex@@@CPersistContext@@QAEXPBDAAVCDefIndex@@ABV1@@Z
+// NF202 (2026-11-20, q12213): Leaf written in full (was the bare `Transfer`); catalog name CPersistContext::Transfer<CDefIndex> (Ego_r.pdb 0x00455979 + FableWin.pdb 0x019CE186).
 // One of two byte-identical instantiations in different modules (0x00580371 and 0x005CC1E8; only the callees and the
 // wrapper vtable differ); this one is called from 0x005CC312.
 // Callees: CPersistContext::CheckCRC @ 0x00404500, CDataOutputStream::WriteSLONG @ 0x00993EB0 (catalogued "WriteCBYTE"; it

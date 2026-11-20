@@ -74,6 +74,10 @@
 #define FABLE_RETAIL_CVILLAGETASKPICKCROPS_CTOR
 #define FABLE_RETAIL_CVILLAGETASKSECURITYSWEEP
 #include "fable_string.h"
+// Name fix (NF202, 2026-11-20, q12231): the element release this row calls is CCountedPointer<CVillageTaskSecuritySweep>::ReleaseData (FableWin.pdb
+//   ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ + the body: the destructor is the 5-byte `jmp` COMDAT(s) 0x0065E31E / 0x0065F939);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: the destructor stays inline and expands to that out-of-line call.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 #include "engine/CTCBase.h"
 #include "engine/CThing.h"

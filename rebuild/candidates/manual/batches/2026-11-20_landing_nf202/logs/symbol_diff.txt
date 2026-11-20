@@ -1,0 +1,96 @@
+00485aa7 new: 6
+    ??$_Destroy@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0@Z
+    ??$__copy_ptrs@PAPAVCComponent@NUISystem@@PAPAV12@@std@@YAPAPAVCComponent@NUISystem@@PAPAV12@00ABU__true_type@0@@Z
+    ??$__destroy@PAPAVCComponent@NUISystem@@PAV12@@std@@YAXPAPAVCComponent@NUISystem@@00@Z
+    ??$__destroy_aux@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0ABU__true_type@0@@Z
+    ??0__true_type@std@@QAE@XZ
+    ?erase@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@PAPAV34@0@Z TABLE:00485aa7
+0053c9bc new: 5
+    ??1?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCList@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@XZ TABLE:0053c9bc
+    ?deallocate@?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCList@NUISystem@@@2@I@Z
+00579d97 new: 12
+    ??$_Destroy@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@YAXPAU?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@0@@Z
+    ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ TABLE:0042ab73
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@J@std@@U12@V?$allocator@U?$_List_node@J@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@J@std@@@std@@QAE@XZ
+    ??1?$list@JV?$allocator@J@std@@@std@@QAE@XZ
+    ??1?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAE@XZ
+    ??1SExpSpendUndo@@QAE@XZ TABLE:005797fa
+    ??_G?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAEPAXI@Z TABLE:005799de
+    ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendU
+    ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ TABLE:0042a168
+    ?deallocate@?$allocator@U?$_List_node@J@std@@@std@@QAEXPAU?$_List_node@J@2@I@Z
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatTy
+005cc1e8 new: 0
+00659800 new: 0
+00659c7e new: 0
+0065d574 new: 1
+    ?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ TABLE:0065d574
+0065d5cc new: 1
+    ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ TABLE:0065d5cc
+0065d5f8 new: 1
+    ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ TABLE:0065d5f8
+0065e919 new: 3
+    ??1?$CCountedPointer@VCVillageTaskTorch@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCVillageTaskTorch@@@@QAEPAXI@Z
+    ?EmitDeletingDestructor@?A0x3136af09@@YAXPAV?$CCountedPointer@VCVillageTaskTorch@@@@@Z
+0065e989 new: 3
+    ??1?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEPAXI@Z
+    ?EmitDeletingDestructor@?A0x79d5e404@@YAXPAV?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@Z
+0065e9a5 new: 3
+    ??1?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEPAXI@Z
+    ?EmitDeletingDestructor@?A0xe88de745@@YAXPAV?$CCountedPointer@VCVillageTaskCarryCrate@@@@@Z
+0065f01d new: 0
+0065fe38 new: 2
+    ??1?$CCountedPointer@VCVillageTaskTorch@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCVillageTaskTorch@@@@QAEPAXI@Z
+0065fefc new: 2
+    ??1?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEPAXI@Z
+0065ff2d new: 2
+    ??1?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAE@XZ
+    ??_G?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEPAXI@Z
+00660117 new: 0
+006601bf new: 0
+006601e9 new: 0
+006e5950 new: 1
+    ?AddLineToConversation@CScriptConversationManager@@QAEXJABVCThing@@PBV2@ABVCCharString@@_N@Z TABLE:006e5950
+007e4e30 new: 0
+00871d30 new: 1
+    ?GetZCoord@CStringAndCageBase@NCameraModes@@ABEMXZ
+0088fb40 new: 0
+0088fb50 new: 0
+00890750 new: 0
+008ed2b0 new: 0
+008ed440 new: 0
+008f9f50 new: 5
+    ??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ TABLE:008f9f50
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVLSocket@LHNetworkLib@@@std@@U12@V?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ
+    ?clear@?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXXZ
+    ?deallocate@?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXPAU?$_List_node@PAVLSocket@LHNetworkLib@@@2@I@Z
+009ea3a0 new: 1
+    ?GetFormattedName@CConsoleCommandBase@@MBE?AVCCharString@@XZ
+00a98be0 new: 1
+    ?RegisterRootSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z TABLE:00a98be0
+00a98c80 new: 1
+    ?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z TABLE:00a98c80
+00a98d20 new: 1
+    ?RegisterHelpersSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z TABLE:00a98d20
+00a98dc0 new: 1
+    ?RegisterMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z TABLE:00a98dc0
+00a999b0 new: 0
+00a9cf40 new: 3
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ?ReleaseData@?$CCountedPointer@VCChunkedFileChunk@@@@QAEXXZ
+    ?Reset@?$CCountedPointer@VCChunkedFileChunk@@@@QAEXPAVCChunkedFileChunk@@@Z TABLE:00a9cf40
+00aa4710 new: 0
+00abfe50 new: 1
+    ??_GC3DMeshFileMapChunk@@UAEPAXI@Z
+00ac1460 new: 1
+    ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z TABLE:00ac1460

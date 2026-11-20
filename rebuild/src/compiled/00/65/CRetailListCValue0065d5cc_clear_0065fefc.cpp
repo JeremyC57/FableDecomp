@@ -11,16 +11,22 @@
 // TU), then links the head to itself. The manifest label is propagated. One of 11 bodies.
 extern "C" void __cdecl free(void* block);
 
-struct CValue_0065d5cc {
-    void* m_data;
-    ~CValue_0065d5cc();                             // 0x0065D5CC
-};
+// Name fix (NF202, 2026-11-20, q12231): the element release at 0x0065D5CC is CCountedPointer<CVillageTaskSecuritySweep>::ReleaseData (FableWin.pdb
+//   ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ + the body: the destructor is the 5-byte `jmp` COMDAT(s) 0x0065E31E / 0x0065F939 at /Os,
+//   `~CCountedPointer() { ReleaseData(); }`, as engine/CCountedPointer.h documents for CComponent / CAction / CMeshDataBank);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (Data zeroed before Info).
+//   The node value is the shared CCountedPointer<CVillageTaskSecuritySweep> (was the CValue_0065d5cc stand-in with an out-of-line destructor); the
+//   list type keeps its landed CRetailList_CValue_0065d5cc token (in-place, as NF180 0x0065FE9A).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CVillageTaskSecuritySweep;
+
 
 struct CRetailList_CValue_0065d5cc {
     struct node {
         node* next;                        // +0
         node* prev;                        // +4
-        CValue_0065d5cc value;                      // +0x8
+        CCountedPointer<CVillageTaskSecuritySweep> value;                      // +0x8
     };
     node* head;
     void clear();
@@ -32,7 +38,7 @@ void CRetailList_CValue_0065d5cc::clear()
     while (n != head) {
         node* victim = n;
         n = n->next;
-        victim->value.~CValue_0065d5cc();
+        victim->value.~CCountedPointer<CVillageTaskSecuritySweep>();
         free(victim);
     }
     head->next = head;

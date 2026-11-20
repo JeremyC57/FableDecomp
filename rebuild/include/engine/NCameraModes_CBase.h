@@ -225,6 +225,9 @@ class CGameCameraManager;
 #include "engine/CCountedPointer.h"
 class CCameraModeDef;
 #endif
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_GETOBSERVEDTHING
+class CThingGameObject;
+#endif
 namespace NCameraModes {
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_TYPED_COMPOSITES
 class CSubComponentBase;
@@ -235,6 +238,12 @@ class CTools;
 enum EMode;
 class CBase {
 public:
+#ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_GETOBSERVEDTHING
+    // Opt-in (NF202, 2026-11-20, q12240, row 0x00871D30): Ego_r.pdb 0x00846960 + FableWin.pdb 0x02883590
+    // ?GetObservedThing@CBase@NCameraModes@@QBEPBVCThingGameObject@@XZ (public const, out of line at 0x0084F1B0; the CYLINDER branch
+    // above declares the same member). Declaration only.
+    const CThingGameObject* GetObservedThing() const;                    // 0x0084F1B0
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CBASE_POSITION
     // Original FableWin021f6030 / Ego_r original const reference accessor.
     const C3DVector& GetPosition() const;

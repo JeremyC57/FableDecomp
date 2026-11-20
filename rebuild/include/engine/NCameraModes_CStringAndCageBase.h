@@ -16,6 +16,11 @@ private:
     long NextAutoGoBehindWF,TimerForExpansion;
     bool DriftToMaxStringLength;
     void UpdateXYVars();
+#ifdef FABLE_RETAIL_NCAMERAMODES_CSTRINGANDCAGEBASE_GETZCOORD
+    // Opt-in (NF202, 2026-11-20, q12240, row 0x00871D30): Ego_r.pdb 0x0085F880 + FableWin.pdb 0x029D03C0
+    // ?GetZCoord@CStringAndCageBase@NCameraModes@@ABEMXZ (private const), out of line at 0x00871D30. Declaration only.
+    float GetZCoord() const;                                             // 0x00871D30
+#endif
 #ifdef FABLE_RETAIL_NCAMERAMODES_CSTRINGANDCAGEBASE_AUTOGOBEHIND
     // Opt-in (w24A, row 0x00872110): Ego_r.pdb / FableWin.pdb ?UpdateAutoGoBehind@CStringAndCageBase@NCameraModes@@ABEXAAVC3DVector@@@Z
     // (private const, out of line at 0x00872110). Declaration only.

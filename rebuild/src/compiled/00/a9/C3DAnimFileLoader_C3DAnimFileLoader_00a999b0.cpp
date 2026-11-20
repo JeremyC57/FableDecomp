@@ -1,5 +1,6 @@
 // C3DAnimFileLoader::C3DAnimFileLoader() -- build the "3DAF" chunked-file loader: create the ANRT root chunk type, then register the object/helpers sub-chunk types under the root, sequence/bone-mask under the object, movement-vector/timing-event under the helpers and the movement track under the movement vector, keeping each registered type
 // Leaf: ??0C3DAnimFileLoader
+// Name fix (NF202, 2026-11-20, q12220..q12223): the four C3DAnimFileLoader sub-chunk registrars are Register<X>SubChunkType in both PDBs (Ego_r.pdb 0x00B97E00 / 0x00B97E70 / 0x00B97EE0 / 0x00B97F50, FableWin.pdb 0x032045A0 / 0x03204670 / 0x03204740 / 0x03204810; no Add<X>SubChunkType in either), respelled in place in the local model (was Add<X>SubChunkType).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
@@ -122,20 +123,20 @@ struct C3DAnimFileLoader : CChunkedFileLoader {   // 0x60, vtable 0x0129E060
     vector<CChunkedFileChunk*>         ChunkTypes;               // +0x50
     C3DAnimFileLoader();
     virtual ~C3DAnimFileLoader();
-    CCountedPointer<CChunkedFileChunk> AddRootSubChunkType(const CChunkedFileChunk& prototype);            // 0x00A98BE0
-    CCountedPointer<CChunkedFileChunk> AddObjectSubChunkType(const CChunkedFileChunk& prototype);          // 0x00A98C80
-    CCountedPointer<CChunkedFileChunk> AddHelpersSubChunkType(const CChunkedFileChunk& prototype);         // 0x00A98D20
-    CCountedPointer<CChunkedFileChunk> AddMovementVectorSubChunkType(const CChunkedFileChunk& prototype);  // 0x00A98DC0
+    CCountedPointer<CChunkedFileChunk> RegisterRootSubChunkType(const CChunkedFileChunk& prototype);            // 0x00A98BE0
+    CCountedPointer<CChunkedFileChunk> RegisterObjectSubChunkType(const CChunkedFileChunk& prototype);          // 0x00A98C80
+    CCountedPointer<CChunkedFileChunk> RegisterHelpersSubChunkType(const CChunkedFileChunk& prototype);         // 0x00A98D20
+    CCountedPointer<CChunkedFileChunk> RegisterMovementVectorSubChunkType(const CChunkedFileChunk& prototype);  // 0x00A98DC0
 };
 
 C3DAnimFileLoader::C3DAnimFileLoader() : CChunkedFileLoader("3DAF")
 {
     RootChunkType.Reset(new C3DAnimFileRootChunk);
-    ObjectChunkType = AddRootSubChunkType(C3DAnimFileObjectChunk());
-    HelpersChunkType = AddRootSubChunkType(C3DAnimFileHelpersChunk());
-    SequenceChunkType = AddObjectSubChunkType(C3DAnimFileSequenceChunk());
-    BoneMaskChunkType = AddObjectSubChunkType(C3DAnimFileBoneMaskChunk());
-    MovementVectorChunkType = AddHelpersSubChunkType(C3DAnimFileMovementVectorChunk());
-    TimingEventChunkType = AddHelpersSubChunkType(C3DAnimFileTimingEventChunk());
-    MovementTrackChunkType = AddMovementVectorSubChunkType(C3DAnimFileSequenceChunk());
+    ObjectChunkType = RegisterRootSubChunkType(C3DAnimFileObjectChunk());
+    HelpersChunkType = RegisterRootSubChunkType(C3DAnimFileHelpersChunk());
+    SequenceChunkType = RegisterObjectSubChunkType(C3DAnimFileSequenceChunk());
+    BoneMaskChunkType = RegisterObjectSubChunkType(C3DAnimFileBoneMaskChunk());
+    MovementVectorChunkType = RegisterHelpersSubChunkType(C3DAnimFileMovementVectorChunk());
+    TimingEventChunkType = RegisterHelpersSubChunkType(C3DAnimFileTimingEventChunk());
+    MovementTrackChunkType = RegisterMovementVectorSubChunkType(C3DAnimFileSequenceChunk());
 }

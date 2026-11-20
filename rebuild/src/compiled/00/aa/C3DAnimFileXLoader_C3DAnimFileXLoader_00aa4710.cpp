@@ -1,5 +1,6 @@
 // C3DAnimFileXLoader::C3DAnimFileXLoader() -- build the anim-file loader and register the XSEQ / XALO extension chunk types
 // Leaf: ??0C3DAnimFileXLoader
+// Name fix (NF202, 2026-11-20, q12220..q12223): the four C3DAnimFileLoader sub-chunk registrars are Register<X>SubChunkType in both PDBs (Ego_r.pdb 0x00B97E00 / 0x00B97E70 / 0x00B97EE0 / 0x00B97F50, FableWin.pdb 0x032045A0 / 0x03204670 / 0x03204740 / 0x03204810; no Add<X>SubChunkType in either), respelled in place in the local model (was Add<X>SubChunkType).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA4710, length 365 bytes.
@@ -55,9 +56,9 @@ struct C3DAnimFileLoader {                  // 0x60
     CCountedPointer<CChunkedFileChunk> MovementTrackChunkType;   // +0x40
     CCountedPointer<CChunkedFileChunk> TimingEventChunkType;     // +0x48
     CArray<CChunkedFileChunk*>         ChunkTypes;               // +0x50
-    CCountedPointer<CChunkedFileChunk> AddObjectSubChunkType(const CChunkedFileChunk& prototype);          // 0x00A98C80
-    CCountedPointer<CChunkedFileChunk> AddMovementVectorSubChunkType(const CChunkedFileChunk& prototype);  // 0x00A98DC0
-    CCountedPointer<CChunkedFileChunk> AddHelpersSubChunkType(const CChunkedFileChunk& prototype);         // 0x00A98D20
+    CCountedPointer<CChunkedFileChunk> RegisterObjectSubChunkType(const CChunkedFileChunk& prototype);          // 0x00A98C80
+    CCountedPointer<CChunkedFileChunk> RegisterMovementVectorSubChunkType(const CChunkedFileChunk& prototype);  // 0x00A98DC0
+    CCountedPointer<CChunkedFileChunk> RegisterHelpersSubChunkType(const CChunkedFileChunk& prototype);         // 0x00A98D20
 };
 
 class C3DAnimFileXLoader : public C3DAnimFileLoader { public:
@@ -69,14 +70,14 @@ C3DAnimFileXLoader::C3DAnimFileXLoader()
 {
     {
         C3DAnimFileXSequenceChunk prototype;
-        CCountedPointer<CChunkedFileChunk> registered = AddObjectSubChunkType(prototype);
+        CCountedPointer<CChunkedFileChunk> registered = RegisterObjectSubChunkType(prototype);
     }
     {
         C3DAnimFileXSequenceChunk prototype;
-        CCountedPointer<CChunkedFileChunk> registered = AddMovementVectorSubChunkType(prototype);
+        CCountedPointer<CChunkedFileChunk> registered = RegisterMovementVectorSubChunkType(prototype);
     }
     {
         C3DAnimFileXAllocationSizeChunk prototype;
-        CCountedPointer<CChunkedFileChunk> registered = AddHelpersSubChunkType(prototype);
+        CCountedPointer<CChunkedFileChunk> registered = RegisterHelpersSubChunkType(prototype);
     }
 }

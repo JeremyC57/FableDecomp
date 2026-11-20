@@ -1,7 +1,8 @@
-// C3DAnimFileLoader::AddMovementVectorSubChunkType(const CChunkedFileChunk& prototype) -- register a new instance of the prototype under the MovementVectorChunkType's super chunk and return it
-// Leaf: ?AddMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00a98dc0, 157 bytes, thiscall, hidden return pointer, `ret 8`.
-// Identity (proven): it registers under this+0x38, which is Ego_r.pdb C3DAnimFileLoader::MovementVectorChunkType (the landed constructor 0x00A999B0's layout); bound ?AddMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z; called by the landed C3DAnimFileLoader::C3DAnimFileLoader at 0x00A99D96 (movement-track prototype); also C3DAnimFileXLoader::C3DAnimFileXLoader 0x00AA47CC.
+// C3DAnimFileLoader::RegisterObjectSubChunkType(const CChunkedFileChunk& prototype) -- register a new instance of the prototype under the ObjectChunkType's super chunk and return it
+// Leaf: ?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+// Name fix (NF202, 2026-11-20, q12220..q12223): the four C3DAnimFileLoader sub-chunk registrars are Register<X>SubChunkType in both PDBs (Ego_r.pdb 0x00B97E00 / 0x00B97E70 / 0x00B97EE0 / 0x00B97F50, FableWin.pdb 0x032045A0 / 0x03204670 / 0x03204740 / 0x03204810; no Add<X>SubChunkType in either), respelled in place in the local model (was Add<X>SubChunkType).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00a98c80, 157 bytes, thiscall, hidden return pointer, `ret 8`.
+// Identity (proven): it registers under this+0x18, which is Ego_r.pdb C3DAnimFileLoader::ObjectChunkType (the landed constructor 0x00A999B0's layout); bound ?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z; called by the landed C3DAnimFileLoader::C3DAnimFileLoader at 0x00A99B56 / 0x00A99BF3 (sequence, bone-mask prototypes); also C3DAnimFileXLoader::C3DAnimFileXLoader 0x00AA4752.
 // Callees: the prototype's CreateNewInstance() const (CChunkedFileChunk vtable slot 9), operator new 0x00BFEA1A (the 12-byte
 //   count block, deleter CCountedPointer<CChunkedFileChunk>::DeleteData 0x00A99FF0), the parent's GetAsSuperChunk() (slot 6, 0x00AA76B0 in the super-chunk
 //   vtables), CChunkedFileSuperChunk::RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>&) 0x00AA87E0, operator
@@ -91,12 +92,12 @@ struct C3DAnimFileLoader : CChunkedFileLoader {
     CCountedPointer<CChunkedFileChunk> MovementVectorChunkType;  // +0x38
     CCountedPointer<CChunkedFileChunk> MovementTrackChunkType;   // +0x40
     CCountedPointer<CChunkedFileChunk> TimingEventChunkType;     // +0x48
-    CCountedPointer<CChunkedFileChunk> AddMovementVectorSubChunkType(const CChunkedFileChunk& prototype);
+    CCountedPointer<CChunkedFileChunk> RegisterObjectSubChunkType(const CChunkedFileChunk& prototype);
 };
 
-CCountedPointer<CChunkedFileChunk> C3DAnimFileLoader::AddMovementVectorSubChunkType(const CChunkedFileChunk& prototype)
+CCountedPointer<CChunkedFileChunk> C3DAnimFileLoader::RegisterObjectSubChunkType(const CChunkedFileChunk& prototype)
 {
     CCountedPointer<CChunkedFileChunk> chunkType(prototype.CreateNewInstance());
-    MovementVectorChunkType.m_pObject->GetAsSuperChunk()->RegisterSubChunkType(chunkType);
+    ObjectChunkType.m_pObject->GetAsSuperChunk()->RegisterSubChunkType(chunkType);
     return chunkType;
 }

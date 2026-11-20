@@ -9,6 +9,29 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCONSOLECOMMANDBASE_GETFORMATTEDNAME
+// Partial retail mode (NF202, 2026-11-20, q12225, row 0x009EA3A0): declares only what the formatted-name member reads. Both PDBs:
+// CConsoleCommandBase : CConsoleInputBase (FableWin ?GetName@CConsoleInputBase@@IBEABVCCharString@@XZ, Name at +0x04 after the vptr;
+// retail vtables 0x0122E5B0 / 0x0122E638 per row 0x00414F30), ParamTypes +0x08 (CConsoleCommandParameters, a 12-byte STLport vector),
+// and ?GetFormattedName@CConsoleCommandBase@@MBE?AVCCharString@@XZ (Ego_r.pdb 0x00B3D6A0, FableWin.pdb 0x030A9E40: protected virtual
+// const). Slot order and the other virtuals are not modelled here (no vtable is emitted by a definition-only TU). Declarations only.
+#ifndef FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING
+#endif
+#include "fable_string.h"
+class CConsoleInputBase {
+public:
+    virtual ~CConsoleInputBase();
+protected:
+    const CCharString& GetName() const { return Name; }                  // FableWin ?GetName@CConsoleInputBase@@IBEABVCCharString@@XZ
+    CCharString Name;                                                    // +0x04
+};
+class CConsoleCommandBase : public CConsoleInputBase {
+protected:
+    virtual CCharString GetFormattedName() const;                        // 0x009EA3A0
+    unsigned char ParamTypes[0xc];                                       // +0x08 CConsoleCommandParameters
+};
+#else
 #pragma pack(push, 1)
 struct CConsoleCommandBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -18,9 +41,11 @@ struct CConsoleCommandBase {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CConsoleCommandBase) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CConsoleCommandBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CConsoleCommandBase, m_field4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CConsoleCommandBase, ParamTypes) == 0x8);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CConsoleCommandBase) == 0x14);
+FABLE_STATIC_ASSERT_AT(22, offsetof(CConsoleCommandBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(23, offsetof(CConsoleCommandBase, m_field4) == 0x4);
+FABLE_STATIC_ASSERT_AT(24, offsetof(CConsoleCommandBase, ParamTypes) == 0x8);
+
+#endif // FABLE_RETAIL_CCONSOLECOMMANDBASE_GETFORMATTEDNAME
 
 #endif // FABLE_ENGINE_CCONSOLECOMMANDBASE_H

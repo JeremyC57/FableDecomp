@@ -1,0 +1,182 @@
+addr       parity           behav  name
+004115a0   MATCH            PASS   CBasicString<char>::operator==
+00485aa7   WARN RELOC_NAME: ?__copy_trivial@std@@YIPAXPBX0PAX@Z -> 00405ba0 labelled 'Std_Move_Backward'
+00485aa7   RELOCATION_MATCH PASS   std::vector<NUISystem::CComponent*>::erase
+0053c9bc   RELOCATION_MATCH PASS   std::list<T_0053c9bc>::~list
+00579d97   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@2@@Z -> 00579d97 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00579d97   WARN RELOC_NAME: ??_G?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAEPAXI@Z -> 005799de labelled 'std::pair<EHeroTrainableStatType const, SExpSpendUndo>::`scalar deleting destructor''
+00579d97   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+00579d97   RELOCATION_MATCH PASS   LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+005cc1e8   WARN SHARED_HEADER_AVAILABLE CDefIndex (engine/CDefIndex.h)
+005cc1e8   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+005cc1e8   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005cc1e8   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent (engine/CPersistContext_TransferableComponent.h)
+005cc1e8   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005cc1e8   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00659800   WARN RELOC_NAME: ??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YIHU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0UHasGuardProperty@@@Z -> 0065f6a6 labelled 'std::count_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>'
+00659800   WARN RELOC_NAME: ??$GetPBestThing@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z -> 0065f6da labelled 'CThingSearchTools::GetPBestThing<class std::binary_compose<struct std::logical_or<bool>,class CThingFilter_HasTC,class CThingFilter_HasTC>,class CThingCompare_Nearest,class CThing>'
+00659800   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ -> 0065d5cc labelled 'CCountedPointer<CVillageTaskSecuritySweep>::~CCountedPointer'
+00659800   RELOCATION_MATCH PASS   CTCVillage::CalculateSecuritySweepTasks
+00659c7e   WARN SHARED_HEADER_AVAILABLE CCrateStackDef (engine/CCrateStackDef.h)
+00659c7e   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00659c7e   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00659c7e   WARN SHARED_HEADER_AVAILABLE CTCCrateStack (engine/CTCCrateStack.h)
+00659c7e   WARN SHARED_HEADER_AVAILABLE CVillageTaskCarryCrate (engine/CVillageTaskCarryCrate.h)
+00659c7e   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+00659c7e   WARN RELOC_NAME: ?push_back@CCrateTaskList@@QAEXABV?$CCountedPointer@VCVillageTaskCarryCrate@@@@@Z -> 006605a1 labelled 'Lua_PushClosure'
+00659c7e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ -> 0065d5f8 labelled 'CCountedPointer<CVillageTaskCarryCrate>::~CCountedPointer'
+00659c7e   RELOCATION_MATCH PASS   CTCVillage::AddCrateTasksFromAndTo
+0065d574   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ (catalog CCountedPointer<CVillageTaskTorch>::~CCountedPointer; names another function)
+0065d574   RELOCATION_MATCH PASS   CCountedPointer<CVillageTaskTorch>::~CCountedPointer
+0065d5cc   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ (catalog CCountedPointer<CVillageTaskSecuritySweep>::~CCountedPointer; names another function)
+0065d5cc   RELOCATION_MATCH PASS   CCountedPointer<CVillageTaskSecuritySweep>::~CCountedPointer
+0065d5f8   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ (catalog CCountedPointer<CVillageTaskCarryCrate>::~CCountedPointer; names another function)
+0065d5f8   RELOCATION_MATCH PASS   CCountedPointer<CVillageTaskCarryCrate>::~CCountedPointer
+0065e919   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ -> 0065d574 labelled 'CCountedPointer<CVillageTaskTorch>::~CCountedPointer'
+0065e919   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_0065e919
+0065e989   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ -> 0065d5cc labelled 'CCountedPointer<CVillageTaskSecuritySweep>::~CCountedPointer'
+0065e989   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_0065e989
+0065e9a5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ -> 0065d5f8 labelled 'CCountedPointer<CVillageTaskCarryCrate>::~CCountedPointer'
+0065e9a5   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_0065e9a5
+0065f01d   WARN SHARED_HEADER_AVAILABLE CTCDummyVillager (engine/CTCDummyVillager.h)
+0065f01d   RELOCATION_MATCH PASS   CTCDummyVillager::Evict
+0065fe38   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ -> 0065d574 labelled 'CCountedPointer<CVillageTaskTorch>::~CCountedPointer'
+0065fe38   RELOCATION_MATCH PASS   CRetailList_CValue_0065d574::clear
+0065fefc   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ -> 0065d5cc labelled 'CCountedPointer<CVillageTaskSecuritySweep>::~CCountedPointer'
+0065fefc   RELOCATION_MATCH PASS   CRetailList_CValue_0065d5cc::clear
+0065ff2d   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ -> 0065d5f8 labelled 'CCountedPointer<CVillageTaskCarryCrate>::~CCountedPointer'
+0065ff2d   RELOCATION_MATCH PASS   CRetailList_CValue_0065d5f8::clear
+00660117   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ -> 0065d574 labelled 'CCountedPointer<CVillageTaskTorch>::~CCountedPointer'
+00660117   RELOCATION_MATCH PASS   std::list<CCountedPointer<CVillageTaskTorch>, std::allocator<CCountedPointer<CVillageTaskTorch>>>::erase
+006601bf   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ -> 0065d5cc labelled 'CCountedPointer<CVillageTaskSecuritySweep>::~CCountedPointer'
+006601bf   RELOCATION_MATCH PASS   std::list<CCountedPointer<CVillageTaskSecuritySweep>, std::allocator<CCountedPointer<CVillageTaskSecuritySweep>>>::erase
+006601e9   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ -> 0065d5f8 labelled 'CCountedPointer<CVillageTaskCarryCrate>::~CCountedPointer'
+006601e9   RELOCATION_MATCH PASS   std::list<CCountedPointer<CVillageTaskCarryCrate>, std::allocator<CCountedPointer<CVillageTaskCarryCrate>>>::erase
+006e5950   RELOCATION_MATCH PASS   CScriptConversationManager::AddLineToConversation
+007e4e30   RELOCATION_MATCH PASS   CTCBetting::FrameUpdate
+00871d30   WARN STANDIN_LEAF ?GetZCoord@CStringAndCageBase@NCameraModes@@ABEMXZ (catalog CTCLook::UpdateLookTimer; names another function)
+00871d30   RELOCATION_MATCH PASS   CTCLook::UpdateLookTimer
+0088fb40   RELOCATION_MATCH PASS   CGameScriptInterface::SetBettingActive
+0088fb50   RELOCATION_MATCH PASS   CGameScriptInterface::GetBettingActive
+00890750   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00890750   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00890750   RELOCATION_MATCH PASS   CGameScriptInterface::AddLineToConversation
+008ed2b0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ed2b0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ed2b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ed2b0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ed2b0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+008ed2b0   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+008ed2b0   WARN RELOC_NAME: ??$for_each@PAU?$pair@JVCCharString@@@std@@VCCreateItemNamesFromIndices@@@std@@YI?AVCCreateItemNamesFromIndices@@PAU?$pair@JVCCharString@@@0@0V1@@Z -> 008ed4d0 labelled '_global::Copy_ToNameInserter8_008ed4d0'
+008ed2b0   WARN RELOC_NAME: ??$for_each@PAVCCharString@@VCCreateIndicesFromItemNames@@@std@@YI?AVCCreateIndicesFromItemNames@@PAVCCharString@@0V1@@Z -> 008ed510 labelled '_global::Copy_ToNameInserter4_008ed510'
+008ed2b0   RELOCATION_MATCH PASS   CTCContainer::OnSerialise
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+008ed440   RELOCATION_MATCH PASS   CCreateIndicesFromItemNames::operator()
+008f9f50   RELOCATION_MATCH PASS   std::_List_base<LHNetworkLib::LSocket *, std::allocator<LHNetworkLib::LSocket *>>::~_List_base
+009ea3a0   RELOCATION_MATCH PASS   CConsoleCommandBase::GetFormattedName
+00a98be0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98be0   WARN STANDIN_LEAF ?RegisterRootSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z (catalog C3DAnimFileLoader::AddRootSubChunkType; names another function)
+00a98be0   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddRootSubChunkType
+00a98c80   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98c80   WARN STANDIN_LEAF ?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z (catalog C3DAnimFileLoader::AddObjectSubChunkType; names another function)
+00a98c80   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddObjectSubChunkType
+00a98d20   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98d20   WARN STANDIN_LEAF ?RegisterHelpersSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z (catalog C3DAnimFileLoader::AddHelpersSubChunkType; names another function)
+00a98d20   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddHelpersSubChunkType
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98dc0   WARN STANDIN_LEAF ?RegisterMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z (catalog C3DAnimFileLoader::AddMovementVectorSubChunkType; names another function)
+00a98dc0   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddMovementVectorSubChunkType
+00a999b0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileObjectChunk (engine/C3DAnimFileObjectChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileHelpersChunk (engine/C3DAnimFileHelpersChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileSequenceChunk (engine/C3DAnimFileSequenceChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileBoneMaskChunk (engine/C3DAnimFileBoneMaskChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileMovementVectorChunk (engine/C3DAnimFileMovementVectorChunk.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a999b0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a999b0   WARN RELOC_NAME: ?RegisterRootSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98be0 labelled 'C3DAnimFileLoader::AddRootSubChunkType'
+00a999b0   WARN RELOC_NAME: ?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98c80 labelled 'C3DAnimFileLoader::AddObjectSubChunkType'
+00a999b0   WARN RELOC_NAME: ?RegisterHelpersSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98d20 labelled 'C3DAnimFileLoader::AddHelpersSubChunkType'
+00a999b0   WARN RELOC_NAME: ?RegisterMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98dc0 labelled 'C3DAnimFileLoader::AddMovementVectorSubChunkType'
+00a999b0   RELOCATION_MATCH PASS   C3DAnimFileLoader::C3DAnimFileLoader
+00a9cf40   RELOCATION_MATCH PASS   CCountedPointer_00a99ff0::Reset
+00aa4710   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00aa4710   WARN SHARED_HEADER_AVAILABLE C3DAnimFileXSequenceChunk (engine/C3DAnimFileXSequenceChunk.h)
+00aa4710   WARN SHARED_HEADER_AVAILABLE C3DAnimFileXAllocationSizeChunk (engine/C3DAnimFileXAllocationSizeChunk.h)
+00aa4710   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00aa4710   WARN SHARED_HEADER_AVAILABLE C3DAnimFileXLoader (engine/C3DAnimFileXLoader.h)
+00aa4710   WARN RELOC_NAME: ?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98c80 labelled 'C3DAnimFileLoader::AddObjectSubChunkType'
+00aa4710   WARN RELOC_NAME: ?RegisterMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98dc0 labelled 'C3DAnimFileLoader::AddMovementVectorSubChunkType'
+00aa4710   WARN RELOC_NAME: ?RegisterHelpersSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z -> 00a98d20 labelled 'C3DAnimFileLoader::AddHelpersSubChunkType'
+00aa4710   RELOCATION_MATCH PASS   C3DAnimFileXLoader::C3DAnimFileXLoader
+00abfe50   RELOCATION_MATCH PASS   C3DMeshFileMapChunk::C3DMeshFileMapChunk
+00ac1460   MATCH            PASS   _global::DeleteViaVtable0_00ac1460
+
+WINS: 39
+  004115a0 MATCH CBasicString<char>::??8?$CBasicString@D@@QBE_NPBD@Z
+  00485aa7 RELOCATION_MATCH std::vector<NUISystem::CComponent*>::?erase@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@PAPAV34@0@Z
+  0053c9bc RELOCATION_MATCH std::??1?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+  00579d97 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@2@@Z
+  005cc1e8 RELOCATION_MATCH CPersistContext::??$Transfer@VCDefIndex@@@CPersistContext@@QAEXPBDAAVCDefIndex@@ABV1@@Z
+  00659800 RELOCATION_MATCH CTCVillage::?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
+  00659c7e RELOCATION_MATCH CTCVillage::?AddCrateTasksFromAndTo@CTCVillage
+  0065d574 RELOCATION_MATCH _global::?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ
+  0065d5cc RELOCATION_MATCH _global::?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ
+  0065d5f8 RELOCATION_MATCH _global::?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ
+  0065e919 RELOCATION_MATCH _global::??_G?$CCountedPointer@VCVillageTaskTorch@@@@QAEPAXI@Z
+  0065e989 RELOCATION_MATCH _global::??_G?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEPAXI@Z
+  0065e9a5 RELOCATION_MATCH _global::??_G?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEPAXI@Z
+  0065f01d RELOCATION_MATCH CTCDummyVillager::?Evict@CTCDummyVillager@@QAEXXZ
+  0065fe38 RELOCATION_MATCH CRetailList_CValue_0065d574::clear
+  0065fefc RELOCATION_MATCH CRetailList_CValue_0065d5cc::clear
+  0065ff2d RELOCATION_MATCH CRetailList_CValue_0065d5f8::clear
+  00660117 RELOCATION_MATCH std::list::?erase@?$list@V?$CCountedPointer@VCVillageTaskTorch@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskTorch@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@2@U32@@Z
+  006601bf RELOCATION_MATCH std::list::?erase@?$list@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskSecuritySweep@@@@@std@@@2@U32@@Z
+  006601e9 RELOCATION_MATCH std::list::?erase@?$list@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@2@U32@@Z
+  006e5950 RELOCATION_MATCH CScriptConversationManager::?AddLineToConversation@CScriptConversationManager@@QAEXJABVCThing@@PBV2@ABVCCharString@@_N@Z
+  007e4e30 RELOCATION_MATCH CTCBetting::?FrameUpdate@CTCBetting@@UAEXXZ
+  00871d30 RELOCATION_MATCH CTCLook::?GetZCoord@CStringAndCageBase@NCameraModes@@ABEMXZ
+  0088fb40 RELOCATION_MATCH CGameScriptInterface::SetBettingActive
+  0088fb50 RELOCATION_MATCH CGameScriptInterface::GetBettingActive
+  00890750 RELOCATION_MATCH CGameScriptInterface::AddLineToConversation
+  008ed2b0 RELOCATION_MATCH CTCContainer::?OnSerialise@CTCContainer@@
+  008ed440 RELOCATION_MATCH CCreateIndicesFromItemNames::??RCCreateIndicesFromItemNames@@QAEXABVCCharString@@@Z
+  008f9f50 RELOCATION_MATCH _global::??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ
+  009ea3a0 RELOCATION_MATCH CConsoleCommandBase::?GetFormattedName@CConsoleCommandBase@@MBE?AVCCharString@@XZ
+  00a98be0 RELOCATION_MATCH C3DAnimFileLoader::?RegisterRootSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a98c80 RELOCATION_MATCH C3DAnimFileLoader::?RegisterObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a98d20 RELOCATION_MATCH C3DAnimFileLoader::?RegisterHelpersSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a98dc0 RELOCATION_MATCH C3DAnimFileLoader::?RegisterMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a999b0 RELOCATION_MATCH C3DAnimFileLoader::??0C3DAnimFileLoader
+  00a9cf40 RELOCATION_MATCH CCountedPointer_00a99ff0::?Reset@?$CCountedPointer@VCChunkedFileChunk@@@@QAEXPAVCChunkedFileChunk@@@Z
+  00aa4710 RELOCATION_MATCH C3DAnimFileXLoader::??0C3DAnimFileXLoader
+  00abfe50 RELOCATION_MATCH C3DMeshFileMapChunk::??0C3DMeshFileMapChunk@@QAE@XZ
+  00ac1460 MATCH _global::?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z

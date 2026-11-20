@@ -1,0 +1,7 @@
+OK  00579d97 -> 0042ab73 ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ sizes 23 23 
+OK  00579d97 -> 005797fa ??1SExpSpendUndo@@QAE@XZ sizes 35 35 
+OK  00579d97 -> 005799de ??_G?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@QAEPAXI sizes 31 31 
+OK  00579d97 -> 0042a168 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ sizes 39 39 owner leaf ?Clear@List@@QAEXXZ
+
+LNK2005 by hand (cmpbody.py): ??1SExpSpendUndo@@QAE@XZ new_00579d97 vs own_005797fa: sizes 35 35 bytes equal True relocs equal True (owner defines it strongly: debt).
+First run (0x004115A0 included, then held): ?Compare@?$CBasicString@D@@KIJPBD0@Z new_004115a0 vs own_00411570: sizes 40 40 equal, but a new LNK2005; the row is held.

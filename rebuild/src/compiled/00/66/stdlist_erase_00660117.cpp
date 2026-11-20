@@ -15,6 +15,10 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CVillageTaskTorch;
+// Name fix (NF202, 2026-11-20, q12230): the element release this row calls is CCountedPointer<CVillageTaskTorch>::ReleaseData (FableWin.pdb
+//   ?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ + the body: the destructor is the 5-byte `jmp` COMDAT(s) 0x0065E298 / 0x0065F925);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: the destructor stays inline and expands to that out-of-line call.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 
 namespace std {

@@ -1,72 +1,20 @@
-// C3DMeshFileMapChunk::C3DMeshFileMapChunk() -- base chunk "MMAP", MapIndex -1, two default strings
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABFE50, length 48 bytes.
-// Callees: 0x00AA8360 CChunkedFileSuperChunk ctor, 0x0099E4B0 CCharString::CCharString() x2
-//
-// ---- shared retail model for the C3DMeshFile*Chunk family (TLC Fable.exe) -----------------------
-// The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
-// CChunkedFileSuperChunk base is 0x34 bytes; in retail TLC it is 0x2c (every derived member sits 8 bytes
-// lower, and the vtable slots are the same).  The bytes decide, so this file models the retail layout
-// with the PDB member names and says so here instead of including the disagreeing header.
-class CCharString { public:
-    CCharString();                                      // 0x0099E4B0 default
-    CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)
-    CCharString(const CCharString& other);              // 0x0099EC30 copy
-    ~CCharString();                                     // 0x0099EAE0
-    void* m_pStringData;                                // CCharStringData*
-};
-CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
-CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
-
-class CMatrix3x4 { public: float m_row[3][4]; };               // 48 bytes, copied with rep movsd
-#include "engine/C3DVector.h"
-
-class CChunkedFileSaver;
-class CDataOutputStream { public:
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void WriteBool(bool value);                         // 0x00993E30
-    void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
-    void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
-};
-
-// CChunkedFileChunk (0x10) -> CChunkedFileSuperChunk -> CChunkedFileSuperChunk (0x2c in retail).
-class CChunkedFileSuperChunk { public:      // RTTI direct base of the mesh/anim chunks (was the invented CChunkedFileSuperChunk)
-    virtual void v0();   // slot 0 (deleting dtor; kept non-virtual here so the implicit ~C3DMeshFileMapChunk is not emitted next to this ctor)
-    virtual void v1();
-    virtual CCharString GetChunkInfo() const;                    // slot 2
-    virtual void v3();
-    virtual void v4();
-    virtual void v5();
-    virtual void v6();
-    virtual void v7();
-    virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;  // slot 8, 0x00AA78C0
-    protected:
-    CChunkedFileSuperChunk(const char* chunkType);                     // 0x00AA8360 (Ego_r / FableWin protected IAE)
-    public:
-    unsigned char _base_body[0x28];                              // +0x04 .. +0x2b (chunk type, parent, child list)
-};
-
-// The chunk factory that owns CreateNewInstance(): a `new T` registered through virtual slot 10.
-struct CChunkedFileChunkFactory {
-    virtual void f0(); virtual void f1(); virtual void f2(); virtual void f3(); virtual void f4();
-    virtual void f5(); virtual void f6(); virtual void f7(); virtual void f8(); virtual void f9();
-    virtual CChunkedFileSuperChunk* RegisterNewChunk(CChunkedFileSuperChunk* chunk);   // slot 10 (+0x28)
-};
-// ------------------------------------------------------------------------------------------------
-
-class C3DMeshFileMapChunk : public CChunkedFileSuperChunk { public:
-    long        MapIndex;       // +0x2c
-    CCharString Name;           // +0x30
-    CCharString Filename;       // +0x34
-    long        Unused;         // +0x38 (not written by the constructor)  sizeof == 0x3c
-    C3DMeshFileMapChunk();
-    void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;
-};
+// C3DMeshFileMapChunk::C3DMeshFileMapChunk() -- base chunk "MMAP", MapType -1, two default strings (CRC left unset)
+// Leaf: ??0C3DMeshFileMapChunk@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABFE50, length 48 bytes:
+//   push esi ; push "MMAP" ; mov esi,ecx ; call 0x00AA8360 (CChunkedFileSuperChunk ctor) ; lea ecx,[esi+30h] ;
+//   mov [esi],0129EE34h (vptr) ; mov [esi+2Ch],-1 ; call 0x0099E4B0 (CCharString()) ; lea ecx,[esi+34h] ; call 0x0099E4B0 ; mov eax,esi ; pop esi ; ret
+// Port (NF202, 2026-11-20, q12251): the row-local CCharString / CDataOutputStream / CChunkedFileSuperChunk / C3DMeshFileMapChunk models and
+//   their 36-byte stand-in vtable are replaced by the shared engine/C3DMeshFileMapChunk.h (polymorphic retail class: vptr 0x0129EE34, MapType
+//   +0x2C, MapDescription +0x30, Filename +0x34, CRC +0x38; retail sizeof 0x3C), the class the landed CreateMap 0x00AC0C00 uses
+//   (FABLE_RETAIL_C3DMESHFILEMAPCHUNK_TYPE_CTOR there). The default constructor stores -1 in MapType (Ego_r.pdb names the +0x2C member
+//   MapType; the old local name MapIndex was made up). The vtable / ??_G / DeleteData COMDATs this TU now emits are those of 0x00AC0C00.
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
+#define FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK
+#include "fable_string.h"
+#include "engine/CChunkedFileSuperChunk.h"
+#include "engine/C3DMeshFileMapChunk.h"
 
 C3DMeshFileMapChunk::C3DMeshFileMapChunk()
-    : CChunkedFileSuperChunk("MMAP"), MapIndex(-1)
+    : CChunkedFileSuperChunk("MMAP"), MapType((EMaterialMapType)-1)
 {
 }

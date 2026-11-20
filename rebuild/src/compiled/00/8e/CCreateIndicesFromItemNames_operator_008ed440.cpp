@@ -41,7 +41,7 @@ class CDefStringTable {
 public:
     CCharString GetString(long tablePos) const; // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;         // 0x013CA828 (Ego_r.pdb S_PUB32 ?GDefStringTable@@3VCDefStringTable@@A + Ego_d.pdb; NF202 q12261: was the made-up g_DefStringTable; unused here)
 
 class CDefinitionManager {
 public:

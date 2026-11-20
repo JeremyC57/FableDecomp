@@ -1,0 +1,10 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_004159b0.obj : error LNK2005: "public: __thiscall CGameEvent::CGameEvent(long)" (??0CGameEvent@@QAE@J@Z) already defined in new_007e4e30.obj
+own_004159e0.obj : error LNK2005: "public: void __thiscall CGameEvent::AddUBYTE(unsigned char)" (?AddUBYTE@CGameEvent@@QAEXE@Z) already defined in new_007e4e30.obj
+own_0041be70.obj : error LNK2005: "public: void __thiscall CEnginePrimitiveHandle::Clear(void)" (?Clear@CEnginePrimitiveHandle@@QAEXXZ) already defined in new_007e4e30.obj
+own_005797fa.obj : error LNK2005: "public: __thiscall SExpSpendUndo::~SExpSpendUndo(void)" (??1SExpSpendUndo@@QAE@XZ) already defined in new_00579d97.obj
+own_0065f7b4.obj : error LNK2005: "public: bool __thiscall CDefClassBase::GetSubDef<class CCrateStackDef>(class CDefPointer<class CCrateStackDef const> *)const " (??$GetSubDef@VCCrateStackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCrateStackDef@@@@@Z) already defined in new_00659c7e.obj
+own_007e5820.obj : error LNK2005: "public: bool __thiscall CDefClassBase::GetSubDef<class CBettingDef>(class CDefPointer<class CBettingDef const> *)const " (??$GetSubDef@VCBettingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBettingDef@@@@@Z) already defined in new_007e4e30.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found

@@ -1,0 +1,3 @@
+GREW 013caa48 2 -> 3 ?OPEN_BRACKET@?A0xcdbab2fc@@3VCCharString@@A row 009ea3a0 DIFF before=[]
+GREW 00aae090 0 -> 1 ??0C3DAnimFileHelpersChunk@@QAE@XZ row 00a999b0 SAME
+shrank [('00405ba0', 3, 2), ('0050f3f0', 2, 1), ('0065d574', 3, 1), ('0065d5cc', 3, 1), ('0065d5f8', 3, 1), ('0084f1b0', 2, 1), ('004c73d0', 5, 4), ('013bae1d', 6, 4), ('0099f570', 2, 1), ('005799de', 2, 1)]

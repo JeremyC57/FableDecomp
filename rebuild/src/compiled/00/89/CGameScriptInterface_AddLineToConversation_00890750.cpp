@@ -23,16 +23,11 @@ class CScriptThing
 };
 
 // retail 0x006E5950 - declared only, so the call rel32 stays a relocation.
-class CScriptConversationManager
-{
-public:
-    void AddLineToConversation(
-        long               conversationId,
-        CThing*            pSpeaker,
-        CThing*            pListener,
-        const CCharString* pLine,
-        bool               playDuringCutScenes);
-};
+// Name fix (NF202, 2026-11-20, q12195): the callee is declared by engine/CScriptConversationManager.h
+// (FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_ADDLINETOCONVERSATION) with its PDB signature (Ego_r.pdb 0x0070EE80 + FableWin.pdb
+// 0x02409E00: speaker and line by const reference, listener const*), replacing the local pointer-form model.
+#define FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_ADDLINETOCONVERSATION
+#include "engine/CScriptConversationManager.h"
 
 // CWorld overlay: scoped_ptr<CScriptConversationManager> at +0x7C is a bare pointer.
 struct CGSIAddLineToConversationWorld
@@ -75,9 +70,9 @@ void CGameScriptInterface::AddLineToConversation(
 
         pManager->AddLineToConversation(
             conversationId,
-            speaker.m_pVTable->m_GetPThing(&speaker),
+            *speaker.m_pVTable->m_GetPThing(&speaker),
             pListener,
-            &line,
+            line,
             playDuringCutScenes);
     }
 }

@@ -1,4 +1,5 @@
-// CCountedPointer_00a99ff0::Reset(T*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
+// CCountedPointer<CChunkedFileChunk>::Reset(CChunkedFileChunk*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
+// Leaf: ?Reset@?$CCountedPointer@VCChunkedFileChunk@@@@QAEXPAVCChunkedFileChunk@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9CF40, oracle length 103 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -15,34 +16,12 @@
 // engine/CCountedPointer.h (name fix NF189, 2026-11-20, q4553: was the free stand-in Destroy_00a99ff0).
 // Taking the deleter's address makes this TU emit the header's inline DeleteData as a pick-any copy; the shared class header keeps it
 // the owner 0x00A99FF0's body (a complete CChunkedFileChunk, virtual destructor).
+// Name fix (NF202, 2026-11-20, q12224): FableWin.pdb 0x033D6870 ?Reset@?$CCountedPointer@VCChunkedFileChunk@@@@QAEXPAVCChunkedFileChunk@@@Z +
+//   the body (the new count block stores the DeleteData<CChunkedFileChunk> deleter 0x00A99FF0); the local CCountedPointer_00a99ff0 /
+//   SCountBlock stand-ins are replaced by the shared engine/CCountedPointer.h template (explicit instantiation, as the landed
+//   Reset rows 0x00A94DF0 / 0x00AADFF0). Was ?Reset@CCountedPointer_00a99ff0@@QAEXPAX@Z.
 #define FABLE_RETAIL_CCHUNKEDFILECHUNK
 #include "engine/CChunkedFileChunk.h"
 #include "engine/CCountedPointer.h"
 
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<CChunkedFileChunk>::DeleteData), m_pObject(object) { }
-};
-
-struct CCountedPointer_00a99ff0 {
-    void* m_pObject;                       // +0
-    SCountBlock* m_pCount;                 // +4
-    void Reset(void* object);
-};
-
-void CCountedPointer_00a99ff0::Reset(void* object)
-{
-    if (m_pCount) {
-        --m_pCount->m_references;
-        if (m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            delete m_pCount;
-        }
-    }
-    m_pCount = 0;
-    m_pObject = object;
-    if (object)
-        m_pCount = new SCountBlock(m_pObject);   // re-read through `this` (retail loads [esi] for the block), not the argument
-}
+template void CCountedPointer<CChunkedFileChunk>::Reset(CChunkedFileChunk*);

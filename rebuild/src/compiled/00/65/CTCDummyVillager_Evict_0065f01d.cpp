@@ -1,7 +1,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CTCDummyVillager::Evict() -- forgets the dummy's creature: the Creature pointer is reset to null and CreatureUID cleared
-// Leaf: Evict
+// Leaf: ?Evict@CTCDummyVillager@@QAEXXZ
+// NF202 (2026-11-20, q12242): Leaf written in full (was the bare `Evict`; the object symbol is unchanged). Ego_r.pdb 0x0069F8F0 + FableWin.pdb 0x0216A8ED.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065F01D, length 49 bytes. Frame-pointer size TU (`push ebp ; mov ebp,esp`,
 // `push ecx ; push ecx` for the 8-byte temporary, `and dword ptr [..],0`, `leave`): `optimize("y",off)` + `("s",on)`.
 // Label: the catalog name "CTCVillage::InitialiseSecuritySweeps" is propagated. The only caller is

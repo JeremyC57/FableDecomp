@@ -10,7 +10,7 @@
 //   retail's TU), CWideString(const wchar_t*) 0x0099B6B0 / ~CWideString 0x0099B510, CTCBetting::GetText 0x007E4D70,
 //   CSubtitleRenderer::SetText (text + 3 buttons) 0x00492F69, CGameEvent::AddData 0x009F1760, CMainGameComponent::AddGameEvent
 //   0x0041649C / GetCurrentServerFrame 0x00416225; slots 1/3 of the def and of CEnginePersistentPrimitiveBase (Release / NotifyReleased).
-// Globals: PMainGameComponent 0x013B86A0, ConstantFPS 0x01375550, CPlayerGui PClass 0x013B8790, g_bettingActive 0x013BAE1D,
+// Globals: PMainGameComponent 0x013B86A0, ConstantFPS 0x01375550, CPlayerGui PClass 0x013B8790, CTCAIScratchpad::BettingActive 0x013BAE1D,
 //   g_bettingAmount 0x013BAE20, g_bettingStartDelaySeconds 0x01384050 (descriptive: no name in any PDB / FSE / string).
 // Shape: the L"" button caption is a named local in its own block, so it is built first (into the dead def slot) and destroyed
 //   right after SetText, before the event; the handle loops are the inline CEnginePrimitiveHandle::Clear() (notify at count 1, Reset(0)).
@@ -71,16 +71,20 @@ bool CDefClassBase::GetSubDef<CBettingDef>(CDefPointer<const CBettingDef>* out) 
 #include "engine/CSubtitleRenderer.h"
 #include "engine/CMainGameComponent.h"
 #include "engine/CGameEvent.h"
+// Name fix (NF202, 2026-11-20, q12256): 0x013BAE1D is CTCAIScratchpad::BettingActive (Ego_r.pdb, FableWin.pdb, Ego_d.pdb
+//   ?BettingActive@CTCAIScratchpad@@2_NA; engine/CTCAIScratchpad.h, as landed 0x007E5570 binds it). Was the made-up g_bettingActive.
+#define FABLE_RETAIL_CTCAISCRATCHPAD_BETTING
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCAIScratchpad.h"
 
-extern bool g_bettingActive;                            // 0x013BAE1D
 extern long g_bettingAmount;                            // 0x013BAE20
 extern long g_bettingStartDelaySeconds;                 // 0x01384050 (descriptive)
 
 void CTCBetting::FrameUpdate()
 {
-    if (Active == g_bettingActive)
+    if (Active == CTCAIScratchpad::BettingActive)
         return;
-    Active = g_bettingActive;
+    Active = CTCAIScratchpad::BettingActive;
     CPlayer& player = GetPlayerManager().GetMainPlayer();
     if (Active) {
         if (player.GetCurrentMode() != PLAYER_MODE_BETTING)
