@@ -12,6 +12,10 @@
 // (0x01D129F0), inline in retail; the bodies (in-place copy to xx/yy/zz locals, X as one expression, Y / Z accumulated) are the
 // forms 0x00AE0070 ApplyTransform expands (Codex pass 12, FableWin locals xx/yy/zz).
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_CMATRIX3X4_PREROTATE
+#include "engine/GFSin.h"
+#include "engine/GFCos.h"
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_TRANSFORMPLANE
 #include "engine/CPlane.h"
 #endif
@@ -141,6 +145,86 @@ public:
     // Nested opt-in (chunk 1016, row 0x00A55F90): Ego_r.pdb / FableWin.pdb ?SetFromVectorAndAngle@CMatrix3x4@@QAEXABVC3DVector@@M@Z
     // (thiscall, out of line at 0x00A55F90; the landed C3DVector::Rotate 0x00A13C60 calls it). A declaration only: no layout change.
     void SetFromVectorAndAngle(const C3DVector& axis,float angle);         // 0x00A55F90
+#endif
+#ifdef FABLE_RETAIL_CMATRIX3X4_PREROTATE
+    // Retail opt-in (hand3c3, row 0x00B16410 NParticleEngine::CPSCOrbit::COrbitState::Update): FableWin.pdb / Ego_d.pdb
+    // ?PreXRotate@CMatrix3x4@@QAEXM@Z (FableWin 0x02F50A10), ?PreYRotate@CMatrix3x4@@QAEXM@Z (0x02F50B70) and
+    // ?PreZRotate@CMatrix3x4@@QAEXM@Z (0x02F50CD0), inline in retail (no Fable.exe copy; expanded at 0x00B168BA / 0x00B16933 /
+    // 0x00B169A6). The angle is in revolutions (GFSin / GFCos scale by the double TWO_PI: `fmul qword ptr [124F2B8h] ; fcos ; fsin`).
+    // Ego_d.pdb: parameter `const float angle`, locals `const float sinA`, `float tmp`, `const float cosA`; line tables 513..535 /
+    // 540..562 / 567..589 = two 15-byte lines (the GFSin / GFCos calls), then per column five lines of 12 / 15 / 21 / 15 / 15 bytes:
+    // tmp = a * sinA; a *= cosA; a -+= b * sinA; b *= cosA; b +-= tmp. FITTED: cosA is declared before sinA (retail computes
+    // `fcos` first and keeps both on the x87 stack; with sinA first VC7.1 spills the cosine to memory, 1726 bytes for the 1671-byte
+    // row). No layout change.
+    void PreXRotate(const float angle) {
+        const float cosA = GFCos(angle);
+        const float sinA = GFSin(angle);
+        float tmp;
+
+        tmp = E21 * sinA;
+        E21 *= cosA;
+        E21 -= E31 * sinA;
+        E31 *= cosA;
+        E31 += tmp;
+
+        tmp = E22 * sinA;
+        E22 *= cosA;
+        E22 -= E32 * sinA;
+        E32 *= cosA;
+        E32 += tmp;
+
+        tmp = E23 * sinA;
+        E23 *= cosA;
+        E23 -= E33 * sinA;
+        E33 *= cosA;
+        E33 += tmp;
+    }
+    void PreYRotate(const float angle) {
+        const float cosA = GFCos(angle);
+        const float sinA = GFSin(angle);
+        float tmp;
+
+        tmp = E11 * sinA;
+        E11 *= cosA;
+        E11 += E31 * sinA;
+        E31 *= cosA;
+        E31 -= tmp;
+
+        tmp = E12 * sinA;
+        E12 *= cosA;
+        E12 += E32 * sinA;
+        E32 *= cosA;
+        E32 -= tmp;
+
+        tmp = E13 * sinA;
+        E13 *= cosA;
+        E13 += E33 * sinA;
+        E33 *= cosA;
+        E33 -= tmp;
+    }
+    void PreZRotate(const float angle) {
+        const float cosA = GFCos(angle);
+        const float sinA = GFSin(angle);
+        float tmp;
+
+        tmp = E11 * sinA;
+        E11 *= cosA;
+        E11 -= E21 * sinA;
+        E21 *= cosA;
+        E21 += tmp;
+
+        tmp = E12 * sinA;
+        E12 *= cosA;
+        E12 -= E22 * sinA;
+        E22 *= cosA;
+        E22 += tmp;
+
+        tmp = E13 * sinA;
+        E13 *= cosA;
+        E13 -= E23 * sinA;
+        E23 *= cosA;
+        E23 += tmp;
+    }
 #endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_SETTRANSLATEONLY
     // Retail opt-in (chunk 895, row 0x00BEBAA0 CEngineInternalPrimitiveMeshBase::CalcObjectMatrix): Ego_r.pdb / FableWin.pdb

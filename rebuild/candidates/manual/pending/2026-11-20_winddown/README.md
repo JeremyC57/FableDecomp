@@ -6,7 +6,6 @@ oracle with `$S/stage/audit_roll/tools/mkland.py`, or vland's own oracle path, b
 
 | folder | rows | state | what is left |
 |---|---|---|---|
-| hand3c3_b11 | 0x00B16410 COrbitState::Update (/d2inlT230) | matched | audit; new GFFloatAbs.h (sign-bit mask) and GFIsNonZero.h |
 | hand3c3_b12 | 0x0078D250 CTCBerserk::FrameUpdate | matched | audit: the CRGBColour INTERPOLATE_FORCEINLINE opt-in (device question); the CHitParameters COMDAT is 242 v 178 B. The new CThingFilter_CanBeHitByEpicSpell.h flags 7 rows |
 | hand3c3_parked_006e5a00 | 0x006E5A00 CScriptConversation::FrameUpdate | draft, does not compile | see its README |
 | followup_navedge | 8 landed or handed-off nav rows incl. hand3c2 b5 0x00A793D0 / 0x00A79680, plus new uncatalogued 0x00A75B60 | matched, strict PASS, pragma-free | audit; add 0x00A75B60 to rebuild/manifest/boundary-starts.tsv and run crawl/manifest_add_boundaries.py --write before landing |

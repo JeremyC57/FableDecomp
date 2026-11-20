@@ -69,7 +69,7 @@ address	grade	bytes	test	grades_used	notes
 00b075d0	RELOCATION_MATCH	977	PASS(vland strict)	1	hand3c3 b3 [LANDED batches/2026-11-20_landing_hand3c3_b3]
 00b079b0	OPEN	2032	-	1	baseline draft DIFFER(2034v2032) hunks=44 difflines=87
 00b103f0	RELOCATION_MATCH	1463	PASS(vland; g++ portable PASS)	2 (hand3c)	hand3c: shared GFPackFloat GROUP_PRODUCT + shared CPSCEmitterGeneric (new opt-ins CPSCEMITTERGENERIC_CTOR, CPARTICLEUPDATEPARAMDESC_CTOR, CPSCBASE_CTOR) [LANDED 58b05aba99]
-00b16410	OPEN	1671	-	1	baseline draft DIFFER(1674v1671) hunks=52 difflines=176
+00b16410	RELOCATION_MATCH	1671	PASS(vland strict)	1	hand3c3 b11 [LANDED batches/2026-11-20_landing_hand3c3_b11]
 00b1d550	RELOCATION_MATCH	576	PASS(vland strict)	2	hand3c: FableWin 0x02F567F0 shape on shared headers (PreparePrimitives define set, GFPackFloat, GFSqr helper); new opt-ins CDECAL_ISACTIVE_MAXLIFE, CDECAL_GETSIZEFACTOR_NOARG, CPSCDECALRENDERER_DECALCOLLIDES
 00b1d790	RELOCATION_MATCH	876	PASS(vland strict)	6	hand3c: FableWin 0x02F56D80 shape; same-TU helper DecalCollides 0x00B1D550 body (closing lever: frame packing); new opt-ins CDECAL_POOLING, CPSCDECALRENDERER_POOLDECAL (+ CDECAL_UPDATE for SetMaxLife)
 00b1dc70	RELOCATION_MATCH	860	PASS(vland strict)	1	hand3c: FableWin 0x02F55EB0 shape (PreparePrimitives idioms: row-local PeekGraphic/GetWidth/GetHeight, ScaleParticleDimensions noinline = 0x00AF8F00 MATCH); new opt-in CPSCDECALRENDERER_ADDTOBOUNDINGSPHERE; Inferred factor mask

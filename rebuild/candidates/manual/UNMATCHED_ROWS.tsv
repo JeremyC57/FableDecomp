@@ -702,7 +702,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b08530	CPSCSingleSprite	Update	656	parked	DIFFER(664v654)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b08530.cpp	original
 00b0dc20	NParticleEngine::CPSCUpdateNormal	Update	5616	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(5601v5602)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00b0dc20.cpp	gapscan/boundary
 00b131e0	NParticleEngine::CPSCEmitterGeneric	NParticleEngine::CPSCEmitterGeneric::vfunc_18	848	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/00b131e0.cpp	gapscan/boundary
-00b16410	COrbitState	Update	1680	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(1674v1671)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00b16410.cpp	original
 00b16aa0	CPSCOrbit	GetUpdateParam	688	parked	DIFFER(673v681)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b16aa0.cpp	original
 00b17410	NParticleEngine::CPSCOrbit	NParticleEngine::CPSCOrbit::vfunc_10	944	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00b17410.cpp	gapscan/boundary
 00b17bd0	NParticleEngine::CPSCAttractor	InterpolateTo	928	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b17bd0.cpp	gapscan/boundary

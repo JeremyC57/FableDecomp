@@ -401340,6 +401340,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0077d5b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b16410'
+        Module = 'NParticleEngine::CPSCOrbit::COrbitState'
+        Source = '00/b1/NParticleEngineCPSCOrbitCOrbitState_Update_00b16410.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCOrbitCOrbitState_Update_00b16410_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT230'
+        PassPattern = '00b16410_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
