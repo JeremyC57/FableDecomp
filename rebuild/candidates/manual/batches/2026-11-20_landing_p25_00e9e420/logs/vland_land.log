@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e9e420   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e9e420 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CBriarRose::?Main@CBriarRose@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVIntroductionToTrophiesScriptCBriarRose_Main_00e9e420

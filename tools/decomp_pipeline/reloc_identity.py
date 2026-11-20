@@ -167,7 +167,7 @@ def label_agrees(sym, label):
     if not nl or not nll: return None
     return nl == nll or nl in nll or nll in nl
 
-CRT_TOKENS = ("new", "delete", "malloc", "free", "realloc", "calloc", "memcpy", "memset", "memmove", "memcmp", "strlen", "strcpy", "strcmp", "strncpy", "strcat", "sprintf")
+CRT_TOKENS = ("new", "delete", "malloc", "free", "realloc", "calloc", "memcpy", "memset", "memmove", "memcmp", "strlen", "strcpy", "strcmp", "strncpy", "strcat", "sprintf", "rand", "srand")
 
 def _crt_claim(sym):
     """What CRT function a symbol claims to be, from its identity or its alias tokens; None = no claim."""
