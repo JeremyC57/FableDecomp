@@ -16,7 +16,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - Open regression: 0x007E2A60 (CBankFile.h assert names; do not repin, re-author the row).
 
 ## Account A, 2026-11-20 (naming round 10, landings nf148-nf170)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf170, about 560 rows),
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf170, 524 rows),
   B's b12 / reports_b4 rows, and the engine/CSpawnedFunc1.h include fix (5 rows that did not compile at HEAD now match; 67/67 includers good).
 - Agents running at the time of writing: NF171 (CThing / player GUI), NF172 (render / shader / texture / engine), NF173 (mixed engine / TC).
   Their slices are in `$S/w22/agentNF17x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf15x-nf17x lines).
