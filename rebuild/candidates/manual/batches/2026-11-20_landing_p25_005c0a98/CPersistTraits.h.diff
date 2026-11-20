@@ -1,0 +1,20 @@
+diff --git a/rebuild/include/engine/CPersistTraits.h b/rebuild/include/engine/CPersistTraits.h
+index 58631bda6..a7f146488 100644
+--- a/rebuild/include/engine/CPersistTraits.h
++++ b/rebuild/include/engine/CPersistTraits.h
+@@ -50,7 +50,15 @@ public:
+ #endif
+ #endif
+     void TransferBinaryIn(CMemoryDataInputStream&,T&);
++#ifdef FABLE_RETAIL_CPERSISTTRAITS_BINARYOUT_CONSTREF
++    // Opt-in (p25K, row 0x005C0A98 CPersistTraits<NInventory::CItem>::TransferBinaryOut): the primary template's writer takes its value by
++    // const reference, as Ego_r.pdb / FableWin.pdb spell every instance (?TransferBinaryOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCDataOutputStream@@ABVCItem@NInventory@@@Z,
++    // ...@M@@QAEXAAVCDataOutputStream@@ABM@Z, ...@_N@@QAEXAAVCDataOutputStream@@AB_N@Z), so a class T's member can be specialised.
++    // Declaration only: VC7.1 treats an explicit specialisation of a member defined in the class as inline and emits nothing for it.
++    void TransferBinaryOut(CDataOutputStream& stream,const T& value);
++#else
+     void TransferBinaryOut(CDataOutputStream& stream,T value) { stream.WriteSLONG((long)value); }
++#endif
+     void TransferIn(CPersistContext& context,CStringParser& parser,T& value);
+ #ifdef FABLE_RETAIL_CPERSISTTRAITS_TRANSFEROUT
+     // Nested opt-in (chunk 1020, row 0x005D8978): the generic text writer, Ego_r.pdb / FableWin.pdb

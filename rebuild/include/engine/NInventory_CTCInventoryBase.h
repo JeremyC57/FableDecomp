@@ -92,6 +92,16 @@ public:
     // binds this spelling). Declaration only: no layout change.
     bool IsSameItemTypeAsDefIndex(long defIndex) const; // 0x005BC450
 #endif
+#ifdef FABLE_RETAIL_NINVENTORY_CITEM_GETTERS
+    // Opt-in (p25K, row 0x005C0A98 CPersistTraits<NInventory::CItem>::TransferBinaryOut): Ego_d.pdb / FableWin.pdb
+    // ?GetItemType@CItem@NInventory@@QBEJXZ, ?GetNumberOfItems@CItem@NInventory@@QBEJXZ, ?GetPerItemData@CItem@NInventory@@QBEPBVCPerItemData@2@XZ
+    // and ?GetAverageBoughtPrice@CItem@NInventory@@QBEJXZ, expanded in retail (0x005C0AA6 `mov esi,[ebx+8]`, 0x005C0B95 `mov eax,[ebx]`,
+    // 0x005C0BE7 `push [ebx+4]`, 0x005C0BF1 `push [ebx+10h]`). Inferred bodies (each returns its member).
+    long GetItemType() const { return ItemType; }
+    long GetNumberOfItems() const { return NumberOfItems; }
+    const CPerItemData* GetPerItemData() const { return PPerItemData.Get(); }
+    long GetAverageBoughtPrice() const { return AverageBoughtPrice; }
+#endif
     long ItemType;                                      // +0x00
     long NumberOfItems;                                 // +0x04
     CCountedPointer<CPerItemData> PPerItemData;         // +0x08

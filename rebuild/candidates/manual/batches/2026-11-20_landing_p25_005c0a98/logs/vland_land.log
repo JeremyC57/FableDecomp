@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005c0a98   RELOCATION_MATCH PASS   TransferBinaryOut
+
+WINS: 1
+  005c0a98 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferBinaryOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCDataOutputStream@@ABVCItem@NInventory@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CPersistTraitsNInventoryCItem_TransferBinaryOut_005c0a98

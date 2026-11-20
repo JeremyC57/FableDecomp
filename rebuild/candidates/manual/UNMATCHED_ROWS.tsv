@@ -77,7 +77,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 005b01fe	CTCInventoryTrade	SellItemPC	2222	reserved (acctB p25J, 2026-11-20)	DIFFER(2217v2222)	13	rebuild/candidates/manual/pending/2026-11-08_linux_hand867/differ/005b01fe.cpp	original
 005b9641	CTCInventoryClothing	DrawPreparePrimitivesForRendering	1455	parked	matched in a lane, not landed	1	rebuild/candidates/manual/pending/2026-11-10_linux_hand1006/differ/005b9641.cpp	gapscan/boundary
 005bfd5e	CTCInventoryBase	OnSerialise	425	reserved (acctB p25F, 2026-11-20)	DIFFER(425v425)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/005bfd5e/005bfd5e.cpp	original
-005c0a98	CPersistTraits<NInventory::CItem>	TransferBinaryOut	396	reserved (acctB p25H, 2026-11-20)	DIFFER(368v369)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1020/differ/005c0a98.cpp	original
 005cd4c4	CTCInventoryStats	BuildHeroClass	499	parked	DIFFER(483v499)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/005cd4c4.cpp	original
 005cda50	CTCInventoryStats	GlobalUpdate	366	parked	DIFFER(359v366)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/005cda50.cpp	original
 005dcc00	CAnimationSet	GetRandomAnim	272	parked	DIFFER(278v264)	2	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/005dcc00.cpp	original
