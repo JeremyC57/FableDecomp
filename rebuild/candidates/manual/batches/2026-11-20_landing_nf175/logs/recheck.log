@@ -1,0 +1,59 @@
+addr       parity           behav  name
+006929a0   RELOCATION_MATCH PASS   CCreatureActionBase::Update
+0082e4e0   RELOCATION_MATCH PASS   CScriptedMapBrush::GetThingsMovement
+008af1e0   RELOCATION_MATCH PASS   CombatDialogueManager::IsSpeechGroupAllowed
+00956380   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillLightningSpell (engine/CCreatureAction_CastWillLightningSpell.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattleRespondToLightning (engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h)
+00956380   WARN RELOC_NAME: ??1CCreatureAction_CastWillLightningSpell@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+00956380   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::Update
+00956720   MATCH            PASS   CCreatureAction_ThrowShotObject::IsToFaceTarget
+00956730   RELOCATION_MATCH PASS   CCreatureAction_ThrowShotObject::GetIsToFaceTargetCone
+00961790   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00961790   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00961790   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00961790   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BanditKingAttack (engine/CCreatureAction_BanditKingAttack.h)
+00961790   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00961790   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00961790   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditKingCharge (engine/CAIStateGroup_BanditKingCharge.h)
+00961790   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingCharge::Update
+009621f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_IceTrollIcicleAttack (engine/CCreatureAction_IceTrollIcicleAttack.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_RiseUp (engine/CCreatureAction_RiseUp.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayCombatAnimation (engine/CCreatureAction_PlayCombatAnimation.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009621f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_IceTrollIcicleAttack (engine/CAIStateGroup_IceTrollIcicleAttack.h)
+009621f0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009621f0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+009621f0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollIcicleAttack::Update
+00984a20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00984a20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00984a20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00984a20   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot (engine/CAIStateGroup_OpinionReactionRoot.h)
+00984a20   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::WatchUpdate
+00dcec70   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GoOnPatrol
+00dced10   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::IsThingCarryingCrate
+
+WINS: 11
+  006929a0 RELOCATION_MATCH CCreatureActionBase::?Update@CCreatureActionBase@@QAEXXZ
+  0082e4e0 RELOCATION_MATCH CScriptedMapBrush::?GetThingsMovement@CScriptedMapBrush@@QBEABVCThingPosAndOrientation@1@_K@Z
+  008af1e0 RELOCATION_MATCH CombatDialogueManager::?IsSpeechGroupAllowed@CombatDialogueManager@@QBE_NK@Z
+  00956380 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::?Update@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXXZ
+  00956720 MATCH CCreatureAction_ThrowShotObject::?IsToFaceTarget@CCreatureAction_ThrowShotObject@@UBE_NXZ
+  00956730 RELOCATION_MATCH CCreatureAction_ThrowShotObject::?GetIsToFaceTargetCone@CCreatureAction_ThrowShotObject@@UBEMXZ
+  00961790 RELOCATION_MATCH CAIStateGroup_BanditKingCharge::?Update@CAIStateGroup_BanditKingCharge@@QAEXXZ
+  009621f0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAttack::?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+  00984a20 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WatchUpdate@CAIStateGroup_OpinionReactionRoot@@QAEJXZ
+  00dcec70 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?GoOnPatrol@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXXZ
+  00dced10 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?IsThingCarryingCrate@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE_NABVCScriptThing@@@Z

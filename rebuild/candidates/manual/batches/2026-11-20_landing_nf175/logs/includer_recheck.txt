@@ -1,0 +1,22 @@
+rechecked 60 of 1196
+rechecked 120 of 1196
+rechecked 180 of 1196
+rechecked 240 of 1196
+rechecked 300 of 1196
+rechecked 360 of 1196
+rechecked 420 of 1196
+rechecked 480 of 1196
+rechecked 540 of 1196
+rechecked 600 of 1196
+rechecked 660 of 1196
+rechecked 720 of 1196
+rechecked 780 of 1196
+rechecked 840 of 1196
+rechecked 900 of 1196
+rechecked 960 of 1196
+rechecked 1020 of 1196
+rechecked 1080 of 1196
+rechecked 1140 of 1196
+rechecked 1196 of 1196
+recheck done
+--- bad

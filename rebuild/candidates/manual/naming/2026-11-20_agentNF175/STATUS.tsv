@@ -1,0 +1,94 @@
+address	change	grade	test	grades_used	entries	note
+0x004164E0	open	-	-	0	q12037 q12037 	not started: its entry is open (hand-back for context); untouched
+0x00417001	open	-	-	0	q12037 q12037 q12038 	not started: its entry is open (hand-back for context); untouched
+0x0049C700	not-a-binder	-	-	0	q4983 q12067	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x00561450	deferred	-	-	0	q6190	binder of 0x0055F710, whose row is locked acctB: entry deferred, row untouched
+0x0057A690	open	-	-	0	q12049 q12049 	not started: its entry is open (hand-back for context); untouched
+0x0057BC6E	open	-	-	0	q12053 q12053 	not started: its entry is open (hand-back for context); untouched
+0x0057C2E6	open	-	-	0	q12049 q12049 	not started: its entry is open (hand-back for context); untouched
+0x00662650	open	-	-	0	q11936 q11936 q11936 q11936 	not started: its entry is open (hand-back for context); untouched
+0x006633A0	not-a-binder	-	-	0	q11935	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x00687B30	open	-	-	0	q11981 q11981 	not started: its entry is open (hand-back for context); untouched
+0x00687D50	open	-	-	0	q12078 q12078 q12078 q12078 q12078 	not started: its entry is open (hand-back for context); untouched
+0x00688A20	open	-	-	0	q12078 q12078 	not started: its entry is open (hand-back for context); untouched
+0x00688C40	open	-	-	0	q12078 q12078 	not started: its entry is open (hand-back for context); untouched
+0x00689C40	open	-	-	0	q11981 q11981 	not started: its entry is open (hand-back for context); untouched
+0x0068D840	open	-	-	0	q12078 q12078 	not started: its entry is open (hand-back for context); untouched
+0x00692910	not-a-binder	-	-	0	q5101	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x00692940	not-a-binder	-	-	0	q5102	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x00692990	not-a-binder	-	-	0	q11934	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x006929A0	port+self-rename onto shared CCreatureActionBase.h (FULL_MEMBERS + NF175 UPDATE opt-in) / CThingCreatureBase.h	RELOCATION_MATCH	PASS	2	q11935	free stand-in with extern C getSub/runSub -> PDB member; 0x00A01B50 / 0x006633A0 now bind the PDB spellings; test unchanged (standalone host model, PASS); vland work/q11935.log
+0x006A40B0	open	-	-	0	q12078 q12078 	not started: its entry is open (hand-back for context); untouched
+0x006D0180	open	-	-	0	q12053 q12053 	not started: its entry is open (hand-back for context); untouched
+0x0078954D	blocked:port	-	-	0	q4983 q12067	binds ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools_Calls@@QBE... on a local CThingSearchTools_Calls model; port prerequisites in naming/2026-11-20_agentNF107 STATUS (not re-attempted, lock not claimed)
+0x0078971D	blocked:port	-	-	0	q4983 q12067	binds ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools_Calls@@QBE... on a local CThingSearchTools_Calls model; port prerequisites in naming/2026-11-20_agentNF107 STATUS (not re-attempted, lock not claimed)
+0x007A71B0	open	-	-	0	q11936 q11936 	not started: its entry is open (hand-back for context); untouched
+0x007FDB10	blocked:port	-	-	0	q4983 q12067	binds ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools_Calls@@QBE... on a local CThingSearchTools_Calls model; port prerequisites in naming/2026-11-20_agentNF107 STATUS (not re-attempted, lock not claimed)
+0x0082E4E0	port+self-rename (CSurface::GetHeight stand-in -> CScriptedMapBrush::GetThingsMovement on shared header)	RELOCATION_MATCH	PASS	2	q4390	binds _M_find 0x0082EEB0 under the PDB member-template spelling; opt-in FABLE_RETAIL_CSCRIPTEDMAPBRUSH_THINGSTOMOVE; test rewritten on the shared headers (PassPattern kept)
+0x0082E500	not-a-binder	-	-	0	q4390	already binds the _M_find PDB spelling (callers.py)
+0x0082EEB0	not-a-binder	-	-	0	q4390	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x00846100	blocked:port	-	-	0	q5101	binds ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ; PDB returns const CGameDefinitionManager&: the local CDefinitionManager / CDefBase / CDefClassBase / CThingObjectDef / CAppearanceModifierDef / CCharString / CThing / CBaseIntelligentPointer models (23 local classes) must move to their shared headers first (NF164). Not attempted
+0x00846410	blocked:port	-	-	0	q5101	same as 0x00846100 (local CDefinitionManager chain, 21 local classes). Not attempted
+0x00865C20	blocked:port	-	-	0	q5101	binds ?GetDefinitionManager@CCombatActionBase@@QAEPAVCGameDefinitionManager@@XZ on a local CCombatActionBase (shared header exists; no CCreatureActionBase token, so no in-place respell): port onto CCombatAction_GenericStrikeResponseBase.h (NF164: typed DustTravelDirection, FrameUpdate declaration, CCreatureActionBase::GetWorldMap opt-in). Not attempted
+0x00890BA0	open	-	-	0	q11936 q11936 	not started: its entry is open (hand-back for context); untouched
+0x00890C80	open	-	-	0	q11936 q11936 	not started: its entry is open (hand-back for context); untouched
+0x008AEF20	not-a-binder	-	-	0	q4989	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x008AF1E0	port onto shared CombatDialogueManager.h / CMainGameComponent.h (find const stand-in -> STLport _Rb_tree::find const)	RELOCATION_MATCH	PASS	2	q4989	local CSpeechGroupInfoMap / iterator / node / CombatDialogueManager / CMainGameComponent models dropped; 0x008AF6E0 define block; Leaf line now the full mangled name; test unchanged (standalone, PASS); vland work/q4989.log
+0x008AF6E0	not-a-binder	-	-	0	q4989	already binds the STLport find const spelling (callers.py)
+0x008C0900	blocked:port	-	-	0	q5102	?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ on a local CCombatActionBase (25 local classes incl. CDefinitionManager / CWorld / CThing / CWeaponDef / CMeleeCombatAbilityDef); engine/CCreatureAction_BriarRoseShotFarOutof.h has a _CLASS retail mode. Not attempted
+0x008C2240	blocked:port	-	-	0	q11934	?GetThingSearchTools@CCombatActionBase@@QBEPAVCThingSearchTools@@XZ on a local CCombatActionBase (17 local classes incl. CThing / CThingSearchTools / CBaseIntelligentPointer / CTCBase): CCombatActionBase.h port first. Not attempted
+0x008C6430	blocked:port	-	-	0	q5102	?GetPWorld@CCreatureAction_TrollWhackGroundBase@@QBEPAVCWorld@@XZ: needs the TrollProjectileAttack retail-class opt-in, CDefPointer<CMeleeCombatAbilityDef> and the CreateShot 0x007C0AD0 spelling (NF164). Not attempted
+0x008C8180	blocked:port	-	-	0	q5101	same blocker: local CDefinitionManager / CSpecialEffectsDef / CDefClassBase / CThing / CBaseIntelligentPointer models (16 local classes). Not attempted
+0x008C89D0	blocked:port	-	-	0	q5101	same blocker: local CDefinitionManager / CDefBase / CWeaponDef / CMeleeCombatAbilityDef / CDefClassBase / CThing / CThingCreatureBase models (20 local classes). Not attempted
+0x008CB620	blocked:port	-	-	0	q5101	?GetPDefinitionManager@CCreatureAction_UnsheatheWeapons@@QBEPAVCDefinitionManager@@XZ on the CCreatureAction_UnsheatheWeapons stand-in (no CCreatureActionBase token; 13 local classes incl. CDefinitionManager / CCombatTypeDef / CThing): header port. Not attempted
+0x008CB780	blocked:port	-	-	0	q5101	?GetDefinitionManager@CCombatActionBase@@QAEPAVCDefinitionManager@@XZ on a local CCombatActionBase (15 local classes incl. CDefinitionManager / CDefClassBase / CCreatureDef / CThing): header port. Not attempted
+0x008E60D0	blocked:port	-	-	0	q4983 q12067	binds ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools_Calls@@QBE... on a local CThingSearchTools_Calls model; port prerequisites in naming/2026-11-20_agentNF107 STATUS (not re-attempted, lock not claimed)
+0x008F3100	blocked:port	-	-	0	q5102	same as 0x008C0900 (local CCombatActionBase, 26 local classes; no derived-class header). Not attempted
+0x00911630	blocked:port	-	-	0	q4967 q4968	the guard target local is CIntelligentPointer<const CThingGameObject> (vtable 0x0125C29C RTTI .?AV?$CIntelligentPointer@$$CBVCThingGameObject@@@@, stand-in CIntelligentPointerTarget) built from CThing*; the shared T* ctor static_casts to CBaseObject*, which needs the retail CThingGameObject/CThing chain (FABLE_RETAIL_CTHINGGAMEOBJECT); the row uses the generated CThing.h. Not attempted (0 grades)
+0x00916910	blocked:port	-	-	0	q4967	local CThing model (not derived from CBaseObject): CIntelligentPointer<const CThing>(const CThing*) via the shared header static_casts to CBaseObject*; needs the row moved onto the retail CThing chain first. Not attempted
+0x0092A0C0	blocked:family	-	-	0	q11714	self row (stand-in CAIStateGroupApprenticeHeroMethods leaf): renames only with 0x0092A8A0 / 0x0092B360 / 0x0092B3E0 (APPLIED q11714)
+0x0092A8A0	blocked:port	-	-	0	q4968 q11714	local CBaseIntelligentPointer + incomplete CThing: CIntelligentPointer<const CThing>(const CThing*) from the shared header needs the retail CThing chain; also GetDummy (q11714) family. Not attempted
+0x0092B360	blocked:family	-	-	0	q11714	binds ?GetDummy@CAIStateGroup_SkillPractice@@QAE_NXZ (stand-in); moves with the q11714 family
+0x0092B3E0	blocked:port	-	-	0	q4968 q11714	local CBaseIntelligentPointer / CCharString / CAIStateGroupBase models + CIntelligentPointerConstThing(const CThing*) stand-in (NF169): same blocker; GetDummy family (q11714). Not attempted
+0x009352C0	blocked:port	-	-	0	q4968	local CThing + CBaseIntelligentPointer models; CIntelligentPointerConstThing(const CThing*) / CIntelligentPointerCreature stand-ins (also AIAction_SpeakToTarget arguments): the shared T* ctor needs the retail CThing chain. Not attempted
+0x0093A080	blocked:port	-	-	0	q4967	MoveToThingProximity argument built by the out-of-line converting ctor 0x00930D20 (stand-in CIntelligentPointerThing(const CBaseIntelligentPointer&)) while the LookAtThing sites expand the same conversion inline (local FABLE_FORCEINLINE template): the callee 0x00930D20 spelling must be settled with it. LookAtThing already PDB (NF169). Not attempted
+0x00956380	binder respell (LookAtThing -> PDB on row-local CAIStateGroupBase; shared CIntelligentPointer<T>, EAIAction.h)	RELOCATION_MATCH	PASS	1	q4968	in place; stand-ins CIntelligentPointerThing / CIntelligentPointerConstThing / local enums dropped ; vland work/q4968_b2.log
+0x00956720	port+self-rename (free __fastcall stand-in -> virtual override on shared ThrowShotObject.h; NF175 opt-ins)	MATCH	PASS	2	q11895	test rewritten on the shared headers (qualified call; PassPattern kept); vland work/q11895.log
+0x00956730	port+self-rename (free __fastcall stand-in -> virtual override on shared ThrowShotObject.h; NF175 opt-ins)	RELOCATION_MATCH	PASS	2	q11896	g_FloatOne stand-in -> literal 1.0f (__real@3f800000); test rewritten on the shared headers (PassPattern kept); vland work/q11895.log
+0x00961790	binder respell (MoveToThingProximity derived stand-in -> PDB on row-local CAIStateGroupBase, in place)	RELOCATION_MATCH	PASS	1	q4967	CMoveOptions stand-in -> PDB bool& local, last arg float, EAIAction.h / EMovementType.h; vland work/q4968_b2.log
+0x009621F0	binder respell (LookAtThing -> PDB on row-local CAIStateGroupBase; shared CIntelligentPointer<T>, EAIAction.h)	RELOCATION_MATCH	PASS	1	q4968	in place; CIntelligentPointerConstThing stand-in and empty local EAIActionReturn dropped ; vland work/q4968_b2.log
+0x0096FCD0	blocked:port	-	-	0	q4968	argument converted by the out-of-line ctor 0x007C2930 (CIntelligentPointerConstThing(const CIntelligentPointerThing&) stand-in) and IS_THING_ALIVE 0x004CC340 stand-in: both callee spellings move with it; local CThing model. Not attempted
+0x0097D6F0	not-a-binder	-	-	0	q4968	self row: own leaf already the claimed PDB / library spelling (callers.py); unchanged
+0x009804A0	blocked:port	-	-	0	q4967 q4968	own leaf AIAction_FleeToThingProximity takes the stand-in CIntelligentPointerConstCreature (PDB V?$CIntelligentPointer@$$CBVCThingCreatureBase@@@@: a self rename) and the row models CThing locally (CIntelligentPointer<const CThing>(const CThing*) needs the retail chain); enums carry non-PDB values. Not attempted
+0x00984A20	binder respell (LookAtThing CAIStateGroupBaseL stand-in -> PDB on row-local CAIStateGroupBase; port onto shared CIntelligentPointer.h)	RELOCATION_MATCH	PASS	3	q4968	local CBaseIntelligentPointer / Ctor / Thing / ConstThing stand-ins dropped; 0x00A01B10/B50/B90 now bind the shared spellings ; vland work/q4968_b2.log
+0x00C3F3D0	blocked:family	-	-	0	q4780 q12029	binds ?Stop@CVtable_012B5C10@@UAEXXZ for 0x00C59710; it is SDK ~CSalBaseVoice (NAME_FIXES): its own leaf and 7 referencers move with the q12029 family; untouched
+0x00C3F490	open	-	-	0	q12029 q12029 	not started: its entry is open (hand-back for context); untouched
+0x00C51A20	open	-	-	0	q12026 q12026 q12026 q12026 	not started: its entry is open (hand-back for context); untouched
+0x00C51EB0	open	-	-	0	q12026 q12024 q12025 q12026 	not started: its entry is open (hand-back for context); untouched
+0x00C51F00	open	-	-	0	q12026 q12026 	not started: its entry is open (hand-back for context); untouched
+0x00C52840	open	-	-	0	q12026 q12024 q12026 	not started: its entry is open (hand-back for context); untouched
+0x00C52980	open	-	-	0	q12024 q12024 q12026 	not started: its entry is open (hand-back for context); untouched
+0x00C54EA0	open	-	-	0	q12022 q12022 	not started: its entry is open (hand-back for context); untouched
+0x00C54F30	open	-	-	0	q12022 q12021 q12022 q12023 	not started: its entry is open (hand-back for context); untouched
+0x00C59710	blocked:family	-	-	0	q4780 q12029	self row leaf ?Stop@CCodaVoice@@UAEXXZ (queued descriptive); the SDK name CSalBaseVoice::Release (NAME_FIXES) is a family rename with 0x00C3F3D0 (7 referencers) / 0x00C5A1F0 / 0x00C3F490: q12029 (open)
+0x00C5A1F0	open	-	-	0	q12029 q4780 q12029 	not started: its entry is open (hand-back for context); untouched
+0x00C5A2A0	open	-	-	0	q12031 q12031 	not started: its entry is open (hand-back for context); untouched
+0x00C5A700	blocked:port	-	-	0	q5120	self row leaf ?UpdatePitchEnvelopeStages@CCodaVoice@@... (queue PROPOSAL) differs from its binder spelling (pre-existing split); the SDK name needs a 715-byte port onto engine/CSalSwBaseVoice.h (local CCodaVoice / SEnvelopeParams models, callees 0x00C59DE0 / 0x00C59B00 as CalcPitchDelta / TimeToFrames). Not attempted (vendor row: light renaming, EXTRA_RULES 2026-11-12)
+0x00C5ACB0	not-a-binder	-	-	0	q5120	already binds ?CalcMultiFuncEnvelope@CSalSwBaseVoice@@AAE_NPBU_CMULTIFUNCENVELOPE@@_N@Z (the SDK name) for 0x00C5A700
+0x00C5B030	open	-	-	0	q12023 q12023 	not started: its entry is open (hand-back for context); untouched
+0x00C5C290	open	-	-	0	q12031 q12031 q12032 	not started: its entry is open (hand-back for context); untouched
+0x00C5CF20	open	-	-	0	q12023 q12023 	not started: its entry is open (hand-back for context); untouched
+0x00C5FF60	open	-	-	0	q12027 q12027 	not started: its entry is open (hand-back for context); untouched
+0x00C60B90	open	-	-	0	q12027 q12027 	not started: its entry is open (hand-back for context); untouched
+0x00C68F90	open	-	-	0	q12024 q12024 	not started: its entry is open (hand-back for context); untouched
+0x00CDBF70	open	-	-	0	q6368 q6510	cutscene cast-map family (APPLIED, open): untouched
+0x00CDBFB0	open	-	-	0	q6368 q6510	cutscene cast-map family (APPLIED, open): untouched
+0x00D246C0	open	-	-	0	q6368 q6510	cutscene cast-map family (APPLIED, open): untouched
+0x00D29DB0	open	-	-	0	q6368 q6510	cutscene cast-map family (APPLIED, open): untouched
+0x00D45060	open	-	-	0	q6368 q6510	cutscene cast-map family (APPLIED, open): untouched
+0x00DCE230	not-a-binder	-	-	0	q6254 q6255	already binds both nested PDB spellings (WORKLIST / callers.py)
+0x00DCEC70	port+self-rename onto shared CQ_OrchardFarmRaidScript.h (nested private member)	RELOCATION_MATCH	PASS	3	q6254	global stand-in struct + local CScriptInterface dropped; Main 0x00DCE230 define block; module NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember; test unchanged (standalone, PASS); vland work/q6254.log
+0x00DCED10	port+self-rename onto shared CQ_OrchardFarmRaidScript.h / CScriptThing.h (nested private member)	RELOCATION_MATCH	PASS	3	q6255	local CScriptThing / CRetailVector / parent models dropped; Return(value) helper written out; test unchanged (standalone, PASS); vland work/q6254.log
+0x00E0A820	not-a-binder	-	-	0	q6510	already binds ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@... (the target)
+0x00E12330	not-a-binder	-	-	0	q6368	already binds ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@... (the target)
+0x00E2AB30	open	-	-	0	q6368 q6510	cutscene cast-map family (APPLIED, open): untouched

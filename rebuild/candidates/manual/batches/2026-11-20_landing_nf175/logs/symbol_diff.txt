@@ -1,0 +1,43 @@
+006929a0 new: 3
+    ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+    ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+    ?Update@CCreatureActionBase@@QAEXXZ TABLE:006929a0
+0082e4e0 new: 6
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Const_traits@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Const_traits@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Const_traits@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2
+    ?GetThingsMovement@CScriptedMapBrush@@QBEABVCThingPosAndOrientation@1@_K@Z TABLE:0082e4e0
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$les
+    ?find@?$map@_KVCThingPosAndOrientation@CScriptedMapBrush@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@4@@std@@QBE?AU?$_R
+008af1e0 new: 3
+    ??C?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Const_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@Q
+    ??D?$_Rb_tree_iterator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@U?$_Const_traits@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@2@@std@@Q
+    ?find@?$map@KVTSpeechGroupInfo@CombatDialogueManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVTSpeechGroupInfo@CombatDialogueManager@@@std@@@4@@std@@QBE?AU?$_Rb_tree_it
+00956380 new: 4
+    ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThing@@@@@Z
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+00956720 new: 1
+    ?IsToFaceTarget@CCreatureAction_ThrowShotObject@@UBE_NXZ
+00956730 new: 2
+    ?GetIsToFaceTargetCone@CCreatureAction_ThrowShotObject@@UBEMXZ
+    __real@3f800000
+00961790 new: 0
+009621f0 new: 4
+    ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThing@@@@@Z
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+00984a20 new: 4
+    ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThing@@@@@Z
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+00dcec70 new: 1
+    ?GoOnPatrol@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXXZ TABLE:00dcec70
+00dced10 new: 4
+    ??A?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEAAVCScriptThing@@I@Z TABLE:00cd1fb1
+    ?IsThingCarryingCrate@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE_NABVCScriptThing@@@Z TABLE:00dced10
+    ?begin@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@XZ
+    ?size@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ

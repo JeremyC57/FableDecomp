@@ -24617,7 +24617,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0082e380	SetTheme	CScriptedMapBrush	__thiscall	void	5	CScriptedMapBrush *,long,long,ulong,ulong	1	yes	accepted									
 0082e3d0	GetThemeBlend	CScriptedMapBrush	__thiscall	uchar	4	CScriptedMapBrush *,long,long,ulong	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\82\0x0082E3D0_CScriptedMapBrush_GetThemeBlend.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CScriptedMapBrush_GetThemeBlend_0082e3d0.cpp
 0082e420	SetThemeBlend	CScriptedMapBrush	__thiscall	void	5	CScriptedMapBrush *,long,long,uchar,ulong	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\82\0x0082E420_CScriptedMapBrush_SetThemeBlend.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CScriptedMapBrush_SetThemeBlend_0082e420.cpp
-0082e4e0	GetHeight	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CSurface_GetHeight_0082e4e0.cpp
+0082e4e0	GetThingsMovement	CScriptedMapBrush	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CSurface_GetHeight_0082e4e0.cpp
 0082e500	RemoveThing	CScriptedMapBrush	unknown	undefined	0		0	yes	accepted									
 0082e600	CScriptedMapBrush	CScriptedMapBrush	unknown	undefined	0		0	yes	accepted									
 0082e6e0	CScriptedMapBrush	CScriptedMapBrush	unknown	undefined	0		0	yes	accepted									
@@ -51479,8 +51479,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dcdf60	Init	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	__thiscall	void	1	CCrateTeamMember *	1	yes	accepted									
 00dce230	Main	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	__thiscall	void	1	CCrateTeamMember *	1	yes	accepted									
 00dcec50	GetPointerFromHandle	CHandleBasedMemoryPool	__thiscall	void *	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\dc\CHandleBasedMemoryPool_GetPointerFromHandle_00dcec50.cpp
-00dcec70	GoOnPatrol	CCrateTeamMember	__thiscall	void	1	CCrateTeamMember *	1	yes	accepted									
-00dced10	IsThingCarryingCrate	CCrateTeamMember	__thiscall	bool	2	CCrateTeamMember *,CScriptThing *	1	yes	accepted									
+00dcec70	GoOnPatrol	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	__thiscall	void	1	CCrateTeamMember *	1	yes	accepted									
+00dced10	IsThingCarryingCrate	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	__thiscall	bool	2	CCrateTeamMember *,CScriptThing *	1	yes	accepted									
 00dcedf0	GetNearestCrateToMe	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	unknown	undefined	0		0	yes	accepted									
 00dcef50	Alloc	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00dceff0	GetParentScript	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper	unknown	undefined	0		0			discovered	gapscan							

@@ -12,12 +12,28 @@
 #include "engine/C3DVector.h"
 #include "engine/C3DAngles.h"
 class CScriptedMapBrush : public CBaseObject {
+#ifdef FABLE_RETAIL_CSCRIPTEDMAPBRUSH_THINGSTOMOVE
+    // NF175 opt-in (row 0x0082E4E0 GetThingsMovement, q4390; needs _THINGSETS): Ego_r.pdb's nested CThingPosAndOrientation (24 bytes:
+    // C3DVector Position +0, C3DAngles FacingAngles +0x0c), the value type of ThingsToMove.
+public:
+    class CThingPosAndOrientation {
+    public:
+        C3DVector Position;                      // +0x00
+        C3DAngles FacingAngles;                  // +0x0c
+    };
+private:
+#endif
     unsigned char Cells[12];                     // +0x08 std::vector<CScriptedMapBrush::CScriptedMapCell>
 #ifdef FABLE_RETAIL_CSCRIPTEDMAPBRUSH_THINGSETS
     // NF123 opt-in (rows 0x0082E8F0 SetThingToDelete / 0x0082E9A0 SetThingToAdd, q4518 / q4519): the two Ego_r.pdb sets typed (STLport
     // std::set<unsigned __int64>, 12 bytes each: same offsets); the includer brings stlport/fable_map.h. ThingsToMove stays opaque.
     std::set<unsigned __int64> ThingsToDelete;   // +0x14
+#ifdef FABLE_RETAIL_CSCRIPTEDMAPBRUSH_THINGSTOMOVE
+    // NF175 opt-in (q4390): Ego_r.pdb's map<unsigned __int64,CThingPosAndOrientation> typed (STLport, 12 bytes: same offset).
+    std::map<unsigned __int64, CThingPosAndOrientation> ThingsToMove;   // +0x20
+#else
     unsigned char ThingsToMove[12];              // +0x20 std::map<unsigned __int64,CScriptedMapBrush::CThingPosAndOrientation>
+#endif
     std::set<unsigned __int64> ThingsToAdd;      // +0x2c
 #else
     unsigned char ThingsToDelete[12];            // +0x14 std::set<unsigned __int64>
@@ -36,6 +52,10 @@ public:
     void SetThingToMove(unsigned __int64,const C3DVector&,const C3DAngles&);
     void SetThingToDelete(unsigned __int64);
     void SetThingToAdd(unsigned __int64);
+#ifdef FABLE_RETAIL_CSCRIPTEDMAPBRUSH_THINGSTOMOVE
+    // NF175 opt-in (q4390): Ego_r.pdb 0x00735340 + FableWin.pdb 0x027CABD0 ?GetThingsMovement@CScriptedMapBrush@@QBEABVCThingPosAndOrientation@1@_K@Z.
+    const CThingPosAndOrientation& GetThingsMovement(unsigned __int64) const;
+#endif
 };
 FABLE_STATIC_ASSERT_AT(32, sizeof(CScriptedMapBrush)==0x54);
 #else // FABLE_RETAIL_CSCRIPTEDMAPBRUSH

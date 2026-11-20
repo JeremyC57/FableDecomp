@@ -1,5 +1,5 @@
 // CombatDialogueManager::IsSpeechGroupAllowed(unsigned long group) const -- whether the world frame has reached the group's NextAllowedFrame in the speech-group map
-// Leaf: IsSpeechGroupAllowed
+// Leaf: ?IsSpeechGroupAllowed@CombatDialogueManager@@QBE_NK@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x008AF1E0, 51 bytes, `__fastcall`, `ret 4` (Ego_r.pdb ?IsSpeechGroupAllowed@CombatDialogueManager@@QBE_NK@Z).
@@ -9,50 +9,36 @@
 // at node +0x14. The group must be present (the caller found it); find() is dereferenced unchecked.
 // Shape: the iterator is a named local read back from its frame slot; the result is a named `bool` local over a `const` frame
 // local -- the bare `return frame >= x;` adds `xor eax,eax` and loads x into ecx.
-struct TSpeechGroupInfo {                   // CombatDialogueManager::TSpeechGroupInfo, Ego_r.pdb 4 bytes
-    long NextAllowedFrame;                  // +0x00
-};
-
-struct SSpeechGroupNode {                   // STLport _Rb_tree_node<pair<const unsigned long, TSpeechGroupInfo> >
-    bool              _M_color;             // +0x00
-    SSpeechGroupNode* _M_parent;            // +0x04
-    SSpeechGroupNode* _M_left;              // +0x08
-    SSpeechGroupNode* _M_right;             // +0x0C
-    unsigned long     first;                // +0x10 key
-    TSpeechGroupInfo  second;               // +0x14
-};
-
-struct CSpeechGroupMapIterator {            // STLport _Rb_tree_iterator (non-POD: returned through a hidden pointer)
-    SSpeechGroupNode* _M_node;
-    CSpeechGroupMapIterator() { }
-    SSpeechGroupNode* operator->() const { return _M_node; }
-};
-
-struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeechGroupInfo>, 12 bytes retail
-    SSpeechGroupNode* _M_header;            // +0x00
-    unsigned long     _M_node_count;        // +0x04
-    unsigned char     _M_key_compare;       // +0x08 (empty less<unsigned long>)
-    CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
-};
-
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
-};
-class CombatDialogueManager {
-public:
-    CSpeechGroupInfoMap SpeechGroupInfoMap;            // +0x00
-    bool IsSpeechGroupAllowed(unsigned long group) const;
-};
+// NF175 (2026-11-20, q4989): the map find const 0x008AEF20 respelled from the local stand-in ?find@CSpeechGroupInfoMap@@QBE?AUCSpeechGroupMapIterator@@ABK@Z
+//   to the STLport 4.6 non-template _Rb_tree::find const (the catalog / reloc_bindings spelling the landed 0x008AF6E0 CanSaySpeech binds): the row moves
+//   onto the shared engine/CombatDialogueManager.h (retail branch, std::map<unsigned long,TSpeechGroupInfo> SpeechGroupInfoMap) and
+//   engine/CMainGameComponent.h, with 0x008AF6E0's define block; the local CSpeechGroupInfoMap / CSpeechGroupMapIterator / SSpeechGroupNode /
+//   TSpeechGroupInfo / CombatDialogueManager / CMainGameComponent models are dropped. The named iterator and bool locals are kept.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCTALK
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_WORLDFRAME
+#define FABLE_RETAIL_COMBATDIALOGUEMANAGER
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCTalk.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CombatDialogueManager.h"
 
 bool CombatDialogueManager::IsSpeechGroupAllowed(unsigned long group) const
 {
     const long frame = CMainGameComponent::Get()->GetCurrentWorldFrame();
-    CSpeechGroupMapIterator it = SpeechGroupInfoMap.find(group);
+    std::map<unsigned long, TSpeechGroupInfo>::const_iterator it = SpeechGroupInfoMap.find(group);
     bool allowed = frame >= it->second.NextAllowedFrame;
     return allowed;
 }
