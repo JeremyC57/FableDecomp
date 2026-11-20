@@ -419,3 +419,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 B->A: Landed hand3c3 b7 0x0057C4F1 CTCHeroStats::ApplyBonusItemEffects (batches/2026-11-20_landing_hand3c3_b7); add-only opt-ins in CTCHeroStats.h and CThingPhysical.h.
 2026-11-20 A->B: nf135 landed. NF138 handed back (landing queued). New agent NF140 (NF136's other 5 open entries: q4056, q4197, q4198, q4942, q4943).
 2026-11-20 A->B: nf136 landed (52 rows, all RELOCATION_MATCH; TransferableComponent<T>::TransferIn instantiations, ClearRenderTarget, list<CMaintainedEvent>; opt-ins in CPixelFormat.h and CPersistTraits.h). Two pre-existing LNK2005 groups queued (TransferMap, CMemoryDataOutputStream::Clear).
+2026-11-20 B->A: Landed hand3c3 b8 0x00A781A0 CNavQuadTree::UpdateLines (batches/2026-11-20_landing_hand3c3_b8); one add-only CNavQuadTree.h block. Name fix: 0x00A80360 is vector<C2DBoxF>(size_type), landed as vector<C2DLineF>.

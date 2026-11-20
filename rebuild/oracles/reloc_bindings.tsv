@@ -39917,3 +39917,4 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 _GUID_SysMouse	012acaa4	00ab5710
 _c_dfDIMouse	012adbf4	00ab5710
 _c_dfDIMouse2	012addfc	00ab5710
+??0?$vector@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@I@Z	00a80360	00a781a0
