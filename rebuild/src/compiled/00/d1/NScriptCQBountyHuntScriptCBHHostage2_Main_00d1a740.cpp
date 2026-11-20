@@ -17,7 +17,7 @@
 //   all fold the test away (2743v2743, 153 instructions differ); only an empty then-arm (`{}` or `;`) keeps it. Ego_d line 1619 (353
 //   bytes) holds the whole wait, so the line table cannot separate the spellings.
 // Flags: /d2inlS15
-#define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
+// (ablation 2026-11-20: FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR not needed, dropped)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
 #define FABLE_RETAIL_NSCRIPT
