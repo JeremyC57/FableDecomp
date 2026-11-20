@@ -39669,3 +39669,5 @@ _s_HeroStateExt	01236a74	004a05c0
 ?Process@CSalIIRFilter@@QAEXPAF@Z	00c6c0f0	00c54f30
 ?Process@CSalIIRFilter@@QAEXPAFPBF@Z	00c6c530	00c54f30
 ?g_pEAXManager@@3PAVCEAXManager@@A	0143bb70	00c54f30
+?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ	004364c0	006495a8
+?IsOverridingScreenFade@CTCQuestCompletionUI@@QBE_NXZ	005e3e70	006495a8

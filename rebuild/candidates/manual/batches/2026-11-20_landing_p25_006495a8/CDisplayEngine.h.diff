@@ -1,0 +1,20 @@
+diff --git a/rebuild/include/engine/CDisplayEngine.h b/rebuild/include/engine/CDisplayEngine.h
+index 24e7f6a78..d84d0c23f 100644
+--- a/rebuild/include/engine/CDisplayEngine.h
++++ b/rebuild/include/engine/CDisplayEngine.h
+@@ -134,6 +134,15 @@ public:
+     bool IsScreenFadeOutClosing() const { return ScreenFadeOutInfo.IsClosing(); }
+     bool IsScreenFadeOutLockFlagSet() const { return ScreenFadeOutLocked; }
+ #endif // FABLE_RETAIL_CDISPLAYENGINE_REGIONLOADFADE
++#ifdef FABLE_RETAIL_CDISPLAYENGINE_SCREENFADE_DRAW
++    // Retail opt-in (p25A, row 0x006495A8 NPlayerGui::CDrawScreenFade::Draw): FableWin.pdb ?GetScreenFadeOutColour@CDisplayEngine@@QBEABVCRGBColour@@XZ,
++    // inline in retail (ScreenFadeOutInfo.GetColour(): the bytes +0xD4..+0xD6 read in place, 0x006496F9..0x0064970B), and
++    // ?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ called out of line there (its COMDAT 0x004364C0 is landed; `mov ecx,edi ; call`, 0x00649715).
++    // Needs FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT and FABLE_RETAIL_CFADEINFADEOUTBASE_GETCOLOUR (with _FADE or _OPEN); exclusive with
++    // the inline GetScreenFadeOutAlpha of the ISSCREENFULLYFADEDOUT + FADE branch. No layout change.
++    const CRGBColour& GetScreenFadeOutColour() const { return ScreenFadeOutInfo.GetColour(); }
++    unsigned char GetScreenFadeOutAlpha() const;                        // 0x004364C0
++#endif
+ #ifdef FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
+     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ,
+     // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.

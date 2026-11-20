@@ -1,0 +1,7 @@
+set	address	class	header
+006495a8	005e3e70	CTCQuestCompletionUI	engine/CTCQuestCompletionUI.h (ISOVERRIDINGSCREENFADE opt-in; the row is a free __fastcall on a local pad struct, see NAME_FIXES)
+006495a8	0048db13	CWorld	engine/CWorld.h (SCREENFADE_CALLEES opt-in; local CWorld model of IsPerformingRegionLoad)
+006495a8	0049e9f0	CWorld	engine/CWorld.h (SCREENFADE_CALLEES opt-in; local models)
+006495a8	0064401c	NPlayerGui::CDrawMiniMap	engine/CWorld.h (SCREENFADE_CALLEES opt-in; local CWorld model calling IsDisplayingMiniMapOnRegionLoad)
+006495a8	00644179	NPlayerGui::CDrawMiniMap	engine/CWorld.h (SCREENFADE_CALLEES opt-in; same)
+006495a8	006441be	NPlayerGui::CDrawMiniMap	engine/CWorld.h (SCREENFADE_CALLEES opt-in; same)

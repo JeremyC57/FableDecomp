@@ -1,0 +1,17 @@
+diff --git a/rebuild/include/engine/CFadeInFadeOutBase.h b/rebuild/include/engine/CFadeInFadeOutBase.h
+index c8c1070f4..b01dd1cb9 100644
+--- a/rebuild/include/engine/CFadeInFadeOutBase.h
++++ b/rebuild/include/engine/CFadeInFadeOutBase.h
+@@ -51,6 +51,12 @@ public:
+     // (0x01A65280), inline in retail (the byte Active +0 tested in place). Member function only: no layout change.
+     bool IsActive() const { return Active; }
+ #endif
++#if defined(FABLE_RETAIL_CFADEINFADEOUTBASE_GETCOLOUR) && (defined(FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN) || defined(FABLE_RETAIL_CFADEINFADEOUTBASE_FADE))
++    // Retail opt-in (p25A, row 0x006495A8 via CDisplayEngine::GetScreenFadeOutColour): FableWin.pdb
++    // ?GetColour@CFadeInFadeOutBase@@QBEABVCRGBColour@@XZ, inline in retail (the row reads ToColour +0x18 of ScreenFadeOutInfo, i.e.
++    // CDisplayEngine +0xD4, in place: `lea eax,[edi+0D4h]`, 0x006496F9). Needs the typed ToColour (OPEN or FADE). No layout change.
++    const CRGBColour& GetColour() const { return ToColour; }
++#endif
+ #ifdef FABLE_RETAIL_CFADEINFADEOUTBASE_DECLS
+     // Retail opt-in (agentC38, row 0x00652FA4; exclusive with FABLE_RETAIL_CFADEINFADEOUTBASE_OPEN; the includer has CRGBColour): the
+     // out-of-line members as that row calls them -- Ego_r.pdb / FableWin.pdb ?Open@CFadeInFadeOutBase@@QAEXMMVCRGBColour@@@Z 0x00434840,

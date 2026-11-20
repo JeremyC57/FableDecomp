@@ -50,6 +50,12 @@ public:
     virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&);
 #endif
     void Activate(CompletionType completion, const CCharString& scriptName, bool b1, const CWideString& summary, bool b2);   // 0x005E4740
+#ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_ISOVERRIDINGSCREENFADE
+    // Retail opt-in (p25A, row 0x006495A8 NPlayerGui::CDrawScreenFade::Draw): Ego_r.pdb / FableWin.pdb
+    // ?IsOverridingScreenFade@CTCQuestCompletionUI@@QBE_NXZ, out of line in retail at 0x005E3E70 (landed under a descriptive __fastcall
+    // spelling; the row calls it `mov ecx,[eax+4] ; call 0x005E3E70`, 0x006496A9). Declaration only, no layout change.
+    bool IsOverridingScreenFade() const;                                 // 0x005E3E70
+#endif
 #if defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_POSTBOAST) || defined(FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION)
     // Retail opt-in (Codex pass20): original PDB accessor; native004b2a6b assigns ScriptName+0x50.
     void SetScriptName(const CCharString& script_name){ScriptName=script_name;}
