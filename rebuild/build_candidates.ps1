@@ -38450,9 +38450,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0082e4e0'
-        Module = 'CSurface'
-        Source = '00/82/CSurface_GetHeight_0082e4e0.cpp'
-        TestSource = '00/82/CSurface_GetHeight_0082e4e0_test.cpp'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_GetThingsMovement_0082e4e0.cpp'
+        TestSource = '00/82/CScriptedMapBrush_GetThingsMovement_0082e4e0_test.cpp'
         PassPattern = 'GETHEIGHT_0082e4e0_OK'
     }
     [pscustomobject]@{
@@ -223415,9 +223415,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcec70'
-        Module = 'CCrateTeamMember'
-        Source = '00/dc/CCrateTeamMember_GoOnPatrol_00dcec70.cpp'
-        TestSource = '00/dc/CCrateTeamMember_GoOnPatrol_00dcec70_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_GoOnPatrol_00dcec70.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_GoOnPatrol_00dcec70_test.cpp'
         PassPattern = '00dcec70_TEST PASS'
     }
     [pscustomobject]@{
@@ -236432,9 +236432,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dced10'
-        Module = 'CCrateTeamMember'
-        Source = '00/dc/CCrateTeamMember_IsThingCarryingCrate_00dced10.cpp'
-        TestSource = '00/dc/CCrateTeamMember_IsThingCarryingCrate_00dced10_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_IsThingCarryingCrate_00dced10.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_IsThingCarryingCrate_00dced10_test.cpp'
         PassPattern = '00dced10_TEST PASS'
     }
     [pscustomobject]@{

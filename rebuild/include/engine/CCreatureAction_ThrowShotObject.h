@@ -34,6 +34,14 @@ public:
     // = vftable 0x012944D4 slot 12 (+0x30). Declaration only; no layout change.
     virtual void Initialise();                                            // 0x008B66D0
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_FACETARGET
+    // NF175 opt-in (q11895 / q11896; needs FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS): FableWin.pdb 0x02BF6990
+    // ?IsToFaceTarget@CCreatureAction_ThrowShotObject@@UBE_NXZ and 0x02BF69A0 ?GetIsToFaceTargetCone@CCreatureAction_ThrowShotObject@@UBEMXZ
+    // (Ego_r.pdb has no record: folded there), the overrides retail puts in vftable 0x012944D4 slot 73 (+0x124) = 0x00956720 and slot 78
+    // (+0x138) = 0x00956730. Declarations only; no layout change.
+    virtual bool IsToFaceTarget() const;                                  // 0x00956720
+    virtual float GetIsToFaceTargetCone() const;                          // 0x00956730
+#endif
 };
 FABLE_STATIC_ASSERT_AT(24, sizeof(CCreatureAction_ThrowShotObject) == 0x114);
 #else

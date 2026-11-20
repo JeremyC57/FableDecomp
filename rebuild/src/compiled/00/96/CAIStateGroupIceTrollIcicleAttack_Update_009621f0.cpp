@@ -25,6 +25,11 @@
 // direct GetTC into a named pointer; the boast result is compared against 1 and both arms terminate (the compare folds
 // away, the result copy in edi stays).
 // Layout: Ego_r.pdb CAIStateGroup_IceTrollIcicleAttack PTarget +0x14.
+// NF175 (2026-11-20, q4968): AIAction_LookAtThing 0x0097D6F0 respelled in place on the row-local CAIStateGroupBase from the stand-in
+//   ?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z to the PDB
+//   ?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z (Ego_r.pdb
+//   0x008484A0, protected); PTarget and the by-value argument are the shared CIntelligentPointer<CThing> / <const CThing> (converting
+//   constructor inline), the enums engine/EAIAction.h (the empty local EAIActionReturn dropped).
 class CThing;
 class CThingCreatureBase;
 class CTCBase;
@@ -51,11 +56,8 @@ class CTCCreatureModeManager { public:                 // interface 0x31
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
 #include "engine/CIntelligentPointer.h"
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
@@ -118,7 +120,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
     void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
 };
-enum EAIActionReturn { };
+#include "engine/EAIAction.h"
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -128,12 +130,12 @@ protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   protected: // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed); // 0x0097D6F0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_IceTrollIcicleAttack : CAIStateGroupBase {
-    CBaseIntelligentPointer PTarget;            // +0x14
+    CIntelligentPointer<CThing> PTarget;        // +0x14
     void Update();
 };
 
@@ -154,7 +156,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
                 return;
             }
         }
-        if (AIAction_LookAtThing(1, PTarget, 1, 0.01f) == 2 && IS_THING_ALIVE(PTarget) && !IsStopping()) {
+        if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PTarget, 1, 0.01f) == AI_ACTION_FINISHED && IS_THING_ALIVE(PTarget) && !IsStopping()) {
             long remaining = 2;
             do {
                 CThingCreatureBase* creature = GetCreature();

@@ -201,6 +201,14 @@ protected:
     virtual void OnAnimationLoaded();
 protected:
     virtual bool WaitForMeshToLoad() const;
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_UPDATE
+    // NF175 opt-in (q11935, row 0x006929A0): Ego_r.pdb 0x00519310 + FableWin.pdb 0x01DB6560 ?Update@CCreatureActionBase@@QAEXXZ (public; Ego_r
+    // places it directly after PeekThingSearchTools 0x00519300, as retail 0x006929A0 follows 0x00692990). Declaration only; the access
+    // returns to protected after it.
+public:
+    void Update();                                                       // 0x006929A0
+protected:
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_UPDATEANIM
     // Opt-in (w22 agent2007, row 0x00665860 CThingCreatureBase::UpdateAnimation): Ego_r.pdb / FableWin.pdb
     // ?UpdateActionAnimation@CCreatureActionBase@@QAEXXZ (public, out of line in retail at 0x00694890). Declaration only.

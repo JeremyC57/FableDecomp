@@ -2279,8 +2279,6 @@ _g_f	013ba8b1	0068cb70
 _GetActionRegistrar	006f90b0	00692380
 ?g_actionid@@3KA	013ba8b4	00692450
 ?Convert@TimeConverter@@QAEMH@Z	006627f0	00692960
-@getSub@4	00a01b50	006929a0
-@runSub@4	006633a0	006929a0
 ?Method@Foo@@QAEJJ@Z	005dc230	006929c0
 ?Call_004c7ab0@CThingCreatureBase_Calls@@QAEPAXXZ	004c7ab0	006929e0
 ??0CRetailString@@QAE@ABU0@@Z	0099ec30	00692c80
@@ -3290,7 +3288,6 @@ __CxxThrowException@8	00bfeb84	0081e960
 ?g_displaySwitch_13b863d@@3EA	013b863d	0082d810
 ?g_displaySwitch_13b863e@@3EA	013b863e	0082d810
 ?g_displaySwitch_13b86c6@@3EA	013b86c6	0082d810
-?compute@FableSurfHelper_0082e4e0@@QAEJPAX@Z	0082eeb0	0082e4e0
 ??ACThingsToMoveMap@@QAEAAUCThingPosAndOrientation@@AB_K@Z	0082fb90	0082ea50
 ?NotifyManager@CThingCreature@@QAEXXZ	006d5ab0	0082fe00
 ?OnPropertyChanged@CThingCreature@@QAEXJ@Z	004c9840	0082fe00
@@ -4504,7 +4501,6 @@ N_008fdb27	008fdb27	008fdb55
 ??_7CEventVillagerInteraction@NEntityEvents@@6B@	012995a8	00982320
 ??_7CCreatureAction_MagicBlast@@6B@	0129935c	009826d0
 ??_7CCreatureAction_SendMessage@@6B@	0129947c	00982750
-?AIAction_LookAtThing@CAIStateGroupBaseL@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0097d6f0	00984a20
 ?Method@CClass_00985420@@QAEXJJ@Z	009852c0	00985420
 ??_7CShaderBase@@6B@	0129a030	00987d10
 ??_7CShaderConstantRange@@6B@	0129a04c	00987d50
@@ -10411,7 +10407,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 __imp__LoadLibraryW@4	0143fe38	00401fe0
 ?insert@?$list@U?$CCountedPointer@VC3DSkeletalMorphParameter@@@@@std@@QAE?AU?$_List_iterator@U?$CCountedPointer@VC3DSkeletalMorphParameter@@@@@2@U32@ABU?$CCountedPointer@VC3DSkeletalMorphParameter@@@@@Z	0062f690	0062f650
 ?insert@?$list@PAUCReactionMatch_@@@std@@QAE?AU?$_List_iterator@PAUCReactionMatch_@@@2@U32@ABQAUCReactionMatch_@@@Z	0067b5b0	0067cff0
-?find@CSpeechGroupInfoMap@@QBE?AUCSpeechGroupMapIterator@@ABK@Z	008aef20	008af1e0
 ?AttemptToSpeak@CombatDialogueManager@@QAEXXZ	008af500	008af780
 ?IsTalking@CTCTalk@@QBE_NXZ	006e28a0	008af780
 ?CanSaySpeech@CombatDialogueManager@@QBE_NAAVCThingCreatureBase@@K@Z	008af6e0	008afc40
@@ -17168,9 +17163,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ	00686a70	00960760
 ?GetPPlayerManager@CAIStateGroup_BanditKingCharge@@QAEPAVCPlayerManager@@XZ	008fcf90	009612f0
 ?GetPPlayerManager@CAIStateGroup_BanditKingThrowWeapons@@QAEPAVCPlayerManager@@XZ	008fcf90	00961550
-??0CCreatureAction_BanditKingAttack@@QAE@PAVCThing@@0ABVCCharString@@_N2@Z	008c9410	00961790
-?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@QAEJPAVCCreatureActionBase@@_N@Z	0097da40	00961790
-?AIAction_MoveToThingProximity@CAIStateGroup_BanditKingCharge@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@MABUCMoveOptions@@J_N2222@Z	0097e380	00961790
 ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z	004a96f0	00961e80
 ?GetPredictedTargetPosForThing@@YI?AVC3DVector@@PAVCThing@@0@Z	00961ab0	00961e80
 ??RCThingFilter_HasFreeActionPoint@@QBE_NABVCThing@@@Z	006a8b40	009650c0
@@ -37309,8 +37301,6 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?MoveTowardsEnemy@CAIStateGroup_StealthSeekEnemy@@AAEXPBVCTCPerceiveThing@@@Z	0093c7b0	0093c830
 ?SetWhatsThatAnimation@CAIStateGroup_StealthSeekEnemy@@AAEXPBVCTCPerceiveThing@@@Z	0093c6d0	0093c830
 ?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@AAEXXZ	0093c600	0093c830
-??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z	008bd880	009621f0
-?HasMode@CTCCreatureModeManager@@QAE_NJ@Z	0073a8a0	009621f0
 ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	0094e5f0	009624d0
 ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ	00961c50	009624d0
 ?JumpToSafety@CAIStateGroup_WhisperRetreat@@QAEXXZ	0096ac20	0096b600
@@ -38488,9 +38478,6 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 ??0CCreatureAction_DragonTakeOffIntoFlying@@QAE@PAVCThingCreatureBase@@ABUCVector3DList@@@Z	009533e0	00951b20
 ??1CCreatureAction_DragonTakeOffIntoFlying@@QAE@XZ	00953470	00951b20
 ?push_back@CVector3DList@@QAEXABVC3DVector@@@Z	0066e630	00951b20
-??0CCreatureAction_CastWillLightningSpell@@QAE@PAVCThingCreatureBase@@JMPAVCThing@@@Z	008bca00	00956380
-??1CCreatureAction_CastWillLightningSpell@@QAE@XZ	0062e900	00956380
-?AIAction_LookAtThing@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@JM@Z	0097d6f0	00956380
 ?GetCurrentSpeechDuration@CTCTalk@@QAEMXZ	006e2840	00957a20
 ??_7CCreatureAction_PutDownJug@@6B@	012964dc	00967a20
 ??_7CIntelligentPointerObject@@6B@	0125a858	00967a20
@@ -39578,3 +39565,9 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?g_endNewEntityScript@@3QBDB	012c165c	00cb8440
 ?g_startNewEntityScript@@3QBDB	012c1674	00cb8440
 ??_7CV_ArcheryCompetitionScript@NScript@@6B@	012e2ee4	00e32350
+??0CCreatureAction_CastWillLightningSpell@@QAE@PAVCThingCreatureBase@@JMPAVCThing@@@Z	008bca00	00956380
+??1CCreatureAction_CastWillLightningSpell@@QAE@XZ	0062e900	00956380
+??0CCreatureAction_BanditKingAttack@@QAE@PAVCThing@@0ABVCCharString@@_N2@Z	008c9410	00961790
+?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@QAEJPAVCCreatureActionBase@@_N@Z	0097da40	00961790
+??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z	008bd880	009621f0
+?HasMode@CTCCreatureModeManager@@QAE_NJ@Z	0073a8a0	009621f0

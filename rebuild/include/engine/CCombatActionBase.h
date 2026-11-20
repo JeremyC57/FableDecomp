@@ -187,6 +187,25 @@ protected:
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
     virtual void FinishAction();
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+    // NF175 opt-in (q11895 / q11896, rows 0x00956720 / 0x00956730): the eleven virtuals CCombatActionBase adds to CCreatureActionBase's
+    // seventy, in the MELEE branch (the same Ego_r.pdb class-record names and order as the other branch's _OWN_VIRTUALS), declared after
+    // every other virtual of this class so they take slots 70..80 (retail vftable 0x012944D4 of CCreatureAction_ThrowShotObject has 81
+    // slots; NF148 NOTES). Declarations only; no layout change.
+public:
+    virtual C3DVector GetNextPos() const;
+    virtual bool IsToUseRotationInAnimation() const;
+    virtual bool IsToAlignWithGroundNormal() const;
+    virtual bool IsToFaceTarget() const;
+    virtual bool IsToFaceTargetAtStart() const;
+    virtual C3DVector GetActionMovementVector() const;
+    virtual bool IsToPerformActionOnStrike() const;
+    virtual bool IsToHitProneThings() const;
+    virtual float GetIsToFaceTargetCone() const;
+    virtual float GetIsToFaceTargetMinDist() const;
+    virtual float GetDamageMultiplier() const;
+protected:
+#endif
     void ResetMeleeCombatAbilityEffects();                               // 0x00859660
     CIntelligentPointer<CThing> PTarget;                                 // +0xa8
     CIntelligentPointer<const CThing> PCameraPoint;                      // +0xb0

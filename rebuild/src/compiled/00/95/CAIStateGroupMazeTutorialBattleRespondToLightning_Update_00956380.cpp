@@ -19,6 +19,10 @@
 //   0x02892570: protected, const CCreatureActionBase&); was the derived stand-in
 //   ?AIAction_PerformActionAndWait@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE?AW4EAIActionReturn@@AAVCCreatureActionBase@@_N@Z.
 //   The row's existing local EAIActionReturn line moved above the base (unchanged).
+// NF175 (2026-11-20, q4968): AIAction_LookAtThing 0x0097D6F0 respelled from the derived stand-in (CIntelligentPointerConstThing, local
+//   enums) to the PDB ?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z
+//   (Ego_r.pdb 0x008484A0, protected), declared on the row-local CAIStateGroupBase; the target member and the by-value argument are the shared
+//   CIntelligentPointer<CThing> / <const CThing> (converting constructor inline), the enums engine/EAIAction.h (repeat 1 = ACTION_REPEAT_UNTIL_FINISHED).
 class CTCBase;
 class CThing;
 class CWorld;
@@ -33,13 +37,8 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
 #include "engine/CIntelligentPointer.h"
-
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
-};
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
@@ -56,12 +55,13 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED };
+#include "engine/EAIAction.h"
 class CCreatureActionBase;
 class CAIStateGroupBase { public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool interruptible);   // 0x0097DB70
+    EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> target, long frames, float speed);   // 0x0097D6F0
 public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -140,13 +140,6 @@ class CWorld { public:
 struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-
-enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_ONCE };
-
 class CThingCreatureBase;
 class CCreatureActionBase { public:
     unsigned char _body[0x11c];
@@ -158,17 +151,16 @@ class CCreatureAction_CastWillLightningSpell : public CCreatureActionBase { publ
 };
 
 struct CAIStateGroup_MazeTutorialBattleRespondToLightning : CAIStateGroupBase {
-    CBaseIntelligentPointer PTarget;            // +0x14 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTarget;        // +0x14
     unsigned char _pad1c[4];
     long FrameOfLastHit;                        // +0x20 (engine header)
-    EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointerConstThing target, long frames, float speed);   // 0x0097D6F0
     virtual void Update();
 };
 
 void CAIStateGroup_MazeTutorialBattleRespondToLightning::Update()
 {
     if (IS_THING_ALIVE(PTarget) && !IsStopping()) {
-        AIAction_LookAtThing(AI_ACTION_REPEAT_ONCE, PTarget, 0x21, 0.083333336f);
+        AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PTarget, 0x21, 0.083333336f);
         if (IS_THING_ALIVE(PTarget) && !IsStopping()) {
             CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
             AIAction_PerformActionAndWait(CCreatureAction_CastWillLightningSpell(creature, 2, 3.0f, ((CThing*)PTarget.GetPItem())), false);

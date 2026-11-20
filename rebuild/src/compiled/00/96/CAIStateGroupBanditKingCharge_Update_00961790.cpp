@@ -10,6 +10,11 @@
 // Shape: the intelligent pointer argument is built in the argument area through an inline converting copy ctor
 // from PTargetThing (base ctor, vtable store, then GetPItem -- a T* ctor evaluates GetPItem first); a one-byte option
 // temporary is passed by reference; the animation name is a named local built before the creature is read.
+// NF175 (2026-11-20, q4967): AIAction_MoveToThingProximity 0x0097E380 respelled in place from the derived stand-in
+//   ?AIAction_MoveToThingProximity@CAIStateGroup_BanditKingCharge@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@MABUCMoveOptions@@J_N2222@Z to the
+//   PDB ?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementType@@_N444M@Z
+//   (Ego_r.pdb 0x008491B0, protected), declared on the row-local CAIStateGroupBase: the CMoveOptions stand-in is the PDB `bool&` (an
+//   uninitialised local, as the landed 0x0094F000), the last argument the PDB float, the enums engine/EAIAction.h / EMovementType.h.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
@@ -44,10 +49,8 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CMoveOptions                                 // one-byte option object passed by reference
-{
-    CMoveOptions() { }
-};
+#include "engine/EAIAction.h"
+#include "engine/EMovementType.h"
 
 class CCreatureActionBase
 { public:
@@ -79,6 +82,10 @@ public:
     virtual void v00();
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> target, float proximity,
+                                                  bool& pArrived, EMovementType movement, bool a, bool b, bool c, bool d,
+                                                  float e);     // 0x0097E380
 };
 
 struct CAIStateGroup_BanditKingCharge
@@ -86,18 +93,16 @@ struct CAIStateGroup_BanditKingCharge
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
     CBaseIntelligentPointer PTargetThing;           // +0x14
-    long AIAction_MoveToThingProximity(long mode, CIntelligentPointer<const CThing> target, float proximity,
-                                       const CMoveOptions& options, long anim, bool a, bool b, bool c, bool d,
-                                       bool e);     // 0x0097E380
     long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
     void Update();
 };
 
 void CAIStateGroup_BanditKingCharge::Update()
 {
+    bool arrived;
     if (IS_THING_ALIVE(PTargetThing)
-        && AIAction_MoveToThingProximity(1, CIntelligentPointer<const CThing>(PTargetThing), 4.0f,
-                                         CMoveOptions(), 5, true, false, true, true, false) == 2
+        && AIAction_MoveToThingProximity(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(PTargetThing), 4.0f,
+                                         arrived, AI_MOVEMENT_RUNNING, true, false, true, true, 0.0f) == AI_ACTION_FINISHED
         && IS_THING_ALIVE(PTargetThing))
     {
         CCharString anim("BK_CHARGE_ATTACK", -1);

@@ -1,0 +1,7 @@
+# NF175 lessons (one line each)
+- A stand-in that "takes" arguments from a vtable call may be reading the OUTER call's pushes: 0x00DCEC70's FindPatrolPosition(float, bool) on slot 70 was GetHero() inside EntityFollowThing(Me, GetHero(), d, true); map slot numbers to the shared interface header before trusting a stand-in's parameter list.
+- For the CIntelligentPointer<const CThing> argument of LookAtThing / MoveToThingProximity, FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE from a CIntelligentPointer<CThing> member matches first time; rows that build it from a raw CThing* need the retail CThing chain (SetPointer static_casts to CBaseObject*), so triage by the argument's source before starting.
+- Read the GameCODA SDK bytes (codabytes.py on CODAApi.lib) before acting on a GameCODA queue name: two queued descriptive names here (CCodaVoice::Stop, UpdatePitchEnvelopeStages) were disproved in one call each.
+- A 3-instruction STLport accessor (find->second) that retail calls out of line: FABLE_RETAIL_STLP_TREE_CONSTFIND + _MFIND_DECL gave RELOCATION_MATCH on the first grade.
+- An opt-in that must not change the access of the members after it: place it after a member of known access and close with that same access label (`public: ... protected:`).
+- Probe every remaining binder of a returned entry once (probe.py) before planning: the prior agents' lists were exact here, which let the blocked rows be recorded without re-grading.
