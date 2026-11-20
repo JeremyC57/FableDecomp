@@ -367,3 +367,4 @@ header newly flags landed rows that carry a local copy of the class (widened HEA
 set in the batch folder. First users: hand3c2 b14 (IDirect3D9.h, CVsyncCallbackTimer.h, CGenericException.h; flags 54 rows), hand3c3 b3
 (23 rows) and b12 (2 rows). Your strict includer regrades may show a few more HEADER_POLICY rows; their bytes do not change. CTCWeapon.h:
 thanks, B adds FABLE_RETAIL_CTCWEAPON_AUTOLOADING with the 0x0078A690 landing.
+2026-11-20 A->B: New agent NF127: PRIORITY slice 9 (31 entries, 80 rows locked, in claims). NF125's 22-row hand-back (header CTCHeroExperience.h, add-only opt-ins) is being verified.
