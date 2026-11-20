@@ -43,7 +43,11 @@ struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
 };
-CWideString __fastcall GetLevelsDirectory();    // 0x0041A060 (L"Data\\Levels\\")
+// NF176 (2026-11-20, q4611): the Ego_r.pdb / FableWin.pdb ?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (the spelling the
+//   landed self row 0x0041A060 and 8 other callers bind); was the free ?GetLevelsDirectory@@YI?AVCWideString@@XZ.
+namespace NResourceDirectoryNames {
+CWideString __fastcall GetLevelDir();           // 0x0041A060 (L"Data\\Levels\\")
+}
 
 namespace std {
 struct __false_type { __false_type() {} };
@@ -89,7 +93,7 @@ void CFrontendGameComponent::GetWorldNames()
 {
     WorldToLoad = L"";
     WorldNames.clear();
-    CWideString pattern = GetLevelsDirectory() + L"*.wld";
+    CWideString pattern = NResourceDirectoryNames::GetLevelDir() + L"*.wld";
     CAFile::CFileScanInfo handle;
     CFindFileData data;
     if (CAFile::StartFileScan(pattern, handle, data.FileName)) {

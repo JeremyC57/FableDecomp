@@ -21,6 +21,7 @@ class CStringParser : public CStringParserLayout
 {
 public:
     CCharString ReadAsSymbol();   // 0x009BA790
+    CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330 ?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z
 };
 
 class CPersistContext;
@@ -33,10 +34,9 @@ class CCharString { public:
     bool operator!=(const char* text) const;                     // 0x0099E960
 };
 
-// Method view over the shared engine header (the reader touches no parser fields directly).
-struct CStringParserReader : CStringParser {
-    CCharString ReadAsStringUntilString(const CCharString& end); // 0x009BA330
-};
+// NF176 (2026-11-20, q4658): ReadAsStringUntilString moved from the CStringParserReader stand-in (?ReadAsStringUntilString@
+//   CStringParserReader@@QAE?AVCCharString@@ABV2@@Z) onto the row's own CStringParser model, so 0x009BA330 binds the Ego_r.pdb /
+//   FableWin.pdb ?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z like the 24 other landed callers; the stand-in is gone.
 
 class CPersistContext { public:
     void PersistError(const CStringParser& parser, const CCharString& message) const;   // 0x009BAA90
@@ -50,12 +50,12 @@ template <class T> struct CPersistTraits {
 template <>
 void CPersistTraits<CCharString>::TransferIn(CPersistContext& context, CStringParser& parser, CCharString& value)
 {
-    if (static_cast<CStringParserReader&>(parser).ReadAsSymbol() != "\"")
+    if (parser.ReadAsSymbol() != "\"")
     {
         context.PersistError(parser, "Unable to find closing quote");
         return;
     }
-    value = static_cast<CStringParserReader&>(parser).ReadAsStringUntilString("\"");
-    if (static_cast<CStringParserReader&>(parser).ReadAsSymbol() != "\"")
+    value = parser.ReadAsStringUntilString("\"");
+    if (parser.ReadAsSymbol() != "\"")
         context.PersistError(parser, "Unable to find closing quote");
 }

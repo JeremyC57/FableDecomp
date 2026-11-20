@@ -8,13 +8,17 @@
 // the pushes. The byte count is kept in edi across the hook call; `n > 0` is the unsigned compare
 // (`test ; ja`). The manifest's doubled "CCompressedMemoryDataInputStream::CCompressedMemory
 // DataInputStream::" prefix is a naming artefact; vtable 0x0129A758 slot 8 is this body.
+// NF176 (2026-11-20, q5003): the CCompressorZlib_Calls stand-in is gone: the compressor is the shared engine/CCompressorZlib.h class
+//   (FABLE_RETAIL_CACOMPRESSOR / _CCOMPRESSORZLIB / _STREAM), whose Ego_r.pdb / FableWin.pdb DecompressStream takes the end-of-stream flag
+//   by reference: 0x00A3A840 binds ?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z (was ?DecompressStream@CCompressorZlib_Calls@@QAEKPAXKPA_N@Z).
+#define FABLE_RETAIL_CACOMPRESSOR
+#define FABLE_RETAIL_CCOMPRESSORZLIB
+#define FABLE_RETAIL_CCOMPRESSORZLIB_STREAM
+#include "engine/CCompressorZlib.h"
 #define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
 #include "engine/CAFile.h"
 #include "engine/CCompressedMemoryDataInputStream.h"
 
-struct CCompressorZlib_Calls {
-    unsigned long DecompressStream(void* dest, unsigned long destSize, bool* endOfStream);   // 0x00A3A840
-};
 
 template<class T> struct CScopedPointer {                       // scoped_ptr<T>: one owning pointer
     T* ptr;
@@ -28,7 +32,7 @@ struct CCompressedMemoryDataInputStream_Retail {
     unsigned char          _state[0x14];                        // +0x04..+0x17 (CDataStream)
     unsigned char*         Buffer;                              // +0x18
     long                   BufferSize;                          // +0x1c
-    CScopedPointer<CCompressorZlib_Calls> Compressor;           // +0x20 (scoped_ptr: ptr)
+    CScopedPointer<CCompressorZlib> Compressor;           // +0x20 (scoped_ptr: ptr)
     void InternalReadNextSourceChunk(unsigned char** chunkData, unsigned long* chunkSize);
 };
 
@@ -37,7 +41,7 @@ FABLE_STATIC_ASSERT(sizeof(CCompressedMemoryDataInputStream_Retail) == sizeof(CC
 void CCompressedMemoryDataInputStream_Retail::InternalReadNextSourceChunk(unsigned char** chunkData, unsigned long* chunkSize)
 {
     bool endOfStream = false;
-    unsigned long bytesProduced = Compressor->DecompressStream(Buffer, BufferSize, &endOfStream);
+    unsigned long bytesProduced = Compressor->DecompressStream(Buffer, BufferSize, endOfStream);
     FABLE_ASSERT(bytesProduced > 0);
     *chunkData = Buffer;
     *chunkSize = bytesProduced;

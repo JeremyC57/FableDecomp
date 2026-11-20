@@ -7,12 +7,15 @@
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
 
-struct CFirst_00c14dd0 { void Update(); };    // 0x00C2A890
+// NF176 (2026-11-20, q4569): the +8 object is the landed libpk CNavigatorSwitch (descriptive, no PDB / RTTI: its SendStateAndReset
+//   0x00C2A890 sits beside and calls the landed CNavigatorSwitch::SendState 0x00C2A7A0; the self row models it with the same struct key);
+//   the call binds ?SendStateAndReset@CNavigatorSwitch@@QAEXXZ (was the address stand-in ?Update@CFirst_00c14dd0@@QAEXXZ).
+struct CNavigatorSwitch { void SendStateAndReset(); };    // 0x00C2A890
 struct CSecond_00c14dd0 { void Update(); };   // 0x00C2BCA0
 
 struct CActionSummonerLightning_00c14dd0 {
     unsigned char _pad[8];
-    CFirst_00c14dd0* m_pFirst;             // +8
+    CNavigatorSwitch* m_pFirst;            // +8
     CSecond_00c14dd0* m_pSecond;           // +0xc
     unsigned char _pad2[0x60];
     long m_frame;                          // +0x70
@@ -24,7 +27,7 @@ void CActionSummonerLightning_00c14dd0::Advance()
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
     Step();
-    m_pFirst->Update();
+    m_pFirst->SendStateAndReset();
     m_pSecond->Update();
     ++m_frame;
 }

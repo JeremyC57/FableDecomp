@@ -1,0 +1,24 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0088FE00	CGameScriptInterface	AddLogBookEntry	?AddLogBookEntry@CGameScriptInterface@@UBEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@Z	CGameScriptInterface::AddLogBookEntry	?AddLogBookEntry@CGameScriptInterface@@QBEXJJJJ@Z	Ego_r.pdb 0x008CCB80 + FableWin.pdb 0x02A725F0 (virtual const, three const CWideString& + CHeroLogBook::CHeroLogBookEntry::ECategory); body passes them unchanged to CHeroLogBook::AddEntry 0x0047A9F0 (ret 10h = 4 args); leaf-only self rename, exe scan: no landed row references 0x0088FE00 (vtable only)
+0x00A26C50	CMeshDataBank	Close	?Close@CMeshDataBank@@UAEXXZ	CMeshDataBank::Close	?CMeshDataBank_Close@@YIXPAVCMeshDataBank@@@Z	Ego_r.pdb 0x00B64430 + FableWin.pdb 0x03130530 ?Close@CMeshDataBank@@UAEXXZ; body = CloseMeshes 0x00A26900 then tail jmp CBankFileAsync::Close 0x009D58A0; leaf-only self rename (catalog name unchanged); exe scan: no landed row references 0x00A26C50 (vtable only); row moved onto engine/CMeshDataBank.h
+0x00A3A840	CCompressorZlib	DecompressStream	?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z	CCompressorZlib_Retail::DecompressStream	?DecompressStream@CCompressorZlib_Retail@@QAEKPAXKPA_N@Z	Ego_r.pdb 0x00B956A0 + FableWin.pdb 0x031FC180 ?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z (bool& end-of-stream flag; the body stores through it); row moved onto engine/CCompressorZlib.h (FABLE_RETAIL_CACOMPRESSOR/_CCOMPRESSORZLIB/_STREAM), body unchanged; all 4 exe referencers (009949f0 00994a40 00994a80 009c3c20) bind this spelling in the same hand-back
+0x00C5F150	CImaAdpcmCodec	CalcDifference	?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z	CImaAdpcmCodec::CalculateError	?CalculateError@CImaAdpcmCodec@@QAE_KPBE0III@Z	Microsoft 2001 imaadpcm.h (rebuild/include/engine/CImaAdpcmCodec.h) private ULONGLONG CalcDifference(LPBYTE,LPBYTE,UINT,UINT,DWORD) + the landed caller 0x00C5FA50 Convert (only exe referencer) already binds this spelling at its 3 step-index-search sites and prints it with the SDK string "Difference between original and decoded streams"; row moved onto the shared header, body unchanged; vendor (libpk-adjacent SDK) name
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x00408a70	?AddLogEntry@CHeroLogBook@@QAEXABVCWideString@@00J_N@Z	?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z	0x0047A9F0
+0x0040e510	?ReadAsStringUntilString@CStringParserReader@@QAE?AVCCharString@@ABV2@@Z	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	0x009BA330
+0x00495890	?GetLevelsDirectory@@YI?AVCWideString@@XZ	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0x0041A060
+0x00502170	?Close@CBankFileAsync@@QAEXXZ	?Close@CBankFileAsync@@UAEXXZ	0x009D58A0
+0x00547c90	?Init@CVideoSys@@QAEJABVCWideString@@J_N@Z	?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z	0x00A3B9D0
+0x00581b33	?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SIAAVCUserProfileManager@@XZ	?Get@CUserProfileManager@@SIAAV1@XZ	0x0040D2A0
+0x006fcc80	?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@@J@Z	?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z	0x009E5090
+0x0071d3b0	?Get@CUserProfileManager@@SAPAV1@XZ	?Get@CUserProfileManager@@SIAAV1@XZ	0x0040D2A0
+0x007e3820	?ReadAsStringUntilString@CStringParserReader@@QAE?AVCCharString@@ABV2@@Z	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	0x009BA330
+0x0083c800	?IsInitialised@CPlayer@@QBE_NXZ	?IsValid@CInitBaseClass@@QBE_NXZ	0x0099A330
+0x0083ca90	?IsInitialised@CPlayer@@QBE_NXZ	?IsValid@CInitBaseClass@@QBE_NXZ	0x0099A330
+0x0088fe00	?AddLogEntry@CHeroLogBook_Retail@@QAEXJJJJJ@Z	?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z	0x0047A9F0
+0x009949f0	?DecompressStream@CCompressorZlib_Calls@@QAEKPAXKPA_N@Z	?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z	0x00A3A840
+0x00994a40	?DecompressStream@CCompressorZlib_Calls@@QAEKPAXKPA_N@Z	?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z	0x00A3A840
+0x00a26c50	?h1@@YIXPAVCMeshDataBank@@@Z	?CloseMeshes@CMeshDataBank@@AAEXXZ	0x00A26900
+0x00a26c50	?h2@@YIXPAVCMeshDataBank@@@Z	?Close@CBankFileAsync@@UAEXXZ	0x009D58A0
+0x00c14dd0	?Update@CFirst_00c14dd0@@QAEXXZ	?SendStateAndReset@CNavigatorSwitch@@QAEXXZ	0x00C2A890

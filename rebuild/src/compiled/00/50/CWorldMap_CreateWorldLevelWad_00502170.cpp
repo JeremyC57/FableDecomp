@@ -14,6 +14,9 @@
 // Layout: no CWorldMap members are touched (`this` only forwarded to GetLevelFilesFromWorldFile); the two switches
 //   are bytes 0x01375459 / 0x0137545A; the CWADBank local is 0x164 bytes.
 // Name fix (agentNF6 2026-11-10): NProgressDisplay::DisplayProgress 0x009E9F40 is ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z (Ego_r.pdb / FableWin.pdb; namespace NProgressDisplay, (text, float, bool, bool)); the float takes the stack slot either way under __fastcall, so the call bytes are unchanged.
+// NF176 (2026-11-20, q3886): CBankFileAsync::Close respelled in place on the row's existing local CBankFileAsync model as the
+//   virtual Ego_r.pdb / FableWin.pdb ?Close@CBankFileAsync@@UAEXXZ (was QAEXXZ); the call on the local CWADBank stays direct.
+//   The defined-symbol set is unchanged (objdump -t); the row's pick-any ??_7CWADBank@@6B@ COMDAT gains the Close slot.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CCharString { public:
     void* PStringData;
@@ -52,7 +55,7 @@ public:
     void OpenFileReadWrite(const CWideString& name, unsigned long flags, unsigned long blockSize);   // 0x009D5200
     void BeginUpdateEntries();                          // 0x009CE8D0
     void EndUpdateEntries();                            // 0x009CEA70
-    void Close();                                       // 0x009D58A0
+    virtual void Close();                               // 0x009D58A0 ?Close@CBankFileAsync@@UAEXXZ (Ego_r.pdb / FableWin.pdb: virtual)
     unsigned char _body[0x164 - 4];
 };
 class CWADBank : public CBankFileAsync {                // vtable 0x012442DC

@@ -1,0 +1,6 @@
+entry	address	claim	reason
+q5058	0x00C6B720	?Reset@CStateVariableFilter@@QAEXXZ	superseded: the landed self row and every binder use ?ClearHistory@CSalSwFilter@@QAEXXZ, a symbol in the GameCODA CODAApiDbg.lib; the descriptive proposal would re-split the address
+q5059	0x00C78150	?UpdateTapDelays@CReverbProcessor@@QAEXPAUSReverbState@@PBUSReverbParams@@@Z	superseded by the landed ?UpdateSize@CFloatReverbParameterTranslator@@... (in CODAApiDbg.lib) that the self row and the only binder share
+q5119	0x00C74850	?SetShelves@CEffectFilter@@QAEXMMMMK@Z	one-source descriptive proposal; the landed binder already uses ?Set_ShelfLfHf@CFloatFilterParams@@QAEXMMMMI@Z, a CODAApiDbg.lib symbol
+q5153	0x00C3A7D0	?ApplyGainToFrame@CRampedParam@@QAEXAAUCCodaFrame@@K@Z	one source only (behaviour, no PDB); not applied
+q5170	0x00C89350	?ProcessRamped@CReverbDiffuserStage@@...	superseded by the landed CFloatLongReverbModule::Process (in CODAApiDbg.lib) shared by the self row and its binder

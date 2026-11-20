@@ -14,34 +14,18 @@
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
-class CCharStringData { public: const char* PData; long Length; };
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                         // 0x0099B510
-};
-class CCharString;
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    CCharString(const CCharString& other);                  // 0x0099EC30
-    ~CCharString();                                         // 0x0099EAE0
-    bool operator!=(const char* text) const;                // 0x0099E960
-    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
-    const CCharString& operator+=(const char* text);              // 0x0099F100
-    CWideString ToWideString() const;                       // 0x0099E480
-    long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
-    const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
-    FABLE_FORCEINLINE bool EndsWith(const CCharString& suffix) const
-    {
-        long start = GetLength() - suffix.GetLength();
-        if (start >= 0)
-            return strcmp(GetString() + start, suffix.GetString()) == 0;
-        return false;
-    }
-public:
-    CCharString GetSubString(unsigned long, unsigned long) const;   // 0x0099EC70
-};
-CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
+// NF176 (2026-11-20, q4255): the local CCharStringData / CWideString / CCharString / operator+ models are replaced by fable_string.h
+//   (FABLE_RETAIL_CCHARSTRING with the EndsWith / GetSubString opt-ins), and the local CHeroLogBook / CPlayer models by engine/CHeroLogBook.h
+//   and engine/CPlayer.h (FABLE_RETAIL_PLAYER: GetPlayerHeroLogBook = *PHeroLogBook_Data +0xF8), so the 0x0047A9F0 call binds the
+//   Ego_r.pdb / FableWin.pdb ?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z (was the stand-in
+//   ?AddLogEntry@CHeroLogBook@@QAEXABVCWideString@@00J_N@Z with a long category; 2 = CATEGORY_TUTORIAL).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_ENDSWITH
+#define FABLE_RETAIL_CCHARSTRING_SUBSTRING
+#define FABLE_RETAIL_PLAYER
+#include "fable_string.h"
+#include "engine/CHeroLogBook.h"
+#include "engine/CPlayer.h"
 template <class T> struct vector {                          // STLport vector: {_M_start, _M_finish, _M_end_of_storage}
     T* _M_start;
     T* _M_finish;
@@ -54,13 +38,6 @@ class CPlayerGuiDef { public:
     vector<CCharString> TutorialText;                       // +0x91c
 };
 class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };                     // 0x00438570
-class CHeroLogBook { public:
-    void AddLogEntry(const CWideString& title, const CWideString& heading, const CWideString& text, long category, bool given);   // 0x0047A9F0
-};
-class CPlayer { public:
-    unsigned char _pad000[0xf8];
-    CHeroLogBook* PHeroLogBook;                             // +0xf8 (CCountedPointer data)
-};
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
@@ -102,7 +79,7 @@ class CUserProfileManager { public:
 void CUserProfileManager::SetAllTutorialsAsGiven()
 {
     const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
-    CHeroLogBook* logBook = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().PHeroLogBook;
+    CHeroLogBook* logBook = &CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPlayerHeroLogBook();
     for (long i = 0; i < 95; ++i) {
         if (i > 0) {
             CCharString text = def->TutorialText[i];
@@ -112,7 +89,7 @@ void CUserProfileManager::SetAllTutorialsAsGiven()
                     title = title.GetSubString(0, title.GetLength() - 3) + "_TITLE";
                 else
                     title += "_TITLE";
-                logBook->AddLogEntry(title.ToWideString(), title.ToWideString(), text.ToWideString(), 2, true);
+                logBook->AddEntry(title.ToWideString(), title.ToWideString(), text.ToWideString(), CHeroLogBook::CHeroLogBookEntry::CATEGORY_TUTORIAL, true);
             }
             GivenTutorialCategories.push_back((ETutorialCategory)i);
         }

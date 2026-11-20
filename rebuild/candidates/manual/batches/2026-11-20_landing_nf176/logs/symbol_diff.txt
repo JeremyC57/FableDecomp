@@ -1,0 +1,28 @@
+00408a70 new: 4
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetPlayerHeroLogBook@CPlayer@@QBEAAVCHeroLogBook@@XZ
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+0040e510 new: 0
+00495890 new: 0
+00502170 new: 0
+00547c90 new: 0
+00581b33 new: 0
+006fcc80 new: 0
+0071d3b0 new: 0
+007e3820 new: 0
+0083c800 new: 0
+0083ca90 new: 0
+0088fe00 new: 2
+    ?AddLogBookEntry@CGameScriptInterface@@UBEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@Z
+    ?GetPlayerHeroLogBook@CPlayer@@QBEAAVCHeroLogBook@@XZ
+009949f0 new: 1
+    ??C?$CScopedPointer@VCCompressorZlib@@@@QBEPAVCCompressorZlib@@XZ
+00994a40 new: 0
+00a26c50 new: 1
+    ?Close@CMeshDataBank@@UAEXXZ
+00a3a840 new: 1
+    ?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z TABLE:00a3a840
+00c14dd0 new: 0
+00c5f150 new: 1
+    ?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z TABLE:00c5f150

@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581B33, 170 bytes; /GS frame-pointer size TU
 // (`optimize("s", on)` with /GS: the biased `lea ebp,[esp-1ACh]` frame and the cookie check @ 0x00BFE9F9 against
 // 0x0139C8A8); Ego_r.pdb ?HasScreenshots@CTCInventory@@QAE_NXZ, a thiscall member that never reads `this` (plain `ret`).
-// Callees: CTBaseSingleton<CUserProfileManager>::Get() @ 0x0040D2A0 (__fastcall), GetValidProfileName(const
+// Callees: CUserProfileManager::Get() @ 0x0040D2A0 (static __fastcall), GetValidProfileName(const
 //          CWideString&) @ 0x00406350 and NResourceDirectoryNames::GetPhotojournalDir() @ 0x0041A600 (__fastcall, hidden result in ecx), operator+(const
 //          CWideString&, const CWideString&) @ 0x0099BE70, operator+(const CWideString&, const wchar_t*) @ 0x0099BF30
 //          (x2), ~CWideString @ 0x0099B510 (x5), CAFile::StartFileScan @ 0x00999760 (static __fastcall: pattern in ecx,
@@ -31,12 +31,12 @@ namespace NResourceDirectoryNames {
 CWideString __fastcall GetPhotojournalDir();                            // 0x0041A600 ?GetPhotojournalDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (NF33: GetSaveDir is 0x0041A540)
 }
 
+// NF176 (2026-11-20, q4312): CUserProfileManager::Get respelled in place on the row's local model to the Ego_r.pdb / FableWin.pdb static
+//   __fastcall ?Get@CUserProfileManager@@SIAAV1@XZ (returns CUserProfileManager&; 107 landed rows bind it); was the CTBaseSingleton<CUserProfileManager>::Get stand-in ?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SIAAVCUserProfileManager@@XZ (template removed).
 class CUserProfileManager { public:
     unsigned char _pad_0x00[0x08];
     CWideString   ProfileName;                       // +0x08
-};
-template <class T> struct CTBaseSingleton {
-    static T& __fastcall Get();                      // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();    // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 };
 
 class CAFile {
@@ -60,7 +60,7 @@ public:
 
 bool CTCInventory::HasScreenshots()
 {
-    CUserProfileManager& profiles = CTBaseSingleton<CUserProfileManager>::Get();
+    CUserProfileManager& profiles = CUserProfileManager::Get();
     CWideString pattern = NResourceDirectoryNames::GetPhotojournalDir() + GetValidProfileName(profiles.ProfileName) + s_backslash + s_jpgMask;
     CAFile::CFileScanInfo scanInfo;
     wchar_t16 fileName[0x20C / 2];

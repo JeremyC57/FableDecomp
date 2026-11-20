@@ -1,0 +1,2 @@
+existing 0040d2a0 new= ['?Get@CUserProfileManager@@SIAAV1@XZ'] | others: {'?GFGetSaveGameDirectoryName@@YG?AVCWideString@@XZ': ['0049d4b0'], '?GetUserProfileManager@NUISystem@@YIPAUCUserProfileManager@1@XZ': ['00555cf0'], '@Dest_val_music_resolve@4': ['005bc6ed'], '?GetSoundSystem@@YGPAUCSoundSys@@H@Z': ['0088e090']}
+gate: 0 created split(s)

@@ -80,6 +80,15 @@ public:
     // ?ProcessLoadingQueue@CMeshDataBank@@QAEX_NN@Z (retail 0x00A23B00). Declaration only: no layout change.
     void ProcessLoadingQueue(bool flag, double until);                   // 0x00A23B00
 #endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_CLOSE
+    // NF176 opt-in (round 10, q3886, row 0x00A26C50 CMeshDataBank::Close): Ego_r.pdb 0x00B64430 / FableWin.pdb 0x03130530
+    // ?Close@CMeshDataBank@@UAEXXZ (the CBankFileAsync::Close override; retail 0x00A26C50 calls CloseMeshes, then jumps to
+    // CBankFileAsync::Close 0x009D58A0) and Ego_r.pdb ?CloseMeshes@CMeshDataBank@@AAEXXZ (private, retail 0x00A26900). Declarations only.
+    virtual void Close();                                                // 0x00A26C50
+private:
+    void CloseMeshes();                                                  // 0x00A26900
+public:
+#endif
 #else
 class CMeshDataBank : public CBankFile {
 public:

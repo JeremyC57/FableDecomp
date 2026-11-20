@@ -78,11 +78,15 @@ struct CVideoFrameInfo {
     long          Width;                           // +0x16c
     long          Height;                          // +0x170
 };
+// NF176 (2026-11-20, q4305): CVideoSys::Init respelled in place on the row's local model to the Ego_r.pdb / FableWin.pdb
+//   ?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z (second parameter CTexture*, as engine/CVideoSys.h and the landed caller
+//   0x006286F0 have it; this row passes a null texture); was ?Init@CVideoSys@@QAEJABVCWideString@@J_N@Z.
+class CTexture;
 class CVideoSys {                                  // 0x8c bytes
 public:
     CVideoSys();                                   // 0x00A3BC70
     void Close();                                  // 0x00A3B380
-    long Init(const CWideString& filename, long flags, bool loop);   // 0x00A3B9D0
+    long Init(const CWideString& filename, CTexture* texture, bool loop);   // 0x00A3B9D0 ?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z
     unsigned char    _pad00[0x20];
     CVideoFrameInfo* m_pFrameInfo;                 // +0x20
     long             m_24;                         // +0x24

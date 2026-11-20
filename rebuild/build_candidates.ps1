@@ -367655,8 +367655,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c5f150'
         Module = 'CImaAdpcmCodec'
-        Source = '00/c5/CImaAdpcmCodec_CalculateError_00c5f150.cpp'
-        TestSource = '00/c5/CImaAdpcmCodec_CalculateError_00c5f150_test.cpp'
+        Source = '00/c5/CImaAdpcmCodec_CalcDifference_00c5f150.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_CalcDifference_00c5f150_test.cpp'
         PassPattern = '00c5f150_TEST PASS'
     }
     [pscustomobject]@{

@@ -36766,7 +36766,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3a7d0	GetRequiredWorkspaceSize	CCompressorZlib	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\global_AddChildPrimitive_00a3a7d0.cpp
 00a3a7e0	HasStreamInput	CCompressorZlib	__thiscall	bool	1	C3DMeshInfo *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C3DMeshInfo_HasPhysicsMesh_00a3a7e0.cpp
 00a3a7f0	CompressStream	CCompressorZlib_Retail	__thiscall	ulong	3	CCompressorZlib *,void *,ulong	1	yes	accepted									
-00a3a840	DecompressStream	CCompressorZlib_Retail	__thiscall	ulong	4	CCompressorZlib *,void *,ulong,bool *	1	yes	accepted									
+00a3a840	DecompressStream	CCompressorZlib	__thiscall	ulong	4	CCompressorZlib *,void *,ulong,bool *	1	yes	accepted									
 00a3a8c0	FinishCompressStream	CCompressorZlib_Retail	__thiscall	ulong	4	CCompressorZlib *,void *,ulong,bool *	1	yes	accepted									
 00a3a930	FinishCompressStream	CCompressorZlib	__thiscall	void	1	CCompressorZlib *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CCompressorZlib_FinishCompressStream_00a3a930.cpp
 00a3a950	DecompressBlock	CCompressorZlib	__thiscall	void	5	CCompressorZlib *,uchar *,long,long,void *	1	yes	accepted									
@@ -47273,7 +47273,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5f030	CreatePcmFormat	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f070	CreateImaAdpcmFormat	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f110	IsValidImaAdpcmFormat	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
-00c5f150	CalculateError	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
+00c5f150	CalcDifference	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f2d0	EncodeSample	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f350	DecodeSample	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f3b0	EncodeM16	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									

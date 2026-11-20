@@ -17,15 +17,16 @@ public:
     ~CCharString();                                       // 0x0099EAE0
 };
 
-class CSymbolInfo {                                       // 12 bytes
-public:
-    CCharString GroupName;                                // +0x00
-    CCharString EntryName;                                // +0x04
-    long Val;                                             // +0x08
-};
-
+// NF176 (2026-11-20, q4797): CSymbolInfo nested in the row's CSymbolMap model in place, as naming wave 35c did for the sibling 0x006FC8E0
+//   (FableWin.pdb ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z, class-keyed, const); was the global CSymbolInfo
+//   (?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@@J@Z).
 class CSymbolMap {                                        // retail 0x24 bytes
 public:
+    class CSymbolInfo { public:
+        CCharString GroupName;                                // +0x00
+        CCharString EntryName;                                // +0x04
+        long Val;                                             // +0x08
+    };
     unsigned char _body[0x24];
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const;   // 0x009E5090
 };

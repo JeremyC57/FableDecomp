@@ -27,10 +27,12 @@ namespace NResourceDirectoryNames {
 CWideString __fastcall GetTattooUserDir();               // 0x0041A650 Ego_r.pdb (was GetSaveDir_0041a650)
 CWideString __fastcall GetTattooDataDir();                       // 0x0041A6A0 Ego_r.pdb (body: L"Data\\Tattoos\\"; was GetCustomTattooDir)
 }
+// NF176 (2026-11-20, q4312): CUserProfileManager::Get respelled in place on the row's local model to the Ego_r.pdb / FableWin.pdb static
+//   __fastcall ?Get@CUserProfileManager@@SIAAV1@XZ (returns CUserProfileManager&; 107 landed rows bind it); was ?Get@CUserProfileManager@@SAPAV1@XZ (cdecl, pointer).
 class CUserProfileManager { public:
     unsigned char _pad00[8];
     CWideString ProfileName;                                // +0x08
-    static CUserProfileManager* Get();                      // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();           // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 };
 class CDateAndTime { public:                                       // 28 bytes
     long Year;
@@ -239,7 +241,7 @@ void CTCHeroMorph::UpdateTattoos(CTextureLayerMap& layers)
             if (tattoo->BankIndex == -1) {
                 if (tattoo->IsInvalidCustomTattoo())
                     goto next;
-                CUserProfileManager* profiles = CUserProfileManager::Get();
+                CUserProfileManager* profiles = &CUserProfileManager::Get();
                 CWideString path = NResourceDirectoryNames::GetTattooUserDir() + GetValidProfileName(profiles->ProfileName) + L"\\"
                     + tattoo->CustomFileName.ToWideString();
                 CBankNode* found = CustomToBankIndex.find(tattoo->CustomFileName);

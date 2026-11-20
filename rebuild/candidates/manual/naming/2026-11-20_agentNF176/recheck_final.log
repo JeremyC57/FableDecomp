@@ -1,0 +1,109 @@
+addr       parity           behav  name
+00408a70   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00408a70   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00408a70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00408a70   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00408a70   RELOCATION_MATCH PASS   CUserProfileManager::SetAllTutorialsAsGiven
+0040e510   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+0040e510   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0040e510   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+0040e510   RELOCATION_MATCH PASS   CPersistTraits<CCharString>::TransferIn
+00495890   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00495890   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+  WARN leaf '?GetWorldNames@CFrontendGameComponent@@AAEXXZ (Ego_r.pdb, private; modelled public)' matches no symbol in 00495890.obj; graded the largest function
+  WARN leaf '?GetWorldNames@CFrontendGameComponent@@AAEXXZ (Ego_r.pdb, private; modelled public)' matches no symbol in 00495890.obj; graded the largest function
+00495890   RELOCATION_MATCH PASS   CFrontendGameComponent::GetWorldNames
+00502170   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+00502170   WARN SHARED_HEADER_AVAILABLE CWADBank (engine/CWADBank.h)
+00502170   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+00502170   WARN RELOC_NAME: ?GetDefaultBankBlockSize@@YAKXZ -> 00997b30 labelled '_global::ReturnConst_2048_00997b30'
+00502170   RELOCATION_MATCH PASS   CWorldMap::CreateWorldLevelWad
+00547c90   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CVideoSys (engine/CVideoSys.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+00547c90   WARN SHARED_HEADER_AVAILABLE CMovie (engine/CMovie.h)
+00547c90   RELOCATION_MATCH PASS   NUISystem::CMovie::ChangeState
+00581b33   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00581b33   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00581b33   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00581b33   RELOCATION_MATCH PASS   CTCInventory::HasScreenshots
+006fcc80   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+006fcc80   RELOCATION_MATCH PASS   NAnimationEvents::CFillEvents::operator()
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CDateAndTime (engine/CDateAndTime.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CTextureManager (engine/CTextureManager.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CTattooDef (engine/CTattooDef.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CCompositeBlendDesc (engine/CCompositeBlendDesc.h)
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CTCHeroMorph (engine/CTCHeroMorph.h)
+0071d3b0   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateTattoos
+007e3820   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+007e3820   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+007e3820   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+007e3820   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+007e3820   RELOCATION_MATCH PASS   CPersistTraits<CDefString>::TransferIn
+0083c800   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0083c800   WARN SHARED_HEADER_AVAILABLE CThingSwitch (engine/CThingSwitch.h)
+0083c800   WARN RELOC_NAME: ?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+0083c800   RELOCATION_MATCH PASS   CThingSwitch::TriggerPlayerResetWhenLeaves
+0083ca90   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0083ca90   WARN SHARED_HEADER_AVAILABLE CThingSwitch (engine/CThingSwitch.h)
+0083ca90   WARN RELOC_NAME: ?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+0083ca90   RELOCATION_MATCH PASS   CThingSwitch::SwitchTriggerPlayerOnlyOnceInArea
+0088fe00   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+0088fe00   RELOCATION_MATCH PASS   CGameScriptInterface::AddLogBookEntry
+009949f0   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::InternalReadNextSourceChunk
+00994a40   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::InternalReadUnbuffered
+00a26c50   RELOCATION_MATCH PASS   CMeshDataBank::Close
+00a3a840   RELOCATION_MATCH PASS   CCompressorZlib_Retail::DecompressStream
+  WARN leaf 'CActionSummonerLightningAttackTarget_OnMapLoadComplete' matches no symbol in 00c14dd0.obj; graded the largest function
+  WARN leaf 'CActionSummonerLightningAttackTarget_OnMapLoadComplete' matches no symbol in 00c14dd0.obj; graded the largest function
+00c14dd0   WARN RELOC_NAME: ?Step@CActionSummonerLightning_00c14dd0@@QAEXXZ -> 00c14d80 labelled '_unattributed::OnActivate_00c14d80'
+00c14dd0   WARN RELOC_NAME: ?Update@CSecond_00c14dd0@@QAEXXZ -> 00c2bca0 labelled '_unattributed::OnActivate_00c2bca0'
+00c14dd0   WARN STANDIN_LEAF ?Advance@CActionSummonerLightning_00c14dd0@@QAEXXZ (catalog _global::CActionSummonerLightningAttackTarget_OnMapLoadComplete; address-only name)
+00c14dd0   RELOCATION_MATCH PASS   _global::CActionSummonerLightningAttackTarget_OnMapLoadComplete
+00c5f150   WARN STANDIN_LEAF ?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z (catalog CImaAdpcmCodec::CalculateError; names another function)
+00c5f150   RELOCATION_MATCH PASS   CImaAdpcmCodec::CalculateError
+
+WINS: 18
+  00408a70 RELOCATION_MATCH CUserProfileManager::SetAllTutorialsAsGiven
+  0040e510 RELOCATION_MATCH CPersistTraits<CCharString>::?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z
+  00495890 RELOCATION_MATCH CFrontendGameComponent::?GetWorldNames@CFrontendGameComponent@@AAEXXZ (Ego_r.pdb, private; modelled public)
+  00502170 RELOCATION_MATCH CWorldMap::CreateWorldLevelWad
+  00547c90 RELOCATION_MATCH NUISystem::CMovie::?ChangeState@CMovie
+  00581b33 RELOCATION_MATCH CTCInventory::?HasScreenshots@CTCInventory@@QAE_NXZ
+  006fcc80 RELOCATION_MATCH NAnimationEvents::CFillEvents::??RCFillEvents@NAnimationEvents@@QAEXABVCEvent@1@@Z
+  0071d3b0 RELOCATION_MATCH CTCHeroMorph::?UpdateTattoos@CTCHeroMorph
+  007e3820 RELOCATION_MATCH CPersistTraits<CDefString>::TransferIn
+  0083c800 RELOCATION_MATCH CThingSwitch::TriggerPlayerResetWhenLeaves
+  0083ca90 RELOCATION_MATCH CThingSwitch::SwitchTriggerPlayerOnlyOnceInArea
+  0088fe00 RELOCATION_MATCH CGameScriptInterface::?AddLogBookEntry@CGameScriptInterface@@UBEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@Z
+  009949f0 RELOCATION_MATCH CCompressedMemoryDataInputStream::InternalReadNextSourceChunk
+  00994a40 RELOCATION_MATCH CCompressedMemoryDataInputStream::InternalReadUnbuffered
+  00a26c50 RELOCATION_MATCH CMeshDataBank::?Close@CMeshDataBank@@UAEXXZ
+  00a3a840 RELOCATION_MATCH CCompressorZlib::?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z
+  00c14dd0 RELOCATION_MATCH _unattributed::CActionSummonerLightningAttackTarget_OnMapLoadComplete
+  00c5f150 RELOCATION_MATCH CImaAdpcmCodec::?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z

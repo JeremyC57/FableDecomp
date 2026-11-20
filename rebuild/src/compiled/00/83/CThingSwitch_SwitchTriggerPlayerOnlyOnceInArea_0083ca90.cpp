@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083CA90, length 369 bytes (plain `ret`).
 // Callees: as the sibling SwitchTriggerPlayerOnlyMultipleTimesInArea 0x0083C690 (same TU): CThing::PeekPos() const
 //   @ 0x006A4D00, player-manager accessors @ 0x004C79F0 (const) / 0x004C7A00, CPlayerManager::GetPlayer(long) const
-//   @ 0x00449910 / non-const @ 0x004498C0, CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetPControlledCreature
+//   @ 0x00449910 / non-const @ 0x004498C0, CInitBaseClass::IsValid() const @ 0x0099A330, CPlayer::GetPControlledCreature
 //   @ 0x00487DC0, LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A, NEntityEvents::CEventTriggered(CThing&)
 //   @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail): as the sibling, plus Triggered +0xdc (Ego_r.pdb +0xf4, CThingPhysical 0x18 lower).
@@ -43,10 +43,12 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingPlayerCreature;
-class CPlayer { public:
-    bool IsInitialised() const;                         // 0x0099A330 (CInitBaseClass)
-    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
-};
+// NF176 (2026-11-20, q4080): the local CPlayer model is gone: engine/CPlayer.h (FABLE_RETAIL_PLAYER: RTTI CPlayer : CInitBaseClass,
+//   GetPControlledCreature 0x00487DC0) with engine/CInitBaseClass.h FABLE_RETAIL_CINITBASECLASS, so the 0x0099A330 call binds the
+//   Ego_r.pdb / FableWin.pdb ?IsValid@CInitBaseClass@@QBE_NXZ (was the stand-in ?IsInitialised@CPlayer@@QBE_NXZ).
+#define FABLE_RETAIL_CINITBASECLASS
+#define FABLE_RETAIL_PLAYER
+#include "engine/CPlayer.h"
 class CPlayerManager { public:
     CPlayer* GetPlayer(long number);                    // 0x004498C0
     const CPlayer* GetPlayer(long number) const;        // 0x00449910
@@ -102,7 +104,7 @@ void CThingSwitch::SwitchTriggerPlayerOnlyOnceInArea()
     area.BRY = PeekPos().Y + TriggerRadius;
     for (long i = 0; i < 4; ++i) {
         const CThing* self = this;
-        if (self->GetPlayerManager()->GetPlayer(i)->IsInitialised()) {
+        if (self->GetPlayerManager()->GetPlayer(i)->IsValid()) {
             CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetPControlledCreature());
             if (hero && area.ContainsPoint(C2DVector(hero->PeekPos().X, hero->PeekPos().Y))) {
                 ++TimesTriggered;
