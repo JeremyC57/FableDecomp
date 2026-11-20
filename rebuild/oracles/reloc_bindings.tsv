@@ -39783,3 +39783,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00b98a50	00bbc130
 ?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXPAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bbe090	00bbc130
 ??0CShaderRenderManager@@QAE@XZ	0098ab00	01223d00
+??_7?$CSpawnedFunc1@VCV_RockTrollFirstEncounterScript@NScript@@VCScriptThing@@@@6B@	012f17a8	00ec4a00
+?WatchForRockTrollHit@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z	00ec5140	00ec4a00
+?WatchForRockTrollKilled@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z	00ec5010	00ec4a00

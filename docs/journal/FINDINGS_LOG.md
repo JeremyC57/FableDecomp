@@ -1330,3 +1330,5 @@ against CODAApi.lib, or stay compiled C++?
   re-checked against the reloc_bindings spelling sets: no other split created.
 - 2026-11-20: the two nf111 CMenuEntry vtable splits are healed by landing nf117 (0x0053DFE0 ported onto engine/NUISystem_CMenuEntry.h; 0x0053DA30
   is CMenuEntry::GetDataFromDef). 0x0124662C / 0x01246604 / 0x012465FC now carry one spelling each.
+
+- 2026-11-20 (Account B p25B, 0x00EC4A00) CSpawnedFunc1's nested CScriptThing copy split, measured with the c2 inline trace: c2 compiles the forceinline ctor in its own pipe before Main (bottom-up) and expands the nested Par1 copy there (f 1.0, cost 25, score 25), and again in Main; the first by-value argument copy scores 32 (f 0.5); caller growth ~560..730 (hard reject 9000). Retail calls the nested copy (0x004ABE90) and expands the argument copy, so no /d2inlT or /d2inlS value can split them (T50..70, S15/30 tried). Mechanism unknown; the landed idiom (scoped inline_depth(0) round an explicit ctor specialization) closes it because Main inherits the ctor's own-pipe decision. No landed row of the family calls the nested copy without a pragma or flag.

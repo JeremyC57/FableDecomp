@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ec4a00   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ec4a00 RELOCATION_MATCH NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll::?Main@CRTFE_RockTroll@CV_RockTrollFirstEncounterScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Main_00ec4a00
