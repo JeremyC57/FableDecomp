@@ -1,0 +1,3 @@
+# recheck after landing nf133: 237 rows = gate referencing rows (12 targets) + renamed rows (no header changes)
+good 236 bad 1 (0x00BF4570: pre-existing DIFFER, shown with HEAD headers in landing nf127, logs/differ_head_check.txt there)
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground

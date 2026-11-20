@@ -1,3 +1,5 @@
+// NF133 (q4727): the row now defines the shared-header member ?EnableVertexShaders@CShaderRenderManager@@QAEXXZ on engine/CShaderRenderManager.h, so this test no longer links it:
+// the host model below carries the same body (the old stand-in names kept as test-local models). PassPattern unchanged.
 #include <stdio.h>
 #include <string.h>
 
@@ -34,6 +36,16 @@ void CDisplayEngineVertexShaderView::SetVertexShaderMode(bool enabled)
 {
     ++g_SetModeCalls;
     g_LastMode = enabled;
+}
+
+void CShaderRenderManagerEnableVertexView::EnableVertexShaders()
+{
+    vertexShadersEnabled390 = 1;
+    currentVertexShader1D8 = 0;
+    vertexShaderDirty392 = 0;
+    displayEngine1D0->vertexShaderDisabled3CFD = 0;
+    displayEngine1D0->SetVertexShaderMode(true);
+    shaderStateMask3D8 = 0xFFFFFFFF;
 }
 
 int main()

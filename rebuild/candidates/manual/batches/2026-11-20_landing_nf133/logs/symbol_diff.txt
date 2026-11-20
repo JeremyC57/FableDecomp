@@ -1,0 +1,23 @@
+00987fe0 new: 1
+    ?EnableVertexShaders@CShaderRenderManager@@QAEXXZ TABLE:00987fe0
+009880e0 new: 1
+    ?DisableVertexShaders@CShaderRenderManager@@QAEXXZ TABLE:009880e0
+009b08c0 new: 0
+009e50c0 new: 1
+    ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z TABLE:009e50c0
+009e9080 new: 1
+    ?TransferIn@?$CPersistTraits@E@@QAEXAAVCPersistContext@@AAVCStringParser@@AAE@Z TABLE:009e9080
+009fe620 new: 1
+    ?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z TABLE:009fe620
+00a02220 new: 0
+00a04090 new: 1
+    ?SetAsJoystickButtonPressed@CInputEvent@@QAEXJMABVC2DVector@@N@Z TABLE:00a04090
+00a058c0 new: 1
+    ?RealiseRenderState@CRenderStateManager@@QAEXXZ TABLE:00a058c0
+00a0aa20 new: 1
+    ?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z TABLE:00a0aa20
+00a62e20 new: 1
+    ??_GCMovableResourceMemoryPool@@UAEPAXI@Z
+00b26360 new: 0
+00b2c8e0 new: 0
+00b4f510 new: 0

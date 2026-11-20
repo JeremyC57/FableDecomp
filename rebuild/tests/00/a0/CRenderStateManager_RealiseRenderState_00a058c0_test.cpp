@@ -1,3 +1,7 @@
+// Behaviour test for 0x00A058C0 CRenderStateManager::RealiseRenderState (host model). NF133 (q4660): the row now defines the
+// shared-header member ?RealiseRenderState@CRenderStateManager@@QAEXXZ, whose state lists are private, so this test no longer links
+// the row: the host model below carries the same loop (queued states only, desired != current, dispatch by StateType 1/2/3,
+// current = desired, dirty cleared, list emptied). PassPattern unchanged.
 #include <stdio.h>
 
 #include "rebuild_abi.h"
@@ -58,6 +62,33 @@ struct CRenderStateManagerRealiseView
 
     void RealiseRenderState();
 };
+
+void CRenderStateManagerRealiseView::RealiseRenderState()
+{
+    for (fable_i32 index = 0; index < StateUpdateListSize280C; ++index)
+    {
+        CRenderStateInfo* state = StateUpdateList2008[index];
+        fable_u32 desired = state->DesiredState;
+        state->DirtyListFlag = 0;
+        if (desired != state->CurrentState)
+        {
+            switch (state->StateType)
+            {
+            case 1:
+                PD3DDevice0004->vtable->SetRenderState(PD3DDevice0004, state->StateParam, desired);
+                break;
+            case 2:
+                PD3DDevice0004->vtable->SetTextureStageState(PD3DDevice0004, state->TextureStage, state->StateParam, desired);
+                break;
+            case 3:
+                PD3DDevice0004->vtable->SetSamplerState(PD3DDevice0004, state->TextureStage, state->StateParam, desired);
+                break;
+            }
+            state->CurrentState = state->DesiredState;
+        }
+    }
+    StateUpdateListSize280C = 0;
+}
 
 struct ObservedStateCall
 {

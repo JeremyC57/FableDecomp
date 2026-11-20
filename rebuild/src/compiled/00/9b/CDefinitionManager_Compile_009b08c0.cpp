@@ -22,7 +22,7 @@
 #undef CDefinitionManager
 #include "engine/CDataInputStream.h"
 #include "engine/CDataOutputStream.h"
-extern "C" double __fastcall GFGetTime();                // 0x009E1BC0
+#include "engine/GFGetTime.h"                          // 0x009E1BC0 ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb; NF133 q4294)
 struct CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300

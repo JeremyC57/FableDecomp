@@ -8,7 +8,10 @@
 // kept) then the store.
 // Layout: Ego_r.pdb CGraphicInfoFrame (FrameNum +4, Data +8, GraphicInfo +0x0c) and CGraphicInfo (Frames +0x28);
 // the header's flat-animated bit is +0x12 bit 0.
-// Leaf: ?BeginLoading@CGraphicInfoFrame@@
+// Leaf: ?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z
+// Respell (NF133, q4938): const member, as Ego_r.pdb 0x00B58C50 / FableWin.pdb 0x03127080 ?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z and
+//   the 11 landed callers bind it (engine/CGraphicInfoFrame.h FABLE_RETAIL_CGRAPHICINFOFRAME_BEGINLOADING); Data is mutable in the PDB
+//   class (header note), which is how the const member creates the frame data. In-place respelling of the row's existing local model.
 void* operator new(unsigned int size);             // 0x00BFEA1A
 class CGraphicInfoFrame;
 template <class T> class CIVCountedPointer { public:
@@ -43,9 +46,9 @@ class CGraphicInfoFrame { public: class CFrameData; public:
     long                          _pad00;
     unsigned short                FrameNum;        // +0x04
     signed char                   SmallMipmapLevel;   // +0x06
-    CIVCountedPointer<CFrameData> Data;            // +0x08
+    mutable CIVCountedPointer<CFrameData> Data;    // +0x08
     CGraphicInfo*                 GraphicInfo;     // +0x0c
-    void BeginLoading(unsigned long a, unsigned long b);
+    void BeginLoading(unsigned long a, unsigned long b) const;
 };
 class CGraphicInfoFrame::CFrameData { public:                                // CGraphicInfoFrame::CFrameData (0x44 bytes): an intrusively counted pointee
     virtual void v00();
@@ -58,9 +61,9 @@ class CGraphicInfoFrame::CFrameData { public:                                // 
 typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
 
 
-void CGraphicInfoFrame::BeginLoading(unsigned long a, unsigned long b)
+void CGraphicInfoFrame::BeginLoading(unsigned long a, unsigned long b) const
 {
-    CGraphicInfoFrame* frame = this;
+    const CGraphicInfoFrame* frame = this;
     while (frame->FrameNum > 0 && frame->GraphicInfo->Header.IsFlatAnimatedGraphic)
         frame = frame->GraphicInfo->Frames;
     if (!frame->Data.Data)

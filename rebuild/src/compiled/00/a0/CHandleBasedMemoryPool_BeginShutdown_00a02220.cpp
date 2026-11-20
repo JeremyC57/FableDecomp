@@ -21,7 +21,8 @@ extern "C" __declspec(dllimport) int  __stdcall TryEnterCriticalSection(_RTL_CRI
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);      // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);      // IAT 0x0143FE10
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);                         // IAT 0x0143FE1C
-double GFGetTime();                                // 0x009E1BC0
+#include "rebuild_abi.h"
+#include "engine/GFGetTime.h"                          // 0x009E1BC0 ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb; NF133 q4294)
 class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10

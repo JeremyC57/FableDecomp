@@ -19,7 +19,8 @@
 //   CHandleBasedMemoryPool.h overlay opt-in _ALLOCATE, Lock / Unlock from _LOCK); the local CWideString / CBaseClassNonCopyable moved to their headers.
 #include "fable_compiler.h"
 #include <stdlib.h>
-extern "C" double __fastcall GFGetTime();               // 0x009E1BC0
+#include "rebuild_abi.h"
+#include "engine/GFGetTime.h"                          // 0x009E1BC0 ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb; NF133 q4294)
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
 
 #include "engine/CCountedPointer.h"

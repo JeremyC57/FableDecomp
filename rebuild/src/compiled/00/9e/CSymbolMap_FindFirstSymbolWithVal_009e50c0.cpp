@@ -7,6 +7,11 @@
 // loop-invariant block load across a call reproduces with the end and the key block in locals read inside the
 // guard of a bottom-tested loop (a for-loop with the key local hoists that load above the guard).
 // Model: PDB CSymbolMap (+4 SLONGMap, the retail 12-byte vector), pair<CCharString, CSymbolInfo>.
+// Leaf: ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z
+// Respell (NF133, q4688): CSymbolInfo is nested in CSymbolMap and class-keyed, as FableWin.pdb 0x03093EF0 / Ego_r.pdb 0x00B36A50
+//   ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z and engine/CSymbolMap.h (FABLE_RETAIL_CSYMBOLMAP) spell
+//   it; the four landed callers bind that spelling. In-place respelling of the row's existing local CSymbolInfo (was a global struct,
+//   leaf PBUCSymbolInfo@@); layout and body unchanged.
 #include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
@@ -29,16 +34,7 @@ static FABLE_FORCEINLINE bool SameText(CCharStringData* a, CCharStringData* b)
     return Compare_00411570(a->m_pChars, b->m_pChars) == 0;
 }
 
-struct CSymbolInfo {                               // PDB CSymbolMap::CSymbolInfo, 12 bytes
-    CCharString GroupName;                         // +0x00
-    CCharString EntryName;                         // +0x04
-    long        Val;                               // +0x08
-};
-
-struct SSymbolPair {                               // std::pair<CCharString, CSymbolInfo>, 16 bytes
-    CCharString first;                             // +0x00
-    CSymbolInfo second;                            // +0x04
-};
+struct SSymbolPair;
 
 struct CSymbolVectorMap {                          // the retail 12-byte vector first
     SSymbolPair* m_pFirst;                         // +0x00
@@ -47,12 +43,22 @@ struct CSymbolVectorMap {                          // the retail 12-byte vector 
 };
 
 class CSymbolMap { public:
+    class CSymbolInfo { public:                    // PDB CSymbolMap::CSymbolInfo (nested, class-keyed), 12 bytes
+        CCharString GroupName;                     // +0x00
+        CCharString EntryName;                     // +0x04
+        long        Val;                           // +0x08
+    };
     void*            _padding_;                    // +0x00
     CSymbolVectorMap SLONGMap;                     // +0x04
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;
 };
 
-const CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(const CCharString& group, long value) const
+struct SSymbolPair {                               // std::pair<CCharString, CSymbolMap::CSymbolInfo>, 16 bytes
+    CCharString             first;                 // +0x00
+    CSymbolMap::CSymbolInfo second;                // +0x04
+};
+
+const CSymbolMap::CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(const CCharString& group, long value) const
 {
     const SSymbolPair* end = SLONGMap.m_pLast;
     const SSymbolPair* it = SLONGMap.m_pFirst;

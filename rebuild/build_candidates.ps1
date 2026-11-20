@@ -63104,8 +63104,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009e9080'
         Module = 'CPersistTraits<unsigned_char>'
-        Source = '00/9e/CPersistTraitsunsignedchar_TransferIn_009e9080.cpp'
-        TestSource = '00/9e/CPersistTraitsunsignedchar_TransferIn_009e9080_test.cpp'
+        Source = '00/9e/CPersistTraits_TransferIn_009e9080.cpp'
+        TestSource = '00/9e/CPersistTraits_TransferIn_009e9080_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -68860,9 +68860,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a0aa20'
-        Module = '_global'
-        Source = '00/a0/E2_E2_00a0aa20.cpp'
-        TestSource = '00/a0/E2_E2_00a0aa20_test.cpp'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_EnableXBoxShaderConstants_00a0aa20.cpp'
+        TestSource = '00/a0/CRenderManagerCore_EnableXBoxShaderConstants_00a0aa20_test.cpp'
         PassPattern = 'OK_00a0aa20'
     }
     [pscustomobject]@{
@@ -203652,8 +203652,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a04090'
         Module = 'CInputEvent'
-        Source = '00/a0/CInputEvent_SetAsJoystickButton1_00a04090.cpp'
-        TestSource = '00/a0/CInputEvent_SetAsJoystickButton1_00a04090_test.cpp'
+        Source = '00/a0/CInputEvent_SetAsJoystickButtonPressed_00a04090.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsJoystickButtonPressed_00a04090_test.cpp'
         PassPattern = '00a04090_TEST PASS'
     }
     [pscustomobject]@{

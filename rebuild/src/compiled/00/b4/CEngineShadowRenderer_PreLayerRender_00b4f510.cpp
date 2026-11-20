@@ -1,7 +1,9 @@
 // CEngineShadowRenderer::PreLayerRender(const CEngineComponentRenderParams& params) -- before the shadow-buffer layer (2), when a shadow technique is active: open the shadow capture block, set the depth-bias states from the shadow renderer's z offsets, bind the shadow render target and clear it to white (colour only for technique 1, which also clears +0x2840; colour+depth otherwise), set the window to the shadow texture's size, set states +0x28cc=1 / +0x28e0=0x80, an identity view and the shadow projection
 // Leaf: PreLayerRender
+// Respell (NF133, q4290): ClearRenderTarget takes the colour by const reference, as Ego_r.pdb 0x00B23BC0 / FableWin.pdb 0x0301E730
+//   ?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z and the four other landed callers bind it (in place in the row's local model).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4F510, length 976 bytes, `ret 4` (virtual).
-// Callees: CDisplayManager::SetRenderTarget 0x009BF160 / ClearRenderTarget(const CRGBColour*, ulong) 0x009BE420 on 0x01436E1C,
+// Callees: CDisplayManager::SetRenderTarget 0x009BF160 / ClearRenderTarget(const CRGBColour&, ulong) 0x009BE420 on 0x01436E1C,
 //   CTexture::GetDimensions(long) 0x009F9DB0 (C2DExtentsI by value), CRenderManagerCore::SetAWindow(const C2DBoxF*) 0x00A0AA80,
 //   CShaderRenderManager::SetViewTransform 0x00988350 / SetProjectionTransform 0x00988540 on 0x01436E14.
 // The z offsets are read through the shadow renderer global 0x01436E60, not `this`.
@@ -36,7 +38,7 @@ class CRGBColour { public:
 class CRenderTarget;
 class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);        // 0x009BF160
-    void ClearRenderTarget(const CRGBColour* colour, unsigned long flags);   // 0x009BE420
+    void ClearRenderTarget(const CRGBColour& colour, unsigned long flags);   // 0x009BE420 (Ego_r.pdb / FableWin.pdb: by const reference)
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 class CShaderRenderManager {
@@ -76,7 +78,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
             white.G = 0xff;
             white.B = 0xff;
             white.A = 0xff;
-            NEngineInternal::GPDisplayManager->ClearRenderTarget(&white, 1);
+            NEngineInternal::GPDisplayManager->ClearRenderTarget(white, 1);
             NEngineInternal::GPRenderManager->SetColourWriteEnable(false);
         } else {
             CRGBColour white;
@@ -84,7 +86,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
             white.G = 0xff;
             white.B = 0xff;
             white.A = 0xff;
-            NEngineInternal::GPDisplayManager->ClearRenderTarget(&white, 5);
+            NEngineInternal::GPDisplayManager->ClearRenderTarget(white, 5);
         }
         C2DBoxF window;
         SetWindowSize(window, reinterpret_cast<const CTexture*>(ShadowBufferTexture)->GetWidth(0),

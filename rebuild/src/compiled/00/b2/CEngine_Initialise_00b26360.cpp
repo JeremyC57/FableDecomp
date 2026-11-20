@@ -134,7 +134,7 @@ namespace NEngineInternal { extern CEngineLightingManager* GPLightingManager; } 
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }                     // 0x01436EA0
 extern CEngineLandscapeRenderer*                g_LandscapeRenderer_01436EA8;        // 0x01436EA8
 extern CEngineSurfaceCompositionManager*        g_pEngineSurfaceCompositionManager;  // 0x01436EAC
-extern "C" double __fastcall GFGetTime();                              // 0x009E1BC0
+#include "engine/GFGetTime.h"                          // 0x009E1BC0 ?GFGetTime@@YINXZ (Ego_r.pdb / FableWin.pdb; NF133 q4294)
 
 template <class T> bool CDefinitionManager::GetDef(const CCharString& name, long index, CDefPointer<const T>* def) const
 {

@@ -1,0 +1,64 @@
+addr       parity           behav  name
+00987fe0   WARN RELOC_NAME: ?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z -> 00a0aa20 labelled '_global::Nop_ret4_00a0aa20'
+00987fe0   RELOCATION_MATCH PASS   CShaderRenderManager::EnableVertexShaders
+009880e0   WARN RELOC_NAME: ?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z -> 00a0aa20 labelled '_global::Nop_ret4_00a0aa20'
+009880e0   RELOCATION_MATCH PASS   CShaderRenderManager::DisableVertexShaders
+009b08c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream (engine/CFileDataInputStream.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009b08c0   RELOCATION_MATCH PASS   CDefinitionManager::Compile
+009e50c0   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+009e50c0   RELOCATION_MATCH PASS   CSymbolMap::FindFirstSymbolWithVal
+009e9080   RELOCATION_MATCH PASS   CPersistTraits<unsigned_char>::TransferIn
+009fe620   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+009fe620   WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)
+009fe620   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame (engine/CGraphicInfoFrame.h)
+009fe620   RELOCATION_MATCH PASS   CGraphicInfoFrame::BeginLoading
+00a02220   WARN SHARED_HEADER_AVAILABLE CMemoryAllocator (engine/CMemoryAllocator.h)
+00a02220   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00a02220   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a02220   RELOCATION_MATCH PASS   CHandleBasedMemoryPool::BeginShutdown
+00a04090   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a04090   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a04090   WARN STANDIN_LEAF ?SetAsJoystickButtonPressed@CInputEvent@@QAEXJMABVC2DVector@@N@Z (catalog CInputEvent::SetAsJoystickButton1; names another function)
+00a04090   MATCH            PASS   CInputEvent::SetAsJoystickButton1
+00a058c0   MATCH            PASS   CRenderStateManager::RealiseRenderState
+00a0aa20   MATCH            PASS   _global::Nop_ret4_00a0aa20
+00a62e20   RELOCATION_MATCH PASS   CMovableResourceMemoryPool::CMovableResourceMemoryPool
+00b26360   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b26360   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b26360   WARN RELOC_NAME: ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B -> 01436e24 labelled 'g_pEngineEnvironmentDef'
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CCompositeSurfaceCache (engine/CCompositeSurfaceCache.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager (engine/CEngineSurfaceCompositionManager.h)
+00b2c8e0   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager::CopyIntermediateBank
+00b4f510   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00b4f510   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b4f510   WARN SHARED_HEADER_AVAILABLE CMatrix4x4 (engine/CMatrix4x4.h)
+00b4f510   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00b4f510   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b4f510   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b4f510   WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams (engine/CEngineComponentRenderParams.h)
+00b4f510   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b4f510   RELOCATION_MATCH PASS   CEngineShadowRenderer::PreLayerRender
+
+WINS: 14
+  00987fe0 RELOCATION_MATCH CShaderRenderManager::?EnableVertexShaders@CShaderRenderManager@@QAEXXZ
+  009880e0 RELOCATION_MATCH CShaderRenderManager::?DisableVertexShaders@CShaderRenderManager@@QAEXXZ
+  009b08c0 RELOCATION_MATCH CDefinitionManager::?Compile@CDefinitionManager@@QAEXXZ
+  009e50c0 RELOCATION_MATCH CSymbolMap::?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z
+  009e9080 RELOCATION_MATCH CPersistTraits<unsigned_char>::?TransferIn@?$CPersistTraits@E@@QAEXAAVCPersistContext@@AAVCStringParser@@AAE@Z
+  009fe620 RELOCATION_MATCH CGraphicInfoFrame::?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z
+  00a02220 RELOCATION_MATCH CHandleBasedMemoryPool::BeginShutdown
+  00a04090 MATCH CInputEvent::?SetAsJoystickButtonPressed@CInputEvent@@QAEXJMABVC2DVector@@N@Z
+  00a058c0 MATCH CRenderStateManager::?RealiseRenderState@CRenderStateManager@@QAEXXZ
+  00a0aa20 MATCH _global::?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z
+  00a62e20 RELOCATION_MATCH CMovableResourceMemoryPool::??0CMovableResourceMemoryPool@@QAE@XZ
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b2c8e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::CopyIntermediateBank
+  00b4f510 RELOCATION_MATCH CEngineShadowRenderer::PreLayerRender

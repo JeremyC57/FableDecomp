@@ -35706,7 +35706,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a04000	SetAsMouseWheel	CInputEvent	__thiscall	void	4	CInputEvent *,EInputKey,double,double	1	yes	accepted									
 00a04030	SetAsJoystickPosition1	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a04060	SetAsJoystickPosition2	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
-00a04090	SetAsJoystickButton1	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
+00a04090	SetAsJoystickButtonPressed	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a040d0	SetAsJoystickButtonHeld	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a04110	SetAsJoystickButton3	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector *,double	1	yes	accepted									
 00a04160	GetChecksum	CInputEvent	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
@@ -35751,7 +35751,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a0a940	Init	CRenderManagerCore	__thiscall	void	2	CRenderManagerCore *,IDirect3DDevice9 *	1	yes	accepted									
 00a0a9d0	Uninit	CRenderManagerCore	__thiscall	void	1	CRenderManagerCore *	1	yes	accepted									
 00a0aa10	SetMaterial	CRenderManagerCore	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa10.cpp
-00a0aa20	Nop_ret4_00a0aa20	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa20.cpp
+00a0aa20	EnableXBoxShaderConstants	CRenderManagerCore	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa20.cpp
 00a0aa30	SetVertexFormat	CRenderManagerCore	__thiscall	void	2	CRenderManagerCore *,ulong	1	yes	accepted									
 00a0aa60	GetMember_byte0x3a54_00a0aa60	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp
 00a0aa70	Nop_ret8_00a0aa70	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a0aa70.cpp

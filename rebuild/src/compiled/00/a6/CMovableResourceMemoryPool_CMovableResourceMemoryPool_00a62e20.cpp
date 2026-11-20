@@ -1,24 +1,17 @@
-// CMovableResourceMemoryPool::CMovableResourceMemoryPool() -- base CEnginePrimitiveTypeInfo() then this class's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A62E20, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CEnginePrimitiveTypeInfo::CEnginePrimitiveTypeInfo ; mov dword ptr [esi],offset CMovableResourceMemoryPool::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x00A02D20 runs, then the compiler stores this class's vtable (0x0129D6A0
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
-// bodies of this shape.
-class CEnginePrimitiveTypeInfo { public:
-    virtual void v00();
-    CEnginePrimitiveTypeInfo();                           // 0x00A02D20
-};
-
-class CMovableResourceMemoryPool : public CEnginePrimitiveTypeInfo { public:
-    virtual void v00();                    // this class has its own vtable
-    CMovableResourceMemoryPool();
-};
+// CMovableResourceMemoryPool::CMovableResourceMemoryPool() -- the CHandleBasedMemoryPool base, then this class's vtable
+// Leaf: ??0CMovableResourceMemoryPool@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A62E20, 18 bytes: push esi ; mov esi,ecx ; call CHandleBasedMemoryPool::CHandleBasedMemoryPool
+//   0x00A02D20 ; mov [esi],offset CMovableResourceMemoryPool::`vftable' (0x0129D6A0) ; mov eax,esi ; pop esi ; ret.
+// Identity: Ego_r.pdb 0x00BDE5F0 / FableWin.pdb 0x03385E10 ??0CMovableResourceMemoryPool@@QAE@XZ; base CHandleBasedMemoryPool from the shared
+//   engine/CMovableResourceMemoryPool.h (raw PDB bases). Port (NF133, q4730): landed earlier as one of the generated bodies of this shape
+//   with a made-up CEnginePrimitiveTypeInfo base, which bound ??0CEnginePrimitiveTypeInfo@@QAE@XZ (the real constructor of that class is
+//   0x00B8FAA0) to 0x00A02D20; now the base call binds Ego_r.pdb / FableWin.pdb ??0CHandleBasedMemoryPool@@QAE@XZ, as the re-authored
+//   sibling 0x00A148D0 CAsyncLoadingMemoryPool does.
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL
+#define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
+#include "engine/CMovableResourceMemoryPool.h"
 
 CMovableResourceMemoryPool::CMovableResourceMemoryPool()
-    : CEnginePrimitiveTypeInfo()
+    : CHandleBasedMemoryPool()
 {
 }
