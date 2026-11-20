@@ -39513,3 +39513,5 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?Reset@?$CCountedPointer@VCNavQuadTree@@@@QAEXPAVCNavQuadTree@@@Z	00a16640	00a156d0
 ?SetUpMapStructure@CNavQuadTree@@QAEXABVC2DVector@@MMJ@Z	00a762f0	00a156d0
 ?insert@?$list@VCNavQuadTreeMap@@@@QAE?AU?$_List_iterator@VCNavQuadTreeMap@@@@U2@@Z	00a17480	00a156d0
+?GetAttackerProngSelectionCompareValue@?A0xef3322dc@@YIMABVC3DVector@@000@Z	006e7f00	006f2de0
+?GetAttackerProngSelectionCurrentWeaponBaseCompareValue@?A0xef3322dc@@YIMABVCThing@@_N@Z	006e9f60	006f2de0

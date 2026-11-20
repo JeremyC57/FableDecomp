@@ -176,7 +176,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006eb700	CCombatManager	GetBestEnemyForCombatant	416	parked	DIFFER(421v411)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/006eb700.cpp	original
 006ebf70	CCombatRing	AssignAttackersToRing	1040	parked	DIFFER(1022v1026)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/006ebf70.cpp	original
 006f2c00	CAttackerPositionEvaluator	CAttackerPositionEvaluator::EvaluateAttacker	480	parked	DIFFER(463v468)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/006f2c00.cpp	original
-006f2de0	CGetBestAttackerForProng	operator()	384	reserved (acctB p25H, 2026-11-20)	DIFFER(376v375)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/006f2de0.cpp	original
 006fa4e0	CManager	Load	1456	parked	DIFFER(1419v1444)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/006fa4e0.cpp	original
 006fda20	_global	CGameCameraBase_TracePhysics	832	parked	DIFFER(810v819)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006fda20.cpp	original
 00700ae0	COpinionReactionManager	GetOpinions	1328	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00700ae0.cpp	original
