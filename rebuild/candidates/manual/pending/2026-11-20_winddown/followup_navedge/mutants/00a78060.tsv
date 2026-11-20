@@ -1,0 +1,8 @@
+# row-source mutants (mut.py: the test links the mutated row object)
+src	1	&region == FirstRegion ? *SecondRegion : *FirstRegion	&region == FirstRegion ? *FirstRegion : *SecondRegion
+src	1	if (--NumberOfConnections == 0) {	if (--NumberOfConnections == 1) {
+src	1	            SecondRegion->RemoveConnectionFromConnectionList(this);\n	
+src	1	FirstRegion->RemoveConnectionFromConnectionList(this);	SecondRegion->RemoveConnectionFromConnectionList(this);
+src	1	GetRegionConnectedTo(*this) == &region) {	GetRegionConnectedTo(region) == &region) {
+src	1	            pconnection->RemoveConnection();\n            return;	            pconnection->RemoveConnection();
+src	1	if (--NumberOfConnections == 0) {	if (NumberOfConnections-- == 0) {

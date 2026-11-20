@@ -82,6 +82,13 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  C2DBoxF(const class C2DVector& centre,float radius);
  class C2DBoxI ToC2DBoxI() const;                                       // 0x00A55A30
 #endif
+#ifdef FABLE_RETAIL_C2DBOXF_MOVE
+ // Nested opt-in (hand3c3, row 0x0041AFA0 NUISystem::CSprite::Draw): Ego_r.pdb / FableWin.pdb / Ego_d.pdb
+ // ?Move@C2DBoxF@@QAEXABVC2DVector@@@Z (parameter `pos`; four statements in the Ego_d line table), an inline header function whose
+ // out-of-line COMDAT copy is 0x0041A810 (landed; CMovie::Draw calls it) and which CSprite::Draw expands in place
+ // (0x0041B141..0x0041B16F). Body follows the class.
+ void Move(const class C2DVector& pos);
+#endif
 #ifdef FABLE_RETAIL_C2DBOXF_SETTERS
  // Nested opt-in (wfE9-9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): FableWin.pdb ?SetTLPos@C2DBoxF@@QAEXABVC2DVector@@@Z,
  // ?SetWidth@C2DBoxF@@QAEXM@Z, ?SetHeight@C2DBoxF@@QAEXM@Z (FableWin 0x020DF960 / 0x020DF990 / 0x020DF9C0, emitted right after
@@ -123,6 +130,16 @@ FABLE_FORCEINLINE C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(
 #else
 inline C2DBoxF::C2DBoxF(const C2DVector& tl,const C2DVector& br):TLX(tl.X),TLY(tl.Y),BRX(br.X),BRY(br.Y){}
 #endif
+#endif
+#if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_MOVE)
+#include "engine/C2DVector.h"
+inline void C2DBoxF::Move(const C2DVector& pos)
+{
+    BRX += pos.X - TLX;
+    BRY += pos.Y - TLY;
+    TLX = pos.X;
+    TLY = pos.Y;
+}
 #endif
 #if defined(FABLE_RETAIL_C2DBOXF) && defined(FABLE_RETAIL_C2DBOXF_SETTERS) && !defined(FABLE_RETAIL_C2DBOXF_SETTLPOS)
 #include "engine/C2DVector.h"

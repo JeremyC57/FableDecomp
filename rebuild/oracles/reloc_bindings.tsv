@@ -39869,3 +39869,4 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ??1CDataStream@@UAE@XZ	00993b10	009ff590
 ?Load@CGraphicHeader@CGraphicDataBank@@QAEXAAVCDataInputStream@@@Z	009fd160	009ff590
 ?push_back@?$CArray@VCGraphicInfo@@@@QAEXXZ	00a01650	009ff590
+??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@AAVCTexture@@W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@6@Z	0041bf60	0041afa0

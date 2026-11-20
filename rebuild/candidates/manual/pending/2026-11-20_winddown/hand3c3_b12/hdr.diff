@@ -1,0 +1,107 @@
+--- /home/user/FableDecomp/rebuild/include/engine/CTCBerserk.h	2026-11-13 08:07:19.182365235 +0000
++++ hdr/engine/CTCBerserk.h	2026-11-20 06:37:43.855897761 +0000
+@@ -44,6 +44,14 @@
+     virtual bool HasFrameUpdate() const;  // slot 8, 0x0078DAF0
+ public:
+ #endif
++#ifdef FABLE_RETAIL_CTCBERSERK_FRAMEUPDATE
++    // Nested opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?FrameUpdate@CTCBerserk@@UAEXXZ
++    // (CTCBase slot 9, retail 0x0078D250) and the public ?CleanupAbility@CTCBerserk@@QAEX_N@Z (out of line at 0x0078CD80: FrameUpdate
++    // pushes 0 and calls it at 0x0078D7CE, CancelForCutscene 0x0078D210 pushes 1). Declarations only, no layout change.
++public:
++    virtual void FrameUpdate();                                         // slot 9, 0x0078D250
++    void CleanupAbility(bool in_cutscene);                              // 0x0078CD80
++#endif
+ };
+ FABLE_STATIC_ASSERT(sizeof(CTCBerserk)==0x74);
+ #else
+--- /home/user/FableDecomp/rebuild/include/engine/CCreatureAction_ReleaseStrengthBerserk.h	2026-11-13 08:07:19.158365234 +0000
++++ hdr/engine/CCreatureAction_ReleaseStrengthBerserk.h	2026-11-20 06:37:43.856122809 +0000
+@@ -6,6 +6,20 @@
+ // Retail evidence: 0 trusted landed function(s); reconciliation clean.
+ // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+ // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
++#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
++// Retail opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): the polymorphic retail class, RTTI
++// .?AVCCreatureAction_ReleaseStrengthBerserk@@ : CCombatActionBase (retail 0x114, no members of its own; vtable 0x012874EC).
++// Ego_r.pdb / Ego_d.pdb ??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z (out of line at 0x008E68E0; the
++// creature by reference); the destructor is implicit (FrameUpdate destroys its temporary through ~CCombatActionBase 0x0062E900,
++// 0x0078D28A). Needs engine/CCombatActionBase.h's opt-ins of the including row. The generated opaque model stays in the #else.
++#include "engine/CCombatActionBase.h"
++class CThingCreatureBase;
++class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase {
++public:
++    CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase& creature);   // 0x008E68E0
++};
++FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
++#else
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
+@@ -30,4 +44,5 @@
+ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
+ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ReleaseStrengthBerserk, __vftable) == 0x0);
+ 
++#endif // FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
+ #endif // FABLE_ENGINE_CCREATUREACTION_RELEASESTRENGTHBERSERK_H
+--- /home/user/FableDecomp/rebuild/include/engine/CTCOpinionSource.h	2026-11-17 11:03:21.434915021 +0000
++++ hdr/engine/CTCOpinionSource.h	2026-11-20 06:37:43.856165309 +0000
+@@ -39,6 +39,11 @@
+     bool IsReactNonstop() const { return ReactNonstopFlag; }
+     bool PeekUseNavLineOfSight() const { return UseNavLineOfSight; }
+ #endif
++#ifdef FABLE_RETAIL_CTCOPINIONSOURCE_SETREACTNONSTOP
++    // Retail opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): Ego_d.pdb ?SetReactNonstop@CTCOpinionSource@@QAEX_N@Z, inline in
++    // retail (FrameUpdate stores 1 to +0x77 of the attached berserk opinion source in place, 0x0078D337). No layout change.
++    void SetReactNonstop(bool value) { ReactNonstopFlag = value; }
++#endif
+ private:
+     unsigned long    DefStack_[3];                       // +0x0c std::vector<long> DefStack (retail STLport, 12 bytes)
+     bool             UseNavLineOfSight;                  // +0x18
+--- /home/user/FableDecomp/rebuild/include/engine/CTCHeroMorph.h	2026-11-19 17:56:30.516709132 +0000
++++ hdr/engine/CTCHeroMorph.h	2026-11-20 06:37:43.856246218 +0000
+@@ -44,6 +44,12 @@
+     void AddTattoo(CDefPointer<const CThingBaseDef>& tattoo_thing);    // 0x0071D940
+     void AddTattoo(long tattoo_def_index);                              // 0x0071DA70
+ #endif
++#ifdef FABLE_RETAIL_CTCHEROMORPH_SETBERSERKSKIN
++    // Nested opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): FableWin.pdb / Ego_d.pdb ?SetBerserkSkin@CTCHeroMorph@@QAEXM@Z,
++    // out of line in retail at 0x0071BEE0 (landed; FrameUpdate calls it with the morph in ecx at 0x0078D66D / 0x0078D856).
++    // Declaration only.
++    void SetBerserkSkin(float berserk);                                 // 0x0071BEE0
++#endif
+ #ifdef FABLE_RETAIL_CTCHEROMORPH_TATTOONAMES
+     // Nested opt-in (chunk 4006 / acctC agentC1, rows 0x005D1F0C / 0x005CE0E6 CTCInventoryStats::ConstructPersonalityListPC /
+     // ConstructPersonalityList): Ego_r.pdb / FableWin.pdb ?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@
+--- /home/user/FableDecomp/rebuild/include/engine/CRGBColour.h	2026-11-19 17:56:30.512709132 +0000
++++ hdr/engine/CRGBColour.h	2026-11-20 06:43:46.836674578 +0000
+@@ -134,6 +134,13 @@
+     // (FableWin 0x02188AA0: GFGetInterpolatedColour(*this, col, GFFloatToLongNear(interp * 256)); Ego_d.pdb names col / interp; FableWin's literal is a double, retail's a
+     // float 0x0125B240); inline in retail (0x0066CE21..0x0066CE67, no out-of-line copy called). Needs FABLE_RETAIL_CRGBCOLOUR (the
+     // Initialise copy constructor), the callee declarations above the class.
++#ifdef FABLE_RETAIL_CRGBCOLOUR_INTERPOLATE_FORCEINLINE
++    // Nested opt-in (hand3c3, row 0x0078D250 CTCBerserk::FrameUpdate): retail expands Interpolate at both tint sites there
++    // (0x0078D680..0x0078D6F8 and 0x0078D869..0x0078D8D9: `this` pushed first, `fmul [256.0f]`, the bare fistp, the result built in
++    // a frame slot and passed by `lea`); VC7.1 calls the plain inline out of line (1678 bytes for the 1729-byte row) and there is no
++    // /d2inlT window (T76..T160 expand the list destructor retail calls first, 1705 bytes; T200 1728, T300 1751).
++    FABLE_FORCEINLINE
++#endif
+     CRGBColour Interpolate(CRGBColour col, float interp) const { return GFGetInterpolatedColour(*this, col, GFFloatToLongNear(interp * 256.0f)); }
+ #endif
+     unsigned char GetR() const { return R; }
+--- /dev/null	2026-11-19 22:44:36.873458147 +0000
++++ hdr/engine/CThingFilter_CanBeHitByEpicSpell.h	2026-11-20 06:37:43.857762531 +0000
+@@ -0,0 +1,13 @@
++#ifndef FABLE_ENGINE_CTHINGFILTER_CANBEHITBYEPICSPELL_H
++#define FABLE_ENGINE_CTHINGFILTER_CANBEHITBYEPICSPELL_H
++// CThingFilter_CanBeHitByEpicSpell (new, hand3c3 row 0x0078D250 CTCBerserk::FrameUpdate): Ego_r.pdb TPI class of size 1, no members
++// (ghidra_out/struct_layouts_egor.tsv); Ego_r.pdb / Ego_d.pdb ??RCThingFilter_CanBeHitByEpicSpell@@QBE_NABVCThing@@@Z, out of line
++// in retail at 0x006A8D30 (landed). The spell rows bind it as the second filter of a CFilter_Bind2 / CFilter_Bind3 (e.g.
++// ??$GetAllThingsInRoughArea@VCThingGameObject@@..V?$CFilter_Bind2@VCThingFilter_In2DRange@@VCThingFilter_CanBeHitByEpicSpell@@@@..
++// 0x0078DB20); a value-initialised temporary of it is one zeroed byte (`mov byte ptr [esp+1Ch],0`, 0x0078D404).
++class CThing;
++class CThingFilter_CanBeHitByEpicSpell {
++public:
++    bool operator()(const CThing& test_thing) const;                    // 0x006A8D30
++};
++#endif

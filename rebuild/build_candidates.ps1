@@ -401316,6 +401316,13 @@ $catalog = @(
         TestSource = '00/58/CTCInventory_OpenPCMapMenu_00589a30_test.cpp'
         PassPattern = '00589a30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041afa0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_Draw_0041afa0.cpp'
+        TestSource = '00/41/NUISystemCSprite_Draw_0041afa0_test.cpp'
+        PassPattern = '0041afa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

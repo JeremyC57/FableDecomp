@@ -1,0 +1,58 @@
+diff --git a/rebuild/include/engine/CEnginePrimitive2DSprite.h b/rebuild/include/engine/CEnginePrimitive2DSprite.h
+index b45d937fa..ec47e012c 100644
+--- a/rebuild/include/engine/CEnginePrimitive2DSprite.h
++++ b/rebuild/include/engine/CEnginePrimitive2DSprite.h
+@@ -19,6 +19,9 @@
+ #include "engine/CRGBColour.h"
+ class CTexture;
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS
++#ifndef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_LAYER_ENUM_FROM_CMANAGER
++// (hand3c3, row 0x0041AFA0: a TU that also includes engine/NUISystem_CManager.h takes EEngine2DLayer from there -- the same
++// enumerator list -- and sets FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_LAYER_ENUM_FROM_CMANAGER so that it is not defined twice.)
+ // Original values recovered from both raw donor TPI sets; see ORIGINAL_RENDER_ENUMS.json.
+ enum EEngine2DLayer {
+     ENGINE_2D_RANGE_SIZE=16,
+@@ -50,6 +53,7 @@ enum EEngine2DLayer {
+     ENGINE_2D_NULL_LAYER=-1,
+     ENGINE_2D_LAYER_FIRST=0
+ };
++#endif
+ enum EEnginePrimitiveBlendMode {
+     ENGINE_PRIMITIVE_BLEND_SOLID=0,
+     ENGINE_PRIMITIVE_BLEND_BOOLEAN_ALPHA=1,
+@@ -89,6 +93,15 @@ public:
+     // two angles, four colour bytes, flags, &uv start, &uv end, 0x004399C4..0x00439A29). Needs ENUM_CTORS. Declaration only.
+     CEnginePrimitive2DSprite(unsigned __int64,const C2DVector&,EEngine2DLayer,CTexture&,EEnginePrimitiveBlendMode,EEngineInterpolationSet,
+         float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);   // 0x0043FA20
++#endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_BOX_CTOR
++    // Retail opt-in (hand3c3, row 0x0041AFA0 NUISystem::CSprite::Draw): Ego_r.pdb / FableWin.pdb
++    // ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@AAVCTexture@@W4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@6@Z,
++    // out of line in retail at 0x0041BF60 (landed; `ret 40h`; the caller pushes 16 argument words, 0x0041B209..0x0041B26B). FableWin
++    // emits it right after CSprite::Draw (0x01D2EBC0), so the body is an inline header function visible to that TU: it follows the
++    // class. Needs ENUM_CTORS.
++    CEnginePrimitive2DSprite(unsigned __int64,const C2DBoxF&,EEngine2DLayer,CTexture&,EEnginePrimitiveBlendMode,EEngineInterpolationSet,
++        float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);   // 0x0041BF60
+ #endif
+     // Retail opt-in (Codex 2026-11-09): both PDBs retain enum parameter types;
+     // native0041beb0 takes a box,00493ac2 takes a position. Same16 arguments.
+@@ -161,6 +174,19 @@ inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 id,co
+      EndAngle(end_angle),BlendMode(blend),Colour(r,g,b,alpha),ClipBoxIsPos(true),Flags(flags),Texture(&texture),UVOffsetsStart(uv_start),
+      UVOffsetsEnd(uv_end){}
+ #endif
++#if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS) && defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_TEXTURE_BOX_CTOR)
++// The inline body of the texture / box ctor declared above (same member-init style as the other two bodies: ClipBox(box), bank and
++// frame zero, ClipBoxIsPos false, Texture(&texture)). Compiled out of line from the CSprite::Draw row it grades RELOCATION_MATCH
++// against 0x0041BF60 (167 bytes). Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR, FABLE_RETAIL_C2DBOXF_COPY, FABLE_RETAIL_CRGBCOLOUR.
++// Parameter names as Ego_d.pdb lists them for this overload (the 195-byte debug copy, one line-table entry: header line 1191).
++inline CEnginePrimitive2DSprite::CEnginePrimitive2DSprite(unsigned __int64 uid,const C2DBoxF&clip_box,EEngine2DLayer layer,CTexture&texture,
++        EEnginePrimitiveBlendMode blend_mode,EEngineInterpolationSet interp_set,float start_angle,float end_angle,
++        unsigned char alpha,unsigned char r,unsigned char g,unsigned char b,unsigned long sprite_2d_flags,const C2DVector&uv_offsets_start,
++        const C2DVector&uv_offsets_end)
++    :CEnginePrimitive((EEnginePrimitiveType)34,uid,interp_set),ClipBox(clip_box),Layer(layer),BankIndex(0),Frame(0),StartAngle(start_angle),
++     EndAngle(end_angle),BlendMode(blend_mode),Colour(r,g,b,alpha),ClipBoxIsPos(false),Flags(sprite_2d_flags),Texture(&texture),
++     UVOffsetsStart(uv_offsets_start),UVOffsetsEnd(uv_offsets_end){}
++#endif
+ #if defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_ENUM_CTORS) && defined(FABLE_RETAIL_CENGINEPRIMITIVE2DSPRITE_BOX_CTOR_BODY)
+ // Retail opt-in (wfA2-5, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): the inline body of the box ctor declared above
+ // (Ego_r.pdb / FableWin.pdb ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@

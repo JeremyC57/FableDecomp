@@ -1,0 +1,315 @@
+--- orig/00af7df0.cpp	2026-11-20 07:07:21.666732336 +0000
++++ src/00af7df0.cpp	2026-11-20 07:11:21.087490500 +0000
+@@ -1,19 +1,17 @@
+-// NParticleEngine::CPSCSingleSprite::Alloc() -- factory: new CPSCSingleSprite with the default constructor @ 0x00B09360 out of line
+-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7DF0, oracle length 27 bytes.
+-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
+-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+-//
+-// Retail bytes:  push 0x138 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CPSCSingleSprite::CPSCSingleSprite ; N: xor eax,eax ; ret
+-// A no-argument factory: allocates sizeof(CPSCSingleSprite) = 0x138 bytes (operator new @ 0x00BFEA1A,
+-// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
+-// (which returns `this`). The class is named from the constructor's manifest label when that label
+-// is unique. One of 11 bodies of this shape.
+-struct CPSCSingleSprite {
+-    unsigned char _body[0x138];       // sizeof(CPSCSingleSprite) = 0x138
+-    CPSCSingleSprite();                               // 0x00B09360
+-};
+-
+-CPSCSingleSprite* CPSCSingleSprite_Alloc()
++// NParticleEngine::CPSCSingleSprite::Alloc() -- the component factory: a new CPSCSingleSprite (default constructor 0x00B09360, out of line)
++// Leaf: ?Alloc@CPSCSingleSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ
++// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7DF0, 27 bytes: push 0x138 ; call operator new ; test eax,eax ; pop ecx ; je N ;
++//   mov ecx,eax ; jmp CPSCSingleSprite::CPSCSingleSprite ; N: xor eax,eax ; ret
++// Identity: Ego_r.pdb ?Alloc@CPSCSingleSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ (public static __fastcall, returns CPSCBase*); the
++//   particle-component registry (CPSCManager::RegisterPSCs 0x00AF8170) stores it, and DatabaseClone 0x00B0A190 calls it.
++// Re-port (Account B, 2026-11-20): on the shared engine/CPSCSingleSprite.h (sizeof 0x138 asserted there). The landed text was a free
++//   cdecl stand-in `CPSCSingleSprite* CPSCSingleSprite_Alloc()` over a 0x138-byte struct (no arguments, so the same code).
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
++namespace NParticleEngine {
++CPSCBase* FABLE_FASTCALL CPSCSingleSprite::Alloc()
+ {
+     return new CPSCSingleSprite;
+-}
+\ No newline at end of file
++}
++}
+--- orig/00b05e10.cpp	2026-11-20 07:07:21.577627624 +0000
++++ src/00b05e10.cpp	2026-11-20 07:09:33.166033882 +0000
+@@ -11,11 +11,10 @@
+ // Globals: cosine table GFastCosTable @ 0x013CD550 (1025 floats); constants 0.5f 0x0122F59C, 1024.0f 0x01230010, 1.0f 0x0122DED8.
+ #include "engine/GFFloatToLongNear.h"
+ extern float GFastCosTable[1025];      // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2*pi*k/1024), k = 0..1024)
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
+ namespace NParticleEngine {
+-class CPSCSingleSprite {
+-protected:
+-    float SmoothFadeValue(float t) const;
+-};
+ float CPSCSingleSprite::SmoothFadeValue(float t) const
+ {
+     t = t * 0.5f;
+@@ -25,4 +24,4 @@
+     i &= 0x3ff;
+     return 0.5f - ((1.0f - frac) * GFastCosTable[i] + frac * GFastCosTable[i + 1]) * 0.5f;
+ }
+-}
+\ No newline at end of file
++}
+--- orig/00b05ea0.cpp	2026-11-20 07:07:21.619833823 +0000
++++ src/00b05ea0.cpp	2026-11-20 07:09:33.174890768 +0000
+@@ -1,19 +1,12 @@
+ // 00b05ea0 NParticleEngine::CPSCSingleSprite::DatabaseCopy, PDB00ac7410.
++// Leaf: ?DatabaseCopy@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+ // Layout: PDB derived members56..154 are retail52..150 due inherited spline vector -4.
+ // Field names and bitfield order recovered from struct_layouts_egor.tsv.
++#define FABLE_RETAIL_CPSCSPLINEBASE_MEMBERS
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
+ namespace NParticleEngine {
+-class CPSCBase { public:unsigned char Data[0x34];};
+-class CPSCSplineBase:public CPSCBase { public:void DatabaseCopy(const CPSCBase&);}; //00b22530
+-class CPSCSingleSprite:public CPSCSplineBase { public:
+- long SpriteBankIndex;unsigned long StartColour,MidColour,EndColour;
+- float AnimationTimeSecs,StartRenderSize,EndRenderSize;long SpriteAlignment,NoCrossedSprites;float InitialAngle;
+- long FadeInEndInteger,FadeOutBeginInteger;float AlphaFadeMinimum,SizeFadeMinimum;unsigned long PositionParam;
+- long BlendMode,BlendOp,TrailBlendMode,TrailBlendOp,TrailBankIndex;float TrailWidth;long MaxTrailLength,StayWithEmitterIntFactor;
+- bool UseStartColour,UseMidColour,UseEndColour;
+- bool SelfIlluminating:1,AlphaFadeEnable:1,RotateAroundCentre:1,FaceMe2D:1,FaceMe3D:1,CrossedSprites:1,SizeFadeEnable:1,ForceAnimationTime:1;
+- bool StayWithEmitter:1;bool UsePosition,UseSplinePoints;
+- void DatabaseCopy(const CPSCBase&);
+-};
+ void CPSCSingleSprite::DatabaseCopy(const CPSCBase& base){
+  CPSCSplineBase::DatabaseCopy(base);const CPSCSingleSprite& other=(const CPSCSingleSprite&)base;
+  SpriteBankIndex=other.SpriteBankIndex;PositionParam=other.PositionParam;ForceAnimationTime=other.ForceAnimationTime;
+@@ -27,4 +20,4 @@
+  TrailBankIndex=other.TrailBankIndex;TrailWidth=other.TrailWidth;MaxTrailLength=other.MaxTrailLength;StayWithEmitter=other.StayWithEmitter;
+  UsePosition=other.UsePosition;UseSplinePoints=other.UseSplinePoints;
+ }
+-}
+\ No newline at end of file
++}
+--- orig/00b07570.cpp	2026-11-20 07:11:21.083249203 +0000
++++ src/00b07570.cpp	2026-11-20 07:12:16.253788422 +0000
+@@ -1,54 +1,35 @@
+-// NParticleEngine::CPSCSingleSprite::ClearAllPrimitives(CEngineInterface*, const CPrimitiveGroupHandle&) -- when the group handle is live, removes every sprite primitive id in PrimIDList from it through the engine
++// NParticleEngine::CPSCSingleSprite::ClearAllPrimitives(CIEngine* pengine, CEnginePrimitiveHandle& system_group) -- when the system group handle is live, clears every sprite child primitive in PrimIDList from it through the engine
++// Leaf: ?ClearAllPrimitives@CPSCSingleSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
+ // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B07570, length 93 bytes.
+-// Callees: the engine interface's virtual slot 30 (+0x78), called as (group handle, primitive id).
+-// Identity: slot 29 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (rtti-vtables.tsv); the CPSCBase
+-// default for slot 29 (0x00AF2AC0) is an empty `ret 8`, and the CPSCRenderSprite override (0x00AFADC0)
+-// uses the same first argument as an engine object (its slot 31 releases a handle).
+-// Layout: Ego_r.pdb CPSCSingleSprite PrimIDList (CArray<long>) at +0x138; the retail object is 0xc
+-// bytes smaller before it (12-byte CArray in the spline/trail members), so the array is at +0x12c.
+-// The handle's second word is the referenced group (tested for null before anything else).
+-// Shape: /O2 loop (aligned head `lea ebx,[ebx]`), the engine argument loaded into ebx only after the
+-// entry test, the element count re-read every iteration (the virtual call may change the array),
+-// unsigned index compare (`jb`).
+-struct CPrimitiveGroupHandle {              // intelligent handle: {link, group}
+-    void* m_pLink;                          // +0x00
+-    void* m_pGroup;                         // +0x04
+-};
+-
+-struct CEngineInterface {
+-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
+-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
+-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+-    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
+-    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+-    virtual void RemovePrimitive(const CPrimitiveGroupHandle& group, long primitiveId);   // slot 30 (+0x78)
+-};
+-
+-template<class T> class CArray { public:           // retail CArray<T>: three pointers
+-    T* m_pData;
+-    T* m_pLast;
+-    T* m_pEnd;
+-    unsigned long Size() const { return (unsigned long)(m_pLast - m_pData); }
+-    T& operator[](unsigned long index) { return m_pData[index]; }
+-};
+-
+-struct CBase {
+-    virtual ~CBase();
+-};
+-
++// Callees: CIEngine slot 30 (+0x78) ?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z (engine/CIEngine.h), called as
++//   (system group handle, primitive id).
++// Identity: slot 29 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (rtti-vtables.tsv); Ego_r.pdb
++//   ?ClearAllPrimitives@CPSCSingleSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z; the CPSCBase default for
++//   slot 29 (0x00AF2AC0) is an empty `ret 8`. Parameter and loop-index names from Ego_d.pdb (pengine, system_group, c).
++// Re-port (Account B, 2026-11-20): the shared engine/CPSCSingleSprite.h / CIEngine.h / CEnginePrimitiveHandle.h replace the local
++//   CEngineInterface (`RemovePrimitive` at slot 30), CPrimitiveGroupHandle {m_pLink, m_pGroup} and CArray models; the handle test is
++//   the header's inline IsNull() (CIVCountedPointer Data at +4, the word the old model called m_pGroup).
++// Layout: PrimIDList (CArray<long>) at retail +0x12c (Ego_r +0x138; the retail object is 0xc bytes smaller before it).
++// Shape: /O2 loop (aligned head `lea ebx,[ebx]`), the engine argument loaded into ebx only after the entry test, the element count
++//   re-read every iteration (the virtual call may change the array), unsigned index compare (`jb`).
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#define FABLE_RETAIL_DEF_CLASS_BASE
++#define FABLE_RETAIL_CIVCOUNTEDPOINTER
++#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
++#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
++#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
++#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_DATA
++#define FABLE_RETAIL_CIENGINE
++#include "engine/CPSCSingleSprite.h"
++#include "engine/CEnginePrimitiveHandle.h"
++#include "engine/CIEngine.h"
+ namespace NParticleEngine {
+-class CPSCSingleSprite : public CBase { public:           // vtable 0x0129FB84
+-    unsigned char _body[0x128];             // +0x04 .. +0x12c (CPSCBase part, sprite settings, trail primitive)
+-    CArray<long>  PrimIDList;               // +0x12c
+-    void ClearAllPrimitives(CEngineInterface* engine, const CPrimitiveGroupHandle& group);
+-};
+-
+-void CPSCSingleSprite::ClearAllPrimitives(CEngineInterface* engine, const CPrimitiveGroupHandle& group)
++void CPSCSingleSprite::ClearAllPrimitives(CIEngine* pengine, CEnginePrimitiveHandle& system_group)
+ {
+-    if (group.m_pGroup) {
+-        for (unsigned long i = 0; i < PrimIDList.Size(); ++i)
+-            engine->RemovePrimitive(group, PrimIDList[i]);
++    if (!system_group.IsNull()) {
++        for (unsigned long c = 0; c < PrimIDList.size(); ++c)
++            pengine->ClearChildPrimitive(system_group, PrimIDList[c]);
+     }
+ }
+-}
+\ No newline at end of file
++}
+--- orig/00b0a0f0.cpp	2026-11-20 07:07:21.472421333 +0000
++++ src/00b0a0f0.cpp	2026-11-20 07:09:33.145211442 +0000
+@@ -2,12 +2,10 @@
+ // Leaf: ?GetComponentType@CPSCSingleSprite@NParticleEngine@@UBE?AW4EPSCType@2@XZ
+ // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A0F0, thiscall, `ret`.
+ // Identity: slot 4 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (defined here: the slot holds this body in 1 vtable(s), all of NParticleEngine::CPSCSingleSprite or derived); the Xbox 360 Test PDB virtual order (third source) aligned on 13 TLC-named slots of that vtable puts GetComponentType(void) at this slot; Ego_r/FableWin name set: ?GetComponentType@CPSCSingleSprite@NParticleEngine@@UBE?AW4EPSCType@2@XZ; `ret` matches the signature.
+-namespace NParticleEngine { enum EPSCType { }; }
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
+ namespace NParticleEngine {
+-class CPSCSingleSprite {
+-public:
+-    virtual NParticleEngine::EPSCType GetComponentType() const;
+-};
+ NParticleEngine::EPSCType CPSCSingleSprite::GetComponentType() const
+ {
+     return (EPSCType)2;
+--- orig/00b0a100.cpp	2026-11-20 07:07:21.507391507 +0000
++++ src/00b0a100.cpp	2026-11-20 07:09:33.151557560 +0000
+@@ -2,12 +2,10 @@
+ // Leaf: ?GetComponentSubType@CPSCSingleSprite@NParticleEngine@@UBE?AW4EPSCSubType@2@XZ
+ // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A100, thiscall, `ret`.
+ // Identity: slot 5 of NParticleEngine::CPSCSingleSprite's vtable 0x0129FB84 (defined here: the slot holds this body in 1 vtable(s), all of NParticleEngine::CPSCSingleSprite or derived); the Xbox 360 Test PDB virtual order (third source) aligned on 13 TLC-named slots of that vtable puts GetComponentSubType(void) at this slot; Ego_r/FableWin name set: ?GetComponentSubType@CPSCSingleSprite@NParticleEngine@@UBE?AW4EPSCSubType@2@XZ; `ret` matches the signature.
+-namespace NParticleEngine { enum EPSCSubType { }; }
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
+ namespace NParticleEngine {
+-class CPSCSingleSprite {
+-public:
+-    virtual NParticleEngine::EPSCSubType GetComponentSubType() const;
+-};
+ NParticleEngine::EPSCSubType CPSCSingleSprite::GetComponentSubType() const
+ {
+     return (EPSCSubType)7;
+--- orig/00b0a130.cpp	2026-11-20 07:07:21.540237138 +0000
++++ src/00b0a130.cpp	2026-11-20 07:09:33.157889823 +0000
+@@ -9,38 +9,10 @@
+ // CPSCSingleSprite : CPSCSplineBase : CPSCBase (RTTI). Ego_r.pdb: CPSCSplineBase 0x38 bytes (SplineAnimSpeed +0x0C, CCardinalSpline
+ // Spline +0x10, two CCountedPointers), CPSCSingleSprite's EnteringTimelineEnd at Ego_r +0x9B; retail is 4 lower (the spline's STLport
+ // vector is 12 bytes, not 16), so the members between are opaque here.
+-#include "engine/CBaseClassNonCopyable.h"
+-#include "engine/C3DVector.h"
+-#include "engine/NParticleEngine_CParticleUpdateParameters.h"
+-class CEnginePrimitivePrepareInfo;
+-class CEnginePrimitiveHandle;
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
+ namespace NParticleEngine {
+-class CParticleSystem;
+-template <class K, class V> class CParticleUpdateParamCallback : public CBaseClassNonCopyable {
+-public:
+-    virtual bool GetUpdateParam(C3DVector&, K, float, bool, const CParticleUpdateParameters<K, V>&, V);   // slot 1
+-};
+-class CPSCBase : public CParticleUpdateParamCallback<unsigned long, unsigned long> {
+-public:
+-    virtual void CollectUpdateParameters(CParticleUpdateParameters<unsigned long, unsigned long>&, const unsigned long&);     // slot 10
+-    virtual void UpdateAddParticle(CParticleSystem&, const CParticleUpdateParameters<unsigned long, unsigned long>&, C3DVector, C3DVector, float);   // slot 12
+-    virtual void PreparePrimitives(float, const CEnginePrimitivePrepareInfo&, CParticleSystem&,
+-                                   const CParticleUpdateParameters<unsigned long, unsigned long>&, CEnginePrimitiveHandle&);   // slot 13
+-    virtual float GetApproximateSplineLength();                                                               // slot 31
+-    CParticleSystem* ParticleSystem;                         // +0x04
+-    bool Initialised : 1;                                    // +0x08
+-    bool UpdateStarted : 1;
+-};
+-class CPSCSplineBase : public CPSCBase {
+-public:
+-    unsigned char _members_0x0c[0x28];                       // +0x0C SplineAnimSpeed .. SplinePosParamData (retail 0x34 bytes)
+-};
+-class CPSCSingleSprite : public CPSCSplineBase {
+-public:
+-    virtual void EnterTimelineEnd();                         // slot 25
+-    unsigned char _members_0x34[0x63];                       // +0x34 Ego_r CPSCSingleSprite members +0x38 .. +0x9A
+-    bool EnteringTimelineEnd;                                // +0x97
+-};
+ void CPSCSingleSprite::EnterTimelineEnd()
+ {
+     EnteringTimelineEnd = true;
+--- orig/00b0a190.cpp	2026-11-20 07:07:21.705908513 +0000
++++ src/00b0a190.cpp	2026-11-20 07:11:21.089597822 +0000
+@@ -1,32 +1,19 @@
+-// NParticleEngine::CPSCSingleSprite::DatabaseClone() -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
+-// Leaf: ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@
+-// Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/b0/CThingTrackNode_DrawIsDrawable_00b0a190.cpp: vtable slot 2 of NParticleEngine::CPSCSingleSprite; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
+-namespace NParticleEngine { class CPSCSingleSprite; }
+-using NParticleEngine::CPSCSingleSprite;
+-
+-struct IDrawableObj {
+-    // A vtbl of __fastcall member functions. Slot 0x12 (byte offset 0x48)
+-    // takes one stack arg (the node) with 'this' in ecx.
+-    int Draw(CPSCSingleSprite* node);   // placeholder shape; real dispatch via vtbl
+-};
+-
+-// helper: __fastcall on the node, returns the drawable object
+-extern IDrawableObj* __fastcall GetDrawableObject_00af7df0(CPSCSingleSprite* self);
+-
++// NParticleEngine::CPSCSingleSprite::DatabaseClone() const -- allocate a fresh component of this class (Alloc 0x00AF7DF0) and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
++// Leaf: ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ
++// Retail: Fable.exe (TLC, VC7.1) @ 0x00B0A190, 24 bytes: push esi ; mov esi,ecx ; call Alloc ; mov edx,[eax] ; push esi ; mov ecx,eax ;
++//   call [edx+48h] ; ... ret.
++// Identity: vtable slot 2 of NParticleEngine::CPSCSingleSprite (0x0129FB84); Ego_r.pdb ?DatabaseClone@CPSCSingleSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ;
++//   Ego_d.pdb local `psc` (debug length 41). Slot 18 (+0x48) is CPSCBase::DatabaseCopy (engine/CPSCBase.h), the sprite override 0x00B05EA0.
++// Re-port (Account B, 2026-11-20): on the shared engine/CPSCSingleSprite.h. The landed text was a stand-in (an IDrawableObj model with
++//   the slot called through a member-function-pointer table and Alloc bound as `GetDrawableObject_00af7df0`).
++#define FABLE_RETAIL_CPSCSPLINEBASE_PASS23
++#define FABLE_RETAIL_CPSCSINGLESPRITE_MEMBERS
++#include "engine/CPSCSingleSprite.h"
+ namespace NParticleEngine {
+-class CPSCSingleSprite { public:
+-    IDrawableObj* DatabaseClone();
+-};
+-}
+-
+-// vtable modeled as an array of member-function pointers so the call is __fastcall
+-// (ecx = obj, one stack arg) with no edx setup.
+-typedef int (IDrawableObj::*Slot)(CPSCSingleSprite* node);
+-
+-IDrawableObj* NParticleEngine::CPSCSingleSprite::DatabaseClone()
++CPSCBase* CPSCSingleSprite::DatabaseClone() const
+ {
+-    IDrawableObj* obj = GetDrawableObject_00af7df0(this);
+-    Slot* vtbl = *(Slot**)obj;
+-    (obj->*vtbl[0x12])(this);
+-    return obj;
++    CPSCBase* psc = Alloc();
++    psc->DatabaseCopy(*this);
++    return psc;
++}
+ }

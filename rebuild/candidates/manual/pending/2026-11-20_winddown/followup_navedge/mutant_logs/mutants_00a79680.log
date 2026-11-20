@@ -1,0 +1,38 @@
+baseline SURVIVED
+KILLED | long nav_layer = 0; -> long nav_layer = 1;
+KILLED | nav_layer < NavigationLayers.size(); -> nav_layer <= NavigationLayers.size();
+KILLED | nav_layer++) -> nav_layer += 2)
+KILLED | quad_tree_area.TLY + 0.25f -> quad_tree_area.TLY + 0.5f
+KILLED | quad_tree_area.TLY + 0.25f -> quad_tree_area.TLY
+KILLED | current_y < quad_tree_area.BRY; -> current_y <= quad_tree_area.BRY;
+KILLED | adjacent_map_x -> this_map_x
+KILLED | GetNodeAt(C2DVector(this_map_x, current_y), nav_layer) -> GetNodeAt(C2DVector(adjacent_map_x, current_y), na
+KILLED | C2DVector(adjacent_map_x, current_y), nav_layer) -> C2DVector(adjacent_map_x, current_y), 0)
+KILLED | GetNodeAt(C2DVector(this_map_x, current_y), nav_layer) -> GetNodeAt(C2DVector(this_map_x, current_y), 0)
+KILLED |             if (neighbour_map_node)  ->             if (!neighbour_map_node) 
+KILLED | float neighbour_size = neighbour_map_node->GetSize(); -> float neighbour_size = 1.0f;
+KILLED | if (!neighbour_map_node->Blocked && !my_map_node->Blocked) -> if (!neighbour_map_node->Blocked || !my_map_node->
+KILLED | if (!neighbour_map_node->Blocked && !my_map_node->Blocked) -> if (!neighbour_map_node->Blocked && my_map_node->B
+KILLED | if (!neighbour_map_node->Blocked && !my_map_node->Blocked) -> if (neighbour_map_node->Blocked && !my_map_node->B
+KILLED | (neighbour_map_node->GetRegionID() >> 16) & 0xffff -> neighbour_map_node->GetRegionID() >> 16
+KILLED | (neighbour_map_node->GetRegionID() >> 16) & 0xffff -> (neighbour_map_node->GetRegionID() >> 15) & 0xffff
+KILLED | (neighbour_map_node->GetRegionID() >> 16) & 0xffff -> (neighbour_map_node->GetRegionID() >> 16) & 0x7fff
+KILLED | new CNavConnectorNode(my_map_node, neighbour_map_node) -> new CNavConnectorNode(neighbour_map_node, my_map_n
+KILLED | ConnectorNodes.Insert(neighbour_map_index, -> ConnectorNodes.Insert(0,
+KILLED | current_y += std::min(my_map_node->GetSize(), neighbour_size); -> current_y += std::max(my_map_node->GetSize(), neig
+KILLED | current_y += std::min(my_map_node->GetSize(), neighbour_size); -> current_y += neighbour_size;
+KILLED | current_y += std::min(my_map_node->GetSize(), neighbour_size); -> current_y += my_map_node->GetSize();
+KILLED | else if (neighbour_map_node->Blocked && my_map_node->Blocked) -> else if (neighbour_map_node->Blocked || my_map_nod
+KILLED | else if (neighbour_map_node->Blocked && my_map_node->Blocked) -> else if (neighbour_map_node->Blocked)
+KILLED | current_y += std::max(my_map_node->GetSize(), neighbour_size); -> current_y += std::min(my_map_node->GetSize(), neig
+KILLED | current_y += std::max(my_map_node->GetSize(), neighbour_size); -> current_y += neighbour_size;
+KILLED | current_y += std::max(my_map_node->GetSize(), neighbour_size); -> current_y += my_map_node->GetSize();
+KILLED | else if (!neighbour_map_node->Blocked)  -> else if (neighbour_map_node->Blocked) 
+KILLED |                     current_y += my_map_node->GetSize();               ->                     current_y += neighbour_size;  
+KILLED |                 else                     current_y += neighbour_size; ->                 else                     current_y
+KILLED | current_y += 0.5f; -> current_y += 0.25f;
+KILLED | C2DExtentsF(MapWidth, MapHeight) -> C2DExtentsF(MapHeight, MapWidth)
+KILLED | (neighbour_map_node->GetRegionID() >> 16) -> (my_map_node->GetRegionID() >> 16)
+KILLED | const CANavQuadTreeNode* my_map_node = GetNodeAt( -> const CANavQuadTreeNode* my_map_node = nav_manager
+KILLED | current_y < quad_tree_area.BRY; -> current_y < quad_tree_area.BRX - 0.25f;
+SURVIVED | current_y += 0.5f; -> current_y += 0.5f; current_y += 0.0f;

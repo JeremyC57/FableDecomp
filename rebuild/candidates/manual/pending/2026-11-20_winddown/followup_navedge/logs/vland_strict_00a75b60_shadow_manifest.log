@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a75b60   MATCH            PASS   CNavNavigableLeafNode::ForceRegionTo
+
+WINS: 1
+  00a75b60 MATCH CNavNavigableLeafNode::?ForceRegionTo@CNavNavigableLeafNode@@IAEXPBVCNavRegion@@@Z

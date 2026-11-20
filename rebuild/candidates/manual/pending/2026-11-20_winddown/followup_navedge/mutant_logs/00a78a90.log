@@ -1,0 +1,9 @@
+baseline SURVIVED
+KILLED | Neighbour1->Neighbours.push_back(Neighbour2); -> Neighbour1->Neighbours.push_back(Neighbour1);
+KILLED | Neighbour2->Neighbours.push_back(Neighbour1); -> Neighbour1->Neighbours.push_back(Neighbour1);
+KILLED |     Neighbour2->Neighbours.push_back(Neighbour1);  -> 
+KILLED | pregion1->SetAsConnectedToRegion(*pregion2); -> pregion2->SetAsConnectedToRegion(*pregion1);
+KILLED | pregion1->SetAsConnectedToRegion(*pregion2); -> pregion1->SetAsConnectedToRegion(*pregion1);
+KILLED | Neighbour2((CNavNavigableLeafNode*)neighbour2) -> Neighbour2((CNavNavigableLeafNode*)neighbour1)
+KILLED |     pregion1->SetAsConnectedToRegion(*pregion2);  -> 
+KILLED | CNavRegion* pregion2 = (CNavRegion*)Neighbour2->GetRegion(); -> CNavRegion* pregion2 = (CNavRegion*)Neighbour1->Ge

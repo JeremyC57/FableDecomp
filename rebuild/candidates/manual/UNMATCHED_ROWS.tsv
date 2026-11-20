@@ -9,7 +9,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00417747	CMainGameComponent	UpdateForcedTickSpeed	596	parked	DIFFER(600v596)	3	rebuild/candidates/manual/pending/2026-11-11_linux_hand1023/differ/00417747.cpp	original
 004184bd	CMainGameComponent	?Init@CMainGameComponent@@UAEXXZ	1285	parked	DIFFER(24v1285)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004184bd.cpp	original
 004199c0	_global	HeroAbility_StringToID	976	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/004199c0.cpp	original
-0041afa0	CSprite	Draw	1456	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1041v1455)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0041afa0.cpp	original
 00428494	NUISystem::CManager	CreateMenuEntryComponent	1137	parked	DIFFER(45v1062)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00428494.cpp	original
 00435190	CDisplayEngine	?InitEngine@CDisplayEngine@@MAE_NXZ	784	parked	DIFFER(783v774)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00435190.cpp	original
 00437d10	CPlayerGui	FormatStringForArea	736	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00437d10.cpp	original

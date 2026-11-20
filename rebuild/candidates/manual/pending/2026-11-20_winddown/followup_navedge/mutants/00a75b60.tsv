@@ -1,0 +1,2 @@
+src	1	    PRegion = (CNavRegion*)pregion;	    PRegion = 0;
+src	1	    PRegion = (CNavRegion*)pregion;	    PRegion = (CNavRegion*)((const char*)pregion + 4);

@@ -1,0 +1,309 @@
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle = (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle -= (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += (settings.RotateSpeed - RotateSpeedRandomValue) * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += (settings.RotateSpeed) * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += (RotateSpeedRandomValue) * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue);
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += settings.RotateSpeed + RotateSpeedRandomValue * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += (settings.RotateStart + RotateSpeedRandomValue) * GetOneOverTickRate();
+src	1	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate();	NextAngle += (settings.RotateSpeed + RotateSpeedRandomValue) * GetOneOverTickRate() * GetOneOverTickRate();
+src	1	    FromPosition = ToPosition;\n	    /**/;\n
+src	1	    FromPosition = ToPosition;\n	    FromPosition = NextPosition;\n
+src	1	    ToPosition = NextPosition;\n	    /**/;\n
+src	1	    ToPosition = NextPosition;\n	    ToPosition = FromPosition;\n
+src	1	    FromPosition = ToPosition;\n    ToPosition = NextPosition;\n	    ToPosition = NextPosition;\n    FromPosition = ToPosition;\n
+src	1	if (settings.Enabled)	if (!settings.Enabled)
+src	1	if (settings.Enabled)	if (true)
+src	1	if (settings.Enabled)	if (settings.CycleFlag)
+src	1	if (GFIsNonZero(settings.SqueezeAngle))	if (!GFIsNonZero(settings.SqueezeAngle))
+src	1	if (GFIsNonZero(settings.SqueezeAngle))	if (true)
+src	1	if (GFIsNonZero(settings.SqueezeAngle))	if (GFIsNonZero(settings.SqueezeScale))
+src	1	if (GFIsNonZero(settings.SqueezeAngle))	if (settings.SqueezeAngle > DELTA_NOTIONAL_ZERO)
+src	1	float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle);	float temp_x = GFFastSin(NextAngle + settings.SqueezeAngle);
+src	1	float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle);	float temp_x = GFFastCos(NextAngle - settings.SqueezeAngle);
+src	1	float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle);	float temp_x = GFFastCos(NextAngle);
+src	1	float temp_x = GFFastCos(NextAngle + settings.SqueezeAngle);	float temp_x = GFFastCos(settings.SqueezeAngle);
+src	1	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings.SqueezeScale;	float temp_y = GFFastCos(NextAngle + settings.SqueezeAngle) * settings.SqueezeScale;
+src	1	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings.SqueezeScale;	float temp_y = GFFastSin(NextAngle - settings.SqueezeAngle) * settings.SqueezeScale;
+src	1	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings.SqueezeScale;	float temp_y = GFFastSin(NextAngle) * settings.SqueezeScale;
+src	1	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings.SqueezeScale;	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle);
+src	1	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings.SqueezeScale;	float temp_y = GFFastSin(NextAngle + settings.SqueezeAngle) * settings.SqueezeAngle;
+src	1	float cos_a = GFFastCos(-settings.SqueezeAngle);	float cos_a = GFFastCos(settings.SqueezeAngle);
+src	1	float cos_a = GFFastCos(-settings.SqueezeAngle);	float cos_a = GFFastSin(-settings.SqueezeAngle);
+src	1	float cos_a = GFFastCos(-settings.SqueezeAngle);	float cos_a = GFFastCos(-settings.SqueezeScale);
+src	1	float sin_a = GFFastSin(-settings.SqueezeAngle);	float sin_a = GFFastSin(settings.SqueezeAngle);
+src	1	float sin_a = GFFastSin(-settings.SqueezeAngle);	float sin_a = GFFastCos(-settings.SqueezeAngle);
+src	1	next_pos_2d.X = temp_x * cos_a + temp_y * sin_a;	next_pos_2d.X = temp_x * cos_a - temp_y * sin_a;
+src	1	next_pos_2d.X = temp_x * cos_a + temp_y * sin_a;	next_pos_2d.X = temp_x * cos_a;
+src	1	next_pos_2d.X = temp_x * cos_a + temp_y * sin_a;	next_pos_2d.X = temp_y * sin_a;
+src	1	next_pos_2d.X = temp_x * cos_a + temp_y * sin_a;	next_pos_2d.X = temp_x * sin_a + temp_y * cos_a;
+src	1	next_pos_2d.X = temp_x * cos_a + temp_y * sin_a;	next_pos_2d.X = temp_y * cos_a + temp_x * sin_a;
+src	1	next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a;	next_pos_2d.Y = temp_y * cos_a + temp_x * sin_a;
+src	1	next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a;	next_pos_2d.Y = temp_y * cos_a;
+src	1	next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a;	next_pos_2d.Y = temp_x * sin_a - temp_y * cos_a;
+src	1	next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a;	next_pos_2d.Y = temp_x * cos_a - temp_y * sin_a;
+src	1	next_pos_2d.Y = temp_y * cos_a - temp_x * sin_a;	next_pos_2d.X = temp_y * cos_a - temp_x * sin_a;
+src	1	next_pos_2d.X = GFFastCos(NextAngle);	next_pos_2d.X = GFFastSin(NextAngle);
+src	1	next_pos_2d.X = GFFastCos(NextAngle);	next_pos_2d.X = GFFastCos(-NextAngle) * settings.SqueezeScale;
+src	1	next_pos_2d.X = GFFastCos(NextAngle);	next_pos_2d.X = GFFastCos(NextAngle + 0.5f);
+src	1	next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale;	next_pos_2d.Y = GFFastCos(NextAngle) * settings.SqueezeScale;
+src	1	next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale;	next_pos_2d.Y = GFFastSin(NextAngle);
+src	1	next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale;	next_pos_2d.Y = GFFastSin(-NextAngle) * settings.SqueezeScale;
+src	1	next_pos_2d.Y = GFFastSin(NextAngle) * settings.SqueezeScale;	next_pos_2d.Y = GFFastSin(NextAngle) * settings.Radius;
+src	1	float radius = settings.Radius;	float radius = settings.Expand;
+src	1	float radius = settings.Radius;	float radius = 1.0f;
+src	1	float radius = settings.Radius;	float radius = -settings.Radius;
+src	1	if (GFIsNonZero(settings.Expand))	if (!GFIsNonZero(settings.Expand))
+src	1	if (GFIsNonZero(settings.Expand))	if (true)
+src	1	if (GFIsNonZero(settings.Expand))	if (GFIsNonZero(settings.Radius))
+src	1	if (GFIsNonZero(settings.Expand))	if (settings.Expand > DELTA_NOTIONAL_ZERO)
+src	1	if (GFIsNonZero(settings.CycleTime))	if (!GFIsNonZero(settings.CycleTime))
+src	1	if (GFIsNonZero(settings.CycleTime))	if (true)
+src	1	if (GFIsNonZero(settings.CycleTime))	if (GFIsNonZero(settings.Expand))
+src	1	if (GFIsNonZero(settings.CycleTime))	if (settings.CycleTime > DELTA_NOTIONAL_ZERO)
+src	1	if (settings.CycleFlag)	if (!settings.CycleFlag)
+src	1	if (settings.CycleFlag)	if (settings.Enabled)
+src	1	if (settings.CycleFlag)	if (false)
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius = (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius -= (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f + GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastSin(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastCos(time_secs * settings.CycleTime)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastCos(time_secs)) * settings.Expand * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * 0.5f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.25f;
+src	1	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime)) * settings.Expand * 0.5f;	radius += (1.0f - GFFastCos(time_secs / settings.CycleTime * 0.25f)) * settings.Expand * 0.5f;
+src	1	if (time_secs > settings.CycleTime) time_secs = settings.CycleTime;	/**/;
+src	1	if (time_secs > settings.CycleTime) time_secs = settings.CycleTime;	if (time_secs < settings.CycleTime) time_secs = settings.CycleTime;
+src	1	if (time_secs > settings.CycleTime) time_secs = settings.CycleTime;	time_secs = settings.CycleTime;
+src	1	if (time_secs > settings.CycleTime) time_secs = settings.CycleTime;	if (time_secs > settings.CycleTime) time_secs = 0.0f;
+src	1	if (time_secs > settings.CycleTime) time_secs = settings.CycleTime;	if (time_secs > settings.Expand) time_secs = settings.CycleTime;
+src	1	if (time_secs > settings.CycleTime) time_secs = settings.CycleTime;	if (time_secs > settings.CycleTime * 0.5f) time_secs = settings.CycleTime;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius = GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius -= GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastCos(time_secs / settings.CycleTime * 0.25f) * settings.Expand;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastSin(time_secs / settings.CycleTime) * settings.Expand;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastSin(time_secs / settings.CycleTime * 0.5f) * settings.Expand;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastSin(time_secs * settings.CycleTime * 0.25f) * settings.Expand;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f);
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand * 0.5f;
+src	1	radius += GFFastSin(time_secs / settings.CycleTime * 0.25f) * settings.Expand;	radius += GFFastSin(time_secs * 0.25f) * settings.Expand;
+src	1	next_pos_2d.X *= radius;	/**/;
+src	1	next_pos_2d.X *= radius;	next_pos_2d.X = radius;
+src	1	next_pos_2d.X *= radius;	next_pos_2d.X *= settings.Radius;
+src	1	next_pos_2d.Y *= radius;	/**/;
+src	1	next_pos_2d.Y *= radius;	next_pos_2d.Y *= -radius;
+src	1	next_pos_2d.Y *= radius;	next_pos_2d.Y *= settings.Radius;
+src	1	next_pos_2d.Clear();	/**/;
+src	1	next_pos_2d.Clear();	next_pos_2d.X = 1.0f; next_pos_2d.Y = 0.0f;
+src	1	next_pos_2d.Clear();	next_pos_2d.X = 0.0f; next_pos_2d.Y = 1.0f;
+src	1	long orient = settings.Type & 3;	long orient = settings.Type & 1;
+src	1	long orient = settings.Type & 3;	long orient = settings.Type & 7;
+src	1	long orient = settings.Type & 3;	long orient = settings.Type;
+src	1	long orient = settings.Type & 3;	long orient = (settings.Type >> 1) & 3;
+src	1	long orient = settings.Type & 3;	long orient = settings.Type & 2;
+src	1	long orient = settings.Type & 3;	long orient = 0;
+src	1	    case 0:\n        NextPosition.Initialise	    case 3:\n        NextPosition.Initialise
+src	1	    case 1:\n        NextPosition.Initialise	    case 3:\n        NextPosition.Initialise
+src	1	    case 2:\n        NextPosition.Initialise	    case 3:\n        NextPosition.Initialise
+src	1	    case 2:\n        NextPosition.Initialise	    default:\n        NextPosition.Initialise
+src	1	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);\n        break;	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);
+src	1	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);\n        break;	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);
+src	1	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);	NextPosition.Initialise(next_pos_2d.Y, next_pos_2d.X, 0.0f);
+src	1	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 1.0f);
+src	1	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, NextPosition.Z);
+src	1	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);
+src	1	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);	/**/;
+src	1	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);	NextPosition.Initialise(next_pos_2d.Y, 0.0f, next_pos_2d.X);
+src	1	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);	NextPosition.Initialise(next_pos_2d.X, NextPosition.Y, next_pos_2d.Y);
+src	1	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);	NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y);
+src	1	NextPosition.Initialise(next_pos_2d.X, 0.0f, next_pos_2d.Y);	/**/;
+src	1	NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y);	NextPosition.Initialise(0.0f, next_pos_2d.Y, next_pos_2d.X);
+src	1	NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y);	NextPosition.Initialise(NextPosition.X, next_pos_2d.X, next_pos_2d.Y);
+src	1	NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y);	NextPosition.Initialise(next_pos_2d.X, next_pos_2d.Y, 0.0f);
+src	1	NextPosition.Initialise(0.0f, next_pos_2d.X, next_pos_2d.Y);	/**/;
+src	1	if (settings.Type & 4)	if (!(settings.Type & 4))
+src	1	if (settings.Type & 4)	if (settings.Type & 8)
+src	1	if (settings.Type & 4)	if (settings.Type & 12)
+src	1	if (settings.Type & 4)	if (settings.Type & 2)
+src	1	if (settings.Type & 4)	if (settings.Type >= 4)
+src	1	if (settings.Type & 4)	if (true)
+src	1	if (settings.Type & 4)	if (false)
+src	1	parent_transform.TransformPoint(NextPosition);	/**/;
+src	1	parent_transform.TransformPoint(NextPosition);	NextPosition += parent_transform.GetTranslation();
+src	1	parent_transform.TransformPoint(NextPosition);	parent_transform.TransformPoint(NextPosition); parent_transform.TransformPoint(NextPosition);
+src	1	NextPosition += parent_transform.GetTranslation();	/**/;
+src	1	NextPosition += parent_transform.GetTranslation();	NextPosition = parent_transform.GetTranslation();
+src	1	NextPosition += parent_transform.GetTranslation();	NextPosition += -parent_transform.GetTranslation();
+src	1	NextPosition += parent_transform.GetTranslation();	NextPosition += ToPosition;
+src	1	    case 0:\n        parent_transform.PreZRotate	    case 3:\n        parent_transform.PreZRotate
+src	1	    case 1:\n        parent_transform.PreYRotate	    case 3:\n        parent_transform.PreYRotate
+src	1	    case 2:\n        parent_transform.PreXRotate	    case 3:\n        parent_transform.PreXRotate
+src	1	    case 2:\n        parent_transform.PreXRotate	    default:\n        parent_transform.PreXRotate
+src	1	parent_transform.PreZRotate(-NextAngle);\n        break;	parent_transform.PreZRotate(-NextAngle);
+src	1	parent_transform.PreYRotate(-NextAngle);\n        break;	parent_transform.PreYRotate(-NextAngle);
+src	1	parent_transform.PreZRotate(-NextAngle);	parent_transform.PreZRotate(NextAngle);
+src	1	parent_transform.PreZRotate(-NextAngle);	parent_transform.PreYRotate(-NextAngle);
+src	1	parent_transform.PreZRotate(-NextAngle);	parent_transform.PreXRotate(-NextAngle);
+src	1	parent_transform.PreZRotate(-NextAngle);	/**/;
+src	1	parent_transform.PreZRotate(-NextAngle);	parent_transform.PreZRotate(-NextAngle * 0.5f);
+src	1	parent_transform.PreYRotate(-NextAngle);	parent_transform.PreYRotate(NextAngle);
+src	1	parent_transform.PreYRotate(-NextAngle);	parent_transform.PreZRotate(-NextAngle);
+src	1	parent_transform.PreYRotate(-NextAngle);	parent_transform.PreXRotate(-NextAngle);
+src	1	parent_transform.PreYRotate(-NextAngle);	/**/;
+src	1	parent_transform.PreXRotate(-NextAngle);	parent_transform.PreXRotate(NextAngle);
+src	1	parent_transform.PreXRotate(-NextAngle);	parent_transform.PreYRotate(-NextAngle);
+src	1	parent_transform.PreXRotate(-NextAngle);	parent_transform.PreZRotate(-NextAngle);
+src	1	parent_transform.PreXRotate(-NextAngle);	/**/;
+src	1	parent_transform.PreXRotate(-NextAngle);	parent_transform.PreXRotate(-RotateSpeedRandomValue);
+src	1	parent_transform.SetTranslateOnly(NextPosition);	/**/;
+src	1	parent_transform.SetTranslateOnly(NextPosition);	parent_transform.SetTranslateOnly(ToPosition);
+src	1	parent_transform.SetTranslateOnly(NextPosition);	parent_transform.SetTranslateOnly(FromPosition);
+src	1	    FromTangent = ToTangent;\n	    /**/;\n
+src	1	    FromTangent = ToTangent;\n	    FromTangent = NextPosition;\n
+src	1	    FromTangent = ToTangent;\n    ToTangent = (NextPosition - FromPosition) * 0.5f;	    ToTangent = (NextPosition - FromPosition) * 0.5f;\n    FromTangent = ToTangent;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	/**/;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	ToTangent = (NextPosition - ToPosition) * 0.5f;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	ToTangent = (FromPosition - NextPosition) * 0.5f;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	ToTangent = (NextPosition + FromPosition) * 0.5f;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	ToTangent = (NextPosition - FromPosition);
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	ToTangent = (NextPosition - FromPosition) * 0.25f;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	ToTangent = NextPosition * 0.5f;
+src	1	ToTangent = (NextPosition - FromPosition) * 0.5f;	FromTangent = (NextPosition - FromPosition) * 0.5f;
+hdr:engine/CMatrix3x4.h	1	        const float cosA = GFCos(angle);	        const float cosA = GFSin(angle);
+hdr:engine/CMatrix3x4.h	1	        const float sinA = GFSin(angle);	        const float sinA = GFCos(angle);
+hdr:engine/CMatrix3x4.h	1	        const float sinA = GFSin(angle);	        const float sinA = -GFSin(angle);
+hdr:engine/CMatrix3x4.h	2	        const float cosA = GFCos(angle);	        const float cosA = GFSin(angle);
+hdr:engine/CMatrix3x4.h	2	        const float sinA = GFSin(angle);	        const float sinA = GFCos(angle);
+hdr:engine/CMatrix3x4.h	2	        const float sinA = GFSin(angle);	        const float sinA = -GFSin(angle);
+hdr:engine/CMatrix3x4.h	3	        const float cosA = GFCos(angle);	        const float cosA = GFSin(angle);
+hdr:engine/CMatrix3x4.h	3	        const float sinA = GFSin(angle);	        const float sinA = GFCos(angle);
+hdr:engine/CMatrix3x4.h	3	        const float sinA = GFSin(angle);	        const float sinA = -GFSin(angle);
+hdr:engine/CMatrix3x4.h	1	        tmp = E21 * sinA;	        tmp = E21 * cosA;
+hdr:engine/CMatrix3x4.h	1	        tmp = E21 * sinA;	        tmp = E21;
+hdr:engine/CMatrix3x4.h	1	        E21 *= cosA;	        E21 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E21 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E21 *= cosA;	        E21 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E21 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E21 -= E31 * sinA;	        E21 += E31 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E21 -= E31 * sinA;	        E21 -= E31 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E21 -= E31 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E21 -= E31 * sinA;	        E21 -= E32 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E31 *= cosA;	        E31 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E31 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E31 *= cosA;	        E31 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E31 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E31 += tmp;	        E31 -= tmp;
+hdr:engine/CMatrix3x4.h	1	        E31 += tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        tmp = E22 * sinA;	        tmp = E22 * cosA;
+hdr:engine/CMatrix3x4.h	1	        tmp = E22 * sinA;	        tmp = E22;
+hdr:engine/CMatrix3x4.h	1	        E22 *= cosA;	        E22 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E22 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E22 *= cosA;	        E22 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E22 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E22 -= E32 * sinA;	        E22 += E32 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E22 -= E32 * sinA;	        E22 -= E32 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E22 -= E32 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E22 -= E32 * sinA;	        E22 -= E33 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E32 *= cosA;	        E32 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E32 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E32 *= cosA;	        E32 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E32 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E32 += tmp;	        E32 -= tmp;
+hdr:engine/CMatrix3x4.h	1	        E32 += tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        tmp = E23 * sinA;	        tmp = E23 * cosA;
+hdr:engine/CMatrix3x4.h	1	        tmp = E23 * sinA;	        tmp = E23;
+hdr:engine/CMatrix3x4.h	1	        E23 *= cosA;	        E23 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E23 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E23 *= cosA;	        E23 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E23 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E23 -= E33 * sinA;	        E23 += E33 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E23 -= E33 * sinA;	        E23 -= E33 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E23 -= E33 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E23 -= E33 * sinA;	        E23 -= E31 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E33 *= cosA;	        E33 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E33 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E33 *= cosA;	        E33 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E33 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E33 += tmp;	        E33 -= tmp;
+hdr:engine/CMatrix3x4.h	1	        E33 += tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        tmp = E11 * sinA;	        tmp = E11 * cosA;
+hdr:engine/CMatrix3x4.h	1	        tmp = E11 * sinA;	        tmp = E11;
+hdr:engine/CMatrix3x4.h	2	        tmp = E11 * sinA;	        tmp = E11 * cosA;
+hdr:engine/CMatrix3x4.h	2	        tmp = E11 * sinA;	        tmp = E11;
+hdr:engine/CMatrix3x4.h	1	        E11 *= cosA;	        E11 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E11 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E11 *= cosA;	        E11 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E11 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E11 += E31 * sinA;	        E11 -= E31 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E11 += E31 * sinA;	        E11 += E31 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E11 += E31 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E11 += E31 * sinA;	        E11 += E32 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E31 -= tmp;	        E31 += tmp;
+hdr:engine/CMatrix3x4.h	1	        E31 -= tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        tmp = E12 * sinA;	        tmp = E12 * cosA;
+hdr:engine/CMatrix3x4.h	1	        tmp = E12 * sinA;	        tmp = E12;
+hdr:engine/CMatrix3x4.h	2	        tmp = E12 * sinA;	        tmp = E12 * cosA;
+hdr:engine/CMatrix3x4.h	2	        tmp = E12 * sinA;	        tmp = E12;
+hdr:engine/CMatrix3x4.h	1	        E12 *= cosA;	        E12 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E12 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E12 *= cosA;	        E12 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E12 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E12 += E32 * sinA;	        E12 -= E32 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E12 += E32 * sinA;	        E12 += E32 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E12 += E32 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E12 += E32 * sinA;	        E12 += E33 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E32 -= tmp;	        E32 += tmp;
+hdr:engine/CMatrix3x4.h	1	        E32 -= tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        tmp = E13 * sinA;	        tmp = E13 * cosA;
+hdr:engine/CMatrix3x4.h	1	        tmp = E13 * sinA;	        tmp = E13;
+hdr:engine/CMatrix3x4.h	2	        tmp = E13 * sinA;	        tmp = E13 * cosA;
+hdr:engine/CMatrix3x4.h	2	        tmp = E13 * sinA;	        tmp = E13;
+hdr:engine/CMatrix3x4.h	1	        E13 *= cosA;	        E13 *= sinA;
+hdr:engine/CMatrix3x4.h	1	        E13 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	2	        E13 *= cosA;	        E13 *= sinA;
+hdr:engine/CMatrix3x4.h	2	        E13 *= cosA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E13 += E33 * sinA;	        E13 -= E33 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E13 += E33 * sinA;	        E13 += E33 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E13 += E33 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E13 += E33 * sinA;	        E13 += E31 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E33 -= tmp;	        E33 += tmp;
+hdr:engine/CMatrix3x4.h	1	        E33 -= tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E11 -= E21 * sinA;	        E11 += E21 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E11 -= E21 * sinA;	        E11 -= E21 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E11 -= E21 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E11 -= E21 * sinA;	        E11 -= E22 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E21 += tmp;	        E21 -= tmp;
+hdr:engine/CMatrix3x4.h	1	        E21 += tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E12 -= E22 * sinA;	        E12 += E22 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E12 -= E22 * sinA;	        E12 -= E22 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E12 -= E22 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E12 -= E22 * sinA;	        E12 -= E23 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E22 += tmp;	        E22 -= tmp;
+hdr:engine/CMatrix3x4.h	1	        E22 += tmp;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E13 -= E23 * sinA;	        E13 += E23 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E13 -= E23 * sinA;	        E13 -= E23 * cosA;
+hdr:engine/CMatrix3x4.h	1	        E13 -= E23 * sinA;	        /**/;
+hdr:engine/CMatrix3x4.h	1	        E13 -= E23 * sinA;	        E13 -= E21 * sinA;
+hdr:engine/CMatrix3x4.h	1	        E23 += tmp;	        E23 -= tmp;
+hdr:engine/CMatrix3x4.h	1	        E23 += tmp;	        /**/;
+hdr:engine/C2DVector.h	1	void Clear() { X=0.0f; Y=0.0f; }	void Clear() { X=0.0f; }
+hdr:engine/C2DVector.h	1	void Clear() { X=0.0f; Y=0.0f; }	void Clear() { Y=0.0f; }
+hdr:engine/C2DVector.h	1	void Clear() { X=0.0f; Y=0.0f; }	void Clear() { X=1.0f; Y=0.0f; }
+hdr:engine/C2DVector.h	1	void Clear() { X=0.0f; Y=0.0f; }	void Clear() { X=0.0f; Y=1.0f; }
+hdr:engine/GFFloatAbs.h	1	*(unsigned long*)&n &= 0x7fffffff;	/**/;
+hdr:engine/GFFloatAbs.h	1	*(unsigned long*)&n &= 0x7fffffff;	*(unsigned long*)&n &= 0x7ffffffe;
+hdr:engine/GFFloatAbs.h	1	*(unsigned long*)&n &= 0x7fffffff;	*(unsigned long*)&n &= 0x3fffffff;
+hdr:engine/GFFloatAbs.h	1	*(unsigned long*)&n &= 0x7fffffff;	*(unsigned long*)&n &= 0xffffffff;
+hdr:engine/GFFloatAbs.h	1	*(unsigned long*)&n &= 0x7fffffff;	*(unsigned long*)&n |= 0x80000000;
+hdr:engine/GFFloatAbs.h	1	*(unsigned long*)&n &= 0x7fffffff;	*(unsigned long*)&n ^= 0x80000000;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return GFFloatAbs(n) >= DELTA_NOTIONAL_ZERO;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return GFFloatAbs(n) < DELTA_NOTIONAL_ZERO;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return n > DELTA_NOTIONAL_ZERO;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return GFFloatAbs(n) > 0.0f;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO * 2.0f;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO * 0.5f;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return true;
+hdr:engine/GFIsNonZero.h	1	return GFFloatAbs(n) > DELTA_NOTIONAL_ZERO;	return false;

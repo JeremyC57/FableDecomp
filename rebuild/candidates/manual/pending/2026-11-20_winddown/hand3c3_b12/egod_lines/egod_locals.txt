@@ -1,0 +1,45 @@
+== CTCBerserk::FrameUpdate (debug length 3010)
+  bprel -792 type 0x31831 this
+  bprel -16 type 0xabc5 pcreature
+  {
+    bprel -17 type 0x30 start_animation_finished
+    {
+      bprel -32 type 0x18fee man
+      bprel -28 type 0x23018 ptc_mode_manager
+      bprel -24 type 0x1940b ptc_opinion_source
+      {
+        bprel -80 type 0x4de10 things
+        bprel -64 type 0x40 search_radius
+        bprel -60 type 0x2460 center
+        bprel -48 type 0xae56 search_area
+        {
+          bprel -104 type 0x4de8d endit
+          bprel -92 type 0x4de8d it
+          {
+            bprel -244 type 0x2d7b8 hit_param
+            bprel -132 type 0x2460 point_of_hit
+            bprel -120 type 0x24a4b something
+            bprel -116 type 0x2460 direction
+  {
+    bprel -260 type 0x2460 pos
+    bprel -248 type 0x3922a sei
+    {
+      bprel -272 type 0x47f8f ptc_hero_morph
+      bprel -268 type 0x40 fraction
+      bprel -264 type 0xb799 ptc_graphic_appearance
+      {
+        bprel -276 type 0x40 berserk_skin_fraction
+      {
+        bprel -288 type 0x9983 white
+        bprel -284 type 0x9983 c
+        bprel -280 type 0x40 berserk_fraction
+    {
+      bprel -300 type 0x47f8f ptc_hero_morph
+      bprel -296 type 0x40 fraction
+      bprel -292 type 0xb799 ptc_graphic_appearance
+      {
+        bprel -304 type 0x40 berserk_skin_fraction
+      {
+        bprel -316 type 0x9983 white
+        bprel -312 type 0x9983 c
+        bprel -308 type 0x40 berserk_fraction

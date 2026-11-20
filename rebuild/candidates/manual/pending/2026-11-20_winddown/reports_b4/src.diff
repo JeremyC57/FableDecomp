@@ -1,0 +1,80 @@
+--- orig/00bace10.cpp	2026-11-20 07:01:25.916178212 +0000
++++ src/00bace10.cpp	2026-11-20 07:07:54.256145578 +0000
+@@ -5,28 +5,13 @@
+ // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0.
+ // Shape (family L116 = landed family K056, 0x00BB1780): CEngineSubPrimitiveBase's inline constructor (Ego_r.pdb Parent +0x0C,
+ //   NextSubPrimitive +0x10 cleared); the base's own vptr store is dead and dropped, leaving only 0x012A5430.
+-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+-class CBaseClassNonCopyable : public CBaseClass {
+-protected:
+-    CBaseClassNonCopyable();                             // 0x0099A2F0
+-    virtual ~CBaseClassNonCopyable();
+-};
+-class CEngineInternalPrimitiveBase { };
+-class CEngineInternalPrimitiveSprite : public CEngineInternalPrimitiveBase { };   // RTTI: base at offset 0
+-class CEnginePrimitiveManager;
+-class CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // Ego_r.pdb, 0x18 bytes
+-public:
+-    CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent) : Parent(parent), NextSubPrimitive(0) { }
+-    unsigned long RenderFlags;                           // +0x04
+-    unsigned char Alpha;                                 // +0x08
+-    CEngineInternalPrimitiveBase* Parent;                // +0x0C
+-    CEngineSubPrimitiveBase* NextSubPrimitive;           // +0x10
+-    CEnginePrimitiveManager* Manager;                    // +0x14
+-};
+-class CEngineSubPrimitiveSprite : public CEngineSubPrimitiveBase {
+-public:
+-    CEngineSubPrimitiveSprite(CEngineInternalPrimitiveSprite* parent);
+-};
++// CEngineSubPrimitiveSprite : CEngineSubPrimitiveBase : CBaseClassNonCopyable -- the shared headers; the constructor is declared
++// (header opt-in) and defined out of line here; the destructors are implicit, as in the row's earlier model and the sibling sub-primitive
++// rows (the vtable's ??_G calls ~CBaseClassNonCopyable 0x0099A300 directly, 0x00BB1740).
++#define FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
++#define FABLE_RETAIL_CENGINESUBPRIMITIVESPRITE_CTOR_OUTOFLINE
++#include "engine/CEngineSubPrimitiveSprite.h"
++
+ CEngineSubPrimitiveSprite::CEngineSubPrimitiveSprite(CEngineInternalPrimitiveSprite* parent)
+     : CEngineSubPrimitiveBase(parent)
+ {
+--- orig/00bb1740.cpp	2026-11-20 07:01:25.953030288 +0000
++++ src/00bb1740.cpp	2026-11-20 07:03:26.317854220 +0000
+@@ -1,16 +1,23 @@
+-// CEngineSubPrimitiveSprite::`vector deleting destructor'  @ 0x00bb1740
+-struct CEngineSubPrimitiveSprite {
+-    void Destroy();   // scalar destructor -> 0x0099a300 (this in ecx)
+-    void* VDD(unsigned int flags);
+-};
+-
+-// free-the-object helper (this in ecx, cleans own stack) -> 0x00beb550
+-void __fastcall FreeMesh(CEngineSubPrimitiveSprite* sprite);
+-
+-void* CEngineSubPrimitiveSprite::VDD(unsigned int flags)
++// CEngineSubPrimitiveSprite::`scalar deleting destructor'(unsigned int flags) -- the implicit destructor chain (CBaseClassNonCopyable::~CBaseClassNonCopyable
++//   0x0099A300), then the sub-primitive class operator delete (??3CEngineSubPrimitiveBase@@SIXPAX@Z 0x00BEB550, __fastcall) on flag bit 0
++// Leaf: ??_GCEngineSubPrimitiveSprite@@UAEPAXI@Z
++// Retail: Fable.exe (TLC, VC7.1) @ 0x00BB1740, 28 bytes, thiscall `ret 4`; slot 0 of the class vtable 0x012A5430 (RTTI
++//   .?AVCEngineSubPrimitiveSprite@@ : CEngineSubPrimitiveBase; the vtable the constructor 0x00BACE10 stores).
++// Re-port (Account B, 2026-11-20): onto the shared engine/CEngineSubPrimitiveSprite.h, as the sibling 0x00BCA060
++//   CEngineSubPrimitiveSpriteTrail::`scalar deleting destructor' (NF86). Was a free stand-in (`struct CEngineSubPrimitiveSprite` with
++//   ?Destroy@ binding 0x0099A300, ?VDD@ as the self leaf and a free `FreeMesh` binding 0x00BEB550).
++// Shape: VC7.1 emits a class's vtable, and this ??_G with it, in a TU that constructs the class; with the headers' implicit destructors
++//   (FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS) the derived and base destructors are empty and inline, leaving the
++//   ~CBaseClassNonCopyable call, and the delete is the class operator delete. The header's inline constructor is used by a TU-internal
++//   scaffolding function (anonymous namespace, hashed name: not retail; the q11120 / 0x00BCA060 pattern), so the vtable, ??_G, implicit
++//   destructor and constructor are pick-any COMDATs here.
++#define FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
++#include "engine/CEngineSubPrimitiveSprite.h"
++namespace {
++// Fidelity: scaffolding, not retail: the smallest use of the header's inline constructor, so this TU emits CEngineSubPrimitiveSprite's vtable and
++// with it the scalar deleting destructor (both pick-any COMDATs). Internal to this TU.
++void ReferenceSubPrimitiveSpriteVtable(CEngineInternalPrimitiveSprite* parent)
+ {
+-    this->Destroy();          // call 0x0099a300
+-    if (flags & 1)
+-        FreeMesh(this);       // mov ecx,esi; call 0x00beb550
+-    return this;              // mov eax,esi
+-}
+\ No newline at end of file
++    CEngineSubPrimitiveSprite sub_primitive(parent);
++}
++}

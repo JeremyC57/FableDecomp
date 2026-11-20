@@ -1,0 +1,6 @@
+baseline SURVIVED
+KILLED | C2DExtentsF(MapWidth, MapHeight) -> C2DExtentsF(MapHeight, MapWidth)
+KILLED | (neighbour_map_node->GetRegionID() >> 16) -> (my_map_node->GetRegionID() >> 16)
+KILLED | const CANavQuadTreeNode* my_map_node = GetNodeAt( -> const CANavQuadTreeNode* my_map_node = nav_manager
+KILLED | current_y < quad_tree_area.BRY; -> current_y < quad_tree_area.BRX - 0.25f;
+SURVIVED | current_y += 0.5f; -> current_y += 0.5f; current_y += 0.0f;

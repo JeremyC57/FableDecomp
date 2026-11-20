@@ -1,0 +1,268 @@
+src	1	if (JustReleased)	if (!JustReleased)
+src	1	if (JustReleased)	if (Paused)
+src	1	bool start_animation_finished = pcreature->SetCurrentAction(CCreatureAction_ReleaseStrengthBerserk(*pcreature));	bool start_animation_finished = !pcreature->SetCurrentAction(CCreatureAction_ReleaseStrengthBerserk(*pcreature));
+src	1	bool start_animation_finished = pcreature->SetCurrentAction(CCreatureAction_ReleaseStrengthBerserk(*pcreature));	CCreatureAction_ReleaseStrengthBerserk action(*pcreature); bool start_animation_finished = true;
+src	1	if (start_animation_finished)	if (!start_animation_finished)
+src	1	if (start_animation_finished)	if (true)
+src	1	JustReleased = false;	/**/;
+src	1	JustReleased = false;	JustReleased = true;
+src	1	JustReleased = false;	Paused = false;
+src	1	pcreature->MakeNoise("SIMPLE_NOISE");	/**/;
+src	1	pcreature->MakeNoise("SIMPLE_NOISE");	pcreature->MakeNoise("OPINION_SOURCE_BERSERK");
+src	1	pcreature->MakeNoise("SIMPLE_NOISE");	pcreature->MakeNoise("");
+src	1	            JustReleased = false;\n            pcreature->MakeNoise("SIMPLE_NOISE");\n	            pcreature->MakeNoise("SIMPLE_NOISE");\n            JustReleased = false;\n
+src	1	if (IS_THING_ALIVE(StartUpEffect))	if (!IS_THING_ALIVE(StartUpEffect))
+src	1	if (IS_THING_ALIVE(StartUpEffect))	if (StartUpEffect != 0)
+src	1	if (IS_THING_ALIVE(StartUpEffect))	if (IS_THING_ALIVE(BerserkBodyEffect))
+src	1	StartUpEffect->Kill(true);	StartUpEffect->Kill(false);
+src	1	StartUpEffect->Kill(true);	pcreature->Kill(true);
+src	1	StartUpEffect->Kill(true);	/**/;
+src	1	if (man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc_opinion_source))	if (!man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc_opinion_source))
+src	1	if (man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc_opinion_source))	if (man.AttachOpinionSource(*pcreature, "SIMPLE_NOISE", &ptc_opinion_source))
+src	1	if (man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc_opinion_source))	if (man.AttachOpinionSource(GetParentThing(), "OPINION_SOURCE_BERSERK", &ptc_opinion_source) && false)
+src	1	ptc_opinion_source->SetReactNonstop(true);	ptc_opinion_source->SetReactNonstop(false);
+src	1	ptc_opinion_source->SetReactNonstop(true);	/**/;
+src	1	            if (IS_THING_ALIVE(StartUpEffect))\n                StartUpEffect->Kill(true);\n	/**/
+src	1	if (SpellLevel >= 0)	if (SpellLevel > 0)
+src	1	if (SpellLevel >= 0)	if (SpellLevel < 0)
+src	1	if (SpellLevel >= 0)	if (true)
+src	1	if (SpellLevel >= 0)	if (SpellLevel >= 1)
+src	1	float search_radius = PDef->BerserkBlastRadius;	float search_radius = PDef->BlurCenterFromFloor;
+src	1	float search_radius = PDef->BerserkBlastRadius;	float search_radius = PDef->BerserkBlastRadius * 2.0f;
+src	1	float search_radius = PDef->BerserkBlastRadius;	float search_radius = -PDef->BerserkBlastRadius;
+src	1	C3DVector center = pcreature->GetPos();	C3DVector center = StartUpEffect->GetPos();
+src	1	C3DVector center = pcreature->GetPos();	C3DVector center(pcreature->GetPos().Y, pcreature->GetPos().X, pcreature->GetPos().Z);
+src	1	C3DVector center = pcreature->GetPos();	C3DVector center = pcreature->GetPos() * 2.0f;
+src	1	C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius);	C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius + 1);
+src	1	C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius);	C2DBoxI search_area(center.ToC2DCoordI(), 0);
+src	1	C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius);	C2DBoxI search_area(center.ToC2DCoordI(), (long)(search_radius + 0.5f));
+src	1	C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius);	C2DBoxI search_area(C2DCoordI(0, 0), (long)search_radius);
+src	1	C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius);	C2DBoxI search_area(C2DCoordI((long)center.Y, (long)center.X), (long)search_radius);
+src	1	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_CanBeHitByEpicSpell()), things);	GFFilter_Bind2(CThingFilter_In2DRange(center, 0.0f), CThingFilter_CanBeHitByEpicSpell()), things);
+src	1	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_CanBeHitByEpicSpell()), things);	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius * 2.0f), CThingFilter_CanBeHitByEpicSpell()), things);
+src	1	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_CanBeHitByEpicSpell()), things);	GFFilter_Bind2(CThingFilter_In2DRange(C3DVector(0.0f, 0.0f, 0.0f), search_radius), CThingFilter_CanBeHitByEpicSpell()), things);
+src	1	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_CanBeHitByEpicSpell()), things);	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_In2DRange(center, search_radius)), things);
+src	1	GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_CanBeHitByEpicSpell()), things);	GFFilter_Bind2(CThingFilter_CanBeHitByEpicSpell(), CThingFilter_In2DRange(center, search_radius)), things);
+src	1	                PeekThingSearchTools().GetAllThingsInRoughArea<CThingGameObject>(search_area,\n                    GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFilter_CanBeHitByEpicSpell()), things);\n	/**/
+src	1	it != endit; ++it)	it != endit; ++it, ++it)
+src	1	for (std::list<CThingGameObject*>::iterator it = things.begin(), endit = things.end(); it != endit; ++it)	for (std::list<CThingGameObject*>::iterator it = things.begin(), endit = things.end(); it != endit && it == things.begin(); ++it)
+src	1	for (std::list<CThingGameObject*>::iterator it = things.begin(), endit = things.end(); it != endit; ++it)	for (std::list<CThingGameObject*>::iterator it = ++things.begin(), endit = things.end(); it != endit; ++it)
+src	1	for (std::list<CThingGameObject*>::iterator it = things.begin(), endit = things.end(); it != endit; ++it)	for (std::list<CThingGameObject*>::iterator it = things.begin(), endit = things.begin(); it != endit; ++it)
+src	1	if (something != pcreature)	if (something == pcreature)
+src	1	if (something != pcreature)	if (true)
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if ((something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(something->GetTypeFlags() & 8) && CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(something->GetTypeFlags() & 8) || !CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(something->GetTypeFlags() & 8))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(something->GetTypeFlags() & 4) || CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(something->GetTypeFlags() & 0x18) || CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*something, *pcreature))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (!(pcreature->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))
+src	1	if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pcreature, *something))	if (true)
+src	1	C3DVector direction = something->GetPos() - pcreature->GetPos();	C3DVector direction = pcreature->GetPos() - something->GetPos();
+src	1	C3DVector direction = something->GetPos() - pcreature->GetPos();	C3DVector direction = something->GetPos();
+src	1	C3DVector direction = something->GetPos() - pcreature->GetPos();	C3DVector direction = something->GetPos() - center;
+src	1	C3DVector direction = something->GetPos() - pcreature->GetPos();	C3DVector direction = something->GetPos() + pcreature->GetPos();
+src	1	direction.Normalise();	/**/;
+src	1	direction.Normalise();	direction.Normalise(); direction = direction * 2.0f;
+src	1	C3DVector point_of_hit = something->GetPos() - direction;	C3DVector point_of_hit = something->GetPos() + direction;
+src	1	C3DVector point_of_hit = something->GetPos() - direction;	C3DVector point_of_hit = something->GetPos();
+src	1	C3DVector point_of_hit = something->GetPos() - direction;	C3DVector point_of_hit = pcreature->GetPos() - direction;
+src	1	C3DVector point_of_hit = something->GetPos() - direction;	C3DVector point_of_hit = direction;
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, something, 0, point_of_hit, direction, true, false, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, 0, 0, point_of_hit, direction, true, false, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, pcreature, point_of_hit, direction, true, false, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, 0, direction, point_of_hit, true, false, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, 0, point_of_hit, point_of_hit, true, false, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, false, false, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, true, false, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, true, false);
+src	1	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, false);	CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, true, false, false, true);
+src	1	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);	hit_param.AddDamageWithAttribute((EDamageAttribute)1, 0.001f);
+src	1	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.01f);
+src	1	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.0f);
+src	1	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);	/**/;
+src	1	something->OnHit(hit_param);	/**/;
+src	1	something->OnHit(hit_param);	pcreature->OnHit(hit_param);
+src	1	something->OnHit(hit_param);	something->OnHit(hit_param); something->OnHit(hit_param);
+src	1	hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);\n                            something->OnHit(hit_param);	something->OnHit(hit_param);\n                            hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);
+src	1	GetParentThing().GetTC(&ptc_mode_manager);	GetParentThing().GetTC((CTCCreatureModeManager**)&ptc_opinion_source); ptc_mode_manager = 0; GetParentThing().GetTC(&ptc_mode_manager); ptc_mode_manager = (CTCCreatureModeManager*)((char*)ptc_mode_manager + 4);
+src	1	if (!ptc_mode_manager->IsModeActive(0x24))	if (ptc_mode_manager->IsModeActive(0x24))
+src	1	if (!ptc_mode_manager->IsModeActive(0x24))	if (!ptc_mode_manager->IsModeActive(0x25))
+src	1	if (!ptc_mode_manager->IsModeActive(0x24))	if (true)
+src	1	ptc_mode_manager->AddMode(0x24);	ptc_mode_manager->AddMode(0x25);
+src	1	ptc_mode_manager->AddMode(0x24);	/**/;
+src	1	AnimTimer++;	/**/;
+src	1	AnimTimer++;	AnimTimer--;
+src	1	AnimTimer++;	AnimTimer += 2;
+src	1	AnimTimer++;	Timer++;
+src	1	if (AnimTimer < ReleasedAnimationTimer)	if (AnimTimer <= ReleasedAnimationTimer)
+src	1	if (AnimTimer < ReleasedAnimationTimer)	if (AnimTimer > ReleasedAnimationTimer)
+src	1	if (AnimTimer < ReleasedAnimationTimer)	if (AnimTimer < ReleasedAnimationTimer - 1.0f)
+src	1	if (AnimTimer < ReleasedAnimationTimer)	if (true)
+src	1	if (AnimTimer < ReleasedAnimationTimer)	if (Timer < ReleasedAnimationTimer)
+src	1	if (AnimTimer < ReleasedAnimationTimer)	if (AnimTimer < (long)ReleasedAnimationTimer)
+src	1	float fraction = (float)AnimTimer / ReleasedAnimationTimer;	float fraction = ReleasedAnimationTimer / (float)AnimTimer;
+src	1	float fraction = (float)AnimTimer / ReleasedAnimationTimer;	float fraction = (float)AnimTimer;
+src	1	float fraction = (float)AnimTimer / ReleasedAnimationTimer;	float fraction = (float)Timer / ReleasedAnimationTimer;
+src	1	float fraction = (float)AnimTimer / ReleasedAnimationTimer;	float fraction = (float)(AnimTimer - 1) / ReleasedAnimationTimer;
+src	1	float fraction = (float)AnimTimer / ReleasedAnimationTimer;	float fraction = 1.0f - (float)AnimTimer / ReleasedAnimationTimer;
+src	1	if (pcreature->GetTC(&ptc_hero_morph))	if (!pcreature->GetTC(&ptc_hero_morph))
+src	2	if (pcreature->GetTC(&ptc_hero_morph))	if (!pcreature->GetTC(&ptc_hero_morph))
+src	1	if (pcreature->GetTC(&ptc_hero_morph))	if (pcreature->GetTC(&ptc_hero_morph) && false)
+src	2	if (pcreature->GetTC(&ptc_hero_morph))	if (pcreature->GetTC(&ptc_hero_morph) && false)
+src	1	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->LowerBerserkPercent - MaxIncreaseInStrength;
+src	2	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->LowerBerserkPercent - MaxIncreaseInStrength;
+src	1	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->LowerBerserkPercent;
+src	2	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->LowerBerserkPercent;
+src	1	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = MaxIncreaseInStrength;
+src	2	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = MaxIncreaseInStrength;
+src	1	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->BlurCenterFromFloor + MaxIncreaseInStrength;
+src	2	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->BlurCenterFromFloor + MaxIncreaseInStrength;
+src	1	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->LowerBerserkPercent + StrengthPercentage;
+src	2	float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseInStrength;	float berserk_skin_fraction = PDef->LowerBerserkPercent + StrengthPercentage;
+src	1	if (berserk_skin_fraction > 1.0f)	if (berserk_skin_fraction < 1.0f)
+src	2	if (berserk_skin_fraction > 1.0f)	if (berserk_skin_fraction < 1.0f)
+src	1	if (berserk_skin_fraction > 1.0f)	if (berserk_skin_fraction > 0.5f)
+src	2	if (berserk_skin_fraction > 1.0f)	if (berserk_skin_fraction > 0.5f)
+src	1	if (berserk_skin_fraction > 1.0f)	if (false)
+src	2	if (berserk_skin_fraction > 1.0f)	if (false)
+src	1	berserk_skin_fraction = 1.0f;	berserk_skin_fraction = 0.0f;
+src	2	berserk_skin_fraction = 1.0f;	berserk_skin_fraction = 0.0f;
+src	1	berserk_skin_fraction = 1.0f;	berserk_skin_fraction = 0.5f;
+src	2	berserk_skin_fraction = 1.0f;	berserk_skin_fraction = 0.5f;
+src	1	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction);
+src	2	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction);
+src	1	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	ptc_hero_morph->SetBerserkSkin(fraction);
+src	2	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	ptc_hero_morph->SetBerserkSkin(fraction);
+src	1	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction + fraction);
+src	2	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction + fraction);
+src	1	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	/**/;
+src	2	ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction);	/**/;
+src	1	if (ptc_graphic_appearance)	if (!ptc_graphic_appearance)
+src	2	if (ptc_graphic_appearance)	if (!ptc_graphic_appearance)
+src	1	if (ptc_graphic_appearance)	if (true)
+src	2	if (ptc_graphic_appearance)	if (true)
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorG[SpellLevel], PDef->TintColorR[SpellLevel], PDef->TintColorB[SpellLevel]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorG[SpellLevel], PDef->TintColorR[SpellLevel], PDef->TintColorB[SpellLevel]);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorB[SpellLevel], PDef->TintColorG[SpellLevel]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorB[SpellLevel], PDef->TintColorG[SpellLevel]);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorB[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorR[SpellLevel]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorB[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorR[SpellLevel]);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[0], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[0], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[0], PDef->TintColorB[SpellLevel]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[0], PDef->TintColorB[SpellLevel]);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[0]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[0]);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel], 0);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel], 0);
+src	1	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(255, PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);
+src	2	CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);	CRGBColour c(255, PDef->TintColorG[SpellLevel], PDef->TintColorB[SpellLevel]);
+src	1	CRGBColour white(255, 255, 255);	CRGBColour white(255, 255, 0);
+src	2	CRGBColour white(255, 255, 255);	CRGBColour white(255, 255, 0);
+src	1	CRGBColour white(255, 255, 255);	CRGBColour white(0, 255, 255);
+src	2	CRGBColour white(255, 255, 255);	CRGBColour white(0, 255, 255);
+src	1	CRGBColour white(255, 255, 255);	CRGBColour white(255, 0, 255);
+src	2	CRGBColour white(255, 255, 255);	CRGBColour white(255, 0, 255);
+src	1	CRGBColour white(255, 255, 255);	CRGBColour white(255, 255, 255, 0);
+src	2	CRGBColour white(255, 255, 255);	CRGBColour white(255, 255, 255, 0);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(c.Interpolate(white, fraction), this);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(c.Interpolate(white, fraction), this);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, 1.0f - fraction), this);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, 1.0f - fraction), this);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction * 0.5f), this);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction * 0.5f), this);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), 0);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), 0);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), pcreature);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), pcreature);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white, this);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(white, this);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(c, this);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	ptc_graphic_appearance->SetTintColour(c, this);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	white.Interpolate(c, fraction);
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	white.Interpolate(c, fraction);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	/**/;
+src	2	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);	/**/;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) * fraction;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) * fraction;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale + 1.0f) * fraction + 1.0f;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale + 1.0f) * fraction + 1.0f;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) * fraction - 1.0f;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) * fraction - 1.0f;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = BerserkScale * fraction + 1.0f;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = BerserkScale * fraction + 1.0f;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) + 1.0f;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) + 1.0f;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkDamageToEnemy - 1.0f) * fraction + 1.0f;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkDamageToEnemy - 1.0f) * fraction + 1.0f;
+src	2	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) * (1.0f - fraction) + 1.0f;
+src	3	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;	float berserk_fraction = (BerserkScale - 1.0f) * (1.0f - fraction) + 1.0f;
+src	1	ptc_graphic_appearance->SetScale(berserk_fraction);	ptc_graphic_appearance->SetScale(fraction);
+src	2	ptc_graphic_appearance->SetScale(berserk_fraction);	ptc_graphic_appearance->SetScale(fraction);
+src	1	ptc_graphic_appearance->SetScale(berserk_fraction);	/**/;
+src	2	ptc_graphic_appearance->SetScale(berserk_fraction);	/**/;
+src	1	ptc_graphic_appearance->SetScale(berserk_fraction);	ptc_graphic_appearance->SetScale(BerserkScale);
+src	2	ptc_graphic_appearance->SetScale(berserk_fraction);	ptc_graphic_appearance->SetScale(BerserkScale);
+src	1	ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);\n                float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;\n                ptc_graphic_appearance->SetScale(berserk_fraction);	float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f;\n                ptc_graphic_appearance->SetScale(berserk_fraction);\n                ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction), this);
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (Paused || Timer < PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (!Paused && Timer < PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (!Paused || Timer <= PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (!Paused || Timer > PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (!Paused)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (Timer < PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (!IsInCutscene || Timer < PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (!Paused || AnimTimer < PDef->FramesToFadeOut)
+src	1	if (!Paused || Timer < PDef->FramesToFadeOut)	if (true)
+src	1	if (!IsInCutscene)\n                Timer--;	if (IsInCutscene)\n                Timer--;
+src	1	if (!IsInCutscene)\n                Timer--;	if (!Paused)\n                Timer--;
+src	1	if (!IsInCutscene)\n                Timer--;	if (!IsInCutscene)\n                Timer++;
+src	1	if (!IsInCutscene)\n                Timer--;	if (!IsInCutscene)\n                Timer -= 2;
+src	1	if (!IsInCutscene)\n                Timer--;	if (!IsInCutscene)\n                ;
+src	1	else if (Timer >= PDef->FramesToFadeOut)\n                Timer--;	else if (Timer > PDef->FramesToFadeOut)\n                Timer--;
+src	1	else if (Timer >= PDef->FramesToFadeOut)\n                Timer--;	else if (Timer < PDef->FramesToFadeOut)\n                Timer--;
+src	1	else if (Timer >= PDef->FramesToFadeOut)\n                Timer--;	else\n                Timer--;
+src	1	else if (Timer >= PDef->FramesToFadeOut)\n                Timer--;	else if (Timer >= PDef->FramesToFadeOut)\n                Timer++;
+src	1	else if (Timer >= PDef->FramesToFadeOut)\n                Timer--;	else if (Timer >= PDef->FramesToFadeOut)\n                ;
+src	1	C3DVector pos = pcreature->GetPos();	C3DVector pos = pcreature->GetPos() * 2.0f;
+src	1	C3DVector pos = pcreature->GetPos();	C3DVector pos(pcreature->GetPos().Y, pcreature->GetPos().X, pcreature->GetPos().Z);
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z - PDef->BlurCenterFromFloor));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y + PDef->BlurCenterFromFloor, pos.Z));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X + PDef->BlurCenterFromFloor, pos.Y, pos.Z));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->LowerBerserkPercent));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(this, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	sei.RadialBlurSetCenterWorldPos(0, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));
+src	1	sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurCenterFromFloor));	/**/;
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer <= 0 && !IsInCutscene)
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer < 0 || !IsInCutscene)
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer < 0 && IsInCutscene)
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer < 0)
+src	1	if (Timer < 0 && !IsInCutscene)	if (!IsInCutscene)
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer < -1 && !IsInCutscene)
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer < 0 && !Paused)
+src	1	if (Timer < 0 && !IsInCutscene)	if (Timer > 0 && !IsInCutscene)
+src	1	CleanupAbility(false);	CleanupAbility(true);
+src	1	CleanupAbility(false);	/**/;
+src	1	pcreature->RemoveTC(TCI_BERSERK);	/**/;
+src	1	pcreature->RemoveTC(TCI_BERSERK);	pcreature->RemoveTC(TCI_ENTITY_MODE_MANAGER);
+src	1	CleanupAbility(false);\n            pcreature->RemoveTC(TCI_BERSERK);	pcreature->RemoveTC(TCI_BERSERK);\n            CleanupAbility(false);
+src	1	else if (Timer < PDef->FramesToFadeOut)	else if (Timer <= PDef->FramesToFadeOut)
+src	1	else if (Timer < PDef->FramesToFadeOut)	else if (Timer > PDef->FramesToFadeOut)
+src	1	else if (Timer < PDef->FramesToFadeOut)	else if (Timer < PDef->FramesToFadeOut - 1)
+src	1	else if (Timer < PDef->FramesToFadeOut)	else
+src	1	else if (Timer < PDef->FramesToFadeOut)	if (Timer < PDef->FramesToFadeOut)
+src	1	else if (Timer < PDef->FramesToFadeOut)	else if (AnimTimer < PDef->FramesToFadeOut)
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = (float)PDef->FramesToFadeOut / (float)Timer;
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = (float)Timer;
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = (float)(Timer / PDef->FramesToFadeOut);
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = (float)AnimTimer / (float)PDef->FramesToFadeOut;
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = 1.0f - (float)Timer / (float)PDef->FramesToFadeOut;
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = (float)(Timer + 1) / (float)PDef->FramesToFadeOut;
+src	1	float fraction = (float)Timer / (float)PDef->FramesToFadeOut;	float fraction = (float)Timer / ReleasedAnimationTimer;
+hdr:engine/CTCOpinionSource.h	1	void SetReactNonstop(bool value) { ReactNonstopFlag = value; }	void SetReactNonstop(bool value) { ReactNonstopFlag = !value; }
+hdr:engine/CTCOpinionSource.h	1	void SetReactNonstop(bool value) { ReactNonstopFlag = value; }	void SetReactNonstop(bool value) { UnknownThreatSource = value; }
+hdr:engine/CTCOpinionSource.h	1	void SetReactNonstop(bool value) { ReactNonstopFlag = value; }	void SetReactNonstop(bool value) { AlwaysAwareOf = value; }
+hdr:engine/CTCOpinionSource.h	1	void SetReactNonstop(bool value) { ReactNonstopFlag = value; }	void SetReactNonstop(bool value) { }

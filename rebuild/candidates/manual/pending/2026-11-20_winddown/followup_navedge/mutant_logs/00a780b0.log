@@ -1,0 +1,11 @@
+baseline SURVIVED
+KILLED | Neighbour1->Neighbours.end(), Neighbour2); -> Neighbour1->Neighbours.end(), Neighbour1);
+SURVIVED | < Neighbour1->Neighbours.Size - 1) -> < Neighbour1->Neighbours.Size)
+KILLED | < Neighbour2->Neighbours.Size - 1) -> < Neighbour2->Neighbours.Size - 2)
+KILLED | Neighbour1->Neighbours.Start[Neighbour1->Neighbours.Size - 1] -> Neighbour1->Neighbours.Start[0]
+KILLED |     Neighbour2->Neighbours.pop_back();  -> 
+KILLED |     Neighbour1->Neighbours.pop_back();  ->     Neighbour2->Neighbours.pop_back(); 
+KILLED | pregion1->RemoveConnectionToRegion(*pregion2); -> pregion2->RemoveConnectionToRegion(*pregion1);
+KILLED | std::swap(*neighbour2s_pointer_to_1, Neighbour2->Neighbours.Start[Neig -> std::swap(*neighbour1s_pointer_to_2, Neighbour2->N
+KILLED | Neighbour2->Neighbours.end(), Neighbour1); -> Neighbour2->Neighbours.end(), Neighbour2);
+KILLED |     pregion1->RemoveConnectionToRegion(*pregion2);  -> 

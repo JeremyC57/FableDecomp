@@ -1,0 +1,5 @@
+baseline SURVIVED
+KILLED | pmy_old_region->RemoveConnectionToRegion(*regions_connecting_to[c1]); -> pmy_old_region->SetAsConnectedToRegion(*regions_co
+KILLED | pmy_region->SetAsConnectedToRegion(*regions_connecting_to[c1]); -> pmy_region->RemoveConnectionToRegion(*regions_conn
+SURVIVED | !pneighbour->IsNavigable() -> pneighbour->IsNavigable()
+KILLED | !pneighbour->IsNavigable() -> pneighbour->IsNavigable()

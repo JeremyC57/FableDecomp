@@ -1,0 +1,269 @@
+baseline SURVIVED   (test rev 2 for the lines marked [rev 2]; the rest ran against rev 1, which differs only by logging less)
+KILLED | if (JustReleased) -> if (!JustReleased)
+KILLED | if (JustReleased) -> if (Paused)
+KILLED | bool start_animation_finished = pcreature->SetCurrentAction(CCreatureA -> bool start_animation_finished = !pcreature->SetCur
+KILLED | bool start_animation_finished = pcreature->SetCurrentAction(CCreatureA -> CCreatureAction_ReleaseStrengthBerserk action(*pcr
+KILLED | if (start_animation_finished) -> if (!start_animation_finished)
+KILLED | if (start_animation_finished) -> if (true)
+KILLED | JustReleased = false; -> /**/;
+KILLED | JustReleased = false; -> JustReleased = true;
+KILLED | JustReleased = false; -> Paused = false;
+KILLED | pcreature->MakeNoise("SIMPLE_NOISE"); -> /**/;
+KILLED | pcreature->MakeNoise("SIMPLE_NOISE"); -> pcreature->MakeNoise("OPINION_SOURCE_BERSERK");
+KILLED | pcreature->MakeNoise("SIMPLE_NOISE"); -> pcreature->MakeNoise("");
+KILLED |             JustReleased = false;             pcreature->MakeNoise("SI ->             pcreature->MakeNoise("SIMPLE_NOISE");    [rev 2]
+KILLED | if (IS_THING_ALIVE(StartUpEffect)) -> if (!IS_THING_ALIVE(StartUpEffect))
+KILLED | if (IS_THING_ALIVE(StartUpEffect)) -> if (StartUpEffect != 0)
+KILLED | if (IS_THING_ALIVE(StartUpEffect)) -> if (IS_THING_ALIVE(BerserkBodyEffect))
+KILLED | StartUpEffect->Kill(true); -> StartUpEffect->Kill(false);
+KILLED | StartUpEffect->Kill(true); -> pcreature->Kill(true);
+KILLED | StartUpEffect->Kill(true); -> /**/;
+KILLED | if (man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc -> if (!man.AttachOpinionSource(*pcreature, "OPINION_
+KILLED | if (man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc -> if (man.AttachOpinionSource(*pcreature, "SIMPLE_NO
+KILLED | if (man.AttachOpinionSource(*pcreature, "OPINION_SOURCE_BERSERK", &ptc -> if (man.AttachOpinionSource(GetParentThing(), "OPI
+KILLED | ptc_opinion_source->SetReactNonstop(true); -> ptc_opinion_source->SetReactNonstop(false);
+KILLED | ptc_opinion_source->SetReactNonstop(true); -> /**/;
+KILLED |             if (IS_THING_ALIVE(StartUpEffect))                 StartUp -> /**/
+KILLED | if (SpellLevel >= 0) -> if (SpellLevel > 0)
+KILLED | if (SpellLevel >= 0) -> if (SpellLevel < 0)
+KILLED | if (SpellLevel >= 0) -> if (true)
+KILLED | if (SpellLevel >= 0) -> if (SpellLevel >= 1)
+KILLED | float search_radius = PDef->BerserkBlastRadius; -> float search_radius = PDef->BlurCenterFromFloor;
+KILLED | float search_radius = PDef->BerserkBlastRadius; -> float search_radius = PDef->BerserkBlastRadius * 2
+KILLED | float search_radius = PDef->BerserkBlastRadius; -> float search_radius = -PDef->BerserkBlastRadius;
+KILLED | C3DVector center = pcreature->GetPos(); -> C3DVector center = StartUpEffect->GetPos();
+KILLED | C3DVector center = pcreature->GetPos(); -> C3DVector center(pcreature->GetPos().Y, pcreature-
+KILLED | C3DVector center = pcreature->GetPos(); -> C3DVector center = pcreature->GetPos() * 2.0f;
+KILLED | C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius); -> C2DBoxI search_area(center.ToC2DCoordI(), (long)se
+KILLED | C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius); -> C2DBoxI search_area(center.ToC2DCoordI(), 0);
+KILLED | C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius); -> C2DBoxI search_area(center.ToC2DCoordI(), (long)(s
+KILLED | C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius); -> C2DBoxI search_area(C2DCoordI(0, 0), (long)search_
+KILLED | C2DBoxI search_area(center.ToC2DCoordI(), (long)search_radius); -> C2DBoxI search_area(C2DCoordI((long)center.Y, (lon
+KILLED | GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFi -> GFFilter_Bind2(CThingFilter_In2DRange(center, 0.0f
+KILLED | GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFi -> GFFilter_Bind2(CThingFilter_In2DRange(center, sear
+KILLED | GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFi -> GFFilter_Bind2(CThingFilter_In2DRange(C3DVector(0.
+KILLED | GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFi -> GFFilter_Bind2(CThingFilter_In2DRange(center, sear
+KILLED | GFFilter_Bind2(CThingFilter_In2DRange(center, search_radius), CThingFi -> GFFilter_Bind2(CThingFilter_CanBeHitByEpicSpell(),
+KILLED |                 PeekThingSearchTools().GetAllThingsInRoughArea<CThingG -> /**/
+KILLED | it != endit; ++it) -> it != endit; ++it, ++it)
+KILLED | for (std::list<CThingGameObject*>::iterator it = things.begin(), endit -> for (std::list<CThingGameObject*>::iterator it = t
+KILLED | for (std::list<CThingGameObject*>::iterator it = things.begin(), endit -> for (std::list<CThingGameObject*>::iterator it = +
+KILLED | for (std::list<CThingGameObject*>::iterator it = things.begin(), endit -> for (std::list<CThingGameObject*>::iterator it = t
+KILLED | if (something != pcreature) -> if (something == pcreature)
+KILLED | if (something != pcreature) -> if (true)
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if ((something->GetTypeFlags() & 8) || CTCEnemy::A
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(something->GetTypeFlags() & 8) && CTCEnemy::
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(something->GetTypeFlags() & 8) || !CTCEnemy:
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(something->GetTypeFlags() & 8))
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (CTCEnemy::AreThingsEnemies(*pcreature, *someth
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(something->GetTypeFlags() & 4) || CTCEnemy::
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(something->GetTypeFlags() & 0x18) || CTCEnem   [rev 2]
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(something->GetTypeFlags() & 8) || CTCEnemy::
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (!(pcreature->GetTypeFlags() & 8) || CTCEnemy::
+KILLED | if (!(something->GetTypeFlags() & 8) || CTCEnemy::AreThingsEnemies(*pc -> if (true)
+KILLED | C3DVector direction = something->GetPos() - pcreature->GetPos(); -> C3DVector direction = pcreature->GetPos() - someth
+KILLED | C3DVector direction = something->GetPos() - pcreature->GetPos(); -> C3DVector direction = something->GetPos();
+SURVIVED | C3DVector direction = something->GetPos() - pcreature->GetPos(); -> C3DVector direction = something->GetPos() - center   [rev 2]
+KILLED | C3DVector direction = something->GetPos() - pcreature->GetPos(); -> C3DVector direction = something->GetPos() + pcreat
+KILLED | direction.Normalise(); -> /**/;
+KILLED | direction.Normalise(); -> direction.Normalise(); direction = direction * 2.0
+KILLED | C3DVector point_of_hit = something->GetPos() - direction; -> C3DVector point_of_hit = something->GetPos() + dir
+KILLED | C3DVector point_of_hit = something->GetPos() - direction; -> C3DVector point_of_hit = something->GetPos();
+KILLED | C3DVector point_of_hit = something->GetPos() - direction; -> C3DVector point_of_hit = pcreature->GetPos() - dir
+KILLED | C3DVector point_of_hit = something->GetPos() - direction; -> C3DVector point_of_hit = direction;
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, something, 0, point_of
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, 0, 0, point_of_hit, di
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, pcreature, 
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, 0, directio
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, 0, point_of
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, 0, point_of
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, 0, point_of
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, 0, point_of
+KILLED | CHitParameters hit_param(0, pcreature, 0, point_of_hit, direction, tru -> CHitParameters hit_param(0, pcreature, 0, point_of
+KILLED | hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f); -> hit_param.AddDamageWithAttribute((EDamageAttribute
+KILLED | hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f); -> hit_param.AddDamageWithAttribute((EDamageAttribute
+KILLED | hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f); -> hit_param.AddDamageWithAttribute((EDamageAttribute
+KILLED | hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f); -> /**/;
+KILLED | something->OnHit(hit_param); -> /**/;
+KILLED | something->OnHit(hit_param); -> pcreature->OnHit(hit_param);
+KILLED | something->OnHit(hit_param); -> something->OnHit(hit_param); something->OnHit(hit_
+KILLED | hit_param.AddDamageWithAttribute((EDamageAttribute)0, 0.001f);         -> something->OnHit(hit_param);                      
+KILLED | GetParentThing().GetTC(&ptc_mode_manager); -> GetParentThing().GetTC((CTCCreatureModeManager**)&
+KILLED | if (!ptc_mode_manager->IsModeActive(0x24)) -> if (ptc_mode_manager->IsModeActive(0x24))
+KILLED | if (!ptc_mode_manager->IsModeActive(0x24)) -> if (!ptc_mode_manager->IsModeActive(0x25))
+KILLED | if (!ptc_mode_manager->IsModeActive(0x24)) -> if (true)
+KILLED | ptc_mode_manager->AddMode(0x24); -> ptc_mode_manager->AddMode(0x25);
+KILLED | ptc_mode_manager->AddMode(0x24); -> /**/;
+KILLED | AnimTimer++; -> /**/;
+KILLED | AnimTimer++; -> AnimTimer--;
+KILLED | AnimTimer++; -> AnimTimer += 2;
+KILLED | AnimTimer++; -> Timer++;
+KILLED | if (AnimTimer < ReleasedAnimationTimer) -> if (AnimTimer <= ReleasedAnimationTimer)
+KILLED | if (AnimTimer < ReleasedAnimationTimer) -> if (AnimTimer > ReleasedAnimationTimer)
+KILLED | if (AnimTimer < ReleasedAnimationTimer) -> if (AnimTimer < ReleasedAnimationTimer - 1.0f)
+KILLED | if (AnimTimer < ReleasedAnimationTimer) -> if (true)
+KILLED | if (AnimTimer < ReleasedAnimationTimer) -> if (Timer < ReleasedAnimationTimer)
+KILLED | if (AnimTimer < ReleasedAnimationTimer) -> if (AnimTimer < (long)ReleasedAnimationTimer)
+KILLED | float fraction = (float)AnimTimer / ReleasedAnimationTimer; -> float fraction = ReleasedAnimationTimer / (float)A
+KILLED | float fraction = (float)AnimTimer / ReleasedAnimationTimer; -> float fraction = (float)AnimTimer;
+KILLED | float fraction = (float)AnimTimer / ReleasedAnimationTimer; -> float fraction = (float)Timer / ReleasedAnimationT
+KILLED | float fraction = (float)AnimTimer / ReleasedAnimationTimer; -> float fraction = (float)(AnimTimer - 1) / Released
+KILLED | float fraction = (float)AnimTimer / ReleasedAnimationTimer; -> float fraction = 1.0f - (float)AnimTimer / Release
+KILLED | if (pcreature->GetTC(&ptc_hero_morph)) -> if (!pcreature->GetTC(&ptc_hero_morph))
+KILLED | if (pcreature->GetTC(&ptc_hero_morph)) -> if (!pcreature->GetTC(&ptc_hero_morph))
+KILLED | if (pcreature->GetTC(&ptc_hero_morph)) -> if (pcreature->GetTC(&ptc_hero_morph) && false)
+KILLED | if (pcreature->GetTC(&ptc_hero_morph)) -> if (pcreature->GetTC(&ptc_hero_morph) && false)
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->LowerBerserkPe
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->LowerBerserkPe
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->LowerBerserkPe
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->LowerBerserkPe
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = MaxIncreaseInStrengt
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = MaxIncreaseInStrengt
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->BlurCenterFrom
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->BlurCenterFrom
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->LowerBerserkPe
+KILLED | float berserk_skin_fraction = PDef->LowerBerserkPercent + MaxIncreaseI -> float berserk_skin_fraction = PDef->LowerBerserkPe
+KILLED | if (berserk_skin_fraction > 1.0f) -> if (berserk_skin_fraction < 1.0f)
+KILLED | if (berserk_skin_fraction > 1.0f) -> if (berserk_skin_fraction < 1.0f)
+KILLED | if (berserk_skin_fraction > 1.0f) -> if (berserk_skin_fraction > 0.5f)
+KILLED | if (berserk_skin_fraction > 1.0f) -> if (berserk_skin_fraction > 0.5f)
+KILLED | if (berserk_skin_fraction > 1.0f) -> if (false)
+KILLED | if (berserk_skin_fraction > 1.0f) -> if (false)
+KILLED | berserk_skin_fraction = 1.0f; -> berserk_skin_fraction = 0.0f;
+KILLED | berserk_skin_fraction = 1.0f; -> berserk_skin_fraction = 0.0f;
+KILLED | berserk_skin_fraction = 1.0f; -> berserk_skin_fraction = 0.5f;
+KILLED | berserk_skin_fraction = 1.0f; -> berserk_skin_fraction = 0.5f;
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> ptc_hero_morph->SetBerserkSkin(berserk_skin_fracti
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> ptc_hero_morph->SetBerserkSkin(berserk_skin_fracti
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> ptc_hero_morph->SetBerserkSkin(fraction);
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> ptc_hero_morph->SetBerserkSkin(fraction);
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> ptc_hero_morph->SetBerserkSkin(berserk_skin_fracti
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> ptc_hero_morph->SetBerserkSkin(berserk_skin_fracti
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> /**/;
+KILLED | ptc_hero_morph->SetBerserkSkin(berserk_skin_fraction * fraction); -> /**/;
+KILLED | if (ptc_graphic_appearance) -> if (!ptc_graphic_appearance)
+KILLED | if (ptc_graphic_appearance) -> if (!ptc_graphic_appearance)
+KILLED | if (ptc_graphic_appearance) -> if (true)
+KILLED | if (ptc_graphic_appearance) -> if (true)
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorG[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorG[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorB[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorB[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[0], PDef->TintColorG
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[0], PDef->TintColorG
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(PDef->TintColorR[SpellLevel], PDef->T
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(255, PDef->TintColorG[SpellLevel], PD
+KILLED | CRGBColour c(PDef->TintColorR[SpellLevel], PDef->TintColorG[SpellLevel -> CRGBColour c(255, PDef->TintColorG[SpellLevel], PD
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(255, 255, 0);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(255, 255, 0);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(0, 255, 255);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(0, 255, 255);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(255, 0, 255);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(255, 0, 255);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(255, 255, 255, 0);
+KILLED | CRGBColour white(255, 255, 255); -> CRGBColour white(255, 255, 255, 0);
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(c.Interpolat
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(c.Interpolat
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white.Interp
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white, this)
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(white, this)
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(c, this);
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> ptc_graphic_appearance->SetTintColour(c, this);
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> white.Interpolate(c, fraction);
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> white.Interpolate(c, fraction);
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> /**/;
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> /**/;
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) * f   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) * f   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale + 1.0f) * f   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale + 1.0f) * f   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) * f   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) * f   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = BerserkScale * fraction +   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = BerserkScale * fraction +   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) + 1   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) + 1   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkDamageToEnemy - 1   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkDamageToEnemy - 1   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) * (   [rev 2]
+KILLED | float berserk_fraction = (BerserkScale - 1.0f) * fraction + 1.0f; -> float berserk_fraction = (BerserkScale - 1.0f) * (   [rev 2]
+KILLED | ptc_graphic_appearance->SetScale(berserk_fraction); -> ptc_graphic_appearance->SetScale(fraction);
+KILLED | ptc_graphic_appearance->SetScale(berserk_fraction); -> ptc_graphic_appearance->SetScale(fraction);
+KILLED | ptc_graphic_appearance->SetScale(berserk_fraction); -> /**/;
+KILLED | ptc_graphic_appearance->SetScale(berserk_fraction); -> /**/;
+KILLED | ptc_graphic_appearance->SetScale(berserk_fraction); -> ptc_graphic_appearance->SetScale(BerserkScale);
+KILLED | ptc_graphic_appearance->SetScale(berserk_fraction); -> ptc_graphic_appearance->SetScale(BerserkScale);
+KILLED | ptc_graphic_appearance->SetTintColour(white.Interpolate(c, fraction),  -> float berserk_fraction = (BerserkScale - 1.0f) * f
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (Paused || Timer < PDef->FramesToFadeOut)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (!Paused && Timer < PDef->FramesToFadeOut)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (!Paused || Timer <= PDef->FramesToFadeOut)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (!Paused || Timer > PDef->FramesToFadeOut)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (!Paused)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (Timer < PDef->FramesToFadeOut)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (!IsInCutscene || Timer < PDef->FramesToFadeOut
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (!Paused || AnimTimer < PDef->FramesToFadeOut)
+KILLED | if (!Paused || Timer < PDef->FramesToFadeOut) -> if (true)
+KILLED | if (!IsInCutscene)                 Timer--; -> if (IsInCutscene)                 Timer--;
+KILLED | if (!IsInCutscene)                 Timer--; -> if (!Paused)                 Timer--;
+KILLED | if (!IsInCutscene)                 Timer--; -> if (!IsInCutscene)                 Timer++;
+KILLED | if (!IsInCutscene)                 Timer--; -> if (!IsInCutscene)                 Timer -= 2;
+KILLED | if (!IsInCutscene)                 Timer--; -> if (!IsInCutscene)                 ;
+KILLED | else if (Timer >= PDef->FramesToFadeOut)                 Timer--; -> else if (Timer > PDef->FramesToFadeOut)           
+KILLED | else if (Timer >= PDef->FramesToFadeOut)                 Timer--; -> else if (Timer < PDef->FramesToFadeOut)           
+KILLED | else if (Timer >= PDef->FramesToFadeOut)                 Timer--; -> else                 Timer--;
+KILLED | else if (Timer >= PDef->FramesToFadeOut)                 Timer--; -> else if (Timer >= PDef->FramesToFadeOut)          
+KILLED | else if (Timer >= PDef->FramesToFadeOut)                 Timer--; -> else if (Timer >= PDef->FramesToFadeOut)          
+KILLED | C3DVector pos = pcreature->GetPos(); -> C3DVector pos = pcreature->GetPos() * 2.0f;
+KILLED | C3DVector pos = pcreature->GetPos(); -> C3DVector pos(pcreature->GetPos().Y, pcreature->Ge
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(this, C3DVector(po
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> sei.RadialBlurSetCenterWorldPos(0, C3DVector(pos.X
+KILLED | sei.RadialBlurSetCenterWorldPos(RadialBlurFadeKey, C3DVector(pos.X, po -> /**/;
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer <= 0 && !IsInCutscene)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer < 0 || !IsInCutscene)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer < 0 && IsInCutscene)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer < 0)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (!IsInCutscene)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer < -1 && !IsInCutscene)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer < 0 && !Paused)
+KILLED | if (Timer < 0 && !IsInCutscene) -> if (Timer > 0 && !IsInCutscene)
+KILLED | CleanupAbility(false); -> CleanupAbility(true);
+KILLED | CleanupAbility(false); -> /**/;
+KILLED | pcreature->RemoveTC(TCI_BERSERK); -> /**/;
+KILLED | pcreature->RemoveTC(TCI_BERSERK); -> pcreature->RemoveTC(TCI_ENTITY_MODE_MANAGER);
+KILLED | CleanupAbility(false);             pcreature->RemoveTC(TCI_BERSERK); -> pcreature->RemoveTC(TCI_BERSERK);             Clea
+KILLED | else if (Timer < PDef->FramesToFadeOut) -> else if (Timer <= PDef->FramesToFadeOut)
+KILLED | else if (Timer < PDef->FramesToFadeOut) -> else if (Timer > PDef->FramesToFadeOut)
+KILLED | else if (Timer < PDef->FramesToFadeOut) -> else if (Timer < PDef->FramesToFadeOut - 1)
+KILLED | else if (Timer < PDef->FramesToFadeOut) -> else
+KILLED | else if (Timer < PDef->FramesToFadeOut) -> if (Timer < PDef->FramesToFadeOut)
+KILLED | else if (Timer < PDef->FramesToFadeOut) -> else if (AnimTimer < PDef->FramesToFadeOut)
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = (float)PDef->FramesToFadeOut / (f
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = (float)Timer;
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = (float)(Timer / PDef->FramesToFad
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = (float)AnimTimer / (float)PDef->F
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = 1.0f - (float)Timer / (float)PDef
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = (float)(Timer + 1) / (float)PDef-
+KILLED | float fraction = (float)Timer / (float)PDef->FramesToFadeOut; -> float fraction = (float)Timer / ReleasedAnimationT
+KILLED | [engine/CTCOpinionSource.h] void SetReactNonstop(bool value) { ReactNonstopFlag = value; -> void SetReactNonstop(bool value) { ReactNonstopFla
+KILLED | [engine/CTCOpinionSource.h] void SetReactNonstop(bool value) { ReactNonstopFlag = value; -> void SetReactNonstop(bool value) { UnknownThreatSo
+KILLED | [engine/CTCOpinionSource.h] void SetReactNonstop(bool value) { ReactNonstopFlag = value; -> void SetReactNonstop(bool value) { AlwaysAwareOf =
+KILLED | [engine/CTCOpinionSource.h] void SetReactNonstop(bool value) { ReactNonstopFlag = value; -> void SetReactNonstop(bool value) { }
