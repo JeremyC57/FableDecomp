@@ -1,0 +1,2 @@
+entry	address	status	binders_respelled	note
+fix-nf111	0x0053DFE0	done	1	ctor ported onto the shared header: the three vtable splits at 0x0124662C / 0x012465FC (nf111) and 0x01246604 (older) heal (exe scan: only 0x0053DFE0 and 0x0053E4E0 reference them); callee 0x0053DA30 renamed GetDataFromDef with its self row in the same hand-back (binders respelled: 0x0053DFE0)

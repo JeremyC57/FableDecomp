@@ -1415,11 +1415,6 @@ _FableHelp_515700@4	0042b467	00515700
 ?Helper@CForwarder_0053cc90@@QAEPAXPAXABUSScalarTag@@J@Z	0053cc38	0053cc90
 ?Override_0053cfa6@CMulti_0053cfa6@@UAEXXZ	0053cfa6	0053ce87
 ?BaseChangeState@CMenuEntry@NUISystem@@QAEXK@Z	0052cf40	0053d3b0
-??0CClickable@NUISystem@@QAE@J@Z	0055b460	0053dfe0
-??_7CMenuEntry@NUISystem@@6BCClickableBase0@1@@	0124662c	0053dfe0
-??_7CMenuEntry@NUISystem@@6BCClickableBase1@1@@	01246604	0053dfe0
-??_7CMenuEntry@NUISystem@@6BCClickableBase2@1@@	012465fc	0053dfe0
-?InitializeRumbleActions@CMenuEntry@NUISystem@@QAEXXZ	0053da30	0053dfe0
 ??_7CScrollingViewport@NUISystem@@6BIViewportPrimary_0053f120@@@	012468d4	0053f120
 ??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryA_0053f120@@@	012468ac	0053f120
 ??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryB_0053f120@@@	012468a4	0053f120
@@ -40111,3 +40106,5 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?GFGetSystemManager@@YIPAVCSystemManager@@XZ	009a4ec0	004299a8
 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ	009bedc0	004299a8
 ?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXPBVC2DVector@@W4EEngine2DLayer@@@Z	00aed090	00543ee0
+??0CClickable@NUISystem@@QAE@J@Z	0055b460	0053dfe0
+?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ	0053da30	0053dfe0

@@ -1,0 +1,7 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0053DA30	NUISystem::CMenuEntry	GetDataFromDef	?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ	NUISystem::CMenuEntry::InitializeRumbleActions	?InitializeRumbleActions@CMenuEntry@NUISystem@@QAEXXZ	Ego_r.pdb + FableWin.pdb publics: ?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ is CMenuEntry's only out-of-line non-virtual void() member, InitializeRumbleActions/InitialiseRumble is in neither PDB (grep of Ego_r + FableWin publics, symbols and types: 0 hits); engine/NUISystem_CMenuEntry.h already declares GetDataFromDef as 0x0053DA30; the body reads the entry's def into members (def +0x184 -> this +0x18C = CClickable::InputDelay, Ego_r +444 less 0x30) and the ctor calls it last like every sibling component ctor (CClickable 0x0055B460 -> GetDataFromDef 0x0055B040); respelled in place in the row's existing local model; old leaf from the HEAD object; RELOCATION_MATCH + PASS (recheck_final.log)
+# Section 2
+0x0053DFE0	??_7CMenuEntry@NUISystem@@6BCClickableBase0@1@@	??_7CMenuEntry@NUISystem@@6BCUIInterface@1@@	0x0124662C
+0x0053DFE0	??_7CMenuEntry@NUISystem@@6BCClickableBase1@1@@	??_7CMenuEntry@NUISystem@@6BCObserver@1@@	0x01246604
+0x0053DFE0	??_7CMenuEntry@NUISystem@@6BCClickableBase2@1@@	??_7CMenuEntry@NUISystem@@6BCActionParam@1@@	0x012465FC
+0x0053DFE0	?InitializeRumbleActions@CMenuEntry@NUISystem@@QAEXXZ	?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ	0x0053DA30

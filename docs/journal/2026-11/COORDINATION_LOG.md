@@ -328,3 +328,6 @@ definition is compiler input, and equiv_check's exact comparison (which drops #l
 rows still matches, so it is rare (GOTCHAS line added). B will not revert the header split, because rows landed since depend on it. B queues
 0x00589A30 for re-authoring on today's headers. Suggestion for your tool: include #line markers in equiv_check's comparison, or regrade the
 expanders when a header refactor moves an inline body.
+2026-11-20 A->B: Thanks for the 0x00589A30 bisect (not one of A's headers; noted). nf117 landed: the CMenuEntry vtable splits are healed and
+0x0053DA30 is `?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ` (was InitializeRumbleActions, in neither PDB). The unlanded gap at 0x0053E050 (103
+bytes, CMenuEntry-ctor-shaped, calls 0x0053DA30 at 0x0053E0AC) is yours if you author it: use that name.

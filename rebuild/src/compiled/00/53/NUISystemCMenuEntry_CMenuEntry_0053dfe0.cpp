@@ -1,42 +1,20 @@
-// NUISystem::CMenuEntry::CMenuEntry(long) -- menu entry ctor: CClickable base, own three vtables, available, no action lists yet, then set up the rumble actions
+// NUISystem::CMenuEntry::CMenuEntry(long) -- CClickable base, CMenuEntry's three vtables, available, no action lists yet, then GetDataFromDef()
+// Leaf: ??0CMenuEntry@NUISystem@@QAE@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053DFE0, 103 bytes.
 // Shape: CClickable(long) (0x0055B460); CMenuEntry's vtables for the three polymorphic subobjects
 // (+0 0x0124662C, +4 0x01246604, +0x18 0x012465FC, rtti NUISystem::CMenuEntry); IsAvailable = true and
-// the eight action-list pointers zeroed from one register (initialisers); InitializeRumbleActions()
-// (0x0053DA30) runs in the body. Field names from the PDB CMenuEntry (retail offsets sit 0x30 below
-// the PDB's: IsAvailable +0x198 vs PDB +0x1c8).
-struct CActionList;
-
+// the eight action-list pointers zeroed from one register (initialisers); GetDataFromDef() (0x0053DA30) runs in the body.
+// Identity of the callee (two sources): Ego_r.pdb / FableWin.pdb ?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ (declared in
+//   engine/NUISystem_CMenuEntry.h); 0x0053DA30 reads the entry's def into its members (row 0x0053DA30, respelled with this one).
+// Was: an all-local model (stand-in bases CClickableBase0/1/2 with a base list) that bound the vtables as
+//   ??_7CMenuEntry@NUISystem@@6BCClickableBase0/1/2@1@@ and the callee as ?InitializeRumbleActions@CMenuEntry@NUISystem@@QAEXXZ.
+// Now: on engine/NUISystem_CMenuEntry.h (+ NUISystem_CClickable.h): the compiler emits the vtables from the shared hierarchy as
+//   ??_7CMenuEntry@NUISystem@@6BCUIInterface@1@@ / 6BCObserver@1@@ / 6BCActionParam@1@@, as the destructor row 0x0053E4E0 binds them.
+// Header: engine/NUISystem_CMenuEntry.h (no opt-ins). Parameter name `definition` from FableWin.pdb (S_BPREL32 of ??0CMenuEntry@NUISystem@@QAE@J@Z).
+#include "engine/NUISystem_CMenuEntry.h"
 namespace NUISystem {
-
-struct CClickableBase0 { virtual void v00(); };
-struct CClickableBase1 { virtual void v10(); unsigned char _body[0x10]; };
-struct CClickableBase2 { virtual void v20(); };
-
-class CClickable : public CClickableBase0, public CClickableBase1, public CClickableBase2 { public:
-    unsigned char _body[0x198 - 0x1c];
-    CClickable(long id);                            // 0x0055B460
-};
-
-class CMenuEntry : public CClickable { public:
-    bool         IsAvailable;                       // +0x198
-    CActionList* PUIActionParams;                   // +0x19c
-    CActionList* PThingActionParams;                // +0x1a0
-    CActionList* PActions;                          // +0x1a4
-    CActionList* PActionsOnSelected;                // +0x1a8
-    CActionList* PActionsOnBack;                    // +0x1ac
-    CActionList* PPreActions;                       // +0x1b0
-    CActionList* PActionsOnUnselected;              // +0x1b4
-    CActionList* PActionsOnVisible;                 // +0x1b8
-    virtual void v00();
-    virtual void v10();
-    virtual void v20();
-    CMenuEntry(long id);
-    void InitializeRumbleActions();                 // 0x0053DA30
-};
-
-CMenuEntry::CMenuEntry(long id)
-    : CClickable(id)
+CMenuEntry::CMenuEntry(long definition)
+    : CClickable(definition)
     , IsAvailable(true)
     , PUIActionParams(0)
     , PThingActionParams(0)
@@ -47,7 +25,6 @@ CMenuEntry::CMenuEntry(long id)
     , PActionsOnUnselected(0)
     , PActionsOnVisible(0)
 {
-    InitializeRumbleActions();
+    GetDataFromDef();
 }
-
 }

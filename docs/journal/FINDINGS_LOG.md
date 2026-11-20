@@ -1328,3 +1328,5 @@ against CODAApi.lib, or stay compiled C++?
   bound as `...6BCActionParam@1@@` / `...6BCUIInterface@1@@` by 0x0053E4E0 and as `...6BCClickableBase2@1@@` / `...6BCClickableBase0@1@@` by the
   older all-local ctor row 0x0053DFE0. Heal: port 0x0053DFE0 onto engine/NUISystem_CMenuEntry.h (agent NF117). Every other nf111 target was
   re-checked against the reloc_bindings spelling sets: no other split created.
+- 2026-11-20: the two nf111 CMenuEntry vtable splits are healed by landing nf117 (0x0053DFE0 ported onto engine/NUISystem_CMenuEntry.h; 0x0053DA30
+  is CMenuEntry::GetDataFromDef). 0x0124662C / 0x01246604 / 0x012465FC now carry one spelling each.

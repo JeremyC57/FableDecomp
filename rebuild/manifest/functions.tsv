@@ -9441,7 +9441,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053d6c0	OnObserverRemove	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053d720	GoForward	NUISystem::CMenuEntry	__thiscall	void	1	CMenuEntry *	1	yes	accepted									
 0053d970	OnUnhovered	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053da30	InitializeRumbleActions	NUISystem::CMenuEntry	unknown	undefined	0		0	yes	accepted									
+0053da30	GetDataFromDef	NUISystem::CMenuEntry	unknown	undefined	0		0	yes	accepted									
 0053dcd0	AddThingActionParam	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053dd50	AddUIActionParam	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ddd0	vfunc_156	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

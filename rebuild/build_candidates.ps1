@@ -269079,8 +269079,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0053da30'
         Module = 'NUISystem::CMenuEntry'
-        Source = '00/53/NUISystemCMenuEntry_InitializeRumbleActions_0053da30.cpp'
-        TestSource = '00/53/NUISystemCMenuEntry_InitializeRumbleActions_0053da30_test.cpp'
+        Source = '00/53/NUISystemCMenuEntry_GetDataFromDef_0053da30.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_GetDataFromDef_0053da30_test.cpp'
         PassPattern = '0053da30_TEST PASS'
     }
     [pscustomobject]@{

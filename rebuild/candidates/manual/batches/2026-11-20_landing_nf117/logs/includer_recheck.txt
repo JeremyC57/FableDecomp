@@ -1,0 +1,2 @@
+# recheck after landing nf117: exe-scan referencing rows (no header changed)
+good 1 bad 0 (0x0053E4E0)

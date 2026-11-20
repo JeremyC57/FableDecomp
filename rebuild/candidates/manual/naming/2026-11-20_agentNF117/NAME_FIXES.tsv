@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0053DA30	?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ	comment-only mentions (no binding): rows 0x0053D720 (GoForward), 0x0055C810 (TurnToHand), 0x0055C860 (TurnToClosedHand) cite 'InitializeRumbleActions (0x0053DA30)' in their header comments; respell the comments when convenient (self row + only binder are in this hand-back)	InitializeRumbleActions (comments)

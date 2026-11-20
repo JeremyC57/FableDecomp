@@ -1,5 +1,11 @@
-// NUISystem::CMenuEntry::InitializeRumbleActions() -- copy the def's rumble repeat setting, then for each non-zero rumble id in the def (selected, back, pre, visible, unselected) create a CAction carrying the id and add it to the matching action list
-// Leaf: ?InitializeRumbleActions@CMenuEntry@NUISystem
+// NUISystem::CMenuEntry::GetDataFromDef() -- copy the def's value at +0x184 to this +0x18c, then for each non-zero action id in the def (five fields, the local model's names are descriptive) create a CAction carrying the id and add it to the matching action list
+// Leaf: ?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ
+// Identity (two sources): Ego_r.pdb / FableWin.pdb ?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ is CMenuEntry's only out-of-line
+//   non-virtual void() member (InitializeRumbleActions is in neither PDB); the body reads the entry's def (own slot 108) into members:
+//   def +0x184 -> this +0x18c, which is CClickable::InputDelay in engine/NUISystem_CClickable.h (Ego_r CClickable InputDelay +444 less
+//   0x30; Ego_r CUIDef InputDelay +416), as each sibling component ctor ends with its own GetDataFromDef (CClickable 0x0055B460 ->
+//   0x0055B040). The constructor 0x0053DFE0 calls it last. Was ?InitializeRumbleActions@CMenuEntry@NUISystem@@QAEXXZ (descriptive
+//   catalog name); respelled in place inside the row's existing local model (the Rumble* member names are the old row's, unproven).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053DA30, length 672 bytes (+ int3 padding), `ret`.
 // Callees: own virtual slot 108 (+0x1b0, GetDef returning a CDefPointer by value), operator new 0x00BFEA1A,
@@ -94,10 +100,10 @@ class CMenuEntry { public:
     virtual void AddActionOnVisible(const CCountedPointer<CAction>& action);     // slot 152 (+0x260)
     unsigned char _body[0x18c - 4];
     long          RumbleRepeat;                                                   // +0x18c
-    void InitializeRumbleActions();
+    void GetDataFromDef();
 };
 
-void CMenuEntry::InitializeRumbleActions()
+void CMenuEntry::GetDataFromDef()
 {
     CDefPointer<CMenuEntryDef> def = GetDef();
     RumbleRepeat = def->RumbleRepeat;
