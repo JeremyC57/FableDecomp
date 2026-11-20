@@ -16,3 +16,14 @@ Advisor bounded pass:
 5. Ego_d debug length 1096 = FableWin 0x025D50C0 length 1096: same revision, so FableWin cannot arbitrate (and its exe is not on this box).
 Bracket: bracket_closing_angle.cpp = RELOCATION_MATCH (r1/n/m3: `double closing` + `float closing_angle`), evidence only.
 FINDINGS: - 2026-11-20 (Account B p25O, 0x007602F0 NShape::IsShapeConvex, parked) DIFFER(1125v1126) -> DIFFER(1126v1126). closing2's begin+1 must be held in a named iterator (it_second, an Ego_d local) assigned after first's read; plain pts[1] = 1125v1126. With p25J's two fitted locals dropped (both absent from Ego_d), closing1 / closing2 accumulate through GFArcCos (its double parameter is retail's qword spill; COMDAT SAME as retail 0x005DB180), the loop through the raw (float)acos * K (all-GFArcCos 8 lines, all-raw 234). The one residue is the epilogue pop / fadd order at 0x00760726. It flips only when closing1's acos result is a float variable multiplied later (m1..m5, which also need a double local); it is flat across 13 tail shapes, operand orders, Normalise opt-ins and 1..40 literal dummies at entry and tail. Fitted match kept as evidence (bracket). Work: Account B scratch w26/p25O/parked/007602f0.
+
+== p25O round 3 (2026-11-20, Account B), 0x007602F0 NShape::IsShapeConvex -- reserved, not parked ==
+Cause of the 2-line epilogue residue, from c2's list scheduler (w25/hand3c3/tools/sched t20.py + dagdump.py; w26/p25O/r1/sch/base.dag v brk.dag),
+last region: the bracket has one no-code pseudo node (IL op 0x269, a float copy, unit 0) between closing1's `fst` and its `fmul K`. It takes the
+unit-0 slot in the fmul's cycle, so the first epilogue pop issues a cycle later and only two pops precede the fadd (retail `pop esi; fadd [esp+10h]`).
+Base: the fmul pairs with the first _epop in cycle 7, fadd early = 10, so three pops come first. In the bracket the node is the read of `float closing_angle`.
+Measured flat (2 lines): six GFArcCos body spellings (all three sites / closings only), FABLE_RETAIL_ASSERT dead arms at Ego_d 313
+(pts.size() > 2 / >= 3 / !empty). GFFloatAbs(GFArcCos(..)) at closing1 = 1132v1126 (fabs emitted). GFFastArcCos (Ego_d: value, pos, result,
+interp, index; 443 B) is a table lookup; retail calls _CIacos. No FableWin float(float) helper is a no-op.
+Ego_d lines: 309:24 / 317:24 vector inits, 328:44 / 338:44 assignments, no Normalise-sized lines (310/318/329/339), 313:100, 324:8, 342:122 single tail.
+Open lead: a construct that stores closing1's acos result to a float and reads it back, without an Ego_d-absent local.

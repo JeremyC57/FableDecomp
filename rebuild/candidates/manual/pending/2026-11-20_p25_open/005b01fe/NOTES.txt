@@ -21,3 +21,20 @@ No header change. It uses the existing opt-in FABLE_RETAIL_CTCINVENTORYTRADE_SEL
   - HYPOTHESIS (unmeasured): the temporaries pool state before the zeroing differs from retail, i.e. retail allocates more or different
     kind-15 temps earlier. Next: symlog c3/z07/z09 against a1 to read the key change, then look for the earlier text that matches it.
 FINDINGS: 2026-11-20 (Account B p25J, 0x005B01FE CTCInventoryTrade::SellItemPC, parked) DIFFER(2217v2222) -> DIFFER(2222v2222) with Ego_d's is_list_empty / can_buy locals (the double-read bool gives retail's `sete al; test al,al`). The last residue is a three-member sum order at 0x005B0992. Its operands are IND(address temporaries) made at the member zeroing, and c2's order is total. The order follows the zeroing statement order of all four members (SIWC / WISC / WCSI fix it, each misplacing a store), not the sum's source order; hypothesis, unmeasured: retail's temporaries pool differs before the zeroing. Work: Account B scratch w26/p25J/parked/005b01fe.
+
+== p25O round 3 (2026-11-20, Account B), 0x005B01FE CTCInventoryTrade::SellItemPC -- reserved, not parked ==
+Best source: w26/p25O/r3/ex/e2.cpp = best.cpp + Ego_d corrections, byte-neutral, DIFFER(2222v2222) 6 lines (Buy-total sum order):
+  `CText* p_text` (Ego_d type 0x2DE27), and p_text / new_tot declared before the new_title / new_subtitles ctors (Ego_d 7348..7351).
+Mechanism (confirmed twice): the buy sum's IND leaves are keyed by (temp num & 3); retail's W,I,C needs the Items zeroing temp = 0/1 mod 4.
+  Code-changing probes that reach [1,3,1,3] (deleting `items.second -= quantity`; `ItemsToSell[pcomponent].second -= quantity`) emit the sum in retail order.
+Invariant: 154 early kind-15 allocations before the Items zeroing (slot 26 of its 32-block) under every byte-neutral change measured:
+  ~50 spellings across the function (wv/, iv/, nx/, mx/, ex/, sw/, kx/), dead locals, switch shapes, Ego_d order, header bodies
+  (GETTC_EXPANDED v ADDANDCOPYTC+FORCEINLINE_FIND(+ORIGINAL_FIND), HASTC opt-ins, Components.front()), the TU predecessor BuyItem prepended,
+  and FABLE_RETAIL_ASSERT / _ASSERT_ARM dead arms at Ego_d 7321 / 7325 (as/: 9 conditions each form). Header bodies move only the base (+-32).
+Ego_d line map: 7319 rTextBank, 7321:368 + 7325:208 debug-only (asserts?), 7322 items, 7323 item_def_index, 7324 XString, 7327 items.second -= q,
+  7332 sold_pentry, 7334 GetMenuBranch, 7335 NumSellable -= q, 7336 upper_menu_entry, 7337 sold_v, 7338 if, 7340/7341 +=, 7343 SetValue,
+  7346 RefreshSubtitlesPC, 7348/7349 p_text/new_tot = 0, 7350/7351 ctors (12 B = lea+call+EH state), 7352 switch.
+  Unmapped: deletion block 7389..7408 (7 code lines, gap 7390-7396, 7401:10 = compare of a local with 0), the shop/inventory run 7410..7443
+  (7427:212, 7430:484, 7431:481), no 4x16-B zeroing lines, 80-line code gap 7446..7527 in the loop; function-scope `def_index` unused in ours.
+Open lead: a real operation in retail's text before the zeroing that optimises away (the deletion block / inventory run are the candidates).
+Tools: w26/p25O/tools/il2/tz.sh (residue in 35 s), symlog.py + symfn.py (allocation diff), sortlog.py; grp.sh = parallel-safe grader.
