@@ -9959,9 +9959,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?Spike@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	008da0f0	008e0d20
 ?Reset@?$CCountedPointer@UCAnimEntryLite@@@@QAEXPAUCAnimEntryLite@@@Z	00863090	008e9190
 ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ	004874d0	008e9460
-?GetHoverSpeedFast@CThingCreatureBase@@QBEMXZ	00662100	008ea500
-?GetHoverSpeedMedium@CThingCreatureBase@@QBEMXZ	006620f0	008ea500
-?GetHoverSpeedSlow@CThingCreatureBase@@QBEMXZ	006620e0	008ea500
 ??1C3DAnimationInfo@@QAE@XZ	00a25970	00a26d40
 ??1C3DMeshInfo@@QAE@XZ	00a24930	00a26d40
 ?resize@CDynamicInfoArray@@QAEXKABUCEntryCountedPointer@@@Z	00a2dbc0	00a26d40
@@ -17171,7 +17168,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?_Destroy@FableIVVector_00739bc0@@YIXPAU?$CIVCountedPointer@VCIVCountedPointeeBase@@@1@0ABU__false_type@1@@Z	00738c20	00739bc0
 ?__uninitialized_copy@FableIVVector_00739bc0@@YIPAU?$CIVCountedPointer@VCIVCountedPointeeBase@@@1@PBU21@0PAU21@ABU__false_type@1@@Z	00737190	00739bc0
 ??0CModeDragonFireBeam@@QAE@PAVCThing@@@Z	008d8620	0073a540
-?GetAnimationGroupName@CTCWeapon@@QBEABVCCharString@@XZ	005dabe0	0073aac0
 ??$GetSubDef@VCCreatureModeDef@@@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCCreatureModeDef@@@@@Z	0073dbe0	0073af60
 ?LowerBound@?$CVectorMap@KVCRegisteredModeInfo@CTCCreatureModeManager@@V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@@QBEPBU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@std@@ABK@Z	0073d210	0073da50
 ?UpperBound@?$CVectorMap@KVCRegisteredModeInfo@CTCCreatureModeManager@@V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@@QBEPBU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@std@@ABK@Z	0073d250	0073da50
@@ -17755,8 +17751,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?IsValidRangedWeaponTargetForShooter@@YI_NPAVCThing@@0M@Z	0085f8d0	008e9460
 ?FindCombinationAnim@CAnimateThing@@QAEPAVCAnimSet@@J@Z	0070c4e0	008e9710
 ?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z	008e9850	008e9950
-?GetAnimMovementSpeed@@YIMABVCCharString@@PAVCThingCreatureBase@@J@Z	00861c90	008ea500
-?GetWorld@CModeBase@@QAEPAVCWorld@@XZ	0073a680	008ea500
 ?ChangeMesh@CTCDegradableBase@@QAEXABVCEngineGraphic@@@Z	008ec9c0	008ecac0
 ?GetDegradableInfoForHealthPercentage@CTCDegradableBase@@QAEPBVCDegradableInfo@@M@Z	008ec940	008ecac0
 ?__copy@@YIPAVCoin@@PAV1@00ABUrandom_access_iterator_tag@@PAH@Z	008f02e0	008ef950
@@ -23255,12 +23249,6 @@ _floor0_map_lazy_init@12	00ca36e0	00ca39c0
 ?IsRunning@CTC1F@@QBE_NXZ	007122c0	008508b0
 ?PeekPDeedEffectsDef@CTCHeroOpinionDeedLog@@QBE?AV?$CDefPointer@$$CBVCOpinionDeedEffectsDef@@@@W4EOpinionDeedType@@@Z	006c5630	008508b0
 ?SetStartingToBlock@CTCCombat@@QAEX_N@Z	00733230	00855880
-??0CAnimEntryLite@NAnimationEntryBodge@@QAE@PAVCAnimationEntry@@@Z	0073a9b0	008621a0
-??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z	00754f10	008621a0
-?GetAnimSpeed@@YIMPAVCAnimationEntry@@PAVCThingCreatureBase@@J@Z	00861950	008621a0
-?GetAnimateThing@CTCAnimate@@QAEPAVCAnimateThing@@XZ	0070b460	008621a0
-?LookupStandAnim@@YI?AV?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ABVCCharString@@PAVCThingCreatureBase@@JPAUCAnimBank@@@Z	00861e60	008621a0
-?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z	00863090	008621a0
 ?AttemptToStartParticle@CTCCombat@@AAEXPAVCThing@@@Z	00735fd0	00736760
 ??_7?$CPersistContext_TransferableComponent@W4EHeroCentreDoorType@@@@6B@	0126b038	0077fde0
 ?TransferBinaryIn@?$CPersistTraits@W4EHeroCentreDoorType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EHeroCentreDoorType@@@Z	0077fd10	0077fde0
@@ -28798,7 +28786,6 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ??_7CEventMissedStrike@@6B@	01277874	0087cb10
 ?IsAbleToFlourishDangerThings@CTCStealth@@QAE_NXZ	007471a0	0087cb10
 ??0CEventKillLocked@NEntityEvents@@QAE@PBVCThing@@@Z	0087fed0	0087ecb0
-?OnActivate@CModeBase@@UAEXXZ	0073aac0	008d8ce0
 ??0CEventExpressionPerformedTo@NEntityEvents@@QAE@PAXJABV?$CDefPointer@VCExpressionDef@@@@JJ@Z	0084b010	009041a0
 ?GetDef@CGameDefinitionManager@@QAE_NABVCCharString@@PAV?$CDefPointer@VCExpressionDef@@@@@Z	00593666	009041a0
 ?TerminateActionByName@CTCScriptedControl@@QAE_NABVCCharString@@@Z	00712ce0	009041a0
@@ -40028,3 +40015,10 @@ _time	00bfed22	008405f0
 ??_7CCreatureAction_VillagerAttackKnockdown@@6B@	01298f74	0097cf90
 ??_7CCreatureAction_BeetleTakeOff@@6B@	012995ec	00982c10
 ??_7CCreatureAction_BeetleLand@@6B@	01299734	00982c70
+?GetAnimationGroupName@CTCWeapon@@QBEABVCCharString@@XZ	005dabe0	0073aac0
+??4?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEAAV0@ABV0@@Z	00754f10	008621a0
+?GetRandomAnimationFromCreature@NCreatureMode@@YI?AV?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ABVCCharString@@ABVCThingCreatureBase@@ABVCAnimFilterBase@@PAK@Z	00861e60	008621a0
+?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z	00863090	008621a0
+?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ	00662100	008ea500
+?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ	006620f0	008ea500
+?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ	006620e0	008ea500

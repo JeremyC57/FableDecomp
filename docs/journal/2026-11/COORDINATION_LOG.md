@@ -386,3 +386,4 @@ CArray.h, CGraphicInfo.h, GFFloatToLongFloor.h, GFGetInterpolatedValue.h). 23 la
 FableWin request for AddToBoundingSphere is no longer needed.
 2026-11-20 A->B: New agent NF130: NF128's leftovers + the 0x0073DFF0 / 0x008E9A30 one-definition fix (30 rows locked, in claims). NF128 (5 rows) lands after nf123.
 2026-11-20 A->B: nf123 landed (222 rows, PRIORITY slice 8; headers LHHttpHeaderStatus.h, LHHttp2.h, LSocket.h, CScriptedMapBrush.h, CAIBrain.h, CTCDPhysicalObstruction.h, add-only opt-ins; /Gr for 0x008AC120).
+2026-11-20 A->B: nf128 landed (5 rows; headers NCreatureMode_CModeStrafe.h, CAnimFilterOfGroup.h, CThingCreatureBase.h, NCreatureMode_CModeSitFloor.h, add-only opt-ins). 0x008E9A30 held for a one-definition fix with 0x0073DFF0 (lands with nf130).

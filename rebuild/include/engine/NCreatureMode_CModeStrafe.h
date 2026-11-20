@@ -14,6 +14,13 @@ bool FABLE_FASTCALL GetAnimDistanceAndIndexFromAnimName(const CThingCreatureBase
 class CModeStrafe : public CTCCreatureModeManager::CModeBase {
 public:
     virtual void AnimUpdate(CAnimateThing& anim);
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESTRAFE_ONACTIVATE
+    // NF128 opt-in (q6454 / q6394 / q6395, row 0x008E9A30): Ego_r.pdb 0x0090FFC0 / FableWin.pdb 0x02AD8350
+    // ?OnActivate@CModeStrafe@NCreatureMode@@UAEXXZ (slot 5 of the CModeStrafe vtable 0x01268588) and its own slot-3 FrameUpdate
+    // override (0x008EA220 in that vtable). Declarations only: no layout change.
+    virtual void FrameUpdate();                                  // slot 3, 0x008EA220
+    virtual void OnActivate();                                   // slot 5, 0x008E9A30
+#endif
 private:
     bool GetBestFrameInAimingAnim(float& frame) const;   // 0x008E9460
     float         AnimMovementDistance;                  // +0x1c
@@ -33,7 +40,7 @@ private:
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimStrafeUpperBody;      // +0x68
 };
 
-FABLE_STATIC_ASSERT(sizeof(CModeStrafe) == 0x70);
+FABLE_STATIC_ASSERT_AT(36, sizeof(CModeStrafe) == 0x70);
 }
 #endif
 #endif

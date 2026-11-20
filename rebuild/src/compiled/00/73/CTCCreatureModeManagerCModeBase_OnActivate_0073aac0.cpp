@@ -1,5 +1,5 @@
 // CTCCreatureModeManager::CModeBase::OnActivate() -- mark the mode active and point the weapon-based filter at the animation group of the weapon in the creature's primary carrying slot, or at "STAND" when it carries no live weapon
-// Leaf: OnActivate
+// Leaf: ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073AAC0, 219 bytes (`ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (non-const) and the const instantiation 0x004365B0;
@@ -12,6 +12,9 @@
 // Shape: the carrying component comes from the non-const out-parameter GetInterface; the carried thing is used through a
 // const pointer, so its weapon lookup binds the const LowerBound copy. The weapon arm calls SetGroup out of line, while the
 // "STAND" fallback is an inline copy of the same assignment + CRC (the literal's CCharString temporary, one shared null test).
+// Naming (NF128, 2026-11-20; q6454): Ego_r.pdb 0x00751510 / FableWin.pdb 0x024C17D0 ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ (slot 5
+//   of the CModeBase vtable 0x012673CC): `virtual` added in place on the row's existing local nested CModeBase model (QAE -> UAE). Every landed
+//   referencer of 0x0073AAC0 binds the UAE spelling in this hand-back or in the tree (bindchk: 15 of 15).
 #include "fable_compiler.h"
 class CCharStringData { public:
     const char*   m_pData;                 // +0
@@ -101,7 +104,7 @@ class CTCCreatureModeManager { public:
         CAnimFilterOfGroup WeaponBasedFilter;         // +0x08
         long               FramesBeforeRemovingSelf;  // +0x14
         bool               Active;                    // +0x18
-        void OnActivate();
+        virtual void OnActivate();                    // slot 5 (vtable 0x012673CC + 0x14)
     };
 };
 

@@ -30,6 +30,11 @@ public:
     // the CModeBase slot-3 override (needs FABLE_RETAIL_CMODEBASE_VIRTUALS). Declaration only: an override adds no slot and no layout.
     virtual void FrameUpdate();                                          // slot 3, 0x008D6C80
 #endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ANIMUPDATE
+    // NF128 opt-in (q6453, row 0x008D6AC0): Ego_r.pdb 0x00817E40 / FableWin.pdb 0x02841E30 ?AnimUpdate@CModeSitBase@NCreatureMode@@UAEXAAVCAnimateThing@@@Z, the CModeBase
+    // slot-2 override (CModeSitChair vtable 0x01267B74 slot 2; needs FABLE_RETAIL_CMODEBASE_VIRTUALS). Declaration only: no layout change.
+    virtual void AnimUpdate(CAnimateThing& anim);                        // slot 2, 0x008D6AC0
+#endif
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ONACTIVATE
     // NF124 opt-in (q6453 / q6454, row 0x008D6580): Ego_r.pdb 0x008178B0 / FableWin.pdb 0x02841C90 ?OnActivate@CModeSitBase@NCreatureMode@@UAEXXZ,
     // the CModeBase slot-5 override (needs FABLE_RETAIL_CMODEBASE_VIRTUALS). Declaration only: an override adds no slot and no layout.

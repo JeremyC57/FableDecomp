@@ -27,8 +27,15 @@ public:
 #else
  virtual ~CAnimFilterOfGroup();
 #endif
+#ifdef FABLE_RETAIL_CANIMFILTEROFGROUP_SETCURRENTGROUPNAME_INLINE
+ // NF128 opt-in (row 0x008E9A30 NCreatureMode::CModeStrafe::OnActivate): FableWin.pdb ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z
+ // (0x01DD3450; no Ego_r copy), inline: retail expands it in place (0x008E9A4A..0x008E9A80) (CCharString::operator= 0x0099EFB0, then the CRC of the
+ // argument: length / NullChar select / CCRC::Calc 0x004014A0); its out-of-line copy is 0x0073DFF0 (landed with this leaf). Needs
+ // FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE (GetCRC). No layout change.
+ void SetCurrentGroupName(const CCharString& name) { Group = name; GroupCRC = name.GetCRC(); }
+#endif
  CCharString Group;
  unsigned long GroupCRC;
 };
-FABLE_STATIC_ASSERT(sizeof(CAnimFilterOfGroup)==12);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CAnimFilterOfGroup)==12);
 #endif

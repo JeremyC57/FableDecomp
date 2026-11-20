@@ -1,0 +1,24 @@
+addr       parity           behav  name
+0073aac0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0073aac0   WARN RELOC_NAME: ?SetGroup@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z -> 0073dff0 labelled 'CAnimFilterOfGroup::SetCurrentGroupName'
+0073aac0   RELOCATION_MATCH PASS   CTCCreatureModeManager::CModeBase::OnActivate
+008621a0   RELOCATION_MATCH PASS   CModeStandBase::OnActivate
+008d6ac0   RELOCATION_MATCH PASS   NCreatureMode::CModeSitBase::AnimUpdate
+008d8ce0   RELOCATION_MATCH PASS   NCreatureMode::CModeBlock::OnActivate
+008ea500   WARN RELOC_NAME: ?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ -> 006620e0 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ -> 006620f0 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ -> 00662100 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008ea500   RELOCATION_MATCH PASS   NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds
+
+WINS: 5
+  0073aac0 RELOCATION_MATCH CTCCreatureModeManager::CModeBase::?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ
+  008621a0 RELOCATION_MATCH CModeStandBase::?OnActivate@CModeStandBase@@UAEXXZ
+  008d6ac0 RELOCATION_MATCH NCreatureMode::CModeSitBase::?AnimUpdate@CModeSitBase@NCreatureMode@@UAEXAAVCAnimateThing@@@Z
+  008d8ce0 RELOCATION_MATCH NCreatureMode::CModeBlock::?OnActivate@CModeBlock@NCreatureMode@@UAEXXZ
+  008ea500 RELOCATION_MATCH NCreatureMode::CModeHoverBase::?InitialiseMovementSpeeds@CModeHoverBase@NCreatureMode@@AAEXXZ

@@ -104,6 +104,16 @@ public:
  CThingCreatureBase* GetPLastAttackedByCreature()const{return PLastAttackedByCreature.Get();}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETDEFHOVERSPEEDS
+public:
+ // NF128 opt-in (q6453, row 0x008EA500 NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds): Ego_r.pdb 0x0053CF60 / 0x0053CF70 /
+ // 0x0053CF80 + FableWin.pdb 0x01D9AF70 / 0x01D9AFA0 / 0x01D9AFD0 ?GetDefHover{Slow,Medium,Fast}Speed@CThingCreatureBase@@QBEMXZ, out of line
+ // in retail at 0x006620E0 / 0x006620F0 / 0x00662100 (consecutive 16-byte bodies as in Ego_r: the creature def at +0xE0, then its
+ // MaxHoverSpeedSlow / Medium / Fast float). Declarations only: no layout change.
+ float GetDefHoverSlowSpeed() const;                                    // 0x006620E0
+ float GetDefHoverMediumSpeed() const;                                  // 0x006620F0
+ float GetDefHoverFastSpeed() const;                                    // 0x00662100
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UPDATELASTATTACKINGCREATURE
 protected:
  // NF55 opt-in (2026-11-17, row 0x006624A0): Ego_r.pdb 0x0053D330 + FableWin.pdb 0x01D8C170 ?UpdateLastAttackingCreature@CThingCreatureBase@@IAEXXZ

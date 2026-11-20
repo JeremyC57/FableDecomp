@@ -1,0 +1,24 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0073AAC0	CTCCreatureModeManager::CModeBase	OnActivate	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	CTCCreatureModeManager::CModeBase::OnActivate	?OnActivate@CModeBase@CTCCreatureModeManager@@QAEXXZ	virtual: Ego_r.pdb 0x00751510 + FableWin.pdb 0x024C17D0 ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ (CModeBase vtable 0x012673CC slot 5); `virtual` added in place on the existing local nested CModeBase model; exe scan: 15 landed referencers, all bind the UAE spelling (12 in the tree, 0x008621A0 / 0x008D8CE0 / 0x008E9A30 in this hand-back)
+0x008EA500	NCreatureMode::CModeHoverBase	InitialiseMovementSpeeds	?InitialiseMovementSpeeds@CModeHoverBase@NCreatureMode@@AAEXXZ	NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds	?InitialiseMovementSpeeds@CModeHoverBase@NCreatureMode@@QAEXXZ	access only (private): Ego_r.pdb 0x00910A50 + FableWin.pdb 0x02AD11D0 ?InitialiseMovementSpeeds@CModeHoverBase@NCreatureMode@@AAEXXZ; the row moved onto the shared nested CModeBase (sibling 0x008EACB0 class shape); exe scan: the only landed referencer 0x008EACB0 already binds AAE (bindchk)
+0x008D6AC0	NCreatureMode::CModeSitBase	AnimUpdate	?AnimUpdate@CModeSitBase@NCreatureMode@@UAEXAAVCAnimateThing@@@Z	NCreatureMode::CModeSitBase::AnimUpdate	?AnimUpdate@CModeSitBase@NCreatureMode@@QAEXAAVCAnimateThing@@@Z	leaf-only (virtual): Ego_r.pdb 0x00817E40 + FableWin.pdb 0x02841E30 @Z; the row moved onto the shared nested CModeBase; exe scan: no landed row references 0x008D6AC0
+# Section 2
+0x008621A0	?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	0x00662A00
+0x008621A0	?GetAnimateThing@CTCAnimate@@QAEPAVCAnimateThing@@XZ	?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	0x0070B460
+0x008621A0	?GetWorld@CModeBase@@QAEPAVCWorld@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0x0073A680
+0x008621A0	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@PAVCAnimationEntry@@@Z	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z	0x0073A9B0
+0x008621A0	?OnActivate@CModeBase@@UAEXXZ	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0x0073AAC0
+0x008621A0	?GetAnimSpeed@@YIMPAVCAnimationEntry@@PAVCThingCreatureBase@@J@Z	?GetMovementSpeedFromAnimation@NCreatureMode@@YIMJABVCThingCreatureBase@@ABVCMeshDataBank@@@Z	0x00861950
+0x008621A0	?LookupStandAnim@@YI?AV?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ABVCCharString@@PAVCThingCreatureBase@@JPAUCAnimBank@@@Z	?GetRandomAnimationFromCreature@NCreatureMode@@YI?AV?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ABVCCharString@@ABVCThingCreatureBase@@ABVCAnimFilterBase@@PAK@Z	0x00861E60
+0x008D8CE0	?OnActivate@CModeBase@@UAEXXZ	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0x0073AAC0
+0x008EA500	?GetHoverSpeedSlow@CThingCreatureBase@@QBEMXZ	?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ	0x006620E0
+0x008EA500	?GetHoverSpeedMedium@CThingCreatureBase@@QBEMXZ	?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ	0x006620F0
+0x008EA500	?GetHoverSpeedFast@CThingCreatureBase@@QBEMXZ	?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ	0x00662100
+0x008EA500	?GetWorld@CModeBase@@QAEPAVCWorld@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0x0073A680
+0x008EA500	?GetAnimMovementSpeed@@YIMABVCCharString@@PAVCThingCreatureBase@@J@Z	?GetMovementSpeedFromAnimation@NCreatureMode@@YIMABVCCharString@@ABVCThingCreatureBase@@ABVCMeshDataBank@@@Z	0x00861C90
+0x008EA500	?g_emptyString@@3PADA	?NullChar@CCharString@@1DB	0x0129AAF4
+0x008D6AC0	?GetTimeToBlendIn@CAnimationEntry@@QBEJPAVCThing@@@Z	?GetTimeToBlendIn@CAnimationEntry@@QBEJABVCThing@@@Z	0x005DC230
+0x008D6AC0	?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	0x00662A00
+0x008D6AC0	??1CCreatureAction_PlayAnimation@@QAE@XZ	??1CCreatureActionBase@@UAE@XZ	0x00693EF0
+0x008D6AC0	?GetWorld@CModeBase@@QBEPAVCWorld@@XZ	?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0x0073A680
+0x008D6AC0	?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@@QAEJK@Z	?GetNoFramesBeforePlayingCombinationIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z	0x0073A6F0
