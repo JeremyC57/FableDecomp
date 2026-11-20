@@ -32,7 +32,7 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !thing->IsDead();
 }
 class CTCWallMount { public:                           // interface 0xDA
-    CThing* GetMountedThing();                  // 0x007DE4E0
+    CThing* GetObjectAttached();                // 0x007DE4E0 ?GetObjectAttached@CTCWallMount@@QAEPAVCThing@@XZ (Ego_r.pdb; NF168 respelled in place)
 };
 class CTCWallMountEffects { public:                    // interface 0xDB
     bool IsUsable();                            // 0x007DF3D0
@@ -71,7 +71,7 @@ void CTCActionUseWallMount::OnActionUse(CThing& thing)
         if (ParentThing->HasTC(TCI_WALL_MOUNT)) {
             CTCWallMount* mount = ((CTCWallMount*)&ParentThing->GetTC(TCI_WALL_MOUNT));
             if (mount) {
-                CThing* mounted = mount->GetMountedThing();
+                CThing* mounted = mount->GetObjectAttached();
                 if (IsThingAlive(mounted) && mounted->HasTC(TCI_WALL_MOUNT_EFFECTS)) {
                     CTCWallMountEffects* effects = ((CTCWallMountEffects*)&mounted->GetTC(TCI_WALL_MOUNT_EFFECTS));
                     if (effects->IsUsable() && effects->OnWallMountUseAction(user))

@@ -40,9 +40,10 @@ class CTCAIScratchpadNative { public:                  // interface 170
     unsigned char _pad[0x24];                   // CTCBase + ThankingPhrase, IgnoringPhrase, WanderCentrePoint, WanderMinDistance
     float WanderMaxDistance;                    // +0x24
 };
-class CTCTargetingBase { public:               // interface 8 (TCI_TARGETING); ClearTargets is descriptive
-    void ClearTargets();                        // 0x007F6160 (thunk: list at +0x48 -> clear @ 0x004B8050)
-};
+// NF168: the interface-8 (TCI_TARGETING) component's list clear 0x007F6160 is Ego_r.pdb / FableWin.pdb
+//   ?ClearAllThingsToNotAttack@CTCTargetingAI@@QAEXXZ (clears ThingsToNotAttack +0x48; engine/CTCTargetingAI.h), replacing the local
+//   CTCTargetingBase::ClearTargets stand-in.
+#include "engine/CTCTargetingAI.h"
 class CTCPerceiveThing { public:                       // interface 52
     void ResetPerceptionVariables();            // 0x00744DB0
 };
@@ -92,9 +93,9 @@ void CAIStateGroup_WanderAroundInitialPos::Update()
         AIAction_MoveToPos(AI_ACTION_REPEAT_ONCE, target, reached, MOVEMENT_TYPE_5, true, true, 0, true, 0.0f);
     }
     if (PBrain->PCreature->IsAlive()) {
-        CTCTargetingBase* targeting;
+        CTCTargetingAI* targeting;
         PBrain->PCreature->GetTC(TCI_TARGETING, &targeting);
-        targeting->ClearTargets();
+        targeting->ClearAllThingsToNotAttack();
         CTCPerceiveThing* perceive;
         PBrain->PCreature->GetTC(TCI_PERCEIVE_THING, &perceive);
         perceive->ResetPerceptionVariables();

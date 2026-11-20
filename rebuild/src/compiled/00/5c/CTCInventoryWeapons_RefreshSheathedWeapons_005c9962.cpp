@@ -4,8 +4,8 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C9962, 92 bytes.
 // Callees: std::bitset::test @ 0x00410DE0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0,
-//          CTCInventoryWeapons::PutWeaponsInSheathes @ 0x005C8101, the opposite weapon-sheathing update @ 0x005C552C
-//          (manifest label "CTCCarryable_PrepareWeaponSheathing"; name here descriptive).
+//          CTCInventoryWeapons::PutWeaponsInSheathes @ 0x005C8101, CTCInventoryWeapons::RemoveWeaponsFromSheathes @ 0x005C552C
+//          (Ego_r.pdb / FableWin.pdb ?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ; NF168 respelled in place).
 //
 // Shape: the inline out-parameter GetInterface (landed 0x007BEA08 family) whose result is IGNORED: the component local
 // starts at 0 (`xor ebx,ebx` scheduled before the bitset call), is only assigned on a hit, and is dereferenced
@@ -32,7 +32,7 @@ struct CTCCarrier {                           // interface 0x29
 
 class CTCInventoryWeapons : public CTCBase { public:
     void PutWeaponsInSheathes();              // 0x005C8101
-    void TakeWeaponsOutOfSheathes();          // 0x005C552C
+    void RemoveWeaponsFromSheathes();          // 0x005C552C
     void RefreshSheathedWeapons();
 };
 
@@ -43,5 +43,5 @@ void CTCInventoryWeapons::RefreshSheathedWeapons()
     if (carrier->m_weaponsSheathed)
         PutWeaponsInSheathes();
     else
-        TakeWeaponsOutOfSheathes();
+        RemoveWeaponsFromSheathes();
 }

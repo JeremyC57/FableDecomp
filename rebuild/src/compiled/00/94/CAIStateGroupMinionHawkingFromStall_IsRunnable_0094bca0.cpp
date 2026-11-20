@@ -16,8 +16,19 @@
 // Layout: no engine header for this class; modelled locally like the landed OnReplace / IsStillValid rows (next hawk
 //          frame +0x14, PStall +0x18); the shop's +0x50 flag is descriptive.
 class CTCBase;
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CTHING
+#include "fable_string.h"
 #include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -29,10 +40,12 @@ class CTCShop { public:
     unsigned char _pad[0x50];
     bool OnTheSpot;                             // +0x50 (descriptive)
 };
-class CTCShopKeeper { public:                          // interface 0x90
-    CTCShop* GetShopTC();                       // 0x00798F50
-    CThing* GetShopThing();                     // 0x00798D80
-};
+// NF168: the shop-keeper component (interface 0x90) is the shared engine/CTCShopKeeper.h class: Ego_r.pdb / FableWin.pdb
+//   ?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ (const, 0x00798F50; opt-in FABLE_RETAIL_CTCSHOPKEEPER_SHOP) and
+//   ?GetCustomer@CTCShopKeeper@@QBEPAVCThingCreatureBase@@XZ (const, 0x00798D80: reads Customer +0x0C), replacing the local model's
+//   GetShopTC / GetShopThing.
+#define FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+#include "engine/CTCShopKeeper.h"
 enum EOpinionAttitudeType;                  // MS forward enum (Ego_r.pdb result type)
 class COpinionReactionManager { public:
     EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 Ego_r.pdb + FableWin.pdb ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z (name-fix 2026-11-12)
@@ -86,7 +99,7 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
         if (!NCreatureAI::IsSpeaking(*(const CThingCreatureBase*)creature) && StayInShop()) {
             CTCShop* shop = keeper->GetShopTC();
             if (shop) {
-                PStall = keeper->GetShopThing();
+                PStall = keeper->GetCustomer();
                 if (!((CThing*)PStall.GetPItem()) && shop->OnTheSpot) {
                     PStall = GetCreature();
                     CThing* self = GetCreature();

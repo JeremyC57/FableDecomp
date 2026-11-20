@@ -130,7 +130,7 @@ class CThing { public:
     }
 };
 class CTCWallMount { public:
-    CThing* GetMountedThing() const;                    // 0x007DE4F0
+    const CThing* PeekObjectAttached() const;           // 0x007DE4F0 ?PeekObjectAttached@CTCWallMount@@QBEPBVCThing@@XZ (Ego_r.pdb; NF168 respelled in place)
 };
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
@@ -151,10 +151,10 @@ long CTCBuyableHouse::GetValueOfTrophies() const
         for (SThingNode* node = list->m_head->next; node != list->m_head; node = node->next) {
             CTCWallMount* mount;
             if (IsThingAlive(node->thing) && node->thing.Get()->GetInterface(&mount, 0xda)) {
-                CThing* trophy = mount->GetMountedThing();
+                const CThing* trophy = mount->PeekObjectAttached();
                 if (trophy && !(trophy->m_stateFlags & 1)) {
                     CDefPointer<const CStockItemDef> def;
-                    if (mount->GetMountedThing()->GetDef()->GetSubDef(&def))
+                    if (mount->PeekObjectAttached()->GetDef()->GetSubDef(&def))
                         value += def->Value;
                     else
                         value += 50;

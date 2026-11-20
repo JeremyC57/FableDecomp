@@ -6,7 +6,7 @@
 //          HasPendingActions @ 0x006A1270 / GetThingInPrimarySlot @ 0x006A1440 / RemoveThing @ 0x006A19B0 /
 //          IsCarryingThing @ 0x006A1060 / RemoveThingFromPrimarySlot @ 0x006A1E00 / PutThingInCarrySlot @ 0x006A1F80,
 //          DropWeapon(CThing*, CTCCarrying*, CThing*) @ 0x00845CE0 (__fastcall), the 0x1a component's reaction
-//          @ 0x005D8E50, CTCInventoryWeapons sheathing update @ 0x005C552C / RefreshSheathedWeapons @ 0x005C9962,
+//          @ 0x005D8E50, CTCInventoryWeapons::RemoveWeaponsFromSheathes @ 0x005C552C / RefreshSheathedWeapons @ 0x005C9962,
 //          CDefClassBase::GetSubDef<CCarryableDef> @ 0x005CC10E, CTCCombat::SetMeleeFlourishValid @ 0x00733E10,
 //          CTCCreatureModeManager::RestartCurrentMode @ 0x0073A840, CThing::GetPlayer @ 0x004C7A30, CPlayer::
 //          IsMainPlayer @ 0x00487520 / SetAggressiveMode @ 0x00487EB0.
@@ -99,7 +99,7 @@ struct CTC1A {
     void OnNotCarried();                                     // 0x005D8E50
 };
 class CTCInventoryWeapons { public:
-    void PrepareWeaponSheathing();                           // 0x005C552C
+    void RemoveWeaponsFromSheathes();                           // 0x005C552C
     void RefreshSheathedWeapons();                           // 0x005C9962
 };
 class CTCCombat { public:
@@ -149,7 +149,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
             CThing* creature = GetCreature();
             if (creature->HasTC(0x13)) {
                 weapons = creature->GetTC<CTCInventoryWeapons>(0x13);
-                weapons->PrepareWeaponSheathing();
+                weapons->RemoveWeaponsFromSheathes();
             }
         }
         CDefPointer<const CCarryableDef> carryDef;

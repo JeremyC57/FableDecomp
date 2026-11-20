@@ -161,6 +161,19 @@ public:
 private:
     void ConstructSubtitles(NUISystem::CComponent* menu, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);   // 0x0059DF49
 #endif
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_FINALSUBTITLES
+    // NF168 opt-in (rows 0x0059D0B8 / 0x0059D1B1 / 0x0059D65A / 0x0059D761): Ego_r.pdb / FableWin.pdb
+    // ?FinalConstructSubtitles@ / ?FinalRefreshSubtitles@ / ?FinalConstructSubtitlesPC@ / ?FinalRefreshSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@
+    // NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@...@std@@[0]@Z, private; the landed callers
+    // ConstructSubtitles 0x0059DF49 / RefreshSubtitles 0x0059E108 / ConstructSubtitlesPC 0x0059E4D7 / RefreshSubtitlesPC 0x0059E94D.
+private:
+    void FinalConstructSubtitles(NUISystem::CComponent* component, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);   // 0x0059D0B8
+    void FinalRefreshSubtitles(NUISystem::CComponent* component, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);     // 0x0059D1B1
+    void FinalConstructSubtitlesPC(NUISystem::CComponent* component, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles,
+                                   NUISystem::CComponent* list);                                                                              // 0x0059D65A
+    void FinalRefreshSubtitlesPC(NUISystem::CComponent* component, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);   // 0x0059D761
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYTRADE_SHOPLISTS
     // Retail opt-in (chunk 1009b, rows 0x005A6769 ConstructNormalShopListPC / 0x005A29F4 ConstructSpecialShopList / 0x0059FEE3
     // AddBuyItemToList): Ego_r.pdb + FableWin.pdb, public, all out of line in retail (declarations only):

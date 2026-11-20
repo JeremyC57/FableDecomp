@@ -109,8 +109,11 @@ FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 
+// NF168: 0x007446A0 is the base's own Ego_r.pdb / FableWin.pdb ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (flat-branch opt-in
+// FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING); the stand-in's own GetPerceivedThing declaration is dropped.
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
 #include "engine/CTCPerceiveThing.h"
-struct PerceiveMethods:CTCPerceiveThing{const CThingNative* GetPerceivedThing() const;float GetSoundRadius() const;}; //007446A0,00744440
+struct PerceiveMethods:CTCPerceiveThing{float GetSoundRadius() const;}; //00744440
 struct CGameScriptInterfaceMethods:CGameScriptInterface{bool CanThingBe_Heard_ByOtherThing(const ScriptMethods&,const ScriptMethods&) const;};
 bool CGameScriptInterfaceMethods::CanThingBe_Heard_ByOtherThing(const ScriptMethods& source,const ScriptMethods& listener) const {
  if(!source.IsAlive()||!listener.IsAlive())return false;
@@ -118,7 +121,7 @@ bool CGameScriptInterfaceMethods::CanThingBe_Heard_ByOtherThing(const ScriptMeth
  if(other->UsingComponents[1]&0x100000){
  ComponentMap* map=&other->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)52);ComponentEntry* end=map->Finish;
  PerceiveMethods* tc=static_cast<PerceiveMethods*>(((void*)(it==end||it->first>52?end:it)->second));
- const CThingNative* perceived=tc->GetPerceivedThing();if(perceived&&perceived==thing)return tc->Heard;
+ const CThing* perceived=tc->GetPerceivedThing();if(perceived&&perceived==thing)return tc->Heard;
  float radius=tc->GetSoundRadius();const C3DVector& a=other->GetPos();const C3DVector& b=thing->GetPos();
  float x=b.X-a.X,y=b.Y-a.Y,z=b.Z-a.Z;if(z*z+y*y+x*x<=radius*radius)return true;
  }return false;

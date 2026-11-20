@@ -77,7 +77,6 @@ public:
 enum EOracleMinigameInput { ORACLE_INPUT_0 = 0 };
 enum EOracleMinigameState { ORACLE_STAGE_WAITING_FOR_INPUT = 4 };
 
-extern CCharString g_OracleSymbolNames[4];                       // 0x013BAE94
 
 class CTCOracleMinigame {
 public:
@@ -94,13 +93,17 @@ public:
     unsigned char                      _pad28[0xe0 - 0x28];
     CRetailList<EOracleMinigameInput>  InputsPending;            // +0xe0
     bool ProcessInput(EOracleMinigameInput input);
+private:
+    // NF168: Ego_r.pdb / FableWin.pdb private static const CCharString SymbolStrings[4] (engine/CTCOracleMinigame.h; FableWin.pdb
+    // "dynamic initializer / atexit destructor for 'CTCOracleMinigame::SymbolStrings'", the landed initializer 0x0121F280).
+    static const CCharString SymbolStrings[4];               // 0x013BAE94 ?SymbolStrings@CTCOracleMinigame@@0QBVCCharString@@B
 };
 
 bool CTCOracleMinigame::ProcessInput(EOracleMinigameInput input)
 {
     if (NumOutputsFired + InputsPending.size() < (unsigned int)Level && Stage == ORACLE_STAGE_WAITING_FOR_INPUT) {
         InputsPending.push_back(input);
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PDrawQuestInfo->OracleSymbolPushBack(g_OracleSymbolNames[input]);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PDrawQuestInfo->OracleSymbolPushBack(SymbolStrings[input]);
         return true;
     }
     return false;

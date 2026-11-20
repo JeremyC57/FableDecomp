@@ -4,7 +4,7 @@
 // CCreatureAction_AlertToPlayer (0x0127357C).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the
 // inlined GetInterface lookup for interface type 0x34 = bit 20 of the bitset dword at +0x24, landed shape of
-// 0x00930DC0), CTCPerceiveThing::GetPPerceivedThing @ 0x007446A0 (`GetPItem` on the pointer at +0xc of the component),
+// 0x00930DC0), CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 (`GetPItem` on the pointer at +0xc of the component),
 // CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0.
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; the perceived thing's type byte at +0x10 is
 // compared with 2 (the player creature type) before the awareness call. No engine header exists for this class.
@@ -36,10 +36,12 @@ class CThing { public:
     }
 };
 
-struct CTCPerceiveThing_Calls {             // interface type 0x34 component; engine/CTCPerceiveThing.h exists but is not used: only the two calls are modelled
-    CThing* GetPPerceivedThing();           // 0x007446A0
-    void SetAsDirectlyAwareOfPerceivedThing();   // 0x007449B0
-};
+// Interface type 0x34 component: the real CTCPerceiveThing (engine/CTCPerceiveThing.h flat branch with the NF168 declaration-only opt-ins;
+// Ego_r.pdb / FableWin.pdb GetPerceivedThing() const 0x007446A0 and SetAsDirectlyAwareOfPerceivedThing() 0x007449B0), replacing the
+// CTCPerceiveThing_Calls stand-in.
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_SETASDIRECTLYAWARE
+#include "engine/CTCPerceiveThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -67,9 +69,9 @@ class CCreatureAction_AlertToPlayer { public:
 
 void CCreatureAction_AlertToPlayer::PerformAction()
 {
-    CTCPerceiveThing_Calls* pPerceive;
+    CTCPerceiveThing* pPerceive;
     if (PCreature.GetPItem()->GetInterface(&pPerceive, 0x34)) {
-        CThing* pPerceived = pPerceive->GetPPerceivedThing();
+        const CThing* pPerceived = pPerceive->GetPerceivedThing();
         if (pPerceived && pPerceived->m_type == 2)
             pPerceive->SetAsDirectlyAwareOfPerceivedThing();
     }

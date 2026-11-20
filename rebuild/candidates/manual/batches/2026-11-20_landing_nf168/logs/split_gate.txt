@@ -1,0 +1,6 @@
+existing 0056ffc5 new= ['?GetTCInventoryAbilities@CTCInventoryExperience@@AAEPAVCTCInventoryAbilities@@XZ'] | others: {'?GetTCInventoryAbilities@CTCInventoryExperience_Methods@@QAEPAUCTCInve': ['00572689']}
+existing 00661600 new= ['?CanSeeOrSmellPerceivedThing@CTCPerceiveThing@@QBE_NXZ'] | others: {'?CanSeeOrSmellPerceivedThing@CTCPerceiveThing@@QAE_NXZ': ['0093d800']}
+existing 007446a0 new= ['?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ'] | others: {'?GetPerceivedThing@CTCPerceiveThingAccess@@QAEPAVCThing@@XZ': ['0093b8b0'], '?GetPerceivedThing@CTCPerceiveThingMethods@@QBEPAVCThing@@XZ': ['0093c4e0'], '?GetTargetThing@CTCCreatureOpinionOfHero@@QAEPAVCThing@@XZ': ['0095f9a0']}
+existing 007449b0 new= ['?SetAsDirectlyAwareOfPerceivedThing@CTCPerceiveThing@@QAEXXZ'] | others: {'?SetAsDirectlyAwareOfPerceivedThing@CTCPerceiveAlert@@QAEXXZ': ['00744d00']}
+existing 00798f50 new= ['?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ'] | others: {'?GetShopTC@CTCShopKeeper@@QAEPAVCTCShop@@XZ': ['00917db0', '00926a10', '00926b30', '00926c50', '00927c80', '0094bb20', '00969470']}
+gate: 0 created split(s)

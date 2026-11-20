@@ -1,5 +1,5 @@
 // CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const -- the dialogue group a greeting from the wife uses: married, the sex offer (stamping its frame) or the attitude greet line; courting, the marriage line, the need-house / need-ring line, or by chance one of four courting-advice lines; false when she has nothing to say
-// Leaf: GetGreetDialogueGroupName
+// Leaf: ?GetGreetDialogueGroupName@CTCWife@@QBE_NAAVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D0410, length 370 bytes (`ret 4`, no frame pointer; Ego_r.pdb
 //   `?GetGreetDialogueGroupName@CTCWife@@QBE_NAAVCCharString@@@Z`).
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static; the inline IsMarriedToThePlayer as the landed
@@ -34,8 +34,8 @@
 //   manager CWorld::PeekOpinionReactionManager() returns (engine/CWorld.h, inline: the +0x74 Data word). The local CCharString,
 //   EOpinionAttitudeType, COpinionReactionManager and CWorld models are replaced by fable_string.h, engine/EOpinionAttitudeType.h
 //   (OPINION_ATTITUDE_TYPE_LOVE = 12), the opinion header and engine/CWorld.h (static GetFrame 0x0049D870). The courting-advice table
-//   0x013BAB30 (NF41 lead: CTCWife::CourtingAdviceGroupNames) keeps its descriptive global: the CTCWife model stays local (retail layout
-//   differs from engine/CTCWife.h past +0x78).
+//   0x013BAB30 is the private static CTCWife::CourtingAdviceGroupNames (NF168: respelled in place inside the existing local CTCWife model,
+//   which stays local: retail layout differs from engine/CTCWife.h past +0x78).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_GREETING_PASS23
@@ -47,7 +47,6 @@
 class CTCOpinionSource;
 #include "engine/COpinionReactionManager.h"
 
-extern CCharString g_CourtingAdviceGroupNames[4];           // 0x013BAB30
 
 long __fastcall GFROR13(unsigned long value);      // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
@@ -105,6 +104,10 @@ class CTCWife : public CTCBase { public:
     bool IsCourtingHero() const;                            // 0x006CF890
     bool IsWillingToMarry() const;                          // 0x006CFEC0
     bool GetGreetDialogueGroupName(CCharString& groupName) const;
+private:
+    // NF168: Ego_r.pdb / FableWin.pdb private static const CCharString CourtingAdviceGroupNames[4] (engine/CTCWife.h; FableWin.pdb
+    // "dynamic initializer / atexit destructor for 'CTCWife::CourtingAdviceGroupNames'", the landed initializer 0x0121E210).
+    static const CCharString CourtingAdviceGroupNames[4];   // 0x013BAB30 ?CourtingAdviceGroupNames@CTCWife@@0QBVCCharString@@B
 };
 
 bool CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const
@@ -135,7 +138,7 @@ bool CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const
     }
     if (((const CThingAICreatureFlags*)ParentThing)->CanBeMarried &&
         PHeroMarriageDef->ProbabilityOfCourtingAdviceOnGreet > GFFloatRandom(1.0f, GetPWorldSeed()) && IsCourtingHero()) {
-        groupName = g_CourtingAdviceGroupNames[GFRandom(4, GetPWorldSeed())];
+        groupName = CourtingAdviceGroupNames[GFRandom(4, GetPWorldSeed())];
         return true;
     }
     return false;

@@ -18,8 +18,20 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "fable_string.h"
 #include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -63,11 +75,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
     return false;
 }
 
-class CTCShop;
-class CTCShopKeeper { public:
-    CTCShop* GetShopTC();                       // 0x00798F50
-    CThing* GetShopThing();                     // 0x00798D80
-};
+// NF168: the shop-keeper component is the shared engine/CTCShopKeeper.h class: Ego_r.pdb / FableWin.pdb ?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ
+//   (const, 0x00798F50; opt-in FABLE_RETAIL_CTCSHOPKEEPER_SHOP) and ?GetCustomer@CTCShopKeeper@@QBEPAVCThingCreatureBase@@XZ (const, 0x00798D80:
+//   reads Customer +0x0C, Ego_r order GetCustomer 0x0079E850 / AddNewCustomer 0x0079E860 = retail 0x00798D80 / 0x00798D90), replacing the local
+//   model's GetShopTC / GetShopThing.
+#define FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+#include "engine/CTCShopKeeper.h"
 
 struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroup_WorkBase<CAIStateGroupBase> {
     unsigned char _pad_0x14[0x4];               // +0x14
@@ -83,7 +96,7 @@ bool CAIStateGroup_MinionHawkingFromStall::IsStillValid() const
         CThing* self = PBrain->PCreature;
         if (PHawkTarget.GetPItem() == self)
             return true;
-        CThing* shopThing = keeper->GetShopThing();
+        CThing* shopThing = keeper->GetCustomer();
         if (shopThing == PHawkTarget.GetPItem())
             return true;
     }

@@ -30,10 +30,13 @@ struct SSpendInfoVector {
 #define FABLE_RETAIL_CTCHEROEXPERIENCE
 #define FABLE_RETAIL_EHEROTRAINABLESTATTYPE
 #include "engine/ETCInterfaceType.h"
+#define FABLE_RETAIL_CTCINVENTORYABILITIES
 #include "engine/CTCHeroExperience.h"
-struct CTCInventoryAbilities_Calls {
-    long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b);   // 0x005EE77C
-};
+// NF168: the abilities component is the shared engine/CTCInventoryAbilities.h class: Ego_r.pdb / FableWin.pdb
+//   ?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z (const) 0x005EE77C, reached through the private
+//   ?GetTCInventoryAbilities@CTCInventoryExperience@@AAEPAVCTCInventoryAbilities@@XZ 0x0056FFC5 (respelled in place in the local view);
+//   replaces the CTCInventoryAbilities_Calls stand-in.
+#include "engine/CTCInventoryAbilities.h"
 class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
@@ -41,8 +44,8 @@ class CTCInventoryExperience { public:
     SSpendInfoVector ExperienceSpendValuesAbility;  // +0x1F8
 private:
     CTCHeroExperience* GetTCHeroExperience();                  // 0x0056FF3D (private: Ego_r.pdb AAE)
+    CTCInventoryAbilities* GetTCInventoryAbilities();          // 0x0056FFC5 (private: Ego_r.pdb AAE)
 public:
-    CTCInventoryAbilities_Calls* GetTCInventoryAbilities();         // 0x0056FFC5
     void UpdateExperienceSpendLevelUp();
 };
 void CTCInventoryExperience::UpdateExperienceSpendLevelUp()

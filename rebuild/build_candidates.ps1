@@ -34663,8 +34663,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '005ee136'
         Module = 'CTCInventoryAbilities'
-        Source = '00/5e/CTCInventoryAbilities_GetAbilityLevel_005ee136.cpp'
-        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityLevel_005ee136_test.cpp'
+        Source = '00/5e/CTCInventoryAbilities_GetExperienceSpentOnAbility_005ee136.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetExperienceSpentOnAbility_005ee136_test.cpp'
         PassPattern = '005ee136_TEST PASS'
     }
     [pscustomobject]@{
@@ -248314,8 +248314,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0059d761'
         Module = 'CTCInventoryTrade'
-        Source = '00/59/CTCInventoryTrade_FinalRefreshSubtitles_0059d761.cpp'
-        TestSource = '00/59/CTCInventoryTrade_FinalRefreshSubtitles_0059d761_test.cpp'
+        Source = '00/59/CTCInventoryTrade_FinalRefreshSubtitlesPC_0059d761.cpp'
+        TestSource = '00/59/CTCInventoryTrade_FinalRefreshSubtitlesPC_0059d761_test.cpp'
         PassPattern = '0059d761_TEST PASS'
     }
     [pscustomobject]@{

@@ -171,11 +171,13 @@ struct CTCCombatTarget {                        // interface type 8
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
 
-struct CTCTargeting {                           // interface type 0x34
-    CThing* GetPTarget();                       // 0x007446A0 (pointer at +0xc)
-    bool IsLockedFast();                        // 0x00661600 (+0x2d || +0x31)
-    bool IsLockedSlow();                        // 0x00643B3B (float +0x18 compare)
-};
+// Interface type 0x34 is TCI_PERCEIVE_THING: the component is the real CTCPerceiveThing (engine/CTCPerceiveThing.h flat branch, NF168
+// opt-ins): GetPerceivedThing() const 0x007446A0, CanSeeOrSmellPerceivedThing() const 0x00661600 (+0x2d || +0x31) and IsAwareOfThing()
+// const 0x00643B3B (AwarenessTimer +0x18 != 0), replacing the CTCTargeting stand-in (GetPTarget / IsLockedFast / IsLockedSlow).
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_CANSEEORSMELL
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_ISAWAREOFTHING
+#include "engine/CTCPerceiveThing.h"
 
 bool __fastcall IsIncapacitated(CThing* thing);                       // 0x0085F0C0
 // 0x008645E0 Ego_r.pdb + FableWin.pdb ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (name-fix 2026-11-12)
@@ -190,12 +192,12 @@ CThing* CAIStateGroup_EnemyCreatureBase::GetEnemy()
     CThing* result = 0;
     CTCCombatTarget* combat;
     if (PBrain->PCreature->GetInterface(&combat, 8)) {
-        CTCTargeting* targeting;
-        if (PBrain->PCreature->GetInterface(&targeting, 0x34)) {
+        CTCPerceiveThing* perceive;
+        if (PBrain->PCreature->GetInterface(&perceive, 0x34)) {
             CThing* enemy = combat->GetEnemy();
             if (enemy && !IsIncapacitated(enemy)) {
-                if (enemy == targeting->GetPTarget()) {
-                    if (UsesTargetLock() ? targeting->IsLockedFast() : targeting->IsLockedSlow())
+                if (enemy == perceive->GetPerceivedThing()) {
+                    if (UsesTargetLock() ? perceive->CanSeeOrSmellPerceivedThing() : perceive->IsAwareOfThing())
                         result = enemy;
                 } else if (NCreatureAI::IsAwareOfThing((const CThingAICreature*)PBrain->PCreature, enemy, false))
                     result = enemy;

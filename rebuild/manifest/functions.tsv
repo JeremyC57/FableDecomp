@@ -11284,7 +11284,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0059d1b1	FinalRefreshSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
 0059d270	AddWantedItemToListPC	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,long,CList *,CViewport *	1	yes	accepted									
 0059d65a	FinalConstructSubtitlesPC	CTCInventoryTrade	__thiscall	void	4	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *,CComponent *	1	yes	accepted									
-0059d761	FinalRefreshSubtitles	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
+0059d761	FinalRefreshSubtitlesPC	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,map<NUISystem::CComponent*,std::pair<CWideString,long>,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,std::pair<CWideString,long>_>_>_> *	1	yes	accepted									
 0059d820	InitialiseSellableItems	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
 0059d9ad	ResetTradeLists	CTCInventoryTrade	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CMemoryAllocator_ClearPerformanceStats_0059d9ad.cpp
 0059d9c2	ApplyHairCard	CTCInventoryTrade	__thiscall	void	2	CTCInventoryTrade *,CHairCardDef *	1	yes	accepted									
@@ -12645,7 +12645,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005ee01a	SetAbilityLevelTo	CTCInventoryAbilities	__thiscall	void	3	CEngineLandscapeRenderer *,long,CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005ee01a.cpp
 005ee02e	IsAbilityPotentiallyAvailable	CTCInventoryAbilities	__thiscall	bool	2	CTCInventoryAbilities *,EHeroAbility	1	yes	accepted									
 005ee0e7	SetAllAbilitiesAsAvailable	CTCInventoryAbilities	__thiscall	void	2	CTCInventoryAbilities *,bool	1	yes	accepted									
-005ee136	GetAbilityLevel	CTCInventoryAbilities	__thiscall	long	2	CTCInventoryAbilities *,EHeroAbility	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\CTCInventoryAbilities_GetAbilityLevel_005ee136.cpp
+005ee136	GetExperienceSpentOnAbility	CTCInventoryAbilities	__thiscall	long	2	CTCInventoryAbilities *,EHeroAbility	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\CTCInventoryAbilities_GetAbilityLevel_005ee136.cpp
 005ee146	GetNumAssignedReceivedAbilities	CTCInventoryAbilities	__thiscall	long	1	CTCInventoryAbilities *	1	yes	accepted									
 005ee183	GetNumAssignedAbilityRows	CTCInventoryAbilities	__thiscall	long	1	CTCInventoryAbilities *	1	yes	accepted									
 005ee207	GetExpressionPDef	CTCInventoryAbilities	__thiscall	CDefPointer<CExpressionDef_const_>	2	CTCInventoryAbilities *,long	1	yes	accepted									

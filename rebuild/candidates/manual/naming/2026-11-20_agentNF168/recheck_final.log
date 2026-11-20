@@ -1,0 +1,156 @@
+addr       parity           behav  name
+0056ea4e   RELOCATION_MATCH PASS   CTCInventoryExperience::GetXString
+005721fa   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005721fa   RELOCATION_MATCH PASS   CTCInventoryExperience::UpdateExperienceSpendLevelUp
+005724cd   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+005724cd   WARN RELOC_NAME: ?GetExperienceSpentOnAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z -> 005ee136 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+005724cd   RELOCATION_MATCH PASS   CTCInventoryExperience::InitialiseExperienceSpendValues
+0059ca95   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshNameAndTitlePC
+0059cfbd   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshNameAndTitle
+0059d0b8   RELOCATION_MATCH PASS   CTCInventoryTrade::FinalConstructSubtitles
+0059d1b1   RELOCATION_MATCH PASS   CTCInventoryTrade::FinalRefreshSubtitles
+0059d65a   RELOCATION_MATCH PASS   CTCInventoryTrade::FinalConstructSubtitlesPC
+0059d761   WARN STANDIN_LEAF ?FinalRefreshSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@@Z (catalog CTCInventoryTrade::FinalRefreshSubtitles; names another function)
+0059d761   RELOCATION_MATCH PASS   CTCInventoryTrade::FinalRefreshSubtitles
+0059e4d7   RELOCATION_MATCH PASS   CTCInventoryTrade::ConstructSubtitlesPC
+005c9962   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c9962   RELOCATION_MATCH PASS   CTCInventoryWeapons::RefreshSheathedWeapons
+005ee136   WARN STANDIN_LEAF ?GetExperienceSpentOnAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (catalog CTCInventoryAbilities::GetAbilityLevel; names another function)
+005ee136   MATCH            PASS   CTCInventoryAbilities::GetAbilityLevel
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheItemFromInventory (engine/CCreatureAction_UnsheatheItemFromInventory.h)
+0069f9e0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0069f9e0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory::PerformAction
+006a81f0   RELOCATION_MATCH PASS   CThingFilter_NoiseCameFromThing::operator()
+006bffd0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CStockItemDef (engine/CStockItemDef.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)
+006bffd0   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006bffd0   RELOCATION_MATCH PASS   CTCBuyableHouse::GetValueOfTrophies
+006d0410   WARN SHARED_HEADER_AVAILABLE CHeroMarriageDef (engine/CHeroMarriageDef.h)
+006d0410   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006d0410   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+006d0410   RELOCATION_MATCH PASS   CTCWife::GetGreetDialogueGroupName
+00730070   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00730070   WARN SHARED_HEADER_AVAILABLE CTCDummyVillager (engine/CTCDummyVillager.h)
+00730070   WARN RELOC_NAME: ?FindThingByUID@CThingManager@@QAEPAVCThing@@_K@Z -> 0051ed80 labelled 'CThingManager::GetPThingWithUID'
+00730070   WARN RELOC_NAME: ?SetWorkBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z -> 00512260 labelled '_unattributed::AssignTarget_00512260'
+00730070   WARN RELOC_NAME: ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z -> 00512210 labelled '_unattributed::AssignTarget_00512210'
+00730070   RELOCATION_MATCH PASS   CTCDummyVillager::OnInitialActivate
+00775b20   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+00775b20   WARN RELOC_NAME: ?UpdateStock@CTCShop@@QAEXXZ -> 00775350 labelled 'CTCShop_OnInitialActivate'
+00775b20   RELOCATION_MATCH PASS   CTCShop::OnInitialActivate
+00783380   WARN SHARED_HEADER_AVAILABLE CThingAICreatureInit (engine/CThingAICreatureInit.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00783380   WARN SHARED_HEADER_AVAILABLE CTCBoastingCrowdControl (engine/CTCBoastingCrowdControl.h)
+00783380   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00783380   RELOCATION_MATCH PASS   CTCBoastingCrowdControl::SpawnCrowdMember
+007e5f70   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+007e5f70   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)
+007e5f70   RELOCATION_MATCH PASS   CTCOracleMinigame::ProcessInput
+007efe70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007efe70   WARN SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)
+007efe70   WARN SHARED_HEADER_AVAILABLE CTCWallMountEffects (engine/CTCWallMountEffects.h)
+007efe70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007efe70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseWallMount (engine/CCreatureAction_UseWallMount.h)
+007efe70   WARN SHARED_HEADER_AVAILABLE CTCActionUseBase (engine/CTCActionUseBase.h)
+007efe70   WARN RELOC_NAME: ?IsUsable@CTCWallMountEffects@@QAE_NXZ -> 007df3d0 labelled 'CTCCameraCollision::HasCameraPhysicsMeshObject'
+007efe70   RELOCATION_MATCH PASS   CTCActionUseWallMount::OnActionUse
+00849320   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00849320   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00849320   RELOCATION_MATCH PASS   CCreatureAction_AlertToPlayer::PerformAction
+0089cd70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0089cd70   WARN RELOC_NAME: ?GetSoundRadius@PerceiveMethods@@QBEMXZ -> 00744440 labelled '_global::GetMember_float0x3c_00744440'
+0089cd70   RELOCATION_MATCH PASS   CGameScriptInterface::CanThingBe_Heard_ByOtherThing
+0089d0e0   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetAsAwareOfThing
+0089d3a0   RELOCATION_MATCH PASS   CGameScriptInterface::EntityAttachToVillage
+008b9c90   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008b9c90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008b9c90   WARN SHARED_HEADER_AVAILABLE CTCWillLightning (engine/CTCWillLightning.h)
+008b9c90   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008b9c90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillLightningSpell (engine/CCreatureAction_CastWillLightningSpell.h)
+008b9c90   WARN RELOC_NAME: ?SetTargetOverride@CTCWillLightning@@QAEXPAVCThing@@@Z -> 0079f910 labelled '_unattributed::AssignTarget_0079f910'
+008b9c90   RELOCATION_MATCH PASS   CCreatureAction_CastWillLightningSpell::Initialise
+00911a90   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00911a90   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+00911a90   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+00911a90   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00911a90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00911a90   RELOCATION_MATCH PASS   CAIStateGroup_WanderAroundInitialPos::Update
+0091db50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+0091db50   RELOCATION_MATCH PASS   CAIStateGroup_EnemyCreatureBase::GetEnemy
+0094bca0   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+0094bca0   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager (engine/COpinionReactionManager.h)
+0094bca0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0094bca0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0094bca0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@N_00668b60@@QAE@PAVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0094bca0   WARN RELOC_NAME: ??4CIntelligentPointerConstThing@N_00668b60@@QAEAAU01@ABU01@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+0094bca0   RELOCATION_MATCH PASS   CAIStateGroup_MinionHawkingFromStall::IsRunnable
+0094bdf0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0094bdf0   RELOCATION_MATCH PASS   CAIStateGroup_MinionHawkingFromStall::IsStillValid
+009577e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009577e0   WARN STANDIN_LEAF ?IsRunnable@CBehaviourMethods@@QAE_NXZ (catalog CAIStateGroupBehaviourBase::IsRunnable; names another function)
+009577e0   RELOCATION_MATCH PASS   CAIStateGroupBehaviourBase::IsRunnable
+
+WINS: 31
+  0056ea4e RELOCATION_MATCH CTCInventoryExperience::?GetXString@CTCInventoryExperience@@AAE?AVCWideString@@J@Z
+  005721fa RELOCATION_MATCH CTCInventoryExperience::UpdateExperienceSpendLevelUp
+  005724cd RELOCATION_MATCH CTCInventoryExperience::InitialiseExperienceSpendValues
+  0059ca95 RELOCATION_MATCH CTCInventoryTrade::?RefreshNameAndTitlePC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JJ@Z
+  0059cfbd RELOCATION_MATCH CTCInventoryTrade::?RefreshNameAndTitle@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JJ@Z
+  0059d0b8 RELOCATION_MATCH CTCInventoryTrade::?FinalConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@@Z
+  0059d1b1 RELOCATION_MATCH CTCInventoryTrade::?FinalRefreshSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@@Z
+  0059d65a RELOCATION_MATCH CTCInventoryTrade::?FinalConstructSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@0@Z
+  0059d761 RELOCATION_MATCH CTCInventoryTrade::?FinalRefreshSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@@Z
+  0059e4d7 RELOCATION_MATCH CTCInventoryTrade::?ConstructSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@0@Z
+  005c9962 RELOCATION_MATCH CTCInventoryWeapons::?RefreshSheathedWeapons@CTCInventoryWeapons@@QAEXXZ
+  005ee136 MATCH CTCInventoryAbilities::?GetExperienceSpentOnAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+  0069f9e0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
+  006a81f0 RELOCATION_MATCH CThingFilter_NoiseCameFromThing::??RCThingFilter_NoiseCameFromThing
+  006bffd0 RELOCATION_MATCH CTCBuyableHouse::GetValueOfTrophies
+  006d0410 RELOCATION_MATCH CTCWife::?GetGreetDialogueGroupName@CTCWife@@QBE_NAAVCCharString@@@Z
+  00730070 RELOCATION_MATCH CTCDummyVillager::OnInitialActivate
+  00775b20 RELOCATION_MATCH CTCShop::OnInitialActivate
+  00783380 RELOCATION_MATCH CTCBoastingCrowdControl::SpawnCrowdMember
+  007e5f70 RELOCATION_MATCH CTCOracleMinigame::?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z
+  007efe70 RELOCATION_MATCH CTCActionUseWallMount::?OnActionUse@CTCActionUseWallMount
+  00849320 RELOCATION_MATCH CCreatureAction_AlertToPlayer::PerformAction
+  0089cd70 RELOCATION_MATCH CGameScriptInterfaceMethods::CanThingBe_Heard_ByOtherThing
+  0089d0e0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsAwareOfThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  0089d3a0 RELOCATION_MATCH CGameScriptInterface::?EntityAttachToVillage@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  008b9c90 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::Initialise
+  00911a90 RELOCATION_MATCH CAIStateGroup_WanderAroundInitialPos::?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ
+  0091db50 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::GetEnemy
+  0094bca0 RELOCATION_MATCH CAIStateGroup_MinionHawkingFromStall::?IsRunnable@CAIStateGroup_MinionHawkingFromStall@@UAE_NXZ
+  0094bdf0 RELOCATION_MATCH CAIStateGroup_MinionHawkingFromStall::?IsStillValid@CAIStateGroup_MinionHawkingFromStall@@UBE_NXZ
+  009577e0 RELOCATION_MATCH CAIStateGroupBehaviourBase::IsRunnable

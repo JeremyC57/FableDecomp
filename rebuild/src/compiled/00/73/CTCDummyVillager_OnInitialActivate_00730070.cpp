@@ -101,7 +101,7 @@ protected:
 };
 class CTCVillage : public CTCBase {
 public:
-    void AddThingToVillage(CThing* thing);          // 0x0065B854
+    void AddThingToVillage(CThing& thing);          // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z (Ego_r.pdb; NF168)
 };
 class CTCVillageMember : public CTCBase {
 public:
@@ -171,7 +171,7 @@ void CTCDummyVillager::OnInitialActivate()
             if (Thing->HasTC(0x23)) {
                 CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetPVillage();
                 if (village)
-                    village->AddThingToVillage(Creature.Get());
+                    village->AddThingToVillage(*Creature.Get());
             }
         }
     }

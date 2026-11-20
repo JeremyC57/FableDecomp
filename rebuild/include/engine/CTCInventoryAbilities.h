@@ -196,6 +196,12 @@ public:
 #endif
     float GetAbilityMoralityCostFactor(EHeroAbility);
     long GetExperienceCostToUpgradeAbility(EHeroAbility,long,bool) const;
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_GETEXPERIENCESPENTONABILITY
+    // NF168 opt-in (rows 0x005EE136 / 0x005724CD): Ego_r.pdb 0x0057CC91 ?GetExperienceSpentOnAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+    // (public const), out of line at 0x005EE136: `return ExperienceSpentOnAbilities[ability];` (the +0x148 vector, 8b8148010000 ...
+    // 8b0488). The catalog had labelled it GetAbilityLevel, which is 0x005EDE93 (+0x160 Abilities). Declaration only.
+    long GetExperienceSpentOnAbility(EHeroAbility ability) const;                                // 0x005EE136
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_LEVELUP
     // Chunk 764 (row 0x006D7B80 CTCHeroExperience::GetAbilityPossibleLevelUpAmount): Ego_r.pdb spellings, out of line in retail:
     // IsAbilityPotentiallyAvailable 0x005EE02E (QBE), GetAbilityStatType 0x005EDEEB (QBE), GetAbilityMaximumLevelWithRenown

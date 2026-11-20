@@ -55,7 +55,7 @@ class CTCWillLightning { public:
     unsigned char _nativeBase[0x10];
     bool LeftHandAnim;
     CIntelligentPointer<CThing> PItemRemoved; // native +0x11
-    void SetAICast(long); // 0x0079F960 sets timer flag then jumps to SetLevel 0x0079F810
+    void SetAICasting(long); // 0x0079F960 ?SetAICasting@CTCWillLightning@@QAEXJ@Z (Ego_r.pdb + FableWin.pdb; NF168 respelled in place): sets timer flag then jumps to SetLevel 0x0079F810
     void SetTimeToCastLightning(float); // 0x0079F5F0
     void SetTargetOverride(CThing*); // 0x0079F910 copies pointer to native +0x88
 };
@@ -93,7 +93,7 @@ void CCreatureAction_CastWillLightningSpell::Initialise()
 
     CThing* creature = PCreature.GetPItem();
     if (creature->Type == 1) {
-        force->SetAICast(Level);
+        force->SetAICasting(Level);
         force->SetTimeToCastLightning(Secs);
         if (POptionalItem.GetPItem() && !(POptionalItem.GetPItem()->LifeFlags & 1))
             force->SetTargetOverride(POptionalItem.GetPItem());

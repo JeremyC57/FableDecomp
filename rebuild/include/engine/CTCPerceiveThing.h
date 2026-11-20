@@ -314,6 +314,9 @@ FABLE_STATIC_ASSERT_AT(242, sizeof(CTCPerceiveThing)==0x58);
 #include "rebuild_abi.h"
 
 class CDefPointeeBase;
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
+class CThing;
+#endif
 
 #pragma pack(push, 1)
 class CTCPerceiveThing {
@@ -323,6 +326,27 @@ public:
     // layout. Ego_r.pdb 0x00757070 / FableWin.pdb 0x0258DA60 ?GetFOV@CTCPerceiveThing@@QBEMXZ (retail 0x007445D0, between
     // GetTimeBasedVisibilityMultiplier 0x00744580 and the constructor 0x007445E0 as in Ego_r). Declaration only (no layout change).
     float GetFOV() const;                                    // 0x007445D0
+#endif
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
+    // NF168 flat-branch opt-in (row 0x009577E0 CAIStateGroupBehaviourBase::IsRunnable): the retail branch's out-of-line getter on the
+    // flattened layout, Ego_r.pdb / FableWin.pdb ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (retail 0x007446A0, the landed
+    // row's leaf). Declaration only (no layout change).
+    const CThing* GetPerceivedThing() const;                 // 0x007446A0
+#endif
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_FLAT_CANSEEORSMELL
+    // NF168 flat-branch opt-in (row 0x0091DB50 CAIStateGroup_EnemyCreatureBase::GetEnemy): CanSeeOrSmellPerceivedThing() const, out of
+    // line in retail at 0x00661600 (landed row; the retail-branch FABLE_RETAIL_CTCPERCEIVETHING_CANSEEORSMELL spelling). Declaration only.
+    bool CanSeeOrSmellPerceivedThing() const;                // 0x00661600
+#endif
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_FLAT_ISAWAREOFTHING
+    // NF168 flat-branch opt-in (row 0x0091DB50): Ego_r.pdb / FableWin.pdb ?IsAwareOfThing@CTCPerceiveThing@@QBE_NXZ, out of line in
+    // retail at 0x00643B3B (landed row). Declaration only.
+    bool IsAwareOfThing() const;                             // 0x00643B3B
+#endif
+#ifdef FABLE_RETAIL_CTCPERCEIVETHING_FLAT_SETASDIRECTLYAWARE
+    // NF168 flat-branch opt-in (row 0x00849320 CCreatureAction_AlertToPlayer::PerformAction): Ego_r.pdb / FableWin.pdb
+    // ?SetAsDirectlyAwareOfPerceivedThing@CTCPerceiveThing@@QAEXXZ, out of line in retail at 0x007449B0 (landed row). Declaration only.
+    void SetAsDirectlyAwareOfPerceivedThing();               // 0x007449B0
 #endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     int              field4;                                 // +0x04 retail-only int (previous header)

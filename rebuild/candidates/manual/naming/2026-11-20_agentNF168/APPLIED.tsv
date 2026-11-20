@@ -1,0 +1,33 @@
+entry	address	status	binders_respelled	note
+q11685	0x005DA950	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11688	0x005DAA40	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11927	0x00753C70	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11928	0x007517B0	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11929	0x005DAB10	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11931	0x00751E80	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11932	0x00800540	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q11990	0x008EF190	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q4183	0x005CC772	done	7	self row already right; 7 wrong binders (free ?GetXString@@YI) ported onto the shared headers: 0x0056EA4E, 0x0059CA95, 0x0059CFBD, 0x0059D0B8, 0x0059D1B1, 0x0059D65A, 0x0059D761 (+0x0059E4D7 caller of the renamed 0x0059D65A); every other exe-scan referencer binds the PDB spelling
+q4223	0x013BAB30	blocked	1	binder 0x006D0410 respelled in place (local CTCWife model gets the private static); initializer 0x0121E210 already right; rows left: 0x012294A0 (the static atexit destructor, landed as the stand-in global_CreateCRC_012294a0 binding g_AutoTinyReverseLoopObjects, an offset reference the exe scan cannot see) needs re-authoring as the dynamic atexit destructor of CTCWife::CourtingAdviceGroupNames (initializer/destructor pair rule, 2026-11-20); spelling count at 0x013BAB30 goes 3 -> 2
+q4224	0x013BAE94	blocked	1	binder 0x007E5F70 respelled in place (local CTCOracleMinigame model gets the private static); initializer 0x0121F280 already right; rows left: 0x01229DF0 (the static atexit destructor, landed as the stand-in global_CreateCRC_01229df0 binding g_AutoTinyReverseLoopObjects_013bae94) needs re-authoring as the dynamic atexit destructor of CTCOracleMinigame::SymbolStrings; spelling count at 0x013BAE94 goes 3 -> 2
+q4467	0x005C552C	done	2	self row already right; binders 0x005C9962 / 0x0069F9E0 respelled in place; 0x005C8101 / 0x005CB128 already bind it (header); claim verified: PDB sets (only Put/Remove sheathe members) + RefreshSheathedWeapons body
+q4480	0x007723D0	done-already	0	self row 0x007723D0 already ?IsValidStockItem@CTCShop@@QBE_NJ@Z; all 9 exe-scan referencers bind it through engine/CTCShop.h; HasDefaultStockItem bound nowhere (reloc_bindings 0)
+q4530	0x0065B854	done	3	binders 0x00730070, 0x00783380 (found by exe scan; not in WORKLIST) respelled in place, 0x0089D3A0 ported onto the headers; 0x004FF750 / 0x006D18A0 / 0x007EE5A0 already bind the PDB spelling
+q4718	0x007446A0	deferred	5	self row already right; 5 wrong binders respelled (0x0089CD70, 0x0089D0E0, 0x00849320, 0x009577E0, 0x0091DB50); deferred: held by NF166 (0x0093B8B0 CTCPerceiveThingAccess, 0x0095F9A0 CTCCreatureOpinionOfHero::GetTargetThing) and NF167 (0x0093C4E0 CTCPerceiveThingMethods QBEPAV); the other 30 exe-scan referencers bind the PDB spelling
+q4763	0x005EE77C	done	2	binders 0x005721FA / 0x005724CD ported onto engine/CTCInventoryAbilities.h (also 0x0056FFC5 respelled to the PDB AAE form, and 0x005EE136 found to be GetExperienceSpentOnAbility: self row renamed, MATCH); 0x00570332 / 0x00571280 / 0x005726A0 / 0x005747A3 / 0x006D7B80 / 0x006D7CB0 already bind the const PDB spelling
+q4957	0x005B4EBA	done-already	0	self row already ?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z; the 3 exe-scan referencers (0x005B5CF8, 0x005B62FE, 0x005B6767) bind it
+q4963	0x00775350	done	1	self address not landed (catalog fix in NAME_FIXES); binder 0x00775B20 respelled in place; 0x00775B40 already binds UpdateStock (header)
+q4986	0x008031E0	done-already	0	self row already ?GetPBestThingForMeleeAttack@CTCTargetingPlayer@@UBEPAVCThing@@XZ (engine/CTCTargetingPlayer.h slot 28); exe scan: no landed referencer (vtable only); no vfunc_28 spelling left in landed sources
+q5091	0x007446A0	deferred	5	self row already right; 5 wrong binders respelled (0x0089CD70, 0x0089D0E0, 0x00849320, 0x009577E0, 0x0091DB50); deferred: held by NF166 (0x0093B8B0 CTCPerceiveThingAccess, 0x0095F9A0 CTCCreatureOpinionOfHero::GetTargetThing) and NF167 (0x0093C4E0 CTCPerceiveThingMethods QBEPAV); the other 30 exe-scan referencers bind the PDB spelling
+q5092	0x007498D0	done	1	sole exe-scan referencer 0x006A81F0 ported onto engine/CTCNoise.h; self row already right
+q5094	0x00798D80	done	2	both exe-scan referencers 0x0094BCA0 / 0x0094BDF0 ported onto engine/CTCShopKeeper.h (GetShopThing -> GetCustomer const; also GetShopTC -> const PDB spelling); self row already right
+q5095	0x007DE4E0	done	1	sole exe-scan referencer 0x007EFE70 respelled in place; self row already right
+q5096	0x007DE4F0	done	1	sole exe-scan referencer 0x006BFFD0 respelled in place; self row already right
+q5097	0x007F6160	done	1	sole exe-scan referencer 0x00911A90 moved onto engine/CTCTargetingAI.h; self row already right
+q5134	0x0087C390	done-already	0	claim verified (Ego_r.pdb SetOccupier QAEXPAVCThingCreatureBase@@@Z, next to GetOccupier 0x0087C3E0; self row leaf already this); the 8 old spellings are gone: all 9 exe-scan referencers call SetOccupier through engine/CTCSinglePersonOccupiable.h and reloc_bindings holds only the PDB spelling
+q5135	0x0087C3F0	done-already	0	self row already ?IsOccupied@CTCSinglePersonOccupiable@@QBE_NXZ (Ego_r.pdb); both exe-scan referencers (0x006A8A30, 0x00970CD0) bind it; reloc_bindings holds only the PDB spelling
+q5160	0x0079F960	done	1	sole exe-scan referencer 0x008B9C90 respelled in place; self row already right (Ego_r + FableWin)
+q5162	0x007BEFF0	blocked	0	blocked: port, row 0x00811760 (its local CThing / CIntelligentPointer models must move onto engine/CThing.h + engine/CIntelligentPointer.h before the NThingShot::CTCShotDefinitionBase header can be included); self row already right
+q5203	0x006159A0	open	0	not started (handed back early for context); see NOTES.md resume pointers
+q6192	0x00803540	done	0	self address not landed; catalog fix in NAME_FIXES.tsv; sole exe-scan referencer 0x00805600 already binds the PDB spelling
+q6323	0x0138306C	open	0	not started (handed back early for context); see NOTES.md resume pointers

@@ -1,5 +1,9 @@
 // CAIStateGroupBehaviourBase::IsRunnable() -- reset target, check behavior predicate, and acquire perceived target.
 // Grade: RELOCATION_MATCH -- explicit reset temporary lifetime preserves retail target-address ordering.
+// Naming (NF168, 2026-11-20): the perceived-thing getter 0x007446A0 is the real ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
+//   (Ego_r.pdb / FableWin.pdb; engine/CTCPerceiveThing.h flat-branch opt-in FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING), replacing the
+//   CPerceptionMethods::GetThing stand-in (a struct derived from CTCPerceiveThing and a cast to it).
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
 #include "engine/CAIStateGroupBehaviourBase.h"
 #include "engine/CTCPerceiveThing.h"
 class CThing;
@@ -26,7 +30,6 @@ public:
 };
 
 
-struct CPerceptionMethods : CTCPerceiveThing { CThing* GetThing(); }; // 007446A0
 struct CBehaviourVirtualView {
  virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
  virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -50,7 +53,7 @@ bool CBehaviourMethods::IsRunnable() {
  }
  if (Target().GetPItem() && !((CThingRetailLife*)Target().GetPItem())->Dead &&
      ((CBehaviourVirtualView*)this)->CanRun()) {
-  Target()=((CPerceptionMethods*)PTCPerception)->GetThing();
+  Target()=PTCPerception->GetPerceivedThing();
   return true;
  }
  return false;

@@ -79,7 +79,7 @@ class CThing;
 class CTCVillage { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
-    void AddThingToVillage(CThing* thing);              // 0x0065B854
+    void AddThingToVillage(CThing& thing);              // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z (Ego_r.pdb; NF168)
 };
 struct STCEntry { long type; void* component; };
 struct CTCMap {
@@ -213,7 +213,7 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
                 const C3DVector& from = creature->GetPos();
                 const C3DVector& to = lookAt->GetPos();
                 placement->SetFacingAngleXY(WrapAngle((float)atan2(to.X - from.X, to.Y - from.Y) * 0.15915494f));
-                tcVillage->AddThingToVillage(creature);
+                tcVillage->AddThingToVillage(*creature);
                 creature->AutoSetupSexuality(def->MaleChance);
                 creature->SetAsGameStatePersisted(false);
                 creature->InCrowd = false;
