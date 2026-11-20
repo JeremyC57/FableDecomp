@@ -10,6 +10,10 @@
 #include "engine/C3DBoundingBox.h"
 #include "engine/CCircle.h"
 #endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_GETRIGIDBODYBOUNDINGPOINTS
+#include "engine/C3DVector.h"
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_NAVIGATION
 #include "engine/CVectorMap.h"
 class C3DMeshVolume;
@@ -54,6 +58,12 @@ public:
     // ?PeekRoughProportionOfSphereContained@CPhysicsMesh@@QBEMABVCCharString@@ABVC3DVector@@M@Z at 0x00A6CA80. Declarations only.
     bool IsInContainmentVolume(const CCharString& name, const C3DVector& position, float radius) const;   // 0x00A6CA20
     float PeekRoughProportionOfSphereContained(const CCharString& name, const C3DVector& position, float radius) const;   // 0x00A6CA80
+#endif
+#ifdef FABLE_RETAIL_CPHYSICSMESH_GETRIGIDBODYBOUNDINGPOINTS
+    // Nested opt-in (NF138, q4802; rows 0x00A6CB20 and its caller 0x00A12840 CPhysicsMeshObject::GetRigidBodyBoundingPoints): Ego_r.pdb
+    // 0x00B4DCE0 / FableWin.pdb 0x030F7040 ?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+    // (public, const; the points by STLport vector reference), out of line in retail at 0x00A6CB20. Declaration only: no layout change.
+    void GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const;   // 0x00A6CB20
 #endif
 #ifdef FABLE_RETAIL_CPHYSICSMESH_BOUNDINGBOXINTERSECTED
     // Retail opt-in (wf5, row 0x00A11F20 CPhysicsMeshObject::IsSpherePartContainedInBoundingBox): Ego_r.pdb / FableWin.pdb

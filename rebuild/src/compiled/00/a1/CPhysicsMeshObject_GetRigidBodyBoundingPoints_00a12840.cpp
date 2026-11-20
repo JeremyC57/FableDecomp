@@ -11,18 +11,19 @@
 // store, the pointee kept in esi across the call); the scale functor is a 4-byte record whose float
 // is copied as a dword (`mov ecx,[ebx+38h]`), built in the dead `points` argument slot that also
 // receives the discarded functor result (`mov [esp+14h],ecx` ... `lea ecx,[esp+18h]`).
+// Naming (NF138, 2026-11-20; q4802 family): the local C3DVectorVector stand-in replaced by the STLport vector<C3DVector> of the shared
+//   stlport/fable_containers.h; own leaf ?GetRigidBodyBoundingPoints@CPhysicsMeshObject@@QBEXAAUC3DVectorVector@@@Z -> the Ego_r.pdb /
+//   FableWin.pdb spelling (already bound by 0x0075B000), and 0x00A6CB20 binds the PDB ?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAV?$vector@...
+//   (its self leaf in the same hand-back). The local CPhysicsMesh declaration respelled in place.
+// Leaf: ?GetRigidBodyBoundingPoints@CPhysicsMeshObject@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
 #include "engine/C3DVector.h"
-struct C3DVectorVector {                           // retail std::vector: first/last/end
-    C3DVector* first;
-    C3DVector* last;
-    C3DVector* end_of_storage;
-};
+#include "stlport/fable_containers.h"
 
 class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
-    void GetRigidBodyBoundingPoints(C3DVectorVector& points) const;   // 0x00A6CB20
+    void GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const;   // 0x00A6CB20
 };
 
 template <class T> class CIVCountedPointer { public:
@@ -57,14 +58,14 @@ class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x012
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38
     float OO_Scale;                                // +0x3c
-    void GetRigidBodyBoundingPoints(C3DVectorVector& points) const;
+    void GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const;
 };
 
-void CPhysicsMeshObject::GetRigidBodyBoundingPoints(C3DVectorVector& points) const
+void CPhysicsMeshObject::GetRigidBodyBoundingPoints(std::vector<C3DVector>& points) const
 {
     {
         CIVCountedPointer<CPhysicsMesh> mesh(Mesh);
         mesh->GetRigidBodyBoundingPoints(points);
     }
-    ForEach_ScaleElements(points.first, points.last, CScaleElements(Scale));
+    ForEach_ScaleElements(points.begin(), points.end(), CScaleElements(Scale));
 }

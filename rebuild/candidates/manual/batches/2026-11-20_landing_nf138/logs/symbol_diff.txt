@@ -1,0 +1,39 @@
+0064be45 new: 5
+    ??0?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@XZ
+    ??4?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAEAAV0@ABV0@@Z
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Release@?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAEXXZ
+0068eca0 new: 0
+00733290 new: 1
+    ?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ TABLE:00733290
+00733480 new: 8
+    ??0?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@ABV0@@Z
+    ??1?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@XZ
+    ??A?$vector@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@std@@@std@@QBEABV?$CDefPointer@$$CBVCMeleeCombatAbil
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ TABLE:00733480
+    ?Release@?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAEXXZ
+    ?begin@?$vector@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@std@@@std@@QBEPBV?$CDefPointer@$$CBVCMeleeCombat
+    ?size@?$vector@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@std@@@std@@QBEIXZ
+007334b0 new: 5
+    ??0?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@ABV0@@Z
+    ??1?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAE@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ TABLE:007334b0
+    ?Release@?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@QAEXXZ
+00848fd0 new: 3
+    ??$?0VCModeSitBase@NCreatureMode@@@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@ABV?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@@Z
+    ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ
+    ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+00a12840 new: 3
+    ?GetRigidBodyBoundingPoints@CPhysicsMeshObject@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z TABLE:00a12840
+    ?begin@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@XZ
+    ?end@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@XZ
+00a6cb20 new: 5
+    ??A?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAVC3DVector@@I@Z
+    ??ZC3DVector@@QAEABV0@ABV0@@Z
+    ?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z TABLE:00a6cb20
+    ?begin@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@XZ
+    ?size@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QBEIXZ
+00b20b60 new: 0

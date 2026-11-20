@@ -1,0 +1,44 @@
+addr       parity           behav  name
+00733480   MATCH            PASS   CTCCombat::GetPMeleeFlourishAbility
+007334b0   WARN STANDIN_LEAF ?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ (catalog CThing::GetPBaseDef; names another function)
+007334b0   MATCH            PASS   CThing::GetPBaseDef
+00733290   WARN STANDIN_LEAF ?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ (catalog CTCCombat::IsBreakBlockValid; names another function)
+00733290   MATCH            PASS   CTCCombat::IsBreakBlockValid
+0064be45   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0064be45   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0064be45   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0064be45   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0064be45   WARN RELOC_NAME: ?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ -> 00733290 labelled 'CTCCombat::IsBreakBlockValid'
+0064be45   WARN RELOC_NAME: ?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ -> 007334b0 labelled 'CThing::GetPBaseDef'
+0064be45   RELOCATION_MATCH PASS   NPlayerGui::CDrawMeleeActionButtonEffects::Update
+0068eca0   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068eca0   WARN SHARED_HEADER_AVAILABLE CInputProcessCombat (engine/CInputProcessCombat.h)
+0068eca0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068eca0   WARN RELOC_NAME: ?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ -> 00733290 labelled 'CTCCombat::IsBreakBlockValid'
+0068eca0   RELOCATION_MATCH PASS   CInputProcessCombat::ProcessArmedMeleeInput
+00b20b60   RELOCATION_MATCH PASS   CSplineData_00b20b60::CopyFrom
+00a6cb20   RELOCATION_MATCH PASS   CPhysicsMesh::GetRigidBodyBoundingPoints
+00a12840   WARN SHARED_HEADER_AVAILABLE CPhysicsMesh (engine/CPhysicsMesh.h)
+00a12840   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00a12840   WARN SHARED_HEADER_AVAILABLE CPhysicsMeshObject (engine/CPhysicsMeshObject.h)
+00a12840   WARN RELOC_NAME: ?ForEach_ScaleElements@@YI?AUCScaleElements@@PAVC3DVector@@0U1@@Z -> 00a13440 labelled 'std::for_each<C3DVector *, CRescaleBy>'
+00a12840   RELOCATION_MATCH PASS   CPhysicsMeshObject::GetRigidBodyBoundingPoints
+00848fd0   RELOCATION_MATCH PASS   CCreatureAction_SitDown::PerformAction
+
+WINS: 9
+  00733480 MATCH CTCCombat::?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ
+  007334b0 MATCH CThing::?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ
+  00733290 MATCH CTCCombat::?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ
+  0064be45 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::Update
+  0068eca0 RELOCATION_MATCH CInputProcessCombat::ProcessArmedMeleeInput
+  00b20b60 RELOCATION_MATCH CSplineData_00b20b60::CopyFrom
+  00a6cb20 RELOCATION_MATCH CPhysicsMesh::?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+  00a12840 RELOCATION_MATCH CPhysicsMeshObject::?GetRigidBodyBoundingPoints@CPhysicsMeshObject@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+  00848fd0 RELOCATION_MATCH CCreatureAction_SitDown::?PerformAction@CCreatureAction_SitDown@@UAEXXZ

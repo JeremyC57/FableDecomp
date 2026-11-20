@@ -19262,7 +19262,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007331e0	GetMember_byte0x63_007331e0	_global	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007331e0.cpp
 00733210	ResetComboChainPos	CTCCombat	__thiscall	void	1	CWADFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CWADFile_Close_00733210.cpp
 00733230	SetMember_byte0x62_00733230	_global	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\EnableNavigator_EnableNavigator_00733230.cpp
-00733290	IsBreakBlockValid	CTCCombat	__thiscall	bool	2	CThingFilter_IsUnconscious *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CThingFilterIsUnconscious_operator_00733290.cpp
+00733290	IsMeleeBlockCounterValid	CTCCombat	__thiscall	bool	2	CThingFilter_IsUnconscious *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CThingFilterIsUnconscious_operator_00733290.cpp
 007332a0	SetPossibleQueuedAction	CTCCombat	__thiscall	bool	2	CTCCombat *,CCreatureActionBase *	1	yes	accepted									
 007332d0	OnHit	CTCCombat	__thiscall	void	2	CTCCombat *,CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CTCCombat_OnHit_007332d0.cpp
 007332f0	IsValid	CCombatAbility	__thiscall	bool	3	CCombatAbility *,CCombatAbilityData *,ulong *	1	yes	accepted									
@@ -19271,7 +19271,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007333d0	IsCurrentActionBlockable	CTCCombat	__thiscall	bool	1	CTCCombat *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CTCCombat_IsCurrentActionBlockable_007333d0.cpp
 00733410	GetCombatReducedDamage	CTCCombat	__thiscall	float	3	CTCCombat *,float,CThing *	1	yes	accepted									
 00733480	GetPMeleeFlourishAbility	CTCCombat	__thiscall	CDefPointer<CMeleeCombatAbilityDef_const_>	1	CTCCombat *	1	yes	accepted									
-007334b0	GetPBaseDef	CThing	__thiscall	CDefPointer<CThingBaseDef_const_>	1	CThing *	1	yes	accepted									
+007334b0	GetPMeleeBlockCounterAbility	CTCCombat	__thiscall	CDefPointer<CThingBaseDef_const_>	1	CThing *	1	yes	accepted									
 007334f0	ClearCombatVariables	CTCCombat	unknown	undefined	0		0	yes	accepted									
 00733580	RemoveFromCombat	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
 00733620	GetCombatAbilityData	CTCCombat	unknown	undefined	0		0	yes	accepted									

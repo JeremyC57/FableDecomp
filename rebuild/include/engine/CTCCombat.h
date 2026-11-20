@@ -47,6 +47,25 @@ public:
  // 0x0074B320 / IsInMelee 0x0074B330 / IsAbleToBeKnockedDown 0x0074B340 = retail 0x00733170 / 0x00733180 / 0x00733190 / 0x007331A0). Declaration only.
  bool IsInMelee() const;                                                 // 0x00733190
 #endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_GETPMELEEFLOURISHABILITY
+ // Nested opt-in (NF138, q4747; rows 0x00733480 and its caller 0x0064BE45): Ego_r.pdb 0x0074B600 / FableWin.pdb 0x025005A0
+ // ?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ, out of line in retail at 0x00733480
+ // (the usable ability at CurrentAbilityIndex modulo the list length, copied out with AddRef). Declaration only.
+ CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeFlourishAbility() const;            // 0x00733480
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_GETPMELEEBLOCKCOUNTERABILITY
+ // Nested opt-in (NF138, q4747; rows 0x007334B0 and its caller 0x0064BE45): Ego_r.pdb 0x0074B630 / FableWin.pdb 0x02500790
+ // ?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ, out of line in retail at 0x007334B0
+ // (returns PBlockCounterAbility +0x48 with AddRef; Ego_r order GetPMeleeFlourishAbility 0x0074B600 / this 0x0074B630 = retail
+ // 0x00733480 / 0x007334B0). Declaration only.
+ CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeBlockCounterAbility() const;        // 0x007334B0
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISMELEEBLOCKCOUNTERVALID
+ // Nested opt-in (NF138; rows 0x00733290 and its callers 0x0064BE45 / 0x0068ECA0): Ego_r.pdb 0x0074B420 / FableWin.pdb 0x02500780
+ // ?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ, out of line in retail at 0x00733290 (`xor al,al ; ret`; Ego_r order
+ // IsMeleeBlockCounterValid 0x0074B420 / SetPossibleQueuedAction 0x0074B430 = retail 0x00733290 / 0x007332A0). Declaration only.
+ bool IsMeleeBlockCounterValid() const;                                                  // 0x00733290
+#endif
 #ifdef FABLE_RETAIL_CTCCOMBAT_FLOURISH
  // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb ?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z
  // (retail 0x00736640, landed). Declaration only.

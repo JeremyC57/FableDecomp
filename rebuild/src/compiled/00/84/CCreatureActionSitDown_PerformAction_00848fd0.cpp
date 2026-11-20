@@ -10,51 +10,36 @@
 // joins the hit path). The counted pointer argument is passed BY VALUE: its inline copy constructor builds it in the argument area
 // (`sub esp,8 ; mov edx,esp`), copies the object word, then the count block word with the null test around the store and the add-ref
 // `inc dword ptr [eax]` on the block's reference count.
-// Layout: PMode (CCountedPointer<CModeSitBase>) at +0xa8/+0xac; the PDB header (CCreatureAction_SitDown.h, 0xbc bytes) sits 0x0c high
-// against retail's 0xa8-byte CCreatureActionBase, so `this` is modelled locally.
-class CTCBase;
+// Layout: engine/CCreatureAction_SitDown.h retail branch (FABLE_RETAIL_CCREATUREACTION_SITDOWN): PSitMode (CCountedPointer<CModeSitBase>)
+// at +0xa8/+0xac on the retail 0xa8-byte CCreatureActionBase.
+// Naming (NF138, 2026-11-20; q6408): the local CTCCreatureModeManager / CCountedPointer_CModeBase / SCountBlock / CCreatureActionBase /
+//   CCreatureAction_SitDown models replaced by the shared headers (CTCCreatureModeManager.h ADDMODEPOINTER with the nested CModeBase,
+//   CCountedPointer.h, NCreatureMode_CModeSitFloor.h, CCreatureActionBase.h, CCreatureAction_SitDown.h); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z (was ...QAE_NUCCountedPointer_CModeBase@@@Z).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_CTHING
-#include "engine/CThing.h"
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CBaseObject;
-class CBaseObjectPointer;
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_PCREATURE
+#define FABLE_RETAIL_CCREATUREACTION_SITDOWN
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#include "fable_string.h"
+#include "engine/CThing.h"
 #include "engine/CIntelligentPointer.h"
-
-
-struct CModeBase;
-struct SCountBlock {                        // the shared count block of a CCountedPointer
-    long m_references;                      // +0x00
-    void (__fastcall* m_pfnDestroy)(CModeBase*);   // +0x04
-    CModeBase* m_pObject;                   // +0x08
-};
-struct CCountedPointer_CModeBase {          // {object, count block}
-    CModeBase*   m_pObject;                 // +0x00
-    SCountBlock* m_pCount;                  // +0x04
-    CCountedPointer_CModeBase(const CCountedPointer_CModeBase& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++m_pCount->m_references;
-    }
-    ~CCountedPointer_CModeBase();           // the callee destroys its by-value parameter
-};
-class CTCCreatureModeManager { public:             // interface type 0x31 component
-    bool AddMode(CCountedPointer_CModeBase mode);   // 0x0073ACC0
-};
-
-class CCreatureActionBase { public:                // retail sizeof 0xa8
-    virtual void v00(); virtual void v01(); virtual void v02();
-    virtual void PerformAction();           // slot 3
-    unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    unsigned char _pad10[0xa8 - 0x10];      // +0x10
-};
-class CCreatureAction_SitDown : public CCreatureActionBase { public:
-    CCountedPointer_CModeBase PMode;        // +0xa8 CCountedPointer<CModeSitBase>
-    virtual void PerformAction();
-};
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/NCreatureMode_CModeSitFloor.h"
+#include "engine/CCreatureAction_SitDown.h"
 
 void CCreatureAction_SitDown::PerformAction()
 {
@@ -62,5 +47,5 @@ void CCreatureAction_SitDown::PerformAction()
     CThing* creature = PCreature.Get();
     if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
         pModes = ((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
-    pModes->AddMode(PMode);
+    pModes->AddMode(PSitMode);
 }

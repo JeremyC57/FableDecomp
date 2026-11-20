@@ -1,12 +1,12 @@
-// NPlayerGui::CDrawMeleeActionButtonEffects::Update() -- pick the hero's current melee ability def (the flourish ability when a flourish is valid, else the base ability when the combat component says so), restart the flash timers when it changes, clear the effects when there is none, and count the timers down
+// NPlayerGui::CDrawMeleeActionButtonEffects::Update() -- pick the hero's current melee ability def (the flourish ability when a flourish is valid, else the block-counter ability when a block counter is valid), restart the flash timers when it changes, clear the effects when there is none, and count the timers down
 // Leaf: Update
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064BE45, length 373 bytes (frame pointer, `ret`).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
 // (`__fastcall`, by reference), std::bitset::test @ 0x00410DE0, the interface map LowerBound const @ 0x004365B0, CTCCombat::
-// IsMeleeFlourishValid @ 0x00733EE0, ::GetPMeleeFlourishAbility @ 0x00733480 (CDefPointer by hidden pointer), CTCCombat @ 0x00733290
-// (a bool query; the manifest label "CThingFilter_IsUnconscious::operator()" is propagated), the base-ability getter @ 0x007334B0
-// (thiscall on the CTCCombat component, CDefPointer by hidden pointer), ClearEffects @ 0x006445BA (thiscall on the Effects vector), the def's virtual slot 1 on release.
+// IsMeleeFlourishValid @ 0x00733EE0, ::GetPMeleeFlourishAbility @ 0x00733480 (CDefPointer by hidden pointer), ::IsMeleeBlockCounterValid
+// @ 0x00733290, ::GetPMeleeBlockCounterAbility @ 0x007334B0 (thiscall on the CTCCombat component, CDefPointer by hidden pointer; all four
+// Ego_r.pdb / FableWin.pdb const members), ClearEffects @ 0x006445BA (thiscall on the Effects vector), the def's virtual slot 1 on release.
 // Layout: Ego_r.pdb CDrawMeleeActionButtonEffects minus 4 (the 16-byte PDB vector is 12 in retail): PlayerManager +0x08, Effects +0x28,
 // FlashTimer +0x34, ComboLoadingIconTimer +0x38, FlourishCounter +0x3c, FlourishEffect +0x40, PMeleeAbilityDef +0x44 (Ego_r.pdb member
 // names, offsets minus 8 after the two 16-byte PDB vectors; FableWin.pdb ?SetFlourishEffect@CDrawMeleeActionButtonEffects@NPlayerGui@@QAEXJ@Z
@@ -14,9 +14,15 @@
 // Shape: frame-pointer size TU; IS_THING_ALIVE (out of line in retail) has a same-TU read-only stand-in body so the hero's frame word
 // does not escape and is reused for the lookup key and the second temporary; the component comes from the out-param GetInterface
 // (the type constant 0x30 is held in ebx); both getters are called on the CTCCombat component; the chosen def is a CDefPointer local
-// filled from each getter's full-expression temporary through an AddRef copy; CDefPointer release and assignment clear the pointer
-// only inside the non-null arm (`if (p) { p->Release(); p = 0; }`).
+// assigned from each getter's full-expression temporary (engine/CDefPointer.h operator=: the local is known null, so only the AddRef
+// copy remains); the temporaries and the member release through the shared CDefPointer (clear only inside the non-null arm).
+// Naming (NF138, 2026-11-20; q4747): the local CDefPointer / CAbilityDef / CRefCounted / CDefVirtual models replaced by engine/CDefPointer.h
+//   (CDefPointer<const CMeleeCombatAbilityDef>, Ego_r.pdb PMeleeAbilityDef type); the CTCCombat declarations respelled in place to the
+//   PDB members: GetPMeleeFlourishAbility QAE CDefPointer<CAbilityDef> -> QBE CDefPointer<const CMeleeCombatAbilityDef>, the stand-ins
+//   IsShowingBaseAbility / GetPBaseAbility -> IsMeleeBlockCounterValid / GetPMeleeBlockCounterAbility, IsMeleeFlourishValid QAE -> QBE.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefPointer.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -57,54 +63,6 @@ const CInterfaceMap::value_type* CInterfaceMap::LowerBound(const ETCInterfaceTyp
     return it;
 }
 #pragma auto_inline(on)
-struct CRefCounted {
-    long m_count;
-    void AddRef() { ++m_count; }
-    void DecRef() { --m_count; }
-    long GetRefCount() const { return m_count; }
-};
-struct CDefVirtual {
-    virtual void v00();
-    virtual void Destroy();                        // slot 1
-};
-class CAbilityDef : public CDefVirtual, public CRefCounted { public:
-    FABLE_FORCEINLINE void Release()
-    {
-        if (--m_count == 0)
-            Destroy();
-    }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) {}
-    FABLE_FORCEINLINE ~CDefPointer()
-    {
-        if (Object) {
-            Object->Release();
-            Object = 0;
-        }
-    }
-    void Adopt(const CDefPointer& other)
-    {
-        T* object = other.Object;
-        if (object) {
-            object->AddRef();
-            Object = object;
-        }
-    }
-    FABLE_FORCEINLINE void Assign(T* object)
-    {
-        if (Object != object) {
-            if (Object) {
-                Object->Release();
-                Object = 0;
-            }
-            Object = object;
-            if (object)
-                object->AddRef();
-        }
-    }
-};
 class CThing { public:
     unsigned char _pad0[0x20];
     mutable std::bitset<274> m_present;               // +0x20
@@ -138,11 +96,12 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
+class CMeleeCombatAbilityDef;
 class CTCCombat { public:
-    bool IsMeleeFlourishValid();                   // 0x00733EE0
-    CDefPointer<CAbilityDef> GetPMeleeFlourishAbility();   // 0x00733480
-    bool IsShowingBaseAbility();                   // 0x00733290 (label unverified)
-    CDefPointer<CAbilityDef> GetPBaseAbility();    // 0x007334B0
+    bool IsMeleeFlourishValid() const;                                              // 0x00733EE0
+    CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeFlourishAbility() const;     // 0x00733480
+    bool IsMeleeBlockCounterValid() const;                                          // 0x00733290
+    CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeBlockCounterAbility() const; // 0x007334B0
 };
 struct CEffectVector {
     void ClearEffects();                           // 0x006445BA
@@ -157,22 +116,22 @@ struct CDrawMeleeActionButtonEffects {
     long                     ComboLoadingIconTimer;// +0x38
     long                     FlourishCounter;      // +0x3c
     long                     FlourishEffect;          // +0x40
-    CDefPointer<CAbilityDef> PMeleeAbilityDef;      // +0x44
+    CDefPointer<const CMeleeCombatAbilityDef> PMeleeAbilityDef; // +0x44
     void Update();
 };
 
 void CDrawMeleeActionButtonEffects::Update()
 {
     const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
-    CDefPointer<CAbilityDef> ability;
+    CDefPointer<const CMeleeCombatAbilityDef> ability;
     if (IS_THING_ALIVE(hero)) {
         CTCCombat* combat;
         if (hero->GetInterface(&combat, 0x30)) {
             if (combat->IsMeleeFlourishValid()) {
-                ability.Adopt(combat->GetPMeleeFlourishAbility());
+                ability = combat->GetPMeleeFlourishAbility();
             }
-            else if (combat->IsShowingBaseAbility()) {
-                ability.Adopt(combat->GetPBaseAbility());
+            else if (combat->IsMeleeBlockCounterValid()) {
+                ability = combat->GetPMeleeBlockCounterAbility();
             }
             if (ability.Object != PMeleeAbilityDef.Object) {
                 ComboLoadingIconTimer = -1;
@@ -180,7 +139,7 @@ void CDrawMeleeActionButtonEffects::Update()
             }
         }
     }
-    PMeleeAbilityDef.Assign(ability.Object);
+    PMeleeAbilityDef = ability;
     if (FlashTimer == 0)
         ComboLoadingIconTimer = 30;
     if (!ability.Object) {

@@ -26297,8 +26297,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00733290'
         Module = 'CTCCombat'
-        Source = '00/73/CThingFilterIsUnconscious_operator_00733290.cpp'
-        TestSource = '00/73/CThingFilterIsUnconscious_operator_00733290_test.cpp'
+        Source = '00/73/CTCCombat_IsMeleeBlockCounterValid_00733290.cpp'
+        TestSource = '00/73/CTCCombat_IsMeleeBlockCounterValid_00733290_test.cpp'
         PassPattern = 'AUTO_TINY_00733290_TEST PASS'
     }
     [pscustomobject]@{
@@ -217969,9 +217969,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007334b0'
-        Module = 'CThing'
-        Source = '00/73/CThing_GetPBaseDef_007334b0.cpp'
-        TestSource = '00/73/CThing_GetPBaseDef_007334b0_test.cpp'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_GetPMeleeBlockCounterAbility_007334b0.cpp'
+        TestSource = '00/73/CTCCombat_GetPMeleeBlockCounterAbility_007334b0_test.cpp'
         PassPattern = '007334b0_TEST PASS'
     }
     [pscustomobject]@{

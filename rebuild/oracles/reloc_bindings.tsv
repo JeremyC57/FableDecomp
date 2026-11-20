@@ -5167,7 +5167,6 @@ _iswdigit	00bfede2	00a0ce90
 ?g_FableLineHeightCallback_013CE75C@@3P6IIXZA	013ce75c	00a0fd90
 ?g_FableWordWidthCallback_013CE758@@3P6IIG@ZA	013ce758	00a0fd90
 ?sub@@YIXPAUSub@@@Z	009f2e20	00a10e10
-?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAUC3DVectorVector@@@Z	00a6cb20	00a12840
 ?HasNavigationLineListInfo@CPhysicsMesh@@QBE_NXZ	00a73ce0	00a12c90
 ??0CHandleBasedMemoryPool@@QAE@XZ	00a02d20	00a148d0
 ??_7CAsyncLoadingMemoryPool@@6B@	0129ca6c	00a148d0
@@ -5777,7 +5776,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CPSCSpline@NParticleEngine@@6B@	012a0934	00b1b350
 ?g_actionName_str@@3PADA	0129f608	00b1b470
 ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z	00993e30	00b20630
-??4CKeyVector@@QAEAAU0@ABU0@@Z	0075b8d0	00b20b60
 ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAUC3DVector@2@111@Z	00b20d30	00b21450
 ??_7CPSCSplineBase@NParticleEngine@@6B@	012a0b14	00b21530
 ?OffsetSplinePositions@CSplineRandomOffsetData@NParticleEngine@@QAEXXZ	00b206b0	00b215a0
@@ -8418,7 +8416,6 @@ __imp__realloc	01440054	00c90fc0
 ?find_weapon_class@@YIPBW4EWeaponClass@@PBW41@0ABW41@ABUrandom_access_iterator_tag@@@Z	0065d9ee	007fe670
 ?UpdateAction@CThingCreatureBase@@QAEXXZ	006643c0	0082fd90
 ?UpdateAnimation@CThingCreatureBase@@QAEXM@Z	00665860	0082fd90
-?AddMode@CTCCreatureModeManager@@QAE_NUCCountedPointer_CModeBase@@@Z	0073acc0	00848fd0
 ?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z	006d4d70	008955c0
 ?SetAttitude@CTCVillage_Retail@@QAEXJ@Z	0065bfbc	0089fe20
 ?Fade@CTCFadeOutAndIn_Retail@@QAEXM_N@Z	006c3b70	008a0720
@@ -17955,7 +17952,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RemoveInputProcess@CInputProcessManagerCalls@@QAEXPAVCAInputProcess@@@Z	00a0d780	00a0d2d0
 ??$__copy@VC2DVector@@@std@@YI?AU?$_Deque_iterator@VC2DVector@@@0@U10@00ABUrandom_access_iterator_tag@0@PAH@Z	00a0e460	00a0e790
 ??$__copy_aux@VC2DVector@@@std@@YI?AU?$_Deque_iterator@VC2DVector@@@0@U10@00ABU__false_type@0@@Z	00a0e790	00a0eb40
-?ForEach_ScaleElements@@YI?AUCScaleElements@@PAVC3DVector@@0U1@@Z	00a13440	00a12840
 ?HasContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@@Z	00a6cbc0	00a128a0
 ?SetPositionMatrix@CPhysicsMeshObject@@QAEXABVC3DVector@@ABVCRightHandedSet@@M@Z	00a114b0	00a12cc0
 ?IsActionPoint@CNavQuadTree@@QAE_NPBVC2DVector@@@Z	00a77540	00a150a0
@@ -18072,7 +18068,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Create@CIPhysicsFacesSegmentBase@@SIPAV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z	00a86cd0	00a6c850
 ?Reset@?$CCountedPointer@VCIPhysicsFacesSegmentBase@@@@QAEXPAVCIPhysicsFacesSegmentBase@@@Z	00a6e9a0	00a6c850
 ??$for_each@PAVC3DVector@@V?$CAddElements@VC3DVector@@@@@@YI?AV?$CAddElements@VC3DVector@@@@PAVC3DVector@@0V0@@Z	00a6ece0	00a6c890
-??4?$CArray@VC3DVector@@@@QAEAAV0@ABV0@@Z	0075b8d0	00a6cb20
 ?_Push_heap@@YIXPAU?$pair@VCCharString@@VC3DDummyObject@@@@JJU1@V?$CCompareString@VC3DDummyObject@@@@@Z	00a6f1d0	00a6fb40
 ??MCCharString@@QBE_NABV0@@Z	009e6530	00a70ff0
 ?IsContaining@CContainmentVolume_a2e710@@QBE_NABVC3DVector@@@Z	00a2e710	00a73d10
@@ -31167,11 +31162,6 @@ _FmtWide_0099ba70	0099ba70	00406610
 ?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z	00aeb6d0	00643d8c
 ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z	00643d5d	00645099
 ?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z	00aeb790	006451dd
-?ClearEffects@CEffectVector@@QAEXXZ	006445ba	0064be45
-?GetPBaseAbility@CTCCombat@@QAE?AV?$CDefPointer@VCAbilityDef@@@@XZ	007334b0	0064be45
-?GetPMeleeFlourishAbility@CTCCombat@@QAE?AV?$CDefPointer@VCAbilityDef@@@@XZ	00733480	0064be45
-?IsMeleeFlourishValid@CTCCombat@@QAE_NXZ	00733ee0	0064be45
-?IsShowingBaseAbility@CTCCombat@@QAE_NXZ	00733290	0064be45
 ?DrawShapes@CTCShapeManager@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@@Z	00761980	00761b10
 ?AddThemeDefIndexToPalette@CMap@@IAEEK@Z	008f70f0	0081ef30
 ??$fill@PAPAVCInstantiatedDefInfo@CDefinitionManager@@PAV12@@std@@YIXPAPAVCInstantiatedDefInfo@CDefinitionManager@@0ABQAV12@@Z	009b15f0	009b4ff0
@@ -34437,8 +34427,6 @@ _s_jpgMask	0124fed0	00581b33
 ?SetRightStickLookAroundVector@CGameCameraManager@@QAEXABVC2DVector@@@Z	00697b10	0068d790
 ?PushDownManualCameraList@CGameCameraManager@@QAEXXZ	00698c30	0068d890
 ?PushUpManualCameraList@CGameCameraManager@@QAEXXZ	00698b50	0068d890
-?IsBreakBlockValid@CTCCombat@@QBE_NXZ	00733290	0068eca0
-?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ	00733ee0	0068eca0
 ?g_rangedWeaponModeGate@@3_NA	01375752	0068f180
 ?GetKind@CInputEvent@@QBEJXZ	00a03b40	00690360
 ?MarkAsUsed@CInputEvent@@QBEXXZ	00a03b90	00690360
@@ -39918,3 +39906,10 @@ _GUID_SysMouse	012acaa4	00ab5710
 _c_dfDIMouse	012adbf4	00ab5710
 _c_dfDIMouse2	012addfc	00ab5710
 ??0?$vector@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@I@Z	00a80360	00a781a0
+?ClearEffects@CEffectVector@@QAEXXZ	006445ba	0064be45
+?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ	007334b0	0064be45
+?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ	00733480	0064be45
+?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ	00733290	0064be45
+?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ	00733ee0	0064be45
+?ForEach_ScaleElements@@YI?AUCScaleElements@@PAVC3DVector@@0U1@@Z	00a13440	00a12840
+?GetRigidBodyBoundingPoints@CPhysicsMesh@@QBEXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z	00a6cb20	00a12840

@@ -1,0 +1,2 @@
+# recheck after landing nf138: 114 rows = gate referencing rows (8 targets) + renamed rows + 58 direct includers of CPhysicsMesh.h / CTCCombat.h
+good 114 bad 0
