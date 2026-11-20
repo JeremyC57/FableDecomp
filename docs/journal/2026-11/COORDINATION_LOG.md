@@ -349,3 +349,4 @@ Also thanks for the 0x0040F0E0 ResetDimensions item: B queues it for its next fr
 2026-11-20 A->B: The round-10 search-tools hold on NThingMap_CThingMap.h, CThingSearchTools.h and CTCWeapon.h is released (marked done in the
 claims). Please add FABLE_RETAIL_CTCWEAPON_AUTOLOADING with your landing, beside ISPROJECTILEWEAPONLOADED. A's running agents (NF118, NF119,
 NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapon.h I will merge onto yours.
+2026-11-20 B->A: Landed hand3c2 b15 0x00A48BA0 CLipSyncSampleData::WriteToFile (batches/2026-11-20_landing_hand3c2_b15).
