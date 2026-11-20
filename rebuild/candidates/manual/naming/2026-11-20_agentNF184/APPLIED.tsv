@@ -1,0 +1,29 @@
+entry	address	status	binders_respelled	note
+q11655	0x006D3A30	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q11656	0x006D4B40	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q11718	0x00669580	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q11760	0x006D41F0	deferred: held by NF181	0	the brief reserves self row 0x006D41F0 for NF181 (its lock file reads released, but the brief rules); its only binder 0x006D4180 moves with it; not touched
+q11873	0x006D41F0	deferred: held by NF181	0	same unit as q11760; not touched
+q11954	0x008E3860	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q11956	0x008D8620	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q11959	0x008E3860	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12017	0x00696340	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12018	0x00696900	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12068	0x00669580	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12124	0x009AB5D0	done-already	0	same address as q4393: 0x009EF360 (the q12124 binder) already binds the D1 spelling at HEAD (NF180 port, landed; probe work/probe_q4393.tsv); the remaining wrong binders were respelled under q4393
+q12134	0x00CDBFB0	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12135	0x00CDBF70	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12139	0x00CB60F0	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12140	0x00CB6160	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12142	0x00A42100	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q12143	0x00A420E0	open	0	open: not started (NF184 handed back at an entry boundary for context)
+q4190	0x008F99A0	done	1	self 0x008F99A0 already defines the claim; REFS 0x0083EFE0 / 0x00840740 already bind it (NF180 census); the last wrong binder 0x0083EEE0 (NF180 held draft) finished: pick-any _M_fill_insert<char> copy now byte-matches the owner 0x004110D0 via two existing opt-ins (FILL_CHAR + ORIGINAL_COPY_TRIVIAL_BACKWARD_PASS22) instead of declaration-only (which breaks the row's frame); vland RELOCATION_MATCH + PASS (work/b1.log)
+q4391	0x009AB4F0	done	1	self 0x009AB4F0 Leaf is the claim (NF177); REFS: 0x009A7F80 already binds it (NF173 probe), 0x009A80B0 (the last binder, NF177 held draft) finished here: vland RELOCATION_MATCH + PASS (work/b2.log). Address ends on one spelling. Pick-any: less<CCharString>::operator() made byte-identical to its owner via a new scaffolding opt-in (decl-only breaks the row); coordinator to accept the opt-in form (NOTES)
+q4393	0x009AB5D0	done	2	self 0x009AB5D0 Leaf = claim. REFS census (HEAD probe, work/probe_q4393.tsv): 0x009A7CA0 0x009A7E20 0x009A7ED0 0x009A7F80 0x009C4440 0x009C46B0 0x009EF360 already bind it; 0x009A80B0 (q4391 port) and 0x009A7D40 (ported here, vland RELOCATION_MATCH + PASS work/b3.log) now bind it. Address ends on one spelling.
+q4394	0x009D2DD0	open	0	open: census done, port not attempted (NF184 rule slip: skipped ahead to later entries; resume pointer). HEAD probe work/probe_q4394.tsv: 0x009CCDC0 0x009CE5E0 0x009F0500 0x009F0570 0x009F05A0 bind the claim; the one wrong binder 0x009F03B0 (CCodeSectionManager::DeregisterSection, catalog RemoveSection) needs a six-callee port (NOTES q4394)
+q5226	0x0042918C	rejected	0	claim does not hold (REJECTED.tsv): 0x0042918C is ReleaseData<CMeshDataBank>, the 5-byte jmp thunk 0x00429BF9 is the destructor; census work/probe_q5226.tsv; family fix in NAME_FIXES.tsv
+q5234	0x0065D5A0	rejected	0	claim does not hold (REJECTED.tsv): 0x0065D5A0 is ReleaseData<CVillageTaskHorn>, the 5-byte jmp thunk 0x0065F92A is the destructor; NAME_FIXES.tsv
+q6141	0x00428905	done-already	0	self 0x00428905 Leaf = claim; HEAD probe (work/probe_q5226.tsv): all four REFS rows 0x0041D1B4 0x0042DD28 0x0042E98F 0x005958F5 bind it
+q6143	0x0065D89B	done	1	self 0x0065D89B Leaf = claim; REFS 0x0065F96D already binds it (probe); 0x0065F37A (std::list node factory stand-in) respelled onto engine/CCountedPointer.h, vland RELOCATION_MATCH + PASS (work/b4.log). Address ends on one spelling.
+q6391	0x0070C050	done	1	HEAD probe of all 40 REFS rows (work/probe_q6391.tsv): 39 bind ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (= self Leaf); the NF173b-reverted 0x007502D0 (Set) ported onto engine/CAnimInit.h with its ctor COMDAT made byte-identical to the owner 0x005B33F4 (scaffolding opt-in, NOTES); vland RELOCATION_MATCH + PASS (work/b5.log). Address ends on one spelling.
+q6462	0x0070C050	done	0	same unit as q6391 (0x007502D0 respelled there)

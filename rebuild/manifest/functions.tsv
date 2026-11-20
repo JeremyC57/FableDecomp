@@ -24946,7 +24946,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083ebd0	toLowerCase	LHNetworkLib	unknown	undefined	0		0	yes	accepted									
 0083ecf0	toUpperCase	LHNetworkLib	unknown	undefined	0		0	yes	accepted									
 0083ee10	StartsWith	LHNetworkLib	unknown	undefined	0		0	yes	accepted									
-0083eee0	GetUntilCRLF	LHHttp2	__thiscall	LH_HTTP_STATUS	3	LHHttp2 *,char *,ulong *	1	yes	accepted									
+0083eee0	GetUntilCRLF	LHNetworkLib::LHHttp2	__thiscall	LH_HTTP_STATUS	3	LHHttp2 *,char *,ulong *	1	yes	accepted									
 0083efe0	ReceiveDocumentAsync	LHNetworkLib::LHHttp2	__thiscall	LH_HTTP_STATUS	1	LHHttp2 *	1	yes	accepted									
 0083f420	ParseLocationData	LHNetworkLib::LHHttpHeaderStatus	unknown	undefined	0		0	yes	accepted									
 0083f5c0	GetLocationHost	LHNetworkLib::LHHttpHeaderStatus	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									

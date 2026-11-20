@@ -158114,8 +158114,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0065f37a'
         Module = '_global'
-        Source = '00/65/CRetailListnode0x10_Buynode_0065f37a.cpp'
-        TestSource = '00/65/CRetailListnode0x10_Buynode_0065f37a_test.cpp'
+        Source = '00/65/global_StdListCreateNodesz0x100065f37a_0065f37a.cpp'
+        TestSource = '00/65/global_StdListCreateNodesz0x100065f37a_0065f37a_test.cpp'
         PassPattern = '0065f37a_TEST PASS'
     }
     [pscustomobject]@{
@@ -274160,9 +274160,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0083eee0'
-        Module = 'LHHttp2'
-        Source = '00/83/LHHttp2_GetUntilCRLF_0083eee0.cpp'
-        TestSource = '00/83/LHHttp2_GetUntilCRLF_0083eee0_test.cpp'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/83/LHNetworkLibLHHttp2_GetUntilCRLF_0083eee0.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttp2_GetUntilCRLF_0083eee0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0083eee0_TEST PASS'
     }

@@ -37,12 +37,29 @@ class CAnimInit{public:
  // ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z) out of line, as retail's size-optimised TU emits it at 0x005B33F4 (Frame zeroed,
  // then Init with the seven arguments re-pushed) and its callers call it. Declaration only; the body is that row's.
  CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority); // 0x005B33F4
+#elif defined(FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY)
+ // NF184 nested opt-in (2026-11-20, q6391 / q6462; row 0x007502D0 CTCChest::InitClosed): the same inline constructor, defined after the
+ // class (below) so its pick-any COMDAT is compiled as the owner row 0x005B33F4's TU compiles it. Declaration here.
+ inline CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority);
 #else
  CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority)
  {Init(type,typeFlags,anim,updateMode,looping,flags,priority);}
 #endif
  void Init(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority); // 0x0070C050
  EAnimUpdateMode UpdateMode;unsigned char Type;bool Looping;long Anim;float Speed,Alpha,LastAlpha;CAnimFrameInfo Frame;unsigned long Flags,TypeFlags;long Priority;};
+#if defined(FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY) && !defined(FABLE_RETAIL_CANIMINIT_CTOR_OUTOFLINE)
+// (same NF184 opt-in) Fidelity: scaffolding, not retail. Callers still see the body (retail expands it in place, e.g. 0x007502D0), but
+// VC7.1 also emits the inline constructor as a pick-any COMDAT. Under the TU's /O2 that copy is 59 bytes against the owner 0x005B33F4's
+// 49, from a size-optimised frame-pointer TU. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body, so the
+// definition is compiled under that TU's optimize("y", off) + ("s", on), then the command-line settings are restored. Same body.
+// Owner check (landing nf184): the owner row sets the same optimize pragmas itself. `#pragma optimize("", on)` below returns to the
+// command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not also carry a row-head optimize pragma.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+inline CAnimInit::CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority)
+{Init(type,typeFlags,anim,updateMode,looping,flags,priority);}
+#pragma optimize("", on)
+#endif
 #else
 class CAnimFrameInfo{public:float Current,Last;};
 class CAnimInit{public:EAnimUpdateMode UpdateMode;unsigned char Type;bool Looping;long Anim;float Speed,Alpha,LastAlpha;CAnimFrameInfo Frame;unsigned long Flags,TypeFlags;long Priority;};

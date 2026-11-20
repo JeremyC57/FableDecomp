@@ -1,0 +1,7 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_005b33f4.obj : error LNK2005: "public: __thiscall CAnimInit::CAnimInit(unsigned char,unsigned long,long,enum EAnimUpdateMode,bool,unsigned long,long)" (??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z) already defined in new_007502d0.obj
+own_009e6530.obj : error LNK2005: "public: bool __thiscall CCharString::operator<(class CCharString const &)const " (??MCCharString@@QBE_NABV0@@Z) already defined in new_009a80b0.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 18 LNK2001 + 33 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

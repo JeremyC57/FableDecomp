@@ -718,6 +718,11 @@ _Rb_tree_iterator<V,_Nonconst_traits<V> > _Rb_tree<K,V,KeyOfValue,Compare,A>::_M
 }
 #endif
 #ifdef FABLE_RETAIL_STLP_MAP
+#ifndef FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_DECL_ONLY
+// (NF184 opt-in, 2026-11-20: FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_DECL_ONLY leaves insert_unique(const V&) declared but not defined in
+// the TU, so the TU calls the owner row's COMDAT instead of emitting its own pick-any copy. User: row 0x009A7D40
+// CBankFileManager::GetRetailBankFilePath, whose set<CWideString> insert_unique is row 0x009AAEB0; fable_string.h declares no
+// CWideString::operator< (0x0099AF70), so a copy built here would compare the converted text pointers and differ from the owner.)
 // Retail branch (Codex pass 13, row 0x00501450): the STLport 4.6 _tree.c insert_unique(const V&) body, visible as in every
 // retail TU that includes <map> (STLport compiles _tree.c into the header unless _STLP_LINK_TIME_INSTANTIATION).
 template<class K,class V,class KeyOfValue,class Compare,class A>
@@ -742,6 +747,7 @@ pair<_Rb_tree_iterator<V,_Nonconst_traits<V> >,bool> _Rb_tree<K,V,KeyOfValue,Com
         return pair<iterator,bool>(_M_insert(x,y,v),true);
     return pair<iterator,bool>(j,false);
 }
+#endif
 #endif
 #if defined(FABLE_RETAIL_STLP_MAP) && defined(FABLE_RETAIL_STLP_TREE_INSERT_EQUAL_BODY)
 // Per-TU opt-in (row 0x00ACA830 COptimisedPrimitive::Initialise): the STLport 4.6 _tree.c insert_equal(const V&) body, visible as
@@ -1066,4 +1072,20 @@ public:
 };
 }
 FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
+#ifdef FABLE_RETAIL_STLP_LESS_CCHARSTRING_SIZE_BODY
+// NF184 opt-in (2026-11-20, q4391; row 0x009A80B0 CBankFileManager::BankExists). Fidelity: scaffolding, not retail. That TU's
+// out-of-line _M_find copies call std::less<CCharString>::operator() (Ego_r.pdb ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z),
+// so the TU emits it as a pick-any COMDAT. Retail kept the 41-byte copy from a size-optimised TU, row 0x0042AAB3. The plain /O2 copy
+// is 43 bytes: two `ret 8` exits where the owner has `jmp` exits. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body.
+// Declaration-only does not work: BankExists must see the body. With it VC7.1 knows the finds write no memory and keeps the bank-list
+// head in ebx across them (0x009A80DF). Declared only, it reloads the head: DIFFER(140v145).
+// So this explicit specialization compiles the same STLport body (`return x<y;`) under optimize("s"), as the owner's TU did. Pair it
+// with FABLE_RETAIL_CCHARSTRING_FORCEINLINE_LESS, which expands CCharString::operator< as the owner does. The copy then grades
+// RELOCATION_MATCH at 0x0042AAB3. Needs fable_string.h first, and no use of the operator before this point.
+// Owner check (landing nf184): the owner row sets the same optimize pragmas itself. `#pragma optimize("", on)` below returns to the
+// command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not also carry a row-head optimize pragma.
+#pragma optimize("s", on)
+namespace std { template<> inline bool less<CCharString>::operator()(const CCharString& x,const CCharString& y) const { return x<y; } }
+#pragma optimize("", on)
+#endif
 #endif

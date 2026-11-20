@@ -154,6 +154,11 @@ public:
 #endif
 private:
     bool ReadQuotedString(CCharString& text, CDataInputStream& stream);   // 0x009A77D0
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_CREATERETAILBANK
+    // NF184 opt-in (row 0x009A7D40 GetRetailBankFilePath): Ego_r.pdb + FableWin.pdb ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z
+    // (private), retail 0x009A7720 (landed). Declaration only.
+    void CreateRetailBank(const CWideString& path);                       // 0x009A7720
+#endif
 protected:
     std::map<CCharString, CBankInfo> Banks;                              // +0x04
     std::list<CCountedPointer<NBankFileManager::CRetailBank> > RetailBanks;   // +0x10
@@ -165,7 +170,13 @@ protected:
     unsigned char BankAliasMap[0x0C];                                    // +0x18 std::map<CCharString,CCharString>
 #endif
     CWideString BasePath;                                                // +0x24
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_CREATEDRETAILBANKS
+    // NF184 opt-in (row 0x009A7D40 GetRetailBankFilePath): the member as its Ego_r.pdb type (set<CWideString,std::less<CWideString>,
+    // std::allocator<CWideString> >, +0x28), the retail 12-byte STLport set (find -> _M_find 0x009AA4C0, insert -> insert_unique 0x009AAEB0).
+    std::set<CWideString> CreatedRetailBanks;                            // +0x28
+#else
     unsigned char CreatedRetailBanks[0x0C];                              // +0x28 std::set<CWideString>
+#endif
     unsigned long FileVersion;                                           // +0x34
 };
 FABLE_STATIC_ASSERT_AT(113, sizeof(CBankFileManager::CBankInfo) == 0x14);

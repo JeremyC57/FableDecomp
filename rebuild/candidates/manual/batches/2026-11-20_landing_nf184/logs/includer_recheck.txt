@@ -1,0 +1,19 @@
+rechecked 60 of 986
+rechecked 120 of 986
+rechecked 180 of 986
+rechecked 240 of 986
+rechecked 300 of 986
+rechecked 360 of 986
+rechecked 420 of 986
+rechecked 480 of 986
+rechecked 540 of 986
+rechecked 600 of 986
+rechecked 660 of 986
+rechecked 720 of 986
+rechecked 780 of 986
+rechecked 840 of 986
+rechecked 900 of 986
+rechecked 960 of 986
+rechecked 986 of 986
+recheck done
+--- bad
