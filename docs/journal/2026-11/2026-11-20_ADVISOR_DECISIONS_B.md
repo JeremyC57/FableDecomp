@@ -194,3 +194,14 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - the other is a cmpcomdat SAME v 0x006E2500, or the PDB method list showing no declared destructor.
   - Landed 0x006E2500 and the header's other includers then become re-port debt (logged, not re-ported now).
 - **0x00C73050:** "not a symbol tie within 1..32 literal dummies"; one bounded pass with the c2prio probes, then a report.
+
+## 0x007602F0 NShape::IsShapeConvex (p25O): a float local Ego_d does not list
+- **Where it stands.** The closing2 residue is closed: a named iterator assigned inside the dereference, `second = *(it_second = pts.begin() + 1);`, keeps Ego_d lines 336/337. The best Ego_d-conformant source (GFArcCos at both closings) is DIFFER(1126v1126), 2 lines, an epilogue pop/fadd order.
+- **Question.** It matches only when closing1's acos result sits in a `float closing_angle` variable. May that land as Inferred?
+- **Ruling: no.** Ego_d lists the function's locals and `closing_angle` is not one of them, the same case as 0x00763060's `anchor`.
+- **Before parking, one bounded pass:**
+  - one spelling across the three 29-B sites (all GFArcCos v all raw acos);
+  - a cmpcomdat of the GFArcCos body if retail keeps a copy;
+  - existing Ego_d float locals;
+  - confirm `it_second` is an Ego_d local.
+- **A second fitted row in the same TU** does not count as a second source for the revision-difference hypothesis.
