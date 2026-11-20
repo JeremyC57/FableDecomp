@@ -13,9 +13,10 @@
 //   (`mov eax,[0x013BAFE8]`), as 0x013BAFE4 / 0x013BAFEC are for the combination-idle / wave twins 0x0073A6F0 / 0x0073A7D0.
 //   Catalog row "_gapscan::sub_0121f7e0" carried no name; the landed 0x0073A760 binds 0x013BAFE8 as an invented
 //   `?g_DefaultFrames_013bafe8@@3JA` (NAME_FIXES.tsv).
-// Data symbol: ?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@2JB -- static long (the reader's return
-//   type `J`); public and `const` assumed (house style for class statics without a PDB data-symbol dump: retail never writes it
-//   after this initializer). The nested class is declared here for its static only (class keys V/V, pdb_class_keys.tsv).
+// Data symbol: ?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB -- private static const long (NF167, q4152:
+//   Ego_d.pdb PUB32 `?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB`, as its twins 0x013BAFE4 / 0x013BAFEC;
+//   was the assumed public `2JB`). Declared by the shared engine/CTCCreatureModeManager.h opt-in FABLE_RETAIL_CMODEBASE_NOFRAMES, the
+//   form of the landed twin initializer 0x0121F7D0 (the row-local CTCCreatureModeManager / CModeBase model is gone).
 // Data: CMainGameComponent::ConstantFPS 0x01375550 (?ConstantFPS@CMainGameComponent@@1JA) through the inline GetConstantFPS() (naming wave 18).
 // Shape: `* 12` is strength-reduced to `lea eax,[eax+eax*2] ; shl eax,2` (the landed `* 6` twin 0x0121F7D0: `shl eax,1`).
 class CMainGameComponent {
@@ -25,12 +26,8 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-class CTCCreatureModeManager {
-public:
-    class CModeBase {
-    public:
-        static const long NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS;   // 0x013BAFE8
-    };
-};
+#define FABLE_RETAIL_CMODEBASE_NOFRAMES
+#include "engine/ETCInterfaceType.h"   // StatGetInterfaceType()'s enumerator
+#include "engine/CTCCreatureModeManager.h"   // opt-in: the CModeBase NO_FRAMES_* statics
 
 const long CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS = CMainGameComponent::GetConstantFPS() * 12;

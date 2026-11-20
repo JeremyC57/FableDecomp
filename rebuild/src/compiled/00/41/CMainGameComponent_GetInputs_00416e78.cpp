@@ -84,7 +84,7 @@ public:
     unsigned char         _pad16140[0x16170 - 0x16140];
     bool                  Loading;                 // +0x16170
     unsigned long PeekWorldChecksum() const;             // 0x00416392
-    void AddGameEvent(const CGameEvent* event);    // 0x0041649C
+    void AddGameEvent(const CGameEvent& event);    // 0x0041649C (NF166 q11995: Ego_r.pdb / FableWin.pdb by const reference)
     bool EventIsSystemEvent(const CGameEvent* event);   // 0x00415FF2
     void ProcessEvent(const CGameEvent* event);    // 0x00415FE0
     void GetInputs();
@@ -106,7 +106,7 @@ void CMainGameComponent::GetInputs()
         GetPlayerInterface()->BeginEventPoll();
         while (GetPlayerInterface()->PopGameEvent(&event)) {
             if (!Loading)
-                AddGameEvent(&event);
+                AddGameEvent(event);
             else if (EventIsSystemEvent(&event))
                 ProcessEvent(&event);
         }

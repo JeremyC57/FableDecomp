@@ -47,10 +47,12 @@ struct CMeshPointer {                                   // CCountedPointer<const
 };
 class CParticleProgram { public:
     void SaveStateToInterpolateFrom(CParticleSimulation& simulation);   // 0x00ADF5B0 Ego_r.pdb + FableWin.pdb (name-fix 2026-11-12)
-    bool SetupSimulation(CParticleSimulation* sim, C3DAnimationBlendState* blend, C3DAnimationManager* manager, C3DVector* boneScalings,
-                         C3DMesh2* mesh, CMovableResourceMemoryPool* pool, CParticleContext* context);   // 0x00AE29D0
-    void SimulationStep(CParticleSimulation* sim, CParticleContext* context, C3DAnimationBlendState* blend, C3DAnimationManager* manager,
-                        C3DVector* boneScalings, C3DMesh2* mesh);   // 0x00AE2D20
+    // NF166 (round 10, q4889): FableWin.pdb + Ego_r.pdb spellings (public const, references; `ret 1Ch` = 7 args / `ret 18h` = 6), the landed
+    //   self Leaves of 0x00AE29D0 / 0x00AE2D20. Were non-const all-pointer stand-ins (QAE ... PAV).
+    bool SetupSimulation(CParticleSimulation& simulation, const C3DAnimationBlendState& blend_state, C3DAnimationManager& animation_manager,
+                         const C3DVector* position, const C3DMesh2& mesh, CMovableResourceMemoryPool& pool, const CParticleContext& context) const;   // 0x00AE29D0
+    void SimulationStep(CParticleSimulation& simulation, const CParticleContext& context, const C3DAnimationBlendState& blend_state,
+                        C3DAnimationManager& animation_manager, const C3DVector* position, const C3DMesh2& mesh) const;   // 0x00AE2D20
 };
 struct CMeshParticleSystem {
     void* m_00;
@@ -170,8 +172,8 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
             ParticleSims[i].Reset(new CParticleSimulation);
             CParticleSimulation* sim = ParticleSims[i].Data;
             CParticleProgram* program = primitive.ParticleSystemsStart[i].Object->Program;
-            if (!program->SetupSimulation(sim, blend, manager,
-                    boneScalings, mesh.Object, N3DMeshAllocators::ClothMemoryPool, GetContext())) {
+            if (!program->SetupSimulation(*sim, *blend, *manager,
+                    boneScalings, *mesh.Object, *N3DMeshAllocators::ClothMemoryPool, *GetContext())) {
                 ClearParticleSims();
                 break;
             }
@@ -181,7 +183,7 @@ void CEngineClothSimulationAnimatedMesh::RunSimulation()
         CMeshParticleSystem* system = primitive.ParticleSystemsStart[i].Object;
         CParticleSimulation* sim = ParticleSims[i].Data;
         system->Program->SaveStateToInterpolateFrom(*sim);
-        system->Program->SimulationStep(sim, GetContext(), blend, manager, boneScalings, mesh.Object);
+        system->Program->SimulationStep(*sim, *GetContext(), *blend, *manager, boneScalings, *mesh.Object);
     }
     mesh.Release();
 }

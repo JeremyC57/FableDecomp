@@ -1,5 +1,8 @@
 // CTCSpecialAbilities::SetupTurncoatSpell() -- cast turncoat on the hero's current target: a live creature enemy that has a turncoat component which can be, and is not yet, turncoated gets a CTCTurncoatSpell component aimed at it; always returns false
 // Leaf: SetupTurncoatSpell
+// NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
+//   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
+//   dereferences both thing pointers; same fastcall registers).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072B160, 247 bytes (plain `ret`).
 // Callees: the const interface LowerBound @ 0x004365B0 (interface 8), that component's virtual slot 33 (+0x84, the target
@@ -61,7 +64,9 @@ public:
     CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CThingCreatureBase : public CThing {};
-bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES
+#include "engine/CTCEnemy.h"   // CTCEnemy::AreThingsEnemies 0x0076D2F0 (NF167 opt-in)
 class CTCTurncoat { public:
     bool IsTurncoatable();                              // 0x007C7870
     bool IsTurncoated() const;                          // 0x007C7890 Ego_r/FableWin ?IsTurncoated@CTCTurncoat@@QBE_NXZ
@@ -87,7 +92,7 @@ bool CTCSpecialAbilities::SetupTurncoatSpell()
     if (parent->HasTC(8)) {
         CThing* target = parent->GetTC<CTCTargeter>(8)->GetPTarget();
         if (target && !(target->m_flags91 & 1) && (target->ThingTypeFlags & 8)
-            && AreThingsEnemies(ParentThing, target) && target->HasTC(0x9f)) {
+            && CTCEnemy::AreThingsEnemies(*ParentThing, *target) && target->HasTC(0x9f)) {
             CTCTurncoat* turncoat = target->GetTC<CTCTurncoat>(0x9f);
             if (turncoat->IsTurncoatable() && !turncoat->IsTurncoated()) {
                 CTCTurncoatSpell* spell = (CTCTurncoatSpell*)Creature->AddTC("CTCTurncoatSpell", true, 0);

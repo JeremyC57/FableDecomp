@@ -3,7 +3,10 @@
 //   [ecx+0x5b] = 1;
 //   [ecx+0x1c] = (int)( (float)g_int * param );
 
-int g_lightningCastTicks; // global int at 0x1375550, loaded via fild
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in g_lightningCastTicks.
+#include "engine/CMainGameComponent.h"
 
 class CTCWillLightning { public:
     char pad00[0x1c];
@@ -17,5 +20,5 @@ class CTCWillLightning { public:
 void CTCWillLightning::SetTimeToCastLightning(float scale)
 {
     this->m_castFlag = 1;
-    this->m_timeToCast = (int)((float)g_lightningCastTicks * scale);
+    this->m_timeToCast = (int)((float)CMainGameComponent::GetConstantFPS() * scale);
 }

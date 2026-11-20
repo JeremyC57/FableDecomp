@@ -1,5 +1,8 @@
 // CTCTeleporter::FrameUpdate() -- finish a teleport held back for a tutorial; otherwise, while the hero is in the teleporter's region, activate the teleporter for named guild markers, start teleporting (or a tutorial) when the hero steps inside the radius, keep the active particle effect alive, and kill it when teleporting is disabled
 // Leaf: ?FrameUpdate@CTCTeleporter
+// NF167 (2026-11-20, q11926): 0x00686D20 respelt from the stand-in CTCTeleporter::GetRegionManager (CRegionManager*) to the protected const
+//   ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ in place on the row's own local CTCBase model; the slot-10 call is CWorldMap::IsMapLoaded
+//   (Ego_r ?IsMapLoaded@CWorldMap@@UBE_NJ@Z), now on the row's own local CWorldMap model (the CRegionManager stand-in struct is gone).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
@@ -118,11 +121,9 @@ class CWorld : public CWorldDonor {
 class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex) const;         // 0x004FC190
     long GetLoadedRegion() const;                            // 0x004FB150
-};
-struct CRegionManager {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual bool IsMapLoaded(long mapIndex);            // slot 10 (+0x28)
+    virtual bool IsMapLoaded(long mapIndex) const;      // slot 10 (+0x28) ?IsMapLoaded@CWorldMap@@UBE_NJ@Z (Ego_r; engine/CWorldMap.h)
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -154,6 +155,7 @@ class CTCBase { public:
 protected:
     const CWorld& PeekWorld() const;                    // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r / FableWin)
     CPlayerManager& GetPlayerManager();                 // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ (Ego_r / FableWin)
+    const CWorldMap& PeekWorldMap() const;              // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (Ego_r 0x006B2110 / FableWin 0x021914E0; NF167 q11926)
     const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50 ?PeekPlayerManager@CTCBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CTCBase.h; NF153: was the stand-in CTCTeleporter::GetPlayerManager2)
 };
 class CTCTeleporter : public CTCBase { public:
@@ -165,7 +167,6 @@ class CTCTeleporter : public CTCBase { public:
     bool HeroInsideRadius;                              // +0x12
     CIntelligentPointer<CThing> PParticle;                      // +0x13
     bool WaitingForTutorialToFinish;                    // +0x1b
-    CRegionManager* GetRegionManager();                 // 0x00686D20
     CWorldMap* GetWorldMap();                           // 0x00686D30
     void StartTeleporting(CThingPlayerCreature* hero);  // 0x007DFF90
     void FrameUpdate();
@@ -198,7 +199,7 @@ void CTCTeleporter::FrameUpdate()
     }
     if (!PDef.Object)
         return;
-    if (!GetRegionManager()->IsMapLoaded(ParentThing->RegionMapIndex))
+    if (!PeekWorldMap().IsMapLoaded(ParentThing->RegionMapIndex))
         return;
     if (PeekWorld().TeleportingEnabled) {
     CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();

@@ -12,7 +12,7 @@
 //   CWorld::GetWorldFrame 0x0049D870, ForceRender 0x004164E0, GetGameTimeOfNextPresentCompletion 0x004166E2,
 //   GFLimitReturn<double> 0x0041919C, 0x00416258 (game time since the last render-frame start), IsBulletTimeActive 0x00419680,
 //   ConvertInterpolateToBulletTimeInterpolate 0x004C6010, CWorld::RenderUpdate 0x0049E080, CNetworkClient 0x004AEA70
-//   (name unknown), GetCurrentGameTime 0x00416231, CDisplayEngine::DoRender 0x00435F70.
+//   (name unknown), GetCurrentGameTime 0x00416231, CDisplayEngine::Render 0x00435F70 (the public forwarder to the protected DoRender 0x00435530).
 // Shape: the clamp constants are scoped per arm; the interpolate goes through an inline helper (retail keeps the game
 //   time on the x87 stack); the second bullet-time call uses an inline getter; the render duration is assigned BEFORE
 //   the counter updates (VC7.1 sinks the fsub past them, as in ForceRender).
@@ -73,7 +73,7 @@ extern long g_l13B7D6C;                            // 0x013B7D6C
 class CDisplayEngine { public:
     unsigned char _pad00[0x68];
     long          f68;                             // +0x68
-    void DoRender(CInterpolationInfo* info, bool worldUpdateTurn, bool b);   // 0x00435F70
+    void Render(const CInterpolationInfo* info, bool worldUpdateTurn, bool b);   // 0x00435F70 (NF166 q10180: Ego_r.pdb / FableWin.pdb public Render; was DoRender)
 };
 class CGameEventPackageSet { public: long _body[0x13a14 / 4]; CGameEventPackageSet(); };   // 0x009F1A80
 struct CNetworkClient { long _body[0x2680 / 4]; CNetworkClient(); bool IsReadyToRender(); };   // 0x00419323 / 0x004AEA70
@@ -203,7 +203,7 @@ void CMainGameComponent::Render()
             if (g_b13B8688 || Client.IsReadyToRender()) {
                 double start = GetCurrentGameTime();
                 LastRenderFrameStartTime = GetCurrentGameTime();
-                PDisplayEngine->DoRender(&info, WorldUpdateTurn, true);
+                PDisplayEngine->Render(&info, WorldUpdateTurn, true);
                 double end = GetCurrentGameTime();
                 LastFrameRenderDuration = end - start;
                 ++NoRenderFramesSinceLastGameUpdate;

@@ -5,7 +5,10 @@
 //   call _ftol              ; (long) truncate
 //   mov [this+0x24], eax
 
-extern int g_BuyFromSeller_Scale; // resides at 0x01375550 in retail
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in g_BuyFromSeller_Scale.
+#include "engine/CMainGameComponent.h"
 
 struct CAIStateGroup_BuyFromSeller
 {
@@ -15,9 +18,8 @@ struct CAIStateGroup_BuyFromSeller
     void BoughtSomething(float amount);
 };
 
-int g_BuyFromSeller_Scale = 0;
 
 void CAIStateGroup_BuyFromSeller::BoughtSomething(float amount)
 {
-    this->field_24 = (int)((float)g_BuyFromSeller_Scale * amount);
+    this->field_24 = (int)((float)CMainGameComponent::GetConstantFPS() * amount);
 }

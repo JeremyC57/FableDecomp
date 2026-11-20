@@ -12,13 +12,17 @@
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 private: public:
     long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
 
-extern long g_logicFramesPerSecond;            // 0x01375550 (15)
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 (value 15) is ?ConstantFPS@CMainGameComponent@@1JA, declared in place in the
+//   HEAD local CMainGameComponent model with its inline accessor GetConstantFPS() (the engine/CMainGameComponent.h spellings, as the
+//   235 landed rows with the same local model); was the stand-in g_logicFramesPerSecond.
 
 struct CCombatSequence_BattleCharge_Retail {
     virtual ~CCombatSequence_BattleCharge_Retail();
@@ -29,7 +33,8 @@ struct CCombatSequence_BattleCharge_Retail {
 
 bool CCombatSequence_BattleCharge_Retail::IsValid()
 {
-    if ((float)(CMainGameComponent::Get()->GetCurrentWorldFrame() - m_frameOfLastUse) / g_logicFramesPerSecond > 10.0f)
+    long frames = CMainGameComponent::Get()->GetCurrentWorldFrame() - m_frameOfLastUse;
+    if ((float)frames / CMainGameComponent::GetConstantFPS() > 10.0f)
         return true;
     return false;
 }

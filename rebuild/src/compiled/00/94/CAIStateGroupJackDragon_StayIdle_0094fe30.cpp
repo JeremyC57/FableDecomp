@@ -12,7 +12,10 @@
 // DoNothing, then the inlined IS_THING_ALIVE(PEnemy) / IsStopping exits sharing one Terminate tail, then
 // `(float)(frame - start) / g_framesPerSecond < seconds` (`fild ; fidiv ; fcomp [arg] ; test ah,5 ; jnp`,
 // the int difference parked in the `push ecx` slot). No engine header for the class: local model.
-extern long g_framesPerSecond;                  // 0x01375550
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in g_framesPerSecond.
+#include "engine/CMainGameComponent.h"
 
 #include "engine/CThing.h"
 
@@ -58,11 +61,13 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 void CAIStateGroup_JackDragon::StayIdle(float seconds)
 {
     long start = GetWorld().GetFrame();
+    long frames;
     do {
         AIAction_DoNothing();
         if (!IS_THING_ALIVE(PEnemy) || IsStopping()) {
             Terminate();
             return;
         }
-    } while ((float)(GetWorld().GetFrame() - start) / g_framesPerSecond < seconds);
+        frames = GetWorld().GetFrame() - start;
+    } while ((float)frames / CMainGameComponent::GetConstantFPS() < seconds);
 }

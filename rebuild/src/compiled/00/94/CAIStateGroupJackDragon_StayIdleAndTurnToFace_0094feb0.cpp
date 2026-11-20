@@ -98,7 +98,10 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct CDragonPointer{}; //00a01b50
-extern long FramesPerSecond; //01375550
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in FramesPerSecond.
+#include "engine/CMainGameComponent.h"
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
@@ -112,10 +115,12 @@ void StayIdleAndTurnToFace(float,const C3DVector&);
 void DragonMethods::StayIdleAndTurnToFace(float duration,const C3DVector& facing){
 long start=GetWorld().GetFrame();
 CRightHandedSet orientation(facing);
+long frames;
 do{
 AIAction_DoNothing();
 orientation=Creature()->Physics->GetFacing().Interpolate(orientation,0.1f);
 Creature()->Physics->SetFacingAnglesFromRHSet(orientation);
 if(!((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())||(((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->dead&1)||IsStopping()){Terminate();return;}
-}while((float)(GetWorld().GetFrame()-start)/FramesPerSecond<duration);
+frames=GetWorld().GetFrame()-start;
+}while((float)frames/CMainGameComponent::GetConstantFPS()<duration);
 }

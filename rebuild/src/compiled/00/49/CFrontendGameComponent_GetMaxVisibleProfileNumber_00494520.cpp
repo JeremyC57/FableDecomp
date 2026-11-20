@@ -1,5 +1,7 @@
 // CFrontendGameComponent::GetMaxVisibleProfileNumber() -- how many profile names fit on screen from the scroll offset: at most 8
-// Leaf: ?GetMaxVisibleProfileNumber@CFrontendGameComponent@@QBEJXZ
+// Leaf: ?GetMaxVisibleProfileNumber@CFrontendGameComponent@@ABEJXZ
+// NF166 (round 10, q6285): private const, as Ego_r.pdb and FableWin.pdb spell it (`private:` added in place in the HEAD local model; was the
+//   public QBE leaf). The landed caller 0x004963A0 CFrontendGameComponent::Input already binds the ABE spelling.
 // Retail: Fable.exe @ 0x00494520, 53 bytes; Ego_r.pdb ?GetMaxVisibleProfileNumber@CFrontendGameComponent@@ABEJXZ; callers 0x00496ABB, 0x00496B2C, 0x00496B39, 0x00496B85.
 // Catalog label is right. Body: ProfileNames.size() - ProfileNamesOffset, compared unsigned (`ja`) with 8; the
 // difference is recomputed for the return (the `size - offset <= 8 ? size - offset : 8` shape).
@@ -21,6 +23,7 @@ public:
     unsigned char            _pad0000[0x1e0c];
     std::vector<CWideString> ProfileNames;       // +0x1e0c
     long                     ProfileNamesOffset; // +0x1e18
+private:
     long GetMaxVisibleProfileNumber() const;
 };
 long CFrontendGameComponent::GetMaxVisibleProfileNumber() const

@@ -1,0 +1,70 @@
+004163b7 new: 0
+004164e0 new: 0
+00416e78 new: 0
+00417001 new: 0
+00494520 new: 1
+    ?GetMaxVisibleProfileNumber@CFrontendGameComponent@@ABEJXZ TABLE:00494520
+00494680 new: 1
+    ?GetMaxVisibleWorldNumber@CFrontendGameComponent@@ABEJXZ TABLE:00494680
+00494770 new: 1
+    ?GetMaxVisibleSaveNumber@CFrontendGameComponent@@ABEJXZ TABLE:00494770
+004df48c new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+005eadc0 new: 0
+005eaf30 new: 0
+0066fab0 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+00697710 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+006bb810 new: 1
+    ?SetTimeOfDay@CGameTimeManager@@QAEXM@Z TABLE:006bb810
+006cdb00 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+006cec90 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+006e11f0 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+006e2840 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+0079f5f0 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+007f2100 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+0088fdc0 new: 0
+00891520 new: 1
+    ?FailAllActiveQuests@CGameScriptInterface@@UBEXXZ
+00892fd0 new: 1
+    ?SetQuestAsFailed@CGameScriptInterface@@UBEXABVCCharString@@_NABVCWideString@@1@Z
+00908da0 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+0091a390 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+0093b8b0 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+0094fe30 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+0094feb0 new: 1
+    ?GetConstantFPS@CMainGameComponent@@SIJXZ
+00a4cdd0 new: 1
+    ?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z TABLE:00a4cdd0
+00a4df10 new: 0
+00a4ebb0 new: 10
+    ??1?$CCountedPointer@$$CBVC3DAnimFileHelpersChunk@@@@QAE@XZ
+    ??1?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@QAE@XZ
+    ??1?$CCountedPointer@$$CBVC3DAnimFileRootChunk@@@@QAE@XZ
+    ??1?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@QAE@XZ
+    ??4?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@QAEAAV0@ABV0@@Z
+    ??C?$CCountedPointer@$$CBVC3DAnimFileHelpersChunk@@@@QBEPBVC3DAnimFileHelpersChunk@@XZ
+    ??C?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@QBEPBVC3DAnimFileMovementVectorChunk@@XZ
+    ??C?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@QBEPBVC3DAnimFileTimingEventChunk@@XZ
+    ?ReleaseData@?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@QAEXXZ
+    ?ShareData@?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@QAEXPBVC3DAnimFileTimingEventChunk@@PAVCCPPointerInfo@@@Z
+00a99610 new: 1
+    ?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ TABLE:00a99110
+00ae34d0 new: 5
+    ?Sort@?$CVectorMap@VCCharString@@KV?$CKeyPairCompareLess@VCCharString@@K@@@@QAEXXZ
+    ?Update@?$CVectorMap@VCCharString@@KV?$CKeyPairCompareLess@VCCharString@@K@@@@QAEXXZ
+    ?Update@CParticleProgram@@QAEXXZ
+    ?begin@?$vector@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEPAU?$pair@VCCharString@@K@2@XZ
+    ?end@?$vector@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEPAU?$pair@VCCharString@@K@2@XZ
+00b82100 new: 0

@@ -234,6 +234,12 @@ public:
     unsigned long        DeedMask_[3];           // +0x3c std::vector<bool> DeedMask
     unsigned long        RelativeOpinion_[3];    // +0x48 COpinionSet RelativeOpinion (CArray<float> OpinionValues)
 #endif
+#if defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_CLEARPENDINGDEEDS) && !defined(FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS)
+    // NF167 opt-in (q5043, row 0x00960070 CAIStateGroup_DeedReactionRoot::OnActivate): the FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
+    // declaration alone (no typed deed lists): Ego_r.pdb 0x00591750 / FableWin.pdb 0x01F47AF0 ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ,
+    // out of line at 0x00683B00 (landed self row). Declaration only: no layout change.
+    void ClearPendingDeeds();                                            // 0x00683B00
+#endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
     // Nested opt-in (chunk 760, row 0x00683B00 ClearPendingDeeds): the deed lists typed (STLport list<long>, 4 bytes each; the
     // retail list members below need FABLE_RETAIL_STLP_LIST); ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ (Ego_r.pdb).

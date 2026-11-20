@@ -1,5 +1,7 @@
 // CFrontendGameComponent::GetMaxVisibleWorldNumber() -- how many world names fit on screen from the scroll offset: at most 8
-// Leaf: ?GetMaxVisibleWorldNumber@CFrontendGameComponent@@QBEJXZ
+// Leaf: ?GetMaxVisibleWorldNumber@CFrontendGameComponent@@ABEJXZ
+// NF166 (round 10, q6286): private const, as Ego_r.pdb and FableWin.pdb spell it (`private:` added in place in the HEAD local model; was the
+//   public QBE leaf). The landed caller 0x004963A0 CFrontendGameComponent::Input already binds the ABE spelling.
 // Retail: Fable.exe @ 0x00494680, 53 bytes; Ego_r.pdb ?GetMaxVisibleWorldNumber@CFrontendGameComponent@@ABEJXZ; callers 0x00496759, 0x004967B5, 0x004967C2, 0x0049680E.
 // Catalog label GetMaxVisibleProfileNumber is wrong (ICF-style propagation): this reads WorldNames / WorldNamesOffset. Body: WorldNames.size() - WorldNamesOffset, compared unsigned (`ja`) with 8; the
 // difference is recomputed for the return (the `size - offset <= 8 ? size - offset : 8` shape).
@@ -21,6 +23,7 @@ public:
     unsigned char            _pad0000[0x1e30];
     std::vector<CWideString> WorldNames;         // +0x1e30
     long                     WorldNamesOffset;   // +0x1e3c
+private:
     long GetMaxVisibleWorldNumber() const;
 };
 long CFrontendGameComponent::GetMaxVisibleWorldNumber() const

@@ -73,6 +73,12 @@ public:
     // Retail opt-in (Codex pass 22): both original PDBs name ClearGroups; native 00AE3510 clears these two arrays.
     void ClearGroups();
 #endif
+#ifdef FABLE_RETAIL_CPARTICLEPROGRAM_UPDATE
+    // NF166 opt-in (round 10, q4364; row 0x00AE34D0): Ego_r.pdb 0x00BEF280 / FableWin.pdb 0x03334C30 ?Update@CParticleProgram@@QAEXXZ,
+    // out of line in retail at 0x00AE34D0 (59 bytes, FableWin.pdb's next symbol is 0x40 on): ExportParticles.Update() (+0x88), then the
+    // private CalculateAveragePatchSize(InitialSimulation) (+0x08). Declaration only: no layout change.
+    void Update();                                                      // 0x00AE34D0
+#endif
     void ApplyTransform(const CMatrix3x4&);
     void OptimiseSpringOrder(CArray<CParticleDistanceConstraint>&) const;
     // Chunk 748 (FableWin.pdb spellings; the skinned set-up / cling rows 0x00AE29D0 / 0x00AE1320 and their callees):

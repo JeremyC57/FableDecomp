@@ -19,9 +19,17 @@
 //   ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (Ego_r.pdb 0x00848940 + FableWin.pdb
 //   0x02892570: protected, const CCreatureActionBase&, EAIActionReturn; engine/fable_ai_action_enums.h); was the derived stand-in
 //   ?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActionBase@@_N@Z.
+// NF167 (2026-11-20, q4151): ported off the row-local `struct CTCDrunk` stand-in and `extern float g_DrunkennessPerFrame` onto the shared
+//   engine/CTCDrunkenness.h (opt-in FABLE_RETAIL_CTCDRUNKENNESS_DRANKFRAMES: Ego_r / FableWin DrankFrames(long), GetDrunkenness,
+//   SetDrunkenness and the private static ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB 0x013BAE70, Ego_d.pdb PUB32): retail's
+//   0x0093AA03 `fild ; fmul [0x013BAE70] ; fadd [esi+10h]` is DrankFrames expanded (its out-of-line copy is 0x0093A4E0, ret 4), and the
+//   2.5 clamp goes through the public accessors because Drunkenness is private. The local CCharString model is replaced by fable_string.h.
 #include "fable_compiler.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_GREETING_PASS23
+#define FABLE_RETAIL_CTCDRUNKENNESS_DRANKFRAMES
+#include "fable_string.h"
+#include "engine/CTCDrunkenness.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase
@@ -44,22 +52,11 @@ class CThingCreatureBase
         return false;
     }
 };
-struct CTCDrunk {                               // interface 0xc3
-    unsigned char _00[0x10];
-    float Drunkenness;                          // +0x10
-};
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
-extern float g_DrunkennessPerFrame;             // 0x013BAE70
-class CCharString
-{ public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
 class CCreatureActionBase
 { public:
     virtual void v00();
@@ -115,11 +112,11 @@ bool CAIStateGroup_BanditSitRoundCampfire::Drink()
                                                         false, false, false), false);
     }
     DestroyItem("CARRY_SLOT_RIGHT_HAND");
-    CTCDrunk* drunk;
-    if (PBrain->Creature->GetInterface(&drunk, 0xc3)) {
-        drunk->Drunkenness += (float)(CWorld::GetFrame() - startFrame) * g_DrunkennessPerFrame;
-        if (drunk->Drunkenness > 2.5f)
-            drunk->Drunkenness = 2.5f;
+    CTCDrunkenness* drunk;
+    if (PBrain->Creature->GetInterface(&drunk, TCI_DRUNKENNESS)) {
+        drunk->DrankFrames(CWorld::GetFrame() - startFrame);
+        if (drunk->GetDrunkenness() > 2.5f)
+            drunk->SetDrunkenness(2.5f);
     }
     return result == 2;
 }

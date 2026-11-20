@@ -1,0 +1,36 @@
+0057a690 new: 1
+    ?GetMoralityPercentage@CTCHeroStats@@QBEMXZ TABLE:0057a690
+006a7550 new: 1
+    ??RCThingFilter_EnemyCreature@@QBE_NABVCThing@@@Z TABLE:006a7550
+006d0180 new: 0
+0072b160 new: 0
+0073a760 new: 0
+0073ac50 new: 1
+    ?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ TABLE:0073ac50
+0077a130 new: 1
+    ?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z TABLE:0077a130
+00789fd0 new: 1
+    ?ContinueAimingRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ
+0078a5d0 new: 0
+007e00d0 new: 0
+007e4d70 new: 0
+007e7580 new: 0
+007f9e70 new: 0
+0082b630 new: 0
+00836260 new: 0
+008a7f60 new: 1
+    ?GetBob@@YAPAVCTCBob@@PAUCThingNative@@@Z
+009098e0 new: 0
+0093a8c0 new: 4
+    ??$GetInterface@VCTCDrunkenness@@@CThingCreatureBase@@QAE_NPAPAVCTCDrunkenness@@J@Z
+    ?DrankFrames@CTCDrunkenness@@QAEXJ@Z
+    ?GetDrunkenness@CTCDrunkenness@@QAEMXZ
+    ?SetDrunkenness@CTCDrunkenness@@QAEXM@Z
+0093c4e0 new: 0
+00960070 new: 0
+00968bc0 new: 1
+    ??$GetTC@VCTCCarryable@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCCarryable@@@Z
+0121f260 new: 1
+    ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB TABLE:013bae70
+0121f7e0 new: 1
+    ?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB TABLE:013bafe8

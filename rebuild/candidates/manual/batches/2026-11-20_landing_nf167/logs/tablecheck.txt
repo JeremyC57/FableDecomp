@@ -1,0 +1,2 @@
+GREW 0057bc6e 1 -> 2 ?SetMarriageState@CTCHeroStats@@QAEXPAVCThing@@J@Z row 006d0180 SAME
+shrank [('0057a67e', 4, 1), ('0076d2f0', 5, 2), ('006c3b70', 3, 2), ('00705d00', 2, 1), ('00789e60', 3, 1), ('013bae84', 2, 1), ('013baea4', 2, 1), ('013bafe8', 2, 1), ('013bae70', 2, 1), ('0078a390', 2, 1), ('00686d20', 2, 1)]

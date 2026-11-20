@@ -11,9 +11,11 @@
 //   out-of-line CTCDrunkenness adder) and CAIStateGroup_BanditSitRoundCampfire::Drink 0x0093A8C0 (0x0093AA07).
 //   Catalog row "_gapscan::sub_0121f260" carried no name; the landed 0x0093A8C0 binds 0x013BAE70 as an invented
 //   `?g_DrunkennessPerFrame@@3MA` (NAME_FIXES.tsv).
-// Data symbol: ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@2MB -- public (read from the AI state group TU), static float
-//   (fstp / fmul dword); `const` by convention (retail never writes it after this initializer); no PDB data-symbol dump proves
-//   access or qualifier. CTCDrunkenness is declared here for its static only (no instance, no member access).
+// Data symbol: ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB -- private static const float (NF167, q4151: Ego_d.pdb PUB32
+//   `?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB`, beside its private siblings DrunkennessDecreasePerSecond /
+//   DrunkennessDeltaPerSecondOfDrinking `@@0MB`; its only readers are CTCDrunkenness members: DrankFrames(long) out of line at
+//   0x0093A4E0 and expanded in CAIStateGroup_BanditSitRoundCampfire::Drink 0x0093AA03). Was the public `2MB` (no dump then).
+//   CTCDrunkenness is declared here for its static only (no instance, no member access); access respelt in place on the row's own model.
 // Constant: 0x0126DEAC = 0.1f (const_check: 1 constant, 0 mismatches).
 // Data: CMainGameComponent::ConstantFPS 0x01375550 (?ConstantFPS@CMainGameComponent@@1JA) through the inline GetConstantFPS() (naming wave 18).
 // Shape: `0.1f / fps` -- the long is loaded first (`fild`), so the constant becomes the reversed divide's memory operand (`fdivr`).
@@ -25,7 +27,7 @@ public:
 };
 
 class CTCDrunkenness {                                   // class key V (pdb_class_keys.tsv)
-public:
+private:
     static const float DrunkennessDeltaPerFrameOfDrinking;   // 0x013BAE70
 };
 

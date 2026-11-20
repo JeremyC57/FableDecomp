@@ -1,5 +1,8 @@
 // CTCHeroRangedAttacks::AttemptToFireRangedWeapon() -- queues a shot from the carried projectile weapon and fires at once if it is loaded
 // Leaf: AttemptToFireRangedWeapon
+// NF167 (2026-11-20, q11689 / q11690): the callees respelt in place on the row's own local CTCHeroRangedAttacks model to the PDB spellings
+//   (Ego_r 0x00790F50 / FableWin 0x024F5500 private const IsAbleToUseRangedWeapon; Ego_r 0x00791560 / FableWin 0x024F8DA0 private
+//   FireRangedWeapon), as engine/CTCHeroRangedAttacks.h declares them and the landed FrameUpdate 0x0078A690 binds them.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078A5D0, 178 bytes.
 // Callees: CTCHeroRangedAttacks::IsAbleToUseRangedWeapon() @ 0x00789E60, CVectorMap<ETCInterfaceType,CTCBase*>::
@@ -81,9 +84,10 @@ class CTCHeroRangedAttacks { public:
     bool          Aiming;                            // +0x15
     bool          FireQueued;                        // +0x16
     bool          Loading;                           // +0x17
-    bool IsAbleToUseRangedWeapon();                  // 0x00789E60
-    void FireRangedWeapon();                         // 0x0078A390
     void AttemptToFireRangedWeapon();
+private:                                             // NF167 (q11689 / q11690): Ego_r.pdb + FableWin.pdb private, IsAble... const
+    bool IsAbleToUseRangedWeapon() const;            // 0x00789E60 ?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@ABE_NXZ
+    void FireRangedWeapon();                         // 0x0078A390 ?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ
 };
 
 void CTCHeroRangedAttacks::AttemptToFireRangedWeapon()

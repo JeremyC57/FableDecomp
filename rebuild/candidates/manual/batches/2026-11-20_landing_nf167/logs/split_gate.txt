@@ -1,0 +1,6 @@
+existing 0057a690 new= ['?GetMoralityPercentage@CTCHeroStats@@QBEMXZ'] | others: {'?GetMoralityPercentage@CTCHeroStats@@QAEMXZ': ['0057c2e6']}
+existing 006a7550 new= ['??RCThingFilter_EnemyCreature@@QBE_NABVCThing@@@Z'] | others: {'??RCThingFilter_EnemyCreature@@QBE_NPAVCThing@@@Z': ['007f6df0']}
+existing 006c3b70 new= ['?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z'] | others: {'?Fade@CTCFadeOutAndIn_Retail@@QAEXM_N@Z': ['008a0720']}
+existing 0073ac50 new= ['?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ'] | others: {'?FrameUpdate@CModeBase@@UAEXXZ': ['008d6620', '008d88a0'], '_ForwardTarget_0073ac50': ['008d6770'], '?FrameUpdate@CModeBase@NCreatureMode@@QAEXXZ': ['008d75d0', '008d9410', '008db240', '008db460'], '?FrameUpdate@CModeBase@@QAEXXZ': ['008d9350', '008da610', '008dff50', '008dffd0', '008e06e0', '008e0730', '008e07f0', '008e0990', '008e0d20', '008e10e0', '008e8760', '008e8940'], '?BaseFrameUpdate@CModeBerserk@@QAEXXZ': ['008d9530'], '?BaseFrameUpdate@ModeDrained@@QAEXXZ': ['008da890'], '?FrameUpdate@CModeBase@NCreatureMode@@UAEXXZ': ['008e1670']}
+existing 0076d2f0 new= ['?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z'] | others: {'?AreThingsEnemies@@YI_NPBVCThing@@0@Z': ['0064a1ae'], '?AreThingsEnemies@CTCEnemy@N00807b70@@SI_NPAUCThing@2@0@Z': ['00807b70']}
+gate: 0 created split(s)

@@ -1,5 +1,8 @@
 // CCombatSequence_WillForcePush::IsValid() -- valid unless the owner's will-power component (interface 0xCE) is inactive, or, for a non-enemy hero, the hero stands within 8 units
 // Leaf: IsValid
+// NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
+//   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
+//   dereferences both thing pointers; same fastcall registers).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -29,7 +32,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase : public CThing { public: };
 
-bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES
+#include "engine/CTCEnemy.h"   // CTCEnemy::AreThingsEnemies 0x0076D2F0 (NF167 opt-in)
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -81,7 +86,7 @@ bool CCombatSequence_WillForcePush::IsValid()
     if (Creature->PeekTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &willPower)) {
         if (willPower->IsPoweredUp()) {
             CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().Get();
-            if (!AreThingsEnemies(hero, Creature)) {
+            if (!CTCEnemy::AreThingsEnemies(*hero, *Creature)) {
                 if ((hero->GetPos() - Creature->GetPos()).GetMagnitude() < 8.0f)
                     return false;
             }

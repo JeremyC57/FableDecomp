@@ -109,6 +109,12 @@ public:
     // 0x006BB300; the body tests Time +0x08 against 0.3333 / 0.7083). Declaration only: no layout change.
     bool IsDay() const;                                             // 0x006BB2C0
 #endif
+#ifdef FABLE_RETAIL_CGAMETIMEMANAGER_SETTIMEOFDAY
+    // NF166 opt-in (round 10, q11765; rows 0x006BB810 and its caller 0x0088FDC0 CGameScriptInterface::SetTimeOfDay): Ego_r.pdb 0x006F70A0 /
+    // FableWin.pdb 0x02461020 ?SetTimeOfDay@CGameTimeManager@@QAEXM@Z, out of line in retail at 0x006BB810 (stores Time +0x08, clamped to
+    // [0, 1]; 0x0057C83A calls it on the world's PGameTimeManager +0x1C with 0.875f / 10/24). Declaration only: no layout change.
+    void SetTimeOfDay(float time);                                  // 0x006BB810
+#endif
 private:
     CWorld*             World;                                      // +0x00
     CMainGameComponent* GameComponent;                              // +0x04

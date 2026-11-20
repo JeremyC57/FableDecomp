@@ -69,7 +69,10 @@ struct CThingNativeState : CThing {
 extern bool FABLE_FASTCALL IsWillingToAttackTarget(CThingAICreature*, CThing*); // 0x008648a0
 // 0x008645E0 Ego_r.pdb + FableWin.pdb ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (name-fix 2026-11-12)
 namespace NCreatureAI { bool FABLE_FASTCALL IsAwareOfThing(const CThingAICreature* creature, const CThing* thing, bool flag); }
-extern fable_i32 g_FrameForTargetPerception;                   // 0x01375550
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in g_FrameForTargetPerception.
+#include "engine/CMainGameComponent.h"
 extern float g_TargetPerceptionFrameScale;                     // 0x012925b8
 
 struct CAIStateGroup_SeekEnemyAccess : CAIStateGroupBase {
@@ -118,7 +121,7 @@ bool CAIStateGroup_SeekEnemyAccess::IsStillRunnable()
                 CThing* perceived = perception->GetPerceivedThing();
                 if (((CThing*)PEnemy.GetPItem()) == perceived && perception->IsAwareOfThing()) {
                     fable_i32 frames = perception->FramesSinceDirectlyPerceivedThing;
-                    if (frames != -1 && (float)frames < (float)g_FrameForTargetPerception * g_TargetPerceptionFrameScale)
+                    if (frames != -1 && (float)frames < (float)CMainGameComponent::GetConstantFPS() * g_TargetPerceptionFrameScale)
                         return true;
                 } else {
                     CAIBrain* visibleBrain = GetBrain();

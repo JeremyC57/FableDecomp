@@ -62027,9 +62027,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006a7550'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a7550.cpp'
-        TestSource = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a7550_test.cpp'
+        Module = 'CThingFilter_EnemyCreature'
+        Source = '00/6a/CThingFilterEnemyCreature_operator_006a7550.cpp'
+        TestSource = '00/6a/CThingFilterEnemyCreature_operator_006a7550_test.cpp'
         PassPattern = 'LV_OK_006a7550'
     }
     [pscustomobject]@{
@@ -217774,9 +217774,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ae34d0'
-        Module = 'CSortedMapOwner_00ae34d0'
-        Source = '00/ae/CSortedMapOwner00ae34d0_SortAndProcess_00ae34d0.cpp'
-        TestSource = '00/ae/CSortedMapOwner00ae34d0_SortAndProcess_00ae34d0_test.cpp'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_Update_00ae34d0.cpp'
+        TestSource = '00/ae/CParticleProgram_Update_00ae34d0_test.cpp'
         PassPattern = '00ae34d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -219559,9 +219559,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bb810'
-        Module = 'CThingDrawInformation'
-        Source = '00/6b/CThingDrawInformation_SetBarPercentage_006bb810.cpp'
-        TestSource = '00/6b/CThingDrawInformation_SetBarPercentage_006bb810_test.cpp'
+        Module = 'CGameTimeManager'
+        Source = '00/6b/CGameTimeManager_SetTimeOfDay_006bb810.cpp'
+        TestSource = '00/6b/CGameTimeManager_SetTimeOfDay_006bb810_test.cpp'
         PassPattern = '006bb810_TEST PASS'
     }
     [pscustomobject]@{

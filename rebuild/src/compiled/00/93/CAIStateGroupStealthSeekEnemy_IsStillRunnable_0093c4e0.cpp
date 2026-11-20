@@ -1,4 +1,7 @@
 // CAIStateGroup_StealthSeekEnemy::IsStillRunnable(CTCPerceiveThing*) -- require perceived live attackable enemy and willingness to attack
+// NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
+//   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
+//   dereferences both thing pointers; same fastcall registers).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail0x0093C4E0,275bytes. GetPItemA01B50;IsStopping8FD010;GetPerceivedThing7446A0;
 // LowerBound4365B0;IsThingAttackable7F6170;AreThingsEnemies76D2F0;IsWillingToAttackTarget8648A0.
@@ -8,7 +11,7 @@
 #include "engine/CTCPerceiveThing.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+#include "stlport/fable_containers.h"   // std::pair (STLport 4.6 <utility>)
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> Entry; Entry *first,*last; const Entry* LowerBound(const ETCInterfaceType& key) const; };
@@ -31,12 +34,14 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 struct CTCPerceiveThingMethods : CTCPerceiveThing { CThing* GetPerceivedThing() const; };
 class CTCTargetingAI { public: bool IsThingAttackable(const CThing*) const; };
-bool __fastcall AreThingsEnemies(CThing*,CThing*);
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES
+#include "engine/CTCEnemy.h"   // CTCEnemy::AreThingsEnemies 0x0076D2F0 (NF167 opt-in)
 bool __fastcall IsWillingToAttackTarget(CThing*,CThing*);
 struct CAIStateGroup_StealthSeekEnemy_Adapter : CAIStateGroup_StealthSeekEnemy {
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  CBaseIntelligentPointer& Enemy() { return *(CBaseIntelligentPointer*)PEnemy; }
- FABLE_FORCEINLINE bool AreEnemies() { CThing* c=(CThing*)Brain()->Creature; return AreThingsEnemies(((CThing*)Enemy().GetPItem()),c); }
+ FABLE_FORCEINLINE bool AreEnemies() { CThing* c=(CThing*)Brain()->Creature; return CTCEnemy::AreThingsEnemies(*((CThing*)Enemy().GetPItem()),*c); }
  FABLE_FORCEINLINE bool WillAttack() { CThing* c=(CThing*)Brain()->Creature; return IsWillingToAttackTarget(c,((CThing*)Enemy().GetPItem())); }
  bool IsStopping(); bool IsStillRunnable(CTCPerceiveThingMethods*);
 };

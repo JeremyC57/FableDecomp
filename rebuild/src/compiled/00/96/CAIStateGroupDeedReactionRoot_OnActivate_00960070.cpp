@@ -1,4 +1,8 @@
 // CAIStateGroup_DeedReactionRoot::OnActivate() -- terminate unless the thing reacted to lives; reset the delivered flags, then either remember a virtual deed's source UID or apply the creature's pending deed log
+// NF167 (2026-11-20, q5043): callee 0x00683B00 respelt from the row-local stand-in CTCHeroOpinionDeedLog::ApplyPendingDeedLog (no PDB
+//   member) to ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ (Ego_r 0x00591750 / FableWin 0x01F47AF0; the landed self row) on the
+//   shared engine/CTCCreatureOpinionOfHero.h (NF167 opt-in FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_CLEARPENDINGDEEDS): interface 0x4F is
+//   TCI_CREATURE_OPINION_OF_HERO (engine/ETCInterfaceType.h; the class's GetInterfaceType 0x00686680 is `mov eax,4Fh`).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00960070, length 163 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (IS_THING_ALIVE inlined, then the thing),
@@ -99,10 +103,10 @@ struct CThingWithUID                                // CThing::UniqueID at +0x18
     unsigned __int64 UniqueID;                      // +0x18
 };
 
-class CTCHeroOpinionDeedLog
-{ public:
-    void ApplyPendingDeedLog();                     // 0x00683B00
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_CLEARPENDINGDEEDS
+#include "engine/CTCCreatureOpinionOfHero.h"   // ClearPendingDeeds 0x00683B00 (NF167 opt-in)
 
 class CAIStateGroupBase                            // a real base: a flat class with a vptr and an __int64 pads the vptr to 8
 { public:
@@ -150,8 +154,8 @@ void CAIStateGroup_DeedReactionRoot::OnActivate()
         return;
     }
     CThing* creature = PBrain->Creature;
-    CTCHeroOpinionDeedLog* log;
+    CTCCreatureOpinionOfHero* opinion;
     if (creature->HasTC(0x4f))
-        log = (CTCHeroOpinionDeedLog*)creature->FindEntry(0x4f)->second;
-    log->ApplyPendingDeedLog();
+        opinion = (CTCCreatureOpinionOfHero*)creature->FindEntry(0x4f)->second;
+    opinion->ClearPendingDeeds();
 }

@@ -1,7 +1,8 @@
 // CMainGameComponent::SetExclusiveMode(bool exclusive) -- notify the display object (+0x28), switch the system manager's exclusive (full-screen) mode, then re-run the post-resolution-change setup with the back surface's width, height and colour depth
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004163B7, length 104 bytes.
-// Callees: 0x00434A10 on the object at +0x28 (no arguments; manifest "CScriptThing::operator==" is propagated),
+// Callees: CDisplayEngine::PreChangeResolution @ 0x00434A10 on PDisplayEngine (+0x28; FableWin.pdb ?PreChangeResolution@CDisplayEngine@@QAEXXZ,
+//          engine/CDisplayEngine.h; NF166 q4523: was the stand-in CDisplayHolder::OnExclusiveModeChange),
 //          GFGetSystemManager @ 0x009A4EC0, CSystemManager::SetExclusiveMode(bool) @ 0x009A59A0,
 //          CSurface::GetDimensions @ 0x009F2F90 (C2DExtentsI by hidden pointer), CSurface::GetPixelFormat
 //          @ 0x009F2F60 (CPixelFormat by hidden pointer), CPixelFormat::GetColourDepth @ 0x009E3820,
@@ -13,6 +14,8 @@
 // the dead argument slot.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
+#define FABLE_RETAIL_CDISPLAYENGINE
+#include "engine/CDisplayEngine.h"
 class CSystemManager { public:
     bool SetExclusiveMode(bool exclusive);         // 0x009A59A0
 };
@@ -33,19 +36,16 @@ struct CDisplayDevice {
 };
 class CDisplayManager;
 extern CDisplayManager* GPDisplayManager;           // 0x013B8390 (naming wave 13)
-struct CDisplayHolder {
-    void OnExclusiveModeChange();                  // 0x00434A10
-};
 class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
-    CDisplayHolder* m_pDisplay;                    // +0x28
+    CDisplayEngine* m_pDisplay;                    // +0x28
     void PostChangeResolution(unsigned long width, unsigned long height, unsigned long depth);   // 0x00416365
     void SetExclusiveMode(bool exclusive);
 };
 
 void CMainGameComponent::SetExclusiveMode(bool exclusive)
 {
-    m_pDisplay->OnExclusiveModeChange();
+    m_pDisplay->PreChangeResolution();
     GFGetSystemManager()->SetExclusiveMode(exclusive);
     CSurface* surface = &((CDisplayDevice*)GPDisplayManager)->m_backSurface;
     unsigned long width = surface->GetDimensions().Width;

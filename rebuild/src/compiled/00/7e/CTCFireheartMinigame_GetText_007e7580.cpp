@@ -1,5 +1,8 @@
 // CTCFireheartMinigame::GetText(unsigned long textId) -- the game text `textId` from the main component's text bank, or "Missing text entry"
 // Leaf: ?GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z
+// NF167 (2026-11-20, q5124 / q5125): the function-local static respelt `missing` -> `no_text_entry`, the name both PDBs give it (Ego_r /
+//   FableWin `CTCFireheartMinigame::GetText'::`2'::`dynamic atexit destructor for 'no_text_entry''), as the landed atexit
+//   stub row binds it.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E7580, 181 bytes, thiscall, `ret 8` (CWideString by hidden pointer; `this` unused).
@@ -74,7 +77,7 @@ public:
 };
 CWideString CTCFireheartMinigame::GetText(unsigned long textId)
 {
-    static CWideString missing(L"Missing text entry");    // 0x013BAEA4
+    static CWideString no_text_entry(L"Missing text entry");    // 0x013BAEA4
     CIVCountedPointer<const NGameText::CTextEntry> entry = CMainGameComponent::Get()->TextBank->GetPTextEntry(textId, true);
-    return entry.Object ? entry.Object->GetText() : missing;
+    return entry.Object ? entry.Object->GetText() : no_text_entry;
 }
