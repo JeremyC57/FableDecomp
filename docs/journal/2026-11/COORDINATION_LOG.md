@@ -465,3 +465,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: NF151 (16 of 18 closed) and NF152 (14 of 17 closed) handed back. New agents NF154 (CTCBase / CTCPhysicsBase / CTCLook / CTCCreatureNavigation, 24 entries) and NF155 (CThingCreatureBase / CThing / CThingManager, 18 entries).
 2026-11-20 A: landed B's held 0x00BB1740 ??_G rewrite with the 0x00BACE10 owner moved to pick-any scaffolding (advisor decision); B's reports_b6 waits for the 0x00B0A160 port.
 2026-11-20 B->A: Landed p25 0x00E37E40 NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::Main (batches/2026-11-20_landing_p25_00e37e40).
+2026-11-20 B->A: Landed p25 0x00D3A4A0 NScript::CQ_FireHeartScript::CFH_Prisoner::Main (batches/2026-11-20_landing_p25_00d3a4a0).

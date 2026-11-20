@@ -873,7 +873,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d24a40	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh	Main	2416	parked	DIFFER(2440v2403)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d24a40.cpp	gapscan/boundary
 00d2d1a0	NScript::CQ_EndGameFocalSitesScript::CBattleMinion	Main	912	parked	DIFFER(556v620)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00d2d1a0.cpp	original
 00d34b30	std::vector<CScriptThing>	_M_fill_insert	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand582/differ/00d34b30.cpp	original
-00d3a4a0	NScript::CQ_FireHeartScript::CFH_Prisoner	Main	1152	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1140v1140)	87	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d3a4a0.cpp	original
 00d43db0	NScript::CQ_GuildTrainingScript::CPreMeleeMaze	Main	1808	parked	DIFFER(1665v1799)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00d43db0.cpp	original
 00d67890	NScript::CQ_GuildTrainingWoodsWillScript	Main	3440	parked	DIFFER(3472v3426)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d67890.cpp	gapscan/boundary
 00d69480	NScript::CQ_HangingTreeEvilScript	Main	2128	parked		0	rebuild/candidates/manual/pending/2026-11-04_linux_hand744/differ/00d69480.test.cpp	original

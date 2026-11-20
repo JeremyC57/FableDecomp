@@ -39815,3 +39815,9 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?WatchForHeroWinOrLose@CQ_PrisonRaceScript@NScript@@QAEXXZ	00ddb2f0	00ddae40
 ?_M_insert_overflow@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@IAEXPAPAVCThingObject@@ABQAV3@ABU__true_type@2@I_N@Z	0074f900	0077ec20
 ??_7CEngineSubPrimitiveSprite@@6B@	012a5430	00bace10
+?CheckCompletion@CQ_FireHeartScript@NScript@@QAEXXZ	00d3ad60	00d3a4a0
+?GetEndCutscene@CFH_Prisoner@CQ_FireHeartScript@NScript@@ABEXAAVCCharString@@@Z	00d3ab00	00d3a4a0
+?GetEndSpeech@CFH_Prisoner@CQ_FireHeartScript@NScript@@ABEXAAVCCharString@@@Z	00d3abe0	00d3a4a0
+?MakeComment@CFH_Prisoner@CQ_FireHeartScript@NScript@@AAEXXZ	00d3ace0	00d3a4a0
+?MakeRoundStartComment@CFH_Prisoner@CQ_FireHeartScript@NScript@@AAEXXZ	00d3a9b0	00d3a4a0
+?UpdateHistory@CQ_FireHeartScript@NScript@@QAEX_N@Z	00d3a920	00d3a4a0

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00d3a4a0   WARN RELOC_NAME: ?MakeComment@CFH_Prisoner@CQ_FireHeartScript@NScript@@AAEXXZ -> 00d3ace0 labelled 'CFishCompOrganiser::SpeakConversationLine'
+00d3a4a0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d3a4a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Prisoner::?Main@CFH_Prisoner@CQ_FireHeartScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQFireHeartScriptCFHPrisoner_Main_00d3a4a0
