@@ -39542,3 +39542,5 @@ __beginthread	00bfed3a	0098f3a0
 ??_7CEmptyData@NScript@@6B@	012c2724	00cd4ac0
 ??_7Cjoss_test_scriptsData@NScript@@6B@	012c2730	00cd4b20
 ??_7CDanyalTestScriptsData@NScript@@6B@	012c273c	00cd4b80
+??_7?$CEntityScriptBinding@VCbandit_level_cutsceneScript@NScript@@@@6B@	012f6a54	00efa4f0
+?Alloc@Cwelcome_guy@Cbandit_level_cutsceneScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00efaa60	00efa4f0
