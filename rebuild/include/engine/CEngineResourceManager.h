@@ -106,6 +106,19 @@ public:
     EIndexBufferPool GetIndexBufferMemPool();                            // 0x00B3B0A0
     unsigned long GetIndexBufferUsage();                                 // 0x00B3B060
     unsigned long GetVertexBufferUsage();                                // 0x00B3B030
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_ALLOCATEEXTERNALTEXTUREFROMRESOURCEPOOLS
+    // NF152 opt-in (q4595, row 0x00B3B1F0): Ego_r.pdb 0x009D9860 / FableWin.pdb 0x02DD6090
+    // ?AllocateExternalTextureFromResourcePools@CEngineResourceManager@@QAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z (public; the target
+    // of CEngine::AllocateTextureFromEngineResourcePools 0x00B23F40, `ret 10h`). Declaration only: no layout change.
+    class CTexture* AllocateExternalTextureFromResourcePools(unsigned long id, const class C2DExtentsI& size, long levels,
+                                                             const class CPixelFormat& format);   // 0x00B3B1F0
+#endif
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_FREEEXTERNALTEXTUREFROMRESOURCEPOOLS
+    // NF152 opt-in (q4596, row 0x00B3B5B0): Ego_r.pdb 0x009D9C10 / FableWin.pdb 0x02DD6150
+    // ?FreeExternalTextureFromResourcePools@CEngineResourceManager@@QAEXPAVCTexture@@@Z (public; the target of
+    // CEngine::FreeTextureFromEngineResourcePools 0x00B23F50, `ret 4`). Declaration only: no layout change.
+    void FreeExternalTextureFromResourcePools(class CTexture* texture);                          // 0x00B3B5B0
+#endif
 #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_VBPOOL
     // Retail opt-in (chunk 2005, row 0x00B51570): Ego_r.pdb ?GetVertexBufferMemPool@CEngineResourceManager@@QAE?AW4EVertexBufferPool@@XZ,
     // out of line at 0x00B3B090 (no arguments; `mov ecx,[0x01436E98] ; call` ahead of GetVertexBufferUsage at 0x00B51583).

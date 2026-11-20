@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00b3b030   RELOCATION_MATCH PASS   CEngineResourceManager::GetVertexBufferUsage
+00b3b060   RELOCATION_MATCH PASS   CEngineResourceManager::GetIndexBufferUsage
+00b3b0a0   MATCH            PASS   CEngineResourceManager::GetIndexBufferMemPool
+00b3b1f0   RELOCATION_MATCH PASS   CEngineResourceManager::AllocateExternalTextureFromResourcePools
+00b3b5b0   RELOCATION_MATCH PASS   CEngineResourceManager::FreeExternalTextureFromResourcePools
+00b4b890   MATCH            PASS   CEngineShadowRenderer::XBoxDeallocateShadowBuffer
+00b4b8a0   MATCH            PASS   CEngineShadowRenderer::XBoxReallocateShadowBuffer
+00b4fc10   RELOCATION_MATCH PASS   CEngineShadowRenderer::ChangeVideoOptionShadowQuality
+
+WINS: 8
+  00b3b030 RELOCATION_MATCH CEngineResourceManager::?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ
+  00b3b060 RELOCATION_MATCH CEngineResourceManager::?GetIndexBufferUsage@CEngineResourceManager@@QAEKXZ
+  00b3b0a0 MATCH CEngineResourceManager::?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ
+  00b3b1f0 RELOCATION_MATCH CEngineResourceManager::?AllocateExternalTextureFromResourcePools@CEngineResourceManager@@QAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z
+  00b3b5b0 RELOCATION_MATCH CEngineResourceManager::?FreeExternalTextureFromResourcePools@CEngineResourceManager@@QAEXPAVCTexture@@@Z
+  00b4b890 MATCH CEngineShadowRenderer::?XBoxDeallocateShadowBuffer@CEngineShadowRenderer@@QAE_NXZ
+  00b4b8a0 MATCH CEngineShadowRenderer::?XBoxReallocateShadowBuffer@CEngineShadowRenderer@@QAEXXZ
+  00b4fc10 RELOCATION_MATCH CEngineShadowRenderer::?ChangeVideoOptionShadowQuality@CEngineShadowRenderer@@QAE_NJM@Z

@@ -11328,9 +11328,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b3b0a0'
-        Module = '_global'
-        Source = '00/b3/global_AddChildPrimitive_00b3b0a0.cpp'
-        TestSource = '00/b3/global_AddChildPrimitive_00b3b0a0_test.cpp'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_GetIndexBufferMemPool_00b3b0a0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_GetIndexBufferMemPool_00b3b0a0_test.cpp'
         PassPattern = 'AUTO_TINY_00b3b0a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -106081,9 +106081,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b4b8a0'
-        Module = '_gapscan'
-        Source = '00/b4/gapscan_sub00b4b8a0_00b4b8a0.cpp'
-        TestSource = '00/b4/gapscan_sub00b4b8a0_00b4b8a0_test.cpp'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b4/CEngineShadowRenderer_XBoxReallocateShadowBuffer_00b4b8a0.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_XBoxReallocateShadowBuffer_00b4b8a0_test.cpp'
         PassPattern = 'PASS_00b4b8a0'
     }
     [pscustomobject]@{
@@ -120956,9 +120956,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b4b890'
-        Module = 'CEngine'
-        Source = '00/b4/CEngine_DeallocateShadowBuffer_00b4b890.cpp'
-        TestSource = '00/b4/CEngine_DeallocateShadowBuffer_00b4b890_test.cpp'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b4/CEngineShadowRenderer_XBoxDeallocateShadowBuffer_00b4b890.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_XBoxDeallocateShadowBuffer_00b4b890_test.cpp'
         PassPattern = 'PASS_00b4b890'
     }
     [pscustomobject]@{
@@ -200138,15 +200138,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b3b030'
         Module = 'CEngineResourceManager'
-        Source = '00/b3/CEngineResourceManager_GetIndexBufferUsage_00b3b030.cpp'
-        TestSource = '00/b3/CEngineResourceManager_GetIndexBufferUsage_00b3b030_test.cpp'
+        Source = '00/b3/CEngineResourceManager_GetVertexBufferUsage_00b3b030.cpp'
+        TestSource = '00/b3/CEngineResourceManager_GetVertexBufferUsage_00b3b030_test.cpp'
         PassPattern = '00b3b030_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b3b060'
         Module = 'CEngineResourceManager'
-        Source = '00/b3/CEngineResourceManager_GetIndexBufferUsage00b3b060_00b3b060.cpp'
-        TestSource = '00/b3/CEngineResourceManager_GetIndexBufferUsage00b3b060_00b3b060_test.cpp'
+        Source = '00/b3/CEngineResourceManager_GetIndexBufferUsage_00b3b060.cpp'
+        TestSource = '00/b3/CEngineResourceManager_GetIndexBufferUsage_00b3b060_test.cpp'
         PassPattern = '00b3b060_TEST PASS'
     }
     [pscustomobject]@{
@@ -204234,8 +204234,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b4fc10'
         Module = 'CEngineShadowRenderer'
-        Source = '00/b4/CEngineShadowRenderer_SetShadowMapSize_00b4fc10.cpp'
-        TestSource = '00/b4/CEngineShadowRenderer_SetShadowMapSize_00b4fc10_test.cpp'
+        Source = '00/b4/CEngineShadowRenderer_ChangeVideoOptionShadowQuality_00b4fc10.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_ChangeVideoOptionShadowQuality_00b4fc10_test.cpp'
         PassPattern = '00b4fc10_TEST PASS'
     }
     [pscustomobject]@{
@@ -218475,15 +218475,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b3b1f0'
         Module = 'CEngineResourceManager'
-        Source = '00/b3/CEngineResourceManager_AllocateTexture_00b3b1f0.cpp'
-        TestSource = '00/b3/CEngineResourceManager_AllocateTexture_00b3b1f0_test.cpp'
+        Source = '00/b3/CEngineResourceManager_AllocateExternalTextureFromResourcePools_00b3b1f0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_AllocateExternalTextureFromResourcePools_00b3b1f0_test.cpp'
         PassPattern = '00b3b1f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b3b5b0'
         Module = 'CEngineResourceManager'
-        Source = '00/b3/CEngineResourceManager_FreeTexture_00b3b5b0.cpp'
-        TestSource = '00/b3/CEngineResourceManager_FreeTexture_00b3b5b0_test.cpp'
+        Source = '00/b3/CEngineResourceManager_FreeExternalTextureFromResourcePools_00b3b5b0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_FreeExternalTextureFromResourcePools_00b3b5b0_test.cpp'
         PassPattern = '00b3b5b0_TEST PASS'
     }
     [pscustomobject]@{
