@@ -1,6 +1,6 @@
 // CQ_OpeningGraveyardSecretPassageScript::CheckDoor() -- trigger the path generator, make it persistent, lock the secret-passage gate; until the lieutenant shows up (and then while he lives) re-trigger the generator whenever the hero comes back to the graveyard path; then play the path-door cut-scene, set the objective, fade the gate out and swap in the new door
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
-// Leaf: CheckDoor
+// Leaf: ?CheckDoor@CQ_OpeningGraveyardSecretPassageScript@NScript@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC8C80, 1904 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840 (and its inline body), ~vector<CScriptThing>
@@ -61,13 +61,13 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
 };
 class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x007E72A0 (out-of-line ctor)
+    CScriptGameResourceObjectScriptedThingBase();      // 0x007E72A0 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ)
     void Destroy();                                    // 0x007E74D0 (out-of-line dtor)
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
 class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
-    void Construct();                                  // 0x006E7B60
+    CScriptGameResourceObjectMovieBase();              // 0x006E7B60 (out-of-line ctor; Ego_r/FableWin ??0CScriptGameResourceObjectMovieBase@@QAE@XZ)
     void Destroy();                                    // 0x006E7B80
 };
 // Cast map: the shared STLport 4.6 map (stlport/fable_map.h, retail branch), Ego_r.pdb spelling map<CCharString, CScriptGameResourceObjectScriptedThingBase>:
@@ -163,13 +163,11 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CheckDoor()
     Game->Pause(1.0f);
     {
     CScriptGameResourceObjectScriptedThingBase hero;
-    hero.Construct();
     Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
     {   // Inferred: scope of the cast map; retail calls ~map 0x00CDBFB0 after the movie handle and before the hero handle's dtor (the old by-hand order)
     std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["HERO"] = hero;
     CScriptGameResourceObjectMovieBase movie;
-    movie.Construct();
     Game->StartMovieSequence("", movie);
     CGameScriptInterface* game = Game;
     game->PauseAllNonScriptedEntities(true);

@@ -1,0 +1,72 @@
+addr       parity           behav  name
+0089b110   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089b110   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089b110   WARN SHARED_HEADER_AVAILABLE CTCBoastUI (engine/CTCBoastUI.h)
+0089b110   WARN RELOC_NAME: ?g_MovieTransitionState@@3PAUMovieTransitionState@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0089b110   WARN RELOC_NAME: ??0MovieResource@@QAE@PAVCGameScriptInterface@@_N@Z -> 006e7630 labelled 'CScriptGameResourceObjectMovie::CScriptGameResourceObjectMovie'
+0089b110   RELOCATION_MATCH PASS   CGameScriptInterface::StartMovieSequence
+00d043a0   RELOCATION_MATCH PASS   NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaDoorHelp
+00d04770   RELOCATION_MATCH PASS   NScript::CQ_BanditCampBossBattleScript::WatchForBanditCampGates
+00da3f40   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::WatchForTermination
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CQ_NewOakValeIntroScript (engine/CQ_NewOakValeIntroScript.h)
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00dbeb20   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::PostAttackStuff
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00dc8c80   WARN SHARED_HEADER_AVAILABLE CQ_OpeningGraveyardSecretPassageScript (engine/CQ_OpeningGraveyardSecretPassageScript.h)
+00dc8c80   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dc8c80   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00dc8c80   RELOCATION_MATCH PASS   NScript::CQ_OpeningGraveyardSecretPassageScript::CheckDoor
+00dd9900   RELOCATION_MATCH PASS   NScript::CQ_PrisonEscapeRescueMotherScript::ProcessRaces
+00ddd030   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00ddd030   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00ddd030   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ddd030   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ddd030   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ddd030   WARN SHARED_HEADER_AVAILABLE CQ_PrisonRaceScript (engine/CQ_PrisonRaceScript.h)
+00ddd030   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ddd030   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00ddd030   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00ddd030   WARN RELOC_NAME: ?Construct@CScriptedThingStorage@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00ddd030   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00ddd030   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00ddd030   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00ddd030   RELOCATION_MATCH PASS   NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::Main
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript (engine/CQ_TraderEscortScript.h)
+00e0ad40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e0ad40   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00e0ad40   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e0ad40   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::CRockTrollTrigger::Main
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CQ_WizardBattleScript (engine/CQ_WizardBattleScript.h)
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e1cfd0   RELOCATION_MATCH PASS   NScript::CQ_WizardBattleScript::PhaseOne
+00e50100   RELOCATION_MATCH PASS   NScript::CV_BeardyBaldyScript::WatchForQuestFinished
+00e50e40   RELOCATION_MATCH PASS   NScript::CV_BeardyBaldyScript::GoTalkToBarber
+00f27180   RELOCATION_MATCH PASS   CHeroSoulsCreatureDef::Copy
+
+WINS: 13
+  0089b110 RELOCATION_MATCH CGameScriptInterface::?StartMovieSequence@CGameScriptInterfaceMethods@@QAEXABVCCharString@@AAVCScriptGameResourceObjectMovieBase@@@Z
+  00d043a0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?CheckForSecondAreaDoorHelp@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+  00d04770 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?WatchForBanditCampGates@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+  00da3f40 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::?WatchForTermination@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ
+  00dbeb20 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::?PostAttackStuff@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
+  00dc8c80 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::?CheckDoor@CQ_OpeningGraveyardSecretPassageScript@NScript@@QAEXXZ
+  00dd9900 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?ProcessRaces@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ
+  00ddd030 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::?Main@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00e0ad40 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CRockTrollTrigger::?Main@CRockTrollTrigger@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e1cfd0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::?PhaseOne@CQ_WizardBattleScript@NScript@@QAEXXZ
+  00e50100 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::?WatchForQuestFinished@CV_BeardyBaldyScript@NScript@@QAEXXZ
+  00e50e40 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::?GoTalkToBarber@CV_BeardyBaldyScript@NScript@@QAEXXZ
+  00f27180 RELOCATION_MATCH CHeroSoulsCreatureDef::?Copy@CHeroSoulsCreatureDef@@UAEXPBVCDefClassBase@@@Z

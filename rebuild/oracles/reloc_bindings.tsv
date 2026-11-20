@@ -3722,11 +3722,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089a270
 ?VMap_LowerBound@@YIPAUCKillInterfaceEntry@@PAUCKillInterfaceMap@@UCKillMapKey@@@Z	0040f020	0089a270
 ?IsLockPickable@CGSIPickLockableDoor@@QAE_NXZ	00730ae0	0089a2d0
-?Reset@MovieResourceHandle@@QAEXPAUMovieResource@@@Z	008ab970	0089b110
-?StartLetterBox@CGameScriptInterfaceMethods@@QAEXMMM@Z	006e7280	0089b110
-?g_MovieCameraID@@3JA	01380c34	0089b110
-?g_MovieState@@3JA	013bad00	0089b110
-?g_MovieTransitionState@@3PAUMovieTransitionState@@A	013b8790	0089b110
 ?IsWearingAppearanceModifier@CTCHeroAttachableAppearanceModifiers_Retail@@QAE_NJJ@Z	00706000	0089b2b0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089b330
 @TCShop_GetName@4	00706290	0089b330
@@ -8598,7 +8593,6 @@ _wcsncmp	00bfeb0a	004071c0
 ?__copy_backward@@YIPAUCBlurredAttitudesDef@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	0067c8b0	0067cc50
 ?fill@@YIXPAUCBlurredAttitudesDef@@0ABU1@@Z	0067c720	0067cc50
 ?GetDataTypeSize@CVertexStreamConverter@@SIKW4EVertexStreamDataType@@@Z	00ab3740	00ac4d70
-?ResetCells@CV_ChapelOfEvilScript@@QAEXXZ	00dd9a50	00dd9900
 ?GetAtmosBlend@CGameMapCell@@QBEEJ@Z	006b74e0	0049f2d0
 ?GetGlobalEnvironmentThemeIndexFromLocal@CEnvironment@@QAEJJ@Z	006b2c60	0049f2d0
 ??$GetSubDef@VCExplodingObjectDef@@@CThingDefClass@@QBE_NPAV?$CDefPointer@$$CBVCExplodingObjectDef@@@@@Z	007510d0	00750be0
@@ -9324,9 +9318,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ??_7CPlayerGuiDef@@6B@	012352dc	00459bb6
 ?IncNumberOfSuns@CQ_FireHeartScript@NScript@@QAEXXZ	00d38310	00d38000
 ?DecNumberOfSuns@CQ_FireHeartScript@NScript@@QAEXXZ	00d38aa0	00d387a0
-?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ	006e7b60	00ddd030
-?Construct@CScriptedThingStorage@@QAEXXZ	007e72a0	00ddd030
-?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ	006e7b80	00ddd030
 ?DoMission@CQR_EscortTraderScript@NScript@@QAEXXZ	00e1f0c0	00e1e110
 ?WatchForRegionLoads@CQR_EscortTraderScript@NScript@@QAEXXZ	00e1e470	00e1e110
 ?WatchForTermination@CQR_EscortTraderScript@NScript@@QAEXXZ	00e1e530	00e1e110
@@ -16675,7 +16666,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$ForEachMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_OccuredBetween@@@@UCGameScriptInterface_MsgOnLevelLoaded_Callback@@@CMessageEventManager@@QBE?BJABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_OccuredBetween@@@@ABUCGameScriptInterface_MsgOnLevelLoaded_Callback@@@Z	008ad050	0089ac10
 ?FindAllMessages@CMessageEventManager@@QAEJABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@PAU?$list@PAVCMessageEvent@@@@@Z	006178f0	0089ac80
 ??$FindAllMessages@VCMessageEventFilter_IsOfType@@@CMessageEventManager@@QAEJABVCMessageEventFilter_IsOfType@@AAUCMessagePtrList@@@Z	00493eab	0089af30
-??0MovieResource@@QAE@PAVCGameScriptInterface@@_N@Z	006e7630	0089b110
 ?SetColour@CTCLight_Retail@@QAEXABVCRGBColour@@@Z	00640bb0	0089df10
 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@1111KM_N2@Z	00493049	0089e540
 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z	00492fb4	0089e540
@@ -39135,7 +39125,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?Alloc@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d57fa0	00d55e90
 ?Alloc@CTheRealGuildmaster@CQ_GuildTrainingMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d565c0	00d55e90
 ?PhaseOne@CQ_MinionCampScript@NScript@@QAEXXZ	00da05d0	00da0230
-?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	007e72a0	00dbeb20
 ??_7?$CEntityScriptBinding@VCQ_OakValeBanditRaidScript@NScript@@@@6B@	012d9ec0	00dbf2d0
 ?Alloc@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dbfdd0	00dbf2d0
 ?Alloc@CRestartMarker@CQ_OakValeBanditRaidScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00dc0090	00dbf2d0
@@ -39520,3 +39509,12 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ??_7CEnginePrimitiveManagerParticleMeshGroup@@6B@	012a63b8	00bc34d0
 ??_7CEnginePrimitiveManagerParticleLineGroup@@6B@	012a6590	00bc4d90
 ?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@QAEXXZ	00bc3e10	00bc4d90
+??0MovieResource@@QAE@PAVCGameScriptInterface@@_N@Z	006e7630	0089b110
+?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z	008ab970	0089b110
+?StartLetterBox@CGameScriptInterfaceMethods@@QAEXMMM@Z	006e7280	0089b110
+?g_MovieCameraID@@3JA	01380c34	0089b110
+?g_MovieState@@3JA	013bad00	0089b110
+?g_MovieTransitionState@@3PAUMovieTransitionState@@A	013b8790	0089b110
+?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ	006e7b80	00dbeb20
+?ResetCells@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ	00dd9a50	00dd9900
+?Construct@CScriptedThingStorage@@QAEXXZ	007e72a0	00ddd030

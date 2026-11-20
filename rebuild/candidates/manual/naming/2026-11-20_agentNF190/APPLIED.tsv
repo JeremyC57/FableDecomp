@@ -1,0 +1,65 @@
+entry	address	status	binders_respelled	note
+q4620	0x006E7B60	done	5	self row right (PDB ctor). All 5 landed rows that spelled ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ (source grep of every compiled row declaring Construct() on these classes: 0x00DBEB20, 0x00DDD030, 0x00E0AD40, 0x00E1CFD0, 0x00DC8C80; the table witness is 0x00DDD030) now bind ??0CScriptGameResourceObjectMovieBase@@QAE@XZ via an in-place respell of the row-local class member (no new class token, defined-symbol sets equal to HEAD)
+q4621	0x007E72A0	blocked: port (0x00DDD030 left)	4	self row right. 0x00DBEB20, 0x00E0AD40, 0x00E1CFD0, 0x00DC8C80 respelled ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ (in place). Left: 0x00DDD030 ?Construct@CScriptedThingStorage@@QAEXXZ: retyping the hero onto the row-local class grades RELOCATION_MATCH but makes the row bind a COMDAT ctor copy (already defined at HEAD) whose bytes differ from owner 0x007E72A0: held (pick-any rule); needs the row ported onto the shared header
+q4838	0x00F25CB0	blocked: pick-any (coordinator decision)	0	identity proven (vtable 0x012FB2F0 slot 0, slots 19/20 the landed CArenaWaveDef Copy/GetSizeofClass; Ego_r ??_GCArenaWaveDef@@UAEPAXI@Z). Port onto engine/CArenaWaveDef.h grades RELOCATION_MATCH (work/00f25cb0_blocked.cpp) but newly defines ??0CSubDefClassBase@@QAE@XZ whose header-inline body differs from owner 0x0044C0C0 (see STATUS)
+q4839	0x00F25F50	done-already	0	self row already defines ?Copy@CArenaWaveDef@@UAEXPBVCDefClassBase@@@Z (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4840	0x00F25CA0	done-already	0	self row already defines ?GetSizeofClass@CArenaWaveDef@@UAEKXZ (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4841	0x00F2D300	blocked: pick-any (coordinator decision)	0	see STATUS: vtable emitter brings the header-inline ??0CSubDefClassBase COMDAT that differs from owner 0x0044C0C0 (as q4838)
+q4842	0x00F2D680	done-already	0	self row already defines ?Copy@CFeatDef@@UAEXPBVCDefClassBase@@@Z (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4843	0x00F2D2F0	done-already	0	self row already defines ?GetSizeofClass@CFeatDef@@UAEKXZ (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4844	0x00F270B0	blocked: pick-any (coordinator decision)	0	see STATUS: vtable emitter brings the header-inline ??0CSubDefClassBase COMDAT that differs from owner 0x0044C0C0 (as q4838)
+q4845	0x00F27180	done	0	self row ported onto engine/CHeroSoulsCreatureDef.h (RENAMES s1); vtable 0x012FB500 slot 19 + Ego_r/FableWin ?Copy@CHeroSoulsCreatureDef@@UAEXPBVCDefClassBase@@@Z; no landed referencer (REFS empty; reloc_bindings has no line for 0x00F27180)
+q4846	0x00F270A0	done-already	0	self row already defines ?GetSizeofClass@CHeroSoulsCreatureDef@@UAEKXZ (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4847	0x00F29CE0	blocked: pick-any (coordinator decision)	0	see STATUS: emitter ctor COMDATs differ from owners 0x00F29C10 / 0x00430370
+q4848	0x00F29C50	done-already	0	self row already defines ?GetSizeofClass@CRegionScriptDef@@UAEKXZ (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4849	0x00F29510	blocked: port	0	see STATUS: CScriptDef ctor row is a 1014-line local model
+q4850	0x00F2A240	done-already	0	self row already defines ?Copy@CScriptDef@@UAEXPBVCDefClassBase@@@Z (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q4851	0x00F29500	done-already	0	self row already defines ?GetSizeofClass@CScriptDef@@UAEKXZ (Leaf line, HEAD grade MATCH/RELOCATION_MATCH, catalog name already right); vtable slot checked in Fable.exe; no landed referencer (REFS empty)
+q5109	0x00C16F00	rejected	0	PROPOSAL spelling rejected (REJECTED.tsv); manifest name fix in NAME_FIXES.tsv; existing split with binder 0x00C174A0 static LoadLookupTableBank left (libpk, light naming)
+q5128	0x008AB970	done	1	self row already right; the one binder 0x0089B110 (REFS) ported off ?Reset@MovieResourceHandle onto the PDB spelling
+q6200	0x00E50E40	done	0	self row ported + renamed (RENAMES s1); no landed binder
+q6216	0x00E50100	done	0	self row ported + renamed (RENAMES s1); no landed binder
+q6224	0x00DFDE30	blocked: port	0	self row is a whole-row stand-in; port drafted to RELOCATION_MATCH but held by the pick-any rule (_Construct copy differs from owner 0x008AC120); recipe for the next form in STATUS
+q6251	0x00DD3B80	done-already	0	self Leaf, auto-re-candidates, manifest and ghidra_out labels already NScript::CQ_PrisonEscapeRescueMotherScript::PrisonLifeIntro; binder 0x00DD2CE0 binds the PDB spelling
+q6256	0x00DD9900	done	0	self row renamed + ported (RENAMES s1); binder 0x00DD2CE0 already on the PDB spelling (not-a-binder)
+q6258	0x00D04770	done	0	self row renamed + ported (RENAMES s1); binder 0x00D038E0 already right
+q6261	0x00D043A0	done	0	self row renamed + ported (RENAMES s1); binder 0x00D038E0 already right
+q6262	0x00DA3F40	done	0	self row renamed + ported (RENAMES s1); binder 0x00DA34B0 (NF186 lock) already binds the PDB spelling, untouched
+q6263	0x00DE1770	blocked: port	0	claim proven (Ego_r + FableWin ?WatchForNewRegion@CQ_RansomVictimScript@NScript@@QAEXXZ; Main 0x00DE0850 binds it; header declares it at 0x00DE1770); self-row port fails to compile (STATUS)
+q6264	0x00DE4710	done-already	0	parked row (UNMATCHED parked; no self row to port); manifest + ghidra_out/labels (landing 2026-11-05n) already NScript::CQ_RansomVictimScript::DisappearFollowers; binder 0x00DE0850 binds the PDB spelling
+q6276	0x00EDC5A0	done-already	0	not landed; ghidra_out/labels (landing 2026-11-05o) already NScript::CV_TempleOfLightScript::WatchForLeaving; binder 0x00EDC450 binds ?WatchForLeaving@CV_TempleOfLightScript@NScript@@QAEXXZ (table witness; its source names the stand-in WatchForLeaving_00edc5a0 only as history)
+q6277	0x00CFEE30	blocked: port	0	claim proven (Ego_r ?RemoveCursedTablets@COracleTablet@CQ_AwakeningTheOracleScript@NScript@@AAEXXZ; COracleTablet::Main 0x00CFE030 calls it and binds that spelling; header declares it); self row needs a full port (STATUS)
+q6291	0x00E4A280	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6345	0x00F0D470	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6346	0x00D15140	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6365	0x00F0D470	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6412	0x00D360E0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6414	0x00F0D470	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6419	0x00E15500	deferred: held by NF186/NF187 (self row 0x00E15500 in HELD.txt)	0	self row 0x00E15500 is pending landing in another hand-back (HELD.txt); not touched
+q6427	0x00D3CBD0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6436	0x0088B7E0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6440	0x0088B7E0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6445	0x007DB5C0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6464	0x00ED7320	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6466	0x00CBE716	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6470	0x00EA3490	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6491	0x00E0C350	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6499	0x00E95390	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6505	0x00D1CAC0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6511	0x01375748	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6517	0x00D15140	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6518	0x00CBE716	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q6529	0x00E0A510	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q11668	0x0089C100	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q11718	0x00669580	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q11915	0x00418DCA	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12068	0x00669580	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12094	0x005BEC40	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12103	0x00E37660	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12104	0x00E37680	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12105	0x00EE8390	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12106	0x00E200B0	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12136	0x00E2AB30	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12147	0x00E7FD50	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12168	0x00416268	open	0	not started (NF190 handed back at the q6277 entry boundary for context)
+q12194	0x006E5800	open	0	not started (NF190 handed back at the q6277 entry boundary for context)

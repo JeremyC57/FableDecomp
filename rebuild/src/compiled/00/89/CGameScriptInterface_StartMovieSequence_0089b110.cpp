@@ -1,7 +1,9 @@
 // CGameScriptInterface::StartMovieSequence -- enter movie state and return an owning movie resource
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail0089B110,248 bytes.
+// Leaf: ?StartMovieSequence@CGameScriptInterfaceMethods@@QAEXABVCCharString@@AAVCScriptGameResourceObjectMovieBase@@@Z
 #include "fable_compiler.h"
+#define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CGameScriptInterface.h"
 #include "engine/CPlayerManager.h"
 #define CPlayer CPlayerPdb
@@ -32,20 +34,23 @@ FABLE_FORCEINLINE BoastMethods* GetBoast(CThingNative* hero){BoastMethods* resul
 struct MovieTransitionState{unsigned char Prefix[0xf4];bool Busy;};extern MovieTransitionState* g_MovieTransitionState; //013B8790
 extern long g_MovieCameraID; //01380C34
 extern long g_MovieState; //013BAD00
-struct MovieResource{void* VTable;unsigned long RefCount;void* Data;void* Info;CGameScriptInterface* ScriptInterface;bool Enabled;unsigned char Align[3];MovieResource(CGameScriptInterface*,bool);}; //006E7630, RTTI01260F00 CScriptGameResourceObjectMovie
-struct MovieResourceHandle{void* VTable;unsigned long RefCount;void* Data;void* Info;void Reset(MovieResource*);}; //008AB970 delegates counted pointer at+8 to008AB2B0
+// The output handle is the shared engine/CScriptGameResourceObjectMovieBase.h class; 0x008AB970 is its SetImplementation (FableWin.pdb
+// ?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z; PImp.Reset body, twin of the ScriptedThingBase one 0x008AB960).
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptGameResourceObjectMovieBase.h"
+struct MovieResource:CScriptGameResourceObjectMovieBase{CGameScriptInterface* ScriptInterface;bool Enabled;unsigned char Align[3];MovieResource(CGameScriptInterface*,bool);}; //006E7630, RTTI01260F00 CScriptGameResourceObjectMovie (no shared header; on the shared base)
 struct CGameScriptInterfaceMethods:CGameScriptInterface{
  typedef void(CGameScriptInterfaceMethods::*ConstVoidMethod)()const;
  void NewScriptFrame()const{(this->*static_cast<ConstVoidMethod*>(__vftable)[7])();} //006E7410
  void CancelAbilitiesForCutscene()const{(this->*static_cast<ConstVoidMethod*>(__vftable)[396])();} //0089D690
  void StartLetterBox(float,float,float); //006E7280 forwards to DisplayEngine00434BA0
- void StartMovieSequence(const CCharString&,MovieResourceHandle&);
+ void StartMovieSequence(const CCharString&,CScriptGameResourceObjectMovieBase&);
 };
 FABLE_STATIC_ASSERT(sizeof(CGameScriptInterfaceMethods::ConstVoidMethod)==4);
 FABLE_STATIC_ASSERT(sizeof(MovieResource)==24);
-void CGameScriptInterfaceMethods::StartMovieSequence(const CCharString& name,MovieResourceHandle& output){
+void CGameScriptInterfaceMethods::StartMovieSequence(const CCharString& name,CScriptGameResourceObjectMovieBase& output){
  CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)&&(hero->UsingComponents[7]&0x100)){
  GetBoast(hero)->AllowUIToOpen(false);}
  while(InMovieSequence)NewScriptFrame();while(g_MovieTransitionState->Busy)NewScriptFrame();
- InMovieSequence=true;StartLetterBox(0.0f,0.5f,1.7777778f);CancelAbilitiesForCutscene();output.Reset(new MovieResource(this,true));g_MovieCameraID=-1;g_MovieState=0;
+ InMovieSequence=true;StartLetterBox(0.0f,0.5f,1.7777778f);CancelAbilitiesForCutscene();output.SetImplementation(new MovieResource(this,true));g_MovieCameraID=-1;g_MovieState=0;
 }

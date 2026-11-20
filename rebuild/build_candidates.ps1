@@ -115335,9 +115335,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f27180'
-        Module = '_gapscan'
-        Source = '00/f2/gapscan_sub00f27180_00f27180.cpp'
-        TestSource = '00/f2/gapscan_sub00f27180_00f27180_test.cpp'
+        Module = 'CHeroSoulsCreatureDef'
+        Source = '00/f2/CHeroSoulsCreatureDef_Copy_00f27180.cpp'
+        TestSource = '00/f2/CHeroSoulsCreatureDef_Copy_00f27180_test.cpp'
         PassPattern = 'PASS_00f27180'
     }
     [pscustomobject]@{
@@ -220351,9 +220351,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e50100'
-        Module = 'CV_AmbushScamScript'
-        Source = '00/e5/CVAmbushScamScript_WatchForQuestFinished_00e50100.cpp'
-        TestSource = '00/e5/CVAmbushScamScript_WatchForQuestFinished_00e50100_test.cpp'
+        Module = 'NScript::CV_BeardyBaldyScript'
+        Source = '00/e5/NScriptCVBeardyBaldyScript_WatchForQuestFinished_00e50100.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScript_WatchForQuestFinished_00e50100_test.cpp'
         PassPattern = '00e50100_TEST PASS'
     }
     [pscustomobject]@{
@@ -237758,9 +237758,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0089b110'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/89/CGameScriptInterfaceMethods_StartMovieSequence_0089b110.cpp'
-        TestSource = '00/89/CGameScriptInterfaceMethods_StartMovieSequence_0089b110_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_StartMovieSequence_0089b110.cpp'
+        TestSource = '00/89/CGameScriptInterface_StartMovieSequence_0089b110_test.cpp'
         PassPattern = '0089b110_TEST PASS'
     }
     [pscustomobject]@{
@@ -256260,16 +256260,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d04770'
-        Module = 'CV_ChapelOfEvilScript'
-        Source = '00/d0/CVChapelOfEvilScript_EndMission_00d04770.cpp'
-        TestSource = '00/d0/CVChapelOfEvilScript_EndMission_00d04770_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScript_WatchForBanditCampGates_00d04770.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScript_WatchForBanditCampGates_00d04770_test.cpp'
         PassPattern = '00d04770_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dd9900'
-        Module = 'CV_ChapelOfEvilScript'
-        Source = '00/dd/CVChapelOfEvilScript_EndMission_00dd9900.cpp'
-        TestSource = '00/dd/CVChapelOfEvilScript_EndMission_00dd9900_test.cpp'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_ProcessRaces_00dd9900.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_ProcessRaces_00dd9900_test.cpp'
         PassPattern = '00dd9900_TEST PASS'
     }
     [pscustomobject]@{
@@ -256302,9 +256302,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e50e40'
-        Module = 'CV_BeardyBaldyScript'
-        Source = '00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50e40.cpp'
-        TestSource = '00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50e40_test.cpp'
+        Module = 'NScript::CV_BeardyBaldyScript'
+        Source = '00/e5/NScriptCVBeardyBaldyScript_GoTalkToBarber_00e50e40.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScript_GoTalkToBarber_00e50e40_test.cpp'
         PassPattern = '00e50e40_TEST PASS'
     }
     [pscustomobject]@{
@@ -272367,9 +272367,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da3f40'
-        Module = 'CQ_MinionClifftopChaseScript'
-        Source = '00/da/CQMinionClifftopChaseScript_ProcessMission_00da3f40.cpp'
-        TestSource = '00/da/CQMinionClifftopChaseScript_ProcessMission_00da3f40_test.cpp'
+        Module = 'NScript::CQ_MinionClifftopChaseScript'
+        Source = '00/da/NScriptCQMinionClifftopChaseScript_WatchForTermination_00da3f40.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScript_WatchForTermination_00da3f40_test.cpp'
         PassPattern = '00da3f40_TEST PASS'
     }
     [pscustomobject]@{
@@ -277975,9 +277975,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d043a0'
-        Module = 'NScript::CQ_BanditCampScript'
-        Source = '00/d0/NScriptCQBanditCampScript_CheckForSecondAreaDoorHelp_00d043a0.cpp'
-        TestSource = '00/d0/NScriptCQBanditCampScript_CheckForSecondAreaDoorHelp_00d043a0_test.cpp'
+        Module = 'NScript::CQ_BanditCampBossBattleScript'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScript_CheckForSecondAreaDoorHelp_00d043a0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScript_CheckForSecondAreaDoorHelp_00d043a0_test.cpp'
         PassPattern = '00d043a0_TEST PASS'
     }
     [pscustomobject]@{

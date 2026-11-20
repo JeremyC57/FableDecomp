@@ -27,6 +27,14 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_BeardyBaldyScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_CV_BEARDYBALDYSCRIPT_GOTALKTOBARBER
+    // Opt-in (NF190, 2026-11-20, row 0x00E50E40): Ego_r.pdb + FableWin.pdb ?GoTalkToBarber@CV_BeardyBaldyScript@NScript@@QAEXXZ.
+    void GoTalkToBarber();                                               // 0x00E50E40
+#endif
+#ifdef FABLE_RETAIL_CV_BEARDYBALDYSCRIPT_WATCHFORQUESTFINISHED
+    // Opt-in (NF190, 2026-11-20, row 0x00E50100): Ego_r.pdb + FableWin.pdb ?WatchForQuestFinished@CV_BeardyBaldyScript@NScript@@QAEXXZ.
+    void WatchForQuestFinished();                                        // 0x00E50100
+#endif
     void ResetRandomSpeechTime();                                        // 0x00E53C70
     void SetWanderPointAndDistance(const CScriptThing&, const C3DVector&); // 0x00E53F60
     void WatchForAttack(CScriptThing);                                   // 0x00E53D90
@@ -76,8 +84,8 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_BeardyBaldyScript) == 0xA4);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan) == 0x24);
+FABLE_STATIC_ASSERT_AT(79, sizeof(NScript::CV_BeardyBaldyScript) == 0xA4);
+FABLE_STATIC_ASSERT_AT(80, sizeof(NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan) == 0x24);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_BEARDYBALDYSCRIPT_H

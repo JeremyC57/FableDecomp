@@ -1,0 +1,14 @@
+--- orig/stlport/fable_containers.h	2026-11-20 18:23:38.940778544 +0000
++++ hdr/stlport/fable_containers.h	2026-11-20 18:23:38.979824368 +0000
+@@ -596,6 +596,11 @@
+ public:
+     _Vector_base(const _Alloc& a)
+         : _M_start(0), _M_finish(0), _M_end_of_storage(a,0) { }
++#if defined(FABLE_RETAIL_STLP_VECTOR_BASE_SIZE_CTOR_NOINLINE) && defined(_MSC_VER)
++    // NF190 opt-in (2026-11-20, row 0x00DFDE30 vector<CScriptThing>::vector(const vector&)): that TU calls this constructor out of
++    // line (0x00DFDE90, `call` at 0x00DFDE59) while it expands __uninitialized_copy; same body, kept out of line.
++    __declspec(noinline)
++#endif
+     _Vector_base(size_t n,const _Alloc& a)
+         : _M_start(0), _M_finish(0), _M_end_of_storage(a,0) {
+         _M_start=_M_end_of_storage.allocate(n);

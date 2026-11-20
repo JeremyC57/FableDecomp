@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q5109	0x00C16F00	?ReadDeferredBank@@YIXPAX0PAVCLoadLog@@PAVCScriptHost@@PBUSBankRequest@@@Z (PROPOSAL)	descriptive proposal from one agent; its __fastcall 5-argument signature contradicts the landed self row (Leaf ?ReadDeferredBank@@YGXPAVCLoadLog@@PAXPAVCScriptHost@@PBUSBankRequest@@@Z, __stdcall, RELOCATION_MATCH), which already carries the proposed descriptive name. libpk vendor code: light naming only (EXTRA_RULES 2026-11-12), so the landed descriptive leaf stays.

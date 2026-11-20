@@ -1,4 +1,9 @@
-// Leaf: CheckForSecondAreaDoorHelp
+// Leaf: ?CheckForSecondAreaDoorHelp@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+// NF190 (2026-11-20, q6261): the class is CQ_BanditCampBossBattleScript (Ego_r.pdb + FableWin.pdb name sets hold only
+//   ?CheckForSecondAreaDoorHelp@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ; its spawn at 0x00D041B9 is inside the landed
+//   CQ_BanditCampBossBattleScript::Main 0x00D038E0, which binds that spelling). The flag at +0x4D is Gate3Open (Ego_r +97 minus
+//   the 0x14 base shift; the old local model named it ActivatedBanditRaid from CQ_BanditCampScript's record, same offset).
+//   Ported onto engine/CQ_BanditCampBossBattleScript.h; was ?CheckForSecondAreaDoorHelp@CQ_BanditCampScript@NScript@@QAEXXZ.
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
@@ -15,44 +20,29 @@
 //   0x00D041B9 (member pointer stored at 0x00D041E3); the catalog's CV_ChapelOfEvilScript::EndMission is a propagated label.
 // Shape: generated script code; `for (;;)` with the terminate return first; the hint switch's last case loops back to
 //   stage 3 (cases 2 and 4 share the store).
-// NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
-//   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
-//   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);        // 0x0099EBF0
-    ~CCharString();                                         // 0x0099EAE0
-};
-// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
-//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#include "fable_compiler.h"
 #define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CQ_SunnyvaleMasterData.h"
+#include "engine/CQ_BanditCampBossBattleScript.h"
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
-// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
-//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+// CTimer: the retail model from engine/CTimer.h; bodies the row expands inline follow the include (as at HEAD).
 #include "engine/CTimer.h"
 inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
 inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
-// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
-//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
-#include "engine/CScriptBase.h"
-namespace NScript {
-class CQ_BanditCampScript : public CScriptBase {
-public:
-    CGameScriptInterface*    Game;                                     // +0x40
-    void*         Data;                                     // +0x44
-    unsigned char _pad48[0x4d - 0x48];
-    bool          ActivatedBanditRaid;                      // +0x4d
-    void CheckForSecondAreaDoorHelp();
-};
-} // namespace NScript
-using NScript::CQ_BanditCampScript;
 
-void NScript::CQ_BanditCampScript::CheckForSecondAreaDoorHelp()
+
+void NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaDoorHelp()
 {
-    while (!ActivatedBanditRaid) {
+    while (!Gate3Open) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;

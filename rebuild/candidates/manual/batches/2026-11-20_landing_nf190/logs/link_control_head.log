@@ -1,0 +1,12 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+head_00dd9900.obj : error LNK2005: "public: void __thiscall CV_ChapelOfEvilScript::EndMission(void)" (?EndMission@CV_ChapelOfEvilScript@@QAEXXZ) already defined in head_00d04770.obj
+own_004aa840.obj : error LNK2005: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in head_00dbeb20.obj
+own_004ab130.obj : error LNK2005: "public: virtual bool __thiscall CScriptThing::IsAlive(void)const " (?IsAlive@CScriptThing@@UBE_NXZ) already defined in head_00e50e40.obj
+own_004abe90.obj : error LNK2005: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in head_00dc8c80.obj
+own_007e72a0.obj : error LNK2005: "public: __thiscall CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase(void)" (??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ) already defined in head_00ddd030.obj
+own_00cd4450.obj : error LNK2005: "public: __thiscall CTimer::CTimer(void)" (??0CTimer@@QAE@XZ) already defined in head_00d043a0.obj
+own_00e241b0.obj : error LNK2005: "public: virtual __thiscall NScript::CIsThingAlive::~CIsThingAlive(void)" (??1CIsThingAlive@NScript@@UAE@XZ) already defined in head_00e0ad40.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 442 LNK2001 + 83 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)
