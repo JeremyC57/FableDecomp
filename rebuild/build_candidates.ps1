@@ -401679,6 +401679,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00760190_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00859ef0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_OnAnimationLoaded_00859ef0.cpp'
+        TestSource = '00/85/CCombatActionBase_OnAnimationLoaded_00859ef0_test.cpp'
+        PassPattern = '00859ef0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

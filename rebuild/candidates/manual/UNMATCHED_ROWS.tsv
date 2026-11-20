@@ -352,7 +352,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008575c0	CCombatActionBase	CCombatActionBase::GetNextPos	1040	parked	DIFFER(1025v1032)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/008575c0.cpp	original
 00858e00	`anonymousnamespace'	GetHelperPointNamesFromStrikeEventName	576	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/00858e00.cpp	original
 008591e0	CCombatActionBase	PerformPossibleDamageAction	1152	parked	DIFFER(1091v1146)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/008591e0.cpp	original
-00859ef0	CCombatActionBase	OnAnimationLoaded	1344	reserved (acctB p25E, 2026-11-20)	DIFFER(1195v1196)	5	rebuild/candidates/manual/pending/2026-11-20_p25_open/00859ef0/00859ef0.cpp	original
 0085cbd0	CThingMap	DebugDraw	528	parked	DIFFER(522v518)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0085cbd0.cpp	original
 0085ed90	vector<EWeaponClass	_Umove<EWeaponClass*>	96	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0085ed90.test.cpp	original
 008633b0	CThingBodyReorienter	ReorientBodyYZForSlopes	928	parked	DIFFER(874v917)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/008633b0.cpp	original

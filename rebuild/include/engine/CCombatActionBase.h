@@ -206,6 +206,19 @@ public:
     virtual float GetDamageMultiplier() const;
 protected:
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+    // p25E opt-in (row 0x00859EF0 CCombatActionBase::OnAnimationLoaded): the protected members it uses, with the Ego_r.pdb / FableWin.pdb
+    // spellings the first class branch declares (Ego_r ?UpdateFacingDirection / ?InitialiseActionTimes / ?SetUpCombatAnimationNotes /
+    // ?SetupCombatStrikeEvents / ?SetupCombatInterrupts@CCombatActionBase@@IAEXXZ, ?OnAnimationLoaded@CCombatActionBase@@MAEXXZ, the
+    // override of CCreatureActionBase's virtual). Out of line in retail at 0x00856B20 / 0x00856A20 / 0x00859EC0 (expanded by that row: its
+    // same-TU definition) / 0x00859A70 / 0x00858A20. Declarations only; no layout change.
+    void UpdateFacingDirection();                                        // 0x00856B20
+    void InitialiseActionTimes();                                        // 0x00856A20
+    void SetUpCombatAnimationNotes();                                    // 0x00859EC0
+    void SetupCombatStrikeEvents();                                      // 0x00859A70
+    void SetupCombatInterrupts();                                        // 0x00858A20
+    virtual void OnAnimationLoaded();                                    // 0x00859EF0
+#endif
     void ResetMeleeCombatAbilityEffects();                               // 0x00859660
     CIntelligentPointer<CThing> PTarget;                                 // +0xa8
     CIntelligentPointer<const CThing> PCameraPoint;                      // +0xb0
