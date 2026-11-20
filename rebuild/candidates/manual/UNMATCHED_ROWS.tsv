@@ -61,7 +61,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0055d810	CTCPhotojournalCapture	OnCaptionEntered	1008	parked	DIFFER(944v998)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/0055d810.cpp	original
 0055dc00	CTCPhotojournalCapture	CreateScreen	496	parked	DIFFER(502v495)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0055dc00.cpp	original
 0055e2c0	_global	CryptoMatic	816	parked	DIFFER(545v549)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0055e2c0.cpp	original
-00560bb0	CTCHeroOnlineScoreboard	GetDecryptedDocument	336	parked	DIFFER(320v321)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00560bb0.cpp	original
+00560bb0	CTCHeroOnlineScoreboard	GetDecryptedDocument	336	reserved (acctB p25N, 2026-11-20)	DIFFER(320v321)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00560bb0.cpp	original
 00560d00	CTCHeroOnlineScoreboard	CTCHeroOnlineScoreboard::ProcessLogin	1872	parked	DIFFER(1844v1860)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/00560d00.cpp	original
 0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	parked	DIFFER(830v836)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0057b43f.cpp	original
 0057d23b	_global	FrameUpdate_ApplyMorphEffect	869	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/0057d23b.cpp	original
@@ -323,13 +323,13 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00833c00	CThingAICreature	DrawPreparePrimitivesForRendering	2352	reserved (acctB p25H, 2026-11-20)	DIFFER(2296v2300)	17	rebuild/candidates/manual/pending/2026-11-20_p25_open/00833c00/00833c00.cpp	gapscan/boundary
 00837220	CThingTrackNode	UpdateFacingDirection	720	parked	codex pass24 PARKED: The third normalization setup and cross-product Z operand order differ at 0x008373EC and 0x00837419.	21	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00837220/00837220.cpp	original
 00837570	CThingTrackNode	Save	704	parked	codex pass24 PARKED: The entry cleanup-state store and last ScriptName temporary use different scheduling and stack placement.	16	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00837570/00837570.cpp	original
-00837b30	CThingStaticMeshPrimitive_837b30	DrawPreparePrimitivesForRendering	320	parked	DIFFER(313v314)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00837b30.cpp	gapscan/boundary
+00837b30	CThingStaticMeshPrimitive_837b30	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(313v314)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00837b30.cpp	gapscan/boundary
 00839420	NThingHelpers	CreateEffectOnHit	1312	parked	DIFFER(1304v1308)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00839420.cpp	original
 00839940	CThingGameObject	OnHit	5200	parked	DIFFER(5174v5195)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00839940.cpp	original
-0083b6b0	CThingStaticMeshPrimitive_83b6b0	DrawPreparePrimitivesForRendering	320	parked	DIFFER(308v309)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083b6b0.cpp	gapscan/boundary
+0083b6b0	CThingStaticMeshPrimitive_83b6b0	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(308v309)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083b6b0.cpp	gapscan/boundary
 0083c2d0	CThingSwitch	ConstructFromLevelScript	768	parked	DIFFER(760v756)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0083c2d0.cpp	original
 0083d2e0	CThingMarker	DrawPreparePrimitivesForRendering	384	parked	DIFFER(356v372)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/0083d2e0.cpp	gapscan/boundary
-0083dc80	CThingStaticMeshPrimitive_83dc80	DrawPreparePrimitivesForRendering	320	parked	DIFFER(308v309)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083dc80.cpp	gapscan/boundary
+0083dc80	CThingStaticMeshPrimitive_83dc80	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(308v309)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083dc80.cpp	gapscan/boundary
 0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	2080	parked	DIFFER(1984v1973)	10	rebuild/candidates/manual/pending/2026-11-07_linux_hand830/differ/0083e1f0.cpp	original
 008411d0	_global	LHHttp2_HandleResponse	512	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/008411d0.cpp	original
 00844600	CCreatureAction_Read	CCreatureAction_Read::PerformAction	224	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/00844600.cpp	original
