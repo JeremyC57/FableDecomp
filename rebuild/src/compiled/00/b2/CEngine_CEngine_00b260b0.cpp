@@ -15,9 +15,9 @@
 #define FABLE_RETAIL_CINITBASECLASS_VALIDATE
 #include "engine/CEngine.h"
 #include "engine/CInitBaseClass.h"
+#define FABLE_RETAIL_CSIMPLEMEMORYPOOL_FLAT_CTOR
 #include "engine/CSimpleMemoryPool.h"
 #include "engine/CIEngine.h"
-
 #include <map>
 #include <set>
 #include "fable_string.h"
@@ -147,7 +147,7 @@ extern const double InitialPreloadTime=0.0; // native122ED70 = double0
 struct NativeArray {void*Start,*Finish,*Limit;NativeArray():Start(0),Finish(0),Limit(0){}};
 struct NativeDefPointer {CDefPointeeBase*Object;NativeDefPointer():Object(0){}};
 struct PreloadStatsNative {double LastFullPreloadTime;bool LastFullPreloadTimedOut;double LastFastPreloadTime;bool LastFastPreloadTimedOut;PreloadStatsNative():LastFullPreloadTime(InitialPreloadTime),LastFullPreloadTimedOut(false),LastFastPreloadTime(InitialPreloadTime),LastFastPreloadTimedOut(false){}};
-struct SimpleMemoryPoolNative:CSimpleMemoryPool {SimpleMemoryPoolNative(unsigned long,unsigned long);}; // A5C570, field-free API for actual header
+// NF182 (q4054): FrameMemoryPool is the shared engine/CSimpleMemoryPool.h class (opt-in FABLE_RETAIL_CSIMPLEMEMORYPOOL_FLAT_CTOR), ctor A5C570.
 struct ScreenResolutionNative {long Width,Height;ScreenResolutionNative():Width(0),Height(0){}};
 struct AspectRatioNative {float Width,Height;AspectRatioNative():Width(4),Height(3){}};
 struct VideoOptionsNative {ScreenResolutionNative ScreenResolution;AspectRatioNative ScreenAspectRatio;long BitsPerPixel,RefreshRate;bool VerticalSync;long LandscapeDetail,MeshDetail,TextureDetail,ShadowQuality,EffectsQuality,Antialiasing;
@@ -156,7 +156,7 @@ struct VideoOptionsNative {ScreenResolutionNative ScreenResolution;AspectRatioNa
 struct EngineNative:CIEngineNative,NativeDeviceResetCallback {
  bool EnableWireFrame,EnableEngine,EnableLocalLights,EnableTextures;CCamera*CurrentCamera;unsigned char SceneState[0x3c-0x18];
  NativeArray PreloadCameras;PreloadStatsNative PreloadStats;
- unsigned char CameraAndFrameState[0xc0-0x68];VideoOptionsNative VideoOptions;unsigned char OffWorldState[0x118-0xf4];NativeDefPointer PEnvironmentDef,PEngineDef,PEngineVideoOptionsDefs[4];SimpleMemoryPoolNative FrameMemoryPool;
+ unsigned char CameraAndFrameState[0xc0-0x68];VideoOptionsNative VideoOptions;unsigned char OffWorldState[0x118-0xf4];NativeDefPointer PEnvironmentDef,PEngineDef,PEngineVideoOptionsDefs[4];CSimpleMemoryPool FrameMemoryPool;
  NativeArray ScratchZBuffersD24S8;long AnisotropicFilteringLevel;NativeArray RenderLayers,EngineComponents;
  virtual ~EngineNative();
  virtual bool Initialise(const CEngineInit&); // native slot2 00b26360
@@ -247,7 +247,7 @@ struct EngineNative:CIEngineNative,NativeDeviceResetCallback {
 FABLE_STATIC_ASSERT(sizeof(CInitBaseClass)==8);
 FABLE_STATIC_ASSERT(sizeof(CIEngineNative)==sizeof(CIEngine));
 FABLE_STATIC_ASSERT(offsetof(CIEngineNative,Active)==offsetof(CIEngine,Active));
-FABLE_STATIC_ASSERT(sizeof(SimpleMemoryPoolNative)==28);
+FABLE_STATIC_ASSERT(sizeof(CSimpleMemoryPool)==28);
 FABLE_STATIC_ASSERT(sizeof(EngineNative)==0x178); // natural8-byte double tail alignment; used native payload ends174
 FABLE_STATIC_ASSERT(offsetof(EngineNative,PreloadStats)==0x48);
 FABLE_STATIC_ASSERT(offsetof(EngineNative,VideoOptions)==0xc0);

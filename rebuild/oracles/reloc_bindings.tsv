@@ -1330,8 +1330,6 @@ __stricmp	00bfeba8	004fb880
 ?Erase@CRetailTree_erase00527950@@QAEXPAUnode@1@@Z	00527950	00528e90
 ??0CThing@@QAE@K@Z	004c9030	005296b0
 ??_7CThingPhysical@@6B@	01244e84	005296b0
-?Destroy@CEngineSubPrimitiveGameMesh@@QAEXXZ	006a5d50	005297d0
-?FreeSelf@CEngineSubPrimitiveGameMesh@@QAEXXZ	004c73b0	005297d0
 ?DeleteHelper@CEngineSubPrimitiveGameMesh@@QAEXXZ	004c73b0	005299a0
 ?ScalarDtor@CEngineSubPrimitiveGameMesh@@QAEXXZ	00838a00	005299a0
 ??0CThing@@QAE@J@Z	005296b0	005299c0
@@ -4796,8 +4794,6 @@ __imp__timeGetTime@0	014404b4	009e1cb0
 ?g_FablePixelFormatTable@@3PAUFablePixelFormatRecord@@A	0129ba40	009e3820
 ??_7CJoystick@@6B@	0129c0ec	009e43b0
 ?InsertDefault@EventList@@QAE?AUIterator@@U2@@Z	009e4a20	009e4470
-??0CEventRecord@@QAE@XZ	00a04410	009e45b0
-??_7CMaintainedEvent@@6B@	0129c0e0	009e45b0
 ?helper@CActiveFile@@QAEXXZ	009e4710	009e4830
 __wchdir	00bfeafe	009e4ae0
 __imp__GetLastError@0	0143fd58	009e4b70
@@ -5868,8 +5864,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?DeleteTree@CEngineTreeFilerBase@@QAEXPAUSTreeNode_00bf29e0@@@Z	00bf29e0	00bf29e0
 ?CActiveFile_sub_bf29e0@@YGXPAX@Z	00bf29e0	00bf3140
 ?ReleaseBuffer@@YGXPAX@Z	00bf29e0	00bf3160
-??0CBase_00ac1ec0@@QAE@XZ	00ac1ec0	00bf3290
-??_7CEngineDynamic3DResource@@6B@	012a81b8	00bf3290
 ?Initialise@CVertexBufferWin32Native@@QAE_NHJJKH@Z	00a63150	00bf3380
 ?ReleaseResources@CEngineVertexBufferPool@@QAEXXZ	00bf32b0	00bf3380
 ?g_00bf36a0@@3PAUGB@@A	01436ea8	00bf36a0
@@ -8432,9 +8426,6 @@ __CIacos	00bfeba2	0084cdf0
 ?RelocateData@CPatchTesselationEdgeStrip@@QAE_NPAX0@Z	00bfc590	00be65a0
 ?LowerBound@CControlMap@@QBEPBUSControlEntry@@ABW4EGameAction@@@Z	00447c80	00445cb0
 ?UpperBound@CControlMap@@QBEPBUSControlEntry@@ABW4EGameAction@@@Z	00447ce0	00445cb0
-??0CInputProcessManager@@QAE@XZ	00a0d4a0	004473a0
-??0CSavedInputEventPart@@QAE@XZ	00a04410	004473a0
-?Clear@CProcessedInput@@QAEXXZ	00a0d300	004473a0
 ?SortExpressionPairs@@YIXPAUSExpressionPair@@0USExpressionCompare@@@Z	0081e030	0081b300
 ?resize@CExpressionPairVector@@QAEXKABUSExpressionPair@@@Z	0081d920	0081b300
 ?AddTattoo@CTCHeroMorph@@QAEXPAUCThing_Retail@@@Z	0071d7c0	008981c0
@@ -18094,7 +18085,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?lbp_scalar_dtor@CInputProcessToggleViewHeroMode@@QAEXXZ	00a0d3d0	0048b6c0
 @InnerDtor_004ae0e0@4	004ae0e0	004ae300
 ?CTCSwitchableNavigation_Destruct@@YIXPAX@Z	007876d0	004d486f
-?CTCFlashOnHit_Destruct@@YIXPAX@Z	007e3420	004d62d1
 ?CTrophyDef_Destruct@@YIXPAX@Z	004d7fad	004d7f91
 ?CTCShotDefinitionThrow_Destruct@@YIXPAX@Z	007bf2b0	004d8dbc
 ?CTCShotDefinitionThrowPredictive_Destruct@@YIXPAX@Z	007bf2b0	004d8df8
@@ -19694,7 +19684,6 @@ _s_NoGroupAnimFilter_01382438	01382438	01229a10
 ??_7CTCActivationTrigger@@6B@	0123bbac	004d43b9
 ??_7CSummonableCreatureDef@@6B@	0123c3a4	004d4c3e
 ??_7CActivateQuestDef@@6B@	0123c7f4	004d5056
-??_7CTCFlashOnHit@@6B@	0123e034	004d6292
 ??_7CTCDCameraPoint@@6B@	0123ec3c	004d812a
 ??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z	004da6a9	004dd79f
 ??_7CCarryingDef@@6B@	01241194	004dd8ff
@@ -38214,11 +38203,6 @@ _time	00bfed22	008405f0
 __imp__DestroyWindow@4	01440340	009a60d0
 ??1CRenderStateManager@@UAE@XZ	00a044b0	00a0b590
 __imp__CoUninitialize@0	01440648	00a3bc20
-??0SimpleMemoryPoolNative@@QAE@KK@Z	00a5c570	00b260b0
-??_7EngineNative@@6BCIEngineNative@@@	012a0f3c	00b260b0
-??_7EngineNative@@6BNativeDeviceResetCallback@@@	012a0f30	00b260b0
-??_7NativeDeviceResetCallback@@6B@	0122de50	00b260b0
-?InitialPreloadTime@@3NB	0122ed70	00b260b0
 ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@PAVCThingCreatureBase@@ABVCCharString@@11M_N22@Z	008427e0	0093a5c0
 ??1CCreatureAction_PlayAnimationBase@@QAE@XZ	00693ef0	0093a5c0
 ?DestroyItem@CAIStateGroup_BanditSitRoundCampfire@@QAEXABVCCharString@@@Z	008fd1b0	0093a5c0
@@ -39542,5 +39526,19 @@ __beginthread	00bfed3a	0098f3a0
 ??_7CEmptyData@NScript@@6B@	012c2724	00cd4ac0
 ??_7Cjoss_test_scriptsData@NScript@@6B@	012c2730	00cd4b20
 ??_7CDanyalTestScriptsData@NScript@@6B@	012c273c	00cd4b80
+??0CInputProcessManager@@QAE@XZ	00a0d4a0	004473a0
+??_7CTCFlashOnHit@@6B@	0123e034	004d6292
+??1CTCFlashOnHit@@UAE@XZ	007e3420	004d62d1
+?FreeSelf@CThingPhysical@@QAEXXZ	004c73b0	005297d0
+??1CTCCoopSpirit@@UAE@XZ	00670090	00670c50
+??1CTCAIScratchpad@@UAE@XZ	007adaa0	007ada80
+??1CTCCreatureTintEffect@@UAE@XZ	007cf0b0	007cf390
+??_7CMaintainedEvent@@6B@	0129c0e0	009e45b0
+??1CShaderBankEntry@@UAE@XZ	00a628d0	00a628b0
+??_7EngineNative@@6BCIEngineNative@@@	012a0f3c	00b260b0
+??_7EngineNative@@6BNativeDeviceResetCallback@@@	012a0f30	00b260b0
+??_7NativeDeviceResetCallback@@6B@	0122de50	00b260b0
+?InitialPreloadTime@@3NB	0122ed70	00b260b0
+??_7CEngineDynamic3DResource@@6B@	012a81b8	00bf3290
 ??_7?$CEntityScriptBinding@VCbandit_level_cutsceneScript@NScript@@@@6B@	012f6a54	00efa4f0
 ?Alloc@Cwelcome_guy@Cbandit_level_cutsceneScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00efaa60	00efa4f0

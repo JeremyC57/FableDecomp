@@ -12,12 +12,12 @@ public:
 
 class CWideScreenMagicPauseEntities {
 public:
-    CWideScreenMagicPauseEntities(CGameScriptInterfaceBase* game);
+    CWideScreenMagicPauseEntities(CGameScriptInterfaceBase& game);
     CGameScriptInterfaceBase* Game;
 };
 
-CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities(CGameScriptInterfaceBase* game)
-    : Game(game)
+CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities(CGameScriptInterfaceBase& game)
+    : Game(&game)
 {
     Game->PauseAllNonScriptedEntities(true);
 }
@@ -25,7 +25,7 @@ CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities(CGameScriptInterfac
 int main()
 {
     CGameScriptInterfaceBase game;
-    CWideScreenMagicPauseEntities guard(&game);
+    CWideScreenMagicPauseEntities guard(game);
     if (guard.Game != &game || g_calls != 1 || !g_last) { std::printf("00cbe09a_TEST FAIL\n"); return 1; }
     std::printf("00cbe09a_TEST PASS\n");
     return 0;

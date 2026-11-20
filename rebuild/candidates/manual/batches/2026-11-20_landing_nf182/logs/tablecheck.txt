@@ -1,0 +1,5 @@
+GREW 00670090 0 -> 1 ??1CTCCoopSpirit@@UAE@XZ row 00670c50 DIFF before=['?Dtor@CTCCoopSpirit@@QAEXXZ']
+GREW 007adaa0 0 -> 1 ??1CTCAIScratchpad@@UAE@XZ row 007ada80 DIFF before=['?CTCAIScratchpad_dtor@@YIXPAVCTCAIScratchpad@@@Z']
+GREW 007cf0b0 0 -> 1 ??1CTCCreatureTintEffect@@UAE@XZ row 007cf390 DIFF before=['?Dtor@CTCCreatureTintEffect@@QAEXXZ']
+GREW 00a628d0 0 -> 1 ??1CShaderBankEntry@@UAE@XZ row 00a628b0 DIFF before=['?CShaderBankEntry_dtor@@YIXPAVCShaderBankEntry@@@Z']
+shrank [('00a04410', 3, 1), ('006a5d50', 2, 1), ('00a5c570', 2, 1), ('00ac1ec0', 2, 1)]

@@ -2,7 +2,7 @@
 // Leaf: ??0CGamePlayerInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004473A0, length 324 bytes (`ret 8`). Vtable 0x01231BDC.
 // Callees: CInputProcessManager ctor @ 0x00A0D4A0 (base), CBaseClassNonCopyable ctor @ 0x0099A2F0 (the packet file's root; file vtable
-//   0x0122D06C), CWideString ctor @ 0x0099AED0, CSavedInputEvent part ctor @ 0x00A04410, CProcessedInput part ctor
+//   0x0122D06C), CWideString ctor @ 0x0099AED0, CInputEvent ctor @ 0x00A04410 (the CSavedInputEvent's InputEvent), CProcessedInput part ctor
 //   @ 0x00A0D300, CEngine::PeekDefinitionManager @ 0x00415FBC, CGamePlayerInterface::SetControlScheme(long) @ 0x00446EF0;
 //   the front-end compile flag 0x013B8648.
 // Shape: the packet file sets Open in its constructor body (after FileName); the processed-input block constructs its four
@@ -19,10 +19,11 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
     CDiskFileWin32() { Open = false; }
     virtual void v00();
 };
-struct CSavedInputEventPart { CSavedInputEventPart(); unsigned char _body[0x60]; };   // 0x00A04410
+#include "engine/CInputEvent.h"                         // CInputEvent() 0x00A04410 ??0CInputEvent@@QAE@XZ (NF182 q4302; was a CSavedInputEventPart stand-in)
 struct CSavedInputEvent {                               // +0x724 in the interface
     unsigned char        _pad00[4];
-    CSavedInputEventPart Part;                          // +0x04
+    CInputEvent          InputEvent;                    // +0x04 (Ego_r.pdb CSavedInputEvent::InputEvent, 0x34 bytes)
+    unsigned char        _pad38[0x2c];
     bool                 Flag64;                        // +0x64
     bool                 Flag65;                        // +0x65
     CSavedInputEvent() : Flag64(false), Flag65(false) {}
@@ -73,7 +74,7 @@ class CGamePlayerInterface : public CInputProcessManager { public:
     bool                         InputEventIsLoaded;    // +0x720
     unsigned char                _pad721[3];
     CSavedInputEvent             LoadedInputEvent;      // +0x724
-    unsigned char                _pad78a[0x12];
+    unsigned char                _pad78c[0x10];
     bool                         Suspended;             // +0x79C
     void*                        PControlsDef;          // +0x7A0
     long                         ControlsDefIndex;      // +0x7A4
@@ -86,6 +87,7 @@ class CGamePlayerInterface : public CInputProcessManager { public:
     long                         CurrentEventInProcessedInput;   // +0x890
     bool                         Unknown894;            // +0x894
     CGamePlayerInterface(CMainGameComponent* component, CPlayerManager* playerManager);
+    ~CGamePlayerInterface();                            // 0x00449420's callee (out of line; NF182: keeps this TU's ??_G on retail's shape)
     void SetControlScheme(long scheme);                 // 0x00446EF0
 };
 

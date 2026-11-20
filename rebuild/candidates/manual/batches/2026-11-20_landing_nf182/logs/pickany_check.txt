@@ -1,0 +1,8 @@
+NO-OWNER-OBJ 004d62d1 0123e034 ??_7CTCFlashOnHit@@6B@
+NO-OWNER-OBJ 00bf3290 0129ef2c ??_7CIndexBuffer@@6B@
+NO-OWNER-OBJ 00bf3290 0129b860 ??_7CMovableResource@@6B@
+OK  00cbe09a -> 00cbe0b3 ??1CWideScreenMagicPauseEntities@@QAE@XZ sizes 13 13 
+manual 00bf3290 -> 00b564e0 ??1CIndexBuffer: sizes 22 22 bytes equal True relocs equal True
+manual 00bf3290 -> 00ac2070 ??_GCIndexBuffer: sizes 42 42 bytes equal True relocs equal True
+manual 00bf3290 -> 009d5110 ??_GCMovableResource: sizes 31 31 bytes equal True relocs equal True
+manual 00bf3290 -> 00bf34b0 ??_GCEngineDynamic3DResource vs owner's ?ScalarDeletingDestructor@CEngineDynamic3DResource stand-in: 30 30 bytes equal True (call targets ??1CIndexBuffer vs the owner's Dtor stand-in)

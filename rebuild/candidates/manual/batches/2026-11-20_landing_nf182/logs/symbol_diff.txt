@@ -1,0 +1,28 @@
+004473a0 new: 1
+    ??1CSavedInputEvent@@QAE@XZ
+004d6292 new: 1
+    ?ReferenceFlashOnHitConstructor@?A0x37879104@@YAXAAVCThing@@@Z
+004d62d1 new: 4
+    ??0CTCFlashOnHit@@QAE@AAVCThing@@@Z
+    ??_7CTCFlashOnHit@@6B@ TABLE:0123e034
+    ??_GCTCFlashOnHit@@UAEPAXI@Z
+    ?ReferenceFlashOnHitVtable@?A0x237f8b99@@YAXAAVCThing@@@Z
+005297d0 new: 0
+00670c50 new: 0
+007ada80 new: 0
+007cf390 new: 0
+009e45b0 new: 0
+00a628b0 new: 0
+00b260b0 new: 0
+00bf3290 new: 7
+    ??1CIndexBuffer@@UAE@XZ
+    ??1CMovableResource@@UAE@XZ
+    ??_7CIndexBuffer@@6B@ TABLE:0129ef2c
+    ??_7CMovableResource@@6B@ TABLE:0129b860
+    ??_GCEngineDynamic3DResource@@UAEPAXI@Z
+    ??_GCIndexBuffer@@UAEPAXI@Z
+    ??_GCMovableResource@@UAEPAXI@Z
+00cbe09a new: 3
+    ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z TABLE:00cbe09a
+    ??1CWideScreenMagicPauseEntities@@QAE@XZ TABLE:00cbe0b3
+    ?ReferenceWideScreenMagicPauseEntities@?A0xe97d7239@@YAXAAVCGameScriptInterfaceBase@@@Z

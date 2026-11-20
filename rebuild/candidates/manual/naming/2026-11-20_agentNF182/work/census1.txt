@@ -1,0 +1,105 @@
+q3969 007e3420 catalog= CTCFlashOnHit::~CTCFlashOnHit | src= 00/7e/CTCFlashOnHit_CTCFlashOnHit_007e3420.cpp | leaf= ??1CTCFlashOnHit@@UAE@XZ
+     ?CTCFlashOnHit_Destruct@@YIXPAX@Z 004d62d1 (1)
+q4021 006a5d50 catalog= CThingPhysical::~CThingPhysical | src= 00/6a/CThingPhysical_CThingPhysical_006a5d50.cpp | leaf= ??1CThingPhysical@@UAE@XZ
+     ?Destroy@CEngineSubPrimitiveGameMesh@@QAEXXZ 005297d0 (1)
+     ??1CThingPhysical@@UAE@XZ 00838a00 (1)
+q4048 007cf0b0 catalog= CTCCreatureTintEffect::~CTCCreatureTintEffect | src= 00/7c/CTCCreatureTintEffect_CTCCreatureTintEffect_007cf0b0.cpp | leaf= ??1CTCCreatureTintEffect@@UAE@XZ
+q4050 007adaa0 catalog= CTCAIScratchpad::~CTCAIScratchpad | src= 00/7a/CTCAIScratchpad_CTCAIScratchpad_007adaa0.cpp | leaf= ??1CTCAIScratchpad@@UAE@XZ
+q4051 00a628d0 catalog= CShaderBankEntry::~CShaderBankEntry | src= 00/a6/CShaderBankEntry_CShaderBankEntry_00a628d0.cpp | leaf= ??1CShaderBankEntry@@UAE@XZ
+q4054 00a5c570 catalog= CSimpleMemoryPool::CSimpleMemoryPool | src= 00/a5/CSimpleMemoryPool_CSimpleMemoryPool_00a5c570.cpp | leaf= ??0CSimpleMemoryPool
+     ??0CSimpleMemoryPool@@QAE@KK@Z 00a4ee10 (1)
+     ??0SimpleMemoryPoolNative@@QAE@KK@Z 00b260b0 (1)
+q4101 00670090 catalog= CTCCoopSpirit::~CTCCoopSpirit | src= 00/67/CTCCoopSpirit_CTCCoopSpirit_00670090.cpp | leaf= ??1CTCCoopSpirit@@UAE@XZ
+q4284 0099b510 catalog= CWideString::~CWideString | src= 00/99/CWideString_Destructor_0099b510.cpp | leaf= ??1CWideString@@QAE@XZ
+     @dtorA_0099b510@4 00403510 (1)
+     @SubMemberDtor@4 00412020 (1)
+     @NodeSub_Dtor@4 004407b0 (1)
+     @Symbol_dtor@4 0047b880 (1)
+     ?m@DV@@QAEXXZ 004a9140 (1)
+     @FableMemberDtor_006568bb@4 006568bb (1)
+     ??1CWideString@@QAE@XZ 00406e30 009979e0 (2)
+     ??1CWideString@N006bebf0@@QAE@XZ 006bebf0 (1)
+     ?Cleanup_0099b510@SubObject@@QAEXXZ 004857e0 (1)
+q4302 00a04410 catalog= CInputEvent::CInputEvent | src= 00/a0/CInputEvent_CInputEvent_00a04410.cpp | leaf= ??0CInputEvent@@QAE@XZ
+     ??0CInputEvent@@QAE@XZ 0041e10d (1)
+     ??0CEventRecord@@QAE@XZ 009e45b0 (1)
+     ??0CSavedInputEventPart@@QAE@XZ 004473a0 (1)
+q4546 0099aed0 catalog= CWideString::CWideString | src= 00/99/CWideString_CWideString_0099aed0.cpp | leaf= ??0CWideString@@QAE@XZ
+     ??0CNameString_0099aed0@@QAE@XZ 004aecf0 (1)
+     ?Initialise@CClass_005926c0@@QAEXXZ 005926c0 (1)
+     ??0CBase_005b15c2@@QAE@XZ 005b15c2 (1)
+     ??0CBase_005b1fbc@@QAE@XZ 005b1fbc (1)
+     @FableWideStringConstruct_0099AED0@8 00999230 (1)
+     ?Release@SubA@@QAE_JXZ 009bde70 (1)
+     ??0CWideString@@QAE@XZ 009979e0 (1)
+q4551 00a62fb0 catalog= CVertexShader::CVertexShader | src= 00/a6/CVertexShader_CVertexShader_00a62fb0.cpp | leaf= ??0CVertexShader@@QAE@XZ
+     ??0CVertexShader@@QAE@XZ 00b52250 (1)
+q4554 00ac1ec0 catalog= CIndexBuffer::CIndexBuffer | src= 00/ac/CIndexBuffer_CIndexBuffer_00ac1ec0.cpp | leaf= ??0CIndexBuffer@@QAE@XZ
+     ??0CBase_00ac1ec0@@QAE@XZ 00bf3290 (1)
+     ??0CIndexBuffer@@QAE@XZ 00bda360 (1)
+q4568 00c1eb10 catalog= CVtable_012b3404::~CVtable_012b3404 | src= 00/c1/global_operatornew_00c1eb10.cpp | leaf= ?Op@C@@QAEXXZ
+     ??1CUIComponentBase_00c1e180@@QAE@XZ 00c1e180 (1)
+     ??1CVtable_012b3404@@UAE@XZ 00c1d8b0 (1)
+q4571 00c4cf40 catalog= CVtable_012B8778::~CVtable_012B8778 | src= 00/c4/CVtable012B8778_CVtable012B8778_00c4cf40.cpp | leaf= ??1CVtable_012B8778
+     ??1CAIStateGroupBase_00c3cf40@@QAE@XZ 00c3cf40 (1)
+     ?dtor@RM@@QAEXXZ 00c3d7b0 (1)
+     ??1CListNode@@UAE@XZ 00c3f3d0 (1)
+     ??1CVtable_012B8778@@UAE@XZ 00c3c5c0 (1)
+q4620 006e7b60 catalog= CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase | src= 00/6e/CScriptGameResourceObjectMovieBase_CScriptGameResourceObjectMovieBase_006e7b60.cpp | leaf= ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+     ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ 00ddd030 (1)
+     ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 00d44cb0 (1)
+q4621 007e72a0 catalog= CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase | src= 00/7e/CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_007e72a0.cpp | leaf= ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+     ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 00cd3da4 00eb6a00 (2)
+     ?Construct@CScriptedThingStorage@@QAEXXZ 00ddd030 (1)
+     ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ 00dbeb20 (1)
+q4630 00cbe09a catalog= CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities | src= 00/cb/CWideScreenMagicPauseEntities_CWideScreenMagicPauseEntities_00cbe09a.cpp | leaf= ??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z
+     ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z 00f14a90 (1)
+q4891 00c207f0 catalog= CSoundEvent::~CSoundEvent | src= 00/c2/CSoundEvent_CSoundEvent_00c207f0.cpp | leaf= ??1CSoundEvent@@QAE@XZ
+     ??1SEntry_00c207f0@@QAE@XZ 00c23ba0 (1)
+     ??1CSoundEvent@@QAE@XZ 00c23ba0 (1)
+     ??1SEntry_00c239b0@@QAE@XZ 00c239b0 (1)
+q4892 00c21ba0 catalog= CSoundEvent::CSoundEvent | src= 00/c2/CScriptModuleBase_CScriptModuleBasector_00c21ba0.cpp | leaf= -
+     ??0SEntry_00c239b0@@QAE@XZ 00c239b0 (1)
+q4900 00c26400 catalog= CStreamBuffer::~CStreamBuffer | src= 00/c2/E2_E2_00c26400.cpp | leaf= ?M@C00c26400@@QAEXXZ
+     ??1CEntry_00c12140@@QAE@XZ 00c12140 (1)
+     ??1CItem_00c26de0@@QAE@XZ 00c26de0 (1)
+     ??1CStreamBuffer@@QAE@XZ 00c22080 (1)
+q4902 00c25ca0 catalog= CSampleRef::~CSampleRef | src= 00/c2/E2_E2_00c25ca0.cpp | leaf= ?M@C00c25ca0@@QAEXXZ
+     ??1CSampleRef@@QAE@XZ 00c207f0 (1)
+q5031 009f5690 catalog= CInputEventPackage::CInputEventPackage | src= 00/9f/CInputEventPackage_CInputEventPackage_009f5690.cpp | leaf= ??0CInputEventPackage@@QAE@AAVCAFile@@@Z
+q5057 00c222d0 catalog= CSoundEventSet::CSoundEventSet | src= 00/c2/CSoundEventSet_CSoundEventSet_00c222d0.cpp | leaf= ??0CSoundEventSet@@QAE@JJJ@Z
+     ??0CSoundEventSet@@QAE@MMM@Z 00c11d00 (1)
+q5081 004a6ab0 catalog= CWorld::~CWorld | src= 00/4a/CWorld_CWorld_004a6ab0.cpp | leaf= ??1CWorld@@UAE@XZ
+q5185 00c38b20 catalog= CActivationReceptor_00c38b20::~CActivationReceptor_00c38b20 | src= 00/c3/CActivationReceptor_CActivationReceptor00c38b20dtor_00c38b20.cpp | leaf= -
+     ??1CMeshPart_00c2d2f0@@QAE@XZ 00c2d2f0 (1)
+     ??1CElement_00c2d3b0@@QAE@XZ 00c2d3b0 (1)
+     ??1CActivationReceptor_00c38b20@@QAE@XZ 00c2d3b0 (1)
+q5189 00c62920 catalog= CPKDecompressedStream::CPKDecompressedStream | src= 00/c6/CPKDecompressedStream_CPKDecompressedStream_00c62920.cpp | leaf= ??0CPKDecompressedStream@@QAE@PAVPKCFileManager@@PBGABUPKCBufferedReaderParams@@@Z
+     ??0CPKDecompressedStream@@QAE@PAVPKCFileManager@@PBGABUPKCBufferedReaderParams@@@Z 00c47f10 (1)
+q5192 00c16900 catalog= _unattributed::CIntelligentPointer_00c16900 | src= 00/c1/unattributed_CIntelligentPointer00c16900_00c16900.cpp | leaf= -
+     ??4CIntelligentPointer_00c48770@@QAEAAU0@ABU0@@Z 00c48770 (1)
+     ??0CIntelligentPointer_00c16900@@QAE@ABU0@@Z 00c47f10 (1)
+q5193 00c266e0 catalog= CNavigationTask_012b3fdc::CNavigationTask_012b3fdc | src= 00/c2/CNavigationTask012b3fdc_CNavigationTask012b3fdc_00c266e0.cpp | leaf= ??0CNavigationTask_012b3fdc
+q5209 00a229e0 catalog= CRightHandedSet::CRightHandedSet | src= 00/a2/CRightHandedSet_CRightHandedSet_00a229e0.cpp | leaf= ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z
+     ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z 00723760 (1)
+     ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z 006a5d90 (1)
+q6161 00c4b300 catalog= PKCBufferedReader::PKCBufferedReader | src= 00/c4/PKCBufferedReader_PKCBufferedReader_00c4b300.cpp | leaf= ??0PKCBufferedReader@@QAE@PAXABUSStreamSegment@@@Z
+     ??0CStreamReader@@QAE@PAXABUSStreamSegment@@@Z 00c88780 (1)
+     ??0PKCBufferedReader@@QAE@PAXABUPKCBufferedReaderParams@@@Z 00c3aac0 (1)
+q6196 00ad4a70 catalog= QuadricOptimiserInternals::CUniqueVertex::~CUniqueVertex | src= 00/ad/CTwoLongSets_CTwoLongSets_00ad4a70.cpp | leaf= ??1CTwoLongSets
+     ??1Element@N00ad7e80@@QAE@XZ 00ad7e80 (1)
+     ??1CUniqueVertex@QuadricOptimiserInternals@@QAE@XZ 00ad84d0 (1)
+q6204 00beb490 catalog= CWaterPatchMesh::CWaterPatchMesh | src= 00/be/CWaterPatchMesh_CWaterPatchMesh_00beb490.cpp | leaf= ??0CWaterPatchMesh@@QAE@PAVCEngineLandscapeMap@@PAVCDataInputStream@@PBVC2DCoordI@@@Z
+     ??0CWaterPatchMesh_Methods@@QAE@PAVCEngineLandscapeMap@@PAVCDataInputStream@@PBVC2DCoordI@@@Z 00bf5a30 (1)
+q6224 00dfde30 catalog= CRetailVector_CScriptThing_Retail_00dfde30::CRetailVector_CScriptThing_Retail_00dfde30 | src= 00/df/CRetailVectorCScriptThingRetail00dfde30_CRetailVectorCScriptThingRetail00dfde30_00dfde30.cpp | leaf= -
+q6930 00cb1210 catalog= CBaseList::CNodeCache::~CNodeCache | src= 00/cb/CBaseListCNodeCache_CNodeCache_00cb1210.cpp | leaf= ??1CNodeCache@CBaseList@@QAE@XZ
+q6932 00c162a0 catalog= std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&> | src= 00/c1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c162a0.cpp | leaf= -
+q11796 00a03b30 catalog= CInputEvent::~CInputEvent | src= 00/a0/CInputEvent_CInputEvent_00a03b30.cpp | leaf= ??1CInputEvent@@QAE@XZ
+     ??1CInputEvent@@QAE@XZ 0041e10d (1)
+q11863 00642a60 catalog= CResourceHolder_00642a60::~CResourceHolder_00642a60 | src= 00/64/CResourceHolder00642a60_CResourceHolder00642a60_00642a60.cpp | leaf= ??1CResourceHolder_00642a60@@QAE@XZ
+     ??1CMinimapData@@QAE@XZ 0082cd80 (1)
+q11915 00418dca catalog= CMainGameComponent::CMainGameComponent | src= 00/41/CMainGameComponent_CMainGameComponent_00418dca.cpp | leaf= ??0CMainGameComponent
+     ??0CMainGameComponent@@QAE@PAVCGame@@ABVCMainGameComponentInit@@@Z 00412f90 (1)
+     ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z 00496cf0 (1)
+q12030 00c3f490 catalog= CSoftwareVoice::~CSoftwareVoice | src= 00/c3/CVtable012b5c60_CVtable012b5c60_00c3f490.cpp | leaf= ??1CVtable_012b5c60
+     ??1CTreeNodeBase_00c55130@@QAE@XZ 00c55130 (1)

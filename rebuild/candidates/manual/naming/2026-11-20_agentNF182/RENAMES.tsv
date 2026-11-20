@@ -1,0 +1,14 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004D62D1	CTCFlashOnHit	`scalar_deleting_destructor'	??_GCTCFlashOnHit@@UAEPAXI@Z	CTCFlashOnHit::`scalar_deleting_destructor'	?CTCFlashOnHit_ScalarDeletingDestructor@@YIPAXPAXHI@Z	compiler-generated ??_G: slot 0 of the CTCFlashOnHit vtable 0x0123E034 (RTTI .?AVCTCFlashOnHit@@, rtti-vtables.tsv); calls ??1CTCFlashOnHit@@UAE@XZ 0x007E3420 (Ego_r.pdb + FableWin.pdb; the landed self row defines that leaf). Re-authored on engine/CTCFlashOnHit.h (opt-in FABLE_RETAIL_CTCFLASHONHIT_DTOR) with the 0x00BB1740 scaffolding; RELOCATION_MATCH PASS. No landed row binds the old leaf (source grep, reloc_bindings)
+0x00CBE09A	CWideScreenMagicPauseEntities	CWideScreenMagicPauseEntities	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities	??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z	Ego_r.pdb 0x00C9EC04 + FableWin.pdb 0x0359FD38 (by reference); engine/CWideScreenMagicPauseEntities.h declares it inline; all 9 landed referencers include that header and bind it (0x00CBF6DC verified by compile + objdump; the entry note that it binds PAV is stale). Leaf-only self rename: re-authored onto the shared header with 0x00BB1740-pattern scaffolding (pick-any COMDAT, as the includers emit it); MATCH PASS; test respelled to the reference parameter (PassPattern kept)
+# Section 2
+0x004D62D1	?CTCFlashOnHit_Destruct@@YIXPAX@Z	??1CTCFlashOnHit@@UAE@XZ	0x007E3420
+0x005297D0	?Destroy@CThingPhysical@@QAEXXZ	??1CThingPhysical@@UAE@XZ	0x006A5D50
+0x007CF390	?Dtor@CTCCreatureTintEffect@@QAEXXZ	??1CTCCreatureTintEffect@@UAE@XZ	0x007CF0B0
+0x007ADA80	?CTCAIScratchpad_dtor@@YIXPAVCTCAIScratchpad@@@Z	??1CTCAIScratchpad@@UAE@XZ	0x007ADAA0
+0x00A628B0	?CShaderBankEntry_dtor@@YIXPAVCShaderBankEntry@@@Z	??1CShaderBankEntry@@UAE@XZ	0x00A628D0
+0x00670C50	?Dtor@CTCCoopSpirit@@QAEXXZ	??1CTCCoopSpirit@@UAE@XZ	0x00670090
+0x00B260B0	??0SimpleMemoryPoolNative@@QAE@KK@Z	??0CSimpleMemoryPool@@QAE@KK@Z	0x00A5C570
+0x009E45B0	??0CEventRecord@@QAE@XZ	??0CInputEvent@@QAE@XZ	0x00A04410
+0x004473A0	??0CSavedInputEventPart@@QAE@XZ	??0CInputEvent@@QAE@XZ	0x00A04410
+0x00BF3290	??0CBase_00ac1ec0@@QAE@XZ	??0CIndexBuffer@@QAE@XZ	0x00AC1EC0

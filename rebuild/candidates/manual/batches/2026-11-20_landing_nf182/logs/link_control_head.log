@@ -1,0 +1,6 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_00415c30.obj : error LNK2005: "public: __thiscall CDiskFileWin32::CDiskFileWin32(void)" (??0CDiskFileWin32@@QAE@XZ) already defined in head_004473a0.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 172 LNK2001 + 28 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

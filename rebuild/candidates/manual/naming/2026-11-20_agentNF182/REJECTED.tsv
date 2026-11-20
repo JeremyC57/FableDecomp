@@ -1,0 +1,3 @@
+entry	address	claim	reason
+q4568	0x00C1EB10	??1CVtable_012b3404@@UAE@XZ	placeholder name (vtable address), one source (chunk 725 NAME_FIXES); no PDB / RTTI / string names the class; a descriptive name needs the behaviour of the whole vtable family (0x012B32A0 / 0x012B33A4 / 0x012B3404): not attempted
+q4571	0x00C4CF40	??1CVtable_012B8778@@UAE@XZ	superseded: GameCODA 2.10 SDK ??1CCodaObject@@UAE@XZ (NF175 NAME_FIXES, byte comparison against CODAApi.lib Object.obj)
