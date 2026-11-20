@@ -24,11 +24,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf195)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf195), B's b12 /
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf196)
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf196), B's b12 /
   reports_b4 rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, header opt-ins, advisor calls and checks.
-- Agents running at the time of writing: NF196 (NF191's returned partial families), NF197 and NF198 (remaining queue, 50 each
-  in queue order; libpk / GameCODA excluded). Slices in `$S/w22/agentNF19x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf18x / nf19x lines). mkagent takes
+- Agents running at the time of writing: NF197, NF198, NF199 (remaining queue, 50 each in queue order; libpk / GameCODA
+  excluded). Slices in `$S/w22/agentNF19x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf18x / nf19x lines). mkagent takes
   `MAX=<n>` to cap a slice. At landing, check each hand-back row's lock owner (GOTCHAS nf193: an agent drafted a row another agent held).
 - New rules (EXTRA_RULES 2026-11-20, advisor decisions under the owner's delegation): explicit-instantiation scaffolding for private
   members; a static's initializer / atexit-destructor pair may land with its known LNK2005; a `_quarantine/` header is not a shared
