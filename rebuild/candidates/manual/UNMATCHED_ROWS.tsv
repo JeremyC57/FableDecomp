@@ -254,7 +254,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00795300	CTCDivineWrath	FrameUpdate	9312	parked	acctC round six: round 6 final (2026-11-16): DIFFER(9291v9268); latest draft 00795300.cpp + NOTES.md in the folder (grep the ad	3	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE10/00795300.cpp	original
 007981b0	_global	StdVector_ExpandAndCopy_CBaseIntelligentPointer	352	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/007981b0.cpp	original
 0079a890	CTCSummonSpell	IsValidTeleportPos	512	parked	DIFFER(497v508)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0079a890.cpp	original
-0079d360	CTCBulletTime	CTCBulletTime	1120	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1047v1115)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0079d360.cpp	original
 0079deb0	CTCPhysicalShieldSpell	PlayEffect	928	parked	DIFFER(921v925)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0079deb0.cpp	original
 0079e5f0	CTCPhysicalShieldSpell	CTCPhysicalShieldSpell	928	parked	DIFFER(892v916)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0079e5f0.cpp	original
 0079f970	CLightningBeam	UpdatePositions	1056	parked	DIFFER(8v1052)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0079f970.g3.cpp	original

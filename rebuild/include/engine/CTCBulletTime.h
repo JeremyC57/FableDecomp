@@ -23,7 +23,17 @@ namespace NParticleEngine { class CParticleEmitter; }
 class CSpecialAbilitiesBulletTimeDef;
 class CThing;
 #endif
+#ifdef FABLE_RETAIL_CTCBULLETTIME_CTOR
+// Opt-in (hand3c3, row 0x0079D360 ??0CTCBulletTime@@QAE@AAVCThing@@@Z; needs _MEMBERS + _PLAYEFFECT): the constructor, and the three
+// members it constructs in their Ego_r.pdb types in place of the byte arrays (same offsets and sizes, asserted below):
+// DisplacementEffectPrimitive CEnginePrimitiveHandle +0x18 (0x0079D387 `call CBaseClass::CBaseClass` then vtable 0x0122F598),
+// PItemRemoved / HitCreatureBlur CIntelligentPointer<CThing> +0x3C / +0x44 (vtable 0x01238C6C, SetPItem(0)).
+#include "engine/CEnginePrimitiveHandle.h"
+#endif
 class CTCBulletTime : public CTCBase {
+#if defined(FABLE_RETAIL_CTCBULLETTIME_CTOR) && !defined(FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23)
+public: CTCBulletTime(CThing&);                                          // 0x0079D360
+#endif
 #ifdef FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23
  // Retail opt-in (Codex pass23): both original PDB virtual FrameUpdate and typed intelligent blur target.
 public:CTCBulletTime(CThing&);virtual void FrameUpdate();
@@ -49,7 +59,11 @@ public:                                                  // members public as in
     long                      BulletTimeRemainingTicks;      // +0x0c
     long                      BulletTimeAbilityLevel;        // +0x10
     CEnginePrimitive2DSprite* DisplacementMask;              // +0x14
+#ifdef FABLE_RETAIL_CTCBULLETTIME_CTOR
+    CEnginePrimitiveHandle    DisplacementEffectPrimitive;   // +0x18
+#else
     unsigned char             DisplacementEffectPrimitive[0x8]; // +0x18 CEnginePrimitiveHandle
+#endif
 #ifdef FABLE_RETAIL_CTCBULLETTIME_PLAYEFFECT
     CDefPointer<const CSpecialAbilitiesBulletTimeDef> PDef;  // +0x20
 #else
@@ -60,11 +74,16 @@ public:                                                  // members public as in
     float                     m_fDuration;                   // +0x2c
     CIntelligentPointer<NParticleEngine::CParticleEmitter> m_tpLoopingEffect;   // +0x30
     unsigned long             LoopSound;                     // +0x38
+#ifdef FABLE_RETAIL_CTCBULLETTIME_CTOR
+    CIntelligentPointer<CThing> PItemRemoved;                // +0x3c
+    CIntelligentPointer<CThing> HitCreatureBlur;             // +0x44
+#else
     unsigned char             PItemRemoved[0x8];             // +0x3c CIntelligentPointer<CThing>
 #ifdef FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23
     CIntelligentPointer<CThing> HitCreatureBlur;
 #else
     unsigned char             HitCreatureBlur[0x8];          // +0x44 CIntelligentPointer<CThing>
+#endif
 #endif
     void*                     RadialBlurKey;                 // +0x4c
     void*                     ScreenFilterKey;               // +0x50
@@ -105,6 +124,11 @@ FABLE_STATIC_ASSERT_AT(96, offsetof(CTCBulletTime, LoopSound) == 0x38);
 FABLE_STATIC_ASSERT_AT(97, offsetof(CTCBulletTime, ScreenFilterKey) == 0x50);
 FABLE_STATIC_ASSERT_AT(98, offsetof(CTCBulletTime, Pausable) == 0x54);
 FABLE_STATIC_ASSERT_AT(99, offsetof(CTCBulletTime, Paused) == 0x55);
+#ifdef FABLE_RETAIL_CTCBULLETTIME_CTOR
+FABLE_STATIC_ASSERT_AT(100, offsetof(CTCBulletTime, DisplacementEffectPrimitive) == 0x18);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CTCBulletTime, PItemRemoved) == 0x3c);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CTCBulletTime, HitCreatureBlur) == 0x44);
+#endif
 #endif
 
 #else

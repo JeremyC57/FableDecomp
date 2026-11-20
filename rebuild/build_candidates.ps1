@@ -401282,6 +401282,13 @@ $catalog = @(
         TestSource = '00/a2/global_GFFastArcCos_00a22530_test.cpp'
         PassPattern = '00a22530_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0079d360'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_CTCBulletTime_0079d360.cpp'
+        TestSource = '00/79/CTCBulletTime_CTCBulletTime_0079d360_test.cpp'
+        PassPattern = '0079d360_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
