@@ -216,7 +216,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	parked	DIFFER(1092v1146)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0075ddf0.cpp	original
 00760020	_global	IsLineIntersectingWithOthersInList	368	parked	DIFFER(367v360)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/00760020.cpp	original
 00760190	_global	IsTriangleWithPointsInside	352	parked	DIFFER(324v340)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand478/differ/00760190.cpp	original
-007602f0	NShape	IsShapeConvex	1136	reserved (acctB p25J, 2026-11-20)	DIFFER(1123v1126)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/007602f0.cpp	original
+007602f0	NShape	IsShapeConvex	1136	reserved (acctB p25J, 2026-11-20)	DIFFER(1125v1126)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/007602f0/007602f0.cpp	original
 00762620	NShape::CShape	StatOnSerialise	1168	parked	DIFFER(1182v1160)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00762620.cpp	original
 00763060	_global	Polygon_GeneratePath_WithCirculation	1152	reserved (acctB p25J, 2026-11-20)	DIFFER(1143v1146)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00763060.cpp	original
 007634e0	_global	CPatchTesselation_GenerateTriangles	1328	parked	DIFFER(623v627)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/007634e0.cpp	original
