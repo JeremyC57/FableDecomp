@@ -1,22 +1,34 @@
-// GFFastArcCos(float cosine) -- arc cosine as a fraction of a full turn, linearly interpolated in the 1025-step acos table
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction inline-asm (no control flow) + the Retail-asm evidence line
-// Retail-asm: 0x00A2254D `fstp [esp+4]` / 0x00A22551 `fld dword ptr [esp+4]` + 0x00A22555 `fistp dword ptr [esp]` -- the engine's inline-assembly float-to-long helper (the (c+1)*512.5 - 0.5 argument stored to its by-value copy in the frame and reloaded, a bare dword fistp into the result word; same helper as GFFastSin 0x00A147E0). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline-asm.
-// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
+// GFFastArcCos(float value) -- arc cosine as a fraction of a full turn, linearly interpolated in the 1026-entry arc-cosine table
 // Leaf: ?GFFastArcCos@@YIMM@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00A22530, 88 bytes, `ret 4` (__fastcall). No direct callers (inlined at its users).
-//   Name from the FableWin PDB (`?GFFastArcCos@@YIMM@Z`); the catalog's "Math_InterpolateTableLookup" is descriptive.
-// Globals: arc-cosine table 0x013CB530 (1025 floats, acos(k*2/1025 - 1), filled at 0x00A0DBF8 through the _CIacos
-//   import), 512.5f 0x0129CD1C, 1.0f 0x0122DED8, 0.5f 0x0122F59C, 1/(2pi) 0x01237F08 (the result is in turns).
-// Shape: no index mask (the input is assumed within [-1, 1]); the lerp result is scaled by 1/(2pi).
-extern float g_ArcCosTable[1026];       // 0x013CB530: acos(k*2/1025 - 1), k = 0..1024
-
-// the engine's inline-assembly float-to-long helper (round to nearest, the FPU default); expanded in place as a __forceinline
+// Flags: none
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A22530, 88 bytes, __fastcall with the float on the stack, `ret 4`. No direct caller in
+//   Fable.exe (expanded at its users); this is the out-of-line copy of the maths-header inline.
+// Retail-asm: 0x00A2254D `fstp dword ptr [esp+4]` / 0x00A22551 `fld dword ptr [esp+4]` / 0x00A22555 `fistp dword ptr [esp]` -- the
+//   engine's inline-assembly float-to-long helper, through the shared engine/GFFloatToLongNear.h (a bare dword fistp: `(long)x`
+//   gives __ftol2, /QIfist `fistp qword`). This row carries no asm of its own.
+// Identity: FableWin.pdb ?GFFastArcCos@@YIMM@Z (0x02F30710) / Ego_d.pdb GFFastArcCos (debug length 443, a header: file id 408).
+// Shape: Ego_d.pdb's line table (lines 234..243) and locals (value; pos, index, interp, result), statement for statement: 235 pos
+//   (24 debug bytes), 236 the nearest-integer index (27), 237 interp (9), 238 a debug-only assert (283), 239 the interpolation (35),
+//   241 `result *= 1 / 2pi` (12), 242 the return (3). One text with the copies the animation rows expand (0x00A4D770, 0x00A4D920,
+//   0x00A52760, 0x00A53860, 0x00A4C1F0).
+// Inferred: the float cast in `float pos = (float)((value + 1.0f) * 512.5f);`. Ego_d's line 235 is 24 bytes where the uncast
+//   statement is 18 at /Od, and row 0x00A4D770 CalcLocalTransformationsRelative needs it (measurements in that row's header).
+//   Byte-neutral here: this row is RELOCATION_MATCH with and without the cast.
+// Re-port (audit 2026-11-20, with row 0x00A4D770): the landed text was the October one-expression form (`cosine = (cosine + 1.0f)
+//   * 512.5f; ... return (...) * 0.15915494f;`) on the made-up table name g_ArcCosTable; the table is Ego_d.pdb's public
+//   ?GFastArcCosTable@@3PAMA.
+// Globals: GFastArcCosTable 0x013CB530 (acos(k * 2 / 1025 - 1), filled at 0x00A0DBF8); 1.0f 0x0122DED8, 512.5f 0x0129CD1C, 0.5f
+//   0x0122F59C, 1 / 2pi 0x01237F08.
+#include "fable_compiler.h"
 #include "engine/GFFloatToLongNear.h"
+extern float GFastArcCosTable[1026];    // 0x013CB530 ?GFastArcCosTable@@3PAMA (acos(k * 2 / 1025 - 1), k = 0..1025)
 
-float __fastcall GFFastArcCos(float cosine)
+float __fastcall GFFastArcCos(float value)
 {
-    cosine = (cosine + 1.0f) * 512.5f;
-    long i = GFFloatToLongNear(cosine - 0.5f);
-    float frac = cosine - (float)i;
-    return ((1.0f - frac) * g_ArcCosTable[i] + frac * g_ArcCosTable[i + 1]) * 0.15915494f;
+    float pos = (float)((value + 1.0f) * 512.5f);
+    long index = GFFloatToLongNear(pos - 0.5f);
+    float interp = pos - index;
+    float result = (1.0f - interp) * GFastArcCosTable[index] + interp * GFastArcCosTable[index + 1];
+    result *= 0.15915494f;
+    return result;
 }

@@ -1,0 +1,18 @@
+diff --git a/rebuild/include/engine/CTCDExperienceOrb.h b/rebuild/include/engine/CTCDExperienceOrb.h
+index 8db9538ba..c2800c4e8 100644
+--- a/rebuild/include/engine/CTCDExperienceOrb.h
++++ b/rebuild/include/engine/CTCDExperienceOrb.h
+@@ -21,6 +21,13 @@ class CTCDExperienceOrb:public CTCDriverBase {public:
+ public: virtual void OnInitialActivate();
+ private: const CExperienceDef& GetDef() const { return *PDef; }
+ #endif
++#ifdef FABLE_RETAIL_CTCDEXPERIENCEORB_FRAMEUPDATE
++// Opt-in (hand3c3, row 0x0077A430 CTCDExperienceOrb::FrameUpdate): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?FrameUpdate@CTCDExperienceOrb@@UAEXXZ
++// (the CTCBase slot 9 override) and the private ?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z (FableWin 0x01F58660,
++// Ego_d; retail 0x0077A130, `ret 4`: FrameUpdate pushes the touching orb, 0x0077A6E0). Declarations only: no layout change.
++public: virtual void FrameUpdate();
++private: void CombineWithExperienceOrb(CThing&);                          // 0x0077A130
++#endif
+ private:CDefPointer<const CExperienceDef>PDef;long ExperiencePoints,CombinationImmunityTimer,LifeTimer;bool DecayOverTime,PickedUp;
+ #ifdef FABLE_RETAIL_CTCDEXPERIENCEORB_DRIVERSLOTS
+ // agentFAM13 (2026-11-12): CTCDriverBase virtuals this driver overrides but this declaration lacks (TLC vtable slot 28 IsDriverType,

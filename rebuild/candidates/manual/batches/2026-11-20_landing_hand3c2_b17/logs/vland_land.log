@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00a4d770   RELOCATION_MATCH PASS   CalcLocalTransformationsRelative
+00a4d920   RELOCATION_MATCH PASS   C3DAnimation2::CalcLocalBoneTransformationRelative
+00a52760   RELOCATION_MATCH PASS   C3DAnimationSequenceData::InlineGetKeyframeInterpolate
+00a53860   RELOCATION_MATCH PASS   C3DAnimationSequence::InlineGetKeyframeInterpolate
+00a4c1f0   RELOCATION_MATCH PASS   C3DAnimationSequenceData::GetKeyframeInterpolate
+00a22530   RELOCATION_MATCH PASS   GFFastArcCos
+
+WINS: 6
+  00a4d770 RELOCATION_MATCH C3DAnimation2::?CalcLocalTransformationsRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+  00a4d920 RELOCATION_MATCH C3DAnimation2::?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+  00a52760 RELOCATION_MATCH C3DAnimationSequenceData::?InlineGetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@KM@Z
+  00a53860 RELOCATION_MATCH C3DAnimationSequence::?InlineGetKeyframeInterpolate@C3DAnimationSequence@@QBEXAAVC3DKeyframe@@KM@Z
+  00a4c1f0 RELOCATION_MATCH C3DAnimationSequenceData::?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@KM@Z
+  00a22530 RELOCATION_MATCH _global::?GFFastArcCos@@YIMM@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  C3DAnimation2_CalcLocalTransformationsRelative_00a4d770
+  C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920
+  C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760
+  C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860
+  C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0
+  global_GFFastArcCos_00a22530

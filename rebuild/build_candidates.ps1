@@ -309256,13 +309256,6 @@ $catalog = @(
         PassPattern = '00a14840_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00a22530'
-        Module = '_global'
-        Source = '00/a2/global_GFFastArcCos_00a22530.cpp'
-        TestSource = '00/a2/global_GFFastArcCos_00a22530_test.cpp'
-        PassPattern = '00a22530_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00af8d50'
         Module = '_global'
         Source = '00/af/global_GFPackFloat_00af8d50.cpp'
@@ -395942,13 +395935,6 @@ $catalog = @(
         PassPattern = '00a12ee0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00a4d920'
-        Module = 'C3DAnimation2'
-        Source = '00/a4/C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920.cpp'
-        TestSource = '00/a4/C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920_test.cpp'
-        PassPattern = '00a4d920_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00a4e300'
         Module = 'C3DAnimation2'
         Source = '00/a4/C3DAnimation2_GetDeltaMovement_00a4e300.cpp'
@@ -401064,27 +401050,6 @@ $catalog = @(
         PassPattern = '009acee0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00a4c1f0'
-        Module = 'C3DAnimationSequenceData'
-        Source = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0.cpp'
-        TestSource = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0_test.cpp'
-        PassPattern = '00a4c1f0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a52760'
-        Module = 'C3DAnimationSequenceData'
-        Source = '00/a5/C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760.cpp'
-        TestSource = '00/a5/C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760_test.cpp'
-        PassPattern = '00a52760_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a53860'
-        Module = 'C3DAnimationSequence'
-        Source = '00/a5/C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860.cpp'
-        TestSource = '00/a5/C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860_test.cpp'
-        PassPattern = '00a53860_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '009fd9b0'
         Module = 'CGraphicDataBank'
         Source = '00/9f/CGraphicDataBank_LoadVolumeGraphic_009fd9b0.cpp'
@@ -401267,6 +401232,55 @@ $catalog = @(
         Source = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60.cpp'
         TestSource = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60_test.cpp'
         PassPattern = '00789a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077a430'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_FrameUpdate_0077a430.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_FrameUpdate_0077a430_test.cpp'
+        PassPattern = '0077a430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4d770'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_CalcLocalTransformationsRelative_00a4d770.cpp'
+        TestSource = '00/a4/C3DAnimation2_CalcLocalTransformationsRelative_00a4d770_test.cpp'
+        PassPattern = '00a4d770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4d920'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920.cpp'
+        TestSource = '00/a4/C3DAnimation2_CalcLocalBoneTransformationRelative_00a4d920_test.cpp'
+        PassPattern = '00a4d920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a52760'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a5/C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760.cpp'
+        TestSource = '00/a5/C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760_test.cpp'
+        PassPattern = '00a52760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a53860'
+        Module = 'C3DAnimationSequence'
+        Source = '00/a5/C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860.cpp'
+        TestSource = '00/a5/C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860_test.cpp'
+        PassPattern = '00a53860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4c1f0'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0.cpp'
+        TestSource = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0_test.cpp'
+        PassPattern = '00a4c1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a22530'
+        Module = '_global'
+        Source = '00/a2/global_GFFastArcCos_00a22530.cpp'
+        TestSource = '00/a2/global_GFFastArcCos_00a22530_test.cpp'
+        PassPattern = '00a22530_TEST PASS'
     }
 )
 

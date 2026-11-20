@@ -118,6 +118,11 @@ private:
 // Original Ego_r/FableWin TPI and module916 call sites; private evidence in00ba115c.
  bool ContainsCloth()const{return ClothFlag;}
 #endif
+#ifdef FABLE_RETAIL_C3DMESH2_GETBONEKEYFRAME
+    // hand3c opt-in (row 0x00A4D770 CalcLocalTransformationsRelative): FableWin.pdb ?GetBoneKeyframe@C3DMesh2@@QBEPBVC3DKeyframe@@K@Z
+    // (FableWin 0x03227EE0 / Ego_d.pdb, parameter index: an index < BoneCount assert, then &BoneKeyframes[index]); inline in retail (0x00A4D8DE `mov esi,[ecx+0A0h]`).
+    const C3DKeyframe* GetBoneKeyframe(unsigned long index) const { return &BoneKeyframes[index]; }
+#endif
     long MemoryHandle,PrimMemoryHandle,BoneNameMemoryHandle;
     unsigned long MaterialCount;C3DMeshMaterial* Materials;unsigned long PrimitiveCount;C3DPrimitive2* Primitives;
     unsigned long BoneCount;C3DBone2* Bones;C3DKeyframe* BoneKeyframes;unsigned short* BoneNameIndices;char* BoneNameData;unsigned long BoneNameDataSize;

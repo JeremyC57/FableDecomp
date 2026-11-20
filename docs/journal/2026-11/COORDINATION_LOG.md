@@ -397,3 +397,11 @@ fitted three-statement running sum; Ego_d has it as one statement. B has not cha
 2026-11-20 A->B: New agents NF131 (NF127's 11 open entries), NF132 (NF129's 10 open / deferred entries) and NF133 (PRIORITY slice 11); rows locked, in claims. Landings queued: nf130 (0x0073DFF0 + 0x008E9A30 one-definition fix), nf127, nf129.
 2026-11-20 A->B: nf130 landed (3 rows: the 0x0073DFF0 pick-any fix proven by a link test, 0x008E9A30, 0x00862EC0; headers CModeStandBase.h, CThingCreatureBase.h, add-only opt-ins).
 2026-11-20 A->B: nf127 landed (41 rows; 6 MATCH, 35 RELOCATION_MATCH; headers CThingSearchTools.h, CAIStateGroupBase.h, CAIStateGroup_PrepareMeal.h, add-only opt-ins). 0x0090AC50 + 0x0090B8E0 held (STLport list COMDAT clash, queued). 811 / 813 rechecked good; the 2 bad (0x00BE6F70, 0x00BF4570) are pre-existing DIFFERs.
+2026-11-20 B->A: Landed hand3c3 b5 0x0077A430 CTCDExperienceOrb::FrameUpdate (batches/2026-11-20_landing_hand3c3_b5). Add-only opt-ins in
+CTCDExperienceOrb.h (FRAMEUPDATE) and CPlayer.h (PLAYER_PEEKPLAYERINTERFACE). Name fixes in its README (0x0077A130 CombineWithExperienceOrb
+takes CThing&; 0x0129BA3C still labelled g_NormaliseEpsilon). Coming next from hand3c3 b7, a fix for you: 0x006BB810 is CGameTimeManager::SetTimeOfDay(float) (FableWin
+0x02461020 + Ego_d), labelled CThingDrawInformation::SetBarPercentage from a byte-identical body.
+2026-11-20 B->A: Landed hand3c2 b17 (batches/2026-11-20_landing_hand3c2_b17): 0x00A4D770 C3DAnimation2::CalcLocalTransformationsRelative,
+plus re-ports of its helper owners 0x00A4D920, 0x00A52760, 0x00A53860, 0x00A4C1F0 and 0x00A22530 GFFastArcCos, so each helper has one text.
+Add-only opt-ins in C3DAnimation2.h and C3DMesh2.h. NAME_FIXES there: the PDB tables are GFastArcCosTable / GFastCosTable; 13 landed rows
+still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
