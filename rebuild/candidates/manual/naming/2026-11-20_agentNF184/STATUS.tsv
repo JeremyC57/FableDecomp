@@ -1,0 +1,69 @@
+address	change	grade	test	grades_used	entries	note
+0041d198	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+0041d1b4	none	RELOCATION_MATCH (HEAD probe)	-	0	q6141	not-a-binder: already binds the q6141 copy-ctor spelling
+0041e641	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+004291b8	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+00429bf9	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+0042dd28	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+0042e98f	none	RELOCATION_MATCH (HEAD probe)	-	0	q6141	not-a-binder: already binds the q6141 copy-ctor spelling
+0042f50b	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+0042fc86	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+005958f5	none	RELOCATION_MATCH (HEAD probe)	-	0	q5226	not changed: q5226 rejected (0x0042918C is ReleaseData); binding in work/probe_q5226.tsv; family in NAME_FIXES.tsv
+005b33f4	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+005b37f7	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+005b3e4e	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+005cd767	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+0065f37a	ported (binder respell + leaf-only self rename)	RELOCATION_MATCH	PASS	1	q6143	value_type_0065d89b stand-in -> CCountedPointer<CVillageTaskHorn> on engine/CCountedPointer.h with the existing FABLE_RETAIL_CCOUNTEDPOINTER_COPY_DECL_ONLY; binds ??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z at 0x0065D89B; own leaf follows the parameter type (RENAMES s1). Object defines only its leaf + placement new (as HEAD). Landed standalone test kept. work/b4.log
+0065f96d	none	RELOCATION_MATCH (HEAD probe)	-	0	q6143	not-a-binder: already binds the claim (work/probe_q6143.tsv)
+00663e90	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00665860	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+0070b4d0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00729200	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007306c0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00730c00	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00730dd0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00732850	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007468c0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007469c0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00746a70	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00749bf0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007502d0	port (binder respell; local CAnimInit / CAnimFrameInfo models dropped)	RELOCATION_MATCH	PASS	2	q6391 q6462	local CAnimFrameInfo + CAnimInit (Set, long update mode) replaced by engine/CAnimInit.h FABLE_RETAIL_CANIMINIT_CTORS + NF184 scaffolding opt-in FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY; binds ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z at 0x0070C050. Newly defined ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z (pick-any) grades RELOCATION_MATCH at its owner 0x005B33F4 (was the NF173 59-byte /O2 copy); HEAD's ??0CAnimInit@@QAE@EKJJ_NKJ@Z stand-in COMDAT is gone. Landed test kept. work/b5.log
+00752f30	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+0077d230	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+0078809b	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007f8c20	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007f8f30	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+007f9010	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00835e30	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+0083eee0	ported (self leaf rename; NF180 held draft finished)	RELOCATION_MATCH	PASS	8	q4190	NF180 held draft + FABLE_RETAIL_STLP_FILL_CHAR + FABLE_RETAIL_STLP_ORIGINAL_COPY_TRIVIAL_BACKWARD_PASS22 (existing opt-ins, no header change); decl-only form (header body hidden) DIFFER(255v255): the resize(1) char() temp moves into the dead offset slot; extern-template form DIFFER; pick-any copies all RELOCATION_MATCH at their owners: _M_fill_insert 0x004110D0 (289v289; cmpbody vs the owner object: bytes equal, relocation names differ only at the _M_insert_overflow call: header IAE STLport spelling vs owner local QAE stand-in, NOTES), __copy_trivial 0x00405BA0, __copy_trivial_backward 0x00405BC0, resize 0x00412880 / 0x004122D0; work/b1.log
+008619c0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+00861a80	none	RELOCATION_MATCH (HEAD probe, read-only)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv). Row locked by NF185: compiled read-only in the census probe, not changed
+00862780	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6780	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6ac0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6cb0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6da0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6e80	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6f20	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d6ff0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d70a0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d88a0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d8b00	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008d8dd0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008ea9f0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+008eacb0	none	RELOCATION_MATCH (HEAD probe)	-	0	q6391 q6462	not-a-binder: already binds ?Init@CAnimInit (work/probe_q6391.tsv)
+009a7ca0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009a7d40	port (binder respell)	RELOCATION_MATCH	PASS	3	q4393 q12124	ported off local CWideString / CCharString / CBankInfo / CRetailMap / std pair / _Rb_tree / set / CBankFileManager models onto fable_string.h + stlport/fable_map.h + fable_retail_banks.h (NF177 BANKFILEPATHS / LOOKUPBANKALIAS; NF184 opt-ins CREATEDRETAILBANKS (member type) / CREATERETAILBANK (private decl) / STLP_TREE_INSERT_UNIQUE_DECL_ONLY). 0x009AB5D0 / 0x009AB560 now bind their D1 _M_find self Leafs (narrows); 0x009AAEB0 insert_unique moves from the set stand-in to the STLport header spelling (spelling count 3 -> 3: self row, 0x009A7A20 and this row each spell it differently; NOTES). f1 (body visible) emitted a pick-any insert_unique<CWideString> copy with a pointer-compare less (differs from owner 0x009AAEB0) + _M_decrement 0x004294E2 DIFFER(64v57); f2 declaration-only removes both; iterator ==/!= copies MATCH at 0x0041C820/0x0041C830. Landed standalone test kept (no row source embedded). work/b3.log
+009a7e20	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009a7ed0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009a7f80	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009a80b0	port (NF177 held draft finished; binder respell)	RELOCATION_MATCH	PASS	7	q4391 q4393 q12124	NF177 held draft + NF184 FABLE_RETAIL_STLP_LESS_CCHARSTRING_SIZE_BODY (stlport/fable_map.h, scaffolding) + existing FABLE_RETAIL_CCHARSTRING_FORCEINLINE_LESS: the emitted less<CCharString>::operator() copy grades RELOCATION_MATCH at its owner 0x0042AAB3 (41 bytes; was 43). Declaration-only (f1) DIFFER(140v145): the bank-list head is reloaded across the finds; size body without the forceinline (f2) gave a 16-byte copy. Pick-any copies all MATCH / RELOCATION_MATCH at owners: 0x00429950 0x0041C780 0x0041C7A0 0x0041C7C0 0x0041C830 0x009AB4F0 0x009AB560 0x009AB5D0. Binds the D1 _M_find leaves of 0x009AB4F0 / 0x009AB560 / 0x009AB5D0 (was CRetailMap stand-ins). Landed test kept. work/b2.log
+009c4440	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009c46b0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009ccdc0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4394	not-a-binder: already binds the D1 _M_find spelling of 0x009D2DD0 (work/probe_q4394.tsv)
+009ce5e0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4394	not-a-binder: already binds the D1 _M_find spelling of 0x009D2DD0 (work/probe_q4394.tsv)
+009ef360	none	RELOCATION_MATCH (HEAD probe)	-	0	q4393 q12124	not-a-binder: already binds the D1 _M_find spelling of 0x009AB5D0 (work/probe_q4393.tsv)
+009f03b0	not changed (open)	-	-	0	q4394	the last wrong binder of 0x009D2DD0 (?find@CStringSectionMap@CodeSections@@ stand-in); port not attempted (rule slip, see NOTES q4394 for the six callees it moves and the PDB self name ?DeregisterSection@CCodeSectionManager@@QAEXVCCharString@@@Z)
+009f0500	none	RELOCATION_MATCH (HEAD probe)	-	0	q4394	not-a-binder: already binds the D1 _M_find spelling of 0x009D2DD0 (work/probe_q4394.tsv)
+009f0570	none	RELOCATION_MATCH (HEAD probe)	-	0	q4394	not-a-binder: already binds the D1 _M_find spelling of 0x009D2DD0 (work/probe_q4394.tsv)
+009f05a0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4394	not-a-binder: already binds the D1 _M_find spelling of 0x009D2DD0 (work/probe_q4394.tsv)

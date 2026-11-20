@@ -417,3 +417,17 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   CheckUnknownSymbols). A row that binds the copied symbol itself at a retail site, with different bytes, is held.
 - Copies with no table line (a self leaf of an unreferenced owner) are compared by hand against the owner's object (nf181 0x009568E0
   against 0x009566C0).
+
+## 2026-11-20 advisor decision (owner delegated): size-pragma scaffolding for pick-any copies; STLport spellings for STL instances
+- A shared-header opt-in may wrap an inline definition in `#pragma optimize(...)` (marked `Fidelity: scaffolding, not retail`) only
+  to give a pick-any COMDAT the owner's body. All three conditions must hold:
+  - the row's own body grades the same with the macro removed, and only that one COMDAT changes;
+  - the owner row sets the same pragmas itself (cite it in the opt-in comment);
+  - the comment says the block ends with `optimize("", on)` (VC7.1 has no push / pop for optimize), so a row using it must not
+    carry a row-head optimize pragma.
+  The owner's strong out-of-line copy then gives one LNK2005 with identical bytes; queue the owner's port onto the header (nf184:
+  FABLE_RETAIL_STLP_LESS_CCHARSTRING_SIZE_BODY vs 0x0042AAB3, FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY vs 0x005B33F4).
+- STL template instances: the PDB name sets (egor / fablewin / egod) hold no STL instance names, so the attested spelling is the one the
+  repo's STLport headers produce (descriptive-by-library). A count-neutral move of a caller from a fake stand-in (e.g. `set<>::insert_unique`)
+  onto that header spelling lands when the self row's body is that STLport function; queue the self row and the other binders to
+  converge (nf184 0x009A7D40 -> 0x009AAEB0).

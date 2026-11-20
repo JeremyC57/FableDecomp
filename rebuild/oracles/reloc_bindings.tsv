@@ -11623,7 +11623,6 @@ __imp__RegSetValueExA@24	0143fbf4	0099dc50
 ?_M_insert_overflow@?$vector@G@std@@QAEXPAGABGABU__true_type@@K_N@Z	005135d0	009b4a20
 ??$_M_allocate_and_copy@PBUSRecord12@@@?$vector@USRecord12@@V?$allocator@USRecord12@@@std@@@std@@QAEPAUSRecord12@@IPBU2@0@Z	009b2780	009b4d80
 ??$__unguarded_linear_insert@PAVCWideString@@V1@U?$less@VCWideString@@@std@@@std@@YIXPAVCWideString@@V1@U?$less@VCWideString@@@0@@Z	009b1870	009b68d0
-?insert_unique@?$set@VCWideString@@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCWideString@@@std@@_N@2@ABVCWideString@@@Z	009aaeb0	009a7d40
 ??$__destroy_aux@PAVCDataBankGroupEntry@NGameText@@@std@@YIXPAVCDataBankGroupEntry@NGameText@@0ABU__false_type@0@@Z	009cac00	009c87c0
 ??$__destroy_aux@PAVCDataBankTextEntry@NGameText@@@std@@YIXPAVCDataBankTextEntry@NGameText@@0ABU__false_type@0@@Z	009cabc0	009c87c0
 ??_7CDataBank@NGameText@@6BCBankSecondaryBase@@@	0129b528	009c87c0
@@ -23053,7 +23052,6 @@ _longest_match_fast	00c00fd0	00c013c0
 ?UpdateBlockedActionPoints@CTCUserActionPointBase@@IAEXXZ	007fecb0	007fede0
 ??1CScriptModuleFOVZoom@NCameraModes@@UAE@XZ	00854380	008544c0
 ??0CPixelShader@@AAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z	00a5ecb0	0098a9a0
-?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z	009a7720	009a7d40
 ?DeallocateUnusedMemory@CSymbolMap@@QAEXXZ	009e5350	009ae5f0
 ?Save@CChecksumCacheFile@@AAEXXZ	00a60aa0	00a60c30
 ?Update@CHoverable@NUISystem@@UAEXM@Z	0055b890	0055acb0
@@ -23622,7 +23620,6 @@ __imp__PostMessageA@16	014402c0	00cb48a0
 ??$_M_find@_K@?$_Rb_tree@_K_KU?$_Identity@_K@std@@U?$less@_K@2@V?$allocator@_K@2@@std@@ABEPAU?$_Rb_tree_node@_K@1@AB_K@Z	0082ef20	0082e500
 ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@1@ABVCCharString@@@Z	008ac200	008a9f50
 ??$find@K@?$_Rb_tree@KU?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Select1st@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@1@ABK@Z	00990320	0098e590
-??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCWideString@@@1@ABVCWideString@@@Z	009aa4c0	009a7d40
 ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@1@ABVCCharString@@@Z	009ab4f0	009a7f80
 ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@1@ABVCCharString@@@Z	009ab560	009a8090
 ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@1@ABVCCharString@@@Z	009ab5d0	009a7f80
@@ -39118,7 +39115,6 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ??1CCountedPointer@@QAE@XZ	0048c5c0	00715110
 ?Add@CCreatureActionQueue@@QAEXABUCCountedPointer@@@Z	00719360	00715110
 ?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ	006a1440	00715110
-?InitOpened@COpenCloseHelper@@QAEXXZ	00a55c00	007502d0
 ?SetHeadTurnState@CTCLook@@AAEXJ@Z	007517b0	00753840
 ?UpdateLookTimer@CTCLook@@QAEXXZ	00751ad0	00753840
 ?FrameUpdateHeadInterested@CTCLook@@AAEXXZ	00753380	00753c70
@@ -39243,9 +39239,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?find@CToleranceMap@@QBE?AUCToleranceIterator@@ABW4EOpinionAttitudeType@@@Z	00701fc0	00701940
 ?SetThingOpinionSource@COpinionReactionManager@@QAEXPAVCThing@@@Z	00700770	00894e60
 ?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z	008e9850	008e9950
-?find@?$CRetailMap@VCCharString@@USBankEntryInfo@@@@QBEPAUSNode@1@ABVCCharString@@@Z	009ab4f0	009a80b0
-?find@?$CRetailMap@VCCharString@@USBankInfo@@@@QBEPAUSNode@1@ABVCCharString@@@Z	009ab560	009a80b0
-?find@?$CRetailMap@VCCharString@@V1@@@QBEPAUSNode@1@ABVCCharString@@@Z	009ab5d0	009a80b0
 ??0CThreadedFile@@QAE@XZ	0098dfd0	009d56c0
 ??1?$CCountedPointer@VCThreadedFile@@@@QAE@XZ	009a9c40	009d56c0
 ??4?$CCountedPointer@VCThreadedFile@@@@QAEAAV0@ABV0@@Z	009d6fd0	009d56c0
@@ -39302,9 +39295,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z	00e96c30	00e96660
 ?UnLimboSword@CV_MazeResearchScript@NScript@@QAEXXZ	00ea85e0	00ea8130
 ?MakeHenchmanPerformIdleComment@CV_BodyGuardScript@NScript@@QAE_NXZ	00e5e5a0	00e5e350
-?Insert@Packet_0083eee0@@QAEXHHPBD@Z	004110d0	0083eee0
-?IsConnected@LSocket@@QAE_NH@Z	008f8210	0083eee0
-?Receive@LSocket@@QAE_NAAUPacket_0083eee0@@@Z	008f99a0	0083eee0
 ??A?$map@KUCSectionDesc@CCodeSectionManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUCSectionDesc@CCodeSectionManager@@@std@@@4@@std@@QAEAAUCSectionDesc@CCodeSectionManager@@ABK@Z	009f1470	009f05a0
 ?LoadSection@CCodeSectionManager@@QAEXK@Z	009f02c0	009f05a0
 ?UnloadSection@CCodeSectionManager@@QAEXK@Z	009f02f0	009f05a0
@@ -39531,3 +39521,7 @@ _GetFileVersionInfoA@16	00cb5588	00cb28f0
 _GetFileVersionInfoSizeA@8	00cb558e	00cb28f0
 _VerQueryValueA@16	00cb5582	00cb28f0
 __imp__CompareStringA@24	0143fef4	00cb28f0
+?InitOpened@COpenCloseHelper@@QAEXXZ	00a55c00	007502d0
+??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCWideString@@@1@ABVCWideString@@@Z	009aa4c0	009a7d40
+?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z	009a7720	009a7d40
+?insert_unique@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCWideString@@U?$_Nonconst_traits@VCWideString@@@std@@@std@@_N@2@ABVCWideString@@@Z	009aaeb0	009a7d40

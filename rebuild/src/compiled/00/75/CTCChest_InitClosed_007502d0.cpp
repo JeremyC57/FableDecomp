@@ -8,7 +8,7 @@
 //   0x0099EBF0 ("CHEST_OPEN" 0x01269568) / ~CCharString 0x0099EAE0, CAnimationSet::GetAnimation(const CCharString&, long,
 //   const CAnimFilterBase&) 0x005DC340 (CAnimFilterNoGroup temporary, vtables 0x0122FFDC / 0x0122FFCC), CTCBase::GetWorld
 //   0x00686A70, CMeshDataBank::PeekAnimation 0x00A242C0, C3DAnimationInfo::GetNonLoopingDuration 0x00A23CE0,
-//   CAnimInit::Set 0x0070C050, CAnimateThing::SetMainAnim 0x0070D580, COpenCloseHelper::InitOpened 0x00A55C00,
+//   CAnimInit::Init 0x0070C050, CAnimateThing::SetMainAnim 0x0070D580, COpenCloseHelper::InitOpened 0x00A55C00,
 //   CThing::SetForceFrameUpdate 0x004C7C60; the defs' slot 1.
 // Layout: CTCChest (retail, Ego_r.pdb - 4): ChestOpener COpenCloseHelper +0x1c (Opened, Closed, Opening, Closing,
 //   OpenCloseTransitionAmount +4, LastOpenCloseTransitionAmount +8, TotalTimeToOpen +0xc, TotalTimeToClose +0x10),
@@ -16,7 +16,7 @@
 //   Animation +0x34; CAnimateThing main anim set CurrentPercentageComplete +0x1c / LastPercentageComplete +0x20 (Ego_r
 //   minus the 4-byte-smaller retail vectors).
 // Shape: the animation complex is `T* p = 0; if (HasTC) p = GetTC;`; the thing def is held add-referenced by a CDefPointer
-//   copy for the whole function; GetSubDef has a same-TU out-only stand-in; the init is the CAnimInit Set-forwarding ctor
+//   copy for the whole function; GetSubDef has a same-TU out-only stand-in; the init is the CAnimInit Init-forwarding ctor
 //   (frame zero stores after the pushes); the mesh bank is named before the PeekAnimation argument; the helper reset is an
 //   inline Init in retail's store order (closed flag, both transition amounts last-first, the two times, then the
 //   opening/closing flags); the transition test compares Last != Amount.
@@ -81,31 +81,13 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* 
 }
 #pragma auto_inline(on)
 
-class CAnimFrameInfo { public:
-    float Current;
-    float Last;
-    CAnimFrameInfo() : Current(0), Last(0) {}
-};
-class CAnimInit { public:                                             // 0x2c bytes
-    long          UpdateMode;                                  // +0x00
-    unsigned char Type;                                        // +0x04
-    bool          Looping;                                     // +0x05
-    long          Anim;                                        // +0x08
-    float         Speed;                                       // +0x0c
-    float         Alpha;                                       // +0x10
-    float         LastAlpha;                                   // +0x14
-    CAnimFrameInfo Frame;                                      // +0x18
-    unsigned long Flags;                                       // +0x20
-    unsigned long TypeFlags;                                   // +0x24
-    long          Priority;                                    // +0x28
-    CAnimInit(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
-              long priority)
-    {
-        Set(type, typeFlags, anim, updateMode, looping, flags, priority);
-    }
-    void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
-             long priority);                                   // 0x0070C050
-};
+// Naming (NF184, 2026-11-20, q6391 / q6462): the local CAnimFrameInfo / CAnimInit models replaced by the shared engine/CAnimInit.h
+//   (FABLE_RETAIL_CANIMINIT_CTORS: the inline argument constructor, Frame zeroed then Init 0x0070C050 = Ego_r.pdb / FableWin.pdb
+//   ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z; was the made-up Set with a long update mode). The constructor's pick-any COMDAT
+//   is compiled as its owner row 0x005B33F4's size TU compiles it (NF184 scaffolding opt-in FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY).
+#define FABLE_RETAIL_CANIMINIT_CTORS
+#define FABLE_RETAIL_CANIMINIT_CTOR_SIZE_BODY
+#include "engine/CAnimInit.h"
 class CAnimSet { public:
     long          UpdateMode;                                  // +0x00
     unsigned char _pad04[0x1c - 0x04];                         // Anims, InternalAlphas
@@ -218,7 +200,7 @@ void CTCChest::InitClosed()
     const CAnimationEntry* entry = appearance->Animation.GetAnimation("CHEST_OPEN", 0, CAnimFilterNoGroup());
     CMeshDataBank* meshBank = GetWorld().PMainMeshBank;
     float duration = meshBank->PeekAnimation(entry->AnimIndex)->GetNonLoopingDuration();
-    CAnimInit init(0, 0, entry->AnimIndex, 1, false, 0, 100);
+    CAnimInit init(0, 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, 0, 100);
     animator.SetMainAnim(init, 1, 0);
     ChestOpener.Init(duration, 0.0f);
     if (ChestOpen) {

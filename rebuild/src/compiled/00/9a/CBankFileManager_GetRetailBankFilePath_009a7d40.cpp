@@ -18,138 +18,46 @@
 // ResolveAlias helper -- then the path homed in the dead bank argument slot, `CreatedRetailBanks.find(path) ==
 // CreatedRetailBanks.end()` (end() read before the call), and the pair<iterator, bool> insert result in the frame. No
 // /EHsc in this TU: nothing is destroyed on the throw path.
-class CWideString {
-public:
-    void* PStringData;                                      // +0x00
-    CWideString(const CWideString& other);                  // 0x0099B720
-    ~CWideString();                                         // 0x0099B510
-    bool operator<(const CWideString& other) const;         // 0x0099AF70
-};
-CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
-
-class CCharString {
-public:
-    void* PStringData;                                      // +0x00
-    CCharString(const CCharString& other);                  // 0x0099EC30
-    ~CCharString();                                         // 0x0099EAE0
-    operator const char*() const;                           // 0x0099E4C0
-};
-CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
-
-// CGenericException : CExceptionBase -- the shared headers; the message constructor is the header's opt-in (Ego_r.pdb / FableWin.pdb
-// ??0CGenericException@@QAE@PBD@Z).
+// Port (NF184, 2026-11-20, q4393): moved off the row-local CWideString / CCharString / CBankInfo / CRetailMap / std::pair / _Rb_tree /
+//   set / CBankFileManager models onto fable_string.h, stlport/fable_map.h (map, set) and fable_retail_banks.h (the NF177 BANKFILEPATHS /
+//   LOOKUPBANKALIAS opt-ins and the NF184 CREATEDRETAILBANKS / CREATERETAILBANK opt-ins). The two map finds are the STLport member-template
+//   find over the out-of-line _M_find (0x009AB5D0 BankAliasMap through LookupBankAlias, 0x009AB560 Banks; D1), the set find the out-of-line
+//   _M_find 0x009AA4C0, the insert the tree's out-of-line insert_unique 0x009AAEB0, declaration-only here
+//   (FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_DECL_ONLY): with STLport's body visible the TU emitted a pick-any insert_unique<CWideString>
+//   copy comparing the converted text pointers (fable_string.h declares no CWideString::operator< 0x0099AF70), unlike the owner row.
+//   Both forms grade the same here. The other COMDATs the binding table owns elsewhere (iterator == / != 0x0041C820 / 0x0041C830)
+//   grade MATCH at their owners.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_SET
+#define FABLE_RETAIL_STLP_SET_FIND
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND_TEMPLATE_BODY
+#define FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_DECL_ONLY
+#define FABLE_RETAIL_CBANKFILEMANAGER
+#define FABLE_RETAIL_CBANKFILEMANAGER_BANKFILEPATHS
+#define FABLE_RETAIL_CBANKFILEMANAGER_BANKALIASMAP
+#define FABLE_RETAIL_CBANKFILEMANAGER_LOOKUPBANKALIAS
+#define FABLE_RETAIL_CBANKFILEMANAGER_CREATEDRETAILBANKS
+#define FABLE_RETAIL_CBANKFILEMANAGER_CREATERETAILBANK
 #define FABLE_RETAIL_CGENERICEXCEPTION_TEXT_CTOR
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+#include "fable_retail_banks.h"
 #include "engine/CGenericException.h"
 
-
-
-class CBankFile;
-struct CBankInfo {                                          // CBankFileManager::CBankInfo, 20 bytes (PDB)
-    CWideString DevBankFilePath;                            // +0x00
-    CWideString RetailBankFilePath;                         // +0x04
-    CWideString DevHeaderFilePath;                          // +0x08
-    CWideString RetailHeaderFilePath;                       // +0x0c
-    CBankFile*  RegisteredBank;                             // +0x10
-};
-
-template <class K, class V>
-struct CRetailMap {                                         // STLport map<K, V>: {header, count, compare}
-    struct SNode {
-        unsigned char m_colour;
-        SNode* m_pParent;
-        SNode* m_pLeft;
-        SNode* m_pRight;
-        K first;                                            // +0x10
-        V second;                                           // +0x14
-    };
-    SNode* m_pHead;                                         // +0x00
-    unsigned long m_size;                                   // +0x04
-    unsigned long m_compare;                                // +0x08
-    SNode* find(const K& key);                              // Banks: 0x009AB560, BankAliasMap: 0x009AB5D0
-    SNode* end() const { return m_pHead; }
-};
-
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;                                              // +0x00
-    _T2 second;                                             // +0x04
-    pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) {}
-};
-struct _Rb_tree_node_base {
-    bool                _M_color;                           // +0x00
-    _Rb_tree_node_base* _M_parent;                          // +0x04
-    _Rb_tree_node_base* _M_left;                            // +0x08
-    _Rb_tree_node_base* _M_right;                           // +0x0c
-};
-template <class _Value> struct _Rb_tree_iterator {
-    _Rb_tree_node_base* _M_node;
-    _Rb_tree_iterator(_Rb_tree_node_base* __x) : _M_node(__x) { }
-    bool operator==(const _Rb_tree_iterator& __y) const { return _M_node == __y._M_node; }
-};
-template <class _Tp> struct less { };                      // STLport 4.6 _function.h
-template <class _Tp> struct _Identity { };                 // (set's KeyOfValue)
-template <class _Tp> class allocator { };
-template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
-    _Value _M_value_field;                                  // +0x10
-};
-// STLport 4.6.1 _tree.h: find / _M_find are member templates (owner decision 2026-11-03), _M_find private.
-template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc> class _Rb_tree {
-public:
-    typedef _Rb_tree_iterator<_Value> iterator;
-    _Rb_tree_node_base* _M_header;                          // +0x00
-    unsigned int _M_node_count;                             // +0x04
-    _Compare _M_key_compare;                                // +0x08
-    iterator end() { return iterator(_M_header); }
-    template <class _KT> iterator find(const _KT& __x) { return iterator(_M_find(__x)); }
-private:
-    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;     // 0x009AA4C0
-};
-template <class _Key> class set {
-public:
-    typedef _Rb_tree<_Key, _Key, _Identity<_Key>, less<_Key>, allocator<_Key> > _Rep_type;
-    typedef typename _Rep_type::iterator iterator;
-    _Rep_type _M_t;
-    pair<iterator, bool> insert_unique(const _Key& __v);    // 0x009AAEB0
-    iterator end() { return _M_t.end(); }
-    iterator find(const _Key& __x) { return _M_t.find(__x); }
-    pair<iterator, bool> insert(const _Key& __x) { return insert_unique(__x); }
-};
-}
-
-class CBankFileManager {
-public:
-    void*                                 _vfptr;               // +0x00 (CBaseClass)
-    CRetailMap<CCharString, CBankInfo>    Banks;                // +0x04
-    void*                                 RetailBanks;          // +0x10
-    bool                                  UsingRetailBanks;     // +0x14
-    CRetailMap<CCharString, CCharString>  BankAliasMap;         // +0x18
-    CWideString                           BasePath;             // +0x24
-    std::set<CWideString>                CreatedRetailBanks;   // +0x28
-    unsigned long                         FileVersion;          // +0x34
-    CCharString ResolveAlias(const CCharString& name)
-    {
-        CRetailMap<CCharString, CCharString>::SNode* alias = BankAliasMap.find(name);
-        if (alias != BankAliasMap.end())
-            return alias->second;
-        return name;
-    }
-private:
-    void CreateRetailBank(const CWideString& path);         // 0x009A7720 (private: Ego_r.pdb / FableWin.pdb AAE; naming wave 27)
-public:
-    CWideString GetRetailBankFilePath(const CCharString& bank);
-};
-
-CWideString CBankFileManager::GetRetailBankFilePath(const CCharString& bank)
+CWideString CBankFileManager::GetRetailBankFilePath(const CCharString& bankHandle)
 {
-    CCharString key = ResolveAlias(bank);
-    CRetailMap<CCharString, CBankInfo>::SNode* info = Banks.find(key);
+    CCharString name = LookupBankAlias(bankHandle);
+    std::map<CCharString, CBankInfo>::iterator info = Banks.find(name);
     if (info != Banks.end()) {
-        CWideString path = BasePath + info->second.RetailBankFilePath;
+        CWideString path = BasePath + (*info).second.RetailBankFilePath;
         if (CreatedRetailBanks.find(path) == CreatedRetailBanks.end()) {
             CreateRetailBank(path);
             CreatedRetailBanks.insert(path);
         }
         return path;
     }
-    throw CGenericException(key + " bank not found!");
+    throw CGenericException(name + " bank not found!");
 }
