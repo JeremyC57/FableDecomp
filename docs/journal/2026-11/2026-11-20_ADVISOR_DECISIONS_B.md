@@ -163,3 +163,15 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - different: one bounded sweep for a spelling that satisfies both;
   - no retail copy: land `float` with the conflict stated.
 - **Labels:** the helper here is not verbatim, so it gets `// Inferred:`, not `// Fidelity:`. Line 2 says how the helper expands.
+
+## 0x00763060 NShape::FractureShape (p25L): unlanded helper bodies; a fitted reference local
+- **Question (a).** May a row carry the unlanded DIFFER drafts of its same-TU helpers 0x00760020 IsLineIntersectingWithOthersInList and 0x00760190 IsTriangleWithPointsInside? With those bodies in the TU the row is a byte MATCH (frame 0x5c, and the free of the duplicate has no null test). With trivial noinline bodies it is DIFFER(1142v1146); without them, 1151v1146.
+  - **Ruling: no.** The helpers' contents are load-bearing, so they match and land first, as their own rows (both now reserved for p25L). The row then carries them as verbatim Fidelity copies.
+  - Same reasoning as 0x005CA68E: no strong definitions without a proof line. The 0x006E89B0 float/double debt shows what landing on a body that later changes costs.
+- **Question (b).** Is a named `const C3DVector& anchor=*it_anchor++;` acceptable as `// Inferred:`? Ego_d has no such local, and with Ego_d's spelling the row is DIFFER(1132v1146).
+  - **Ruling: no.** Ego_d records reference locals in this very function (`result_point`), so the absent local is evidence against it. Inferred covers what the oracle leaves open, not what it contradicts.
+  - Re-measure Ego_d's plain spelling once the helpers have matched; a residue measured against provisional helper text may move.
+- **Accepted as Inferred, with an ablation line:** `return;` at the end of the found_appropriate block, backed by Ego_d line 280 being 143 B.
+- **Must be fixed before a batch:**
+  - C2DLineF::IntersectsWith (0x00A56C80) becomes an add-only header opt-in, not a local extern.
+  - The functor members disagree (pointers in landed 0x0075FE30, references in the draft); the PDB types decide which side is wrong.
