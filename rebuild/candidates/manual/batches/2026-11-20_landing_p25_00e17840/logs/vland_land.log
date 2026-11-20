@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e17840   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e17840 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::?Main@CKG_Chief@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_Main_00e17840

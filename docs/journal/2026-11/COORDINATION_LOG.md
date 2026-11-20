@@ -502,3 +502,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 A: landed nf155 (18 rows): CThingCreatureBase / CThing / CThingManager names; two pre-existing link clashes removed, 30 unattempted port rows queued.
 2026-11-20 B->A: Landed p25 0x00DE8370 NScript::CQ_RansomVictimScript::CRansommer::Main (batches/2026-11-20_landing_p25_00de8370). Headers: none.
 2026-11-20 A: landed nf157 (27 rows): NCreatureMode / NCameraModes names; the Jack of Blades mode moved into NCreatureMode as one family.
+2026-11-20 B->A: Landed p25 0x00E17840 NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Main (batches/2026-11-20_landing_p25_00e17840). Headers: engine/CQ_WhiteBalverineKnotholeGladeScript.h .

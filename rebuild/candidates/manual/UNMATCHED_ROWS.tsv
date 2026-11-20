@@ -901,7 +901,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e0ca50	NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly	Main	1232	parked	DIFFER(1276v1223)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand770/differ/00e0ca50.test.cpp	original
 00e16e00	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1	Main	1072	parked	DIFFER(1120v1064)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand770/differ/00e16e00.cpp	original
 00e17320	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2	Main	1072	parked	DIFFER(1120v1064)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand770/differ/00e17320.cpp	original
-00e17840	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief	Main	2528	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(2517v2515)	9	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e17840.cpp	gapscan/boundary
 00e19560	NScript::CQ_WhiteBalverineWWScript	SpawnBalverines	2080	parked	DIFFER(2159v2078)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e19560.cpp	gapscan/boundary
 00e1f7e0	NScript::CQR_EscortTraderScript::CTraderToEscort	Init	1296	parked	DIFFER(1357v1286)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand772/differ/00e1f7e0.test.cpp	original
 00e20210	NScript::CQR_EscortTraderScript	WatchForTraderHit	960	parked	DIFFER(979v956)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00e20210.cpp	original

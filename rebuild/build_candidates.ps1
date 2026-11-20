@@ -401462,6 +401462,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlS13 /d2inlT29'
         PassPattern = '00de8370_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e17840'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_Main_00e17840.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_Main_00e17840_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS13'
+        PassPattern = '00e17840_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -37,3 +37,15 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
 - **Device minimality.** Every row that uses an inline control states a per-device ablation in its README: each device removed in turn, and
   the grade without it. Owner condition: "the smallest that matches".
 - **Ladder.** A plain inline body plus a per-row flag is tried before a source-level `noinline` / `forceinline` / pragma.
+
+## 0x00E72630 CDF_ThreeSuits::Main: a dead conditional temporary (2026-11-20)
+- **Ruling: admissible as `// Inferred:`, never as `// Inline-budget:`.** It is a fitted statement, not an inline split.
+- **Why:** retail's entry has `xor ebp,ebp ; mov [esp+3Ch],ebp`, the home and initialisation of a conditional-temporary flag. The live form of
+  the same store is in landed 0x00E71F10 / 0x00E70BC0. Ego_d's 36-byte prolog shows the later source revision had no conditional temporary;
+  that does not show retail had none. Landed 0x00DA0230 is the same case.
+- **First, one probe:** a conditional temporary inside an inline body that Main expands. If its flag initialisation lands at function entry,
+  check Main's expanded inline bodies for the real carrier.
+- **Form:** the matching form that adds no line Ego_d lacks, uses only calls and literals already live in the function, and has the fewest
+  tokens.
+- **Required:** the comment states that the bytes prove a conditional temporary existed and constrain neither its content nor its placement.
+  Mutants of the dead line are reported separately. No new relocation or binding.

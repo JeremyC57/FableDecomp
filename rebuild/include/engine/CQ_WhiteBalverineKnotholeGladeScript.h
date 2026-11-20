@@ -68,5 +68,27 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine) == 0x20);
 #endif
+#ifdef FABLE_RETAIL_CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_CKG_CHIEF
+// Retail opt-in (chunk 833; p25A row 0x00E17840): the CKG_Chief entity script (Ego_r.pdb CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief, 28 bytes = the landed
+// Alloc 0x00E17750's new size: ParentClass +0x14, PMasterData +0x18). Entity vtable 0x012E0B98 (stored by the Alloc; read from retail .rdata):
+// 0 scalar deleting dtor 0x00E17820, 1 Main 0x00E17840, 2 Init 0x00E17800, 3 GetParentScript 0x00E177F0, 4 OnPersist inherited
+// (CEntityScriptBase 0x00CDEBC0), 5 OnPredicateFail 0x00E17810. Main / Init private (PDB ?Main@CKG_Chief@...@@EAEXXZ).
+class CScriptDataBase;
+namespace NScript {
+class CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_WhiteBalverineKnotholeGladeScript&, CScriptDataBase*, const CScriptThing&); // 0x00E17750
+    virtual CScriptBase* GetParentScript() const;                        // 0x00E177F0
+private:
+    virtual void Main();                                                 // 0x00E17840
+    virtual void Init();                                                 // 0x00E17800
+    virtual void OnPredicateFail();                                      // 0x00E17810
+protected:
+    CQ_WhiteBalverineKnotholeGladeScript& ParentClass;                   // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief) == 0x1c);
+#endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_H
