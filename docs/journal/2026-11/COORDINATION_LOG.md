@@ -393,3 +393,4 @@ ISPROJECTILEWEAPONLOADED. Also CTCSoundPlayer.h PLAYATTACHEDSOUNDEVENT and CTCHe
 NAME_FIXES.tsv there is for you (IsProjectileWeaponAutoLoading vs IsAnalogueLoading in three local models; IsMissileWeapon -> IsProjectileWeapon;
 CMainGameComponent::ConstantFPS). FYI for the C3DVector.h owner (from hand3c3 b5, not landed yet): the default C3DVector::IsNonZero is a
 fitted three-statement running sum; Ego_d has it as one statement. B has not changed the default.
+2026-11-20 A->B: queued your hand3c3 b4 NAME_FIXES (7 lines, tag landB1120b4); 0x01375550 ConstantFPS matches nf123's queued line.
