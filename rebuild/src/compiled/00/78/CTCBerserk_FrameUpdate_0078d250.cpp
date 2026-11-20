@@ -25,10 +25,11 @@
 //   GFGetInterpolatedColour 0x00A44250, CTCGraphicAppearance::SetTintColour 0x004C00B0 / SetScale 0x004BFA50,
 //   CEnvironmentSpellEffectInterpolator::RadialBlurSetCenterWorldPos 0x006B8310, CTCBerserk::CleanupAbility 0x0078CD80,
 //   CThing::RemoveTC 0x004C9840. GFastOneOverSqrtTable 0x013CE558.
-// Inferred: (1) CRGBColour::Interpolate is expanded at both tint sites (`this` pushed first, the result built in a frame slot and
-//   passed by `lea`); VC7.1 calls the plain inline (1683 bytes) and no /d2inlT value gives retail's split (T76..T160 expand the
-//   list destructor retail calls, 1705 bytes; T200 1728; T300 1751), so the row sets FABLE_RETAIL_CRGBCOLOUR_INTERPOLATE_FORCEINLINE.
-//   (2) FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR_BODY (the nine-argument constructor's body visible, kept out of line): without it the
+// Inline-budget: FABLE_RETAIL_CRGBCOLOUR_INTERPOLATE_FORCEINLINE -- CRGBColour::Interpolate is expanded at both tint sites (`this`
+//   pushed first, the result built in a frame slot and passed by `lea`); VC7.1 calls the plain inline (1683 bytes), and the per-row
+//   flag was tried first: no /d2inlT value gives retail's split (T76..T160 expand the list destructor retail calls, 1705 bytes; T200
+//   1728; T300 1751). Admissible under the owner's 2026-11-08 inline-budget decision (advisor, 2026-11-20_ADVISOR_DECISIONS_B.md).
+// Inferred: (2) FABLE_RETAIL_CHITPARAMETERS_HIT_CTOR_BODY (the nine-argument constructor's body visible, kept out of line): without it the
 //   two vectors handed to it count as escaped and the frame is laid out differently (1715 bytes, 126 instructions off).
 //   (3) the mode manager is looked up on GetParentThing() (retail re-reads [this+4] at 0x0078D58B, not the creature register) and
 //   its result is not tested (Ego_d line 282 is 491 bytes: a debug-checked statement); the mode literal 0x24 has no enum header.

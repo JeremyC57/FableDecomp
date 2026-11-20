@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0078d250   WARN RELOC_NAME: ??1?$_List_base@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@QAE@XZ -> 006fe660 labelled '_global::StdList_Clear_006fe660'
+0078d250   RELOCATION_MATCH PASS   CTCBerserk::FrameUpdate
+00ddae40   RELOCATION_MATCH PASS   NScript::CQ_PrisonRaceScript::Main
+
+WINS: 2
+  0078d250 RELOCATION_MATCH CTCBerserk::?FrameUpdate@CTCBerserk@@UAEXXZ
+  00ddae40 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::?Main@CQ_PrisonRaceScript@NScript@@UAEXXZ

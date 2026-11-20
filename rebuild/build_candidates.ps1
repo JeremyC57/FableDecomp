@@ -401375,6 +401375,8 @@ $catalog = @(
         Source = '00/78/CTCBerserk_FrameUpdate_0078d250.cpp'
         TestSource = '00/78/CTCBerserk_FrameUpdate_0078d250_test.cpp'
         PassPattern = '0078d250_TEST PASS'
+    }
+    [pscustomobject]@{
         Address = '00ddae40'
         Module = 'NScript::CQ_PrisonRaceScript'
         Source = '00/dd/NScriptCQPrisonRaceScript_Main_00ddae40.cpp'
