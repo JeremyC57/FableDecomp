@@ -1,0 +1,3 @@
+GREW 008621a0 6 -> 7 ?OnActivate@CModeStandBase@@QAEXXZ row 008d87c0 SAME
+GREW 0073dff0 2 -> 3 ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z row 0073aac0 DIFF before=['?SetGroup@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z']
+shrank [('0129aaf4', 19, 18), ('006b8550', 3, 2), ('006b82e0', 4, 1), ('0099f180', 2, 1)]

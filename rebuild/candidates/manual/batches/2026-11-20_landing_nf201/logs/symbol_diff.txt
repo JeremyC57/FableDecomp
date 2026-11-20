@@ -1,0 +1,88 @@
+00681ba0 new: 14
+    ??$GetDefaultVal@VCCharString@@@CPersistContext@@KI?AVCCharString@@XZ TABLE:0040e1e0
+    ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z TABLE:00411010
+    ??0?$CPersistTraits@VCCharString@@@@QAE@XZ
+    ??1?$CPersistTraits@VCCharString@@@@QAE@XZ
+    ??A?$vector@_NV?$allocator@_N@std@@@std@@QAEAA_NI@Z
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetLength@CCharString@@QBEJXZ TABLE:00403a00
+    ?IsSaving@CPersistContext@@QBE_NXZ TABLE:004aef50
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+    ?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z TABLE:00681ba0
+    ?begin@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NXZ
+    ?end@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NXZ
+    ?size@?$vector@_NV?$allocator@_N@std@@@std@@QBEIXZ
+0073aac0 new: 0
+007464a0 new: 16
+    ??0?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAE@ABV0@@Z
+    ??0?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAE@XZ
+    ??0?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABU01@@Z
+    ??0?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAE@XZ
+    ??C?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBEPAVCEnginePersistentPrimitiveBase@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ
+    ?IsNull@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBE_NXZ
+    ?Release@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAEXXZ
+    ?Release@CIVCountedPointeeBase@@QBEJXZ
+    ?_M_create_node@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@IAEPAU?$_List_node@VCEnginePrimitiveHandle@@@2@ABVCEnginePrimitiveHandle
+    ?allocate@?$allocator@U?$_List_node@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAU?$_List_node@VCEnginePrimitiveHandle@@@2@IPBX@Z
+    ?insert@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrim
+    ?insert@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrim
+007467d0 new: 4
+    ??0?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ?end@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimiti
+    ?push_back@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXXZ
+0079c750 new: 7
+    ?Get@?$CDefPointer@$$CBVCSpecialAbilitiesBulletTimeDef@@@@QBEPBVCSpecialAbilitiesBulletTimeDef@@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ
+    ?GetSpellEffectInterface@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterface@@XZ
+    ?GetSpellEffectInterpolator@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterpolator@@XZ
+    ?PlayCreatureOnHitEffect@CTCBulletTime@@QAEXPAVCThingCreatureBase@@@Z TABLE:0079c750
+    ?SetPointer@?$CIntelligentPointer@VCThing@@@@AAEXPBVCThing@@@Z
+007ab190 new: 0
+00890150 new: 3
+    ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ
+    ?GetSpellEffectInterpolator@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterpolator@@XZ
+    ?RadialBlurFadeOut@CGameScriptInterface@@UBEXMPAX@Z
+008d75d0 new: 0
+008d87c0 new: 0
+008d9220 new: 0
+008d92c0 new: 0
+008d9350 new: 0
+008e9850 new: 0
+00987d70 new: 1
+    ??9CShaderConstantRange@@QBE_NABV0@@Z TABLE:00987d70
+009cc270 new: 6
+    ??A?$CArray@VCRuntimeData@CBankFile@@@@QBEABVCRuntimeData@CBankFile@@I@Z
+    ??A?$vector@VCRuntimeData@CBankFile@@V?$allocator@VCRuntimeData@CBankFile@@@std@@@std@@QAEAAVCRuntimeData@CBankFile@@I@Z
+    ?GetEntryDataOffset@CBankFile@@QBEKK@Z
+    ?GetSize@CPackedUIntArray@@QBEKXZ
+    ?ReferenceGetEntryDataOffset@?A0xdd755034@@YAP8CBankFile@@BEKK@ZXZ
+    ?begin@?$vector@VCRuntimeData@CBankFile@@V?$allocator@VCRuntimeData@CBankFile@@@std@@@std@@QAEPAVCRuntimeData@CBankFile@@XZ
+00a80360 new: 16
+    ??$_Construct@VC2DBoxF@@V1@@std@@YAXPAVC2DBoxF@@ABV1@@Z
+    ??$__uninitialized_fill_n@PAVC2DBoxF@@IV1@@std@@YAPAVC2DBoxF@@PAV1@IABV1@ABU__false_type@0@@Z
+    ??$uninitialized_fill_n@PAVC2DBoxF@@IV1@@std@@YAPAVC2DBoxF@@PAV1@IABV1@@Z
+    ??0?$_STLP_alloc_proxy@PAVC2DBoxF@@V1@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@ABV?$allocator@VC2DBoxF@@@1@PAVC2DBoxF@@@Z
+    ??0?$_Vector_base@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@IABV?$allocator@VC2DBoxF@@@1@@Z
+    ??0?$allocator@VC2DBoxF@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VC2DBoxF@@@std@@QAE@XZ
+    ??0?$vector@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@I@Z TABLE:00a80360
+    ??0C2DBoxF@@QAE@ABV0@@Z
+    ??0C2DBoxF@@QAE@XZ
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVC2DBoxF@@V1@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VC2DBoxF@@@std@@QAE@XZ
+    ?allocate@?$allocator@VC2DBoxF@@@std@@QAEPAVC2DBoxF@@IPBX@Z
+    ?deallocate@?$allocator@VC2DBoxF@@@std@@QAEXPAVC2DBoxF@@I@Z
+00b5af60 new: 2
+    ?PeekRenderEnabled@CEngineComponent@@QBE_NXZ
+    ?Render@CEngineScreenEffectColourFilter@@UAEXABVCEngineComponentRenderParams@@@Z
+00f2d660 new: 1
+    ?TransferOut@?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z

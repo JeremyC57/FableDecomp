@@ -15312,7 +15312,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00681a70	ClearAllKnownDeeds	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 00681ae0	KnowsOfDeed	CTCCreatureOpinionOfHero	__thiscall	bool	4	CTCCreatureOpinionOfHero *,long,EOpinionDeedType,bool	1	yes	accepted									
 00681b30	OnKill	CTCCreatureOpinionOfHero	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00681ba0	CParticleMorphs_TransferEntry	_global	unknown	undefined	0		0	yes	accepted									
+00681ba0	SerialiseFlagMask	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 00681cd0	CTCCreatureOpinionOfHero	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\68\0x00681CD0_CGameScriptInterface_SetOpinionReactionMask.cpp				
 00681e30	SetOpinionReactionMask	CTCCreatureOpinionOfHero	__thiscall	void	2	CTCCreatureOpinionOfHero *,CCharString *	1	yes	accepted									
 00681e60	SetPersonalityOverride	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
@@ -19926,9 +19926,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007462d0	`scalar_deleting_destructor'	CTCPerceiveThing	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CLandscapeBackgroundPatch_vectordeletingdestructor_007462d0.cpp
 007462f0	~CTCPerceiveThing	CTCPerceiveThing	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted									
 007463e0	reserve	std::vector<CThing const *, std::allocator<CThing const *>>	unknown	undefined	0		0	yes	accepted									
-007464a0	InsertDefault	CEnginePrimitiveHandleList	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitive *	1	yes	accepted									
+007464a0	insert	std::list<CEnginePrimitiveHandle>	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitive *	1	yes	accepted									
 00746560	GetAllThingsInRoughArea	CThingSearchTools	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind4<CThingFilter_InMap,CThingFilter_IsSelectableBasedOnEditorMode,CThingFilter_BoundingRadiusIntersectsInfiniteLine,CThingFilter_IsSelectable> *,list<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
-007467d0	Register	CKeyedOwner_007467d0	__thiscall	CWideString	1	CDefString *	1	yes	accepted									
+007467d0	push_back	std::list<CEnginePrimitiveHandle>	__thiscall	CWideString	1	CDefString *	1	yes	accepted									
 00746810	Init	NScript::CQ_GuildTrainingScript::CMeleeApprentice	__thiscall	void	1	CMeleeApprentice *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CMeleeApprentice_Init_00746810.cpp
 00746820	CTCBed	CTCBed	__thiscall	undefined	2	CTCEditor *,CThing *	0	yes	accepted									
 00746860	OnCreate	CTCBed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -33046,7 +33046,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00987cf0	GetName_Unknown	_global	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00987d10	ScalarDeletingDestructor	CShaderBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00987d50	CShaderConstantRange	CShaderConstantRange	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
-00987d70	operator!=	CPointerPair_00987d70	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted									
+00987d70	operator!=	CShaderConstantRange	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted									
 00987e20	~CPixelShader	CPixelShader	__thiscall	void	1	CPhysicsMeshInfo *	1	yes	accepted									
 00987e50	operator=	CPixelShader	__thiscall	void	2	CShaderRenderManager *,CPixelShader *	1	yes	accepted									
 00987eb0	Clear	CLocalDetailPlacementGrid_00987eb0	__thiscall	void	1	CLocalDetailPlacementGrid *	1	yes	accepted									
@@ -38214,7 +38214,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a801a0	CCountedPointer_Dtor_00a801a0	_global	__fastcall	void	5	pair<unsigned_long,CCountedPointer<CFaction>_> *,int,int,pair<unsigned_long,class_CCountedPointer<class_CFaction>_> *,CKeyPairCompareLess<unsigned_long,CCountedPointer<CFaction>_>	1	yes	accepted									
 00a802a0	__copy_backward<std::pair<long,CCountedPointer<CNavConnectorNode> >*,std::pair<long,CCountedPointer<CNavConnectorNode> >*,int>	std	__fastcall	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *	4	pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a80340	`scalar deleting destructor'	CNavNavigableLeafNode	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\CLandscapeBackgroundPatch_vectordeletingdestructor_00a80340.cpp
-00a80360	vector	std::vector<C2DLineF, std::allocator<C2DLineF>>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\global_VectorConstructInitializedC2DLineF_00a80360.cpp
+00a80360	vector	std::vector<C2DBoxF, std::allocator<C2DBoxF>>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\global_VectorConstructInitializedC2DLineF_00a80360.cpp
 00a80480	StdList_DefaultCtor_a80480	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\global_StdListDefaultCtora80480_00a80480.cpp
 00a80500	find	std::map<long, CANavQuadTreeNode *, std::less<long>, std::allocator<std::pair<long const, CANavQuadTreeNode *>>>	unknown	undefined	0		0			discovered	gapscan							
 00a80520	StdList_DefaultCtor_a80520	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\global_StdListDefaultCtora80520_00a80520.cpp
@@ -55356,7 +55356,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f2d4d0	Transfer<EFeatAttackType>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00f2d5b0	TransferBinaryIn_00f2d5b0	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00f2d640	TransferIn	CPersistContext_TransferableComponent<EFeatAttackType>	unknown	undefined	0		0			discovered	gapscan							
-00f2d660	TransferOut_CTransferableLong_009e2560	_unattributed	unknown	undefined	0		0			discovered	gapscan							
+00f2d660	TransferOut	CPersistContext_TransferableComponent<EFeatAttackType>	unknown	undefined	0		0			discovered	gapscan							
 00f2d680	Copy	CFeatDef	unknown	undefined	0		0			discovered	gapscan							
 00f2d690	_M_allocate_and_copy<CFeatDef const *>	std::vector<CFeatDef, std::allocator<CFeatDef>>	unknown	undefined	0		0	yes	accepted									
 00f2d6e0	Transfer	CScriptDef	unknown	undefined	0		0			discovered	gapscan							

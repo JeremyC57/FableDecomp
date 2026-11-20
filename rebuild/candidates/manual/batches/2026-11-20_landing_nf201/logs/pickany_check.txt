@@ -1,0 +1,11 @@
+MISSING 00681ba0 0040e1e0 ??$GetDefaultVal@VCCharString@@@CPersistContext@@KI?AVCCharString@@XZ owner leaf ??$GetDefaultVal@VCCharString@@ True False
+MISSING 00681ba0 00411010 ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z owner leaf Transfer True False
+MISSING 00681ba0 00403a10 ?GetAsCharArray@CCharString@@QBEPBDXZ owner leaf None True False
+MISSING 00681ba0 00403a00 ?GetLength@CCharString@@QBEJXZ owner leaf None True False
+MISSING 00681ba0 004aef50 ?IsSaving@CPersistContext@@QBE_NXZ owner leaf IsSaving True False
+OK  007464a0 -> 0041c780 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z sizes 11 11 
+OK  007467d0 -> 0041c780 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z sizes 11 11 
+
+MISSING lines graded by the coordinator with q.py (row 0x00681BA0's source at each owner address, /O2 /Oy):
+  0x0040E1E0 RELOCATION_MATCH, 0x00411010 RELOCATION_MATCH, 0x00403A10 RELOCATION_MATCH, 0x00403A00 MATCH, 0x004AEF50 MATCH
+  0x0043F450 (CEnginePrimitiveHandle copy ctor, row 0x007464A0's source): RELOCATION_MATCH

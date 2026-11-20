@@ -4,13 +4,13 @@
 // Name: slot 3 of the vtable 0x01267F48 (rtti-vtables.tsv); it ends with the landed CModeBase::FrameUpdate 0x0073AC50, so
 // the slot is FrameUpdate (as CModeUnderground's slot 3).
 // Callees: IsThingCarryingMeleeWeapon(CThing*) @ 0x006A15A0 (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0,
-// CAnimFilterOfGroup::SetGroup(const CCharString&) @ 0x0073DFF0 (out of line here), ~CCharString @ 0x0099EAE0,
+// CAnimFilterOfGroup::SetCurrentGroupName(const CCharString&) @ 0x0073DFF0 (out of line here), ~CCharString @ 0x0099EAE0,
 // CTCCreatureModeManager::CModeBase::FrameUpdate @ 0x0073AC50.
 // Data: "WADING_WITH_WEAPON" @ 0x012856C8, "WADING_NO_WEAPON" @ 0x01267F78 (read from Fable.exe .rdata).
 // Layout: as the landed constructor 0x00740A90: the CAnimFilterOfGroup member at +0x68 (built from WADING_NO_WEAPON).
 // Shape: an if/else whose arms each build an implicit CCharString temporary (the shared `push -1` default length and
 // the `lea ecx` are hoisted above the branch, each arm re-addresses its temporary with `lea`) and tail-merge into one
-// SetGroup call and destructor. Plain `ret`.
+// SetCurrentGroupName call and destructor. Plain `ret`.
 class CThing;
 
 class CCharString { public:
@@ -25,7 +25,7 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                       // +4
     unsigned long GroupCRC;                    // +8
-    void SetGroup(const CCharString& group);   // 0x0073DFF0
+    void SetCurrentGroupName(const CCharString& group);   // 0x0073DFF0
 };
 
 namespace NCreatureMode {
@@ -45,9 +45,9 @@ struct CModeWading : CModeBase {
 void CModeWading::FrameUpdate()
 {
     if (IsThingCarryingMeleeWeapon(m_pThing))
-        m_filter.SetGroup("WADING_WITH_WEAPON");
+        m_filter.SetCurrentGroupName("WADING_WITH_WEAPON");
     else
-        m_filter.SetGroup("WADING_NO_WEAPON");
+        m_filter.SetCurrentGroupName("WADING_NO_WEAPON");
     CModeBase::FrameUpdate();
 }
 

@@ -166337,9 +166337,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f2d660'
-        Module = '_unattributed'
-        Source = '00/f2/unattributed_TransferOutCTransferableLong009e2560_00f2d660.cpp'
-        TestSource = '00/f2/unattributed_TransferOutCTransferableLong009e2560_00f2d660_test.cpp'
+        Module = 'CPersistContext_TransferableComponent<EFeatAttackType>'
+        Source = '00/f2/CPersistContextTransferableComponent_TransferOut_00f2d660.cpp'
+        TestSource = '00/f2/CPersistContextTransferableComponent_TransferOut_00f2d660_test.cpp'
         PassPattern = '00f2d660_TEST PASS'
     }
     [pscustomobject]@{
@@ -198959,9 +198959,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007467d0'
-        Module = 'CKeyedOwner_007467d0'
-        Source = '00/74/CKeyedOwner007467d0_Register_007467d0.cpp'
-        TestSource = '00/74/CKeyedOwner007467d0_Register_007467d0_test.cpp'
+        Module = 'std::list<CEnginePrimitiveHandle>'
+        Source = '00/74/stdlist_pushback_007467d0.cpp'
+        TestSource = '00/74/stdlist_pushback_007467d0_test.cpp'
         PassPattern = '007467d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -206313,9 +206313,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00987d70'
-        Module = 'CPointerPair_00987d70'
-        Source = '00/98/CPointerPair00987d70_operator_00987d70.cpp'
-        TestSource = '00/98/CPointerPair00987d70_operator_00987d70_test.cpp'
+        Module = 'CShaderConstantRange'
+        Source = '00/98/CShaderConstantRange_operator_00987d70.cpp'
+        TestSource = '00/98/CShaderConstantRange_operator_00987d70_test.cpp'
         PassPattern = '00987d70_TEST PASS'
     }
     [pscustomobject]@{
@@ -240304,9 +240304,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007464a0'
-        Module = 'CEnginePrimitiveHandleList'
-        Source = '00/74/CEnginePrimitiveHandleList_InsertDefault_007464a0.cpp'
-        TestSource = '00/74/CEnginePrimitiveHandleList_InsertDefault_007464a0_test.cpp'
+        Module = 'std::list<CEnginePrimitiveHandle>'
+        Source = '00/74/stdlist_insert_007464a0.cpp'
+        TestSource = '00/74/stdlist_insert_007464a0_test.cpp'
         PassPattern = '007464a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -262441,9 +262441,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a80360'
-        Module = 'std::vector<C2DLineF>'
-        Source = '00/a8/stdvectorC2DLineF_vector_00a80360.cpp'
-        TestSource = '00/a8/stdvectorC2DLineF_vector_00a80360_test.cpp'
+        Module = 'std::vector<C2DBoxF, std::allocator<C2DBoxF>>'
+        Source = '00/a8/stdvector_vector_00a80360.cpp'
+        TestSource = '00/a8/stdvector_vector_00a80360_test.cpp'
         PassPattern = '00a80360_TEST PASS'
     }
     [pscustomobject]@{
@@ -276500,10 +276500,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00681ba0'
-        Module = '_global'
-        Source = '00/68/global_CParticleMorphsTransferEntry_00681ba0.cpp'
-        TestSource = '00/68/global_CParticleMorphsTransferEntry_00681ba0_test.cpp'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_SerialiseFlagMask_00681ba0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_SerialiseFlagMask_00681ba0_test.cpp'
         PassPattern = '00681ba0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '0072b420'

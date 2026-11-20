@@ -30,7 +30,7 @@ class CAnimFilterOfGroup { public:                  // vtable 0x01267568
     void* Group;                             // +4 CCharString
     unsigned long GroupCRC;                  // +8
     CAnimFilterOfGroup(const CCharString& group);   // 0x0073E8F0
-    void SetGroup(const CCharString& group);        // 0x0073DFF0
+    void SetCurrentGroupName(const CCharString& group);        // 0x0073DFF0
 };
 
 struct CModeBase {
@@ -63,7 +63,7 @@ CModeConversation::CModeConversation(CThing* thing, EConversationAttitude attitu
         EConversationAttitude current = talk->GetAttitude();
         CurrentAttitude = current;
         if (InitialAttitude != current)
-            Filter.SetGroup(GetAnimGroupName(current));
+            Filter.SetCurrentGroupName(GetAnimGroupName(current));
     }
 }
 

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D9350, 99 bytes (+ int3 padding), `ret`; vtable 0x01285990 slot 3.
 // Callees: CVectorMap::LowerBound (const) @ 0x004365B0 (inlined CTCTalk lookup, interface 15 = bit 15 of the +0x20 dword),
 //   CTCTalk::GetAttitude @ 0x006E3180, GetAnimGroupName(EConversationAttitude) @ 0x004CD9C0 (`__fastcall`),
-//   CAnimFilterOfGroup::SetGroup @ 0x0073DFF0, CModeBase::FrameUpdate @ 0x0073AC50 (qualified).
+//   CAnimFilterOfGroup::SetCurrentGroupName @ 0x0073DFF0, CModeBase::FrameUpdate @ 0x0073AC50 (qualified).
 // Name: FableWin.pdb `?FrameUpdate@CModeConversation@NCreatureMode@@UAEXXZ` (slot 3).
 // Layout: Ego_r.pdb CModeConversation (0x34, matches retail): CurrentAttitude +0x1c, InitialAttitude +0x20, Filter +0x24,
 //   ResetIdleAnim +0x30.
@@ -30,7 +30,7 @@ class CAnimFilterOfGroup { public:                  // vtable 0x01267568
     virtual void v00();
     void* Group;                             // +4 CCharString
     unsigned long GroupCRC;                  // +8
-    void SetGroup(const CCharString& group); // 0x0073DFF0
+    void SetCurrentGroupName(const CCharString& group); // 0x0073DFF0
 };
 
 struct CModeBase {                           // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -57,7 +57,7 @@ void NCreatureMode::CModeConversation::FrameUpdate()
         EConversationAttitude attitude = talk->GetAttitude();
         if (attitude != CurrentAttitude) {
             CurrentAttitude = attitude;
-            Filter.SetGroup(GetAnimGroupName(attitude));
+            Filter.SetCurrentGroupName(GetAnimGroupName(attitude));
             ResetIdleAnim = true;
         }
     }

@@ -29,6 +29,12 @@ public:
  CIDrawEnvironmentDisplacementParameters GetRenderFrameInterpolatedDisplacementParameters(float frame_fraction);   // 0x00885900
  CIDrawEnvironmentScreenFilterParameters GetRenderFrameInterpolatedScreenFilterParameters(float frame_fraction);   // 0x008859F0
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_SETRADIALBLURCENTERWORLDPOS
+ // Retail opt-in (NF201, 2026-11-20, row 0x0079C750 CTCBulletTime::PlayCreatureOnHitEffect): Ego_r.pdb 0x008C4B60 + FableWin.pdb 0x02A56CC0
+ // ?SetRadialBlurCenterWorldPos@CEnvironmentSpellEffectInterface@@QAEXABVC3DVector@@_N@Z = retail 0x00885110 (called on
+ // SpellEffectInterface +0x1960 with the creature's position and `push 1`, 0x0079C856..0x0079C86B). Declaration only.
+ void SetRadialBlurCenterWorldPos(const C3DVector& position, bool immediate);                // 0x00885110
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_FRAMEUPDATE
  // Retail opt-in (NF118, PRIORITY q4757, row 0x006B32A0 CEnvironment::UpdateInterpolation): Ego_r.pdb / FableWin.pdb
  // ?FrameUpdate@CEnvironmentSpellEffectInterface@@QAEXXZ, retail 0x00885010 (landed: copies the four current-frame records into

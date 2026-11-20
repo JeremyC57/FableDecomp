@@ -5,12 +5,12 @@
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E), CCharString::operator= @ 0x0099EFB0, CCRC::Calc
 //   @ 0x004014A0 (`__fastcall`; "" @ 0x0129AAF4 for a null string), ~CCharString @ 0x0099EAE0, CVectorMap::LowerBound (const)
 //   @ 0x004365B0 (inlined HasTC + GetTC for CTCCarrying 0x46 and CTCWeapon 0x48), CTCCarrying::GetThingInPrimarySlot
-//   @ 0x006A1440, CTCWeapon::GetAnimationGroupName @ 0x005DABE0, CAnimFilterOfGroup::SetGroup @ 0x0073DFF0,
+//   @ 0x006A1440, CTCWeapon::GetAnimationGroupName @ 0x005DABE0, CAnimFilterOfGroup::SetCurrentGroupName @ 0x0073DFF0,
 //   CModeStandBase::OnActivate @ 0x008621A0 (qualified; CModeCarryingStandBase does not override slot 5).
 // Name: FableWin.pdb `?OnActivate@CModeCarryingWeaponStand@NCreatureMode@@UAEXXZ` (slot 5).
 // Layout: Ego_r.pdb CModeCarryingWeaponStand (0x74): CModeStandBase 0x68, Filter +0x68 (CAnimFilterOfGroup: Group +4,
 //   GroupCRC +8).
-// Shape: as the landed CModeStrafe::SetChangeOfWeapon @ 0x008E9850, SetGroup is expanded inline at one site (here the
+// Shape: as the landed CModeStrafe::SetChangeOfWeapon @ 0x008E9850, SetCurrentGroupName is expanded inline at one site (here the
 //   first, with the literal's temporary) and called out of line at the other; the filter address rides in edi; the
 //   carrying test is the byte presence test, the weapon test the dword `unsigned long` HasTC (`mov ecx,[eax+28h] ;
 //   test ch,1`); both GetTC lookups are the one-ternary returned form (component straight into ecx) and share the
@@ -40,7 +40,7 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                       // +4
     unsigned long GroupCRC;                    // +8
-    void SetGroup(const CCharString& group);   // 0x0073DFF0
+    void SetCurrentGroupName(const CCharString& group);   // 0x0073DFF0
     FABLE_FORCEINLINE void SetGroupInline(const CCharString& group)   // the same body, expanded at this site
     {
         Group = group;
@@ -103,7 +103,7 @@ void NCreatureMode::CModeCarryingWeaponStand::OnActivate()
     if (ParentThing->HasTC(0x46)) {
         CThing* weapon = ParentThing->GetTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
         if (weapon != 0 && weapon->HasTC(0x48))
-            Filter.SetGroup(weapon->GetTC<CTCWeapon>(0x48)->GetAnimationGroupName());
+            Filter.SetCurrentGroupName(weapon->GetTC<CTCWeapon>(0x48)->GetAnimationGroupName());
     }
     CModeCarryingStandBase::OnActivate();
 }

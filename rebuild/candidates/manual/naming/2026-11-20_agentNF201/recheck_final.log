@@ -1,0 +1,78 @@
+addr       parity           behav  name
+00681ba0   WARN STANDIN_LEAF ?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z (catalog _global::CParticleMorphs_TransferEntry; names another function)
+00681ba0   RELOCATION_MATCH PASS   _global::CParticleMorphs_TransferEntry
+0073aac0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+0073aac0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0073aac0   RELOCATION_MATCH PASS   CTCCreatureModeManager::CModeBase::OnActivate
+007464a0   WARN STANDIN_LEAF ?insert@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@std@@@2@U32@@Z (catalog CEnginePrimitiveHandleList::InsertDefault; names another function)
+007464a0   RELOCATION_MATCH PASS   CEnginePrimitiveHandleList::InsertDefault
+007467d0   WARN STANDIN_LEAF ?push_back@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXXZ (catalog CKeyedOwner_007467d0::Register; names another function)
+007467d0   RELOCATION_MATCH PASS   CKeyedOwner_007467d0::Register
+0079c750   RELOCATION_MATCH PASS   CTCBulletTime::PlayCreatureOnHitEffect
+007ab190   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+007ab190   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007ab190   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+007ab190   WARN SHARED_HEADER_AVAILABLE CEnvironment (engine/CEnvironment.h)
+007ab190   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager (engine/CBulletTimeManager.h)
+007ab190   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007ab190   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007ab190   RELOCATION_MATCH PASS   CTCAssassinRush::FrameUpdate
+00890150   RELOCATION_MATCH PASS   CGameScriptInterface::RadialBlurFadeOut
+008d75d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d75d0   WARN RELOC_CONFLICT: ?IsThingCarryingMeleeWeapon@@YI_NPAVCThing@@@Z -> 006a15a0 here, 006a1620 in landed 0091f050
+008d75d0   RELOCATION_MATCH PASS   NCreatureMode::CModeWading::FrameUpdate
+008d87c0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d87c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d87c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d87c0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008d87c0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+008d87c0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008d87c0   RELOCATION_MATCH PASS   NCreatureMode::CModeCarryingWeaponStand::OnActivate
+008d9220   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+008d9220   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d9220   RELOCATION_MATCH PASS   NCreatureMode::CModeConversation::CModeConversation
+008d92c0   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+008d92c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d92c0   RELOCATION_MATCH PASS   NCreatureMode::CModeConversation::CModeConversation
+008d9350   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+008d9350   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d9350   RELOCATION_MATCH PASS   NCreatureMode::CModeConversation::FrameUpdate
+008e9850   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e9850   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::SetChangeOfWeapon
+00987d70   WARN STANDIN_LEAF ??9CShaderConstantRange@@QBE_NABV0@@Z (catalog CPointerPair_00987d70::operator!=; names another function)
+00987d70   MATCH            PASS   CPointerPair_00987d70::operator!=
+009cc270   RELOCATION_MATCH PASS   CBankFile::GetEntryDataOffset
+00a80360   RELOCATION_MATCH PASS   std::vector<C2DLineF, std::allocator<C2DLineF>>::vector
+00b5af60   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b5af60   RELOCATION_MATCH PASS   CEngineScreenEffectColourFilter::Render
+00f2d660   RELOCATION_MATCH PASS   _unattributed::TransferOut_CTransferableLong_009e2560
+
+WINS: 18
+  00681ba0 RELOCATION_MATCH _global::?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z
+  0073aac0 RELOCATION_MATCH CTCCreatureModeManager::CModeBase::?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ
+  007464a0 RELOCATION_MATCH CEnginePrimitiveHandleList::?insert@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE?AU?$_List_iterator@VCEnginePrimitiveHandle@@U?$_Nonconst_traits@VCEnginePrimitiveHandle@@@std@@@2@U32@@Z
+  007467d0 RELOCATION_MATCH CKeyedOwner_007467d0::?push_back@?$list@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXXZ
+  0079c750 RELOCATION_MATCH CTCBulletTime::?PlayCreatureOnHitEffect@CTCBulletTime@@QAEXPAVCThingCreatureBase@@@Z
+  007ab190 RELOCATION_MATCH CTCAssassinRush::FrameUpdate
+  00890150 RELOCATION_MATCH CGameScriptInterface::?RadialBlurFadeOut@CGameScriptInterface@@UBEXMPAX@Z
+  008d75d0 RELOCATION_MATCH NCreatureMode::CModeWading::?FrameUpdate@CModeWading@NCreatureMode@@UAEXXZ
+  008d87c0 RELOCATION_MATCH NCreatureMode::CModeCarryingWeaponStand::?OnActivate@CModeCarryingWeaponStand
+  008d9220 RELOCATION_MATCH NCreatureMode::CModeConversation::??0CModeConversation@NCreatureMode@@QAE@PAVCThing@@@Z
+  008d92c0 RELOCATION_MATCH NCreatureMode::CModeConversation::??0CModeConversation@NCreatureMode@@QAE@PAVCThing@@J@Z
+  008d9350 RELOCATION_MATCH NCreatureMode::CModeConversation::?FrameUpdate@CModeConversation
+  008e9850 RELOCATION_MATCH NCreatureMode::CModeStrafe::?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z
+  00987d70 MATCH CPointerPair_00987d70::??9CShaderConstantRange@@QBE_NABV0@@Z
+  009cc270 RELOCATION_MATCH CBankFile::?GetEntryDataOffset@CBankFile@@QBEKK@Z
+  00a80360 RELOCATION_MATCH std::vector<C2DLineF>::??0?$vector@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@QAE@I@Z
+  00b5af60 RELOCATION_MATCH CEngineScreenEffectColourFilter::?Render@CEngineScreenEffectColourFilter@@UAEXABVCEngineComponentRenderParams@@@Z
+  00f2d660 RELOCATION_MATCH _unattributed::?TransferOut@?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z

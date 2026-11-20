@@ -21,6 +21,13 @@ public:
     // implicit memberwise copy of the landed includers is unchanged.
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 #endif
+#if defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_COUNTED_COPY) && !defined(FABLE_RETAIL_CIVCOUNTEDPOINTER)
+    // Opt-in (NF201, 2026-11-20, row 0x007464A0 std::list<CEnginePrimitiveHandle>::insert(iterator)): the same counted copy constructor
+    // as the FABLE_RETAIL_CIVCOUNTEDPOINTER block above (FableWin.pdb ??0?$CIVCountedPointer@..@@QAE@ABV0@@Z, inline in retail), without
+    // that block's Release / Reset bodies: that TU expands the copy (0x007464D4..0x007464E3 `mov [ecx+4],edx ; test ecx,ecx ; je ; inc
+    // dword ptr [ecx+4]`) and the default Release, whose zero store follows the null test (0x0074653B `mov [esp+8],0` after the join).
+    CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
+#endif
 #if defined(FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT_CLEAR)
     // Nested opt-in (chunk 2013, row 0x00595CC1 CFrontEndManager::ConstructFileDescription, a `#pragma optimize("s")` TU): as
     // FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT (one level, so the size-mode inliner expands it), but with Release()'s null store

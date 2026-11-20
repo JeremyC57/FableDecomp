@@ -1,5 +1,5 @@
 // CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature) -- remember the hit creature, start the bullet-time radial blur (the damage blur when the hero himself was hit, the normal one otherwise) with its fade, and centre the blur on the creature
-// Leaf: PlayCreatureOnHitEffect
+// Leaf: ?PlayCreatureOnHitEffect@CTCBulletTime@@QAEXPAVCThingCreatureBase@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079C750, 298 bytes (+6 int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10
@@ -13,102 +13,76 @@
 //   +0x100..+0x128; the world's +0x18 object holds the spell-effect interface at +0x1960 and the radial-blur manager at
 //   +0x1964.
 // Shape: the hit creature is stored through the intelligent pointer's inline operator= from a CIntelligentPointer
-//   (creature) temporary; the spell-effect interface is a named local homed in the dead `creature` slot, the blur
-//   manager a named local (edi), the parent a third named local (ebp, loaded before the GetPItem compare).
+// Names (NF201, 2026-11-20): own symbol Ego_r.pdb 0x007A2170 + FableWin.pdb 0x026A85B0
+//   ?PlayCreatureOnHitEffect@CTCBulletTime@@QAEXPAVCThingCreatureBase@@@Z (engine/CTCBulletTime.h declares it; landed caller 0x00667D30
+//   binds it; was the CThing* form). Callees: Ego_r.pdb 0x006F44E0 + FableWin.pdb 0x0246CD10 ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@
+//   QAEPAXMW4ScreenEffectPriority@NScreenEffect@@ABVC3DVector@@M1MMM@Z (0x006B8550; was the stand-in CRadialBlurManager::AddRadialBlur),
+//   Ego_r.pdb 0x006F4280 + FableWin.pdb 0x0246CEA0 ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z (0x006B82E0; was
+//   CRadialBlurManager::FadeOutRadialBlur), Ego_r.pdb 0x008C4B60 + FableWin.pdb 0x02A56CC0 ?SetRadialBlurCenterWorldPos@
+//   CEnvironmentSpellEffectInterface@@QAEXABVC3DVector@@_N@Z (0x00885110), reached through the FableWin inline accessors
+//   GetWorld().GetEnvironment().GetSpellEffectInterface() / .GetSpellEffectInterpolator() (the CTCBulletTime::Pause 0x0079CF30 recipe).
+//   Retail pushes `push 0 ; push 0` for (time, priority): time 0.0f and priority 0 (SCREEN_EFFECT_PRIORITY_OTHER in the FULL enum).
+// Ported (NF201) from the local CThing / CIntelligentPointer / def / world models onto the shared headers.
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CTCBULLETTIME
+#define FABLE_RETAIL_CTCBULLETTIME_MEMBERS
+#define FABLE_RETAIL_CTCBULLETTIME_PLAYEFFECT
+#define FABLE_RETAIL_CTCBULLETTIME_FRAME_PASS23
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_ENVIRONMENT
+#define FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERPOLATOR
+#define FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERFACE
+#define FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_ARGPASSER
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_RADIALBLURFADETO_VECTOR
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_RADIALBLURFADEOUT
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_SETRADIALBLURCENTERWORLDPOS
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CDefPointer.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
 #include "engine/C3DVector.h"
-class CBaseObject;
-class CThing {
-public:
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject* item);           // 0x00A01B90
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        CThing* item = ((CThing*)other.GetPItem());
-        SetPItem((CBaseObject*)item);
-        return *this;
-    }
-};
-struct CRadialBlurParams {                      // one RadialBlur* block of the def (0x2c bytes)
-    C3DVector ThresholdCol;                     // +0x00
-    float     Length;                           // +0x0c
-    C3DVector IntensityCol;                     // +0x10
-    float     Fade;                             // +0x1c
-    float     Range;                            // +0x20
-    float     Twist;                            // +0x24
-    float     FadeTimeSecs;                     // +0x28
-};
-class CSpecialAbilitiesBulletTimeDef { public:
-    unsigned char     _pad00[0xd4];
-    CRadialBlurParams RadialBlur;               // +0xd4
-    CRadialBlurParams DamageRadialBlur;         // +0x100
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    T* operator->() const { return Object; }
-};
-struct CRadialBlurManager {
-    void* AddRadialBlur(long a, long b, const C3DVector& threshold, float length, const C3DVector& intensity,
-                        float fade, float range, float twist);   // 0x006B8550
-    void FadeOutRadialBlur(float seconds, void* key);            // 0x006B82E0
-};
-class CEnvironmentSpellEffectInterface { public:
-    void SetRadialBlurCenterWorldPos(const C3DVector& position, bool immediate);   // 0x00885110
-};
-struct CWorldEffects {
-    unsigned char _pad00[0x1960];
-    CEnvironmentSpellEffectInterface* SpellEffects;   // +0x1960
-    CRadialBlurManager*               RadialBlurs;    // +0x1964
-};
-class CWorld { public:
-    unsigned char  _pad00[0x18];
-    CWorldEffects* PEffects;                    // +0x18
-};
+#include "engine/CThingCreatureBase.h"
+#include "engine/CSpecialAbilitiesBulletTimeDef.h"
+#include "engine/CTCBulletTime.h"
+#include "engine/CWorld.h"
+#include "engine/CEnvironment.h"
+#include "engine/CEnvironmentSpellEffectInterface.h"
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
 
-class CTCBase
-{
-protected:
-    CWorld& GetWorld() const;   // 0x00686A70
-};
-
-class CTCBulletTime : public CTCBase {
-public:
-    void*         __vftable;                    // +0x00 (CTCBase)
-    CThing*       ParentThing;                  // +0x04
-    unsigned char _pad08[0x20 - 0x08];
-    CDefPointer<const CSpecialAbilitiesBulletTimeDef> PDef;   // +0x20
-    unsigned char _pad24[0x44 - 0x24];
-    CIntelligentPointer<CThing> HitCreatureBlur;   // +0x44
-    void*         RadialBlurKey;                // +0x4c
-    void PlayCreatureOnHitEffect(CThing* creature);
-};
-
-void CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature)
+void CTCBulletTime::PlayCreatureOnHitEffect(CThingCreatureBase* creature)
 {
     HitCreatureBlur = CIntelligentPointer<CThing>(creature);
-    CEnvironmentSpellEffectInterface* spellEffects = GetWorld().PEffects->SpellEffects;
-    CRadialBlurManager* blurs = GetWorld().PEffects->RadialBlurs;
+    CEnvironmentSpellEffectInterface& spell_effects = GetWorld().GetEnvironment().GetSpellEffectInterface();
+    CEnvironmentSpellEffectInterpolator& interpolator = GetWorld().GetEnvironment().GetSpellEffectInterpolator();
     CThing* parent = ParentThing;
-    if (((CThing*)HitCreatureBlur.GetPItem()) == parent) {
-        RadialBlurKey = blurs->AddRadialBlur(0, 0, PDef->DamageRadialBlur.ThresholdCol, PDef->DamageRadialBlur.Length,
-                                             PDef->DamageRadialBlur.IntensityCol, PDef->DamageRadialBlur.Fade,
-                                             PDef->DamageRadialBlur.Range, PDef->DamageRadialBlur.Twist);
-        blurs->FadeOutRadialBlur(PDef->DamageRadialBlur.FadeTimeSecs, RadialBlurKey);
+    if (HitCreatureBlur.Get() == parent) {
+        RadialBlurKey = interpolator.RadialBlurFadeTo(0.0f, (NScreenEffect::ScreenEffectPriority)0, PDef->DamageRadialBlurThresholdCol,
+                                                      PDef->DamageRadialBlurLength, PDef->DamageRadialBlurIntensityCol,
+                                                      PDef->DamageRadialBlurFade, PDef->DamageRadialBlurRange, PDef->DamageRadialBlurTwist);
+        interpolator.RadialBlurFadeOut(PDef->DamageRadialBlurFadeTimeSecs, RadialBlurKey);
     } else {
-        RadialBlurKey = blurs->AddRadialBlur(0, 0, PDef->RadialBlur.ThresholdCol, PDef->RadialBlur.Length,
-                                             PDef->RadialBlur.IntensityCol, PDef->RadialBlur.Fade,
-                                             PDef->RadialBlur.Range, PDef->RadialBlur.Twist);
-        blurs->FadeOutRadialBlur(PDef->RadialBlur.FadeTimeSecs, RadialBlurKey);
+        RadialBlurKey = interpolator.RadialBlurFadeTo(0.0f, (NScreenEffect::ScreenEffectPriority)0, PDef->RadialBlurThresholdCol,
+                                                      PDef->RadialBlurLength, PDef->RadialBlurIntensityCol,
+                                                      PDef->RadialBlurFade, PDef->RadialBlurRange, PDef->RadialBlurTwist);
+        interpolator.RadialBlurFadeOut(PDef->RadialBlurFadeTimeSecs, RadialBlurKey);
     }
-    spellEffects->SetRadialBlurCenterWorldPos(((CThing*)HitCreatureBlur.GetPItem())->GetPos(), true);
+    spell_effects.SetRadialBlurCenterWorldPos(HitCreatureBlur.Get()->GetPos(), true);
 }
