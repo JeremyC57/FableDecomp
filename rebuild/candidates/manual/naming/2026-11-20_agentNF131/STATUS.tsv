@@ -1,0 +1,55 @@
+address	change	grade	test	grades_used	entries	note
+0x008FCFD0	self rename: free stand-in -> out-of-line CAIStateGroupBase member on the shared headers	MATCH	PASS	1	q5141	test unchanged (standalone model)
+0x008FD000	not changed (waits)	n/a	n/a	0	q4994 q5140	free stand-in self row; rename waits for 5 binders
+0x009109B0	open: not reached	n/a	n/a	0	q4993	self row; port onto engine/CThing.h family needed
+0x00913F30	open: not attempted	n/a	n/a	0	q4994 q5140	pointer-result stand-in over a local non-const CThingSearchTools model (see APPLIED q4994)
+0x00914F00	ported onto the retail shared headers (0x00915350 block + CTHINGCREATUREBASE_ANIMATION); leaf-only self rename	RELOCATION_MATCH	PASS	2	q5141 q5021	form 1 C2039 GetAnimFromName (missing ANIMATION opt-in); callees GetPWorldSeed / AIAction_PerformActionAndWait / GetAnimFromName / 2 PlayAnimation ctors to PDB spellings; test unchanged
+0x0091A6F0	self rename onto engine/CAIStateGroup_WorkBase.h ISINWORKHOURS + explicit instantiation	RELOCATION_MATCH	PASS	1	q4946	leaf QAE non-template -> template IBE (RENAMES s1); local CThing/CTCVillage/CTCVillageMember/CAIBrain/CAIStateGroupBase/WorkBase models dropped; test unchanged (standalone model); self file name changes (module CAIStateGroup_WorkBase<CAIStateGroupBase>)
+0x0091B170	ported onto retail class opt-in FABLE_RETAIL_CAISTATEGROUP_HANDYMAN (hdr)	RELOCATION_MATCH	PASS	1	q4946	leaf-only self rename HandyMan_Methods QAE -> HandyMan UAE; callees helper_91a6f0 -> IsInWorkHours (template IBE), tail_91b010 -> AcquireWorkSpot AAE (self row 0x0091B010 spelling); test unchanged (standalone)
+0x0091F0D0	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x00920730	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x009211D0	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x009284B0	ported onto retail class opt-in (existing BANDITPLAYDICE + _VIRTUALS); leaf-only self rename	RELOCATION_MATCH	PASS	1	q5141	WorldRandomRange helper -> shared GFRandom; test unchanged
+0x0092A0C0	stand-in class re-based on the retail ApprenticeHero class (existing opt-in); GetPWorldSeed decl dropped; local CCharString -> fable_string.h	RELOCATION_MATCH	PASS	1	q5141	own stand-in leaf unchanged (PDB GetDummy IAE needs its 3 callers: NAME_FIXES); test unchanged
+0x0093A5C0	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x0093A8C0	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x0093D3A0	open: not reached	n/a	n/a	0	q5030	q5030 family (moves whole or not at all)
+0x0093D800	open: not reached	n/a	n/a	0	q5030	family with 0x0093D3A0 / 0x0093DB10 / 0x0093DC10
+0x0093DB10	open: not reached	n/a	n/a	0	q5030	q5030 family (moves whole or not at all)
+0x0093DC10	open: not reached	n/a	n/a	0	q5030	q5030 family (moves whole or not at all)
+0x00944730	ported: local CAIStateGroupBase -> retail shared header; class re-based on CAIStateGroup_WorkBase<CAIStateGroupBase>	RELOCATION_MATCH	PASS	1	q4946	work/wb.py transformer; IsInWorkHours binds the template IBE spelling; test unchanged
+0x00944E80	ported: local CAIStateGroupBase -> retail shared header; class re-based on CAIStateGroup_WorkBase<CAIStateGroupBase>	RELOCATION_MATCH	PASS	1	q4946	work/wb.py transformer; IsInWorkHours binds the template IBE spelling; test unchanged
+0x00947280	ported: local CAIStateGroupBase -> retail shared header; class re-based on CAIStateGroup_WorkBase<CAIStateGroupBase>	RELOCATION_MATCH	PASS	1	q4946	work/wb.py transformer; IsInWorkHours binds the template IBE spelling; test unchanged
+0x009473E0	ported: local CAIStateGroupBase (with Random helper) -> retail shared header + engine/GFRandom.h; re-based on CAIStateGroup_WorkBase<CAIStateGroupBase>	RELOCATION_MATCH	PASS	1	q4946 q5141	IsInWorkHours binds the template IBE spelling; GetPWorldSeed stays ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (already right); test unchanged
+0x0094EF70	ported onto retail class opt-in FABLE_RETAIL_CAISTATEGROUP_FOLLOWPLAYER (hdr); leaf-only self rename	RELOCATION_MATCH	PASS	1	q5141	GetObj -> GetPWorldSeed, Method -> GFFloatRandom; test unchanged
+0x00951B20	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x009551A0	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x00956380	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x00956FE0	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x00964360	open: not attempted	n/a	n/a	0	q4994 q5140	pointer-result stand-in over a local non-const CThingSearchTools model (see APPLIED q4994)
+0x00964CA0	open: not attempted	n/a	n/a	0	q4994 q5140	pointer-result stand-in over a local non-const CThingSearchTools model (see APPLIED q4994)
+0x00967A20	open: not reached	n/a	n/a	0	q5021	binds a stand-in AIAction_PerformActionAndWait spelling (nf127 probe)
+0x0096C9A0	stand-in class re-based on the retail CAIStateGroupBase (MEMBERS, PERFORMACTION); stand-in decls dropped; local CCharString -> fable_string.h	RELOCATION_MATCH	PASS	2	q5141 q5021	form 1 C2011 CCharString redefinition; own stand-in leaf unchanged (pre-existing split: caller 0x0096CD70 binds the PDB Eat; class has only a quarantine header); test unchanged
+0x00977B10	callee decl moved in place onto the row's local CAIStateGroupBase model (protected const)	RELOCATION_MATCH	PASS	2	q4994 q5140	form 1 C2143 (CThingSearchTools not yet declared): a forward declaration added; test unchanged
+0x00978FD0	open: not attempted	n/a	n/a	0	q4994 q5140	pointer-result stand-in over a local non-const CThingSearchTools model (see APPLIED q4994)
+0x0097DB70	not-a-binder (self row already defines the PDB spelling)	n/a	n/a	0	q5021	NF127 probe
+0x009863E0	open: not attempted	n/a	n/a	0	q4994 q5140	pointer-result stand-in over a local non-const CThingSearchTools model (see APPLIED q4994)
+0x0098B5E0	not changed (q4650 deferred)	n/a	n/a	0	q4650	self row keeps the Codex view stand-in; rename waits for held 0x00B5E700
+0x00994930	blocked: self rename waits (no-new-split rule)	RELOCATION_MATCH (draft)	n/a	1	q6182	in-place respell of the row's own ctor to PBXK graded RELOCATION_MATCH: work/00994930_ready.cpp; waits for 0x00A62120 (held by NF129, binds PAXK) and 0x009FF590 (blocked, MemoryInput stand-in); not in rows/
+0x009B08C0	ported: stream base on retail engine/CDataInputStream.h, local CBaseClassNonCopyable -> engine/CBaseClassNonCopyable.h; ctor/dtor decls respelled in place; local CAFile/CDiskFileWin32 re-based per RTTI	RELOCATION_MATCH	PASS	1	q6180 q6181	binds AAVCAFile@@K ctor + UAE dtor; also 0x0099A2F0 QAE stand-in -> PDB IAE (shared header, both PDBs); test unchanged
+0x009C8700	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x009C8FB0	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x009D0380	ctor/dtor decls respelled in place; local CAFile/CDiskFileWin32 re-based per RTTI; local CDataInputStream vptr word -> declared virtual dtor	RELOCATION_MATCH	PASS	1	q6180 q6181	was PAVCAFile@@J (cast) / QAE; test unchanged
+0x009D4C30	ctor/dtor decls respelled in place; local CAFile/CDiskFileWin32 re-based per RTTI; local stream vptr word -> virtual dtor	RELOCATION_MATCH	PASS	1	q6180 q6181	was PAVCDiskFileWin32@@K / QAE; test unchanged
+0x009FF590	blocked: port	n/a	n/a	0	q6182	binds ??0MemoryInput@@QAE@PBXK@Z: local stand-ins InputStream / MemoryInput for CDataInputStream / CMemoryDataInputStream (row also includes the quarantine CGraphicDataBank under a renaming macro); InputStream is also the parameter type of the GraphicHeader::Load stand-in callee, so moving MemoryInput onto the retail engine/CMemoryDataInputStream.h needs that callee (and its own row) respelled onto CDataInputStream& together; not attempted
+0x00A42EA0	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x00A4DF10	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x00A62120	deferred: held by NF129	n/a	n/a	0	q6182	binds ??0CMemoryDataInputStream@@QAE@PAXK@Z; nflocks owner NF129 (its hand-back ported the row for q4249)
+0x00A99510	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x00A9B740	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x00AC3E00	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x00BDC180	rewritten: ordinary local CMemoryDataInputStream(GetBlockData(id), size) via candidates-header opt-ins (hdr)	RELOCATION_MATCH	PASS	2	q6182	old no-Leaf row; ctor PAE -> PBXK, GetBlockData 0x00BE04C0 QAEPAEJK -> PDB QBEPBEJ; stream object sized 0x1C (Ego_r) for the retail frame (first form DIFFER 327v327: sub esp,18h); test rewritten on the opt-ins (rows/00bdc180_test.cpp, same PassPattern)
+0x00BDE390	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBXJ@Z; work/mds.py transformer; test unchanged
+0x00BDE860	callee respelled in place (row-local CMemoryDataInputStream ctor decl -> const void*, unsigned long)	RELOCATION_MATCH	PASS	1	q6182	was ??0CMemoryDataInputStream@@QAE@PBEJ@Z; work/mds.py transformer; test unchanged
+0x00BF8030	callee respelled in place: ctor -> PBXK; GetBlockData -> PDB QBEPBEJ	RELOCATION_MATCH	PASS	2	q6182	was PBDJ / QAEPBDJ; test unchanged
+0x00BF84C0	callee respelled in place: ctor -> PBXK; GetBlockData -> PDB QBEPBEJ	RELOCATION_MATCH	PASS	2	q6182	was PBDJ / QAEPBDJ; test unchanged

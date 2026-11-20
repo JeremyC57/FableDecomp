@@ -1,5 +1,7 @@
 // CLocalDetailCacheMap::CQuadTreeElement::LoadStaticContents(CEngineStaticMapFileBlockManager* manager, const CObjectTypeCollectionPalette& palette) -- once the element's file block is in memory, read its object-collection headers and the four optional children from it (requesting the block on first call); false when already loaded or on an allocation failure (which unloads again)
 // Leaf: LoadStaticContents
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Retail 0x00BDE390, 624 bytes, `ret 8` (Ego_r.pdb ?LoadStaticContents@CQuadTreeElement@CLocalDetailCacheMap@@QAE_NPAVCEngineStaticMapFileBlockManager@@ABVCObjectTypeCollectionPalette@2@@Z).
 // Callees: CEngineStaticMapFileBlockManager RequestFileBlock 0x00BE06B0 / IsFileBlockLoaded 0x00BE0480 / GetFileBlockData
 // 0x00BE04C0 / ReleaseRequest 0x00BE0400 (names but the last unconfirmed), CMemoryDataInputStream(const void*, long)
@@ -45,7 +47,7 @@ private:
 };
 class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned char* StreamSource;                        // +0x18
-    CMemoryDataInputStream(const void* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     ~CMemoryDataInputStream();                          // 0x00993B10
 };
 class CEngineStaticMapFileBlockManager { public:

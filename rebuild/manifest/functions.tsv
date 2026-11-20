@@ -31303,7 +31303,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0091a5b0	FindMostRecentMessage	CMessageEventManager	__thiscall	CMessageEvent *	2	CMessageEventManager *,CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_HasExtraData,CMessageEventFilter_OccuredBetween> *	1	yes	accepted									
 0091a630	HasSeller	CAIStateGroup_WorkBase<CAIStateGroupBase>	unknown	undefined	0		0	yes	accepted									
 0091a670	WaitForMessageEvent	CAIStateGroupBase	__thiscall	void	1	CCOE_AltarEvil *	1	yes	accepted									
-0091a6f0	IsInWorkHours	CAIStateGroup_WorkBase	__thiscall	bool	1	CAIStateGroup_WorkBase<CAIStateGroupBase> *	1	yes	accepted									
+0091a6f0	IsInWorkHours	CAIStateGroup_WorkBase<CAIStateGroupBase>	__thiscall	bool	1	CAIStateGroup_WorkBase<CAIStateGroupBase> *	1	yes	accepted									
 0091a750	GetAllThingsInRoughArea<CThingCreatureBase, std::list<CThingCreatureBase *, std::allocator<CThingCreatureBase *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 0091a9b0	AcquireSeller	CAIStateGroup_WorkBase<CAIStateGroupBase>	__thiscall	void	1	CAIStateGroup_WorkBase<CAIStateGroupBase> *	1	yes	accepted									
 0091ad70	list<CTCBase*::remove	_global	__thiscall	void	2	list<CTCBase*,std::allocator<CTCBase*>_> *,CTCBase * *	1	yes	accepted									

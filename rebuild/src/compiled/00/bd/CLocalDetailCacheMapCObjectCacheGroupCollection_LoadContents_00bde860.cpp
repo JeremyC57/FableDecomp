@@ -1,5 +1,7 @@
 // CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents(CEngineStaticMapFileBlockManager* blocks, const CObjectTypeCollectionPalette& palette) -- once this group's file block is in memory, decompress its contents and load one object-type collection per stored type; false when already loaded or a collection fails (the contents are unloaded again)
 // Leaf: ?LoadContents@CObjectCacheGroupCollection@CLocalDetailCacheMap@@QAE_NPAVCEngineStaticMapFileBlockManager@@ABVCObjectTypeCollectionPalette@2@@Z
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Shape (what keeps retail's register plan: ebx = 4 for the two ReadLongs, then the buffer data across the
 //   GetDataAndSkip calls, and the zero register created only before the type-collection loop; ebp = the written size
 //   across the CTemporaryBuffer constructor):
@@ -63,7 +65,7 @@ private:
 class CMemoryDataInputStream : public CDataInputStream {
 public:
     const unsigned char* StreamSource;                       // +0x18
-    CMemoryDataInputStream(const unsigned char* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     virtual ~CMemoryDataInputStream();                               // 0x00993B10
     FABLE_FORCEINLINE const unsigned char* GetDataAndSkip(long bytes)
     {

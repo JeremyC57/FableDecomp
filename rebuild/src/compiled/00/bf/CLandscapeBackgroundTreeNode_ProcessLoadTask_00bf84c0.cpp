@@ -1,5 +1,8 @@
 // CLandscapeBackgroundTreeNode::ProcessLoadTask(long, double, bool, CEngineStaticMapFileBlockManager*) -- advance this node's asynchronous load task: past the deadline report still-loading; drop the task when it may be aborted; once its file block is resident build the sub-node (a patch loaded with the node's Z range, or a split branch whose own load is then started) and, for a branch, pump its background loading, adopting it as the node's sub-node when it completes (LS_LOADED 1 / LS_LOADING 2 / LS_FAILED 3)
 // Leaf: ProcessLoadTask
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
+//   Also GetBlockData 0x00BE04C0 respelled to the PDB ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (const, const unsigned char*), was QAEPBDJ.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF84C0, 842 bytes (+ int3 padding), `ret 14h`.
 // Callees: GFGetFastSubFrameTimer 0x009E1C70; TestIfLoadTaskCanBeAborted 0x00BF6490; on the file-block manager 0x00BE0400 (unlock),
 //   0x00BE0420 (prioritise), 0x00BE0480 (is loaded), 0x00BE04C0 (block data); CMemoryDataInputStream(data, size) 0x00994930 /
@@ -21,14 +24,14 @@ enum LS_LOADING_STATUS { LS_NONE, LS_LOADED, LS_LOADING, LS_FAILED };
 class CDataInputStream;
 class CMemoryDataInputStream { public:
     unsigned char _d[0x1c - 4];
-    CMemoryDataInputStream(const char* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     virtual ~CMemoryDataInputStream();                      // 0x00993B10
     operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
 };
 class CEngineStaticMapFileBlockManager { public:
     void PrioritiseBlock(long pos);                 // 0x00BE0420
     bool IsBlockLoaded(long pos);                   // 0x00BE0480
-    const char* GetBlockData(long pos);             // 0x00BE04C0
+    const unsigned char* GetBlockData(long pos) const;   // 0x00BE04C0 Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0 (NF131)
 public:
     void ReleaseRequest(long);   // 0x00BE0400
 };

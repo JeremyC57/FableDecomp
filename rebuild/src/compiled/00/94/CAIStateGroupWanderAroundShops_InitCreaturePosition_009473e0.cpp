@@ -1,5 +1,11 @@
 // CAIStateGroup_WanderAroundShops::InitCreaturePosition() -- during work hours and with the script-def chance (percent), pick a random shop; when one is found, place the creature next to it (beside the building for a building, else near its position, radius 5)
 // Leaf: ?InitCreaturePosition@CAIStateGroup_WanderAroundShops
+// NF131 (2026-11-20, q4946): the row-local CAIStateGroupBase model gives way to the retail engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE,
+//   _MEMBERS) and engine/CAIStateGroup_WorkBase.h; the class is re-based on CAIStateGroup_WorkBase<CAIStateGroupBase> (RTTI ghidra_out/rtti_bases.tsv),
+//   so the call to 0x0091A6F0 binds ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (Ego_r.pdb 0x0093E1A0 + FableWin.pdb
+//   0x02BA9910: protected const member of the template), was a stand-in spelling.
+//   The local base's Random(range) helper (the seed step on GetPWorldSeed()) is the shared inline GFRandom (engine/GFRandom.h, Ego_r.pdb
+//   ?GFRandom@@YIKKPAK@Z, as the landed 0x00938280) on the retail header's protected GetPWorldSeed() 0x008FCFD0.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009473E0, length 266 bytes (plain `ret`, virtual, bool).
 // Callees: CAIStateGroup_WorkBase::IsInWorkHours @ 0x0091A6F0, GetPWorldSeed @ 0x008FCFD0 + GFROR13 @ 0x00497890 (the
@@ -33,45 +39,26 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-long __fastcall GFROR13(unsigned long value);   // 0x00497890
+#include "engine/GFRandom.h"                 // GFROR13 0x00497890, the inline GFRandom (Ego_r.pdb ?GFRandom@@YIKKPAK@Z)
 extern unsigned long g_WanderAroundShopsChance;          // 0x0138CE34 (percent)
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    protected:
-    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
-    public:
-    unsigned long Random(unsigned long range)
-    {
-        unsigned long* seed = GetPWorldSeed();
-        unsigned long next = *seed * 0x24A1U + 0x24DFU;
-        *seed = next;
-        unsigned long rotated = GFROR13(next);
-        *seed = rotated;
-        return rotated % range;
-    }
-};
-struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIStateGroup_WorkBase.h"
+struct CAIStateGroup_WanderAroundShops : CAIStateGroup_WorkBase<CAIStateGroupBase> {
 private:
     CThing* FindASimplyDelightfulShop();   // 0x00946F90 (Ego_r.pdb ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ)
 public:
     CIntelligentPointer<CThing> Shop;              // +0x14
     CIntelligentPointer<CThing> PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
-    bool IsInWorkHours();                       // 0x0091A6F0
     bool InitCreaturePosition();
 };
 
 bool CAIStateGroup_WanderAroundShops::InitCreaturePosition()
 {
-    bool ok = IsInWorkHours() && Random(100) < g_WanderAroundShopsChance
+    bool ok = IsInWorkHours() && GFRandom(100, GetPWorldSeed()) < g_WanderAroundShopsChance
               && reinterpret_cast<CThingPhysical*>((Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop()).GetPItem()) != 0;
     if (ok) {
         if (reinterpret_cast<CThingPhysical*>(Shop.GetPItem())->GetTypeFlags() & 0x40) {

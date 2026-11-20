@@ -1,5 +1,7 @@
 // C3DClothPrimitive::C3DClothPrimitive(const C3DMeshFileClothChunk* chunk) -- build the cloth's particle program from the chunk: read the program from the chunk's data, take the material index, then add one C3DGroup2 per VGRP sub-chunk
 // Leaf: ??0C3DClothPrimitive
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members references->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 // Retail @ 0x00AC3E00, 441 bytes (`ret 4`; 8-byte aligned frame, no EH frame under the lane's /O2 flags). Callees: CBase
 //   0x0099A2F0, operator new 0x00BFEA1A, CParticleProgram ctor 0x00AE3550 / ReadFromFile 0x00AE3C30 / AddGroup 0x00AE37D0,
@@ -26,7 +28,7 @@ template <class T> class CArray { public:                 // retail STLport vect
 
 class CDataInputStream { public: virtual ~CDataInputStream(); };
 class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     ~CMemoryDataInputStream();                       // 0x00993B10
     long position, sourceLength, chunkBase, chunkPosition, chunkLength;
     void* StreamSource;

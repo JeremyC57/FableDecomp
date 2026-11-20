@@ -1,5 +1,7 @@
 // NGameText::CDataBankTextEntry::BuildText() const -- touch the text entry's resource (move it to the most-recently-used end of its list), and if its file data was loaded asynchronously, wait for it, parse the text entry from a memory stream over it, and drop the file data
 // Leaf: BuildText
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8FB0, length 190 bytes (+ int3 padding), `ret`.
 // Callees: CResource::ListRemove @ 0x009FBFB0, CResource::ListInsert(prev, next) @ 0x009FBF90,
 // CBankFileAsyncData::IsFinished @ 0x009D54E0, ::WaitUntilFinished @ 0x009D5B60, ::GetData @ 0x009D5530 (Ego_r / FableWin order GetData, PeekData; byte-twin of the const PeekData 0x009D5580),
@@ -73,7 +75,7 @@ template <class T> class CCountedPointer { public:
 class CDataInputStream;
 class CMemoryDataInputStream { public:
     unsigned char _body[0x18];
-    CMemoryDataInputStream(const void* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     virtual ~CMemoryDataInputStream();                       // 0x00993B10
 };
 

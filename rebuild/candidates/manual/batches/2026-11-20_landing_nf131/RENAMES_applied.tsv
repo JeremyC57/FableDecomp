@@ -1,0 +1,42 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0091A6F0	CAIStateGroup_WorkBase<CAIStateGroupBase>	IsInWorkHours	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	CAIStateGroup_WorkBase::IsInWorkHours	?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ	q4946: Ego_r.pdb 0x0093E1A0 + FableWin.pdb 0x02BA9910 (protected const member of the class template); all 8 REFS rows bind it after this hand-back (0x0091A390 / 0x00946F30 nf127, 0x00943C20 already, 0x0091B170 0x00944730 0x00944E80 0x00947280 0x009473E0 here); self row moved onto engine/CAIStateGroup_WorkBase.h ISINWORKHOURS + explicit instantiation (pick-any COMDAT); RELOCATION_MATCH
+0x0091B170	CAIStateGroup_HandyMan	IsRunnable	?IsRunnable@CAIStateGroup_HandyMan@@UAE_NXZ	CAIStateGroup_HandyMan::IsRunnable	?IsRunnable@CAIStateGroup_HandyMan_Methods@@QAE_NXZ	q4946 binder: Ego_r.pdb 0x0093EA50 + FableWin.pdb 0x02BCB360 (virtual, slot 11); leaf-only (catalog name already right); no landed row references 0x0091B170 (exe scan); moved onto the retail class opt-in FABLE_RETAIL_CAISTATEGROUP_HANDYMAN; RELOCATION_MATCH
+0x008FCFD0	CAIStateGroupBase	GetPWorldSeed	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	CAIStateGroupBase::GetPWorldSeed	?CAIStateGroupBase_GetPWorldSeed@@YIPAKPBVCAIStateGroupBase@@@Z	q5141: Ego_r.pdb 0x00847E20 + FableWin.pdb 0x0288DA10 (protected const); engine/CAIStateGroupBase.h declares it; all 99 REFS rows bind it after this hand-back (+ nf127's 6); out-of-line member on the shared headers (the 0x008FCFB0 form); MATCH
+0x00914F00	CAIStateGroup_KidHurtSelfRunToMother	PerformRandomLengthCrying	?PerformRandomLengthCrying@CAIStateGroup_KidHurtSelfRunToMother@@QAE?AW4EAIActionReturn@@XZ	CAIStateGroup_KidHurtSelfRunToMother::PerformRandomLengthCrying	?PerformRandomLengthCrying@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEJXZ	q5141/q5021 binder: Ego_r.pdb 0x00938AE0 + FableWin.pdb 0x02B9EB60; its only landed caller 0x00915350 already binds it; leaf-only; ported onto the retail headers (sibling 0x00915350 block); RELOCATION_MATCH
+0x009284B0	CAIStateGroup_BanditPlayDice	InitStateGroup	?InitStateGroup@CAIStateGroup_BanditPlayDice@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	CAIStateGroup_BanditPlayDice::InitStateGroup	?InitStateGroup@CAIStateGroup_BanditPlayDice_Methods@@QAEXABVCWorld@@AAVCThingAICreature@@@Z	q5141 binder: Ego_r.pdb 0x0094B660 + FableWin.pdb 0x02C65740 (protected virtual slot 13); no landed row references 0x009284B0 (exe scan); leaf-only; RELOCATION_MATCH
+0x0094EF70	CAIStateGroup_FollowPlayer	OnActivate	?OnActivate@CAIStateGroup_FollowPlayer@@UAEXXZ	CAIStateGroup_FollowPlayer::OnActivate	?CAIStateGroup_FollowPlayer_OnActivate@@YIXPAUCAIStateGroup_FollowPlayer@@@Z	q5141 binder: Ego_r.pdb 0x00973830 + FableWin.pdb 0x02BD5C90 (public virtual slot 2); no landed row references 0x0094EF70 (exe scan); leaf-only; retail class opt-in FABLE_RETAIL_CAISTATEGROUP_FOLLOWPLAYER; RELOCATION_MATCH
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x0091B170	?helper_91a6f0@@YI_NPAUCAIStateGroup_HandyMan@@@Z	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	0x0091A6F0
+0x0091B170	?tail_91b010@@YI_NPAUCAIStateGroup_HandyMan@@@Z	?AcquireWorkSpot@CAIStateGroup_HandyMan@@AAE_NXZ	0x0091B010
+0x00944730	?IsInWorkHours@CAIStateGroupBase@@QAE_NXZ	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	0x0091A6F0
+0x00944E80	?IsInWorkHours@CAIStateGroupBase@@QAE_NXZ	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	0x0091A6F0
+0x00947280	?IsInWorkHours@CAIStateGroup_WanderAroundShops@@QAE_NXZ	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	0x0091A6F0
+0x009473E0	?IsInWorkHours@CAIStateGroup_WanderAroundShops@@QAE_NXZ	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	0x0091A6F0
+0x009C8700	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x009C8FB0	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00A42EA0	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00A4DF10	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00A99510	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00A9B740	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00AC3E00	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00BDE390	??0CMemoryDataInputStream@@QAE@PBXJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00BDE860	??0CMemoryDataInputStream@@QAE@PBEJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00BF8030	??0CMemoryDataInputStream@@QAE@PBDJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00BF84C0	??0CMemoryDataInputStream@@QAE@PBDJ@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00BDC180	??0CMemoryDataInputStream@@QAE@PAE@Z	??0CMemoryDataInputStream@@QAE@PBXK@Z	0x00994930
+0x00BDC180	?GetBlockData@CEngineStaticMapFileBlockManager@@QAEPAEJK@Z	?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z	0x00BE04C0
+0x00BF8030	?GetBlockData@CEngineStaticMapFileBlockManager@@QAEPBDJ@Z	?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z	0x00BE04C0
+0x00BF84C0	?GetBlockData@CEngineStaticMapFileBlockManager@@QAEPBDJ@Z	?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z	0x00BE04C0
+0x00914F00	?GetAnimFromName@CThing@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	0x00662A00
+0x00914F00	??0CCreatureAction_PlayAnimation@@QAE@PAVCThing@@PAVCAnimationEntry@@ABVCSoundPair@@_N33JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@_N33JJ@Z	0x00842570
+0x00914F00	??0CCreatureAction_PlayAnimation@@QAE@PAVCThing@@PAVCAnimationEntry@@_N2JABVCSoundPair@@222JJ@Z	??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N2JABVCSoundPair@@222JJ@Z	0x008425E0
+0x00914F00	?GetPWorldSeed@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEPAKXZ	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	0x008FCFD0
+0x00914F00	?AIAction_PerformActionAndWait@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x009284B0	?GetPWorldSeed@CAIStateGroup_BanditPlayDice_Methods@@QAEPAKXZ	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	0x008FCFD0
+0x0092A0C0	?GetPWorldSeed@CAIStateGroupApprenticeHeroMethods@@QAEPAKXZ	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	0x008FCFD0
+0x0094EF70	?Method@FollowPlayerProximitySource@@QAEMM@Z	?GFFloatRandom@@YIMMPAK@Z	0x004978A0
+0x0094EF70	?GetObj@@YIPAUFollowPlayerProximitySource@@PAX@Z	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	0x008FCFD0
+0x0096C9A0	?GetPWorldSeed@CAIStateGroupEatAtTableMethods@@QAEPAKXZ	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	0x008FCFD0
+0x0096C9A0	?AIAction_PerformActionAndWait@CAIStateGroupEatAtTableMethods@@QAEJPAVCCreatureActionBase@@_N@Z	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	0x0097DB70
+0x00977B10	?PeekThingSearchTools@CAIStateGroup_Guildmaster@@QBEABVCThingSearchTools@@XZ	?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ	0x008FD000

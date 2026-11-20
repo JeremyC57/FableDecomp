@@ -1,5 +1,7 @@
 // C3DAnimFileLoader::LoadAnimFileCompressed(const void* data, unsigned long size, CHandleBasedMemoryPool& pool) -- load a 3DAF anim file from a (possibly LZO-compressed) memory image
 // Leaf: LoadAnimFileCompressed
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A99510, 250 bytes (`ret 10h`: hidden result + 3 args).
 // Ego_r.pdb: ?LoadAnimFileCompressed@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VC3DAnimFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z.
@@ -26,7 +28,7 @@ class CDataStream { public:
 class CDataInputStream : public CDataStream { public:
 };
 class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     long  position;                                  // +0x04
     long  sourceLength;                              // +0x08
     long  chunkBase;                                 // +0x0c

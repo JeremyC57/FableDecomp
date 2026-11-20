@@ -10,7 +10,17 @@
 //          CCharString by value from a switch (the four ctor calls tail-merge into one with `push -1` hoisted), and a
 //          miss bumps i inside the string's block before looping back into the search.
 // Layout: engine/CAIStateGroup_ApprenticeHero.h (PDummy +0x18, Action +0x1C) behind engine/CAIStateGroupBase.h.
+// NF131 (2026-11-20, q5141): the stand-in class now derives from the retail class (engine/CAIStateGroup_ApprenticeHero.h
+//   FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO on the retail engine/CAIStateGroupBase.h), so its GetPWorldSeed stand-in declaration goes and the
+//   call binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ 0x008FCFD0 (Ego_r 0x00847E20 + FableWin 0x0288DA10); PBrain is the base member, and the
+//   local CCharString model gives way to fable_string.h (FABLE_RETAIL_CCHARSTRING). The row's own stand-in leaf is unchanged: the PDB
+//   ?GetDummy@CAIStateGroup_ApprenticeHero@@IAE_NXZ (Ego_r 0x0094D2B0 + FableWin 0x02C69610) also needs its three landed callers
+//   (0x0092A8A0 QAE, 0x0092B360 SkillPractice stand-in, 0x0092B3E0) moved (NAME_FIXES).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_APPRENTICEHERO
 #include "engine/CAIStateGroup_ApprenticeHero.h"
 
 class CTCBase;
@@ -52,11 +62,6 @@ class CThing { public:
 };
 struct CTCInformation;                          // interface 0xaa
 
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                 // 0x0099EAE0
-};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -79,8 +84,7 @@ inline CCharString GetDummyName(long type)
 }
 
 struct CAIStateGroupApprenticeHeroMethods : CAIStateGroup_ApprenticeHero {
-    CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    CAIBrain* Brain() const { return PBrain; }
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();

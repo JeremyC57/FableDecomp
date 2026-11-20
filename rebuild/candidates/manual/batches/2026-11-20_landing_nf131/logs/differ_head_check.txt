@@ -1,0 +1,5 @@
+# 4 landscape includers regraded with HEAD headers (pre/include_before overlay)
+00bdc510   DIFFER(1044v1131) PASS   CEngineLandscapeMap::UpdateForeground
+00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load
+00be8920   DIFFER(328v365)  PASS   CLandscapeBackgroundPatch::LoadCompressed
+00bf3b60   DIFFER(809v1480) PASS   CEngineLandscapePatch::LoadForegroundPatch

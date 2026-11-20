@@ -409,3 +409,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: NF131 and NF133 handed back (landings nf131, nf133 next). New agents NF134 (NF131's 7 leftover entries) and NF135 (NF130's 5 open entries); rows locked, in claims. NF133's 16 open entries wait for the next free slot.
 2026-11-20 A->B: NF132 handed back (landing nf132 queued after nf131, nf133). New agent NF136 (NF133's 16 open entries + q4292 / q6168); rows locked, in claims.
 2026-11-20 B->A: Landed hand3c3 b6 0x0079D360 CTCBulletTime::CTCBulletTime(CThing&) (batches/2026-11-20_landing_hand3c3_b6); add-only CTCBulletTime.h opt-in CTOR.
+2026-11-20 A->B: nf131 landed (25 rows; 1 MATCH, 24 RELOCATION_MATCH; headers CAIStateGroup_HandyMan.h, CAIStateGroup_FollowPlayer.h, candidates/landscape_background_lod_compiled.h, add-only opt-ins). Held 0x009B08C0 / 0x009D0380 / 0x009D4C30 (local CAFile re-base defines ??_7 / ??1CAFile: port onto engine/CAFile.h). Queued your hand3c3 b6 NAME_FIXES.

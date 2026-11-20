@@ -27,7 +27,14 @@ class CEngineStaticMapFileBlockManager
 public:
     void AddRequest(long blockId, unsigned long blockSize, bool immediate);
     bool IsBlockLoaded(long blockId);
+#ifdef FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA
+    // NF131 opt-in (2026-11-20, q6182, row 0x00BDC180): Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0
+    // ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (one argument, const; retail 0x00BE04C0 `ret 4`), the spelling the other landed
+    // callers bind. The two-argument form below only reproduced the bytes because the block size it pushed is the stream ctor's second argument.
+    const unsigned char* GetBlockData(long blockId) const;               // 0x00BE04C0
+#else
     unsigned char* GetBlockData(long blockId, unsigned long blockSize);
+#endif
     void BankFileList_RemoveFinished();
 };
 
@@ -35,11 +42,22 @@ class CMemoryDataInputStream
 {
 public:
     fable_u8 storage[0x18];
+#ifdef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
+    // NF131 opt-in (2026-11-20, q6182, row 0x00BDC180): Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0
+    // ??0CMemoryDataInputStream@@QAE@PBXK@Z (retail 0x00994930, `ret 8`): data and size.
+    CMemoryDataInputStream(const void* data, unsigned long size);        // 0x00994930
+    fable_u8 storage_tail[0x4];                                          // Ego_r.pdb sizeof CMemoryDataInputStream 0x1C (retail frame `sub esp,1Ch`)
+#else
     explicit CMemoryDataInputStream(unsigned char* data);
+#endif
     ~CMemoryDataInputStream();
 };
 
-FABLE_STATIC_ASSERT(sizeof(CMemoryDataInputStream) == 0x18);
+#ifdef FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
+FABLE_STATIC_ASSERT(sizeof(CMemoryDataInputStream) == 0x1C);
+#else
+FABLE_STATIC_ASSERT_AT(42, sizeof(CMemoryDataInputStream) == 0x18);
+#endif
 
 class CEngineLandscapeMap;
 void* __fastcall AllocateLandscapeBackgroundTreeNode(unsigned long bytes, CEngineLandscapeMap* map);
@@ -83,13 +101,13 @@ public:
     void ReleaseFileBlockLoad();
 };
 
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, BackgroundTree) == 0x04);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, OwnerMap) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, BackgroundLoadEntry) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, StaticMapFileBlockManager) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, BackgroundHeaderBlockId) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LandscapeMapIndex) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LandscapeUpdateActive) == 0x5C);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, BackgroundHeaderRequestIssued) == 0x5E);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CEngineLandscapeMap, BackgroundTree) == 0x04);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CEngineLandscapeMap, OwnerMap) == 0x14);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CEngineLandscapeMap, BackgroundLoadEntry) == 0x18);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CEngineLandscapeMap, StaticMapFileBlockManager) == 0x20);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CEngineLandscapeMap, BackgroundHeaderBlockId) == 0x30);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CEngineLandscapeMap, LandscapeMapIndex) == 0x58);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CEngineLandscapeMap, LandscapeUpdateActive) == 0x5C);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CEngineLandscapeMap, BackgroundHeaderRequestIssued) == 0x5E);
 
 #endif

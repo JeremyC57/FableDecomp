@@ -18,6 +18,9 @@
 // Leaf: FindAndStoreBodyguards@CAIStateGroup_Guildmaster
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// NF131 (2026-11-20, q4994 / q5140): the PeekThingSearchTools declaration moves in place from the derived local class onto the row's existing local
+//   CAIStateGroupBase model as a protected const member, so the call binds the PDB ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ
+//   0x008FD000 (Ego_r.pdb 0x00847E50 + FableWin.pdb 0x0288D940; the spelling 48 landed callers bind); was ?PeekThingSearchTools@CAIStateGroup_Guildmaster@@QBEABVCThingSearchTools@@XZ.
 #include "engine/C3DVector.h"
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
@@ -64,6 +67,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
+class CThingSearchTools;
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -83,6 +87,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 Ego_r.pdb 0x00847E50 + FableWin.pdb 0x0288D940 (protected const)
 };
 
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
@@ -145,7 +151,6 @@ class CTCBoss { public:                                // the interface-0xad com
 };
 
 struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
-    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (CAIStateGroupBase)
     void FindAndStoreBodyguards();
 };
 

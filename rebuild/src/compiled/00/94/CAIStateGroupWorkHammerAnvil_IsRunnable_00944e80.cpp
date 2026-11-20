@@ -1,5 +1,9 @@
 // CAIStateGroup_WorkHammerAnvil::IsRunnable() -- in work hours and once the next hammer frame is reached, pick the nearest live object owned by the creature's workplace that is a thing class 5 object with property bit 6 and a free action point (interface 0x2D), latch it as the anvil and run
 // Leaf: ?IsRunnable@CAIStateGroup_WorkHammerAnvil
+// NF131 (2026-11-20, q4946): the row-local CAIStateGroupBase model gives way to the retail engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE,
+//   _MEMBERS) and engine/CAIStateGroup_WorkBase.h; the class is re-based on CAIStateGroup_WorkBase<CAIStateGroupBase> (RTTI ghidra_out/rtti_bases.tsv),
+//   so the call to 0x0091A6F0 binds ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (Ego_r.pdb 0x0093E1A0 + FableWin.pdb
+//   0x02BA9910: protected const member of the template), was a stand-in spelling.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944E80, length 470 bytes (plain `ret`, virtual slot 11).
 // Callees: CAIStateGroupWorkBase::IsInWorkHours @ 0x0091A6F0, GFGetCurrentFrame @ 0x0049D870, CBaseIntelligentPointer::
@@ -150,23 +154,16 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;
-    unsigned char Enabled;
-    unsigned char _pad_0x13;
-    bool IsInWorkHours();                       // 0x0091A6F0
-};
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIStateGroup_WorkBase.h"
 struct CThingWorker {
     unsigned char _pad[0x170];
     CIntelligentPointer<CThing> PWorkplace;         // +0x170
 };
 #pragma pack(push, 1)
-struct CAIStateGroup_WorkHammerAnvil : CAIStateGroupBase {
+struct CAIStateGroup_WorkHammerAnvil : CAIStateGroup_WorkBase<CAIStateGroupBase> {
     bool TookActionPoint;                       // +0x14
     CIntelligentPointer<CThing> PAnvil;             // +0x15 CIntelligentPointer<CThingObject>
     C3DVector ActionPointPos;                   // +0x1d

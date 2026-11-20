@@ -190921,7 +190921,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0091a6f0'
-        Module = 'CAIStateGroup_WorkBase'
+        Module = 'CAIStateGroup_WorkBase<CAIStateGroupBase>'
         Source = '00/91/CAIStateGroupWorkBase_IsInWorkHours_0091a6f0.cpp'
         TestSource = '00/91/CAIStateGroupWorkBase_IsInWorkHours_0091a6f0_test.cpp'
         PassPattern = '0091a6f0_TEST PASS'

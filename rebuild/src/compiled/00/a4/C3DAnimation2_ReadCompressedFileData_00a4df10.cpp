@@ -1,5 +1,7 @@
 // C3DAnimation2::ReadCompressedFileData(C3DAnimFileObjectChunk* chunk, CSimpleMemoryPool* pool) -- size the sequence arrays from the XSEQ sub-chunk count, then read each XSEQ chunk's compressed sequence through a memory stream
 // Leaf: ReadCompressedFileData
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Shape: the walk pointer is default-constructed and then assigned from FindFirst (retail zeroes it before the call and
 //   adopts with `cmp ecx,0 ; je`); the stream's data pointer is a named local (computed before the size); the step
 //   `sequence = FindNext(prev copy)` is the last body statement, so the stream dies after it.
@@ -42,7 +44,7 @@ template <class T> class CArray { public:                 // retail STLport vect
 
 class CDataInputStream { public: virtual ~CDataInputStream(); };
 class CMemoryDataInputStream : public CDataInputStream { public:
-    CMemoryDataInputStream(const void* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     ~CMemoryDataInputStream();                       // 0x00993B10
     long position, sourceLength, chunkBase, chunkPosition, chunkLength;
     void* StreamSource;

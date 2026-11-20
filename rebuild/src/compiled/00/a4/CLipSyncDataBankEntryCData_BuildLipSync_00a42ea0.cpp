@@ -1,5 +1,7 @@
 // CLipSyncDataBankEntry::CData::BuildLipSync() -- once the async bank read is finished, parse it into a new CLipSyncSampleData, drop the async data and register the resource with its new size
 // Leaf: BuildLipSync
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Retry 10b (getsw sweep, FIXES B-15): the size is read through an inline getter `GetSize()`; the plain member read gives the parked register/scheduling difference.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A42EA0, 268 bytes (272 with padding).
 // Callees: CBankFileAsyncData::IsFinished 0x009D54E0 / WaitUntilFinished 0x009D5B60 / GetData 0x009D5530 / Sizeof
@@ -19,7 +21,7 @@ class CLipSyncSampleData;
 class CDataInputStream;                                   // engine/CDataInputStream.h: the retail base of CMemoryDataInputStream (+0)
 class CMemoryDataInputStream {
 public:
-    CMemoryDataInputStream(const void* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     ~CMemoryDataInputStream();                             // 0x00993B10
 private:
     void* m_vtable;

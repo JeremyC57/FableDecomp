@@ -9,76 +9,95 @@
 //          GetAnimFromName) and VC7.1 loads it once into edi at the second use; the action temporary is built in the PerformActionAndWait call; the loop count is the
 //          *seed-form random (`% 3`), kept in ebp, pushed mid-function.
 // Layout: engine/CAIStateGroup_KidHurtSelfRunToMother.h (PBrain is the first dword of the base at +0x04).
+// Leaf: ?PerformRandomLengthCrying@CAIStateGroup_KidHurtSelfRunToMother@@QAE?AW4EAIActionReturn@@XZ
+// NF131 (2026-11-20, q5141 / q5021): the stand-in CAIStateGroupKidHurtSelfRunToMotherMethods over the flat generated header and its local
+//   CCharString / CSoundPair / CThing / CCreatureActionBase / CCreatureAction_PlayAnimation / CAIBrain models give way to the retail shared
+//   headers (the define / include block of the landed sibling 0x00915350). Own name: Ego_r.pdb 0x00938AE0 + FableWin.pdb 0x02B9EB60
+//   ?PerformRandomLengthCrying@CAIStateGroup_KidHurtSelfRunToMother@@QAE?AW4EAIActionReturn@@XZ (the spelling its caller 0x00915350 binds), was
+//   ?PerformRandomLengthCrying@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEJXZ. Callees now: ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ 0x008FCFD0
+//   and ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z 0x0097DB70 (both PDBs), the
+//   header CCreatureAction_PlayAnimation ctors / GetAnimFromName; the local Random step is the shared inline GFRandom.
+#include "fable_compiler.h"
+#define FABLE_RETAIL_KID_HURT_SELF_PASS23
+#define FABLE_RETAIL_KID_MOTHER_REFERENCE_PASS23
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGAICREATURE_HOMEBUILDING
+#define FABLE_RETAIL_CTHINGAICREATURE_SAVE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_PLAYANIMATION_IMPLICIT_DTOR
+#define FABLE_RETAIL_CSOUNDPAIR_ORIGINAL_CTORS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CINITBASECLASS
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_C3DVECTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_KidHurtSelfRunToMother.h"
+#include "engine/CCreatureAction_PlayAnimation.h"
+#include "engine/CSoundPair.h"
+#include "engine/CThingFilter_CanSeeEachOther.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/ThingAlive.h"
+#include "engine/GFRandom.h"
+#include "engine/GFWorldDistance.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-class CSoundPair { public:
-    long m_first;
-    long m_second;
-    CSoundPair() : m_first(0), m_second(0) { }
-};
-class CAnimationEntry;
-class CThing { public:
-    CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
-};
-class CCreatureActionBase { public:
-    unsigned char _body[0xa4];                  // +0x04..+0xa7
-    virtual ~CCreatureActionBase();                     // 0x00693EF0
-};
-class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
-    unsigned char _anim[0x0c];                  // +0xa8..+0xb3
-    CCreatureAction_PlayAnimation(CThing* creature, CAnimationEntry* animation,
-        const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00842570
-    CCreatureAction_PlayAnimation(CThing* creature, CAnimationEntry* animation, bool loop, bool f, long loops,
-        const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008425E0
-};
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-long __fastcall GFROR13(unsigned long value);   // 0x00497890
-
-struct CAIStateGroupKidHurtSelfRunToMotherMethods : CAIStateGroup_KidHurtSelfRunToMother {
-    CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
-    CThing* GetCreature() const { return Brain()->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    unsigned long Random(unsigned long range)
-    {
-        unsigned long* seed = GetPWorldSeed();
-        *seed = *seed * 0x24A1U + 0x24DFU;
-        *seed = GFROR13(*seed);
-        return *seed % range;
-    }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
-    long PerformRandomLengthCrying();
-};
-
-long CAIStateGroupKidHurtSelfRunToMotherMethods::PerformRandomLengthCrying()
+EAIActionReturn CAIStateGroup_KidHurtSelfRunToMother::PerformRandomLengthCrying()
 {
-    long result;
+    EAIActionReturn result;
     {
         CCharString name("ST_CRYING_ON_THE_SPOT_INTO");
-        result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
-            GetCreature()->GetAnimFromName(name, 0), CSoundPair(), false, true, false, 0, 0), false);
+        result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+            GetCreature().GetAnimFromName(name, 0), CSoundPair(0), false, true, false, 0, 0), false);
     }
-    if (result != 2)
+    if (result != AI_ACTION_FINISHED)
         return result;
-    long loops = Random(3);
+    long loops = GFRandom(3, GetPWorldSeed());
     {
         CCharString name("ST_CRYING_ON_THE_SPOT_LOOP");
-        result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
-            GetCreature()->GetAnimFromName(name, 0), false, true, loops, CSoundPair(), false, true, false, 0, 0), false);
+        result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+            GetCreature().GetAnimFromName(name, 0), false, true, loops, CSoundPair(0), false, true, false, 0, 0), false);
     }
-    if (result != 2)
+    if (result != AI_ACTION_FINISHED)
         return result;
     {
         CCharString name("ST_CRYING_ON_THE_SPOT_OUTOF");
-        result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
-            GetCreature()->GetAnimFromName(name, 0), CSoundPair(), false, true, false, 0, 0), false);
+        result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+            GetCreature().GetAnimFromName(name, 0), CSoundPair(0), false, true, false, 0, 0), false);
     }
     return result;
 }

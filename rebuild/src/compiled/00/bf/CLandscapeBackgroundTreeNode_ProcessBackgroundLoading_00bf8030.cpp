@@ -1,5 +1,8 @@
 // CLandscapeBackgroundTreeNode::ProcessBackgroundLoading(double, bool, CEngineStaticMapFileBlockManager*, bool, bool) -- background-load this node: past the deadline report still-loading; work out the wanted LOD band and mark the node visible; drop a pending load task that no longer suits the band; with no sub-node yet, start a patch or tree load task (unless its block is not yet resident), then once the block is resident build the patch (loaded with the node's Z range) or split branch from it; a loaded patch is done, a split branch is loaded recursively (LS_LOADED 1 / LS_LOADING 2 / LS_FAILED 3)
 // Leaf: ProcessBackgroundLoading
+// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
+//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
+//   Also GetBlockData 0x00BE04C0 respelled to the PDB ?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z (const, const unsigned char*), was QAEPBDJ.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF8030, 1022 bytes, `ret 18h`.
 // Callees: GFGetFastSubFrameTimer 0x009E1C70; the LOD band calculation 0x00BF7DF0; StartTreeLoadTask 0x00BF6530 and
 //   StartPatchLoadTask 0x00BF65B0 (FableWin.pdb names); the sub-node's slot 4 (+0x10, is-patch test); the file-block manager
@@ -18,7 +21,7 @@ enum LS_LOADING_STATUS { LS_NONE, LS_LOADED, LS_LOADING, LS_FAILED };
 class CDataInputStream;
 class CMemoryDataInputStream { public:
     unsigned char _d[0x1c - 4];
-    CMemoryDataInputStream(const char* data, long size);   // 0x00994930
+    CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     virtual ~CMemoryDataInputStream();                      // 0x00993B10
     operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
 };
@@ -26,7 +29,7 @@ class CEngineStaticMapFileBlockManager { public:
     void UnlockBlock(long pos);                     // 0x00BE0400
     void PrioritiseBlock(long pos);                 // 0x00BE0420
     bool IsBlockLoaded(long pos);                   // 0x00BE0480
-    const char* GetBlockData(long pos);             // 0x00BE04C0
+    const unsigned char* GetBlockData(long pos) const;   // 0x00BE04C0 Ego_r.pdb 0x00A41E20 + FableWin.pdb 0x02DF74B0 (NF131)
 };
 class CMovableResource;
 struct CMovableResourcePool {

@@ -1,3 +1,6 @@
+// NF131 (2026-11-20, q6182): the row now uses the candidates header opt-ins below (one-argument const GetBlockData, the PDB stream ctor).
+#define FABLE_RETAIL_CENGINESTATICMAPFILEBLOCKMANAGER_GETBLOCKDATA
+#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM_LOD_CTOR
 #include <new>
 #include <stdio.h>
 #include <string.h>
@@ -16,9 +19,9 @@ void* __fastcall AllocateLandscapeBackgroundTreeNode(unsigned long bytes, CEngin
 
 void CEngineStaticMapFileBlockManager::AddRequest(long, unsigned long, bool) { ++g_addRequests; }
 bool CEngineStaticMapFileBlockManager::IsBlockLoaded(long) { return g_loaded; }
-unsigned char* CEngineStaticMapFileBlockManager::GetBlockData(long, unsigned long) { return g_blockData; }
+const unsigned char* CEngineStaticMapFileBlockManager::GetBlockData(long) const { return g_blockData; }
 void CEngineStaticMapFileBlockManager::BankFileList_RemoveFinished() { ++g_finished; }
-CMemoryDataInputStream::CMemoryDataInputStream(unsigned char*) {}
+CMemoryDataInputStream::CMemoryDataInputStream(const void*, unsigned long) {}
 CMemoryDataInputStream::~CMemoryDataInputStream() {}
 CLandscapeBackgroundTreeNode::CLandscapeBackgroundTreeNode(CEngineLandscapeMap*, void*, long) { ++g_constructed; }
 void CLandscapeBackgroundTreeNode::BuildDefaultSection(unsigned long, unsigned long, unsigned long width, unsigned long height)

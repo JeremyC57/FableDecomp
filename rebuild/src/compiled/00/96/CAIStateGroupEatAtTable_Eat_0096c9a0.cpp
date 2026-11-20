@@ -13,16 +13,20 @@
 //          temporary (dies before the derived vtable store); each action is a Perform-argument temporary so `!= 2` lands
 //          in bl before the destructors. The frame rate is a named local read first (ebx); Random spells the seed update
 //          through *seed (`return *seed % range`), which keeps the div ahead of the GFGetCurrentFrame call.
+// NF131 (2026-11-20, q5141 / q5021): the stand-in class now derives from the retail engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE,
+//   _MEMBERS, _PERFORMACTION), so its own GetPWorldSeed / AIAction_PerformActionAndWait stand-in declarations go: the calls bind
+//   ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ 0x008FCFD0 and ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z
+//   0x0097DB70 (both PDBs; the action temporaries passed by const reference). The row's own stand-in leaf is unchanged (its PDB class
+//   CAIStateGroup_EatAtTable has only a quarantine header; the landed caller 0x0096CD70 already binds the PDB ?Eat@CAIStateGroup_EatAtTable@@IAE_NPAVCThing@@@Z).
 // Layout: engine/CAIStateGroupBase.h (PBrain +4). The pick-up action's CIntelligentPointer member sits at +0xA8.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
 #include "engine/CAIStateGroupBase.h"
 
 class CThing;
 class CThingCreatureBase;
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
 class CSoundPair { public:
     long m_first;
     long m_second;
@@ -74,7 +78,6 @@ public:
 
 struct CAIStateGroupEatAtTableMethods : CAIStateGroupBase {
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    unsigned long* GetPWorldSeed();                     // 0x008FCFD0
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();
@@ -82,22 +85,21 @@ struct CAIStateGroupEatAtTableMethods : CAIStateGroupBase {
         *seed = GFROR13(*seed);
         return *seed % range;
     }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
     bool Eat(CThing* food);
 };
 
 bool CAIStateGroupEatAtTableMethods::Eat(CThing* food)
 {
-    if (AIAction_PerformActionAndWait(&CCreatureAction_PickUpFoodAtTable(GetCreature(), food), false) != 2)
+    if (AIAction_PerformActionAndWait(CCreatureAction_PickUpFoodAtTable(GetCreature(), food), false) != 2)
         return false;
     long fps = CMainGameComponent::GetConstantFPS();
     long endFrame = CWorld::GetFrame() + Random(7) * fps;
     do {
-        if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SAT_EATING_LOOP",
+        if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SAT_EATING_LOOP",
                 CSoundPair(), false, true, false, 0, 0), false) != 2)
             return false;
     } while (endFrame > CWorld::GetFrame());
-    if (AIAction_PerformActionAndWait(&CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
+    if (AIAction_PerformActionAndWait(CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
         return false;
     return true;
 }
