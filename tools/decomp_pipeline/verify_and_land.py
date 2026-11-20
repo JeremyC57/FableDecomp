@@ -208,6 +208,35 @@ def env():
 
 def cl(args,e): return run_tool(CL_EXE, args, e)
 
+# Shared-header policy (CLAUDE.md "Shared headers"; widened 2026-11-20 with the owner's approval): a row may not define its own
+# model of a class that has a shared header. A definition is `class|struct Name [: bases] {` in the row text with comments and
+# string literals removed; the header is engine/<Name>.h or libpk/<Name>.h in FABLE_HDR_OVERLAY (so a set that adds a new header
+# is checked against it before landing) or in rebuild/include. Including that header by its path exempts the row.
+_DEF_RE = re.compile(r"\b(?:class|struct)\s+([A-Za-z_]\w*)\s*(?::[^{;()]*)?\{")
+_INC_RE = re.compile(r'#\s*include\s*[<"]([^">]+)[">]')
+SHARED_HEADER_DIRS = ("engine", "libpk")
+
+def _strip_comments_and_strings(t):
+    t = re.sub(r"/\*.*?\*/", " ", t, flags=re.S)
+    t = re.sub(r"//[^\n]*", "", t)
+    return re.sub(r'"(?:\\.|[^"\\\n])*"', '""', t)
+
+def shared_header_roots():
+    return [Path(x) for x in os.environ.get("FABLE_HDR_OVERLAY", "").split(os.pathsep) if x] + [ROOT / "rebuild" / "include"]
+
+def shared_header_redefinitions(src, roots=None):
+    """[(class name, 'engine/X.h' | 'libpk/X.h')] for each class the source defines locally although a shared header exists."""
+    roots = shared_header_roots() if roots is None else roots
+    t = _strip_comments_and_strings(src); incs = set(_INC_RE.findall(t)); out = []
+    for m in _DEF_RE.finditer(t):
+        sn = m.group(1)
+        for d in SHARED_HEADER_DIRS:
+            rel = f"{d}/{sn}.h"
+            if any((r / rel).exists() for r in roots):
+                if rel not in incs and (sn, rel) not in out: out.append((sn, rel))
+                break
+    return out
+
 def sanitize(s): return re.sub(r"[^A-Za-z0-9]","",s)
 
 def make_base(module, leaf, addr):
@@ -522,11 +551,11 @@ def main():
         # engine header, or models `this` with a throwaway struct name. LANDVERIFY_STRICT_HEADERS=1
         # turns the warnings into rejections.
         hdr_warn=[]
+        for sn, rel in shared_header_redefinitions(src0):
+            hdr_warn.append(f"SHARED_HEADER_AVAILABLE {sn} ({rel})")
         for sm in re.finditer(r"\b(?:struct|class)\s+([A-Za-z_]\w*)\s*\{", src0):
             sn=sm.group(1)
-            if (ROOT/"rebuild"/"include"/"engine"/f"{sn}.h").exists() and f'engine/{sn}.h' not in src0:
-                hdr_warn.append(f"SHARED_HEADER_AVAILABLE {sn}")
-            elif sn in GENERIC_STRUCT_NAMES and (ROOT/"rebuild"/"include"/"engine"/f"{mod}.h").exists():
+            if sn in GENERIC_STRUCT_NAMES and (ROOT/"rebuild"/"include"/"engine"/f"{mod}.h").exists():
                 hdr_warn.append(f"GENERIC_STRUCT module={mod} (use engine/{mod}.h)")
         for w_ in hdr_warn: print(f"{addr:10} WARN {w_}")
         if hdr_warn and os.environ.get("LANDVERIFY_STRICT_HEADERS")=="1":
