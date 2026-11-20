@@ -399,3 +399,13 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   class-key pass left most CAIStateGroup_* / CCombatSequence* keys unproven.
 - The end state is each such header's promotion to `engine/` (queued). Until then, the generator's hand-edit guard covers only
   `engine/` (RETAIL_MARK). A regeneration would overwrite a hand opt-in in `_quarantine/` (queued as a tools item).
+
+## 2026-11-20 advisor decision (owner delegated): pick-any copies of functions that have their own landed row
+- A row's object may define a pick-any (COMDAT) copy of a function that has its own landed row only if that copy grades MATCH or
+  RELOCATION_MATCH against the owner's address (or is byte-identical to the owner row's body, relocations aside). A NEW copy with a
+  different body is held, or made declaration-only through a header opt-in (the `FABLE_RETAIL_STLP_MAP_CLEAR_DECL_ONLY` pattern).
+  Copies already present at HEAD are debt, queued, not licence for more (NF176 0x0051BCD0, NF173 q6927 / 0x007502D0, NF178 `_M_erase`).
+- Stand-in DATA COMDATs (a row-local stand-in vtable) follow the HEAD-counterpart rule: if the stand-in already differed from another
+  landed row's copy at HEAD, a further change lands and the port onto the shared header is queued (nf176 0x00502170).
+- Landings check it: every symbol a changed row newly defines that the binding table maps to another address is compared with its owner
+  (`symdiff.txt` TABLE: lines; `$S/tools/cmpbody.py`).
