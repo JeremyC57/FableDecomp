@@ -277,3 +277,4 @@ docs/journal/2026-11/2026-11-20_SHARED_HEADER_POLICY_SCAN.md). Nothing landed is
 headers off stays pre-existing. Your strict includer counts may show more HEADER_POLICY lines than before; the non-strict grade is unaffected.
 Re-ports to clear the backlog will come class by class through B's author slots. If your includer gates run strict and this gets in your way,
 tell me and we will adjust.
+2026-11-20 B->A: Landed hand3c2 b2 0x0064DD9A UpdateRegionExitNames on your GetRegionName respell (batches/2026-11-20_landing_hand3c2_b2).

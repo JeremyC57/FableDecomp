@@ -1,0 +1,9 @@
+# audit mutants (2026-11-19): header bodies the row object carries + extra row decisions
+hdr:engine/CThingFilter_HasTCOfLeafType.h	1	            return true;\n        return false;	            return false;\n        return false;
+hdr:engine/CThingFilter_HasTCOfLeafType.h	1	        if (test_thing.GetTCOfLeafType(&ptc_type))	        if (!test_thing.GetTCOfLeafType(&ptc_type))
+hdr:engine/CTCDRegionExit.h	1	bool IsActive() const { return Active; }	bool IsActive() const { return true; }
+hdr:engine/CThing.h	1	*result=static_cast<T*>(PTCDriver);	*result=static_cast<T*>(PTCDriver)+1;
+src	1	                    exit_pos.Y += text_offset.Y;	                    exit_pos.Y += text_offset.X;
+src	2	        const CThing* pthing = *it;	        const CThing* pthing = *objects_list.begin();
+src	1	const CCharString& display_name = ptcd_region_exit->GetDisplayName();	const CCharString& display_name = ptcd_region_exit->GetRegionName();
+src	1	pthing->GetPos();	pthing->GetPos(); exit_pos.Z += 1.0f;

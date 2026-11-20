@@ -401112,6 +401112,13 @@ $catalog = @(
         TestSource = '00/76/CTCObjectAugmentations_AttemptToStartParticle_00766660_test.cpp'
         PassPattern = '00766660_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0064dd9a'
+        Module = 'NPlayerGui::CDrawMiniMap'
+        Source = '00/64/NPlayerGuiCDrawMiniMap_UpdateRegionExitNames_0064dd9a.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMiniMap_UpdateRegionExitNames_0064dd9a_test.cpp'
+        PassPattern = '0064dd9a_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

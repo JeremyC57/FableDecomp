@@ -23,6 +23,12 @@ public:
     // gets no "use" cursor). No layout change.
     bool IsUsable() const { return Usable; }
 #endif
+#ifdef FABLE_RETAIL_CTCACTIONUSESCRIPTEDHOOK_STATCLASSTYPENAME
+    // Opt-in (hand3c2, row 0x0064DD9A, for the visible CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook> body): FableWin.pdb
+    // ?StatGetClassTypeName@CTCActionUseScriptedHook@@SI?AVCCharString@@XZ, inline in retail (the landed filter 0x00518DC0 builds the
+    // literal 0x01239FE4 "CTCActionUseScriptedHook" in place), like CTCTargetingPlayer's. No layout change.
+    static CCharString FABLE_FASTCALL StatGetClassTypeName() { return CCharString("CTCActionUseScriptedHook"); }
+#endif
 private:
     bool             Usable;                                             // +0x0c
     bool             ForceConfirmation;                                  // +0x0d
@@ -49,5 +55,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCActionUseScriptedHook) == 0x50);
+FABLE_STATIC_ASSERT_AT(52, sizeof(CTCActionUseScriptedHook) == 0x50);
 #endif

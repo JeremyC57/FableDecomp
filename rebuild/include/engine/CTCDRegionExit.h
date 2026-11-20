@@ -22,6 +22,14 @@ public:
     // ?GetNameOfRegionConnectingTo@CTCDRegionExit@@QBEABVCCharString@@XZ is 0x007792D0 (the row calls it); its byte-identical twin
     // 0x007791F0 is ?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ (Ego_r / FableWin TU order; Account B's hand3c2 b2 audit).
     const CCharString& GetNameOfRegionConnectingTo() const;
+#ifdef FABLE_RETAIL_CTCDREGIONEXIT_MINIMAPLABEL
+    // Nested opt-in (hand3c2, row 0x0064DD9A NPlayerGui::CDrawMiniMap::UpdateRegionExitNames): Ego_r.pdb / FableWin.pdb
+    // ?IsActive@CTCDRegionExit@@QBE_NXZ (inline in retail: `cmp byte ptr [ecx+0Ch],0` at 0x0064DE34) and
+    // ?GetDisplayName@CTCDRegionExit@@QBEABVCCharString@@XZ (out of line, 0x00779260). No layout change.
+    // (GetRegionName 0x007791F0 is declared above, outside this opt-in, since Account A's respell.)
+    bool IsActive() const { return Active; }
+    const CCharString& GetDisplayName() const;                           // 0x00779260
+#endif
     const CCharString& GetRegionName() const;
 private:
     bool             Active;                                             // +0x0c

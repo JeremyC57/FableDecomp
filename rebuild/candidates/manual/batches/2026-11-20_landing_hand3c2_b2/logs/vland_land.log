@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0064dd9a   WARN RELOC_NAME: ??0?$_List_base@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAE@ABV?$allocator@PBVCThing@@@1@@Z -> 00615520 labelled 'DoublyLinkedList_InitializeHead'
+0064dd9a   WARN RELOC_NAME: ??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z -> 00617d30 labelled 'CThing::GetTCDriver<CTCDExperienceOrb>'
+0064dd9a   WARN RELOC_NAME: ??1?$_List_base@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAE@XZ -> 00615540 labelled '_global::StdList_Clear_00615540'
+0064dd9a   RELOCATION_MATCH PASS   UpdateRegionExitNames
+
+WINS: 1
+  0064dd9a RELOCATION_MATCH NPlayerGui::CDrawMiniMap::?UpdateRegionExitNames@CDrawMiniMap@NPlayerGui@@IAEXABVCRegion@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawMiniMap_UpdateRegionExitNames_0064dd9a

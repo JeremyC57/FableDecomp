@@ -1,0 +1,20 @@
+diff --git a/rebuild/include/engine/CThing.h b/rebuild/include/engine/CThing.h
+index 83d075bb9..95729646d 100644
+--- a/rebuild/include/engine/CThing.h
++++ b/rebuild/include/engine/CThing.h
+@@ -684,7 +684,15 @@ public:
+     // ??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z (inline in retail: the interface bit test, then
+     // PTCDriver +0x5C read straight off the thing). __forceinline like GetTC<T> / PeekTC<T> (owner decision 2026-11-01). The driver
+     // class must be complete (derived from CTCDriverBase) where it is instantiated.
++#ifdef FABLE_RETAIL_CTHING_PEEKTCDRIVER_PLAIN_INLINE
++    // Nested opt-in (hand3c2, row 0x0064DD9A NPlayerGui::CDrawMiniMap::UpdateRegionExitNames, a size-optimised TU): the same body as
++    // plain `inline`, as Ego_r.pdb has it out of line (??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z):
++    // retail calls the COMDAT there (0x0064DE2C `call 0x00617D30`: `test byte [ecx+2Ch],10h`, PTCDriver +0x5C stored through the
++    // out pointer). Body unchanged.
++    template<class T> inline bool PeekTCDriver(T** result) const {
++#else
+     template<class T> FABLE_FORCEINLINE bool PeekTCDriver(T** result) const {
++#endif
+         if(HasTC(T::StatGetInterfaceType())) {
+             *result=static_cast<T*>(PTCDriver);
+             return true;

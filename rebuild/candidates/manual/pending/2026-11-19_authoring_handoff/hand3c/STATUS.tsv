@@ -8,7 +8,7 @@ address	grade	bytes	test	grades_used	notes
 0063f4b0	LANDED	769	-	30	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); PORTED to shared headers (Q23 Bind3 source -> Bind2, FOREACHINROUGHAREA_BODY): residue = loop-exit reload order (TLX/BRX/BRY/map; Q19/Q23 family gap); include + class-order permutations and a guarded/byte-offset y loop opt-in: no change (port shows the reload swap at two sites, 0x0063F6F4 and 0x0063F755; the local-model draft had one) | best differ/0063f4b0.cpp
 00646762	OPEN	740	-	1	baseline draft DIFFER(735v740) hunks=29 difflines=66
 0064d404	RELOCATION_MATCH	399	PASS(vland; g++ PASS)	10 (hand3c)	hand3c: FableWin 0x020E86BF shape on shared CDrawQuestInfo.h, GetElementByIndex real body earlier in TU (auto_inline off) keeps height in st0, CDRAWQUESTINFO_DRAWMINIGAMEINFO opt-in [b10 LANDED de5ba369a2]
-0064dd9a	OPEN	580	-	1	baseline draft DIFFER(533v580) hunks=14 difflines=286
+0064dd9a	LANDED	580	-	1	landed by Account B (batches/2026-11-20_landing_hand3c2_b2); baseline draft DIFFER(533v580) hunks=14 difflines=286
 00664ba0	RELOCATION_MATCH	184	PASS(vland; g++ PASS)	3 (hand3c)	hand3c: shared headers, FableWin 0x01D999E0 shape + Ego_d locals, visible NOINLINE GetSubDef<CCreatureDef> [b6 LANDED 2078f8b0cc]
 0066cd50	DONE	423	RELOCATION_MATCH	10	b12: FableWin shape; lever = Ego_d idx local in the inline theme getters; vland strict PASS
 00699e60	DONE	431	RELOCATION_MATCH	16	b12: FableWin + Ego_r shape, FULL header, Reset NOINLINE, /d2inlT150; vland strict PASS

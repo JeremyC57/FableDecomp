@@ -40148,3 +40148,15 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?ProcessInputFilter@CFloatLongReverb@@AAEXIPAUCFloatLongReverbParams@@PBU2@PAVCFloatCyclicBuffer@@II@Z	00c75820	00c75ab0
 ??1CVtable_012b9584@@UAE@XZ	9cc69870	012165b8
 ??1CDspGain@@UAE@XZ	00c5f51c	012165ce
+??$GetAllThings@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CThingFilter_HasTCOfLeafType@VCTCActionUseScriptedHook@@@@@CThingSearchTools@@QBEXABV?$CThingFilter_HasTCOfLeafType@VCTCActionUseScriptedHook@@@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00618e60	0064dd9a
+??$GetAllThings@VCThing@@V?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00617ca0	0064dd9a
+??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z	00617d30	0064dd9a
+??0?$_List_base@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAE@ABV?$allocator@PBVCThing@@@1@@Z	00615520	0064dd9a
+??0?$pair@VC3DVector@@VCCharString@@@std@@QAE@ABVC3DVector@@ABVCCharString@@@Z	0065470c	0064dd9a
+??1?$_List_base@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAE@XZ	00615540	0064dd9a
+?GetMiniMapRegionExitTextOffset@CRegion@@QBE_NABVCCharString@@AAVC2DVector@@@Z	006bc350	0064dd9a
+?GetRegionEntranceDisplayName@CTCActionUseScriptedHook@@QBEABVCCharString@@XZ	00729ca0	0064dd9a
+?GetRegionEntranceName@CTCActionUseScriptedHook@@QBEABVCCharString@@XZ	00729c50	0064dd9a
+?GetRegionName@CTCDRegionExit@@QBEABVCCharString@@XZ	007791f0	0064dd9a
+?erase@?$vector@U?$pair@VC3DVector@@VCCharString@@@std@@V?$allocator@U?$pair@VC3DVector@@VCCharString@@@std@@@2@@std@@QAEPAU?$pair@VC3DVector@@VCCharString@@@2@PAU32@0@Z	00656837	0064dd9a
+?push_back@?$vector@U?$pair@VC3DVector@@VCCharString@@@std@@V?$allocator@U?$pair@VC3DVector@@VCCharString@@@std@@@2@@std@@QAEXABU?$pair@VC3DVector@@VCCharString@@@2@@Z	00656ef2	0064dd9a

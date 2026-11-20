@@ -23,7 +23,7 @@ date	account	item	kind	status	note
 2026-11-19	A	nf99a, nf98 (round 8)	naming	done	batches/2026-11-19_landing_nf99a, _nf98
 2026-11-19	B	0x00989230	author	done	landed in batches/2026-11-19_landing_p989_b3_coda_buyitem
 2026-11-19	B	0x00AAD340	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
-2026-11-19	B	0x0064DD9A	author	claimed	hand3c chunk 2 (authoring_handoff)
+2026-11-19	B	0x0064DD9A	author	done	landed in batches/2026-11-20_landing_hand3c2_b2
 2026-11-19	B	0x00D6C830	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
 2026-11-19	B	0x00AABF60	author	done	landed in batches/2026-11-19_landing_hand3c2_b1_b7
 2026-11-19	B	0x00A793D0	author	claimed	hand3c chunk 2 (authoring_handoff)
