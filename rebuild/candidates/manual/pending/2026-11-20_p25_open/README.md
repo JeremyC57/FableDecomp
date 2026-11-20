@@ -15,6 +15,6 @@ entry cites "Account B scratch w26/...", the files are here. Rulings: docs/journ
 | 0x00859EF0 | CCombatActionBase::OnAnimationLoaded | DIFFER(1195v1196) | register / schedule only; Ego_d has 480-520 B lines on discarded-bool calls (1600, 1605) we cannot spell |
 | 0x008DBC80 | NCreatureMode::CModeDragonFlying::FrameUpdate | DIFFER(2321v2319) | Normalise x87 order, direction slot, set store order; same oversize-line pattern (4982, 5125) |
 | 0x005BFD5E | CTCInventoryBase::OnSerialise | DIFFER(425v425) | callee-saved register rotation only; not a symbol tie (symlog: dummies renumber the pool, bytes never move); parked for good |
-| 0x00A58B50 | NBBBMaths::CSphere::GetFirstIntersectionWithTriangle | DIFFER(2211v2207) | ported onto engine/CSphere.h (add-only CSPHERE_TRIANGLE); next: Ego_d locals/blocks rewrite; the draft's noinline push_back and back_insert_iterator devices need a ladder check |
+| 0x00833C00 | CThingAICreature::DrawPreparePrimitivesForRendering | DIFFER(2296v2300) | retail keeps `info` in ebp and re-reads info.Engine after each primitive temporary; ours spills it; frame one dword off |
 
 All stay `reserved (acctB ...)` in UNMATCHED_ROWS.tsv for a return pass. NAME_FIXES found on the way are in the coordination log.

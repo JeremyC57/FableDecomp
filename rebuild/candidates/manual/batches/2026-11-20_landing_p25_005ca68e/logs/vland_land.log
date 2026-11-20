@@ -1,0 +1,10 @@
+addr       parity           behav  name
+005ca68e   WARN RELOC_NAME: ??$IS_THING_DEAD@PAVCThing@@@@YI_NABQAVCThing@@@Z -> 005cbdbd labelled '_global::IsThingAlive_ptr_005cbdbd'
+005ca68e   WARN RELOC_NAME: ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z -> 005cbdd2 labelled 'operator!=<CThing>'
+005ca68e   RELOCATION_MATCH PASS   SetupActiveWeaponsOnCarrier
+
+WINS: 1
+  005ca68e RELOCATION_MATCH CTCInventoryWeapons::?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryWeapons_SetupActiveWeaponsOnCarrier_005ca68e

@@ -139,3 +139,17 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   unchanged without it, and cites the copy's COMDAT evidence.
 - **Follow-up:** regrade landed 0x00AD9770 with NOINLINE. If it still matches, it is a re-port item for A; if it breaks, the define is a
   per-site fact, not a TU-wide one.
+
+## 0x00A58B50 NBBBMaths::CSphere::GetFirstIntersectionWithTriangle: fitted helper spellings on existing opt-ins (2026-11-20)
+- **Case:** RELOCATION_MATCH (/Gr) after the same-TU IsPointInsideTriangleInThePlane is defined above the row with its landed text, using
+  Ego_d's locals. Three fitted items, all plain C++ or existing opt-ins:
+  - c_a / c_c through GFSqr (PDB-named; inline products DIFFER by 2 and 10 lines);
+  - GFSqr's `(n*n)` body via two existing gates;
+  - FABLE_RETAIL_C3DVECTOR.
+- **Ruling:** may land. The match survives 1..16 dummy locals, so it is not a symbol-number knife edge.
+- **Checks, done before landing:**
+  - The Fidelity copy's COMDAT is byte-equal to retail 0x00A58A60 (the address is the helper's own, not the sibling 0x00A593F0).
+  - Line 2 names the header contracts in place of "none".
+  - The GFSqr label cites Ego_d's corroboration: c_c's line is 34 B longer than c_a's, as the call form's are.
+  - `(n*n)` stays FITTED.
+- **Not blocking:** regrade the parked 0x00A4EFC0 with this row's C3DVector set.
