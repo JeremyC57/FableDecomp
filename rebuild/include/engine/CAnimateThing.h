@@ -18,6 +18,16 @@ class CAnimateThing {public:
 #endif
  class CCompleteAnimation{public:CAnimSet MainAnimSet;std::list<CAnimSet> TransitionAnimSets,CombinationAnims;bool MainAnimCanTransitionOut;};
  class CDelayedAnimation{public:std::list<CAnimSet> CombinationAnims;};
+#ifdef FABLE_RETAIL_CANIMATETHING_UPDATE_CALLEES
+ // Opt-in (p25A, row 0x0070E8B0 CAnimateThing::Update): the private members Update calls out of line, Ego_r.pdb / FableWin.pdb
+ // ?UpdateCombinationAnimList@CAnimateThing@@AAEXAAV?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@ABVCAnimateThingUpdate@@@Z
+ // (0x0070D390, landed) and ?PreloadAnims@CAnimateThing@@AAEXABVCCompleteAnimation@1@@Z (0x0070C590, landed). Declarations only;
+ // needs FABLE_RETAIL_CANIMATETHING_MAINANIM (CAnimateThingUpdate).
+private:
+ void UpdateCombinationAnimList(std::list<CAnimSet>& anims, const CAnimateThingUpdate& update);   // 0x0070D390
+ void PreloadAnims(const CCompleteAnimation& animation);              // 0x0070C590
+public:
+#endif
  void SetMainAnim(const CAnimInit&,long,long);
 #ifdef FABLE_RETAIL_CANIMATETHING_MAINANIM
  // Retail opt-in (chunk 1006, row 0x005B3E4E): FableWin.pdb ?GetMainAnim@CAnimateThing@@QAEAAVCAnimSet@@XZ and

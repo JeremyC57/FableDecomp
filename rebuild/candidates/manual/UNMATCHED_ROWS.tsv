@@ -191,7 +191,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0070d940	CAnimateThing	CalcInterpolatedMeshAnim	2400	parked		0	rebuild/candidates/manual/pending/2026-11-05_linux_hand785/differ/0070d940.test.cpp	original
 0070e2a0	CAnimateThing	CalcCachedAnims	640	parked	codex pass24 PARKED: The placement of the second blend-state temporary differs across seven frame-reference sites.	14	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0070e2a0/0070e2a0.cpp	original
 0070e710	CAnimateThing	CAnimateThing	416	parked	DIFFER(420v416)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0070e710.cpp	original
-0070e8b0	CAnimateThing	CAnimateThing::UpdateFrameLogic	896	reserved (acctB p25A, 2026-11-20)	DIFFER(882v881)	1	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/0070e8b0.cpp	original
 00714370	CActionMoveTo	OnActivate	960	parked	DIFFER(950v948)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00714370.cpp	original
 0071d020	CTCHeroMorph	OnSerialise	912	parked	DIFFER(942v911)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/0071d020.verify.cpp	original
 00723e50	_global	CCharacter_UpdateOrientation	320	parked	DIFFER(306v310)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723e50.cpp	original

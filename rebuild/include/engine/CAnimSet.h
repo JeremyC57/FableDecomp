@@ -5,6 +5,9 @@
 #include "engine/CAnimInit.h"
 template<class T,class L>inline void FABLE_FASTCALL GFLimitLower(T& value,const L& lower){if(value<lower)value=lower;}
 class CAnimateThing;
+#ifdef FABLE_RETAIL_CANIMSET_ANIMATETHING_UPDATE
+class CAnimateThingUpdate;
+#endif
 #ifdef FABLE_RETAIL_CANIMSET_UPDATEDISTANCE
 class C3DAnimationInfo;
 #endif
@@ -59,7 +62,18 @@ class CAnimSet{friend class CAnimateThing;public:
  bool IsFinished()const;                                               // 0x00668A80
 #endif
 #endif
+#ifdef FABLE_RETAIL_CANIMSET_ANIMATETHING_UPDATE
+ // Opt-in (p25A, row 0x0070E8B0 CAnimateThing::Update): FableWin.pdb ?HasHadUpdate@CAnimSet@@QBE_NXZ (inline in retail: `test byte
+ // [set+51h],8`, 0x0070E9F6). Needs FABLE_RETAIL_CANIMSET_TYPE + FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24 (SetAsUpdated / SetAlpha).
+ bool HasHadUpdate() const { return HadUpdate; }
+#endif
 private:
+#ifdef FABLE_RETAIL_CANIMSET_ANIMATETHING_UPDATE
+ // (same row) the private members CAnimateThing::Update calls out of line: Ego_r.pdb / FableWin.pdb ?Update@CAnimSet@@AAEXABVCAnimateThingUpdate@@@Z
+ // (0x0070D030, landed) and ?UpdateInternalAlphas@CAnimSet@@AAEXXZ (0x0070C2C0, landed). Declarations only.
+ void Update(const CAnimateThingUpdate& update);                       // 0x0070D030
+ void UpdateInternalAlphas();                                          // 0x0070C2C0
+#endif
 #ifdef FABLE_RETAIL_CANIMSET_UPDATEDISTANCE
  // Retail opt-in (row 0x0070CE10): Ego_r.pdb ?UpdateDistanceMoved@CAnimSet@@AAEXM@Z, ?PeekAnimInfo@CAnimSet@@ABEABVC3DAnimationInfo@@F@Z
  // and ?UpdatePercentageCompleteTo@CAnimSet@@AAEXM@Z (FableWin.pdb 0x01E9BFF0 / 0x01E9B410 / 0x01E9BA00). The two helpers are
@@ -93,4 +107,18 @@ bool HadUpdate:1;
 bool OwnedByMainAnim:1;
 };
 FABLE_STATIC_ASSERT_AT(74, sizeof(CAnimSet)==0x54);
+#ifdef FABLE_RETAIL_CANIMSET_ANIMATETHING_UPDATE
+// (same row) Ego_r.pdb / FableWin.pdb ?SetAlpha@CAnimSet@@QAEXM@Z: out of line at 0x0070BFC0 (landed, this body) and expanded in
+// CAnimateThing::Update twice (main alpha 0x0070E92C..0x0070E97B, each transition set 0x0070EB10..0x0070EB46: the in-register clamp,
+// then LastAlpha = CurrentAlpha). The class declares it (FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24); this is its inline definition.
+inline void CAnimSet::SetAlpha(float alpha)
+{
+    if (alpha < 0.0f)
+        alpha = 0.0f;
+    else if (alpha > 1.0f)
+        alpha = 1.0f;
+    LastAlpha = CurrentAlpha;
+    CurrentAlpha = alpha;
+}
+#endif
 #endif

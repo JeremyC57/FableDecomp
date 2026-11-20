@@ -39613,3 +39613,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QAE?AVC3DVector@@XZ	008004d0	0097f5b0
 ?HasRoute@CTCPreCalculatedNavigationRoute@@QAE_NXZ	00800500	0097f5b0
 ?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z	006cb9c0	0097f5b0
+?PreloadAnims@CAnimateThing@@AAEXABVCCompleteAnimation@1@@Z	0070c590	0070e8b0
+?Update@CAnimSet@@AAEXABVCAnimateThingUpdate@@@Z	0070d030	0070e8b0
+?UpdateCombinationAnimList@CAnimateThing@@AAEXAAV?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@ABVCAnimateThingUpdate@@@Z	0070d390	0070e8b0
+?UpdateInternalAlphas@CAnimSet@@AAEXXZ	0070c2c0	0070e8b0

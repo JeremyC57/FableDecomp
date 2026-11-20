@@ -401536,6 +401536,13 @@ $catalog = @(
         TestSource = '00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Main_00e9e420_test.cpp'
         PassPattern = '00e9e420_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0070e8b0'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_Update_0070e8b0.cpp'
+        TestSource = '00/70/CAnimateThing_Update_0070e8b0_test.cpp'
+        PassPattern = '0070e8b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
