@@ -401332,6 +401332,14 @@ $catalog = @(
         TestSource = '00/41/NUISystemCSprite_Draw_0041afa0_test.cpp'
         PassPattern = '0041afa0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0077d5b0'
+        Module = 'CTCHeroCentre'
+        Source = '00/77/CTCHeroCentre_FrameUpdate_0077d5b0.cpp'
+        TestSource = '00/77/CTCHeroCentre_FrameUpdate_0077d5b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0077d5b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -39805,3 +39805,4 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?SetTarget@CModeScorpionKingTailPlunge@@QAEXPAVCThing@@@Z	008d7430	008c48a0
 ?DeleteData@?$CCountedPointer@UCModeJackOfBladesScream@@@@SIXPAX@Z	008c2d60	008c0d10
 ?SetSwordObject@CModeJackOfBladesScream@@QAEXPAVCThing@@@Z	008d7370	008c0d10
+??$GetAllLeafThings@VCThingObject@@V?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z	0077ec20	0077d5b0

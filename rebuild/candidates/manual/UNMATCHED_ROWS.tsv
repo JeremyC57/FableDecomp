@@ -234,7 +234,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00775350	CTCShop	UpdateStock	2000	parked	DIFFER(1971v1988)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00775350.cpp	original
 0077a890	CTCDExperienceOrb	Create	720	parked	DIFFER(724v707)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/0077a890.cpp	original
 0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	576	parked	DIFFER(559v563)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/0077ba40.cpp	gapscan/boundary
-0077d5b0	CTCHeroCentre	FrameUpdate	1504	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(5v1491)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077d5b0.cpp	original
 0077dc40	_global	CTCCampfire_BuildPlayerRegion	688	parked	DIFFER(591v626)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077dc40.cpp	original
 00780430	_gapscan	sub_00780430	272	parked	DIFFER(273v271)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand510/differ/00780430.cpp	gapscan/boundary
 007805d0	_gapscan	sub_007805d0	304	parked	DIFFER(300v299)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/007805d0.cpp	gapscan/boundary

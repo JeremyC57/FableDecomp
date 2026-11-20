@@ -34,6 +34,12 @@ public:
     void AddFloat(float value) { AddData(sizeof(value), &value); }
     void AddUBYTE(unsigned char value) { AddData(sizeof(value), &value); }
     void SetPlayer(long player) { Player = (signed char)player; }
+#ifdef FABLE_RETAIL_CGAMEEVENT_INLINE_ADDULONG
+    // Nested opt-in (hand3c3, row 0x0077D5B0 CTCHeroCentre::FrameUpdate): FableWin.pdb ?AddULONG@CGameEvent@@QAEXK@Z, the AddFloat
+    // sibling, expanded in place in retail (0x0077D624..0x0077D65C: the value 0xB stored to a frame word, AddData(4, &word)); the
+    // landed local-model rows OpenTrainingScreen 0x0077D4B0 / CTCShop::OpenShoppingInterface 0x00773B20 spell the same call. No layout change.
+    void AddULONG(unsigned long value) { AddData(sizeof(value), &value); }
+#endif
 #ifdef FABLE_RETAIL_CGAMEEVENT_INLINE_ADDMORE
     // Nested opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput): FableWin.pdb ?AddUHUGE@CGameEvent@@QAEX_K@Z
     // and ?AddSLONG@CGameEvent@@QAEXJ@Z, the AddFloat siblings, expanded in place in retail (0x00691E66..0x00691EC3: the value copied
