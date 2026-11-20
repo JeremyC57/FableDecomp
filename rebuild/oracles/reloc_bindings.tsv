@@ -27653,7 +27653,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GetExperienceAbilityDescription@CTCInventoryExperience@@QAE?AVCWideString@@JJ@Z	0056fe7c	00570332
 ?GetExperienceAbilityMovieName@CTCInventoryExperience@@QAE?AVCWideString@@W4EHeroAbility@@@Z	0056e75f	00570332
 ?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z	00578c2a	00570332
-?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z	0060eeb0	00589a30
 ??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@1@ABW4EHeroAbility@@@Z	005f8444	005f0c5f
 ??A?$map@W4EHeroAbility@@PAVCComponent@NUISystem@@U?$less@W4EHeroAbility@@@std@@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4EHeroAbility@@@Z	005f9ea5	005f0c5f
 ?RefreshBuyPossibilityNumbers@CTCInventoryTrade@@AAEXXZ	005a3734	005a9a87
@@ -39902,3 +39901,4 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ?_M_insert_overflow@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@IAEXPAVCTexture@@ABV3@ABU__false_type@2@I_N@Z	0049b480	0049b5a0
 ?_M_fill_insert@?$vector@VCTexture@@@std@@QAEXPAVCTexture@@IABV3@@Z	0049b5a0	0049b7f0
 ?erase@?$vector@VCTexture@@@std@@QAEPAVCTexture@@PAV3@0@Z	0049b3b0	0049b7f0
+?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z	0060eeb0	00589a30

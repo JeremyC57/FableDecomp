@@ -3,6 +3,7 @@
 // (ConstructPCMapList(false, 0)) -- a null list returns at once -- which is initialised and appended to the menu components; then
 // the four scroll buttons observe event 25, the back / close clickables become manager observers and observe event 25, and the
 // list goes to state 5.
+// HOST MODEL (pre-existing form; it does not link the row object): mirrors the re-authored control flow of 2026-11-20.
 #include <cstdio>
 #include <string>
 #include <vector>
@@ -25,20 +26,20 @@ struct Inventory {
     void DeleteMenuComponents() { ++deletes; }
     void OpenPCMapMenu()
     {
-        unsigned long i;
         DeleteMenuComponents();
         menu = 6;
         Comp* list = 0;
-        for (i = 0; i < components.size(); ++i) {
-            if (list) break;
-            if (components[i]->name == "PC_MAP_LIST") list = components[i];
+        for (unsigned long count = 0; count < components.size() && !list; ++count) {
+            if (components[count]->name == "PC_MAP_LIST") list = components[count];
         }
         if (!list) {
             list = map->ConstructPCMapList(false, 0);
-            if (!list) return;
-            list->initialised = true;
-            components.push_back(list);
+            if (list) {
+                list->initialised = true;
+                components.push_back(list);
+            }
         }
+        if (!list) return;
         static const char* const scrolls[] = { "SCROLL_LIST_UP", "SCROLL_DESCRIPTION_UP", "SCROLL_LIST_DOWN", "SCROLL_DESCRIPTION_DOWN" };
         for (int k = 0; k < 4; ++k) { Comp* s = list->FindChild(scrolls[k]); if (s) s->observed.push_back(25); }
         static const char* const clicks[] = { "PC_BACK_CLICKABLE", "PC_CLOSE_CLICKABLE" };
