@@ -77,6 +77,14 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] Parity crawl batches 153 (8/8) and 154 (7/8) landed 2026-09-02; `probe.py` + `disasm.py` + `iat_lookup.py` helpers in `work/crawl_batch153-154`
 - [x] De-bake (2026-11-05): 1 hand-written bake left in `rebuild/src` (0x009BEF80, parked register residue); 0 in-row `__asm`; asm only through shared helpers (`docs/pipeline/ASM_RULES.md`)
 - [ ] Naming/header plan steps 3-6 (2026-11-05 snapshot `docs/journal/2026-11/2026-11-05_SESSION.md`): steps 1-2 done, phases 3-5 applied (9,424 rows), step 5 game classes next (CThing 4,190 local rows), step 6 stand-ins 7,946 left — paused by the owner
+  - 2026-11-20 resumed (owner: "keep working on naming and header fixes"). Backlog by name: 27,915 of 56,845 landed rows define a
+    local class with a shared header's name (2,024 classes; CThing 2,121, CIntelligentPointer 1,517, CCombatActionBase 1,362, CTCBase
+    1,132); an upper bound, from `tools/decomp_pipeline/shared_header_backlog.py`. Order (advisor decision, owner delegated): Account B's
+    re-port list first (`pending/2026-11-20_winddown/reports_REMAINING.md`: CVsyncCallbackTimer option A with agent RP1, then the 13
+    CPSCSingleSprite rows); then a scripted trial on ~50 rows of small classes (swap the local model for the include, regrade, diff bound
+    and defined symbols) to tell free bulk ports from naming work; a full-tree regrade before bulk ports (B's auditor found two header
+    regressions on 2026-11-20 and nothing regrades the tree now); a landing ratchet so the count cannot grow. Naming stays the main line;
+    authoring is a side lane (995 unlanded, 978 parked).
 - [ ] Mislabelled dtor families (`_Dest_val`/`_Cons_val` BSim labels on non-dtor bodies) re-attributed on landing; sweep the rest
 - [ ] `00995e70 PeekData` honest DIFFER(16v15) — attack load-through-lea, not the compare
 - [ ] `LinkToNeighbouringMaps 0x00A7A650` 9 bytes long; `CNavQuadTree::UpdateLines 0x00A781A0` fixture-first
