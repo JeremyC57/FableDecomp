@@ -1,5 +1,7 @@
-// std::vector<unsigned short>::operator=(const vector& x) -- STLport copy assignment of a 16-bit vector: reallocate and copy when x outgrows the capacity, else memmove over the live prefix (and the uninitialised tail)
-// Leaf: ??4?$vector@G
+// std::vector<short>::operator=(const vector& x) -- STLport copy assignment of a 16-bit vector: reallocate and copy when x outgrows the capacity, else memmove over the live prefix (and the uninitialised tail)
+// Leaf: ??4?$vector@FV?$allocator@F@std@@@std@@QAEAAV01@ABV01@@Z
+// Name fix (NF189, 2026-11-20, q6206 / q6207): the element type is short (F), not unsigned short: CWaveFile::AudioData is Ego_r.pdb
+//   CArray<short> (+0xC) and the landed callers 0x00AAD340 / 0x00AAD650 bind the vector<short> spelling. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AADE80, length 236 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (allocate), memmove @ 0x00BFEAE6 (STLport __copy_trivial), free @ 0x00BFEA14
 //   (deallocate in _M_clear).
@@ -109,6 +111,6 @@ vector<_Tp, _Alloc>& vector<_Tp, _Alloc>::operator=(const vector<_Tp, _Alloc>& _
     return *this;
 }
 
-template vector<unsigned short>& vector<unsigned short>::operator=(const vector<unsigned short>&);
+template vector<short>& vector<short>::operator=(const vector<short>&);
 
 }   // namespace std

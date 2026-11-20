@@ -11,13 +11,19 @@
 // allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
 // instantiation is named from the manifest label when unique, else from the destroy function.
 // One of 121 bodies of this shape.
-void __fastcall Destroy_00a99ff0(void* object);   // 0x00A99FF0: the per-type deleter stored in the block
+// The per-type deleter stored in the block is CCountedPointer<CChunkedFileChunk>::DeleteData 0x00A99FF0, declared by the shared
+// engine/CCountedPointer.h (name fix NF189, 2026-11-20, q4553: was the free stand-in Destroy_00a99ff0).
+// Taking the deleter's address makes this TU emit the header's inline DeleteData as a pick-any copy; the shared class header keeps it
+// the owner 0x00A99FF0's body (a complete CChunkedFileChunk, virtual destructor).
+#define FABLE_RETAIL_CCHUNKEDFILECHUNK
+#include "engine/CChunkedFileChunk.h"
+#include "engine/CCountedPointer.h"
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00a99ff0), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<CChunkedFileChunk>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_00a99ff0 {

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC990, 177 bytes (`ret 4`). Ego_r.pdb
 // `?DrawBox@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@@Z`.
 // Callees: CDefClassBase::GetSubDef<CTavernGameDef> 0x005ED4A0 (landed as GetSubDef_005ed4a0) through the inline
-//          CTCTavernGame::GetDef (out-of-line copy 0x005EA000); vector<CEnginePrimitiveHandle>::Resize(long) 0x00443F90;
+//          CTCTavernGame::GetDef (out-of-line copy 0x005EA000); vector<CEnginePrimitiveHandle>::resize(size_type) 0x00443F90;
 //          CDisplayManager::GetRenderTargetDimensions() 0x009BEDC0 on g_pDisplayDevice 0x013B8390; the nine-patch box
 //          drawer 0x0048E0A2 (`__fastcall`: info in ecx, handles in edx, box and layer on the stack; declared as the landed
 //          caller 0x00643EB2 spells it -- Ego_r.pdb names it CSubtitleRenderer::DrawBox(const
@@ -20,6 +20,8 @@
 //        def is kept in esi to the short `dec [esi+4] ; jne` release only when VC7.1 sees the GetSubDef body (a
 //        stand-in compiled above under `#pragma auto_inline(off)`); only DrawBox is graded.
 class CEnginePrimitiveHandle;
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 
 class C2DVector { public:
     float X, Y;
@@ -39,11 +41,11 @@ class CDisplayManager { public:
 };
 extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 
-struct CRetailHandleVector {                    // STLport vector<CEnginePrimitiveHandle> (12 bytes)
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    void Resize(long count);                    // 0x00443F90
+// Name fix (NF189, 2026-11-20, q4755): the handle vector's resize 0x00443F90 is the shared STLport
+//   vector<CEnginePrimitiveHandle>::resize(size_type) (stlport/fable_containers.h, declared only by
+//   FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL); the header-less local CRetailHandleVector keeps its token (the box drawer
+//   0x0048E0A2 is declared with it, as the landed caller 0x00643EB2 spells it) and sits on that shared base.
+struct CRetailHandleVector : std::vector<CEnginePrimitiveHandle> {   // STLport vector<CEnginePrimitiveHandle> (12 bytes)
 };
 class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { ENGINE_2D_LAYER_TAVERN_SCORE_BOX = 0x47 };
@@ -85,7 +87,7 @@ void CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo& info)
 {
     CDefPointer<const CTavernGameDef> def;
     GetDef(&def);
-    BoxHandles.Resize(9);
+    BoxHandles.resize(9);
     C2DExtentsI size = GPDisplayManager->GetRenderTargetDimensions();
     ::DrawBox(const_cast<CEnginePrimitivePrepareInfo*>(&info), &BoxHandles,
               C2DBoxF(def->MainGameScoreBoxX * (float)size.Y, def->MainGameScoreBoxY * (float)size.Y,

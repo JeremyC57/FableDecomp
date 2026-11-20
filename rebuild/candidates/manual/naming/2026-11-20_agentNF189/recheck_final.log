@@ -1,0 +1,99 @@
+addr       parity           behav  name
+004c00b0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+004c00b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+004c00b0   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+004c00b0   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearance::SetTintColour
+00579ea3   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@2@@Z -> 00579d97 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00579ea3   RELOCATION_MATCH PASS   _global::RbTree_Clear_00579ea3
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005d66ba   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005d66ba   RELOCATION_MATCH PASS   CTCInventoryStats::SetCreatureAsKilled
+005ec990   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ec990   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ec990   RELOCATION_MATCH PASS   CTCTavernGame::DrawBox
+006d0630   RELOCATION_MATCH PASS   CTCWife::ReceivedNiceGiftIsOpinionReactionHappening
+00a80a20   RELOCATION_MATCH PASS   std::_List_base<CCountedPointer<CNavRegionConnection>, std::allocator<CCountedPointer<CNavRegionConnection>>>::clear
+00a98be0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98be0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98be0   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddRootSubChunkType
+00a98c80   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98c80   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98c80   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddObjectSubChunkType
+00a98d20   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98d20   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98d20   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddHelpersSubChunkType
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a98dc0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileLoader (engine/C3DAnimFileLoader.h)
+00a98dc0   RELOCATION_MATCH PASS   C3DAnimFileLoader::AddMovementVectorSubChunkType
+00a99ff0   MATCH            PASS   CCountedPointer<class CChunkedFileChunk>::DeleteData
+00a9cf40   RELOCATION_MATCH PASS   CCountedPointer_00a99ff0::Reset
+00aadd80   RELOCATION_MATCH PASS   std::vector<unsigned short>::vector
+00aade80   RELOCATION_MATCH PASS   std::vector<unsigned short>::operator=
+00aadff0   RELOCATION_MATCH PASS   CCountedPointer_00aadfc0::Reset
+00bbeaf0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00bbeaf0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleSpriteTrailGroup (engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h)
+00bbeaf0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleSpriteTrailGroup::CEnginePrimitiveManagerParticleSpriteTrailGroup
+00bc34d0   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+00bc34d0   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+00bc34d0   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bc34d0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bc34d0   WARN SHARED_HEADER_AVAILABLE CEngineParticleConstantBlock (engine/CEngineParticleConstantBlock.h)
+00bc34d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleMeshGroup (engine/CEnginePrimitiveManagerParticleMeshGroup.h)
+00bc34d0   WARN RELOC_NAME: ??0CEnginePrimitiveGroupManager@@QAE@PAUCEngineSceneArray@@@Z -> 00bebc30 labelled 'CEnginePrimitiveManagerMeshBase::CEnginePrimitiveManagerMeshBase'
+00bc34d0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleMeshGroup::CEnginePrimitiveManagerParticleMeshGroup
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CEngineParticleConstantBlock (engine/CEngineParticleConstantBlock.h)
+00bc4d90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleLineGroup (engine/CEnginePrimitiveManagerParticleLineGroup.h)
+00bc4d90   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleLineGroup::CEnginePrimitiveManagerParticleLineGroup
+
+WINS: 18
+  004c00b0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?SetTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCRGBColour@@PAX@Z
+  00579ea3 RELOCATION_MATCH _global::?clear@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@QAEXXZ
+  005d66ba RELOCATION_MATCH CTCInventoryStats::SetCreatureAsKilled
+  005ec990 RELOCATION_MATCH CTCTavernGame::?DrawBox@CTCTavernGame
+  006d0630 RELOCATION_MATCH CTCWife::?ReceivedNiceGiftIsOpinionReactionHappening@CTCWife@@QAE_NJ@Z
+  00a80a20 RELOCATION_MATCH CRetailList_CountedPointer::?clear@?$_List_base@V?$CCountedPointer@VCNavRegionConnection@@@@V?$allocator@V?$CCountedPointer@VCNavRegionConnection@@@@@std@@@std@@QAEXXZ
+  00a98be0 RELOCATION_MATCH C3DAnimFileLoader::?AddRootSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a98c80 RELOCATION_MATCH C3DAnimFileLoader::?AddObjectSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a98d20 RELOCATION_MATCH C3DAnimFileLoader::?AddHelpersSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a98dc0 RELOCATION_MATCH C3DAnimFileLoader::?AddMovementVectorSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z
+  00a99ff0 MATCH _global::?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z
+  00a9cf40 RELOCATION_MATCH CCountedPointer_00a99ff0::Reset
+  00aadd80 RELOCATION_MATCH std::vector<unsigned short>::??0?$vector@FV?$allocator@F@std@@@std@@QAE@I@Z
+  00aade80 RELOCATION_MATCH std::vector<unsigned short>::??4?$vector@FV?$allocator@F@std@@@std@@QAEAAV01@ABV01@@Z
+  00aadff0 RELOCATION_MATCH CCountedPointer_00aadfc0::?Reset@?$CCountedPointer@VCWaveFile@@@@QAEXPAVCWaveFile@@@Z
+  00bbeaf0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteTrailGroup::??0CEnginePrimitiveManagerParticleSpriteTrailGroup
+  00bc34d0 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::??0CEnginePrimitiveManagerParticleMeshGroup
+  00bc4d90 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::??0CEnginePrimitiveManagerParticleLineGroup

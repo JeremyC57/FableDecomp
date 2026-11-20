@@ -1,5 +1,7 @@
-// std::vector<unsigned short>::vector(size_type n) -- STLport sized constructor: allocate n 16-bit slots through the _Vector_base constructor and fill them with zero
-// Leaf: ??0?$vector@G
+// std::vector<short>::vector(size_type n) -- STLport sized constructor: allocate n 16-bit slots through the _Vector_base constructor and fill them with zero
+// Leaf: ??0?$vector@FV?$allocator@F@std@@@std@@QAE@I@Z
+// Name fix (NF189, 2026-11-20, q6206 / q6207): the element type is short (F), not unsigned short: CWaveFile::AudioData is Ego_r.pdb
+//   CArray<short> (+0xC) and the landed callers 0x00AAD340 / 0x00AAD650 bind the vector<short> spelling. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AADD80, length 97 bytes, `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (allocator<unsigned short>::allocate, null for n == 0).
 // Identity: the element size (`lea eax,[edi+edi]`, 16-bit `rep stosw` tail) and STLport's `_Vector_base(n, a)` shape (three
@@ -75,6 +77,6 @@ public:
     }
 };
 
-template vector<unsigned short>::vector(unsigned int);
+template vector<short>::vector(unsigned int);
 
 }   // namespace std

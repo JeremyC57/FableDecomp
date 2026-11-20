@@ -3,19 +3,19 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00a98be0, 157 bytes, thiscall, hidden return pointer, `ret 8`.
 // Identity (proven): it registers under this+0x10, which is Ego_r.pdb C3DAnimFileLoader::RootChunkType (the landed constructor 0x00A999B0's layout); bound ?AddRootSubChunkType@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z; called by the landed C3DAnimFileLoader::C3DAnimFileLoader at 0x00A99A47 / 0x00A99AD3 (C3DAnimFileObjectChunk, C3DAnimFileHelpersChunk prototypes).
 // Callees: the prototype's CreateNewInstance() const (CChunkedFileChunk vtable slot 9), operator new 0x00BFEA1A (the 12-byte
-//   count block, deleter Destroy_00a99ff0 0x00A99FF0), the parent's GetAsSuperChunk() (slot 6, 0x00AA76B0 in the super-chunk
+//   count block, deleter CCountedPointer<CChunkedFileChunk>::DeleteData 0x00A99FF0), the parent's GetAsSuperChunk() (slot 6, 0x00AA76B0 in the super-chunk
 //   vtables), CChunkedFileSuperChunk::RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>&) 0x00AA87E0, operator
 //   delete 0x00BFE9BC (the local's release).
 // Shape (family L112): the counted pointer is a frame local, copied into the return slot (count bump) and released (count
 //   re-read after the decrement); RegisterSubChunkType's argument is pushed before the virtual call that yields its `this`.
 //   Classes as in the landed C3DAnimFileLoader::C3DAnimFileLoader 0x00A999B0 (only what this body touches).
-void __fastcall Destroy_00a99ff0(void* object);   // 0x00A99FF0: the deleter stored in the count block
+class CChunkedFileChunk;
 
 struct SCountBlock {
     long m_references;                      // +0
     void (__fastcall* m_pfnDestroy)(void*); // +4
     void* m_pObject;                        // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00a99ff0), m_pObject(object) { }
+    SCountBlock(void* object);
 };
 template <class T>
 class CCountedPointer { public:
@@ -49,7 +49,11 @@ class CCountedPointer { public:
         m_pObject = 0;
         m_pCount = 0;
     }
+    static void __fastcall DeleteData(void* data);   // 0x00A99FF0 for T = CChunkedFileChunk (Ego_r.pdb SIXPAX@Z)
 };
+// The count block's deleter is CCountedPointer<CChunkedFileChunk>::DeleteData 0x00A99FF0 (name fix NF189, 2026-11-20, q4553: was the
+// free stand-in Destroy_00a99ff0); the block's constructor is defined here, once the template declares it.
+inline SCountBlock::SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<CChunkedFileChunk>::DeleteData), m_pObject(object) { }
 
 class CChunkedFileSuperChunk;
 class CChunkedFileChunk { public:                  // 0x10

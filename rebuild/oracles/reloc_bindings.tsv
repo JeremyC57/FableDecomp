@@ -5290,7 +5290,6 @@ _D3DXLoadVolumeFromVolume@32	00bfefec	00a67670
 @FableMemberDtor_00a9c980@4	0099eae0	00a9c980
 @FableMemberDtor_00a9c9a0@4	0099eae0	00a9c9a0
 ?Destroy_00a9cb20@@YIXPAX@Z	00a9cb20	00a9ced0
-?Destroy_00a99ff0@@YIXPAX@Z	00a99ff0	00a9cf40
 ??_7C3DQuadricBasedMeshOptimiser@@6B@	0129e13c	00aa41c0
 ?BeginOptimisation@C3DOptimisedMeshBase@@QAEXABUCQuadricOptimisationParams@@@Z	00acd500	00aa4210
 ?Destroy_00aa4310@@YIXPAX@Z	00aa4310	00aa4460
@@ -5336,7 +5335,6 @@ _strstr	00bfeb3a	00aac460
 ??_7CASoundReceiver@@6B@	0129e754	00aacf40
 ??_7CSoundReceiverLH@@6B@	0129e76c	00aad020
 ?Commit@CSoundReceiverLH@@QAEXXZ	00aacfb0	00aad060
-?Destroy_00aadfc0@@YIXPAX@Z	00aadfc0	00aadff0
 ??_7C3DAnimFileHelpersChunk@@6B@	0129e7c0	00aae090
 ??_7C3DAnimFileTimingEventChunk@@6B@	0129e7f0	00aae170
 ??_7C3DAnimFileMovementVectorChunk@@6B@	0129e83c	00aae2a0
@@ -15328,7 +15326,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetRenderPositionInterpolateForThing@@YI?AVC3DPositionInterpolator@@ABVCThing@@@Z	004bc0e0	004be4e0
 ?SetPrimitive@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC3DPositionInterpolator@@ABVC3DOrientationInterpolator@@@Z	004bd6e0	004be4e0
 ?remove@CComponentListObject@@QAEXABQAVCAGraphicAppearanceComponent@NGraphicAppearance@@@Z	004c3460	004c0000
-??ACTintColourMap@@QAEAAVCRGBColour@@ABQAX@Z	004c5890	004c00b0
 ?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z	004c0240	004c0430
 ?__unguarded_linear_insert@@YIXPAUCMeshInfo@@U1@VCSortPrimaryMeshesFirst@@@Z	004c1ec0	004c5100
 ?__unguarded_linear_insert@@YIXPAUCMeshInfo@@U1@VCSortPrimaryMeshesLast@@@Z	004c1f10	004c5190
@@ -27454,8 +27451,6 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ??$GetSubDef@VCResurrectionItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCResurrectionItemDef@@@@@Z	005c0cfb	005bf77d
 ?GetAllItems@CTCInventoryBase@NInventory@@QAEXAAUCItemVector@@@Z	005bf482	005bf77d
 ?InitialiseInventoryWithItems@CTCInventoryBase@NInventory@@AAEXABV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@Z	005bf8cb	005bf9e3
-??ACKillMap@@QAEAAJABK@Z	005d8933	005d66ba
-?find@CKillMap@@QAEPAUCKillMapNode@@ABK@Z	005d83b3	005d66ba
 ??$GetSubDef@VCVillageDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillageDef@@@@@Z	0065f440	00659164
 ?CalculateRatio@CTCRenownRatio@@QAEMXZ	005cdbbe	00659164
 ?ResetCrier@CTCVillage@@QAEXXZ	00658e73	00659164
@@ -29934,7 +29929,6 @@ _D3DXCreateVolumeTexture@36	00bfeff2	00a68250
 ??_7CLandscapeLayerMesh@@6B@	012a835c	00bfde20
 ?IsInRange@CThingPhysical@@QBE_NABVC3DVector@@M@Z	006a4df0	0091b3a0
 ?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@JABVC3DVector@@1@Z	008f7f50	008c61c0
-?find@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@2@ABJ@Z	005937e1	006d0630
 ?GetPrice@CTCBuyableHouse@@QBEJXZ	006c0120	0072eb40
 ?IncrementDressLevel@CTCBuyableHouse@@QAEXXZ	006c04b0	0072eb40
 ?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z	006c17b0	0072eb40
@@ -34168,12 +34162,7 @@ _wcscpy	00bfed76	00999850
 ?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveSprite@@QAEXM@Z	00b8fd40	00bad670
 ??_7CEnginePrimitiveManagerParticleDecalGroup@@6B@	012a5998	00bb6e00
 ??_7CEnginePrimitiveManagerDecal@@6B@	012a5b6c	00bba480
-??_7CEnginePrimitiveManagerParticleSpriteTrailGroup@@6B@	012a5d94	00bbeaf0
-?resize@CVertexShaderArray@@QAEXI@Z	00b6cbd0	00bbeaf0
 ?PeekParticleMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	00a242a0	00bc2400
-??_7CEnginePrimitiveManagerParticleMeshGroup@@6B@	012a63b8	00bc34d0
-??_7CEnginePrimitiveManagerParticleLineGroup@@6B@	012a6590	00bc4d90
-?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@QAEXXZ	00bc3e10	00bc4d90
 ??_7CEnginePrimitiveManagerText@@6B@	012a68b0	00bc6b50
 ??_7CEnginePrimitiveManagerLines@@6B@	012a6990	00bc7e90
 ?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveLine@@QAEXM@Z	00b8fd40	00bc7f70
@@ -38928,7 +38917,6 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?g_BetRepeatSlowPeriod@@3JA	0137d390	005eb810
 ?OpenGameUI@CPlayerGui@@QAEXXZ	00437ff0	005ec0f0
 ?SetGame@CTCGamePlayer@@QAEXPAVCTCTavernGame@@@Z	005edc00	005ec0f0
-?Resize@CRetailHandleVector@@QAEXJ@Z	00443f90	005ec990
 ??$?RVCThingDeadCreature@@@CThingCompare_Nearest@@QBEPAVCThingDeadCreature@@PAV1@0@Z	00914130	009142b0
 ??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThingCreatureBase@@PBVCThing@@@Z	008d5110	0097ef60
 ??_7?$CPersistContext_TransferableComponent@W4EGameflowPosition@@@@6B@	012c2ec4	00cdca70
@@ -39524,3 +39512,11 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ??$IS_THING_DEAD@PAVCThing@@@@YI_NABQAVCThing@@@Z	005cbdbd	005ca68e
 ?IsProjectile@CTCWeapon@@QBE_NXZ	005daa70	005ca68e
 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ	0069f9e0	005ca68e
+??A?$map@PAXVCRGBColour@@U?$less@PAX@std@@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@3@@std@@QAEAAVCRGBColour@@ABQAX@Z	004c5890	004c00b0
+?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@2@@Z	00579d97	00579ea3
+??A?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEAAJABK@Z	005d8933	005d66ba
+?DeleteData@?$CCountedPointer@VCWaveFile@@@@SIXPAX@Z	00aadfc0	00aadff0
+??_7CEnginePrimitiveManagerParticleSpriteTrailGroup@@6B@	012a5d94	00bbeaf0
+??_7CEnginePrimitiveManagerParticleMeshGroup@@6B@	012a63b8	00bc34d0
+??_7CEnginePrimitiveManagerParticleLineGroup@@6B@	012a6590	00bc4d90
+?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@QAEXXZ	00bc3e10	00bc4d90

@@ -1083,9 +1083,46 @@ FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
 // with FABLE_RETAIL_CCHARSTRING_FORCEINLINE_LESS, which expands CCharString::operator< as the owner does. The copy then grades
 // RELOCATION_MATCH at 0x0042AAB3. Needs fable_string.h first, and no use of the operator before this point.
 // Owner check (landing nf184): the owner row sets the same optimize pragmas itself. `#pragma optimize("", on)` below returns to the
-// command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not also carry a row-head optimize pragma.
+// command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a row-head optimize pragma before its include of this header (nf189).
 #pragma optimize("s", on)
 namespace std { template<> inline bool less<CCharString>::operator()(const CCharString& x,const CCharString& y) const { return x<y; } }
+#pragma optimize("", on)
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_FIND_LONG_LONG_SIZE_BODY
+// NF189 opt-in (2026-11-20, q4385; row 0x006D0630 CTCWife::ReceivedNiceGiftIsOpinionReactionHappening). Fidelity: scaffolding, not retail.
+// That /O2 TU calls the map<long,long> tree's member template find<long> out of line (FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE
+// with FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), so it emits find<long> as a pick-any COMDAT. Retail kept the 20-byte copy from a
+// size-optimised TU, row 0x005937E1; the plain /O2 copy is 21 bytes (`mov eax,[esp+8] ; push eax` where the owner has `push [esp+8]`).
+// The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body, so this explicit specialization compiles the same STLport
+// body (_tree.h 457-467 `return iterator(_M_find(__k));`) under optimize("s"), as the owner's TU did; noinline, as retail calls it.
+// Needs FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_NOINLINE (or _MEMBER_TEMPLATE) and no use of find<long> before this point.
+// Owner check: the owner row 0x005937E1 sets the same optimize pragma itself (`#pragma optimize("s", on)`). `#pragma optimize("", on)`
+// below returns to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not also carry
+// a row-head optimize pragma before its include of this header (one after the include is not reset; advisor, nf189).
+#pragma optimize("s", on)
+namespace std {
+template<> template<> inline __declspec(noinline)
+_Rb_tree<long,pair<const long,long>,_Select1st<pair<const long,long> >,less<long>,allocator<pair<const long,long> > >::iterator
+_Rb_tree<long,pair<const long,long>,_Select1st<pair<const long,long> >,less<long>,allocator<pair<const long,long> > >::find<long>(const long& key)
+{ return iterator(_M_find(key)); }
+}
+#pragma optimize("", on)
+#endif
+#ifdef FABLE_RETAIL_STLP_MAP_FIND_ULONG_LONG_SIZE_BODY
+// NF189 opt-in (2026-11-20, q4386; row 0x005D66BA CTCInventoryStats::SetCreatureAsKilled). Fidelity: scaffolding, not retail.
+// That /O2 TU expands map<unsigned long,long>::find (retail calls the tree's _M_find 0x005D83B3 straight from the row) and emits the
+// inline as a pick-any COMDAT. Retail kept the 20-byte out-of-line copy from the size-optimised CTCInventoryStats TU, row 0x005D8548
+// (Leaf ?find@?$map@KJ...); the plain /O2 copy is 22 bytes. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body,
+// so this explicit specialization compiles the same STLport 4.6 _map.h body (`return _M_t.find(__x);`) under optimize("s"), as the
+// owner's TU did; callers still expand it. Owner check: the owner row 0x005D8548 sets `#pragma optimize("s", on)` itself.
+// `#pragma optimize("", on)` below returns to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this
+// opt-in must not carry a row-head optimize pragma before its include of this header (nf189). Needs no use of map<unsigned long,long>::find before this point.
+#pragma optimize("s", on)
+namespace std {
+template<> inline map<unsigned long,long,less<unsigned long>,allocator<pair<const unsigned long,long> > >::iterator
+map<unsigned long,long,less<unsigned long>,allocator<pair<const unsigned long,long> > >::find(const unsigned long& key)
+{ return _M_t.find(key); }
+}
 #pragma optimize("", on)
 #endif
 #endif

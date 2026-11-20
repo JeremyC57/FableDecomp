@@ -10598,7 +10598,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00579dce	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\LTextTreeWalkThrough_BuildTreeArray_00579dce.cpp
 00579e1b	pair<EHeroAbility,SExpSpendUndo>	std::pair<EHeroAbility const, SExpSpendUndo>	__thiscall	undefined	2	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *	0	yes	accepted									
 00579e4e	pair<EHeroTrainableStatType,SExpSpendUndo>	std::pair<EHeroTrainableStatType const, SExpSpendUndo>	__thiscall	undefined	2	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *	0	yes	accepted									
-00579ea3	RbTree_Clear_00579ea3	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCCarryable_OnKill_00579ea3.cpp
+00579ea3	clear	std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCCarryable_OnKill_00579ea3.cpp
 00579ecc	RbTree_Clear_00579ecc	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCCarryable_OnKill_00579ecc.cpp
 00579ef5	resize	CRetailVector_elem12	__thiscall	void	2	CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *	1	yes	accepted									
 00579f3e	_M_create_node	std::_Rb_tree<EHeroTrainableStatType, std::pair<EHeroTrainableStatType const, SExpSpendUndo>, std::_Select1st<std::pair<EHeroTrainableStatType const, SExpSpendUndo> >, std::less<EHeroTrainableStatType >, std::allocator<std::pair<EHeroTrainableStatType const, SExpSpendUndo> > >	__fastcall	CScriptDataBase *	0		1	yes	accepted									
@@ -38223,7 +38223,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a807b0	~_Rb_tree	std::_Rb_tree<long, std::pair<long const, CANavQuadTreeNode*>, std::_Select1st<std::pair<long const, CANavQuadTreeNode*> >, std::less<long>, std::allocator<std::pair<long const, CANavQuadTreeNode*> > >	unknown	undefined	0		0	yes	accepted									
 00a80860	operator=	std::vector<CNavigationPosition, std::allocator<CNavigationPosition>>	unknown	undefined	0		0	yes	accepted									
 00a80980	reserve	std::vector	unknown	undefined	0		0	yes	accepted									
-00a80a20	clear	std::_List_base<CCountedPointer<CNavRegionConnection>, std::allocator<CCountedPointer<CNavRegionConnection>>>	__thiscall	void	2	list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>	1	yes	accepted									
+00a80a20	clear	std::_List_base<CCountedPointer<CNavRegionConnection>,std::allocator<CCountedPointer<CNavRegionConnection> > >	__thiscall	void	2	list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>	1	yes	accepted									
 00a80aa0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00a80b80	vector	std::vector	unknown	undefined	0		0	yes	accepted									
 00a80c20	Map_InsertNewNode	_global	unknown	undefined	0		0	yes	accepted									
@@ -38679,7 +38679,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a99e30	GetChunkDescription	C3DAnimFileRootChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00a99fd0	DeleteViaVtable0_00a99fd0	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\global_DeleteData_00a99fd0.cpp
 00a99fe0	DeleteViaVtable0_00a99fe0	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\global_DeleteData_00a99fe0.cpp
-00a99ff0	DeleteData	CCountedPointer<class CChunkedFileChunk>	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\global_DeleteData_00a99ff0.cpp
+00a99ff0	DeleteData	CCountedPointer<CChunkedFileChunk>	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\global_DeleteData_00a99ff0.cpp
 00a9a000	DeleteViaVtable0_00a9a000	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\global_DeleteData_00a9a000.cpp
 00a9a030	CCountedPointer_Release_00a9a030	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a030.cpp
 00a9a070	CCountedPointer_Release_00a9a070	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a070.cpp
@@ -39049,11 +39049,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aad340	ConvertSamplingRate	CWaveFile	__thiscall	void	2	CWaveFile *,ulong	1	yes	accepted									
 00aad5d0	ConvertToMono	CWaveFile	__thiscall	void	1	CWaveFile *	1	yes	accepted									
 00aad650	LoadWaveFile	CWaveLoader	__thiscall	CCountedPointer<CWaveFile>	2	CWaveLoader *,CDataInputStream *	1	yes	accepted									
-00aadd80	vector	std::vector<unsigned short>	unknown	undefined	0		0	yes	accepted									
-00aade80	operator=	std::vector<unsigned short>	unknown	undefined	0		0	yes	accepted									
+00aadd80	vector	std::vector<short,std::allocator<short> >	unknown	undefined	0		0	yes	accepted									
+00aade80	operator=	std::vector<short,std::allocator<short> >	unknown	undefined	0		0	yes	accepted									
 00aadf90	ScalarDeletingDestructor_CBufferOwner_00aadf90	_unattributed	__thiscall	void	1	CSystemRegistry *	1	yes	accepted									
 00aadfc0	DeleteData	CCountedPointer<CWaveFile>	__thiscall	void	1	CEngineWaterRenderer *	1	yes	accepted									
-00aadff0	Reset	CCountedPointer_00aadfc0	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
+00aadff0	Reset	CCountedPointer<CWaveFile>	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00aae090	C3DAnimFileHelpersChunk	C3DAnimFileHelpersChunk	__thiscall	undefined	1	C3DAnimFileHelpersChunk *	0	yes	accepted									
 00aae0b0	CreateNewInstance	C3DAnimFileHelpersChunk	__thiscall	CChunkedFileChunk *	1	C3DAnimFileHelpersChunk *	1	yes	accepted									
 00aae0f0	GetChunkInfo	C3DAnimFileMovementVectorChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\C3DAnimFileMovementVectorChunk_GetChunkInfoC3DAnimFileMovementVectorChunkUBEBVC_00aae0f0.cpp

@@ -1,0 +1,8 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_00485815.obj : error LNK2005: "public: bool __thiscall CDefClassBase::GetSubDef<class CCreatureDef>(class CDefPointer<class CCreatureDef const> *)const " (??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z) already defined in head_005d66ba.obj
+own_005ea000.obj : error LNK2005: "public: void __thiscall CTCTavernGame::GetDef(class CDefPointer<class CTavernGameDef const> *)" (?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z) already defined in head_005ec990.obj
+own_006d3ef0.obj : error LNK2005: "public: bool __thiscall CDefClassBase::GetSubDef<class CGiftDef>(class CDefPointer<class CGiftDef const> *)const " (??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z) already defined in head_006d0630.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 60 LNK2001 + 74 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

@@ -17776,9 +17776,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579ea3'
-        Module = '_global'
-        Source = '00/57/CTCCarryable_OnKill_00579ea3.cpp'
-        TestSource = '00/57/CTCCarryable_OnKill_00579ea3_test.cpp'
+        Module = 'std::_Rb_tree<EHeroTrainableStatType,std::pair<const EHeroTrainableStatType,SExpSpendUndo>,std::_Select1st<std::pair<const EHeroTrainableStatType,SExpSpendUndo> >,std::less<EHeroTrainableStatType>,std::allocator<std::pair<const EHeroTrainableStatType,SExpSpendUndo> > >'
+        Source = '00/57/stdRbtree_clear_00579ea3.cpp'
+        TestSource = '00/57/stdRbtree_clear_00579ea3_test.cpp'
         PassPattern = 'AUTO_TINY_00579ea3_TEST PASS'
     }
     [pscustomobject]@{
@@ -28760,9 +28760,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a99ff0'
-        Module = '_global'
-        Source = '00/a9/global_DeleteData_00a99ff0.cpp'
-        TestSource = '00/a9/global_DeleteData_00a99ff0_test.cpp'
+        Module = 'CCountedPointer<CChunkedFileChunk>'
+        Source = '00/a9/CCountedPointer_DeleteData_00a99ff0.cpp'
+        TestSource = '00/a9/CCountedPointer_DeleteData_00a99ff0_test.cpp'
         PassPattern = 'AUTO_TINY_00a99ff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -150163,9 +150163,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aadff0'
-        Module = 'CCountedPointer_00aadfc0'
-        Source = '00/aa/CCountedPointer00aadfc0_Reset_00aadff0.cpp'
-        TestSource = '00/aa/CCountedPointer00aadfc0_Reset_00aadff0_test.cpp'
+        Module = 'CCountedPointer<CWaveFile>'
+        Source = '00/aa/CCountedPointer_Reset_00aadff0.cpp'
+        TestSource = '00/aa/CCountedPointer_Reset_00aadff0_test.cpp'
         PassPattern = '00aadff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -168612,9 +168612,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a80a20'
-        Module = 'CRetailList_CountedPointer'
-        Source = '00/a8/CRetailListCountedPointer_clear_00a80a20.cpp'
-        TestSource = '00/a8/CRetailListCountedPointer_clear_00a80a20_test.cpp'
+        Module = 'std::_List_base<CCountedPointer<CNavRegionConnection>,std::allocator<CCountedPointer<CNavRegionConnection> > >'
+        Source = '00/a8/stdListbase_clear_00a80a20.cpp'
+        TestSource = '00/a8/stdListbase_clear_00a80a20_test.cpp'
         PassPattern = '00a80a20_TEST PASS'
     }
     [pscustomobject]@{
@@ -302754,16 +302754,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aadd80'
-        Module = 'std::vector<unsigned short>'
-        Source = '00/aa/STLvectorunsignedshort_vector_00aadd80.cpp'
-        TestSource = '00/aa/STLvectorunsignedshort_vector_00aadd80_test.cpp'
+        Module = 'std::vector<short,std::allocator<short> >'
+        Source = '00/aa/stdvector_vector_00aadd80.cpp'
+        TestSource = '00/aa/stdvector_vector_00aadd80_test.cpp'
         PassPattern = '00aadd80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aade80'
-        Module = 'std::vector<unsigned short>'
-        Source = '00/aa/STLvectorunsignedshort_operator_00aade80.cpp'
-        TestSource = '00/aa/STLvectorunsignedshort_operator_00aade80_test.cpp'
+        Module = 'std::vector<short,std::allocator<short> >'
+        Source = '00/aa/stdvector_operator_00aade80.cpp'
+        TestSource = '00/aa/stdvector_operator_00aade80_test.cpp'
         PassPattern = '00aade80_TEST PASS'
     }
     [pscustomobject]@{
