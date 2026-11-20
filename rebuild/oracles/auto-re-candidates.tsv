@@ -6915,7 +6915,7 @@ address	name	length	bytes
 0096f240	CAIStateGroup_MinionBehaviourSad::IsRunnableLeaf	28	568bf18a463c84c0750de831ffffff84c07404c6463c018a463c5ec3
 00993e30	CDataOutputStream::WriteEBOOL	28	8a54240484d28b110f95c0884424046a018d44240850ff5210c20400
 00996bc0	CMemoryDataOutputStream::ReserveSize	8	83c108e968070000
-009a0ae0	CMemoryAllocator::`scalar_deleting_destructor'	28	568bf1e828180500f64424080174078bcee89a1405008bc65ec20400
+009a0ae0	CMemoryAllocator::`scalar deleting destructor'	28	568bf1e828180500f64424080174078bcee89a1405008bc65ec20400
 009f77f0	std::_List_iterator<CVsyncCallbackTimer::CPendingQuery,std::_Nonconst_traits<CVsyncCallbackTimer::CPendingQuery> >::_List_iterator	28	558bec51894dfc8b4508508b4dfce87d4fa2ff8b45fc8be55dc20400
 009f7810	std::_List_iterator<CVsyncCallbackTimer::CPendingQuery,std::_Const_traits<CVsyncCallbackTimer::CPendingQuery> >::_List_iterator	28	558bec51894dfc8b4508508b4dfce85d4fa2ff8b45fc8be55dc20400
 00a0aaa0	CRenderManagerCore::GetCurrentAWindow	12	8b813c3a00000504020000c3

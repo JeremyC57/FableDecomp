@@ -3,6 +3,13 @@
 // Native008D9530 length278. Genuine mode slots5/6 from VT1267F00=8621A0/8D6830; typed PMF table retains native4/full-host width.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_CCHARSTRING
+// Naming (NF209, 2026-11-20, q11692): the local stand-in AnimationGroupFilter (SetAndHash) is the shared engine/CAnimFilterOfGroup.h
+//   (Ego_r.pdb CAnimFilterOfGroup: vptr, Group +4, GroupCRC +8); the hash call is FableWin.pdb
+//   ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z (0x01DD3450), retail's out-of-line copy 0x0073DFF0 (NF128 inline opt-in,
+//   called out of line here as retail does). The saved copy of the old group is a CCharString built by the copy constructor 0x0099EC30
+//   (Ego_r / FableWin ??0CCharString@@QAE@ABV0@@Z), no longer the NativeStringValue stand-in copy constructor.
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_SETCURRENTGROUPNAME_INLINE
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -14,6 +21,7 @@
 #include "engine/CModeStandBase.h"
 #include "engine/CTCWeapon.h"
 #include "fable_string.h"
+#include "engine/CAnimFilterOfGroup.h"
 // Name fix (NF185, 2026-11-20, q4457): the inequality is CCharString::operator!=(const CCharString&) const 0x0099E900 (fable_string.h,
 //   Ego_r.pdb ??9CCharString@@QBE_NABV0@@Z), no longer the NativeStringValue::NotEqual stand-in member; FABLE_RETAIL_CCHARSTRING declares it.
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
@@ -40,11 +48,10 @@ struct NativeStringValue:CCharString {
  NativeStringValue():CCharString(){} //99E4B0
  NativeStringValue(const NativeStringValue&); //99EC30, actual header lacks narrow copy declaration
 };
-struct AnimationGroupFilter {void*VTable;NativeStringValue Group;unsigned long CRC;void SetAndHash(const CCharString&);}; //73DFF0, 99EFB0 assignment+4014A0 CRC
 struct CountedAnimEntry {CAnimEntryLite*Data;CCPPointerInfo*Info;};
 // Native typed projection of actual flattened CModeStandBase: inherited ParentThing and embedded string/filter remain typed for host fixtures.
 struct ModeStandNative {
- void*VTable;ThingNative*ParentThing;AnimationGroupFilter WeaponBasedFilter;long FramesBeforeRemovingSelf;bool Active;unsigned char ActivePadding[3];
+ void*VTable;ThingNative*ParentThing;CAnimFilterOfGroup WeaponBasedFilter;long FramesBeforeRemovingSelf;bool Active;unsigned char ActivePadding[3];
  long IdleCounter,FramesToKeepUpdatingMovement;bool ForceAddNewAnims;unsigned char ForcePadding[3];float MaxRunSpeed,MaxJogSpeed,MaxWalkSpeed;NativeStringValue PoseAnimName;
  CountedAnimEntry Stand,SlowWalk,Walk,Jog,Run,Sprint;
 };
@@ -57,7 +64,7 @@ union ModeSlot {void*Native;void(CModeBerserk::*NoArg)();};
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(ModeSlot)==4);
 #endif
-struct CModeBerserk:ModeStandNative {AnimationGroupFilter Filter;void FrameUpdate();void BaseFrameUpdate();}; //73AC50
+struct CModeBerserk:ModeStandNative {CAnimFilterOfGroup Filter;void FrameUpdate();void BaseFrameUpdate();}; //73AC50
 void CModeBerserk::FrameUpdate(){
  NativeStringValue group;
  if(IsThingCarryingMeleeWeapon(ParentThing)){
@@ -72,7 +79,7 @@ void CModeBerserk::FrameUpdate(){
   }else group.CCharString::operator=("BERSERK_WITH_SWORD");
  }else group.CCharString::operator=("BERSERK_NO_WEAPON");
  bool changed;
- {NativeStringValue previous(Filter.Group);changed=previous!=group;}
- if(changed){Filter.SetAndHash(group);(this->*static_cast<ModeSlot*>(VTable)[6].NoArg)();(this->*static_cast<ModeSlot*>(VTable)[5].NoArg)();}
+ {CCharString previous(Filter.Group);changed=previous!=group;}
+ if(changed){Filter.SetCurrentGroupName(group);(this->*static_cast<ModeSlot*>(VTable)[6].NoArg)();(this->*static_cast<ModeSlot*>(VTable)[5].NoArg)();}
  BaseFrameUpdate();
 }

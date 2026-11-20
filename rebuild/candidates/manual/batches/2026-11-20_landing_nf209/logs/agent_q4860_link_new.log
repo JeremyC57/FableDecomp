@@ -1,0 +1,2 @@
+o_00e299f0.obj : error LNK2005: "public: __thiscall NScript::CQS_ScytheInfoScript::CQS_ScytheInfoScript(class CScriptDataBase *,class CGameScriptInterfaceBase &)" (??0CQS_ScytheInfoScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z) already defined in new_00e2ab30.obj
+new.dll : fatal error LNK1169: one or more multiply defined symbols found

@@ -1,0 +1,56 @@
+008d9530 new: 6
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetCRC@CCharString@@QBEKXZ TABLE:00404310
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetLength@CCharString@@QBEJXZ TABLE:00403a00
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+    ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z TABLE:0073dff0
+008e9850 new: 6
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetCRC@CCharString@@QBEKXZ TABLE:00404310
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetLength@CCharString@@QBEJXZ TABLE:00403a00
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+    ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z TABLE:0073dff0
+009a0ae0 new: 3
+    ??_GCMemoryAllocator@@IAEPAXI@Z
+    ?Destroy@CMemoryAllocator@@KIXXZ
+    ?Reference@CMemoryAllocatorDestroyReference@?A0xb2aa21ea@@SAXXZ
+00e2ab30 new: 37
+    ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCha
+    ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjec
+    ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V1@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@1@@Z
+    ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedT
+    ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@2@@std@@QAE
+    ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$C
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAE@XZ
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@XZ
+    ??0?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@std@@QAE@XZ
+    ??0?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAE@XZ
+    ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ TABLE:009ac2d0
+    ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedT
+    ??0CQS_ScytheInfoScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ TABLE:00cbd510
+    ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V1@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@XZ
+    ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedT
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@2@@std@@QAE
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$C
+    ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAE@XZ
+    ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@XZ
+    ??1?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@std@@QAE@XZ
+    ??1?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAE@XZ
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ TABLE:012c2eec
+    ??_7CQS_ScytheInfoScript@NScript@@6B@ TABLE:012e22c8
+    ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z
+    ??_GCQS_ScytheInfoScript@NScript@@UAEPAXI@Z
+    ?ReferenceScytheInfoScriptVtable@?A0x449193ac@@YAXPAXPAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator
+    ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScrip
+    ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@2@IPBX@Z
+    ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharSt
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@2@I@Z
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCha

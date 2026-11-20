@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0047db73   WARN RELOC_NAME: ?g_pGlobalGui@@3PAUGlobalGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0047db73   WARN RELOC_NAME: ?Notify@GlobalGui@@QAEXXZ -> 00438310 labelled 'CPlayerGui::ToggleLiveGui'
+0047db73   RELOCATION_MATCH PASS   SavedConfirmed
+
+WINS: 1
+  0047db73 RELOCATION_MATCH _global::SavedConfirmed

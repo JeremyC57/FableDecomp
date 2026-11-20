@@ -1,0 +1,5 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_00404310.obj : error LNK2005: "public: unsigned long __thiscall CCharString::GetCRC(void)const " (?GetCRC@CCharString@@QBEKXZ) already defined in new_008d9530.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found

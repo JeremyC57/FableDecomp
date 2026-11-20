@@ -29819,9 +29819,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e2ab30'
-        Module = 'CVtable_012e22c8'
-        Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ab30.cpp'
-        TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ab30_test.cpp'
+        Module = 'NScript::CQS_ScytheInfoScript'
+        Source = '00/e2/NScriptCQSScytheInfoScript_scalardeletingdestructor_00e2ab30.cpp'
+        TestSource = '00/e2/NScriptCQSScytheInfoScript_scalardeletingdestructor_00e2ab30_test.cpp'
         PassPattern = 'AUTO_TINY_00e2ab30_TEST PASS'
     }
     [pscustomobject]@{

@@ -4525,7 +4525,6 @@ __vsnprintf	00bfedac	0099f1f0
 ?AssignFromData@CCharString@@QAEXPBDH@Z	009a0300	009a0590
 ?AssignFromData@CBasicString_char@@QAEXPBDK@Z	009a0300	009a05e0
 ?SetString@CBasicString_009a07a0@@QAEXKD@Z	009a0390	009a07a0
-?FreeThis@CEngineSubPrimitiveGameMesh@@QAEXXZ	009f1f90	009a0ae0
 ?baseDtor@BaseInput@@QAEXXZ	0099a300	009a0b00
 ?destroy@MemberAt8@@QAEXXZ	0099eae0	009a0b00
 ?g_CInputProcessManager_vtbl@@3HB	0129ab38	009a0b00
@@ -17916,7 +17915,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AutoTinyMemberDestructor_009ac310@@YIXPAX@Z	009ac310	00d7c6d0
 ?AutoTinySecondMemberDestructor_009ac310@@YIXPAX@Z	009ac310	00d84b20
 ?AutoTinyMemberDestructor_007add50@@YIXPAX@Z	007add50	00d87ab0
-?AutoTinyFirstMemberDestructor_00cdbfb0@@YIXPAX@Z	00cdbfb0	00e2ab30
 ?AutoTinyFirstMemberDestructor_007add50@@YIXPAX@Z	007add50	00ea86c0
 ?DestructMember_00a94c70@@YIXPAX@Z	00a94c70	00ac3960
 ?DestructFirstMember_00ae94a0@@YIXPAX@Z	00ae94a0	00af1bd0
@@ -38813,12 +38811,6 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?OnActionPerformed@CCombatSequenceBase@@QAEXXZ	008b0600	006ea540
 ?ResetAttackerSequence@CCombatManager@@QAEXABVCThingCreatureBase@@@Z	006ea2c0	006ea540
 ?GetBestSequenceIndexAttackerOnDefender@CCombatManager_Retail@@QAEJAAUCCombatantInfo@@0@Z	006eae20	006eb9f0
-??0NativeStringValue@@QAE@ABU0@@Z	0099ec30	008d9530
-?BaseFrameUpdate@CModeBerserk@@QAEXXZ	0073ac50	008d9530
-?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ	006a1440	008d9530
-?GetWeaponClass@WeaponMethods@@QBEJXZ	005da7f0	008d9530
-?IsThingCarryingMeleeWeapon@@YI_NPBUThingNative@@@Z	006a15a0	008d9530
-?SetAndHash@AnimationGroupFilter@@QAEXABVCCharString@@@Z	0073dff0	008d9530
 ?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8c30	00ad9980
 ?GuardComment@CQ_MinionClifftopChaseScript@NScript@@QAEXVCCharString@@@Z	00da8970	00da8510
 ??$GetAllThingsInRoughArea@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_IsHoldingMeleeWeapon@?A0x0ec29501@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasDefGlobalIndex@@VCThingFilter_IsHoldingMeleeWeapon@?A0x0ec29501@@@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	008e4100	008e03b0
@@ -39283,9 +39275,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??_7CModeConversation@NCreatureMode@@6B@	01285990	008d9220
 ?GetAnimGroupName@@YIABVCCharString@@J@Z	004cd9c0	008d9220
 ?GetAttitude@CTCTalk@@QBEJXZ	006e3180	008d9220
-?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z	008e9710	008e9850
-?SetGroup@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z	0073dff0	008e9850
-?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@QAEXXZ	008e9190	008e9850
 ?ApplyColourFilter@CEngineScreenEffectColourFilter@@AAEXXZ	00b5a3f0	00b5af60
 ?Do@D@@QAEXH@Z	00410de0	0047db73
 ?Notify@GlobalGui@@QAEXXZ	00438310	0047db73
@@ -39375,3 +39364,9 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?GetCombatAbilityData@CTCCombat@@AAE_NAAU?$_Rb_tree_iterator@U?$pair@$$CBW4ECombatAbilityDataType@@U?$pair@V?$CCountedPointer@VCCombatAbilityData@@@@VCCombatAbility@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ECombatAbilityDataType@@U?$pair@V?$CCountedPointer@VCCombatAbilityData@@@@VCCombatAbility@@@std@@@std@@@2@@std@@W4ECombatAbilityInterfaceType@@@Z	00733620	00733cf0
 ?AddChangedArea@CEngineManager@@QAEXABVC2DBoxI@@@Z	00640560	004feb70
 ?UpdateNavigationMapArea@CNavigatorManager@@QAEXJABVC2DBoxF@@@Z	00a14e40	004feb70
+?BaseFrameUpdate@CModeBerserk@@QAEXXZ	0073ac50	008d9530
+?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ	006a1440	008d9530
+?GetWeaponClass@WeaponMethods@@QBEJXZ	005da7f0	008d9530
+?IsThingCarryingMeleeWeapon@@YI_NPBUThingNative@@@Z	006a15a0	008d9530
+?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z	008e9710	008e9850
+?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@QAEXXZ	008e9190	008e9850

@@ -6,7 +6,7 @@
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9850, 251 bytes (+ int3 padding), `ret 4`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (const instantiation; inlined HasTC + GetTC for
-//   CTCWeapon 0x48), CTCWeapon::GetAnimationGroupName 0x005DABE0, CAnimFilterOfGroup::SetGroup(const CCharString&)
+//   CTCWeapon 0x48), CTCWeapon::GetAnimationGroupName 0x005DABE0, CAnimFilterOfGroup::SetCurrentGroupName(const CCharString&)
 //   0x0073DFF0 (out of line at the first site, inlined at the second), CCharString(const char*, long) 0x0099EBF0 /
 //   operator= 0x0099EFB0 / ~CCharString 0x0099EAE0, CCRC::Calc 0x004014A0 (`__fastcall`), CModeStrafe::
 //   SetUpCombinationAnims 0x008E9190, the mode's global-component getter 0x0073A680 (reads [0x013B8A1C]+0x24; unused
@@ -24,34 +24,15 @@
 #include "fable_compiler.h"
 class CTCBase;
 
-class CCharStringData { public:
-    const char*   m_pData;                     // +0
-    unsigned long m_length;                    // +4
-};
-class CCharString { public:
-    CCharStringData* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                    // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
-    unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
-    const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
-};
-
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0 CCRC::Calc
-
-class CAnimFilterOfGroup { public:                    // vtable 0x01267568
-    virtual void v00();
-    CCharString   Group;                       // +4
-    unsigned long GroupCRC;                    // +8
-    void SetGroup(const CCharString& group)    // 0x0073DFF0
-    {
-        Group = group;
-        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
-    }
-};
+// Naming (NF205, 2026-11-20, q11692 / q12295): the local CCharString / CCRC / CAnimFilterOfGroup models replaced by fable_string.h and
+//   engine/CAnimFilterOfGroup.h with the NF128 inline FABLE_RETAIL_CANIMFILTEROFGROUP_SETCURRENTGROUPNAME_INLINE (FableWin.pdb
+//   ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z, 0x01DD3450): the first site calls the out-of-line copy 0x0073DFF0,
+//   the second expands it; the CRC reads CCharString::NullChar for an empty string, as the owner 0x0073DFF0 does.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_GETCRC_INLINE
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_SETCURRENTGROUPNAME_INLINE
+#include "fable_string.h"
+#include "engine/CAnimFilterOfGroup.h"
 
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
@@ -136,10 +117,10 @@ void CModeStrafe::SetChangeOfWeapon(CThing* weapon)
     if (weapon && weapon->HasTC(0x48)) {
         const CTCWeapon* tc = weapon->GetTC<CTCWeapon>(0x48);
         ActiveWeapon = weapon->m_weaponId;
-        Filter.SetGroup(tc->GetAnimationGroupName());
+        Filter.SetCurrentGroupName(tc->GetAnimationGroupName());
     } else {
         ActiveWeapon = -1;
-        Filter.SetGroup("STAND");
+        Filter.SetCurrentGroupName("STAND");
     }
     SetUpCombinationAnims();
     NAnimationEntryBodge::CAnimEntryLite* aim = PAnimProjectileAim.Data;

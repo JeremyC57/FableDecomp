@@ -33655,7 +33655,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009a07f0	CBasicString_009a07f0	CBasicString_009a07f0	__thiscall	undefined	3	CBasicString<char> *,char *,ulong	0	yes	accepted									
 009a0880	SetAsSubString	CCharString	__thiscall	void	3	CCharString *,char *,long	1	yes	accepted									
 009a08b0	GFFloatToCharString	_global	unknown	undefined	0		0	yes	accepted									
-009a0ae0	`scalar_deleting_destructor'	CMemoryAllocator	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_009a0ae0.cpp
+009a0ae0	`scalar deleting destructor'	CMemoryAllocator	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_009a0ae0.cpp
 009a0b00	~CFontBank	CFontBank	__thiscall	void	1	CInputProcessManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CInputProcessManager_CInputProcessManager_009a0b00.cpp
 009a0b20	Preload	CFontBank	__thiscall	bool	3	CFontBank *,CWideString const &,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CFontBank_Preload_009a0b20.cpp
 009a0b30	`scalar_deleting_destructor'	CFontBank	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
@@ -52562,7 +52562,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e2a2f0	`scalar deleting destructor'	CActiveEntityScript<NScript::CQS_ScytheInfoScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CThingSwitch_vectordeletingdestructor_00e2a2f0.cpp
 00e2a320	Main	NScript::CQS_ScytheInfoScript::CScytheNearOracle	__thiscall	void	1	CScytheNearOracle *	1	yes	accepted									
 00e2a900	PlayCutscene	CQS_ScytheInfoScript	__thiscall	void	3	CQS_ScytheInfoScript *,CCharString,bool	1	yes	accepted									
-00e2ab30	`scalar deleting destructor'	NScript::CQS_ScytheInfoScript	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CThingSwitch_vectordeletingdestructor_00e2ab30.cpp
+00e2ab30	`scalar deleting destructor'	NScript::CQS_ScytheInfoScript	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\NScriptCQSScytheInfoScript_scalardeletingdestructor_00e2ab30.cpp
 00e2ab60	CV_AmbushScamScript	NScript::CV_AmbushScamScript	__thiscall	undefined	3	CV_AmbushScamScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00e2abc0	Init	NScript::CV_AmbushScamScript	unknown	undefined	0		0			discovered	gapscan							
 00e2ac90	RegisterMain	NScript::CV_AmbushScamScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									

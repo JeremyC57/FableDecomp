@@ -1,0 +1,17 @@
+addr       parity           behav  name
+008e9850   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+008e9850   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e9850   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::SetChangeOfWeapon
+008d9530   RELOCATION_MATCH PASS   NCreatureMode::CModeBerserk::FrameUpdate
+009a0ae0   WARN STANDIN_LEAF ??_GCMemoryAllocator@@IAEPAXI@Z (catalog CMemoryAllocator::`scalar_deleting_destructor'; names another function)
+009a0ae0   RELOCATION_MATCH PASS   CMemoryAllocator::`scalar_deleting_destructor'
+00e2ab30   RELOCATION_MATCH PASS   NScript::CQS_ScytheInfoScript::`scalar deleting destructor'
+
+WINS: 4
+  008e9850 RELOCATION_MATCH NCreatureMode::CModeStrafe::?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z
+  008d9530 RELOCATION_MATCH NCreatureMode::CModeBerserk::FrameUpdate
+  009a0ae0 RELOCATION_MATCH CMemoryAllocator::??_GCMemoryAllocator@@IAEPAXI@Z
+  00e2ab30 RELOCATION_MATCH CVtable_012e22c8::??_GCQS_ScytheInfoScript@NScript@@UAEPAXI@Z
