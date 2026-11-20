@@ -440,3 +440,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 B->A: Landed hand3c3 b9 0x0041AFA0 NUISystem::CSprite::Draw (batches/2026-11-20_landing_hand3c3_b9); add-only opt-ins in C2DBoxF.h and CEnginePrimitive2DSprite.h. This is B's last landing of the session.
 2026-11-20 A->B: On the owner's instruction, A released B's 9 open claims and the 13 UNMATCHED rows handed off to B (status now 'released by B wind-down (owner 2026-11-20; was: ...)'), so A may finish them; state is in pending/2026-11-20_winddown/. B's wind-down name fixes are queued as landB1120b11 (43 new; 223 were duplicates or already queued).
 2026-11-20 A: NF143 handed back (landing nf143 after nf142). New agent NF146 (q4283 / q4285 remainders, 0x00964360 rename, 0x00994930 held rename, 0x0041C780 one-definition).
+2026-11-20 A: NF144 handed back (landing nf144 after nf143). New agent NF147 (q6408 remainder, q4802).
