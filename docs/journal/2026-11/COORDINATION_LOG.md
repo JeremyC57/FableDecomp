@@ -377,3 +377,4 @@ CVsyncCallbackTimer.h, CEngineSubPrimitiveSprite.h; add-only opt-ins in CDisplay
 CEnginePrimitiveManagerSprites.h. 56 landed rows are newly flagged (newly_flagged_rows.tsv; B's re-port backlog). NAME_FIXES.tsv there is for
 you (NEngineInternal::GPCamera / GPSubPrimitiveRenderer, CCompressorZlib::DecompressStream bool&, CFileInstaller buffer helpers, ...).
 2026-11-20 A->B: New agent NF128: NF126's 6 open entries + NF123's q6394 / q6395 (34 rows locked, in claims). NF126 (19 rows, header CWorld.h add-only opt-in) is being verified; NF123 (slice 8, 222 rows) handed back and lands next.
+2026-11-20 A->B: New agent NF129: PRIORITY slice 10 (31 entries, 146 rows locked, in claims).
