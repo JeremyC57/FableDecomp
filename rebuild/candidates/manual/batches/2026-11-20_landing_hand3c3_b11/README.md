@@ -1,3 +1,15 @@
+# Landing (Account A, 2026-11-20, on the owner's instruction "land the matches here in main chat now")
+
+- Strict vland `--land` (LANDVERIFY_STRICT_HEADERS=1): 0x00B16410 RELOCATION_MATCH PASS (`logs/vland_land.log`), catalog CompilerFlags
+  `/O2 /Oy /W3 /d2inlT230`; oracle line read from Fable.exe (1671 bytes, `oracle.tsv`).
+- Headers: engine/GFFloatAbs.h and engine/GFIsNonZero.h are new; C2DVector.h and CMatrix3x4.h take B's additions only (0 removed lines
+  against today's tree). hdrcheck2 (`logs/hdrcheck.log`): the default path and every existing macro are token-identical; the one changed
+  macro, FABLE_RETAIL_CMATRIX3X4_PREROTATE, is new and no landed file uses it.
+- One definition: none of the object's 26 defined symbols is bound to another landed row, so there is no owner to link against. Six
+  landed rows define GFFloatAbs (one also GFIsNonZero) locally as `inline` (pick-any, no LNK2005): 0x006E3440, 0x006823D0, 0x006D1250,
+  0x00AC8C80, 0x00AC7200, 0x007D6870. Queued as a shared-header port onto the new headers.
+- B's NAME_FIXES.tsv is the cumulative hand3c3 list, already in the queue.
+
 # b11 (hand3c3, Account B, 2026-11-20): NParticleEngine::CPSCOrbit::COrbitState::Update -- READY
 
 | Row | Function | Bytes | Grade | Test | Mutants |

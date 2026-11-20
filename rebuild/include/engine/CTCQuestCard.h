@@ -100,6 +100,16 @@ public:
     long GetGoldReward() const { return GoldReward; }
     long GetRenownReward() const { return RenownReward; }
 #endif
+#ifdef FABLE_RETAIL_CTCQUESTCARD_FEATACCESSORS
+    // Nested opt-in (hand3c3, row 0x0077D5B0 CTCHeroCentre::FrameUpdate): FableWin.pdb ?GetFeatIndex@CTCQuestCard@@QBEJXZ,
+    // ?SetFeatIndex@CTCQuestCard@@QAEXJ@Z, ?SetQuestName@CTCQuestCard@@QAEXABVCCharString@@@Z and
+    // ?SetScriptQuestName@CTCQuestCard@@QAEXABVCCharString@@@Z, inline in retail (the row reads / stores FeatIndex +0x14 in place and
+    // assigns QuestName +0x18 / ScriptQuestName +0x28 through CCharString::operator= 0x0099EFB0, 0x0077D9A5..0x0077D9BC). No layout change.
+    long GetFeatIndex() const { return FeatIndex; }
+    void SetFeatIndex(long feat_index) { FeatIndex = feat_index; }
+    void SetQuestName(const CCharString& name) { QuestName = name; }
+    void SetScriptQuestName(const CCharString& name) { ScriptQuestName = name; }
+#endif
     CDefPointer<const CQuestCardDef> PDef;                               // +0x0c
     bool                             Finished;                           // +0x10
     bool                             Replayable;                         // +0x11

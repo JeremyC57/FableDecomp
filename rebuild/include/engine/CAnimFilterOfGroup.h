@@ -9,6 +9,12 @@ class CAnimFilterOfGroup:public CAnimFilterBase {
 public:
  virtual bool operator()(const CAnimationEntry&)const;
  virtual CAnimFilterBase* Clone()const;
+#if defined(FABLE_RETAIL_CANIMFILTEROFGROUP_CTOR) && !defined(FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR)
+ // NF147 opt-in (row 0x008A1A10 CGameScriptInterface::AddCreatureScriptedMode): the (const CCharString&) constructor called out of line,
+ // FableWin.pdb 0x01DD33C0 ??0CAnimFilterOfGroup@@QAE@ABVCCharString@@@Z (retail 0x0073E8F0, its landed self row; landed 0x0073E9A0 binds it).
+ // Declaration only; no layout change.
+ CAnimFilterOfGroup(const CCharString& group);                         // 0x0073E8F0
+#endif
 #ifdef FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR
  // Retail opt-in (wf7, row 0x00847DF0 CCreatureAction_UseLamp::Initialise): the (const CCharString&) constructor (out-of-line copy
  // 0x0073E8F0) and the destructor as retail expands them in place for a stack filter: vptr 0x01267568, Group default-constructed then

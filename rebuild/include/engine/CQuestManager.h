@@ -294,6 +294,14 @@ public:
     class CQuestCard {public:CCharString DefName,ScriptName;bool Replayable;long FeatIndex;};
     void RemoveAvailableQuestCardType(const CCharString&);
     void SetQuestCardsNeedUpdating(bool value){QuestCardsNeedUpdating=value;}
+#ifdef FABLE_RETAIL_CQUESTMANAGER_QUESTCARDTYPES
+    // Nested opt-in (hand3c3, row 0x0077D5B0 CTCHeroCentre::FrameUpdate): FableWin.pdb / Ego_d.pdb
+    // ?GetAvailableQuestCardTypes@CQuestManager@@QBEABV?$list@VCQuestCard@CQuestManager@@V?$allocator@VCQuestCard@CQuestManager@@@std@@@std@@XZ
+    // and ?GetQuestCardsNeedUpdating@CQuestManager@@QBE_NXZ, inline in retail (the row takes the address of AvailableQuestCardTypes
+    // +0x58 and tests the byte +0x8F in place, 0x0077D6FB..0x0077D706 and 0x0077D69C..0x0077D6A7). No layout change.
+    const std::list<CQuestCard>& GetAvailableQuestCardTypes() const { return AvailableQuestCardTypes; }
+    bool GetQuestCardsNeedUpdating() const { return QuestCardsNeedUpdating; }
+#endif
     bool OnQuestFinishScreenDisplayed(const CCharString&);
     CThing* GetActiveQuestCardFromScriptName(const CCharString&)const;
     void RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString&,bool);

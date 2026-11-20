@@ -16,6 +16,42 @@ class CDefPointeeBase;
 class CThing;
 #endif
 
+#ifdef FABLE_RETAIL_CTCHEROCENTRE_CLASS
+// Retail opt-in (hand3c3, row 0x0077D5B0 CTCHeroCentre::FrameUpdate): the polymorphic retail class in place of the flattened layout
+// below (which stays the default). RTTI .?AVCTCHeroCentre@@ : CTCBase (engine/CTCBase.h's FABLE_RETAIL_CTCBASE branch, selected
+// here). Members: Ego_r.pdb CTCHeroCentre with retail's 12-byte STLport vectors (the offsets the landed rows of this class use):
+// PDef +0x0C, CurrentGUIMode +0x10, FrameQuestCardListFrom +0x14, QuestCards +0x18, QuestCardPositions +0x24,
+// WaitingForTutorialToFinish +0x30; sizeof 0x34. Member functions: FableWin.pdb ?FrameUpdate@CTCHeroCentre@@UAEXXZ (CTCBase slot 9,
+// 0x0077D5B0), ?HasFrameUpdate@CTCHeroCentre@@UBE_NXZ (slot 8, 0x0077EB90), ?GetQuestCards@..@@QBE_NAAV?$vector@..@Z (0x0077DBC0),
+// ?RemoveQuestCard@CTCHeroCentre@@QAEXPAVCThing@@@Z (0x0077D400), ?OpenTrainingScreen@CTCHeroCentre@@QAEXXZ (0x0077D4B0).
+// Declarations only.
+#ifndef FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE
+#endif
+#include "stlport/fable_containers.h"
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThing;
+class CHeroCentreDef;
+class CTCHeroCentre : public CTCBase {
+public:
+    virtual bool HasFrameUpdate() const;                                 //  8 0x0077EB90
+    virtual void FrameUpdate();                                          //  9 0x0077D5B0
+    bool GetQuestCards(std::vector<CIntelligentPointer<CThing> >& cards) const;   // 0x0077DBC0
+    void RemoveQuestCard(CThing* pThing);                                // 0x0077D400
+    void OpenTrainingScreen();                                           // 0x0077D4B0
+protected:
+    CDefPointer<const CHeroCentreDef>          PDef;                     // +0x0c
+    unsigned char                              CurrentGUIMode[0x4];      // +0x10 EGUIMode
+    unsigned long                              FrameQuestCardListFrom;   // +0x14
+    std::vector<CIntelligentPointer<CThing> >  QuestCards;               // +0x18
+    std::vector<C3DVector>                     QuestCardPositions;       // +0x24
+    bool                                       WaitingForTutorialToFinish;   // +0x30
+};
+FABLE_STATIC_ASSERT(sizeof(CTCHeroCentre) == 0x34);
+#else
 #pragma pack(push, 1)
 class CTCHeroCentre {
 public:
@@ -62,4 +98,5 @@ FABLE_STATIC_ASSERT_AT(56, offsetof(CTCHeroCentre, QuestCards) == 0x18);
 FABLE_STATIC_ASSERT_AT(57, offsetof(CTCHeroCentre, QuestCardPositions) == 0x24);
 FABLE_STATIC_ASSERT_AT(58, offsetof(CTCHeroCentre, WaitingForTutorialToFinish) == 0x30);
 
+#endif // FABLE_RETAIL_CTCHEROCENTRE_CLASS
 #endif // FABLE_ENGINE_CTCHEROCENTRE_H

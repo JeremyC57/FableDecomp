@@ -1,115 +1,59 @@
-// CNavRegion::SetAsConnectedToRegion(CNavRegion* region) -- count one more connection to a region already linked to this one, or create a shared connection record (both regions, one connection) and add it to this region's and the other region's connection lists
-// Leaf: SetAsConnectedToRegion
+// CNavRegion::SetAsConnectedToRegion(CNavRegion& region) -- count one more connection to a region already linked to this one, or create a shared connection record (both regions, one connection) and add it to this region's and the other region's connection lists
+// Leaf: ?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z
+// Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A786C0, 265 bytes (+ int3 padding), `ret 4`.
-// Callees: operator new 0x00BFEA1A (the connection and its count block), malloc 0x00BFEA0E (list nodes), operator delete
-//   0x00BFE9BC (count block release), the counted pointer's static deleter 0x00A7C0A0 (stored as the block's destroy
-//   function; manifest label "operator_new" is wrong).
-// Layout: Ego_r.pdb CNavRegion: RegionID +0, Connections +4 (STLport list, retail 4 bytes), MostRecentSearchID +8;
-//   CNavRegionConnection (0xc): FirstRegion, SecondRegion, NumberOfConnections.
-// Shape: the new connection's counted pointer is a block-scoped local (released before the second list append); the
-//   raw-pointer counted-pointer ctor allocates the {count, destroy, object} block only for a non-null object; both list
-//   appends are the inline STLport push_back with the copy ctor's add-ref.
-void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-inline void* operator new(unsigned int, void* where) { return where; }
-
-struct SCountBlock {
-    long  m_references;                                 // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4
-    void* m_pObject;                                    // +8
-    SCountBlock(void* object, void (__fastcall* destroy)(void*)) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) { }
-};
-class CNavRegion;
-class CNavRegionConnection { public:
-    CNavRegion* FirstRegion;                            // +0
-    CNavRegion* SecondRegion;                           // +4
-    long        NumberOfConnections;                    // +8
-    CNavRegionConnection(CNavRegion* first, CNavRegion* second) : FirstRegion(first), SecondRegion(second), NumberOfConnections(1) { }
-    CNavRegion* GetOtherRegion(const CNavRegion* region) const { return region == FirstRegion ? SecondRegion : FirstRegion; }
+// Identity: Ego_r.pdb ?SetAsConnectedToRegion@CNavRegion@@QAEXAAV1@@Z (0x00BBE570): the other region by REFERENCE (the earlier text spelled a
+//   pointer). Parameter and locals: Ego_d.pdb (debug length 385): this, region; { it { pconnection } }, pconnection a
+//   `CCountedPointer<CNavRegionConnection>&` (type 0x354C6) bound to *it at the top of the loop body (Ego_d line 71, 11 bytes).
+// Shape: Ego_d C13 line table (67..83): 69 the for, 71 pconnection, 72 the test, 75 AddConnection, 76 / 77 return, 81 ONE statement of
+//   125 bytes that builds the connection and adds it to this region's list, 82 (20 bytes) the other region's add of Connections.back().
+// Inferred: the block-scoped `connection` local. Ego_d has no such local: its line 81 passes a temporary counted pointer straight to
+//   AddConnectionToConnectionList(CCountedPointer<CNavRegionConnection>&), a temporary bound to a non-const reference (an MSVC extension,
+//   not portable C++). Both spellings were graded RELOCATION_MATCH (ATTEMPTS.log); the portable one is written. Coordinator decision.
+// Callees: operator new 0x00BFEA1A (the connection and its count block), malloc 0x00BFEA0E (list nodes), operator delete 0x00BFE9BC (count
+//   block release), CCountedPointer<CNavRegionConnection>::DeleteData 0x00A7C0A0 (stored as the block's delete function; Ego_r.pdb
+//   ?DeleteData@?$CCountedPointer@VCNavRegionConnection@@@@SIXPAX@Z -- the earlier text bound a made-up DeleteNavRegionConnection).
+// Re-port (2026-11-19): the local CNavRegion / CCountedPointer / count-block / STLport-list stand-ins are replaced by the shared
+//   engine/CNavRegion.h (opt-in FABLE_RETAIL_CNAVREGION_CONNECTIONS), engine/CCountedPointer.h and the STLport list of stlport/fable_containers.h.
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CNAVREGION_CONNECTIONS
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CNavRegion.h"
+// CNavRegionConnection (Ego_r.pdb, 0xC bytes: FirstRegion +0, SecondRegion +4, NumberOfConnections +8; no shared header yet): the record two
+// connected regions share. Members: Ego_r.pdb ?GetRegionConnectedTo@CNavRegionConnection@@QBEAAVCNavRegion@@ABV2@@Z and
+// ?RemoveConnection@CNavRegionConnection@@QAEXXZ (inline here; retail's out-of-line copy of RemoveConnection is 0x00A778B0). The constructor
+// and AddConnection are Ego_d.pdb GPROC32 records too (43 / 26 debug bytes, header lines 121 / 123; constructor parameters first_region,
+// second_region, both CNavRegion&): their names and parameters are evidenced (audit h3c2b); the bodies are retail's expanded bytes.
+class CNavRegionConnection {
+public:
+    CNavRegion* FirstRegion;                                             // +0x0
+    CNavRegion* SecondRegion;                                            // +0x4
+    long        NumberOfConnections;                                     // +0x8
+    CNavRegionConnection(CNavRegion& first_region, CNavRegion& second_region) : FirstRegion(&first_region), SecondRegion(&second_region), NumberOfConnections(1) { }
+    CNavRegion& GetRegionConnectedTo(const CNavRegion& region) const { return &region == FirstRegion ? *SecondRegion : *FirstRegion; }
     void AddConnection() { ++NumberOfConnections; }
-};
-void __fastcall DeleteNavRegionConnection(void* object);   // 0x00A7C0A0 (CCountedPointer<CNavRegionConnection> deleter)
-
-template <class T> class CCountedPointer { public:
-    T*           Data;
-    SCountBlock* Info;
-    CCountedPointer(T* object) : Data(object)
+    void RemoveConnection()
     {
-        if (Data)
-            Info = new SCountBlock(Data, DeleteNavRegionConnection);
-        else
-            Info = 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
-    T* operator->() const { return Data; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
+        if (--NumberOfConnections == 0) {
+            FirstRegion->RemoveConnectionFromConnectionList(this);
+            SecondRegion->RemoveConnectionFromConnectionList(this);
         }
     }
 };
-typedef CCountedPointer<CNavRegionConnection> CConnectionPointer;
 
-struct SConnectionNode {                                // _List_node<CConnectionPointer>
-    SConnectionNode*   _M_next;
-    SConnectionNode*   _M_prev;
-    CConnectionPointer _M_data;
-};
-struct CConnectionList {                                // STLport list (retail: the sentinel pointer)
-    struct iterator {
-        SConnectionNode* _M_node;
-        iterator(SConnectionNode* n) : _M_node(n) {}
-        iterator(const iterator& o) : _M_node(o._M_node) {}
-        CConnectionPointer& operator*() const { return _M_node->_M_data; }
-        CConnectionPointer* operator->() const { return &_M_node->_M_data; }
-        iterator& operator++() { _M_node = _M_node->_M_next; return *this; }
-        bool operator!=(const iterator& o) const { return _M_node != o._M_node; }
-    };
-    SConnectionNode* _M_node;
-    iterator begin() { return iterator(_M_node->_M_next); }
-    iterator end() { return iterator(_M_node); }
-    const CConnectionPointer& back() const { return _M_node->_M_prev->_M_data; }
-    SConnectionNode* _M_create_node(const CConnectionPointer& x)
-    {
-        SConnectionNode* node = (SConnectionNode*)malloc(sizeof(SConnectionNode));
-        new (&node->_M_data) CConnectionPointer(x);
-        return node;
-    }
-    void insert(iterator position, const CConnectionPointer& x)
-    {
-        SConnectionNode* node = _M_create_node(x);
-        SConnectionNode* pos = position._M_node;
-        SConnectionNode* prev = pos->_M_prev;
-        node->_M_next = pos;
-        node->_M_prev = prev;
-        prev->_M_next = node;
-        pos->_M_prev = node;
-    }
-    void push_back(const CConnectionPointer& x) { insert(end(), x); }
-};
-
-class CNavRegion { public:
-    long            RegionID;                           // +0
-    CConnectionList Connections;                        // +4
-    long            MostRecentSearchID;                 // +8
-    void SetAsConnectedToRegion(CNavRegion* region);
-};
-
-void CNavRegion::SetAsConnectedToRegion(CNavRegion* region)
+void CNavRegion::SetAsConnectedToRegion(CNavRegion& region)
 {
-    for (CConnectionList::iterator it = Connections.begin(); it != Connections.end(); ++it) {
-        if ((*it)->GetOtherRegion(this) == region) {
-            (*it)->AddConnection();
+    for (std::list<CCountedPointer<CNavRegionConnection> >::iterator it = Connections.begin(); it != Connections.end(); ++it) {
+        CCountedPointer<CNavRegionConnection>& pconnection = *it;
+        if (&pconnection->GetRegionConnectedTo(*this) == &region) {
+            pconnection->AddConnection();
             return;
         }
     }
     {
-        CConnectionPointer connection(new CNavRegionConnection(this, region));
-        Connections.push_back(connection);
+        CCountedPointer<CNavRegionConnection> connection(new CNavRegionConnection(*this, region));
+        AddConnectionToConnectionList(connection);
     }
-    region->Connections.push_back(Connections.back());
+    region.AddConnectionToConnectionList(Connections.back());
 }

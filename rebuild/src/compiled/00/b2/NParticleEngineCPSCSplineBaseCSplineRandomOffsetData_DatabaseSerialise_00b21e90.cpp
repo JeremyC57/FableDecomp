@@ -1,10 +1,19 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext& context, bool) -- persist the two flags, the offset count (the arrays sized to at least the initial spline's point count), each offset limit/speed by indexed name, then snapshot or clear the previous spline
 // Leaf: DatabaseSerialise@CSplineRandomOffsetData
+// Flags: /d2inlS84
+// Inline-budget: /d2inlS84 -- retail expands the vector<C3DVector> erase's random-access __copy (DeleteAllControlPoints, the only __copy site:
+//   0x00B220B6; the function calls 0x0074CA20 nowhere) where the default budget calls it; sweep (NF138 / NF144 / NF147): /d2inlS60 DIFFER(582v619),
+//   S80 / S82 / S83 DIFFER(573v619), S84 / S85 / S90 / S100 RELOCATION_MATCH, S150 DIFFER(874v619, other sites over-expanded), /d2inlT100 DIFFER(568v619),
+//   /d2inlT200 DIFFER(874v619): 84 is the smallest S that matches.
+// Naming (NF147, 2026-11-20; q4802): NF126's port onto engine/CCardinalSpline.h (the local CArray<C3DVector> / CCardinalSpline models replaced by the
+//   shared STLport vector and CCardinalSpline): 0x0075B8D0 now binds the Ego_r.pdb
+//   ??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z and 0x0075C040 its self row's
+//   ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B21E90, 624 bytes, `ret 8`.
 // Callees: CPersistContext::Transfer<bool> 0x004045C0, Transfer(name, long&, const long&) 0x00410BE0,
-//   Transfer(name, C3DVector&, const C3DVector&) 0x004859AD, CArray<C3DVector>::resize 0x0075C040,
-//   CArray<C3DVector>::operator= 0x0075B8D0, GFIntToCharString 0x0099F830 (__fastcall), CCharString(const char*, long)
+//   Transfer(name, C3DVector&, const C3DVector&) 0x004859AD, vector<C3DVector>::resize 0x0075C040,
+//   vector<C3DVector>::operator= 0x0075B8D0, GFIntToCharString 0x0099F830 (__fastcall), CCharString(const char*, long)
 //   0x0099EBF0, operator+(const CCharString&, const CCharString&) 0x0099F570 (__fastcall), operator const char*
 //   0x0099E4C0, ~CCharString 0x0099EAE0.
 // Data: names "OffsetOnlyAtStartup" 0x012A0C2C, "ResetEachFrame" 0x012A0C1C, "SplinePosOffsetLimitsSize" 0x012A0C00,
@@ -16,8 +25,8 @@
 //   array start is read first, and the loop is `if (i < count) { two zero defaults; do ... while (++i < count); }`
 //   (the six zero stores sit once inside the guard). The size is `count > size ? count : size` (retail `cmp ; jg`).
 #include "fable_compiler.h"
-#include "engine/C3DVector.h"
 
+#include "engine/C3DVector.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -33,39 +42,14 @@ class CPersistContext { public:
     //   instances here: bool 0x004045C0; long 0x00410BE0; C3DVector 0x004859AD
 };
 
-template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    T& operator[](unsigned long n) { return *(begin() + n); }
-    CArray& operator=(const CArray& other);                                  // 0x0075B8D0
-    void resize(unsigned int newSize, const C3DVector& value = C3DVector());  // 0x0075C040
-    static FABLE_FORCEINLINE T* copy(T* first, T* last, T* result)
-    {
-        for (long n = last - first; n > 0; --n) {
-            *result = *first;
-            ++first;
-            ++result;
-        }
-        return result;
-    }
-    FABLE_FORCEINLINE T* erase(T* first, T* last)
-    {
-        T* i = copy(last, _M_finish, first);
-        _M_finish = i;
-        return first;
-    }
-    FABLE_FORCEINLINE void clear() { erase(begin(), end()); }
-};
+#include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_COPY_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CCARDINALSPLINE_APPENDCONTROLPOINT
+#include "engine/CCardinalSpline.h"
 
-class CCardinalSpline { public:
-    CArray<C3DVector> ControlPoints;    // +0x00
-    float             Tension;          // +0x0C
-    bool              EndPointsConnected; // +0x10
-};
 
 template <class T>
 FABLE_FORCEINLINE void SaveValue(CPersistContext& context, const char* name, T& value, const T& defaultValue)
@@ -93,8 +77,8 @@ void CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext&
     context.Transfer("ResetEachFrame", ResetEachFrame, false);
     long count = SplinePosOffsetLimits.size();
     context.Transfer("SplinePosOffsetLimitsSize", count, 0L);
-    SplinePosOffsetLimits.resize(count > (long)InitialSpline->ControlPoints.size()
-        ? count : InitialSpline->ControlPoints.size());
+    SplinePosOffsetLimits.resize(count > InitialSpline->GetControlPointCount()
+        ? count : InitialSpline->GetControlPointCount());
     SplinePosOffsetSpeed.resize(SplinePosOffsetLimits.size());
     long i = 0;
     if (i < count) {
@@ -108,6 +92,6 @@ void CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise(CPersistContext&
     if (OffsetOnlyAtStartup)
         PreviousSpline = ThisSpline;
     else
-        PreviousSpline.ControlPoints.clear();
+        PreviousSpline.DeleteAllControlPoints();
 }
 }

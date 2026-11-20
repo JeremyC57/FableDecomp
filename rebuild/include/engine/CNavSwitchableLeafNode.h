@@ -21,6 +21,15 @@ public:
                            const std::vector<unsigned __int64>& unique_ids);                    // 0x00A79930
 #endif
     void SetAsBlocked(unsigned __int64 uniqueID, bool blocked);                  // 0x00A78800
+#ifdef FABLE_RETAIL_CNAVSWITCHABLELEAFNODE_SETASBLOCKED
+    // Re-port opt-in (audit h3c2b, 2026-11-20, rows 0x00A78800 SetAsBlocked / 0x00A773E0 IsEveryUniqueIDOpen): the two private members
+    // SetAsBlocked calls. Ego_r.pdb ?IsEveryUniqueIDOpen@CNavSwitchableLeafNode@@ABE_NXZ (0x00A773E0) and
+    // ?Unlock@CNavSwitchableLeafNode@@AAEXPBVCNavRegion@@@Z (0x00A77420; Ego_d.pdb parameter pregion). Declarations only.
+private:
+    bool IsEveryUniqueIDOpen() const;                                            // 0x00A773E0
+    void Unlock(const CNavRegion* pregion);                                      // 0x00A77420
+public:
+#endif
     CVectorMap<unsigned __int64, bool> UniqueIDsOpen;                            // +0x20
 };
 FABLE_STATIC_ASSERT_AT(20, sizeof(CNavSwitchableLeafNode) == 0x30);

@@ -20,7 +20,7 @@ address	grade	bytes	test	grades_used	notes
 00766660	LANDED	696	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(700v696) hunks=39 difflines=100
 007727e0	RELOCATION_MATCH	433	PASS(vland strict)	26	hand3c: FableWin 0x0261FE90 shape; STLP_TREE_CONSTFIND_NOINLINE (find body seen, out of line) + GETDEF_GLOBAL_BODY + GETSUBDEF_BODY; no header change
 0077a430	RELOCATION_MATCH	1115	PASS(vland strict)	1	hand3c3 b5 [LANDED batches/2026-11-20_landing_hand3c3_b5]
-0077d5b0	OPEN	1491	-	1	baseline draft DIFFER(192v1491) hunks=13 difflines=462
+0077d5b0	RELOCATION_MATCH	1491	PASS(vland strict)	1	hand3c3 b10 [LANDED batches/2026-11-20_landing_hand3c3_b10]
 00780d80	RELOCATION_MATCH	539	PASS(vland strict)	31	hand3c: FableWin 0x01F51180 shape on shared headers; /d2inlT59 (conversion out of line, body seen); new NFire_CFirePoint.h, CFlammableDef.h; CTCFLAMMABLE_FRAMEUPDATE opt-in [b15 LANDED]
 0078a690	RELOCATION_MATCH	1097	PASS(vland strict)	1	hand3c3 b4 [LANDED batches/2026-11-20_landing_hand3c3_b4]
 0078d250	OPEN	1729	-	1	baseline draft DIFFER(1614v1729) hunks=64 difflines=738
@@ -54,8 +54,8 @@ address	grade	bytes	test	grades_used	notes
 00a62ae0	RELOCATION_MATCH	130	PASS	30	Ego_d locals, decl order P,B,M,V,K; CPackedUIntArray CALCULATEBIAS opt-in [LANDED 039a0c8c02]
 00a770b0	RELOCATION_MATCH	533	PASS(vland strict)	4	hand3c: FableWin 0x03293760 shape (C2DBoxF(MapPos, C2DExtentsF) + inline ContainsPoint, function-static ONE_OVER_MAX_NODE_SIZE, GetBlockedNode, Position.Initialise, half size 0.5f); new opt-in CNAVQUADTREE_GETBLOCKEDNODE
 00a781a0	RELOCATION_MATCH	1244	PASS(vland strict)	1	hand3c3 b8 [LANDED batches/2026-11-20_landing_hand3c3_b8]
-00a793d0	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
-00a79680	OPEN	678	-	1	baseline draft DIFFER(593v678) hunks=37 difflines=283
+00a793d0	RELOCATION_MATCH	678	PASS(vland strict)	1	hand3c2 b5 via followup navedge [LANDED batches/2026-11-20_landing_followup_navedge]
+00a79680	RELOCATION_MATCH	678	PASS(vland strict)	1	hand3c2 b5 via followup navedge [LANDED batches/2026-11-20_landing_followup_navedge]
 00a9d480	RELOCATION_MATCH	243	PASS(vland; g++ portable PASS)	8 (hand3c)	hand3c: FableWin operator()(r,c) via CMatrix4x4& m (ELEMENT_ACCESS opt-in) fixes x87 operand order; Ego_d vect/dest/right, dest before right [LANDED e71b9a61b5]
 00a9d750	RELOCATION_MATCH	551	PASS(vland; g++ portable PASS)	~45 (hand3c)	hand3c: for-scope `if (false) {} else for` (FableWin xor/je) + shared AlignedPreScale bodies opt-in (hdr overlay) [LANDED b8a046277f]
 00aabf60	LANDED	620	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(625v620) hunks=50 difflines=224
@@ -69,7 +69,7 @@ address	grade	bytes	test	grades_used	notes
 00b075d0	RELOCATION_MATCH	977	PASS(vland strict)	1	hand3c3 b3 [LANDED batches/2026-11-20_landing_hand3c3_b3]
 00b079b0	OPEN	2032	-	1	baseline draft DIFFER(2034v2032) hunks=44 difflines=87
 00b103f0	RELOCATION_MATCH	1463	PASS(vland; g++ portable PASS)	2 (hand3c)	hand3c: shared GFPackFloat GROUP_PRODUCT + shared CPSCEmitterGeneric (new opt-ins CPSCEMITTERGENERIC_CTOR, CPARTICLEUPDATEPARAMDESC_CTOR, CPSCBASE_CTOR) [LANDED 58b05aba99]
-00b16410	OPEN	1671	-	1	baseline draft DIFFER(1674v1671) hunks=52 difflines=176
+00b16410	RELOCATION_MATCH	1671	PASS(vland strict)	1	hand3c3 b11 [LANDED batches/2026-11-20_landing_hand3c3_b11]
 00b1d550	RELOCATION_MATCH	576	PASS(vland strict)	2	hand3c: FableWin 0x02F567F0 shape on shared headers (PreparePrimitives define set, GFPackFloat, GFSqr helper); new opt-ins CDECAL_ISACTIVE_MAXLIFE, CDECAL_GETSIZEFACTOR_NOARG, CPSCDECALRENDERER_DECALCOLLIDES
 00b1d790	RELOCATION_MATCH	876	PASS(vland strict)	6	hand3c: FableWin 0x02F56D80 shape; same-TU helper DecalCollides 0x00B1D550 body (closing lever: frame packing); new opt-ins CDECAL_POOLING, CPSCDECALRENDERER_POOLDECAL (+ CDECAL_UPDATE for SetMaxLife)
 00b1dc70	RELOCATION_MATCH	860	PASS(vland strict)	1	hand3c: FableWin 0x02F55EB0 shape (PreparePrimitives idioms: row-local PeekGraphic/GetWidth/GetHeight, ScaleParticleDimensions noinline = 0x00AF8F00 MATCH); new opt-in CPSCDECALRENDERER_ADDTOBOUNDINGSPHERE; Inferred factor mask

@@ -1,0 +1,2 @@
+# recheck after landing nf147: 314 rows = gate referencing rows + renamed rows + includers of the three headers; 0x008C0D10 regraded after the landing fallback (fallback_008c0d10.log)
+good 314 bad 0

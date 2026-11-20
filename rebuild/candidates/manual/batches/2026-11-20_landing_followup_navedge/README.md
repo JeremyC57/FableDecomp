@@ -1,3 +1,26 @@
+# Landing (Account A, 2026-11-20, on the owner's instruction "land the matches here in main chat now")
+
+- New rows (strict vland `--land`, `logs/vland_land_new.log`; oracle lines read from Fable.exe, `oracle_new.tsv`): 0x00A75B60 MATCH,
+  0x00A793D0 / 0x00A79680 RELOCATION_MATCH, tests PASS. 0x00A75B60 first got its manifest start: a boundary-starts.tsv row with B's
+  evidence, merged by `crawl/manifest_add_boundaries.py --write`.
+- Re-ported landed rows (B's src / test copied over the catalog files, which had not changed since 2026-11-11; strict
+  `--recheck-landed`, `logs/vland_recheck_landed.log`): 0x00A773E0 MATCH, 0x00A78060 / 0x00A780B0 / 0x00A786C0 / 0x00A78800 / 0x00A78A90
+  RELOCATION_MATCH, all PASS. Binding table: one set shrank (0x00A77420 2 -> 1); the only new entries are first bindings.
+- 0x00A82FA0 (added here): the new rows store it as CCountedPointer<CNavConnectorNode>'s DeleteFunc under the Ego_r.pdb spelling
+  ?DeleteData@?$CCountedPointer@VCNavConnectorNode@@@@SIXPAX@Z, while the landed row defined a made-up extern "C" OnDie (catalog label
+  CTCMapwho::OnDie): two names for one address. Re-ported in the landed 0x00BB6330 pattern (explicit instantiation of engine/CCountedPointer.h
+  DeleteData on the new engine/CNavConnectorNode.h): RELOCATION_MATCH PASS (`logs/vland_00a82fa0.log`); files, catalog Module and oracle
+  label renamed. This closes B's queued name fix (hand3c2 b5) for that address.
+- Headers: engine/CNavConnectorNode.h new; CNavNavigableLeafNode.h / CNavQuadTree.h / CNavRegion.h / CNavSwitchableLeafNode.h take B's
+  additions only (0 removed lines). hdrcheck2 (`logs/hdrcheck.log`): default path and every existing macro token-identical; the one
+  changed macro, FABLE_RETAIL_CNAVREGION_CONNECTIONS, is new and unused by landed files. The pack pragmas are the headers' existing ones.
+- One definition (`logs/link_owners.log`: the 10 objects + 13 owners of the COMDATs they emit): 4 LNK2005.
+  - ForceRegionTo / IsEveryUniqueIDOpen: 0x00A78800's `// Fidelity: same-TU strong definition` copies of its retail TU-mates 0x00A75B60 /
+    0x00A773E0, the nf96a rule (GOTCHAS, advisor decision 2026-11-19): retail expands one site and calls the other.
+  - C2DBoxF(const C2DVector&, const C2DExtentsF&) vs owner 0x0041A7E0 and CANavQuadTreeNode::GetSize vs owner 0x00A75B30: strong owners
+    against header inlines; the same clashes exist at HEAD with 0x0041AFA0 and 0x00A78E20 (`logs/link_control_head.log`). Queued as debt.
+- B's NAME_FIXES.tsv lines were all queued at the 2026-11-20 release.
+
 # navedge (followup author, Account B, 2026-11-20): CNavQuadTree map edges / CNavConnectorNode / CNavRegion / SetAsBlocked -- READY
 
 Base: the audited set `$S/stage/audit_h3c2b/fixed_navedge` (8 rows), rebased on today's tree, plus one new row. The held row

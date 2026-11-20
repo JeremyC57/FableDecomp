@@ -1,0 +1,56 @@
+addr       parity           behav  name
+008c48a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c48a0   RELOCATION_MATCH PASS   CCreatureAction_ScorpionTailPlunge::FinishAction
+008c0c00   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008c0c00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c0c00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JackFlash (engine/CCreatureAction_JackFlash.h)
+008c0c00   RELOCATION_MATCH PASS   CCreatureAction_JackFlash::FinishAction
+008c0d10   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008c0d10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c0d10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JackScream (engine/CCreatureAction_JackScream.h)
+008c0d10   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z -> 008c2d60 labelled '_global::DeleteViaVtable0_008c2d60'
+008c0d10   RELOCATION_MATCH PASS   CCreatureAction_JackScream::Initialise
+00848db0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00848db0   WARN SHARED_HEADER_AVAILABLE CTCBed (engine/CTCBed.h)
+00848db0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00848db0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GetInBed (engine/CCreatureAction_GetInBed.h)
+00848db0   RELOCATION_MATCH PASS   CCreatureAction_GetInBed::PerformAction
+008c1c30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008c1c30   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008c1c30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c1c30   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BriarRoseConcentrateInto (engine/CCreatureAction_BriarRoseConcentrateInto.h)
+008c1c30   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseConcentrateInto::Initialise
+008676a0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+008676a0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+008676a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008676a0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericResponseToDrain (engine/CCombatAction_GenericResponseToDrain.h)
+008676a0   RELOCATION_MATCH PASS   CCombatAction_GenericResponseToDrain::Initialise
+00868220   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00868220   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00868220   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00868220   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00868220   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00868220   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00868220   RELOCATION_MATCH PASS   NCreatureMode::CModeDrained::CModeDrained
+008a08a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008a08a0   RELOCATION_MATCH PASS   CGameScriptInterface::EntityStartScreamerSuperAttackThing
+008a1a10   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008a1a10   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+008a1a10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008a1a10   RELOCATION_MATCH PASS   CGameScriptInterface::AddCreatureScriptedMode
+00b21e90   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00b21e90   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b21e90   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00b21e90   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise
+
+WINS: 10
+  008c48a0 RELOCATION_MATCH CCreatureAction_ScorpionTailPlunge::?FinishAction@CCreatureAction_ScorpionTailPlunge@@UAEXXZ
+  008c0c00 RELOCATION_MATCH CCreatureAction_JackFlash::?FinishAction@CCreatureAction_JackFlash@@UAEXXZ
+  008c0d10 RELOCATION_MATCH CCreatureAction_JackScream::?Initialise@CCreatureAction_JackScream@@UAEXXZ
+  00848db0 RELOCATION_MATCH CCreatureAction_GetInBed::?PerformAction@CCreatureAction_GetInBed@@QAEXXZ
+  008c1c30 RELOCATION_MATCH CCreatureAction_BriarRoseConcentrateInto::?Initialise@CCreatureAction_BriarRoseConcentrateInto@@UAEXXZ
+  008676a0 RELOCATION_MATCH CCombatAction_GenericResponseToDrain::?Initialise@CCombatAction_GenericResponseToDrain@@UAEXXZ
+  00868220 RELOCATION_MATCH NCreatureMode::CModeDrained::??0CModeDrained@NCreatureMode@@QAE@AAVCThing@@0@Z
+  008a08a0 RELOCATION_MATCH CGameScriptInterface::EntityStartScreamerSuperAttackThing
+  008a1a10 RELOCATION_MATCH CGameScriptInterface::?AddCreatureScriptedMode@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  00b21e90 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise@CSplineRandomOffsetData

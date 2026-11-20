@@ -1,3 +1,15 @@
+# Landing (Account A, 2026-11-20, on the owner's instruction "land the matches here in main chat now")
+
+- Strict vland `--land` (LANDVERIFY_STRICT_HEADERS=1): 0x0077D5B0 RELOCATION_MATCH PASS (`logs/vland_land.log`); oracle line read from
+  Fable.exe (1491 bytes, `oracle.tsv`). Headers copied from `hdr/` as B left them: each is the current repo header plus additions only
+  (0 removed lines against today's tree); hdrcheck2 (`logs/hdrcheck.log`): the default path and every existing macro are token-identical;
+  the one changed macro, FABLE_RETAIL_CTCHEROCENTRE_CLASS, is B's new typed branch and no landed file uses it.
+- One definition: the object emits 25 COMDATs that landed rows bind; their 23 landed owners were compiled and linked with it
+  (`logs/link_owners.log`). Two LNK2005: ??0CGameEvent@@QAE@J@Z (owner 0x004159B0) and ??0CRightHandedSet@@QAE@ABV0@@Z (owner 0x0049CF80),
+  both strong owner definitions against the header-inline copies. Both are at HEAD already: the owners clash the same way with the landed
+  includers 0x00691D70 and 0x0064E978 (`logs/link_control_head.log`). Queued as debt (make the owners pick-any, the nf86 / nf88 pattern).
+- B's NAME_FIXES.tsv is the cumulative hand3c3 list, already in the queue since the 2026-11-20 release (all 60 lines present).
+
 # b10 (hand3c3, Account B, 2026-11-20): CTCHeroCentre::FrameUpdate -- READY
 
 | Row | Function | Bytes | Grade | Test | Mutants |

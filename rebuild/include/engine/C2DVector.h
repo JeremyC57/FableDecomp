@@ -34,6 +34,12 @@ public:
 #endif
     C2DVector(float x,float y) : X(x),Y(y) { }
     C2DVector(const C2DVector& p) : X(p.X),Y(p.Y) { }
+#ifdef FABLE_RETAIL_C2DVECTOR_CLEAR
+    // Nested opt-in (hand3c3, row 0x00B16410 NParticleEngine::CPSCOrbit::COrbitState::Update): FableWin.pdb / Ego_d.pdb
+    // ?Clear@C2DVector@@QAEXXZ (FableWin 0x01F72120), inline in retail (no Fable.exe copy). Ego_d: one 26-byte line = two separate
+    // zero stores (`X=Y=0.0f` would be 24; C3DVector::Clear's line is 34 = three stores).
+    void Clear() { X=0.0f; Y=0.0f; }
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_INITIALISE
     // Nested opt-in (chunk 768, row 0x00A76770 CNavQuadTreeNode::GetLeafNodeAt): FableWin.pdb ?Initialise@C2DVector@@QAEXMM@Z (inline in
     // retail: the arguments are built right to left, Y first, then X and Y are stored).

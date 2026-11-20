@@ -12,7 +12,18 @@
 // Shape: `PMode = CCountedPointer<T>(new T(creature))` -- the temporary's inline ctor (null-checked new, null-checked block), the
 // inline operator= (release of the old block through the re-read member, adopt, add-ref) and the temporary's inline dtor; the
 // AddMode argument is the converting copy built in the argument area. The mode manager is spilled to the lookup key slot.
-void __fastcall Destroy_008c2d60(void* object);   // 0x008C2D60
+// Naming (NF147, 2026-11-20; q6408): the local SCountBlock / CCountedPointer<T> template / empty CModeBase / CTCCreatureModeManager models
+//   replaced by the shared engine/CCountedPointer.h (default inline (T*) ctor and ShareData operator=) and engine/CTCCreatureModeManager.h
+//   (ADDMODEPOINTER + the FABLE_RETAIL_CTCCREATUREMODEMANAGER RemoveMode, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z, and the block's deleter 0x008C2D60 the
+//   CCountedPointer<T>::DeleteData of the row's T (was the free stand-in Destroy_008c2d60; the FableWin.pdb spelling
+//   ?DeleteData@?$CCountedPointer@VCModeJackOfBladesScream@NCreatureMode@@@@SIXPAX@Z follows when the class moves into NCreatureMode).
+//   The header-less mode class (only forward-declared in engine/CCreatureAction_JackScream.h) keeps HEAD's global `struct` token, re-based on
+//   the shared CModeBase (the landed 0x0096DBC0 shape), pad resized (allocation 0xbc). Landing nf147: NF147's in-place respell into
+//   NCreatureMode moved the 0x00740450 ctor binding off the global spelling 0x00742880 still binds (a new split), so its fallback applies:
+//   0x00740450 / 0x008D7370 stay on the global spellings and 0x008C2D60 binds DeleteData of CCountedPointer<CModeJackOfBladesScream> (global).
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 class CTCBase;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -24,73 +35,12 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct SCountBlock {
-    long m_references;                          // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4
-    void* m_pObject;                            // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_008c2d60), m_pObject(object) { }
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                     // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer(T* object) : m_pObject(object)
-    {
-        if (object)
-            m_pCount = new SCountBlock(m_pObject);
-        else
-            m_pCount = 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++m_pCount->m_references;
-    }
-    template <class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++m_pCount->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            if (--m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;                // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;    // the source's fields are read first (kept in ebx/esi across the release)
-        T* object = other.m_pObject;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-    T* operator->() const { return m_pObject; }
-};
-struct CModeBase { };
-struct CModeJackOfBladesScream : CModeBase {    // retail sizeof 0xbc
-    unsigned char _body[0xbc];
+#include "engine/CTCCreatureModeManager.h"
+struct CModeJackOfBladesScream : public CTCCreatureModeManager::CModeBase {    // retail sizeof 0xbc
+    unsigned char _body[0xbc - 0x1c];
     CModeJackOfBladesScream(CThing* owner);     // 0x00740450
     void SetSwordObject(CThing* sword);         // 0x008D7370
-};
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
-public:
-    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
-    void RemoveMode(unsigned long);   // 0x0073ABA0
+    virtual unsigned long GetType() const;
 };
 class CTCCarrying { public:
 public:
@@ -118,6 +68,6 @@ void CCreatureAction_JackScream::Initialise()
     PMode = CCountedPointer<CModeJackOfBladesScream>(new CModeJackOfBladesScream(PCreature.Get()));
     CTCCarrying* carrying;
     PCreature.Get()->GetTC(TCI_CARRYING, &carrying);
-    PMode.m_pObject->SetSwordObject(carrying->GetThingInPrimarySlot());
-    modeManager->AddMode(CCountedPointer<CModeBase>(PMode));
+    PMode.Data->SetSwordObject(carrying->GetThingInPrimarySlot());
+    modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(PMode));
 }

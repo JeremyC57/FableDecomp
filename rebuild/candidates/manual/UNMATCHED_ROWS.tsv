@@ -234,7 +234,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00775350	CTCShop	UpdateStock	2000	parked	DIFFER(1971v1988)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00775350.cpp	original
 0077a890	CTCDExperienceOrb	Create	720	parked	DIFFER(724v707)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/0077a890.cpp	original
 0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	576	parked	DIFFER(559v563)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/0077ba40.cpp	gapscan/boundary
-0077d5b0	CTCHeroCentre	FrameUpdate	1504	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(5v1491)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077d5b0.cpp	original
 0077dc40	_global	CTCCampfire_BuildPlayerRegion	688	parked	DIFFER(591v626)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077dc40.cpp	original
 00780430	_gapscan	sub_00780430	272	parked	DIFFER(273v271)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand510/differ/00780430.cpp	gapscan/boundary
 007805d0	_gapscan	sub_007805d0	304	parked	DIFFER(300v299)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/007805d0.cpp	gapscan/boundary
@@ -659,8 +658,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a74180	_global	NavMesh_ProcessLine_Indices	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00a74180.cpp	original
 00a76770	CNavQuadTreeNode	GetLeafNodeAt	336	parked	DIFFER(318v321)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/00a76770.test.cpp	original
 00a77780	_global	NavigationGraph_BreadthFirstSearch	304	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00a77780.cpp	original
-00a793d0	CMap	ConnectHorizantalMapEdge	688	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(593v678)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a793d0.cpp	original
-00a79680	CNavQuadTree	ConnectVerticalMapEdge	688	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(593v678)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a79680.cpp	original
 00a79b30	CNavQuadTreeNode	Initialise	1392	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a79b30.cpp	original
 00a7a0a0	CNavQuadTree	SetUpRegions	1232	parked	DIFFER(1270v1222)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00a7a0a0.cpp	original
 00a7a8d0	CNavQuadTree	Initialise	1680	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a7a8d0.cpp	original
@@ -703,7 +700,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b08530	CPSCSingleSprite	Update	656	parked	DIFFER(664v654)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b08530.cpp	original
 00b0dc20	NParticleEngine::CPSCUpdateNormal	Update	5616	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(5601v5602)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00b0dc20.cpp	gapscan/boundary
 00b131e0	NParticleEngine::CPSCEmitterGeneric	NParticleEngine::CPSCEmitterGeneric::vfunc_18	848	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/00b131e0.cpp	gapscan/boundary
-00b16410	COrbitState	Update	1680	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(1674v1671)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00b16410.cpp	original
 00b16aa0	CPSCOrbit	GetUpdateParam	688	parked	DIFFER(673v681)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00b16aa0.cpp	original
 00b17410	NParticleEngine::CPSCOrbit	NParticleEngine::CPSCOrbit::vfunc_10	944	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/differ/00b17410.cpp	gapscan/boundary
 00b17bd0	NParticleEngine::CPSCAttractor	InterpolateTo	928	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00b17bd0.cpp	gapscan/boundary

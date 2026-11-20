@@ -38017,6 +38017,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a75b30	GetSize	CANavQuadTreeNode	__thiscall	float	1	CANavQuadTreeNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CANavQuadTreeNode_CANavQuadTreeNodeGetSize_00a75b30.cpp
 00a75b40	GetLeafNodeAt	CNavNavigableLeafNode	__thiscall	CANavQuadTreeNode const *	2	CNavNavigableLeafNode *,C2DVector const &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CNavNavigableLeafNode_GetLeafNodeAt_00a75b40.cpp
 00a75b50	RemoveRegionZero	CNavNavigableLeafNode	__thiscall	bool	1	CNavNavigableLeafNode *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CNavNavigableLeafNode_RemoveRegionZero_00a75b50.cpp
+00a75b60	ForceRegionTo	CNavNavigableLeafNode	unknown	undefined	0		0			discovered	boundary							
 00a75b70	SetUpNeighbours	CNavNavigableLeafNode	__thiscall	void	3	CNavNavigableLeafNode *,ENavQuadTreeNeighbours,CANavQuadTreeNode *	1	yes	accepted									
 00a75be0	GetRegionID	CNavSwitchableLeafNode	__thiscall	long	1	CNavSwitchableLeafNode *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CNavSwitchableLeafNode_GetRegionID_00a75be0.cpp
 00a75c00	GetRegion	CNavSwitchableLeafNode	__thiscall	CNavRegion const *	1	CNavSwitchableLeafNode *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\CNavSwitchableLeafNode_GetRegion_00a75c00.cpp

@@ -106,6 +106,13 @@ private:
     // ABV?$vector@VC2DLineF@@..@3@ABVC2DBoxI@@@Z (private const; Ego_d parameters line_lists, lines, update_area). Declaration only.
     void UpdateLines(std::vector<std::list<C2DLineF> >& line_lists, const std::vector<C2DLineF>& lines, const C2DBoxI& update_area) const;   // 0x00A781A0
 #endif
+#ifdef FABLE_RETAIL_CNAVQUADTREE_CONNECTMAPEDGES
+    // hand3c2 opt-in (rows 0x00A793D0 / 0x00A79680): Ego_r.pdb / FableWin.pdb ?ConnectHorizantalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z
+    // and ?ConnectVerticalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z (private, the PDB spelling "Horizantal"); parameter names
+    // Ego_d.pdb. Declarations only.
+    void ConnectHorizantalMapEdge(float this_map_y, float adjacent_map_y, const class CNavigatorManager& nav_manager);   // 0x00A793D0
+    void ConnectVerticalMapEdge(float this_map_x, float adjacent_map_x, const class CNavigatorManager& nav_manager);     // 0x00A79680
+#endif
     void SetUpRegions(long mapIndex);                                    // 0x00A7A0A0
 };
 FABLE_STATIC_ASSERT_AT(89, sizeof(CNavQuadTree) == 0x88);

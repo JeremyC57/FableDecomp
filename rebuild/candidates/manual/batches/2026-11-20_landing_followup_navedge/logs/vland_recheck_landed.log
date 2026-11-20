@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a773e0   MATCH            PASS   CNavSwitchableLeafNode::IsEveryUniqueIDOpen
+00a78060   RELOCATION_MATCH PASS   CNavRegion::RemoveConnectionToRegion
+00a780b0   RELOCATION_MATCH PASS   CNavConnectorNode::~CNavConnectorNode
+00a786c0   RELOCATION_MATCH PASS   CNavRegion::SetAsConnectedToRegion
+00a78800   RELOCATION_MATCH PASS   CNavSwitchableLeafNode::SetAsBlocked
+00a78a90   RELOCATION_MATCH PASS   CNavConnectorNode::CNavConnectorNode

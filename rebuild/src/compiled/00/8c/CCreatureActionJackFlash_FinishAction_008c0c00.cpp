@@ -15,6 +15,15 @@
 //   (inline copy: object, count, addref) and released inline at the block end (count block destroy + delete);
 //   `this` is spilled to the frame because edi is reused for &PCreature; the player creature is a named local so it is
 //   fetched before SuspendAI's argument pushes.
+// Naming (NF147, 2026-11-20; q6408): the local SCountBlock / empty CModeBase / CCountedPointer<T> template (with its same-TU ctor
+//   specialisation 0x008C3260 and the DestroyJackOfBladesFlash deleter stand-in) and the local CTCCreatureModeManager replaced by the shared
+//   engine/CCountedPointer.h (VISIBLE_CALLED_CTOR: the landed 0x008C4990 shape; the called ctor 0x008C3260 keeps its HEAD spelling) and
+//   engine/CTCCreatureModeManager.h (ADDMODEPOINTER, nested CModeBase); 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z. The header-less mode class keeps its
+//   token and its constructor / SetTarget spellings, now on the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof
+//   stays the retail allocation (0x98).
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR
 class CTCBase;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -30,57 +39,12 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-struct SCountBlock {
-    long references;
-    void (__fastcall* destroy)(void*);
-    void* object;
-};
-struct CModeBase { };
-template <class T> class CCountedPointer { public:
-    T* object;
-    SCountBlock* count;
-    CCountedPointer(T* value);                        // 0x008C3260 (CModeJackOfBladesFlash instantiation)
-    template <class U> CCountedPointer(const CCountedPointer<U>& other) : object(other.object), count(other.count)
-    {
-        if (count)
-            ++count->references;
-    }
-    ~CCountedPointer()
-    {
-        if (count) {
-            if (--count->references == 0) {
-                count->destroy(count->object);
-                delete count;
-            }
-        }
-    }
-    T* operator->() const { return object; }
-};
-struct CModeJackOfBladesFlash : CModeBase {
-    unsigned char _pad[0x98];
+#include "engine/CTCCreatureModeManager.h"
+struct CModeJackOfBladesFlash : CTCCreatureModeManager::CModeBase {
+    unsigned char _pad[0x98 - 0x1c];
     CModeJackOfBladesFlash(CThing* owner);            // 0x008D7E60
     void SetTarget(CThing* target);                   // 0x008D7320
-};
-void __fastcall DestroyJackOfBladesFlash(void* object);   // 0x008C2D70-family per-type deleter stored in the count block
-#pragma auto_inline(off)
-// Same-TU stand-in for the counted-pointer constructor 0x008C3260 (its landed body, CCountedPointer008c2d70): compiled
-// above the caller so VC7.1 knows the pointer it fills does not escape (retail's LTCG knowledge) -- the object and the
-// count block then stay in esi and the 12-byte frame matches.
-template <> CCountedPointer<CModeJackOfBladesFlash>::CCountedPointer(CModeJackOfBladesFlash* value)
-    : object(value)
-{
-    if (value) {
-        SCountBlock* block = new SCountBlock;
-        block->references = 1;
-        block->destroy = DestroyJackOfBladesFlash;
-        block->object = object;
-        count = block;
-    } else
-        count = 0;
-}
-#pragma auto_inline(on)
-class CTCCreatureModeManager { public:
-    bool AddMode(CCountedPointer<CModeBase> mode);    // 0x0073ACC0
+    virtual unsigned long GetType() const;
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

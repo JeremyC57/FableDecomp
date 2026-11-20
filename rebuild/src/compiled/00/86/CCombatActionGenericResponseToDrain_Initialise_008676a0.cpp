@@ -15,6 +15,17 @@
 //   pointer's inline operator CThing*() so it is fetched before the target) plus the CastAssassinRush orientation idiom
 //   (physics reference fetched through an inline GetPhysics() before the set, Up member-wise, Forward copied).
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08, PTarget +0xa8); CThing PhysicsTC +0x60.
+// Naming (NF147, 2026-11-20; q6408): the local NCreatureMode::CModeBase / CModeDrained models, the local CTCCreatureModeManager and the local
+//   CBaseIntelligentPointer stand-in replaced by the mode's shared header engine/NCreatureMode_CModeDrained.h (overlay opt-in
+//   FABLE_RETAIL_NCREATUREMODE_CMODEDRAINED_CTOR: the Ego_r / FableWin constructor (CThing&, CThing&), whose self row 0x00868220 moves in the same
+//   hand-back), engine/CTCCreatureModeManager.h (ADDMODEPOINTER) and engine/CIntelligentPointer.h; 0x0073ACC0 now binds the Ego_r.pdb
+//   ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_NCREATUREMODE_CMODEDRAINED_CTOR
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -60,29 +71,12 @@ class CTCPhysicsBase { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return ((CThing*)GetPItem()); }
-};
-
-namespace NCreatureMode {
-struct CModeBase { };
-struct CModeDrained : CModeBase {               // 0x80 bytes
-    unsigned char _pad[0x80];
-    CModeDrained(CThing* thing, CThing* drainer);   // 0x00868220
-};
-}
-#include "engine/CCountedPointer.h"
-class CTCCreatureModeManager { public:                 // interface type 0x31
-    bool AddMode(CCountedPointer<NCreatureMode::CModeBase> mode);   // 0x0073ACC0
-};
+#include "engine/NCreatureMode_CModeDrained.h"
 class CCombatActionBase {
 public:
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;      // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
@@ -112,7 +106,7 @@ void CCombatAction_GenericResponseToDrain::Initialise()
         physics.SetOrientation(set);
         CTCCreatureModeManager* modes;
         ((CThing*)PCreature.GetPItem())->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-        modes->AddMode(CCountedPointer<NCreatureMode::CModeBase>(new NCreatureMode::CModeDrained(PCreature, ((CThing*)PTarget.GetPItem()))));
+        modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new NCreatureMode::CModeDrained(*PCreature.Get(), *((CThing*)PTarget.GetPItem()))));
     }
     CCombatActionBase::Initialise();
 }

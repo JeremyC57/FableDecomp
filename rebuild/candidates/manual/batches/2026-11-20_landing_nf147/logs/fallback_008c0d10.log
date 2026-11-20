@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008c0d10   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008c0d10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c0d10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JackScream (engine/CCreatureAction_JackScream.h)
+008c0d10   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@UCModeJackOfBladesScream@@@@SIXPAX@Z -> 008c2d60 labelled '_global::DeleteViaVtable0_008c2d60'
+008c0d10   RELOCATION_MATCH PASS   CCreatureAction_JackScream::Initialise
+
+WINS: 1
+  008c0d10 RELOCATION_MATCH CCreatureAction_JackScream::?Initialise@CCreatureAction_JackScream@@UAEXXZ
