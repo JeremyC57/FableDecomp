@@ -49,11 +49,11 @@ extern "C" double __cdecl sqrt(double);
 #include "engine/CAttackingCombatantInfo.h"
 class CWorldMap;
 namespace {
-// Inferred: GetPreferredCombatDistanceForAttacker is the landed 0x006E89B0 helper's text with Ego_d's `float distance` (type 0x40), Ego_d's
-//   parameter order (defender, attacker) and the PDB's __fastcall (Ego_r / FableWin ?GetPreferredCombatDistanceForAttacker@?A0xd8b789b9@@YIMABVCThingCreatureBase@@0@Z).
-//   `double distance` gives DIFFER(379v375) here; the landed 0x006E89B0 with float gives DIFFER(344v344) at 0x006E8A7A (pop esi / fmul st(1)).
-//   Check: the object's out-of-line copy is byte-equal to retail's unreferenced copy at 0x006E7EB0 (57 B, SAME relocations only; with double
-//   too; cdecl or the landed (attacker, defender) order: DIFF). No row or label holds 0x006E7EB0 yet.
+// Fidelity: same-TU strong definition of 0x006E7EB0 (retail TU-mate)
+//   GetPreferredCombatDistanceForAttacker verbatim from the landed 0x006E7EB0 row: Ego_d `float distance` (type 0x40), Ego_d parameter order
+//   (defender, attacker), the PDB __fastcall (?GetPreferredCombatDistanceForAttacker@?A0xd8b789b9@@YIMABVCThingCreatureBase@@0@Z).
+//   `double distance` gives DIFFER(379v375) here; the landed 0x006E89B0 with float gives DIFFER(344v344) at 0x006E8A7A (re-port debt, FINDINGS).
+//   The object's out-of-line copy is byte-equal to retail's unreferenced copy at 0x006E7EB0 (57 B, SAME relocations only).
 float __fastcall GetPreferredCombatDistanceForAttacker(const CThingCreatureBase& defender, const CThingCreatureBase& attacker)
 {
     float separation = defender.GetPhysicsTC()->GetRadius();
