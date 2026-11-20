@@ -568,9 +568,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009afb90	CDefinitionManager	LoadBinaryDefinitions	1344	parked	DIFFER(1326v1344)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009afb90.cpp	original
 009bbcc0	CPersistContext	TransferSubComponentLoadText	1120	parked	DIFFER(1140v1106)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/009bbcc0.cpp	original
 009bd460	CMovieSubtitles	ParseSubtitles	1200	parked	DIFFER(1174v1193)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/009bd460.cpp	original
-009bf7e0	CDisplayManager	CreateDevice	848	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(824v846)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009bf7e0.cpp	original
 009c33a0	_global	GetMarkerFileName	368	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/009c33a0.cpp	original
-009c3c20	CFileInstaller	ProcessActiveFileForDecompression	912	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(877v909)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/009c3c20.cpp	original
 009c3fb0	CFileInstaller	ProcessActiveFileForWrite	368	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/009c3fb0.cpp	original
 009c5170	_global	CPatchTesselationEdgeStrip_DestructorHelper	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009c5170.cpp	original
 009c8c00	NGameText::CDataBank	NGameText::CDataBank::vfunc_12	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand646/differ/009c8c00.cpp	gapscan/boundary
@@ -768,7 +766,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ba4c10	CEnginePrimitiveManagerStaticMeshesBase	?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineInternalPrimitiv	1168	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00ba4c10.cpp	original
 00ba9cb0	_global	ComputeParticleVisibilityDistance	800	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand600/differ/00ba9cb0.cpp	original
 00baa870	CEnginePrimitiveManagerRepeatedZSprites	RenderFromSortList	4608	parked	acctC round six: round 6 final (2026-11-16): DIFFER(4600v4600); latest draft 00baa870.cpp + NOTES.md in the folder (grep the ad	3	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfA4/00baa870.cpp	original
-00bade40	CEnginePrimitiveManagerSprites	RenderSprite	800	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(743v793)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00bade40.cpp	original
 00bba1e0	_global	CGuiControlTreePane_OnFileLoadComplete	96	parked	egod e15 (identified): DIFFER(30v82)	0	rebuild/candidates/manual/pending/2026-11-17_egod_open/e15/00bba1e0.cpp	original
 00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup	RenderSingleSpriteTrail	2464	parked	DIFFER(2432v2464)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00bbe090.test.cpp	original
 00bc3f30	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	13	parked	DIFFER(3272v3357)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00bc3f30.cpp	original

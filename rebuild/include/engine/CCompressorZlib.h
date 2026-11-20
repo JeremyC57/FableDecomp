@@ -36,6 +36,17 @@ public:
     // Retail opt-in (Codex pass17): both PDBs, native00a3a840 takes bool reference.
     unsigned long DecompressStream(void*,unsigned long,bool&);
 #endif
+#ifdef FABLE_RETAIL_CCOMPRESSORZLIB_STREAM_INPUT
+    // Opt-in (hand3c2, row 0x009C3C20 CFileInstaller::ProcessActiveFileForDecompression): the stream-input members the row calls,
+    // spellings and parameter names from Ego_d.pdb: ?HasStreamInput@CCompressorZlib@@QBE_NXZ (retail 0x00A3A7E0),
+    // ?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z (0x00A3AB90; src, src_size), ?FinishDecompressStream@CCompressorZlib@@QAEXXZ
+    // (0x00A3ABB0, landed) and ?GetErrorFlag@CCompressorZlib@@QBE_NXZ, inline in retail (the row reads ErrorFlag in place,
+    // 0x009C3CDD `mov cl,[esi+8Eh]`; Ego_d debug length 17). Declarations and one accessor body; no layout change.
+    bool HasStreamInput() const;                                // 0x00A3A7E0
+    void SetStreamInput(const void* src,unsigned long src_size); // 0x00A3AB90
+    void FinishDecompressStream();                              // 0x00A3ABB0
+    bool GetErrorFlag() const { return ErrorFlag; }
+#endif
     unsigned long InternalDecompress(const void*,unsigned long,void*,unsigned long);
 #ifdef FABLE_RETAIL_CCOMPRESSORZLIB_INTERNALCOMPRESS
     // Opt-in (row 0x00523CF0, for the same-TU NThingManager::CEntityRuntimePersistence::SetGamePersistentSaveData body): Ego_r.pdb
@@ -55,8 +66,8 @@ private:
     bool Compressing;
     bool ErrorFlag;
 };
-FABLE_STATIC_ASSERT(sizeof(z_stream_s)==56);
-FABLE_STATIC_ASSERT(sizeof(CCompressorZlib)==88);
+FABLE_STATIC_ASSERT_AT(58, sizeof(z_stream_s)==56);
+FABLE_STATIC_ASSERT_AT(59, sizeof(CCompressorZlib)==88);
 #endif // FABLE_ENGINE_CCOMPRESSORZLIB_H
 #else
 #ifndef FABLE_ENGINE_CCOMPRESSORZLIB_H
@@ -105,25 +116,25 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCompressorZlib) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_next_in) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_avail_in) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_total_in) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_next_out) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_avail_out) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_total_out) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_msg) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_state) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_zalloc) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_zfree) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_opaque) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_data_type) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_adler) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_reserved) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, ZlibInitialised) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Compressing) == 0x55);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, ErrorFlag) == 0x56);
+FABLE_STATIC_ASSERT_AT(108, sizeof(CCompressorZlib) == 0x58);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CCompressorZlib, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CCompressorZlib, Stream_next_in) == 0x1c);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CCompressorZlib, Stream_avail_in) == 0x20);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CCompressorZlib, Stream_total_in) == 0x24);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CCompressorZlib, Stream_next_out) == 0x28);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CCompressorZlib, Stream_avail_out) == 0x2c);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CCompressorZlib, Stream_total_out) == 0x30);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CCompressorZlib, Stream_msg) == 0x34);
+FABLE_STATIC_ASSERT_AT(117, offsetof(CCompressorZlib, Stream_state) == 0x38);
+FABLE_STATIC_ASSERT_AT(118, offsetof(CCompressorZlib, Stream_zalloc) == 0x3c);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CCompressorZlib, Stream_zfree) == 0x40);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CCompressorZlib, Stream_opaque) == 0x44);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CCompressorZlib, Stream_data_type) == 0x48);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CCompressorZlib, Stream_adler) == 0x4c);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CCompressorZlib, Stream_reserved) == 0x50);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CCompressorZlib, ZlibInitialised) == 0x54);
+FABLE_STATIC_ASSERT_AT(125, offsetof(CCompressorZlib, Compressing) == 0x55);
+FABLE_STATIC_ASSERT_AT(126, offsetof(CCompressorZlib, ErrorFlag) == 0x56);
 
 #endif // FABLE_ENGINE_CCOMPRESSORZLIB_H
 #endif // FABLE_RETAIL_CCOMPRESSORZLIB

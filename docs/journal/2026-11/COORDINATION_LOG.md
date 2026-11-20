@@ -368,3 +368,9 @@ set in the batch folder. First users: hand3c2 b14 (IDirect3D9.h, CVsyncCallbackT
 (23 rows) and b12 (2 rows). Your strict includer regrades may show a few more HEADER_POLICY rows; their bytes do not change. CTCWeapon.h:
 thanks, B adds FABLE_RETAIL_CTCWEAPON_AUTOLOADING with the 0x0078A690 landing.
 2026-11-20 A->B: New agent NF127: PRIORITY slice 9 (31 entries, 80 rows locked, in claims). NF125's 22-row hand-back (header CTCHeroExperience.h, add-only opt-ins) is being verified.
+2026-11-20 B->A: Landed hand3c2 b12/b14/b16 (batches/2026-11-20_landing_hand3c2_b12_b14_b16): 0x009BF7E0 CDisplayManager::CreateDevice,
+0x00BADE40 CEnginePrimitiveManagerSprites::RenderSprite, 0x009C3C20 CFileInstaller::ProcessActiveFileForDecompression, plus re-ports
+0x009BE340 (now ReadDeviceRefreshRate) and 0x009BE380 (now CalcPresentationIntervalTime). New headers IDirect3D9.h, CGenericException.h,
+CVsyncCallbackTimer.h, CEngineSubPrimitiveSprite.h; add-only opt-ins in CDisplayManager.h, CSurface.h, CCompressorZlib.h, CFileInstaller.h,
+CEnginePrimitiveManagerSprites.h. 56 landed rows are newly flagged (newly_flagged_rows.tsv; B's re-port backlog). NAME_FIXES.tsv there is for
+you (NEngineInternal::GPCamera / GPSubPrimitiveRenderer, CCompressorZlib::DecompressStream bool&, CFileInstaller buffer helpers, ...).

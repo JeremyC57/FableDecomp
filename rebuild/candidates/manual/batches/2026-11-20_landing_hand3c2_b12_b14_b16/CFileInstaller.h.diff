@@ -1,0 +1,21 @@
+diff --git a/rebuild/include/engine/CFileInstaller.h b/rebuild/include/engine/CFileInstaller.h
+index 7094ceba1..66ec8e013 100644
+--- a/rebuild/include/engine/CFileInstaller.h
++++ b/rebuild/include/engine/CFileInstaller.h
+@@ -66,7 +66,16 @@ public:
+  CBufferChunk* PBufferChunk;
+  unsigned long FilePos;
+  unsigned long WriteLength;
++#ifdef FABLE_RETAIL_CFILEINSTALLER_CPENDINGWRITE_CTOR
++ // Opt-in (hand3c2, row 0x009C3C20 CFileInstaller::ProcessActiveFileForDecompression): Ego_d.pdb
++ // ??0CPendingWrite@CFileInstaller@@QAE@KKPAVCBufferChunk@1@@Z (debug length 42; parameters file_pos, write_length, pchunk), inline in
++ // retail: the row builds the record in its frame (0x009C3DAC FilePos, 0x009C3DB7 PBufferChunk, 0x009C3DBB WriteLength) and hands it
++ // to the list's push_back 0x009C6AF0.
++ CPendingWrite(unsigned long file_pos,unsigned long write_length,CBufferChunk* pchunk)
++  : PBufferChunk(pchunk),FilePos(file_pos),WriteLength(write_length) { }
++#else
+  CPendingWrite(unsigned long,unsigned long,CBufferChunk*);
++#endif
+  CPendingWrite();
+ };
+ 

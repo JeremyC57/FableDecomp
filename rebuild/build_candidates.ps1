@@ -265831,13 +265831,7 @@ $catalog = @(
         TestSource = '00/9b/CDisplayManager_CalculateD3DPresentationInterval_009be2d0_test.cpp'
         PassPattern = '009be2d0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '009be340'
-        Module = 'CDisplayManager'
-        Source = '00/9b/CDisplayManager_GetRefreshRate_009be340.cpp'
-        TestSource = '00/9b/CDisplayManager_GetRefreshRate_009be340_test.cpp'
-        PassPattern = '009be340_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '009fd2b0'
         Module = 'CGraphicDataBank'
@@ -266841,13 +266835,7 @@ $catalog = @(
         TestSource = '00/92/global_FUN0092b2b0_0092b2b0_test.cpp'
         PassPattern = '0092b2b0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '009be380'
-        Module = '_global'
-        Source = '00/9b/global_FUN009be380_009be380.cpp'
-        TestSource = '00/9b/global_FUN009be380_009be380_test.cpp'
-        PassPattern = '009be380_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a0d260'
         Module = '_global'
@@ -401226,6 +401214,43 @@ $catalog = @(
         Source = '00/a4/CLipSyncSampleData_WriteToFile_00a48ba0.cpp'
         TestSource = '00/a4/CLipSyncSampleData_WriteToFile_00a48ba0_test.cpp'
         PassPattern = '00a48ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bf7e0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_CreateDevice_009bf7e0.cpp'
+        TestSource = '00/9b/CDisplayManager_CreateDevice_009bf7e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '009bf7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be340'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_ReadDeviceRefreshRate_009be340.cpp'
+        TestSource = '00/9b/CDisplayManager_ReadDeviceRefreshRate_009be340_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '009be340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be380'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_CalcPresentationIntervalTime_009be380.cpp'
+        TestSource = '00/9b/CDisplayManager_CalcPresentationIntervalTime_009be380_test.cpp'
+        PassPattern = '009be380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bade40'
+        Module = 'CEnginePrimitiveManagerSprites'
+        Source = '00/ba/CEnginePrimitiveManagerSprites_RenderSprite_00bade40.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerSprites_RenderSprite_00bade40_test.cpp'
+        PassPattern = '00bade40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c3c20'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_ProcessActiveFileForDecompression_009c3c20.cpp'
+        TestSource = '00/9c/CFileInstaller_ProcessActiveFileForDecompression_009c3c20_test.cpp'
+        PassPattern = '009c3c20_TEST PASS'
     }
 )
 
