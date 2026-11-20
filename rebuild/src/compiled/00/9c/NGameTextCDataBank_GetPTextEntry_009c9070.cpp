@@ -1,6 +1,8 @@
 // NGameText::CDataBank::GetPTextEntry(unsigned long,bool) const, retail 0x009C9070.
 // Leaf: ?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z
-// Recovered PDB identity egor31452/debug 0x00B17AB0. The old authored assembly
+// Recovered PDB identity egor31452/debug 0x00B17AB0.
+// NF174 (q11869): the callee 0x009C8FB0 is the private const ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (Ego_r.pdb 0x00B17870 +
+//   FableWin.pdb 0x02F747F0); the local declaration moves under private: with CDataBank as friend (was the public non-const QAEXXZ). The old authored assembly
 // bootstrap remains untouched; this is the independent pure C++03 candidate.
 #include "fable_compiler.h"
 #define CResource CResourcePdb
@@ -112,7 +114,9 @@ class CDataBankTextEntry { public:
     ::CIVCountedPointer<CTextEntry> PText;    // +0
     long NarratorIndex;                       // +4
     void BeginLoading(unsigned long, NGameText::CDataBank&); // 0x009C8340
-    void BuildText();                         // 0x009C8FB0
+private:
+    friend class CDataBank;                   // the PDB members are private; CDataBank calls them (as CDataBankGroupEntry)
+    void BuildText() const;                   // 0x009C8FB0 ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (NF174 q11869)
 };
 }
 struct CPointerVector {

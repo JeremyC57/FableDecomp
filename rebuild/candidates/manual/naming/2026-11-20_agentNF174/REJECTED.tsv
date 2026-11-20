@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q6496	0x012ECBA8	??_7?$CSpawnedFunc@VCV_ExposeMayorScript@NScript@@@@6B@ (correct_symbol column)	the vtable is CSpawnedFunc<CV_HauntedHouseScript>: its ctor 0x00E95F10 is called only from 0x00E94C0B with CV_HauntedHouseScript::DoMission 0x00E953E0 and the vtable is the one CV_HauntedHouseScript::RegisterMain 0x00E93DA0 stores; FableWin.pdb has the CSpawnedFunc<CV_HauntedHouseScript> set (ctor 0x03B25420, ??_G 0x03B34070); both landed binders bind the HauntedHouse spelling

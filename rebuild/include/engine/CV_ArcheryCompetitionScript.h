@@ -11,6 +11,11 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_ArcheryCompetitionScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_CV_ARCHERYCOMPETITIONSCRIPT_CTOR
+    // NF174 (q4102): Ego_r.pdb / FableWin.pdb ??0CV_ArcheryCompetitionScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    //   (0x00E32350; vtable 0x012E2EE4). Declaration only.
+    CV_ArcheryCompetitionScript(CScriptDataBase*, CGameScriptInterfaceBase&);
+#endif
     virtual void Main();
     virtual void Init();
     virtual void OnPersist(CPersistContext&);

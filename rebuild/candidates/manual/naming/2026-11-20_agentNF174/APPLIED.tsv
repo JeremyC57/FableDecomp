@@ -1,0 +1,29 @@
+entry	address	status	binders_respelled	note
+q11869	0x009C8FB0	done	1	self row renamed (RENAMES s1, access-only QBE -> ABE, in place); its sole referencer 0x009C9070 respelled (RENAMES s2); no other definer or binder (source grep + REFS)
+q11945	0x0042BED4	open	0	census done (HEAD probe work/probe_ui.tsv): 39 / 44 REFS rows bind the PDB ??0CDeletion spellings, self rows right; rows left (one family for q11945 + q11946): 0x0059DB82 and 0x0059E6BD bind ??0CAction@N_0042bed4@NUISystem@@QAE@XZ / ..@ABU012@@Z. Both model NUISystem::CComponent locally (vfunc slot placeholders) and engine/NUISystem_CDeletion.h includes engine/NUISystem_CComponent.h, so CComponent must move onto its header with CDeletion (slots 8 FindChildNonRecursive, 53 GetChildren, 60 AddChildDynamically, 62 SetDeletion, 63 GetDeletion, 65 GetType, 93 / 95 Make(Un)AvailableDynamically). Not started (handed back for context); 0x0059E6BD lock claimed NF174
+q11946	0x0042CD84	open	0	census done (HEAD probe work/probe_ui.tsv): 39 / 44 REFS rows bind the PDB ??0CDeletion spellings, self rows right; rows left (one family for q11945 + q11946): 0x0059DB82 and 0x0059E6BD bind ??0CAction@N_0042bed4@NUISystem@@QAE@XZ / ..@ABU012@@Z. Both model NUISystem::CComponent locally (vfunc slot placeholders) and engine/NUISystem_CDeletion.h includes engine/NUISystem_CComponent.h, so CComponent must move onto its header with CDeletion (slots 8 FindChildNonRecursive, 53 GetChildren, 60 AddChildDynamically, 62 SetDeletion, 63 GetDeletion, 65 GetType, 93 / 95 Make(Un)AvailableDynamically). Not started (handed back for context); 0x0059E6BD lock claimed NF174
+q11947	0x0054EAC0	done	0	census (HEAD probe work/probe_ui.tsv): all 3 REFS rows bind ??1CViewport@NUISystem@@UAE@XZ; parked self row; the only wrong label left is manifest-gaps.tsv ~CMesh (NAME_FIXES)
+q11950	0x013B8A98	open	0	not started
+q11954	0x008E3860	open	0	not started
+q11956	0x008D8620	open	0	not started
+q11959	0x008E3860	open	0	not started
+q12007	0x00E7FD50	open	0	not started
+q12008	0x00E9E350	open	0	not started
+q12011	0x00DCD160	open	0	not started
+q12012	0x00DCD1D0	open	0	not started
+q12013	0x00DCD1C0	open	0	not started
+q12014	0x00DCF6E0	open	0	not started
+q12017	0x00696340	open	0	not started
+q12018	0x00696900	open	0	not started
+q4102	0x00E32350	done	0	self row renamed onto the shared header (RENAMES s1); census: REFS has no landed referencer, the vtable 0x012E2EE4 is bound only by this row (now @NScript@@); one-definition fix on the dtor row 0x00E37680 (link proof link/new_pair.log).
+q4356	0x009C9070	done-already	0	census (HEAD probe, work/probe_databank.tsv): all 43 REFS rows (incl. 0x0065C781, the wave-34 leftover) bind ?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z, RELOCATION_MATCH at HEAD; self row 0x009C9070 defines it; the wrong ?GetPGroupEntry@CTextBank@@ spelling is in no landed object (reloc_bindings has none)
+q4639	0x00EF7AB0	blocked (port; rows left 0x00EF7800)	0	census (HEAD probe work/probe_q4639.tsv): 14 of 15 REFS rows bind ??1CIsThingConscious@NScript@@UAE@XZ; self row right. Left: 0x00EF7800 COpinionMan::Main binds ??1CIsThingStored@NScript@@UAE@XZ through local shadow classes; 3 port forms failed (STATUS). Respelling it alone is not possible without the port (renaming the stand-in to the real class is banned).
+q5066	0x00CBC130	done	1	census (HEAD probe work/probe_q5066.tsv): 0x00CBC7B0 already binds the owner spelling; 0x00CB8440 ported (RENAMES s2); self row right
+q5211	0x00EE8390	done	0	catalog fix (NAME_FIXES): parked row, no landed binder (exe scan: only caller Main 0x00EE82D0, not a landed row in REFS); two sources (both PDB name sets + the Main call); never authored
+q5212	0x00E1F7E0	done-already	0	catalog/manifest already NScript::CQR_EscortTraderScript::CTraderToEscort::Init (both PDBs ?Init@CTraderToEscort@CQR_EscortTraderScript@NScript@@EAEXXZ, Ego_r 0x00E6AEC0 / FableWin 0x03906720); parked row, no landed referencer
+q5213	0x00E200B0	done	0	catalog fix (NAME_FIXES): no catalog / manifest entry existed; two sources (both PDB name sets + the member-pointer / literal pairing in 0x00E1F7E0); no landed referencer
+q5214	0x00E20210	done-already	0	catalog/manifest already NScript::CQR_EscortTraderScript::WatchForTraderHit (both PDBs); exe scan: its only absolute reference is 0x00E1F97B inside the parked 0x00E1F7E0; reloc_bindings.tsv has no line targeting 0x00E20210 (string compare); no landed row binds it
+q5222	0x00403750	done	1	census (HEAD probe work/probe_databank.tsv): 0x00418B7A / 0x0042F50B already bind the PDB spelling; 0x004175E5 respelled (RENAMES s2); self row right
+q6494	0x00E7E020	done-already	0	HEAD probe work/probe_q6494.tsv: all 4 REFS rows (0x00E7C8E0 0x00E84B80 0x00E87030 0x00E8B020) bind ??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@ABVCIsVariableFalse@1@@Z; self row 0x00E7E020 defines it (HEAD compile); the old CAndPredicate / CIsFlagFalse stand-in is in no landed object
+q6496	0x012ECBA8	done-already	0	settled as ??_7?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@6B@ (the evidence column; the correct_symbol column ExposeMayor is REJECTED): HEAD probe work/probe_q6496.tsv, both REFS rows 0x00E93DA0 / 0x00E95F10 bind it; reloc_bindings.tsv line ??_7?$CSpawnedFunc@VCV_ExposeMayorScript... 012ecba8 00e95f10 is stale (the row was re-typed since)
+q6519	0x00E7E020	done-already	0	HEAD probe work/probe_q6494.tsv: all 4 REFS rows (0x00E7C8E0 0x00E84B80 0x00E87030 0x00E8B020) bind ??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@ABVCIsVariableFalse@1@@Z; self row 0x00E7E020 defines it (HEAD compile); the old CAndPredicate / CIsFlagFalse stand-in is in no landed object

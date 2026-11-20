@@ -1,0 +1,46 @@
+004175e5 new: 1
+    ??_G?$CCountedPointer@VCDataBank@NGameText@@@@QAEPAXI@Z
+009c8fb0 new: 1
+    ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ TABLE:009c8fb0
+009c9070 new: 0
+00cb8440 new: 29
+    ??$_Construct@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@U12@@std@@YAXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@ABU10@
+    ??$_Destroy@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@std@@YAXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@0@Z
+    ??$_Destroy@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@std@@YAXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@@Z
+    ??$__destroy@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@U12@@std@@YAXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@00@Z
+    ??$__destroy_aux@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@std@@YAXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@0ABU_
+    ??$__uninitialized_copy@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@PAU12@@std@@YAPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScri
+    ??$__uninitialized_fill_n@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@IU12@@std@@YAPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScr
+    ??$max@I@std@@YAABIABI0@Z
+    ??0?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@QAE@ABU01@@Z TABLE:00cb90f0
+    ??0?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@QAE@AB_KABVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ TABLE:004046b0
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@VCStringParserCommentBoundaries@@@std@@U12@V?$allocator@U?$_List_node@VCStringParserCommentBoundaries@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ
+    ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ TABLE:004046b0
+    ??1?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@QAE@XZ
+    ??_G?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@QAEPAXI@Z
+    ?SkipPastText@?A0x824d319b@@YA_NAAVCStringParser@@PBD@Z
+    ?_M_clear@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@
+    ?_M_insert_overflow@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScri
+    ?_M_set@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2
+    ?allocate@?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@std@@QAEPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2@IP
+    ?begin@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@
+    ?clear@?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAEXXZ
+    ?deallocate@?$allocator@U?$_List_node@VCStringParserCommentBoundaries@@@std@@@std@@QAEXPAU?$_List_node@VCStringParserCommentBoundaries@@@2@I@Z
+    ?deallocate@?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@std@@QAEXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2
+    ?end@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@s
+    ?push_back@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@
+    ?size@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@
+00e32350 new: 8
+    ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    ??0CV_ArcheryCompetitionScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    ??1?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAE@XZ TABLE:00cbd510
+    ??1CV_ArcheryCompetitionScript@NScript@@UAE@XZ
+    ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ TABLE:012c2eec
+    ??_7CV_ArcheryCompetitionScript@NScript@@6B@ TABLE:012e2ee4
+    ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z
+    ??_GCV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+00e37680 new: 1
+    ?ReferenceArcheryCompetitionScriptDtor@?A0x5db115b7@@YAXPAVCV_ArcheryCompetitionScript@NScript@@@Z

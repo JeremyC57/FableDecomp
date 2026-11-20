@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00e32350   RELOCATION_MATCH PASS   NScript::CV_ArcheryCompetitionScript::CV_ArcheryCompetitionScript
+00e37680   WARN SHARED_HEADER_AVAILABLE CV_ArcheryCompetitionScript (engine/CV_ArcheryCompetitionScript.h)
+00e37680   RELOCATION_MATCH PASS   NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript
+00cb8440   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist (engine/CRuntimeScriptedEntityPersist.h)
+00cb8440   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00cb8440   WARN RELOC_NAME: ?erase@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@std@@QAEPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2@PAU32@0@Z -> 00cbbda0 labelled '_global::Container_MoveAndConstruct'
+00cb8440   WARN RELOC_NAME: ??$sort@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$CKeyPairCompareLess@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@@@std@@YIXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@0V?$CKeyPairCompareLess@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@@@Z -> 00cbd370 labelled 'std::sort<std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *, CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>'
+00cb8440   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb8440   RELOCATION_MATCH PASS   NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript
+004175e5   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004175e5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004175e5   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer4190b6@@QAEXXZ -> 004190b6 labelled 'CCountedPointer<CLUA>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer4057a0@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer419108@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   CMainGameComponent::Shutdown
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009c8fb0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+009c8fb0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+009c8fb0   RELOCATION_MATCH PASS   NGameText::CDataBankTextEntry::BuildText
+009c9070   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+009c9070   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009c9070   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009c9070   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009c9070   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+009c9070   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009c9070   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009c9070   RELOCATION_MATCH PASS   NGameText::CDataBank::GetPTextEntry
+
+WINS: 6
+  00e32350 RELOCATION_MATCH CV_ArcheryCompetitionScript::??0CV_ArcheryCompetitionScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e37680 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::??1CV_ArcheryCompetitionScript@NScript@@UAE@XZ
+  00cb8440 RELOCATION_MATCH NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript
+  004175e5 RELOCATION_MATCH CMainGameComponent::?Shutdown@CMainGameComponent@@QAEXXZ
+  009c8fb0 RELOCATION_MATCH NGameText::CDataBankTextEntry::?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ
+  009c9070 RELOCATION_MATCH NGameText::CDataBank::?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z

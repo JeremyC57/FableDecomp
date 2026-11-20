@@ -1,5 +1,8 @@
 // NGameText::CDataBankTextEntry::BuildText() const -- touch the text entry's resource (move it to the most-recently-used end of its list), and if its file data was loaded asynchronously, wait for it, parse the text entry from a memory stream over it, and drop the file data
-// Leaf: BuildText
+// Leaf: ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ
+// NF174 (q11869, access-only): BuildText is private const in Ego_r.pdb 0x00B17870 + FableWin.pdb 0x02F747F0
+//   (?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ, as its byte-twin 0x009C8700 ?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ); the local
+//   declaration moves under private: (was the public const QBE spelling). Bytes unchanged.
 // NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
 //   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8FB0, length 190 bytes (+ int3 padding), `ret`.
@@ -92,6 +95,7 @@ class CTextEntry : public CResourceMethods { public:
 class CDataBankTextEntry { public:
     CTextEntry* PText;                   // +0 CIVCountedPointer<NGameText::CTextEntry>
     long NarratorIndex;                  // +4
+private:
     void BuildText() const;              // ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (private in the PDB)
 };
 }

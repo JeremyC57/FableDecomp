@@ -12,68 +12,26 @@
 // Layout: Ego_r.pdb CRuntimeScriptedEntityPersist (20 bytes) = PersistScripts CVectorMap<unsigned __int64, CPersistInfo>:
 // vector (retail 12 bytes) +0, Compare +0x0c, Dirty +0x0d; element pair<unsigned __int64, CPersistInfo{UID, PersistScript}>
 // is 0x18 bytes.
-class CCharString { public:
-    void* m_pData;
-    CCharString();                                 // 0x0099E4B0
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    CCharString(const CCharString& other);         // 0x0099EC30
-    ~CCharString();                                // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
-class CStringParser : public CBaseClass {
-public:
-    unsigned __int64 ReadAsUHUGE();   // 0x009BA5B0 (Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ)
-private: public:                // retail 0x28 bytes
-    char*                    String;               // +0x04
-    unsigned long            BaseLineOffset;       // +0x08
-    CCharString              Filename;             // +0x0c
-    CCharString              TempCharString;       // +0x10
-    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
-    void (*ErrorCallback)(CCharString*);           // +0x18
-    long                     CursorPos[3];         // +0x1c
-    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
-                  long baseLineOffset);            // 0x00404720
-    bool SkipPastString(const CCharString& item);              // 0x009B9BA0 NF35: Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (catalog CStringParser::SkipPastString)
-    long SkipWhitespace();                                 // 0x009B9C60
-    long SkipUntilWhitespace();                            // 0x009B9CE0
-    bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
-    CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
-    void SkipToText(const char* text)
-    {
-        CCharString end(text, -1);
-        ReadAsStringUntilString(end);
-    }
-    void ReadUntilText(CCharString& out, const char* text)
-    {
-        CCharString end(text, -1);
-        out = ReadAsStringUntilString(end);
-    }
-    bool NextItemIsText(const char* text)
-    {
-        CCharString item(text, -1);
-        return SkipPastString(item);
-    }
-    bool SkipPastText(const char* text)
-    {
-        CCharString item(text, -1);
-        return SkipPastNextItemIfIs(item);
-    }
-};
+// NF174 (q5066): ported off the local CVector<CEntry> / CStringParser / CCharString / std::list models onto stlport/fable_containers.h,
+//   fable_string.h, engine/CStringParser.h and engine/CVectorMap.h (CKeyPairCompareLess): PersistScripts' vector is the STLport
+//   vector<pair<unsigned __int64, CPersistInfo> >, so push_back's overflow binds the owner 0x00CBC130 spelling
+//   ?_M_insert_overflow@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@...@std@@IAEX...@Z (was the local
+//   CVector<CEntry> stand-in), erase(first, last) the owner 0x00CBBDA0 spelling (FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE) and the
+//   sort the owner 0x00CBD370 spelling ??$sort@...CKeyPairCompareLess...@std@@YIX...@Z (FABLE_RETAIL_STLP_SORT_FASTCALL; was the
+//   descriptive SortEntries). The owner class stays the row's pre-existing local NScript::CRuntimeScriptedEntityPersist model (the shared
+//   header declares no PersistScripts); its Clear 0x00CBC660 keeps the local ?Clear@CMap@... spelling (no PDB name for it).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CSTRINGPARSER
+#define FABLE_RETAIL_CSTRINGPARSER_READASUHUGE
+#define FABLE_RETAIL_CSTRINGPARSER_SKIPUNTILWHITESPACE
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_STLP_SORT_FASTCALL
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CStringParser.h"
+#include "engine/CVectorMap.h"                    // CKeyPairCompareLess (the PersistScripts map's compare)
 extern const char g_startNewEntityScript[];       // 0x012C1674 "START_NEW_ENTITY_SCRIPT"
 extern const char g_endNewEntityScript[];         // 0x012C165C "END_NEW_ENTITY_SCRIPT"
-
-struct __false_type { __false_type() { } };
-inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {
@@ -81,30 +39,10 @@ struct CRuntimeScriptedEntityPersist {
         unsigned __int64 UID;                       // +0x00
         CCharString      PersistScript;             // +0x08
     };
-    struct CEntry {                                 // pair<unsigned __int64, CPersistInfo>, 0x18 bytes
-        unsigned __int64 first;
-        CPersistInfo     second;
-        CEntry(const unsigned __int64& id, const CPersistInfo& info) : first(id), second(info) { }
-    };
-    struct CCompare { };
-    template <class T> struct CVector {
-        T* _M_start;
-        T* _M_finish;
-        T* _M_end_of_storage;
-        T* erase(T* first, T* last);                                          // 0x00CBBDA0
-        void _M_insert_overflow(T* position, const T& value, const __false_type&, unsigned int count, bool atEnd);   // 0x00CBC130 (same-TU stand-in below)
-        void push_back(const T& value)
-        {
-            if (_M_finish != _M_end_of_storage) {
-                if (_M_finish) new (_M_finish) T(value);
-                ++_M_finish;
-            } else
-                _M_insert_overflow(_M_finish, value, __false_type(), 1, true);
-        }
-    };
+    typedef std::pair<unsigned __int64, CPersistInfo> CEntry;   // 0x18 bytes
     struct CMap {
-        CVector<CEntry> Data;                              // +0x00
-        CCompare Compare;                           // +0x0c
+        std::vector<CEntry> Data;                   // +0x00
+        CKeyPairCompareLess<unsigned __int64, CPersistInfo> Compare;   // +0x0c
         bool     Dirty;                             // +0x0d
         void Clear();                               // 0x00CBC660
     };
@@ -112,29 +50,31 @@ struct CRuntimeScriptedEntityPersist {
 
     void LoadFromGameStateScript(const CCharString& text);
 };
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) void CRuntimeScriptedEntityPersist::CVector<T>::_M_insert_overflow(T* position, const T& value, const __false_type&, unsigned int count, bool atEnd)
-{
-    if (atEnd && value.first != 0)
-        _M_finish = position + count;
 }
-#pragma auto_inline(on)
-void __fastcall SortEntries(CRuntimeScriptedEntityPersist::CEntry* first, CRuntimeScriptedEntityPersist::CEntry* last, CRuntimeScriptedEntityPersist::CCompare compare);   // 0x00CBD370
+
+namespace {
+// Descriptive TU-local helper (was the row's local CStringParser::SkipPastText inline member; no PDB name): the item string is a
+//   named local destroyed after the SkipPastNextItemIfIs call (the HEAD row's shape; same bytes).
+inline bool SkipPastText(CStringParser& parser, const char* text)
+{
+    CCharString item(text, -1);
+    return parser.SkipPastNextItemIfIs(item);
+}
 }
 
 void NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript(const CCharString& text)
 {
-    PersistScripts.Data.erase(PersistScripts.Data._M_start, PersistScripts.Data._M_finish);
+    PersistScripts.Data.erase(PersistScripts.Data.begin(), PersistScripts.Data.end());
     PersistScripts.Clear();
     CStringParser parser(text, 0, CCharString("", -1), 0);
     {
         CCharString start(g_startNewEntityScript, -1);
         parser.ReadAsStringUntilString(start);
     }
-    while (parser.SkipPastText(g_startNewEntityScript)) {
+    while (SkipPastText(parser, g_startNewEntityScript)) {
         parser.SkipUntilWhitespace();
         CPersistInfo info;
-        info.UID = ((CStringParser*)&parser)->ReadAsUHUGE();
+        info.UID = parser.ReadAsUHUGE();
         parser.SkipWhitespace();
         {
             CCharString end(g_endNewEntityScript, -1);
@@ -148,7 +88,7 @@ void NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript(const CChar
         }
     }
     if (PersistScripts.Dirty) {
-        SortEntries(PersistScripts.Data._M_start, PersistScripts.Data._M_finish, PersistScripts.Compare);
+        std::sort(PersistScripts.Data.begin(), PersistScripts.Data.end(), PersistScripts.Compare);   // 0x00CBD370 (__fastcall)
         PersistScripts.Dirty = false;
     }
 }

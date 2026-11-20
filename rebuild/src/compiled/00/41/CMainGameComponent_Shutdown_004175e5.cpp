@@ -47,12 +47,23 @@ template <class T> struct scoped_ptr {
         void Release();                                                      \
         FABLE_FORCEINLINE void Clear() { Release(); Data = 0; }                  \
     };
-COUNTED_POINTER(CCountedPointer403750, 0x00403750)
 COUNTED_POINTER(CCountedPointer4190b6, 0x004190B6)
 COUNTED_POINTER(CCountedPointer4057a0, 0x004057A0)
 COUNTED_POINTER(CCountedPointer419108, 0x00419108)
 COUNTED_POINTER(CCountedPointer41915a, 0x0041915A)
 #undef COUNTED_POINTER
+// NF174 (q5222): +0x14 is the text bank, the shared engine/CCountedPointer.h CCountedPointer<NGameText::CDataBank> (NGameText_CDataBank.h:
+//   CMainGameComponent::GetTextBank() reads the counted pointer at +0x14); its release is the out-of-line destructor COMDAT 0x00403750
+//   ??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ (FableWin.pdb; the landed 0x00418B7A / 0x0042F50B bind it; declaration-only
+//   dtor, FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY), followed by `Data = 0`, the HEAD row's Clear() sequence (Release(); Data = 0)
+//   kept as is with the release spelled as that destructor. Not Reset(0): this TU's Reset<CDataBank> is the out-of-line 0x00403E40
+//   (bound by the landed 0x00416832), which this site does not call. Was the local CCountedPointer403750 stand-in binding
+//   ?Release@CCountedPointer403750@@QAEXXZ.
+// Inferred: the source spelling of "release, then Data = 0" is unproven; the explicit destructor call is the one that names the retail
+//   callee (0x00403750) and emits no new COMDAT.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY
+#include "engine/CCountedPointer.h"
+namespace NGameText { class CDataBank; }
 
 class CNetworkSession : public CPolymorphic {
 public:
@@ -110,7 +121,7 @@ protected:
     static CMainGameComponent* PMainGameComponent;   // 0x013B86A0
 public:
     long                   m_10;                     // +0x10
-    CCountedPointer403750  m_14;                     // +0x14
+    CCountedPointer<NGameText::CDataBank> m_14;      // +0x14 (Ego_r.pdb: the text bank)
     scoped_ptr<CPolymorphic> m_1c;                   // +0x1c
     scoped_ptr<CPolymorphic> m_20;                   // +0x20
     scoped_ptr<CNetworkSession> NetworkSession;      // +0x24
@@ -156,7 +167,8 @@ void CMainGameComponent::Shutdown()
     UninitEventPackageSaving();
     UninitialiseParticles();
     CConsole::Get()->Initialise(0x60, 0x29, ConsoleFont.Data);
-    m_14.Clear();
+    m_14.~CCountedPointer();
+    m_14.Data = 0;
     m_1c.reset();
     m_20.reset();
     NetworkSession.reset();

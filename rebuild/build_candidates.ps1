@@ -220309,9 +220309,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e32350'
-        Module = 'CV_ArcheryCompetitionScript'
-        Source = '00/e3/CVArcheryCompetitionScript_CVArcheryCompetitionScript_00e32350.cpp'
-        TestSource = '00/e3/CVArcheryCompetitionScript_CVArcheryCompetitionScript_00e32350_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript'
+        Source = '00/e3/NScriptCVArcheryCompetitionScript_CVArcheryCompetitionScript_00e32350.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScript_CVArcheryCompetitionScript_00e32350_test.cpp'
         PassPattern = '00e32350_TEST PASS'
     }
     [pscustomobject]@{
