@@ -128,4 +128,19 @@ class C2DBoxF ToC2DBoxF() const;
 #include "engine/C2DBoxF.h"
 inline C2DBoxF C2DBoxI::ToC2DBoxF() const { return C2DBoxF((float)TLX,(float)TLY,(float)BRX,(float)BRY); }
 #endif
+#ifdef FABLE_RETAIL_C2DBOXI_CLIPTO_BODY
+// Nested opt-in (p25N, rows 0x004FEB70 CWorldMap::HeightAreaChanged / 0x004FC4D0 ClipAndConvertWorldMapAreaToLocalArea): the inline body of
+// ?ClipTo@C2DBoxI@@QAEXABV1@@Z. Ego_d.pdb has its line table in a header (file id 2736, lines 97..102 -- not CWorldMap.cpp's file 4704,
+// although the debug copy sits in CWorldMap.obj's module stream), so every TU that calls it compiles the body; c2 keeps it out of line and
+// the linker keeps one COMDAT, retail 0x0049C810 (landed: the same four statements). With the body visible a caller knows ClipTo writes
+// only `this` (0x004FEB70 keeps the map number in ebx across ClipAndConvertWorldMapAreaToLocalArea). Ego_d.pdb parameter name box; Ego_d
+// lines 98..101 = 48 / 54 / 52 / 54 bytes at /Od, this text the same. No layout change.
+inline void C2DBoxI::ClipTo(const C2DBoxI& box)
+{
+    if (TLX < box.TLX) TLX = box.TLX; else if (TLX > box.BRX) TLX = box.BRX;
+    if (TLY < box.TLY) TLY = box.TLY; else if (TLY > box.BRY) TLY = box.BRY;
+    if (BRX < box.TLX) BRX = box.TLX; else if (BRX > box.BRX) BRX = box.BRX;
+    if (BRY < box.TLY) BRY = box.TLY; else if (BRY > box.BRY) BRY = box.BRY;
+}
+#endif
 #endif
