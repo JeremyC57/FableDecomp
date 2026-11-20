@@ -213,9 +213,9 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00759f80	CTCPhysicsRigidBody	Integrate	976	parked	DIFFER(730v975)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/00759f80.cpp	original
 0075aaf0	CTCPhysicsRigidBody	CheckForCollisions	608	parked	DIFFER(607v593)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0075aaf0.cpp	original
 0075ddf0	CTCCameraPointScriptedSpline	UpdateSplines	1152	parked	DIFFER(1092v1146)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/0075ddf0.cpp	original
-007602f0	NShape	IsShapeConvex	1136	parked	DIFFER(1126v1126)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/007602f0/007602f0.cpp	original
+007602f0	NShape	IsShapeConvex	1136	reserved (acctB p25O, 2026-11-20)	DIFFER(1126v1126)	4	rebuild/candidates/manual/pending/2026-11-20_p25_open/007602f0/007602f0.cpp	original
 00762620	NShape::CShape	StatOnSerialise	1168	parked	DIFFER(1182v1160)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00762620.cpp	original
-00763060	NShape	FractureShape	1152	parked	DIFFER(1132v1146)	1	rebuild/candidates/manual/pending/2026-11-20_p25_open/00763060/00763060.cpp	original
+00763060	NShape	FractureShape	1152	reserved (acctB p25O, 2026-11-20)	DIFFER(1132v1146)	1	rebuild/candidates/manual/pending/2026-11-20_p25_open/00763060/00763060.cpp	original
 007634e0	_global	CPatchTesselation_GenerateTriangles	1328	parked	DIFFER(623v627)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/hdr/007634e0.cpp	original
 00766dd0	CTCObjectAugmentations	FrameUpdate	1072	parked	codex pass24 PARKED: The shared owner and STLport containers retain the native predicate calls and component names. Vector allocation, period scheduling, and iterator code generation still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00766dd0/00766dd0.cpp	original
 0076cce0	CTCEnemy	IsEnemyOf	768	parked	egod3a: DIFFER 751v754 -- old local-model draft (97 masked); CTCEnemy.h exists, landed TU siblings 0x0076D1B0/0x0076D270/0x0076D2F0; port not started	5	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0076cce0.cpp	original
@@ -404,7 +404,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008de7a0	CModeIceTrollGroundSmashIcicleAssault	FrameUpdate	1248	parked	DIFFER(5v1239)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008de7a0.cpp	original
 008dec80	NCreatureMode::CModeJackOfBladesFlash	FrameUpdate	1680	parked	DIFFER(1647v1665)	1	rebuild/candidates/manual/pending/2026-11-07_linux_hand831/differ/008dec80.cpp	gapscan/boundary
 008dfb00	NCreatureMode::CModeSummonerLightningOrb	NCreatureMode::CModeSummonerLightningOrb::vfunc_3	1008	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/008dfb00.cpp	gapscan/boundary
-008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2080	parked	DIFFER(2069v2073)	14	rebuild/candidates/manual/pending/2026-11-20_p25_open/008e18d0/008e18d0.cpp	original
+008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2080	reserved (acctB p25N, 2026-11-20)	DIFFER(2069v2073)	14	rebuild/candidates/manual/pending/2026-11-20_p25_open/008e18d0/008e18d0.cpp	original
 008e28f0	NCreatureMode::CModeThunderLightningStorm	NCreatureMode::CModeThunderLightningStorm::vfunc_3	416	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/008e28f0.cpp	gapscan/boundary
 008e5880	CTCPhysicsStandard	PerformStepBasedMovement	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/008e5880.cpp	original
 008e8060	CModeBriarRoseConcentrate	OnActivate	1792	parked	DIFFER(5v1784)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008e8060.cpp	original
@@ -807,7 +807,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c71e90	_gapscan	sub_00c71e90	128	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00c71e90.test.cpp	gapscan/boundary
 00c72200	CAudioSource	CAudioSource::UpdateGainState	784	parked	DIFFER(737v770)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00c72200.cpp	original
 00c72d00	_gapscan	sub_00c72d00	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand634/differ/00c72d00.cpp	gapscan/boundary
-00c73050	_global	Audio_PlaySourceAndProcessQueue	672	parked	DIFFER(672v672)	2	rebuild/candidates/manual/pending/2026-11-20_p25_open/00c73050/00c73050.cpp	original
+00c73050	_global	Audio_PlaySourceAndProcessQueue	672	reserved (acctB p25N, 2026-11-20)	DIFFER(672v672)	2	rebuild/candidates/manual/pending/2026-11-20_p25_open/00c73050/00c73050.cpp	original
 00c733d0	CAudioSource	ApplySoftware	610	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand687/differ/00c733d0.cpp	original
 00c74850	_global	CFilter_Setup	608	parked	DIFFER(588v593)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand766/differ/00c74850.cpp	original
 00c74ee0	_global	Math_IsPrimeNumber	128	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c74ee0.cpp	original
