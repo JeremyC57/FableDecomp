@@ -401744,6 +401744,13 @@ $catalog = @(
         TestSource = '00/4f/CWorldMap_HeightAreaChanged_004feb70_test.cpp'
         PassPattern = '004feb70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009c9170'
+        Module = 'NGameText::CDataBank'
+        Source = '00/9c/NGameTextCDataBank_Validate_009c9170.cpp'
+        TestSource = '00/9c/NGameTextCDataBank_Validate_009c9170_test.cpp'
+        PassPattern = '009c9170_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

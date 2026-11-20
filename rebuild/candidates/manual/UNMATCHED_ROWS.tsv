@@ -547,7 +547,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009c5170	_global	CPatchTesselationEdgeStrip_DestructorHelper	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009c5170.cpp	original
 009c8c00	NGameText::CDataBank	NGameText::CDataBank::vfunc_12	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand646/differ/009c8c00.cpp	gapscan/boundary
 009c8de0	CTextEntry	ReadFromDataStream	464	parked	DIFFER(459v452)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009c8de0.cpp	original
-009c9170	CDataBank	Validate	272	reserved (acctB p25N, 2026-11-20)	DIFFER(269v268)	4	rebuild/candidates/manual/pending/2026-11-04_linux_hand763/differ/009c9170.cpp	original
 009ce370	CBankFile	WriteFileInformation	624	parked	DIFFER(622v620)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/009ce370.cpp	original
 009cec60	CBankFile	Update	1856	parked	DIFFER(1840v1850)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/009cec60.test.cpp	original
 009cfbc0	CBankFile	ReadEntryList	1984	parked	DIFFER(1973v1969)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009cfbc0.cpp	original

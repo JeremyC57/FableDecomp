@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+009c9170	?Validate@CDataBank@NGameText@@QAEXXZ	Ego_r.pdb 0x00B17BC0 / FableWin.pdb 0x02F6FD20	catalogue module CDataBank (no namespace)

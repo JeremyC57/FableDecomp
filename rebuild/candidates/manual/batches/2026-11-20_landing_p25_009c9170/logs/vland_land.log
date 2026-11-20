@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009c9170   RELOCATION_MATCH PASS   Validate
+
+WINS: 1
+  009c9170 RELOCATION_MATCH NGameText::CDataBank::?Validate@CDataBank@NGameText@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NGameTextCDataBank_Validate_009c9170
