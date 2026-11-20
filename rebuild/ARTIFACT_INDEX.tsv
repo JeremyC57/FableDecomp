@@ -71,7 +71,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00404b80	CIME		rebuild/src/compiled/00/40/CIME_FinaliseString_00404b80.cpp	rebuild/tests/00/40/CIME_FinaliseString_00404b80_test.cpp		rebuild/build/candidates-Release/00/40/00404b80
 00404ba0	CNetworkClient		rebuild/src/compiled/00/40/CNetworkClient_GetGameEventPackageSet_00404ba0.cpp	rebuild/tests/00/40/CNetworkClient_GetGameEventPackageSet_00404ba0_test.cpp		rebuild/build/candidates-Release/00/40/00404ba0
 00404f40	CIME		rebuild/src/compiled/00/40/CIME_Enable_00404f40.cpp	rebuild/tests/00/40/CIME_Enable_00404f40_test.cpp		rebuild/build/candidates-Release/00/40/00404f40
-00405350			rebuild/src/compiled/00/40/CIME_LoadIMESettings_00405350.cpp	rebuild/tests/00/40/CIME_LoadIMESettings_00405350_test.cpp		
+00405350			rebuild/src/compiled/00/40/NUISystemCIME_LoadIMESettings_00405350.cpp	rebuild/tests/00/40/NUISystemCIME_LoadIMESettings_00405350_test.cpp		
 00405650			rebuild/src/compiled/00/40/CIME_Initialise_00405650.cpp	rebuild/tests/00/40/CIME_Initialise_00405650_test.cpp		
 00405730	_gapscan		rebuild/src/compiled/00/40/gapscan_sub00405730_00405730.cpp	rebuild/tests/00/40/gapscan_sub00405730_00405730_test.cpp		rebuild/build/candidates-Release/00/40/00405730
 004057a0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals		rebuild/src/compiled/00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004057a0.cpp	rebuild/tests/00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004057a0_test.cpp		rebuild/build/candidates-Release/00/40/004057a0

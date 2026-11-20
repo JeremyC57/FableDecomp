@@ -1,0 +1,7 @@
+existing 00b3a760 new= ['?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ'] | others: {'?clear@list_T_00b3a850@std@@QAEXXZ': ['00b3a850'], '?clear@list_T_00b3a8c0@std@@QAEXXZ': ['00b3a8c0']}
+existing 013bda24 new= ['?textureCacheMem@?A0x726eb32e@@3PAEA'] | others: {'?textureCacheMem@?A0x494ab498@@3PAEA': ['009a3640']}
+existing 013bda34 new= ['?glyphTextureCacheGlyphDataIndices@?A0x726eb32e@@3PAKA'] | others: {'?glyphTextureCacheGlyphDataIndices@?A0x494ab498@@3PAKA': ['009a3640']}
+existing 013bda38 new= ['?glyphTextureCacheGlyphData@?A0x726eb32e@@3PAXA'] | others: {'?glyphTextureCacheGlyphData@?A0x494ab498@@3PAXA': ['009a3640']}
+existing 013bda3c new= ['?glyphTextureCacheGlyphDataCache@?A0x726eb32e@@3PAVCStreamingGlyphData@@A'] | others: {'?glyphTextureCacheGlyphDataCache@?A0x494ab498@@3PAVCStreamingGlyphData': ['009a3640']}
+existing 013bda40 new= ['?glyphTextureCacheGlyphAdjustment@?A0x17dbab28@@3PAVCStreamingGlyphAdjustment@@A', '?glyphTextureCacheGlyphAdjustment@?A0x726eb32e@@3PAVCStreamingGlyphAdjustment@@A'] | others: {'?glyphTextureCacheGlyphAdjustment@?A0x87fa6b8e@@3PAVCStreamingGlyphAdj': ['009a25d0'], '?glyphTextureCacheGlyphAdjustment@?A0x494ab498@@3PAVCStreamingGlyphAdj': ['009a3640']}
+gate: 0 created split(s)

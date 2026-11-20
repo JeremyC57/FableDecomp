@@ -1,0 +1,27 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00AC0C00	C3DMeshFileMaterialChunk	CreateMap	?CreateMap@C3DMeshFileMaterialChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMapChunk@@@@W4EMaterialMapType@@@Z	CEngineWorldMap::CreateNewBankMap	?CreateMap@MaterialChunkMethods@@QAE?AU?$CountedPointer@VC3DMeshFileMapChunk@@@@W4EMaterialMapType@@@Z	Ego_r.pdb 0x00C3D760 + FableWin.pdb 0x0347C780 ?CreateMap@C3DMeshFileMaterialChunk@@...; the row's own header comment and body (new 0x3C map chunk "MMAP", AddSubChunk, CCountedPointer result, ret 8); the catalog label CEngineWorldMap::CreateNewBankMap (Ego_r 0x009E0360 AAEKABVCCharString@@@Z) is a propagated wrong label. Ported onto the shared headers (q4362); no landed row references 0x00AC0C00 (exe scan)
+0x00AFF0A0	NParticleEngine::CPSCRenderMesh	Initialise	?Initialise@CPSCRenderMesh@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	NParticleEngine::CPSCRenderMesh::Initialise	?Initialise@CPSCRenderMesh@NParticleEngine@@QAE_NPAVCIEngine@@PAVCParticleSystem@2@PAV?$CParticleUpdateParameters@KK@2@PAVCEnginePrimitiveHandle@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x00AC0350 + FableWin.pdb 0x02F30B60 (the CPSCBase virtual, engine/CPSCBase.h; vtable 0x0129F96C slot 28, `ret 10h`); HEAD Leaf line was the bare `Initialise` over a QAE pointer-parameter stand-in; no landed row references 0x00AFF0A0 (exe scan, reloc table)
+0x00A8EDA0	C3DPrimitive2	SetupVertexBuffer	?SetupVertexBuffer@C3DPrimitive2@@AAE_NW4EVertexType@@KKK@Z	C3DPrimitive2::SetupVertexBuffer	?SetupVertexBuffer@C3DPrimitive2@@QAE_NJJKK@Z	leaf-only (catalog name right): Ego_r.pdb 0x00BD15B0 + FableWin.pdb 0x032F8CD0 (private, EVertexType first; engine/C3DPrimitive2.h _LOADER declares it so) + the body (the first argument goes to CVertexBufferWin32::Initialise as its EVertexType); in-place respell of the row-local C3DPrimitive2 model; HEAD row had no Leaf line (defined the QAE long/long form); every referencer (0x00A914B0 0x00A91640 0x00A931F0) now binds the new leaf
+0x0073A690	NAnimationEntryBodge::CAnimEntryLite	GetTimeToBlendIn	?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z	CAnimEntryLite::GetTimeToBlendIn	?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z	Ego_r.pdb 0x00751040 + FableWin.pdb 0x024B4440 (namespace NAnimationEntryBodge, const CThing&) + engine/NAnimationEntryBodge_CAnimEntryLite.h declares it so; self row ported onto that header; its only referencer 0x00861A80 now binds the new leaf
+# Section 2
+0x009A1660	?g_pStreamingFontCacheMemory@@3PAXA	?textureCacheMem@?A0x<tu>@@3PAEA	0x013BDA24
+0x009A1660	?g_pStreamingFontCacheDwordTable@@3PAKA	?glyphTextureCacheGlyphDataIndices@?A0x<tu>@@3PAKA	0x013BDA34
+0x009A1660	?g_pStreamingFontCacheByteTable@@3PAEA	?glyphTextureCacheGlyphData@?A0x<tu>@@3PAXA	0x013BDA38
+0x009A1660	?g_pStreamingFontCachePairTable@@3PAKA	?glyphTextureCacheGlyphDataCache@?A0x<tu>@@3PAVCStreamingGlyphData@@A	0x013BDA3C
+0x009A1660	?g_pStreamingFontCacheWordTable@@3PAGA	?glyphTextureCacheGlyphAdjustment@?A0x<tu>@@3PAVCStreamingGlyphAdjustment@@A	0x013BDA40
+0x009A14E0	?g_pGlyphAdjustments@@3PAVCStreamingGlyphAdjustment@@A	?glyphTextureCacheGlyphAdjustment@?A0x<tu>@@3PAVCStreamingGlyphAdjustment@@A	0x013BDA40
+0x00AC0C00	??0NativeSuperChunk@@QAE@PBD@Z	??0CChunkedFileSuperChunk@@IAE@PBD@Z	0x00AA8360
+0x00AC0C00	?AddSubChunk@NativeSuperChunk@@QAEXABU?$CountedPointer@UNativeChunk@@@@@Z	?AddSubChunk@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z	0x00AA84F0
+0x00AC0C00	?DeleteMapChunk@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z	0x00AC1460
+0x00AFF0A0	??0SMeshCreateInfo@@QAE@JABVCMatrix3x4@@KK@Z	??0CEnginePrimitiveParticleMeshGroup@@QAE@KABVCMatrix3x4@@W4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@@Z	0x00AFEAD0
+0x00B3ADC0	?clear@CAttachedPrimitiveList@@QAEXXZ	?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ	0x00B3A760
+0x006A9690	??0CRightHandedSet@@QAE@ABVC3DVector@@@Z	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	0x00A229E0
+0x00723760	??0CRightHandedSet@@QAE@ABVC3DVector@@@Z	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	0x00A229E0
+0x007237E0	??0CRightHandedSet@@QAE@ABVC3DVector@@@Z	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	0x00A229E0
+0x00723860	??0CRightHandedSet@@QAE@ABVC3DVector@@@Z	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	0x00A229E0
+0x00894950	??0CRightHandedSet@@QAE@ABVC3DVector@@@Z	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	0x00A229E0
+0x00A914B0	?SetupVertexBuffer@C3DPrimitive2@@QAE_NJKKK@Z	?SetupVertexBuffer@C3DPrimitive2@@AAE_NW4EVertexType@@KKK@Z	0x00A8EDA0
+0x00A931F0	?SetupVertexBuffer@C3DPrimitive2@@QAE_NJKKK@Z	?SetupVertexBuffer@C3DPrimitive2@@AAE_NW4EVertexType@@KKK@Z	0x00A8EDA0
+0x009A0EC0	?g_StreamingFontAlphaMaskUV0@@3VC2DVector@@A	?AlphaMaskUVMul@CStreamingFontBank@@2VC2DVector@@A	0x013CA2F8
+0x009A0EC0	?g_StreamingFontAlphaMaskUV1@@3VC2DVector@@A	?AlphaMaskUVAdd@CStreamingFontBank@@2VC2DVector@@A	0x013CA300
+0x00861A80	?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z	?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z	0x0073A690

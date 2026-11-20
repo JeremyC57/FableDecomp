@@ -109,7 +109,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00405020	DrawTextW	NUISystem::CIMEFont	__thiscall	void	2	CIMEFont *,wchar_t *	1	yes	accepted									
 004051c0	Shutdown	NUISystem::CIME	__fastcall	void	3	allocator<NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry> *,CScreenFilterEntry *,CScreenFilterEntry *	1	yes	accepted									
 00405220	TransferIMEColour	_global	__fastcall	ulong	3	CPersistContext *,CCharString *,ulong	1	yes	accepted									
-00405350	LoadIMESettings	NUISystem::CIME	__fastcall	void	1	CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CIME_LoadIMESettings_00405350.cpp
+00405350	LoadIMESettings	NUISystem::CIME	__fastcall	void	1	CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\NUISystemCIME_LoadIMESettings_00405350.cpp
 00405650	Initialise	CIME	__thiscall	void	2	CIME *,HWND__ *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CIME_Initialise_00405650.cpp
 00405730	sub_00405730	_global	unknown	undefined	0		0			discovered	gapscan							
 004057a0	~CCountedPointer	CCountedPointer<CFontBank>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004057a0.cpp
@@ -19416,7 +19416,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073a540	Alloc	NCreatureMode::CModeDragonFireBeam	unknown	undefined	0		0			discovered	gapscan							
 0073a5d0	~CModeWithTwoFilters_0073a5d0	CModeWithTwoFilters_0073a5d0	__thiscall	undefined	1	CAIStateGroup_BalverineCornered *	0	yes	accepted									
 0073a680	GetWorld	CTCCreatureModeManager::CModeBase	__thiscall	CDisplayEngine *	1	CViewBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CViewBase_GetDisplayEngine_0073a680.cpp
-0073a690	GetTimeToBlendIn	CAnimEntryLite	__thiscall	long	2	CAnimEntryLite *,CThing *	1	yes	accepted									
+0073a690	GetTimeToBlendIn	NAnimationEntryBodge::CAnimEntryLite	__thiscall	long	2	CAnimEntryLite *,CThing *	1	yes	accepted									
 0073a6e0	GetCurrentMode	CTCCreatureModeManager	__thiscall	ulong	1	CPixelShader *	1	yes	accepted									
 0073a6f0	GetNoFramesBeforePlayingCombinationIdleAnims	CTCCreatureModeManager::CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
 0073a760	GetNoFramesBeforePlayingIdleAnims	CTCCreatureModeManager::CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
@@ -39467,7 +39467,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac0ab0	C3DMeshFileMaterialChunk	C3DMeshFileMaterialChunk	__thiscall	undefined	1	C3DMeshFileMapChunk *	0	yes	accepted									
 00ac0ae0	GetExtendedProperties	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
 00ac0b70	GetExtendedProperties	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
-00ac0c00	CreateNewBankMap	CEngineWorldMap	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
+00ac0c00	CreateMap	C3DMeshFileMaterialChunk	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
 00ac0ce0	FindFirstMap	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
 00ac0d70	FindNextMap	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	2	C3DMeshFileSubMeshChunk *,CCountedPointer<class_C3DMeshFileBoneChunk_const_> *	1	yes	accepted									
 00ac0e50	FindFirstMap	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
@@ -57106,7 +57106,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121e260	`dynamic initializer'	CTCWife::WifeAppearanceDialogueGroupStemNames	unknown	undefined	0		0			discovered	gapscan							
 0121e380	REACTION_MANAGER_DEF_INSTANTIATION_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e3a0	$E_InstructionsText	CTCTrophy	unknown	undefined	0		0			discovered	gapscan							
-0121e3d0	MIN_SPEECH_FRAMES	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121e3d0	$E_MIN_SPEECH_FRAMES	_global	unknown	undefined	0		0			discovered	gapscan							
 0121e3e0	g_CStatic_012294f0_012294f0	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e3f0	g_list_013baba0	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121e410	g_CStatic_01229530_01229530	_static_init	unknown	undefined	0		0			discovered	gapscan							
@@ -57242,10 +57242,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121f760	DEFAULT_SLEEP_ANIM_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f780	$E_JACK_TOTAL_DURATION	_global	unknown	undefined	0		0			discovered	gapscan							
 0121f7a0	$E_JACK_GLOW_START_FRAME	_global	unknown	undefined	0		0			discovered	gapscan							
-0121f7c0	JACK_FADE_DOWN_TIME	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121f7d0	CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121f7c0	$E_JACK_FADE_DOWN_TIME	_global	unknown	undefined	0		0			discovered	gapscan							
+0121f7d0	$E_NO_FRAMES_BEFORE_PLAYING_COMB_IDLE_ANIMS	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan							
 0121f7e0	$E_NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan							
-0121f800	CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS	_static_init	unknown	undefined	0		0			discovered	gapscan							
+0121f800	$E_NO_FRAMES_BEFORE_PLAYING_WAVE_ANIMS	CTCCreatureModeManager::CModeBase	unknown	undefined	0		0			discovered	gapscan							
 0121f810	NCombatActionHelpers::WeaponPosLeftFootHelperName	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f830	NCombatActionHelpers::WeaponPosRightFootHelperName	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f850	GlobalList'' (object symbol _$E1 of its TU)	`dynamic initializer for 'LHNetworkLib::LSocket	unknown	undefined	0		0			discovered	gapscan							
@@ -57276,7 +57276,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01221b20	SIT_ON_FLOOR_ANIM_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01221b40	GET_UP_FROM_FLOOR_ANIM_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01221b60	$E_MIN_TIME_TO_SIT	_global	unknown	undefined	0		0			discovered	gapscan							
-01221b80	RANGE_TIME_TO_SIT	_static_init	unknown	undefined	0		0			discovered	gapscan							
+01221b80	$E_RANGE_TIME_TO_SIT	_global	unknown	undefined	0		0			discovered	gapscan							
 01221b90	MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01221ba0	RANGE_TIME_TO_LEAVE_BETWEEN_SITTINGS	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01221bb0	SIT_ON_FLOOR_ANIM_NAME	_static_init	unknown	undefined	0		0			discovered	gapscan							
@@ -57444,7 +57444,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01224ca5	$E_GlobalConsoleCutsceneName	_global	unknown	undefined	0		0			discovered	gapscan							
 01224cd0	g_CStatic_0122aeb0_0122aeb0	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01224ce0	$E1	_global	unknown	undefined	0		0			discovered	gapscan							
-012288b0	`dynamic atexit destructor for 'gIME'' (object symbol _$E2 of the 0x01219E90 TU)	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk012288b0_012288b0.cpp
+012288b0	`dynamic atexit destructor for 'gIME''	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk012288b0_012288b0.cpp
 012288c0	AtexitDtor_CCharString_at_013b7d54_012288c0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk012288c0_012288c0.cpp
 012288d0	Release_013b7d4c	_global	__fastcall	void	0		1	yes	accepted									
 01228910	AtexitDtor_CCharString_at_013b7d5c_01228910	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk01228910_01228910.cpp
@@ -57719,7 +57719,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0122a1d0	AtexitDtor_CCharString_at_013bafd4_0122a1d0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a1d0_0122a1d0.cpp
 0122a1e0	AtexitDtor_CCharString_at_013baff4_0122a1e0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a1e0_0122a1e0.cpp
 0122a1f0	AtexitDtor_CCharString_at_013baff8_0122a1f0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a1f0_0122a1f0.cpp
-0122a200	GlobalList'' (object symbol _$E2 of the 0x0121F850 TU)	`dynamic atexit destructor for 'LHNetworkLib::LSocket	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a200_0122a200.cpp
+0122a200	`dynamic atexit destructor for 'GlobalList''	LHNetworkLib::LSocket	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a200_0122a200.cpp
 0122a20a	DestroyStateGroupInfo	CAIBrain	unknown	undefined	0		0	unmeasured	accepted									
 0122a230	Static_SortTreeRecursively_on_013bb664_0122a230	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a230_0122a230.cpp
 0122a240	AtexitDtor_CCharString_at_013bb668_0122a240	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk0122a240_0122a240.cpp

@@ -14,28 +14,15 @@
 //   re-reads the remote one); protocols 1 and 3 share the SOCK_STREAM call; the bind and connect failures are two
 //   identical report blocks that VC7.1 cross-jumps into one (written as `bind != 0 || connect != 0` the shared block is
 //   laid out cold after the success path); each return keeps its own cookie-check epilogue. 3 grades.
+// agentNF193 (q4191): the error text is the STLport std::string of stlport/fable_string.h (its out-of-line
+//   ??0?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z, 0x00568440); the local std::allocator
+//   model and the CNetErrorString stand-in are gone.
 extern "C" void __cdecl free(void* block);                                         // 0x00BFEA14
 extern "C" char* __cdecl _itoa(int value, char* buffer, int radix);                // 0x00BFED34
 extern "C" __declspec(dllimport) int __stdcall WSAGetLastError();                  // WSOCK32 #111
 
-namespace std {
-template <class T> class allocator {
-public:
-    allocator() { }
-};
-}
-
-struct CNetErrorString {                           // STLport basic_string<char> (12 bytes), built by the out-of-line ctor
-    char* m_start;
-    char* m_finish;
-    char* m_endOfStorage;
-    CNetErrorString(const char* text, const std::allocator<char>& a = std::allocator<char>());   // 0x00568440
-    ~CNetErrorString()
-    {
-        if (m_start)
-            free(m_start);
-    }
-};
+#define FABLE_RETAIL_STLP_STRING_CSTR_CTOR_DECL_ONLY
+#include "stlport/fable_string.h"
 
 struct CRetailString {                             // STLport basic_string<char>, 12 bytes in retail
     char* _M_start;
@@ -122,13 +109,13 @@ bool LSocket::Open(LAddress& remote, LAddress& local, long protocol)
     if (SocketInformation.sin_addr == 0xffffffff)
         return false;
     if (bind(Socket, &localInformation, sizeof(localInformation)) != 0) {
-        CNetErrorString error("Winsock Error: ");
+        std::string error("Winsock Error: ");
         char number[50];
         _itoa(WSAGetLastError(), number, 10);
         return false;
     }
     if (connect(Socket, &SocketInformation, sizeof(SocketInformation)) != 0) {
-        CNetErrorString error("Winsock Error: ");
+        std::string error("Winsock Error: ");
         char number[50];
         _itoa(WSAGetLastError(), number, 10);
         return false;

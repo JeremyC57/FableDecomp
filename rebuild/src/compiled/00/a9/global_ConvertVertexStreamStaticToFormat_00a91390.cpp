@@ -3,9 +3,11 @@
 // Leaf: ?Convert@ExternalRetry_00a91390@@YIXHHHHHH@Z
 #include "fable_compiler.h"
 #include <stdlib.h>
+// NF193 (q4460): engine/CBaseClass.h is included at global scope (it was included inside the namespace, which made a namespaced
+//   CBaseClass stand-in, ??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ); the derived destructors now bind ??1CBaseClass@@UAE@XZ (0x0099A2E0).
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace ExternalRetry_00a91390 {
 struct __true_type{__true_type(){}};
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // Layout: CArray retains a three-pointer retail vector base; donor allocator bytes do not exist in retail.
 template<class T>struct CArray {T *first,*last,*end;FABLE_FORCEINLINE CArray():first(0),last(0),end(0){}FABLE_FORCEINLINE ~CArray();};
 struct _D3DVERTEXELEMENT9 {unsigned short Stream,Offset;unsigned char Type,Method,Usage,UsageIndex;};

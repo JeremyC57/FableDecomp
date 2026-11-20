@@ -14,6 +14,11 @@
 class C3DMeshFileMapChunk;
 class C3DMeshFileMaterialExtChunk;
 #endif
+#ifdef FABLE_RETAIL_C3DMESHFILEMATERIALCHUNK_CREATEMAP
+#include "engine/CCountedPointer.h"
+class C3DMeshFileMapChunk;
+enum EMaterialMapType;
+#endif
 class C3DMeshFileMaterialChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileMaterialChunk();
@@ -22,6 +27,11 @@ public:
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
+#ifdef FABLE_RETAIL_C3DMESHFILEMATERIALCHUNK_CREATEMAP
+    // NF192 opt-in (2026-11-20, q4362, row 0x00AC0C00): Ego_r.pdb 0x00C3D760 / FableWin.pdb 0x0347C780
+    // ?CreateMap@C3DMeshFileMaterialChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMapChunk@@@@W4EMaterialMapType@@@Z.
+    CCountedPointer<C3DMeshFileMapChunk> CreateMap(EMaterialMapType);   // 0x00AC0C00
+#endif
 #ifdef FABLE_RETAIL_C3DMESHFILEMATERIALCHUNK_METHODS
     // Opt-in (row 0x00AC53F0): Ego_r.pdb / FableWin.pdb public members; the getters are inline, the finders out of line.
     long GetMaterialIndex() const { return MaterialIndex; }            // ?GetMaterialIndex@C3DMeshFileMaterialChunk@@QBEJXZ
@@ -43,7 +53,7 @@ private:
     float Transparency;
     CCharString Name;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileMaterialChunk) == 0x50);
+FABLE_STATIC_ASSERT_AT(46, sizeof(C3DMeshFileMaterialChunk) == 0x50);
 #endif // FABLE_ENGINE_C3DMESHFILEMATERIALCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEMATERIALCHUNK_H
@@ -81,17 +91,17 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileMaterialChunk) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, MaterialIndex) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, TwoSided) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Ambient) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Diffuse) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Specular) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Shiny) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, ShinyStrength) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Transparency) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Name_PStringData) == 0x4c);
+FABLE_STATIC_ASSERT_AT(84, sizeof(C3DMeshFileMaterialChunk) == 0x50);
+FABLE_STATIC_ASSERT_AT(85, offsetof(C3DMeshFileMaterialChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(86, offsetof(C3DMeshFileMaterialChunk, MaterialIndex) == 0x2c);
+FABLE_STATIC_ASSERT_AT(87, offsetof(C3DMeshFileMaterialChunk, TwoSided) == 0x30);
+FABLE_STATIC_ASSERT_AT(88, offsetof(C3DMeshFileMaterialChunk, Ambient) == 0x34);
+FABLE_STATIC_ASSERT_AT(89, offsetof(C3DMeshFileMaterialChunk, Diffuse) == 0x38);
+FABLE_STATIC_ASSERT_AT(90, offsetof(C3DMeshFileMaterialChunk, Specular) == 0x3c);
+FABLE_STATIC_ASSERT_AT(91, offsetof(C3DMeshFileMaterialChunk, Shiny) == 0x40);
+FABLE_STATIC_ASSERT_AT(92, offsetof(C3DMeshFileMaterialChunk, ShinyStrength) == 0x44);
+FABLE_STATIC_ASSERT_AT(93, offsetof(C3DMeshFileMaterialChunk, Transparency) == 0x48);
+FABLE_STATIC_ASSERT_AT(94, offsetof(C3DMeshFileMaterialChunk, Name_PStringData) == 0x4c);
 
 #endif // FABLE_ENGINE_C3DMESHFILEMATERIALCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEMATERIALCHUNK

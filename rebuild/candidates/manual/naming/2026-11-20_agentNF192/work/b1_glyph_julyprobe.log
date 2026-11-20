@@ -1,0 +1,12 @@
+addr       parity           behav  name
+009a1660   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009a1660   RELOCATION_MATCH PASS   _global::UninitializeStreamingFontTextureCache
+009a14e0   RELOCATION_MATCH PASS   CStreamingFontBank::GetStringExtents
+00bdc510   DIFFER(1044v1131) PASS   CEngineLandscapeMap::UpdateForeground
+00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load
+00be8920   DIFFER(328v365)  PASS   CLandscapeBackgroundPatch::LoadCompressed
+00bf3b60   DIFFER(825v1480) PASS   CEngineLandscapePatch::LoadForegroundPatch
+
+WINS: 2
+  009a1660 RELOCATION_MATCH _global::?UninitializeStreamingFontTextureCache@@YIXXZ
+  009a14e0 RELOCATION_MATCH CStreamingFontBank::?GetStringExtents@CStreamingFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z

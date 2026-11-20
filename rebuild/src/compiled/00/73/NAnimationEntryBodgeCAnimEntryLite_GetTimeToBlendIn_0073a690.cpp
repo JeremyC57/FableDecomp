@@ -1,5 +1,8 @@
-// CAnimEntryLite::GetTimeToBlendIn(CThing* thing) -- the cached transition time, scaled by bullet time when the thing is affected by it
-// Leaf: ?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z
+// NAnimationEntryBodge::CAnimEntryLite::GetTimeToBlendIn(const CThing& thing) -- the cached transition time, scaled by bullet time when the thing is affected by it
+// Leaf: ?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z
+// NF192 (q6370): Ego_r.pdb 0x00751040 / FableWin.pdb 0x024B4440 ?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z
+//   (namespace NAnimationEntryBodge, const CThing&): ported onto engine/NAnimationEntryBodge_CAnimEntryLite.h (was a row-local
+//   CAnimEntryLite defining ?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073A690, length 71 bytes (+ int3 padding).
 // Callees: CThing::IsAffectedByBulletTime() @ 0x004C9920, CBulletTime::GetTimeScale() @ 0x004C5FA0 (float),
 // __ftol2 @ 0x00BFEA70.
@@ -35,18 +38,12 @@ struct CApplication {
 
 extern CApplication* g_pApplication;            // 0x013B86A0
 
-struct CAnimEntryLite {
-    long BankIndex;                             // +0x00
-    long DelayTime;                             // +0x04
-    long TransitionTime;                        // +0x08
-    long AnimFlags;                             // +0x0c
-    long GetTimeToBlendIn(CThing* thing) const;
-};
+#include "engine/NAnimationEntryBodge_CAnimEntryLite.h"
 
-long CAnimEntryLite::GetTimeToBlendIn(CThing* thing) const
+long NAnimationEntryBodge::CAnimEntryLite::GetTimeToBlendIn(const CThing& thing) const
 {
     long time = TransitionTime;
-    if (thing->IsAffectedByBulletTime()) {
+    if (thing.IsAffectedByBulletTime()) {
         CBulletTime* bulletTime = g_pApplication->m_pGame->m_pBulletTime;
         if (bulletTime->IsActive())
             return (long)(bulletTime->GetTimeScale() * time);

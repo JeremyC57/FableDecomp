@@ -1,0 +1,5 @@
+NO-OWNER-OBJ 0099e260 013bd6ec _hStrings
+NO-OWNER-OBJ 012288b0 013b7cd8 ?gIME@@3VCIME@NUISystem@@A
+MISSING 0122a200 008f9f50 ??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ owner leaf SortTreeRecursively True False
+MISSING 0122a200 008f9f50 ??1?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ owner leaf SortTreeRecursively True False
+NO-OWNER-OBJ 0122a200 013bb000 ?GlobalList@LSocket@LHNetworkLib@@2V?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@A

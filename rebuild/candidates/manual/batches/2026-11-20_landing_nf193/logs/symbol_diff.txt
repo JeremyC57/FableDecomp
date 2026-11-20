@@ -1,0 +1,48 @@
+0047b880 new: 1
+    ??_GCWideString@@QAEPAXI@Z
+004a9140 new: 1
+    ??_GCWideString@@QAEPAXI@Z
+004aecf0 new: 0
+005926c0 new: 0
+005b15c2 new: 0
+005b1fbc new: 0
+006bebf0 new: 0
+008f9820 new: 7
+    ??1?$_STLP_alloc_proxy@PADDV?$allocator@D@std@@@std@@QAE@XZ
+    ??1?$_String_base@DV?$allocator@D@std@@@std@@QAE@XZ
+    ??1?$allocator@D@std@@QAE@XZ
+    ??1?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+    ?_Destroy@std@@YAXPAD0@Z
+    ?_M_deallocate_block@?$_String_base@DV?$allocator@D@std@@@std@@QAEXXZ
+    ?deallocate@?$allocator@D@std@@QAEXPADI@Z
+0099e260 new: 1
+    _hStrings TABLE:013bd6ec
+00a90fc0 new: 0
+00a91390 new: 0
+00b48f20 new: 1
+    ?CreateMoreBlocks@?$CDynamicObjectHeap@$0M@$0BA@@@AAEXXZ TABLE:00b48f20
+00b48f90 new: 1
+    ?CreateMoreBlocks@?$CDynamicObjectHeap@$0EI@$0BA@@@AAEXXZ TABLE:00b48f90
+00b495c0 new: 0
+00b49610 new: 0
+0121e260 new: 0
+012288b0 new: 3
+    ??0CIME@NUISystem@@QAE@XZ
+    ??1CIME@NUISystem@@QAE@XZ
+    ?gIME@@3VCIME@NUISystem@@A TABLE:013b7cd8
+0122a200 new: 15
+    ??0?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@ABV?$allocator@PAVLSocket@LHNetworkLib@@@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVLSocket@LHNetworkLib@@@std@@U12@V?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_n
+    ??0?$allocator@PAVLSocket@LHNetworkLib@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@ABV?$allocator@PAVLSocket@LHNetworkLib@@@1@@Z
+    ??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ TABLE:008f9f50
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVLSocket@LHNetworkLib@@@std@@U12@V?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVLSocket@LHNetworkLib@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ
+    ??1?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ TABLE:008f9f50
+    ?GlobalList@LSocket@LHNetworkLib@@2V?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@A TABLE:013bb000
+    ?allocate@?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEPAU?$_List_node@PAVLSocket@LHNetworkLib@@@2@IPBX@Z
+    ?clear@?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXXZ
+    ?deallocate@?$allocator@U?$_List_node@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXPAU?$_List_node@PAVLSocket@LHNetworkLib@@@2@I@Z

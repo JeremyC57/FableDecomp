@@ -7,6 +7,8 @@
 // Callees: CDynamicObjectHeap<12,16>::CreateMoreBlocks 0x00B48F20.
 // Shape (family K055, representative 0x00AF89C0): the landed CDynamicObjectHeap<56,16> allocator 0x00B49660: `if (grow)
 //   CreateMoreBlocks(); else return 0;`, then ++AllocCount and the head unlinked.
+// NF193 (q4501 / q4504): CreateMoreBlocks is private in FableWin.pdb (AAEXXZ); the local model's declaration moved under `private:`
+//   (in-place access respell), so the call binds the spelling the self row 0x00B48F20 / 0x00B48F90 now defines.
 class CDynamicObjectHeapBase {
 public:
     virtual ~CDynamicObjectHeapBase();
@@ -26,7 +28,9 @@ public:
         CObjectAllocatorBlockEntry* NextEntry;
     };
     void* Alloc(long size);
-    void CreateMoreBlocks();                             // bound public in reloc_bindings (Ego_r.pdb: private)
+private:
+    void CreateMoreBlocks();                             // FableWin.pdb: private (AAEXXZ)
+public:
     CObjectEntry* FreeList;                              // +0x14
     CObjectAllocatorBlockEntry StartBlock;               // +0x18
     bool AllowHeapToGrow;                                // +0xDC

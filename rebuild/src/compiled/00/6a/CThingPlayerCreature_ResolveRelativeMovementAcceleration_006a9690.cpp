@@ -11,21 +11,23 @@
 //   C3DVector::RotateXY @ 0x00A14040 (Ego_r ?RotateXY@C3DVector@@QAEXM@Z, landed), own virtual slot 87 (+0x15c, the maximum speed),
 //   CThingCreatureBase::IsBlocking @ 0x00664D00 (Ego_r ?IsBlocking@CThingCreatureBase@@QBE_NXZ), the physics component's slots 63
 //   (+0xfc, the facing angle) and 74 (+0x128, Ego_r ?SetRHSet@CTCPhysicsBase@@UAEXABVCRightHandedSet@@@Z), CRightHandedSet(const
-//   C3DVector&) @ 0x00A229E0. Global: DELTA_NOTIONAL_ZERO @ 0x0129BA3C (engine/C3DVector.h). CPlayer +0x220 = SpellMode (Ego_r layout).
+//   C3DAngles&) @ 0x00A229E0. Global: DELTA_NOTIONAL_ZERO @ 0x0129BA3C (engine/C3DVector.h). CPlayer +0x220 = SpellMode (Ego_r layout).
 // Shape (chunk 859): the control angle is a float local assigned in both arms of the camera test and handed to RotateXY through a
 //   `float&` reference. With a joined float local pushed directly VC7.1 materialises RotateXY's `this` (`lea ecx,[esp+10h]`) before the
 //   local's reload and push; retail has the lea after the push (`lea ecx,[esp+14h]`). The reference binding (GOTCHAS reference lever)
 //   gives the retail order (micro-probe: a single-call result pushes first too, a ternary / `+ 0.0f` / a second named copy do not);
 //   170 earlier spellings and flag sets kept the early lea (chunks 757/840/844/847). The flag clear through a named `unsigned char&`
 //   gives the read-modify-write `and byte ptr [esi+178h],0FEh`.
+// NF192 (q5209): CRightHandedSet / C3DAngles from the shared headers (FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES: Ego_r.pdb
+//   ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z 0x00A229E0; FABLE_RETAIL_C3DANGLES_CTOR: the inline ??0C3DAngles@@QAE@MMM@Z, as the landed
+//   0x006A5D90); was a row-local CRightHandedSet whose (const C3DVector&) ctor bound ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z.
 #define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES
+#define FABLE_RETAIL_C3DANGLES_CTOR
 #include "engine/C3DVector.h"
-class CRightHandedSet {
-public:
-    C3DVector Up;
-    C3DVector Forward;
-    CRightHandedSet(const C3DVector& eulerAngles);   // 0x00A229E0
-};
+#include "engine/C3DAngles.h"
+#include "engine/CRightHandedSet.h"
 class CCamera {                                 // 0x38 bytes
 public:
     unsigned char _body[0x38];
@@ -110,7 +112,7 @@ void CThingPlayerCreature::ResolveRelativeMovementAcceleration()
     if (IsBlocking()) {
         if (fabs(PendingTurn) > DELTA_NOTIONAL_ZERO) {
             PendingTurn = 0.0f;
-            C3DVector angles(PhysicsTC->GetFacingAngleXY(), 0.0f, 0.0f);
+            C3DAngles angles(PhysicsTC->GetFacingAngleXY(), 0.0f, 0.0f);
             CRightHandedSet set(angles);
             PhysicsTC->SetRHSet(set);
         }

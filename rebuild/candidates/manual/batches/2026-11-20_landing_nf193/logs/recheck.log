@@ -1,0 +1,65 @@
+addr       parity           behav  name
+0047b880   RELOCATION_MATCH PASS   _global::Dtor_CCharStringBase_0047b880
+004a9140   WARN STANDIN_LEAF ?fn_004a9140@@YIXPAUDV@@@Z (catalog _global::Dtor_CCharStringBase_004a9140; address-only name)
+004a9140   RELOCATION_MATCH PASS   _global::Dtor_CCharStringBase_004a9140
+004aecf0   RELOCATION_MATCH PASS   CFrameData_004aecf0::CFrameData_004aecf0
+005926c0   WARN STANDIN_LEAF ??0CClass_005926c0@@QAE@ABUCAllocator@@@Z (catalog _unattributed::CClass_005926c0; address-only name)
+005926c0   RELOCATION_MATCH PASS   _unattributed::CClass_005926c0
+005b15c2   WARN STANDIN_LEAF ??0CClass_005b15c2@@QAE@XZ (catalog _unattributed::CClass_005b15c2; address-only name)
+005b15c2   RELOCATION_MATCH PASS   _unattributed::CClass_005b15c2
+005b1fbc   WARN STANDIN_LEAF ??0CClass_005b1fbc@@QAE@XZ (catalog _unattributed::CClass_005b1fbc; address-only name)
+005b1fbc   RELOCATION_MATCH PASS   _unattributed::CClass_005b1fbc
+006bebf0   WARN STANDIN_LEAF ??$__adjust_heap@UElement@N006bebf0@@UCKeyPairCompareLess@2@@N006bebf0@@YIXPAUElement@0@HHU10@UCKeyPairCompareLess@0@@Z (catalog _Adjust_heap<std::pair<long,CMusicManager::CRegisteredMusicEntry>*,int,std::pair<long,class_CMusicManager::CRegisteredMusicEntry>,CKeyPairCompareLess<long,CMusicManager::_Adjust_heap<std::pair<long,CMusicManager::CRegisteredMusicEntry>*,int,std::pair<long,class_CMusicManager::CRegisteredMusicEntry>,CKeyPairCompareLess<long,CMusicManager::CRegisteredMusicEntry>_>; names another function)
+006bebf0   RELOCATION_MATCH PASS   _Adjust_heap<std::pair<long,CMusicManager::CRegisteredMusicEntry>*,int,std::pair<long,class_CMusicManager::CRegisteredMusicEntry>,CKeyPairCompareLess<long,CMusicManager::_Adjust_heap<std::pair<long,CMusicManager::CRegisteredMusicEntry>*,int,std::pair<long,class_CMusicManager::CRegisteredMusicEntry>,CKeyPairCompareLess<long,CMusicManager::CRegisteredMusicEntry>_>
+008f9820   WARN SHARED_HEADER_AVAILABLE LSocket (engine/LSocket.h)
+008f9820   WARN RELOC_ALIAS: __itoa -> 00bfed34 is the import thunk 'MSVCR71.DLL::_itoa'
+008f9820   RELOCATION_MATCH PASS   LSocket::Open
+0099e260   RELOCATION_MATCH PASS   _global::InitExternalStrings
+00a90fc0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00a90fc0   WARN SHARED_HEADER_AVAILABLE CVertexStreamFormat (engine/CVertexStreamFormat.h)
+00a90fc0   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a90fc0   WARN RELOC_NAME: ?GetVertexSize@CVertexStreamFormat@ExternalRetry_00a90fc0@@QAEHXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a90fc0   WARN RELOC_NAME: ??0CVertexStreamConverter@ExternalRetry_00a90fc0@@QAE@XZ -> 00ac44c0 labelled 'CFourierAnalysis::CFourierAnalysis'
+00a90fc0   WARN RELOC_NAME: ??$FUN_00a5e900@U__true_type@ExternalRetry_00a90fc0@@@ExternalRetry_00a90fc0@@YIXPAUCStreamInfo@CVertexShaderInput@0@0ABU__true_type@0@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a90fc0   RELOCATION_MATCH PASS   ExternalRetry_00a90fc0::Convert
+00a91390   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00a91390   WARN SHARED_HEADER_AVAILABLE CVertexStreamFormat (engine/CVertexStreamFormat.h)
+00a91390   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a91390   WARN RELOC_NAME: ?GetVertexSize@CVertexStreamFormat@ExternalRetry_00a91390@@QAEHXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a91390   WARN RELOC_NAME: ??0CVertexStreamConverter@ExternalRetry_00a91390@@QAE@XZ -> 00ac44c0 labelled 'CFourierAnalysis::CFourierAnalysis'
+00a91390   WARN RELOC_NAME: ??$FUN_00a5e900@U__true_type@ExternalRetry_00a91390@@@ExternalRetry_00a91390@@YIXPAUCStreamInfo@CVertexShaderInput@0@0ABU__true_type@0@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a91390   RELOCATION_MATCH PASS   ExternalRetry_00a91390::Convert
+00b48f20   WARN SHARED_HEADER_AVAILABLE CDynamicObjectHeap (engine/CDynamicObjectHeap.h)
+00b48f20   RELOCATION_MATCH PASS   CDynamicObjectHeap<12,16>::CreateMoreBlocks
+00b48f90   WARN SHARED_HEADER_AVAILABLE CDynamicObjectHeap (engine/CDynamicObjectHeap.h)
+00b48f90   RELOCATION_MATCH PASS   CDynamicObjectHeap<72,16>::CreateMoreBlocks
+00b495c0   WARN SHARED_HEADER_AVAILABLE CDynamicObjectHeap (engine/CDynamicObjectHeap.h)
+00b495c0   RELOCATION_MATCH PASS   CDynamicObjectHeap<12, 16>::Alloc
+00b49610   WARN SHARED_HEADER_AVAILABLE CDynamicObjectHeap (engine/CDynamicObjectHeap.h)
+00b49610   RELOCATION_MATCH PASS   CDynamicObjectHeap<72, 16>::Alloc
+0121e260   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+0121e260   WARN RELOC_CONFLICT: _$E2 -> 01229480 here, 01228930 in landed 01219f00
+0121e260   WARN RELOC_NAME: _$E2 -> 01229480 labelled 'CFontBankStateBlock::CreateCRC'
+0121e260   RELOCATION_MATCH PASS   CTCWife::WifeAppearanceDialogueGroupStemNames::`dynamic initializer'
+012288b0   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'gIME''
+0122a200   RELOCATION_MATCH PASS   LHNetworkLib::LSocket::`dynamic atexit destructor for 'GlobalList''
+
+WINS: 18
+  0047b880 RELOCATION_MATCH _global::?Dest_val_symbolinfo@@YIXPAUHost@@@Z
+  004a9140 RELOCATION_MATCH _global::?fn_004a9140@@YIXPAUDV@@@Z
+  004aecf0 RELOCATION_MATCH CFrameData_004aecf0::??0CFrameData_004aecf0@@QAE@XZ
+  005926c0 RELOCATION_MATCH _unattributed::??0CClass_005926c0@@QAE@ABUCAllocator@@@Z
+  005b15c2 RELOCATION_MATCH _unattributed::??0CClass_005b15c2@@QAE@XZ
+  005b1fbc RELOCATION_MATCH _unattributed::??0CClass_005b1fbc@@QAE@XZ
+  006bebf0 RELOCATION_MATCH _Adjust_heap<std::pair<long,CMusicManager::CRegisteredMusicEntry>*,int,std::pair<long,class_CMusicManager::CRegisteredMusicEntry>,CKeyPairCompareLess<long,CMusicManager::__adjust_heap
+  008f9820 RELOCATION_MATCH LSocket::?Open@LSocket@@
+  0099e260 RELOCATION_MATCH _global::@InitExternalStrings@0
+  00a90fc0 RELOCATION_MATCH _global::?Convert@ExternalRetry_00a90fc0@@YIXHHHHHH@Z
+  00a91390 RELOCATION_MATCH _global::?Convert@ExternalRetry_00a91390@@YIXHHHHHH@Z
+  00b48f20 RELOCATION_MATCH CDynamicObjectHeap<12,16>::?CreateMoreBlocks@?$CDynamicObjectHeap@$0M@$0BA@@@AAEXXZ
+  00b48f90 RELOCATION_MATCH CDynamicObjectHeap<72,16>::?CreateMoreBlocks@?$CDynamicObjectHeap@$0EI@$0BA@@@AAEXXZ
+  00b495c0 RELOCATION_MATCH CDynamicObjectHeap<12,16>::?Alloc@?$CDynamicObjectHeap@$0M@$0BA@@@QAEPAXJ@Z
+  00b49610 RELOCATION_MATCH CDynamicObjectHeap<72,16>::?Alloc@?$CDynamicObjectHeap@$0EI@$0BA@@@QAEPAXJ@Z
+  0121e260 RELOCATION_MATCH CTCWife::_$E1
+  012288b0 RELOCATION_MATCH _global::_$E2
+  0122a200 RELOCATION_MATCH LHNetworkLib::LSocket::_$E2

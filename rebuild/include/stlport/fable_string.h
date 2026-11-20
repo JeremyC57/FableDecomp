@@ -364,9 +364,15 @@ template<class C,class T,class A> basic_string<C,T,A>::basic_string():_Base(allo
     this->_M_start=this->_M_end_of_storage.allocate(8);this->_M_finish=this->_M_start;
     this->_M_end_of_storage._M_data=this->_M_start+8;_M_terminate_string();
 }
+#ifndef FABLE_RETAIL_STLP_STRING_CSTR_CTOR_DECL_ONLY
+// (NF193 opt-in, 2026-11-20: FABLE_RETAIL_STLP_STRING_CSTR_CTOR_DECL_ONLY leaves basic_string(const C*, const A&) declared but not
+// defined in the TU, for a row whose retail TU calls ??0?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z
+// (0x00568440) out of line: the row then emits no pick-any copy of the constructor's _M_range_initialize<const char*> (0x005672D0), whose
+// header body differs from that address (pick-any rule, EXTRA_RULES 2026-11-20). First user: 0x008F9820 LSocket::Open.)
 template<class C,class T,class A> basic_string<C,T,A>::basic_string(const C* s,const A& a):_Base(a) {
     _M_range_initialize(s,s+T::length(s));
 }
+#endif
 template<class C,class T,class A> basic_string<C,T,A>::basic_string(const basic_string<C,T,A>& s):_Base(s.get_allocator()) {
     _M_range_initialize(s._M_start,s._M_finish);
 }

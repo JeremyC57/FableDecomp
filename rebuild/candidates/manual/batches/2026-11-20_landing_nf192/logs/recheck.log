@@ -1,0 +1,72 @@
+addr       parity           behav  name
+006a9690   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006a9690   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+006a9690   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006a9690   RELOCATION_MATCH PASS   CThingPlayerCreature::ResolveRelativeMovementAcceleration
+00723760   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00723760   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard (engine/CTCPhysicsStandard.h)
+00723760   RELOCATION_MATCH PASS   CTCPhysicsStandard::SetFacingAngleXY
+007237e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+007237e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard (engine/CTCPhysicsStandard.h)
+007237e0   RELOCATION_MATCH PASS   CTCPhysicsStandard::SetFacingAngleYZ
+00723860   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00723860   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard (engine/CTCPhysicsStandard.h)
+00723860   RELOCATION_MATCH PASS   CTCPhysicsStandard::SetFacingAngleXZ
+0073a690   WARN SHARED_HEADER_AVAILABLE CGame (engine/CGame.h)
+0073a690   WARN RELOC_NAME: ?g_pApplication@@3PAUCApplication@@A -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+0073a690   WARN RELOC_NAME: ?GetTimeScale@CBulletTime@@QAEMXZ -> 004c5fa0 labelled 'CBulletTimeManager::GetBulletTimeSlowdownMultiplier'
+0073a690   RELOCATION_MATCH PASS   NAnimationEntryBodge::CAnimEntryLite::GetTimeToBlendIn
+00861a80   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00861a80   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+00861a80   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00861a80   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00861a80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00861a80   WARN RELOC_NAME: ?AddBlendAnim@CAnimateThing@@QAEXJM@Z -> 0070d2f0 labelled 'CAnimSet::AddAnim'
+00861a80   RELOCATION_MATCH PASS   CModeStandBase::SetUpMovementAnim
+00894950   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+00894950   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00894950   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00894950   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00894950   RELOCATION_MATCH PASS   CGameScriptInterface::CreateObject
+009a0ec0   RELOCATION_MATCH PASS   CStreamingFontBank::SetAlphaMaskUVs
+009a14e0   RELOCATION_MATCH PASS   CStreamingFontBank::GetStringExtents
+009a1660   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+009a1660   RELOCATION_MATCH PASS   _global::UninitializeStreamingFontTextureCache
+00a8eda0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a8eda0   RELOCATION_MATCH PASS   C3DPrimitive2::SetupVertexBuffer
+00a914b0   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a914b0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a914b0   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a914b0   RELOCATION_MATCH PASS   C3DPrimitive2::UploadToVertexBufferAnimated
+00a931f0   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a931f0   WARN SHARED_HEADER_AVAILABLE C3DPrimitive2 (engine/C3DPrimitive2.h)
+00a931f0   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a931f0   RELOCATION_MATCH PASS   C3DPrimitive2::UploadToVertexBufferStatic
+00ac0c00   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z -> 00ac1460 labelled '_global::DeleteViaVtable0_00ac1460'
+00ac0c00   RELOCATION_MATCH PASS   C3DMeshFileMaterialChunk::CreateMap
+00aff0a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::Initialise
+00b3adc0   RELOCATION_MATCH PASS   CEnginePrimitiveAttachmentManager::`scalar deleting destructor'
+
+WINS: 16
+  006a9690 RELOCATION_MATCH CThingPlayerCreature::?ResolveRelativeMovementAcceleration@CThingPlayerCreature@@IAEXXZ
+  00723760 RELOCATION_MATCH CTCPhysicsStandard::?SetFacingAngleXY@CTCPhysicsStandard@@UAEXM@Z
+  007237e0 RELOCATION_MATCH CTCPhysicsStandard::?SetFacingAngleYZ@CTCPhysicsStandard@@UAEXM@Z
+  00723860 RELOCATION_MATCH CTCPhysicsStandard::?SetFacingAngleXZ@CTCPhysicsStandard@@UAEXM@Z
+  0073a690 RELOCATION_MATCH NAnimationEntryBodge::CAnimEntryLite::?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z
+  00861a80 RELOCATION_MATCH CModeStandBase::SetUpMovementAnim
+  00894950 RELOCATION_MATCH CGameScriptInterface::?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@M0@Z
+  009a0ec0 RELOCATION_MATCH CStreamingFontBank::?SetAlphaMaskUVs@CStreamingFontBank@@SIXABVC2DVector@@0@Z
+  009a14e0 RELOCATION_MATCH CStreamingFontBank::?GetStringExtents@CStreamingFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z
+  009a1660 RELOCATION_MATCH _global::?UninitializeStreamingFontTextureCache@@YIXXZ
+  00a8eda0 RELOCATION_MATCH C3DPrimitive2::?SetupVertexBuffer@C3DPrimitive2@@AAE_NW4EVertexType@@KKK@Z
+  00a914b0 RELOCATION_MATCH C3DPrimitive2::UploadToVertexBufferAnimated@C3DPrimitive2
+  00a931f0 RELOCATION_MATCH C3DPrimitive2::UploadToVertexBufferStatic@C3DPrimitive2
+  00ac0c00 RELOCATION_MATCH C3DMeshFileMaterialChunk::?CreateMap@C3DMeshFileMaterialChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMapChunk@@@@W4EMaterialMapType@@@Z
+  00aff0a0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?Initialise@CPSCRenderMesh@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00b3adc0 RELOCATION_MATCH CEnginePrimitiveAttachmentManager::??_GCEnginePrimitiveAttachmentManager@@UAEPAXI@Z

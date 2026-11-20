@@ -1,0 +1,8 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+t.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+new_0121e260.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
+new_012288b0.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
+new_0122a200.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
+(trimmed at landing: 16 LNK2001 + 56 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

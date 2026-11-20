@@ -14654,8 +14654,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '012288b0'
         Module = '_global'
-        Source = '01/22/global_GlobalMethodTailThunk012288b0_012288b0.cpp'
-        TestSource = '01/22/global_GlobalMethodTailThunk012288b0_012288b0_test.cpp'
+        Source = '01/22/global_dynamicatexitdestructorforgIME_012288b0.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforgIME_012288b0_test.cpp'
         PassPattern = 'AUTO_TINY_012288b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -16158,9 +16158,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0122a200'
-        Module = '_global'
-        Source = '01/22/global_GlobalMethodTailThunk0122a200_0122a200.cpp'
-        TestSource = '01/22/global_GlobalMethodTailThunk0122a200_0122a200_test.cpp'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '01/22/LHNetworkLibLSocket_dynamicatexitdestructorforGlobalList_0122a200.cpp'
+        TestSource = '01/22/LHNetworkLibLSocket_dynamicatexitdestructorforGlobalList_0122a200_test.cpp'
         PassPattern = 'AUTO_TINY_0122a200_TEST PASS'
     }
     [pscustomobject]@{
@@ -158848,9 +158848,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121e3d0'
-        Module = '_static_init'
-        Source = '01/21/staticinit_MINSPEECHFRAMES_0121e3d0.cpp'
-        TestSource = '01/21/staticinit_MINSPEECHFRAMES_0121e3d0_test.cpp'
+        Module = '_global'
+        Source = '01/21/global_EMINSPEECHFRAMES_0121e3d0.cpp'
+        TestSource = '01/21/global_EMINSPEECHFRAMES_0121e3d0_test.cpp'
         PassPattern = '0121e3d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -158862,9 +158862,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121f800'
-        Module = '_static_init'
-        Source = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGWAVEANIMS_0121f800.cpp'
-        TestSource = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGWAVEANIMS_0121f800_test.cpp'
+        Module = 'CTCCreatureModeManager::CModeBase'
+        Source = '01/21/CTCCreatureModeManagerCModeBase_ENOFRAMESBEFOREPLAYINGWAVEANIMS_0121f800.cpp'
+        TestSource = '01/21/CTCCreatureModeManagerCModeBase_ENOFRAMESBEFOREPLAYINGWAVEANIMS_0121f800_test.cpp'
         PassPattern = '0121f800_TEST PASS'
     }
     [pscustomobject]@{
@@ -158995,9 +158995,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121f7c0'
-        Module = '_static_init'
-        Source = '01/21/staticinit_JACKFADEDOWNTIME_0121f7c0.cpp'
-        TestSource = '01/21/staticinit_JACKFADEDOWNTIME_0121f7c0_test.cpp'
+        Module = '_global'
+        Source = '01/21/global_EJACKFADEDOWNTIME_0121f7c0.cpp'
+        TestSource = '01/21/global_EJACKFADEDOWNTIME_0121f7c0_test.cpp'
         PassPattern = '0121f7c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -159016,9 +159016,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01221b80'
-        Module = '_static_init'
-        Source = '01/22/staticinit_RANGETIMETOSIT_01221b80.cpp'
-        TestSource = '01/22/staticinit_RANGETIMETOSIT_01221b80_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_ERANGETIMETOSIT_01221b80.cpp'
+        TestSource = '01/22/global_ERANGETIMETOSIT_01221b80_test.cpp'
         PassPattern = '01221b80_TEST PASS'
     }
     [pscustomobject]@{
@@ -159149,9 +159149,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121f7d0'
-        Module = '_static_init'
-        Source = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGCOMBIDLEANIMS_0121f7d0.cpp'
-        TestSource = '01/21/staticinit_CTCCreatureModeManagerCModeBaseNOFRAMESBEFOREPLAYINGCOMBIDLEANIMS_0121f7d0_test.cpp'
+        Module = 'CTCCreatureModeManager::CModeBase'
+        Source = '01/21/CTCCreatureModeManagerCModeBase_ENOFRAMESBEFOREPLAYINGCOMBIDLEANIMS_0121f7d0.cpp'
+        TestSource = '01/21/CTCCreatureModeManagerCModeBase_ENOFRAMESBEFOREPLAYINGCOMBIDLEANIMS_0121f7d0_test.cpp'
         PassPattern = '0121f7d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -191005,9 +191005,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073a690'
-        Module = 'CAnimEntryLite'
-        Source = '00/73/CAnimEntryLite_GetTimeToBlendIn_0073a690.cpp'
-        TestSource = '00/73/CAnimEntryLite_GetTimeToBlendIn_0073a690_test.cpp'
+        Module = 'NAnimationEntryBodge::CAnimEntryLite'
+        Source = '00/73/NAnimationEntryBodgeCAnimEntryLite_GetTimeToBlendIn_0073a690.cpp'
+        TestSource = '00/73/NAnimationEntryBodgeCAnimEntryLite_GetTimeToBlendIn_0073a690_test.cpp'
         PassPattern = '0073a690_TEST PASS'
     }
     [pscustomobject]@{
@@ -239200,8 +239200,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00ac0c00'
         Module = 'C3DMeshFileMaterialChunk'
-        Source = '00/ac/C3DMeshFileMaterialChunk_CreateNewBankMap_00ac0c00.cpp'
-        TestSource = '00/ac/C3DMeshFileMaterialChunk_CreateNewBankMap_00ac0c00_test.cpp'
+        Source = '00/ac/C3DMeshFileMaterialChunk_CreateMap_00ac0c00.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_CreateMap_00ac0c00_test.cpp'
         PassPattern = '00ac0c00_TEST PASS'
     }
     [pscustomobject]@{
@@ -277072,15 +277072,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b48f20'
         Module = 'CDynamicObjectHeap<12,16>'
-        Source = '00/b4/CDynamicObjectHeap1216_CreateMoreBlocks_00b48f20.cpp'
-        TestSource = '00/b4/CDynamicObjectHeap1216_CreateMoreBlocks_00b48f20_test.cpp'
+        Source = '00/b4/CDynamicObjectHeap_CreateMoreBlocks_00b48f20.cpp'
+        TestSource = '00/b4/CDynamicObjectHeap_CreateMoreBlocks_00b48f20_test.cpp'
         PassPattern = '00b48f20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b48f90'
         Module = 'CDynamicObjectHeap<72,16>'
-        Source = '00/b4/CDynamicObjectHeap7216_CreateMoreBlocks_00b48f90.cpp'
-        TestSource = '00/b4/CDynamicObjectHeap7216_CreateMoreBlocks_00b48f90_test.cpp'
+        Source = '00/b4/CDynamicObjectHeap_CreateMoreBlocks_00b48f90.cpp'
+        TestSource = '00/b4/CDynamicObjectHeap_CreateMoreBlocks_00b48f90_test.cpp'
         PassPattern = '00b48f90_TEST PASS'
     }
     [pscustomobject]@{

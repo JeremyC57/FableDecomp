@@ -1,22 +1,24 @@
 // CTCPhysicsStandard::SetFacingAngleXZ(float angle) -- set one facing Euler angle (component 2) keeping the other two from the current set: snapshot the old set, rebuild RHSet from the three angles and mark the thing moving
-// Leaf: SetFacingAngleXZ
+// Leaf: ?SetFacingAngleXZ@CTCPhysicsStandard@@UAEXM@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00723860, 115 bytes. CTCPhysicsStandard vtable 0x01265F84 slot 68. The catalog labels all three
 //   setters (slots 66/67/68 = 0x00723760/0x007237E0/0x00723860) "SetFacingAngleXY"; slot 66 sets angle X (the XY-plane heading
 //   read back by slot 63 from RHSet.Forward), so the names of slots 67/68 and getters 64/65 (YZ / XZ) are inferred by position.
 // Callees: virtual slots 95 (+0x17c UpdateOldRHSet, 0x00723930), 63 (+0xfc, 0x00723B30), 64 (+0x100, 0x00723B90), 65 (+0x104,
-//   0x00723750); CRightHandedSet::CRightHandedSet(const C3DVector& eulerAngles) @ 0x00A229E0 (catalog "BuildEulerRotationMatrix";
+//   0x00723750); CRightHandedSet::CRightHandedSet(const C3DAngles& angles) @ 0x00A229E0 (catalog "BuildEulerRotationMatrix";
 //   thiscall on the frame temporary, returns it); CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130.
 // Layout: CTCPhysicsStandard RHSet +0x50 (PDB, as the landed SetFacingAnglesFromRHSet 0x007238E0).
 // Shape: the angle vector is filled member by member in retail store order (X, Y, Z; the argument is an integer copy);
 //   `RHSet = CRightHandedSet(angles)` copies the 24-byte temporary from eax through a `lea ecx,[esi+50h]` base.
+// NF192 (q5209): CRightHandedSet / C3DAngles from the shared headers (FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES: Ego_r.pdb
+//   ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z 0x00A229E0, the landed 0x006A5D90 / self-row spelling); was a row-local CRightHandedSet whose
+//   (const C3DVector&) ctor bound ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z. The angle triple is C3DAngles AngleXY / AngleYZ / AngleXZ (+0 / +4 / +8).
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES
 #include "engine/C3DVector.h"
-class CRightHandedSet { public:
-    C3DVector Up;
-    C3DVector Forward;
-    CRightHandedSet() {}
-    CRightHandedSet(const C3DVector& eulerAngles);   // 0x00A229E0
-};
+#include "engine/C3DAngles.h"
+#include "engine/CRightHandedSet.h"
 class CThingPhysicsMeshInfo;
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -83,10 +85,10 @@ struct CTCPhysicsStandard : CTCPhysicsBase {
 void CTCPhysicsStandard::SetFacingAngleXZ(float angle)
 {
     UpdateOldRHSet();
-    C3DVector angles;
-    angles.X = GetFacingAngleXY();
-    angles.Y = GetFacingAngleYZ();
-    angles.Z = angle;
+    C3DAngles angles;
+    angles.AngleXY = GetFacingAngleXY();
+    angles.AngleYZ = GetFacingAngleYZ();
+    angles.AngleXZ = angle;
     RHSet = CRightHandedSet(angles);
     SetAsMoving(true);
 }
