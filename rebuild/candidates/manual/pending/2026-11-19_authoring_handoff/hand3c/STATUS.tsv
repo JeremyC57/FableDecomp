@@ -24,7 +24,7 @@ address	grade	bytes	test	grades_used	notes
 00780d80	RELOCATION_MATCH	539	PASS(vland strict)	31	hand3c: FableWin 0x01F51180 shape on shared headers; /d2inlT59 (conversion out of line, body seen); new NFire_CFirePoint.h, CFlammableDef.h; CTCFLAMMABLE_FRAMEUPDATE opt-in [b15 LANDED]
 0078a690	RELOCATION_MATCH	1097	PASS(vland strict)	1	hand3c3 b4 [LANDED batches/2026-11-20_landing_hand3c3_b4]
 0078d250	OPEN	1729	-	1	baseline draft DIFFER(1614v1729) hunks=64 difflines=738
-0079d360	OPEN	1115	-	1	baseline draft DIFFER(1051v1115) hunks=66 difflines=281
+0079d360	RELOCATION_MATCH	1115	PASS(vland strict)	1	hand3c3 b6 [LANDED batches/2026-11-20_landing_hand3c3_b6]
 007df770	RELOCATION_MATCH	437	PASS(vland strict)	7	hand3c: FableWin 0x02766430 shape on shared headers; new engine/CTCWallMountEffects.h; CCREATUREACTION_USEWALLMOUNT_CLASS opt-in; CINTELLIGENTPOINTER_ASSIGN; IS_THING_ALIVE_NOINLINE
 007e2df0	RELOCATION_MATCH	257	PASS(vland; g++ portable twin PASS)	4	CTCWobble PASS22 + overlay opt-in FABLE_RETAIL_CTCWOBBLE_ONINITIALACTIVATE; callee slot 75 = SetRHSet; GFFloatToLongCeil helper [LANDED 039a0c8c02]
 007f8c20	RELOCATION_MATCH	221	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x02674140 shape, sibling 0x007F8F30 opt-ins, NEW engine/CAnimatingObjectDef.h + CTCANIMATINGOBJECT_ADDQUEUEDANIMATION [b7 LANDED 4347aa3597]

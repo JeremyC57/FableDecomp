@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0079d360   RELOCATION_MATCH PASS   CTCBulletTime
+
+WINS: 1
+  0079d360 RELOCATION_MATCH CTCBulletTime::??0CTCBulletTime@@QAE@AAVCThing@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCBulletTime_CTCBulletTime_0079d360

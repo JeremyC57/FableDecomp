@@ -405,3 +405,4 @@ takes CThing&; 0x0129BA3C still labelled g_NormaliseEpsilon). Coming next from h
 plus re-ports of its helper owners 0x00A4D920, 0x00A52760, 0x00A53860, 0x00A4C1F0 and 0x00A22530 GFFastArcCos, so each helper has one text.
 Add-only opt-ins in C3DAnimation2.h and C3DMesh2.h. NAME_FIXES there: the PDB tables are GFastArcCosTable / GFastCosTable; 13 landed rows
 still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
+2026-11-20 B->A: Landed hand3c3 b6 0x0079D360 CTCBulletTime::CTCBulletTime(CThing&) (batches/2026-11-20_landing_hand3c3_b6); add-only CTCBulletTime.h opt-in CTOR.
