@@ -401521,6 +401521,14 @@ $catalog = @(
         TestSource = '00/64/NPlayerGuiCDrawScreenFade_Draw_006495a8_test.cpp'
         PassPattern = '006495a8_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b94540'
+        Module = 'CEngineSceneMap'
+        Source = '00/b9/CEngineSceneMap_ResizeLevels_00b94540.cpp'
+        TestSource = '00/b9/CEngineSceneMap_ResizeLevels_00b94540_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT150'
+        PassPattern = '00b94540_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -39636,3 +39636,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?IsCarryingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	009687b0	00968bc0
 ?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ	004364c0	006495a8
 ?IsOverridingScreenFade@CTCQuestCompletionUI@@QBE_NXZ	005e3e70	006495a8
+?DeleteData@?$CCountedPointer@VCEngineSceneGrid@@@@SIXPAX@Z	00b94f90	00b94540
+?MovePrimitivesDown@CEngineSceneGrid@@AAEXXZ	00b93860	00b94540
+?MovePrimitivesUp@CEngineSceneGrid@@AAEXXZ	00b91f00	00b94540
+?_M_fill_insert@?$vector@PAVCEngineSceneGridCell@@V?$allocator@PAVCEngineSceneGridCell@@@std@@@std@@QAEXPAPAVCEngineSceneGridCell@@IABQAV3@@Z	00b97250	00b94540

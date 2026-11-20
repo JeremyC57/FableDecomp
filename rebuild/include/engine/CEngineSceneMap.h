@@ -17,6 +17,16 @@ class CEngineInternalPrimitiveBase;
 #include "engine/CBaseClassNonCopyable.h"
 #endif
 class C2DVector;
+#ifdef FABLE_RETAIL_CENGINESCENEMAP_RESIZELEVELS
+// Opt-in (p25A, row 0x00B94540 CEngineSceneMap::ResizeLevels, which expands the grid constructor): the Ego_r.pdb CEngineSceneGrid layout
+// at retail offsets (36 bytes in the PDB, 0x20 in retail: the 12-byte STLport CArray) -- RTTI base CBaseClassNonCopyable (vtable
+// 0x012A3E58), Level +0x04, LevelUp +0x08, LevelDown +0x0C, Size +0x10, GridCells CArray<CEngineSceneGridCell*> +0x14 -- the private
+// ??0CEngineSceneGrid@@AAE@K@Z (out of line at 0x00B93EB0, landed; its body below, as that row writes it on the shared CArray) and the
+// private ?MovePrimitivesDown@CEngineSceneGrid@@AAEXXZ (0x00B93860) / ?MovePrimitivesUp@CEngineSceneGrid@@AAEXXZ (0x00B91F00),
+// both landed. The map is the grid's friend (as in the default declaration).
+#include "engine/CBaseClassNonCopyable.h"
+class CEngineSceneGridCell;
+#endif
 #ifdef FABLE_RETAIL_CENGINESCENEMAP_ADDPRIMITIVE
 // Opt-in (hand3c, row 0x00B93B30 CEngineSceneMap::AddPrimitive): Ego_r.pdb / FableWin.pdb
 // ?GetCellCreate@CEngineSceneGrid@@QAEPAVCEngineSceneGridCell@@KK@Z (public, 0x00B937A0, landed) and the private
@@ -27,8 +37,26 @@ class C2DVector;
 // ?GetGridLevel@CEngineSceneMap@@QAEPAVCEngineSceneGrid@@K@Z (FableWin 0x02E1CE10: GridLevels.At(level).Get()). No layout change.
 #include "engine/CEngineSceneGridCell.h"
 #endif
+#ifdef FABLE_RETAIL_CENGINESCENEMAP_RESIZELEVELS
+class CEngineSceneGrid : public CBaseClassNonCopyable {
+    friend class CEngineSceneMap;
+private:
+    CEngineSceneGrid(unsigned long level) : Level(level), LevelUp(0), LevelDown(0), GridCells()
+    {
+        Size = 1 << level;
+        GridCells.resize(Size * Size, 0);
+    }                                                                                            // 0x00B93EB0
+    void MovePrimitivesDown();                                                                   // 0x00B93860
+    void MovePrimitivesUp();                                                                     // 0x00B91F00
+    unsigned long Level;                                                                         // +0x04
+    CEngineSceneGrid* LevelUp;                                                                   // +0x08
+    CEngineSceneGrid* LevelDown;                                                                 // +0x0c
+    unsigned long Size;                                                                          // +0x10
+    CArray<CEngineSceneGridCell*> GridCells;                                                     // +0x14
+#else
 class CEngineSceneGrid {
     friend class CEngineSceneMap;
+#endif
 #ifdef FABLE_RETAIL_CENGINESCENEMAP_ADDPRIMITIVE
 public:
     CEngineSceneGridCell* GetCellCreate(unsigned long x, unsigned long y);                     // 0x00B937A0
@@ -65,5 +93,5 @@ private:
     CArray<CCountedPointer<CEngineSceneGrid> > GridLevels;                                       // +0x18
     CEngineScene* Scene;                                                                         // +0x24
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineSceneMap)==0x28);
+FABLE_STATIC_ASSERT_AT(68, sizeof(CEngineSceneMap)==0x28);
 #endif

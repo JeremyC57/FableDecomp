@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00b94540   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCEngineSceneGrid@@@@SIXPAX@Z -> 00b94f90 labelled '_global::DeleteViaVtable0_00b94f90'
+00b94540   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCEngineSceneGrid@@@@@std@@YIXPAV?$CCountedPointer@VCEngineSceneGrid@@@@0ABU__false_type@0@@Z -> 00b96920 labelled '_global::DestroyRange_CountedPointer_00b96920'
+00b94540   RELOCATION_MATCH PASS   ResizeLevels
+
+WINS: 1
+  00b94540 RELOCATION_MATCH CEngineSceneMap::?ResizeLevels@CEngineSceneMap@@AAEXJ@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineSceneMap_ResizeLevels_00b94540
