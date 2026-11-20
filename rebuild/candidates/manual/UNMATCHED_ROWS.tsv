@@ -892,7 +892,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ddb720	NScript::CQ_PrisonRaceScript::CPrisonRaceGuard	Main	2160	parked	DIFFER(2150v2158)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand783/differ/00ddb720.test.cpp	original
 00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2048	parked	DIFFER(2112v2044)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ddd430.cpp	original
 00de4710	NScript::CQ_RansomVictimScript	DisappearFollowers	1440	parked	DIFFER(1024v1428)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00de4710.cpp	original
-00de8370	NScript::CQ_RansomVictimScript::CRansommer	Main	4896	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(4894v4894)	18	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00de8370.cpp	gapscan/boundary
 00de9690	NScript::CQ_RansomVictimScript::CRansomHelper	Main	3424	parked	DIFFER(3428v3412)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00de9690.cpp	gapscan/boundary
 00dee2e0	NScript::CQ_SecretPassageScript::CMotherTorture	Main	3104	parked	DIFFER(3134v3102)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00dee2e0.cpp	gapscan/boundary
 00df5000	NScript::CQ_TentacleKrakenBossFightScript	PhaseOne	3072	parked	DIFFER(3039v3071)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00df5000.cpp	original
