@@ -11,6 +11,10 @@ public:
  CActionMoveTo(const CThing& route,EMovementType movement_type,bool face_movement,bool avoid_dynamic_obstacles);
  virtual void Update();
  virtual CCharString GetActionName()const;
+#ifdef FABLE_RETAIL_CACTIONMOVETO_ONACTIVATE
+ // Retail opt-in (p25F, row 0x00714370): the slot-2 override (Ego_r.pdb ?OnActivate@CActionMoveTo@NTCScriptedControl@@UAEXXZ).
+ virtual void OnActivate();
+#endif
 private:
  C3DVector Pos;
  EMovementType MovementType;
@@ -31,5 +35,5 @@ private:
  bool IgnorePathPreferability;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NTCScriptedControl::CActionMoveTo)==0x50);
+FABLE_STATIC_ASSERT_AT(34, sizeof(NTCScriptedControl::CActionMoveTo)==0x50);
 #endif

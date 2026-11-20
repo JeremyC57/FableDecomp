@@ -39525,3 +39525,8 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCWideString@@@1@ABVCWideString@@@Z	009aa4c0	009a7d40
 ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z	009a7720	009a7d40
 ?insert_unique@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCWideString@@U?$_Nonconst_traits@VCWideString@@@std@@@std@@_N@2@ABVCWideString@@@Z	009aaeb0	009a7d40
+?Clone@CTCBase@@QAEPAV1@XZ	00686fa0	00714370
+?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ	008004d0	00714370
+?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ	00800500	00714370
+?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z	0085f3e0	00714370
+?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z	0085f600	00714370

@@ -36,6 +36,10 @@ private:
     unsigned char AttitudeTags[4]; // std::list<std::pair<long,EConversationAttitude> >.
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SCRIPTED_CONTROL; } bool IsActive() const;
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_CLEANUPALLACTIONS
+    // Retail opt-in (p25F, row 0x00714370): the landed 0x00713630 ?CleanupAllActions@CTCScriptedControl@@QAEXXZ.
+    void CleanupAllActions();                                            // 0x00713630
+#endif
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ISACTIONLISTEMPTY
     // Opt-in (NF108 2026-11-19, row 0x004C70F0 IsActive): Ego_r.pdb 0x007262B0 + FableWin.pdb 0x0255AA00
     // ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ, out of line in retail at 0x007122C0 (called from IsActive). Declaration only.

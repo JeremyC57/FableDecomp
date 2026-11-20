@@ -14,7 +14,11 @@ class CTCParamsPhysicsBase : public CTCParamsBase {
 public:
     C3DVector Position;                                                  // +0x04
     CRightHandedSet Rhs;                                                 // +0x10
-#ifdef FABLE_RETAIL_CTCPARAMSPHYSICSBASE_CTOR_BODY
+#if defined(FABLE_RETAIL_CTCPARAMSPHYSICSBASE_INLINE_CTOR)
+    // Per-TU opt-in (p25F, row 0x00714370 CActionMoveTo::OnActivate): the same body, plain inline; that TU expands it in place
+    // (0x00714428: CBaseClassNonCopyable() 0x0099A2F0, the copies, the 0x0125C818 vtable store), where the other callers call 0x006A06E0.
+    CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs) : Position(position), Rhs(rhs) {}
+#elif defined(FABLE_RETAIL_CTCPARAMSPHYSICSBASE_CTOR_BODY)
     // The real body, kept out of line (retail calls 0x006A06E0 at every site): visible to the caller's escape analysis.
 #ifdef _MSC_VER
     __declspec(noinline)
@@ -24,5 +28,5 @@ public:
     CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs);   // 0x006A06E0
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CTCParamsPhysicsBase) == 0x28);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CTCParamsPhysicsBase) == 0x28);
 #endif // FABLE_ENGINE_CTCPARAMSPHYSICSBASE_H

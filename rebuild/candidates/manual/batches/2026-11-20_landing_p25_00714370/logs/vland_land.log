@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00714370   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 1
+  00714370 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::?OnActivate@CActionMoveTo@NTCScriptedControl@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NTCScriptedControlCActionMoveTo_OnActivate_00714370
