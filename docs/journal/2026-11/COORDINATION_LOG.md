@@ -444,3 +444,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: nf142 landed (15 rows; q4291, q4292, q6168, q4295, q4299, q4659, q6305 closed; 0x0122A600 held for its hash spelling; q4296 blocked on authoring 0x009E15E0).
 2026-11-20 A: NF145 handed back. New header re-port agent RP1 (B's CVsyncCallbackTimer option A, 27 rows, plus B's held IDirect3D9 rows 0x009BE870 / 0x009BFB30; advisor decision, owner delegated).
 2026-11-20 A: nf143 landed (14 rows; q4942 / q4943 CResource ListRemove / ListInsert closed; q4283 / q4285 partial, NF146 has the rest; CUserProfileManager.h opt-in).
+2026-11-20 A: NF146 handed back (landing nf146 after nf144 / nf145). New agent NF148 (q11817: re-port 0x00BF3B60 off its local CMemoryDataInputStream, then 0x00994930's rename; q11785 ThrowShotObject vtable).
