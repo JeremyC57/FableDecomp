@@ -1,5 +1,5 @@
-// _global::ReadBankInfoCount(CSegmentFile_00c16e10* file) -- opens the bank file's "LHFileSegmentBankInfo" segment, skips its two MAX_PATH name fields and returns the entry count that follows (0 when the count field is empty, -1 on any open/read failure)
-// Leaf: ReadBankInfoCount
+// _global::ReadBankInfoCount(CSegmentFile* file) -- opens the bank file's "LHFileSegmentBankInfo" segment, skips its two MAX_PATH name fields and returns the entry count that follows (0 when the count field is empty, -1 on any open/read failure)
+// Leaf: ?ReadBankInfoCount@@YIJPAVCSegmentFile@@@Z
 // Grade: RELOCATION_MATCH (retry wave 2) -- the open test result held in a named bool and every failure as its own
 //   return -1 (plus explicit read==0 return 0) puts the merged return -1 block right after the open test, as retail
 // Flags: /EHsc /GS
@@ -12,18 +12,15 @@
 //   buffer (the second Read reuses eax = 0x104 as its size push); the count is zeroed after its address push; the
 //   result `read ? count : 0` compiles to neg/sbb/and.
 // Label correction: the catalog's `LHFileSegment_ReadMurderTwistData` is propagated; descriptive name.
-class CString { public:                  // MFC-style string: one word
-    char* m_pchData;
-    CString(const char* text);    // 0x00C0BFE0
-    ~CString();                   // 0x00C0BA40
-};
+// NF173 (q5110): ported off the local CString / CSegmentFile_00c16e10 stand-ins onto the shared libpk headers: libpk/CSegmentFile.h
+//   (FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23 declares OpenSegment 0x00C2D9C0 / Read 0x00C2DA00) and engine/CString.h (through it).
+//   Descriptive libpk names (owner 2026-11-12: library code gets light naming); the callers 0x00C16F00 / 0x00C30F60 declare this
+//   function from libpk/CScriptHost.h as ReadBankInfoCount(CSegmentFile*).
+#define FABLE_RETAIL_BANK_LOAD_WRAPPER_PASS23
+#include "libpk/CBankProcessor.h"
+#include "libpk/CSegmentFile.h"
 
-struct CSegmentFile_00c16e10 {
-    int OpenSegment(const CString& name);   // 0x00C2D9C0: 0 found and positioned, -1 missing
-    int Read(void* buffer, int size);                // 0x00C2DA00: bytes read, negative on error
-};
-
-long __fastcall ReadBankInfoCount(CSegmentFile_00c16e10* file)
+long __fastcall ReadBankInfoCount(CSegmentFile* file)
 {
     char name[0x104 + 1];
     long count;

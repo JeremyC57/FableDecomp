@@ -1,44 +1,45 @@
+// Test for 0x00AE0050 CParticleProgram::SetupSimulation (shared headers): the simulation copies the program's InitialSimulation
+// (+0x08) with the given pool, and the result is CopyFrom's.
 #include <cstdio>
+#include <string.h>
+#define FABLE_RETAIL_CPARTICLEPROGRAM
+#define FABLE_RETAIL_CPARTICLEPROGRAM_UNSKINNED_SIMULATION
+#define FABLE_RETAIL_CPARTICLESIMULATION
+#include "engine/CParticleSimulation.h"
+#include "engine/CParticleProgram.h"
 
-class CMovableResourceMemoryPool;
-
-static void* g_captured_field = 0;
+static const CParticleSimulation* g_captured_source = 0;
+static CParticleSimulation* g_captured_dest = 0;
 static CMovableResourceMemoryPool* g_captured_pool = 0;
 static bool g_ret = false;
 
-class CParticleSimulation { public:
-    char Init(void* progField, CMovableResourceMemoryPool* pool);
-};
-
-char CParticleSimulation::Init(void* progField, CMovableResourceMemoryPool* pool)
+bool CParticleSimulation::CopyFrom(const CParticleSimulation& other, CMovableResourceMemoryPool& pool)
 {
-    g_captured_field = progField;
-    g_captured_pool = pool;
+    g_captured_source = &other;
+    g_captured_dest = this;
+    g_captured_pool = &pool;
     return g_ret;
 }
 
-class CParticleProgram { public:
-    char pad[8];
-    bool SetupSimulation(CParticleSimulation* sim, CMovableResourceMemoryPool* pool);
-};
+static double g_prog_storage[(sizeof(CParticleProgram) + 7) / 8];
+static double g_sim_storage[(sizeof(CParticleSimulation) + 7) / 8];
 
 int main()
 {
-    CParticleProgram prog;
-    CParticleSimulation sim;
-    CMovableResourceMemoryPool* pool = (CMovableResourceMemoryPool*)0xABCD;
+    memset(g_prog_storage, 0, sizeof(g_prog_storage));
+    const CParticleProgram& prog = *(const CParticleProgram*)g_prog_storage;
+    CParticleSimulation& sim = *(CParticleSimulation*)g_sim_storage;
+    CMovableResourceMemoryPool& pool = *(CMovableResourceMemoryPool*)0xABCD;
 
     g_ret = true;
-    bool r1 = prog.SetupSimulation(&sim, pool);
+    bool r1 = prog.SetupSimulation(sim, pool);
+    g_ret = false;
+    bool r2 = prog.SetupSimulation(sim, pool);
 
-    g_ret = 0;
-    bool r2 = prog.SetupSimulation(&sim, pool);
-
-    bool ok = (r1 == true) && (r2 == false)
-           && (g_captured_field == (void*)((char*)&prog + 8))
-           && (g_captured_pool == pool);
-
-    if (ok) printf("SETUPSIM_OK\n");
-    else printf("SETUPSIM_FAIL f=%p p=%p r1=%d r2=%d\n", g_captured_field, g_captured_pool, r1, r2);
+    bool ok = r1 && !r2
+           && g_captured_source == (const CParticleSimulation*)((const char*)&prog + 8)
+           && g_captured_dest == &sim
+           && g_captured_pool == &pool;
+    printf(ok ? "SETUPSIM_OK\n" : "SETUPSIM_FAIL\n");
     return ok ? 0 : 1;
 }

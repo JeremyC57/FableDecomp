@@ -86,7 +86,7 @@ class CTCCarrying { public:                                 // interface type 0x
 class CTCWeapon { public:                                   // interface type 0x48
     long GetAmmoCarrySlot();                         // 0x005DA920 (catalog "CCategory::GetCategoryIdentifier")
     bool IsProjectileWeapon();                       // 0x005DAA40
-    bool IsAnalogueLoading();                        // 0x005DA950
+    bool IsProjectileWeaponAutoLoading() const;                        // 0x005DA950
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
 };
 class CTCAnimatingObject { public:                          // interface type 0x83
@@ -162,7 +162,7 @@ void CTCHeroRangedAttacks::CancelAimingWeapon()
                 if (IS_THING_ALIVE(ammo))
                     ammo->Kill(true);
             }
-            if (tc->IsProjectileWeapon() && !tc->IsAnalogueLoading()) {
+            if (tc->IsProjectileWeapon() && !tc->IsProjectileWeaponAutoLoading()) {
                 if (weapon->HasTC(0x83))
                     weapon->FindTC<CTCAnimatingObject>(0x83)->PlayDefaultAnimation();
                 tc->SetProjectileWeaponLoaded(false, 0);
@@ -194,7 +194,7 @@ CThing* CTCCarrying::GetThingInPrimarySlot() { return g_primary; }
 CThing* CTCCarrying::RemoveThingInCarrySlot(long slot, bool drop) { g_removed++; g_removedSlot = slot; g_removedDrop = drop; return g_ammoThing; }
 long CTCWeapon::GetAmmoCarrySlot() { return g_carrySlot; }
 bool CTCWeapon::IsProjectileWeapon() { return g_projectile; }
-bool CTCWeapon::IsAnalogueLoading() { return g_analogue; }
+bool CTCWeapon::IsProjectileWeaponAutoLoading() const { return g_analogue; }
 void CTCWeapon::SetProjectileWeaponLoaded(bool loaded, CThing* ammo) { g_loaded++; g_loadedArg = loaded; g_loadedAmmo = ammo; }
 void CTCAnimatingObject::PlayDefaultAnimation() { g_played++; }
 void CTCSoundPlayer::StopSample(unsigned long sampleID) { g_stopped++; g_stopId = sampleID; g_stopThis = this; }

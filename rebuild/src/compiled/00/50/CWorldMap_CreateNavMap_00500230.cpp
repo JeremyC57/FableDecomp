@@ -1,5 +1,6 @@
 // CWorldMap::CreateNavMap(long map, const set<CCharString>& sections, CAFile& file, CASuspendableProcess& process) -- give the navigator manager the navigation map of a level file: from the matching named section when the file has a section table, else from the single navigation block
 // Leaf: ?CreateNavMap@CWorldMap@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAVCAFile@@AAVCASuspendableProcess@@@Z
+// Naming (NF173, 2026-11-20): q4785: AddNavigationMap 0x00A157C0 takes the process by reference (Ego_r.pdb 0x00B82E70 + FableWin.pdb 0x031C5C10), from the engine/CNavigatorManager.h nested opt-in FABLE_RETAIL_CNAVIGATORMANAGER_ADDNAVIGATIONMAP_PROCESSREF.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00500230, 425 bytes, `ret 10h`.
 // Callees: CAFile slot 5 SetPosition (+0x14) / slot 7 GetPosition (+0x1C), CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>::ReadFromFile
 //   0x0051A240, CAFile::ReadVar<int> 0x00516180 (out of line), CMemoryFile (CBaseClassNonCopyable ctor 0x0099A2F0 / dtor 0x0099A300, vtable
@@ -11,6 +12,7 @@
 //   CMapInfo.h / fable_string.h / stlport set (every local model deleted). Overlay opt-ins: FABLE_RETAIL_CAFILE_READVAR_DECL,
 //   FABLE_RETAIL_CMEMORYFILE_OPENFROMFILE, FABLE_RETAIL_CNAVIGATORMANAGER_LEVELMAPS, FABLE_RETAIL_CWORLDMAP_CREATENAVMAP and
 //   FABLE_RETAIL_CWORLDMAP_NAVIGATIONSECTION (the section finder 0x004FE630, its Ego_r.pdb spelling).
+#define FABLE_RETAIL_CNAVIGATORMANAGER_ADDNAVIGATIONMAP_PROCESSREF   // NF173 q4785: AddNavigationMap takes the process by reference (Ego_r.pdb / FableWin.pdb)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CCHARSTRING_LESS_INLINE
@@ -61,12 +63,12 @@ void CWorldMap::CreateNavMap(long map, const std::set<CCharString>& sections, CA
             if (navigator.IsNavigationMapLoaded(map))
                 navigator.RemoveNavigationMap(map);
             file.SetPosition(section.second);
-            navigator.AddNavigationMap(map, GetMapBox(map), section.first, file, &process);
+            navigator.AddNavigationMap(map, GetMapBox(map), section.first, file, process);
         }
     }
     else if (level.NavigationDataOffset != 0 && !navigator.IsNavigationMapLoaded(map))
     {
         file.SetPosition(level.NavigationDataOffset);
-        navigator.AddNavigationMap(map, GetMapBox(map), "", file, &process);
+        navigator.AddNavigationMap(map, GetMapBox(map), "", file, process);
     }
 }

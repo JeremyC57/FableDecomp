@@ -1,4 +1,5 @@
 // CTCHeroRangedAttacks::CancelAimingWeapon() -- abandon the aim: reset timers, pressures and cycle flags, recompute damage and
+// Naming (NF173, 2026-11-20): q11685: 0x005DA950 is FableWin.pdb 0x0239B3E0 / Ego_r.pdb 0x0063A790 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ (IsAnalogueLoading is 0x005DA8F0); respelled in place in the existing local CTCWeapon model.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // accuracy for zero build-up, drop the projectile carried in the weapon's carry slot, unload a non-analogue projectile weapon
 // (resetting its animation), stop the bow draw-back sound
@@ -66,7 +67,7 @@ class CTCWeapon { public:                                   // interface type 0x
     // Name fix (NF103, round 10, q11533): 0x005DA920 is Ego_r.pdb / FableWin.pdb ?GetMissileLoadCarrySlot@CTCWeapon@@QBEJXZ (const;
     //   respelled in place in this row's existing local model; was ?GetAmmoCarrySlot@CTCWeapon@@QAEJXZ).
     long GetMissileLoadCarrySlot() const;            // 0x005DA920
-    bool IsAnalogueLoading();                        // 0x005DA950
+    bool IsProjectileWeaponAutoLoading() const;                        // 0x005DA950 (Ego_r.pdb / FableWin.pdb)
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
 public:
     bool IsProjectileWeapon() const;   // 0x005DAA40
@@ -150,7 +151,7 @@ void CTCHeroRangedAttacks::CancelAimingWeapon()
                 if (IS_THING_ALIVE(ammo))
                     ammo->Kill(true);
             }
-            if (tc->IsProjectileWeapon() && !tc->IsAnalogueLoading()) {
+            if (tc->IsProjectileWeapon() && !tc->IsProjectileWeaponAutoLoading()) {
                 if (weapon->HasTC(0x83))
                     weapon->FindTC<CTCAnimatingObject>(0x83)->PlayDefaultAnimation();
                 tc->SetProjectileWeaponLoaded(false, 0);

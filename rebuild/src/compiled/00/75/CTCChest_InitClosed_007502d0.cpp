@@ -1,5 +1,6 @@
 // CTCChest::InitClosed() -- set the chest up from its def: reset the thing's animator and start the appearance's first "CHEST_OPEN" animation (stopped, update mode 1, priority 100), reset the open/close helper to closed with the animation's length as the opening time (snapped open, animation at its end, when the chest is already open), and keep the thing frame-updating while the helper is mid-transition
 // Leaf: ?InitClosed@CTCChest@@AAEXXZ
+// Naming (NF173, 2026-11-20): q6391/q6462: 0x0070C050 is ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (Ego_r.pdb + FableWin.pdb name sets hold Init and no CAnimInit::Set); respelled in place in the existing local CAnimInit model, with the EAnimUpdateMode parameter (engine/EAnimUpdateMode.h, ANIM_UPDATE_FROM_SPEED = 1).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007502D0, 407 bytes, plain `ret`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCAnimationComplex 0x5A),
@@ -8,7 +9,7 @@
 //   0x0099EBF0 ("CHEST_OPEN" 0x01269568) / ~CCharString 0x0099EAE0, CAnimationSet::GetAnimation(const CCharString&, long,
 //   const CAnimFilterBase&) 0x005DC340 (CAnimFilterNoGroup temporary, vtables 0x0122FFDC / 0x0122FFCC), CTCBase::GetWorld
 //   0x00686A70, CMeshDataBank::PeekAnimation 0x00A242C0, C3DAnimationInfo::GetNonLoopingDuration 0x00A23CE0,
-//   CAnimInit::Set 0x0070C050, CAnimateThing::SetMainAnim 0x0070D580, COpenCloseHelper::InitOpened 0x00A55C00,
+//   CAnimInit::Init 0x0070C050, CAnimateThing::SetMainAnim 0x0070D580, COpenCloseHelper::InitOpened 0x00A55C00,
 //   CThing::SetForceFrameUpdate 0x004C7C60; the defs' slot 1.
 // Layout: CTCChest (retail, Ego_r.pdb - 4): ChestOpener COpenCloseHelper +0x1c (Opened, Closed, Opening, Closing,
 //   OpenCloseTransitionAmount +4, LastOpenCloseTransitionAmount +8, TotalTimeToOpen +0xc, TotalTimeToClose +0x10),
@@ -16,11 +17,12 @@
 //   Animation +0x34; CAnimateThing main anim set CurrentPercentageComplete +0x1c / LastPercentageComplete +0x20 (Ego_r
 //   minus the 4-byte-smaller retail vectors).
 // Shape: the animation complex is `T* p = 0; if (HasTC) p = GetTC;`; the thing def is held add-referenced by a CDefPointer
-//   copy for the whole function; GetSubDef has a same-TU out-only stand-in; the init is the CAnimInit Set-forwarding ctor
+//   copy for the whole function; GetSubDef has a same-TU out-only stand-in; the init is the CAnimInit Init-forwarding ctor
 //   (frame zero stores after the pushes); the mesh bank is named before the PeekAnimation argument; the helper reset is an
 //   inline Init in retail's store order (closed flag, both transition amounts last-first, the two times, then the
 //   opening/closing flags); the transition test compares Last != Amount.
 #include "fable_compiler.h"
+#include "engine/EAnimUpdateMode.h"
 class CTCBase;
 
 class CCharString { public:
@@ -98,13 +100,13 @@ class CAnimInit { public:                                             // 0x2c by
     unsigned long Flags;                                       // +0x20
     unsigned long TypeFlags;                                   // +0x24
     long          Priority;                                    // +0x28
-    CAnimInit(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
+    CAnimInit(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags,
               long priority)
     {
-        Set(type, typeFlags, anim, updateMode, looping, flags, priority);
+        Init(type, typeFlags, anim, updateMode, looping, flags, priority);
     }
-    void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
-             long priority);                                   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags,
+              long priority);                                  // 0x0070C050 (Ego_r.pdb / FableWin.pdb ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z)
 };
 class CAnimSet { public:
     long          UpdateMode;                                  // +0x00
@@ -218,7 +220,7 @@ void CTCChest::InitClosed()
     const CAnimationEntry* entry = appearance->Animation.GetAnimation("CHEST_OPEN", 0, CAnimFilterNoGroup());
     CMeshDataBank* meshBank = GetWorld().PMainMeshBank;
     float duration = meshBank->PeekAnimation(entry->AnimIndex)->GetNonLoopingDuration();
-    CAnimInit init(0, 0, entry->AnimIndex, 1, false, 0, 100);
+    CAnimInit init(0, 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, 0, 100);
     animator.SetMainAnim(init, 1, 0);
     ChestOpener.Init(duration, 0.0f);
     if (ChestOpen) {

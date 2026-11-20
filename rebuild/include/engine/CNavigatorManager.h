@@ -60,8 +60,15 @@ public:
     bool IsNavigationMapLoadedWithSectionName(long map, const class CCharString& section) const;   // 0x00A14EE0
     bool IsNavigationMapLoaded(long map) const;                                                   // 0x00A14E80
     void RemoveNavigationMap(long map);                                                           // 0x00A155D0
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_ADDNAVIGATIONMAP_PROCESSREF
+    // NF173 nested opt-in (q4785, row 0x00500230): Ego_r.pdb 0x00B82E70 / FableWin.pdb 0x031C5C10 spell the process by reference,
+    // ?AddNavigationMap@CNavigatorManager@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCAFile@@AAVCASuspendableProcess@@@Z (same bytes).
+    void AddNavigationMap(long map, const class C2DBoxI& area, const class CCharString& section, class CAFile& file,
+                          class CASuspendableProcess& process);                                   // 0x00A157C0
+#else
     void AddNavigationMap(long map, const class C2DBoxI& area, const class CCharString& section, class CAFile& file,
                           class CASuspendableProcess* process);                                   // 0x00A157C0
+#endif
 #endif
 #ifndef FABLE_RETAIL_CNAVIGATORMANAGER_VIRTUALS
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject

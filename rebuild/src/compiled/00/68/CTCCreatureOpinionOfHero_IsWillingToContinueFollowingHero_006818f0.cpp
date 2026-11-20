@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero() const -- decided by the creature's attitude to the player
+// Naming (NF173, 2026-11-20): q4078: the local COpinionReactionManager model declares GetThingAttitudeToPlayer as Ego_r.pdb 0x00551920 / FableWin.pdb 0x01F15FA0 spell it: EOpinionAttitudeType result (engine/EOpinionAttitudeType.h), const CThing& (was long, const CThing*).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006818F0, length 46 bytes + embedded jump table (2 targets) and byte index
 // table (17 entries) through 0x00681938. Callers 0x006D4FA3, 0x006D5499.
@@ -7,9 +8,10 @@
 // 9..16 keep following; 3, 4, 7, 8 and anything above 16 stop (the default). ParentThing is read into a local before the
 // accessor call and the manager is a local too, so the call precedes the argument push.
 class CThing;
+#include "engine/EOpinionAttitudeType.h"
 
 class COpinionReactionManager { public:
-    long GetThingAttitudeToPlayer(const CThing* thing) const;       // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 (Ego_r.pdb + FableWin.pdb)
     float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
 };
 
@@ -93,7 +95,7 @@ bool CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero() const
 {
     CThing* thing = ParentThing;
     COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
-    switch (manager->GetThingAttitudeToPlayer(thing)) {
+    switch (manager->GetThingAttitudeToPlayer(*thing)) {
     case 0:
     case 1:
     case 2:

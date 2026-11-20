@@ -12,12 +12,14 @@
 // engine/CTCCreatureOpinionOfHero.h, whose PDB layout does not fit retail past +0x24). Attitude values are the
 // numeric EOpinionAttitudeType values (the enumerator names are not in the PDB dumps).
 // Leaf: IsWillingToStartFollowingHero
+// Naming (NF173, 2026-11-20): q4078: the local COpinionReactionManager model declares GetThingAttitudeToPlayer as Ego_r.pdb 0x00551920 / FableWin.pdb 0x01F15FA0 spell it: EOpinionAttitudeType result (engine/EOpinionAttitudeType.h), const CThing& (was long, const CThing*).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 
 class CThing;
+#include "engine/EOpinionAttitudeType.h"
 
 class COpinionReactionManager { public:
-    long GetThingAttitudeToPlayer(const CThing* thing) const;       // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 (Ego_r.pdb + FableWin.pdb)
     float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
 };
 
@@ -101,7 +103,7 @@ bool CTCCreatureOpinionOfHero::IsWillingToStartFollowingHero() const
 {
     CThing* thing = ParentThing;
     COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
-    switch (manager->GetThingAttitudeToPlayer(thing)) {
+    switch (manager->GetThingAttitudeToPlayer(*thing)) {
     case 1:
     case 2:
     case 5:

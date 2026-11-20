@@ -1,5 +1,6 @@
 // CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction(CAIStateGroup_OpinionReactionRoot* group) -- opinion-reaction filter: remember the state group and the world's reaction manager, work out whether the creature follows the player (AI follower or region follower of the hero's thing), whether it is aware of the player for reactions (its opinion-of-hero target is the hero with a non-zero awareness and the flag set), and cache its opinion-of-hero component
 // Leaf: ??0CIsOpinionSourceWithReaction
+// Naming (NF173, 2026-11-20): q4718/q5091: GetInterface(&p, 0x34) asks for TCI_PERCEIVE_THING (engine/ETCInterfaceType.h), so 0x007446A0 is CTCPerceiveThing::GetPerceivedThing (Ego_r.pdb / FableWin.pdb), not a CTCCreatureOpinionOfHero::GetTargetThing (no such member in either PDB). The TC is modelled by engine/CTCPerceiveThing.h (flat branch); the local CTCCreatureOpinionOfHero model is now only a forward declaration (PTCOpinion pointer).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095F9A0, length 416 bytes (`ret 4`).
 // Callees: the out-of-line accessors 0x008FCFC0 (group -> player, manifest label CPlayer::GetCurrentMode is a byte-twin),
@@ -18,6 +19,10 @@
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
+// Interface 0x34 is TCI_PERCEIVE_THING (engine/ETCInterfaceType.h): the TC tested here is the creature's CTCPerceiveThing (flat
+// shared header; AwarenessTimer +0x18, IgnoreFOVLineOfSight +0x2f), and 0x007446A0 is its out-of-line GetPerceivedThing.
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING
+#include "engine/CTCPerceiveThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
@@ -43,13 +48,7 @@ class CTCFollowed { public:
 class CTCRegionFollower { public:
     bool IsRegionFollower(CThing* thing);           // 0x006AEB60
 };
-class CTCCreatureOpinionOfHero { public:
-    unsigned char _pad00[0x18];
-    float         Awareness;                        // +0x18
-    unsigned char _pad1c[0x2f - 0x1c];
-    bool          AwareOfPlayer;                    // +0x2f
-    CThing* GetTargetThing();                       // 0x007446A0
-};
+class CTCCreatureOpinionOfHero;                     // PTCOpinion (interface 0x4f); only its pointer is stored here
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
@@ -108,9 +107,9 @@ CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction(CAIStateGroup_Opinion
     IsFollowingPlayer = hero
         && ((hero->GetInterface(&followed, 0xbc) && followed->IsFollower((const CThing*)group->GetCreature()))
             || (hero->GetInterface(&regionFollower, 0x7a) && regionFollower->IsRegionFollower((CThing*)group->GetCreature())));
-    CTCCreatureOpinionOfHero* opinion;
-    IsAwareOfPlayerForReactions = PStateGroup && ((CThing*)PStateGroup->GetCreature())->GetInterface(&opinion, 0x34)
-        && opinion->GetTargetThing() == hero && opinion->Awareness != 0.0f && opinion->AwareOfPlayer;
+    CTCPerceiveThing* perception;
+    IsAwareOfPlayerForReactions = PStateGroup && ((CThing*)PStateGroup->GetCreature())->GetInterface(&perception, 0x34)
+        && perception->GetPerceivedThing() == hero && perception->AwarenessTimer != 0.0f && perception->IgnoreFOVLineOfSight;
     if (PStateGroup)
         ((CThing*)PStateGroup->GetCreature())->GetInterface(&PTCOpinion, 0x4f);
 }

@@ -28,14 +28,16 @@ template<class T> class CArray { public:                  // retail CArray<T>: t
 };
 class CEnginePrimitiveHandle;
 
+namespace NParticleEngine {                // NF173 q11966: the existing local model in its Ego_r.pdb namespace (in place)
 class CParticleEmitterList {
 public:
     void ClearLowestPriorityNonVisibleEmitterDecals(CIEngine* engine);   // 0x00AEAF80
 };
+}
 // NF158 (q4754): in-place respell of the row's existing local model (same class token, now `class` in its PDB namespace).
 //   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
 //   __fastcall, reference return); FableWin.pdb names the inline CParticleEmitterManager::ClearLowestPriorityNonVisibleEmitterDecals() expanded here
-//   (`ActiveEmitters.ClearLowestPriorityNonVisibleEmitterDecals(PEngine)`). The local CParticleEmitterList stays global: its self row 0x00AEAF80 still defines the
+//   (`ActiveEmitters.ClearLowestPriorityNonVisibleEmitterDecals(PEngine)`). NF173 moves the local CParticleEmitterList into NParticleEngine with its self row; formerly global because the self row defined the
 //   non-namespaced spelling this row binds (moving it would split the address).
 namespace NParticleEngine {
 class CParticleEmitterManager {

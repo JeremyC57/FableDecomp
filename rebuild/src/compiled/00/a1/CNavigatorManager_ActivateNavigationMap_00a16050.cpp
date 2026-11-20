@@ -1,5 +1,6 @@
 // CNavigatorManager::ActivateNavigationMap(long) -- activate the quad-tree map of the map index (first time only: mark it active and link it to the neighbouring maps) and, with the debug focus flag on, point the debug view at the map's first node centre
 // Leaf: ActivateNavigationMap
+// Naming (NF173, 2026-11-20): q4787: 0x00A76320 is Ego_r.pdb / FableWin.pdb ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ (static __fastcall), respelled in place in the existing local CNavQuadTree model (was the cdecl stand-in GetHalfCellSize_00a76320).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A16050, 165 bytes (`ret 4`).
 // Callees: CNavQuadTree::Activate 0x00A762E0 (`mov byte ptr [ecx+5],1`: Activated = true; manifest label "CXMVPlaybackInfo" is
@@ -35,7 +36,7 @@ public:
     bool  Initialising;                            // +0x06
     void Activate();                               // 0x00A762E0
     void LinkToNeighbouringMaps(const CNavigatorManager& manager);   // 0x00A7A650
-    static float GetHalfCellSize_00a76320();       // 0x00A76320 (0.5f)
+    static float __fastcall GetSmallestNodeSize(); // 0x00A76320 (0.5f; Ego_r.pdb / FableWin.pdb ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ)
 };
 #include "engine/CCountedPointer.h"
 class CNavQuadTreeMap { public:                           // 32 bytes
@@ -73,7 +74,7 @@ void CNavigatorManager::ActivateNavigationMap(long mapIndex)
             }
             if (g_NavDebugFocusOnActivate_013d277d) {
                 C2DVector pos = C2DVector(it->_M_data.MapArea.GetTopLeft()) +
-                                C2DVector(CNavQuadTree::GetHalfCellSize_00a76320(), CNavQuadTree::GetHalfCellSize_00a76320());
+                                C2DVector(CNavQuadTree::GetSmallestNodeSize(), CNavQuadTree::GetSmallestNodeSize());
                 DebugFocusOn_00a15890(pos, g_NavDebugFocusFlag_013d277c);
             }
             return;

@@ -1,5 +1,6 @@
 // CInputProcessUseRangedWeapon::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- outside ranged mode, forward the input to ProcessRangedAttackInput when the hero's primary carried thing is a live projectile weapon; in ranged mode, when the hero carries a melee weapon and the primary weapon is not an unloaded analogue-loading projectile weapon, cancel aiming, reset the projectile mode and leave player mode 0x22
 // Leaf: ProcessInput
+// Naming (NF173, 2026-11-20): q11685: 0x005DA950 is FableWin.pdb 0x0239B3E0 / Ego_r.pdb 0x0063A790 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ (IsAnalogueLoading is 0x005DA8F0); respelled in place in the existing local CTCWeapon model.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F9D0, length 444 bytes (`ret 8`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the player's character pointer +0x34); the interface map LowerBound
@@ -72,7 +73,7 @@ class CTCCarrying { public:
 class CTCWeapon { public:
     bool IsProjectileWeapon() const;                     // 0x005DAA40
     bool IsProjectileWeaponLoaded() const;   // Ego_r/FableWin ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (agentNF16)               // 0x005DA980
-    bool IsAnalogueLoading();                      // 0x005DA950
+    bool IsProjectileWeaponAutoLoading() const;                      // 0x005DA950 (Ego_r.pdb / FableWin.pdb)
 };
 class CTCHeroRangedAttacks { public:
     void CancelAimingWeapon();                     // 0x00789FF0
@@ -138,7 +139,7 @@ void CInputProcessUseRangedWeapon::ProcessInput(const CInputEvent& event, CProce
     CThing* weapon = carrying->GetThingInPrimarySlot();
     CTCWeapon* tcWeapon;
     if (!weapon || (weapon->m_flags91 & 1) || !weapon->GetInterface(&tcWeapon, 0x48) || tcWeapon->IsProjectileWeaponLoaded()
-        || !tcWeapon->IsAnalogueLoading()) {
+        || !tcWeapon->IsProjectileWeaponAutoLoading()) {
         CTCHeroRangedAttacks* rangedAttacks = hero->GetInterface<CTCHeroRangedAttacks>(0x81);
         rangedAttacks->CancelAimingWeapon();
         rangedAttacks->ResetProjectileWeaponMode();

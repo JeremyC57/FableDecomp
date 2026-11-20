@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToCriminal::IsValid() -- the reaction stays valid while the hero is alive, the creature is a villager with an opinion of the hero, its village exists, and the hero is hostile (attitude 4) or wanted (attitude 2) for a crime the village already knows about or this creature saw (a run-and-find-a-guard deed).
+// Naming (NF173, 2026-11-20): q4078: the local COpinionReactionManager model declares GetThingAttitudeToPlayer as Ego_r.pdb 0x00551920 / FableWin.pdb 0x01F15FA0 spell it: const, EOpinionAttitudeType result (engine/EOpinionAttitudeType.h), const CThing& (was non-const, long, CThing*).
 // Grade: RELOCATION_MATCH -- same-TU noinline LowerBound body (0x0040F020) plus both interface lookups spelled on the `PBrain->PCreature` chain (no named creature local: a named one CSEs the map address and keeps it live across the first lookup)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00930EE0, length 297 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PHero x2), CVectorMap::LowerBound const @ 0x004365B0
@@ -19,6 +20,7 @@ class CWorld;
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
+#include "engine/EOpinionAttitudeType.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;   // LowerBound 0x0040F020 / const 0x004365B0
 #pragma auto_inline(off)
 // Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
@@ -222,7 +224,7 @@ class CTCCreatureOpinionOfHero { public:               // interface 0x4F
         bool includeForgotten);                 // 0x006610C7
 };
 class COpinionReactionManager { public:
-    long GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 (Ego_r.pdb + FableWin.pdb)
 };
 class CWorld { public:
     unsigned char _pad[0x74];
@@ -248,7 +250,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsValid()
                     if (village->m_crimeReported || !village->m_pGuardPost
                             || opinion->FindMostRecentDeed(COpinionDeedFilter_IsCrimeToRunAndFindAGuard(), &deedIndex, false)) {
                         CThing* self = PBrain->PCreature;
-                        long attitude = PeekWorld().GetPOpinionReactionManager()->GetThingAttitudeToPlayer(self);
+                        long attitude = PeekWorld().GetPOpinionReactionManager()->GetThingAttitudeToPlayer(*self);
                         return attitude == 4 || (attitude == 2 && (village->m_crimeReported || deedIndex >= 0));
                     }
                 }

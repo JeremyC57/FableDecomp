@@ -1,4 +1,10 @@
-// CParticleEmitterManager::CreateEmitter(long, const C3DVector&, long, const CRightHandedSet&) -- fetch the emitter template; if it may spawn here and is not a 2D emitter, clone it into the active list and place it (position and orientation interpolators from/to the same value); null when anything fails
+// NParticleEngine::CParticleEmitterManager::CreateEmitter(long, const C3DVector&, bool, const CRightHandedSet&) -- fetch the emitter template; if it may spawn here and is not a 2D emitter, clone it into the active list and place it (position and orientation interpolators from/to the same value); null when anything fails
+// Leaf: ?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+// Naming (NF173, 2026-11-20): q11967: own leaf respelled to Ego_r.pdb 0x00AAF9C0 / FableWin.pdb 0x02EF5EF0 (class in NParticleEngine, third
+//   argument bool): the existing local CParticleEmitterManager model moves into NParticleEngine in place and takes the bool; the callee
+//   GetEmitterTemplate 0x00AE89E0 gets its Ego_r.pdb bool second parameter in the local CParticleEmitterDatabase model (in place; it now binds
+//   the J_N spelling 0x00AEB850 already binds; the class there stays the pre-existing non-namespaced stand-in). Measured: bool flag with the
+//   long GetEmitterTemplate parameter DIFFER(193v192) (a widening), both bool RELOCATION_MATCH.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEB6D0, length 192 bytes (`ret 10h`).
 // Callees: CParticleEmitterDatabase::GetEmitterTemplate @ 0x00AE89E0 on the static counted pointer 0x013D2E14,
@@ -8,7 +14,7 @@
 //          @ 0x006AF570, C3DOrientationInterpolator ctor @ 0x005508D0, ~CBaseClass @ 0x0099A2E0 (each temporary).
 // Shape: the manager starts with its CParticleEmitterList, so Insert takes `this`; the clone is held in a counted-
 // pointer local (out-of-line ctor/dtor) that only lives inside the spawn test; the template flag is forwarded
-// unchanged (a long, as the landed GetEmitterTemplate declaration).
+// unchanged (a bool, as Ego_r.pdb spells GetEmitterTemplate(long, bool)).
 // The three tests are one && chain (nested ifs duplicate the null-template epilogue). The counted pointer's ctor/dtor
 // and Insert have same-TU read-only stand-in bodies, so the local does not escape: the clone is read through
 // operator-> after the position interpolator temporary is built and kept in esi for both setters and the result.
@@ -61,7 +67,7 @@ typedef NParticleEngine::CParticleEmitter CEmitter;
 struct SCountBlock;
 
 struct CParticleEmitterDatabase {
-    CEmitter* GetEmitterTemplate(long handle, long index);   // 0x00AE89E0
+    CEmitter* GetEmitterTemplate(long handle, bool flag);    // 0x00AE89E0 (Ego_r.pdb: second parameter bool)
 };
 struct CEmitterDatabasePointer {                   // static CCountedPointer<CParticleEmitterDatabase>
     CParticleEmitterDatabase* Object;
@@ -105,12 +111,14 @@ __declspec(noinline) bool CParticleEmitterList::Insert(CEmitterPointer& emitter)
 }
 #pragma auto_inline(on)
 
-struct CParticleEmitterManager {
+namespace NParticleEngine {                        // NF173 q11967: the existing local model in its Ego_r.pdb namespace (in place)
+class CParticleEmitterManager { public:
     CParticleEmitterList ActiveEmitters;           // +0x0000
-    CEmitter* CreateEmitter(long handle, const C3DVector& position, long flag, const CRightHandedSet& orientation);
+    CEmitter* CreateEmitter(long handle, const C3DVector& position, bool flag, const CRightHandedSet& orientation);
 };
+}
 
-CEmitter* CParticleEmitterManager::CreateEmitter(long handle, const C3DVector& position, long flag, const CRightHandedSet& orientation)
+CEmitter* NParticleEngine::CParticleEmitterManager::CreateEmitter(long handle, const C3DVector& position, bool flag, const CRightHandedSet& orientation)
 {
     CEmitter* result;
     CEmitter* emitterTemplate = g_ParticleEmitterDatabase->GetEmitterTemplate(handle, flag);

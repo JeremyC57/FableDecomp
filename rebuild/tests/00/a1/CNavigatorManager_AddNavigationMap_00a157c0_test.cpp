@@ -1,16 +1,16 @@
 // Behaviour test for 00a157c0: src/00a157c0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CNavigatorManager::AddNavigationMap(long, const C2DBoxI&, const CCharString&, CAFile&, CASuspendableProcess*)
+// declared callees stubbed below so calls and arguments are observable. CNavigatorManager::AddNavigationMap(long, const C2DBoxI&, const CCharString&, CAFile&, CASuspendableProcess&)
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 // ---- source (verbatim) ----
-// CNavigatorManager::AddNavigationMap(long, const C2DBoxI&, const CCharString&, CAFile&, CASuspendableProcess*) -- add a quad-tree map for the map index unless one exists: append an entry with the area and section name, load a new CNavQuadTree for it from the file, and drop the entry again when the load fails
-// Leaf: ?AddNavigationMap@CNavigatorManager@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCAFile@@PAVCASuspendableProcess@@@Z
+// CNavigatorManager::AddNavigationMap(long, const C2DBoxI&, const CCharString&, CAFile&, CASuspendableProcess&) -- add a quad-tree map for the map index unless one exists: append an entry with the area and section name, load a new CNavQuadTree for it from the file, and drop the entry again when the load fails
+// Leaf: ?AddNavigationMap@CNavigatorManager@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCAFile@@AAVCASuspendableProcess@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A157C0, 196 bytes (+ int3 padding; `ret 14h`).
 // Callees: list<CNavQuadTreeMap>::insert(iterator) 0x00A17480 and erase(iterator) 0x00A17110, CCharString::operator= 0x0099EFB0,
 //   operator new 0x00BFEA1A, CNavQuadTree::CNavQuadTree 0x00A7A760, CCountedPointer<CNavQuadTree>::Reset(T*) 0x00A16640,
-//   CNavQuadTree::LoadFromFile(CAFile&, long, const C2DBoxI&, CASuspendableProcess*) 0x00A7AF60 (a bool in al).
+//   CNavQuadTree::LoadFromFile(CAFile&, long, const C2DBoxI&, CASuspendableProcess&) 0x00A7AF60 (a bool in al).
 // Layout: as the CNavigationAreaInit overload 0x00A156D0: QuadTrees at retail +0x24; CNavQuadTreeMap {PQuadTree +0, Index +8,
 //   MapArea +0xc, SectionName +0x1c}.
 // Shape: the inserted entry is re-read as back(); on a failed load the last entry is erased through a by-value iterator
@@ -33,7 +33,7 @@ public:
     CNavQuadTree();                                // 0x00A7A760
     void SetUpMapStructure(const C2DVector& origin, float width, float height, long mapIndex);   // 0x00A762F0
     void Initialise(CNavigationAreaInit& init);    // 0x00A7A8D0
-    bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess* process);   // 0x00A7AF60
+    bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess& process);   // 0x00A7AF60
 };
 template <class T> class CCountedPointer { public:
     T*    Data;
@@ -77,10 +77,10 @@ public:
     void*                 __vftable;               // +0x00
     unsigned char         _pad04[0x20];
     list<CNavQuadTreeMap> QuadTrees;               // +0x24
-    void AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess* process);
+    void AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess& process);
 };
 
-void CNavigatorManager::AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess* process)
+void CNavigatorManager::AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess& process)
 {
     {
         const list<CNavQuadTreeMap>& maps = QuadTrees;
@@ -106,8 +106,8 @@ const CCharString& CCharString::operator=(const CCharString& other) { m_pData = 
 static int g_trees = 0;
 CNavQuadTree::CNavQuadTree() { ++g_trees; }
 static bool g_loadOk = true; static long g_loadIndex; static const C2DBoxI* g_loadArea; static CAFile* g_loadFile; static CASuspendableProcess* g_loadProc;
-bool CNavQuadTree::LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess* process)
-{ g_loadFile = &file; g_loadIndex = mapIndex; g_loadArea = &area; g_loadProc = process; return g_loadOk; }
+bool CNavQuadTree::LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess& process)
+{ g_loadFile = &file; g_loadIndex = mapIndex; g_loadArea = &area; g_loadProc = &process; return g_loadOk; }
 template <> void CCountedPointer<CNavQuadTree>::Reset(CNavQuadTree* object) { Data = object; Info = (void*)1; }
 typedef list<CNavQuadTreeMap> TList;
 template <> TList::iterator TList::insert(iterator pos)
@@ -130,14 +130,14 @@ int main()
     head->_M_next = head; head->_M_prev = head;
     static CNavigatorManager mgr; mgr.QuadTrees._M_node = head;
     C2DBoxI area = { 1, 2, 3, 4 }; CCharString name; name.m_pData = (void*)0x55; CAFile* file = (CAFile*)0x66; CASuspendableProcess* proc = (CASuspendableProcess*)0x77;
-    mgr.AddNavigationMap(5, area, name, *file, proc);
+    mgr.AddNavigationMap(5, area, name, *file, *proc);
     CHECK(Count(head) == 1); CNavQuadTreeMap& m = head->_M_next->_M_data;
     CHECK(m.Index == 5); CHECK(m.MapArea.TLX == 1 && m.MapArea.BRY == 4); CHECK(m.SectionName.m_pData == (void*)0x55);
     CHECK(g_trees == 1); CHECK(m.PQuadTree.Data != 0); CHECK(g_loadIndex == 5); CHECK(g_loadArea == &area); CHECK(g_loadFile == file); CHECK(g_loadProc == proc);
-    mgr.AddNavigationMap(5, area, name, *file, proc);      // already present
+    mgr.AddNavigationMap(5, area, name, *file, *proc);      // already present
     CHECK(Count(head) == 1); CHECK(g_trees == 1);
     g_loadOk = false;
-    mgr.AddNavigationMap(6, area, name, *file, proc);      // load fails: the new entry is removed again
+    mgr.AddNavigationMap(6, area, name, *file, *proc);      // load fails: the new entry is removed again
     CHECK(Count(head) == 1); CHECK(g_erased == 1); CHECK(g_trees == 2); CHECK(head->_M_next->_M_data.Index == 5);
     if (fails == 0) printf("00a157c0_TEST PASS\n"); else printf("00a157c0_TEST FAIL\n");
     return fails;

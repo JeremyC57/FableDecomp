@@ -1,4 +1,5 @@
 // CAIStateGroup_SeekEnemy::IsStillRunnable() -- validate the remembered enemy against target selection and perception; retail 0x0093b8b0, 319 bytes. Callees: CVectorMap::LowerBound 0x004365b0, CBaseIntelligentPointer::GetPItem 0x00a01b50, CTCTargetingAI slot 29 thunk 0x004ddae5, IsWillingToAttackTarget 0x008648a0, CTCPerceiveThing::GetPerceivedThing 0x007446a0, CTCPerceiveThing::IsAwareOfThing 0x00643b3b, CanCreatureSeeCreature 0x008645e0. Frame globals 0x01375550 and 0x012925b8.
+// Naming (NF173, 2026-11-20): q4718/q5091: 0x007446A0 is Ego_r.pdb / FableWin.pdb ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ; declared on the row's existing local CTCPerceiveThing (in place), no longer on the CTCPerceiveThingAccess stand-in.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
@@ -8,10 +9,12 @@
 #include "engine/CTCPerceiveThing.h"
 #undef CTCPerceiveThing
 
+class CThing;
 class CTCPerceiveThing : public CTCPerceiveThingLayout
 {
 public:
     bool IsAwareOfThing() const;   // 0x00643B3B
+    const CThing* GetPerceivedThing() const;   // 0x007446A0 (Ego_r.pdb / FableWin.pdb ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ)
 };
 #include "engine/CTCBase.h"
 #include "engine/_quarantine/CThing.h"
@@ -57,7 +60,6 @@ class CBaseObject;
 #include "engine/CIntelligentPointer.h"
 
 struct CTCPerceiveThingAccess : CTCPerceiveThing {
-    CThing* GetPerceivedThing();                               // direct 0x007446a0 -> 0x00a01b50
 };
 
 struct CThingNativeState : CThing {
@@ -118,7 +120,7 @@ bool CAIStateGroup_SeekEnemyAccess::IsStillRunnable()
             CAIBrain* willingBrain = GetBrain();
             CThingAICreature& attacker = *willingBrain->Creature;
             if (IsWillingToAttackTarget(&attacker, ((CThing*)PEnemy.GetPItem()))) {
-                CThing* perceived = perception->GetPerceivedThing();
+                const CThing* perceived = perception->GetPerceivedThing();
                 if (((CThing*)PEnemy.GetPItem()) == perceived && perception->IsAwareOfThing()) {
                     fable_i32 frames = perception->FramesSinceDirectlyPerceivedThing;
                     if (frames != -1 && (float)frames < (float)CMainGameComponent::GetConstantFPS() * g_TargetPerceptionFrameScale)

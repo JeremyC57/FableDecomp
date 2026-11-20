@@ -1,10 +1,12 @@
 // CAIStateGroup_StealthSeekEnemy::IsStillRunnable(CTCPerceiveThing*) -- require perceived live attackable enemy and willingness to attack
+// Naming (NF173, 2026-11-20): q4718/q5091: 0x007446A0 is Ego_r.pdb / FableWin.pdb ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ, taken from engine/CTCPerceiveThing.h (FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING); the CTCPerceiveThingMethods declaration is dropped.
 // NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
 //   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
 //   dereferences both thing pointers; same fastcall registers).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail0x0093C4E0,275bytes. GetPItemA01B50;IsStopping8FD010;GetPerceivedThing7446A0;
 // LowerBound4365B0;IsThingAttackable7F6170;AreThingsEnemies76D2F0;IsWillingToAttackTarget8648A0.
+#define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_GETPERCEIVEDTHING   // NF173 q4718: the out-of-line 0x007446A0 getter
 #include "fable_compiler.h"
 #include "engine/CAIStateGroup_StealthSeekEnemy.h"
 #include "engine/CAIBrain.h"
@@ -32,7 +34,7 @@ class CThing { public:
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-struct CTCPerceiveThingMethods : CTCPerceiveThing { CThing* GetPerceivedThing() const; };
+struct CTCPerceiveThingMethods : CTCPerceiveThing { };   // NF173: GetPerceivedThing is the header's (FLAT_GETPERCEIVEDTHING)
 class CTCTargetingAI { public: bool IsThingAttackable(const CThing*) const; };
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES

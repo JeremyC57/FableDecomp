@@ -8,6 +8,10 @@
 // Layout: engine/CTCWeapon.h (WeaponDef +0x0c).
 // Shape: the def pointer copied into a local with its add-ref under a null test, the byte parked in bl across the
 // release (`mov eax,[ecx+4] ; ... ; dec eax ; mov [ecx+4],eax`, no null test), `mov al,bl` as the bool result.
+// Leaf: ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ
+// Naming (NF173, 2026-11-20): q11685: defined on the shared engine/CTCWeapon.h class through FABLE_RETAIL_CTCWEAPON_AUTOLOADING (FableWin.pdb
+//   0x0239B3E0 + Ego_r.pdb 0x0063A790 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ), no longer on the CTCWeapon_Getters stand-in.
+#define FABLE_RETAIL_CTCWEAPON_AUTOLOADING
 #include "engine/CTCWeapon.h"
 
 class CDefPointeeBase { public:                                    // completes the header's forward declaration
@@ -45,11 +49,7 @@ struct CWeaponDefPointer {                                  // CDefPointer<const
 
 class CThing;
 
-struct CTCWeapon_Getters : CTCWeapon {
-    bool IsProjectileWeaponAutoLoading() const;
-};
-
-bool CTCWeapon_Getters::IsProjectileWeaponAutoLoading() const
+bool CTCWeapon::IsProjectileWeaponAutoLoading() const
 {
     CWeaponDefPointer def(WeaponDef_Object);
     return def->ProjectileWeaponAutoReload;

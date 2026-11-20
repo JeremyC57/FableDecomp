@@ -13,14 +13,16 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 class CIEngine;
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CParticleEmitterList {
+namespace NParticleEngine {                // NF173 q11965: the existing local model in its Ego_r.pdb namespace (in place)
+class CParticleEmitterList { public:
     void* m_activeHeader;                   // +0x00 (STLport list header)
     void ClearLowestPriorityNonVisibleEmitterParticles(CIEngine* engine);   // 0x00AEAF20
 };
+}
 // NF158 (q4754): in-place respell of the row's existing local model (same class token, now `class` in its PDB namespace).
 //   0x00AEAAF0 is Ego_r.pdb / FableWin.pdb ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free
 //   __fastcall, reference return); FableWin.pdb names the inline CParticleEmitterManager::ClearLowestPriorityNonVisibleEmitterParticles() expanded here
-//   (`ActiveEmitters.ClearLowestPriorityNonVisibleEmitterParticles(PEngine)`). The local CParticleEmitterList stays global: its self row 0x00AEAF20 still defines the
+//   (`ActiveEmitters.ClearLowestPriorityNonVisibleEmitterParticles(PEngine)`). NF173 moves the local CParticleEmitterList into NParticleEngine with its self row; formerly global because the self row defined the
 //   non-namespaced spelling this row binds (moving it would split the address).
 namespace NParticleEngine {
 class CParticleEmitterManager { public:

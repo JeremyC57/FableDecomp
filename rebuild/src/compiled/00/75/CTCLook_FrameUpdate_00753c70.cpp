@@ -1,5 +1,9 @@
 // CTCLook::FrameUpdate() -- per-frame look update: refresh the head position, run the stop-looking countdown, react to the creature's interface-8 / interface-0xAA look overrides, drive the body turning, then the head state machine (centre, interested, look at a position), and finally apply the head settings
-// Leaf: FrameUpdate
+// Leaf: ?FrameUpdate@CTCLook@@UAEXXZ
+// Naming (NF173, 2026-11-20): q11927: FrameUpdate is the public virtual of both PDBs (Ego_r.pdb 0x00765FF0 / FableWin.pdb 0x025AD890
+//   ?FrameUpdate@CTCLook@@UAEXXZ, CTCLook vtable 0x01269744 slot 9): declared virtual in the local model, whose CTCBase now carries the
+//   vptr as a virtual instead of an explicit __vftable word (layout unchanged). q11928: SetHeadTurnState (and its same-TU copy) private
+//   (?SetHeadTurnState@CTCLook@@AAEXJ@Z, both PDBs).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00753C70, 544 bytes, plain `ret`. Vtable 0x01269744 (CTCLook) slot 9 (catalog "vfunc_9").
@@ -65,7 +69,7 @@ class CMainGameComponent { public:
     long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
 class CTCBase { public:
-    void*         __vftable;                               // +0x00
+    virtual void FrameUpdate();                            // +0x00 vptr (NF173: was an explicit __vftable word; CTCBase is polymorphic)
     CThing*       ParentThing;                             // +0x04
 protected:
     const CMainGameComponent& PeekComponent() const;   // 0x00686D60 (Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ)
@@ -101,10 +105,10 @@ private:
     void FrameUpdateOverriddenByParent();                  // 0x00753080
     void FrameUpdateHeadInterested();                      // 0x00753380
     void FrameUpdateHeadLookAtPos(const C3DVector& pos, bool turnBody);   // 0x007530D0
+    void SetHeadTurnState(long state);                     // 0x007517B0 (private: Ego_r.pdb / FableWin.pdb ?SetHeadTurnState@CTCLook@@AAEXJ@Z)
 public:
     bool IsLookTimeOver();                                 // 0x00753AD0
-    void SetHeadTurnState(long state);                     // 0x007517B0
-    void FrameUpdate();
+    virtual void FrameUpdate();                            // vtable 0x01269744 slot 9 (Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCLook@@UAEXXZ)
 };
 
 #pragma auto_inline(off)

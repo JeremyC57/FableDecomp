@@ -105,7 +105,7 @@ public:
 class CTCWeapon {
 public:
     bool IsProjectileWeapon();                      // 0x005DAA40
-    bool IsAnalogueLoading();                       // 0x005DA950
+    bool IsProjectileWeaponAutoLoading() const;                       // 0x005DA950
     bool IsProjectileWeaponLoaded();                // 0x005DA980
 };
 class CTCHeroRangedAttacks {
@@ -142,7 +142,7 @@ bool __fastcall IsThingToKeepStrafing(const CThingPlayerCreature& creature)
         if (actionQueued || fireCycle || loading || creature.IsPerformingAnyAction())
             return true;
     }
-    if (weapon && weapon->IsAnalogueLoading() && !weapon->IsProjectileWeaponLoaded())
+    if (weapon && weapon->IsProjectileWeaponAutoLoading() && !weapon->IsProjectileWeaponLoaded())
         return true;
     return false;
 }
@@ -156,7 +156,7 @@ static bool g_isProjectile, g_analogue, g_loaded, g_queued, g_busy;
 static long g_queueArgs[3];
 CThing* CTCCarrying::GetThingInPrimarySlot() { return g_primary; }
 bool CTCWeapon::IsProjectileWeapon() { return g_isProjectile; }
-bool CTCWeapon::IsAnalogueLoading() { return g_analogue; }
+bool CTCWeapon::IsProjectileWeaponAutoLoading() const { return g_analogue; }
 bool CTCWeapon::IsProjectileWeaponLoaded() { return g_loaded; }
 CPlayer* CThing::GetPlayer() const { return g_player; }
 long CPlayer::GetPlayerNumber() { return 3; }

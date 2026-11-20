@@ -1,0 +1,3 @@
+entry	address	claim	reason
+q6391	0x0070C050	?Set@CAnimInit@@QAEXJJJJ_NKJ@Z / ?Set@CAnimInit@@QAEXEKJJ_NKJ@Z	no CAnimInit::Set exists in Ego_r.pdb or FableWin.pdb (both name sets hold ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z, the self row Leaf); the claim column carries the wrong spellings, the evidence column the right one
+q6462	0x0070C050	?Set@CAnimInit@@QAEXJJJJ_NKJ@Z | ?Set@CAnimInit@@QAEXEKJJ_NKJ@Z	same as q6391: Set is in no PDB; Init is the name

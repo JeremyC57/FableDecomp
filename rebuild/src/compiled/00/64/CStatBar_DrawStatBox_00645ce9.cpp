@@ -1,5 +1,6 @@
 // NPlayerGui::CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, long graphic, long value, long effect, const CWideString& text, unsigned char alpha, bool withText, bool flag) -- draw the box through the static helper, place the change text (right-aligned under the box when shown) and keep the box's particle effect alive at the text position
 // Leaf: DrawStatBox@CStatBar
+// Naming (NF173, 2026-11-20): q11968: 0x00AED090 is Ego_r.pdb 0x00AB1EE0 / FableWin.pdb 0x02F072A0 ?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z (position by const reference); respelled in place, bytes unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00645CE9, 578 bytes, `ret 28h`, frame-pointer size TU (`leave`).
@@ -60,7 +61,7 @@ enum EEngine2DLayer { ENGINE_2D_LAYER_STAT_BOX = 0x44 };
 namespace NParticleEngine {
 class CParticleEmitter { public:
     void Kill();                                                        // 0x00AEE8C0
-    void Set2DPosition(const C2DVector* position, EEngine2DLayer layer);   // 0x00AED090
+    void Set2DPosition(const C2DVector& position, EEngine2DLayer layer);   // 0x00AED090 (Ego_r.pdb / FableWin.pdb: by reference)
 };
 // NF158 (q4754, q4977 / q11719): in-place respells of the row's existing local model. 0x00AEAAF0 is Ego_r.pdb / FableWin.pdb
 //   ?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ (free __fastcall, reference return; was the
@@ -149,7 +150,7 @@ void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraph
             *Effects.begin() = emitter;
         }
         if ((*Effects.begin()).GetPItem())
-            ((NParticleEngine::CParticleEmitter*)(*Effects.begin()).GetPItem())->Set2DPosition(&(textPos + Def->EffectOffset),
+            ((NParticleEngine::CParticleEmitter*)(*Effects.begin()).GetPItem())->Set2DPosition(textPos + Def->EffectOffset,
                 ENGINE_2D_LAYER_STAT_BOX);
     }
     LastEffect = effect;

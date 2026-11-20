@@ -1,9 +1,10 @@
-// CNavigatorManager::AddNavigationMap(long, const C2DBoxI&, const CCharString&, CAFile&, CASuspendableProcess*) -- add a quad-tree map for the map index unless one exists: append an entry with the area and section name, load a new CNavQuadTree for it from the file, and drop the entry again when the load fails
-// Leaf: ?AddNavigationMap@CNavigatorManager@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCAFile@@PAVCASuspendableProcess@@@Z
+// CNavigatorManager::AddNavigationMap(long, const C2DBoxI&, const CCharString&, CAFile&, CASuspendableProcess&) -- add a quad-tree map for the map index unless one exists: append an entry with the area and section name, load a new CNavQuadTree for it from the file, and drop the entry again when the load fails
+// Leaf: ?AddNavigationMap@CNavigatorManager@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCAFile@@AAVCASuspendableProcess@@@Z
+// Naming (NF173, 2026-11-20): q4785: CNavQuadTree::LoadFromFile 0x00A7AF60 and this row's own AddNavigationMap take the process by reference, as Ego_r.pdb (0x00BC1160 / 0x00B82E70) and FableWin.pdb (0x0328A760 / 0x031C5C10) spell them; bytes unchanged (a reference passes the address). Own leaf PAV -> AAV; its only landed referencer 0x00500230 moves in the same hand-back.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A157C0, 196 bytes (+ int3 padding; `ret 14h`).
 // Callees: list<CNavQuadTreeMap>::insert(iterator) 0x00A17480 and erase(iterator) 0x00A17110, CCharString::operator= 0x0099EFB0,
 //   operator new 0x00BFEA1A, CNavQuadTree::CNavQuadTree 0x00A7A760, CCountedPointer<CNavQuadTree>::Reset(T*) 0x00A16640,
-//   CNavQuadTree::LoadFromFile(CAFile&, long, const C2DBoxI&, CASuspendableProcess*) 0x00A7AF60 (a bool in al).
+//   CNavQuadTree::LoadFromFile(CAFile&, long, const C2DBoxI&, CASuspendableProcess&) 0x00A7AF60 (a bool in al).
 // Layout: as the CNavigationAreaInit overload 0x00A156D0: QuadTrees at retail +0x24; CNavQuadTreeMap {PQuadTree +0, Index +8,
 //   MapArea +0xc, SectionName +0x1c}.
 // Shape: the inserted entry is re-read as back(); on a failed load the last entry is erased through a by-value iterator
@@ -26,7 +27,7 @@ public:
     CNavQuadTree();                                // 0x00A7A760
     void SetUpMapStructure(const C2DVector& origin, float width, float height, long mapIndex);   // 0x00A762F0
     void Initialise(CNavigationAreaInit& init);    // 0x00A7A8D0
-    bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess* process);   // 0x00A7AF60
+    bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess& process);   // 0x00A7AF60
 };
 template <class T> class CCountedPointer { public:
     T*    Data;
@@ -70,10 +71,10 @@ public:
     void*                 __vftable;               // +0x00
     unsigned char         _pad04[0x20];
     list<CNavQuadTreeMap> QuadTrees;               // +0x24
-    void AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess* process);
+    void AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess& process);
 };
 
-void CNavigatorManager::AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess* process)
+void CNavigatorManager::AddNavigationMap(long mapIndex, const C2DBoxI& area, const CCharString& sectionName, CAFile& file, CASuspendableProcess& process)
 {
     {
         const list<CNavQuadTreeMap>& maps = QuadTrees;

@@ -1,11 +1,14 @@
-// CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals(CIEngine*) -- walking the active list from the back (lowest priority first), clears the decals of the first initialised, non-visible emitter that has any allocated
-// Leaf: ClearLowestPriorityNonVisibleEmitterDecals
+// CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterParticles(CIEngine*) -- walking the active list from the back (lowest priority first), clears the particles of the first initialised, non-visible emitter that has any allocated
+// Leaf: ?ClearLowestPriorityNonVisibleEmitterParticles@CParticleEmitterList@NParticleEngine@@QAEXPAVCIEngine@@@Z
+// Naming (NF173, 2026-11-20): q11965: the existing local CParticleEmitterList model moves into NParticleEngine (in place; Ego_r.pdb / FableWin.pdb
+//   ?ClearLowestPriorityNonVisibleEmitterParticles@CParticleEmitterList@NParticleEngine@@QAEXPAVCIEngine@@@Z, engine/CParticleEmitterList.h); the one landed
+//   referencer (CParticleSystem::AllocateParticle) moves in the same hand-back.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00AEAF80, 87 bytes (`ret 4`). 0x00AEAF20 is the particle twin.
-// Callees: NParticleEngine::CParticleEmitter::IsVisible @ 0x00AED010, CParticleEmitter::HasAllocatedDecals @ 0x00AED220,
-// CParticleEmitter::ClearAllDecals @ 0x00AED1E0.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AEAF20, 87 bytes (`ret 4`). 0x00AEAF80 is the decal twin.
+// Callees: NParticleEngine::CParticleEmitter::IsVisible @ 0x00AED010, CParticleEmitter::HasAllocatedParticles @ 0x00AED1B0,
+// CParticleEmitter::ClearAllParticles @ 0x00AED140.
 // Label: the chunk names both twins "ClearLowestPriorityNonVisibleEmitterDecals"; the callees and the callers
-// (CParticleSystem::AllocateParticle 0x00AF5010 / AllocateDecal 0x00AF5380) make this the decals one.
+// (CParticleSystem::AllocateParticle 0x00AF5010 / AllocateDecal 0x00AF5380) make this the particles one.
 // Shape: Active (list<CCountedPointer<CParticleEmitter>>) is the list at +0 (one STLport word); the loop is a
 // reverse_iterator walk: rbegin holds the sentinel, `*rit` reads current->prev's data (`mov eax,[esi+4] ; mov
 // ecx,[eax+8]`, re-read before every call), rend is begin() re-read from the sentinel each pass. Initialised is
@@ -76,17 +79,20 @@ template <class T> struct CRetailList {              // STLport list: one word, 
 
 typedef NParticleEngine::CCountedPointer<NParticleEngine::CParticleEmitter> CEmitterPointer;
 
-struct CParticleEmitterList {
+namespace NParticleEngine {
+class CParticleEmitterList { public:   // NF173: in its Ego_r.pdb namespace (in place)
     CRetailList<CEmitterPointer> Active;             // +0x00
     long                         MaxActiveEmitters;  // +0x04
-    void ClearLowestPriorityNonVisibleEmitterDecals(CIEngine* engine);
+    void ClearLowestPriorityNonVisibleEmitterParticles(CIEngine* engine);
 };
+}
 
-void CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals(CIEngine* engine)
+
+void NParticleEngine::CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterParticles(CIEngine* engine)
 {
     for (CRetailList<CEmitterPointer>::reverse_iterator it = Active.rbegin(); it != Active.rend(); ++it) {
-        if ((*it)->Initialised && !(*it)->IsVisible() && (*it)->HasAllocatedDecals()) {
-            (*it)->ClearAllDecals(engine);
+        if ((*it)->Initialised && !(*it)->IsVisible() && (*it)->HasAllocatedParticles()) {
+            (*it)->ClearAllParticles(engine);
             return;
         }
     }

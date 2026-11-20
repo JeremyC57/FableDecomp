@@ -1,5 +1,6 @@
 // NInputProcess::IsThingToKeepStrafing(const CThingPlayerCreature& creature) -- the hero keeps strafing while it holds a live projectile weapon outside ranged-weapon mode and is firing, loading, has the strafe action (0xA, held) queued or is busy with an action, or while its weapon is analogue-loading but not yet loaded
 // Leaf: ?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z
+// Naming (NF173, 2026-11-20): q11685: 0x005DA950 is FableWin.pdb 0x0239B3E0 / Ego_r.pdb 0x0063A790 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ (IsAnalogueLoading is 0x005DA8F0); respelled in place in the existing local CTCWeapon model.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068EB20, 384 bytes (380 without padding), `__fastcall` (ecx = creature), plain `ret`,
@@ -93,7 +94,7 @@ public:
 };
 class CTCWeapon {
 public:
-    bool IsAnalogueLoading();                       // 0x005DA950
+    bool IsProjectileWeaponAutoLoading() const;                       // 0x005DA950 (Ego_r.pdb / FableWin.pdb)
     bool IsProjectileWeaponLoaded() const;   // Ego_r/FableWin ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (agentNF16)                // 0x005DA980
 public:
     bool IsProjectileWeapon() const;   // 0x005DAA40
@@ -132,7 +133,7 @@ bool __fastcall IsThingToKeepStrafing(const CThingPlayerCreature& creature)
         if (actionQueued || fireCycle || loading || creature.IsPerformingAnyAction())
             return true;
     }
-    if (weapon && weapon->IsAnalogueLoading() && !weapon->IsProjectileWeaponLoaded())
+    if (weapon && weapon->IsProjectileWeaponAutoLoading() && !weapon->IsProjectileWeaponLoaded())
         return true;
     return false;
 }

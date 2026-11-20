@@ -1,4 +1,5 @@
 // NUISystem::CParticleEffect::Draw(long, long, long, long, long) -- keep the running emitter on the component: pick the front-end layer for its depth (offset by the draw depth unless the component is independent or suppressed) and move the emitter to its position, rescaled from the display to the virtual screen size when that override is on
+// Naming (NF173, 2026-11-20): q11968: 0x00AED090 is Ego_r.pdb 0x00AB1EE0 / FableWin.pdb 0x02F072A0 ?Set2DPosition@CParticleEmitter@NParticleEngine@@QAEXABVC2DVector@@W4EEngine2DLayer@@@Z (position by const reference); respelled in place, bytes unchanged.
 // NF114 (2026-11-20, q11634..q11638): the five CUIScreenUnitConverter statics were invented globals here (g_bScreenSizeOverride /
 //   g_OverrideScreenWidth / Height / g_DisplayWidth / Height, read by local ScaleScreenX / ScaleScreenY helpers); they are the class's private
 //   statics (Ego_d.pdb PUB32 + FableWin.pdb LF_STMEMBER, `@@0`), read here through the class's own inline per-axis converters ConvertX /
@@ -40,7 +41,7 @@ enum EEngine2DLayer { ENGINE_2D_LAYER_DEFAULT = 0 };
 namespace NParticleEngine {
 class CParticleEmitter {
 public:
-    void Set2DPosition(const C2DVector* position, EEngine2DLayer layer);                         // 0x00AED090
+    void Set2DPosition(const C2DVector& position, EEngine2DLayer layer);                         // 0x00AED090 (Ego_r.pdb / FableWin.pdb: by reference)
 };
 }
 using NParticleEngine::CParticleEmitter;
@@ -277,7 +278,7 @@ void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long c
         C2DVector position = Position;
         position.X = CUIScreenUnitConverter::ConvertX(position.X);
         position.Y = CUIScreenUnitConverter::ConvertY(position.Y);
-        Emitter->Set2DPosition(&position, layer);
+        Emitter->Set2DPosition(position, layer);
     }
 }
 }

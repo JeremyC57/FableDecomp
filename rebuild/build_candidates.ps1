@@ -43219,9 +43219,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a76320'
-        Module = '_global'
-        Source = '00/a7/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00a76320.cpp'
-        TestSource = '00/a7/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00a76320_test.cpp'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_GetSmallestNodeSize_00a76320.cpp'
+        TestSource = '00/a7/CNavQuadTree_GetSmallestNodeSize_00a76320_test.cpp'
         PassPattern = '00a76320_TEST PASS'
     }
     [pscustomobject]@{
@@ -67249,9 +67249,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ae91d0'
-        Module = '_global'
-        Source = '00/ae/DeleteData_DeleteData_00ae91d0.cpp'
-        TestSource = '00/ae/DeleteData_DeleteData_00ae91d0_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CParticleEmitter>'
+        Source = '00/ae/CCountedPointer_DeleteData_00ae91d0.cpp'
+        TestSource = '00/ae/CCountedPointer_DeleteData_00ae91d0_test.cpp'
         PassPattern = 'AUTO_TINY_00ae91d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -68790,23 +68790,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f1f00'
-        Module = '_global'
-        Source = '00/9f/E2_E2_009f1f00.cpp'
-        TestSource = '00/9f/E2_E2_009f1f00_test.cpp'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_OnFailedAllocation_009f1f00.cpp'
+        TestSource = '00/9f/CMemoryAllocator_OnFailedAllocation_009f1f00_test.cpp'
         PassPattern = 'OK_009f1f00'
     }
     [pscustomobject]@{
         Address = '009f1f40'
-        Module = '_global'
-        Source = '00/9f/E2_E2_009f1f40.cpp'
-        TestSource = '00/9f/E2_E2_009f1f40_test.cpp'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_InternalValidateArea_009f1f40.cpp'
+        TestSource = '00/9f/CMemoryAllocator_InternalValidateArea_009f1f40_test.cpp'
         PassPattern = 'OK_009f1f40'
     }
     [pscustomobject]@{
         Address = '009f2080'
-        Module = '_global'
-        Source = '00/9f/E2_E2_009f2080.cpp'
-        TestSource = '00/9f/E2_E2_009f2080_test.cpp'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_SaveStackMemoryTrackerLog_009f2080.cpp'
+        TestSource = '00/9f/CMemoryAllocator_SaveStackMemoryTrackerLog_009f2080_test.cpp'
         PassPattern = 'OK_009f2080'
     }
     [pscustomobject]@{
@@ -121726,9 +121726,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c2da00'
-        Module = 'NScript::CV_MurderTwistScript'
-        Source = '00/c2/NScriptCVMurderTwistScript_Read_00c2da00.cpp'
-        TestSource = '00/c2/NScriptCVMurderTwistScript_Read_00c2da00_test.cpp'
+        Module = 'CSegmentFile'
+        Source = '00/c2/CSegmentFile_Read_00c2da00.cpp'
+        TestSource = '00/c2/CSegmentFile_Read_00c2da00_test.cpp'
         PassPattern = 'PASS_00c2da00'
     }
     [pscustomobject]@{
@@ -207268,16 +207268,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeaf20'
-        Module = 'CParticleEmitterList'
-        Source = '00/ae/CParticleEmitterList_ClearLowestPriorityNonVisibleEmitterParticles_00aeaf20.cpp'
-        TestSource = '00/ae/CParticleEmitterList_ClearLowestPriorityNonVisibleEmitterParticles_00aeaf20_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitterList'
+        Source = '00/ae/NParticleEngineCParticleEmitterList_ClearLowestPriorityNonVisibleEmitterParticles_00aeaf20.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterList_ClearLowestPriorityNonVisibleEmitterParticles_00aeaf20_test.cpp'
         PassPattern = '00aeaf20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00aeaf80'
-        Module = 'CParticleEmitterList'
-        Source = '00/ae/CParticleEmitterList_ClearLowestPriorityNonVisibleEmitterDecals_00aeaf80.cpp'
-        TestSource = '00/ae/CParticleEmitterList_ClearLowestPriorityNonVisibleEmitterDecals_00aeaf80_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitterList'
+        Source = '00/ae/NParticleEngineCParticleEmitterList_ClearLowestPriorityNonVisibleEmitterDecals_00aeaf80.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterList_ClearLowestPriorityNonVisibleEmitterDecals_00aeaf80_test.cpp'
         PassPattern = '00aeaf80_TEST PASS'
     }
     [pscustomobject]@{
@@ -265203,9 +265203,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aeb6d0'
-        Module = 'CParticleEmitterManager'
-        Source = '00/ae/CParticleEmitterManager_CreateEmitter_00aeb6d0.cpp'
-        TestSource = '00/ae/CParticleEmitterManager_CreateEmitter_00aeb6d0_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_CreateEmitter_00aeb6d0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_CreateEmitter_00aeb6d0_test.cpp'
         PassPattern = '00aeb6d0_TEST PASS'
     }
     [pscustomobject]@{

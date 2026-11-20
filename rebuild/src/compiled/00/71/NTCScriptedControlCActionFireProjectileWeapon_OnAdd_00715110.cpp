@@ -1,5 +1,6 @@
 // Levers: the local CCountedPointer dtor is retail's 0x0048C5C0 body (it zeroes Data/Info); with that cost VC7.1's per-site rule calls it for the reload temporary (two branches deep) and expands it for the aim/fire temporaries; `hasMissileWeapon` declared before `needsReload` so its false store is an immediate byte (not the bl zero).
 // Leaf: ?OnAdd@CActionFireProjectileWeapon@@QAEXXZ
+// Naming (NF173, 2026-11-20): q11688: 0x005DAA40 is Ego_r.pdb / FableWin.pdb ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ (no IsMissileWeapon exists in either PDB); respelled in place in the existing local CTCWeapon model.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // NTCScriptedControl::CActionFireProjectileWeapon::OnAdd() -- queue reload (when needed), aim and fire creature actions for a creature holding a missile weapon
 // Layout: owning control at +4 (its +4 is the creature, as in the landed 0x007122D0); target CScriptThing at +0xC; the creature-action queue at +0x18.
@@ -38,7 +39,7 @@ struct CCreatureActionQueue { void Add(const CCountedPointer& action); };   // 0
 
 class CTCInventoryAbilities { public: CThing* GetWeaponInHand() const; };    // 0x006A1440
 // NF113 (PRIORITY q6397): IsLoaded respelled in place to Ego_r.pdb / FableWin.pdb ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ (0x005DA980).
-class CTCWeapon { public: bool IsMissileWeapon() const; bool IsProjectileWeaponLoaded() const; };  // 0x005DAA40 / 0x005DA980
+class CTCWeapon { public: bool IsProjectileWeapon() const; bool IsProjectileWeaponLoaded() const; };  // 0x005DAA40 / 0x005DA980 (Ego_r.pdb / FableWin.pdb)
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -82,7 +83,7 @@ void CActionFireProjectileWeapon::OnAdd()
     if (creature->PeekTC(TCI_CARRYING, &inventory)) {
         CThing* weapon = inventory->GetWeaponInHand();
         const CTCWeapon* tcWeapon;
-        if (weapon && !weapon->IsDead() && weapon->PeekTC(TCI_WEAPON, &tcWeapon) && tcWeapon->IsMissileWeapon()) {
+        if (weapon && !weapon->IsDead() && weapon->PeekTC(TCI_WEAPON, &tcWeapon) && tcWeapon->IsProjectileWeapon()) {
             hasMissileWeapon = true;
             needsReload = !tcWeapon->IsProjectileWeaponLoaded();
         }

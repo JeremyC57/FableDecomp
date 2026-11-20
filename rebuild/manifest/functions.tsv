@@ -35209,13 +35209,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f1ac0	InitFromCompressedBuffer	CGameEventPackageSet	__thiscall	void	2	CGameEventPackageSet *,uchar *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\9f\0x009F1AC0_CGameEventPackageSet_InitFromCompressedBuffer.cpp				
 009f1c80	GetSizeVal	_global	__fastcall	uint	2	char *,char *	1	yes	accepted									
 009f1d20	InitializeMemorySystem	_global	__fastcall	void	0		1	yes	accepted									
-009f1f00	Nop_ret0_009f1f00	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f00.cpp
+009f1f00	OnFailedAllocation	CMemoryAllocator	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f00.cpp
 009f1f10	GetAllocationCount	CMemoryAllocator	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\DrawGetEnvironment_DrawGetEnvironment_009f1f10.cpp
-009f1f40	Nop_ret4_009f1f40	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f40.cpp
+009f1f40	InternalValidateArea	CMemoryAllocator	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f1f40.cpp
 009f1f90	operator_delete	CMemoryAllocator	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_operatordelete_009f1f90.cpp
 009f2000	EnterSynchronisation	CMemoryAllocator	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\std_DestvalCFlash_009f2000.cpp
 009f2010	LeaveSynchronisation	CMemoryAllocator	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
-009f2080	Nop_ret4_009f2080	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f2080.cpp
+009f2080	SaveStackMemoryTrackerLog	CMemoryAllocator	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\E2_E2_009f2080.cpp
 009f20b0	CMemoryAllocator	CMemoryAllocator	__thiscall	undefined	2	CMemoryAllocator *,void *	0	yes	accepted									
 009f2310	~CMemoryAllocator	CMemoryAllocator	__thiscall	void	1	CMemoryAllocator *	1	yes	accepted									
 009f2390	GetAllocationSize	CMemoryAllocator	__thiscall	ulong	2	CMemoryAllocator *,void *	1	yes	accepted									
@@ -40111,7 +40111,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ae8c30	CreateEmitterTemplate	NParticleEngine::CParticleEmitterDatabase	unknown	undefined	0		0	yes	accepted									
 00ae8d50	Load	NParticleEngine::CParticleEmitterDatabase	unknown	undefined	0		0			discovered	gapscan							
 00ae91c0	DeleteData	CCountedPointer<NParticleEngine::CParticleDataBank>	unknown	undefined	0		0			discovered	gapscan							
-00ae91d0	DeleteViaVtable0_00ae91d0	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\DeleteData_DeleteData_00ae91d0.cpp
+00ae91d0	DeleteData	CCountedPointer<NParticleEngine::CParticleEmitter>	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\DeleteData_DeleteData_00ae91d0.cpp
 00ae9270	CCountedPointer_Release_00ae9270	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae9270.cpp
 00ae92b0	CCountedPointer_Release_00ae92b0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae92b0.cpp
 00ae92f0	ShareData	CCountedPointer<CScriptThing>	__thiscall	void	3	CCountedPointer<CScriptThing> *,CScriptThing *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CCountedPointerCScriptThing_ShareData_00ae92f0.cpp
@@ -40170,8 +40170,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeab20	SetEnvironmentInteraction	NParticleEngine	__fastcall	void	1	CCountedPointer<NParticleEngine::CAEnvironmentInteraction>	1	yes	accepted									
 00aeabe0	CreateDecalEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
 00aeac90	DumpInfo	NParticleEngine::CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,CWideString *	1	yes	accepted									
-00aeaf20	ClearLowestPriorityNonVisibleEmitterParticles	CParticleEmitterList	__thiscall	void	2	CParticleEmitterList *,CIEngine *	1	yes	accepted									
-00aeaf80	ClearLowestPriorityNonVisibleEmitterDecals	CParticleEmitterList	__thiscall	void	2	CParticleEmitterList *,CIEngine *	1	yes	accepted									
+00aeaf20	ClearLowestPriorityNonVisibleEmitterParticles	NParticleEngine::CParticleEmitterList	__thiscall	void	2	CParticleEmitterList *,CIEngine *	1	yes	accepted									
+00aeaf80	ClearLowestPriorityNonVisibleEmitterDecals	NParticleEngine::CParticleEmitterList	__thiscall	void	2	CParticleEmitterList *,CIEngine *	1	yes	accepted									
 00aeb000	GetParticleStats	CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,CParticleStats *	1	yes	accepted									
 00aeb060	Insert	NParticleEngine::CParticleEmitterList	__thiscall	bool	2	CParticleEmitterList *,CCountedPointer<NParticleEngine::CParticleEmitter> *	1	yes	accepted									
 00aeb190	Insert	NParticleEngine::CParticleEmitterList	unknown	undefined	0		0	yes	accepted									
@@ -40179,7 +40179,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeb4a0	Update	CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,bool	1	yes	accepted									
 00aeb550	StartFrame	CParticleEmitterManager	__thiscall	void	2	CParticleEmitterManager *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00aeb600	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,CParticleEmitter *,CParticleEmitter *,float,C3DVector *,CRightHandedSet *	1	yes	accepted									
-00aeb6d0	CreateEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
+00aeb6d0	CreateEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	5	CParticleEmitterManager *,long,C3DVector *,bool,CRightHandedSet *	1	yes	accepted									
 00aeb790	Create2DEmitter	CParticleEmitterManager	__thiscall	CParticleEmitter *	6	CParticleEmitterManager *,long,C2DVector *,EEngine2DLayer,bool,CRightHandedSet *	1	yes	accepted									
 00aeb850	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,CParticleEmitter *,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
 00aeb8c0	CreateInterpolatedEmitter	NParticleEngine::CParticleEmitterManager	__thiscall	CParticleEmitter *	7	CParticleEmitterManager *,long,long,float,C3DVector *,CRightHandedSet *,bool	1	yes	accepted									
@@ -45453,7 +45453,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c2d9a0	~CPersistTraits<CReactionFrequencyTraitsArray>	CPersistTraits<CReactionFrequencyTraitsArray>	__thiscall	void	1	CPersistTraits<CReactionFrequencyTraitsArray> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CPersistTraitsCReactionFrequencyTraitsArray_CPersistTraitsCReactionFrequencyTraitsArray_00c2d9a0.cpp
 00c2d9b0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00c2d9c0	OpenSegment	CSegmentFile	unknown	undefined	0		0	yes	accepted									
-00c2da00	Read	NScript::CV_MurderTwistScript	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\NScriptCVMurderTwistScript_Read_00c2da00.cpp
+00c2da00	Read	CSegmentFile	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\NScriptCVMurderTwistScript_Read_00c2da00.cpp
 00c2da10	GetPThingUniqueID	CGameScriptThing	__thiscall	__uint64	1	CGameScriptThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CGameScriptThing_GetPThingUniqueID_00c2da10.cpp
 00c2da20	CLiOnHeAdSegmentReader	CLiOnHeAdSegmentReader	unknown	undefined	0		0	yes	accepted									
 00c2dbe0	TeleportData_Destructor_WithUnwind	_global	unknown	undefined	0		0	yes	accepted									

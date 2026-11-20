@@ -58,7 +58,7 @@ static int g_kinds[8]; static CThing* g_fireTargets[8]; static int g_added = 0;
 struct CCreatureActionQueue { void Add(const CCountedPointer& action) { if (g_added < 8) { g_kinds[g_added] = action.m_pObject->Kind; g_fireTargets[g_added] = action.m_pObject->Target; } ++g_added; } };
 static bool g_missile = true, g_loaded = false;
 class CTCInventoryAbilities { public: CThing* Weapon; CThing* GetWeaponInHand() { return Weapon; } };
-class CTCWeapon { public: bool IsMissileWeapon() { return g_missile; } bool IsLoaded() { return g_loaded; } };
+class CTCWeapon { public: bool IsProjectileWeapon() { return g_missile; } bool IsLoaded() { return g_loaded; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -109,7 +109,7 @@ void CActionFireProjectileWeapon::OnAdd()
     if (creature->GetInterface(&inventory, 0x46)) {
         CThing* weapon = inventory->GetWeaponInHand();
         CTCWeapon* tcWeapon;
-        if (weapon && !(weapon->Flags91 & 1) && weapon->GetInterface(&tcWeapon, 0x48) && tcWeapon->IsMissileWeapon()) {
+        if (weapon && !(weapon->Flags91 & 1) && weapon->GetInterface(&tcWeapon, 0x48) && tcWeapon->IsProjectileWeapon()) {
             hasMissileWeapon = true;
             needsReload = !tcWeapon->IsLoaded();
         }

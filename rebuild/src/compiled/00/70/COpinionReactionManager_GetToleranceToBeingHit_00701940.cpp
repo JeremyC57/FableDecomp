@@ -9,6 +9,7 @@
 // before the find call); the map reference is kept in esi for both find and end(); `it != end` with the found arm
 // first, `return 0.0f` loads the pool constant (no `fldz`).
 // Leaf: GetToleranceToBeingHit
+// Naming (NF173, 2026-11-20): q4078: the local COpinionReactionManager model declares GetThingAttitudeToPlayer(const CThing&) const as Ego_r.pdb 0x00551920 / FableWin.pdb 0x01F15FA0 spell it (was const CThing*); bytes unchanged (a reference passes the address).
 class CThing;
 enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE = 0 };
 
@@ -43,13 +44,13 @@ class COpinionReactionManagerDef { public:
 class COpinionReactionManager {
 public:
     const COpinionReactionManagerDef* PDef;        // +0x00
-    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing* thing) const;   // 0x00701840
+    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840 (Ego_r.pdb + FableWin.pdb: by reference)
     float GetToleranceToBeingHit(const CThing* thing) const;
 };
 
 float COpinionReactionManager::GetToleranceToBeingHit(const CThing* thing) const
 {
-    EOpinionAttitudeType attitude = GetThingAttitudeToPlayer(thing);
+    EOpinionAttitudeType attitude = GetThingAttitudeToPlayer(*thing);
     const CToleranceMap& tolerance = PDef->ToleranceToBeingHit;
     CToleranceIterator it = tolerance.find(attitude);
     if (it != tolerance.end())
