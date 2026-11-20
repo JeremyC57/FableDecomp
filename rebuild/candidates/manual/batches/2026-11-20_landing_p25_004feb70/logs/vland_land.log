@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004feb70   RELOCATION_MATCH PASS   HeightAreaChanged
+
+WINS: 1
+  004feb70 RELOCATION_MATCH CWorldMap::?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_HeightAreaChanged_004feb70

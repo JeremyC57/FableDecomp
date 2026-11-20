@@ -33,7 +33,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 004cdc40	CSubtitledMessage	AddCameraTagFromText	1392	parked	DIFFER(1349v1379)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004cdc40.cpp	original
 004ce550	CSubtitledMessage	CSubtitledMessage	1296	parked	DIFFER(1128v1281)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/004ce550.cpp	original
 004cebb0	CSubtitledMessage	GetMessagesFromTextName	2032	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/004cebb0.cpp	original
-004feb70	CWorldMap	?HeightAreaChanged@CWorldMap@@UAEXPBVC2DBoxI@@@Z	272	reserved (acctB p25N, 2026-11-20)	DIFFER(260v261)	9	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/004feb70.cpp	original
 00500540	CWorldMap	LoadRegion	2416	parked	DIFFER(2396v2412)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00500540.cpp	original
 00502e90	CWorldMap	PopulateRegionWithVillagers	13632	parked	acctC round six: round 6 final (2026-11-16): DIFFER(13587v13622); latest draft 00502e90.cpp + NOTES.md in the folder (grep the 	1	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE10/00502e90.cpp	original
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original

@@ -401737,6 +401737,13 @@ $catalog = @(
         TestSource = '00/73/CTCCombat_UpdateGetHitCounterAttack_00733cf0_test.cpp'
         PassPattern = '00733cf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004feb70'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_HeightAreaChanged_004feb70.cpp'
+        TestSource = '00/4f/CWorldMap_HeightAreaChanged_004feb70_test.cpp'
+        PassPattern = '004feb70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
