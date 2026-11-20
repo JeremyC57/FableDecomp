@@ -916,7 +916,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e29b20	NScript::CQS_ScytheInfoScript	Main	848	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand573/differ/00e29b20.cpp	gapscan/boundary
 00e2e400	NScript::CV_AmbushScamScript	ResetRandomSpeechTime	64	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00e2e400.cpp	original
 00e2ec30	CV_AmbushScamScript	GetTrickster	1344	parked	DIFFER(1053v1336)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00e2ec30.cpp	original
-00e37e40	NScript::CV_AssassinAttacksScript::CM_AssassinTrigger	Main	1104	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1104v1103)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00e37e40.cpp	original
 00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2096	parked	DIFFER(2276v2084)	2	rebuild/candidates/manual/pending/2026-11-05_linux_hand791/differ/00e49020.test.cpp	original
 00e4fa20	NScript::CV_BeardyBaldyScript	Main	1760	parked	DIFFER(1763v1756)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand780/differ/00e4fa20.test.cpp	original
 00e50910	NScript::CV_BeardyBaldyScript	WatchForQuestCardConditions	1328	parked	DIFFER(1375v1328)	5	rebuild/candidates/manual/pending/2026-11-07_linux_hand835/differ/00e50910.cpp	original

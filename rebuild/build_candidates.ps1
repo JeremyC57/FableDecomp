@@ -401376,6 +401376,13 @@ $catalog = @(
         TestSource = '00/dd/NScriptCQPrisonRaceScript_Main_00ddae40_test.cpp'
         PassPattern = '00ddae40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e37e40'
+        Module = 'NScript::CV_AssassinAttacksScript::CM_AssassinTrigger'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Main_00e37e40.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Main_00e37e40_test.cpp'
+        PassPattern = '00e37e40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

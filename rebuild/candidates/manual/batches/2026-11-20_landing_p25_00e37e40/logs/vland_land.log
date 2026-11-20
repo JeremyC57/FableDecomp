@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e37e40   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e37e40 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::?Main@CM_AssassinTrigger@CV_AssassinAttacksScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVAssassinAttacksScriptCMAssassinTrigger_Main_00e37e40

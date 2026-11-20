@@ -1,0 +1,23 @@
+diff --git a/rebuild/include/engine/CV_AssassinAttacksScript.h b/rebuild/include/engine/CV_AssassinAttacksScript.h
+index b9b7f50ee..7284de0f7 100644
+--- a/rebuild/include/engine/CV_AssassinAttacksScript.h
++++ b/rebuild/include/engine/CV_AssassinAttacksScript.h
+@@ -24,6 +24,11 @@ public:
+     virtual void Init();
+     virtual void OnPersist(CPersistContext&);
+     void InitialiseRegionSpecificInfo();
++#ifdef FABLE_RETAIL_CV_ASSASSINATTACKSSCRIPT_GETREGIONIDFORREGION
++    // Opt-in (p25B, row 0x00E37E40): Ego_r.pdb ?GetRegionIdForRegion@CV_AssassinAttacksScript@NScript@@QAE?AW4AA_LocationIdentifier@12@VCCharString@@@Z
++    // (by-value CCharString; Ego_d proc NScript::CV_AssassinAttacksScript::GetRegionIdForRegion), retail 0x00E38290 (landed).
++    AA_LocationIdentifier GetRegionIdForRegion(CCharString);
++#endif
+     AA_LocationIdentifier RegionIndex;
+     long AssassinObjectCount;
+     bool Activated;
+@@ -89,5 +94,5 @@ public:
+     };
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NScript::CV_AssassinAttacksScript)==0xb8);
++FABLE_STATIC_ASSERT_AT(92, sizeof(NScript::CV_AssassinAttacksScript)==0xb8);
+ #endif
