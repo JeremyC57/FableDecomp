@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00733cf0   WARN RELOC_NAME: ??$GetEvent@$$CBVCEventHitBy@NEntityEvents@@V?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@CTCEntityEvents@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind3@VCIsHitEventHitByMelee@NEntityEvents@@V?$unary_negate@VCIsHitEventBlocked@NEntityEvents@@@std@@VCIsHitEventHitBy@2@@@@Z -> 00738a80 labelled 'GetEvent<NEntityEvents::CEventHitBy_const_,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMelee,std::unary_negate<NEntityEvents::CIsHitEventBlocked>,NEntityEvents::GetEvent<NEntityEvents::CEventHitBy_const_,CFilter_Bind3<NEntityEvents::CIsHitEventHitByMe'
+00733cf0   RELOCATION_MATCH PASS   UpdateGetHitCounterAttack
+
+WINS: 1
+  00733cf0 RELOCATION_MATCH CTCCombat::?UpdateGetHitCounterAttack@CTCCombat@@QAEXABVCThingCreatureBase@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCCombat_UpdateGetHitCounterAttack_00733cf0

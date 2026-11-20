@@ -196,7 +196,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0072f380	CTCDummyVillager	OnSerialise	976	parked	DIFFER(979v968)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand301/differ/0072f380.cpp	original
 0072f750	CTCDummyVillager	CreateVillager	656	parked	DIFFER(648v643)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0072f750.cpp	original
 0072fb70	CTCDummyVillager	FrameUpdate	1280	parked	codex pass24 PARKED: The shared village and spawn APIs retain the native second marker pass, including frustum and line-of-sight gating. Definition cleanup, vector allocation and marker traversal scheduling still differ.	22	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0072fb70/0072fb70.cpp	original
-00733cf0	_global	TCCombat_ApplyBlockResponse	288	reserved (acctB p25N, 2026-11-20)	DIFFER(287v288)	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1017/differ/00733cf0.cpp	original
 007348c0	CTCCombat	IsToBlock	928	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/007348c0.cpp	original
 00734c60	CTCCombat	SetStruck	1648	parked	DIFFER(1588v1639)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/00734c60.cpp	original
 00741d60	CModeExplosiveForcePushed	`scalar_deleting_destructor'	80	parked	DIFFER(48v69)	1	rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/00741d60.cpp	original
