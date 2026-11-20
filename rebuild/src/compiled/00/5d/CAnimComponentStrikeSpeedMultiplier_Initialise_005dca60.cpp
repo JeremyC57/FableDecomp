@@ -1,6 +1,8 @@
 // CAnimComponentStrikeSpeedMultiplier::Initialise(CPersistContext& context, const CCharString& text) -- text initialisation of the component: reset to the default, parse the one float (the animation speed multiplier) out of the text, return true
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DCA60, 123 bytes, __fastcall, ret 8; vtable 0x01255800 slot 3.
 // Leaf: ?Initialise@CAnimComponentStrikeSpeedMultiplier@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+// NF112 (2026-11-20, q5205): CPersistTraits<float>::TransferIn 0x0040F7E0 respelled in place to the Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@AAM@Z (non-const, references; was ...AAVCStringParser@@PAM@Z, a float pointer).
 // Callees: SetDefaultValue (vtable slot 8, 0x005DB410), CCharString::CCharString(const char*, long)
 // 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&,
 // long) 0x00404720, CCharString::~CCharString 0x0099EAE0, CPersistTraits<float>::TransferIn 0x0040F7E0,
@@ -53,7 +55,7 @@ template <class T>
 class CPersistTraits {
 public:
     CPersistTraits() {}
-    void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // float: 0x0040F7E0
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // float: 0x0040F7E0
 };
 
 class CAnimComponentStrikeSpeedMultiplier {
@@ -75,6 +77,6 @@ bool CAnimComponentStrikeSpeedMultiplier::Initialise(CPersistContext& context, c
 {
     SetDefaultValue();
     CStringParser parser(text, 0, CCharString("", -1), 0);
-    CPersistTraits<float>().TransferIn(context, parser, &AnimationSpeedMultiplier);
+    CPersistTraits<float>().TransferIn(context, parser, AnimationSpeedMultiplier);
     return true;
 }

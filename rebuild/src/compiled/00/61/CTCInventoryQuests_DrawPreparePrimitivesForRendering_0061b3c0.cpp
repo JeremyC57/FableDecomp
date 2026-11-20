@@ -93,14 +93,9 @@ class CEnginePrimitiveHandle { public:
     long Handle;
     void Clear();                                              // 0x0041BE70
 };
-template <class R, class T> struct mem_fun_ref_t {
-    R (T::*_M_f)();
-    explicit mem_fun_ref_t(R (T::*f)()) : _M_f(f) { }
-    R operator()(T& r) const { return (r.*_M_f)(); }
-};
-template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*f)()) { return mem_fun_ref_t<R, T>(f); }
-template <class I, class F> F __fastcall _For_each(I first, I last, F f);   // 0x0043F360
-template <class I, class F> inline F for_each(I first, I last, F f) { return _For_each(first, last, f); }
+// NF112 (2026-11-20, q6212): SGI for_each / mem_fun_ref_t from the shared stlport/fable_algorithm.h (std::, the STLport
+// spelling of 0x0043F360 every other landed caller binds) instead of the local mem_fun_ref_t model and _For_each stand-in.
+#include "stlport/fable_algorithm.h"
 
 struct CTCBase_Draw {                                          // the polymorphic root (vptr +0x00, ParentThing +0x04, flags +0x08)
     virtual void v00();
@@ -149,8 +144,8 @@ void CTCInventoryQuests::DrawPreparePrimitivesForRendering(const CEnginePrimitiv
                 alpha = 1.0f;
             RenderUIBackdropQuad(alpha);
         } else {
-            for_each(InventoryQuestCardSelectPrimitiveHandles.begin(), InventoryQuestCardSelectPrimitiveHandles.end(),
-                     mem_fun_ref(&CEnginePrimitiveHandle::Clear));
+            std::for_each(InventoryQuestCardSelectPrimitiveHandles.begin(), InventoryQuestCardSelectPrimitiveHandles.end(),
+                          std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
             InventoryQuestCardSelectPrimitiveHandles.clear();
             DrawInventoryFrame(info, IsActive());
             DrawActiveTestQuests(info);

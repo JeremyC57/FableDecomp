@@ -22,20 +22,9 @@ class CEnginePrimitiveHandle { public:
     void Clear();                             // 0x0041BE70
 };
 
-template <class R, class T> class mem_fun_ref_t {
-public:
-    explicit mem_fun_ref_t(R (T::*pfn)()) : m_pfn(pfn) {}
-    R operator()(T& object) const { return (object.*m_pfn)(); }
-private:
-    R (T::*m_pfn)();
-};
-
-template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)())
-{
-    return mem_fun_ref_t<R, T>(pfn);
-}
-
-template <class It, class F> F __fastcall for_each(It first, It last, F f);   // 0x0043F360
+// NF112 (2026-11-20, q6212): SGI for_each / mem_fun_ref_t from the shared stlport/fable_algorithm.h (std::, the STLport
+// spelling of 0x0043F360 every other landed caller binds) instead of the local global-namespace model.
+#include "stlport/fable_algorithm.h"
 
 struct CPrimitiveHandleVector {               // retail vector<CEnginePrimitiveHandle>, 12 bytes
     CEnginePrimitiveHandle* _First;
@@ -62,7 +51,7 @@ class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformat
 };
 void CTCInventoryWeapons::CloseInventory()
 {
-    for_each(ActiveWeaponPrimitiveHandles.begin(), ActiveWeaponPrimitiveHandles.end(), mem_fun_ref(&CEnginePrimitiveHandle::Clear));
+    std::for_each(ActiveWeaponPrimitiveHandles.begin(), ActiveWeaponPrimitiveHandles.end(), std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
     SetupActiveWeaponsOnCarrier();
     InventoryOpen = false;
 }

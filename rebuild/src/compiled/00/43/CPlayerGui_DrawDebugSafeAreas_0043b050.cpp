@@ -19,11 +19,9 @@ class CEnginePrimitiveHandle { public:
     long  m_header;                                 // +0x00
     void* Data;                                     // +0x04
 };
-struct CMemFunRefClear {                            // std::mem_fun_ref_t<void, CEnginePrimitiveHandle>
-    void (CEnginePrimitiveHandle::*m_pmf)();
-    explicit CMemFunRefClear(void (CEnginePrimitiveHandle::*pmf)()) : m_pmf(pmf) { }
-};
-CMemFunRefClear __fastcall for_each(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last, CMemFunRefClear f);   // 0x0043F360
+// NF112 (2026-11-20, q6212): SGI for_each / mem_fun_ref_t from the shared stlport/fable_algorithm.h (std::, the STLport
+// spelling of 0x0043F360 every other landed caller binds) instead of the local CMemFunRefClear functor and non-template for_each stand-in.
+#include "stlport/fable_algorithm.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -85,6 +83,6 @@ void CPlayerGui::DrawDebugSafeAreas(const CEnginePrimitivePrepareInfo& info)
         info.Renderer->AddPrimitive(&SafeAreaHandles[6], innerRight, 0x40);
         info.Renderer->AddPrimitive(&SafeAreaHandles[7], innerBottom, 0x40);
     } else {
-        for_each(SafeAreaHandles.begin(), SafeAreaHandles.end(), CMemFunRefClear(&CEnginePrimitiveHandle::Clear));
+        std::for_each(SafeAreaHandles.begin(), SafeAreaHandles.end(), std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
     }
 }

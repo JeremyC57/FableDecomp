@@ -1,0 +1,2 @@
+# recheck after landing nf112: 53 exe-scan referencing rows (no header changed)
+good 52 bad 1: 0x00BE7D70 DIFFER(1437v2983), pre-existing (FINDINGS_LOG 2026-11-20)

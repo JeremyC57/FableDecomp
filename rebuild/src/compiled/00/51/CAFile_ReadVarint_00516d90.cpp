@@ -1,41 +1,26 @@
 // CAFile::ReadVar<int>(int* value, CASuspendableProcess* process) -- reads one int from the file; when the file needs aligned reads, through a zeroed byte buffer rounded up to the alignment
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00516D90, length 114 bytes.
 // Leaf: ReadVar
+// NF112 (2026-11-20, q6210 follow-up): the local CByteVector stand-in (an in-TU vector constructor, ??0CByteVector@@QAE@K@Z) replaced by
+//   engine/CArray.h CArray<unsigned char>; the row's own name (a second ReadVar instance, queue line land1119nf93) is unchanged.
 // Callees: CAFile virtual slot 13 (+0x34) GetAlignment (0x00401660 for CDiskFileWin32), slot 3 (+0x0c)
-// Read(void*, long, CASuspendableProcess*) (0x0099A960), 0x00514E20 std::vector<unsigned char>(size_type) (the
-// VC6 vector constructor: malloc + zero fill), 0x00BFEA14 free (the inline vector destructor).
+// Read(void*, long, CASuspendableProcess*) (0x0099A960), 0x00514E20 CArray<unsigned char>(unsigned int) (malloc +
+// zero fill), 0x00BFEA14 free (the inline vector destructor).
 // Second byte-identical copy of the 4-byte instantiation (the catalogue names both ReadVar<int>; its callers
 // (0x0051A257, 0x00826956..) are another module's, likely a second 4-byte type folded to the same code).
 // Shape: GetAlignment() is called twice (the guard `<= 1` is signed, the rounding `((sizeof(T) + a - 1) / a) * a`
 // unsigned: `div` + `imul`); the vector is a 12-byte frame local whose inline destructor frees its first pointer
 // without a null test; the value is copied out of the buffer.
-#include <string.h>
-extern "C" void* __cdecl malloc(unsigned int size);              // 0x00BFEA0E
-extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CARRAY_SIZE_CTOR_VISIBLE_NOINLINE
+#include "engine/CArray.h"
 
 class CASuspendableProcess;
 
-struct CByteVector {                                             // VC6 Dinkumware vector<unsigned char>: first/last/end
-    unsigned char* _First; unsigned char* _Last; unsigned char* _End;
-    explicit CByteVector(unsigned long count);                   // 0x00514E20 (defined below)
-    ~CByteVector() { free(_First); }
-    unsigned char& operator[](unsigned long index) { return _First[index]; }
-};
-
-// The vector constructor is compiled in this translation unit ahead of ReadVar and kept out of line: VC7.1 then
-// knows that it does not let the buffer's address escape, so the buffer's first pointer survives the virtual Read
-// call in edi and feeds the copy and the destructor's free (an opaque declaration reloads it from the frame).
-#pragma auto_inline(off)
-CByteVector::CByteVector(unsigned long count)
-    : _First(0), _Last(0), _End(0)
-{
-    unsigned char* data = count ? (unsigned char*)malloc(count) : 0;
-    _End = data + count;
-    _First = data;
-    memset(data, 0, count);
-    _Last = data + count;
-}
-#pragma auto_inline(on)
+// The buffer is CArray<unsigned char> (engine/CArray.h; FableWin.pdb ??0?$CArray@E@@QAE@I@Z = 0x00514E20, the spelling every other landed
+// caller binds; Ego_d types ReadVar's buffer CArray<unsigned char>), as in the byte-identical twin 0x00516180. The size constructor is
+// out of line with its body visible (FABLE_RETAIL_CARRAY_SIZE_CTOR_VISIBLE_NOINLINE): VC7.1 then knows it does not let the buffer's
+// address escape, so the buffer's first pointer survives the virtual Read call in edi.
 
 class CAFile {
 public:
@@ -54,7 +39,7 @@ template<class T> void CAFile::ReadVar(T* value, CASuspendableProcess* process)
         return;
     }
     unsigned long alignment = GetAlignment();
-    CByteVector buffer(((sizeof(T) + alignment - 1) / alignment) * alignment);
+    CArray<unsigned char> buffer(((sizeof(T) + alignment - 1) / alignment) * alignment);
     Read(&buffer[0], sizeof(T), process);
     *value = *(T*)&buffer[0];
 }

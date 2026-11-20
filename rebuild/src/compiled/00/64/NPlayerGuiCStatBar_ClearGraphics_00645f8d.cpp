@@ -24,11 +24,9 @@ class CEnginePrimitiveHandle { public:
     unsigned long m_handle;
 };
 
-struct CMemFunRefClear {                                 // std::mem_fun_ref_t<void, CEnginePrimitiveHandle>
-    void (CEnginePrimitiveHandle::*m_pmf)();
-    explicit CMemFunRefClear(void (CEnginePrimitiveHandle::*pmf)()) : m_pmf(pmf) { }
-};
-CMemFunRefClear __fastcall for_each(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last, CMemFunRefClear f);   // 0x0043F360
+// NF112 (2026-11-20, q6212): SGI for_each / mem_fun_ref_t from the shared stlport/fable_algorithm.h (std::, the STLport
+// spelling of 0x0043F360 every other landed caller binds) instead of the local CMemFunRefClear functor and non-template for_each stand-in.
+#include "stlport/fable_algorithm.h"
 
 namespace NParticleEngine {
 class CParticleEmitter { public:
@@ -72,7 +70,7 @@ class CStatBar { public:
 
 void CStatBar::ClearGraphics()
 {
-    for_each(PrimitiveHandles.m_pFirst, PrimitiveHandles.m_pLast, CMemFunRefClear(&CEnginePrimitiveHandle::Clear));
+    std::for_each(PrimitiveHandles.m_pFirst, PrimitiveHandles.m_pLast, std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
     for (unsigned long i = 0; i < Effects.size(); ++i) {
         if ((*(Effects.begin() + i)).GetPItem()) {
             ((NParticleEngine::CParticleEmitter*)(*(Effects.begin() + i)).GetPItem())->Kill();

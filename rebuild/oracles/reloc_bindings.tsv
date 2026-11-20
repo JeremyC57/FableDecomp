@@ -120,9 +120,6 @@ _ForwardTarget_0099a360	0099a360	00412f60
 ??_7CControllerDisconnect@NUISystem@@6BCComponentBase2_Retail@1@@	0122fd3c	0041cbe4
 ??_7CControllerDisconnect@NUISystem@@6BCComponentBase3_Retail@1@@	0122fd34	0041cbe4
 ??_7CControllerDisconnect@NUISystem@@6BCComponentRoot_Retail@1@@	0122fd64	0041cbe4
-?g_HeadAngVelMaxXY_Default@@3MA	01375cd4	0041cc14
-?g_HeadAngVelMaxXY_OverrideFlag@@3EA	013b8768	0041cc14
-?g_HeadAngVelMaxXY_OverrideValue@@3MA	013b876c	0041cc14
 ??_7CAnimFilterBase@@6B@	0122ffcc	0041cce4
 ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A	013b8a98	0041da2d
 ??0CInputEvent@@QAE@XZ	00a04410	0041e10d
@@ -1853,8 +1850,6 @@ N_005c04bf	005c04bf	005c2a5c
 ?PutWeaponsInSheathes@CTCInventoryWeapons@@QAEXXZ	005c8101	005c9962
 ?TakeWeaponsOutOfSheathes@CTCInventoryWeapons@@QAEXXZ	005c552c	005c9962
 ?GetAllInventoryItemsOfType@CTCInventoryBase_Retail@@QAEXJPAUCItemVector@@@Z	005bfa69	005c99be
-?Clear@CEnginePrimitiveHandle@@QAEXXZ	0041be70	005cac8d
-?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@QAEXXZ	005ca68e	005cac8d
 ?ReturnAllConfiscatedItems@CTCInventoryBase_Retail@@QAEXXZ	005bf91a	005cb742
 ?GetHighlightedItem@CTCInventoryBase_Retail@@QAEJXZ	005bcae3	005cbd12
 ?Apply@TransferHelper@@QAEXPAVCPersistContext@@PAVCStringParser@@I@Z	00a3e0d0	005cbe9d
@@ -1882,7 +1877,6 @@ N_005c04bf	005c04bf	005c2a5c
 ?h_005dc1d0@@YGPAUAT@@PAPAU1@@Z	005e0280	005dc1d0
 ?h_005dc1f0@@YGPAUAT@@PAPAU1@@Z	005e0300	005dc1f0
 ?h_005dc210@@YGPAUAT@@PAPAU1@@Z	005e0380	005dc210
-?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@PAM@Z	0040f7e0	005dca60
 ??_7CAnimComponentMap@@6B@	01255878	005deb40
 ?Erase@CAnimComponentVectorMap@@QAEPAUCAnimComponentEntry@@PAU2@@Z	005e1e60	005deb40
 ?Insert@CAnimComponentVectorMap@@QAEXPAUCAnimComponentEntry@@PBU2@PBUCComponentCompare@@KK@Z	005e29d0	005deb40
@@ -2083,8 +2077,6 @@ _g_FloatZero	0122dedc	006448a4
 ??_7CVtable_0125a598@@6B@	0125a598	0064d389
 ??0CRetailList_node0x14@@QAE@ABUCRetailAllocator@@@Z	00655b18	0064d3da
 ??_7CVtable_0125a5a4@@6B@	0125a5a4	0064d3da
-?ClearPrimitivesIfNecessary@CDrawBase@NPlayerGui@@UAEXXZ	00644627	0064d62f
-?ClearSoundEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	0064b668	0064d62f
 ?h_0064da5c@@YIXPAUOH@@@Z	0064b668	0064da5c
 ??_7CVtable_0125a5c4@@6B@	0125a5c4	0064da6e
 ??0CRetailList_node0x34@@QAE@ABUCRetailAllocator@@@Z	00655b4e	0064da8a
@@ -11393,7 +11385,6 @@ __imp__accept@12	01440524	008f8ea0
 __imp__SHGetFolderPathW@20	01440280	0041a430
 ?GetMyDocumentsDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a430	0041a540
 ?ProcessEvent@CHoverable@NUISystem@@UAEXW4EEvent@2@@Z	0055b9d0	00558d90
-?ClearPrimitivesIfNecessary@CDrawQuickAccessIcons@NPlayerGui@@UAEXXZ	0064d62f	00657550
 ??_7CScriptConversation@NTCScriptedControl@@6B@	01265520	00714d30
 ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@NTCScriptedControl@@@Z	007137d0	00714d30
 ?Reset@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAEXPAVCScriptConversation@NTCScriptedControl@@@Z	00718940	00714d30
@@ -16798,7 +16789,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetCachedClanLogosAsString@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	0055e850	00561980
 ?GetCachedMemberLogosAsString@CTCHeroOnlineScoreboard@@QAE?AVCCharString@@XZ	0055ea80	005621b0
 ?get@CHttpScopedPtr@@QBEPAVLHHttp2@LHNetworkLib@@XZ	00564b80	00563410
-?TransferIn@?$CPersistTraits@M@@QAEXPAVCPersistContext@@PAVCStringParser@@PAM@Z	0040f7e0	005663c0
 ?FindInListRangeTagged@@YI?AUSListIterator@@U1@0ABQAVCWideString@@ABUSInputIteratorTag@@@Z	00567240	00567a40
 ??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@PBVCCameraModeDef@@@Z	0084e420	0056e330
 ?GetXString@@YI?AVCWideString@@XZ	005cc772	0056ea4e
@@ -16874,7 +16864,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SetInventoryAnimRenderBox@CTCInventoryBase_Weapons@@QAEXABVC2DBoxF@@@Z	005bc58f	005c2f27
 ?RefreshItemData@CTCInventoryBase_Retail@@QAEXPAVCThing@@@Z	005bf414	005c30d3
 ?GetItemOfTypeInInventory@CTCInventoryBase_Retail@@QAEPAVCThing@@J@Z	005bf3f1	005c311a
-??$for_each@PAVCEnginePrimitiveHandle@@V?$mem_fun_ref_t@XVCEnginePrimitiveHandle@@@@@@YI?AV?$mem_fun_ref_t@XVCEnginePrimitiveHandle@@@@PAVCEnginePrimitiveHandle@@0V0@@Z	0043f360	005cac8d
 ?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z	005cb2b0	005cb742
 ?SetInventoryAnimRenderBox@CTCInventoryBase_Stats@@QAEXABVC2DBoxF@@@Z	005bc58f	005ccf86
 ?Copy@CBase@NHeroInformationScreens@@UAEXPBV12@@Z	0066e7a6	005cdc1c
@@ -17045,9 +17034,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z	00487050	00645ce9
 ?Create2DEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JPBVC2DVector@@W4EEngine2DLayer@@_NABVCRightHandedSet@@@Z	00aeb790	00645ce9
 ?DrawStatBox@CStatBar@NPlayerGui@@SIXABVCEnginePrimitivePrepareInfo@@AAU?$CRetailVector@VCEnginePrimitiveHandle@@@@ABVC2DVector@@JABVCWideString@@JE_N44@Z	00645853	00645ce9
-??0?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	00655318	00645f8d
-??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z	0065533c	00645f8d
-?for_each@@YI?AUCMemFunRefClear@@PAVCEnginePrimitiveHandle@@0U1@@Z	0043f360	00645f8d
 ?find@@YI?AUCThingListIterator@@U1@0ABQAVCThing@@@Z	00655cdc	0064639c
 ??0?$CIntelligentPointer@VCThingPhysical@@@@QAE@PAVCThing@@@Z	00655145	006463ff
 ??4?$CIntelligentPointer@VCThingPhysical@@@@QAEAAV0@ABV0@@Z	00655180	006463ff
@@ -17197,7 +17183,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?TransferOut@?$CPersistTraits@VCOpinionTransientOffset@@@@QAEXAAVCPersistContext@@AAVCCharString@@PAVCOpinionTransientOffset@@@Z	006859f0	006859b0
 ?Transfer@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@ABV2@@Z	00685f80	006861c0
 ?TransferIn@?$CPersistTraits@VCOpinionTransientOffset@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVCOpinionTransientOffset@@@Z	00686240	00686200
-?TransferIn@?$CPersistTraits@M@@QBEXPAVCPersistContext@@PAVCStringParser@@PAM@Z	0040f7e0	00686240
 ?BeginSerialising@CTCBase@@QAE_N_NAAVCCharString@@AAVCStringParser@@AAVCPersistContext@@@Z	00686b00	00686e10
 ?GetButtonPressureForEvent@CGamePlayerInterfaceCalls@@QAEMPAVCInputEvent@@@Z	00445800	00687d10
 ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z	00687d00	00691c50
@@ -36671,10 +36656,6 @@ _wcscpy	00bfed76	00999850
 ?_M_fill_insert@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXPAW4EHeroAbility@@IABW43@@Z	005f9633	005f9df8
 ?OnCreate@CTCInventoryBase_Map@@UAEXXZ	005c0121	00602e30
 ?SetPDef@CTCInventoryBase_Map@@QAEXJ@Z	005bdb4d	00602e30
-??$_For_each@PAVCEnginePrimitiveHandle@@U?$mem_fun_ref_t@XVCEnginePrimitiveHandle@@@@@@YI?AU?$mem_fun_ref_t@XVCEnginePrimitiveHandle@@@@PAVCEnginePrimitiveHandle@@0U0@@Z	0043f360	0061b3c0
-?DrawActiveTestQuests@CTCInventoryQuests@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	0061ad60	0061b3c0
-?DrawInventoryFrame@CTCInventoryBase@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z	005bc4d8	0061b3c0
-?RenderUIBackdropQuad@CTCInventoryBase@@QAEXM@Z	005bc6d6	0061b3c0
 ??4CQuestCard@@QAEAAU0@ABU0@@Z	006255b0	00621720
 ?BaseCloseInventory@CTCInventoryQuests@@QAEXXZ	005bd597	00621720
 ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z	005c2a8e	00621720
@@ -40119,3 +40100,12 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ??RCIsVeryCloseMotionlessCreature@@QBE_NABVCThingCreatureBase@@@Z	00942270	00942390
 ??RCThingFilter_IsRelatedTo@@QBE_NABVCThing@@@Z	006a8880	0096f260
 ??RCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QBE_NABVCThingAICreature@@@Z	00987040	00987430
+?Clear@CEnginePrimitiveHandle@@QAEXXZ	0041be70	0043b050
+?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@QAEXXZ	005ca68e	005cac8d
+?DrawActiveTestQuests@CTCInventoryQuests@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	0061ad60	0061b3c0
+?DrawInventoryFrame@CTCInventoryBase@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z	005bc4d8	0061b3c0
+?RenderUIBackdropQuad@CTCInventoryBase@@QAEXM@Z	005bc6d6	0061b3c0
+?ClearPrimitivesIfNecessary@CDrawBase@NPlayerGui@@UAEXXZ	00644627	00644d0e
+??0?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	00655318	00645f8d
+?ClearSoundEffects@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	0064b668	0064d62f
+?ClearPrimitivesIfNecessary@CDrawQuickAccessIcons@NPlayerGui@@UAEXXZ	0064d62f	00657550

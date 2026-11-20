@@ -15,20 +15,9 @@ class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + cou
     void Clear();                                  // 0x0041BE70
 };
 
-template <class R, class T> class mem_fun_ref_t {  // SGI functor holding a 4-byte pointer-to-member
-public:
-    explicit mem_fun_ref_t(R (T::*pfn)()) : m_pfn(pfn) {}
-    R operator()(T& object) const { return (object.*m_pfn)(); }
-private:
-    R (T::*m_pfn)();
-};
-
-template <class R, class T> inline mem_fun_ref_t<R, T> mem_fun_ref(R (T::*pfn)())
-{
-    return mem_fun_ref_t<R, T>(pfn);
-}
-
-template <class It, class F> F __fastcall for_each(It first, It last, F f);   // 0x0043F360 (SGI, /Gr)
+// NF112 (2026-11-20, q6212): SGI for_each / mem_fun_ref_t from the shared stlport/fable_algorithm.h (std::, the STLport
+// spelling of 0x0043F360 every other landed caller binds) instead of the local global-namespace model.
+#include "stlport/fable_algorithm.h"
 
 namespace NPlayerGui {
 
@@ -98,7 +87,7 @@ void CDrawQuestInfo::ClearPrimitivesIfNecessary()
             if (element)
                 element->Clear();
         }
-        for_each(OraclePrimitiveHandles.begin(), OraclePrimitiveHandles.end(), mem_fun_ref(&CEnginePrimitiveHandle::Clear));
+        std::for_each(OraclePrimitiveHandles.begin(), OraclePrimitiveHandles.end(), std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
     }
     CDrawBase::ClearPrimitivesIfNecessary();
 }

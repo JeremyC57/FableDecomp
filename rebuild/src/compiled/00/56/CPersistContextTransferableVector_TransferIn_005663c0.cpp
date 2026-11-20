@@ -1,7 +1,9 @@
 // CPersistContext_TransferableVector::TransferIn(CPersistContext*, CStringParser*, long) -- parses element `index` of the float vector through a default-constructed CPersistTraits<float> (0x0040F7E0)
 // Leaf: TransferIn
+// NF112 (2026-11-20, q5205): CPersistTraits<float>::TransferIn 0x0040F7E0 respelled in place to the Ego_r.pdb / FableWin.pdb
+//   ?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@AAM@Z (non-const, references; was the pointer spelling ...PAVCPersistContext@@PAVCStringParser@@PAM@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005663C0, 44 bytes (+4 int3 padding).
-// Callee: 0x0040F7E0 CPersistTraits<float>::TransferIn(CPersistContext*, CStringParser*, float*) (__fastcall).
+// Callee: 0x0040F7E0 CPersistTraits<float>::TransferIn(CPersistContext&, CStringParser&, float&) (thiscall).
 //
 // Persist READ hook (vtable slot 3) of CPersistContext_TransferableVector<float> (PDB: { vptr;
 // vector<float>* TransVector; }). A CPersistTraits<float> (PDB: { float DefaultVal; }) lives in the
@@ -21,7 +23,7 @@ template <class T> struct CRetailVector {
 template <class T> struct CPersistTraits {
     T DefaultVal;
     CPersistTraits() : DefaultVal() {}
-    void TransferIn(CPersistContext* context, CStringParser* parser, T* value);   // 0x0040F7E0 for float
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x0040F7E0 for float
 };
 
 struct CPersistContext_TransferableVector {
@@ -35,5 +37,5 @@ struct CPersistContext_TransferableVector {
 void CPersistContext_TransferableVector::TransferIn(CPersistContext* context, CStringParser* parser, long index)
 {
     CPersistTraits<float> traits;
-    traits.TransferIn(context, parser, &(*TransVector)[index]);
+    traits.TransferIn(*context, *parser, (*TransVector)[index]);
 }

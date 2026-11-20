@@ -737,10 +737,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041cc14'
-        Module = 'CTCLook'
-        Source = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc14.cpp'
-        TestSource = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc14_test.cpp'
+        Module = 'NUISystem::CUIScreenUnitConverter'
+        Source = '00/41/NUISystemCUIScreenUnitConverter_GetBackBufferWidth_0041cc14.cpp'
+        TestSource = '00/41/NUISystemCUIScreenUnitConverter_GetBackBufferWidth_0041cc14_test.cpp'
         PassPattern = 'CTCLOOK_0041cc14_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Os'
     }
     [pscustomobject]@{
         Address = '00658604'
@@ -94428,10 +94429,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041cc2b'
-        Module = 'CTCLook'
-        Source = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b.cpp'
-        TestSource = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b_test.cpp'
+        Module = 'NUISystem::CUIScreenUnitConverter'
+        Source = '00/41/NUISystemCUIScreenUnitConverter_GetBackBufferHeight_0041cc2b.cpp'
+        TestSource = '00/41/NUISystemCUIScreenUnitConverter_GetBackBufferHeight_0041cc2b_test.cpp'
         PassPattern = 'PASS_0041cc2b'
+        CompilerFlags = '/O2 /Oy /W3 /Os'
     }
     [pscustomobject]@{
         Address = '00429bf9'

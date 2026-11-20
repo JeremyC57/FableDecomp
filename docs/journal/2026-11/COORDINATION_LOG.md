@@ -299,3 +299,6 @@ the return slot), called on CSpriteTrailEntry::Position (offset 0; the entry is 
 and the /Od call sequence.
 2026-11-20 A->B: nf110 landed (17 GetPFirst / GetPBest search-template rows; add-only opt-ins CThingSearchTools.h FIRSTROUGH_EGOD and
 CThingTrackNode.h STATTYPEFLAGS). A's holds on CThingSearchTools.h, NThingMap_CThingMap.h, CThingDeadCreature.h, CThingMarker.h are released.
+2026-11-20 A->B: nf112 landed (20 rows). The CUIScreenUnitConverter statics are private (`@@0`): Ego_d PUB32 plus FableWin.pdb's class record
+(LF_STMEMBER ... attrs = private). Rows that bind them `@@2` (or as ScreenWidth / ScreenHeight / g_dimW / g_dimH) are queued for respelling
+(q list in NAME_FIXES_QUEUE, tag land1120nf112). Tell me if any of those binders is one of your re-ports.

@@ -70,23 +70,26 @@ public:
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<float> {
     float DefaultVal;
-    void TransferIn(CPersistContext* context, CStringParser* parser, float* value) const;   // 0x0040F7E0
+    void TransferIn(CPersistContext& context, CStringParser& parser, float& value);   // 0x0040F7E0
 };
 // CPersistTraits<float>::TransferIn 0x0040F7E0 with its real body (the landed one) in the TU (GOTCHAS 24l recipe:
 // auto_inline(off) + noinline) so VC7.1 homes the never-initialised traits `this` on the value slot as retail does
 // (declared only, it lands on the parser slot). Not landed from here.
+// Fidelity: same-TU strong definition of 0x0040F7E0 (retail TU-mate), on this row's pre-existing local models (its symbol-map lookup
+// is the local Lookup(name, long*) model of FindSymbol 0x009E5170). NF112 (2026-11-20, q5205): respelled in place to the Ego_r.pdb /
+// FableWin.pdb ?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@AAM@Z (was the const pointer spelling QBE...PAM).
 #pragma auto_inline(off)
-__declspec(noinline) void CPersistTraits<float>::TransferIn(CPersistContext* context, CStringParser* parser, float* value) const
+__declspec(noinline) void CPersistTraits<float>::TransferIn(CPersistContext& context, CStringParser& parser, float& value)
 {
-    if (parser->PeekNextItemType() == PARSED_ITEM_SYMBOL) {
-        CCharString name = parser->ReadAsString();
+    if (parser.PeekNextItemType() == PARSED_ITEM_SYMBOL) {
+        CCharString name = parser.ReadAsString();
         long symbol;
-        if (!context->PSymbolMap->Lookup(name, &symbol))
-            context->PersistError(*parser, g_msgUnknownSymbol_0122dfe8 + name);
-        *value = (float)symbol;
+        if (!context.PSymbolMap->Lookup(name, &symbol))
+            context.PersistError(parser, g_msgUnknownSymbol_0122dfe8 + name);
+        value = (float)symbol;
     }
     else
-        *value = parser->ReadAsFloat();
+        value = parser.ReadAsFloat();
 }
 #pragma auto_inline(on)
 template <> struct CPersistTraits<CAppearanceModifierGraphics::CEntry> {
@@ -101,7 +104,7 @@ void CPersistTraits<CAppearanceModifierGraphics::CEntry>::TransferIn(CPersistCon
         if (parser->ReadAsSymbol() == ",") {
             {
                 CPersistTraits<float> floatTraits;
-                floatTraits.TransferIn(context, parser, &value->Float04);
+                floatTraits.TransferIn(*context, *parser, value->Float04);
             }
             if (parser->ReadAsSymbol() == ",") {
                 value->Long08 = TransferInLong(context, parser);
@@ -110,7 +113,7 @@ void CPersistTraits<CAppearanceModifierGraphics::CEntry>::TransferIn(CPersistCon
                     if (parser->ReadAsSymbol() == ",") {
                         {
                             CPersistTraits<float> floatTraits;
-                            floatTraits.TransferIn(context, parser, &value->Float10);
+                            floatTraits.TransferIn(*context, *parser, value->Float10);
                         }
                         if (parser->ReadAsSymbol() == ",") {
                             value->Long14 = TransferInLong(context, parser);

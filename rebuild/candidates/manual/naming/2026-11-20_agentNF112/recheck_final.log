@@ -1,0 +1,86 @@
+addr       parity           behav  name
+0041cc14   RELOCATION_MATCH PASS   NUISystem::CUIScreenUnitConverter::GetBackBufferWidth
+0041cc2b   RELOCATION_MATCH PASS   NUISystem::CUIScreenUnitConverter::GetBackBufferHeight
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0043b050   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0043b050   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DSprite (engine/CEnginePrimitive2DSprite.h)
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer (engine/CEnginePrimitiveRenderer.h)
+0043b050   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+0043b050   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0043b050   RELOCATION_MATCH PASS   CPlayerGui::DrawDebugSafeAreas
+00516d90   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00516d90   RELOCATION_MATCH PASS   CAFile::ReadVar<int>
+005663c0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005663c0   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+005663c0   RELOCATION_MATCH PASS   CPersistContext_TransferableVector::TransferIn
+005cac8d   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+005cac8d   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005cac8d   RELOCATION_MATCH PASS   CTCInventoryWeapons::CloseInventory
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatFlourishTargetOffset (engine/CAnimComponentCombatFlourishTargetOffset.h)
+005dc8b0   RELOCATION_MATCH PASS   CAnimComponentCombatFlourishTargetOffset::Initialise
+005dca60   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dca60   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005dca60   WARN SHARED_HEADER_AVAILABLE CAnimComponentStrikeSpeedMultiplier (engine/CAnimComponentStrikeSpeedMultiplier.h)
+005dca60   RELOCATION_MATCH PASS   CAnimComponentStrikeSpeedMultiplier::Initialise
+005fc510   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+005fc510   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap (engine/CTCInventoryMap.h)
+005fc510   RELOCATION_MATCH PASS   CTCInventoryMap::ResetPrimitiveHandles
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0061b3c0   WARN SHARED_HEADER_AVAILABLE CTCInventoryQuests (engine/CTCInventoryQuests.h)
+0061b3c0   WARN RELOC_NAME: ?DrawInventoryFrame@CTCInventoryBase@@QAEXABVCEnginePrimitivePrepareInfo@@_N@Z -> 005bc4d8 labelled '_global::Nop_ret8_005bc4d8'
+0061b3c0   RELOCATION_MATCH PASS   CTCInventoryQuests::DrawPreparePrimitivesForRendering
+00644660   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00644660   WARN SHARED_HEADER_AVAILABLE CDrawMiniMap (engine/CDrawMiniMap.h)
+00644660   RELOCATION_MATCH PASS   NPlayerGui::CDrawMiniMap::ClearPrimitives
+00644d0e   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00644d0e   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::ClearPrimitivesIfNecessary
+00644fe5   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00644fe5   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::CQuestInfoElement::Clear
+00644ffc   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00644ffc   RELOCATION_MATCH PASS   NPlayerGui::CDrawAbilityButtons::ClearPrimitivesIfNecessary
+00645f8d   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00645f8d   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00645f8d   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00645f8d   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+00645f8d   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::ClearGraphics
+00647357   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00647357   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00647357   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::RemoveElement
+0064d62f   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0064d62f   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuickAccessIcons::ClearPrimitivesIfNecessary
+00657550   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00657550   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuickAccessIconsPC::ClearPrimitivesIfNecessary
+00686240   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00686240   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+00686240   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00686240   RELOCATION_MATCH PASS   CPersistTraits<CAppearanceModifierGraphics::CEntry>::TransferIn
+0082a1d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0082a1d0   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082a1d0   RELOCATION_MATCH PASS   CMiniMapDisplay::ClearPrimitiveHandles
+
+WINS: 20
+  0041cc14 RELOCATION_MATCH CTCLook::?GetBackBufferWidth@CUIScreenUnitConverter@NUISystem@@SIMXZ
+  0041cc2b RELOCATION_MATCH CTCLook::?GetBackBufferHeight@CUIScreenUnitConverter@NUISystem@@SIMXZ
+  0043b050 RELOCATION_MATCH CPlayerGui::DrawDebugSafeAreas
+  00516d90 RELOCATION_MATCH CAFile::ReadVar
+  005663c0 RELOCATION_MATCH CPersistContext_TransferableVector::TransferIn
+  005cac8d RELOCATION_MATCH CTCInventoryWeapons::?CloseInventory@
+  005dc8b0 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::?Initialise@CAnimComponentCombatFlourishTargetOffset@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dca60 RELOCATION_MATCH CAnimComponentStrikeSpeedMultiplier::?Initialise@CAnimComponentStrikeSpeedMultiplier@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005fc510 RELOCATION_MATCH CTCInventoryMap::?ResetPrimitiveHandles@CTCInventoryMap@@QAEXXZ
+  0061b3c0 RELOCATION_MATCH CTCInventoryQuests::DrawPreparePrimitivesForRendering
+  00644660 RELOCATION_MATCH NPlayerGui::CDrawMiniMap::ClearPrimitives
+  00644d0e RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::ClearPrimitivesIfNecessary
+  00644fe5 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElement::?Clear@CQuestInfoElement@CDrawQuestInfo@NPlayerGui@@UAEXXZ
+  00644ffc RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::ClearPrimitivesIfNecessary
+  00645f8d RELOCATION_MATCH NPlayerGui::CStatBar::ClearGraphics
+  00647357 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::RemoveElement
+  0064d62f RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::ClearPrimitivesIfNecessary
+  00657550 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIconsPC::ClearPrimitivesIfNecessary
+  00686240 RELOCATION_MATCH CPersistTraits<CAppearanceModifierGraphics::CEntry>::?TransferIn@
+  0082a1d0 RELOCATION_MATCH CMiniMapDisplay::?ClearPrimitiveHandles@CMiniMapDisplay@@QAEXXZ
