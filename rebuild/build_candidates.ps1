@@ -401688,6 +401688,13 @@ $catalog = @(
         TestSource = '00/85/CCombatActionBase_OnAnimationLoaded_00859ef0_test.cpp'
         PassPattern = '00859ef0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00960120'
+        Module = 'CAIStateGroup_DeedReactionRoot'
+        Source = '00/96/CAIStateGroupDeedReactionRoot_Update_00960120.cpp'
+        TestSource = '00/96/CAIStateGroupDeedReactionRoot_Update_00960120_test.cpp'
+        PassPattern = '00960120_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

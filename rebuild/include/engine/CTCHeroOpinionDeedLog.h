@@ -56,7 +56,20 @@ private:
     bool WeaponOutCrimeEnabled; // +2c
     bool GuardsIgnoreCrimes; // +2d
     unsigned short DeedEffectsDefIndices[92]; // +2e
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_DEEDREACTIONS
+    // Nested opt-in (p25O, row 0x00960120 CAIStateGroup_DeedReactionRoot::Update): the member typed as Ego_r.pdb has it (needs
+    // engine/COpinionDeedReaction.h) and its two accessors, Ego_r.pdb
+    // ?GetDeedReactionAnimName@CTCHeroOpinionDeedLog@@QBEABVCCharString@@W4EOpinionDeedType@@W4EOpinionAttitudeType@@@Z and
+    // ?GetDeedReactionDialogueTag@CTCHeroOpinionDeedLog@@QBEKW4EOpinionDeedType@@W4EOpinionAttitudeType@@@Z, inline in retail
+    // (0x00960256..0x0096026D, 0x00960343 / 0x00960363: the element address and the +0x48 tag read in place).
+public:
+    const CCharString& GetDeedReactionAnimName(EOpinionDeedType deed, EOpinionAttitudeType attitude) const { return DeedReactions[deed].Animations[attitude]; }
+    unsigned long GetDeedReactionDialogueTag(EOpinionDeedType deed, EOpinionAttitudeType attitude) const { return DeedReactions[deed].DialogueTags[attitude]; }
+private:
+    COpinionDeedReaction DeedReactions[92]; // +e8
+#else
     unsigned char DeedReactions[13248]; // COpinionDeedReaction[92],+e8; each has18 CCharString then18 ulong.
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_VSLOTS

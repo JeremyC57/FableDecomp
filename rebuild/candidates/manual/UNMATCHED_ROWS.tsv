@@ -493,7 +493,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00957c30	CAIStateGroup_MinionBehaviourCrowdBase	?IsRunnable@CAIStateGroup_MinionBehaviourCrowdBase@@UAE_NXZ	384	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00957c30.cpp	original
 0095ef80	CAIStateGroup_OpinionReactionRoot	?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	1536	parked	DIFFER(1536v1528)	3	rebuild/candidates/manual/pending/2026-10-27_linux_hand654/differ/0095ef80.cpp	original
 0095fb40	CIsOpinionSourceWithReaction	operator()	608	parked	DIFFER(443v451)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/0095fb40.cpp	original
-00960120	CAIStateGroup_DeedReactionRoot	Update	1600	reserved (acctB p25J, 2026-11-20)	DIFFER(1596v1600)	21	rebuild/candidates/manual/pending/2026-11-07_linux_hand826/differ/00960120.cpp	original
 00961ca0	CAIStateGroup_IceTrollIcicleAttack	?IsRunnable@CAIStateGroup_IceTrollIcicleAttack@@MAE_NXZ	368	parked		0	rebuild/candidates/manual/pending/2026-10-21_linux_hand240/differ/00961ca0.cpp	original
 00962d50	CAIStateGroup_VersusRockTroll	?Update@CAIStateGroup_VersusRockTroll@@MAEXXZ	1680	parked	DIFFER(1611v1679)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00962d50.cpp	original
 00963a50	CAIStateGroup_VersusScorpionKing	CAIStateGroup_VersusScorpionKing::Update	1808	parked	DIFFER(1635v1695)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/00963a50.cpp	original

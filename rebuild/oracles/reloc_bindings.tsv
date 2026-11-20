@@ -39388,3 +39388,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?StartExponentialFade@CAudioSource@@QAEX_JM@Z	00c720c0	00c72e00
 ?UpdateGain@CAudioSource@@QAE_NPBUCFadeParams@@_N_J@Z	00c72200	00c72e00
 ??1CCharString@@QAE@XZ	0099eae0	00433530
+??$IS_THING_DEAD@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	00836be0	00960120
+??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z	00654d58	00960120
+?LogDeedReactionPlayingSpeech@COpinionReactionManager@@QAEXW4EOpinionDeedType@@_N@Z	006feae0	00960120

@@ -1,0 +1,50 @@
+diff --git a/rebuild/include/engine/COpinionReactionManager.h b/rebuild/include/engine/COpinionReactionManager.h
+index 7701fa93c..3402026f6 100644
+--- a/rebuild/include/engine/COpinionReactionManager.h
++++ b/rebuild/include/engine/COpinionReactionManager.h
+@@ -16,6 +16,9 @@
+ enum EOpinionAttitudeType;enum EOpinionReactionType;class CTCOpinionSource;
+ #endif
+ class CThing; class CWorld; class CThingAICreature; class CReactionMatch; class COpinionReactionManagerDef;
++#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_DEEDREACTIONS
++enum EOpinionAttitudeType; enum EOpinionReactionType; enum EOpinionDeedType; class CTCOpinionSource;   // (opt-in below)
++#endif
+ #if defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER) && !defined(FABLE_RETAIL_CTCWIFE_MARRY)
+ enum EOpinionAttitudeType;
+ #endif
+@@ -93,6 +96,35 @@ public:
+     // declares `enum EOpinion` (no shared header carries its enumerators yet). Declaration only.
+     float GetHeroStatsInOpinionFormat(EOpinion opinion) const;           // 0x007009D0
+ #endif
++#ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_DEEDREACTIONS
++    // Retail opt-in (p25O, row 0x00960120 CAIStateGroup_DeedReactionRoot::Update): Ego_r.pdb / FableWin.pdb
++    // ?GetAttitudeType@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@PBVCTCOpinionSource@@@Z (inline here: the row
++    // pushes source, the mask address, 1 and the thing for GetAttitudeOrReactionType 0x00701010 at 0x009601B2; body = the landed
++    // out-of-line copy 0x00681500), ?CanPlayDeedReactionSpeech@COpinionReactionManager@@QBE_NW4EOpinionDeedType@@@Z (inline: the
++    // DeedReactionSpeechPlaying[type] <= 0 test at 0x009604F1), and the out-of-line ?GetBlurredAttitude@..@@QBE?AW4EOpinionAttitudeType@@W42@@Z
++    // (0x00700120), ?GetThingAttitudeToPlayer@ (0x00701840), ?LogDeedReactionPlayingSpeech@..@@QAEXW4EOpinionDeedType@@_N@Z (0x006FEAE0).
++    // The includer declares the enums and CTCOpinionSource.
++public:
++#if !defined(FABLE_RETAIL_CTCWIFE_MARRY) && !defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYER)
++    EOpinionAttitudeType GetThingAttitudeToPlayer(const CThing& thing) const;   // 0x00701840
++#endif
++#if !defined(FABLE_RETAIL_CTCWIFE_MARRY) && !defined(FABLE_RETAIL_GREETING_PASS23)
++    EOpinionAttitudeType GetAttitudeType(const CThing& thing, const CTCOpinionSource* source) const {
++        if (source)
++            return (EOpinionAttitudeType)GetAttitudeOrReactionType(thing, true, AttitudeMask, source);
++        return GetThingAttitudeToPlayer(thing);
++    }
++#endif
++#ifndef FABLE_RETAIL_GREETING_PASS23
++    EOpinionAttitudeType GetBlurredAttitude(EOpinionAttitudeType attitude) const;   // 0x00700120
++#endif
++    bool CanPlayDeedReactionSpeech(EOpinionDeedType deed) const { return DeedReactionSpeechPlaying[deed] <= 0; }
++    void LogDeedReactionPlayingSpeech(EOpinionDeedType deed, bool playing);    // 0x006FEAE0
++#if !defined(FABLE_RETAIL_CTCWIFE_MARRY) && !defined(FABLE_RETAIL_COPINIONREACTIONMANAGER_ATTITUDETOPLAYERASSTRING)
++private:
++    EOpinionReactionType GetAttitudeOrReactionType(const CThing&, bool, const bool*, const CTCOpinionSource*) const;   // 0x00701010
++#endif
++#endif
+ private:
+     CDefPointer<const COpinionReactionManagerDef> PDef;                  // +0x000
+     CWorld* World;                                                       // +0x004

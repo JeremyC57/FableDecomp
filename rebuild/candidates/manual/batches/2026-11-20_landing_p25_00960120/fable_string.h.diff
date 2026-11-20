@@ -1,0 +1,17 @@
+diff --git a/rebuild/include/fable_string.h b/rebuild/include/fable_string.h
+index 50d2a31ac..099d49e2b 100644
+--- a/rebuild/include/fable_string.h
++++ b/rebuild/include/fable_string.h
+@@ -496,6 +496,12 @@ public:
+     char GetChar(long index)const{return GetAsCharArray()[index];}
+ #endif
+     long GetLength() const { return PStringData==0 ? 0 : (long)PStringData->Data.GetLength(); }
++#ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY
++    // Per-TU inline opt-in (p25O, row 0x00960120 CAIStateGroup_DeedReactionRoot::Update; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ):
++    // that TU expands IsEmpty in place (0x00960376..0x00960381: the PStringData null test and the StringLength read, no call) where the plain
++    // inline body is called out of line once the function's inline budget is spent.
++    FABLE_FORCEINLINE
++#endif
+     bool IsEmpty() const { return GetLength() == 0; }
+ #ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITH
+     // Retail opt-in (chunk 784, row 0x00491AD2): Ego_r.pdb ?StartsWith@CCharString@@QBE_NABV1@@Z, inline in retail (0x004920BE..0x004920F6:
