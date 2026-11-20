@@ -21,6 +21,19 @@ public:
     static std::map<CCharString, std::vector<CCharString> > GossipVillages;
     static std::map<CCharString, std::vector<CCharString> > GossipFactions;
 #endif
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_ADDGOSSIP
+    // NF208 opt-in (2026-11-20, FP-VECTORINSERT, row 0x008AE5E0): FableWin.pdb ?AddGossip@CTCAIScratchpad@@SIXVCCharString@@0@Z
+    // (public static __fastcall, two by-value strings; retail 0x008AE5E0 `ret 8`, `Gossip[name].push_back(value)`). Declaration only.
+    static void FABLE_FASTCALL AddGossip(CCharString name, CCharString value);
+#endif
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_ADDGOSSIPVILLAGES
+    // NF208 opt-in (2026-11-20, row 0x008AE810): FableWin.pdb ?AddGossipVillages@CTCAIScratchpad@@SIXVCCharString@@0@Z. Declaration only.
+    static void FABLE_FASTCALL AddGossipVillages(CCharString name, CCharString value);
+#endif
+#ifdef FABLE_RETAIL_CTCAISCRATCHPAD_ADDGOSSIPFACTIONS
+    // NF208 opt-in (2026-11-20, row 0x008AEA40): FableWin.pdb ?AddGossipFactions@CTCAIScratchpad@@SIXVCCharString@@0@Z. Declaration only.
+    static void FABLE_FASTCALL AddGossipFactions(CCharString name, CCharString value);
+#endif
 #ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_BOOL_MAPS
     // NF87 opt-in (rows 0x008A96C0 CGameScriptInterface::SetCategoryActivity / 0x008A9720 SetActiveGossipCategories): the two static
     // flag maps, FableWin.pdb `dynamic initializer for 'CTCAIScratchpad::ActiveGossipCategories'` / `..IsGossipForPlayer'` and Ego_d.pdb

@@ -125627,7 +125627,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0044bff0'
-        Module = 'std::vector'
+        Module = 'std::vector<CCharString>'
         Source = '00/44/stdvector_pushback_0044bff0.cpp'
         TestSource = '00/44/stdvector_pushback_0044bff0_test.cpp'
         PassPattern = 'STD_VECTOR_PUSH_BACK_PASS'

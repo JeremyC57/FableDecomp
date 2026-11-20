@@ -1947,7 +1947,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0044be30	`scalar_deleting_destructor'	CPlayer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CLandscapeBackgroundPatch_vectordeletingdestructor_0044be30.cpp
 0044be80	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x0044BE80_global_Vector_InsertWithBuffer.cpp				
 0044bfa0	GetTC<CTCCoopSpirit const>	CThing	unknown	undefined	0		0			discovered	gapscan							
-0044bff0	push_back	std::vector	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\stdvector_pushback_0044bff0.cpp
+0044bff0	push_back	std::vector<CCharString>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\stdvector_pushback_0044bff0.cpp
 0044c030	`scalar_deleting_destructor'	CPlayerManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CLandscapeBackgroundPatch_vectordeletingdestructor_0044c030.cpp
 0044c0c0	CSubDefClassBase	CSubDefClassBase	__thiscall	undefined	1	CShoveHaPennyRegionDef *	0	yes	accepted									
 0044c108	CInventoryItemDef	CInventoryItemDef	__thiscall	undefined	1	CSimVoice *	0	yes	accepted									

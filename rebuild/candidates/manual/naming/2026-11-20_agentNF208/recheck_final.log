@@ -1,0 +1,19 @@
+addr       parity           behav  name
+008ae5e0   RELOCATION_MATCH PASS   CTCAIScratchpad::AddGossip
+008ae810   RELOCATION_MATCH PASS   CTCAIScratchpad::AddGossipVillages
+008aea40   RELOCATION_MATCH PASS   CTCAIScratchpad::AddGossipFactions
+006fc8e0   RELOCATION_MATCH PASS   std::for_each
+00cb5c90   RELOCATION_MATCH PASS   CScriptInfoManager::AddScript
+00a72ee0   RELOCATION_MATCH PASS   _global::ForEach_AddHelperPointName_00a72ee0
+00a72f40   RELOCATION_MATCH PASS   _global::ForEach_AddDummyObjectName_00a72f40
+0044bff0   RELOCATION_MATCH PASS   std::vector::push_back
+
+WINS: 8
+  008ae5e0 RELOCATION_MATCH CTCAIScratchpad::?AddGossip@CTCAIScratchpad@@SIXVCCharString@@0@Z
+  008ae810 RELOCATION_MATCH CTCAIScratchpad::?AddGossipVillages@CTCAIScratchpad@@SIXVCCharString@@0@Z
+  008aea40 RELOCATION_MATCH CTCAIScratchpad::?AddGossipFactions@CTCAIScratchpad@@SIXVCCharString@@0@Z
+  006fc8e0 RELOCATION_MATCH std::??$for_each@PBVCEvent@NAnimationEvents@@VCFillEventNames@2@@std@@YI?AVCFillEventNames@NAnimationEvents@@PBVCEvent@2@0V12@@Z
+  00cb5c90 RELOCATION_MATCH CScriptInfoManager::?AddScript@CScriptInfoManager@@IAEXABVCScriptInfo@@VCCharString@@@Z
+  00a72ee0 RELOCATION_MATCH _global::?ForEach_AddHelperPointName_00a72ee0@@YI?AUCAddName@@PBUSHelperPoint@@0U1@@Z
+  00a72f40 RELOCATION_MATCH _global::?ForEach_AddDummyObjectName_00a72f40@@YI?AUCAddName@@PBUSDummyObject@@0U1@@Z
+  0044bff0 RELOCATION_MATCH std::vector::?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z

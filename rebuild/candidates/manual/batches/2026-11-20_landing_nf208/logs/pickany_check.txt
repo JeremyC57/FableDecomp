@@ -1,0 +1,11 @@
+MISSING 0044bff0 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+OK  006fc8e0 -> 00433530 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@ sizes 316 316 
+OK  008ae5e0 -> 00433530 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@ sizes 316 316 
+OK  008ae810 -> 00433530 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@ sizes 316 316 
+OK  008aea40 -> 00433530 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@ sizes 316 316 
+NO-OWNER-OBJ 00a72ee0 0044bff0 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+NO-OWNER-OBJ 00a72f40 0044bff0 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+OK  00cb5c90 -> 00433530 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@ sizes 316 316 
+
+By hand (cmpbody.py) against the new self row 0x0044BFF0 of this landing: push_back copy in 0x00A72EE0 and 0x00A72F40: sizes 59 59 bytes equal True relocs equal True.
+MISSING ??2 against 0x00405C10: that row defines only a folded stand-in (as nf186); the agent found the new copy equal to the HEAD copies.

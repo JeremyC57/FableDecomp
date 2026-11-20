@@ -10850,8 +10850,6 @@ __imp__OutputDebugStringW@4	0143fe14	005472a0
 ?GetMiscDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a0a0	006f9ee0
 ?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	006f9be0	006f9ee0
 ?SoundEventManager@NAnimationEvents@@3V?$CCountedPointer@VCManager@NAnimationEvents@@@@A	013babbc	006f9ee0
-?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@@J@Z	009e5090	006fc8e0
-?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	00433530	006fc8e0
 ??_7CReactionFrequencyTraits_PeriodicFrequency@@6B@	01264b7c	006fed30
 ??_7CReactionFrequencyTraits_ControlledCount@@6B@	01264b94	006ff930
 ??_7CReactionFrequencyTraits_LinearTime@@6B@	01264b64	006ff930
@@ -12319,8 +12317,6 @@ __imp__PostQuitMessage@4	014403c8	00cb2f00
 ?g_himcOrg@@3PAUHIMC__@@A	0143e634	00cb5130
 ?g_hwndMain@@3PAUHWND__@@A	0143e510	00cb5130
 _ImmAssociateContext@8	00cb5564	00cb5130
-?Get@?$CTBaseSingleton@VCCodeSectionManager@@@@SIAAVCCodeSectionManager@@XZ	00414ce0	00cb5c90
-?push_back@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@VCScriptInfo@@@2@@Z	00cb7210	00cb5c90
 ??$__copy_backward@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@VCScriptInfo@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	00cb62f0	00cb6ce0
 ?g_CyclesPerSecond@@3NA	01396680	009e1c70
 ?g_FastTimerBase@@3_JA	013ca9f8	009e1c70
@@ -39373,3 +39369,5 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?ReadPixelFormat@CDataInputStream@@QAE?AVCPixelFormat@@XZ	00994670	009fd160
 ?_M_insert_overflow@?$vector@VCGraphicInfo@@V?$allocator@VCGraphicInfo@@@std@@@std@@IAEXPAVCGraphicInfo@@ABV3@ABU__false_type@2@I_N@Z	00a01120	00a01650
 ?GFontTextureCache@?A0xd47b1896@@3VCTexture@@A	013c5a80	0122a600
+?Get@?$CTBaseSingleton@VCCodeSectionManager@@@@SIAAVCCodeSectionManager@@XZ	00414ce0	00cb5c90
+?push_back@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@VCScriptInfo@@@2@@Z	00cb7210	00cb5c90

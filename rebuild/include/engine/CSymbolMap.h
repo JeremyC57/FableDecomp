@@ -46,6 +46,12 @@ public:
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;
     bool SymbolExists(const CCharString& name) const;
     long GetSymbolSLONG(const CCharString& name) const;
+#ifdef FABLE_RETAIL_CSYMBOLMAP_FINDFIRSTSYMBOLWITHVAL_VALUE
+    // NF208 opt-in (2026-11-20, FP-VECTORINSERT, row 0x006FC8E0 std::for_each<const NAnimationEvents::CEvent*, CFillEventNames>):
+    // the one-argument overload, Ego_r.pdb 0x00B36AA0 / FableWin.pdb 0x03094030 ?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@J@Z
+    // (retail 0x009E5090, out of line; the two-argument overload above is 0x009E50C0). Declaration only.
+    const CSymbolInfo* FindFirstSymbolWithVal(long value) const;
+#endif
 #ifdef FABLE_RETAIL_CSYMBOLMAP_ADDSYMBOLDIRTY
     // Nested opt-in (wf2, row 0x009ADC90 CDefinitionManager::InstantiateDef): Ego_r.pdb / FableWin.pdb
     // ?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@J@Z 0x009E5420 and ?AddSymbolDirty@CSymbolMap@@QAEXABVCCharString@@0J@Z

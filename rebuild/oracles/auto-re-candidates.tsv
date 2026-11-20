@@ -14311,7 +14311,7 @@ address	name	length	bytes
 006605a1	Lua_PushClosure	26	558becff75088b11518bc489108d450850e816f8ffff5dc20400
 006605bb	std::list<class CIntelligentPointer<class CThingMarker>,class std::allocator<class CIntelligentPointer<class CThingMarker>>>::push_back	26	558becff75088b11518bc489108d450850e821f8ffff5dc20400
 00660fc9	std::list<class CIntelligentPointer<class CThingTrackNode>,class std::allocator<class CIntelligentPointer<class CThingTrackNode>>>::push_back	26	558becff75088b11518bc489108d450850e8f6f5ffff5dc20400
-0044bff0	std::vector::push_back	59	568bf18b4e043b4e08741685c9740a8b44240850e8272c5500834604045ec204008b4424086a016a018d5424105250518bcee80975feff5ec20400
+0044bff0	std::vector<CCharString>::push_back	59	568bf18b4e043b4e08741685c9740a8b44240850e8272c5500834604045ec204008b4424086a016a018d5424105250518bcee80975feff5ec20400
 0042ab58	std::_List_base<long, std::allocator<long>>::_List_base	27	568bf18326006a0ce8a93e7d0089008940048906598bc65ec20400
 0042abaf	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list	27	568bf18326006a0ce8523e7d0089008940048906598bc65ec20400
 00493bc2	std::_List_base<const CMessageEvent*,std::allocator<const CMessageEvent*> >::_List_base	27	568bf18326006a0ce83fae760089008940048906598bc65ec20400
