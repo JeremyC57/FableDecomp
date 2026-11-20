@@ -1,5 +1,5 @@
 // CCombatManager::SetupNextSequenceForAttacker(CCombatantInfo& info) -- reset the attacker's sequences, refuse an attacker whose primary-slot weapon does not fit (a ranged-weapon creature on the rotating ring needs a projectile weapon, a creature whose def demands it needs a melee weapon), pick the best sequence against the defender (CurrentSequence), and for a melee or break-into-melee sequence mark the attacker as the defender's last attacker and apply its combat block response (stopping if that ends its attack); any non-melee sequence then says its battle speech
-// Leaf: SetupNextSequenceForAttacker
+// Leaf: ?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EB390, 622 bytes (624 with padding), `ret 4`.
 // Callees: CCombatManager::PerformSequenceReset 0x006EA2C0, the combatant map's find 0x006F0250, CCombatManager::
@@ -33,6 +33,10 @@
 //   12-byte maps); CThing UniqueID +0x18, interface bitset +0x20 / map +0x44, def +0x70, dead flag +0x91 bit 0;
 //   CCreatureDef flag byte +0x148.
 // Name fix (agentNF6 2026-11-10): CCombatManager::IsCreatureOnOuterRing 0x006E9700 is ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r.pdb / FableWin.pdb), was IsCreatureOnRotatingCombatRing.
+// Name fix (NF199, 2026-11-20, q4389): the invented CCombatantMap stand-in is replaced by the STLport map<unsigned __int64,
+//   CCombatantInfo> (stlport/fable_map.h); find's out-of-line _M_find<unsigned __int64> 0x006F0250 is declared only (FABLE_RETAIL_STLP_TREE_MFIND_DECL), so the call binds the self row's member-template spelling.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
 class CTCBase;
 class CBaseObject { public:};
@@ -159,17 +163,6 @@ struct CCombatantInfo {
     long LastWheelUpdateWorldFrame;                       // +0x58
     CIntelligentPointer<CThing> PLastAttacker;            // +0x5c
 };
-struct CCombatantMap {                                    // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                             // +0x10
-        CCombatantInfo value;                             // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);              // 0x006F0250
-};
 class CCombatManager;
 class CombatDialogueManager { public:
     unsigned long GetBestSpeechForCreature(const CThingCreatureBase& speaker, const CThingCreatureBase& target,
@@ -179,12 +172,12 @@ class CombatDialogueManager { public:
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];                        // +0x04 RegisteredCombatSequences
-    CCombatantMap Combatants;                             // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;                             // +0x10
     bool CombatStrafeTurningEnabled;                      // +0x1c
     void* World;                                          // +0x20
     unsigned char _pad24[0x38 - 0x24];
     CombatDialogueManager DialogueManager;                // +0x38
-    CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->value; }
+    CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->second; }
     void PerformSequenceReset(CThingCreatureBase& creature);   // 0x006EA2C0
     bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
     long GetBestSequenceIndexAttackerOnDefender(const CCombatantInfo& attacker, const CCombatantInfo& defender) const;   // 0x006EAE20

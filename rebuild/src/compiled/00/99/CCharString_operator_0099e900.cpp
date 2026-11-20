@@ -8,24 +8,12 @@
 // Layout: CCharString {CCharStringData* PStringData}; data block {const char* chars +0, length +4} (the landed 0x0083CC10
 // model; Ego_r.pdb CCharStringData = CBasicString<char> Data + NoRefs).
 // Shape: /O2; the equality returns `Compare(...) == 0` (`neg ; sbb ; inc`).
-class CCharStringData { public:
-    const char*   Chars;                                 // +0x00
-    unsigned long Length;                                // +0x04
-};
-long __fastcall Compare(const char* a, const char* b);   // 0x00411570
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    bool operator==(const CCharString& other) const
-    {
-        if (PStringData == other.PStringData)
-            return true;
-        if (PStringData && other.PStringData && PStringData->Length == other.PStringData->Length)
-            return Compare(PStringData->Chars, other.PStringData->Chars) == 0;
-        return false;
-    }
-    bool operator!=(const CCharString& other) const;
-};
+// Name fix (NF199, 2026-11-20, q4451): the local CCharString / CCharStringData model and its free `Compare` stand-in for 0x00411570
+//   are replaced by the shared fable_string.h (FABLE_RETAIL_CCHARSTRING: CCharStringData { CBasicString<char> Data; NoRefs }); the
+//   inline CCharString::operator== -> CBasicString<char>::operator== (length, then Compare) now binds the protected static
+//   ?Compare@?$CBasicString@D@@KIJPBD0@Z (Ego_r.pdb), the self row 0x00411570's Leaf.
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
 bool CCharString::operator!=(const CCharString& other) const
 {
     return !(*this == other);

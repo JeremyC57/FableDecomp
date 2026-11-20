@@ -14,31 +14,22 @@
 // Shape: an 8-byte frame for the key copy (low word stored before the push, high word after `add ecx,10h`),
 //   `lea edx,[esp] ; push edx`, then `add eax,18h`, `ret 4`.
 // Leaf: ?GetCombatantInfo@CCombatManager@@AAEAAUCCombatantInfo@@ABVCThingCreatureBase@@@Z
+// Name fix (NF199, 2026-11-20, q4389): the invented SCombatantMap / SCombatantNode stand-ins are replaced by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); find's out-of-line _M_find<unsigned __int64> 0x006F0250 is declared
+//   only (FABLE_RETAIL_STLP_TREE_MFIND_DECL), so the call binds the self row's member-template spelling.
 struct CCombatantInfo {                           // the mapped value (Ego_r.pdb struct CCombatantInfo; opaque here)
     long FirstWord;                                // +0x00
 };
 
-struct SCombatantNode {                            // STLport _Rb_tree_node<pair<const unsigned __int64, CCombatantInfo> >
-    long             _M_color;                     // +0x00
-    SCombatantNode*  _M_parent;                    // +0x04
-    SCombatantNode*  _M_left;                      // +0x08
-    SCombatantNode*  _M_right;                     // +0x0c
-    unsigned __int64 first;                        // +0x10 the creature's UniqueID
-    CCombatantInfo   second;                       // +0x18
-};
-
-struct SCombatantMap {                             // map<unsigned __int64, CCombatantInfo> (STLport _Rb_tree)
-    SCombatantNode* _M_header;                     // +0x00
-    SCombatantNode* FindNode(const unsigned __int64& key) const;   // 0x006F0250 (the tree's node find; stand-in name)
-};
-
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#include "stlport/fable_map.h"
 #include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 
 class CCombatManager {
 public:
     unsigned char  _pad00[0x10];                   // +0x00 vptr, +0x04 RegisteredCombatSequences (STLport map, 12 bytes)
-    SCombatantMap  Combatants;                     // +0x10 map<unsigned __int64, CCombatantInfo>
+    std::map<unsigned __int64, CCombatantInfo> Combatants;   // +0x10
     const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const;   // 0x006E9360
 private:
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature);               // 0x006E9390
@@ -47,5 +38,5 @@ private:
 CCombatantInfo& CCombatManager::GetCombatantInfo(const CThingCreatureBase& creature)
 {
     unsigned __int64 key = creature.GetUniqueID();
-    return Combatants.FindNode(key)->second;
+    return Combatants.find(key)->second;
 }

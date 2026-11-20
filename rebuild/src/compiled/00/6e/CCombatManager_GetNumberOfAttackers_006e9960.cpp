@@ -1,5 +1,5 @@
 // CCombatManager::GetNumberOfAttackers(CThingCreatureBase*) -- for a registered combatant, the node count of its defender-side Attackers map (looked up by the creature's unique id); 0 for a non-combatant
-// Leaf: GetNumberOfAttackers
+// Leaf: ?GetNumberOfAttackers@CCombatManager@@QAEJPAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E9960, length 70 bytes (+ int3 padding). No callers or
 // vtable references (dead in the shipped build).
 // Callees: CThingCreatureBase "is combatant" @ 0x00662430 (asks the world's combat manager; landed under the
@@ -13,6 +13,11 @@
 // 0x30 bytes with its 12-byte vector; the STLport map is {header, count, compare}). The name is inferred.
 // Shape: the success path is the `if` body (the `xor eax,eax` exit sits at the end); the 64-bit key is a
 // local copied high word first into the 8-byte frame and passed by const reference.
+// Name fix (NF199, 2026-11-20, q4389): the invented CCombatantMap / SCombatantNode stand-ins are replaced by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); find's out-of-line _M_find<unsigned __int64> 0x006F0250 is
+//   declared only (FABLE_RETAIL_STLP_TREE_MFIND_DECL), so the call binds the self row's member-template spelling.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#include "stlport/fable_map.h"
 class CThingCreatureBase { public:
     unsigned char    _pad[0x18];
     unsigned __int64 UniqueID;                              // +0x18 (CThing)
@@ -31,20 +36,10 @@ struct CCombatantInfo {
     CAttackerMap  Attackers;                                // +0x34 DefenderInfo.Attackers
 };
 
-struct SCombatantNode {                                     // STLport _Rb_tree_node<pair<const u64, CCombatantInfo>>
-    unsigned char    _links[0x10];                          // colour, parent, left, right
-    unsigned __int64 Key;                                   // +0x10
-    CCombatantInfo   Value;                                 // +0x18
-};
-
-struct CCombatantMap {                                      // STLport map<unsigned __int64, CCombatantInfo>
-    SCombatantNode* FindNode(const unsigned __int64& key);  // 0x006F0250
-};
-
 class CCombatManager { public:
     void*         __vftable;                                // +0x00
     unsigned char RegisteredCombatSequences[0xc];           // +0x04
-    CCombatantMap Combatants;                               // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     long GetNumberOfAttackers(CThingCreatureBase* creature);
 };
 
@@ -52,7 +47,7 @@ long CCombatManager::GetNumberOfAttackers(CThingCreatureBase* creature)
 {
     if (creature->IsInMeleeAsAttacked()) {
         unsigned __int64 id = creature->UniqueID;
-        return Combatants.FindNode(id)->Value.Attackers.Count;
+        return Combatants.find(id)->second.Attackers.Count;
     }
     return 0;
 }

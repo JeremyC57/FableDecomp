@@ -1,0 +1,118 @@
+addr       parity           behav  name
+00406070   WARN STANDIN_LEAF ??0CStringOwner_00406070@@QAE@XZ (catalog _unattributed::CStringOwner_00406070; address-only name)
+00406070   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00406070
+00413280   WARN STANDIN_LEAF ??0CStringOwner_00413280@@QAE@XZ (catalog _unattributed::CStringOwner_00413280; address-only name)
+00413280   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00413280
+0044a570   WARN STANDIN_LEAF ??0CStringOwner_0044a570@@QAE@XZ (catalog _unattributed::CStringOwner_0044a570; address-only name)
+0044a570   RELOCATION_MATCH PASS   _unattributed::CStringOwner_0044a570
+0047a750   WARN STANDIN_LEAF ??0CStringOwner_0047a750@@QAE@XZ (catalog _unattributed::CStringOwner_0047a750; address-only name)
+0047a750   RELOCATION_MATCH PASS   _unattributed::CStringOwner_0047a750
+004cb0d0   WARN STANDIN_LEAF ??0CStringOwner_004cb0d0@@QAE@XZ (catalog _unattributed::CStringOwner_004cb0d0; address-only name)
+004cb0d0   RELOCATION_MATCH PASS   _unattributed::CStringOwner_004cb0d0
+004d3826   WARN SHARED_HEADER_AVAILABLE CChestDef (engine/CChestDef.h)
+004d3826   WARN RELOC_NAME: ??0CBase_0044c0c0@@QAE@XZ -> 0044c0c0 labelled 'CSubDefClassBase::CSubDefClassBase'
+004d3826   RELOCATION_MATCH PASS   CChestDef::CChestDef
+0050b470   WARN STANDIN_LEAF ??0CStringOwner_0050b470@@QAE@XZ (catalog _unattributed::CStringOwner_0050b470; address-only name)
+0050b470   RELOCATION_MATCH PASS   _unattributed::CStringOwner_0050b470
+00525ff0   WARN STANDIN_LEAF ??0CStringOwner_00525ff0@@QAE@XZ (catalog _unattributed::CStringOwner_00525ff0; address-only name)
+00525ff0   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00525ff0
+006a7f30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a7f30   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptData (engine/CThingFilter_HasScriptData.h)
+006a7f30   RELOCATION_MATCH PASS   CThingFilter_HasScriptData::operator()
+006e9360   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9360   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9360   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9360   RELOCATION_MATCH PASS   CCombatManager::GetCombatantInfo
+006e9390   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9390   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9390   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9390   RELOCATION_MATCH PASS   CCombatManager::GetCombatantInfo
+006e97f0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e97f0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e97f0   WARN RELOC_NAME: ??ECAttackerIterator@@QAEAAU0@XZ -> 006ef790 labelled 'CRetailTreeIterator::Increment'
+006e97f0   RELOCATION_MATCH PASS   CCombatManager::IsDefenderDueForAttack
+006e9960   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9960   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9960   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9960   RELOCATION_MATCH PASS   CCombatManager::GetNumberOfAttackers
+006eb390   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CombatDialogueManager (engine/CombatDialogueManager.h)
+006eb390   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006eb390   RELOCATION_MATCH PASS   CCombatManager::SetupNextSequenceForAttacker
+006eb600   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eb600   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006eb600   RELOCATION_MATCH PASS   GetNextActionForCreature
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+006ed9e0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ed9e0   WARN RELOC_NAME: ?IsCombatant@CThingCreatureBase@@QAE_NXZ -> 00662430 labelled 'CThingCreatureBase::IsInMeleeAsAttacked'
+006ed9e0   RELOCATION_MATCH PASS   CCombatManager::DeregisterDestroyedCombatant
+0074c6d0   WARN STANDIN_LEAF ??0CStringOwner_0074c6d0@@QAE@XZ (catalog _unattributed::CStringOwner_0074c6d0; address-only name)
+0074c6d0   RELOCATION_MATCH PASS   _unattributed::CStringOwner_0074c6d0
+00822690   WARN STANDIN_LEAF ??0CStringOwner_00822690@@QAE@XZ (catalog _unattributed::CStringOwner_00822690; address-only name)
+00822690   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00822690
+00869fa0   WARN STANDIN_LEAF ??0CStringOwner_00869fa0@@QAE@XZ (catalog _unattributed::CStringOwner_00869fa0; address-only name)
+00869fa0   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00869fa0
+0099e900   RELOCATION_MATCH PASS   CCharString::operator!=
+009a9930   WARN STANDIN_LEAF ??0CClass_009a9930@@QAE@ABUCAllocator@@@Z (catalog _unattributed::CClass_009a9930; address-only name)
+009a9930   RELOCATION_MATCH PASS   _unattributed::CClass_009a9930
+009aa240   WARN STANDIN_LEAF ??0CClass_009aa240@@QAE@XZ (catalog _unattributed::CClass_009aa240; address-only name)
+009aa240   RELOCATION_MATCH PASS   _unattributed::CClass_009aa240
+009c97a0   WARN STANDIN_LEAF ??0CStringOwner_009c97a0@@QAE@XZ (catalog _unattributed::CStringOwner_009c97a0; address-only name)
+009c97a0   RELOCATION_MATCH PASS   _unattributed::CStringOwner_009c97a0
+00a14ee0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+00a14ee0   RELOCATION_MATCH PASS   CNavigatorManager::IsNavigationMapLoadedWithSectionName
+00bf8d50   WARN STANDIN_LEAF ??0CStringOwner_00bf8d50@@QAE@XZ (catalog _unattributed::CStringOwner_00bf8d50; address-only name)
+00bf8d50   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00bf8d50
+00cb7840   WARN STANDIN_LEAF ??0CStringOwner_00cb7840@@QAE@XZ (catalog _unattributed::CStringOwner_00cb7840; address-only name)
+00cb7840   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00cb7840
+00cd4580   WARN STANDIN_LEAF ??0CStringOwner_00cd4580@@QAE@XZ (catalog _unattributed::CStringOwner_00cd4580; address-only name)
+00cd4580   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00cd4580
+
+WINS: 27
+  00406070 RELOCATION_MATCH _unattributed::CStringOwner_00406070
+  00413280 RELOCATION_MATCH _unattributed::CStringOwner_00413280
+  0044a570 RELOCATION_MATCH _unattributed::CStringOwner_0044a570
+  0047a750 RELOCATION_MATCH _unattributed::CStringOwner_0047a750
+  004cb0d0 RELOCATION_MATCH _unattributed::CStringOwner_004cb0d0
+  004d3826 RELOCATION_MATCH CChestDef::CChestDef
+  0050b470 RELOCATION_MATCH _unattributed::CStringOwner_0050b470
+  00525ff0 RELOCATION_MATCH _unattributed::CStringOwner_00525ff0
+  006a7f30 RELOCATION_MATCH CThingFilter_HasScriptData::??RCThingFilter_HasScriptData@@QBE_NPAVCThing@@@Z
+  006e9360 RELOCATION_MATCH CCombatManager::?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z
+  006e9390 RELOCATION_MATCH CCombatManager::?GetCombatantInfo@CCombatManager@@AAEAAUCCombatantInfo@@ABVCThingCreatureBase@@@Z
+  006e97f0 RELOCATION_MATCH CCombatManager::?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z
+  006e9960 RELOCATION_MATCH CCombatManager::?GetNumberOfAttackers@CCombatManager@@QAEJPAVCThingCreatureBase@@@Z
+  006eb390 RELOCATION_MATCH CCombatManager::?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+  006eb600 RELOCATION_MATCH CCombatManager::?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z
+  006ed9e0 RELOCATION_MATCH CCombatManager::?DeregisterDestroyedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z
+  0074c6d0 RELOCATION_MATCH _unattributed::CStringOwner_0074c6d0
+  00822690 RELOCATION_MATCH _unattributed::CStringOwner_00822690
+  00869fa0 RELOCATION_MATCH _unattributed::CStringOwner_00869fa0
+  0099e900 RELOCATION_MATCH CCharString::??9CCharString@@QBE_NABV0@@Z
+  009a9930 RELOCATION_MATCH _unattributed::CClass_009a9930
+  009aa240 RELOCATION_MATCH _unattributed::CClass_009aa240
+  009c97a0 RELOCATION_MATCH _unattributed::CStringOwner_009c97a0
+  00a14ee0 RELOCATION_MATCH CNavigatorManager::?IsNavigationMapLoadedWithSectionName@CNavigatorManager@@QAE_NJPBVCCharString@@@Z
+  00bf8d50 RELOCATION_MATCH _unattributed::CStringOwner_00bf8d50
+  00cb7840 RELOCATION_MATCH _unattributed::CStringOwner_00cb7840
+  00cd4580 RELOCATION_MATCH _unattributed::CStringOwner_00cd4580

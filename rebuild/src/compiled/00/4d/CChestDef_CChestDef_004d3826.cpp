@@ -13,13 +13,13 @@ struct CBase_0044c0c0 {
     CBase_0044c0c0();                           // 0x0044C0C0
 };
 
-struct CMember_0099e4b0 {
-    CMember_0099e4b0();                              // 0x0099E4B0
-};
+// Name fix (NF199, 2026-11-20, q4456): the CMember_0099e4b0 stand-in for the CCharString member is replaced by the shared fable_string.h
+//   CCharString, so the constructor call binds ??0CCharString@@QAE@XZ (Ego_r.pdb; 0x0099E4B0).
+#include "fable_string.h"
 
 class CChestDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x2c];
-    CMember_0099e4b0 m_member;                       // +0x30
+    CCharString m_member;                            // +0x30
     virtual void v00();
     CChestDef();
 };
