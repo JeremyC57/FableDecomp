@@ -29303,7 +29303,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008dc720	StartBeamEffect	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	void	1	CModeDragonStrafeBurninate *	1	yes	accepted									
 008dc900	UpdateBeam	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	void	2	CModeDragonStrafeBurninate *,float	1	yes	accepted									
 008dcb00	OnDeactivate	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008dcb60	ExtinguishFlames	CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
+008dcb60	ExtinguishFlames	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
 008dcc80	Flash	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
 008dd0f0	OnActivate	CModeScorpionKingVulnerable	__thiscall	void	1	CModeScorpionKingVulnerable *	1	yes	accepted									
 008dd6e0	OnActivate	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

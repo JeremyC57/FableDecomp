@@ -1,5 +1,5 @@
 // NCreatureMode::CModeJackOfBladesFlash::OnDeactivate() -- kill the live emitter (+0x88) and spotlight (+0x90), put out the flames, resume a suspended creature animation, clear Active
-// Leaf: OnDeactivate
+// Leaf: ?OnDeactivate@CModeJackOfBladesFlash@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DF310, 134 bytes (`ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80,
 // CModeJackOfBladesFlash::ExtinguishFlames @ 0x008DCB60, CThingAICreature::SuspendAI @ 0x00833A10.
@@ -7,6 +7,9 @@
 // PCreature +0x7c, PTarget +0x80, PEmitter +0x88, PSpotLight +0x90; CModeBase::Active +0x18.
 // Shape: the two kill blocks, then the out-of-line ExtinguishFlames, then SuspendAI(false, 0) on the creature
 // when its +0x6c bit 0 is set; Active cleared last.
+// Naming (NF135, 2026-11-20; q6453 family): ExtinguishFlames (0x008DCB60) is private in both PDBs (Ego_r.pdb 0x0081E350 / FableWin.pdb 0x0284B620
+//   ?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@AAEXXZ): its declaration in the row-local class moved under `private:` (access only,
+//   in place), so the call binds the AAE spelling the owner row 0x008DCB60 now defines (was ...@NCreatureMode@@QAEXXZ). Nothing else changed.
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
@@ -49,7 +52,9 @@ class CModeJackOfBladesFlash : public CModeStandBase { public:
     CBaseIntelligentPointer PTarget;               // +0x80
     CBaseIntelligentPointer PEmitter;              // +0x88
     CBaseIntelligentPointer PSpotLight;            // +0x90
-    void ExtinguishFlames();                       // 0x008DCB60
+private:
+    void ExtinguishFlames();                       // 0x008DCB60 (private: Ego_r.pdb / FableWin.pdb ...@NCreatureMode@@AAEXXZ)
+public:
     virtual void OnDeactivate();
 };
 

@@ -238308,8 +238308,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008d7630'
         Module = 'NCreatureMode::CModeIceTrollGroundSmashIcicleAssault'
-        Source = '00/8d/CModeIceTrollGroundSmashIcicleAssault_OnActivate_008d7630.cpp'
-        TestSource = '00/8d/CModeIceTrollGroundSmashIcicleAssault_OnActivate_008d7630_test.cpp'
+        Source = '00/8d/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_OnActivate_008d7630.cpp'
+        TestSource = '00/8d/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_OnActivate_008d7630_test.cpp'
         PassPattern = 'PASS'
     }
     [pscustomobject]@{
@@ -238343,8 +238343,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008e7cf0'
         Module = 'NCreatureMode::CModeBriarRoseTeleportIntangible'
-        Source = '00/8e/CModeBriarRoseTeleportIntangible_OnDeactivate_008e7cf0.cpp'
-        TestSource = '00/8e/CModeBriarRoseTeleportIntangible_OnDeactivate_008e7cf0_test.cpp'
+        Source = '00/8e/NCreatureModeCModeBriarRoseTeleportIntangible_OnDeactivate_008e7cf0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeBriarRoseTeleportIntangible_OnDeactivate_008e7cf0_test.cpp'
         PassPattern = '008e7cf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -248946,9 +248946,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008dcb60'
-        Module = 'CModeJackOfBladesFlash'
-        Source = '00/8d/CModeJackOfBladesFlash_ExtinguishFlames_008dcb60.cpp'
-        TestSource = '00/8d/CModeJackOfBladesFlash_ExtinguishFlames_008dcb60_test.cpp'
+        Module = 'NCreatureMode::CModeJackOfBladesFlash'
+        Source = '00/8d/NCreatureModeCModeJackOfBladesFlash_ExtinguishFlames_008dcb60.cpp'
+        TestSource = '00/8d/NCreatureModeCModeJackOfBladesFlash_ExtinguishFlames_008dcb60_test.cpp'
         PassPattern = '008dcb60_TEST PASS'
     }
     [pscustomobject]@{

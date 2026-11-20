@@ -1,185 +1,115 @@
-// NCreatureMode::CModeBriarRoseTeleportIntangible::OnActivate() -- Briar Rose turns intangible: read the teleport timings from her def (defaults 6 s, no theme change, scale 1), set the mode's frame count, suspend a player creature's animation, clear the 0x3a flag and the type-9 component's flag, stop her movement and run the environment theme transition on all six channels
-// Leaf: OnActivate
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
-// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
-//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008E7B90, length 342 bytes (padded to 352), `ret`.
-// Callees: CModeStandBase::OnActivate @ 0x008621A0, CDefClassBase::GetSubDef<T>(CDefPointer<T>*) @ 0x008E7790 (manifest instantiation
-//   name is a byte twin), the defs' virtual slot 1 (release), __ftol2 @ 0x00BFEA70, CThingAICreature::SuspendAI @ 0x00833A10,
-//   CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, types 0x3a and 9), the creature's virtual slot 28 (+0x70),
-//   CModeBase::GetGlobalComponents @ 0x0073A680, CEnvironment::TransitionToTheme(long, long, long, float) @ 0x006B3800.
-// Globals: game frames per second (long) @ 0x01375550.
-// Layout: CModeBase ParentThing +4; the mode's frame count +0x74; the creature's def +0x70, type byte +0x10, presence bits +0x20,
-//   interface map +0x44; the teleport sub-def: duration +0x2c, theme-change count +0x3c, scale +0x40; the global components'
-//   environment +0x18.
-// Shape: as the landed CCreatureAction_ScorpionKingDeath::Initialise 0x008C4170: the creature def is held in a by-value add-ref'ed
-//   copy only around GetSubDef (bool result kept in bl across its release), the sub-def is copied out of the out slot into a holder
-//   released at the end; GetSubDef has a same-TU stand-in body (out pointer does not escape, so the holder lives in ebx); the
-//   six channel transitions run only for a positive count, through an inline CGlobalComponents::GetEnvironment() (the getter call
-//   then precedes the argument pushes).
-#include "fable_compiler.h"
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CDefPointeeBase { public:
-    virtual void Destroy();                     // slot 0
-    virtual void Delete();                      // slot 1 (+0x04)
-    long m_refCount;                            // +0x04
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    CDefPointer() : Object(0) { }
-};
-template <class T> struct CDefHolder {
-    T* Object;
-    CDefHolder(T* object) : Object(object) { }
-    ~CDefHolder()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-template <class T> struct CDefCopy {            // by-value CDefPointer copy: add-ref on entry, release on exit
-    T* Object;
-    CDefCopy(T* object) : Object(object) { if (Object) ++Object->m_refCount; }
-    ~CDefCopy()
-    {
-        if (Object && --Object->m_refCount == 0)
-            Object->Delete();
-    }
-    T* operator->() const { return Object; }
-};
-struct CBriarRoseTeleportDef : CDefPointeeBase {
-    unsigned char _pad08[0x24];
-    float         Duration;                     // +0x2c
-    unsigned char _pad30[0x0c];
-    long          ThemeChangeCount;             // +0x3c
-    float         ThemeScale;                   // +0x40
-};
-class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CBriarRoseTeleportDef>* out);   // 0x008E7790
-};
-void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
-// Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
-// pointer's address does not escape the call (the landed 0x00848730 / 0x008C4170 idiom).
-#pragma auto_inline(off)
-__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CBriarRoseTeleportDef>* out)
-{
-    void* def = FindDef_CDefClassBase_GetSubDef_0();
-    if (!def)
-        return false;
-    *(void**)out = def;
-    return true;
-}
-#pragma auto_inline(on)
-struct CModeBase;
-class CThingAICreature { public:
-    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
-};
-class CThing { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual void StopMoving(bool immediately);  // slot 28 (+0x70)
-    unsigned char  _pad04[0x0c];
-    unsigned char  m_type;                      // +0x10 (1 = player creature)
-    unsigned char  _pad11[0x0f];
-    unsigned long  m_presentBits[9];            // +0x20 std::bitset of interface types
-    CInterfaceMap  m_interfaces;                // +0x44
-    unsigned char  _pad54[0x1c];
-    CDefClassBase* PDef;                        // +0x70
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-struct CTCFlagged {                             // the type-0x3a component
-    unsigned char _pad00[0x50];
-    unsigned char m_flag : 1;                   // +0x50 bit 0
-};
-struct CTCType9 {                               // the type-9 component
-    unsigned char _pad00[0x10];
-    bool          m_active;                     // +0x10
-};
-class CEnvironment { public:
-    void TransitionToTheme(long channel, long mode, long count, float scale);   // 0x006B3800
-};
-struct CGlobalComponents {
-    unsigned char _pad00[0x18];
-    CEnvironment* Environment;                  // +0x18
-    CEnvironment* GetEnvironment() const { return Environment; }
-};
-class CMainGameComponent {
-protected:
-    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
-public:
-    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
-};
-
-struct CModeBase {
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    unsigned char _pad08[0x14];
-    CGlobalComponents* GetGlobalComponents() const;   // 0x0073A680
-};
-struct CModeStandBase : CModeBase {
-    unsigned char _body[0x4c];
-    void OnActivate();                          // 0x008621A0
-};
+// NCreatureMode::CModeBriarRoseTeleportIntangible::OnActivate() -- Briar Rose turns intangible: read the intangibility time, theme and theme transition time from her CBriarRoseDef sub-def (defaults 6 s, no theme, 1 s), set the mode timer in frames, suspend an AI creature, take her out of the mapwho and targeting, hide her, and transition the environment theme on all six channels
+// Leaf: ?OnActivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008E7B90, 342 bytes (virtual, `ret`); vtable 0x0128026C slot 5.
+// Callees: CModeStandBase::OnActivate 0x008621A0 (qualified), CDefClassBase::GetSubDef<CBriarRoseDef> 0x008E7790 on the parent's base def
+//   (CThing::GetPBaseDef, +0x70, by value), the def's virtual slot 1 (release), __ftol2 0x00BFEA70, CThingAICreature::SuspendAI 0x00833A10,
+//   CVectorMap LowerBound 0x0040F020 (GetTC of TCI_MAPWHO 0x3a and TCI_TARGETED 9), CThing slot 28 SetAsDrawable (+0x70),
+//   CModeBase::GetWorld 0x0073A680, CEnvironment::TransitionToTheme(long, long, long, float) 0x006B3800 (CWorld +0x18).
+// Globals: ?ConstantFPS@CMainGameComponent@@1JA 0x01375550 (through the inline GetConstantFPS()).
+// Layout: Ego_r.pdb CModeBriarRoseTeleportIntangible : CModeStandBase (0x68): Filter +0x68 (CAnimFilterOfGroup), Timer +0x74, PTarget +0x78;
+//   CBriarRoseDef (engine/CBriarRoseDef.h) SecondsToBeIntangible +0x2c, EnvironmentThemeForIntangibleMode +0x3c,
+//   SecondsForIntangibleEnvironmentThemeTransitionIn +0x40.
+// Naming (NF135, 2026-11-20; q6453 / q6455): moved off the local CModeBase / CModeStandBase / CGlobalComponents / CDefPointer / CDefCopy /
+//   CDefHolder / CTCFlagged / CTCType9 / CThing models and the same-TU GetSubDef stand-in onto engine/CModeStandBase.h (FABLE_RETAIL_CMODESTANDBASE
+//   + _ACTIVATE) over the shared nested CTCCreatureModeManager::CModeBase (VIRTUALS: GetWorld), engine/CThing.h (GETTC_EXPANDED, ORIGINAL_VTABLE
+//   slot 28 SetAsDrawable, GetPBaseDef), engine/CThingAICreature.h (DRAINED), engine/CTCMapwho.h (SETINMAP), engine/CTCTargeted.h, engine/CBriarRoseDef.h
+//   + engine/CDefClassBase_GetSubDef.h, engine/CMainGameComponent.h (GetConstantFPS), engine/CWorld.h (ENVIRONMENT) and engine/CEnvironment.h
+//   (TRANSITIONTOTHEME); the same define set as 0x008E7CF0. RELOCATION_MATCH in one form. HEAD named the teleport sub-def CBriarRoseTeleportDef
+//   and its fields Duration / ThemeChangeCount / ThemeScale: 0x008E7790 is GetSubDef<CBriarRoseDef> (its landed self leaf and the
+//   "CBriarRoseDef" literal), so the fields are CBriarRoseDef SecondsToBeIntangible +0x2c / EnvironmentThemeForIntangibleMode +0x3c /
+//   SecondsForIntangibleEnvironmentThemeTransitionIn +0x40 (Ego_r layout), and the mode member +0x74 is Ego_r Timer; the six calls are
+//   TransitionToTheme(channel, 2, theme, time) and the slot-28 call is SetAsDrawable(false) (HEAD: StopMoving).
+//   Self symbol ?OnActivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@QAEXXZ -> ...@@UAEXXZ (Ego_r.pdb 0x00830B30, FableWin.pdb 0x0280CCA0;
+//   vtable 0x0128026C slot 5; no landed row references 0x008E7B90). Row-local class: no shared header anywhere under rebuild/include; the
+//   landed siblings 0x008E8940 / 0x008C3700 model it the same way; its base is the shared CModeStandBase.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGAICREATURE_DRAINED
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CMODESTANDBASE_ACTIVATE
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_STATTYPE
+#define FABLE_RETAIL_CTCMAPWHO_SETINMAP
+#define FABLE_RETAIL_CTCTARGETED
+#define FABLE_RETAIL_BRIAR_ROSE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_ENVIRONMENT
+#define FABLE_RETAIL_CENVIRONMENT
+#define FABLE_RETAIL_CENVIRONMENT_TRANSITIONTOTHEME
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CThing.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CModeStandBase.h"
+#include "engine/CTCMapwho.h"
+#include "engine/CTCTargeted.h"
+#include "engine/CBriarRoseDef.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CEnvironment.h"
+#include "engine/CWorld.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CAnimFilterOfGroup.h"
 
 namespace NCreatureMode {
-
-struct CModeBriarRoseTeleportIntangible : CModeStandBase {
-    unsigned char _pad68[0x0c];
-    long          FrameCount;                   // +0x74
-    void OnActivate();
+// Ego_r.pdb / FableWin.pdb ??0CModeBriarRoseTeleportIntangible@NCreatureMode@@QAE@AAVCThing@@AAVCThingCreatureBase@@@Z; RTTI
+// CModeBriarRoseTeleportIntangible : CModeStandBase; Ego_r.pdb members Filter +0x68, Timer +0x74, PTarget +0x78. No shared header (row-local,
+// as the landed siblings 0x008E8940 / 0x008C3700); only the override this row defines is declared.
+class CModeBriarRoseTeleportIntangible : public CModeStandBase {
+public:
+    virtual void OnActivate();
+private:
+    CAnimFilterOfGroup                      Filter;     // +0x68
+    long                                    Timer;      // +0x74
+    CIntelligentPointer<CThingCreatureBase> PTarget;    // +0x78
 };
 
 void CModeBriarRoseTeleportIntangible::OnActivate()
 {
     CModeStandBase::OnActivate();
-    CThing* thing = ParentThing;
-    float duration = 6.0f;
-    long themeChanges = 0;
-    float scale = 1.0f;
-    CDefPointer<CBriarRoseTeleportDef> out;
-    bool found;
-    {
-        CDefCopy<CDefClassBase> def(thing->PDef);
-        found = def->GetSubDef(&out);
+    float seconds = 6.0f;
+    long theme = 0;
+    float time = 1.0f;
+    CDefPointer<const CBriarRoseDef> pdef;
+    if (ParentThing.GetPBaseDef()->GetSubDef(&pdef)) {
+        theme = pdef->EnvironmentThemeForIntangibleMode;
+        seconds = pdef->SecondsToBeIntangible;
+        time = pdef->SecondsForIntangibleEnvironmentThemeTransitionIn;
     }
-    CDefHolder<CBriarRoseTeleportDef> teleport(out.Object);
-    if (found) {
-        themeChanges = teleport->ThemeChangeCount;
-        duration = teleport->Duration;
-        scale = teleport->ThemeScale;
-    }
-    FrameCount = (long)(CMainGameComponent::GetConstantFPS() * duration);
-    if (ParentThing->m_type == 1)
-        ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
-    CTCFlagged* flagged;
-    if (ParentThing->GetInterface(&flagged, 0x3a))
-        flagged->m_flag = 0;
-    CTCType9* type9;
-    if (ParentThing->GetInterface(&type9, 9))
-        type9->m_active = false;
-    ParentThing->StopMoving(false);
-    if (themeChanges > 0) {
+    Timer = (long)(CMainGameComponent::GetConstantFPS() * seconds);
+    if (ParentThing.GetType() == 1)
+        ((CThingAICreature&)ParentThing).SuspendAI(true, this);
+    CTCMapwho* mapwho;
+    if (ParentThing.GetTC(&mapwho))
+        mapwho->SetInMap(false);
+    CTCTargeted* targeted;
+    if (ParentThing.GetTC(&targeted))
+        targeted->SetTargetable(false);
+    ParentThing.SetAsDrawable(false);
+    if (theme > 0) {
         for (long channel = 0; channel < 6; ++channel)
-            GetGlobalComponents()->GetEnvironment()->TransitionToTheme(channel, 2, themeChanges, scale);
+            GetWorld().GetEnvironment().TransitionToTheme(channel, 2, theme, time);
     }
 }
 

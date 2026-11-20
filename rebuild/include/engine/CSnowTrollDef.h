@@ -8,6 +8,39 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSNOWTROLLDEF
+// NF135 opt-in (q6453, row 0x008D7630 NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnActivate): the retail class over the shared
+// CSubDefClassBase (needs FABLE_RETAIL_DEF_CLASS_BASE), as engine/CBriarRoseDef.h does for its sibling sub-def. RTTI .?AVCSnowTrollDef@@ :
+// CSubDefClassBase (ghidra_out/rtti_bases.tsv); Ego_r.pdb members and offsets (the flat branch below; no STL container, so they hold in
+// retail: 0x008D7630 reads DistanceRange +0x48, 0x008C6DB0 IcicleAttackIndex +0x28); StatGetTypeName (inline, the "CSnowTrollDef" literal
+// GetSubDef<CSnowTrollDef> 0x008C7A70 builds). Ego_r / FableWin virtuals Copy / GetSizeofClass / Transfer are not declared (no row needs them).
+#include "fable_string.h"
+#include "engine/CSubDefClassBase.h"
+class CSnowTrollDef : public CSubDefClassBase {
+public:
+    static CCharString FABLE_FASTCALL StatGetTypeName() { return "CSnowTrollDef"; }
+#ifdef FABLE_RETAIL_CSNOWTROLLDEF_ALLOC
+    static class CDefClassBase* FABLE_FASTCALL Alloc();
+#endif
+    long  IcicleAttackIndex;                                 // +0x28
+    float SecondsIcicleAttackTargetPositionPredictionTime;   // +0x2c
+    float DistancePoundGroundRange;                          // +0x30
+    float SecondsForIcicleAssault;                           // +0x34
+    float SecondsLeadIntoIcicles;                            // +0x38
+    float SecondsBetweenIcicles;                             // +0x3c
+    float SecondsBetweenWarningFXAndTrigger;                 // +0x40
+    float SecondsForTrapToRemain;                            // +0x44
+    float DistanceRange;                                     // +0x48
+    float DistanceAroundTarget;                              // +0x4c
+    float DistanceExclusionAroundIcicles;                    // +0x50
+    long  IcicleAssaultWarningFXIndex;                       // +0x54
+    long  IcicleAssaultTrapIndex;                            // +0x58
+    float IceTrailDistanceLimit;                             // +0x5c
+};
+FABLE_STATIC_ASSERT(sizeof(CSnowTrollDef) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, IcicleAttackIndex) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CSnowTrollDef, DistanceRange) == 0x48);
+#else // flattened Ego_r layout (the landed default, unchanged)
 #pragma pack(push, 1)
 class CSnowTrollDef {
 public:
@@ -60,4 +93,5 @@ FABLE_STATIC_ASSERT_AT(54, offsetof(CSnowTrollDef, IcicleAssaultWarningFXIndex) 
 FABLE_STATIC_ASSERT_AT(55, offsetof(CSnowTrollDef, IcicleAssaultTrapIndex) == 0x58);
 FABLE_STATIC_ASSERT_AT(56, offsetof(CSnowTrollDef, IceTrailDistanceLimit) == 0x5c);
 
+#endif // FABLE_RETAIL_CSNOWTROLLDEF
 #endif // FABLE_ENGINE_CSNOWTROLLDEF_H

@@ -1,0 +1,18 @@
+addr       parity           behav  name
+008e7cf0   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseTeleportIntangible::OnDeactivate
+008e7b90   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseTeleportIntangible::OnActivate
+008d7630   RELOCATION_MATCH PASS   NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnActivate
+008dcb60   RELOCATION_MATCH PASS   CModeJackOfBladesFlash::ExtinguishFlames
+008df310   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008df310   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008df310   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008df310   RELOCATION_MATCH PASS   NCreatureMode::CModeJackOfBladesFlash::OnDeactivate
+008dc900   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonStrafeBurninate::UpdateBeam
+
+WINS: 6
+  008e7cf0 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportIntangible::?OnDeactivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@UAEXXZ
+  008e7b90 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportIntangible::?OnActivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@UAEXXZ
+  008d7630 RELOCATION_MATCH NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::?OnActivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXXZ
+  008dcb60 RELOCATION_MATCH CModeJackOfBladesFlash::?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@AAEXXZ
+  008df310 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFlash::?OnDeactivate@CModeJackOfBladesFlash@NCreatureMode@@UAEXXZ
+  008dc900 RELOCATION_MATCH NCreatureMode::CModeDragonStrafeBurninate::?UpdateBeam@CModeDragonStrafeBurninate@NCreatureMode@@AAEXM@Z

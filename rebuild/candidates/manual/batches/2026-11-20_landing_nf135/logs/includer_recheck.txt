@@ -1,0 +1,2 @@
+# recheck after landing nf135: 256 rows = gate referencing rows (20 targets) + renamed rows + 3 direct includers of CSnowTrollDef.h
+good 256 bad 0

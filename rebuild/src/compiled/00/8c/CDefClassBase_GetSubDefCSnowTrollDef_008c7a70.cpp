@@ -18,33 +18,30 @@
 //   CDefPointer<const CDefClassBase> and is released (the `mov edi,[eax+4] ; dec edi` shape); SetDynamicCast<const
 //   CDefClassBase> assigns it into *out (release old, store, addref); the local's destructor releases (`dec [esi+4] ; jne`).
 
-#include "fable_string.h"
+// Coordinator fix (landing nf135): the explicit specialization this row defined strongly clashed (LNK2005) with the pick-any
+//   COMDAT every includer of engine/CDefClassBase_GetSubDef.h emits for the same template instance (0x008D7630 lands on it). The row now
+//   instantiates that shared body (the same statements) and takes its address in an anonymous-namespace helper, so it emits the one
+//   pick-any COMDAT too (GOTCHAS nf86 / nf88).
+#define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CSNOWTROLLDEF
+#include "fable_string.h"
 #include "engine/CSubDefClassBase.h"
 #include "engine/CDefPointer.h"
-
-class CSnowTrollDef : public CSubDefClassBase {                    // RTTI .?AVCSnowTrollDef@@ : CSubDefClassBase
-public:
-    static CCharString __fastcall StatGetTypeName() { return CCharString("CSnowTrollDef", -1); }   // ?StatGetTypeName@CSnowTrollDef@@SI?AVCCharString@@XZ (inline)
-    virtual void Transfer(CPersistContext&);                      // ?Transfer@CSnowTrollDef@@UAEXAAVCPersistContext@@@Z
-    virtual void Copy(const CDefClassBase*);                      // ?Copy@CSnowTrollDef@@UAEXPBVCDefClassBase@@@Z
-    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CSnowTrollDef@@UAEKXZ
-};
-
-class CDefinitionManager {
-    friend class CDefClassBase;
-protected:
-    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (protected non-const overload; hidden result pointer)
-};
-
-template <>
-bool CDefClassBase::GetSubDef<CSnowTrollDef>(CDefPointer<const CSnowTrollDef>* out) const
+#include "engine/CDefClassBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CDefClassBase_GetSubDef.h"
+#include "engine/CSnowTrollDef.h"
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the shared GetSubDef<CSnowTrollDef> so this object emits it out of line as a
+// pick-any COMDAT (retail 0x008C7A70 is that out-of-line copy). Internal to this TU; never called.
+bool (CDefClassBase::* ReferenceGetSubDefCSnowTrollDef())(CDefPointer<const CSnowTrollDef>*) const
 {
-    const CSubDefInfo* info = GetPSubDefInfo(CSnowTrollDef::StatGetTypeName());
-    if (info) {
-        CDefPointer<const CDefClassBase> def = PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
-        out->SetDynamicCast(def);
-        return true;
-    }
-    return false;
+    return &CDefClassBase::GetSubDef<CSnowTrollDef>;
+}
 }

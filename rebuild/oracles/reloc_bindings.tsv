@@ -4100,10 +4100,6 @@ _kName	012786ac	008b34d0
 ??_7CModeBase@NCreatureMode@@6B@	012673cc	008d71d0
 ??_7CModeSitBase@NCreatureMode@@6B@	01285698	008d71d0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	008d7510
-?GetSnowTroll@NativeDefinition@@QBE_NPAUSnowDefinitionPointer@@@Z	008c7a70	008d7630
-?GetWorld@ModeIceTroll@@QBEAAUWorldNative@@XZ	0073a680	008d7630
-?OnActivate@ModeStandNative@@QAEXXZ	008621a0	008d7630
-?SuspendAI@ThingNative@@QAEX_NPAX@Z	00833a10	008d7630
 ?GetPItem@CBaseIntelligentPointer@NCreatureMode@@QBEPAUCThing@2@XZ	00a01b50	008d7730
 ?Kill@CThing@NCreatureMode@@QAEX_N@Z	004c9b80	008d7730
 ?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ	00861d00	008d79a0
@@ -4124,7 +4120,6 @@ _kName	012786ac	008b34d0
 ?StandDeactivate@ModeScreamer@@QAEXXZ	00861d00	008da690
 ?BaseFrameUpdate@ModeDrained@@QAEXXZ	0073ac50	008da890
 ?GetCurrentMode@ModeManager@@QBEAAUModeInterface@@XZ	0073a6e0	008da890
-?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@QAEXXZ	008dcb60	008df310
 ?Recover@CModeCreatureIsProjectile@NCreatureMode@@QAEXXZ	008e08c0	008e1670
 ?InsertGrow@CRetailVector_CElement36_008e2fc0@@QAEXPAUCElement36_008e2fc0@@ABU2@ABUSScalarTag@@K_N@Z	008e3aa0	008e4360
 ??_7CCreatureAction_IceTrollIcicleAssaultOutOf@@6B@	012861ec	008e4ec0
@@ -4142,9 +4137,6 @@ _kName	012786ac	008b34d0
 ?OnDeactivate@CModeStandBase@@UAEXXZ	00861d00	008e7850
 ?HasEvent@CTCEntityEvents@NCreatureMode@@QAE_NAAUCIsEventOfType@NEntityEvents@2@@Z	008e89d0	008e79a0
 ?LowerBound@CInterfaceMap@NCreatureMode@@QBEPAUSEntry@12@PBJ@Z	004365b0	008e79a0
-?GetBriar@NativeDefinition@@QBE_NPAUBriarDefinitionPointer@@@Z	008e7790	008e7cf0
-?OnDeactivate@ModeStandNative@@QAEXXZ	00861d00	008e7cf0
-?TransitionToDefaultThemeAllChannels@EnvironmentMethods@@QAEXJM@Z	006b3950	008e7cf0
 ??_7CCreatureAction_BriarRoseInvulnerableTeleport@@6B@	01287a4c	008e8de0
 ?Method@CClass_008eac30@@QAEXXZ	008ea9f0	008eac30
 ??_7CModeHoverBase@NCreatureMode@@6B@	01287d14	008eac40
@@ -8912,8 +8904,6 @@ __CIasin	00bfedc4	009de2a0
 ?Transfer@CPersistContext@@QAEXAAU?$CRetailMap@W4EOpinionReactionType@@_N@@@Z	0045dee9	0045f178
 ?pop_front@CUpdateList@CMultiStatBar@NPlayerGui@@QAEXXZ	00655a86	00646c44
 ?PeekData@CMemoryDataOutputStream@@QBEPBXXZ	00995e70	006f92a0
-?OnActivate@CModeStandBase@@QAEXXZ	008621a0	008e7b90
-?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	006b3800	008e7b90
 ?resize@?$vector@E@@QAEXKABE@Z	00486189	009e94a0
 ??0CEnginePrimitiveSpriteTrail@@QAE@XZ	00b09f90	00b09360
 ??_7CPSCSingleSprite@NParticleEngine@@6B@	0129fb84	00b09360
@@ -17562,8 +17552,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_FireMissileWeapon@@QAE@ABV0@@Z	008d6320	008d62f0
 ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@PBVCAnimFilterBase@@J@Z	00662b10	008d6780
 ?GetHeadPosWithOffset@@YI?AVC3DVector@@PAVCThing@@@Z	0085ee50	008d7270
-?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	008d7630
-?GetValidPositions@@YIXAAUPositionVector@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z	0074a5d0	008d7630
 ??0CModeDragonHover@NCreatureMode@@QAE@PAVCThing@@@Z	00741b60	008d8620
 ?SetGroup@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z	0073dff0	008d9220
 ?GetAnimGroupName@@YIABVCCharString@@J@Z	004cd9c0	008d9350
@@ -17582,8 +17570,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetGroundHeight@CTCPhysicsBase@@QAEMABVC3DVector@@@Z	00880200	008e5480
 ?GetOnSurfaceParameters@CTCPhysicsStandard@@QAEXABUCThingVector@@AA_N1ABVC3DVector@@AAPAVCTCPhysicsBase@@@Z	008e5480	008e55e0
 ?Erase@IntelligentThingVector@@QAEPAV?$CIntelligentPointer@VCThing@@@@PAV2@0@Z	004ac0f0	008e6940
-?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@UCBriarRoseTeleportDef@@@@@Z	008e7790	008e7b90
-?GetWorld@ModeBriar@@QBEAAVCWorld@@XZ	0073a680	008e7cf0
 ??0CCreatureAction_BriarRoseConcentrateOutof@@QAE@PAVCThingCreatureBase@@0@Z	008c2cb0	008e8760
 ??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z	008e8bb0	008e8940
 ?GetStrafeAnimationName@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	008e8e50	008e9110
@@ -28937,9 +28923,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?EnableNavigator@CTCPhysicsNavigator@@QAEX_N@Z	007bed30	008c89d0
 ?GetPDefinitionManager@CCreatureAction_UnsheatheWeapons@@QBEPAVCDefinitionManager@@XZ	00692910	008cb620
 ?Initialise@CCreatureAction_UnsheatheWeapons@@UAEXXZ	008b7ed0	008cb620
-??$GetAllThings@UCThingFilter_NearCreature@@@CThingSearchTools@@QAEXABUCThingFilter_NearCreature@@AAU?$vector@PAVCThing@@@@@Z	008e3bb0	008dcb60
-?GetPerceivedThing@CTCPerception@@QAEPAVCThing@@XZ	007446a0	008dcb60
-?GetWorld@CModeJackOfBladesFlash@@QAEPAVCWorld@@XZ	0073a680	008dcb60
 ?GetAirResistance@CTCPhysicsBase@@QAEMXZ	006afde0	008e5670
 ?CreateShot@@YIPAVCThing@@JPAV1@00MMMPAUCDefPointerMelee@@PAVC3DVector@@PAVCRightHandedSet@@@Z	007c0ad0	008f3020
 ?GetShotAccuracyPercentage@CThing@@QAEJXZ	00663b10	008f3020
@@ -29099,10 +29082,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?GetTimeToBlendIn@CAnimationEntry@@QBEJPAVCThing@@@Z	005dc230	008d6cb0
 ?SetInternalAlpha@CAnimSet@@QAEXJM_N@Z	0070c280	008d70a0
 ?g_FramesPerSecond_0122ded4@@3MB	0122ded4	008dae10
-?CreateExplosionObject@@YIPAVCThing@@JPBVC3DVector@@@Z	0080c460	008dc900
-?GetDisplayEngine@CModeDragonStrafeBurninate@NCreatureMode@@QAEPAVCDisplayEngine@@XZ	0073a680	008dc900
-?GetDragonDef@CDefClassBase@@QAE_NPAUCDragonDefPointer@@@Z	008e3300	008dc900
-?GetDummyObject@CTCGraphicAppearance@@QAE_NPBVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@M@Z	004c08c0	008dc900
 ?GetDef@CGameDefinitionManager@@QAE_NJPAUCDefPointerMultiStrike@@@Z	007cd760	008e6690
 ?CanFlourish@CTCCombat@@QBE_NXZ	00733180	008e7040
 ?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ	00663260	008e7040
@@ -39937,3 +39916,7 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 ??_7CShaderBankEntry@@6B@	0129d698	00a62120
 ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z	009cc2a0	00a62120
 ?g_QuadIndices_0139a550@@3QBGB	0139a550	00b5e700
+??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilter_IsNot@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z	008e3bb0	008dcb60
+?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@AAEXXZ	008dcb60	008df310
+?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	006b3800	008e7b90
+?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z	009ada10	008c7a70

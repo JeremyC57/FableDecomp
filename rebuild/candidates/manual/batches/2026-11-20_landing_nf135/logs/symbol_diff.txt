@@ -1,0 +1,213 @@
+008d7630 new: 28
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$?9VCThing@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@H@Z
+    ??$GetSubDef@VCSnowTrollDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSnowTrollDef@@@@@Z TABLE:008c7a70
+    ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z TABLE:004cc340
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSnowTrollDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@ABV0@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ??C?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCSnowTrollDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCSnowTrollDef@@@@QBEPBVCSnowTrollDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetPBaseDef@CThing@@QBE?AV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+    ?GetThingSearchTools@CWorld@@QAEAAVCThingSearchTools@@XZ
+    ?GetType@CClass@@QBEKXZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?IsDead@CThing@@QBE_NXZ
+    ?OnActivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCSnowTrollDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CSnowTrollDef@@SI?AVCCharString@@XZ
+008dc900 new: 33
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCJackDragonDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCJackDragonDef@@@@@Z TABLE:008e3300
+    ??$GetTC@VCTCDExplosion@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCDExplosion@@@Z
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCJackDragonDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCJackDragonDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCJackDragonDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCJackDragonDef@@@@QBEPBVCJackDragonDef@@XZ
+    ??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCJackDragonDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCJackDragonDef@@@@QBEPBVCJackDragonDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ
+    ?GetWorldMap@CThingManager@@QAEAAVCWorldMap@@XZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ
+    ?PeekWorldMap@CThingManager@@QBEABVCWorldMap@@XZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCJackDragonDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CJackDragonDef@@SI?AVCCharString@@XZ
+    ?UpdateBeam@CModeDragonStrafeBurninate@NCreatureMode@@AAEXM@Z
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+008dcb60 new: 59
+    ??$?9VCThingCreatureBase@@@@YI_NABV?$CIntelligentPointer@VCThingCreatureBase@@@@H@Z
+    ??$GetAllThings@VCThingAICreature@@V?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_IsNot@@@CThingSearchTools@@QBEXABVCThingFilt
+    ??$GetTC@VCTCPerceiveThing@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCPerceiveThing@@@Z
+    ??$IS_THING_ALIVE@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z TABLE:004a88f0
+    ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z TABLE:00436380
+    ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingCreatureBase@@@@@@YI_NABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z TABLE:006961f0
+    ??$_Construct@PAVCThingAICreature@@PAV1@@std@@YAXPAPAVCThingAICreature@@ABQAV1@@Z
+    ??$_Destroy@PAPAVCThingAICreature@@@std@@YAXPAPAVCThingAICreature@@0@Z
+    ??$__destroy@PAPAVCThingAICreature@@PAV1@@std@@YAXPAPAVCThingAICreature@@00@Z
+    ??$__destroy_aux@PAPAVCThingAICreature@@@std@@YAXPAPAVCThingAICreature@@0ABU__true_type@0@@Z
+    ??$fill_n@PAPAVCThingAICreature@@IPAV1@@std@@YAPAPAVCThingAICreature@@PAPAV1@IABQAV1@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_STLP_alloc_proxy@PAPAVCThingAICreature@@PAV1@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PAVCThingAICreature@@@1@PAPAVCThingAICreature@@@Z
+    ??0?$_Vector_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PAVCThingAICreature@@@1@@Z
+    ??0?$allocator@PAVCThingAICreature@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@PAVCThingAICreature@@@std@@QAE@XZ
+    ??0?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PAVCThingAICreature@@@1@@Z
+    ??0CThingFilter_IsNot@@QAE@ABVCThing@@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??0__true_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAPAVCThingAICreature@@PAV1@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+    ??1?$allocator@PAVCThingAICreature@@@std@@QAE@XZ
+    ??1?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??A?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEAAPAVCThingAICreature@@I@Z
+    ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@AAEXXZ TABLE:008dcb60
+    ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+    ?GetThingSearchTools@CWorld@@QAEAAVCThingSearchTools@@XZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?IsIncludedInThingScans@CThing@@QBE_NXZ TABLE:0048bc40
+    ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW
+    ?_M_clear@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXXZ
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?_M_insert_overflow@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXPAPAVCThingAICreature@@ABQAV3@ABU__true_type@2@I_N@Z TABLE:00515cc0
+    ?_M_set@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@IAEXPAPAVCThingAICreature@@00@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?allocate@?$allocator@PAVCThingAICreature@@@std@@QAEPAPAVCThingAICreature@@IPBX@Z
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?begin@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEPAPAVCThingAICreature@@XZ
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?deallocate@?$allocator@PAVCThingAICreature@@@std@@QAEXPAPAVCThingAICreature@@I@Z
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBas
+    ?push_back@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAEXABQAVCThingAICreature@@@Z TABLE:00517a10
+    ?size@?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QBEIXZ
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+008df310 new: 0
+008e7b90 new: 42
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCBriarRoseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBriarRoseDef@@@@@Z TABLE:008e7790
+    ??$GetTC@VCTCMapwho@@@CThing@@QAE_NPAPAVCTCMapwho@@@Z
+    ??$GetTC@VCTCMapwho@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCMapwho@@@Z
+    ??$GetTC@VCTCTargeted@@@CThing@@QAE_NPAPAVCTCTargeted@@@Z
+    ??$GetTC@VCTCTargeted@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCTargeted@@@Z
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCBriarRoseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCBriarRoseDef@@@@QAE@W4ENullDef@@@Z
+    ??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@ABV0@@Z
+    ??1?$CDefPointer@$$CBVCBriarRoseDef@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCBriarRoseDef@@@@QBEPBVCBriarRoseDef@@XZ
+    ??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCBriarRoseDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCBriarRoseDef@@@@QBEPBVCBriarRoseDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ
+    ?GetPBaseDef@CThing@@QBE?AV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+    ?GetType@CClass@@QBEKXZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?OnActivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@UAEXXZ
+    ?Release@?$CDefPointer@$$CBVCBriarRoseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?SetInMap@CTCMapwho@@QAEX_N@Z
+    ?SetTargetable@CTCTargeted@@QAEX_N@Z
+    ?StatGetInterfaceType@CTCMapwho@@SI?AW4ETCInterfaceType@@XZ
+    ?StatGetInterfaceType@CTCTargeted@@SI?AW4ETCInterfaceType@@XZ
+    ?StatGetTypeName@CBriarRoseDef@@SI?AVCCharString@@XZ
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
+008e7cf0 new: 45
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$GetSubDef@VCBriarRoseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBriarRoseDef@@@@@Z TABLE:008e7790
+    ??$GetTC@VCTCMapwho@@@CThing@@QAE_NPAPAVCTCMapwho@@@Z
+    ??$GetTC@VCTCMapwho@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCMapwho@@@Z
+    ??$GetTC@VCTCTargeted@@@CThing@@QAE_NPAPAVCTCTargeted@@@Z
+    ??$GetTC@VCTCTargeted@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCTargeted@@@Z
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCBriarRoseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCBriarRoseDef@@@@QAE@W4ENullDef@@@Z
+    ??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@ABV0@@Z
+    ??1?$CDefPointer@$$CBVCBriarRoseDef@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCBriarRoseDef@@@@QBEPBVCBriarRoseDef@@XZ
+    ??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCBriarRoseDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCBriarRoseDef@@@@QBEPBVCBriarRoseDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ
+    ?GetPBaseDef@CThing@@QBE?AV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+    ?GetType@CClass@@QBEKXZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW
+    ?OnDeactivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@UAEXXZ
+    ?Release@?$CDefPointer@$$CBVCBriarRoseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?SetInMap@CTCMapwho@@QAEX_N@Z
+    ?SetTargetable@CTCTargeted@@QAEX_N@Z
+    ?StatGetInterfaceType@CTCMapwho@@SI?AW4ETCInterfaceType@@XZ
+    ?StatGetInterfaceType@CTCTargeted@@SI?AW4ETCInterfaceType@@XZ
+    ?StatGetTypeName@CBriarRoseDef@@SI?AVCCharString@@XZ
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCB
+    ?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBas
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0
