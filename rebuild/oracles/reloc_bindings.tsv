@@ -39417,6 +39417,12 @@ _time	00bfed22	008405f0
 ?GetDefHoverFastSpeed@CThingCreatureBase@@QBEMXZ	00662100	008ea500
 ?GetDefHoverMediumSpeed@CThingCreatureBase@@QBEMXZ	006620f0	008ea500
 ?GetDefHoverSlowSpeed@CThingCreatureBase@@QBEMXZ	006620e0	008ea500
+?AttemptToFireRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	0078a5d0	0078a690
+?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a390	0078a690
+?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@ABE_NXZ	00789e60	0078a690
+?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ	005da950	0078a690
+?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a2c0	0078a690
+?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z	0066b1d0	0078a690
 ?AddCombinationIdles@@YIXPAVCThingCreatureBase@@AAVCAnimateThing@@@Z	008619c0	00862ec0
 ?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862780	00862ec0
 ?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862aa0	00862ec0
@@ -39893,3 +39899,6 @@ __TI2?AVCGenericException@@	013692f8	00501d30
 ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z	009a7720	009a7d40
 ?insert_unique@?$set@VCWideString@@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCWideString@@@std@@_N@2@ABVCWideString@@@Z	009aaeb0	009a7d40
 ?ReadNextItem@CWStringParser@@QAE_NPAVCWParsedItem@@@Z	00a0cfc0	00a0d0e0
+??$GetRootsNumerically@VCAnalyseRootsOfBowPullBackFunction@?A0x277421ce@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCAnalyseRootsOfBowPullBackFunction@?A0x277421ce@@JJ@Z	0078b7c0	0078a690
+?GetDamageMultiplierFromThingAtBuildUpTime@?A0x277421ce@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	0078a690
+_TWO_PI	0124f2b8	008185b0
