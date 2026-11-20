@@ -1,0 +1,11 @@
+00bace10 new: 0
+00bb1740 new: 9
+    ??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z TABLE:00b98a50
+    ??0CEngineSubPrimitiveSprite@@QAE@PAVCEngineInternalPrimitiveSprite@@@Z
+    ??1CEngineSubPrimitiveBase@@UAE@XZ
+    ??1CEngineSubPrimitiveSprite@@UAE@XZ
+    ??_7CEngineSubPrimitiveBase@@6B@ TABLE:012a3e7c
+    ??_7CEngineSubPrimitiveSprite@@6B@ TABLE:012a5430
+    ??_GCEngineSubPrimitiveBase@@UAEPAXI@Z
+    ??_GCEngineSubPrimitiveSprite@@UAEPAXI@Z
+    ?ReferenceSubPrimitiveSpriteVtable@?A0xf54674a8@@YAXPAVCEngineInternalPrimitiveSprite@@@Z

@@ -5,28 +5,13 @@
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0.
 // Shape (family L116 = landed family K056, 0x00BB1780): CEngineSubPrimitiveBase's inline constructor (Ego_r.pdb Parent +0x0C,
 //   NextSubPrimitive +0x10 cleared); the base's own vptr store is dead and dropped, leaving only 0x012A5430.
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable : public CBaseClass {
-protected:
-    CBaseClassNonCopyable();                             // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();
-};
-class CEngineInternalPrimitiveBase { };
-class CEngineInternalPrimitiveSprite : public CEngineInternalPrimitiveBase { };   // RTTI: base at offset 0
-class CEnginePrimitiveManager;
-class CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // Ego_r.pdb, 0x18 bytes
-public:
-    CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent) : Parent(parent), NextSubPrimitive(0) { }
-    unsigned long RenderFlags;                           // +0x04
-    unsigned char Alpha;                                 // +0x08
-    CEngineInternalPrimitiveBase* Parent;                // +0x0C
-    CEngineSubPrimitiveBase* NextSubPrimitive;           // +0x10
-    CEnginePrimitiveManager* Manager;                    // +0x14
-};
-class CEngineSubPrimitiveSprite : public CEngineSubPrimitiveBase {
-public:
-    CEngineSubPrimitiveSprite(CEngineInternalPrimitiveSprite* parent);
-};
+// CEngineSubPrimitiveSprite : CEngineSubPrimitiveBase : CBaseClassNonCopyable -- the shared headers; the constructor is declared
+// (header opt-in) and defined out of line here; the destructors are implicit, as in the row's earlier model and the sibling sub-primitive
+// rows (the vtable's ??_G calls ~CBaseClassNonCopyable 0x0099A300 directly, 0x00BB1740).
+#define FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
+#define FABLE_RETAIL_CENGINESUBPRIMITIVESPRITE_CTOR_OUTOFLINE
+#include "engine/CEngineSubPrimitiveSprite.h"
+
 CEngineSubPrimitiveSprite::CEngineSubPrimitiveSprite(CEngineInternalPrimitiveSprite* parent)
     : CEngineSubPrimitiveBase(parent)
 {

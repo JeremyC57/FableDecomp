@@ -1,0 +1,17 @@
+--- rebuild/include/engine/CEngineSubPrimitiveSprite.h	2026-11-20 03:55:46.869044930 +0000
++++ hdr/engine/CEngineSubPrimitiveSprite.h	2026-11-20 07:03:37.675854826 +0000
+@@ -9,7 +9,14 @@
+ #include "engine/CEngineInternalPrimitiveSprite.h"
+ class CEngineSubPrimitiveSprite:public CEngineSubPrimitiveBase {
+ public:
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVESPRITE_CTOR_OUTOFLINE
++ // Opt-in (Account B re-port, 2026-11-20, row 0x00BACE10): the constructor as a declaration, for the TU that defines retail's out-of-line
++ // copy ??0CEngineSubPrimitiveSprite@@QAE@PAVCEngineInternalPrimitiveSprite@@@Z (FableWin.pdb; 0x00BACE10, 34 bytes, the same inline
++ // CEngineSubPrimitiveBase constructor and vtable 0x012A5430). Default unchanged.
++ CEngineSubPrimitiveSprite(CEngineInternalPrimitiveSprite* parent);
++#else
+  CEngineSubPrimitiveSprite(CEngineInternalPrimitiveSprite* parent):CEngineSubPrimitiveBase(parent){}
++#endif
+ #ifndef FABLE_RETAIL_PASS22_PRIMITIVE_IMPLICIT_DESTRUCTORS
+  virtual ~CEngineSubPrimitiveSprite();
+ #endif
