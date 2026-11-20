@@ -72,3 +72,14 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - the label cites both retail sites, says the bytes fix the read's position and merge but not its spelling, and gives DIFFER(5923v5915)
     without it;
   - arm-mutants that are unreachable at run time are listed as such, not as killed, and must still fail the byte grade.
+
+## 0x005C2118 CPersistTraits<NInventory::CItem>::TransferIn: a header forceinline against a respelled call (2026-11-20)
+- **Case:** retail expands the one-argument `vector<long>::resize(n)` into its call to resize(n, const long&) 0x004428F0. `resize(n, 0)`
+  matches with no device; `resize(n)` needs a new FABLE_FORCEINLINE contract in fable_containers.h. Ego_d line 240 is 13 B (one argument).
+- **Ruling:** the ladder ranks devices for a given source. It does not license respelling a call against the evidence to avoid a device.
+  Keep `resize(n)` if three checks hold:
+  1. at /Od, resize(n) gives Ego_d's 13 B and resize(n, 0) doesn't (if they don't discriminate, land resize(n, 0));
+  2. a per-row /d2inlS flag doesn't reach the match (if it does, the flag replaces the header device);
+  3. retail has a real one-argument resize function somewhere (if none, forceinline is the wrong model; land resize(n, 0)).
+- **Required:** line 2 names every device, including the CITEM_TRANSFERIN opt-in that makes ~CItem implicit. If the device lands, the
+  README notes that resize(n, 0) is byte-equal with no device.
