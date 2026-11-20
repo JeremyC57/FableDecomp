@@ -25,6 +25,6 @@ returned to the queue); its files are in `naming/2026-11-20_agentNF166/`.
   (baseline); split gate 0 created; includers 238 good, 0 bad. tablecheck: no address gains a spelling; 12 shrink (0x01375550
   12 -> 3; 0x00A99110 goes back to its HEAD count after the hold). The leaf warning on 0x00417001 (Leaf line MAE, object QAE)
   is pre-existing and queued in NAME_FIXES.
-- Link: with 0x00A99610 held, the one remaining LNK2005 (??0CGameEvent) is at HEAD.
+- Link (`logs/link_landing.log`, the landed objects with 0x00A99610 at HEAD): 1 LNK2005, ??0CGameEvent, the same at HEAD.
 - Queued: the 0x00A99610 respell after its copy goes pick-any, the four ConstantFPS rows, 0x0065A5BB's regrade, and a note that
   the July rows behind q4940 / q11948 may move without Account B's row.
