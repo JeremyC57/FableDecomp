@@ -19507,7 +19507,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073e790	remove_if	std::list<CCountedPointer<CModeBase> >	__thiscall	void	2	list<CCountedPointer<CTCCreatureModeManager::CModeBase>,std::allocator<CCountedPointer<CTCCreatureModeManager::CModeBase>_>_> *,CIsType	1	yes	accepted									
 0073e8f0	CAnimFilterOfGroup	CAnimFilterOfGroup	__thiscall	void	2	CConsole *,CCharString *	1	yes	accepted									
 0073e940	Accepts	CAnimFilterOfGroup	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073e970	ScalarDeletingDestructor_CAnimFilterBase_Derived_0073e970	_unattributed	__thiscall	void *	2	CLandscapeBackgroundSubNodeSplitBranch *,uint	1	yes	accepted									
+0073e970	`scalar deleting destructor'	CAnimFilterOfGroup	__thiscall	void *	2	CLandscapeBackgroundSubNodeSplitBranch *,uint	1	yes	accepted									
 0073e9a0	Clone	CAnimFilterOfGroup	__thiscall	CAnimFilterBase *	1	CAnimFilterOfGroup *	1	yes	accepted									
 0073e9d0	CAnimFilterOf2Groups	CAnimFilterOf2Groups	__thiscall	void	1	CAIStateGroup_CreatureUseCoverBase *	1	yes	accepted									
 0073ea00	Accepts	CAnimFilterOf2Groups	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -20047,7 +20047,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0074b2b0	CreateCreatures	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,CThingCreatureBase *	1	yes	accepted									
 0074b770	InitialiseCreatureGenerator	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,bool	1	yes	accepted									
 0074b77c	CTCCreatureGenerator_SpawnInArea	_global	unknown	undefined	0		0	yes	accepted									
-0074b900	Persist	CTCCreatureGenerator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0074b900	OnSerialise	CTCCreatureGenerator	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0074baa0	UpdateCreatureTrigger	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,long	1	yes	accepted									
 0074bc20	DrawDebugInfo	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 0074bc30	DrawDebugInfo	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
@@ -20490,7 +20490,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0075f830	DeleteData	CCountedPointer<CCardinalSpline>	unknown	undefined	0		0	yes	review-high									
 0075f860	_M_insert_overflow	std::vector<CTCCameraPointScriptedSpline::CKeyCamera>	unknown	undefined	0		0	yes	accepted									
 0075f980	AppendControlPoint	CCardinalSpline	unknown	undefined	0		0	yes	accepted									
-0075fa30	Reset	CCountedPointer_0075f830	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
+0075fa30	Reset	CCountedPointer<CCardinalSpline>	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 0075faa0	PushBack_CKeyCamera_0075faa0	_global	unknown	undefined	0		0	yes	accepted									
 0075fae0	insert	std::vector<CKeyCamera>	unknown	undefined	0		0	yes	accepted									
 0075fbd0	GetClassTypeName	CTCCameraPointScriptedSpline	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
@@ -21483,7 +21483,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007899d0	AttemptToLoadRangedWeapon	CTCHeroRangedAttacks	__thiscall	void	1	CMeleeApprentice *	1	yes	accepted									
 007899e0	SetButtonPressure	CTCHeroRangedAttacks	__thiscall	void	2	CTCHeroRangedAttacks *,float	1	yes	accepted									
 00789a10	SetProjectileTargetingZoomDelta	CTCHeroRangedAttacks	unknown	undefined	0		0	yes	accepted									
-00789a50	GetMember_float0x40_00789a50	_global	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DrawGetSeaLevel_DrawGetSeaLevel_00789a50.cpp
+00789a50	GetProjectileTargetingZoomParameter	CTCHeroRangedAttacks	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DrawGetSeaLevel_DrawGetSeaLevel_00789a50.cpp
 00789a60	GetShotBuildupTime	CTCHeroRangedAttacks	__thiscall	float	1	CTCTalk *	1	yes	accepted									
 00789a70	GetPullBackAmount	CTCHeroRangedAttacks	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\DrawGetSeaLevel_DrawGetSeaLevel_00789a70.cpp
 00789a80	GetShotAccuracyFraction	CTCHeroRangedAttacks	__thiscall	float	2	CMap *,float	1	yes	accepted									
@@ -21637,7 +21637,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00793d20	SetPTarget	CTCUnholyPower	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
 00793e00	ResetCreatureHitState	CTCUnholyPower	__thiscall	void	2	CTCDivineWrath *,CIntelligentPointer<CThingCreatureBase>	1	yes	accepted									
 00793ec0	UnsheatheWeapon	CTCUnholyPower	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
-007940f0	PlaySoundW	CTCDivineWrath	__thiscall	ulong	3	CTCDivineWrath *,CCharString *,bool	1	yes	accepted									
+007940f0	PlaySoundW	CTCUnholyPower	__thiscall	ulong	3	CTCDivineWrath *,CCharString *,bool	1	yes	accepted									
 00794180	StopSound	CTCUnholyPower	__thiscall	void	1	CCombatSequence_WillEnflame *	1	yes	accepted									
 007941d0	CTCUnholyPower	CTCUnholyPower	__thiscall	undefined	2	CTCUnholyPower *,CThing *	0	yes	accepted									
 007949f0	OnCreate	CTCUnholyPower	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
@@ -22123,7 +22123,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007b0880	GetPFishingRodDef	CTCFishing	__thiscall	CFishingRodDef *	1	CTCFishing *	1	yes	accepted									
 007b0950	FinishFishing	CTCFishing	__thiscall	void	2	CTCFishing *,bool	1	yes	accepted									
 007b0ba0	ReelInButtonPressed	CTCFishing	__thiscall	void	1	CTCFishing *	1	yes	accepted									
-007b0cc0	CallWith_007b0cc0	_unattributed	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
+007b0cc0	CancelButtonPressed	CTCFishing	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 007b0cd0	FrameUpdate	CTCFishing	__thiscall	void	1	CTCFishing *	1	yes	accepted									
 007b1a30	CreateFish	CTCFishing	__thiscall	bool	2	CTCFishing *,bool	1	yes	accepted									
 007b1eb0	GoFishing	CTCFishing	__thiscall	void	2	CTCFishing *,bool	1	yes	accepted									

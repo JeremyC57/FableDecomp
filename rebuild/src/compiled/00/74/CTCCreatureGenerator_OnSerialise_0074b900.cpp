@@ -1,5 +1,8 @@
-// CTCCreatureGenerator::Persist(CPersistContext* context, bool flag) -- persist the generator's families and generation parameters, and with the flag set its live state
-// Leaf: Persist
+// CTCCreatureGenerator::OnSerialise(CPersistContext& context, bool flag) -- persist the generator's families and generation parameters, and with the flag set its live state
+// Leaf: ?OnSerialise@CTCCreatureGenerator@@UAEXAAVCPersistContext@@_N@Z
+// Name (NF120, PRIORITY q4700): Ego_r.pdb 0x0075D8F0 / FableWin.pdb 0x02514FD0 ?OnSerialise@CTCCreatureGenerator@@UAEXAAVCPersistContext@@_N@Z
+//   (public virtual, the context by reference); retail vtable 0x01268C24 slot 1 holds this address (engine/CTCCreatureGenerator.h retail
+//   branch). Was Persist(CPersistContext*, bool) (the catalog label); the row's local model is respelled in place.
 // Retail 0x0074B900, 416 bytes (`ret 8`), CTCCreatureGenerator vtable slot 1 (the TC persist hook).
 // Callees: CPersistContext::Transfer of the CArray<CDefIndex> families @ 0x0074DE50, Transfer<float> @ 0x00410620,
 // Transfer<bool> @ 0x004045C0, Transfer<long> @ 0x00410BE0, Transfer<CCharString> @ 0x004109A0 (manifest labels
@@ -56,28 +59,28 @@ class CTCCreatureGenerator { public:
     unsigned char         _pad58[0x89 - 0x58];
     bool                  Destroyed;                // +0x89
     virtual void v00();
-    virtual void Persist(CPersistContext* context, bool flag);
+    virtual void OnSerialise(CPersistContext& context, bool flag);
 };
 
-void CTCCreatureGenerator::Persist(CPersistContext* context, bool flag)
+void CTCCreatureGenerator::OnSerialise(CPersistContext& context, bool flag)
 {
-    context->Transfer("CreatureFamilies", CreatureFamilies);
-    context->Transfer("GenerationRadius", GenParams.GenerationRadius, 0.0f);
-    context->Transfer("SelfTriggerRadius", GenParams.SelfTriggerRadius, 0.0f);
-    context->Transfer("SelfTrigger", GenParams.SelfTrigger, false);
-    context->Transfer("SelfTriggerResetInterval", GenParams.SelfTriggerResetInterval, 0L);
-    context->Transfer("TriggerOnActivate", GenParams.TriggerOnActivate, false);
-    context->Transfer("ActiveCreatureLimit", GenParams.ActiveCreatureLimit, -1L);
-    context->Transfer("TotalGenerationLimit", GenParams.TotalGenerationLimit, -1L);
-    context->Transfer("NumTriggers", GenParams.NumTriggers, -1L);
+    context.Transfer("CreatureFamilies", CreatureFamilies);
+    context.Transfer("GenerationRadius", GenParams.GenerationRadius, 0.0f);
+    context.Transfer("SelfTriggerRadius", GenParams.SelfTriggerRadius, 0.0f);
+    context.Transfer("SelfTrigger", GenParams.SelfTrigger, false);
+    context.Transfer("SelfTriggerResetInterval", GenParams.SelfTriggerResetInterval, 0L);
+    context.Transfer("TriggerOnActivate", GenParams.TriggerOnActivate, false);
+    context.Transfer("ActiveCreatureLimit", GenParams.ActiveCreatureLimit, -1L);
+    context.Transfer("TotalGenerationLimit", GenParams.TotalGenerationLimit, -1L);
+    context.Transfer("NumTriggers", GenParams.NumTriggers, -1L);
     {
         CCharString defaultName = EmptyName();
-        context->Transfer("ScriptNameOfAllGeneratedCreatures", GenParams.ScriptNameOfAllGeneratedCreatures, defaultName);
+        context.Transfer("ScriptNameOfAllGeneratedCreatures", GenParams.ScriptNameOfAllGeneratedCreatures, defaultName);
     }
     if (flag) {
-        context->Transfer("Active", Active, GenParams.SelfTrigger);
-        context->Transfer("ReadyToInitialise", ReadyToInitialise, true);
-        context->Transfer("NumTriggersLeft", NumTriggersLeft, GenParams.NumTriggers);
-        context->Transfer("Destroyed", Destroyed, false);
+        context.Transfer("Active", Active, GenParams.SelfTrigger);
+        context.Transfer("ReadyToInitialise", ReadyToInitialise, true);
+        context.Transfer("NumTriggersLeft", NumTriggersLeft, GenParams.NumTriggers);
+        context.Transfer("Destroyed", Destroyed, false);
     }
 }

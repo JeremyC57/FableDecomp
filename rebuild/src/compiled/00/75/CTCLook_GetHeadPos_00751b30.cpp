@@ -8,6 +8,10 @@
 // so the record is packed here to keep it at +0xa1). Shape: a C3DVector with a user constructor comes back through the
 // hidden pointer (`ret 4`, eax = result); the cached copy is three dword moves through edx/ecx, which needs the
 // memberwise user copy constructor (the implicit copy of the packed member is a block copy through esi).
+// Leaf: ?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ
+// Name (NF120, PRIORITY q5147): Ego_r.pdb 0x00763230 / FableWin.pdb 0x025B4F90 ?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ (private const,
+//   hidden result); the landed callers 0x00753380 / 0x007534B0 bind this spelling. Was public non-const (QAE); the row's local model is
+//   respelled in place.
 #include "engine/C3DVector.h"
 
 class CThingCreatureBase { public:
@@ -24,11 +28,12 @@ class CTCLook { public:
     unsigned char       _pad_0x14[0xa0 - 0x14];
     bool                TargetAcquired;          // +0xa0 (PDB +0xa4)
     C3DVector           CachedHeadPos;           // +0xa1 (PDB +0xa5)
-    C3DVector GetHeadPos();
+private:
+    C3DVector GetHeadPos() const;
 };
 #pragma pack(pop)
 
-C3DVector CTCLook::GetHeadPos()
+C3DVector CTCLook::GetHeadPos() const
 {
     if (g_bQueryCreatureHeadPos)
         return PParentCreature->GetHeadPos(false);

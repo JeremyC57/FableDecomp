@@ -85,7 +85,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0
+    virtual void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0 (NF120: virtual, slot 18, Ego_r.pdb / FableWin.pdb UAEXABVCCharString@@_N111111@Z; called by name on a local object, so a direct call)
     bool IsPerformingScriptTask() const;               // 0x007E7450
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

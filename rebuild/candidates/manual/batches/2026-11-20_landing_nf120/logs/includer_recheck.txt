@@ -1,0 +1,2 @@
+# recheck after landing nf120: 830 rows = gate referencing rows (32 targets) + renamed rows + direct includers of CThingCreatureBase.h / CTCFishing.h / CTCCreatureModeManager.h
+good 830 bad 0

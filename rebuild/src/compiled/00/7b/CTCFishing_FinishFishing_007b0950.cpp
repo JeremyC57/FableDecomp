@@ -1,5 +1,7 @@
 // CTCFishing::FinishFishing(bool caught) -- stops the reel/escape sounds on the hero, closes the fishing mini-game GUI and button prompts, scores a caught fish's weight, posts the finish message and leaves fishing mode
-// Leaf: ?FinishFishing@CTCFishing@@QAEX_N@Z
+// Leaf: ?FinishFishing@CTCFishing@@IAEX_N@Z
+// Name (NF120, PRIORITY q6450): Ego_r.pdb 0x007B2250 / FableWin.pdb 0x026D8E40 ?FinishFishing@CTCFishing@@IAEX_N@Z (protected); the landed
+//   FrameUpdate 0x007B0CD0 and CancelButtonPressed 0x007B0CC0 bind it. Was public (QAEX_N); local model respelled in place.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
@@ -130,6 +132,7 @@ public:
     unsigned char _pad19[0x54 - 0x19];
     unsigned long ReelingInSoundID;                     // +0x54
     unsigned long FishEscapingSoundID;                  // +0x58
+protected:
     void FinishFishing(bool caught);
 };
 

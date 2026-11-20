@@ -4,8 +4,8 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EA220, 226 bytes (`ret`; vtable 0x01268588 slot 3).
 // Callees: CModeStrafe::UpdateWeaponState 0x008E9950; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const
-// instantiation: inlined const GetInterface, type 0x81 = bit 1 of +0x30); the component's charge-fraction getter 0x00789A70
-// (float in st0; manifest "CMap::DrawGetSeaLevel" is propagated); the pow intrinsic _CIpow 0x00BFEB40; CThing::GetJoystickDeviceNumber
+// instantiation: inlined const GetInterface, type 0x81 = bit 1 of +0x30); CTCHeroRangedAttacks::GetPullBackAmount 0x00789A70
+// (float in st0); the pow intrinsic _CIpow 0x00BFEB40; CThing::GetJoystickDeviceNumber
 // 0x004C7CA0; the joystick device's virtual slot 17 (+0x44: rumble(type, const params&, flag)).
 // Globals: the input manager 0x013B8388 (joystick entries {device, ..} 8 bytes each, begin pointer at +0x2c); float constants
 // 0.0f 0x0122DEDC and 1.0f 0x0122DED8, the double 3.0 0x012368F0.
@@ -25,9 +25,13 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CTCProjectileCharge {               // interface type 0x81
-    float GetChargeFraction() const;       // 0x00789A70
-};
+// NF120 (PRIORITY q6194): the interface-0x81 component is CTCHeroRangedAttacks (TCI_HERO_RANGED_ATTACKS) and 0x00789A70 is its
+//   ?GetPullBackAmount@CTCHeroRangedAttacks@@QBEMXZ (Ego_r.pdb / FableWin.pdb; returns PullBackAmount +0x20): the local stand-in
+//   CTCProjectileCharge::GetChargeFraction is replaced by the shared engine/CTCHeroRangedAttacks.h retail class.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCHERORANGEDATTACKS
+#include "engine/CTCHeroRangedAttacks.h"
 
 struct CRumbleParams {                     // 20 bytes
     float Strength;
@@ -76,9 +80,9 @@ struct CModeStrafe : CModeBase {           // vtable 0x01268588
 void CModeStrafe::FrameUpdate()
 {
     UpdateWeaponState();
-    const const CTCProjectileCharge* charge;
-    if (ParentThing->PeekTC(TCI_HERO_RANGED_ATTACKS, &charge)) {
-        float fraction = charge->GetChargeFraction();
+    const CTCHeroRangedAttacks* ranged_attacks;
+    if (ParentThing->PeekTC(TCI_HERO_RANGED_ATTACKS, &ranged_attacks)) {
+        float fraction = ranged_attacks->GetPullBackAmount();
         if (fraction < 0.0f)
             fraction = 0.0f;
         else if (fraction > 1.0f)

@@ -1,0 +1,65 @@
+address	change	grade	test	grades_used	entries	note
+004c7cf0	ported (callee of 0x00664370: self leaf QAE -> MAE, in place)	RELOCATION_MATCH	PASS	1	q3944	protected virtual per both PDBs; only REFS row 0x00664370
+005ebfa0	not-a-binder (already binds the claim)			0	q4416	probe: binds ?GetLookDirection@CTCCameraPointScripted@@QBE?AVC3DVector@@PBVCRightHandedSet@@@Z
+00664370	ported (binder; local CThing/CTCPrimitiveOwner stand-ins -> CThing / CThingCreatureBase / CTCCreatureModeManager headers + opt-in)	RELOCATION_MATCH	PASS	2	q3944	pdiff: 0x0073AE70 -> RemoveAllModes, 0x004C7CF0 -> ?OnKill@CThing@@MAEXXZ (PDB); test standalone
+00690b20	ported (caller of the renamed 0x007B0CC0; in-place respell + test)	RELOCATION_MATCH	PASS	1	q6450	pdiff: only 0x007B0CC0 CastButtonPressed -> CancelButtonPressed; test respelled in place
+0073ae70	ported (self rename; stand-ins -> engine/CTCCreatureModeManager.h + opt-in)	RELOCATION_MATCH	PASS	2	q3944 q3942	ClearModes -> RemoveAllModes; callee 0x0073E6A0 now the _List_base clear spelling 0x0073AEA0 / 0x0073B0D0 bind
+0073aea0	not-a-binder (already binds the claim)			0	q3942	probe: _List_base clear
+0073b0d0	not-a-binder (already binds the claim)			0	q3942	probe: _List_base clear
+0073e6a0	blocked: family (self rename staged in work/0073e6a0_ready.cpp, RELOCATION_MATCH)			1	q3942	waits for 0x00742260 / 0x00743220 (REFS rows binding list_T stand-ins)
+0073e970	ported (self rename, port onto engine/CAnimFilterOfGroup.h)	RELOCATION_MATCH	PASS	2	q4104	self ??_GCAnimFilterBase_Derived_0073e970 -> ??_GCAnimFilterOfGroup@@UAEPAXI@Z; callee 0x0099EAE0 now ??1CCharString; no REFS rows
+00742260	blocked: identity (REFS row of 0x0073E6A0)			0	q3942	descriptive std::list_T_00742260 dtor binds ?clear@list_T_00742260@std@@QAEXXZ; byte-identical to 0x00743220; no absolute or relative reference in the Fable.exe scan; its own class name is not provable, so it cannot move onto the STLport header without a guessed name
+00743220	blocked: identity (REFS row of 0x0073E6A0)			0	q3942	as 0x00742260 (byte-identical, unreferenced; binds ?clear@list_T_00743220@std@@QAEXXZ)
+0074b900	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q4700	Persist(CPersistContext*) -> OnSerialise(CPersistContext&); pdiff no callee change; test standalone
+00751b30	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q5147	public non-const -> private const
+007525c0	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q5061	public float* -> private float&; callee 0x00751E80 now the spelling its self row defines (QAE_NAAM0; PDB AAE in NAME_FIXES)
+007528a0	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q5145	public -> private
+00752e00	not-a-binder (already binds the claim)			0	q5061	probe: binds AAE_NAAM0
+00753020	not-a-binder (already binds the claim)			0	q5061	probe: binds AAE_NAAM0
+00753040	not-a-binder (already binds the claim)			0	q5145	probe: AAEXXZ
+00753080	ported (binder; in-place private)	RELOCATION_MATCH	PASS	1	q5145	pdiff: only 0x007528A0 QAE -> AAE
+00753380	not-a-binder (already binds the claims)			0	q5145 q5147	probe: CentreHead AAEXXZ, GetHeadPos ABE
+007534b0	not-a-binder (already binds the claim)			0	q5147	probe: binds ABE GetHeadPos
+00753c70	ported (binder; in-place private)	RELOCATION_MATCH	PASS	1	q5145	pdiff: only 0x007528A0 QAE -> AAE
+0075c160	ported (self leaf; local model respelled in place)	MATCH	PASS	4	q4414	CheckTermination placeholder -> IsRelativeCoordTranslation; `? true : false` form
+0075c170	ported (self leaf; local model respelled in place)	MATCH	PASS	1	q4415	CheckTermination placeholder -> IsRelativeCoordOrientation
+0075ccb0	ported (self leaf; stand-in -> local CTCCameraPointScripted model, shared C3DVector.h)	RELOCATION_MATCH	PASS	1	q4416	callee TransformVector 0x0075C280 now the PDB spelling
+0075ccf0	ported (self leaf; stand-in -> local CTCCameraPointScripted model, shared C3DVector.h)	RELOCATION_MATCH	PASS	1	q4417	callee TransformVector 0x0075C280 now the PDB spelling
+0075dc60	not-a-binder (already binds the claim)			0	q4952	probe
+0075fa30	ported (self rename; header explicit instantiation)	RELOCATION_MATCH	PASS	1	q4803	callee 0x0075F830 now the PDB DeleteData spelling (its own self leaf; only referencing row)
+00760da0	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q4952	const + references; callee 0x00760C40 now QBE (its self leaf, both PDBs)
+00772250	not-a-binder (self already right)	RELOCATION_MATCH		0	q4269	self object defines ?FindDefaultStockItem@CTCShop@@QBEPBVCShopItem@@J@Z
+007723d0	not-a-binder (already binds the claim)			0	q4269	probe: binds ?FindDefaultStockItem@CTCShop@@QBEPBVCShopItem@@J@Z
+007727e0	not-a-binder (already binds the claim)			0	q4269	probe
+007744a0	ported (binder; CStockMap stand-in -> shared STLport std::map<long, CShopItem>)	RELOCATION_MATCH	PASS	1	q4270	pdiff: only 0x00778280 changes; test standalone
+00774730	not-a-binder (already binds the claims)			0	q4269 q4270	probe: binds FindDefaultStockItem QBE / map operator[] PDB-library spellings
+00774d20	not-a-binder (already binds the claims)			0	q4269 q4270	probe: binds FindDefaultStockItem QBE / map operator[] PDB-library spellings
+00775c60	not-a-binder (already binds the claims)			0	q4269 q4270	probe: binds FindDefaultStockItem QBE / map operator[] PDB-library spellings
+00778280	not-a-binder (self already right)	RELOCATION_MATCH		0	q4270	self object defines the map operator[] claim
+00789a50	ported (self rename, port onto engine/CTCHeroRangedAttacks.h)	MATCH	PASS	2	q4691	self ?M@C00789a50@@QAEMXZ -> ?GetProjectileTargetingZoomParameter@CTCHeroRangedAttacks@@QBEMXZ; no REFS rows (caller 0x00879900 not landed); test standalone
+00789a70	ported (self leaf, port onto engine/CTCHeroRangedAttacks.h)	MATCH	PASS	1	q6194	self ?M@C00789a70@@QAEMXZ -> ?GetPullBackAmount@CTCHeroRangedAttacks@@QBEMXZ
+007940f0	ported (self rename, port onto engine/CTCUnholyPower.h)	RELOCATION_MATCH	PASS	2	q6222	self ?PlaySoundW@CTCDivineWrath@@QAEKKK@Z -> ?PlaySoundW@CTCUnholyPower@@AAEKABVCCharString@@_N@Z; callees MakeNoise / PlayAttachedCriteria now the PDB spellings (pdiff); test standalone
+007941d0	not-a-binder (already binds the claim)			0	q6222	probe: binds ?PlaySoundW@CTCUnholyPower@@AAEKABVCCharString@@_N@Z
+0079f810	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q5161	public -> private
+0079f960	not-a-binder (already binds the claim)			0	q5161	probe: AAEXJ
+007a09b0	ported (binder; in-place private)	RELOCATION_MATCH	PASS	1	q5161	pdiff: only 0x0079F810 QAE -> AAE
+007b0950	ported (self rename; local model respelled in place)	RELOCATION_MATCH	PASS	1	q6450	public -> protected
+007b0cc0	ported (binder + self rename of the binder: placeholder -> CTCFishing::CancelButtonPressed on engine/CTCFishing.h)	RELOCATION_MATCH	PASS	2	q6450	binds FinishFishing IAEX_N; overlay opt-in FABLE_RETAIL_CTCFISHING_CANCELBUTTONPRESSED; test standalone
+007b0cd0	not-a-binder (already binds the claim)			0	q6450	probe: IAEX_N
+007e7360	ported (self rename; stand-in -> engine/CScriptGameResourceObjectScriptedThingBase.h)	MATCH	PASS	1	q4622	slot forwarder on the shared header (0x007E7450 recipe)
+007e7390	ported (self rename; stand-in -> engine/CScriptGameResourceObjectScriptedThingBase.h)	MATCH	PASS	1	q4623	slot forwarder on the shared header (0x007E7450 recipe)
+007e73d0	ported (self rename; stand-in -> engine/CScriptGameResourceObjectScriptedThingBase.h)	MATCH	PASS	1	q4624	slot forwarder on the shared header (0x007E7450 recipe)
+007e7410	ported (self rename; stand-in -> engine/CScriptGameResourceObjectScriptedThingBase.h)	MATCH	PASS	1	q4625	slot forwarder on the shared header (0x007E7450 recipe)
+0087b840	not-a-binder (already binds the claim)			0	q4952	probe
+0087b910	ported (binder; in-place respell)	RELOCATION_MATCH	PASS	1	q4952	pdiff: 0x00760DA0 and 0x00760C40 now the PDB const spellings
+0089e190	not-a-binder (already binds the claims)			0	q4414 q4415 q4416 q4417	probe: binds IsRelativeCoordTranslation / Orientation / GetLookDirection / GetLookDirectionEnd PDB spellings
+008ea220	ported (binder; CTCProjectileCharge stand-in -> engine/CTCHeroRangedAttacks.h retail class)	RELOCATION_MATCH	PASS	2	q6194	pdiff: only 0x00789A70 changes (GetChargeFraction stand-in -> GetPullBackAmount)
+00b13530	not-a-binder (already binds the claim)			0	q4803 q4802	probe: binds ?Reset@?$CCountedPointer@VCCardinalSpline@@ and ??4?$vector@VC3DVector@@ (the claims)
+00b149d0	not-a-binder (already binds the claim)			0	q4803 q4802	probe: binds the claims
+00bde600	not-a-binder (binds no symbol at 0x0074B900)			0	q4700	probe: RELOCATION_MATCH, no relocation to 0x0074B900 (the exe scan hit is not a call/reference of the function)
+00d50c60	ported (binder; ETextGroupSelectionMethod shared enum)	RELOCATION_MATCH	PASS	1	q4623	pdiff: only 0x007E7390 J -> W4ETextGroupSelectionMethod
+00dd6440	ported (binder; in-place virtual)	RELOCATION_MATCH	PASS	1	q4624	pdiff: only 0x007E73D0 QAE -> UAE
+00ddc980	ported (binder; in-place virtual)	RELOCATION_MATCH	PASS	1	q4622	pdiff: only 0x007E7360 QAE -> UAE
+00e11dc0	not-a-binder (already binds the claims)			0	q4622 q4624 q4625	probe: UAE spellings (WORKLIST line stale)
+00ee1e40	ported (binder; ETextGroupSelectionMethod shared enum)	RELOCATION_MATCH	PASS	1	q4623	pdiff: only 0x007E7390 J -> W4ETextGroupSelectionMethod
+00eec890	ported (binder; in-place virtual, _words[3] after the vptr)	RELOCATION_MATCH	PASS	1	q4625	pdiff: only 0x007E7410 QAE -> UAE

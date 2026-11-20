@@ -8,7 +8,7 @@
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
 //   CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
 //   CTCFishing::ReelInButtonPressed @ 0x007B0BA0 and the fishing component's 0x007B0CC0 (a one-line `Xxx(0)` forwarder
-//   to 0x007B0950; manifest label "_Dest_val<..CFlash>" is propagated, named CastButtonPressed here),
+//   to 0x007B0950; manifest label "_Dest_val<..CFlash>" is propagated, Ego_r.pdb / FableWin.pdb CancelButtonPressed, NF120 q6450),
 //   CProcessedInput::SetAsPerformedEvent @ 0x00A0D390 / AddGameEvent(const CGameEvent&) @ 0x00A0D340, CMemoryBuffer::Copy
 //   @ 0x009F1760.
 // Layout: `this` is engine/CInputProcessGameBase.h (MyPlayer +0x18); CThing component bitset +0x20 (0xB1 = word 5 bit
@@ -43,7 +43,7 @@ public:
 };
 class CTCFishing { public:
     void ReelInButtonPressed();                    // 0x007B0BA0
-    void CastButtonPressed();                      // 0x007B0CC0
+    void CancelButtonPressed();                    // 0x007B0CC0 (Ego_r.pdb / FableWin.pdb; NF120: was the made-up CastButtonPressed)
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -93,7 +93,7 @@ void CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInpu
         fishing->ReelInButtonPressed();
         processed.SetAsPerformedEvent();
     } else if (IsEventGameAction(GAME_ACTION_FISHING_CANCEL, event)) {
-        fishing->CastButtonPressed();
+        fishing->CancelButtonPressed();
         processed.SetAsPerformedEvent();
     } else if (IsEventGameAction(GAME_ACTION_OPEN_IN_GAME_MENU, event) && hero->HasTC(0xc6)) {
         CGameEvent gameEvent(0x1a);

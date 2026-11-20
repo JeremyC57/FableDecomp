@@ -71,6 +71,8 @@ protected:
     const CMainGameComponent& PeekComponent() const;   // 0x00686D60 (Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ)
 };
 
+// NF120 (PRIORITY q5145): CentreHead 0x007528A0 is private in both PDBs (Ego_r.pdb 0x007649D0 / FableWin.pdb 0x025AFD60 ?CentreHead@CTCLook@@AAEXXZ);
+//   the local model's declaration is respelled in place (was public, QAEXXZ).
 class CTCLook : public CTCBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long          LookTimer;                               // +0x3c
@@ -92,8 +94,8 @@ class CTCLook : public CTCBase { public:
     void UpdateLookTimer();                                // 0x00751AD0
 private:
     void SetBodyMoving();                                  // 0x00752E00
-public:
     void CentreHead();                                     // 0x007528A0
+public:
     bool IsLookTimeOver();                                 // 0x00753AD0
     void SetHeadTurnState(long state);                     // 0x007517B0
     void FrameUpdateHeadInterested();                      // 0x00753380

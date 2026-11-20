@@ -1,0 +1,32 @@
+entry	address	status	binders_respelled	note
+q3942	0x0073E6A0	blocked: family (2 rows: 0x00742260, 0x00743220)	1	claim holds (STLport _List_base<CCountedPointer<CTCCreatureModeManager::CModeBase>>::clear; 0x0073AEA0 / 0x0073B0D0 bind it); 0x0073AE70 moved onto it (4 spellings -> 3); self row staged work/0073e6a0_ready.cpp (RELOCATION_MATCH); the two descriptive list dtors 0x00742260 / 0x00743220 (byte-identical, no reference in the exe scan) cannot take a provable STLport name
+q3944	0x0073AE70	done	1	self row ported (ClearModes -> RemoveAllModes, both PDBs + order + ResetModes COMDAT); the one REFS row 0x00664370 ported onto the headers (binds RemoveAllModes); its base callee 0x004C7CF0 respelled to the PDB ?OnKill@CThing@@MAEXXZ (only REFS row 0x00664370); 0x00664370 own leaf now UAE, the spelling its only REFS row 0x00830D80 already binds
+q4104	0x0073E970	done	0	self row renamed to ??_GCAnimFilterOfGroup@@UAEPAXI@Z (vtable slot 2 + Ego_r ??_G); 0 REFS rows; test unchanged (standalone)
+q4269	0x00772250	done-already	0	self row defines the claim; all 4 REFS rows bind it (probe); the queued wrong spelling FableAtexit_reg_007723d0 is not bound at this address by any landed row
+q4270	0x00778280	done	1	self already right; 0x007744A0 ported from the CStockMap stand-in to std::map<long, CShopItem>; 3 other REFS rows already right
+q4414	0x0075C160	done	0	self leaf respelled (PDB name sets + body offset); every REFS row already binds the claim
+q4415	0x0075C170	done	0	self leaf respelled (PDB name sets + body offset); every REFS row already binds the claim
+q4416	0x0075CCB0	done	0	self leaf respelled (PDB name sets + body offset); every REFS row already binds the claim
+q4417	0x0075CCF0	done	0	self leaf respelled (PDB name sets + body offset); every REFS row already binds the claim
+q4622	0x007E7360	done	1	self row ported (free stand-in -> PDB virtual); 61 REFS rows already bind it (probe), 0x00DDC980 respelled
+q4623	0x007E7390	done	2	self row ported; 139 REFS rows already bind it (probe), 0x00D50C60 / 0x00EE1E40 respelled
+q4624	0x007E73D0	done	1	self row ported; 36 REFS rows already bind it (probe), 0x00DD6440 respelled
+q4625	0x007E7410	done	1	self row ported; 12 REFS rows already bind it (probe), 0x00EEC890 respelled
+q4691	0x00789A50	done	0	self row renamed (Ego_r+FableWin, body +0x40); 0 REFS rows
+q4700	0x0074B900	done	0	self row renamed Persist -> OnSerialise (both PDBs + vtable slot); the one REFS row 0x00BDE600 binds nothing there
+q4747	0x00733480	open	0	not started (census in NOTES.md)
+q4802	0x0075B8D0	open	0	not started (census in NOTES.md)
+q4803	0x0075FA30	done	0	self row renamed (FableWin.pdb + DeleteData evidence); both REFS rows already bind it
+q4952	0x00760DA0	done	1	self leaf respelled (both PDBs); 0x0087B910 respelled; callee 0x00760C40 refs (0x00760DA0, 0x0087B910) now both bind its PDB self leaf
+q5061	0x007525C0	done	0	self leaf respelled (both PDBs); both REFS rows already bind it
+q5145	0x007528A0	done	2	self leaf respelled; 0x00753080 / 0x00753C70 respelled; 0x00753040 / 0x00753380 already right
+q5147	0x00751B30	done	0	self leaf respelled (both PDBs); both REFS rows already bind it
+q5161	0x0079F810	done	1	self leaf respelled; ctor 0x007A09B0 respelled; 0x0079F960 already right
+q6194	0x00789A70	done	1	self leaf respelled; the one REFS binder 0x008EA220 ported onto the shared header
+q6222	0x007940F0	done	0	claim from the evidence column (CTCUnholyPower, private, CCharString/bool); self row renamed and ported; the one REFS row 0x007941D0 already binds it
+q6326	0x0076D270	open	0	not started (census in NOTES.md)
+q6408	0x0073ACC0	open	0	not started (census in NOTES.md)
+q6450	0x007B0950	done	1	claim from evidence column; self leaf protected; 0x007B0CC0 placeholder renamed to CancelButtonPressed (both PDBs + order) and binds it; its caller 0x00690B20 respelled
+q6453	0x0073A680	open	0	not started (census in NOTES.md)
+q6454	0x0073AAC0	open	0	not started (census in NOTES.md)
+q6455	0x0073A680	open	0	not started (census in NOTES.md)

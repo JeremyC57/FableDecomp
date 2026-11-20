@@ -1,6 +1,9 @@
 // CTCWillLightning::SetLevel(long) -- copy the per-level lightning-spell tunables out of the def's level vectors
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Leaf: ?SetLevel@CTCWillLightning@@AAEXJ@Z
+// Name (NF120, PRIORITY q5161): Ego_r.pdb 0x007A4BC0 / FableWin.pdb 0x026B7AB0 ?SetLevel@CTCWillLightning@@AAEXJ@Z (private); called by
+//   SetAICasting 0x0079F960 (binds it) and the ctor 0x007A09B0 (respelled with it). Was public (QAEXJ); local model respelled in place.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079F810, 247 bytes (+9 int3). __fastcall, `ret 4`.
 // Callees: _ftol2 0x00BFEA70 (the (long) truncation); global frame-rate tick count 0x01375550 (fild).
 // Shape: the def object (CDefPointer<CSpecialAbilitiesLightningSpellDef const>::Object, +0x28) is loaded once into eax and
@@ -70,6 +73,7 @@ class CTCWillLightning { public:
     float m_fSubBeamDelay;                       // +0xd4
     bool  m_bPlayedSound;                        // +0xd8
     long  m_OnhitEveryFrame;                     // +0xdc
+private:
     void SetLevel(long level);
 };
 void CTCWillLightning::SetLevel(long level)

@@ -1,0 +1,5 @@
+existing 00662110 new= ['?MakeNoise@CThingCreatureBase@@QAEXABVCCharString@@@Z'] | others: {'?MakeNoise@CThing@@QAEXABVCCharString@@@Z': ['007cc4d0']}
+existing 0073e6a0 new= ['?clear@?$_List_base@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@V?$allocator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@std@@QAEXXZ'] | others: {'?clear@list_T_00742260@std@@QAEXXZ': ['00742260'], '?clear@list_T_00743220@std@@QAEXXZ': ['00743220']}
+gate: 0 created split(s)
+
+# 0x0099EAE0 (CCharString dtor, 5263 referencing rows) was not recompiled: see README

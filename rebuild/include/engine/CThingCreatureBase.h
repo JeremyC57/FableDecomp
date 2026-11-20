@@ -32,6 +32,13 @@ public:
     virtual void OnDie();                                        // slot 11 0x00663F50
 private:
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ONKILL
+// NF120 opt-in (PRIORITY q3944, row 0x00664370): Ego_r.pdb 0x00540300 / FableWin.pdb 0x01D935F0 ?OnKill@CThingCreatureBase@@UAEXXZ (public
+// virtual; the CThing slot-12 override, out of line at 0x00664370, slot 12 of the CThingPlayerCreature vtable 0x012457FC). Declaration only.
+public:
+    virtual void OnKill();                                       // slot 12 0x00664370
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_GETCURRENTSPEED
 // Opt-in (hand3c, row 0x006CC800 CTCCreatureNavigation::FrameUpdate): Ego_r.pdb / FableWin.pdb ?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ
 // (public const, out of line at 0x00661CD0, landed; called at 0x006CC88B / 0x006CC8AA). Declaration only.

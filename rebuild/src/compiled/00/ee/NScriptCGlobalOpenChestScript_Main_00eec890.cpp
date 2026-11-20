@@ -74,10 +74,10 @@ struct CIsThingConscious {                              // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x0127094C, 0x10 bytes
-    void* _words[4];
+    virtual void ClearAllActionsIncludingLoopingAnimations();   // 0x007E7410 (NF120: virtual, slot 22, Ego_r.pdb / FableWin.pdb UAEXXZ; called by name on a local object, so a direct call)
+    void* _words[3];                                    // +0x04 (the vptr is word 0)
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    void ClearAllActionsIncludingLoopingAnimations();   // 0x007E7410
 };
 class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260EF4, 0x10 bytes
     void* _words[4];

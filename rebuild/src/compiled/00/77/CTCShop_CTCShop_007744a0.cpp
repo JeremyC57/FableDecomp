@@ -118,43 +118,18 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct SStockNode {                             // 0x30 bytes: tree links + pair<const long, CShopItem>
-    unsigned char m_color;                      // +0x00 (0 = red)
-    SStockNode*   m_pParent;                    // +0x04
-    SStockNode*   m_pLeft;                      // +0x08
-    SStockNode*   m_pRight;                     // +0x0c
-    long          m_key;                        // +0x10
-    CShopItem     m_value;                      // +0x14
-};
-struct CStockTreeBase {
-    SStockNode* m_pHeader;
-    CStockTreeBase() : m_pHeader(0)
-    {
-        m_pHeader = (SStockNode*)malloc(sizeof(SStockNode));
-    }
-};
-struct CStockTree : CStockTreeBase {
-    unsigned long m_nodeCount;
-    struct SLess { } m_compare;
-    CStockTree() : m_nodeCount(0)
-    {
-        m_pHeader->m_color = 0;
-        m_pHeader->m_pParent = 0;
-        m_pHeader->m_pLeft = m_pHeader;
-        m_pHeader->m_pRight = m_pHeader;
-    }
-};
-struct CStockMap : CStockTree {                 // map<long, CShopItem>
-    CShopItem& operator[](const long& key);     // 0x00778280
-};
-
+// NF120 (PRIORITY q4270): the local SStockNode / CStockTreeBase / CStockTree / CStockMap stand-ins replaced by the shared STLport
+//   std::map<long, CShopItem> (stlport/fable_map.h); its operator[] 0x00778280 is
+//   ??A?$map@JVCShopItem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@3@@std@@QAEAAVCShopItem@@ABJ@Z (the spelling the
+//   landed 0x00774730 / 0x00774D20 / 0x00775C60 and the self row bind).
+#include "stlport/fable_map.h"
 class CTCShop : public CTCBase { public:                      // vtable 0x0126A94C
     long          StockState;                   // +0x0c
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;   // +0x10
     CRetailVector<CIntelligentPointer<CThingCreatureBase> > Shoppers;   // +0x18
     bool          ShopKeeperAvailable;          // +0x24
     CRetailVector<long> GoodsPlaces;            // +0x28
-    CStockMap     Stock;                        // +0x34
+    std::map<long, CShopItem> Stock;            // +0x34
     long          SpecialItem;                  // +0x40
     long          DaysSinceSpecialItemPlaced;   // +0x44
     long          DayLastChecked;               // +0x48

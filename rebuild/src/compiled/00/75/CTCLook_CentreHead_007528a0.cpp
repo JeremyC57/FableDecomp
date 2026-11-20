@@ -8,6 +8,9 @@
 // 12-byte TurningAnims vector). 1e-4f @ 0x0129BA3C.
 // Shape: `(float)fabs(x) < 1e-4f` gives `test ah,5 ; jp`;
 // the velocity zeros are float immediates.
+// Leaf: ?CentreHead@CTCLook@@AAEXXZ
+// Name (NF120, PRIORITY q5145): Ego_r.pdb 0x007649D0 / FableWin.pdb 0x025AFD60 ?CentreHead@CTCLook@@AAEXXZ (private); the landed callers
+//   0x00753040 / 0x00753380 bind it, 0x00753080 / 0x00753C70 are respelled with it. Was public (QAEXXZ); local model respelled in place.
 #include <math.h>
 struct SLookAnglePair { float XY; float YZ; };
 extern SLookAnglePair g_HeadTurnSpeedTargetAcquired;   // 0x01382680 (.data tunables)
@@ -61,6 +64,7 @@ private:
     void ChangeHeadAngleXY(float targetAngle, float time);   // 0x00752120
 public:
     void ChangeHeadAngleYZ(float targetAngle, float time);   // 0x00752190
+private:
     void CentreHead();
 };
 

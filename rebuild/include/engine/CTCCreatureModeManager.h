@@ -102,6 +102,11 @@ public:
     // (the counted mode by value), out of line in retail at 0x0073ACC0.
     bool AddMode(CCountedPointer<CModeBase> mode);                       // 0x0073ACC0
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_REMOVEALLMODES
+    // NF120 opt-in (PRIORITY q3944, row 0x0073AE70): Ego_r.pdb 0x00751960 / FableWin.pdb 0x024C2F70 ?RemoveAllModes@CTCCreatureModeManager@@QAEXXZ
+    // (public; Ego_r order AddMode(K), RemoveAllModes, ~, ctor = retail 0x0073AE10, 0x0073AE70, 0x0073AEA0, 0x0073AF00). Declaration only.
+    void RemoveAllModes();                                               // 0x0073AE70
+#endif
 private:
     std::list<CCountedPointer<CModeBase> > PModes;
     long TimeLeftForCurrentMode,TimeForNextIdleMode;

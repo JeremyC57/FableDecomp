@@ -5,6 +5,8 @@
 // OneFrameDelay +0xb8 (PDB offsets minus 4 after the 12-byte retail vector TurningAnims at +0x8c).
 // Shape: the constant 1 is CSE'd into ebx and shared by the bit test (`test bl,al`), both state compares and the byte store;
 // the inline setters are the same change-tested forms as in StopLooking (0x00751B80).
+// NF120 (PRIORITY q5145): CentreHead 0x007528A0 is private in both PDBs (Ego_r.pdb 0x007649D0 / FableWin.pdb 0x025AFD60 ?CentreHead@CTCLook@@AAEXXZ);
+//   the local model's declaration is respelled in place (was public, QAEXXZ).
 class CTCLook { public:
     unsigned char _pad_0x00[0x48];
     long          HeadTurnState;                 // +0x48
@@ -24,7 +26,9 @@ class CTCLook { public:
         if (BodyTurnState != state)
             BodyTurnState = state;
     }
+private:
     void CentreHead();                                       // 0x007528A0
+public:
     void ChangeEyeAngles(float angleXY, float angleYZ);      // 0x00752200
     void FrameUpdateOverriddenByParent();
 };

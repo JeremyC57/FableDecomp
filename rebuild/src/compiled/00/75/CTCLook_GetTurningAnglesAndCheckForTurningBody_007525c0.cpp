@@ -1,6 +1,11 @@
-// CTCLook::GetTurningAnglesAndCheckForTurningBody(float* angleYZ, float* angleXY) -- compute the turning angles; when they exist, report whether the body must turn: twice the XY head angle exceeds the threshold (the def's XY head range, or 1e-4 for the "turn body at once" look flags)
+// CTCLook::GetTurningAnglesAndCheckForTurningBody(float& angleYZ, float& angleXY) -- compute the turning angles; when they exist, report whether the body must turn: twice the XY head angle exceeds the threshold (the def's XY head range, or 1e-4 for the "turn body at once" look flags)
+// Leaf: ?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007525C0, length 115 bytes (`ret 8`).
-// Callees: CTCLook::GetTurningAngles(float*, float*) @ 0x00751E80 (both pointers forwarded).
+// Name (NF120, PRIORITY q5061): Ego_r.pdb 0x00764200 / FableWin.pdb 0x025B4B40 ?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z
+//   (private, two float& outs); the landed callers 0x00752E00 / 0x00753020 pass two frame floats by reference and bind this spelling.
+//   Was public with float* (QAE_NPAM0); the row's local model is respelled in place. The callee GetTurningAngles is declared with the
+//   references the landed self row 0x00751E80 defines (?GetTurningAngles@CTCLook@@QAE_NAAM0@Z; both PDBs make it private, AAE: NAME_FIXES).
+// Callees: CTCLook::GetTurningAngles(float&, float&) @ 0x00751E80 (both references forwarded).
 // Layout (retail, local model): PDef +0x14 (CLookDef MaxHeadAngleXY +0x30, degrees; 1/360 @ 0x01238E00), LookFlags +0x64
 // (bit 0 with neither bit 1 nor 2, or bit 7, selects the 1e-4 @ 0x0129BA3C threshold).
 // Shape: LookFlags read once into eax and tested by byte (`test al,1 / test al,6 / test al,al ; js`); the threshold is computed
@@ -61,11 +66,12 @@ class CTCLook { public:
             return 1;
         return 0;
     }
-    bool GetTurningAngles(float* angleYZ, float* angleXY);   // 0x00751E80
-    bool GetTurningAnglesAndCheckForTurningBody(float* angleYZ, float* angleXY);
+    bool GetTurningAngles(float& angleYZ, float& angleXY);   // 0x00751E80
+private:
+    bool GetTurningAnglesAndCheckForTurningBody(float& angleYZ, float& angleXY);
 };
 
-bool CTCLook::GetTurningAnglesAndCheckForTurningBody(float* angleYZ, float* angleXY)
+bool CTCLook::GetTurningAnglesAndCheckForTurningBody(float& angleYZ, float& angleXY)
 {
     if (!GetTurningAngles(angleYZ, angleXY))
         return false;
@@ -75,5 +81,5 @@ bool CTCLook::GetTurningAnglesAndCheckForTurningBody(float* angleYZ, float* angl
         threshold = PDef->MaxHeadAngleXY * 0.0027777778f;
     else
         threshold = 1e-4f;
-    return !(unsigned char)IsWithinRange(*angleXY, threshold);   // byte-wide test of the long helper (`test al,al` after `mov eax,1`)
+    return !(unsigned char)IsWithinRange(angleXY, threshold);   // byte-wide test of the long helper (`test al,al` after `mov eax,1`)
 }

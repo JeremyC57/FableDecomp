@@ -43,6 +43,15 @@ public:
  float GetStrain()const{return Strain;}
  const class CFishingRodDef* GetPFishingRodDef()const;                       // 0x007B0880
 #endif
+#ifdef FABLE_RETAIL_CTCFISHING_CANCELBUTTONPRESSED
+ // NF120 opt-in (PRIORITY q6450, row 0x007B0CC0): Ego_r.pdb / FableWin.pdb ?CancelButtonPressed@CTCFishing@@QAEXXZ (public; Ego_r order
+ // ReelInButtonPressed, CancelButtonPressed, ..., FrameUpdate = retail 0x007B0BA0, 0x007B0CC0, 0x007B0CD0) and the protected
+ // ?FinishFishing@CTCFishing@@IAEX_N@Z (out of line at 0x007B0950). Declarations only: no layout change.
+ void CancelButtonPressed();                                                 // 0x007B0CC0
+protected:
+ void FinishFishing(bool caught);                                            // 0x007B0950
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(36, offsetof(CTCFishing,PDef)==0x60);
 FABLE_STATIC_ASSERT_AT(37, sizeof(CTCFishing)==100);

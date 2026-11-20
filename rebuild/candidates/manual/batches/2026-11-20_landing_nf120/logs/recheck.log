@@ -1,0 +1,183 @@
+addr       parity           behav  name
+004c7cf0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+004c7cf0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004c7cf0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004c7cf0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004c7cf0   WARN RELOC_NAME: ?for_each@@YI?AVCCallOnKill@@PAUSComponentPair@@0V1@@Z -> 004cb9f0 labelled 'std::for_each<std::pair<ETCInterfaceType, CTCBase *> *, CCallOnKill>'
+004c7cf0   RELOCATION_MATCH PASS   CThing::OnKill
+00664370   RELOCATION_MATCH PASS   CThingCreatureBase::OnKill
+00690b20   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CInputProcessFishing (engine/CInputProcessFishing.h)
+00690b20   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690b20   RELOCATION_MATCH PASS   CInputProcessFishing::ProcessInput
+0073ae70   RELOCATION_MATCH PASS   CTCCreatureModeManager::RemoveAllModes
+0073e970   RELOCATION_MATCH PASS   CAnimFilterOfGroup::`scalar deleting destructor'
+0074b900   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0074b900   WARN SHARED_HEADER_AVAILABLE CTCCreatureGenerator (engine/CTCCreatureGenerator.h)
+0074b900   RELOCATION_MATCH PASS   CTCCreatureGenerator::OnSerialise
+00751b30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00751b30   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00751b30   RELOCATION_MATCH PASS   CTCLook::GetHeadPos
+007525c0   WARN SHARED_HEADER_AVAILABLE CLookDef (engine/CLookDef.h)
+007525c0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007525c0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+007525c0   RELOCATION_MATCH PASS   CTCLook::GetTurningAnglesAndCheckForTurningBody
+007528a0   WARN SHARED_HEADER_AVAILABLE CLookDef (engine/CLookDef.h)
+007528a0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007528a0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+007528a0   RELOCATION_MATCH PASS   CTCLook::CentreHead
+00753080   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753080   RELOCATION_MATCH PASS   CTCLook::FrameUpdateOverriddenByParent
+00753c70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753c70   RELOCATION_MATCH PASS   CTCLook::FrameUpdate
+0075c160   MATCH            PASS   CTCCameraPointDefinitionBase::IsRelativeCoordTranslation
+0075c170   MATCH            PASS   CTCCameraPointDefinitionBase::IsRelativeCoordOrientation
+0075ccb0   RELOCATION_MATCH PASS   CTCCameraPointScripted::GetLookDirection
+0075ccf0   RELOCATION_MATCH PASS   CTCCameraPointScripted::GetLookDirectionEnd
+0075fa30   RELOCATION_MATCH PASS   CCountedPointer<CCardinalSpline>::Reset
+00760da0   RELOCATION_MATCH PASS   NShape::CTrack::GetTrackPosNearest
+007744a0   WARN SHARED_HEADER_AVAILABLE CShopItem (engine/CShopItem.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CShopItemDef (engine/CShopItemDef.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CShopDef (engine/CShopDef.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CGameTimeManager (engine/CGameTimeManager.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007744a0   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+007744a0   RELOCATION_MATCH PASS   CTCShop::CTCShop
+00789a50   MATCH            PASS   CTCHeroRangedAttacks::GetProjectileTargetingZoomParameter
+00789a70   MATCH            PASS   CTCHeroRangedAttacks::GetPullBackAmount
+007940f0   RELOCATION_MATCH PASS   CTCUnholyPower::PlaySoundW
+0079f810   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesLightningSpellDef (engine/CSpecialAbilitiesLightningSpellDef.h)
+0079f810   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0079f810   WARN SHARED_HEADER_AVAILABLE CTCWillLightning (engine/CTCWillLightning.h)
+0079f810   RELOCATION_MATCH PASS   CTCWillLightning::SetLevel
+007a09b0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CWillButtonHelperTimer (engine/CWillButtonHelperTimer.h)
+007a09b0   WARN SHARED_HEADER_AVAILABLE CTCWillLightning (engine/CTCWillLightning.h)
+007a09b0   RELOCATION_MATCH PASS   CTCWillLightning::CTCWillLightning
+007b0950   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CTCFish (engine/CTCFish.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+007b0950   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+007b0950   WARN RELOC_NAME: ?StopSound@CTCSoundEmitter@@QAEXK@Z -> 0066add0 labelled 'CTCSoundPlayer::StopAttachedSound'
+007b0950   RELOCATION_MATCH PASS   CTCFishing::FinishFishing
+007b0cc0   RELOCATION_MATCH PASS   CTCFishing::CancelButtonPressed
+007e7360   MATCH            PASS   CScriptGameResourceObjectScriptedThingBase::ClearCommands
+007e7390   MATCH            PASS   CScriptGameResourceObjectScriptedThingBase::Speak
+007e73d0   MATCH            PASS   CScriptGameResourceObjectScriptedThingBase::PlayAnimation
+007e7410   MATCH            PASS   CScriptGameResourceObjectScriptedThingBase::ClearAllActionsIncludingLoopingAnimations
+0087b910   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0087b910   WARN RELOC_NAME: ?Refresh_0084d080@CTrack@NCameraModes@@QAEXXZ -> 0084d080 labelled 'NCameraModes::CBase::GetCamTools'
+0087b910   RELOCATION_MATCH PASS   NCameraModes::CTrack::UpdateDesiredPos
+008ea220   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+008ea220   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+008ea220   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::FrameUpdate
+00d50c60   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d50c60   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d50c60   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00d50c60   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map'
+00d50c60   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d50c60   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+00dd6440   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00dd6440   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00dd6440   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00dd6440   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00dd6440   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript (engine/CQ_PrisonEscapeRescueMotherScript.h)
+00dd6440   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00dd6440   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dd6440   RELOCATION_MATCH PASS   NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonEscapeGuard::Main
+00ddc980   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00ddc980   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00ddc980   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ddc980   WARN SHARED_HEADER_AVAILABLE CQ_PrisonRaceScript (engine/CQ_PrisonRaceScript.h)
+00ddc980   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ddc980   RELOCATION_MATCH PASS   NScript::CQ_PrisonRaceScript::CPrisonRacer::Main
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CV_TravellingHeroesScript (engine/CV_TravellingHeroesScript.h)
+00ee1e40   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00ee1e40   RELOCATION_MATCH PASS   NScript::CV_TravellingHeroesScript::CTH_Maze::Main
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00eec890   WARN SHARED_HEADER_AVAILABLE CIsThingConscious (engine/CIsThingConscious.h)
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00eec890   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00eec890   RELOCATION_MATCH PASS   NScript::CGlobal_OpenChestScript::Main
+
+WINS: 36
+  004c7cf0 RELOCATION_MATCH CThing::?OnKill@CThing@@MAEXXZ
+  00664370 RELOCATION_MATCH CThingCreatureBase::?OnKill@CThingCreatureBase@@UAEXXZ
+  00690b20 RELOCATION_MATCH CInputProcessFishing::ProcessInput
+  0073ae70 RELOCATION_MATCH CTCCreatureModeManager::?RemoveAllModes@CTCCreatureModeManager@@QAEXXZ
+  0073e970 RELOCATION_MATCH CAnimFilterOfGroup::??_GCAnimFilterOfGroup@@UAEPAXI@Z
+  0074b900 RELOCATION_MATCH CTCCreatureGenerator::?OnSerialise@CTCCreatureGenerator@@UAEXAAVCPersistContext@@_N@Z
+  00751b30 RELOCATION_MATCH CTCLook::?GetHeadPos@CTCLook@@ABE?AVC3DVector@@XZ
+  007525c0 RELOCATION_MATCH CTCLook::?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z
+  007528a0 RELOCATION_MATCH CTCLook::?CentreHead@CTCLook@@AAEXXZ
+  00753080 RELOCATION_MATCH CTCLook::FrameUpdateOverriddenByParent
+  00753c70 RELOCATION_MATCH CTCLook::FrameUpdate
+  0075c160 MATCH CTCCameraPointDefinitionBase::?IsRelativeCoordTranslation@CTCCameraPointDefinitionBase@@QBE_NXZ
+  0075c170 MATCH CTCCameraPointDefinitionBase::?IsRelativeCoordOrientation@CTCCameraPointDefinitionBase@@QBE_NXZ
+  0075ccb0 RELOCATION_MATCH CTCCameraPointScripted::?GetLookDirection@CTCCameraPointScripted@@QBE?AVC3DVector@@PBVCRightHandedSet@@@Z
+  0075ccf0 RELOCATION_MATCH CTCCameraPointScripted::?GetLookDirectionEnd@CTCCameraPointScripted@@QBE?AVC3DVector@@PBVCRightHandedSet@@@Z
+  0075fa30 RELOCATION_MATCH CCountedPointer<CCardinalSpline>::?Reset@?$CCountedPointer@VCCardinalSpline@@@@QAEXPAVCCardinalSpline@@@Z
+  00760da0 RELOCATION_MATCH NShape::CTrack::?GetTrackPosNearest@CTrack@NShape@@QBEXABVC3DVector@@AAV3@AAM@Z
+  007744a0 RELOCATION_MATCH CTCShop::??0CTCShop@@QAE@AAVCThing@@@Z
+  00789a50 MATCH CTCHeroRangedAttacks::?GetProjectileTargetingZoomParameter@CTCHeroRangedAttacks@@QBEMXZ
+  00789a70 MATCH CTCHeroRangedAttacks::?GetPullBackAmount@CTCHeroRangedAttacks@@QBEMXZ
+  007940f0 RELOCATION_MATCH CTCUnholyPower::?PlaySoundW@CTCUnholyPower@@AAEKABVCCharString@@_N@Z
+  0079f810 RELOCATION_MATCH CTCWillLightning::?SetLevel@CTCWillLightning@@AAEXJ@Z
+  007a09b0 RELOCATION_MATCH CTCWillLightning::??0CTCWillLightning@@QAE@AAVCThing@@@Z
+  007b0950 RELOCATION_MATCH CTCFishing::?FinishFishing@CTCFishing@@IAEX_N@Z
+  007b0cc0 RELOCATION_MATCH CTCFishing::?CancelButtonPressed@CTCFishing@@QAEXXZ
+  007e7360 MATCH CScriptGameResourceObjectScriptedThingBase::?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+  007e7390 MATCH CScriptGameResourceObjectScriptedThingBase::?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+  007e73d0 MATCH CScriptGameResourceObjectScriptedThingBase::?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z
+  007e7410 MATCH CScriptGameResourceObjectScriptedThingBase::?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+  0087b910 RELOCATION_MATCH NCameraModes::CTrack::UpdateDesiredPos
+  008ea220 RELOCATION_MATCH NCreatureMode::CModeStrafe::FrameUpdate
+  00d50c60 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+  00dd6440 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonEscapeGuard::?Main@CPrisonEscapeGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00ddc980 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRacer::?Main@CPrisonRacer@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00ee1e40 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Maze::Main
+  00eec890 RELOCATION_MATCH NScript::CGlobal_OpenChestScript::?Main@CGlobal_OpenChestScript@NScript@@UAEXXZ

@@ -73,7 +73,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0
 };
 typedef long EScriptAIPriority;
 enum EScriptEntityMoveType { };
-typedef long ETextGroupSelectionMethod;
+#include "engine/ETextGroupSelectionMethod.h"   // NF120 (PRIORITY q4623): the shared PDB enum (was `typedef long`), so Speak binds ..PBDW4ETextGroupSelectionMethod@@_N33@Z
 class CBaseObject { public:                       // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                       // +0x04
 protected:
@@ -337,7 +337,7 @@ void NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main()
             GameCalls* game = Game;
             game->PauseAllNonScriptedEntities(true);
             if (Game->GetHealth(scripted.GetScriptThing()) > 0.0f) {
-                scripted.Speak(Game->GetHero(), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", 0, false, true, false);
+                scripted.Speak(Game->GetHero(), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", GROUP_SELECT_NONE, false, true, false);
                 while (scripted.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {

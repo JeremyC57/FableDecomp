@@ -14,7 +14,7 @@ class CProcessedInput { public:
     void SetHandled() { handled = true; }
     void AddGameEvent(const CGameEvent& e) { ++events; type = e.Type; len = e.len; std::memcpy(data, e.buf, 8); }
 };
-class CTCFishing { public: int reel, cast; void ReelInButtonPressed() { ++reel; } void CastButtonPressed() { ++cast; } };
+class CTCFishing { public: int reel, cast; void ReelInButtonPressed() { ++reel; } void CancelButtonPressed() { ++cast; } };
 class CThing { public:
     unsigned long m_tcMask[8]; CTCFishing* fishing;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
@@ -31,7 +31,7 @@ class CInputProcessFishing { public:
         CTCFishing* fishing = 0;
         if (hero->HasTC(0xb1)) fishing = hero->GetTC(0xb1);
         if (IsEventGameAction(0x2b, event)) { fishing->ReelInButtonPressed(); processed.SetHandled(); }
-        else if (IsEventGameAction(0x2c, event)) { fishing->CastButtonPressed(); processed.SetHandled(); }
+        else if (IsEventGameAction(0x2c, event)) { fishing->CancelButtonPressed(); processed.SetHandled(); }
         else if (IsEventGameAction(3, event) && hero->HasTC(0xc6)) {
             CGameEvent gameEvent(0x1a); gameEvent.AddLong(0x17); gameEvent.AddBool(true); processed.AddGameEvent(gameEvent);
         }

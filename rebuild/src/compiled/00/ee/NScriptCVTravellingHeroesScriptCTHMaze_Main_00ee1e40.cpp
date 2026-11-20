@@ -71,7 +71,7 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 using NScript::CIsThingAlive;
 typedef long EScriptAIPriority;
 typedef long EScriptEntityMoveType;
-typedef long ETextGroupSelectionMethod;
+#include "engine/ETextGroupSelectionMethod.h"   // NF120 (PRIORITY q4623): the shared PDB enum (was `typedef long`), so Speak binds ..PBDW4ETextGroupSelectionMethod@@_N33@Z
 typedef long EGameflowPosition;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -258,7 +258,7 @@ void NScript::CV_TravellingHeroesScript::CTH_Maze::Main()
             GameCalls* game = Game;
             game->PauseAllNonScriptedEntities(true);
             if (Game->GetHealth(scripted.GetScriptThing()) > 0.0f) {
-                scripted.Speak(Game->GetHero(), "TEXT_QST_B14_MAZE_AFTERSCENE_TALK", 0, false, true, false);
+                scripted.Speak(Game->GetHero(), "TEXT_QST_B14_MAZE_AFTERSCENE_TALK", GROUP_SELECT_NONE, false, true, false);
                 while (scripted.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
@@ -284,7 +284,7 @@ void NScript::CV_TravellingHeroesScript::CTH_Maze::Main()
                 GameCalls* game = Game;
                 game->PauseAllNonScriptedEntities(true);
                 if (Game->GetHealth(scripted.GetScriptThing()) > 0.0f) {
-                    scripted.Speak(Game->GetHero(), "TEXT_QST_B14_MAZE_AFTERSCENE_HIT", 0, false, true, false);
+                    scripted.Speak(Game->GetHero(), "TEXT_QST_B14_MAZE_AFTERSCENE_HIT", GROUP_SELECT_NONE, false, true, false);
                     while (scripted.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
                         if (IsActiveThreadTerminating()) {

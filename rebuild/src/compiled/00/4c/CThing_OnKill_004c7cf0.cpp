@@ -1,5 +1,8 @@
 // CThing::OnKill() -- tell the quest manager the thing is deactivated (passing whether its level is unloading), call OnKill on every component with component adds forbidden, then notify the thing manager of the kill
-// Leaf: ?OnKill@CThing@@
+// Leaf: ?OnKill@CThing@@MAEXXZ
+// Name (NF120, PRIORITY q3944 follow-up): Ego_r.pdb 0x004CA3B0 / FableWin.pdb 0x01CF3640 ?OnKill@CThing@@MAEXXZ (protected virtual, CThing
+//   vtable slot 12); its only landed caller 0x00664370 (CThingCreatureBase::OnKill's qualified base call, now on the shared headers) binds this
+//   spelling. Was public non-virtual (QAEXXZ); the local model is respelled in place (vptr at +0x00).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
@@ -49,7 +52,7 @@ private:
 public:
     static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
 private: public:
-    unsigned char   m_pad00[0x44];
+    unsigned char   m_pad04[0x40];                   // +0x04 (the vptr is +0x00)
     SComponentPair* m_componentsFirst;               // +0x44  Components (CVectorMap)
     SComponentPair* m_componentsLast;                // +0x48
     SComponentPair* m_componentsEnd;                 // +0x4c
@@ -61,7 +64,8 @@ private: public:
     unsigned char   LevelIsUnloading : 1;            // bit 4
     unsigned char   IsAffectedByBulletTimeOverride : 1;
     unsigned char   AddingTCsPermitted : 1;          // bit 6
-    void OnKill();
+protected:
+    virtual void OnKill();                           // slot 12
 };
 
 void CThing::OnKill()

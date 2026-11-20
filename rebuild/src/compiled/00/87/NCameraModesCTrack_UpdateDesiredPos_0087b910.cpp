@@ -16,8 +16,9 @@ class CTCBase;
 #include "engine/C3DVector.h"
 namespace NShape {
 class CTrack { public:
-    void GetTrackPosNearest(const C3DVector* pos, C3DVector* nearest, float* fraction);   // 0x00760DA0
-    C3DVector GetTrackPosAtLengthFraction(float fraction);                                // 0x00760C40
+    // NF120 (PRIORITY q4952): both const, references (Ego_r.pdb / FableWin.pdb; were non-const, pointers)
+    void GetTrackPosNearest(const C3DVector& pos, C3DVector& nearest, float& fraction) const;   // 0x00760DA0
+    C3DVector GetTrackPosAtLengthFraction(float fraction) const;                             // 0x00760C40
 };
 }
 
@@ -68,7 +69,7 @@ void NCameraModes::CTrack::UpdateDesiredPos(C3DVector& desired)
         pComponent = pFallback;
     C3DVector nearest;
     float nearestFraction;
-    PTrack->GetTrackPosNearest(&pComponent->m_position, &nearest, &nearestFraction);
+    PTrack->GetTrackPosNearest(pComponent->m_position, nearest, nearestFraction);
     float fraction = (CurrentFractionAlongTrack * 3.0f + nearestFraction) * 0.25f;
     Refresh_0084d080();
     CurrentFractionAlongTrack = fraction;

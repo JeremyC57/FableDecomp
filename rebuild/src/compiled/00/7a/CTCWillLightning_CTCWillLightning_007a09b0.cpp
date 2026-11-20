@@ -189,7 +189,9 @@ class CTCWillLightning : public CTCBase { public:               // vtable 0x0126
     unsigned char _padd9[3];
     long  m_OnhitEveryFrame;                            // +0xdc
     long  m_CombatMultiplierTimer;                      // +0xe0
+private:   // NF120 (PRIORITY q5161): Ego_r.pdb / FableWin.pdb ?SetLevel@CTCWillLightning@@AAEXJ@Z (private); was public (QAEXJ)
     void SetLevel(long level);                          // 0x0079F810
+public:
     CTCWillLightning(CThing& parent);
 };
 #pragma pack(pop)

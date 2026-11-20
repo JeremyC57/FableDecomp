@@ -93,7 +93,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     void FollowPreCalculatedRoute(const CScriptThing& thing, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E7310
-    void ClearCommands();                               // 0x007E7360
+    virtual void ClearCommands();                       // 0x007E7360 (NF120: virtual, slot 10, Ego_r.pdb / FableWin.pdb UAEXXZ; called by name on a local object, so a direct call)
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

@@ -68145,16 +68145,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00789a50'
-        Module = '_global'
-        Source = '00/78/DrawGetSeaLevel_DrawGetSeaLevel_00789a50.cpp'
-        TestSource = '00/78/DrawGetSeaLevel_DrawGetSeaLevel_00789a50_test.cpp'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_GetProjectileTargetingZoomParameter_00789a50.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_GetProjectileTargetingZoomParameter_00789a50_test.cpp'
         PassPattern = 'OK_00789a50'
     }
     [pscustomobject]@{
         Address = '00789a70'
-        Module = '_global'
-        Source = '00/78/DrawGetSeaLevel_DrawGetSeaLevel_00789a70.cpp'
-        TestSource = '00/78/DrawGetSeaLevel_DrawGetSeaLevel_00789a70_test.cpp'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_GetPullBackAmount_00789a70.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_GetPullBackAmount_00789a70_test.cpp'
         PassPattern = 'OK_00789a70'
     }
     [pscustomobject]@{
@@ -149287,9 +149287,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075fa30'
-        Module = 'CCountedPointer_0075f830'
-        Source = '00/75/CCountedPointer0075f830_Reset_0075fa30.cpp'
-        TestSource = '00/75/CCountedPointer0075f830_Reset_0075fa30_test.cpp'
+        Module = 'CCountedPointer<CCardinalSpline>'
+        Source = '00/75/CCountedPointer_Reset_0075fa30.cpp'
+        TestSource = '00/75/CCountedPointer_Reset_0075fa30_test.cpp'
         PassPattern = '0075fa30_TEST PASS'
     }
     [pscustomobject]@{
@@ -175958,9 +175958,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073e970'
-        Module = '_unattributed'
-        Source = '00/73/unattributed_ScalarDeletingDestructorCAnimFilterBaseDerived00_0073e970.cpp'
-        TestSource = '00/73/unattributed_ScalarDeletingDestructorCAnimFilterBaseDerived00_0073e970_test.cpp'
+        Module = 'CAnimFilterOfGroup'
+        Source = '00/73/CAnimFilterOfGroup_scalardeletingdestructor_0073e970.cpp'
+        TestSource = '00/73/CAnimFilterOfGroup_scalardeletingdestructor_0073e970_test.cpp'
         PassPattern = '0073e970_TEST PASS'
     }
     [pscustomobject]@{
@@ -182691,9 +182691,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b0cc0'
-        Module = '_unattributed'
-        Source = '00/7b/unattributed_CallWith007b0cc0_007b0cc0.cpp'
-        TestSource = '00/7b/unattributed_CallWith007b0cc0_007b0cc0_test.cpp'
+        Module = 'CTCFishing'
+        Source = '00/7b/CTCFishing_CancelButtonPressed_007b0cc0.cpp'
+        TestSource = '00/7b/CTCFishing_CancelButtonPressed_007b0cc0_test.cpp'
         PassPattern = '007b0cc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -183118,16 +183118,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075c160'
-        Module = 'CASuspendableProcess'
-        Source = '00/75/CASuspendableProcess_CheckTermination_0075c160.cpp'
-        TestSource = '00/75/CASuspendableProcess_CheckTermination_0075c160_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/75/CTCCameraPointDefinitionBase_IsRelativeCoordTranslation_0075c160.cpp'
+        TestSource = '00/75/CTCCameraPointDefinitionBase_IsRelativeCoordTranslation_0075c160_test.cpp'
         PassPattern = '0075c160_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0075c170'
-        Module = 'CASuspendableProcess'
-        Source = '00/75/CASuspendableProcess_CheckTermination_0075c170.cpp'
-        TestSource = '00/75/CASuspendableProcess_CheckTermination_0075c170_test.cpp'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/75/CTCCameraPointDefinitionBase_IsRelativeCoordOrientation_0075c170.cpp'
+        TestSource = '00/75/CTCCameraPointDefinitionBase_IsRelativeCoordOrientation_0075c170_test.cpp'
         PassPattern = '0075c170_TEST PASS'
     }
     [pscustomobject]@{
@@ -200081,8 +200081,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0073ae70'
         Module = 'CTCCreatureModeManager'
-        Source = '00/73/CTCCreatureModeManager_ClearModes_0073ae70.cpp'
-        TestSource = '00/73/CTCCreatureModeManager_ClearModes_0073ae70_test.cpp'
+        Source = '00/73/CTCCreatureModeManager_RemoveAllModes_0073ae70.cpp'
+        TestSource = '00/73/CTCCreatureModeManager_RemoveAllModes_0073ae70_test.cpp'
         PassPattern = '0073ae70_TEST PASS'
     }
     [pscustomobject]@{
@@ -201130,16 +201130,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075ccb0'
-        Module = 'CEnvironmentSpellEffectInterface'
-        Source = '00/75/CEnvironmentSpellEffectInterface_GetRenderFrameInterpolatedScreenFilterParameters_0075ccb0.cpp'
-        TestSource = '00/75/CEnvironmentSpellEffectInterface_GetRenderFrameInterpolatedScreenFilterParameters_0075ccb0_test.cpp'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_GetLookDirection_0075ccb0.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_GetLookDirection_0075ccb0_test.cpp'
         PassPattern = '0075ccb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0075ccf0'
-        Module = 'CEnvironmentSpellEffectInterface'
-        Source = '00/75/CEnvironmentSpellEffectInterface_GetRenderFrameInterpolatedScreenFilterParameters_0075ccf0.cpp'
-        TestSource = '00/75/CEnvironmentSpellEffectInterface_GetRenderFrameInterpolatedScreenFilterParameters_0075ccf0_test.cpp'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_GetLookDirectionEnd_0075ccf0.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_GetLookDirectionEnd_0075ccf0_test.cpp'
         PassPattern = '0075ccf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -231588,9 +231588,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007940f0'
-        Module = 'CTCDivineWrath'
-        Source = '00/79/CTCDivineWrath_PlaySoundW_007940f0.cpp'
-        TestSource = '00/79/CTCDivineWrath_PlaySoundW_007940f0_test.cpp'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_PlaySoundW_007940f0.cpp'
+        TestSource = '00/79/CTCUnholyPower_PlaySoundW_007940f0_test.cpp'
         PassPattern = '007940f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -259102,8 +259102,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0074b900'
         Module = 'CTCCreatureGenerator'
-        Source = '00/74/CTCCreatureGenerator_Persist_0074b900.cpp'
-        TestSource = '00/74/CTCCreatureGenerator_Persist_0074b900_test.cpp'
+        Source = '00/74/CTCCreatureGenerator_OnSerialise_0074b900.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_OnSerialise_0074b900_test.cpp'
         PassPattern = '0074b900_TEST PASS'
     }
     [pscustomobject]@{
