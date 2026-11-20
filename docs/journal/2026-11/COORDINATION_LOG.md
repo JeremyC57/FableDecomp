@@ -446,3 +446,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A: nf143 landed (14 rows; q4942 / q4943 CResource ListRemove / ListInsert closed; q4283 / q4285 partial, NF146 has the rest; CUserProfileManager.h opt-in).
 2026-11-20 A: NF146 handed back (landing nf146 after nf144 / nf145). New agent NF148 (q11817: re-port 0x00BF3B60 off its local CMemoryDataInputStream, then 0x00994930's rename; q11785 ThrowShotObject vtable).
 2026-11-20 A: landed B's reports_b4 0x00BACE10 onto CEngineSubPrimitiveSprite.h (batches/2026-11-20_landing_reports_b4); 0x00BB1740 held (its scaffolding emits the constructor 0x00BACE10 owns), queued with the fix.
+2026-11-20 A: NF147 handed back (landing after nf146). New agent NF149 (PRIORITY pick list: CIndexBuffer / CVertexBuffer, 8 entries).
