@@ -103,3 +103,15 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - Byte-neutral mutants are listed separately.
 - **Also:** the 0x00BB3E80 mechanism is unverified; a probe and a FINDINGS entry follow. The CRenderStateManager.h EARLY_RETURN brace bug
   was landed as its own fix commit.
+
+## 0x00A1E5C0 CNavigatorAStar::CalculateAndMoveToPosProximity: a reference local not in Ego_d (2026-11-20)
+- **Case:** with Ego_d's block locals ({one_past_begin, next_section}, {nav_layer, it}) the row is RELOCATION_MATCH only if the draft's
+  `CNavWayPoint& last = Route.back();` stays. Ego_d's new_dest_pos block has no `last`. Without it the expanded IsRouteClear's x87 multiply
+  order returns at 0x00A1F65A / 0x00A1F9D1, along with a register swap at 0x00A1E81B. A dead scalar in its place fixes only the swap.
+- **Ruling:** it may stay as `// Inferred:`. It is the mildest fit so far: a live named reference to an expression the function already
+  evaluates, with no flag, type or helper invented.
+  - First, calibrate the block at /Od against Ego_d's line sizes. If Ego_d does not fit three `Route.back()` calls, a no-local spelling that
+    does fit and matches replaces `last`.
+  - The label cites the three retail sites and says the bytes prove one evaluation held in a named local, not its name.
+- **Blocking:** the draft's `#pragma auto_inline(off)` round the same-TU 0x00A1A1A0 body is an inline device. Line 2 must name it with its
+  ablation, which also tries a per-row flag and a declaration-only callee (if declaration-only is byte-equal, drop the body and the pragma).
