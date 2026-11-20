@@ -1,0 +1,77 @@
+addr       parity           behav  name
+006e5800   WARN SHARED_HEADER_AVAILABLE CScriptConversationManager (engine/CScriptConversationManager.h)
+006e5800   RELOCATION_MATCH PASS   CScriptConversationManager::AddPersonToConversation
+006e5950   WARN SHARED_HEADER_AVAILABLE CScriptConversationManager (engine/CScriptConversationManager.h)
+006e5950   RELOCATION_MATCH PASS   CScriptConversationManager::AddLineToConversation
+006e76e0   RELOCATION_MATCH PASS   CGameScriptInterface::SetTimer
+006e9450   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9450   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9450   RELOCATION_MATCH PASS   CCombatManager::IsCreatureWithValidMeleeCombatSequence
+006e9680   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9680   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9680   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9680   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9680   RELOCATION_MATCH PASS   CCombatManager::GetCombatWheelRadiusForAttacker
+006e97a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e97a0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e97a0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e97a0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e97a0   RELOCATION_MATCH PASS   CCombatManager::IsCreaturePerformingNonInterruptableSequence
+006e9d10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9d10   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9d10   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9d10   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9d10   RELOCATION_MATCH PASS   CCombatManager::SetAttackerProngAsInvalid
+006e9d90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006e9d90   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef (engine/CCombatTypeDef.h)
+006e9d90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006e9d90   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9d90   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9d90   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006e9d90   RELOCATION_MATCH PASS   CCombatManager::SetAttackerRingAsRotating
+006e9ec0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006e9ec0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006e9ec0   WARN STANDIN_LEAF ?ReassignAttackerOnVictim@CCombatManager_Retail@@QAEXABUCThingCreatureBase_Retail@@PBVC3DVector@@@Z (catalog CCombatManager::GetCombatantInfo; names another function)
+006e9ec0   RELOCATION_MATCH PASS   CCombatManager::GetCombatantInfo
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006ea2c0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea2c0   RELOCATION_MATCH PASS   CCombatManager::PerformSequenceReset
+006ea450   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006ea450   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea450   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006ea450   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006ea450   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea450   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea450   RELOCATION_MATCH PASS   CCombatManager::SetAttackerAsReadyToAttack
+006ea540   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea540   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea540   WARN RELOC_NAME: ?OnActionPerformed@CCombatSequenceBase@@QAEXXZ -> 008b0600 labelled 'CGameScriptThing::DecrementScriptCounter'
+006ea540   WARN RELOC_NAME: ?ResetAttackerSequence@CCombatManager@@QAEXABVCThingCreatureBase@@@Z -> 006ea2c0 labelled 'CCombatManager::PerformSequenceReset'
+006ea540   RELOCATION_MATCH PASS   CCombatManager::SetCreatureAsAttemptedToPerformedAction
+006eb9f0   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eb9f0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eb9f0   RELOCATION_MATCH PASS   CCombatManager::HasSequenceAgainstAttacked
+008d9530   WARN RELOC_NAME: ??0NativeStringValue@@QAE@ABU0@@Z -> 0099ec30 labelled 'CCharString::CCharString'
+008d9530   WARN RELOC_NAME: ?SetAndHash@AnimationGroupFilter@@QAEXABVCCharString@@@Z -> 0073dff0 labelled 'CAnimFilterOfGroup::SetCurrentGroupName'
+008d9530   RELOCATION_MATCH PASS   NCreatureMode::CModeBerserk::FrameUpdate
+
+WINS: 14
+  006e5800 RELOCATION_MATCH CScriptConversationManager::?AddPersonToConversation@CScriptConversationManager
+  006e5950 RELOCATION_MATCH CScriptConversationManager::?AddLineToConversation@CScriptConversationManager
+  006e76e0 RELOCATION_MATCH CGameScriptInterface::?SetTimer@CGameScriptInterface@@UAEXJJ@Z
+  006e9450 RELOCATION_MATCH CCombatManager::IsCreatureWithValidMeleeCombatSequence
+  006e9680 RELOCATION_MATCH CCombatManager::?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z
+  006e97a0 RELOCATION_MATCH CCombatManager::?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006e9d10 RELOCATION_MATCH CCombatManager::?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
+  006e9d90 RELOCATION_MATCH CCombatManager::SetAttackerRingAsRotating
+  006e9ec0 RELOCATION_MATCH CCombatManager::ReassignAttackerOnVictim
+  006ea2c0 RELOCATION_MATCH CCombatManager::PerformSequenceReset
+  006ea450 RELOCATION_MATCH CCombatManager::?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z
+  006ea540 RELOCATION_MATCH CCombatManager::SetCreatureAsAttemptedToPerformedAction
+  006eb9f0 RELOCATION_MATCH CCombatManager::HasSequenceAgainstAttacked
+  008d9530 RELOCATION_MATCH NCreatureMode::CModeBerserk::FrameUpdate

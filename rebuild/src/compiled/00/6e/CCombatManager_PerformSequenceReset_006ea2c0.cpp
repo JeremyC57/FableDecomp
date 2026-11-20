@@ -38,6 +38,12 @@
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is visible but out of line
+//   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), as the stand-in same-TU noinline body was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
@@ -90,49 +96,18 @@ struct CCombatantInfo {                     // retail layout (Ego_r.pdb names; 1
     CAttackingCombatantInfo AttackerInfo;   // +0x04
     unsigned char DefenderInfo[0x3c];       // +0x34
 };
-struct CRetailRbMap_UID_CombatantInfo {     // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;               // +0x10
-        CCombatantInfo value;               // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-};
-#pragma auto_inline(off)
-// Same-TU body of the STLport map::find instantiation 0x006F0250 (template bodies are compiled in the caller's TU,
-// as in the landed 0x006E9D90): the lower_bound walk reading the 64-bit key through its const reference, then the
-// end() test.
-__declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_CombatantInfo::find(const unsigned __int64& key)
-{
-    node* y = header;
-    node* x = header->parent;
-    while (x != 0) {
-        if (!(x->key < key)) {
-            y = x;
-            x = x->left;
-        } else
-            x = x->right;
-    }
-    if (y == header || key < y->key)
-        return header;
-    return y;
-}
-#pragma auto_inline(on)
 class CWorld { public:
     unsigned long* GetWorldSeed() const;        // 0x0049D810
 };
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];          // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     bool    CombatStrafeTurningEnabled;     // +0x1c
     CWorld* World;                          // +0x20
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature)
     {
-        return Combatants.find(creature.GetUID())->value;
+        return Combatants.find(creature.GetUID())->second;
     }
     void IncrementDefenderAttackPattern(CCombatantInfo& info);             // 0x006E8600
     bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
@@ -143,12 +118,12 @@ class CCombatManager { public:
 void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
 {
     CCombatantInfo& info = GetCombatantInfo(creature);
-    CRetailRbMap_UID_CombatantInfo::node* victim = Combatants.find(info.AttackerInfo.Attacked->GetUID());
+    std::map<unsigned __int64, CCombatantInfo>::iterator  victim = Combatants.find(info.AttackerInfo.Attacked->GetUID());
     if (info.AttackerInfo.CurrentSequence >= 0) {
         CCombatSequenceBase* sequence = info.AttackerInfo.CombatSequences[info.AttackerInfo.CurrentSequence].Object;
         if (sequence->Running) {
             if (sequence->IsMeleeSequence()) {
-                IncrementDefenderAttackPattern(victim->value);
+                IncrementDefenderAttackPattern(victim->second);
                 CDefPointer<const CCombatAbilityStrafeDef> rotation;
                 if (!IsCreatureOnOuterRing(creature)) {
                     if (creature.GetCombatTypeDef()->GetSubDef(&rotation)) {

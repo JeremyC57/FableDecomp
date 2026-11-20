@@ -10,6 +10,12 @@
 //   the thing's interface bitset +0x20 / vector map +0x44 / dead bit +0x91 as the landed 0x0095D310.
 // Shape: the UID is read once into a named local and handed by value to the inline IsCreatureAttacking / GetCombatantInfo
 //   (landed 0x006E9E40); the interface key temporaries live in the dead `creature` slot.
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), as the stand-in find was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
 class CTCBase;
 
@@ -59,31 +65,19 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     unsigned char _rest[0x70 - 0x08];
 };
 
-struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                   // +0x10
-        CCombatantInfo value;                   // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-    node* end() { return header; }
-};
 
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     CCombatantInfo& GetCombatantInfo(unsigned __int64 uid)
     {
-        return Combatants.find(uid)->value;
+        return Combatants.find(uid)->second;
     }
     bool IsCreatureAttacking(unsigned __int64 uid)
     {
-        CRetailRbMap_UID_CombatantInfo::node* it = Combatants.find(uid);
-        return it != Combatants.end() && it->value.Attacked != 0;
+        std::map<unsigned __int64, CCombatantInfo>::iterator  it = Combatants.find(uid);
+        return it != Combatants.end() && it->second.Attacked != 0;
     }
     void PerformSequenceReset(CThingCreatureBase* creature);   // 0x006EA2C0
     void SetAttackerAsReadyToAttack(const CThingCreatureBase& creature, bool keepSequence);

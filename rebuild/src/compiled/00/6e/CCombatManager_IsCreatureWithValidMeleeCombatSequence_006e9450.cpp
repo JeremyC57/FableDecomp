@@ -7,6 +7,12 @@
 //          found node's value taken WITHOUT an end() test -- gives a reference local (edi, advanced to the value after
 //          the vector words were read); the sequence end is re-read every pass; the three tests are one `&&` chain with
 //          the shared `mov al,1` exit after the loop's false tail. Model of the landed IsCreatureFightingThing (0x006E9310).
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), as the stand-in find was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 struct CThingCreatureBase_Retail {
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
@@ -64,26 +70,14 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     unsigned char _rest[0x70 - 0x4c];
 };
 
-struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64, CCombatantInfo>: {header, count, comparator}
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                   // +0x10
-        CCombatantInfo value;                   // +0x18
-    };
-    node* header;                               // +0; end() == header
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-    node* end() { return header; }
-};
 
 struct CCombatManager_Retail {
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase_Retail& creature)
     {
-        return Combatants.find(creature.GetUID())->value;
+        return Combatants.find(creature.GetUID())->second;
     }
     bool IsCreatureWithValidMeleeCombatSequence(const CThingCreatureBase_Retail& creature);
 };

@@ -10,6 +10,12 @@
 // Shape: one 8-byte frame slot for the by-value uid of the inline GetCombatantInfo(uid) helper (shared by both lookups), the map address
 // kept in ebx, the attacker's value address (node + 0x18) kept in esi across the second find; `setge al` straight into al = `>= 0 ? true : false` (a plain `return x >= 0;` goes through `xor edx,edx ; setge dl ; mov al,dl`).
 // Leaf: HasSequenceAgainstAttacked
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), as the stand-in find was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 struct CThingCreatureBase_Retail {
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
@@ -27,25 +33,14 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     unsigned char _defenderInfo[0x70 - 0x34];   // +0x34 DefenderInfo
 };
 
-struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64, CCombatantInfo>: {header, count, comparator}
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                   // +0x10
-        CCombatantInfo value;                   // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-};
 
 struct CCombatManager_Retail {
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     CCombatantInfo& GetCombatantInfo(unsigned __int64 uid)
     {
-        return Combatants.find(uid)->value;
+        return Combatants.find(uid)->second;
     }
     long GetBestSequenceIndexAttackerOnDefender(CCombatantInfo& attacker, CCombatantInfo& defender);   // 0x006EAE20
     bool HasSequenceAgainstAttacked(const CThingCreatureBase_Retail& creature);

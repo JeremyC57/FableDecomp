@@ -8,6 +8,12 @@
 //   8-byte counted pointers); the sequence's finished flag byte +4.
 // Shape: the inline Finish() sets the flag before the virtual call; the flag is read once after CanContinue for both
 //   branches; CurrentSequence >= 0 is the `jl` guard.
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), as the stand-in find was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 template<class T> struct CRetailVector {        // retail std::vector: {first, last, end_of_storage}, 12 bytes
     T* first;
     T* last;
@@ -64,25 +70,14 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     unsigned char _rest[0x70 - 0x34];
 };
 
-struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                   // +0x10
-        CCombatantInfo value;                   // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-};
 
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
     CCombatantInfo& GetCombatantInfo(unsigned __int64 uid)
     {
-        return Combatants.find(uid)->value;
+        return Combatants.find(uid)->second;
     }
     void ResetAttackerSequence(const CThingCreatureBase& creature);   // 0x006EA2C0
     void SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creature, bool performed);

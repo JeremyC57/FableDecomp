@@ -2,6 +2,7 @@
 // Leaf: FrameUpdate
 // Native008D9530 length278. Genuine mode slots5/6 from VT1267F00=8621A0/8D6830; typed PMF table retains native4/full-host width.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
 #ifndef _MSC_VER
 #define __int64 long long
 #define __fastcall
@@ -13,6 +14,8 @@
 #include "engine/CModeStandBase.h"
 #include "engine/CTCWeapon.h"
 #include "fable_string.h"
+// Name fix (NF185, 2026-11-20, q4457): the inequality is CCharString::operator!=(const CCharString&) const 0x0099E900 (fable_string.h,
+//   Ego_r.pdb ??9CCharString@@QBE_NABV0@@Z), no longer the NativeStringValue::NotEqual stand-in member; FABLE_RETAIL_CCHARSTRING declares it.
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
 struct ThingNative;
 class CTCBase;
@@ -36,7 +39,6 @@ bool __fastcall IsThingCarryingMeleeWeapon(const ThingNative*); //6A15A0, presen
 struct NativeStringValue:CCharString {
  NativeStringValue():CCharString(){} //99E4B0
  NativeStringValue(const NativeStringValue&); //99EC30, actual header lacks narrow copy declaration
- bool NotEqual(const CCharString&)const; //99E900, audited compares storage/length/content and inverts
 };
 struct AnimationGroupFilter {void*VTable;NativeStringValue Group;unsigned long CRC;void SetAndHash(const CCharString&);}; //73DFF0, 99EFB0 assignment+4014A0 CRC
 struct CountedAnimEntry {CAnimEntryLite*Data;CCPPointerInfo*Info;};
@@ -70,7 +72,7 @@ void CModeBerserk::FrameUpdate(){
   }else group.CCharString::operator=("BERSERK_WITH_SWORD");
  }else group.CCharString::operator=("BERSERK_NO_WEAPON");
  bool changed;
- {NativeStringValue previous(Filter.Group);changed=previous.NotEqual(group);}
+ {NativeStringValue previous(Filter.Group);changed=previous!=group;}
  if(changed){Filter.SetAndHash(group);(this->*static_cast<ModeSlot*>(VTable)[6].NoArg)();(this->*static_cast<ModeSlot*>(VTable)[5].NoArg)();}
  BaseFrameUpdate();
 }

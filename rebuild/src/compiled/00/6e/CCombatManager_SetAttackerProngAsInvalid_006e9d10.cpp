@@ -11,6 +11,12 @@
 //   (Attacked +0, CombatWheelRingIndex +8), CombatWheel +0x40.
 // Shape: as 0x006E93C0: the victim's UID key is taken before the ring index is tested (one shared key slot through the
 //   same-TU noinline find); the call's two arguments are pushed before the victim's find runs.
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is visible but out of line
+//   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), as the stand-in same-TU noinline body was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 class CThingCreatureBase {
 public:
     unsigned char    _pad[0x18];
@@ -47,44 +53,15 @@ struct CCombatantInfo {                                     // retail layout (Eg
     CCombatWheel CombatWheel;                               // +0x40
 };
 
-struct CRetailRbMap_UID_CombatantInfo {                     // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                               // +0x10
-        CCombatantInfo value;                               // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);                // 0x006F0250
-};
-#pragma auto_inline(off)
-// Same-TU body of the STLport map::find instantiation 0x006F0250 (as the landed 0x006E9D90 / 0x006EA770).
-__declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_CombatantInfo::find(const unsigned __int64& key)
-{
-    node* y = header;
-    node* x = header->parent;
-    while (x != 0) {
-        if (!(x->key < key)) {
-            y = x;
-            x = x->left;
-        } else
-            x = x->right;
-    }
-    if (y == header || key < y->key)
-        return header;
-    return y;
-}
-#pragma auto_inline(on)
 
 class CCombatManager {
 public:
     virtual void v00();
     unsigned char _sequences[0xc];                          // +0x04
-    CRetailRbMap_UID_CombatantInfo Combatants;              // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;              // +0x10
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature)
     {
-        return Combatants.find(creature.GetUID())->value;
+        return Combatants.find(creature.GetUID())->second;
     }
     void SetAttackerProngAsInvalid(CThingCreatureBase& attacker);
 };
@@ -95,6 +72,6 @@ void CCombatManager::SetAttackerProngAsInvalid(CThingCreatureBase& attacker)
         CCombatantInfo& info = GetCombatantInfo(attacker);
         unsigned __int64 attackedUID = info.AttackerInfo.Attacked->GetUID();
         if (info.AttackerInfo.CombatWheelRingIndex >= 0)
-            Combatants.find(attackedUID)->value.CombatWheel.SetAttackerProngAsBlocked(attacker, info.AttackerInfo);
+            Combatants.find(attackedUID)->second.CombatWheel.SetAttackerProngAsBlocked(attacker, info.AttackerInfo);
     }
 }

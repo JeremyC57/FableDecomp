@@ -991,7 +991,13 @@ public:
     bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d
     unsigned char           _pad_0x2e[0x2];                  // +0x2e
     unsigned char           HeroSThing[0xc];                 // +0x30 CScriptThing
+#ifdef FABLE_RETAIL_CGAMESCRIPTINTERFACE_SCRIPTTIMERS_MAP
+    // Per-TU opt-in (NF185, row 0x006E76E0 SetTimer): the real STLport map (Ego_r.pdb CGameScriptInterface::ScriptTimers,
+    // map<long,long>); the includer includes stlport/fable_map.h first. Same 0xc bytes at +0x3c.
+    std::map<long, long>    ScriptTimers;                    // +0x3c
+#else
     unsigned char           ScriptTimers[0xc];               // +0x3c std::map<long,long> (STLport)
+#endif
     long                    CameraResetToViewBehindHeroCount; // +0x48
     long                    CreateCreatureDelayFrames;       // +0x4c
 };

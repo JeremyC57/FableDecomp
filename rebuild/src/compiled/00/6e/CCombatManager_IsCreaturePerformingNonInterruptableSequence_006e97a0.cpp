@@ -15,6 +15,12 @@
 //   `lea`); the PDB return type is bool (QBE_N): `return sequence->IsInterruptable() ? false : true;` gives retail's
 //   byte-wide `neg al ; sbb al,al ; inc al` (as does `(bool)!x`), while a plain `return !x;` from a bool function widens
 //   it to `sbb eax,eax ; inc eax` in this lane (the earlier landing used an `unsigned char` result for that reason).
+// Name fix (NF185, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced in place by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h); its _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), as the stand-in find was; FABLE_RETAIL_STLP_TREE_CONSTFIND gives the const find body.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 class CThingCreatureBase {
 public:
     unsigned char    _pad[0x18];
@@ -55,26 +61,15 @@ struct CCombatantInfo {                                     // retail layout (Eg
     CAttackingCombatantInfo AttackerInfo;                   // +0x04
 };
 
-struct CRetailRbMap_UID_CombatantInfo {                     // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                               // +0x10
-        CCombatantInfo value;                               // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key) const;          // 0x006F0250
-};
 
 class CCombatManager {
 public:
     virtual void v00();
     unsigned char _sequences[0xc];                          // +0x04
-    CRetailRbMap_UID_CombatantInfo Combatants;              // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;              // +0x10
     const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const
     {
-        return Combatants.find(creature.GetUID())->value;
+        return Combatants.find(creature.GetUID())->second;
     }
     bool IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const;
 };

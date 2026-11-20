@@ -10,10 +10,22 @@
 #include "rebuild_abi.h"
 
 class CScriptConversationManager;
+#ifdef FABLE_RETAIL_CSCRIPTCONVERSATION_ADDTOCONVERSATION
+class CThing;
+class CCharString;
+#endif
 
 #pragma pack(push, 1)
 class CScriptConversation {
 public:
+#ifdef FABLE_RETAIL_CSCRIPTCONVERSATION_ADDTOCONVERSATION
+    // Per-TU opt-in (NF185, rows 0x006E5800 / 0x006E5950): the two members the manager forwards to (Ego_r.pdb + FableWin.pdb
+    // ?AddPersonToConversation@CScriptConversation@@QAEXAAVCThing@@@Z 0x006E5790,
+    // ?AddLineToConversation@CScriptConversation@@QAEXABVCThing@@PBV2@ABVCCharString@@_N@Z 0x006E58A0). Declarations only.
+    void AddPersonToConversation(CThing& person);                                          // 0x006E5790
+    void AddLineToConversation(const CThing& speaker, const CThing* listener, const CCharString& line,
+                               bool play_during_cut_scenes);                                       // 0x006E58A0
+#endif
     CScriptConversationManager* Manager;                     // +0x00
     long                        ConversationIndex;           // +0x04
     unsigned char               PeopleInConversation[0xc];   // +0x08 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
@@ -27,15 +39,15 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CScriptConversation) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, Manager) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, ConversationIndex) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, PeopleInConversation) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, Conversation) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, CurrentLine) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, FramesLeftBeforeNewLine) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, SoundIn2D) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, StartedCurrentLineSpeech) == 0x29);
-FABLE_STATIC_ASSERT(offsetof(CScriptConversation, PlayDuringCutScenes) == 0x2a);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CScriptConversation) == 0x2c);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CScriptConversation, Manager) == 0x0);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CScriptConversation, ConversationIndex) == 0x4);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CScriptConversation, PeopleInConversation) == 0x8);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CScriptConversation, Conversation) == 0x14);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CScriptConversation, CurrentLine) == 0x20);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CScriptConversation, FramesLeftBeforeNewLine) == 0x24);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CScriptConversation, SoundIn2D) == 0x28);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CScriptConversation, StartedCurrentLineSpeech) == 0x29);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CScriptConversation, PlayDuringCutScenes) == 0x2a);
 
 #endif // FABLE_ENGINE_CSCRIPTCONVERSATION_H

@@ -10,43 +10,20 @@
 // Layout (PDB): Conversations (map) +0, NextConversationIndex, AlwaysShowText; the retail STLport map is 12 bytes. The
 // engine header CScriptConversation.h gives the value type (only its address is used here).
 // Shape: `iterator it = find(conversation)` constructs straight into the frame slot, `end()` is the header node.
+// Name fix (NF185, 2026-11-20, q4388): the invented CConversationMap / SConversationNode / CScriptConversationCalls stand-ins are
+//   replaced in place by the STLport map<long, CScriptConversation> (stlport/fable_map.h; its member-template find<long> 0x006E6990
+//   declared only, FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL) and the PDB members of engine/CScriptConversation.h
+//   (FABLE_RETAIL_CSCRIPTCONVERSATION_ADDTOCONVERSATION: they take the thing / line by reference).
+#define FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE_DECL
+#define FABLE_RETAIL_CSCRIPTCONVERSATION_ADDTOCONVERSATION
+#include "stlport/fable_map.h"
 #include "engine/CScriptConversation.h"
 
 class CThing;
 class CCharString;
 
-// The conversation itself: the engine header's layout plus the two members this forwarder calls.
-struct CScriptConversationCalls : CScriptConversation {
-    void AddPersonToConversation(CThing* person);                                    // 0x006E5790
-    void AddLineToConversation(CThing* speaker, CThing* listener, const CCharString* line,
-                               bool playDuringCutScenes);                            // 0x006E58A0
-};
-
-struct SConversationNode {                     // STLport _Rb_tree_node<pair<const long, CScriptConversation> >
-    long                     _M_color;         // +0x00
-    SConversationNode*       _M_parent;        // +0x04
-    SConversationNode*       _M_left;          // +0x08
-    SConversationNode*       _M_right;         // +0x0c
-    long                     first;            // +0x10
-    CScriptConversationCalls second;           // +0x14
-};
-struct CConversationMap {                      // STLport map<long, CScriptConversation>: header node, count, comparator
-    struct iterator {
-        SConversationNode* _M_node;
-        iterator() {}
-        iterator(SConversationNode* node) : _M_node(node) {}
-        SConversationNode* operator->() const { return _M_node; }
-        bool operator!=(const iterator& other) const { return _M_node != other._M_node; }
-    };
-    SConversationNode* _M_header;              // +0x00
-    unsigned long      _M_node_count;          // +0x04
-    unsigned long      _M_key_compare;         // +0x08
-    iterator find(const long& key);            // 0x006E6990
-    iterator end() { return iterator(_M_header); }
-};
-
 class CScriptConversationManager { public:
-    CConversationMap Conversations;            // +0x00
+    std::map<long, CScriptConversation> Conversations;   // +0x00
     long             NextConversationIndex;    // +0x0c
     bool             AlwaysShowText;           // +0x10
     void AddPersonToConversation(long conversation, CThing* person);
@@ -57,7 +34,7 @@ class CScriptConversationManager { public:
 void CScriptConversationManager::AddLineToConversation(long conversation, CThing* speaker, CThing* listener,
                                                        const CCharString* line, bool playDuringCutScenes)
 {
-    CConversationMap::iterator it = Conversations.find(conversation);
+    std::map<long, CScriptConversation>::iterator it = Conversations.find(conversation);
     if (it != Conversations.end())
-        it->second.AddLineToConversation(speaker, listener, line, playDuringCutScenes);
+        it->second.AddLineToConversation(*speaker, listener, *line, playDuringCutScenes);
 }
