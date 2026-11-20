@@ -1409,3 +1409,4 @@ against CODAApi.lib, or stay compiled C++?
   
   Conclusion: retail 0x00B0F08B behaves as four independent scalar moves into the address of particle.Orientation. No
   evidence-backed spelling found. Recheck if a 2005-era CParticle / CQuaternion text turns up.
+  (2026-11-20 note: the "Account B scratch w26/..." files cited by B's p25 entries above are committed in rebuild/candidates/manual/pending/2026-11-20_p25_open/.)

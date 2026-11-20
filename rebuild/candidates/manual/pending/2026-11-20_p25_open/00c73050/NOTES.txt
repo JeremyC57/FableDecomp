@@ -1,0 +1,14 @@
+0x00C73050 CAudioSource::UpdateStream (libpk OpenAL source, slot 9; descriptive names, local models as every landed CAudioSource row) -- p25A 2026-11-20, PARKED
+Draft hand690: DIFFER(673v672), ebx/ebp swap (sound vs queue) + edi/edx item temp; two __forceinline (GetSourcei, IsPlaying).
+Found:
+ - v8: the stop path written `{ m_current = 0; return 0; }` instead of `goto stopped` fixes the ebx/ebp swap (sound ebp, queue ebx, as retail)
+   and the byte count: DIFFER(672v672), 21 hunks; every remaining hunk but one is the g.py masking of g_AudioContext member displacements.
+ - /d2inlT150 replaces both __forceinline (GetSourcei and IsPlaying plain inline): same bytes as v8. T100 525 B, T300 723 B (ablation).
+   Without the IsPlaying wrapper (z1, state local in the function) T150 gives 687 B (the last SourcePlay is expanded too).
+ - Residue (3 instructions): the tail item temp is edi in ours, edx in retail (0x00C731D2 `mov edx,[edx+ecx*4]`, 0x00C731D5 `test edx,edx`,
+   0x00C731F4 `and eax,edx`).
+Not moving the temp (all 672v672 / edi): GetTail()/Peek() accessors (w1), split stop ifs (w2), if/else assignment (w3), positive
+ condition with else (x1), else-assignment (x2), `!` forms (x4), named item local after IsEmpty (k1), `capacity == 0 ? 0 : item` (k2),
+ AdvanceBuffer-style CircularQueue& + positive condition (r1, the landed 0x00C5B300 spelling); named item local before IsEmpty (x3) 673 B.
+ Flags /Ob1, /Ox, /O2 /Ob1 with T150: same.
+Best source: ref/00c73050/00c73050_best.cpp (= src/00c73050_y4.cpp; Flags: /d2inlT150, no __forceinline).

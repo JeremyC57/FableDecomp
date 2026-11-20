@@ -1,0 +1,53 @@
+p25C 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData -- working notes
+env: source $W/env.sh  (W=$S/w26/p25C, overlay $W/hdr)
+Progress: v2 (Codex port) 3973 -> /Gr 3647 -> VECTOR_C (visible operator=) 3417 -> Codex max expr 3481 -> ISNONZERO_ZYX 3481 diffins 188 (v5_ISNONZERO_ZYX / v6).
+Key findings:
+ - TU is /Gr (row flag): makes vector<C3DVectorWord> overflow sc=94 (call) and CQuaternion overflow sc=44 (expand) naturally; no inline device needed.
+ - FABLE_RETAIL_STLP_VECTOR_C (operator= body visible, not captured) keeps unique_rotations._M_finish in ebx across Equals call.
+ - plain vector(n) (no N_OUTOFLINE) is called naturally.
+ - Ego_d: ETrackMode enum (TRACKMODE_*), bool status line 1074 (7B), SetupIdentityFlag() line 1290 (11B), param names: SetScaling(s), operator==(rhs), ctor(vect), GetMatrix(index).
+ - GetMaximumAbsoluteComponent: one line 244B (Ego_d), Codex expanded ternary text reproduces retail's re-evaluated compare.
+Residues at v6: (1) CQuaternion overflow uninit copy: retail lea edx,[eax+ecx]/dst ecx vs ours add ecx,eax/dst edx (0xA4F41C);
+ (2) position compressed_size schedule (0xA4F7DF..0xA4F810); (3) scaling magnitude sum order: retail X(mem)^2+Z^2+Y^2, ours Z^2+Y^2+X^2 (0xA4FA2D);
+ (4) alignment pads that follow from size shifts.
+Header overlay (add-only): C3DAnimationSequenceData.h (FROMFILEDATA: ETrackMode, GetMaximumAbsoluteComponent, SetupIdentityFlag decl;
+ VECTORWORD_FROMVECTOR class), C3DKeyframe.h (FROMMATRIX), C3DAnimFileSequenceChunk.h (GETTERS), CQuaternion.h (EQUALS).
+
+== Bounded round (coordinator advisor angle), 2026-11-20 ==
+Best source: src/v6.cpp (/Gr, overlay hdr/ add-only; hdr/engine/C3DVector.h holds only DIAG_* diagnostic opt-ins -- drop it before any batch).
+1. Byte accounting (v6, 3481v3491): residue (1) -1 B (add vs lea); residue (2) +1 B; residue (3) 0 B (same instructions reordered);
+   the rest are loop-alignment pads that follow from (1)/(2) (0xA4F617 -9, 0xA4F6A9 7B lea vs nop, 0xA4F8A4 +8, 0xA4F933 +1, 0xA4FBE9 -7).
+   No hidden fourth residue.
+2. COMDATs vs retail (tools/cmpcomdat.py): vector<C3DVectorWord>::_M_insert_overflow 0x00A55070 SAME, operator= CQuaternion 0x00A54BB0 SAME,
+   operator= C3DVectorWord 0x00A54CB0 SAME. Retail's out-of-line CQuaternion copies call __uninitialized_copy 0x00A51BE0 (landed, same
+   loop text as our header), so the library text is right; residue (1) belongs to the expansion.
+3. Residue (3) is not in SetupIdentityFlag (that is 0xA4FC83). FableWin.exe is not on this machine (fwcalls impossible); the callee TSV
+   has no entry for this proc. Ego_d's revision of the position/scaling ==1 branches is different code (line 1199 15 B + 1201 8 B + 1203 5 B:
+   `position_track = unique_positions; paletted_position_track.clear(); else`), so Ego_d cannot calibrate those blocks.
+4. SYMBOL-NUMBER MEASUREMENT (tmp/var2/p1..p9 = N dummy `float diag_padK = 0.0f; (void)diag_padK;` after bone_name, diagnostic only):
+   p1,p2: unchanged (3481, 188). p3,p4: 3475, diffins 165 -- residues (2) AND (3) both gone, but two new load-order hunks
+   (0xA4F75D `mov ebp,[esp+50h]` hoisted above the jb, 0xA4FC1D / 0xA4FC4B `mov ebx,[esp+50h]` moved). p5,p6: (3) gone, (2) stays.
+   p7,p8: (2),(3) stay, scaling compressed-size block flips. Residue (1) never moves (1..9).
+   => (2) and (3) are c2 commutative-operand key ties (2026-11-20_c2_symbol_order kit: hash16 from local-pool symbol numbers), so the
+   fix is the original symbol count of the expanded helpers (Ego_d/STLport-shaped texts), not a spelling of the residue sites.
+   Also: explicit `C3DVector d = ...; float s = d.X*d.X; s += d.Z*d.Z; s += d.Y*d.Y;` (tmp/var2/m1) or `sqrt(d.Y*d.Y+d.Z*d.Z+d.X*d.X)` (m2) fixes (3) alone.
+Resume: run the kit's sym.sh/fm.py on v6 to read the symbol numbers of the position compressed-size subtrees and the scaling
+difference fields, then find which helper texts (GetMaximumAbsoluteComponent, C3DVectorWord ctor/==, GetBoneName, IsNonZero,
+GetMagnitude, CArray/STLport bodies) differ in local / return-symbol count from their debug shape. Residue (1) needs the temporaries pool.
+
+== 2026-11-20 reserved rows (p25C) ==
+Row 1 0x007BD2D1 CTCShotDefinitionThrow::OnSubShotTrigger: DONE RELOCATION_MATCH, batch $S/w26/p25C/batches/007bd2d1 (no flag, no header change;
+  FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ + GETDEF_GLOBAL_BODY + CDEFSTRING_OUTOFLINE_CONVERSION; RHS copy implicit). Workspace r1.
+  Lesson: /d2inlS flips implicit non-trivial copies (sz 46) before CCharString== (sz 39): flag S21-24 vs S25; use the forceinline == opt-in.
+  Lesson: mutants.tsv old-text must not first-match a comment (Inferred lines).
+Next: row 2 0x00E5E350 CV_BodyGuardScript::HenchmanCommentary DIFFER(584v585), draft pending/2026-11-13_codex_released/differ/00e5e350.cpp;
+  fresh workspace r2 (env.sh like r1 with W=r2, empty hdr/), regrade the draft first. Then 0x00859EF0, 0x008DBC80.
+Row 2 0x00E5E350 CV_BodyGuardScript::HenchmanCommentary: DONE RELOCATION_MATCH, batch $S/w26/p25C/batches/00e5e350 (while(true) loop + dead post-loop
+  `||CTimer().GetTime()==0` conditional temp (entry flag store) + the draft's mid-body inline_depth(0) region; no flag, no header change). Workspace r2.
+  Lesson: `for(;!false;Game->NewScriptFrame())` un-weights the loop body (c2 f values drop); constant-true loop with the frame call last weights it.
+Next: row 3 0x00859EF0 CCombatActionBase::OnAnimationLoaded DIFFER(1198v1196), draft pending/2026-11-11_linux_handQ8/differ/00859ef0.cpp, workspace r3.
+RESUME POINT (handed back 2026-11-20 after rows 1-2): row 3 0x00859EF0 set up in $S/w26/p25C/r3 (env.sh, tools link, oracle_override 1196 B,
+  draft copied to r3/tmp/d0_draft.cpp, Ego_d locals in r3/egod_lines/00859ef0.locals.txt: this; ptc_hit_not, combat_anim, pcombat, panim, phand;
+  {ptc_boss} {tc_combat} {direction} {ptc_flourish_target {pkofxdef {things, pcam_man {pspline, pcamera_point}}}}; debug len 2447).
+  The draft (422 lines) is a LOCAL MODEL of every class; it needs the shared-header rewrite first (engine/CCombatActionBase.h declares
+  OnAnimationLoaded at line 100). Not yet regraded on today's headers (rows.tsv not written yet). Row 4 0x008DBC80 untouched.
