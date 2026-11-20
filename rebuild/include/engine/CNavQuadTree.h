@@ -114,6 +114,16 @@ private:
     void ConnectVerticalMapEdge(float this_map_x, float adjacent_map_x, const class CNavigatorManager& nav_manager);     // 0x00A79680
 #endif
     void SetUpRegions(long mapIndex);                                    // 0x00A7A0A0
+#ifdef FABLE_RETAIL_CNAVQUADTREE_JOINNAVIGATIONLAYERS
+    // NF161 opt-in (q4782, row 0x00A77480): Ego_r.pdb 0x00BBD2C0 / FableWin.pdb 0x03291790 ?JoinNavigationLayers@CNavQuadTree@@AAEXXZ (private).
+    // Declaration only.
+    void JoinNavigationLayers();                                         // 0x00A77480
+#endif
+#ifdef FABLE_RETAIL_CNAVQUADTREE_VERIFYTRANSITIONPOINTS
+    // NF161 opt-in (q4782, row 0x00A77500): Ego_r.pdb 0x00BBD380 / FableWin.pdb 0x03291A20 ?VerifyTransitionPoints@CNavQuadTree@@ABEXXZ
+    // (private const; Ego_r donor order JoinNavigationLayers / VerifyTransitionPoints = retail 0x00A77480 / 0x00A77500). Declaration only.
+    void VerifyTransitionPoints() const;                                 // 0x00A77500
+#endif
 };
 FABLE_STATIC_ASSERT_AT(89, sizeof(CNavQuadTree) == 0x88);
 FABLE_STATIC_ASSERT_AT(90, offsetof(CNavQuadTree, MapPos) == 0x7);

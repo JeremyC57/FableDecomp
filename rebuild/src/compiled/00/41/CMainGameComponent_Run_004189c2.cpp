@@ -24,6 +24,9 @@
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for '...'`, defining rows named by agentFAM09):
 //   0x013B865C GInputFileName (global; initializer 0x01219F60), was g_EventPackageFileName.
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; was the descriptive extern ?g_pMemoryAllocator@@3PAVCMemoryAllocator@@A on a row-local model.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #pragma optimize("y", off)
@@ -75,10 +78,11 @@ class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();  // 0x0040D2A0
     void Apply();                                  // 0x0040BC80
 };
-class CMemoryAllocator { public:
-    void ConsolidateFreeAreas();                   // 0x009F2660
-    void ClearPerformanceStats();                  // 0x009F26B0
-};
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_CONSOLIDATEFREEAREAS
+#define FABLE_RETAIL_CMEMORYALLOCATOR_CLEARPERFORMANCESTATS
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was a row-local CMemoryAllocator + extern g_pMemoryAllocator
 // Naming (NF129, 2026-11-20, q4289): CSystemManager::Update returns ESystemReturn (Ego_r.pdb 0x00AF4520 + FableWin.pdb 0x02F8AB00
 //   ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ; GFPlayFullScreenXBoxMovie 0x006286F0 binds it); respelled in place in the local
 //   CSystemManager model, the enum from engine/CSystemManager.h's partial mode FABLE_RETAIL_CSYSTEMMANAGER_ESYSTEMRETURN_ONLY.
@@ -102,7 +106,6 @@ struct CNetworkClient { void Start(); };           // 0x004AE9C0 (empty)
 struct CRoughFrameCounter { long _a, _b; void NewFrame(); };   // 0x009F8BA0
 class CGameComponent;
 extern CDisplayManager* GPDisplayManager;         // 0x013B8390
-extern CMemoryAllocator* g_pMemoryAllocator;       // 0x013CAA90
 extern bool g_LoadEventPackages;                   // 0x013B85F6
 extern bool g_SaveEventPackages;                   // 0x013B85F5
 extern CWideString GInputFileName;         // 0x013B865C
@@ -160,8 +163,8 @@ bool CMainGameComponent::Run(CGameComponent** next)
     }
     CUserProfileManager::Get().Apply();
     PDisplayEngine->Engine3D->SetOption(0xc, 20.0f);
-    g_pMemoryAllocator->ConsolidateFreeAreas();
-    g_pMemoryAllocator->ClearPerformanceStats();
+    CMemoryAllocator::Get()->ConsolidateFreeAreas();
+    CMemoryAllocator::Get()->ClearPerformanceStats();
     while (!Quit) {
         GFFrameHook();
         CurrentFrameStartGameTime = GetCurrentGameTime();

@@ -14,6 +14,11 @@
 // expression (dword constant) passed as a double; the text line is built right to left and never used (its consumer is
 // compiled out in retail).  Frame: the biased /Os frame `lea ebp,[esp-0C0h]` comes from `optimize("s", on)` alone -- adding
 // `optimize("y", off)` gives a plain `mov ebp,esp` frame (GOTCHAS chunk 247/471).
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; the dump hook 0x009F2080 is ?SaveStackMemoryTrackerLog@CMemoryAllocator@@QAEXPBD@Z (Ego_r.pdb /
+//   FableWin.pdb; Ego_r donor order IsAllocatorFixedSize / SaveStackMemoryTrackerLog = retail 0x009F2060 / 0x009F2080). Was the row-local
+//   ?DumpLog@CMemoryAllocator@@QAEXPBD@Z on ?g_pGlobalAllocator@@3PAVCMemoryAllocator@@A.
 #pragma optimize("s", on)
 #include <stddef.h>
 struct _MEMORYSTATUS {
@@ -40,11 +45,10 @@ CCharString operator+(const char* lhs, const CCharString& rhs);          // 0x00
 CCharString operator+(const CCharString& lhs, const char* rhs);          // 0x0099F600
 CCharString operator+(const CCharString& lhs, const CCharString& rhs);   // 0x0099F570
 
-class CMemoryAllocator {
-public:
-    void DumpLog(const char* fileName);                                 // 0x009F2080 (empty in retail)
-};
-extern CMemoryAllocator* g_pGlobalAllocator;                            // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_SAVESTACKMEMORYTRACKERLOG
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was a row-local CMemoryAllocator (DumpLog) + extern g_pGlobalAllocator
 
 double GFGetTime();                                                     // 0x009E1BC0
 extern bool   g_bLogMemoryUse;                                          // 0x013B85F1
@@ -64,7 +68,7 @@ void GFLogMemoryUse()
         CCharString text = "Mem use log at " + GFFloatToCharString(now, 6) + " is " + GFFloatToCharString(usedMB, 6);
         char fileName[256];
         sprintf(fileName, "Memlog%4d.log", g_MemLogIndex);
-        g_pGlobalAllocator->DumpLog(fileName);
+        CMemoryAllocator::Get()->SaveStackMemoryTrackerLog(fileName);
         ++g_MemLogIndex;
     }
 }

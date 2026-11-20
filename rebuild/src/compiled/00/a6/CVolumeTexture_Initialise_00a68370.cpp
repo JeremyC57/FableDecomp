@@ -17,6 +17,9 @@
 //   up front; X lands in the push-ecx slot, Y in the dead `extents` slot, Z in edi. `if (no_levels != 1) no_levels = 1;`
 //   gives retail's `cmp ebx,1 ; je ; mov ebx,1`; the device is read as `PDisplayManager.Data->D3DDevice` (operator-> adds `add eax,60h`). Sizeof() (Ego_r `?Sizeof@CVolumeTexture@@QBEKXZ`) is the landed
 //   InitialiseFromPreallocatedVolumeTexture's inline size body.
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; was the descriptive extern ?g_pGlobalAllocator_013caa90@@3PAVCMemoryAllocator@@A on a row-local model.
 #include "fable_compiler.h"
 struct IDirect3DDevice9;
 struct IDirect3DVolumeTexture9;
@@ -56,11 +59,10 @@ public:
 };
 enum EVolumePool { };
 
-class CMemoryAllocator {
-public:
-    unsigned long GetAllocationSize(void* block);       // 0x009F2390
-};
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_GETALLOCATIONSIZE
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was a row-local CMemoryAllocator + extern g_pGlobalAllocator_013caa90
 extern unsigned long g_VolumeTextureMemoryBytes;        // 0x013D28E0
 
 FABLE_FORCEINLINE unsigned long __fastcall GFGetTopBit(unsigned long value)
@@ -96,7 +98,7 @@ public:
         unsigned long size = 0;
         if (PD3DVolumeTexture) {
             if (PData)
-                size = g_pGlobalAllocator_013caa90->GetAllocationSize(PData) + 4;
+                size = CMemoryAllocator::Get()->GetAllocationSize(PData) + 4;
             else
                 return ByteLength + 4;
         }

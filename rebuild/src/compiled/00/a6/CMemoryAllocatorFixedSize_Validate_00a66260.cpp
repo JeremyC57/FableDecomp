@@ -2,16 +2,21 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A66260, length 64 bytes.
 // Leaf: Validate
 // Callees: 0x009F1F40 (thiscall on the global allocator @ 0x013CAA90, one argument). Shape: the area in esi, `this` in edi, the loop head aligned with a `nop`, `ret 4`.
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; the empty check 0x009F1F40 is ?InternalValidateArea@CMemoryAllocator@@QAEXPAX@Z (Ego_r.pdb / FableWin.pdb, public; Ego_r donor order
+//   GetNoAllocations / SetCurrentTrackingID / GetCurrentTrackingID / InternalValidateArea / InternalValidate = retail 0x009F1F10 / 1F20 / 1F30 /
+//   1F40 / 1F50 by body). Was ?ValidateBlock@CMemoryAllocator_00a66260@@QAEXPAX@Z on ?g_pGlobalAllocator_013caa90@@3PAUCMemoryAllocator_00a66260@@A.
 struct SFixedChunk_00a66260 {                      // a chunk of the fixed-size allocator: next at +8, the first area at +0x14
     unsigned char      _pad00[8];
     SFixedChunk_00a66260* m_pNext;                    // +0x08
     unsigned char      _pad0c[8];
     unsigned char*     m_pFirstArea;               // +0x14
 };
-struct CMemoryAllocator_00a66260 {
-    void ValidateBlock(void* block);               // 0x009F1F40
-};
-extern CMemoryAllocator_00a66260* g_pGlobalAllocator_013caa90;   // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_INTERNALVALIDATEAREA
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was the stand-in CMemoryAllocator_00a66260 + extern g_pGlobalAllocator_013caa90
 
 struct CMemoryAllocatorFixedSize {
     unsigned char _pad00[0xc2c];
@@ -23,7 +28,7 @@ void CMemoryAllocatorFixedSize::Validate(SFixedChunk_00a66260* chunk)
 {
     unsigned char* area = chunk->m_pFirstArea;
     while (area) {
-        g_pGlobalAllocator_013caa90->ValidateBlock(area + 4);
+        CMemoryAllocator::Get()->InternalValidateArea(area + 4);
         unsigned char next = area[1];
         if (next == 0xff)
             break;

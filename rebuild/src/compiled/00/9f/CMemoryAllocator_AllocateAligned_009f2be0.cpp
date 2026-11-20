@@ -8,6 +8,9 @@
 // Globals: the allocator @ 0x013CAA90.
 // Shape: the inline static Allocate(size, type) (create-on-demand test before the lock, the InternalAllocate result kept in edi
 //   across the leave) followed by the align-up `(block + alignment + 3) & ~(alignment - 1)` (`dec esi ; not esi ; and`).
+// Naming (NF161, 2026-11-20, q4196): the static at 0x013CAA90 respelled in place in the row's existing local model to the PDB name
+//   ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A (protected static; Ego_r.pdb / FableWin.pdb / Ego_d.pdb data symbol, engine/CMemoryAllocator.h),
+//   was ?Allocator@CMemoryAllocator@@1PAV1@A (no such member in any PDB).
 #include "fable_compiler.h"
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void* section);   // IAT 0x0143FE10
@@ -17,17 +20,17 @@ class CMemoryAllocator {
 protected:
     unsigned char _body[0x49c];                       // PDB CMemoryAllocator is 0x49c bytes, no vtable
     void* InternalAllocate(long size, unsigned long type, bool flag);   // 0x009F2A40
-    static CMemoryAllocator* Allocator;               // 0x013CAA90
+    static CMemoryAllocator* PMemoryAllocator;               // 0x013CAA90
     static void __fastcall Create();                  // 0x009F2870
     static void EnterSynchronisation() { EnterCriticalSection(g_allocatorLock); }
     static void LeaveSynchronisation() { LeaveCriticalSection(g_allocatorLock); }
 public:
     static FABLE_FORCEINLINE void* Allocate(unsigned long size, unsigned long type)
     {
-        if (!Allocator)
+        if (!PMemoryAllocator)
             Create();
         EnterSynchronisation();
-        void* block = Allocator->InternalAllocate(size, type, false);
+        void* block = PMemoryAllocator->InternalAllocate(size, type, false);
         LeaveSynchronisation();
         return block;
     }

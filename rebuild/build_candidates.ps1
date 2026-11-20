@@ -199316,16 +199316,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b50ee0'
-        Module = 'CWeatherState'
-        Source = '00/b5/CWeatherState_OverrideRain_00b50ee0.cpp'
-        TestSource = '00/b5/CWeatherState_OverrideRain_00b50ee0_test.cpp'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_OverrideRain_00b50ee0.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_OverrideRain_00b50ee0_test.cpp'
         PassPattern = '00b50ee0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b50f40'
-        Module = 'CWeatherState'
-        Source = '00/b5/CWeatherState_OverrideSnow_00b50f40.cpp'
-        TestSource = '00/b5/CWeatherState_OverrideSnow_00b50f40_test.cpp'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_OverrideSnow_00b50f40.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_OverrideSnow_00b50f40_test.cpp'
         PassPattern = '00b50f40_TEST PASS'
     }
     [pscustomobject]@{

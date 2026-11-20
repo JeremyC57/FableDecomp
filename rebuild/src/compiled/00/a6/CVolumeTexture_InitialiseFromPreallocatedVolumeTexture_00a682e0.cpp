@@ -10,6 +10,9 @@
 // ByteLength arm: in the first inline the early return joins (`mov eax,[esi+8] ; add eax,4` falls into the add), in the
 // second -- the last statement before `return true` -- VC7.1 duplicates the tail for that arm (`mov esi,[esi+8] ; mov eax,
 // [g] ; add esi,4 ; add eax,esi ; mov [g],eax ; mov al,1 ; ret 4`). A single `?:` joins both; all-return forms duplicate both.
+// Naming (NF161, 2026-11-20, q4196): the global allocator 0x013CAA90 is the protected static ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A
+//   (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), reached through the public inline ?Get@CMemoryAllocator@@SIPAV1@XZ (FableWin.pdb / Ego_d.pdb) of
+//   the shared engine/CMemoryAllocator.h; was the descriptive extern ?g_pGlobalAllocator_013caa90@@3PAVCMemoryAllocator@@A on a row-local model.
 struct D3DVOLUME_DESC_Local { unsigned long Format, Type, Usage, Pool, Width, Height, Depth; };
 struct IDirect3DVolume9;
 struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResource9 + IDirect3DBaseTexture9 slots
@@ -28,10 +31,10 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
     virtual unsigned long __stdcall GetLOD();
     virtual unsigned long __stdcall GetLevelCount();                         // slot 13 (+0x34)
 };
-class CMemoryAllocator { public:
-    unsigned long GetAllocationSize(void* block);  // 0x009F2390
-};
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
+#define FABLE_RETAIL_CMEMORYALLOCATOR_VARIABLESIZE
+#define FABLE_RETAIL_CMEMORYALLOCATOR_GETALLOCATIONSIZE
+#include "rebuild_abi.h"
+#include "engine/CMemoryAllocator.h"   // NF161 (q4196): was a row-local CMemoryAllocator + extern g_pGlobalAllocator_013caa90
 extern unsigned long g_GraphicsMemoryBytes;        // 0x013CAAB0
 extern unsigned long g_VolumeTextureMemoryBytes;   // 0x013D28E0
 struct CBase {
@@ -55,7 +58,7 @@ class CVolumeTexture { public:                            // vtable 0x0129DC18, 
         unsigned long size = 0;
         if (PD3DVolumeTexture) {
             if (PData)
-                size = g_pGlobalAllocator_013caa90->GetAllocationSize(PData) + 4;
+                size = CMemoryAllocator::Get()->GetAllocationSize(PData) + 4;
             else
                 return ByteLength + 4;
         }

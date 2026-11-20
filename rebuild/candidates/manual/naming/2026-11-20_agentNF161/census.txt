@@ -1,0 +1,107 @@
+== q4196 013caa90 claim: ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A refs 37
+    25 OK  ?PMemoryAllocator@CMemoryAllocator@@1PAV1@A 00416005 009a1660 009a3640 009a4350 009af7a0 009c5310 009c6020 009c6d60 009d52d0 009d61f0 00a02190 00a02220 ...
+     3     ?Allocator@CMemoryAllocator@@1PAV1@A 009f2870 009f2b20 009f2be0
+     3     ?g_pGlobalAllocator_013caa90@@3PAVCMemoryAllocator@@A 00a67f60 00a682e0 00a68370
+     1     ?g_pGlobalAllocator@@3PAVCMemoryAllocator@@A 00415e85
+     1     ?g_iface@@3PAUIface@@A 00416047
+     1     ?g_pMemoryAllocator@@3PAVCMemoryAllocator@@A 004189c2
+     1     ?g_pGlobalAllocator_013caa90@@3PAUCMemoryAllocator_00a65330@@A 00a65330
+     1     ?g_pGlobalAllocator_013caa90@@3PAUCMemoryAllocator_00a66260@@A 00a66260
+     1     ?g_pGlobalMemoryManager@@3PAUCGlobalMemoryManager@@A 00a663d0
+== q6167 00a0b560 claim: ?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z refs 11
+     9 OK  ?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z 0042df9e 00435530 00487570 00494900 006286f0 0069e980 00b2fc50 00b665e0 00b72180
+     2     ?SetViewport@CRenderManager@@QAEXABVC2DBoxF@@@Z 00499880 00b7ad20
+== q4436 00509a20 claim: ?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z refs 2
+     2 OK  ?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z 0050a650 006b2960
+== q4479 005daaa0 claim: ?GetDamage@CTCWeapon@@QBEMXZ refs 9
+     9 OK  ?GetDamage@CTCWeapon@@QBEMXZ 005c4769 005c7913 005c7b10 005c7d0d 005c7f07 005c8459 005c9a95 005cacb9 00838bc0
+== q4527 004fc600 claim: ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z refs 29
+    29 OK  ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z 004fc6b0 0063a300 0063a390 0063a420 0063a540 0063a660 0063a6e0 0063a760 0063b3f0 0063d0a0 0063d4a0 0063d8a0 ...
+== q4549 00a5d5f0 claim: ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z refs 31
+    28 OK  ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z 009d9a30 00b2cb40 00b52250 00b5a1d0 00b5c460 00b5f090 00b625e0 00b69000 00b73760 00b86c00 00b891b0 00b8b630 ...
+     2     ?GetVertexShader@CShaderResource@@QBEPAVCVertexShader@@PAV2@ABVCCharString@@@Z 00bca770 00bcc5f0
+     1     ?GetVertexShader@CShaderResourceCallView@@QBEPAVCVertexShader@@PAV2@ABVCCharString@@@Z 00b90270
+== q4550 00a5d720 claim: ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@ABVCCharString@@@Z refs 23
+    23 OK  ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@ABVCCharString@@@Z 00b33b50 00b52250 00b5a1d0 00b5c460 00b5f090 00b625e0 00b69000 00b73760 00b86c00 00b891b0 00b8b630 00b8d780 ...
+== q4599 00b50ee0 claim: ?OverrideRain@CEngineWeatherRenderer@@QAEXM@Z refs 1
+     1 OK  ?OverrideRain@CEngineWeatherRenderer@@QAEXM@Z 00b24010
+== q4600 00b50f40 claim: ?OverrideSnow@CEngineWeatherRenderer@@QAEXM@Z refs 1
+     1 OK  ?OverrideSnow@CEngineWeatherRenderer@@QAEXM@Z 00b24020
+== q4647 004feec0 claim: ?UnloadRegion@CWorldMap@@IAEXJ_N@Z refs 4
+     3 OK  ?UnloadRegion@CWorldMap@@IAEXJ_N@Z 00501450 00502500 005063e0
+     1     ?pfl_helper@@YGXPAXH@Z 004ff560
+== q4661 00a0aa80 claim: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z refs 5
+     5 OK  ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z 009d9c80 009da9f0 00b4f510 00f38930 00f39730
+== q4662 00a5d4d0 claim: ?Initialise@CShaderResource@@AAEXAAVCShaderRenderManager@@@Z refs 2
+     2     ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z 0098acf0 0098b860
+== q11912 01396dc8 claim: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA refs 29
+    26 OK  ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA 00ab83a0 00b4fc40 00b555a0 00b64fa0 00b677d0 00b6fa40 00b70230 00b70a90 00b72180 00b751f0 00b75ca0 00b761d0 ...
+     1     ?g_renderStateValue_01396dc8@@3KA 00b76bc0
+     1     (none: DIFFER(198v2654)) 00be6f70
+     1     (none: DIFFER(316v4431)) 00bf4570
+== q4668 01396f9c claim: ?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA refs 1
+     1     ?g_renderStateDefault_01396f9c@@3KA 00bb8090
+== q4782 00a770b0 claim: ?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z refs 6
+     4 OK  ?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z 00a14f70 00a77570 00a793d0 00a79680
+     2     ?GetNodeAt@CNavQuadTree@@QBEPAVCANavQuadTreeNode@@PBUC2DVector@@J@Z 00a77480 00a77500
+== q4785 00a7af60 claim: ?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@AAVCASuspendableProcess@@@Z refs 1
+     1     ?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@PAVCASuspendableProcess@@@Z 00a157c0
+== q4787 00a76320 claim: ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ refs 6
+     3 OK  ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ 00a15140 00a1c010 00a472f0
+     2     _CUnprovenFloatProvider_00A76320 012242b0 01224430
+     1     ?GetHalfCellSize_00a76320@CNavQuadTree@@SAMXZ 00a16050
+== q4826 00b51ad0 claim: ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ refs 3
+     2 OK  ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ 00b51ea0 00b52990
+     1     ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@QAEXXZ 00b51f00
+== q4988 0076d2f0 claim: ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z refs 25
+    17 OK  ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z 006a7600 0072b260 0076d2f0 0078d250 0078e7c0 00793cc0 007a0d90 007c36a0 007c4430 007c9180 007f59f0 008031e0 ...
+     4     ?AreThingsEnemies@@YI_NPBVCThing@@0@Z 0064a1ae 0072b160 0082b630 009098e0
+     2     ?AreThingsEnemies@@YI_NPAVCThing@@0@Z 007f9e70 0093c4e0
+     1     @callee_76d2f0@8 006a7550
+     1     ?AreThingsEnemies@CTCEnemy@N00807b70@@SI_NPAUCThing@2@0@Z 00807b70
+== q4967 0097e380 claim: ?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementTyp refs 30
+    22 OK  ?AIAction_MoveToThingProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@MAA_NW4EMovementType@@_N444M@ 0090c540 0090e5d0 00910df0 00911300 00915350 00922010 00926060 00933db0 009341c0 00934410 009378f0 0093c030 ...
+     2     ?AIAction_MoveToThingProximity@CAIStateGroupBase@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@MPA_NJ_N222M@Z 0090eec0 0094bb20
+     1     ?AIAction_MoveToThingProximity@CAIStateGroupBaseA@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@MPA_NW4EMovementType@@_N444M@Z 00911630
+     1     ?AIAction_MoveToThingProximity@CAIStateGroup_StayNearSchoolU@@QAEJJUCIntelligentPointerConstThing@@MPA_NJ_N222M@Z 00916910
+     1     ?AIAction_MoveToThingProximity@CAIStateGroupBase@@QAEJJUCIntelligentPointerThing@@MPA_NJ_N222M@Z 0093a080
+     1     ?AIAction_MoveToThingProximity@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@MPA_NW4EMovementType@@_N444M@Z 0094f000
+     1     ?AIAction_MoveToThingProximity@CAIStateGroup_BanditKingCharge@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@MABUCMoveOptions@@J_N2222@Z 00961790
+     1     ?AIAction_MoveToThingProximity@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@MAA_NW4EMovementType@@_N444M@Z 009804a0
+== q4968 0097d6f0 claim: ?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z refs 44
+    24 OK  ?AIAction_LookAtThing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@$$CBVCThing@@@@JM@Z 0090c540 0090d030 0090e5d0 00910df0 00911300 00915350 0092ae70 0092afe0 0092fab0 009341c0 00934410 009378f0 ...
+    10     ?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@JM@Z 0090eec0 0090f470 0091e750 009357f0 0093a080 009574d0 00957750 00958000 00959a60 0096ee90
+     6     ?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z 0092a8a0 0092b3e0 009352c0 0095edf0 009621f0 0096fcd0
+     1     ?AIAction_LookAtThing@CAIStateGroupBaseA@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@JM@Z 00911630
+     1     ?AIAction_LookAtThing@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@JM@Z 00956380
+     1     ?AIAction_LookAtThing@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@JM@Z 009804a0
+     1     ?AIAction_LookAtThing@CAIStateGroupBaseL@@QAEJJUCIntelligentPointerConstThing@@JM@Z 00984a20
+== q5129 008fcfb0 claim: ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ refs 7
+     7 OK  ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ 00917130 009378f0 00958840 00972670 00972830 00972f30 0097fea0
+== q11663 0076c850 claim: ?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z refs 2
+     2 OK  ?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z 0089c100 008a7ee0
+== q11685 005da950 claim: ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ refs 4
+     3     ?IsAnalogueLoading@CTCWeapon@@QAE_NXZ 0068eb20 0068f9d0 00789ff0
+     1 OK  ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ 0078a690
+== q11688 005daa40 claim: ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ refs 29
+    28 OK  ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ 0062bef0 0068eb20 0068f9d0 006a1620 006a1e00 006e9f60 006ea450 006eb390 006ed510 00789e60 00789ff0 0078a2c0 ...
+     1     ?IsMissileWeapon@CTCWeapon@@QBE_NXZ 00715110
+== q11807 009a4350 claim: ?Deallocate@CMemoryAllocator@@SIXPAX@Z refs 0
+== q11898 00a0aa70 claim: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z refs 6
+     3 OK  ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z 009fa450 00a685e0 00ac1fb0
+     1     ?VertexBufferReleased@CRenderManagerCore@@QAEXPAUIDirect3DVertexBuffer@@M@Z 00a63200
+     1     ?VertexBufferLocked@CRenderManagerCore@@QAEXPAUIDirect3DVertexBuffer@@M@Z 00a63240
+     1     ?RemoveTexture@CRenderStatistics@@QAEXPAXM@Z 00a68060
+== q11906 00a0ad40 claim: ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z refs 4
+     3 OK  ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z 00b63010 00b70230 00beaca0
+     1     (none: DIFFER(316v4431)) 00bf4570
+== q11907 00a0af40 claim: ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z refs 9
+     8 OK  ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z 009a25d0 009d8cf0 00b5a3f0 00b5af80 00b5ca70 00b5fab0 00bb8750 00bbac60
+     1     ?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z 00bb8090
+== q11929 005dab10 claim: ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z refs 10
+     5 OK  ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z 005dacf0 0062cf90 006aabe0 0072af30 0085ef70
+     3     ?IsUsableBy@CTCWeapon@@QBE_NPAVCThing@@@Z 005dabe0 0073a9f0 008e9950
+     2     ?IsUsableBy@CTCWeapon_Getters@@QBE_NABVCThing@@@Z 005dad10 005dad60
+== q11930 0097f5b0 claim: ?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z refs 2
+     1     ?SetUpPreCalcNav@CAIStateGroupBase@@QAE?AVC3DVector@@ABVCThing@@@Z 0097f690
+     1 OK  ?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z 0097f780
