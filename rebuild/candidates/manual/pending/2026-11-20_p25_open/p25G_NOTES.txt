@@ -1,0 +1,77 @@
+p25G NOTES (Account B), 2026-11-20 -- return pass on 0x00859EF0 / 0x008DBC80 testing the "oversize Ego_d line on discarded bool out-param call" lead.
+Workspaces: r3 (copy of p25E/r3, row 0x00859EF0), r4 (copy of p25E/r4, row 0x008DBC80). env: source rN/env.sh.
+Tools: tools/bigl.py = whole-PDB scan of Ego_d C13 line blocks -> tmp/egod_all_lines.tsv (865,994 lines, 128,448 procs; name via procver.tsv).
+== Step 1 (calibration) ==
+ tmp/landed_big.tsv: 1,139 landed rows (rebuild/src/compiled) whose Ego_d proc has a 380..600 B line. tmp/cands.txt: 436 of them hold a
+ bare discarded getter statement (GetDef/GetTC/PeekTC/GetCameraManager/GetSubDef ...).
+ Hand-mapped: 0x007E3040 CTCCameraCollision::OnCreate: Ego_d 26 = GetDef(...,&def) 404 B, 27 = def->GetSubDef(&CameraCollisionDef) 409 B;
+   landed bare. 0x007EFF80 CTCCarriedActionUseFishingRod::IsThingAbleToFish: 58 = fisher.PeekTC(&ptc_fishing) 466 B, 70 =
+   ...PeekGameCamera()->GetCameraManager(&pcam_man) 520 B (row 1's 1605 = 521); landed bare, matched.
+ In-function control (row 1): used-result GetTC lines (if (PCreature->GetTC(&ptc_boss)) etc., Ego_d 1530/1536) are 26..32 B;
+   discarded ones ~480 B -> the size follows the discard. FableWin's ASSERT (fable_assert.h) is ~450 B at /Od (two CCharString +
+   CWideString temps + DoErrorMessage + IsDebuggerPresent) -> consistent with a VERIFY-like debug check that keeps the call in release.
+ Tightened: 513 landed rows hold >=1 bare discarded out-param getter statement on an oversize-line proc; in 368 of them the number of
+ 380..600 B Ego_d lines equals the number of such statements. None of the 33 FABLE_RETAIL_ASSERT rows puts an arm on a getter statement
+ (asserts in 0x007A1B20 / 0x00507C30 / 0x004A3740 / 0x00BD5C90 / 0x00A78800 are pointer / NaN / index tests; 0x004A3740's 80 arms are a
+ caller-size budget fit, not getter-placed). Step 1 verdict: BARE CALL (no landed spelling of the debug check; it leaves no code).
+== Step 2/3 row 1 0x00859EF0 ==
+ Length delta (1196v1195) lives entirely at 0x0085A1F0..0x0085A208 (hunks address-aligned through 0x0085A1B7, offset 1 from 0x0085A224):
+   retail `mov ecx,[eax+60h]; cmp ecx,ebp; jl; lea edx,[esp+10h]; mov eax,ecx; push edx; push eax` (KnockDownEffects loaded once),
+   ours `cmp [eax+60h],ebp; jl; mov edx,[eax+60h]; ...` = Ego_d 1597 (cond, 52 B) / 1599 (pkofxdef, 17) / 1600 (GetDef, 482). Everything
+   else is length-neutral register naming scattered over 1520..1608 (vptr eax/edx at slots 0x3c/0x128/0x108/0x24, lea temps 1530/1536,
+   GetComponent push 1585, AddTC lea 1594, GetAllThings args 1608, GFRandom lea 1610).
+ Harness controls (tools/vx.py, hunk-set metric v tmp/g_base.txt): v2 = 1222v1196 (+85/-16 hunks, harness sees source); x7/x8 = identical.
+ Lead forms at 1600 (+1605) -- all byte-identical to v5b (105 lines, 0 hunks moved): if(!call){}, bool ok=call;, (void)call,
+   {bool ok=call; FABLE_RETAIL_ASSERT(ok);}, call + FABLE_RETAIL_ASSERT_ARM(pkofxdef.Get()), both sites named / if / if+ARM.
+ Diagnostic only: `long kd` holding KnockDownEffects -> length matches (1196v1196) but 64 new hunks (ebp-zero, test v cmp): not retail.
+ Sweep (diagnostic, never landed): 1..40 dead `int dmyN = N;` at the top -> byte-identical every time. symlog (c2 0x1075A0C5) on 5
+   dummies: _dmy1.._dmy5 = kind-4 #2..#6 and push _phand #4->#9, _pkofxdef -> #18, i.e. each dummy shifts the local pool by +1 and 40
+   covers a full 32-block: the residue does not move. FABLE_RETAIL_ASSERT(this) arms 1..16 at top and at line 1600: only 10..12 change
+   anything, adding 6 new lines at 0x0085A084 (IS_THING_ALIVE/GetPItem cmp order) and fixing none.
+ => row 1 residue is NOT a local-pool symbol tie. PARKED (DIFFER 1195v1196, v5b).
+== Step 2/3 row 2 0x008DBC80 (r4, base v3 = DIFFER 2321v2319, 189 lines) ==
+ Controls: d0 = 2323v2319 (+139/-40 hunks); v3 re-grade identical.
+ Lead forms at Ego_d 4982 (GetTC TCI_ANIMATION, 491 B) and 5125 (GetTC TCI_ENTITY_MODE_MANAGER, 499 B): if(!call){} both, if+ARM both,
+   {bool ok=call; FABLE_RETAIL_ASSERT(ok);} both -> byte-identical (189, 0 hunks moved). (The six single-site lead_<md5> variants were
+   SRC_FAIL from a bash `&` substitution bug; the both-site forms cover them.)
+ Sweep (diagnostic): dead `int dmyN` at the top: k=5, 37, 69 (5 mod 32) remove the 0x008DBE0B Normalise x87 hunk (6 lines, nothing new);
+   k=6..14, 38..40 trade it for a different x87 order (gone 4 new 3); every other k (1..4, 15..36, 64) byte-identical. 5 dummies placed
+   anywhere (before/after line 4982, before the spline pos, before/after direction, after the Normalise) give the same -6: the
+   position does not matter, only the local-pool count mod 32 (the documented c2 operand-key class, symbol number << 5).
+   bool dummies x1..4 after 4982: identical. FABLE_RETAIL_ASSERT(this) arms 1..16 (top / 4982 / 5125): identical; on top of +5 locals,
+   arms 9..16 add 12 new lines.
+ => 0x008DBE0B IS a local-pool symbol tie (needs +5 pool symbols mod 32), but the lead forms supply 0..2, and nothing in any sweep moves the
+   rest (direction frame slot [esp+44h] v [esp+20h] and the up/forward store order 0x008DC1A7..0x008DC1DB / 0x008DC427..0x008DC496).
+   Even with the tie closed the row stays DIFFER(2321v2319, 181 lines). PARKED. Natural sources of +5 (Ego_d-shaped helper bodies, the
+   Ego_d local set -- v3 has 28 named locals, Ego_d 29) are outside the lead; do not fit five dummies.
+== Step 5 row 3 0x0064FDB4 (r5, base p25A d1 = DIFFER 2593v2593, frame 0x164) ==
+ Ego_d 3537/3538 (12 each) drawWidth/drawHeight, 3540 (10) layer=6, 3541 (25) if (IS_THING_ALIVE(PThing)), 3544 (471) =
+   hero->PeekTC(&targeting) [result discarded; Ego_d local ptc_targeting], 3545 (45) if (targeting->GetPTargetedThing()==PThing),
+   3547..3551 the 1.2f scale / iconPos / layer=5. Same class as rows 1-2.
+ bool ok = call; {bool ok=call; FABLE_RETAIL_ASSERT(ok);}; if(!call) ARM; FABLE_RETAIL_ASSERT(targeting) x1,2,3,4,6,8,12,16 after it:
+   all byte-identical to d1 (372 lines, frame 0x164). The step-1 spelling (bare) is what d1 already has; no form opens the 8-byte hole
+   [ebp+38h..3Fh]. Stays deferred.
+== Result ==
+ Lead dead for code (bare call, 368 calibrating landed rows) and dead for symbols at the lead lines in all three rows. Rows 1 and 2 parked
+ at p25E's candidates (r3/src/v5b.cpp, r4/src/v3.cpp); no batch. Carry-overs (CTCFlourishTarget.h CheckRetailLayout pin, 0x00859EC0
+ Fidelity copy, NAME_FIXES r3/NAME_FIXES.tsv) unchanged and still owed whenever row 1 is resumed.
+== Advisor follow-ups (measured) ==
+ Assert-line size: 0x00A78800 CNavSwitchableLeafNode::SetAsBlocked Ego_d line 607 = 407 B is ASSERT(it!=UniqueIDsOpen.end()) (FableWin
+   DoErrorMessage(..., 0x25F = 607), landed row's Text line). So a debug ASSERT of a simple compare costs ~400 B in Ego_d; 404..521 B on a
+   getter = the getter call + one assert-sized check. Consistent with an ASSERT/VERIFY-style check on the discarded result.
+ symlog (tools/slsum.py, function window = syms between the previous and the row's 'pipe' event):
+   row 1 v5b: kinds {3:2852, 4:82, 5:193, 7:8, 15:510}; _phand #4, _pkofxdef #13, _pcam_man #14.
+   row 1 x_f9 (if(!call) ARM at 1600+1605): kind-4/5 unchanged (82/193), _phand #4 / _pkofxdef #13 / _pcam_man #14 unchanged; +3 kind-7,
+     +1 kind-10, +26 kind-3; the later inlined-callee pool symbols (_this, _p, _thing, field of _direction ...) all +32. Bytes identical.
+   row 1 x_swA5: +5 kind-4 (_dmy1.._dmy5 = #2..#6); _phand 4->9, _pkofxdef 13->18. Bytes identical.
+   row 2 v3 v x_lead_bothbool ({bool ok=call; FABLE_RETAIL_ASSERT(ok);} at 4982 and 5125): +2 kind-4 (_ok #8, _ok2 #275), +4 kind-7,
+     +1 kind-10; locals after 4982 shift +1 (_animate 8->9 ... _direction 14->15), later pool block +32/+34. Bytes identical.
+   => the lead forms move numbers by +1 per named bool and +32 per arm block; the row-2 tie needs +5 mod 32 in the local pool.
+ Row 2 length delta: hunks aligned through 0x008DBE87, +2 from 0x008DBEB8 on (the 0x008DC1A7..0x008DC1DB store block is length-neutral):
+   the whole delta is ours' extra `fstp st(0)` at 0x008DBE8B in the same Normalise's scale-and-store (retail fxch st(2)/fmul st(2), ours
+   fld st(0)/fmul st(3)). swA5 fixes only the sum-of-squares order at 0x008DBE0B; the scale-and-store order and the length stay.
+ Row 2 step 2 (Ego_d lines by statement order + /Od size, tmp/odl_v3.txt; approximate because Ego_d is the 2012 text with extra locals):
+   Normalise 0x008DBE0B..0x008DBE8B ~ Ego_d 5019 (22 B = /Od `direction = spline_pos - PreviousPos` 22) / 5020; orientation.Set stores
+   0x008DC1A7..0x008DC1DB ~ 5066/5067; end block 0x008DC427..0x008DC496 ~ 5115..5121 (end_rhs / end_forward), just before 5125's GetTC.
+   None at 4982; only the end block is next to 5125.
+ Six single-site lead forms in row 2 rerun with `&` intact (s1/s2 _if/_bool/_void): all byte-identical (189).
