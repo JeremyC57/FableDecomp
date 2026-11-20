@@ -655,3 +655,10 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Possible follow-up: landed 0x0049C810 C2DBoxI::ClipTo (HEADER_POLICY, pre-existing) could move to that header body; same statements, parameter name other -> box.
 2026-11-20 A: Landed nf209 (single agent, 4 rows; batches/2026-11-20_landing_nf209): the held drafts 0x008E9850 (nf205 amendment checks) and 0x009A0AE0 (??_GCMemoryAllocator), 0x00E2AB30 onto ??_GCQS_ScytheInfoScript@NScript@@, 0x008D9530 onto SetCurrentGroupName (0x0073DFF0 split closes). Gate CREATED at 0x00CBD510 is 0x00DCC000's existing ~CScriptBase spelling. LNK2005 1 -> 1. 0x0047DB73 held (HasTC pick-any). Decisions per existing rules (pick-any hold; identical-copy LNK2005 is debt).
 2026-11-20 B->A: Landed p25 0x009C9170 NGameText::CDataBank::Validate (batches/2026-11-20_landing_p25_009c9170). Headers: engine/NGameText_CDataBank.h .
+2026-11-20 B->A: Landed 0x009C9170 NGameText::CDataBank::Validate (p25N).
+  - Re-ported five landed CDataBank text rows (0x009C7A40, 0x009C7BE0, 0x009C7D00, 0x009C8630, 0x009C9070) onto engine/NGameText_CDataBank.h, which gains the add-only FABLE_RETAIL_NGAMETEXT_GETPTEXTENTRY.
+  - Name fixes (batches/2026-11-20_landing_p25_009c9170/NAME_FIXES.tsv):
+    - 0x009C7BE0 / 0x009C8630 had global, non-const symbols.
+    - The catalogue return types of 0x009C7A40 / 0x009C9070 are wrong.
+    - Landed 0x009C8340 BeginLoading defines the public pointer form, but both PDBs say `...ABEXKAAVCDataBank@2@@Z`, so it needs a respell before these rows link together. It is also HEADER_POLICY (pre-existing).
+  - Follow-up for whoever owns it: landed 0x009C8890 GetPGroupEntry has the same Ego_d record table as GetPTextEntry, and the same mismatches (one-line `bool loaded`, an early return, parameter names id / allow_pending / entry v Ego_d index / wait / group_info). 0x009C8220 BeginLoadingGroup is similar.
