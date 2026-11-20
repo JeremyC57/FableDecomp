@@ -1,5 +1,8 @@
 // CInputProcessInventoryStatsScreen::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- refresh the process, then page the stats screen: analogue events 0x11/0x12 past +-0.6 on the stick's Y axis send front-end UI events 1/0 and 7/6, presses of actions 0x25/0x26/0x21/0x22 send 0/1/4/5 and releases of 0x25/0x26 send 0/1; a sent event marks the input handled
 // Leaf: ProcessInput
+// NF179 (PRIORITY q11981): IsEventButtonReleased 0x00687B30 respelled in place on the row's existing local CInputProcessGameBase model to
+//   Ego_r.pdb / FableWin.pdb ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (protected const; the self row and 14
+//   other landed referencers bind it; engine/CInputProcessGameBase.h); was the public non-const QAE form.
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00689C40, length 335 bytes, `ret 8`.
@@ -39,7 +42,9 @@ public:
     virtual void Refresh();                        // slot 9 (+0x24)
     unsigned char _pad04[0x24];                    // +0x04 CAInputProcess .. PGamePlayerInterface
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event);             // 0x00687B30
+protected:
+    bool IsEventButtonReleased(const CInputEvent& event) const;       // 0x00687B30
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessInventoryStatsScreen : public CInputProcessGameBase {

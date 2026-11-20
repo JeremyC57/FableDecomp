@@ -1,0 +1,85 @@
+004164e0 new: 1
+    ?ForceRender@CMainGameComponent@@IAEXJ@Z TABLE:004164e0
+00417001 new: 1
+    ?Render@CMainGameComponent@@MAEXXZ
+00437570 new: 1
+    ?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ TABLE:00437570
+0059db82 new: 7
+    ??1CDeletion@NUISystem@@QAE@XZ
+    ??A?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEAAV?$CCountedPointer@VCComponent@NUISystem
+    ??A?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QBEABV?$CCountedPointer@VCComponent@NUISystem
+    ??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+    ?begin@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCComponent@NUISy
+    ?begin@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QBEPBV?$CCountedPointer@VCComponent@NUISy
+    ?size@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QBEIXZ
+0059e6bd new: 7
+    ??1CDeletion@NUISystem@@QAE@XZ
+    ??A?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEAAV?$CCountedPointer@VCComponent@NUISystem
+    ??A?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QBEABV?$CCountedPointer@VCComponent@NUISystem
+    ??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+    ?begin@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCComponent@NUISy
+    ?begin@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QBEPBV?$CCountedPointer@VCComponent@NUISy
+    ?size@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QBEIXZ
+00689050 new: 0
+00689c40 new: 0
+0071a7c0 new: 4
+    ??D?$scoped_ptr@VCThingMapManager@NThingMap@@@boost@@QBEAAVCThingMapManager@NThingMap@@XZ
+    ?GetThingMapManager@CWorldMap@@QAEAAVCThingMapManager@NThingMap@@XZ
+    ?IsInMap@CTCMapwho@@QBE_NXZ
+    ?OnDie@CTCMapwho@@UAEXXZ
+007e00d0 new: 0
+008006d0 new: 18
+    ??$_Destroy@PAU?$pair@VC2DVector@@E@std@@@std@@YAXPAU?$pair@VC2DVector@@E@0@0@Z
+    ??$_Destroy@U?$pair@VC2DVector@@E@std@@@std@@YAXPAU?$pair@VC2DVector@@E@0@@Z
+    ??$__destroy@PAU?$pair@VC2DVector@@E@std@@U12@@std@@YAXPAU?$pair@VC2DVector@@E@0@00@Z
+    ??$__destroy_aux@PAU?$pair@VC2DVector@@E@std@@@std@@YAXPAU?$pair@VC2DVector@@E@0@0ABU__false_type@0@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$pair@VC2DVector@@E@std@@U12@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VC2DVector@@E@std@@@1@PAU?$pair@VC2DVe
+    ??0?$_Vector_base@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VC2DVector@@E@std@@@1@@Z
+    ??0?$allocator@U?$pair@VC2DVector@@E@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$pair@VC2DVector@@E@std@@@std@@QAE@XZ
+    ??0?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VC2DVector@@E@std@@@1@@Z
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$pair@VC2DVector@@E@std@@U12@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAE@XZ
+    ??1?$_Vector_base@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$pair@VC2DVector@@E@std@@@std@@QAE@XZ
+    ??1?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAE@XZ
+    ??A?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAEAAU?$pair@VC2DVector@@E@1@I@Z
+    ?begin@?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QAEPAU?$pair@VC2DVector@@E@2@XZ
+    ?deallocate@?$allocator@U?$pair@VC2DVector@@E@std@@@std@@QAEXPAU?$pair@VC2DVector@@E@2@I@Z
+    ?size@?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QBEIXZ
+008ef190 new: 1
+    ?EndRound@CTCTavernGameCoinBase@@UAEXXZ TABLE:008ef190
+00dcd160 new: 8
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??0CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??1CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAE@XZ TABLE:00dcf700
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@6B@ TABLE:012db2d4
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ??_GCTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+    ?ReferenceTeamSpawnCtor@?A0x00e624bf@@YAXPAXAAVCQ_OrchardFarmRaidScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00dcd1c0 new: 1
+    ?GetParentScript@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UBEPAVCScriptBase@@XZ
+00dcd1d0 new: 1
+    ?Init@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+00dcf6e0 new: 15
+    ??0?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+    ??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z
+    ??0CScriptThing@@QAE@XZ TABLE:006e7b40
+    ??0CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+    ??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+    ??1CScriptThing@@UAE@XZ TABLE:004aa840
+    ??1CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAE@XZ TABLE:00dcf700
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ??_7CEntityScriptBase@@6B@ TABLE:012c3224
+    ??_7CScriptThing@@6B@ TABLE:01238c8c
+    ??_7CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@6B@ TABLE:012db2d4
+    ??_GCEntityScriptBase@@UAEPAXI@Z
+    ??_GCScriptThing@@UAEPAXI@Z
+    ??_GCTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+    ?ReferenceTeamSpawnVtable@?A0xf23f9d54@@YAXPAXAAVCQ_OrchardFarmRaidScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00dcf700 new: 2
+    ??2@YAPAXIPAX@Z TABLE:00405c10
+    ?ReferenceTeamSpawnDtor@?A0x7ade85eb@@YAXPAXAAVCQ_OrchardFarmRaidScript@NScript@@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+00e9e350 new: 1
+    ?TransferBinaryIn@?$CPersistTraits@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4BriarRoseOpinion@CV_IntroductionToTrop

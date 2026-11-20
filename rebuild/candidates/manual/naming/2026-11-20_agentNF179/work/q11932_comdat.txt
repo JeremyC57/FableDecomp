@@ -1,0 +1,8 @@
+SAME 00800380.obj ??0__false_type@std@@QAE@XZ new sel2 3 oth sel2 3
+SAME 00800a60.obj ?GetCurrentMapNumber@CThing@@QBEJXZ new sel2 8 oth sel2 8
+SAME 00800da0.obj ??$_Destroy@PAU?$pair@VC2DVector@@E@std@@@std@@YAXPAU?$pair@VC2DVector@@E@0@0@Z new sel2 1 oth sel2 1
+SAME 00800da0.obj ??$_Destroy@U?$pair@VC2DVector@@E@std@@@std@@YAXPAU?$pair@VC2DVector@@E@0@@Z new sel2 1 oth sel2 1
+SAME 00800da0.obj ??0__false_type@std@@QAE@XZ new sel2 3 oth sel2 3
+SAME 00800da0.obj ?deallocate@?$allocator@U?$pair@VC2DVector@@E@std@@@std@@QAEXPAU?$pair@VC2DVector@@E@2@I@Z new sel2 18 oth sel2 18
+SAME 00800da0.obj ?size@?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@QBEIXZ new sel2 24 oth sel2 24
+SAME 00800500.obj ?IsDead@CThing@@QBE_NXZ new sel2 12 oth sel2 12

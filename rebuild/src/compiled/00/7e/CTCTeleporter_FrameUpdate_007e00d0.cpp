@@ -1,5 +1,8 @@
 // CTCTeleporter::FrameUpdate() -- finish a teleport held back for a tutorial; otherwise, while the hero is in the teleporter's region, activate the teleporter for named guild markers, start teleporting (or a tutorial) when the hero steps inside the radius, keep the active particle effect alive, and kill it when teleporting is disabled
 // Leaf: ?FrameUpdate@CTCTeleporter
+// NF179 (PRIORITY q12048): CTCBase::GetWorldMap 0x00686D30 declared in place on the row's existing local CTCBase model under the
+//   Ego_r.pdb 0x006B2120 / FableWin.pdb 0x02191500 spelling ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ (protected, returns CWorldMap&; the
+//   other 32 landed referencers bind it); was the derived stand-in ?GetWorldMap@CTCTeleporter@@QAEPAVCWorldMap@@XZ.
 // NF167 (2026-11-20, q11926): 0x00686D20 respelt from the stand-in CTCTeleporter::GetRegionManager (CRegionManager*) to the protected const
 //   ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ in place on the row's own local CTCBase model; the slot-10 call is CWorldMap::IsMapLoaded
 //   (Ego_r ?IsMapLoaded@CWorldMap@@UBE_NJ@Z), now on the row's own local CWorldMap model (the CRegionManager stand-in struct is gone).
@@ -157,6 +160,7 @@ protected:
     CPlayerManager& GetPlayerManager();                 // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ (Ego_r / FableWin)
     const CWorldMap& PeekWorldMap() const;              // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (Ego_r 0x006B2110 / FableWin 0x021914E0; NF167 q11926)
     const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50 ?PeekPlayerManager@CTCBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CTCBase.h; NF153: was the stand-in CTCTeleporter::GetPlayerManager2)
+    CWorldMap& GetWorldMap();                           // 0x00686D30 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ (Ego_r / FableWin, protected; NF179 q12048)
 };
 class CTCTeleporter : public CTCBase { public:
     CThing* ParentThing;                                // +0x04
@@ -167,7 +171,6 @@ class CTCTeleporter : public CTCBase { public:
     bool HeroInsideRadius;                              // +0x12
     CIntelligentPointer<CThing> PParticle;                      // +0x13
     bool WaitingForTutorialToFinish;                    // +0x1b
-    CWorldMap* GetWorldMap();                           // 0x00686D30
     void StartTeleporting(CThingPlayerCreature* hero);  // 0x007DFF90
     void FrameUpdate();
 };
@@ -185,8 +188,8 @@ void CTCTeleporter::FrameUpdate()
         return;
     }
     long mapIndex = ParentThing->RegionMapIndex;
-    long region = GetWorldMap()->GetRegionNumberMapIsIn(mapIndex);
-    if (GetWorldMap()->GetLoadedRegion() == region) {
+    long region = GetWorldMap().GetRegionNumberMapIsIn(mapIndex);
+    if (GetWorldMap().GetLoadedRegion() == region) {
     if (!Activated) {
         if (!PDef.IsGuildMarkerOnly()) {
             CThing* parent = ParentThing;

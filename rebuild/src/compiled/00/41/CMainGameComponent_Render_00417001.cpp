@@ -2,6 +2,9 @@
 //   hand it to the world and, when the network client allows it, render a frame and time it; a pending forced-render
 //   count renders catch-up frames instead
 // Leaf: ?Render@CMainGameComponent@@MAEXXZ
+// NF179 (PRIORITY q12037 / q12038): ForceRender 0x004164E0 is Ego_r.pdb 0x004157AE + FableWin.pdb 0x018A7CB8 ?ForceRender@CMainGameComponent@@IAEXJ@Z
+//   (protected) and Render 0x00417001 Ego_r.pdb 0x004162FF + FableWin.pdb 0x018A76E9 ?Render@CMainGameComponent@@MAEXXZ (protected virtual);
+//   both respelled in place on the row's existing local CMainGameComponent model (access / virtual only; the model's vtable is never emitted).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -150,8 +153,10 @@ public:
     double GetCurrentGameTime();                  // 0x00416231
     double GetTimeSinceLastRenderFrameStart();    // 0x00416258
     double GetGameTimeOfNextPresentCompletion();  // 0x004166E2
+protected:
     void ForceRender(long frames);                // 0x004164E0
-    void Render();
+    virtual void Render();
+public:
     FABLE_FORCEINLINE double GetServerFrameInterpolate(double gameTime) { return gameTime / (1.0f / CMainGameComponent::GetConstantFPS()) - CurrentServerFrame; }
     virtual ~CMainGameComponent();
     virtual void v00();

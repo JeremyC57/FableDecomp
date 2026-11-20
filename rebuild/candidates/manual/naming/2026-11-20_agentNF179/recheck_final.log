@@ -1,0 +1,93 @@
+addr       parity           behav  name
+004164e0   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo (engine/CInterpolationInfo.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet (engine/CGameEventPackageSet.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+004164e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004164e0   RELOCATION_MATCH PASS   CMainGameComponent::ForceRender
+00417001   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo (engine/CInterpolationInfo.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager (engine/CBulletTimeManager.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet (engine/CGameEventPackageSet.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00417001   WARN RELOC_NAME: ?GetTimeSinceLastRenderFrameStart@CMainGameComponent@@QAENXZ -> 00416258 labelled 'CMainGameComponent::GetPredictedTimeSinceLastRenderFrame'
+00417001   WARN RELOC_NAME: ?IsReadyToRender@CNetworkClient@@QAE_NXZ -> 004aea70 labelled 'CNetworkClient::IsFreeToRender'
+00417001   RELOCATION_MATCH PASS   CMainGameComponent::Render
+00437570   RELOCATION_MATCH PASS   _global::Forward_ChangeScene_via0x14_00437570
+0059db82   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059db82   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities
+0059e6bd   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059e6bd   RELOCATION_MATCH PASS   CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+00689050   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00689050   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00689050   WARN SHARED_HEADER_AVAILABLE CTCTargetingPlayer (engine/CTCTargetingPlayer.h)
+00689050   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00689050   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00689050   WARN SHARED_HEADER_AVAILABLE CInputProcessTargetLockCycleTargets (engine/CInputProcessTargetLockCycleTargets.h)
+00689050   RELOCATION_MATCH PASS   CInputProcessTargetLockCycleTargets::ProcessInput
+00689c40   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CInputProcessInventoryStatsScreen (engine/CInputProcessInventoryStatsScreen.h)
+00689c40   RELOCATION_MATCH PASS   CInputProcessInventoryStatsScreen::ProcessInput
+0071a7c0   WARN RELOC_NAME: ?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z -> 00637a10 labelled 'NThingMap::CThingMapManager::DestroyMapwhoNode'
+0071a7c0   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+007e00d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e00d0   WARN SHARED_HEADER_AVAILABLE CTCTeleporter (engine/CTCTeleporter.h)
+007e00d0   RELOCATION_MATCH PASS   CTCTeleporter::FrameUpdate
+008006d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008006d0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+008006d0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+008006d0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+008006d0   RELOCATION_MATCH PASS   CTCPreCalculatedNavigationRoute::SaveRoute
+008ef190   RELOCATION_MATCH PASS   CTCTavernGameCoinBase::EndRound
+00dcd160   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::CTeamSpawn
+00dcd1c0   MATCH            PASS   NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::GetParentScript
+00dcd1d0   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::Init
+00dcf6e0   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::`scalar deleting destructor'
+00dcf700   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::~CTeamSpawn
+00e9e350   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00e9e350   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00e9e350   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e9e350
+
+WINS: 17
+  004164e0 RELOCATION_MATCH CMainGameComponent::?ForceRender@CMainGameComponent@@IAEXJ@Z
+  00417001 RELOCATION_MATCH CMainGameComponent::?Render@CMainGameComponent@@MAEXXZ
+  00437570 RELOCATION_MATCH _global::?ChangeGraphicsBankScene@CPlayerGui@@QAEXXZ
+  0059db82 RELOCATION_MATCH CTCInventoryTrade::RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade
+  0059e6bd RELOCATION_MATCH CTCInventoryTrade::RecurseRefreshEntriesAmountsAndAvailabilitiesPC
+  00689050 RELOCATION_MATCH CInputProcessTargetLockCycleTargets::?ProcessInput@CInputProcessTargetLockCycleTargets@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00689c40 RELOCATION_MATCH CInputProcessInventoryStatsScreen::ProcessInput
+  0071a7c0 RELOCATION_MATCH CTCMapwho::?OnDie@CTCMapwho@@UAEXXZ
+  007e00d0 RELOCATION_MATCH CTCTeleporter::?FrameUpdate@CTCTeleporter
+  008006d0 RELOCATION_MATCH CTCPreCalculatedNavigationRoute::?SaveRoute@CTCPreCalculatedNavigationRoute@@QAEXPAVCPersistContext@@@Z
+  008ef190 RELOCATION_MATCH CTCTavernGameCoinBase::?EndRound@CTCTavernGameCoinBase@@UAEXXZ
+  00dcd160 RELOCATION_MATCH CTeamSpawn::??0CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00dcd1c0 MATCH _gapscan::?GetParentScript@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UBEPAVCScriptBase@@XZ
+  00dcd1d0 RELOCATION_MATCH CTeamSpawn::?Init@CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dcf6e0 RELOCATION_MATCH CVtable_012db2d4::??_GCTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dcf700 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::??1CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAE@XZ
+  00e9e350 RELOCATION_MATCH _unattributed::?TransferBinaryIn@?$CPersistTraits@W4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4BriarRoseOpinion@CV_IntroductionToTrophiesScript@NScript@@@Z

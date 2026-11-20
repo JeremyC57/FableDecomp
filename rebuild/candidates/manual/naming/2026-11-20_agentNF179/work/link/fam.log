@@ -1,0 +1,2 @@
+fam.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+(trimmed at landing: 334 LNK2001 + 31 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

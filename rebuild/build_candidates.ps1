@@ -58022,9 +58022,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcf6e0'
-        Module = 'CVtable_012db2d4'
-        Source = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dcf6e0.cpp'
-        TestSource = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dcf6e0_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CTeamSpawn'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_scalardeletingdestructor_00dcf6e0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_scalardeletingdestructor_00dcf6e0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00dcf6e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -74712,9 +74712,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00437570'
-        Module = '_global'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437570.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437570_test.cpp'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_ChangeGraphicsBankScene_00437570.cpp'
+        TestSource = '00/43/CPlayerGui_ChangeGraphicsBankScene_00437570_test.cpp'
         PassPattern = 'PASS_00437570'
     }
     [pscustomobject]@{
@@ -110463,9 +110463,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcd1c0'
-        Module = '_gapscan'
-        Source = '00/dc/gapscan_sub00dcd1c0_00dcd1c0.cpp'
-        TestSource = '00/dc/gapscan_sub00dcd1c0_00dcd1c0_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CTeamSpawn'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_GetParentScript_00dcd1c0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_GetParentScript_00dcd1c0_test.cpp'
         PassPattern = 'PASS_00dcd1c0'
     }
     [pscustomobject]@{
@@ -176932,9 +176932,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e9e350'
-        Module = '_unattributed'
-        Source = '00/e9/unattributed_TransferBinaryIn00e9e350_00e9e350.cpp'
-        TestSource = '00/e9/unattributed_TransferBinaryIn00e9e350_00e9e350_test.cpp'
+        Module = 'CPersistTraits<NScript::CV_IntroductionToTrophiesScript::BriarRoseOpinion>'
+        Source = '00/e9/CPersistTraits_TransferBinaryIn_00e9e350.cpp'
+        TestSource = '00/e9/CPersistTraits_TransferBinaryIn_00e9e350_test.cpp'
         PassPattern = '00e9e350_TEST PASS'
     }
     [pscustomobject]@{
@@ -218565,9 +218565,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcd160'
-        Module = 'CTeamSpawn'
-        Source = '00/dc/CTeamSpawn_CTeamSpawn_00dcd160.cpp'
-        TestSource = '00/dc/CTeamSpawn_CTeamSpawn_00dcd160_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CTeamSpawn'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_CTeamSpawn_00dcd160.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_CTeamSpawn_00dcd160_test.cpp'
         PassPattern = '00dcd160_TEST PASS'
     }
     [pscustomobject]@{
@@ -256675,9 +256675,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dcd1d0'
-        Module = 'CTeamSpawn'
-        Source = '00/dc/CTeamSpawn_Init_00dcd1d0.cpp'
-        TestSource = '00/dc/CTeamSpawn_Init_00dcd1d0_test.cpp'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CTeamSpawn'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_Init_00dcd1d0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_Init_00dcd1d0_test.cpp'
         PassPattern = '00dcd1d0_TEST PASS'
     }
     [pscustomobject]@{

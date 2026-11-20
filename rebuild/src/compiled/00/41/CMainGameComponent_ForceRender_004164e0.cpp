@@ -1,4 +1,8 @@
 // CMainGameComponent::ForceRender(long) -- render interpolated frames until the server frame is caught up
+// Leaf: ?ForceRender@CMainGameComponent@@IAEXJ@Z
+// NF179 (PRIORITY q12037 / q12038): ForceRender 0x004164E0 is Ego_r.pdb 0x004157AE + FableWin.pdb 0x018A7CB8 ?ForceRender@CMainGameComponent@@IAEXJ@Z
+//   (protected) and Render 0x00417001 Ego_r.pdb 0x004162FF + FableWin.pdb 0x018A76E9 ?Render@CMainGameComponent@@MAEXXZ (protected virtual);
+//   both respelled in place on the row's existing local CMainGameComponent model (access / virtual only; the model's vtable is never emitted).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #pragma optimize("s", on)
 class CASoundBank;
@@ -100,8 +104,9 @@ public:
     long                                 DebugNoFramesUnableToRender;   // +0x161e4
 protected:
     double GetCurrentGameTime() const;            // 0x00416231 ?GetCurrentGameTime@CMainGameComponent@@IBENXZ (Ego_r / FableWin)
-public:
+protected:
     void ForceRender(long frames);
+public:
     virtual ~CMainGameComponent();
     virtual void v00();
 };

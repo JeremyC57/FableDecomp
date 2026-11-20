@@ -1,0 +1,5 @@
+existing 005e9aa0 new= ['?EndRound@CTCTavernGame@@UAEXXZ'] | others: {'?EndRound@CTCTavernGame@@QAEXXZ': ['007d7ba0', '008f1720']}
+existing 00637a10 new= ['?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z'] | others: {'?DestroyMapwhoNode@CThingMapManager@@QAEXPAVCTCMapwho@@@Z': ['0071a810']}
+existing 00686d30 new= ['?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ'] | others: {'?GetWorldMap@CTCCreatureFlyInCircles@@QAEPAVCWorldMap@@XZ': ['007de030']}
+UNGRADED 00687b30 00691d70
+gate: 0 created split(s)

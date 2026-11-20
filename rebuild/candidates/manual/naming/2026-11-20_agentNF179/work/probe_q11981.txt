@@ -1,0 +1,17 @@
+00688a80 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00689050 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z 
+006894c0 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+006896c0 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00689820 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00689980 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00689c40 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z 
+00689df0 RELOCATION_MATCH 
+0068ae30 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+0068b2e0 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+0068b7c0 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+0068bc70 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00690480 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00690e70 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00690fd0 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00691130 RELOCATION_MATCH ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z 
+00691d70 RELOCATION_MATCH 

@@ -1,0 +1,11 @@
+NO-OWNER-OBJ 00dcd160 00dcf700 ??1CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAE@XZ
+MISSING 00dcd160 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00dcd160 012db2d4 ??_7CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@6B@
+OK  00dcf6e0 -> 006e7b40 ??0CScriptThing@@QAE@XZ sizes 26 26 
+OK  00dcf6e0 -> 004aa840 ??1CScriptThing@@UAE@XZ sizes 66 66 
+NO-OWNER-OBJ 00dcf6e0 00dcf700 ??1CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAE@XZ
+MISSING 00dcf6e0 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False
+NO-OWNER-OBJ 00dcf6e0 012c3224 ??_7CEntityScriptBase@@6B@
+NO-OWNER-OBJ 00dcf6e0 01238c8c ??_7CScriptThing@@6B@
+NO-OWNER-OBJ 00dcf6e0 012db2d4 ??_7CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@6B@
+MISSING 00dcf700 00405c10 ??2@YAPAXIPAX@Z owner leaf None True False

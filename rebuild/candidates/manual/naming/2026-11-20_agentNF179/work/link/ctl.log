@@ -1,0 +1,3 @@
+new_00dcd160.obj : error LNK2005: "public: __thiscall NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::CTeamSpawn(class NScript::CQ_OrchardFarmRaidScript &,class CScriptDataBase *,class CScriptThing const &)" (??0CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z) already defined in head_00dcf700.obj
+ctl.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 179 LNK2001 + 7 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

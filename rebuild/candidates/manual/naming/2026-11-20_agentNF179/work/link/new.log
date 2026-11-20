@@ -1,0 +1,2 @@
+new.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+(trimmed at landing: 258 LNK2001 + 21 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)
