@@ -56,8 +56,9 @@ extern "C" int __stdcall VerQueryValueA(const void* pBlock, const char* lpSubBlo
 extern void* (__fastcall* ImeUiCallback_Malloc)(unsigned int bytes);   // 0x0143E514
 extern void (__fastcall* ImeUiCallback_Free)(void* ptr);               // 0x0143CF08
 
-// ImeUi.cpp file statics (defined in this TU as in the SDK source).
-static unsigned int (__stdcall* _GetReadingString)(HIMC himc, unsigned int uReadingBufLen, unsigned short* lpwReadingBuf,
+// ImeUi.cpp globals (defined in this TU as in the SDK source). _GetReadingString has external linkage: Ego_d.pdb lists it as the
+// public ?_GetReadingString@@3P6GIPAUHIMC__@@IPAGPAH2PAI@ZA, the spelling the landed SetImeApi 0x00CB36E0 / 0x00CB4340 bind.
+unsigned int (__stdcall* _GetReadingString)(HIMC himc, unsigned int uReadingBufLen, unsigned short* lpwReadingBuf,
                                                    int* pnErrorIndex, int* pfIsVertical, unsigned int* puMaxReadingLen);  // 0x0143E684
 static HKL g_hklCurrent;                                               // 0x0143E8B8
 

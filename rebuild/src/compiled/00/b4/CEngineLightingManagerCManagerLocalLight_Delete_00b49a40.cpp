@@ -9,41 +9,23 @@
 // Layout: CDynamicObjectHeapBase (Ego_r.pdb, 0x14): vptr, AllocCount +4, TotalAllocatorBlocks +8, RefCountReleaseEnabled +0xC,
 //   HeapNext +0x10; CDynamicObjectHeap<N,M>::FreeList +0x14 (the landed heap constructors 0x00AF8700 / 0x00AF8B40). The heap is
 //   a static object at 0x01436FB0 (CDynamicObjectHeap<72, 16>, built by the static initialiser 0x01224730 that stores vtable 0x012A20F0); no PDB
-//   data symbol names it, so its identifier `LocalLightHeap` is descriptive.
+//   data symbol names it, so its identifier was descriptive (see Naming below).
 // Shape: CDynamicObjectHeap::Free (FableWin.pdb ?Free@?$CDynamicObjectHeap@...@@QAEXPAX@Z) inline: AllocCount decremented, the
 //   block pushed on the free list, RefCountedRelease tail-called when the count reaches 0 and release is enabled; no destructor runs (the struct is trivially destructible) and `delete this` has no null test.
-struct CObjectEntry { CObjectEntry* NextEntry; };
+// Naming (NF183, 2026-11-20, q4502 / q4505): the local CDynamicObjectHeapBase / CDynamicObjectHeap model moved onto the shared
+//   engine/CDynamicObjectHeap.h (inline Free through the NF183 opt-in FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE), and the heap is
+//   its PDB static LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight (Ego_d.pdb public; Ego_r.pdb + FableWin.pdb `dynamic initializer for 'LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight'`, the landed
+//   initializer 0x01224730), was the descriptive `LocalLightHeap`.
+#define FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE
+#include "engine/CDynamicObjectHeap.h"
 
-class CDynamicObjectHeapBase {                                  // retail 0x14 bytes, RTTI .?AVCDynamicObjectHeapBase@@
-public:
-    virtual ~CDynamicObjectHeapBase();                          // 0x00F36C90
-    long                    AllocCount;                         // +0x04
-    long                    TotalAllocatorBlocks;               // +0x08
-    bool                    RefCountReleaseEnabled;             // +0x0c
-    CDynamicObjectHeapBase* HeapNext;                           // +0x10
-    void RefCountedRelease();                                   // 0x00F36CA0
-};
-
-template <long ObjectSize, long ObjectsPerBlock> class CDynamicObjectHeap : public CDynamicObjectHeapBase {
-public:
-    CObjectEntry* FreeList;                                     // +0x14
-    void Free(void* object)
-    {
-        --AllocCount;
-        ((CObjectEntry*)object)->NextEntry = FreeList;
-        FreeList = (CObjectEntry*)object;
-        if (AllocCount == 0 && RefCountReleaseEnabled)
-            RefCountedRelease();
-    }
-};
-
-extern CDynamicObjectHeap<72, 16> LocalLightHeap;                     // 0x01436FB0
+extern CDynamicObjectHeap<72, 16> LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight;   // 0x01436FB0
 
 class CEngineLightingManager {
 public:
     struct CManagerLocalLight {                                  // RTTI .?AUCManagerLocalLight@CEngineLightingManager@@, vtable 0x012A2228 (one slot)
         virtual void Delete();                                  // slot 0
-        static void __fastcall operator delete(void* object) { LocalLightHeap.Free(object); }   // ??3CManagerLocalLight@CEngineLightingManager@@SIXPAX@Z
+        static void __fastcall operator delete(void* object) { LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight.Free(object); }   // ??3CManagerLocalLight@CEngineLightingManager@@SIXPAX@Z
     };
 };
 

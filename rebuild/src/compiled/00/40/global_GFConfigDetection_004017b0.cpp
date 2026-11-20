@@ -38,42 +38,17 @@ private:
     void* OpenKey;
 };
 
-// ConfigDetect.dll's detection results (descriptive; only the fields read here)
-struct SConfigDetectionInfo {
-    unsigned char _pad00[0x04];
-    unsigned long MaxResolutionWidth;             // +0x04
-    unsigned char _pad08[0x14 - 0x08];
-    long          SupportsFeatureG;                     // +0x14
-    unsigned char _pad18[0x58 - 0x18];
-    long          RequiresSoftwareMode;                 // +0x58
-    unsigned char _pad5c[0x70 - 0x5c];
-    long          SupportsFeatureA;                     // +0x70
-    long          SupportsFeatureB;                     // +0x74
-    long          NoBackBufferCapture;                        // +0x78
-    long          SupportsFeatureD;                     // +0x7c
-    unsigned char _pad80[0x88 - 0x80];
-    long          LacksFeatureE;                        // +0x88
-    long          LacksFeatureF;                        // +0x8c
-    long          MaxDetailA;                           // +0x90 (1-based)
-    long          MaxDetailB;                           // +0x94
-    long          MaxDetailC;                           // +0x98
-    long          MaxDetailD;                           // +0x9c
-    long          DefaultDetailA;                       // +0xa0
-    long          DefaultDetailB;                       // +0xa4
-    long          DefaultDetailC;                       // +0xa8
-    long          DefaultDetailD;                       // +0xac
-    long          MaxAntialiasing;                          // +0xb0
-    unsigned char _padb4[0xb8 - 0xb4];
-    unsigned long RecommendedMemoryA;                   // +0xb8
-    unsigned long RecommendedMemoryB;                   // +0xbc
-};
+// Naming (NF183, 2026-11-20, q4245): the descriptive SConfigDetectionInfo / g_pConfigDetectionInfo model of the result block moved onto
+//   the shared engine/ConfigDetection.h: 0x013BD6E8 is Ego_d.pdb's public ?pConfig@@3PAVConfigDetection@@A (the spelling the landed
+//   DisplayErrorDialog 0x0099DCB0 binds through engine/ErrorDialog.h); the fields read here are the Ego_r TPI members at the same offsets.
+#include "engine/ConfigDetection.h"
 struct SErrorDialogParams {                             // DisplayErrorDialog's request
     unsigned long TextID;
     unsigned long Flags;
 };
 
 typedef int (__stdcall* PFNDisplayErrorDialog)(const SErrorDialogParams* params, int unused);
-typedef int (__stdcall* PFNCreateConfigDetection)(SConfigDetectionInfo** info, PFNDisplayErrorDialog displayError);
+typedef int (__stdcall* PFNCreateConfigDetection)(ConfigDetection** info, PFNDisplayErrorDialog displayError);
 typedef int (__stdcall* PFNInitVideoCardInfo)(int adapter, char* errorText);
 typedef void (__stdcall* PFNCheckRequirements)();
 
@@ -81,7 +56,7 @@ void __fastcall InitExternalStrings();                                          
 int __stdcall DisplayErrorDialog(const SErrorDialogParams* params, int unused);   // 0x0099DCB0
 
 HINSTANCE__*          g_hConfigDetection;               // 0x013B7C8C
-SConfigDetectionInfo* g_pConfigDetectionInfo;           // 0x013BD6E8
+ConfigDetection*      pConfig;                          // 0x013BD6E8 ?pConfig@@3PAVConfigDetection@@A
 extern CWideString    g_ConfigRegistryKey;              // 0x013BCA28
 extern CWideString    g_ConfigRegistryValue;            // 0x013BCA2C
 extern long  g_MaxDetailA;                              // 0x0137507C
@@ -117,7 +92,7 @@ bool GFConfigDetection()
         (PFNCreateConfigDetection)GetProcAddress(g_hConfigDetection, "CreateConfigDetection");
     if (createConfigDetection == 0)
         return false;
-    if (!createConfigDetection(&g_pConfigDetectionInfo, DisplayErrorDialog))
+    if (!createConfigDetection(&pConfig, DisplayErrorDialog))
         return false;
     PFNInitVideoCardInfo initVideoCardInfo =
         (PFNInitVideoCardInfo)GetProcAddress(g_hConfigDetection, "Config_InitVideoCardInfo");
@@ -129,32 +104,32 @@ bool GFConfigDetection()
             if (checkRequirements)
                 checkRequirements();
 
-            g_FeatureA = g_pConfigDetectionInfo->SupportsFeatureA != 0;
-            g_FeatureB = g_pConfigDetectionInfo->SupportsFeatureB != 0;
-            g_bCaptureUIBackground = g_pConfigDetectionInfo->NoBackBufferCapture == 0;
-            g_FeatureD = g_pConfigDetectionInfo->SupportsFeatureD != 0;
-            g_FeatureE = g_pConfigDetectionInfo->LacksFeatureE == 0;
-            g_FeatureF = g_pConfigDetectionInfo->LacksFeatureF == 0;
-            g_FeatureG = g_pConfigDetectionInfo->SupportsFeatureG != 0;
-            g_MaxDetailA = g_pConfigDetectionInfo->MaxDetailA - 1;
-            g_MaxDetailB = g_pConfigDetectionInfo->MaxDetailB - 1;
-            g_MaxDetailC = g_pConfigDetectionInfo->MaxDetailC - 1;
-            g_MaxDetailD = g_pConfigDetectionInfo->MaxDetailD - 1;
-            g_DetailA = g_pConfigDetectionInfo->DefaultDetailA - 1;
-            g_DetailB = g_pConfigDetectionInfo->DefaultDetailB - 1;
-            g_DetailC = g_pConfigDetectionInfo->DefaultDetailC - 1;
-            g_DetailD = g_pConfigDetectionInfo->DefaultDetailD - 1;
-            g_MaxAntialiasing = g_pConfigDetectionInfo->MaxAntialiasing - 1;
-            if (g_pConfigDetectionInfo->MaxResolutionWidth > 0)
-                g_MaxResolutionWidth = g_pConfigDetectionInfo->MaxResolutionWidth;
-            if (g_pConfigDetectionInfo->RecommendedMemoryA > 0)
-                g_MemoryA = g_pConfigDetectionInfo->RecommendedMemoryA;
-            if (g_pConfigDetectionInfo->RecommendedMemoryB > 0)
-                g_MemoryB = g_pConfigDetectionInfo->RecommendedMemoryB;
+            g_FeatureA = pConfig->cf_UseAlternateRenderTargetClear != 0;
+            g_FeatureB = pConfig->cf_UseAlternateOutlineEffect != 0;
+            g_bCaptureUIBackground = pConfig->cf_DisableStretchRect == 0;
+            g_FeatureD = pConfig->cf_UseAlternateSkyPixelShader != 0;
+            g_FeatureE = pConfig->cf_DisableFilteredScreenGUIBackground == 0;
+            g_FeatureF = pConfig->cf_DisableTextureTransforms == 0;
+            g_FeatureG = pConfig->cf_UseFixedFunction != 0;
+            g_MaxDetailA = pConfig->cf_MaxEffectsDetail - 1;
+            g_MaxDetailB = pConfig->cf_MaxShadowDetail - 1;
+            g_MaxDetailC = pConfig->cf_MaxMeshDetail - 1;
+            g_MaxDetailD = pConfig->cf_MaxTextureDetail - 1;
+            g_DetailA = pConfig->cf_DefaultEffectsDetail - 1;
+            g_DetailB = pConfig->cf_DefaultShadowDetail - 1;
+            g_DetailC = pConfig->cf_DefaultMeshDetail - 1;
+            g_DetailD = pConfig->cf_DefaultTextureDetail - 1;
+            g_MaxAntialiasing = pConfig->cf_MaxAntiAliasLevel - 1;
+            if (pConfig->cf_MaximumResolution > 0)
+                g_MaxResolutionWidth = pConfig->cf_MaximumResolution;
+            if (pConfig->cf_GenericFlag0 > 0)
+                g_MemoryA = pConfig->cf_GenericFlag0;
+            if (pConfig->cf_GenericFlag1 > 0)
+                g_MemoryB = pConfig->cf_GenericFlag1;
 
             CSystemRegistry registry(g_ConfigRegistryKey, 0);
             int askSoftwareMode = registry.GetBOOL(g_ConfigRegistryValue, 0);
-            g_UseSoftwareMode = g_pConfigDetectionInfo->RequiresSoftwareMode != 0;
+            g_UseSoftwareMode = pConfig->cf_SafeMode != 0;
             if (!g_UseSoftwareMode && askSoftwareMode) {
                 SErrorDialogParams params;
                 params.TextID = 0x801;

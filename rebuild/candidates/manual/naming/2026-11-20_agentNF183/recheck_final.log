@@ -1,0 +1,82 @@
+addr       parity           behav  name
+004017b0   RELOCATION_MATCH PASS   _global::GFConfigDetection
+00416268   WARN RELOC_NAME: ?Begin@CLoader@@QAEXABVCVersion@@H@Z -> 009f4cf0 labelled 'CInputManager::StreamInputsToFile'
+00416268   WARN STANDIN_LEAF ?BeginInputLoading@@YGXH@Z (catalog CMainGameComponent::BeginInputLoading; free function lacks its class)
+00416268   RELOCATION_MATCH PASS   CMainGameComponent::BeginInputLoading
+0041627f   WARN RELOC_NAME: ?Begin_009f5e10@CLoader@@QAEXABVCVersion@@H@Z -> 009f5e10 labelled 'CInputManager::StreamInputsFromFile'
+0041627f   WARN STANDIN_LEAF ?BeginInputLoading@@YGXH@Z (catalog CMainGameComponent::BeginInputLoading; free function lacks its class)
+0041627f   RELOCATION_MATCH PASS   CMainGameComponent::BeginInputLoading
+0044b800   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent (engine/CPersistContext_TransferableComponent.h)
+0044b800   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<unsigned __int64>::TransferOut
+0057f78f   RELOCATION_MATCH PASS   CPersistTraits<CHeroMarriageInfo>::TransferOut
+00614450   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableVector (engine/CPersistContext_TransferableVector.h)
+00614450   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<unsigned __int64>::TransferOut
+006c7b00   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006c7b00   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006c7b00   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+006c7b00   RELOCATION_MATCH PASS   CPersistTraits<CIntelligentPointer<CThing> >::TransferOut
+006c7c30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006c7c30   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006c7c30   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+006c7c30   WARN SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent (engine/CPersistContext_TransferableComponent.h)
+006c7c30   RELOCATION_MATCH PASS   CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >::TransferOut
+0092b800   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0092b800   WARN SHARED_HEADER_AVAILABLE CTCOnHeroPush (engine/CTCOnHeroPush.h)
+0092b800   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OnHeroPush (engine/CAIStateGroup_OnHeroPush.h)
+0092b800   RELOCATION_MATCH PASS   CAIStateGroup_OnHeroPush::IsRunnable
+0099d470   RELOCATION_MATCH PASS   _global::RetrieveString
+0099d520   RELOCATION_MATCH PASS   _global::LocalizedDialogBox
+0099e260   RELOCATION_MATCH PASS   _global::InitExternalStrings
+00ab4700   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00ab4700   WARN SHARED_HEADER_AVAILABLE CMouseDX (engine/CMouseDX.h)
+00ab4700   RELOCATION_MATCH PASS   CMouseDX::SetPos
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CGraphicBankStateBlock (engine/CGraphicBankStateBlock.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b2c4e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager (engine/CEngineSurfaceCompositionManager.h)
+00b2c4e0   WARN RELOC_NAME: ?FindEntry@CGraphicDataBank@@QAEKABVCCharString@@@Z -> 009ccdc0 labelled 'CBankFile::FindIndexBySymbol'
+00b2c4e0   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager::AddCustomMorphTexture
+00b47980   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00b47980   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b47980   RELOCATION_MATCH PASS   CEngineLightingManager::FrameEnd
+00b49a40   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b49a40   RELOCATION_MATCH PASS   CEngineLightingManager::CManagerLocalLight::Delete
+00b49aa0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b49aa0   RELOCATION_MATCH PASS   CEngineLightingManager::CLocalLightElementLink::Delete
+00b49fe0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b49fe0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b49fe0   RELOCATION_MATCH PASS   CArray::DeleteAndClear
+00cb28f0   WARN RELOC_ALIAS: _ImmGetIMEFileNameA@12 -> 00cb5528 is the import thunk 'IMM32.DLL::ImmGetIMEFileNameA'
+00cb28f0   WARN RELOC_ALIAS: _GetFileVersionInfoSizeA@8 -> 00cb558e is the import thunk 'VERSION.DLL::GetFileVersionInfoSizeA'
+00cb28f0   WARN RELOC_ALIAS: _GetFileVersionInfoA@16 -> 00cb5588 is the import thunk 'VERSION.DLL::GetFileVersionInfoA'
+00cb28f0   WARN RELOC_ALIAS: _VerQueryValueA@16 -> 00cb5582 is the import thunk 'VERSION.DLL::VerQueryValueA'
+00cb28f0   RELOCATION_MATCH PASS   GetImeId
+00cb7a00   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist (engine/CRuntimeScriptedEntityPersist.h)
+00cb7a00   RELOCATION_MATCH PASS   NScript::CRuntimeScriptedEntityPersist::SaveToGameStateScript
+012297f0   WARN STANDIN_LEAF ?GlobalMethodTailThunk_012297f0@@YIXXZ (catalog _global::AtexitDtor_CCharString_at_013bac98_012297f0; address-only name)
+012297f0   RELOCATION_MATCH PASS   _global::AtexitDtor_CCharString_at_013bac98_012297f0
+
+WINS: 21
+  004017b0 RELOCATION_MATCH _global::?GFConfigDetection@@YI_NXZ
+  00416268 RELOCATION_MATCH CMainGameComponent::BeginInputLoading
+  0041627f RELOCATION_MATCH CMainGameComponent::BeginInputLoading
+  0044b800 RELOCATION_MATCH CPersistContext_TransferableComponent<unsigned __int64>::TransferOut
+  0057f78f RELOCATION_MATCH CPersistTraits<CHeroMarriageInfo>::?TransferOut@?$CPersistTraits@VCHeroMarriageInfo@@@@
+  00614450 RELOCATION_MATCH CPersistContext_TransferableVector<unsigned __int64>::TransferOut
+  006c7b00 RELOCATION_MATCH CPersistTraits<CIntelligentPointer<CThing> >::?TransferOut@?$CPersistTraits
+  006c7c30 RELOCATION_MATCH CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >::?TransferOut@?$CPersistContext_TransferableComponent
+  0092b800 RELOCATION_MATCH CAIStateGroup_OnHeroPush::IsRunnable
+  0099d470 RELOCATION_MATCH _global::@RetrieveString@16
+  0099d520 RELOCATION_MATCH _global::@LocalizedDialogBox@16
+  0099e260 RELOCATION_MATCH _global::@InitExternalStrings@0
+  00ab4700 RELOCATION_MATCH CMouseDX::SetPos
+  00b2c4e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::AddCustomMorphTexture
+  00b47980 RELOCATION_MATCH CEngineLightingManager::FrameEnd@CEngineLightingManager
+  00b49a40 RELOCATION_MATCH CEngineLightingManager::CManagerLocalLight::?Delete@CManagerLocalLight@CEngineLightingManager@@UAEXXZ
+  00b49aa0 RELOCATION_MATCH CEngineLightingManager::CLocalLightElementLink::?Delete@CLocalLightElementLink@CEngineLightingManager@@UAEXXZ
+  00b49fe0 RELOCATION_MATCH CArray::?DeleteAndClear@?$CArray@PAUCManagerLocalLight@
+  00cb28f0 RELOCATION_MATCH _global::?GetImeId@@YGKI@Z
+  00cb7a00 RELOCATION_MATCH NScript::CRuntimeScriptedEntityPersist::SaveToGameStateScript
+  012297f0 RELOCATION_MATCH _global::?GlobalMethodTailThunk_012297f0@@YIXXZ

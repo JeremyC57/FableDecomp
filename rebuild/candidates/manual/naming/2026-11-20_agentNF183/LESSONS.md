@@ -1,0 +1,9 @@
+# NF183 lessons (one line each)
+- reloc_bindings.tsv is NOT a complete spelling census: whole stand-in families (the 294 AutoTiny* rows) are missing from it, so the atexit thunk 0x012297F0 bound BUILDING_BOUNDRY under a spelling the table never listed. Probe (compile + binds.py) every REFS row of a small entry; for large ones grep the declaration lines, not the identifier (comments mention old spellings).
+- A probe of an old no-Leaf candidates-header row grades another function (DIFFER, no pair): treat it as not-a-binder and say so; do not count it as a binder.
+- `x.~T()` on an object of a class with an out-of-line destructor makes VC7.1 emit a ??_G scalar deleting destructor COMDAT; the qualified `x.T::~T()` gives the same bytes without it.
+- A data global DEFINED in a row as a file `static` binds a local symbol (`__name`); dropping `static` gives the external PDB spelling (0x00CB28F0 _GetReadingString), but the object then defines it: say so.
+- The pick-any check bites on ports onto shared headers: the header's inline CCountedPointer<T>::operator= COMDAT (ShareData inlined, 72 bytes) differs from the out-of-line owner row 0x00419463 (23 bytes), which held 0x0054ED90 even though the twin 0x00541FD0 already carries the same copy.
+- A data address may be a field of a larger PDB global: 0x0129BA4C is GD3DFormats[0].AlphaBits (GD3DFormats starts at 0x0129BA40); check the header's other offsets before taking a claimed base address.
+- Labels: reloc_identity.labels() takes the FIRST match in sorted ghidra_out/labels_*.tsv order and ignores 0x-prefixed addresses, so an older landing file can keep a stale label alive (DELTA_NOTIONAL_ZERO).
+- A full REFS probe at ~3 s a row is too slow to run for every entry up front (2081 rows); probe per entry, and in the background for the big ones.

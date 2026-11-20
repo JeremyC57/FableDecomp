@@ -1,0 +1,89 @@
+address	change	grade	test	grades_used	entries	note
+004017b0	SConfigDetectionInfo stand-in -> engine/ConfigDetection.h; definition g_pConfigDetectionInfo -> pConfig; test ported onto the header	RELOCATION_MATCH	PASS	1	q4245	binds and defines ?pConfig@@3PAVConfigDetection@@A (no other landed definition; DisplayErrorDialog 0x0099DCB0 binds it extern via ErrorDialog.h); fields mapped by offset to Ego_r TPI members
+004022b0	none	RELOCATION_MATCH (HEAD)	-	0	q4288 q4442 q4422	blocked: port. GFInitialise reads the system manager through the FableEngineRoot / AddChildPrimitive stand-in (?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ at 0x009A4EC0) and models CDisplayManager locally; it also binds 0x013B8384 as ?g_FableDisplayPrimitive_013B8384 (q4422). A port onto engine/CSystemManager.h needs a getter for retail +0x7C (the counted pointer it stores into PSoundManager): Ego_r.pdb CSystemManager has PFontManager at +0x7C and no member there in retail order (retail inserts one; the header leaves it unnamed), so the member / getter name is a header decision for the coordinator. GetGraphicBankManager (+0x6C) exists in FableWin.pdb but not in the header (opt-in needed). Not attempted.
+00416268	data respell g_Name->GVersion; CLoader stand-in param const char*->const CVersion& in place	RELOCATION_MATCH	PASS	2	q4131	binds ?GVersion@@3VCVersion@@A at 0x013B85E4 (binds.py); stand-in callee 0x009F4CF0 spelling changes in place (sole binder, exe scan)
+0041627f	data respell g_Name->GVersion; CLoader stand-in param const char*->const CVersion& in place	RELOCATION_MATCH	PASS	2	q4131	binds ?GVersion@@3VCVersion@@A at 0x013B85E4 (binds.py); stand-in callee 0x009F5E10 spelling changes in place (sole binder, exe scan)
+004179ee	none	HEAD	-	0	q4422	blocked: binds ?g_pDisplayCaps@@3PAUCDisplayCaps@@A at 0x013B8384; q4422 family waits on the coordinator decision (GPRenderManager)
+0044b800	stand-in CCharString(unsigned __int64) ctor -> free __fastcall GFUHUGEToCharString (declaration after the existing local CCharString model; call sites respelled)	RELOCATION_MATCH	PASS	1	q4628	binds ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z; symdiff clean; test is a standalone replica, unchanged
+0048dbc3	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+0048f230	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+0048f50c	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00497890	none	not-a-binder	-	0	q4996	not-a-binder: self row of GFROR13 (not changed)
+00499880	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+005029a0	none	not-a-binder	-	0	q4433	not-a-binder: self row already on the claimed leaf
+0054ed90	draft (work/blocked/0054ed90.cpp): moved onto NUISystem_CText.h (+opt-in FABLE_RETAIL_CTEXT_GETDATAFROMDEF, work/blocked/hdr) / CSystemManager.h / CFontManager.h as twin 0x00541FD0	RELOCATION_MATCH (draft)	-	1	q4288 q4442	blocked: pick-any. Draft binds ?GFGetSystemManager@@YIPAVCSystemManager@@XZ and narrows 0x009E2C80 to ?GetFont@CFontManager@@..., but its object newly defines the COMDAT ??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z (72 bytes, ShareData inlined) which reloc_bindings maps to 0x00419463 (owner row leaf ?AssignFrom@CCPtr@@: 23 bytes, calls ShareData): bodies differ (cmp2.py). ??1 (0x004057A0) and CDefString::GetString (0x00415D70) copies are byte-identical. Retail inlines operator= here, so a declaration-only opt-in cannot match. The landed twin 0x00541FD0 already defines the same differing copy (HEAD debt). Needs a coordinator decision.
+0057f78f	stand-in CCharString(unsigned __int64) ctor -> free __fastcall GFUHUGEToCharString (declaration after the existing local CCharString model; call sites respelled)	RELOCATION_MATCH	PASS	1	q4628	binds ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z; symdiff clean; test is a standalone replica, unchanged
+005bcafe	none	HEAD	-	0	q4422	blocked: binds ?g_pRenderManager2D@@3PAVCRenderManager2D@@A; q4422 family decision
+005dcb00	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+005dcf70	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00614450	stand-in CCharString(unsigned __int64) ctor -> free __fastcall GFUHUGEToCharString (declaration after the existing local CCharString model; call sites respelled)	RELOCATION_MATCH	PASS	1	q4628	binds ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z; symdiff clean; test is a standalone replica, unchanged
+00644424	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+0069e980	none	HEAD	-	0	q4422 q11720 q11721	blocked: binds ?g_RenderManagerCore_013b8384@@ (q4422 family decision); q11720/q11721 not reached
+006c7b00	stand-in CCharString(unsigned __int64) ctor -> free __fastcall GFUHUGEToCharString (declaration after the existing local CCharString model; call sites respelled)	RELOCATION_MATCH	PASS	1	q4628	binds ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z; symdiff clean; test is a standalone replica, unchanged
+006c7c30	stand-in CCharString(unsigned __int64) ctor -> free __fastcall GFUHUGEToCharString (declaration after the existing local CCharString model; call sites respelled)	RELOCATION_MATCH	PASS	1	q4628	binds ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z; symdiff clean; test is a standalone replica, unchanged
+008ed590	none	DIFFER (probe, legacy)	-	0	q4996	blocked: header. Legacy no-Leaf row on candidates/object_family_compiled.h, whose line 21 declares `unsigned long __fastcall GFROR13(unsigned long)` (?GFROR13@@YIKK@Z); it is that header's only landed includer. Fix = respell the candidates header line to `long __fastcall GFROR13(unsigned long)` (or include engine/GFRandom.h): a header item, and the row needs a regrade with its real flags/leaf (the probe grades another function). Not changed.
+0091b010	none	not-a-binder	-	0	q4996	not-a-binder: already binds ?GFROR13@@YIJK@Z (probe); the reloc_bindings witness of ?GFROR13@@YIKK@Z is stale
+0092b800	extern fable_u32 g_InvSqrtMantissaTable[128] -> extern unsigned long GFastOneOverSqrtTable[128] (engine/C3DVector.h spelling)	RELOCATION_MATCH	PASS	1	q5049 q11703	binds ?GFastOneOverSqrtTable@@3PAKA; symdiff clean
+0099d470	extern g_ModuleLanguage -> gApplicationLanguage	RELOCATION_MATCH	PASS	1	q4243	binds ?gApplicationLanguage@@3GA
+0099d520	extern g_ModuleLanguage -> gApplicationLanguage	RELOCATION_MATCH	PASS	1	q4243	binds ?gApplicationLanguage@@3GA; test is a standalone replica (own static), unchanged
+0099dcb0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4243 q4245	not-a-binder: already binds the claimed spelling (probe); claimed only to probe
+0099e260	definition g_LanguageID -> gApplicationLanguage	RELOCATION_MATCH	PASS	1	q4243	binds and defines ?gApplicationLanguage@@3GA (was defining ?g_LanguageID@@3GA; no other landed object defines it)
+0099f930	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009a4ec0	none	not-a-binder	-	0	q4288 q4442	not-a-binder: self row GFGetSystemManager (not changed)
+009be980	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009bece0	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009dca80	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009dda50	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009e1d00	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009e1d50	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009e1e10	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009e1e40	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+009f26b0	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00a0db60	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00a442e0	none	not-a-binder	-	0	q4916	not-a-binder: self row already on the claimed leaf
+00a91640	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00a93a60	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00a94df0	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00a9eb90	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00ab4700	CMouseWindowOwner/ResolveMouseWindowOwner stand-in -> engine/CSystemManager.h (GFGetSystemManager()->GetApplicationWinHandle(), _MOUSE opt-in); test rewritten on the header	RELOCATION_MATCH	PASS	1	q4288 q4442	binds ?GFGetSystemManager@@YIPAVCSystemManager@@XZ; symdiff +?GetApplicationWinHandle@CSystemManager@@QBEPAUHWND__@@XZ (header inline COMDAT, no landed owner)
+00ab5390	none	RELOCATION_MATCH (HEAD)	-	0	q4288 q4442	blocked: port. Old row with no Leaf line on candidates/mouse_dx_accessors_compiled.h (CMouseDX / CMousePrimitiveHierarchy stand-ins; NF44 Round-1 lesson: leave such rows alone). Binds ?ResolveMousePrimitiveHierarchy@@YAPAUCMousePrimitiveHierarchy@@XZ at 0x009A4EC0. Port needs engine/CMouseDX.h (CursorGraphic; the +0x343C flag is unidentified), CSystemManager.h GetDisplayManager, CDisplayManager.h GetD3DDevice and IDirect3DDevice9.h SetCursorProperties / ShowCursor. Not attempted.
+00b23ea0	none	not-a-binder	-	0	q4581	not-a-binder: binds ?GPLightingManager@NEngineInternal@@ (the PDB spelling)
+00b24690	none	HEAD	-	0	q4573	blocked: binds ?g_pShaderBankStateBlock@@3PAUCShaderBankStateBlock@@A at 0x01436E44 (callee 0x00B50C60 unidentified); q4573 family decision
+00b26360	none	not-a-binder	-	0	q4735 q4573 q4578	not-a-binder: binds ?GPScreenEffectOutlineGlow@NEngineInternal@@ (probe); also a q4573 / q4578 family member (g_pEngineWeatherRenderer / g_pEngineSurfaceCompositionManager) waiting on those decisions
+00b2c4e0	local CPixelFormat/CPixelFormatInfo/g_PixelFormatInfo -> engine/CPixelFormat.h (FABLE_RETAIL_CPIXELFORMAT); HasAlpha() -> GetNoABits() > 0	RELOCATION_MATCH	PASS	1	q4200	binds ?GD3DFormats@@3QBVCD3DFormatInfo@@B +0xC (0x0129BA4C = GD3DFormats[0].AlphaBits); symdiff: +?GetNoABits@CPixelFormat@@QBEKXZ (header inline COMDAT, no landed owner) -?HasAlpha (local stand-in)
+00b33010	none	HEAD	-	0	q4574	blocked: binds ?g_pOcclusionRenderer@@3PAUCEngineOcclusionRenderer@@A at 0x01436E60: needs a CEngineShadowRenderer.h port (Enabled +0x08, Target +0x334, GetRenderInfo 0x00B38890); not attempted
+00b3b4f0	none	HEAD	-	0	q4578	blocked: binds ?g_pSurfaceComposition_01436eac@@; q4578 family decision
+00b46660	none	RELOCATION_MATCH (HEAD probe)	-	0	q4502 q4505	not-a-binder: already binds the claimed spelling (probe); claimed only to probe
+00b47980	local CDynamicObjectHeap model -> engine/CDynamicObjectHeap.h (+NF183 opt-in FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE); heap extern(s) -> LOCAL_HEAP_CEngineLightingManager__*	RELOCATION_MATCH	PASS	1	q4502 q4505	binds the PDB LOCAL_HEAP_* statics (binds.py); symdiff clean (the ?Free@?$CDynamicObjectHeap COMDAT was already defined by the local model; reloc_bindings maps no address to it); also moves 0x01437450 off the struct-keyed g_ShadowedSpotLightHeap onto LOCAL_HEAP_CEngineLightingManager__ManagerShadowedSpotLight, the spelling the landed initializer 0x01224780 defines (narrows that split)
+00b47bc0	none	RELOCATION_MATCH (HEAD probe)	-	0	q4502 q4505	not-a-binder: already binds the claimed spelling (probe); claimed only to probe
+00b484b0	none	not-a-binder	-	0	q4576	not-a-binder: binds ?GPEngineWorldMap@NEngineInternal@@ (the PDB spelling)
+00b49a40	local CDynamicObjectHeap model -> engine/CDynamicObjectHeap.h (+NF183 opt-in FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE); heap extern(s) -> LOCAL_HEAP_CEngineLightingManager__*	RELOCATION_MATCH	PASS	1	q4502 q4505	binds the PDB LOCAL_HEAP_* statics (binds.py); symdiff clean (the ?Free@?$CDynamicObjectHeap COMDAT was already defined by the local model; reloc_bindings maps no address to it)
+00b49aa0	local CDynamicObjectHeap model -> engine/CDynamicObjectHeap.h (+NF183 opt-in FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE); heap extern(s) -> LOCAL_HEAP_CEngineLightingManager__*	RELOCATION_MATCH	PASS	1	q4502 q4505	binds the PDB LOCAL_HEAP_* statics (binds.py); symdiff clean (the ?Free@?$CDynamicObjectHeap COMDAT was already defined by the local model; reloc_bindings maps no address to it)
+00b49fe0	local CDynamicObjectHeap model -> engine/CDynamicObjectHeap.h (+NF183 opt-in FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE); heap extern(s) -> LOCAL_HEAP_CEngineLightingManager__*	RELOCATION_MATCH	PASS	1	q4502 q4505	binds the PDB LOCAL_HEAP_* statics (binds.py); symdiff clean (the ?Free@?$CDynamicObjectHeap COMDAT was already defined by the local model; reloc_bindings maps no address to it); its standalone test models the heap locally (private members poked), unchanged
+00b5a3f0	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00b5af60	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00b63010	none	HEAD	-	0	q4576	blocked: binds ?g_pEngineState_01436e8c@@3PAUSEngineState_01436e8c@@A (stand-in struct): CEngineWorldMap.h port, not attempted
+00b77e20	none	HEAD	-	0	q4576	blocked: binds ?g_pEngineEnvironment@@3PAUCEngineEnvironmentManagerView@@A (stand-in struct): port, not attempted
+00ba1140	none	not-a-binder	-	0	q4579	not-a-binder: binds ?GPPrimitiveRenderer@NEngineInternal@@ (the PDB spelling)
+00badb40	none	not-a-binder	-	0	q4580	not-a-binder: binds ?GPResourceManager@NEngineInternal@@ (the PDB spelling)
+00bb3e80	none	not-a-binder	-	0	q4574	not-a-binder: binds ?GPShadowRenderer@NEngineInternal@@ (WORKLIST witness; the PDB spelling)
+00bca6b0	none	not-a-binder	-	0	q4577	not-a-binder: binds ?GPCamera@NEngineInternal@@ (the PDB spelling)
+00bcb800	none	HEAD	-	0	q4580	blocked: binds ?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A (stand-in struct): CEngineResourceManager.h port, not attempted
+00bcf4f0	none	not-a-binder	-	0	q4575	not-a-binder: binds ?GPPrimitiveRenderer2D@NEngineInternal@@ (the PDB spelling)
+00becba0	none	HEAD	-	0	q4578	blocked: binds ?g_pResourceBank_01436eac@@3PAVCResourceBank@@A; q4578 family (GPSurfaceCompositionManager) decision
+00c72af0	none	HEAD	-	0	q4405	blocked: deferred: GameCODA g_AudioContext (light renaming; owner rule)
+00cb28f0	_GetReadingString file static -> external definition (drops `static`)	RELOCATION_MATCH	PASS	1	q4175	binds ?_GetReadingString@@3P6GIPAUHIMC__@@IPAGPAH2PAI@ZA; object newly DEFINES that data symbol (external .bss; no other landed object defines it; was the local static __GetReadingString)
+00cb7a00	stand-in CCharString(unsigned __int64) ctor -> free __fastcall GFUHUGEToCharString (declaration after the existing local CCharString model; call sites respelled)	RELOCATION_MATCH	PASS	1	q4628	binds ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z; symdiff clean; test is a standalone replica, unchanged
+00cbe716	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00cbeeb0	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00d08790	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00d1eb80	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00d2c530	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00d7f460	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00d7f880	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+00e39140	none	HEAD	-	0	(open entry)	blocked: not reached: its entry is open (context); unchanged
+0121a750	none	not-a-binder	-	0	q6198	not-a-binder: defines ?ConsoleVarScoreboardServerIPAddress@@3VCCharString@@A, the PDB name (claim rejected)
+0121a770	none	not-a-binder	-	0	q6199	not-a-binder: defines ?ConsoleVarServerScoresAgent@@3VCCharString@@A, the PDB name (claim rejected)
+012297f0	AutoTinyThunk stand-in -> extern const CCharString BUILDING_BOUNDRY + qualified ~CCharString (fable_string.h); test rewritten on fable_string.h	RELOCATION_MATCH	PASS	3	q4256	binds ?BUILDING_BOUNDRY@@3VCCharString@@B and ??1CCharString@@QAE@XZ; self leaf unchanged (placeholder family); symdiff clean
+0122ad00	none	RELOCATION_MATCH (HEAD)	-	0	q4502	blocked: port. The atexit destructor of LOCAL_HEAP_CEngineLightingManager__LightElementLink, spelled through the AutoTinyFieldMethodsTarget stand-in (?g_AutoTinyFieldMethodsObject_01436ed0, a cast-integer vtable store 0x012a20e4, First_00b48c70 / Second stand-in callees). Retail is the inline ~CDynamicObjectHeap<12,16> (vptr store, Release 0x00B48C70, ~CDynamicObjectHeapBase); engine/CDynamicObjectHeap.h declares that dtor out of line, so a port needs an inline-dtor opt-in whose vtable COMDAT (0x012A20E4) must pass the pick-any check. Not attempted.
+0122ad20	none	RELOCATION_MATCH (HEAD)	-	0	q4505	blocked: port. Same as 0x0122AD00 for LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight (vtable 0x012A20F0, Release 0x00B48D40). Not attempted.

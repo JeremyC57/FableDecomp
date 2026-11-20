@@ -36,7 +36,7 @@ extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount();
 extern "C" int __fastcall RetrieveString(HINSTANCE module, unsigned int id, char* buffer, int bufferSize);   // 0x0099D470
 
 HINSTANCE g_hStringsDll;                       // 0x013BD6EC
-unsigned short g_LanguageID;                   // 0x0138E060
+unsigned short gApplicationLanguage;                   // 0x0138E060 ?gApplicationLanguage@@3GA (Ego_d.pdb public; engine/ErrorDialog.h; NF183 q4243)
 char g_ExceptionTitle[0x100];                  // 0x013BD1C8
 char g_ExceptionText[0x100];                   // 0x013BD0C8
 char g_EulaFileName[0x20];                     // 0x013BD2C8
@@ -57,12 +57,12 @@ extern "C" void __fastcall InitExternalStrings()
     unsigned long type;
     unsigned long langID;
     unsigned long size;
-    g_LanguageID = 0x409;
+    gApplicationLanguage = 0x409;
     if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Microsoft Games\\Fable\\1.0", 0, KEY_READ, &key) == ERROR_SUCCESS) {
         type = REG_DWORD;
         size = sizeof(langID);
         if (RegQueryValueExA(key, "LangID", 0, &type, (unsigned char*)&langID, &size) == ERROR_SUCCESS)
-            g_LanguageID = (unsigned short)(((langID & 0xFC00) == 0) ? (langID | 0x400) : langID);   // SUBLANG_DEFAULT
+            gApplicationLanguage = (unsigned short)(((langID & 0xFC00) == 0) ? (langID | 0x400) : langID);   // SUBLANG_DEFAULT
         RegCloseKey(key);
     }
     if (!RetrieveString(g_hStringsDll, 0xDB, g_ExceptionTitle, sizeof(g_ExceptionTitle)))

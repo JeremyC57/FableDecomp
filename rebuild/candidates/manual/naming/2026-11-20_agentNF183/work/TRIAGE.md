@@ -1,0 +1,16 @@
+# NF183 triage (census from reloc_bindings spellings + REFS identifier grep; work/census/<q>.txt)
+- q4131 GVersion: 00416268/0041627f bind g_Name; fix: class CVersion fwd + extern GVersion + CLoader param const CVersion& in place.
+- q4175 one spelling = claim -> done-already (probe).
+- q4200 g_PixelFormatInfo (00b2c4e0 only); claim GD3DFormats (Ego_d PUB32). No row binds claim -> whole family.
+- q4243 3 spellings; claim gApplicationLanguage bound by 0099dcb0; respell 0099d470, 0099e260.
+- q4245 claim pConfig bound by 0099dcb0; respell 004017b0.
+- q4256 one spelling = claim -> done-already.
+- q4288/q4442 GFGetSystemManager: 3 wrong spellings (0054ed90, 00ab5390, 004022b0).
+- q4405 GameCODA -> deferred.
+- q4422 claim PRenderManager; Ego_d has ?GPRenderManager@@3PAVCRenderManager@@A (global) -> verify; coordinator decision.
+- q4502/q4505 LOCAL_HEAP_*: respell 00b47980, 00b49aa0 / 00b49fe0, 00b49a40.
+- q4573..q4581, q4735: g_pEngine* claims superseded by Ego_d NEngineInternal::GP* (carved). Report replacements.
+- q6198/6199: PDB ConsoleVar* already sole spelling -> reject descriptive claims.
+- q6386: PDB global pGlobalScriptDef CDefPointer<const CScriptDef> sole spelling -> reject NGlobalScriptDefs claim.
+- q6513: Ego_d @@1 (protected) vs landed @@2: NAME_FIXES note only.
+- q4644 one spelling = claim -> done-already.

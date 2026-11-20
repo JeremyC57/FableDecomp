@@ -17,14 +17,14 @@ extern "C" __declspec(dllimport) int __stdcall LoadStringA(HINSTANCE instance, u
 int __fastcall RetrieveStringByLanguage(HINSTANCE hInstance, unsigned long id, char* buffer,
                                         unsigned long bufferSize, unsigned short language);  // 0x0099D3A0
 
-extern unsigned short g_ModuleLanguage;   // 0x0138E060
+extern unsigned short gApplicationLanguage;   // 0x0138E060 ?gApplicationLanguage@@3GA (Ego_d.pdb public; the DisplayErrorDialog 0x0099DCB0 spelling, engine/ErrorDialog.h; NF183 q4243)
 
 extern "C" int __fastcall RetrieveString(HINSTANCE hInstance, unsigned int id, char* buffer, int bufferSize)
 {
-    int result = RetrieveStringByLanguage(hInstance, id, buffer, bufferSize, g_ModuleLanguage);
+    int result = RetrieveStringByLanguage(hInstance, id, buffer, bufferSize, gApplicationLanguage);
     if (result != 0)
         return result;
-    if (g_ModuleLanguage != 0x409) {
+    if (gApplicationLanguage != 0x409) {
         result = RetrieveStringByLanguage(hInstance, id, buffer, bufferSize, 0x409);
         if (result != 0)
             return result;

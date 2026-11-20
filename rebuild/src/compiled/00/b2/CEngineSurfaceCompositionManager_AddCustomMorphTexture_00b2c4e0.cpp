@@ -34,16 +34,11 @@ namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; } 
 class C2DExtentsI { public:
     long X, Y;
 };
-struct CPixelFormatInfo {                               // 0x24-byte rows @ 0x0129BA4C
-    unsigned long AlphaBits;
-    unsigned long _rest[8];
-};
-extern CPixelFormatInfo g_PixelFormatInfo[];            // 0x0129BA4C
-class CPixelFormat { public:
-    long FormatIndex;
-    CPixelFormat() : FormatIndex(-1) {}
-    bool HasAlpha() const { return g_PixelFormatInfo[FormatIndex].AlphaBits > 0; }
-};
+// Naming (NF183, 2026-11-20, q4200): the local CPixelFormat / CPixelFormatInfo / g_PixelFormatInfo (0x0129BA4C) model moved onto the
+//   shared engine/CPixelFormat.h: 0x0129BA4C is GD3DFormats[0].AlphaBits (Ego_d.pdb public ?GD3DFormats@@3QBVCD3DFormatInfo@@B at
+//   0x0129BA40, AlphaBits +0x0C in engine/CD3DFormatInfo.h); the made-up HasAlpha() is the PDB inline GetNoABits() tested > 0.
+#define FABLE_RETAIL_CPIXELFORMAT
+#include "engine/CPixelFormat.h"
 struct CPixelFormatSet {
     CPixelFormat NonAlpha, Alpha, BooleanAlpha, InterpolatedAlpha, BumpMap, BumpMapAlpha, Signed;
 };
@@ -171,7 +166,7 @@ unsigned long CEngineSurfaceCompositionManager::AddCustomMorphTexture(CTexture& 
         height = MinRenderTargetSize;
     else if (height > MaxCompositeTextureSize)
         height = MaxCompositeTextureSize;
-    bool hasAlpha = texture.GetPixelFormat().HasAlpha();
+    bool hasAlpha = texture.GetPixelFormat().GetNoABits() > 0;
     CPixelFormat format;
     if (hasAlpha)
         format = CompressedAlphaPixelFormat;

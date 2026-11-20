@@ -1,7 +1,7 @@
 // CPersistTraits<CIntelligentPointer<CThing> >::TransferOut(CPersistContext& context, CCharString& out, CIntelligentPointer<CThing>& value) -- write the pointed-to thing's 64-bit unique ID (0 for none) as decimal text
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C7B00, length 71 bytes (80 with int3 padding).
 // Leaf: ?TransferOut@?$CPersistTraits
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), CCharString::CCharString(unsigned __int64)
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), GFUHUGEToCharString(unsigned __int64)
 // @ 0x0099F930, CCharString::operator+=(const CCharString&) @ 0x0099F0A0, CCharString::~CCharString @ 0x0099EAE0.
 // Label correction: the manifest calls this "CPersistContext_TransferableComponent<CIntelligentPointer<CThing>>::
 // TransferOut"; it takes three arguments (`ret 0xc`) and never touches `this`: it is the traits member
@@ -16,10 +16,13 @@ class CBaseObject;
 
 class CCharString { public:
     struct SBlock* m_pBlock;
-    explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
 };
+// Naming (NF183, 2026-11-20, q4628): 0x0099F930 is the free __fastcall GFUHUGEToCharString (Ego_r.pdb + FableWin.pdb
+//   ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z, the spelling the landed 0x004FB990 / 0x004B5EE0 / 0x008304A0 bind), was a stand-in
+//   CCharString(unsigned __int64) constructor (same registers: hidden result in ecx, the value on the stack).
+CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value);   // 0x0099F930
 
 class CThing {
 public:
@@ -55,5 +58,5 @@ void CPersistTraits<CIntelligentPointer<CThing> >::TransferOut(CPersistContext& 
     unsigned __int64 uid = 0;
     if (value.GetPItem())
         uid = value.GetPItem()->UniqueID;
-    out += CCharString(uid);
+    out += GFUHUGEToCharString(uid);
 }

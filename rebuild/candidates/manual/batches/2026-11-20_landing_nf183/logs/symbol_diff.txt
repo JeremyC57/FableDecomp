@@ -1,0 +1,26 @@
+004017b0 new: 1
+    ?pConfig@@3PAVConfigDetection@@A TABLE:013bd6e8
+00416268 new: 0
+0041627f new: 0
+0044b800 new: 0
+0057f78f new: 0
+00614450 new: 0
+006c7b00 new: 0
+006c7c30 new: 0
+0092b800 new: 0
+0099d470 new: 0
+0099d520 new: 0
+0099e260 new: 1
+    ?gApplicationLanguage@@3GA TABLE:0138e060
+00ab4700 new: 1
+    ?GetApplicationWinHandle@CSystemManager@@QBEPAUHWND__@@XZ
+00b2c4e0 new: 1
+    ?GetNoABits@CPixelFormat@@QBEKXZ
+00b47980 new: 0
+00b49a40 new: 0
+00b49aa0 new: 0
+00b49fe0 new: 0
+00cb28f0 new: 1
+    ?_GetReadingString@@3P6GIPAUHIMC__@@IPAGPAH2PAI@ZA TABLE:0143e684
+00cb7a00 new: 0
+012297f0 new: 0
