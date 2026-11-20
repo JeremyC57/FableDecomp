@@ -39713,3 +39713,8 @@ _ONE_OVER_360	01238e00	00878b60
 ?AddGossip@CV_BookCollectingScript@NScript@@QAEXVCCharString@@000@Z	00e55c60	00e54e90
 ?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z	00e55ce0	00e54e90
 ?LookForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXXZ	00e57530	00e54e90
+??0LHHttp2@LHNetworkLib@@QAE@XZ	00840f50	0055f710
+?CryptoMatic@?A0xb2e9ac23@@YIHPBDPADH0D@Z	0055e2c0	0055f710
+?PrepareRequest@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@W4HTTP_REQUEST_TYPE@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLHHttpHeaders@2@1K@Z	008400b0	0055f710
+?SetConnectionDetails@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z	0083fb20	0055f710
+?SetProxySettings@LHHttp2@LHNetworkLib@@QAEXABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z	0083f870	0055f710

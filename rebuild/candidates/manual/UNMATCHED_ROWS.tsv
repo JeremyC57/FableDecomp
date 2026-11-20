@@ -63,7 +63,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0055d810	CTCPhotojournalCapture	OnCaptionEntered	1008	parked	DIFFER(944v998)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand304/differ/0055d810.cpp	original
 0055dc00	CTCPhotojournalCapture	CreateScreen	496	parked	DIFFER(502v495)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0055dc00.cpp	original
 0055e2c0	_global	CryptoMatic	816	parked	DIFFER(545v549)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0055e2c0.cpp	original
-0055f710	CTCHeroOnlineScoreboard	ResetAndOpenHTTPAndPrepareRequest	1136	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(1121v1122)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0055f710.cpp	original
 00560bb0	CTCHeroOnlineScoreboard	GetDecryptedDocument	336	parked	DIFFER(320v321)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00560bb0.cpp	original
 00560d00	CTCHeroOnlineScoreboard	CTCHeroOnlineScoreboard::ProcessLogin	1872	parked	DIFFER(1844v1860)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/00560d00.cpp	original
 0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	parked	DIFFER(830v836)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0057b43f.cpp	original

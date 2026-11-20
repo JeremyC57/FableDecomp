@@ -401485,6 +401485,13 @@ $catalog = @(
         TestSource = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_Main_00e54e90_test.cpp'
         PassPattern = '00e54e90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0055f710'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/55/CTCHeroOnlineScoreboard_ResetAndOpenHTTPAndPrepareRequest_0055f710.cpp'
+        TestSource = '00/55/CTCHeroOnlineScoreboard_ResetAndOpenHTTPAndPrepareRequest_0055f710_test.cpp'
+        PassPattern = '0055f710_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
