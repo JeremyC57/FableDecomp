@@ -909,7 +909,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00e1f7e0	NScript::CQR_EscortTraderScript::CTraderToEscort	Init	1296	parked	DIFFER(1357v1286)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand772/differ/00e1f7e0.test.cpp	original
 00e20210	NScript::CQR_EscortTraderScript	WatchForTraderHit	960	parked	DIFFER(979v956)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00e20210.cpp	original
 00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort	Main	14512	parked	acctC round six: round 6 final (2026-11-16): DIFFER(14526v14510); latest draft 00e20600.cpp + NOTES.md in the folder (grep the 	27	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE4/00e20600.cpp	gapscan/boundary
-00e25f70	NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern	Main	2064	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(2049v2049)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e25f70.cpp	gapscan/boundary
 00e29b20	NScript::CQS_ScytheInfoScript	Main	848	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand573/differ/00e29b20.cpp	gapscan/boundary
 00e2e400	NScript::CV_AmbushScamScript	ResetRandomSpeechTime	64	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00e2e400.cpp	original
 00e2ec30	CV_AmbushScamScript	GetTrickster	1344	parked	DIFFER(1053v1336)	1	rebuild/candidates/manual/pending/2026-11-03_linux_hand730/src/00e2ec30.cpp	original

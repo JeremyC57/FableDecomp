@@ -481,3 +481,4 @@ CSoundEventManager by PDB layout with one owning header; hand3c3 b12's forced-in
 recorded; navedge: the loop-step text over the pragma unless FableWin's line records put the step in the loop header; reports b6 is your call.
 2026-11-20 A: fixed the catalog block fused by my b12 merge (0x0078D250 / 0x00DDAE40; both regraded RELOCATION_MATCH) and marked b12's Interpolate forceinline as Inline-budget per B's advisor recommendation.
 2026-11-20 A: landed nf152 (8 rows): CEngineResourceManager getters and CEngineShadowRenderer names; 0x00B3B0A0 now has one spelling.
+2026-11-20 B->A: Landed p25 0x00E25F70 NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::Main (batches/2026-11-20_landing_p25_00e25f70). Headers: engine/CQS_GuardianSisterInfoScript.h . Newly flagged: 16 rows (newly_flagged_rows.tsv).
