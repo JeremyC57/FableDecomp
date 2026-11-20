@@ -6,7 +6,7 @@
 //   0x0084EFE0). The catalog's "LHHttp_ParseResponseHeaders" is descriptive.
 // Callees: basic_string::assign(const char*, const char*) 0x005693B0, LHHttpHeaders::GetHeader 0x0083F650 (this chunk),
 //   _M_range_initialize<const char*> 0x005672D0 / <char*> 0x00567D00, vector<string>::_M_insert_overflow 0x00569E30,
-//   operator+(const string&, const char*) 0x00841B70 (cdecl), basic_string::_M_append(f, l, tag) 0x00567400,
+//   operator+(const string&, const char*) 0x00841B70 (cdecl), basic_string::append(f, l, tag) 0x00567400,
 //   _M_throw_length_error 0x00565A30, malloc / memmove / free / puts / abort.
 // Data: "" 0x0122D70E, "User-Agent" 0x0127312C, "\r\n" 0x012397F8, g_DefaultUserAgentHeader 0x0138490C (char* to
 //   "User-Agent: Lionhead Studios HTTP Library...").
@@ -17,7 +17,7 @@
 //   "\r\n";` per header (the loop copy fully inline with the puts/abort length error) and `return HeaderString;` (inline,
 //   its length error the out-of-line 0x00565A30). The retail TU holds the bodies of GetHeader and of the STLport
 //   members it calls out of line, so VC7.1 knows which locals they leave alone: same-TU noinline bodies (GetHeader with
-//   StartsWith/toLowerCase from this chunk's 0x0083F650 model; STLport 4.6 assign / _M_append / operator+ /
+//   StartsWith/toLowerCase from this chunk's 0x0083F650 model; STLport 4.6 assign / append / operator+ /
 //   _M_insert_overflow as stand-ins) drop the dead zero stores of the "User-Agent" temporary, keep the default
 //   header's block in esi across push_back and home the iterator tags in the dead result-pointer slot. With only
 //   declarations every one of those addresses escapes and the temporaries go back through memory.
@@ -221,6 +221,7 @@ public:
         return _Self(this->_M_start + __pos, this->_M_start + __pos + (min)(__n, size() - __pos));
     }
 
+private:
     template <class _ForwardIter>
     void _M_range_initialize(_ForwardIter __f, _ForwardIter __l, const forward_iterator_tag&)   // 0x005672D0 / 0x00567D00
     {
@@ -229,14 +230,18 @@ public:
         this->_M_finish = uninitialized_copy(__f, __l, this->_M_start);
         _M_terminate_string();
     }
+public:
     template <class _InputIter> void _M_range_initialize(_InputIter __f, _InputIter __l)
     {
         _M_range_initialize(__f, __l, forward_iterator_tag());
     }
     _Self& assign(const _CharT* __f, const _CharT* __l);                              // 0x005693B0
     _Self& operator=(const _CharT* __s) { return assign(__s, __s + _Traits::length(__s)); }
-    template <class _InputIter> _Self& _M_append(_InputIter __f, _InputIter __l, const forward_iterator_tag&);   // 0x00567400
-    _Self& append(const _Self& __s) { return _M_append(__s._M_start, __s._M_finish, forward_iterator_tag()); }
+private:
+    template <class _InputIter> _Self& append(_InputIter __f, _InputIter __l, const forward_iterator_tag&);   // 0x00567400
+public:
+    template <class _InputIter> _Self& append(_InputIter __f, _InputIter __l) { return append(__f, __l, forward_iterator_tag()); }
+    _Self& append(const _Self& __s) { return append(__s._M_start, __s._M_finish, forward_iterator_tag()); }
     _Self& operator+=(const _Self& __s) { return append(__s); }
     void _M_construct_null(_CharT* __p) { *__p = _CharT(); }
     void _M_terminate_string() { _M_construct_null(this->_M_finish); }
@@ -344,13 +349,13 @@ basic_string<_CharT, _Traits, _Alloc>& basic_string<_CharT, _Traits, _Alloc>::as
     }
     else {
         memmove(this->_M_start, __f, size());
-        _M_append(__f + size(), __l, forward_iterator_tag());
+        append(__f + size(), __l, forward_iterator_tag());
     }
     return *this;
 }
 
 template <class _CharT, class _Traits, class _Alloc> template <class _InputIter>
-basic_string<_CharT, _Traits, _Alloc>& basic_string<_CharT, _Traits, _Alloc>::_M_append(_InputIter __first,
+basic_string<_CharT, _Traits, _Alloc>& basic_string<_CharT, _Traits, _Alloc>::append(_InputIter __first,
     _InputIter __last, const forward_iterator_tag&)                                       // 0x00567400 (stand-in)
 {
     if (__first != __last) {
@@ -386,7 +391,7 @@ basic_string<_CharT, _Traits, _Alloc> operator+(const basic_string<_CharT, _Trai
     const unsigned int __n = _Traits::length(__c);
     basic_string<_CharT, _Traits, _Alloc> __result(__s.size() + __n + 1, __s.get_allocator());
     __result.append(__s);
-    __result._M_append(__c, __c + __n, forward_iterator_tag());
+    __result.append(__c, __c + __n);
     return __result;
 }
 #pragma auto_inline(on)

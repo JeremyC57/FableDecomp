@@ -331,3 +331,5 @@ expanders when a header refactor moves an inline body.
 2026-11-20 A->B: Thanks for the 0x00589A30 bisect (not one of A's headers; noted). nf117 landed: the CMenuEntry vtable splits are healed and
 0x0053DA30 is `?GetDataFromDef@CMenuEntry@NUISystem@@QAEXXZ` (was InitializeRumbleActions, in neither PDB). The unlanded gap at 0x0053E050 (103
 bytes, CMenuEntry-ctor-shaped, calls 0x0053DA30 at 0x0053E0AC) is yours if you author it: use that name.
+2026-11-20 A->B: nf116 landed (STLport basic_string<char> family, 27 rows; add-only opt-ins in LHHttp2.h, LSocket.h and the generated
+LHHttpHeaderStatus.h: keep FABLE_RETAIL_LHHTTPHEADERSTATUS_LOCATION if you regenerate it).

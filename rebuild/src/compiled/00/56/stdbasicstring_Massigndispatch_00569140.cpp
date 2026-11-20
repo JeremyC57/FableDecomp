@@ -1,5 +1,5 @@
 // std::basic_string::_M_assign_dispatch(char* f, char* l, const __false_type&) -- STLport string assign from a char* range: overwrite the existing characters in place, then erase the leftover tail or append the rest of the range
-// Leaf: ??$_M_assign_dispatch@
+// Leaf: ??$_M_assign_dispatch@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABU__false_type@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00569140, length 104 bytes, `ret 0Ch` (thiscall: f, l, the tag reference).
 // Callers: 20 sites (0x00561041, 0x005697AF, 0x00569999, LHNetworkLib 0x0083F520.., 0x008F8D8C, 0x0090AFFB): the
 //   `assign(first, last)` front end with char* iterators (`_M_assign_dispatch(f, l, _Integral())`).
@@ -58,12 +58,15 @@ public:
         }
         return __first;
     }
+private:
     template <class _ForwardIter>
     _Self& append(_ForwardIter __first, _ForwardIter __last, const forward_iterator_tag&);   // <char*> 0x00567400
+public:
     template <class _InputIter> _Self& append(_InputIter __first, _InputIter __last)
     {
         return append(__first, __last, forward_iterator_tag());
     }
+private:
     template <class _InputIter> _Self& _M_assign_dispatch(_InputIter __f, _InputIter __l, const __false_type&)
     {
         pointer __cur = this->_M_start;
@@ -78,6 +81,7 @@ public:
             append(__f, __l);
         return *this;
     }
+public:
 };
 }
 

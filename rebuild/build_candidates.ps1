@@ -193758,16 +193758,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0083f5c0'
-        Module = 'CHttpUrl_0083f420'
-        Source = '00/83/CHttpUrl0083f420_GetHost0083f5c0_0083f5c0.cpp'
-        TestSource = '00/83/CHttpUrl0083f420_GetHost0083f5c0_0083f5c0_test.cpp'
+        Module = 'LHNetworkLib::LHHttpHeaderStatus'
+        Source = '00/83/LHNetworkLibLHHttpHeaderStatus_GetLocationHost_0083f5c0.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttpHeaderStatus_GetLocationHost_0083f5c0_test.cpp'
         PassPattern = '0083f5c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0083f600'
-        Module = 'CHttpUrl_0083f420'
-        Source = '00/83/CHttpUrl0083f420_GetPath0083f600_0083f600.cpp'
-        TestSource = '00/83/CHttpUrl0083f420_GetPath0083f600_0083f600_test.cpp'
+        Module = 'LHNetworkLib::LHHttpHeaderStatus'
+        Source = '00/83/LHNetworkLibLHHttpHeaderStatus_GetLocationURI_0083f600.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttpHeaderStatus_GetLocationURI_0083f600_test.cpp'
         PassPattern = '0083f600_TEST PASS'
     }
     [pscustomobject]@{
@@ -248335,9 +248335,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00569330'
-        Module = 'CNetString_Retail'
-        Source = '00/56/CNetStringRetail_Substr_00569330.cpp'
-        TestSource = '00/56/CNetStringRetail_Substr_00569330_test.cpp'
+        Module = 'std::basic_string<char>'
+        Source = '00/56/stdbasicstring_substr_00569330.cpp'
+        TestSource = '00/56/stdbasicstring_substr_00569330_test.cpp'
         PassPattern = '00569330_TEST PASS'
     }
     [pscustomobject]@{
@@ -266914,8 +266914,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00567d60'
         Module = 'std::basic_string<char>'
-        Source = '00/56/stdbasicstringchar_appendconstchar_00567d60.cpp'
-        TestSource = '00/56/stdbasicstringchar_appendconstchar_00567d60_test.cpp'
+        Source = '00/56/stdbasicstring_append_00567d60.cpp'
+        TestSource = '00/56/stdbasicstring_append_00567d60_test.cpp'
         PassPattern = '00567d60_TEST PASS'
     }
     [pscustomobject]@{
@@ -266942,8 +266942,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00567400'
         Module = 'std::basic_string<char>'
-        Source = '00/56/stdbasicstringchar_appendchar_00567400.cpp'
-        TestSource = '00/56/stdbasicstringchar_appendchar_00567400_test.cpp'
+        Source = '00/56/stdbasicstring_append_00567400.cpp'
+        TestSource = '00/56/stdbasicstring_append_00567400_test.cpp'
         PassPattern = '00567400_TEST PASS'
     }
     [pscustomobject]@{
@@ -270220,9 +270220,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00567e80'
-        Module = 'CRetailString'
-        Source = '00/56/CRetailString_Mappenddispatch_00567e80.cpp'
-        TestSource = '00/56/CRetailString_Mappenddispatch_00567e80_test.cpp'
+        Module = 'std::basic_string<char>'
+        Source = '00/56/stdbasicstring_Mappenddispatch_00567e80.cpp'
+        TestSource = '00/56/stdbasicstring_Mappenddispatch_00567e80_test.cpp'
         PassPattern = '00567e80_TEST PASS'
     }
     [pscustomobject]@{
@@ -296368,9 +296368,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00841ee0'
-        Module = 'LAddress'
-        Source = '00/84/LAddress_LAddress_00841ee0.cpp'
-        TestSource = '00/84/LAddress_LAddress_00841ee0_test.cpp'
+        Module = 'LHNetworkLib::LAddress'
+        Source = '00/84/LHNetworkLibLAddress_LAddress_00841ee0.cpp'
+        TestSource = '00/84/LHNetworkLibLAddress_LAddress_00841ee0_test.cpp'
         PassPattern = '00841ee0_TEST PASS'
     }
     [pscustomobject]@{
@@ -311587,9 +311587,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00569140'
-        Module = 'std::basic_string'
-        Source = '00/56/STLbasicstring_Massigndispatch_00569140.cpp'
-        TestSource = '00/56/STLbasicstring_Massigndispatch_00569140_test.cpp'
+        Module = 'std::basic_string<char>'
+        Source = '00/56/stdbasicstring_Massigndispatch_00569140.cpp'
+        TestSource = '00/56/stdbasicstring_Massigndispatch_00569140_test.cpp'
         PassPattern = '00569140_TEST PASS'
     }
     [pscustomobject]@{

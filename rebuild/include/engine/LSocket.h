@@ -42,6 +42,11 @@ struct LAddress {
         TransportFlags = LSF_NONE;
     }
 #endif
+#ifdef FABLE_RETAIL_LSOCKET_LADDRESS_NAMEPORT_CTOR
+    // NF116 opt-in (row 0x00841EE0): Ego_r.pdb ??0LAddress@LHNetworkLib@@QAE@ABV?$basic_string@...@std@@G@Z, the (server name, port)
+    // constructor (landed 0x0083F9B0 LHHttp2::Open binds it). Declaration only, no layout change.
+    LAddress(const std::string& serverName, unsigned short serverPort);  // 0x00841EE0
+#endif
 };
 #ifdef FABLE_RETAIL_LSOCKET_SEND_PASS23
 // Original Ego_r/FableWin complete class: empty, size1, no bases or members.

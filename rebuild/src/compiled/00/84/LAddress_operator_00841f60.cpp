@@ -7,25 +7,10 @@
 // empty tag temporary homed in the dead argument slot (`lea eax,[esp+0Ch]`).
 // Layout: retail LAddress is 0x1C bytes (PDB 44 with a Dinkumware string), as the landed LSocket::Attach 0x008F8C00 and
 // the LAddress constructor 0x00841E90 show. Global namespace, as the landed LSocket rows.
-struct __false_type {                              // STLport empty tag; a user constructor keeps the temporary store-free
-    __false_type() { }
-};
 
-struct CRetailString {                             // STLport basic_string<char>, 12 bytes in retail (global, the landed 0x00841E90 name)
-    char* _M_start;
-    char* _M_finish;
-    char* _M_end_of_storage;
-    CRetailString& _M_assign_dispatch(const char* first, const char* last, const __false_type&);   // 0x00569140
-    CRetailString& operator=(const CRetailString& other)
-    {
-        if (&other != this)
-            _M_assign_dispatch(other._M_start, other._M_finish, __false_type());
-        return *this;
-    }
-};
-
+#include "stlport/fable_string.h"
 struct LAddress {                                  // Ego_r.pdb names; retail 0x1C bytes (12-byte STLport string)
-    CRetailString  ServerName;                     // +0x00
+    std::string    ServerName;                   // +0x00
     unsigned long  ServerIP;                       // +0x0C
     unsigned short ServerPort;                     // +0x10
     long           TransportProtocol;              // +0x14 LSOCKET_PROTOCOL

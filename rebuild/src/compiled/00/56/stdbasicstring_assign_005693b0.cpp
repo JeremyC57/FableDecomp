@@ -76,8 +76,10 @@ public:
         return __first;
     }
 
+private:
     template <class _ForwardIter>
     _Self& append(_ForwardIter __first, _ForwardIter __last, const forward_iterator_tag&);   // <const char*> 0x00567D60
+public:
     template <class _InputIter> _Self& append(_InputIter __first, _InputIter __last)
     {
         return append(__first, __last, forward_iterator_tag());

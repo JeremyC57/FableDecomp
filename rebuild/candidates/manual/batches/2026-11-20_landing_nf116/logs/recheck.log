@@ -1,0 +1,80 @@
+addr       parity           behav  name
+0055f090   RELOCATION_MATCH PASS   _global::StdEncryptString
+0055f140   RELOCATION_MATCH PASS   _global::StdDecryptString
+00560920   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00560920   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00560920   RELOCATION_MATCH PASS   _global::Explode
+00567400   RELOCATION_MATCH PASS   std::basic_string<char>::append<char*>
+00567d60   RELOCATION_MATCH PASS   std::basic_string<char>::append<const char*>
+00567e80   RELOCATION_MATCH PASS   std::basic_string<char>::_M_append_dispatch<char*>
+00568ce0   RELOCATION_MATCH PASS   std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string
+00569140   RELOCATION_MATCH PASS   std::basic_string<char>::_M_assign_dispatch<char*>
+00569330   RELOCATION_MATCH PASS   std::basic_string<char>::substr
+005693b0   RELOCATION_MATCH PASS   std::basic_string<char, std::char_traits<char>, std::allocator<char>>::assign
+00569690   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00569690   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00569690   RELOCATION_MATCH PASS   std::operator+<char, std::char_traits<char>, std::allocator<char>>
+0083ee10   RELOCATION_MATCH PASS   LHNetworkLib::StartsWith
+0083f420   WARN SHARED_HEADER_AVAILABLE LHHttpHeaderStatus (engine/LHHttpHeaderStatus.h)
+0083f420   WARN RELOC_ALIAS: _atoi -> 00bfed28 is the import thunk 'MSVCR71.DLL::atoi'
+0083f420   RELOCATION_MATCH PASS   LHNetworkLib::LHHttpHeaderStatus::ParseLocationData
+0083f5c0   RELOCATION_MATCH PASS   LHNetworkLib::LHHttpHeaderStatus::GetLocationHost
+0083f600   RELOCATION_MATCH PASS   LHNetworkLib::LHHttpHeaderStatus::GetLocationURI
+0083f870   RELOCATION_MATCH PASS   LHNetworkLib::LHHttp2::SetProxySettings
+0083fb20   RELOCATION_MATCH PASS   LHNetworkLib::LHHttp2::SetConnectionDetails
+0083fc00   RELOCATION_MATCH PASS   LHNetworkLib::LHHttpHeaders::AddHeader
+0083fce0   WARN RELOC_NAME: ??$?HDV?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z -> 00841b70 labelled 'std::operator+<char,std::char_traits<char>,std::allocator<char> >'
+0083fce0   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0083fce0   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0083fce0   RELOCATION_MATCH PASS   LHNetworkLib::LHHttpHeaders::GetHeaderString
+00840b60   WARN SHARED_HEADER_AVAILABLE LHHttpHeaderStatus (engine/LHHttpHeaderStatus.h)
+00840b60   WARN SHARED_HEADER_AVAILABLE LHHttp2 (engine/LHHttp2.h)
+00840b60   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00840b60   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00840b60   WARN RELOC_ALIAS: _atoi -> 00bfed28 is the import thunk 'MSVCR71.DLL::atoi'
+00840b60   WARN RELOC_ALIAS: _atol -> 00bfed2e is the import thunk 'MSVCR71.DLL::atol'
+00840b60   RELOCATION_MATCH PASS   LHNetworkLib::LHHttp2::GetHeader
+00841b70   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00841b70   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00841b70   RELOCATION_MATCH PASS   std::operator+<char,std::char_traits<char>,std::allocator<char> >
+00841c50   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00841c50   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00841c50   RELOCATION_MATCH PASS   std::operator+<char,std::char_traits<char>,std::allocator<char> >
+00841ee0   RELOCATION_MATCH PASS   LHNetworkLib::LAddress::LAddress
+00841f60   RELOCATION_MATCH PASS   LAddress::operator=
+008f8cc0   WARN SHARED_HEADER_AVAILABLE LSocket (engine/LSocket.h)
+008f8cc0   WARN RELOC_ALIAS: __itoa -> 00bfed34 is the import thunk 'MSVCR71.DLL::_itoa'
+008f8cc0   WARN RELOC_NAME: ??0CNetErrorString@@QAE@PBDABV?$allocator@D@std@@@Z -> 00568440 labelled 'std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string'
+008f8cc0   RELOCATION_MATCH PASS   LSocket::Listen
+008f96e0   WARN SHARED_HEADER_AVAILABLE LSocket (engine/LSocket.h)
+008f96e0   RELOCATION_MATCH PASS   LSocket::GetClientInformation
+0090af80   RELOCATION_MATCH PASS   LHNetworkLib::LSocketServer::GetUDPPacket
+
+WINS: 27
+  0055f090 RELOCATION_MATCH _global::?StdEncryptString@
+  0055f140 RELOCATION_MATCH _global::?StdDecryptString@
+  00560920 RELOCATION_MATCH _global::?Explode@
+  00567400 RELOCATION_MATCH std::basic_string<char>::??$append@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABUforward_iterator_tag@1@@Z
+  00567d60 RELOCATION_MATCH std::basic_string<char>::??$append@PBD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PBD0ABUforward_iterator_tag@1@@Z
+  00567e80 RELOCATION_MATCH std::basic_string<char>::??$_M_append_dispatch@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABU__false_type@1@@Z
+  00568ce0 RELOCATION_MATCH std::basic_string::??0?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z
+  00569140 RELOCATION_MATCH std::basic_string<char>::??$_M_assign_dispatch@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@PAD0ABU__false_type@1@@Z
+  00569330 RELOCATION_MATCH std::basic_string<char>::?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z
+  005693b0 RELOCATION_MATCH std::basic_string::?assign@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD0@Z
+  00569690 RELOCATION_MATCH std::??$?HDV?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z
+  0083ee10 RELOCATION_MATCH LHNetworkLib::?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+  0083f420 RELOCATION_MATCH LHNetworkLib::LHHttpHeaderStatus::?ParseLocationData@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ
+  0083f5c0 RELOCATION_MATCH LHNetworkLib::LHHttpHeaderStatus::?GetLocationHost@LHHttpHeaderStatus@LHNetworkLib@@QAE?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+  0083f600 RELOCATION_MATCH LHNetworkLib::LHHttpHeaderStatus::?GetLocationURI@LHHttpHeaderStatus@LHNetworkLib@@QAE?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
+  0083f870 RELOCATION_MATCH LHNetworkLib::LHHttp2::?SetProxySettings@LHHttp2@LHNetworkLib@@QAEXABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z
+  0083fb20 RELOCATION_MATCH LHNetworkLib::LHHttp2::?SetConnectionDetails@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z
+  0083fc00 RELOCATION_MATCH LHNetworkLib::LHHttpHeaders::?AddHeader@LHHttpHeaders@LHNetworkLib@@QAEXABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z
+  0083fce0 RELOCATION_MATCH LHNetworkLib::LHHttpHeaders::?GetHeaderString@LHHttpHeaders@LHNetworkLib@@
+  00840b60 RELOCATION_MATCH LHNetworkLib::LHHttp2::?GetHeader@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@AAULHHttpHeaderStatus@2@@Z
+  00841b70 RELOCATION_MATCH std::??$?HDV?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z
+  00841c50 RELOCATION_MATCH std::??$?HDV?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z
+  00841ee0 RELOCATION_MATCH LHNetworkLib::LAddress::??0LAddress@LHNetworkLib@@QAE@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z
+  00841f60 RELOCATION_MATCH LAddress::??4LAddress@@QAEAAU0@ABU0@@Z
+  008f8cc0 RELOCATION_MATCH LSocket::?Listen@LSocket@@
+  008f96e0 RELOCATION_MATCH LSocket::GetClientInformation
+  0090af80 RELOCATION_MATCH LHNetworkLib::LSocketServer::?GetUDPPacket@LSocketServer@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@AAULAddress@2@@Z
