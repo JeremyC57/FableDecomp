@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0057c4f1   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0057c4f1   WARN RELOC_NAME: ?SetTimeOfDay@CGameTimeManager@@QAEXM@Z -> 006bb810 labelled 'CThingDrawInformation::SetBarPercentage'
+0057c4f1   RELOCATION_MATCH PASS   ApplyBonusItemEffects
+
+WINS: 1
+  0057c4f1 RELOCATION_MATCH CTCHeroStats::?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCHeroStats_ApplyBonusItemEffects_0057c4f1

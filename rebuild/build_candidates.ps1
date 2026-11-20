@@ -401289,6 +401289,13 @@ $catalog = @(
         TestSource = '00/79/CTCBulletTime_CTCBulletTime_0079d360_test.cpp'
         PassPattern = '0079d360_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0057c4f1'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_ApplyBonusItemEffects_0057c4f1.cpp'
+        TestSource = '00/57/CTCHeroStats_ApplyBonusItemEffects_0057c4f1_test.cpp'
+        PassPattern = '0057c4f1_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

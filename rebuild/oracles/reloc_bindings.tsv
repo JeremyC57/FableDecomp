@@ -39920,3 +39920,9 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 ?ExtinguishFlames@CModeJackOfBladesFlash@NCreatureMode@@AAEXXZ	008dcb60	008df310
 ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	006b3800	008e7b90
 ?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z	009ada10	008c7a70
+?Drink@CTCHeroStats@@QAEXM@Z	0057a82a	0057c4f1
+?GetMaxExtraMaxHealth@CTCHeroStats@@QBEMXZ	0057a90b	0057c4f1
+?GetMaxExtraMaxStamina@CTCHeroStats@@QBEJXZ	0057a962	0057c4f1
+?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z	006a6290	0057c4f1
+?SetActionSpeedMultiplier@CTCHaste@@QAEXPAXM@Z	005812ae	0057c4f1
+?SetTimeOfDay@CGameTimeManager@@QAEXM@Z	006bb810	0057c4f1
