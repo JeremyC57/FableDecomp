@@ -1,0 +1,47 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00494520	CFrontendGameComponent	GetMaxVisibleProfileNumber	?GetMaxVisibleProfileNumber@CFrontendGameComponent@@ABEJXZ	CFrontendGameComponent::GetMaxVisibleProfileNumber	?GetMaxVisibleProfileNumber@CFrontendGameComponent@@QBEJXZ	leaf-only (access: private): Ego_r.pdb + FableWin.pdb ABEJXZ; sole referencing row 0x004963A0 already binds it (census)
+0x00494680	CFrontendGameComponent	GetMaxVisibleWorldNumber	?GetMaxVisibleWorldNumber@CFrontendGameComponent@@ABEJXZ	CFrontendGameComponent::GetMaxVisibleWorldNumber	?GetMaxVisibleWorldNumber@CFrontendGameComponent@@QBEJXZ	leaf-only (access: private): Ego_r.pdb + FableWin.pdb ABEJXZ; sole referencing row 0x004963A0 already binds it (census)
+0x00494770	CFrontendGameComponent	GetMaxVisibleSaveNumber	?GetMaxVisibleSaveNumber@CFrontendGameComponent@@ABEJXZ	CFrontendGameComponent::GetMaxVisibleSaveNumber	?GetMaxVisibleSaveNumber@CFrontendGameComponent@@QBEJXZ	leaf-only (access: private): Ego_r.pdb + FableWin.pdb ABEJXZ; sole referencing row 0x004963A0 already binds it (census)
+0x006BB810	CGameTimeManager	SetTimeOfDay	?SetTimeOfDay@CGameTimeManager@@QAEXM@Z	CThingDrawInformation::SetBarPercentage	?SetBarPercentage@CThingDrawInformation@@QAEXM@Z	class + name rename: FableWin.pdb 0x02461020 + Ego_r.pdb 0x006F70A0; callers 0x0057C83A (world PGameTimeManager +0x1C, 0.875f / 10/24) and 0x0088FDC0 CGameScriptInterface::SetTimeOfDay (hours / 24); body clamps Time +0x08 to [0,1]; old name propagated from the byte-identical FableWin 0x01D73730; both REFS rows (0x0057C4F1 already, 0x0088FDC0 respelled here) end on the new spelling
+0x00891520	CGameScriptInterface	FailAllActiveQuests	?FailAllActiveQuests@CGameScriptInterface@@UBEXXZ	CGameScriptInterface::FailAllActiveQuests	?CGameScriptInterface_FailAllActiveQuests@@YIXPAVCGameScriptInterface@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x008CE2A0 + FableWin.pdb 0x02A72160; vtable slot 300 of engine/CGameScriptInterface.h; no landed row references 0x00891520 (exe scan); was a free __fastcall stand-in
+0x00892FD0	CGameScriptInterface	SetQuestAsFailed	?SetQuestAsFailed@CGameScriptInterface@@UBEXABVCCharString@@_NABVCWideString@@1@Z	CGameScriptInterface::SetQuestAsFailed	?CGameScriptInterface_SetQuestAsFailed@@YIXPAVCGameScriptInterface@@HHDHH@Z	leaf-only (catalog name already right): Ego_r.pdb 0x008D0160 + FableWin.pdb 0x02AAC9C0; vtable slot 289 of engine/CGameScriptInterface.h; no landed row references 0x00892FD0 (exe scan); was a free __fastcall stand-in with int/char parameters
+0x00A4CDD0	C3DAnimationSequence	ReadCompressedFromFile	?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z	C3DAnimationSequence::ReadCompressedFromFile	?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@PAVCSimpleMemoryPool@@@Z	leaf-only (pool by reference): Ego_r.pdb 0x00BA3D40 + FableWin.pdb 0x0322BEC0; its callee 0x00A4C5E0 now binds that row Leaf (AAV pool, both PDBs); REFS rows 0x00A4DF10 (respelled here) and 0x00A4FE60 (already AAV) both end on the new spelling
+0x00AE34D0	CParticleProgram	Update	?Update@CParticleProgram@@QAEXXZ	CSortedMapOwner_00ae34d0::SortAndProcess	?SortAndProcess@CSortedMapOwner_00ae34d0@@QAEXXZ	class + name rename (DECISION NEEDED, see NOTES): Ego_r.pdb 0x00BEF280 + FableWin.pdb 0x03334C30 ?Update@CParticleProgram@@QAEXXZ; body calls the private CParticleProgram::CalculateAveragePatchSize on this with InitialSimulation (+0x08) after ExportParticles.Update() (+0x88); other void() non-const members excluded (Clear 0x00AE3360, ClearGroups 0x00AE3510 landed; AddConstraintEndRepeat / OptimiseConstraints touch Constraints +0x114); FableWin span 0x40 = retail span; no landed row references 0x00AE34D0
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x004163B7	?OnExclusiveModeChange@CDisplayHolder@@QAEXXZ	?PreChangeResolution@CDisplayEngine@@QAEXXZ	0x00434A10
+0x004164E0	?DoRender@CDisplayEngine@@QAEXPAVCInterpolationInfo@@_N1@Z	?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z	0x00435F70
+0x00416E78	?AddGameEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z	?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z	0x0041649C
+0x00417001	?DoRender@CDisplayEngine@@QAEXPAVCInterpolationInfo@@_N1@Z	?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z	0x00435F70
+0x004DF48C	?g_value@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x005EADC0	?AddGameEvent@CMainGameComponent@@QAEXPAVCGameEvent@@@Z	?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z	0x0041649C
+0x005EAF30	?AddGameEvent@CMainGameComponent@@QAEXPAVCGameEvent@@@Z	?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z	0x0041649C
+0x0066FAB0	_ScaleGlobalIntToInt64_0066fab0_Value	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x00697710	?g_noControlTimeDivisor@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x006CDB00	?g_value@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x006CEC90	?g_FramesPerSecond@@3JA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x006E11F0	?Frame@X_006e11f0@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x006E2840	?g_speechDurationDivisor@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x0079F5F0	?g_lightningCastTicks@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x007F2100	?g_BuyFromSeller_Scale@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x0088FDC0	?SetBarPercentage@CThingDrawInformation@@QAEXM@Z	?SetTimeOfDay@CGameTimeManager@@QAEXM@Z	0x006BB810
+0x00891520	?QuestMgr_FailAll@@YIXPAUCQuestMgr@@@Z	?FailAllActiveQuests@CQuestManager@@QAEXXZ	0x004B2AD0
+0x00892FD0	?doFailQuest@CQuestMgr@@QAEXHDHH@Z	?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z	0x004B2280
+0x00892FD0	?notify@CQuestMgr@@QAEXH@Z	?OnQuestFinishScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z	0x004B0160
+0x00908DA0	?g_logicFramesPerSecond@@3JA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x0091A390	?g_framesPerSecond@@3JA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x0093B8B0	?g_FrameForTargetPerception@@3HA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x0094FE30	?g_framesPerSecond@@3JA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x0094FEB0	?FramesPerSecond@@3JA	?ConstantFPS@CMainGameComponent@@1JA	0x01375550
+0x00A4CDD0	?ReadCompressedFromFile@C3DAnimationSequenceData@@QAEXAAVCDataInputStream@@PAVCSimpleMemoryPool@@@Z	?ReadCompressedFromFile@C3DAnimationSequenceData@@QAEXAAVCDataInputStream@@AAVCSimpleMemoryPool@@@Z	0x00A4C5E0
+0x00A4DF10	?ReadCompressedFromFile@C3DAnimationSequence@@QAEXPAVCDataInputStream@@KPAVC3DAnimationSequenceData@@PAVCSimpleMemoryPool@@@Z	?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z	0x00A4CDD0
+0x00A4EBB0	?FindFirstEvent@C3DAnimFileHelpersChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileTimingEventChunk@@@@XZ	?FindFirstEvent@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@XZ	0x00AAE7B0
+0x00A4EBB0	?FindNextEvent@C3DAnimFileHelpersChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileTimingEventChunk@@@@ABV2@@Z	?FindNextEvent@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileTimingEventChunk@@@@ABV2@@Z	0x00AAE840
+0x00A4EBB0	?GetHelpers@C3DAnimFileRootChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileHelpersChunk@@@@XZ	?GetHelpers@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileHelpersChunk@@@@XZ	0x00A99390
+0x00A4EBB0	?GetMovementVector@C3DAnimFileHelpersChunk@@QAE?AV?$CCountedPointer@VC3DAnimFileMovementVectorChunk@@@@XZ	?GetMovementVector@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@XZ	0x00AAE5B0
+0x00A4EBB0	?GetRoot@C3DAnimFile@@QBE?AV?$CCountedPointer@VC3DAnimFileRootChunk@@@@XZ	?GetRoot@C3DAnimFile@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileRootChunk@@@@XZ	0x00A537F0
+0x00A99610	?GetFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	0x00A99110
+0x00AE34D0	?Process@CSortedMapOwner_00ae34d0@@QAEXPAUSProcessedBlock@@@Z	?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z	0x00AE0710
+0x00AE34D0	?SortPairs@@YIXPAUSSortedPair@@0UCPairCompareLess@@@Z	??$sort@PAU?$pair@VCCharString@@K@std@@V?$CKeyPairCompareLess@VCCharString@@K@@@std@@YIXPAU?$pair@VCCharString@@K@0@0V?$CKeyPairCompareLess@VCCharString@@K@@@Z	0x009B8EF0
+0x00B82100	?SetupSimulation@CParticleProgram@@QAE_NPAVCParticleSimulation@@PAVC3DAnimationBlendState@@PAVC3DAnimationManager@@PAVC3DVector@@PAVC3DMesh2@@PAVCMovableResourceMemoryPool@@PAVCParticleContext@@@Z	?SetupSimulation@CParticleProgram@@QBE_NAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@AAVCMovableResourceMemoryPool@@ABVCParticleContext@@@Z	0x00AE29D0
+0x00B82100	?SimulationStep@CParticleProgram@@QAEXPAVCParticleSimulation@@PAVCParticleContext@@PAVC3DAnimationBlendState@@PAVC3DAnimationManager@@PAVC3DVector@@PAVC3DMesh2@@@Z	?SimulationStep@CParticleProgram@@QBEXAAVCParticleSimulation@@ABVCParticleContext@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z	0x00AE2D20

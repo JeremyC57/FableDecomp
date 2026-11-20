@@ -16,6 +16,8 @@
 // NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
 //   CMainGameComponent::Get(), engine/CMainGameComponent.h), its world (PWorld +0x24) through the inline PeekWorld()
 //   (engine/CMainGameComponent.h WORLD); the row's CWorldVirtualSlots view of that world is unchanged; was the stand-in X_006e11f0::CMainGameComponent* g_pMainGameComponent (a local model of the class inside the stand-in namespace).
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA, read through the inline
+//   CMainGameComponent::GetConstantFPS() (engine/CMainGameComponent.h); was the stand-in X_006e11f0::Frame.
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD
 #include "engine/CMainGameComponent.h"
@@ -74,7 +76,7 @@ virtual void v10()=0;
 virtual void v11()=0;
 virtual void v12()=0;
 virtual const ::CWorldMap& PeekWorldMap()const=0;};
-struct CDefinitionManagerAdapter: ::CDefinitionManager {int GetDefGlobalIndexFromName(const CCharString&);};CThing* __fastcall Create(int,int,int,bool);extern int Frame;extern const float Scale;
+struct CDefinitionManagerAdapter: ::CDefinitionManager {int GetDefGlobalIndexFromName(const CCharString&);};CThing* __fastcall Create(int,int,int,bool);extern const float Scale;
 } class CGameDefinitionManager : public X_006e11f0::CDefinitionManagerAdapter { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 // NF158 (q4754 family): the row's local stand-in X_006e11f0::NParticleEngine::CParticleEmitterManager is dropped for the shared
 //   engine/CParticleEmitterManager.h in its declaration-only mode (INTERPOLATED_ONLY: the row models its vectors and counted pointer
@@ -90,5 +92,5 @@ namespace X_006e11f0 {
 // Layout: Matrix6a06e0 is vptr+position12+Axes24=40. Request6e2640 is flags4+IDs8+float4+Axes24+Update36=76.
 // Ptr6e2710 holds data+0/control+4; CCPPointerInfo refs+0/callback+4/object+8.
 // Layout: thing flags+0x28, extra+0x5c; extra flags+0x44,time+0x38,pointer+0x3c.
-CThing* __fastcall Create(int a,int b,float c,const C3DVector& position,bool persistent){if(!persistent&&((const CWorldMapAdapter&)((const CWorldVirtualSlots*)&::CMainGameComponent::Get()->PeekWorld())->PeekWorldMap()).IsLoadingAnyMap())persistent=true;CThing*object=0;int id=((const CWorldMapVirtualSlots*)g_pThingManager->WorldMap)->GetMapNumberAt(position);if(id>0){int def;{CCharString name("PARTICLE_EMITTER_NORMAL");def=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}object=Create(def,4,id,true);CRightHandedSet axes=DefaultAxes;CTCPhysicsBaseVirtualSlots*physics=(CTCPhysicsBaseVirtualSlots*)object->physics;physics->ConstructFromParams(CTCParamsPhysicsBase(position,axes));CTCDParticleEmitter*extra=0;if(object->flags&0x800)extra=object->extra;extra->zero=0;extra->flags=(extra->flags&0xf9)|((persistent&1)<<1);object->DoActivationSequence();::NParticleEngine::CParticleEmitterManager&effects=::NParticleEngine::GetParticleEmitterManager();::CParticleEmitter*effect=(::CParticleEmitter*)effects.CreateInterpolatedEmitter(a,b,c,(const ::C3DVector&)position,(const ::CRightHandedSet&)axes,persistent);if(effect)extra->SetPEmitter(effect);else if(!persistent){extra->flags|=1;extra->frame=(int)(Frame*Scale);extra->pointer.Reset(new CParticleCreationParameters(a,b,c,axes));}else{object->Kill(false);object=0;}}return object;}
+CThing* __fastcall Create(int a,int b,float c,const C3DVector& position,bool persistent){if(!persistent&&((const CWorldMapAdapter&)((const CWorldVirtualSlots*)&::CMainGameComponent::Get()->PeekWorld())->PeekWorldMap()).IsLoadingAnyMap())persistent=true;CThing*object=0;int id=((const CWorldMapVirtualSlots*)g_pThingManager->WorldMap)->GetMapNumberAt(position);if(id>0){int def;{CCharString name("PARTICLE_EMITTER_NORMAL");def=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}object=Create(def,4,id,true);CRightHandedSet axes=DefaultAxes;CTCPhysicsBaseVirtualSlots*physics=(CTCPhysicsBaseVirtualSlots*)object->physics;physics->ConstructFromParams(CTCParamsPhysicsBase(position,axes));CTCDParticleEmitter*extra=0;if(object->flags&0x800)extra=object->extra;extra->zero=0;extra->flags=(extra->flags&0xf9)|((persistent&1)<<1);object->DoActivationSequence();::NParticleEngine::CParticleEmitterManager&effects=::NParticleEngine::GetParticleEmitterManager();::CParticleEmitter*effect=(::CParticleEmitter*)effects.CreateInterpolatedEmitter(a,b,c,(const ::C3DVector&)position,(const ::CRightHandedSet&)axes,persistent);if(effect)extra->SetPEmitter(effect);else if(!persistent){extra->flags|=1;extra->frame=(int)(::CMainGameComponent::GetConstantFPS()*Scale);extra->pointer.Reset(new CParticleCreationParameters(a,b,c,axes));}else{object->Kill(false);object=0;}}return object;}
 }

@@ -54,7 +54,7 @@ public:
 private: public:
     unsigned char _pad[0x1614c];
     CFontBank*    PFont;                                       // +0x1614c
-    void AddGameEvent(CGameEvent* event);                      // 0x0041649C
+    void AddGameEvent(const CGameEvent& event);                      // 0x0041649C (NF166 q11995: Ego_r.pdb / FableWin.pdb by const reference)
 };
 struct CSubtitleOwner { unsigned char _pad[0x18]; CSubtitleRenderer Renderer; };
 extern CSubtitleOwner* g_pSubtitleOwner;                       // 0x013B8790
@@ -94,7 +94,7 @@ void CTCTavernGame::SetStateAfterYesNoAlt(CWideString title, CWideString text, E
         g_pSubtitleOwner->Renderer.SetText(CMainGameComponent::Get()->PFont, title, L"", text, noText, altText, 0x84, 0.0f, false, true);
         CGameEvent event(9);
         event.SetData(false);
-        CMainGameComponent::Get()->AddGameEvent(&event);
+        CMainGameComponent::Get()->AddGameEvent(event);
         YesState = yesState;
         NoState = noState;
         AltState = altState;

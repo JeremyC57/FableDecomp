@@ -12,7 +12,10 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                                       // 0x0049D870
-extern long g_FramesPerSecond;                              // 0x01375550
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in g_FramesPerSecond.
+#include "engine/CMainGameComponent.h"
 
 struct CTCWife_Hours : CTCWife {
     float GetNumHoursMarriedFor() const;
@@ -22,6 +25,9 @@ float CTCWife_Hours::GetNumHoursMarriedFor() const
 {
     float hours = 0.0f;
     if (FrameGotMarriedToThePlayer <= CWorld::GetFrame())
-        hours = (float)(CWorld::GetFrame() - FrameGotMarriedToThePlayer) / (g_FramesPerSecond * 3600.0f);
+    {
+        long frames = CWorld::GetFrame() - FrameGotMarriedToThePlayer;
+        hours = (float)frames / (CMainGameComponent::GetConstantFPS() * 3600.0f);
+    }
     return hours;
 }

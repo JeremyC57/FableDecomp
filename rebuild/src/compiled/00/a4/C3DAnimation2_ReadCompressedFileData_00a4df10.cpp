@@ -1,5 +1,8 @@
 // C3DAnimation2::ReadCompressedFileData(C3DAnimFileObjectChunk* chunk, CSimpleMemoryPool* pool) -- size the sequence arrays from the XSEQ sub-chunk count, then read each XSEQ chunk's compressed sequence through a memory stream
 // Leaf: ReadCompressedFileData
+// NF166 (round 10, q4209): C3DAnimationSequence::ReadCompressedFromFile 0x00A4CDD0 respelled in place to the Ego_r.pdb / FableWin.pdb
+//   ?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z (stream and pool
+//   by reference; was PAV / PAV). Same code.
 // NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
 //   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
 // Shape: the walk pointer is default-constructed and then assigned from FindFirst (retail zeroes it before the call and
@@ -68,7 +71,7 @@ class CSimpleMemoryPool { public: template<class T> T* New(unsigned long count);
 class C3DAnimationSequenceData { public: unsigned char _00[0x2c]; };
 class C3DAnimationSequence { public:
     void* _00; void* _04;
-    void ReadCompressedFromFile(CDataInputStream* in, unsigned long size, C3DAnimationSequenceData* data, CSimpleMemoryPool* pool);   // 0x00A4CDD0
+    void ReadCompressedFromFile(CDataInputStream& in, unsigned long size, C3DAnimationSequenceData* data, CSimpleMemoryPool& pool);   // 0x00A4CDD0
 };
 
 class C3DAnimation2 : public C3DAnimation2Donor {
@@ -88,7 +91,7 @@ void C3DAnimation2::ReadCompressedFileData(C3DAnimFileObjectChunk* chunk, CSimpl
     while (sequence.Object) {
         const void* data = sequence->CompressedData.GetData();
         CMemoryDataInputStream stream(data, sequence->CompressedData.size());
-        Sequences[index].ReadCompressedFromFile(&stream, sequence->CompressedData.size(), &SequenceDataBuffer[index], pool);
+        Sequences[index].ReadCompressedFromFile(stream, sequence->CompressedData.size(), &SequenceDataBuffer[index], *pool);
         ++index;
         sequence = chunk->FindNextSubChunkOfType(CCountedPointer<const CChunkedFileChunk>(sequence));
     }

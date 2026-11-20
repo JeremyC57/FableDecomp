@@ -1,5 +1,9 @@
 // C3DAnimationStats::InitialiseStats(const C3DAnimFile&, EAnimationType) -- type, loop flag and duration from the root chunk, the movement vector and every timing event from its helpers chunk
 // Leaf: InitialiseStats
+// NF166 (round 10, q4205 / q4206 / q4207-family / q4208): the root / helpers / movement / timing-event accessors respelled in place to the
+//   const overloads retail calls (Ego_r.pdb + FableWin.pdb QBE spellings returning CCountedPointer<const T>; the landed self rows 0x00A537F0,
+//   0x00A99390, 0x00AAE5B0, 0x00AAE7B0, 0x00AAE840 carry them; the non-const overloads are the separate retail bodies 0x00AAE520 /
+//   0x00AAE640 / 0x00AAE6D0). Was the non-const QAE spelling on 0x00A99390 / 0x00AAE5B0 / 0x00AAE7B0 / 0x00AAE840 and a non-const pointee on 0x00A537F0.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4EBB0, 604 bytes (`ret 8`, ebp frame aligned to 8).
@@ -37,9 +41,9 @@ public:
 class C3DAnimFileHelpersChunk {
 public:
     bool HasMovementVector() const;                                                          // 0x00AAE4D0
-    CCountedPointer<C3DAnimFileMovementVectorChunk> GetMovementVector();                     // 0x00AAE5B0
-    CCountedPointer<C3DAnimFileTimingEventChunk> FindFirstEvent();                           // 0x00AAE7B0
-    CCountedPointer<C3DAnimFileTimingEventChunk> FindNextEvent(const CCountedPointer<C3DAnimFileTimingEventChunk>& previous); // 0x00AAE840
+    CCountedPointer<const C3DAnimFileMovementVectorChunk> GetMovementVector() const;         // 0x00AAE5B0
+    CCountedPointer<const C3DAnimFileTimingEventChunk> FindFirstEvent() const;               // 0x00AAE7B0
+    CCountedPointer<const C3DAnimFileTimingEventChunk> FindNextEvent(const CCountedPointer<const C3DAnimFileTimingEventChunk>& previous) const; // 0x00AAE840
 };
 class C3DAnimFileRootChunk {
 public:
@@ -47,11 +51,11 @@ public:
     bool LoopFlag;      // +0x2c
     float Duration;     // +0x30
     bool HasHelpers() const;                                        // 0x00A99280
-    CCountedPointer<C3DAnimFileHelpersChunk> GetHelpers();          // 0x00A99390
+    CCountedPointer<const C3DAnimFileHelpersChunk> GetHelpers() const; // 0x00A99390
 };
 class C3DAnimFile {
 public:
-    CCountedPointer<C3DAnimFileRootChunk> GetRoot() const;          // 0x00A537F0
+    CCountedPointer<const C3DAnimFileRootChunk> GetRoot() const;    // 0x00A537F0
 };
 namespace std {
 template <class A, class B> struct pair {
@@ -91,7 +95,7 @@ public:
 
 void C3DAnimationStats::InitialiseStats(const C3DAnimFile& file, EAnimationType type)
 {
-    C3DAnimFileRootChunk* root = file.GetRoot().Data;
+    const C3DAnimFileRootChunk* root = file.GetRoot().Data;
     C3DAnimationStats* const& self = this;
     AnimType = type;
     LoopFlag = root->LoopFlag;
@@ -101,13 +105,13 @@ void C3DAnimationStats::InitialiseStats(const C3DAnimFile& file, EAnimationType 
     MovementVector.Y = 0.0f;
     MovementVector.X = 0.0f;
     if (root->HasHelpers()) {
-        CCountedPointer<C3DAnimFileHelpersChunk> helpers = root->GetHelpers();
+        CCountedPointer<const C3DAnimFileHelpersChunk> helpers = root->GetHelpers();
         if (helpers->HasMovementVector()) {
             MovementFlag = true;
-            CCountedPointer<C3DAnimFileMovementVectorChunk> movement = helpers->GetMovementVector();
+            CCountedPointer<const C3DAnimFileMovementVectorChunk> movement = helpers->GetMovementVector();
             MovementVector = C3DVector(movement->Vector);
         }
-        CCountedPointer<C3DAnimFileTimingEventChunk> event = helpers->FindFirstEvent();
+        CCountedPointer<const C3DAnimFileTimingEventChunk> event = helpers->FindFirstEvent();
         while (event.Data) {
             float time = event->Time;
             AddTimingEvent(event->Name, time);

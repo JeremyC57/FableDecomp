@@ -8,7 +8,10 @@
 // Runnable when enough seconds passed since FrameLastBought (+0x14, engine header), the shop
 // is open, and a seller is (or can be) acquired; the final `test al,al ; setne al` is the
 // `? true : false` form of the second HasSeller test.
-extern long g_framesPerSecond;              // 0x01375550
+// NF166 (round 10, q11679 / q11691 / q11725): 0x01375550 is ?ConstantFPS@CMainGameComponent@@1JA (protected static long,
+//   engine/CMainGameComponent.h), read through the inline public accessor GetConstantFPS() (Ego_r + FableWin
+//   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in g_framesPerSecond.
+#include "engine/CMainGameComponent.h"
 extern unsigned long g_minSecondsBetweenBuys;   // 0x0138C694
 class CWorld {
 public:
@@ -38,7 +41,8 @@ struct CAIStateGroup_BuyFromSeller : CAIStateGroup_WorkBase<CAIStateGroupBase> {
 
 bool CAIStateGroup_BuyFromSeller::IsRunnable()
 {
-    if ((CWorld::GetFrame() - FrameLastBought) / g_framesPerSecond > g_minSecondsBetweenBuys && IsInWorkHours()) {
+    long frames = CWorld::GetFrame() - FrameLastBought;
+    if (frames / CMainGameComponent::GetConstantFPS() > g_minSecondsBetweenBuys && IsInWorkHours()) {
         if (!HasSeller())
             AcquireSeller();
         return HasSeller() ? true : false;

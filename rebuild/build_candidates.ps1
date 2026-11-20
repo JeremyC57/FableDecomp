@@ -217774,9 +217774,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ae34d0'
-        Module = 'CSortedMapOwner_00ae34d0'
-        Source = '00/ae/CSortedMapOwner00ae34d0_SortAndProcess_00ae34d0.cpp'
-        TestSource = '00/ae/CSortedMapOwner00ae34d0_SortAndProcess_00ae34d0_test.cpp'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_Update_00ae34d0.cpp'
+        TestSource = '00/ae/CParticleProgram_Update_00ae34d0_test.cpp'
         PassPattern = '00ae34d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -219559,9 +219559,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bb810'
-        Module = 'CThingDrawInformation'
-        Source = '00/6b/CThingDrawInformation_SetBarPercentage_006bb810.cpp'
-        TestSource = '00/6b/CThingDrawInformation_SetBarPercentage_006bb810_test.cpp'
+        Module = 'CGameTimeManager'
+        Source = '00/6b/CGameTimeManager_SetTimeOfDay_006bb810.cpp'
+        TestSource = '00/6b/CGameTimeManager_SetTimeOfDay_006bb810_test.cpp'
         PassPattern = '006bb810_TEST PASS'
     }
     [pscustomobject]@{

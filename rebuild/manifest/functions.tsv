@@ -16696,7 +16696,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006bb5b0	IsTimeBetween	CGameTimeManager	__thiscall	bool	4	CGameTimeManager *,float,float,float	1	yes	accepted									
 006bb720	FastForwardTimeTo	CGameTimeManager	__thiscall	void	3	CGameTimeManager *,float,float	1	yes	accepted									
 006bb790	IsNotDay_006bb790	CGameTimeManager	__thiscall	bool	1	CGameTimeManager *	1	yes	accepted									
-006bb810	SetBarPercentage	CThingDrawInformation	__thiscall	void	2	CThingDrawInformation *,float	1	yes	accepted									
+006bb810	SetTimeOfDay	CGameTimeManager	__thiscall	void	2	CThingDrawInformation *,float	1	yes	accepted									
 006bb860	sub_006bb860	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 006bb940	ConsoleSetDaySpeed	CGameTimeManager	unknown	undefined	0		0			discovered	gapscan							
 006bb990	Update	_global	__thiscall	void	2	CGameTimeManager *,float	1	yes	accepted									
@@ -40014,7 +40014,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ae2e20	OptimiseSpringOrder	CParticleProgram	unknown	undefined	0		0	yes	accepted									
 00ae3330	ReserveBoth	CVectorPairOwner_00ae3330	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00ae3360	Clear	CParticleProgram	__thiscall	void	3	allocator<CScriptGameResourceObjectScriptedThingBase> *,CScriptGameResourceObjectScriptedThingBase *,CScriptGameResourceObjectScriptedThingBase *	1	yes	accepted									
-00ae34d0	SortAndProcess	CSortedMapOwner_00ae34d0	__thiscall	void	1	CTCVillage *	1	yes	accepted									
+00ae34d0	Update	CParticleProgram	__thiscall	void	1	CTCVillage *	1	yes	accepted									
 00ae3510	Unwind@00fbdab0	_global	unknown	undefined	0		0	yes	accepted									
 00ae3550	CParticleProgram	CParticleProgram	__thiscall	undefined	1	CParticleProgram *	0	yes	accepted									
 00ae3670	~CParticleProgram	CParticleProgram	unknown	undefined	0		0	yes	accepted									

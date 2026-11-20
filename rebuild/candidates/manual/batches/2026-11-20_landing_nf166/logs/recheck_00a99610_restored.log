@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00a99610   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE C3DAnimFileSequenceChunk (engine/C3DAnimFileSequenceChunk.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE C3DAnimFileObjectChunk (engine/C3DAnimFileObjectChunk.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a99610   WARN SHARED_HEADER_AVAILABLE C3DAnimFileRootChunk (engine/C3DAnimFileRootChunk.h)
+00a99610   WARN RELOC_NAME: ?GetFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ -> 00a99110 labelled 'C3DAnimFileRootChunk::FindFirstObject'
+00a99610   WARN RELOC_NAME: ?GetFirstSequence@C3DAnimFileObjectChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileSequenceChunk@@@@XZ -> 00ab03d0 labelled 'C3DAnimFileObjectChunk::FindFirstSequence'
+00a99610   RELOCATION_MATCH PASS   C3DAnimFileRootChunk::GetNonLoopingDuration
+
+WINS: 1
+  00a99610 RELOCATION_MATCH C3DAnimFileRootChunk::GetNonLoopingDuration@C3DAnimFileRootChunk

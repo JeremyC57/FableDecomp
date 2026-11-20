@@ -1,6 +1,11 @@
 #include <stdio.h>
 
-extern "C" long ScaleGlobalIntToInt64_0066fab0_Value = 0;
+// NF166 (round 10): the scaled integer 0x01375550 is the protected static CMainGameComponent::ConstantFPS
+//   (engine/CMainGameComponent.h); the test defines it and sets it through a derived accessor (was the stand-in
+//   ScaleGlobalIntToInt64_0066fab0_Value).
+#include "engine/CMainGameComponent.h"
+long CMainGameComponent::ConstantFPS = 0;
+struct CConstantFPSTestAccess : CMainGameComponent { static void Set(long value) { ConstantFPS = value; } };
 extern "C" float ScaleGlobalIntToInt64_0066fab0_Scale = 1.0f;
 
 extern "C" __int64 __cdecl ScaleGlobalIntToInt64_0066fab0();
@@ -20,22 +25,22 @@ int main()
 {
     int ok = 1;
 
-    ScaleGlobalIntToInt64_0066fab0_Value = 11;
+    CConstantFPSTestAccess::Set(11);
     ScaleGlobalIntToInt64_0066fab0_Scale = 1.5f;
     ok &= Check(ScaleGlobalIntToInt64_0066fab0(), 16,
                 "positive fractional results must truncate");
 
-    ScaleGlobalIntToInt64_0066fab0_Value = -11;
+    CConstantFPSTestAccess::Set(-11);
     ScaleGlobalIntToInt64_0066fab0_Scale = 1.5f;
     ok &= Check(ScaleGlobalIntToInt64_0066fab0(), -16,
                 "negative fractional results must truncate toward zero");
 
-    ScaleGlobalIntToInt64_0066fab0_Value = 400000;
+    CConstantFPSTestAccess::Set(400000);
     ScaleGlobalIntToInt64_0066fab0_Scale = 10000.0f;
     ok &= Check(ScaleGlobalIntToInt64_0066fab0(), 4000000000I64,
                 "conversion must preserve results wider than 32 bits");
 
-    ScaleGlobalIntToInt64_0066fab0_Value = 0;
+    CConstantFPSTestAccess::Set(0);
     ScaleGlobalIntToInt64_0066fab0_Scale = 123.0f;
     ok &= Check(ScaleGlobalIntToInt64_0066fab0(), 0,
                 "zero input must remain zero");

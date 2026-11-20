@@ -1,16 +1,18 @@
 // Layout: retail STLport 4.6 header offsets; member names re-bound by the bytes this body touches: `InsideHeroCount` -> `ControlNoControlMovementStartFrame` (+0xc0).
 #include "engine/CGameCameraManager.h"
+#include "engine/CMainGameComponent.h"
 #include <stdio.h>
 
 
 extern float g_defaultNoControlMovementTime;
-extern int   g_noControlTimeDivisor;
 
 float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *manager);
 
 // ---- trivial extern stub defs so the test links ----
 float g_defaultNoControlMovementTime = -1.0f;
-int   g_noControlTimeDivisor = 1000;
+// NF166 (round 10): the divisor 0x01375550 is the protected static CMainGameComponent::ConstantFPS (engine/CMainGameComponent.h);
+//   the test defines it (was the stand-in g_noControlTimeDivisor).
+long CMainGameComponent::ConstantFPS = 1000;
 static int g_fakeNow = 5500;
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 long __fastcall CWorld::GetFrame() { return g_fakeNow; }

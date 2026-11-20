@@ -1,13 +1,16 @@
-// C3DAnimationSequence::ReadCompressedFromFile(CDataInputStream&, unsigned long, C3DAnimationSequenceData*, CSimpleMemoryPool*) -- read the header, attach the shared data and let it read itself
+// C3DAnimationSequence::ReadCompressedFromFile(CDataInputStream&, unsigned long, C3DAnimationSequenceData*, CSimpleMemoryPool&) -- read the header, attach the shared data and let it read itself
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4CDD0, length 198 bytes (`ret 10h`).
 // Callees: CDataInputStream::GetPosition (slot 2; result unused), ReadWithSrcChunkOverflow @ 0x00993CA0,
-// C3DAnimationSequenceData::ReadCompressedFromFile(CDataInputStream&, CSimpleMemoryPool*) @ 0x00A4C5E0.
+// C3DAnimationSequenceData::ReadCompressedFromFile(CDataInputStream&, CSimpleMemoryPool&) @ 0x00A4C5E0.
 // Shape: the start position is fetched but never used (the virtual call stays); two inlined 4-byte reads
 // through by-value helpers whose locals share the dead stream-argument slot: the version (unused, its
 // fast-path copy dropped) and the parent index (a long truncated to the short member); then Data is set and
 // the data's own reader is called with the stream and the pool.
 // Layout: PDB C3DAnimationSequence (8 bytes): Data +0, ParentIndex (short) +4, Shared (bool) +6.
-// Leaf: ReadCompressedFromFile@C3DAnimationSequence
+// Leaf: ?ReadCompressedFromFile@C3DAnimationSequence@@QAEXAAVCDataInputStream@@KPAVC3DAnimationSequenceData@@AAVCSimpleMemoryPool@@@Z
+// NF166 (round 10, q4209): the pool is a reference, as Ego_r.pdb 0x00BA3D40 and FableWin.pdb 0x0322BEC0 spell this member and its callee
+//   0x00A4C5E0 (both PDBs ?ReadCompressedFromFile@C3DAnimationSequenceData@@QAEXAAVCDataInputStream@@AAVCSimpleMemoryPool@@@Z, the landed
+//   self Leaf of 0x00A4C5E0); the caller 0x00A4FE60 already binds this spelling. Was CSimpleMemoryPool* (PAV) on both. Same code.
 #include "fable_compiler.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -50,17 +53,17 @@ private:
 
 class CSimpleMemoryPool;
 class C3DAnimationSequenceData { public:
-    void ReadCompressedFromFile(CDataInputStream& in, CSimpleMemoryPool* pool);   // 0x00A4C5E0
+    void ReadCompressedFromFile(CDataInputStream& in, CSimpleMemoryPool& pool);   // 0x00A4C5E0
 };
 
 class C3DAnimationSequence { public:
     C3DAnimationSequenceData* Data;        // +0
     short ParentIndex;                     // +4
     bool  Shared;                          // +6
-    void ReadCompressedFromFile(CDataInputStream& in, unsigned long chunkSize, C3DAnimationSequenceData* data, CSimpleMemoryPool* pool);
+    void ReadCompressedFromFile(CDataInputStream& in, unsigned long chunkSize, C3DAnimationSequenceData* data, CSimpleMemoryPool& pool);
 };
 
-void C3DAnimationSequence::ReadCompressedFromFile(CDataInputStream& in, unsigned long chunkSize, C3DAnimationSequenceData* data, CSimpleMemoryPool* pool)
+void C3DAnimationSequence::ReadCompressedFromFile(CDataInputStream& in, unsigned long chunkSize, C3DAnimationSequenceData* data, CSimpleMemoryPool& pool)
 {
     unsigned long start = in.GetPosition();
     in.ReadULong();                        // version (unused)

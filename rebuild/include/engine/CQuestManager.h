@@ -336,6 +336,11 @@ public:
     // the quest manager singleton in ecx). Declaration only.
     void PrepareQuestsWhenFinalQuestIsCompleted();           // 0x004AF270
 #endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_FAILALLACTIVEQUESTS
+    // NF166 opt-in (round 10, q5000; row 0x00891520): Ego_r.pdb ?FailAllActiveQuests@CQuestManager@@QAEXXZ (landed self Leaf of 0x004B2AD0;
+    // CGameScriptInterface::FailAllActiveQuests 0x00891520 tail-jumps there with the quest manager singleton in ecx). Declaration only.
+    void FailAllActiveQuests();                              // 0x004B2AD0
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_FAILQUEST
     // Nested opt-in (chunk 1011, row 0x006061B0 CTCInventoryMap::FrameUpdate): Ego_r.pdb
     // ?SetQuestAsFailed@CQuestManager@@QAE_NABVCCharString@@_NABVCWideString@@1@Z (out of line, 0x004B2280) and the public

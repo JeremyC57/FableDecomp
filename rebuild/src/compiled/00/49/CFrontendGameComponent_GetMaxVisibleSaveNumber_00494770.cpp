@@ -1,5 +1,7 @@
 // CFrontendGameComponent::GetMaxVisibleSaveNumber() -- how many save names fit on screen from the scroll offset: at most 8
-// Leaf: ?GetMaxVisibleSaveNumber@CFrontendGameComponent@@QBEJXZ
+// Leaf: ?GetMaxVisibleSaveNumber@CFrontendGameComponent@@ABEJXZ
+// NF166 (round 10, q6287): private const, as Ego_r.pdb and FableWin.pdb spell it (`private:` added in place in the HEAD local model; was the
+//   public QBE leaf). The landed caller 0x004963A0 CFrontendGameComponent::Input already binds the ABE spelling.
 // Retail: Fable.exe @ 0x00494770, 53 bytes; Ego_r.pdb ?GetMaxVisibleSaveNumber@CFrontendGameComponent@@ABEJXZ; callers 0x004968F2, 0x0049694E, 0x0049695B, 0x004969A7.
 // Catalog label GetMaxVisibleProfileNumber is wrong: this reads SaveNames / SaveNamesOffset. Body: SaveNames.size() - SaveNamesOffset, compared unsigned (`ja`) with 8; the
 // difference is recomputed for the return (the `size - offset <= 8 ? size - offset : 8` shape).
@@ -21,6 +23,7 @@ public:
     unsigned char            _pad0000[0x1e1c];
     std::vector<CWideString> SaveNames;          // +0x1e1c
     long                     SaveNamesOffset;    // +0x1e28
+private:
     long GetMaxVisibleSaveNumber() const;
 };
 long CFrontendGameComponent::GetMaxVisibleSaveNumber() const
