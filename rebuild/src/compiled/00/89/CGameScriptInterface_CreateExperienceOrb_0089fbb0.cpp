@@ -112,9 +112,13 @@ virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
 FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-#include "engine/CDefinitionManager.h"
-struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&)const;}; //009AD410
-class CGameDefinitionManager : public DefinitionManagerMethods { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+// NF132 (q6233): CGameDefinitionManager is the shared engine/CGameDefinitionManager.h class (: CDefinitionManager); 0x009AD410 binds
+//   ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (Ego_r.pdb + FableWin.pdb), was the local DefinitionManagerMethods stand-in.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 CThingNative* __fastcall CreateExperienceOrbThing(long,const C3DVector&); //00779E90
 #include "engine/CTCBase.h"
 // Donor CTCDExperienceOrb fields, struct_layouts_egor.tsv83459..83468; no generated class header.

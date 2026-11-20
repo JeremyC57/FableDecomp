@@ -6,7 +6,7 @@
 //                mov ecx,esi ; call ~CRenderStateManager ; test byte ptr [esp+0Ch],1 ; je D ; push esi ; call operator delete ;
 //                add esp,4 ; D: pop edi ; mov eax,esi ; pop esi ; ret 4
 // Vtable 0x0129C9A4 is CRenderManagerCore (rtti-vtables.tsv, slot 0 = this function). Callees: CInitBaseClass
-// IsInitialised @ 0x0099A330 / Uninitialise @ 0x00A6C120 (the landed CRenderManagerCore::Uninit 0x00A0A9D0 is exactly
+// IsInitialised @ 0x0099A330 / CSystemFont::Uninitialise @ 0x00A6C120 (the landed CRenderManagerCore::Uninit 0x00A0A9D0 is exactly
 // this test, inlined here as the destructor body), ~CInitBaseClass @ 0x0099A410 on SystemFont (+0x3A4C),
 // CRenderStateManager::~CRenderStateManager @ 0x00A044B0 (out of line in this TU), operator delete @ 0x00BFE9BC.
 // Model: a local polymorphic model is required (the generated engine/CRenderManagerCore.h flattens the base and the
@@ -30,12 +30,12 @@ public:
     bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
 private: public:                              // vptr + one word
     virtual void v00();
-    void Uninitialise_00a6c120();                             // 0x00A6C120
     virtual ~CInitBaseClass();                               // 0x0099A410
     void* m_pInitData;                               // +0x04
 };
 
 struct CSystemFont : CInitBaseClass {
+    void Uninitialise();                             // 0x00A6C120 ?Uninitialise@CSystemFont@@QAEXXZ (Ego_r + FableWin; NF132 q4019)
 };
 
 struct CRenderManagerCore : CRenderStateManager {    // vtable 0x0129C9A4
@@ -53,7 +53,7 @@ struct CRenderManagerCore : CRenderStateManager {    // vtable 0x0129C9A4
     void Uninit()
     {
         if (((CInitBaseClass*)&SystemFont)->IsValid())
-            SystemFont.Uninitialise_00a6c120();
+            SystemFont.Uninitialise();
     }
 
     FABLE_FORCEINLINE virtual ~CRenderManagerCore()

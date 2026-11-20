@@ -140,6 +140,12 @@ public:
     // in retail at 0x006B3800 (`ret 10h`; the ctor pushes channel, 2, theme index, the def's EnvChangeSecs). Declaration only.
     void TransitionToTheme(long channel, long priority, long theme, float time);   // 0x006B3800
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_SETTHEMEWEIGHTALLCHANNELS
+    // Retail opt-in (NF132, q6233, row 0x00890010 CGameScriptInterface::SetEnvironmentThemeWeightAllChannels): Ego_r.pdb (0x006EF2D0) /
+    // FableWin.pdb (0x02450760) ?SetThemeWeightAllChannels@CEnvironment@@QAEXJJM@Z, out of line in retail at 0x006B3680 (landed row).
+    // Declaration only.
+    void SetThemeWeightAllChannels(long priority, long globalThemeIndex, float weight);   // 0x006B3680
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_LIGHTINGFLASH
     // Opt-in (chunk 1024, row 0x006B3B80): Ego_r.pdb / FableWin.pdb ?LightingFlash@CEnvironment@@AAEXXZ (private; FableWin 0x0244E310
     // directly before ?Update@CEnvironment@@QAEXM@Z 0x0244E500, as retail 0x006B3B80 sits before SetWeightedThemes 0x006B3E60 / Update
@@ -255,39 +261,39 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CEnvironment) == 0x1970);
+FABLE_STATIC_ASSERT_AT(258, sizeof(CEnvironment) == 0x1970);
 #ifndef FABLE_RETAIL_CENVIRONMENT_VIRTUALS
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(260, offsetof(CEnvironment, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, DefinitionManager) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, SunlightAttenuatorAngleFadeStart) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, SunlightAttenuatorAngleFadeEnd) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, RegionTheme) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningStartTime) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningFadeInDuration) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningFadeOutDuration) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningFlashDuration) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningRainThreshold) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningTheme) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningCurrentFlashChance) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, LightningRandomSeed) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, ForcedColours) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, ForcedNonColourValues) == 0x3d);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, ForcedEnvironmentTheme) == 0x3e);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, DiffuseClampAngle) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, PassedFirstUpdate) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, RainEnabled) == 0x45);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, PriorityStackChannels) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, GameTickState) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, PrevGameTickState) == 0xc74);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, InterpolatedEnvironmentParams) == 0x1894);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, ThemeSet) == 0x1954);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterface_ptr) == 0x1960);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterpolator_ptr) == 0x1964);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, PRainSplashParticle) == 0x1968);
+FABLE_STATIC_ASSERT_AT(262, offsetof(CEnvironment, DefinitionManager) == 0x4);
+FABLE_STATIC_ASSERT_AT(263, offsetof(CEnvironment, SunlightAttenuatorAngleFadeStart) == 0x8);
+FABLE_STATIC_ASSERT_AT(264, offsetof(CEnvironment, SunlightAttenuatorAngleFadeEnd) == 0xc);
+FABLE_STATIC_ASSERT_AT(265, offsetof(CEnvironment, RegionTheme) == 0x10);
+FABLE_STATIC_ASSERT_AT(266, offsetof(CEnvironment, LightningStartTime) == 0x18);
+FABLE_STATIC_ASSERT_AT(267, offsetof(CEnvironment, LightningFadeInDuration) == 0x20);
+FABLE_STATIC_ASSERT_AT(268, offsetof(CEnvironment, LightningFadeOutDuration) == 0x24);
+FABLE_STATIC_ASSERT_AT(269, offsetof(CEnvironment, LightningFlashDuration) == 0x28);
+FABLE_STATIC_ASSERT_AT(270, offsetof(CEnvironment, LightningRainThreshold) == 0x2c);
+FABLE_STATIC_ASSERT_AT(271, offsetof(CEnvironment, LightningTheme) == 0x30);
+FABLE_STATIC_ASSERT_AT(272, offsetof(CEnvironment, LightningCurrentFlashChance) == 0x34);
+FABLE_STATIC_ASSERT_AT(273, offsetof(CEnvironment, LightningRandomSeed) == 0x38);
+FABLE_STATIC_ASSERT_AT(274, offsetof(CEnvironment, ForcedColours) == 0x3c);
+FABLE_STATIC_ASSERT_AT(275, offsetof(CEnvironment, ForcedNonColourValues) == 0x3d);
+FABLE_STATIC_ASSERT_AT(276, offsetof(CEnvironment, ForcedEnvironmentTheme) == 0x3e);
+FABLE_STATIC_ASSERT_AT(277, offsetof(CEnvironment, DiffuseClampAngle) == 0x40);
+FABLE_STATIC_ASSERT_AT(278, offsetof(CEnvironment, PassedFirstUpdate) == 0x44);
+FABLE_STATIC_ASSERT_AT(279, offsetof(CEnvironment, RainEnabled) == 0x45);
+FABLE_STATIC_ASSERT_AT(280, offsetof(CEnvironment, PriorityStackChannels) == 0x48);
+FABLE_STATIC_ASSERT_AT(281, offsetof(CEnvironment, GameTickState) == 0x54);
+FABLE_STATIC_ASSERT_AT(282, offsetof(CEnvironment, PrevGameTickState) == 0xc74);
+FABLE_STATIC_ASSERT_AT(283, offsetof(CEnvironment, InterpolatedEnvironmentParams) == 0x1894);
+FABLE_STATIC_ASSERT_AT(284, offsetof(CEnvironment, ThemeSet) == 0x1954);
+FABLE_STATIC_ASSERT_AT(285, offsetof(CEnvironment, SpellEffectInterface_ptr) == 0x1960);
+FABLE_STATIC_ASSERT_AT(286, offsetof(CEnvironment, SpellEffectInterpolator_ptr) == 0x1964);
+FABLE_STATIC_ASSERT_AT(287, offsetof(CEnvironment, PRainSplashParticle) == 0x1968);
 
 #if defined(FABLE_RETAIL_CENVIRONMENT_UPDATE) || defined(FABLE_RETAIL_CENVIRONMENT_TICKSTATES)
-FABLE_STATIC_ASSERT(sizeof(CEnvironment::CEnvironmentGameTickState) == 0xc20);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment::CEnvironmentGameTickState, Time) == 0xbb8);
+FABLE_STATIC_ASSERT_AT(290, sizeof(CEnvironment::CEnvironmentGameTickState) == 0xc20);
+FABLE_STATIC_ASSERT_AT(291, offsetof(CEnvironment::CEnvironmentGameTickState, Time) == 0xbb8);
 #endif
 #endif // FABLE_ENGINE_CENVIRONMENT_H

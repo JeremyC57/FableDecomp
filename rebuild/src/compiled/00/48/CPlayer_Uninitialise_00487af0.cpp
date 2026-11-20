@@ -40,7 +40,9 @@ public:
     bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
 private: public:
     virtual void v00();
-    void Uninitialise();                           // 0x0099A360
+protected:
+    void Uninitialise();                           // 0x0099A360 ?Uninitialise@CInitBaseClass@@IAEXXZ (protected: Ego_r + FableWin)
+public:
 };
 
 class CPlayer : public CInitBaseClass { public:                  // engine/CPlayer.h layout

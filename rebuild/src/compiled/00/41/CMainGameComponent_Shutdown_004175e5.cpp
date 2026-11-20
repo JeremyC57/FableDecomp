@@ -63,6 +63,18 @@ public:
 
 #define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
 #include "engine/CASoundManager.h"
+// NF132 (q4019): +0x13AB8 is the component's CNetworkClient Client (Ego_r.pdb CMainGameComponent::Client; the landed
+//   CreatePlayers 0x004166A8 reaches the same member), the retail engine/CNetworkClient.h class: IsValid is the shared
+//   CInitBaseClass member and 0x004AE990 is ?Uninitialise@CNetworkClient@@QAEXXZ (Ego_r + FableWin; was the local
+//   CInitBaseClass model's Uninitialise_004ae990 stand-in).
+#define FABLE_RETAIL_CINITBASECLASS
+#define FABLE_RETAIL_CNETWORKCLIENT_UPDATE
+#define FABLE_RETAIL_CNETWORKCLIENT_UNINITIALISE
+#include "engine/CNetworkClient.h"
+// NF132 (q4019): the client's double member makes the class 8-aligned, so the vptr + 12 bytes at +0 are now the retail base
+//   engine/CGameComponent.h (Ego_r.pdb CMainGameComponent : CGameComponent, 0x10: CBaseClassNonCopyable +0, CDeviceResetCallback
+//   +4); the device-reset callback handed to RemoveDeviceResetCallback is that base (was the `Socket` bytes at +4).
+#include "engine/CGameComponent.h"
 
 class CDeviceResetCallback;
 class CDisplayManager { public:
@@ -74,11 +86,6 @@ class CDisplayManager;
 extern CDisplayManager* GPDisplayManager;              // 0x013B8390
 extern CCountedPointer41915a g_GlobalCountedPointer; // 0x013B8790
 
-class CInitBaseClass {
-public:
-    bool IsValid() const;                            // 0x0099A330
-    void Uninitialise_004ae990();                             // 0x004AE990
-};
 class CFrameRateSmoother {
 public:
     void Uninitialise();                             // 0x0049BA20
@@ -98,12 +105,10 @@ public:
 //   FableWin.pdb; engine/CMainGameComponent.h), cleared here in place; was the stand-in `void* g_pGame`. Only the static is respelled
 //   inside this row's pre-existing CMainGameComponent model: moving Shutdown onto engine/CMainGameComponent.h needs the header's
 //   opaque scoped_ptr / counted-pointer members typed first (a port task).
-class CMainGameComponent {
+class CMainGameComponent : public CGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;   // 0x013B86A0
 public:
-    virtual void v00();
-    unsigned char          Socket[0x0c];             // +0x04
     long                   m_10;                     // +0x10
     CCountedPointer403750  m_14;                     // +0x14
     scoped_ptr<CPolymorphic> m_1c;                   // +0x1c
@@ -112,8 +117,8 @@ public:
     scoped_ptr<CPolymorphic> m_28;                   // +0x28
     CCountedPointer4190b6  m_2c;                     // +0x2c
     unsigned char          _pad34[0x13ab8 - 0x34];
-    CInitBaseClass         InputSystem;              // +0x13ab8
-    unsigned char          _pad13ab9[0x16144 - 0x13ab9];
+    CNetworkClient         Client;                   // +0x13ab8 (0x2680 bytes)
+    unsigned char          _pad16138[0x16144 - 0x16138];
     CCountedPointer4057a0  ConsoleFont;              // +0x16144
     CCountedPointer4057a0  ConsoleFont2;             // +0x1614c
     unsigned char          _pad16154[0x16178 - 0x16154];
@@ -143,10 +148,10 @@ void CMainGameComponent::Shutdown()
     m_10 = 0;
     g_GlobalCountedPointer.Clear();
     PMainGameComponent = 0;
-    ((CDisplayManager*)(((CLSocketServer*)GPDisplayManager)))->RemoveDeviceResetCallback((CDeviceResetCallback*)Socket);
+    ((CDisplayManager*)(((CLSocketServer*)GPDisplayManager)))->RemoveDeviceResetCallback(this);
     FrameRateSmoother.Uninitialise();
-    if (InputSystem.IsValid())
-        InputSystem.Uninitialise_004ae990();
+    if (Client.IsValid())
+        Client.Uninitialise();
     UninitEventPackageLoading();
     UninitEventPackageSaving();
     UninitialiseParticles();

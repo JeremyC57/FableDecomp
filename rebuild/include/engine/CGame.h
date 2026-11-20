@@ -9,11 +9,18 @@ class CGame : public CInitBaseClass {
 public:
     CGame();
     virtual ~CGame();
+#ifdef FABLE_RETAIL_CGAME_UNINITIALISE
+    // Retail opt-in (NF132, q4019): Ego_r.pdb ?Uninitialise@CGame@@QAEXXZ (0x0040F510, before SetGameComponent 0x0040F520 /
+    // SetQuit 0x0040F530) and FableWin.pdb; retail 0x00412F60 `jmp 0x0099A360` (the protected CInitBaseClass::Uninitialise),
+    // followed by SetGameComponent 0x00412F70 (`[ecx+8]`) and SetQuit 0x00412F80 (`[ecx+20Ch]`). Needs
+    // FABLE_RETAIL_CINITBASECLASS_UNINITIALISE for the body.
+    void Uninitialise();                                                 // 0x00412F60
+#endif
 private:
     CGameComponent* CurrentGameComponent;
     unsigned char ParameterBuffer[512];
     bool Quit;
 };
-FABLE_STATIC_ASSERT(sizeof(CGame)==528);
+FABLE_STATIC_ASSERT_AT(17, sizeof(CGame)==528);
 #endif
 #endif

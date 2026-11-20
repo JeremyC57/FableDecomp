@@ -46,7 +46,9 @@ public:
 private: public:
     virtual void v00();
     bool Valid;                                 // +0x04
-    void Uninitialise();                        // 0x0099A360
+protected:
+    void Uninitialise();                        // 0x0099A360 ?Uninitialise@CInitBaseClass@@IAEXXZ (protected: Ego_r + FableWin)
+public:
 };
 
 class CScratchBuffer : public CInitBaseClass { public:

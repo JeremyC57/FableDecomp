@@ -18,6 +18,17 @@ struct CNetworkPlayer;
 class CNetworkClient : public CInitBaseClass {
 public:
     void Update(long,unsigned long,unsigned long);
+#ifdef FABLE_RETAIL_CNETWORKCLIENT_UNINITIALISE
+    // Retail opt-in (NF132, q4019): Ego_r.pdb ?Uninitialise@CNetworkClient@@QAEXXZ (0x004B43D0, right before SendGameEvent
+    // 0x004B43E0) and FableWin.pdb; retail 0x004AE990 `jmp 0x0099A360` (the protected CInitBaseClass::Uninitialise), right before
+    // SendGameEvent 0x004AE9A0. Needs FABLE_RETAIL_CINITBASECLASS_UNINITIALISE for the body.
+    void Uninitialise();                                                // 0x004AE990
+#endif
+#ifdef FABLE_RETAIL_CNETWORKCLIENT_INITIALISEASLOCAL
+    // Retail opt-in (NF132, q4019): Ego_r.pdb ?InitialiseAsLocal@CNetworkClient@@QAE_NPAVCMainGameComponent@@@Z (0x004B4380) and
+    // FableWin.pdb, out of line in retail at 0x004AE940 (called by CMainGameComponent::CreatePlayers 0x004166A8).
+    bool InitialiseAsLocal(CMainGameComponent* game_component);          // 0x004AE940
+#endif
 #ifdef FABLE_RETAIL_CNETWORKCLIENT_SENDGAMEEVENT
     // NF56 opt-in (row 0x0041649C CMainGameComponent::AddGameEvent): Ego_r.pdb 0x004B43E0 / FableWin.pdb 0x01B32F30
     // ?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z, out of line in retail at 0x004AE9A0. Declaration only.

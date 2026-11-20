@@ -75118,9 +75118,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ae990'
-        Module = '_global'
-        Source = '00/4a/CInitBaseClass_Uninitialise_004ae990.cpp'
-        TestSource = '00/4a/CInitBaseClass_Uninitialise_004ae990_test.cpp'
+        Module = 'CNetworkClient'
+        Source = '00/4a/CNetworkClient_Uninitialise_004ae990.cpp'
+        TestSource = '00/4a/CNetworkClient_Uninitialise_004ae990_test.cpp'
         PassPattern = 'PASS_004ae990'
     }
     [pscustomobject]@{
@@ -77554,9 +77554,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a6c120'
-        Module = '_global'
-        Source = '00/a6/CInitBaseClass_Uninitialise_00a6c120.cpp'
-        TestSource = '00/a6/CInitBaseClass_Uninitialise_00a6c120_test.cpp'
+        Module = 'CSystemFont'
+        Source = '00/a6/CSystemFont_Uninitialise_00a6c120.cpp'
+        TestSource = '00/a6/CSystemFont_Uninitialise_00a6c120_test.cpp'
         PassPattern = 'PASS_00a6c120'
     }
     [pscustomobject]@{
@@ -94405,9 +94405,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00412f60'
-        Module = '_global'
-        Source = '00/41/CInitBaseClass_Uninitialise_00412f60.cpp'
-        TestSource = '00/41/CInitBaseClass_Uninitialise_00412f60_test.cpp'
+        Module = 'CGame'
+        Source = '00/41/CGame_Uninitialise_00412f60.cpp'
+        TestSource = '00/41/CGame_Uninitialise_00412f60_test.cpp'
         PassPattern = 'PASS_00412f60'
     }
     [pscustomobject]@{
@@ -151850,9 +151850,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ac310'
-        Module = 'CRetailTree_erase009aa830'
-        Source = '00/9a/CRetailTreeerase009aa830_CRetailTreeerase009aa830_009ac310.cpp'
-        TestSource = '00/9a/CRetailTreeerase009aa830_CRetailTreeerase009aa830_009ac310_test.cpp'
+        Module = 'std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<const CCharString,CCharString> > >'
+        Source = '00/9a/stdmap_map_009ac310.cpp'
+        TestSource = '00/9a/stdmap_map_009ac310_test.cpp'
         PassPattern = '009ac310_TEST PASS'
     }
     [pscustomobject]@{
@@ -190529,9 +190529,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3bde0'
-        Module = 'CNamedEntryList_00a3bde0'
-        Source = '00/a3/CNamedEntryList00a3bde0_CNamedEntryList00a3bde0_00a3bde0.cpp'
-        TestSource = '00/a3/CNamedEntryList00a3bde0_CNamedEntryList00a3bde0_00a3bde0_test.cpp'
+        Module = 'CMovieSubtitles'
+        Source = '00/a3/CMovieSubtitles_CMovieSubtitles_00a3bde0.cpp'
+        TestSource = '00/a3/CMovieSubtitles_CMovieSubtitles_00a3bde0_test.cpp'
         PassPattern = '00a3bde0_TEST PASS'
     }
     [pscustomobject]@{
@@ -279631,9 +279631,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009aa7c0'
-        Module = 'CRetailTree_erase009aa7c0'
-        Source = '00/9a/CRetailTreeerase009aa7c0_Erase_009aa7c0.cpp'
-        TestSource = '00/9a/CRetailTreeerase009aa7c0_Erase_009aa7c0_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,CBankFileManager::CBankInfo>,std::_Select1st<std::pair<const CCharString,CBankFileManager::CBankInfo> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,CBankFileManager::CBankInfo> > >'
+        Source = '00/9a/stdRbtree_Merase_009aa7c0.cpp'
+        TestSource = '00/9a/stdRbtree_Merase_009aa7c0_test.cpp'
         PassPattern = '009aa7c0_TEST PASS'
     }
     [pscustomobject]@{

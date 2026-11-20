@@ -1,0 +1,118 @@
+addr       parity           behav  name
+00412f60   RELOCATION_MATCH PASS   CGame::Uninitialise
+004166a8   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004166a8   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004166a8   RELOCATION_MATCH PASS   CMainGameComponent::CreatePlayers
+004175e5   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004175e5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004175e5   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer403750@@QAEXXZ -> 00403750 labelled 'CCountedPointer<NGameText::CDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer4190b6@@QAEXXZ -> 004190b6 labelled 'CCountedPointer<CLUA>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer4057a0@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Release@CCountedPointer419108@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   CMainGameComponent::Shutdown
+00487af0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00487af0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00487af0   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00487af0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00487af0   RELOCATION_MATCH PASS   CPlayer::Uninitialise
+004ae990   RELOCATION_MATCH PASS   _global::TailJmp_Uninitialise_004ae990
+00859040   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00859040   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00859040   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00859040   RELOCATION_MATCH PASS   _global::GetThingDoingDamageFromCreatureAndEventName
+0088fee0   RELOCATION_MATCH PASS   CGameScriptInterface::TransitionToTheme
+00890010   RELOCATION_MATCH PASS   CGameScriptInterface::SetEnvironmentThemeWeightAllChannels
+00895a10   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00895a10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00895a10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00895a10   RELOCATION_MATCH PASS   CGameScriptInterface::GetBestFishWeight
+00898b30   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+00898b30   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00898b30   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00898b30   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00898b30   RELOCATION_MATCH PASS   CGameScriptInterface::SetWeaponAsHerosActiveWeapon
+00898db0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00898db0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00898db0   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00898db0   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00898db0   RELOCATION_MATCH PASS   CGameScriptInterface::TakeObjectFromHero
+0089fbb0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0089fbb0   RELOCATION_MATCH PASS   CGameScriptInterface::CreateExperienceOrb
+0089fc80   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0089fc80   RELOCATION_MATCH PASS   CGameScriptInterface::CreateExplosion
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008fd0a0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+008fd0a0   RELOCATION_MATCH PASS   CAIStateGroupBase::CreateItem
+0099a360   RELOCATION_MATCH PASS   CInitBaseClass::Uninitialise
+009a60d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009a60d0   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+009a60d0   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+009a60d0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009a60d0   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+009a60d0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009a60d0   RELOCATION_MATCH PASS   CSystemManager::Uninitialise
+009a7990   RELOCATION_MATCH PASS   CBankFileManager::Close
+009aa7c0   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, std::pair<CCharString const, CBankFileManager::CBankInfo>, std::_Select1st<std::pair<CCharString const, CBankFileManager::CBankInfo>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>::_M_erase
+009ac310   WARN STANDIN_LEAF ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ (catalog CRetailTree_erase009aa830::~CRetailTree_erase009aa830; names another function)
+009ac310   RELOCATION_MATCH PASS   CRetailTree_erase009aa830::~CRetailTree_erase009aa830
+00a0a9d0   RELOCATION_MATCH PASS   CRenderManagerCore::Uninit
+00a0b590   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00a0b590   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00a0b590   WARN SHARED_HEADER_AVAILABLE CSystemFont (engine/CSystemFont.h)
+00a0b590   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+00a0b590   WARN STANDIN_LEAF ??_GCRenderManagerCore@@UAEPAXI@Z (catalog CRenderManagerCore::`scalar_deleting_destructor'; names another function)
+00a0b590   RELOCATION_MATCH PASS   CRenderManagerCore::`scalar_deleting_destructor'
+00a3bc20   RELOCATION_MATCH PASS   CVideoSys::~CVideoSys
+00a3bde0   WARN STANDIN_LEAF ??1CMovieSubtitles@@QAE@XZ (catalog CNamedEntryList_00a3bde0::~CNamedEntryList_00a3bde0; names another function)
+00a3bde0   RELOCATION_MATCH PASS   CNamedEntryList_00a3bde0::~CNamedEntryList_00a3bde0
+00a6c120   RELOCATION_MATCH PASS   _global::TailJmp_Uninitialise_00a6c120
+00b25d80   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CSurface (engine/CSurface.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CEngineLayerRenderer (engine/CEngineLayerRenderer.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CEngineComponent (engine/CEngineComponent.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+00b25d80   WARN SHARED_HEADER_AVAILABLE CEngine (engine/CEngine.h)
+00b25d80   RELOCATION_MATCH PASS   CEngine::Uninitialise
+00b260b0   WARN RELOC_NAME: ??0SimpleMemoryPoolNative@@QAE@KK@Z -> 00a5c570 labelled 'CSimpleMemoryPool::CSimpleMemoryPool'
+00b260b0   WARN STANDIN_LEAF ??0EngineNative@@QAE@XZ (catalog CEngine::CEngine; names another function)
+00b260b0   RELOCATION_MATCH PASS   CEngine::CEngine
+
+WINS: 26
+  00412f60 RELOCATION_MATCH _global::?Uninitialise@CGame@@QAEXXZ
+  004166a8 RELOCATION_MATCH CMainGameComponent::?CreatePlayers@CMainGameComponent@@IAEXXZ
+  004175e5 RELOCATION_MATCH CMainGameComponent::?Shutdown@CMainGameComponent@@QAEXXZ
+  00487af0 RELOCATION_MATCH CPlayer::?Uninitialise@CPlayer@@QAEXXZ
+  004ae990 RELOCATION_MATCH _global::?Uninitialise@CNetworkClient@@QAEXXZ
+  00859040 RELOCATION_MATCH _global::?GetThingDoingDamageFromCreatureAndEventName@
+  0088fee0 RELOCATION_MATCH CGameScriptInterface::?TransitionToTheme@CGameScriptInterface@@UBEXABVCCharString@@M@Z
+  00890010 RELOCATION_MATCH CGameScriptInterface::?SetEnvironmentThemeWeightAllChannels@CGameScriptInterface@@UBEXABVCCharString@@M@Z
+  00895a10 RELOCATION_MATCH CGameScriptInterface::GetBestFishWeight
+  00898b30 RELOCATION_MATCH CGameScriptInterface::?SetWeaponAsHerosActiveWeapon@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  00898db0 RELOCATION_MATCH CGameScriptInterface::?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  0089fbb0 RELOCATION_MATCH CGameScriptInterface::CreateExperienceOrb
+  0089fc80 RELOCATION_MATCH CGameScriptInterface::CreateExplosion
+  008fd0a0 RELOCATION_MATCH CAIStateGroupBase::CreateItem
+  0099a360 RELOCATION_MATCH CInitBaseClass::?Uninitialise@CInitBaseClass@@IAEXXZ
+  009a60d0 RELOCATION_MATCH CSystemManager::Uninitialise
+  009a7990 RELOCATION_MATCH CBankFileManager::?Close@CBankFileManager@@QAEXXZ
+  009aa7c0 RELOCATION_MATCH CRetailTree_erase009aa7c0::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@2@@Z
+  009ac310 RELOCATION_MATCH CRetailTree_erase009aa830::??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ
+  00a0a9d0 RELOCATION_MATCH CRenderManagerCore::?Uninit@CRenderManagerCore@@QAEXXZ
+  00a0b590 RELOCATION_MATCH CRenderManagerCore::??_GCRenderManagerCore
+  00a3bc20 RELOCATION_MATCH CVideoSys::??1CVideoSys@@QAE@XZ
+  00a3bde0 RELOCATION_MATCH CNamedEntryList_00a3bde0::??1CMovieSubtitles@@QAE@XZ
+  00a6c120 RELOCATION_MATCH _global::?Uninitialise@CSystemFont@@QAEXXZ
+  00b25d80 RELOCATION_MATCH CEngine::Uninitialise
+  00b260b0 RELOCATION_MATCH CEngine::EngineNative

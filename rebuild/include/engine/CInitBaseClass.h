@@ -8,5 +8,17 @@ class CInitBaseClass:public CBaseClass {private:bool Valid;public:CInitBaseClass
 // retail at 0x0099A330 (`mov al,[ecx+4] ; ret`: Valid); UpdateFrame calls it on each CPlayer (RTTI CPlayer : CInitBaseClass).
 bool IsValid() const;                                                    // 0x0099A330
 #endif
+#ifdef FABLE_RETAIL_CINITBASECLASS_VALIDATE
+// Retail opt-in (NF132, q4055): Ego_r.pdb + FableWin.pdb ?Validate@CInitBaseClass@@UBEXXZ, the class's first own virtual: vtable
+// 0x0129A7CC slot 1 = 0x0099A340 (`ret`), after the inherited CBaseClass destructor slot 0.
+virtual void Validate() const;                                           // slot 1, 0x0099A340
+#endif
+#ifdef FABLE_RETAIL_CINITBASECLASS_UNINITIALISE
+// Retail opt-in (NF132, q4019): Ego_r.pdb + FableWin.pdb ?Uninitialise@CInitBaseClass@@IAEXXZ (protected, non-virtual), out of
+// line at 0x0099A360 (`cmp byte [ecx+4],1 ; jne ; dec [0x013BCA14] ; mov byte [ecx+4],0 ; ret`: clears Valid).
+protected:
+void Uninitialise();                                                     // 0x0099A360
+public:
+#endif
 };
 #endif

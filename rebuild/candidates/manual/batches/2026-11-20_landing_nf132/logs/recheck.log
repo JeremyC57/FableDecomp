@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00412f60   RELOCATION_MATCH PASS   CGame::Uninitialise
+004166a8   RELOCATION_MATCH PASS   CMainGameComponent::CreatePlayers
+004175e5   RELOCATION_MATCH PASS   CMainGameComponent::Shutdown
+00487af0   RELOCATION_MATCH PASS   CPlayer::Uninitialise
+004ae990   RELOCATION_MATCH PASS   CNetworkClient::Uninitialise
+00859040   RELOCATION_MATCH PASS   _global::GetThingDoingDamageFromCreatureAndEventName
+0088fee0   RELOCATION_MATCH PASS   CGameScriptInterface::TransitionToTheme
+00890010   RELOCATION_MATCH PASS   CGameScriptInterface::SetEnvironmentThemeWeightAllChannels
+00895a10   RELOCATION_MATCH PASS   CGameScriptInterface::GetBestFishWeight
+00898b30   RELOCATION_MATCH PASS   CGameScriptInterface::SetWeaponAsHerosActiveWeapon
+00898db0   RELOCATION_MATCH PASS   CGameScriptInterface::TakeObjectFromHero
+0089fbb0   RELOCATION_MATCH PASS   CGameScriptInterface::CreateExperienceOrb
+0089fc80   RELOCATION_MATCH PASS   CGameScriptInterface::CreateExplosion
+008fd0a0   RELOCATION_MATCH PASS   CAIStateGroupBase::CreateItem
+0099a360   RELOCATION_MATCH PASS   CInitBaseClass::Uninitialise
+009a60d0   RELOCATION_MATCH PASS   CSystemManager::Uninitialise
+009a7990   RELOCATION_MATCH PASS   CBankFileManager::Close
+009aa7c0   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString,std::pair<const CCharString,CBankFileManager::CBankInfo>,std::_Select1st<std::pair<const CCharString,CBankFileManager::CBankInfo> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,CBankFileManager::CBankInfo> > >::_M_erase
+009ac310   RELOCATION_MATCH PASS   std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<const CCharString,CCharString> > >::~map
+00a0a9d0   RELOCATION_MATCH PASS   CRenderManagerCore::Uninit
+00a0b590   RELOCATION_MATCH PASS   CRenderManagerCore::`scalar_deleting_destructor'
+00a3bc20   RELOCATION_MATCH PASS   CVideoSys::~CVideoSys
+00a3bde0   RELOCATION_MATCH PASS   CMovieSubtitles::~CMovieSubtitles
+00a6c120   RELOCATION_MATCH PASS   CSystemFont::Uninitialise
+00b25d80   RELOCATION_MATCH PASS   CEngine::Uninitialise
+00b260b0   RELOCATION_MATCH PASS   CEngine::CEngine
+# after the scaffolding fix (anonymous-namespace helpers), regraded:
+00a3bde0   RELOCATION_MATCH PASS   CMovieSubtitles::~CMovieSubtitles
+009ac310   RELOCATION_MATCH PASS   std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<const CCharString,CCharString> > >::~map

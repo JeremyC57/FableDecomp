@@ -1,0 +1,88 @@
+00412f60 new: 1
+    ?Uninitialise@CGame@@QAEXXZ TABLE:00412f60
+004166a8 new: 0
+004175e5 new: 0
+00487af0 new: 0
+004ae990 new: 1
+    ?Uninitialise@CNetworkClient@@QAEXXZ TABLE:004ae990
+00859040 new: 1
+    ?GetThingDoingDamageFromCreatureAndEventName@?A0x18bdb817@@YIPAVCThing@@AAV2@ABVCCharString@@_N22@Z
+0088fee0 new: 2
+    ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ
+    ?TransitionToTheme@CGameScriptInterface@@UBEXABVCCharString@@M@Z
+00890010 new: 2
+    ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ
+    ?SetEnvironmentThemeWeightAllChannels@CGameScriptInterface@@UBEXABVCCharString@@M@Z
+00895a10 new: 0
+00898b30 new: 1
+    ?SetWeaponAsHerosActiveWeapon@CGameScriptInterface@@UBEXABVCCharString@@@Z
+00898db0 new: 0
+0089fbb0 new: 0
+0089fc80 new: 0
+008fd0a0 new: 0
+0099a360 new: 1
+    ?Uninitialise@CInitBaseClass@@IAEXXZ TABLE:0099a360
+009a60d0 new: 0
+009a7990 new: 19
+    ??$_Destroy@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@0@@Z
+    ??$_Destroy@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@YAXPAV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z
+    ??0?$_List_iterator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAE@ABU01@@Z
+    ??0?$_List_iterator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAE@PAU_List_n
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??1?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@QAE@XZ
+    ??1CBankInfo@CBankFileManager@@QAE@XZ
+    ??F?$_List_iterator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAEAAU01@XZ
+    ??_G?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@QAEPAXI@Z
+    ?_M_decr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7b0
+    ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@
+    ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3
+    ?clear@?$map@VCCharString@@VCBankInfo@CBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@5@@std@@QAE
+    ?deallocate@?$allocator@U?$_List_node@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAEXPAU?$_List_node@V?$CCountedPointer@VCRetailBank@NBankFileManager
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankI
+    ?empty@?$list@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QBE_NXZ
+    ?end@?$list@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCo
+    ?erase@?$list@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$C
+    ?pop_back@?$list@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAEXXZ
+009aa7c0 new: 6
+    ??$_Destroy@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@0@@Z
+    ??1?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@QAE@XZ
+    ??1CBankInfo@CBankFileManager@@QAE@XZ
+    ??_G?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@QAEPAXI@Z
+    ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankI
+009ac310 new: 13
+    ??$_Destroy@U?$pair@$$CBVCCharString@@V1@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@V1@@0@@Z
+    ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCha
+    ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@V1@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@2@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@2@@std@@QAE
+    ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAE@XZ
+    ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ TABLE:009ac310
+    ??1?$pair@$$CBVCCharString@@V1@@std@@QAE@XZ
+    ??_G?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEPAXI@Z
+    ??_G?$pair@$$CBVCCharString@@V1@@std@@QAEPAXI@Z
+    ?DestroyMapOfCCharStringCCharString@@YAXPAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@@Z
+    ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$
+    ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBV
+    ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@2@I@Z
+00a0a9d0 new: 1
+    ?Uninit@CRenderManagerCore@@QAEXXZ TABLE:00a0a9d0
+00a0b590 new: 0
+00a3bc20 new: 5
+    ??1?$_List_base@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@UCSubTitle@@@std@@U12@V?$allocator@U?$_List_node@UCSubTitle@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@UCSubTitle@@@std@@@std@@QAE@XZ
+    ??1?$list@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAE@XZ
+    ?deallocate@?$allocator@U?$_List_node@UCSubTitle@@@std@@@std@@QAEXPAU?$_List_node@UCSubTitle@@@2@I@Z
+00a3bde0 new: 8
+    ??1?$_List_base@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@UCSubTitle@@@std@@U12@V?$allocator@U?$_List_node@UCSubTitle@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@UCSubTitle@@@std@@@std@@QAE@XZ
+    ??1?$list@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAE@XZ
+    ??1CMovieSubtitles@@QAE@XZ
+    ??_GCMovieSubtitles@@QAEPAXI@Z
+    ?DestroyCMovieSubtitles@@YAXPAVCMovieSubtitles@@@Z
+    ?deallocate@?$allocator@U?$_List_node@UCSubTitle@@@std@@@std@@QAEXPAU?$_List_node@UCSubTitle@@@2@I@Z
+00a6c120 new: 1
+    ?Uninitialise@CSystemFont@@QAEXXZ TABLE:00a6c120
+00b25d80 new: 0
+00b260b0 new: 0

@@ -4705,7 +4705,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ae8c0	PeekWorldMap	CWorld	__thiscall	CWorldMap const &	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CWorld_PeekWorldMap_004ae8c0.cpp
 004ae8d0	`scalar_deleting_destructor'	CWorld	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CLandscapeBackgroundPatch_vectordeletingdestructor_004ae8d0.cpp
 004ae940	InitialiseAsLocal	CNetworkClient	__thiscall	bool	2	CNetworkClient *,CMainGameComponent *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\4a\0x004AE940_CNetworkClient_InitialiseAsLocal.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CNetworkClient_InitialiseAsLocal_004ae940.cpp
-004ae990	TailJmp_Uninitialise_004ae990	_global	__thiscall	void	1	CInitBaseClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CInitBaseClass_Uninitialise_004ae990.cpp
+004ae990	Uninitialise	CNetworkClient	__thiscall	void	1	CInitBaseClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CInitBaseClass_Uninitialise_004ae990.cpp
 004ae9a0	ManualReset	CTCTrapBase	__thiscall	void	1	CTCTrapBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CTCTrapBase_ManualReset_004ae9a0.cpp
 004ae9c0	Nop_ret0_004ae9c0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\E2_E2_004ae9c0.cpp
 004ae9d0	Update	CNetworkClient	__thiscall	void	4	CNetworkClient *,long,ulong,ulong	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\4a\0x004AE9D0_CNetworkClient_Update.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CNetworkClient_Update_004ae9d0.cpp
@@ -33815,7 +33815,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009aa720	_Rb_tree_base	std::_Rb_tree_base<node0x18_009aa720>	unknown	undefined	0		0	yes	review-low									
 009aa750	_Rb_tree_base	std::_Rb_tree_base<node0x14_009aa750>	unknown	undefined	0		0	yes	review-low									
 009aa780	_M_erase	std::_Rb_tree<class CCharString, struct std::pair<class CCharString const, class NBankFileManager::CContainedBank>, struct std::_Select1st<struct std::pair<class CCharString const, class NBankFileManager::CContainedBank>>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, class NBankFileManager::CContainedBank>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
-009aa7c0	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CBankFileManager::CBankInfo>, std::_Select1st<std::pair<CCharString const, CBankFileManager::CBankInfo>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
+009aa7c0	_M_erase	std::_Rb_tree<CCharString,std::pair<const CCharString,CBankFileManager::CBankInfo>,std::_Select1st<std::pair<const CCharString,CBankFileManager::CBankInfo> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,CBankFileManager::CBankInfo> > >	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa830	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CCharString>, std::_Select1st<std::pair<CCharString const, CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa880	FreeTree_CTreeOwner_009aa880	_unattributed	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa8c0	CCountedPointer_Release_009aa8c0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009aa8c0.cpp
@@ -33861,7 +33861,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ac290	list	std::list<T_0x8_009ac290>	unknown	undefined	0		0	yes	review-medium									
 009ac2b0	~list	std::list<T_009ac2b0>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CActiveFile_OnReadFinished_009ac2b0.cpp
 009ac2d0	map	std::map<CCharString, CCharString>	unknown	undefined	0		0	yes	accepted									
-009ac310	~CRetailTree_erase009aa830	CRetailTree_erase009aa830	unknown	undefined	0		0	yes	accepted									
+009ac310	~map	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<const CCharString,CCharString> > >	unknown	undefined	0		0	yes	accepted									
 009ac380	set	std::set<CWideString,std::less<CWideString>,std::allocator<CWideString> >	unknown	undefined	0		0	yes	accepted									
 009ac3c0	~CRetailTree_erase009aa880	CRetailTree_erase009aa880	unknown	undefined	0		0	yes	accepted									
 009ac4d0	CRetailBank	NBankFileManager::CRetailBank	__thiscall	NBankFileManager::CRetailBank *	1	NBankFileManager::CRetailBank *	1	yes	accepted									
@@ -36815,7 +36815,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3bcf0	FUN_00a3bcf0	_global	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3bd00	QueryInterface	CBaseVideoRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3bdc0	`scalar_deleting_destructor'	CTextureRenderer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CLandscapeBackgroundPatch_vectordeletingdestructor_00a3bdc0.cpp
-00a3bde0	~CNamedEntryList_00a3bde0	CNamedEntryList_00a3bde0	__thiscall	void	1	CActiveFile *	1	yes	accepted									
+00a3bde0	~CMovieSubtitles	CMovieSubtitles	__thiscall	void	1	CActiveFile *	1	yes	accepted									
 00a3be10	Validate	C3DAnimationState	__thiscall	void	1	C3DAnimationState *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C3DAnimationState_Validate_00a3be10.cpp
 00a3be20	Validate	C3DAnimationStateAlpha	__thiscall	void	1	C3DAnimationStateAlpha *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C3DAnimationStateAlpha_Validate_00a3be20.cpp
 00a3be30	Validate	C3DAnimationTransitionState	__thiscall	void	1	CMapsAndRegionsDialog *	1	yes	accepted									
@@ -37811,7 +37811,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a6c000	`scalar_deleting_destructor'	CTextureManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CLandscapeBackgroundPatch_vectordeletingdestructor_00a6c000.cpp
 00a6c020	resize	std::vector<CIVCountedPointer<CManagedTextureData>, std::allocator<CIVCountedPointer<CManagedTextureData>>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 00a6c080	sort<std::pair<unsigned long, unsigned long> *>	std	unknown	undefined	0		0	yes	accepted									
-00a6c120	TailJmp_Uninitialise_00a6c120	_global	__thiscall	void	1	CInitBaseClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CInitBaseClass_Uninitialise_00a6c120.cpp
+00a6c120	Uninitialise	CSystemFont	__thiscall	void	1	CInitBaseClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CInitBaseClass_Uninitialise_00a6c120.cpp
 00a6c170	Initialise	CSystemFont	__thiscall	bool	1	CSystemFont *	1	yes	accepted									
 00a6c560	GetNoTriangles	CPhysicsMesh	__thiscall	long	1	CWorldMap *	1	yes	accepted									
 00a6c5a0	GetNoHelperPoints	CPhysicsMesh	unknown	undefined	0		0			discovered	gapscan							

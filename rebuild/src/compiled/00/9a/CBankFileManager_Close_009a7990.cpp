@@ -10,66 +10,20 @@
 // (next/prev read first), its counted pointer destroyed inline (release re-reading the block, both words
 // cleared) and the node freed; then the inline map clear(): a non-empty tree is erased from the root and
 // the head's left/parent/right and the size reset (the head re-read for each store).
-#include <stdlib.h>
-
-void operator delete(void* p);                      // 0x00BFE9BC
-
-#include "engine/CCountedPointer.h"
-
-
-template <class T>
-struct CRetailList {                                // the sentinel node pointer only
-    struct SNode {
-        SNode* m_pNext;
-        SNode* m_pPrev;
-        T m_value;
-    };
-    SNode* m_pNode;
-    bool empty() const { return m_pNode->m_pNext == m_pNode; }
-    void pop_back()
-    {
-        SNode* node = m_pNode->m_pPrev;
-        SNode* next = node->m_pNext;
-        SNode* prev = node->m_pPrev;
-        prev->m_pNext = next;
-        next->m_pPrev = prev;
-        node->m_value.~T();
-        free(node);
-    }
-};
-
-struct SBankNode {                                  // VC6-era tree node
-    unsigned char m_colour;                         // +0x00
-    SBankNode* m_pParent;                           // +0x04
-    SBankNode* m_pLeft;                             // +0x08
-    SBankNode* m_pRight;                            // +0x0C
-};
-
-struct CBankTree {                                  // map<CCharString, CBankInfo>: {head, size}
-    SBankNode* m_pHead;                             // +0
-    unsigned long m_size;                           // +4
-    void _Erase(SBankNode* root);                   // 0x009AA7C0
-    void clear()
-    {
-        if (m_size) {
-            _Erase(m_pHead->m_pParent);
-            m_pHead->m_pLeft = m_pHead;
-            m_pHead->m_pParent = 0;
-            m_pHead->m_pRight = m_pHead;
-            m_size = 0;
-        }
-    }
-};
-
-namespace NBankFileManager { class CRetailBank; }
-
-struct CBankFileManager {
-    void* m_00;                                     // +0x00
-    CBankTree Banks;                                // +0x04
-    unsigned long m_bankCompare;                    // +0x0C (map comparator word)
-    CRetailList<CCountedPointer<NBankFileManager::CRetailBank> > RetailBanks;   // +0x10
-    void Close();
-};
+// Leaf: ?Close@CBankFileManager@@QAEXXZ
+// NF132 (q6186): moved onto the retail fable_retail_banks.h CBankFileManager (Banks = std::map<CCharString, CBankInfo>, RetailBanks =
+//   std::list<CCountedPointer<NBankFileManager::CRetailBank> >) and the shared STLport list / map (stlport/fable_containers.h /
+//   fable_map.h); the tree's out-of-line erase 0x009AA7C0 is now ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@...
+//   (was the local CBankTree::_Erase stand-in over local CRetailList / SBankNode / CBankTree / CBankFileManager models).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CBANKFILEMANAGER
+#define FABLE_RETAIL_STLP_TREE_MERASE_NOINLINE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_LIST_POPBACK
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "fable_retail_banks.h"
 
 void CBankFileManager::Close()
 {

@@ -37,10 +37,14 @@ public:
 struct CTCInventory_Retail {                        // interface type 0x11
     float GetBestFishWeight(long defIndex);         // 0x005BFC90 (CTCInventoryBase)
 };
-struct CGameDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
-};
-class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+// NF132 (q6233): CGameDefinitionManager is the shared engine/CGameDefinitionManager.h class (: CDefinitionManager); 0x009AD410 binds
+//   ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (Ego_r.pdb 0x00B05360 + FableWin.pdb 0x03062820, const), was the
+//   local CGameDefinitionManager_Retail stand-in.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 extern const float g_noFishWeight;                  // 0x0122DEDC
 struct CThing_Retail;
 struct CBase {

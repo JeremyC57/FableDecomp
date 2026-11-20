@@ -109,10 +109,14 @@ CCharString::CCharString(const CCharString& other)                              
 
 #include "engine/CVectorMap.h"
 
-class CGameDefinitionManager {
-public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;              // 0x009AD410
-};
+// NF132 (q6233): CGameDefinitionManager is the shared engine/CGameDefinitionManager.h class (: CDefinitionManager); 0x009AD410 binds
+//   ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (Ego_r.pdb 0x00B05360 + FableWin.pdb 0x03062820), was this
+//   row's local CGameDefinitionManager model's own member.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)

@@ -34,10 +34,14 @@ class CThing { public:
     unsigned char  m_91_1 : 7;
     CScriptThing GetScriptThing() const;                 // 0x004C7E50 (manifest "GFPredicateAnd<...>" is propagated)
 };
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
-};
-class CGameDefinitionManager : public CDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
+// NF132 (q6233): CGameDefinitionManager is the shared engine/CGameDefinitionManager.h class (: CDefinitionManager); 0x009AD410 binds
+//   ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (Ego_r.pdb 0x00B05360 + FableWin.pdb 0x03062820, const), was the
+//   local CDefinitionManager_Retail stand-in.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
 CThing* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos, const C3DVector& dir);   // 0x0080C500
 CThing* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos);                         // 0x0080C460

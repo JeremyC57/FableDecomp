@@ -8,7 +8,13 @@
 // Complete primary tables: native CIEngine85/CEngine86 slots; signatures from engine_api, order independently audited.
 // Available generated headers flatten bases/vptrs; native projections retain exact fields and genuine virtual signatures.
 // Leaf: EngineNative
+// NF132 (q4055): the base is the shared engine/CInitBaseClass.h class (was the local NativeInitBaseClass stand-in): its out-of-line
+//   ctor 0x0099A310 binds ??0CInitBaseClass@@QAE@XZ (Ego_r.pdb + FableWin.pdb, the spelling 16 other landed rows bind); the opt-in
+//   FABLE_RETAIL_CINITBASECLASS_VALIDATE declares its slot-1 virtual ?Validate@CInitBaseClass@@UBEXXZ (0x0099A340), so the CIEngine
+//   slots keep their numbers.
+#define FABLE_RETAIL_CINITBASECLASS_VALIDATE
 #include "engine/CEngine.h"
+#include "engine/CInitBaseClass.h"
 #include "engine/CSimpleMemoryPool.h"
 #include "engine/CIEngine.h"
 
@@ -45,14 +51,7 @@ class CStaticMapGenerationVisibiilityInfo;
 class CTexture;
 template<class T>class CArray;
 enum EEnginePrimitiveStatIndex{NativePrimitiveStatUnspecified=0};
-// Native CInitBase constructor declaration binds genuine99A310; no invented constructor dependency.
-struct NativeInitBaseClass {
- virtual ~NativeInitBaseClass();
- virtual void Validate()const;
- bool Valid;
- NativeInitBaseClass();
-};
-struct CIEngineNative:NativeInitBaseClass {
+struct CIEngineNative:CInitBaseClass {
  bool Active;
  CIEngineNative():Active(false){}
  virtual ~CIEngineNative();
@@ -245,7 +244,7 @@ struct EngineNative:CIEngineNative,NativeDeviceResetCallback {
  EngineNative();
 };
 #ifdef _MSC_VER
-FABLE_STATIC_ASSERT(sizeof(NativeInitBaseClass)==8);
+FABLE_STATIC_ASSERT(sizeof(CInitBaseClass)==8);
 FABLE_STATIC_ASSERT(sizeof(CIEngineNative)==sizeof(CIEngine));
 FABLE_STATIC_ASSERT(offsetof(CIEngineNative,Active)==offsetof(CIEngine,Active));
 FABLE_STATIC_ASSERT(sizeof(SimpleMemoryPoolNative)==28);

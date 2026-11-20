@@ -17,7 +17,13 @@ namespace NGameText { class CDataBank; }
 class CFontBank;
 #endif
 class CASoundManager;
+#ifdef FABLE_RETAIL_CSUBTITLE_STRUCT
+// Retail opt-in (NF132, q4100): Ego_r.pdb and FableWin.pdb key CSubTitle as a struct (`UCSubTitle@@`: ??0CSubTitle@@QAE@XZ,
+// ?clear@?$list@UCSubTitle@@...); the list's out-of-line clear 0x009BE060 is ?clear@?$_List_base@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAEXXZ.
+struct CSubTitle;
+#else
 class CSubTitle;
+#endif
 class CMovieSubtitles {
 public:
     CMovieSubtitles();                                                   // 0x009BDBA0 ??0CMovieSubtitles@@QAE@XZ

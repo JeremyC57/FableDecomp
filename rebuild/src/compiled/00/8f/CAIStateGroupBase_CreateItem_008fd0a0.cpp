@@ -29,11 +29,14 @@ class CAIStateGroupBase { public: CAIBrain* PBrain; };
 
 class CThing;
 class CThingObject;
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(CCharString*); // 0x009ad410
-public:
-    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-};
+// NF132 (q6233): CGameDefinitionManager is the shared engine/CGameDefinitionManager.h class (: CDefinitionManager; Get 0x0044C6B0);
+//   0x009AD410 binds ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (Ego_r.pdb + FableWin.pdb: a const reference,
+//   the same pushed pointer), was this row's local CGameDefinitionManager model taking CCharString*.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 // Retail getter 0x00449700 reads native MainPlayer at +0x1c; the donor header
 // places it at +0x20 because its Players vector is four bytes larger.
 class CTCCarrying { public:
@@ -72,7 +75,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
         C3DVector position = PBrain->Creature->GetPos();
         float orientation[6] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 
-        long definition = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(definitionName);
+        long definition = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(*definitionName);
         if (definition != 0)
         {
             CThingObject* thing;
@@ -80,7 +83,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
                 CCharString createName("", -1);
             thing = CThingObject::Create(definition, *(&position), playerID, (CRightHandedSet const*)orientation, 0, createName);
             }
-            long item = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(itemName);
+            long item = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(*itemName);
             carry->PutThingInCarrySlot(thing, item, true);
         }
     }

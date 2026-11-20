@@ -19,7 +19,14 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct DefinitionMethods{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
+// NF132 (q6233): DefinitionManager (+0x10) is the shared engine/CGameDefinitionManager.h class (: CDefinitionManager); 0x009AD410 binds
+//   ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (Ego_r.pdb + FableWin.pdb), was the DefinitionMethods stand-in
+//   reached by a reinterpret_cast.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
+#include "engine/CGameDefinitionManager.h"
 // Name fix (agentNF54, e114): the 0x005D99D0 stand-in declaration is gone: it is the static
 //   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z (Ego_r.pdb 0x0055A9A0 + FableWin.pdb 0x01E03620: the TC interface
 //   type of the inventory component that holds the item), declared by engine/CTCInventoryItem.h (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY); the local empty ETCInterfaceType enum is the shared engine/ETCInterfaceType.h.
@@ -32,7 +39,7 @@ union InventorySlot{void* Native;void(CTCInventoryBase::*RemoveItem)(long,long);
 // agentNF16: defined on the shared-header class (engine/CGameScriptInterface.h slot 125, vtable 0x01260F0C slot 125 = 0x00898DB0;
 //   Ego_r ?TakeObjectFromHero@CGameScriptInterface@@UBEXABVCCharString@@@Z) instead of the derived stand-in CGameScriptInterfaceMethods.
 void CGameScriptInterface::TakeObjectFromHero(const CCharString& name)const{
- long index=reinterpret_cast<DefinitionMethods*>(DefinitionManager)->GetDefGlobalIndexFromName(name);
+ long index=DefinitionManager->GetDefGlobalIndexFromName(name);
  if(index>0){long category=CTCInventoryItem::GetInventoryType(index);if(category){CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();CTCInventoryBase* inventory=0;
  if(static_cast<unsigned long>(category)>=274){puts("bitset");abort();}
  if(hero->UsingComponents[static_cast<unsigned long>(category)>>5]&(1U<<(category&31))){ComponentMap* map=&hero->Components;ETCInterfaceType key = (ETCInterfaceType)(category);ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;inventory=static_cast<CTCInventoryBase*>(((void*)(it==end||category<it->first?end:it)->second));}

@@ -1,0 +1,2 @@
+# recheck after landing nf132: 474 rows = gate referencing rows (19 targets) + renamed rows + 77 direct includers of CMovieSubtitles.h / CInitBaseClass.h / CNetworkClient.h / CEnvironment.h / CGame.h
+good 474 bad 0

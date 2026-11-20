@@ -124,7 +124,9 @@ class CInitBaseClass {
 public:
     virtual ~CInitBaseClass();
     bool Valid;                                     // +0x04
-    virtual void Uninitialise();                    // 0x0099A360
+protected:
+    void Uninitialise();                            // 0x0099A360 ?Uninitialise@CInitBaseClass@@IAEXXZ (protected, non-virtual: Ego_r + FableWin)
+public:
 };
 class CIEngine : public CInitBaseClass {
 public:
