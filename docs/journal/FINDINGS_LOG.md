@@ -1473,3 +1473,7 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-20 (Account B p25N, 0x00833C00, open) The front end emits info.Engine twice per Engine call (seen at /Od), and VC7.1's optimiser merges the two loads when the colour and font are locals.
   - Spelling the colour and font inline in each call, as the landed sibling 0x006AA2E0 does and as Ego_d (no colour or font locals) allows, keeps retail's two loads. That gives DIFFER(2299v2300).
   - Left: retail holds const 0xff in bl only inside the names block, which frees ebx for the per-call vtable and fonts, and keeps info in ebp throughout. Ours holds 0xff in ebx for the whole function. The frame is 0x84 v 0x88.
+- 2026-11-20 (Account B p25O, 0x005B01FE, open; addendum) The operand order comes from c2's merge sort at 0x1076A2F3 (descending, stable) on the IND leaf hash computed at 0x1076C720 (16-bit truncated).
+  - The zeroing temps are #1178 / #1180 / #1182 / #1184, and they did not move under extra locals, any of the six zeroing orders, Ego_d's split totals, or an extra ItemsToSell[] call before the zeroing (which adds 2 temps at L4).
+  - Hypothesis (unmeasured): the kind-15 temp pool reuses freed numbers, so the zeroing number follows the pool state, not the count of earlier temps.
+  - Our text still lacks Ego_d's two 12-B lines (7350/7351) and the function-scope def_index.
