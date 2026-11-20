@@ -1,0 +1,109 @@
+009109b0 new: 1
+    ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z TABLE:009109b0
+0093d3a0 new: 1
+    ?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ TABLE:0093d3a0
+0093d800 new: 1
+    ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z TABLE:0093d800
+0093db10 new: 1
+    ?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z
+0093dc10 new: 5
+    ??GC3DVector@@QBE?BV0@ABV0@@Z
+    ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
+009551a0 new: 9
+    ??0CCreatureAction_ThrowShotObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+    ??1CCreatureAction_PlayCombatAnimation@@UAE@XZ
+    ??1CCreatureAction_ThrowShotObject@@UAE@XZ
+    ??_7CCreatureAction_ThrowShotObject@@6B@ TABLE:012944d4
+    ??_GCCreatureAction_ThrowShotObject@@UAEPAXI@Z
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ
+00956fe0 new: 37
+    ??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+    ??$?9VCThing@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@H@Z
+    ??$GetSubDef@VCBriarRoseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBriarRoseDef@@@@@Z TABLE:008e7790
+    ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z TABLE:004cc340
+    ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCBriarRoseDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    ??0?$CDefPointer@$$CBVCBriarRoseDef@@@@QAE@W4ENullDef@@@Z
+    ??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@ABV0@@Z
+    ??0C2DVector@@QAE@MM@Z
+    ??1?$CDefPointer@$$CBVCBriarRoseDef@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+    ??1?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+    ??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+    ??1?$CIntelligentPointer@VCThingCreatureBase@@@@UAE@XZ
+    ??1CCreatureAction_BriarRoseForcePush@@UAE@XZ
+    ??1CCreatureAction_BriarRoseShotFarInto@@UAE@XZ
+    ??C?$CDefPointer@$$CBVCBriarRoseDef@@@@QBEPBVCBriarRoseDef@@XZ
+    ??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ??C?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Assign@?$CDefPointer@$$CBVCBriarRoseDef@@@@AAEXPAVCDefPointeeBase@@@Z
+    ?Get@?$CDefPointer@$$CBVCBriarRoseDef@@@@QBEPBVCBriarRoseDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?GetPBaseDef@CThing@@QBE?AV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
+    ?GetSquaredMagnitude@C2DVector@@QBEMXZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+    ?IsDead@CThing@@QBE_NXZ
+    ?Release@?$CDefPointer@$$CBVCBriarRoseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+    ?Release@?$CDefPointer@$$CBVCThingBaseDef@@@@QAEXXZ
+    ?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+    ?StatGetTypeName@CBriarRoseDef@@SI?AVCCharString@@XZ
+    ?Update@CAIStateGroup_BriarRoseWillUse@@UAEXXZ
+00964360 new: 20
+    ??$?RVCThingObject@@@?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@QBE_NABVCThingObject@@@Z
+    ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z TABLE:00916b10
+    ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV
+    ??0?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0C3DVector@@QAE@ABV0@@Z
+    ??0C3DVector@@QAE@MMM@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??D?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QBEABQAVCClass@@XZ
+    ??E?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@std@@QAEAAU01@XZ
+    ??GC3DVector@@QBE?BV0@ABV0@@Z
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+    ?GetTypeFlags@CThing@@QBEKXZ
+    ?IsIncludedInThingScans@CThing@@QBE_NXZ TABLE:0048bc40
+    ?StatGetTypeFlags@CThingObject@@SIKXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+    ?end@?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QBE?AU?$_List_iterator@PAVCClass@@U?$_Const_traits@PAVCClass@@@std@@@2@XZ
+00978fd0 new: 9
+    ??0?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@QAE@ABVCThing
+    ??0?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@QAE@ABVCThingFilter_IsOccupiableOccupied@@@Z
+    ??0C2DBoxF@@QAE@ABVC2DVector@@M@Z
+    ??0CThingFilter_IsNot@@QAE@ABVCThing@@@Z
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+    ?GetCoverThingList@CAIStateGroup_CreatureAdvanceInCover@@UAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+009863e0 new: 15
+    ??0C2DBoxI@@QAE@ABVC2DCoordI@@J@Z TABLE:00434740
+    ??0C2DCoordI@@QAE@JJ@Z
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ
+    ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?ToC2DCoordI@C3DVector@@QBE?AVC2DCoordI@@XZ
+    ?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z
+    ?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z
+    ?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z
+    ?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z
+    ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+    ?__stl_throw_out_of_range@std@@YAXPBD@Z
+    ?test@?$bitset@$0BBC@@std@@QBE_NI@Z TABLE:00410de0

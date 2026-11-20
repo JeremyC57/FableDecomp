@@ -16,6 +16,11 @@
 // engine/CCombatActionBase.h first.
 class CCreatureAction_BriarRoseShotFarInto : public CCombatActionBase {
 public:
+#ifdef FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFARINTO_CTOR
+    // NF137 opt-in (2026-11-20, q5021, row 0x00956FE0): the two-creature constructor 0x00957170, Ego_r.pdb 0x0097BE30 + FableWin.pdb 0x02C02D20
+    // ??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z. A declaration only: no layout change.
+    CCreatureAction_BriarRoseShotFarInto(CThingCreatureBase& creature, CThingCreatureBase& enemy);   // 0x00957170
+#endif
     virtual void FinishAction();                                         // slot 4, 0x008C2C50
 };
 #else

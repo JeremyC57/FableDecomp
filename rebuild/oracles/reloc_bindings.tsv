@@ -4548,8 +4548,6 @@ N_008fdb27	008fdb27	008fdb55
 ?MoveToSeat@CAIStateGroup_UsesSeat@@QAE_NJ@Z	009385f0	009387c0
 ?SitInSeat@CAIStateGroup_UsesSeat@@QAE_NXZ	00938380	009387c0
 ?IsStopping@CAIStateGroup_StealthSeekEnemy_Adapter@@QAE_NXZ	008fd010	0093c4e0
-?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@QAE_N_N@Z	0093d800	0093db10
-?IsStillRunnable@CMeleeNearbyBaseMethods@@QAE_N_N@Z	0093d800	0093dc10
 ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ	00662410	0093dcd0
 ?IsInSchoolHours@CAIStateGroup_WorkBase@@QAE_NXZ	00940120	00940180
 ??_7CIntelligentPointerTask@@6B@	0125a8a4	00940240
@@ -4593,11 +4591,6 @@ N_008fdb27	008fdb27	008fdb55
 ??_7MazePointer@@6B@	01238c6c	00954b50
 ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z	004365b0	00954b50
 ?GetSubDef@MazeDefinitionNative@@QAE_NAAUCDefPointer@@@Z	008c3510	00954b50
-??1CCombatActionBaseRetail@@UAE@XZ	0062e900	009551a0
-??_7CCreatureAction_ThrowShotObjectRetail@@6B@	012944d4	009551a0
-?AIAction_PerformActionAndWait@MazeRangedMethods@@QAEJPAUCCreatureActionBaseRetail@@_N@Z	0097db70	009551a0
-?CanRun@MazeRangedMethods@@QAE_NXZ	00954220	009551a0
-?Terminate@MazeRangedMethods@@QAEXXZ	008fcf40	009551a0
 ??_7CCombatAction_WillShieldInto@@6B@	0129461c	00956990
 ??_7CCreatureAction_BriarRoseIntoInvulnerable@@6B@	01294b8c	00957400
 ??_7CCreatureAction_BriarRoseForcePush@@6B@	01294cd4	00957480
@@ -4644,7 +4637,6 @@ N_008fdb27	008fdb27	008fdb55
 ??_7CCombatAction_Guildmaster_HealFollowersInto@@6B@	0129846c	00978650
 ??_7CCombatAction_Guildmaster_ShieldFollowersInto@@6B@	012985b4	00978680
 ??_7CCombatAction_Guildmaster_SpeedUpFollowersInto@@6B@	012986fc	009786b0
-?PeekThingSearchTools@AdvanceInCoverMethods@@QAEPAUCThingSearchToolsRetail@@XZ	008fd000	00978fd0
 ??_7CCreatureAction_VillagerAttack@@6B@	01298e2c	0097d190
 ??_7CCreatureAction_VillagerAdvance@@6B@	012990bc	0097d200
 ??_7CCreatureAction_VillagerBackOff@@6B@	01299204	0097d230
@@ -8733,8 +8725,6 @@ _wcsrchr	00bfedb2	009a5340
 ?g_strScale@@3QBDB	0125d088	006a5af0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0083be90
 ?TransitionToTheme@CEnvironment@@QAEXJM@Z	006b37a0	0083be90
-?GetSubDef@CDefClassBase@@QAE_NPAUSDefOut@@@Z	008e7790	00956fe0
-?Terminate@CAIStateGroupBriarRoseWillUseMethods@@QAEXXZ	008fcf40	00956fe0
 ?RelocateData@C3DAnimationSequenceData@@QAEXPAX0@Z	00a4cd70	00a4e960
 ??0C3DAnimFileLoader@@QAE@XZ	00a999b0	00aa4710
 ??1CChunkedFileChunk@@UAE@XZ	00aa75c0	00aa4710
@@ -17703,8 +17693,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ	006a4d00	0093cb20
 ?PeekTrackStartNode@CThingTrackNode@@QBEPBV1@XZ	00836da0	0093cb20
 ?PeekWorldMap@CAIStateGroupBase@@QAEPAVCWorldMap@@XZ	008fcff0	0093d720
-?GetRegionAtPosition@CThing@@QAEJABVC3DVector@@@Z	00661d20	0093db10
-?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	0093dc10
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	0093dcd0
 ?GetPreferredPos@CCombatPositionMethods@@QAE?AVC3DVector@@PAVCThingAICreature@@@Z	006ea770	0093dcd0
 ?IsCreatureWithValidMeleeCombatSequence@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z	006e9450	0093dcd0
@@ -17750,11 +17738,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_DragonFireBlastBase@@QAE@ABV0@@Z	00953d60	00953d30
 ??0CCreatureAction_DragonBurninateInto@@QAE@ABV0@@Z	00953df0	00953dc0
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCWhisperBattleDef@@@@@Z	00956590	00954cd0
-??0CCombatActionBaseRetail@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z	00857f30	009551a0
-??0CCreatureAction_PlayCombatAnimationRetail@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z	008b7ff0	009551a0
 ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z	00747b80	00956c00
-??0CCreatureAction_BriarRoseForcePush@@QAE@PAVCThing@@0@Z	009572a0	00956fe0
-??0CCreatureAction_BriarRoseShotFarInto@@QAE@PAVCThing@@0@Z	00957170	00956fe0
 ?GetThing@CPerceptionMethods@@QAEPAVCThing@@XZ	007446a0	009577e0
 ??RCMessageEventFilter_HasExtraData@@QBE_NABVCMessageEvent@@@Z	006af1a0	00959040
 ??RCMessageEventFilter_IsOriginatedByThing@@QBE_NABVCMessageEvent@@@Z	006af200	00959040
@@ -17780,8 +17764,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AIAction_MoveToThingProximity@CAIStateGroup_BanditKingCharge@@QAEJJV?$CIntelligentPointer@$$CBVCThing@@@@MABUCMoveOptions@@J_N2222@Z	0097e380	00961790
 ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z	004a96f0	00961e80
 ?GetPredictedTargetPosForThing@@YI?AVC3DVector@@PAVCThing@@0@Z	00961ab0	00961e80
-?GetPBestThing@CThingSearchTools@@QAE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z	00964230	00964360
-?PeekThingSearchTools@CAIStateGroup_StealStealableItem_Methods@@QAEPAVCThingSearchTools@@XZ	008fd000	00964360
 ?GetPBestThing@CThingSearchTools@@QAE_NABUCThingFilter_EscapePoint@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	009642d0	00964ca0
 ?PeekThingSearchTools@CAIStateGroup_StealStealableItem@@QAEPAVCThingSearchTools@@XZ	008fd000	00964ca0
 ?FindPEscapePoint@CAIStateGroupStealStealableItemMethods@@QAEPAVCThing@@_N@Z	00964ca0	00964da0
@@ -17807,9 +17789,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z	00a12450	00970790
 ?GetPPlayerManager@CAIStateGroup_JackOfBladesBase@@QAEPAVCPlayerManager@@XZ	008fcf90	00972280
 ?GetSubDef@CDefClassBase@@QAE_NPAPAVCAICreatureWillPowerIndicatorDef@@@Z	008c33e0	00972340
-?FindInRoughArea@CThingSearchToolsRetail@@QAEXABVC2DBoxI@@ABUCFilterBind4@@AAUCThingVector@@@Z	009793d0	00978fd0
-?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	00978fd0
-?ToInteger@C2DBox@@QBE?AVC2DBoxI@@XZ	00a55a30	00978fd0
 ?SortCoverThings@@YIXPAPAVCThing@@0UCCoverThingCompare@@@Z	00979870	00979260
 ?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QAE?AVC3DVector@@XZ	008004d0	0097f5b0
 ?SetUpRoute@CTCNavigation@@QAEXABVC3DVector@@00@Z	006cb9c0	0097f5b0
@@ -18708,7 +18687,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z	006af2b0	0090ee20
 ?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@N_006af2b0@@UCMessageEventFilter_IsForThing@@@@@Z	0090edc0	0090ee20
 ?GetEvent_008af0a0@CTCEntityEvents@@QAE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z	008af0a0	00911c20
-?AIAction_PerformActionAndWait@CAIStateGroupBriarRoseWillUseMethods@@QAEJPAUCCreatureActionBase@N_0062e900@@_N@Z	0097db70	00956fe0
 ?SortCoverThings_0097b660@@YIXPAPAVCThing@@0UCCoverThingCompare@@@Z	0097b660	0097aae0
 ?CSurface_vftable@@3PBXB	0122f84c	0041c9c0
 ?CPhysicsDef_vftable@@3QAXA	01230ba0	0044f6ba
@@ -30052,10 +30030,6 @@ __aullrem	00bfebb0	00770e80
 ?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ	004c73d0	00935160
 ?LowerBound@Map@NCondition00935160@@QAEPAUPair@2@ABH@Z	0040f020	00935160
 ?LowerBound@Map@NCondition00935160@@QBEPAUPair@2@ABH@Z	004365b0	00935160
-?CanSeeOrSmellPerceivedThing@CTCPerceiveThing@@QAE_NXZ	00661600	0093d800
-?IsAbleToBeEngagedInCombat@@YI_NPAVCThing@@@Z	0085fbc0	0093d800
-?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@QAE_NXZ	0093d3a0	0093d800
-?SetAsRunningAwayFromCombat@CTCStealth@@QAEXXZ	007470e0	0093d800
 ?_M_erase@?$_Rb_tree@PAVCTexture@@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@U?$_Select1st@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@U?$less@PAVCTexture@@@3@V?$allocator@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCTexture@@UCExternalTextureAllocationInfo@CEngineResourceManager@@@std@@@2@@Z	00b3e6e0	00b3e6e0
 ??_7CScriptDataBase@@6B@	012c270c	00cd4500
 ??_7CalextestData@NScript@@6B@	012c2718	00cd4620
@@ -34483,12 +34457,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?IsLocked@CThingBuilding@@QBE_NXZ	0082de20	00926c50
 ?IsPermanentlyStocked@CTCShop@@QBE_NXZ	007721a0	00926c50
 ?FollowUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NM_N@Z	009852c0	00985430
-??0CNearbyCreatureFilter@@QAE@PAVCThingAICreature@@M_N@Z	00986ed0	009863e0
-??BCThingIntelligentPointerView@@QAEPAVCThing@@XZ	00a01b50	009863e0
-?GetPFirstThingInRoughArea@CThingSearchToolsView@@QAE_NPAVC2DBoxI@@ABUCNearbyCreatureFilter@@PAPAVCThingAICreature@@@Z	00987430	009863e0
-?GetPosition@CThingAICreatureView@@QAEPAVC3DVector@@XZ	004c73d0	009863e0
-?OpinionReactionCommentRadius@@3MA	0122ded4	009863e0
-?PeekThingSearchTools@CAIStateGroupBaseView@@QAEPAUCThingSearchToolsView@@XZ	008fd000	009863e0
 ?SetGoal@CSteeringAgent@@QAEXABVCNavWayPoint@@0@Z	00a20970	00a1e370
 ?_M_erase@CStateMap@@QAEXPAUSStateTreeNode@@@Z	00a21640	00a1e370
 ?remove_if@CNavigatorList@@QAEXVCIsNavigator@@@Z	00a155c0	00a1e370
@@ -39913,3 +39881,16 @@ _TWO_PI	0124f2b8	008185b0
 ?IsProjectileWeaponAutoLoading@CTCWeapon@@QBE_NXZ	005da950	0078a690
 ?LoadRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0078a2c0	0078a690
 ?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z	0066b1d0	0078a690
+?CanSeeOrSmellPerceivedThing@CTCPerceiveThing@@QAE_NXZ	00661600	0093d800
+?IsAbleToBeEngagedInCombat@@YI_NPAVCThing@@@Z	0085fbc0	0093d800
+?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ	0093d3a0	0093d800
+?SetAsRunningAwayFromCombat@CTCStealth@@QAEXXZ	007470e0	0093d800
+?GetRegionAtPosition@CThing@@QAEJABVC3DVector@@@Z	00661d20	0093db10
+?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z	0093d800	0093db10
+?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ	00954220	009551a0
+??0CCreatureAction_BriarRoseShotFarInto@@QAE@AAVCThingCreatureBase@@0@Z	00957170	00956fe0
+??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z	00964230	00964360
+??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	009793d0	00978fd0
+??$GetPFirstThingInRoughArea@VCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@$$CBVCThingAICreature@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@PAPBVCThingAICreature@@@Z	00987430	009863e0
+??0CThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QAE@ABVCThingAICreature@@M_N@Z	00986ed0	009863e0
+?OpinionReactionCommentRadius@@3MA	0122ded4	009863e0

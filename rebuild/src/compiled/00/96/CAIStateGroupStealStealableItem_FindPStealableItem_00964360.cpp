@@ -12,71 +12,75 @@
 // and to the EMPTY free-action-point filter, a 1-byte object VC places in the dead high byte of the frame's
 // lowest word (`lea edx,[esp+7]`) only when it is a TEMPORARY in the Bind2 construction (a named local takes
 // a whole word and shifts the layout). Frame: 0x20 bytes. Tried for the copy order: memberwise copy constructor,
-// POD with body assignment, by-value constructor parameter.
+// NF137 (2026-11-20, q4994 / q5140): PeekThingSearchTools 0x008FD000 now binds the PDB ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ
+//   (engine/CAIStateGroupBase.h _PEEK), was the _Methods pointer stand-in. The stand-in _Methods (no header; HEAD token, own leaf unchanged: its
+//   one landed caller 0x00964DA0 binds a third spelling, so the PDB self rename ?FindPStealableItem@CAIStateGroup_StealStealableItem@@ABEPAVCThing@@XZ
+//   waits: NAME_FIXES) now derives from the retail engine/CAIStateGroup_StealStealableItem.h class. The search 0x00964230 is the real same-TU
+//   noinline GetPBestThing<Filter,Compare,T> body of engine/CThingSearchTools.h (BESTTHING_BODY; retail compiled it in this TU) under its PDB
+//   template spelling (Ego_r.pdb 0x00988B00 + FableWin.pdb 0x02C3B050, QBE), was a QAE stand-in with a made-up search helper; the comparator
+//   is engine/CThingCompare_Nearest.h, the filter pair engine/CFilter_Bind2.h; the two filters have no shared header and stay row-local.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGOBJECT_STATTYPEFLAGS
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_STEALSTEALABLEITEM
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_BODY
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingObject.h"
+#include "engine/CWorld.h"
+#include "engine/CThingSearchTools.h"
+#include "engine/CFilter_Bind2.h"
+#include "engine/CThingCompare_Nearest.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_StealStealableItem.h"
 
-#include "engine/C3DVector.h"
-
-#include "engine/CThing.h"
-
-class CThingObject;
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-class CThingCompare_Nearest { public:                  // 12 bytes: the reference position
-    C3DVector Position;
-    CThingCompare_Nearest(const C3DVector& position) { Position = position; }
-};
-
-class CThingFilter_ObjectHasProperty { public:         // one word: the property mask
+class CThingFilter_ObjectHasProperty { public:         // one word: the property mask (no shared header)
     unsigned long Property;
     CThingFilter_ObjectHasProperty(unsigned long property) : Property(property) {}
+    bool operator()(const CThingObject& thing) const;   // 0x006A7590
 };
 
-class CThingFilter_HasFreeActionPoint { public:        // empty filter
+class CThingFilter_HasFreeActionPoint { public:        // empty filter (no shared header)
     CThingFilter_HasFreeActionPoint() {}
-};
-
-template<class A, class B> class CFilter_Bind2 { public:   // two const references
-    const A& First;
-    const B& Second;
-    CFilter_Bind2(const A& first, const B& second) : First(first), Second(second) {}
+    bool operator()(const CThing& thing) const;         // 0x006A8B40
 };
 
 typedef CFilter_Bind2<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint> CStealableFilter;
 
-class CThingSearchTools { public:
-    bool GetPBestThing(const CStealableFilter& filter, const CThingCompare_Nearest& compare,
-                       CThingObject** result);  // 0x00964230
-};
-long NearSink_s7_0(const void* self, long seen);   // stand-in: the search GetPBestThing runs (returns the best thing or 0)
-#pragma auto_inline(off)
-// Same-TU stand-in for CThingSearchTools::GetPBestThing @ 0x00964230 (compiled in retail's TU): clears the out pointer, stores the best
-// thing found, reads the filter and comparator through their const references; no argument escapes.
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CStealableFilter& filter, const CThingCompare_Nearest& compare, CThingObject** result)
-{
-    *result = 0;
-    long best = NearSink_s7_0(this, *(const long*)&filter + *(const long*)&compare);
-    if (best)
-        *(long*)result = best;
-    return *result != 0;
-}
-#pragma auto_inline(on)
-
 struct CAIStateGroup_StealStealableItem_Methods : CAIStateGroup_StealStealableItem {
-    CAIBrain* GetPBrain() const { return *(CAIBrain* const*)_pad_0x04; }   // CAIStateGroupBase::PBrain (+0x04)
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     CThingObject* FindPStealableItem();
 };
 
 CThingObject* CAIStateGroup_StealStealableItem_Methods::FindPStealableItem()
 {
     CThingObject* item = 0;
-    CThingCompare_Nearest compare(GetPBrain()->PCreature->GetPos());
+    CThingCompare_Nearest compare(GetCreature().GetPos());
     CThingFilter_ObjectHasProperty hasProperty(0x08000000);
-    PeekThingSearchTools()->GetPBestThing(CStealableFilter(hasProperty, CThingFilter_HasFreeActionPoint()), compare, &item);
+    PeekThingSearchTools().GetPBestThing(CStealableFilter(hasProperty, CThingFilter_HasFreeActionPoint()), compare, &item);
     return item;
 }

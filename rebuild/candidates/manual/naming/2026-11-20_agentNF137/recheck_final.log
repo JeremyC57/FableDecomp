@@ -1,0 +1,50 @@
+addr       parity           behav  name
+00956fe0   WARN RELOC_CONFLICT: ??0CCreatureAction_BriarRoseForcePush@@QAE@AAVCThingCreatureBase@@0@Z -> 009572a0 here, 008e8c50 in landed 008e8830
+00956fe0   RELOCATION_MATCH PASS   CAIStateGroup_BriarRoseWillUse::Update
+009551a0   RELOCATION_MATCH PASS   CAIStateGroup_MazeRangedCombat::Update
+009863e0   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::CommentAboutHeroIsRunnable
+00978fd0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList
+00964360   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::FindPStealableItem
+009109b0   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+009109b0   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity (engine/CTCOwnedEntity.h)
+009109b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009109b0   RELOCATION_MATCH PASS   CIsSeatWithSpaceOwnedBy::operator()
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CTCAIScratchpad (engine/CTCAIScratchpad.h)
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093d3a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyBase (engine/CAIStateGroup_MeleeCombatNearbyBase.h)
+0093d3a0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway
+0093d800   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093d800   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyBase (engine/CAIStateGroup_MeleeCombatNearbyBase.h)
+0093d800   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable
+0093db10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyBase (engine/CAIStateGroup_MeleeCombatNearbyBase.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearby2 (engine/CAIStateGroup_MeleeCombatNearby2.h)
+0093db10   WARN RELOC_NAME: ?GetRegionAtPosition@CThing@@QAEJABVC3DVector@@@Z -> 00661d20 labelled 'CThingCreatureBase::GetNavigationLevelAt'
+0093db10   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby2::IsStillRunnable
+0093dc10   WARN STANDIN_LEAF ?IsStillRunnable@CMeleeCloseMethods@@QAE_N_N@Z (catalog CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable; names another function)
+0093dc10   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable
+
+WINS: 10
+  00956fe0 RELOCATION_MATCH CAIStateGroup_BriarRoseWillUse::?Update@CAIStateGroup_BriarRoseWillUse@@UAEXXZ
+  009551a0 RELOCATION_MATCH CAIStateGroup_MazeRangedCombat::?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ
+  009863e0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?CommentAboutHeroIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  00978fd0 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::?GetCoverThingList@CAIStateGroup_CreatureAdvanceInCover@@UAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  00964360 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?FindPStealableItem@CAIStateGroup_StealStealableItem_Methods@@QAEPAVCThingObject@@XZ
+  009109b0 RELOCATION_MATCH CIsSeatWithSpaceOwnedBy::??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z
+  0093d3a0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyBase::?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ
+  0093d800 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyBase::?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MBE_N_N@Z
+  0093db10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z
+  0093dc10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::?IsStillRunnable@CMeleeCloseMethods@@QAE_N_N@Z

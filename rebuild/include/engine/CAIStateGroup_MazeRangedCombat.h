@@ -8,6 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZERANGEDCOMBAT
+// NF137 opt-in (2026-11-20, q5021, row 0x009551A0 CAIStateGroup_MazeRangedCombat::Update): the polymorphic class, as the
+// CAIStateGroup_MazeTeleport opt-in. RTTI (ghidra_out/rtti_bases.tsv) .?AVCAIStateGroup_MazeRangedCombat@@ : CAIStateGroup_MazeBase
+// (engine/_quarantine/CAIStateGroup_MazeBase.h, existing opt-in FABLE_RETAIL_CAISTATEGROUP_MAZEBASE); Ego_r.pdb: LastCompletedPhase +0x20,
+// sizeof 0x24. Ego_r.pdb + FableWin.pdb: public virtual ?Update@CAIStateGroup_MazeRangedCombat@@UAEXXZ (0x009551A0) and protected
+// non-virtual ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ (0x00954220). The flattened default layout below is unchanged.
+#ifndef FABLE_RETAIL_CAISTATEGROUP_MAZEBASE
+#define FABLE_RETAIL_CAISTATEGROUP_MAZEBASE
+#endif
+#include "engine/_quarantine/CAIStateGroup_MazeBase.h"
+class CAIStateGroup_MazeRangedCombat : public CAIStateGroup_MazeBase {
+public:
+    virtual void Update();                                               // 0x009551A0
+protected:
+    bool IsStillRunnable();                                              // 0x00954220
+    long LastCompletedPhase;                                             // +0x20
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeRangedCombat) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -31,5 +50,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MazeRangedCombat) == 0x24);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MazeRangedCombat, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MazeRangedCombat, LastCompletedPhase) == 0x20);
+
+#endif // FABLE_RETAIL_CAISTATEGROUP_MAZERANGEDCOMBAT
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZERANGEDCOMBAT_H

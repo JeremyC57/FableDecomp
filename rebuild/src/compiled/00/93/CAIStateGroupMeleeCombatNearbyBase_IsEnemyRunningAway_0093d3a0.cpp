@@ -1,4 +1,8 @@
 // CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway() -- true when the creature perceives its enemy, the enemy is moving and facing away from it, and it is beyond the scratchpad's fleeing break-off range or the perceiver's range
+// Leaf: ?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ
+// NF137 (2026-11-20, q5030 family): own leaf respelled in place to the PDB private const ?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ
+//   (Ego_r.pdb 0x00961030 + FableWin.pdb 0x02B8EF80; engine/CAIStateGroup_MeleeCombatNearbyBase.h _MOVE declares the same), was QAE; its one
+//   caller 0x0093D800 (IsStillRunnable, now const) moves with it. The body only reads through pointers: no other symbol changes.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D3A0, length 480 bytes (+ int3 padding).
@@ -101,10 +105,11 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;             // +0x14
-    bool IsEnemyRunningAway();
+private:
+    bool IsEnemyRunningAway() const;
 };
 
-bool CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway()
+bool CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway() const
 {
     const CThing* me = PBrain->PCreature;
     if (me->HasTC(0x34)) {

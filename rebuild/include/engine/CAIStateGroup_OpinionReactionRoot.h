@@ -43,6 +43,12 @@ private:
     // ?CallingChildrenIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ (private; FableWin 0x02C76EB0). Declaration only.
     bool CallingChildrenIsRunnable();                                   // 0x00986210
 #endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_COMMENTABOUTHERO
+    // NF137 nested opt-in (2026-11-20, q4994 / q5140 binder, row 0x009863E0; with _WIFEUPDATE): Ego_r.pdb / FableWin.pdb
+    // ?CommentAboutHeroIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ (private; the flattened _BEHAVIOURS branch declares the same).
+    // Declaration only.
+    bool CommentAboutHeroIsRunnable();                                  // 0x009863E0
+#endif
 public:
     CTCTalk*      PTCTalk;                                   // +0x14
     unsigned char CurrentReactionType[0x4];                  // +0x18 EOpinionReactionType
