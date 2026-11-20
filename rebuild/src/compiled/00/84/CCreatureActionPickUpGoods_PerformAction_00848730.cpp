@@ -24,7 +24,6 @@
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
 class CThing;
-class CThingObject;
 #include "engine/C3DVector.h"
 class CTCBase;
 #define FABLE_RETAIL_CCHARSTRING
@@ -64,7 +63,6 @@ class CThing { public:
         return false;
     }
 };
-class CThingObject : public CThing { public: };
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -73,7 +71,7 @@ struct CBaseIntelligentPointer {
     operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 class CTCCarrying { public:
-    void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
+    void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);         // 0x006A1F80 (Ego_r.pdb + FableWin.pdb: CThing&)
 };
 #include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
@@ -101,7 +99,7 @@ void CCreatureAction_PickUpGoods::PerformAction()
         ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46);
         CDefPointer<const CCarryableDef> carryDef;
         goods->m_pDef->GetSubDef(&carryDef);
-        carrying->PutThingInCarrySlot((CThingObject*)goods, carryDef->ActiveCarrySlot, true);
+        carrying->PutThingInCarrySlot(*goods, carryDef->ActiveCarrySlot, true);
         CTCCreatureModeManager* modes;
         ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
         modes->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeCarryingGoodsStand(PCreature)));

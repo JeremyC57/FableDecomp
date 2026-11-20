@@ -1,5 +1,6 @@
 // CTCCarrying::GetAllCarriedThings(std::vector<CThing*>& things) const -- append the thing held in every occupied carry slot to the caller's list
-// Leaf: GetAllCarriedThings (Ego_r.pdb `?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@...@Z`, followed there by
+// Leaf: ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+// Name: Ego_r.pdb `?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@...@Z`, followed there by
 //   RemoveAllThingsInPrimarySlot as retail's neighbour 0x006A22D0; the catalog's "COptimisedPrimitive::RemapGroups" is a propagated label)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006A2220, 161 bytes (+ int3 padding; `ret 4`).
 // Class: not in any vtable; the neighbour 0x006A22D0 (CTCCarrying::RemoveAllWeapons) walks the same container, and Ego_r.pdb
@@ -13,6 +14,12 @@
 //   extern, the value gets a push-ecx word); the slot is reached as `(begin() + i)->second` (operator[] leaves the
 //   _M_start loads in ecx/edx, 22 lines).
 #include <new>
+// NF159 (q11671): the local CArray / SScalarTag / InsertGrow stand-ins replaced by the shared STLport vector (stlport/fable_containers.h):
+//   Ego_r.pdb 0x006C6970 + FableWin.pdb 0x02217EE0 ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z.
+//   The overflow body is visible but out of line (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE), the same-TU noinline shape the stand-in gave:
+//   std::vector<CThing*>::_M_insert_overflow 0x00436AC0 (?_M_insert_overflow@?$vector@PAVCThing@@...@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z).
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#include "stlport/fable_containers.h"                // std::vector<CThing*> (STLport 4.6, 12 bytes)
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -31,30 +38,6 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-struct SScalarTag { SScalarTag() { } };            // user constructor: no zero-initialisation of the 1-byte temporary
-template <class T> class CArray { public:                 // retail CArray (STLport vector) {first, last, end}
-    T* first;
-    T* last;
-    T* end;
-    void InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00436AC0
-    void push_back(const T& value)
-    {
-        if (last != end) {
-            new (last) T(value);
-            ++last;
-        }
-        else
-            InsertGrow(last, value, SScalarTag(), 1, true);
-    }
-};
-// Same-TU stand-in for InsertGrow 0x00436AC0 (not the retail body).
-void GrowInsert_00436ac0(void* v, void* where, const void* value);
-#pragma auto_inline(off)
-template <class T> __declspec(noinline) void CArray<T>::InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool noTail)
-{
-    GrowInsert_00436ac0(this, where, &value);
-}
-#pragma auto_inline(on)
 template <class K, class V> struct pair { K first; V second; };
 template <class T> struct vector {                 // STLport vector, 12 bytes
     T* _M_start;
@@ -69,10 +52,10 @@ public:
     void*         __vftable;                       // +0x00
     unsigned char _pad04[8];
     vector<pair<long, CIntelligentPointer<CThing> > > CarrySlots;   // +0x0c CVectorMap (STLport vector first)
-    void GetAllCarriedThings(CArray<CThing*>& things) const;
+    void GetAllCarriedThings(std::vector<CThing*>& things) const;
 };
 
-void CTCCarrying::GetAllCarriedThings(CArray<CThing*>& things) const
+void CTCCarrying::GetAllCarriedThings(std::vector<CThing*>& things) const
 {
     for (unsigned long i = 0; i < CarrySlots.size(); ++i) {
         if ((CarrySlots.begin() + i)->second.GetPItem()) {

@@ -33,7 +33,7 @@ struct CThing_Retail {
 };
 namespace NInventory { class CTCInventoryBase { public: long GetNumberOfItemsOfTypeInInventory(long defIndex) const; }; }   // 0x005BDF08 Ego_r.pdb (const)
 using NInventory::CTCInventoryBase;
-class CTCCarrying { public: bool IsCarryingThing(long defIndex); };                          // 0x006A10A0
+class CTCCarrying { public: bool IsCarryingThing(long defIndex) const; };                    // 0x006A10A0 (Ego_r.pdb + FableWin.pdb: const)
 struct CTCHouseContents { bool ContainsItemOfType(long defIndex); };                  // 0x008ED010
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

@@ -1,0 +1,5 @@
+GREW 013b8790 19 -> 20 ?g_pSubtitleOwner@@3PAUCSubtitleOwner@@A row 005eadc0 SAME
+GREW 009f1760 3 -> 4 ?Copy@CGameEventData@@QAEXJPBX@Z row 005eadc0 SAME
+GREW 013bae1c 3 -> 4 ?g_bTavernSkipYesNo@@3_NA row 005eadc0 SAME
+GREW 0041649c 2 -> 3 ?AddGameEvent@CMainGameComponent@@QAEXPAVCGameEvent@@@Z row 005eadc0 SAME
+shrank [('005eb4b0', 3, 2), ('008ef190', 2, 1), ('005e9b20', 8, 1), ('005ea000', 4, 2), ('008ef170', 2, 1), ('005e9aa0', 2, 1), ('00436ac0', 7, 6), ('008f09c0', 2, 1), ('005e9e70', 3, 1), ('004c10e0', 2, 1), ('005ebfa0', 2, 1), ('005ea950', 5, 1), ('005eb080', 2, 1), ('004c1060', 2, 1), ('013b8c48', 2, 1), ('006a1f80', 3, 1), ('006a10a0', 2, 1), ('00833800', 2, 1)]

@@ -73,7 +73,11 @@ class CTCTavernGame { public:
     TTavernGameFunc   AltFunc;                          // +0xbc
     ETavernGameStates TavernGameState;                  // +0xc0
     ETavernGameStates PreviousTavernGameState;          // +0xc4
-    unsigned long PlaySound(const CCharString& name);   // 0x005EA950
+protected:
+    // NF159 (q4273): Ego_r.pdb / FableWin.pdb ?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z (protected, returns the
+    //   sound handle; <windows.h> renamed the source's PlaySound); was a public PlaySound.
+    unsigned long PlaySoundW(const CCharString& name);   // 0x005EA950
+public:
     void SetState(ETavernGameStates s) {
         if (g_bTavernGameQuitRequested) {
             g_bTavernGameQuitRequested = false;
@@ -95,7 +99,7 @@ void CTCTavernGame::SetStateAfterOK(CWideString text, CWideString okText, ETaver
     }
         {
             CCharString sound("TAVERN_GAME_OBJECT_SELECTION_CHANGE", -1);
-            PlaySound(sound);
+            PlaySoundW(sound);
         }
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", okText, L"", 0xa2, 0.0f, false, true);
         YesState = state;

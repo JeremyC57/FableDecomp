@@ -198,7 +198,7 @@ struct __declspec(novtable) CCreatureActionBase {
 
 class CTCCarrying { public:
  CThing* RemoveThingFromPrimarySlot(bool); //006A1E00
- void PutThingInCarrySlot(CThing*,long,bool); //006A1F80
+ void PutThingInCarrySlot(CThing&,long,bool); //006A1F80 (Ego_r.pdb + FableWin.pdb: CThing&)
 public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
@@ -219,6 +219,6 @@ void CCreatureAction_Drink::Initialise(){
   CTCCarrying* carrying;PCreature->GetInterface(&carrying,70);
   {CIntelligentPointer<CThing> held(carrying->GetThingInPrimarySlot());PreviousHeldThing.SetPItem(held);}
   carrying->RemoveThingFromPrimarySlot(false);
-  carrying->PutThingInCarrySlot(PDrink,carryable->ActiveCarrySlot,true);
+  carrying->PutThingInCarrySlot(*static_cast<CThing*>(PDrink),carryable->ActiveCarrySlot,true);
  }
 }

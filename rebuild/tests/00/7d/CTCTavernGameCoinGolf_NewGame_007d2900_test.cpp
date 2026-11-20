@@ -1,19 +1,22 @@
-#include "rebuild_abi.h"
+// Behaviour test for 0x007D2900 CTCTavernGameCoinGolf::NewGame (rewritten by NF159 on the shared headers): the row's object is linked
+// in; the coin-base NewGame and CTCTavernGame::SetState are stubbed here and the override is called non-virtually on raw storage.
+#define FABLE_RETAIL_CTCTAVERNGAME
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#include "engine/CTCTavernGameCoinGolf.h"
 #include <cstdio>
-static int g_h1 = 0, g_h2 = 0, g_v = 0;
-struct FableEndCut_007d2900
-{
-    void FABLE_FASTCALL h1();
-    void h2(int v);
-    void NewGame();
-};
-void FABLE_FASTCALL FableEndCut_007d2900::h1() { g_h1++; }
-void FableEndCut_007d2900::h2(int v) { g_h2++; g_v = v; }
+static int g_base = 0, g_calls = 0;
+static long g_state = -1;
+void CTCTavernGameCoinBase::NewGame() { ++g_base; if (g_calls != 0) g_state = -2; }   // must run before SetState
+void CTCTavernGame::SetState(ETavernGameStates state) { ++g_calls; g_state = state; }
+static double g_storage[sizeof(CTCTavernGameCoinGolf) / sizeof(double) + 1];
 int main()
 {
-    FableEndCut_007d2900 c;
-    c.NewGame();
-    if (g_h1 != 1 || g_h2 != 1 || g_v != 7) { std::printf("BAD\n"); return 1; }
+    CTCTavernGameCoinGolf* game = (CTCTavernGameCoinGolf*)g_storage;
+    game->CTCTavernGameCoinGolf::NewGame();
+    if (g_base != 1 || g_calls != 1 || g_state != 7) { std::printf("BAD\n"); return 1; }
     std::printf("ENDCUT_007d2900_OK\n");
     return 0;
 }

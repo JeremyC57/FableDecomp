@@ -11,7 +11,6 @@
 // HighlightedCard +0x30c, CurrentMovingCard +0x310. No engine header exists for the card classes; local model.
 // Shape: the stores follow the source order and share the eax zero (the float Counter included); `push 7` is hoisted
 // above them.
-typedef long ETavernGameStates;
 class CCard;
 
 class CTCTavernGame { public:
@@ -20,6 +19,9 @@ class CTCTavernGame { public:
     bool          GameFinished;              // +0x28
     unsigned char _pad_0x29[0xc7];
     virtual void NewGame();                  // 0x005E9A70
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
     void SetState(ETavernGameStates state);  // 0x005E9B20
 };
 
@@ -43,5 +45,5 @@ void CTCTavernGameCardBase::NewGame()
     SelectedCard = 0;
     HighlightedCard = 0;
     Counter = 0.0f;
-    SetState(7);
+    SetState((ETavernGameStates)7);
 }

@@ -154,7 +154,7 @@ class CThingAICreature : public CThing { public:
     void AutoPlaceNear(const C3DVector& pos, float radius);   // 0x00665DF0
     void AutoSetupSexuality(float maleChance);          // 0x008330D0
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
-                                               CThingAICreatureInit* init);   // 0x00833800
+                                               const CThingAICreatureInit& init); // 0x00833800 (Ego_r.pdb + FableWin.pdb: const&)
 };
 class CTCBase
 {
@@ -204,7 +204,7 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
             init.ScriptName = BOASTING_CROWD_MEMBER_SCRIPT_NAME;
             init.EnableCreatureAutoPlacing = false;
             CThingAICreature* creature = CThingAICreature::Create(female ? def->FemaleDef : def->MaleDef,
-                                                                  spawnPoint->GetPos(), 4, &init);
+                                                                  spawnPoint->GetPos(), 4, init);
             if (creature) {
                 creature->AutoPlaceNear(spawnPoint->GetPos(), (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * 5.0f);
                 CTCPlacement* placement;

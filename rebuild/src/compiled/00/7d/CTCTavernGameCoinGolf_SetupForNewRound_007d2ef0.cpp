@@ -1,5 +1,5 @@
 // CTCTavernGameCoinGolf::SetupForNewRound() -- clears the board, finds the obstacles, enables the current course, adds a held coin at the course start, places its mesh, resets the joystick average and mouse effect and turns the camera to face along the board
-// Leaf: SetupForNewRound
+// Leaf: ?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D2EF0, 242 bytes (plain `ret`; Ego_r.pdb
 // `?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ`).
@@ -91,6 +91,9 @@ class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     float         GoalRadius;                   // +0x178
     long          CurrentCourse;                // +0x17c
     void EnableCourse(long course);             // 0x007D2CC0
+private:
+    // NF159 (q4271 family with 0x007D3510): Ego_r.pdb 0x007D01D0 / FableWin.pdb 0x02740F30 ?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ
+    //   (private; engine/CTCTavernGameCoinGolf.h); was public (QAE).
     void SetupForNewRound();
 };
 

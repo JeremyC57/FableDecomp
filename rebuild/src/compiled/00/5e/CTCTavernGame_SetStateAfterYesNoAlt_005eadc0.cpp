@@ -68,7 +68,11 @@ public:
     virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
     virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
     virtual void OnYesNoSkipped();                             // slot 30 (+0x78) (name descriptive)
-    void PlaySound(const CCharString& name);                   // 0x005EA950
+protected:
+    // NF159 (q4273): Ego_r.pdb / FableWin.pdb ?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z (protected, returns the
+    //   sound handle; <windows.h> renamed the source's PlaySound); was a public PlaySound.
+    unsigned long PlaySoundW(const CCharString& name);                   // 0x005EA950
+public:
     void SetStateAfterYesNoAlt(CWideString title, CWideString text, ETavernGameStates yesState, CWideString noText,
                                ETavernGameStates noState, CWideString altText, ETavernGameStates altState);
     unsigned char     _pad004[0xa4];
@@ -86,7 +90,7 @@ void CTCTavernGame::SetStateAfterYesNoAlt(CWideString title, CWideString text, E
         g_bTavernSkipYesNo = false;
         OnYesNoSkipped();
     } else {
-        PlaySound("TAVERN_GAME_OBJECT_SELECTION_CHANGE");
+        PlaySoundW("TAVERN_GAME_OBJECT_SELECTION_CHANGE");
         g_pSubtitleOwner->Renderer.SetText(CMainGameComponent::Get()->PFont, title, L"", text, noText, altText, 0x84, 0.0f, false, true);
         CGameEvent event(9);
         event.SetData(false);

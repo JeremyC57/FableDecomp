@@ -1,0 +1,117 @@
+005e9e70 new: 0
+005ea100 new: 1
+    ?GetWinPhrase@CTCTavernGame@@UAE?AVCWideString@@XZ
+005eadc0 new: 0
+005eaf30 new: 0
+005eb080 new: 0
+005eb810 new: 0
+006648d0 new: 0
+006a10a0 new: 1
+    ?IsCarryingThing@CTCCarrying@@QBE_NJ@Z TABLE:006a10a0
+006a2220 new: 16
+    ??$_Construct@PAVCThing@@PAV1@@std@@YAXPAPAVCThing@@ABQAV1@@Z
+    ??$_Destroy@PAPAVCThing@@@std@@YAXPAPAVCThing@@0@Z
+    ??$__destroy@PAPAVCThing@@PAV1@@std@@YAXPAPAVCThing@@00@Z
+    ??$__destroy_aux@PAPAVCThing@@@std@@YAXPAPAVCThing@@0ABU__true_type@0@@Z
+    ??$fill_n@PAPAVCThing@@IPAV1@@std@@YAPAPAVCThing@@PAPAV1@IABQAV1@@Z
+    ??$max@I@std@@YAABIABI0@Z
+    ??0__true_type@std@@QAE@XZ
+    ?GetAllCarriedThings@CTCCarrying@@QBEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z TABLE:006a2220
+    ?_M_clear@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXXZ
+    ?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z TABLE:00436ac0
+    ?_M_set@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@00@Z
+    ?__copy_trivial@std@@YAPAXPBX0PAX@Z
+    ?allocate@?$allocator@PAVCThing@@@std@@QAEPAPAVCThing@@IPBX@Z
+    ?deallocate@?$allocator@PAVCThing@@@std@@QAEXPAPAVCThing@@I@Z
+    ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z TABLE:00436c80
+    ?size@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QBEIXZ
+006d5b50 new: 0
+007153b0 new: 0
+00783380 new: 0
+007cf4a0 new: 0
+007cf4c0 new: 1
+    ?EndRound@CTCTavernGameShoveHaPenny@@UAEXXZ
+007cf520 new: 1
+    ?QuitMidGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+007cf530 new: 7
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?EnterGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?GetString@CDefString@@QBE?AVCCharString@@XZ TABLE:00415d70
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+007cf7e0 new: 0
+007d2900 new: 1
+    ?NewGame@CTCTavernGameCoinGolf@@UAEXXZ
+007d2920 new: 1
+    ?EndRound@CTCTavernGameCoinGolf@@UAEXXZ
+007d29f0 new: 1
+    ?QuitMidGame@CTCTavernGameCoinGolf@@UAEXXZ
+007d2ef0 new: 1
+    ?SetupForNewRound@CTCTavernGameCoinGolf@@AAEXXZ TABLE:007d2ef0
+007d34a0 new: 1
+    ?EnterGame@CTCTavernGameCoinGolf@@UAEXXZ
+007d3510 new: 4
+    ??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?NewRound@CTCTavernGameCoinGolf@@UAEXXZ
+    ?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ
+007d5fb0 new: 1
+    ?SelectCard@CTCTavernGameCardPairs@@UAE_NXZ
+007d62d0 new: 8
+    ??0?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@W4ENullDef@@@Z
+    ??1?$CDefPointer@$$CBVCTavernGameDef@@@@QAE@XZ
+    ??C?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?CardsMainGame@CTCTavernGameCardPairs@@UAEXXZ
+    ?Get@?$CDefPointer@$$CBVCTavernGameDef@@@@QBEPBVCTavernGameDef@@XZ
+    ?Release@?$CDefPointer@$$CBVCTavernGameDef@@@@QAEXXZ
+    ?begin@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+    ?end@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+007d7b80 new: 0
+007d7ba0 new: 0
+007d80c0 new: 0
+007d8140 new: 0
+007d8290 new: 5
+    ??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ
+    ?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+    ?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ
+    ?begin@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@QAEPAUKnickKnack@@XZ
+    ?end@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@QAEPAUKnickKnack@@XZ
+007da290 new: 5
+    ??A?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAEAAV?$vector@PAVCCard@@V
+    ?begin@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+    ?begin@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAEPAV?$vector@PAVCCar
+    ?end@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+    ?size@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QBEIXZ
+007da810 new: 5
+    ??A?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEAAPAVCCard@@I@Z
+    ?begin@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+    ?begin@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAEPAV?$vector@PAVCCar
+    ?end@?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAEPAV?$vector@PAVCCard@
+    ?size@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QBEIXZ
+007daae0 new: 0
+00833010 new: 5
+    ??0?$CDefPointer@$$CBVCBrainDef@@@@QAE@ABV0@@Z
+    ??1?$CDefPointer@$$CBVCBrainDef@@@@QAE@XZ
+    ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+    ?Release@?$CDefPointer@$$CBVCBrainDef@@@@QAEXXZ
+    ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z TABLE:00833010
+00847ac0 new: 0
+00848730 new: 0
+0084a350 new: 0
+0084a5f0 new: 0
+008531e0 new: 0
+00897220 new: 0
+008ef390 new: 1
+    ?EnterGame@CTCTavernGameCoinBase@@UAEXXZ TABLE:008ef390
+008f0930 new: 0
+008f0960 new: 0
+008f09a0 new: 1
+    ?QuitMidGame@CTCTavernGameCardBase@@UAEXXZ
+008f09e0 new: 3
+    ?CardsFinishedMoving@CTCTavernGameCardBase@@UAEXXZ
+    ?begin@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+    ?end@?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@QAEPAPAVCCard@@XZ
+008f17d0 new: 0
+008fd0a0 new: 0

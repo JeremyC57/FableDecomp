@@ -1,5 +1,6 @@
-// CTCCarrying::IsCarryingThing(long defIndex) -- true when some carry slot holds a thing whose def index (+0x8c) matches
-// Leaf: ?IsCarryingThing@CTCCarrying@@QAE_NJ@Z
+// CTCCarrying::IsCarryingThing(long defIndex) const -- true when some carry slot holds a thing whose def index (+0x8c) matches
+// Leaf: ?IsCarryingThing@CTCCarrying@@QBE_NJ@Z
+// Name (NF159, q11659): const, Ego_r.pdb 0x006C5AE0 + FableWin.pdb 0x02217B70 ?IsCarryingThing@CTCCarrying@@QBE_NJ@Z (engine/CTCCarrying.h REMOVETHING).
 //
 // Retail 0x006A10A0, 124 bytes (`ret 4`). Callee: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (twice per slot). This is the def-index overload; the CThing* overload is the landed 0x006A1060.
@@ -35,10 +36,10 @@ class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c
-    bool IsCarryingThing(long defIndex);
+    bool IsCarryingThing(long defIndex) const;
 };
 
-bool CTCCarrying::IsCarryingThing(long defIndex)
+bool CTCCarrying::IsCarryingThing(long defIndex) const
 {
     for (unsigned long i = 0; i < CarrySlots.size(); ++i)
     {

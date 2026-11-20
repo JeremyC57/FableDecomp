@@ -4,7 +4,8 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008531E0, length 128 bytes (117 + int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the graphic appearance's helper-point getter
-// @ 0x004C1060 (manifest "CTCGraphicAppearance::GetHelperPointOr"; C3DVector by hidden pointer, float arg).
+// NGraphicAppearance::CTCGraphicAppearance::GetFocalPos(float) const @ 0x004C1060 (Ego_r.pdb + FableWin.pdb tc_graphic_appearance.obj;
+// the manifest's "CTCGraphicAppearance::GetHelperPointOr" was behavioural; C3DVector by hidden pointer, float arg).
 // Shape: plain implicit copies to the owner's Position (+0x54) and, from the returned temporary (read
 // through eax, no named local), LookAt (+0x10); then `Pos += DeltaPos` through an inline FREE Add(a, b) helper (both operands by
 // reference: the X term loads Pos first, `fld [edi] ; fadd [esi+68h]`; a member operator+= commutes it).
@@ -15,13 +16,15 @@ class CBaseObject;
 
 #include "engine/C3DVector.h"
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    C3DVector GetHelperPointOrCentre(float t) const; // 0x004C1060
+    C3DVector GetFocalPos(float t) const;            // 0x004C1060
 };
+}
 
 class CThing { public:
     unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* m_pGraphicAppearance;      // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
 };
 
 struct CCameraState {
@@ -56,9 +59,9 @@ struct CScriptModuleOpenGate {
 void CScriptModuleOpenGate::Update()
 {
     POwner->Position = Pos;
-    CTCGraphicAppearance* appearance = PGate->m_pGraphicAppearance;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = PGate->m_pGraphicAppearance;
     CCameraState* owner = POwner;
-    owner->LookAt = appearance->GetHelperPointOrCentre(1.0f);
+    owner->LookAt = appearance->GetFocalPos(1.0f);
     Add(Pos, DeltaPos);
 }
 

@@ -24,6 +24,16 @@ public:
     virtual CWideString GetRequiredScore();
 #endif
     virtual void NewRound();                                             // 32 0x007DB2E0
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_TURNPLAYERCARDS
+    // NF159 opt-in (q4271 / q4273, row 0x007DA290): Ego_r.pdb 0x007D7350 / FableWin.pdb 0x0275B760
+    // ?TurnPlayerCards@CTCTavernGameCardBlackjack@@QAEXXZ (public, non-virtual). Declaration only.
+    void TurnPlayerCards();                                              // 0x007DA290
+#endif
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_REORDERCARDS
+    // NF159 opt-in (q4273, row 0x007DA810): Ego_r.pdb 0x007D7220 / FableWin.pdb 0x0275AEB0
+    // ?ReorderCards@CTCTavernGameCardBlackjack@@QAEXXZ (public, non-virtual). Declaration only.
+    void ReorderCards();                                                 // 0x007DA810
+#endif
 #ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBLACKJACK_CARDSMAINGAME
     // Retail opt-in (agentC42, row 0x007DB6A0 CardsMainGame): the slot-56 override and the members it uses (Ego_r.pdb / FableWin.pdb
     // names; addresses = the landed rows / reloc bindings). HasGoneBust (landed 0x007DA8B0) and CardsFaceDown

@@ -2,7 +2,7 @@
 // Leaf: UpdateAITurning
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
-// Callees: GetPItem 0xA01B50, 0x661E80 (byte-identical to the landed CText::GetAlignment; here a CThingAICreature flag query), CTCGraphicAppearance 0x4C10E0 / 0x4C1060(1.0f) (by-value C3DVector),
+// Callees: GetPItem 0xA01B50, 0x661E80 (byte-identical to the landed CText::GetAlignment; here a CThingAICreature flag query), NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPos 0x4C10E0 / GetFocalPos 0x4C1060(1.0f) (by-value C3DVector; Ego_r.pdb + FableWin.pdb tc_graphic_appearance.obj names),
 //   CThing::GetPos 0x4C73D0, LowerBound 0x40F020, CTCLook::LookAtPos 0x753E90.
 #include "fable_compiler.h"
 class C3DVector { public:
@@ -16,10 +16,12 @@ FABLE_FORCEINLINE float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y *
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    C3DVector GetHeadPosition() const;                      // 0x004C10E0
-    C3DVector GetHelperPointOrCentre(float fraction) const; // 0x004C1060
+    C3DVector GetStaticFocalPos() const;                    // 0x004C10E0
+    C3DVector GetFocalPos(float t) const;                   // 0x004C1060
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -29,7 +31,7 @@ class CThing { public:
     unsigned long m_presentBits[9];                         // +0x20
     CInterfaceMap m_tcs;                                    // +0x44
     unsigned char _pad54[0x10];
-    CTCGraphicAppearance* PGraphicAppearance;               // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance; // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                                 // +0x91
     const C3DVector& GetPos() const;                   // 0x004C73D0
@@ -74,11 +76,11 @@ void CThingAICreature::UpdateAITurning(const C3DVector& movement)
     } else if (PTurnState->IsFacingThing() && PTurnState->IsThingValid()) {
         if (PTurnState->GetThing()->PGraphicAppearance) {
             if (IsInMelee()) {
-                CTCGraphicAppearance* app = PTurnState->GetThing()->PGraphicAppearance;
-                target = app->GetHeadPosition();
+                NGraphicAppearance::CTCGraphicAppearance* app = PTurnState->GetThing()->PGraphicAppearance;
+                target = app->GetStaticFocalPos();
             } else {
-                CTCGraphicAppearance* app = PTurnState->GetThing()->PGraphicAppearance;
-                target = app->GetHelperPointOrCentre(1.0f);
+                NGraphicAppearance::CTCGraphicAppearance* app = PTurnState->GetThing()->PGraphicAppearance;
+                target = app->GetFocalPos(1.0f);
             }
         } else {
             target = PTurnState->GetThing()->GetPos();

@@ -1,4 +1,4 @@
-// CThingAICreature::SetNewBrain(CDefPointer<const CAIBrainDef> brainDef) -- tells the idle scheduler (when present) a new brain is coming, builds a brain for this creature from the def over the display engine, world, thing and player managers, and installs it in the counted brain pointer
+// CThingAICreature::SetNewBrain(CDefPointer<const CBrainDef> brainDef) -- tells the idle scheduler (when present) a new brain is coming, builds a brain for this creature from the def over the display engine, world, thing and player managers, and installs it in the counted brain pointer
 // Grade: RELOCATION_MATCH (retry helper C) -- the thing-manager argument is read through an inline accessor GetThingManager() (an inlined call is evaluated before the real getter calls), so CThing::GetPCurrentThingManager() loads into ebx ahead of GetPlayerManager and the brain takes ebp, as retail. Was DIFFER(176v178), parked as a whole-program mod/ref gap.
 // Leaf: SetNewBrain
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -19,31 +19,15 @@ class CTCBase;
 class CTCIdleScheduler { public:                            // interface type 0xD3
     void OnNewBrain_008018b0();                      // 0x008018B0 (manifest label propagated)
 };
-class CDefClassBase { public:
-    virtual void v00();
-    virtual void Delete();                           // slot 1 (+0x04)
-    long RefCount;                                   // +0x04
-};
-struct CAIBrainDef;
-struct CDefPointer {                                 // CDefPointer<const CAIBrainDef>
-    const CDefClassBase* Object;
-    CDefPointer(const CDefPointer& other) : Object(other.Object)
-    {
-        if (Object)
-            ++const_cast<CDefClassBase*>(Object)->RefCount;
-    }
-    ~CDefPointer()
-    {
-        if (Object) {
-            if (--const_cast<CDefClassBase*>(Object)->RefCount == 0)
-                const_cast<CDefClassBase*>(Object)->Delete();
-        }
-    }
-};
+// NF159 (q4720): the local CDefClassBase / non-template CDefPointer stand-ins replaced by the shared engine/CDefPointer.h (retail
+//   def model): Ego_r.pdb / FableWin.pdb ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z, the def pointer by value.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefPointer.h"
+class CBrainDef;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CDisplayEngine; class CWorld; class CThingManager; class CPlayerManager; class CThingAICreature;
+class CDisplayEngine; class CMainGameComponent; class CWorld; class CThingManager; class CPlayerManager; class CThingAICreature;
 class CThingManager;
 class CThing {
     static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
@@ -53,7 +37,9 @@ public:
 inline CThingManager* GetThingManager() { return CThing::GetPCurrentThingManager(); }
 class CAIBrain { public:                                    // 0xA8 bytes
     unsigned char _body[0xa8];
-    CAIBrain(CDisplayEngine* display, CWorld* world, CThingManager* things, CPlayerManager* players, CThingAICreature* owner, CDefPointer def);   // 0x0088C160
+    // The self row 0x0088C160's own spelling (CMainGameComponent* first: Ego_r.pdb 0x0082FFD0 / FableWin.pdb 0x02802F50 take a const
+    // CMainGameComponent&; retail 0x004C7A70 is CThing::PeekComponent, still declared GetDisplayEngine here).
+    CAIBrain(CMainGameComponent* component, CWorld* world, CThingManager* things, CPlayerManager* players, CThingAICreature* owner, CDefPointer<const CBrainDef> def);   // 0x0088C160
 };
 // Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the brain pointer is the shared CCountedPointer<CAIBrain> (Ego_r.pdb
 //   CThingAICreature::PBrain); its out-of-line Reset 0x00834E40 is FableWin.pdb ?Reset@?$CCountedPointer@VCAIBrain@@@@QAEXPAVCAIBrain@@@Z
@@ -82,13 +68,13 @@ class CThingAICreature { public:
     CPlayerManager* GetPlayerManager();              // 0x004C7A00
     CDisplayEngine* GetDisplayEngine();              // 0x004C7A70
     CWorld* PeekWorld();                             // 0x004C7AA0
-    void SetNewBrain(CDefPointer brainDef);
+    void SetNewBrain(CDefPointer<const CBrainDef> brainDef);
 };
-void CThingAICreature::SetNewBrain(CDefPointer brainDef)
+void CThingAICreature::SetNewBrain(CDefPointer<const CBrainDef> brainDef)
 {
     CTCIdleScheduler* scheduler;
     if (GetInterface(&scheduler, 0xd3))
         scheduler->OnNewBrain_008018b0();
-    CAIBrain* brain = new CAIBrain(GetDisplayEngine(), PeekWorld(), GetThingManager(), GetPlayerManager(), this, brainDef);
+    CAIBrain* brain = new CAIBrain((CMainGameComponent*)GetDisplayEngine(), PeekWorld(), GetThingManager(), GetPlayerManager(), this, brainDef);
     PBrain.Reset(brain);
 }

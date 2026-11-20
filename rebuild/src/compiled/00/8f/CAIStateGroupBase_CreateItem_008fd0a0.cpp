@@ -40,7 +40,7 @@ class CThingObject;
 // Retail getter 0x00449700 reads native MainPlayer at +0x1c; the donor header
 // places it at +0x20 because its Players vector is four bytes larger.
 class CTCCarrying { public:
-    void PutThingInCarrySlot(CThingObject*, long, bool); // 0x006a1f80
+    void PutThingInCarrySlot(CThing&, long, bool);       // 0x006a1f80 (Ego_r.pdb + FableWin.pdb: CThing&)
 };
 
 struct CAIStateGroupBaseCreateItem : CAIStateGroupBase {
@@ -54,7 +54,7 @@ typedef std::pair<ETCInterfaceType, CTCBase*> CLongPointerPair;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CVectorMapLong;
 
 class CRightHandedSet;
-class CThingObject { public:
+class CThingObject : public CThing { public:          // RTTI .?AVCThingObject@@: CThingGameObject@0 : CThingPhysical@0 : CThing@0 (direct base elided)
     static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
 };
 
@@ -84,7 +84,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
             thing = CThingObject::Create(definition, *(&position), playerID, (CRightHandedSet const*)orientation, 0, createName);
             }
             long item = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(*itemName);
-            carry->PutThingInCarrySlot(thing, item, true);
+            carry->PutThingInCarrySlot(*thing, item, true);
         }
     }
 }

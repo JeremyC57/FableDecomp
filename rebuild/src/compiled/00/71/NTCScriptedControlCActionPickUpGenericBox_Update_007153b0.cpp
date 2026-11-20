@@ -74,7 +74,7 @@ public:
 class CTCCarrying {
 public:
     CThing* RemoveThingFromPrimarySlot(bool immediately);                    // 0x006A1E00
-    void    PutThingInCarrySlot(CThing* thing, long slot, bool immediately); // 0x006A1F80
+    void    PutThingInCarrySlot(CThing& thing, long slot, bool immediately); // 0x006A1F80 (Ego_r.pdb + FableWin.pdb: CThing&)
 };
 class CTCCreatureModeManager {
 public:
@@ -171,7 +171,7 @@ void CActionPickUpGenericBox::Update()
     CDefPointer<const CCarryableDef> carryDef;
     CThing* box = PBox.GetPThing();
     box->m_pDef->GetSubDef(&carryDef);
-    carrying->PutThingInCarrySlot(PBox.GetPThing(), carryDef->ActiveCarrySlot, true);
+    carrying->PutThingInCarrySlot(*PBox.GetPThing(), carryDef->ActiveCarrySlot, true);
     GetModeManager()->AddMode(CREATURE_MODE_CARRYING_GENERIC_BOX);
     Terminated = true;
 }

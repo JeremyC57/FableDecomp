@@ -22746,7 +22746,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007d2ef0	SetupForNewRound	CTCTavernGameCoinGolf	__thiscall	void	1	CTCTavernGameCoinGolf *	1	yes	accepted									
 007d2ff0	FrameUpdate	CTCTavernGameCoinGolf	__thiscall	void	1	CTCTavernGameCoinGolf *	1	yes	accepted									
 007d34a0	EnterGame	CTCTavernGameCoinGolf	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007d3510	vfunc_32	CTCTavernGameCoinGolf	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007d3510	NewRound	CTCTavernGameCoinGolf	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007d3560	GetCamera	CTCTavernGameCoinGolf	__thiscall	void	3	CTCTavernGameCoinGolf *,C3DVector *,C3DVector *	1	yes	accepted									
 007d3700	GetAdditionalInfo	CTCTavernGameCoinGolf	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007d3820	ProcessInput	CTCTavernGameCoinGolf	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29707,7 +29707,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008f09b0	GetRandomCard	CTCTavernGameCardBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008f09c0	SelectCard	CTCTavernGameCardBase	__thiscall	bool	1	CTCTavernGameCardBase *	1	yes	accepted									
 008f09d0	ReactionAndPayout	CTCTavernGameCardBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008f09e0	TurnAllCards	CTCTavernGameCardBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008f09e0	CardsFinishedMoving	CTCTavernGameCardBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008f0a70	GetCurrentScore	CTCTavernGameCardBase	__thiscall	CWideString	1	CTCTavernGameCardBase *	1	yes	accepted									
 008f0b20	GetCardDef	CTCTavernGameCardBase	__thiscall	void	2	CTCTavernGameCardBase *,CDefPointer<CTavernGameCardBaseDef_const_> *	1	yes	accepted									
 008f0b80	GetPackPosition	CTCTavernGameCardBase	__thiscall	long	1	CTCTavernGame *	1	yes	accepted									

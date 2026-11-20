@@ -33,7 +33,10 @@ template <class T> struct CRetailVector {      // retail 12-byte vector {first, 
 
 class CTCTavernGame { public:                          // polymorphic root (vptr at +0)
     virtual void v00();
-    void SetState(long state);                  // 0x005E9B20
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
+    void SetState(ETavernGameStates state);                  // 0x005E9B20
 };
 struct CTCTavernGameCardBase : CTCTavernGame {
     unsigned char _pad_0x04[0x314];
@@ -65,5 +68,5 @@ void CTCTavernGameCardBlackjack::EndRound()
     DealersCards.clear();
     Bets.clear();
     WinState = 0;
-    SetState(8);
+    SetState((ETavernGameStates)8);
 }

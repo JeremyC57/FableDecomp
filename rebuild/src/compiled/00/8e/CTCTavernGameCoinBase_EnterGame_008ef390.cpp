@@ -1,5 +1,5 @@
 // CTCTavernGameCoinBase::EnterGame() -- tavern-game EnterGame, then create the three arrow pieces from the coin def's arrow model
-// Leaf: ?EnterGame@CTCTavernGameCoinBase
+// Leaf: ?EnterGame@CTCTavernGameCoinBase@@UAEXXZ
 // Retail: Fable.exe @ 0x008EF390, 105 bytes.
 // Callees: CTCTavernGame::EnterGame() 0x005EC0F0 (non-virtual base call); the owner's def holder (CThing+0x70) lookup
 //          0x008F00F0 (CDefPointer<const CTavernGameCoinBaseDef> by out pointer; the inlined form of the forwarder that
@@ -69,7 +69,9 @@ struct CTCTavernGameCoinBase : CTCTavernGame {
     CThingObject* Arrow1;                       // +0xf4
     CThingObject* Arrow2;                       // +0xf8
     void GetCoinDef(CDefPointer* out) { ParentThing->DefHolder->GetDef(out); }
-    void EnterGame();
+    // NF159 (q5079 family with its binders 0x007CF530 / 0x007D34A0): Ego_r.pdb 0x00914CD0 / FableWin.pdb 0x02AEC260
+    //   ?EnterGame@CTCTavernGameCoinBase@@UAEXXZ (the override of CTCTavernGame slot 29; the local root is already polymorphic); was QAE.
+    virtual void EnterGame();
 };
 
 void CTCTavernGameCoinBase::EnterGame()

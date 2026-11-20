@@ -12,7 +12,10 @@
 #undef CTCTavernGame
 class CTCTavernGame : public CTCTavernGameDonor {
  public:
-    void SetState(long state);          // 0x005E9B20
+    // NF159 (q4271): Ego_r.pdb / FableWin.pdb ?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z: the state is the nested enum
+    //   CTCTavernGame::ETavernGameStates (enumerator names unproven: values passed as numbers); was SetState(long).
+    enum ETavernGameStates { };
+    void SetState(ETavernGameStates state);          // 0x005E9B20
 };
 
 struct CTCTavernGameSpotTheAddition : CTCTavernGame {
@@ -25,5 +28,5 @@ void CTCTavernGameSpotTheAddition::QuitMidGame()
     GameFinished = true;
     GameWon = false;
     PositionCover(1.0f);
-    SetState(6);
+    SetState((ETavernGameStates)6);
 }

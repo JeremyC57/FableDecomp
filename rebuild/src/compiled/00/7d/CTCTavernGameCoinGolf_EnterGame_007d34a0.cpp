@@ -28,6 +28,8 @@ class CWorld { public:
 
 class CTCBase
 {
+public:
+    virtual ~CTCBase();         // 0x00686830 (polymorphic root: the vptr at +0x00; NF159)
 protected:
     CWorld& GetWorld() const;   // 0x00686A70
 };
@@ -37,10 +39,13 @@ public:
 };
 
 struct CTCTavernGameCoinBase : public CTCTavernGame {
-    unsigned char _pad[0x2c];
+    // NF159 (q5079 family with 0x007CF530, no new split at 0x008EF390): Ego_r.pdb / FableWin.pdb ?EnterGame@CTCTavernGameCoinBase@@UAEXXZ
+    //   (virtual: CTCTavernGame slot 29; the qualified call below stays non-virtual); was QAE. The vptr (CTCBase's, now declared with
+    //   its virtual destructor) is the +0x00 word the pad used to cover, so the pad is 4 shorter; CoinGolf's EnterGame overrides it (UAE).
+    virtual void EnterGame();                       // 0x008EF390
+    unsigned char _pad[0x28];
     float Score;                                    // +0x2c (CTCTavernGame)
     unsigned char _pad_0x30[0x118];
-    void EnterGame();                               // 0x008EF390
 };
 
 class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
@@ -48,7 +53,7 @@ class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     float XAngle;                                   // +0x14c
     float CameraDistance;                           // +0x150
     void EnableCourse(long course);                 // 0x007D2CC0
-    void EnterGame();
+    virtual void EnterGame();
 };
 
 void CTCTavernGameCoinGolf::EnterGame()

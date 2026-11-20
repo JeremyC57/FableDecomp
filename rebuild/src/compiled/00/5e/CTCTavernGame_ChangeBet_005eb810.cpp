@@ -73,7 +73,11 @@ class CTCTavernGame { public:
     long FrameBetChangeStarted;                         // +0xe0
     long Mult;                                          // +0xe4
     bool BetIncreasing;                                 // +0xe8
-    unsigned long PlaySound(const CCharString& name);   // 0x005EA950
+protected:
+    // NF159 (q4273): Ego_r.pdb / FableWin.pdb ?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z (protected, returns the
+    //   sound handle; <windows.h> renamed the source's PlaySound); was a public PlaySound.
+    unsigned long PlaySoundW(const CCharString& name);   // 0x005EA950
+public:
     void ChangeBet(bool increase);
 };
 
@@ -121,8 +125,8 @@ void CTCTavernGame::ChangeBet(bool increase)
         BaseBet = def->MaxBet;
     else if (changed) {
         if (BetIncreasing)
-            PlaySound("TAVERN_GAME_BET_INCREMENT");
+            PlaySoundW("TAVERN_GAME_BET_INCREMENT");
         else
-            PlaySound("TAVERN_GAME_BET_DECREMENT");
+            PlaySoundW("TAVERN_GAME_BET_DECREMENT");
     }
 }

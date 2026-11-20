@@ -56,6 +56,11 @@ public:
     // ?EndRound@CTCTavernGameCardBase@@UAEXXZ (0x008F1720), the override of CTCTavernGame slot 33 (no new slot, no layout change).
     virtual void EndRound();                                             // 33 0x008F1720
 #endif
+#ifdef FABLE_RETAIL_CTCTAVERNGAMECARDBASE_QUITMIDGAME
+    // NF159 opt-in (q4271, row 0x008F09A0 CTCTavernGameCardBase::QuitMidGame): Ego_r.pdb 0x00915E40 / FableWin.pdb 0x02AF0D80
+    // ?QuitMidGame@CTCTavernGameCardBase@@UAEXXZ, the override of CTCTavernGame slot 34 (no new slot, no layout change).
+    virtual void QuitMidGame();                                          // 34 0x008F09A0
+#endif
     virtual void DealCards();                                            // 51 0x008F0BD0
     virtual void CardsMoving();                                          // 52 0x008F2280
     virtual void CardsFinishedMoving();                                  // 53 0x008F09E0
