@@ -1,0 +1,48 @@
+diff --git a/rebuild/include/engine/CContextSensitiveItemDef.h b/rebuild/include/engine/CContextSensitiveItemDef.h
+index 32897aeae..d61e88eb2 100644
+--- a/rebuild/include/engine/CContextSensitiveItemDef.h
++++ b/rebuild/include/engine/CContextSensitiveItemDef.h
+@@ -8,6 +8,36 @@
+ #include <stddef.h>
+ #include "rebuild_abi.h"
+ 
++#ifdef FABLE_RETAIL_CCONTEXTSENSITIVEITEMDEF_CLASS
++// Opt-in (hand3c2, row 0x00591B7F CTCInventory::UpdateContextSensitiveItems; needs FABLE_RETAIL_DEF_CLASS_BASE): the class as a
++// sub-def instead of the flat model -- RTTI .?AVCContextSensitiveItemDef@@ : CSubDefClassBase (ghidra_out/rtti_bases.tsv); members
++// Ego_r.pdb (Type +0x28, Priority +0x2C, SlotIndex +0x30, ExtraData1 +0x34, ExtraData2 +0x38, sizeof 0x3C); EContextSensitiveType =
++// Ego_d.pdb enum record 0x14CA0 (the row tests Type against 6 at 0x00591C7B); StatGetTypeName = the inline class-name key
++// GetSubDef<CContextSensitiveItemDef> 0x005933C8 looks up (Ego_d.pdb string ??_C@_0BJ@OGAOOICJ@CContextSensitiveItemDef);
++// ?IsValidOverride@CContextSensitiveItemDef@@QBE_NABVCThing@@JPBVCTCInventory@@@Z 0x00850A80 (Ego_r.pdb / FableWin.pdb / Ego_d.pdb).
++#include "fable_string.h"
++#include "engine/CSubDefClassBase.h"
++class CThing;
++class CTCInventory;
++enum EContextSensitiveType {
++    CONTEXT_SENSITIVE_NULL, CONTEXT_SENSITIVE_GUILD_SEAL, CONTEXT_SENSITIVE_LAMP, CONTEXT_SENSITIVE_HEALTH, CONTEXT_SENSITIVE_MANA,
++    CONTEXT_SENSITIVE_EXPRESSION, CONTEXT_SENSITIVE_OPINION_EXPRESSION, CONTEXT_SENSITIVE_GIFT, CONTEXT_SENSITIVE_MARKER,
++    CONTEXT_SENSITIVE_TROPHY, CONTEXT_SENSITIVE_SCRIPT
++};
++class CContextSensitiveItemDef : public CSubDefClassBase {
++public:
++    static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CContextSensitiveItemDef", -1); }
++    bool IsValidOverride(const CThing& thing, long thing_def_index, const CTCInventory* inventory) const;   // 0x00850A80
++    EContextSensitiveType Type;                              // +0x28
++    long          Priority;                                  // +0x2c
++    long          SlotIndex;                                 // +0x30
++    long          ExtraData1;                                // +0x34
++    long          ExtraData2;                                // +0x38
++};
++FABLE_STATIC_ASSERT_AT(1032, sizeof(CContextSensitiveItemDef) == 0x3c);
++FABLE_STATIC_ASSERT_AT(1034, offsetof(CContextSensitiveItemDef, Type) == 0x28);
++FABLE_STATIC_ASSERT_AT(1036, offsetof(CContextSensitiveItemDef, SlotIndex) == 0x30);
++#else
+ #pragma pack(push, 1)
+ class CContextSensitiveItemDef {
+ public:
+@@ -42,4 +72,6 @@ FABLE_STATIC_ASSERT_AT(36, offsetof(CContextSensitiveItemDef, SlotIndex) == 0x30
+ FABLE_STATIC_ASSERT_AT(37, offsetof(CContextSensitiveItemDef, ExtraData1) == 0x34);
+ FABLE_STATIC_ASSERT_AT(38, offsetof(CContextSensitiveItemDef, ExtraData2) == 0x38);
+ 
++#endif // FABLE_RETAIL_CCONTEXTSENSITIVEITEMDEF_CLASS
++
+ #endif // FABLE_ENGINE_CCONTEXTSENSITIVEITEMDEF_H

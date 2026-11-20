@@ -1,0 +1,29 @@
+diff --git a/rebuild/include/engine/CManagedTextureData.h b/rebuild/include/engine/CManagedTextureData.h
+index f9171aab9..ae16e4fc5 100644
+--- a/rebuild/include/engine/CManagedTextureData.h
++++ b/rebuild/include/engine/CManagedTextureData.h
+@@ -20,6 +20,12 @@ public:
+     void SetOwner(CManagedTextureOwner* owner) { Owner = owner; }
+     bool CreateTexture(unsigned long width, unsigned long height, long mip_levels, const class CPixelFormat& format);   // 0x00A697A0
+ #endif
++#ifdef FABLE_RETAIL_CMANAGEDTEXTUREDATA_CREATEVOLUMETEXTURE
++    // Re-port opt-in (audit h3c2b, 2026-11-20, row 0x00A699D0): Ego_r.pdb 0x00B7D0E0 / FableWin.pdb 0x03184FC0
++    // ?CreateVolumeTexture@CManagedTextureData@@QAE_NKKKJABVCPixelFormat@@@Z (Ego_d.pdb parameters width, height, depth, mipmap_levels,
++    // format). Declaration only; no layout change.
++    bool CreateVolumeTexture(unsigned long width, unsigned long height, unsigned long depth, long mipmap_levels, const class CPixelFormat& format);   // 0x00A699D0
++#endif
+ #ifdef FABLE_RETAIL_CMANAGEDTEXTUREDATA_RELEASETEXTURE
+     // Opt-in (agentNF31, row 0x00A69AD0 CManagedTexture::Release): Ego_r.pdb 0x00B7D190 / FableWin.pdb 0x03185260
+     // ?ReleaseTexture@CManagedTextureData@@QAEXXZ, the landed row at 0x00A69A80; called out of line. Declaration only.
+@@ -30,6 +36,11 @@ public:
+     // inline in retail (the counted pointer copied in place). No layout change.
+     CCountedPointer<CTexture> GetTexture() { return Texture; }
+ #endif
++#ifdef FABLE_RETAIL_CMANAGEDTEXTURE_GETVOLUMETEXTURE
++    // Re-port opt-in (audit h3c2b, 2026-11-20, row 0x009FD9B0): FableWin.pdb 0x03124C50
++    // ?GetVolumeTexture@CManagedTextureData@@QAE?AV?$CCountedPointer@VCVolumeTexture@@@@XZ, inline in retail. No layout change.
++    CCountedPointer<CVolumeTexture> GetVolumeTexture() { return VolumeTexture; }
++#endif
+ #ifdef FABLE_RETAIL_CMANAGEDTEXTURE_LOCK
+     // agentC27 (row 0x009FDE80): FableWin.pdb ?SetLocked@CManagedTextureData@@QAEX_N@Z (inline; Locked +0x49).
+     void SetLocked(bool locked) { Locked = locked; }

@@ -7,11 +7,16 @@
 #include "engine/CShaderRenderManager.h"
 #pragma intrinsic(sqrt)
 namespace NVectorMath {void GFNormalise3DVectors(const C4DVector*,unsigned long,C4DVector*,unsigned long,unsigned long);}
-// The CShaderRenderManager.cpp body of ?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z (out of line at 0x0098B930), visible in this
-// TU so VC7.1 expands it here as retail does (0x00989CB0 calls IDirect3DDevice9::SetVertexShaderConstantF, vtable +0x178, in place).
-inline void CShaderRenderManager::SetVSConstants(long start,const void* data,unsigned long count)
+// Same-TU copy: ?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z (out of line at 0x0098B930) is this row's retail TU-mate; its body is
+// visible here, so VC7.1 expands it at the four call sites as retail does (IDirect3DDevice9::SetVertexShaderConstantF, vtable +0x178, in
+// place). Verbatim the landed owner row's text (Ego_d spelling), a plain strong definition.
+typedef long HRESULT;
+// Fidelity: same-TU strong definition of 0x0098B930 (retail TU-mate)
+void CShaderRenderManager::SetVSConstants(long index, const void* data, unsigned long count)
 {
-    if(count!=0) D3DDevice->SetVertexShaderConstantF(start,(const float*)data,count);
+    if (count == 0)
+        return;
+    HRESULT hr = D3DDevice->SetVertexShaderConstantF(index, (const float*)data, count);
 }
 void CShaderRenderManager::UpdateObjectSpaceLighting(unsigned long flags)
 {

@@ -3,10 +3,10 @@ address	grade	bytes	test	grades_used	notes
 00439bb0	RELOCATION_MATCH	592	PASS(vland strict)	4	hand3c: FableWin 0x01A814F0 shape on shared headers (CPlayerGui MEMBERS+CTOR, CStatBar, CTCHeroStats BRIBE/GETMONEY, GetTC expanded); new opt-ins CPLAYERGUI_UPDATEMONEY, NPLAYERGUI_CSTATBAR_CHANGETEXTS; tail as three member-order stores [b15 LANDED]
 0052ee00	MATCH	192	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x0229BB60 shape on shared NUISystem_CComponent.h + FABLE_RETAIL_C2DVECTOR [b7 LANDED 4347aa3597]
 0057c4f1	OPEN	1192	-	1	baseline draft DIFFER(1192v1192) hunks=82 difflines=238
-00591b7f	OPEN	735	-	1	baseline draft DIFFER(729v735) hunks=35 difflines=112
+00591b7f	LANDED	735	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(729v735) hunks=35 difflines=112
 00621a20	RELOCATION_MATCH	600	PASS(vland strict)	5	hand3c: FableWin 0x01F7D6C0 shape on shared headers (CTCInventoryQuests OPENINVENTORY+MEMBERS, PASS22 Categories, CQuestManager, CTCQuestCard); levers STLP_DESTROY_AUX_FASTCALL + CVECTORMAP_INLINE_CONST_LOWERBOUND; new opt-ins CTCINVENTORYQUESTS_RESETCATEGORYLIST, CTCINVENTORYBASE_ADDCATEGORY, CCATEGORY_SETASSELECTED
 0063f4b0	LANDED	769	-	30	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); PORTED to shared headers (Q23 Bind3 source -> Bind2, FOREACHINROUGHAREA_BODY): residue = loop-exit reload order (TLX/BRX/BRY/map; Q19/Q23 family gap); include + class-order permutations and a guarded/byte-offset y loop opt-in: no change (port shows the reload swap at two sites, 0x0063F6F4 and 0x0063F755; the local-model draft had one) | best differ/0063f4b0.cpp
-00646762	OPEN	740	-	1	baseline draft DIFFER(735v740) hunks=29 difflines=66
+00646762	LANDED	740	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(735v740) hunks=29 difflines=66
 0064d404	RELOCATION_MATCH	399	PASS(vland; g++ PASS)	10 (hand3c)	hand3c: FableWin 0x020E86BF shape on shared CDrawQuestInfo.h, GetElementByIndex real body earlier in TU (auto_inline off) keeps height in st0, CDRAWQUESTINFO_DRAWMINIGAMEINFO opt-in [b10 LANDED de5ba369a2]
 0064dd9a	LANDED	580	-	1	landed by Account B (batches/2026-11-20_landing_hand3c2_b2); baseline draft DIFFER(533v580) hunks=14 difflines=286
 00664ba0	RELOCATION_MATCH	184	PASS(vland; g++ PASS)	3 (hand3c)	hand3c: shared headers, FableWin 0x01D999E0 shape + Ego_d locals, visible NOINLINE GetSubDef<CCreatureDef> [b6 LANDED 2078f8b0cc]
@@ -37,18 +37,18 @@ address	grade	bytes	test	grades_used	notes
 00986210	LANDED	461	-	14	landed by Account B (batches/2026-11-19_landing_hand3c_b25_b26); hand3c: FableWin shape + 0x009871C0 body in TU -> frame/slots match; 3-instr scheduling residue at 0x00986374 (In2DRange #1 radius load); see NOTES | best src/00986210.cpp; next: same-TU Bind3 sibling bodies (0x00986E30/0x00986D90) in .obj order, bracket
 00988e80	OPEN	917	-	1	baseline draft DIFFER(889v917) hunks=32 difflines=111
 00989230	DIFFER	636	-	~85 (hand3c)	hand3c: OPEN-ESCALATED class item (with 00988e80/00ae1320/00ae29d0): x87 column order follows inline-layer structure (morph bisect in keep/ESCALATE_00989230.md); region-cut refuted | best differ/00989230.cpp; keep/ESCALATE_00989230.md
-009acee0	OPEN	1017	-	1	baseline draft DIFFER(1030v1017) hunks=45 difflines=222
+009acee0	LANDED	1017	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(1030v1017) hunks=45 difflines=222
 009bf7e0	OPEN	846	-	1	baseline draft DIFFER(824v846) hunks=46 difflines=172
 009c38c0	RELOCATION_MATCH	409	PASS(vland; g++ PASS)	14 (hand3c)	hand3c: FableWin 0x0304B490 shape on CFileInstaller.h; static __fastcall noinline GetMarkerFileName (esi result, ret 4); SetDirtyDiscError FableWin text [b11]
 009c3c20	OPEN	909	-	1	baseline draft DIFFER(877v909) hunks=31 difflines=320
 00a38c20	RELOCATION_MATCH	551	PASS(vland strict)	1	hand3c: FableWin 0x031DB670 shape on shared headers (CDiskFileWin32, CArray SIZE ctor + GETBYTESIZE, CMemoryDataInputStream inline reads, CVectorMap); stand-in CCRCSymbolMap; first grade
 00a475c0	OPEN	1857	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=613
 00a48ba0	OPEN	875	-	1	baseline draft DIFFER(881v875) hunks=48 difflines=396
-00a48f10	OPEN	811	-	1	baseline draft DIFFER(815v811) hunks=59 difflines=243
-00a4c1f0	OPEN	1006	-	1	baseline draft DIFFER(968v1006) hunks=68 difflines=325
+00a48f10	LANDED	811	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(815v811) hunks=59 difflines=243
+00a4c1f0	LANDED	1006	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(968v1006) hunks=68 difflines=325
 00a4d770	OPEN	420	-	42	DIFFER(420v420) one lea operand order at 0x00A4D8F1; see NOTES | best src/00a4d770.cpp; next: bracket on dest index, for-scope if(0) idiom
-00a52760	OPEN	1004	-	1	baseline draft DIFFER(968v1004) hunks=68 difflines=332
-00a53860	OPEN	1005	-	1	baseline draft DIFFER(966v1005) hunks=64 difflines=282
+00a52760	LANDED	1004	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(968v1004) hunks=68 difflines=332
+00a53860	LANDED	1005	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(966v1005) hunks=64 difflines=282
 00a567a0	LANDED	766	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft '?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z' hunks=47 difflines=341
 00a5b650	RELOCATION_MATCH	184	PASS(vland)	2	shared headers (CCachedFile COPY opt-in, CCountedPointer Reset/ReleaseData, STLport back_inserter + out-of-line random-access __copy opt-ins)
 00a62ae0	RELOCATION_MATCH	130	PASS	30	Ego_d locals, decl order P,B,M,V,K; CPackedUIntArray CALCULATEBIAS opt-in [LANDED 039a0c8c02]
@@ -61,7 +61,7 @@ address	grade	bytes	test	grades_used	notes
 00aabf60	LANDED	620	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(625v620) hunks=50 difflines=224
 00aad340	LANDED	584	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(606v584) hunks=39 difflines=213
 00ac7eb0	LANDED	215	-	66	landed by Account B (batches/2026-11-19_landing_hand3c_b25_b26); 2 lines n*n*w operand order; FableWin shows cost=0 + GFSqr(t)*W + GFSqr(n)*W (GFWorldDistance GFSqr) -- 6 more spellings + 15 include orders: no change | best differ/00ac7eb0.cpp; next: bracket, for-scope idiom
-00adf960	OPEN	766	-	1	baseline draft DIFFER(764v766) hunks=13 difflines=26
+00adf960	LANDED	766	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(764v766) hunks=13 difflines=26
 00ae1320	OPEN	681	-	1	baseline draft DIFFER(681v681) hunks=12 difflines=70
 00ae29d0	OPEN	726	-	1	baseline draft DIFFER(726v726) hunks=15 difflines=62
 00b012e0	RELOCATION_MATCH	1296	PASS(vland; g++ portable PASS)	11 (hand3c)	hand3c: shared GFPackFloat (FableWin /Od call shape) + GROUPPRODUCT opt-in; shared CPSCBase(+new opt-in CPSCBASE_CTOR)/CRGBColour/CEnginePrimitiveHandle/CParticleEmitterManager [LANDED 58b05aba99]
@@ -82,7 +82,7 @@ address	grade	bytes	test	grades_used	notes
 00b93b30	RELOCATION_MATCH	395	PASS(vland; g++ PASS)	1 (hand3c)	hand3c: FableWin 0x02E1C860 statement shape, GRIDPOS_INLINE / PRIMITIVEBASE_SETGRIDPOS / SCENEMAP_ADDPRIMITIVE opt-ins [b10 LANDED de5ba369a2]
 00b947e0	RELOCATION_MATCH	246	PASS(vland; g++ portable twin PASS)	12	NEW header engine/CEngineSceneMap.h + CEngineScene opt-in GETMAXAVERAGEPRIMITIVESPERCELL; GFFloatToLongNear; GFGETTOPBIT_FORCEINLINE; ternary clamp [LANDED 039a0c8c02]
 00b94bf0	RELOCATION_MATCH	309	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x02E1D7D0 shape, typed MapList + inline CEngineSceneMap ctor opt-ins, FABLE_RETAIL_STLP_MAP visible subscript [b8 LANDED 7030ce2d2e]
-00b99300	OPEN	871	-	1	baseline draft DIFFER(871v871) hunks=16 difflines=36
+00b99300	LANDED	871	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(871v871) hunks=16 difflines=36
 00ba1140	OPEN	2344	-	1	baseline draft DIFFER(2345v2344) hunks=117 difflines=366
 00bade40	OPEN	793	-	1	baseline draft DIFFER(743v793) hunks=24 difflines=168
 00bd71b0	OPEN	2116	-	1	baseline draft DIFFER(2116v2116) hunks=153 difflines=575

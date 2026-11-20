@@ -1,0 +1,37 @@
+diff --git a/rebuild/include/engine/Win32Types.h b/rebuild/include/engine/Win32Types.h
+index 2d74ce36d..3fb497433 100644
+--- a/rebuild/include/engine/Win32Types.h
++++ b/rebuild/include/engine/Win32Types.h
+@@ -21,6 +21,21 @@ typedef struct _GUID {
+ 
+ struct HWND__; typedef HWND__* HWND;
+ 
++#ifdef FABLE_RETAIL_WIN32_MINMAX
++// Opt-in (audit h3c2b, row 0x00ADF960 CParticleSimulation::SatisfyDistanceConstraints): windef.h's min / max macros, the SDK text verbatim
++// (VS .NET 2003 Platform SDK windef.h, under `#ifndef NOMINMAX`). Ego_d.pdb's line table shows a maximum whose argument is evaluated twice
++// (lib_particle_simulation.cpp line 461, 71 debug bytes = the compare AND the selected arm both compute `dist - constraint.Distance`): a
++// function-like macro, not std::max. In a C++ TU the toolchain offers only this one under the name `max` (the CRT's stdlib.h max is C-only;
++// its __max has the same expansion). Include this header AFTER any STL header (the macro would capture std::max / std::min).
++#ifndef NOMINMAX
++#ifndef max
++#define max(a,b)            (((a) > (b)) ? (a) : (b))
++#endif
++#ifndef min
++#define min(a,b)            (((a) < (b)) ? (a) : (b))
++#endif
++#endif  /* NOMINMAX */
++#endif
+ #ifdef FABLE_RETAIL_WIN32_FILETIME
+ // Opt-in (chunk 2013, row 0x00595CC1): winbase.h / winnt.h _FILETIME (8 bytes: dwLowDateTime, dwHighDateTime), the type Ego_r.pdb
+ // ?ToFileTime@CDateAndTime@@QBE?AU_FILETIME@@XZ returns and ?FormatDateTime@CXBConfig@@SIXABU_FILETIME@@PA_W1H@Z takes.
+@@ -44,8 +59,8 @@ typedef RTL_CRITICAL_SECTION CRITICAL_SECTION;
+ extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE0C
+ extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE10
+ 
+-FABLE_STATIC_ASSERT(sizeof(GUID) == 0x10);
+-FABLE_STATIC_ASSERT(sizeof(RTL_CRITICAL_SECTION) == 0x18);
++FABLE_STATIC_ASSERT_AT(47, sizeof(GUID) == 0x10);
++FABLE_STATIC_ASSERT_AT(48, sizeof(RTL_CRITICAL_SECTION) == 0x18);
+ 
+ #ifdef FABLE_RETAIL_WIN32_MOUSE
+ // Platform SDK windef.h/winuser.h, original PDB tags and native IAT entries014403a8/01440304/01440338.

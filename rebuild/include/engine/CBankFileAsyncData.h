@@ -43,6 +43,10 @@ public:
     // wf22 (row 0x00A24520): Ego_r.pdb ?Sizeof@CBankFileAsyncData@@QBEKXZ (retail 0x009D5620, landed). Declaration only.
     unsigned long Sizeof() const;                                        // 0x009D5620
 #endif
+#if defined(FABLE_RETAIL_CBANKFILEASYNCDATA_WAITUNTILFINISHED) && !defined(FABLE_RETAIL_C3DANIMATIONINFO_BUILD)
+    // e17 (row 0x009FDE80): Ego_r.pdb ?WaitUntilFinished@CBankFileAsyncData@@QAE_NXZ (retail 0x009D5B60). Declaration only.
+    bool WaitUntilFinished();                                            // 0x009D5B60
+#endif
 #ifdef FABLE_RETAIL_CBANKFILEASYNCDATA_ABORT
     // chunkQ29 (2026-11-12): Ego_r.pdb ?Abort@CBankFileAsyncData@@QAE_NXZ (retail 0x009D6350). Declaration only.
     bool Abort();                                                        // 0x009D6350

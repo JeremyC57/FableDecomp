@@ -18,18 +18,16 @@ public:
     FABLE_VECTOR_INLINE const C3DVector operator+(const C3DVector& other)const{return C3DVector(X+other.X,Y+other.Y,Z+other.Z);}
     FABLE_VECTOR_INLINE const C3DVector operator*(float scale)const{return C3DVector(X*scale,Y*scale,Z*scale);}
 };
-void FABLE_FASTCALL GFGetHermiteSplinePosition(C3DVector& result, const C3DVector& v1, const C3DVector& t1,
-                                           const C3DVector& v2, const C3DVector& t2, float s)
+void FABLE_FASTCALL GFGetHermiteSplinePosition(C3DVector& dest, const C3DVector& from_pos, const C3DVector& from_tan,
+                                           const C3DVector& to_pos, const C3DVector& to_tan, float s)
 {
     float s2 = s * s;
-    float s3 = s * s2;
-    float two_s3 = s3 + s3;
-    float three_s2 = s2 * 3.0f;
-    float h1 = two_s3 - three_s2 + 1.0f;
-    float h2 = three_s2 - two_s3;
-    float h3 = s3 - 2.0f * s2 + s;
-    float h4 = s3 - s2;
-    result = v1 * h1 + v2 * h2 + t1 * h3 + t2 * h4;
+    float s3 = s2 * s;
+    float wpos_from = 2.0f * s3 - 3.0f * s2 + 1.0f;
+    float wpos_to = 3.0f * s2 - 2.0f * s3;
+    float wtan_from = s3 - 2.0f * s2 + s;
+    float wtan_to = s3 - s2;
+    dest = from_pos * wpos_from + to_pos * wpos_to + from_tan * wtan_from + to_tan * wtan_to;
 }
 
 static int failures=0;

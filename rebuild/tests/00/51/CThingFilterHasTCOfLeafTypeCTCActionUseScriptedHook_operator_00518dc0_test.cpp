@@ -1,3 +1,6 @@
+// Re-port 2026-11-19: the row now sits on the shared headers (engine/CThing.h GetTCOfLeafType, engine/CTCActionUseScriptedHook.h,
+// engine/CThingFilter_HasTCOfLeafType.h); this test stays a self-contained model of that logic (its own reduced CThing / CTCBase /
+// CCharString), with the operator in the row's Ego_d form (test_thing, ptc_type, if / return).
 // Behaviour test for 0x00518DC0 CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator()(thing): true only
 // when the thing has interface 0xC2 and that component's class type name is "CTCActionUseScriptedHook".
 #include "fable_compiler.h"
@@ -133,12 +136,14 @@ public:
 template <class T> class CThingFilter_HasTCOfLeafType {
 public:
     CThingFilter_HasTCOfLeafType() {}
-    bool operator()(CThing& thing) const;
+    bool operator()(CThing& test_thing) const;
 };
-template <class T> bool CThingFilter_HasTCOfLeafType<T>::operator()(CThing& thing) const
+template <class T> bool CThingFilter_HasTCOfLeafType<T>::operator()(CThing& test_thing) const
 {
-    T* tc;
-    return thing.GetTCOfLeafType(&tc);
+    T* ptc_type;
+    if (test_thing.GetTCOfLeafType(&ptc_type))
+        return true;
+    return false;
 }
 
 

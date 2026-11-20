@@ -26,6 +26,11 @@ public:
 #endif
 protected:
  virtual void DrawStatBox(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,long,long,long,const CWideString&,unsigned char,bool,bool);
+#ifdef FABLE_RETAIL_NPLAYERGUI_CSTATBAR_DRAWCHANGETEXT
+ // Opt-in (hand3c2, row 0x00646762 CStatBar::DrawStatBarOnLeft): Ego_r.pdb / Ego_d.pdb ?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z
+ // (protected; out of line in retail at 0x00645F2E, landed). Declaration only.
+ void DrawChangeText(const C2DVector&,const CWideString&,const CRGBColour&);                    // 0x00645F2E
+#endif
 #ifdef FABLE_RETAIL_NPLAYERGUI_CSTATBAR_CHANGE_TEXT_PASS23
  // Both original nested class records; native size36, needed for normal list lifetimes.
  class CChangeText {public:

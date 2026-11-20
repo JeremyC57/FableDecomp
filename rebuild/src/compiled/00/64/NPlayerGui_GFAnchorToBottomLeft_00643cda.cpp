@@ -8,38 +8,23 @@
 // Callees: CDisplayManager::GetRenderTargetDimensions() 0x009BEDC0 on the display manager 0x013B8390. Float 480.0f from
 // pool 0x01238874.
 // Shape: C2DVector(pos.X, height + pos.Y - 480); the Y expression (the right-hand argument) is evaluated first.
+// Re-port (audit h3c2b, 2026-11-20): the local C2DVector / C2DBoxF / C2DExtentsI / CDisplayManager models are replaced by the shared
+// engine/C2DVector.h, engine/CDisplayManager.h (C2DExtentsI is X / Y in every PDB: the earlier `.Height` was a local spelling) and the
+// declaration of engine/NPlayerGui_Graphics.h (FABLE_RETAIL_NPLAYERGUI_ANCHORS). The definition below is the text the same-TU strong
+// copy in 0x00646762 NPlayerGui::CStatBar::DrawStatBarOnLeft carries verbatim (GOTCHAS line 455).
 #pragma optimize("s", on)
-class C2DVector { public:
-    float X;
-    float Y;
-    C2DVector() {}
-    C2DVector(float x, float y) : X(x), Y(y) {}
-};
+#define FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_NPLAYERGUI_ANCHORS
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_SCOPED_PTR
+#include "engine/C2DVector.h"
+#include "engine/NPlayerGui_Graphics.h"
+#include "engine/Win32Types.h"
+#include "engine/Direct3D9Types.h"
+#include "engine/CDisplayManager.h"
+extern CDisplayManager* GPDisplayManager;                                       // 0x013B8390 ?GPDisplayManager@@3PAVCDisplayManager@@A
 
-class C2DBoxF { public:
-    float TLX;
-    float TLY;
-    float BRX;
-    float BRY;
-    C2DBoxF() {}
-    C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
-};
-
-class C2DExtentsI { public:
-    long Width;
-    long Height;
-};
-
-class CDisplayManager { public:
-    const C2DExtentsI GetRenderTargetDimensions();                 // 0x009BEDC0
-};
-extern CDisplayManager* GPDisplayManager;                    // 0x013B8390
-
-namespace NPlayerGui {
-
-C2DVector __fastcall GFAnchorToBottomLeft(const C2DVector& pos)
+C2DVector FABLE_FASTCALL NPlayerGui::GFAnchorToBottomLeft(const C2DVector& pos)
 {
-    return C2DVector(pos.X, (float)GPDisplayManager->GetRenderTargetDimensions().Height + pos.Y - 480.0f);
-}
-
+    return C2DVector(pos.X, (float)GPDisplayManager->GetRenderTargetDimensions().Y + pos.Y - 480.0f);
 }

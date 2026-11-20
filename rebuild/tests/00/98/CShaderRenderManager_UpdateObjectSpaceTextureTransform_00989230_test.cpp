@@ -66,13 +66,13 @@ class CShaderRenderManager { public:
     unsigned long UpdateFlags;
     Upload Uploads[4];
     int UploadCount;
-    void SetVSConstants(long start, const void* data, unsigned long count)
+    void SetVSConstants(long index, const void* data, unsigned long count)
     {
-        if (count != 0) {
-            Upload& u = Uploads[UploadCount++];
-            u.Start = start; u.Count = count;
-            memcpy(u.Rows, data, count * 16);
-        }
+        if (count == 0)
+            return;
+        Upload& u = Uploads[UploadCount++];
+        u.Start = index; u.Count = count;
+        memcpy(u.Rows, data, count * 16);
     }
     void UpdateObjectSpaceTextureTransform()
     {

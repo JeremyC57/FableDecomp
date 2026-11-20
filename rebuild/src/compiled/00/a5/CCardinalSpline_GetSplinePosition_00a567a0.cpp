@@ -14,7 +14,7 @@
 // Inline-budget: two header / TU devices, no flag --
 //   (1) GFGetHermiteSplinePosition's body is in this TU, ahead of the row: it is the row's TU-mate (0x00A56670 + 295 bytes ends at
 //       0x00A56797, the row starts at 0x00A567A0; the landed 0x00A56670 names this row its only caller) and stays a call (0x00A56A90).
-//       Text = the landed 0x00A56670 row. With a declaration only, the tangents' addresses go to an opaque callee and from_tan / to_tan
+//       Text = the landed 0x00A56670 row (its 2026-11-19 Ego_d re-port: dest / from_pos / from_tan / to_pos / to_tan / s, weights wpos_* / wtan_*). With a declaration only, the tangents' addresses go to an opaque callee and from_tan / to_tan
 //       never share the dead previous_from_pos / next_to_pos slots (frame 0x64 v 0x58; probes probe/67a0 vE / vN).
 //   (2) FABLE_RETAIL_CARRAY_INDEX_ASSERT (the header calls it INFERRED; a no-op ASSERT arm in CArray::operator[] over the const vector
 //       indexer): the from_pos / to_pos copies go through the x87 as retail's (`fld [ecx+eax] ; fstp [ebp-4Ch]`, 0x00A568FC); the default
@@ -35,18 +35,16 @@
 #include "engine/CCardinalSpline.h"
 #include "engine/GFFloatToLongFloor.h"
 // Fidelity: same-TU strong definition of 0x00A56670 (retail TU-mate)
-void FABLE_FASTCALL GFGetHermiteSplinePosition(C3DVector& result, const C3DVector& v1, const C3DVector& t1,
-                                           const C3DVector& v2, const C3DVector& t2, float s)
+void FABLE_FASTCALL GFGetHermiteSplinePosition(C3DVector& dest, const C3DVector& from_pos, const C3DVector& from_tan,
+                                           const C3DVector& to_pos, const C3DVector& to_tan, float s)
 {
     float s2 = s * s;
-    float s3 = s * s2;
-    float two_s3 = s3 + s3;
-    float three_s2 = s2 * 3.0f;
-    float h1 = two_s3 - three_s2 + 1.0f;
-    float h2 = three_s2 - two_s3;
-    float h3 = s3 - 2.0f * s2 + s;
-    float h4 = s3 - s2;
-    result = v1 * h1 + v2 * h2 + t1 * h3 + t2 * h4;
+    float s3 = s2 * s;
+    float wpos_from = 2.0f * s3 - 3.0f * s2 + 1.0f;
+    float wpos_to = 3.0f * s2 - 2.0f * s3;
+    float wtan_from = s3 - 2.0f * s2 + s;
+    float wtan_to = s3 - s2;
+    dest = from_pos * wpos_from + to_pos * wpos_to + from_tan * wtan_from + to_tan * wtan_to;
 }
 
 void CCardinalSpline::GetSplinePosition(C3DVector& dest, float s) const

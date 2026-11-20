@@ -23,6 +23,13 @@ public:
     // Texture counted pointer +0x20 copied in place with `inc dword ptr [info]`), as GetVolumeTexture in the landed 0x009FD9B0.
     CCountedPointer<CTexture> GetTexture() { return Data->GetTexture(); }
 #endif
+#ifdef FABLE_RETAIL_CMANAGEDTEXTURE_GETVOLUMETEXTURE
+    // Re-port opt-in (audit h3c2b, 2026-11-20, row 0x009FD9B0 CGraphicDataBank::LoadVolumeGraphic): FableWin.pdb 0x03124C00
+    // ?GetVolumeTexture@CManagedTexture@@QAE?AV?$CCountedPointer@VCVolumeTexture@@@@XZ and 0x03124C50
+    // ?GetVolumeTexture@CManagedTextureData@@QAE?AV?$CCountedPointer@VCVolumeTexture@@@@XZ, inline in retail (the data's VolumeTexture
+    // counted pointer +0x28 copied in place), the twins of GetTexture above. No layout change.
+    CCountedPointer<CVolumeTexture> GetVolumeTexture() { return Data->GetVolumeTexture(); }
+#endif
 #ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_FREE
     unsigned long GetUnusedFrames() {return Data->GetUnusedFrames();}
     bool IsValid() const {return !Data.IsNull();}

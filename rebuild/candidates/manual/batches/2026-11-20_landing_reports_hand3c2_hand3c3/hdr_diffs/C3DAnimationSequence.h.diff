@@ -1,0 +1,27 @@
+diff --git a/rebuild/include/engine/C3DAnimationSequence.h b/rebuild/include/engine/C3DAnimationSequence.h
+index 4bfec3c0c..269b277bc 100644
+--- a/rebuild/include/engine/C3DAnimationSequence.h
++++ b/rebuild/include/engine/C3DAnimationSequence.h
+@@ -15,8 +15,15 @@ public:C3DAnimationSequence():Data(0),ParentIndex(-1),Shared(false){}
+ #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE
+  // Retail opt-in (chunk 2005, row 0x00A4D920): FableWin.pdb ?InlineGetKeyframeInterpolate@C3DAnimationSequence@@QBEXAAVC3DKeyframe@@KM@Z
+  // (38-byte debug forwarder to the sequence data's InlineGetKeyframeInterpolate; expanded in retail).
++#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCE_INLINEGETKEYFRAMEINTERPOLATE_DECL
++ // hand3c3 nested opt-in (row 0x00A53860, retail's unreferenced out-of-line copy of this forwarder in the animation-file TU, with
++ // the sequence data's InlineGetKeyframeInterpolate expanded in it): the declaration only; the row defines the body
++ // `Data->InlineGetKeyframeInterpolate(dest, frame, fraction);` (FableWin 0x032274B0, 38 bytes; Ego_d.pdb parameters dest, frame, fraction).
++ void InlineGetKeyframeInterpolate(C3DKeyframe& dest,unsigned long frame,float fraction)const;
++#else
+  FABLE_FORCEINLINE void InlineGetKeyframeInterpolate(C3DKeyframe& keyframe,unsigned long frame,float fraction)const{Data->InlineGetKeyframeInterpolate(keyframe,frame,fraction);}
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCE_FRAMEKEYFRAME
+  // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb / FableWin.pdb ?IsIdentity@C3DAnimationSequence@@QBE_NXZ and
+  // ?GetKeyframeInterpolate@C3DAnimationSequence@@QBEXAAVC3DKeyframe@@KM@Z, inline in retail: the caller loads Data and reads its
+@@ -45,5 +52,5 @@ public:C3DAnimationSequence():Data(0),ParentIndex(-1),Shared(false){}
+ #endif
+ private:C3DAnimationSequenceData* Data;short ParentIndex;bool Shared;
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DAnimationSequence)==0x8);
++FABLE_STATIC_ASSERT_AT(48, sizeof(C3DAnimationSequence)==0x8);
+ #endif

@@ -26,9 +26,14 @@ void InitAsFloat(const char* text,unsigned long length);
 bool IsSymbol() const { return Type==PARSED_ITEM_SYMBOL; }
 const CCharString& GetSymbol() const;
 #endif
+#ifdef FABLE_RETAIL_CPARSEDITEM_ISSTRING
+// hand3c3 opt-in (row 0x009ACEE0 CDefinitionManager::ParseEnumForSymbols): Ego_d.pdb / FableWin.pdb ?IsString@CParsedItem@@QBE_NXZ
+// (FableWin 0x028B9200), inline in retail (0x009ACFD1 `cmp [item],2`), the twin of IsSymbol. No layout change.
+bool IsString() const { return Type==PARSED_ITEM_STRING; }
+#endif
 #else
 public:CParsedItem(){} const CCharString& GetString() const;
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CParsedItem)==12);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CParsedItem)==12);
 #endif

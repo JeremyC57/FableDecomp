@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0098b930	?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z	Ego_r.pdb / FableWin.pdb (private member); DONE IN THIS SET: the owner row is now the real member on engine/CShaderRenderManager.h. Header debt (not changed, additive-only): the shared declaration names its first parameter `reg`; Ego_d.pdb: index / data / count	?SetVSConstants@CShaderRenderManagerSetVSConstantsView@@QAEXJPBXK@Z (the old owner text: a view-struct stand-in with a raw vtable-slot call)

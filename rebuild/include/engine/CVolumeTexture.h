@@ -5,12 +5,42 @@
 // AttachVolumeTextureToStage (0x00B54926 `mov eax,[eax+4]`). Members only; the methods (Ego_r.pdb ?PreLoad@ / ?Unlock@ / ...) are not declared.
 #include "rebuild_abi.h"
 struct IDirect3DVolumeTexture9;
+#ifdef FABLE_RETAIL_CVOLUMETEXTURE_INITIALISE
+// Re-port opt-in (audit h3c2b, 2026-11-20, row 0x00A699D0 CManagedTextureData::CreateVolumeTexture): the real primary base (Fable.exe RTTI
+// .?AVCVolumeTexture@@ : CBaseClass@0; the row's inline constructor calls CBaseClass() 0x0099A2D0 before the vtable 0x0129DC18 store),
+// FableWin.pdb's inline default constructor ??0CVolumeTexture@@QAE@XZ (retail stores PD3DVolumeTexture = 0 and PData = 0, not
+// ByteLength), Ego_r.pdb / FableWin.pdb ?Initialise@CVolumeTexture@@QAE_NABVC3DExtentsI@@JABVCPixelFormat@@KW4EVolumePool@@_N@Z
+// (0x00A68370) and Ego_d.pdb's enum EVolumePool (field list 0x22D8). Same 16-byte layout.
+#include "engine/CBaseClass.h"
+enum EVolumePool { VOLUME_POOL_MANAGED = 1, VOLUME_POOL_SYSTEM_MEM = 2, VOLUME_POOL_DEFAULT_LOCATION = 0 };
+class CVolumeTexture : public CBaseClass {
+public:
+    CVolumeTexture() : PD3DVolumeTexture(0), PData(0) { }
+    bool Initialise(const class C3DExtentsI& extents, long no_levels, const class CPixelFormat& format, unsigned long usage, EVolumePool pool, bool flag);   // 0x00A68370
+#else
 class CVolumeTexture {
 public:
+#endif
     virtual ~CVolumeTexture();
     IDirect3DVolumeTexture9* PD3DVolumeTexture;                          // +0x04
     long                     ByteLength;                                 // +0x08
     void*                    PData;                                      // +0x0c
+#ifdef FABLE_RETAIL_CVOLUMETEXTURE_GETASTEXTURELIST
+    // Re-port opt-in (2026-11-19, row 0x00A68910): Ego_r.pdb / FableWin.pdb ?GetAsTextureList@CVolumeTexture@@QAEXPAVCTexture@@@Z (0x00A68910),
+    // ?Lock@CVolumeTexture@@QAE?AVCVolumeLockedBox@@KK@Z (0x00A685E0), ?GetVolumeLevel@CVolumeTexture@@QBE?AVCVolume@@J@Z (0x00A67EA0), and the
+    // members retail expands in that row: ?Unlock@CVolumeTexture@@QAEXK@Z, ?GetDimensions@CVolumeTexture@@QBE?AVC3DExtentsI@@K@Z,
+    // ?GetPixelFormat@CVolumeTexture@@QBE?AVCPixelFormat@@XZ (Ego_r + FableWin) and ?Swizzle@ / ?Unswizzle@CVolumeTexture@@QAEXJAAVCVolumeLockedBox@@@Z
+    // (FableWin.pdb / Ego_d.pdb, debug only). Declarations only: the row's TU defines the inline bodies over its own D3D interface model
+    // (this header only forward-declares IDirect3DVolumeTexture9). No layout change.
+    class CVolumeLockedBox Lock(unsigned long level, unsigned long flags);   // 0x00A685E0
+    void Unlock(unsigned long level);
+    class CVolume GetVolumeLevel(long level) const;                      // 0x00A67EA0
+    void Swizzle(long level, class CVolumeLockedBox& box);
+    void Unswizzle(long level, class CVolumeLockedBox& box);
+    class C3DExtentsI GetDimensions(unsigned long level) const;
+    class CPixelFormat GetPixelFormat() const;
+    void GetAsTextureList(class CTexture* textures);                     // 0x00A68910
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CVolumeTexture) == 0x10);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CVolumeTexture) == 0x10);
 #endif

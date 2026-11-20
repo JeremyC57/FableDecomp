@@ -8,18 +8,21 @@
 //   re-reads both sizes every pass (best standalone DIFFER(175v188)). Retail's TU defines both bodies before StockDisplay (0x00773EE0,
 //   0x00774B40, 0x00774C60): with them visible (called, not inlined) c2 keeps the sizes. So this TU carries the real bodies of both
 //   producers, in retail order, on shared headers:
-//   - GetSaleItemsToPlace: the landed 0x00773EE0 shared-header text verbatim (grades RELOCATION_MATCH at 0x00773EE0 in this TU);
-//   - GetFreeSaleItemPlaces: re-ported from the landed local model (stand-in vector internals) onto shared headers: Ego_d locals
-//     allow_blocked, places, {n (long), {BLOCKED_RADIUS (const float), area (C2DBoxI), p_thing (CThing*)}} and FableWin 0x0261ABB0 order
-//     (GoodsPlaces.clear(), AddSaleItemPlacesFromThing(ParentThing), the loop, `allow_blocked || !GetPFirstThing(GFFilter_Bind2(IsNot,
-//     In3DRange(pos, BLOCKED_RADIUS)), &p_thing)` -> push_back). `area` is computed and unused (both Ego_d and FableWin have it; VC7.1
-//     drops it). Grades RELOCATION_MATCH at 0x00774B40 in this TU (the landed local-model row could be respelled to this text).
+//   - GetSaleItemsToPlace: the landed owner 0x00773EE0's body verbatim (grades RELOCATION_MATCH at 0x00773EE0 in this TU);
+//   - GetFreeSaleItemPlaces: the landed owner 0x00774B40's body verbatim (FableWin 0x0261ABB0 statement order, Ego_d locals; grades
+//     RELOCATION_MATCH at 0x00774B40 in this TU). Re-port 2026-11-19: this copy used to be a different text (no `if (!allow_blocked)`
+//     block, `allow_blocked ||` folded into the search condition, `ParentThing` for `&GetParentThing()`, `n++`) with no Fidelity line;
+//     it is now the owner's, with the owner's FABLE_RETAIL_C2DBOXI / _RADIUS_INITIALIZERS opt-ins and C2DCoordI.h / C2DBoxI.h includes (as
+//     the landed BuyItem 0x00774D20 carries it).
+//   Both copies sit under the exact `// Fidelity: same-TU strong definition of 0x... (retail TU-mate)` line (GOTCHAS line 455).
 // Header opt-ins: new overlay FABLE_RETAIL_CTCSHOP_ADDSALEITEMPLACES (hdr/engine/CTCShop.h: the AddSaleItemPlacesFromThing declaration),
 //   FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_NOINLINE (retail calls vector<GoodsPlace>::erase(first, last) 0x00777A90 from clear()),
 //   FABLE_RETAIL_CWORLD / _CTHINGSEARCHTOOLS / _CTHINGSEARCHTOOLS_FIRSTTHING (PeekThingSearchTools, GetPFirstThing 0x00777000), the
 //   landed GetSaleItemsToPlace set. No flags.
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE
 #define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_C2DBOXI
+#define FABLE_RETAIL_C2DBOXI_RADIUS_INITIALIZERS
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CTHING
@@ -53,8 +56,9 @@
 #include "engine/CThingFilter_IsNot.h"
 #include "engine/CThingFilter_In3DRange.h"
 #include "engine/CFilter_Bind2.h"
+#include "engine/C2DCoordI.h"
 #include "engine/C2DBoxI.h"
-// ---- 0x00773EE0 CTCShop::GetSaleItemsToPlace (landed; its shared-header text, same TU, defined first as in retail) ----
+// Fidelity: same-TU strong definition of 0x00773EE0 (retail TU-mate)
 std::vector<long> CTCShop::GetSaleItemsToPlace() const
 {
     std::vector<long> items;
@@ -74,19 +78,21 @@ std::vector<long> CTCShop::GetSaleItemsToPlace() const
     std::random_shuffle(items.begin(), items.end());
     return items;
 }
-// ---- 0x00774B40 CTCShop::GetFreeSaleItemPlaces (same TU; this text also grades RELOCATION_MATCH at 0x00774B40) ----
+// Fidelity: same-TU strong definition of 0x00774B40 (retail TU-mate)
 std::vector<CTCShop::GoodsPlace> CTCShop::GetFreeSaleItemPlaces(bool allow_blocked)
 {
     GoodsPlaces.clear();
-    AddSaleItemPlacesFromThing(ParentThing);
+    AddSaleItemPlacesFromThing(&GetParentThing());
     std::vector<GoodsPlace> places;
-    for (long n = 0; n < GoodsPlaces.size(); n++) {
-        const float BLOCKED_RADIUS = 0.2f;
-        C2DBoxI area(GoodsPlaces[n].pos.ToC2DCoordI(), (long)BLOCKED_RADIUS);
-        CThing* p_thing;
-        if (allow_blocked || !PeekWorld().PeekThingSearchTools().GetPFirstThing(GFFilter_Bind2(CThingFilter_IsNot(*ParentThing),
-                CThingFilter_In3DRange(GoodsPlaces[n].pos, BLOCKED_RADIUS)), &p_thing))
-            places.push_back(GoodsPlaces[n]);
+    for (long n = 0; n < GoodsPlaces.size(); ++n) {
+        if (!allow_blocked) {
+            const float BLOCKED_RADIUS = 0.2f;
+            C2DBoxI area(GoodsPlaces[n].pos.ToC2DCoordI(), (long)BLOCKED_RADIUS);
+            CThing* p_thing;
+            if (PeekWorld().PeekThingSearchTools().GetPFirstThing(GFFilter_Bind2(CThingFilter_IsNot(GetParentThing()), CThingFilter_In3DRange(GoodsPlaces[n].pos, BLOCKED_RADIUS)), &p_thing))
+                continue;
+        }
+        places.push_back(GoodsPlaces[n]);
     }
     return places;
 }

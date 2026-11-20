@@ -1,0 +1,3 @@
+addr	symbol	evidence	wrong_spellings
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	Ego_r.pdb / shared engine/C2DVector.h extern (b7 NAME_FIX, repeated: vland warns the label says ?g_NormaliseEpsilon@@3MB)	?g_NormaliseEpsilon@@3MB (label)
+009e1da0	?GFAXToVX@@YIMM@Z	reloc_bindings (landed 0x00646A46) + shared engine/CFontBank.h + Ego_d.pdb procnames; no change needed in landed code	GFVXToAX (ghidra_out/labels_chunk294_corrections_2026-10-22.tsv line 14; the first draft of this row)

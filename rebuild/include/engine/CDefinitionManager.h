@@ -21,6 +21,9 @@ class CDataOutputStream;class CMemoryDataOutputStream;
 // tears down complete native0xd0 object, with 12-byte STLport containers.
 class CDefClassBase;
 class CDefString;
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PARSEENUMFORSYMBOLS
+class CStringParser;
+#endif
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
@@ -154,6 +157,14 @@ protected:
     CDefPointer<CDefClassBase> InstantiateSubDef(const CCharString& class_name, unsigned long parent_index);   // 0x009ADAE0
     void LoadDef(unsigned long index) const;                             // 0x009AD6E0
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PARSEENUMFORSYMBOLS
+    // hand3c3 opt-in (row 0x009ACEE0; needs FABLE_RETAIL_CDEFINITIONMANAGER_INSTANTIATEDEF for the typed PSymbolMap): Ego_r.pdb /
+    // Ego_d.pdb ?ParseEnumForSymbols@CDefinitionManager@@IAEXAAVCStringParser@@@Z 0x009ACEE0 and
+    // ?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z 0x009AC9F0 (both protected, out of line).
+    // Declarations only, no layout change.
+    void ParseEnumForSymbols(CStringParser& parser);                     // 0x009ACEE0
+    void Error(const CStringParser& parser, const CCharString& message); // 0x009AC9F0
+#endif
     unsigned char PDefTypeDebugInfoMap[4];
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PATHLISTS
     // Retail opt-in (wfE11, row 0x0044C72B CGameDefinitionManager::InitAndCompile): Ego_r.pdb CDefinitionManager SymbolPathList /
@@ -180,7 +191,14 @@ protected:
 #else
     unsigned char CompressedDefData[12],CompressedOffsets[16],InstantiatedDefs[12];
 #endif
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_PARSEENUMFORSYMBOLS
+    // hand3c3 opt-in (row 0x009ACEE0): the error callback typed (Ego_r.pdb CDefinitionManager::ErrorCallback, the
+    // `void (__fastcall*)(const CCharString&)` every CStringParser / CPersistContext constructor takes; retail +0xB0, same size).
+    void (__fastcall* ErrorCallback)(const CCharString&);
+    unsigned char CurrentFilename[4],CompiledFileName[4];
+#else
     unsigned char ErrorCallback[4],CurrentFilename[4],CompiledFileName[4];
+#endif
     unsigned long DependencyCheckCRC;
     bool UseSafeBinaryFormat;
     unsigned char _pad_0xc1[3];

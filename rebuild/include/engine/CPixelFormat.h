@@ -20,6 +20,13 @@ public:
  // the landed bound spelling). Declaration only; the FABLE_RETAIL_CPIXELFORMAT_CONVERT branch keeps the inline body.
  unsigned long GetByteColourDepth() const;                      // 0x009E3800
 #endif
+#if defined(FABLE_RETAIL_CPIXELFORMAT_CONVERTRGBTOPFDDATA_OUTOFLINE) && !defined(FABLE_RETAIL_CPIXELFORMAT_CONVERT)
+ // Re-port opt-in (2026-11-19, rows 0x00A67950 CVolume::Clear / 0x00A67A20 CVolume::ClearArea): Ego_r.pdb / FableWin.pdb
+ // ?ConvertRGBToPFDData@CPixelFormat@@QBEXABVCRGBColour@@PAE@Z called out of line at 0x009E3F60 in TUs that also call GetByteColourDepth
+ // out of line (0x009E3800, 0x00A679C6 `call 9E3F60h` then 0x00A679CF `call 9E3800h` for every texel), i.e. with FABLE_RETAIL_CPIXELFORMAT_BYTECOLOURDEPTH_OUTOFLINE. The
+ // FABLE_RETAIL_CPIXELFORMAT_CONVERT branch declares the same member together with the inline accessor bodies. Declaration only.
+ void ConvertRGBToPFDData(const class CRGBColour& colour,unsigned char* data) const;   // 0x009E3F60
+#endif
 #ifdef FABLE_RETAIL_CPIXELFORMAT_INIT
  // Retail opt-in (chunk Q20, row 0x009FB750 CTexture::LoadFromDataStreamToPreallocatedSurface): Ego_r.pdb
  // ?Initialise@CPixelFormat@@QAEXABVCPixelFormatInit@@@Z (retail 0x009E3640, from the texture file's 6-byte CPixelFormatInit) and

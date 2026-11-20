@@ -9,17 +9,35 @@
 //   UnlockBox (slot 20: the inline Unlock), CPixelFormat::Initialise(_D3DFORMAT) 0x009E3830,
 //   CPixelFormat::GetByteColourDepth 0x009E3800, CVolumeTexture::Lock 0x00A685E0, CVolumeTexture::GetVolumeLevel 0x00A67EA0,
 //   CVolume::Unswizzle 0x00A67450 / Swizzle 0x00A67440 (empty on PC; inside the inline CVolumeTexture::Unswizzle/Swizzle),
-//   the inline ~CVolume (vtable 0x0129C840, CVolume::ReleaseVolume 0x00A67460, ~CBaseClass 0x0099A2E0),
+//   the inline ~CVolume (vtable 0x0129C840, CVolume::Uninitialise(bool) 0x00A67460, ~CBaseClass 0x0099A2E0),
 //   CTexture::Initialise 0x009FA280, CTexture::Lock 0x009FA450, CTexture::Unswizzle 0x009FA180 / Swizzle 0x009FA140,
 //   CTexture::Unlock 0x009F9DE0. Swizzle/Unswizzle are told apart by Ego_r.pdb donor order (CSurface::Swizzle 0x00B46B20
 //   before Unswizzle 0x00B46B30; retail CSurface 0x009F2E40 before 0x009F2E50, which the two CTexture callees reach).
-// Shape: the inline GetDimensions (in the PDBs) and the scoped pixel-format block each read the level desc (the format
-//   block's desc shares its frame slot with the later locked rect); the row copy is the inline memcpy intrinsic (`rep movsd ; rep movsb`).
+// Shape: the inline GetDimensions(0) and GetPixelFormat() (both in the PDBs) each read the level desc (GetPixelFormat's
+//   desc shares its frame slot with the later locked rect); the row copy is the inline memcpy intrinsic (`rep movsd ; rep movsb`).
+// Re-port (2026-11-19): the row's local C2DExtentsI / C3DExtentsI / CPixelFormat / CSurfaceLockedRect / CTexture / CVolumeTexture models are
+//   replaced by the shared headers: engine/C2DExtentsI.h, engine/C3DExtentsI.h (Ego_d.pdb: a C2DExtentsI base plus long Z), engine/CPixelFormat.h
+//   (FABLE_RETAIL_CPIXELFORMAT, _BYTECOLOURDEPTH_OUTOFLINE), engine/CSurfaceLockedRect.h, engine/CTexture.h (FABLE_RETAIL_CTEXTURE, _LOCK and the
+//   new _SWIZZLE_RECT) and engine/CVolumeTexture.h (new FABLE_RETAIL_CVOLUMETEXTURE_GETASTEXTURELIST: declarations; the inline bodies are
+//   below, over this TU's IDirect3DVolumeTexture9 model). The pool is the header's SURFACE_POOL_MANAGED (1); the format comes from the PDB's
+//   inline CVolumeTexture::GetPixelFormat (GetLevelDesc(0), then the inline CPixelFormat(_D3DFORMAT) constructor: Initialise, no -1 store).
+#define FABLE_RETAIL_CPIXELFORMAT
+#define FABLE_RETAIL_CPIXELFORMAT_BYTECOLOURDEPTH_OUTOFLINE
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE_LOCK
+#define FABLE_RETAIL_CTEXTURE_SWIZZLE_RECT
+#define FABLE_RETAIL_CVOLUMETEXTURE_GETASTEXTURELIST
 #include <string.h>
 #pragma intrinsic(memcpy)
-
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_FORCE_DWORD = 0x7fffffff };
-enum ESurfacePool { ESurfacePool_0 = 0, ESurfacePool_1 = 1 };
+#include "engine/Direct3D9Types.h"
+#include "engine/C2DExtentsI.h"
+#include "engine/C3DExtentsI.h"
+#include "engine/CPixelFormat.h"
+#include "engine/CSurfaceLockedRect.h"
+#include "engine/ESurfacePool.h"
+#include "engine/CTexture.h"
+#include "engine/CVolumeTexture.h"
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct D3DVOLUME_DESC {
     _D3DFORMAT    Format;                                   // +0x00
@@ -43,26 +61,6 @@ struct IDirect3DVolumeTexture9 {
     virtual long __stdcall UnlockBox(unsigned long level) = 0;                                   // slot 20
 };
 struct IDirect3DVolume9;
-struct IDirect3DTexture9;
-
-class C2DExtentsI { public:
-    long X;
-    long Y;
-    C2DExtentsI(long x, long y) : X(x), Y(y) { }
-};
-
-class C3DExtentsI { public:
-    long X;
-    long Y;
-    long Z;
-    C3DExtentsI(long x, long y, long z) : X(x), Y(y), Z(z) { }
-};
-
-class CPixelFormat { public:
-    long FormatIndex;
-    void Initialise(_D3DFORMAT format);                     // 0x009E3830
-    unsigned long GetByteColourDepth() const;               // 0x009E3800
-};
 
 class CVolumeLockedBox { public:                            // 24 bytes (Ego_r.pdb)
     C3DExtentsI    Dimensions;                              // +0x00
@@ -71,70 +69,43 @@ class CVolumeLockedBox { public:                            // 24 bytes (Ego_r.p
     unsigned char* PMem;                                    // +0x14
 };
 
-class CSurfaceLockedRect { public:                          // 16 bytes (Ego_r.pdb)
-    C2DExtentsI    Dimensions;                              // +0x00
-    long           Pitch;                                   // +0x08
-    unsigned char* PMem;                                    // +0x0c
-};
-
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-
 class CVolume : public CBaseClass { public:                 // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                           // +0x04
     CVolume(const CVolume& other);
-    virtual ~CVolume() { ReleaseVolume(true); }
-    void ReleaseVolume(bool release);                       // 0x00A67460
+    virtual ~CVolume() { Uninitialise(true); }
+    void Uninitialise(bool release);                        // 0x00A67460 ?Uninitialise@CVolume@@QAEX_N@Z (Ego_r.pdb; was spelled ReleaseVolume(bool) here)
     void Swizzle(CVolumeLockedBox& box);                    // 0x00A67440
     void Unswizzle(CVolumeLockedBox& box);                  // 0x00A67450
 };
 
-class CTexture { public:                                    // 8 bytes (Ego_r.pdb)
-    IDirect3DTexture9* PD3DTexture;                         // +0x00
-    unsigned long      ByteLength : 28;                     // +0x04
-    unsigned long      AllocationSource : 4;
-    bool Initialise(const C2DExtentsI& extents, long levels, const CPixelFormat& format, unsigned long usage,
-                    ESurfacePool pool, bool flagA, bool flagB);                                  // 0x009FA280
-    CSurfaceLockedRect Lock(unsigned long level, unsigned long flags);                           // 0x009FA450
-    void Unlock(unsigned long level);                                                            // 0x009F9DE0
-    void Swizzle(long level, CSurfaceLockedRect& rect);                                          // 0x009FA140
-    void Unswizzle(long level, CSurfaceLockedRect& rect);                                        // 0x009FA180
-};
-
-class CVolumeTexture { public:                              // 16 bytes (Ego_r.pdb)
-    void*                    _vtable;                       // +0x00
-    IDirect3DVolumeTexture9* PD3DVolumeTexture;             // +0x04
-    long                     ByteLength;                    // +0x08
-    void*                    PData;                         // +0x0c
-    CVolumeLockedBox Lock(unsigned long level, unsigned long flags);                             // 0x00A685E0
-    void Unlock(unsigned long level) { PD3DVolumeTexture->UnlockBox(level); }
-    CVolume GetVolumeLevel(long level) const;                                                    // 0x00A67EA0
-    void Swizzle(long level, CVolumeLockedBox& box) { GetVolumeLevel(level).Swizzle(box); }
-    void Unswizzle(long level, CVolumeLockedBox& box) { GetVolumeLevel(level).Unswizzle(box); }
-    C3DExtentsI GetDimensions() const
-    {
-        D3DVOLUME_DESC desc;
-        PD3DVolumeTexture->GetLevelDesc(0, &desc);
-        return C3DExtentsI(desc.Width, desc.Height, desc.Depth);
-    }
-    void GetAsTextureList(CTexture* textures);
-};
+// The CVolumeTexture members retail expands in this row (declared by the header opt-in).
+inline void CVolumeTexture::Unlock(unsigned long level) { PD3DVolumeTexture->UnlockBox(level); }
+inline void CVolumeTexture::Swizzle(long level, CVolumeLockedBox& box) { GetVolumeLevel(level).Swizzle(box); }
+inline void CVolumeTexture::Unswizzle(long level, CVolumeLockedBox& box) { GetVolumeLevel(level).Unswizzle(box); }
+inline C3DExtentsI CVolumeTexture::GetDimensions(unsigned long level) const
+{
+    D3DVOLUME_DESC desc;
+    PD3DVolumeTexture->GetLevelDesc(level, &desc);
+    return C3DExtentsI(desc.Width, desc.Height, desc.Depth);
+}
+inline CPixelFormat CVolumeTexture::GetPixelFormat() const
+{
+    D3DVOLUME_DESC desc;
+    PD3DVolumeTexture->GetLevelDesc(0, &desc);
+    return CPixelFormat(desc.Format);
+}
 
 void CVolumeTexture::GetAsTextureList(CTexture* textures)
 {
-    C3DExtentsI dimensions = GetDimensions();
+    C3DExtentsI dimensions = GetDimensions(0);
     C2DExtentsI extents(dimensions.X, dimensions.Y);
-    CPixelFormat format;
-    {
-        D3DVOLUME_DESC formatDesc;
-        PD3DVolumeTexture->GetLevelDesc(0, &formatDesc);
-        format.Initialise(formatDesc.Format);
-    }
+    CPixelFormat format = GetPixelFormat();
     long rowBytes = format.GetByteColourDepth() * dimensions.X;
     CVolumeLockedBox box = Lock(0, 0);
     Unswizzle(0, box);
     unsigned char* src = box.PMem;
     for (long z = 0; z < dimensions.Z; ++z) {
-        textures[z].Initialise(extents, 1, format, 0, ESurfacePool_1, false, false);
+        textures[z].Initialise(extents, 1, format, 0, SURFACE_POOL_MANAGED, false, false);
         CSurfaceLockedRect rect = textures[z].Lock(0, 0);
         textures[z].Unswizzle(0, rect);
         unsigned char* dst = rect.PMem;

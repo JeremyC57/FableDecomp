@@ -6,8 +6,8 @@
 // Locals: the Ego_d.pdb record (debug length 262): this; { c_transform (unsigned long) { range (const CShaderConstantRange&)
 //   { transform (CMatrix4x4), rows (unsigned long) } } } -- exactly this text. The product is the inline AlignedSetMultiplyTransposed ->
 //   AlignedSetMultiply (Ego_d body, FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD, shared with 0x00ADEFC0 / 0x00AE1320 / 0x00AE29D0 /
-//   0x00A9E1E0 / 0x00BD2D90); the upload is the in-TU SetVSConstants body, verbatim the landed 0x00989CB0's in-TU copy of 0x0098B930
-//   (the landed 0x0098B930 row itself is a view-struct stand-in).
+//   0x00A9E1E0 / 0x00BD2D90); the upload is the same-TU copy of SetVSConstants, verbatim the landed owner 0x0098B930's text
+//   (Ego_d spelling: index / data / count, `if (count == 0) return;`, local hr), a plain strong definition under its Fidelity line.
 // Retail-asm: 0x0098929D `mov eax,[esp+2Ch] ; mov edx,[esp+28h] ; mov edi,[esp+24h]` + 0x009892A9 `movaps xmm0,[edx]` .. `addps xmm4,xmm6`
 //   (GF_SSE_MATRIX_MULTIPLY of engine/CMatrix4x4AlignedSSE.h via AlignedSetMultiply).
 // Inferred: FABLE_RETAIL_CMATRIX4X4_ALIGNEDSETMULTIPLY_EGOD_RHSREF_00989230 -- a named reference to rhs inside the shared x87 arm, defined
@@ -17,7 +17,8 @@
 //   a member one after the flag pair gives a third order), i.e. the donor compiles one symbol the evidence does not name. Units (mod 4):
 //   live `if (x & K) x |= M;` +1; bare store +2; the two flag statements written as one +3; Ego_d body vs ACCESSORS +1; a named reference
 //   INSIDE the inlinee +1 (this opt-in); the same reference in the row 0; std::min(range.Count, 4ul) +1 but +10 bytes; a `count` local +2
-//   bytes; 0 (tried, byte-neutral): HRESULT hr in SetVSConstants (3 forms), SetVSConstants placement / inline keyword, count tests,
+//   bytes; 0 (tried, byte-neutral): HRESULT hr in SetVSConstants (3 forms), SetVSConstants placement / inline keyword (the re-port's strong
+//   if-return form with hr measured RELOCATION_MATCH here, 2026-11-19), count tests,
 //   loop cast, post-increment, clamp spellings (<, <=, >, >=, 4 <, 4 >, if, if-else), data-argument spellings, direct AlignedSetMultiply,
 //   flags swapped; ruled out by evidence: SetVSMatrixConstantTransposed (retail 0x00988840 transposes into a local), GetD3DDevice (not an
 //   accessor), PeekVertexShaderConstantLayout (returns an index). Byte-changing: flags before the loop, rows before transform.
@@ -34,9 +35,13 @@
 #define FABLE_RETAIL_CMATRIX4X4_SETMULTIPLYTRANSPOSED
 #define FABLE_RETAIL_CMATRIX4X4_SETMULTIPLYTRANSPOSED_FORCEINLINE
 #include "engine/CShaderRenderManager.h"
-inline void CShaderRenderManager::SetVSConstants(long start,const void* data,unsigned long count)
+typedef long HRESULT;
+// Fidelity: same-TU strong definition of 0x0098B930 (retail TU-mate)
+void CShaderRenderManager::SetVSConstants(long index, const void* data, unsigned long count)
 {
-    if(count!=0) D3DDevice->SetVertexShaderConstantF(start,(const float*)data,count);
+    if (count == 0)
+        return;
+    HRESULT hr = D3DDevice->SetVertexShaderConstantF(index, (const float*)data, count);
 }
 void CShaderRenderManager::UpdateObjectSpaceTextureTransform()
 {

@@ -34,6 +34,13 @@ public:
     class CSurfaceLockedRect Lock(unsigned long level, unsigned long flags);   // 0x009FA450
     void Unlock(unsigned long level);                                    // 0x009F9DE0
 #endif
+#ifdef FABLE_RETAIL_CTEXTURE_SWIZZLE_RECT
+    // Re-port opt-in (2026-11-19, row 0x00A68910 CVolumeTexture::GetAsTextureList): Ego_r.pdb ?Swizzle@CTexture@@QAEXJAAVCSurfaceLockedRect@@@Z
+    // (0x009FA140) and ?Unswizzle@CTexture@@QAEXJAAVCSurfaceLockedRect@@@Z (0x009FA180), out of line in retail (`call 9FA180h` 0x00A68A04,
+    // `call 9FA140h` 0x00A68A69; the landed bound spellings). Declarations only.
+    void Swizzle(long level, class CSurfaceLockedRect& rect);            // 0x009FA140
+    void Unswizzle(long level, class CSurfaceLockedRect& rect);          // 0x009FA180
+#endif
 #ifdef FABLE_RETAIL_CTEXTURE_LOADFROMDATASTREAM
     // Retail opt-in (chunk Q20, row 0x009FB750): Ego_r.pdb ?LoadFromDataStreamToPreallocatedSurface@CTexture@@QAEXAAVCDataInputStream@@@Z
     // (public, `ret 4`). Declaration only: no layout change.

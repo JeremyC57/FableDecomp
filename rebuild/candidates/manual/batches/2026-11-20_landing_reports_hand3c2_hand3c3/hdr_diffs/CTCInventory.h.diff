@@ -1,0 +1,39 @@
+diff --git a/rebuild/include/engine/CTCInventory.h b/rebuild/include/engine/CTCInventory.h
+index 0e00992bb..c43a962ed 100644
+--- a/rebuild/include/engine/CTCInventory.h
++++ b/rebuild/include/engine/CTCInventory.h
+@@ -13,7 +13,15 @@
+ #endif
+ class CInventoryItemDef;class CFadeInFadeOutBase;class CEnginePrimitiveHandle;class CEnginePrimitivePrepareInfo;class CPersistContext;class CCharString;class CWideString;
+ namespace NUISystem{class CComponent;class CList;class CEditBox;}
+-#ifdef _MSC_VER
++#ifdef FABLE_RETAIL_CTCINVENTORY_CONTEXTSENSITIVEITEM
++// Opt-in (hand3c2, row 0x00591B7F CTCInventory::UpdateContextSensitiveItems): Ego_d.pdb enum record 0x22DF6 (the row's two loops
++// run to CONTEXT_SENSITIVE_OPINION_EXPRESSION_LAST = 6, `cmp eax,18h` 0x00591C04 and `cmp eax,6` 0x00591C88).
++enum EContextSensitiveOpinionExpression {
++    CONTEXT_SENSITIVE_OPINION_EXPRESSION_OFFENSIVE, CONTEXT_SENSITIVE_OPINION_EXPRESSION_ATTRACTIVE, CONTEXT_SENSITIVE_OPINION_EXPRESSION_SCARY,
++    CONTEXT_SENSITIVE_OPINION_EXPRESSION_AGREEABLE, CONTEXT_SENSITIVE_OPINION_EXPRESSION_UGLY, CONTEXT_SENSITIVE_OPINION_EXPRESSION_RIDICULOUS,
++    CONTEXT_SENSITIVE_OPINION_EXPRESSION_LAST
++};
++#elif defined(_MSC_VER)
+ enum EContextSensitiveOpinionExpression;
+ #else
+ enum EContextSensitiveOpinionExpression{};
+@@ -216,6 +224,17 @@ public:
+ #endif
+ };
+ FABLE_STATIC_ASSERT_AT(208, sizeof(CTCInventory)==552);
++#ifdef FABLE_RETAIL_CTCINVENTORY_CONTEXTSENSITIVEITEM
++// Same opt-in: the nested record of the static ContextSensitivePreferredItems vector (0x013B8B40, 12-byte elements: `add edi,0Ch`
++// 0x00591BCE). Ego_r.pdb members ThingDefIndex +0, ButtonIndex +4, Priority +8; Ego_d.pdb ??0CContextSensitiveItem@CTCInventory@@QAE@JJJ@Z.
++class CTCInventory::CContextSensitiveItem {
++public:
++    CContextSensitiveItem(long thing_def_index, long button_index, long priority);
++    long ThingDefIndex;
++    long ButtonIndex;
++    long Priority;
++};
++#endif
+ #endif
+ #else
+ #ifdef FABLE_RETAIL_CTCINVENTORY

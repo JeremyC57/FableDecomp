@@ -54,6 +54,8 @@ class CIVCountedPointeeBase{public:virtual~CIVCountedPointeeBase();virtual void 
 class CResourceList;class CResource:public CIVCountedPointeeBase{public:CResourceList*ResourceList;CResource*PrevResource,*NextResource;unsigned long ResourceSize,LastUsedFrame;};
 class CTexture;class CVolumeTexture;
 class CManagedTextureData:public CResource{public:unsigned short Width,Height;CCountedPointer<CTexture>Texture;CCountedPointer<CVolumeTexture>VolumeTexture;unsigned char unread[0x1c];CCountedPointer<CVolumeTexture>GetVolumeTexture(){return VolumeTexture;}};
+// Test-only: the row includes the shared engine/CIVCountedPointer.h; this test constructs and destroys a CManagedTexture, and the shared
+// template's destructor needs the full CIVCountedPointeeBase (Release), which the row's reduced pointee model does not have. Same layout.
 template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase*Object;T*operator->()const{return static_cast<T*>(Object);}};
 class CManagedTexture:public CBaseClass{public:CIVCountedPointer<CManagedTextureData>Data;CCountedPointer<CVolumeTexture>GetVolumeTexture(){return Data->GetVolumeTexture();}};
 class CThreadedFileCallback:public CBaseClassNonCopyable{};
@@ -63,8 +65,8 @@ class CBankFileAsyncData:public CThreadedFileCallback,public CMovableResource{un
 #include "engine/CPixelFormat.h"
 #undef CPixelFormat
 class CPixelFormat:public CPixelFormatFields{public:unsigned long GetByteColourDepth()const;};
-// Layout: the original nonpolymorphic parent of C3DExtentsI is not proven. Its first two long words are an implementation-only projection of SDK Width/Height; only Z at+8 has an exported original member name.
-class C3DExtentsI{public:unsigned char prefix[8];long Z;C3DExtentsI(){}C3DExtentsI(const C3DExtentsI&o){memcpy(prefix,o.prefix,8);Z=o.Z;}};
+// Re-port (2026-11-19): the local C3DExtentsI model (eight opaque bytes + Z) is replaced by the shared engine/C3DExtentsI.h (Ego_d.pdb class record: public base C2DExtentsI with X / Y, long Z at +8; the three FableWin.pdb constructors), and the local CIVCountedPointer by engine/CIVCountedPointer.h.
+#include "engine/C3DExtentsI.h"
 class CVolumeLockedBox{public:C3DExtentsI Dimensions;long RowPitch,SlicePitch;unsigned char*PMem;CVolumeLockedBox(){}CVolumeLockedBox(const CVolumeLockedBox&o):Dimensions(o.Dimensions),RowPitch(o.RowPitch),SlicePitch(o.SlicePitch),PMem(o.PMem){}};
 struct IDirect3DVolume9;
 class CVolume:public CBaseClass{public:IDirect3DVolume9*PD3DVolume;virtual~CVolume(){Uninitialise(true);}unsigned long GetByteLength()const;CVolumeLockedBox Lock(unsigned long);CPixelFormat GetPixelFormat()const;C3DExtentsI GetDimensions()const;void Swizzle(CVolumeLockedBox&);void Unlock()const;void Uninitialise(bool);};
@@ -72,7 +74,7 @@ struct IDirect3DVolumeTexture9;
 class CVolumeTexture:public CBaseClass{public:IDirect3DVolumeTexture9*PD3DVolumeTexture;long ByteLength;void*PData;CVolume GetVolumeLevel(long)const;};
 bool CGraphicDataBank::LoadVolumeGraphic(CManagedTexture&managedTexture,CBankFileAsyncData&data,const CGraphicHeader&,bool,unsigned long,bool){
  CCountedPointer<CVolumeTexture>texture=managedTexture.GetVolumeTexture();CVolume volume=texture->GetVolumeLevel(0);volume.GetByteLength();CVolumeLockedBox box=volume.Lock(0);unsigned char*slice=box.PMem;const unsigned char*source=(const unsigned char*)data.GetData();unsigned long depth=volume.GetPixelFormat().GetByteColourDepth();
- for(long z=0;z<volume.GetDimensions().Z;++z){for(long y=0;y<reinterpret_cast<const long*>(volume.GetDimensions().prefix)[1];++y){long rowBytes=reinterpret_cast<const long*>(volume.GetDimensions().prefix)[0]*depth;memcpy(slice+box.RowPitch*y,source,rowBytes);source+=reinterpret_cast<const long*>(volume.GetDimensions().prefix)[0]*depth;}slice+=box.SlicePitch;}
+ for(long z=0;z<volume.GetDimensions().Z;++z){for(long y=0;y<volume.GetDimensions().Y;++y){long rowBytes=volume.GetDimensions().X*depth;memcpy(slice+box.RowPitch*y,source,rowBytes);source+=volume.GetDimensions().X*depth;}slice+=box.SlicePitch;}
  texture->GetVolumeLevel(0).Swizzle(box);volume.Unlock();return true;
 }
 
@@ -93,11 +95,11 @@ CBaseClass::~CBaseClass(){}CBaseClassNonCopyable::~CBaseClassNonCopyable(){}CMov
 static void __fastcall testDelete(void*){++testDeletes;}
 CVolume CVolumeTexture::GetVolumeLevel(long level)const{if(level!=0)testError=2;++testGets;return testPrototype;}
 unsigned long CVolume::GetByteLength()const{++testByteLengths;return testWidth*testHeight*testDepth*testBytes;}
-CVolumeLockedBox CVolume::Lock(unsigned long flags){if(flags!=0)testError=3;++testLocks;CVolumeLockedBox box;reinterpret_cast<long*>(box.Dimensions.prefix)[0]=testWidth;reinterpret_cast<long*>(box.Dimensions.prefix)[1]=testHeight;box.Dimensions.Z=testDepth;box.RowPitch=testRowPitch;box.SlicePitch=testSlicePitch;box.PMem=testDestination+16;return box;}
+CVolumeLockedBox CVolume::Lock(unsigned long flags){if(flags!=0)testError=3;++testLocks;CVolumeLockedBox box;box.Dimensions.X=testWidth;box.Dimensions.Y=testHeight;box.Dimensions.Z=testDepth;box.RowPitch=testRowPitch;box.SlicePitch=testSlicePitch;box.PMem=testDestination+16;return box;}
 CPixelFormat CVolume::GetPixelFormat()const{++testPixelGets;CPixelFormat format;format.FormatIndex=testBytes;return format;}
 unsigned long CPixelFormat::GetByteColourDepth()const{return FormatIndex;}
-C3DExtentsI CVolume::GetDimensions()const{C3DExtentsI dims;reinterpret_cast<long*>(dims.prefix)[0]=testWidth;reinterpret_cast<long*>(dims.prefix)[1]=testHeight;dims.Z=testDepth;return dims;}
-void CVolume::Swizzle(CVolumeLockedBox&box){if(testUnlocks||reinterpret_cast<long*>(box.Dimensions.prefix)[0]!=testWidth||reinterpret_cast<long*>(box.Dimensions.prefix)[1]!=testHeight||box.Dimensions.Z!=testDepth||box.RowPitch!=testRowPitch||box.SlicePitch!=testSlicePitch||box.PMem!=testDestination+16)testError=4;++testSwizzles;testPhase=1;}
+C3DExtentsI CVolume::GetDimensions()const{C3DExtentsI dims;dims.X=testWidth;dims.Y=testHeight;dims.Z=testDepth;return dims;}
+void CVolume::Swizzle(CVolumeLockedBox&box){if(testUnlocks||box.Dimensions.X!=testWidth||box.Dimensions.Y!=testHeight||box.Dimensions.Z!=testDepth||box.RowPitch!=testRowPitch||box.SlicePitch!=testSlicePitch||box.PMem!=testDestination+16)testError=4;++testSwizzles;testPhase=1;}
 void CVolume::Unlock()const{if(testPhase!=1||testUninitialises!=1)testError=5;testPhase=2;++testUnlocks;}
 void CVolume::Uninitialise(bool release){if(!release)testError=6;++testUninitialises;}
 void*CBankFileAsyncData::GetData(){if(this!=testAsync)testError=7;++testDataGets;return testSource+16;}

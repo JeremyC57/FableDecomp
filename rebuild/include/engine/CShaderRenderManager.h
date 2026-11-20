@@ -787,4 +787,16 @@ inline void CShaderRenderManager::DrawBuffersIndexed(CVertexBufferWin32& vertex_
 }
 #endif
 
+#ifdef FABLE_RETAIL_CSHADERRENDERMANAGER_SETVERTEXSHADERCONSTANTSDIRECT_INLINE
+// Opt-in (audit h3c2b, row 0x00B99300 CEnginePrimitiveManagerRepeatedStaticMeshes::ProcessLightingSW): the body of the PUBLIC inline
+// ?SetVertexShaderConstantsDirect@CShaderRenderManager@@QAEXKPBXK@Z (FableWin.pdb 0x02E8EB50; Ego_d.pdb GPROC32, 33 debug bytes on ONE
+// line, lib_shader_render_manager.h 195: the three arguments forwarded to one call; Ego_d parameter names index, data, count). Retail
+// keeps its unreferenced COMDAT copy at 0x00B9C060 (`jmp 0x0098B930`, the only E9 to that target; this body compiles to those 5 bytes):
+// outside callers of the private SetVSConstants 0x0098B930 (ProcessLightingSW 0x00B9953E / 0x00B99658, UploadShaderConstants
+// 0x00B996DE / 0x00B996FC) are this wrapper expanded. Body only, no layout change.
+inline void CShaderRenderManager::SetVertexShaderConstantsDirect(unsigned long index, const void* data, unsigned long count)
+{
+    SetVSConstants(index, data, count);
+}
+#endif
 #endif // FABLE_ENGINE_CSHADERRENDERMANAGER_H

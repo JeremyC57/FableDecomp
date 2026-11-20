@@ -1,0 +1,71 @@
+addr       parity           behav  name
+00b99300   RELOCATION_MATCH PASS   ProcessLightingSW
+00646762   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00646762   RELOCATION_MATCH PASS   DrawStatBarOnLeft
+00643cda   RELOCATION_MATCH PASS   NPlayerGui::GFAnchorToBottomLeft
+00adf960   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00adf960   RELOCATION_MATCH PASS   SatisfyDistanceConstraints
+00591b7f   WARN RELOC_NAME: ??$sort@PAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@VCContextSensitivePriorityCompare@@@std@@YIXPAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@0@0VCContextSensitivePriorityCompare@@@Z -> 00594ed4 labelled 'std::sort<std::pair<long, CDefPointer<CContextSensitiveItemDef const>> *, CContextSensitivePriorityCompare>'
+00591b7f   WARN RELOC_NAME: ?GetContextSensitivePreferredItemButtonIndex@CTCInventory@@SIJJ@Z -> 00581bfe labelled '_global::ElemLoop0xc_00581bfe'
+00591b7f   WARN RELOC_NAME: ?GetQuickAccessIndexFromButtonIndex@CTCInventory@@QBEJJ@Z -> 005819f2 labelled 'CTCInventory::ValidateIndex'
+00591b7f   WARN RELOC_NAME: ??1?$vector@U?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@V?$allocator@U?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@@2@@std@@QAE@XZ -> 00594be8 labelled '_global::StdList_Dtor_00594be8'
+00591b7f   RELOCATION_MATCH PASS   UpdateContextSensitiveItems
+00a48f10   WARN RELOC_NAME: ?erase@?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAEPAVCLipSyncPhoneme@@PAV3@0@Z -> 00a4a320 labelled '_global::Vector_Move_Destructive'
+00a48f10   RELOCATION_MATCH PASS   GetFrameInterpolate
+009acee0   RELOCATION_MATCH PASS   ParseEnumForSymbols
+00a4c1f0   RELOCATION_MATCH PASS   GetKeyframeInterpolate
+00a52760   RELOCATION_MATCH PASS   InlineGetKeyframeInterpolate
+00a53860   RELOCATION_MATCH PASS   InlineGetKeyframeInterpolate
+009fd9b0   WARN RELOC_NAME: ?Swizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67440 labelled '_global::Nop_ret4_00a67440'
+009fd9b0   WARN RELOC_NAME: ?Uninitialise@CVolume@@QAEX_N@Z -> 00a67460 labelled 'CVolume::ReleaseVolume'
+009fd9b0   RELOCATION_MATCH PASS   CGraphicDataBank::LoadVolumeGraphic
+009fde80   WARN RELOC_NAME: ?RemoveFromResourceList@CResource@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+009fde80   RELOCATION_MATCH PASS   BeginLoading
+00a67530   MATCH            PASS   CVolume::ReadOnlyLock
+00a677d0   MATCH            PASS   CVolume::Lock
+00a67860   RELOCATION_MATCH PASS   CVolume::CopyFromMemoryAutoSwizzle
+00a67950   RELOCATION_MATCH PASS   CVolume::Clear
+00a67a20   RELOCATION_MATCH PASS   CVolume::DrawBox
+00a685e0   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00a685e0   RELOCATION_MATCH PASS   CVolumeTexture::Lock
+00a68910   WARN RELOC_NAME: ?Unswizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67450 labelled '_global::Nop_ret4_00a67450'
+00a68910   WARN RELOC_NAME: ?Uninitialise@CVolume@@QAEX_N@Z -> 00a67460 labelled 'CVolume::ReleaseVolume'
+00a68910   WARN RELOC_NAME: ?Swizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67440 labelled '_global::Nop_ret4_00a67440'
+00a68910   RELOCATION_MATCH PASS   CVolumeTexture::GetAsTextureList
+00a699d0   RELOCATION_MATCH PASS   CManagedTextureData::CreateVolumeTexture
+00989230   RELOCATION_MATCH PASS   CShaderRenderManager::UpdateObjectSpaceTextureTransform
+00989cb0   RELOCATION_MATCH PASS   CShaderRenderManager::UpdateObjectSpaceLighting
+0098b930   MATCH            PASS   CShaderRenderManager::SetVSConstants
+00774c60   RELOCATION_MATCH PASS   CTCShop::StockDisplay
+00a56670   RELOCATION_MATCH PASS   _global::GFGetHermiteSplinePosition
+00a567a0   RELOCATION_MATCH PASS   CCardinalSpline::GetSplinePosition
+00518dc0   RELOCATION_MATCH PASS   CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator()
+
+WINS: 27
+  00b99300 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::?ProcessLightingSW@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXAAVCEngineInternalPrimitiveRepeatedStaticMesh@@PBM11PBVC4DVector@@J_N@Z
+  00646762 RELOCATION_MATCH NPlayerGui::CStatBar::?DrawStatBarOnLeft@CStatBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z
+  00643cda RELOCATION_MATCH NPlayerGui::?GFAnchorToBottomLeft@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z
+  00adf960 RELOCATION_MATCH CParticleSimulation::?SatisfyDistanceConstraints@CParticleSimulation@@AAEXPBVCParticleDistanceConstraint@@K@Z
+  00591b7f RELOCATION_MATCH CTCInventory::?UpdateContextSensitiveItems@CTCInventory@@QAEXXZ
+  00a48f10 RELOCATION_MATCH CLipSyncSampleData::?GetFrameInterpolate@CLipSyncSampleData@@QBEXAAVCLipSyncFrameData@@M@Z
+  009acee0 RELOCATION_MATCH CDefinitionManager::?ParseEnumForSymbols@CDefinitionManager@@IAEXAAVCStringParser@@@Z
+  00a4c1f0 RELOCATION_MATCH C3DAnimationSequenceData::?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@KM@Z
+  00a52760 RELOCATION_MATCH C3DAnimationSequenceData::?InlineGetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@KM@Z
+  00a53860 RELOCATION_MATCH C3DAnimationSequence::?InlineGetKeyframeInterpolate@C3DAnimationSequence@@QBEXAAVC3DKeyframe@@KM@Z
+  009fd9b0 RELOCATION_MATCH CGraphicDataBank::?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z
+  009fde80 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z
+  00a67530 MATCH CVolume::?ReadOnlyLock@CVolume@@QBE?AVCVolumeLockedBox@@K@Z
+  00a677d0 MATCH CVolume::?Lock@CVolume@@QAE?AVCVolumeLockedBox@@K@Z
+  00a67860 RELOCATION_MATCH CVolume::?CopyFromMemoryAutoSwizzle@CVolume@@QAEXPAXJJ@Z
+  00a67950 RELOCATION_MATCH CVolume::?Clear@CVolume@@QAEXABVCRGBColour@@@Z
+  00a67a20 RELOCATION_MATCH CVolume::?DrawBox@CVolume@@QAEXABVC3DBoxI@@ABVCRGBColour@@@Z
+  00a685e0 RELOCATION_MATCH CVolumeTexture::?Lock@CVolumeTexture@@QAE?AVCVolumeLockedBox@@KK@Z
+  00a68910 RELOCATION_MATCH CVolumeTexture::?GetAsTextureList@CVolumeTexture@@QAEXPAVCTexture@@@Z
+  00a699d0 RELOCATION_MATCH CManagedTextureData::?CreateVolumeTexture@CManagedTextureData@@QAE_NKKKJABVCPixelFormat@@@Z
+  00989230 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceTextureTransform@CShaderRenderManager@@AAEXXZ
+  00989cb0 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z
+  0098b930 MATCH CShaderRenderManager::?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z
+  00774c60 RELOCATION_MATCH CTCShop::?StockDisplay@CTCShop@@QAEXXZ
+  00a56670 RELOCATION_MATCH _global::?GFGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z
+  00a567a0 RELOCATION_MATCH CCardinalSpline::?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z
+  00518dc0 RELOCATION_MATCH CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::??R?$CThingFilter_HasTCOfLeafType@VCTCActionUseScriptedHook@@@@QBE_NAAVCThing@@@Z

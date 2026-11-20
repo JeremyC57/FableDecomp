@@ -29095,13 +29095,7 @@ $catalog = @(
         TestSource = '00/9f/CTexture_Uninitialise_009f9f70_test.cpp'
         PassPattern = 'FABLETLC_TEXTURE_UNINITIALISE_BEHAVIOR PASS'
     }
-    [pscustomobject]@{
-        Address = '0098b930'
-        Module = 'CShaderRenderManager'
-        Source = '00/98/CShaderRenderManager_SetVSConstants_0098b930.cpp'
-        TestSource = '00/98/CShaderRenderManager_SetVSConstants_0098b930_test.cpp'
-        PassPattern = 'FABLETLC_SET_VS_CONSTANTS_BEHAVIOR PASS'
-    }
+
     [pscustomobject]@{
         Address = '00988a20'
         Module = 'CShaderRenderManager'
@@ -239139,13 +239133,7 @@ $catalog = @(
         TestSource = '00/a6/CMemoryAllocatorFixedSize_Allocate_00a66450_test.cpp'
         PassPattern = '00a66450_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a699d0'
-        Module = 'CManagedTextureData'
-        Source = '00/a6/CManagedTextureData_CreateVolumeTexture_00a699d0.cpp'
-        TestSource = '00/a6/CManagedTextureData_CreateVolumeTexture_00a699d0_test.cpp'
-        PassPattern = '00a699d0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a76580'
         Module = 'CNavQuadTreeNode'
@@ -250758,13 +250746,7 @@ $catalog = @(
         TestSource = '00/a6/CFontDataBank_NotifyEntryAdded_00a636c0_test.cpp'
         PassPattern = '00a636c0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a67860'
-        Module = 'CVolume'
-        Source = '00/a6/CVolume_CopyFromMemoryAutoSwizzle_00a67860.cpp'
-        TestSource = '00/a6/CVolume_CopyFromMemoryAutoSwizzle_00a67860_test.cpp'
-        PassPattern = '00a67860_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a79a30'
         Module = 'CNavSwitchableLeafNode'
@@ -253302,13 +253284,7 @@ $catalog = @(
         TestSource = '00/a2/C3DMeshStats_AllocateBuffers_00a2e760_test.cpp'
         PassPattern = '00a2e760_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a67950'
-        Module = 'CVolume'
-        Source = '00/a6/CVolume_Clear_00a67950.cpp'
-        TestSource = '00/a6/CVolume_Clear_00a67950_test.cpp'
-        PassPattern = '00a67950_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a778d0'
         Module = 'CANavQuadTreeNode'
@@ -271168,13 +271144,7 @@ $catalog = @(
         TestSource = '00/9a/CSystemManager_Initialise_009a6610_test.cpp'
         PassPattern = '009a6610_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a67a20'
-        Module = 'CVolume'
-        Source = '00/a6/CVolume_ClearArea_00a67a20.cpp'
-        TestSource = '00/a6/CVolume_ClearArea_00a67a20_test.cpp'
-        PassPattern = '00a67a20_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a6c170'
         Module = 'CSystemFont'
@@ -291729,13 +291699,7 @@ $catalog = @(
         TestSource = '00/64/NPlayerGui_GFAnchorToTopRight_00643ca1_test.cpp'
         PassPattern = '00643ca1_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00643cda'
-        Module = 'NPlayerGui'
-        Source = '00/64/NPlayerGui_GFAnchorToBottomLeft_00643cda.cpp'
-        TestSource = '00/64/NPlayerGui_GFAnchorToBottomLeft_00643cda_test.cpp'
-        PassPattern = '00643cda_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00643d0c'
         Module = 'NPlayerGui'
@@ -300996,13 +300960,7 @@ $catalog = @(
         TestSource = '00/51/std_unguardedinsertionsortauxCThingBuildingCThingBui_005154c0_test.cpp'
         PassPattern = '005154c0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00518dc0'
-        Module = 'CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>'
-        Source = '00/51/CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0.cpp'
-        TestSource = '00/51/CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0_test.cpp'
-        PassPattern = '00518dc0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '0056fbed'
         Module = '_global'
@@ -352346,13 +352304,7 @@ $catalog = @(
         TestSource = '00/a6/global_GFRemoveCommentsLeavingNewlines_00a60200_test.cpp'
         PassPattern = '00a60200_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a68910'
-        Module = 'CVolumeTexture'
-        Source = '00/a6/CVolumeTexture_GetAsTextureList_00a68910.cpp'
-        TestSource = '00/a6/CVolumeTexture_GetAsTextureList_00a68910_test.cpp'
-        PassPattern = '00a68910_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a71550'
         Module = 'std::vector<C3DTriangle2>'
@@ -362945,13 +362897,7 @@ $catalog = @(
         TestSource = '00/9f/CTexture_Lock_009fa450_test.cpp'
         PassPattern = '009fa450_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '009fd9b0'
-        Module = 'CGraphicDataBank'
-        Source = '00/9f/CGraphicDataBank_LoadVolumeGraphic_009fd9b0.cpp'
-        TestSource = '00/9f/CGraphicDataBank_LoadVolumeGraphic_009fd9b0_test.cpp'
-        PassPattern = '009fd9b0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00a09f20'
         Module = 'CMeshBankManager'
@@ -362996,27 +362942,9 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a50bf0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a67530'
-        Module = 'CVolume'
-        Source = '00/a6/CVolume_ReadOnlyLock_00a67530.cpp'
-        TestSource = '00/a6/CVolume_ReadOnlyLock_00a67530_test.cpp'
-        PassPattern = '00a67530_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a677d0'
-        Module = 'CVolume'
-        Source = '00/a6/CVolume_Lock_00a677d0.cpp'
-        TestSource = '00/a6/CVolume_Lock_00a677d0_test.cpp'
-        PassPattern = '00a677d0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a685e0'
-        Module = 'CVolumeTexture'
-        Source = '00/a6/CVolumeTexture_Lock_00a685e0.cpp'
-        TestSource = '00/a6/CVolumeTexture_Lock_00a685e0_test.cpp'
-        PassPattern = '00a685e0_TEST PASS'
-    }
+
+
+
     [pscustomobject]@{
         Address = '00a6ee90'
         Module = 'std'
@@ -380789,13 +380717,7 @@ $catalog = @(
         TestSource = '00/87/NCameraModesCTools_GetThingPointIntersectionFromTo_008771a0_test.cpp'
         PassPattern = '008771a0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00989cb0'
-        Module = 'CShaderRenderManager'
-        Source = '00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0.cpp'
-        TestSource = '00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0_test.cpp'
-        PassPattern = '00989cb0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '0098acf0'
         Module = 'CShaderRenderManager'
@@ -388753,13 +388675,7 @@ $catalog = @(
         TestSource = '00/74/CTCContainerRewardHero_GeneratePopoutVectorFromVars_0074e140_test.cpp'
         PassPattern = '0074e140_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a56670'
-        Module = '_global'
-        Source = '00/a5/global_GFGetHermiteSplinePosition_00a56670.cpp'
-        TestSource = '00/a5/global_GFGetHermiteSplinePosition_00a56670_test.cpp'
-        PassPattern = '00a56670_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '006d8830'
         Module = 'CTCHeroExperience'
@@ -400194,13 +400110,7 @@ $catalog = @(
         TestSource = '00/c6/CVtable012bedb8_RebuildGain_00c6ebe0_test.cpp'
         PassPattern = '00c6ebe0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00774c60'
-        Module = 'CTCShop'
-        Source = '00/77/CTCShop_StockDisplay_00774c60.cpp'
-        TestSource = '00/77/CTCShop_StockDisplay_00774c60_test.cpp'
-        PassPattern = '00774c60_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00738a80'
         Module = 'CTCEntityEvents'
@@ -401031,13 +400941,7 @@ $catalog = @(
         TestSource = '00/a1/C3DCoordI_operator_00a13c20_test.cpp'
         PassPattern = '00a13c20_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00989230'
-        Module = 'CShaderRenderManager'
-        Source = '00/98/CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230.cpp'
-        TestSource = '00/98/CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230_test.cpp'
-        PassPattern = '00989230_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00c418f0'
         Module = 'CCoda3DSource'
@@ -401109,13 +401013,7 @@ $catalog = @(
         TestSource = '00/aa/CSoundEmitterLH_PlaySample_00aabf60_test.cpp'
         PassPattern = '00aabf60_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00a567a0'
-        Module = 'CCardinalSpline'
-        Source = '00/a5/CCardinalSpline_GetSplinePosition_00a567a0.cpp'
-        TestSource = '00/a5/CCardinalSpline_GetSplinePosition_00a567a0_test.cpp'
-        PassPattern = '00a567a0_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00766660'
         Module = 'CTCObjectAugmentations'
@@ -401129,6 +401027,197 @@ $catalog = @(
         Source = '00/64/NPlayerGuiCDrawMiniMap_UpdateRegionExitNames_0064dd9a.cpp'
         TestSource = '00/64/NPlayerGuiCDrawMiniMap_UpdateRegionExitNames_0064dd9a_test.cpp'
         PassPattern = '0064dd9a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b99300'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_ProcessLightingSW_00b99300.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_ProcessLightingSW_00b99300_test.cpp'
+        PassPattern = '00b99300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00646762'
+        Module = 'NPlayerGui::CStatBar'
+        Source = '00/64/NPlayerGuiCStatBar_DrawStatBarOnLeft_00646762.cpp'
+        TestSource = '00/64/NPlayerGuiCStatBar_DrawStatBarOnLeft_00646762_test.cpp'
+        PassPattern = '00646762_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643cda'
+        Module = 'NPlayerGui'
+        Source = '00/64/NPlayerGui_GFAnchorToBottomLeft_00643cda.cpp'
+        TestSource = '00/64/NPlayerGui_GFAnchorToBottomLeft_00643cda_test.cpp'
+        PassPattern = '00643cda_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adf960'
+        Module = 'CParticleSimulation'
+        Source = '00/ad/CParticleSimulation_SatisfyDistanceConstraints_00adf960.cpp'
+        TestSource = '00/ad/CParticleSimulation_SatisfyDistanceConstraints_00adf960_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zi'
+        PassPattern = '00adf960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00591b7f'
+        Module = 'CTCInventory'
+        Source = '00/59/CTCInventory_UpdateContextSensitiveItems_00591b7f.cpp'
+        TestSource = '00/59/CTCInventory_UpdateContextSensitiveItems_00591b7f_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00591b7f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a48f10'
+        Module = 'CLipSyncSampleData'
+        Source = '00/a4/CLipSyncSampleData_GetFrameInterpolate_00a48f10.cpp'
+        TestSource = '00/a4/CLipSyncSampleData_GetFrameInterpolate_00a48f10_test.cpp'
+        PassPattern = '00a48f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009acee0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_ParseEnumForSymbols_009acee0.cpp'
+        TestSource = '00/9a/CDefinitionManager_ParseEnumForSymbols_009acee0_test.cpp'
+        PassPattern = '009acee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4c1f0'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0.cpp'
+        TestSource = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4c1f0_test.cpp'
+        PassPattern = '00a4c1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a52760'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a5/C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760.cpp'
+        TestSource = '00/a5/C3DAnimationSequenceData_InlineGetKeyframeInterpolate_00a52760_test.cpp'
+        PassPattern = '00a52760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a53860'
+        Module = 'C3DAnimationSequence'
+        Source = '00/a5/C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860.cpp'
+        TestSource = '00/a5/C3DAnimationSequence_InlineGetKeyframeInterpolate_00a53860_test.cpp'
+        PassPattern = '00a53860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd9b0'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_LoadVolumeGraphic_009fd9b0.cpp'
+        TestSource = '00/9f/CGraphicDataBank_LoadVolumeGraphic_009fd9b0_test.cpp'
+        PassPattern = '009fd9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fde80'
+        Module = 'CGraphicInfoFrame::CFrameData'
+        Source = '00/9f/CGraphicInfoFrameCFrameData_BeginLoading_009fde80.cpp'
+        TestSource = '00/9f/CGraphicInfoFrameCFrameData_BeginLoading_009fde80_test.cpp'
+        PassPattern = '009fde80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67530'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_ReadOnlyLock_00a67530.cpp'
+        TestSource = '00/a6/CVolume_ReadOnlyLock_00a67530_test.cpp'
+        PassPattern = '00a67530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a677d0'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_Lock_00a677d0.cpp'
+        TestSource = '00/a6/CVolume_Lock_00a677d0_test.cpp'
+        PassPattern = '00a677d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67860'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_CopyFromMemoryAutoSwizzle_00a67860.cpp'
+        TestSource = '00/a6/CVolume_CopyFromMemoryAutoSwizzle_00a67860_test.cpp'
+        PassPattern = '00a67860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67950'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_Clear_00a67950.cpp'
+        TestSource = '00/a6/CVolume_Clear_00a67950_test.cpp'
+        PassPattern = '00a67950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67a20'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_DrawBox_00a67a20.cpp'
+        TestSource = '00/a6/CVolume_DrawBox_00a67a20_test.cpp'
+        PassPattern = '00a67a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a685e0'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_Lock_00a685e0.cpp'
+        TestSource = '00/a6/CVolumeTexture_Lock_00a685e0_test.cpp'
+        PassPattern = '00a685e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a68910'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_GetAsTextureList_00a68910.cpp'
+        TestSource = '00/a6/CVolumeTexture_GetAsTextureList_00a68910_test.cpp'
+        PassPattern = '00a68910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a699d0'
+        Module = 'CManagedTextureData'
+        Source = '00/a6/CManagedTextureData_CreateVolumeTexture_00a699d0.cpp'
+        TestSource = '00/a6/CManagedTextureData_CreateVolumeTexture_00a699d0_test.cpp'
+        PassPattern = '00a699d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00989230'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateObjectSpaceTextureTransform_00989230_test.cpp'
+        PassPattern = '00989230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00989cb0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0_test.cpp'
+        PassPattern = '00989cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098b930'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetVSConstants_0098b930.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetVSConstants_0098b930_test.cpp'
+        PassPattern = 'FABLETLC_SET_VS_CONSTANTS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00774c60'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_StockDisplay_00774c60.cpp'
+        TestSource = '00/77/CTCShop_StockDisplay_00774c60_test.cpp'
+        PassPattern = '00774c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56670'
+        Module = '_global'
+        Source = '00/a5/global_GFGetHermiteSplinePosition_00a56670.cpp'
+        TestSource = '00/a5/global_GFGetHermiteSplinePosition_00a56670_test.cpp'
+        PassPattern = '00a56670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a567a0'
+        Module = 'CCardinalSpline'
+        Source = '00/a5/CCardinalSpline_GetSplinePosition_00a567a0.cpp'
+        TestSource = '00/a5/CCardinalSpline_GetSplinePosition_00a567a0_test.cpp'
+        PassPattern = '00a567a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00518dc0'
+        Module = 'CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>'
+        Source = '00/51/CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0.cpp'
+        TestSource = '00/51/CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0_test.cpp'
+        PassPattern = '00518dc0_TEST PASS'
     }
 )
 

@@ -1,0 +1,68 @@
+diff --git a/rebuild/include/engine/CEngineInternalPrimitiveRepeatedStaticMesh.h b/rebuild/include/engine/CEngineInternalPrimitiveRepeatedStaticMesh.h
+index ea270c7c6..e66a2a30e 100644
+--- a/rebuild/include/engine/CEngineInternalPrimitiveRepeatedStaticMesh.h
++++ b/rebuild/include/engine/CEngineInternalPrimitiveRepeatedStaticMesh.h
+@@ -26,6 +26,15 @@ public:
+     CEngineInternalPrimitiveRepeatedStaticMesh();                        // ??0CEngineInternalPrimitiveRepeatedStaticMesh@@QAE@XZ
+     virtual ~CEngineInternalPrimitiveRepeatedStaticMesh();
+     CEngineRenderInfoRepeatedStaticMesh* GetRenderInfo() { return &RenderInfo; }
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH_PEEKLIGHTS
++    // Nested opt-in (audit h3c2b, row 0x00B99300 ProcessLightingSW): Ego_d.pdb inline one-liners, emitted right after ProcessLightingSW in
++    // Engine_Primitive_Manager_Repeated_Meshes.obj (its first user): PeekRenderInfo (19 debug bytes, header line 101, LF_MFUNCTION
++    // const CEngineRenderInfoRepeatedStaticMesh* () const) and PeekLights (21 debug bytes = call + load, line 103, const
++    // CEngineLocalLightArray& () const). Retail keeps their unreferenced COMDAT copies after GetRenderInfo 0x00B98B90, in class order:
++    // 0x00B98BA0 `lea eax,[ecx+0A4h] ; ret` and 0x00B98BB0 `mov eax,[ecx+0A4h] ; ret` (these bodies compile to those bytes). Bodies only.
++    const CEngineRenderInfoRepeatedStaticMesh* PeekRenderInfo() const { return &RenderInfo; }
++    const CEngineLocalLightArray& PeekLights() const { return *PeekRenderInfo()->Lights; }
++#endif
+     C3DMeshInfo*        MeshInfo;                                        // +0x50
+     long                ObjectCount;                                     // +0x54
+     C3DBoundingBox      BoundingBox;                                     // +0x58
+@@ -41,7 +50,7 @@ public:
+     float               WindScaleFactor;                                 // +0xa0
+     CEngineRenderInfoRepeatedStaticMesh RenderInfo;                      // +0xa4
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveRepeatedStaticMesh) == 0xb0);
++FABLE_STATIC_ASSERT_AT(44, sizeof(CEngineInternalPrimitiveRepeatedStaticMesh) == 0xb0);
+ #else
+ 
+ class C3DMeshInfo;
+@@ -88,22 +97,22 @@ public:
+ };
+ #pragma pack(pop)
+ 
+-FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveRepeatedStaticMesh) == 0xb0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, __vftable) == 0x0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, MeshInfo) == 0x50);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, ObjectCount) == 0x54);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, BoundingBox) == 0x58);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, BoundingSphere) == 0x70);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, MaxScale) == 0x80);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, AlphaTransformMult) == 0x84);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, AlphaTransformOffset) == 0x88);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, VectorNormals) == 0x8c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, ObjectMatricies) == 0x90);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, ObjectOffsets) == 0x94);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, SubSections) == 0x98);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, WindDelayArray) == 0x9c);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, WindScaleFactor) == 0xa0);
+-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, RenderInfo) == 0xa4);
++FABLE_STATIC_ASSERT_AT(91, sizeof(CEngineInternalPrimitiveRepeatedStaticMesh) == 0xb0);
++FABLE_STATIC_ASSERT_AT(92, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, __vftable) == 0x0);
++FABLE_STATIC_ASSERT_AT(93, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, MeshInfo) == 0x50);
++FABLE_STATIC_ASSERT_AT(94, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, ObjectCount) == 0x54);
++FABLE_STATIC_ASSERT_AT(95, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, BoundingBox) == 0x58);
++FABLE_STATIC_ASSERT_AT(96, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, BoundingSphere) == 0x70);
++FABLE_STATIC_ASSERT_AT(97, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, MaxScale) == 0x80);
++FABLE_STATIC_ASSERT_AT(98, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, AlphaTransformMult) == 0x84);
++FABLE_STATIC_ASSERT_AT(99, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, AlphaTransformOffset) == 0x88);
++FABLE_STATIC_ASSERT_AT(100, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, VectorNormals) == 0x8c);
++FABLE_STATIC_ASSERT_AT(101, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, ObjectMatricies) == 0x90);
++FABLE_STATIC_ASSERT_AT(102, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, ObjectOffsets) == 0x94);
++FABLE_STATIC_ASSERT_AT(103, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, SubSections) == 0x98);
++FABLE_STATIC_ASSERT_AT(104, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, WindDelayArray) == 0x9c);
++FABLE_STATIC_ASSERT_AT(105, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, WindScaleFactor) == 0xa0);
++FABLE_STATIC_ASSERT_AT(106, offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, RenderInfo) == 0xa4);
+ #endif // FABLE_RETAIL_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH
+ 
+ #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEREPEATEDSTATICMESH_H

@@ -6,8 +6,8 @@
 #include <vector>
 namespace std { template<class T> inline const T& min(const T& a, const T& b) { return b < a ? b : a; } }   // STLport's std::min (VC7.1's library lacks it)
 static void check(bool v){if(!v){puts("FAIL");exit(1);}}
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 static int free_calls, items_calls, add_calls; static bool free_arg; static size_t n_places, n_items;
 static long added_item[64]; static const void* added_place[64]; static float added_x[64];
 class CTCShop {

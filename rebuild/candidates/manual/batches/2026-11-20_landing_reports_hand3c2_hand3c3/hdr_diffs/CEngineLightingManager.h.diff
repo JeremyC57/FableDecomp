@@ -1,0 +1,22 @@
+diff --git a/rebuild/include/engine/CEngineLightingManager.h b/rebuild/include/engine/CEngineLightingManager.h
+index de43ca7ed..c1a0dae83 100644
+--- a/rebuild/include/engine/CEngineLightingManager.h
++++ b/rebuild/include/engine/CEngineLightingManager.h
+@@ -115,6 +115,17 @@ public:
+     // names pos, normal, light_array, light_result). Declaration only, no layout change.
+     void CalcSWLightingNoClip(const C3DVector& pos,const C3DVector& normal,const CEngineLocalLightArray& light_array,CRGBFloatColour& light_result);
+ #endif
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTING_VECTOR
++    // Opt-in (hand3c2, row 0x00B99300 CEnginePrimitiveManagerRepeatedStaticMeshes::ProcessLightingSW): the two SSE batch lighters it calls,
++    // Ego_r.pdb / Ego_d.pdb ?CalcSWLightingNoClipVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
++    // (retail 0x00B44820) and ?CalcSWLightingNoClipSeparateMainLightVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@0PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
++    // (retail 0x00B44A60; engine/CEngineLightingSSE.h names both). Parameter names = their Ego_d records. Declarations only.
++    void CalcSWLightingNoClipVector(CRGBFloatColour* results, const C4DVector* position, const float* vec_normal_x,
++        const float* vec_normal_y, const float* vec_normal_z, long count, const CEngineLocalLightArray& light_array);
++    void CalcSWLightingNoClipSeparateMainLightVector(CRGBFloatColour* results, CRGBFloatColour* results_main_light,
++        const C4DVector* position, const float* vec_normal_x, const float* vec_normal_y, const float* vec_normal_z, long count,
++        const CEngineLocalLightArray& light_array);
++#endif
+ #ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_CALCSWLIGHTING_SEPARATE_MAIN
+     // Retail opt-in (Codex pass 24): the original public member, retail 0x00B45A40.
+     void CalcSWLightingNoClipSeparateMainLight(const C3DVector& pos, const C3DVector& normal,

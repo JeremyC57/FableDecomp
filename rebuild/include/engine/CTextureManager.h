@@ -109,6 +109,11 @@ public:
     // (static __fastcall, retail 0x00A698F0). Declarations only.
     bool AllocateTexture(CManagedTexture& texture, unsigned long width, unsigned long height, long mip_levels, const CPixelFormat& format,
                          CManagedTextureOwner* owner);               // 0x00A69B70
+#ifdef FABLE_RETAIL_CTEXTUREMANAGER_ALLOCATEVOLUMETEXTURE
+    // e17 (row 0x009FDE80): Ego_r.pdb ?AllocateVolumeTexture@CTextureManager@@QAE_NAAVCManagedTexture@@KKKJABVCPixelFormat@@PAVCManagedTextureOwner@@@Z, retail 0x00A69C20.
+    bool AllocateVolumeTexture(CManagedTexture& texture, unsigned long width, unsigned long height, unsigned long depth, long mip_levels,
+                               const CPixelFormat& format, CManagedTextureOwner* owner);   // 0x00A69C20
+#endif
     static unsigned long __fastcall CalculateTextureSize(unsigned long width, unsigned long height, bool flag, const CPixelFormat& format);   // 0x00A698F0
 private:
     long GetPoolIndex(unsigned long size);                           // 0x00A69730

@@ -54,7 +54,7 @@ void GFNormalise3DVectors(const C4DVector*in,unsigned long si,C4DVector*out,unsi
 class CShaderRenderManager {public:
  class CLightInfo{ public:CShaderGenericLight Light;bool IsEnabled,UpdateFlag;};
  CMatrix4x4 WorldMatrix;C3DVector CameraPos;const CVertexShaderConstantLayout*CurrentVSConstantLayout;CLightInfo*Lights;C4DVector*LightBuffer;unsigned long LightCount;std::vector<C4DVector>LightAttenuations;IDirect3DDevice9*D3DDevice;unsigned long UpdateFlags;
- void SetVSConstants(long first,const void*data,unsigned long count){if(count)D3DDevice->SetVertexShaderConstantF(first,(const float*)data,count);}
+ void SetVSConstants(long index,const void*data,unsigned long count){if(count==0)return;long hr=D3DDevice->SetVertexShaderConstantF(index,(const float*)data,count);(void)hr;}
  void UpdateObjectSpaceLighting(unsigned long flags);
 };
 void CShaderRenderManager::UpdateObjectSpaceLighting(unsigned long flags)

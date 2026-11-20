@@ -73,6 +73,14 @@ public:
     // Retail opt-in (Codex2026-11-10): FableWin018aee90 and raw return type signed long.
     long GetFontHeight()const{return (long)FontHeight;}
 #endif
+#ifdef FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH_INLINE
+    // Opt-in (hand3c2, row 0x00646762 NPlayerGui::CStatBar::DrawStatBarOnLeft): the header-inline body of
+    // ?GetVStringWidth@CFontBank@@QBEMABVCWideString@@@Z (Ego_r.pdb / FableWin.pdb / Ego_d.pdb), the text of its landed out-of-line
+    // copy 0x0043E4D0 (`return GetVStringExtents(text).X;`). Retail expands it in that row: GetVStringExtents 0x00437210 is called
+    // first and its X is copied into a float temporary (0x0064695F..0x0064696C) before the rest of the caller's expression.
+    // Not with FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH (the declaration-only form below: defining both is a redefinition error).
+    float GetVStringWidth(const CWideString& text) const { return GetVStringExtents(text).X; }
+#endif
 #ifdef FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH
     // Opt-in (chunk 2056 scout, row 0x0048E78E via CSubtitleRenderer::GetTextWidthFromText 0x0048E062): Ego_r.pdb / FableWin.pdb
     // ?GetVStringWidth@CFontBank@@QBEMABVCWideString@@@Z, out of line in retail at 0x0043E4D0 (0x0048E06A `call`; the landed
