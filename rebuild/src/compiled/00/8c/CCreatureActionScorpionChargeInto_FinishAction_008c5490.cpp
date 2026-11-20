@@ -79,7 +79,8 @@ class CThing:public CBaseObject { public:
     }
 };
 class CThingCreatureBase:public CThing { public:bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
-struct __declspec(novtable) CCreatureActionBase {
+// NF155 (q4412): class key V, as both PDBs spell CCreatureActionBase (?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z).
+class __declspec(novtable) CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);

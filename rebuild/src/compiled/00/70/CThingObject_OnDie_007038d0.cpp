@@ -31,7 +31,11 @@ class CThingObjectDef { public:
 
 class CThing {
 public:
-    unsigned long* GetRandomSeed_004c7ae0();    // 0x004C7AE0
+protected:
+    // NF155 (q4259): Ego_r.pdb / FableWin.pdb ?GetPWorldSeed@CThing@@IBEPAKXZ (protected const, out of line at 0x004C7AE0, engine/CThing.h);
+    // was the stand-in GetRandomSeed_004c7ae0.
+    unsigned long* GetPWorldSeed() const;       // 0x004C7AE0
+public:
     void SetSpin_006a4dc0(const C3DVector* spin);   // 0x006A4DC0
 };
 
@@ -55,9 +59,9 @@ void CThingObject::OnDie()
     const CThingObjectDef* def = PDef;
     if (def->OnDeathObject) {
         C3DVector spin;
-        spin.X = 0.1f - GFFloatRandom(0.2f, GetRandomSeed_004c7ae0());
-        spin.Y = 0.1f - GFFloatRandom(0.2f, GetRandomSeed_004c7ae0());
-        spin.Z = GFFloatRandom(0.3f, GetRandomSeed_004c7ae0()) + 0.2f;
+        spin.X = 0.1f - GFFloatRandom(0.2f, GetPWorldSeed());
+        spin.Y = 0.1f - GFFloatRandom(0.2f, GetPWorldSeed());
+        spin.Z = GFFloatRandom(0.3f, GetPWorldSeed()) + 0.2f;
         CThingObject* created = Create(def->OnDeathObject, PeekPos(), -1, 0, 0, "");
         if (created)
             created->SetSpin_006a4dc0(&spin);

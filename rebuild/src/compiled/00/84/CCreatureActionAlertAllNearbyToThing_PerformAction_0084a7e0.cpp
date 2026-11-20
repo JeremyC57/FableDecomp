@@ -14,12 +14,13 @@
 class CThing;
 class CThingCreatureBase;
 
-struct CNearbyAlerter {
-    void __fastcall AlertAllNearbyToThing(CThing* thing, CThingCreatureBase* alerter, float radius);   // 0x0084A720
-};
-
+class CThingSearchTools;
+// NF155 (q5074): 0x0051E490 is Ego_r.pdb / FableWin.pdb ?GetThingSearchTools@CThingManager@@QAEAAVCThingSearchTools@@XZ (engine/
+// CThingManager.h; `[this+24h]->[+20h]`, tail-called by CThing::GetThingSearchTools 0x004C7A50) and 0x0084A720 the landed static
+// ?AlertAllNearby@CCreatureAction_AlertAllNearbyToThing@@SIXABVCThingSearchTools@@ABVCThing@@AAVCThingCreatureBase@@M@Z (Ego_r.pdb
+// 0x00525C90 + FableWin.pdb 0x01DDBE80; was the stand-ins CThingManager::GetNearbyAlerter / CNearbyAlerter::AlertAllNearbyToThing).
 class CThingManager { public:
-    CNearbyAlerter* GetNearbyAlerter();     // 0x0051E490
+    CThingSearchTools& GetThingSearchTools();     // 0x0051E490
 };
 
 class CBaseObject;
@@ -39,6 +40,8 @@ class CThingCreatureBase : public CThing { };
 
 class CCreatureAction_AlertAllNearbyToThing : public CCreatureActionBase { public:
     virtual void PerformAction();           // slot 3
+    static void __fastcall AlertAllNearby(const CThingSearchTools& tools, const CThing& perceived, CThingCreatureBase& alerter,
+                                          float radius);   // 0x0084A720
     long    Radius;                         // +0xa8
     CThing* PThing;                         // +0xac
 };
@@ -46,5 +49,5 @@ class CCreatureAction_AlertAllNearbyToThing : public CCreatureActionBase { publi
 void CCreatureAction_AlertAllNearbyToThing::PerformAction()
 {
     CThingCreatureBase* creature = PCreature.Get();
-    GetThingManager().GetNearbyAlerter()->AlertAllNearbyToThing(PThing, creature, (float)Radius);
+    AlertAllNearby(GetThingManager().GetThingSearchTools(), *PThing, *creature, (float)Radius);
 }

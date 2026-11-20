@@ -1,4 +1,5 @@
 // CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable() -- allow an open shop when its live hero is close or other customers are present; retail 0x00927c80, 287 bytes. Null/dead heroes and strict-distance misses take the other-customer path. The generated state-group header is absent, so the nonvirtual adapter uses shared CAIStateGroupBase/CAIBrain/CThingAICreature/CPlayer/CTCBase headers and documented native views. The creature interface map is at +0x44 (key 0x90); bit 0 at hero +0x91 is the dead flag. Callees: LowerBound 0x40f020, GetShopTC 0x798f50, IsOpeningHours 0x773950, GetAreOtherPeopleInShop 0x799a60, GetPPlayerManager 0x8fcf90, GetMainPlayer 0x449970, GetHeroThing 0x487dc0, GetPosition 0x4c73d0, FindFreeGazePos 0x918880.
+// Leaf: ?IsRunnable@CAIStateGroup_ShopkeeperWatchPlayer@@QAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <math.h>
 #include "engine/CAIStateGroupBase.h"
@@ -9,6 +10,9 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 #include "engine/CTCBase.h"
+// NF155 (q4046): the position getter 0x004C73D0 is Ego_r.pdb / FableWin.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ (quarantine CThing
+// opt-in below; was the stand-in CThingView::GetPosition returning a pointer).
+#define FABLE_RETAIL_QUARANTINE_CTHING_GETPOS
 #include "engine/_quarantine/CThing.h"
 
 class CTCShop;
@@ -25,8 +29,6 @@ struct CCreatureInterfaceMap {
     CVectorMapEntry* LowerBound(long* key); // 0x0040f020
 };
 #include "engine/C3DVector.h"
-struct CThingView : CThing { C3DVector* GetPosition(); // 0x004c73d0
-};
 struct CThingLifeStateRetailView {
     unsigned char _nativePrefix[0x91];
     unsigned char AliveFlags;
@@ -65,8 +67,8 @@ bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
                 if (hero != 0 && (((CThingLifeStateRetailView*)hero)->AliveFlags & 1) == 0) {
                     CTCShop* shop = keeper->GetShopTC();
                     CThing* shopThing = shop->ParentThing;
-                    C3DVector* shopkeeperPosition = ((CThingView*)shopThing)->GetPosition();
-                    C3DVector* heroPosition = ((CThingView*)hero)->GetPosition();
+                    const C3DVector* shopkeeperPosition = &shopThing->GetPos();
+                    const C3DVector* heroPosition = &hero->GetPos();
                     float dx = heroPosition->X - shopkeeperPosition->X;
                     float dy = heroPosition->Y - shopkeeperPosition->Y;
                     float dz = heroPosition->Z - shopkeeperPosition->Z;

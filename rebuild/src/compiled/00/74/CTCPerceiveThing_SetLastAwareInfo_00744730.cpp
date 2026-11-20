@@ -1,9 +1,10 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-struct Vec3 { float x, y, z; };
-
+// Leaf: ?CTCPerceiveThing_SetLastAwareInfo@@YIXPAVCTCPerceiveThing@@@Z
 struct CObj34 { char pad[0x44]; float f44; };
 
+class CTCBase;
 class CThing;
+#include "engine/C3DVector.h"
 class CTCPerceiveThing { public:
     char pad0[4];      // +0x00
     CThing* ParentThing; // +0x04 (Ego_r.pdb CTCBase::ParentThing)
@@ -11,7 +12,7 @@ class CTCPerceiveThing { public:
     char field_c[0xc]; // +0x0c getter subobject (address taken)
     float f18;         // +0x18
     char pad1c[4];     // +0x1c
-    Vec3 v20;          // +0x20 (12 bytes -> +0x2c)
+    C3DVector v20;     // +0x20 (12 bytes -> +0x2c)
     char pad2c[8];     // +0x2c
     CObj34* p34;       // +0x34
 };
@@ -30,13 +31,14 @@ class CThing;
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-extern "C" Vec3* __fastcall Getter_d82ca0(void* self);   // 0xffd82ca0
+// NF155 (q4046): the position getter 0x004C73D0 is Ego_r.pdb / FableWin.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ (engine/CThing.h;
+// was the free stand-in Getter_d82ca0), called on the perceived thing the intelligent pointer at +0x0C holds.
+#include "engine/CThing.h"
 
 void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
 {
-    void* sub = ((CBaseIntelligentPointer*)(self->field_c))->GetPItem();
-    Vec3* v = Getter_d82ca0(sub);
-    self->v20 = *v;
+    const CThing* sub = static_cast<const CThing*>(((CBaseIntelligentPointer*)(self->field_c))->GetPItem());
+    self->v20 = sub->GetPos();
 
     float val = self->p34->f44;
     self->f18 = val;
