@@ -1,3 +1,7 @@
+// NF196 (2026-11-20, q6447): the 0x00436380 call is IS_THING_ALIVE<const CThing*> (FableWin.pdb 0x01AE3C10
+//   ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z; was the renamed stand-in template ??$IS_THING_ALIVE_00436380@PBVCThing@@..). Its body
+//   stays visible in this TU, now the retail body as an inline explicit specialisation (the declaration-only form grades DIFFER 301v301:
+//   VC7.1 then assumes the address-taken local escapes); its COMDAT is byte-identical to the landed owner 0x00436380 (cmpbody, 21 bytes).
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -84,12 +88,14 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
     *(void**)&thing = p;
     return false;
 }
-template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing)   // the 0x00436380 copy (same stand-in body)
+// IS_THING_ALIVE<const CThing*> (0x00436380): the retail body, visible in this TU (an inline explicit specialisation kept out of line),
+// byte-identical to the landed owner 0x00436380; CThing's dead bit is the low bit of the byte at +0x91 (no member in this local model).
+template <> inline __declspec(noinline) bool __fastcall IS_THING_ALIVE<const CThing*>(const CThing* const& thing)
 {
-    void* p = FindRef_free_IS_THING_ALIVE_2();
-    if (!p)
-        return false;
-    *(void**)&thing = p;
+    if (thing != 0) {
+        if (!(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1))
+            return true;
+    }
     return false;
 }
 #pragma auto_inline(on)
@@ -198,7 +204,7 @@ void CDrawPerceivers::Update()
         return;
     for (CRetailThingPointerList::iterator it = Things.begin(); it != Things.end(); ) {
         const CThing* thing = (*it).GetPItem();
-        if (IS_THING_ALIVE_00436380(thing)) {
+        if (IS_THING_ALIVE(thing)) {
             long countBefore = ThingCount;
             if (thing->HasInterface(0x34)) {
                 CTCPerceiveThing* perceive = thing->GetInterfaceUncheckedConst<CTCPerceiveThing>(0x34);

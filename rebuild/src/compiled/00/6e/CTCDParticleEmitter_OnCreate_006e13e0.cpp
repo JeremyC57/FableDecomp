@@ -3,7 +3,7 @@
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E13E0, 251 bytes (+ int3 padding), plain `ret`.
-// Callees: CThing::SetAsGameStatePersisted(bool) @ 0x004C9C10, CTCDParticleEmitter::ClearAttachments @ 0x006E0AF0,
+// Callees: CThing::SetThingScanInclusion(bool) @ 0x004C9C10, CTCDParticleEmitter::ClearAttachments @ 0x006E0AF0,
 //   CThing::GetPos @ 0x004C73D0, NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0 (__fastcall; manifest "GFGetPreMainMemoryUsed"
 //   is a byte twin), CParticleEmitterManager::CreateEmitter(long, const C3DVector&, bool, const CRightHandedSet&) @
 //   0x00AEB6D0, SetPEmitter @ 0x006E1080, __ftol2 @ 0x00BFEA70, operator new @ 0x00BFEA1A, CParticleCreationParameters(
@@ -18,6 +18,9 @@
 //   named identity CRightHandedSet (six immediate stores interleaved with the argument
 //   pushes); CreateEmitter's arguments evaluate right to left (the set, the force bit, GetPos, the type) before
 //   the manager getter; the new creation record is `p = new T(..)` handed to Reset (the null arm pushes eax=0).
+// Naming (NF198, 2026-11-20, q11973): 0x004C9C10 is CThing::SetThingScanInclusion (Ego_r.pdb 0x004CB6B0 + FableWin.pdb 0x01CF8070
+//   ?SetThingScanInclusion@CThing@@QAEX_N@Z; it sets IncludeInThingScans, bit 2 of +0x91, then calls UpdateThingScanInclusion): the local
+//   CThing member was the stand-in SetAsGameStatePersisted_004c9c10 (respelled in place).
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
@@ -34,7 +37,7 @@ public:
 extern bool g_bParticlesEnabled;                // 0x01375754
 extern const CRightHandedSet g_IdentityRHSet;   // 0x01380104
 class CThing { public:
-    void SetAsGameStatePersisted_004c9c10(bool persisted);   // 0x004C9C10
+    void SetThingScanInclusion(bool include);      // 0x004C9C10
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 // NF158 (q4754): in-place respells of the row's existing local model (same class token, now `class` in its PDB namespace).
@@ -83,7 +86,7 @@ class CTCDParticleEmitter { public:
 void CTCDParticleEmitter::OnCreate()
 {
     if (!IndependantObject)
-        ParentThing->SetAsGameStatePersisted_004c9c10(false);
+        ParentThing->SetThingScanInclusion(false);
     ClearAttachments();
     if (g_bParticlesEnabled && ParticleTypeID) {
         CThing* thing = ParentThing;

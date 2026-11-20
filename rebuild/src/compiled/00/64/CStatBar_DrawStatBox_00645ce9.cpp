@@ -13,6 +13,8 @@
 // Layout: as the landed ClearGraphics 0x00645F8D (PrimitiveHandles +0x30, Effects +0x3c) and DrawMoney: def pointer +4
 //   (its effect offset C2DVector at +0x528), last effect +0x5c; CPlayerGuiDef (retail) +0x2c8 float, +0x2cc / +0x2e4 graphic
 //   indices, +0x2d0 / +0x2d8 C2DVector offsets; the game UI's font bank at +0x138.
+// Naming (NF198, 2026-11-20, q11974): the local CFontBank::GetStringWidth is const (Ego_r.pdb 0x00496B2A + FableWin.pdb 0x01A6BC18
+//   ?GetStringWidth@CFontBank@@QBEMABVCWideString@@@Z, engine/CFontBank.h); respelled in place, was the non-const QAE form.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C2DVector { public:
@@ -33,7 +35,7 @@ class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 class C2DExtentsI { public: long Width, Height; };
 class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
 extern CDisplayManager* GPDisplayManager;                    // 0x013B8390
-class CFontBank { public: float GetStringWidth(const CWideString& text); };    // 0x0048DA62
+class CFontBank { public: float GetStringWidth(const CWideString& text) const; };    // 0x0048DA62
 struct CGameUI { unsigned char _pad[0x138]; CFontBank* Font; };        // +0x138
 extern CGameUI* g_pGameUI;                                              // 0x013B8790
 class CPlayerGuiDef { public:

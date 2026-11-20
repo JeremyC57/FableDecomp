@@ -4,7 +4,7 @@
 //
 // Retail 0x008ECBE0, 151 bytes (plain `ret`; vtable 0x0126A6A4 slot 6, Ego_r.pdb
 // `?OnInitialActivate@CTCDegradableBase@@MAEXXZ`; the catalog "CTCDegradableBarrier::vfunc_6" is the
-// slot name). Callees: CThing::SetAsGameStatePersisted(bool) @ 0x004C9C10, CTCDegradableBase::
+// slot name). Callees: CThing::SetThingScanInclusion(bool) @ 0x004C9C10, CTCDegradableBase::
 // OnParentHealthChanged(bool) @ 0x008ECAC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @
 // 0x0040F020 (inlined GetInterface for interface 0x79, bit 25 of +0x2c), the switchable-navigation
 // component's SetAsBlockingNavigation @ 0x00787580 (manifest "CTCSwitchableNavigation::InitialActivate"
@@ -18,6 +18,9 @@
 // memory is pushed as `xor ecx,ecx ; mov cl` (a long parameter gives movzx); the component comes from the out-parameter GetInterface (`mov eax,[eax+4]` ... `mov ecx,eax`).
 // Layout (supersedes any local-model note above): engine/CThingPhysical.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Naming (NF198, 2026-11-20, q11973): 0x004C9C10 is CThing::SetThingScanInclusion (Ego_r.pdb 0x004CB6B0 + FableWin.pdb 0x01CF8070
+//   ?SetThingScanInclusion@CThing@@QAEX_N@Z; it sets IncludeInThingScans, bit 2 of +0x91, then calls UpdateThingScanInclusion): the local
+//   CThing member was the stand-in SetAsGameStatePersisted_004c9c10 (respelled in place).
 #include "fable_compiler.h"
 #define CThingPhysical CThingPhysicalDonor
 #include "engine/CThingPhysical.h"
@@ -46,7 +49,7 @@ class CThing { public:
         }
         return false;
     }
-    void SetAsGameStatePersisted_004c9c10(bool persisted);           // 0x004C9C10
+    void SetThingScanInclusion(bool include);              // 0x004C9C10
 };
 
 class CThingPhysical : public CThingPhysicalDonor {
@@ -93,7 +96,7 @@ class CTCDegradableBase { public:
 void CTCDegradableBase::OnInitialActivate()
 {
     if (GetDefinition()->Degradable)
-        ParentThing->SetAsGameStatePersisted_004c9c10(true);
+        ParentThing->SetThingScanInclusion(true);
     if (PParentThingPhysical->Health < PParentThingPhysical->MaxHealth)
         OnParentHealthChanged(true);
     CTCSwitchableNavigation* navigation;

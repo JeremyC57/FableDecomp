@@ -11,6 +11,8 @@
 // accessor returning the item (`lea ecx,[eax+170h]`; direct member access or a pointer-returning accessor
 // gives `mov ecx ; add ecx`).
 // Model: local (no engine header for this class).
+// Naming (NF198, 2026-11-20, q12058): the local CTCShopKeeper::GetShopTC is const (?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ, the self row
+//   0x00798F50 leaf and the PDB spelling); respelled in place, was the non-const QAE form.
 #include "fable_compiler.h"
 class CTCBase;
 class CThingBuilding;
@@ -65,7 +67,7 @@ class CTCShop { public:
 };
 
 class CTCShopKeeper { public:                          // interface 0x90
-    CTCShop* GetShopTC();                       // 0x00798F50
+    CTCShop* GetShopTC() const;                 // 0x00798F50
 };
 
 class CAIBrain { public:

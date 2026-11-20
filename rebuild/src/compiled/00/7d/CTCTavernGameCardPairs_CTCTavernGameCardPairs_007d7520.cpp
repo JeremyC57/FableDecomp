@@ -1,4 +1,5 @@
-// CTCTavernGameCardPairs::CTCTavernGameCardPairs(CThing* owner) -- constructor: card-base ctor, own vtable, target score from the def's last prize score, pairs state reset
+// CTCTavernGameCardPairs::CTCTavernGameCardPairs(CThing& owner) -- constructor: card-base ctor, own vtable, target score from the def's last prize score, pairs state reset
+// Leaf: ??0CTCTavernGameCardPairs@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe @ 0x007D7520, 113 bytes (`ret 4`; vtable 0x0126F6FC = CTCTavernGameCardPairs per rtti-vtables.tsv).
 // Callees: CTCTavernGameCardBase::CTCTavernGameCardBase(CThing*) 0x008F1CD0; CTCTavernGame::GetTavernGameDef(CDefPointer*)
 //          0x005EA000 (a forwarder: owner->+0x70 def lookup 0x005ED4A0); the def's virtual slot 1 when its count reaches 0.
@@ -7,6 +8,10 @@
 //          +0x300 NumCards (PDB 0x320), +0x31c LastFramePointerMoved (PDB 0x33c), +0x328 PreviousDirection (PDB 0x348).
 // Shape: the three stores follow the def read, so they are body assignments; the def pointer is released through an inline
 //        ReleaseTemporary() with no null test (DecRef/GetRefCount on the ref-count base at +4).
+// Naming (NF198, 2026-11-20, q11993): the CTCTavernGameCard* constructors take the PDB CThing& (Ego_r.pdb + FableWin.pdb
+//   ??0CTCTavernGameCardBase@@QAE@AAVCThing@@@Z 0x008F1CD0, ??0CTCTavernGameCardSorting@@QAE@AAVCThing@@@Z 0x007D5AD0,
+//   ??0CTCTavernGameCardPairs@@QAE@AAVCThing@@@Z 0x007D7520, ??0CTCTavernGameCardBlackjack@@QAE@AAVCThing@@@Z 0x007DB280); respelled in place
+//   on the row's local models as one family with the three Alloc factories 0x004D5A11 / 0x004D5A44 / 0x004D5AAA (were CThing*; same bytes).
 class CThing;
 
 class CPrizeScoreDef { public: float Score; long Mult; };
@@ -39,7 +44,7 @@ struct CDefPointer {
 };
 
 struct CTCTavernGameCardBase {
-    CTCTavernGameCardBase(CThing* owner);      // 0x008F1CD0
+    CTCTavernGameCardBase(CThing& owner);      // 0x008F1CD0
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);   // 0x005EA000
     unsigned char _pad_0x04[0x94];
@@ -55,11 +60,11 @@ struct CTCTavernGameCardPairs : CTCTavernGameCardBase {
     long  NumFramesRepeated;                    // +0x320
     bool  RepeatMovement;                       // +0x324
     long  PreviousDirection;                    // +0x328
-    CTCTavernGameCardPairs(CThing* owner);
+    CTCTavernGameCardPairs(CThing& owner);
     virtual void v00();
 };
 
-CTCTavernGameCardPairs::CTCTavernGameCardPairs(CThing* owner)
+CTCTavernGameCardPairs::CTCTavernGameCardPairs(CThing& owner)
     : CTCTavernGameCardBase(owner)
 {
     CDefPointer def;

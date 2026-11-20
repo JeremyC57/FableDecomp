@@ -83,8 +83,17 @@ public:
     bool SetHornTaskAsAcceptedByThing(CVillageTaskHorn&,const CThing&);
     void SetHornTaskAsCompleted(CIntelligentPointer<CVillageTaskHorn>);
 #endif
-#ifdef FABLE_RETAIL_CTCWIFE_MARRY
-    void DetachFromDummyVillager(CThing*);
+#ifdef FABLE_RETAIL_CTCVILLAGE_TRYTORESPAWNDEFNAMED
+    CThingAICreature* TryToRespawnDefNamed(const CCharString&, const C3DVector&);   // 0x0065B349 (NF196 opt-in: Ego_r.pdb ?TryToRespawnDefNamed@CTCVillage@@QAEPAVCThingAICreature@@ABVCCharString@@ABVC3DVector@@@Z)
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_ENABLEGUARDS
+    void EnableGuards(bool);   // 0x0065C45A (NF196 opt-in: Ego_r.pdb 0x0069DFE7 + FableWin.pdb 0x0216A4EB ?EnableGuards@CTCVillage@@QAEX_N@Z)
+#endif
+#ifdef FABLE_RETAIL_CTCVILLAGE_ISREPORTEDORUNREPORTEDCRIMEKNOWN
+    bool IsReportedOrUnreportedCrimeKnown();   // 0x0065BFFA (NF196 opt-in: Ego_r.pdb 0x0069CECC + FableWin.pdb 0x0216B218 ?IsReportedOrUnreportedCrimeKnown@CTCVillage@@QAE_NXZ)
+#endif
+#if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCVILLAGE_DETACHFROMDUMMYVILLAGER)
+    void DetachFromDummyVillager(CThing*);   // 0x0065B2C4 (NF196 member-specific opt-in FABLE_RETAIL_CTCVILLAGE_DETACHFROMDUMMYVILLAGER: the declaration alone)
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_TAVERN
     // Opt-in (chunk 2020, row 0x00949AB0 CAIStateGroup_GoToPub::IsRunnable): Ego_r.pdb / FableWin.pdb ?IsTavernTime@CTCVillage@@QBE_NXZ

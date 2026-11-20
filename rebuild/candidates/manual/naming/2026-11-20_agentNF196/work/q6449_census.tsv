@@ -1,0 +1,436 @@
+00415fc1		'_Cons_val'	?ConstantFPS@CMainGameComponent@@1JA 
+00415fd3		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0041674a		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+004167a7		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00417001	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00437ae0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00438aa0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0047e196		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+004930d7		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+004a3740		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+004a5a40		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+004c5ea0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+004df48c	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0056f30b		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00574647		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057469f		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057a60a		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057a753		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057b1db		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057b26f		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057b783		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057c4f1		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0057cb7e	released	RELOCATION_MATCH	?g_framesPerSecond@@3JA 
+0057d5a0	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00591e8c		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005b3e4e		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005bd699		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005da490		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005e78f0	NF195	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005eb9e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005ec650		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+005eea9b		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00629f50		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00639930		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006399b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00643f13	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0064d6a8		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00659800	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0065a28f		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0065a5bb	released	DIFFER(211v203)	
+0065a686		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0065a8ee		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0065aa6f		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0065c08a		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006624a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00663510		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00663f50	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00665860	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006666a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0066fab0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0066fc90		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006701a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006819d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006823d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00682810		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006893d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00692400		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00692bc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00692db0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00693030	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00694020		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006946c0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00697710	NF195	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006c3b70	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006c3bd0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006cc800		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006cdb00	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006cec90	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006ced50		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006ceea0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006ceef0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006cfda0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d0180	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d0630	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d0830		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d18a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d1e30		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d53c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d7490		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d7550		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d7570		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d77c0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d80e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d8580	released	RELOCATION_MATCH	?g_FramesPerSecond@@3JA 
+006d8790		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006d8830		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006de8c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006dee80		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e11f0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e13e0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e2840	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e2940		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e2dc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e2ed0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e3ec0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e71f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e75c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e80f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e8600		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e86a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e8c30		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e9140		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006e9d90	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006fd8c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006fdd60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006fed30		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+006fee20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007032f0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00706950		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007132c0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00714e00	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00714f60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00715a70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00716b30		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00716de0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00717450		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0072a530		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007308f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00730f90		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007331c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00733360		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007339e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00734050		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00735fd0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0073aba0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0073acc0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0073af00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00745730		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007470e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00747330	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00747b80	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00747c70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00747da0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007497c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007498e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00749b40		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00749ea0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00750780		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00752000		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0075aec0	released	RELOCATION_MATCH	?g_framesPerSecond@@3JA 
+0075d580		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00766260		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00766330		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007677e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0076efa0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007712f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00779ef0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0077c960		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0077cd50		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0077d190		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00780d80		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007846b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00784920		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007849c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00785b40		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00787c62		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00787ca5		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00787e12	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00788617	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00789a60	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078a390	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078a690	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078be60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078bf00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078c000		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078c210		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0078f6e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007941d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00794c10		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079a6e0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079acc0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079c5f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079c680		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079c6d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079d360		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079f5f0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0079f810	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007a09b0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007a1b20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007a54a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007a6f00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007a9b70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007b0950	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007b0cd0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007b29b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007b57c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bb800		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bba70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bbe34		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bc6fa		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bc8fc	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bcf7f		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bd845		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007bed90		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007befb0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c1000		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c21a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c30e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c5560		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c6760		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c7810		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c78c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007c87f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007cacb0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007cc4d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007ccb00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007cce20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007cdd10		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007ce7a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007cede0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007cf9a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007d5070	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007d62d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007d8e20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007df4b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e0700		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e0750	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e0910		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e0e70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e2da0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e2df0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e4e30		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e5950		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e62d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e6450		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007e6750		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f1170		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f1410		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f1930		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f2100	released	'SetLifeTime'	?ConstantFPS@CMainGameComponent@@1JA 
+007f26b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f2dc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f53b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f5ae0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007f8e20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007fb610		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007fc7a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007fc7d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007fd3d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+007fde00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00804020		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0080c350		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0080c3c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0080f210		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0080f5e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0080f870		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810e50		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810e60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810ea0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810eb0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810ec0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810ed0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00810ee0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00820ab0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00820b80		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00835fd0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00836260	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008427e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008522b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00852350		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008545f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008546a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00854810		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00856250		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00856290		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00856a20	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008579d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00857b70	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00858a20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008597a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00859a70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0085b720		namespace'::CGetMatchingStrikeEndEventName::operator()	?ConstantFPS@CMainGameComponent@@1JA 
+00861950		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00872630		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00878b00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00881690		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00881780		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00881820	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00881860		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0088e080		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0088f8d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00890fc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00892530	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00892610	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008926d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0089e190		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008af500		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008af5f0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008b06e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008c0790		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008c29f0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008c3e90	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008c6db0	released	RELOCATION_MATCH	?g_framesPerSecond@@3JA 
+008cf7d0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008d6920		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008d7270		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008d84f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008d86e0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008d99b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008d9e30	NF194	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008da2e0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008dae10		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008db030	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008db0e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008db190		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008dbb30	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008ddfb0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008de6a0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e0060		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e07f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e72d0	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e7a00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e7b90	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e8830	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e9080	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e9110		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008e9850	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008edff0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008f06f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008f4b00	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+008fa3b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00905550		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00906fa0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00907010		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00907670	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00908da0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009092c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009093f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090c1a0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090c540		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090c800		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090d030		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090e5d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090f0d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090f470	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090f690		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090f710		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0090fdb0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00911c20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00913f30	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009143e0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00915350		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00915b60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00917bb0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00918b90		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009190f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009191b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00919a10		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0091a390	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0091cdc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00922750		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00924c70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00926060		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0092b110		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0092b360	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0092b3a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0092da20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0092fab0	NF195	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00931010	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00933310		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00934090		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009341c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009347b0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00934920	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009350c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009357f0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00937b10		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00937c20		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00939ed0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0093a080	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0093a540		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0093ae80		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0093b1d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0093b740		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0093b8b0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00940ba0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00941520		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00941cf0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00941d70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009426d0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00942c70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00944940		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00945060		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00946dd0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009474f0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00948ef0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0094a840		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0094c050		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0094ce60	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0094f730		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0094fe30	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0094feb0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00950950	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00952890	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00954b50	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00954cd0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00956e70		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00956fe0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0095d0e0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0095f580		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009613a0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00967b40		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+009692c0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0096aad0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0096af60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0096c9a0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0096f770		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0096fcd0	NF196	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0096ff10	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00970f30		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00973dc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00974aa0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+00977e00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0097bda0		RELOCATION_MATCH	
+00980770		RELOCATION_MATCH	
+00985440		RELOCATION_MATCH	
+0121df1c		initializer	
+0121e3d0	released	namespace'::`dynamic	
+0121ec90		'g_scaled_013bad24'	
+0121ed60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0121f220	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0121f260	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0121f7d0	released	initializer	?ConstantFPS@CMainGameComponent@@1JA 
+0121f7e0	released	RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+0121f800	released	initializer	?ConstantFPS@CMainGameComponent@@1JA 
+01221b60		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221b80	released	namespace'::`dynamic	?ConstantFPS@CMainGameComponent@@1JA 
+01221b90		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221ba0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221bf0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221c00		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221c10		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221cc0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01221cf0		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+01223c80		RELOCATION_MATCH	?ConstantFPS@CMainGameComponent@@1JA 
+DONE

@@ -21,8 +21,9 @@ class CFaction;
 #include "engine/C3DVector.h"
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 enum EReactionSpeechType { REACTION_SPEECH_NONE = 0, EReactionSpeechType_Force32 = 0x7fffffff };
-class CBaseObject { public:
-    virtual ~CBaseObject();                             // 0x0099A430
+class CBaseObject { protected:
+    virtual ~CBaseObject();                             // 0x0099A430 ??1CBaseObject@@MAE@XZ (protected virtual in both PDBs)
+public:
     CBaseObjectPointer* IntelligentPointer;             // +0x04
 protected:
     CBaseObject();                                      // 0x0099A380 ??0CBaseObject@@IAE@XZ (protected in both PDBs)

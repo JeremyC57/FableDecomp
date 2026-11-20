@@ -1,0 +1,7 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+head_00496070.obj : error LNK2005: "public: void __thiscall CFrontendGameComponent::SetMode(long)" (?SetMode@CFrontendGameComponent@@QAEXJ@Z) already defined in head_00495fe0.obj
+head_00ab6240.obj : error LNK2005: "public: void __thiscall CKeyboardDX::UpdateAcquired(void)" (?UpdateAcquired@CKeyboardDX@@QAEXXZ) already defined in head_00ab6100.obj
+head_00ab69f0.obj : error LNK2005: "public: void __thiscall CKeyboardDX::UpdateAcquired(void)" (?UpdateAcquired@CKeyboardDX@@QAEXXZ) already defined in head_00ab6100.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found

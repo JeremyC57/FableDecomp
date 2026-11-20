@@ -23,6 +23,8 @@
 // (`found = last; if (it != last && !(wanted < it->type)) found = it;`: retail keeps last in edi and overwrites it), 3 CTCHeroMorph.
 // Layout: retail Morality +0x28 (PDB +0x30), MoralityChangingEnabled +0x2C (PDB +0x34).
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsChild 0x00661F70 is const (?IsChild@CThingCreatureBase@@QBE_NXZ, Ego_r.pdb).
+// Naming (NF198, 2026-11-20, q12049): the local CTCHeroStats::GetMoralityPercentage is const (Ego_r.pdb 0x0056DA5D + FableWin.pdb
+//   ?GetMoralityPercentage@CTCHeroStats@@QBEMXZ; the self row 0x0057A690 defines it); respelled in place, was the non-const QAE form.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -165,7 +167,7 @@ class CTCHeroStats : public CTCBase { public:
 
     const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void CheckForNewExpressions();                   // 0x0057BE71
-    float GetMoralityPercentage();                   // 0x0057A690
+    float GetMoralityPercentage() const;             // 0x0057A690
     void SetMorality(long morality);
 };
 

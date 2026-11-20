@@ -22,6 +22,13 @@ public:
     // symbol), `__fastcall` with the vector in ecx. Declaration only. The includer has std::vector and CWideString in scope.
     static void __fastcall GetProfileNames(std::vector<CWideString>& names);   // 0x004959E0
 #endif
+#ifdef FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETSAVENAMES
+    // Retail opt-in (NF197, 2026-11-20, row 0x00495830): Ego_r.pdb 0x0049E440 + FableWin.pdb 0x01A46960
+    // ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z (public static
+    // __fastcall, the vector in ecx; SetMode 0x00495FE0 passes &SaveNames +0x1E1C). Declaration only; the includer has std::vector
+    // and CWideString in scope.
+    static void __fastcall GetSaveNames(std::vector<CWideString>& names);      // 0x00495830
+#endif
 #ifdef FABLE_RETAIL_CFRONTENDGAMECOMPONENT_CLEARSTRING
     // Retail opt-in (NF191, row 0x004944C0): Ego_r.pdb 0x0049D0E0 + FableWin.pdb 0x01A46A80 ?ClearString@CFrontendGameComponent@@AAEXXZ
     // (private). Ego_r.pdb layout: char String[128] +0x168, long StringPos +0x1E8; the rest stays opaque. Same size as the default path.

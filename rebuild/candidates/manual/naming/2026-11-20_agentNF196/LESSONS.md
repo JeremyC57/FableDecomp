@@ -1,0 +1,8 @@
+# NF196 lessons
+
+- `#pragma optimize` placement decides pick-any COMDAT bytes. In rows that need `("s", on)` / `("y", off)`, put the pragmas after the shared includes, so that header inline bodies (list iterator, `??9`, bitset::test) compile as their owners did. Check every same-TU COMDAT with cmpbody against the owner object, not just the graded body.
+- Declaring an explicit template specialisation is not enough when the caller's bytes depend on seeing the body (0x0064A1AE: DIFFER 301v301). An inline `__declspec(noinline)` explicit specialisation carrying the retail body keeps the caller right and the COMDAT owner-identical.
+- VC7.1 orders an inline accessor call like a real call: its load moves ahead of the other calls in the expression. A "name-only" respell from an extern global to a `static` accessor therefore changes bytes whenever the expression also calls something (q6449 ConstantFPS: 0x0057CB7E / 0x006D8580; two more rows differed for other FPU-scheduling reasons). Grade before claiming a respell is name-only.
+- reloc_bindings.tsv can be stale. In q6449 two worklist witnesses were already respelled in HEAD. Census the REFS rows with a real compile before porting anything.
+- Generated sibling drafts inherit the template's opt-in macros and comments. Grep every generated file for the source class's macro before grading it (the stray OWNERMAIN define in the q6523 / q6532 drafts).
+- A HEAD grade of RELOCATION_MATCH with an empty binding-pair column for the target (q6449: six rows) means the census symbol scan missed the reference, not that the row is wrong. Read the source before calling it a wrong binder.

@@ -21,6 +21,9 @@
 //   ??$IS_THING_ALIVE@VCBaseIntelligentPointer@@@@YI_NABVCBaseIntelligentPointer@@@Z). q4522: the hit test takes a CThing* copy
 //   (T = CThing*) and binds FableWin.pdb ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z at 0x0040DCE0 (was the landed fitted
 //   `const CThing* constHit` with IS_THING_ALIVE<const CThing*>, which bound the PBV instance, retail 0x00436380, at 0x0040DCE0).
+// NF196 (2026-11-20, q6447): the target test calls IS_THING_ALIVE<const CThing*> (0x00436380 is that instance: FableWin.pdb 0x01AE3C10
+//   ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z; this function calls both instances, PAV 0x0040DCE0 and PBV 0x00436380): the target
+//   local is a const CThing*; was the renamed template ??$IS_THING_ALIVE_00436380@PAVCThing@@@@YI_NABQAVCThing@@@Z on a CThing* local.
 // Inferred: the copy local `hitThing` (the landed form had the same copy as `constHit`): passing `hit` itself by reference takes its
 //   address and gives DIFFER(159v159) (graded); with the copy the row is RELOCATION_MATCH. Other row-local models unchanged.
 #pragma optimize("y", off)
@@ -45,7 +48,6 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
-template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing);   // the 0x00436380 copy (CThing*)
 struct CTCShotDefinitionBase {
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
@@ -69,10 +71,10 @@ struct CTCShotDefinitionDrainLife : CTCShotDefinitionBase {
 void CTCShotDefinitionDrainLife::UpdateCollision(bool* finished)
 {
     CTCShotDefinitionBase::UpdateCollision(finished);
-    CThing* target = ((CThing*)PTargetThing.GetPItem());
+    const CThing* target = ((CThing*)PTargetThing.GetPItem());
     CThing* hit = ((CThing*)PBestCollisionThing.GetPItem());
     CThing* hitThing = hit;
-    if (!IS_THING_ALIVE_00436380<CThing*>(target)) {
+    if (!IS_THING_ALIVE(target)) {
         if (IS_THING_ALIVE(PSoulEffect))
             ((CThing*)PSoulEffect.GetPItem())->Kill(true);
         *finished = true;

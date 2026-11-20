@@ -1,0 +1,17 @@
+pickany_check.py: no newly defined symbol maps to another address (empty).
+Copies compared by hand against new_005ed270.obj (cmpbody.py), every includer object defining them:
+??0?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAE@PAVCScriptModuleBase@NCameraModes@@@Z
+  007a9b10 sizes 78 78 bytes equal True relocs equal True
+  008926d0 sizes 78 78 bytes equal True relocs equal True
+  008924b0 sizes 78 78 bytes equal True relocs equal True
+  0072a090 sizes 78 78 bytes equal True relocs equal True
+  005ed270 sizes 78 78 bytes equal True relocs equal True
+??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+  007a9b10 sizes 25 25 bytes equal True relocs equal True
+  008926d0 sizes 25 25 bytes equal True relocs equal True
+  008924b0 sizes 25 25 bytes equal True relocs equal True
+  00570332 sizes 25 25 bytes equal False relocs equal True
+  00571280 sizes 25 25 bytes equal False relocs equal True
+  00603000 sizes 25 25 bytes equal True relocs equal True
+  0072a090 sizes 25 25 bytes equal True relocs equal True
+  005ed270 sizes 25 25 bytes equal True relocs equal True

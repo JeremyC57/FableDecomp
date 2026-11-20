@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x009A4FB0	?IsApplicationInputFocus@CSystemManager@@QAE_NXZ	Ego_r.pdb 0x00AF3170 + FableWin.pdb 0x02F8AFC0 (the self row Leaf); ?HasInputFocus@CSystemManager@@QAE_NXZ is in no PDB name set	?HasInputFocus@CSystemManager@@QAE_NXZ (engine/CSystemManager.h FABLE_RETAIL_CSYSTEMMANAGER_FOCUS + engine/CJoystickDX.h UpdateAcquired body; row 0x00AB6E40 binds it through them)

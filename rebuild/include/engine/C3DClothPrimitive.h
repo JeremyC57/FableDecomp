@@ -37,7 +37,15 @@ public:
     // program's RemapBoneIndices (retail `mov ecx,[ecx+4] ; jmp`). Declaration only (needs stlport/fable_map.h); no layout change.
     void RemapBoneIndices(std::map<unsigned long, unsigned long>& remap);
 #endif
+#ifdef FABLE_RETAIL_C3DCLOTHPRIMITIVE_VIRTUAL_DTOR
+    // Retail opt-in (NF197, 2026-11-20, row 0x00A93A60 CCountedPointer<C3DClothPrimitive>::DeleteData): the vptr as the class's own --
+    // vtable slot 0 is the scalar deleting destructor (the deleter's `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]`), as
+    // FABLE_RETAIL_CPARTICLESIMULATIONRENDERDATA_VIRTUAL_DTOR. Same layout. Not combinable with FABLE_RETAIL_C3DCLOTHPRIMITIVE_CTOR
+    // (which declares the destructor non-virtual).
+    virtual ~C3DClothPrimitive();
+#else
     void* _vftable;
+#endif
     CCountedPointer<CParticleProgram> ParticleProgram;                              // +0x04
     unsigned long PrimitiveIndex;                                                   // +0x0C
     unsigned long MaterialIndex;                                                    // +0x10

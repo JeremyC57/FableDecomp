@@ -645,6 +645,12 @@ public:
     // Declaration only; no layout change.
     void FinishCurrentAction();                                          // 0x00662650
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETRANDOMANIMFROMNAME
+    // NF196 opt-in (q6456; row 0x0093C6D0 CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation) for the flattened view, the same declaration
+    // as the retail branch's ACTIONQUERY block: Ego_r.pdb / FableWin.pdb ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z,
+    // out of line in retail at 0x00662D80. Declaration only; no layout change.
+    const class CAnimationEntry& GetRandomAnimFromName(const CCharString& name, long index) const;   // 0x00662D80
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_ANIMSPEED
     // NF55 opt-in (2026-11-17, row 0x00692BC0 CCreatureActionBase::GetFrameUpdateTime) for the flattened view, the same declaration as the
     // retail branch's UPDATEANIMATION block: Ego_r.pdb / FableWin.pdb ?GetAnimationSpeedMultiplier@CThingCreatureBase@@QBEMXZ, out of line

@@ -1,4 +1,5 @@
-// CTCTavernGameCardSorting::CTCTavernGameCardSorting(CThing* owner) -- constructor: card-base ctor, own vtable, per-card time limits 2,4,..,104 s and cleared best times, round targets, target time from the def's last prize score
+// CTCTavernGameCardSorting::CTCTavernGameCardSorting(CThing& owner) -- constructor: card-base ctor, own vtable, per-card time limits 2,4,..,104 s and cleared best times, round targets, target time from the def's last prize score
+// Leaf: ??0CTCTavernGameCardSorting@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe @ 0x007D5AD0, 150 bytes (`ret 4`; vtable 0x0126F5B4 = CTCTavernGameCardSorting per rtti-vtables.tsv).
 // Callees: CTCTavernGameCardBase::CTCTavernGameCardBase(CThing*) 0x008F1CD0; CTCTavernGame::GetTavernGameDef(CDefPointer*)
 //          0x005EA000; the def's virtual slot 1 when its count reaches 0.
@@ -7,6 +8,10 @@
 //          TimeLimitBestNumRounds +0x31c (PDB +0x338/+0x33c). Def: PrizeScores vector (8-byte {Score, Mult}) end at +0x178.
 // Shape: the loop counter is strength-reduced to 2*(i+1) and kept in the dead `owner` slot for the `fild`; the def pointer
 //        released with no null test through the def's inline ReleaseTemporary().
+// Naming (NF198, 2026-11-20, q11993): the CTCTavernGameCard* constructors take the PDB CThing& (Ego_r.pdb + FableWin.pdb
+//   ??0CTCTavernGameCardBase@@QAE@AAVCThing@@@Z 0x008F1CD0, ??0CTCTavernGameCardSorting@@QAE@AAVCThing@@@Z 0x007D5AD0,
+//   ??0CTCTavernGameCardPairs@@QAE@AAVCThing@@@Z 0x007D7520, ??0CTCTavernGameCardBlackjack@@QAE@AAVCThing@@@Z 0x007DB280); respelled in place
+//   on the row's local models as one family with the three Alloc factories 0x004D5A11 / 0x004D5A44 / 0x004D5AAA (were CThing*; same bytes).
 class CThing;
 
 class CPrizeScoreDef { public: float Score; long Mult; };
@@ -39,7 +44,7 @@ struct CDefPointer {
 };
 
 struct CTCTavernGameCardBase {
-    CTCTavernGameCardBase(CThing* owner);      // 0x008F1CD0
+    CTCTavernGameCardBase(CThing& owner);      // 0x008F1CD0
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);   // 0x005EA000
     unsigned char _pad_0x04[0x94];
@@ -53,11 +58,11 @@ struct CTCTavernGameCardBase {
 struct CTCTavernGameCardSorting : CTCTavernGameCardBase {
     long TimeLimitNumRoundsToWin;               // +0x318
     long TimeLimitBestNumRounds;                // +0x31c
-    CTCTavernGameCardSorting(CThing* owner);
+    CTCTavernGameCardSorting(CThing& owner);
     virtual void v00();
 };
 
-CTCTavernGameCardSorting::CTCTavernGameCardSorting(CThing* owner)
+CTCTavernGameCardSorting::CTCTavernGameCardSorting(CThing& owner)
     : CTCTavernGameCardBase(owner)
 {
     for (long i = 0; i < 52; ++i) {

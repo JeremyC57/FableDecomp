@@ -47,6 +47,13 @@ public:
     // (float, void*) arguments; the catalog's `_Cons_val<...>` label is a propagated one). Declaration only.
     void ScreenFilterFadeOut(float time, void* handle);                  // 0x006B83F0
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_RADIALBLURFADEOUT
+    // Opt-in (NF197, 2026-11-20, row 0x006B82E0): Ego_r.pdb 0x006F4280 + FableWin.pdb 0x0246CEA0
+    // ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z = retail 0x006B82E0 (forwards to the priority stack's
+    // DeleteRadialBlurEntry 0x00881820, the ScreenFilterFadeOut shape; the catalog's `_Cons_val<...>` label is a propagated one).
+    // Declaration only.
+    void RadialBlurFadeOut(float time, void* handle);                    // 0x006B82E0
+#endif
 private:
     CEnvironment* Environment;                                           // +0x00
     CEnvironmentSpellEffectInterface* SpellInterface;                    // +0x04

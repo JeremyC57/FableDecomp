@@ -1,0 +1,3 @@
+GREW 00ad5240 4 -> 5 ?_M_erase@?$_Rb_tree@KV?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@ row 00ad71b0 SAME
+GREW 01238768 1 -> 2 ??_7CFrontendGameComponent@@6BCBase@@@ row 00496070 SAME
+shrank [('00993eb0', 8, 6), ('0099a430', 5, 3), ('00a93a60', 2, 1), ('004959e0', 2, 1)]

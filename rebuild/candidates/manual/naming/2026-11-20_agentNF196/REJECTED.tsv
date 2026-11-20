@@ -1,0 +1,2 @@
+entry	address	claim	reason
+q6447	0x00436380	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	That symbol is 0x0040DCE0 (landed self Leaf, FableWin.pdb 0x018962E0); 0x00436380 is the separate const CThing* instance (FableWin.pdb 0x01AE3C10 ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z; 0x007BDAC7 calls both). Applied the PBV spelling instead (APPLIED).

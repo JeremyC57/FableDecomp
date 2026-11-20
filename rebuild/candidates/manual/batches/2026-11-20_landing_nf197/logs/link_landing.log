@@ -1,0 +1,6 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+new_00ab6240.obj : error LNK2005: "public: void __thiscall CKeyboardDX::UpdateAcquired(void)" (?UpdateAcquired@CKeyboardDX@@QAEXXZ) already defined in new_00ab6100.obj
+new_00ab69f0.obj : error LNK2005: "public: void __thiscall CKeyboardDX::UpdateAcquired(void)" (?UpdateAcquired@CKeyboardDX@@QAEXXZ) already defined in new_00ab6100.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found

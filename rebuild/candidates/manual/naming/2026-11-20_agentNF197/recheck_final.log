@@ -1,0 +1,93 @@
+addr       parity           behav  name
+00495830   WARN STANDIN_LEAF ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z (catalog CFrontendProfileList::Refresh; names another function)
+00495830   RELOCATION_MATCH PASS   CFrontendProfileList::Refresh
+00495fe0   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00495fe0   WARN RELOC_NAME: ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z -> 00495830 labelled 'CFrontendProfileList::Refresh'
+00495fe0   RELOCATION_MATCH PASS   CFrontendGameComponent::SetMode
+00496070   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00496070   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00496070   WARN RELOC_NAME: ?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ -> 004065d0 labelled 'CUserProfileManager::GetAutoSaveFileName'
+00496070   RELOCATION_MATCH PASS   CFrontendGameComponent::CFrontendGameComponent
+00496eb0   MATCH            PASS   GFWrapLimit<long,int,int>
+005db1e0   RELOCATION_MATCH PASS   CAnimComponentFlags::TransferBinaryOut
+00614620   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00614620   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00614620   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00614620   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryOut
+00687210   WARN STANDIN_LEAF ??1CMessageEvent@@UAE@XZ (catalog _unattributed::~CAggregate_00687210; names another function)
+00687210   RELOCATION_MATCH PASS   _unattributed::~CAggregate_00687210
+00687730   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CTCEnemy (engine/CTCEnemy.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CMessageEvent (engine/CMessageEvent.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CMessageEventDef (engine/CMessageEventDef.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00687730   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+00687730   RELOCATION_MATCH PASS   CMessageEventManager::AddMessage
+006b82e0   WARN STANDIN_LEAF ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+006b82e0   RELOCATION_MATCH PASS   std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00890150   WARN RELOC_NAME: ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z -> 006b82e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00890150   RELOCATION_MATCH PASS   CGameScriptInterface::RadialBlurFadeOut
+009e41d0   MATCH            PASS   _global::SetMemberConst_009e41d0
+00a55a30   RELOCATION_MATCH PASS   C2DBoxF::ToC2DBoxI
+00a93a60   MATCH            PASS   sub_00a93a60
+00a94df0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z -> 00a93a60 labelled 'sub_00a93a60'
+00a94df0   RELOCATION_MATCH PASS   CCountedPointer_00a93a60::Reset
+00aad150   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00aad150   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00aad150   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00aad150   WARN SHARED_HEADER_AVAILABLE CWaveFile (engine/CWaveFile.h)
+00aad150   WARN SHARED_HEADER_AVAILABLE CWaveLoader (engine/CWaveLoader.h)
+00aad150   RELOCATION_MATCH PASS   CWaveLoader::SaveWaveFile
+00ab4910   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab4910   WARN SHARED_HEADER_AVAILABLE CMouseDX (engine/CMouseDX.h)
+00ab4910   RELOCATION_MATCH PASS   CMouseDX::GetExclusiveModeDeviceMouseEvent
+00ab6100   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab6100   RELOCATION_MATCH PASS   CKeyboardDX::UpdateAcquired
+00ab6240   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00ab6240   WARN SHARED_HEADER_AVAILABLE CMaintainedEvent (engine/CMaintainedEvent.h)
+00ab6240   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab6240   WARN RELOC_NAME: __chkstk -> 00bfea30 labelled '__chkstk'
+00ab6240   WARN RELOC_NAME: ?EmptyEventStore@CKeyboardDX@@QAEXXZ -> 00a66760 labelled '_global::SetMemberConst_00a66760'
+00ab6240   WARN RELOC_NAME: ?SetAsKeyboardKeyPressed@CInputEvent@@QAEXW4EInputKey@@N@Z -> 00a03bf0 labelled 'CInputEvent::SetAsKeyboardKeyHeld'
+00ab6240   RELOCATION_MATCH PASS   CKeyboardDX::UpdateKeyEvents
+00ab6450   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab6450   RELOCATION_MATCH PASS   CKeyboardDX::SetExclusiveMode
+00ab69f0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab69f0   WARN RELOC_NAME: ?UpdateEvents@CKeyboardDX@@QAEXXZ -> 00ab6240 labelled 'CKeyboardDX::UpdateKeyEvents'
+00ab69f0   RELOCATION_MATCH PASS   CKeyboardDX::Update
+00ab6d60   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00ab6d60   WARN SHARED_HEADER_AVAILABLE CJoystickDX (engine/CJoystickDX.h)
+00ab6d60   RELOCATION_MATCH PASS   CJoystickDX::UpdateAcquired
+00ad4a70   RELOCATION_MATCH PASS   QuadricOptimiserInternals::CUniqueVertex::~CUniqueVertex
+00ad71b0   RELOCATION_MATCH PASS   QuadricOptimiserInternals::COptimisedVertex::Kill
+
+WINS: 23
+  00495830 RELOCATION_MATCH CFrontendProfileList::?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00495fe0 RELOCATION_MATCH CFrontendGameComponent::?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z
+  00496070 RELOCATION_MATCH CFrontendGameComponent::??0CFrontendGameComponent
+  00496eb0 MATCH GFWrapLimit::??$GFWrapLimit@JHH@@YIXAAJABH1@Z
+  005db1e0 RELOCATION_MATCH CAnimComponentFlags::?TransferBinaryOut@CAnimComponentFlags@@UBEXAAVCDataOutputStream@@@Z
+  00614620 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut
+  00687210 RELOCATION_MATCH _unattributed::??1CMessageEvent@@UAE@XZ
+  00687730 RELOCATION_MATCH CMessageEventManager::?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventDef@@ABVC3DVector@@PAVCThing@@2J@Z
+  006b82e0 RELOCATION_MATCH _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z
+  00890150 RELOCATION_MATCH CGameScriptInterface::?RadialBlurFadeOut@CGameScriptInterface@@UBEXMPAX@Z
+  009e41d0 MATCH _global::?EmptyEventStore@CJoystick@@IAEXXZ
+  00a55a30 RELOCATION_MATCH C2DBoxF::?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ
+  00a93a60 MATCH _gapscan::?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z
+  00a94df0 RELOCATION_MATCH CCountedPointer_00a93a60::?Reset@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXPAVC3DClothPrimitive@@@Z
+  00aad150 RELOCATION_MATCH CWaveLoader::?SaveWaveFile@CWaveLoader@@QAEXABVCWaveFile@@AAVCDataOutputStream@@@Z
+  00ab4910 RELOCATION_MATCH CMouseDX::GetExclusiveModeDeviceMouseEvent
+  00ab6100 RELOCATION_MATCH CKeyboardDX::UpdateAcquired
+  00ab6240 RELOCATION_MATCH CKeyboardDX::UpdateKeyEvents
+  00ab6450 RELOCATION_MATCH CKeyboardDX::?SetExclusiveMode@CKeyboardDX@@UAE_N_N@Z
+  00ab69f0 RELOCATION_MATCH CKeyboardDX::Update
+  00ab6d60 RELOCATION_MATCH CJoystickDX::UpdateAcquired
+  00ad4a70 RELOCATION_MATCH CTwoLongSets::??1CUniqueVertex@QuadricOptimiserInternals@@QAE@XZ
+  00ad71b0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedVertex::?Kill@COptimisedVertex@QuadricOptimiserInternals@@QAEXXZ
