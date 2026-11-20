@@ -30,7 +30,7 @@ extern "C" __declspec(dllimport) int __stdcall DialogBoxIndirectParamA(HINSTANCE
 
 #define RT_DIALOG_ID ((const char*)5)
 
-extern unsigned short g_ModuleLanguage;   // 0x0138E060
+extern unsigned short gApplicationLanguage;   // 0x0138E060 ?gApplicationLanguage@@3GA (Ego_d.pdb public; the DisplayErrorDialog 0x0099DCB0 spelling, engine/ErrorDialog.h; NF183 q4243)
 
 int __fastcall LocalizedDialogBoxByLanguage(HINSTANCE hInstance, const char* templateName, HWND parent,
                                             DLGPROC dialogProc, unsigned short language)
@@ -49,10 +49,10 @@ int __fastcall LocalizedDialogBoxByLanguage(HINSTANCE hInstance, const char* tem
 
 extern "C" int __fastcall LocalizedDialogBox(HINSTANCE hInstance, const char* templateName, HWND parent, DLGPROC dialogProc)
 {
-    int result = LocalizedDialogBoxByLanguage(hInstance, templateName, parent, dialogProc, g_ModuleLanguage);
+    int result = LocalizedDialogBoxByLanguage(hInstance, templateName, parent, dialogProc, gApplicationLanguage);
     if (result != -1)
         return result;
-    if (g_ModuleLanguage != 0x409) {
+    if (gApplicationLanguage != 0x409) {
         result = LocalizedDialogBoxByLanguage(hInstance, templateName, parent, dialogProc, 0x409);
         if (result != -1)
             return result;

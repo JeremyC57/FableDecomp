@@ -1,0 +1,4 @@
+0099d470 RELOCATION_MATCH ?g_ModuleLanguage@@3GA 
+0099d520 RELOCATION_MATCH ?g_ModuleLanguage@@3GA 
+0099dcb0 int3 ?gApplicationLanguage@@3GA 
+0099e260 RELOCATION_MATCH ?g_LanguageID@@3GA 

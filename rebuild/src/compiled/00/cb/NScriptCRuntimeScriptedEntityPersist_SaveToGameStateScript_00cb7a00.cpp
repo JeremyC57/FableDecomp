@@ -4,7 +4,7 @@
 // holds PersistScripts, a CVectorMap<unsigned __int64, CPersistInfo> whose element vector begins at +0 (begin
 // +0x00, end +0x04); each element is a 24-byte pair<unsigned __int64, CPersistInfo> and the persist info's
 // 64-bit id sits at +0x08, its script text at +0x10.
-// Callees: CCharString(unsigned __int64) @ 0x0099F930, operator+(const char*, const CCharString&) @ 0x0099F690,
+// Callees: GFUHUGEToCharString(unsigned __int64) @ 0x0099F930, operator+(const char*, const CCharString&) @ 0x0099F690,
 // operator+(const CCharString&, const char*) @ 0x0099F600 (both __fastcall, hidden result in ecx),
 // CCharString::operator+=(const CCharString&) @ 0x0099F0A0, operator+=(const char*) @ 0x0099F100,
 // ~CCharString @ 0x0099EAE0. Literals: "\r\nSTART_NEW_ENTITY_SCRIPT " 0x012C162C, "\r\n" 0x012397F8,
@@ -15,11 +15,14 @@ class CCharStringData;
 
 class CCharString { public:
     CCharStringData* PStringData;
-    explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
     const CCharString& operator+=(const char* text);                   // 0x0099F100
 };
+// Naming (NF183, 2026-11-20, q4628): 0x0099F930 is the free __fastcall GFUHUGEToCharString (Ego_r.pdb + FableWin.pdb
+//   ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z, the spelling the landed 0x004FB990 / 0x004B5EE0 / 0x008304A0 bind), was a stand-in
+//   CCharString(unsigned __int64) constructor (same registers: hidden result in ecx, the value on the stack).
+CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value);   // 0x0099F930
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 
@@ -48,7 +51,7 @@ void CRuntimeScriptedEntityPersist::SaveToGameStateScript(CCharString& out)
 {
     for (CEntry* it = m_begin; it != m_end; ++it)
     {
-        out += "\r\nSTART_NEW_ENTITY_SCRIPT " + CCharString(it->second.EntityID) + "\r\n";
+        out += "\r\nSTART_NEW_ENTITY_SCRIPT " + GFUHUGEToCharString(it->second.EntityID) + "\r\n";
         out += it->second.Script;
         out += "END_NEW_ENTITY_SCRIPT\r\n";
     }

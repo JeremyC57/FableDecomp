@@ -1,6 +1,6 @@
 // CMouseDX::SetPos(const C2DVector* position) -- store the position and its cached copy, then (unless cursor warping is disabled) move the OS cursor to the window's client origin plus the position
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB4700, 174 bytes, `ret 4`.
-// Callees: ResolveMouseWindowOwner @ 0x009A4EC0 (free helper; its +0x94 is the window handle), ClientToScreen (iat 0x01440304),
+// Callees: GFGetSystemManager @ 0x009A4EC0 (its +0x94 ApplicationWinHandle is the window handle), ClientToScreen (iat 0x01440304),
 //          GetClientRect (iat 0x01440338), OffsetRect (iat 0x014403A4), SetCursorPos (iat 0x014403A0), _ftol @ 0x00BFEA70.
 // Layout: CMouseDX PositionX +0x3414, PositionY +0x3418, CachedPositionX +0x3434, CachedPositionY +0x3438, DisableCursorWarp +0x343c.
 // Shape: the cached copies are read back from the just-stored members (store-to-load forwarding gives retail's `mov eax,ecx`
@@ -16,15 +16,13 @@ class C2DVector { public: float X; float Y; };
 struct CMousePoint { long x; long y; };
 struct CMouseRect { long left; long top; long right; long bottom; };
 
-struct CMouseWindowOwner
-{
-    u8   pad00[0x94];
-    void* Window;   // +0x94
-};
-
-// Free helper: retail emits a relocation-masked relative `call` returning the
-// owner whose +0x94 field is the OS window handle used for coordinate mapping.
-extern "C" CMouseWindowOwner* __cdecl ResolveMouseWindowOwner(void);
+// Naming (NF183, 2026-11-20, q4288 / q4442): the CMouseWindowOwner / extern "C" ResolveMouseWindowOwner stand-in for 0x009A4EC0 moved onto
+//   engine/CSystemManager.h: 0x009A4EC0 is GFGetSystemManager (Ego_r.pdb + FableWin.pdb ?GFGetSystemManager@@YIPAVCSystemManager@@XZ,
+//   the spelling 136 landed rows bind) and +0x94 is CSystemManager::ApplicationWinHandle, read through the PDB inline
+//   GetApplicationWinHandle (FABLE_RETAIL_CSYSTEMMANAGER_MOUSE, as the landed CMouseDX::ResetNonExclusiveMouse 0x00AB5030).
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
+#include "engine/CSystemManager.h"
 
 // USER32 imports (retail: `call DWORD PTR ds:0x14403xx`, the IAT slots of the dllimport declarations).
 extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void*, CMousePoint*); // ds:0x1440304 = USER32.dll!ClientToScreen
@@ -54,7 +52,7 @@ void __fastcall CMouseDX_SetPos(CMouseDX* mouseDX, void* /*edx*/, const C2DVecto
     if (mouseDX->DisableCursorWarp != 0)
         return;
 
-    void* window = ResolveMouseWindowOwner()->Window;
+    void* window = GFGetSystemManager()->GetApplicationWinHandle();
 
     CMousePoint pt;
     pt.x = 0;

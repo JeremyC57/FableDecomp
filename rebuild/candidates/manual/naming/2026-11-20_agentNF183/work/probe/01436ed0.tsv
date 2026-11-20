@@ -1,0 +1,5 @@
+00b46660 RELOCATION_MATCH ?LOCAL_HEAP_CEngineLightingManager__LightElementLink@@3V?$CDynamicObjectHeap@$0M@$0BA@@@A 
+00b47980 RELOCATION_MATCH ?g_LightLinkHeap@@3U?$CDynamicObjectHeap@$0M@$0BA@@@A 
+00b49aa0 RELOCATION_MATCH ?LocalLightElementLinkHeap@@3V?$CDynamicObjectHeap@$0M@$0BA@@@A 
+012246e0 RELOCATION_MATCH ?LOCAL_HEAP_CEngineLightingManager__LightElementLink@@3V?$CDynamicObjectHeap@$0M@$0BA@@@A 
+0122ad00 RELOCATION_MATCH ?g_AutoTinyFieldMethodsObject_01436ed0@@3UAutoTinyFieldMethodsTarget@@A 

@@ -24,7 +24,17 @@ public:
   if(!entry){if(AllowHeapToGrow){CreateMoreBlocks();entry=FreeList;}else return 0;}
   ++AllocCount;FreeList=entry->NextEntry;return entry;
  }
+#ifdef FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE
+ // NF183 opt-in (2026-11-20, q4502 / q4505; rows 0x00B49AA0 / 0x00B49A40 / 0x00B49FE0 / 0x00B47980): FableWin.pdb
+ // ?Free@?$CDynamicObjectHeap@...@@QAEXPAX@Z, inline in retail: AllocCount decremented, the entry pushed on FreeList, and
+ // RefCountedRelease (0x00F36CA0) when the count reaches 0 with release enabled (the landed rows' local models had this body).
+ void Free(void* object){
+  --AllocCount;((CObjectEntry*)object)->NextEntry=FreeList;FreeList=(CObjectEntry*)object;
+  if(AllocCount==0&&RefCountReleaseEnabled)RefCountedRelease();
+ }
+#else
  void Free(void*);
+#endif
 private:
  virtual void Release();
  long GetTotalBytesAllocated()const;

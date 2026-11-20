@@ -5,7 +5,7 @@
 //   local); the binary twin is the landed TransferBinaryOut 0x0057A3CD. Label correction: the catalog
 //   "Inventory_FormatItemTransferDetails" is a guess (0x009E2560 is TransferOutLong, not GetItemDescription).
 // Callees: CCharString::operator+=(const char*) @ 0x0099F100 (literals "(" 0x0122E028, "," 0x0122E024, ")" 0x0122E020,
-//   "TRUE" 0x0122D6D4, "FALSE" 0x0122D6CC), CCharString(unsigned __int64) @ 0x0099F930 + operator+=(const CCharString&)
+//   "TRUE" 0x0122D6D4, "FALSE" 0x0122D6CC), GFUHUGEToCharString(unsigned __int64) @ 0x0099F930 + operator+=(const CCharString&)
 //   @ 0x0099F0A0 + ~CCharString @ 0x0099EAE0 (each UID), TransferOutLong @ 0x009E2560 (`__fastcall` context, out,
 //   &value: the marriage state).
 // Shape: the landed pair<long,long> twin (0x00755A30) generalised: each member goes through its own element traits'
@@ -25,11 +25,14 @@ class CPersistContext;
 class CCharString {
 public:
     struct SBlock* m_pBlock;
-    explicit CCharString(unsigned __int64 value);                    // 0x0099F930
     ~CCharString();                                                  // 0x0099EAE0
     const CCharString& operator+=(const char* text);                       // 0x0099F100
     const CCharString& operator+=(const CCharString& other);               // 0x0099F0A0
 };
+// Naming (NF183, 2026-11-20, q4628): 0x0099F930 is the free __fastcall GFUHUGEToCharString (Ego_r.pdb + FableWin.pdb
+//   ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z, the spelling the landed 0x004FB990 / 0x004B5EE0 / 0x008304A0 bind), was a stand-in
+//   CCharString(unsigned __int64) constructor (same registers: hidden result in ecx, the value on the stack).
+CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value);   // 0x0099F930
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 extern const char g_textOpenBracket_0122e028[];                       // 0x0122E028 "("
 extern const char g_textComma_0122e024[];                             // 0x0122E024 ","
@@ -43,7 +46,7 @@ template <> struct CPersistTraits<unsigned __int64> {
     FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const unsigned __int64* value) const
     {
         unsigned __int64 copy = *value;
-        out += CCharString(copy);
+        out += GFUHUGEToCharString(copy);
     }
 };
 template <> struct CPersistTraits<long> {

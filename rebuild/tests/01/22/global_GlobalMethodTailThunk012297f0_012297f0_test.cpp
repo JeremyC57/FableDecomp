@@ -1,22 +1,20 @@
+// Behaviour test for 0x012297F0: the atexit thunk destroys BUILDING_BOUNDRY exactly once (mock out-of-line CCharString members).
 #include <cstdio>
-static int g_AutoTinyThunkCalls = 0;
-struct AutoTinyThunkTarget
-{
-    void Invoke();
-};
-AutoTinyThunkTarget g_AutoTinyThunkObject_013bac98;
-void AutoTinyThunkTarget::Invoke()
-{
-    ++g_AutoTinyThunkCalls;
-}
+#include "fable_string.h"
+static int g_ctors = 0, g_dtors = 0;
+CCharString::CCharString() { ++g_ctors; }
+CCharString::~CCharString() { ++g_dtors; }
+extern const CCharString BUILDING_BOUNDRY;
+const CCharString BUILDING_BOUNDRY;
 void __fastcall GlobalMethodTailThunk_012297f0()
 {
-    g_AutoTinyThunkObject_013bac98.Invoke();
+    BUILDING_BOUNDRY.CCharString::~CCharString();
 }
 int main()
 {
+    int before = g_dtors;
     GlobalMethodTailThunk_012297f0();
-    if (g_AutoTinyThunkCalls == 1) { std::printf("AUTO_TINY_012297f0_TEST PASS\n"); return 0; }
+    if (g_ctors == 1 && g_dtors == before + 1) { std::printf("AUTO_TINY_012297f0_TEST PASS\n"); return 0; }
     std::printf("AUTO_TINY_012297f0_TEST FAIL\n");
     return 1;
 }

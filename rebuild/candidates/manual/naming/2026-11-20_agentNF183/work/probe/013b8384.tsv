@@ -1,0 +1,11 @@
+004022b0 RELOCATION_MATCH ?g_FableDisplayPrimitive_013B8384@@3PAUFableDisplayPrimitive@@A 
+004179ee RELOCATION_MATCH ?g_pDisplayCaps@@3PAUCDisplayCaps@@A 
+0042df9e RELOCATION_MATCH ?PRenderManager@@3PAVCRenderManager@@A 
+0042ec7c RELOCATION_MATCH ?PRenderManager@@3PAVCRenderManager@@A 
+00435530 RELOCATION_MATCH ?PRenderManager@@3PAVCRenderManager@@A 
+00487570 RELOCATION_MATCH ?PRenderManager@@3PAVCRenderManager@@A 
+00494900 RELOCATION_MATCH ?PRenderManager@@3PAVCRenderManager@@A 
+005bcafe RELOCATION_MATCH ?g_pRenderManager2D@@3PAVCRenderManager2D@@A 
+0061ad60 RELOCATION_MATCH ?PRenderManager@@3PAVCRenderManager@@A 
+00637c80 RELOCATION_MATCH ?g_pRenderManager2D@@3PAVCRenderManager2D@@A 
+0069e980 RELOCATION_MATCH ?g_RenderManagerCore_013b8384@@3PAUCRenderManagerCore@@A 

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C7C30, length 104 bytes (112 with int3 padding).
 // Leaf: ?TransferOut@?$CPersistContext_TransferableComponent
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (the traits' DefaultVal), GetPItem
-// @ 0x00A01B50 (twice), CCharString::CCharString(unsigned __int64) @ 0x0099F930, CCharString::operator+= @ 0x0099F0A0,
+// @ 0x00A01B50 (twice), GFUHUGEToCharString(unsigned __int64) @ 0x0099F930, CCharString::operator+= @ 0x0099F0A0,
 // CCharString::~CCharString @ 0x0099EAE0, ~CBaseIntelligentPointer @ 0x00A01C10. Vtable 0x01238C6C =
 // CIntelligentPointer<CThing>.
 // Name: slot 0 (the persist WRITE hook) of the component vtable 0x0125E9D0 (slot 1 is the TransferIn 0x006C9B30);
@@ -17,10 +17,13 @@ class CBaseObject;
 
 class CCharString { public:
     struct SBlock* m_pBlock;
-    explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
 };
+// Naming (NF183, 2026-11-20, q4628): 0x0099F930 is the free __fastcall GFUHUGEToCharString (Ego_r.pdb + FableWin.pdb
+//   ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z, the spelling the landed 0x004FB990 / 0x004B5EE0 / 0x008304A0 bind), was a stand-in
+//   CCharString(unsigned __int64) constructor (same registers: hidden result in ecx, the value on the stack).
+CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value);   // 0x0099F930
 
 class CThing {
 public:
@@ -52,7 +55,7 @@ template <class T> struct CPersistTraits {
         unsigned __int64 uid = 0;
         if (value.GetPItem())
             uid = value.GetPItem()->UniqueID;
-        out += CCharString(uid);
+        out += GFUHUGEToCharString(uid);
     }
 };
 

@@ -25,32 +25,17 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
-struct CObjectEntry { CObjectEntry* Next; };
+// Naming (NF183, 2026-11-20, q4502 / q4505): the local CDynamicObjectHeapBase / CDynamicObjectHeap struct model moved onto the shared
+//   engine/CDynamicObjectHeap.h (inline Free through the NF183 opt-in FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE); the three heaps
+//   are the PDB statics LOCAL_HEAP_CEngineLightingManager__LightElementLink / __ManagerLocalLight / __ManagerShadowedSpotLight
+//   (Ego_d.pdb publics; Ego_r.pdb + FableWin.pdb dynamic initializers; the landed initializers 0x012246E0 / 0x01224730 / 0x01224780),
+//   were the descriptive g_LightLinkHeap / g_LocalLightHeap / g_ShadowedSpotLightHeap (struct-keyed).
+#define FABLE_RETAIL_CDYNAMICOBJECTHEAP_FREE_INLINE
+#include "engine/CDynamicObjectHeap.h"
 
-struct CDynamicObjectHeapBase {
-    virtual ~CDynamicObjectHeapBase();
-    long                    AllocCount;            // +0x04
-    long                    TotalAllocatorBlocks;  // +0x08
-    bool                    RefCountReleaseEnabled;   // +0x0c
-    CDynamicObjectHeapBase* HeapNext;              // +0x10
-    void RefCountedRelease();                      // 0x00F36CA0
-};
-
-template <int SIZE, int COUNT> struct CDynamicObjectHeap : CDynamicObjectHeapBase {
-    CObjectEntry* FreeList;                        // +0x14
-    void Free(void* object)
-    {
-        --AllocCount;
-        ((CObjectEntry*)object)->Next = FreeList;
-        FreeList = (CObjectEntry*)object;
-        if (AllocCount == 0 && RefCountReleaseEnabled)
-            RefCountedRelease();
-    }
-};
-
-extern CDynamicObjectHeap<12, 16> g_LightLinkHeap;          // 0x01436ED0
-extern CDynamicObjectHeap<72, 16> g_LocalLightHeap;         // 0x01436FB0
-extern CDynamicObjectHeap<56, 16> g_ShadowedSpotLightHeap;  // 0x01437450
+extern CDynamicObjectHeap<12, 16> LOCAL_HEAP_CEngineLightingManager__LightElementLink;          // 0x01436ED0
+extern CDynamicObjectHeap<72, 16> LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight;         // 0x01436FB0
+extern CDynamicObjectHeap<56, 16> LOCAL_HEAP_CEngineLightingManager__ManagerShadowedSpotLight;  // 0x01437450
 
 struct CLocalLightElementLink {
     virtual void v00();
@@ -103,15 +88,15 @@ void CEngineLightingManager::FrameEnd(long frame)
         for (int y = 0; y < 16; ++y)
             while (LightLookupGrid[y][x]) {
                 CLocalLightElementLink* next = LightLookupGrid[y][x]->Next;
-                g_LightLinkHeap.Free(LightLookupGrid[y][x]);
+                LOCAL_HEAP_CEngineLightingManager__LightElementLink.Free(LightLookupGrid[y][x]);
                 LightLookupGrid[y][x] = next;
             }
     memset(SmallObjectLookupGrid, 0, sizeof(SmallObjectLookupGrid));
     for (unsigned int i = 0; i < LocalLightList.size(); ++i)
-        g_LocalLightHeap.Free(LocalLightList[i]);
+        LOCAL_HEAP_CEngineLightingManager__ManagerLocalLight.Free(LocalLightList[i]);
     LocalLightList.clear();
     for (unsigned int j = 0; j < ShadowedSpotLightList.size(); ++j)
-        g_ShadowedSpotLightHeap.Free(ShadowedSpotLightList[j]);
+        LOCAL_HEAP_CEngineLightingManager__ManagerShadowedSpotLight.Free(ShadowedSpotLightList[j]);
     ShadowedSpotLightList.clear();
     CEnginePrimitiveManager::FrameEnd();
 }

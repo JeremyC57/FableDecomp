@@ -1,7 +1,7 @@
 // CPersistContext_TransferableVector<unsigned __int64>::TransferOut(CPersistContext*, CCharString*, long) -- formats element `index` of the unsigned 64-bit vector ("%I64u") and appends it to the output string
 // Leaf: TransferOut
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00614450, 49 bytes.
-// Callees: 0x0099F930 CCharString::CCharString(unsigned __int64), 0x0099F0A0
+// Callees: 0x0099F930 GFUHUGEToCharString(unsigned __int64), 0x0099F0A0
 // CCharString::operator+=(const CCharString&), 0x0099EAE0 CCharString::~CCharString.
 //
 // Persist WRITE hook (vtable slot 2) of CPersistContext_TransferableVector<unsigned __int64>. Same
@@ -15,10 +15,13 @@ class CStringParser;
 
 class CCharString { public:
     struct SBlock* m_pBlock;
-    explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
     const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
 };
+// Naming (NF183, 2026-11-20, q4628): 0x0099F930 is the free __fastcall GFUHUGEToCharString (Ego_r.pdb + FableWin.pdb
+//   ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z, the spelling the landed 0x004FB990 / 0x004B5EE0 / 0x008304A0 bind), was a stand-in
+//   CCharString(unsigned __int64) constructor (same registers: hidden result in ecx, the value on the stack).
+CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value);   // 0x0099F930
 
 template <class T> struct CRetailVector {
     T* m_pFirst;
@@ -38,5 +41,5 @@ struct CPersistContext_TransferableVector {
 void CPersistContext_TransferableVector::TransferOut(CPersistContext* context, CCharString* out, long index)
 {
     unsigned __int64* first = TransVector->m_pFirst;
-    *out += CCharString(first[index]);
+    *out += GFUHUGEToCharString(first[index]);
 }

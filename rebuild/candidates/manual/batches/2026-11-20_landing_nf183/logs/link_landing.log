@@ -1,0 +1,8 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+new_0041627f.obj : error LNK2005: "void __stdcall BeginInputLoading(int)" (?BeginInputLoading@@YGXH@Z) already defined in new_00416268.obj
+new_006c7c30.obj : error LNK2005: "public: void __thiscall CPersistTraits<class CIntelligentPointer<class CThing> >::TransferOut(class CPersistContext &,class CCharString &,class CIntelligentPointer<class CThing> &)" (?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z) already defined in new_006c7b00.obj
+own_0099d4d0.obj : error LNK2005: "int __fastcall LocalizedDialogBoxByLanguage(struct HINSTANCE__ *,char const *,struct HWND__ *,int (__stdcall*)(struct HWND__ *,unsigned int,unsigned int,long),unsigned short)" (?LocalizedDialogBoxByLanguage@@YIHPAUHINSTANCE__@@PBDPAUHWND__@@P6GH2IIJ@ZG@Z) already defined in new_0099d520.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 22 LNK2001 + 134 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

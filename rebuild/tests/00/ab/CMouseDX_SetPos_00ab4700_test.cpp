@@ -9,15 +9,11 @@ class C2DVector { public: float X; float Y; };
 struct CMousePoint { long x; long y; };
 struct CMouseRect { long left; long top; long right; long bottom; };
 
-struct CMouseWindowOwner
-{
-    u8   pad00[0x94];
-    void* Window;   // +0x94
-};
-
-// Free helper: retail emits a relocation-masked relative `call` returning the
-// owner whose +0x94 field is the OS window handle used for coordinate mapping.
-extern "C" CMouseWindowOwner* __cdecl ResolveMouseWindowOwner(void);   // stubbed below
+// The system manager on the shared header (NF183, q4288): GFGetSystemManager 0x009A4EC0 is mocked below; the window handle is
+// CSystemManager::ApplicationWinHandle (+0x94), read through the PDB inline GetApplicationWinHandle.
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER_MOUSE
+#include "engine/CSystemManager.h"
 
 // Engine import-table globals (retail: `call DWORD PTR ds:0x14403xx`).
 extern int (__stdcall *FableClientToScreen)(void*, CMousePoint*); // ds:0x1440304
@@ -47,7 +43,7 @@ void __fastcall CMouseDX_SetPos(CMouseDX* mouseDX, void* /*edx*/, const C2DVecto
     if (mouseDX->DisableCursorWarp != 0)
         return;
 
-    void* window = ResolveMouseWindowOwner()->Window;
+    void* window = GFGetSystemManager()->GetApplicationWinHandle();
 
     CMousePoint pt;
     pt.x = 0;
@@ -65,13 +61,13 @@ void __fastcall CMouseDX_SetPos(CMouseDX* mouseDX, void* /*edx*/, const C2DVecto
 
 // ---- recording stubs for engine helpers/globals -------------------------
 
-static CMouseWindowOwner g_owner;
+static void* g_systemManager[0x180 / sizeof(void*)];   // storage of the mocked CSystemManager (0x180 bytes)
 static int g_resolveCalls = 0;
 
-extern "C" CMouseWindowOwner* __cdecl ResolveMouseWindowOwner(void)
+CSystemManager* __fastcall GFGetSystemManager()
 {
     ++g_resolveCalls;
-    return &g_owner;
+    return reinterpret_cast<CSystemManager*>(g_systemManager);
 }
 
 static void*      g_ctsWindow;
@@ -141,7 +137,7 @@ int main()
         for (int i = 0; i < (int)sizeof(m); ++i) ((u8*)&m)[i] = 0;
         m.DisableCursorWarp = 0;
 
-        g_owner.Window = (void*)0xDEADBEEF;
+        g_systemManager[0x94 / sizeof(void*)] = (void*)0xDEADBEEF;   // ApplicationWinHandle +0x94
         g_resolveCalls = g_ctsCalls = g_grcCalls = g_offCalls = g_setCalls = 0;
 
         C2DVector p;

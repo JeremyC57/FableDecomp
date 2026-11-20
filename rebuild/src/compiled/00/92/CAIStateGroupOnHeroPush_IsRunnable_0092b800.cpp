@@ -54,7 +54,9 @@ struct CThingAICreatureInterfaceAccess : CThingAICreature {
     }
 };
 
-extern fable_u32 g_InvSqrtMantissaTable[128];              // 0x013ce558
+// Naming (NF183, 2026-11-20, q5049 / q11703): 0x013CE558 is GFastOneOverSqrtTable (Ego_d.pdb public ?GFastOneOverSqrtTable@@3PAKA, the
+//   unsigned long[128] engine/C3DVector.h declares and 37 landed rows bind), was the descriptive fable_u32 g_InvSqrtMantissaTable.
+extern unsigned long GFastOneOverSqrtTable[128];           // 0x013CE558
 extern float g_three;                                      // 0x0122ded4
 extern float g_angryPushDistance;                          // 0x01383744
 
@@ -66,7 +68,7 @@ FABLE_FORCEINLINE C3DVector& C3DVector::Normalise()
     lengthSquared = lengthSquared + y * y;
     fable_u32 bits = *(fable_u32*)&lengthSquared;
     fable_u32 estimateBits = (((0x17cu - ((bits >> 23) & 0xffu)) << 22) & 0xff800000u) |
-        (g_InvSqrtMantissaTable[(bits >> 17) & 0x7fu] << 15);
+        (GFastOneOverSqrtTable[(bits >> 17) & 0x7fu] << 15);
     float r = *(float*)&estimateBits;
     r = (g_three - r * r * lengthSquared) * r;
     r = r * 0.5f;
