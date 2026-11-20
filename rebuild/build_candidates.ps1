@@ -401550,6 +401550,13 @@ $catalog = @(
         TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferIn_005c2118_test.cpp'
         PassPattern = '005c2118_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b24850'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_SetDefaultRenderStates_00b24850.cpp'
+        TestSource = '00/b2/CEngine_SetDefaultRenderStates_00b24850_test.cpp'
+        PassPattern = '00b24850_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

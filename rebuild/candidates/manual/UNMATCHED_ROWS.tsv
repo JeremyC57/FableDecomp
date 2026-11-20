@@ -703,7 +703,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b20d30	CSplinePosParamData	GetClosestParameterisedControlPoints	672	parked	DIFFER(563v578)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/00b20d30.cpp	original
 00b22670	NParticleEngine::CPSCSplineBase	DatabaseSerialise	1232	parked	DIFFER(1201v1217)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b22670.cpp	original
 00b22f30	NParticleEngine	GFInterpolateArray	400	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand596/differ/00b22f30.cpp	original
-00b24850	CEngine	SetDefaultRenderStates	4352	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(4344v4344)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00b24850.cpp	original
 00b277a0	CEngine	LoadNewScene	1456	parked	DIFFER(3v1446)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b277a0.cpp	original
 00b27d90	CEngine	CEngine::Render	336	parked	DIFFER(328v325)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00b27d90.cpp	original
 00b2b9b0	CEngineSurfaceCompositionManager	GetComposedSurface	976	parked	DIFFER(965v971)	2	rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00b2b9b0.cpp	original

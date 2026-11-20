@@ -1,0 +1,2 @@
+address	wrong	right	evidence
+0x01396DC8	g_textureUVModeToD3D (labels_*.tsv, descriptive, chunks 718-725)	CRenderStateManager::D3DTextureUVModeTable (?D3DTextureUVModeTable@CRenderStateManager@@0PAKA)	Ego_d.pdb carved public ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA; reloc_bindings.tsv binds it at 0x01396DC8 (0x009DA9F0); labels_codex_pass13 already carries the PDB name -- vland WARN RELOC_NAME on this row is the stale descriptive label
