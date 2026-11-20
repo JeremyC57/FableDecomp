@@ -33,6 +33,9 @@
 //   0x00718A00 the FableWin.pdb ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureModeManager@@@Z (was
 //   ??0?$CCountedPointer@UCModeBase@@@@QAE@PAUCModeBase@@@Z). The header-less mode class keeps its token and its constructor spelling, now on
 //   the shared CModeBase (the landed 0x0096DBC0 shape), its pad resized so sizeof stays the retail allocation.
+// agentNF187 (q6321): the interface-0x82 stand-in struct CTCAttachedParticles replaced by CTCParticleAttacher (no shared header; the
+//   shape of the landed 0x007DE710 / 0x00772BB0 on engine/CTCBase.h): DetachParticles 0x007F8860 now binds the Ego_r / FableWin spelling
+//   ?DetachParticles@CTCParticleAttacher@@QAEXXZ (was ?DetachParticles@CTCAttachedParticles@@QAEXXZ).
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
 #include "fable_compiler.h"
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
@@ -161,8 +164,11 @@ struct CModeIntangible : CTCCreatureModeManager::CModeBase {
     CModeIntangible(CThing* thing, float time, CCreatureActionBase* nextAction);   // 0x008E72D0
     virtual unsigned long GetType() const;
 };
-struct CTCAttachedParticles {                           // interface 0x82
-    void DetachParticles();                             // 0x007F8860
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
+class CTCParticleAttacher : public CTCBase {            // interface 0x82 (TCI_PARTICLE_ATTACHER); no shared header: the shape of the landed 0x007DE710 / 0x00772BB0
+public:
+    void DetachParticles();                             // 0x007F8860 ?DetachParticles@CTCParticleAttacher@@QAEXXZ (Ego_r + FableWin)
 };
 
 class CCreatureActionBase { public:
@@ -220,7 +226,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
                 next = new CCreatureAction_BalverineDropInFromSky(PCreature.GetPItem());
             modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeIntangible(PCreature.GetPItem(), time, next)));
         }
-        CTCAttachedParticles* particles;
+        CTCParticleAttacher* particles;
         if (PCreature.GetPItem()->GetInterface(&particles, 0x82))
             particles->DetachParticles();
     }

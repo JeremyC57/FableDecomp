@@ -1,0 +1,3 @@
+OK  0121a6ac -> 004855a3 ?clear@?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISyste sizes 39 39 
+NO-OWNER-OBJ 01228e44 013b8a98 ?GPreviousSelected@CList@NUISystem@@2V?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@A
+OK  01228e44 -> 004855a3 ?clear@?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISyste sizes 39 39 

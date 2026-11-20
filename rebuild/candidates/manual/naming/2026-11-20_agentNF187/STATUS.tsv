@@ -1,0 +1,45 @@
+address	change	grade	test	grades_used	entries	note
+004a6ab0	none	not-a-binder	-	0	q5081	self row already CWorld::~CWorld, Leaf ??1CWorld@@UAE@XZ (file CWorld_CWorld_004a6ab0.cpp; the queue note about NHeroInformationScreens is stale)
+004ae8d0	callee respell in place (local CWorld model; NF182 q4021 recipe); Leaf line added (leaf unchanged)	RELOCATION_MATCH	PASS	1	q5081	?Dtor@CWorld@@QAEXXZ stand-in -> ??1CWorld@@UAE@XZ (qualified direct call); self ??_G leaf stays the stand-in (header debt)
+00544100	none	not-a-binder	-	0	q6423 q6430	self Leaf already the PDB spelling
+00546060	none	not-a-binder	-	0	q6424 q6431	self Leaf already the PDB spelling
+00546070	none	not-a-binder	-	0	q6425 q6432	self Leaf already the PDB spelling
+00615920	self rename + port onto shared headers (TransferableVector / CPersistTraits / CTCInventoryMap); test rewritten on headers	RELOCATION_MATCH	PASS	3	q5203	form 1 C2027 (missing CDataOutputStream defines), form 2 C2440 (header generic CPersistTraits<T>::TransferIn body instantiated), form 3 match: member-specialisation declaration of the out-of-line traits reader 0x006159A0; defines only header-inline pick-any COMDATs with no table owner
+006159a0	none	not-a-binder	-	0	q5203	self leaf already the claim
+006412b0	none	blocked	-	0	q6321	port: binds ?DetachParticles@CTCAttachedParticles@@QAEXXZ through a stand-in deriving from a LOCAL CTCBase; zero engine includes (local CCharString, CCharStringData, CTCBase, CThing, CTCGraphicAppearance, CInterfaceMap / CVectorMap, CPrimitiveVector, CTCLight); renaming the token fails the shared-base condition; whole-row port not attempted (0 forms, context)
+00662000	none	not-a-binder	-	0	q6438 q6441	self already right
+006ceae0	none	not-a-binder	-	0	q6329 q6337	self Leaf already the claim
+0072a090	none	blocked	-	0	q4420	port: 17 local models with shared headers (APPLIED q4420); type-7 local class binds no symbol
+0072ab40	none	blocked	-	0	q6323	binds ?CurrentCreatureGlobalDefNum@CTCSpecialAbilities@@2JA through its local CTCSpecialAbilities model; the PDB symbol is a PRIVATE static of CTCSummonSpell, so the row (CTCSpecialAbilities slot 1) needs CTCSummonSpell from engine/CTCSummonSpell.h with a friend grant (no accessor exists in FableWin; the types dump lists no friends): needs coordinator decision on a friend opt-in (header claim)
+0073a690	none	deferred	-	0	q6396	self rename waits for binder 0x00861A80 (NF185 lock)
+00772bb0	none	not-a-binder	-	0	q6321	binds ?DetachParticles@CTCParticleAttacher@@QAEXXZ (table witness)
+0079a6e0	data respell in place (local CTCSummonSpell static)	RELOCATION_MATCH	PASS	1	q6323	made-up public SummonCreatureGlobalDefNum (2JA) -> PDB ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (private)
+0079aa90	none	not-a-binder	-	0	q6317	self Leaf already the claim
+0079acc0	data respell in place (local CTCSummonSpell static)	RELOCATION_MATCH	PASS	1	q6323	made-up public SummonCreatureGlobalDefNum (2JA) -> PDB ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (private)
+0079b650	data respell in place (local CTCSummonSpell static)	RELOCATION_MATCH	PASS	1	q6323	made-up public SummonCreatureGlobalDefNum (2JA) -> PDB ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (private)
+007a9300	none	not-a-binder	-	0	q6443	self already right (NF107)
+007c9180	none	blocked	-	0	q6452 q6461	port onto engine/CCreatureActionBase.h + CCombatActionBase.h (namespaced stand-in N_0062e900; NF181); not attempted
+007de5d0	port step: local CTCBase -> engine/CTCBase.h; stand-in CTCComponent82::ClearEntries -> CTCParticleAttacher::DetachParticles	RELOCATION_MATCH	PASS	3	q6321	one C-style downcast CTCBase& -> CTCParticleAttacher* remains (HEAD: double cast to the stand-in); defined symbols identical to HEAD
+007de710	none	not-a-binder	-	0	q6321	binds the PDB spelling (local CTCParticleAttacher on engine/CTCBase.h; not locked, not changed)
+007f8860	none	not-a-binder	-	0	q6321	self Leaf already ?DetachParticles@CTCParticleAttacher@@QAEXXZ
+008ccd70	callee respell: stand-in struct CTCAttachedParticles -> CTCParticleAttacher on engine/CTCBase.h (sibling shape); test token respelled	RELOCATION_MATCH	PASS	2	q6321	defined-symbol diff vs HEAD: only the local CThing::GetInterface<T> COMDAT changes T (no owner)
+008ea9f0	callee respell in place (local CThingCreatureBase decl; entry locals + inline CHoverAnim member const)	RELOCATION_MATCH	PASS	2	q6456	QAEPAV stand-in -> ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z; defined-symbol diff: only the inline local CHoverAnim ctor COMDAT (no owner, no header) now takes const CAnimationEntry*
+008eacb0	none	not-a-binder	-	0	q6456	binds the claim (table witness)
+0092fab0	none	not-a-binder	-	0	q6329 q6337	binds the claim (table witness)
+0093c6d0	none	blocked	-	0	q6456	binds ?GetRandomAnimFromName@CThingCreatureAnim@@QAEPAV... via a stand-in struct and a cast of GetCreature(); the result feeds the local CCreatureAction_PlayAnimation ctor 0x00842570 declared (CThing*, CAnimationEntry*, ...) whose PDB form is (CThingCreatureBase&, const CAnimationEntry&, ...): moving this call alone needs a const_cast or a new spelling at 0x00842570; the ctor family must move with it
+00956380	none	blocked	-	0	q6452 q6461	port: local model whose base is not CCombatActionBase (NF181); not attempted
+009f5690	none	not-a-binder	-	0	q5031	self row already ??0CInputEventPackage@@QAE@AAVCAFile@@@Z on engine/CInputEventPackage.h; catalog name already the ctor
+009f5d70	callee respell in place (local CInputEventPackage ctor decl)	RELOCATION_MATCH	PASS	2	q5031	ctor CAFile* stand-in -> ??0CInputEventPackage@@QAE@AAVCAFile@@@Z
+00a04030	self rename in place (Position1 -> Position); Leaf line added; test respelled	MATCH	PASS	1	q6295 q6300	only referencer 0x00AB6E40 already binds the new spelling (narrows the self-vs-caller split)
+00a04060	Leaf line added (leaf unchanged)	MATCH	PASS	1	q6301	self already ?SetAsJoystickPosition2@...; label fix in NAME_FIXES
+00a04110	none	not-a-binder	-	0	q6294 q6299	self already ?SetAsJoystickButtonReleased@... (NF160 landed)
+00a1ab40	callee respell in place (local CNavigatorBase decl)	RELOCATION_MATCH	PASS	1	q5009	FindNearestNavigableNode QBE/PAV stand-in -> Ego_r/FableWin IBE PBV spelling; node locals const
+00a1abf0	none	not-a-binder	-	1	q5009	already binds the IBE PBV spelling (probe)
+00a1bca0	callee respell in place (local CNavigatorBase decl)	RELOCATION_MATCH	PASS	1	q5009	FindNearestNavigableNode QBE/PAV stand-in -> Ego_r/FableWin IBE PBV spelling; node locals const
+00a1bee0	callee respell in place (local CNavigatorBase decl)	RELOCATION_MATCH	PASS	1	q5009	FindNearestNavigableNode QBE/PAV stand-in -> Ego_r/FableWin IBE PBV spelling; node locals const
+00a1e5c0	none	not-a-binder	-	0	q5009	acctB lock (not touched); source declares the Ego_r IBE spelling
+00ab6e40	none	not-a-binder	-	0	q6294 q6295 q6299 q6300 q6301	binds SetAsJoystickPosition / Position2 / ButtonReleased PDB spellings (reloc_bindings witness rows)
+00e80d60	none	blocked	-	0	q6372 q6409	port: all-stand-in self row (Row00e80d60 namespace); the rename needs a re-author on the NScript headers (NF178 cast-map family)
+00e81b40	none	not-a-binder	-	0	q6372 q6409	binds the claim (table witness)
+0121a6ac	port: local CList / STLport model -> engine/NUISystem_CList.h (the 0x01228E44 form, Leaf _$E1 unchanged); test rewritten on the header	RELOCATION_MATCH	PASS	2	q4154	pair with 0x01228E44 (one source form, both define GPreviousSelected 2V: known LNK2005 pair, same landing); WARN RELOC_CONFLICT _$E2 vs landed 0x01219F00 is the usual TU-local _$E collision
+01228e44	self rename (stand-in thunk -> _$E2 on engine/NUISystem_CList.h)	RELOCATION_MATCH	PASS	2	q4154	pick-any: clear<CList*> copy byte-identical to 0x004855A3 (cmpbody); ~list declared only (the size-opt ~list{} copy is a 5-byte jmp, DIFFER 5v23 against 0x0053C9BC); defines GPreviousSelected 2V like the landed initializer 0x0121A6AC: known LNK2005 pair (EXTRA_RULES 2026-11-20 static initializer/atexit pair)

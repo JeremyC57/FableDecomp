@@ -67,10 +67,10 @@ public:
     long FadeInTimer, CurFadeInTimer, SpellLevel, CurTimer;
     CIntelligentPointer<CThing> PItemRemoved;
     bool CutSceneCancelled;
-    static long SummonCreatureGlobalDefNum;
+    static long CurrentCreatureGlobalDefNum;
     CTCSummonSpell(CThing& parent);
 };
-long CTCSummonSpell::SummonCreatureGlobalDefNum = -1;
+long CTCSummonSpell::CurrentCreatureGlobalDefNum = -1;
 CTCSummonSpell::CTCSummonSpell(CThing& parent)
     : CTCBase(&parent), JustReleased(true), FadeInTimer(0), CurFadeInTimer(0), SpellLevel(0), CurTimer(0),
       PItemRemoved(0), CutSceneCancelled(false)
@@ -81,9 +81,9 @@ CTCSummonSpell::CTCSummonSpell(CThing& parent)
         index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &PDef);
-    if (SummonCreatureGlobalDefNum == -1) {
+    if (CurrentCreatureGlobalDefNum == -1) {
         CCharString creatureName = g_DefStringTable.GetString(PDef->BaseSummonCreatureName);
-        SummonCreatureGlobalDefNum = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(creatureName);
+        CurrentCreatureGlobalDefNum = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(creatureName);
     }
     FadeInTimer = CurFadeInTimer = (long)(g_framesPerSecond * PDef->FadeInTime);
     if (ParentThing->HasTC(0x6f))
@@ -98,7 +98,7 @@ int main()
     CTCSummonSpell a(hero);
     if (a.ParentThing != &hero || a.PDef.Object != &g_def || !a.JustReleased || a.CutSceneCancelled || a.CurTimer != 0) return fail();
     if (std::strcmp(g_className, "SPECIAL_ABILITIES_SUMMON_SPELL_DEF") != 0 || g_classIndex != 1) return fail();
-    if (CTCSummonSpell::SummonCreatureGlobalDefNum != 1234 || g_getStringId != 55 || g_nameLookups != 1) return fail();
+    if (CTCSummonSpell::CurrentCreatureGlobalDefNum != 1234 || g_getStringId != 55 || g_nameLookups != 1) return fail();
     if (a.FadeInTimer != 45 || a.CurFadeInTimer != 45 || a.SpellLevel != 3 || g_abilityAsked != 10) return fail();
     if (a.Minion.m_pItem != 0 || a.PItemRemoved.m_pItem != 0) return fail();
     hero.hasAbilities = false;

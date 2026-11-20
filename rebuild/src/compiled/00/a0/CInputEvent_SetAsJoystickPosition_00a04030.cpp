@@ -1,7 +1,13 @@
-// CInputEvent::SetAsJoystickPosition1(const C2DVector& position, double time) -- a joystick (device 1) event of kind 17: the stick position copied into +0, both times from one double
+// CInputEvent::SetAsJoystickPosition(const C2DVector& position, double time) -- a joystick (device 1) event of kind 17: the stick position copied into +0, both times from one double
+// Leaf: ?SetAsJoystickPosition@CInputEvent@@QAEXABVC2DVector@@N@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A04030, length 48 bytes.
 // Shape: the doubles narrowed with `fst`/`fstp`, no frame.
+// Naming (NF187, 2026-11-20, q6295 / q6300): Ego_r.pdb 0x00B6EB30 + FableWin.pdb 0x0317DAE0 ?SetAsJoystickPosition@CInputEvent@@QAEXABVC2DVector@@N@Z,
+//   the first of the five twins in PDB order (Position 17, Position2 18 at 0x00A04060, ButtonPressed 19 / Held 20 / Released 21 at
+//   0x00A04090 / 0x00A040D0 / 0x00A04110); respelled in place on the row's existing CInputEvent declaration as NF160 did 0x00A04110 (was
+//   the made-up SetAsJoystickPosition1). Its only landed caller 0x00AB6E40 (CInputManager::UpdateEvents, the primary stick) already binds
+//   this spelling. Leaf line new.
 class C2DVector { public: float X, Y; };
 #include "engine/C3DVector.h"
 class CInputEvent { public:                               // 0x34 bytes: a payload union, the device (+0x20), the kind (+0x28), two times
@@ -16,10 +22,10 @@ class CInputEvent { public:                               // 0x34 bytes: a paylo
     long      m_kind;                              // +0x28
     float     m_time;                              // +0x2c
     float     m_time2;                             // +0x30
-    void SetAsJoystickPosition1(const C2DVector& position, double time);
+    void SetAsJoystickPosition(const C2DVector& position, double time);
 };
 
-void CInputEvent::SetAsJoystickPosition1(const C2DVector& position, double time)
+void CInputEvent::SetAsJoystickPosition(const C2DVector& position, double time)
 {
     m_device = 1;
     m_kind = 17;

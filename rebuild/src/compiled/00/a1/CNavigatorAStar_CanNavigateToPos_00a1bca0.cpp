@@ -10,6 +10,8 @@
 //   CNavigatorAStar LastNavigableNodeVisited +0x88; CANavQuadTreeNode Blocked +0x0f.
 // Shape: named C2DVector locals for the two lookups; the final test is one `&&` chain (int-valued exits), the early
 //   failures are plain `return false`.
+// agentNF187 (q5009): the local CNavigatorBase declaration of FindNearestNavigableNode respelled in place to the Ego_r / FableWin
+//   spelling (protected const, const node and manager pointers; engine/CNavigatorBase.h agrees); the node locals follow (const).
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -65,8 +67,8 @@ class CNavigatorBase { public:
     bool                         Interrupted;       // +0x19
     CNavigatorManager*           NavigationManager; // +0x1c
     CSteeringAgent*              SteeringAgent;     // +0x20
-    CANavQuadTreeNode* FindNearestNavigableNode(CANavQuadTreeNode* from, CANavQuadTreeNode* node, const C3DVector& position, float distance, CNavigatorManager* manager) const;   // 0x00A475C0
 protected:
+    const CANavQuadTreeNode* FindNearestNavigableNode(const CANavQuadTreeNode* from, const CANavQuadTreeNode* blocked, const C3DVector& pos, float radius, const CNavigatorManager* manager) const;   // 0x00A475C0 ?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z (Ego_r + FableWin)
     bool IsAnyPartOfNodeWithinDistOfPos(const CANavQuadTreeNode* node, float distance, const C3DVector& position, C2DVector& nearest) const;   // 0x00A471D0 ?IsAnyPartOfNodeWithinDistOfPos@CNavigatorBase@@IBE_NPBVCANavQuadTreeNode@@MABVC3DVector@@AAVC2DVector@@@Z
 };
 class CNavigatorAStar : public CNavigatorBase { public:
@@ -78,7 +80,7 @@ class CNavigatorAStar : public CNavigatorBase { public:
 bool CNavigatorAStar::CanNavigateToPos(const C3DVector& from, const C3DVector& to, float radius, bool useLastNavigable) const
 {
     C2DVector from2d(from.X, from.Y);
-    CANavQuadTreeNode* startNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(from2d, PInterface->GetNavLayer(from));
+    const CANavQuadTreeNode* startNode = NavigationManager->GetNodeAt(from2d, PInterface->GetNavLayer(from));
     if (!startNode)
         return false;
     if (startNode->Blocked) {
@@ -90,7 +92,7 @@ bool CNavigatorAStar::CanNavigateToPos(const C3DVector& from, const C3DVector& t
             return false;
     }
     C2DVector to2d(to.X, to.Y);
-    CANavQuadTreeNode* endNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(to2d, PInterface->GetNavLayer(to));
+    const CANavQuadTreeNode* endNode = NavigationManager->GetNodeAt(to2d, PInterface->GetNavLayer(to));
     if (!endNode)
         return false;
     if (endNode->Blocked) {

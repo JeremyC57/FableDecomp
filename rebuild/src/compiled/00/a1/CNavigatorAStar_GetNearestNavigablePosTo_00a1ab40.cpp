@@ -11,6 +11,8 @@
 // Shape: the C2DVector conversion temporary is built before the layer query (as the landed IsNavigableAt 0x00A1A210); the
 //   open-node copy is the implicit C3DVector assignment; the nearest node's centre goes through an inline two-float setter (Y loaded
 //   first, as arguments are evaluated right to left) before the Z call.
+// agentNF187 (q5009): the local CNavigatorBase declaration of FindNearestNavigableNode respelled in place to the Ego_r / FableWin
+//   spelling (protected const, const node and manager pointers; engine/CNavigatorBase.h agrees); the node locals follow (const).
 class C3DVector { public:
     float X, Y, Z;
     void SetXY(float x, float y) { X = x; Y = y; }
@@ -50,7 +52,8 @@ public:
     bool                         Interrupted;      // +0x19
     CNavigatorManager*           NavigationManager;   // +0x1c
     void*                        SteeringAgent;    // +0x20
-    CANavQuadTreeNode* FindNearestNavigableNode(const CANavQuadTreeNode* from, const CANavQuadTreeNode* blocked, const C3DVector& pos, float radius, CNavigatorManager* manager) const;   // 0x00A475C0
+protected:
+    const CANavQuadTreeNode* FindNearestNavigableNode(const CANavQuadTreeNode* from, const CANavQuadTreeNode* blocked, const C3DVector& pos, float radius, const CNavigatorManager* manager) const;   // 0x00A475C0 ?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z (Ego_r + FableWin)
 };
 class CNavigatorAStar : public CNavigatorBase {
 public:
@@ -67,7 +70,7 @@ bool CNavigatorAStar::GetNearestNavigablePosTo(const C3DVector& pos, float radiu
             out = pos;
             return true;
         }
-        CANavQuadTreeNode* nearest = FindNearestNavigableNode(LastNavigableNodeVisited, node, pos, radius, NavigationManager);
+        const CANavQuadTreeNode* nearest = FindNearestNavigableNode(LastNavigableNodeVisited, node, pos, radius, NavigationManager);
         if (nearest) {
             C2DVector p = nearest->Position;
             out.SetXY(p.X, p.Y);

@@ -193,9 +193,9 @@ class CTCCreatureModeManager : public CTCBase { public:
     CTCCreatureModeManager() : m_calls(0), m_mode(0) { }
     bool AddMode(CCountedPointer<CModeBase> mode) { ++m_calls; m_mode = mode.m_pObject; return true; }
 };
-struct CTCAttachedParticles : CTCBase {
+struct CTCParticleAttacher : CTCBase {
     int m_calls;
-    CTCAttachedParticles() : m_calls(0) { }
+    CTCParticleAttacher() : m_calls(0) { }
     void DetachParticles() { ++m_calls; }
 };
 
@@ -250,7 +250,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
                 next = new CCreatureAction_BalverineDropInFromSky(PCreature.GetPItem());
             modeManager->AddMode(CCountedPointer<CModeBase>(new CModeIntangible(PCreature.GetPItem(), time, next)));
         }
-        CTCAttachedParticles* particles;
+        CTCParticleAttacher* particles;
         if (PCreature.GetPItem()->GetInterface(&particles, 0x82))
             particles->DetachParticles();
     }
@@ -269,7 +269,7 @@ int main()
     // 1: unfinished jump -- only the restore runs
     {
         CThingCreatureBase creature; CTCPhysicsBase physics; CTCGraphicAppearance appearance; CTCCreatureModeManager manager;
-        CTCAttachedParticles particles;
+        CTCParticleAttacher particles;
         creature.PhysicsTC = &physics; creature.GraphicAppearanceTC = &appearance;
         creature.AddInterface(0x31, &manager); creature.AddInterface(0x82, &particles);
         CCreatureAction_BalverineCorneredJumpIntoSky action;
@@ -288,7 +288,7 @@ int main()
     // 2: finished at a living target, battle def present
     {
         CThingCreatureBase creature; CThing target; CTCPhysicsBase physics; CTCGraphicAppearance appearance;
-        CTCCreatureModeManager manager; CTCAttachedParticles particles; CDefClassBase defClass; CBalverineBattleDef battleDef;
+        CTCCreatureModeManager manager; CTCParticleAttacher particles; CDefClassBase defClass; CBalverineBattleDef battleDef;
         battleDef.m_count = 1; battleDef.IntangibleTime = 3.5f; defClass.m_battleDef = &battleDef;
         creature.PhysicsTC = &physics; creature.GraphicAppearanceTC = &appearance; creature.m_pDef = &defClass;
         creature.AddInterface(0x82, &particles); creature.AddInterface(0x31, &manager); creature.AddInterface(9, 0);
@@ -333,7 +333,7 @@ int main()
     }
     // 3: no mode manager -- no mode, particles still detached; null target skips the landing
     {
-        CThingCreatureBase creature; CTCPhysicsBase physics; CTCGraphicAppearance appearance; CTCAttachedParticles particles;
+        CThingCreatureBase creature; CTCPhysicsBase physics; CTCGraphicAppearance appearance; CTCParticleAttacher particles;
         creature.PhysicsTC = &physics; creature.GraphicAppearanceTC = &appearance;
         creature.AddInterface(0x82, &particles);
         CCreatureAction_BalverineCorneredJumpIntoSky action;

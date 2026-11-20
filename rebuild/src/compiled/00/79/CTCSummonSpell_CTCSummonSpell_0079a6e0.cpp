@@ -10,7 +10,7 @@
 //   CDefStringTable::GetString(long) @ 0x009D49B0 (on GDefStringTable @ 0x013CA828), CDefinitionManager::
 //   GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, __ftol2 @ 0x00BFEA70, the const interface LowerBound
 //   @ 0x004365B0 (interface 0x6F), CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EDE93 (ability 10).
-//   Globals: CTCSummonSpell::SummonCreatureGlobalDefNum @ 0x0138306C (class static), CMainGameComponent::GetConstantFPS() @ 0x01375550.
+//   Globals: CTCSummonSpell::CurrentCreatureGlobalDefNum @ 0x0138306C (class static), CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: Ego_r.pdb CTCSummonSpell (pack(1): Minion at the odd +0x11, CIntelligentPointer<CThingAICreature> vtable
 //   0x0123E7E0): PDef +0x0C, JustReleased +0x10, FadeInTimer +0x1C, CurFadeInTimer +0x20, SpellLevel +0x24, CurTimer +0x28,
 //   PItemRemoved (CIntelligentPointer<CThing>, vtable 0x01238C6C) +0x2C, CutSceneCancelled +0x34; CSpecialAbilitiesSummonSpellDef
@@ -18,6 +18,8 @@
 // Shape: the landed CTCForcePushPower ctor (0x007A54A0): init-list members after the vtable store sharing the ebx zero; the
 //   class-name string in its own block; the creature-name string a block-scoped by-value result; `FadeInTimer =
 //   CurFadeInTimer = ...` stores CurFadeInTimer first.
+// agentNF187 (q6323): the class static at 0x0138306C respelled in place to Ego_r / FableWin S_PUB32 ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA
+//   (private LF_STMEMBER of CTCSummonSpell; the persist key "CurrentCreatureGlobalDefNum" of 0x0072AB40 agrees); was the made-up public SummonCreatureGlobalDefNum.
 #include "fable_compiler.h"
 #include "engine/EHeroAbility.h"   // NF34: ?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z (Ego_r + FableWin)
 class CThing;
@@ -132,7 +134,9 @@ public:
     long CurTimer;                                      // +0x28
     CIntelligentPointer<CThing> PItemRemoved;           // +0x2c
     bool CutSceneCancelled;                             // +0x34
-    static long SummonCreatureGlobalDefNum;             // 0x0138306C
+private:
+    static long CurrentCreatureGlobalDefNum;   // 0x0138306C ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (Ego_r + FableWin S_PUB32; private LF_STMEMBER)
+public:
     CTCSummonSpell(CThing& parent);
     virtual void v00();
 };
@@ -148,9 +152,9 @@ CTCSummonSpell::CTCSummonSpell(CThing& parent)
         index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &PDef);
-    if (SummonCreatureGlobalDefNum == -1) {
+    if (CurrentCreatureGlobalDefNum == -1) {
         CCharString creatureName = GDefStringTable.GetString(PDef->BaseSummonCreatureName);
-        SummonCreatureGlobalDefNum = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(creatureName);
+        CurrentCreatureGlobalDefNum = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(creatureName);
     }
     FadeInTimer = CurFadeInTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInTime);
     if (ParentThing->HasTC(0x6f))

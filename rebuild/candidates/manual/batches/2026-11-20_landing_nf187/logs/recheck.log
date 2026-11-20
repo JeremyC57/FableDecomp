@@ -1,0 +1,111 @@
+addr       parity           behav  name
+004ae8d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004ae8d0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CWorld@@QAEPAXI@Z (catalog CWorld::`scalar_deleting_destructor'; names another function)
+004ae8d0   RELOCATION_MATCH PASS   CWorld::`scalar_deleting_destructor'
+00615920   RELOCATION_MATCH PASS   CPersistContext_TransferableVector<CTCInventoryMap::CUIMiniMapMarker>::TransferIn
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0079a6e0   WARN SHARED_HEADER_AVAILABLE CTCSummonSpell (engine/CTCSummonSpell.h)
+0079a6e0   RELOCATION_MATCH PASS   CTCSummonSpell::CTCSummonSpell
+0079acc0   WARN SHARED_HEADER_AVAILABLE CThingAICreatureInit (engine/CThingAICreatureInit.h)
+0079acc0   WARN SHARED_HEADER_AVAILABLE CTCSummonableCreature (engine/CTCSummonableCreature.h)
+0079acc0   WARN SHARED_HEADER_AVAILABLE CTCEnemy (engine/CTCEnemy.h)
+0079acc0   WARN SHARED_HEADER_AVAILABLE CTCRegionFollower (engine/CTCRegionFollower.h)
+0079acc0   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+0079acc0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+0079acc0   WARN SHARED_HEADER_AVAILABLE CTCSummonSpell (engine/CTCSummonSpell.h)
+0079acc0   RELOCATION_MATCH PASS   CTCSummonSpell::CreateMinion
+0079b650   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+0079b650   WARN SHARED_HEADER_AVAILABLE CTCSummonSpell (engine/CTCSummonSpell.h)
+0079b650   RELOCATION_MATCH PASS   CTCSummonSpell::SetSummonCreatureGlobalDefNum
+007de5d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+007de5d0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+007de5d0   WARN SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)
+007de5d0   WARN SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)
+007de5d0   RELOCATION_MATCH PASS   CTCWallMount::OnInitialActivate
+008ccd70   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineDropInFromSky (engine/CCreatureAction_BalverineDropInFromSky.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineLungeAttack (engine/CCreatureAction_BalverineLungeAttack.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineCorneredJumpIntoSky (engine/CCreatureAction_BalverineCorneredJumpIntoSky.h)
+008ccd70   WARN RELOC_NAME: ??0CCreatureAction_BalverineLungeAttack@N_008ccc10@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 008ccc10 labelled 'CCreatureAction_BalverineDropInFromSky::CCreatureAction_BalverineDropInFromSky'
+008ccd70   RELOCATION_MATCH PASS   CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CTCDriverBase (engine/CTCDriverBase.h)
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ea9f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+008ea9f0   RELOCATION_MATCH PASS   NCreatureMode::CModeHoverBase::UpdateHoverAnim
+009f5d70   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009f5d70   WARN SHARED_HEADER_AVAILABLE CInputEventPackage (engine/CInputEventPackage.h)
+009f5d70   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+009f5d70   WARN RELOC_NAME: ??1CInputEventPackage@@QAE@XZ -> 009f6a70 labelled 'std::vector<CInputEvent, std::allocator<CInputEvent>>::~vector'
+009f5d70   RELOCATION_MATCH PASS   CInputManager::LoadAllEventPackages
+00a04030   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a04030   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a04030   MATCH            PASS   CInputEvent::SetAsJoystickPosition
+00a04060   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a04060   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00a04060   MATCH            PASS   CInputEvent::SetAsJoystickPosition2
+00a1ab40   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00a1ab40   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode (engine/CANavQuadTreeNode.h)
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CNavigatorExternalInterface (engine/CNavigatorExternalInterface.h)
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CNavigatorBase (engine/CNavigatorBase.h)
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CNavigatorAStar (engine/CNavigatorAStar.h)
+00a1ab40   RELOCATION_MATCH PASS   CNavigatorAStar::GetNearestNavigablePosTo
+00a1bca0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavRegion (engine/CNavRegion.h)
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode (engine/CANavQuadTreeNode.h)
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavigatorExternalInterface (engine/CNavigatorExternalInterface.h)
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase (engine/CNavigatorBase.h)
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavigatorAStar (engine/CNavigatorAStar.h)
+00a1bca0   WARN RELOC_NAME: ?IsConnectedToRegion@CNavRegion@@QBE_NABV1@@Z -> 00a77780 labelled 'NavigationGraph_BreadthFirstSearch'
+00a1bca0   RELOCATION_MATCH PASS   CNavigatorAStar::CanNavigateToPos
+00a1bee0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a1bee0   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode (engine/CANavQuadTreeNode.h)
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager (engine/CNavigatorManager.h)
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CNavigatorExternalInterface (engine/CNavigatorExternalInterface.h)
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase (engine/CNavigatorBase.h)
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CNavigatorAStar (engine/CNavigatorAStar.h)
+00a1bee0   RELOCATION_MATCH PASS   CNavigatorAStar::UpdateLastPosition
+0121a6ac   WARN RELOC_CONFLICT: _$E2 -> 01228e44 here, 01228930 in landed 01219f00
+0121a6ac   WARN RELOC_NAME: _$E2 -> 01228e44 labelled 'NUISystem::CList::`dynamic atexit destructor for 'GPreviousSelected'`'
+0121a6ac   RELOCATION_MATCH PASS   NUISystem::CList::$E_GPreviousSelected
+01228e44   RELOCATION_MATCH PASS   NUISystem::CList::`dynamic atexit destructor for 'GPreviousSelected'`
+
+WINS: 16
+  004ae8d0 RELOCATION_MATCH CWorld::?ScalarDeletingDestructor@CWorld@@QAEPAXI@Z
+  00615920 RELOCATION_MATCH CPersistContext_TransferableVector<CTCInventoryMap::CUIMiniMapMarker>::?TransferIn@?$CPersistContext_TransferableVector@VCUIMiniMapMarker@CTCInventoryMap@@@@EAEXAAVCPersistContext@@AAVCStringParser@@J@Z
+  0079a6e0 RELOCATION_MATCH CTCSummonSpell::??0CTCSummonSpell
+  0079acc0 RELOCATION_MATCH CTCSummonSpell::?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+  0079b650 RELOCATION_MATCH CTCSummonSpell::SetSummonCreatureGlobalDefNum
+  007de5d0 RELOCATION_MATCH CTCWallMount::?OnInitialActivate@CTCWallMount
+  008ccd70 RELOCATION_MATCH CCreatureAction_BalverineCorneredJumpIntoSky::?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+  008ea9f0 RELOCATION_MATCH NCreatureMode::CModeHoverBase::UpdateHoverAnim
+  009f5d70 RELOCATION_MATCH CInputManager::LoadAllEventPackages
+  00a04030 MATCH CInputEvent::?SetAsJoystickPosition@CInputEvent@@QAEXABVC2DVector@@N@Z
+  00a04060 MATCH CInputEvent::?SetAsJoystickPosition2@CInputEvent@@QAEXABVC2DVector@@N@Z
+  00a1ab40 RELOCATION_MATCH CNavigatorAStar::?GetNearestNavigablePosTo@CNavigatorAStar@@UBE_NABVC3DVector@@MAAV2@@Z
+  00a1bca0 RELOCATION_MATCH CNavigatorAStar::?CanNavigateToPos@CNavigatorAStar@@UBE_NABVC3DVector@@0M_N@Z
+  00a1bee0 RELOCATION_MATCH CNavigatorAStar::UpdateLastPosition
+  0121a6ac RELOCATION_MATCH NUISystem::CList::_$E1
+  01228e44 RELOCATION_MATCH NUISystem::CList::_$E2
