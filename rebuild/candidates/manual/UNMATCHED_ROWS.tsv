@@ -68,7 +68,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00560bb0	CTCHeroOnlineScoreboard	GetDecryptedDocument	336	parked	DIFFER(320v321)	2	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00560bb0.cpp	original
 00560d00	CTCHeroOnlineScoreboard	CTCHeroOnlineScoreboard::ProcessLogin	1872	parked	DIFFER(1844v1860)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand324/differ/00560d00.cpp	original
 0057b43f	CTCHeroStats	RenderHeroDrunkenness	836	parked	DIFFER(830v836)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0057b43f.cpp	original
-0057c4f1	CTCHeroStats	ApplyBonusItemEffects	1192	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1183v1192)	3	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/0057c4f1.cpp	original
 0057d23b	_global	FrameUpdate_ApplyMorphEffect	869	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/0057d23b.cpp	original
 005850fd	CTCInventory	GetStyleCardsListUIComponent	1678	parked	DIFFER(1660v1678)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/005850fd.cpp	original
 00589402	CTCInventory	GetStyleCardsListUIComponent	1582	parked	codex pass24 PARKED: Donor card scopes improve the early register allocation and control flow. Card-release scheduling and the title setter register remain different.	40	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00589402/00589402.cpp	original

@@ -39937,3 +39937,9 @@ __imp__CoUninitialize@0	01440648	00a3bc20
 ??_7CShaderBankEntry@@6B@	0129d698	00a62120
 ?ReadEntryData@CBankFile@@QAEXKKPAXK@Z	009cc2a0	00a62120
 ?g_QuadIndices_0139a550@@3QBGB	0139a550	00b5e700
+?Drink@CTCHeroStats@@QAEXM@Z	0057a82a	0057c4f1
+?GetMaxExtraMaxHealth@CTCHeroStats@@QBEMXZ	0057a90b	0057c4f1
+?GetMaxExtraMaxStamina@CTCHeroStats@@QBEJXZ	0057a962	0057c4f1
+?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z	006a6290	0057c4f1
+?SetActionSpeedMultiplier@CTCHaste@@QAEXPAXM@Z	005812ae	0057c4f1
+?SetTimeOfDay@CGameTimeManager@@QAEXM@Z	006bb810	0057c4f1

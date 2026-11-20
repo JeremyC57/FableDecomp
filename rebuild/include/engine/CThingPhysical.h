@@ -94,6 +94,12 @@ public:
     static unsigned long FABLE_FASTCALL StatGetTypeFlags() { return 3; }
 #endif
     float GetHealth() const { return Health; }
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_HEALTHMODIFIERS
+    // Opt-in (hand3c3, row 0x0057C4F1 CTCHeroStats::ApplyBonusItemEffects): Ego_r.pdb / Ego_d.pdb ?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z
+    // (retail 0x006A6290, landed with this Leaf) and ?SetMaxHealth@CThingPhysical@@QAEXM_N@Z (retail 0x006A5260, landed). Declarations only.
+    void ModifyHealthOverTime(float amount, long frames_to_change_over); // 0x006A6290
+    void SetMaxHealth(float max_health, bool update_health);             // 0x006A5260
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_MAXHEALTH
     float GetMaxHealth()const{return MaxHealth;}
 #endif

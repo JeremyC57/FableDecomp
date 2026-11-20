@@ -1,0 +1,31 @@
+diff --git a/rebuild/include/engine/CTCHeroStats.h b/rebuild/include/engine/CTCHeroStats.h
+index b97ed7cf1..165d7b36b 100644
+--- a/rebuild/include/engine/CTCHeroStats.h
++++ b/rebuild/include/engine/CTCHeroStats.h
+@@ -246,6 +246,26 @@ public:
+ protected:
+     void OnSerialise(CPersistContext& context, bool in_game);            // 0x0057E2F1 (virtual through CTCBase)
+ public:
++#ifdef FABLE_RETAIL_CTCHEROSTATS_APPLYBONUSITEMEFFECTS
++    // Opt-in (hand3c3, row 0x0057C4F1): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
++    // and the members it calls, all out of line in retail: ?SetFatness@..@@QAEXM@Z 0x0057B169, ?GetMaxExtraMaxHealth@..@@QBEMXZ
++    // 0x0057A90B, ?GetMaxExtraMaxStamina@..@@QBEJXZ 0x0057A962, ?Drink@..@@QAEXM@Z 0x0057A82A, ?SetMorality@..@@QAEXJ@Z 0x0057C2E6,
++    // ?ModifyStaminaBy@..@@QAEXJ@Z 0x0057B1DB. Declarations only: no layout change.
++    void ApplyBonusItemEffects(const class CBonusItemDef& bonus_item_def);   // 0x0057C4F1
++    void SetFatness(float val);                                          // 0x0057B169
++    float GetMaxExtraMaxHealth() const;                                  // 0x0057A90B
++    long GetMaxExtraMaxStamina() const;                                  // 0x0057A962
++    void Drink(float drink);                                             // 0x0057A82A
++    // Inline getters (FableWin.pdb / Ego_d.pdb ?GetFatness@..@@QBEMXZ, ?GetMorality@..@@QBEJXZ; no retail copy: the row reads +0x38 / +0x28).
++    float GetFatness() const { return Fatness; }
++    long GetMorality() const { return Morality; }
++#ifndef FABLE_RETAIL_CTCHEROSTATS_MORALITY
++    void SetMorality(long morality);                                     // 0x0057C2E6
++#endif
++#ifndef FABLE_RETAIL_CTCHEROSTATS_MODIFYSTAMINA
++    void ModifyStaminaBy(long change_in_stamina);                        // 0x0057B1DB
++#endif
++#endif
+     std::map<CCharString,MirroredCriminalStatus> OutstandingCrimes;      // +0x0c
+     std::vector<long> ExperienceSpentOn;                                 // +0x18
+     long             NumberOfDecapitations;                              // +0x24

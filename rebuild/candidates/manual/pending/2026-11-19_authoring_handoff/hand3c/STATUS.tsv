@@ -2,7 +2,7 @@ address	grade	bytes	test	grades_used	notes
 0041afa0	OPEN	1455	-	1	baseline draft DIFFER(1014v1455) hunks=11 difflines=704
 00439bb0	RELOCATION_MATCH	592	PASS(vland strict)	4	hand3c: FableWin 0x01A814F0 shape on shared headers (CPlayerGui MEMBERS+CTOR, CStatBar, CTCHeroStats BRIBE/GETMONEY, GetTC expanded); new opt-ins CPLAYERGUI_UPDATEMONEY, NPLAYERGUI_CSTATBAR_CHANGETEXTS; tail as three member-order stores [b15 LANDED]
 0052ee00	MATCH	192	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x0229BB60 shape on shared NUISystem_CComponent.h + FABLE_RETAIL_C2DVECTOR [b7 LANDED 4347aa3597]
-0057c4f1	OPEN	1192	-	1	baseline draft DIFFER(1192v1192) hunks=82 difflines=238
+0057c4f1	RELOCATION_MATCH	1192	PASS(vland strict)	1	hand3c3 b7 [LANDED batches/2026-11-20_landing_hand3c3_b7]
 00591b7f	LANDED	735	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(729v735) hunks=35 difflines=112
 00621a20	RELOCATION_MATCH	600	PASS(vland strict)	5	hand3c: FableWin 0x01F7D6C0 shape on shared headers (CTCInventoryQuests OPENINVENTORY+MEMBERS, PASS22 Categories, CQuestManager, CTCQuestCard); levers STLP_DESTROY_AUX_FASTCALL + CVECTORMAP_INLINE_CONST_LOWERBOUND; new opt-ins CTCINVENTORYQUESTS_RESETCATEGORYLIST, CTCINVENTORYBASE_ADDCATEGORY, CCATEGORY_SETASSELECTED
 0063f4b0	LANDED	769	-	30	landed by Account B (batches/2026-11-19_landing_hand3c_b28_b31); PORTED to shared headers (Q23 Bind3 source -> Bind2, FOREACHINROUGHAREA_BODY): residue = loop-exit reload order (TLX/BRX/BRY/map; Q19/Q23 family gap); include + class-order permutations and a guarded/byte-offset y loop opt-in: no change (port shows the reload swap at two sites, 0x0063F6F4 and 0x0063F755; the local-model draft had one) | best differ/0063f4b0.cpp
