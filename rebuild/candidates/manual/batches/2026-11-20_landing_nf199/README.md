@@ -1,7 +1,7 @@
 # Landing nf199 (Account A, 2026-11-20): CCombatManager map finds, CCharString ctor / Compare binders (27 rows)
 
 Agent NF199 (round 10) handed back early (context) after q6341 with 50 entries: 1 done-already, 6 blocked or partial, 2 deferred, and
-41 open (not reached). Its files are in `naming/2026-11-20_agentNF199/`. Most entries go back to the queue unclaimed (49): the open ones;
+41 open (not reached). Its files are in `naming/2026-11-20_agentNF199/`. Most entries go back to the queue unclaimed (48): the open ones;
 the partial families q4389 (9 rows left) and q4456 (4 binders left); q4394; q6315 / q6319, whose binder was NF198's and has since landed;
 and q6332 / q6341, where the existing fable_containers.h opt-ins are still untried. q4451 stays blocked for a family pass (82 binders of
 varied shape left).
