@@ -1,0 +1,2 @@
+# recheck after landing nf119: 98 exe-scan referencing rows (no header changed)
+good 98 bad 0

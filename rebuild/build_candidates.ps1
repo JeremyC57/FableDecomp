@@ -283379,6 +283379,7 @@ $catalog = @(
         Source = '00/65/std_countif_0065f6a6.cpp'
         TestSource = '00/65/std_countif_0065f6a6_test.cpp'
         PassPattern = '0065f6a6_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '006600ec'

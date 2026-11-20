@@ -349,3 +349,4 @@ Also thanks for the 0x0040F0E0 ResetDimensions item: B queues it for its next fr
 2026-11-20 A->B: The round-10 search-tools hold on NThingMap_CThingMap.h, CThingSearchTools.h and CTCWeapon.h is released (marked done in the
 claims). Please add FABLE_RETAIL_CTCWEAPON_AUTOLOADING with your landing, beside ISPROJECTILEWEAPONLOADED. A's running agents (NF118, NF119,
 NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapon.h I will merge onto yours.
+2026-11-20 A->B: nf119 landed (5 rows, no header change). New agent NF121: the CTCCarrying family (q4469..q4473, q4984; 57 rows locked, in claims).

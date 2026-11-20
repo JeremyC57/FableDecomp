@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0065f6a6   WARN STANDIN_LEAF ??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YIHU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0UHasGuardProperty@@@Z (catalog std::count_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>; names another function)
+0065f6a6   RELOCATION_MATCH PASS   std::count_if<struct std::_List_iterator<class CIntelligentPointer<class CThingAICreature>,struct std::_Nonconst_traits<class CIntelligentPointer<class CThingAICreature>>>,struct HasGuardProperty>
+008b7b10   RELOCATION_MATCH PASS   CCreatureAction_SheatheWeapons::PerformAction
+0078ebf0   RELOCATION_MATCH PASS   CTCDivineWrath::PlaySoundW
+0075f980   RELOCATION_MATCH PASS   CCardinalSpline::AppendControlPoint
+0066e370   RELOCATION_MATCH PASS   std::vector::_M_insert_overflow
+
+WINS: 5
+  0065f6a6 RELOCATION_MATCH std::??$count_if@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@UHasGuardProperty@@@std@@YIHU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@0@0UHasGuardProperty@@@Z
+  008b7b10 RELOCATION_MATCH CCreatureAction_SheatheWeapons::?PerformAction@CCreatureAction_SheatheWeapons@@UAEXXZ
+  0078ebf0 RELOCATION_MATCH CTCDivineWrath::?PlaySoundW@CTCDivineWrath@@AAEKABVCCharString@@_N@Z
+  0075f980 RELOCATION_MATCH CCardinalSpline::?AppendControlPoint@CCardinalSpline@@QAEJABVC3DVector@@@Z
+  0066e370 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__false_type@2@I_N@Z

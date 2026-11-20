@@ -3116,7 +3116,6 @@ _FableCam_788198@8	0078809b	00788198
 ??_7CCreatureAction_HeroLoadRangedWeapon@@6B@	0126b9d4	0078bd60
 ??_7CIntelligentPointer_CThingObject@@6B@	0125a858	0078bd60
 ?CleanupAbility@CTCBerserk_Retail@@QAEX_N@Z	0078cd80	0078d210
-?PlaySound@CTCSound@@QAEKKJKJJ@Z	0066bd00	0078ebf0
 ?Erase@CRetailTree_erase00792300@@QAEXPAUnode@1@@Z	00792300	00792880
 ?Insert@CRetailTree_00792a70@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	007929a0	00792a70
 ?Erase@CRetailTree_erase00797840@@QAEXPAUnode@1@@Z	00797840	00797c20
@@ -4041,8 +4040,6 @@ _kName	012786ac	008b34d0
 ?UnsheatheWeapons_CheckPredicate@@YI_NPAUCCreatureAction_UnsheatheWeapons_Methods@@@Z	006925a0	008b69d0
 ?Refresh@CMiniMapDisplay@@QAEXXZ	0082b7c0	008b7640
 ?g_pGameUI_013b8790@@3PAUCGameUI@@A	013b8790	008b7640
-?MakeNoise@CThing@@QAEXABVCCharString@@@Z	00662110	008b7b10
-?SheatheAllWeapons@CThing@@QAEXXZ	006647f0	008b7b10
 ??_7CCreatureAction_PlayCombatAnimation@@6B@	0127a604	008b7f80
 ??_7CCreatureAction_GoUnderground@@6B@	0127a894	008b8110
 ??0CBase_00857e40@@QAE@J@Z	00857e40	008b81e0
@@ -11476,8 +11473,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?clear@COpinionSourceList@@QAEXXZ	0043f230	004ac800
 ??1CWideStringRecordVector@@QAE@XZ	004ae040	004ae3e0
 ??_7?$CIntelligentPointer@VCParticleEmitter@@@@6B@	0125a26c	00657037
-??$?0VCThingAICreature@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThingAICreature@@@@@Z	0050f410	0065f6a6
-??RHasGuardProperty@@QBE_NV?$CIntelligentPointer@$$CBVCThing@@@@@Z	0065f152	0065f6a6
 ??RHasBuildingAsHomeOrWork@@QBE_NABV?$CIntelligentPointer@VCThingAICreature@@@@@Z	0065fbe1	006600ec
 ?DestroyRange@@YIXPAUCCombatRing@@0ABUSNonscalarPtrIteratorTag@@@Z	006f44e0	006f48a0
 ?Erase@CAttackerTree@@QAEXPAUnode@1@@Z	006efc70	006f48a0
@@ -12156,7 +12151,6 @@ __imp__OutputDebugStringW@4	0143fe14	005472a0
 ?push_back@CThingPtrVector@@QAEXABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	007398b0	007352d0
 ?_M_insert_overflow@?$CRetailVector@V?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@@@QAEXPAV?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@ABV23@ABU__false_type@@I_N@Z	00759190	00759570
 ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z	00761b50	0075dc60
-?_M_insert_overflow@?$CArray@VC3DVector@@@@QAEXPAVC3DVector@@ABV2@ABU__true_type@@I_N@Z	0066e370	0075f980
 ??$__copy_backward@PAVCKeyCamera@@PAV1@H@std@@YIPAVCKeyCamera@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0075f0e0	0075fae0
 ??0CKeyCamera@@QAE@ABV0@@Z	0075f1f0	0075fae0
 ??4CKeyCamera@@QAEAAV0@ABV0@@Z	0075ef00	0075fae0
@@ -14419,7 +14413,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ?insert@?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@J@std@@_N@2@ABJ@Z	00514230	0065ce9b
 ?reserve@?$vector@JV?$allocator@J@std@@@std@@QAEXI@Z	00660684	0065ce9b
 ?GetLookAngleRelToBodyXY@CTCLook@@QBEMXZ	00751a80	00664e50
-??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@YIPAVC3DVector@@PAV1@00ABU__false_type@0@@Z	0066ddf0	0066e370
 ??$__copy_ptrs@PBU?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@PAU12@@std@@YIPAU?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@0@PBU10@0PAU10@ABU__false_type@0@@Z	00673760	00674520
 ??$__uninitialized_copy@PBU?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@PAU12@@std@@YIPAU?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@0@PBU10@0PAU10@ABU__false_type@0@@Z	00673d30	00674520
 ??$_Destroy@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@@std@@YIXPAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@0@Z	00675310	006753f0
@@ -40091,3 +40084,4 @@ __imp__setsockopt@20	01440534	008f8cc0
 ?PeekWitnessWillOverrideFactionEnemy@CTCOpinionSource@@QBE_NPBVCThingAICreature@@@Z	008640f0	00864b30
 ?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ	00937c20	00937d20
 ?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ	00937b10	00937d20
+??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@YIPAVC3DVector@@PAV1@00ABU__false_type@0@@Z	0066ddf0	0066e370
