@@ -16,6 +16,10 @@
 // engine/CVertexCompressionParams.h; Ego_r.pdb + FableWin.pdb CVertexBufferBase::Lock / Unlock 0x00AC20A0 / 0x00AC20B0); was a local
 // CVertexBufferWin32 model (binding ?Lock@CVertexBufferWin32@@QAEPAXKKK@Z / ?Unlock@CVertexBufferWin32@@QAEXXZ) and a local
 // CVertexCompressionParams model.
+// NF192 (q6242): SetupVertexBuffer is private with an EVertexType first parameter (Ego_r.pdb 0x00BD15B0 / FableWin.pdb 0x032F8CD0
+//   ?SetupVertexBuffer@C3DPrimitive2@@AAE_NW4EVertexType@@KKK@Z; engine/C3DPrimitive2.h _LOADER declares it so): respelled in place in the
+//   row-local C3DPrimitive2 model (was the public `long` form ?SetupVertexBuffer@C3DPrimitive2@@QAE_NJKKK@Z).
+#include "engine/EVertexType.h"
 #define FABLE_RETAIL_CVERTEXBUFFERWIN32
 #include "engine/CVertexBufferWin32.h"
 struct CVertexFormat {
@@ -54,7 +58,9 @@ class C3DPrimitive2 { public:
     CVertexBufferWin32* VertexBuffer;               // +0x30 scoped_ptr
     unsigned char _34[4];
     unsigned long VertexBufferStatus;                        // +0x38
-    bool SetupVertexBuffer(long vertexType, unsigned long vertexSize, unsigned long vertexCount, unsigned long flags);   // 0x00A8EDA0
+private:
+    bool SetupVertexBuffer(EVertexType vertexType, unsigned long vertexSize, unsigned long vertexCount, unsigned long flags);   // 0x00A8EDA0
+public:
     void ConvertToVBFormatStatic(void* data, unsigned long vertexSize, unsigned long flags, CVertexCompressionParams* params);   // 0x00A92740
     bool UploadToVertexBufferStatic(unsigned long flags);
 };
@@ -73,7 +79,7 @@ bool C3DPrimitive2::UploadToVertexBufferStatic(unsigned long flags)
     if (reps < 1)
         reps = 1;
     unsigned long vertexCount = Data->Vertices.size() * reps;
-    if (!SetupVertexBuffer(0, vertexSize, vertexCount, flags))
+    if (!SetupVertexBuffer((EVertexType)0, vertexSize, vertexCount, flags))
         return false;
     void* data = VertexBuffer->Lock(0, 0, 0);
     ConvertToVBFormatStatic(data, vertexSize, flags, &VertexBuffer->CompressionParams);

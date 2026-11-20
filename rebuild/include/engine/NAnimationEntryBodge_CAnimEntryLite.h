@@ -7,10 +7,18 @@ namespace NAnimationEntryBodge {
 class CAnimEntryLite {public:
  CAnimEntryLite(const CAnimationEntry&);
  long BankIndex,DelayTime,TransitionTime,AnimFlags;
+#ifdef FABLE_RETAIL_CANIMENTRYLITE_INLINE_ACCESSORS
+ // NF192 opt-in (2026-11-20, q6370, row 0x00861A80 CModeStandBase::SetUpMovementAnim): the two accessors with their bodies (FableWin.pdb
+ // ?GetDelayTime@CAnimEntryLite@NAnimationEntryBodge@@QBEJXZ / ?GetAnimateThingFlags@...@@QBEJXZ; Ego_r.pdb keeps no copy: inline in
+ // release, read straight from DelayTime +0x04 / AnimFlags +0x0C in 0x00861A80). Default path unchanged.
+ long GetDelayTime()const{return DelayTime;}
+ long GetAnimateThingFlags()const{return AnimFlags;}
+#else
  long GetDelayTime()const;
  long GetAnimateThingFlags()const;
+#endif
  long GetTimeToBlendIn(const CThing&)const;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NAnimationEntryBodge::CAnimEntryLite)==16);
+FABLE_STATIC_ASSERT_AT(15, sizeof(NAnimationEntryBodge::CAnimEntryLite)==16);
 #endif

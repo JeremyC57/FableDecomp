@@ -1,0 +1,3 @@
+MISSING 00ac0c00 00ac1460 ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z owner leaf DeleteData True False
+OK  00b3adc0 -> 00b3a760 ?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocato sizes 58 58 
+manual (landing, q.py with the 0x00AC0C00 row source): 00ac1460 ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z MATCH; 00ac1960 ??_GC3DMeshFileMapChunk@@UAEPAXI@Z RELOCATION_MATCH. The vtable equals retail 0x0129EE34 (agent: bytes and the 11 slot names).

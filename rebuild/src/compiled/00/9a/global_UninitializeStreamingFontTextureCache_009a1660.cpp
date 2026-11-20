@@ -12,8 +12,13 @@
 // CMemoryAllocator::InternalDeallocate(void*) @ 0x009F2920, GetNoAllocations() @ 0x009F1F10 (`[this+40Ch]`),
 // ~CMemoryAllocator @ 0x009F2310 and the class's static `__fastcall` operator delete @ 0x009F1F90.
 // Globals: the cache block @ 0x013BDA24 (also the "cache initialised" test), the four `new[]` arrays built by
-// InitializeStreamingFontTextureCache @ 0x013BDA40 / 0x013BDA34 / 0x013BDA38 / 0x013BDA3C (no PDB names; named by
-// element size), the global allocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94.
+// InitializeStreamingFontTextureCache @ 0x013BDA40 / 0x013BDA34 / 0x013BDA38 / 0x013BDA3C, the global allocator @ 0x013CAA90
+// and its destroy-when-empty flag @ 0x013CAA94.
+// NF192 (q4201..q4204): the cache globals are the anonymous-namespace statics of the streaming-font TU (Ego_d.pdb PUB32
+// ?textureCacheMem@?A0x...@@3PAEA, ?glyphTextureCacheGlyphAdjustment@...@@3PAVCStreamingGlyphAdjustment@@A,
+// ?glyphTextureCacheGlyphDataIndices@...@@3PAKA, ?glyphTextureCacheGlyphData@...@@3PAXA,
+// ?glyphTextureCacheGlyphDataCache@...@@3PAVCStreamingGlyphData@@A; the release PDBs carry none of them), at the addresses the
+// landed InitializeStreamingFontTextureCache 0x009A3640 allocates them into under the same spellings.
 // Shape: everything sits under `if (cache block)`; each array is `delete[]`d and nulled (the four `__cdecl` pops are
 // merged into one `add esp,10h`); the block goes back through GFFreeFromGlobalAllocator (landed out of line
 // @ 0x009A4350; expanded here, which needs `__forceinline` -- a visible body or plain `inline` stays a call): the
@@ -31,24 +36,28 @@
 void __cdecl operator delete[](void* block);    // 0x00BFEB1C (MSVCR71 import thunk; the lane <new> lacks it)
 
 
-extern void*           g_pStreamingFontCacheMemory;        // 0x013BDA24
-extern unsigned long*  g_pStreamingFontCacheDwordTable;    // 0x013BDA34 ((n + 1) dwords)
-extern unsigned char*  g_pStreamingFontCacheByteTable;     // 0x013BDA38
-extern unsigned long*  g_pStreamingFontCachePairTable;     // 0x013BDA3C (8-byte records)
-extern unsigned short* g_pStreamingFontCacheWordTable;     // 0x013BDA40
+#include "engine/CStreamingGlyphData.h"
+#include "engine/CStreamingGlyphAdjustment.h"
+namespace {
+extern unsigned char*             textureCacheMem;                     // 0x013BDA24
+extern unsigned long*             glyphTextureCacheGlyphDataIndices;   // 0x013BDA34 ((n + 1) dwords)
+extern void*                      glyphTextureCacheGlyphData;          // 0x013BDA38
+extern CStreamingGlyphData*       glyphTextureCacheGlyphDataCache;     // 0x013BDA3C (8-byte records)
+extern CStreamingGlyphAdjustment* glyphTextureCacheGlyphAdjustment;    // 0x013BDA40
+}
 
 void __fastcall UninitializeStreamingFontTextureCache()
 {
-    if (g_pStreamingFontCacheMemory != 0) {
-        delete[] g_pStreamingFontCacheWordTable;
-        g_pStreamingFontCacheWordTable = 0;
-        delete[] g_pStreamingFontCacheDwordTable;
-        g_pStreamingFontCacheDwordTable = 0;
-        delete[] g_pStreamingFontCacheByteTable;
-        g_pStreamingFontCacheByteTable = 0;
-        delete[] g_pStreamingFontCachePairTable;
-        g_pStreamingFontCachePairTable = 0;
-        CMemoryAllocator::Deallocate(g_pStreamingFontCacheMemory);
-        g_pStreamingFontCacheMemory = 0;
+    if (textureCacheMem != 0) {
+        delete[] glyphTextureCacheGlyphAdjustment;
+        glyphTextureCacheGlyphAdjustment = 0;
+        delete[] glyphTextureCacheGlyphDataIndices;
+        glyphTextureCacheGlyphDataIndices = 0;
+        delete[] glyphTextureCacheGlyphData;
+        glyphTextureCacheGlyphData = 0;
+        delete[] glyphTextureCacheGlyphDataCache;
+        glyphTextureCacheGlyphDataCache = 0;
+        CMemoryAllocator::Deallocate(textureCacheMem);
+        textureCacheMem = 0;
     }
 }

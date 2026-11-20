@@ -30,15 +30,11 @@ class CAnimationEntry { public:
     unsigned long GetAnimateThingFlags() const;     // 0x005DC390
     long GetTimeToBlendIn(CThing* thing) const;     // 0x005DC230
 };
-struct CAnimEntryLite {
-    long BankIndex;                                 // +0x00
-    long DelayTime;                                 // +0x04
-    long TransitionTime;                            // +0x08
-    long AnimFlags;                                 // +0x0C
-    long GetTimeToBlendIn(CThing* thing) const;     // 0x0073A690
-    long GetDelayTime() const { return DelayTime; }
-    long GetAnimateThingFlags() const { return AnimFlags; }
-};
+// NF192 (q6370): CAnimEntryLite from the shared engine/NAnimationEntryBodge_CAnimEntryLite.h (FABLE_RETAIL_CANIMENTRYLITE_INLINE_ACCESSORS:
+//   the two accessors inline, as this TU expands them); its GetTimeToBlendIn(const CThing&) 0x0073A690 is the Ego_r.pdb 0x00751040 /
+//   FableWin.pdb 0x024B4440 spelling. Was a row-local global CAnimEntryLite binding ?GetTimeToBlendIn@CAnimEntryLite@@QBEJPAVCThing@@@Z.
+#define FABLE_RETAIL_CANIMENTRYLITE_INLINE_ACCESSORS
+#include "engine/NAnimationEntryBodge_CAnimEntryLite.h"
 class CAnimFrameInfo { public:
     float A, B;
     CAnimFrameInfo() : A(0.0f), B(0.0f) {}
@@ -80,13 +76,13 @@ public:
         float            MaxMovementSpeed;              // +0x00
         unsigned char    Type;                          // +0x04
         CAnimationEntry* PAnimEntry;                    // +0x08
-        CAnimEntryLite*  PAnimEntryLite;                // +0x0C
+        NAnimationEntryBodge::CAnimEntryLite*  PAnimEntryLite;   // +0x0C
         long GetDelayTime() const { return PAnimEntry ? PAnimEntry->GetDelayTime() : PAnimEntryLite->GetDelayTime(); }
         unsigned long GetAnimFlags() const { return PAnimEntry ? PAnimEntry->GetAnimateThingFlags() : PAnimEntryLite->GetAnimateThingFlags(); }
         long GetBankIndex() const { return PAnimEntry ? PAnimEntry->BankIndex : PAnimEntryLite->BankIndex; }
         long GetTimeToBlendIn(CThing* thing) const
         {
-            return PAnimEntry ? PAnimEntry->GetTimeToBlendIn(thing) : PAnimEntryLite->GetTimeToBlendIn(thing);
+            return PAnimEntry ? PAnimEntry->GetTimeToBlendIn(thing) : PAnimEntryLite->GetTimeToBlendIn(*thing);
         }
     };
     void*         _vptr;                            // +0x00

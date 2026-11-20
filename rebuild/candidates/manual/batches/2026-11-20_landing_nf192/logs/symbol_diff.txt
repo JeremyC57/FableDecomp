@@ -1,0 +1,43 @@
+006a9690 new: 1
+    ??0C3DAngles@@QAE@MMM@Z
+00723760 new: 1
+    ??0C3DAngles@@QAE@XZ
+007237e0 new: 1
+    ??0C3DAngles@@QAE@XZ
+00723860 new: 1
+    ??0C3DAngles@@QAE@XZ
+0073a690 new: 1
+    ?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z TABLE:0073a690
+00861a80 new: 2
+    ?GetAnimateThingFlags@CAnimEntryLite@NAnimationEntryBodge@@QBEJXZ
+    ?GetDelayTime@CAnimEntryLite@NAnimationEntryBodge@@QBEJXZ
+00894950 new: 1
+    ??0C3DAngles@@QAE@MMM@Z
+009a0ec0 new: 0
+009a14e0 new: 0
+009a1660 new: 0
+00a8eda0 new: 1
+    ?SetupVertexBuffer@C3DPrimitive2@@AAE_NW4EVertexType@@KKK@Z TABLE:00a8eda0
+00a914b0 new: 0
+00a931f0 new: 0
+00ac0c00 new: 8
+    ??$?0VC3DMeshFileMapChunk@@@?$CCountedPointer@VCChunkedFileChunk@@@@QAE@ABV?$CCountedPointer@VC3DMeshFileMapChunk@@@@@Z
+    ??0?$CCountedPointer@VC3DMeshFileMapChunk@@@@QAE@ABV0@@Z
+    ??0?$CCountedPointer@VC3DMeshFileMapChunk@@@@QAE@PAVC3DMeshFileMapChunk@@@Z
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+    ??1?$CCountedPointer@VC3DMeshFileMapChunk@@@@QAE@XZ
+    ??1?$CCountedPointer@VCChunkedFileChunk@@@@QAE@XZ
+    ?CreateMap@C3DMeshFileMaterialChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMapChunk@@@@W4EMaterialMapType@@@Z
+    ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z TABLE:00ac1460
+00aff0a0 new: 4
+    ??0CEnginePrimitive@@QAE@W4EEnginePrimitiveType@@_KW4EEngineInterpolationSet@@@Z
+    ??0CEnginePrimitiveParticleLineGroup@@QAE@KGW4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@@Z
+    ??0CEnginePrimitiveThemeChannelDesc@@QAE@XZ
+    ?Initialise@CPSCRenderMesh@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+00b3adc0 new: 6
+    ??1?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@VCEngineInternalAttachedPrimitiveInfo@@@std@@U12@V?$allocator@U?$_List_node@VCEngineInternalAttachedPrimitiveInfo@@@std@@@2@@std@@Q
+    ??1?$allocator@U?$_List_node@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAE@XZ
+    ??1?$list@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAE@XZ
+    ?clear@?$_List_base@VCEngineInternalAttachedPrimitiveInfo@@V?$allocator@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXXZ TABLE:00b3a760
+    ?deallocate@?$allocator@U?$_List_node@VCEngineInternalAttachedPrimitiveInfo@@@std@@@std@@QAEXPAU?$_List_node@VCEngineInternalAttachedPrimitiveInfo@@@2@I@Z

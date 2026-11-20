@@ -1,0 +1,9 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_0042b040.obj : error LNK2005: "public: bool __thiscall CDefinitionManager::GetDef<class CThingObjectDef>(long,class CDefPointer<class CThingObjectDef const> *)const " (??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z) already defined in head_00894950.obj
+own_004aa840.obj : error LNK2005: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in head_00894950.obj
+own_004abe90.obj : error LNK2005: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in head_00894950.obj
+own_006e7b40.obj : error LNK2005: "public: __thiscall CScriptThing::CScriptThing(void)" (??0CScriptThing@@QAE@XZ) already defined in head_00894950.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 274 LNK2001 + 85 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

@@ -11,6 +11,12 @@ enum EMaterialMapType;
 class C3DMeshFileMapChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileMapChunk();
+#ifdef FABLE_RETAIL_C3DMESHFILEMAPCHUNK_TYPE_CTOR
+    // NF192 opt-in (2026-11-20, q4362, row 0x00AC0C00): Ego_r.pdb 0x00C3C940 / FableWin.pdb 0x0347D2D0 ??0C3DMeshFileMapChunk@@QAE@W4EMaterialMapType@@@Z,
+    // inline in retail CreateMap 0x00AC0C00: the "MMAP" super-chunk base (0x00AA8360), vptr 0x0129EE34, MapType +0x2C, then the two
+    // CCharString default ctors (0x0099E4B0) at +0x30 / +0x34; CRC is left unset.
+    C3DMeshFileMapChunk(EMaterialMapType type) : CChunkedFileSuperChunk("MMAP"), MapType(type) { }
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -27,5 +33,5 @@ private:
     CCharString Filename;
     unsigned long CRC;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileMapChunk) == 0x3C);
+FABLE_STATIC_ASSERT_AT(30, sizeof(C3DMeshFileMapChunk) == 0x3C);
 #endif // FABLE_ENGINE_C3DMESHFILEMAPCHUNK_H

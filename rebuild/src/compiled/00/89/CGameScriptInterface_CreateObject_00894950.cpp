@@ -4,9 +4,9 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00894950, length 324 bytes (+ int3 padding), `ret 14h` (hidden result + 4).
 // The float overload of the landed CreateObject 0x00894820 (same TU): identical apart from the orientation, a
-//   CRightHandedSet built by its Euler-angle constructor @ 0x00A229E0 from C3DVector(angle, 0, 0) (both frame locals).
+//   CRightHandedSet built by its Euler-angle constructor @ 0x00A229E0 from C3DAngles(angle, 0, 0) (both frame locals).
 // Callees: CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CDefinitionManager::GetDef<CThingObjectDef>
-//   @ 0x0042B040, CRightHandedSet::CRightHandedSet(const C3DVector&) @ 0x00A229E0, CThingObject::Create(long, const
+//   @ 0x0042B040, CRightHandedSet::CRightHandedSet(const C3DAngles&) @ 0x00A229E0, CThingObject::Create(long, const
 //   C3DVector&, long, const CRightHandedSet*, unsigned long, const CCharString&) @ 0x00703210 (static __fastcall),
 //   CThing::GetScriptThing() @ 0x004C7E50 (by value), CScriptThing::operator= @ 0x008AB980, CBaseClass ctor/dtor
 //   @ 0x0099A2D0 / 0x0099A2E0, operator delete @ 0x00BFE9BC, the def's slot 1. CScriptThing vtable 0x01238C8C.
@@ -18,11 +18,15 @@ void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #define FABLE_RETAIL_CTHING_STATEACCESS
 #include "engine/CThing.h"
 #include "engine/C3DVector.h"
-class CRightHandedSet { public:
-    C3DVector Up;                                       // +0x00
-    C3DVector Forward;                                  // +0x0C
-    CRightHandedSet(const C3DVector& eulerAngles);      // 0x00A229E0
-};
+// NF192 (q5209): CRightHandedSet / C3DAngles from the shared headers (FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES: Ego_r.pdb
+//   ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z 0x00A229E0; FABLE_RETAIL_C3DANGLES_CTOR: the inline ??0C3DAngles@@QAE@MMM@Z, as the landed
+//   0x006A5D90); was a row-local CRightHandedSet whose (const C3DVector&) ctor bound ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z.
+#define FABLE_RETAIL_CRIGHTHANDEDSET
+#define FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES
+#define FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS   // GetRight (unused here) in its component form: this TU has C3DVector.h (via CThing.h) without operator^
+#define FABLE_RETAIL_C3DANGLES_CTOR
+#include "engine/C3DAngles.h"
+#include "engine/CRightHandedSet.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/CCountedPointer.h"
@@ -86,7 +90,7 @@ CScriptThing CGameScriptInterface::CreateObject(const CCharString& defName, cons
     long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
     CDefPointer<const CThingObjectDef> def;
     DefinitionManager->GetDef(index, &def);
-    CRightHandedSet orientation(C3DVector(angle, 0.0f, 0.0f));
+    CRightHandedSet orientation(C3DAngles(angle, 0.0f, 0.0f));
     CThingObject* object = CThingObject::Create(index, position, 4, &orientation, 0, scriptName);
     CScriptThing result;
     if (object)

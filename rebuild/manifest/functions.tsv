@@ -19415,7 +19415,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073a540	Alloc	NCreatureMode::CModeDragonFireBeam	unknown	undefined	0		0			discovered	gapscan							
 0073a5d0	~CModeWithTwoFilters_0073a5d0	CModeWithTwoFilters_0073a5d0	__thiscall	undefined	1	CAIStateGroup_BalverineCornered *	0	yes	accepted									
 0073a680	GetWorld	CTCCreatureModeManager::CModeBase	__thiscall	CDisplayEngine *	1	CViewBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CViewBase_GetDisplayEngine_0073a680.cpp
-0073a690	GetTimeToBlendIn	CAnimEntryLite	__thiscall	long	2	CAnimEntryLite *,CThing *	1	yes	accepted									
+0073a690	GetTimeToBlendIn	NAnimationEntryBodge::CAnimEntryLite	__thiscall	long	2	CAnimEntryLite *,CThing *	1	yes	accepted									
 0073a6e0	GetCurrentMode	CTCCreatureModeManager	__thiscall	ulong	1	CPixelShader *	1	yes	accepted									
 0073a6f0	GetNoFramesBeforePlayingCombinationIdleAnims	CTCCreatureModeManager::CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
 0073a760	GetNoFramesBeforePlayingIdleAnims	CTCCreatureModeManager::CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
@@ -39466,7 +39466,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac0ab0	C3DMeshFileMaterialChunk	C3DMeshFileMaterialChunk	__thiscall	undefined	1	C3DMeshFileMapChunk *	0	yes	accepted									
 00ac0ae0	GetExtendedProperties	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
 00ac0b70	GetExtendedProperties	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
-00ac0c00	CreateNewBankMap	CEngineWorldMap	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
+00ac0c00	CreateMap	C3DMeshFileMaterialChunk	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
 00ac0ce0	FindFirstMap	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									
 00ac0d70	FindNextMap	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	2	C3DMeshFileSubMeshChunk *,CCountedPointer<class_C3DMeshFileBoneChunk_const_> *	1	yes	accepted									
 00ac0e50	FindFirstMap	C3DMeshFileMaterialChunk	__thiscall	CCountedPointer<C3DMeshFileBoneChunk_const_>	1	C3DMeshFileSubMeshChunk *	1	yes	accepted									

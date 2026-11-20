@@ -17,7 +17,8 @@
 //   vtable 0x0129AB54 slot 1) defined on engine/CStreamingFontBank.h (FABLE_RETAIL_CSTREAMINGFONTBANK + _GLYPHLOOKUP over
 //   engine/CFontBank.h: the +0x04 line height is CFontBank::FontHeight; PASS22_STREAMING_FONT_CTOR for the PB_W parameter) with engine/C2DExtentsF.h, CStreamingGlyph.h,
 //   CStreamingGlyphData.h, CStreamingGlyphAdjustment.h. CStreamingGlyphLookup has no shared header (same local model as the
-//   landed Render 0x009A25D0). The 0x013BDA40 adjustment table keeps this row's extern spelling (see NOTES).
+//   landed Render 0x009A25D0). The 0x013BDA40 adjustment table is the anonymous-namespace glyphTextureCacheGlyphAdjustment (Ego_d.pdb
+//   PUB32), as the landed 0x009A3640 / 0x009A25D0 bind it (NF192 q4204).
 #define FABLE_RETAIL_CFONTBANK
 #define FABLE_RETAIL_CFONTBANK_BASE
 #define FABLE_RETAIL_CSTREAMINGFONTBANK
@@ -36,7 +37,9 @@ struct CStreamingGlyphLookup {         // Ego_r.pdb, 16 bytes
     CStreamingGlyph indices;
     CStreamingGlyphData data;
 };
-extern CStreamingGlyphAdjustment* g_pGlyphAdjustments;   // 0x013BDA40
+namespace {
+extern CStreamingGlyphAdjustment* glyphTextureCacheGlyphAdjustment;   // 0x013BDA40 (Ego_d.pdb PUB32 anonymous-namespace static; NF192 q4204)
+}
 
 static inline int RoundToInt(float f)
 {
@@ -60,7 +63,7 @@ C2DExtentsF CStreamingFontBank::GetStringExtents(const FableFontWideChar* str, b
         }
         CStreamingGlyphLookup* g = GlyphLookup(c);
         if (g)
-            x += (signed char)RoundToInt((float)g->data.Advance * ((float)g_pGlyphAdjustments[g->indices.AdjustmentIndex].Scale * 0.01f));
+            x += (signed char)RoundToInt((float)g->data.Advance * ((float)glyphTextureCacheGlyphAdjustment[g->indices.AdjustmentIndex].Scale * 0.01f));
         if (x > extents.X)
             extents.X = x;
         if (y > extents.Y)

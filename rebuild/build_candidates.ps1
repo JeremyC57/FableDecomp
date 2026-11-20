@@ -191005,9 +191005,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0073a690'
-        Module = 'CAnimEntryLite'
-        Source = '00/73/CAnimEntryLite_GetTimeToBlendIn_0073a690.cpp'
-        TestSource = '00/73/CAnimEntryLite_GetTimeToBlendIn_0073a690_test.cpp'
+        Module = 'NAnimationEntryBodge::CAnimEntryLite'
+        Source = '00/73/NAnimationEntryBodgeCAnimEntryLite_GetTimeToBlendIn_0073a690.cpp'
+        TestSource = '00/73/NAnimationEntryBodgeCAnimEntryLite_GetTimeToBlendIn_0073a690_test.cpp'
         PassPattern = '0073a690_TEST PASS'
     }
     [pscustomobject]@{
@@ -239200,8 +239200,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00ac0c00'
         Module = 'C3DMeshFileMaterialChunk'
-        Source = '00/ac/C3DMeshFileMaterialChunk_CreateNewBankMap_00ac0c00.cpp'
-        TestSource = '00/ac/C3DMeshFileMaterialChunk_CreateNewBankMap_00ac0c00_test.cpp'
+        Source = '00/ac/C3DMeshFileMaterialChunk_CreateMap_00ac0c00.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_CreateMap_00ac0c00_test.cpp'
         PassPattern = '00ac0c00_TEST PASS'
     }
     [pscustomobject]@{

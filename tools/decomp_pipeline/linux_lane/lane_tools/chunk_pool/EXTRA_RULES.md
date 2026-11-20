@@ -433,3 +433,14 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   repo's STLport headers produce (descriptive-by-library). A count-neutral move of a caller from a fake stand-in (e.g. `set<>::insert_unique`)
   onto that header spelling lands when the self row's body is that STLport function; queue the self row and the other binders to
   converge (nf184 0x009A7D40 -> 0x009AAEB0).
+
+## 2026-11-20 advisor decision (owner delegated): per-TU anonymous-namespace hashes are one spelling
+- VC7.1 names an anonymous namespace `?A0x<hash>` from the compile path, so each row (its own TU) emits its own hash for one retail
+  anonymous-namespace name, and no row text can reproduce retail's. Count spellings with `\?A0x[0-9a-f]{8}` stripped: the name is the
+  identifier plus its type code plus "anonymous namespace" (nf192: the streaming-font glyph-cache statics 0x013BDA24..0x013BDA40,
+  Ego_d PUB32 `?A0xfe46a155`; same ruling for q11864 GFontTextureCache 0x013C5A80).
+- After the strip, each address must still have exactly one spelling, type code included. A leftover stand-in or a different type
+  code is a split as usual.
+- Leaf lines, queue lines, NAME_FIXES and READMEs write the PDB spelling with the PDB's hash (as 0x009A3640's Leaf does);
+  RENAMES may write `?A0x<tu>`. A hash found in no PDB came from a rebuild object: correct it to the PDB's.
+- Until gate.py / tablecheck strip the hash (queued), judge GREW / CREATED lines at such addresses by the normalised count.
