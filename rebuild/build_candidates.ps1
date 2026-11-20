@@ -62027,9 +62027,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006a7550'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a7550.cpp'
-        TestSource = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a7550_test.cpp'
+        Module = 'CThingFilter_EnemyCreature'
+        Source = '00/6a/CThingFilterEnemyCreature_operator_006a7550.cpp'
+        TestSource = '00/6a/CThingFilterEnemyCreature_operator_006a7550_test.cpp'
         PassPattern = 'LV_OK_006a7550'
     }
     [pscustomobject]@{

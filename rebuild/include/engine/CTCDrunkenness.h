@@ -15,6 +15,20 @@ private:
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_DRUNKENNESS; }
     bool IsDrunk() const { return Drunk; }
+#ifdef FABLE_RETAIL_CTCDRUNKENNESS_DRANKFRAMES
+    // NF167 opt-in (q4151, row 0x0093A8C0 CAIStateGroup_BanditSitRoundCampfire::Drink): Ego_r.pdb / FableWin.pdb
+    // ?DrankFrames@CTCDrunkenness@@QAEXJ@Z (FableWin 0x02B7FA30, beside the Drink body 0x02B7F7B0; out-of-line COMDAT copy in retail at
+    // 0x0093A4E0: `fild [esp+4] ; fmul [0x013BAE70] ; fadd [ecx+10h] ; fstp [ecx+10h] ; ret 4`, expanded in Drink at 0x0093AA03),
+    // ?GetDrunkenness@CTCDrunkenness@@QAEMXZ (FableWin 0x02B7FA60), ?SetDrunkenness@CTCDrunkenness@@QAEXM@Z, and the private static
+    // ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB 0x013BAE70 (Ego_d.pdb PUB32; dynamic initializer 0x0121F260 named in
+    // Ego_r.pdb 0x01011A70 / FableWin.pdb 0x03FF5740). Inline members and a static: no layout change.
+    void DrankFrames(long frames) { Drunkenness += frames * DrunkennessDeltaPerFrameOfDrinking; }
+    float GetDrunkenness() { return Drunkenness; }
+    void SetDrunkenness(float drunkenness) { Drunkenness = drunkenness; }
+private:
+    static const float DrunkennessDeltaPerFrameOfDrinking;      // 0x013BAE70
+public:
+#endif
 private:
     bool Drunk;
     float Drunkenness;
@@ -22,6 +36,6 @@ private:
     const float SecondsPerFrame;
     float ThisDrunkennessThreshold;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDrunkenness)==0x20);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CTCDrunkenness)==0x20);
 #endif
 #endif

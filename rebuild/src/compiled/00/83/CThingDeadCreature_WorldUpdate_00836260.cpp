@@ -1,4 +1,6 @@
 // CThingDeadCreature::WorldUpdate() -- game-object update and body reorientation; then, for a creature def that persists after death, count the body's life down and, two seconds before the end, spawn the decay effect at the body and fade it out once; when the fade has finished kill the body
+// NF167 (2026-11-20, q11702): 0x006C3B70 respelt in place on the row's own local CTCFadeOutAndIn model from the invented Fade(float, bool) to
+//   ?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z (Ego_r.pdb + FableWin.pdb; engine/CTCFadeOutAndIn.h); no PDB has a member Fade.
 // Leaf: ?WorldUpdate@CThingDeadCreature
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -87,7 +89,7 @@ class CTCFadeOutAndIn { public:
     unsigned char _pad00[0x0c];
     bool FadingA;                                       // +0x0c
     bool FadingB;                                       // +0x0d
-    void Fade(float time, bool fadeIn);                 // 0x006C3B70
+    void FadeOut(float time, bool);                     // 0x006C3B70 ?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z (Ego_r / FableWin; NF167 q11702)
 };
 class CThing;
 class CTCDParticleEmitter {
@@ -215,7 +217,7 @@ bool CThingDeadCreature::WorldUpdate()
                     fade = (CTCFadeOutAndIn*)GetTC(0xf9);
                 else
                     fade = (CTCFadeOutAndIn*)AddTC("CTCFadeOutAndIn", false, 0);
-                fade->Fade(2.0f, true);
+                fade->FadeOut(2.0f, true);
             } else {
                 const CTCFadeOutAndIn* fade = 0;
                 if (HasTC(0xf9))

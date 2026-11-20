@@ -2,6 +2,9 @@
 // Leaf: ?GetNoFramesBeforePlayingIdleAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
+// NF167 (2026-11-20, q4152): the default delay 0x013BAFE8 respelt from the invented `?g_DefaultFrames_013bafe8@@3JA` to the private static
+//   ?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB (Ego_d.pdb PUB32 + Ego_r / FableWin dynamic initializer
+//   names = retail 0x0121F7E0), declared in place on the row's own nested CModeBase model as the landed twin 0x0073A6F0 does.
 // Identity: original PDB protected method and own stand/sit callers; default013bafe8, Berserk0078c000, IsAffected004c9920, multiplier004c5fa0.
 #define CBulletTimeManager CBulletTimeManager_HeaderLayout
 #include "engine/CBulletTimeManager.h"
@@ -27,11 +30,10 @@ namespace NCreatureMode {enum EMode {DescriptiveModeZero=0};}
 class CTCCreatureModeManager {public:class CModeBase {public:void* TypeTable;CThing* ParentThing;
 CThing& GetParentThing()const{return *ParentThing;}
 protected:long GetNoFramesBeforePlayingIdleAnims(NCreatureMode::EMode);friend struct TestAccess;
+private:static const long NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS;   // 0x013BAFE8 ?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB
 };};
-// Label: default timing global name remains descriptive; retail address 013bafe8.
-extern long g_DefaultFrames_013bafe8;
 long CTCCreatureModeManager::CModeBase::GetNoFramesBeforePlayingIdleAnims(NCreatureMode::EMode mode){
- long frames=g_DefaultFrames_013bafe8;
+ long frames=NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS;
  if(mode==(NCreatureMode::EMode)0x24)frames=CTCBerserk::GetNumFramesBeforeCrazyIdle();
  if(CThing::GetPCurrentThingManager()->World->PBulletTimeManager_ptr->IsBulletTimeActive() && GetParentThing().IsAffectedByBulletTime())
   return (long)(CThing::GetPCurrentThingManager()->World->PBulletTimeManager_ptr->GetBulletTimeSlowdownMultiplier()*frames);

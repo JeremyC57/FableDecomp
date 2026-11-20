@@ -24,6 +24,12 @@ public:
 #ifdef FABLE_RETAIL_CTCTARGETINGAI_ATTACK
     static bool FABLE_FASTCALL AreThingsEnemies(const CThing&,const CThing&);
 #endif
+#if defined(FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES) && !defined(FABLE_RETAIL_CTCTARGETINGAI_ATTACK) && !defined(FABLE_RETAIL_CTCENEMY_QUERIES)
+    // NF167 opt-in (q4949 / q4988): the one static of FABLE_RETAIL_CTCENEMY_QUERIES without that block's ETCInterfaceType.h include, for
+    // callers that keep a row-local interface enum. Ego_r.pdb 0x0077B430 / FableWin.pdb 0x02606310
+    // ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (static __fastcall), out of line at 0x0076D2F0 (landed self row). Declaration only.
+    static bool FABLE_FASTCALL AreThingsEnemies(const CThing& thing1, const CThing& thing2);   // 0x0076D2F0
+#endif
     void SetFaction(const CCharString& faction);
 #ifdef FABLE_RETAIL_CTCENEMY_ADDALLYTHING
     // Opt-in (NF124, q6326): Ego_r.pdb 0x0077B360 + FableWin.pdb 0x02606170 ?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z = retail 0x0076D270

@@ -1,5 +1,8 @@
 // CMiniMapDisplay::InitialiseEnemyMarkers() -- when a region is loaded and the hero is alive, add a minimap marker (graphics[8].Primary) for every creature in the current region that is the hero's enemy, is not a guild sparrow, is not underground and is not hidden from the minimap
 // Leaf: InitialiseEnemyMarkers
+// NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
+//   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
+//   dereferences both thing pointers; same fastcall registers).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -77,7 +80,9 @@ class CPlayerGuiDef { public:
     CArray_MarkerGraphics MiniMapMarkerGraphics;           // +0x958
 };
 class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };            // 0x00438570
-bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES
+#include "engine/CTCEnemy.h"   // CTCEnemy::AreThingsEnemies 0x0076D2F0 (NF167 opt-in)
 bool __fastcall IsUnderground(const CThing* thing);                  // 0x0085F120
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
@@ -130,7 +135,7 @@ void CMiniMapDisplay::InitialiseEnemyMarkers()
             for (_List_node<CThing*>* node = creatures._M_node->_M_next; node != creatures._M_node; node = node->_M_next) {
                 CThing* thing = node->_M_data;
                 if (worldMap->GetLoadedRegion() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex())
-                    && AreThingsEnemies(hero, thing)
+                    && CTCEnemy::AreThingsEnemies(*hero, *thing)
                     && thing->GetDefName() != "CREATURE_BIRD_GUILD_SPARROW"
                     && !IsUnderground(thing)
                     && !thing->HiddenFromMiniMap)

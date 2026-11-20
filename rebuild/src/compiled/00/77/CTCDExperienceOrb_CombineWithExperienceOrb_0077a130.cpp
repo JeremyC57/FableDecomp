@@ -1,4 +1,8 @@
-// CTCDExperienceOrb::CombineWithExperienceOrb(CThing* otherOrb) -- absorb the other orb's points, play the combining effect, kill it
+// CTCDExperienceOrb::CombineWithExperienceOrb(CThing& otherOrb) -- absorb the other orb's points, play the combining effect, kill it
+// Leaf: ?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z
+// NF167 (2026-11-20, q11700): own leaf respelt in place on the row's local CTCDExperienceOrb model to the PDB spelling (Ego_r 0x00595DB0 /
+//   FableWin 0x01F58660 ?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z: private, CThing&); retail `ret 4` with the thing
+//   in the one stack slot is the same for a pointer or a reference; the landed caller 0x0077A430 already binds this spelling.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077A130, length 72 bytes (+8 int3).
 // Callees: CTCDExperienceOrb::SetExperiencePoints(long) @ 0x00779E10, CThing::GetPos @ 0x004C73D0, the __fastcall
@@ -53,12 +57,13 @@ class CTCDExperienceOrb { public:
     bool PickedUp;                          // +0x1d
     CThing* GetParent() const { return ParentThing; }
     void SetExperiencePoints(long points);  // 0x00779E10
-    void CombineWithExperienceOrb(CThing* otherOrb);
+private:
+    void CombineWithExperienceOrb(CThing& otherOrb);
 };
 
-void CTCDExperienceOrb::CombineWithExperienceOrb(CThing* otherOrb)
+void CTCDExperienceOrb::CombineWithExperienceOrb(CThing& otherOrb)
 {
-    SetExperiencePoints(otherOrb->GetTCDriverExperienceOrb()->ExperiencePoints + ExperiencePoints);
+    SetExperiencePoints(otherOrb.GetTCDriverExperienceOrb()->ExperiencePoints + ExperiencePoints);
     CTCDParticleEmitter::Create(PDef->OrbCombiningParticleEffect, GetParent()->GetPos(), 0);
-    otherOrb->Kill(true);
+    otherOrb.Kill(true);
 }

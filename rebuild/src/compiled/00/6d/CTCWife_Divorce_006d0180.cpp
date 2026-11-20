@@ -89,7 +89,7 @@ class CTCHeroStats { public:
     unsigned char _pad00[0x28];
     long Morality;                              // +0x28
     void SetMarriageState(CThing* spouse, long state);   // 0x0057BC6E
-    long GetMoralityMax();                      // 0x0057A67E
+    long GetMoralityMax() const;                // 0x0057A67E ?GetMoralityMax@CTCHeroStats@@QBEJXZ (Ego_r / FableWin: const; NF167 q6155)
     void SetMorality(long morality);            // 0x0057C2E6
 };
 struct CHomeOccupant {

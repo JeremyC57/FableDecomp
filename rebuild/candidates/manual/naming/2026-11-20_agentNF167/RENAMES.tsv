@@ -1,0 +1,31 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x006A7550	CThingFilter_EnemyCreature	operator()	??RCThingFilter_EnemyCreature@@QBE_NABVCThing@@@Z	std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	?Cons_val@@YIPAUPayload@@PAUAllocator@@HPAUPair@@@Z	Ego_r.pdb 0x005A2F00 + FableWin.pdb 0x01F94340 (public const operator()(const CThing&), each followed by the const-pointer overload as retail 0x006A7550 is followed by its byte-identical twin 0x006A7560); body = CTCEnemy::AreThingsEnemies(thing, SourceThing) on the filter's one member (Ego_r CThingFilter_EnemyCreature: CThing const& SourceThing, 4 bytes); landed 0x007F4020 already binds 0x006A7550 under this spelling; ported onto engine/CThingFilter_EnemyCreature.h (no local model); the catalog label std::_Cons_val<...CParticleMorphs::CEntry...> was propagated
+0x0057A690	CTCHeroStats	GetMoralityPercentage	?GetMoralityPercentage@CTCHeroStats@@QBEMXZ	CTCHeroStats::GetMoralityPercentage	?CTCHeroStats_GetMoralityPercentage@@YIMPAVCTCHeroStats@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x0056DA5D ?GetMoralityPercentage@CTCHeroStats@@QBEMXZ (donor order GetMoralityMax 0x0056DA4B / GetMoralityPercentage / GetMoralityCategory 0x0056DA8B = retail 0x0057A67E / 0x0057A690 / 0x0057A6B8) + the body ((Morality + max) / (2 * max), the 0..1 value GetMoralityCategory cuts in sevenths) + engine/CTCHeroStats.h already declares it; the landed referencer 0x0057A6B8 already binds it, 0x0057C2E6 binds the QAE form (no new spelling); legacy free stand-in moved onto the shared header
+0x0073AC50	CTCCreatureModeManager::CModeBase	FrameUpdate	?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ	CTCCreatureModeManager::CModeBase::FrameUpdate	?FrameUpdate@CModeBase@CTCCreatureModeManager@@QAEXXZ	leaf-only (QAE -> UAE): Ego_r.pdb + FableWin.pdb ?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ (public virtual, CModeBase vtable 0x012673CC slot 3, engine/CTCCreatureModeManager.h CMODEBASE_VIRTUALS); 9 landed referencers already bind UAE, no landed row binds the old QAE spelling (probe work/probe_q11669.tsv; the other 22 bind stand-ins, listed in APPLIED); respelt in place on the row's own nested model
+0x00789FD0	CTCHeroRangedAttacks	ContinueAimingRangedWeapon	?ContinueAimingRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	CTCHeroRangedAttacks::ContinueAimingRangedWeapon	?ContinueAimingRangedWeapon@@YIXPAVCTCHeroRangedAttacks@@@Z	leaf-only (catalog name already right): Ego_r.pdb 0x00791100 + FableWin.pdb 0x024F5D40 ?ContinueAimingRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ; body = IsAbleToUseRangedWeapon() then FireCycleInProgress / Aiming (+0x14 / +0x15) set; no landed row references 0x00789FD0 (reloc_bindings); legacy free function + fake same-TU Helper body moved onto engine/CTCHeroRangedAttacks.h
+0x0077A130	CTCDExperienceOrb	CombineWithExperienceOrb	?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z	CTCDExperienceOrb::CombineWithExperienceOrb	?CombineWithExperienceOrb@CTCDExperienceOrb@@QAEXPAVCThing@@@Z	leaf + own signature (two sources): Ego_r.pdb 0x00595DB0 + FableWin.pdb 0x01F58660 ?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z (private, CThing&); the body (retail `ret 4`, the other orb's thing in the one stack slot) is the same for pointer and reference; the one landed referencer 0x0077A430 already binds the new spelling; respelt in place on the row's own local model (no new class token)
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x0093A8C0	?g_DrunkennessPerFrame@@3MA	?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB	0x013BAE70
+0x0121F260	?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@2MB	?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB	0x013BAE70
+0x0073A760	?g_DefaultFrames_013bafe8@@3JA	?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB	0x013BAFE8
+0x0121F7E0	?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@2JB	?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@0JB	0x013BAFE8
+0x00968BC0	?GetItemID@CTCTavernGame@@QAEJXZ	?GetCarrySlotPassive@CTCCarryable@@QBEJXZ	0x00705D00
+0x006A7550	@callee_76d2f0@8	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	0x0076D2F0
+0x007F9E70	?AreThingsEnemies@@YI_NPAVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	0x0076D2F0
+0x0072B160	?AreThingsEnemies@@YI_NPBVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	0x0076D2F0
+0x0082B630	?AreThingsEnemies@@YI_NPBVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	0x0076D2F0
+0x009098E0	?AreThingsEnemies@@YI_NPBVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	0x0076D2F0
+0x0093C4E0	?AreThingsEnemies@@YI_NPAVCThing@@0@Z	?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z	0x0076D2F0
+0x00960070	?ApplyPendingDeedLog@CTCHeroOpinionDeedLog@@QAEXXZ	?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	0x00683B00
+0x008A7F60	?SetForceVisible@CTCBobNative@@QAEXXZ	?SetForceVisible@CTCBob@@QAEXXZ	0x00787740
+0x007E4D70	?missing@?1??GetText@CTCBetting@@QAE?AVCWideString@@K@Z@4V3@A	?no_text_entry@?1??GetText@CTCBetting@@QAE?AVCWideString@@K@Z@4V3@A	0x013BAE84
+0x007E7580	?missing@?1??GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z@4V3@A	?no_text_entry@?1??GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z@4V3@A	0x013BAEA4
+0x0057A690	@CTCHeroStats_GetMax@4	?GetMoralityMax@CTCHeroStats@@QBEJXZ	0x0057A67E
+0x0057A690	@CTCHeroStats_GetVal@4	?GetMoralityMax@CTCHeroStats@@QBEJXZ	0x0057A67E
+0x006D0180	?GetMoralityMax@CTCHeroStats@@QAEJXZ	?GetMoralityMax@CTCHeroStats@@QBEJXZ	0x0057A67E
+0x00789FD0	?Helper@@YI_NPAVCTCHeroRangedAttacks@@@Z	?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@ABE_NXZ	0x00789E60
+0x0078A5D0	?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@QAE_NXZ	?IsAbleToUseRangedWeapon@CTCHeroRangedAttacks@@ABE_NXZ	0x00789E60
+0x0078A5D0	?FireRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ	?FireRangedWeapon@CTCHeroRangedAttacks@@AAEXXZ	0x0078A390
+0x00836260	?Fade@CTCFadeOutAndIn@@QAEXM_N@Z	?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z	0x006C3B70
+0x007E00D0	?GetRegionManager@CTCTeleporter@@QAEPAUCRegionManager@@XZ	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ	0x00686D20

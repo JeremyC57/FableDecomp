@@ -23,6 +23,11 @@ public:
     CThing* GetPCarriedByThing();                                    // 0x00705180
 #endif
     long GetCarrySlotActive() const;                                 // 0x00705CC0
+#ifdef FABLE_RETAIL_CTCCARRYABLE_GETCARRYSLOTPASSIVE
+    // NF167 opt-in (q4475, row 0x00968BC0 CAIStateGroup_TavernKeeper::OnReplace): Ego_r.pdb / FableWin.pdb
+    // ?GetCarrySlotPassive@CTCCarryable@@QBEJXZ, out of line at 0x00705D00 (landed self row; the GetCarrySlotActive twin). Declaration only.
+    long GetCarrySlotPassive() const;                                // 0x00705D00
+#endif
 #ifdef FABLE_RETAIL_CTCCARRYABLE_SETASCARRIEDBY
     // Opt-in (w22 agent1016, row 0x006A16A0 CTCCarrying::RemoveThingInCarrySlot calls it with 0): Ego_r.pdb / FableWin.pdb
     // ?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z (private; out of line at 0x00705D40, landed). CTCCarrying calls the private
@@ -43,5 +48,5 @@ public:
     virtual void OnInitialActivate();                                // slot 6  0x00705C30
 #endif // FABLE_RETAIL_CTCCARRYABLE_VSLOTS3
 };
-FABLE_STATIC_ASSERT(sizeof(CTCCarryable) == 0x24);
+FABLE_STATIC_ASSERT_AT(46, sizeof(CTCCarryable) == 0x24);
 #endif // FABLE_ENGINE_CTCCARRYABLE_H

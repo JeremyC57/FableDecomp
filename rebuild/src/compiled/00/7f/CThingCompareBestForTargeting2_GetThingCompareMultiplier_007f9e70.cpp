@@ -1,5 +1,8 @@
 // CThingCompare_BestForTargeting2::GetThingCompareMultiplier(CThing* thing) const -- targeting weight of a thing: 0 when dead, 0.1 when its TC 9 component flags it (bit 2 of +0xc), the enemy preference factor for enemies of the hero, else 1
 // Leaf: ?GetThingCompareMultiplier@CThingCompare_BestForTargeting2@@QBEMPAVCThing@@@Z
+// NF167 (2026-11-20, q4949 / q4988): callee 0x0076D2F0 respelt from the free stand-in AreThingsEnemies(CThing*, CThing*) to the PDB static
+//   ?AreThingsEnemies@CTCEnemy@@SI_NABVCThing@@0@Z (Ego_r 0x0077B430 / FableWin 0x02606310) through the shared engine/CTCEnemy.h (the call
+//   dereferences both thing pointers; same fastcall registers).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F9E70, 129 bytes (`ret 4`, float in st0).
 // Callees: CInterfaceMap::LowerBound @ 0x004365B0, AreThingsEnemies(CThing*, CThing*) @ 0x0076D2F0 (`__fastcall`).
@@ -20,7 +23,9 @@ struct CTCInterface9 {                          // the component behind ETCInter
     unsigned long m_flags;                      // +0x0c (bit 2: low-priority target)
 };
 
-bool __fastcall AreThingsEnemies(CThing* a, CThing* b);     // 0x0076D2F0
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCENEMY_QUERIES
+#include "engine/CTCEnemy.h"   // CTCEnemy::AreThingsEnemies 0x0076D2F0
 FABLE_FORCEINLINE bool IS_THING_ALIVE(CThing* p) { return p && !p->IsDead(); }
 
 class CVectorCompare_BestForTargeting { public: unsigned long m_words[11]; };
@@ -38,7 +43,7 @@ float CThingCompare_BestForTargeting2::GetThingCompareMultiplier(CThing* thing) 
     const CTCInterface9* tc;
     if (thing->PeekTC(TCI_TARGETED, &tc) && (tc->m_flags & 4))
         return 0.1f;
-    if (AreThingsEnemies(Hero, thing))
+    if (CTCEnemy::AreThingsEnemies(*Hero, *thing))
         return EnemyPreferenceFactor;
     return 1.0f;
 }

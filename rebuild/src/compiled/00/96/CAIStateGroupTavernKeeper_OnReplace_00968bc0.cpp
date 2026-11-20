@@ -13,6 +13,10 @@
 //   SetPushableByHero @ 0x0097E330.
 // Layout: engine/CAIStateGroup_TavernKeeper.h (PJug +0x14, PBar +0x1c) over the landed LeanOnBar 0x009689C0 model;
 //   CTCTavernJug as the landed ReplaceJug (pack 1, OnBar +0x10, RHSet +0x11, Pos +0x29); the bar point's user +0x18.
+// NF167 (2026-11-20, q4475): 0x00705D00 respelt from the row-local stand-in `CTCTavernGame::GetItemID` (QAE, no PDB member) to
+//   ?GetCarrySlotPassive@CTCCarryable@@QBEJXZ (Ego_r.pdb + FableWin.pdb; the landed self row) on the shared engine/CTCCarryable.h
+//   (opt-in FABLE_RETAIL_CTCCARRYABLE_GETCARRYSLOTPASSIVE); the jug's 0x47 component is the CTCCarryable, and its passive carry slot is
+//   the slot the keeper's CTCCarrying is searched with.
 // Shape: RemoveMode(0x2b) belongs to the carrying-jug branch (the retail not-carrying `je` skips it); the ternary
 //   GetInterface form puts the 0x47 component straight into ecx.
 #include "fable_compiler.h"
@@ -23,6 +27,8 @@ class CRightHandedSet { public: float m[6]; };
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
+#define FABLE_RETAIL_CTCCARRYABLE_GETCARRYSLOTPASSIVE
+#include "engine/CTCCarryable.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CBaseObject;
@@ -73,9 +79,6 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     void SetPushableByHero(bool pushable);      // 0x0097E330
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-};
-class CTCTavernGame { public:                          // interface 0x47 on the jug
-    long GetItemID();                           // 0x00705D00 (manifest "CTCTavernGame::GetBanter" is propagated)
 };
 class CTCCarrying { public:                            // interface 0x46 on the creature
     CThing* GetThingInCarrySlot(long slot) const;   // 0x006A11F0 (Ego_r/FableWin ?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z)
@@ -163,9 +166,9 @@ void CAIStateGroup_TavernKeeper::OnReplace()
     if (GetAICreature()->IsPerformingAnyAction())
         GetAICreature()->FinishCurrentAction();
     if (IsCarryingJug()) {
-        CTCTavernGame* game;
-        ((CThing*)PJug.GetPItem())->GetTC(TCI_CARRYABLE, &game);
-        long id = game->GetItemID();
+        CTCCarryable* carryable;
+        ((CThing*)PJug.GetPItem())->GetTC(TCI_CARRYABLE, &carryable);
+        long id = carryable->GetCarrySlotPassive();
         CTCCarrying* carrying;
         GetCreature()->GetTC(TCI_CARRYING, &carrying);
         CThing* jug = carrying->GetThingInCarrySlot(id);

@@ -1,0 +1,3 @@
+entry	address	claim	reason
+q4151	0x013BAE70	?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@2MB (public)	access letter only: Ego_d.pdb PUB32 mangles it @@0MB (private static); the landed 0x0121F260 header itself said no dump proved access. Applied as @@0MB instead (entry done with the corrected spelling).
+q4152	0x013BAFE8	?NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS@CModeBase@CTCCreatureModeManager@@2JB (public)	access letter only: Ego_d.pdb PUB32 mangles all three CModeBase NO_FRAMES statics @@0JB; the shared header declares them private; the twins 0x013BAFE4 / 0x013BAFEC are bound @@0JB. Applied as @@0JB (entry done with the corrected spelling).
