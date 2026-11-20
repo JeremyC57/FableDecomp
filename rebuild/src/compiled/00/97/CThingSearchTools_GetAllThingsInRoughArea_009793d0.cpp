@@ -1,165 +1,40 @@
 // CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const CFilter_Bind4<CanBeUsedAsCover, not1(IsOccupiableOccupied), IsNot, In2DRange>& filter, vector<CThing*>& result) -- the advance-in-cover search: walks every thing map overlapping the area, each mapwho layer and each cell of the scaled box, visits every mapwho once per search ID and appends the things that can be used as cover, are not occupied, are not the excluded thing and lie in 2D range
-// Leaf: ?GetAllThingsInRoughArea@
+// Leaf: ??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_CanBeUsedAsCover@@V?$unary_negate@VCThingFilter_IsOccupiableOccupied@@@std@@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009793D0, 640 bytes (incl. padding), `__fastcall`, `ret 0xc`; one caller
-//   CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList 0x00978FD0 (landed: builds this CFilterBind4 and a C2DBoxI).
-// Label: the catalog name `GetPBestThingInRoughArea<CFilter_Bind4<IsAICreatureAwareOf, IsUnconscious, IsAnAlly, ...>,
-//   CThingCompare_Nearest, ...>` is propagated: the body is a GetAllThingsInRoughArea over plain CThing (mask 0, the
-//   folded `xor dl,dl` test) calling CThingFilter_CanBeUsedAsCover 0x006A7AB0, the negated CThingFilter_IsOccupiableOccupied
-//   0x006A8A30, CThingFilter_IsNot 0x006A76A0 and CThingFilter_In2DRange 0x006A76B0, appending to a vector<CThing*>.
-// Callees: GetAllThingMapsInArea 0x0049C6F0, ClipAndConvertWorldMapAreaToLocalArea 0x0049C700, the four filters,
-//   vector<CThing*>::_M_insert_overflow 0x00436AC0, memmove 0x00BFEAE6 (the inlined clear()).
-// Shape: the landed sibling 0x007A3CA0 (same search, other filters); the pushed pointer is a named local assigned before
-//   the filter chain (its store sits before the first filter call, as in the landed 0x007FDB10).
-#include "fable_compiler.h"
-// Name fix (NF103, round 10): the rough-area search statics are CThingSearchTools members (Ego_d.pdb ?NoLookups@CThingSearchTools@@2KA
-//   0x013B89A8, ?NoThingsScanned@CThingSearchTools@@2KA 0x013B89AC, ?SearchID@CThingSearchTools@@2KA 0x013B89B0), declared by the shared
-//   header (opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS). They were the globals ?CThingSearchTools::NoLookups@@3JA / ?CThingSearchTools::NoThingsScanned@@3JA /
-//   ?CThingSearchTools::SearchID@@3KA.
-#define FABLE_RETAIL_CTHINGSEARCHTOOLS_STATICS
-#include "engine/CThingSearchTools.h"
-#include "engine/CTCMapwho.h"
-#include "engine/CTCBase.h"
+// Callees: CThingSearchTools::GetAllThingMapsInArea 0x0049C6F0, ClipAndConvertWorldMapAreaToLocalArea 0x0049C700 (C2DBoxI by value), CThingFilter_CanBeUsedAsCover 0x006A7AB0, CThingFilter_IsOccupiableOccupied 0x006A8A30 (negated), CThingFilter_IsNot 0x006A76A0, CThingFilter_In2DRange 0x006A76B0, vector<CThing*>::_M_insert_overflow 0x00436AC0.
+// Globals: CThingSearchTools::NoLookups / NoThingsScanned / SearchID 0x013B89A8 / AC / B0, NThingMap::MaxLayers 0x013BA848, NThingMap::LayerInfo 0x0137DAD8.
+// NF107 (round 10, q11280 / q11283): ported off its local model (RetailVector / CThing / C2DBoxI / NThingMap::CThingMap / ThingVector / the filters / Filters / a CThingSearchTools_Calls stand-in, which bound the GetAllThingMapsInArea / ClipAndConvertWorldMapAreaToLocalArea stand-ins of CThingSearchTools_Calls and its own stand-in self leaf) onto the shared headers as an explicit
+//   instantiation of the engine/CThingSearchTools.h template, on the landed 0x0074D710 / 0x0095C7C0 (vector, family K016) define set. It now binds the
+//   Ego_r.pdb spellings ?GetAllThingMapsInArea@CThingSearchTools@@IBE... / ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE...;
+//   the self leaf is the Ego_r.pdb / FableWin.pdb spelling (Ego_r.pdb 0x0099E090, FableWin.pdb 0x02C15E40; the landed caller 0x00978FD0 binds a CThingSearchToolsRetail::FindInRoughArea stand-in, NAME_FIXES).
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ORIGINAL_ROUGHAREA
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_THISEND
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_CELL_BYTEOFFSET
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_TYPEDLOCAL
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_SEARCHID
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#define FABLE_RETAIL_STLP_REMOVE_COPY_IF
 #include <stddef.h>
-#include <new>
-struct FalseType {FalseType(){}};
-extern "C" void* __cdecl memmove(void*,const void*,size_t); // 0x00bfeae6
-FABLE_FORCEINLINE void* CopyTrivial(const void* first,const void* last,void* result) {
- return last==first ? result : (char*)memmove(result,first,(const char*)last-(const char*)first)+((const char*)last-(const char*)first);
-}
-template<class T> struct RetailVector {
- T* Start;T* Finish;T* End;
- struct iterator {
-  T* Ptr;
-  explicit iterator(T* p):Ptr(p){}
-  iterator(const iterator& other):Ptr(other.Ptr){}
-  FABLE_FORCEINLINE T& operator*()const{return *Ptr;}
-  FABLE_FORCEINLINE iterator& operator++(){++Ptr;return *this;}
-  FABLE_FORCEINLINE bool operator!=(const iterator& other)const{return Ptr!=other.Ptr;}
-  FABLE_FORCEINLINE iterator& operator+=(int n){Ptr+=n;return *this;}
-  FABLE_FORCEINLINE iterator operator+(int n)const{iterator r(*this);r+=n;return r;}
- };
- FABLE_FORCEINLINE iterator begin()const{return iterator(Start);}
- FABLE_FORCEINLINE iterator end()const{return iterator(Finish);}
- FABLE_FORCEINLINE T& operator[](unsigned int n)const{return Start[n];}
- void _M_insert_overflow(T*,const T&,const FalseType&,unsigned int,bool); // 0x0049c370 for CThing*
- FABLE_FORCEINLINE void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
- FABLE_FORCEINLINE void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
-};
-class CThing { public:
- unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
- enum {ThingTypeMask=0};
-};
-template<class T> FABLE_FORCEINLINE bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
-class CThing;
-// Same-TU non-inlined STLport overflow model. Only GetAllThingsInRoughArea
-// is graded; this body gives RTM the original non-escaping value-reference fact.
-extern "C" void* __cdecl malloc(unsigned int);
-extern "C" void __cdecl free(void*);
-struct ThingVector:RetailVector<CThing*> {
- void _M_insert_overflow(CThing**,CThing* const&,const FalseType&,unsigned int,bool); // 0x00436ac0
- FABLE_FORCEINLINE void push_back(CThing* const& value){if(Finish!=End){new(Finish)CThing*(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
-};
-#pragma auto_inline(off)
-void ThingVector::_M_insert_overflow(CThing** position,CThing* const& value,const FalseType&,unsigned int count,bool atEnd){
- unsigned int size=Finish-Start;
- unsigned int capacity=size+(size<count?count:size);
- CThing** storage=capacity?(CThing**)malloc(capacity*sizeof(CThing*)):0;
- CThing** out=storage;
- for(CThing** p=Start;p!=position;++p,++out)new(out)CThing*(*p);
- for(unsigned int i=0;i<count;++i,++out)new(out)CThing*(value);
- if(!atEnd)for(CThing** p=position;p!=Finish;++p,++out)new(out)CThing*(*p);
- if(Start)free(Start);
- Start=storage;Finish=out;End=storage+capacity;
-}
-#pragma auto_inline(on)
-class CThingPhysical:public CThing { public:enum {ThingTypeMask=3};};
-class CThingGameObject:public CThingPhysical { public:enum {ThingTypeMask=7};};
-class CThingCreatureBase:public CThingGameObject { public:enum {ThingTypeMask=15};};
-class CThingAICreature:public CThingCreatureBase { public:enum {ThingTypeMask=31};};
-class CThingObject:public CThingGameObject { public:enum {ThingTypeMask=0x807};};
-class C2DBoxI { public:
- long TLX,TLY,BRX,BRY;
- C2DBoxI(){}
- C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
- FABLE_FORCEINLINE long Width()const{return BRX-TLX;}
- FABLE_FORCEINLINE long Height()const{return BRY-TLY;}
-};
-struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious;CThingMapCell* PCell;};
-struct CThingMapCell {CMapwhoNode* PFirstNode;};
-namespace NThingMap {
-struct C2DExtentsI {long X,Y;};
-class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-class CThingMap { public:
- long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
- CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
- C2DBoxI Area;long NoThings;
- FABLE_FORCEINLINE CThingMapCell& GetCell(unsigned char layer,unsigned long x,unsigned long y) {
-  const CMapwhoLevelInfo& info=MapwhoLevelInfo[layer];
-  return Cells[layer][y*info.Extents.X+x];
- }
-};
-}
-// Name fix (NF100, round 9, q11463 / q11282): the layer table is NThingMap::LayerInfo (Ego_d.pdb data symbol ?LayerInfo@NThingMap@@3QBVCLayerInfo@1@B, retail 0x0137DAD8;
-//   element NThingMap::CLayerInfo, Ego_r.pdb 16 bytes, ScaleShift +4), declared by engine/NThingMap_CThingMap.h (opt-in FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY:
-//   the table alone, beside this row's local NThingMap model). It was the global stand-in ?LayerInfo_0137dad8@@3PAUCLayerInfo@@A.
-#define FABLE_RETAIL_NTHINGMAP_LAYERINFO_ONLY
+#include "engine/CThing.h"
+class CTCMapwho;
+#include "engine/CTCMapwho.h"
 #include "engine/NThingMap_CThingMap.h"
-namespace NThingMap {extern long MaxLayers;} // 0x013ba848 // agentNF16: NThingMap::MaxLayers 0x013BA848 (?MaxLayers@NThingMap@@3JA; shared engine/NThingMap_CThingMap.h)
+#include "engine/CThingSearchTools.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CFilter_Bind4.h"
+#include "engine/CThingFirePointFilters.h"
+#include "engine/CThingFilter_IsNot.h"
+#include "engine/CThingFilter_In2DRange.h"
+#include "stlport/fable_containers.h"
+// Kept from the landed row (no shared header for this class):
 class CThingFilter_CanBeUsedAsCover { public:bool operator()(const CThing&)const;}; // 0x006a7ab0
-class CThingFilter_IsOccupiableOccupied { public:bool operator()(const CThing&)const;}; // 0x006a8a30
-struct CNotOccupied { // std::unary_negate<CThingFilter_IsOccupiableOccupied>
- CThingFilter_IsOccupiableOccupied Predicate;
- FABLE_FORCEINLINE bool operator()(const CThing& p)const{return !Predicate(p);}
-};
-class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
-class CThingFilter_In2DRange { public:float Pos[3];float Range;bool operator()(const CThing&)const;}; // 0x006a76b0
-struct Filters {
- const CThingFilter_CanBeUsedAsCover* F0;
- const CNotOccupied* F1;
- const CThingFilter_IsNot* F2;
- const CThingFilter_In2DRange* F3;
- FABLE_FORCEINLINE bool operator()(const CThing& p)const{return (*F0)(p)&&(*F1)(p)&&(*F2)(p)&&(*F3)(p);}
-};
-struct CThingSearchTools_Calls {
- CWorldMap* WorldMap;
- CThingMapManager* PThingMapManager;
- CThingManager* ThingManager;
- mutable RetailVector<NThingMap::CThingMap*> AreaMaps;
- void GetAllThingMapsInArea(const C2DBoxI&,RetailVector<NThingMap::CThingMap*>&)const;
- C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap&,const C2DBoxI&)const;
- FABLE_FORCEINLINE C2DBoxI GetMapwhoArea(const NThingMap::CThingMap&,long layer,const C2DBoxI& box)const {
-  long shift=NThingMap::LayerInfo[layer].ScaleShift;
-  C2DBoxI out;out.TLX=box.TLX>>shift;out.TLY=box.TLY>>shift;
-  out.BRX=((box.BRX-1)>>shift)+1;out.BRY=((box.BRY-1)>>shift)+1;return out;
- }
- void GetAllThingsInRoughArea(const C2DBoxI&,const Filters&,ThingVector&)const;
-};
-void CThingSearchTools_Calls::GetAllThingsInRoughArea(const C2DBoxI& area,const Filters& filter,ThingVector& result)const {
- GetAllThingMapsInArea(area,AreaMaps);
- ++CThingSearchTools::NoLookups;CThingSearchTools::NoThingsScanned=0;++CThingSearchTools::SearchID;
- for(RetailVector<NThingMap::CThingMap*>::iterator m=AreaMaps.begin();m!=AreaMaps.end();++m) {
-  NThingMap::CThingMap* map=*m;C2DBoxI bounds=ClipAndConvertWorldMapAreaToLocalArea(*map,area);
-  for(long layer=0;layer<NThingMap::MaxLayers;++layer) {
-   C2DBoxI scaled=GetMapwhoArea(*map,layer,bounds);
-   if(scaled.Width()!=0 && scaled.Height()!=0) {
-    for(long y=scaled.TLY;y<scaled.BRY;++y) {
-     CThingMapCell* cell=&map->GetCell((unsigned char)layer,scaled.TLX,y);
-     for(long x=scaled.TLX;x<scaled.BRX;++x,++cell) {
-      for(CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
-       CTCMapwho* who=node->PMapwho;
-       if(who->SearchID<CThingSearchTools::SearchID) {
-        who->SearchID=CThingSearchTools::SearchID;
-        CThing* thing=((CTCBase*)who)->ParentThing;
-        if(IsThingOfType<CThing>(thing)){
-         CThing* typed=thing;
-         if(filter(*typed))result.push_back(typed);
-        }
-       }
-      }
-     }
-    }
-   }
-  }
- }
- AreaMaps.clear();
-}
+template void CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CFilter_Bind4<CThingFilter_CanBeUsedAsCover,std::unary_negate<CThingFilter_IsOccupiableOccupied>,CThingFilter_IsNot,CThingFilter_In2DRange> >(const C2DBoxI&,const CFilter_Bind4<CThingFilter_CanBeUsedAsCover,std::unary_negate<CThingFilter_IsOccupiableOccupied>,CThingFilter_IsNot,CThingFilter_In2DRange>&,std::vector<CThing*>&) const;

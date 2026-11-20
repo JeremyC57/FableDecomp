@@ -575,7 +575,13 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area,const Filte
  std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
  GetAllThingMapsInArea(area,maps);
  ++NoLookups;NoThingsScanned=0;++SearchID;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_THISEND
+ // NF107 opt-in (round 10, rows 0x007F7340 / 0x007F70D0 / 0x00937420, the GetPBestThingInRoughArea instances): the loop's end is read from
+ // the member, as ROUGHAREA_THISEND (0x007F7363 `cmp ebp,[esi+10h]` = this->AreaMaps._M_finish, with &AreaMaps kept in ebx / [esp+40h]).
+ for(std::vector<NThingMap::CThingMap*>::const_iterator it=maps.begin();it!=AreaMaps.end();++it){
+#else
  for(std::vector<NThingMap::CThingMap*>::const_iterator it=maps.begin();it!=maps.end();++it){
+#endif
   const NThingMap::CThingMap& map=**it;
   C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
   for(long layer=0;layer<NThingMap::MaxLayers;++layer){
@@ -585,6 +591,10 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area,const Filte
    for(long y=cells.TLY;y<cells.BRY;++y){
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
     const NThingMap::CThingMapCell* cell=&map.PeekCell((unsigned char)layer,cells.TLX,y);
+#elif defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTROUGH_THISEND) && defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_CELL_BYTEOFFSET)
+    // NF107 opt-in (with BESTROUGH_THISEND): the FITTED byte-offset cell expression of ROUGHAREA_CELL_BYTEOFFSET above (retail 0x007F7425..
+    // 0x007F7468: layer * 20 and layer * 12 hoisted out of the y loop, `mov ecx,[ecx+ebp+4]` for the row width).
+    const NThingMap::CThingMapCell* cell=&map.Cells.begin()[(unsigned char)layer].begin()[y*(*(const long*)((unsigned char)layer*sizeof(NThingMap::CMapwhoLevelInfo)+(size_t)map.MapwhoLevelInfo.begin()+offsetof(NThingMap::CMapwhoLevelInfo,Extents)))+cells.TLX];
 #else
     const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
 #endif

@@ -11,6 +11,13 @@ class CAnimFilterBase;
 // Retail opt-in (Codex pass 12): original PDB sole base and full native allocation.
 // PAnimFilter, PKiller, BodyDieTimer, BodyReorienter, StartedDecay; native allocation527300.
 class CThingDeadCreature:public CThingGameObject {
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_STATTYPEFLAGS
+    // Opt-in (NF107, round 10, rows 0x009595C0 / 0x00937080, the GetAllThingsInRoughArea<(const) CThingDeadCreature, .., CThingFilter_None>
+    // instances): FableWin.pdb ?StatGetTypeFlags@CThingDeadCreature@@SIKXZ (0x01D3E990; static fastcall, inline in retail: both instances
+    // test the +0x6C type flags against 0x87).
+public:
+    static unsigned long __fastcall StatGetTypeFlags() { return 0x87; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGDEADCREATURE_STATGETTYPE
 public:
     // Opt-in (hand3c, row 0x00914650 CAIStateGroup_BirdStartled::IsRunnable): FableWin.pdb ?StatGetType@CThingDeadCreature@@SIJXZ

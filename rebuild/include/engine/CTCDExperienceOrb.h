@@ -10,6 +10,12 @@ class CExperienceDef;
 class CTCDExperienceOrb:public CTCDriverBase {public:
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_EXPERIENCE_ORB;}
  long GetExperiencePoints()const{return ExperiencePoints;}void OnCollected(CThing&);
+#ifdef FABLE_RETAIL_CTCDEXPERIENCEORB_STATGETDRIVERTYPE
+ // Opt-in (NF107, round 10, row 0x0077ADF0 GetAllTCDsInRoughArea<CTCDExperienceOrb, CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>,
+ // std::vector<CThing*> >): FableWin.pdb ?StatGetDriverType@CTCDExperienceOrb@@SIKXZ (0x01BA96D3; static fastcall, inline in retail: the
+ // instance passes 26 to CTCDriverBase::IsDriverType, `push 1Ah ; call [edx+70h]`), as CTCDNavigationSeed (21) / CTCDRegionExit (25).
+ static unsigned long __fastcall StatGetDriverType(){return 26;}
+#endif
 #ifdef FABLE_RETAIL_CTCDEXPERIENCEORB_PASS22_INITIALACTIVATE
 // Retail opt-in (Codex pass22): both PDBs OnInitialActivate virtual and private const GetDef; native vtable slot6.
 public: virtual void OnInitialActivate();

@@ -14,6 +14,12 @@ class CThingMarker : public CThingGameObject { public:static long __fastcall Sta
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingMarker@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
 #endif
+#ifdef FABLE_RETAIL_CTHINGMARKER_STATTYPEFLAGS
+    // Opt-in (NF107, round 10, row 0x00851490 GetAllThingsInRoughArea<CThingMarker, vector<CThingMarker*>, CThingFilter_HasTC>): FableWin.pdb
+    // ?StatGetTypeFlags@CThingMarker@@SIKXZ (0x01D3FA60; static fastcall, inline in retail: 0x00851490 tests the +0x6C type flags against 0x8007).
+public:
+    static unsigned long __fastcall StatGetTypeFlags() { return 0x8007; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGMARKER_DEFINITION
     // Retail opt-in (agentNF9, rows 0x0083D190 / 0x0083D280). Ego_r.pdb ?PeekDefinition@CThingMarker@@IBE?AV?$CDefPointer@$$CBVCThingMarkerDef@@@@XZ
     // (protected const, the def by value; no out-of-line copy in Fable.exe: GetProperties expands it, the copy's add-ref and the local's
@@ -63,5 +69,5 @@ public:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CThingMarker)==0xd0);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CThingMarker)==0xd0);
 #endif

@@ -253,3 +253,8 @@ CFloatShortReverb.h, CFloatShortReverbModule.h, CFloatCyclicBuffer.h, CFloatAllp
 CFloatLongReverbModule.h are released. New agent NF109 (GameCODA follow-ups: CReverbDspProcessor 0x0143CCDC rows, the existing-split binders
 0x00C6A8B0 / 0x00C75A20 / 0x00C75AB0 / ..., and whether CDecodedStream is CSalSwReverb); it may add opt-ins to engine/CReverbDspProcessor.h and the
 CFloat* / CHLRvbParams headers. Your 0x00C77800 / 0x00C88E60 stay read-only to A.
+
+2026-11-20 A->B: nf107 landed (20 CThingSearchTools search-template instances on their Ego_r / FableWin spellings; 5 add-only opt-ins in
+CThingSearchTools.h, CThingMarker.h, CTCDExperienceOrb.h, CTCCarrying.h, CThingDeadCreature.h). The hold on engine/CThingDeadCreature.h is
+released. New agent NF110 takes the 16 GetPFirst / GetPBest binders of 0x0049C6F0 (rows in COORDINATION_CLAIMS.tsv). NF108 and NF109 are still
+running.

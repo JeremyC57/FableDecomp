@@ -273418,9 +273418,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077adf0'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
-        Source = '00/77/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0077adf0.cpp'
-        TestSource = '00/77/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0077adf0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/77/CThingSearchTools_GetAllTCDsInRoughArea_0077adf0.cpp'
+        TestSource = '00/77/CThingSearchTools_GetAllTCDsInRoughArea_0077adf0_test.cpp'
         PassPattern = '0077adf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -273448,16 +273448,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007a9300'
-        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303'
-        Source = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9300.cpp'
-        TestSource = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9300_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/7a/CThingSearchTools_GetAllThingsInRoughArea_007a9300.cpp'
+        TestSource = '00/7a/CThingSearchTools_GetAllThingsInRoughArea_007a9300_test.cpp'
         PassPattern = '007a9300_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a9580'
-        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind4<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_IsWithinArea,std::unary_negate<_anon_41ACE303'
-        Source = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9580.cpp'
-        TestSource = '00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9580_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/7a/CThingSearchTools_GetAllThingsInRoughArea_007a9580.cpp'
+        TestSource = '00/7a/CThingSearchTools_GetAllThingsInRoughArea_007a9580_test.cpp'
         PassPattern = '007a9580_TEST PASS'
     }
     [pscustomobject]@{
@@ -273476,23 +273476,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007f4500'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
-        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f4500.cpp'
-        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f4500_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetAllThingsInRoughArea_007f4500.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetAllThingsInRoughArea_007f4500_test.cpp'
         PassPattern = '007f4500_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007f70d0'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
-        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007f70d0.cpp'
-        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007f70d0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPBestThingInRoughArea_007f70d0.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPBestThingInRoughArea_007f70d0_test.cpp'
         PassPattern = '007f70d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007f7340'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
-        Source = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f7340.cpp'
-        TestSource = '00/7f/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_007f7340_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetPBestThingInRoughArea_007f7340.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetPBestThingInRoughArea_007f7340_test.cpp'
         PassPattern = '007f7340_TEST PASS'
     }
     [pscustomobject]@{
@@ -273504,23 +273504,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00809a70'
-        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303'
-        Source = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_00809a70.cpp'
-        TestSource = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_00809a70_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/80/CThingSearchTools_GetAllThingsInRoughArea_00809a70.cpp'
+        TestSource = '00/80/CThingSearchTools_GetAllThingsInRoughArea_00809a70_test.cpp'
         PassPattern = '00809a70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0080a550'
-        Module = 'GetAllThingsInRoughArea<CThingCreatureBase,std::list<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind5<CThingFilter_IsNot,CThingFilter_IsNotList,CThingFilter_In2DRange,std::unary_negate<CThingFilter_In2DRange>,_anon_41ACE303'
-        Source = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_0080a550.cpp'
-        TestSource = '00/80/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsAffectedByExplosions_0080a550_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/80/CThingSearchTools_GetAllThingsInRoughArea_0080a550.cpp'
+        TestSource = '00/80/CThingSearchTools_GetAllThingsInRoughArea_0080a550_test.cpp'
         PassPattern = '0080a550_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0080e670'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
-        Source = '00/80/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_0080e670.cpp'
-        TestSource = '00/80/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_0080e670_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/80/CThingSearchTools_GetAllThingsInRoughArea_0080e670.cpp'
+        TestSource = '00/80/CThingSearchTools_GetAllThingsInRoughArea_0080e670_test.cpp'
         PassPattern = '0080e670_TEST PASS'
     }
     [pscustomobject]@{
@@ -273546,9 +273546,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00851490'
-        Module = 'GetAllThingsInRoughArea<CThingObject,std::list<CThingObject*,std'
-        Source = '00/85/GetAllThingsInRoughAreaCThingObjectstdlistCThingObjectstd_allocatorCThingObjectCFilterBind2CThingFilterIn2_00851490.cpp'
-        TestSource = '00/85/GetAllThingsInRoughAreaCThingObjectstdlistCThingObjectstd_allocatorCThingObjectCFilterBind2CThingFilterIn2_00851490_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/85/CThingSearchTools_GetAllThingsInRoughArea_00851490.cpp'
+        TestSource = '00/85/CThingSearchTools_GetAllThingsInRoughArea_00851490_test.cpp'
         PassPattern = '00851490_TEST PASS'
     }
     [pscustomobject]@{
@@ -273560,9 +273560,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008786e0'
-        Module = 'CIntelligentPointer<CThing>'
-        Source = '00/87/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_008786e0.cpp'
-        TestSource = '00/87/GetAllThingsInRoughAreaCThingGameObjectconststdvectorCIntelligentPointerCThingco_allocatorCIntelligentPointerCThingconstCThingFil_008786e0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/87/CThingSearchTools_GetAllThingsInRoughArea_008786e0.cpp'
+        TestSource = '00/87/CThingSearchTools_GetAllThingsInRoughArea_008786e0_test.cpp'
         PassPattern = '008786e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -273588,9 +273588,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008e4100'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std'
-        Source = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e4100.cpp'
-        TestSource = '00/8e/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_008e4100_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/8e/CThingSearchTools_GetAllThingsInRoughArea_008e4100.cpp'
+        TestSource = '00/8e/CThingSearchTools_GetAllThingsInRoughArea_008e4100_test.cpp'
         PassPattern = '008e4100_TEST PASS'
     }
     [pscustomobject]@{
@@ -273609,30 +273609,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00905d10'
-        Module = 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std'
-        Source = '00/90/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind4CThingFilterInMapCThi_00905d10.cpp'
-        TestSource = '00/90/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind4CThingFilterInMapCThi_00905d10_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/90/CThingSearchTools_GetAllThingsInRoughArea_00905d10.cpp'
+        TestSource = '00/90/CThingSearchTools_GetAllThingsInRoughArea_00905d10_test.cpp'
         PassPattern = '00905d10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00937420'
-        Module = 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std'
-        Source = '00/93/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_00937420.cpp'
-        TestSource = '00/93/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_00937420_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestThingInRoughArea_00937420.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingInRoughArea_00937420_test.cpp'
         PassPattern = '00937420_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0095db90'
-        Module = 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std'
-        Source = '00/95/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_0095db90.cpp'
-        TestSource = '00/95/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_0095db90_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/95/CThingSearchTools_GetAllThingsInRoughArea_0095db90.cpp'
+        TestSource = '00/95/CThingSearchTools_GetAllThingsInRoughArea_0095db90_test.cpp'
         PassPattern = '0095db90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00969fb0'
-        Module = 'GetAllThingsInRoughArea<CThing,std::list<CThing*,std'
-        Source = '00/96/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_00969fb0.cpp'
-        TestSource = '00/96/GetAllThingsInRoughAreaCThingstdlistCThingstd_allocatorCThingCFilterBind3CThingFilterIsNotCThi_00969fb0_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/96/CThingSearchTools_GetAllThingsInRoughArea_00969fb0.cpp'
+        TestSource = '00/96/CThingSearchTools_GetAllThingsInRoughArea_00969fb0_test.cpp'
         PassPattern = '00969fb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -273806,9 +273806,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007f9c00'
-        Module = 'CThingSearchTools_Calls'
-        Source = '00/7f/CThingSearchToolsCalls_GetAllThingsInRoughArea_007f9c00.cpp'
-        TestSource = '00/7f/CThingSearchToolsCalls_GetAllThingsInRoughArea_007f9c00_test.cpp'
+        Module = 'CThingSearchTools'
+        Source = '00/7f/CThingSearchTools_GetAllThingsInRoughArea_007f9c00.cpp'
+        TestSource = '00/7f/CThingSearchTools_GetAllThingsInRoughArea_007f9c00_test.cpp'
         PassPattern = '007f9c00_TEST PASS'
     }
     [pscustomobject]@{
