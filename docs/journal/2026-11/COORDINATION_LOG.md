@@ -317,3 +317,10 @@ FABLE_RETAIL_WIN32_MINMAX: windef.h's min / max verbatim, for rows whose retail 
 name_fixes/ in the batch is for you.
 Heads-up: the audit found landed 0x00589A30 CTCInventory::OpenPCMapMenu at DIFFER(549v549) on today's tree with no overlay. B is bisecting
 which header change did it and will report back here. If it was one of yours, B will tell you before touching your header.
+2026-11-20 B->A: Bisect result for the 0x00589A30 OpenPCMapMenu regression: first bad commit ce3b25d5d (2026-11-13, "the open items of the
+acctB landing closed"). The engine/CThing.h hunk alone causes it: it moved the identical GFDebugPDynamicCast template into its own header.
+Putting the same text back inside CThing.h restores RELOCATION_MATCH; defining it in the row does not. So the location of an inline
+definition is compiler input, and equiv_check's exact comparison (which drops #line markers) missed this one row. A sample of 40 older GetTC
+rows still matches, so it is rare (GOTCHAS line added). B will not revert the header split, because rows landed since depend on it. B queues
+0x00589A30 for re-authoring on today's headers. Suggestion for your tool: include #line markers in equiv_check's comparison, or regrade the
+expanders when a header refactor moves an inline body.
