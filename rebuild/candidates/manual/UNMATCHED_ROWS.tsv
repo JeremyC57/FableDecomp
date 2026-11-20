@@ -246,7 +246,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00785160	_global	CTCPhysicsBase_Update_CustomerInteraction	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00785160.cpp	original
 007877e0	CTCBob	FrameUpdate	544	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand691/differ/007877e0.cpp	original
 0078891d	CTCMeleeTrap	PerformPossibleTrapDamage	466	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand682/differ/0078891d.cpp	original
-0078a690	CTCHeroRangedAttacks	FrameUpdate	1168	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1094v1097)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0078a690.cpp	original
 0078c900	CTCBerserk	InitAbility	1152	parked	DIFFER(1132v1152)	2	rebuild/candidates/manual/pending/2026-11-11_linux_handQ5/differ/0078c900.cpp	original
 0078cd80	CTCBerserk	CleanupAbility	1168	parked	DIFFER(1120v1164)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0078cd80.cpp	original
 0078d250	CTCBerserk	CTCBerserk::vfunc_9	1792	handed off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md)	DIFFER(1592v1729)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0078d250.cpp	gapscan/boundary

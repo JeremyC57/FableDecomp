@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0078a690   RELOCATION_MATCH PASS   FrameUpdate
+00789a60   RELOCATION_MATCH PASS   GetShotBuildupTime
+
+WINS: 2
+  0078a690 RELOCATION_MATCH CTCHeroRangedAttacks::?FrameUpdate@CTCHeroRangedAttacks@@UAEXXZ
+  00789a60 RELOCATION_MATCH CTCHeroRangedAttacks::?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCHeroRangedAttacks_FrameUpdate_0078a690
+  CTCHeroRangedAttacks_GetShotBuildupTime_00789a60

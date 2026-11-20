@@ -1,0 +1,17 @@
+diff --git a/rebuild/include/engine/CTCSoundPlayer.h b/rebuild/include/engine/CTCSoundPlayer.h
+index c51b09579..fd0173efb 100644
+--- a/rebuild/include/engine/CTCSoundPlayer.h
++++ b/rebuild/include/engine/CTCSoundPlayer.h
+@@ -37,6 +37,12 @@ public:
+ public: CTCSoundPlayer(CThing&);
+ #endif
+     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long);
++#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYATTACHEDSOUNDEVENT
++    // Retail opt-in (hand3c3, row 0x0078A690 CTCHeroRangedAttacks::FrameUpdate): ?PlayAttachedSoundEvent@CTCSoundPlayer@@QAEKABVCCharString@@_N11@Z
++    // (Ego_d.pdb CTCSoundPlayer::PlayAttachedSoundEvent; the landed row 0x0066B1D0 carries the name), out of line in retail at
++    // 0x0066B1D0 (`ret 10h`; the bow-draw call pushes three false flags, 0x0078A754). Declaration only: no layout change.
++    unsigned long PlayAttachedSoundEvent(const CCharString&,bool,bool,bool);   // 0x0066B1D0
++#endif
+ #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYUNATTACHEDCRITERIA
+     // agent wfE10 (row 0x007A1B20): Ego_r.pdb / FableWin.pdb ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z,
+     // out of line in retail at 0x0066BDF0 (reloc_bindings). Declaration only; include engine/C3DVector.h first. Also wfE11, row 0x004A3740
