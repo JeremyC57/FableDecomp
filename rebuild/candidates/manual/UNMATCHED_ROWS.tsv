@@ -923,7 +923,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00eb5750	CMurderTwistAssassinGuard	State	1536	parked	DIFFER(1542v1536)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00eb5750.cpp	original
 00ebe620	NScript::CV_OracleScript::CVO_Woman	Main	1488	parked	DIFFER(1500v1482)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand773/differ/00ebe620.cpp	original
 00ec32f0	NScript::CV_RandomPopulationSimScript	ChooseRandomBanditFromDefs	2016	parked	DIFFER(2040v2016)	1	rebuild/candidates/manual/pending/2026-11-05_linux_hand791/differ/00ec32f0.cpp	original
-00ece7f0	NScript::CV_SickChildScript::CWitch	Main	4096	reserved (acctB, 2026-11-20; set by A on the owner's instruction: finish authoring)	DIFFER(4086v4086)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ece7f0.cpp	gapscan/boundary
 00ed8680	NScript::CV_TalentlessBardScript::CTB_Bard	Main	3664	parked	DIFFER(3793v3652)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ed8680.cpp	gapscan/boundary
 00ed9bb0	CV_TalentlessBardScript	ProcessSongsClothes	320	parked	DIFFER(298v306)	6	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00ed9bb0.cpp	original
 00ee3140	NScript::CV_TravellingHeroesScript::CTH_Whisper	Main	1376	parked	DIFFER(1350v1366)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ee3140.cpp	original

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00ece7f0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00ece7f0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ece7f0 RELOCATION_MATCH NScript::CV_SickChildScript::CWitch::?Main@CWitch@CV_SickChildScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVSickChildScriptCWitch_Main_00ece7f0
