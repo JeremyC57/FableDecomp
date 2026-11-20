@@ -499,7 +499,10 @@ public:
 #ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY
     // Per-TU inline opt-in (p25O, row 0x00960120 CAIStateGroup_DeedReactionRoot::Update; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ):
     // that TU expands IsEmpty in place (0x00960376..0x00960381: the PStringData null test and the StringLength read, no call) where the plain
-    // inline body is called out of line once the function's inline budget is spent.
+    // inline body is called out of line. __forceinline is EVIDENCED (c2 inline trace, pending/2026-11-20_c2_symbol_order/tools_inline inl.py,
+    // decision 0x1078D1AA): at that site the plain body (size 29, f 1.5625) prices at cost 26 against the default limit S9 and is rejected
+    // (r 0); /d2inlS25 accepts it (r 1, S21..S27 match the row) but every /d2inlS >= 21 breaks the TU-mate 0x009609B0 IsRunnable, so no
+    // TU-wide setting gives retail's split. No other IsEmpty site in the TU (FableWin ai_state_group_deed_reaction_root.obj).
     FABLE_FORCEINLINE
 #endif
     bool IsEmpty() const { return GetLength() == 0; }

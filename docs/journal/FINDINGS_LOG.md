@@ -1466,3 +1466,10 @@ against CODAApi.lib, or stay compiled C++?
   - `info` (#15) is split by the driver right after the const 0xff (#3) takes ebx. There is no write to its allowed set before the split (not the callee-saved mask), and it gets ebp only later, as piece #83.
   - Retail keeps info in ebp and loads [ebp+34h] twice per Engine call (the vtable into ebx mid-pushes, `this` into ecx before the call); ours makes one Engine temp per call that spans the argument calls.
   - The cause of the split is unmeasured.
+- 2026-11-20 (Account B p25O, mechanism; 0x005B01FE CTCInventoryTrade::SellItemPC, open) How c2 orders the commutative operands of the Buy-total sum.
+  - Each operand is an IND(temp) leaf with hash `(opcode - 0x24A) + (hash(temp) << 8)`; a temp's hash is `num << 6`, so only `num & 3` survives into the key.
+  - Our temps #1178 / #1180 / #1182 give keys 0x18008 / 0x10008 / 0x18008, and a descending stable sort yields Items, Clothes, Weapons.
+  - Retail needs Items' temp number ≡ 0 or 1 mod 4, i.e. 2 or 3 more temp allocations before the member zeroing. Extra locals do not move it.
+- 2026-11-20 (Account B p25N, 0x00833C00, open) The front end emits info.Engine twice per Engine call (seen at /Od), and VC7.1's optimiser merges the two loads when the colour and font are locals.
+  - Spelling the colour and font inline in each call, as the landed sibling 0x006AA2E0 does and as Ego_d (no colour or font locals) allows, keeps retail's two loads. That gives DIFFER(2299v2300).
+  - Left: retail holds const 0xff in bl only inside the names block, which frees ebx for the per-call vtable and fonts, and keeps info in ebp throughout. Ours holds 0xff in ebx for the whole function. The frame is 0x84 v 0x88.

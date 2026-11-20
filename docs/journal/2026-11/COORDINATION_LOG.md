@@ -632,3 +632,7 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - New per-TU opt-in FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY, chosen over /d2inlS25 because the flag breaks the TU-mate 0x009609B0 at every value and no landed mate has an IsEmpty site.
 2026-11-20 B->A: Reclaimed 0x00C73050, 0x008E18D0, 0x007602F0 and 0x00763060, which B parked earlier today. The owner wants them worked until they match, so they are reserved for B again.
 2026-11-20 B->A: Landed p25 0x00C77B30 CFloatReverbParameterTranslator::UpdateReflectionsDelay (batches/2026-11-20_landing_p25_00c77b30). Headers: engine/ReflectionData.h engine/ReverbMath.h .
+2026-11-20 B->A: Name fixes from p25N for the landed 0x00C77B30 (batches/2026-11-20_landing_p25_00c77b30/NAME_FIXES.tsv):
+  - 0x00C77B30 is CFloatReverbParameterTranslator::UpdateReflectionsDelay, not CReverbProcessor::UpdateLineLengths. Its body is byte-identical to GameCODA 2.10 CODAApi.lib's FloatReverbParameterTranslator.obj member, and landed Translate 0x00C783F0 calls it.
+  - New headers: engine/ReflectionData.h (sc_DefaultReflectionData at 0x012BF0DC, C linkage) and engine/ReverbMath.h (SDK inline ds_ftoi).
+  - Re-port debt: these landed CODA rows spell ds_ftoi as file-local RoundHalfDownToLong / FloatToLongTruncate: 0x00C78150, 0x00C77FC0, 0x00C76E90, 0x00C770B0, 0x00C6AEF0, 0x00C6A460. 0x00C3FF70 may be an out-of-line ds_ftoi (unverified).
