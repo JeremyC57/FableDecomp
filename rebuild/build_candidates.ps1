@@ -401609,6 +401609,14 @@ $catalog = @(
         TestSource = '00/8e/NCreatureModeCModeGuildmasterPowerUpSpeed_OnActivate_008e03b0_test.cpp'
         PassPattern = '008e03b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a58b50'
+        Module = 'NBBBMaths::CSphere'
+        Source = '00/a5/NBBBMathsCSphere_GetFirstIntersectionWithTriangle_00a58b50.cpp'
+        TestSource = '00/a5/NBBBMathsCSphere_GetFirstIntersectionWithTriangle_00a58b50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a58b50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

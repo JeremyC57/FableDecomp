@@ -1,0 +1,27 @@
+diff --git a/rebuild/include/engine/CSphere.h b/rebuild/include/engine/CSphere.h
+index 4e0126fcd..f557a611b 100644
+--- a/rebuild/include/engine/CSphere.h
++++ b/rebuild/include/engine/CSphere.h
+@@ -7,14 +7,21 @@
+ // retail 0x00A58790, out of line). Declarations only.
+ #include "rebuild_abi.h"
+ #include "engine/C3DVector.h"
++#ifdef FABLE_RETAIL_CSPHERE_TRIANGLE
++#include "stlport/fable_containers.h"
++#endif
+ namespace NBBBMaths {
+ class CSphere {
+ public:
+     CSphere(const C3DVector& base, float radius);
+     bool GetFirstIntersectionWithFiniteLine(const C3DVector& start, const C3DVector& end, C3DVector& point, C3DVector& normal) const;   // 0x00A58790
++#ifdef FABLE_RETAIL_CSPHERE_TRIANGLE
++    // Retail opt-in (p25F, row 0x00A58B50): Ego_r.pdb ?GetFirstIntersectionWithTriangle@CSphere@NBBBMaths@@QBE_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@1@Z.
++    bool GetFirstIntersectionWithTriangle(const std::vector<C3DVector>& triangle, C3DVector& intersection_pos, C3DVector& outward_normal) const;   // 0x00A58B50
++#endif
+     float     Radius;                                                    // +0x00
+     C3DVector Base;                                                      // +0x04
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NBBBMaths::CSphere) == 0x10);
++FABLE_STATIC_ASSERT_AT(19, sizeof(NBBBMaths::CSphere) == 0x10);
+ #endif

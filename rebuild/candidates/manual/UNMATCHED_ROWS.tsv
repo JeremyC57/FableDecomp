@@ -630,7 +630,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a57140	C2DLineF	GetPointOnInfiniteLine	96	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/00a57140.cpp	original
 00a571a0	C2DLineF	GetPointOnLine	656	parked	codex pass24 PARKED: From 00A57210 the optional output tests and temporary x87 values differ. The public const leaf and optional output pointee types agree with both donors.	15	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00a571a0/00a571a0.cpp	original
 00a58790	CSphere	GetFirstIntersectionWithFiniteLine	720	parked	DIFFER(699v707)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a58790.cpp	original
-00a58b50	NBBBMaths::CSphere	GetFirstIntersectionWithTriangle	2208	reserved (acctB p25F, 2026-11-20)	DIFFER(2211v2207)	2	rebuild/candidates/manual/pending/2026-11-20_p25_open/00a58b50/00a58b50.cpp	original
 00a5a9d0	std	transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous	208	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00a5a9d0.cpp	original
 00a5c360	_global	GFNormalise3DVectors	432	parked	DIFFER(386v421)	1	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5b/differ/00a5c360.cpp	original
 00a60410	_global	GFRemoveComments	256	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand504/differ/00a60410.cpp	original

@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0129ba3c	?DELTA_NOTIONAL_ZERO@@3MB	repeat of the existing record (pending/2026-11-20_c2_symbol_order NAME_FIXES): FableWin/Ego_r PDB global ?DELTA_NOTIONAL_ZERO@@3MB; this row reads it at 0x00A58BE1 / 0x00A58C4B (vland RELOC_NAME warning)	label ?g_NormaliseEpsilon@@3MB
+00a5a9d0	std::transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous namespace)::CTransformWorldCoordsToPlaneCoords>	repeat: labels_landing_2026-11-05t.tsv already renames it (Ego_r ??$_Transform@...VCTransformWorldCoordsToPlaneCoords@?A0xfeefc00d@@ / ??$transform@...); the label DB vland reads still has the old name (RELOC_NAME warning at the call 0x00A58DBC)	label Vector_InsertMany_PairFloat
