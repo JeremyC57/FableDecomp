@@ -36,12 +36,12 @@ public:
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
-class CExceptionBase {
-};
-class CGenericException : public CExceptionBase {
-public:
-    CGenericException(const char* message) {}
-};
+// CGenericException : CExceptionBase -- the shared headers; the message constructor is the header's opt-in (Ego_r.pdb / FableWin.pdb
+// ??0CGenericException@@QAE@PBD@Z).
+#define FABLE_RETAIL_CGENERICEXCEPTION_TEXT_CTOR
+#include "engine/CGenericException.h"
+
+
 
 class CBankFile;
 struct CBankInfo {                                          // CBankFileManager::CBankInfo, 20 bytes (PDB)

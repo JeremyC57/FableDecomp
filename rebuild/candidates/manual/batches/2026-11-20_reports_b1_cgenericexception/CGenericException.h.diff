@@ -1,0 +1,22 @@
+diff --git a/rebuild/include/engine/CGenericException.h b/rebuild/include/engine/CGenericException.h
+index 2b410f396..f13c1ab1b 100644
+--- a/rebuild/include/engine/CGenericException.h
++++ b/rebuild/include/engine/CGenericException.h
+@@ -12,5 +12,17 @@
+ class CGenericException : public CExceptionBase {
+ public:
+     CGenericException() { }
++#ifdef FABLE_RETAIL_CGENERICEXCEPTION_TEXT_CTOR
++    // Opt-in (Account B re-port, 2026-11-20): Ego_r.pdb / FableWin.pdb ??0CGenericException@@QAE@PBD@Z, parameter `text` (Ego_d method
++    // list 0xCA77), for the rows that throw a message: CBankFileManager::GetDevBankFilePath 0x009A7CA0 / GetRetailBankFilePath 0x009A7D40 and
++    // CWorldMap::GetLevelFilesFromWorldFile 0x00501D30. Inline and empty in retail: each throw site builds the message (or not) and
++    // copies the 1-byte object with no constructor call. With FABLE_RETAIL_CWAVELOADER_PASS22_EXCEPTIONS (CExceptionBase's
++    // `(const char*)` form, both PDBs) the text is handed to the base, as the GetLevelFilesFromWorldFile row models it.
++#ifdef FABLE_RETAIL_CWAVELOADER_PASS22_EXCEPTIONS
++    CGenericException(const char* text) : CExceptionBase(text) { }
++#else
++    CGenericException(const char* text) { }
++#endif
++#endif
+ };
+ #endif

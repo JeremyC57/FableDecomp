@@ -29,11 +29,11 @@ public:
     CWideString String;                     // +0x08
 };
 
-class CExceptionBase { };
-class CGenericException : public CExceptionBase {
-public:
-    CGenericException() { }
-};
+// CGenericException : CExceptionBase -- the shared headers.
+#include "engine/CGenericException.h"
+
+
+
 
 class CWStringParser {
 public:

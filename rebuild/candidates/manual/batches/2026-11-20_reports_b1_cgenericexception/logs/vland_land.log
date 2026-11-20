@@ -1,0 +1,53 @@
+addr       parity           behav  name
+00501d30   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+00501d30   RELOCATION_MATCH PASS   CWorldMap::GetLevelFilesFromWorldFile
+00507c30   WARN RELOC_NAME: ??0?$CArray@D@@QAE@I@Z -> 00410f30 labelled 'std::vector<signed char, std::allocator<signed char>>::vector'
+00507c30   WARN RELOC_NAME: ?AddMap@CRegion@@QAEXJ@Z -> 006bc4a0 labelled 'CRetailVector_006bc4a0::push_back'
+00507c30   RELOCATION_MATCH PASS   CWorldMap::LoadFromFile
+009a7ca0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+009a7ca0   WARN STANDIN_LEAF ?FindBank@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z (catalog CBankFileManager::GetDevBankFilePath; names another function)
+009a7ca0   RELOCATION_MATCH PASS   CBankFileManager::GetDevBankFilePath
+009a7d40   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+009a7d40   RELOCATION_MATCH PASS   CBankFileManager::GetRetailBankFilePath
+00a0d0e0   WARN SHARED_HEADER_AVAILABLE CWParsedItem (engine/CWParsedItem.h)
+00a0d0e0   WARN SHARED_HEADER_AVAILABLE CWStringParser (engine/CWStringParser.h)
+00a0d0e0   RELOCATION_MATCH PASS   CWStringParser::ReadAsInteger
+00a0d140   WARN SHARED_HEADER_AVAILABLE CWParsedItem (engine/CWParsedItem.h)
+00a0d140   WARN SHARED_HEADER_AVAILABLE CWStringParser (engine/CWStringParser.h)
+00a0d140   RELOCATION_MATCH PASS   CWStringParser::ReadAsFloat
+00a0d1a0   WARN SHARED_HEADER_AVAILABLE CWParsedItem (engine/CWParsedItem.h)
+00a0d1a0   WARN SHARED_HEADER_AVAILABLE CWStringParser (engine/CWStringParser.h)
+00a0d1a0   RELOCATION_MATCH PASS   CWStringParser::ReadAsString
+00a0d200   WARN SHARED_HEADER_AVAILABLE CWParsedItem (engine/CWParsedItem.h)
+00a0d200   WARN SHARED_HEADER_AVAILABLE CWStringParser (engine/CWStringParser.h)
+00a0d200   RELOCATION_MATCH PASS   CWStringParser::ReadAsSymbol
+00a37060   WARN SHARED_HEADER_AVAILABLE CClassFactory (engine/CClassFactory.h)
+00a37060   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator const char *'
+00a37060   RELOCATION_MATCH PASS   CClassFactory::GetClassNumberFromName
+
+WINS: 9
+  00501d30 RELOCATION_MATCH CWorldMap::?GetLevelFilesFromWorldFile@CWorldMap@@IAEXABVCWideString@@AAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00507c30 RELOCATION_MATCH CWorldMap::?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z
+  009a7ca0 RELOCATION_MATCH CBankFileManager::FindBank
+  009a7d40 RELOCATION_MATCH CBankFileManager::?GetRetailBankFilePath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z
+  00a0d0e0 RELOCATION_MATCH CWStringParser::?ReadAsInteger@CWStringParser@@QAEJXZ
+  00a0d140 RELOCATION_MATCH CWStringParser::?ReadAsFloat@CWStringParser@@QAEMXZ
+  00a0d1a0 RELOCATION_MATCH CWStringParser::ReadAsString
+  00a0d200 RELOCATION_MATCH CWStringParser::ReadAsSymbol
+  00a37060 RELOCATION_MATCH CClassFactory::GetClassNumberFromName
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_GetLevelFilesFromWorldFile_00501d30
+  CWorldMap_LoadFromFile_00507c30
+  CBankFileManager_GetDevBankFilePath_009a7ca0
+  CBankFileManager_GetRetailBankFilePath_009a7d40
+  CWStringParser_ReadAsInteger_00a0d0e0
+  CWStringParser_ReadAsFloat_00a0d140
+  CWStringParser_ReadAsString_00a0d1a0
+  CWStringParser_ReadAsSymbol_00a0d200
+  CClassFactory_GetClassNumberFromName_00a37060

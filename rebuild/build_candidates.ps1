@@ -266887,20 +266887,6 @@ $catalog = @(
         PassPattern = '00ca53f0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00a0d1a0'
-        Module = 'CWStringParser'
-        Source = '00/a0/CWStringParser_ReadAsString_00a0d1a0.cpp'
-        TestSource = '00/a0/CWStringParser_ReadAsString_00a0d1a0_test.cpp'
-        PassPattern = '00a0d1a0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a0d200'
-        Module = 'CWStringParser'
-        Source = '00/a0/CWStringParser_ReadAsSymbol_00a0d200.cpp'
-        TestSource = '00/a0/CWStringParser_ReadAsSymbol_00a0d200_test.cpp'
-        PassPattern = '00a0d200_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00567d60'
         Module = 'std::basic_string<char>'
         Source = '00/56/stdbasicstring_append_00567d60.cpp'
@@ -266920,13 +266906,6 @@ $catalog = @(
         Source = '00/56/stdbasicstringchar_Mrangeinitializechar_00567d00.cpp'
         TestSource = '00/56/stdbasicstringchar_Mrangeinitializechar_00567d00_test.cpp'
         PassPattern = '00567d00_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '009a7ca0'
-        Module = 'CBankFileManager'
-        Source = '00/9a/CBankFileManager_FindBank_009a7ca0.cpp'
-        TestSource = '00/9a/CBankFileManager_FindBank_009a7ca0_test.cpp'
-        PassPattern = '009a7ca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00567400'
@@ -272250,13 +272229,6 @@ $catalog = @(
         Source = '00/73/CTCDummyVillager_OnInitialActivate_00730070.cpp'
         TestSource = '00/73/CTCDummyVillager_OnInitialActivate_00730070_test.cpp'
         PassPattern = '00730070_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a37060'
-        Module = 'CClassFactory'
-        Source = '00/a3/CClassFactory_GetClassNumberFromName_00a37060.cpp'
-        TestSource = '00/a3/CClassFactory_GetClassNumberFromName_00a37060_test.cpp'
-        PassPattern = '00a37060_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00645ce9'
@@ -298794,13 +298766,6 @@ $catalog = @(
         PassPattern = '009b68d0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '009a7d40'
-        Module = 'CBankFileManager'
-        Source = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40.cpp'
-        TestSource = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40_test.cpp'
-        PassPattern = '009a7d40_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '009c87c0'
         Module = 'NGameText::CDataBank'
         Source = '00/9c/NGameTextCDataBank_CDataBank_009c87c0.cpp'
@@ -313816,20 +313781,6 @@ $catalog = @(
         Source = '00/cb/CWideScreenMagicPauseEntities_CWideScreenMagicPauseEntities_00cbe09a.cpp'
         TestSource = '00/cb/CWideScreenMagicPauseEntities_CWideScreenMagicPauseEntities_00cbe09a_test.cpp'
         PassPattern = '00cbe09a_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a0d0e0'
-        Module = 'CWStringParser'
-        Source = '00/a0/CWStringParser_ReadAsInteger_00a0d0e0.cpp'
-        TestSource = '00/a0/CWStringParser_ReadAsInteger_00a0d0e0_test.cpp'
-        PassPattern = '00a0d0e0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00a0d140'
-        Module = 'CWStringParser'
-        Source = '00/a0/CWStringParser_ReadAsFloat_00a0d140.cpp'
-        TestSource = '00/a0/CWStringParser_ReadAsFloat_00a0d140_test.cpp'
-        PassPattern = '00a0d140_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0049e5e0'
@@ -385620,13 +385571,6 @@ $catalog = @(
         PassPattern = '0083efe0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00501d30'
-        Module = 'CWorldMap'
-        Source = '00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30.cpp'
-        TestSource = '00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30_test.cpp'
-        PassPattern = '00501d30_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00924c70'
         Module = 'CAIStateGroup_KrakenAttack'
         Source = '00/92/CAIStateGroupKrakenAttack_Update_00924c70.cpp'
@@ -397970,13 +397914,6 @@ $catalog = @(
         PassPattern = '00cf68c0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00507c30'
-        Module = 'CWorldMap'
-        Source = '00/50/CWorldMap_LoadFromFile_00507c30.cpp'
-        TestSource = '00/50/CWorldMap_LoadFromFile_00507c30_test.cpp'
-        PassPattern = '00507c30_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00d13580'
         Module = 'NScript::CQ_BountyHuntScript'
         Source = '00/d1/NScriptCQBountyHuntScript_Main_00d13580.cpp'
@@ -401314,6 +401251,69 @@ $catalog = @(
         Source = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690.cpp'
         TestSource = '00/78/CTCHeroRangedAttacks_FrameUpdate_0078a690_test.cpp'
         PassPattern = '0078a690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00501d30'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30.cpp'
+        TestSource = '00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30_test.cpp'
+        PassPattern = '00501d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00507c30'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_LoadFromFile_00507c30.cpp'
+        TestSource = '00/50/CWorldMap_LoadFromFile_00507c30_test.cpp'
+        PassPattern = '00507c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7ca0'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_GetDevBankFilePath_009a7ca0.cpp'
+        TestSource = '00/9a/CBankFileManager_GetDevBankFilePath_009a7ca0_test.cpp'
+        PassPattern = '009a7ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7d40'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40.cpp'
+        TestSource = '00/9a/CBankFileManager_GetRetailBankFilePath_009a7d40_test.cpp'
+        PassPattern = '009a7d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d0e0'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsInteger_00a0d0e0.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsInteger_00a0d0e0_test.cpp'
+        PassPattern = '00a0d0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d140'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsFloat_00a0d140.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsFloat_00a0d140_test.cpp'
+        PassPattern = '00a0d140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d1a0'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsString_00a0d1a0.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsString_00a0d1a0_test.cpp'
+        PassPattern = '00a0d1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d200'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsSymbol_00a0d200.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsSymbol_00a0d200_test.cpp'
+        PassPattern = '00a0d200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a37060'
+        Module = 'CClassFactory'
+        Source = '00/a3/CClassFactory_GetClassNumberFromName_00a37060.cpp'
+        TestSource = '00/a3/CClassFactory_GetClassNumberFromName_00a37060_test.cpp'
+        PassPattern = '00a37060_TEST PASS'
     }
 )
 

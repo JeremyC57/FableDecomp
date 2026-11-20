@@ -40,7 +40,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 
 inline void TraceError(const CCharString& text) { (const char*)text; }
 
-struct CGenericException { };
+#include "engine/CGenericException.h"
 
 struct CClassTypeInfo_Retail {                  // 20 bytes
     void*         TypeList;                     // +0x00 (retail list: sentinel pointer)

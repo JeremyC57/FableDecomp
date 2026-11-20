@@ -24,11 +24,11 @@ class CWParsedItem { public:
     CWideString String;    // +0x08
 };
 
-class CExceptionBase { };
-class CGenericException : public CExceptionBase {
-public:
-    CGenericException() { }
-};
+// CGenericException : CExceptionBase -- the shared headers.
+#include "engine/CGenericException.h"
+
+
+
 
 struct CWStringParser {
     void*          __vftable;  // +0x00
