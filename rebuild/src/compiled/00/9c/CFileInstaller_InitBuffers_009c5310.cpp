@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C5310, length 139 bytes (+ int3 padding).
 // Callees: CFileInstaller::FreeBuffers @ 0x009C5110 (landed; catalog label "~CPatchTesselationEdgeStrip" is propagated),
 // CArray<CBufferChunk>::Resize(unsigned long) @ 0x009C7850 (label "vector<CIntelligentPointer<CParticleEmitter>>::resize" propagated),
-// the inlined GFAllocateFromGlobalAllocator: GFCreateGlobalAllocator @ 0x009F2870 (global allocator 0x013CAA90 null),
-// GFEnterAllocatorLock @ 0x009F2000, CMemoryAllocator::InternalAllocate(long, unsigned long, bool) @ 0x009F2A40, GFLeaveAllocatorLock @ 0x009F2010;
+// the inlined CMemoryAllocator::Allocate: CMemoryAllocator::Create @ 0x009F2870 (PMemoryAllocator 0x013CAA90 null),
+// CMemoryAllocator::EnterSynchronisation @ 0x009F2000, CMemoryAllocator::InternalAllocate(long, unsigned long, bool) @ 0x009F2A40, CMemoryAllocator::LeaveSynchronisation @ 0x009F2010;
 // KERNEL32 GlobalAlloc (IAT 0x0143FDD4, loaded once into esi).
 // Called by the landed CFileInstaller::SetBuffers 0x009C5650 (both arguments forwarded under the lock).
 // Layout: Ego_r.pdb CFileInstaller with the retail 12-byte CArray (every member after BufferChunks sits 4 bytes low, and 0x20 low
@@ -12,27 +12,14 @@
 // Shape: the allocation as in the landed AllocVirtual 0x00BD9AF0 (inlined): the block is homed in the dead chunkSize argument slot
 // across the unlock, the element store re-reads BufferChunks' first pointer; the unsigned count loop (`jbe`/`jb`).
 #include "fable_compiler.h"
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+#include "engine/CMemoryAllocator.h"
 extern "C" __declspec(dllimport) void* __stdcall GlobalAlloc(unsigned int flags, unsigned long bytes);   // IAT 0x0143FDD4
 
-class CMemoryAllocator { public:
-    void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
-};
 
-void __cdecl GFCreateGlobalAllocator();            // 0x009F2870
-void __cdecl GFEnterAllocatorLock();               // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
-
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
-
-FABLE_FORCEINLINE void* GFAllocateFromGlobalAllocator(long size)
-{
-    if (!g_pGlobalAllocator_013caa90)
-        GFCreateGlobalAllocator();
-    GFEnterAllocatorLock();
-    void* block = g_pGlobalAllocator_013caa90->InternalAllocate(size, 0, false);
-    GFLeaveAllocatorLock();
-    return block;
-}
 
 struct CBufferChunk {
     unsigned char* Mem;                            // +0x00
@@ -70,7 +57,7 @@ void CFileInstaller::InitBuffers(unsigned long chunkSize, unsigned long chunkCou
     FreeBuffers();
     BufferChunks.Resize(chunkCount);
     for (unsigned long i = 0; i < chunkCount; ++i)
-        BufferChunks.m_pFirst[i].Mem = (unsigned char*)GFAllocateFromGlobalAllocator(chunkSize);
+        BufferChunks.m_pFirst[i].Mem = (unsigned char*)CMemoryAllocator::Allocate(chunkSize, 0);
     AvailableBuffers = chunkCount;
     PReadBuffer = (unsigned char*)GlobalAlloc(0, chunkSize);
     PWriteBuffer = (unsigned char*)GlobalAlloc(0, chunkSize);

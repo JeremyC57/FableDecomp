@@ -4,6 +4,9 @@
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_ALIGNED
 #include "rebuild_abi.h"
 #endif
+#if defined(FABLE_RETAIL_CMEMORYALLOCATOR_ALLOCATE_FORCEINLINE) || defined(FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE)
+#include "fable_compiler.h"
+#endif
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CTOR
 // Retail opt-in (wf14f, row 0x009F20B0): with this macro the class carries its Ego_r.pdb storage (0x49c bytes), the
 // allocator-info records and the protected constructor, so the constructor row can be written against this header.
@@ -63,12 +66,44 @@ public:
  static void* FABLE_FASTCALL AllocateAligned(unsigned long size,long alignment);
  static void FABLE_FASTCALL DeallocateAligned(void* p);
 #endif
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_ALLOCATE_FORCEINLINE
+ // NF140 opt-in (q4197 row 0x009D52D0 CBankFileAsyncData::SetupBuffer): retail expands Allocate in place past VC7.1's
+ // inline budget in that EH function; the landed row spelled the body as a FABLE_FORCEINLINE helper. Inline control only (EXTRA_RULES
+ // 2026-11-08); no declaration changes.
+ FABLE_FORCEINLINE
+#endif
  static void* __fastcall Allocate(unsigned long size,unsigned long flags) {
   if(!PMemoryAllocator)Create();
   EnterSynchronisation();
   void* p=PMemoryAllocator->InternalAllocate(size,flags,false);
   LeaveSynchronisation();return p;
  }
+#ifdef FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE
+ // NF140 opt-in (q4197 / q4198, the deallocating binders of 0x009F2000 / 0x009F2010): the inline public static
+ // ?Deallocate@CMemoryAllocator@@SIXPAX@Z (FableWin.pdb 0x02CB6E30; no Ego_r copy: inline in release) and what it reaches, spellings
+ // from Ego_r.pdb / FableWin.pdb: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ (0x009F1F10), ??1CMemoryAllocator@@IAE@XZ (0x009F2310),
+ // ??3CMemoryAllocator@@KIXPAX@Z (0x009F1F90), ?InternalDeallocate@CMemoryAllocator@@IAEXPAX@Z (0x009F2920), ?Destroy@CMemoryAllocator@@KIXXZ
+ // (forced inline here: the retail callers delete the allocator in place). The destroy-when-empty flag (0x013CAA94) has no PDB data name: the
+ // spelling of the landed CMemoryAllocator::DeallocateAligned 0x009F2B20. The body is that row's Deallocate.
+ unsigned long GetNoAllocations();                                       // 0x009F1F10
+ // Deallocate: FABLE_FORCEINLINE as in the landed 0x009F2B20 (with Destroy expanded, a plain inline is called out of line: 0x00BD9B90 DIFFER 16v97).
+ static FABLE_FORCEINLINE void __fastcall Deallocate(void* block) {
+  EnterSynchronisation();
+  if(block&&PMemoryAllocator){
+   PMemoryAllocator->InternalDeallocate(block);
+   if(DestroyWhenEmpty&&PMemoryAllocator->GetNoAllocations()==0)Destroy();
+  }
+  LeaveSynchronisation();
+ }
+protected:
+ static bool DestroyWhenEmpty;                                            // 0x013CAA94
+ ~CMemoryAllocator();                                                     // 0x009F2310
+ static void __fastcall operator delete(void* p);                         // 0x009F1F90
+ void InternalDeallocate(void* block);                                    // 0x009F2920
+ // Destroy: FABLE_FORCEINLINE as in the landed 0x009F2B20 (a plain inline is called out of line from Deallocate: 0x00BD9B90 DIFFER 68v97).
+ static FABLE_FORCEINLINE void __fastcall Destroy(){delete PMemoryAllocator;PMemoryAllocator=0;}
+public:
+#endif
 };
 #ifdef FABLE_RETAIL_CMEMORYALLOCATOR_CTOR
 #ifndef FABLE_RETAIL_CMEMORYALLOCATOR_SAVEBINARY_HOST_PASS23

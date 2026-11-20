@@ -1,40 +1,28 @@
 // std::__destroy_aux(CFileInstaller::CBufferChunk* first, CFileInstaller::CBufferChunk* last, const __false_type&) -- run the inlined ~CBufferChunk over [first, last): give each chunk's memory back to the global allocator
+// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD rows forced their GFFree
+//   helper) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
+//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C6D60, length 123 bytes (padded to 128).
 // Leaf: __destroy_aux
 // Label: the catalog "_Destroy_range<std::allocator<CFileInstaller::CBufferChunk>>" names the element correctly: the
 // stride is 8 = Ego_r.pdb CBufferChunk {Mem +0, Used +4}; as an STLport out-of-line body it is `__destroy_aux(first,
 // last, const __false_type&)` (nine callers in the CFileInstaller code, 0x009C52E7 ...).
 // Convention: LTCG register form -- first in ecx, last in edx, the tag pointer on the stack (`ret 4`).
-// Callees: GFEnterAllocatorLock @ 0x009F2000 / GFLeaveAllocatorLock @ 0x009F2010, CMemoryAllocator::InternalDeallocate
+// Callees: CMemoryAllocator::EnterSynchronisation @ 0x009F2000 / CMemoryAllocator::LeaveSynchronisation @ 0x009F2010, CMemoryAllocator::InternalDeallocate
 //          @ 0x009F2920 / GetAllocationCount @ 0x009F1F10 / ~CMemoryAllocator @ 0x009F2310 / operator delete @ 0x009F1F90.
 // Globals: the global allocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94.
 // Shape: the chunk destructor tests Mem and calls the landed GFFreeFromGlobalAllocator body (0x009A4350) inline, whose
 // own null test survives (`test esi,esi` twice) because it sits after the lock call.
 #include "fable_compiler.h"
-class CMemoryAllocator { public:
-    void InternalDeallocate(void* block);          // 0x009F2920
-    long GetAllocationCount();                     // 0x009F1F10
-    ~CMemoryAllocator();                           // 0x009F2310
-    static void __fastcall operator delete(void* block);   // 0x009F1F90
-};
-void __cdecl GFEnterAllocatorLock();               // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;          // 0x013CAA90
-extern bool              g_bDestroyAllocatorWhenEmpty_013caa94; // 0x013CAA94
-FABLE_FORCEINLINE void GFFreeFromGlobalAllocator(void* block)
-{
-    GFEnterAllocatorLock();
-    if (block && g_pGlobalAllocator_013caa90) {
-        g_pGlobalAllocator_013caa90->InternalDeallocate(block);
-        if (g_bDestroyAllocatorWhenEmpty_013caa94) {
-            if (g_pGlobalAllocator_013caa90->GetAllocationCount() == 0) {
-                delete g_pGlobalAllocator_013caa90;
-                g_pGlobalAllocator_013caa90 = 0;
-            }
-        }
-    }
-    GFLeaveAllocatorLock();
-}
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+// NF140 (q4197 / q4198): the frees are the inline public static CMemoryAllocator::Deallocate(block) (FableWin.pdb ?Deallocate@CMemoryAllocator@@SIXPAX@Z,
+// out of line at 0x009A4350; engine/CMemoryAllocator.h opt-in FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, the body of the landed 0x009F2B20).
+#define FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE
+#include "engine/CMemoryAllocator.h"
 class CFileInstaller { public:
     class CBufferChunk { public:                          // Ego_r.pdb, 8 bytes
         unsigned char* Mem;                        // +0x00
@@ -42,7 +30,7 @@ class CFileInstaller { public:
         ~CBufferChunk()
         {
             if (Mem)
-                GFFreeFromGlobalAllocator(Mem);
+                CMemoryAllocator::Deallocate(Mem);
         }
     };
 };

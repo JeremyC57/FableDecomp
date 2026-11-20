@@ -32596,9 +32596,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f2000'
-        Module = 'std'
-        Source = '00/9f/std_DestvalCFlash_009f2000.cpp'
-        TestSource = '00/9f/std_DestvalCFlash_009f2000_test.cpp'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_EnterSynchronisation_009f2000.cpp'
+        TestSource = '00/9f/CMemoryAllocator_EnterSynchronisation_009f2000_test.cpp'
         PassPattern = 'DEST_VAL_CFLASH_OK'
     }
     [pscustomobject]@{
@@ -126740,9 +126740,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f2010'
-        Module = 'GlobalCriticalSection'
-        Source = '00/9f/GlobalCriticalSection_LeaveSharedLock_009f2010.cpp'
-        TestSource = '00/9f/GlobalCriticalSection_LeaveSharedLock_009f2010_test.cpp'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_LeaveSynchronisation_009f2010.cpp'
+        TestSource = '00/9f/CMemoryAllocator_LeaveSynchronisation_009f2010_test.cpp'
         PassPattern = 'LEAVE_SHARED_LOCK PASS'
     }
     [pscustomobject]@{
@@ -195497,9 +195497,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c11a0'
-        Module = 'CCreateDeviceParameters'
-        Source = '00/9c/CCreateDeviceParameters_CCreateDeviceParameters_009c11a0.cpp'
-        TestSource = '00/9c/CCreateDeviceParameters_CCreateDeviceParameters_009c11a0_test.cpp'
+        Module = 'CDisplayManager::CCreateDeviceParameters'
+        Source = '00/9c/CDisplayManagerCCreateDeviceParameters_CCreateDeviceParameters_009c11a0.cpp'
+        TestSource = '00/9c/CDisplayManagerCCreateDeviceParameters_CCreateDeviceParameters_009c11a0_test.cpp'
         PassPattern = '009c11a0_TEST PASS'
     }
     [pscustomobject]@{

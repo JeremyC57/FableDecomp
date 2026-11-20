@@ -1,0 +1,3 @@
+ctl_009bfe70.obj : error LNK2005: "public: __thiscall CCreateDeviceParameters::CCreateDeviceParameters(struct CCreateDeviceParameters const &)" (??0CCreateDeviceParameters@@QAE@ABU0@@Z) already defined in ctl_009c11a0.obj
+ctl_009bfe70.obj : error LNK2019: unresolved external symbol "public: enum ECreateDeviceSuccess __thiscall CDisplayManager::ResetDevice(struct CCreateDeviceParameters *)" (?ResetDevice@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@@PAUCCreateDeviceParameters@@@Z) referenced in function "public: void __thiscall CDisplayManager::ChangePresentationInterval(struct CPresentationIntervalDesc const &)" (?ChangePresentationInterval@CDisplayManager@@QAEXABUCPresentationIntervalDesc@@@Z)
+ctl.dll : fatal error LNK1169: one or more multiply defined symbols found

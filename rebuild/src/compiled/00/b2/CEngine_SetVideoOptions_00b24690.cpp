@@ -24,7 +24,6 @@ class C2DExtentsI { public: long X; long Y; };
 class C2DExtentsF { public: float X; float Y; };
 #include "engine/EEngineVideoOptionQuality.h"
 enum ESurfaceMultisampleType { MULTISAMPLE_NONE = 0 };
-enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_OK = 2 };
 class CEngineVideoOptions { public:
     C2DExtentsI               ScreenResolution;   // +0x00
     C2DExtentsF               ScreenAspectRatio;  // +0x08
@@ -41,6 +40,8 @@ class CEngineVideoOptions { public:
 #define FABLE_RETAIL_CENGINEVIDEOOPTIONSDEF_HIRESTEXTUREMEMORY
 #include "engine/CEngineVideoOptionsDef.h"   // HiresTextureMemory +0x3C (retail)
 class CDisplayManager { public:
+    // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum in CDisplayManager (Ego_d.pdb LF_ENUM enumerators).
+    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel, ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
     void SetPresentParameters(bool immediate, bool a, bool b);   // 0x009BFF10
 };
@@ -94,15 +95,15 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     VideoOptions = options;
     NEngineInternal::GPVideoOptions = &VideoOptions;
     bool result = true;
-    if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CREATE_DEVICE_OK) {
+    if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, options.Antialiasing, options.RefreshRate) != CDisplayManager::CREATE_DEVICE_SUCCESS) {
         result = false;
-        if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
+        if (NEngineInternal::GPDisplayManager->SetDisplayMode(options.ScreenResolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CDisplayManager::CREATE_DEVICE_FAILED) {
             C2DExtentsI resolution = options.ScreenResolution;
             if (resolution.X > 1024)
                 resolution.X = 1024;
             if (resolution.Y > 768)
                 resolution.Y = 768;
-            if (NEngineInternal::GPDisplayManager->SetDisplayMode(resolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CREATE_DEVICE_FAILED) {
+            if (NEngineInternal::GPDisplayManager->SetDisplayMode(resolution, options.BitsPerPixel, MULTISAMPLE_NONE, 0) == CDisplayManager::CREATE_DEVICE_FAILED) {
                 EnablePostDeviceReset = true;
                 return false;
             }

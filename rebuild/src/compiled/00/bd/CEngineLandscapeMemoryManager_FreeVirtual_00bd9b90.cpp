@@ -1,4 +1,8 @@
 // CEngineLandscapeMemoryManager::FreeVirtual(void* block) -- returns a block to the global CMemoryAllocator under the allocator lock and, when the free-when-empty flag is set and nothing is left allocated, destroys the global allocator
+// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD row wrote the body out
+//   in place) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
+//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD9B90, length 97 bytes (`ret 4`; `this` unused).
 // Callees: GFEnterAllocatorLock @ 0x009F2000 / GFLeaveAllocatorLock @ 0x009F2010, CMemoryAllocator::InternalDeallocate @ 0x009F2920,
 // the allocator's allocation-count query @ 0x009F1F10 (manifest "CWorld::DrawGetEnvironment", propagated), ~CMemoryAllocator
@@ -6,18 +10,13 @@
 // Globals: the global allocator pointer @ 0x013CAA90 (as the landed AllocVirtual 0x00BD9AF0) and the byte flag @ 0x013CAA94.
 // Shape: `delete g` through a class `static void __fastcall operator delete(void*)` (GOTCHAS 24h: `mov ecx,[g] ; test ; mov esi,ecx ;
 // call dtor ; mov ecx,esi ; call`), the global re-read after each call, then the explicit null store.
-class CMemoryAllocator { public:
-    void InternalDeallocate(void* block);          // 0x009F2920
-    long GetAllocationCount();                     // 0x009F1F10 (manifest "CWorld::DrawGetEnvironment", propagated)
-    ~CMemoryAllocator();                           // 0x009F2310
-    static void __fastcall operator delete(void* p);   // 0x009F1F90
-};
+// NF140 (q4197 / q4198): the free is the inline public static CMemoryAllocator::Deallocate(block) of engine/CMemoryAllocator.h
+// (FableWin.pdb ?Deallocate@CMemoryAllocator@@SIXPAX@Z; opt-in FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE): EnterSynchronisation 0x009F2000 /
+// LeaveSynchronisation 0x009F2010 (both PDBs ...@@KIXXZ), InternalDeallocate, GetNoAllocations, the inline Destroy (~CMemoryAllocator +
+// operator delete), PMemoryAllocator 0x013CAA90; the outer null test is the caller's (the inner one folds).
+#define FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE
+#include "engine/CMemoryAllocator.h"
 
-void __cdecl GFEnterAllocatorLock();               // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
-
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
-extern bool g_bFreeGlobalAllocatorWhenEmpty_013caa94;   // 0x013CAA94
 
 class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);
@@ -25,15 +24,6 @@ class CEngineLandscapeMemoryManager { public:
 
 void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
 {
-    if (block) {
-        GFEnterAllocatorLock();
-        if (g_pGlobalAllocator_013caa90) {
-            g_pGlobalAllocator_013caa90->InternalDeallocate(block);
-            if (g_bFreeGlobalAllocatorWhenEmpty_013caa94 && g_pGlobalAllocator_013caa90->GetAllocationCount() == 0) {
-                delete g_pGlobalAllocator_013caa90;
-                g_pGlobalAllocator_013caa90 = 0;
-            }
-        }
-        GFLeaveAllocatorLock();
-    }
+    if (block)
+        CMemoryAllocator::Deallocate(block);
 }

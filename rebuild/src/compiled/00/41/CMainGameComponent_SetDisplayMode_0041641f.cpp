@@ -36,8 +36,9 @@ class CSurface { public:
     CPixelFormat  GetPixelFormat() const;          // 0x009F2F60
     unsigned long GetHeight() const;               // 0x00415BF0
 };
-enum ECreateDeviceSuccess { CREATE_DEVICE_OK = 0 };
 class CDisplayManager { public:
+    // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum in CDisplayManager (Ego_d.pdb LF_ENUM enumerators).
+    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
     unsigned char _pad00[0x2c];
     CSurface      m_backSurface;                   // +0x2c
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,

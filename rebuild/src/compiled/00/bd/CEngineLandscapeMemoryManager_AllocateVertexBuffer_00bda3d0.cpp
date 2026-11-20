@@ -1,30 +1,23 @@
 // CEngineLandscapeMemoryManager::AllocateVertexBuffer(long owner, long type, long count, long stride, unsigned long usage) -- after the disposal-list step, allocates a CVertexBufferWin32 from the global allocator (constructor inline) and initialises it in pool 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDA3D0, length 148 bytes (`ret 14h`; the first argument is unused; Initialise runs even
 // on a failed allocation, as in retail).
-// Callees: the disposal-list step @ 0x00BDA150, GFCreateGlobalAllocator / lock / unlock (0x009F2870 / 0x009F2000 / 0x009F2010),
+// Callees: the disposal-list step @ 0x00BDA150, CMemoryAllocator::Create / lock / unlock (0x009F2870 / 0x009F2000 / 0x009F2010),
 // CMemoryAllocator::InternalAllocate(0x34, 0, 0) @ 0x009F2A40, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CVertexBufferWin32::Initialise @ 0x00A63150
 // (return value ignored). Vtable 0x0129BA20 (CVertexBufferWin32).
 // Layout: the landed CVertexBufferWin32 model (0x00A8E160): CBase root, CVertexBufferBase members PVertexBuffer +4, Length +8, Type +0xC,
 // Stride +0x10, CompressionParams +0x14 (scale 1.0 x4, bias 0 x4); engine/CVertexBufferWin32.h only fixes the size.
 // Shape: inlined, the constructor stores the vtable BEFORE PVertexBuffer/Stride, so those two are body assignments of the most
 // derived constructor (in the base constructor body they land before the vtable store); ebx is the shared zero register.
-class CMemoryAllocator { public:
-    void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
-};
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+#include "engine/CMemoryAllocator.h"
 
-void __cdecl GFCreateGlobalAllocator();            // 0x009F2870
-void __cdecl GFEnterAllocatorLock();               // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
-
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 
 inline void* AllocFromGlobalAllocator(unsigned int size)   // the landed AllocVirtual body (0x00BD9AF0)
 {
-    if (!g_pGlobalAllocator_013caa90)
-        GFCreateGlobalAllocator();
-    GFEnterAllocatorLock();
-    void* block = g_pGlobalAllocator_013caa90->InternalAllocate(size, 0, false);
-    GFLeaveAllocatorLock();
+    void* block = CMemoryAllocator::Allocate(size, 0);
     return block;
 }
 

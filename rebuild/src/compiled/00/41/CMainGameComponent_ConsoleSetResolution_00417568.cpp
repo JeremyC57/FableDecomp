@@ -50,13 +50,14 @@ public:
 };
 }
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
-enum ECreateDeviceSuccess { CREATE_DEVICE_OK = 0 };
 class C2DExtentsI { public:
     long Width;
     long Height;
     C2DExtentsI(long width, long height) : Width(width), Height(height) {}
 };
 class CDisplayManager { public:
+    // NF140 (q4056): Ego_r.pdb / FableWin.pdb nest the result enum in CDisplayManager (Ego_d.pdb LF_ENUM enumerators).
+    enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_DEVICE_LOST = 1, CREATE_DEVICE_SUCCESS = 2 };
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,
                                         ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
 };

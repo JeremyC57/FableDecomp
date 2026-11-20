@@ -1,5 +1,9 @@
 // CEngineLandscapeMemoryManager::ProcessDisposalList() -- advance delayed resource destruction one generation: with delayed destruction off, free every disposal list; then destroy and free every texture, vertex buffer and index buffer queued in the generation after the current one
 // Leaf: ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+// Inline-budget: FABLE_FORCEINLINE on the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
+//   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE; the landed 0x009F2B20 forces both the same way, and the HEAD row wrote the body out
+//   in place) -- retail expands both at every site here; plain inline is called out of line (0x00BD9B90: Destroy DIFFER 68v97, then
+//   Deallocate DIFFER 16v97). Preference-2 per-row /d2inl flags were not swept.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDA150, 514 bytes, thiscall, plain `ret`. Speed TU (no pragma).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ (private; Ego_r
 //   009C2A30 between EnablePoolAllocation 009C29D0 and AllocateIndexBuffer 009C2B20 -- retail has EnablePoolAllocation
@@ -7,24 +11,21 @@
 //   0x00BDA460, 0x00BDA560), which the landed sources spell `ProcessDisposalLists` (NAME_FIXES: the PDB spelling is singular).
 //   Catalog "_global::CDrawResourcePool_FlushCycle" is descriptive and wrong (class member).
 // Callees: FreeDisposalList 0x00BD9CE0 (out of line), CTexture::Uninitialise 0x009F9F70, the virtual destructors of
-//   CVertexBufferWin32 / CIndexBuffer (slot 0, flag 0), GFEnterAllocatorLock 0x009F2000 / GFLeaveAllocatorLock 0x009F2010,
+//   CVertexBufferWin32 / CIndexBuffer (slot 0, flag 0), CMemoryAllocator::EnterSynchronisation 0x009F2000 / CMemoryAllocator::LeaveSynchronisation 0x009F2010,
 //   CMemoryAllocator::InternalDeallocate 0x009F2920 / GetAllocationCount 0x009F1F10 / ~CMemoryAllocator 0x009F2310 /
 //   operator delete 0x009F1F90 (the inlined FreeVirtual 0x00BD9B90), free 0x00BFEA14 (list node).
 // Shape: `if (!EnableDelayedResourceDestruction) FreeDisposalList(); long index = (CurrentDisposalListIndex + 1) % 3;` then
 //   the three `while (list[index].size() != 0) { DeleteX(front); pop_front(); }` loops of the landed FreeDisposalList
 //   0x00BD9CE0 (same TU model: DeleteTexture / DeleteVertexBuffer / DeleteIndexBuffer / FreeVirtual auto-inlined).
+// NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
+// (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
+// statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
+// PMemoryAllocator 0x013CAA90 and InternalAllocate 0x009F2A40, as the landed 0x009A3640 binds them.
+// NF140 (q4197 / q4198): the frees are the inline public static CMemoryAllocator::Deallocate(block) (FableWin.pdb ?Deallocate@CMemoryAllocator@@SIXPAX@Z,
+// out of line at 0x009A4350; engine/CMemoryAllocator.h opt-in FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE, the body of the landed 0x009F2B20).
+#define FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE
+#include "engine/CMemoryAllocator.h"
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-
-class CMemoryAllocator { public:
-    void InternalDeallocate(void* block);          // 0x009F2920
-    long GetAllocationCount();                     // 0x009F1F10
-    ~CMemoryAllocator();                           // 0x009F2310
-    static void __fastcall operator delete(void* p);   // 0x009F1F90
-};
-void __cdecl GFEnterAllocatorLock();               // 0x009F2000
-void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
-extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
-extern bool g_bFreeGlobalAllocatorWhenEmpty_013caa94;   // 0x013CAA94
 
 namespace std {
 template <class _Tp> class allocator {
@@ -149,15 +150,7 @@ private:
 void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
 {
     if (block) {
-        GFEnterAllocatorLock();
-        if (g_pGlobalAllocator_013caa90) {
-            g_pGlobalAllocator_013caa90->InternalDeallocate(block);
-            if (g_bFreeGlobalAllocatorWhenEmpty_013caa94 && g_pGlobalAllocator_013caa90->GetAllocationCount() == 0) {
-                delete g_pGlobalAllocator_013caa90;
-                g_pGlobalAllocator_013caa90 = 0;
-            }
-        }
-        GFLeaveAllocatorLock();
+        CMemoryAllocator::Deallocate(block);
     }
 }
 
