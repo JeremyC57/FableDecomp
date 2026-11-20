@@ -16,9 +16,9 @@
 //   (ListRemove 0x009FBFB0 / ListInsert 0x009FBF90, CFrameData::BeginLoading 0x009FDE80, CFrameData ctor 0x009FE380,
 //   InternalGetFrameForcedLoading 0x009FF6B0, CGraphicFrameData::Uninitialise 0x009FCBA0). Inline: CEnginePrimitiveHandle::Clear,
 //   C2DBoxF(const C2DVector&, const C2DExtentsF&), C2DBoxF::Move, GFFloatToLongNear.
-// Fidelity: the TU also emits the two constructor COMDATs it calls; from this file both grade MATCH against retail
+// Note: the TU also emits the two constructor COMDATs it calls; from this file both grade MATCH against retail
 //   (0x0041BF60 167 bytes -- the body is a new opt-in of engine/CEnginePrimitive2DSprite.h; 0x0041BEB0 171 bytes).
-// Inferred: Handle.Clear() is expanded in place in retail (0x0041B022..0x0041B057). VC7.1 keeps the plain-inline Clear as a call here
+// Inline-budget: FORCEINLINE_CLEAR opt-in -- Handle.Clear() is expanded in place in retail (0x0041B022..0x0041B057). VC7.1 keeps the plain-inline Clear as a call here
 //   (1404 bytes against 1455), and no /d2inlT window gives retail: T75 changes nothing, T80 / T88 expand the bank pointer's
 //   destructor instead (retail calls 0x004194B5) and still call Clear (1438), T100 expands both (1489). Hence the existing
 //   FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_FORCEINLINE_CLEAR opt-in (same text, forced).

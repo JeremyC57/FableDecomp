@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00d1a740   WARN RELOC_NAME: ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ -> 00d15140 labelled 'CMainGameComponentInit::CMainGameComponentInit'
+00d1a740   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d1a740 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_Hostage2::?Main@CBH_Hostage2@CQ_BountyHuntScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740
