@@ -39527,3 +39527,6 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?ContainsPoint@C2DBoxF@@QBE_NABVC2DVector@@@Z	00535cd0	00a1bee0
 ?GetAreaCovering@CANavQuadTreeNode@@QBE?AVC2DBoxF@@XZ	00a763b0	00a1bee0
 ??1?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@XZ	0053c9bc	01228e44
+??$IS_THING_DEAD@PAVCThing@@@@YI_NABQAVCThing@@@Z	005cbdbd	005ca68e
+?IsProjectile@CTCWeapon@@QBE_NXZ	005daa70	005ca68e
+?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ	0069f9e0	005ca68e
