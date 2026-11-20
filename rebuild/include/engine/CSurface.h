@@ -24,6 +24,12 @@ public:
  virtual ~CSurface();
 #endif
  void Uninitialise();                                     // 0x009F2E20
+#ifdef FABLE_RETAIL_CSURFACE_PREALLOCATED
+ // Opt-in (hand3c2, row 0x009BF7E0 CDisplayManager::CreateDevice): Ego_r.pdb / Ego_d.pdb / FableWin.pdb
+ // ?InitialiseFromPreallocatedSurface@CSurface@@QAEXPAUIDirect3DSurface9@@_N@Z (landed 0x009F2EC0; Ego_d parameters d3dsurface, add_ref).
+ // Declaration only.
+ void InitialiseFromPreallocatedSurface(IDirect3DSurface9* d3dsurface, bool add_ref);   // 0x009F2EC0
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_GETD3DSURFACE
  // Retail opt-in (wf19, row 0x0055D180 CTCPhotojournalCapture::TakeQuickScreenshot): FableWin.pdb ?GetD3DSurface@CSurface@@QBEPAUIDirect3DSurface9@@XZ
  // (debug only, inline in release: the row reads BackBufferSurface.PD3DSurface, +0x30 of the display manager, in place).

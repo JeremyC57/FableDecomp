@@ -29,6 +29,15 @@ public:
   bool ExclusiveMode;CPresentationIntervalDesc PresentationInterval;ESurfaceMultisampleType MultisampleType;
   CCreateDeviceParameters() {}
  };
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_CREATEDEVICE
+ // Opt-in (hand3c2, row 0x009BF7E0 CDisplayManager::CreateDevice): Ego_d.pdb LF_ENUM 0xB3D6 CDisplayManager::ECreateDeviceSuccess (the
+ // result type of CreateDevice / ResetDevice / SetDisplayMode / SetExclusiveMode).
+ enum ECreateDeviceSuccess {CREATE_DEVICE_FAILED=0,CREATE_DEVICE_DEVICE_LOST=1,CREATE_DEVICE_SUCCESS=2};
+ // Ego_r.pdb / FableWin.pdb ?IsAntiAliasingModeValid@CDisplayManager@@QAE_NW4ESurfaceMultisampleType@@ABVCPixelFormat@@@Z (retail
+ // 0x009BE3C0, not catalogued yet; Ego_d parameters multisampling_mode, pixel_format). Declaration only: it is a function of the
+ // display manager's own .cpp (Ego_d file id 600, lines 956..959), which the CreateDevice row defines as a same-TU copy.
+ bool IsAntiAliasingModeValid(ESurfaceMultisampleType multisampling_mode,const CPixelFormat& pixel_format);   // 0x009BE3C0
+#endif
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
@@ -172,6 +181,22 @@ public:
 #endif
 #endif
 private:
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_CREATEDEVICE
+ // (same opt-in) the private members the row calls or defines, spellings from Ego_r.pdb / FableWin.pdb (parameter names Ego_d.pdb):
+ // ?CreateDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z (retail 0x009BF7E0),
+ // ?GetClosestMode@CDisplayManager@@ABE?AU_D3DDISPLAYMODE@@ABVC2DExtentsI@@J_N@Z (landed 0x009BF600),
+ // ?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z (landed 0x009BEBB0),
+ // ?CalculateD3DPresentationInterval@CDisplayManager@@AAEIABVCPresentationIntervalDesc@1@@Z (landed 0x009BE2D0),
+ // ?ReadDeviceRefreshRate@CDisplayManager@@AAEJXZ (retail 0x009BE340; Ego_d file id 600 lines 847..858, locals hr, mode) and
+ // ?CalcPresentationIntervalTime@CDisplayManager@@AAEMJJ@Z (retail 0x009BE380; Ego_d lines 862..865, parameters refresh_rate,
+ // vsync_count). Declarations only: the last two are functions of the display manager's own .cpp, expanded by CreateDevice.
+ ECreateDeviceSuccess CreateDevice(const CCreateDeviceParameters& parameters);                    // 0x009BF7E0
+ D3DDISPLAYMODE GetClosestMode(const C2DExtentsI& back_buffer_dim,long depth,bool exclusive) const; // 0x009BF600
+ CPixelFormat GetClosestDepthBufferFormat(const D3DDISPLAYMODE& mode,long z_depth) const;         // 0x009BEBB0
+ unsigned int CalculateD3DPresentationInterval(const CPresentationIntervalDesc& desc);            // 0x009BE2D0
+ long ReadDeviceRefreshRate();                                                                    // 0x009BE340
+ float CalcPresentationIntervalTime(long refresh_rate,long vsync_count);                          // 0x009BE380
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER_BUFFERTEXTURES
 public:

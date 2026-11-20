@@ -38,9 +38,9 @@ address	grade	bytes	test	grades_used	notes
 00988e80	OPEN	917	-	1	baseline draft DIFFER(889v917) hunks=32 difflines=111
 00989230	DIFFER	636	-	~85 (hand3c)	hand3c: OPEN-ESCALATED class item (with 00988e80/00ae1320/00ae29d0): x87 column order follows inline-layer structure (morph bisect in keep/ESCALATE_00989230.md); region-cut refuted | best differ/00989230.cpp; keep/ESCALATE_00989230.md
 009acee0	LANDED	1017	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(1030v1017) hunks=45 difflines=222
-009bf7e0	OPEN	846	-	1	baseline draft DIFFER(824v846) hunks=46 difflines=172
+009bf7e0	RELOCATION_MATCH	846	PASS(vland strict)	1	hand3c2 b14 [LANDED batches/2026-11-20_landing_hand3c2_b12_b14_b16]
 009c38c0	RELOCATION_MATCH	409	PASS(vland; g++ PASS)	14 (hand3c)	hand3c: FableWin 0x0304B490 shape on CFileInstaller.h; static __fastcall noinline GetMarkerFileName (esi result, ret 4); SetDirtyDiscError FableWin text [b11]
-009c3c20	OPEN	909	-	1	baseline draft DIFFER(877v909) hunks=31 difflines=320
+009c3c20	RELOCATION_MATCH	909	PASS(vland strict)	1	hand3c2 b16 [LANDED batches/2026-11-20_landing_hand3c2_b12_b14_b16]
 00a38c20	RELOCATION_MATCH	551	PASS(vland strict)	1	hand3c: FableWin 0x031DB670 shape on shared headers (CDiskFileWin32, CArray SIZE ctor + GETBYTESIZE, CMemoryDataInputStream inline reads, CVectorMap); stand-in CCRCSymbolMap; first grade
 00a475c0	OPEN	1857	-	1	baseline draft OBJDUMP_ERR hunks=1 difflines=613
 00a48ba0	LANDED	875	-	1	landed by Account B (batches/2026-11-20_landing_hand3c2_b15); baseline draft DIFFER(881v875) hunks=48 difflines=396
@@ -84,7 +84,7 @@ address	grade	bytes	test	grades_used	notes
 00b94bf0	RELOCATION_MATCH	309	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: FableWin 0x02E1D7D0 shape, typed MapList + inline CEngineSceneMap ctor opt-ins, FABLE_RETAIL_STLP_MAP visible subscript [b8 LANDED 7030ce2d2e]
 00b99300	LANDED	871	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(871v871) hunks=16 difflines=36
 00ba1140	OPEN	2344	-	1	baseline draft DIFFER(2345v2344) hunks=117 difflines=366
-00bade40	OPEN	793	-	1	baseline draft DIFFER(743v793) hunks=24 difflines=168
+00bade40	RELOCATION_MATCH	793	PASS(vland strict)	1	hand3c2 b12 [LANDED batches/2026-11-20_landing_hand3c2_b12_b14_b16]
 00bd71b0	OPEN	2116	-	1	baseline draft DIFFER(2116v2116) hunks=153 difflines=575
 00be2120	RELOCATION_MATCH	106	PASS(vland)	3	landed group twin 0x00BC62D0 body + new opt-in CENGINEINTERNALPRIMITIVE2DVIEWPORT_CLEARCHILD; oracle row was cut to 97 bytes (override = 106 from Fable.exe)
 00bee070	RELOCATION_MATCH	206	PASS(vland; g++ PASS)	2 (hand3c)	hand3c: explicit instantiation over shared STLP_HEAP + CCompositeSurfaceInfo.h (twin of landed 00beeda0) [b6 LANDED 2078f8b0cc]

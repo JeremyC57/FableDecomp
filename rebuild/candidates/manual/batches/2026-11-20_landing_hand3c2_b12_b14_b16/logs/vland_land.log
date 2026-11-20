@@ -1,0 +1,21 @@
+addr       parity           behav  name
+009bf7e0   RELOCATION_MATCH PASS   CreateDevice
+009be340   RELOCATION_MATCH PASS   ReadDeviceRefreshRate
+009be380   MATCH            PASS   CalcPresentationIntervalTime
+00bade40   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bade40   RELOCATION_MATCH PASS   RenderSprite
+009c3c20   RELOCATION_MATCH PASS   ProcessActiveFileForDecompression
+
+WINS: 5
+  009bf7e0 RELOCATION_MATCH CDisplayManager::?CreateDevice@CDisplayManager@@AAE?AW4ECreateDeviceSuccess@1@ABUCCreateDeviceParameters@1@@Z
+  009be340 RELOCATION_MATCH CDisplayManager::?ReadDeviceRefreshRate@CDisplayManager@@AAEJXZ
+  009be380 MATCH CDisplayManager::?CalcPresentationIntervalTime@CDisplayManager@@AAEMJJ@Z
+  00bade40 RELOCATION_MATCH CEnginePrimitiveManagerSprites::?RenderSprite@CEnginePrimitiveManagerSprites@@IAEXAAVCEngineInternalPrimitiveSprite@@@Z
+  009c3c20 RELOCATION_MATCH CFileInstaller::?ProcessActiveFileForDecompression@CFileInstaller@@IAEXAAVCActiveFile@1@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CDisplayManager_CreateDevice_009bf7e0
+  CDisplayManager_ReadDeviceRefreshRate_009be340
+  CDisplayManager_CalcPresentationIntervalTime_009be380
+  CEnginePrimitiveManagerSprites_RenderSprite_00bade40
+  CFileInstaller_ProcessActiveFileForDecompression_009c3c20

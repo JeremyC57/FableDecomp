@@ -40031,3 +40031,12 @@ __imp__setsockopt@20	01440534	008f8cc0
 ?Reset@CTCCreatureTintEffect@@QAEXXZ	007cede0	007cf110
 ?reserve@?$CRetailVector@V?$CIntelligentPointer@VCThing@@@@@@QAEXK@Z	0077e580	007cf110
 ?ClearAllWeaponTrails@CTCWeaponTrail@@QAEXXZ	0076e150	008ec4f0
+?CalculateD3DPresentationInterval@CDisplayManager@@AAEIABVCPresentationIntervalDesc@1@@Z	009be2d0	009bf7e0
+?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z	009bebb0	009bf7e0
+?GetClosestMode@CDisplayManager@@ABE?AU_D3DDISPLAYMODE@@ABVC2DExtentsI@@J_N@Z	009bf600	009bf7e0
+?SetupDepthAndBackBufferTextures@CDisplayManager@@AAE_NXZ	009bee40	009bf7e0
+?AllocateBuffer@CFileInstaller@@IAEPAVCBufferChunk@1@_N@Z	009c3a60	009c3c20
+?FinishDecompressStream@CCompressorZlib@@QAEXXZ	00a3abb0	009c3c20
+?FreeBuffer@CFileInstaller@@IAEXPAVCBufferChunk@1@@Z	009c3330	009c3c20
+?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z	00a3ab90	009c3c20
+?push_back@?$list@VCPendingWrite@CFileInstaller@@V?$allocator@VCPendingWrite@CFileInstaller@@@std@@@std@@QAEXABVCPendingWrite@CFileInstaller@@@Z	009c6af0	009c3c20
