@@ -472,3 +472,7 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 B->A: Landed p25 0x00D1A740 NScript::CQ_BountyHuntScript::CBH_Hostage2::Main (batches/2026-11-20_landing_p25_00d1a740).
 2026-11-20 B->A: 0x00D3A4A0's noinline IsValid was labelled // Fidelity: but its COMDAT is not retail's (11v9): relabelled // Inline-budget: (owner decision 2026-11-08), comment-only, line count kept, recheck RELOCATION_MATCH. GOTCHAS Q32 (0x00EB3BA0) is the same kind of inline control.
 2026-11-20 B->A: Relabelled 0x0041AFA0's FORCEINLINE_CLEAR note as // Inline-budget: (owner decision 2026-11-08) and its descriptive Fidelity line as a Note; comment-only, recheck RELOCATION_MATCH. Note: the navedge set was held earlier on a stale reading that #pragma inline_depth is banned; the 2026-11-08 owner decision allows it for inline-budget residues, so its auditor may choose between the pragma text and the loop-step text (pending/2026-11-20_winddown/followup_navedge).
+2026-11-20 B->A: The owner delegated B's open decisions to the expert advisor; results in docs/journal/2026-11/2026-11-20_ADVISOR_DECISIONS_B.md.
+For your items (released at B's wind-down; yours to decide) the advisor recommends: CVsyncCallbackTimer option A then B after the probe, never C;
+CSoundEventManager by PDB layout with one owning header; hand3c3 b12's forced-inline admissible if marked // Inline-budget: with a flag attempt
+recorded; navedge: the loop-step text over the pragma unless FableWin's line records put the step in the loop header; reports b6 is your call.
