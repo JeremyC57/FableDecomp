@@ -1,0 +1,10 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_00487050.obj : error LNK2005: "public: __thiscall CRightHandedSet::CRightHandedSet(class C3DVector const &,class C3DVector const &)" (??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z) already defined in head_0079acc0.obj
+own_004facd0.obj : error LNK2005: "public: __thiscall CThingAICreatureInit::CThingAICreatureInit(class CThingPhysical *,class CThingPhysical *,bool,class CCharString const &,class CCharString const &,bool)" (??0CThingAICreatureInit@@QAE@PAVCThingPhysical@@0_NABVCCharString@@21@Z) already defined in head_0079acc0.obj
+own_00669580.obj : error LNK2005: "public: bool __thiscall CDefClassBase::GetSubDef<class CSpecialEffectsDef>(class CDefPointer<class CSpecialEffectsDef const> *)const " (??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z) already defined in head_0079acc0.obj
+own_00669d30.obj : error LNK2005: "public: bool __thiscall CSpecialEffectsDef::GetEffectFromString(class CCharString const &,long &)const " (?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z) already defined in head_0079acc0.obj
+own_0079bd80.obj : error LNK2005: "public: bool __thiscall CDefinitionManager::GetDef<class CBrainDef>(long,class CDefPointer<class CBrainDef const> *)const " (??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z) already defined in head_0079acc0.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 75 LNK2001 + 99 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

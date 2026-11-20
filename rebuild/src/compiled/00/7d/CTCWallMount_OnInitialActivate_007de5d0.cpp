@@ -15,6 +15,10 @@
 //        alive test is IS_THING_ALIVE; the physics component is read through an inline getter (straight into ecx for the
 //        virtual call); every later use re-fetches the item, the two presence tests use one fetch each
 //        for both the bitset and the lookup (named locals).
+// agentNF187 (q6321): the local CTCBase model replaced by engine/CTCBase.h, and the interface-0x82 stand-in CTCComponent82::ClearEntries
+//   by CTCParticleAttacher (no shared header; the shape of the landed 0x007DE710 / 0x00772BB0 on that header): 0x007F8860 now binds the
+//   Ego_r / FableWin spelling ?DetachParticles@CTCParticleAttacher@@QAEXXZ. The component is still reached by a C-style downcast of
+//   GetTC(TCI_PARTICLE_ATTACHER) (was a double cast to the stand-in); the typed GetTC<T>(T**) form was not tried.
 class CThing;
 class CTCBase;
 class CBaseObject;
@@ -54,21 +58,16 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     return false;
 }
 
-struct CTCComponent82 {                         // the interface-0x82 component (class unidentified)
-    void ClearEntries();                        // 0x007F8860
-};
 class CTCTargeted { public:
     unsigned char _pad_0x00[0x10];
     bool          Targetable;                   // +0x10
 };
 
-class CTCBase { public:
-    virtual void v00();
-    CThing* ParentThing;                        // +0x04
-    bool    ToBeRemoved;                        // +0x08
-    bool    IsInGlobalUpdateTCs;                // +0x09
-protected:
-    CThingManager& GetThingManager();   // 0x00686AE0
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
+class CTCParticleAttacher : public CTCBase {    // interface 0x82 (TCI_PARTICLE_ATTACHER); no shared header: the shape of the landed 0x007DE710 / 0x00772BB0
+public:
+    void DetachParticles();                     // 0x007F8860 ?DetachParticles@CTCParticleAttacher@@QAEXXZ (Ego_r + FableWin)
 };
 class CTCWallMount : public CTCBase { public:
     long                        BoughtForAmount;   // +0x0c
@@ -87,7 +86,7 @@ void CTCWallMount::OnInitialActivate()
             Trophy.Get()->GetPhysicsTC()->SetPhysicsActive(false);
         CThing* trophy = Trophy.Get();
         if (trophy->HasTC(TCI_PARTICLE_ATTACHER)) {
-            ((CTCComponent82*)((CTCComponent82*)&trophy->GetTC(TCI_PARTICLE_ATTACHER)))->ClearEntries();
+            ((CTCParticleAttacher*)&trophy->GetTC(TCI_PARTICLE_ATTACHER))->DetachParticles();
             Trophy.Get()->RemoveTC((ETCInterfaceType)(0x82));
         }
         CThing* target = Trophy.Get();

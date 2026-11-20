@@ -1484,6 +1484,11 @@ public:
     // (??1?$list@PAVCComponent@NUISystem@@..@std@@QAE@XZ 0x017C0C95; no ??1?$_List_base symbol for any instantiation), so a call
     // binds 0x0042ABCA under its landed name.
     ~list() { this->clear();this->_M_node.deallocate(this->_M_node._M_data,1); }
+#elif defined(FABLE_RETAIL_STLP_LIST_DTOR_DECL_ONLY)
+    // Per-TU opt-in (agentNF187, row 0x01228E44 `dynamic atexit destructor for 'NUISystem::CList::GPreviousSelected''): ~list declared
+    // only, so the TU calls the landed out-of-line copy (0x0053C9BC, ~_List_base's clear + free expanded in it) and emits no pick-any
+    // copy of it (the size-optimised `~list() { }` copy is a 5-byte `jmp ~_List_base`, not 0x0053C9BC's body).
+    ~list();
 #else
     ~list() { }
 #endif

@@ -1,0 +1,43 @@
+004ae8d0 new: 0
+00615920 new: 8
+    ??0?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAE@XZ
+    ??0C2DVector@@QAE@MM@Z
+    ??0CUIMiniMapMarker@CTCInventoryMap@@QAE@XZ
+    ??1?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@@@QAE@XZ
+    ??1CUIMiniMapMarker@CTCInventoryMap@@QAE@XZ
+    ??A?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@QAEAAVCUIMiniMapMarker@CTCInventoryMap@@I@Z
+    ?TransferIn@?$CPersistContext_TransferableVector@VCUIMiniMapMarker@CTCInventoryMap@@@@EAEXAAVCPersistContext@@AAVCStringParser@@J@Z
+    ?begin@?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@QAEPAVCUIMiniMapMarker@CTCInventoryMap@@XZ
+0079a6e0 new: 0
+0079acc0 new: 0
+0079b650 new: 0
+007de5d0 new: 0
+008ccd70 new: 1
+    ??$GetInterface@VCTCParticleAttacher@@@CThing@@QAE_NPAPAVCTCParticleAttacher@@J@Z
+008ea9f0 new: 1
+    ??0CHoverAnim@CModeHoverBase@NCreatureMode@@QAE@PBVCAnimationEntry@@ABVCCharString@@_N@Z
+009f5d70 new: 0
+00a04030 new: 1
+    ?SetAsJoystickPosition@CInputEvent@@QAEXABVC2DVector@@N@Z TABLE:00a04030
+00a04060 new: 0
+00a1ab40 new: 0
+00a1bca0 new: 0
+00a1bee0 new: 0
+0121a6ac new: 2
+    ??0?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+    ?clear@?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ TABLE:004855a3
+01228e44 new: 14
+    ??0?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCList@NUISystem@@@1@@Z
+    ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCList@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_node@PAVCLi
+    ??0?$allocator@PAVCList@NUISystem@@@std@@QAE@XZ
+    ??0?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+    ??0?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCList@NUISystem@@@1@@Z
+    ??1?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCList@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@2@@std@@QAE@XZ
+    ??1?$allocator@PAVCList@NUISystem@@@std@@QAE@XZ
+    ??1?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAE@XZ
+    ?GPreviousSelected@CList@NUISystem@@2V?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@A TABLE:013b8a98
+    ?allocate@?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCList@NUISystem@@@2@IPBX@Z
+    ?clear@?$_List_base@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXXZ TABLE:004855a3
+    ?deallocate@?$allocator@U?$_List_node@PAVCList@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCList@NUISystem@@@2@I@Z

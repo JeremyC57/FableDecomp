@@ -14975,9 +14975,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01228e44'
-        Module = '_global'
-        Source = '01/22/global_GlobalMethodTailThunk01228e44_01228e44.cpp'
-        TestSource = '01/22/global_GlobalMethodTailThunk01228e44_01228e44_test.cpp'
+        Module = 'NUISystem::CList'
+        Source = '01/22/NUISystemCList_dynamicatexitdestructorforGPreviousSelected_01228e44.cpp'
+        TestSource = '01/22/NUISystemCList_dynamicatexitdestructorforGPreviousSelected_01228e44_test.cpp'
         PassPattern = 'AUTO_TINY_01228e44_TEST PASS'
     }
     [pscustomobject]@{
@@ -203632,8 +203632,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a04030'
         Module = 'CInputEvent'
-        Source = '00/a0/CInputEvent_SetAsJoystickPosition1_00a04030.cpp'
-        TestSource = '00/a0/CInputEvent_SetAsJoystickPosition1_00a04030_test.cpp'
+        Source = '00/a0/CInputEvent_SetAsJoystickPosition_00a04030.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsJoystickPosition_00a04030_test.cpp'
         PassPattern = '00a04030_TEST PASS'
     }
     [pscustomobject]@{
@@ -277253,8 +277253,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00615920'
         Module = 'CPersistContext_TransferableVector<CTCInventoryMap::CUIMiniMapMarker>'
-        Source = '00/61/CPersistContextTransferableVectorCTCInventoryMapCUIMiniMapMarker_TransferIn_00615920.cpp'
-        TestSource = '00/61/CPersistContextTransferableVectorCTCInventoryMapCUIMiniMapMarker_TransferIn_00615920_test.cpp'
+        Source = '00/61/CPersistContextTransferableVector_TransferIn_00615920.cpp'
+        TestSource = '00/61/CPersistContextTransferableVector_TransferIn_00615920_test.cpp'
         PassPattern = '00615920_TEST PASS'
     }
     [pscustomobject]@{

@@ -16,7 +16,7 @@
 //   0x004BFAC0, CThingGameObject::SetAddToComboMultiplierOnHit 0x008389A0, CTCCarrying::GetAllCarriedThings 0x006A2220,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020, CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10 /
 //   0x00A01B50 / 0x00A01B90 / 0x00A01C10, CCharString 0x0099EBF0 / 0x0099EC30 / operator= 0x0099EFB0 / ~ 0x0099EAE0, _free 0x00BFEA14,
-//   __ftol2 0x00BFEA70; globals CTCSummonSpell::SummonCreatureGlobalDefNum 0x0138306C, CMainGameComponent::ConstantFPS 0x01375550,
+//   __ftol2 0x00BFEA70; globals CTCSummonSpell::CurrentCreatureGlobalDefNum 0x0138306C, CMainGameComponent::ConstantFPS 0x01375550,
 //   GFastOneOverSqrtTable 0x013CE558.
 // Names: Ego_r.pdb ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z and ?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z
 //   (the 0x0079AA90 callee: private, returns C3DVector by hidden pointer, one const CThing* argument; the brief's stand-in
@@ -29,6 +29,8 @@
 // Shape: the same-TU __declspec(noinline) GetSubDef / GetEffectFromString / GetDef<CBrainDef> bodies let VC7.1 see that the
 //   CDefPointer locals do not escape (retail's `dec [ecx+4]` release and shared stack slots); the velocity Normalise needs the
 //   X, Y, Z squared-magnitude spelling (FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ, hdr/README.md).
+// agentNF187 (q6323): the class static at 0x0138306C respelled in place to Ego_r / FableWin S_PUB32 ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA
+//   (private LF_STMEMBER of CTCSummonSpell; the persist key "CurrentCreatureGlobalDefNum" of 0x0072AB40 agrees); was the made-up public SummonCreatureGlobalDefNum.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -203,7 +205,9 @@ private:
 class CTCSummonSpell : public CTCBase {
 public:
     void CreateMinion(const C3DVector& pos, const C3DVector* direction);
-    static long SummonCreatureGlobalDefNum;                               // 0x0138306C (bound by 0x0079A6E0 / 0x0079B650)
+private:
+    static long CurrentCreatureGlobalDefNum;   // 0x0138306C ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (Ego_r + FableWin S_PUB32; private LF_STMEMBER)
+public:
 private:
     C3DVector GetValidTeleportPos(const CThing* thing);                     // 0x0079AA90
     CDefPointer<const CSpecialAbilitiesSummonSpellDef> PDef;              // +0x0c
@@ -227,7 +231,7 @@ void CTCSummonSpell::CreateMinion(const C3DVector& pos, const C3DVector* directi
     CThingCreatureBase* caster = static_cast<CThingCreatureBase*>(&GetParentThing());
     caster->MakeNoise("SIMPLE_NOISE");
     CThingAICreatureInit init;
-    Minion = CThingAICreature::Create(SummonCreatureGlobalDefNum, pos, caster->GetPlayerNumber(), init);
+    Minion = CThingAICreature::Create(CurrentCreatureGlobalDefNum, pos, caster->GetPlayerNumber(), init);
     C3DVector teleportPos = GetValidTeleportPos(Minion.Get());
     C3DVector velocity;
     if (direction) {

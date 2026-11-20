@@ -11,6 +11,8 @@
 // Shape: the outer call's argument (the C2DVector conversion temporary, the manager) is pushed before the inner call that
 //   feeds it (GetAreaCovering, GetSize), as VC does for a call used as `this` / an argument; the open-node update returns
 //   through its own epilogue.
+// agentNF187 (q5009): the local CNavigatorBase declaration of FindNearestNavigableNode respelled in place to the Ego_r / FableWin
+//   spelling (protected const, const node and manager pointers; engine/CNavigatorBase.h agrees); the node locals follow (const).
 #include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
@@ -53,12 +55,13 @@ public:
     bool                         Interrupted;      // +0x19
     CNavigatorManager*           NavigationManager;   // +0x1c
     void*                        SteeringAgent;    // +0x20
-    CANavQuadTreeNode* FindNearestNavigableNode(const CANavQuadTreeNode* from, const CANavQuadTreeNode* blocked, const C3DVector& pos, float radius, CNavigatorManager* manager) const;   // 0x00A475C0
+protected:
+    const CANavQuadTreeNode* FindNearestNavigableNode(const CANavQuadTreeNode* from, const CANavQuadTreeNode* blocked, const C3DVector& pos, float radius, const CNavigatorManager* manager) const;   // 0x00A475C0 ?FindNearestNavigableNode@CNavigatorBase@@IBEPBVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPBVCNavigatorManager@@@Z (Ego_r + FableWin)
 };
 class CNavigatorAStar : public CNavigatorBase {
 public:
     unsigned char      _pad24[0x64];
-    CANavQuadTreeNode* LastNavigableNodeVisited;   // +0x88
+    const CANavQuadTreeNode* LastNavigableNodeVisited;   // +0x88 (engine/CNavigatorAStar.h: const)
     unsigned char      _pad8c[0x2c];
     long               LastKnownNavLayer;          // +0xb8
     void UpdateLastPosition(const C3DVector& pos);
@@ -76,7 +79,7 @@ void CNavigatorAStar::UpdateLastPosition(const C3DVector& pos)
             return;
         }
         if (!LastNavigableNodeVisited) {
-            CANavQuadTreeNode* nearest = FindNearestNavigableNode(node, node, pos, node->GetSize() * 4.0f, NavigationManager);
+            const CANavQuadTreeNode* nearest = FindNearestNavigableNode(node, node, pos, node->GetSize() * 4.0f, NavigationManager);
             if (nearest) {
                 LastNavigableNodeVisited = nearest;
                 LastKnownNavLayer = nearest->NavLayer;

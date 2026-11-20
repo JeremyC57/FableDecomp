@@ -1,0 +1,2 @@
+entry	address	claimed_symbol	reason
+q6323	0x0138306C	?SummonCreatureGlobalDefNum@CTCSummonSpell@@2JA	Not a PDB name: Ego_r.publics + FableWin.publics S_PUB32 ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA and Ego_r types LF_STMEMBER CurrentCreatureGlobalDefNum (private) in CTCSummonSpell; the persist key "CurrentCreatureGlobalDefNum" (0x0072AB40) agrees. Applied the PDB spelling instead (NAME_FIXES).

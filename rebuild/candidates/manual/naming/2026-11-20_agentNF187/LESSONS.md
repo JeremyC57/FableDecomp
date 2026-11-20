@@ -1,0 +1,6 @@
+# NF187 lessons (one line each)
+- The Ego_r / FableWin S_PUB32 dumps in /tmp/claude-0/egod_pdb/*.publics.txt hold DATA symbols (statics) the name sets lack: grep them before trusting a queue claim for a static (q6323: the claim was a made-up name; the PDB had another name and private access).
+- A static's atexit thunk re-authors as the definition of the static on its shared header (`_$E2`), but under `#pragma optimize("s")` the header's inline `~list() { }` is emitted as a 5-byte jmp copy, not the landed owner's body: make it declaration-only.
+- Pick-any check: besides reloc_bindings, grep every newly defined COMDAT against all `// Leaf:` lines (prefix leaves too); an unreferenced owner (0x005FA530 CUIMiniMapMarker ctor) has no table line. Grade the copy against the owner address with q.py and the copy's symbol as leaf.
+- A row-local explicit class specialisation in the owner row can be matched in a caller with a member explicit-specialisation declaration on the primary template (same mangled name, no body).
+- A stand-in class with no shared header can move to the real header-less class only where the row's CTCBase is the shared one (three-condition rule); a row with a local CTCBase is a port.

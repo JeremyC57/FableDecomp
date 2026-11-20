@@ -45,7 +45,7 @@ class CInputEventPackage { public:                        // 48 bytes: one frame
     unsigned char _events[0x0c];                   // +0x00 Events (vector<CInputEvent>)
     long          TimeStamp;                       // +0x0c
     unsigned char _rest[0x20];                     // +0x10 Checksum, MousePos, JoystickPos
-    CInputEventPackage(CAFile* file);              // 0x009F5690: zero the vector, then read the package from the file
+    CInputEventPackage(CAFile& file);              // 0x009F5690 ??0CInputEventPackage@@QAE@AAVCAFile@@@Z (Ego_r + FableWin; agentNF187 q5031: was CAFile*)
     ~CInputEventPackage();                         // 0x009F6A70
 };
 struct CInputEventPackageVector {                  // vector<CInputEventPackage> (12 bytes)
@@ -69,7 +69,7 @@ void CInputManager::LoadAllEventPackages(const CVersion& version, CAFile& file)
     file.Read(&fileVersion, sizeof(CVersion), 0);
     while (file.GetPosition() < file.GetLength()) {
         try {
-            CInputEventPackage package(&file);
+            CInputEventPackage package(file);
             LoadedEventPackages.push_back(package);
         }
         catch (...) {

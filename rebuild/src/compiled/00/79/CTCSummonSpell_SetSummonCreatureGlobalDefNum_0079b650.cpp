@@ -8,10 +8,12 @@
 // 0x0066BD00 (a CTCSoundPlayer play-sound member taking (const CCharString&, bool, long, long, long); manifest label "CSoundInfo::PlaySound"),
 // CCharString::~CCharString @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80 (true),
 // CTCSummonSpell::CreateMinion(const C3DVector&, const C3DVector&) @ 0x0079ACC0.
-// Globals: CTCSummonSpell::SummonCreatureGlobalDefNum @ 0x0138306C (static member).
+// Globals: CTCSummonSpell::CurrentCreatureGlobalDefNum @ 0x0138306C (static member).
 // Layout: Ego_r.pdb CTCSummonSpell: Minion (CIntelligentPointer<CThingAICreature>) at the odd offset +0x11 (`#pragma pack(1)`).
 // Shape: the component is a named local (`mov esi,[eax+4]`); the CCharString is a named local in its own block, sharing the dead defNum
 // argument slot with the lookup key.
+// agentNF187 (q6323): the class static at 0x0138306C respelled in place to Ego_r / FableWin S_PUB32 ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA
+//   (private LF_STMEMBER of CTCSummonSpell; the persist key "CurrentCreatureGlobalDefNum" of 0x0072AB40 agrees); was the made-up public SummonCreatureGlobalDefNum.
 class CTCBase;
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_CTHING
@@ -38,7 +40,9 @@ class CTCSummonSpell { public:
     void* PDef;                                 // +0x0c CDefPointer<const CSpecialAbilitiesSummonSpellDef>
     bool  JustReleased;                         // +0x10
     CIntelligentPointer<CThing> Minion;             // +0x11
-    static long SummonCreatureGlobalDefNum;     // 0x0138306C
+private:
+    static long CurrentCreatureGlobalDefNum;   // 0x0138306C ?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA (Ego_r + FableWin S_PUB32; private LF_STMEMBER)
+public:
     void CreateMinion(const C3DVector& position, const C3DVector& direction);   // 0x0079ACC0
     void SetSummonCreatureGlobalDefNum(long defNum, const C3DVector& position, const C3DVector& direction);
 };
@@ -46,7 +50,7 @@ class CTCSummonSpell { public:
 
 void CTCSummonSpell::SetSummonCreatureGlobalDefNum(long defNum, const C3DVector& position, const C3DVector& direction)
 {
-    SummonCreatureGlobalDefNum = defNum;
+    CurrentCreatureGlobalDefNum = defNum;
     if (ParentThing->HasTC(TCI_SOUND_PLAYER)) {
         CTCSoundPlayer* sound = (CTCSoundPlayer*)((CTCSoundPlayer*)&ParentThing->GetTC(TCI_SOUND_PLAYER));
         {

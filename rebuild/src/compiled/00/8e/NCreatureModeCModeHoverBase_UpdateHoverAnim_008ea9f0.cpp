@@ -16,6 +16,9 @@
 //   the SetMainAnim call (mode computed first, Looping re-read for the argument); if/else (not an early return) lets the mode
 //   share the name's frame slot; C3DVector needs a user copy ctor for retail's load/store order; the list iterator needs a
 //   user copy ctor so erase's by-value argument is built in place.
+// agentNF187 (q6456): the local CThingCreatureBase declaration of GetRandomAnimFromName respelled in place to the Ego_r / FableWin spelling
+//   (const member returning const CAnimationEntry&; engine/CThingCreatureBase.h agrees); the two entry locals and the inline CHoverAnim's
+//   AnimToUse follow (const pointers; FableWin ??0CHoverAnim takes const CAnimationEntry&).
 #include "fable_compiler.h"
 #include "engine/C3DVector.h"
 class CCharString { public:
@@ -98,7 +101,7 @@ class CThingCreatureBase { public:
         CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
         return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
-    CAnimationEntry* GetRandomAnimFromName(const CCharString& name, long seed);   // 0x00662D80
+    const CAnimationEntry& GetRandomAnimFromName(const CCharString& name, long seed) const;   // 0x00662D80 ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (Ego_r + FableWin)
 };
 struct SCountBlock {
     long m_references;                     // +0
@@ -149,10 +152,10 @@ struct CModeHoverBase : CModeBase {
         float       MovementSpeed;                      // +0x14
     };
     class CHoverAnim { public:
-        CAnimationEntry* AnimToUse;                     // +0x00
+        const CAnimationEntry* AnimToUse;               // +0x00
         CCharString      AnimName;                      // +0x04
         bool             Looping;                       // +0x08
-        CHoverAnim(CAnimationEntry* anim, const CCharString& name, bool looping) : AnimToUse(anim), AnimName(name), Looping(looping) {}
+        CHoverAnim(const CAnimationEntry* anim, const CCharString& name, bool looping) : AnimToUse(anim), AnimName(name), Looping(looping) {}
     };
     struct CAnimQueue {                                 // STLport list<CCountedPointer<CHoverAnim> >
         struct SNode {
@@ -205,8 +208,8 @@ void CModeHoverBase::UpdateHoverAnim()
         CCharString name(PCurrentState->AnimName);
         if ((CurrentName != name && animation->IsLooping()) || animation->AnimBegin == animation->AnimEnd
             || (animation->Flags51 & 2)) {
-            CAnimationEntry* defaultEntry = creature->GetRandomAnimFromName("DEFAULT", -1);
-            CAnimationEntry* entry = creature->GetRandomAnimFromName(name, -1);
+            const CAnimationEntry* defaultEntry = &creature->GetRandomAnimFromName("DEFAULT", -1);
+            const CAnimationEntry* entry = &creature->GetRandomAnimFromName(name, -1);
             if (entry != defaultEntry)
                 AnimQueue.push_back(CCountedPointer<CHoverAnim>(new CHoverAnim(entry, name, true)));
             CurrentName = name;
