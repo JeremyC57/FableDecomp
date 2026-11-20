@@ -476,7 +476,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00415fe0	ProcessEvent	CMainGameComponent	__thiscall	void	2	CMainGameComponent *,CGameEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_ProcessEvent_00415fe0.cpp
 00415ff2	EventIsSystemEvent	CMainGameComponent	__thiscall	bool	2	CMainGameComponent *,CGameEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_EventIsSystemEvent_00415ff2.cpp
 00416005	InitDefinitions	CMainGameComponent	__thiscall	bool	2	CMainGameComponent *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_InitDefinitions_00416005.cpp
-00416047	AddToInterface	CEditInputProcessCopyPaste	__thiscall	bool	2	CEditInputProcessCopyPaste *,CInputProcessManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CEditInputProcessCopyPaste_AddToInterface_00416047.cpp
+00416047	SignalFrameUpdate	CMainGameComponent	__thiscall	bool	2	CEditInputProcessCopyPaste *,CInputProcessManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_SignalFrameUpdate_00416047.cpp
 00416056	InitEventPackageLoading	CMainGameComponent	__thiscall	bool	2	CMainGameComponent *,wchar_t *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_InitEventPackageLoading_00416056.cpp
 004160a6	UninitEventPackageLoading	CMainGameComponent	__thiscall	void	1	CMainGameComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_UninitEventPackageLoading_004160a6.cpp
 004160cc	InitEventPackageSaving	CMainGameComponent	__thiscall	bool	2	CMainGameComponent *,wchar_t *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponent_InitEventPackageSaving_004160cc.cpp
@@ -5294,7 +5294,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c9840	RemoveTC	CThing	unknown	undefined	0		0	yes	accepted									
 004c9920	IsAffectedByBulletTime	CThing	__thiscall	bool	1	CThing *	1	yes	accepted									
 004c9b80	Kill	CThing	__thiscall	void	2	CThing *,bool	1	yes	accepted									
-004c9c10	SetThingScanInclusion	CThing	__thiscall	void	2	CThing *,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_SetAsGameStatePersisted_004c9c10.cpp
+004c9c10	SetThingScanInclusion	CThing	__thiscall	void	2	CThing *,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_SetThingScanInclusion_004c9c10.cpp
 004c9c40	SetToKillOnLevelUnload	CThing	__thiscall	void	2	CThing *,bool	1	yes	accepted									
 004c9ca0	DoActivationSequence	CThing	__thiscall	bool	1	CThing *	1	yes	accepted									
 004c9d20	FrameUpdate	CThing	__thiscall	void	1	CThing *	1	yes	accepted									
@@ -12606,7 +12606,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005ed210	~CScriptModuleGoToLookInDirection	NCameraModes::CScriptModuleGoToLookInDirection	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 005ed240	CScriptModuleTavernGame	NCameraModes::CScriptModuleTavernGame	__thiscall	undefined	3	CDrawAutoPickups *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
 005ed260	GetModuleFOV	NCameraModes::CScriptModuleTavernGame	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005ed270	CCountedPointer_005ecf50	CCountedPointer_005ecf50	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted									
+005ed270	CCountedPointer	CCountedPointer<NCameraModes::CScriptModuleBase>	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted									
 005ed2c0	~CCountedPointer	CCountedPointer<NCameraModes::CScriptModuleBase>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ed2c0.cpp
 005ed300	operator=	CIntelligentPointer<const CThing>	__thiscall	CIntelligentPointer<class_CThingCreatureBase> *	2	CIntelligentPointer<CThingCreatureBase> *,CIntelligentPointer<class_CThingCreatureBase> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\CIntelligentPointerCThingCreatureBase_operator_005ed300.cpp
 005ed330	CIVCountedPointer_Release_005ed330	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5e\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ed330.cpp
@@ -48527,7 +48527,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cb0d20	~CWorkerThread_00cb0d20	CWorkerThread_00cb0d20	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 00cb0d80	InitialThreadProc	CAMThread	unknown	undefined	0		0			discovered	gapscan							
 00cb0e30	Send	CThreadMessage	unknown	undefined	0		0	yes	accepted									
-00cb0e90	PrepareForLoad	CWorldMap	__thiscall	void	1	CWorldMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CWorldMap_PrepareForLoad_00cb0e90.cpp
+00cb0e90	GetRequest	CAMThread	__thiscall	void	1	CWorldMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CAMThread_GetRequest_00cb0e90.cpp
 00cb0eb0	TryReceive	CThreadMessage	unknown	undefined	0		0	yes	accepted									
 00cb0f10	Destructor	CFileInstaller::CFileInstaller	unknown	undefined	0		0	yes	accepted									
 00cb0fc0	DefaultThreadProc	CMsgThread	unknown	undefined	0		0	yes	accepted									

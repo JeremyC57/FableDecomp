@@ -191,7 +191,7 @@ address	verdict	file	flag
 00415fe0	EXACT	CMainGameComponent_ProcessEvent_00415fe0.cpp	Oy
 00415ff2	EXACT	CMainGameComponent_EventIsSystemEvent_00415ff2.cpp	Oy
 00416005	EXACT	CMainGameComponent_InitDefinitions_00416005.cpp	Oy
-00416047	EXACT	CEditInputProcessCopyPaste_AddToInterface_00416047.cpp	Oy
+00416047	EXACT	CMainGameComponent_SignalFrameUpdate_00416047.cpp	Oy
 00416056	EXACT	CMainGameComponent_InitEventPackageLoading_00416056.cpp	Oy
 004160a6	EXACT	CMainGameComponent_UninitEventPackageLoading_004160a6.cpp	Oy
 004160cc	EXACT	CMainGameComponent_InitEventPackageSaving_004160cc.cpp	Oy

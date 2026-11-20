@@ -1,5 +1,5 @@
-// CTCTavernGameCardBase::CTCTavernGameCardBase(CThing* thing) -- CTCTavernGame(thing), empty card / pack / particle-effect vectors, no selected or highlighted card, no pointer object
-// Leaf: ??0CTCTavernGameCardBase
+// CTCTavernGameCardBase::CTCTavernGameCardBase(CThing& thing) -- CTCTavernGame(&thing), empty card / pack / particle-effect vectors, no selected or highlighted card, no pointer object
+// Leaf: ??0CTCTavernGameCardBase@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F1CD0, length 105 bytes (`ret 4`); stores vtable 0x01288294 (CTCTavernGameCardBase,
 // rtti-vtables.tsv).
 // Callees: CTCTavernGame::CTCTavernGame(CThing*) @ 0x005EC8A0.
@@ -9,6 +9,10 @@
 // GameType +0x300, CardOrder +0x304, SelectedCard +0x308, HighlightedCard +0x30C, CurrentMovingCard +0x310.
 // Shape: the three vectors (STLport _Vector_base + _STLP_alloc_proxy model) and the two card pointers in the init list, one zero register;
 // PointerScale and Pointer are body assignments (stored last, PointerScale first).
+// Naming (NF198, 2026-11-20, q11993): the CTCTavernGameCard* constructors take the PDB CThing& (Ego_r.pdb + FableWin.pdb
+//   ??0CTCTavernGameCardBase@@QAE@AAVCThing@@@Z 0x008F1CD0, ??0CTCTavernGameCardSorting@@QAE@AAVCThing@@@Z 0x007D5AD0,
+//   ??0CTCTavernGameCardPairs@@QAE@AAVCThing@@@Z 0x007D7520, ??0CTCTavernGameCardBlackjack@@QAE@AAVCThing@@@Z 0x007DB280); respelled in place
+//   on the row's local models as one family with the three Alloc factories 0x004D5A11 / 0x004D5A44 / 0x004D5AAA (were CThing*; same bytes).
 class CThing;
 class CCard;
 class CThingObject;
@@ -54,12 +58,12 @@ struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294
     CCard* SelectedCard;                        // +0x308
     CCard* HighlightedCard;                     // +0x30c
     long  CurrentMovingCard;                    // +0x310
-    CTCTavernGameCardBase(CThing* thing);
+    CTCTavernGameCardBase(CThing& thing);
     virtual ~CTCTavernGameCardBase();
 };
 
-CTCTavernGameCardBase::CTCTavernGameCardBase(CThing* thing)
-    : CTCTavernGame(thing)
+CTCTavernGameCardBase::CTCTavernGameCardBase(CThing& thing)
+    : CTCTavernGame(&thing)
     , SelectedCard(0)
     , HighlightedCard(0)
 {

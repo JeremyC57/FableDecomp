@@ -1,0 +1,122 @@
+addr       parity           behav  name
+00416047   WARN STANDIN_LEAF ?SignalFrameUpdate@CMainGameComponent@@QAEXXZ (catalog CEditInputProcessCopyPaste::AddToInterface; names another function)
+00416047   RELOCATION_MATCH PASS   CEditInputProcessCopyPaste::AddToInterface
+004c9c10   RELOCATION_MATCH PASS   CThing::SetThingScanInclusion
+004d5a11   RELOCATION_MATCH PASS   CTCTavernGameCardSorting::Alloc
+004d5a44   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardPairs (engine/CTCTavernGameCardPairs.h)
+004d5a44   RELOCATION_MATCH PASS   CTCTavernGameCardPairs::Alloc
+004d5aaa   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBlackjack (engine/CTCTavernGameCardBlackjack.h)
+004d5aaa   RELOCATION_MATCH PASS   CTCTavernGameCardBlackjack::Alloc
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTCHeroMorph (engine/CTCHeroMorph.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0057c2e6   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+0057c2e6   RELOCATION_MATCH PASS   CTCHeroStats::SetMorality
+005ed270   RELOCATION_MATCH PASS   CCountedPointer_005ecf50::CCountedPointer_005ecf50
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+00645ce9   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00645ce9   WARN RELOC_NAME: ?g_pGameUI@@3PAUCGameUI@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00645ce9   RELOCATION_MATCH PASS   CStatBar::DrawStatBox
+006e13e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)
+006e13e0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+006e13e0   RELOCATION_MATCH PASS   CTCDParticleEmitter::OnCreate
+007d5ad0   WARN SHARED_HEADER_AVAILABLE CPrizeScoreDef (engine/CPrizeScoreDef.h)
+007d5ad0   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+007d5ad0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007d5ad0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+007d5ad0   WARN RELOC_NAME: ?GetTavernGameDef@CTCTavernGameCardBase@@QAEXPAUCDefPointer@@@Z -> 005ea000 labelled 'CTCTavernGame::GetDef'
+007d5ad0   RELOCATION_MATCH PASS   CTCTavernGameCardSorting::CTCTavernGameCardSorting
+007d7520   WARN SHARED_HEADER_AVAILABLE CPrizeScoreDef (engine/CPrizeScoreDef.h)
+007d7520   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+007d7520   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007d7520   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+007d7520   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardPairs (engine/CTCTavernGameCardPairs.h)
+007d7520   WARN RELOC_NAME: ?GetTavernGameDef@CTCTavernGameCardBase@@QAEXPAUCDefPointer@@@Z -> 005ea000 labelled 'CTCTavernGame::GetDef'
+007d7520   RELOCATION_MATCH PASS   CTCTavernGameCardPairs::CTCTavernGameCardPairs
+007db280   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+007db280   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBlackjack (engine/CTCTavernGameCardBlackjack.h)
+007db280   RELOCATION_MATCH PASS   CTCTavernGameCardBlackjack::CTCTavernGameCardBlackjack
+007eecf0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007eecf0   WARN SHARED_HEADER_AVAILABLE CSmashableDef (engine/CSmashableDef.h)
+007eecf0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007eecf0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007eecf0   WARN SHARED_HEADER_AVAILABLE CTCSmashableBase (engine/CTCSmashableBase.h)
+007eecf0   RELOCATION_MATCH PASS   CTCSmashableBase::OnInitialActivate
+00833010   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00833010   WARN RELOC_NAME: ?OnNewBrain_008018b0@CTCIdleScheduler@@QAEXXZ -> 008018b0 labelled 'CTCIdleScheduler::Clear'
+00833010   WARN RELOC_NAME: ?PeekWorld@CThingAICreature@@QAEPAVCWorld@@XZ -> 004c7aa0 labelled 'CThing::GetWorld'
+00833010   WARN RELOC_NAME: ?GetDisplayEngine@CThingAICreature@@QAEPAVCDisplayEngine@@XZ -> 004c7a70 labelled 'CThing::PeekComponent'
+00833010   RELOCATION_MATCH PASS   CThingAICreature::SetNewBrain
+0088c160   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0088c160   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0088c160   WARN RELOC_NAME: ??0CAIBrainBase@@QAE@JJM@Z -> 00a44740 labelled 'CSuspendableProcessMicrothread::CSuspendableProcessMicrothread'
+0088c160   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0088c160   RELOCATION_MATCH PASS   CAIBrain::CAIBrain
+008ecbe0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ecbe0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008ecbe0   WARN SHARED_HEADER_AVAILABLE CDegradableDef (engine/CDegradableDef.h)
+008ecbe0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ecbe0   WARN SHARED_HEADER_AVAILABLE CTCSwitchableNavigation (engine/CTCSwitchableNavigation.h)
+008ecbe0   WARN SHARED_HEADER_AVAILABLE CTCDegradableBase (engine/CTCDegradableBase.h)
+008ecbe0   RELOCATION_MATCH PASS   CTCDegradableBase::OnInitialActivate
+008f1cd0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+008f1cd0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+008f1cd0   RELOCATION_MATCH PASS   CTCTavernGameCardBase::CTCTavernGameCardBase
+00917db0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00917db0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00917db0   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+00917db0   WARN SHARED_HEADER_AVAILABLE CTCShopKeeper (engine/CTCShopKeeper.h)
+00917db0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00917db0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00917db0   RELOCATION_MATCH PASS   CAIStateGroup_CleanWork::GetBuilding
+00a5c570   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool (engine/CSimpleMemoryPool.h)
+00a5c570   RELOCATION_MATCH PASS   CSimpleMemoryPool::CSimpleMemoryPool
+00cb0e90   WARN STANDIN_LEAF ?GetRequest@CAMThread@@QAEKXZ (catalog CWorldMap::PrepareForLoad; names another function)
+00cb0e90   WARN VENDOR_PROOF_MISMATCH tree dxsdk/dxsdk-sum2004 of strmbase-dxsdk-sum2004 not under FABLE_THIRDPARTY ([PosixPath('/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/thirdparty')]); run fetch_vendor_libs.py
+00cb0e90   RELOCATION_MATCH PASS   CWorldMap::PrepareForLoad
+
+WINS: 20
+  00416047 RELOCATION_MATCH CEditInputProcessCopyPaste::?SignalFrameUpdate@CMainGameComponent@@QAEXXZ
+  004c9c10 RELOCATION_MATCH CThing::?SetThingScanInclusion@CThing@@QAEX_N@Z
+  004d5a11 RELOCATION_MATCH CTCTavernGameCardSorting::Alloc
+  004d5a44 RELOCATION_MATCH CTCTavernGameCardPairs::Alloc
+  004d5aaa RELOCATION_MATCH CTCTavernGameCardBlackjack::Alloc
+  0057c2e6 RELOCATION_MATCH CTCHeroStats::SetMorality
+  005ed270 RELOCATION_MATCH CCountedPointer_005ecf50::??0?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAE@PAVCScriptModuleBase@NCameraModes@@@Z
+  00645ce9 RELOCATION_MATCH CStatBar::DrawStatBox@CStatBar
+  006e13e0 RELOCATION_MATCH CTCDParticleEmitter::OnCreate
+  007d5ad0 RELOCATION_MATCH CTCTavernGameCardSorting::??0CTCTavernGameCardSorting@@QAE@AAVCThing@@@Z
+  007d7520 RELOCATION_MATCH CTCTavernGameCardPairs::??0CTCTavernGameCardPairs@@QAE@AAVCThing@@@Z
+  007db280 RELOCATION_MATCH CTCTavernGameCardBlackjack::??0CTCTavernGameCardBlackjack@@QAE@AAVCThing@@@Z
+  007eecf0 RELOCATION_MATCH CTCSmashableBase::OnInitialActivate
+  00833010 RELOCATION_MATCH CThingAICreature::SetNewBrain
+  0088c160 RELOCATION_MATCH CAIBrain::??0CAIBrain@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCThingManager@@AAVCPlayerManager@@AAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z
+  008ecbe0 RELOCATION_MATCH CTCDegradableBase::OnInitialActivate
+  008f1cd0 RELOCATION_MATCH CTCTavernGameCardBase::??0CTCTavernGameCardBase@@QAE@AAVCThing@@@Z
+  00917db0 RELOCATION_MATCH CAIStateGroup_CleanWork::GetBuilding
+  00a5c570 RELOCATION_MATCH CSimpleMemoryPool::??0CSimpleMemoryPool@@QAE@KK@Z
+  00cb0e90 RELOCATION_MATCH CWorldMap::?GetRequest@CAMThread@@QAEKXZ

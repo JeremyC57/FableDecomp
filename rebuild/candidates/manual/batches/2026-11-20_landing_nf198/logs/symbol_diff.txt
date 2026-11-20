@@ -1,0 +1,30 @@
+00416047 new: 1
+    ?SignalFrameUpdate@CMainGameComponent@@QAEXXZ TABLE:00416047
+004c9c10 new: 1
+    ?SetThingScanInclusion@CThing@@QAEX_N@Z TABLE:004c9c10
+004d5a11 new: 0
+004d5a44 new: 0
+004d5aaa new: 0
+0057c2e6 new: 0
+005ed270 new: 2
+    ??0?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAE@PAVCScriptModuleBase@NCameraModes@@@Z TABLE:005ed270
+    ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00645ce9 new: 0
+006e13e0 new: 0
+007d5ad0 new: 1
+    ??0CTCTavernGameCardSorting@@QAE@AAVCThing@@@Z TABLE:007d5ad0
+007d7520 new: 1
+    ??0CTCTavernGameCardPairs@@QAE@AAVCThing@@@Z TABLE:007d7520
+007db280 new: 1
+    ??0CTCTavernGameCardBlackjack@@QAE@AAVCThing@@@Z TABLE:007db280
+007eecf0 new: 0
+00833010 new: 0
+0088c160 new: 1
+    ??0CAIBrain@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCThingManager@@AAVCPlayerManager@@AAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z TABLE:0088c160
+008ecbe0 new: 0
+008f1cd0 new: 1
+    ??0CTCTavernGameCardBase@@QAE@AAVCThing@@@Z TABLE:008f1cd0
+00917db0 new: 0
+00a5c570 new: 0
+00cb0e90 new: 1
+    ?GetRequest@CAMThread@@QAEKXZ

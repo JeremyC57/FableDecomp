@@ -14,6 +14,9 @@
 //        test skips the constructor; the by-value def copy for the constructor is built on the stack (`push ecx ; mov [esp],edi`)
 //        with its add-ref, the manager getters evaluated after it; the parameter's own copy is released at the end.
 // Layout: CThing presence bits +0x20, Components +0x44; PBrain +0x1A8 (Ego_r.pdb +0x1D8, 0x30 lower in retail).
+// Naming (NF198, 2026-11-20, q11991): the CAIBrain ctor is the PDB reference form ??0CAIBrain@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCThingManager@@
+//   AAVCPlayerManager@@AAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z (Ego_r.pdb 0x0082FFD0 + FableWin.pdb 0x02802F50); the arguments are passed
+//   dereferenced (same bytes). The GetDisplayEngine stand-in for PeekComponent 0x004C7A70 and its cast are pre-existing (not changed).
 #include "fable_compiler.h"
 class CTCBase;
 class CTCIdleScheduler { public:                            // interface type 0xD3
@@ -37,9 +40,9 @@ public:
 inline CThingManager* GetThingManager() { return CThing::GetPCurrentThingManager(); }
 class CAIBrain { public:                                    // 0xA8 bytes
     unsigned char _body[0xa8];
-    // The self row 0x0088C160's own spelling (CMainGameComponent* first: Ego_r.pdb 0x0082FFD0 / FableWin.pdb 0x02802F50 take a const
-    // CMainGameComponent&; retail 0x004C7A70 is CThing::PeekComponent, still declared GetDisplayEngine here).
-    CAIBrain(CMainGameComponent* component, CWorld* world, CThingManager* things, CPlayerManager* players, CThingAICreature* owner, CDefPointer<const CBrainDef> def);   // 0x0088C160
+    // NF198 (q11991): the PDB reference form (Ego_r.pdb 0x0082FFD0 / FableWin.pdb 0x02802F50), moved together with the self row 0x0088C160;
+    // retail 0x004C7A70 is CThing::PeekComponent (still declared GetDisplayEngine here: the existing cast is kept, now dereferenced).
+    CAIBrain(const CMainGameComponent& component, CWorld& world, CThingManager& things, CPlayerManager& players, CThingAICreature& owner, CDefPointer<const CBrainDef> def);   // 0x0088C160
 };
 // Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the brain pointer is the shared CCountedPointer<CAIBrain> (Ego_r.pdb
 //   CThingAICreature::PBrain); its out-of-line Reset 0x00834E40 is FableWin.pdb ?Reset@?$CCountedPointer@VCAIBrain@@@@QAEXPAVCAIBrain@@@Z
@@ -75,6 +78,6 @@ void CThingAICreature::SetNewBrain(CDefPointer<const CBrainDef> brainDef)
     CTCIdleScheduler* scheduler;
     if (GetInterface(&scheduler, 0xd3))
         scheduler->OnNewBrain_008018b0();
-    CAIBrain* brain = new CAIBrain((CMainGameComponent*)GetDisplayEngine(), PeekWorld(), GetThingManager(), GetPlayerManager(), this, brainDef);
+    CAIBrain* brain = new CAIBrain(*(const CMainGameComponent*)GetDisplayEngine(), *PeekWorld(), *GetThingManager(), *GetPlayerManager(), *this, brainDef);
     PBrain.Reset(brain);
 }

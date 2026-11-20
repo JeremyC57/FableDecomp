@@ -1,8 +1,10 @@
 // CSimpleMemoryPool::CSimpleMemoryPool(unsigned long capacity, unsigned long growthGranularity) -- CBaseClassNonCopyable base, the growth granularity rounded up to 16, this class's vtable, the free-area root cleared, no blocks, the default 0x400 capacity replaced by the rounded request when one is given
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- CArea without an inline constructor, the root's two words and FirstMemoryBlock/Capacity assigned in the body (GrowthGranularity in the initialiser list): the zero register is set before the GrowthGranularity store as in retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5C570, length 74 bytes.
-// Leaf: ??0CSimpleMemoryPool
+// Leaf: ??0CSimpleMemoryPool@@QAE@KK@Z
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0.
+// NF198 (2026-11-20, q11902): the local CBaseClassNonCopyable model replaced by engine/CBaseClassNonCopyable.h (Ego_r.pdb /
+//   FableWin.pdb ??0CBaseClassNonCopyable@@IAE@XZ, protected; was the public QAE stand-in). Leaf line written in full.
 // Layout: engine/CSimpleMemoryPool.h (FirstMemoryBlock +4, Capacity +8, GrowthGranularity +0xc, Root (CArea) +0x10).
 // The generated header is a flat record with no virtual functions or constructors, so a constructor that stores the
 // vtable (0x0129A064 = CSimpleMemoryPool in rtti-vtables.tsv) cannot be expressed on it: local polymorphic model with
@@ -10,10 +12,7 @@
 // Shape: the granularity is the only initialiser (stored before the vtable), Root is a member with an inline
 // constructor (its two words after the vtable), FirstMemoryBlock and Capacity are body assignments sharing the ecx
 // zero; the capacity request goes through the inline SetCapacity (0x00A5C5C0: `(n + 15) / 16 * 16`).
-struct CBaseClassNonCopyable {                  // vtable 0x0129A7C4
-    virtual ~CBaseClassNonCopyable();
-    CBaseClassNonCopyable();                    // 0x0099A2F0
-};
+#include "engine/CBaseClassNonCopyable.h"     // vtable 0x0129A7C4; protected ctor 0x0099A2F0
 
 struct CMemoryBlock;
 

@@ -1,0 +1,3 @@
+existing 004c8c00 new= ['?UpdateThingScanInclusion@CThing@@IAEXXZ'] | others: {'?UpdateThingScanInclusion@CThing@@QAEXXZ': ['004c8cf0', '004c9b80', '004c9ca0']}
+existing 00798f50 new= ['?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ'] | others: {'?GetShopTC@CTCShopKeeper@@QAEPAVCTCShop@@XZ': ['00926a10', '00926b30', '00926c50', '00927c80', '0094bb20', '00969470']}
+gate: 0 created split(s)

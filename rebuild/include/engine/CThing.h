@@ -588,6 +588,12 @@ public:
     void AddToRenderList();                                      // 0x004C7AC0 ?AddToRenderList@CThing@@QAEXXZ
     CScriptThing GetScriptThing() const;                         // 0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ
     void SetAsGameStatePersisted(bool);                          // 0x004C7880 ?SetAsGameStatePersisted@CThing@@QAEX_N@Z
+#ifdef FABLE_RETAIL_CTHING_SETTHINGSCANINCLUSION   // nested in FABLE_RETAIL_CTHING_STATEACCESS
+    // NF198 opt-in (2026-11-20, q11973; row 0x004C9C10): Ego_r.pdb 0x004CB6B0 + FableWin.pdb 0x01CF8070 ?SetThingScanInclusion@CThing@@QAEX_N@Z,
+    // out of line in retail at 0x004C9C10 (catalog CThing::SetThingScanInclusion): IncludeInThingScans (bit 2 of +0x91) = the argument,
+    // then UpdateThingScanInclusion 0x004C8C00. Declaration only; no layout change.
+    void SetThingScanInclusion(bool);                            // 0x004C9C10
+#endif
     bool IsGameStatePersisted() const;                           // 0x004C8280 ?IsGameStatePersisted@CThing@@QBE_NXZ
     bool IsLevelPersistent() const;                              // 0x004C82A0 ?IsLevelPersistent@CThing@@QBE_NXZ
     CDefString GetDefName() const;                               // 0x004C7CC0 ?GetDefName@CThing@@QBE?AVCDefString@@XZ

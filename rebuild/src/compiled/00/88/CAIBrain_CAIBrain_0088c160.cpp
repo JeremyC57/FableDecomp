@@ -1,5 +1,5 @@
 // CAIBrain::CAIBrain(CMainGameComponent*, CWorld*, CThingManager*, CPlayerManager*, CThingAICreature*, CDefPointer<const CBrainDef>) -- construct the creature brain: base (0, 32000, 0.1f), cached managers, empty state-group map, output and update zones; then init the state groups from the def and copy its update zones
-// Leaf: ??0CAIBrain
+// Leaf: ??0CAIBrain@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCThingManager@@AAVCPlayerManager@@AAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088C160, length 218 bytes (`ret 18h`). Vtable 0x012780C4.
 // Callees: the brain base ctor @ 0x00A44740 (int, int, float; manifest "CCreatureAction_CastBattleCharge" ctor label is
 // propagated), CBrainOutput::CBrainOutput @ 0x00835620 (Output +0x44), CAIBrain::InitStateGroups(CDefPointer<const
@@ -10,6 +10,11 @@
 // jne ; call [vtbl+4]`). Retail layout is the PDB's minus 4 bytes from +0x34 (12-byte vector + compare byte + flag byte
 // in the state-group map): PActiveStateGroup +0x38, Output +0x44, OutputValid +0x8c, PBrainDef +0x90, UpdateZones +0x94,
 // PCurrentUpdateZone +0xa0, OnKillCalled +0xa4.
+// Naming (NF198, 2026-11-20, q11991): the self signature is the PDB's reference form (Ego_r.pdb 0x0082FFD0 + FableWin.pdb 0x02802F50
+//   ??0CAIBrain@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCThingManager@@AAVCPlayerManager@@AAVCThingAICreature@@V?$CDefPointer@$$CBVCBrainDef@@@@@Z),
+//   respelled in place on the row's existing local CAIBrain model (was the pointer form); its only landed caller 0x00833010 moves with it.
+//   The PDB member Component is a non-const CMainGameComponent* (Ego_r.pdb CAIBrain +0x14), so the const reference is stored through a cast.
+// Inferred: the `(CMainGameComponent*)&component` store (both PDBs: const CMainGameComponent& parameter, non-const pointer member); same bytes.
 class CMainGameComponent;
 class CWorld;
 class CThingManager;
@@ -97,17 +102,17 @@ class CAIBrain : public CAIBrainBase
     CBrainUpdateZone* PCurrentUpdateZone;           // +0xa0
     bool OnKillCalled;                              // +0xa4
 
-    CAIBrain(CMainGameComponent* component, CWorld* world, CThingManager* thingManager,
-             CPlayerManager* playerManager, CThingAICreature* creature, CDefPointer<const CBrainDef> def);
+    CAIBrain(const CMainGameComponent& component, CWorld& world, CThingManager& thingManager,
+             CPlayerManager& playerManager, CThingAICreature& creature, CDefPointer<const CBrainDef> def);
     virtual void v00();
     void InitStateGroups(CDefPointer<const CBrainDef> def);   // 0x0088BF30
 };
 
-CAIBrain::CAIBrain(CMainGameComponent* component, CWorld* world, CThingManager* thingManager,
-                   CPlayerManager* playerManager, CThingAICreature* creature, CDefPointer<const CBrainDef> def)
+CAIBrain::CAIBrain(const CMainGameComponent& component, CWorld& world, CThingManager& thingManager,
+                   CPlayerManager& playerManager, CThingAICreature& creature, CDefPointer<const CBrainDef> def)
     : CAIBrainBase(0, 32000, 0.1f),
-      Component(component), Creature(creature), ThingManager(thingManager), PlayerManager(playerManager),
-      World(world), PBrainDef(def), OnKillCalled(false)
+      Component((CMainGameComponent*)&component), Creature(&creature), ThingManager(&thingManager), PlayerManager(&playerManager),
+      World(&world), PBrainDef(def), OnKillCalled(false)
 {
     InitStateGroups(PBrainDef);
     UpdateZones = def->UpdateZones;

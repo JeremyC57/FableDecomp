@@ -40697,9 +40697,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb0e90'
-        Module = 'CWorldMap'
-        Source = '00/cb/CWorldMap_PrepareForLoad_00cb0e90.cpp'
-        TestSource = '00/cb/CWorldMap_PrepareForLoad_00cb0e90_test.cpp'
+        Module = 'CAMThread'
+        Source = '00/cb/CAMThread_GetRequest_00cb0e90.cpp'
+        TestSource = '00/cb/CAMThread_GetRequest_00cb0e90_test.cpp'
         PassPattern = 'PF_cb0e90_OK'
     }
     [pscustomobject]@{
@@ -64177,8 +64177,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004c9c10'
         Module = 'CThing'
-        Source = '00/4c/CThing_SetAsGameStatePersisted_004c9c10.cpp'
-        TestSource = '00/4c/CThing_SetAsGameStatePersisted_004c9c10_test.cpp'
+        Source = '00/4c/CThing_SetThingScanInclusion_004c9c10.cpp'
+        TestSource = '00/4c/CThing_SetThingScanInclusion_004c9c10_test.cpp'
         PassPattern = 'BEHAVIOR_OK'
     }
     [pscustomobject]@{
@@ -76896,9 +76896,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00416047'
-        Module = 'CEditInputProcessCopyPaste'
-        Source = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047.cpp'
-        TestSource = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047_test.cpp'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_SignalFrameUpdate_00416047.cpp'
+        TestSource = '00/41/CMainGameComponent_SignalFrameUpdate_00416047_test.cpp'
         PassPattern = 'PASS_00416047'
     }
     [pscustomobject]@{
@@ -150296,9 +150296,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ed270'
-        Module = 'CCountedPointer_005ecf50'
-        Source = '00/5e/CCountedPointer005ecf50_CCountedPointer005ecf50_005ed270.cpp'
-        TestSource = '00/5e/CCountedPointer005ecf50_CCountedPointer005ecf50_005ed270_test.cpp'
+        Module = 'CCountedPointer<NCameraModes::CScriptModuleBase>'
+        Source = '00/5e/CCountedPointer_CCountedPointer_005ed270.cpp'
+        TestSource = '00/5e/CCountedPointer_CCountedPointer_005ed270_test.cpp'
         PassPattern = '005ed270_TEST PASS'
     }
     [pscustomobject]@{
