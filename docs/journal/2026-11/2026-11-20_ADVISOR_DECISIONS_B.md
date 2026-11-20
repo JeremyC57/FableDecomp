@@ -115,3 +115,17 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The label cites the three retail sites and says the bytes prove one evaluation held in a named local, not its name.
 - **Blocking:** the draft's `#pragma auto_inline(off)` round the same-TU 0x00A1A1A0 body is an inline device. Line 2 must name it with its
   ablation, which also tries a per-row flag and a declaration-only callee (if declaration-only is byte-equal, drop the body and the pragma).
+
+## 0x00E5E350 CV_BodyGuardScript::HenchmanCommentary: a mid-body inline_depth region (2026-11-20)
+- **Case:** retail calls ~CTimer out of line at one exit only (0x00E5E580/8D). Every return's dtors score alike, so no /d2inlT or /d2inlS
+  value splits them; the draft's `#pragma inline_depth(0)` region round that one terminate check gives RELOCATION_MATCH.
+- **Ruling:** admissible in class. EXTRA_RULES.md's 2026-11-08 owner decision allows a source-level `#pragma inline_depth` scoped to the
+  affected code (preference 3), and landed rows use the same mid-body pattern (e.g. 0x00E6AD20). A per-site region can fit any
+  expanded/called pattern, so:
+  - **First, one bounded plain-C++ round:** find the frequency at which ~CTimer flips to called, grade natural nestings that give the site
+    that frequency, and compare /Od line sizes in the block with Ego_d's.
+  - **If the region stays:** it encloses one statement only. Line 2 lists everything it suppresses and says the region is fitted and
+    retail's construct is unproven.
+- **Its dead conditional temporary** is the fifth row under that ruling (after 0x00DA0230, 0x00E72630, 0x00E54E90, 0x00E97070) and takes
+  the same label prefix.
+- **Not reopened by this:** 0x00D01630, whose open part needs an expansion forced, not suppressed.
