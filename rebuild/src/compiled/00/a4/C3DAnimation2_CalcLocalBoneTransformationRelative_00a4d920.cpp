@@ -16,11 +16,21 @@
 //   VC7.1 still emits the referenced inline as a COMDAT, which is the out-of-line 0x00A4D330 other TUs call
 //   (C3DAnimationManager::CombineBaseAnimationsBoneList 0x00AA0C50).
 // Callees: C3DAnimation2::ConvertTimeToFrames 0x00A52650 (called), CQuaternion::operator*= 0x00A88C10 (called); globals
-//   g_ArcCosTable 0x013CB530 / g_CosTable 0x013CD550 (bound spellings; no PDB data symbols on this machine).
+//   GFastArcCosTable 0x013CB530 / GFastCosTable 0x013CD550 (Ego_d.pdb publics ?GFastArcCosTable@@3PAMA / ?GFastCosTable@@3PAMA).
 // Retail-asm: 0x00A4DA78 / 0x00A4DAE9 `fistp dword ptr [esp+1Ch]`, 0x00A4DB59 `fistp dword ptr [esp+18h]` -- engine/GFFloatToLongNear.h inside
 //   GFFastArcCos / GFFastSin (bare `fistp dword`: `(long)x` gives __ftol2, /QIfist gives `fistp qword`; the landed
 //   C3DKeyframe::BlendWith 0x00AA3C50 and CQuaternion::CalculateSlerpWeights 0x00AA3390 reach the same helper). GFFloatToLongFloor
 //   (engine/GFFloatToLongFloor.h) is reached only through the out-of-line ConvertTimeToFrames. This row carries no asm of its own.
+// Helper texts (re-port, audit 2026-11-20, with row 0x00A4D770): GFFastArcCos, GFFastSin, CQuaternion::Dot / SetIdentity / SetSlerp and
+//   C3DAnimationSequenceData::InlineGetKeyframeInterpolate are now the Ego_d-shaped block of the landed 0x00A53860 / 0x00A52760 /
+//   0x00A4C1F0 (line tables and locals in 0x00A53860's header), in place of the October one-expression texts on the made-up table
+//   names g_ArcCosTable / g_CosTable. One text per helper across the five rows.
+// Inferred: `goto rotation_done;` for the equal-palette-entry copy (Ego_d's line 56 is a 2-byte jump out of the slerp; a `break` out
+//   of a one-pass loop would be the other 2-byte shape, not graded).
+// Inferred: two helper lines fitted by row 0x00A4D770 C3DAnimation2::CalcLocalTransformationsRelative (measurements in that row's header)
+//   and carried here so that the family keeps one text per helper: SetSlerp's weight argument is `w2` (Ego_d local, line 41), and
+//   GFFastArcCos has `float pos = (float)((value + 1.0f) * 512.5f);` (Ego_d line 235 is 24 bytes, the uncast statement 18 at /Od).
+//   Both are byte-neutral in this row: RELOCATION_MATCH with and without them (re-port, audit 2026-11-20).
 #include "fable_compiler.h"
 #include <stddef.h>
 #define FABLE_RETAIL_BASE_OBJECT
@@ -29,113 +39,125 @@
 #define FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL
 #define FABLE_RETAIL_CSIMPLEMEMORYPOOL
 #define FABLE_RETAIL_C3DANIMATION2_CALCLOCAL
+#define FABLE_RETAIL_C3DANIMATION2_CONVERTTIME_BODY
 #define FABLE_RETAIL_C3DANIMATION2_CALCLOCALBONE
 #define FABLE_RETAIL_C3DKEYFRAME_POSTAPPLY
 #define FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE
 #define FABLE_RETAIL_CQUATERNION_SLERP
 #define FABLE_RETAIL_CQUATERNION_MULASSIGN
 #define FABLE_RETAIL_C4DVECTOR_ASSIGN3D
+#define FABLE_RETAIL_C3DKEYFRAME_SETPOSITION
 #include "engine/C3DKeyframe.h"
 #include "engine/C3DAnimation2.h"
 #include "engine/C3DMesh2.h"
 #include "engine/GFFloatToLongNear.h"
 #include "engine/GFFloatToLongFloor.h"
-extern float g_ArcCosTable[1026];       // 0x013CB530
-extern float g_CosTable[1025];          // 0x013CD550
+extern float GFastArcCosTable[1026];    // 0x013CB530 ?GFastArcCosTable@@3PAMA (acos(k * 2 / 1025 - 1), k = 0..1025)
+extern float GFastCosTable[1025];       // 0x013CD550 ?GFastCosTable@@3PAMA (cos(2 * pi * k / 1024), k = 0..1024)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-FABLE_FORCEINLINE float __fastcall GFFastArcCos(float cosine)
+FABLE_FORCEINLINE float __fastcall GFFastArcCos(float value)
 {
-    cosine = (cosine + 1.0f) * 512.5f;
-    long i = GFFloatToLongNear(cosine - 0.5f);
-    float frac = cosine - (float)i;
-    return ((1.0f - frac) * g_ArcCosTable[i] + frac * g_ArcCosTable[i + 1]) * 0.15915494f;
+    float pos = (float)((value + 1.0f) * 512.5f);
+    long index = GFFloatToLongNear(pos - 0.5f);
+    float interp = pos - index;
+    float result = (1.0f - interp) * GFastArcCosTable[index] + interp * GFastArcCosTable[index + 1];
+    result *= 0.15915494f;
+    return result;
 }
 FABLE_FORCEINLINE float __fastcall GFFastSin(float angle)
 {
-    angle = angle * 1024.0f;
-    long i = GFFloatToLongNear(angle - 0.5f);
-    float frac = angle - (float)i;
-    i = (i - 256) & 0x3ff;
-    return (1.0f - frac) * g_CosTable[i] + frac * g_CosTable[i + 1];
+    float pos = angle * 1024.0f;
+    long index = GFFloatToLongNear(pos - 0.5f);
+    float interp = pos - index;
+    index -= 256;
+    index &= 1023;
+    float result = (1.0f - interp) * GFastCosTable[index] + interp * GFastCosTable[index + 1];
+    return result;
 }
-inline float CQuaternion::Dot(const CQuaternion& q) const { return X * q.X + Y * q.Y + Z * q.Z + W * q.W; }
-FABLE_FORCEINLINE void CQuaternion::SetSlerp(const CQuaternion& from, const CQuaternion& to, float t)
+inline float CQuaternion::Dot(const CQuaternion& q2) const
 {
-    float cosom = to.Dot(from);
+    return X * q2.X + Y * q2.Y + Z * q2.Z + W * q2.W;
+}
+inline void CQuaternion::SetIdentity()
+{
+    X = 0.0f; Y = 0.0f; Z = 0.0f; W = 1.0f;
+}
+FABLE_FORCEINLINE void CQuaternion::SetSlerp(const CQuaternion& q1, const CQuaternion& q2, float weight2)
+{
+    float scale1;
+    float scale2;
+    float cosa = q1.Dot(q2);
     float sign = 1.0f;
-    if (cosom < 0.0f) {
+    if (cosa < 0.0f)
+    {
+        cosa = -cosa;
         sign = -1.0f;
-        cosom = -cosom;
     }
-    float scale0, scale1;
-    if (1.0f - cosom > 0.05f) {
-        float omega = GFFastArcCos(cosom);
-        float sinom = (float)sqrt(1.0f - cosom * cosom);
-        scale0 = GFFastSin((1.0f - t) * omega) * (1.0f / sinom);
-        scale1 = GFFastSin(omega * t) * (1.0f / sinom);
-    } else {
-        scale0 = 1.0f - t;
-        scale1 = t;
+    if (1.0f - cosa > 0.05f)
+    {
+        float angle = GFFastArcCos(cosa);
+        float sina = (float)sqrt(1.0f - cosa * cosa);
+        scale1 = GFFastSin((1.0f - weight2) * angle) / sina;
+        scale2 = GFFastSin(weight2 * angle) / sina;
     }
-    scale1 *= sign;
-    X = scale0 * from.X + scale1 * to.X;
-    Y = scale0 * from.Y + scale1 * to.Y;
-    Z = scale0 * from.Z + scale1 * to.Z;
-    W = scale0 * from.W + scale1 * to.W;
+    else
+    {
+        scale1 = 1.0f - weight2;
+        scale2 = weight2;
+    }
+    scale2 *= sign;
+    X = scale1 * q1.X + scale2 * q2.X;
+    Y = scale1 * q1.Y + scale2 * q2.Y;
+    Z = scale1 * q1.Z + scale2 * q2.Z;
+    W = scale1 * q1.W + scale2 * q2.W;
 }
 
-FABLE_FORCEINLINE void C3DAnimationSequenceData::InlineGetKeyframeInterpolate(C3DKeyframe& keyframe, unsigned long frame, float fraction) const
+FABLE_FORCEINLINE void C3DAnimationSequenceData::InlineGetKeyframeInterpolate(C3DKeyframe& dest, unsigned long frame, float fraction) const
 {
-    unsigned long nextFrame = (frame + 1 < FrameCount) ? frame + 1 : 0;
-    float oneMinusFraction = 1.0f - fraction;
-    if (RotationTrackMode & 2) {
-        unsigned long index0 = frame;
-        unsigned long index1 = nextFrame;
-        if (RotationTrackMode == 3) {
-            index0 = PalettedRotationTrack[frame];
-            index1 = PalettedRotationTrack[nextFrame];
-            if (index0 == index1) {
-                keyframe.Rotation = RotationTrack[index0];
+    unsigned long next_frame = (frame + 1 < FrameCount) ? frame + 1 : 0;
+    float w1 = 1.0f - fraction;
+    float w2 = fraction;
+    if (RotationTrackMode & 2)
+    {
+        unsigned long index = frame;
+        unsigned long next_index = next_frame;
+        if (RotationTrackMode == 3)
+        {
+            index = PalettedRotationTrack[frame];
+            next_index = PalettedRotationTrack[next_frame];
+            if (index == next_index)
+            {
+                dest.Rotation = RotationTrack[index];
                 goto rotation_done;
             }
         }
-        keyframe.Rotation.SetSlerp(RotationTrack[index0], RotationTrack[index1], fraction);
-    } else if (RotationTrackMode == 1) {
-        keyframe.Rotation = RotationTrack[0];
-    } else {
-        keyframe.Rotation.X = 0.0f;
-        keyframe.Rotation.Y = 0.0f;
-        keyframe.Rotation.Z = 0.0f;
-        keyframe.Rotation.W = 1.0f;
+        dest.Rotation.SetSlerp(RotationTrack[index], RotationTrack[next_index], w2);
     }
+    else if (RotationTrackMode == 1)
+        dest.Rotation = RotationTrack[0];
+    else
+        dest.Rotation.SetIdentity();
 rotation_done:
-    if (PositionTrackMode & 2) {
-        unsigned long index0 = frame;
-        unsigned long index1 = nextFrame;
-        if (PositionTrackMode == 3) {
-            index0 = PalettedPositionTrack[frame];
-            index1 = PalettedPositionTrack[nextFrame];
+    if (PositionTrackMode & 2)
+    {
+        unsigned long index = frame;
+        unsigned long next_index = next_frame;
+        if (PositionTrackMode == 3)
+        {
+            index = PalettedPositionTrack[frame];
+            next_index = PalettedPositionTrack[next_frame];
         }
-        const C3DVectorWord& position0 = PositionTrack[index0];
-        const C3DVectorWord& position1 = PositionTrack[index1];
-        keyframe.Position = position0 * (oneMinusFraction * PositionFactor) + position1 * (fraction * PositionFactor);
-    } else if (PositionTrackMode == 1) {
-        keyframe.Position = PositionTrack[0] * PositionFactor;
-    } else {
-        keyframe.Position = C3DVector(0.0f, 0.0f, 0.0f);
+        const C3DVectorWord& position = PositionTrack[index];
+        const C3DVectorWord& next_position = PositionTrack[next_index];
+        dest.SetPosition(position * (w1 * PositionFactor) + next_position * (w2 * PositionFactor));
     }
+    else if (PositionTrackMode == 1)
+        dest.SetPosition(PositionTrack[0] * PositionFactor);
+    else
+        dest.SetPosition(C3DVector(0.0f, 0.0f, 0.0f));
 }
 
-inline void C3DAnimation2::ConvertTimeToFrames(float time, long& frame, float& fraction) const
-{
-    float frames = time * SamplesPerSecond;
-    long whole = GFFloatToLongFloor(frames);
-    frame = whole;
-    fraction = frames - whole;
-    frame = (unsigned long)frame % FrameCount;
-    frame = frame < 0 ? frame + FrameCount : frame;
-}
 
 FABLE_FORCEINLINE void C3DAnimation2::CalcLocalBoneTransformation(C3DKeyframe& keyframe, unsigned long bone, float time) const
 {

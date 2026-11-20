@@ -58,6 +58,16 @@ void CalcLocalBoneTransformationRelative(C3DKeyframe& keyframe,unsigned long bon
 void CalcLocalBoneTransformation(C3DKeyframe& keyframe,unsigned long bone,float time) const;
 #endif
 #endif
+#ifdef FABLE_RETAIL_C3DANIMATION2_CALCLOCALRELATIVE
+// hand3c opt-in (row 0x00A4D770): Ego_r.pdb / FableWin.pdb ?CalcLocalTransformationsRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+// (retail 0x00A4D770, `ret 10h`) and FableWin.pdb's private ?GetKeyframeInterpolateFixPos@C3DAnimation2@@ABEXKAAVC3DKeyframe@@KM@Z
+// (FableWin 0x03227270; no out-of-line copy in Ego_r.pdb or retail, expanded into its caller). Needs FABLE_RETAIL_C3DANIMATION2_CALCLOCAL.
+void CalcLocalTransformations(C3DKeyframe* dest,unsigned long dest_size,float t) const;
+void CalcLocalTransformationsRelative(C3DKeyframe* dest,unsigned long dest_size,float t,const C3DMesh2& mesh) const;
+private:
+void GetKeyframeInterpolateFixPos(unsigned long bone_index,C3DKeyframe& dest,unsigned long frame,float fraction) const;
+public:
+#endif
 #ifdef FABLE_RETAIL_C3DANIMATION2_INITSEQUENCES
 // Retail opt-in (chunk 2014, row 0x00A50510): Ego_r.pdb / FableWin.pdb ?GetSamplesPerSecond@C3DAnimation2@@QBEMXZ and
 // ?GetFrameCount@C3DAnimation2@@QBEKXZ (inline in retail: the members are read in place, 0x00A50640 / 0x00A50646) and the private

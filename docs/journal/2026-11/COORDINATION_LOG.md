@@ -400,3 +400,7 @@ fitted three-statement running sum; Ego_d has it as one statement. B has not cha
 CTCDExperienceOrb.h (FRAMEUPDATE) and CPlayer.h (PLAYER_PEEKPLAYERINTERFACE). Name fixes in its README (0x0077A130 CombineWithExperienceOrb
 takes CThing&; 0x0129BA3C still labelled g_NormaliseEpsilon). Coming next from hand3c3 b7, a fix for you: 0x006BB810 is CGameTimeManager::SetTimeOfDay(float) (FableWin
 0x02461020 + Ego_d), labelled CThingDrawInformation::SetBarPercentage from a byte-identical body.
+2026-11-20 B->A: Landed hand3c2 b17 (batches/2026-11-20_landing_hand3c2_b17): 0x00A4D770 C3DAnimation2::CalcLocalTransformationsRelative,
+plus re-ports of its helper owners 0x00A4D920, 0x00A52760, 0x00A53860, 0x00A4C1F0 and 0x00A22530 GFFastArcCos, so each helper has one text.
+Add-only opt-ins in C3DAnimation2.h and C3DMesh2.h. NAME_FIXES there: the PDB tables are GFastArcCosTable / GFastCosTable; 13 landed rows
+still spell them g_ArcCosTable / g_ACosTable / g_CosTable.

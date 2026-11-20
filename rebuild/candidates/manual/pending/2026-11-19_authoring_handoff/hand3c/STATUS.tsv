@@ -46,7 +46,7 @@ address	grade	bytes	test	grades_used	notes
 00a48ba0	LANDED	875	-	1	landed by Account B (batches/2026-11-20_landing_hand3c2_b15); baseline draft DIFFER(881v875) hunks=48 difflines=396
 00a48f10	LANDED	811	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(815v811) hunks=59 difflines=243
 00a4c1f0	LANDED	1006	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(968v1006) hunks=68 difflines=325
-00a4d770	OPEN	420	-	42	DIFFER(420v420) one lea operand order at 0x00A4D8F1; see NOTES | best src/00a4d770.cpp; next: bracket on dest index, for-scope if(0) idiom
+00a4d770	RELOCATION_MATCH	420	PASS(vland strict)	42	hand3c2 b17 [LANDED batches/2026-11-20_landing_hand3c2_b17]
 00a52760	LANDED	1004	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(968v1004) hunks=68 difflines=332
 00a53860	LANDED	1005	-	1	landed by Account B (batches/2026-11-20_landing_reports_hand3c2_hand3c3); baseline draft DIFFER(966v1005) hunks=64 difflines=282
 00a567a0	LANDED	766	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft '?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z' hunks=47 difflines=341

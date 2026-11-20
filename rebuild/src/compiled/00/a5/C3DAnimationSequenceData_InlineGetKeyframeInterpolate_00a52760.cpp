@@ -23,6 +23,10 @@
 // Inferred: `goto rotation_done;` for the equal-palette-entry copy. Ego_d's line 56 is a 2-byte jump out of the slerp; `goto` is the landed
 //   0x00A4D920 spelling, and a `break` out of a one-pass loop would be the other 2-byte shape (not graded). [label added by audit h3c2b:
 //   the README declared this choice, the source did not]
+// Inferred: two helper lines fitted by row 0x00A4D770 C3DAnimation2::CalcLocalTransformationsRelative (measurements in that row's header)
+//   and carried here so that the family keeps one text per helper: SetSlerp's weight argument is `w2` (Ego_d local, line 41), and
+//   GFFastArcCos has `float pos = (float)((value + 1.0f) * 512.5f);` (Ego_d line 235 is 24 bytes, the uncast statement 18 at /Od).
+//   Both are byte-neutral in this row: RELOCATION_MATCH with and without them (re-port, audit 2026-11-20).
 #include "fable_compiler.h"
 #include <stddef.h>
 #define FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE
@@ -38,7 +42,7 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 FABLE_FORCEINLINE float __fastcall GFFastArcCos(float value)
 {
-    float pos = (value + 1.0f) * 512.5f;
+    float pos = (float)((value + 1.0f) * 512.5f);
     long index = GFFloatToLongNear(pos - 0.5f);
     float interp = pos - index;
     float result = (1.0f - interp) * GFastArcCosTable[index] + interp * GFastArcCosTable[index + 1];
@@ -112,7 +116,7 @@ void C3DAnimationSequenceData::InlineGetKeyframeInterpolate(C3DKeyframe& dest, u
                 goto rotation_done;
             }
         }
-        dest.Rotation.SetSlerp(RotationTrack[index], RotationTrack[next_index], fraction);
+        dest.Rotation.SetSlerp(RotationTrack[index], RotationTrack[next_index], w2);
     }
     else if (RotationTrackMode == 1)
         dest.Rotation = RotationTrack[0];

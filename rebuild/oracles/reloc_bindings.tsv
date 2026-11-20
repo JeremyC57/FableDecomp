@@ -13411,7 +13411,6 @@ _ImmAssociateContext@8	00cb5564	00cb5130
 ?g_FrameStartCycleCount@@3_KA	013ca9f8	009e24b0
 ?g_LastRecalibrateCycleCount@@3_KA	013caa18	009e24b0
 ?g_LastRecalibrateTime@@3NA	013caa20	009e24b0
-?g_ArcCosTable@@3PAMA	013cb530	00a22530
 ?g_mixBlockLength@@3KA	0139c9f0	00c6b8c0
 ?FilterRamped@CStateVariableFilter@@QAEXPAFK@Z	00c6b8c0	00c6bae0
 ??$__make_heap@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@U12@H@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@0PAH@Z	00cb6bd0	00cb7140
@@ -32379,8 +32378,6 @@ _WHITE	0137d700	0061ad60
 ?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z	00a110d0	00a12ee0
 ?Initialise@CPlane@@QAE_NABVC3DVector@@M@Z	00a42140	00a12ee0
 ?reserve@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@QAEXI@Z	00a13650	00a12ee0
-??XCQuaternion@@QAEABV0@ABV0@@Z	00a88c10	00a4d920
-?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z	00a52650	00a4d920
 ??0C3DAnimationBuilder@@QAE@XZ	00ab1660	00a50510
 ?BuildMeshAnimation@C3DAnimationBuilder@@QAEKAAVCOutputAnimation@N3DAnimationBuilder@@PBVC3DAnimationSequence@@KABVC3DMesh2@@_NAAVCSimpleMemoryPool@@@Z	00ab2520	00a50510
 ?InitialiseAsConstant@C3DAnimationSequenceData@@QAEXABVCMatrix3x4@@KMAAVCSimpleMemoryPool@@@Z	00a4fd70	00a50510
@@ -39549,7 +39546,6 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?FindPhonemeID@CLipSyncFrameData@@QBE?BVCLipSyncPhoneme@@K@Z	00a48a40	00a48f10
 ?erase@?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAEPAVCLipSyncPhoneme@@PAV3@0@Z	00a4a320	00a48f10
 ?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z	009ac9f0	009acee0
-?GFastArcCosTable@@3PAMA	013cb530	00a4c1f0
 ?GetDimensions@CVolume@@QBE?AVC3DExtentsI@@XZ	00a674b0	009fd9b0
 ?GetPixelFormat@CVolume@@QBE?AVCPixelFormat@@XZ	00a67480	009fd9b0
 ?Lock@CVolume@@QAE?AVCVolumeLockedBox@@K@Z	00a677d0	009fd9b0
@@ -40028,3 +40024,6 @@ _time	00bfed22	008405f0
 ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z	008e8ff0	008e9a30
 ??$GetAllTCDsInRoughArea@VCTCDExperienceOrb@@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0077adf0	0077a430
 ?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z	0077a130	0077a430
+?ConvertTimeToFrames@C3DAnimation2@@QBEXMAAJAAM@Z	00a52650	00a4d770
+?GFastArcCosTable@@3PAMA	013cb530	00a4d770
+??XCQuaternion@@QAEABV0@ABV0@@Z	00a88c10	00a4d920
