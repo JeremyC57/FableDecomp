@@ -1,0 +1,6 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+own_00669580.obj : error LNK2005: "public: bool __thiscall CDefClassBase::GetSubDef<class CSpecialEffectsDef>(class CDefPointer<class CSpecialEffectsDef const> *)const " (??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z) already defined in new_007c93b0.obj
+own_00c57550.obj : error LNK2005: "public: void __thiscall CAudioContext::Sourcei(unsigned long,long,long)" (?Sourcei@CAudioContext@@QAEXKJJ@Z) already defined in new_00c72e00.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found

@@ -1,0 +1,51 @@
+entry	address	status	binders_respelled	note
+q4411	0x0062E900	blocked (4 rows left: 0x00868350 0x008C9690 0x008CED90 0x008CEDD0, TU-emitter)	1	Claim holds (NF191: Ego_r.pdb 0x00545CE0 + FableWin.pdb 0x01D8EF00 ??1CCombatActionBase@@UAE@XZ). Ported 0x007C9180 onto the shared headers (RELOCATION_MATCH, PASS); it now binds ??1CCombatActionBase@@UAE@XZ. Its own leaf moved to the PDB ?FinishSpell@CTCFireballSpell@@QAEXXZ (RENAMES s1) with its only REFS row 0x007C93B0 respelled. Spellings at 0x0062E900: 3 -> 2 (left ??1CBase_0062e900@@QAE@XZ in the four ??_G rows, TU-emitter decision).
+q4492	0x004CC340	blocked (3 rows left: 0x00787E12 port; 0x0096FCD0 0x0096FF10 q12059 family)	1	Claim holds (NF191: FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z). Ported 0x007C7A00 onto the shared headers (RELOCATION_MATCH); it binds the template spelling now (its 0x004AC0F0 erase moved to the STLport spelling 0x006C3E80 binds). Spellings at 0x004CC340: 4 -> 3 (left ?IS_THING_ALIVE@@YI_NPBV?$CIntelligentPointer@VCThing@@@@@Z 0x00787E12, ?IS_THING_ALIVE@@YI_NABUCIntelligentPointerThing@@@Z 0x0096FCD0 / 0x0096FF10). See STATUS for each.
+q4522	0x0040DCE0	blocked (4 rows left: 0x005840A6 0x006463FF 0x008D29C0 0x00787E12, port)	1	Claim holds (FableWin.pdb 0x018962E0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z). Ported 0x0047DB73 (Wrapper::Check stand-in -> the shared template, RELOCATION_MATCH; pick-any COMDAT identical to the owner). Spellings at 0x0040DCE0: 5 -> 4 (?IS_THING_ALIVE@@YI_NABQAVCBaseObject@@@Z 0x005840A6, ?IS_THING_ALIVE_RAW@@YI_NPBQAVCThing@@@Z 0x006463FF, ?IS_THING_ALIVE@@YI_NABQAUCThingNative@@@Z 0x008D29C0, ?IS_THING_ALIVE@@YI_NABQAVCThing@@@Z 0x00787E12 + the PDB one). Per-row reasons in STATUS.
+q6321	0x007F8860	done	1	Claim holds (NF191: Ego_r.pdb 0x007F3950 + FableWin.pdb 0x02673700 ?DetachParticles@CTCParticleAttacher@@QAEXXZ). The last wrong binder 0x006412B0 ported (RELOCATION_MATCH, PASS): the row-local CTCBase / CCharString models replaced by the shared headers and the stand-in CTCAttachedParticles by CTCParticleAttacher on the shared CTCBase (three-condition rule: no header, sibling 0x007DE5D0 shape, shared base). Spellings at 0x007F8860: 2 -> 1. Collateral narrowings at 0x007A69F0 and 0x00411570 (STATUS).
+q6405	0x0062E900	blocked (see q4411)	0	Same address and claim as q4411; one unit of work.
+q6457	0x008EC1A0	done	0	Claim holds by library spelling (descriptive-by-library STLport vector<NCreatureMode::CModeHoverBase::CHoverState>::push_back; NF196 census: the only REFS row 0x008EACB0 already binds it). Self row renamed and ported (RENAMES s1; RELOCATION_MATCH, PASS). Spellings at 0x008EC1A0: 2 -> 1; at 0x008EC070: 2 -> 1 (the stand-in bound only by this row).
+q6465	0x00CDBFB0	deferred: held by NF199 (self 0x00CDBFB0 and binders 0x00D246C0 0x00E2AB30 0x00D45060 0x00E12330 locked NF199)	0	Claim holds by library spelling (NF196: descriptive-by-library STLport map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map; landed 0x00E12330 binds it). Every row of the family is locked by the running agent NF199 this round; not touched.
+q6467	0x00CDBFB0	deferred: held by NF199 (see q6465)	0	Same address and claim as q6465; one unit.
+q6492	0x00411570	deferred: held by NF199 (wrong-spelling witnesses 0x006D41F0 0x008330D0 0x00E5F2B0 locked NF199)	1	Self row already carries the claimed ?Compare@?$CBasicString@D@@KIJPBD0@Z (Leaf). The three table witnesses of the other spellings are locked by the running NF199; a compile census of the 226 REFS rows was not run (family too large for this slice). Collateral: the q6321 port of 0x006412B0 moved that row off ?Compare@@YIJPBD0@Z onto the PDB spelling (via fable_string.h).
+q6500	0x00DA2610	done	2	Claim holds (Ego_r.pdb 0x00DC9700 + FableWin.pdb 0x037EF460 private nested ?DoSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXABVCCharString@@@Z). The family moved together onto engine/CQ_MinionCampScript.h: self 0x00DA2610 renamed (RENAMES s1), binders 0x00DA26B0 / 0x00DA27B0 respelled (their own leaves also moved to the nested PDB spellings their caller 0x00DA0EF0 already binds). Spellings at 0x00DA2610: 2 -> 1; at 0x00DA26B0 / 0x00DA27B0: 2 -> 1 each.
+q6530	0x00E83680	done	1	Claim holds (Ego_r.pdb 0x00EE46B0 + FableWin.pdb 0x039F68B0 ?CleanupAfterFight@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ). Self row and its stand-in caller 0x00E83620 moved together onto the shared CV_FisticuffsClubScript.h (both leaves renamed, RENAMES s1); 0x00E87030 already bound it. Spellings at 0x00E83680: 2 -> 1.
+q6532	0x00E2E440	done	0	Claim holds (Ego_r.pdb 0x00E77AB0 + FableWin.pdb 0x0392EB20 ?GetRandomSpeech@CAS_Trickster@CV_AmbushScamScript@NScript@@AAE?AVCCharString@@XZ, after ResetRandomSpeechTime; caller CAS_Trickster::Main 0x00E2C100 binds it). Self row renamed and ported on the shared CV_AmbushScamScript.h with NF196's prechecked draft (graded unchanged, RELOCATION_MATCH). The propagated global ?GetRandomSpeech@CAC_Owner@@QAE?AVCCharString@@XZ is no longer defined by this row (NF196 moved the other two). Spellings at 0x00E2E440: 2 -> 1.
+q6928	0x00C720C0	done	1	Descriptive-name unification (libpk OpenAL source, no PDB/FSE/EgoCore name; light renaming): the self row 0x00C720C0 Leaf and the landed callers 0x00C71F10 / 0x00C72130 spell it StartExponentialFade; the only other REFS row 0x00C72E00 respelled from StartFade (RELOCATION_MATCH). Spellings at 0x00C720C0: 2 -> 1.
+q6930	0x00CB1210	blocked (coordinator: self rename of 0x00CB1890 narrows 5 -> 4 spellings onto the existing ??1CBaseList@@QAE@XZ but leaves REFS rows 0x00CA7A20 / 0x00CB0F10 / 0x00CA7A10 / 0x00CAEEA0 / 0x00CB0CA0 on other spellings)	2	Funclet fix done and graded: 0x012173E0 now binds ??1CNodeCache@CBaseList@@QAE@XZ (0x00CB1210: 2 -> 1 spelling) through the parent ported to strmbase CBaseList (self leaf ??1CBaseList@@QAE@XZ; RemoveAll at 0x00CB1340, its self Leaf). All RELOCATION_MATCH PASS; pick-any identical. The funclet fix needs the parent's class to be CBaseList (CNodeCache is nested in it), so it lands with the self rename or waits with it. Census in STATUS 0x00CB1890.
+q6931	0x00C29CA0	done	2	libpk light unify: 0x00C29CA0 now has one spelling, ??1CBuffer_00c29ca0@@QAE@XZ (self Leaf, libpk house form): the 0x00C287E0 parent's local member struct respelled in place, so it and its funclet 0x012134AB bind it (RELOCATION_MATCH PASS x3, pick-any identical). Real name not provable (libpk has no PDB): both PDBs type CHandleBasedMemoryPool::Handles as CArray<CHandleInfo> (FableWin has both ??1?$CArray@VCHandleInfo@CHandleBasedMemoryPool@@@@QAE@XZ and the std::vector dtor; the bodies are identical), while libpk/CHandleBasedMemoryPool_012b4098.h models Handles as std::vector. Proper fix = the 0x00C287E0 + 0x00C22520 family port onto libpk/CHandleBasedMemoryPool_012b4098.h (coordinator). 0x00C28AE0 not-a-binder (unreferenced ??1CHandleVector COMDAT finding).
+q6932	0x00C162A0	blocked (rows left: 0x00C161A0 + funclet 0x01211CA9, type-name decision)	2	Identity proven: 0x00C162A0 is the compiler-generated destructor of the 0x1c-byte libpk record whose constructor is 0x00C2D1A0 (landed ??0SPKVoiceSettings@@QAE@XZ): all three callers are unwind funclets of functions that build that record with 0x00C2D1A0 (0x00C2D2F0 +0x320, 0x00C161A0 stack local) or destroy it (0x00C2D3B0 +0x320). Spellings at 0x00C162A0: 4 -> 2 (self + 0x00C2D2F0 + 0x00C2D3B0 on ??1SPKVoiceSettings@@QAE@XZ; 0x00C161A0 still ??1CVolumeRecord_00c161a0@@QAE@XZ). Coordinator: one name for the 0x1c type (SPKVoiceSettings from the ctor row vs SThemeRequest in the 0x00C2D5E0 CInstanceManager::Assign leaf; the CInstanceManager.cpp trace string suggests 0x00C2D2F0/0x00C2D3B0 are CInstanceManager's ctor/dtor and the record a theme request) and for 0x00C167C0 (likely PKCAutoDeleteArray<unsigned short>::~PKCAutoDeleteArray, sibling of the landed 0x00C167B0 ctor; 8 spellings).
+q11655	0x006D3A30	open	0	Not attempted (handed back for context). Census: the only REFS row 0x006D4C00 already binds the PDB spelling; only the self row 0x006D3A30 (local CCharString / allocator-less std::vector / CPersistTraits<pair<CCharString,long> > models) needs the port. Recipe: the 0x004675C5 sibling (CDataOutputStream.h + stlport/fable_containers.h + CPersistTraits.h); engine/CPersistTraits.h's FABLE_RETAIL_CPERSISTTRAITS_PAIR partial specialisation lacks the user constructor (FableWin 0x02490DE0 ??0?$CPersistTraits@U?$pair@VCCharString@@J@std@@@@QAE@XZ; retail builds DefaultVal from CCharString("") and 0) and TransferBinaryOut(CDataOutputStream&, const pair&) (FableWin 0x02492D80): an add-only opt-in is needed first.
+q11656	0x006D4B40	open	0	Not attempted (handed back for context). Census: the only REFS row 0x006D4C00 already binds the PDB spelling; only the self row 0x006D4B40 (local CMemoryDataInputStreamReader, allocator-less vector) needs the port, with the same PAIR-traits opt-in (TransferBinaryIn: Ego_r 0x00708B20 / FableWin 0x02492F60) and FABLE_RETAIL_GFSERIALISEVECTORBINARYIN.
+q11672	0x0070D2F0	open	0	not started
+q11673	0x0042B687	open	0	not started
+q11674	0x0077E580	open	0	not started
+q11677	0x00857F30	open	0	not started
+q11707	0x013CB530	open	0	not started
+q11708	0x013CD550	open	0	not started
+q11709	0x0099EF90	open	0	not started
+q11716	0x009FBF90	open	0	not started
+q11720	0x013961E8	open	0	not started
+q11721	0x013961F0	open	0	not started
+q11722	0x009E1E10	open	0	not started
+q11723	0x009E1E40	open	0	not started
+q11727	0x009FCBA0	open	0	not started
+q11734	0x00540320	open	0	not started
+q11735	0x004AE9A0	open	0	not started
+q11741	0x00994700	open	0	not started
+q11746	0x004B8680	open	0	not started
+q11747	0x00CDCC00	open	0	not started
+q11749	0x00CDCF60	open	0	not started
+q12146	0x005E9AA0	open	0	not started
+q12147	0x00E7FD50	open	0	not started
+q12148	0x006BB390	open	0	not started
+q12152	0x005E9AA0	open	0	not started
+q12154	0x0085AB00	open	0	not started
+q12155	0x00859EC0	open	0	not started
+q12156	0x0085AFD0	open	0	not started
+q12157	0x00C10940	open	0	not started
+q12158	0x00993B10	open	0	not started
+q12159	0x009BBBF0	open	0	not started
+q12162	0x004C73B0	open	0	not started
+q12164	0x00C1EB10	open	0	not started
+q12168	0x00416268	open	0	not started

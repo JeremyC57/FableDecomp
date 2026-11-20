@@ -19,6 +19,11 @@
 // CombatSequences +0x28, DefenderInfo.Attackers {header +0x34, count +0x38}, PAttackPattern +0x64,
 // AttackPatternIndex +0x68; CAttackPatternDef::AttackPattern +0x3c; CCombatManager::Combatants +0x10.
 // Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
+// Name fix (NF199, 2026-11-20, q4389): the invented CRetailRbMap_UID_CombatantInfo stand-in is replaced by the STLport map<unsigned __int64,
+//   CCombatantInfo> (stlport/fable_map.h); find's out-of-line _M_find<unsigned __int64> 0x006F0250 is declared only (FABLE_RETAIL_STLP_TREE_MFIND_DECL, FABLE_RETAIL_STLP_TREE_CONSTFIND for the const find), so the call binds the self row's member-template spelling.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
@@ -119,22 +124,11 @@ struct CCombatantInfo {                            // retail layout (Ego_r.pdb n
     long AttackPatternIndex;                       // +0x68
     long FrameForNextInstruction;                  // +0x6c
 };
-struct CRetailRbMap_UID_CombatantInfo {            // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;                      // +0x10
-        CCombatantInfo value;                      // +0x18
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key) const; // 0x006F0250
-};
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];                 // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;     // +0x10
-    const CCombatantInfo& GetCombatantInfo(unsigned __int64 uid) const { return Combatants.find(uid)->value; }
+    std::map<unsigned __int64, CCombatantInfo> Combatants;     // +0x10
+    const CCombatantInfo& GetCombatantInfo(unsigned __int64 uid) const { return Combatants.find(uid)->second; }
     FABLE_FORCEINLINE bool IsAnotherAttackerAttacking(const CCombatantInfo& info) const
     {
         if (info.Attackers.size() > 1) {

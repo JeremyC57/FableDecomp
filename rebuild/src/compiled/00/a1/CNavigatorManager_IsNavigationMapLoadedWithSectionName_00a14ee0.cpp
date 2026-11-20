@@ -1,30 +1,14 @@
 // CNavigatorManager::IsNavigationMapLoadedWithSectionName(long id, const CCharString* name) -- find the navigation map with the id (+0x10 of the nodes on the list at +0x24) and compare its section name (+0x24) with the given one: the CCharString equality inlined (same data block, a null block, equal lengths, then Compare @ 0x00411570 == 0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A14EE0, length 96 bytes.
-// Leaf: IsNavigationMapLoadedWithSectionName
+// Leaf: ?IsNavigationMapLoadedWithSectionName@CNavigatorManager@@QAE_NJPBVCCharString@@@Z
 // Callees: Compare @ 0x00411570 (`__fastcall(a, b)`). Shape: no frame, the id search loop aligned, the `== 0` as `neg ; sbb ; inc`, `ret 8`.
 #include "fable_compiler.h"
-class CCharStringData { public:
-    const char*   m_pChars;                        // +0x00
-    unsigned long m_length;                        // +0x04
-};
-class CCharString { public:
-    CCharStringData* m_pStringData;
-};
-int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-
-static FABLE_FORCEINLINE bool operator==(const CCharString& sa, const CCharString& sb)
-{
-    CCharStringData* a = sa.m_pStringData;
-    CCharStringData* b = sb.m_pStringData;
-    if (a == b)
-        return true;
-    if (!a || !b)
-        return false;
-    if (a->m_length != b->m_length)
-        return false;
-    return Compare_00411570(a->m_pChars, b->m_pChars) == 0;
-}
-
+// Name fix (NF199, 2026-11-20, q4451): the local CCharString / CCharStringData model, its Compare_00411570 stand-in for 0x00411570 and
+//   the free operator== are replaced by the shared fable_string.h (FABLE_RETAIL_CCHARSTRING; the plain inline
+//   operators match, _FORCEINLINE_EQ is not needed): CCharString::operator== -> CBasicString<char>::operator== (length, then Compare) binds the
+//   protected static ?Compare@?$CBasicString@D@@KIJPBD0@Z (Ego_r.pdb), the self row 0x00411570's Leaf.
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
 struct SMapNode_00a14ee0 {
     SMapNode_00a14ee0* m_pNext;                    // +0x00
     SMapNode_00a14ee0* m_pPrev;                    // +0x04

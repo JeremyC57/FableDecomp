@@ -47,6 +47,14 @@ public:
     // (float, void*) arguments; the catalog's `_Cons_val<...>` label is a propagated one). Declaration only.
     void ScreenFilterFadeOut(float time, void* handle);                  // 0x006B83F0
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_RADIALBLURFADETO_VECTOR
+    // Opt-in (NF201, 2026-11-20, row 0x0079C750 CTCBulletTime::PlayCreatureOnHitEffect): Ego_r.pdb 0x006F44E0 + FableWin.pdb 0x0246CD10
+    // ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@ABVC3DVector@@M1MMM@Z = retail
+    // 0x006B8550 (the C3DVector overload; landed 0x008900D0 binds this spelling). Needs C3DVector and NScreenEffect::ScreenEffectPriority
+    // declared first (engine/C3DVector.h, FABLE_RETAIL_CSCREENEFFECTPRIORITYSTACK_ARGPASSER). Declaration only.
+    void* RadialBlurFadeTo(float time, NScreenEffect::ScreenEffectPriority priority, const C3DVector& threshold_colour, float length,
+                           const C3DVector& intensity_colour, float fade, float range, float twist);   // 0x006B8550
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_RADIALBLURFADEOUT
     // Opt-in (NF197, 2026-11-20, row 0x006B82E0): Ego_r.pdb 0x006F4280 + FableWin.pdb 0x0246CEA0
     // ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z = retail 0x006B82E0 (forwards to the priority stack's

@@ -1,15 +1,20 @@
 // CCombatManager::GetNextActionForCreature(CThingCreatureBase&) -- reuse eligible sequence action or reset and advance the sequence
 // Retail0x006EB600,247 bytes. PDB map16 -> retail tree12 shifts Combatants20->16; native node pair data+24.
 // Creature PCurrentAction is native+0x100, donor+0x11c; UID inherited at+0x18. Local retail view documents that mismatch.
+// Leaf: ?GetNextActionForCreature@CCombatManager@@QAEPAVCCombatActionBase@@AAVCThingCreatureBase@@@Z
+// Name fix (NF199, 2026-11-20, q4389): the invented CombatMap::FindLE / CombatNode / CreatureUID stand-ins are replaced by the STLport
+//   map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h) keyed by the creature's 64-bit UniqueID (+0x18); find's out-of-line
+//   _M_find<unsigned __int64> 0x006F0250 is declared only (FABLE_RETAIL_STLP_TREE_MFIND_DECL), so the call binds the self row's spelling.
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
+#include "stlport/fable_map.h"
 #include "fable_string.h"
 #include "engine/CCreatureActionBase.h"
 #define CThingCreatureBase CThingCreatureBase_PDB
 #include "engine/CThingCreatureBase.h"
 #undef CThingCreatureBase
 class CCombatActionBase;
-struct CreatureUID { unsigned long Low,High; };
 class CThingCreatureBase { public:
-    unsigned char _beforeUID[0x18];CreatureUID UID;unsigned char _beforeCurrentAction[0xe0];
+    unsigned char _beforeUID[0x18];unsigned __int64 UID;unsigned char _beforeCurrentAction[0xe0];
     CCreatureActionBase* PCurrentAction_Data;
     bool IsPerformingAnyAction() const; //0x006622A0
 public:
@@ -34,18 +39,16 @@ class CAttackingCombatantInfo { public:
     long CurrentSequence;SequencePointer* Begin;SequencePointer* End;SequencePointer* Capacity;
 };
 struct CCombatantInfo { CThingCreatureBase* Parent;CAttackingCombatantInfo AttackerInfo; };
-struct CombatNode { unsigned long Colour;CombatNode* Parent;CombatNode* Left;CombatNode* Right;CreatureUID Key;CCombatantInfo Value; };
-struct CombatMap { CombatNode* Header;unsigned long Count;unsigned long Compare;CombatNode* FindLE(const CreatureUID& key); }; //0x006F0250
 class CCombatManager { public:
-    void* VTable;unsigned char RegisteredCombatSequences[12];CombatMap Combatants;
+    void* VTable;unsigned char RegisteredCombatSequences[12];std::map<unsigned __int64, CCombatantInfo> Combatants;
     void PerformSequenceReset(CThingCreatureBase&); //0x006EA2C0
     void SetupNextSequenceForAttacker(CCombatantInfo&); //0x006EB390
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);
 };
 CCombatActionBase* CCombatManager::GetNextActionForCreature(CThingCreatureBase& creature){
     if(!creature.IsInMeleeAsAttacker())return 0;
-    CreatureUID key=creature.UID;
-    CCombatantInfo& info=Combatants.FindLE(key)->Value;
+    unsigned __int64 key=creature.UID;
+    CCombatantInfo& info=Combatants.find(key)->second;
     bool canAct=true;
     if(creature.IsPerformingAnyAction() && !creature.PCurrentAction_Data->Finished)canAct=false;
     if(info.AttackerInfo.CurrentSequence>=0){

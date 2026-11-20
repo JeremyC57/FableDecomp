@@ -1,0 +1,81 @@
+addr       parity           behav  name
+007c9180   WARN STANDIN_LEAF ?FinishSpell@CTCFireballSpell@@QAEXXZ (catalog CTCFireballSpell::FrameUpdate; names another function)
+007c9180   RELOCATION_MATCH PASS   CTCFireballSpell::FrameUpdate
+007c93b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007c93b0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007c93b0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+007c93b0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+007c93b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007c93b0   WARN SHARED_HEADER_AVAILABLE CWillButtonHelperTimer (engine/CWillButtonHelperTimer.h)
+007c93b0   WARN SHARED_HEADER_AVAILABLE CTCFireballSpell (engine/CTCFireballSpell.h)
+007c93b0   WARN RELOC_NAME: ?FinishSpell@CTCFireballSpell@@QAEXXZ -> 007c9180 labelled 'CTCFireballSpell::FrameUpdate'
+007c93b0   RELOCATION_MATCH PASS   CTCFireballSpell::FrameUpdate
+007c7a00   RELOCATION_MATCH PASS   CTCTurncoat::ModifyTurncoatedness
+0047db73   WARN RELOC_NAME: ?Do@D@@QAEXH@Z -> 00410de0 labelled 'std::bitset<274>::test'
+0047db73   WARN RELOC_NAME: ?g_pGlobalGui@@3PAUGlobalGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0047db73   WARN RELOC_NAME: ?Notify@GlobalGui@@QAEXXZ -> 00438310 labelled 'CPlayerGui::ToggleLiveGui'
+0047db73   RELOCATION_MATCH PASS   SavedConfirmed
+006412b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006412b0   WARN SHARED_HEADER_AVAILABLE CTCLight (engine/CTCLight.h)
+006412b0   RELOCATION_MATCH PASS   CTCLight::SetActive
+008ec1a0   RELOCATION_MATCH PASS   CHoverModeEntryVector::push_back
+00da2610   RELOCATION_MATCH PASS   CBriarRose::DoSpeech
+00da26b0   RELOCATION_MATCH PASS   CBriarRose::DoOnHitSpeech
+00da27b0   RELOCATION_MATCH PASS   CBriarRose::DoOnSpeakToSpeech
+00e83680   MATCH            PASS   CTyler::CleanupAfterFight
+00e83620   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::CTyler::OnPredicateFail
+00e2e440   WARN STANDIN_LEAF ?GetRandomSpeech@CAS_Trickster@CV_AmbushScamScript@NScript@@AAE?AVCCharString@@XZ (catalog CAC_Owner::GetRandomSpeech; names another function)
+00e2e440   RELOCATION_MATCH PASS   CAC_Owner::GetRandomSpeech
+00c72e00   RELOCATION_MATCH PASS   CAudioSource::ApplySound
+00cb1890   WARN STANDIN_LEAF ??1CBaseList@@QAE@XZ (catalog _unattributed::~CEngineLandscapePatch_00cb1890; names another function)
+00cb1890   WARN VENDOR_PROOF_MISMATCH tree dxsdk/dxsdk-sum2004 of strmbase-dxsdk-sum2004 not under FABLE_THIRDPARTY ([PosixPath('/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/thirdparty')]); run fetch_vendor_libs.py
+00cb1890   RELOCATION_MATCH PASS   _unattributed::~CEngineLandscapePatch_00cb1890
+012173e0   WARN VENDOR_PROOF_MISMATCH claim names 0x00CB1890, row is 012173e0
+012173e0   RELOCATION_MATCH PASS   _global::Unwind@012173e0
+00c287e0   WARN SHARED_HEADER_AVAILABLE CString (engine/CString.h)
+  WARN leaf '~CStackOwner_00c287e0' matches no symbol in 00c287e0.obj; graded the largest function
+  WARN leaf '~CStackOwner_00c287e0' matches no symbol in 00c287e0.obj; graded the largest function
+00c287e0   WARN RELOC_NAME: ?Cleanup@CStackOwner_00c287e0@@QAEXXZ -> 00c27e60 labelled 'CHandleBasedMemoryPool_012b4098::ReleaseBuffer'
+00c287e0   RELOCATION_MATCH PASS   CStackOwner_00c287e0::~CStackOwner_00c287e0
+012134ab   WARN SHARED_HEADER_AVAILABLE CString (engine/CString.h)
+012134ab   RELOCATION_MATCH PASS   _global::Unwind@012134ab
+00c162a0   WARN RELOC_NAME: ??1CMember_00c2d3b0@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c162a0   WARN STANDIN_LEAF ??1SPKVoiceSettings@@QAE@XZ (catalog std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>; names another function)
+00c162a0   RELOCATION_MATCH PASS   std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+  WARN leaf '~CArtResourceSet_00c2d3b0' matches no symbol in 00c2d3b0.obj; graded the largest function
+  WARN leaf '~CArtResourceSet_00c2d3b0' matches no symbol in 00c2d3b0.obj; graded the largest function
+00c2d3b0   WARN RELOC_NAME: ?Reset@CArtResourceSet_00c2d3b0@@QAEXJ@Z -> 00c2d210 labelled 'CInstanceManager::FadeOutAll'
+00c2d3b0   WARN RELOC_NAME: ??1CMember_00c2d3b0@@QAE@XZ -> 00c167c0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00c2d3b0   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c2d3b0   WARN STANDIN_LEAF ??1CArtResourceSet_00c2d3b0@@QAE@XZ (catalog _unattributed::~CArtResourceSet_00c2d3b0; address-only name)
+00c2d3b0   RELOCATION_MATCH PASS   _unattributed::~CArtResourceSet_00c2d3b0
+01213b0a   RELOCATION_MATCH PASS   _global::Unwind@01213b0a
+008babe0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008babe0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008babe0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FinishFireballSpell (engine/CCreatureAction_FinishFireballSpell.h)
+008babe0   RELOCATION_MATCH PASS   CCreatureAction_FinishFireballSpell::PerformAction
+007a6760   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::OnAppearanceDraw
+
+WINS: 22
+  007c9180 RELOCATION_MATCH CTCFireballSpell::?FinishSpell@CTCFireballSpell@@QAEXXZ
+  007c93b0 RELOCATION_MATCH CTCFireballSpell::?FrameUpdate@CTCFireballSpell
+  007c7a00 RELOCATION_MATCH CTCTurncoat::?ModifyTurncoatedness@CTCTurncoat@@QAEXM@Z
+  0047db73 RELOCATION_MATCH _global::SavedConfirmed
+  006412b0 RELOCATION_MATCH CTCLight::?SetActive@CTCLight@@QAEX_N@Z
+  008ec1a0 RELOCATION_MATCH CHoverModeEntryVector::?push_back@?$vector@VCHoverState@CModeHoverBase@NCreatureMode@@V?$allocator@VCHoverState@CModeHoverBase@NCreatureMode@@@std@@@std@@QAEXABVCHoverState@CModeHoverBase@NCreatureMode@@@Z
+  00da2610 RELOCATION_MATCH CBriarRose::?DoSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXABVCCharString@@@Z
+  00da26b0 RELOCATION_MATCH CBriarRose::?DoOnHitSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ
+  00da27b0 RELOCATION_MATCH CBriarRose::?DoOnSpeakToSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ
+  00e83680 MATCH CTyler::?CleanupAfterFight@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ
+  00e83620 RELOCATION_MATCH CTyler::?OnPredicateFail@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e2e440 RELOCATION_MATCH CAC_Owner::?GetRandomSpeech@CAS_Trickster@CV_AmbushScamScript@NScript@@AAE?AVCCharString@@XZ
+  00c72e00 RELOCATION_MATCH CAudioSource::?ApplySound@CAudioSource@@
+  00cb1890 RELOCATION_MATCH _unattributed::??1CBaseList@@QAE@XZ
+  012173e0 RELOCATION_MATCH _global::Unwind@012173e0
+  00c287e0 RELOCATION_MATCH _unattributed::~CStackOwner_00c287e0
+  012134ab RELOCATION_MATCH _global::Unwind@012134ab
+  00c162a0 RELOCATION_MATCH _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::??1SPKVoiceSettings@@QAE@XZ
+  00c2d3b0 RELOCATION_MATCH _unattributed::~CArtResourceSet_00c2d3b0
+  01213b0a RELOCATION_MATCH _global::Unwind@01213b0a
+  008babe0 RELOCATION_MATCH CCreatureAction_FinishFireballSpell::PerformAction
+  007a6760 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::?OnAppearanceDraw@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UAE_NAAVCTCGraphicAppearance@2@ABVCGraphicAppearanceDrawInfo@2@@Z

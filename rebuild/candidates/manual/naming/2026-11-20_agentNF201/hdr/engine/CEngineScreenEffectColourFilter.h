@@ -1,0 +1,133 @@
+#ifndef FABLE_ENGINE_CENGINESCREENEFFECTCOLOURFILTER_H
+#define FABLE_ENGINE_CENGINESCREENEFFECTCOLOURFILTER_H
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTCOLOURFILTER
+// Retail branch (chunk 731, 2026-11-03): RTTI .?AVCEngineScreenEffectColourFilter@@ (vtable 0x012A25CC) : CEngineComponent (+0x0); sizeof 0xEC from
+// CEngine::Initialise 0x00B26360 (`new` of 0xEC bytes before the constructor call). Constructor ??0CEngineScreenEffectColourFilter@@QAE@ABVCEngineInit@@@Z 0x00B5A1D0 and
+// the PeekSceneFilterFlags override (?PeekSceneFilterFlags@CEngineScreenEffectColourFilter@@UBEKXZ): Ego_r.pdb / FableWin.pdb. Own members are
+// not modelled yet (one opaque block; the generated Ego_r model below lists their names).
+#ifndef FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECOMPONENT
+#endif
+#include "rebuild_abi.h"
+#include "engine/CEngineComponent.h"
+class CEngineInit;
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTCOLOURFILTER_MEMBERS
+// Retail opt-in (chunk 792, rows 0x00B5A3F0 ApplyColourFilter / 0x00B5AF80 RenderColorFilteredQuad): the own members in Ego_r.pdb order
+// and names (struct_layouts_egor.tsv; no STLport member, so the Ego_r offsets are retail's: the landed constructor 0x00B5A1D0 stores
+// ForceColourFilter +0x0C, Settings +0x10, GrayRGBWeights +0x30, GrayLevel +0x40, EffectSupported +0x44, the quad from +0x48, the
+// shaders' Data at +0xE0 / +0xE8; the landed UpdateUVs 0x00B5A160 writes U1/V1 at +0x58.. ; the landed destructor 0x00B5A0D0 releases
+// both shaders and the OldRenderTarget at +0xA8). CRenderTarget has no retail header yet (opaque, 0x24 bytes: CBaseClass + two
+// CSurface). Methods: Ego_r.pdb / FableWin.pdb spellings (?ApplyColourFilter@CEngineScreenEffectColourFilter@@AAEXXZ private,
+// ?RenderColorFilteredQuad@CEngineScreenEffectColourFilter@@QAEXMMABVC4DVector@@MMPAVCTexture@@@Z public,
+// ?UpdateUVs@CEngineScreenEffectColourFilter@@AAEXXZ private 0x00B5A160).
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CTVertexColTex1.h"
+#include "engine/CRGBFloatColour.h"
+#include "engine/C4DVector.h"
+#include "engine/C2DBoxI.h"
+#include "engine/CEngineColourFilterSettings.h"
+class CTexture;
+class CEngineComponentRenderParams;
+class CEngineVideoOptionsDef;
+class CEngineScreenEffectColourFilter : public CEngineComponent {
+public:
+    CEngineScreenEffectColourFilter(const CEngineInit&); // 0x00B5A1D0 ??0CEngineScreenEffectColourFilter@@QAE@ABVCEngineInit@@@Z
+    virtual unsigned long PeekSceneFilterFlags() const;
+    void SetFilterSettings(const CEngineColourFilterSettings& settings);   // ?SetFilterSettings@CEngineScreenEffectColourFilter@@QAEXABVCEngineColourFilterSettings@@@Z
+    void SetEffectQuality(const CEngineVideoOptionsDef& options);          // 0x00B5A0B0
+    void RenderColorFilteredQuad(float saturation, float contrast, const C4DVector& tint, float brightness, float alpha,
+                                 CTexture* texture);                       // 0x00B5AF80
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTCOLOURFILTER_RENDER
+    // Opt-in (NF201, 2026-11-20, row 0x00B5AF60): Ego_r.pdb 0x00A007F0 + FableWin.pdb 0x02D26590
+    // ?Render@CEngineScreenEffectColourFilter@@UAEXABVCEngineComponentRenderParams@@@Z, the CEngineComponent::Render override (vtable
+    // 0x012A25CC); no new slot. Declaration only.
+    virtual void Render(const CEngineComponentRenderParams& params);       // 0x00B5AF60
+#endif
+private:
+    void ApplyColourFilter();                                              // 0x00B5A3F0
+    void UpdateUVs();                                                      // 0x00B5A160
+    bool                        ForceColourFilter;          // +0x0c
+    CEngineColourFilterSettings Settings;                   // +0x10
+    CRGBFloatColour             GrayRGBWeights;             // +0x30
+    float                       GrayLevel;                  // +0x40
+    bool                        EffectSupported;            // +0x44
+    CTVertexColTex1             TextureToBackBufferVerts[4];   // +0x48
+    unsigned char               OldRenderTarget[0x24];      // +0xa8 CRenderTarget (not modelled)
+    C2DBoxI                     OldViewport;                // +0xcc
+    CVertexShader               ScreenCopyVertexShader;     // +0xdc
+    CPixelShader                ColourFilterPixelShader;    // +0xe4
+};
+#else
+class CEngineScreenEffectColourFilter : public CEngineComponent {
+public:
+    CEngineScreenEffectColourFilter(const CEngineInit&); // 0x00B5A1D0 ??0CEngineScreenEffectColourFilter@@QAE@ABVCEngineInit@@@Z
+    virtual unsigned long PeekSceneFilterFlags() const;
+private:
+    unsigned char _pad_0xc[0xe0];               // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+};
+#endif
+FABLE_STATIC_ASSERT_AT(67, sizeof(CEngineScreenEffectColourFilter) == 0xec);
+#else // generated flattened Ego_r layout (the landed default, unchanged)
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineScreenEffectColourFilter = 0xec.
+// Retail evidence: 1 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+#pragma pack(push, 1)
+class CEngineScreenEffectColourFilter {
+public:
+    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char _pad_0x04[0x4];                            // +0x04
+    unsigned char enabled;                                   // +0x08 retail-only unsigned char (previous header)
+    unsigned char _pad_0x09[0x3];                            // +0x09
+    bool          ForceColourFilter;                         // +0x0c
+    unsigned char _pad_0x0d[0x3];                            // +0x0d
+    unsigned char Settings[0x20];                            // +0x10 CEngineColourFilterSettings
+    float         GrayRGBWeights_R;                          // +0x30 CRGBFloatColour::R
+    float         GrayRGBWeights_G;                          // +0x34 CRGBFloatColour::G
+    float         GrayRGBWeights_B;                          // +0x38 CRGBFloatColour::B
+    float         GrayRGBWeights_A;                          // +0x3c CRGBFloatColour::A
+    float         GrayLevel;                                 // +0x40
+    bool          EffectSupported;                           // +0x44
+    unsigned char _pad_0x45[0x1];                            // +0x45
+    unsigned char _pad_0x46[0x2];                            // +0x46
+    unsigned char TextureToBackBufferVerts[0x60];            // +0x48 CTVertexColTex1[4]
+    unsigned char OldRenderTarget[0x24];                     // +0xa8 CRenderTarget
+    long          OldViewport_TLX;                           // +0xcc C2DBoxI::TLX
+    long          OldViewport_TLY;                           // +0xd0 C2DBoxI::TLY
+    long          OldViewport_BRX;                           // +0xd4 C2DBoxI::BRX
+    long          OldViewport_BRY;                           // +0xd8 C2DBoxI::BRY
+    unsigned char ScreenCopyVertexShader[0x8];               // +0xdc CVertexShader
+    unsigned char ColourFilterPixelShader[0x8];              // +0xe4 CPixelShader
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT_AT(106, sizeof(CEngineScreenEffectColourFilter) == 0xec);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CEngineScreenEffectColourFilter, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CEngineScreenEffectColourFilter, enabled) == 0x8);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CEngineScreenEffectColourFilter, ForceColourFilter) == 0xc);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CEngineScreenEffectColourFilter, Settings) == 0x10);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_R) == 0x30);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_G) == 0x34);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_B) == 0x38);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_A) == 0x3c);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CEngineScreenEffectColourFilter, GrayLevel) == 0x40);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CEngineScreenEffectColourFilter, EffectSupported) == 0x44);
+FABLE_STATIC_ASSERT_AT(117, offsetof(CEngineScreenEffectColourFilter, TextureToBackBufferVerts) == 0x48);
+FABLE_STATIC_ASSERT_AT(118, offsetof(CEngineScreenEffectColourFilter, OldRenderTarget) == 0xa8);
+FABLE_STATIC_ASSERT_AT(119, offsetof(CEngineScreenEffectColourFilter, OldViewport_TLX) == 0xcc);
+FABLE_STATIC_ASSERT_AT(120, offsetof(CEngineScreenEffectColourFilter, OldViewport_TLY) == 0xd0);
+FABLE_STATIC_ASSERT_AT(121, offsetof(CEngineScreenEffectColourFilter, OldViewport_BRX) == 0xd4);
+FABLE_STATIC_ASSERT_AT(122, offsetof(CEngineScreenEffectColourFilter, OldViewport_BRY) == 0xd8);
+FABLE_STATIC_ASSERT_AT(123, offsetof(CEngineScreenEffectColourFilter, ScreenCopyVertexShader) == 0xdc);
+FABLE_STATIC_ASSERT_AT(124, offsetof(CEngineScreenEffectColourFilter, ColourFilterPixelShader) == 0xe4);
+
+#endif // FABLE_RETAIL_CENGINESCREENEFFECTCOLOURFILTER
+#endif // FABLE_ENGINE_CENGINESCREENEFFECTCOLOURFILTER_H

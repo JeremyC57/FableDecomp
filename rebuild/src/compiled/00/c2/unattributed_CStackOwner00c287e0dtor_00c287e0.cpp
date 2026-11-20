@@ -6,6 +6,10 @@
 // delete, so no further EH state is stored. The manifest
 // label (`~Stack<unsigned long,64>`) is propagated; the classes are named by address.
 // Funclet fix (2026-11-09, chunk 896): retail's unwind funclet 0x012134AB is `add ecx,43Ch ; jmp 0x00C29CA0`, whose body reads begin at [esi+4]: the vector starts at +0x43C with an empty allocator word (Dinkumware layout), begin at +0x440. The body bytes are unchanged.
+// NF200 (2026-11-20, q6931, one address one name): the +0x43c vector's destructor token respelled in place from CVector_00c287e0
+// to CBuffer_00c29ca0, the landed self row 0x00C29CA0's Leaf (??1CBuffer_00c29ca0@@QAE@XZ; libpk house form for the 11 Dinkumware
+// vector-_Tidy bodies 0x00C13F60..0x00C29CA0). The unwind funclet 0x012134AB (`add ecx,43Ch ; jmp 0x00C29CA0`) binds it through this TU.
+// The real type is libpk's Handles member (both PDBs: CArray<CHandleBasedMemoryPool::CHandleInfo>; libpk has no PDB): descriptive.
 void __cdecl operator delete(void* block) throw();   // non-throwing: the vector release registers no EH state
 
 struct CListener_00c287e0 {                // +0x34, vtable 0x012B37FC: a polymorphic member with an inline empty destructor
@@ -13,12 +17,12 @@ struct CListener_00c287e0 {                // +0x34, vtable 0x012B37FC: a polymo
     ~CListener_00c287e0() { }
 };
 
-struct CVector_00c287e0 {                  // +0x43c: {allocator, begin +4, end +8, capacity +0xc} (out-of-line dtor 0x00C29CA0)
+struct CBuffer_00c29ca0 {                  // +0x43c: {allocator, begin +4, end +8, capacity +0xc} (out-of-line dtor 0x00C29CA0)
     unsigned char m_allocator;             // +0x00 (empty allocator, padded)
     void* m_pBegin;
     void* m_pEnd;
     void* m_pCapacity;
-    ~CVector_00c287e0()
+    ~CBuffer_00c29ca0()
     {
         if (m_pBegin)
             operator delete(m_pBegin);
@@ -38,7 +42,7 @@ struct CStackOwner_00c287e0 {              // vtable 0x012B4098
     unsigned char _pad[0x30];
     CListener_00c287e0 m_listener;         // +0x34
     unsigned char _pad2[0x404];
-    CVector_00c287e0 m_vector;             // +0x43c (begin at +0x440)
+    CBuffer_00c29ca0 m_vector;             // +0x43c (begin at +0x440)
     long m_44c;
     CString m_member;             // +0x450
     void Cleanup();                        // 0x00C27E60

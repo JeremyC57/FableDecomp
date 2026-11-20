@@ -9,12 +9,12 @@
 // string-instance counter). No vtable store and no other initialisation, so the owning class
 // cannot be named from the body; it is landed under a descriptive placeholder. One of
 // 20 bodies of this shape.
-struct CCharStringMember {
-    CCharStringMember();                        // 0x0099E4B0
-};
+// Name fix (NF199, 2026-11-20, q4456): the CCharStringMember stand-in for the CCharString member is replaced by the shared
+//   fable_string.h CCharString, so the constructor call binds ??0CCharString@@QAE@XZ (Ego_r.pdb; 0x0099E4B0).
+#include "fable_string.h"
 
 struct CStringOwner_00869fa0 {
-    CCharStringMember m_string;                 // +0x0
+    CCharString m_string;                 // +0x0
     CStringOwner_00869fa0();
 };
 

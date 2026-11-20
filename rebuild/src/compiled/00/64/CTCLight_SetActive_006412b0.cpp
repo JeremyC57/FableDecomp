@@ -1,4 +1,14 @@
 // CTCLight::SetActive(bool active) -- switch the light: flag it initialised, ask the appearance for an update, swap a replaceable mesh to its on/off mesh, then attach the particles (on) or remove the flare/light primitives and detach the particles (off)
+// Leaf: ?SetActive@CTCLight@@QAEX_N@Z
+// NF200 (2026-11-20, q6321): the row-local CCharStringData / CCharString / Compare and CTCBase models replaced by fable_string.h and the
+//   shared engine/CTCBase.h (retail, FABLE_RETAIL_CTCBASE); the interface-0x82 component is CTCParticleAttacher (no shared header: the
+//   shape of the landed 0x007DE5D0 / 0x007DE710 / 0x00772BB0, on the shared CTCBase), so 0x007F8860 binds the Ego_r.pdb 0x007F3950 +
+//   FableWin.pdb 0x02673700 ?DetachParticles@CTCParticleAttacher@@QAEXXZ (was the descriptive CTCAttachedParticles stand-in); the
+//   interface-0x5C component is the shared NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh (FABLE_RETAIL_CTCREPLACEABLEMESH_PASS22,
+//   NF200 declaration opt-in _REPLACEMESHBYINDEX), so 0x007A69F0 binds the PDB ?ReplaceMeshByIndex@CTCGraphicAppearanceReplaceableMesh@
+//   NGraphicAppearance@@QAEXK@Z (as 0x007A6B20 does); the type-name test is CTCBase::GetClassTypeName (slot 22) and CCharString::operator==,
+//   whose CBasicString<char> compare now binds ?Compare@?$CBasicString@D@@KIJPBD0@Z at 0x00411570 (was ?Compare@@YIJPBD0@Z). Leaf line added
+//   (both PDBs). The row-local CThing / CTCLight / CPrimitiveVector / CTCGraphicAppearance models are unchanged (debt).
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
@@ -28,43 +38,19 @@ struct CPrimitiveVector {                           // STLport vector<NGraphicAp
     }
 };
 
-class CCharStringData { public:
-    char* m_pData;
-    long  m_length;
-};
-long __fastcall Compare(const char* a, const char* b);  // 0x00411570
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    FABLE_FORCEINLINE bool SameText(const CCharString& other) const
-    {
-        if (PStringData->m_length != other.PStringData->m_length)
-            return false;
-        return Compare(PStringData->m_pData, other.PStringData->m_pData) == 0;
-    }
-    FABLE_FORCEINLINE bool operator==(const CCharString& other) const
-    {
-        if (PStringData == other.PStringData)
-            return true;
-        if (PStringData && other.PStringData)
-            return SameText(other);
-        return false;
-    }
-};
-class CTCBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
-    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
-    virtual void v20(); virtual void v21();
-    virtual CCharString GetTypeAsString();              // slot 22 (+0x58)
-};
-struct CTCGraphicAppearanceReplaceableMesh : CTCBase {  // interface 0x5C
-    void ReplaceMeshByIndex(unsigned long index);       // 0x007A69F0
-};
-struct CTCAttachedParticles : CTCBase {                 // interface 0x82 (name descriptive)
-    void DetachParticles();                             // 0x007F8860 (name descriptive)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCREPLACEABLEMESH_PASS22
+#define FABLE_RETAIL_CREPLACEABLEMESHDEF_PASS22
+#define FABLE_RETAIL_CTCREPLACEABLEMESH_REPLACEMESHBYINDEX
+#include "fable_string.h"
+#include "engine/CTCBase.h"
+#include "engine/NGraphicAppearance_CTCGraphicAppearanceReplaceableMesh.h"
+class CTCParticleAttacher : public CTCBase {    // interface 0x82 (TCI_PARTICLE_ATTACHER); no shared header: the shape of the landed 0x007DE5D0 / 0x007DE710 / 0x00772BB0
+public:
+    void DetachParticles();                     // 0x007F8860 ?DetachParticles@CTCParticleAttacher@@QAEXXZ (Ego_r + FableWin)
 };
 struct CTCGraphicAppearance {
     void RemovePrimitive(CPrimitive* primitive);        // 0x004BF920
@@ -181,13 +167,13 @@ void CTCLight::SetActive(bool active)
         bool replaceable;
         {
             CCharString name("CTCGraphicAppearanceReplaceableMesh");
-            replaceable = mesh->GetTypeAsString() == name;
+            replaceable = mesh->GetClassTypeName() == name;
         }
         if (replaceable) {
             if (Active)
-                ((CTCGraphicAppearanceReplaceableMesh*)mesh)->ReplaceMeshByIndex(1);
+                static_cast<NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh*>(mesh)->ReplaceMeshByIndex(1);
             else
-                ((CTCGraphicAppearanceReplaceableMesh*)mesh)->ReplaceMeshByIndex(0);
+                static_cast<NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh*>(mesh)->ReplaceMeshByIndex(0);
         }
     }
     if (Active) {
@@ -202,5 +188,5 @@ void CTCLight::SetActive(bool active)
     Lights.clear();
     const CThing* thing = ParentThing;
     if (thing->HasTC(0x82))
-        thing->GetTC<CTCAttachedParticles>(0x82)->DetachParticles();
+        thing->GetTC<CTCParticleAttacher>(0x82)->DetachParticles();
 }

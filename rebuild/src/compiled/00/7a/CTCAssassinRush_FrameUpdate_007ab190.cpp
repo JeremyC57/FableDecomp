@@ -74,13 +74,17 @@ struct CTCExitMode {                                    // interface 0xA7
     bool          Active;                               // +0x0c
     long          Mode;                                 // +0x10
 };
-struct CEnvironmentSpellEffects {
-    void RadialBlurFadeOut(float time, void* key);      // 0x006B82E0
-    void RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos);   // 0x006B8310
-};
+// NF201 (2026-11-20, q6437): the stand-in struct CEnvironmentSpellEffects for the interpolator is replaced by the shared
+//   engine/CEnvironmentSpellEffectInterpolator.h: Ego_r.pdb 0x006F4280 + FableWin.pdb 0x0246CEA0
+//   ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z (0x006B82E0) and both PDBs'
+//   ?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffectInterpolator@@QAEXPAXABVC3DVector@@@Z (0x006B8310); the HEAD-local
+//   CEnvironment model keeps its token (in-place respelling of its +0x1964 member type).
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_BULLETTIME_PASS23
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_RADIALBLURFADEOUT
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
 class CEnvironment { public:
     unsigned char _pad00[0x1964];
-    CEnvironmentSpellEffects* SpellEffects;             // +0x1964
+    CEnvironmentSpellEffectInterpolator* SpellEffects;  // +0x1964
 };
 class CBulletTimeManager { public:
     // NF108 (2026-11-19, q5099): Ego_r.pdb 0x004C8B80 + FableWin.pdb 0x01D28090 ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z

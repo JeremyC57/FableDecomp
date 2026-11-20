@@ -402,7 +402,8 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
 
 ## 2026-11-20 advisor decision (owner delegated): pick-any copies of functions that have their own landed row
 - A row's object may define a pick-any (COMDAT) copy of a function that has its own landed row only if that copy grades MATCH or
-  RELOCATION_MATCH against the owner's address (or is byte-identical to the owner row's body, relocations aside). A NEW copy with a
+  RELOCATION_MATCH against the owner's address (or is byte-identical to the owner row's body, relocations aside: see the 2026-11-20
+  relocation-target addition below). A NEW copy with a
   different body is held, or made declaration-only through a header opt-in (the `FABLE_RETAIL_STLP_MAP_CLEAR_DECL_ONLY` pattern).
   Copies already present at HEAD are debt, queued, not licence for more (NF176 0x0051BCD0, NF173 q6927 / 0x007502D0, NF178 `_M_erase`).
 - Stand-in DATA COMDATs (a row-local stand-in vtable) follow the HEAD-counterpart rule: if the stand-in already differed from another
@@ -444,3 +445,10 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
 - Leaf lines, queue lines, NAME_FIXES and READMEs write the PDB spelling with the PDB's hash (as 0x009A3640's Leaf does);
   RENAMES may write `?A0x<tu>`. A hash found in no PDB came from a rebuild object: correct it to the PDB's.
 - Until gate.py / tablecheck strip the hash (queued), judge GREW / CREATED lines at such addresses by the normalised count.
+
+## 2026-11-20 advisor decision (owner delegated): "relocations aside" means relocation values, not relocation targets
+- A pick-any copy matches its owner only if its bytes match AND each relocation binds the same symbol as the owner's. Only the
+  relocation values (the bytes the linker fills in) may differ. If one relocation points at another symbol, that is a different copy:
+  if the linker keeps it, the image differs. Example: an equal-bytes copy that binds a `""` literal where the owner binds
+  `?NullChar@CCharString@@1DB`. Hold such a row, or make that function declaration-only through an opt-in (nf201 0x008E9850, held).
+  `cmpbody.py` reports both, as `bytes equal` and `relocs equal`; both must be True.

@@ -4,13 +4,13 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073AAC0, 219 bytes (`ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (non-const) and the const instantiation 0x004365B0;
 // CTCCarrying::GetThingInPrimarySlot 0x006A1440; CTCWeapon::GetAnimationGroupName 0x005DABE0;
-// CAnimFilterOfGroup::SetGroup(const CCharString&) 0x0073DFF0 (manifest label "CRCHashedString_SetAndHash");
+// CAnimFilterOfGroup::SetCurrentGroupName(const CCharString&) 0x0073DFF0 (manifest label "CRCHashedString_SetAndHash");
 // CCharString(const char*, long) 0x0099EBF0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0.
 // Layout (retail CModeBase 0x1c): ParentThing +0x04, WeaponBasedFilter +0x08 (CAnimFilterOfGroup: Group +0x0c,
 // GroupCRC +0x10), FramesBeforeRemovingSelf +0x14, Active +0x18. CThing: interface bitset +0x20 (CTCCarrying 0x46 = bit 6
 // of +0x28, CTCWeapon 0x48 = bit 8), interface map +0x44, dead flag bit 0 of +0x91.
 // Shape: the carrying component comes from the non-const out-parameter GetInterface; the carried thing is used through a
-// const pointer, so its weapon lookup binds the const LowerBound copy. The weapon arm calls SetGroup out of line, while the
+// const pointer, so its weapon lookup binds the const LowerBound copy. The weapon arm calls SetCurrentGroupName out of line, while the
 // "STAND" fallback is an inline copy of the same assignment + CRC (the literal's CCharString temporary, one shared null test).
 // Naming (NF128, 2026-11-20; q6454): Ego_r.pdb 0x00751510 / FableWin.pdb 0x024C17D0 ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ (slot 5
 //   of the CModeBase vtable 0x012673CC): `virtual` added in place on the row's existing local nested CModeBase model (QAE -> UAE). Every landed
@@ -39,7 +39,7 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
-    void SetGroup(const CCharString& group);   // 0x0073DFF0 (the out-of-line copy)
+    void SetCurrentGroupName(const CCharString& group);   // 0x0073DFF0 (the out-of-line copy)
     FABLE_FORCEINLINE void SetGroupInline(const CCharString& group)
     {
         Group = group;
@@ -117,7 +117,7 @@ void CTCCreatureModeManager::CModeBase::OnActivate()
         if (item && !item->IsDead()) {
             const CTCWeapon* weapon;
             if (item->GetInterface(&weapon, 0x48)) {
-                WeaponBasedFilter.SetGroup(weapon->GetAnimationGroupName());
+                WeaponBasedFilter.SetCurrentGroupName(weapon->GetAnimationGroupName());
                 return;
             }
         }

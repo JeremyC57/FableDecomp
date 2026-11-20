@@ -18,8 +18,13 @@
 // frame high word first. The template is `__forceinline`: as a plain inline member VC7.1 emitted it
 // out of line in this TU (call + `push 0x36`).
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
+// Name fix (NF199, 2026-11-20, q4389): the invented CCombatantMap / SCombatantNode / CCombatantInfo_Retail stand-ins are replaced by
+//   the STLport map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h) over the shared engine/CCombatantInfo.h (retail 0x70 bytes,
+//   AttackerInfo.Attacked at +4); find's out-of-line _M_find<unsigned __int64> 0x006F0250 is declared only
+//   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), so the call binds the self row's member-template spelling.
 class CTCBase;
 
+#define FABLE_RETAIL_STLP_TREE_MFIND_DECL
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
@@ -38,25 +43,12 @@ class CTCStealth { public:                             // interface type 0x36
     void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 
-struct CCombatantInfo_Retail {
-    CThingCreatureBase* Parent;                 // +0x00
-    CThingCreatureBase* Attacked;               // +0x04 AttackerInfo.Attacked
-};
-
-struct SCombatantNode {                         // STLport _Rb_tree_node<pair<const u64, CCombatantInfo>>
-    unsigned char    _links[0x10];              // colour, parent, left, right
-    unsigned __int64 Key;                       // +0x10
-    CCombatantInfo_Retail Value;                // +0x18
-};
-
-struct CCombatantMap {                          // STLport map<unsigned __int64, CCombatantInfo>
-    SCombatantNode* FindNode(const unsigned __int64& key);   // 0x006F0250
-};
+#include "engine/CCombatantInfo.h"
 
 class CCombatManager { public:
     void*         __vftable;                    // +0x00
     unsigned char RegisteredCombatSequences[0xc];   // +0x04
-    CCombatantMap Combatants;                   // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;   // +0x10
     private: void DeregisterAttackingCombatant(CThingCreatureBase& creature); public:   // 0x006ED510 (Ego_r.pdb + FableWin.pdb, private)
     void DeregisterAttackedCombatant(CThingCreatureBase* creature);    // 0x006ED8C0
     void DeregisterDestroyedCombatant(CThingCreatureBase* creature);
@@ -66,7 +58,7 @@ void CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature)
 {
     if (creature->IsInMeleeAsAttacker()) {
         unsigned __int64 id = creature->GetUniqueID();
-        CThingCreatureBase* attacked = Combatants.FindNode(id)->Value.Attacked;
+        CThingCreatureBase* attacked = Combatants.find(id)->second.AttackerInfo.Attacked;
         DeregisterAttackingCombatant(*creature);
         CTCStealth* stealth;
         if (attacked->GetTC(TCI_STEALTH, &stealth))

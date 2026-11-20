@@ -18,6 +18,12 @@
 //   Ego_r/FableWin ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ 0x00449960 (engine/CPlayerManager.h) and
 //   ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ 0x00487B70 (engine/CPlayer.h). The later callees (Wrapper::Check 0x0040DCE0,
 //   D::Do 0x00410DE0, GlobalGui::Notify 0x00438310 on 0x013B8790) are still the row's stand-ins; was the stand-in A* g_A with its BSrc::GetB / C::GetC stand-ins.
+// NF200 (2026-11-20, q4522): the stand-in Wrapper::Check (?Check@Wrapper@@QAE_NXZ, a thiscall on a one-pointer struct) is the shared
+//   IS_THING_ALIVE<CThing*> of engine/ThingAlive.h (FableWin.pdb 0x018962E0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z, __fastcall by
+//   const reference, out of line at 0x0040DCE0; FABLE_RETAIL_IS_THING_ALIVE_NOINLINE keeps the visible body out of line as retail calls it;
+//   its pick-any COMDAT is byte-identical to the owner row 0x0040DCE0, cmpbody). The local Wrapper model is gone.
+// Inferred: the argument is an rvalue copy of the pointer (static_cast to its own type): retail stores esi to [ebp-4], passes that slot
+//   and keeps using esi after the call (no reload), so the callee's reference is to a temporary, not to the named local.
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
@@ -26,14 +32,14 @@
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
 #include "engine/CMainGameComponent.h"
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_IS_THING_ALIVE_NOINLINE
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
 
 struct D {
     void Do(int arg);  // __fastcall, one stack arg (masked callee c4)
-};
-
-struct Wrapper {
-    CThing* p;         // +0x0
-    bool Check();      // __fastcall on &wrapper, ret bool (masked callee c3)
 };
 
 struct GlobalGui {
@@ -46,9 +52,7 @@ void __fastcall SavedConfirmed()
 {
     CThing* c = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPPlayerCharacterThing();
 
-    Wrapper w;
-    w.p = c;
-    if (w.Check()) {
+    if (IS_THING_ALIVE(static_cast<CThing*>(c))) {
         ((D*)((char*)c + 0x20))->Do(0xC6);
         g_pGlobalGui->Notify();
     }

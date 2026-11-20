@@ -1,7 +1,10 @@
 // Behaviour test for SavedConfirmed @ 0x0047DB73 (NF47 round 7): the row now reads ?PMainGameComponent@CMainGameComponent@@1PAV1@A
 // through engine/CMainGameComponent.h and calls ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ and
 // ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ (engine/CPlayerManager.h / engine/CPlayer.h), so the test defines those symbols
-// as recording doubles over opaque storage. Wrapper / D / GlobalGui are the row's own remaining stand-ins (unchanged doubles).
+// as recording doubles over opaque storage. D / GlobalGui are the row's own remaining stand-ins (unchanged doubles).
+// NF200 (2026-11-20): the Wrapper::Check stand-in is gone; the row calls the shared IS_THING_ALIVE<CThing*> (engine/ThingAlive.h, its
+// pick-any COMDAT is in the row object), which reads CThing::Dead, so the thing store is a real CThing-sized buffer and the test flips
+// the Dead bit (+0x91 bit 0, engine/CThing.h) instead of a Wrapper double.
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
@@ -10,15 +13,13 @@
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
 #include "engine/CMainGameComponent.h"
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
+
 #include <cstdio>
 
 struct D {
     void Do(int arg);
-};
-
-struct Wrapper {
-    CThing* p;
-    bool Check();
 };
 
 struct GlobalGui {
@@ -31,7 +32,7 @@ CMainGameComponent* CMainGameComponent::PMainGameComponent = 0;
 static unsigned char g_mainStore[0x40];
 static unsigned char g_managerStore[0x40];
 static unsigned char g_playerStore[0x40];
-static unsigned char g_thingStore[0x40];
+static unsigned char g_thingStore[sizeof(CThing)];
 
 static const void* g_manager_seen = 0;
 static const void* g_player_seen  = 0;
@@ -39,8 +40,6 @@ static int  g_do_called   = 0;
 static int  g_do_arg      = 0;
 static const void* g_do_this = 0;
 static int  g_notify      = 0;
-static bool g_check_ret   = true;
-static CThing* g_check_seen = 0;
 
 const CPlayer& CPlayerManager::GetMainPlayer() const
 {
@@ -54,7 +53,6 @@ CThing* CPlayer::GetPPlayerCharacterThing() const
 }
 void D::Do(int a)        { g_do_called++; g_do_arg = a; g_do_this = this; }
 void GlobalGui::Notify() { g_notify++; }
-bool Wrapper::Check()    { g_check_seen = p; return g_check_ret; }
 
 void __fastcall SavedConfirmed();
 
@@ -77,18 +75,17 @@ int main()
     *g_ppMain = reinterpret_cast<CMainGameComponent*>(g_mainStore);
     if (CMainGameComponent::Get() != reinterpret_cast<CMainGameComponent*>(g_mainStore)) { std::printf("FAIL Get\n"); return 1; }
 
-    g_check_ret  = true;
+    g_thingStore[0x91] = 0;
     SavedConfirmed();
 
     if (g_manager_seen != g_managerStore)  { std::printf("FAIL manager_seen\n"); return 1; }
     if (g_player_seen != g_playerStore)    { std::printf("FAIL player_seen\n"); return 1; }
-    if (g_check_seen != reinterpret_cast<CThing*>(g_thingStore)) { std::printf("FAIL check_seen\n"); return 1; }
     if (g_do_called != 1)                  { std::printf("FAIL do_called\n"); return 1; }
     if (g_do_arg != 0xC6)                  { std::printf("FAIL do_arg %d\n", g_do_arg); return 1; }
     if (g_do_this != g_thingStore + 0x20)  { std::printf("FAIL do_this\n"); return 1; }
     if (g_notify != 1)                     { std::printf("FAIL notify\n"); return 1; }
 
-    g_check_ret  = false;
+    g_thingStore[0x91] = 1;
     g_do_called  = 0;
     g_notify     = 0;
 
