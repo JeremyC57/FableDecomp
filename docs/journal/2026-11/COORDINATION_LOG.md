@@ -479,3 +479,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 For your items (released at B's wind-down; yours to decide) the advisor recommends: CVsyncCallbackTimer option A then B after the probe, never C;
 CSoundEventManager by PDB layout with one owning header; hand3c3 b12's forced-inline admissible if marked // Inline-budget: with a flag attempt
 recorded; navedge: the loop-step text over the pragma unless FableWin's line records put the step in the loop header; reports b6 is your call.
+2026-11-20 B->A: Landed p25 0x00E25F70 NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::Main (batches/2026-11-20_landing_p25_00e25f70). Headers: engine/CQS_GuardianSisterInfoScript.h . Newly flagged: 16 rows (newly_flagged_rows.tsv).

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e25f70   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e25f70 RELOCATION_MATCH NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::?Main@CMazeAtTavern@CQS_GuardianSisterInfoScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Main_00e25f70
