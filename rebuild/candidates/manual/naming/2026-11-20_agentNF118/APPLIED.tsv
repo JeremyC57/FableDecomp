@@ -1,0 +1,36 @@
+entry	address	status	binders_respelled	note
+q4018	0x00718EC0	done	0	self row re-authored (RENAMES s1); its only binder 0x00719C70 already binds the spelling. Queue said PDB-proven: no PDB has this list (descriptive-by-library, STLport)
+q4266	0x006ED9C0	open	0	open: not started
+q4486	0x006D6520	open	0	open: CTCHeroExperience family, probed (NOTES); same address as q4765
+q4490	0x006BB2C0	deferred: held by NF115	0	REFS row 0x0065C781 (binds ?IsDay@CGameTimeManager@@QAE_NXZ) is locked by NF115 (HELD.txt); the self rename needs every REFS row, so the entry waits; no grade spent
+q4619	0x006BBF70	done	0	self leaf respelled in place to the PDB const-return spelling both REFS rows bind
+q4703	0x006D4C00	done	0	self row ported onto the shared header under the PDB spelling its binder 0x006D2BD0 already binds
+q4757	0x006B32A0	done	0	self row re-landed under the PDB name; callee 0x00885010 named (landed FrameUpdate, matches its self row)
+q4762	0x006D67B0	open	0	open: CTCHeroExperience family, probed (NOTES)
+q4764	0x006D6510	open	0	open: CTCHeroExperience family, probed (NOTES)
+q4765	0x006D6520	open	0	open: CTCHeroExperience family, probed (NOTES)
+q4766	0x006D64A0	open	0	open: CTCHeroExperience family, probed (NOTES)
+q4961	0x00729BC0	done	0	self row respelled in place; binder 0x00729F60 already right
+q4985	0x006A1E00	open	0	open: not started
+q5010	0x006CB6E0	open	0	open: not started
+q5047	0x006D5AD0	done	0	self row re-landed under the PDB name; its callee binding moved to the PDB CAIBrain spelling (the callee self row 0x0088B760 still defines the stand-in CAIBrain_Methods spelling: pre-existing, NAME_FIXES)
+q5078	0x006AF220	done	0	self row re-landed under the PDB name both REFS rows bind; its callee bindings join the 0x006AF270 spelling (closes the 0x008332E0 split)
+q5107	0x0070D1A0	open	0	open: analysed, no form graded. Both REFS rows (0x0070D580 / 0x0070D780) already bind the PDB spelling; the self row defines ?Init@CAnimSet@@QAEXPAVCAnimateThing@@ABUCAnimSetInitData@@M@Z on a local CAnimSet / vector / CAnimSetInitData model. Respelling in place would rename a stand-in to CAnimInit (shared header), so it needs a port onto engine/CAnimSet.h (private Init, full layout) + CAnimInit.h; the local vector carries a same-TU _M_insert_overflow stand-in (callees 0x00710980 / 0x00710F70)
+q5137	0x006A2220	open	0	open: not started
+q5143	0x006A8930	done	0	PROPOSAL verified (Ego_r + FableWin name sets, both callers bind it); self leaf respelled in place
+q5144	0x006A8A30	done	1	PROPOSAL verified (Ego_r + FableWin; 4 of 5 REFS rows already bind it); binder 0x0092E540 ported onto the shared functor
+q5151	0x0070D1A0	open	0	open: same address and claim as q5107 (see there)
+q6225	0x0072AB70	open	0	open: not started
+q6226	0x006E11F0	open	0	open: not started
+q6227	0x006E0BE0	open	0	open: not started
+q6228	0x006E0590	open	0	open: not started
+q6229	0x006B3800	open	0	open: probed: wrong binders 0x0088FF30 (TransitionToTheme_006b3800, HHJM), 0x0088FFB0 (?method@Inner@@QAEXHHHH@Z); 0x007941D0 / 0x008E7B90 right
+q6278	0x00704580	open	0	open: not started
+q6325	0x006AEDC0	open	0	open: probed: 0x0079ACC0 right; wrong 0x008A0B10 (CTCRegionFollowerMethods), 0x009212C0 (CTCFollowerList::AddThing), 0x0048A070 (CTCPlayerCharacterLinks::AddThing)
+q6369	0x0072A860	done	2	corrected claim: IsChargingUpAbility (GetAbilityMutexLock rejected, REJECTED.tsv); self row + binders 0x0068F2A0 / 0x00690030 moved (family of 3 whole)
+q6388	0x0072A860	done	2	same as q6369 (duplicate queue line)
+q6389	0x0072B870	done	1	binder 0x00690030 ported to the PDB spelling the self row already defines
+q6417	0x00704580	open	0	open: not started
+q6471	0x00704580	open	0	open: not started
+q6929	0x006A80A0	open	0	open: not started
+q6936	0x006B83F0	open	0	open: probed: wrong binders 0x00890200 (FadeOut@CXMVPlaybackInfo), 0x0079D020 / 0x0079D110 (RemoveFilter_006b83f0@CEnvironmentSpellEffects); 0x0079CF30 right; self row not started

@@ -1,0 +1,3 @@
+entry	address	claim	reason
+q6369	0x0072A860	?GetAbilityMutexLock@CTCSpecialAbilities@@QBE_NXZ	rejected as posed: no Ego_r proc (FableWin only, at mid-function 0x01E67417); Ego_d carves it as a header-inline COMDAT (tc_hero_stats.obj) and retail expands it in place (0x0062C001); a plain `return AbilityMutexLock;` grades DIFFER(4v9). Ego_r order + Ego_d carving + callers prove ?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ instead (applied)
+q6388	0x0072A860	?GetAbilityMutexLock@CTCSpecialAbilities@@QBE_NXZ	same as q6369

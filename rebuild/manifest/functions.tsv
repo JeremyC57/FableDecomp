@@ -16376,7 +16376,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006af1c0	operator()	CMessageEventFilter_IsOfType	__thiscall	bool	2	CMessageEventFilter_HasExtraData *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterHasExtraData_operator_006af1c0.cpp
 006af1e0	operator()	CMessageEventFilter_IsOriginatedByThing	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterIsOriginatedByThing_operator_006af1e0.cpp
 006af200	operator()	CMessageEventFilter_IsOriginatedByThing	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CMessageEventFilterIsOriginatedByThing_operator_006af200.cpp
-006af220	operator	CDistanceFilter_006af220	__thiscall	bool	2	CMessageEventFilter_CanBeSeenOrHeard *,CMessageEvent *	1	yes	accepted									
+006af220	operator()	CMessageEventFilter_CanBeSeenOrHeard	__thiscall	bool	2	CMessageEventFilter_CanBeSeenOrHeard *,CMessageEvent *	1	yes	accepted									
 006af270	operator()	CMessageEventFilter_CanBeHeard	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 006af280	operator()	_global	__thiscall	bool	2	CMessageEventFilter_MessageIDGreaterThan *,CMessageEvent *	1	yes	accepted									
 006af290	CMessageEventFilter_IsTargettedAtThing	CMessageEventFilter_IsTargettedAtThing	__thiscall	undefined	2	CMessageEventFilter_IsOriginatedByThing *,CThing *	0	yes	accepted									
@@ -17184,7 +17184,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006d4a20	resize	std::vector<std::pair<CCharString, long>, std::allocator<std::pair<CCharString, long>>>	__thiscall	void	2	vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> *,uint	1	yes	accepted									
 006d4aa0	Resize	CPersistContext_TransferableVector	__thiscall	void	2	CPersistContext_TransferableVector<std::pair<CCharString,long>_> *,long	1	yes	accepted									
 006d4b40	GFSerialiseVectorBinaryIn<pair<CCharString, long> >	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CCharString,std::allocator<CCharString>_> *	1	yes	accepted									
-006d4c00	TransferVector<CNamedLong>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+006d4c00	TransferVector<std::pair<CCharString, long> >	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 006d4cc0	FUN_006d4cc0	_global	unknown	undefined	0		0			discovered	boundary							
 006d4cd0	FUN_006d4cd0	_global	unknown	undefined	0		0			discovered	boundary							
 006d4ce0	IS_THING_DEAD<CThing*>	_global	unknown	undefined	0		0			discovered	boundary							
@@ -19061,7 +19061,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072a710	GetClassTypeName	CTCActionUseBuyOrSteal	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CActionDoCreatureAction_GetActionName_0072a710.cpp
 0072a730	`scalar_deleting_destructor'	CTCActionUseBuyOrSteal	__thiscall	void *	2	CTCActionUseBuyOrSteal *,uint	1	yes	accepted									
 0072a840	Nop_ret0_0072a840	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\E2_E2_0072a840.cpp
-0072a860	CheckTermination	CASuspendableProcess	__thiscall	bool	1	CASuspendableProcess *	1	yes	accepted									
+0072a860	IsChargingUpAbility	CTCSpecialAbilities	__thiscall	bool	1	CASuspendableProcess *	1	yes	accepted									
 0072a8d0	IsUndeadFollower	CTCSpecialAbilities	__thiscall	bool	2	CTCFollowed *,CThingAICreature *	1	yes	accepted									
 0072a910	GetUndeadFollower	CTCSpecialAbilities	__thiscall	bool	2	CTCFollowed *,CThingAICreature *	1	yes	accepted									
 0072a950	OnKill	CTCSpecialAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

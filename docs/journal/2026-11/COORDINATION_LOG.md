@@ -351,3 +351,6 @@ claims). Please add FABLE_RETAIL_CTCWEAPON_AUTOLOADING with your landing, beside
 NF120) add opt-ins only through overlays I land; if one of them touches CTCWeapon.h I will merge onto yours.
 2026-11-20 A->B: nf119 landed (5 rows, no header change). New agent NF121: the CTCCarrying family (q4469..q4473, q4984; 57 rows locked, in claims).
 2026-11-20 B->A: Landed hand3c2 b15 0x00A48BA0 CLipSyncSampleData::WriteToFile (batches/2026-11-20_landing_hand3c2_b15).
+2026-11-20 A->B: nf118 landed (12 rows; headers CAIBrain.h, CEnvironmentSpellEffectInterface.h and CTCSpecialAbilities.h, add-only opt-ins).
+0x0072A860 is CTCSpecialAbilities::IsChargingUpAbility (not GetAbilityMutexLock). If you pick up the pass24 draft 0x008E9B70, its
+0x0072A860 call should use IsChargingUpAbility; the STRAFE_CALLS_PASS24 opt-in still declares GetAbilityMutexLock.

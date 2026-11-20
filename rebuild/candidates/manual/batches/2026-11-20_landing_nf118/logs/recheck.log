@@ -1,0 +1,112 @@
+addr       parity           behav  name
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CInputProcessWatchForWillChargeUpThirdPersonModeTermination (engine/CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h)
+0068f2a0   RELOCATION_MATCH PASS   CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update
+00690030   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CInputProcessSpecialAbilities (engine/CInputProcessSpecialAbilities.h)
+00690030   WARN RELOC_NAME: ?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z -> 00687d40 labelled 'CInputProcessGameBase::GetMouseWheelMovement'
+00690030   RELOCATION_MATCH PASS   CInputProcessSpecialAbilities::ProcessInput
+006a8930   WARN SHARED_HEADER_AVAILABLE CTCSinglePersonOccupiable (engine/CTCSinglePersonOccupiable.h)
+006a8930   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity (engine/CTCOwnedEntity.h)
+006a8930   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a8930   RELOCATION_MATCH PASS   CThingFilter_IsMySleepPoint::operator()
+006af220   RELOCATION_MATCH PASS   CMessageEventFilter_CanBeSeenOrHeard::operator()
+006b32a0   RELOCATION_MATCH PASS   CEnvironment::UpdateInterpolation
+006bbf70   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006bbf70   WARN SHARED_HEADER_AVAILABLE CRegionDef (engine/CRegionDef.h)
+006bbf70   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+006bbf70   MATCH            PASS   CRegion::GetNameGraphicOffset
+006d4c00   RELOCATION_MATCH PASS   CPersistContext::TransferVector<std::pair<CCharString, long> >
+006d5ad0   RELOCATION_MATCH PASS   CThingAICreature::GetCurrentStateGroupScriptPriority
+00718ec0   RELOCATION_MATCH PASS   std::_List_base<std::pair<long, EConversationAttitude>, std::allocator<std::pair<long, EConversationAttitude>>>::~_List_base
+00729bc0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00729bc0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00729bc0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00729bc0   WARN SHARED_HEADER_AVAILABLE CTCActionUseScriptedHook (engine/CTCActionUseScriptedHook.h)
+00729bc0   WARN RELOC_NAME: ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z -> 0051ed80 labelled 'CThingManager::GetPThingWithUID'
+00729bc0   RELOCATION_MATCH PASS   CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID
+0072a860   MATCH            PASS   CTCSpecialAbilities::IsChargingUpAbility
+0092e540   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+0092e540   WARN SHARED_HEADER_AVAILABLE CTCBed (engine/CTCBed.h)
+0092e540   RELOCATION_MATCH PASS   CIsFreeBed::operator()
+
+WINS: 12
+  0068f2a0 RELOCATION_MATCH CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update
+  00690030 RELOCATION_MATCH CInputProcessSpecialAbilities::ProcessInput
+  006a8930 RELOCATION_MATCH CThingFilter_IsMySleepPoint::??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z
+  006af220 RELOCATION_MATCH CMessageEventFilter_CanBeSeenOrHeard::??RCMessageEventFilter_CanBeSeenOrHeard@@QBE_NABVCMessageEvent@@@Z
+  006b32a0 RELOCATION_MATCH CEnvironment::?UpdateInterpolation@CEnvironment@@QAEXXZ
+  006bbf70 MATCH CRegion::?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ
+  006d4c00 RELOCATION_MATCH CPersistContext::??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@QAEXPBDAAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z
+  006d5ad0 RELOCATION_MATCH CThingAICreature::?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ
+  00718ec0 RELOCATION_MATCH std::_List_base<std::pair<long, EConversationAttitude>, std::allocator<std::pair<long, EConversationAttitude>>>::??1?$_List_base@U?$pair@JW4EConversationAttitude@@@std@@V?$allocator@U?$pair@JW4EConversationAttitude@@@std@@@2@@std@@QAE@XZ
+  00729bc0 RELOCATION_MATCH CTCActionUseScriptedHook::?SetUpPEntranceConnectedToFromUID@CTCActionUseScriptedHook@@AAEXXZ
+  0072a860 MATCH CTCSpecialAbilities::?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ
+  0092e540 RELOCATION_MATCH CIsFreeBed::??RCIsFreeBed
+
+# post-merge recheck (after merging FullDecomp-B ef3d963e66)
+addr       parity           behav  name
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068f2a0   WARN SHARED_HEADER_AVAILABLE CInputProcessWatchForWillChargeUpThirdPersonModeTermination (engine/CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h)
+0068f2a0   RELOCATION_MATCH PASS   CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update
+00690030   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CInputProcessSpecialAbilities (engine/CInputProcessSpecialAbilities.h)
+00690030   WARN RELOC_NAME: ?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z -> 00687d40 labelled 'CInputProcessGameBase::GetMouseWheelMovement'
+00690030   RELOCATION_MATCH PASS   CInputProcessSpecialAbilities::ProcessInput
+006a8930   WARN SHARED_HEADER_AVAILABLE CTCSinglePersonOccupiable (engine/CTCSinglePersonOccupiable.h)
+006a8930   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity (engine/CTCOwnedEntity.h)
+006a8930   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a8930   RELOCATION_MATCH PASS   CThingFilter_IsMySleepPoint::operator()
+006af220   RELOCATION_MATCH PASS   CMessageEventFilter_CanBeSeenOrHeard::operator()
+006b32a0   RELOCATION_MATCH PASS   CEnvironment::UpdateInterpolation
+006bbf70   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006bbf70   WARN SHARED_HEADER_AVAILABLE CRegionDef (engine/CRegionDef.h)
+006bbf70   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+006bbf70   MATCH            PASS   CRegion::GetNameGraphicOffset
+006d4c00   RELOCATION_MATCH PASS   CPersistContext::TransferVector<std::pair<CCharString, long> >
+006d5ad0   RELOCATION_MATCH PASS   CThingAICreature::GetCurrentStateGroupScriptPriority
+00718ec0   RELOCATION_MATCH PASS   std::_List_base<std::pair<long, EConversationAttitude>, std::allocator<std::pair<long, EConversationAttitude>>>::~_List_base
+00729bc0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00729bc0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00729bc0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00729bc0   WARN SHARED_HEADER_AVAILABLE CTCActionUseScriptedHook (engine/CTCActionUseScriptedHook.h)
+00729bc0   WARN RELOC_NAME: ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z -> 0051ed80 labelled 'CThingManager::GetPThingWithUID'
+00729bc0   RELOCATION_MATCH PASS   CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID
+0072a860   MATCH            PASS   CTCSpecialAbilities::IsChargingUpAbility
+0092e540   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+0092e540   WARN SHARED_HEADER_AVAILABLE CTCBed (engine/CTCBed.h)
+0092e540   RELOCATION_MATCH PASS   CIsFreeBed::operator()
+
+WINS: 12
+  0068f2a0 RELOCATION_MATCH CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update
+  00690030 RELOCATION_MATCH CInputProcessSpecialAbilities::ProcessInput
+  006a8930 RELOCATION_MATCH CThingFilter_IsMySleepPoint::??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z
+  006af220 RELOCATION_MATCH CMessageEventFilter_CanBeSeenOrHeard::??RCMessageEventFilter_CanBeSeenOrHeard@@QBE_NABVCMessageEvent@@@Z
+  006b32a0 RELOCATION_MATCH CEnvironment::?UpdateInterpolation@CEnvironment@@QAEXXZ
+  006bbf70 MATCH CRegion::?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ
+  006d4c00 RELOCATION_MATCH CPersistContext::??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@QAEXPBDAAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z
+  006d5ad0 RELOCATION_MATCH CThingAICreature::?GetCurrentStateGroupScriptPriority@CThingAICreature@@QBE?AW4EScriptAIPriority@@XZ
+  00718ec0 RELOCATION_MATCH std::_List_base<std::pair<long, EConversationAttitude>, std::allocator<std::pair<long, EConversationAttitude>>>::??1?$_List_base@U?$pair@JW4EConversationAttitude@@@std@@V?$allocator@U?$pair@JW4EConversationAttitude@@@std@@@2@@std@@QAE@XZ
+  00729bc0 RELOCATION_MATCH CTCActionUseScriptedHook::?SetUpPEntranceConnectedToFromUID@CTCActionUseScriptedHook@@AAEXXZ
+  0072a860 MATCH CTCSpecialAbilities::?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ
+  0092e540 RELOCATION_MATCH CIsFreeBed::??RCIsFreeBed

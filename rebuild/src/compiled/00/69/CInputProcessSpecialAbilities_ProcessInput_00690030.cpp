@@ -3,12 +3,13 @@
 // Callees: CPlayer::GetPControlledCreature 0x00487DC0 / PeekPControlledCreature 0x00487DD0 / GetCurrentMode 0x00633BE0, LowerBound
 //   0x0040F020 (non-const, interface 0x6f) and 0x004365B0 (const, interface 0xa7), CInputProcessGameBase 0x00687A90/0x00687BD0/
 //   0x00687C70/0x00687CF0/0x00687D40, GetAssignableSpecialMoveIndexForEvent 0x00445FA0, OnSpecialAbilityButtonPressed 0x005EED4C,
-//   CycleAssignedAbilities 0x005F64DD, CheckTermination 0x0072A860, GetName 0x0072B870, CCharString operator!= 0x0099E960 / dtor
+//   CycleAssignedAbilities 0x005F64DD, CTCSpecialAbilities::IsChargingUpAbility 0x0072A860 / GetCurrentAbilityStrafeAnim 0x0072B870,
+//   CCharString operator!= 0x0099E960 / dtor
 //   0x0099EAE0, AddGameEvent 0x0041649C on CMainGameComponent::Get() 0x013B86A0, SetAsPerformedEvent 0x00A0D390, _ftol 0x00BFEA70.
 // Layout: engine/CInputProcessGameBase.h fields (MyPlayer +0x18, PGamePlayerInterface +0x24); CThing interface map +0x44,
 //   presence bits +0x20, Dead bit +0x91 (retail CThing); the other members are descriptive offsets read from retail.
 // Shape: SetAsPerformedEvent written in both arms of the scroll-loop if/else (VC tail-merges the calls, and the second use gives
-//   processed esi over the countdown); the hero-state test is a switch with case 0x10 first; the GetName result is a named local.
+//   processed esi over the countdown); the current-ability test is a switch with case 0x10 first; the strafe-anim result is a named local.
 // Leaf: ProcessInput
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
@@ -92,12 +93,16 @@ class CThingPlayerCreature : public CThing { };
 #define FABLE_RETAIL_CTCINVENTORYABILITIES_ASSIGN
 #define FABLE_RETAIL_CTCINVENTORYABILITIES_ONSPECIALABILITYBUTTONPRESSED
 #include "engine/CTCInventoryAbilities.h"
-struct CTCHeroState {                              // interface 0xa7 (descriptive)
-    unsigned char _pad00[0x10];
-    long          State;                           // +0x10
-    bool CheckTermination();                       // 0x0072A860
-    CCharString GetName() const;                   // 0x0072B870 (CCharString by hidden pointer)
-};
+// NF118 (PRIORITY q6369 / q6388 / q6389): interface 0xa7 is TCI_SPECIAL_ABILITIES (167): the descriptive CTCHeroState stand-in is the
+//   retail engine/CTCSpecialAbilities.h. Its calls are Ego_r.pdb / FableWin.pdb ?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ 0x0072A860
+//   (was CheckTermination) and ?GetCurrentAbilityStrafeAnim@CTCSpecialAbilities@@QBE?AVCCharString@@XZ 0x0072B870 (was GetName), and the
+//   +0x10 read is the inline FableWin ?GetCurrentAbilityBeingUsed@CTCSpecialAbilities@@QBE?AW4EHeroAbility@@XZ (Ego_d.pdb carves its
+//   COMDAT under input_process_special_abilities.obj, this TU).
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_ISCHARGINGUPABILITY
+#define FABLE_RETAIL_CTCSPECIALABILITIES_GETCURRENTABILITYSTRAFEANIM
+#define FABLE_RETAIL_CTCSPECIALABILITIES_GETCURRENTABILITYBEINGUSED
+#include "engine/CTCSpecialAbilities.h"
 class CPlayer {
 public:
     unsigned char _pad00[0x28];
@@ -138,7 +143,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
     CThing* hero = MyPlayer->GetPControlledCreature();
     if (MyPlayer->AbilitiesEnabled && hero && !hero->Dead && (hero->m_presentBits[3] & 0x8000)) {
         CTCInventoryAbilities* abilities = hero->GetInterfaceUnchecked<CTCInventoryAbilities>(0x6f);
-        CTCHeroState* state = 0;
+        CTCSpecialAbilities* state = 0;
         hero->GetInterface(&state, 0xa7);
         if (IsEventAssignableSpecialMoveButton(event)) {
             if (IsEventButtonPressed(event)) {
@@ -148,7 +153,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
                 processed.SetAsPerformedEvent();
             }
         } else if (IsEventGameAction((EGameAction)(0x39), event)) {
-            if (state && !state->CheckTermination()) {
+            if (state && !state->IsChargingUpAbility()) {
                 if (event.Type == 0xe) {
                     float amount = GetEventScrollAmount(event);
                     float size = Abs(amount);
@@ -169,19 +174,19 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
                     processed.SetAsPerformedEvent();
                 }
             }
-        } else if (IsEventGameAction((EGameAction)(0x5e), event) && state && !state->CheckTermination() && IsEventButtonPressed(event)) {
+        } else if (IsEventGameAction((EGameAction)(0x5e), event) && state && !state->IsChargingUpAbility() && IsEventButtonPressed(event)) {
             abilities->CycleAssignedAbilities(true);
             processed.SetAsPerformedEvent();
         }
     }
     const CThing* creature = MyPlayer->PeekPControlledCreature();
-    CTCHeroState* heroState;
+    CTCSpecialAbilities* heroState;
     if (creature->GetInterface(&heroState, 0xa7)) {
-        switch (heroState->State) {
+        switch (heroState->GetCurrentAbilityBeingUsed()) {
         case 0x10: {
             long mode = MyPlayer->GetCurrentMode();
             if (mode != 0x23 && mode != 2) {
-                CCharString name = heroState->GetName();
+                CCharString name = heroState->GetCurrentAbilityStrafeAnim();
                 if (name != "") {
                     CGameEvent gameEvent(0x3b);
                     gameEvent.Player = MyPlayer->PlayerNumber;

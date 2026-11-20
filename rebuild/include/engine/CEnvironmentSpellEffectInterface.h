@@ -29,6 +29,12 @@ public:
  CIDrawEnvironmentDisplacementParameters GetRenderFrameInterpolatedDisplacementParameters(float frame_fraction);   // 0x00885900
  CIDrawEnvironmentScreenFilterParameters GetRenderFrameInterpolatedScreenFilterParameters(float frame_fraction);   // 0x008859F0
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_FRAMEUPDATE
+ // Retail opt-in (NF118, PRIORITY q4757, row 0x006B32A0 CEnvironment::UpdateInterpolation): Ego_r.pdb / FableWin.pdb
+ // ?FrameUpdate@CEnvironmentSpellEffectInterface@@QAEXXZ, retail 0x00885010 (landed: copies the four current-frame records into
+ // the PrevFrame* slots); UpdateInterpolation tail-jumps to it on SpellEffectInterface +0x1960. Declaration only.
+ void FrameUpdate();                                                                          // 0x00885010
+#endif
 private:
  CEnvironment* Environment;
  CRadialBlurParams RadialBlurParams;

@@ -68,6 +68,13 @@ public:
 // (CThingAICreature::SetPositionUsingBrain 0x00830350 tail-jumps to it with the PBrain item in ecx). Declaration only; no layout change.
     void InitCreaturePosition();                                         // 0x0088BBB0
 #endif // FABLE_RETAIL_CAIBRAIN_INITCREATUREPOSITION
+#ifdef FABLE_RETAIL_CAIBRAIN_GETCURRENTSTATEGROUPSCRIPTPRIORITY
+// NF118 (PRIORITY q5047, row 0x006D5AD0): Ego_r.pdb 0x0082F530 / FableWin.pdb 0x02804180
+// ?GetCurrentStateGroupScriptPriority@CAIBrain@@QBE?AW4EScriptAIPriority@@XZ, out of line at 0x0088B760 (landed);
+// CThingAICreature::GetCurrentStateGroupScriptPriority 0x006D5AD0 tail-jumps to it with the PBrain item in ecx. Declaration only; no
+// layout change. Needs an EScriptAIPriority declaration first (engine/CThingAICreature.h FABLE_RETAIL_CTHINGAICREATURE_SCRIPTPRIORITY).
+    EScriptAIPriority GetCurrentStateGroupScriptPriority() const;        // 0x0088B760
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 private:
     // Both original PDBs: reference, private, +18; native 0090bbf7.

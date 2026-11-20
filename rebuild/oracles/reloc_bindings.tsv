@@ -8559,7 +8559,6 @@ _s_oneOver360	01238e00	00878ce0
 ?UpdateBodyReorienation@CThingBodyReorienter@@QAEXXZ	00863e10	006622d0
 ?GetWeapons_006a22d0@CTCCarrying@@QAEXPAUCThingVector@@_N@Z	006a22d0	006647f0
 ?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z	006a1060	006647f0
-?IsOfType@CTCSinglePersonOccupiable@@QAE_NW4EOccupyType@@@Z	0087c420	006a8930
 ?GetRandomSeed_004c7ae0@CThing@@QAEPAKXZ	004c7ae0	007038d0
 ?OnDie@CThingPhysical@@QAEXXZ	006a4cf0	007038d0
 ?Update@CTCShotDefinitionBase@@QAEXXZ	007c21a0	00704150
@@ -17149,8 +17148,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPlayerManager_004c79f0@CThingPlayerCreature@@QAEPAVCPlayerManager@@XZ	004c79f0	006a9d10
 ?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_None@@AAUCThingList@@@Z	006ae830	006ac140
 ?GetThingSearchTools@CThingPlayerCreature@@QAEPAVCThingSearchTools@@XZ	004c7a50	006ac140
-?DistanceCheck@CDistanceChecker_006af220@@QAE_NPAVCThing@@@Z	00833230	006af220
-?SurfaceCheck@CDistanceChecker_006af220@@QAE_NPAVCThing@@@Z	008332e0	006af220
 ?GetBlockValue@CWorldMap@@QAEJABVC2DCoordI@@@Z	0063a6e0	006b1580
 ?Build@CEnvironmentThemeResourcePallette@NEnvironmentInternal@@QAEXABVCGameDefinitionManager@@ABVCEnvironmentDef@@ABUCEnvironmentLookupTexture@2@@Z	00888a60	006b3350
 ??0CEnvironmentSpellEffectInterface@@QAE@PAVCEnvironment@@@Z	008852e0	006b4900
@@ -18166,7 +18163,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__unguarded_linear_insert@std@@YIXPAV?$CIntelligentPointer@$$CBVCThing@@@@V2@P6I_N11@Z@Z	009265c0	009267a0
 ?FindDummy@CAIStateGroupApprenticeHeroMethods@@QAEPAVCThingGameObject@@ABVCCharString@@@Z	00929fc0	0092a0c0
 ?GetPosition@CTCAvoidRegionExitView@@QAE?AVC3DVector@@XZ	0092bd80	0092bcb0
-??RCThingFilter_BedOccupant@@QBE_NPAVCThing@@@Z	006a8a30	0092e540
 ??0CCreatureAction_GetInBed@@QAE@ABV0@@Z	0092e810	0092e7e0
 ?GetThingsInRoughArea@CThingSearchTools@@QAE_NABVC2DBoxI@@ABVCThingFilter_IsNot@@AAUCCreatureVector@@@Z	00725f10	0092e950
 ?IsSpaceInvader@CAIStateGroup_MinionFindPersonalSpace@@QAE_NPAVCThingCreatureBase@@@Z	0092e890	0092e950
@@ -28566,7 +28562,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GFFloatRandom@@YIMMPAK@Z	004978a0	00662040
 ?DecriminaliseDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z	006c59a0	00684050
 ?IsThingToKeepStrafing_0068eb20@@YI_NPAUCThing_Retail@@@Z	0068eb20	0068f250
-?CheckTermination@CASuspendableProcess@@QAE_NXZ	0072a860	0068f2a0
 ??$GetDef@$$CBVCCameraModeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	0056d0c0	0069a010
 ??$__copy@PAV?$CDefPointer@$$CBVCCameraModeDef@@@@PAV1@H@std@@YIPAV?$CDefPointer@$$CBVCCameraModeDef@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0069cb80	0069a010
 ?Initialise@CCreatureActionBase@@UAEXXZ	00694d10	0069f480
@@ -37421,12 +37416,6 @@ __imp__recvfrom@24	01440518	008f9320
 ?Update@CTCCreatureExpression@@QAEXAAVCAnimateThing@@ABVCAnimateThingUpdate@@@Z	00729200	00665860
 ?Update@CTCTalk@@QAEXAAVCAnimateThing@@ABVCAnimateThingUpdate@@@Z	006e3b90	00665860
 ?g_QuickAccessChargeSlot@@3JA	0137ee78	0068e3c0
-?CheckTermination@CTCHeroState@@QAE_NXZ	0072a860	00690030
-?GetAssignableSpecialMoveIndexForEvent@CGamePlayerInterface@@QBEJABVCInputEvent@@@Z	00445fa0	00690030
-?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z	00687d40	00690030
-?GetName@CTCHeroState@@QBE?AVCCharString@@XZ	0072b870	00690030
-?IsEventAssignableSpecialMoveButton@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687c70	00690030
-?OnSpecialAbilityButtonPressed@CTCInventoryAbilities@@QAEXJ@Z	005eed4c	00690030
 ??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@ABV1@@Z	006babd0	006baed0
 ?GetFrame@CWorld@@QAEJXZ	00416225	006e28a0
 ?BaseOnCreate@CTCPhysicsStandard@@QAEXXZ	006b0780	00724010
@@ -40085,3 +40074,18 @@ __imp__setsockopt@20	01440534	008f8cc0
 ?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ	00937c20	00937d20
 ?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ	00937b10	00937d20
 ??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@YIPAVC3DVector@@PAV1@00ABU__false_type@0@@Z	0066ddf0	0066e370
+?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ	0072a860	0068f2a0
+?GetAssignableSpecialMoveIndexForEvent@CGamePlayerInterface@@QBEJABVCInputEvent@@@Z	00445fa0	00690030
+?GetCurrentAbilityStrafeAnim@CTCSpecialAbilities@@QBE?AVCCharString@@XZ	0072b870	00690030
+?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z	00687d40	00690030
+?IsEventAssignableSpecialMoveButton@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687c70	00690030
+?IsEventButtonHeld@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687bd0	00690030
+?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687a90	00690030
+?OnSpecialAbilityButtonPressed@CTCInventoryAbilities@@QAEXJ@Z	005eed4c	00690030
+?IsOfType@CTCSinglePersonOccupiable@@QAE_NW4EOccupyType@@@Z	0087c420	006a8930
+?IsMessageEventWithinSightRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z	00833230	006af220
+?FrameUpdate@CEnvironmentSpellEffectInterface@@QAEXXZ	00885010	006b32a0
+??$GFSerialiseVectorBinaryIn@U?$pair@VCCharString@@J@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z	006d4b40	006d4c00
+??$GFSerialiseVectorBinaryOut@U?$pair@VCCharString@@J@std@@@@YIXAAVCDataOutputStream@@AAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z	006d3a30	006d4c00
+??_7?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@@@6B@	0125ed48	006d4c00
+?GetCurrentStateGroupScriptPriority@CAIBrain@@QBE?AW4EScriptAIPriority@@XZ	0088b760	006d5ad0

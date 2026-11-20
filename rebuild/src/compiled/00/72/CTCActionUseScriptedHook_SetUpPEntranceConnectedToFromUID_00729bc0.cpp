@@ -1,9 +1,13 @@
-// CTCActionUseScriptedHook::ResolveEntranceConnectedTo() -- resolve the saved connected-entrance UID to its thing and point PEntranceConnectedTo at it (then touch the pointer once more when it is set)
-// Leaf: ResolveEntranceConnectedTo
+// CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID() -- resolve the saved connected-entrance UID to its thing and point PEntranceConnectedTo at it (then touch the pointer once more when it is set)
+// Leaf: ?SetUpPEntranceConnectedToFromUID@CTCActionUseScriptedHook@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00729BC0, 111 bytes. Catalog: "CTCPreCalculatedNavigationRoute::OnInitialActivate"
 //   (propagated, wrong): the only caller is CTCActionUseScriptedHook::OnInitialActivate (vtable 0x0126664C slot 6, 0x00729F60,
 //   call at 0x0072A023), the body sits among CTCActionUseScriptedHook members (0x00729A90 ctor .. 0x00729CF0 OnSerialise) and
-//   reads its PDB members; the name is descriptive.
+//   reads its PDB members.
+// Name (NF118, PRIORITY q4961): Ego_r.pdb 0x007401E0 / FableWin.pdb 0x0253DFE0 private
+//   ?SetUpPEntranceConnectedToFromUID@CTCActionUseScriptedHook@@AAEXXZ (the CTCDRegionExit twin has the same name); the landed caller
+//   0x00729F60 already binds that spelling here. Was the descriptive ResolveEntranceConnectedTo (public); respelled in place in the
+//   row's existing local model (name + private access only).
 // Callees: CTCBase::GetThingManager @ 0x00686AE0, CThingManager::GetThingByUID(unsigned __int64) @ 0x0051ED80,
 //   CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10; the temporary's vtable
 //   0x01238C6C is CIntelligentPointer<CThing>.
@@ -47,10 +51,11 @@ class CTCActionUseScriptedHook : public CTCBase { public:
     bool    TeleportToRegionEntrance;           // +0x10
     unsigned __int64 EntranceConnectedToUID;    // +0x18
     CIntelligentPointer<CThing> PEntranceConnectedTo;   // +0x20
-    void ResolveEntranceConnectedTo();
+private:
+    void SetUpPEntranceConnectedToFromUID();    // 0x00729BC0
 };
 
-void CTCActionUseScriptedHook::ResolveEntranceConnectedTo()
+void CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID()
 {
     PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetThingByUID(EntranceConnectedToUID));
     if (PEntranceConnectedTo.GetPItem())

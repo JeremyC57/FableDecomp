@@ -17,6 +17,23 @@
 class CThingCreatureBase;class C3DVector;
 class CTCSpecialAbilities:public CTCBase {
 public:static CThing* FABLE_FASTCALL CreateParticleEffect(long,const C3DVector&);
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISCHARGINGUPABILITY
+ // NF118 (PRIORITY q6369 / q6388, rows 0x0072A860 / 0x0068F2A0 / 0x00690030): Ego_r.pdb 0x00741700 / FableWin.pdb 0x0254F790
+ // ?IsChargingUpAbility@CTCSpecialAbilities@@QBE_NXZ, out of line in retail at 0x0072A860 (`mov al,[ecx+0Ch] ; test al,al ; setne al`;
+ // the Ego_r donor run IsAbleToCastRaiseDead / AddHarvestedSoul / SetupRaiseDeadSpell / IsChargingUpAbility is retail's TU head
+ // 0x0072A830 / 0x0072A840 / 0x0072A850 / 0x0072A860; Ego_d.pdb carves it as a tc_special_abilities.obj member). Declaration only.
+public: bool IsChargingUpAbility() const;                                  // 0x0072A860
+#endif
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_GETCURRENTABILITYSTRAFEANIM
+ // NF118 (PRIORITY q6389, row 0x00690030): Ego_r.pdb 0x00741D90 / FableWin.pdb 0x0254F6A0
+ // ?GetCurrentAbilityStrafeAnim@CTCSpecialAbilities@@QBE?AVCCharString@@XZ, out of line in retail at 0x0072B870 (landed). Declaration only.
+public: CCharString GetCurrentAbilityStrafeAnim() const;                   // 0x0072B870
+#endif
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_GETCURRENTABILITYBEINGUSED
+ // NF118 (row 0x00690030): FableWin.pdb ?GetCurrentAbilityBeingUsed@CTCSpecialAbilities@@QBE?AW4EHeroAbility@@XZ, inline (Ego_d.pdb carves
+ // its COMDAT under input_process_special_abilities.obj, the 0x00690030 TU; retail reads CurrentAbility +0x10 in place). No layout change.
+public: EHeroAbility GetCurrentAbilityBeingUsed() const { return CurrentAbility; }
+#endif
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_ISABLETOUSEANYABILITY
 // Opt-in (hand4b w24, row 0x0072C430 IsAbilityAvailable): Ego_r.pdb / FableWin.pdb ?IsAbleToUseAnyAbility@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z,
 // out of line in retail at 0x0072AF30 (`push ebx ; mov esi,ecx ; call 0x0072AF30`, 0x0072C437). Declaration only; no layout change.

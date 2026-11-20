@@ -7,7 +7,9 @@
 // so CDefPointer<const CRegionDef> PDef sits at +0x24 (the PDB's +0x2c) and engine/CRegion.h cannot be used.
 // Shape: C2DVector has a user constructor (an 8-byte POD would return in edx:eax) and the implicit copy (two integer
 // moves); the null arm stores the two float zeros as immediates.
-// Leaf: GetNameGraphicOffset
+// Leaf: ?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ
+// NF118 (PRIORITY q4619): Ego_r.pdb + FableWin.pdb ?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ (const C2DVector by value, the
+//   spelling the landed callers 0x004FD040 / 0x005FF190 bind and engine/CRegion.h declares); respelled in place (return type only).
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -22,10 +24,10 @@ class CRegionDef { public:
 class CRegion { public:
     unsigned char     _pad00[0x24];                     // Maps, VisMaps (retail vectors), Name, DisplayName, RegionDefName
     const CRegionDef* PDef;                             // +0x24 CDefPointer<const CRegionDef>::Object
-    C2DVector GetNameGraphicOffset() const;
+    const C2DVector GetNameGraphicOffset() const;
 };
 
-C2DVector CRegion::GetNameGraphicOffset() const
+const C2DVector CRegion::GetNameGraphicOffset() const
 {
     if (PDef)
         return PDef->NameGraphicOffset;

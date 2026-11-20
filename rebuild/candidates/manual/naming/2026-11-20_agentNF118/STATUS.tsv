@@ -1,0 +1,28 @@
+address	change	grade	test	grades_used	entries	note
+004a5a40	none	n/a	n/a	0	q4757	not-a-binder: already binds ?UpdateInterpolation@CEnvironment@@QAEXXZ (callers.py)
+004fd040	none	n/a	n/a	0	q4619	not-a-binder: already binds the PDB spelling (probe)
+005ff190	none	n/a	n/a	0	q4619	not-a-binder: already binds the PDB spelling (probe)
+0068f2a0	binder port: CASuspendableProcess stand-in + local CThing_Retail/CVectorMap/pair -> shared CThing.h PeekTC + CTCSpecialAbilities.h	RELOCATION_MATCH	PASS	3	q6369 q6388	ported; only 0x0072A860 binding changes (pdiff); GetTC form bound the non-const LowerBound to 0x004365B0 (RELOC_CONFLICT), PeekTC fixed it; test unchanged
+00690030	binder port: CTCHeroState stand-in -> shared CTCSpecialAbilities.h FULL (IsChargingUpAbility, GetCurrentAbilityStrafeAnim, inline GetCurrentAbilityBeingUsed)	RELOCATION_MATCH	PASS	1	q6369 q6388 q6389	ported; pdiff: only 0x0072A860 and 0x0072B870 bindings change; test unchanged
+006a8930	self leaf respell in place: CThing* -> const CThing& parameter	RELOCATION_MATCH	PASS	1	q5143	ported; test unchanged (self-contained copy)
+006a8a30	none	n/a	n/a	0	q5144	not-a-binder: self row already defines ??RCThingFilter_IsOccupiableOccupied@@QBE_NABVCThing@@@Z (compiled)
+006af220	self rename + port: descriptive CDistanceFilter_006af220 -> CMessageEventFilter_CanBeSeenOrHeard::operator() const on the shared headers; callees now the PDB CThingAICreature range tests	RELOCATION_MATCH	PASS	2	q5078	ported; form 1 (member read twice) DIFFER(49v49), form 2 (named local, // Inferred) RELOCATION_MATCH; test unchanged (self-contained)
+006b32a0	self rename + port: stand-in T::Run -> CEnvironment::UpdateInterpolation on engine/CEnvironment.h; callee 0x00885010 now FrameUpdate (its self spelling)	RELOCATION_MATCH	PASS	1	q4757	ported; overlay opt-in FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERFACE_FRAMEUPDATE; test unchanged
+006bbf70	self leaf respell in place: C2DVector -> const C2DVector return	MATCH	PASS	1	q4619	ported; test unchanged (self-contained copy)
+006d2bd0	none	n/a	n/a	0	q4703	not-a-binder: already binds the PDB TransferVector<pair<CCharString,long>> spelling (callers.py)
+006d4c00	self rename + port: local CPersistContext/vector model on invented CNamedLong -> engine/CPersistContext.h TRANSFERVECTOR_NAMED_BODY for pair<CCharString,long>	RELOCATION_MATCH	PASS	2	q4703	ported; callee bindings 0x006D3A30/0x006D44F0/0x006D4B40/0x0125ED48 now PDB spellings (erase = 0x006D4AA0/0x006D4A20 spelling); test unchanged (self-contained)
+006d5ad0	self rename + port: stand-in T::Run -> CThingAICreature::GetCurrentStateGroupScriptPriority const on the shared headers; callee 0x0088B760 now the PDB CAIBrain spelling	RELOCATION_MATCH	PASS	1	q5047	ported; overlay opt-in FABLE_RETAIL_CAIBRAIN_GETCURRENTSTATEGROUPSCRIPTPRIORITY; test unchanged
+00718ec0	self rename: old free-function stand-in -> STLport _List_base<pair<long,EConversationAttitude>>::~_List_base on stlport/fable_containers.h	RELOCATION_MATCH	PASS	1	q4018	ported; test unchanged (prints PASS_00718ec0)
+00719c70	none	n/a	n/a	0	q4018	not-a-binder: already binds the PDB-form _List_base dtor spelling (reloc_bindings + callers.py)
+00729bc0	self rename (in place): ResolveEntranceConnectedTo (public) -> private SetUpPEntranceConnectedToFromUID	RELOCATION_MATCH	PASS	1	q4961	ported; test unchanged (self-contained copy)
+00729f60	none	n/a	n/a	0	q4961	not-a-binder: already binds the PDB private spelling (callers.py)
+0072a860	self rename: generated CASuspendableProcess::CheckTermination -> CTCSpecialAbilities::IsChargingUpAbility const on engine/CTCSpecialAbilities.h FULL	MATCH	PASS	3	q6369 q6388	ported; forms: plain return DIFFER(4v9), != false DIFFER(11v9), if/return true/false MATCH (// Inferred line); test unchanged (self-contained)
+0072b870	none	n/a	n/a	0	q6389	not-a-binder: self row already defines ?GetCurrentAbilityStrafeAnim@CTCSpecialAbilities@@QBE?AVCCharString@@XZ (Leaf line + local model); untouched
+00746260	none	n/a	n/a	0	q5078	not-a-binder: already binds the PDB spelling (probe)
+0089b5b0	none	n/a	n/a	0	q5047	not-a-binder: already binds the PDB CThingAICreature spelling (callers.py)
+00910cf0	none	n/a	n/a	0	q5078	not-a-binder: already binds the PDB spelling (probe)
+0092c8a0	none	n/a	n/a	0	q5143 q5144	not-a-binder: binds the PDB spellings of 0x006A8930 and 0x006A8A30 (probe)
+0092e540	binder port: local CThingFilter_BedOccupant stand-in -> shared CThingFilter_IsOccupiableOccupied (engine/CThingFirePointFilters.h; +FABLE_RETAIL_STLP_REMOVE_COPY_IF for its not1)	RELOCATION_MATCH	PASS	2	q5144	ported; pdiff: only the 0x006A8A30 binding changes; first form failed (unary_negate needs the STLport macro); test unchanged
+0095db90	none	n/a	n/a	0	q5144	not-a-binder: binds the PDB spelling of 0x006A8A30 (probe)
+00969fb0	none	n/a	n/a	0	q5143 q5144	not-a-binder: binds the PDB spellings of 0x006A8930 and 0x006A8A30 (probe)
+009793d0	none	n/a	n/a	0	q5144	not-a-binder: binds the PDB spelling of 0x006A8A30 (probe)

@@ -1,5 +1,7 @@
-// CThingFilter_IsMySleepPoint::operator()(CThing* thing) const -- a thing is the sleeper's sleep point when it is a single-person occupiable of occupy type 2 that is either unowned or owned by the sleeper
-// Leaf: ??RCThingFilter_IsMySleepPoint
+// CThingFilter_IsMySleepPoint::operator()(const CThing& thing) const -- a thing is the sleeper's sleep point when it is a single-person occupiable of occupy type 2 that is either unowned or owned by the sleeper
+// Leaf: ??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z
+// NF118 (PRIORITY q5143): Ego_r.pdb 0x005A48A0 + FableWin.pdb 0x01F95940 ??RCThingFilter_IsMySleepPoint@@QBE_NABVCThing@@@Z (the thing by
+//   const reference), the spelling the landed callers 0x0092C8A0 / 0x00969FB0 bind; respelled in place (parameter only).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8930, length 162 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0xac = CTCSinglePersonOccupiable, TC 0x33 = CTCOwnedEntity),
@@ -54,15 +56,15 @@ public:
 
 class CThingFilter_IsMySleepPoint { public:
     CThing* Sleeper;                            // +0x00
-    bool operator()(CThing* thing) const;
+    bool operator()(const CThing& thing) const;
 };
 
-bool CThingFilter_IsMySleepPoint::operator()(CThing* thing) const
+bool CThingFilter_IsMySleepPoint::operator()(const CThing& thing) const
 {
-    if (thing->HasTC(0xac)) {
-        if (thing->GetTC<CTCSinglePersonOccupiable>(0xac)->IsOfType(OCCUPY_TYPE_SLEEP_2)) {
-            if (thing->HasTC(0x33)) {
-                CThing* owner = thing->GetTC<CTCOwnedEntity>(0x33)->POwner.GetThing();
+    if (thing.HasTC(0xac)) {
+        if (thing.GetTC<CTCSinglePersonOccupiable>(0xac)->IsOfType(OCCUPY_TYPE_SLEEP_2)) {
+            if (thing.HasTC(0x33)) {
+                CThing* owner = thing.GetTC<CTCOwnedEntity>(0x33)->POwner.GetThing();
                 return owner == Sleeper;
             }
             return true;
