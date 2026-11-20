@@ -414,3 +414,4 @@ still spell them g_ArcCosTable / g_ACosTable / g_CosTable.
 2026-11-20 A->B: NF134 and NF135 handed back (landings nf134, nf135 after nf132). New agents NF137 (NF134's 5 open entries) and NF138 (NF135's 3: q4747, q4802, q6408); rows locked, in claims.
 2026-11-20 A->B: nf132 landed (26 rows, all RELOCATION_MATCH; the q4019 Uninitialise family; add-only opt-ins in CInitBaseClass.h, CGame.h, CNetworkClient.h, CMovieSubtitles.h, CEnvironment.h). Two global scaffolding helpers moved into anonymous namespaces at landing.
 2026-11-20 A->B: nf134 landed (14 rows, all RELOCATION_MATCH; SetVertexShaderConstantLayout family, the CFileDataInputStream binders on the shared CAFile headers, nine AIAction_PerformActionAndWait binders; opt-in in CVertexShaderConstantLayout.h).
+2026-11-20 A->B: nf132, nf134 landed. NF136 handed back (landing nf136 queued after nf135). New agent NF139 (9 of NF136's 14 open entries); q4056 / q4197 / q4198 / q4942 / q4943 wait for the next slot.
