@@ -1346,3 +1346,66 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-20 (Account B p25C, 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData, parked, replacement row) DIFFER(3481v3491) with /Gr, every callee bound and matching; the retail COMDATs vector<C3DVectorWord>::_M_insert_overflow 0x00A55070 and operator= 0x00A54BB0 / 0x00A54CB0 byte-equal ours, so the STLport text is right. Residues: (1) the expanded vector<CQuaternion>::_M_insert_overflow copy loop's src/dst register tie at 0xA4F41C (-1 B, unmoved by any local-pool shift); (2) the position compressed-size schedule at 0xA4F7DF (+1 B); (3) the scaling |s-1| x87 sum order at 0xA4FA2D (0 B). The rest is loop-alignment pads. Three or four dummy pool locals clear (2) and (3) together but add two load-order hunks, so both are c2 symbol-number ties (2026-11-20_c2_symbol_order): the fix is the original local/return-symbol count of the expanded helpers, not a respelling at the sites. Ego_d's ==1 branches differ in its revision (lines 1199/1201/1203), so it cannot calibrate them. FableWin's callee list has no entry for this proc. Work: Account B scratch w26/p25C (NOTES.txt, src/v6.cpp, add-only overlay hdr/).
 - 2026-11-20 (Account B p25B, 0x00B24850 CEngine::SetDefaultRenderStates, landed 8cff4a6a6) The fitted dead assert arms and the dead local work through c2 symbol numbering, the opposite of the fable_assert.h note (0x00BB3E80). With and without the 5 arms, symlog shows the same 297 local-pool symbols in the same order. But from the 61st (expansion 9's _state), every number is +64 with the arms: they add 7 kind-7 symbols and 1 kind-10 symbol drawn from the shared 32-number counter. The dead `version` local is pool #5 and shifts later numbers by +1. In this row the +64 shifts move the bookmark load order (C/B) and the +1 moves the test order (s/a). So dead arms with no inline call can move load order. The fable_assert.h note (arms move the test/or-operand order, never the load order) holds for its row only. Ego_d and FableWin have no assert lines in this proc (847 B each); FableWin's callee list has no entry for it.
 - 2026-11-20 (p25B, 0x00A1E5C0) CNavigatorAStar::CalculateAndMoveToPosProximity: x87 multiply operand order decided by a mod-2048 wrap of c2 symbol numbers. - c2's tree canonicaliser sorts the operands of a commutative product by a key whose low word is `symbol_number << 5`, truncated to 16 bits. That is the number mod 2048 (c2 symbol-order kit, 2026-11-20). The higher key is loaded first. - In IsRouteClear's `normal *= scale` the operands are the inlined `operator*=` parameter `scalar` and normal's Y field symbol. The field symbol is made later, in the tree optimiser, so it carries a higher raw number. - In the draft the second expansion's `scalar` is #2025 and the field is #2281, which is 233 mod 2048. Scalar sorts first, so the stack value is consumed: `fxch ; fmul [Y]`. - With the Ego_d locals, the same symbols are #2053 (5 mod 2048) and #2277 (229). The scalar's number has wrapped past 2048 and the field's has not, so the field sorts first and the scalar stays on the stack (`fld Y ; fmul st(2)`). The 0.125 product (`2026*1628` -> `1625*6`) flips the same way. - The first expansion (#1263 / #1292) is nowhere near a wrap, so it is unchanged. - So any change in the number of local-pool symbols allocated before the last IsRouteClear expansion can flip these two products. The fix Lead: 0x00A4EFC0 residues (2)/(3) are the same symbol-number class.
+
+- 2026-11-20 (Account B p25B, 0x00B0DC20 NParticleEngine::CPSCUpdateNormal::Update, deferred; one of A's 25) Write-up follows (source: Account B scratch w26/p25B/batches/00b0dc20_findings.txt, best source w26/p25B/src/00b0dc20.cpp).
+  FINDINGS (p25B, 2026-11-20): 0x00B0DC20 NParticleEngine::CPSCUpdateNormal::Update deferred at DIFFER(5604v5602); one 16-byte copy left.
+  
+  Best source: $W/src/00b0dc20.cpp (W = scratchpad/w26/p25B). Flags: /d2inlT200 (inline budget: without it, 4928v5602, with
+  TransformPos/VectorIfLocal and InverseTransformPosIfLocal called; the match window is T160..T200).
+  What moved the draft from 133 to 35 diff lines:
+  - The Ego_d scope tree, with `particle` in the loop-body scope and the rest in a nested block. Line table 289 / 420 are 5-byte jmps
+    straight after the `continue` jmps, so they are `else`s after the two delete-and-continue arms. With that, the /Od frame order
+    matches Ego_d in every scope. The VC10 iterators are 12 bytes, which accounts for Ego_d's frame gaps, so there are no hidden
+    named locals.
+  - The same-TU landed twin 0x00B0CAD0's FABLE_RETAIL_C3DVECTOR_ORIGINAL_GROUPED_CROSS_PASS22: fixes the hoisted zero store at
+    0x00B0EFF5.
+  - The default C3DVector::operator+ (the draft's ADD_XY_GROUP dropped): fixes the fstp/mov swap at 0x00B0E0B3.
+  - Byte-neutral: engine/GFRandom.h and FABLE_RETAIL_CMATRIX3X4_PARTICLE_ADD_SET replace the draft's row-local bodies.
+  - Byte-neutral: the unused CROSS_XY_GROUP and STLP_VECTOR(_C) opt-ins are removed.
+  
+  Residue, 0x00B0F08B..0x00B0F0D0: particle.SetOrientation(orient).
+  - Retail: `mov eax/ecx/edx,[orient+0/4/8] ; mov [esi+4],eax ; mov eax,[orient+0Ch] ; mov [esi+8],ecx ; mov [esi+0Ch],edx`, with
+    the W store `mov [esi+10h],eax` placed after the first SetOrientationChange store (that copy goes through `lea ecx,[esi+14h]`).
+  - Ours: `lea eax,[esi+4]` with two rotating data registers, +2 bytes.
+  - In the pre-lowering IL (dump2) both setter copies are the same 0x272 block copy, each with a fresh `lea?` address temp on its
+    own line (#1664, #1667).
+  
+  Control table from retail bytes. Twin bytes = the landed twin's build, which is byte-identical to retail.
+    row          copy                              form                       same member read earlier on the path?
+    0x00B0DC20   SetPosition (PositionBuffer[0])   [ebx], register CSE        yes: GetPosition at the loop top (lea ebx,[esi+29h])
+    0x00B0DC20   SetVelocity                       folded [esi+59h]           yes: GetVelocity at the loop top (IL L54 lea? temp, reused at L185, no register)
+    0x00B0DC20   SetOrientation                    folded [esi+4]             NO: no access to esi+4..13h on the if path (only UpdateOrientation's lea ecx,[esi+4] in the else arm)
+    0x00B0DC20   SetOrientationChange              lea ecx,[esi+14h]          no
+    0x00B0CAD0   SetPosition                       lea edi,[esi+29h] (shared with the memmove argument)  same statement only
+    0x00B0CAD0   SetVelocity                       lea edx,[esi+59h]          no
+    0x00B0CAD0   SetOrientation                    lea eax,[esi+4]            no
+    0x00B0CAD0   SetOrientationChange              lea eax,[esi+14h]          no
+  "Folded" goes with "preceded" everywhere except retail 0x00B0F08B.
+  
+  Measured, all leave the lea:
+  - statement order: 19 orders of orient / id; local_acceleration / velocity / pos orders;
+  - knock-outs: id, UpdateOrientation, UpdateAngle, SetPosition, old_rhs;
+  - old_rhs moved: before AccurateNormalise, outside the IsNonZero block;
+  - ToRightHandedSet text: float and double scale;
+  - copy forms: by-value setter wrapper; return-by-value helper (init and assignment); copy through an intermediate quaternion;
+    CQuaternion(orient) temporary; `GetOrientation() = orient`; memcpy;
+  - address timing: a `(*it_particle)->` reload; the destination reference taken just before the SetFromRotationMatrix call;
+  - dead GetOrientation reads / references / copies at four sites;
+  - symbol shifts: dummy locals 0..40 and 40..2080, extra reference temporaries 1..32. So it is not a symbol-number tie.
+  
+  Diagnostics. None is admissible, and none matches:
+  - An extern call taking &particle.GetOrientation() at old_rhs: the CSE gets edi and the copy uses [edi].
+  - A named reference to GetOrientation() defined before the IsNonZero test (three sites), used as the copy destination:
+    - the copy folds (5602v5602);
+    - but the W store stays right after Z, and the cross-product x87 order flips from the extra symbol;
+    - every operator^ text and 1..64 dummy locals still leave W wrong (best: 16 diff lines).
+  - A memberwise copy (four float copies through GetOrientation()): reproduces the whole copy, W placement included; only x87 flips
+    are left (best: 14 lines at 22 dummy locals; no MATCH).
+    - Contradicted three ways:
+      - a memberwise CParticle::SetOrientation breaks the twin;
+      - FableWin psc_update_normal.obj gives SetOrientation and SetOrientationChange 44 bytes each, which is the /Od block copy
+        (memberwise would be about 57);
+      - Ego_d (2012) has `orient` plus an 18-byte SetOrientation(orient) call.
+  
+  Conclusion: retail 0x00B0F08B behaves as four independent scalar moves into the address of particle.Orientation. No
+  evidence-backed spelling found. Recheck if a 2005-era CParticle / CQuaternion text turns up.
