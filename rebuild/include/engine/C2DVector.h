@@ -77,8 +77,8 @@ public:
     #ifdef FABLE_RETAIL_NAVIGATORASTAR_PASS21
     // Original PDB parameter spelling: VECTOR_MULTIPLY_LOCALS.txt.
     const C2DVector operator*(float scale) const { return C2DVector(X*scale,Y*scale); }
-#endif
-#ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_MUL
+#elif defined(FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_MUL)
+    // (PASS21 above replaces both spellings of this operator: one operator* per define combination)
     const C2DVector operator*(float scalar) const { C2DVector result(X*scalar,Y*scalar); return result; }
 #else
     const C2DVector operator*(float scalar) const { return C2DVector(X*scalar,Y*scalar); }

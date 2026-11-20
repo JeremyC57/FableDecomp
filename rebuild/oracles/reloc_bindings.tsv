@@ -39571,3 +39571,6 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@QAEJPAVCCreatureActionBase@@_N@Z	0097da40	00961790
 ??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@@Z	008bd880	009621f0
 ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z	0073a8a0	009621f0
+?SetTextureTransformCount@CShaderRenderManager@@QAEXJ@Z	00988630	00b24850
+?SetUVCompressionVertexShaderConstant@CShaderRenderManager@@QAEXMMMM@Z	00988730	00b24850
+?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ	00b47630	00b24850

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b24850   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b24850   RELOCATION_MATCH PASS   SetDefaultRenderStates
+
+WINS: 1
+  00b24850 RELOCATION_MATCH CEngine::?SetDefaultRenderStates@CEngine@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngine_SetDefaultRenderStates_00b24850
