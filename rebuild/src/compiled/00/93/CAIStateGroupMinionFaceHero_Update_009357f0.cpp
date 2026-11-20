@@ -17,6 +17,7 @@
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04), the hero
 //          intelligent pointer at +0x14.
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -97,7 +98,6 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -108,7 +108,7 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   protected: // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   protected: // 0x0097D6F0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
 };
@@ -125,7 +125,7 @@ void CAIStateGroup_MinionFaceHero::Update()
         unsigned long fps = CMainGameComponent::GetConstantFPS();
         if (CWorld::GetFrame() - start > fps * 6)
             break;
-        if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PHero), 0xf, 0.0027777f) != 2) {
+        if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(PHero), 0xf, 0.0027777f) != 2) {
             Terminate();
             return;
         }

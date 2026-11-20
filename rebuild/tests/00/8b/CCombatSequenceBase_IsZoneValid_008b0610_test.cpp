@@ -1,12 +1,12 @@
 #include <cstdio>
 class CThingCreatureBase { public: int x; };
-static long g_frames = 0; static CThingCreatureBase* g_def = 0; static CThingCreatureBase* g_att = 0;
-class CCombatManager { public: long zone; long GetDefenderZone(CThingCreatureBase* d, CThingCreatureBase* a, long f) { g_def = d; g_att = a; g_frames = f; return zone; } };
+static long g_frames = 0; static const CThingCreatureBase* g_def = 0; static const CThingCreatureBase* g_att = 0;
+class CCombatManager { public: long zone; long GetDefenderZone(const CThingCreatureBase& d, const CThingCreatureBase& a, long f) const { g_def = &d; g_att = &a; g_frames = f; return zone; } };
 static CCombatManager g_mgr; CCombatManager* GetCombatManager() { return &g_mgr; }
 struct CSeq {
     virtual long GetZone() { return mask; } virtual long GetFramesToPredictTargetPosition() { return 7; }
     long mask; CThingCreatureBase* Creature; CThingCreatureBase* Target;
-    bool IsZoneValid() { long zone = GetCombatManager()->GetDefenderZone(Target, Creature, GetFramesToPredictTargetPosition()); return (zone & GetZone()) != 0 ? true : false; }
+    bool IsZoneValid() { long zone = GetCombatManager()->GetDefenderZone(*Target, *Creature, GetFramesToPredictTargetPosition()); return (zone & GetZone()) != 0 ? true : false; }
 };
 int main()
 {

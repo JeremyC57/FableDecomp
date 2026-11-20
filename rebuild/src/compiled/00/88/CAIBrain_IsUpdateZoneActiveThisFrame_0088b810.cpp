@@ -1,4 +1,5 @@
 // CAIBrain::IsUpdateZoneActiveThisFrame() -- true on the frames the current update zone schedules this brain, or whenever the active state group is timing critical
+// Leaf: ?IsUpdateZoneActiveThisFrame@CAIBrain@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088B810, length 85 bytes.
 // Callees: CMainGameComponent::GetCurrentWorldFrame @ 0x004167C8 (an incremental-link thunk to the
 // global frame-counter read @ 0x0049D870; the manifest's "GFGetPreMainMemoryUsed" label is
@@ -40,10 +41,10 @@ class CAIBrain { public:
     CAIStateGroupBaseCalls* PActiveStateGroup;   // +0x38 (retail; PDB +0x3c)
     unsigned char           _pad2[0x64];    // +0x3c..+0xa0
     CBrainUpdateZone*       PCurrentUpdateZone;  // +0xa0 (retail; PDB +0xa8)
-    bool IsUpdateZoneActiveThisFrame();
+    bool IsUpdateZoneActiveThisFrame() const;   // Ego_r.pdb + FableWin.pdb: public const (QBE)
 };
 
-bool CAIBrain::IsUpdateZoneActiveThisFrame()
+bool CAIBrain::IsUpdateZoneActiveThisFrame() const
 {
     if (PCurrentUpdateZone == 0)
         return false;

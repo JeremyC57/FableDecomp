@@ -23,6 +23,7 @@
 //   ??$GetEvent@VCEventChildHurtGoToMother@NEntityEvents@@VCIsEventOfType@2@@CTCEntityEvents@@QBE_NPAPAVCEventChildHurtGoToMother@NEntityEvents@@ABVCIsEventOfType@2@@Z
 //   (retail 0x00915760; engine/CTCEntityEvents.h declares the template the same way).
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -121,14 +122,13 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-enum EAIActionReturn;                           // NF35: MS forward enum (as engine/CAIStateGroupBase.h)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   // 0x0097D6F0
 protected:
     EAIActionReturn AIAction_PerformAction(const CCreatureActionBase& action);   // 0x0097D8B0 (NF35: Ego_r + FableWin IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z)
 public:
@@ -146,7 +146,7 @@ void CAIStateGroup_MinionMotherConsoleChild::Update()
         while (events->GetEvent(&event, NEntityEvents::CIsEventOfType(0x18)) && result != 1) {
             CThing* child = ((CThing*)event->PChild.GetPItem());
             if (child != 0 && !(child->m_flags91 & 1)) {
-                if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(child), 1, 0.0027777f) == 1) {
+                if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(child), 1, 0.0027777f) == 1) {
                     Terminate();
                     return;
                 }

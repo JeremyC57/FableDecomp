@@ -1,0 +1,42 @@
+006ed510 new: 1
+    ?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z TABLE:006ed510
+006ed8c0 new: 1
+    ?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z TABLE:006ed510
+006ed9c0 new: 0
+006ed9e0 new: 0
+006eda80 new: 0
+0088b760 new: 1
+    ?GetCurrentStateGroupScriptPriority@CAIBrain@@QBE?AW4EScriptAIPriority@@XZ TABLE:0088b760
+0088b810 new: 1
+    ?IsUpdateZoneActiveThisFrame@CAIBrain@@QBE_NXZ TABLE:0088b810
+008b0610 new: 0
+0090eec0 new: 0
+0090f470 new: 0
+0090fc50 new: 1
+    ?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ
+0091e750 new: 0
+009357f0 new: 0
+0093a080 new: 0
+0093dc10 new: 1
+    ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE_N_N@Z
+0094bb20 new: 0
+0094f000 new: 4
+    ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThing@@@@@Z
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+00954220 new: 1
+    ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ TABLE:00954220
+009574d0 new: 0
+00957750 new: 0
+00958000 new: 0
+00959a60 new: 0
+0095edf0 new: 4
+    ??$?0VCThing@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThing@@@@@Z
+    ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+    ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ TABLE:01237f1c
+    ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+0096ee90 new: 0
+0097f5b0 new: 1
+    ?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z TABLE:0097f5b0
+0097f690 new: 0

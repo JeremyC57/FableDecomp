@@ -15,6 +15,8 @@
 // after the inner Terminate); the 8-byte held pointer forces the `and esp,-8` frame.
 // Name fix (agentNF7 2026-11-10): the local CIntelligentPointer wrapper structs replaced by the shared CIntelligentPointer<T> (engine/CIntelligentPointer.h), so the vtables bind ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C / ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@ 0x01237F1C.
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
+#include "engine/EMovementType.h"
 class CTCBase;
 class CBaseObject { public:
     virtual ~CBaseObject();
@@ -65,7 +67,6 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -73,9 +74,9 @@ class CAIStateGroupBase { public:
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
     protected: const CPlayerManager& PeekPlayerManager() const; public:   // 0x008FCF80 ?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CAIStateGroupBase.h; NF153: was the stand-in GetPPlayerManager_008fcf80)
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointer<const CThing> target, float distance, bool* reached,
-        long movement, bool a, bool b, bool c, bool d, float speed);         protected: // 0x0097E380
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   // 0x0097D6F0
+    protected: EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> target, float distance, bool& reached,
+        EMovementType movement, bool a, bool b, bool c, bool d, float speed); public:         protected: // 0x0097E380
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 struct CAIStateGroup_MinionKidCalledToMother : CAIStateGroupBase {
@@ -108,7 +109,7 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
                     distanceSquared = dy * dy + dx * dx;
                 }
                 if (distanceSquared < 1.44f) {
-                    if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(hero), 9,
+                    if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(hero), 9,
                             GetCreature()->GetTurnAngleDegrees() / 360.0f) != 2)
                         return;
                 } else {
@@ -120,7 +121,7 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
                             break;
                         }
                         CThing* target = ((CThing*)GetCreature()->PMother.GetPItem());
-                        result = AIAction_MoveToThingProximity(2, CIntelligentPointer<const CThing>(target), 1.2f, &reached, 5,
+                        result = AIAction_MoveToThingProximity(ACTION_REPEAT_CALLBACK, CIntelligentPointer<const CThing>(target), 1.2f, reached, AI_MOVEMENT_RUNNING,
                             true, false, true, true, 0.0f);
                     } while (result == 4);
                     if (result != 2)

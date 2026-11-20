@@ -10,12 +10,12 @@ public:
 };
 
 class CCombatManager { public:
-    void RemoveCombatant_006ed510(CThingCreatureBase* c);
+    private: void DeregisterAttackingCombatant(CThingCreatureBase& attacker); public:   // 0x006ED510 (Ego_r.pdb + FableWin.pdb, private)
     void DeregisterCombatant(CThingCreatureBase& c);
 };
 
 void CCombatManager::DeregisterCombatant(CThingCreatureBase& c)
 {
     if (c.IsInMeleeAsAttacker())
-        this->RemoveCombatant_006ed510(&c);
+        this->DeregisterAttackingCombatant(c);
 }

@@ -57,7 +57,7 @@ class CCombatManager { public:
     void*         __vftable;                    // +0x00
     unsigned char RegisteredCombatSequences[0xc];   // +0x04
     CCombatantMap Combatants;                   // +0x10
-    void DeregisterAttackingCombatant(CThingCreatureBase* creature);   // 0x006ED510
+    private: void DeregisterAttackingCombatant(CThingCreatureBase& creature); public:   // 0x006ED510 (Ego_r.pdb + FableWin.pdb, private)
     void DeregisterAttackedCombatant(CThingCreatureBase* creature);    // 0x006ED8C0
     void DeregisterDestroyedCombatant(CThingCreatureBase* creature);
 };
@@ -67,7 +67,7 @@ void CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature)
     if (creature->IsInMeleeAsAttacker()) {
         unsigned __int64 id = creature->GetUniqueID();
         CThingCreatureBase* attacked = Combatants.FindNode(id)->Value.Attacked;
-        DeregisterAttackingCombatant(creature);
+        DeregisterAttackingCombatant(*creature);
         CTCStealth* stealth;
         if (attacked->GetTC(TCI_STEALTH, &stealth))
             stealth->SetAsInDanger(*creature, NStealth::DANGER_STATUS_NULL);

@@ -165,7 +165,7 @@ class CCombatManager { public:
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->value; }
     void RegisterAttackedCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked);   // 0x006ED270
-    void DeregisterAttackingCombatant(CThingCreatureBase* creature);   // 0x006ED510
+    private: void DeregisterAttackingCombatant(CThingCreatureBase& creature); public:   // 0x006ED510 (Ego_r.pdb + FableWin.pdb, private)
     void GetCombatSequences(CThingCreatureBase* attacker, CThingCreatureBase* attacked, CSequenceVector* sequences);   // 0x006EC4F0
     void RegisterAttackingCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked, bool usingCombatWheel);
 };
@@ -173,7 +173,7 @@ class CCombatManager { public:
 void CCombatManager::RegisterAttackingCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked, bool usingCombatWheel)
 {
     if (attacker.IsInMeleeAsAttacker()) {
-        DeregisterAttackingCombatant(&attacker);
+        DeregisterAttackingCombatant(attacker);
         if (Combatants.find(attacked.GetUID()) == Combatants.end())
             RegisterAttackedCombatant(attacker, attacked);
     }

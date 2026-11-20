@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE
+// Retail opt-in (NF169, row 0x0093DC10): the polymorphic retail class, RTTI .?AVCAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@ :
+// CAIStateGroup_MeleeCombatNearbyBase (ghidra_out/rtti_bases.tsv); no own members (Ego_r.pdb sizeof 0x1C = the base's). Its
+// protected virtual const IsStillRunnable(bool) (Ego_r.pdb 0x00961B60 + FableWin.pdb 0x02B92290
+// ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE_N_N@Z) is out of line at 0x0093DC10. Declaration only.
+// Needs engine/CAIStateGroup_MeleeCombatNearbyBase.h (FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBY_MOVE) first. The generated layout
+// below stays the default.
+class CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : public CAIStateGroup_MeleeCombatNearbyBase {
+protected:
+    virtual bool IsStillRunnable(bool initial) const;                    // 0x0093DC10
+};
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +35,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose) == 0x1c);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE_H

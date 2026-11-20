@@ -21,6 +21,7 @@
 enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
 class CMessageEvent;
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -76,7 +77,6 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
-enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -90,7 +90,7 @@ protected:
 public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   // 0x0097D6F0
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerThing thing, float proximity, bool* arrived,
                                        long movement, bool a, bool b, bool c, bool d, float e);   // 0x0097E380
 };
@@ -117,7 +117,7 @@ public:
 void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
 {
     if (IsThingAlive(PPlayer) && IsPlayerCarryingWeapon()) {
-        if (AIAction_LookAtThing(1, PPlayer, 0xf, 0.0027777f) != 2)
+        if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PPlayer, 0xf, 0.0027777f) != 2)
             return;
         if (IsThingAlive(PPlayer) && IsPlayerCarryingWeapon()) {
             if (!IsAnotherGuardAdmonishingPlayer()) {
@@ -144,7 +144,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                         bool arrived;
                         AIAction_MoveToThingProximity(1, PPlayer, 5.0f, &arrived, 5, true, false, true, true, 0.0f);
                     }
-                    if (AIAction_LookAtThing(1, PPlayer, 0xf, 0.0027777f) != 2)
+                    if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PPlayer, 0xf, 0.0027777f) != 2)
                         return;
                 }
                 if (justWarning)
@@ -153,7 +153,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
             } else {
                 long result;
                 do {
-                    result = AIAction_LookAtThing(2, PPlayer, 0xf, 0.0027777f);
+                    result = AIAction_LookAtThing(ACTION_REPEAT_CALLBACK, PPlayer, 0xf, 0.0027777f);
                     if (!IsThingAlive(PPlayer) || !IsPlayerCarryingWeapon()) {
                         Terminate();
                         return;

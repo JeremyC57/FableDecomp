@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x01237F1C	??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@	vtable of CIntelligentPointer<const CThing> (stand-in comments in the binders + the shared engine/CIntelligentPointer.h template COMDAT); 0x0095EDF0 / 0x0094F000 now bind the template spelling (RENAMES section 2). Other landed rows still bind the stand-in for the same vtable (not changed here)	??_7CIntelligentPointerConstThing@@6B@ (stand-in struct in the q4968 blocked rows and others)

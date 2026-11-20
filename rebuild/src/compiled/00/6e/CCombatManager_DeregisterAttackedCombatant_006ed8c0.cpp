@@ -138,16 +138,16 @@ public:
     virtual void v00();
     unsigned char _sequences[0x0c];                    // +0x04 RegisteredCombatSequences
     CCombatantMap Combatants;                          // +0x10
-    void DeregisterAttackingCombatant(CThingCreatureBase* attacker);   // 0x006ED510
+    private: void DeregisterAttackingCombatant(CThingCreatureBase& attacker); public:   // 0x006ED510 (Ego_r.pdb + FableWin.pdb, private)
     void DeregisterAttackedCombatant(CThingCreatureBase* attacked);
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the work DeregisterAttackingCombatant does outside this TU
 #pragma auto_inline(off)
 // Same-TU stand-in for CCombatManager::DeregisterAttackingCombatant @ 0x006ED510 (compiled in retail's TU): reads its const reference / pointer-to-const
 // arguments, updates its out-parameters, and lets no argument escape.
-__declspec(noinline) void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
+__declspec(noinline) void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase& attacker)
 {
-    NearSink_s7_0(this, (long)attacker);
+    NearSink_s7_0(this, (long)&attacker);
 }
 #pragma auto_inline(on)
 
@@ -156,7 +156,7 @@ void CCombatManager::DeregisterAttackedCombatant(CThingCreatureBase* attacked)
     CCombatantInfo* info = &(*Combatants.find(attacked->GetUID())).second;
     long count = info->DefenderInfo.Attackers.size();
     while (count > 0) {
-        DeregisterAttackingCombatant(info->DefenderInfo.Attackers.begin()->second);
+        DeregisterAttackingCombatant(*info->DefenderInfo.Attackers.begin()->second);
         --count;
         if (count == 0)
             return;

@@ -31,8 +31,7 @@ class CAIStateGroupBase
     unsigned char _pad04[0x10];
     protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat mode, C3DVector pos, bool& speed, EMovementType anim, bool extra, bool b1, const CThing* target, bool b3, float f);          // 0x0097EC00
-    public:
-    C3DVector SetUpPreCalcNav(const CThing& routeThing);                                // 0x0097F5B0
+    C3DVector SetUpPreCalcNav(const CThing& routeThing); public:                        // 0x0097F5B0 (protected: Ego_r.pdb + FableWin.pdb)
     protected:
     EAIActionReturn AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim,
                                      const CAIFilterBase& condition, bool extra);

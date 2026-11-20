@@ -1,0 +1,65 @@
+address	change	grade	test	grades_used	entries	note
+0x008B0610	binder respell in place (GetDefenderZone const&, ECombatZone via engine/ECombatZone.h); test mirrors signature	RELOCATION_MATCH	PASS	1	q4750	symdiff vs HEAD: only the GetDefenderZone callee; vland work/b1.log
+0x006EAC50	blocked: port (3 forms)	DIFFER(451v451)	-	3	q4750	port onto engine/CCombatManager.h (+ opt-ins GETCOMBATDEBUGINFO / CTHINGCREATUREBASE_ISINMELEEASATTACKED, work/hdr_006eac50); best draft work/006eac50_blocked.cpp binds the PDB GetDefenderZone + D1 _M_find + shared vector copy; residue: frame 0x38 v 0x34 (retail shares the UniqueID key temporary slot [esp+10h] with the GetName result temp; GetCombatantInfo inline gives its own slot). Next idea: Combatants.find(creature.GetUniqueID())->second written in the row with CONSTFIND+MFIND_DECL, or a named key local
+0x006AABE0	not-a-binder	-	-	0	q4750	already binds ?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z (reloc_bindings)
+0x006E99B0	not-a-binder	-	-	0	q4750	self row: Leaf already the claim
+0x0090F470	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x0091E750	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x009357F0	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x009574D0	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x00957750	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x00958000	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x00959A60	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x0096EE90	binder respell in place (local CAIStateGroupBase: AIAction_LookAtThing protected, EAIActionReturn/EAIActionRepeat via engine/EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	symdiff vs HEAD: only the LookAtThing callee; vland work/b2.log
+0x0090EEC0	binder respell in place (local CAIStateGroupBase: LookAtThing + MoveToThingProximity protected, PDB types via engine/EAIAction.h + EMovementType.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4967 q4968	symdiff vs HEAD: only the two callees; vland work/b2.log
+0x0094BB20	binder respell in place (local CAIStateGroupBase: MoveToThingProximity protected, PDB types; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4967	symdiff vs HEAD: only the MoveToThingProximity callee; vland work/b2.log
+0x0095EDF0	binder port: stand-ins CIntelligentPointerThing / CIntelligentPointerConstThing -> shared CIntelligentPointer<CThing> / <const CThing> (engine/CIntelligentPointer.h, + CONVERT_INLINE); LookAtThing in place (protected, EAIAction.h)	RELOCATION_MATCH	PASS	2	q4968	symdiff: stand-in ctor/vtable/dtor COMDATs replaced by the shared-header template COMDATs; vtable 0x01237F1C now binds ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@; vland work/b3.log
+0x0094F000	binder port: stand-ins -> shared CIntelligentPointer<CThing> / <const CThing> (+ CONVERT_INLINE); local descriptive enums -> engine/EAIAction.h / EMovementType.h (MOVEMENT_TYPE_FOLLOW=5 -> AI_MOVEMENT_RUNNING); MoveToThingProximity protected, bool&	RELOCATION_MATCH	PASS	2	q4967	symdiff as 0x0095EDF0; vland work/b3.log
+0x0093A080	binder respell in place: LookAtThing only (protected, EAIAction.h; tools/aiact.py)	RELOCATION_MATCH	PASS	2	q4968	MoveToThingProximity left on the CIntelligentPointerThing stand-in: its argument is built by an out-of-line converting ctor 0x00930D20 (stand-in CIntelligentPointerThing(const CBaseIntelligentPointer&)), which must be respelled with it (q4967 blocked row); vland work/b3.log
+0x00911630	blocked: port, not attempted (entry open)	-	-	0	q4967 q4968	stand-ins CIntelligentPointerThing / CIntelligentPointerConstThing (from const CBaseIntelligentPointer&) + local descriptive EAIAction enums; port onto engine/CIntelligentPointer.h as 0x0094F000
+0x00916910	blocked: port, not attempted (entry open)	-	-	0	q4967	CIntelligentPointerConstThing(const CThing*) stand-in argument; needs the shared (T*) ctor
+0x00961790	blocked: port, not attempted (entry open)	-	-	0	q4967	declares MoveToThingProximity on CAIStateGroup_BanditKingCharge with a CMoveOptions stand-in parameter list (QAEJJ...MABUCMoveOptions@@J_N2222@Z); must move to the local CAIStateGroupBase with the PDB list
+0x009804A0	blocked: port, not attempted (entry open)	-	-	0	q4967 q4968	CIntelligentPointerConstThing / CIntelligentPointerConstCreature stand-ins + descriptive enums with non-PDB values (AI_ACTION_REPEAT_ONCE=0 ...); own leaf AIAction_FleeToThingProximity
+0x00984A20	blocked: port, not attempted (entry open)	-	-	0	q4968	CIntelligentPointerThing / ConstThing on a CBaseIntelligentPointerCtor stand-in (no shared CIntelligentPointer.h include); local model CAIStateGroupBaseL
+0x00956380	blocked: port, not attempted (entry open)	-	-	0	q4968	LookAtThing declared on CAIStateGroup_MazeTutorialBattleRespondToLightning with stand-in CIntelligentPointerConstThing + descriptive enums
+0x009352C0	blocked: port, not attempted (entry open)	-	-	0	q4968	local CBaseIntelligentPointer + forceinline CIntelligentPointerConstThing(const CThing*) stand-in, also the SpeakToTarget argument
+0x009621F0	blocked: port, not attempted (entry open)	-	-	0	q4968	CIntelligentPointerConstThing(const CBaseIntelligentPointer&) stand-in on the shared header
+0x0096FCD0	blocked: port, not attempted (entry open)	-	-	0	q4968	CIntelligentPointerConstThing converting ctor called out of line (0x007C2930) + IS_THING_ALIVE(const CIntelligentPointerThing&) 0x004CC340 stand-in: both callees move with it
+0x0097D6F0	not-a-binder	-	-	0	q4968	self row: Leaf already the claim
+0x00846100	blocked: port, not attempted (entry open)	-	-	0	q5101	see APPLIED (NF164 remaining binder; header port first)
+0x00865C20	blocked: port, not attempted (entry open)	-	-	0	q5101	see APPLIED (NF164 remaining binder; header port first)
+0x008CB620	blocked: port, not attempted (entry open)	-	-	0	q5101	see APPLIED (NF164 remaining binder; header port first)
+0x008CB780	blocked: port, not attempted (entry open)	-	-	0	q5101	see APPLIED (NF164 remaining binder; header port first)
+0x008C0900	blocked: port, not attempted (entry open)	-	-	0	q5102	see APPLIED (NF164 remaining binder; header port first)
+0x008C6430	blocked: port, not attempted (entry open)	-	-	0	q5102	see APPLIED (NF164 remaining binder; header port first)
+0x00692910	not-a-binder	-	-	0	q5101	self row: Leaf already the claim
+0x00692940	not-a-binder	-	-	0	q5102	self row: Leaf already the claim
+0x0088B760	self rename + port: CAIBrain_Methods stand-in -> CAIBrain::GetCurrentStateGroupScriptPriority() const on engine/CAIBrain.h + CAIStateGroupBase.h (retail)	MATCH	PASS	1	q11657	symdiff vs HEAD: only the own leaf; test unchanged (standalone); vland work/b4.log
+0x0088B810	self rename in place: const added (QAE -> QBE) on the existing local CAIBrain; Leaf line added	RELOCATION_MATCH	PASS	1	q11680	symdiff vs HEAD: only the own leaf; vland work/b4.log
+0x006D5AD0	not-a-binder	-	-	0	q11657	already binds ?GetCurrentStateGroupScriptPriority@CAIBrain@@QBE?AW4EScriptAIPriority@@XZ (reloc_bindings)
+0x00830130	not-a-binder	-	-	0	q11680	already binds ?IsUpdateZoneActiveThisFrame@CAIBrain@@QBE_NXZ (reloc_bindings)
+0x006ED510	self rename in place: private + by reference (local CCombatManager model, same token)	RELOCATION_MATCH	PASS	1	q11667	symdiff vs HEAD: only the own leaf; Leaf line completed; vland work/b5.log
+0x006ED9C0	binder respell in place: RemoveCombatant_006ed510 stand-in -> private DeregisterAttackingCombatant(CThingCreatureBase&)	RELOCATION_MATCH	PASS	1	q11667	symdiff: only the callee; vland work/b5.log
+0x006ED9E0	binder respell in place (private, by reference)	RELOCATION_MATCH	PASS	1	q11667	symdiff: only the callee; vland work/b5.log
+0x006EDA80	binder respell in place (private, by reference)	RELOCATION_MATCH	PASS	1	q11667	symdiff: only the callee; vland work/b5.log
+0x006ED8C0	binder respell in place (private, by reference), incl. its same-TU noinline stand-in body	RELOCATION_MATCH	PASS	1	q11667	symdiff: its pre-existing strong same-TU stand-in definition of 0x006ED510 moves with the spelling (defined at HEAD as the QAEXPAV form too: existing one-definition debt, NOTES); vland work/b5.log
+0x0093DC10	self rename + port: stand-in CMeleeCloseMethods -> CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable(bool) const (new retail-class opt-in, hdr/)	RELOCATION_MATCH	PASS	1	q11695 q11783	symdiff vs HEAD: only the own leaf; test unchanged (standalone); vland work/b6.log
+0x00954220	self rename in place: access only (protected); Leaf line completed	RELOCATION_MATCH	PASS	1	q11779	symdiff vs HEAD: only the own leaf; vland work/b6.log
+0x009551A0	not-a-binder	-	-	0	q11779	already binds ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ (reloc_bindings, nf137)
+0x0092A0C0	blocked: port, not attempted (entry open)	-	-	0	q11714	family waits on 0x0092B3E0 (APPLIED q11714)
+0x0092A8A0	blocked: port, not attempted (entry open)	-	-	0	q11714 q4968	family waits on 0x0092B3E0 (APPLIED q11714)
+0x0092B360	blocked: port, not attempted (entry open)	-	-	0	q11714	family waits on 0x0092B3E0 (APPLIED q11714)
+0x0092B3E0	blocked: port, not attempted (entry open)	-	-	0	q4968 q11714	local CBaseIntelligentPointer / CCharString / CAIStateGroupBase models (no shared include) + CIntelligentPointerConstThing(const CThing*) stand-in; GetDummy declared on the CAIStateGroup_SkillPractice stand-in
+0x0096C9A0	blocked: decision, not attempted	-	-	0	q11715	see APPLIED q11715
+0x0096CD70	not-a-binder	-	-	0	q11715	already binds ?Eat@CAIStateGroup_EatAtTable@@IAE_NPAVCThing@@@Z (reloc_bindings)
+0x0097F5B0	self rename in place: protected + const CThing& (local CAIStateGroupBase, same token)	RELOCATION_MATCH	PASS	1	q11930	symdiff vs HEAD: only the own leaf; vland work/b7.log
+0x0097F690	binder respell in place: SetUpPreCalcNav moved into the protected region	RELOCATION_MATCH	PASS	1	q11930	symdiff: only the callee; vland work/b7.log
+0x0097F780	not-a-binder	-	-	0	q11930	already binds the IAE spelling (census NF161 + reloc_bindings)
+0x008C2240	blocked: port, not attempted (entry open)	-	-	0	q11934	see APPLIED q11934
+0x00692990	not-a-binder	-	-	0	q11934	self row: Leaf already the claim (nf155)
+0x008BC1A0	not-a-binder	-	-	0	q11934	already binds the PDB spelling (reloc_bindings)
+0x0090FC50	self rename in place: access only (public virtual -> protected virtual)	RELOCATION_MATCH	PASS	1	q11941	symdiff vs HEAD: only the own leaf; vland work/b8.log
+0x00917330	blocked: port (3 forms), self leaf unchanged	DIFFER(66v69)/DIFFER(73v69)/SRC_FAIL	-	3	q11937	see APPLIED q11937
+0x009429C0	blocked: port, not graded (same shape as 0x00917330)	-	-	0	q11938	see APPLIED q11938
+0x00966A90	blocked: port, not graded (same shape as 0x00917330)	-	-	0	q11939	see APPLIED q11939
+0x009681A0	blocked: port, not graded (same shape as 0x00917330)	-	-	0	q11940	see APPLIED q11940

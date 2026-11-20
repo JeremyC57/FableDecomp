@@ -1,5 +1,5 @@
 // CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable(bool) -- require a runnable melee state and an enemy within the height and radius limits.
-// Leaf: ?IsStillRunnable@CMeleeCloseMethods@@QAE_N_N@Z
+// Leaf: ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE_N_N@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Grade: RELOCATION_MATCH -- named squared-coordinate locals retain the retail x87 evaluation order (192 bytes).
 // NF137 (2026-11-20, q5030): moved onto the retail engine/CAIStateGroup_MeleeCombatNearbyBase.h (_MOVE, the landed 0x0096EC10 block): the base call
@@ -25,6 +25,7 @@
 #define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 #define FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBY_MOVE
 #define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE
 #include <math.h>
 #include "engine/fable_ai_action_enums.h"
 #include "engine/C3DVector.h"
@@ -35,11 +36,11 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_MeleeCombatNearbyBase.h"
+#include "engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h"
 
-struct CMeleeCloseMethods : CAIStateGroup_MeleeCombatNearbyBase {
- bool IsStillRunnable(bool);
-};
-bool CMeleeCloseMethods::IsStillRunnable(bool initial) {
+// NF169 (q11695 / q11783): the stand-in CMeleeCloseMethods is gone; the leaf is the PDB protected virtual const member of the retail class
+// (engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h opt-in FABLE_RETAIL_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE).
+bool CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable(bool initial) const {
  if(CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(initial)) {
   CThingCreatureBase* creature=&GetCreature();
   CThingCreatureBase* enemy=PEnemy.Get();

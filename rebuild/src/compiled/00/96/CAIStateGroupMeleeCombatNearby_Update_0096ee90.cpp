@@ -16,6 +16,7 @@
 // Layout: engine/CAIStateGroup_MeleeCombatNearby.h is flattened (vptr spelled as a data member) and this function makes
 //          virtual calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
@@ -86,7 +87,7 @@ public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   // 0x0097D6F0
     void Terminate();                           // 0x008FCF40
 };
 
@@ -120,7 +121,7 @@ void CAIStateGroup_MeleeCombatNearby::Update()
             CThing* creature = GetCreature();
             CCombatManager* combat = GetWorld().PCombatManager;
             combat->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
-            if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PEnemy), 0x21, 0.0027777f) == 1)
+            if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(PEnemy), 0x21, 0.0027777f) == 1)
                 goto done;
         }
         bool strafing = GetCreature()->IsInCombatMode();

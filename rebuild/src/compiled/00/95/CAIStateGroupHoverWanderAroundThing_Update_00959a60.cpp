@@ -17,6 +17,7 @@
 //          the function makes a virtual call through slot 22.
 // Name fix (agentNF5 2026-11-10): CWorld 0x0049D810 is ?GetWorldSeed@CWorld@@QBEPAKXZ (Ego_r.pdb / FableWin.pdb; engine/CWorld.h), was GetPRandomSeed.
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
 class CTCBase;
 class CThingCreatureBase;
 
@@ -91,7 +92,7 @@ public:
         *seed = GFROR13(*seed);
         return *seed % range;
     }
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   // 0x0097D6F0
     void Terminate();                           // 0x008FCF40
 };
 
@@ -114,7 +115,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
         C3DVector target;
         if (IS_THING_ALIVE(PThing)
             && navigation->GetNearbyWanderPosition(((CThing*)PThing.GetPItem())->GetPos(), 5.0f, target, false)) {
-            if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PThing), 0x11, 0.05f) != 2) {
+            if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(PThing), 0x11, 0.05f) != 2) {
                 Terminate();
                 return;
             }

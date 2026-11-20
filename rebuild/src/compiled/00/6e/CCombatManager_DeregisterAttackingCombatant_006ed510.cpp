@@ -1,5 +1,5 @@
 // CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker) -- take an attacker out of its fight: clear the defender's last-attacker pointer when it is this attacker (and advance the defender's attack pattern if the attacker's current sequence is melee or ranged), trace the deregistration, drop the attacker from the defender's attacker map (deregister the defender when none are left, else refresh its attacker list), clear the attacker's sequences and target, and for an attacker that is no longer a combatant erase its entry, reset a projectile weapon held in its primary slot and unsheathe when its def asks; finally clear the defender's stealth danger
-// Leaf: ?DeregisterAttackingCombatant@CCombatManager
+// Leaf: ?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
 // Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, EDangerStatus status) and bound a stand-in spelling of 0x00747B80;
 //   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
 //   the reference and the enum push the same words).
@@ -279,15 +279,15 @@ public:
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long weapon);        // 0x006EBDD0
     void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force);         // 0x006ED030
     void DeregisterAttackedCombatant(CThingCreatureBase* attacked);               // 0x006ED8C0
-    void DeregisterAttackingCombatant(CThingCreatureBase* attacker);
+    private: void DeregisterAttackingCombatant(CThingCreatureBase& attacker); public:   // Ego_r.pdb 0x00716DB0 + FableWin.pdb 0x024145F0 (private, by reference)
 };
 
-void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
+void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase& attacker)
 {
-    CCombatantInfo& info = Combatants.find(attacker->GetUID())->second;
+    CCombatantInfo& info = Combatants.find(attacker.GetUID())->second;
     CThingCreatureBase* attacked = info.AttackerInfo.Attacked;
     CCombatantInfo& attackedInfo = Combatants.find(attacked->GetUID())->second;
-    if (attackedInfo.DefenderInfo.PLastAttacker.GetPItem() == attacker) {
+    if (attackedInfo.DefenderInfo.PLastAttacker.GetPItem() == &attacker) {
         attackedInfo.DefenderInfo.PLastAttacker = 0;
         if (info.AttackerInfo.CurrentSequence >= 0) {
             CCombatSequenceBase* sequence = info.AttackerInfo.CombatSequences[info.AttackerInfo.CurrentSequence].Object;
@@ -295,8 +295,8 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
                 IncrementDefenderAttackPattern(attackedInfo);
         }
     }
-    TraceDeregister(attacker, GDefStringTable.GetString((info.AttackerInfo.Attacked->GetDefName()).m_index), attackedInfo);
-    attackedInfo.DefenderInfo.Attackers.erase(attacker->GetUID());
+    TraceDeregister(&attacker, GDefStringTable.GetString((info.AttackerInfo.Attacked->GetDefName()).m_index), attackedInfo);
+    attackedInfo.DefenderInfo.Attackers.erase(attacker.GetUID());
     if (attackedInfo.DefenderInfo.Attackers.size() == 0) {
         DeregisterAttackedCombatant(attacked);
     } else {
@@ -306,11 +306,11 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
     }
     info.AttackerInfo.CombatSequences.clear();
     info.AttackerInfo.Attacked = 0;
-    attacker->IsAttackingCombatant = 0;
-    if (!attacker->IsCombatant()) {
-        Combatants.erase(attacker->GetUID());
+    attacker.IsAttackingCombatant = 0;
+    if (!attacker.IsCombatant()) {
+        Combatants.erase(attacker.GetUID());
         CTCCarrying* carrying;
-        if (attacker->GetConstInterface(&carrying, 0x46)) {
+        if (attacker.GetConstInterface(&carrying, 0x46)) {
             CThing* item = carrying->GetThingInPrimarySlot();
             CTCWeapon* weapon;
             if (item && !(item->m_flags91 & 1) && item->GetInterface(&weapon, 0x48)) {
@@ -318,10 +318,10 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
                     weapon->ResetAiming();
             }
         }
-        CCreatureDef* def = CDefPointer<CCreatureDef>(attacker->m_pDef).Get();
+        CCreatureDef* def = CDefPointer<CCreatureDef>(attacker.m_pDef).Get();
         if (def->Flags148 & 0x20)
-            CreatureUnsheathWeapon(attacker, 3);
+            CreatureUnsheathWeapon(&attacker, 3);
     }
     if (attacked->HasTC(0x36))
-        attacked->GetTC<CTCStealth>(0x36)->SetAsInDanger(*attacker, NStealth::DANGER_STATUS_NULL);
+        attacked->GetTC<CTCStealth>(0x36)->SetAsInDanger(attacker, NStealth::DANGER_STATUS_NULL);
 }

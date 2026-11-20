@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionSitAtSchool::InitCreaturePosition() -- during school time, place the creature near its home building (radius 5).
-// Leaf: ?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@UAE_NXZ
+// Leaf: ?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- same-TU LowerBound body; the && chain inside `if (HasTC(0x23)) { return ...; } return false;` (trailing byte false block, as retail); the creature passed to an inline PlaceNearHome(creature) helper so it is loaded once AFTER the school-time call (a named local loads it before)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090FC50, length 127 bytes (+ int3 padding). Vtable slot 3.
@@ -89,7 +89,7 @@ struct CThingCreatureHome {
 };
 
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroupBase {
-    virtual bool InitCreaturePosition();
+protected: virtual bool InitCreaturePosition(); public:   // Ego_r.pdb 0x00934B00 + FableWin.pdb: protected virtual (MAE)
 };
 
 FABLE_FORCEINLINE bool PlaceNearHome(CThingCreatureHome* creature)

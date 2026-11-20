@@ -19,6 +19,7 @@
 // Shape: the elapsed-time tests go through an inline helper that reads the frame rate into a local before calling
 // GetWorldFrame and takes the member by reference (so it is re-read after the call); the 20-second rule is a flag.
 class CTCBase;
+#include "engine/EAIAction.h"
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -66,7 +67,6 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -74,7 +74,7 @@ class CAIStateGroupBase { public:
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
     protected: const CPlayerManager& PeekPlayerManager() const; public:   // 0x008FCF80 ?PeekPlayerManager@CAIStateGroupBase@@IBEABVCPlayerManager@@XZ (Ego_r / FableWin, engine/CAIStateGroupBase.h; NF153: was the stand-in GetPPlayerManager_008fcf80)
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   protected: // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed); public:   protected: // 0x0097D6F0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
@@ -99,7 +99,7 @@ void CAIStateGroup_MinionHasInformation::Update()
             Terminate();
             return;
         }
-        if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(hero), 0xb, 0.013888889f) != 2)
+        if (AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(hero), 0xb, 0.013888889f) != 2)
             return;
         if (GetCreature()->GetWaveWithInformation()) {
             if (LastFrameWaved == 0 || HasTimePassed(LastFrameWaved, 5)) {

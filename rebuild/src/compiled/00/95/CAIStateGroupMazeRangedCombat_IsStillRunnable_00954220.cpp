@@ -1,5 +1,5 @@
 // CAIStateGroup_MazeRangedCombat::IsStillRunnable() -- keep the maze ranged-combat state while the target is alive, the group is not stopping and the target is between 8 and 50 units away in XY
-// Leaf: ?IsStillRunnable@CAIStateGroup_MazeRangedCombat
+// Leaf: ?IsStillRunnable@CAIStateGroup_MazeRangedCombat@@IAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the +0x91 dead test through CThing::IsDead() const (Ego_r.pdb
 //   ?IsDead@CThing@@QBE_NXZ, a bool accessor) instead of a direct bit test; the bool accessor keeps retail's register
@@ -53,7 +53,7 @@ public:
     CBaseIntelligentPointer PTarget;            // +0x14
     unsigned char _pad1c[4];                    // +0x1c a base-class word Ego_r.pdb does not name
     long LastCompletedPhase;                    // +0x20
-    bool IsStillRunnable();
+protected: bool IsStillRunnable(); public:   // Ego_r.pdb 0x009789D0 + FableWin.pdb 0x02BF6110: protected (IAE)
 };
 
 bool CAIStateGroup_MazeRangedCombat::IsStillRunnable()

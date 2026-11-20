@@ -15,6 +15,7 @@ class CThing;
 class CThingCreatureBase;
 
 class CBaseObject;
+#include "engine/EAIAction.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
 #include "engine/CIntelligentPointer.h"
@@ -49,13 +50,12 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
-enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed);   protected: // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed); public:   protected: // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool flag); public:   // 0x0097DB70 (EAIActionReturn)
     void FinishUpdate();                            // 0x008FCF40
 };
@@ -78,7 +78,7 @@ struct CAIStateGroup_MinionBehaviourGreetCreature : CAIStateGroupBase {
 
 void CAIStateGroup_MinionBehaviourGreetCreature::Update()
 {
-    if (IS_THING_ALIVE(PCreatureToGreet) && AIAction_LookAtThing(1, PCreatureToGreet, 0xb, 0.013888889f) == 2) {
+    if (IS_THING_ALIVE(PCreatureToGreet) && AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PCreatureToGreet, 0xb, 0.013888889f) == 2) {
         CCharString animation("SG_CHICKEN_WANDER");
         long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
                 CSoundPair(), false, true, false, 0, 0), false);

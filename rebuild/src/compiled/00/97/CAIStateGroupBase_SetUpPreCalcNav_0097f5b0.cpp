@@ -1,5 +1,5 @@
 // CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing) -- when the creature navigates (interface 7) and the route thing's precalculated route (0xA6) has a route, set the navigation up from the creature's position along it and return the route's destination; else the zero vector
-// Leaf: ?SetUpPreCalcNav@CAIStateGroupBase@@QAE?AVC3DVector@@PBVCThing@@@Z
+// Leaf: ?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F5B0, length 219 bytes (`ret 8`, C3DVector by hidden pointer).
@@ -47,18 +47,18 @@ class CAIStateGroupBase
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    C3DVector SetUpPreCalcNav(const CThing* routeThing);
+    protected: C3DVector SetUpPreCalcNav(const CThing& routeThing); public:   // Ego_r.pdb 0x0084A7A0 + FableWin.pdb 0x02890F20 (protected, by reference)
 };
 
-C3DVector CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing)
+C3DVector CAIStateGroupBase::SetUpPreCalcNav(const CThing& routeThing)
 {
     CThing* creature = PBrain->Creature;
     if (creature->HasTC(TCI_NAVIGATION))
     {
         CTCCreatureNavigation* nav = (CTCCreatureNavigation*)((CTCCreatureNavigation*)&creature->GetTC(TCI_NAVIGATION));
         CTCPreCalculatedNavigationRoute* route;
-        if (routeThing->HasTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE))
-            route = (CTCPreCalculatedNavigationRoute*)((CTCPreCalculatedNavigationRoute*)&routeThing->GetTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE));
+        if (routeThing.HasTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE))
+            route = (CTCPreCalculatedNavigationRoute*)((CTCPreCalculatedNavigationRoute*)&routeThing.GetTC(TCI_PRE_CALCULATED_NAVIGATION_ROUTE));
         if (route->HasRoute())
         {
             CThing* mover = PBrain->Creature;

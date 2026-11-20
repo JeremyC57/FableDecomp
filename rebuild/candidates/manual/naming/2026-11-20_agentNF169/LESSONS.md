@@ -1,0 +1,6 @@
+# NF169 lessons (one line each)
+- A binder whose local model already carries the real `CIntelligentPointer<const CThing>` template needs only an in-place declaration respell (protected, engine/EAIAction.h enums, `bool&`, EMovementType) plus call-site literals: tools/aiact.py did 11 rows, every one RELOCATION_MATCH first grade.
+- A binder whose argument is a stand-in pointer struct on the shared engine/CIntelligentPointer.h moves in one grade: drop the stand-ins, use `CIntelligentPointer<CThing>` / `<const CThing>` and define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE when the stand-in converted from the non-const pointer.
+- When a self rename must add `virtual` and change `long` to `bool`, read the retail epilogue first: `mov eax,1` / `xor eax,eax` is not what VC7.1 emits for a bool return (`mov al,1` / `xor al,al`), so the claim and the bytes disagree before any grade.
+- Copying a sibling's define block, read the whole block: a `head -29` cut dropped FABLE_RETAIL_STLP_TREE_CONSTFIND and cost two forms on 0x006EAC50.
+- A generated flattened header takes a retail-class opt-in as `#ifdef RETAIL class ... #else <generated struct + its asserts> #endif`: the default path stays token-identical and `_AT` asserts need no pinning.

@@ -16,20 +16,14 @@
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_INLINE
 #include "engine/CIntelligentPointer.h"
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer {          // CIntelligentPointer<CThing>
-    virtual void v00();
-};
-
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointerConstThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
-};
-
-enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_ONCE };
-enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED };
-enum EMovementType { MOVEMENT_TYPE_0, MOVEMENT_TYPE_1, MOVEMENT_TYPE_2, MOVEMENT_TYPE_3, MOVEMENT_TYPE_4, MOVEMENT_TYPE_FOLLOW };
+// CIntelligentPointer<CThing> (member) and the by-value CIntelligentPointer<const CThing> argument (vtable 0x01237F1C, built in its
+// slot through the shared converting constructor) are the shared engine/CIntelligentPointer.h templates; the AIAction enums are
+// engine/EAIAction.h / EMovementType.h (both PDBs).
+#include "engine/EAIAction.h"
+#include "engine/EMovementType.h"
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -40,14 +34,14 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                         // +0x11
     unsigned char Enabled;                          // +0x12
     unsigned char _pad_0x13;
-    EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointerConstThing target, float proximity,
-        bool* pArrived, EMovementType movement, bool a, bool b, bool c, bool d, float e);    protected: // 0x0097E380
+    protected: EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> target, float proximity,
+        bool& pArrived, EMovementType movement, bool a, bool b, bool c, bool d, float e);    // 0x0097E380
     EAIActionReturn AIAction_DoNothing(); public:                      // 0x0097E200
     void Terminate();                               // 0x008FCF40
 };
 
 struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
-    CIntelligentPointerThing PThingToFollow;        // +0x14
+    CIntelligentPointer<CThing> PThingToFollow;        // +0x14
     float FollowDistance;                           // +0x1c
     virtual void Update();
 };
@@ -56,8 +50,8 @@ void CAIStateGroup_FollowPlayer::Update()
 {
     if (((CThing*)PThingToFollow.GetPItem()) != 0 && !((CThing*)PThingToFollow.GetPItem())->IsDead()) {
         bool arrived;
-        while (AIAction_MoveToThingProximity(AI_ACTION_REPEAT_ONCE, PThingToFollow, FollowDistance, &arrived,
-                MOVEMENT_TYPE_FOLLOW, true, false, true, true, 0.0f) == AI_ACTION_RETURN_SUCCEEDED)
+        while (AIAction_MoveToThingProximity(ACTION_REPEAT_UNTIL_FINISHED, PThingToFollow, FollowDistance, arrived,
+                AI_MOVEMENT_RUNNING, true, false, true, true, 0.0f) == AI_ACTION_FINISHED)
             AIAction_DoNothing();
     }
     Terminate();

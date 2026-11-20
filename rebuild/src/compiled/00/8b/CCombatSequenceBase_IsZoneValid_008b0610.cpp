@@ -8,6 +8,8 @@
 // emits the bare `setne al`.
 // Retail std::vector is {first, last, end_of_storage} (12 bytes, no allocator slot; the Ego_r
 // PDB layouts carry a 16-byte vector, so every member after one sits 4 bytes lower in retail).
+#define FABLE_RETAIL_COMBAT_DEFENDER_ZONE_PASS23
+#include "engine/ECombatZone.h"                   // enum ECombatZone (both PDBs)
 template<class T> struct CRetailVector {
     T* first;
     T* last;
@@ -56,12 +58,13 @@ struct CCombatSequenceBase_Retail {        // vtable 0x01278FEC
 };
 
 class CCombatManager { public:
-    long GetDefenderZone(CThingCreatureBase* defender, CThingCreatureBase* attacker, long framesAhead);   // 0x006E99B0
+    // 0x006E99B0: ?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z (Ego_r.pdb + FableWin.pdb)
+    ECombatZone GetDefenderZone(const CThingCreatureBase& defender, const CThingCreatureBase& attacker, long framesAhead) const;
 };
 
 CCombatManager* GetCombatManager();            // 0x00661ED0
 
 bool CCombatSequenceBase_Retail::IsZoneValid()
 {
-    return (GetZone() & GetCombatManager()->GetDefenderZone(Target, Creature, GetFramesToPredictTargetPosition())) != 0 ? true : false;
+    return (GetZone() & GetCombatManager()->GetDefenderZone(*Target, *Creature, GetFramesToPredictTargetPosition())) != 0 ? true : false;
 }

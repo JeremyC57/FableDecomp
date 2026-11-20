@@ -16,6 +16,8 @@
 // Layout: no engine header for this class; modelled locally like the landed OnReplace 0x0094BAD0 (next hawk frame
 //          +0x14, PStall +0x18); the sub-def's +0x2c speech id is descriptive.
 #include "fable_compiler.h"
+#include "engine/EAIAction.h"
+#include "engine/EMovementType.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -137,8 +139,8 @@ public:
         *seed = GFROR13(*seed);
         return *seed % range;
     }
-    long AIAction_MoveToThingProximity(long repeat, CIntelligentPointer<const CThing> target, float proximity,
-        bool* reached, long movement, bool a, bool b, bool c, bool d, float speed);   // 0x0097E380
+    protected: EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> target, float proximity,
+        bool& reached, EMovementType movement, bool a, bool b, bool c, bool d, float speed); public:   // 0x0097E380
     long AIAction_SpeakAISpeechToTarget(long repeat, CIntelligentPointer<CThingCreatureBase> speaker,
         CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority);   // 0x009812C0
     void Terminate();                           // 0x008FCF40
@@ -161,7 +163,7 @@ void CAIStateGroup_MinionHawkingFromStall::Update()
     shopThing->PDef->GetSubDef(&def);
     unsigned long speech = def->HawkSpeech;
     bool reached;
-    if (AIAction_MoveToThingProximity(1, CIntelligentPointer<const CThing>(PStall), 1.5f, &reached, 3,
+    if (AIAction_MoveToThingProximity(ACTION_REPEAT_UNTIL_FINISHED, CIntelligentPointer<const CThing>(PStall), 1.5f, reached, AI_MOVEMENT_WALKING,
             true, false, true, true, 0.0f) == 2) {
         AIAction_SpeakAISpeechToTarget(1, CIntelligentPointer<CThingCreatureBase>((CThingCreatureBase*)GetCreature()),
             CIntelligentPointer<const CThing>(PStall), speech, false, 0x93);

@@ -9,6 +9,7 @@
 // copy. `cmp eax,2 ; sete al` is `return r == 2 ? true : false` (a plain `return r == 2` goes through ecx).
 // The manifest module "CAIStateGroup_OpinionReactionRoot" is wrong: the target pointer at +0x14 is
 // CAIStateGroupBehaviourBase::PTargetThing (its Cleanup @ 0x00957790 and OnActivate @ 0x009576C0 surround it).
+#include "engine/EAIAction.h"
 class CThing;
 
 class CBaseObject;
@@ -34,7 +35,7 @@ public:
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed);   // 0x0097D6F0
+    protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed); public:   // 0x0097D6F0
 };
 
 struct CAIStateGroupBehaviourBase : CAIStateGroupBase {
@@ -44,5 +45,5 @@ struct CAIStateGroupBehaviourBase : CAIStateGroupBase {
 
 bool CAIStateGroupBehaviourBase::TurnToFace()
 {
-    return AIAction_LookAtThing(1, PTargetThing, 0x23, 0.0027777f) == 2 ? true : false;
+    return AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PTargetThing, 0x23, 0.0027777f) == 2 ? true : false;
 }
