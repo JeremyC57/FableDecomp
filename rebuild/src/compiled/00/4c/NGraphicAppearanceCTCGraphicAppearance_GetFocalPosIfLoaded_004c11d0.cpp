@@ -1,119 +1,22 @@
-// NGraphicAppearance::CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector* position, float time) -- the focal helper point (the global focal-point name, index 0, flags 2) if the mesh is loaded
-// Leaf: ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QAE_NPAVC3DVector@@M@Z
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// NGraphicAppearance::CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector& position, float time) const -- the focal helper point (the
+// global focal-point name, index 0, flags 2) if the mesh is loaded
+// Leaf: ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C11D0, length 32 bytes. Callees: CTCGraphicAppearance::GetHelperPoint @ 0x004C0560
-// (name, index, flags, out position, time; `this` passed through in ecx). The name is the global string object at 0x013BAC48.
+// (name, index, flags, out position, time; `this` passed through in ecx). The name is the global MAIN_FOCAL_POSITION_NAME (0x013BAC48).
 // Shape: the two arguments re-pushed in reverse (the float as a raw dword through eax), the constants, the global's address;
 // the callee's byte result normalised to bool (`test al,al ; setne al`).
-// Layout (Ego_r.pdb CTCGraphicAppearance, 116 bytes; retail 0x5c: the two STLport maps 12 bytes, the two STLport lists one
-// header-node pointer each): CTCBase +0x00..+0x0b (ParentThing +0x04), MeshEffects +0x0c, TintColours +0x18, PTCAnimation +0x24,
-// CachedStaticFocalPosOffset +0x28, Scale +0x34, Primitives +0x38, Components +0x3c, LightingChannel +0x40, MainGraphic +0x44,
-// ActivePersistenceFlags +0x52, FrameUpdatedWasRenderedFlag +0x54, UpdatePrimitiveReasons +0x58, the flag bits +0x59
-// (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
-// CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
-// No engine header exists for CTCGraphicAppearance: local model.
-// Name fix (agentNF26, 2026-11-12, FAM09 follow-up): the object binders below now use the PDB object names (Ego_r.pdb + FableWin.pdb
-//   `dynamic initializer for '...'`, defining rows named by agentFAM09):
-//   0x013BAC48 MAIN_FOCAL_POSITION_NAME (global, const; initializer 0x0121E6C0), was g_FocalPointHelperName.
-#include "engine/C3DVector.h"
-
-class CTCAnimationBase;
-
+// Naming (NF108, 2026-11-19, q5150): Ego_r.pdb 0x004C2870 + FableWin.pdb spell it const with the position by reference; the landed caller
+//   0x00753380 binds that spelling. Re-authored on the shared engine/NGraphicAppearance_CTCGraphicAppearance.h (FOCAL: GetHelperPoint;
+//   overlay opt-in GETFOCALPOSIFLOADED), replacing the local CTCGraphicAppearance model and its pointer / non-const spelling.
 #define FABLE_RETAIL_CCHARSTRING
-#include "engine/CThing.h"
+#include "fable_string.h"
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_GETFOCALPOSIFLOADED
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
 
-namespace NGraphicAppearance {
+extern const CCharString MAIN_FOCAL_POSITION_NAME;        // 0x013BAC48 ?MAIN_FOCAL_POSITION_NAME@@3VCCharString@@B
 
-class CAGraphicAppearanceComponent;
-
-struct CEnginePersistentPrimitiveBase {                 // CIVCountedPointer<CEnginePersistentPrimitiveBase> target
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual bool WasRenderedLastFrame();                // slot 4 (+0x10)
-};
-
-struct CEnginePrimitiveHandle {                         // 8 bytes (Ego_r.pdb): a leading word, then the counted data pointer
-    long                            m_header;           // +0x00
-    CEnginePersistentPrimitiveBase* Data;               // +0x04 CIVCountedPointer<CEnginePersistentPrimitiveBase>
-};
-
-class CPrimitive { public:                                     // 16 bytes (Ego_r.pdb)
-    long                            Type;               // +0x00 EPrimitiveType
-    CEnginePrimitiveHandle          PrimitiveHandle;    // +0x04
-    long                            BankIndex;          // +0x0c
-    ~CPrimitive();                                      // 0x004C4160 (manifest "CObject::~CObject")
-};
-
-}
-
-struct CPrimitiveListNode {
-    CPrimitiveListNode*            m_next;              // +0x00
-    CPrimitiveListNode*            m_prev;              // +0x04
-    NGraphicAppearance::CPrimitive m_value;             // +0x08
-};
-
-struct CPrimitiveList {                                 // STLport list<CPrimitive>: the header-node pointer
-    CPrimitiveListNode* m_head;
-    bool empty() const { return m_head->m_next == m_head; }
-};
-
-struct CComponentListNode {
-    CComponentListNode*                              m_next;    // +0x00
-    CComponentListNode*                              m_prev;    // +0x04
-    NGraphicAppearance::CAGraphicAppearanceComponent* m_value;  // +0x08
-};
-
-struct CComponentList {                                 // STLport list<CAGraphicAppearanceComponent*>: the header-node pointer
-    CComponentListNode* m_head;
-};
-
-extern const CCharString MAIN_FOCAL_POSITION_NAME;        // 0x013BAC48
-
-#pragma pack(push, 2)
-class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
-    unsigned long BankIndex;                            // +0x00
-    float         AnimStep;                             // +0x04
-    float         RenderSizeX;                          // +0x08
-    bool          AdditiveAlpha;                        // +0x0c
-    unsigned char Type;                                 // +0x0d
-};
-#pragma pack(pop)
-
-namespace NGraphicAppearance {
-
-class CTCGraphicAppearance { public:
-    void*          __vftable;                           // +0x00 (CTCBase)
-    CThing*        ParentThing;                         // +0x04
-    bool           ToBeRemoved;                         // +0x08
-    bool           IsInGlobalUpdateTCs;                 // +0x09
-    unsigned char  MeshEffects[0x0c];                   // +0x0c map<void*, CMeshEffectPriorityEntry> (STLport)
-    unsigned char  TintColours[0x0c];                   // +0x18 map<void*, CRGBColour> (STLport)
-    CTCAnimationBase* PTCAnimation;                     // +0x24
-    C3DVector      CachedStaticFocalPosOffset;          // +0x28
-    float          Scale;                               // +0x34
-    CPrimitiveList Primitives;                          // +0x38 list<CPrimitive> (header-node pointer)
-    CComponentList Components;                          // +0x3c list<CAGraphicAppearanceComponent*> (header-node pointer)
-    unsigned long  LightingChannel;                     // +0x40 CEnginePrimitiveThemeChannelDesc
-    CEngineGraphic MainGraphic;                         // +0x44
-    unsigned short ActivePersistenceFlags;              // +0x52
-    long           FrameUpdatedWasRenderedFlag;         // +0x54
-    unsigned char  UpdatePrimitiveReasons;              // +0x58
-    unsigned char  SelfIlluminating : 1;                // +0x59 bit 0
-    unsigned char  ForceResendEveryRenderFrame : 1;     //        bit 1
-    unsigned char  ResendPrimsEveryRenderFrame : 1;     //        bit 2
-    unsigned char  DisableOcclusionTesting : 1;         //        bit 3
-    unsigned char  DrawAfterWater : 1;                  //        bit 4
-    unsigned char  CachedStaticFocalPos : 1;            //        bit 5
-    unsigned char  RenderedLastFrame : 1;               //        bit 6
-    unsigned char  PrimitivesDrawn : 1;                 //        bit 7
-    unsigned char  Alpha;                               // +0x5a
-    signed char    ByPassColorFilter;                   // +0x5b
-    bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector& position, float time) const;   // 0x004C0560 (Ego_r/FableWin ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z)
-    bool GetFocalPosIfLoaded(C3DVector* position, float time);
-};
-
-bool CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector* position, float time)
+bool NGraphicAppearance::CTCGraphicAppearance::GetFocalPosIfLoaded(C3DVector& position, float time) const
 {
-    return GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 2, *position, time) ? true : false;
-}
-
+    return GetHelperPoint(MAIN_FOCAL_POSITION_NAME, 0, 2, position, time) ? true : false;
 }

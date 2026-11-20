@@ -75,8 +75,9 @@ class CBulletTimeManager { public:
     unsigned char _pad8[4];
     bool m_slowing;                                 // +0x0c
     FABLE_FORCEINLINE bool IsRunning() const { return m_slowing || m_active != 0; }
-    bool IsTimeForFullUpdate();                     // 0x004C6060
-    void SetBulletTimeSlowdownMultiplier(long frames, class CCombatActionBase* source, float multiplier);   // 0x004C6170
+    bool IsTimeForFullUpdate() const;               // 0x004C6060 ?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ (Ego_r / FableWin const; NF108 q4760)
+    // NF108 (q5099 follow-up): Ego_r.pdb / FableWin.pdb ?SetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXJPAXM@Z (the key is a void*).
+    void SetBulletTimeSlowdownMultiplier(long frames, void* source, float multiplier);   // 0x004C6170
 };
 
 class CWorld { public:

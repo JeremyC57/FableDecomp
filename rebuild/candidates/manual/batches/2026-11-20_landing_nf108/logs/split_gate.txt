@@ -1,0 +1,10 @@
+existing 0043027a new= ['?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEXXZ'] | others: {'?clear@list_T_004302cd@std@@QAEXXZ': ['004302cd'], '?clear@?$map@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAEXXZ': ['0043151d'], '?clear@CStringLongMap@@QAEXXZ': ['00463334', '00475026'], '?clear@?$multimap@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAE': ['00463732']}
+existing 00436c80 new= ['?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z'] | others: {'?push_back@?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObj': ['00918640']}
+UNGRADED 00485f3a 00be7d70
+existing 004b85d0 new= ['?TransferBinaryIn@?$CPersistTraits@H@@QAEXAAVCMemoryDataInputStream@@AAH@Z'] | others: {'?TransferBinaryIn@?$CPersistTraits@UCQuestActivityRecord@@@@QBEXAAUCMe': ['00569b30']}
+existing 004bdb40 new= ['?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z', 'GetAllDummyObjectNames'] | others: {}
+existing 00502620 new= ['?LoadLevel@CWorldMap@@IAEXJW4ELoadType@1@@Z'] | others: {'?fl_helper@@YGXJH@Z': ['005063d0']}
+existing 00502850 new= ['?CacheMaps@CWorldMap@@IAEXW4ELoadType@1@@Z', 'CacheMaps'] | others: {}
+existing 0063a300 new= ['?GetGroundSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z'] | others: {'@FableSpellConsume_6a4dd0_0063a300@4': ['006a4dd0'], '?GetHeight@CTerrainResult@@QAEMXZ': ['006cd9c0'], '@FableSpellConsume_880200@4': ['00880200']}
+existing 007122c0 new= ['?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ', '?IsTaskListEmpty@CTCScriptedControl@@QAE_NXZ'] | others: {'?IsTaskRunning@CTCScriptControl@@QAE_NXZ': ['004c8c90'], '?IsScriptTaskRunning@CTCScriptedControl@@QAE_NXZ': ['006ad970', '008326a0'], '?IsRunning@CScriptTask@@QAE_NXZ': ['00747da0'], '?IsRunning@CTC1F@@QBE_NXZ': ['008508b0'], '?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ': ['00904380', '00904ee0']}
+gate: 0 created split(s)

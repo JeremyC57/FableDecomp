@@ -11,7 +11,11 @@
 // around the push of the string argument), the out-of-line CWideString copy constructor, then the font
 // pointer (a reference parameter stored by address) and the flag; `this` is kept in esi across the call.
 
+// NF108 (2026-11-19, q4702): the last parameter is EEngineInterpolationSet (Ego_r.pdb + FableWin.pdb), was long: in-place respelling of the
+//   row's pre-existing local model with the shared engine/EEngineInterpolationSet.h.
+// Leaf: ??0CEnginePrimitiveText@@QAE@_KABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@_NW4EEngineInterpolationSet@@@Z
 #include "engine/C3DVector.h"
+#include "engine/EEngineInterpolationSet.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
@@ -47,12 +51,12 @@ class CEnginePrimitiveText : public CEnginePrimitive { public:
     CFontBank*  PFont;                                   // +0x24
     bool        ScaleIn3D;                               // +0x28   sizeof == 0x2c
     CEnginePrimitiveText(unsigned __int64 handle, const C3DVector& pos, float scale, const CWideString& text,
-                         const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, long interpolationSet);
+                         const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, EEngineInterpolationSet interpolationSet);
 };
 
 CEnginePrimitiveText::CEnginePrimitiveText(unsigned __int64 handle, const C3DVector& pos, float scale,
                                            const CWideString& text, const CFontBank& font,
-                                           const CRGBColour& colour, bool scaleIn3D, long interpolationSet)
+                                           const CRGBColour& colour, bool scaleIn3D, EEngineInterpolationSet interpolationSet)
     : CEnginePrimitive(5, interpolationSet)              // ENGINE_PRIMITIVE_TEXT
     , Pos(pos)
     , Scale(scale)

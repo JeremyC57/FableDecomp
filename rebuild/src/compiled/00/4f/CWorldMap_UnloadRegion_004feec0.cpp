@@ -19,7 +19,9 @@
 // Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global). Local CCountedPointer stand-in replaced by engine/CCountedPointer.h; CQuestManager class-keyed (V) as both PDBs.
 #include <string.h>
 
-struct CCharString { void* PStringData; };
+// NF108 (2026-11-19, q5048): class-keyed as both PDBs (CCharString is a class): OnRegionUnloaded 0x004AFC30 binds
+//   ?OnRegionUnloaded@CQuestManager@@QAEXABVCCharString@@@Z (Ego_r.pdb 0x004B5230 + FableWin.pdb 0x01C5E3D0; was ABUCCharString).
+class CCharString { public: void* PStringData; };
 class CThing;
 #include "engine/C3DVector.h"
 

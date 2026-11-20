@@ -32,10 +32,13 @@ class CThingManager { public:
     CThing* GetPThingWithUID(unsigned __int64 uid);                   // 0x0051ED80
 };
 
-typedef long ELoadType;
 class CWorldMap { public:
+    // NF108 (2026-11-19, q4648): ELoadType is nested in CWorldMap (Ego_r.pdb / FableWin.pdb LF_ENUMERATE WAIT_FOR_LOAD 0,
+    //   DONT_WAIT_FOR_LOAD 1; engine/CWorldMap.h), so LoadRegion 0x00500540 is ?LoadRegion@CWorldMap@@QAEXJW4ELoadType@1@_N@Z and
+    //   SetPlayerPos 0x005063E0 is ?SetPlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z (both PDBs; was typedef long / bool).
+    enum ELoadType { WAIT_FOR_LOAD = 0, DONT_WAIT_FOR_LOAD = 1 };
     long GetRegionNumberFromName(const CCharString& name) const;          // 0x004FC210
-    void LoadRegion(long region, bool keepOthers, bool immediately);      // 0x00500540
+    void LoadRegion(long region, ELoadType loadType, bool b);             // 0x00500540
     void SetPlayerPos(long player, const C3DVector& position, ELoadType loadType);   // 0x005063E0
 };
 
@@ -73,10 +76,10 @@ bool CPlayer_Methods::LoadPlayerCharacterFromGameState(const CPlayerSave& save)
 {
     long region = GetWorld()->GetWorldMap()->GetRegionNumberFromName(save.RegionName);
     if (region != 0) {
-        GetWorld()->GetWorldMap()->LoadRegion(region, false, true);
+        GetWorld()->GetWorldMap()->LoadRegion(region, CWorldMap::WAIT_FOR_LOAD, true);
         CThing* thing = GetWorld()->GetThingManager()->GetPThingWithUID(save.CharacterUID);
         if (thing != 0) {
-            GetWorld()->GetWorldMap()->SetPlayerPos(Number, thing->GetPos(), 0);
+            GetWorld()->GetWorldMap()->SetPlayerPos(Number, thing->GetPos(), CWorldMap::WAIT_FOR_LOAD);
             PlayerCharacterPointer() = CIntelligentPointer<CThingPlayerCreature>((CThingPlayerCreature*)thing);
             return true;
         }

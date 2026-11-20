@@ -67,10 +67,12 @@ class CCreatureStatsDef : public CDefClassBase { public:
 #include "stlport/fable_containers.h"
 #include "engine/CCountedPointer.h"
 
-struct CPhonemeAnimMap {                    // retail std::map<CCharString,long> (12 bytes)
-    void* m_head; unsigned long m_size; unsigned long m_compare;
-    CPhonemeAnimMap& operator=(const CPhonemeAnimMap& other);   // 0x00432B38
-};
+// NF108 (2026-11-19, q6236): the local CPhonemeAnimMap stand-in replaced by the shared STLport std::map<CCharString, long> (stlport/fable_map.h):
+//   its implicit operator= calls the tree's out-of-line operator= 0x00432B38,
+//   ??4?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+//   (map and multimap share that tree type; the landed 0x004321F0 / 0x0046CE2D bind it the same way).
+class CCharString;
+#include "stlport/fable_map.h"
 class CDefString { public: long Index; };
 class CHeroAbilityStatWeight { public:             // map<EHeroTrainableStatType,float> StatWeights (12 bytes)
     void* m_head; unsigned long m_size; unsigned long m_compare;
@@ -85,7 +87,7 @@ class CCreatureDef : public CDefClassBase { public:                             
     CCountedPointer<CCreatureStatsDef> PStats;                      // +0x40
     std::vector<long> InitialActions;                 // +0x48
     std::vector<long> InitialAppearanceModifiers;     // +0x54
-    CPhonemeAnimMap PhonemeAnim;                // +0x60
+    std::map<CCharString, long> PhonemeAnim;                // +0x60
     std::vector<CDefString> DialogueVoices;            // +0x6c
     long Inventory;                             // +0x78
     long ClothingInventory;                     // +0x7c

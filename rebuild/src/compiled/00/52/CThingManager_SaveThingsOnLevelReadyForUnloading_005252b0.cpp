@@ -13,47 +13,18 @@
 // CThingManager Things list sentinel +0x18 (the landed SaveToScript model).
 // Shape: two local vectors (game-state first, level-persistent second: zeroed in that order, destroyed in reverse); the
 // thing is a named local homed in the dead `mapNumber` slot because push_back takes it by const reference.
-#include <new>
 class CThing;
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 
-struct SScalarTag { SScalarTag() { } };
-
-struct CThingVector {                                          // retail std::vector<CThing*>: first, last, end
-    CThing** first;
-    CThing** last;
-    CThing** end;
-    CThingVector() : first(0), last(0), end(0) { }
-    ~CThingVector() { if (first) free(first); }
-    void InsertGrow(CThing** where, CThing* const& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00436AC0
-    void push_back(CThing* const& value);                      // 0x00436C80
-};
-
-void* GrowVectorStorage_00436ac0(unsigned long count);
-#pragma auto_inline(off)
-// Same-TU stand-ins for the out-of-line push_back 0x00436C80 (its landed body) and its growth template 0x00436AC0
-// (reads the value only through its const reference, never touches the empty tag, keeps the vector to itself):
-// retail's LTCG knew the value is only read, so the caller keeps the thing in esi next to its homed copy.
-__declspec(noinline) void CThingVector::InsertGrow(CThing** where, CThing* const& value, const SScalarTag& tag, unsigned long count, bool noTail)
-{
-    CThing** p = (CThing**)GrowVectorStorage_00436ac0(count);
-    if (p) {
-        *p = value;
-        first = p;
-        last = p + 1;
-        end = p + count;
-    }
-}
-__declspec(noinline) void CThingVector::push_back(CThing* const& value)
-{
-    if (last != end) {
-        new (last) CThing*(value);
-        ++last;
-    }
-    else
-        InsertGrow(last, value, SScalarTag(), 1, true);
-}
-#pragma auto_inline(on)
+// NF108 (2026-11-19, q4258): the local CThingVector stand-in (with same-TU stand-in bodies of push_back 0x00436C80 / InsertGrow
+//   0x00436AC0) replaced by the shared STLport std::vector<CThing*> (stlport/fable_containers.h): push_back is the header body kept out of
+//   line (FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE) and _M_insert_overflow is visible but out of line (..._OVERFLOW_OUTOFLINE), as in
+//   STLport's _vector.c TU. push_back now binds ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z.
+//   The pre-existing same-TU SavePersistentState stand-in for 0x005239C0 keeps its name (Ego_r / FableWin: RuntimeSaveEntities(long,
+//   const vector<CThing*>&, bool); a declaration-only call to that spelling grades DIFFER(314v312)); its parameter now spells the vector.
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NOINLINE
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 class CThing {
 public:
@@ -115,24 +86,24 @@ public:
     void*           __vftable;                                 // +0x00
     unsigned char   _pad04[0x18 - 0x04];
     SThingListNode* Things;                                    // +0x18 list<CThing*> sentinel
-    void SavePersistentState(long mapNumber, CThingVector& things, bool gameState);   // 0x005239C0
-    void SaveThingsOnLevelReadyForUnloading(long mapNumber, bool savePersistent, CThingVector* toDelete);
+    void SavePersistentState(long mapNumber, std::vector<CThing*>& things, bool gameState);   // 0x005239C0
+    void SaveThingsOnLevelReadyForUnloading(long mapNumber, bool savePersistent, std::vector<CThing*>* toDelete);
 };
 
 // R&D I-3 sweep: a same-TU out-of-line SavePersistentState (it only reads the vector it is handed) lets `thing` share
 // the dead mapNumber argument slot, as in retail. The per-thing save is the declaration-only helper below.
 void SaveThingPersistentState(CThing* thing, long mapNumber, bool gameState);
 #pragma auto_inline(off)
-void CThingManager::SavePersistentState(long mapNumber, CThingVector& things, bool gameState)
+void CThingManager::SavePersistentState(long mapNumber, std::vector<CThing*>& things, bool gameState)
 {
-    for (CThing** it = things.first; it != things.last; ++it)
+    for (CThing** it = things.begin(); it != things.end(); ++it)
         SaveThingPersistentState(*it, mapNumber, gameState);
 }
 #pragma auto_inline(on)
-void CThingManager::SaveThingsOnLevelReadyForUnloading(long mapNumber, bool savePersistent, CThingVector* toDelete)
+void CThingManager::SaveThingsOnLevelReadyForUnloading(long mapNumber, bool savePersistent, std::vector<CThing*>* toDelete)
 {
-    CThingVector gameStateThings;
-    CThingVector levelThings;
+    std::vector<CThing*> gameStateThings;
+    std::vector<CThing*> levelThings;
     for (SThingListNode* node = Things->_M_next; node != Things; node = node->_M_next) {
         CThing* thing = node->_M_data;
         if (thing->CurrentMapNumber != mapNumber)

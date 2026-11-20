@@ -1,0 +1,4 @@
+# recheck after landing nf108: 1411 rows (includers of the 5 headers + the 21 renamed rows + exe-scan referencing rows; no-test rows and 0x00C88E60 excluded)
+good 1409 bad 2 (both pre-existing, sources and includes untouched by this landing):
+007e2a60	007e2a60   DIFFER(707v707)  PASS   CTCFineDialogue::GlobalUpdate
+00be7d70	00be7d70   DIFFER(1437v2983) PASS   CLandscapeBackgroundPatch::Load

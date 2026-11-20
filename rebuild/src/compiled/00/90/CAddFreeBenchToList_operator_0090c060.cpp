@@ -82,17 +82,15 @@ struct CTCUserActionPointBase {
     long GetNumberOfActionPointsInUse();          // 0x007FEC10
 };
 
-class CThingVector {                              // std::vector<CThing*>
-public:
-    CThing** m_first;
-    CThing** m_last;
-    CThing** m_end;
-    void push_back(CThing* const& thing);         // 0x00436C80 (out of line)
-};
+// NF108 (2026-11-19, q4258): the local CThingVector stand-in replaced by the shared STLport std::vector<CThing*> (stlport/fable_containers.h);
+//   push_back 0x00436C80 is ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z, called out of line
+//   (declaration only here: FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE).
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 class CAddFreeBenchToList {
 public:
-    CThingVector* m_pBenches;                     // +0x00
+    std::vector<CThing*>* m_pBenches;             // +0x00
     void operator()(const CIntelligentPointer<CThing>& thing) const;
 };
 void CAddFreeBenchToList::operator()(const CIntelligentPointer<CThing>& thing) const

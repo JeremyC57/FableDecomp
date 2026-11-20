@@ -1,4 +1,5 @@
 // CEngineSurfaceCompositionManager::CopyIntermediateBank() -- close the completed bank, copy the intermediate disk-cache file over the completed one through a pool (or heap) staging buffer, reopen the completed bank read-only on the new file with the engine graphic bank's texture manager, and clear every cached surface's completed-bank index
+// Flags: /d2inlS100 /d2inlT200
 // Leaf: CopyIntermediateBank
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Layout: local model; retail offsets: CachedSurfaces list +0x88 (STLport list = one node pointer), CompletedBankFile +0x398, disk-cache
@@ -53,23 +54,10 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
 };
 
 
-struct CByteVector {
-    unsigned char* first;
-    unsigned char* last;
-    unsigned char* end;
-    CByteVector() : first(0), last(0), end(0) {}
-    void insert(unsigned char*, unsigned long, const unsigned char&);   // 0x00485F3A
-    unsigned long size() const { return (unsigned long)(last - first); }
-    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
-    {
-        if (count < size())
-            last = first + count;
-        else
-            insert(last, count - size(), value);
-    }
-    void resize(unsigned long count) { resize(count, (unsigned char)0); }
-    ~CByteVector() { if (first) free(first); }
-};
+// NF108 (2026-11-19, q4453): the local CByteVector stand-in replaced by the shared STLport std::vector<unsigned char>
+//   (stlport/fable_containers.h): its inline resize calls ?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z 0x00485F3A.
+//   Retail expands resize inline (VC7.1 inline budget raised by the Flags line, as for the 0x00A92740 family).
+#include "stlport/fable_containers.h"
 
 class CTextureManager;
 class CGraphicDataBank { public:
@@ -132,11 +120,11 @@ void CEngineSurfaceCompositionManager::CopyIntermediateBank()
             }
             bufferSize -= 0x10000;
         }
-        CByteVector heapBuffer;
+        std::vector<unsigned char> heapBuffer;
         if (!buffer) {
             bufferSize = 0x10000;
             heapBuffer.resize(bufferSize);
-            buffer = heapBuffer.size() ? heapBuffer.first : (unsigned char*)&heapBuffer;
+            buffer = heapBuffer.size() ? &*heapBuffer.begin() : (unsigned char*)&heapBuffer;
         }
         for (long remaining = source.GetLength(); remaining > 0; ) {
             long chunk = remaining < bufferSize ? remaining : bufferSize;

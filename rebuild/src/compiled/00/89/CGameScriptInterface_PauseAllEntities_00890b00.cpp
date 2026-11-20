@@ -67,10 +67,13 @@ struct CThingManager_Retail {
     bool          m_allEntitiesPaused;              // +0x55
     void SetNonScriptedEntitesPaused(bool paused);  // 0x0051EFC0
 };
-struct CBulletTimeManager_Retail {
-    void SetBulletTimeSlowdownMultiplier(long priority, unsigned long key, float multiplier);   // 0x004C6170
-    void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140 (the label "CTCInventoryExperience::ProcessButtonBReleased" is propagated)
-};
+// NF108 (2026-11-19, q5099): the CBulletTimeManager_Retail stand-in replaced by the shared engine/CBulletTimeManager.h (opt-ins
+//   REMOVESLOWDOWN / SETSLOWDOWN): Ego_r.pdb / FableWin.pdb ?SetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXJPAXM@Z 0x004C6170 and
+//   ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z 0x004C6140 (the key is a void*).
+#define FABLE_RETAIL_CBULLETTIMEMANAGER
+#define FABLE_RETAIL_CBULLETTIMEMANAGER_REMOVESLOWDOWN
+#define FABLE_RETAIL_CBULLETTIMEMANAGER_SETSLOWDOWN
+#include "engine/CBulletTimeManager.h"
 struct CMessageEvent_Retail;
 class CMessageEventFilter_IsOfType { public:
     long m_type;
@@ -115,7 +118,7 @@ class CWorld { public:
     unsigned char                   _pad04[0x5c];               // +0x04 .. +0x60
     CMessageEventManager_Retail*    PMessageEventManager_Data;  // +0x60 (engine/CWorld.h)
     unsigned char                   _pad64[4];
-    CBulletTimeManager_Retail*      PBulletTimeManager_ptr;     // +0x68
+    CBulletTimeManager*             PBulletTimeManager_ptr;     // +0x68
     unsigned char                   _pad6c[8];
     COpinionReactionManager_Retail* POpinionReactionManager_Data;   // +0x74
     unsigned char                   _pad78[0x68];
@@ -131,7 +134,7 @@ void CGameScriptInterface::PauseAllEntities(bool pause)
 {
     World->GetThingManager()->m_allEntitiesPaused = pause;
     if (pause)
-        World->PBulletTimeManager_ptr->SetBulletTimeSlowdownMultiplier(0xFFFF, 0xCABBA9E5, 1.0f);
+        World->PBulletTimeManager_ptr->SetBulletTimeSlowdownMultiplier(0xFFFF, (void*)0xCABBA9E5, 1.0f);
     else
-        World->PBulletTimeManager_ptr->RemoveBulletTimeSlowdown(0xCABBA9E5);
+        World->PBulletTimeManager_ptr->RemoveBulletTimeSlowdownMultiplier((void*)0xCABBA9E5);
 }

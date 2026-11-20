@@ -116,10 +116,13 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddBool(bool value) { Copy(1, &value); }
 };
 class CWorldMap { public:
+    // NF108 (2026-11-19, q4648): nested ELoadType (Ego_r.pdb / FableWin.pdb LF_ENUMERATE WAIT_FOR_LOAD 0, DONT_WAIT_FOR_LOAD 1;
+    //   engine/CWorldMap.h): StartMovePlayerPos 0x00502500 is ?StartMovePlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z (was long).
+    enum ELoadType { WAIT_FOR_LOAD = 0, DONT_WAIT_FOR_LOAD = 1 };
     VPAD16(a)                                      // 0..15
     virtual long GetRegionAt(const C3DVector& pos);   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long map) const;         // 0x004FC190
-    void StartMovePlayerPos(long map, const C3DVector& pos, long loadType);   // 0x00502500
+    void StartMovePlayerPos(long map, const C3DVector& pos, ELoadType loadType);   // 0x00502500
     void EndMovePlayerPos();                       // 0x005064B0 (Ego_r.pdb + FableWin.pdb)
 };
 struct CPhysicsObject {
@@ -217,7 +220,7 @@ void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, c
         bool creature = T(object)->IsCreature();
         if (creature) {
             T(object)->SetInLimbo(true);
-            World->GetWorldMap()->StartMovePlayerPos(T(object)->PlayerNumber, pos, 0);
+            World->GetWorldMap()->StartMovePlayerPos(T(object)->PlayerNumber, pos, CWorldMap::WAIT_FOR_LOAD);
         }
         CPhysicsObject* physics = T(object)->Physics;
         physics->SetPosition(pos);

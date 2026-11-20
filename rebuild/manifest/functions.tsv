@@ -1199,7 +1199,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004321f0	operator=	NUISystem::CUIMiscThingsDef	__thiscall	CSpecialAbilitiesBerserkDef *	2	CSpecialAbilitiesBerserkDef *,CSpecialAbilitiesBerserkDef *	1	yes	accepted									
 00432a35	operator=	std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >	unknown	undefined	0		0	yes	accepted									
 00432aa8	_M_copy	std::_Rb_tree<unsigned long, std::pair<unsigned long const, unsigned long>, std::_Select1st<std::pair<unsigned long const, unsigned long> >, std::less<unsigned long >, std::allocator<std::pair<unsigned long const, unsigned long> > >	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432AA8_global_CTCCarryable_CloneTree.cpp				
-00432b38	operator=	CRetailTree_00432bab	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432B38_global_CTCCarryable_assign.cpp				
+00432b38	operator=	std::_Rb_tree<CCharString,std::pair<const CCharString,long>,std::_Select1st<std::pair<const CCharString,long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,long> > >	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432B38_global_CTCCarryable_assign.cpp				
 00432bab	_M_copy	std::_Rb_tree<CCharString, pair<const CCharString, long>, ...>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432BAB_global_CExpression_DigScript_CloneTree.cpp				
 00432c40	Alloc	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan							
 00432c60	Copy	NUISystem::CUIIconsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -5185,7 +5185,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c6060	IsTimeForFullUpdate	CBulletTimeManager	__thiscall	bool	1	CBulletTimeManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\global_IsTimeForFullUpdate_004c6060.cpp
 004c6080	PrepareForLoad	CBulletTimeManager	unknown	undefined	0		0	yes	accepted									
 004c60f0	CBulletTimeManager	CBulletTimeManager	unknown	undefined	0		0	yes	accepted									
-004c6140	RemoveRequest	CTimeMultiplierController_004c6140	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted									
+004c6140	RemoveBulletTimeSlowdownMultiplier	CBulletTimeManager	__thiscall	void	1	CTCInventoryExperience *	1	yes	accepted									
 004c6170	SetBulletTimeSlowdownMultiplier	CBulletTimeManager	__thiscall	void	4	CBulletTimeManager *,long,void *,float	1	yes	accepted									
 004c63b0	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 004c6580	operator--	std::_Rb_tree_iterator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Nonconst_traits<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>	unknown	undefined	0		0	yes	accepted									
@@ -6572,7 +6572,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004da225	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da225.cpp
 004da252	_M_erase	std::_Rb_tree<EHeroExperienceStatCategory, std::pair<EHeroExperienceStatCategory const, float>, std::_Select1st<std::pair<EHeroExperienceStatCategory const, float> >, std::less<EHeroExperienceStatCategory >, std::allocator<std::pair<EHeroExperienceStatCategory const, float> > >	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da252.cpp
 004da27f	_M_erase	std::_Rb_tree<long, std::pair<long const, CDefString>, std::_Select1st<std::pair<long const, CDefString> >, std::less<long>, std::allocator<std::pair<long const, CDefString> > >	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da27f.cpp
-004da2ac	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da2ac.cpp
+004da2ac	_M_erase	std::_Rb_tree<long,std::pair<const long,long>,std::_Select1st<std::pair<const long,long> >,std::less<long>,std::allocator<std::pair<const long,long> > >	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da2ac.cpp
 004da2d9	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da2d9.cpp
 004da306	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da306.cpp
 004da333	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\LTextTreeWalkThrough_BuildTreeArray_004da333.cpp
@@ -6789,7 +6789,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004db8b3	Alloc_24ByteStruct_4	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc24ByteStruct4_004db8b3.cpp
 004db8d7	Alloc_40ByteStruct	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc40ByteStruct_004db8d7.cpp
 004db8fb	Alloc_32ByteStruct	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc32ByteStruct_004db8fb.cpp
-004db91f	RbTree_Clear_004db91f	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db91f.cpp
+004db91f	clear	std::_Rb_tree<long,std::pair<const long,long>,std::_Select1st<std::pair<const long,long> >,std::less<long>,std::allocator<std::pair<const long,long> > >	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db91f.cpp
 004db948	Alloc_24ByteStruct_5	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc24ByteStruct5_004db948.cpp
 004db97b	Alloc_64ByteStruct	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\global_Alloc64ByteStruct_004db97b.cpp
 004db99f	RbTree_Clear_004db99f	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTCCarryable_OnKill_004db99f.cpp
@@ -8280,7 +8280,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004fcc40	IsPosPassable	CWorldMap	__thiscall	bool	2	CWorldMap *,C3DVector *	1	yes	accepted									
 004fcce0	IsPosCameraPassable	CWorldMap	__thiscall	bool	2	CWorldMap *,C2DCoordI *	1	yes	accepted									
 004fcd60	IsPosCameraPassable	CWorldMap	__thiscall	bool	2	CWorldMap *,C3DVector *	1	yes	accepted									
-004fce00	GetMapUIDPrefix	CWorldMap	__thiscall	CEditMap *	2	CEditWorldMap *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CEditWorldMap_GetEditMap_004fce00.cpp
+004fce00	GetMapUID	CWorldMap	__thiscall	CEditMap *	2	CEditWorldMap *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CEditWorldMap_GetEditMap_004fce00.cpp
 004fce20	AllocateMapUID	CWorldMap	__thiscall	ulong	2	CWorldMap *,long	1	yes	accepted									
 004fcfc0	GetLevelScriptName	CWorldMap	__thiscall	CCharString *	2	CWorldMap *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CWorldMap_GetLevelScriptName_004fcfc0.cpp
 004fcfe0	SetMapAsChanged	CEditWorldMap	__thiscall	void	3	CEditWorldMap *,long,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CEditWorldMap_SetMapAsChanged_004fcfe0.cpp
@@ -20520,7 +20520,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00761200	UpdateDisplacePoints	NShape::CShape	__thiscall	bool	2	CShape *,C3DVector *	1	yes	accepted									
 00761280	DrawPrimitiveLineOverLandscape	NShape	__fastcall	void	6	CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,C3DVector *,C3DVector *,CRGBColour *	1	yes	accepted									
 00761560	EditorDrawPreparePrimitivesForRendering	NShape::CClosedShapeBase	__thiscall	void	5	CClosedShapeBase *,CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,CRGBColour *	1	yes	accepted									
-00761620	vfunc_3	NShape::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00761620	EditorDrawPreparePrimitivesForRendering	NShape::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00761740	IsPosInShape	NShape::CTrack	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007617a0	EditorDrawHighlightPoints	NShape::CShape	__thiscall	void	5	CShape *,CEnginePrimitivePrepareInfo *,CWorldMap *,C3DVector *,CRGBColour *	1	yes	accepted									
 00761980	DrawShapes	CTCShapeManager	__thiscall	void	3	CTCShapeManager *,CEnginePrimitivePrepareInfo *,C3DVector *	1	yes	accepted									

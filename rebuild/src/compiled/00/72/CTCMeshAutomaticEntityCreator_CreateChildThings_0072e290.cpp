@@ -50,26 +50,13 @@ class CStringParser : public CBaseClass { public:                     // retail 
     bool SkipPastNextItemIfIs(const CCharString& item); // 0x009B9E00
     CCharString ReadAsString();                         // 0x009BA6F0
 };
-struct CCharStringVector {                              // STLport vector<CCharString> (12 bytes)
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    static void Destroy(CCharString* first, CCharString* last)
-    {
-        for (; first != last; ++first)
-            first->~CCharString();
-    }
-    ~CCharStringVector()
-    {
-        Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
+// NF108 (2026-11-19, q4448): the local CCharStringVector stand-in replaced by the shared STLport std::vector<CCharString>
+//   (stlport/fable_containers.h): GetAllDummyObjectNames 0x004BDB40 is ?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@
+//   QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z (Ego_r.pdb 0x004C10E0 + FableWin.pdb 0x01D0B750, const).
+#include "stlport/fable_containers.h"
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:   // a class in Ego_r.pdb (PAVCTCGraphicAppearance@NGraphicAppearance@@ in the PDB spellings; NF70 q10750)
-    void GetAllDummyObjectNames(CCharStringVector& names);   // 0x004BDB40
+    void GetAllDummyObjectNames(std::vector<CCharString>& names) const;   // 0x004BDB40
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;
@@ -88,10 +75,10 @@ public:
 void CTCMeshAutomaticEntityCreator::CreateChildThings()
 {
     CTCGraphicAppearance* appearance = ParentThing->GetTCGraphicAppearance();
-    CCharStringVector names;
+    std::vector<CCharString> names;
     appearance->GetAllDummyObjectNames(names);
     CCharString lastName;
-    for (CCharString* it = names._M_start; it != names._M_finish; ++it) {
+    for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
         if (lastName != *it) {
             CStringParser parser(*it, 0, CCharString(""), 0);
             if (parser.SkipPastNextItemIfIs("CREATEOBJECT")) {

@@ -65,14 +65,6 @@ class CTCBase { public:
 protected:
     const CWorld& PeekWorld() const;   // 0x00686A80
 };
-struct SLongLongNode {                             // map<long, long> node
-    unsigned char m_color;
-    SLongLongNode* m_pParent;
-    SLongLongNode* m_pLeft;
-    SLongLongNode* m_pRight;
-    long m_key;
-    long m_value;
-};
 struct SLongNode {                                 // set<long> node
     unsigned char m_color;
     SLongNode* m_pParent;
@@ -80,23 +72,10 @@ struct SLongNode {                                 // set<long> node
     SLongNode* m_pRight;
     long m_key;
 };
-struct CLongLongTree {                             // map<long, long> (12 bytes)
-    SLongLongNode* m_pHeader;
-    unsigned long m_nodeCount;
-    unsigned long m_compare;
-    void _M_erase(SLongLongNode* node);            // 0x004DA2AC
-    void clear()
-    {
-        if (m_nodeCount != 0) {
-            _M_erase(m_pHeader->m_pParent);
-            m_pHeader->m_pLeft = m_pHeader;
-            m_pHeader->m_pParent = 0;
-            m_pHeader->m_pRight = m_pHeader;
-            m_nodeCount = 0;
-        }
-    }
-    ~CLongLongTree() { clear(); if (m_pHeader) free(m_pHeader); }
-};
+// NF108 (2026-11-19, q4185): the local CLongLongTree / SLongLongNode stand-ins replaced by the shared STLport std::map<long, long>
+//   (stlport/fable_map.h): its inline clear() calls _M_erase 0x004DA2AC as
+//   ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@2@@Z
+#include "stlport/fable_map.h"
 struct CLongTree {                                 // set<long> (12 bytes)
     SLongNode* m_pHeader;
     unsigned long m_nodeCount;
@@ -149,7 +128,7 @@ class CTCWife : public CTCBase { public:                         // vtable 0x012
     bool WaitingForSex;                            // +0x2c
     bool WaitingForSexCutscene;                    // +0x2d
     unsigned char _pad30[0x78 - 0x30];
-    CLongLongTree GiftsReceived;                   // +0x78
+    std::map<long, long> GiftsReceived;            // +0x78
     unsigned char _pad84[0x98 - 0x84];
     CLongTree ThingsSeenThePlayerWear;             // +0x98
     unsigned char _padA4[0xec - 0xa4];

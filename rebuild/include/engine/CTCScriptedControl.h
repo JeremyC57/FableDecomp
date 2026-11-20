@@ -36,6 +36,11 @@ private:
     unsigned char AttitudeTags[4]; // std::list<std::pair<long,EConversationAttitude> >.
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SCRIPTED_CONTROL; } bool IsActive() const;
+#ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ISACTIONLISTEMPTY
+    // Opt-in (NF108 2026-11-19, row 0x004C70F0 IsActive): Ego_r.pdb 0x007262B0 + FableWin.pdb 0x0255AA00
+    // ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ, out of line in retail at 0x007122C0 (called from IsActive). Declaration only.
+    bool IsActionListEmpty() const;                                      // 0x007122C0
+#endif
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ISLOCKED
     // Retail opt-in (chunk 1010b, row 0x0089B5B0 CGameScriptInterface::StartScriptingEntity): Ego_r.pdb / FableWin.pdb
     // ?IsLocked@CTCScriptedControl@@QBE_NXZ, inline in retail (`mov al,[esi+18h] ; test al,al` re-read every loop pass,
@@ -54,7 +59,7 @@ public:
 #endif
 };
 
-FABLE_STATIC_ASSERT(sizeof(CTCScriptedControl)==0x24);
+FABLE_STATIC_ASSERT_AT(57, sizeof(CTCScriptedControl)==0x24);
 
 #ifdef FABLE_RETAIL_CTCSCRIPTEDCONTROL_ACTIONBASE
 #include "engine/CBaseClassNonCopyable.h"

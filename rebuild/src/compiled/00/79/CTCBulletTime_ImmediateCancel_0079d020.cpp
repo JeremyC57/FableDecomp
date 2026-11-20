@@ -80,14 +80,16 @@ class CEnvironment { public:
     CEnvironmentSpellEffects* SpellEffects;     // +0x1964
 };
 class CBulletTimeManager { public:
-    void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140
+    // NF108 (2026-11-19, q5099): Ego_r.pdb 0x004C8B80 + FableWin.pdb 0x01D28090 ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z
+    //   (the key is the caller's `this` as void*; was RemoveBulletTimeSlowdown(unsigned long)).
+    void RemoveBulletTimeSlowdownMultiplier(void* key);   // 0x004C6140
 };
 class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                 // +0x18
     unsigned char _pad1c[0x68 - 0x1c];
     CBulletTimeManager* PBulletTimeManager;     // +0x68
-    void RemoveBulletTimeSlowdown(unsigned long key) { PBulletTimeManager->RemoveBulletTimeSlowdown(key); }
+    void RemoveBulletTimeSlowdownMultiplier(void* key) { PBulletTimeManager->RemoveBulletTimeSlowdownMultiplier(key); }
 };
 struct CTCSoundEmitter {                        // interface type 0x10
     void StopSample(unsigned long sampleID);    // 0x0066ADD0
@@ -110,7 +112,7 @@ struct CTCBulletTimeImpl : CTCBulletTime {
 
 void CTCBulletTimeImpl::ImmediateCancel()
 {
-    GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
+    GetWorld().RemoveBulletTimeSlowdownMultiplier(this);
     StopSound(LoopSound);
     CWorld* world = (&GetWorld());
     world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(0, ScreenFilterKey);

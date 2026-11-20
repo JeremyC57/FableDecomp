@@ -43,10 +43,14 @@ private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float flags);   // 0x006E0BE0
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>& parameters);   // 0x006E11A0
 };
-struct CThingAppearance {
-    bool HasHelperPoint(const CCharString& name);       // 0x004BE170
-    bool HasDummyObject(const CCharString& name);       // 0x004BE2C0
-};
+// NF108 (2026-11-19, q6324): the local CThingAppearance stand-in replaced by the shared retail NGraphicAppearance::CTCGraphicAppearance
+//   (engine/NGraphicAppearance_CTCGraphicAppearance.h, declaration opt-ins HELPERNAMES + TINT): Ego_r.pdb / FableWin.pdb
+//   ?HasDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z 0x004BE2C0 and
+//   ?HasHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z 0x004BE170 (both const).
+class CRGBColour;
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPERNAMES
+#define FABLE_RETAIL_CTCGRAPHICAPPEARANCE_TINT
+#include "engine/NGraphicAppearance_CTCGraphicAppearance.h"
 struct CTCPhysics {
     virtual void v00();
     virtual void v01();
@@ -134,7 +138,7 @@ public:
     unsigned char   _pad44[0x5c - 0x44];
     void*           PTCDriver;                          // +0x5c
     struct CTCPhysics* PhysicsTC;                       // +0x60
-    struct CThingAppearance* Appearance;                // +0x64
+    NGraphicAppearance::CTCGraphicAppearance* Appearance;   // +0x64
     unsigned char   _pad68[0x91 - 0x68];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -181,7 +185,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
     if (effect->HasTC(0x4b))
         emitter = (CTCDParticleEmitter*)effect->PTCDriver;
     CCharString helperName;
-    CThingAppearance* appearance = ParentThing->Appearance;
+    NGraphicAppearance::CTCGraphicAppearance* appearance = ParentThing->Appearance;
     long attachType;
     if (appearance->HasDummyObject(SHOT_CREATION_DUMMY)) {
         helperName = SHOT_CREATION_DUMMY;

@@ -32,15 +32,16 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-typedef long ELoadType;
-struct CWorldMapCalls {
-    void SetPlayerPos(long player, const C3DVector& position, ELoadType loadType);   // 0x005063E0
-};
+// NF108 (2026-11-19, q4648): the CWorldMapCalls stand-in (typedef long ELoadType) replaced by the shared engine/CWorldMap.h retail
+//   branch with its SETPLAYERPOS opt-in: ?SetPlayerPos@CWorldMap@@QAEXJABVC3DVector@@W4ELoadType@1@@Z (Ego_r.pdb / FableWin.pdb, nested ELoadType).
+#define FABLE_RETAIL_CWORLDMAP
+#define FABLE_RETAIL_CWORLDMAP_SETPLAYERPOS
+#include "engine/CWorldMap.h"
 
 struct CWorldCalls {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual CWorldMapCalls* GetWorldMap();                  // slot 12 (+0x30)
+    virtual CWorldMap* GetWorldMap();                       // slot 12 (+0x30)
 };
 
 struct CPlayer_Methods : CPlayer {
@@ -65,5 +66,5 @@ void CPlayer_Methods::Update()
     if (PlayerRespawnDelay > 0)
         --PlayerRespawnDelay;
     if (ControlledCreaturePointer().GetPItem())
-        reinterpret_cast<CWorldCalls*>(World)->GetWorldMap()->SetPlayerPos(Number, ((CThingCalls*)ControlledCreaturePointer().GetPItem())->PeekPos(), 0);
+        reinterpret_cast<CWorldCalls*>(World)->GetWorldMap()->SetPlayerPos(Number, ((CThingCalls*)ControlledCreaturePointer().GetPItem())->PeekPos(), CWorldMap::WAIT_FOR_LOAD);
 }

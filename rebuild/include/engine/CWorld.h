@@ -694,6 +694,12 @@ public:
     // Both original PDB records and donor020FE4E3; native0064C2B4 reads +DA.
     bool IsMapTableToShowQuestCardsWhenUsed() const { return MapTableShowQuestCardsOnUsed; }
 #endif
+#ifdef FABLE_RETAIL_CWORLD_SETMAPTABLETOSHOWQUESTCARDSWHENUSED
+    // Opt-in (NF108 2026-11-19, row 0x004AF270 CQuestManager::PrepareQuestsWhenFinalQuestIsCompleted): FableWin.pdb
+    // ?SetMapTableToShowQuestCardsWhenUsed@CWorld@@QAEX_N@Z (0x01C535B0, beside the caller 0x01C535D0; no Ego_r.pdb / Fable.exe copy:
+    // inline, 0x004AF273 stores +0xDA in place). Body only: no layout change.
+    void SetMapTableToShowQuestCardsWhenUsed(bool show) { MapTableShowQuestCardsOnUsed = show; }
+#endif
     bool                        ScreenToFadeInOnNextRegionChange; // +0xdb
     bool                        DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn; // +0xdc
     bool                        MiniMapEnabled;              // +0xdd
@@ -837,6 +843,12 @@ public:
 #ifdef FABLE_RETAIL_CWORLD_MAP_TABLE_QUERY
     // Both original PDB records and donor020FE4E3; native0064C2B4 reads +DA.
     bool IsMapTableToShowQuestCardsWhenUsed() const { return MapTableShowQuestCardsOnUsed; }
+#endif
+#ifdef FABLE_RETAIL_CWORLD_SETMAPTABLETOSHOWQUESTCARDSWHENUSED
+    // Opt-in (NF108 2026-11-19, row 0x004AF270 CQuestManager::PrepareQuestsWhenFinalQuestIsCompleted): FableWin.pdb
+    // ?SetMapTableToShowQuestCardsWhenUsed@CWorld@@QAEX_N@Z (0x01C535B0, beside the caller 0x01C535D0; no Ego_r.pdb / Fable.exe copy:
+    // inline, 0x004AF273 stores +0xDA in place). Body only: no layout change.
+    void SetMapTableToShowQuestCardsWhenUsed(bool show) { MapTableShowQuestCardsOnUsed = show; }
 #endif
     bool                        ScreenToFadeInOnNextRegionChange; // +0xdb
     bool                        DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn; // +0xdc

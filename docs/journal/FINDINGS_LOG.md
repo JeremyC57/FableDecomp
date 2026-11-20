@@ -1321,3 +1321,6 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-19 (A, nf104 follow-up): landed 0x008ED590 CObjectFamilyDef::GetRandomObject grades DIFFER(141v166) PASS from HEAD in the Linux
   lane, unchanged by any round-10 edit (last touched by agentNF15, 2026-11-11). It sits on rebuild/include/candidates/object_family_compiled.h,
   which declares GFROR13 as `YIKK`; the PDB spelling `?GFROR13@@YIJK@Z` is queued (NF104 NAME_FIXES, q4413). Pre-existing; not reverted.
+- 2026-11-20 (landing nf108 includer recheck): 0x00BE7D70 CLandscapeBackgroundPatch::Load grades DIFFER(1437v2983) PASS; its source and its
+  includes (`<stddef.h>`, `rebuild_abi.h` via the hand732 candidates header) are untouched by nf108, so it is pre-existing. It is also the
+  Leaf-less row left on q4453.

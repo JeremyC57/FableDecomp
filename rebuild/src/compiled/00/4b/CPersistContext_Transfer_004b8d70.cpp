@@ -1,5 +1,5 @@
-// CPersistContext::Transfer<ENumAcceptedBoasts>(const char* name, ENumAcceptedBoasts& value, const ENumAcceptedBoasts& defaultValue) -- persist one enum member ("NumAcceptedBoasts"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
-// Leaf: Transfer
+// CPersistContext::Transfer<int>(const char* name, int& value, const int& defaultValue) -- persist one int member ("NumAcceptedBoasts"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
+// Leaf: ??$Transfer@H@CPersistContext@@QAEXPBDAAHABH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B8D70, `ret 0Ch`. Called from CQuestManager::TransferBoasts (0x004B05C0) with the key "NumAcceptedBoasts".
 // Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0 (catalogued "WriteCBYTE"),
 //   CPersistTraits<T>::TransferBinaryIn 0x004B85D0, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
@@ -8,17 +8,20 @@
 //   (CPersistContext +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save, 4 reset) is a closed enum, so the switch
 //   ends in `default: __assume(0)` and VC7.1 emits the bare `jmp [eax*4+table]`; the case bodies are laid out in source
 //   order and retail has them 4,3,2,1,0. the traits object of the binary-load arm is empty and lives in the dead value-argument slot (`lea ecx,[esp+20h]` once the value is in eax). The 8-byte frame is the {vtable, value*} wrapper of the text arms.
-//   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
+// Naming (NF108, 2026-11-19, q4738): was Transfer<ENumAcceptedBoasts> over a descriptive enum found in no PDB. Ego_r.pdb 0x004BCB00 +
+//   FableWin.pdb 0x01C718B0 ??$Transfer@H@CPersistContext@@QAEXPBDAAHABH@Z (T = int);
+//   the caller 0x004B05C0 already binds it. The callees respelled with T: FableWin.pdb ?TransferBinaryIn@?$CPersistTraits@H@@QAEXAAVCMemoryDataInputStream@@AAH@Z
+//   (0x004B85D0, references) and the CPersistContext_TransferableComponent<int> vtable (0x01239378). In-place respelling of the row's
+//   pre-existing local CPersistContext model (the landed Transfer<long> 0x00410BE0 form).
 class CDataOutputStream { public:
 public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
-enum ENumAcceptedBoasts { ENumAcceptedBoasts_Default };
 
 template <class T> struct CPersistTraits {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x004B85D0 for this T
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);   // 0x004B85D0 for T = int
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -56,7 +59,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         PSaveStream->WriteSLONG(value);
         break;
     case 2:
-        CPersistTraits<T>().TransferBinaryIn(PLoadStream, &value);
+        CPersistTraits<T>().TransferBinaryIn(*PLoadStream, value);
         break;
     case 1: {
         CPersistContext_TransferableComponent<T> item(value);
@@ -75,4 +78,4 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
     }
 }
 
-template void CPersistContext::Transfer<ENumAcceptedBoasts>(const char* name, ENumAcceptedBoasts& value, const ENumAcceptedBoasts& defaultValue);
+template void CPersistContext::Transfer<int>(const char* name, int& value, const int& defaultValue);

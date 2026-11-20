@@ -31,6 +31,7 @@ template <unsigned int _Nb> class bitset { public:
 };
 }
 class CThing { public:
+    bool HasScriptThing() const;                // 0x004C7E70 ?HasScriptThing@CThing@@QBE_NXZ (Ego_r / FableWin; NF108 q4487)
     unsigned char _pad00[0x20];
     std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad21[0x71];
@@ -46,7 +47,6 @@ class CThing { public:
     void SetInLimbo(bool inLimbo);              // 0x004C8CF0
     void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
 };
-bool __fastcall CThing_HasScriptThing(CThing* thing);   // 0x004C7E70
 
 class CThingBuilding : public CThing { public:
     unsigned char _pad_0x93[0xd4 - 0x93];
@@ -94,7 +94,7 @@ void CTCVillage::SetVillageLimbo(bool limbo)
         for (SListNode<CBaseIntelligentPointer>* it = people._M_node->_M_next; it != people._M_node; it = it->_M_next) {
             CBaseIntelligentPointer& person = it->_M_data;
             if (IS_THING_ALIVE(person)) {
-                if (!CThing_HasScriptThing(((CThing*)person.GetPItem())) || !((CThing*)person.GetPItem())->HasTC(0x1f)) {
+                if (!((CThing*)person.GetPItem())->HasScriptThing() || !((CThing*)person.GetPItem())->HasTC(0x1f)) {
                     ((CThing*)person.GetPItem())->SetInLimbo(true);
                     ((CThing*)person.GetPItem())->SetPersistOnUnloadWhenInLimbo(true);
                 }

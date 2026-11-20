@@ -264,3 +264,7 @@ opt-ins in CFloatFilterParams.h, CFloatLongReverb.h, CFloatLongReverbModule.h, C
 proven SDK names you can use when you author them (q11593..q11599; spellings + two sources in naming/2026-11-20_agentNF109/NAME_FIXES.tsv):
 0x00C69A70 CFloatReverbDspEngine::CreateReverbBuffers, 0x00C75050 CFloatDiffuser::Create, 0x00C755B0 CFloatLongReverb::Create,
 0x00C76120 CFloatReflection::Process, 0x00C76AB0 CFloatEcho::Create, 0x00C76DD0 CFloatPitch::Create, 0x00C89850 CFloatShortReverbModule::ProcessInput.
+
+2026-11-20 A->B: nf108 landed (PRIORITY slice 2, 52 rows; 6 add-only opt-ins in CQuestManager.h, CWorld.h,
+NGraphicAppearance_CTCGraphicAppearance.h, CTCScriptedControl.h, CBulletTimeManager.h; five rows got CompilerFlags from their Flags lines).
+NF108's 16 open entries moved to NF112 (rows in COORDINATION_CLAIMS.tsv); NF111 runs PRIORITY slice 3.

@@ -116,7 +116,11 @@ public:
     ~_Rb_tree_base() { _M_header.deallocate(_M_header._M_data, 1); }
 };
 
-template <class _Key, class _Value, class _Compare, class _Alloc>
+// NF108 (2026-11-19, q4185): STLport's _Rb_tree takes _KeyOfValue (map passes _Select1st<value_type>) and keeps _M_erase private:
+//   0x004DA2AC is ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@2@@Z
+//   as the landed 0x00626E40 binds it (was the four-argument QAE spelling).
+template <class _Pair> struct _Select1st;
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 class _Rb_tree : public _Rb_tree_base<_Value, _Alloc> {
 public:
     typedef _Rb_tree_node<_Value>* _Link_type;
@@ -136,7 +140,9 @@ public:
     _Rb_tree() : _Rb_tree_base<_Value, _Alloc>(_Alloc()), _M_node_count(0), _M_key_compare(_Compare()) { _M_empty_initialize(); }
     _Rb_tree(const _Rb_tree& __x);
     ~_Rb_tree() { clear(); }
+private:
     void _M_erase(_Link_type __x);                      // 0x004DA2AC
+public:
     void clear()
     {
         if (_M_node_count != 0) {
@@ -155,7 +161,7 @@ template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = all
 class map {
 public:
     typedef pair<const _Key, _Tp> value_type;
-    typedef _Rb_tree<_Key, value_type, _Compare, _Alloc> _Rep_type;
+    typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::const_iterator const_iterator;
     _Rep_type _M_t;
     map() : _M_t() { }

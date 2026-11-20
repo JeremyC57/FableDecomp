@@ -1,4 +1,5 @@
 // C3DPrimitive2::ConvertToVBFormatStatic(void*, unsigned long, unsigned long, CVertexCompressionParams*)
+// Flags: /d2inlS100 /d2inlT200
 // Retail 0x00A92740, 295 bytes (ret 0x10). Field-free C3DPrimitive2 adapter: RepeatingMeshReps +8,
 // Data +0x2c, VertexCount +0x58. CVertexShaderInput is reconstructed from the landed adjacent
 // destructor: CBaseClass vptr then DataStreams CArray +4 and D3DDeclaration CArray +0x10; true
@@ -37,21 +38,9 @@ struct CVertexShaderInputStatic : CVertexShaderInput { // vtable 0x0129DFB8
 };
 }
 
-struct CByteVector {
-    unsigned char* first;
-    unsigned char* last;
-    unsigned char* end;
-    void insert(unsigned char*, unsigned long, const unsigned char&); // 0x00485F3A
-    unsigned long size() const { return (unsigned long)(last - first); }
-    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
-    {
-        if (count < size())
-            last = first + count;
-        else
-            insert(last, count - size(), value);
-    }
-    ~CByteVector() { if (first) free(first); }
-};
+// NF108 (2026-11-19, q4453): the local CByteVector stand-in replaced by the shared STLport std::vector<unsigned char>
+//   (stlport/fable_containers.h): its resize calls ?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z 0x00485F3A.
+#include "stlport/fable_containers.h"
 
 struct CStaticVertex { unsigned char bytes[32]; };
 struct CArrayStaticVertex { CStaticVertex* first; CStaticVertex* last; CStaticVertex* end; };
@@ -84,10 +73,7 @@ void C3DPrimitive2::ConvertToVBFormatStatic(void* destination, unsigned long sou
         return;
     }
     unsigned long convertedFormat = flags & ~4;
-    CByteVector bytes;
-    bytes.first = 0;
-    bytes.last = 0;
-    bytes.end = 0;
+    std::vector<unsigned char> bytes;
     void* transformed = destination;
     if (flags != convertedFormat) {
         unsigned long stride;
@@ -102,7 +88,7 @@ void C3DPrimitive2::ConvertToVBFormatStatic(void* destination, unsigned long sou
             return;
         unsigned char zero = 0;
         bytes.resize(count, zero);
-        transformed = (unsigned long)(bytes.last - bytes.first) != 0 ? (void*)bytes.first : (void*)&bytes;
+        transformed = bytes.size() != 0 ? (void*)&*bytes.begin() : (void*)&bytes;
     }
     {
         if (flags & 2)

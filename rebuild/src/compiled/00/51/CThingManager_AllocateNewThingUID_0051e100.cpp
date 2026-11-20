@@ -15,7 +15,7 @@
 #pragma pack(push, 4)
 class CWorldMap {
 public:
-    unsigned long    GetMapUIDPrefix(long mapNumber);          // 0x004FCE00
+    unsigned long    GetMapUID(long mapNumber) const;          // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z (Ego_r / FableWin; NF108 q4250)
     unsigned __int64 AllocateMapThingUID(long mapNumber);      // 0x004FB330
 };
 
@@ -42,7 +42,7 @@ unsigned __int64 CThingManager::AllocateNewThingUID(long mapNumber, bool global,
         if (levelLess)
             return 0;
         if (mapNumber > 0) {
-            unsigned __int64 prefix = WorldMap->GetMapUIDPrefix(mapNumber);
+            unsigned __int64 prefix = WorldMap->GetMapUID(mapNumber);
             CWorldMap* worldMap = WorldMap;
             uid = worldMap->AllocateMapThingUID(mapNumber) + prefix * 0x10000000000ui64;
         }

@@ -17641,10 +17641,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004db91f'
-        Module = '_global'
-        Source = '00/4d/CTCCarryable_OnKill_004db91f.cpp'
-        TestSource = '00/4d/CTCCarryable_OnKill_004db91f_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,long>,std::_Select1st<std::pair<const long,long> >,std::less<long>,std::allocator<std::pair<const long,long> > >'
+        Source = '00/4d/stdRbtree_clear_004db91f.cpp'
+        TestSource = '00/4d/stdRbtree_clear_004db91f_test.cpp'
         PassPattern = 'AUTO_TINY_004db91f_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Os'
     }
     [pscustomobject]@{
         Address = '004db99f'
@@ -17823,10 +17824,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004da2ac'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da2ac.cpp'
-        TestSource = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da2ac_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,long>,std::_Select1st<std::pair<const long,long> >,std::less<long>,std::allocator<std::pair<const long,long> > >'
+        Source = '00/4d/stdRbtree_Merase_004da2ac.cpp'
+        TestSource = '00/4d/stdRbtree_Merase_004da2ac_test.cpp'
         PassPattern = 'AUTO_TINY_004da2ac_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Os'
     }
     [pscustomobject]@{
         Address = '004da2d9'
@@ -30780,9 +30782,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004af270'
-        Module = 'CGameScriptInterface'
-        Source = '00/4a/CGameScriptInterface_DontPopulateNextLoadedRegion_004af270.cpp'
-        TestSource = '00/4a/CGameScriptInterface_DontPopulateNextLoadedRegion_004af270_test.cpp'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_PrepareQuestsWhenFinalQuestIsCompleted_004af270.cpp'
+        TestSource = '00/4a/CQuestManager_PrepareQuestsWhenFinalQuestIsCompleted_004af270_test.cpp'
         PassPattern = 'OK_0x004af270'
     }
     [pscustomobject]@{
@@ -30822,9 +30824,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c7440'
-        Module = '_global'
-        Source = '00/4c/CTCPhysicsNavigator_EnableNavigator_004c7440.cpp'
-        TestSource = '00/4c/CTCPhysicsNavigator_EnableNavigator_004c7440_test.cpp'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetPlayerNumber_004c7440.cpp'
+        TestSource = '00/4c/CThing_SetPlayerNumber_004c7440_test.cpp'
         PassPattern = 'OK_0x004c7440'
     }
     [pscustomobject]@{
@@ -35303,8 +35305,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004fce00'
         Module = 'CWorldMap'
-        Source = '00/4f/CWorldMap_GetMapUIDPrefix_004fce00.cpp'
-        TestSource = '00/4f/CWorldMap_GetMapUIDPrefix_004fce00_test.cpp'
+        Source = '00/4f/CWorldMap_GetMapUID_004fce00.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapUID_004fce00_test.cpp'
         PassPattern = '004fce00_TEST PASS'
     }
     [pscustomobject]@{
@@ -61840,9 +61842,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c6060'
-        Module = '_global'
-        Source = '00/4c/global_IsTimeForFullUpdate_004c6060.cpp'
-        TestSource = '00/4c/global_IsTimeForFullUpdate_004c6060_test.cpp'
+        Module = 'CBulletTimeManager'
+        Source = '00/4c/CBulletTimeManager_IsTimeForFullUpdate_004c6060.cpp'
+        TestSource = '00/4c/CBulletTimeManager_IsTimeForFullUpdate_004c6060_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -68504,9 +68506,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c5e90'
-        Module = '_global'
-        Source = '00/4c/E2_E2_004c5e90.cpp'
-        TestSource = '00/4c/E2_E2_004c5e90_test.cpp'
+        Module = 'CBulletTimeManager'
+        Source = '00/4c/CBulletTimeManager_FrameUpdate_004c5e90.cpp'
+        TestSource = '00/4c/CBulletTimeManager_FrameUpdate_004c5e90_test.cpp'
         PassPattern = 'OK_004c5e90'
     }
     [pscustomobject]@{
@@ -127860,9 +127862,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c7e70'
-        Module = '_global'
-        Source = '00/4c/global_GFHasScriptThing_004c7e70.cpp'
-        TestSource = '00/4c/global_GFHasScriptThing_004c7e70_test.cpp'
+        Module = 'CThing'
+        Source = '00/4c/CThing_HasScriptThing_004c7e70.cpp'
+        TestSource = '00/4c/CThing_HasScriptThing_004c7e70_test.cpp'
         PassPattern = '004c7e70_TEST PASS'
     }
     [pscustomobject]@{
@@ -166091,9 +166093,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00436c80'
-        Module = '_global'
-        Source = '00/43/global_PushBackdword00436c80_00436c80.cpp'
-        TestSource = '00/43/global_PushBackdword00436c80_00436c80_test.cpp'
+        Module = 'std::vector<CThing*>'
+        Source = '00/43/stdvector_pushback_00436c80.cpp'
+        TestSource = '00/43/stdvector_pushback_00436c80_test.cpp'
         PassPattern = '00436c80_TEST PASS'
     }
     [pscustomobject]@{
@@ -166189,9 +166191,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00517a10'
-        Module = '_global'
-        Source = '00/51/global_PushBackdword00517a10_00517a10.cpp'
-        TestSource = '00/51/global_PushBackdword00517a10_00517a10_test.cpp'
+        Module = 'std::vector<CThingAICreature*>'
+        Source = '00/51/stdvector_pushback_00517a10.cpp'
+        TestSource = '00/51/stdvector_pushback_00517a10_test.cpp'
         PassPattern = '00517a10_TEST PASS'
     }
     [pscustomobject]@{
@@ -168911,9 +168913,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00432b38'
-        Module = 'CRetailTree_00432bab'
-        Source = '00/43/CRetailTree00432bab_operator_00432b38.cpp'
-        TestSource = '00/43/CRetailTree00432bab_operator_00432b38_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,long>,std::_Select1st<std::pair<const CCharString,long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,long> > >'
+        Source = '00/43/stdRbtree_operator_00432b38.cpp'
+        TestSource = '00/43/stdRbtree_operator_00432b38_test.cpp'
         PassPattern = '00432b38_TEST PASS'
     }
     [pscustomobject]@{
@@ -214362,9 +214364,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c6140'
-        Module = 'CTimeMultiplierController_004c6140'
-        Source = '00/4c/CTimeMultiplierController004c6140_RemoveRequest_004c6140.cpp'
-        TestSource = '00/4c/CTimeMultiplierController004c6140_RemoveRequest_004c6140_test.cpp'
+        Module = 'CBulletTimeManager'
+        Source = '00/4c/CBulletTimeManager_RemoveBulletTimeSlowdownMultiplier_004c6140.cpp'
+        TestSource = '00/4c/CBulletTimeManager_RemoveBulletTimeSlowdownMultiplier_004c6140_test.cpp'
         PassPattern = '004c6140_TEST PASS'
     }
     [pscustomobject]@{
@@ -239180,6 +239182,7 @@ $catalog = @(
         Source = '00/a9/C3DPrimitive2_ConvertToVBFormatStatic_00a92740.cpp'
         TestSource = '00/a9/C3DPrimitive2_ConvertToVBFormatStatic_00a92740_test.cpp'
         PassPattern = '00a92740_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS100 /d2inlT200'
     }
     [pscustomobject]@{
         Address = '00a9b640'
@@ -242307,8 +242310,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004b8d70'
         Module = 'CPersistContext'
-        Source = '00/4b/CPersistContext_TransferENumAcceptedBoasts_004b8d70.cpp'
-        TestSource = '00/4b/CPersistContext_TransferENumAcceptedBoasts_004b8d70_test.cpp'
+        Source = '00/4b/CPersistContext_Transfer_004b8d70.cpp'
+        TestSource = '00/4b/CPersistContext_Transfer_004b8d70_test.cpp'
         PassPattern = '004b8d70_TEST PASS'
     }
     [pscustomobject]@{
@@ -267044,6 +267047,7 @@ $catalog = @(
         Source = '00/a9/C3DPrimitive2_ConvertToVBFormatAnimated_00a91180.cpp'
         TestSource = '00/a9/C3DPrimitive2_ConvertToVBFormatAnimated_00a91180_test.cpp'
         PassPattern = '00a91180_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS100 /d2inlT200'
     }
     [pscustomobject]@{
         Address = '004b4f30'
@@ -268113,6 +268117,7 @@ $catalog = @(
         Source = '00/b2/CEngineSurfaceCompositionManager_CopyIntermediateBank_00b2c8e0.cpp'
         TestSource = '00/b2/CEngineSurfaceCompositionManager_CopyIntermediateBank_00b2c8e0_test.cpp'
         PassPattern = '00b2c8e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS100 /d2inlT200'
     }
     [pscustomobject]@{
         Address = '00b32ad0'
@@ -273412,8 +273417,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00761620'
         Module = 'NShape::CTrack'
-        Source = '00/76/NShapeCTrack_vfunc3_00761620.cpp'
-        TestSource = '00/76/NShapeCTrack_vfunc3_00761620_test.cpp'
+        Source = '00/76/NShapeCTrack_EditorDrawPreparePrimitivesForRendering_00761620.cpp'
+        TestSource = '00/76/NShapeCTrack_EditorDrawPreparePrimitivesForRendering_00761620_test.cpp'
         PassPattern = '00761620_TEST PASS'
     }
     [pscustomobject]@{

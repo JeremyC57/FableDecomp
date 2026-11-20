@@ -27,10 +27,13 @@ template <class T> struct CVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-enum ELoadType { LOAD_TYPE_DEFAULT = 0 };
 extern bool g_bRegionLoadingEnabled;                         // 0x013756F6
 
 class CWorldMap { public:
+    // NF108 (2026-11-19, q4648): ELoadType is nested in CWorldMap (Ego_r.pdb / FableWin.pdb LF_ENUMERATE WAIT_FOR_LOAD 0,
+    //   DONT_WAIT_FOR_LOAD 1; engine/CWorldMap.h), so LoadRegion 0x00500540 is ?LoadRegion@CWorldMap@@QAEXJW4ELoadType@1@_N@Z and this
+    //   row's own member spells W4ELoadType@1@ as both PDBs do (was a file-scope stand-in enum).
+    enum ELoadType { WAIT_FOR_LOAD = 0, DONT_WAIT_FOR_LOAD = 1 };
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void ForceLoad(long map);                                  // slot 8 (+0x20) 0x005063D0

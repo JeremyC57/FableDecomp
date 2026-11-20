@@ -43,13 +43,15 @@ class CWideString { public:
     ~CWideString();                             // 0x0099B510
 };
 class CFontBank;
+// NF108 (2026-11-19, q4702): the constructor's last parameter is EEngineInterpolationSet (Ego_r.pdb + FableWin.pdb), was long.
+#include "engine/EEngineInterpolationSet.h"
 class CEnginePrimitiveText { public:                   // 0x2c bytes
     unsigned char _base[0x20];
     CWideString   Text;                         // +0x20
     CFontBank*    PFont;                        // +0x24
     bool          ScaleIn3D;                    // +0x28
     CEnginePrimitiveText(unsigned __int64 handle, const C3DVector& pos, float scale, const CWideString& text,
-                         const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, long interpolationSet);   // 0x004C3120
+                         const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, EEngineInterpolationSet interpolationSet);   // 0x004C3120
 };
 class CEnginePrimitiveRenderer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -106,7 +108,7 @@ void CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info)
             focal.Z += g_EmoteTextHeight;
             CFontBank* font = GetGameSubsystem()->GetEmoteFont();
             CEnginePrimitiveText text(ParentThing->UID, focal, EmoteScale * 1.4f, EmoteText, *font,
-                                      CRGBColour(255, 255, 255, 255), true, 0);
+                                      CRGBColour(255, 255, 255, 255), true, ENGINE_INTERPOLATION_SET_ALWAYSUPDATE);
             info.PRenderer->AddPrimitive(text);
         }
     }
@@ -120,7 +122,7 @@ CWideString::~CWideString() {}
 static unsigned __int64 g_uid = 0; static C3DVector g_textPos; static float g_scale = 0; static void* g_text = 0; static const CFontBank* g_font = 0;
 static unsigned char g_r = 0, g_a = 0; static bool g_3d = false; static long g_interp = -1;
 CEnginePrimitiveText::CEnginePrimitiveText(unsigned __int64 handle, const C3DVector& pos, float scale, const CWideString& text,
-                                           const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, long interpolationSet)
+                                           const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, EEngineInterpolationSet interpolationSet)
 { g_uid = handle; g_textPos = pos; g_scale = scale; g_text = text.PStringData; g_font = &font; g_r = colour.R; g_a = colour.A; g_3d = scaleIn3D; g_interp = interpolationSet; Text.PStringData = 0; }
 static int g_adds = 0;
 void CEnginePrimitiveRenderer::AddPrimitive(const CEnginePrimitiveText&) { ++g_adds; }

@@ -1,4 +1,5 @@
 // C3DPrimitive2::ConvertToVBFormatAnimated(void*, unsigned long, unsigned long, CVertexCompressionParams*) -- transform every animated block into the destination (or a compressed staging buffer) and convert the stream when the compression bit is set
+// Flags: /d2inlS100 /d2inlT200
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A91180, length 519 bytes.
 // Shape (chunk 277 park, AdvA2): the empty iterator tag's slot is retail's dead flags argument slot once DestroyRange has a
 //   same-TU OUT-ONLY stand-in (the tag is never read, so the temporary needs no frame word); the staging byte count is
@@ -53,21 +54,10 @@ struct CVertexShaderInputAnimated : CVertexShaderInput {   // vtable 0x0129DFB0
     void Initialise(unsigned long, bool);          // 0x00A90630
 };
 }
-struct CByteVector {
-    unsigned char* first;
-    unsigned char* last;
-    unsigned char* end;
-    void insert(unsigned char*, unsigned long, const unsigned char&); // 0x00485F3A
-    unsigned long size() const { return (unsigned long)(last - first); }
-    FABLE_FORCEINLINE void resize(unsigned long count, const unsigned char& value)
-    {
-        if (count < size())
-            last = first + count;
-        else
-            insert(last, count - size(), value);
-    }
-    ~CByteVector() { if (first) free(first); }
-};
+// NF108 (2026-11-19, q4453): the local CByteVector stand-in replaced by the shared STLport std::vector<unsigned char>
+//   (stlport/fable_containers.h): its inline resize calls ?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z 0x00485F3A.
+//   Retail expands resize inline (VC7.1 inline budget raised by the Flags line, as for the 0x00A92740 family).
+#include "stlport/fable_containers.h"
 // Name-fix pass (2026-11-12): the two block converters are the private N3DPrimitive::CAnimatedBlock members of both PDBs (Ego_r.pdb
 //   0x00BD1DA0 / 0x00BD1EC0, FableWin.pdb; landed rows 0x00A8FF50 / 0x00A90040 under these names), taking the vertex buffer and the
 //   device-independent mesh by reference; were TransformVertices / TransformVerticesWithNormals on a global CAnimatedBlock stand-in.
@@ -102,10 +92,7 @@ void C3DPrimitive2::ConvertToVBFormatAnimated(void* destination, unsigned long s
     unsigned long vertexCount = 0;
     for (unsigned long b = 0; b < AnimatedBlockCount; ++b)
         vertexCount += AnimatedBlocks[b].VertexCount;
-    CByteVector bytes;
-    bytes.first = 0;
-    bytes.last = 0;
-    bytes.end = 0;
+    std::vector<unsigned char> bytes;
     unsigned long convertedFormat = flags & ~4;
     void* transformed = destination;
     if (flags != convertedFormat) {
@@ -121,7 +108,7 @@ void C3DPrimitive2::ConvertToVBFormatAnimated(void* destination, unsigned long s
             return;
         unsigned char zero = 0;
         bytes.resize(stride * vertexCount, zero);
-        transformed = (unsigned long)(bytes.last - bytes.first) != 0 ? (void*)bytes.first : (void*)&bytes;
+        transformed = bytes.size() != 0 ? (void*)&*bytes.begin() : (void*)&bytes;
     }
     unsigned long vertexOffset = 0;
     for (unsigned long i = 0; i < AnimatedBlockCount; ++i) {

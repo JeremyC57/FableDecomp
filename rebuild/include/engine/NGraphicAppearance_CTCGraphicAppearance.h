@@ -190,6 +190,12 @@ public:
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCAL
     // Retail opt-in (Codex pass17): both original PDBs; native004c0560 signature.
     bool GetHelperPoint(const CCharString&,long,unsigned long,C3DVector&,float) const;
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_GETFOCALPOSIFLOADED
+    // Nested opt-in (NF108 2026-11-19, row 0x004C11D0): Ego_r.pdb 0x004C2870 + FableWin.pdb
+    // ?GetFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@M@Z (const, reference), out of line at 0x004C11D0
+    // (the landed 0x00753380 binds it). Declaration only.
+    bool GetFocalPosIfLoaded(C3DVector& position, float time) const;   // 0x004C11D0
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HELPER_BODY
     // Retail opt-in (Codex pass17): original methods/access/signatures, both PDBs and debug full helper.

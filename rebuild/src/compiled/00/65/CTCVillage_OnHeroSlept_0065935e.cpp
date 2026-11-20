@@ -21,12 +21,12 @@ class CBaseObject;
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                         // CTCBase interface type (shared enum; NF108)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CTCBase {
-public:
-    bool IsActive() const;                      // 0x004C70F0
-};
+// NF108 (2026-11-19, q4265): the 0x1F interface is TCI_SCRIPTED_CONTROL; its IsActive 0x004C70F0 is
+//   ?IsActive@CTCScriptedControl@@QBE_NXZ (Ego_r.pdb 0x004C8FE0 + FableWin.pdb 0x01CF8CC0), declared by the shared engine/CTCScriptedControl.h
+//   (the local CTCBase stand-in that carried it is gone; CTCBase now comes from engine/CTCBase.h through that header).
+#include "engine/CTCScriptedControl.h"
 struct CTCSleepTimer {                          // the 0xC3 interface (descriptive)
     unsigned char _pad00[0x10];
     float         Timer;                        // +0x10
@@ -89,12 +89,12 @@ void CTCVillage::OnHeroSlept()
     }
     for (node = VillagePeople._M_node->_M_next; node != VillagePeople._M_node; node = node->_M_next) {
         CThingAICreature* person = node->_M_data.GetPItem();
-        if (person->HasTC(0x1f) && !person->GetTC<CTCBase>(0x1f)->IsActive())
+        if (person->HasTC(0x1f) && !person->GetTC<CTCScriptedControl>(0x1f)->IsActive())
             node->_M_data.GetPItem()->ResetBrain();
     }
     for (node = VillagePeople._M_node->_M_next; node != VillagePeople._M_node; node = node->_M_next) {
         CThingAICreature* person = node->_M_data.GetPItem();
-        if (person->HasTC(0x1f) && !person->GetTC<CTCBase>(0x1f)->IsActive()
+        if (person->HasTC(0x1f) && !person->GetTC<CTCScriptedControl>(0x1f)->IsActive()
             && node->_M_data.GetPItem()->RequiresAutoPlacement())
             node->_M_data.GetPItem()->InitCreaturePosition();
     }

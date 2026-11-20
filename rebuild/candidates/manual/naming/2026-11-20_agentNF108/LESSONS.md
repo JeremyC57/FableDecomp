@@ -1,0 +1,12 @@
+# NF108 lessons (one line each)
+- mkpay/vland take flags from build_candidates.ps1 only: a row that adds a `// Flags:` line must have its payload patched (tools/fixflags.py) or the recheck grades it without the flag.
+- An old stand-in row with `#pragma optimize("s", on)` re-authored on a shared STLport header needs `// Flags: /Os` (push-mem, pop ecx, `and [..],0` give it away in the diff).
+- A FABLE_FORCEINLINE STLport stand-in (vector<unsigned char>::resize) ported to the shared header needs the inline budget raised (/d2inlS100 /d2inlT200) to expand as retail did.
+- STLport map and multimap of the same key/value share one _Rb_tree type, so one tree COMDAT (operator=, _M_erase, clear) is legitimately bound from both: not a fold.
+- `std::map<...>::_Rep_type` is private in fable_map.h: spell the full `_Rb_tree<K, pair<const K,V>, _Select1st<...>, less<K>, allocator<...> >` in an explicit instantiation.
+- A leaf-only fix (file-scope stand-in enum -> nested enum) renames the row's own leaf too: list it in RENAMES section 1 and respell the other binders of that address in the same hand-back.
+- Map erase(const K&) needs FABLE_RETAIL_STLP_TREE_ERASE + FABLE_RETAIL_STLP_TREE_ERASE_KEY in fable_map.h (C2039 without them); VC7.1 still calls the tree erase out of line.
+- When the queue claim fails on the calling convention (YA vs retail ecx/edx prologue) reject it and put the corrected spelling in NAME_FIXES rather than applying either.
+- Check a 'pre-existing local model' row for other wrong bindings while it is open (008579d0's SetBulletTimeSlowdownMultiplier; 007c25a0's HasHelperPoint): one port fixes several addresses.
+- callers.py shows one witness row per spelling: run gate.py scan on the hand-back and compile every row it lists (tools/probe2.py) before reporting; it found 00502850 still on an old LoadLevel spelling that callers.py never showed.
+- Never record an entry `blocked` without graded forms: an analysed-only entry is `open` with its findings in the APPLIED note.

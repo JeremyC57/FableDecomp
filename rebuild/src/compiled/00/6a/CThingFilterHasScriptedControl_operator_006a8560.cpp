@@ -21,6 +21,7 @@ class CTCScriptedControl { public:
     bool IsActive() { return Locked || !IsTaskListEmpty(); }
 };
 class CThing { public:
+    bool HasScriptThing() const;                // 0x004C7E70 ?HasScriptThing@CThing@@QBE_NXZ (Ego_r / FableWin; NF108 q4487)
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,7 +39,6 @@ class CThing { public:
         return false;
     }
 };
-bool __fastcall CThing_HasScriptThing(CThing* thing);   // 0x004C7E70
 
 class CThingFilter_HasScriptedControl { public:
     bool CheckForActive;                        // +0x00
@@ -47,7 +47,7 @@ class CThingFilter_HasScriptedControl { public:
 
 bool CThingFilter_HasScriptedControl::operator()(CThing* thing) const
 {
-    if (CThing_HasScriptThing(thing) && thing->HasTC(0x1f)) {
+    if (thing->HasScriptThing() && thing->HasTC(0x1f)) {
         if (!CheckForActive || thing->GetTC<CTCScriptedControl>(0x1f)->IsActive())
             return true;
     }

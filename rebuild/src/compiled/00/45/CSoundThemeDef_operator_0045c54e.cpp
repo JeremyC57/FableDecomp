@@ -24,12 +24,11 @@ class CRGBColour { public:                         // B, G, R, A bytes; 4-byte a
     unsigned long m_packed;                 // EditColour at +0x40, not right after the 0x3d-byte base)
 };
 
-struct CAtmosGroupMultimap {                // retail multimap<CCharString,long> (12 bytes)
-    void* m_allocator;
-    void* m_head;
-    unsigned long m_size;
-    CAtmosGroupMultimap& operator=(const CAtmosGroupMultimap& other);   // 0x00432B38
-};
+// NF108 (2026-11-19, q6236): the local CAtmosGroupMultimap stand-in replaced by the shared STLport std::multimap<CCharString, long> (stlport/fable_map.h):
+//   its implicit operator= calls the tree's out-of-line operator= 0x00432B38,
+//   ??4?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+//   (map and multimap share that tree type; the landed 0x004321F0 / 0x0046CE2D bind it the same way).
+#include "stlport/fable_map.h"
 
 class CSoundThemeDef : public CParentDefClassBase { public:   // vtable 0x01233824
     CRGBColour          EditColour;             // +0x3c
@@ -38,7 +37,7 @@ class CSoundThemeDef : public CParentDefClassBase { public:   // vtable 0x012338
     float               Gain;                   // +0x48
     float               Range;                  // +0x4c
     float               Granularity;            // +0x50
-    CAtmosGroupMultimap AtmosGroupMap;          // +0x54
+    std::multimap<CCharString, long> AtmosGroupMap;          // +0x54
     bool                PlayOnlyWhenInside;     // +0x60
     bool                PlayQuietlyWhenInside;  // +0x61
     bool                PlayOnlyWhenOutside;    // +0x62

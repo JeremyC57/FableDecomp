@@ -9,16 +9,23 @@
 // Shape: the region is `(uid >> 40) & 0xffffff` (VC shifts the high dword by 8 and keeps the mask); each arm
 //   calls the lookup itself (the loading arm into a local before its marker test); the builder takes the region and the
 //   low 40 bits of the UID.
-struct CRegionLookup_004fce00 {
-    long GetRegionForLevel(long level);        // 0x004FCE00
-};
+// NF108 (2026-11-19, q4250): the +0x28 member is CThingManager::WorldMap (the landed AllocateNewThingUID 0x0051E100 model) and the
+//   lookup 0x004FCE00 is ?GetMapUID@CWorldMap@@QBEKJ@Z (Ego_r.pdb 0x004D03C0 + FableWin.pdb 0x01C94F90): the local
+//   CRegionLookup_004fce00::GetRegionForLevel stand-in is replaced by the shared engine/CWorldMap.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CWORLDMAP
+#include "fable_string.h"
+#include "engine/CMapInfo.h"
+#include "engine/CWorldMap.h"
 
 unsigned __int64 __stdcall MakeUID_0051d990(unsigned __int64 region, unsigned __int64 id);   // 0x0051D990
 
 class CThingManager {
 public:
     unsigned char _pad00[0x28];
-    CRegionLookup_004fce00* m_pRegionLookup;    // +0x28
+    CWorldMap* WorldMap;                        // +0x28
     unsigned char _pad2c[0x9a - 0x2c];
     bool m_uidRemapDisabled;                    // +0x9a
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);
@@ -36,11 +43,11 @@ unsigned __int64 CThingManager::RemapUIDForSerialisation(bool saving, bool level
     if (levelLess)
         return 0;
     if (saving) {
-        if (region != (unsigned long)m_pRegionLookup->GetRegionForLevel(level))
+        if (region != (unsigned long)WorldMap->GetMapUID(level))
             return uid;
         return MakeUID_0051d990(0xfffffe, uid & 0xFFFFFFFFFFui64);
     }
-    long levelRegion = m_pRegionLookup->GetRegionForLevel(level);
+    long levelRegion = WorldMap->GetMapUID(level);
     if (region == 0xfffffe)
         return MakeUID_0051d990((unsigned long)levelRegion, uid & 0xFFFFFFFFFFui64);
     return uid;

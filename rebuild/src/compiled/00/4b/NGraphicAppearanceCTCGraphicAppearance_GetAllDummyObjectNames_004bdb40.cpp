@@ -19,7 +19,11 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
 class CCharString;
-template <class T> struct CStdVector;                       // std::vector<T> (the caller's names)
+// NF108 (2026-11-19, q4448): the caller's names are STLport std::vector<CCharString> (Ego_r.pdb 0x004C10E0 + FableWin.pdb 0x01D0B750
+//   ?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z;
+//   C3DMeshObject's 0x00A35B30 likewise in both PDBs), from the shared stlport/fable_containers.h (was a CStdVector stand-in); the body
+//   only passes it on.
+#include "stlport/fable_containers.h"
 
 struct SCountBlock {
     long m_references;                                      // +0
@@ -57,7 +61,7 @@ class C3DMeshObject : public CBaseClass { public:                              /
     float              Scale;                               // +0x74
     C3DMeshObject() : CBaseClass(), Mesh(), InversePositionMatrixSetup(false) { }
     virtual ~C3DMeshObject() { }
-    void GetAllDummyObjectNames(CStdVector<CCharString>& names) const;   // 0x00A35B30
+    void GetAllDummyObjectNames(std::vector<CCharString>& names) const;   // 0x00A35B30
 };
 
 namespace NGraphicAppearance {
@@ -122,10 +126,10 @@ class CTCGraphicAppearance { public:
             node->m_value->GetAllMeshes(meshes);
     }
     void GetMeshObject(const CMeshInfo& info, float scale, C3DMeshObject& out) const;   // 0x004BC4F0
-    void GetAllDummyObjectNames(CStdVector<CCharString>& names) const;
+    void GetAllDummyObjectNames(std::vector<CCharString>& names) const;
 };
 
-void CTCGraphicAppearance::GetAllDummyObjectNames(CStdVector<CCharString>& names) const
+void CTCGraphicAppearance::GetAllDummyObjectNames(std::vector<CCharString>& names) const
 {
     CMeshVector meshes;
     GetAllMeshes(meshes);

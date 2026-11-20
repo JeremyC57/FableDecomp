@@ -8,17 +8,11 @@
 #include "engine/CCountedPointer.h"
 class CCharString { public: void* PStringData; };
 class C3DBoundingBox;
-namespace std {
-template <class _Tp> struct less { };
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator { };
-template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
-class map {                                                // STLport 4.6, 12 bytes
-public:
-    void* _M_t[3];
-    map& operator=(const map& __x);                        // 0x00432B38 for map<CCharString, long>
-};
-}
+// NF108 (2026-11-19, q6236): the local std::map model (operator= declared on map) replaced by the shared STLport map
+//   (stlport/fable_map.h): STLport's map::operator= is implicit and inline (`_M_t = x._M_t`), so 0x00432B38 is the tree's out-of-line
+//   ??4?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+//   (as the landed 0x004321F0 / 0x0046CE2D bind it).
+#include "stlport/fable_map.h"
 class CMeshBankStateBlock {
 public:
     class CLODStateBlock {

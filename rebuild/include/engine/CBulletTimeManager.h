@@ -51,6 +51,20 @@ public:
     // ?RemoveBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXPAX@Z, out of line in retail at 0x004C6140.
     void RemoveBulletTimeSlowdownMultiplier(void* key);          // 0x004C6140
 #endif
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_SETSLOWDOWN
+    // NF108 opt-in (2026-11-19, q5099, rows 0x00890AB0 / 0x00890B00 PauseAll*Entities): Ego_r.pdb 0x004C8C50 + FableWin.pdb 0x01D27FE0
+    // ?SetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXJPAXM@Z, out of line in retail at 0x004C6170 (landed with this Leaf).
+    // Declaration only, no layout change.
+    void SetBulletTimeSlowdownMultiplier(long priority, void* key, float multiplier);   // 0x004C6170
+#endif
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_RECALCULATESOUNDPITCH
+    // NF108 opt-in (2026-11-19, q5099, row 0x004C6140 RemoveBulletTimeSlowdownMultiplier): Ego_r.pdb
+    // ?RecalculateSoundPitch@CBulletTimeManager@@AAEXXZ (private), out of line in retail at 0x004C5F10 (landed; 0x004C6170 binds this
+    // spelling). Declaration only, no layout change.
+private:
+    void RecalculateSoundPitch();                                // 0x004C5F10
+public:
+#endif
 #endif
 #ifdef FABLE_RETAIL_CBULLETTIMEMANAGER_INTERPOLATE
     std::map<void*,CBulletTimeInfo> BulletTimeInfoMap;       // +0x00 (retail STLport map, 12 bytes)
@@ -66,12 +80,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CBulletTimeManager) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, BulletTimeInfoMap) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, Override) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, UseDefaultMultiplier) == 0xd);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, LastStrikeActionTick) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, World) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, PlayerManager) == 0x18);
+FABLE_STATIC_ASSERT_AT(69, sizeof(CBulletTimeManager) == 0x1c);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CBulletTimeManager, BulletTimeInfoMap) == 0x0);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CBulletTimeManager, Override) == 0xc);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CBulletTimeManager, UseDefaultMultiplier) == 0xd);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CBulletTimeManager, LastStrikeActionTick) == 0x10);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CBulletTimeManager, World) == 0x14);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CBulletTimeManager, PlayerManager) == 0x18);
 
 #endif // FABLE_ENGINE_CBULLETTIMEMANAGER_H
