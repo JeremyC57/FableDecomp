@@ -61334,9 +61334,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00696af0'
-        Module = '_global'
-        Source = '00/69/CTCCarryable_OnKill_00696af0.cpp'
-        TestSource = '00/69/CTCCarryable_OnKill_00696af0_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>>'
+        Source = '00/69/stdRbtree_clear_00696af0.cpp'
+        TestSource = '00/69/stdRbtree_clear_00696af0_test.cpp'
         PassPattern = 'CTCCARRYABLE_ONKILL_00696AF0_TEST PASS'
     }
     [pscustomobject]@{
@@ -150863,16 +150863,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00696d10'
-        Module = 'CRetailTree_erase00696900'
-        Source = '00/69/CRetailTreeerase00696900_CRetailTreeerase00696900_00696d10.cpp'
-        TestSource = '00/69/CRetailTreeerase00696900_CRetailTreeerase00696900_00696d10_test.cpp'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>>'
+        Source = '00/69/stdRbtree_Rbtree_00696d10.cpp'
+        TestSource = '00/69/stdRbtree_Rbtree_00696d10_test.cpp'
         PassPattern = '00696d10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00696e20'
-        Module = 'CRetailTree_erase00696900'
-        Source = '00/69/CRetailTreeerase00696900_CRetailTreeerase00696900_00696e20.cpp'
-        TestSource = '00/69/CRetailTreeerase00696900_CRetailTreeerase00696900_00696e20_test.cpp'
+        Module = 'std::map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase>>'
+        Source = '00/69/stdmap_map_00696e20.cpp'
+        TestSource = '00/69/stdmap_map_00696e20_test.cpp'
         PassPattern = '00696e20_TEST PASS'
     }
     [pscustomobject]@{
@@ -316287,7 +316287,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00696340'
-        Module = 'std::_Rb_tree'
+        Module = 'std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<NCreatureAction::CActionEventBase>>>>'
         Source = '00/69/stdRbtree_Mfind_00696340.cpp'
         TestSource = '00/69/stdRbtree_Mfind_00696340_test.cpp'
         PassPattern = '00696340_TEST PASS'

@@ -2261,7 +2261,6 @@ _GetActionRegistrar	006f90b0	00692380
 ?GetControlFlags@CTCInterface5A@@QAEPAUCControlFlags@@XZ	0070b460	00694d10
 ?UpdateActionAnimation@CCreatureActionBase@@QAEXXZ	00694890	00694d10
 ?Destroy_00696560@@YIXPAX@Z	00696560	00696830
-?Erase@CRetailTree_erase00696900@@QAEXPAUnode@1@@Z	00696900	00696d10
 ?Erase@CRetailTree_erase00696970@@QAEXPAUnode@1@@Z	00696970	00696d60
 ?Helper_0x00a0c380@@YIMPAUSomeObj@@@Z	00a0c380	00697080
 ??_7CAIGameCameraBase@@6B@	0125c1f4	006971a0

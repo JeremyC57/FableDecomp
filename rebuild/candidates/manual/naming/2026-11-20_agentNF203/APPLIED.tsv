@@ -1,0 +1,44 @@
+entry	address	status	binders_respelled	note
+q11724	0x013CA828	blocked: port (0x005DCF70 left)	0	claim holds (NF194/NF198 census reused; no re-probe). Only row left: 0x005DCF70, the NErase005dcf70 whole-row stand-in (its g_DefStringTable is NErase005dcf70::CDefStringTable, so only a port reaches ?GDefStringTable@@3VCDefStringTable@@A). New: identified the row as CAnimationSet::Remove (Ego_r.pdb 0x0063CB00 + FableWin.pdb 0x01FA0FC0 ?Remove@CAnimationSet@@QAEXABVCCharString@@@Z; TU position after GetRandomLoadedAnim 0x005DCD10, before CAnimationEntry::TransferBinaryIn 0x005DD090; body erases Anims pairs whose key is the name's CRC and whose GroupName equals the inlined GetDefaultGroupName() = DefaultGroup +0x1C) -> NAME_FIXES. Port on engine/CAnimationSet.h (draft opt-in FABLE_RETAIL_CANIMATIONSET_REMOVE in work/r1/hdr, not handed back) graded 3 forms, best DIFFER(299v273): blocked (STATUS 0x005DCF70). No binder of 0x005DCF70 (exe scan: none).
+q11902	0x0099A2F0	blocked: port (partial: 1 row ported; 6 left)	1	claim holds (NF198 census reused: Ego_r.pdb / FableWin.pdb ??0CBaseClassNonCopyable@@IAE@XZ; engine/CBaseClassNonCopyable.h). Ported 0x00993B20 onto engine/CDataInputStream.h (RELOCATION_MATCH, PASS; pick-any note in STATUS / NOTES). Left (each a port onto its class header, not attempted this pass): ??0CBaseClass@N_0099a2f0@@QAE@XZ 0x005177E0 (CMemoryFile: engine/CMemoryFile.h carries Ego_r offsets, the row models the retail layout: needs a retail-layout opt-in) 0x00A0BAC0 (CSoundBankLH, port onto engine/CASoundBank.h base); ??0CBaseObject@N_0099a2f0@@QAE@XZ 0x006B4900 (CEnvironment.h) 0x009E2E30 (CFontManager.h members opt-in = header claim); ??0CBase@@QAE@XZ 0x00904540 (CScriptThing) 0x009D58D0 (CBankFileAsyncEntry).
+q11920	0x00935160	blocked: family (port; 0x00935160 + 0x009352B0)	0	claim holds (NF198 census reused, no re-probe: Ego_r.pdb 0x009588D0 + FableWin.pdb 0x02B6B670 ?CanFire@?$CAIStateGroup_ScriptingBase@VCAIStateGroupBase@@@@IAE_NXZ). REFS: only 0x009352B0 (jmp forwarder, binds _ForwardTarget_00935160). 0x00935160 (22 lines, 7 namespaced local classes: C3DVector, CThing with a component map, Map with two same-TU LowerBound stand-in bodies, Context, CPlayer, CPlayerManager, Condition) needs a whole-row port onto engine/CAIStateGroup_ScriptingBase.h (+ CanFire opt-in), engine/CThing.h (component lookup 170 / 52), engine/CPlayerManager.h and the CVectorMap LowerBound owners; then the self rename with 0x009352B0 as one family. Not attempted this pass (context kept for the mechanical entries; advisor).
+q11923	0x00935160	blocked: family (port; 0x00935160 + 0x009352B0)	0	claim holds (NF198 census reused, no re-probe: Ego_r.pdb 0x009588D0 + FableWin.pdb 0x02B6B670 ?CanFire@?$CAIStateGroup_ScriptingBase@VCAIStateGroupBase@@@@IAE_NXZ). REFS: only 0x009352B0 (jmp forwarder, binds _ForwardTarget_00935160). 0x00935160 (22 lines, 7 namespaced local classes: C3DVector, CThing with a component map, Map with two same-TU LowerBound stand-in bodies, Context, CPlayer, CPlayerManager, Condition) needs a whole-row port onto engine/CAIStateGroup_ScriptingBase.h (+ CanFire opt-in), engine/CThing.h (component lookup 170 / 52), engine/CPlayerManager.h and the CVectorMap LowerBound owners; then the self rename with 0x009352B0 as one family. Not attempted this pass (context kept for the mechanical entries; advisor).
+q11936	0x00662650	blocked: port (rows left 0x007A71B0 0x00890BA0 0x00890C10)	0	claim holds (NF198 / NF191 census reused, no re-probe: Ego_r.pdb 0x0053D510 + FableWin.pdb ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ). Left: 0x00890BA0 / 0x00890C10 bind ?FinishCurrentAction@CThing_Retail@@QAEXXZ through a polymorphic row-local CThing_Retail (22 local classes each); 0x007A71B0 binds ?FinishCurrentAction@CThing@@QAEXXZ through a row-local CThing (13 local classes): whole-row ports onto engine/CThingCreatureBase.h (FLAT_FINISHCURRENTACTION, the 0x00890C80 member-pointer form). 0x007AB190 landed since (NF197). Not attempted this pass.
+q11942	0x006A4D60	blocked: family (4 rows; 0x00833A70 port first)	0	claim holds (NF198 / NF191 census reused, no re-probe: Ego_r.pdb + FableWin.pdb ?ValidateInitialisation@CThingPhysical@@IAE_NXZ). All 3 REFS rows wrong (0x007032F0 QAE CThingPhysical; 0x006A9EF0 / 0x00833A70 ?ValidateInitialisation@CThingCreatureBase@@QAE_NXZ) and the self row defines QAE: the access change is a self rename, all four move together; 0x00833A70 needs a whole-row port first (127 lines, 10 local classes: row-local CThingCreatureBase without a CThingPhysical base, same-TU GetDef stand-in, local CDefPointer). In-place recipe for the other three in NF191 STATUS. Not attempted this pass.
+q12017	0x00696340	done	0	self row respelled (RENAMES s1); the only referencing row 0x006946C0 already binds the D1 spelling (REFS); 0x00696340 ends on one spelling
+q12018	0x00696900	done	3	claim holds (self row 0x00696900 already defines the STLport _M_erase spelling). REFS 0x00696900 0x00696AF0 0x00696D10 0x00696E20 0x01229280: 0x01229280 already on it (nf164); the other three were generated / July stand-ins and are ported onto stlport/fable_map.h with their own self renames (clear, ~_Rb_tree, ~map; RENAMES s1 + s2). 0x00696900 ends on one spelling.
+q12020	0x00846100	open	0	not started
+q12036	0x00C1BC90	open	0	not started
+q12040	0x00A99610	open	0	not started
+q12042	0x0065A5BB	open	0	not started
+q12043	0x009FDE80	open	0	not started
+q12046	0x006A7550	open	0	not started
+q12047	0x006A7560	open	0	not started
+q12053	0x0057BC6E	open	0	not started
+q12057	0x00811760	open	0	not started
+q12058	0x00798F50	open	0	not started
+q12059	0x01237F1C	open	0	not started
+q12062	0x00917330	open	0	not started
+q12064	0x00CDCEB0	open	0	not started
+q12065	0x00CDCB50	open	0	not started
+q12066	0x00F2D5B0	open	0	not started
+q12070	0x005EA3C0	open	0	not started
+q12074	0x007D7EC0	open	0	not started
+q12076	0x00443F90	open	0	not started
+q12078	0x00687D50	open	0	not started
+q12080	0x004C7CA0	open	0	not started
+q12082	0x00687D50	open	0	not started
+q12083	0x00499C50	open	0	not started
+q12090	0x00BC04F0	open	0	not started
+q12091	0x00BE0930	open	0	not started
+q12273	0x00485AA7	open	0	not started
+q12275	0x008BCA00	open	0	not started
+q12276	0x0065D639	open	0	not started
+q12277	0x004A88F0	open	0	not started
+q12278	0x0072F0E0	open	0	not started
+q12281	0x009A4FB0	open	0	not started
+q12283	0x00517850	open	0	not started
+q12285	0x00890150	open	0	not started
+q12286	0x0122A4C0	open	0	not started
+q12287	0x009C0190	open	0	not started
+q12289	0x006572A0	open	0	not started
