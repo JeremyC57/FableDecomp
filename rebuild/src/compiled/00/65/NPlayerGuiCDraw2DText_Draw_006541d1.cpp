@@ -1,3 +1,9 @@
+// Naming (NF160, 2026-11-20, q6213): the local CRetailHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDraw2DText::Draw(CEnginePrimitivePrepareInfo*) -- hand every queued 2D text primitive to the renderer (one primitive handle each), then empty the queue
@@ -49,14 +55,6 @@ class CEnginePrimitivePrepareInfo { public:
 
 namespace NPlayerGui {
 
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    CEnginePrimitiveHandle* begin() { return m_pFirst; }
-    CEnginePrimitiveHandle& operator[](unsigned long n) { return *(begin() + n); }
-    void Resize(long count);                       // 0x00443F90
-};
 
 struct CRetailTextList {                           // VC6 Dinkumware list<CEnginePrimitive2DText>: one sentinel pointer
     struct node { node* next; node* prev; CEnginePrimitive2DText value; };
@@ -76,7 +74,7 @@ class CDraw2DText { public:
     void*               _vtable;                   // +0x00
     unsigned char       _base04[0x18 - 4];         // GUI pointers
     bool                Drawing;                   // +0x18
-    CRetailHandleVector PrimitiveHandles;          // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;          // +0x1c
     CRetailTextList     TextPrimitives;            // +0x28
     void Draw(CEnginePrimitivePrepareInfo* info);
 };
@@ -87,8 +85,8 @@ void CDraw2DText::Draw(CEnginePrimitivePrepareInfo* info)
     if (!texts->empty()) {
         Drawing = true;
         unsigned long count = texts->size();
-        CRetailHandleVector* handles = &PrimitiveHandles;
-        handles->Resize(count);
+        std::vector<CEnginePrimitiveHandle>* handles = &PrimitiveHandles;
+        handles->resize(count);
         unsigned long i = 0;
         for (CRetailTextList::node* n = texts->head->next; n != texts->head; n = n->next, ++i) {
             CEnginePrimitive2DText primitive(n->value);

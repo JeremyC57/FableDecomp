@@ -17,6 +17,15 @@
 // (`lea eax,[ebp+0Bh]`) and the resize fill value in `owner`'s slot; the POD vectors are STLport vectors built through the
 // alloc-proxy third member (`_M_end_of_storage(a, 0)`) -- a plain three-zero initialiser list schedules the map's
 // `lea ecx` one store early.
+// Naming (NF160, 2026-11-20, q6213): the local CRetailHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its reserve call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 #define FABLE_RETAIL_CGAMEPLAYERINTERFACE
 #define FABLE_RETAIL_CGAMEPLAYERINTERFACE_QUICKACCESSBUTTONS
 #define FABLE_RETAIL_CGAMEPLAYERINTERFACE_CONTEXTSENSITIVEBUTTONS
@@ -72,14 +81,6 @@ template<class T> struct CPODVector {              // STLport vector of a trivia
 };
 #define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
 #include "stlport/fable_containers.h"
-struct CRetailHandleVector {                                  // vector<CEnginePrimitiveHandle>
-    void* m_pFirst;
-    void* m_pLast;
-    void* m_pEnd;
-    CRetailHandleVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
-    ~CRetailHandleVector();                                   // 0x00440C40
-    void reserve(unsigned long n);                            // 0x00443F90
-};
 struct CComponentByLongMap {                                  // map<long, NUISystem::CComponent*>
     void* _M_header; unsigned long _M_node_count; long _M_key_compare;
     CComponentByLongMap();                                    // 0x00593ED0
@@ -106,9 +107,9 @@ public:
     std::vector<long>         QuickAccessItems;               // +0x148 (Ego_r.pdb vector<long>)
     CPODVector<long>         ContextSensitiveItems;           // +0x154
     CPODVector<CFadeInFadeOutBase> ContextSensitiveFadeTimes; // +0x160
-    CRetailHandleVector      InventoryMainPrimitiveHandles;   // +0x16c
-    CRetailHandleVector      QuickAccessPrimitiveHandles;     // +0x178
-    CRetailHandleVector      QuickAccessUnusableIconPrimitiveHandles;   // +0x184
+    std::vector<CEnginePrimitiveHandle>      InventoryMainPrimitiveHandles;   // +0x16c
+    std::vector<CEnginePrimitiveHandle>      QuickAccessPrimitiveHandles;     // +0x178
+    std::vector<CEnginePrimitiveHandle>      QuickAccessUnusableIconPrimitiveHandles;   // +0x184
     CRightHandedSet          OldObjectRHSet;                  // +0x190
     float                    OldRotationAngle;                // +0x1a8
     CRightHandedSet          CurrentObjectRHSet;              // +0x1ac
@@ -146,8 +147,8 @@ CTCInventory::CTCInventory(CThing* owner)
 {
     unsigned long quickAccessSlots = PeekPlayerManager().GetMainPlayer().PlayerInterface->GetNumberOfQuickAccessItemButtons();
     QuickAccessItems.resize(quickAccessSlots, 0);
-    QuickAccessUnusableIconPrimitiveHandles.reserve(quickAccessSlots);
-    QuickAccessPrimitiveHandles.reserve(quickAccessSlots * 2);
+    QuickAccessUnusableIconPrimitiveHandles.resize(quickAccessSlots);
+    QuickAccessPrimitiveHandles.resize(quickAccessSlots * 2);
     unsigned long contextSensitiveSlots = PeekPlayerManager().GetMainPlayer().PlayerInterface->GetNumberOfContextSensitiveItemButtons();
     ContextSensitiveItems.reserve(contextSensitiveSlots);
     ContextSensitiveFadeTimes.reserve(contextSensitiveSlots);

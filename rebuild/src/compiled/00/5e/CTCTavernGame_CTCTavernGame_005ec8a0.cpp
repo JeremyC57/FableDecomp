@@ -18,6 +18,15 @@
 //        intelligent pointer are the initialiser list (one shared zero register; the 0.0 load hoisted above the vtable
 //        store); the five scalar clears and the three Resize calls are the constructor body, in source order (the
 //        vector addresses of the first two Resize calls are formed early in edi/ebp).
+// Naming (NF160, 2026-11-20, q6213): the local CHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 class CThing;
 class CThingAICreature;
 class CFontBank;
@@ -40,9 +49,6 @@ template <class T> struct CVectorBase {             // STLport _Vector_base<T, a
 };
 template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
-};
-struct CHandleVector : CVector<CEnginePrimitiveHandle> {   // vector<CEnginePrimitiveHandle>
-    void Resize(long count);                    // 0x00443F90
 };
 
 
@@ -76,11 +82,11 @@ class CTCTavernGame : public CTCBase { public:                    // vtable 0x01
     long          LastBet;                          // +0x38
     long          TotalWinnings;                    // +0x3c
     long          CurrentMoney;                     // +0x40
-    CHandleVector Handles;                          // +0x44
-    CHandleVector BoxHandles;                       // +0x50
-    CHandleVector BetHandles;                       // +0x5c
-    CHandleVector MoneyHandles;                     // +0x68
-    CHandleVector WinningsHandles;                  // +0x74
+    std::vector<CEnginePrimitiveHandle> Handles;                          // +0x44
+    std::vector<CEnginePrimitiveHandle> BoxHandles;                       // +0x50
+    std::vector<CEnginePrimitiveHandle> BetHandles;                       // +0x5c
+    std::vector<CEnginePrimitiveHandle> MoneyHandles;                     // +0x68
+    std::vector<CEnginePrimitiveHandle> WinningsHandles;                  // +0x74
     CCountedPointer<CFontBank> PScoreFont;          // +0x80
     CCountedPointer<CFontBank> PTargetFont;         // +0x88
     CCountedPointer<CFontBank> PStatsFont;          // +0x90
@@ -120,7 +126,7 @@ CTCTavernGame::CTCTavernGame(CThing* thing)
     HasPrizeBeenGiven = false;
     FrameBetWasLastChanged = 0;
     FrameBetChangeStarted = 0;
-    BetHandles.Resize(5);
-    MoneyHandles.Resize(5);
-    WinningsHandles.Resize(5);
+    BetHandles.resize(5);
+    MoneyHandles.resize(5);
+    WinningsHandles.resize(5);
 }

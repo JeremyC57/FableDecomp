@@ -16,11 +16,10 @@
 class C2DVector { public:
     float x, y;
 };
-class CInputEvent {
-public:
-    long      GetEventType() const;                // 0x00A03B40
-    C2DVector GetAnalogueVector() const;           // 0x00A043A0
-};
+// Naming (NF160, 2026-11-20, q4300): the local CInputEvent model replaced by the shared engine/CInputEvent.h (Ego_r.pdb / FableWin.pdb
+//   spellings): 0x00A03B40 GetEventType -> GetType; 0x00A043A0 GetAnalogueVector -> GetJoystickPosition.
+#define FABLE_RETAIL_CINPUTEVENT_ACCESSORS
+#include "engine/CInputEvent.h"
 class CProcessedInput {
 public:
     void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
@@ -51,16 +50,16 @@ public:
 void CInputProcessInventoryStatsScreen::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     Refresh();
-    if (event.GetEventType() == 0x11) {
-        C2DVector stick = event.GetAnalogueVector();
+    if (event.GetType() == 0x11) {
+        C2DVector stick = event.GetJoystickPosition();
         if (stick.y > 0.6f)
             NUISystem::CManager::GetInstance()->SendEvent(1);
         else if (stick.y < -0.6f)
             NUISystem::CManager::GetInstance()->SendEvent(0);
         else
             return;
-    } else if (event.GetEventType() == 0x12) {
-        C2DVector stick = event.GetAnalogueVector();
+    } else if (event.GetType() == 0x12) {
+        C2DVector stick = event.GetJoystickPosition();
         if (stick.y > 0.6f)
             NUISystem::CManager::GetInstance()->SendEvent(7);
         else if (stick.y < -0.6f)

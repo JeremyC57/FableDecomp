@@ -199302,16 +199302,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b40230'
-        Module = 'CEngineMapManager'
-        Source = '00/b4/CEngineMapManager_MapStateSetUnloaded_00b40230.cpp'
-        TestSource = '00/b4/CEngineMapManager_MapStateSetUnloaded_00b40230_test.cpp'
+        Module = 'CEngineWorldMap'
+        Source = '00/b4/CEngineWorldMap_OnGameMapUnloaded_00b40230.cpp'
+        TestSource = '00/b4/CEngineWorldMap_OnGameMapUnloaded_00b40230_test.cpp'
         PassPattern = '00b40230_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b42390'
-        Module = 'CEngineMapManager'
-        Source = '00/b4/CEngineMapManager_SetMapVisibility_00b42390.cpp'
-        TestSource = '00/b4/CEngineMapManager_SetMapVisibility_00b42390_test.cpp'
+        Module = 'CEngineWorldMap'
+        Source = '00/b4/CEngineWorldMap_SetMapVisibility_00b42390.cpp'
+        TestSource = '00/b4/CEngineWorldMap_SetMapVisibility_00b42390_test.cpp'
         PassPattern = '00b42390_TEST PASS'
     }
     [pscustomobject]@{
@@ -203660,8 +203660,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a04110'
         Module = 'CInputEvent'
-        Source = '00/a0/CInputEvent_SetAsJoystickButton3_00a04110.cpp'
-        TestSource = '00/a0/CInputEvent_SetAsJoystickButton3_00a04110_test.cpp'
+        Source = '00/a0/CInputEvent_SetAsJoystickButtonReleased_00a04110.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsJoystickButtonReleased_00a04110_test.cpp'
         PassPattern = '00a04110_TEST PASS'
     }
     [pscustomobject]@{
@@ -205647,9 +205647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b423b0'
-        Module = 'CMapOwner_00b423b0'
-        Source = '00/b4/CMapOwner00b423b0_SetMapVisibility_00b423b0.cpp'
-        TestSource = '00/b4/CMapOwner00b423b0_SetMapVisibility_00b423b0_test.cpp'
+        Module = 'CEngineWorldMap'
+        Source = '00/b4/CEngineWorldMap_SetMapVisibilityAllMaps_00b423b0.cpp'
+        TestSource = '00/b4/CEngineWorldMap_SetMapVisibilityAllMaps_00b423b0_test.cpp'
         PassPattern = '00b423b0_TEST PASS'
     }
     [pscustomobject]@{

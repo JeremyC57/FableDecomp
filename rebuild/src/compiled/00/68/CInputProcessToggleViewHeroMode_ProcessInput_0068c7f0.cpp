@@ -11,10 +11,9 @@
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); the
 // `__forceinline AddGameEvent(long type)` helper reproduces retail's shared `xor al,al` zero stores.
 #include "fable_compiler.h"
-class CInputEvent {
-public:
-    long GetControllerIndex() const;               // 0x00A03B70 (`mov eax,[ecx]`)
-};
+// Naming (NF160, 2026-11-20, q4301): the local CInputEvent model replaced by the shared engine/CInputEvent.h (Ego_r.pdb / FableWin.pdb
+//   spellings): 0x00A03B70 GetControllerIndex -> GetKey.
+#include "engine/CInputEvent.h"
 struct CMemoryBuffer {
 };
 class CGameEvent : public CMemoryBuffer { public:
@@ -59,6 +58,6 @@ public:
 void CInputProcessToggleViewHeroMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     if (IsEventButtonHeld(event)
-        && (IsEventGameAction((EGameAction)(0x70), event) || (MyPlayer->HasMode((EPlayerMode)0x2f) && event.GetControllerIndex() == 1)))
+        && (IsEventGameAction((EGameAction)(0x70), event) || (MyPlayer->HasMode((EPlayerMode)0x2f) && event.GetKey() == 1)))
         processed.AddGameEvent(0x55);
 }

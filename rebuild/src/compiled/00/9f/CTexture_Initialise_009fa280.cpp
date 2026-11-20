@@ -1,5 +1,5 @@
-// CTexture::Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, long pool, bool, bool) -- release any texture held, derive the mip count (halve both extents while both are at least 8, plus one) when none is given, create the D3D texture on the render device; records the allocation source on success
-// Leaf: Initialise
+// CTexture::Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool, bool) -- release any texture held, derive the mip count (halve both extents while both are at least 8, plus one) when none is given, create the D3D texture on the render device; records the allocation source on success
+// Leaf: ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FA280, 181 bytes (+11 int3). `ret 1Ch` (seven arguments, the last two unused).
 // Callees: IDirect3DTexture9::Release (slot 2, COM `__stdcall`), GFGetSystemManager 0x009A4EC0 (`__fastcall`; device = system
 //          +0x60 -> +0x58), IDirect3DDevice9::CreateTexture (slot 23, +0x5c), CTexture::CalcByteLength 0x009F9EE0. The format's
@@ -9,6 +9,11 @@
 //        width test at the loop bottom; the device fetched into a named local before the eight right-to-left pushes;
 //        `hr < 0` is `test eax,eax ; jge` with `xor al,al` on the failure exit; AllocationSource = 1 is the masked `or`.
 // Layout: engine/CTexture.h -- PD3DTexture +0x00, ByteLength (28 bits) + AllocationSource (4 bits) at +0x04.
+// Naming (NF160, 2026-11-20, q4297): the pool parameter respelled in place in the row's existing CTexture declaration from `long` to
+//   ESurfacePool (engine/ESurfacePool.h): Ego_r.pdb 0x00B6A590 + FableWin.pdb 0x030DA090
+//   ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z, the spelling engine/CTexture.h declares and 16
+//   landed callers (0x0041E6D3, 0x006286F0, 0x009A3640 ...) already bind (was ...KJ_N2@Z). Same bytes (an enum is passed as a long).
+#include "engine/ESurfacePool.h"
 struct IDirect3DTexture9 {
     virtual long __stdcall QueryInterface(const void* riid, void** ppv) = 0;
     virtual unsigned long __stdcall AddRef() = 0;
@@ -41,9 +46,9 @@ class CTexture { public:
     unsigned long ByteLength : 28;          // +0x04
     unsigned long AllocationSource : 4;
     void CalcByteLength();                  // 0x009F9EE0
-    bool Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, long pool, bool, bool);
+    bool Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool, bool);
 };
-bool CTexture::Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, long pool, bool, bool)
+bool CTexture::Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool, bool, bool)
 {
     if (PD3DTexture) {
         PD3DTexture->Release();

@@ -29,6 +29,21 @@ public:
     // line at 0x00B401E0 (the CEngine::SetMapAsLoaded 0x00B23E30 tail-jump target). Declaration only.
     void OnGameMapLoaded(long index);                                    // 0x00B401E0
 #endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_ONGAMEMAPUNLOADED
+    // NF160 opt-in (row 0x00B40230): Ego_r.pdb 0x009E05B0 / FableWin.pdb 0x02D61810 ?OnGameMapUnloaded@CEngineWorldMap@@QAEXJ@Z (public), out of
+    // line at 0x00B40230 (the CEngine::SetMapAsUnloaded 0x00B23E60 tail-jump target). Declaration only.
+    void OnGameMapUnloaded(long index);                                  // 0x00B40230
+#endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_SETMAPVISIBILITY
+    // NF160 opt-in (row 0x00B42390): Ego_r.pdb 0x009E2500 / FableWin.pdb 0x02D625D0 ?SetMapVisibility@CEngineWorldMap@@QAEXJ_N@Z (public), out of line
+    // at 0x00B42390 (the CEngine::SetMapVisibility 0x00B23E40 tail-jump target). Declaration only.
+    void SetMapVisibility(long index, bool visible);                     // 0x00B42390
+#endif
+#ifdef FABLE_RETAIL_CENGINEWORLDMAP_SETMAPVISIBILITYALLMAPS
+    // NF160 opt-in (row 0x00B423B0): Ego_r.pdb 0x009E2520 / FableWin.pdb 0x02D62820 ?SetMapVisibilityAllMaps@CEngineWorldMap@@QAEX_N@Z
+    // (public), out of line at 0x00B423B0 (the CEngine::SetMapVisibilityAllMaps 0x00B23E50 tail-jump target). Declaration only.
+    void SetMapVisibilityAllMaps(bool visible);                          // 0x00B423B0
+#endif
 #ifdef FABLE_RETAIL_CENGINEWORLDMAP_GETMAPXY
     // Retail opt-in (chunk 1013b): FableWin.pdb ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@JJ@Z, inline in retail: the map that
     // owns world cell (x, y) from the 32x32-cell index grid Map (0 or less = none), NULL off the grid. Expanded in

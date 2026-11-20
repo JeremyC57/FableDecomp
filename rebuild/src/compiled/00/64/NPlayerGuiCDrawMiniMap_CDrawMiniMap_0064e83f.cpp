@@ -1,3 +1,12 @@
+// Naming (NF160, 2026-11-20, q6213): the local CRetailHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 #pragma optimize("s", on)
 // NPlayerGui::CDrawMiniMap::CDrawMiniMap(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, list), own vtable, the mini-map display built, enabled/active flags set and alpha opaque, three fades built, empty region-exit vector, the display initialised with the GUI def's world resolution and nine primitive handles reserved
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064E83F, length 157 bytes.
@@ -38,12 +47,6 @@ class C2DBoxF { public:
 
 namespace NPlayerGui {
 
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
-    void* m_pFirst;
-    void* m_pLast;
-    void* m_pEnd;
-    void Resize(long count);                       // 0x00443F90
-};
 
 struct CRetailExitVector {                         // VC6 Dinkumware vector<pair<C3DVector,CCharString>>: three words
     void* m_pFirst;
@@ -60,7 +63,7 @@ struct CFadeInFadeOutBase {
 class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
-    CRetailHandleVector PrimitiveHandles;          // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
@@ -85,7 +88,7 @@ CDrawMiniMap::CDrawMiniMap(CPlayerGui* gui, void* drawList)
       FadeInOut(), TextFadeInOut(), ScreenPosFadeInOut(), RegionExits()
 {
     MiniMap.Initialise(CPlayerGui::PeekGuiDef().MiniMapWorldResolution);
-    PrimitiveHandles.Resize(9);
+    PrimitiveHandles.resize(9);
 }
 
 }

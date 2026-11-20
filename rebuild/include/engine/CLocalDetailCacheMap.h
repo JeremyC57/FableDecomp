@@ -19,6 +19,11 @@ class CEngineStaticMapFileBlockManager;
 #pragma pack(push, 1)
 class CLocalDetailCacheMap {
 public:
+#ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_ONMAPVISIBILITYCHANGED
+    // NF160 opt-in (row 0x00B41DB0 CEngineMap::SetMapVisibility): Ego_r.pdb 0x00A8FAB0 / FableWin.pdb 0x02E3B3A0
+    // ?OnMapVisibilityChanged@CLocalDetailCacheMap@@QAEX_N@Z (out of line at 0x00BDE160). Declaration only; no layout change.
+    void OnMapVisibilityChanged(bool visible);                           // 0x00BDE160
+#endif
 #ifdef FABLE_RETAIL_CLOCALDETAILCACHEMAP_OPENSTATICMAP
     // NF76 opt-in (row 0x00B42530 CEngineMap::OpenDevelopmentStaticMap): Ego_r.pdb 0x00A91E30
     // ?OpenStaticMap@CLocalDetailCacheMap@@QAEXPAVCEngineStaticMapFileBlockManager@@AAVCDataInputStream@@@Z (out of line at 0x00BDF010).

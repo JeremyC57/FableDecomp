@@ -6,21 +6,24 @@
 // retail +0x28 (the CDrawBase vector is 12 bytes in the shipped build). Shape: a speed body (the two arguments are loaded into registers before
 // the base call, not pushed through), the vtable store sits between the count push and the member call, and the two position words share
 // the eax zero register -- a 2D coordinate of two 4-byte integers (C2DCoordI-style), not float stores (`fldz`/`fstp` or immediates).
+// Naming (NF160, 2026-11-20, q6213): the local CRetailHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CEnginePrimitiveHandle.h"
 class CPlayerGui;
 
 namespace NPlayerGui {
 
-struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
-    void* m_pFirst;
-    void* m_pLast;
-    void* m_pEnd;
-    void Resize(long count);                       // 0x00443F90
-};
 
 class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c: the cached GUI pointers and the drawing flag
-    CRetailHandleVector PrimitiveHandles;          // +0x1c
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
@@ -39,7 +42,7 @@ class CDrawMouseCursor : public CDrawBase { public:              // vtable 0x012
 CDrawMouseCursor::CDrawMouseCursor(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), Pos(0, 0)
 {
-    PrimitiveHandles.Resize(1);
+    PrimitiveHandles.resize(1);
 }
 
 }

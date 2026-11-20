@@ -9,6 +9,12 @@
 // index +0x58, flags +0x60; inline Clear and the mask helper); the slot is filled by an inline Attach (release the old object,
 // store the new one without an add-ref -- the creator's reference is adopted); the Enable bit is computed before the manager
 // test (`shr 5 ; not ; and 1`); `this` is parked in the `push ecx` slot.
+// Naming (NF160, 2026-11-20, q6213): the local CRetailHandleVector stand-in replaced by the shared STLport 4.6 std::vector<CEnginePrimitiveHandle>
+//   (stlport/fable_containers.h, FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL; the landed 0x0064E1E4 / 0x0064ED06 recipe), so its Resize call binds
+//   0x00443F90 as ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z (STLport one-argument
+//   resize; the self row and 29 landed callers bind it).
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
+#include "stlport/fable_containers.h"
 #include "fable_compiler.h"
 #include "engine/CEnginePrimitiveTypeInfo.h"
 class CEnginePrimitiveHandle;
@@ -87,13 +93,6 @@ public:
     }
 };
 
-struct CRetailHandleVector {                       // STLport vector<CEnginePrimitiveHandle>: first, last, end
-    CEnginePrimitiveHandle* m_pFirst;
-    CEnginePrimitiveHandle* m_pLast;
-    CEnginePrimitiveHandle* m_pEnd;
-    unsigned long GetCount() const { return m_pLast - m_pFirst; }
-    void Resize(long count);                       // 0x00443F90
-};
 
 class CEnginePrimitive {                           // 12 bytes: Type, InterpolationSet, ThemeChannelDesc
 public:
@@ -114,7 +113,7 @@ void __fastcall UpdatePosition_00b91840(CEngineInternalPrimitiveBase* primitive,
 
 class CEngineInternalPrimitiveChanger : public CEngineInternalPrimitiveBase {   // no PDB layout: handle vector +0x48, current index +0x58, flags +0x60
 public:
-    CRetailHandleVector Primitives;                // +0x48
+    std::vector<CEnginePrimitiveHandle> Primitives;                // +0x48
     CIVCountedPointer   MeshEffect;                // +0x54 (CIVCountedPointer<CEngineMeshEffect>)
     long                m_currentIndex;            // +0x58 ActiveIndex (-1 = none)
     bool                PreloadAll;                // +0x5c
@@ -123,8 +122,8 @@ public:
     {
         unsigned long mask = 0;
         long index = m_currentIndex;
-        if (index != -1 && (unsigned long)index < Primitives.GetCount()) {
-            CEngineInternalPrimitiveBase* child = Primitives.m_pFirst[index].Data.Object;
+        if (index != -1 && (unsigned long)index < Primitives.size()) {
+            CEngineInternalPrimitiveBase* child = Primitives[index].Data.Object;
             if (child)
                 mask = child->RenderLayerMask;
         }
@@ -149,9 +148,9 @@ namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo
 
 void CEngineInternalPrimitiveChanger::SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags)
 {
-    if (index >= Primitives.GetCount())
-        Primitives.Resize(index + 1);
-    CEnginePrimitiveHandle& slot = Primitives.m_pFirst[index];
+    if (index >= Primitives.size())
+        Primitives.resize(index + 1);
+    CEnginePrimitiveHandle& slot = Primitives[index];
     CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->PrimitiveManagers[primitive.Type];
     bool enable = (flags & 0x20) == 0;
     if (!manager)

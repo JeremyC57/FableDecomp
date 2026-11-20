@@ -46,6 +46,18 @@ public:
     void SetGameMap(const CIDrawMap* map) { GameMap = map; }
     void OnGameMapLoaded(long index);
 #endif
+#ifdef FABLE_RETAIL_CENGINEMAP_ONGAMEMAPUNLOADED
+    // NF160 opt-in (row 0x00B40230 CEngineWorldMap::OnGameMapUnloaded, which expands it): Ego_r.pdb 0x009DD2B0 / FableWin.pdb 0x02D5C630
+    // ?OnGameMapUnloaded@CEngineMap@@QAEXXZ (no retail out-of-line copy: 0x00B40230 tests LandscapeMap +0x00, calls its
+    // OnGameMapUnloaded 0x00BDBFF0 and clears GameMap +0x08). The row supplies the inline body. Declaration only.
+    void OnGameMapUnloaded();
+#endif
+#ifdef FABLE_RETAIL_CENGINEMAP_SETMAPVISIBILITY
+    // NF160 opt-in (rows 0x00B42390 / 0x00B423B0 CEngineWorldMap::SetMapVisibility / SetMapVisibilityAllMaps): Ego_r.pdb 0x009E2440 /
+    // FableWin.pdb 0x02D5B370 ?SetMapVisibility@CEngineMap@@QAEXAAV?$list@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@_N@Z, out of
+    // line at 0x00B41DB0 (both callers pass the world map's VisibleMapList +0x2C). Declaration only; needs stlport/fable_containers.h first.
+    void SetMapVisibility(std::list<CEngineMap*>& visible_maps, bool visible);   // 0x00B41DB0
+#endif
 #ifdef FABLE_RETAIL_CENGINEMAP
     // Retail opt-in (chunk 723): the inline LandscapeMap accessors (Ego_r.pdb / FableWin.pdb ?GetLandscapeMap@CEngineMap@@QBEPAVCEngineLandscapeMap@@XZ,
     // ?SetLandscapeMap@CEngineMap@@QAEXPAVCEngineLandscapeMap@@@Z); ~CEngineLandscapeRenderer 0x00B67920 expands both on +0x00.

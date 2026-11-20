@@ -7,12 +7,10 @@
 // keyboard kinds 0x14/0x14/0x15 split the three into pressed / released / held.
 // Shape: each device arm returns a full-register bool (`neg/sbb/inc`, `xor eax,eax` / `mov eax,1`); only the
 // fall-through for an unknown device returns through `xor al,al`. `this` is never read (thiscall, `ret 4`).
-enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
-class CInputEvent {
-public:
-    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
-    long GetEventType() const;                     // 0x00A03B40
-};
+// Naming (NF160, 2026-11-20, q4300): the local CInputEvent model replaced by the shared engine/CInputEvent.h (Ego_r.pdb / FableWin.pdb
+//   spellings): 0x00A03B40 GetEventType -> GetType; GetDeviceType 0x00A03B50 unchanged.
+#define FABLE_RETAIL_CINPUTEVENT_DEVICETYPE
+#include "engine/CInputEvent.h"
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h (members not used here)
 public:
     virtual void v00();
@@ -24,11 +22,11 @@ public:
 bool CInputProcessGameBase::IsEventButtonReleased(const CInputEvent& event) const
 {
     if (event.GetDeviceType() == 1)
-        return event.GetEventType() == 0x14;
+        return event.GetType() == 0x14;
     if (event.GetDeviceType() == 2)
-        return event.GetEventType() == 2;
+        return event.GetType() == 2;
     if (event.GetDeviceType() == 3)
-        return event.GetEventType() == 5 || event.GetEventType() == 8 || event.GetEventType() == 11
-            || (event.GetEventType() >= 27 && event.GetEventType() <= 31);
+        return event.GetType() == 5 || event.GetType() == 8 || event.GetType() == 11
+            || (event.GetType() >= 27 && event.GetType() <= 31);
     return false;
 }
