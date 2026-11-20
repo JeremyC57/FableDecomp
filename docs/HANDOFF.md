@@ -15,16 +15,18 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   (symbol-number order, the inline-frequency heuristic, the CBankFile.h assert-pin conflict).
 - Open regression: 0x007E2A60 (CBankFile.h assert names; do not repin, re-author the row).
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf170)
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf174)
 - Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` (nf148-nf170, 524 rows),
   B's b12 / reports_b4 rows, and the engine/CSpawnedFunc1.h include fix (5 rows that did not compile at HEAD now match; 67/67 includers good).
-- Agents running at the time of writing: NF171 (CThing / player GUI), NF172 (render / shader / texture / engine), NF173 (mixed engine / TC).
+- Later landings nf171 / nf171b / nf172 / nf173 / nf174 (18 + 21 + 36 + 6 rows). Agents running at the time of writing: NF175 (creature
+  action / AI / hero / sound voice), NF176 (long-tail engine / sound DSP / navigation), NF177 (render / particle / TC entries returned by NF172-NF173).
   Their slices are in `$S/w22/agentNF17x/`; land each with the procedure in `docs/journal/2026-11/COORDINATION_LOG.md` (nf15x-nf17x lines).
 - Held rows (kept under `naming/2026-11-20_agentNF16x/held/`, fixes queued): 0x00DCF6E0 (new ??0CTeamSpawn clash), 0x00A99610 (new
   FindFirstObject clash). b6 (0x00B0A140) waits for the 0x00B0A160 port.
 - New rules (EXTRA_RULES 2026-11-20, advisor decisions): explicit-instantiation scaffolding for private members; a static's initializer /
   atexit-destructor pair may land with its known LNK2005; a `_quarantine/` header is not a shared header for the local-model rule.
 - Open entries of handed-back agents are unclaimed in COORDINATION_CLAIMS so mkagent can re-pick them; locks of B's reserved rows read `acctB`.
+- The split gate counts only callers' bindings: check the self row's `// Leaf:` before holding a "created split" (GOTCHAS 2026-11-20).
 - Found today, queued: 0x007D7EC0 DIFFER(182v66) at HEAD; gen_class_headers.py does not guard hand opt-ins in `_quarantine/`.
 
 ## State
