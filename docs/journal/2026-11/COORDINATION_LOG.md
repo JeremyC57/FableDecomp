@@ -533,3 +533,5 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 A: landed nf169 (26 rows): creature action / AI state group names; seven self renames.
 2026-11-20 B->A: Landed p25 0x00E9E420 NScript::CV_IntroductionToTrophiesScript::CBriarRose::Main (batches/2026-11-20_landing_p25_00e9e420). Headers: none.
 2026-11-20 A: landed nf170 (22 rows): GetSubDef binders / owners on the shared header, search tools and Transfer<T> names; LNK2005 5 -> 1 against HEAD; 0x007D7EC0 found DIFFER at HEAD (queued).
+2026-11-20 B->A: Landed p25 0x0070E8B0 CAnimateThing::Update (batches/2026-11-20_landing_p25_0070e8b0). Headers: engine/CAnimateThing.h engine/CAnimSet.h . Newly flagged: 5 rows (newly_flagged_rows.tsv).
+2026-11-20 B->A: NAME_FIXES from p25 0x0070E8B0 (batches/2026-11-20_landing_p25_0070e8b0/NAME_FIXES.tsv), incl. a labels-DB respell 0x0129BA3C g_NormaliseEpsilon -> DELTA_NOTIONAL_ZERO. The row is ?Update@CAnimateThing@@QAEXABVCAnimateThingUpdate@@@Z, not the catalog's UpdateFrameLogic.

@@ -1,0 +1,6 @@
+set	address	class	header
+0070e8b0	0070bfc0	CAnimSet	engine/CAnimSet.h (ANIMATETHING_UPDATE opt-in: SetAlpha's inline definition; the landed SetAlpha row declares a local CAnimSet)
+0070e8b0	0070d030	CAnimSet	engine/CAnimSet.h (ANIMATETHING_UPDATE opt-in declares the private Update(const CAnimateThingUpdate&); the landed row uses a local CAnimSet / CAnimSetUpdateInfo model)
+0070e8b0	0070c2c0	CAnimSet	engine/CAnimSet.h (ANIMATETHING_UPDATE opt-in declares the private UpdateInternalAlphas; the landed row uses a local CAnimSet)
+0070e8b0	0070d390	CAnimateThing	engine/CAnimateThing.h (UPDATE_CALLEES opt-in declares UpdateCombinationAnimList(std::list<CAnimSet>&, const CAnimateThingUpdate&); the landed row uses local CAnimSet / list / CAnimSetUpdateInfo models)
+0070e8b0	0070c590	CAnimateThing	engine/CAnimateThing.h (UPDATE_CALLEES opt-in declares PreloadAnims(const CCompleteAnimation&); the landed row uses local models)

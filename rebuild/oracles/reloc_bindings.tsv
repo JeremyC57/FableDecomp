@@ -39606,3 +39606,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?TransferBinaryIn@?$CPersistTraits@W4EPlaceInHeroSouls@@@@QAEXPAVCMemoryDataInputStream@@PAW4EPlaceInHeroSouls@@@Z	00cdceb0	00cdcdd0
 ??_7?$CPersistContext_TransferableComponent@W4EFeatAttackType@@@@6B@	012fb898	00f2d4d0
 ?TransferBinaryIn@?$CPersistTraits@W4EFeatAttackType@@@@QAEXPAVCMemoryDataInputStream@@PAW4EFeatAttackType@@@Z	00f2d5b0	00f2d4d0
+?PreloadAnims@CAnimateThing@@AAEXABVCCompleteAnimation@1@@Z	0070c590	0070e8b0
+?Update@CAnimSet@@AAEXABVCAnimateThingUpdate@@@Z	0070d030	0070e8b0
+?UpdateCombinationAnimList@CAnimateThing@@AAEXAAV?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@ABVCAnimateThingUpdate@@@Z	0070d390	0070e8b0
+?UpdateInternalAlphas@CAnimSet@@AAEXXZ	0070c2c0	0070e8b0
