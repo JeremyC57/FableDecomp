@@ -118,6 +118,17 @@ public:
 #ifdef FABLE_RETAIL_MINION_TRESPASS_UPDATE_PASS24
     template<class Filter> const COpinionDeed* FindMostRecentDeed(EOpinionDeedType, const Filter&,long*,bool) const;
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DECRIMINALISEALLKNOWNCRIMES
+    // NF196 opt-in (q4522, row 0x0065C45A CTCVillage::EnableGuards): Ego_r.pdb 0x00591D30 + FableWin.pdb 0x01F48B90
+    // ?DecriminaliseAllKnownCrimes@CTCCreatureOpinionOfHero@@QAEXXZ, out of line in retail at 0x00684050. Declaration only.
+    void DecriminaliseAllKnownCrimes();                                  // 0x00684050
+#endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_FINDMOSTRECENTDEED_FILTER
+    // NF196 opt-in (q4522, row 0x0065BFFA CTCVillage::IsReportedOrUnreportedCrimeKnown): Ego_r.pdb 0x006A08DC + FableWin.pdb 0x0217950C
+    // ??$FindMostRecentDeed@VCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@ABV..@PAJ_N@Z
+    // (the filter-only overload, out of line in retail at 0x006610C7; landed 0x0092D060 binds it). Declaration only; no layout change.
+    template<class Filter> const COpinionDeed* FindMostRecentDeed(const Filter&,long*,bool) const;
+#endif
     CTCCreatureOpinionOfHero(CThing& thing);                             // 0x00684420 ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
     virtual void OnSerialise(CPersistContext& context, bool loading);   //  1 0x00684610 (public: Ego_r UAE)
     virtual void OnInitialActivate();                                    //  6 0x006815C0

@@ -1,0 +1,101 @@
+addr       parity           behav  name
+00436380   MATCH            PASS   _global::IsThingAlive_ptr_00436380
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations (engine/CTCObjectAugmentations.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CTCHaste (engine/CTCHaste.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0057d5a0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+0057d5a0   WARN RELOC_NAME: ?UpdateAppearanceStats@CTCHeroStats@@QAEX_N@Z -> 0057d23b labelled 'FrameUpdate_ApplyMorphEffect'
+0057d5a0   RELOCATION_MATCH PASS   CTCHeroStats::FrameUpdate
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3a95   RELOCATION_MATCH PASS   CTCInventoryWeapons::OnSerialise
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0064a1ae   RELOCATION_MATCH PASS   NPlayerGui::CDrawPerceivers::Update
+0065a852   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCEnemy (engine/CTCEnemy.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+0065a852   RELOCATION_MATCH PASS   CTCVillage::SetEnemyToHeroStatus
+0065b2c4   RELOCATION_MATCH PASS   CTCVillage::DetachFromDummyVillager
+0065b349   WARN RELOC_NAME: ??$IS_THING_DEAD@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z -> 0065d639 labelled '_global::IsThingAlive_ptr_0065d639'
+0065b349   RELOCATION_MATCH PASS   CTCVillage::TryToRespawnDefNamed
+0065bffa   RELOCATION_MATCH PASS   CTCVillage::IsReportedOrUnreportedCrimeKnown
+0065c45a   WARN RELOC_NAME: ?SetRespawnable@CTCDummyVillager@@QAEX_N@Z -> 0072f0e0 labelled '_global::SetMember_byte0x48_0072f0e0'
+0065c45a   RELOCATION_MATCH PASS   CTCVillage::EnableGuards
+0065c781   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CASoundBank (engine/CASoundBank.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CSoundInit (engine/CSoundInit.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CThingSoundEmitter (engine/CThingSoundEmitter.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCLight (engine/CTCLight.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CVillageDef (engine/CVillageDef.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+0065c781   WARN RELOC_NAME: ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ -> 0065be32 labelled 'CGuiControlComboBox_0065be32::ReleaseMembers'
+0065c781   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0065c781   RELOCATION_MATCH PASS   CTCVillage::FrameUpdate
+007bdac7   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007bdac7   RELOCATION_MATCH PASS   NThingShot::CTCShotDefinitionDrainLife::UpdateCollision
+00836be0   RELOCATION_MATCH PASS   _global::IsThingDead_00836be0
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_StealthSeekEnemy (engine/CAIStateGroup_StealthSeekEnemy.h)
+0093c6d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0093c6d0   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation
+00956380   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00956380   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattleRespondToLightning (engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h)
+00956380   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::Update
+00cf0c00   MATCH            PASS   sub_00cf0c00
+00e362b0   RELOCATION_MATCH PASS   CAC_Owner::GetRandomSpeech
+00e53cb0   WARN STANDIN_LEAF ?GetRandomSpeech@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@AAE?AVCCharString@@XZ (catalog CAC_Owner::GetRandomSpeech; names another function)
+00e53cb0   RELOCATION_MATCH PASS   CAC_Owner::GetRandomSpeech
+
+WINS: 17
+  00436380 MATCH _global::??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z
+  0057d5a0 RELOCATION_MATCH CTCHeroStats::FrameUpdate
+  005c3a95 RELOCATION_MATCH CTCInventoryWeapons::OnSerialise@CTCInventoryWeapons
+  0064a1ae RELOCATION_MATCH NPlayerGui::CDrawPerceivers::Update
+  0065a852 RELOCATION_MATCH CTCVillage::SetEnemyToHeroStatus
+  0065b2c4 RELOCATION_MATCH CTCVillage::?DetachFromDummyVillager@CTCVillage@@QAEXPAVCThing@@@Z
+  0065b349 RELOCATION_MATCH CTCVillage::?TryToRespawnDefNamed@CTCVillage@@QAEPAVCThingAICreature@@ABVCCharString@@ABVC3DVector@@@Z
+  0065bffa RELOCATION_MATCH CTCVillage::?IsReportedOrUnreportedCrimeKnown@CTCVillage@@QAE_NXZ
+  0065c45a RELOCATION_MATCH CTCVillage::?EnableGuards@CTCVillage@@QAEX_N@Z
+  0065c781 RELOCATION_MATCH CTCVillage::?FrameUpdate@CTCVillage@@QAEXXZ
+  007bdac7 RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::UpdateCollision
+  00836be0 RELOCATION_MATCH _global::??$IS_THING_DEAD@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z
+  0093c6d0 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation
+  00956380 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::?Update@CAIStateGroup_MazeTutorialBattleRespondToLightning@@UAEXXZ
+  00cf0c00 MATCH _gapscan::?GetParentScript@CEntranceGuard@CQ_ArenaHoldingScriptScript@NScript@@UBEPAVCScriptBase@@XZ
+  00e362b0 RELOCATION_MATCH CAC_Owner::?GetRandomSpeech@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@AAE?AVCCharString@@XZ
+  00e53cb0 RELOCATION_MATCH CAC_Owner::?GetRandomSpeech@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@AAE?AVCCharString@@XZ

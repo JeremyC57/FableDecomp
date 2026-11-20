@@ -1,95 +1,62 @@
 #include "fable_compiler.h"
-#pragma optimize("s", on)
 // CTCVillage::IsReportedOrUnreportedCrimeKnown() -- true when the village has recorded crimes, or when any live villager's opinion-of-hero component (interface 79) holds a crime deed that makes it run for a guard
-// Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
-// Leaf: IsReportedOrUnreportedCrimeKnown
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed; map pointer made const (the row grades the const LowerBound).
-// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Leaf: ?IsReportedOrUnreportedCrimeKnown@CTCVillage@@QAE_NXZ
 // Retail: Fable.exe @ 0x0065BFFA, 144 bytes; size TU (unaligned entry): `optimize("s",on)`.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; IS_THING_ALIVE<CBaseObject*>(CBaseObject* const&) 0x0040DCE0
-//          (__fastcall); std::bitset<>::test(size_t) const 0x00410DE0 (interface 79); CVectorMap<ETCInterfaceType,CTCBase*>::
-//          LowerBound 0x004365B0 (this TU's own instantiation; inlined GetTC); CTCCreatureOpinionOfHero::FindMostRecentDeed<
-//          COpinionDeedFilter_IsCrimeToRunAndFindAGuard>(const Filter&, long*, bool) 0x006610C7.
-// Layout: retail CTCVillage VillagePeople +0x2c (bare list head pointer); PlayersCrimes (set<long>, 12 bytes) +0x64 with
-//         its node count at +0x68 (PDB +0xdc/+0xe0).
-// Shape: the non-empty early return precedes the frame's register pushes; `this` spilled to [ebp-0xc]; the villager binds
-//        IS_THING_ALIVE through a derived-to-base temporary at [ebp-8] (then the GetTC key); the empty filter object is
-//        the byte at [ebp-1]; the found arm's `mov al,1` jumps back to the shared epilogue.
-class CTCBase;
-
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; IS_THING_ALIVE<CThing*>(CThing* const&) 0x0040DCE0 (__fastcall);
+//          std::bitset<>::test(size_t) const 0x00410DE0 (interface 79); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0
+//          (inlined GetTC); CTCCreatureOpinionOfHero::FindMostRecentDeed<COpinionDeedFilter_IsCrimeToRunAndFindAGuard>(const Filter&,
+//          long*, bool) const 0x006610C7.
+// NF196 (2026-11-20, q4522): whole-row port onto the shared engine/CTCVillage.h (VillagePeople list<CIntelligentPointer<CThingAICreature> >,
+//   PlayersCrimes set<long>) and engine/CTCCreatureOpinionOfHero.h in the shape of the landed same-TU sibling 0x0065B142; the row-local
+//   CBaseObject / CThing / CBaseIntelligentPointer / CIntelligentPointer / CTCCreatureOpinionOfHero / CTCVillage models are gone. The
+//   villager is a CThing* taken from the CThingAICreature list (the derived-to-base conversion), so IS_THING_ALIVE binds FableWin.pdb
+//   ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z at 0x0040DCE0 (was ?IS_THING_ALIVE@@YI_NABQAVCBaseObject@@@Z) and the deed search
+//   binds the PDB member template ??$FindMostRecentDeed@VCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@@CTCCreatureOpinionOfHero@@QBEPBV...
+//   at 0x006610C7 (as landed 0x0092D060; was the non-template stand-in ?FindMostRecentDeed@CTCCreatureOpinionOfHero@@QAEPAV...).
+//   COpinionDeedFilter_IsCrimeToRunAndFindAGuard has no shared header: the empty filter class of the landed 0x0092D060.
+// Pick-any (NF196): `optimize("s", on)` sits after the shared includes so the header inline COMDATs keep their owners' bodies
+//   (see 0x0065B2C4); std::bitset<274>::test is declaration-only (FABLE_RETAIL_STLP_BITSET_TEST_DECL, owner 0x00410DE0).
+// Inferred: the component lookup goes through the const CThing::GetTC (`static_cast<const CThing*>(villager)`): retail calls the
+//   const CVectorMap::LowerBound 0x004365B0 at 0x0065C050; the non-const GetTC grades RELOCATION_MATCH too but binds the non-const
+//   ?LowerBound@..@QAEPAU.. (0x0040F020's symbol) at 0x004365B0 (RELOC_CONFLICT). The villager stays a CThing* for IS_THING_ALIVE<CThing*>.
+#define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_ISREPORTEDORUNREPORTEDCRIMEKNOWN
+#define FABLE_RETAIL_CTCVILLAGE_MIRROREDCRIMES
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_SET
+#define FABLE_RETAIL_STLP_SET_EMPTY
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CBaseObject {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274>       m_present;                    // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-};
-class CThing : public CBaseObject {
-public:
-    bool HasTC(long type) const { return m_present.test(type); }
-    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-};
-bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
-
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-class COpinionDeed;
-class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:};
-class CTCCreatureOpinionOfHero { public:
-    COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* index,
-                                     bool includeReported);   // 0x006610C7
-};
-
-struct SVillagerNode {                          // STLport list node
-    SVillagerNode* _M_next;
-    SVillagerNode* _M_prev;
-    CIntelligentPointer<CThing> _M_data;
-};
-
-class CTCVillage { public:
-    unsigned char  _pad_0x00[0x2c];
-    SVillagerNode* VillagePeople;               // +0x2c list head node
-    unsigned char  _pad_0x30[0x34];
-    void*          PlayersCrimesHeader;         // +0x64 set<long> header node
-    unsigned long  PlayersCrimesCount;          // +0x68 node count
-    bool IsReportedOrUnreportedCrimeKnown();
-};
-
-bool CTCVillage::IsReportedOrUnreportedCrimeKnown()
-{
-    if (PlayersCrimesCount != 0)
-        return true;
-    for (SVillagerNode* node = VillagePeople->_M_next; node != VillagePeople; node = node->_M_next) {
-        CThing* villager = node->_M_data.GetPItem();
-        if (IS_THING_ALIVE(villager) && villager->HasTC(79)) {
-            CTCCreatureOpinionOfHero* opinion = (CTCCreatureOpinionOfHero*)villager->GetTC(79);
-            COpinionDeedFilter_IsCrimeToRunAndFindAGuard filter;
-            if (opinion->FindMostRecentDeed(filter, 0, true))
-                return true;
-        }
-    }
-    return false;
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO
+#define FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_FINDMOSTRECENTDEED_FILTER
+#include "fable_string.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCVillage.h"
+#include "engine/CTCCreatureOpinionOfHero.h"
+#pragma optimize("s", on)
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public: COpinionDeedFilter_IsCrimeToRunAndFindAGuard() {} };
+template<class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing) {
+ if(thing!=0) { if(!thing->IsDead())return true; }
+ return false;
+}
+bool CTCVillage::IsReportedOrUnreportedCrimeKnown() {
+ if(!PlayersCrimes.empty())return true;
+ for(std::list<CIntelligentPointer<CThingAICreature> >::iterator i=VillagePeople.begin();i!=VillagePeople.end();++i) {
+  CThing* villager=i->Get();
+  if(IS_THING_ALIVE(villager) && villager->HasTC(TCI_CREATURE_OPINION_OF_HERO)) {
+   const CTCCreatureOpinionOfHero* opinion=static_cast<const CTCCreatureOpinionOfHero*>(&static_cast<const CThing*>(villager)->GetTC(TCI_CREATURE_OPINION_OF_HERO));
+   if(opinion->FindMostRecentDeed(COpinionDeedFilter_IsCrimeToRunAndFindAGuard(),0,true))return true;
+  }
+ }
+ return false;
 }

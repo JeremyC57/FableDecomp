@@ -1299,7 +1299,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004362c0	CCountedPointer_Release_004362c0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004362c0.cpp
 00436300	CCountedPointer_Release_00436300	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436300.cpp
 00436340	CCountedPointer_Release_00436340	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436340.cpp
-00436380	IsThingAlive_ptr_00436380	_global	__fastcall	bool	1	CThingBuilding * *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\global_ISTHINGALIVECThingBuilding_00436380.cpp
+00436380	IS_THING_ALIVE<const CThing*>	_global	__fastcall	bool	1	CThingBuilding * *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\global_ISTHINGALIVECThingBuilding_00436380.cpp
 004364c0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004364c0.cpp
 00436500	GetMapwhoArea	CThingSearchTools	__thiscall	C2DBoxI	4	CThingSearchTools *,CThingMap *,long,C2DBoxI *	1	yes	accepted									
 00436560	CFadeInFadeOutBase	CFadeInFadeOutBase	__thiscall	void	1	CTCHeroStats *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CTCHeroStats_SoberUp_00436560.cpp
@@ -24794,7 +24794,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00836a50	~CThingSoundEmitter	CThingSoundEmitter	__thiscall	void	1	CThingSoundEmitter *	1	yes	accepted									
 00836ad0	RenderUpdate	CThingSoundEmitter	unknown	undefined	0		0	yes	accepted									
 00836bd0	DrawIsDrawable	CThingSoundEmitter	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00836be0	IsThingDead_00836be0	_global	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
+00836be0	IS_THING_DEAD<CIntelligentPointer<const CThing> >	_global	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
 00836c10	`scalar_deleting_destructor'	CThingSoundEmitter	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00836c10.cpp
 00836c50	ConstructFromParams	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan							
 00836d00	~CThingTrackNode	CThingTrackNode	__thiscall	void	1	CInputProcessManager *	1	yes	accepted									
@@ -49485,7 +49485,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cf0790	Main	NScript::CQ_ArenaHoldingScriptScript	unknown	undefined	0		0			discovered	gapscan							
 00cf0b50	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>	unknown	undefined	0		0			discovered	gapscan							
 00cf0b60	Alloc	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
-00cf0c00	sub_00cf0c00	_global	unknown	undefined	0		0			discovered	gapscan							
+00cf0c00	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::GetParentScript	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	unknown	undefined	0		0			discovered	gapscan							
 00cf0c10	Init	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	unknown	undefined	0		0			discovered	gapscan							
 00cf0c20	`scalar deleting destructor'	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CLandscapeBackgroundPatch_vectordeletingdestructor_00cf0c20.cpp
 00cf0c40	Alloc	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
@@ -52652,7 +52652,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e33de0	`scalar deleting destructor'	NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e3\CLandscapeBackgroundPatch_vectordeletingdestructor_00e33de0.cpp
 00e33e00	Init	NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving	__thiscall	void	1	CAC_DummyMoving *	1	yes	accepted									
 00e33ea0	Main	NScript::CV_ArcheryCompetitionScript::CAC_Owner	unknown	undefined	0		0			discovered	gapscan							
-00e362b0	GetRandomSpeech	CAC_Owner	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
+00e362b0	NScript::CV_ArcheryCompetitionScript::CAC_Owner::GetRandomSpeech	NScript::CV_ArcheryCompetitionScript::CAC_Owner	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
 00e36390	WatchForAttack	NScript::CV_ArcheryCompetitionScript	__thiscall	void	2	CV_ArcheryCompetitionScript *,CScriptThing	1	yes	accepted									
 00e36590	DoTimesUp	NScript::CV_ArcheryCompetitionScript	__thiscall	void	3	CV_ArcheryCompetitionScript *,CScriptThing *,CScriptGameResourceObjectScriptedThingBase *	1	yes	accepted									
 00e36750	DoCountDown	NScript::CV_ArcheryCompetitionScript	__thiscall	void	2	CV_ArcheryCompetitionScript *,long	1	yes	accepted									
@@ -52892,7 +52892,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e538f0	IsHeroWearingAnyTash	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
 00e53ad0	IsHeroWearingAnyOddHairdo	NScript::CV_BeardyBaldyScript	__thiscall	bool	1	CV_BeardyBaldyScript *	1	yes	accepted									
 00e53c70	ResetRandomSpeechTime	NScript::CV_BeardyBaldyScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
-00e53cb0	GetRandomSpeech	CAC_Owner	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
+00e53cb0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::GetRandomSpeech	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
 00e53d90	WatchForAttack	NScript::CV_BeardyBaldyScript	__thiscall	void	2	CV_BeardyBaldyScript *,CScriptThing	1	yes	accepted									
 00e53f60	SetWanderPointAndDistance	NScript::CV_BeardyBaldyScript	__thiscall	void	3	CV_BeardyBaldyScript *,CScriptThing *,C3DVector *	1	yes	accepted									
 00e54060	SuspendableProcess	CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>	unknown	undefined	0		0			discovered	gapscan							

@@ -1,87 +1,51 @@
 #include "fable_compiler.h"
-#pragma optimize("s", on)
-// CTCVillage::DetachFromDummyVillager(CThing* villager) -- for every live village dummy whose interface-214 component is attached to this villager, detach it
-// Leaf: DetachFromDummyVillager
-// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed.
-// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// CTCVillage::DetachFromDummyVillager(CThing* villager) -- for every live village dummy whose dummy-villager component holds this villager, evict it
+// Leaf: ?DetachFromDummyVillager@CTCVillage@@QAEXPAVCThing@@@Z
 // Retail: Fable.exe @ 0x0065B2C4, 133 bytes (`ret 4`); size TU (unaligned entry): `optimize("s",on)`.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2); IS_THING_ALIVE<CBaseObject*>(CBaseObject* const&) 0x0040DCE0
-//          (__fastcall); std::bitset<>::test(size_t) const 0x00410DE0 (interface 214, edi hoisted); CVectorMap<
-//          ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined GetTC); the component's detach method 0x0065F01D
-//          (manifest "CTCVillage::InitialiseSecuritySweeps" is wrong: it is called on the component; real name unknown).
-// Layout: retail CTCVillage VillageDummies +0x74 (bare list head pointer, PDB +0xf8); list node {next, prev,
-//         CIntelligentPointer<CThing> +8}; the interface-214 component holds its villager as CIntelligentPointer<CThing>
-//         at +0x30.
-// Shape: `this` spilled to [ebp-8] for the end re-read; the dummy binds IS_THING_ALIVE's const reference through a
-//        derived-to-base (CThing* -> CBaseObject*) temporary at [ebp-4], later the GetTC key (a const-qualification
-//        conversion does not keep the dummy in esi).
-class CTCBase;
-class CThing;
-
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2); IS_THING_ALIVE<CThing*>(CThing* const&) 0x0040DCE0 (__fastcall);
+//          std::bitset<>::test(size_t) const 0x00410DE0 (interface 214); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020
+//          (inlined GetTC); CTCDummyVillager::Evict 0x0065F01D.
+// NF196 (2026-11-20, q4522): whole-row port onto the shared engine/CTCVillage.h + engine/CTCDummyVillager.h in the shape of the
+//   landed sibling 0x0065B142 CTCVillage::EnableVillagerDefTypes (same TU): the row-local CBaseObject / CThing / CBaseIntelligentPointer /
+//   CIntelligentPointer / CTCDummyVillager / CTCVillage models are gone; IS_THING_ALIVE is the sibling's same-TU template, binding
+//   FableWin.pdb ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z at 0x0040DCE0 (was ?IS_THING_ALIVE@@YI_NABQAVCBaseObject@@@Z) and the
+//   component call binds the PDB ?Evict@CTCDummyVillager@@QAEXXZ at 0x0065F01D (Ego_r.pdb + FableWin.pdb; the landed self row's Leaf;
+//   was the stand-in ?Detach@CTCDummyVillager@@QAEXXZ).
+// Pick-any (NF196): the TU's `optimize("s", on)` sits after the shared includes, so the header inline COMDATs this object defines
+//   (_List_iterator_base ctor / operator!= / _M_incr, IS_THING_ALIVE<CThing*>) keep the bodies of their owner rows 0x0041C780 /
+//   0x0041C7C0 / 0x0041C7A0 / 0x0040DCE0 (cmpbody: bytes and relocations equal); with the pragma at the top, operator!= and _M_incr
+//   differ (18 v 22, 7 v 7 bytes). std::bitset<274>::test is declaration-only (FABLE_RETAIL_STLP_BITSET_TEST_DECL, as at HEAD; owner
+//   0x00410DE0). The row's own bytes grade the same either way (RELOCATION_MATCH).
+#define FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_DETACHFROMDUMMYVILLAGER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
-#include "engine/CVectorMap.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CBaseObject {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274>       m_present;                    // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    bool HasTC(long type) const { return m_present.test(type); }
-    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return it->second;
-    }
-};
-class CThing : public CBaseObject {};
-bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
-
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-class CTCDummyVillager { public:                       // the dummy's interface-214 component (class name unknown)
-    unsigned char _pad_0x00[0x30];
-    CIntelligentPointer<CThing> PVillager;          // +0x30
-    void Detach();                              // 0x0065F01D
-};
-
-struct SThingNode {                             // STLport list node
-    SThingNode* _M_next;
-    SThingNode* _M_prev;
-    CIntelligentPointer<CThing> _M_data;
-};
-
-class CTCVillage { public:
-    unsigned char _pad_0x00[0x74];
-    SThingNode*   VillageDummies;               // +0x74 list head node
-    void DetachFromDummyVillager(CThing* villager);
-};
-
-void CTCVillage::DetachFromDummyVillager(CThing* villager)
-{
-    for (SThingNode* node = VillageDummies->_M_next; node != VillageDummies; node = node->_M_next) {
-        CThing* dummy = node->_M_data.GetPItem();
-        if (IS_THING_ALIVE(dummy) && dummy->HasTC(214)) {
-            CTCDummyVillager* component = (CTCDummyVillager*)dummy->GetTC(214);
-            if (component->PVillager.GetPItem() == villager)
-                component->Detach();
-        }
-    }
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#include "fable_string.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCVillage.h"
+#include "engine/CTCDummyVillager.h"
+#pragma optimize("s", on)
+template<class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing) {
+ if(thing!=0) { if(!thing->IsDead())return true; }
+ return false;
+}
+void CTCVillage::DetachFromDummyVillager(CThing* villager) {
+ for(std::list<CIntelligentPointer<CThing> >::iterator i=VillageDummies.begin();i!=VillageDummies.end();++i) {
+  CThing* dummy=i->Get();
+  if(IS_THING_ALIVE(dummy) && dummy->HasTC(TCI_DUMMY_VILLAGER)) {
+   CTCDummyVillager* dummy_villager=static_cast<CTCDummyVillager*>(&dummy->GetTC(TCI_DUMMY_VILLAGER));
+   if(dummy_villager->GetCreature()==villager)dummy_villager->Evict();
+  }
+ }
 }

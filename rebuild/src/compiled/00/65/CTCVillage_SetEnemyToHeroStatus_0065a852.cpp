@@ -13,6 +13,11 @@
 // Shape: the out-pointer GetInterface with its result ignored: the component local is UNinitialised and shares the
 //        [ebp-4] slot with the lookup key (the false arm loads it as is) and later with the hero pointer whose address
 //        IS_THING_ALIVE takes.
+// NF196 (2026-11-20, q6447): 0x00436380 is the IS_THING_ALIVE<const CThing*> instance (FableWin.pdb 0x01AE3C10
+//   ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z; the PAV instance is 0x0040DCE0, and 0x007BDAC7 calls both from one function, so
+//   they are two COMDATs); five landed rows already bind it. The call names that instance through the declared template with the
+//   explicit argument (Inferred: the hero is a CThing* local, so the const instance is reached through a converted temporary; RELOCATION_MATCH
+//   in one grade); was the stand-in ?IS_THING_ALIVE_00436380@@YI_NABQAVCThing@@@Z.
 class CTCBase;
 class CThing;
 
@@ -23,7 +28,7 @@ class CThing;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingPlayerCreature : public CThing { };
-bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing);   // 0x00436380
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // IS_THING_ALIVE<const CThing*> 0x00436380
 
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
@@ -58,7 +63,7 @@ void CTCVillage::SetEnemyToHeroStatus()
     ParentThing->GetTC(TCI_ENEMY, &enemy);
     if (StanceToHero == 1) {
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-        if (IS_THING_ALIVE_00436380(hero))
+        if (IS_THING_ALIVE<const CThing*>(hero))
             enemy->AddEnemyThing(hero);
     } else {
         enemy->RemoveEnemyThing(GetPlayerManager().GetMainPlayer().GetPControlledCreature());

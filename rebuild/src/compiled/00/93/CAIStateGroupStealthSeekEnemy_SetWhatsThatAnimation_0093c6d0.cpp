@@ -64,10 +64,14 @@ class CSoundPair { public:
 #include "engine/C3DVector.h"
 
 class CAnimationEntry;
-class CThingCreatureBase;
-struct CThingCreatureAnim {
-    CAnimationEntry* GetRandomAnimFromName(const CCharString& name, long index);   // 0x00662D80
-};
+// NF196 (2026-11-20, q6456): GetRandomAnimFromName is the shared header's const member returning the entry by reference (flat-view
+//   opt-in), binding Ego_r.pdb / FableWin.pdb ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z at
+//   0x00662D80 (was the stand-in ?GetRandomAnimFromName@CThingCreatureAnim@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z, struct removed);
+//   the row's existing CCreatureAction_PlayAnimation model is respelled in place to the PDB constructor
+//   ??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@_N33JJ@Z (Ego_r.pdb 0x0051CA80; landed
+//   0x00842E40 binds it; was the pointer form ..@PAVCThing@@PAVCAnimationEntry@@..).
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETRANDOMANIMFROMNAME
+#include "engine/CThingCreatureBase.h"
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -76,7 +80,7 @@ class CCreatureActionBase { public:
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3
-    CCreatureAction_PlayAnimation(CThing* creature, CAnimationEntry* animation,
+    CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CAnimationEntry& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00842570
 };
 
@@ -97,8 +101,8 @@ struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
 
 void CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing* perceive)
 {
-    CAnimationEntry* animation = ((CThingCreatureAnim*)GetCreature())->GetRandomAnimFromName("WHATS_THAT", -1);
-    long result = AIAction_PerformAction(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+    const CAnimationEntry& animation = ((CThingCreatureBase*)GetCreature())->GetRandomAnimFromName("WHATS_THAT", -1);
+    long result = AIAction_PerformAction(CCreatureAction_PlayAnimation(*(CThingCreatureBase*)GetCreature(), animation, CSoundPair(),
         false, true, false, 0, 0));
     if (result == 2 && IsStillRunnable(perceive)) {
         C3DVector diff(perceive->PosX - LastKnownEnemyPosX, perceive->PosY - LastKnownEnemyPosY,

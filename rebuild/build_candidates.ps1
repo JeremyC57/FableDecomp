@@ -5161,8 +5161,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00436380'
         Module = '_global'
-        Source = '00/43/global_ISTHINGALIVECThingBuilding_00436380.cpp'
-        TestSource = '00/43/global_ISTHINGALIVECThingBuilding_00436380_test.cpp'
+        Source = '00/43/global_ISTHINGALIVE_00436380.cpp'
+        TestSource = '00/43/global_ISTHINGALIVE_00436380_test.cpp'
         PassPattern = '_global_00436380_TEST PASS'
     }
     [pscustomobject]@{
@@ -107852,9 +107852,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf0c00'
-        Module = '_gapscan'
-        Source = '00/cf/gapscan_sub00cf0c00_00cf0c00.cpp'
-        TestSource = '00/cf/gapscan_sub00cf0c00_00cf0c00_test.cpp'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_NScriptCQArenaHoldingScriptScriptCEntranceGuardGetParentScript_00cf0c00.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_NScriptCQArenaHoldingScriptScriptCEntranceGuardGetParentScript_00cf0c00_test.cpp'
         PassPattern = 'PASS_00cf0c00'
     }
     [pscustomobject]@{
@@ -180035,8 +180035,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00836be0'
         Module = '_global'
-        Source = '00/83/global_IsThingDead00836be0_00836be0.cpp'
-        TestSource = '00/83/global_IsThingDead00836be0_00836be0_test.cpp'
+        Source = '00/83/global_ISTHINGDEAD_00836be0.cpp'
+        TestSource = '00/83/global_ISTHINGDEAD_00836be0_test.cpp'
         PassPattern = '00836be0_TEST PASS'
     }
     [pscustomobject]@{
@@ -235417,16 +235417,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e362b0'
-        Module = 'CAC_Owner'
-        Source = '00/e3/CACOwner_GetRandomSpeech_00e362b0.cpp'
-        TestSource = '00/e3/CACOwner_GetRandomSpeech_00e362b0_test.cpp'
+        Module = 'NScript::CV_ArcheryCompetitionScript::CAC_Owner'
+        Source = '00/e3/NScriptCVArcheryCompetitionScriptCACOwner_NScriptCVArcheryCompetitionScriptCACOwnerGetRandomSpeech_00e362b0.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScriptCACOwner_NScriptCVArcheryCompetitionScriptCACOwnerGetRandomSpeech_00e362b0_test.cpp'
         PassPattern = '00e362b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e53cb0'
-        Module = 'CAC_Owner'
-        Source = '00/e5/CACOwner_GetRandomSpeech_00e53cb0.cpp'
-        TestSource = '00/e5/CACOwner_GetRandomSpeech_00e53cb0_test.cpp'
+        Module = 'NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan'
+        Source = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_NScriptCVBeardyBaldyScriptCBBBeardyBaldyManGetRandomSpeech_00e53cb0.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_NScriptCVBeardyBaldyScriptCBBBeardyBaldyManGetRandomSpeech_00e53cb0_test.cpp'
         PassPattern = '00e53cb0_TEST PASS'
     }
     [pscustomobject]@{

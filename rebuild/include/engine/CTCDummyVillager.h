@@ -25,7 +25,13 @@ public: CThingBuilding* GetHomeBuilding() const;
 public: CThingBuilding* GetWorkBuilding() const;
 public: CThingAICreature* GetCreature() const { return Creature.Get(); }
 public: void Evict();
+#ifdef FABLE_RETAIL_CTCDUMMYVILLAGER_ISGUARD_INLINE
+// NF196 opt-in (q4522, row 0x0065C45A CTCVillage::EnableGuards): ?IsGuard@CTCDummyVillager@@QAE_NXZ has an out-of-line copy only in
+// FableWin.pdb (0x0216A7AF, debug); Ego_r.pdb has none and retail reads Guard (+0x49) in place (0x0065C4C0), so the release body is inline.
+public: bool IsGuard() { return Guard; }
+#else
 public: bool IsGuard();
+#endif
 public: void SetRespawnable(bool);
 public: unsigned long GetDefType() { return DefType; }
 private: unsigned long DefType;
@@ -42,5 +48,5 @@ private: bool Guard;
 public: virtual ~CTCDummyVillager();
 public: CTCDummyVillager& operator=(const CTCDummyVillager&);
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDummyVillager)==0x50);
+FABLE_STATIC_ASSERT_AT(45, sizeof(CTCDummyVillager)==0x50);
 #endif

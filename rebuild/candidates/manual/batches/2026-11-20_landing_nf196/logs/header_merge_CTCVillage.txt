@@ -1,0 +1,2 @@
+engine/CTCVillage.h: B landed FABLE_RETAIL_CTCVILLAGE_PATROLTASK (p25M, 361814476c) after the agent copied the header.
+The landed header is the three-way merge (git merge-file: agent, base = agent orig, HEAD): clean, both opt-ins kept; the asserts below are pinned (FABLE_STATIC_ASSERT_AT), so no line-number symbol moves.

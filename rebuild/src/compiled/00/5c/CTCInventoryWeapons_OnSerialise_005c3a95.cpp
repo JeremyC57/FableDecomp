@@ -17,6 +17,10 @@
 //   ActiveRangedWeaponDefIndex; respelled in place in this row's local model) and the two transfers call the two-argument member template
 //   ??$Transfer@VCDefIndex@@@CPersistContext@@QAEXPBDAAVCDefIndex@@@Z at 0x005CC300 (FableWin.pdb 0x0199627C; was the stand-in
 //   ?Transfer@CPersistContext@@QAEXPBDPAJ@Z).
+// NF196 (2026-11-20, q4492): the row-local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared
+//   engine/CIntelligentPointer.h (members CIntelligentPointer<CThing>, the Ego_r.pdb member type) and the IS_THING_ALIVE template
+//   declaration, as NF191 did for the sibling 0x005C30D3: the liveness tests bind the FableWin.pdb
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z (was ?IS_THING_ALIVE@@YI_NABUCIntelligentPointer@@@Z).
 #include "fable_compiler.h"
 #include "rebuild_abi.h"
 #include "engine/CDefIndex.h"
@@ -48,16 +52,9 @@ class CThing { public:
     unsigned short DefIndex;                            // +0x8c
 };
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
-#pragma pack(push, 1)
-struct CIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-};
-#pragma pack(pop)
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& p);   // 0x004CC340
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+template <class T> bool FABLE_FASTCALL IS_THING_ALIVE(const T& thing);   // 0x004CC340
 class CPersistContext { public:
     bool IsSaving() const;                              // 0x004AEF50
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool>
@@ -97,10 +94,10 @@ protected:
 class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     const CThingBase* ParentThing;                      // +0x04
     unsigned char _pad08[0x134 - 0x08];
-    CIntelligentPointer MeleeWeapon;                    // +0x134
+    CIntelligentPointer<CThing> MeleeWeapon;                    // +0x134
     CDefIndex   MeleeDefIndex;                          // +0x13c
     bool        MeleeCarried;                           // +0x140
-    CIntelligentPointer RangedWeapon;                   // +0x141
+    CIntelligentPointer<CThing> RangedWeapon;                   // +0x141
     unsigned char _pad149[3];
     CDefIndex   RangedDefIndex;                         // +0x14c
     bool        RangedCarried;                          // +0x150

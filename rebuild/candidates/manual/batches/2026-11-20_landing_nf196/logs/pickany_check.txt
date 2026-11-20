@@ -1,0 +1,26 @@
+NO-OWNER-OBJ 0057d5a0 00436380 ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z
+NO-OWNER-OBJ 0064a1ae 00436380 ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z
+OK  0065b2c4 -> 0040dce0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z sizes 21 21 
+OK  0065b2c4 -> 0041c780 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z sizes 11 11 
+OK  0065b2c4 -> 0041c7c0 ??9_List_iterator_base@std@@QBE_NABU01@@Z sizes 22 22 
+NO-OWNER-OBJ 0065b2c4 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  0065b2c4 -> 0041c7a0 ?_M_incr@_List_iterator_base@std@@QAEXXZ sizes 7 7 
+OK  0065b349 -> 0040dce0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z sizes 21 21 
+OK  0065b349 -> 0065d639 ??$IS_THING_DEAD@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z sizes 21 21 owner leaf ?IS_THING_DEAD@@YI_NPAPAVCThing@@@Z
+OK  0065b349 -> 0041c780 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z sizes 11 11 
+OK  0065b349 -> 0041c7c0 ??9_List_iterator_base@std@@QBE_NABU01@@Z sizes 22 22 
+NO-OWNER-OBJ 0065b349 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  0065b349 -> 0041c7a0 ?_M_incr@_List_iterator_base@std@@QAEXXZ sizes 7 7 
+OK  0065bffa -> 0040dce0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z sizes 21 21 
+OK  0065bffa -> 0041c780 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z sizes 11 11 
+OK  0065bffa -> 0041c7c0 ??9_List_iterator_base@std@@QBE_NABU01@@Z sizes 22 22 
+NO-OWNER-OBJ 0065bffa 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  0065bffa -> 0041c7a0 ?_M_incr@_List_iterator_base@std@@QAEXXZ sizes 7 7 
+OK  0065c45a -> 0040dce0 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z sizes 21 21 
+OK  0065c45a -> 004a88f0 ??$IS_THING_ALIVE@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z sizes 21 21 owner leaf ?IS_THING_ALIVE@@YI_NPBUCThingHolder@@@Z
+OK  0065c45a -> 0041c780 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z sizes 11 11 
+OK  0065c45a -> 0041c7c0 ??9_List_iterator_base@std@@QBE_NABU01@@Z sizes 22 22 
+NO-OWNER-OBJ 0065c45a 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  0065c45a -> 0041c7a0 ?_M_incr@_List_iterator_base@std@@QAEXXZ sizes 7 7 
+manual (landing, cmpbody): ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z in 0x0057D5A0 and 0x0064A1AE vs the self row 0x00436380: 21 = 21, bytes and relocs equal. ?HasTC@CThing@@ (0x004118C0): no landed row, so no owner.
+0x0065A5BB (agent note): RELOCATION_MATCH[/EHsc] at landing under its catalog flags; the agent's grader lacked /EHsc.

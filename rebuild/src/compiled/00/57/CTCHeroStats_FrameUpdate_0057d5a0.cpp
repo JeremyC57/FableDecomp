@@ -81,12 +81,19 @@ class CThing { public:
     }
 };
 
-bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing);   // 0x00436380
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
 #pragma auto_inline(off)
-// Same-TU stand-in for IS_THING_ALIVE 0x00436380 (not the retail body): it only reads the pointer.
-bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing)
+// NF196 (2026-11-20, q6447): IS_THING_ALIVE<const CThing*> (0x00436380, FableWin.pdb 0x01AE3C10 ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z)
+// with the retail body visible in this TU (an inline explicit specialisation kept out of line, byte-identical to the landed owner
+// 0x00436380); was the strong same-TU stand-in ?IS_THING_ALIVE_00436380@@YI_NABQAVCThing@@@Z (`thing != 0 && thing->HasTC(0)`).
+// CThing's dead bit is the low bit of the byte at +0x91 (no member in this local model).
+template <> inline __declspec(noinline) bool __fastcall IS_THING_ALIVE<const CThing*>(const CThing* const& thing)
 {
-    return thing != 0 && thing->HasTC(0);
+    if (thing != 0) {
+        if (!(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1))
+            return true;
+    }
+    return false;
 }
 #pragma auto_inline(on)
 
@@ -238,15 +245,15 @@ void CTCHeroStats::FrameUpdate()
     }
     CTCInventoryWeapons* weapons;
     if (ParentThing->PeekInterface(&weapons, 0x13)) {
-        CThing* melee = weapons->PActiveMeleeWeapon.GetPItem();
-        CThing* ranged = weapons->PActiveRangedWeapon.GetPItem();
+        const CThing* melee = weapons->PActiveMeleeWeapon.GetPItem();
+        const CThing* ranged = weapons->PActiveRangedWeapon.GetPItem();
         CTCObjectAugmentations* augmentations;
-        if (IS_THING_ALIVE_00436380(melee) && melee->PeekInterface(&augmentations, 0xBF)) {
+        if (IS_THING_ALIVE(melee) && melee->PeekInterface(&augmentations, 0xBF)) {
             thing->ModifyHealth((float)augmentations->GetHealthToAddThisFrame(), false);
             if (!ScriptOverridePreventStaminaRefill)
                 Stamina += augmentations->GetStaminaToAddThisFrame();
         }
-        if (IS_THING_ALIVE_00436380(ranged) && ranged->PeekInterface(&augmentations, 0xBF)) {
+        if (IS_THING_ALIVE(ranged) && ranged->PeekInterface(&augmentations, 0xBF)) {
             thing->ModifyHealth((float)augmentations->GetHealthToAddThisFrame(), false);
             if (!ScriptOverridePreventStaminaRefill)
                 Stamina += augmentations->GetStaminaToAddThisFrame();

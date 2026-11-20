@@ -1,0 +1,9 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+head_0064a1ae.obj : error LNK2005: "public: struct std::pair<enum ETCInterfaceType,class CTCBase *> const * __thiscall CVectorMap<enum ETCInterfaceType,class CTCBase *,class CKeyPairCompareLess<enum ETCInterfaceType,class CTCBase *> >::LowerBound(enum ETCInterfaceType const &)const " (?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z) already defined in head_0057d5a0.obj
+head_0065c45a.obj : error LNK2005: "bool __fastcall IS_THING_ALIVE(class CBaseObject * const &)" (?IS_THING_ALIVE@@YI_NABQAVCBaseObject@@@Z) already defined in head_0065b349.obj
+head_0065c45a.obj : error LNK2005: "public: class CThingAICreature * __thiscall CTCDummyVillager::CreateVillager(class CTCVillage *,class C3DVector const &,bool)" (?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@PAVCTCVillage@@ABVC3DVector@@_N@Z) already defined in head_0065b349.obj
+head_00e53cb0.obj : error LNK2005: "public: class CCharString __thiscall CAC_Owner::GetRandomSpeech(void)" (?GetRandomSpeech@CAC_Owner@@QAE?AVCCharString@@XZ) already defined in head_00e362b0.obj
+t.dll : fatal error LNK1169: one or more multiply defined symbols found
+(trimmed at landing: 33 LNK2001 + 128 LNK2019 unresolved-external lines, expected under /FORCE:UNRESOLVED)

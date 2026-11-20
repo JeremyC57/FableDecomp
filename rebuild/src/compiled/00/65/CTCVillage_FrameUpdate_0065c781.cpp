@@ -75,17 +75,21 @@ public:
 #define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETPROPERTY
 #include "engine/CThingCreatureBase.h"
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    void* m_pItem;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
-bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
-bool __fastcall IS_THING_ALIVE_Villager(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
+// NF196 (2026-11-20, q4492): the row-local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h; the
+//   village lists hold CIntelligentPointer<CThingAICreature> (VillagePeople) and CIntelligentPointer<CThing> (the torch list), the Ego_r.pdb
+//   CTCVillage member types, and their liveness tests call the declared IS_THING_ALIVE<T> instances: FableWin.pdb
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z at 0x004CC340 (was
+//   ?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z) and ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingAICreature@@@@@@YI_N...
+//   at 0x004AB8F0 (was ?IS_THING_ALIVE_Villager@@YI_NABUCBaseIntelligentPointer@@@Z; landed 0x00658EC3 already binds the PDB form).
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+class CThingAICreature;
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
 {
     return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
 }
+template <> bool __fastcall IS_THING_ALIVE<CIntelligentPointer<CThing> >(const CIntelligentPointer<CThing>& thing);   // 0x004CC340
+template <> bool __fastcall IS_THING_ALIVE<CIntelligentPointer<CThingAICreature> >(const CIntelligentPointer<CThingAICreature>& thing);   // 0x004AB8F0
 class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
 };
@@ -160,8 +164,8 @@ class CTCVillage : public CTCBase { public:
     void* _vfptr;
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x2c - 0x08];
-    SNode<CBaseIntelligentPointer>* VillagePeople;   // +0x2c
-    SNode<CBaseIntelligentPointer>* Lights;     // +0x30
+    SNode<CIntelligentPointer<CThingAICreature> >* VillagePeople;   // +0x2c
+    SNode<CIntelligentPointer<CThing> >* Lights;     // +0x30
     unsigned char _pad34[0x88 - 0x34];
     long NumWorkingVillagers;                   // +0x88
     unsigned char _pad8c[0x94 - 0x8c];
@@ -216,8 +220,8 @@ void CTCVillage::FrameUpdate()
     RemoveTimedoutCrimes();
     if (CWorld::GetFrame() % 30 == 0) {
         if (!torchesUpdated) {
-            for (SNode<CBaseIntelligentPointer>* node = Lights->_M_next; node != Lights; node = node->_M_next) {
-                if (IS_THING_ALIVE_004cc340(node->_M_data)) {
+            for (SNode<CIntelligentPointer<CThing> >* node = Lights->_M_next; node != Lights; node = node->_M_next) {
+                if (IS_THING_ALIVE(node->_M_data)) {
                     CThing* thing = ((CThing*)node->_M_data.GetPItem());
                     if (thing->HasTC(0x27)) {
                         CTCLight* light = (CTCLight*)thing->GetTC(0x27);
@@ -229,9 +233,9 @@ void CTCVillage::FrameUpdate()
             }
         }
         NumWorkingVillagers = 0;
-        SNode<CBaseIntelligentPointer>* end = VillagePeople;
-        for (SNode<CBaseIntelligentPointer>* node = end->_M_next; node != end; node = node->_M_next) {
-            if (IS_THING_ALIVE_Villager(node->_M_data) && ((CThingCreatureBase*)node->_M_data.GetPItem())->GetProperty() == 3)
+        SNode<CIntelligentPointer<CThingAICreature> >* end = VillagePeople;
+        for (SNode<CIntelligentPointer<CThingAICreature> >* node = end->_M_next; node != end; node = node->_M_next) {
+            if (IS_THING_ALIVE(node->_M_data) && ((CThingCreatureBase*)node->_M_data.GetPItem())->GetProperty() == 3)
                 ++NumWorkingVillagers;
         }
         UpdateMirroredCrimeData();

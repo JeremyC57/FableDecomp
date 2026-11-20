@@ -1,0 +1,111 @@
+00436380 new: 2
+    ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z TABLE:00436380
+    ?IsDead@CThing@@QBE_NXZ
+0057d5a0 new: 1
+    ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z TABLE:00436380
+005c3a95 new: 0
+0064a1ae new: 1
+    ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z TABLE:00436380
+0065a852 new: 0
+0065b2c4 new: 17
+    ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z TABLE:0040dce0
+    ??0?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??C?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEPAV?$CIntelligentPointer@VCThing@@@@XZ
+    ??D?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEAAV?$CIntelligentPointer@VCThing@@@@XZ
+    ??E?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEAAU01@XZ
+    ?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCIn
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?Get@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ
+    ?GetCreature@CTCDummyVillager@@QBEPAVCThingAICreature@@XZ
+    ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_No
+    ?end@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonc
+0065b349 new: 21
+    ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z TABLE:0040dce0
+    ??$IS_THING_DEAD@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z TABLE:0065d639
+    ??0?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0CDefIndex@@QAE@J@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??BCDefIndex@@QBEJXZ
+    ??C?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEPAV?$CIntelligentPointer@VCThing@@@@XZ
+    ??D?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEAAV?$CIntelligentPointer@VCThing@@@@XZ
+    ??E?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEAAU01@XZ
+    ?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCIn
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?Get@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ
+    ?GetCreature@CTCDummyVillager@@QBEPAVCThingAICreature@@XZ
+    ?GetDefType@CTCDummyVillager@@QAEKXZ
+    ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_No
+    ?end@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonc
+0065bffa new: 18
+    ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z TABLE:0040dce0
+    ??0?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0COpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QAE@XZ
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??C?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEPAV?$CIntelligentPointer@VC
+    ??D?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEAAV?$CIntelligentPointer@VC
+    ??E?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEAAU01@XZ
+    ?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCIn
+    ?Get@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ
+    ?GetTC@CThing@@QBEABVCTCBase@@W4ETCInterfaceType@@@Z
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPoint
+    ?empty@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE_NXZ
+    ?empty@?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@QBE_NXZ
+    ?end@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer
+0065c45a new: 25
+    ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z TABLE:0040dce0
+    ??$IS_THING_ALIVE@PAVCThingAICreature@@@@YI_NABQAVCThingAICreature@@@Z TABLE:004a88f0
+    ??0?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+    ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z TABLE:0041c780
+    ??9_List_iterator_base@std@@QBE_NABU01@@Z TABLE:0041c7c0
+    ??C?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEPAV?$CIntelligentPointer@VCThing@@@@XZ
+    ??C?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEPAV?$CIntelligentPointer@VC
+    ??D?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QBEAAV?$CIntelligentPointer@VCThing@@@@XZ
+    ??D?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QBEAAV?$CIntelligentPointer@VC
+    ??E?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEAAU01@XZ
+    ??E?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEAAU01@XZ
+    ?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCIn
+    ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+    ?Get@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ
+    ?GetCreature@CTCDummyVillager@@QBEPAVCThingAICreature@@XZ
+    ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+    ?IsDead@CThing@@QBE_NXZ
+    ?IsGuard@CTCDummyVillager@@QAE_NXZ
+    ?_M_incr@_List_iterator_base@std@@QAEXXZ TABLE:0041c7a0
+    ?begin@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_No
+    ?begin@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPoint
+    ?end@?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonc
+    ?end@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CIntelligentPointer
+0065c781 new: 0
+007bdac7 new: 0
+00836be0 new: 5
+    ??$?9$$CBVCThing@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@H@Z
+    ??$IS_THING_DEAD@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z
+    ??C?$CIntelligentPointer@$$CBVCThing@@@@QBEPBVCThing@@XZ
+    ?Get@?$CIntelligentPointer@$$CBVCThing@@@@QBEPBVCThing@@XZ
+    ?GetPointer@?$CIntelligentPointer@$$CBVCThing@@@@ABEPBVCThing@@XZ
+0093c6d0 new: 0
+00956380 new: 1
+    ??1CCreatureAction_CastWillLightningSpell@@UAE@XZ
+00cf0c00 new: 1
+    ?GetParentScript@CEntranceGuard@CQ_ArenaHoldingScriptScript@NScript@@UBEPAVCScriptBase@@XZ
+00e362b0 new: 1
+    ?GetRandomSpeech@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@AAE?AVCCharString@@XZ TABLE:00e362b0
+00e53cb0 new: 1
+    ?GetRandomSpeech@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@AAE?AVCCharString@@XZ TABLE:00e53cb0
