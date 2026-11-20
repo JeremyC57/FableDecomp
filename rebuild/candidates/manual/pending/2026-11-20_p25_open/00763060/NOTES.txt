@@ -1,0 +1,33 @@
+0x00763060 NShape::FractureShape -- PARKED (p25L, Account B, 2026-11-20). Reserved row; label Polygon_GeneratePath_WithCirculation is wrong (NAME_FIXES in batch 00760020).
+Best Ego_d-conformant source: 00763060.cpp = DIFFER(1132v1146), 160 diff lines, overlay hdr/ (= batch 00760020/00760190 overlay: new engine/NShape.h,
+C2DLineF.h FROM3D + INTERSECTS_LINE). Carries the two helpers as `// Fidelity:` same-TU copies of batches 00760020 / 00760190 (verbatim; fidcheck once those land).
+What closed most of it (p25J's 1151v1146, 435 lines -> 160):
+ - same-TU bodies of 0x00760020 / 0x00760190 (c2 then knows the calls don't write duplicate_shape: frame 0x5C, begin kept in ebx, the duplicate freed untested);
+   trivial noinline bodies give 1142v1146 / 65 lines, so the matched texts are load-bearing; operator() 0x0075FE30's body is byte-neutral (left out).
+ - Ego_d loop shape `if (it_result != end) {...} else quit = true;` (lines 234 else 2 B, 237 quit=true 4 B, 239 jmp 5 B); named line_a/line_b and
+   `const C3DVector& result_point` in a scope (Ego_d block); `return;` at the end of the found block (Inferred, Ego_d line 280 = 143 B vs ~50 for a bare `}`).
+Residue (the only one): VC7.1 emits `add esi,0xc` at the loop top before the __find_if call; retail peels the first increment into the preheader
+(`lea eax,[ebx+0Ch] ; mov ecx,eax ; ... ; add eax,0Ch ; mov esi,eax`), increments after the call (0x0076310B) and aligns the loop head (`lea esp,[esp]` 0x007630B9).
+That is post-increment IL (it_anchor advanced past b before the loop, find_if(it_start++,...)).
+Three contradictions between any matching text and Ego_d:
+ 1. Ego_d lines 197/198: it_anchor (197) is declared before a (198); with a first the plain spelling is 90 lines, in Ego_d order 160.
+ 2. The fitted match needs an extra reference local (`anchor`); Ego_d records reference locals in this function (result_point) and has none.
+ 3. Ego_d line 199 is 17 B = plain `C3DVector b = *it_anchor;`; lines 203/204 = it_result decl (12 B) / it_start = it_anchor (16 B); 207 carries ++it_start.
+Measurements (all with the matched helper texts):
+ - Ego_d plain (E0 = 00763060.cpp): 1132v1146 / 160. Same with a first (f1): 1132v1146 / 90.
+ - `b=*it_anchor++` + find_if(it_start++): Ego_d order (E1) 1137v1146 / 154; a first 1137v1146 / 84 (missing the `mov ecx,eax` copy and the padding).
+ - `C3DVector b; b=*it_anchor++;`: Ego_d order (E2) 1146v1146 / 82; a first 1146v1146 / 2 (one a.Z store order).
+ - find_if spelled through a local template / iterator_category(first) call, for(;!quit;) / do-while forms: no change (1132v1146 / 90).
+ - Not a symbol tie within 1..32 literal dummies: entry and loop-top sweeps on E0, E1 and E2 (192 compiles) never change a grade.
+   The +64 / mod-2048 pool mechanisms are outside that sweep; the c2 kit's symlog (gdb harness) was not run.
+Checks asked by the advisor:
+ 1. Ego_r.pdb / FableWin.pdb line records: neither PDB nor ego_r.exe / FableWin.exe is on this Linux box (only name lists: Ego_r 0x00774200, FableWin 0x025D4510
+    in debug\tc_geometric_shapes.obj, length 2245 = Ego_d's debug length). Needs the Windows side.
+ 2. Ego_d TPI for it_anchor / it_start / it_begin / it_result: 0x2A466 std::_Vector_iterator<_Vector_val<C3DVector,...>> (VC10 Dinkumware class).
+    Retail's STLport 4.6 vector<C3DVector>::iterator is C3DVector* (raw pointer arithmetic throughout 0x00763060, no iterator calls), so there is no
+    shared operator++ text to vary.
+ 3. c2 kit: the dummy sweeps above cover the post-increment spellings; symlog itself not run (heavy gdb harness).
+Hypothesis only (unmeasured): retail TLC's text at the b / it_start statements differs from the Ego_d revision.
+FINDINGS line: - 2026-11-20 (Account B p25L, 0x00763060 NShape::FractureShape, parked) With the matched same-TU helpers 0x00760020 / 0x00760190 the row is DIFFER(1132v1146) in Ego_d's spelling; the one residue is the find_if start increment (retail: peeled into the preheader with a `mov ecx,eax` copy, then after the call, loop head aligned; ours: at the loop top). Only post-increment texts that contradict Ego_d (a before it_anchor at 197/198, an extra `anchor` reference, line 199's 17 B b=*it_anchor) reach it (fitted RELOCATION_MATCH with the matched helpers kept as evidence/bracket_match_anchor.cpp). Not a symbol tie within 1..32 literal dummies. Ego_r / FableWin line records unavailable on Linux. Files: parked/00763060.
+
+Header note (coordinator, 2026-11-20): the opt-ins this source needs (engine/NShape.h, FABLE_RETAIL_C2DLINEF_INTERSECTS_LINE) landed with 0x00760020 / 0x00760190, so no hdr.diff is needed on today's headers.

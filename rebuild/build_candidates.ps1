@@ -401663,6 +401663,22 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupVillageTaskPatrol_Update_0093f3c0_test.cpp'
         PassPattern = '0093f3c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00760020'
+        Module = 'NShape'
+        Source = '00/76/NShape_IsLineIntersectingWithOthersInList_00760020.cpp'
+        TestSource = '00/76/NShape_IsLineIntersectingWithOthersInList_00760020_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00760020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00760190'
+        Module = 'NShape'
+        Source = '00/76/NShape_IsTriangleWithPointsInside_00760190.cpp'
+        TestSource = '00/76/NShape_IsTriangleWithPointsInside_00760190_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00760190_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -39413,3 +39413,4 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?UpdateCollision@CTCShotDefinitionBase@@QAEXPA_N@Z	007bfe30	007bdac7
 ?IsStillRunnable@CAIStateGroup_StealthSeekEnemy@@QAE_NPAVCTCPerceiveThing@@@Z	0093c4e0	0093c6d0
 ??0CCreatureAction_CastWillLightningSpell@@QAE@AAVCThingCreatureBase@@JMAAVCThing@@@Z	008bca00	00956380
+?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z	00a56c80	00760020

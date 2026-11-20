@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00760020   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00760020   RELOCATION_MATCH PASS   IsLineIntersectingWithOthersInList
+
+WINS: 1
+  00760020 RELOCATION_MATCH NShape::?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NShape_IsLineIntersectingWithOthersInList_00760020
