@@ -1,5 +1,9 @@
-// CCombatActionBase::CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound) -- the untargeted combat action base: creature-action base (owner, sounds, priority 100, action code), null target/camera pointers, empty strike-event list, no animations, strike index -1; the target is reset to NULL and the strike state initialised (HasResetMeleeCombatAbilityEffects is left unset)
-// Leaf: ??0CCombatActionBase
+// CCombatActionBase::CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound) -- the untargeted combat action base: creature-action base (owner, sounds, priority 100, action code), null target/camera pointers, empty strike-event list, no animations, strike index -1; the target is reset to NULL and the strike state initialised (HasResetMeleeCombatAbilityEffects is left unset)
+// Leaf: ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z
+// NF123 (2026-11-20, q6404): in-place respell of this row's own models: the constructor takes the creature by reference (Ego_r.pdb 0x00838DD0 +
+//   FableWin.pdb 0x02823C60 ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z; engine/CCombatActionBase.h SOUNDCTOR), and so
+//   does its base CCreatureActionBase(CThingCreatureBase&, const CSoundPair&, long, long) 0x00693C70 (Ego_r 0x0051B2E0 + FableWin 0x01DB5A50
+//   ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@ABVCSoundPair@@JJ@Z; the landed 0x008435B0 binds it). Both were PAV.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00858030, 244 bytes (`ret 0Ch`). Own vtable 0x01259E44.
 // Callees: CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, const CSoundPair&, long, long) @ 0x00693C70,
 //          CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
@@ -77,7 +81,7 @@ class CSoundPair { public:                         // two sound ids
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    CCreatureActionBase(CThingCreatureBase* owner, const CSoundPair& sound, long interruptionGroup, long interruptionPriority);   // 0x00693C70
+    CCreatureActionBase(CThingCreatureBase& owner, const CSoundPair& sound, long interruptionGroup, long interruptionPriority);   // 0x00693C70
 };
 
 class CCombatActionBase : public CCreatureActionBase { public:   // vtable 0x01259E44
@@ -95,10 +99,10 @@ class CCombatActionBase : public CCreatureActionBase { public:   // vtable 0x012
     unsigned char _pad_0x108[0x114 - 0x108];        // +0x108 PreferredMovementVector (not initialised)
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);
     void InitialiseStrikeState();                   // 0x008561C0
 };
-CCombatActionBase::CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
+CCombatActionBase::CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound)
     : CCreatureActionBase(owner, sound, 100, actionCode)
     , SentMissedEvent(false)
     , ActiveStrikeEventIndex(-1)

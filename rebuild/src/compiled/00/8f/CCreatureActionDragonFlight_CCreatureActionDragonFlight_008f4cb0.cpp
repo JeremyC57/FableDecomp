@@ -19,7 +19,8 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
@@ -33,7 +34,7 @@ class CCreatureAction_DragonFlight : public CCombatActionBase { public:   // vta
 };
 
 CCreatureAction_DragonFlight::CCreatureAction_DragonFlight(CThingCreatureBase* owner, const CCharString& animName)
-    : CCombatActionBase(owner, 50, CSoundPair())
+    : CCombatActionBase(*owner, 50, CSoundPair())
     , FaceTarget(0)
     , TurnRate(0)
 {

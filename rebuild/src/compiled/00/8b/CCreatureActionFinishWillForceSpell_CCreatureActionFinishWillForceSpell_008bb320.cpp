@@ -4,7 +4,7 @@
 //   `ret 8`; vtable 0x0127B87C.
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("FORCE_PUSH" 0x01268358, "WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1..4"
 //   0x0127B850 / 0x0127B828 / 0x0127B800 / 0x0127B7D8), the creature's virtual slot 89 (+0x164: the combat sound pair for a
-//   name, CSoundPair by value through the hidden pointer), CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&)
+//   name, CSoundPair by value through the hidden pointer), CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&)
 //   0x00858030, ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0.
 // Shape: the sound pair is a by-value temporary in the base initializer (its name string an implicit conversion built
 //   before the argument pushes); the vtable store is scheduled into the switch range test; a dense four-case switch
@@ -34,7 +34,8 @@ class CThingCreatureBase { public:
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -44,7 +45,7 @@ class CCreatureAction_FinishWillForceSpell : public CCombatActionBase { public: 
 };
 
 CCreatureAction_FinishWillForceSpell::CCreatureAction_FinishWillForceSpell(CThingCreatureBase* owner, long level)
-    : CCombatActionBase(owner, 145, owner->GetCombatSoundPair("FORCE_PUSH"))
+    : CCombatActionBase(*owner, 145, owner->GetCombatSoundPair("FORCE_PUSH"))
 {
     switch (level) {
     case 0:

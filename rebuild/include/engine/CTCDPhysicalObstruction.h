@@ -29,6 +29,11 @@ public:
     void SetLifeTimeSeconds(float seconds);              // 0x007FD3D0
     void SetThingToIgnoreObstruction(CThing* thing);     // 0x007898A3
 #endif
+#ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_SETPARAMS
+    // NF123 (2026-11-20, q5136): Ego_r.pdb 0x007F86A0 + FableWin.pdb 0x0278A9F0 ?SetParams@CTCDPhysicalObstruction@@QAEXABVC3DVector@@0M@Z, the
+    // Ego_r member order neighbour after SetLifeTimeSeconds (0x007FD3F0: StartPos / EndPos / Radius copied in). Declaration only.
+    void SetParams(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD3F0
+#endif
     C3DVector     StartPos;                              // +0x0c
     C3DVector     EndPos;                                // +0x18
     long          LifeTimer;                             // +0x24
@@ -62,5 +67,5 @@ public:
     virtual bool IsDriverType(long type) const;
 #endif // FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_DRIVERSLOTS
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDPhysicalObstruction) == 0x50);
+FABLE_STATIC_ASSERT_AT(65, sizeof(CTCDPhysicalObstruction) == 0x50);
 #endif // FABLE_ENGINE_CTCDPHYSICALOBSTRUCTION_H

@@ -1,12 +1,15 @@
-// CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase*, const C3DVector&, bool) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable, the target position and flag, then the name "ST_TELEPORT_OUT"
+// CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase&, C3DVector&, bool) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable, the target position and flag, then the name "ST_TELEPORT_OUT"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCF20, length 130 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0 (literal 0x0127E494 "ST_TELEPORT_OUT"), CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0.
 // Own vtable 0x0127E344 (rtti-vtables.tsv).
 // Shape: `ret 0Ch`; the init-list members (TargetPos copy-constructed from the reference, Instant from the byte argument) are stored after the
 // vtable store, interleaved by the scheduler with the pushes of the scoped name string. TargetPos is written at fixed offsets
 // (`mov [esi+114h]..`): C3DVector has a memberwise user copy constructor (the implicit copy re-bases the destination with `lea`).
-// Leaf: ??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@ABVC3DVector@@_N@Z
+// Leaf: ??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@AAVC3DVector@@_N@Z
+// NF123 (2026-11-20, q4410): in-place respell of this row's own model to Ego_r.pdb 0x008F5570 + FableWin.pdb 0x02A200C0
+//   ??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@AAVC3DVector@@_N@Z (creature and target position by non-const reference;
+//   the landed callers 0x00954F40 / 0x00956060 bind it); was PAV / ABV.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The PDB header (CCreatureAction_TeleportOut.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
@@ -27,7 +30,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                 // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                 // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);  // 0x00857F30
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
@@ -36,10 +40,10 @@ class CCreatureAction_TeleportOut : public CCombatActionBase { public:   // vtab
     C3DVector TargetPos;                    // +0x114
     bool Instant;                           // +0x120
     virtual void v00();
-    CCreatureAction_TeleportOut(CThingCreatureBase* owner, const C3DVector& target, bool instant);
+    CCreatureAction_TeleportOut(CThingCreatureBase& owner, C3DVector& target, bool instant);
 };
 
-CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase* owner, const C3DVector& target, bool instant)
+CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase& owner, C3DVector& target, bool instant)
     : CCombatActionBase(owner, 250, CSoundPair())
     , TargetPos(target)
     , Instant(instant)

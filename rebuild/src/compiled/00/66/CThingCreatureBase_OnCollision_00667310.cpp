@@ -92,8 +92,10 @@ class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { 
     CCharString             AnimName;           // +0x114
     CBaseIntelligentPointer PThingThatHit;      // +0x118
     unsigned char           _hitInfo[0x1c];     // +0x120 PointOfHit, GotPointOfHit, DirectionOfHit, flags (PDB packing; size 0x13c)
-    CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase* creature, CThing* hitter, C3DVector* point,
-                                                 C3DVector* direction);   // 0x008679C0
+    // NF123 (2026-11-20, q4264): in-place respell to Ego_r.pdb 0x0083D8E0 + FableWin.pdb 0x0281AC80
+    //   ??0CCombatAction_GenericStrikeResponseKnockdown@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@2@Z (was PAV / PAV / PAV / PAV).
+    CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase& creature, const CThing* hitter, const C3DVector& point,
+                                                 const C3DVector& direction);   // 0x008679C0
 };
 
 class CThingCreatureBase : public CThingGameObject { public:
@@ -108,7 +110,7 @@ void CThingCreatureBase::OnCollision(ECollideType type, C3DVector* position, C3D
         const CThingCreatureBase* self = this;
         if (self->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode().GetType() == 0x42
             && normal->Dot(C3DVector(0.0f, 0.0f, 1.0f)) < 0.866f)
-            SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdown(this, other, position, normal));
+            SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdown(*this, other, *position, *normal));
     }
     if (!Dead && other && !other->Dead && HasTC(0xC8))
         GetTC<CTCHitOnCollision>(0xC8)->OnCollision(position, normal, other);

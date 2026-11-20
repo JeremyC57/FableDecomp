@@ -4,7 +4,7 @@
 // Identity: Ego_r.pdb `??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N@Z`;
 //   vtable 0x0127A604 (RTTI `.?AVCCreatureAction_PlayCombatAnimation@@`), as the landed sibling constructors 0x008B7F80 /
 //   0x008B7FF0 (the CCharString overloads). The catalog label "CCombatActionBase_Constructor_Action0x32" is descriptive.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030 (landed),
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030 (landed),
 //   vector<const CAnimationEntry*>::_M_insert_overflow @ 0x005E1420 (the folded 4-byte-element growth insert).
 // Layout (retail; Ego_r.pdb names): CCombatActionBase is 0x114 bytes with CombatAnimations (STLport vector<const
 //   CAnimationEntry*>, 12 bytes) at +0xF0; FaceTarget +0x114, UsePhysics +0x115, AlwaysUseMovementInAnim +0x116.
@@ -60,7 +60,8 @@ __declspec(noinline) void vector<_Tp>::_M_insert_overflow(_Tp* __position, const
 class CCombatActionBase {                               // retail sizeof 0x114
 public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     unsigned char _body04[0xF0 - 4];
     std::vector<const CAnimationEntry*> CombatAnimations; // +0xF0
     unsigned char _bodyFC[0x114 - 0xFC];
@@ -76,7 +77,7 @@ public:
 };
 
 CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingCreatureBase& owner, const CAnimationEntry& animation, bool usePhysics)
-    : CCombatActionBase(&owner, 50, CSoundPair())
+    : CCombatActionBase(owner, 50, CSoundPair())
     , FaceTarget(false)
     , UsePhysics(usePhysics)
     , AlwaysUseMovementInAnim(false)

@@ -1,7 +1,7 @@
 // CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase*) -- base CCombatActionBase(owner, 240, GetSoundPair(owner, null name)), animation "RISE_UP", no target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BD880, length 121 bytes (+ int3 padding). Vtable 0x01268C9C.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair(CThingCreatureBase*, const CCharString&) @ 0x008561A0
-// (`__fastcall`, CSoundPair returned through the hidden pointer), CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long,
+// (`__fastcall`, CSoundPair returned through the hidden pointer), CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long,
 // const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0.
 // Shape: the landed ScorpionChargeStrike shape (0x008C4F50) with a null sound name (`push -1 ; push 0`: the 0 converts implicitly
 // through the defaulted length) and action code 240 (0xF0); the name is a scoped named local; the flag byte at +0x114 is a body
@@ -18,12 +18,17 @@ class CSoundPair { public:                         // a user constructor makes t
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_RiseUp : public CCombatActionBase { public:   // vtable 0x01268C9C
@@ -33,7 +38,7 @@ class CCreatureAction_RiseUp : public CCombatActionBase { public:   // vtable 0x
 };
 
 CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 240, GetSoundPair(owner, 0))
+    : CCombatActionBase(*owner, 240, GetSoundPair(*owner, 0))
 {
     {
         CCharString name("RISE_UP", -1);

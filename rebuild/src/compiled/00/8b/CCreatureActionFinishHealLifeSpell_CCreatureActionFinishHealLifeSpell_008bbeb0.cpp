@@ -2,7 +2,7 @@
 // Label: the manifest row says CCreatureAction_BuildHealLifeSpell (propagated); the stored vtable 0x0127CD34 is CCreatureAction_FinishHealLifeSpell (rtti-vtables.tsv).
 // Leaf: ??0CCreatureAction_FinishHealLifeSpell
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBEB0, length 110 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the sound pair is zeroed with immediates in the frame and passed by reference (arguments right to left: the pair,
@@ -26,7 +26,8 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -37,7 +38,7 @@ class CCreatureAction_FinishHealLifeSpell : public CCombatActionBase { public:  
 };
 
 CCreatureAction_FinishHealLifeSpell::CCreatureAction_FinishHealLifeSpell(CThingCreatureBase* owner, bool healSelf)
-    : CCombatActionBase(owner, 145, CSoundPair())
+    : CCombatActionBase(*owner, 145, CSoundPair())
 {
     SetCombatAnimation(healSelf ? "ST_RELEASE_HEAL_SELF" : "ST_RELEASE_HEAL");
 }

@@ -1,6 +1,6 @@
 // CCreatureAction_CastWillFireballSpell::CCreatureAction_CastWillFireballSpell(CThingCreatureBase*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), ImmediateCast/OneAnimCast cleared, own vtable (0x0127DF4C), LevelToCast = -1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCD10, length 80 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030
 // Shape: the two byte stores (+0x114, +0x115, from the zeroed ebx that also built the sound pair) come BEFORE this
 // class's vtable store and the -1 store after it: the bytes belong to an inlined `__declspec(novtable)` intermediate
 // base (a spell-cast base that stores no vtable of its own, GOTCHAS wave 23), the long is this class's own init-list
@@ -18,7 +18,8 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);                                           // 0x008574D0
 };
 
@@ -26,7 +27,7 @@ struct __declspec(novtable) CCreatureAction_CastSpellBase : CCombatActionBase { 
     unsigned char ImmediateCast;            // +0x114
     unsigned char OneAnimCast;              // +0x115
     CCreatureAction_CastSpellBase(CThingCreatureBase* owner, long actionCode)
-        : CCombatActionBase(owner, actionCode, CSoundPair()), ImmediateCast(0), OneAnimCast(0) { }
+        : CCombatActionBase(*owner, actionCode, CSoundPair()), ImmediateCast(0), OneAnimCast(0) { }
 };
 
 class CCreatureAction_CastWillFireballSpell : public CCreatureAction_CastSpellBase { public:   // vtable 0x0127DF4C

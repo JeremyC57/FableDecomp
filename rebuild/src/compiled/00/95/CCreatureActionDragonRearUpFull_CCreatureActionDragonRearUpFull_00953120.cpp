@@ -24,7 +24,6 @@ class CSoundPair { public:                         // user constructor: the 8-by
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -33,6 +32,11 @@ class CBaseObjectPointer;
 
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -45,6 +49,6 @@ class CCreatureAction_DragonRearUpFull : public CCombatActionBase { public:   //
 };
 
 CCreatureAction_DragonRearUpFull::CCreatureAction_DragonRearUpFull(CThingCreatureBase* owner, CThing* target)
-    : CCombatActionBase(owner, target, 250, GetSoundPair(owner, "SWORD_SWING"))
+    : CCombatActionBase(owner, target, 250, GetSoundPair(*owner, "SWORD_SWING"))
 {
 }

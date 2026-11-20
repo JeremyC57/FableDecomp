@@ -1,7 +1,7 @@
 // CCreatureAction_CastWillDrainLifeSpell::CCreatureAction_CastWillDrainLifeSpell(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), Level and DrainDefIndex cleared, own vtable, then the target stored into the inherited PTarget
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBB40, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (on PTarget at +0xa8).
 // Shape: the two-argument base is used (not the target-taking one), so the target is set afterwards through the
 // intelligent pointer. The zero register (edi) is shared by the sound pair and the two members; the member stores are
@@ -27,7 +27,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (PDB 0
     unsigned char _pad04[0xa8 - 4];         // +0x04 (PCreature at +8, the rest of the 0xa8-byte CCreatureActionBase)
     CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing> (PDB +0xb4)
     unsigned char _padb0[0x114 - 0xb0];     // +0xb0
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public:   // vtable 0x012645EC; sizeof 0x11c
@@ -39,7 +40,7 @@ class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public
 };
 
 CCreatureAction_CastWillDrainLifeSpell::CCreatureAction_CastWillDrainLifeSpell(CThingCreatureBase* owner, CThing* target)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , Level(0)
     , DrainDefIndex(0)
 {

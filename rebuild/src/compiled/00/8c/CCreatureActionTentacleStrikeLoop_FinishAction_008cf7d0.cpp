@@ -6,7 +6,7 @@
 // Callees: CCombatActionBase::FinishAction 0x00859A20 (direct, first), CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CVectorMap::LowerBound 0x0040F020 (the unchecked GetInterface 0xE3 = CTCKrakenTentacle, bit 3 of +0x3c), CWorld::GetFrame
 //   0x0049D870 (static __fastcall), _ftol2 0x00BFEA70, CCreatureAction_TentacleStrikeLoop(CThingCreatureBase*, long) 0x008CF990,
-//   CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030 (the inline TentacleStrikeOutOf ctor, action 250,
+//   CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030 (the inline TentacleStrikeOutOf ctor, action 250,
 //   vtable 0x0128503C), CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCombatActionBase 0x0062E900.
 //   Global: CMainGameComponent::ConstantFPS 0x01375550 (protected static long, read through the inline GetConstantFPS()).
 // Layout: Ego_r.pdb CTCKrakenTentacle::PTentacleDef +0x0c (CDefPointer<const CKrakenTentacleDef>), CKrakenTentacleDef::
@@ -85,13 +85,14 @@ class CCombatActionBase { public:
     unsigned char _pad04[4];
     CIntelligentPointer<CThingCreatureBase> PCreature;   // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();               // 0x0062E900
     virtual void FinishAction();                // 0x00859A20 (virtual slot 4)
 };
 class CCreatureAction_TentacleStrikeOutOf : public CCombatActionBase { public:   // vtable 0x0128503C
     virtual void v00();
-    CCreatureAction_TentacleStrikeOutOf(CThingCreatureBase* owner) : CCombatActionBase(owner, 250, CSoundPair()) { }
+    CCreatureAction_TentacleStrikeOutOf(CThingCreatureBase* owner) : CCombatActionBase(*owner, 250, CSoundPair()) { }
 };
 class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   // vtable 0x01284EF4
     long  StartTick;                            // +0x114

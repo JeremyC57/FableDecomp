@@ -10,7 +10,13 @@
 // arguments are evaluated first, right to left (the summoner's placement +0x60 into ebx, the summoner twice into ebp/esi); inside it the width
 // `radius * 2.0f` (`fadd st(0),st(0)`) is pushed, then the two positions.
 // No engine header for this class matches retail (CCombatActionBase is 0x114 bytes); modelled locally.
+// NF123 (2026-11-20, q5136): the setter 0x007FD3F0 is CTCDPhysicalObstruction::SetParams(const C3DVector&, const C3DVector&, float) (Ego_r.pdb
+//   0x007F86A0 + FableWin.pdb 0x0278A9F0 ?SetParams@CTCDPhysicalObstruction@@QAEXABVC3DVector@@0M@Z; the 0xed driver is the physical obstruction);
+//   the stand-in CObstructionShape (Set + the SetBetween forwarder) is replaced by the shared engine/CTCDPhysicalObstruction.h (SETPARAMS opt-in)
+//   and a descriptive inline forwarder SetObstructionBetween (no retail symbol: it is inlined, as before).
 #include "engine/C3DVector.h"
+#define FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_SETPARAMS
+#include "engine/CTCDPhysicalObstruction.h"
 struct CTCPlacement {
     unsigned char _pad0[0x34];
     float m_radius;                         // +0x34
@@ -19,20 +25,17 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     unsigned char _pad44[0x5c - 0x44];
-    struct CObstructionShape* m_pObstruction;   // +0x5c
+    CTCDPhysicalObstruction* m_pObstruction;   // +0x5c PTCDriver (the 0xed obstruction driver)
     CTCPlacement* m_pPlacement;             // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     const C3DVector& GetPos() const;   // 0x004C73D0
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CObstructionShape {
-    void Set(const C3DVector& start, const C3DVector& end, float width);   // 0x007FD3F0
-    void SetBetween(CThing* start, CThing* end, CTCPlacement* placement)
-    {
-        Set(start->GetPos(), end->GetPos(), placement->m_radius * 2.0f);
-    }
-};
+inline void SetObstructionBetween(CTCDPhysicalObstruction* obstruction, CThing* start, CThing* end, CTCPlacement* placement)
+{
+    obstruction->SetParams(start->GetPos(), end->GetPos(), placement->m_radius * 2.0f);
+}
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -65,8 +68,8 @@ void CCreatureAction_SummonerFlameSlice::FrameUpdate()
     if (IS_THING_ALIVE(PFlameSlice)) {
         CThing* slice = ((CThing*)PFlameSlice.GetPItem());
         if (slice->HasTC(0xed)) {
-            CObstructionShape* obstruction = slice->m_pObstruction;
-            obstruction->SetBetween(((CThing*)PCreature.GetPItem()), ((CThing*)PCreature.GetPItem()), ((CThing*)PCreature.GetPItem())->m_pPlacement);
+            CTCDPhysicalObstruction* obstruction = slice->m_pObstruction;
+            SetObstructionBetween(obstruction, ((CThing*)PCreature.GetPItem()), ((CThing*)PCreature.GetPItem()), ((CThing*)PCreature.GetPItem())->m_pPlacement);
         }
     }
 }

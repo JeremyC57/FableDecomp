@@ -70,7 +70,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad20[0xa8 - 0x20];          // +0x20
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char _padb0[0x114 - 0xb0];         // +0xb0
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
     CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
@@ -81,7 +82,7 @@ class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:   /
     bool NoTarget;                              // +0x115
     virtual void v00();
     CCreatureAction_BanditKingUnstuck(CThingCreatureBase* owner)
-        : CCombatActionBase(owner, 150, CSoundPair())
+        : CCombatActionBase(*owner, 150, CSoundPair())
         , NoTarget(true)
     {
     }

@@ -1,7 +1,7 @@
 // CCreatureAction_NymphTeleportOutOfLimbo::CCreatureAction_NymphTeleportOutOfLimbo(CThingCreatureBase*, const C3DVector*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x01282A04), the destination at +0x114 copied from the argument or, when it is null, from the owner's position
 // Leaf: ??0CCreatureAction_NymphTeleportOutOfLimbo@@QAE@PAVCThingCreatureBase@@PBVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CA860, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CThing::GetPosition @ 0x004C73D0 (thiscall, no arguments; returns the position by pointer).
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CThing::GetPosition @ 0x004C73D0 (thiscall, no arguments; returns the position by pointer).
 // Shape: the null test of the vector argument straddles the vtable store (init-list member after the base), the three floats are copied one register each.
 class CThingCreatureBase;
 class C3DVector { public: float x, y, z; };
@@ -14,7 +14,8 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_NymphTeleportOutOfLimbo : public CCombatActionBase { public:   // vtable 0x01282A04
@@ -24,7 +25,7 @@ class CCreatureAction_NymphTeleportOutOfLimbo : public CCombatActionBase { publi
 };
 
 CCreatureAction_NymphTeleportOutOfLimbo::CCreatureAction_NymphTeleportOutOfLimbo(CThingCreatureBase* owner, const C3DVector* destination)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , m_destination(*(destination ? destination : &((CThing*)owner)->GetPos()))
 {
 }

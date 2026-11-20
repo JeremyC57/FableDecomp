@@ -20,7 +20,8 @@ class CSoundPair { public:
 
 class CCombatActionBase { public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActionBase { public:
@@ -29,6 +30,6 @@ class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActio
 };
 
 CCreatureAction_SummonerLightningOrbOutOfGroundSmash::CCreatureAction_SummonerLightningOrbOutOfGroundSmash(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
 {
 }

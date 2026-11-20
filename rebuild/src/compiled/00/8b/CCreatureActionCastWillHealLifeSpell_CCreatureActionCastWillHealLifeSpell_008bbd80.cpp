@@ -1,7 +1,7 @@
 // CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastWillHealLifeSpell(CThingCreatureBase*, CThing*, long) -- base CCombatActionBase(owner, 150, zeroed sound), Level, target set, animation "ST_CAST_HEAL" (or "ST_CAST_HEAL_SELF" without a target)
 // Leaf: ??0CCreatureAction_CastWillHealLifeSpell@@QAE@PAVCThingCreatureBase@@PAVCThing@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBD80, length 179 bytes (+ int3 padding), `ret 0Ch`. Vtable 0x0127CA4C.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CBaseIntelligentPointer ctor
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030, CBaseIntelligentPointer ctor
 // 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
 // CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("ST_CAST_HEAL" @ 0x0127CA20 / "ST_CAST_HEAL_SELF" @ 0x0127CA30), SetAnimationName 0x008574D0.
 // Shape: as the in-chunk CCreatureAction_CastWillEnflameSpell constructors 0x008BB450 / 0x008BB500: init-list Level, the base target
@@ -48,7 +48,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad04[0xa8 - 4];
     CIntelligentPointer<CThing> PTarget;           // +0xa8 (the combat action's target)
     unsigned char _padb0[0x114 - 0xb0];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -61,7 +62,7 @@ class CCreatureAction_CastWillHealLifeSpell : public CCombatActionBase { public:
 };
 
 CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastWillHealLifeSpell(CThingCreatureBase* owner, CThing* target, long level)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , Level(level)
 {
     PTarget = CIntelligentPointer<CThing>(target);

@@ -18,9 +18,13 @@ class CSoundPair { public:                         // a user constructor makes t
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030
@@ -37,7 +41,7 @@ class CCreatureAction_JumpOutFromCover : public CCombatActionBase { public:   //
 };
 
 CCreatureAction_JumpOutFromCover::CCreatureAction_JumpOutFromCover(CThingCreatureBase* owner, CThing* thing, const C3DVector& destination)
-    : CCombatActionBase(owner, thing, 150, GetSoundPair(owner, "SWORD_SWING"))
+    : CCombatActionBase(owner, thing, 150, GetSoundPair(*owner, "SWORD_SWING"))
     , m_destinationX(destination.X)
     , m_destinationY(destination.Y)
     , m_destinationZ(destination.Z)

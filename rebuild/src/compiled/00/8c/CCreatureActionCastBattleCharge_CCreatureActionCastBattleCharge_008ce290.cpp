@@ -1,5 +1,10 @@
-// CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase*, CThing*, bool, long) -- base CCombatActionBase(owner, target, 150, zeroed CSoundPair), Level from the argument, own vtable (0x0128439C), Override cleared, IsZTargetting from the argument
+// CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase&, CThing&, bool, long) -- base CCombatActionBase(owner, target, 150, zeroed CSoundPair), Level from the argument, own vtable (0x0128439C), Override cleared, IsZTargetting from the argument
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CE290, length 96 bytes.
+// Leaf: ??0CCreatureAction_CastBattleCharge@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJ@Z
+// NF123 (2026-11-20, q5015 + q6404): in-place respell of this row's own models: the constructor takes the creature and the target by
+//   reference (Ego_r.pdb 0x00905760 + FableWin.pdb 0x029F96F0 ??0CCreatureAction_CastBattleCharge@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJ@Z;
+//   the landed caller 0x0072C9C0 binds it), and so does the base constructor 0x00858030 (declared, not called here). Was PAV / PAV / J J.
+//   The base constructor 0x00857F30 keeps its landed PAV/PAV binding (its own fix is a separate catalog name), hence &owner, &target.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30
 // Shape: init-list members in declaration order (Override, Level, IsZTargetting); the scheduler hoists the Level store
 // (loaded from its argument slot) above the vtable store and keeps the two byte stores after it. `ret 10h`: four arguments.
@@ -18,7 +23,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(long actionCode);                                                                         // 0x00857E40
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 };
 
@@ -33,13 +38,13 @@ class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:   //
     unsigned char _pad12d[3];               // +0x12d
     virtual void v00();
     CCreatureAction_CastBattleCharge();
-    CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, long level);
-    CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, CThing* target, bool isZTargetting, long level);
+    CCreatureAction_CastBattleCharge(CThingCreatureBase& owner, long level);
+    CCreatureAction_CastBattleCharge(CThingCreatureBase& owner, CThing& target, bool isZTargetting, long level);
 };
 #pragma pack(pop)
 
-CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, CThing* target, bool isZTargetting, long level)
-    : CCombatActionBase(owner, target, 150, CSoundPair())
+CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase& owner, CThing& target, bool isZTargetting, long level)
+    : CCombatActionBase(&owner, &target, 150, CSoundPair())
     , Override(0)
     , Level(level)
     , IsZTargetting(isZTargetting)

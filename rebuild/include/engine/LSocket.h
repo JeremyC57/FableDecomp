@@ -87,6 +87,11 @@ public:
     FILE* _DEBUGFP;
     bool IsReadable(long);
     bool Receive(std::vector<char>&);
+#ifdef FABLE_RETAIL_LSOCKET_DTOR
+    // NF123 opt-in (row 0x0083FF80 LHHttp2::Reset, q4193): Ego_r.pdb 0x009234C0 + FableWin.pdb 0x02B373A0 ??1LSocket@LHNetworkLib@@QAE@XZ
+    // (public, out of line: 0x0083FF80 `delete Host` calls 0x008F9780 then operator delete). Declaration only, no layout change.
+    ~LSocket();                                                         // 0x008F9780
+#endif
 #ifdef FABLE_RETAIL_LSOCKET_SENDBLOCK
     // NF67 opt-in (round 7, row 0x008F95D0 itself): Ego_r.pdb / FableWin.pdb ?SendBlock@LSocket@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@@Z
     // (public). Declaration only, no layout change.

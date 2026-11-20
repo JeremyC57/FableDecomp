@@ -1,6 +1,6 @@
 // CCreatureAction_ForcePushInto::CCreatureAction_ForcePushInto(CThingCreatureBase*, bool) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), one bool member at +0x114
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090A760, length 63 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030.
 // Vtable 0x012783D4 = CCreatureAction_ForcePushInto (rtti-vtables.tsv), so the manifest module
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase is a propagated label and wrong.
 // Shape: the zeroed pair is stored before the pushes (`xor eax,eax ; mov [esp+4],eax ; mov [esp+8],eax`),
@@ -16,7 +16,8 @@ class CSoundPair { public:
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_ForcePushInto : public CCombatActionBase { public:
@@ -26,6 +27,6 @@ class CCreatureAction_ForcePushInto : public CCombatActionBase { public:
 };
 
 CCreatureAction_ForcePushInto::CCreatureAction_ForcePushInto(CThingCreatureBase* owner, bool pushLeft)
-    : CCombatActionBase(owner, 150, CSoundPair()), m_pushLeft(pushLeft)
+    : CCombatActionBase(*owner, 150, CSoundPair()), m_pushLeft(pushLeft)
 {
 }

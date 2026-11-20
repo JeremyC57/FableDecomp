@@ -126,7 +126,8 @@ class CThingCreatureBase { public:
 
 class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:
     unsigned char _body[0x12c];                                 // sizeof = 0x130
-    CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, CThing* thing, long mode, long value);   // 0x008CE290
+    // NF123 (2026-11-20, q5015): Ego_r.pdb 0x00905760 + FableWin.pdb 0x029F96F0, by reference with the bool z-targetting flag (was PAV/PAV/J/J).
+    CCreatureAction_CastBattleCharge(CThingCreatureBase& owner, CThing& target, bool isZTargetting, long level);   // 0x008CE290
 };
 
 struct CCombatSequence_BattleCharge : CCombatSequenceBase {
@@ -144,7 +145,7 @@ void CCombatSequence_BattleCharge::OnCreate()
     if (ownerDef->GetSubDef(def))
         value = def->m_value;
     CCountedPointer action;
-    action = new CCreatureAction_CastBattleCharge(GetCreature(), GetTarget(), 0, value);
+    action = new CCreatureAction_CastBattleCharge(*GetCreature(), *GetTarget(), false, value);
     AddAction(action);
     CCombatSequenceBase::OnCreate();
 }
@@ -183,8 +184,8 @@ static long g_frame = 500;
 long CWorld_Retail::GetCurrentFrame() { Log('F'); return g_frame; }
 static CWorld_Retail g_world; CWorld_Retail* g_pWorld = &g_world;
 static CCombatActionBase* g_act; static CThingCreatureBase* g_owner; static CThing* g_thing; static long g_mode = -1, g_value = -1; static int g_actCtor = 0;
-CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, CThing* thing, long mode, long value)
-{ g_act = this; g_owner = owner; g_thing = thing; g_mode = mode; g_value = value; ++g_actCtor; Log('C'); }
+CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase& owner, CThing& thing, bool mode, long value)
+{ g_act = this; g_owner = &owner; g_thing = &thing; g_mode = mode; g_value = value; ++g_actCtor; Log('C'); }
 int main()
 {
     static unsigned char ownerStore[0x80]; memset(ownerStore, 0, sizeof ownerStore);

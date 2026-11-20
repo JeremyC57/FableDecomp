@@ -4,7 +4,7 @@
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (null text, -1), GetSoundPair(const CCharString&,
 // CThingCreatureBase*) @ 0x008561A0 -- really (CThingCreatureBase*, const CCharString&), __fastcall: hidden result pointer
 // in ecx, owner in edx, the string reference pushed -- CCombatActionBase::
-// CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0.
+// CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0.
 // Vtable 0x01268DEC = CCreatureAction_OnGenerate (rtti-vtables.tsv), so the manifest module
 // CCombatAction_Guildmaster_HealFollowersInto is a propagated label and wrong. Same shape as the
 // WillEnflameInto family (0x009567F0) with an empty sound name and no extra member: `ret 4`.
@@ -26,12 +26,17 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_OnGenerate : public CCombatActionBase { public:
@@ -40,6 +45,6 @@ class CCreatureAction_OnGenerate : public CCombatActionBase { public:
 };
 
 CCreatureAction_OnGenerate::CCreatureAction_OnGenerate(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 250, GetSoundPair(owner, static_cast<const char*>(0)))
+    : CCombatActionBase(*owner, 250, GetSoundPair(*owner, static_cast<const char*>(0)))
 {
 }

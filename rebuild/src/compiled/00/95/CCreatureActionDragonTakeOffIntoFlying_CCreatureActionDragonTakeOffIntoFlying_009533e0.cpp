@@ -29,7 +29,6 @@ class CSoundPair { public:                         // user constructor: the 8-by
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 #include "engine/C3DVector.h"
 
@@ -43,9 +42,15 @@ struct CRetailVector {                      // VC6-era Dinkumware vector: first 
 
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:   // vtable 0x01293A7C
@@ -60,7 +65,7 @@ class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { publi
 };
 
 CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying(CThingCreatureBase* owner, const CRetailVector<C3DVector>& points)
-    : CCombatActionBase(owner, 250, GetSoundPair(owner, "SWORD_SWING"))
+    : CCombatActionBase(*owner, 250, GetSoundPair(*owner, "SWORD_SWING"))
     , MovementPoints(points)
     , UsePreviousPoint(1)
     , PEndAction()

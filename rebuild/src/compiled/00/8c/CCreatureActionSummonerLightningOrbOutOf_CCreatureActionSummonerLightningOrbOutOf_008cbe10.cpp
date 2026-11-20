@@ -1,7 +1,7 @@
 // CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbOutOf(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable, then target the orb when it is alive
 // Leaf: ??0CCreatureAction_SummonerLightningOrbOutOf@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CBE10, length 135 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CBaseIntelligentPointer::CBaseIntelligentPointer
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (the temporary, then PTarget), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10. Own vtable 0x01283234 (rtti-vtables.tsv); the temporary's vtable 0x01238C6C.
 // Shape: `ret 8`; the sound pair is zeroed with immediates in the 8-byte frame, which the stack CIntelligentPointer<CThing> built from the orb
@@ -35,7 +35,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[0xa8 - 4];         // +0x04
     CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing>
     unsigned char _padb0[0x114 - 0xb0];     // +0xb0
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 class CCreatureAction_SummonerLightningOrbOutOf : public CCombatActionBase { public:   // vtable 0x01283234
     virtual void v00();
@@ -43,7 +44,7 @@ class CCreatureAction_SummonerLightningOrbOutOf : public CCombatActionBase { pub
 };
 
 CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbOutOf(CThingCreatureBase* owner, CThing* orb)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
 {
     if (orb != 0 && !orb->IsDead()) {
         CIntelligentPointer target(orb);

@@ -1,4 +1,5 @@
 // CTCCreatureGroup::GetNearestMember(const C3DVector& pos) -- walk the member map and return the member thing nearest to the position (the running best is compared as distance-squared against the SQUARE of the stored distance-squared, as in retail)
+// Leaf: ?GetNearestMember@CTCCreatureGroup@@QBEPBVCThingAICreature@@ABVC3DVector@@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008128F0, 275 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x006A4D00 (the out-of-line const
@@ -24,6 +25,7 @@ class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; m
 };
 class CThing : public CThingPhysical { public:
 };
+class CThingAICreature;
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -81,10 +83,13 @@ class CTCCreatureGroup { public:
     unsigned long ActiveMemberCount;            // +0x10
     bool ShutdownOnEmpty;                       // +0x14
     CGroupMemberMap Members;                    // +0x18
-    CThing* GetNearestMember(const C3DVector& pos);
+    // NF123 (2026-11-20, q4958): in-place respell to Ego_r.pdb 0x0080C600 + FableWin.pdb 0x02659AE0
+    //   ?GetNearestMember@CTCCreatureGroup@@QBEPBVCThingAICreature@@ABVC3DVector@@@Z (const, returns const CThingAICreature*; engine/CTCCreatureGroup.h
+    //   declares it so); was QAE returning CThing*.
+    const CThingAICreature* GetNearestMember(const C3DVector& pos) const;
 };
 
-CThing* CTCCreatureGroup::GetNearestMember(const C3DVector& pos)
+const CThingAICreature* CTCCreatureGroup::GetNearestMember(const C3DVector& pos) const
 {
     CThing* nearest = 0;
     float nearestDistSq = 0;
@@ -101,5 +106,5 @@ CThing* CTCCreatureGroup::GetNearestMember(const C3DVector& pos)
             nearestDistSq = (((CThing*)it->Value.PMember.GetPItem())->PeekPos() - pos).GetLengthSquared();
         }
     }
-    return nearest;
+    return (const CThingAICreature*)nearest;
 }

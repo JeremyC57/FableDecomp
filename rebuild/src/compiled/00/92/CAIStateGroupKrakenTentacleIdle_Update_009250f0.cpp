@@ -1,6 +1,6 @@
 // CAIStateGroup_KrakenTentacleIdle::Update() -- keep performing the tentacle-idle combat action (50) while the group runs and each action completes; then terminate the group
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009250F0, length 118 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CAIStateGroupBase::IsStopping @ 0x008FD010 (x2), CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase*)
 // @ 0x0097D8B0,
 // CCombatActionBase::~CCombatActionBase @ 0x0062E900 (manifest "CTCLightningOrb::~CTCLightningOrb" is a propagated
@@ -27,13 +27,14 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                    // +0xa8..+0x113
-    CCombatActionBase(CThingCreatureBase* creature, long actionType, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& creature, long actionType, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                           // 0x0062E900
 };
 
 class CCreatureAction_TentacleIdle : public CCombatActionBase { public:     // vtable 0x01284DAC
     virtual void v00();
-    CCreatureAction_TentacleIdle(CThingCreatureBase* creature) : CCombatActionBase(creature, 0x32, CSoundPair()) { }
+    CCreatureAction_TentacleIdle(CThingCreatureBase* creature) : CCombatActionBase(*creature, 0x32, CSoundPair()) { }
 };
 
 class CAIBrain { public:

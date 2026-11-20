@@ -1,7 +1,7 @@
 // CCreatureAction_UndeadReturnToEarth::FinishAction() -- base FinishAction; once the action has run its full time, hand the creature a temporary CCreatureAction_UndeadIdleUnderground as its current action
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC700, length 103 bytes.
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
-// (PCreature at +8, twice), CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// (PCreature at +8, twice), CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0, the action destructor @ 0x0062E900
 // (manifest "~CTCLightningOrb" is a propagated label).
 // Shape: FramesRunning (+0x1c) compared against TotalTime (+0x10) (Ego_r.pdb CCreatureActionBase names). The 0x11c-byte
@@ -44,7 +44,8 @@ class CCombatActionBase { public:
     long AnimDelayTime;                         // +0x18
     long FramesRunning;                         // +0x1c
     unsigned char _pad20[0x114 - 0x20];         // +0x20
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
 };
@@ -52,7 +53,7 @@ class CCombatActionBase { public:
 class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:   // retail sizeof 0x114, vtable 0x0126908C
     virtual void v00();
     CCreatureAction_UndeadIdleUnderground(CThingCreatureBase* owner)
-        : CCombatActionBase(owner, 50, CSoundPair())
+        : CCombatActionBase(*owner, 50, CSoundPair())
     {
     }
 };

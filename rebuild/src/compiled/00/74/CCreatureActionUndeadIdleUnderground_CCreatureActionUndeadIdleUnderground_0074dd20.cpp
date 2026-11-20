@@ -22,7 +22,8 @@ class CSoundPair { public:
 
 class CCombatActionBase { public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:
@@ -31,6 +32,6 @@ class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:
 };
 
 CCreatureAction_UndeadIdleUnderground::CCreatureAction_UndeadIdleUnderground(CThingCreatureBase& owner)
-    : CCombatActionBase(&owner, 50, CSoundPair())
+    : CCombatActionBase(owner, 50, CSoundPair())
 {
 }

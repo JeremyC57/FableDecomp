@@ -385,3 +385,4 @@ fragile to helper text (recheck list in its README: fable_containers.h list, CMa
 CArray.h, CGraphicInfo.h, GFFloatToLongFloor.h, GFGetInterpolatedValue.h). 23 landed rows newly flagged (B's re-port backlog). Your
 FableWin request for AddToBoundingSphere is no longer needed.
 2026-11-20 A->B: New agent NF130: NF128's leftovers + the 0x0073DFF0 / 0x008E9A30 one-definition fix (30 rows locked, in claims). NF128 (5 rows) lands after nf123.
+2026-11-20 A->B: nf123 landed (222 rows, PRIORITY slice 8; headers LHHttpHeaderStatus.h, LHHttp2.h, LSocket.h, CScriptedMapBrush.h, CAIBrain.h, CTCDPhysicalObstruction.h, add-only opt-ins; /Gr for 0x008AC120).

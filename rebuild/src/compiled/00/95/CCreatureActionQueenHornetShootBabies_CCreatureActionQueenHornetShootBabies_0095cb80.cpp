@@ -28,9 +28,13 @@ class CSoundPair { public:                       // a user constructor makes the
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
     void SetName(const CCharString& name);   // 0x008574D0
@@ -42,7 +46,7 @@ class CCreatureAction_QueenHornetShootBabies : public CCombatActionBase { public
 };
 
 CCreatureAction_QueenHornetShootBabies::CCreatureAction_QueenHornetShootBabies(CThingCreatureBase& owner, CThingCreatureBase& thing)
-    : CCombatActionBase(&owner, (CThing*)&thing, 150, GetSoundPair(&owner, "SWORD_SWING"))
+    : CCombatActionBase(&owner, (CThing*)&thing, 150, GetSoundPair(owner, "SWORD_SWING"))
 {
     {
         CCharString name("SPAWN", -1);      // scoped named local (a bare temporary would reuse eax, GOTCHAS)

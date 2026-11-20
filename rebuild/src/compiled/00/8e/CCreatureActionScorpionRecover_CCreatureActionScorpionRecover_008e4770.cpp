@@ -23,12 +23,17 @@ class CSoundPair { public:                         // user constructor: the 8-by
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);                                           // 0x008574D0
 };
 
@@ -38,7 +43,7 @@ class CCreatureAction_ScorpionRecover : public CCombatActionBase { public:   // 
 };
 
 CCreatureAction_ScorpionRecover::CCreatureAction_ScorpionRecover(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 150, GetSoundPair(owner, "SWORD_SWING"))
+    : CCombatActionBase(*owner, 150, GetSoundPair(*owner, "SWORD_SWING"))
 {
     {
         CCharString name("RECOVER", -1);

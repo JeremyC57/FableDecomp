@@ -104,7 +104,8 @@ public:
 };
 class CCombatActionBase {
 public:
-    CCombatActionBase(CThingCreatureBase* creature, long type, const CSoundPair& sounds);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& creature, long type, const CSoundPair& sounds);   // 0x00858030
     virtual void v00();
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
@@ -120,7 +121,7 @@ public:
 };
 
 CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingCreatureBase* creature, long level)
-    : CCombatActionBase(creature, 0x91, CSoundPair()), Level(level)
+    : CCombatActionBase(*creature, 0x91, CSoundPair()), Level(level)
 {
     SetCombatAnimation("ST_MULTI_ARROW_CAST");
     CDefPointer<const CSpecialAbilitiesMultiArrowDef> def;

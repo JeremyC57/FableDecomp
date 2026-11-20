@@ -1,8 +1,13 @@
-// CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase*, const CThing*, const C3DVector&, const C3DVector&) -- knockdown response: base (owner, action code 250, empty sound pair), empty animation name, the hitter, the hit point and direction (both flagged as given)
-// Leaf: ??0CCombatAction_GenericStrikeResponseKnockdown
+// CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase&, const CThing*, const C3DVector&, const C3DVector&) -- knockdown response: base (owner, action code 250, empty sound pair), empty animation name, the hitter, the hit point and direction (both flagged as given)
+// Leaf: ??0CCombatAction_GenericStrikeResponseKnockdown@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@2@Z
+// NF123 (2026-11-20, q4264 + q6404): in-place respell of this row's own models: the constructor takes the creature by reference and the
+//   hitter as const CThing* (Ego_r.pdb 0x0083D8E0 + FableWin.pdb 0x0281AC80
+//   ??0CCombatAction_GenericStrikeResponseKnockdown@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@2@Z; the landed callers
+//   0x00667450 / 0x007AF490 bind it), and the base constructor 0x00858030 takes the creature by reference (Ego_r.pdb
+//   ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z, engine/CCombatActionBase.h SOUNDCTOR). Was PAV / PAV.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008679C0, 176 bytes incl. padding (`ret 10h`). Own vtable 0x01277344.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString()
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString()
 //          @ 0x0099E4B0, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (the inline CIntelligentPointer(T*) ctor).
 // Layout (retail = Ego_r.pdb - 0x18; the class is byte-packed in the PDB, engine/CCombatAction_GenericStrikeResponseKnockdown.h
 //          carries the PDB offsets with the base flattened, so it is modelled locally): AnimName +0x114, PThingThatHit
@@ -39,7 +44,7 @@ class CSoundPair { public:
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 class CCharString { public:
     void* PStringData;
@@ -55,12 +60,12 @@ class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { 
     bool GotDirectionOfHit;                 // +0x139
     bool FlipFacing;                        // +0x13a
     virtual void v00();
-    CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase* owner, CThing* thingThatHit, const C3DVector& pointOfHit,
+    CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase& owner, const CThing* thingThatHit, const C3DVector& pointOfHit,
                                                  const C3DVector& directionOfHit);
 };
 #pragma pack(pop)
 
-CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase* owner, CThing* thingThatHit,
+CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase& owner, const CThing* thingThatHit,
                                                                                            const C3DVector& pointOfHit,
                                                                                            const C3DVector& directionOfHit)
     : CCombatActionBase(owner, 250, CSoundPair())

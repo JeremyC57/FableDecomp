@@ -1,7 +1,7 @@
 // CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase*, const C3DVector&, float, long) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x0128439C), Override set, Dir copied from the vector, Distance and Level from the arguments, IsZTargetting cleared
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CE340, length 123 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030.
 // Shape: the sound pair is zeroed with immediates in the frame and passed by reference (arguments right to left: the pair,
 // 0x96, the owner); then the init-list members in declaration order: Override = 1 (sinks below the vtable store), the three
 // direction words copied through registers from the reference (C3DVector's memberwise user copy constructor), Distance and Level from their
@@ -22,7 +22,8 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 #pragma pack(push, 1)
@@ -40,7 +41,7 @@ class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:   //
 #pragma pack(pop)
 
 CCreatureAction_CastBattleCharge::CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, const C3DVector& dir, float distance, long level)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , Override(true)
     , Dir(dir)
     , Distance(distance)

@@ -1,6 +1,6 @@
 // CCombatAction_GenericResponseToDecapitation::CCombatAction_GenericResponseToDecapitation(CThingCreatureBase*) -- base CCombatActionBase(owner, 0, zeroed CSoundPair)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085BBA0, length 49 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030.
 // Vtable 0x012767EC (rtti-vtables.tsv labels it CCreatureAction_HeroRunningStop -- a propagated name; the manifest
 // class label is kept because the ctor address is unique to it).
 // Shape: the action code is 0, so VC reuses the `xor eax,eax` of the sound pair for the pushed code, and the
@@ -18,7 +18,8 @@ class CSoundPair { public:
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCombatAction_GenericResponseToDecapitation : public CCombatActionBase { public:
@@ -27,6 +28,6 @@ class CCombatAction_GenericResponseToDecapitation : public CCombatActionBase { p
 };
 
 CCombatAction_GenericResponseToDecapitation::CCombatAction_GenericResponseToDecapitation(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 0, CSoundPair())
+    : CCombatActionBase(*owner, 0, CSoundPair())
 {
 }

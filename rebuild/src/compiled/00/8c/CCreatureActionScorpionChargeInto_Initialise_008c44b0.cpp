@@ -12,7 +12,7 @@
 #include "fable_compiler.h"
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/ETCInterfaceType.h"                         // CTCBase interface type (NF123: the shared enum replaces the empty local one)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CPhysicsBody {                                 // the thing's physics body at +0x60
@@ -81,7 +81,10 @@ class CThing { public:
 struct CTC93 {                                        // interface 0x93
     void SetDirection(CThing* towards, bool flag);    // 0x0079E580
 };
-CThing* __fastcall CreateObstruction(const C3DVector& a, const C3DVector& b, float radius);   // 0x007FD4B0
+// NF123 (2026-11-20, q6402): the creator 0x007FD4B0 is the static __fastcall CTCDPhysicalObstruction::Create (Ego_r.pdb 0x007F8750 + FableWin.pdb
+//   ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z; was the free CreateObstruction), declared by the shared header's CREATE opt-in.
+#define FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_CREATE
+#include "engine/CTCDPhysicalObstruction.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -144,8 +147,8 @@ void CCreatureAction_ScorpionChargeInto::Initialise()
     CDefPointer<CAICreatureWillPowerIndicatorDef> def;
     GetCreature()->GetDef()->GetSubDef(&def);
     C3DVector offset = GetCreature()->GetPhysics()->GetFacing() * (def.Object->Radius + 0.2f);
-    CThing* obstruction = CreateObstruction(GetCreature()->GetPos() + offset, GetCreature()->GetPos() + offset,
-                                            def.Object->Radius);
+    CThing* obstruction = CTCDPhysicalObstruction::Create(GetCreature()->GetPos() + offset, GetCreature()->GetPos() + offset,
+                                                           def.Object->Radius);
     if (obstruction)
         PObstruction = CIntelligentPointer<CThing>(obstruction);
 }

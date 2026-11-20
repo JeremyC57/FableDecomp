@@ -4,7 +4,7 @@
 // Name: slot 3 of the vtable 0x012682EC (rtti-vtables.tsv); slot 3 is CModeBase::FrameUpdate (the landed
 // 0x0073AC50 is the base body CModeUnderground's slot 3 calls first), slot 5 the landed OnActivate 0x008D6920 that
 // arms the counter at +0x74.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030 (action code
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030 (action code
 // 250, then the derived CCreatureAction_SummonerDead vtable 0x01287174 from its inline constructor),
 // CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0, ~CCombatActionBase @ 0x0062E900.
 // Layout: CModeBase {vptr, creature +4}; m_framesToDie +0x74 (as the landed OnActivate); the creature's state byte +0x10
@@ -26,7 +26,8 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _body[0x110];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 
@@ -39,7 +40,7 @@ class CThingCreatureBase { public:
 class CCreatureAction_SummonerDead : public CCombatActionBase { public:   // vtable 0x01287174
     virtual void v00();
     CCreatureAction_SummonerDead(CThingCreatureBase* owner)
-        : CCombatActionBase(owner, 250, CSoundPair())
+        : CCombatActionBase(*owner, 250, CSoundPair())
     {
     }
 };

@@ -26,14 +26,15 @@ class CSoundPair { public:
 
 class CCombatActionBase { public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     unsigned char _body[0x110];
 };
 
 class CCreatureAction_ForcePushInto : public CCombatActionBase { public:
     bool m_bPushInto;                       // +0x114
     CCreatureAction_ForcePushInto(CThingCreatureBase* owner)
-        : CCombatActionBase(owner, 150, CSoundPair()) { m_bPushInto = true; }
+        : CCombatActionBase(*owner, 150, CSoundPair()) { m_bPushInto = true; }
     virtual void v00();                     // vtable 0x012783D4
 };
 

@@ -30,6 +30,12 @@ public:
     ~LHHttpHeaders() { Reset(); }
 #else
     void Reset() { HeaderString="";HdrDocumentHeader.clear(); }
+#ifdef FABLE_RETAIL_LHHTTP2_DTOR
+    // NF123 opt-in (row 0x008410D0 ~LHHttp2, q4193): the user destructor (Ego_r 0x005E03E0 + FableWin 0x022DE110
+    // ??1LHHttpHeaders@LHNetworkLib@@QAE@XZ, inline in retail) with Reset's body visible, as the LHHttp TU has it (0x008410D0 expands
+    // both: assign + erase, then the members' destructors).
+    ~LHHttpHeaders() { Reset(); }
+#endif
 #endif
     void DeleteHeaderString() { HeaderString=""; }
     void AddHeader(const std::string& line) { HdrDocumentHeader.push_back(line); }
@@ -87,6 +93,29 @@ public:
     // NF116 opt-in (row 0x0083FB20 SetConnectionDetails): Ego_r.pdb / FableWin.pdb ?Open@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@XZ
     // (0x0083F9B0, public), called out of line. Declaration only, no layout change.
     LH_RETURN Open();                                                    // 0x0083F9B0
+#endif
+#if defined(FABLE_RETAIL_LHHTTP2_DTOR) && !defined(FABLE_RETAIL_LHHTTP2_SCOREBOARD)
+    // NF123 opt-in (row 0x008410D0, q4193): Ego_r 0x0084EE40 + FableWin 0x029E6D50 ??1LHHttp2@LHNetworkLib@@QAE@XZ and Ego_r 0x0084EB80 +
+    // FableWin 0x029E7710 ?Close@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@XZ (0x00840070; the destructor's TU expands it, so the
+    // includer supplies the body). Declarations only, no layout change.
+    ~LHHttp2();                                                          // 0x008410D0
+#endif
+#ifdef FABLE_RETAIL_LHHTTP2_DTOR
+    LH_RETURN Close();                                                   // 0x00840070
+#endif
+#ifdef FABLE_RETAIL_LHHTTP2_SENDREQUEST
+    // NF123 opt-in (row 0x008405F0, q4193): Ego_r.pdb + FableWin.pdb ?SendRawData@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@PADKPAK_N@Z
+    // (0x0083F8B0), Ego_r ?ResetRequest@LHHttp2@LHNetworkLib@@QAEXXZ (0x0083F980), Ego_r ?SendRequestAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ
+    // (0x008405F0). Declarations only, no layout change.
+    LH_RETURN SendRawData(char* data, unsigned long size, unsigned long* bytesSent, bool wait);   // 0x0083F8B0
+    void ResetRequest();                                                 // 0x0083F980
+    LH_HTTP_STATUS SendRequestAsync();                                   // 0x008405F0
+#endif
+#ifdef FABLE_RETAIL_LHHTTP2_RESET
+    // NF123 opt-in (row 0x0083FF80, q4193): Ego_r.pdb 0x0084EA50 + FableWin.pdb 0x029E6E20 ?Reset@LHHttp2@LHNetworkLib@@QAEXXZ and
+    // Ego_r 0x0084DA50 + FableWin 0x029E6FE0 ?ResetDocumentParts@LHHttp2@LHNetworkLib@@QAEXXZ (0x0083EB00, out of line). Declarations only.
+    void ResetDocumentParts();                                           // 0x0083EB00
+    void Reset();                                                        // 0x0083FF80
 #endif
     LH_HTTP_STATUS PrepareRequest(HTTP_REQUEST_TYPE,const std::string&,LHHttpHeaders*,const std::string&,unsigned long);
     LH_HTTP_STATUS ReceiveHeaderAsync();

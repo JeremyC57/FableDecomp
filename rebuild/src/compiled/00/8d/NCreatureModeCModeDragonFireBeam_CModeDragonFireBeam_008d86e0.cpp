@@ -4,7 +4,7 @@
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D86E0, 209 bytes (`ret 0Ch`). Vtable 0x01285900 (NCreatureMode::CModeDragonFireBeam).
-// Callees: NCreatureMode::CModeDragonHover::CModeDragonHover(CThing*, CThing*) 0x008D8580 (landed); __ftol2 0x00BFEA70;
+// Callees: NCreatureMode::CModeDragonHover::CModeDragonHover(CThing&, CThing&) 0x008D8580 (landed; NF123 q6398: FableWin.pdb ??0CModeDragonHover@NCreatureMode@@QAE@AAVCThing@@0@Z, was PAV/PAV); __ftol2 0x00BFEA70;
 // global: the frames-per-second long 0x01375550 (`fild`);
 // CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10; CCharString(const char*, long) 0x0099EBF0,
 // CCharString() 0x0099E4B0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0.
@@ -80,7 +80,7 @@ class CModeDragonHover : public CModeStandBase { public: // vtable 0x0126845C, 0
     CAnimFilterOfGroup       Filter;       // +0x68
     CIntelligentPointer<CThing> PTarget;      // +0x74
     bool                     UseHeadTurning;   // +0x7c
-    CModeDragonHover(CThing* thing, CThing* target);   // 0x008D8580
+    CModeDragonHover(CThing& thing, CThing& target);   // 0x008D8580
 };
 
 struct CModeDragonFireBeam : CModeDragonHover {   // vtable 0x01285900
@@ -93,7 +93,7 @@ struct CModeDragonFireBeam : CModeDragonHover {   // vtable 0x01285900
 };
 
 CModeDragonFireBeam::CModeDragonFireBeam(CThing* thing, CThing* target, float seconds)
-    : CModeDragonHover(thing, target)
+    : CModeDragonHover(*thing, *target)
 {
     Filter = CAnimFilterOfGroup("FIRE_BEAM");   // literal @ 0x012858F0 (masked)
     Timer = (long)(seconds * CMainGameComponent::GetConstantFPS());

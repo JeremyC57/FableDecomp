@@ -1,6 +1,6 @@
 // CCreatureAction_BriarRoseConcentrateInto::CCreatureAction_BriarRoseConcentrateInto(CThingCreatureBase*, CThing*, bool) -- base CCombatActionBase(owner, 50, zeroed CSoundPair), own vtable (0x01287904), Imposter from the argument, PTarget built on the target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E8BB0, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (the inline
 // CIntelligentPointer(item) constructor: base, its vtable 0x01238C6C, SetPItem)
 // Shape: init-list members in declaration order: the Imposter byte (third argument's slot +0x1c, `mov dl`) is stored
@@ -35,7 +35,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 #pragma pack(push, 1)
@@ -49,7 +50,7 @@ class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase { publ
 #pragma pack(pop)
 
 CCreatureAction_BriarRoseConcentrateInto::CCreatureAction_BriarRoseConcentrateInto(CThingCreatureBase* owner, CBaseObject* target, bool imposter)
-    : CCombatActionBase(owner, 50, CSoundPair())
+    : CCombatActionBase(*owner, 50, CSoundPair())
     , Imposter(imposter)
     , PTarget(target)
 {

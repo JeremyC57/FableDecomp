@@ -1,7 +1,7 @@
 // CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMultiStrikeProper(CThingCreatureBase*, long) -- untargeted form: base CCombatActionBase(owner, 150, zeroed sound), SpellLevel, then the animation named by SPECIAL_ABILITIES_MULTI_STRIKE_DEF's Animations[SpellLevel - 1]
 // Leaf: ??0CCreatureAction_CastStrengthMultiStrikeProper@@QAE@PAVCThingCreatureBase@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E6C90, length 210 bytes, `ret 8`. Vtable 0x012877A4.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CCharString ctor
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030, CCharString ctor
 // 0x0099EBF0 / dtor 0x0099EAE0 ("SPECIAL_ABILITIES_MULTI_STRIKE_DEF" @ 0x01235A9C), CGameDefinitionManager::Get() 0x0044C6B0 (twice),
 // GetDefIndexFromName 0x009AD390, GetDef<CSpecialAbilitiesMultiStrikeDef> 0x007CD760, CDefStringTable::GetString 0x009D49B0 (global
 // table @ 0x013CA828), SetCombatAnimation 0x008574D0; the def's virtual slot 1 on the last release.
@@ -75,7 +75,8 @@ class CSoundPair { public:                             // two sound ids, zeroed 
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
@@ -88,7 +89,7 @@ class CCreatureAction_CastStrengthMultiStrikeProper : public CCombatActionBase {
 };
 
 CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMultiStrikeProper(CThingCreatureBase* owner, long spellLevel)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , SpellLevel(spellLevel)
 {
     CDefPointerMultiStrike def;

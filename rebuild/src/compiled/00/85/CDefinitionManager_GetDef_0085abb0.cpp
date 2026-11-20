@@ -1,4 +1,4 @@
-// CDefinitionManager::GetDef<T>(long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
+// CDefinitionManager::GetDef<CMeleeCombatKnockdownEffects>(long, CDefPointer<const CMeleeCombatKnockdownEffects>*) const -- GetPDefFromGlobalIndex @ 0x009AD9E0 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085ABB0, oracle length 108 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -15,6 +15,12 @@
 // pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
 // test and the def is kept in ecx for the virtual call. The manifest
 // label names one instantiation; the def type is opaque. One of 14 bodies of this shape.
+// Naming (NF123, 2026-11-20, q5100; was the generic member GetDef_0085abb0(long, CDefPointer&)): FableWin.pdb (0x0282E620) names
+//   ??$GetDef@VCMeleeCombatKnockdownEffects@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatKnockdownEffects@@@@@Z (the long-index
+//   overload; the out pointer is a CDefPointer<const T>*); its sole caller 0x00859660 (landed, binds it) passes
+//   CMeleeCombatAbilityDef::KnockDownEffects (+0x60) and reads CMeleeCombatKnockdownEffects fields. Body and spelling as the
+//   landed sibling instantiation 0x0083E0D0 (agentNF13).
+// Leaf: ??$GetDef@VCMeleeCombatKnockdownEffects@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatKnockdownEffects@@@@@Z
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
     long m_count;
     void DecRef() { --m_count; }
@@ -41,6 +47,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
 };
 
 class CDefClassBase;
+class CMeleeCombatKnockdownEffects;
 template <class T> class CDefPointer { public:
     CDefBase* m_p;
     CDefPointer() { }
@@ -49,7 +56,7 @@ template <class T> class CDefPointer { public:
         if (m_p)
             m_p->ReleaseTemporary();
     }
-    CDefPointer& operator=(const CDefPointer& other)   // inlined by the speed TU
+    template <class U> void SetDynamicCast(const CDefPointer<U>& other)   // retail: the plain counted assignment
     {
         if (m_p != other.m_p) {
             if (m_p) {
@@ -60,23 +67,22 @@ template <class T> class CDefPointer { public:
             if (m_p)
                 ++m_p->m_count;
         }
-        return *this;
     }
 };
 
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_0085abb0(long index, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(long index, CDefPointer<const T>* out) const
+    {
+        if (index <= 0)
+            return false;
+        CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
+        if (def.m_p) {
+            out->SetDynamicCast(def);
+            return true;
+        }
+        return false;
+    }
 };
 
-bool CDefinitionManager::GetDef_0085abb0(long index, CDefPointer<const CDefClassBase>& out)
-{
-    if (index <= 0)
-        return false;
-    CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
-    if (def.m_p) {
-        out = def;
-        return true;
-    }
-    return false;
-}
+template bool CDefinitionManager::GetDef<CMeleeCombatKnockdownEffects>(long, CDefPointer<const CMeleeCombatKnockdownEffects>*) const;

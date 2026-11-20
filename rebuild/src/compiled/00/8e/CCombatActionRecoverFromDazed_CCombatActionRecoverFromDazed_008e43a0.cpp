@@ -21,7 +21,8 @@ class CSoundPair { public:
 
 class CCombatActionBase { public:
     virtual void v00();
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -32,7 +33,7 @@ class CCombatAction_RecoverFromDazed : public CCombatActionBase { public:
 };
 
 CCombatAction_RecoverFromDazed::CCombatAction_RecoverFromDazed(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 250, CSoundPair())
+    : CCombatActionBase(*owner, 250, CSoundPair())
 {
     {
         CCharString name("DAZED_RECOVER", -1);       // scoped named local (a bare temporary would reuse eax, GOTCHAS)

@@ -1,7 +1,7 @@
 // CCreatureAction_WaspQueenDeath::FinishAction() -- clear the attachments of the live emitter's particle-emitter component, base FinishAction, then restart the death loop with a fresh CCreatureAction_WaspQueenDie(owner, 0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C52C0, length 165 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCDParticleEmitter::ClearAttachments @ 0x006E0DE0,
-// CCombatActionBase::FinishAction @ 0x00859A20, CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long,
+// CCombatActionBase::FinishAction @ 0x00859A20, CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long,
 // const CSoundPair&) @ 0x00858030 (action code 250), CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase
 // @ 0x0062E900 (manifest "~CTCLightningOrb" is propagated).
 // Shape: the emitter is tested present / not dead (thing byte +0x91 bit 0), then its cached particle-emitter component comes
@@ -62,7 +62,8 @@ class CCombatActionBase { public:
     unsigned char _pad04[4];                    // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];         // +0x10
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
 };
@@ -71,7 +72,7 @@ class CCreatureAction_WaspQueenDie : public CCombatActionBase { public:   // ret
     long LoopNum;                               // +0x114
     virtual void v00();
     CCreatureAction_WaspQueenDie(CThingCreatureBase* owner, long loopNum)
-        : CCombatActionBase(owner, 250, CSoundPair())
+        : CCombatActionBase(*owner, 250, CSoundPair())
         , LoopNum(loopNum)
     {
     }

@@ -23677,7 +23677,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007fd110	GetPFirstThingInRoughArea	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,C2DBoxI *,CThingFilter_HasDefGlobalIndex *,CThing * *	1	yes	accepted									
 007fd3c0	OnInitialActivate	CTCDPhysicalObstruction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007fd3d0	SetLifeTimeSeconds	CTCDPhysicalObstruction	__thiscall	void	1	CAIStateGroup_BuyFromSeller *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CAIStateGroupBuyFromSeller_BoughtSomething_007fd3d0.cpp
-007fd3f0	SetVectors	CInputManager_007fd3f0	__thiscall	void	3	CInputManager *,long,CChecksum *	1	yes	accepted									
+007fd3f0	SetParams	CTCDPhysicalObstruction	__thiscall	void	3	CInputManager *,long,CChecksum *	1	yes	accepted									
 007fd430	Construct	CTCDPhysicalObstruction	__thiscall	void	2	CTCDCameraPoint *,C3DVector *	1	yes	accepted									
 007fd4b0	Create	CTCDPhysicalObstruction	__fastcall	CThing *	3	C3DVector *,C3DVector *,float	1	yes	accepted									
 007fd580	UpdateAdditionalImpulse	CTCDPhysicalObstruction	__thiscall	void	1	CTCDPhysicalObstruction *	1	yes	accepted									
@@ -23772,7 +23772,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00802110	operator[]	std::map<EIdleStateGroup, CAIStateGroupBase*, std::less<EIdleStateGroup >, std::allocator<std::pair<const EIdleStateGroup, CAIStateGroupBase* > > >	unknown	undefined	0		0	yes	accepted									
 00802190	operator[]	std::map<EIdleStateGroup, long, std::less<EIdleStateGroup>, std::allocator<std::pair<EIdleStateGroup const, long>>>	unknown	undefined	0		0	yes	accepted									
 00802370	InitTargetingPlayerFlags_00802370	_global	unknown	undefined	0		0	yes	accepted									
-00802390	GetMember_float0x48_00802390	_global	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\80\DrawGetSeaLevel_DrawGetSeaLevel_00802390.cpp
+00802390	GetMaxTargetingDistance	CTCTargetingPlayer	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\80\DrawGetSeaLevel_DrawGetSeaLevel_00802390.cpp
 008023a0	SetAsPickUpNewLockTarget	CTCTargetingPlayer	__thiscall	void	1	CTCTargetingPlayer *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\80\CTCTargetingPlayer_SetAsPickUpNewLockTarget_008023a0.cpp
 008023c0	SetAsTargetNextThingInDirection	CTCTargetingPlayer	__thiscall	void	2	CTCTargetingPlayer *,ETargetNextThingMethod	1	yes	accepted									
 008023e0	UpdateNearestInterestingThing	CTCTargetingPlayer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -24130,7 +24130,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00816410	GetClosestPointToPos2D	NHitLocations::CPhysicalPrimitiveCylinder	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008168b0	GetPCombatFirstHitLocationIntersectionWithFiniteLine	CTCHitLocations	__thiscall	CHitLocation *	6	CTCHitLocations *,C3DVector *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted									
 008169b0	GetPCombatFirstHitLocationIntersectionWithTriangle	CTCHitLocations	__thiscall	CHitLocation *	5	CTCHitLocations *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,C3DVector *,float	1	yes	accepted									
-00816aa0	TailJmp_GetPCombatFirstHitLocationIntersectionWi_00816aa0	_global	__thiscall	CHitLocation *	6	CTCHitLocations *,C3DVector *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0.cpp
+00816aa0	GetPCombatFirstHitLocationIntersectionWithFiniteLine	CTCHitLocations	__thiscall	CHitLocation *	6	CTCHitLocations *,C3DVector *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0.cpp
 00816ac0	CParticleMorphs_PopulateFromDefinitions	_global	unknown	undefined	0		0	yes	accepted									
 00817010	swap<THitLocationIntersectionElement>	std	__fastcall	void	2	CDebugSphere *,CDebugSphere *	1	yes	accepted									
 00817070	_Copy_impl<CDegradableInfo*,CDegradableInfo*>	_global	__fastcall	CDegradableInfo *	4	CDegradableInfo *,CDegradableInfo *,CDegradableInfo *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -24670,7 +24670,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008300f0	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\CTCPhysicsStandard_CTCPhysicsStandardCanCollideWithLandscapec_008300f0.cpp
 00830100	CanCollideWithLandscape	CTCPhysicsStandard	__thiscall	bool	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\global_CanCollideWithLandscape_00830100.cpp
 00830110	IsNewAttackerGreaterThreat	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00830130	Forward_IsUpdateZoneActiveThisFrame_via0x1a8_00830130	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130.cpp
+00830130	IsBrainUpdateZoneActiveThisFrame	CThingAICreature	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130.cpp
 00830140	GetProperties	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830150	DrawGetEditDrawInfo	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830250	GetCurrentGraphic	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -25554,7 +25554,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0085aa90	SetTarget	CCombatActionBase	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 0085ab00	AssignTarget_0085ab00	_unattributed	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 0085ab50	list	std::list<T_0x8_0085ab50>	unknown	undefined	0		0	yes	accepted									
-0085abb0	GetDef_0085abb0	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
+0085abb0	GetDef<CMeleeCombatKnockdownEffects>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
 0085ad00	~CStrikeEvent	CCombatActionBase::CStrikeEvent	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 0085ad30	GetComponent<CAnimComponentStrikeSpeedMultiplier>	CAnimationEntry	unknown	undefined	0		0	yes	accepted									
 0085adb0	CStrikeEvent	CCombatActionBase::CStrikeEvent	__thiscall	undefined	8	CStrikeEvent *,CThing *,long,CCharString *,long,bool,bool,bool	0	yes	accepted									
@@ -26535,7 +26535,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0088b760	GetCurrentStateGroupScriptPriority	CAIBrain	__thiscall	EScriptAIPriority	1	CAIBrain *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CAIBrain_GetCurrentStateGroupScriptPriority_0088b760.cpp
 0088b780	GetCurrentStateGroupType	CAIBrain	__thiscall	EAIStateGroupType	1	CAIBrain *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CAIBrain_GetCurrentStateGroupType_0088b780.cpp
 0088b7a0	SuspendableProcess	CAIBrain	__thiscall	void	1	CAIBrain *	1	yes	accepted									
-0088b7d0	DrawGetWorldMap	CEditWorld	__thiscall	CIDrawWorldMap *	1	CEditWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CEditWorld_DrawGetWorldMap_0088b7d0.cpp
+0088b7d0	PeekCurrentStateGroupName	CAIBrain	__thiscall	CIDrawWorldMap *	1	CEditWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CEditWorld_DrawGetWorldMap_0088b7d0.cpp
 0088b7e0	GetCurrentScriptPriority	CScriptThing	__thiscall	EScriptAIPriority	1	CScriptThing *	1	yes	accepted									
 0088b800	func_0088b800	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 0088b810	IsUpdateZoneActiveThisFrame	CAIBrain	__thiscall	bool	1	CAIBrain *	1	yes	accepted									
@@ -27538,7 +27538,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008abff0	GetDef_008abff0	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,CCharString *,CDefPointer<CHeroPostcardGeneratorDef_const_> *	1	yes	accepted									
 008ac060	remove_if	std	unknown	undefined	0		0	yes	accepted									
 008ac0d0	__uninitialized_copy<CIntelligentPointer<CThingAICreature> const *, CIntelligentPointer<CThingAICreature> *>	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-008ac120	_Cons_val<std::allocator<CScriptThing>,CScriptThing,CScriptThing>	std	__fastcall	void	3	allocator<CScriptThing> *,CScriptThing *,CScriptThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120.cpp
+008ac120	_Construct<CScriptThing,CScriptThing>	std	__fastcall	void	3	allocator<CScriptThing> *,CScriptThing *,CScriptThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120.cpp
 008ac140	UninitCopy_CScriptThing_008ac140	_global	__fastcall	CScriptThing *	5	_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,CScriptThing *,allocator<CScriptThing> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 008ac180	UninitFillN_CScriptThing_008ac180	_global	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 008ac200	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>, std::_Select1st<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>	unknown	undefined	0		0	yes	accepted									

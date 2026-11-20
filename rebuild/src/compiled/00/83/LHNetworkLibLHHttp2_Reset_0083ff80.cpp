@@ -15,81 +15,19 @@
 // Shape: `if (Host) { delete Host; Host = 0; }` (the null store inside the test); RequestBytesSent is zeroed before the
 //   Hostname assignment (its store sits before that call); one zero register (ebx) for every member store, the
 //   CurrentDocumentPart memset as `rep stosd`.
+// NF123 (2026-11-20, q4193): the local LSocket / CRetailString / CRetailStringVector / LHHttpHeaders / LHHttp2 models replaced by the
+//   shared engine/LHHttp2.h (retail branch, STLport std::string / std::vector) and engine/LSocket.h, with the NF123 opt-ins
+//   LHHTTP2_RESET (Reset / ResetDocumentParts) and LSOCKET_DTOR. Respelled bindings: erase 0x00841FC0 (was ?erase@CRetailStringVector@@...),
+//   assign 0x005693B0 (was ?Assign@CRetailString@@...), ~LSocket 0x008F9780 (was the global ??1LSocket@@QAE@XZ; both PDBs: LHNetworkLib).
 #include <string.h>
 #pragma intrinsic(memset)
-
-struct LSocket {                                   // global, as the landed LSocket rows bind it
-    ~LSocket();                                    // 0x008F9780
-};
-
-struct CRetailString {                             // STLport basic_string<char>, 12 bytes in retail
-    char* _M_start;
-    char* _M_finish;
-    char* _M_end_of_storage;
-    CRetailString& Assign(const char* first, const char* last);   // 0x005693B0
-    CRetailString& operator=(const char* text) { return Assign(text, text + strlen(text)); }
-};
-
-struct CRetailStringVector {                       // STLport vector<basic_string<char> >, 12 bytes in retail
-    CRetailString* _M_start;
-    CRetailString* _M_finish;
-    CRetailString* _M_end_of_storage;
-    CRetailString* begin() { return _M_start; }
-    CRetailString* end() { return _M_finish; }
-    CRetailString* erase(CRetailString* first, CRetailString* last);   // 0x00841FC0
-    void clear() { erase(begin(), end()); }
-};
+#define FABLE_RETAIL_LHHTTP2
+#define FABLE_RETAIL_LHHTTP2_RESET
+#define FABLE_RETAIL_LSOCKET_DTOR
+#include "engine/LHHttp2.h"
+#include "engine/LSocket.h"
 
 namespace LHNetworkLib {
-
-class LHHttpHeaders { public:
-    CRetailStringVector HdrDocumentHeader;         // +0x00
-    CRetailString       HeaderString;              // +0x0c
-    void Reset()                                   // landed out of line at 0x0083FBC0
-    {
-        HeaderString = "";
-        HdrDocumentHeader.clear();
-    }
-};
-
-struct LHHttpDocumentParts;
-struct LDocumentPartVector {                       // STLport vector<LHHttpDocumentParts*>, 12 bytes in retail
-    LHHttpDocumentParts** _M_start;
-    LHHttpDocumentParts** _M_finish;
-    LHHttpDocumentParts** _M_end_of_storage;
-};
-
-class LHHttp2 { public:                                   // retail offsets (Ego_r.pdb names)
-    LSocket*            Host;                      // +0x000
-    CRetailString       Hostname;                  // +0x004
-    unsigned short      Port;                      // +0x010
-    CRetailString       PreparedRequest;           // +0x014
-    unsigned long       RequestBytesSent;          // +0x020
-    unsigned long       RequestLength;             // +0x024
-    LHHttpHeaders       MyHeaders;                 // +0x028
-    LHHttpHeaders       ReceivedHeaders;           // +0x040
-    unsigned long       TimeOutValue;              // +0x058
-    unsigned long       ActionStartTime;           // +0x05c
-    bool                ActionStarted;             // +0x060
-    unsigned short      CurrentAction;             // +0x062
-    unsigned long       CurrDownSize;              // +0x064
-    unsigned long       Forwardings;               // +0x068
-    unsigned long       CurrForwarding;            // +0x06c
-    char                CurrentHeaderPart[2048];   // +0x070
-    unsigned long       CurrentHeaderPos;          // +0x870
-    CRetailString       ProxyHost;                 // +0x874
-    unsigned long       ProxyPort;                 // +0x880
-    LDocumentPartVector DocumentParts;             // +0x884
-    unsigned long       DocumentEncoding;          // +0x890
-    unsigned long       DocumentEstimatedLength;   // +0x894
-    unsigned long       DocumentLength;            // +0x898
-    char                CurrentDocumentPart[2048]; // +0x89c
-    unsigned long       CurrentDocumentPos;        // +0x109c
-    bool                InChunkMode;               // +0x10a0
-    LHHttpDocumentParts* CurrentDocumentChunk;     // +0x10a4
-    void ResetDocumentParts();                     // 0x0083EB00
-    void Reset();
-};
 
 void LHHttp2::Reset()
 {

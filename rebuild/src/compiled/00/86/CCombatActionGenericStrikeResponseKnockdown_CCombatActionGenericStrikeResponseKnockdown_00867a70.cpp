@@ -2,7 +2,7 @@
 // Leaf: ??0CCombatAction_GenericStrikeResponseKnockdown
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00867A70, 128-byte slot (116 bytes of code).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 //          CCharString::CCharString(const CCharString&) @ 0x0099EC30, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
 //          CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Shape: one zero register (ebx) builds the CSoundPair temporary for the base constructor (action code 250)
@@ -38,7 +38,8 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // CIntelli
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 #pragma pack(push, 1)
@@ -61,7 +62,7 @@ class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { 
 
 CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown(CThingCreatureBase* owner, const CThing* thingThatHit,
                                                                                            const CCharString& animName)
-    : CCombatActionBase(owner, 250, CSoundPair()),
+    : CCombatActionBase(*owner, 250, CSoundPair()),
       AnimName(animName),
       PThingThatHit(thingThatHit),
       GotPointOfHit(false),

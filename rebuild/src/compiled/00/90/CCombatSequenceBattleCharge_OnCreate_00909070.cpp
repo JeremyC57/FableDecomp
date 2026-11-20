@@ -125,7 +125,8 @@ class CThingCreatureBase { public:
 
 class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:
     unsigned char _body[0x12c];                                 // sizeof = 0x130
-    CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, CThing* thing, long mode, long value);   // 0x008CE290
+    // NF123 (2026-11-20, q5015): Ego_r.pdb 0x00905760 + FableWin.pdb 0x029F96F0, by reference with the bool z-targetting flag (was PAV/PAV/J/J).
+    CCreatureAction_CastBattleCharge(CThingCreatureBase& owner, CThing& target, bool isZTargetting, long level);   // 0x008CE290
 };
 
 struct CCombatSequence_BattleCharge : CCombatSequenceBase {
@@ -143,7 +144,7 @@ void CCombatSequence_BattleCharge::OnCreate()
     if (ownerDef->GetSubDef(def))
         value = def->m_value;
     CCountedPointer action;
-    action = new CCreatureAction_CastBattleCharge(GetCreature(), GetTarget(), 0, value);
+    action = new CCreatureAction_CastBattleCharge(*GetCreature(), *GetTarget(), false, value);
     AddAction(action);
     CCombatSequenceBase::OnCreate();
 }

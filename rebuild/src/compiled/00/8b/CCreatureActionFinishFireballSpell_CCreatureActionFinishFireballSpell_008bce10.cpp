@@ -1,6 +1,6 @@
 // CCreatureAction_FinishFireballSpell::CCreatureAction_FinishFireballSpell(CThingCreatureBase*) -- base CCombatActionBase(owner, 145, zeroed CSoundPair), own vtable, then SetAnims()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCE10, length 64 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCreatureAction_FinishFireballSpell::SetAnims @ 0x008BAB70 (non-virtual member, called on `this` after the vtable store).
 // Vtable 0x0127E1FC (rtti-vtables.tsv); the class adds no data. `ret 4`: one argument (action code 0x91 = 145).
 class CThingCreatureBase;
@@ -15,7 +15,8 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114 (PDB 0x12c)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 };
 
@@ -27,7 +28,7 @@ class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:  
 };
 
 CCreatureAction_FinishFireballSpell::CCreatureAction_FinishFireballSpell(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 145, CSoundPair())
+    : CCombatActionBase(*owner, 145, CSoundPair())
 {
     SetAnims();
 }

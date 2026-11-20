@@ -252,7 +252,8 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  void SetCombatAnimation(const CCharString&); //008574D0
  CCombatActionBase(long); //00857E40
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
- CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
+ // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+ CCombatActionBase(CThingCreatureBase& ,long,const CSoundPair&); //00858030
 };
 
 
@@ -313,7 +314,7 @@ class CCreatureAction_RockTrollShakeAndExplode:public CCombatActionBase { public
     virtual CCreatureActionBase* Clone()const;
     virtual void Initialise();
     virtual void FinishAction();
- FABLE_FORCEINLINE CCreatureAction_RockTrollShakeAndExplode(CThingCreatureBase* actor):CCombatActionBase(actor,250,CSoundPair()){} //008C7BB0
+ FABLE_FORCEINLINE CCreatureAction_RockTrollShakeAndExplode(CThingCreatureBase* actor):CCombatActionBase(*actor,250,CSoundPair()){} //008C7BB0
 };
 void CCreatureAction_RockTrollFallToDeath::FinishAction(){
  DefPointer<CTrollBattleDef> battle;

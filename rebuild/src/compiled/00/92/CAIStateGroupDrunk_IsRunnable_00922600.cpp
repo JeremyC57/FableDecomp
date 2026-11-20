@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00922600, length 166 bytes (+ int3 padding). Vtable slot 11.
 // Callees: CMessageEventFilter_IsTargettedAtThing ctor @ 0x006AF290, the second world accessor @ 0x008FCFA0
 // (message manager at +0x60), CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType,
-// IsOriginatedByThing>> @ 0x008D46D0, the brain accessor @ 0x0088B7D0 (`[+0x38] ? [+0x38]+0xc : 0`; the manifest's
-// CEditWorld::DrawGetWorldMap label is propagated), CVectorMap::LowerBound @ 0x004365B0 (interface 0xc3).
+// IsOriginatedByThing>> @ 0x008D46D0, CAIBrain::PeekCurrentStateGroupName @ 0x0088B7D0 (`[+0x38] ? [+0x38]+0xc : 0`; the manifest's
+// CEditWorld::DrawGetWorldMap label was propagated), CVectorMap::LowerBound @ 0x004365B0 (interface 0xc3).
 // Shape: the filter chain `IsOfType(0x14) && IsOriginatedByThing(creature)` is built in the frame (Bind2 pair of
 // pointers at +8/+0xc, the type at +4, the UID filter at +0x10); a hit returns `xor al,al`; the rest is one
 // `&&` chain returned through the full register (`mov eax,1` / `xor eax,eax`), the creature reloaded from PBrain.
@@ -84,9 +84,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
+class CCharString;
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
+    // NF123 (2026-11-20, q6435 + q6439): the brain accessor 0x0088B7D0 is Ego_r.pdb + FableWin.pdb
+    //   ?PeekCurrentStateGroupName@CAIBrain@@QBEPBVCCharString@@XZ (PActiveStateGroup's name, null when none): in-place respell
+    //   of the stand-in CAIBrainX::GetPOverride (CBrainOverride*) into this row's own CAIBrain model.
+    const CCharString* PeekCurrentStateGroupName() const;   // 0x0088B7D0
 };
 
 class CAIStateGroupBase { public:
@@ -188,11 +193,6 @@ struct CTCDrunk {                               // interface 0xc3
     unsigned char m_isDrunk;                    // +0x0c
 };
 
-struct CBrainOverride;
-struct CAIBrainX : CAIBrain {
-    CBrainOverride* GetPOverride();             // 0x0088B7D0
-};
-
 struct CAIStateGroup_Drunk : CAIStateGroupBaseW {
     virtual bool IsRunnable();
 };
@@ -204,7 +204,7 @@ bool CAIStateGroup_Drunk::IsRunnable()
             CMessageEventFilter_IsOfType(0x14) && CMessageEventFilter_IsTargettedAtThing(*creature)))
         return false;
     CTCDrunk* drunk;
-    return ((CAIBrainX*)PBrain)->GetPOverride() == 0
+    return PBrain->PeekCurrentStateGroupName() == 0
         && PBrain->PCreature->GetInterface(&drunk, 0xc3)
         && drunk->m_isDrunk;
 }

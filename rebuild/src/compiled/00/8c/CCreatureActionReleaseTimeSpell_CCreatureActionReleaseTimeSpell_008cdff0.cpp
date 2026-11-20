@@ -1,6 +1,6 @@
 // CCreatureAction_ReleaseTimeSpell::CCreatureAction_ReleaseTimeSpell(long, CThingCreatureBase*, const CCharString&) -- the level at +0x114, base CCombatActionBase(owner, 145, zeroed CSoundPair), own vtable (0x012840F4), then the animation name is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CDFF0, length 80 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0.
 // Shape: `ret 0Ch`; the first argument is the level (stored after the vtable), the owner is the second, the name the third.
 class CThingCreatureBase; class CThing; class CCharString;
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
@@ -12,7 +12,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(long actionCode);                                                                         // 0x00857E40
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
@@ -25,7 +26,7 @@ class CCreatureAction_ReleaseTimeSpell : public CCombatActionBase { public:   //
 };
 
 CCreatureAction_ReleaseTimeSpell::CCreatureAction_ReleaseTimeSpell(long level, CThingCreatureBase* owner, const CCharString& name)
-    : CCombatActionBase(owner, 145, CSoundPair())
+    : CCombatActionBase(*owner, 145, CSoundPair())
     , m_level(level)
 {
     SetCombatAnimation(name);

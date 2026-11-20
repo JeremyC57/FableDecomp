@@ -1,6 +1,6 @@
 // CCreatureAction_BuildUpUnholyPowerSpell::CCreatureAction_BuildUpUnholyPowerSpell(CThingCreatureBase*, CCharString) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x0127EE44), then the by-value animation name is applied
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BD2E0, length 80 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0
 // Shape: the second argument is a CCharString passed BY VALUE (one dword in the argument area: retail passes its
 // address, `lea edx,[esp+14h]`, to the setter and destroys it in place before returning -- __fastcall callee-destroyed
@@ -21,7 +21,8 @@ class CCharString { public:                        // retail CCharString is one 
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -32,7 +33,7 @@ class CCreatureAction_BuildUpUnholyPowerSpell : public CCombatActionBase { publi
 };
 
 CCreatureAction_BuildUpUnholyPowerSpell::CCreatureAction_BuildUpUnholyPowerSpell(CThingCreatureBase* owner, CCharString animName)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
 {
     SetCombatAnimation(animName);             // 0x008574D0
 }

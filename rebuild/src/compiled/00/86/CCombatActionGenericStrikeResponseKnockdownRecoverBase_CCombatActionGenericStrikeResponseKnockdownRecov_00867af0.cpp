@@ -1,6 +1,6 @@
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase::CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase*, bool flip) -- base(owner, 250, zeroed CSoundPair), CanBeHit = false, Flip = flip
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00867AF0, length 60 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030.
 // Vtable 0x01271BAC = CCombatAction_GenericStrikeResponseKnockdownRecoverBase (rtti-vtables.tsv).
 // Members: CanBeHit (+0x114) and Flip (+0x115) carry the Ego_r.pdb names (there at +0x12c/+0x12d: the PDB
 // build's CCombatActionBase is 0x12c bytes, retail's is 0x114, so engine/<Class>.h disagrees with the bytes
@@ -16,7 +16,8 @@ class CSoundPair { public:
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
@@ -27,6 +28,6 @@ class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatAc
 };
 
 CCombatAction_GenericStrikeResponseKnockdownRecoverBase::CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip)
-    : CCombatActionBase(owner, 250, CSoundPair()), CanBeHit(false), Flip(flip)
+    : CCombatActionBase(*owner, 250, CSoundPair()), CanBeHit(false), Flip(flip)
 {
 }

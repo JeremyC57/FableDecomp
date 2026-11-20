@@ -1,6 +1,6 @@
 // CCreatureAction_StartBlocking::CCreatureAction_StartBlocking(CThingCreatureBase*) -- base CCombatActionBase(owner, 100, zeroed CSoundPair), own vtable (0x012761CC, rtti-vtables.tsv), then the animation name "BLOCK_START"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00855BE0, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "BLOCK_START"), CCombatActionBase::SetCombatAnimation
 // @ 0x008574D0 (manifest label "CTCInGameMenu::SetPDef" is propagated; the landed combat-action shells name it so),
 // CCharString::~CCharString @ 0x0099EAE0
@@ -25,7 +25,8 @@ class CCharString { public:                        // retail CCharString is one 
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -36,7 +37,7 @@ class CCreatureAction_StartBlocking : public CCombatActionBase { public:        
 };
 
 CCreatureAction_StartBlocking::CCreatureAction_StartBlocking(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 100, CSoundPair())
+    : CCombatActionBase(*owner, 100, CSoundPair())
 {
     {
         CCharString name("BLOCK_START");         // conversion-constructor length default (-1), re-addressed with lea

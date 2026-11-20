@@ -18,6 +18,10 @@ struct LHHttpHeaderStatus {
     void ParseLocationData();                                // 0x0083F420
     std::string GetLocationHost();                           // 0x0083F5C0
     std::string GetLocationURI();                            // 0x0083F600
+#ifdef FABLE_RETAIL_LHHTTPHEADERSTATUS_RESET
+    // NF123 opt-in (row 0x0083FB60, q4193): Ego_r.pdb ?Reset@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ. Declaration only.
+    void Reset();                                            // 0x0083FB60
+#endif
 };
 }
 #ifdef _MSC_VER

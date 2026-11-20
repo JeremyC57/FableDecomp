@@ -1,7 +1,7 @@
 // NCreatureMode::CModeChargeForcePush::FrameUpdate() -- base update; while the creature still carries type flag 8, set it performing the force-push "out of" action (hitting only enemies when the mode says so)
 // Leaf: ?FrameUpdate@CModeChargeForcePush
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DFF50, 121 bytes (+ int3 padding), `ret`; vtable 0x01268328 slot 3.
-// Callees: CModeBase::FrameUpdate @ 0x0073AC50 (qualified), CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long,
+// Callees: CModeBase::FrameUpdate @ 0x0073AC50 (qualified), CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long,
 //   const CSoundPair&) @ 0x00858030 (action code 0x96), CThingCreatureBase::SetCurrentAction @ 0x006644F0,
 //   ~CCombatActionBase @ 0x0062E900. Action vtable 0x01286874 = CCreatureAction_ForcePushOutOf (rtti-vtables.tsv).
 // Name: FableWin.pdb `?FrameUpdate@CModeChargeForcePush@NCreatureMode@@UAEXXZ`; the action's PDB members are
@@ -32,14 +32,15 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_ForcePushOutOf : public CCombatActionBase { public:   // vtable 0x01286874, retail sizeof 0x118
     bool OnlyHitEnemies;                   // +0x114
     virtual void v00();
     CCreatureAction_ForcePushOutOf(CThingCreatureBase& owner)
-        : CCombatActionBase(&owner, 0x96, CSoundPair()), OnlyHitEnemies(false) { }
+        : CCombatActionBase(owner, 0x96, CSoundPair()), OnlyHitEnemies(false) { }
     void SetOnlyHitEnemies() { OnlyHitEnemies = true; }
 };
 

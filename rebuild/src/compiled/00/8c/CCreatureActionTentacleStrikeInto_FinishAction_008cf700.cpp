@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF700, length 203 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound
 // @ 0x0040F020 (inlined GetInterface 0x31 = CTCCreatureModeManager), CTCCreatureModeManager::AddMode(unsigned long) @ 0x0073AE10,
-// CTCKrakenTentacle::QueueStrikeDamage @ 0x007F1170, CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long,
+// CTCKrakenTentacle::QueueStrikeDamage @ 0x007F1170, CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long,
 // const CSoundPair&) @ 0x00858030 (action code 150), CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase
 // @ 0x0062E900.
 // Shape: the checked mode-manager lookup (component in eax); the next action is a 0x120-byte temporary built in the
@@ -47,7 +47,8 @@ class CCombatActionBase { public:
     unsigned char _pad04[4];                    // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];         // +0x10
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
 };
@@ -58,7 +59,7 @@ class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   
     float StartHealth;                          // +0x11c
     virtual void v00();
     CCreatureAction_TentacleStrikeLoop(CThingCreatureBase* owner)
-        : CCombatActionBase(owner, 150, CSoundPair()), StartTick(-1), Interrupt(false), StartHealth(0) { }
+        : CCombatActionBase(*owner, 150, CSoundPair()), StartTick(-1), Interrupt(false), StartHealth(0) { }
 };
 
 class CCreatureAction_TentacleStrikeInto : public CCombatActionBase { public:

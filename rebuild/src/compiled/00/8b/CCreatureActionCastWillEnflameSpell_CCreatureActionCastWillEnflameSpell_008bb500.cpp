@@ -1,7 +1,7 @@
 // CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWillEnflameSpell(CThingCreatureBase*, CThing*, bool, long) -- targeted form: base CCombatActionBase(owner, 150, zeroed sound), Level, IsZTargetting, target set, animation "ST_RELEASE_ENFLAME"
 // Leaf: ??0CCreatureAction_CastWillEnflameSpell@@QAE@PAVCThingCreatureBase@@PAVCThing@@_NJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BB500, length 171 bytes (+ int3 padding), `ret 10h`. Vtable 0x0127B9DC.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CBaseIntelligentPointer ctor
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030, CBaseIntelligentPointer ctor
 // 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
 // CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("ST_RELEASE_ENFLAME" @ 0x0127B9C0), SetAnimationName 0x008574D0.
 // Shape: init-list Level / IsZTargetting; the base target pointer (+0xa8) is assigned in the body from a converting temporary
@@ -48,7 +48,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad04[0xa8 - 4];
     CIntelligentPointer<CThing> PTarget;           // +0xa8 (the combat action's target)
     unsigned char _padb0[0x114 - 0xb0];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
@@ -62,7 +63,7 @@ class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public: 
 };
 
 CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWillEnflameSpell(CThingCreatureBase* owner, CThing* target, bool isZTargetting, long level)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , Level(level)
     , IsZTargetting(isZTargetting)
 {

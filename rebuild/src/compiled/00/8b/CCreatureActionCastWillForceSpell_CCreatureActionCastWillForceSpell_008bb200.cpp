@@ -1,6 +1,6 @@
 // CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell(CThingCreatureBase*, long, bool, const CCharString&) -- untargeted form: base CCombatActionBase(owner, 150, zeroed sound), ImmediateCast / LevelToCast from the arguments; a non-empty animation name is a one-anim cast with it, else "WILL_CAST_FORCE_SPELL_INTO"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BB200, length 192 bytes (+ int3 padding), `ret 10h`. Vtable 0x0127B50C.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030,
 // CBasicString<char>::operator==(const char*) 0x004115A0 (the inline CCharString compare on a non-null block; a null block is
 // the strcmp intrinsic against the pooled "" @ 0x0122D70E, `repe cmpsb`), SetAnimationName 0x008574D0, CCharString ctor
 // 0x0099EBF0 / dtor 0x0099EAE0.
@@ -47,7 +47,8 @@ class CSoundPair { public:                             // two sound ids, zeroed 
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
@@ -64,7 +65,7 @@ class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:   
 
 CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell(CThingCreatureBase* owner, long levelToCast, bool immediateCast,
                                                                        const CCharString& animationName)
-    : CCombatActionBase(owner, 150, CSoundPair())
+    : CCombatActionBase(*owner, 150, CSoundPair())
     , ImmediateCast(immediateCast)
     , LevelToCast(levelToCast)
 {

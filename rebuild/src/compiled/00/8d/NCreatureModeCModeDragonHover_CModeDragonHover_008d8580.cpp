@@ -1,5 +1,8 @@
-// NCreatureMode::CModeDragonHover::CModeDragonHover(CThing* thing, CThing* target) -- CModeStandBase(thing), own vtable, the "HOVER" filter, PTarget = target, UseHeadTurning = true
+// NCreatureMode::CModeDragonHover::CModeDragonHover(CThing& thing, CThing& target) -- CModeStandBase(thing), own vtable, the "HOVER" filter, PTarget = target, UseHeadTurning = true
 // Leaf: ??0CModeDragonHover
+// NF123 (2026-11-20, q6398): in-place respell of this row's own model: both things by reference, FableWin.pdb
+//   ??0CModeDragonHover@NCreatureMode@@QAE@AAVCThing@@0@Z (UpdateHover passes the creature and *PEnemy); was PAV/PAV. The base
+//   CModeStandBase 0x00861E00 keeps its landed CThing* binding (&thing).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8580 (`ret 8`). Vtable 0x0126845C = NCreatureMode::CModeDragonHover (rtti-vtables.tsv).
 // Callees: CModeStandBase::CModeStandBase(CThing*) @ 0x00861E00 (manifest label "CTCCreatureNavigation" is propagated;
 // 0x008621A0 CModeStandBase::OnActivate sits beside it), CCharString @ 0x0099EBF0 / 0x0099E4B0 / operator= 0x0099EFB0 /
@@ -68,13 +71,13 @@ class CModeDragonHover : public CModeStandBase { public:   // vtable 0x0126845C
     CIntelligentPointer PTarget;           // +0x74
     bool                UseHeadTurning;    // +0x7c
     virtual void v00();
-    CModeDragonHover(CThing* thing, CThing* target);
+    CModeDragonHover(CThing& thing, CThing& target);
 };
 
-CModeDragonHover::CModeDragonHover(CThing* thing, CThing* target)
-    : CModeStandBase(thing)
+CModeDragonHover::CModeDragonHover(CThing& thing, CThing& target)
+    : CModeStandBase(&thing)
     , Filter("HOVER")
-    , PTarget(target)
+    , PTarget(&target)
     , UseHeadTurning(true)
 {
 }

@@ -74,7 +74,8 @@ class CSoundPair { public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
@@ -82,7 +83,7 @@ struct CCreatureAction_StandUp : CCombatActionBase {   // vtable 0x01276C2C
     virtual void v00();
     long m_114;
     bool m_118;
-    CCreatureAction_StandUp(CThingCreatureBase* owner) : CCombatActionBase(owner, 50, CSoundPair()), m_114(0), m_118(false) { }
+    CCreatureAction_StandUp(CThingCreatureBase* owner) : CCombatActionBase(*owner, 50, CSoundPair()), m_114(0), m_118(false) { }
 };
 namespace { extern CCharString GET_UP_FROM_FLOOR_ANIM_NAME; }            // 0x013BB708
 namespace { extern const long MIN_TIME_TO_LEAVE_BETWEEN_SITTINGS; }     // 0x013BB70C

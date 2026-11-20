@@ -250,8 +250,10 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
 };
 struct IntelligentThingVector {CIntelligentPointer<CThing> *Start,*Finish,*End;void PushBack(const CIntelligentPointer<CThing>&);}; //004AD520
 // CTCDPhysicalObstruction native prefix through its named ignore vector; no virtual call is made.
-class CTCDPhysicalObstruction { public:void* VPtr;CThing* PThing;long State;C3DVector StartPos,EndPos;long LifeTimer;float Radius;IntelligentThingVector ThingsToIgnoreObstruction;};
-CThing* __fastcall CreatePhysicalObstruction(const C3DVector&,const C3DVector&,float); //007FD4B0 THING_PHYSICAL_OBSTRUCTION
+// NF123 (2026-11-20, q6402): the creator 0x007FD4B0 is the static __fastcall CTCDPhysicalObstruction::Create (Ego_r.pdb 0x007F8750 +
+// FableWin.pdb ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z; was the free CreatePhysicalObstruction): in-place respell.
+class CTCDPhysicalObstruction { public:void* VPtr;CThing* PThing;long State;C3DVector StartPos,EndPos;long LifeTimer;float Radius;IntelligentThingVector ThingsToIgnoreObstruction;
+ static CThing* __fastcall Create(const C3DVector&,const C3DVector&,float);}; //007FD4B0 THING_PHYSICAL_OBSTRUCTION
 class CCreatureAction_SummonerFlameSlice:public CCombatActionBase { public:
     virtual CCreatureActionBase* Clone()const;
     virtual void Initialise();
@@ -266,7 +268,7 @@ void CCreatureAction_SummonerFlameSlice::Initialise(){
  {CCharString name("STRIKE_FLAME_SLICE",-1);SetCombatAnimation(name);}
  CCombatActionBase::Initialise();
  CTCPhysicsBase* physics=PCreature->PhysicsTC;
- {CIntelligentPointer<CThing> obstruction(CreatePhysicalObstruction(PCreature->GetPos(),PCreature->GetPos(),physics->Radius*2.0f));CThing* created=obstruction;PObstruction.SetPItem(created);}
+ {CIntelligentPointer<CThing> obstruction(CTCDPhysicalObstruction::Create(PCreature->GetPos(),PCreature->GetPos(),physics->Radius*2.0f));CThing* created=obstruction;PObstruction.SetPItem(created);}
  CTCDPhysicalObstruction* driver;CThing* object=PObstruction;
  if(object->UsingComponents[7]&0x2000)driver=static_cast<CTCDPhysicalObstruction*>(object->PTCDriver);
  {CIntelligentPointer<CThing> actor(PCreature);driver->ThingsToIgnoreObstruction.PushBack(actor);}

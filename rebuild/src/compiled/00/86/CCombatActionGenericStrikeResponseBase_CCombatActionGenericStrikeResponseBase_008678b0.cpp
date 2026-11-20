@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008678B0, 160 bytes. The manifest labels this body
 // CCombatAction_GenericResponseToExplosion, but the vtable it stores (0x01264734) is
 // CCombatAction_GenericStrikeResponseBase's (rtti-vtables.tsv), and the members match that class's PDB layout.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 //          CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Shape: base constructor with action code 250 and a zeroed CSoundPair temporary (register-zeroed, inline
 // constructor); this class's vtable; PThingThatHit (CIntelligentPointer<const CThing>, vtable 0x01237F1C)
@@ -35,7 +35,8 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // CIntelli
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:   // vtable 0x01264734
@@ -59,7 +60,7 @@ class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { publi
 
 CCombatAction_GenericStrikeResponseBase::CCombatAction_GenericStrikeResponseBase(CThingCreatureBase* owner, const CThing* thingThatHit,
                                                                                  const C3DVector& pointOfHit, const C3DVector& directionOfHit)
-    : CCombatActionBase(owner, 250, CSoundPair()),
+    : CCombatActionBase(*owner, 250, CSoundPair()),
       PThingThatHit(thingThatHit),
       PointOfHit_X(pointOfHit.X), PointOfHit_Y(pointOfHit.Y), PointOfHit_Z(pointOfHit.Z),
       DirectionOfHit_X(directionOfHit.X), DirectionOfHit_Y(directionOfHit.Y), DirectionOfHit_Z(directionOfHit.Z),

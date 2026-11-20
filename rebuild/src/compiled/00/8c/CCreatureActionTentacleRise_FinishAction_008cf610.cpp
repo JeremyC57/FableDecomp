@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF610, length 231 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
 // CTCCreatureModeManager, then 9), CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0, CCombatActionBase::FinishAction
-// @ 0x00859A20, CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030 (action code 50),
+// @ 0x00859A20, CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030 (action code 50),
 // CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase @ 0x0062E900 (manifest "~CTCLightningOrb" is propagated).
 // Shape: the checked mode-manager lookup (component left in eax), then the UNCHECKED interface-9 lookup in an inline accessor
 // (absent arm reads the shared key word); the idle action is a 0x114-byte temporary built in the SetCurrentAction call (the
@@ -49,7 +49,8 @@ class CCombatActionBase { public:
     unsigned char _pad04[4];                    // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];         // +0x10
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
     FABLE_FORCEINLINE CTCInterface9* GetInterface9() const
@@ -62,7 +63,7 @@ class CCombatActionBase { public:
 
 class CCreatureAction_TentacleIdle : public CCombatActionBase { public:   // vtable 0x01284DAC
     virtual void v00();
-    CCreatureAction_TentacleIdle(CThingCreatureBase* owner) : CCombatActionBase(owner, 50, CSoundPair()) { }
+    CCreatureAction_TentacleIdle(CThingCreatureBase* owner) : CCombatActionBase(*owner, 50, CSoundPair()) { }
 };
 
 class CCreatureAction_TentacleRise : public CCombatActionBase { public:

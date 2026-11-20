@@ -1,5 +1,5 @@
 // CCombatSequenceBase::~CCombatSequenceBase() -- own vtable, then the CombatActions vector's inline destructor: destroy the elements and free the block
-// Leaf: ??1CCombatSequenceBase
+// Leaf: ??1CCombatSequenceBase@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B0A60, length 45 bytes.
 // Callees: the element range destroy @ 0x008B3010 (landed `_Destroy_range` over 8-byte counted pointers,
 // `__fastcall` first/last + a stack tag), free @ 0x00BFEA14.
@@ -40,7 +40,9 @@ class CCombatSequenceBase { public:                                             
     CThingCreatureBase*           Target;               // +0x20
     bool                          CreateCalled;         // +0x24
     virtual void v00();
-    ~CCombatSequenceBase();
+    // NF123 (2026-11-20, q3941): virtual, as Ego_r.pdb 0x008EBFF0 + FableWin.pdb 0x02A37E80 ??1CCombatSequenceBase@@UAE@XZ spell it and the
+    //   landed 0x006F1770 (~CCombatSequenceGeneric's tail jump) binds it; was the non-virtual QAE spelling. In-place respell of this row's model.
+    virtual ~CCombatSequenceBase();
 };
 
 CCombatSequenceBase::~CCombatSequenceBase()

@@ -92,6 +92,11 @@ public:
     const CCharString* PeekCurrentStateGroupName() const;               // 0x0088B7D0
     const CCharString* GetCurrentStateGroupDebugText() const;           // 0x0088B7E0
 #endif
+#ifdef FABLE_RETAIL_CAIBRAIN_ISUPDATEZONEACTIVE
+    // NF123 opt-in (row 0x00830130 CThingAICreature::IsBrainUpdateZoneActiveThisFrame, q4714): Ego_r.pdb 0x0082F5E0 + FableWin.pdb 0x02804440
+    // ?IsUpdateZoneActiveThisFrame@CAIBrain@@QBE_NXZ (out of line in retail at 0x0088B810; the forwarder tail-jumps to it). Declaration only.
+    bool IsUpdateZoneActiveThisFrame() const;                            // 0x0088B810
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_GETCREATURE
     // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ (inline in retail).
 #ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE

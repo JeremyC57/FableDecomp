@@ -20,9 +20,13 @@ class CSoundPair { public:                         // a user constructor makes t
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -35,7 +39,7 @@ class CCreatureAction_RiseUp : public CCombatActionBase { public:   // vtable 0x
 };
 
 CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase* owner, CThing* thing)
-    : CCombatActionBase(owner, thing, 240, GetSoundPair(owner, 0))
+    : CCombatActionBase(owner, thing, 240, GetSoundPair(*owner, 0))
 {
     {
         CCharString name("RISE_UP", -1);

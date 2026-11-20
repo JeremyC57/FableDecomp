@@ -29,12 +29,17 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:
+    // NF123 (2026-11-20, q6403): Ego_r.pdb ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+    //   (protected static __fastcall, 0x008561A0; engine/CCombatActionBase.h SOUNDCTOR); was a free GetSoundPair(CThingCreatureBase*, ...).
+protected:
+    static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCreatureAction_JackFloatUp : public CCombatActionBase { public:
@@ -44,6 +49,6 @@ class CCreatureAction_JackFloatUp : public CCombatActionBase { public:
 };
 
 CCreatureAction_JackFloatUp::CCreatureAction_JackFloatUp(CThingCreatureBase* owner, long value)
-    : CCombatActionBase(owner, 250, GetSoundPair(owner, "SWORD_SWING")), m_height(value)
+    : CCombatActionBase(*owner, 250, GetSoundPair(*owner, "SWORD_SWING")), m_height(value)
 {
 }

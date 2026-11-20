@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BCA00, 381 bytes (384 with padding), `ret 10h`; vtable 0x0127DB2C. Four-argument
 //   overload of the landed constructors 0x008BC790 / 0x008BC8C0 (same body, plus the target handed to PTarget +0xa8
 //   through a CIntelligentPointer<CThing> temporary: ctor 0x00A01B10, vtable 0x01238C6C, SetPItem 0x00A01B90, dtor 0x00A01C10).
-// Callees: CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CCharString(const char*, long)
+// Callees: CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030, CCharString(const char*, long)
 //   0x0099EBF0 ("WILL_CAST_LIGHTNING" 0x0127DC70, "SPECIAL_ABILITIES_LIGHTNING_SPELL_DEF" 0x01235B14), ~CCharString
 //   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
 //   CDefinitionManager::GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CSpecialAbilitiesLightningSpellDef> 0x007A35D0,
@@ -125,7 +125,8 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
     FABLE_FORCEINLINE void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem((CBaseObject*)(((CThing*)target.GetPItem()))); }
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_CastWillLightningSpell : public CCombatActionBase { public:   // vtable 0x0127DB2C
@@ -136,7 +137,7 @@ class CCreatureAction_CastWillLightningSpell : public CCombatActionBase { public
 };
 
 CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell(CThingCreatureBase* owner, long state, long param, CThing* target)
-    : CCombatActionBase(owner, 150, CSoundPair()), m_spellState(state), m_spellParam(param)
+    : CCombatActionBase(*owner, 150, CSoundPair()), m_spellState(state), m_spellParam(param)
 {
     {
         CCharString animation("WILL_CAST_LIGHTNING");

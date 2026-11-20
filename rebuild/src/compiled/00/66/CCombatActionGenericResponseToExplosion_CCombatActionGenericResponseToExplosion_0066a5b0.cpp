@@ -2,7 +2,7 @@
 // Leaf: ??0CCombatAction_GenericResponseToExplosion
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066A5B0, 160-byte slot (157 bytes of code).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 //          CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Shape: the base constructor takes the owner, action code 250 (0xfa) and a zeroed two-dword CSoundPair
 // temporary in the 8-byte frame; then this class's vtable 0x0125AEDC; the PExplosion member
@@ -43,7 +43,8 @@ public:
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { public:   // vtable 0x0125AEDC
@@ -62,7 +63,7 @@ class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { publ
 
 CCombatAction_GenericResponseToExplosion::CCombatAction_GenericResponseToExplosion(CThingCreatureBase* owner, CThing* explosion,
                                                                                    const C3DVector& pointOfHit, const C3DVector& hitDir)
-    : CCombatActionBase(owner, 250, CSoundPair()),
+    : CCombatActionBase(*owner, 250, CSoundPair()),
       PExplosion(explosion),
       PointOfHit_X(pointOfHit.X), PointOfHit_Y(pointOfHit.Y), PointOfHit_Z(pointOfHit.Z),
       HitDir_X(hitDir.X), HitDir_Y(hitDir.Y), HitDir_Z(hitDir.Z),

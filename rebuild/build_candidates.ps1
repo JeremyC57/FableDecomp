@@ -33423,9 +33423,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0088b7d0'
-        Module = 'CEditWorld'
-        Source = '00/88/CEditWorld_DrawGetWorldMap_0088b7d0.cpp'
-        TestSource = '00/88/CEditWorld_DrawGetWorldMap_0088b7d0_test.cpp'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_PeekCurrentStateGroupName_0088b7d0.cpp'
+        TestSource = '00/88/CAIBrain_PeekCurrentStateGroupName_0088b7d0_test.cpp'
         PassPattern = '0088b7d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -41033,9 +41033,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00816aa0'
-        Module = '_global'
-        Source = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0.cpp'
-        TestSource = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0_test.cpp'
+        Module = 'CTCHitLocations'
+        Source = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFiniteLine_00816aa0.cpp'
+        TestSource = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFiniteLine_00816aa0_test.cpp'
         PassPattern = 'TH_816aa0_OK'
     }
     [pscustomobject]@{
@@ -45433,9 +45433,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008561a0'
-        Module = '_global'
-        Source = '00/85/global_GetSoundPair_008561a0.cpp'
-        TestSource = '00/85/global_GetSoundPair_008561a0_test.cpp'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_GetSoundPair_008561a0.cpp'
+        TestSource = '00/85/CCombatActionBase_GetSoundPair_008561a0_test.cpp'
         PassPattern = 'GETSOUNDPAIR_OK'
     }
     [pscustomobject]@{
@@ -47835,16 +47835,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0082e8f0'
-        Module = 'CTCLook'
-        Source = '00/82/CTCLook_IsTurningBody_0082e8f0.cpp'
-        TestSource = '00/82/CTCLook_IsTurningBody_0082e8f0_test.cpp'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_SetThingToDelete_0082e8f0.cpp'
+        TestSource = '00/82/CScriptedMapBrush_SetThingToDelete_0082e8f0_test.cpp'
         PassPattern = 'ISTURNINGBODY_OK'
     }
     [pscustomobject]@{
         Address = '0082e9a0'
-        Module = 'CTCLook'
-        Source = '00/82/CTCLook_IsTurningBody_0082e9a0.cpp'
-        TestSource = '00/82/CTCLook_IsTurningBody_0082e9a0_test.cpp'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_SetThingToAdd_0082e9a0.cpp'
+        TestSource = '00/82/CScriptedMapBrush_SetThingToAdd_0082e9a0_test.cpp'
         PassPattern = 'TURNBODY_OK'
     }
     [pscustomobject]@{
@@ -49131,9 +49131,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008ac120'
-        Module = '_Cons_val<std'
-        Source = '00/8a/Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120.cpp'
-        TestSource = '00/8a/Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120_test.cpp'
+        Module = 'std'
+        Source = '00/8a/std_Construct_008ac120.cpp'
+        TestSource = '00/8a/std_Construct_008ac120_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = 'CONS_VAL_OK'
     }
     [pscustomobject]@{
@@ -68173,9 +68174,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00802390'
-        Module = '_global'
-        Source = '00/80/DrawGetSeaLevel_DrawGetSeaLevel_00802390.cpp'
-        TestSource = '00/80/DrawGetSeaLevel_DrawGetSeaLevel_00802390_test.cpp'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_GetMaxTargetingDistance_00802390.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_GetMaxTargetingDistance_00802390_test.cpp'
         PassPattern = 'OK_00802390'
     }
     [pscustomobject]@{
@@ -77364,9 +77365,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00830130'
-        Module = '_global'
-        Source = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130.cpp'
-        TestSource = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130_test.cpp'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsBrainUpdateZoneActiveThisFrame_00830130.cpp'
+        TestSource = '00/83/CThingAICreature_IsBrainUpdateZoneActiveThisFrame_00830130_test.cpp'
         PassPattern = 'PASS_00830130'
     }
     [pscustomobject]@{
@@ -177254,8 +177255,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0085abb0'
         Module = 'CDefinitionManager'
-        Source = '00/85/CDefinitionManager_GetDef0085abb0_0085abb0.cpp'
-        TestSource = '00/85/CDefinitionManager_GetDef0085abb0_0085abb0_test.cpp'
+        Source = '00/85/CDefinitionManager_GetDef_0085abb0.cpp'
+        TestSource = '00/85/CDefinitionManager_GetDef_0085abb0_test.cpp'
         PassPattern = '0085abb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -203517,9 +203518,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007fd3f0'
-        Module = 'CInputManager_007fd3f0'
-        Source = '00/7f/CInputManager007fd3f0_SetVectors_007fd3f0.cpp'
-        TestSource = '00/7f/CInputManager007fd3f0_SetVectors_007fd3f0_test.cpp'
+        Module = 'CTCDPhysicalObstruction'
+        Source = '00/7f/CTCDPhysicalObstruction_SetParams_007fd3f0.cpp'
+        TestSource = '00/7f/CTCDPhysicalObstruction_SetParams_007fd3f0_test.cpp'
         PassPattern = '007fd3f0_TEST PASS'
     }
     [pscustomobject]@{

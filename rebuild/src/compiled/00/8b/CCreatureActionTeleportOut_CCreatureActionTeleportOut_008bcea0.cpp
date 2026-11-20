@@ -2,7 +2,7 @@
 // Leaf: ??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCEA0, length 127 bytes (+ int3 padding).
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0 (literal 0x0127E488 "ST_TELEPORT"), CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThing::GetPos @ 0x004C73D0. Own vtable 0x0127E344 (rtti-vtables.tsv).
 // Shape: `ret 4`; the landed 0x008CBCF0 constructor shape (sound pair zeroed from eax, scoped named CCharString in the 8-byte frame), then a body
@@ -28,7 +28,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
-    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                 // 0x00858030
+    // NF123 (2026-11-20, q6404): creature by reference, Ego_r.pdb ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (0x00858030; was PAV).
+    CCombatActionBase(CThingCreatureBase& owner, long actionCode, const CSoundPair& sound);                 // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);  // 0x00857F30
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
@@ -41,7 +42,7 @@ class CCreatureAction_TeleportOut : public CCombatActionBase { public:   // vtab
 };
 
 CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase* owner)
-    : CCombatActionBase(owner, 250, CSoundPair())
+    : CCombatActionBase(*owner, 250, CSoundPair())
 {
     {
         CCharString name("ST_TELEPORT", -1);   // scoped named local (a bare temporary would reuse eax, GOTCHAS)

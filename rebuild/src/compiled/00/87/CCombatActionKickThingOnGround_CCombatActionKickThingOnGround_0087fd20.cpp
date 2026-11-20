@@ -1,5 +1,8 @@
-// CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround(CThingCreatureBase* creature, CThing* target) -- base action (code 150, zeroed sound pair), the kick vector = sum of both things' (+0xc - +0x18) vectors, and the +0x12c float from the creature's virtual slot 81 on its +0x60 object's slot 70 result
-// Leaf: ??0CCombatAction_KickThingOnGround
+// CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround(CThingCreatureBase& creature, CThing& target) -- base action (code 150, zeroed sound pair), the kick vector = sum of both things' (+0xc - +0x18) vectors, and the +0x12c float from the creature's virtual slot 81 on its +0x60 object's slot 70 result
+// Leaf: ??0CCombatAction_KickThingOnGround@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+// NF123 (2026-11-20, q4749): in-place respell of this row's own model to Ego_r.pdb 0x00843590 + FableWin.pdb 0x02876CD0
+//   ??0CCombatAction_KickThingOnGround@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z (both by reference; the landed caller 0x007ECE20 binds it);
+//   was PAV / PAV. The base call 0x00857F30 keeps the spelling this row bound (not this entry's address).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087FD20, 205 bytes (208 with padding), `ret 8`; vtable 0x01277D3C.
 // Callees: CCombatActionBase::CCombatActionBase(owner, thing, code, sound) 0x00857F30; the creature's +0x60 object's virtual
@@ -67,16 +70,16 @@ class CCombatAction_KickThingOnGround : public CCombatActionBase { public:
     C3DVector KickVector;                       // +0x120
     float KickValue;                            // +0x12c
     virtual void v00();
-    CCombatAction_KickThingOnGround(CThingCreatureBase* creature, CThing* target);
+    CCombatAction_KickThingOnGround(CThingCreatureBase& creature, CThing& target);
 };
 
-CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround(CThingCreatureBase* creature, CThing* target)
-    : CCombatActionBase(creature, target, 150, CSoundPair())
+CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround(CThingCreatureBase& creature, CThing& target)
+    : CCombatActionBase(&creature, &target, 150, CSoundPair())
 {
-    KickVector = (target->m_pPhysics->m_current - target->m_pPhysics->m_previous)
-               + (creature->m_pPhysics->m_current - creature->m_pPhysics->m_previous);
+    KickVector = (target.m_pPhysics->m_current - target.m_pPhysics->m_previous)
+               + (creature.m_pPhysics->m_current - creature.m_pPhysics->m_previous);
     {
         C3DVector position;
-        KickValue = creature->GetDistanceTo(creature->m_pPhysics->GetPosition(&position));
+        KickValue = creature.GetDistanceTo(creature.m_pPhysics->GetPosition(&position));
     }
 }
