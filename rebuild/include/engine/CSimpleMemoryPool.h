@@ -83,6 +83,11 @@ struct CMemoryBlock;
 #pragma pack(push, 1)
 class CSimpleMemoryPool {
 public:
+#ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_FLAT_CTOR
+    // agentNF182 (2026-11-20, row 0x00B260B0 CEngine::CEngine): the out-of-line constructor on the flattened layout, declaration only
+    // (Ego_r.pdb 0x00BCF940 / FableWin.pdb 0x032F3BD0 ??0CSimpleMemoryPool@@QAE@KK@Z = retail 0x00A5C570, as the retail branch declares it).
+    CSimpleMemoryPool(unsigned long capacity, unsigned long growthGranularity);   // 0x00A5C570
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CMemoryBlock* FirstMemoryBlock;                          // +0x04
     unsigned long Capacity;                                  // +0x08

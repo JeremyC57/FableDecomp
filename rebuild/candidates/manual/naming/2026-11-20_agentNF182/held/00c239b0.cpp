@@ -1,0 +1,67 @@
+// CEventSubscription_00c239b0::CEventSubscription(count) -- EH-framed constructor (vtable 0x012B3A94; the manifest's "NScript_CEvent_InitializeSubscriptions"; the landed 0x00C23C10 is the POD-entry twin): the count at +4, +8 / +0xc cleared; a zero count leaves the two tables at +0x10 / +0x14 empty; otherwise a 180-byte-per-entry table is built with `new[]` (MSVCR71 operator new[] @ 0x00BFEB22, the raw block freed on unwind; `__ehvec_ctor` with 0x00C21BA0 / 0x00C207F0) and a word-per-entry table allocated with `new long[]` (operator new[] @ 0x00BFEB22), each failure raising "EMEM"-style warnings ("Memory allocation failure", d:\dev\audio\ver_fable_1.5_b\libpk\PKCFrallocStatic.h lines 63 and 65: an MFC-style string in a nested block handed to the log sink at 0x0143BB2C, then the empty trace temporary @ 0x00C16750 -- the first string and trace in the dead argument slot, the second trace on a free frame byte; states 0 and 1), and every entry is initialised (@ 0x00C22840)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C239B0, oracle length 489 bytes. Built under /EHsc.
+// Retail bytes:  ... (as 0x00C23C10, the entry table from `imul eax,eax,0B4h ; add eax,4 ; push eax ; call operator new[] ; ... mov [eax],edi ; call __ehvec_ctor` with 0x00C21BA0 / 0x00C207F0, the block freed on unwind; the entries initialised @ 0x00C22840 every 0B4h bytes) ...
+// The class is named by address.
+// Both tables come from the global array allocator: retail calls MSVCR71 operator new[] (0x00BFEB22) for each.
+void* __cdecl operator new[](unsigned int size);     // 0x00BFEB22 (the lane <new> lacks it)
+void __cdecl operator delete[](void* block);        // 0x00BFEB1C
+extern char* _afxPchNil;            // 0x0139C900
+typedef void (__fastcall* PFNLOGSINK_00c239b0)(const char* text);
+extern PFNLOGSINK_00c239b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
+
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
+    char* m_pchData;
+    CString() : m_pchData(_afxPchNil) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
+};
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
+    CDebugBreak();                         // 0x00C16750
+};
+
+#define FABLE_RETAIL_CSOUNDEVENT_CTOR_DTOR
+#include "libpk/LHAudioEventPosition.h"        // CSoundEvent (0xB4 bytes): ctor 0x00C21BA0, dtor 0x00C207F0 (NF182 q4891 / q4892; was CSoundEvent)
+
+struct CEventSubscription_00c239b0 {
+    virtual void v00();
+    unsigned long m_count;                 // +4
+    long m_8;
+    long m_c;
+    CSoundEvent* m_pEntries;           // +0x10
+    long* m_pSlots;                        // +0x14
+    void InitEntry(CSoundEvent* entry);   // 0x00C22840
+    CEventSubscription_00c239b0(unsigned long count);
+};
+
+CEventSubscription_00c239b0::CEventSubscription_00c239b0(unsigned long count)
+    : m_count(count), m_8(0), m_c(0)
+{
+    if (count == 0) {
+        m_pEntries = 0;
+        m_pSlots = 0;
+        return;
+    }
+    m_pEntries = new CSoundEvent[count];
+    if (!m_pEntries) {
+        {
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h" << "(" << 63L << ") : " << "Memory allocation failure" << "\n";
+            if (g_pfnLogSink_0143bb2c)
+                g_pfnLogSink_0143bb2c(line.m_pchData);
+        }
+        CDebugBreak();
+    }
+    m_pSlots = new long[m_count];
+    if (!m_pSlots) {
+        {
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h" << "(" << 65L << ") : " << "Memory allocation failure" << "\n";
+            if (g_pfnLogSink_0143bb2c)
+                g_pfnLogSink_0143bb2c(line.m_pchData);
+        }
+        CDebugBreak();
+    }
+    for (unsigned long i = 0; i < m_count; ++i)
+        InitEntry(&m_pEntries[i]);
+}

@@ -1,0 +1,45 @@
+addr       parity           behav  name
+004473a0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CSavedInputEvent (engine/CSavedInputEvent.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CInputProcessManager (engine/CInputProcessManager.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004473a0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+004473a0   RELOCATION_MATCH PASS   CGamePlayerInterface::CGamePlayerInterface
+004d6292   RELOCATION_MATCH PASS   CTCFlashOnHit::CTCFlashOnHit
+004d62d1   WARN STANDIN_LEAF ??_GCTCFlashOnHit@@UAEPAXI@Z (catalog CTCFlashOnHit::`scalar_deleting_destructor'; names another function)
+004d62d1   RELOCATION_MATCH PASS   CTCFlashOnHit::`scalar_deleting_destructor'
+005297d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+005297d0   WARN RELOC_NAME: ?FreeSelf@CThingPhysical@@QAEXXZ -> 004c73b0 labelled '_global::DeleteArray_004c73b0'
+005297d0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CThingPhysical@@QAEPAXI@Z (catalog CThingPhysical::`scalar_deleting_destructor'; names another function)
+005297d0   RELOCATION_MATCH PASS   CThingPhysical::`scalar_deleting_destructor'
+00670c50   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CTCCoopSpirit@@QAEPAXI@Z (catalog CTCCoopSpirit::`scalar_deleting_destructor'; names another function)
+00670c50   RELOCATION_MATCH PASS   CTCCoopSpirit::`scalar_deleting_destructor'
+007ada80   WARN SHARED_HEADER_AVAILABLE CTCAIScratchpad (engine/CTCAIScratchpad.h)
+007ada80   WARN STANDIN_LEAF ?CTCAIScratchpad_scalar_deleting_destructor@@YIPAXPAVCTCAIScratchpad@@HI@Z (catalog CTCAIScratchpad::`scalar deleting destructor'; names another function)
+007ada80   RELOCATION_MATCH PASS   CTCAIScratchpad::`scalar deleting destructor'
+007cf390   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CTCCreatureTintEffect@@QAEPAXI@Z (catalog CTCCreatureTintEffect::`scalar deleting destructor'; names another function)
+007cf390   RELOCATION_MATCH PASS   CTCCreatureTintEffect::`scalar deleting destructor'
+009e45b0   RELOCATION_MATCH PASS   CMaintainedEvent::CMaintainedEvent
+00a628b0   WARN STANDIN_LEAF ?CShaderBankEntry_scalar_deleting_destructor@@YIPAXPAVCShaderBankEntry@@HI@Z (catalog CShaderBankEntry::`scalar deleting destructor'; names another function)
+00a628b0   RELOCATION_MATCH PASS   CShaderBankEntry::`scalar deleting destructor'
+00b260b0   WARN STANDIN_LEAF ??0EngineNative@@QAE@XZ (catalog CEngine::CEngine; names another function)
+00b260b0   RELOCATION_MATCH PASS   CEngine::CEngine
+00bf3290   RELOCATION_MATCH PASS   CEngineDynamic3DResource::CEngineDynamic3DResource
+00cbe09a   MATCH            PASS   CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities
+
+WINS: 12
+  004473a0 RELOCATION_MATCH CGamePlayerInterface::??0CGamePlayerInterface
+  004d6292 RELOCATION_MATCH CTCFlashOnHit::??0CTCFlashOnHit@@QAE@AAVCThing@@@Z
+  004d62d1 RELOCATION_MATCH CTCFlashOnHit::??_GCTCFlashOnHit@@UAEPAXI@Z
+  005297d0 RELOCATION_MATCH CThingPhysical::?ScalarDeletingDestructor@CThingPhysical@@QAEPAXI@Z
+  00670c50 RELOCATION_MATCH CTCCoopSpirit::?ScalarDeletingDestructor@CTCCoopSpirit@@QAEPAXI@Z
+  007ada80 RELOCATION_MATCH CTCAIScratchpad::?CTCAIScratchpad_scalar_deleting_destructor@@YIPAXPAVCTCAIScratchpad@@HI@Z
+  007cf390 RELOCATION_MATCH CTCCreatureTintEffect::?ScalarDeletingDestructor@CTCCreatureTintEffect@@QAEPAXI@Z
+  009e45b0 RELOCATION_MATCH CMaintainedEvent::??0CMaintainedEvent@@QAE@XZ
+  00a628b0 RELOCATION_MATCH CShaderBankEntry::?CShaderBankEntry_scalar_deleting_destructor@@YIPAXPAVCShaderBankEntry@@HI@Z
+  00b260b0 RELOCATION_MATCH CEngine::EngineNative
+  00bf3290 RELOCATION_MATCH CEngineDynamic3DResource::??0CEngineDynamic3DResource@@QAE@XZ
+  00cbe09a MATCH CWideScreenMagicPauseEntities::??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z
