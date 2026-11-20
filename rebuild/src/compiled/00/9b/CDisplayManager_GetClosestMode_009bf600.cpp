@@ -17,17 +17,17 @@
 // (name-fix NF29: the local _D3DFORMAT enum and _D3DDISPLAYMODE struct are now engine/Direct3D9Types.h, pulled in by engine/CD3DFormatInfo.h)
 #include <stdlib.h>
 
-struct IDirect3D9 {
-    virtual long __stdcall QueryInterface(const void* iid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-    virtual long __stdcall RegisterSoftwareDevice(void* initializeFunction);
-    virtual unsigned long __stdcall GetAdapterCount();
-    virtual long __stdcall GetAdapterIdentifier(unsigned long adapter, unsigned long flags, void* identifier);
-    virtual unsigned long __stdcall GetAdapterModeCount(unsigned long adapter, unsigned long format);                       // slot 6
-    virtual long __stdcall EnumAdapterModes(unsigned long adapter, unsigned long format, unsigned long mode, _D3DDISPLAYMODE* out);   // slot 7
-    virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, _D3DDISPLAYMODE* mode);                           // slot 8
-};
+#include "engine/IDirect3D9.h"   // IDirect3D9: the shared header (d3d9.h slot order, SDK parameter types)
+
+
+
+
+
+
+
+
+
+
 struct IDirect3DDevice9 {
     virtual long __stdcall QueryInterface(const void* iid, void** object);
     virtual unsigned long __stdcall AddRef();
@@ -46,7 +46,7 @@ class C2DExtentsI { public: long X; long Y; };
 class CPixelFormat { public:
     long FormatIndex;
     void Initialise(_D3DFORMAT format);         // 0x009E3830
-    unsigned long GetD3DFormat() const { return GD3DFormats[FormatIndex].D3DFormat; }
+    _D3DFORMAT GetD3DFormat() const { return GD3DFormats[FormatIndex].D3DFormat; }
 public:
     unsigned long GetColourDepth() const;   // 0x009E3820
 };

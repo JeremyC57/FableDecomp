@@ -9,7 +9,7 @@
 // Shape: the D3D object, the adapter ordinal and the vtable are loaded before the 0x24-byte frame is opened (pixel format at
 // +0, RECT at +4, D3DDISPLAYMODE at +0x14); `this` is dead after the first call; the size is right-left / bottom-top stored
 // through the reference; the colour depth comes from a local CPixelFormat initialised with the mode's format.
-enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+#include "engine/IDirect3D9.h"   // IDirect3D9 (d3d9.h slots); engine/Direct3D9Types.h: _D3DFORMAT, D3DDISPLAYMODE
 struct HWND__;
 
 struct RECT {
@@ -21,24 +21,24 @@ struct RECT {
 
 extern "C" __declspec(dllimport) int __stdcall GetWindowRect(HWND__* window, RECT* rect);   // 0x01440308
 
-struct D3DDISPLAYMODE {
-    unsigned long Width;
-    unsigned long Height;
-    unsigned long RefreshRate;
-    _D3DFORMAT Format;                          // D3DFORMAT
-};
 
-struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9 slots up to GetAdapterDisplayMode
-    virtual long __stdcall QueryInterface(const void* iid, void** object);   // slot 0
-    virtual unsigned long __stdcall AddRef();                                // slot 1
-    virtual unsigned long __stdcall Release();                               // slot 2
-    virtual long __stdcall RegisterSoftwareDevice(void* initialize);         // slot 3
-    virtual unsigned long __stdcall GetAdapterCount();                       // slot 4
-    virtual long __stdcall GetAdapterIdentifier(unsigned long adapter, unsigned long flags, void* identifier);   // slot 5
-    virtual unsigned long __stdcall GetAdapterModeCount(unsigned long adapter, unsigned long format);           // slot 6
-    virtual long __stdcall EnumAdapterModes(unsigned long adapter, unsigned long format, unsigned long mode, D3DDISPLAYMODE* out);   // slot 7
-    virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, D3DDISPLAYMODE* mode);                   // slot 8 (+0x20)
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class C2DExtentsI { public:
     long X;                                        // +0x00

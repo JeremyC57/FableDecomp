@@ -120,8 +120,9 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 namespace NResourceDirectoryNames { CWideString __fastcall GetLevelDir(); }   // 0x0041A060
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float fraction, bool a, bool b); }   // 0x009E9F40
 
-class CExceptionBase { public: CExceptionBase(const char*) { } };
-class CGenericException : public CExceptionBase { public: CGenericException(const char* text) : CExceptionBase(text) { } };
+#define FABLE_RETAIL_CWAVELOADER_PASS22_EXCEPTIONS   // CExceptionBase(const char*), both PDBs (engine/CExceptionBase.h opt-in)
+#define FABLE_RETAIL_CGENERICEXCEPTION_TEXT_CTOR     // ??0CGenericException@@QAE@PBD@Z, text handed to the base (opt-in)
+#include "engine/CGenericException.h"
 
 class CBaseClass {
 public:

@@ -10057,7 +10057,6 @@ __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ??_7CActionParamULONG@NUISystem@@6B@	0122f844	00549230
 ?Initialise@CDraggableInto@NUISystem@@UAEXXZ	0052c730	00549230
 ??4CNavigatorTypeVector@@QAEAAU0@ABU0@@Z	006714b0	00671160
-__TI1?AUCGenericException@@	013692f8	00a37060
 ?AllocCopy@CAnimationVector@@QAEPAUSPair@@KPAU2@0@Z	0047197a	00471865
 ?CopyRange@@YIPAUSPair@@PAU1@00ABUSTag@@@Z	004719ce	00471865
 ?DestroyRange@@YIXPAUSPair@@0ABUSAlloc@@@Z	00454404	00471865
@@ -12194,10 +12193,7 @@ __imp__RegSetValueExA@24	0143fbf4	0099dc50
 ?_M_insert_overflow@?$vector@G@std@@QAEXPAGABGABU__true_type@@K_N@Z	005135d0	009b4a20
 ??$_M_allocate_and_copy@PBUSRecord12@@@?$vector@USRecord12@@V?$allocator@USRecord12@@@std@@@std@@QAEPAUSRecord12@@IPBU2@0@Z	009b2780	009b4d80
 ??$__unguarded_linear_insert@PAVCWideString@@V1@U?$less@VCWideString@@@std@@@std@@YIXPAVCWideString@@V1@U?$less@VCWideString@@@0@@Z	009b1870	009b68d0
-?find@?$CRetailMap@VCCharString@@UCBankInfo@@@@QAEPAUSNode@1@ABVCCharString@@@Z	009ab560	009a7d40
-?find@?$CRetailMap@VCCharString@@V1@@@QAEPAUSNode@1@ABVCCharString@@@Z	009ab5d0	009a7d40
 ?insert_unique@?$set@VCWideString@@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCWideString@@@std@@_N@2@ABVCWideString@@@Z	009aaeb0	009a7d40
-__TI2?AVCGenericException@@	013692f8	009a7d40
 ??$__destroy_aux@PAVCDataBankGroupEntry@NGameText@@@std@@YIXPAVCDataBankGroupEntry@NGameText@@0ABU__false_type@0@@Z	009cac00	009c87c0
 ??$__destroy_aux@PAVCDataBankTextEntry@NGameText@@@std@@YIXPAVCDataBankTextEntry@NGameText@@0ABU__false_type@0@@Z	009cabc0	009c87c0
 ??_7CDataBank@NGameText@@6BCBankSecondaryBase@@@	0129b528	009c87c0
@@ -39892,3 +39888,6 @@ _TWO_PI	0124f2b8	008185b0
 ?_M_insert_overflow@?$vector@VCTexture@@V?$allocator@VCTexture@@@std@@@std@@IAEXPAVCTexture@@ABV3@ABU__false_type@2@I_N@Z	0049b480	0049b5a0
 ?_M_fill_insert@?$vector@VCTexture@@@std@@QAEXPAVCTexture@@IABV3@@Z	0049b5a0	0049b7f0
 ?erase@?$vector@VCTexture@@@std@@QAEPAVCTexture@@PAV3@0@Z	0049b3b0	0049b7f0
+?find@?$CRetailMap@VCCharString@@UCBankInfo@@@@QAEPAUSNode@1@ABVCCharString@@@Z	009ab560	009a7ca0
+?find@?$CRetailMap@VCCharString@@V1@@@QAEPAUSNode@1@ABVCCharString@@@Z	009ab5d0	009a7ca0
+__TI2?AVCGenericException@@	013692f8	00501d30

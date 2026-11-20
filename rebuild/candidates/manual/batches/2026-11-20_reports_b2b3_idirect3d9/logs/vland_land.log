@@ -1,0 +1,81 @@
+addr       parity           behav  name
+009be590   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be590   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be590   RELOCATION_MATCH PASS   CDisplayManager::GetBestSignedTextureFormat
+009be610   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be610   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be610   RELOCATION_MATCH PASS   CDisplayManager::GetBestOpaqueTextureFormat
+009be6c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be6c0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be6c0   RELOCATION_MATCH PASS   CDisplayManager::GetBestAlphaTextureFormat
+009be750   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be750   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be750   RELOCATION_MATCH PASS   CDisplayManager::GetBestBooleanAlphaTextureFormat
+009be830   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be830   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be830   RELOCATION_MATCH PASS   CDisplayManager::GetBestCompressedOpaqueTextureFormat
+009be8b0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be8b0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be8b0   RELOCATION_MATCH PASS   CDisplayManager::GetBestCompressedBooleanAlphaTextureFormat
+009be930   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009be930   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009be930   RELOCATION_MATCH PASS   CDisplayManager::IsValidRenderTargetFormat
+009bebb0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009bebb0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009bebb0   RELOCATION_MATCH PASS   CDisplayManager::GetClosestDepthBufferFormat
+009bed10   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009bed10   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009bed10   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009bed10   RELOCATION_MATCH PASS   CDisplayManager::GetCurrentWindowedSettings
+009bf600   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+009bf600   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009bf600   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009bf600   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009bf600   RELOCATION_MATCH PASS   CDisplayManager::GetClosestMode
+009c02d0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+009c02d0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009c02d0   WARN SHARED_HEADER_AVAILABLE CDisplayModeDesc (engine/CDisplayModeDesc.h)
+009c02d0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009c02d0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009c02d0   RELOCATION_MATCH PASS   CDisplayManager::EnumerateDisplayModes
+009c05c0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+009c05c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009c05c0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009c05c0   RELOCATION_MATCH PASS   CDisplayManager::EnumerateAntiAliasingModes
+009c0e50   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+009c0e50   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+009c0e50   WARN SHARED_HEADER_AVAILABLE CRenderManager (engine/CRenderManager.h)
+009c0e50   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009c0e50   WARN RELOC_NAME: ??0CDynamicTextureList@@QAE@XZ -> 009f70e0 labelled 'CVsyncCallbackTimer::CVsyncCallbackTimer'
+009c0e50   WARN RELOC_NAME: ??1CDynamicTextureList@@QAE@XZ -> 009f7330 labelled 'CVsyncCallbackTimer::~CVsyncCallbackTimer'
+009c0e50   RELOCATION_MATCH PASS   CDisplayManager::Init
+
+WINS: 13
+  009be590 RELOCATION_MATCH CDisplayManager::?GetBestSignedTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
+  009be610 RELOCATION_MATCH CDisplayManager::GetBestOpaqueTextureFormat
+  009be6c0 RELOCATION_MATCH CDisplayManager::?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
+  009be750 RELOCATION_MATCH CDisplayManager::GetBestBooleanAlphaTextureFormat
+  009be830 RELOCATION_MATCH CDisplayManager::?GetBestCompressedOpaqueTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
+  009be8b0 RELOCATION_MATCH CDisplayManager::?GetBestCompressedBooleanAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
+  009be930 RELOCATION_MATCH CDisplayManager::IsValidRenderTargetFormat
+  009bebb0 RELOCATION_MATCH CDisplayManager::?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z
+  009bed10 RELOCATION_MATCH CDisplayManager::?GetCurrentWindowedSettings@CDisplayManager@@QAEXPAUHWND__@@AAVC2DExtentsI@@AAK@Z
+  009bf600 RELOCATION_MATCH CDisplayManager::GetClosestMode
+  009c02d0 RELOCATION_MATCH CDisplayManager::?EnumerateDisplayModes@CDisplayManager@@QAEXAAV?$CArray@VCDisplayModeDesc@@@@VC2DExtentsI@@1@Z
+  009c05c0 RELOCATION_MATCH CDisplayManager::?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z
+  009c0e50 RELOCATION_MATCH CDisplayManager::Init
+
+LANDED 13 wins into src/compiled + tests + catalog + oracle
+  CDisplayManager_GetBestSignedTextureFormat_009be590
+  CDisplayManager_GetBestOpaqueTextureFormat_009be610
+  CDisplayManager_GetBestAlphaTextureFormat_009be6c0
+  CDisplayManager_GetBestBooleanAlphaTextureFormat_009be750
+  CDisplayManager_GetBestCompressedOpaqueTextureFormat_009be830
+  CDisplayManager_GetBestCompressedBooleanAlphaTextureFormat_009be8b0
+  CDisplayManager_IsValidRenderTargetFormat_009be930
+  CDisplayManager_GetClosestDepthBufferFormat_009bebb0
+  CDisplayManager_GetCurrentWindowedSettings_009bed10
+  CDisplayManager_GetClosestMode_009bf600
+  CDisplayManager_EnumerateDisplayModes_009c02d0
+  CDisplayManager_EnumerateAntiAliasingModes_009c05c0
+  CDisplayManager_Init_009c0e50

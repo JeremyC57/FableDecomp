@@ -22,14 +22,14 @@
 //   models are deleted (the header brings fable_string.h's CWideString: operator= 0x0099B7D0 out of line).
 #include "engine/CShaderRenderManager.h"
 struct IDirect3DDevice9;
-struct D3DCAPS9 { unsigned char _body[0x130]; };
-struct IDirect3D9 {
-    virtual long __stdcall v00(); virtual long __stdcall v01(); virtual long __stdcall v02(); virtual long __stdcall v03();
-    virtual long __stdcall v04(); virtual long __stdcall v05(); virtual long __stdcall v06(); virtual long __stdcall v07();
-    virtual long __stdcall v08(); virtual long __stdcall v09(); virtual long __stdcall v10(); virtual long __stdcall v11();
-    virtual long __stdcall v12(); virtual long __stdcall v13();
-    virtual long __stdcall GetDeviceCaps(unsigned int adapter, long deviceType, D3DCAPS9* caps);   // slot 14 (+0x38)
-};
+#include "engine/IDirect3D9.h"   // IDirect3D9 (GetDeviceCaps slot 14, +0x38); engine/Direct3D9Types.h: D3DCAPS9 (0x130), D3DDEVTYPE
+
+
+
+
+
+
+
 extern "C" IDirect3D9* __stdcall Direct3DCreate9(unsigned int sdkVersion);   // 0x00BFEFB0
 class CDisplayManager;
 struct CRenderManagerCore {
@@ -148,8 +148,8 @@ void CDisplayManager::Init(const CDisplayManagerInit& init, bool windowed)
     Window = init.Window;
     PD3D = Direct3DCreate9(0x20);
     PDynamicTextures = new CDynamicTextureList;
-    if (PD3D->GetDeviceCaps(0, 1, &Caps) < 0)
-        PD3D->GetDeviceCaps(0, 2, &Caps);
+    if (PD3D->GetDeviceCaps(0, D3DDEVTYPE_HAL, &Caps) < 0)
+        PD3D->GetDeviceCaps(0, D3DDEVTYPE_REF, &Caps);
     long width = init.Width;
     long height = init.Height;
     long bitDepth = init.BitDepth;

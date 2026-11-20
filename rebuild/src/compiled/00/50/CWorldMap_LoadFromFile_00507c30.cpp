@@ -87,12 +87,12 @@ template<class T> inline long __fastcall CBasicString<T>::Compare(const T* a,con
 template<class T> inline bool CBasicString<T>::operator==(const T* text) const
 { return Compare(PData,text)==0; }
 
-// CGenericException has no shared header (CExceptionBase does); the landed CWStringParser::ReadAsFloat 0x00A0D140 / CBankFileManager::FindBank 0x009A7CA0 model
-// (ThrowInfo 0x013692F8 = __TI2?AVCGenericException@@: CGenericException : CExceptionBase, 1 byte).
-class CGenericException : public CExceptionBase {
-public:
-    CGenericException() { }
-};
+// CGenericException : CExceptionBase -- the shared header (ThrowInfo 0x013692F8 = __TI2?AVCGenericException@@, 1 byte).
+#include "engine/CGenericException.h"
+
+
+
+
 namespace NResourceDirectoryNames { CWideString __fastcall GetLevelDir(); }   // 0x0041A060 (Ego_r.pdb; landed CWorldMap::SaveMapsToString 0x004FB990 declares it so)
 extern bool g_bUseCompiledWorldFiles;                   // 0x013B8618 (landed CProgressDisplay::DrawRetailDisplay 0x00498490)
 extern bool g_WADBuildEnabled;                          // 0x01375459 (landed CNewFrontendGameComponent::InitialiseEngine 0x0042E204)

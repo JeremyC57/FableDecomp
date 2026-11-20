@@ -15,8 +15,8 @@ static void L(const std::string& s) { gLog += s; gLog += ";"; }
 static std::string W2S(const unsigned short* w) { std::string s; while (*w) s += (char)*w++; return s; }
 static std::string I2S(long v) { char b[32]; sprintf(b, "%ld", v); return b; }
 static std::string F2S(float v) { char b[32]; sprintf(b, "%g", v); return b; }
-struct CWideString;
-struct CCharString {
+class CWideString;
+class CCharString { public:
     std::string S;
     CCharString() { }
     CCharString(const char* s) : S(s) { }
@@ -32,7 +32,7 @@ struct CCharString {
     CCharString operator+(const CCharString& t) const { return CCharString(S + t.S); }
     CWideString ToWideString() const;
 };
-struct CWideString {
+class CWideString { public:
     std::string S;
     CWideString() { }
     CWideString(const std::string& s) : S(s) { }
@@ -52,7 +52,7 @@ namespace NProgressDisplay { void DisplayProgress(const char* s, float, bool, bo
 namespace NResourceDirectoryNames { CWideString GetLevelDir() { return CWideString("Data\\Levels\\"); } }
 static bool g_bUseCompiledWorldFiles, g_WADBuildEnabled, g_bUseCompiledGlobalThings, gGtngExists;
 // --- file ---
-struct CAFile {
+class CAFile { public:
     std::string Path, Body; long ReadLen;
     virtual ~CAFile() { }
     CWideString GetPathname() const { return CWideString(Path); }
@@ -70,18 +70,18 @@ struct CAFile {
     static bool PathExists(const CWideString& p) { L("exists " + p.S); return gGtngExists; }
 };
 enum { FILE_ACCESS_READ = 1 };
-struct CDiskFileWin32 : CAFile { CDiskFileWin32(const CWideString& p, int, int) { Path = p.S; L("open " + p.S); } };
-template<class T> struct CCountedPointer { T* P; CCountedPointer() : P(0) { } CCountedPointer(T* p) : P(p) { } ~CCountedPointer() { delete P; }
+class CDiskFileWin32 : public CAFile { public: CDiskFileWin32(const CWideString& p, int, int) { Path = p.S; L("open " + p.S); } };
+template<class T> class CCountedPointer { public: T* P; CCountedPointer() : P(0) { } CCountedPointer(T* p) : P(p) { } ~CCountedPointer() { delete P; }
     bool IsNull() const { return P == 0; } void Reset(T* p) { delete P; P = p; } T* operator->() const { return P; } };
-template<class T> struct CArray : std::vector<T> { CArray() { } explicit CArray(unsigned n) : std::vector<T>(n) { }
+template<class T> class CArray : public std::vector<T> { public: CArray() { } explicit CArray(unsigned n) : std::vector<T>(n) { }
     void DeallocateUnusedMemory() { L("dealloc"); } };
-struct CParsedItem { };
+class CParsedItem { public: };
 // --- parser over a token list: S string, Q the quote symbol, Y other symbol, I integer, F float, U uhuge, R rest-of-line ---
 struct Tok { char k; std::string s; };
 static std::vector<Tok> gToks; static size_t gPos; static std::string gParsedText;
 static std::string Next(char k) { if (gPos >= gToks.size()) { L("parser overrun"); return ""; } Tok t = gToks[gPos++];
     if (t.k != k && !(k == 'Y' && t.k == 'Q')) L(std::string("type ") + k + " got " + t.k + " " + t.s); return t.s; }
-struct CStringParser {
+class CStringParser { public:
     CStringParser(const char* text) { gParsedText = text; gPos = 0; }
     bool NextItemExists() { return gPos < gToks.size(); }
     CCharString ReadAsString() { return CCharString(Next('S')); }
@@ -93,11 +93,11 @@ struct CStringParser {
     CCharString ReadLineAsString() { L("skipline " + Next('R')); return CCharString(); }
 };
 // --- world ---
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CMapInfo { CCharString LevelName, LevelScriptName; bool LoadedOnPlayerProximity, Used, IsSea, Placed; C2DBoxI Area; unsigned long MapUID;
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CMapInfo { public: CCharString LevelName, LevelScriptName; bool LoadedOnPlayerProximity, Used, IsSea, Placed; C2DBoxI Area; unsigned long MapUID;
     CMapInfo() : LoadedOnPlayerProximity(false), Used(false), IsSea(false), Placed(false), MapUID(0) { Area.TLX = Area.TLY = Area.BRX = Area.BRY = 0; } };
 struct C2DVectorF { float X, Y; };
-struct CRegion { CCharString DefName, Name, DisplayName, MiniMapGraphic; std::vector<long> Maps, VisMaps; bool AppearOnWorldMap;
+class CRegion { public: CCharString DefName, Name, DisplayName, MiniMapGraphic; std::vector<long> Maps, VisMaps; bool AppearOnWorldMap;
     float MiniMapScale; C2DVectorF MiniMapOffset, WorldMapOffset, NameGraphicOffset; std::string Exits;
     CRegion() : AppearOnWorldMap(false), MiniMapScale(0) { MiniMapOffset.X = MiniMapOffset.Y = WorldMapOffset.X = WorldMapOffset.Y = NameGraphicOffset.X = NameGraphicOffset.Y = 0; }
     void SetRegionDefName(const CCharString& n) { DefName = n; }
@@ -106,17 +106,17 @@ struct CRegion { CCharString DefName, Name, DisplayName, MiniMapGraphic; std::ve
     void SetMiniMapRegionExitTextOffsetY(const CCharString& e, float y) { Exits += e.S + " y " + F2S(y) + ","; }
 };
 class CThing;
-struct CThingManager { void SetCurrentThingUID(unsigned __int64 u) { L("uid " + I2S((long)u)); }
+class CThingManager { public: void SetCurrentThingUID(unsigned __int64 u) { L("uid " + I2S((long)u)); }
     void LoadFromFile(CCountedPointer<CAFile>& f, int, int sections, std::vector<CThing*>&, int, int) { L("things " + f->Path + " " + I2S(sections)); }
     void ActivateThings(const std::vector<CThing*>&) { L("activate"); } };
-struct CWorld { CThingManager TM; CThingManager& GetThingManager() { return TM; } };
-struct CLevelLoader { CLevelLoader(CThingManager&, struct CWorldMap&, CWorld&) { L("levelloader"); } };
-struct CEngineManager { static CEngineManager& Get() { static CEngineManager e; return e; } void Cleanup() { L("cleanup"); } void AddMap(long m) { L("addmap " + I2S(m)); } };
+class CWorld { public: CThingManager TM; CThingManager& GetThingManager() { return TM; } };
+class CLevelLoader { public: CLevelLoader(CThingManager&, class CWorldMap&, CWorld&) { L("levelloader"); } };
+class CEngineManager { public: static CEngineManager& Get() { static CEngineManager e; return e; } void Cleanup() { L("cleanup"); } void AddMap(long m) { L("addmap " + I2S(m)); } };
 struct CThingMapManager { void Init(CWorld*, unsigned n) { L("thingmaps " + I2S((long)n)); } };
-struct CPlayerGuiDef { CCharString RegionGraphFileName; };
-struct CPlayerGui { static const CPlayerGuiDef& PeekGuiDef() { static CPlayerGuiDef d; d.RegionGraphFileName = "graph.rg"; return d; } };
+class CPlayerGuiDef { public: CCharString RegionGraphFileName; };
+class CPlayerGui { public: static const CPlayerGuiDef& PeekGuiDef() { static CPlayerGuiDef d; d.RegionGraphFileName = "graph.rg"; return d; } };
 static std::vector<bool> gFree; static size_t gFreePos;
-struct CWorldMap {
+class CWorldMap { public:
     CCountedPointer<CLevelLoader> PLevelLoader; CWorld World; CArray<CMapInfo> Maps; std::vector<CRegion> Regions; long CurrentMapUIDCount;
     CThingMapManager TMM; CThingMapManager* PThingMapManager;
     CWorldMap() : CurrentMapUIDCount(0), PThingMapManager(&TMM) { }

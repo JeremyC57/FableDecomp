@@ -1,0 +1,4 @@
+address	right	evidence	wrong
+009f70e0	??0CVsyncCallbackTimer@@QAE@XZ	landed row 0x009F70E0 leaf (Ego_r.pdb); 0x009C0E50 calls it after new(0x14) for the +0x294 member (Ego_r CDisplayManager::VsyncCallbackTimer, boost::scoped_ptr<CVsyncCallbackTimer>)	??0CDynamicTextureList@@QAE@XZ (0x009C0E50 row-local class)
+009f7330	??1CVsyncCallbackTimer@@QAE@XZ	landed row 0x009F7330 leaf; already queued in batches/2026-10-27_linux_hand678/NAME_FIXES.tsv line 13, still bound wrong by 0x009C0E50	??1CDynamicTextureList@@QAE@XZ
+009c0e50	CDisplayManager members D3D (+0x54), D3DDevice (+0x58), D3DDeviceCaps (+0x5C), VsyncCallbackTimer (+0x294)	Ego_r.pdb CDisplayManager field list / engine/CDisplayManager.h	PD3D, PDevice, Caps, PDynamicTextures (row-local model member names)
