@@ -19254,6 +19254,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00732d00	OnInitialActivate	CTCWeatherVane	__thiscall	void	1	CTCWeatherVane *	1	yes	accepted									
 00732d40	CViewBase_UpdateLookDirection	_global	unknown	undefined	0		0	yes	accepted									
 00733020	operator	CThingFilter_HasBuildingAsHome	__thiscall	bool	2	CThingFilter_HasBuildingAsHome *,CThingAICreature *	1	yes	accepted									
+00733090	IsActive	CCombatAbility	unknown	undefined	0		0			discovered	boundary							
+007330a0	SetAsActive	CCombatAbility	unknown	undefined	0		0			discovered	boundary							
+007330c0	SetAsFinished	CCombatAbility	unknown	undefined	0		0			discovered	boundary							
+007330e0	Reset	CCombatAbility	unknown	undefined	0		0			discovered	boundary							
 007330f0	Nop_ret0_007330f0	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\E2_E2_007330f0.cpp
 00733100	IsUsingUnarmedCombatIdle	CTCCombat	__thiscall	bool	1	CTCCombat *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CTCCombat_IsUsingUnarmedCombatIdle_00733100.cpp
 00733180	Forward_IsCombatant_via0x24_00733180	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00733180.cpp
