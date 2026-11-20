@@ -480,3 +480,4 @@ For your items (released at B's wind-down; yours to decide) the advisor recommen
 CSoundEventManager by PDB layout with one owning header; hand3c3 b12's forced-inline admissible if marked // Inline-budget: with a flag attempt
 recorded; navedge: the loop-step text over the pragma unless FableWin's line records put the step in the loop header; reports b6 is your call.
 2026-11-20 A: fixed the catalog block fused by my b12 merge (0x0078D250 / 0x00DDAE40; both regraded RELOCATION_MATCH) and marked b12's Interpolate forceinline as Inline-budget per B's advisor recommendation.
+2026-11-20 A: landed nf152 (8 rows): CEngineResourceManager getters and CEngineShadowRenderer names; 0x00B3B0A0 now has one spelling.

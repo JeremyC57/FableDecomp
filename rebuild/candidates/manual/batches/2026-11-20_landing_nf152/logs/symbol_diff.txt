@@ -1,0 +1,16 @@
+00b3b030 new: 1
+    ?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ TABLE:00b3b030
+00b3b060 new: 1
+    ?GetIndexBufferUsage@CEngineResourceManager@@QAEKXZ TABLE:00b3b060
+00b3b0a0 new: 1
+    ?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ TABLE:00b3b0a0
+00b3b1f0 new: 1
+    ?AllocateExternalTextureFromResourcePools@CEngineResourceManager@@QAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z TABLE:00b3b1f0
+00b3b5b0 new: 1
+    ?FreeExternalTextureFromResourcePools@CEngineResourceManager@@QAEXPAVCTexture@@@Z TABLE:00b3b5b0
+00b4b890 new: 1
+    ?XBoxDeallocateShadowBuffer@CEngineShadowRenderer@@QAE_NXZ TABLE:00b4b890
+00b4b8a0 new: 1
+    ?XBoxReallocateShadowBuffer@CEngineShadowRenderer@@QAEXXZ TABLE:00b4b8a0
+00b4fc10 new: 1
+    ?ChangeVideoOptionShadowQuality@CEngineShadowRenderer@@QAE_NJM@Z TABLE:00b4fc10

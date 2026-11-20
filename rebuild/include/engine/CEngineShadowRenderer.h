@@ -58,6 +58,27 @@ public:
     void UpdateShadowScene(const CEngineCamera&,bool,const CEngineLightingManagerSpotlightParams&);
 #endif
     CEngineShadowRenderer();                   // 0x00B50370 ??0CEngineShadowRenderer@@QAE@XZ
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_ONRELEASEDEFAULTPOOLRESOURCES
+    // NF152 opt-in (q5011, row 0x00B4FC10): the CEngineComponent override, Ego_r.pdb 0x009EBC80 / FableWin.pdb 0x02D78040
+    // ?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ (retail 0x00B4B830; called directly, so callers qualify it). The slot is
+    // the base's: declaring the override changes no layout. Declaration only.
+    virtual void OnReleaseDefaultPoolResources();                        // 0x00B4B830
+#endif
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_CHANGEVIDEOOPTIONSHADOWQUALITY
+    // NF152 opt-in (q5011, row 0x00B4FC10): Ego_r.pdb 0x009EED40 / FableWin.pdb 0x02D73600
+    // ?ChangeVideoOptionShadowQuality@CEngineShadowRenderer@@QAE_NJM@Z (public; the target of CEngine 0x00B24500). Declaration only.
+    bool ChangeVideoOptionShadowQuality(long shadow_buffer_size, float shadow_distance_scale);   // 0x00B4FC10
+#endif
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_XBOXDEALLOCATESHADOWBUFFER
+    // NF152 opt-in (q4597, row 0x00B4B890): Ego_r.pdb 0x009EBCD0 / FableWin.pdb 0x02D78060 ?XBoxDeallocateShadowBuffer@CEngineShadowRenderer@@QAE_NXZ
+    // (public; tail-jump target of CEngine::DeallocateShadowBuffer 0x00B23F70). Declaration only.
+    bool XBoxDeallocateShadowBuffer();                                   // 0x00B4B890
+#endif
+#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_XBOXREALLOCATESHADOWBUFFER
+    // NF152 opt-in (q4598, row 0x00B4B8A0): Ego_r.pdb 0x009EBCE0 / FableWin.pdb 0x02D78070 ?XBoxReallocateShadowBuffer@CEngineShadowRenderer@@QAEXXZ
+    // (public; tail-jump target of CEngine::ReallocateShadowBuffer 0x00B23F80). Declaration only.
+    void XBoxReallocateShadowBuffer();                                   // 0x00B4B8A0
+#endif
     virtual unsigned long PeekSceneFilterFlags() const;
     void SetupShadowFuncRenderStates(long stage, const CMatrix3x4& texture_transform,
                                      const CColorBufferDepthPackParameters& pack_parameters);   // 0x00B4FC40

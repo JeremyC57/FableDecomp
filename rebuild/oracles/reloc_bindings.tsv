@@ -5784,8 +5784,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CEngineInternalAttachedPrimitive@@6B@	012a1a04	00b3a910
 ?g_frame@@3GA	0143b8d8	00b3aaa0
 ??_7CEngineInternalAttachedPrimitiveInfo@@6B@	012a1ab8	00b3aae0
-?GetIndexBufferUsageCost@CResourceOwner_01436e1c@@QAEKXZ	009bede0	00b3b030
-?g_pResourceOwner_01436e1c@@3PAUCResourceOwner_01436e1c@@A	01436e1c	00b3b030
 ?Sub_Update@@YIXPAUSub@@@Z	009fc430	00b3b180
 ?Defragment@CBufferOwner_00bd9b50@@QAEXXZ	00bd9b50	00b3b1a0
 ?Defragment@CHandleBasedMemoryPool@@QAEXXZ	00a02730	00b3b1a0
@@ -5832,7 +5830,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Destroy_00b4b040@@YIXPAX@Z	00b4b040	00b4b4c0
 ?Destroy_00b4b050@@YIXPAX@Z	00b4b050	00b4b570
 ?Destroy_00b4b060@@YIXPAX@Z	00b4b060	00b4b620
-?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@QAEXXZ	00b4b830	00b4fc10
 ??_7CEngineWeatherSettings@@6B@	012a2424	00b50be0
 ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@QAEXXZ	00b51ad0	00b51ea0
 @base_dtor_99a300@4	0099a300	00b564c0
@@ -22983,7 +22980,6 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?GetAllThingsInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_IsNot@@AAUCThingVector@@@Z	00725f10	007c04a0
 ?TWO_PI@@3NB	0124f2b8	00853830
 ?GetDataFromEventString@?A0xaf422eae@@YI_NABVCCharString@@JAAV2@@Z	00870c90	00870d70
-?InitialiseTextures@CEngineShadowRenderer@@AAE_NXZ	00b4f8e0	00b4fc10
 ??0CDiceController@@QAE@PAVPKCDeferredBank@@@Z	00c2bd90	00c14e40
 ??0CDiceGameState@@QAE@PAVPKCDeferredBank@@J@Z	00c2a8c0	00c14e40
 ??_7PKCDeferredBank@@6B@	012b29f8	00c14e40
@@ -39783,3 +39779,4 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00b98a50	00bbc130
 ?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXPAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bbe090	00bbc130
 ??0CShaderRenderManager@@QAE@XZ	0098ab00	01223d00
+?InitialiseTextures@CEngineShadowRenderer@@AAE_NXZ	00b4f8e0	00b4fc10
