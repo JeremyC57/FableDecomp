@@ -401587,6 +401587,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT36'
         PassPattern = '00efa4f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00714370'
+        Module = 'NTCScriptedControl::CActionMoveTo'
+        Source = '00/71/NTCScriptedControlCActionMoveTo_OnActivate_00714370.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionMoveTo_OnActivate_00714370_test.cpp'
+        PassPattern = '00714370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

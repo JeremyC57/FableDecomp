@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00800500	?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ	PDB name strings ?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ (ghidra_out name lists, two copies: 0x017B4B75 / 0x026C23C0) and retail's caller tests the result as a byte (0x007146D3 test al,al); this row declares it bool and binds it	landed leaf ?HasRoute@CTCPreCalculatedNavigationRoute@@QBEJXZ (long) in CTCPreCalculatedNavigationRoute_HasRoute_00800500.cpp

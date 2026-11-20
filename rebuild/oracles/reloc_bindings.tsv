@@ -39531,3 +39531,8 @@ _GetFileVersionInfoA@16	00cb5588	00cb28f0
 _GetFileVersionInfoSizeA@8	00cb558e	00cb28f0
 _VerQueryValueA@16	00cb5582	00cb28f0
 __imp__CompareStringA@24	0143fef4	00cb28f0
+?Clone@CTCBase@@QAEPAV1@XZ	00686fa0	00714370
+?GetRouteDestination@CTCPreCalculatedNavigationRoute@@QBE?AVC3DVector@@XZ	008004d0	00714370
+?HasRoute@CTCPreCalculatedNavigationRoute@@QBE_NXZ	00800500	00714370
+?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z	0085f3e0	00714370
+?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z	0085f600	00714370

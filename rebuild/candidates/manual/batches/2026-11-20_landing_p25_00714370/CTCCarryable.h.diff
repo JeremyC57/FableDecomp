@@ -1,0 +1,16 @@
+diff --git a/rebuild/include/engine/CTCCarryable.h b/rebuild/include/engine/CTCCarryable.h
+index 40c12234d..d12d778e3 100644
+--- a/rebuild/include/engine/CTCCarryable.h
++++ b/rebuild/include/engine/CTCCarryable.h
+@@ -23,6 +23,11 @@ public:
+     CThing* GetPCarriedByThing();                                    // 0x00705180
+ #endif
+     long GetCarrySlotActive() const;                                 // 0x00705CC0
++#ifdef FABLE_RETAIL_CTCCARRYABLE_ISCARRIED
++    // Retail opt-in (p25F, row 0x00714370): ?IsCarried@CTCCarryable@@QBE_NXZ (PDB name; inline in retail, which tests PCarryingTC +0x10
++    // in place at 0x00714517).
++    bool IsCarried() const { return PCarryingTC != 0; }
++#endif
+ #ifdef FABLE_RETAIL_CTCCARRYABLE_GETCARRYSLOTPASSIVE
+     // NF167 opt-in (q4475, row 0x00968BC0 CAIStateGroup_TavernKeeper::OnReplace): Ego_r.pdb / FableWin.pdb
+     // ?GetCarrySlotPassive@CTCCarryable@@QBEJXZ, out of line at 0x00705D00 (landed self row; the GetCarrySlotActive twin). Declaration only.
