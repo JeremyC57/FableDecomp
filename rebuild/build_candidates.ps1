@@ -401268,6 +401268,13 @@ $catalog = @(
         TestSource = '00/78/CTCHeroRangedAttacks_GetShotBuildupTime_00789a60_test.cpp'
         PassPattern = '00789a60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0077a430'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_FrameUpdate_0077a430.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_FrameUpdate_0077a430_test.cpp'
+        PassPattern = '0077a430_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

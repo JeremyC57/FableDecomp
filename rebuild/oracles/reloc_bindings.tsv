@@ -40026,3 +40026,5 @@ _time	00bfed22	008405f0
 ?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z	00862aa0	00862ec0
 ?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z	008e9080	008e9a30
 ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z	008e8ff0	008e9a30
+??$GetAllTCDsInRoughArea@VCTCDExperienceOrb@@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_In2DRange@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0077adf0	0077a430
+?CombineWithExperienceOrb@CTCDExperienceOrb@@AAEXAAVCThing@@@Z	0077a130	0077a430

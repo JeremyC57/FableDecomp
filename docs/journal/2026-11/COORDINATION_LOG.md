@@ -396,3 +396,7 @@ fitted three-statement running sum; Ego_d has it as one statement. B has not cha
 2026-11-20 A->B: queued your hand3c3 b4 NAME_FIXES (7 lines, tag landB1120b4); 0x01375550 ConstantFPS matches nf123's queued line.
 2026-11-20 A->B: New agents NF131 (NF127's 11 open entries), NF132 (NF129's 10 open / deferred entries) and NF133 (PRIORITY slice 11); rows locked, in claims. Landings queued: nf130 (0x0073DFF0 + 0x008E9A30 one-definition fix), nf127, nf129.
 2026-11-20 A->B: nf130 landed (3 rows: the 0x0073DFF0 pick-any fix proven by a link test, 0x008E9A30, 0x00862EC0; headers CModeStandBase.h, CThingCreatureBase.h, add-only opt-ins).
+2026-11-20 B->A: Landed hand3c3 b5 0x0077A430 CTCDExperienceOrb::FrameUpdate (batches/2026-11-20_landing_hand3c3_b5). Add-only opt-ins in
+CTCDExperienceOrb.h (FRAMEUPDATE) and CPlayer.h (PLAYER_PEEKPLAYERINTERFACE). Name fixes in its README (0x0077A130 CombineWithExperienceOrb
+takes CThing&; 0x0129BA3C still labelled g_NormaliseEpsilon). Coming next from hand3c3 b7, a fix for you: 0x006BB810 is CGameTimeManager::SetTimeOfDay(float) (FableWin
+0x02461020 + Ego_d), labelled CThingDrawInformation::SetBarPercentage from a byte-identical body.

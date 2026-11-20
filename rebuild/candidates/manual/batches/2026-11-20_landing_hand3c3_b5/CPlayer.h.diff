@@ -1,0 +1,17 @@
+diff --git a/rebuild/include/engine/CPlayer.h b/rebuild/include/engine/CPlayer.h
+index 696a84e8b..b215f2e2c 100644
+--- a/rebuild/include/engine/CPlayer.h
++++ b/rebuild/include/engine/CPlayer.h
+@@ -173,6 +173,12 @@ public:
+     bool IsPCProjectileWeaponThirdPersonAimingMode()const{return PCProjectileWeaponThirdPersonAimingMode;}
+     const CGamePlayerInterface* PeekPlayerInterface()const{return PlayerInterface;}
+ #endif
++#if defined(FABLE_RETAIL_PLAYER_PEEKPLAYERINTERFACE) && !defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST)
++    // Opt-in (hand3c3, row 0x0077A430 CTCDExperienceOrb::FrameUpdate): the const accessor alone, without the targeting set above.
++    // FableWin.pdb 0x017F0206 / Ego_d.pdb ?PeekPlayerInterface@CPlayer@@QBEPBVCGamePlayerInterface@@XZ (15 debug bytes; inline, no
++    // retail copy: the row reads +0x0C in place on PeekPlayerManager().GetMainPlayer(), 0x0077A757). No layout change.
++    const CGamePlayerInterface* PeekPlayerInterface()const{return PlayerInterface;}
++#endif
+ #ifdef FABLE_RETAIL_PLAYER_ISPCPROJECTILEAIMING
+     // Retail opt-in (chunk 2041, row 0x006AB820 CThingPlayerCreature::ResolveFacingDirection): FableWin.pdb
+     // ?IsPCProjectileWeaponThirdPersonAimingMode@CPlayer@@QBE_NXZ (0x01DECBB0; no Ego_r.pdb or Fable.exe copy: the row reads

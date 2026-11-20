@@ -19,7 +19,7 @@ address	grade	bytes	test	grades_used	notes
 006e5a00	OPEN	1772	-	1	baseline draft DIFFER(163v1772) hunks=9 difflines=647
 00766660	LANDED	696	-	1	landed by Account B (batches/2026-11-19_landing_hand3c2_b1_b7); baseline draft DIFFER(700v696) hunks=39 difflines=100
 007727e0	RELOCATION_MATCH	433	PASS(vland strict)	26	hand3c: FableWin 0x0261FE90 shape; STLP_TREE_CONSTFIND_NOINLINE (find body seen, out of line) + GETDEF_GLOBAL_BODY + GETSUBDEF_BODY; no header change
-0077a430	OPEN	1115	-	1	baseline draft DIFFER(1054v1115) hunks=55 difflines=389
+0077a430	RELOCATION_MATCH	1115	PASS(vland strict)	1	hand3c3 b5 [LANDED batches/2026-11-20_landing_hand3c3_b5]
 0077d5b0	OPEN	1491	-	1	baseline draft DIFFER(192v1491) hunks=13 difflines=462
 00780d80	RELOCATION_MATCH	539	PASS(vland strict)	31	hand3c: FableWin 0x01F51180 shape on shared headers; /d2inlT59 (conversion out of line, body seen); new NFire_CFirePoint.h, CFlammableDef.h; CTCFLAMMABLE_FRAMEUPDATE opt-in [b15 LANDED]
 0078a690	RELOCATION_MATCH	1097	PASS(vland strict)	1	hand3c3 b4 [LANDED batches/2026-11-20_landing_hand3c3_b4]
