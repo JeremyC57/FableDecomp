@@ -45,7 +45,7 @@
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST=0, SCRIPT_AI_PRIORITY_LOW=1, SCRIPT_AI_PRIORITY_MEDIUM=2, SCRIPT_AI_PRIORITY_HIGH=3, SCRIPT_AI_PRIORITY_HIGHEST=4 };
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
-// Fidelity: the real body of the retail COMDAT 0x00CD23B9 (PImp.Data != 0), inline and emitted out of line in this TU (the landed
+// Inline-budget: __declspec(noinline) on IsValid's real body (PImp.Data != 0; retail COMDAT 0x00CD23B9, not byte-equal here: 11v9) (the landed
 //   0x00EB3BA0 text, GOTCHAS chunk Q32): c2 sees that IsValid stores nothing and computes &seh_Prophet[MyCageNumber] once for IsValid
 //   and Release (`mov ecx,[esi+20h] ; shl ecx,4 ; lea edi,[edx+ecx]`, 0x00D3A4FA..0x00D3A506), as retail. With the declaration only,
 //   the address is recomputed for Release (1145v1140); a named reference local (the 2026-11-08 drafts; Ego_d.pdb has none) targets
