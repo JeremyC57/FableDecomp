@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::GoToSpawnPoint() -- switch the queen's navigator to hover, pick deposit position 1 (first time) or a random 1..4, find the "QueenDepositPos<n>" marker within 60 units (else use the creature's start position), look at the target, then fly to the marker facing the target until arrived; restore the navigator, or terminate when the state stops being runnable
+// NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Flags: /GS
@@ -80,6 +81,9 @@ class CAIBrain { public:
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 class CAIStateGroupBase { public:
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 Ego_r.pdb 0x00847E20 / FableWin.pdb 0x0288DA10 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (protected const; NF127 q5141)
+public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
@@ -87,7 +91,6 @@ class CAIStateGroupBase { public:
 protected:
     CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
 public:
-    unsigned long& GetPWorldSeed();             // 0x008FCFD0
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
 public:
@@ -133,7 +136,7 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
         index = 1;
         FirstSpawn = false;
     } else {
-        unsigned long& seed = GetPWorldSeed();
+        unsigned long& seed = *GetPWorldSeed();
         seed = seed * 0x24A1 + 0x24DF;
         seed = GFROR13(seed);
         index = seed % 4 + 1;

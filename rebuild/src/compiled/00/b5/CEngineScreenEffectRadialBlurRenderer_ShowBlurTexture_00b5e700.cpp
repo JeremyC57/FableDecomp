@@ -1,4 +1,5 @@
 // CEngineScreenEffectRadialBlurRenderer::ShowBlurTexture() -- debug view: draw the blur texture picked by ShowDebug (1: the first 256 target, else the second) over the back buffer inside a render-state capture block, with vertex constant layout 2 and the vertex/pixel shaders forced on, all restored afterwards
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: ShowBlurTexture
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5E700, length 816 bytes (body 0x323 + int3 padding), plain `ret`.
 // Twin of ShowGlowTexture 0x00B61690 plus a layout save: CShaderRenderManager::SetVertexShaderConstantLayout(long)
@@ -90,7 +91,7 @@ class CPixelShader;
 
 class CShaderRenderManager {
 public:
-    void ApplyVertexShader(CVertexShader* shader, bool force);                  // 0x00988020
+    void ApplyVertexShader(const CVertexShader& shader, bool force);                  // 0x00988020
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
@@ -203,7 +204,7 @@ void CEngineScreenEffectRadialBlurRenderer_Methods::ShowBlurTexture()
     CRenderStateScopedCaptureBlock capture;
     CShaderLayoutSaver layout(2);
     CShaderEnableSaver shaders(true, true);
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)ScreenCopyVertexShader, false);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)TextureOnlyPixelShader);
     NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
     NEngineInternal::GPRenderManager->SetZBufferEnable(false);

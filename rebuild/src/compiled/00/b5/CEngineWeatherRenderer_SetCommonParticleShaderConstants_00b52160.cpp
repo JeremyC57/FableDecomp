@@ -17,7 +17,7 @@
 #include "engine/CEngineWeatherRenderer.h"
 class CShaderRenderManager { public:
  void SetUserVertexShaderConstant(unsigned long,float,float,float,float); // 0x00989b00
- void SetVertexShaderConstant(long,const C3DVector&,float); // 0x00989a60
+ void SetUserVertexShaderConstant(unsigned long,const C3DVector&,float); // 0x00989a60 Ego_r.pdb / FableWin.pdb ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z (NF127 q4695; was SetVertexShaderConstant(long,...))
 };
 namespace NEngineInternal { extern CShaderRenderManager* GPShaderRenderManager; } // 0x01436e14
 void CEngineWeatherRenderer::SetCommonParticleShaderConstants(long& index) {
@@ -28,7 +28,7 @@ void CEngineWeatherRenderer::SetCommonParticleShaderConstants(long& index) {
   NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(index++,mask->InvTransform.E11,mask->InvTransform.E21,mask->InvTransform.E31,mask->InvTransform.E41);
   NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(index++,mask->InvTransform.E12,mask->InvTransform.E22,mask->InvTransform.E32,mask->InvTransform.E42);
   NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(index++,mask->InvTransform.E13,mask->InvTransform.E23,mask->InvTransform.E33,mask->InvTransform.E43);
-  NEngineInternal::GPShaderRenderManager->SetVertexShaderConstant(index++,mask->BBox.PeekMinCoord(),0.0f);
-  NEngineInternal::GPShaderRenderManager->SetVertexShaderConstant(index++,mask->BBox.PeekMaxCoord(),0.0f);
+  NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(index++,mask->BBox.PeekMinCoord(),0.0f);
+  NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(index++,mask->BBox.PeekMaxCoord(),0.0f);
  }
 }

@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionLeaveRegion::Update() -- leave through exit, suspend in limbo, then relocate to a random entrance
+// NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0x0091E4B0,273 bytes. Callees MoveToPos97EC00,SetInLimbo4C8CF0,DoNothing97E200,
 // GetPWorld8FCFC0,GetAllRegionNodes91E660,GetPWorldSeed8FCFD0,GFROR13497890,GetPosition4C73D0,Terminate8FCF40.
@@ -10,6 +11,8 @@
 class CWorld;
 class CAIStateGroupBase
 {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 Ego_r.pdb 0x00847E20 / FableWin.pdb 0x0288DA10 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (protected const; NF127 q5141)
 public:
     void Terminate();   // 0x008FCF40
 protected:
@@ -66,7 +69,7 @@ struct CAIStateGroup_MinionLeaveRegion_Adapter : CAIStateGroup_MinionLeaveRegion
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  C3DVector& ExitPosition() { return *(C3DVector*)&ExitPoint_X; }
  long AIAction_MoveToPos(long,C3DVector,bool*,long,bool,bool,CThing*,bool,float);
- long AIAction_DoNothing();  unsigned long* GetPWorldSeed(); void Update();
+ long AIAction_DoNothing(); void Update();
  FABLE_FORCEINLINE void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=&GetWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
 };
 void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {

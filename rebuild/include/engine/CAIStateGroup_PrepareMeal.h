@@ -18,12 +18,18 @@ class CAIStateGroup_PrepareMeal : public CAIStateGroupBase {
 protected:
     virtual void Update();
 private:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL_GETFREECOOKINGPOT
+    // NF127 opt-in (2026-11-20, q5032, row 0x00946380): Ego_r.pdb 0x0096A3A0 + FableWin.pdb 0x02BB3570
+    // ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ (private const; its only caller IsRunnable 0x00946400).
+    // Declaration only; no layout change.
+    CThing* GetFreeCookingPot() const;                                   // 0x00946380
+#endif
     CIntelligentPointer<CThing> PCookingPot;
     long ActionPointIndex;
     C3DVector ActionPointPos;
     CRightHandedSet ActionOrientation;
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_PrepareMeal)==0x44);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CAIStateGroup_PrepareMeal)==0x44);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC

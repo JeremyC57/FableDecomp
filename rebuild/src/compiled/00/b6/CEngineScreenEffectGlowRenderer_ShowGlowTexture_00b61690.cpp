@@ -1,4 +1,5 @@
 // CEngineScreenEffectGlowRenderer::ShowGlowTexture() -- debug view: draw the glow texture picked by ShowDebug (1: 256, 2: 64, else 16) over the back buffer inside a render-state capture block, with vertex and pixel shaders forced on and restored afterwards
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: ShowGlowTexture
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B61690, length 800 bytes (body 0x31b + int3 padding), plain `ret`.
 // Callees: CShaderRenderManager::EnableVertexShaders @ 0x00987FE0 / DisableVertexShaders @ 0x009880E0 / EnablePixelShaders
@@ -89,7 +90,7 @@ class CPixelShader;
 
 class CShaderRenderManager {
 public:
-    void ApplyVertexShader(CVertexShader* shader, bool force);                  // 0x00988020
+    void ApplyVertexShader(const CVertexShader& shader, bool force);                  // 0x00988020
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
@@ -192,7 +193,7 @@ void CEngineScreenEffectGlowRenderer_Methods::ShowGlowTexture()
 {
     CRenderStateScopedCaptureBlock capture;
     CShaderEnableSaver shaders(true, true);
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)VertexShaderShowDebug, false);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)VertexShaderShowDebug, false);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)PixelShaderShowDebug);
     NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
     NEngineInternal::GPRenderManager->SetZBufferEnable(false);

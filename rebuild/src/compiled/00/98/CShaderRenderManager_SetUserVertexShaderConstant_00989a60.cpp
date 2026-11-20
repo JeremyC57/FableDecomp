@@ -1,6 +1,8 @@
 // CShaderRenderManager::SetUserVertexShaderConstant(long index, const C3DVector* xyz, float w) -- uploads (xyz, w) as one vector at the current layout's user-constant base (+0x14) plus index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989A60, length 78 bytes.
-// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC3DVector@@M@Z
+// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z
+// NF127 (2026-11-20, q4695): Ego_r.pdb 0x00AE62B0 + FableWin.pdb 0x03034AB0 ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVC3DVector@@M@Z
+//   (unsigned long index, vector by const reference; the first of the four overloads in both PDBs, ret 0xC); respelled in place; was JPBV.
 // Layout: engine/CVertexShaderConstantLayout.h (its CShaderConstantRange members viewed as {vptr, Offset, Count}).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
 // Shape: a 16-byte frame vector handed to the device as one constant. It reproduces only through an
@@ -37,7 +39,7 @@ class CShaderRenderManager { public:
     unsigned char                _pad008[0x1cc];
     IDirect3DDevice9*            D3DDevice;                 // +0x1d4
 
-    void SetUserVertexShaderConstant(long index, const C3DVector* xyz, float w);
+    void SetUserVertexShaderConstant(unsigned long index, const C3DVector& xyz, float w);
 
     // inline upload of one vector: the four components arrive by value (right-to-left argument
     // evaluation puts the register expression last, which is what fixes retail's push schedule)
@@ -52,7 +54,7 @@ class CShaderRenderManager { public:
     }
 };
 
-void CShaderRenderManager::SetUserVertexShaderConstant(long index, const C3DVector* xyz, float w)
+void CShaderRenderManager::SetUserVertexShaderConstant(unsigned long index, const C3DVector& xyz, float w)
 {
-    SetVertexShaderConstant(ConstantRange(CurrentVSConstantLayout->User).Offset + index, xyz->x, xyz->y, xyz->z, w);
+    SetVertexShaderConstant(ConstantRange(CurrentVSConstantLayout->User).Offset + index, xyz.x, xyz.y, xyz.z, w);
 }

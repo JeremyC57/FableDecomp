@@ -1,4 +1,5 @@
 // CEngineWeatherRenderer::RenderMist(const CEngineComponentRenderParams&) -- bind the mist volume texture on stages 0-3, the mist shaders, index and vertex buffers, upload the ten mist vertex-shader constants, set one render state, flush shader state and draw the mist quad
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: RenderMist
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B54310, length 1234 bytes (+ int3 padding), `ret 4` (params unused).
@@ -75,7 +76,7 @@ class CPixelShader;
 
 class CShaderRenderManager {
 public:
-    void ApplyVertexShader(const CVertexShader* shader, long flags);   // 0x00988020
+    void ApplyVertexShader(const CVertexShader& shader, bool force);   // 0x00988020
     void ApplyPixelShader(const CPixelShader* shader);                 // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
 
@@ -186,7 +187,7 @@ void CEngineWeatherRendererMethods::RenderMist(const CEngineComponentRenderParam
     NEngineInternal::GPRenderManager->AttachVolumeTextureToStage(2, MistVolumeTexture);
     NEngineInternal::GPRenderManager->AttachVolumeTextureToStage(3, MistVolumeTexture);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(MistPixelShader));
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(MistVertexShader), 0);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*reinterpret_cast<const CVertexShader*>(MistVertexShader), false);
     NEngineInternal::GPRenderManager->SelectIndexBuffer(reinterpret_cast<CIndexBuffer*>(MistIndexBuffer), 0);
     NEngineInternal::GPRenderManager->SelectVertexBuffer(0, reinterpret_cast<CVertexBufferWin32*>(MistVertexBuffer));
     const CEngineLightingManager* lighting = NEngineInternal::GPLightingManager;

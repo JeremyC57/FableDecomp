@@ -1,4 +1,5 @@
 // CEngineWaterRenderer::RenderSeaNonReflectiveForeground(float time) -- bind the sea bump and environment maps, the sea blend states, shaders and foreground index buffer, upload the swell, bone, fresnel, bump and sea-colour constants, flush the shader state and render every non-reflective sea foreground patch mesh
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool) and ?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z (0x0098A7F0; Ego_r.pdb 0x00AE5F80 + FableWin.pdb 0x03032D30: matrix by const reference).
 // Leaf: RenderSeaNonReflectiveForeground
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B77E20, length 1488 bytes (+ int3 padding), `ret 4` (time unused).
@@ -69,10 +70,10 @@ class CPixelShader;
 
 class CShaderRenderManager {
 public:
-    void ApplyVertexShader(const CVertexShader* shader, long flags);   // 0x00988020
+    void ApplyVertexShader(const CVertexShader& shader, bool force);   // 0x00988020
     void ApplyPixelShader(const CPixelShader* shader);                 // 0x00988140
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
-    void SetBoneTransform(unsigned long index, const CMatrix3x4* matrix);                        // 0x0098A7F0
+    void SetBoneTransform(unsigned long index, const CMatrix3x4& matrix);                        // 0x0098A7F0
 
     void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
@@ -244,7 +245,7 @@ void CEngineWaterRenderer::RenderSeaNonReflectiveForeground(float time)
     NEngineInternal::GPRenderManager->SetTextureUVModeV(0, TEXTURE_UV_WRAP);
     NEngineInternal::GPRenderManager->SetTextureUVModeU(1, TEXTURE_UV_CLAMP);
     NEngineInternal::GPRenderManager->SetTextureUVModeV(1, TEXTURE_UV_CLAMP);
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(reinterpret_cast<const CVertexShader*>(SeaForegroundNonReflectiveVertexShader), 0);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*reinterpret_cast<const CVertexShader*>(SeaForegroundNonReflectiveVertexShader), false);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader(reinterpret_cast<const CPixelShader*>(SeaForegroundNonReflectivePixelShader));
     NEngineInternal::GPRenderManager->SelectIndexBuffer(reinterpret_cast<CIndexBuffer*>(ForegroundIndexBuffers), 0);
     if (EnableSwell)
@@ -252,10 +253,10 @@ void CEngineWaterRenderer::RenderSeaNonReflectiveForeground(float time)
     else
         NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(0, 0.0f, 0.0f, 0.0f, 0.0f);
     NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &BoneMatrix0);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &BoneMatrix1);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &BoneMatrix2);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &BoneMatrix3);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, BoneMatrix0);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, BoneMatrix1);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, BoneMatrix2);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, BoneMatrix3);
     float fresnel = EnableFresnel ? Clamp(FresnelFactor * 0.25f, 0.0f, 1.0f) : 0.0f;
     NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(5, C4DVector(fresnel, fresnel, fresnel, fresnel));
     float bump = WaterBumpFactor * BumpScale;

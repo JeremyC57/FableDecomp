@@ -69,9 +69,19 @@ public:
     template<class T,class Container,class Filter> __declspec(noinline) void GetAllLeafThings(const Filter& filter,Container& result) const {
         const std::list<CClass*>& things=PeekTypeList(T::StatGetType());
         for(std::list<CClass*>::const_iterator it=things.begin();it!=things.end();++it) {
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY_CASTARG
+            // NF127 nested opt-in (2026-11-20, row 0x00910A90 GetAllLeafThings<CThingObject,vector,CIsSeatWithSpaceOwnedBy>, the out-of-line
+            // instance): the thing held as CThing* and cast to T* at the filter and as the push_back argument (the landed row's
+            // ThingCast temporary), so the argument is homed just before the push_back (`mov [esp+18h],esi` at 0x00910AE2) and the
+            // result vector stays in edi. Same behaviour.
+            CThing* thing=static_cast<CThing*>(*it);
+            if(thing->IsIncludedInThingScans() && filter(*static_cast<T*>(thing)))
+                result.push_back(static_cast<T*>(thing));
+#else
             T* thing=static_cast<T*>(*it);
             if(thing->IsIncludedInThingScans() && filter(*thing))
                 result.push_back(thing);
+#endif
         }
     }
 #else

@@ -148,7 +148,9 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBase {
     C3DVector BedPos;                                  // +0x3c
     CRightHandedSet Rhset;                             // +0x48
     bool FindFreeBed(bool allowOwned);                 // 0x0092D1F0
-    bool FindFreeBanditBed();                          // 0x0092C8A0
+protected:
+    bool FindFreeBanditBed();                          // 0x0092C8A0 Ego_r.pdb / FableWin.pdb protected (NF127, q5018)
+public:
     void Update();
 };
 

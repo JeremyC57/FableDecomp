@@ -33059,9 +33059,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00988630'
-        Module = '_global'
-        Source = '00/98/CObservable_AddExclusiveObserver_00988630.cpp'
-        TestSource = '00/98/CObservable_AddExclusiveObserver_00988630_test.cpp'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetTextureTransformCount_00988630.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetTextureTransformCount_00988630_test.cpp'
         PassPattern = '00988630_TEST PASS'
     }
     [pscustomobject]@{
@@ -68748,9 +68748,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00988730'
-        Module = '_global'
-        Source = '00/98/E2_E2_00988730.cpp'
-        TestSource = '00/98/E2_E2_00988730_test.cpp'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetUVCompressionVertexShaderConstant_00988730.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetUVCompressionVertexShaderConstant_00988730_test.cpp'
         PassPattern = 'OK_00988730'
     }
     [pscustomobject]@{
@@ -209876,8 +209876,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00987e50'
         Module = 'CPixelShader'
-        Source = '00/98/CPixelShader_Assign_00987e50.cpp'
-        TestSource = '00/98/CPixelShader_Assign_00987e50_test.cpp'
+        Source = '00/98/CPixelShader_operator_00987e50.cpp'
+        TestSource = '00/98/CPixelShader_operator_00987e50_test.cpp'
         PassPattern = '00987e50_TEST PASS'
     }
     [pscustomobject]@{
@@ -221429,8 +221429,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0098a8e0'
         Module = 'CShaderRenderManager'
-        Source = '00/98/CShaderRenderManager_UpdateBoneMatrices_0098a8e0.cpp'
-        TestSource = '00/98/CShaderRenderManager_UpdateBoneMatrices_0098a8e0_test.cpp'
+        Source = '00/98/CShaderRenderManager_UpdateBoneTransform_0098a8e0.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateBoneTransform_0098a8e0_test.cpp'
         PassPattern = '0098a8e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -249009,9 +249009,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00946380'
-        Module = 'CAIStateGroup_SitForMeal'
-        Source = '00/94/CAIStateGroupSitForMeal_GetPCookingPot_00946380.cpp'
-        TestSource = '00/94/CAIStateGroupSitForMeal_GetPCookingPot_00946380_test.cpp'
+        Module = 'CAIStateGroup_PrepareMeal'
+        Source = '00/94/CAIStateGroupPrepareMeal_GetFreeCookingPot_00946380.cpp'
+        TestSource = '00/94/CAIStateGroupPrepareMeal_GetFreeCookingPot_00946380_test.cpp'
         PassPattern = '00946380_TEST PASS'
     }
     [pscustomobject]@{
@@ -314569,8 +314569,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0091a9b0'
         Module = 'CAIStateGroup_WorkBase<CAIStateGroupBase>'
-        Source = '00/91/CAIStateGroupWorkBaseCAIStateGroupBase_AcquireSeller_0091a9b0.cpp'
-        TestSource = '00/91/CAIStateGroupWorkBaseCAIStateGroupBase_AcquireSeller_0091a9b0_test.cpp'
+        Source = '00/91/CAIStateGroupWorkBase_AcquireSeller_0091a9b0.cpp'
+        TestSource = '00/91/CAIStateGroupWorkBase_AcquireSeller_0091a9b0_test.cpp'
         PassPattern = '0091a9b0_TEST PASS'
     }
     [pscustomobject]@{

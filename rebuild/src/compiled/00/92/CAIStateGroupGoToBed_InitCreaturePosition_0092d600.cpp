@@ -167,7 +167,9 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBaseW {
     long m_wakeTimeDelay;                       // +0x24 minutes past sleep end
     CThingWorld* GetPFrameWorld();              // 0x008FCFA0
     bool FindFreeBed(bool allowOwned);          // 0x0092D1F0
-    bool FindFreeBanditBed();                   // 0x0092C8A0
+protected:
+    bool FindFreeBanditBed();                   // 0x0092C8A0 Ego_r.pdb / FableWin.pdb protected (NF127, q5018)
+public:
     virtual void OnReplace();                   // 0x0092C740
     virtual bool InitCreaturePosition();
     // CAIStateGroup_GoToBed::IsInSleepTime @ 0x0092C4E0, inlined here

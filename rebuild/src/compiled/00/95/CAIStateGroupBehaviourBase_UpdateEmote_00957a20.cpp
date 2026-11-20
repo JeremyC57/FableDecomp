@@ -1,4 +1,5 @@
 // CAIStateGroupBehaviourBase::UpdateEmote() -- after the current speech plus a random wait, re-arm the emote timer and sometimes play ST_EMOTE
+// NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
 // Leaf: ?UpdateEmote@CAIStateGroupBehaviourBaseMethods@@QAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00957A20, length 339 bytes.
@@ -61,12 +62,12 @@ long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 Ego_r.pdb 0x00847E20 / FableWin.pdb 0x0288DA10 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (protected const; NF127 q5141)
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct CAIStateGroupBehaviourBaseMethods : public CAIStateGroupBase, CAIStateGroupBehaviourBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)Brain()->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();

@@ -1,0 +1,4 @@
+# recheck after landing nf127: 813 rows = gate referencing rows + renamed rows + 648 direct includers of CThingSearchTools.h / CAIStateGroupBase.h / CAIStateGroup_PrepareMeal.h
+good 811 bad 2 (both pre-existing; same DIFFER from HEAD headers, logs/differ_head_check.txt)
+00be6f70	00be6f70   DIFFER(198v2654) PASS   CLandscapeBackgroundPatch::Render
+00bf4570	00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground

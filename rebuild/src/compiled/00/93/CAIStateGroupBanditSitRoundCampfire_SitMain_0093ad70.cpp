@@ -1,4 +1,5 @@
 // CAIStateGroup_BanditSitRoundCampfire::SitMain() -- keep picking a random campfire activity (idle / drink / sing when seated at the fire, idle / eat / drink otherwise) until one reports false
+// NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093AD70, 260 bytes (`ret`). Ego_r.pdb: ?SitMain@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ.
 // Callees: CAIStateGroupBase::GetPWorldSeed 0x008FCFD0, GFFloatRandom(float range, unsigned long* seed) 0x004978A0
 // (`__fastcall`), Idle 0x0093A540, Eat 0x0093A5C0, Singsong 0x0093A7A0, Drink 0x0093A8C0 (this class); float pool
@@ -86,6 +87,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 Ego_r.pdb 0x00847E20 / FableWin.pdb 0x0288DA10 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (protected const; NF127 q5141)
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -150,7 +154,6 @@ struct CTCCampfireSitter {                      // the 0xc3 component
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 struct CAIStateGroupSeed : CAIStateGroupBase {
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
 };
 
 struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupSeed {

@@ -1,4 +1,5 @@
 // CEngineScreenEffectDisplacementRenderer::ShowDisplacementTexture() -- debug view (EnableDisplacementTextureView): draw the displacement texture over the back buffer inside a render-state capture block, with vertex and pixel shaders forced on and restored afterwards
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: ShowDisplacementTexture
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B88BC0, length 784 bytes (body 0x308 + int3 padding), plain `ret`.
 // Twin of ShowGlowTexture 0x00B61690 (same TU family): the same callees (EnableVertexShaders 0x00987FE0 / DisableVertexShaders
@@ -86,7 +87,7 @@ class CPixelShader;
 
 class CShaderRenderManager {
 public:
-    void ApplyVertexShader(CVertexShader* shader, bool force);                  // 0x00988020
+    void ApplyVertexShader(const CVertexShader& shader, bool force);                  // 0x00988020
     void ApplyPixelShader(CPixelShader* shader);                                // 0x00988140
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
@@ -190,7 +191,7 @@ void CEngineScreenEffectDisplacementRenderer_Methods::ShowDisplacementTexture()
     if (EnableDisplacementTextureView) {
         CRenderStateScopedCaptureBlock capture;
         CShaderEnableSaver shaders(true, true);
-        NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)ScreenCopyVertexShader, false);
+        NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)ScreenCopyVertexShader, false);
         NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)ScreenCopyPixelShader);
         NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
         NEngineInternal::GPRenderManager->SetZBufferEnable(false);

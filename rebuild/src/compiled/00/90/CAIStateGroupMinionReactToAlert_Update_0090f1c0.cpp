@@ -101,13 +101,15 @@ struct CAIStateGroupBaseT : CAIStateGroupBase {
 
 struct CAIStateGroup_MinionReactToAlert : CAIStateGroupBaseT {
     long m_lastAlertId;                         // +0x14
-    CMessageEvent* FindAlertEvent();            // 0x0090F110
+private:
+    const CMessageEvent* FindAlertEvent();      // 0x0090F110 Ego_r.pdb / FableWin.pdb private, const result (NF127, q5126)
+public:
     virtual void Update();
 };
 
 void CAIStateGroup_MinionReactToAlert::Update()
 {
-    CMessageEvent* event = FindAlertEvent();
+    const CMessageEvent* event = FindAlertEvent();
     if (event != 0) {
         m_lastAlertId = event->MessageID;
         CThing* subject = 0;

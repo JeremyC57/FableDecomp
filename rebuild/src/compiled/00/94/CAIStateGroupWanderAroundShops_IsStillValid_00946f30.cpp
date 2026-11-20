@@ -30,11 +30,15 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };
 
-struct CAIStateGroup_WorkBase : CAIStateGroupBase {
-    bool IsInWorkHours();                       // 0x0091A6F0
+// NF127 (2026-11-20, q4946): the row-local CAIStateGroup_WorkBase respelled in place as the class template it is (Ego_r.pdb 0x0093E1A0 +
+//   FableWin.pdb 0x02BA9910 ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ: protected const member of
+//   CAIStateGroup_WorkBase<CAIStateGroupBase>; engine/CAIStateGroup_WorkBase.h declares the same template); was ?IsInWorkHours@CAIStateGroup_WorkBase@@QAE_NXZ.
+template<class Base> struct CAIStateGroup_WorkBase : Base {
+protected:
+    bool IsInWorkHours() const;                 // 0x0091A6F0
 };
 
-struct CAIStateGroup_WanderAroundShops : CAIStateGroup_WorkBase {
+struct CAIStateGroup_WanderAroundShops : CAIStateGroup_WorkBase<CAIStateGroupBase> {
     CBaseIntelligentPointer Shop;               // +0x14 CIntelligentPointer<CThing>
     CBaseIntelligentPointer PrettyThing;        // +0x1c CIntelligentPointer<CThing>
     long NextFrameBuy;                          // +0x24

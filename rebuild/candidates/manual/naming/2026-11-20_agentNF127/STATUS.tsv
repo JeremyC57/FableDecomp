@@ -1,0 +1,108 @@
+address	change	grade	test	grades_used	entries	note
+0042e17c	not-a-binder	n/a	n/a	0	q4310	already binds EnableSound (probe)
+0045912f	not-a-binder	n/a	n/a	0	q4726	false REFS hit: the four bytes 0x00988630 at 0x004591FB.. lie inside data / misaligned bytes of the Transfer body (no instruction references the address; the probe binds nothing there)
+0049dcc0	not-a-binder	n/a	n/a	0	q4309	already binds EnableAtmos (probe)
+006286f0	not-a-binder	n/a	n/a	0	q4308 q4309	already binds EnableMusic / EnableAtmos (probe)
+0088f620	not-a-binder	n/a	n/a	0	q4309	already binds EnableAtmos (probe)
+008fcfd0	open	n/a	n/a	0	q5141	not reached in this pass (hand-back on context); probe: q5141
+008fd000	open	n/a	n/a	0	q4994 q5140	not reached in this pass (hand-back on context); probe: q4994 q5140
+00909da0	deferred	n/a	n/a	0	q5020	deferred with q5020 (self row 0x0090A700 held by NF123); binds the stand-in ??0CCombatAction_0090a700@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z; not touched
+0090aa10	not-a-binder	n/a	n/a	0	q3965	already binds the PDB remove instance (probe)
+0090ac50	binder respell + self leaf (namespaces)	RELOCATION_MATCH	PASS	1	q3965	binds the PDB remove instance at 0x0090B8E0; its own leaf moved to the PDB ?GetAcceptedConnectionsOnSocket@LSocketServer@LHNetworkLib@@QAEPAVLSocket@2@XZ (both PDBs; no landed row references 0x0090AC50)
+0090b8e0	self leaf respell (namespace)	RELOCATION_MATCH	PASS	1	q3965	list<LSocket*>::remove -> list<LHNetworkLib::LSocket*>::remove (FableWin.pdb 0x02C72000)
+0090f110	self leaf respell (in place)	RELOCATION_MATCH	PASS	1	q5126	FindAlertEvent QAEPAV -> AAEPBV
+0090f1b0	not-a-binder	n/a	n/a	0	q5126	already binds ?FindAlertEvent@...@@AAEPBVCMessageEvent@@XZ (probe)
+0090f1c0	binder respell (in place)	RELOCATION_MATCH	PASS	1	q5126	binds AAEPBV FindAlertEvent at 0x0090F110 (xref)
+009104d0	not-a-binder	n/a	n/a	0	q4992 q5140	already binds the PDB GetAllLeafThings<CThingObject,...,CIsSeatWithSpaceOwnedBy> at 0x00910A90 and PeekThingSearchTools IBE at 0x008FD000 (probe)
+009109b0	open	n/a	n/a	0	q4993	not reached in this pass (hand-back on context); probe: q4993
+00910a90	self rename (port onto engine/CThingSearchTools.h)	RELOCATION_MATCH	PASS	3	q4992 q4993	GetAllLeafThings on the CThingSearchToolsMethods / CUnprovenThingFilter_009109b0 stand-ins -> the Ego_r.pdb instance on CThingSearchTools with CIsSeatWithSpaceOwnedBy (QBE); binds ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCThingObject@@@Z at 0x009109B0 and the PDB ?PeekTypeList@CThingSearchTools@@IBE... at 0x0049C780 (was the CThingSearchToolsMethods stand-in); forms: header body DIFFER 126v136, +SCANINCLUSION_ISALIVE DIFFER 135v136, +overlay LEAFBODY_CASTARG RM
+00913f30	open	n/a	n/a	0	q5141 q4994 	not reached in this pass (hand-back on context); probe:  008fd000 ?PeekThingSearchTools@CAIStateGroupBase@@QAEPAVCThingSearchTools@@XZ
+00914f00	open	n/a	n/a	0	q5141 q5021 	not reached in this pass (hand-back on context); probe:  008fcfd0 ?GetPWorldSeed@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEPAKXZ ; 0097db70 ?AIAction_PerformActionAndWait@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEJPAVCCreatur
+0091a390	binder respell (in-place template)	RELOCATION_MATCH	PASS	3	q4946	local CAIStateGroup_WorkBase respelled as the template CAIStateGroup_WorkBase<CAIStateGroupBase>: binds ?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ (0x0091A6F0), and now the landed self spellings of HasSeller (QBE, 0x0091A630) and AcquireSeller (IAE, 0x0091A9B0) instead of the non-template stand-ins
+0091a6f0	open	n/a	n/a	0	q4946	not reached in this pass (hand-back on context); probe: q4946
+0091a9b0	self leaf respell (access)	RELOCATION_MATCH	PASS	2	q4946	AcquireSeller QAE -> IAE (protected; Ego_r.pdb 0x0093E470 + FableWin.pdb 0x02BC8D20); only REFS row 0x0091A390 ported in the same hand-back; claimed (not in rows.txt)
+0091b170	open	n/a	n/a	0	q4946 	not reached in this pass (hand-back on context); probe:  0091a6f0 ?helper_91a6f0@@YI_NPAUCAIStateGroup_HandyMan@@@Z
+0091e4b0	binder respell (stand-in decl moved onto the row-local CAIStateGroupBase; script work/seed.py)	RELOCATION_MATCH	PASS	1	q5141	binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ at 0x008FCFD0 (was ?GetPWorldSeed@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEPAKXZ)
+0091f0d0	open	n/a	n/a	0	q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAEJPAUCCreatureActionBase@N_0062e900@@_
+009284b0	open	n/a	n/a	0	q5141 	not reached in this pass (hand-back on context); probe:  008fcfd0 ?GetPWorldSeed@CAIStateGroup_BanditPlayDice_Methods@@QAEPAKXZ
+0092a0c0	open	n/a	n/a	0	q5141 	not reached in this pass (hand-back on context); probe:  008fcfd0 ?GetPWorldSeed@CAIStateGroupApprenticeHeroMethods@@QAEPAKXZ
+0092c8a0	self leaf respell (in place)	RELOCATION_MATCH	PASS	1	q5018	FindFreeBanditBed QAE -> IAE (protected: in the row-local model)
+0092d600	binder respell (in place)	RELOCATION_MATCH	PASS	1	q5018	binds IAE FindFreeBanditBed at 0x0092C8A0 (xref +0xA7)
+0092d6f0	not-a-binder	n/a	n/a	0	q5018	already binds ?FindFreeBanditBed@CAIStateGroup_GoToBed@@IAE_NXZ (probe; engine/CAIStateGroup_GoToBed.h)
+0092d7c0	binder respell (in place)	RELOCATION_MATCH	PASS	1	q5018	binds IAE FindFreeBanditBed at 0x0092C8A0 (xref +0x21); NOT in rows.txt and edited before it was claimed (rule slip): its nflocks owner read "released" (an earlier agent released it); taken over as NF127 at hand-back, handed-off count 0
+0092da20	not-a-binder	n/a	n/a	0	q5018	already binds ?FindFreeBanditBed@CAIStateGroup_GoToBed@@IAE_NXZ (probe)
+00938f70	binder respell (stand-in decl moved onto the row-local CAIStateGroupBase; script work/seed.py)	RELOCATION_MATCH	PASS	1	q5141	binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ at 0x008FCFD0 (was ?GetPWorldSeed@CAIStateGroup_MinionSitOnSeatBase@@QAEPAKXZ)
+0093a5c0	open	n/a	n/a	0	q5141 q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@CAIStateGroup_BanditSitRoundCampfire@@QAEJPAVCCreatureActio
+0093ad70	binder respell (stand-in decl moved onto the row-local CAIStateGroupBase; script work/seed.py)	RELOCATION_MATCH	PASS	1	q5141	binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ at 0x008FCFD0 (was ?GetPWorldSeed@CAIStateGroupSeed@@QAEPAKXZ)
+0093d800	open	n/a	n/a	0	q5030	not reached in this pass (hand-back on context); probe: q5030
+0093db10	open	n/a	n/a	0	q5030 	not reached in this pass (hand-back on context); probe:  0093d800 ?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyBase@@QAE_N_N@Z
+0093dc10	open	n/a	n/a	0	q5030 	not reached in this pass (hand-back on context); probe:  0093d800 ?IsStillRunnable@CMeleeNearbyBaseMethods@@QAE_N_N@Z
+009431e0	binder respell (stand-in decl moved onto the row-local CAIStateGroupBase; script work/seed.py)	RELOCATION_MATCH	PASS	1	q5141	binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ at 0x008FCFD0 (was ?GetPWorldSeed@CAIStateGroupBaseR@@QAEPAKXZ)
+00944e80	open	n/a	n/a	0	q4946 	not reached in this pass (hand-back on context); probe:  0091a6f0 ?IsInWorkHours@CAIStateGroupBase@@QAE_NXZ
+00946380	self rename (port onto shared headers)	RELOCATION_MATCH	PASS	1	q5032	CAIStateGroup_SitForMeal::GetPCookingPot -> CAIStateGroup_PrepareMeal::GetFreeCookingPot (ABE); local SitForMeal/CAIStateGroupBase/CAIBrain models removed; test unchanged (standalone copy)
+00946400	not-a-binder	n/a	n/a	0	q5032	already binds ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ (probe)
+00946f30	binder respell (in-place template)	RELOCATION_MATCH	PASS	1	q4946	binds the template IBE IsInWorkHours at 0x0091A6F0; NOT in rows.txt and edited before it was claimed (rule slip; claimed NF127 at hand-back, handed-off count 0)
+009473e0	open	n/a	n/a	0	q5141 q4946 	not reached in this pass (hand-back on context); probe:  0091a6f0 ?IsInWorkHours@CAIStateGroup_WanderAroundShops@@QAE_NXZ
+0094ef70	open	n/a	n/a	0	q5141 	not reached in this pass (hand-back on context); probe:  008fcfd0 ?GetObj@@YIPAUFollowPlayerProximitySource@@PAX@Z
+00950950	not-a-binder	n/a	n/a	0	q6399	self row already defines the settled spelling (compiled)
+00950bb0	not-a-binder	n/a	n/a	0	q6400	self row already defines the settled spelling (compiled)
+00951b20	open	n/a	n/a	0	q6399 q6400 q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@ABVCCreatureActi
+00952890	not-a-binder	n/a	n/a	0	q6399 q6400 q5021	already binds the PDB WaitForAnimLoop / SetHeadTurning / AIAction_PerformActionAndWait (probe)
+009551a0	open	n/a	n/a	0	q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@MazeRangedMethods@@QAEJPAUCCreatureActionBaseRetail@@_N@Z
+00956380	open	n/a	n/a	0	q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE?AW4
+00956fe0	open	n/a	n/a	0	q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@CAIStateGroupBriarRoseWillUseMethods@@QAEJPAUCCreatureActio
+00957a20	binder respell (stand-in decl moved onto the row-local CAIStateGroupBase; script work/seed.py)	RELOCATION_MATCH	PASS	1	q5141 q5021	binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ at 0x008FCFD0 (was ?GetPWorldSeed@CAIStateGroupBehaviourBaseMethods@@QAEPAKXZ); its q5021 binding (AIAction_PerformActionAndWait on CAIStateGroupBehaviourBaseMethods) is unchanged: a resume starts from rows/00957a20.cpp
+0095b020	binder respell (stand-in decl moved onto the row-local CAIStateGroupBase; script work/seed.py)	RELOCATION_MATCH	PASS	1	q5141	binds ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ at 0x008FCFD0 (was ?GetPWorldSeed@CAIStateGroupBase@@QAEAAKXZ)
+00964360	open	n/a	n/a	0	q4994 	not reached in this pass (hand-back on context); probe:  008fd000 ?PeekThingSearchTools@CAIStateGroup_StealStealableItem_Methods@@QAEPAVCThingSearchTools@@X
+00964ca0	open	n/a	n/a	0	q5141 q4994 	not reached in this pass (hand-back on context); probe:  008fd000 ?PeekThingSearchTools@CAIStateGroup_StealStealableItem@@QAEPAVCThingSearchTools@@XZ
+00967a20	open	n/a	n/a	0	q5021 	not reached in this pass (hand-back on context); probe:  0097db70 ?AIAction_PerformActionAndWait@CAIStateGroup_TavernServer@@QAEJPAVCCreatureActionBase@@_N@
+00969fb0	not-a-binder	n/a	n/a	0	q5142	self row already defines the settled spelling (compiled)
+0096c9a0	open	n/a	n/a	0	q5141 q5021 	not reached in this pass (hand-back on context); probe:  008fcfd0 ?GetPWorldSeed@CAIStateGroupEatAtTableMethods@@QAEPAKXZ ; 0097db70 ?AIAction_PerformActionAndWait@CAIStateGroupEatAtTableMethods@@QAEJPAVCCreatureActionBase@
+00977b10	open	n/a	n/a	0	q4994 	not reached in this pass (hand-back on context); probe:  008fd000 ?PeekThingSearchTools@CAIStateGroup_Guildmaster@@QBEABVCThingSearchTools@@XZ
+00978fd0	open	n/a	n/a	0	q4994 	not reached in this pass (hand-back on context); probe:  008fd000 ?PeekThingSearchTools@AdvanceInCoverMethods@@QAEPAUCThingSearchToolsRetail@@XZ
+0097db70	not-a-binder	n/a	n/a	0	q5021	self row already defines the claim ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z (compiled)
+0097fea0	binder respell (overlay opt-in PEEK_PROTECTED)	RELOCATION_MATCH	PASS	1	q4994 q5140	binds ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ at 0x008FD000 (was QBE: the header PEEK block inherited the public label after FINDAGUARD_YELL)
+009863e0	open	n/a	n/a	0	q4994 	not reached in this pass (hand-back on context); probe:  008fd000 ?PeekThingSearchTools@CAIStateGroupBaseView@@QAEPAUCThingSearchToolsView@@XZ
+00987e50	self rename (in place)	MATCH	PASS	1	q4601	CPixelShader::Assign -> ??4CPixelShader@@QAEXABV0@@Z (FableWin.pdb 0x02C92D00 + the void-returning body); no landed row references 0x00987E50
+00988020	open	n/a	n/a	0	q4540	self row defines the Codex view stand-in ?ApplyVertexShader@CShaderRenderManagerApplyVertexShaderView@@...; q4540 asked for the binders only (done); porting this self row onto engine/CShaderRenderManager.h is a follow-up (NOTES)
+00988630	self rename (re-authored on engine/CShaderRenderManager.h)	MATCH	PASS	1	q4726	invented __fastcall AddExclusiveObserver(S*) -> CShaderRenderManager::SetTextureTransformCount(long); test unchanged (standalone)
+00988730	self rename (re-authored on engine/CShaderRenderManager.h)	MATCH	PASS	1	q4728	C00988730::M stand-in -> CShaderRenderManager::SetUVCompressionVertexShaderConstant(float x4); test unchanged
+00989a60	self leaf respell (in place)	MATCH	PASS	1	q4695	SetUserVertexShaderConstant JPBV -> KABV
+0098a7f0	self leaf respell (in place)	MATCH	PASS	1	q4544	SetBoneTransform KPBV -> KABV
+0098a8e0	self rename (in place)	MATCH	PASS	1	q4545	UpdateBoneMatrices (QAE) -> UpdateBoneTransform (AAE)
+0098b5e0	open	n/a	n/a	0	q4650	not reached in this pass (hand-back on context); probe: q4650
+009915e0	not-a-binder	n/a	n/a	0	q4308	self row already defines the settled spelling (compiled)
+00991600	not-a-binder	n/a	n/a	0	q4310	self row already defines the settled spelling (compiled)
+00991620	not-a-binder	n/a	n/a	0	q4309	self row already defines the settled spelling (compiled)
+00993e30	not-a-binder	n/a	n/a	0	q5063	self row already defines ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z (compiled)
+00994700	not-a-binder	n/a	n/a	0	q6180	self row already defines the claim ??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z (compiled)
+00994780	not-a-binder	n/a	n/a	0	q6181	self row already defines the claim ??1CFileDataInputStream@@UAE@XZ (compiled)
+00994930	open	n/a	n/a	0	q6182	not reached in this pass (hand-back on context); probe: q6182
+009a5a50	binder port (stand-in -> engine/CASoundManager.h; test rewritten)	RELOCATION_MATCH	PASS	1	q4308	SoundInterface stand-in removed; binds ?EnableMusic@CASoundManager@@QAEX_N@Z at 0x009915E0 (2 calls); test rewritten on the header (Sound : CASoundManager), same checks, PassPattern 009a5a50_TEST PASS kept (2 test link fixes: base ctor/dtor stubs)
+009c8700	open	n/a	n/a	0	q6182 	not reached in this pass (hand-back on context); probe:  00994930 ??0CMemoryDataInputStream@@QAE@PBXJ@Z
+009d0380	open	n/a	n/a	0	q6180 q6181 	not reached in this pass (hand-back on context); probe:  00994700 ??0CFileDataInputStream@@QAE@PAVCAFile@@J@Z ; 00994780 ??1CFileDataInputStream@@QAE@XZ
+009d4c30	open	n/a	n/a	0	q6180 q6181 	not reached in this pass (hand-back on context); probe:  00994700 ??0CFileDataInputStream@@QAE@PAVCDiskFileWin32@@K@Z ; 00994780 ??1CFileDataInputStream@@QAE@XZ
+009e1280	binder respell (in place)	RELOCATION_MATCH	PASS	1	q4545	binds UpdateBoneTransform AAE at 0x0098A8E0
+009ff590	open	n/a	n/a	0	q6182 	not reached in this pass (hand-back on context); probe:  00994930 ??0MemoryInput@@QAE@PBXK@Z
+00b17f70	not-a-binder	n/a	n/a	0	q5063	already binds WriteEBOOL (probe)
+00b52160	binder respell (in place)	RELOCATION_MATCH	PASS	1	q4695	binds SetUserVertexShaderConstant KABV at 0x00989A60 (2 calls)
+00b54310	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00b5e700	binder respell (in place, partial)	RELOCATION_MATCH	PASS	1	q4540 q4650	ApplyVertexShader now the PDB spelling (q4540); SetVertexShaderConstantLayout still on the CShaderEnableState stand-in over the made-up g_ShaderRenderManager (0x013BC470) data global: q4650 needs a port onto engine/CShaderRenderManager.h + CScopedVertexShaderConstantLayout.h (the NF52 0x00BAD2E0 form), not done
+00b61690	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00b63010	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00b63260	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00b6e3e0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00b75ca0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540 q4544	binds the PDB ApplyVertexShader (0x00988020) and SetBoneTransform KABV (0x0098A7F0)
+00b76bc0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540 q4544	binds the PDB ApplyVertexShader (0x00988020) and SetBoneTransform KABV (0x0098A7F0)
+00b77e20	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540 q4544	binds the PDB ApplyVertexShader (0x00988020) and SetBoneTransform KABV (0x0098A7F0)
+00b7eec0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4544	binds SetBoneTransform KABV at 0x0098A7F0 (4 calls)
+00b7f0f0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4544	binds SetBoneTransform KABV at 0x0098A7F0 (4 calls)
+00b7f3b0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4544	binds SetBoneTransform KABV at 0x0098A7F0 (4 calls)
+00b7f600	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4544	binds SetBoneTransform KABV at 0x0098A7F0 (4 calls)
+00b88bc0	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00bb8090	binder respell (in place, script work/shader.py)	RELOCATION_MATCH	PASS	1	q4540	binds ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z at 0x00988020
+00bdc180	open	n/a	n/a	0	q6182 	not reached in this pass (hand-back on context); probe:  00994930 ??0CMemoryDataInputStream@@QAE@PAE@Z
+00bde860	open	n/a	n/a	0	q6182 	not reached in this pass (hand-back on context); probe:  00994930 ??0CMemoryDataInputStream@@QAE@PBEJ@Z
+00be6f70	not-a-binder	n/a	n/a	0	q4540	old no-Leaf row on candidates/landscape_background_patch_render_compiled.h (DIFFER 198v2654): binds no spelling of 0x00988020; left alone
+00bf4570	not-a-binder	n/a	n/a	0	q4540 q4695	old no-Leaf row on candidates/landscape_patch_render_foreground_compiled.h (DIFFER 316v4431 by design): calls the made-up ApplyLandscapeForegroundShader* helpers, binds no spelling of 0x00988020 / 0x00989A60; left alone (NF44 Round-1 lesson)
+00bf8030	open	n/a	n/a	0	q6182 	not reached in this pass (hand-back on context); probe:  00994930 ??0CMemoryDataInputStream@@QAE@PBDJ@Z

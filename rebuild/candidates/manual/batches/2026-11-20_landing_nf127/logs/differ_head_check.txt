@@ -1,0 +1,3 @@
+# 0x00BE6F70 / 0x00BF4570 regraded with HEAD headers (pre/include_before overlay) and their unchanged sources
+00be6f70   DIFFER(198v2654) PASS   CLandscapeBackgroundPatch::Render
+00bf4570   DIFFER(316v4431) PASS   CEngineLandscapePatch::RenderForeground

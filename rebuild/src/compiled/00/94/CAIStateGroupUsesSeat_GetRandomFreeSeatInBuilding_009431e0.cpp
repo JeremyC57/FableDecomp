@@ -1,4 +1,5 @@
 // CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding(CThing* building) -- collect the free seats of the
+// NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
 // Leaf: ?GetRandomFreeSeatInBuilding@CAIStateGroup_UsesSeat@@QAEPAVCThing@@PAV2@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- landing retry: out-parameter GetInterface in the if (component lands in eax); byte twin of 0x00938BF0
@@ -30,6 +31,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 Ego_r.pdb 0x00847E20 / FableWin.pdb 0x0288DA10 ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (protected const; NF127 q5141)
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -100,7 +104,6 @@ struct CTCBuildingSeats {                       // interface 0x21
 };
 
 struct CAIStateGroupBaseR : CAIStateGroupBase {
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
     unsigned long GetRandom(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();

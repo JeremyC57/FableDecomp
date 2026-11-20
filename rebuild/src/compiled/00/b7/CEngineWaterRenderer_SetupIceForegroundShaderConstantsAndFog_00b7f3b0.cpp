@@ -1,4 +1,5 @@
 // CEngineWaterRenderer::SetupIceForegroundShaderConstantsAndFog() -- set up the ice foreground shader state: user constants 0 (zero), 1 (soft-edge span) and 3 (half the bump-matrix factor when bump mapping is on), the four foreground bone matrices, pixel constant 5 = the clamped fresnel factor; then the inlined CShaderRenderManager::PrepareForRender(0x614)
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z (0x0098A7F0; Ego_r.pdb 0x00AE5F80 + FableWin.pdb 0x03032D30: matrix by const reference).
 // Leaf: SetupIceForegroundShaderConstantsAndFog
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B7F3B0, length 592 bytes (+ int3 padding), plain `ret`.
 // Label correction: catalogued "CEngineWeatherRenderer::RenderSnowBox" (propagated; the real RenderSnowBox is the landed
@@ -52,7 +53,7 @@ class CVertexShaderConstantLayout { public:
 class CShaderRenderManager {
 public:
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
-    void SetBoneTransform(unsigned long index, const CMatrix3x4* matrix);                        // 0x0098A7F0
+    void SetBoneTransform(unsigned long index, const CMatrix3x4& matrix);                        // 0x0098A7F0
     void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
         *(PSConstTable.First + index) = value;
@@ -192,10 +193,10 @@ void CEngineWaterRenderer::SetupIceForegroundShaderConstantsAndFog()
         factor = Settings.BumpMatFactor * 0.5f;
     NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, factor, factor, factor, factor);
     NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &Settings.OtherShaderVars);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, Settings.OtherShaderVars);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, Settings.ShoreLookupMaskMatrix);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, Settings.ShoreLookupMaskMatrixForBounds);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, Settings.ShoreLookupMaskMatrix2);
     float fresnel;
     if (Settings.EnableFresnel)
         fresnel = Clamp(Settings.FresnelFactor * 0.25f, 0.0f, 1.0f);

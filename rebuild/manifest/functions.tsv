@@ -33067,13 +33067,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00988490	SetProjectionTransform	CShaderRenderManager	__thiscall	void	17	CShaderRenderManager *,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float	1	yes	accepted									
 00988540	SetProjectionTransform	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CMatrix4x4 *	1	yes	accepted									
 00988600	SetFogColour	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CRGBFloatColour *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CShaderRenderManager_SetFogColour_00988600.cpp
-00988630	SetMember_dword0x38c_00988630	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CObservable_AddExclusiveObserver_00988630.cpp
+00988630	SetTextureTransformCount	CShaderRenderManager	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CObservable_AddExclusiveObserver_00988630.cpp
 00988640	ResetLight	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CShaderRenderManager_ResetLight_00988640.cpp
 00988680	SetAmbientColour	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CMatrix3x4 *	1	yes	accepted									
 009886c0	SetFogColour	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CRGBFloatColour *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CShaderRenderManager_SetFogColour_009886c0.cpp
 009886f0	SetSoftwareVertexShaderEnable	CShaderRenderManager	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\CNavigator_EnableNavigator_009886f0.cpp
 00988700	SetSoftwareFixedFunctionEnable	CShaderRenderManager	__thiscall	void	2	CTCPhysicsNavigator *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\EnableNavigator_EnableNavigator_00988700.cpp
-00988730	Nop_ret16_00988730	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\E2_E2_00988730.cpp
+00988730	SetUVCompressionVertexShaderConstant	CShaderRenderManager	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\98\E2_E2_00988730.cpp
 009887b0	SetVSMatrixConstantTransposed	CShaderRenderManager	__thiscall	void	4	CShaderRenderManager *,long,CMatrix3x4 *,ulong	1	yes	accepted									
 00988840	SetVSMatrixConstantTransposed	CShaderRenderManager	__thiscall	void	4	CShaderRenderManager *,long,CMatrix4x4 *,ulong	1	yes	accepted									
 00988990	SetD3DMatrix	CShaderRenderManager	__thiscall	void	3	CShaderRenderManager *,_D3DMATRIX *,CMatrix3x4 *	1	yes	accepted									

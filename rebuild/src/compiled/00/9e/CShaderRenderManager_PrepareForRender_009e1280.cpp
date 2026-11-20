@@ -32,7 +32,9 @@ class CShaderRenderManager { public:
     bool          WorldTransformIsIdentity;        // +0x1e8
     unsigned char _pad1e9[0x1ef];
     unsigned long DirtyFlags;                      // +0x3d8
-    void UpdateFlag20State();                      // 0x0098A8E0 (manifest label C3DMeshFileXUVTangentChunk::WriteToFile, propagated)
+private:
+    void UpdateBoneTransform();                    // 0x0098A8E0 Ego_r.pdb / FableWin.pdb ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ (private; NF127 q4545, was UpdateFlag20State)
+public:
     void UpdateWorldSpaceTextureTransform();       // 0x009894B0
 private:
     void UpdateObjectSpaceTextureTransform();      // 0x00989230
@@ -68,7 +70,7 @@ void CShaderRenderManager::PrepareForRender(unsigned long renderFlags)
     if (DirtyFlags & 2)
         UpdatePixelShaderConstants();
     if ((renderFlags & 0x400) && (DirtyFlags & 0x20))
-        UpdateFlag20State();
+        UpdateBoneTransform();
     if (renderFlags & 0x40) {
         if (DirtyFlags & 0x1000)
             UpdateWorldSpaceTextureTransform();

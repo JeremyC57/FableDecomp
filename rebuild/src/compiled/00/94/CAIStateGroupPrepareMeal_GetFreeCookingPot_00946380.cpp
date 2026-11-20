@@ -1,5 +1,10 @@
-// CAIStateGroup_SitForMeal::GetPCookingPot() -- find the cooking pot among the things of the creature's home
-// Leaf: ?GetPCookingPot@CAIStateGroup_SitForMeal@@ABEPAVCThing@@XZ
+// CAIStateGroup_PrepareMeal::GetFreeCookingPot() -- find the cooking pot among the things of the creature's home
+// Leaf: ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ
+// NF127 (2026-11-20, q5032): Ego_r.pdb 0x0096A3A0 + FableWin.pdb 0x02BB3570 ?GetFreeCookingPot@CAIStateGroup_PrepareMeal@@ABEPAVCThing@@XZ
+//   (private const); its only caller CAIStateGroup_PrepareMeal::IsRunnable 0x00946400 binds it. Moved off the local
+//   CAIStateGroup_SitForMeal / CAIStateGroupBase / CAIBrain models onto engine/CAIStateGroup_PrepareMeal.h (retail branch, opt-in
+//   FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL_GETFREECOOKINGPOT), engine/CAIStateGroupBase.h and engine/CAIBrain.h (GetCreature).
+//   Was CAIStateGroup_SitForMeal::GetPCookingPot.
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946380, length 116 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the home at CThingAICreature+0x168, then the found
@@ -39,10 +44,6 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     return false;
 }
 
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
 
 // The building's contents component (interface 0x21) keeps a VC6-era Dinkumware std::list of
 // CIntelligentPointer<CThing> at +0x08 ({allocator byte, head, size}: head at +0x0c, node {next, prev, value}).
@@ -84,35 +85,21 @@ struct CIsCookingPotForMeal {                   // empty predicate with a user c
 SThingListIterator __fastcall FindIfCookingPotForMeal(SThingListIterator first, SThingListIterator last,
                                                       CIsCookingPotForMeal pred);   // 0x009465E0
 
-struct CAIBrainSitForMeal {
-    unsigned char _pad[0x18];
-    CThingAICreature* PCreature;                // +0x18
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL
+#define FABLE_RETAIL_CAISTATEGROUP_PREPAREMEAL_GETFREECOOKINGPOT
+#include "fable_string.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_PrepareMeal.h"
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrainSitForMeal* PBrain;                 // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    bool Terminated;                            // +0x10
-    unsigned char Priority;                     // +0x11
-    bool Enabled;                               // +0x12
-};
-
-struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
-    unsigned char _base2[0x20];                 // +0x14
-    CIntelligentPointer<CThing> PPot;               // +0x34 CIntelligentPointer<CThing>
-    long ActionPointIndex;                      // +0x3c
-    bool HoldingBowl;                           // +0x40
-    long DayLastAte;                            // +0x44
-private:
-    CThing* GetPCookingPot() const;
-public:
-};
-
-CThing* CAIStateGroup_SitForMeal::GetPCookingPot() const
+CThing* CAIStateGroup_PrepareMeal::GetFreeCookingPot() const
 {
-    CThing* home = PBrain->PCreature->GetPHome();
+    CThing* home = GetCreature().GetPHome();
     CTCBuildingContents* contents;
     if (home != 0 && home->GetTC(TCI_THING_OWNER, &contents)) {
         SThingListIterator it = FindIfCookingPotForMeal(contents->Things.begin(), contents->Things.end(),

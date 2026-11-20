@@ -1,4 +1,5 @@
 // CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog() -- set up the background water shader state: the four background bone matrices, then (high-end water) user constant 3 from the bump factor or (low-end) pixel constants 5/6 from two static colours, the second modulated by the lighting theme colour; finally the inlined CShaderRenderManager::PrepareForRender(0x604)
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?SetBoneTransform@CShaderRenderManager@@QAEXKABVCMatrix3x4@@@Z (0x0098A7F0; Ego_r.pdb 0x00AE5F80 + FableWin.pdb 0x03032D30: matrix by const reference).
 // Leaf: SetupBackgroundShaderConstantsAndFog
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B7F0F0, length 704 bytes (+ int3 padding), plain `ret`.
 // Label correction: catalogued "CEngineWaterRenderer::RenderBackground", but the PDB RenderBackground takes a float (`ret 4`);
@@ -61,7 +62,7 @@ class CVertexShaderConstantLayout { public:
 class CShaderRenderManager {
 public:
     void SetUserVertexShaderConstant(unsigned long index, float x, float y, float z, float w);   // 0x00989B00
-    void SetBoneTransform(unsigned long index, const CMatrix3x4* matrix);                        // 0x0098A7F0
+    void SetBoneTransform(unsigned long index, const CMatrix3x4& matrix);                        // 0x0098A7F0
     void SetPixelShaderConstant(unsigned long index, const C4DVector& value)
     {
         *(PSConstTable.First + index) = value;
@@ -183,10 +184,10 @@ class CEngineWaterRenderer { public:
 void CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog()
 {
     NEngineInternal::GPShaderRenderManager->BoneMatrices.resize(4, CPreTransposedBoneMatrix());
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, &Settings.OtherBackgroundShaderVars);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, &Settings.ShoreLookupMaskMatrix);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, &Settings.ShoreLookupMaskMatrixForBounds);
-    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, &Settings.ShoreLookupMaskMatrix2);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(0, Settings.OtherBackgroundShaderVars);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(1, Settings.ShoreLookupMaskMatrix);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(2, Settings.ShoreLookupMaskMatrixForBounds);
+    NEngineInternal::GPShaderRenderManager->SetBoneTransform(3, Settings.ShoreLookupMaskMatrix2);
     if (HighendWaterEnabled) {
         float factor = WaterBumpFactor * Settings.BumpMatFactor;
         NEngineInternal::GPShaderRenderManager->SetUserVertexShaderConstant(3, factor, 0.0f, factor * -0.5f, 1.0f);

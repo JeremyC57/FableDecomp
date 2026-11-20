@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerParticleDecalGroup::RenderMeshDecalStencilClear(const C3DVector& minimum, const C3DVector& maximum) -- apply the stencil-clear vertex and pixel shaders, set nine tracked render states (stencil +0x2BC4/+0x2BB0/+0x2B9C from 0x01396F3C, +0x2BD8 from 0x01396E34, +0x2840/+0x2868/+0x28B8/+0x28CC to 0, +0x2818 from 0x01396F9C), build the eight corners of the box and draw them as twelve indexed triangles after the shader manager's PrepareForRender(0)
+// NF127 (2026-11-20): the row-local CShaderRenderManager declarations respelled in place to ?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z (0x00988020; Ego_r.pdb 0x00AE4680 + FableWin.pdb 0x03031510: const CVertexShader&, bool).
 // Leaf: RenderMeshDecalStencilClear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB8090, length 1408 bytes, `ret 8`.
 // Callees: CShaderRenderManager::ApplyVertexShader @ 0x00988020, ApplyPixelShader @ 0x00988140, the inlined
@@ -43,7 +44,7 @@ class CVertexShaderConstantLayout { public:
 
 class CShaderRenderManager {
 public:
-    void ApplyVertexShader(CVertexShader* shader, bool force);   // 0x00988020
+    void ApplyVertexShader(const CVertexShader& shader, bool force);   // 0x00988020
     void ApplyPixelShader(CPixelShader* shader);                 // 0x00988140
 
     FABLE_FORCEINLINE void PrepareForRender(unsigned long flags)
@@ -191,7 +192,7 @@ struct CEnginePrimitiveManagerParticleDecalGroupMethods : CEnginePrimitiveManage
 void CEnginePrimitiveManagerParticleDecalGroupMethods::RenderMeshDecalStencilClear(const C3DVector& minimum,
                                                                                 const C3DVector& maximum)
 {
-    NEngineInternal::GPShaderRenderManager->ApplyVertexShader((CVertexShader*)MeshDecalStencilClearVertexShader, false);
+    NEngineInternal::GPShaderRenderManager->ApplyVertexShader(*(CVertexShader*)MeshDecalStencilClearVertexShader, false);
     NEngineInternal::GPShaderRenderManager->ApplyPixelShader((CPixelShader*)MeshDecalStencilClearPixelShader);
     SetState(g_pRenderManagerCore->m_state2bc4, g_renderStateDefault_01396f3c, g_pRenderManagerCore);
     SetState(g_pRenderManagerCore->m_state2bb0, g_renderStateDefault_01396f3c, g_pRenderManagerCore);

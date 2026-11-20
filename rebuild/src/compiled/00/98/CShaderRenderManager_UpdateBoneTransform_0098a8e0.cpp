@@ -1,6 +1,8 @@
 // CShaderRenderManager::UpdateBoneMatrices() -- uploads the whole pre-transposed bone-matrix array as vertex-shader constants (three float4 registers per bone) at the current layout's bone range, then clears the bone-dirty flag (0x20)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098A8E0, length 139 bytes.
-// Leaf: UpdateBoneMatrices
+// Leaf: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ
+// NF127 (2026-11-20, q4545): Ego_r.pdb 0x00AE6F80 + FableWin.pdb 0x03038790 ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ (private; the
+//   flag-0x20 bone upload PrepareForRender 0x009E1280 calls); respelled in place; was the descriptive UpdateBoneMatrices (QAE).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
 // Label: the manifest's "C3DMeshFileXUVTangentChunk::WriteToFile" is a propagated label; every caller is a
 // CShaderRenderManager render path (PrepareForRender 0x009E12FA, the water renderers 0x00B75953..) that tests
@@ -47,10 +49,11 @@ class CShaderRenderManager { public:
     unsigned long                    UpdateFlags;               // +0x3d8 (PDB +0x3f8)
     CArray<CPreTransposedBoneMatrix> BoneMatrices;              // +0x3dc (PDB +0x3fc)
 
-    void UpdateBoneMatrices();
+private:
+    void UpdateBoneTransform();
 };
 
-void CShaderRenderManager::UpdateBoneMatrices()
+void CShaderRenderManager::UpdateBoneTransform()
 {
     if (BoneMatrices.Size() != 0) {
         IDirect3DDevice9* device = D3DDevice;

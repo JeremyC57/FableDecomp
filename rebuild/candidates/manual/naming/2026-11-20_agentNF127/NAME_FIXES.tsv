@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0093D3A0	?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@ABE_NXZ	Ego_r.pdb 0x00961030 + FableWin.pdb 0x02B8EF80 (private const); found with q5030 (0x0093D800 calls it); not applied (the q5030 family moves whole)	?IsEnemyRunningAway@CAIStateGroup_MeleeCombatNearbyBase@@QAE_NXZ (landed self row 0x0093D3A0 and its caller 0x0093D800)
+0x0093DB10	?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z	Ego_r.pdb 0x00961A40 + FableWin.pdb 0x02B90F10 (protected virtual const); vtable slot only, no landed caller; not applied	?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@QAE_N_N@Z (landed self row)
+0x0093DC10	?IsStillRunnable@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MBE_N_N@Z	Ego_r.pdb 0x00961B60 + FableWin.pdb 0x02B92290 (protected virtual const); not applied	?IsStillRunnable@CMeleeCloseMethods@@QAE_N_N@Z (landed self row stand-in)
+0x0091B170	?IsRunnable@CAIStateGroup_HandyMan@@UAE_NXZ	Ego_r.pdb 0x0093EA50 + FableWin.pdb 0x02BCB360; found with q4946; not applied	?IsRunnable@CAIStateGroup_HandyMan_Methods@@QAE_NXZ (landed self row stand-in)
+0x0091B010	?AcquireWorkSpot@CAIStateGroup_HandyMan@@AAE_NXZ	Ego_r.pdb 0x0093E8C0 + FableWin.pdb 0x02BCB790 (private); found with q4946; not applied	?tail_91b010@@YI_NPAUCAIStateGroup_HandyMan@@@Z (bound by 0x0091B170)

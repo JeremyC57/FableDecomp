@@ -4689,7 +4689,7 @@ address	name	length	bytes
 007e7410	CScriptGameResourceObjectScriptedThingBase::ClearAllActionsIncludingLoopingAnimations	13	8b490885c974058b01ff6058c3
 007e7430	CScriptGameResourceObjectScriptedThingBase::DropGenericBox	13	8b490885c974058b01ff6060c3
 007e7440	CScriptGameResourceObjectScriptedThingBase::UnsheatheWeapons	13	8b490885c974058b01ff6064c3
-00988630	_global::SetMember_dword0x38c_00988630	13	8b44240489818c030000c20400
+00988630	CShaderRenderManager::SetTextureTransformCount	13	8b44240489818c030000c20400
 009fd0f0	CGraphicDataBank::SetUnloadFrameDelay	13	8b442404898168020000c20400
 00a0d330	_global::SetMember_dword0xac_00a0d330	13	8b4424048981ac000000c20400
 00a23b50	CMeshDataBank::SetTextureBank	13	8b4424048981d4030000c20400
@@ -9787,7 +9787,7 @@ address	name	length	bytes
 007c3000	_global::Nop_ret0_007c3000	1	c3
 007eab90	CTCActionUseBase::OnActionUse	3	c20400
 008139b0	_global::Nop_ret12_008139b0	3	c20c00
-00988730	_global::Nop_ret16_00988730	3	c21000
+00988730	CShaderRenderManager::SetUVCompressionVertexShaderConstant	3	c21000
 0098e1b0	_global::Nop_ret0_0098e1b0	1	c3
 009ac9e0	_global::Nop_ret4_009ac9e0	3	c20400
 009cba80	_global::Nop_ret4_009cba80	3	c20400

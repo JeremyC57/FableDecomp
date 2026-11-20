@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkBase<CAIStateGroupBase>::AcquireSeller() -- collect the creatures with a shop-keeper component (TC 0x90) within 20 units of our creature, then keep drawing a random one off the list: a candidate already in a creature interaction is skipped, otherwise our creature leaves its current interaction, starts a new type-8 interaction and the seller joins it
-// Leaf: ?AcquireSeller@
+// Leaf: ?AcquireSeller@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091A9B0, 471 bytes (+ int3 padding), plain `ret`.
 // Ego_r.pdb: ?AcquireSeller@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IAEXXZ.
@@ -172,8 +172,8 @@ public:
 };
 
 template <class Base> class CAIStateGroup_WorkBase : public Base {
-public:
-    void AcquireSeller();
+protected:
+    void AcquireSeller();   // NF127 (2026-11-20, q4946 family): protected as in Ego_r.pdb 0x0093E470 / FableWin.pdb 0x02BC8D20 (was public QAE)
 };
 
 template <class Base> void CAIStateGroup_WorkBase<Base>::AcquireSeller()

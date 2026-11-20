@@ -278,8 +278,17 @@ protected:
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
     // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and
     // ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ (0x008FD000), protected, out of line in retail.
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK_PROTECTED
+    // NF127 nested opt-in (2026-11-20, q5140, row 0x0097FEA0): this block keeps the access of the label before it, which is public
+    // after the FINDAGUARD_YELL block, so such rows bound QBE spellings; Ego_r + FableWin spell both protected (IBE). Access labels
+    // only (the label after the block restores public, the access the block had in those rows).
+protected:
+#endif
     const CWorld& PeekWorld() const;                                     // 0x008FCFA0
     const CThingSearchTools& PeekThingSearchTools() const;               // 0x008FD000
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK_PROTECTED
+public:
+#endif
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEKDEFINITIONMANAGER
     // Chunk 767 (row 0x008FCFB0): Ego_r.pdb ?PeekDefinitionManager@CAIStateGroupBase@@IBEABVCGameDefinitionManager@@XZ (donor 0x00847E00,

@@ -1,5 +1,7 @@
 // CAIStateGroup_MinionReactToAlert::FindAlertEvent() -- the most recent alert message (type 12) addressed to this
-// Leaf: ?FindAlertEvent@CAIStateGroup_MinionReactToAlert@@QAEPAVCMessageEvent@@XZ
+// Leaf: ?FindAlertEvent@CAIStateGroup_MinionReactToAlert@@AAEPBVCMessageEvent@@XZ
+// NF127 (2026-11-20, q5126): Ego_r.pdb 0x00933F50 + FableWin.pdb 0x02B723E0 ?FindAlertEvent@CAIStateGroup_MinionReactToAlert@@AAEPBVCMessageEvent@@XZ
+//   (private, returns const CMessageEvent*); respelled in place in the row's local model; was QAEPAVCMessageEvent.
 // Grade: RELOCATION_MATCH (was DIFFER 146v154 nd=21) -- lever: the originator read written in the landed 0x00744D00
 //   shape `POriginator.GetPItem() != 0 && IsThingOfType<CThing>(POriginator.GetPItem())` then the item fetched again
 //   (CThing::StatGetTypeFlags() 0, ThingTypeFlags +0x6c): gives retail's three GetPItem calls, the dead frame store and xor
@@ -156,10 +158,11 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)   // la
 }
 
 struct CAIStateGroup_MinionReactToAlert : CAIStateGroupBase {
-    CMessageEvent* FindAlertEvent();
+private:
+    const CMessageEvent* FindAlertEvent();
 };
 
-CMessageEvent* CAIStateGroup_MinionReactToAlert::FindAlertEvent()
+const CMessageEvent* CAIStateGroup_MinionReactToAlert::FindAlertEvent()
 {
     CMessageEvent* event = PeekWorld().GetPMessageManager()->FindMostRecentMessage(
         CMessageEventFilter_IsOfType(12) && CMessageEventFilter_IsForThing(PBrain->PCreature));
