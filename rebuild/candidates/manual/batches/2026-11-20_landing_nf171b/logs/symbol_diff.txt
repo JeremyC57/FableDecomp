@@ -1,0 +1,2 @@
+00446b10 new: 1
+    ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z TABLE:00446b10

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00446b10   RELOCATION_MATCH PASS   CGamePlayerInterface::IsGameActionEventInQueue
+
+WINS: 1
+  00446b10 RELOCATION_MATCH CGamePlayerInterface::?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z

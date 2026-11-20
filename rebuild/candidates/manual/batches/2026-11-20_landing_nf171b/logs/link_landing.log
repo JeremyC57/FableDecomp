@@ -1,0 +1,6 @@
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+new_00446b10.obj : error LNK2019: unresolved external symbol "public: bool __thiscall CGamePlayerInterface::IsGameActionEventInQueue(enum EGameAction,enum EInputButtonEventType,long,float &)const " (?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@JAAM@Z) referenced in function "public: bool __thiscall CGamePlayerInterface::IsGameActionEventInQueue(enum EGameAction,enum EInputButtonEventType,long)const " (?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z)
+new_00446b10.obj : error LNK2001: unresolved external symbol __fltused
+t.dll : warning LNK4088: image being generated due to /FORCE option; image may not run

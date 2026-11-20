@@ -1,0 +1,5 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00446B10	CGamePlayerInterface	IsGameActionEventInQueue	?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z	CGamePlayerInterface_Methods::IsGameActionEventInQueue	?IsGameActionEventInQueue@CGamePlayerInterface_Methods@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z	self leaf and catalog name: Ego_r.pdb 0x00443F70 + FableWin.pdb, engine/CGamePlayerInterface.h (retail path); 8 landed referencing rows bind this spelling at HEAD and 4 more move to it here (0x00687D50 0x006881D0 0x00582A16 0x007E0750); 0x0068EB20 (held by NF168) still binds QAE_NJJJ (an existing spelling, no new split)
+# Section 2
+caller_row	old_symbol	new_symbol	callee_address
+0x00446B10	?IsGameActionEventInQueue@CGamePlayerInterface_Methods@@QBE_NW4EGameAction@@W4EInputButtonEventType@@JAAM@Z	?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@JAAM@Z	0x00445CB0

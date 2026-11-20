@@ -8970,7 +8970,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ??1CPodListB@@QAE@XZ	0043fd80	00443ca0
 ?LowerBound@CControlsMap@@QBEPBUCControlsEntry@@ABW4EGameAction@@@Z	00447c80	00445bd0
 ?UpperBound@CControlsMap@@QBEPBUCControlsEntry@@ABW4EGameAction@@@Z	00447ce0	00445bd0
-?IsGameActionEventInQueue@CGamePlayerInterface_Methods@@QBE_NW4EGameAction@@W4EInputButtonEventType@@JAAM@Z	00445cb0	00446b10
 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z	004498c0	00449b20
 ?InitCharacterAs@CPlayer@@QAEXABVCCharString@@@Z	0048a070	00449b20
 ??_7CPlayerManager@@6B@	01231cd0	0044a140

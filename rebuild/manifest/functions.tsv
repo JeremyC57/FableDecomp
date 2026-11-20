@@ -1819,7 +1819,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00446330	GetInputProcessEvent	CGamePlayerInterface	__thiscall	bool	2	CGamePlayerInterface *,CProcessedInput *	1	yes	accepted									
 00446720	GetActionName	_global	__fastcall	bool	3	CActionInputControl *,CWideString *,bool	1	yes	accepted									
 00446a30	GetGameEvent	CGamePlayerInterface	__thiscall	bool	2	CGamePlayerInterface *,CGameEvent *	1	yes	accepted									
-00446b10	IsGameActionEventInQueue	CGamePlayerInterface_Methods	__thiscall	bool	4	CGamePlayerInterface *,EGameAction,EInputButtonEventType,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CGamePlayerInterface_IsGameActionEventInQueue_00446b10.cpp
+00446b10	IsGameActionEventInQueue	CGamePlayerInterface	__thiscall	bool	4	CGamePlayerInterface *,EGameAction,EInputButtonEventType,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CGamePlayerInterface_IsGameActionEventInQueue_00446b10.cpp
 00446b40	IsButtonForGameEvent	CGamePlayerInterface	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x00446B40_global_VectorMap_LookupValue.cpp				
 00446b90	IsMouseButtonForGameEvent	CGamePlayerInterface	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x00446B90_global_VectorMap_LookupValue.cpp				
 00446be0	~CGamePlayerInterface	CGamePlayerInterface	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted									
