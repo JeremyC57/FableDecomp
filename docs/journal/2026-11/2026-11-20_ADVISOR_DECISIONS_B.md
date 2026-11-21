@@ -300,3 +300,11 @@ row with the same shape (by-value inline getter on a call-returned object, argum
 between) that shows retail's deferred load: then the mini misses a factor, which also reopens 0x006AA720; (2) Ego_r type records
 for CCombatManager showing a reference return, public ProximityForNavigation or a friend; (3) close the result-usage lever by listing
 the result-consuming forms of Ego_d line 55 measured at 76 B.
+
+## 2026-11-21 0x00666D40 CThingCreatureBase::GetHeightZBelowAt (p25R): to_centre-less match not Inferred
+r1 matches only without Ego_d's to_centre local (Ego_d 2782/2783 = 27/16 B v r1's 12/9). Ruling (advisor): bracket, row stays
+reserved, same call as 0x00763060. "Later revision" is unevidenced: the rest of the function fits Ego_d exactly (C2DBoxI line 78 =
+78, the 5 B store). Checked against 0x008DBC80's landing: it landed with all 27 Ego_d locals and one unexplained 2-byte record, so its
+test would not pass r1. Flip checks in pending/2026-11-20_p25_open/00666d40/NOTES.md.
+Group note: four rows now byte-match only with PDB-contradicted text and stay unlanded under the same rule: 0x007602F0, 0x00763060,
+0x0093D270, 0x00666D40.
