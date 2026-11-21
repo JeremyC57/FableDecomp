@@ -219,3 +219,4 @@ date	account	item	kind	status	note
 2026-11-21	A	q12387,q12388,q12389,q12226,q12227,q12228,q12229,q12383	naming	claimed	round 10 agent NF219 (NullString static pair 0x01223EC0+0x0122A5E0, 0x00C44550 name, 0x0099B4D0 catalog, CCountedPointer ReleaseData family + 0x00429C53 dtor conflict, size-TU operator== opt-in); rows in its rows.txt (claim line late, agent started earlier)
 2026-11-21	A	0x00763060,0x007602F0	authoring	claimed	AUTH6 (bounded follow-up of AUTH5: 007602F0 lines 313/342 lifetime decode; 00763060 minimal-deviation grade / owner packet)
 2026-11-21	A	q12387,q12388,q12389	naming	done	NF219 landed as nf219 (8 rows); q12226-q12229 and q12383 open (to NF220)
+2026-11-21	A	q12226,q12227,q12228,q12229,q12401,q12383	naming	claimed	round 10 agent NF220 (CCountedPointer ReleaseData family, 0x0099C120 header port, size-TU operator== opt-in; CComponent dtor conflict census only): rows in its rows.txt
