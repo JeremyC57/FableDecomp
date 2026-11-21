@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007bc004   RELOCATION_MATCH PASS   InitMovement
+
+WINS: 1
+  007bc004 RELOCATION_MATCH NThingShot::CTCShotDefinitionNymphFun::?InitMovement@CTCShotDefinitionNymphFun@NThingShot@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NThingShotCTCShotDefinitionNymphFun_InitMovement_007bc004

@@ -401822,6 +401822,13 @@ $catalog = @(
         TestSource = '00/83/CThingAICreature_DrawPreparePrimitivesForRendering_00833c00_test.cpp'
         PassPattern = '00833c00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007bc004'
+        Module = 'NThingShot::CTCShotDefinitionNymphFun'
+        Source = '00/7b/NThingShotCTCShotDefinitionNymphFun_InitMovement_007bc004.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionNymphFun_InitMovement_007bc004_test.cpp'
+        PassPattern = '007bc004_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
