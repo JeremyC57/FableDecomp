@@ -10,8 +10,8 @@
 //   CTCHeroMorph::KillParticles 0x0071C260 (Ego_r.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ), CThing::AddAndCopyTC(const CTCBase&, bool)
 //   0x004C9F60, the virtual Copy of CTCInventoryAbilities / CTCInventoryStats (slot 12, +0x30).
 // Ego_d lines (VC10 /Od): 1241 (6 B) thing_to_load_into = hero; 1244 (25 B) the morph GetTC test; 1247 (364 B) the live hero's
-//   bare GetTC(&tc_hero_morph), an oversize line (one file block, nothing inlined): the debug check FINDINGS 2026-11-20 (p25G) finds on
-//   discarded-result getter statements, no retail code beyond the lookup; 1248 (8 B) KillParticles; 1249 (14 B) AddAndCopyTC; 1252 / 1257 / 1262 / 1267 (21 B) the PeekTC
+//   bare GetTC(&tc_hero_morph), an oversize line (one file block, nothing inlined) not decoded: the bare GetTC lines 1276 / 1284
+//   are 12 B, so the extra bytes are not the getter itself (likely a debug check); no retail code beyond the lookup; 1248 (8 B) KillParticles; 1249 (14 B) AddAndCopyTC; 1252 / 1257 / 1262 / 1267 (21 B) the PeekTC
 //   tests and 1254 / 1259 / 1264 / 1269 (14 B) their AddAndCopyTC calls; 1273 / 1281 (21 B) the abilities / inventory-stats PeekTC tests,
 //   1276 / 1284 (12 B) the live component's GetTC, 1277 / 1285 (17 B) the virtual Copy.
 // Inferred: the seven out locals declared together at the top, uninitialised. Ego_d puts them at function scope (the three "old_"

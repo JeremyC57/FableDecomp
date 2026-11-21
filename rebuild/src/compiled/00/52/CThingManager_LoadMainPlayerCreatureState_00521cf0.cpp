@@ -20,7 +20,7 @@
 //   GetType() test; 1225 (6 B) [6] loaded_hero = loaded_thing; 1226 (2 B) [2] break; 1227 (2 B) [2] the loop's closing jump; 1230 (45 B)
 //   the SetPosition statement; 1232 (15 B) ActivateThings (lea / push / this / call); 1233 (23 B) CopyHeroToHero (three pushes / this /
 //   call); 1235 (7 B) [7] the flag cleared. Lines 1216 (216 B), 1228 (12 B) and 1229 (207 B) have no retail code (no locals, one file block,
-//   nothing inlined): 1216 and 1229 are oversize debug-check lines (FINDINGS 2026-11-20 p25G); retail goes straight from hero to the loop
+//   nothing inlined), not decoded (likely asserts); retail goes straight from hero to the loop
 //   (0x00521DDB) and from the loop exit to the SetPosition lookup (0x00521E0A). Not reproduced.
 // Inferred: `WorldMap.GetMapNumberAt(pos)` reads the member directly. FableWin / Ego_d have the inline accessor
 //   CThingManager::GetWorldMap(), and `GetWorldMap().GetMapNumberAt(pos)` grades RELOCATION_MATCH too; Ego_d's 43-B line 1209 fits neither
