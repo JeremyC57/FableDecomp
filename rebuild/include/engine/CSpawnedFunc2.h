@@ -1,5 +1,6 @@
 #ifndef FABLE_ENGINE_CSPAWNEDFUNC2_H
 #define FABLE_ENGINE_CSPAWNEDFUNC2_H
+#include "fable_compiler.h"                      // FABLE_FORCEINLINE (the ctor below), as engine/CSpawnedFunc1.h
 #include "engine/CSpawnedFuncBase.h"
 // Both PDBs prove the template, signatures, protected fields and their names.
 // Ego_r size 0x44; native 00D0EBA0 reads Func+34, PClass+38, Par1+3c,

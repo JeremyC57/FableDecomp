@@ -697,3 +697,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Name fix: inline CRightHandedSet::Set is Init (Ego_r / FableWin / Ego_d).
   - Re-port debt: CCamera_SetAngleXY_00a0c570.cpp:28 and CCamera_CCamera_00a0bf20.cpp:25 use the made-up Set; the 0x00AEEBA0 test stand-ins too.
   - The row no longer needs FableWin line tables; drop it from B's Windows request.
+2026-11-21 A: engine/CSpawnedFunc2.h now includes fable_compiler.h for its FABLE_FORCEINLINE ctor (the CSpawnedFunc1.h fix of 085a5ab82a). No landed row includes it yet; a test TU with a row-local CCharString failed (C2501 'FABLE_FORCEINLINE') before and compiles after, the ctor still inlined.
