@@ -1609,3 +1609,12 @@ against CODAApi.lib, or stay compiled C++?
   (body 244; VC7.1 212). C3DAnimFileSequenceChunk::GetBoneName (47 v Ego_d 49) and C3DVectorWord::operator== (82 v 86) still differ under
   VC10, so for those two the gap is a real text difference, not compiler drift. Earlier size-only "contradicts Ego_d" rejections, all
   measured with VC7.1, should be re-measured with odall10.py before they are cited.
+- 2026-11-21 (Account A, correction to the VC10 entry above): GetBoneName and C3DVectorWord::operator== DO equal Ego_d under VC10 (49, 86).
+  The 47 / 82 came from a `.cod` parser bug: an instruction longer than 5 bytes wraps onto a continuation line (`\t00 00\t\t mov ...`)
+  that the regex skipped. The same bug is in AUTH1's `odl.py` and AUTH2's `odall.py` (pending/2026-11-21_auth1, _auth2; both patched
+  now): every /Od line size measured with them before this date undercounts lines holding a 6+ byte instruction (imm32 stores, fs:0,
+  far displacements). Re-measure before citing any such size. odall10.py also now skips EH unwind funclets (text$x), which a PDB line
+  table does not attribute to the function's lines. Two more corrections: (1) the flags first used were the game project's
+  (`-GS -GR- -Gd -D_STLP_DEBUG`, few objects); the libraries (871 FableLib / 231 BBB / 100 FableEngine / 20 ParticleSystem compilands) use
+  `-GS- -GR -Gr`, now `odall10.py --lib`. (2) Ego_d's library STL is VC10 Dinkumware; `odall10.py --stl` (VC10 headers) reproduces all 13
+  `vector<unsigned long>` members of lib_bank_file.obj, so STL statements are exact evidence only in that mode.

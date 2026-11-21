@@ -15,6 +15,6 @@ for l in asm.read_text(errors="replace").splitlines():
     if not inf: continue
     m = re.match(r"^; (\d+)\s*:", l)
     if m: cur = int(m.group(1)); order.append(cur) if cur not in sizes else None; sizes.setdefault(cur, 0); continue
-    m = re.match(r"^\s+[0-9a-f]{5}\s+((?:[0-9a-f]{2}\s?)+)", l)
+    m = re.match(r"^\s+[0-9a-f]{5}\t((?:[0-9a-f]{2} ?)+)", l) or re.match(r"^\t((?:[0-9a-f]{2} ?)+)\t", l)  # fixed 2026-11-21: count wrapped bytes of >5-byte instructions
     if m and cur is not None: sizes[cur] += len(m.group(1).split())
 for k in order: print("  line %-5d %4d B" % (k, sizes[k]))

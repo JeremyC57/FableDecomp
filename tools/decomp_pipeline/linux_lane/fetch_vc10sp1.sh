@@ -10,6 +10,9 @@
 # The package's vc_stdx86.cab holds three builds of each compiler binary (x86 native, x86->amd64, x86->ia64); the file keys below are
 # the x86-native ones (cl.exe "_M_IX86", c2.dll from p2\x86). mspdb100.dll / msobj100.dll sit under the old keys FL_mspdb71 / FL_msobj71
 # (their version resources say MSPDB100.DLL / MSOBJ100.DLL 10.00.40219.01). The Windows SDK 7.1 ISO is NOT needed.
+# The VC10 headers (for odall10.py --stl) come from the same package: msiextract (apt: msitools) unpacks vc_stdx86.msi + .cab with real
+# file names into $S/wine/vc10sp1/include. The package lacks ammintrin.h (intrin.h includes it), so a declaration-only stub goes into
+# $S/wine/vc10sp1/stubinc.
 # Usage: S=<lane scratch> bash fetch_vc10sp1.sh   (DL=<dir with the .exe already downloaded> skips the download)
 set -euo pipefail
 : "${S:?export S (the lane scratch) first}"
@@ -20,7 +23,7 @@ mkdir -p "$DL" "$WORK" "$BIN/1033"
 EXE="$DL/VC-Compiler-KB2519277.exe"
 [ -f "$EXE" ] || curl -fsSL -o "$EXE" "$URL"
 echo "$SHA256  $EXE" | sha256sum -c -
-7z x -y -o"$WORK/x" "$EXE" vc_stdx86.cab > /dev/null
+7z x -y -o"$WORK/x" "$EXE" vc_stdx86.cab vc_stdx86.msi > /dev/null
 7z x -y -o"$WORK/cab" "$WORK/x/vc_stdx86.cab" > /dev/null
 C="$WORK/cab"
 pick() { local f; f=$(ls "$C"/$1 2>/dev/null | head -1); [ -n "$f" ] || { echo "missing $1" >&2; exit 1; }; cp "$f" "$BIN/$2"; }
@@ -36,6 +39,15 @@ pick 'FL_mspdbcore_dll_92167_92167_x86_ln.*' mspdbcore.dll
 pick 'FL_mspdbsrv_exe_92168_92168_x86_ln.*'  mspdbsrv.exe
 pick 'F_CENTRAL_msvcr100_x86' msvcr100.dll
 pick 'F_CENTRAL_msvcp100_x86' msvcp100.dll
+# headers
+command -v msiextract > /dev/null || { echo "need msiextract (apt-get install -y msitools)" >&2; exit 1; }
+mkdir -p "$WORK/msi"; (cd "$WORK/msi" && msiextract "$WORK/x/vc_stdx86.msi" > /dev/null)
+H="$WORK/msi/Program Files/Microsoft Visual Studio 10.0/VC/include"
+[ -f "$H/vector" ] || { echo "no VC/include/vector in vc_stdx86.msi" >&2; exit 1; }
+rm -rf "$S/wine/vc10sp1/include"; cp -r "$H" "$S/wine/vc10sp1/include"
+mkdir -p "$S/wine/vc10sp1/stubinc"
+printf '/* stub: ammintrin.h is not in the KB2519277 package; declaration-only header, no code */\n#pragma once\n' \
+  > "$S/wine/vc10sp1/stubinc/ammintrin.h"
 rm -rf "$WORK"
 # expected (2026-11-21): cl.exe e4208d3e6a09087ad673cb061559f6f16259218fe9d88f6617fdf33f28c594fb, c2.dll 1de3fbe45436937e9a07c097f5d542bd89ae8ddab006efb3e7d3eebabe2f63c3
 sha256sum "$BIN/cl.exe" "$BIN/c2.dll"
