@@ -24,80 +24,60 @@
 //   CBasicString::operator== calls (the null test threaded to the second comparison) only with the CCharString copy
 //   ctor, dtor and ReleaseData bodies in the TU (same-TU noinline stand-ins of the landed 0x0099EC30 / 0x0099EAE0 /
 //   0x0099E9B0 bodies: without them the local's address escapes and the block is reloaded and re-tested).
+// Name fix (NF215, 2026-11-21, q12262): ported onto fable_string.h (FABLE_RETAIL_CCHARSTRING + CCHARSTRINGDATA_FRIEND +
+//   SHOVE_STRING_CLEANUP_PASS23 + CCHARSTRING_FORCEINLINE_TEXT_EQ): the local CBasicStringChar / CCharStringData / CCharString models are
+//   gone, so the inline CCharString::operator== arm calls the Ego_r.pdb 0x0040C910 / FableWin.pdb 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z
+//   (was ??8CBasicStringChar@@QBE_NPBD@Z; declaration only, no copy defined, as at HEAD). The three same-TU bodies are now definitions of
+//   the header's members: ReleaseData -> the PDB protected ?UnassignString@CCharString@@IAEXXZ (0x0099E9B0), and the counter
+//   g_CCharStringLiveCount -> the header's g_CCharStringInstanceCount_013BD800 (0x013BD800, the 0x0099EAE0 owner's spelling). Each copy
+//   equals its owner (bytes and relocation targets: 87 / 12 / 61). UnassignString stays out of line in its two TU-mates as in retail
+//   through a guarded __declspec(noinline) on its definition (HEAD: the auto_inline(off) region; inside that region VC7.1 calls the
+//   header's ??_GCCharStringData instead of expanding delete data: 43 v 87).
 #include "fable_compiler.h"
 #include <string.h>
 #pragma intrinsic(strcmp)
 
-#pragma pack(push, 1)
-struct CBasicStringChar {
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-    bool operator==(const char* text) const;                                    // 0x004115A0
-};
-class CCharStringData { public:
-    CBasicStringChar Data;
-    long             NoRefs;
-};
-#pragma pack(pop)
-class CCharString {
-public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);                           // 0x0099EBF0
-    CCharString(const CCharString& other);                                      // 0x0099EC30
-    ~CCharString();                                                             // 0x0099EAE0
-    void ReleaseData();                                                         // 0x0099E9B0
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRINGDATA_FRIEND
+#define FABLE_RETAIL_SHOVE_STRING_CLEANUP_PASS23
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#include "fable_string.h"
 
-extern long g_CCharStringLiveCount;                                             // 0x013BD800
-
-void __cdecl operator delete[](void* block);                                     // 0x00BFEB1C
 void __cdecl operator delete(void* block);                                       // 0x00BFE9BC
 
-#pragma auto_inline(off)
-void CCharString::ReleaseData()                                                 // 0x0099E9B0 (landed body, same-TU stand-in)
+// Fidelity: same-TU strong definition of 0x0099E9B0 (retail TU-mate)
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+void CCharString::UnassignString()                                              // 0x0099E9B0
 {
     CCharStringData* p = PStringData;
     if (p != 0) {
         if (--p->NoRefs <= 0) {
             CCharStringData* data = PStringData;
-            if (data != 0) {
-                if (data->Data.PData != 0) {
-                    delete[] data->Data.PData;
-                    data->Data.PData = 0;
-                }
-                data->Data.StringLength = 0;
-                data->Data.DataLength = 0;
+            if (data != 0)
                 delete data;
-            }
         }
         PStringData = 0;
     }
 }
 
-CCharString::~CCharString()                                                     // 0x0099EAE0 (landed body, same-TU stand-in)
+#pragma auto_inline(off)
+// Fidelity: same-TU strong definition of 0x0099EAE0 (retail TU-mate)
+CCharString::~CCharString()                                                     // 0x0099EAE0
 {
-    ReleaseData();
-    --g_CCharStringLiveCount;
+    UnassignString();
+    --g_CCharStringInstanceCount_013BD800;
 }
 
-CCharString::CCharString(const CCharString& other)                              // 0x0099EC30 (landed body, same-TU stand-in)
+// Fidelity: same-TU strong definition of 0x0099EC30 (retail TU-mate)
+CCharString::CCharString(const CCharString& other)                              // 0x0099EC30
 {
     PStringData = 0;
-    ++g_CCharStringLiveCount;
+    ++g_CCharStringInstanceCount_013BD800;
     if (&other != this) {
         if (PStringData != 0)
-            ReleaseData();
+            UnassignString();
         CCharStringData* data = other.PStringData;
         if (data != 0) {
             PStringData = data;

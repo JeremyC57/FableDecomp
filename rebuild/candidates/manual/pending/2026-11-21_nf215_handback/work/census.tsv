@@ -1,0 +1,313 @@
+00859040	00/85/global_GetThingDoingDamageFromCreatureAndEventName_00859040.cpp		REF:??8CBasicStringChar@@QBE_NPBD@Z
+004115a0	00/41/CBasicStringchar_CBasicStringCharoperatorequals_004115a0.cpp		DEF:88:??8CBasicStringChar@@QBE_NPBD@Z
+00ee2a80	00/ee/NScriptCVTravellingHeroesScript_DoConversation_00ee2a80.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+0047a8e0	00/47/CHeroLogBook_AddObjectiveToQuest_0047a8e0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00489d40	00/48/CPlayer_CreateCharacter_00489d40.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0048f7c0	00/48/CSubtitleRenderer_SetButton1OverrideText_0048f7c0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0048f881	00/48/CSubtitleRenderer_SetButton2OverrideText_0048f881.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004a0d90	00/4a/CWorld_LoadQuestsFromFile_004a0d90.cpp		DEF:76:??8?$CBasicString@D@@QBE_NPBD@Z
+004a3740	00/4a/CWorld_UpdateRegionLoad_004a3740.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004afe20	00/4a/CQuestManager_RemoveBoast_004afe20.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+004b00c0	00/4b/CQuestManager_IsQuestRegistered_004b00c0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004b5500	00/4b/CQuestManager_LoadGameState_004b5500.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004c7f40	00/4c/CThing_InitFromThingInfo_004c7f40.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004c8a30	00/4c/CThing_GetSubTypeFromScript_004c8a30.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004c9120	00/4c/CThing_Save_004c9120.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004ca390	00/4c/CThing_ConstructFromBinarySave_004ca390.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+004caa00	00/4c/CThing_ConstructFromLevelScript_004caa00.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+004fdcb0	00/4f/CWorldMap_IsSectionToHaveNavigationMap_004fdcb0.cpp		DEF:45:??8?$CBasicString@D@@QBE_NPBD@Z
+004fe630	00/4f/CWorldMap_GetNavigationSectionOffsetInFile_004fe630.cpp		DEF:41:??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z
+00501d30	00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+00507c30	00/50/CWorldMap_LoadFromFile_00507c30.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+0051fd80	00/51/CThingManager_LoadSingleThing_0051fd80.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+005253f0	00/52/CThingManager_LoadGameState_005253f0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00563130	00/56/CTCHeroOnlineScoreboard_ShowScoreboard_00563130.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00580194	00/58/CPersistTraitsCHeroMarriageInfo_TransferIn_00580194.cpp		DEF:22:??8?$CBasicString@D@@QBE_NPBD@Z
+0058216e	00/58/CTCInventory_SetEditBoxValues_0058216e.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00582414	00/58/CTCInventory_DeactivateAllEditBoxes_00582414.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00587bff	00/58/CTCInventory_OpenPCSkillsMenu_00587bff.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0058807d	00/58/CTCInventory_OpenPCInventoryMenu_0058807d.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00589a30	00/58/CTCInventory_OpenPCMapMenu_00589a30.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0058a763	00/58/CTCInventory_OpenPCStatusMenu_0058a763.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0058af10	00/58/CTCInventory_OpenPCOptionsMenu_0058af10.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00596a68	00/59/NUISystemCFrontEndManager_CreateFrontEndButtonComponent_00596a68.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+005a04f7	00/5a/CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp		DEF:19:??8?$CBasicString@D@@QBE_NPBD@Z
+005a4cdd	00/5a/CTCInventoryTrade_ConstructActualSellInventoryPC_005a4cdd.cpp		DEF:19:??8?$CBasicString@D@@QBE_NPBD@Z
+005a5b31	00/5a/CTCInventoryTrade_ConstructActualWantedInventoryPC_005a5b31.cpp		DEF:19:??8?$CBasicString@D@@QBE_NPBD@Z
+005ae972	00/5a/CTCInventoryTrade_OpenActualBuyInventoryPC_005ae972.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+005c2118	00/5c/CPersistTraitsNInventoryCItem_TransferIn_005c2118.cpp		DEF:22:??8?$CBasicString@D@@QBE_NPBD@Z
+005d8978	00/5d/CPersistContext_TransferMaplongunsignedlong_005d8978.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+005f6e40	00/5f/CTCInventoryAbilities_OnSerialise_005f6e40.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0061ad60	00/61/CTCInventoryQuests_DrawActiveTestQuests_0061ad60.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+006238a0	00/62/CTestQuestNameCompare_operator_006238a0.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+0064560d	00/64/NPlayerGuiCDrawScriptScreenText_Draw_0064560d.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0065a075	00/65/CTCVillage_GetWarningStringForCurrentCrimes_0065a075.cpp	/O1 /Oy-	DEF:22:??8?$CBasicString@D@@QBE_NPBD@Z
+00678760	00/67/CPersistTraitsstdlistCReactionMatch_TransferIn_00678760.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+006820e0	00/68/CTCCreatureOpinionOfHero_SetPersonalityOverride_006820e0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00684610	00/68/CTCCreatureOpinionOfHero_OnSerialise_00684610.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00686240	00/68/CPersistTraitsCAppearanceModifierGraphicsCEntry_TransferIn_00686240.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+006a5d90	00/6a/CThingPhysical_ConstructFromLevelScript_006a5d90.cpp	/d2inlS29	DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+006a7c60	00/6a/CThingFilterIsInQuestOrNullQuest_operator_006a7c60.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+006c9490	00/6c/CPersistTraitsCOpinionDeed_TransferIn_006c9490.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+006d41f0	00/6d/CPersistTraitsCSimVoice_TransferIn_006d41f0.cpp		REF:?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z
+006ec4f0	00/6e/CCombatManager_FillCombatSequenceList_006ec4f0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007025a0	00/70/CTCQuestCard_GetRegionName_007025a0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007132c0	00/71/NTCScriptedControlCActionTalkToThing_DisplayText_007132c0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00755f40	00/75/CPersistTraitsstdpairEReactionSpeechTypelong_TransferIn_00755f40.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00756d00	00/75/CPersistContext_TransferMappairlonglongCCharString_00756d00.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007ae3d0	00/7a/CPersistContext_TransferMapboolCCharString_007ae3d0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007b47b0	00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferIn_007b47b0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007bd2d1	00/7b/NThingShotCTCShotDefinitionThrow_OnSubShotTrigger_007bd2d1.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007d2cc0	00/7d/CTCTavernGameCoinGolf_EnableCourse_007d2cc0.cpp		DEF:76:??8?$CBasicString@D@@QBE_NPBD@Z
+007f5150	00/7f/CTCSoundAtmosphereVillage_GetGain_007f5150.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+007f8890	00/7f/CTCParticleAttacher_AttachParticles_007f8890.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00811100	00/81/CIsHitEventHitByThingWithScriptName_operator_00811100.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00816000	00/81/NHitLocationsCPhysicalPrimitiveSphere_vfunc4_00816000.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00816150	00/81/NHitLocationsCPhysicalPrimitiveCylinder_Init_00816150.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008304a0	00/83/CThingAICreature_Save_008304a0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008315c0	00/83/CThingAICreature_ConstructFromLevelScript_008315c0.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+00837e40	00/83/CThingTrackNode_ConstructFromLevelScript_00837e40.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+0083bf90	00/83/CThingSwitch_Save_0083bf90.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0083d800	00/83/CThingPhysicalSwitch_Save_0083d800.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0083d990	00/83/CThingPhysicalSwitch_ConstructFromLevelScript_0083d990.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+00862780	00/86/CModeStandBase_UpdateIdleAnim_00862780.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00870e00	00/87/NCreatureActionCActionEventTriggerParticle_SetDataFromString_00870e00.cpp		DEF:72:??8?$CBasicString@D@@QBE_NPBD@Z
+00870fc0	00/87/NCreatureActionCActionEventCameraShake_vfunc4_00870fc0.cpp		DEF:72:??8?$CBasicString@D@@QBE_NPBD@Z
+00871290	00/87/NCreatureActionCActionEventExplosion_SetDataFromString_00871290.cpp		DEF:72:??8?$CBasicString@D@@QBE_NPBD@Z
+008920c0	00/89/CGameScriptInterface_GetValidTextEntryNameWithAttitude_008920c0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00892cf0	00/89/CGameScriptInterface_SetCreatureGeneratorsEnabled_00892cf0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00895190	00/89/CGameScriptInterface_GiveThingItemInSlot_00895190.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008973a0	00/89/CGameScriptInterface_IsPlayerCarryingItemOfType_008973a0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00897e10	00/89/CGameScriptInterface_MakeHeroCarryItemInHand_00897e10.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0089e540	00/89/CGameScriptInterface_GiveHeroYesNoQuestion_0089e540.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008a0cb0	00/8a/CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008a86c0	00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008bb130	00/8b/CCreatureActionCastWillForceSpell_CCreatureActionCastWillForceSpell_008bb130.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008bb200	00/8b/CCreatureActionCastWillForceSpell_CCreatureActionCastWillForceSpell_008bb200.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008bb6f0	00/8b/CCreatureActionCastPhysicalShieldSpell_CCreatureActionCastPhysicalShieldSpell_008bb6f0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d04e0	00/8d/CGameScriptThing_MsgIsKilledBy_008d04e0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d0730	00/8d/CGameScriptThing_IsBeingCarriedBy_008d0730.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d0c50	00/8d/CGameScriptThing_MsgIsTriggeredBy_008d0c50.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d0e00	00/8d/CGameScriptThing_MsgIsUsedBy_008d0e00.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d0fb0	00/8d/CGameScriptThingMethods_MsgIsHitBy_008d0fb0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d1130	00/8d/CGameScriptThing_MsgIsHitByWithWeapon_008d1130.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d19a0	00/8d/CGameScriptThing_MsgIsTalkedToBy_008d19a0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d1fd0	00/8d/CGameScriptThing_MsgIsKnockedOutBy_008d1fd0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d29c0	00/8d/CGameScriptThing_MsgIsHitBySpecialAbilityFrom_008d29c0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d2bb0	00/8d/CGameScriptThing_MsgIsHitByAnySpecialAbilityFrom_008d2bb0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d2d90	00/8d/CGameScriptThing_MsgIsHitByAnyAggressiveSpecialAbilityFrom_008d2d90.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008d2f80	00/8d/CGameScriptThing_MsgIsHitByAnyNonAggressiveSpecialAbilityFrom_008d2f80.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+008eda90	00/8e/CCombatActionFallStunned_CCombatActionFallStunned_008eda90.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00921440	00/92/CAIStateGroupMinionFollowThing_IsExpressionPerfomedTo_00921440.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00932990	00/93/CAIStateGroupMinionGuardReactToCriminal_IsRunnable_00932990.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00960120	00/96/CAIStateGroupDeedReactionRoot_Update_00960120.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0098e1e0	00/98/CThreadedFile_Open_0098e1e0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00998010	00/99/CAFile_ParserReadPastComponent_00998010.cpp	/Oa	REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00998170	00/99/CAFile_ParserReadPastDriveLabel_00998170.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00998250	00/99/CAFile_GetAbsoluteFilePath_00998250.cpp	/Oa	REF:??8?$CBasicString@D@@QBE_NPBD@Z
+0099e960	00/99/CCharString_operator_0099e960.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+009acee0	00/9a/CDefinitionManager_ParseEnumForSymbols_009acee0.cpp		DEF:76:??8?$CBasicString@D@@QBE_NPBD@Z
+009af1e0	00/9a/CDefinitionManager_CompileString_009af1e0.cpp		DEF:79:??8?$CBasicString@D@@QBE_NPBD@Z
+009bb110	00/9b/CPersistContext_TransferVectorLoadText_009bb110.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+009bba40	00/9b/CPersistContext_TransferObjectLoadText_009bba40.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+009bc120	00/9b/CPersistContext_TransferVectorOfSubComponentsLoadText_009bc120.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+009c8990	00/9c/NGameTextCDataBank_GetAllTextEntriesForNarrator_009c8990.cpp	#include <new>	REF:??8?$CBasicString@D@@QBE_NPBD@Z
+009e81e0	00/9e/CPersistTraitsC2DVector_TransferIn_009e81e0.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+009e8c10	00/9e/CPersistTraitsCRGBColour_TransferIn_009e8c10.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+009eb690	00/9e/CConsole_ConsoleCommandList_009eb690.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+009eb760	00/9e/CConsole_ConsoleCommandListContainingString_009eb760.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+009eb8e0	00/9e/CConsole_ConsoleVariableList_009eb8e0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+009eb9b0	00/9e/CConsole_ConsoleVariableListContainingString_009eb9b0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00a38670	00/a3/CCRCSymbolMap_ParseEnum_00a38670.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00a3e180	00/a3/CPersistTraitsCDefIndex_TransferOut_00a3e180.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00a63ee0	00/a6/CGenericVarRef_ReadFromParserAsString_00a63ee0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00aad650	00/aa/CWaveLoader_LoadWaveFile_00aad650.cpp		DEF:88:??8?$CBasicString@D@@QBE_NPBD@Z
+00add380	00/ad/CLHFile_CLHFile_00add380.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00add4a0	00/ad/CLHFile_CLHFile_00add4a0.cpp		REF:??8?$CBasicString@D@@QBE_NPBD@Z
+00cbf9de	00/cb/global_CSFindThing_00cbf9de.cpp		DEF:23:??8CBasicStringChar@@QBE_NPBD@Z
+00cbfb7d	00/cb/global_RunCutsceneMacro_00cbfb7d.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00cfe030	00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_Main_00cfe030.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00d151d0	00/d1/CQBountyHuntScript_WatchForEnableFisherCreekHutDoor_00d151d0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00d1d7d0	00/d1/NScriptCQBreakSiegeScript_WatchForTermination_00d1d7d0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00d1e3e0	00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_Main_00d1e3e0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00d91320	00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Main_00d91320.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00daf080	00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Main_00daf080.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00db97a0	00/db/NScriptCQNewOakValeIntroScriptCNOVITheresa_Main_00db97a0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00dbb310	00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00dcd1c0	00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_GetParentScript_00dcd1c0.cpp		
+00dcd1d0	00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_Init_00dcd1d0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00dcdf60	00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_Init_00dcdf60.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00ddb570	00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Init_00ddb570.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ddc6c0	00/dd/NScriptCQPrisonRaceScriptCWaypointSpeedCheck_Main_00ddc6c0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00dde7f0	00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Init_00dde7f0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00df2310	00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_Init_00df2310.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00df2a40	00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_Init_00df2a40.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00df6010	00/df/NScriptCQTraderConflictEvilScript_Main_00df6010.cpp	/d2inlT72	DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00df9b80	00/df/NScriptCQTraderConflictEvilScript_UpdateLiveEnemies_00df9b80.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00dfc320	00/df/NScriptCQTraderConflictGoodScript_UpdateLiveEnemies_00dfc320.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00dfe0f0	00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Main_00dfe0f0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e04bd0	00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Init_00e04bd0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e07640	00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Main_00e07640.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e0a510	00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_SetBrainState_00e0a510.cpp	/d2inlS22	DEF:19:??8?$CBasicString@D@@QBE_NPBD@Z
+00e1fcf0	00/e1/NScriptCQREscortTraderScript_WatchForExpressionFollow_00e1fcf0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e1fef0	00/e1/NScriptCQREscortTraderScript_WatchForExpressionWait_00e1fef0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e2b090	00/e2/NScriptCVAmbushScamScript_Main_00e2b090.cpp		DEF:19:??8?$CBasicString@D@@QBE_NPBD@Z
+00e2e520	00/e2/NScriptCVAmbushScamScript_WatchForHeroAttack_00e2e520.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00e32080	00/e3/NScriptCVAmbushScamScript_WatchForExpressions_00e32080.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00e39140	00/e3/NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e3ac70	00/e3/NScriptCVBordelloScriptCBordelloLady_Init_00e3ac70.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e3bb70	00/e3/NScriptCVBordelloScriptCMadame_Main_00e3bb70.cpp	/d2inlT69	DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e3eb10	00/e3/NScriptCVBordelloScriptCBordelloLady_Main_00e3eb10.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e40e80	00/e4/NScriptCVBordelloScriptCMagicman_Main_00e40e80.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e44ea0	00/e4/NScriptCVBordelloScriptCBordelloClient_Main_00e44ea0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e46d30	00/e4/NScriptCVBanditCampPathScript_Main_00e46d30.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e569d0	00/e5/NScriptCVBookCollectingScript_DoConversation_00e569d0.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00e57020	00/e5/NScriptCVBookCollectingScriptCBSTeacher_GetBookSpecificArgs_00e57020.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e58d40	00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Main_00e58d40.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e5b3b0	00/e5/NScriptCVBeggarAndChildScriptCBeggarBully_Main_00e5b3b0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e5e240	00/e5/NScriptCVBodyGuardScript_GetHenchmanTypeFromString_00e5e240.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e5f2b0	00/e5/NScriptCVBodyGuardScriptCHenchmanComment_Main_00e5f2b0.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00e693f0	00/e6/NScriptCVChapelOfEvilScript_Main_00e693f0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e6a000	00/e6/NScriptCVChapelOfEvilScript_WatchForExpressions_00e6a000.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00e6a0b0	00/e6/NScriptCVChapelOfEvilScript_WatchForInsideChapel_00e6a0b0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e6b750	00/e6/NScriptCVChapelOfEvilScript_WatchForRegionEntry_00e6b750.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e7c8e0	00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e80f10	00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_AskForFish_00e80f10.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e83230	00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_SetRelevantRegion_00e83230.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e84b80	00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Main_00e84b80.cpp		
+00e87030	00/e8/NScriptCVFisticuffsClubScriptCTyler_Main_00e87030.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e8ef80	00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp	/d2inlT72	DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00e9cb20	00/e9/NScriptCVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ea0090	00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Main_00ea0090.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00eb9980	00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Main_00eb9980.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ebcf70	00/eb/NScriptCVOracleScriptCVOOracleMarker_Main_00ebcf70.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ec1cd0	00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Init_00ec1cd0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ec2240	00/ec/NScriptCVRandomPopulationSimScript_ProcessAlbionPopulationSim_00ec2240.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00ec2520	00/ec/NScriptCVRandomPopulationSimScript_SetCurrentPopulationRegionFromRegionName_00ec2520.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ecf7f0	00/ec/NScriptCVSickChildScriptCWomanToAttract_Main_00ecf7f0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ed17d0	00/ed/NScriptCVSingingStonesScriptCManWithDoorName_Main_00ed17d0.cpp	/d2inlT51	DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ed7a40	00/ed/NScriptCVTalentlessBardScript_WatchForCompletedQuests_00ed7a40.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00edb190	00/ed/NScriptCVTempleOfLightScript_Main_00edb190.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00edbd80	00/ed/NScriptCVTempleOfLightScript_WatchForInsideTemple_00edbd80.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00ee07e0	00/ee/NScriptCVTravellingHeroesScript_GossipSetup_00ee07e0.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00eec410	00/ee/NScriptCGlobalGiveHeroItemsFromRewardChestScript_Main_00eec410.cpp		DEF:20:??8CBasicStringChar@@QBE_NPBD@Z
+00f058d0	00/f0/NScriptCQAmbushTradersScript_WatchForRegionChange_00f058d0.cpp		DEF:19:??8CBasicStringChar@@QBE_NPBD@Z
+00f063b0	00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Main_00f063b0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f08590	00/f0/NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f088e0	00/f0/NScriptCQAmbushTradersScript_EntityCountDecrease_00f088e0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f0a470	00/f0/NScriptCQAmbushTradersScript_WatchForQuestSuccess_00f0a470.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f0b130	00/f0/NScriptCQAmbushTradersScript_DoQuest_00f0b130.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f0c140	00/f0/NScriptCQAmbushTradersScript_PhaseTwo_00f0c140.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f0ca30	00/f0/stdvector_swap_00f0ca30.cpp		
+00f0caa0	00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Main_00f0caa0.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f0d630	00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00f0fb70	00/f0/NScriptCQArenaScript_Main_00f0fb70.cpp		DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z
+00403ff0	00/40/CPersistTraitsbool_TransferIn_00403ff0.cpp		
+00463334	00/46/CPersistContext_TransferMap_00463334.cpp		DEF:52:??8?$CBasicString@D@@QBE_NPBD@Z
+00475026	00/47/CPersistContext_TransferMap_00475026.cpp		DEF:52:??8?$CBasicString@D@@QBE_NPBD@Z
+0047547d	00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mlowerbound_0047547d.cpp		
+004754c6	00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mupperbound_004754c6.cpp		
+0047550f	00/47/CPersistContext_TransferMap_0047550f.cpp		DEF:52:??8?$CBasicString@D@@QBE_NPBD@Z
+00475861	00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mfind_00475861.cpp		
+004758e3	00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_insertunique_004758e3.cpp		
+004759ad	00/47/stdRbtree_Minsert_004759ad.cpp		
+00475d07	00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mlowerbound_00475d07.cpp		
+00475d50	00/47/stdRbtreeCCharStringpairconstCCharStringlongSelect1stlessCCharString_Mupperbound_00475d50.cpp		
+004b9540	00/4b/std_pushheap_004b9540.cpp	/Gr	
+004ba180	00/4b/STL_adjustheap_004ba180.cpp	/Gr	
+004dd875	00/4d/std_pushheap_004dd875.cpp	/Gr	
+004e6e9e	00/4e/std_partialsort_004e6e9e.cpp	/Gr	
+005c0e81	00/5c/CPersistTraitsNInventoryCItem_TransferOut_005c0e81.cpp		
+005e0650	00/5e/std_unguardedpartition_005e0650.cpp	/Gr	
+005e0710	00/5e/std_unguardedlinearinsert_005e0710.cpp	/Gr	
+005e08c0	00/5e/std_pushheap_005e08c0.cpp	/Gr	
+005e1170	00/5e/std_adjustheap_005e1170.cpp	/Gr	
+005e1a40	00/5e/std_linearinsert_005e1a40.cpp	/Gr	
+005e1fc0	00/5e/stdRbtree_Minsert_005e1fc0.cpp		
+005e20c0	00/5e/STL_insertionsort_005e20c0.cpp		
+005e2eb0	00/5e/std_partialsort_005e2eb0.cpp	/Gr	
+005e3740	00/5e/STL_introsortloop_005e3740.cpp		
+005e3a50	00/5e/STL_sort_005e3a50.cpp		
+00681e30	00/68/CTCCreatureOpinionOfHero_SetOpinionReactionMask_00681e30.cpp		
+006822e0	00/68/CTCCreatureOpinionOfHero_SetOpinionDeedMask_006822e0.cpp		
+006969d0	00/69/stdRbtree_Minsert_006969d0.cpp		
+0069a990	00/69/CGameCameraManager_ResetCamera_0069a990.cpp		
+006ba030	00/6b/CPersistTraitsCFaction_TransferBinaryOut_006ba030.cpp		
+006bd140	00/6b/stdRbtree_Minsert_006bd140.cpp		
+006c32b0	00/6c/stdRbtree_Minsert_006c32b0.cpp		
+006e7480	00/6e/CGameScriptInterface_CleanupActions_006e7480.cpp		
+0076df90	00/76/CTCWeaponTrail_GetStrikeEventIndexFromEventName_0076df90.cpp		
+0076e2f0	00/76/CTCWeaponTrail_CalculateInterpolatedWeaponHelpers_0076e2f0.cpp		
+0077e6a0	00/77/std_unguardedlinearinsert_0077e6a0.cpp	/Gr	
+0077e730	00/77/std_pushheap_0077e730.cpp	/Gr	
+0077e8f0	00/77/std_unguardedpartition_0077e8f0.cpp	/Gr	
+0077e960	00/77/std_linearinsert_0077e960.cpp	/Gr	
+0077f2c0	00/77/std_partialsort_0077f2c0.cpp	/Gr	
+0088eb30	00/88/CGameScriptInterface_EntitySetAsKillable_0088eb30.cpp		
+0088f570	00/88/CGameScriptInterface_Play2DSound_0088f570.cpp		
+00890470	00/89/CGameScriptInterface_EntitySetAsPickPocketed_00890470.cpp		
+008904e0	00/89/CGameScriptInterface_EntitySetAsStolen_008904e0.cpp		
+00890ba0	00/89/CGameScriptInterface_EntitySheatheWeapons_00890ba0.cpp		
+00890c10	00/89/CGameScriptInterface_EntityUnsheatheWeapons_00890c10.cpp		
+00891db0	00/89/CGameScriptInterface_IsRegionDefLoaded_00891db0.cpp		
+00891e30	00/89/CGameScriptInterface_GetWanderingPopulationScriptDefNameInRegion_00891e30.cpp		
+00892d80	00/89/CGameScriptInterface_IsCreatureGenerationEnabledForRegion_00892d80.cpp		
+00894dd0	00/89/CGameScriptInterface_EntitySetAsMarryable_00894dd0.cpp		
+00895010	00/89/CGameScriptInterface_EntitySetAsReceivingEvents_00895010.cpp		
+008953a0	00/89/CGameScriptInterface_IsHeroPerformingExpression_008953a0.cpp		
+00895430	00/89/CGameScriptInterface_IsDPadButtonHeldForExpression_00895430.cpp		
+008955c0	00/89/CGameScriptInterface_IsEntityFollowingHero_008955c0.cpp		
+00895a10	00/89/CGameScriptInterface_GetBestFishWeight_00895a10.cpp		
+00895a90	00/89/CGameScriptInterface_HeroGoFishing_00895a90.cpp		
+00895bc0	00/89/CGameScriptInterface_IsHeroPlayingOracleMinigame_00895bc0.cpp		
+00896120	00/89/CGameScriptInterface_TryToRespawnDefNamed_00896120.cpp		
+008966c0	00/89/CGameScriptInterface_GetNumberOfKeysNeededToUnlockChest_008966c0.cpp		
+008d1440	00/8d/CGameScriptThing_MsgIsHitByWithDecapitate_008d1440.cpp		
+00997e90	00/99/CAFile_ParserIsSeparatorNext_00997e90.cpp		
+0099e5a0	00/99/CCharString_FindCharPos_0099e5a0.cpp		
+0099e5f0	00/99/CCharString_SaveToFile_0099e5f0.cpp		
+0099e620	00/99/global_GFIsCharStringNumber_0099e620.cpp		
+0099e7f0	00/99/global_GFCharStringToInt_0099e7f0.cpp		
+0099e870	00/99/global_GFCharStringToUHUGE_0099e870.cpp		
+0099ea60	00/99/CCharString_AllocStringData_0099ea60.cpp		
+0099eaf0	00/99/CCharString_MakeOwnCopyOfData_0099eaf0.cpp		
+0099eb40	00/99/CCharString_MakeOwnCopyOfDataOrEmptyString_0099eb40.cpp		
+0099ed10	00/99/CCharString_GetAsLowerCase_0099ed10.cpp		
+0099ee20	00/99/CCharString_GetAsUpperCase_0099ee20.cpp		
+0099ef40	00/99/CCharString_SetAsSubString_0099ef40.cpp		
+0099efe0	00/99/CCharString_operator_0099efe0.cpp		
+0099f040	00/99/CCharString_operator_0099f040.cpp		
+0099f100	00/99/CCharString_operator_0099f100.cpp		
+0099f180	00/99/CCharString_operator_0099f180.cpp		
+0099f1f0	00/99/CCharString_Sprintf_0099f1f0.cpp		
+0099f400	00/99/CCharString_Erase_0099f400.cpp		
+0099f690	00/99/global_operator_0099f690.cpp		
+0099f9b0	00/99/global_GFBoolToCharString_0099f9b0.cpp		
+0099fa50	00/99/CCharString_CCharString_0099fa50.cpp		
+009a0300	00/9a/global_CBasicStringCharAssignFromData_009a0300.cpp		
+009a0390	00/9a/CBasicStringchar_SetString_009a0390.cpp		
+009a04e0	00/9a/global_CBasicStringCharAppendData_009a04e0.cpp		
+009a0880	00/9a/CCharString_SetAsSubString_009a0880.cpp		
+009a80b0	00/9a/CBankFileManager_BankExists_009a80b0.cpp		
+009aaf70	00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_Minsert_009aaf70.cpp		
+009ab120	00/9a/stdRbtreeCCharStringstdpairconstCCharStringCBankFileManagerCBankInfostdSelect1st_Minsert_009ab120.cpp		
+009b47f0	00/9b/STL_unguardedlinearinsert_009b47f0.cpp	/Gr	
+009b4940	00/9b/std_pushheap_009b4940.cpp	/Gr	
+009b5800	00/9b/std_unguardedpartition_009b5800.cpp	/Gr	
+009b5990	00/9b/STL_linearinsert_009b5990.cpp	/Gr	
+009b5c70	00/9b/std_adjustheap_009b5c70.cpp	/Gr	
+009bae70	00/9b/CPersistContext_ReadSection_009bae70.cpp		
+009e2e30	00/9e/CFontManager_CFontManager_009e2e30.cpp		
+009e6530	00/9e/CCharString_operatorconstCCharStringconst_009e6530.cpp		
+00a23d80	00/a2/CMeshDataBank_GetEnumerationType_00a23d80.cpp		
+00a403f0	00/a4/std_pushheap_00a403f0.cpp	/Gr	
+00a408e0	00/a4/std_adjustheap_00a408e0.cpp	/Gr	
+00a708e0	00/a7/STL_pushheap_00a708e0.cpp	/Gr	
+00a71370	00/a7/STL_adjustheap_00a71370.cpp	/Gr	
+00af2f10	00/af/std_pushheap_00af2f10.cpp	/Gr	
+00af3290	00/af/STL_adjustheap_00af3290.cpp	/Gr	
+00cb64d0	00/cb/std_pushheap_00cb64d0.cpp	/Gr	
+00d6cdc0	00/d6/NScriptCQHangingTreeEvilScript_MonitorRegionPresence_00d6cdc0.cpp		
+00d773e0	00/d7/NScriptCQHangingTreeGoodScript_MonitorRegionPresence_00d773e0.cpp		
+00def760	00/de/NScriptCQSecretPassageScriptCSPUndeadTrigger_Main_00def760.cpp		
+00d13580	00/d1/NScriptCQBountyHuntScript_Main_00d13580.cpp	/d2inlS15	DEF:20:??8?$CBasicString@D@@QBE_NPBD@Z

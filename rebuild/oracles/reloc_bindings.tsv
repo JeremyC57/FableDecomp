@@ -27526,8 +27526,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?DivideByGameSpeed@@YGMM@Z	00415fd3	0096f570
 ?CanBeTargeted@CTCLightningTarget@@QAE_NPAUSMatch@1@ABQAVCThing@@@Z	00970190	0096f770
 ?IsLineOfSightFiltered@CTools@@QAE_NPBVC3DVector@@0PAV2@1PAMPAPAVCThing@@J_N@Z	00877c40	0096f770
-?CheckSummonerChargeable@CCombatManager@@QAE_NPAVCThing@@@Z	006ea050	0096fa90
-?IsCreatureFightingThing@CCombatManager@@QBE_NABVCThingCreatureBase@@PBVCThing@@@Z	006e9310	0096fa90
 ?TransferBinaryIn@?$CPersistTraits@W4EMusicSetType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EMusicSetType@@@Z	004311df	0043119e
 ??$GFSerialiseMapBinaryIn@KKU?$less@K@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z	004312b4	00431242
 ??$GFSerialiseMapBinaryOut@KKU?$less@K@std@@@@YIXAAVCDataOutputStream@@ABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z	00431277	00431242
@@ -37452,7 +37450,6 @@ _time	00bfed22	008405f0
 ?CreatePlayers@CPlayerManager_Methods@@QAEXXZ	0044a530	004166a8
 ?InitialiseAsLocal@CNetworkClient@@QAE_NPAVCMainGameComponent@@@Z	004ae940	004166a8
 ?Uninitialise@CNetworkClient@@QAEXXZ	004ae990	004166a8
-??8CBasicStringChar@@QBE_NPBD@Z	004115a0	00859040
 ?GetHelperPointNamesFromStrikeEventName@?A0x18bdb817@@YIXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N22@Z	00858e00	00859040
 ?GetThingInCarrySlot@CTCCarrying@@QBEPAVCThing@@J@Z	006a11f0	00859040
 ?IsThingWithHelperPoints@?A0x18bdb817@@YI_NABVCThing@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	00856570	00859040
@@ -39338,7 +39335,6 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?Notify@GlobalGui@@QAEXXZ	00438310	0047db73
 ?g_pGlobalGui@@3PAUGlobalGui@@A	013b8790	0047db73
 ?DeregisterAttackedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	006ed8c0	006ed510
-?IsCombatant@CThingCreatureBase@@QAE_NXZ	00662430	006ed9e0
 ?ResetAiming@CTCWeapon@@QAEXXZ	005da4e0	006ed510
 ?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z	006ed030	006ed510
 ?_Destroy_range@@YIXPAUCSequencePointer@@0ABUCRetailAllocator@@@Z	006f2300	006ed510
@@ -39392,3 +39388,5 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?ApplyVoiceBufferProperties@CEAXManager@@QAEJPAUCEAXVoice@@KKPAXK@Z	00c4ea30	00c4f600
 _EAXPROPERTYID_EAX40_Context	012b9448	00c4f600
 _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
+?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z	006e9310	0096fa90
+?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	006ea050	0096fa90

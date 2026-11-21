@@ -9,6 +9,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 ## Account A, 2026-11-21 (owner: B rows released; agents resumed)
 - Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0
   0x00B4D370 0x00BD3070 0x00C73050 0x00CF4EC0): now `parked (released from Account B ...)`; claims line + COORDINATION_LOG entry.
+- **Landed nf215** (`batches/2026-11-21_landing_nf215/README.md`): q12300 (0x0096FA90), q12339 (0x006ED9E0), q12262 (0x004115A0 self leaf + 3
+  binders); 4,509-row recheck clean. Blocked: 0x006D41F0 (header claim), 0x00EE2A80. Next naming agent NF216 (`$S/w22/agentNF216/`): the 14
+  caller rows of 0x004115A0 with differing copies. Authoring: AUTH1 / AUTH2 found 0 of 10 (`pending/2026-11-21_auth1`, `_auth2`); Ego_d and
+  FableWin are VC10 (sizes bound, not select); AUTH3 works 0x00C73050 alone (c2 hook confirmed the route). Owner question pending: a VC10 SP1 cl in the lane.
 - **Landed nf214** (`batches/2026-11-21_landing_nf214/README.md`): NF214's 6 rows (UnpackNames family, the two CRetailVector binders), 2,220-row
   recheck clean, link +1 expected fill_n duplicate (0x0047E196 debt). Naming agent NF215 was paused for it (owner) and resumes now;
   its scratch is `$S/w22/agentNF215/` (this container: `$S` = /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad).

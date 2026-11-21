@@ -205,3 +205,6 @@ date	account	item	kind	status	note
 2026-11-21	A	q12300,q11760,q11873,q12340,q12262,q12265	naming	claimed	round 10 agent NF215 (owner 2026-11-21: "start an agent to continue the naming"): rows 0096fa90 006e9310 006ea050 006d41f0 006d4180 006ed9e0 004115a0 00ee2a80 plus the ??8CBasicStringChar family rows it locks after its census
 2026-11-21	A	q12343,q6333,q6342	naming	done	NF214 hand-back landed as nf214 (batches/2026-11-21_landing_nf214): rows 00a2ed10 00a2f0f0 00a2f120 00a2f150 007e4b60 006116e0
 2026-11-21	A	q12339	naming	claimed	NF215: correction of the earlier NF215 line, whose q12340 meant q12339 (0x00662430 / binder 0x006ED9E0); q12340 itself is not claimed
+2026-11-21	A	q12300,q12339,q12262	naming	done	NF215 landed as nf215 (batches/2026-11-21_landing_nf215): rows 0096fa90 006ed9e0 004115a0 00859040 004afe20 006238a0; q11760 / q11873 / q12265 blocked
+2026-11-21	A	q12378,q12374	naming	claimed	round 10 agent NF216 (owner 2026-11-21: "you can continue the naming queue agent too"): rows 004a0d90 004fdcb0 004fe630 005a04f7 005a4cdd 005a5b31 0065a075 007d2cc0 00870e00 00870fc0 00871290 009acee0 009af1e0 00cbfb7d
+2026-11-21	A	0x00C73050	author	claimed	AUTH3 (Account A) takes 0x00C73050 alone; 0x00A4EFC0 / 0x0093D270 / the other AUTH1 rows stay reserved acctA AUTH1 (escalated, pending advisor / owner)

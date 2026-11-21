@@ -141,6 +141,12 @@ public:
     // `call Compare 0x00411570 ; neg eax ; sbb al,al ; inc al` (CV_BeardyBaldyScript::Main 0x00E4FB88..0x00E4FB98, the landed
     // chunk 778 WatchForQuestCardConditions model), i.e. Compare(PData, text) == 0 (FableWin ??8?$CBasicString@D@@QBE_NPBD@Z).
     bool operator==(const T* text) const { return Compare(PData,text) ? false : true; }
+#elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO)
+    // Retail opt-in (NF215, 2026-11-21, q12262): the out-of-line body of 0x004115A0 visible to a caller that calls it (like
+    // FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE), spelled as the owner row is (Compare-result == 0). With FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+    // the pick-any COMDAT the caller's object carries is the owner's 88-byte body (Compare expanded, `xor ecx,ecx ; test eax,eax ; sete cl`
+    // on each return path) instead of the 76-byte `? false : true` copy.
+    __declspec(noinline) bool operator==(const T* text) const { return Compare(PData,text)==0; }
 #elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE)
     // Retail opt-in (row 0x007D2CC0 CTCTavernGameCoinGolf::EnableCourse): the template body visible but called out of line
     // (0x004115A0 COMDAT): VC7.1 then knows it writes no memory, so the caller's string pointer survives the call (no second null test).

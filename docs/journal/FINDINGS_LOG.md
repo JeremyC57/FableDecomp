@@ -1590,3 +1590,10 @@ against CODAApi.lib, or stay compiled C++?
   '/d2inlS34'. The lane's `recheck.py` also mis-grades them: it adds `/Oy-` to such an entry (0x005414A0 / 0x00E0A510 graded DIFFER in the
   nf214 recheck and RELOCATION_MATCH with their own `// Flags:` lines). Fix: write each as `/O2 /Oy /W3 <extra>` (verify_and_land.py's own
   form) and regrade; nf214's two new entries use the full form. Not changed in nf214 (outside its scope).
+- 2026-11-21 (Account A, NF215, landing nf215): 0x006D41F0 CPersistTraits<pair<CCharString,long>>::TransferIn stays blocked. The advisor
+  form (plain inline `CCharString::operator!=(const char*)`, the "(" test as `ReadAsSymbol() != "("`) grades DIFFER(307v295), the same
+  object as NF209 form 1: the != folds into the same Compare expansion as the == spelling. Against the hypothesis: retail has an
+  out-of-line `??9CCharString@@QBE_NPBD@Z` at 0x0099E960 (landed, 65 B, calls 0x004115A0) that FableWin.pdb 0x02F61900 places with the
+  CCharString .cpp bodies, and 0x006D41F0 never calls it. Still to try: a "(" test that reaches CBasicString<char>::Compare directly, with
+  the other two tests calling 0x004115A0. CCharString cannot call the protected static Compare, so that body changes fable_string.h access
+  (a header claim). Keep 0x006D41F0 / 0x006D4180 out of naming slices until then.

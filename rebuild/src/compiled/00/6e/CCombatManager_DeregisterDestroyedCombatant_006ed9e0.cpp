@@ -5,8 +5,7 @@
 //   the reference and the enum push the same words).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED9E0, 148 bytes (160 with padding).
-// Callees: the creature's attacking test 0x00662410 and combatant test 0x00662430 (manifest labels
-//          propagated), the combatant map's find @ 0x006F0250, CCombatManager::DeregisterAttackingCombatant
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 and IsInMeleeAsAttacked 0x00662430, the combatant map's find @ 0x006F0250, CCombatManager::DeregisterAttackingCombatant
 //          0x006ED510 / DeregisterAttackedCombatant 0x006ED8C0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 //          0x0040F020, CTCStealth::SetAsInDanger(CThing*, EDangerStatus) 0x00747B80.
 //
@@ -22,6 +21,9 @@
 //   the STLport map<unsigned __int64, CCombatantInfo> (stlport/fable_map.h) over the shared engine/CCombatantInfo.h (retail 0x70 bytes,
 //   AttackerInfo.Attacked at +4); find's out-of-line _M_find<unsigned __int64> 0x006F0250 is declared only
 //   (FABLE_RETAIL_STLP_TREE_MFIND_DECL), so the call binds the self row's member-template spelling.
+// Name fix (NF215, 2026-11-21, q12339): 0x00662430 was the stand-in CThingCreatureBase::IsCombatant() (?IsCombatant@CThingCreatureBase@@QAE_NXZ);
+//   it is Ego_r.pdb (0x0053D2C0) + FableWin.pdb (0x01DA3370) ?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ (the self row's Leaf), respelled
+//   in place in the row's existing local model as NF211 did 0x006ED510.
 class CTCBase;
 
 #define FABLE_RETAIL_STLP_TREE_MFIND_DECL
@@ -32,7 +34,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase : public CThing { public:
     bool IsInMeleeAsAttacker() const;                // 0x00662410
-    bool IsCombatant();                         // 0x00662430
+    bool IsInMeleeAsAttacked() const;           // 0x00662430
 };
 
 namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
@@ -64,6 +66,6 @@ void CCombatManager::DeregisterDestroyedCombatant(CThingCreatureBase* creature)
         if (attacked->GetTC(TCI_STEALTH, &stealth))
             stealth->SetAsInDanger(*creature, NStealth::DANGER_STATUS_NULL);
     }
-    if (creature->IsCombatant())
+    if (creature->IsInMeleeAsAttacked())
         DeregisterAttackedCombatant(creature);
 }

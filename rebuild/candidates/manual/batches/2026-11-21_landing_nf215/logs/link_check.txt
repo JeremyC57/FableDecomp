@@ -1,0 +1,13 @@
+# link of all 4509 rechecked objects, /DLL /NOENTRY /FORCE /NODEFAULTLIB; LNK4006 = duplicate definition under /FORCE
+HEAD control: 423; landing: 407
+per-symbol count changes (HEAD < > landing):
+103d102
+<      15 ??8CBasicStringChar@@QBE_NPBD@Z
+123c122
+<      40 ?Compare_00411570@@YIJPBD0@Z
+---
+>      38 ?Compare_00411570@@YIJPBD0@Z
+193c192
+<       1 ?UnassignString@CCharString@@IAEXXZ
+---
+>       2 ?UnassignString@CCharString@@IAEXXZ
