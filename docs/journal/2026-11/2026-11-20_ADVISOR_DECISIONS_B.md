@@ -312,3 +312,13 @@ Update 2026-11-21: 0x00666D40 landed (f2f0b4594) with Ego_d-consistent text and 
 the offset `C3DVector to_centre(0.0f, 0.0f, radius); C3DVector from = pos + to_centre;` (27/16 B in Ego_d = VC7.1 + 3 per float
 variable + 4 per 0.0f literal, calibrated on landed 0x0075C420 l.206 / 0x00B187D0 l.74), and 2785 is `from.Z += 1.0f`. The flip came
 from check (3). The PDB-contradicted group is back to three: 0x007602F0, 0x00763060, 0x0093D270.
+Update 2026-11-21 (0x0093D270): p25R calibrated Ego_d line 55's float-argument cost on landed 0x00AC27A0 l.97 (23 B both compilers): the
+by-value getter is 76 = 76; a direct member read would be 72 and a `const float&` getter 78, so Ego_d's size rejects the h3 bracket
+too (contradicted by FableWin's mangling and Ego_d's size). Ego_d TPI: the getter is public, returns float by value; the member is
+private; there are no LF_FRIEND records. Correction to the earlier ruling: the late read is not a source-level fact. Retail's order is a
+legal evaluation of the by-value text if the getter is expanded after the other argument's nested call; the open question is what
+orders that expansion. Next checks: trace the $T (front-end IL v c2); close the result-usage lever (each form's /Od size, lines
+54/56); validate the mini against several landed rows with the simple shape; gate any flag candidate on the landed chunk-732
+TU-mates. Still a bracket.
+Planning: per the advisor, the owner's "reserve the largest next" set is reserved once 0x00521CF0 lands, without waiting on the
+stalled rows, which stay in rotation.
