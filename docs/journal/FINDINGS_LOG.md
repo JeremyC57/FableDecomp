@@ -1543,3 +1543,7 @@ against CODAApi.lib, or stay compiled C++?
   or a named float local drops it; /Op drops the $T but loads early. Retail at 0x0093D270 and 0x006AA720 (both
   GetCombatManager().GetProximityForNavigation()) shows the deferred load a `const float&` getter gives, against FableWin's by-value
   QBEMXZ mangling. Minis: scratch p25R tmp/mini/o3..o14.cpp. Ruling in 2026-11-20_ADVISOR_DECISIONS_B.md.
+- 2026-11-21 (B, p25R, 0x00666D40): Ego_d VC10 /Od line-size calibration: a C3DVector ctor from three float literals costs +4 B per
+  0.0f literal and +3 B per float variable argument over VC7.1 (0x0075C420 l.206 `offset(0.0f,0.0f,0.0f)` 14 v 26); `+= 1.0f` is
+  equal (0x00B187D0 l.74, 18 B). A "missing" Ego_d local can be an offset vector (`to_centre(0,0,radius)`, `from = pos + to_centre`)
+  rather than a point: check the local's role before ruling it contradicted.

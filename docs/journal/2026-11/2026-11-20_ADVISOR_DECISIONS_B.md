@@ -308,3 +308,7 @@ reserved, same call as 0x00763060. "Later revision" is unevidenced: the rest of 
 test would not pass r1. Flip checks in pending/2026-11-20_p25_open/00666d40/NOTES.md.
 Group note: four rows now byte-match only with PDB-contradicted text and stay unlanded under the same rule: 0x007602F0, 0x00763060,
 0x0093D270, 0x00666D40.
+Update 2026-11-21: 0x00666D40 landed (f2f0b4594) with Ego_d-consistent text and no Inferred line, superseding the bracket: to_centre is
+the offset `C3DVector to_centre(0.0f, 0.0f, radius); C3DVector from = pos + to_centre;` (27/16 B in Ego_d = VC7.1 + 3 per float
+variable + 4 per 0.0f literal, calibrated on landed 0x0075C420 l.206 / 0x00B187D0 l.74), and 2785 is `from.Z += 1.0f`. The flip came
+from check (3). The PDB-contradicted group is back to three: 0x007602F0, 0x00763060, 0x0093D270.
