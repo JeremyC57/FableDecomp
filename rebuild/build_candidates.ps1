@@ -401843,6 +401843,13 @@ $catalog = @(
         TestSource = '00/78/CTCFlammable_GetClosestFirePointTo_00780430_test.cpp'
         PassPattern = '00780430_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00852e10'
+        Module = 'NCameraModes::CScriptModuleFOVZoomStayRelative'
+        Source = '00/85/NCameraModesCScriptModuleFOVZoomStayRelative_CScriptModuleFOVZoomStayRelative_00852e10.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFOVZoomStayRelative_CScriptModuleFOVZoomStayRelative_00852e10_test.cpp'
+        PassPattern = '00852e10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

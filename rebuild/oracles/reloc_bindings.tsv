@@ -39376,3 +39376,5 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?DrawLinkedBuildingsDebug@CThingManager@@0_NA	013b8a81	00833c00
 ?GetCurrentStateGroupDebugText@CAIBrain@@QBEPBVCCharString@@XZ	0088b7e0	00833c00
 ?g_DebugDrawCreatureNames@@3_NA	013b86e8	00833c00
+??0CScriptModuleFOVZoom@NCameraModes@@QAE@ABVC3DVector@@00MJ_N@Z	00852560	00852e10
+??_7CScriptModuleFOVZoomStayRelative@NCameraModes@@6B@	01275a94	00852e10

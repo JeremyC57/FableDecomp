@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00852e10   RELOCATION_MATCH PASS   CScriptModuleFOVZoomStayRelative
+
+WINS: 1
+  00852e10 RELOCATION_MATCH NCameraModes::CScriptModuleFOVZoomStayRelative::??0CScriptModuleFOVZoomStayRelative@NCameraModes@@QAE@V?$CIntelligentPointer@VCThing@@@@ABVC3DVector@@11MJ_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCScriptModuleFOVZoomStayRelative_CScriptModuleFOVZoomStayRelative_00852e10
