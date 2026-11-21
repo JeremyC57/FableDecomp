@@ -1,0 +1,11 @@
+# link of all 4269 rechecked objects, /DLL /NOENTRY /FORCE /NODEFAULTLIB; LNK4006 = duplicate definition under /FORCE
+HEAD control (12 changed rows from HEAD; funclets 01214f80/88 built with the HEAD parent text inlined): 447; landing: 452
+per-symbol count changes (HEAD < > landing):
+91c91
+<       2 ??1CCharString@@QAE@XZ
+---
+>       3 ??1CCharString@@QAE@XZ
+95a96
+>       3 ??1CircularQueue@@QAE@XZ
+164a166
+>       1 ?NullString@CCharString@@2V1@A

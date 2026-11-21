@@ -6611,7 +6611,6 @@ __imp__CreateSemaphoreA@16	0143fea8	00c36120
 ?Cleanup@CTCFishingSpot@@QAEXXZ	00c3d160	00c3cb30
 ??_7CVtable_012b5a84@@6B@	012b5a84	00c3cea0
 ??1CAIStateGroupBase_00c3cf40@@QAE@XZ	00c4cf40	00c3cf40
-??1CCoverMember_00c3cf40@@QAE@XZ	00c44550	00c3cf40
 ?Cleanup@CAIStateGroup_CreatureUseCoverBase@@QAEXXZ	00c44170	00c3cf40
 ?g_CurrentInstance_0143bb48@@3PAXA	0143bb48	00c3d090
 ?PushFree@CCombatActionPool_00c3c9b0@@QAEXPAUCPooledCombatAction@@@Z	00c3ca00	00c3d610
@@ -6695,9 +6694,7 @@ __CIpow	00bfeb40	00c40e50
 ??0CAIStateGroupBase_00c42d60@@QAE@XZ	00c4cf20	00c42d60
 ??0CCoverMember_00c42d60@@QAE@XZ	00c44250	00c42d60
 ??_7CAIStateGroup_CreatureUseCoverBase_00c42d60@@6B@	012b5a88	00c42d60
-?Allocate@CMarkedBuffer@@QAE_NJ@Z	00c44360	00c43ec0
 ?Cleanup@CMarkedBufferOwner@@QAEXXZ	00c436c0	00c43ec0
-?Release@CMarkedBuffer@@QAEXXZ	00c44550	00c43ec0
 ?Release@CReferenceLease@@QAEXXZ	00c3c5f0	00c43ec0
 ?Release@CResourceManager@@QAEXPAUCResourceLink@@@Z	00c4d070	00c43ec0
 ?Shutdown@CMarkedBufferOwner@@QAEXXZ	00c43810	00c43ec0
@@ -6708,9 +6705,7 @@ __CIpow	00bfeb40	00c40e50
 ?GetState@CObj2@@QAEHXZ	00c3c750	00c43f80
 ?g_logger@@3UCLogger@@A	0143bb58	00c43f80
 ?g_ErrorState@@3UCErrorState@@A	0143bb58	00c44360
-_EventAlloc	00c3c360	00c44360
 ?ReleaseMark@CMarkedEntry@@QAEXXZ	00c3c5f0	00c443d0
-?ClearMarks@CMarkedBuffer_00c44550@@QAEXXZ	00c443d0	00c44550
 ?FreeBlock_00c3c370@@YAXPAX@Z	00c3c370	00c44550
 ??0CAIStateGroup_CreatureUseCoverBase_00c42d60@@QAE@XZ	00c42d60	00c44580
 ??_7CAIStateGroup_Derived_00c44580@@6B@	012b7b88	00c44580
@@ -7430,9 +7425,6 @@ _g_List_RecursiveDestroy_Deleter2_01229d00	013bae50	01229d00
 _g_List_RecursiveDestroy_Deleter3_01229d60	013bae5c	01229d60
 _g_Cleanup_LTextTreeWalker_0_01229e80	013baf00	01229e80
 _g_Cleanup_LTextTreeWalker_5_0122a4f0	013bca04	0122a4f0
-?Invoke@AutoTinyMethodTarget@@QAEXXZ	0099e9b0	0122a5e0
-?g_AutoTinyMethodCounter@@3IA	013bd800	0122a5e0
-?g_AutoTinyMethodObject@@3UAutoTinyMethodTarget@@A	013bd804	0122a5e0
 _g_Cleanup_LTextTreeWalker_6_0122a7c0	013ca86c	0122a7c0
 ?Invoke@AutoTinyFieldTarget@@QAEXXZ	0099a300	0122aad0
 ?g_AutoTinyFieldObject@@3UAutoTinyFieldTarget@@A	013d2d2c	0122aad0
@@ -39384,3 +39376,6 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z	00a2f0f0	00a35b30
 ?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z	00a2f150	00a35b50
 ?Release@CircularQueue@@QAEXXZ	00c44550	00c43810
+?Allocate@CircularQueue@@QAE_NJ@Z	00c44360	00c43ec0
+?NullString@CCharString@@2V1@A	013bd804	0122a5e0
+??1CircularQueue@@QAE@XZ	00c3cf30	01214f88

@@ -16725,9 +16725,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0122a5e0'
-        Module = 'Cons_val_std_allocator_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_enum_EHeroMorphType_class_CParticleMorphs'
-        Source = '01/22/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0122a5e0.cpp'
-        TestSource = '01/22/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0122a5e0_test.cpp'
+        Module = 'CCharString'
+        Source = '01/22/CCharString_dynamicatexitdestructorforNullString_0122a5e0.cpp'
+        TestSource = '01/22/CCharString_dynamicatexitdestructorforNullString_0122a5e0_test.cpp'
         PassPattern = 'AUTO_TINY_0122a5e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -76469,9 +76469,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3cf30'
-        Module = '_global'
-        Source = '00/c3/CEngineResourceManager_WorldFrameUpdate_00c3cf30.cpp'
-        TestSource = '00/c3/CEngineResourceManager_WorldFrameUpdate_00c3cf30_test.cpp'
+        Module = 'CircularQueue'
+        Source = '00/c3/CircularQueue_CircularQueue_00c3cf30.cpp'
+        TestSource = '00/c3/CircularQueue_CircularQueue_00c3cf30_test.cpp'
         PassPattern = 'PASS_00c3cf30'
     }
     [pscustomobject]@{
@@ -200536,9 +200536,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44550'
-        Module = 'CMarkedBuffer_00c44550'
-        Source = '00/c4/CMarkedBuffer00c44550_Release_00c44550.cpp'
-        TestSource = '00/c4/CMarkedBuffer00c44550_Release_00c44550_test.cpp'
+        Module = 'CircularQueue'
+        Source = '00/c4/CircularQueue_Release_00c44550.cpp'
+        TestSource = '00/c4/CircularQueue_Release_00c44550_test.cpp'
         PassPattern = '00c44550_TEST PASS'
     }
     [pscustomobject]@{
@@ -232048,9 +232048,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44360'
-        Module = 'CEventDataBuffer'
-        Source = '00/c4/CEventDataBuffer_Allocate_00c44360.cpp'
-        TestSource = '00/c4/CEventDataBuffer_Allocate_00c44360_test.cpp'
+        Module = 'CircularQueue'
+        Source = '00/c4/CircularQueue_Allocate_00c44360.cpp'
+        TestSource = '00/c4/CircularQueue_Allocate_00c44360_test.cpp'
         PassPattern = '00c44360_TEST PASS'
     }
     [pscustomobject]@{
