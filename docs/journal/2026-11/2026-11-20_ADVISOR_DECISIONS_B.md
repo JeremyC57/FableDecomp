@@ -322,3 +322,14 @@ orders that expansion. Next checks: trace the $T (front-end IL v c2); close the 
 TU-mates. Still a bracket.
 Planning: per the advisor, the owner's "reserve the largest next" set is reserved once 0x00521CF0 lands, without waiting on the
 stalled rows, which stay in rotation.
+
+## 2026-11-21 Which rule governs inline devices in the large acctC rows (p25R question; coordinator, from standing rules)
+The author brief's blanket "no #pragma inline_depth" is narrower than the owner decision and is superseded by it: EXTRA_RULES.md
+(owner 2026-11-08) allows, for residues that are pure inline decisions only, in preference order (1) plain C++, (2) a per-row
+/d2inlT / /d2inlS flag, (3) a scoped source control (inline_depth region, auto_inline, noinline / FABLE_FORCEINLINE on a row-local
+helper), each with an `// Inline-budget:` line, the smallest N, vland MATCH and a passing behaviour test. B's rulings add: a region
+encloses one statement after one bounded plain-C++ round (0x00E5E350). Not covered: (a) row-local FABLE_FORCEINLINE *definitions of
+members a shared header already models* (CTimer::operator=, GetTime, CScriptThing::GetPos / IsOpenDoor): that is a duplicate class
+model; those bodies go in the shared header as add-only opt-ins; (b) fitted counts the PDBs contradict (0x00BD3070's 16 dead asserts
+against FableWin's size for 3): out; fitted row-body statements Ego_d does not contradict may be Inferred under the 0x00B24850 checks;
+(c) duplicated calls or loop shapes must agree with Ego_d's line table (decode first; Inferred only if undecidable).
