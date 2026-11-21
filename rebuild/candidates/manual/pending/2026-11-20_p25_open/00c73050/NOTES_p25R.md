@@ -28,3 +28,12 @@ Every combination: 672 edi (the a3 IsEmpty arms 677 edi).
 ## Next (main 2026-11-21)
 Candidate #30 (the processed-loop temp, lines 118-119 of c7_best) is the one p25N's mask analysis points at: try a text where its
 range is shorter / its last use is before the IsLooping tuples. Find a source-level equivalent of /d2inlT150 (or proof the TU used it).
+## #30 round 2 (p25R, on src/c7s3/fi.cpp = c7_best with __forceinline GetSourcei / IsPlaying, no flags: 672 edi)
+| change | grade |
+|---|---|
+| `long processed;` at function top (m1) | 672 edi |
+| `if (processed)` (m2) | 672 edi |
+| `processed != 0` loop test (m3) | 666 (other code) |
+| `0 < processed; processed--` (m4) | 672 edi |
+| `if (processed > 0)` guard (m5) | 673 |
+(earlier l1..l8 loop forms: l1/l2/l6 672 edi, l3 680, l4 684, l5 677, l7 683, l8 687). No text found that shortens #30's range.

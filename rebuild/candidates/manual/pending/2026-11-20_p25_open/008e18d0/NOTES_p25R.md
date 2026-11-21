@@ -30,12 +30,13 @@ Harness: tmp/dt/run.sh <tag> <defines...> (8e_M + defines, hdr8e, /Gr /d2inlT65,
    moves it. With the inner expanded the dtor is sz 73 / c1 67 and loop 1 = 65 (call at T65), sky 56 (expand): retail's split, as main said.
    Retail 0x006E2500 lies far outside this TU's range (0x008DAxxx-0x008E2xxx), i.e. the linker took the COMDAT from another obj; a dtor
    compiled at T>65 (default 74) gives exactly retail's body and, seen at this TU's T65 sites, exactly retail's loop-1 call / sky expand.
-2. LowerBound loop 2 v sky: every field the decision (0x1078d1aa..0x1078d354) reads is identical: sz 60, a 23, pen 0, sav
+2. LowerBound loop 2 v sky: every HOOKED field plus an equal final compare operand (sc 63 = 63) is identical (b4e 155 sends both through
+   0x10791c78, not disassembled): sz 60, a 23, pen 0, sav
    [8,0,0,0,0,2,0], c0 / c22c / c1 / cE 52, b4e 155, callee-info block (ci_raw) byte-identical, k 7, S 9, T 65, d50 1, flo 6.25e8 / fhi 0.
    Only g (growth 1920 v 2304; used only in `sz > S && g + a > 9000`, far from the cap) and the site pointer differ.
    Ego_d (ref/8e18d0/egod_lines.tsv, 54 lines): GetTC lines 3316 / 3344 / 3356 = 517 / 544 / 534 B (loop 1 / loop 2 / sky; GetTC is
    FABLE_FORCEINLINE so Ego_d expands it). Loop 2 - sky = 10 B = the extra vector operator[] call (ours /Od: 42 v 31 = 11); loop 1 v loop 2
-   (same text) differ by 27 B, so the remainder is frame-displacement noise (VC10 /Od fresh locals per forceinline expansion). No
+   (same text) differ by 27 B, so the remainder is presumably frame-displacement noise (UNVERIFIED; does not affect loop 2 v sky). No
    evidence of a different accessor chain before GetTC in loop 2.
 3. Grade on record 2069v2073 = hand827 n5 (2026-11-07, STATUS.tsv): n2 (CVECTORMAP_INLINE_LOWERBOUND + a LOCAL ~CParticleUpdateParameters
    body + sky block in do{}while(0) = DEVICE) + loop 2 testing size() each pass; md 529 difflines (8e_M: 460). Source not kept (only n4,

@@ -1566,3 +1566,8 @@ against CODAApi.lib, or stay compiled C++?
   (0x1070CFDF), dropping only DFS back edges (cycles); "needed" (0x20) propagates over callee edges whose callee+0x37 lacks 0x400;
   functions reached only through vtables (??_G) are compiled later. Retail compiled 0x00E20600 Main before ~CIsThingAlive and
   CPredicate_And<CITA,CITA> (their COMDATs sit after Main). TU composition can therefore decide per-row inline splits.
+- 2026-11-21 (B, p25R): c2's budget path keeps a running total (0x107284A3): a site is rejected once [0x10882B5C] passes 35000, else
+  accepted when callee size (+0x6D) <= 40 or <= the limit argument; it applies only to callees not yet compiled. PlayWave 0x00F1EED0
+  (natural base) compiles 47th of 47 with every callee compiled first, so all its sites take the score heuristic. 0x00E20600 Main
+  has direct, non-back callee edges to every predicate function and no TU symbol has +0x37 & 0x400. Harness:
+  pending/2026-11-20_c2_symbol_order/tools_c1harness.
