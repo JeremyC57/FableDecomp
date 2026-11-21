@@ -175,20 +175,20 @@ CComponent* CTCInventoryTrade::GetMenuBranchFromDefIndex(long defIndex, CCompone
     CGameDefinitionManager::Get().GetDefGlobalIndexFromName("INVENTORY_CATEGORY_TROPHIES");
     CGameDefinitionManager::Get().GetDefGlobalIndexFromName("INVENTORY_CATEGORY_POTIONS");
     long category = CTCInventoryItem::GetInventoryCategory(defIndex);
-    if (category == melee)         { branch = menu->FindChild("UI_TRADING_MENU_MELEE_ENTRY");    type = ITEM_MENU_TYPE_WEAPONS; }
-    else if (category == ranged)   { branch = menu->FindChild("UI_TRADING_MENU_RANGED_ENTRY");   type = ITEM_MENU_TYPE_WEAPONS; }
-    else if (category == headwear) { branch = menu->FindChild("UI_TRADING_MENU_HEAD_ENTRY");     type = ITEM_MENU_TYPE_CLOTHES; }
-    else if (category == torso)    { branch = menu->FindChild("UI_TRADING_MENU_TORSO_ENTRY");    type = ITEM_MENU_TYPE_CLOTHES; }
-    else if (category == gloves)   { branch = menu->FindChild("UI_TRADING_MENU_HANDS_ENTRY");    type = ITEM_MENU_TYPE_CLOTHES; }
-    else if (category == legwear)  { branch = menu->FindChild("UI_TRADING_MENU_LEGS_ENTRY");     type = ITEM_MENU_TYPE_CLOTHES; }
-    else if (category == footwear) { branch = menu->FindChild("UI_TRADING_MENU_FEET_ENTRY");     type = ITEM_MENU_TYPE_CLOTHES; }
-    else if (category == suits)    { branch = menu->FindChild("UI_TRADING_MENU_SUITS_ENTRY");    type = ITEM_MENU_TYPE_CLOTHES; }
-    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)0) { branch = menu->FindChild("UI_TRADING_MENU_TROPHIES_ENTRY"); type = ITEM_MENU_TYPE_ITEMS; }
-    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)1) { branch = menu->FindChild("UI_TRADING_MENU_POTIONS_ENTRY");  type = ITEM_MENU_TYPE_ITEMS; }
-    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)2) { branch = menu->FindChild("UI_TRADING_MENU_GIFTS_ENTRY");    type = ITEM_MENU_TYPE_ITEMS; }
-    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)3) { branch = menu->FindChild("UI_TRADING_MENU_PRODUCE_ENTRY");  type = ITEM_MENU_TYPE_ITEMS; }
-    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)4) { branch = menu->FindChild("UI_TRADING_MENU_OTHERS_ENTRY");   type = ITEM_MENU_TYPE_ITEMS; }
-    else                           { branch = menu->FindChild("UI_TRADING_MENU_OTHERS_ENTRY");   type = ITEM_MENU_TYPE_ITEMS; }
+    if (category == melee)         { branch = menu->FindChild("UI_TRADING_MENU_MELEE_ENTRY");    type = MENU_TYPE_WEAPONS; }
+    else if (category == ranged)   { branch = menu->FindChild("UI_TRADING_MENU_RANGED_ENTRY");   type = MENU_TYPE_WEAPONS; }
+    else if (category == headwear) { branch = menu->FindChild("UI_TRADING_MENU_HEAD_ENTRY");     type = MENU_TYPE_CLOTHING; }
+    else if (category == torso)    { branch = menu->FindChild("UI_TRADING_MENU_TORSO_ENTRY");    type = MENU_TYPE_CLOTHING; }
+    else if (category == gloves)   { branch = menu->FindChild("UI_TRADING_MENU_HANDS_ENTRY");    type = MENU_TYPE_CLOTHING; }
+    else if (category == legwear)  { branch = menu->FindChild("UI_TRADING_MENU_LEGS_ENTRY");     type = MENU_TYPE_CLOTHING; }
+    else if (category == footwear) { branch = menu->FindChild("UI_TRADING_MENU_FEET_ENTRY");     type = MENU_TYPE_CLOTHING; }
+    else if (category == suits)    { branch = menu->FindChild("UI_TRADING_MENU_SUITS_ENTRY");    type = MENU_TYPE_CLOTHING; }
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)0) { branch = menu->FindChild("UI_TRADING_MENU_TROPHIES_ENTRY"); type = MENU_TYPE_ITEMS; }
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)1) { branch = menu->FindChild("UI_TRADING_MENU_POTIONS_ENTRY");  type = MENU_TYPE_ITEMS; }
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)2) { branch = menu->FindChild("UI_TRADING_MENU_GIFTS_ENTRY");    type = MENU_TYPE_ITEMS; }
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)3) { branch = menu->FindChild("UI_TRADING_MENU_PRODUCE_ENTRY");  type = MENU_TYPE_ITEMS; }
+    else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == (EUIInventoryCategory)4) { branch = menu->FindChild("UI_TRADING_MENU_OTHERS_ENTRY");   type = MENU_TYPE_ITEMS; }
+    else                           { branch = menu->FindChild("UI_TRADING_MENU_OTHERS_ENTRY");   type = MENU_TYPE_ITEMS; }
     return branch;
 }
 #pragma auto_inline(on)
@@ -270,19 +270,19 @@ void CTCInventoryTrade::BuyItem(CComponent* entry, long count)
             CComponent* text = 0;
             long total = 0;
             switch (type) {
-            case ITEM_MENU_TYPE_ITEMS:
+            case MENU_TYPE_ITEMS:
                 text = sellEntry->FindChild("UI_TRADING_ITEMS_TEXT");
                 total = (TotNumItemsToSell += count);
                 totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_ITEMS") + xString;
                 subtitleName = ITEMS_SUBTITLE;
                 break;
-            case ITEM_MENU_TYPE_WEAPONS:
+            case MENU_TYPE_WEAPONS:
                 text = sellEntry->FindChild("UI_TRADING_WEAPONS_TEXT");
                 total = (TotNumWeaponsToSell += count);
                 totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_WEAPONS") + xString;
                 subtitleName = WEAPONS_SUBTITLE;
                 break;
-            case ITEM_MENU_TYPE_CLOTHES:
+            case MENU_TYPE_CLOTHING:
                 text = sellEntry->FindChild("UI_TRADING_CLOTHING_TEXT");
                 total = (TotNumClothesToSell += count);
                 totalText = textBank.GetTextBySymbol("TEXT_GUI_MENU_CLOTHING") + xString;

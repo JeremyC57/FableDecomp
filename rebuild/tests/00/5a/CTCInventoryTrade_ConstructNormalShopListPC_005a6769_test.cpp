@@ -47,7 +47,7 @@ class CManager {public:static CManager*GetInstance(){static CManager m;return &m
 }
 template<class F,class T>T FABLE_FASTCALL GFDebugPDynamicCast(F p,T){return static_cast<T>(p);}
 class CTCInventoryTrade {public:
- enum EItem_Menu_Type{ITEM_MENU_TYPE_CLOTHES=0,ITEM_MENU_TYPE_WEAPONS=1,ITEM_MENU_TYPE_ITEMS=2};
+ enum EItem_Menu_Type{MENU_TYPE_CLOTHING=0,MENU_TYPE_WEAPONS=1,MENU_TYPE_ITEMS=2};
  std::list<long>NotInStock;
  long TotNumClothesToSell,TotNumWeaponsToSell,TotNumItemsToSell,TotNumClothesToBuy,TotNumWeaponsToBuy,TotNumItemsToBuy,TotNumClothesWanted,TotNumWeaponsWanted,TotNumItemsWanted;
  CThing*GetBuildingThing()const{return &Building;}
@@ -107,9 +107,9 @@ CComponent* CTCInventoryTrade::ConstructNormalShopListPC(const std::vector<std::
         for (std::vector<std::pair<long, long> >::const_iterator it = sellable.begin(); it != sellable.end(); ++it) {
             if (shop->IsValidStockItem(it->first)) {
                 switch (GetTypeFromDefIndexPC(it->first)) {
-                case ITEM_MENU_TYPE_CLOTHES: TotNumClothesToSell += it->second; break;
-                case ITEM_MENU_TYPE_WEAPONS: TotNumWeaponsToSell += it->second; break;
-                case ITEM_MENU_TYPE_ITEMS:   TotNumItemsToSell += it->second; break;
+                case MENU_TYPE_CLOTHING: TotNumClothesToSell += it->second; break;
+                case MENU_TYPE_WEAPONS: TotNumWeaponsToSell += it->second; break;
+                case MENU_TYPE_ITEMS:   TotNumItemsToSell += it->second; break;
                 }
             }
         }
@@ -135,9 +135,9 @@ CComponent* CTCInventoryTrade::ConstructNormalShopListPC(const std::vector<std::
             if (IsItemAffordable(item_def, 1) && (ptc_inventory->IsSpaceInInventoryForItem(item_def) || IsSpecialCase(item_def)) &&
                 quantity > 0 && !AlreadyHaveSpecial(item_def)) {
                 switch (GetTypeFromDefIndexPC(item_def)) {
-                case ITEM_MENU_TYPE_CLOTHES: TotNumClothesToBuy += it->second; break;
-                case ITEM_MENU_TYPE_WEAPONS: TotNumWeaponsToBuy += it->second; break;
-                case ITEM_MENU_TYPE_ITEMS:   TotNumItemsToBuy += it->second; break;
+                case MENU_TYPE_CLOTHING: TotNumClothesToBuy += it->second; break;
+                case MENU_TYPE_WEAPONS: TotNumWeaponsToBuy += it->second; break;
+                case MENU_TYPE_ITEMS:   TotNumItemsToBuy += it->second; break;
                 }
             }
         }
@@ -157,9 +157,9 @@ CComponent* CTCInventoryTrade::ConstructNormalShopListPC(const std::vector<std::
     if (!wanted_list.empty()) {
         for (std::vector<long>::iterator it = wanted_list.begin(); it != wanted_list.end(); ++it) {
             switch (GetTypeFromDefIndexPC(*it)) {
-            case ITEM_MENU_TYPE_CLOTHES: ++clothes_wanted; break;
-            case ITEM_MENU_TYPE_WEAPONS: ++TotNumWeaponsWanted; break;
-            case ITEM_MENU_TYPE_ITEMS:   ++items_wanted; break;
+            case MENU_TYPE_CLOTHING: ++clothes_wanted; break;
+            case MENU_TYPE_WEAPONS: ++TotNumWeaponsWanted; break;
+            case MENU_TYPE_ITEMS:   ++items_wanted; break;
             }
         }
     }

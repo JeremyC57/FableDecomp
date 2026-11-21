@@ -9,14 +9,14 @@
 #include <string>
 #include <utility>
 
-enum EItem_Menu_Type { ITEM_MENU_TYPE_CLOTHES = 0, ITEM_MENU_TYPE_WEAPONS = 1, ITEM_MENU_TYPE_ITEMS = 2 };
+enum EItem_Menu_Type { MENU_TYPE_CLOTHING = 0, MENU_TYPE_WEAPONS = 1, MENU_TYPE_ITEMS = 2 };
 typedef int Branch;                                   // a menu branch component (model: an id)
 
 static Branch GetMenuBranchFromDefIndex(long def, EItem_Menu_Type& type)
 {
-    if (def >= 100 && def < 200) { type = ITEM_MENU_TYPE_WEAPONS; return def < 150 ? 1 : 2; }   // melee / ranged
-    if (def >= 200 && def < 300) { type = ITEM_MENU_TYPE_CLOTHES; return 3; }
-    type = ITEM_MENU_TYPE_ITEMS; return 4;
+    if (def >= 100 && def < 200) { type = MENU_TYPE_WEAPONS; return def < 150 ? 1 : 2; }   // melee / ranged
+    if (def >= 200 && def < 300) { type = MENU_TYPE_CLOTHING; return 3; }
+    type = MENU_TYPE_ITEMS; return 4;
 }
 static std::string IntToString(long v) { char b[32]; std::sprintf(b, "%ld", v); return b; }
 
@@ -53,9 +53,9 @@ static void SellOrBuy(Trade& t, const std::vector<std::pair<long, long> >& items
             if (Accept(it->first)) {
                 if (t.num.find(b) == t.num.end()) t.num[b] = it->second; else t.num[b] += it->second;
                 switch (type) {
-                case ITEM_MENU_TYPE_CLOTHES: t.totClothes += it->second; break;
-                case ITEM_MENU_TYPE_WEAPONS: t.totWeapons += it->second; break;
-                case ITEM_MENU_TYPE_ITEMS:   t.totItems   += it->second; break;
+                case MENU_TYPE_CLOTHING: t.totClothes += it->second; break;
+                case MENU_TYPE_WEAPONS: t.totWeapons += it->second; break;
+                case MENU_TYPE_ITEMS:   t.totItems   += it->second; break;
                 }
             }
         }
@@ -83,9 +83,9 @@ static void Wanted(Trade& t, const std::vector<long>& items)
             t.added.push_back(std::make_pair(*it, 1L));
             if (t.num.find(b) == t.num.end()) t.num[b] = 1; else ++t.num[b];
             switch (type) {
-            case ITEM_MENU_TYPE_CLOTHES: ++t.totClothes; break;
-            case ITEM_MENU_TYPE_WEAPONS: ++t.totWeapons; break;
-            case ITEM_MENU_TYPE_ITEMS:   ++t.totItems;   break;
+            case MENU_TYPE_CLOTHING: ++t.totClothes; break;
+            case MENU_TYPE_WEAPONS: ++t.totWeapons; break;
+            case MENU_TYPE_ITEMS:   ++t.totItems;   break;
             }
         }
     }

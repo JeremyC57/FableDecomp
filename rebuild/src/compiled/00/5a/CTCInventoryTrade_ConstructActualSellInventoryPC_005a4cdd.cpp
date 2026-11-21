@@ -255,9 +255,9 @@ void CTCInventoryTrade::ConstructActualSellInventoryPC()
                 else
                     NumSellableThings[branch].second += it->second;
                 switch (type) {
-                case ITEM_MENU_TYPE_CLOTHES: TotNumClothesToSell += it->second; break;
-                case ITEM_MENU_TYPE_WEAPONS: TotNumWeaponsToSell += it->second; break;
-                case ITEM_MENU_TYPE_ITEMS:   TotNumItemsToSell += it->second;   break;
+                case MENU_TYPE_CLOTHING: TotNumClothesToSell += it->second; break;
+                case MENU_TYPE_WEAPONS: TotNumWeaponsToSell += it->second; break;
+                case MENU_TYPE_ITEMS:   TotNumItemsToSell += it->second;   break;
                 }
             }
         }

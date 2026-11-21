@@ -171,46 +171,46 @@ CComponent* CTCInventoryTrade::GetMenuBranchFromDefIndex(long itemDefIndex, CCom
     long category = CTCInventoryItem::GetInventoryCategory(itemDefIndex);
     if (category == melee) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_MELEE_ENTRY", -1));
-        type = ITEM_MENU_TYPE_WEAPONS;
+        type = MENU_TYPE_WEAPONS;
     } else if (category == ranged) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_RANGED_ENTRY", -1));
-        type = ITEM_MENU_TYPE_WEAPONS;
+        type = MENU_TYPE_WEAPONS;
     } else if (category == headwear) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_HEAD_ENTRY", -1));
-        type = ITEM_MENU_TYPE_CLOTHES;
+        type = MENU_TYPE_CLOTHING;
     } else if (category == torso) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_TORSO_ENTRY", -1));
-        type = ITEM_MENU_TYPE_CLOTHES;
+        type = MENU_TYPE_CLOTHING;
     } else if (category == gloves) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_HANDS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_CLOTHES;
+        type = MENU_TYPE_CLOTHING;
     } else if (category == legwear) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_LEGS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_CLOTHES;
+        type = MENU_TYPE_CLOTHING;
     } else if (category == footwear) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_FEET_ENTRY", -1));
-        type = ITEM_MENU_TYPE_CLOTHES;
+        type = MENU_TYPE_CLOTHING;
     } else if (category == suits) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_SUITS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_CLOTHES;
+        type = MENU_TYPE_CLOTHING;
     } else if (CTCInventoryItem::GetUIInventoryCategory(itemDefIndex) == 0) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_TROPHIES_ENTRY", -1));
-        type = ITEM_MENU_TYPE_ITEMS;
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(itemDefIndex) == 1) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_POTIONS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_ITEMS;
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(itemDefIndex) == 2) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_GIFTS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_ITEMS;
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(itemDefIndex) == 3) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_PRODUCE_ENTRY", -1));
-        type = ITEM_MENU_TYPE_ITEMS;
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(itemDefIndex) == 4) {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_OTHERS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_ITEMS;
+        type = MENU_TYPE_ITEMS;
     } else {
         branch = menu->FindChild(CCharString("UI_TRADING_MENU_OTHERS_ENTRY", -1));
-        type = ITEM_MENU_TYPE_ITEMS;
+        type = MENU_TYPE_ITEMS;
     }
     return branch;
 }
@@ -276,9 +276,9 @@ CComponent* CTCInventoryTrade::ConstructNormalShopList(const std::vector<std::pa
                 else
                     NumSellableThings[branch].second += it->second;
                 switch (type) {
-                case ITEM_MENU_TYPE_CLOTHES: TotNumClothesToSell += it->second; break;
-                case ITEM_MENU_TYPE_WEAPONS: TotNumWeaponsToSell += it->second; break;
-                case ITEM_MENU_TYPE_ITEMS:   TotNumItemsToSell   += it->second; break;
+                case MENU_TYPE_CLOTHING: TotNumClothesToSell += it->second; break;
+                case MENU_TYPE_WEAPONS: TotNumWeaponsToSell += it->second; break;
+                case MENU_TYPE_ITEMS:   TotNumItemsToSell   += it->second; break;
                 }
             }
         }
@@ -424,9 +424,9 @@ CComponent* CTCInventoryTrade::ConstructNormalShopList(const std::vector<std::pa
                 else
                     NumBuyableThings[branch].second += it->second;
                 switch (type) {
-                case ITEM_MENU_TYPE_CLOTHES: TotNumClothesToBuy += it->second; break;
-                case ITEM_MENU_TYPE_WEAPONS: TotNumWeaponsToBuy += it->second; break;
-                case ITEM_MENU_TYPE_ITEMS:   TotNumItemsToBuy   += it->second; break;
+                case MENU_TYPE_CLOTHING: TotNumClothesToBuy += it->second; break;
+                case MENU_TYPE_WEAPONS: TotNumWeaponsToBuy += it->second; break;
+                case MENU_TYPE_ITEMS:   TotNumItemsToBuy   += it->second; break;
                 }
             }
         }
@@ -570,9 +570,9 @@ CComponent* CTCInventoryTrade::ConstructNormalShopList(const std::vector<std::pa
             else
                 ++NumWantedThings[branch].second;
             switch (type) {
-            case ITEM_MENU_TYPE_CLOTHES: ++TotNumClothesWanted; break;
-            case ITEM_MENU_TYPE_WEAPONS: ++TotNumWeaponsWanted; break;
-            case ITEM_MENU_TYPE_ITEMS:   ++TotNumItemsWanted;   break;
+            case MENU_TYPE_CLOTHING: ++TotNumClothesWanted; break;
+            case MENU_TYPE_WEAPONS: ++TotNumWeaponsWanted; break;
+            case MENU_TYPE_ITEMS:   ++TotNumItemsWanted;   break;
             }
         }
         std::map<CComponent*, std::pair<CWideString, long> >::iterator end = NumWantedThings.end();

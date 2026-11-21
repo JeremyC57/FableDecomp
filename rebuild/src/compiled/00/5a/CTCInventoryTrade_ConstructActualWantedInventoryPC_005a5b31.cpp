@@ -150,9 +150,9 @@ void CTCInventoryTrade::ConstructActualWantedInventoryPC()
             else
                 ++NumWantedThings[branch].second;
             switch (type) {
-            case ITEM_MENU_TYPE_CLOTHES: ++TotNumClothesWanted; break;
-            case ITEM_MENU_TYPE_WEAPONS: ++TotNumWeaponsWanted; break;
-            case ITEM_MENU_TYPE_ITEMS:   ++TotNumItemsWanted;   break;
+            case MENU_TYPE_CLOTHING: ++TotNumClothesWanted; break;
+            case MENU_TYPE_WEAPONS: ++TotNumWeaponsWanted; break;
+            case MENU_TYPE_ITEMS:   ++TotNumItemsWanted;   break;
             }
         }
         std::map<CComponent*, std::pair<CWideString, long> >::iterator end = NumWantedThings.end();

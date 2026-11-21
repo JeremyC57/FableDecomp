@@ -131,9 +131,9 @@ void CTCInventoryTrade::RefreshBuyPossibilityNumbersPC()
                     NumBuyableThings[branch].second += count;
                 }
                 switch (type) {
-                case ITEM_MENU_TYPE_CLOTHES: TotNumClothesToBuy += count; break;
-                case ITEM_MENU_TYPE_WEAPONS: TotNumWeaponsToBuy += count; break;
-                case ITEM_MENU_TYPE_ITEMS:   TotNumItemsToBuy += count; break;
+                case MENU_TYPE_CLOTHING: TotNumClothesToBuy += count; break;
+                case MENU_TYPE_WEAPONS: TotNumWeaponsToBuy += count; break;
+                case MENU_TYPE_ITEMS:   TotNumItemsToBuy += count; break;
                 }
             }
         }

@@ -22,13 +22,9 @@ public:
     enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_UNKNOWN = 0 };   // W4EInventoryCategoryIdentifier@1@ (enumerators unproven)
     // W4EItem_Menu_Type@1@ (GetTypeFromDefIndexPC / GetMenuBranchFromDefIndexPC): 0 clothes, 1 weapons, 2 items -- the switch arms of
     // 0x005B01FE SellItemPC / 0x005AF64E BuyItem add to TotNumClothes.. / TotNumWeapons.. / TotNumItems.. in that order; the landed
-    // GetTypeFromDefIndexPC 0x0059C447 returns 1 for the weapon categories, 0 for the clothing ones, 2 otherwise. Enumerator spellings unproven.
-#ifdef FABLE_RETAIL_CTCINVENTORYTRADE_SELLITEM
-    // Exact enumerators from both original PDB field-list records.
-    enum EItem_Menu_Type { MENU_TYPE_CLOTHING=0,MENU_TYPE_WEAPONS=1,MENU_TYPE_ITEMS=2 };
-#else
-    enum EItem_Menu_Type { ITEM_MENU_TYPE_CLOTHES = 0, ITEM_MENU_TYPE_WEAPONS = 1, ITEM_MENU_TYPE_ITEMS = 2 };
-#endif
+    // GetTypeFromDefIndexPC 0x0059C447 returns 1 for the weapon categories, 0 for the clothing ones, 2 otherwise.
+    // Enumerators as spelled in the LF_ENUMERATE records of Ego_r.pdb, Ego_d.pdb, FableWin.pdb and the Anniversary 360 PDB (2026-11-20).
+    enum EItem_Menu_Type { MENU_TYPE_CLOTHING = 0, MENU_TYPE_WEAPONS = 1, MENU_TYPE_ITEMS = 2 };
     void ResetTradeLists();                                                        // 0x0059D9AD ?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
     void InitialiseBuyableItems(std::vector<std::pair<long,long> >& items);        // 0x005A30A1
     bool AddBuyItemToListPC(NUISystem::CComponent* frame, long defIndex, long count, NUISystem::CList* list,

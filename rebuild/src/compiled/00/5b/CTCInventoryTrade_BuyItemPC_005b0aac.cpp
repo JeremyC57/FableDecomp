@@ -180,13 +180,13 @@ void CTCInventoryTrade::BuyItemPC(CComponent* entry, long count)
             EItem_Menu_Type type = GetTypeFromDefIndexPC(itemDefIndex);
             CWideString totalText;
             switch (type) {
-            case ITEM_MENU_TYPE_CLOTHES:
+            case MENU_TYPE_CLOTHING:
                 TotNumClothesToSell += count;
                 break;
-            case ITEM_MENU_TYPE_WEAPONS:
+            case MENU_TYPE_WEAPONS:
                 TotNumWeaponsToSell += count;
                 break;
-            case ITEM_MENU_TYPE_ITEMS:
+            case MENU_TYPE_ITEMS:
                 TotNumItemsToSell += count;
                 break;
             }

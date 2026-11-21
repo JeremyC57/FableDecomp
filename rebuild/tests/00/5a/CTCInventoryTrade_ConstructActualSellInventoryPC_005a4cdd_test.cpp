@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-enum EItem_Menu_Type { ITEM_MENU_TYPE_CLOTHES, ITEM_MENU_TYPE_WEAPONS, ITEM_MENU_TYPE_ITEMS, ITEM_MENU_TYPE_NONE };
+enum EItem_Menu_Type { MENU_TYPE_CLOTHING, MENU_TYPE_WEAPONS, MENU_TYPE_ITEMS, ITEM_MENU_TYPE_NONE };
 struct ItemInfo { int branch; EItem_Menu_Type type; bool tattooCard; bool hairCard; bool addable; };
 typedef std::pair<long, long> Item;                                         // (itemDefIndex, count)
 typedef std::map<long, ItemInfo> Defs;
@@ -69,9 +69,9 @@ static SellScreen Build(bool barber, bool tattoo, bool title, const std::vector<
             if (s.branchTotal.find(info.branch) == s.branchTotal.end()) s.branchTotal[info.branch] = it->second;
             else s.branchTotal[info.branch] += it->second;
             switch (info.type) {
-            case ITEM_MENU_TYPE_CLOTHES: s.clothes += it->second; break;
-            case ITEM_MENU_TYPE_WEAPONS: s.weapons += it->second; break;
-            case ITEM_MENU_TYPE_ITEMS:   s.items += it->second;   break;
+            case MENU_TYPE_CLOTHING: s.clothes += it->second; break;
+            case MENU_TYPE_WEAPONS: s.weapons += it->second; break;
+            case MENU_TYPE_ITEMS:   s.items += it->second;   break;
             default: break;
             }
         }
@@ -101,9 +101,9 @@ int main()
 {
     int ok = 1;
     Defs defs;
-    ItemInfo shirt = { 10, ITEM_MENU_TYPE_CLOTHES, false, false, true }, sword = { 20, ITEM_MENU_TYPE_WEAPONS, false, false, true };
-    ItemInfo potion = { 30, ITEM_MENU_TYPE_ITEMS, false, false, true }, tattoo = { 30, ITEM_MENU_TYPE_ITEMS, true, false, true };
-    ItemInfo hair = { 30, ITEM_MENU_TYPE_ITEMS, false, true, true }, quest = { 30, ITEM_MENU_TYPE_ITEMS, false, false, false };
+    ItemInfo shirt = { 10, MENU_TYPE_CLOTHING, false, false, true }, sword = { 20, MENU_TYPE_WEAPONS, false, false, true };
+    ItemInfo potion = { 30, MENU_TYPE_ITEMS, false, false, true }, tattoo = { 30, MENU_TYPE_ITEMS, true, false, true };
+    ItemInfo hair = { 30, MENU_TYPE_ITEMS, false, true, true }, quest = { 30, MENU_TYPE_ITEMS, false, false, false };
     defs[1] = shirt; defs[2] = sword; defs[3] = potion; defs[4] = tattoo; defs[5] = hair; defs[6] = quest;
     std::vector<Item> hero;
     hero.push_back(Item(1, 2)); hero.push_back(Item(4, 1)); hero.push_back(Item(2, 1)); hero.push_back(Item(5, 3));

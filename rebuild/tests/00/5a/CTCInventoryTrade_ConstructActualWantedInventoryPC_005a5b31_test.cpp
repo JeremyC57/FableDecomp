@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-enum EItem_Menu_Type { ITEM_MENU_TYPE_CLOTHES, ITEM_MENU_TYPE_WEAPONS, ITEM_MENU_TYPE_ITEMS, ITEM_MENU_TYPE_NONE };
+enum EItem_Menu_Type { MENU_TYPE_CLOTHING, MENU_TYPE_WEAPONS, MENU_TYPE_ITEMS, ITEM_MENU_TYPE_NONE };
 struct ItemInfo { int branch; EItem_Menu_Type type; };                      // GetMenuBranchFromDefIndexPC's two results
 
 static std::string IntToString(long value)                                  // GFIntToWideString
@@ -40,9 +40,9 @@ static WantedScreen Build(const std::vector<long>& wanted, const std::map<long, 
             if (screen.branchWanted.find(info.branch) == screen.branchWanted.end()) screen.branchWanted[info.branch] = 1;
             else ++screen.branchWanted[info.branch];
             switch (info.type) {
-            case ITEM_MENU_TYPE_CLOTHES: ++screen.clothes; break;
-            case ITEM_MENU_TYPE_WEAPONS: ++screen.weapons; break;
-            case ITEM_MENU_TYPE_ITEMS:   ++screen.items;   break;
+            case MENU_TYPE_CLOTHING: ++screen.clothes; break;
+            case MENU_TYPE_WEAPONS: ++screen.weapons; break;
+            case MENU_TYPE_ITEMS:   ++screen.items;   break;
             default: break;
             }
         }
@@ -72,8 +72,8 @@ int main()
 {
     int ok = 1;
     std::map<long, ItemInfo> defs;
-    ItemInfo shirt = { 10, ITEM_MENU_TYPE_CLOTHES }, sword = { 20, ITEM_MENU_TYPE_WEAPONS }, potion = { 30, ITEM_MENU_TYPE_ITEMS };
-    ItemInfo hat = { 11, ITEM_MENU_TYPE_CLOTHES };
+    ItemInfo shirt = { 10, MENU_TYPE_CLOTHING }, sword = { 20, MENU_TYPE_WEAPONS }, potion = { 30, MENU_TYPE_ITEMS };
+    ItemInfo hat = { 11, MENU_TYPE_CLOTHING };
     defs[1] = shirt; defs[2] = sword; defs[3] = potion; defs[4] = hat;
     std::vector<long> wanted;
     wanted.push_back(1); wanted.push_back(2); wanted.push_back(1); wanted.push_back(3); wanted.push_back(4);
