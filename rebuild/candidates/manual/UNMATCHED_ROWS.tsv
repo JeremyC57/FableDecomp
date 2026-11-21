@@ -219,7 +219,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0077a890	CTCDExperienceOrb	Create	720	parked	DIFFER(724v707)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/0077a890.cpp	original
 0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	576	parked	DIFFER(559v563)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/0077ba40.cpp	gapscan/boundary
 0077dc40	_global	CTCCampfire_BuildPlayerRegion	688	parked	DIFFER(591v626)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077dc40.cpp	original
-00780430	_gapscan	sub_00780430	272	reserved (acctB p25Q, 2026-11-21)	DIFFER(273v271)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand510/differ/00780430.cpp	gapscan/boundary
 007808b0	CTCFlammable	InitFirePoints	976	parked	DIFFER(1027v923)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand686/differ/007808b0.cpp	original
 007820e0	CTCBoastingPosition	FrameUpdate	688	parked	DIFFER(688v680)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/007820e0.cpp	original
 00785160	_global	CTCPhysicsBase_Update_CustomerInteraction	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00785160.cpp	original

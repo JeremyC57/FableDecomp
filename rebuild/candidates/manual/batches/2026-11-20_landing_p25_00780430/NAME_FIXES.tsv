@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00780430	CTCFlammable::GetClosestFirePointTo ?GetClosestFirePointTo@CTCFlammable@@AAEPAVCFirePoint@NFire@@ABVC3DVector@@_N@Z	Ego_r.pdb 0x005945C0 (private, tc_flammable.obj, between SetOnFire and SetAsSmoldering; Dinkumware iterator return = retail STLport CFirePoint*); Ego_d.pdb locals pos/unlit_only/num_fp/best_point/it_best/best_pt_dist_sqr/ptc_grap_app/it; caller AddFireDamage 0x00780860	UNMATCHED_ROWS.tsv _gapscan::sub_00780430

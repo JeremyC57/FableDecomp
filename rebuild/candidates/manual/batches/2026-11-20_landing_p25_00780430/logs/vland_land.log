@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00780430   RELOCATION_MATCH PASS   GetClosestFirePointTo
+
+WINS: 1
+  00780430 RELOCATION_MATCH CTCFlammable::?GetClosestFirePointTo@CTCFlammable@@AAEPAVCFirePoint@NFire@@ABVC3DVector@@_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCFlammable_GetClosestFirePointTo_00780430

@@ -401836,6 +401836,13 @@ $catalog = @(
         TestSource = '00/78/NFireCFirePoint_SetAsSmoldering_007805d0_test.cpp'
         PassPattern = '007805d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00780430'
+        Module = 'CTCFlammable'
+        Source = '00/78/CTCFlammable_GetClosestFirePointTo_00780430.cpp'
+        TestSource = '00/78/CTCFlammable_GetClosestFirePointTo_00780430_test.cpp'
+        PassPattern = '00780430_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

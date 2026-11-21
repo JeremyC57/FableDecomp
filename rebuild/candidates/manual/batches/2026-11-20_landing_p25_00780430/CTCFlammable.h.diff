@@ -1,0 +1,30 @@
+diff --git a/rebuild/include/engine/CTCFlammable.h b/rebuild/include/engine/CTCFlammable.h
+index d259fb9b9..bf42111fe 100644
+--- a/rebuild/include/engine/CTCFlammable.h
++++ b/rebuild/include/engine/CTCFlammable.h
+@@ -9,6 +9,9 @@
+ #include "stlport/fable_containers.h"
+ namespace NFire { class CFirePoint; }
+ #endif
++#ifdef FABLE_RETAIL_CTCFLAMMABLE_GETCLOSESTFIREPOINTTO
++class C3DVector;
++#endif
+ #ifdef FABLE_RETAIL_CTCFLAMMABLE_FRAMEUPDATE
+ #include "engine/CDefPointer.h"
+ class CFlammableDef;
+@@ -16,6 +19,15 @@ class CFlammableDef;
+ // Declared callable interface only; no instance is constructed or sized by this row.
+ class CTCFlammable:public CTCBase {public:
+  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_FLAMMABLE;}
++#ifdef FABLE_RETAIL_CTCFLAMMABLE_GETCLOSESTFIREPOINTTO
++ // Retail opt-in (p25Q, row 0x00780430; needs FABLE_RETAIL_CTCFLAMMABLE_FIREPOINTS): Ego_r.pdb
++ // ?GetClosestFirePointTo@CTCFlammable@@AAE?AV?$_Vector_iterator@..NFire::CFirePoint..@@ABVC3DVector@@_N@Z (private; Ego_r 0x005945C0),
++ // out of line in retail at 0x00780430 (`ret 8`; called by CTCFlammable::AddFireDamage 0x00780860 with `push 0 ; push pos`). The
++ // iterator is retail STLport's raw NFire::CFirePoint*. Ego_d.pdb parameter names pos / unlit_only. Declaration only: no layout change.
++private:
++ std::vector<NFire::CFirePoint>::iterator GetClosestFirePointTo(const C3DVector& pos, bool unlit_only);   // 0x00780430
++public:
++#endif
+ #ifdef FABLE_RETAIL_CTCFLAMMABLE_FRAMEUPDATE
+  // Opt-in (hand3c, row 0x00780D80 CTCFlammable::FrameUpdate; needs FABLE_RETAIL_CTCFLAMMABLE_FIREPOINTS): the rest of the Ego_r.pdb members
+  // (retail offsets, the STLport vector 4 bytes shorter than Ego_r's: Burning +0x1C, FireDamageAfterFrame +0x20, FireResistance +0x24,
