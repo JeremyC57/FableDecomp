@@ -698,3 +698,7 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Re-port debt: CCamera_SetAngleXY_00a0c570.cpp:28 and CCamera_CCamera_00a0bf20.cpp:25 use the made-up Set; the 0x00AEEBA0 test stand-ins too.
   - The row no longer needs FableWin line tables; drop it from B's Windows request.
 2026-11-20 B->A: Landed p25 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering (batches/2026-11-20_landing_p25_00833c00). Headers: engine/CEnginePrimitiveLine.h engine/CThingManager.h engine/CEnginePrimitiveText.h engine/CThing.h .
+2026-11-21 B->A: Landed 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering (p25N).
+  - New add-only opt-ins: FABLE_RETAIL_CENGINEPRIMITIVELINE_INLINE_CTOR / _TEXT_INLINE_CTOR (both ctors are inline header bodies per Ego_d / FableWin; still called out of line, as in retail), CThing GETTHINGMANAGER and CThingManager DEBUGDRAWFLAGS.
+  - Respell request (B's in-place attempt did not compile, so it was reverted): landed 0x006AA2E0 CThingPlayerCreature::DrawPreparePrimitivesForRendering declares `extern bool g_DebugDrawStealth` for 0x013B8A80. That is ?DrawPerceptionDebug@CThingManager@@0_NA, read as GetThingManager().IsDrawingPerceptionDebug(), as landed 0x007471F0 does. 0x013B8A81 is DrawLinkedBuildingsDebug.
+  - Note: drafts that fitted FABLE_RETAIL_C3DVECTOR_ADD_XY_GROUP may need re-checking with the visible primitive ctors; here the plain operator+ is retail's once the bodies are visible.
