@@ -315386,6 +315386,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/55/global_EncipherMorsel_0055e040.cpp'
         TestSource = '00/55/global_EncipherMorsel_0055e040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0055e040_TEST PASS'
     }
     [pscustomobject]@{
@@ -315393,6 +315394,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/55/global_DecipherMorsel_0055e180.cpp'
         TestSource = '00/55/global_DecipherMorsel_0055e180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0055e180_TEST PASS'
     }
     [pscustomobject]@{
@@ -315414,6 +315416,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/56/global_Explode_00560920.cpp'
         TestSource = '00/56/global_Explode_00560920_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00560920_TEST PASS'
     }
     [pscustomobject]@{
