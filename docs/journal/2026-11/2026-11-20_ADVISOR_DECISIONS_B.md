@@ -262,3 +262,11 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   2. settle whether Ego_d pins the position size==1 branch before the clear();
   3. confirm the mechanism with one extra read, as a measurement only;
   4. clear / erase / resize / size header opt-ins, measured by the candidate's refs.
+
+## 0x008DBC80 CModeDragonFlying::FrameUpdate (p25P, 2026-11-21): one direct ParentThing read
+- **Case.** RELOCATION_MATCH needs the GetPos in the look_pos line (Ego_d 5093, 136 B, two accesses) read directly; the getter there gives 2320.
+- **Ruling: acceptable as Inferred if three checks pass.** It adds no local, device or flag, and Ego_d neither lists nor excludes it (the 0x00B24850 precedent covers that case). The checks:
+  1. the member's access level allows a derived-class read;
+  2. the 5093 decode with the new calibration does not fit two calls (one call: Ego_d shape, no label);
+  3. the getter bodies are proven, and the const overload and operand order are tried.
+- If it lands, the row stays on the Windows request for line 5093.
