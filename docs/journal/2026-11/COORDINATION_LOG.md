@@ -712,3 +712,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x007805D0 NFire::CFirePoint::SetAsSmoldering (batches/2026-11-20_landing_p25_007805d0). Headers: engine/NFire_CFirePoint.h .
 2026-11-21 B->A: NAME_FIXES (landed 0x007805D0): UNMATCHED_ROWS listed _gapscan::sub_007805d0; real name NFire::CFirePoint::SetAsSmoldering ?SetAsSmoldering@CFirePoint@NFire@@AAEXXZ (Ego_r 0x00594710, Ego_d locals). Landed TU-mate SetAsBurning 0x00780540 still uses local class models (re-port debt).
 2026-11-20 B->A: Landed p25 0x00780430 CTCFlammable::GetClosestFirePointTo (batches/2026-11-20_landing_p25_00780430). Headers: engine/CTCFlammable.h .
+2026-11-21 B->A: NAME_FIXES (landed 0x00780430): UNMATCHED_ROWS listed _gapscan::sub_00780430; real name CTCFlammable::GetClosestFirePointTo(const C3DVector&, bool) ?GetClosestFirePointTo@CTCFlammable@@AAEPAVCFirePoint@NFire@@ABVC3DVector@@_N@Z (Ego_r 0x005945C0, Ego_d locals).
