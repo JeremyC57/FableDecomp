@@ -20,7 +20,7 @@
 //          0x013B8A98, CPlayerGui::Open() @ 0x004374B0 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
 //          CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetPControlledCreature() @ 0x00487DC0,
 //          IS_THING_ALIVE<CThing*> @ 0x0043DBD0, CMemoryBuffer::Copy @ 0x009F1760, CMainGameComponent::AddGameEvent
-//          @ 0x0041649C, the static menu reset @ 0x0041D165 (descriptive name).
+//          @ 0x0041649C, NUISystem::CManager::OnCloseMenus @ 0x0041D165 (both PDBs; was the descriptive ResetMenus, NF218 q12384).
 // Shape: the volume getters are the same-TU inline profile accessors (called after Get(), before the game state load);
 // the world pointer is a named local taken before GFGetCurrentFrame(); the hero is a const reference to the call result
 // (keeps the dead `Player = -1` store, as in the landed CloseInGameMenuViaGameEvent); the event payload is AddLong(4).
@@ -160,7 +160,7 @@ class CManager { public:
     virtual void m41();
     virtual CIconsDefPointer GetIconsDef();          // slot 42 (+0xA8)
     static CManager* __fastcall GetInstance();       // 0x0041E5F2
-    static void __fastcall ResetMenus();             // 0x0041D165 (descriptive)
+    static void __fastcall OnCloseMenus();           // 0x0041D165 (Ego_r 0x0042D999 / FableWin 0x01B101F9 ?OnCloseMenus@CManager@NUISystem@@SIXXZ)
 };
 }
 struct CGlobalList { void clear(); };                // 0x004855A3
@@ -246,5 +246,5 @@ void CTCInGameMenu::CloseInGameMenu()
         }
         OpenInventory = false;
     }
-    NUISystem::CManager::ResetMenus();
+    NUISystem::CManager::OnCloseMenus();
 }

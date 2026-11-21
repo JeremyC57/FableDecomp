@@ -9,6 +9,7 @@
 //   Clear 0x00C443D0 releases each queued buffer (CSoundBuffer::Release 0x00C3C5F0) and zeroes the slots and counters,
 //   GetInfo 0x00C442F0 copies {capacity, items, times, tail, last item} into a 20-byte record, and Release 0x00C44550 clears
 //   and frees the arrays when the capacity is non-zero. Descriptive names (no PDB covers libpk).
+//   GetInfo returns the record it filled (eax at its `ret 4`), the spelling the landed 0x00C437C0 / 0x00C432F0 bind (NF218, q12385).
 // Label correction: the landed row was CMarkedBufferOwner_00c43810::Shutdown over a CMarkedBuffer_00c43810 model (the chunk
 //   label "CExclusiveAssert::~CExclusiveAssert" is propagated); the same callees, typed as the audio object's.
 // Shape: a 0x14-byte frame for the record, the queue address kept in edi; the callback is `push context ; push &info ;
@@ -26,7 +27,7 @@ class CSoundBuffer;
 class CircularQueue {                               // the audio object's buffer queue (+0x54)
 public:
     void Clear();                                   // 0x00C443D0
-    void GetInfo(SQueueInfo& info);                 // 0x00C442F0
+    SQueueInfo& GetInfo(SQueueInfo& info);          // 0x00C442F0
     void Release();                                 // 0x00C44550
     CSoundBuffer**    m_items;                      // +0x00
     unsigned __int64* m_times;                      // +0x04

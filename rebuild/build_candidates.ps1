@@ -216479,9 +216479,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c442f0'
-        Module = 'CMarkedBuffer_00c44550'
-        Source = '00/c4/CMarkedBuffer00c44550_GetMark_00c442f0.cpp'
-        TestSource = '00/c4/CMarkedBuffer00c44550_GetMark_00c442f0_test.cpp'
+        Module = 'CircularQueue'
+        Source = '00/c4/CircularQueue_GetInfo_00c442f0.cpp'
+        TestSource = '00/c4/CircularQueue_GetInfo_00c442f0_test.cpp'
         PassPattern = '00c442f0_TEST PASS'
     }
     [pscustomobject]@{

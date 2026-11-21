@@ -4504,7 +4504,6 @@ _strchr	00bfeda0	0099e5a0
 ?AssignFromData@CBasicStringChar@@QAEXPBDK@Z	009a0300	0099ea60
 ?UnassignString@CCharString@@AAEXXZ	0099e9b0	0099eae0
 ?g_CCharStringInstanceCount_013BD800@@3HA	013bd800	0099eae0
-?ReleaseData@CCharString@@QAEXXZ	0099e9b0	0099ec30
 _g_CCharString_liveCount	013bd800	0099ec30
 _g_emptyCharStringData	0129aaf4	0099ec70
 ?AppendData@CCharStringData@@QAEXPBDH@Z	009a04e0	0099f0a0
@@ -6696,9 +6695,6 @@ __CIpow	00bfeb40	00c40e50
 ??0CAIStateGroupBase_00c42d60@@QAE@XZ	00c4cf20	00c42d60
 ??0CCoverMember_00c42d60@@QAE@XZ	00c44250	00c42d60
 ??_7CAIStateGroup_CreatureUseCoverBase_00c42d60@@6B@	012b5a88	00c42d60
-?Cleanup@CMarkedBufferOwner_00c43810@@QAEXXZ	00c436c0	00c43810
-?ClearMarks@CMarkedBuffer_00c43810@@QAEXXZ	00c443d0	00c43810
-?Release@CMarkedBuffer_00c43810@@QAEXXZ	00c44550	00c43810
 ?Allocate@CMarkedBuffer@@QAE_NJ@Z	00c44360	00c43ec0
 ?Cleanup@CMarkedBufferOwner@@QAEXXZ	00c436c0	00c43ec0
 ?Release@CMarkedBuffer@@QAEXXZ	00c44550	00c43ec0
@@ -9369,7 +9365,6 @@ __imp__GetSysColor@4	01440374	009a5490
 ?Copy@CTCBase@@UAEXABV1@@Z	006868d0	005fdad0
 ?OpenInventory@CTCInventoryBase@@QAEXXZ	005bd4ea	006116e0
 ?ResetOpenState@CTCInventoryBase@@QAEXXZ	005bc6ed	006116e0
-?ResetMenus@CManager@NUISystem@@SIXXZ	0041d165	0047d78b
 ?GetMaxDrunkenness@CTCHeroStats@@QAEMXZ	0057a89d	0057cb7e
 ?Vomit@CTCHeroStats@@QAEXXZ	0057b783	0057cb7e
 ?g_DrunkennessSoberRate@@3MA	0137cbd8	0057cb7e
@@ -39388,3 +39383,4 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?GetAllHelperPointNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z	00a2f120	00a35af0
 ?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z	00a2f0f0	00a35b30
 ?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z	00a2f150	00a35b50
+?Release@CircularQueue@@QAEXXZ	00c44550	00c43810

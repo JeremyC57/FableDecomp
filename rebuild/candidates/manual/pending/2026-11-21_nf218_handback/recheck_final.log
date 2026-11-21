@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00c442f0   WARN STANDIN_LEAF ?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z (catalog CMarkedBuffer_00c44550::GetMark; names another function)
+00c442f0   MATCH            PASS   GetMark
+00c43810   WARN RELOC_NAME: ?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z -> 00c442f0 labelled 'CMarkedBuffer_00c44550::GetMark'
+00c43810   RELOCATION_MATCH PASS   ReleaseQueue
+0047d78b   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0047d78b   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0047d78b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0047d78b   WARN RELOC_NAME: ?g_UIList@@3UCGlobalList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+0047d78b   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0047d78b   RELOCATION_MATCH PASS   CloseInGameMenu
+00621720   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CTCInventoryQuests (engine/CTCInventoryQuests.h)
+00621720   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621720   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621720   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621720   RELOCATION_MATCH PASS   CloseInventoryPC
+00c576e0   RELOCATION_MATCH PASS   SourceUnqueueBuffers
+0099e9b0   RELOCATION_MATCH PASS   UnassignString
+0099ec30   RELOCATION_MATCH PASS   CCharString
+
+WINS: 7
+  00c442f0 MATCH CMarkedBuffer_00c44550::?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z
+  00c43810 RELOCATION_MATCH CAudioObject::?ReleaseQueue@CAudioObject@@QAEXXZ
+  0047d78b RELOCATION_MATCH CTCInGameMenu::?CloseInGameMenu@CTCInGameMenu@@QAEXXZ
+  00621720 RELOCATION_MATCH CTCInventoryQuests::?CloseInventoryPC@CTCInventoryQuests@@QAEXXZ
+  00c576e0 RELOCATION_MATCH CAudioContext::SourceUnqueueBuffers
+  0099e9b0 RELOCATION_MATCH CCharString::?UnassignString@CCharString@@IAEXXZ
+  0099ec30 RELOCATION_MATCH CCharString::CCharString

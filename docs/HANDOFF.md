@@ -9,6 +9,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 ## Account A, 2026-11-21 (owner: B rows released; agents resumed)
 - Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0
   0x00B4D370 0x00BD3070 0x00C73050 0x00CF4EC0): now `parked (released from Account B ...)`; claims line + COORDINATION_LOG entry.
+- **Landed nf218** (`batches/2026-11-21_landing_nf218/README.md`): 8 rows (CircularQueue::GetInfo, OnCloseMenus binders, SourceUnqueueBuffers one definition, UnassignString self rename + family); queued the 0x01223EC0 / 0x0122A5E0 static pair.
 - **VC10 SP1 added to the lane** (owner: "if you can find it online, you can add it"): Microsoft KB2519277 package; `fetch_vc10sp1.sh` + `lane_tools/odall10.py` (Ego_d flags). Ego_d line sizes are now exact evidence (BUILDING.md "VC10 SP1"); re-measure the size-based "contradicts Ego_d" rulings (0x007602F0, 0x00763060, 0x0093D270 line 55, the 0x00A4EFC0 helpers) with it.
 - **Landed nf217** (`batches/2026-11-21_landing_nf217/README.md`): 13 rows (C3DMeshObject name queries, NHeroInformationScreens::CManager binders, CAudioObject::ReportQueueInfo, 0x0047E196 inline fill_n, the resolver re-port); duplicates 8 -> 4.
 - **Landed nf216** (`batches/2026-11-21_landing_nf216/README.md`): 8 caller rows of 0x004115A0 onto fable_string.h; 0x00870FC0 renamed SetDataFromString. 6 rows left (queued land1121nf216; 0x005A4CDD draft held for a ruling).

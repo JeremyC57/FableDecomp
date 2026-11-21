@@ -1,0 +1,8 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00C442F0	CircularQueue	GetInfo	?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z	CMarkedBuffer_00c44550::GetMark	?GetMark@CMarkedBuffer_00c44550@@QAEAAUSBufferMark@@AAU2@@Z	DESCRIPTIVE (no PDB covers libpk; NF217 searched both PDB name sets, exe strings, GameCODA 2.10): 35-byte body copies capacity/items/times/tail/last item of the +0x54 CircularQueue into the 20-byte SQueueInfo record and returns it (eax); landed callers 0x00C437C0 / 0x00C432F0 / 0x00C43810 bind this spelling; catalog and file name move (CMarkedBuffer00c44550_GetMark_00c442f0 -> CircularQueue_GetInfo_00c442f0)
+0x0099E9B0	CCharString	UnassignString	?UnassignString@CCharString@@IAEXXZ	CCharString::UnassignString	?UnassignString@CCharString@@QAIXXZ	Ego_r.pdb 0x00AFA2E0 + FableWin.pdb 0x02F624F0 (protected thiscall); fable_string.h declares it; row ported onto the header (leaf only; catalog name already right)
+# Section 2
+0x00C43810	?GetInfo@CircularQueue@@QAEXAAUSQueueInfo@@@Z	?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z	0x00C442F0
+0x0047D78B	?ResetMenus@CManager@NUISystem@@SIXXZ	?OnCloseMenus@CManager@NUISystem@@SIXXZ	0x0041D165
+0x00621720	?CloseMenus@@YIXXZ	?OnCloseMenus@CManager@NUISystem@@SIXXZ	0x0041D165
+0x0099EC30	?ReleaseData@CCharString@@QAEXXZ	?UnassignString@CCharString@@IAEXXZ	0x0099E9B0

@@ -113,6 +113,7 @@ public:
     virtual void v41();
     virtual CPlayerPtr Slot42();                     // +0xA8
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
+    static void __fastcall OnCloseMenus();       // 0x0041D165 (Ego_r 0x0042D999 / FableWin 0x01B101F9 ?OnCloseMenus@CManager@NUISystem@@SIXXZ; was the free CloseMenus, NF218 q12384)
 };
 }
 struct CNodeListNode { CNodeListNode* _M_next; CNodeListNode* _M_prev; };
@@ -184,7 +185,6 @@ class CWorld { public:
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-void __fastcall CloseMenus();                        // 0x0041D165
 #define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
 #include "engine/NHeroInformationScreens_CManager.h"   // CBase (IsInventoryScreen slot 3), CManager::SelectScreenOfType 0x0066E799
 #include "engine/CCountedPointer.h"
@@ -248,7 +248,7 @@ void CTCInventoryQuests::CloseInventory()
         g_frontEndNodeList.clear();
         NUISystem::CManager::GetInstance()->Slot37();
         CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
-        CloseMenus();
+        NUISystem::CManager::OnCloseMenus();
     }
     BaseCloseInventory();
     NeedsRefresh = true;
