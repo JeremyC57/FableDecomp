@@ -1550,3 +1550,9 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-21 (B, p25Q): Ego_d (VC10 /Od) frame offsets do NOT give declaration order: Ego_d 0x00521CF0 puts the reference locals
   script / hero (-28 / -32) between level / uid_replacer and later-declared locals. A declaration block fitted to Ego_d's frame
   order is `// Inferred:` (0x009CE370 relabelled), not decoded. In VC7.1 a top-of-function declaration block does move frame slots.
+- 2026-11-21 (B, p25R, 0x008E18D0): c2's inline decision reads identical fields for loop-2 and sky LowerBound sites (sz 60, a 23, pen 0,
+  sav, c0/c1/cE 52, b4e 155, callee-info, k 7, S 9, T 65, f 6.25e8); only g differs (1920 v 2304, used only in the 9000 cap). The inner
+  ~vector<pair<ulong,ParamDesc>> in the 0x006E2500 dtor scores 65 in every shared-header form (fit sc ~ c1*(0.922 + 0.461/f)).
+  0x006E2500 lies outside this TU's range, so its COMDAT came from another obj; a single-TU build at T65 cannot produce retail's
+  split. Open. 0x0093D270: the argument $T is c2's (a kind-4 "field of" symbol of the inlined getter's `this`, allocated in lowering,
+  only when the call result is used), not the front end's.
