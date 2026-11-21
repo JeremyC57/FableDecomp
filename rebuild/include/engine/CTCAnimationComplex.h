@@ -52,6 +52,13 @@ class CTCAnimationComplex : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ANIMATION; }
     CAnimateThing& GetAnimation();                           // 0x0070B460
+#ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_ANIMDURATION
+    // p25E opt-in (row 0x008DBC80 NCreatureMode::CModeDragonFlying::FrameUpdate): Ego_r.pdb ?GetAnimIndex@CTCAnimationComplex@@QBEJXZ and
+    // ?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z (public const), out of line in retail at 0x0070B490 / 0x0070B4A0 (reloc_bindings has
+    // non-const QAE stand-in spellings). Declarations only; no layout change.
+    long GetAnimIndex() const;                               // 0x0070B490
+    float GetAnimDuration(long anim_index) const;            // 0x0070B4A0
+#endif
 #ifdef FABLE_RETAIL_CTCANIMATIONCOMPLEX_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals missing from this declaration, declaration only (no layout change).
     // Slots: the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots; spellings: Ego_r / FableWin name sets.

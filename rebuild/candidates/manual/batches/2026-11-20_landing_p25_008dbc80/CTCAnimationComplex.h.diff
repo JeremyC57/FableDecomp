@@ -1,6 +1,8 @@
---- rebuild/include/engine/CTCAnimationComplex.h	2026-11-13 08:07:19.182365235 +0000
-+++ engine/CTCAnimationComplex.h	2026-11-20 16:47:50.673077941 +0000
-@@ -52,6 +52,13 @@
+diff --git a/rebuild/include/engine/CTCAnimationComplex.h b/rebuild/include/engine/CTCAnimationComplex.h
+index 0fb0d2b49..25b797925 100644
+--- a/rebuild/include/engine/CTCAnimationComplex.h
++++ b/rebuild/include/engine/CTCAnimationComplex.h
+@@ -52,6 +52,13 @@ class CTCAnimationComplex : public CTCBase {
  public:
      static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ANIMATION; }
      CAnimateThing& GetAnimation();                           // 0x0070B460

@@ -392,7 +392,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008d5aa0	CCreatureAction_FireMissileWeapon	?PerformAction@CCreatureAction_FireMissileWeapon@@UAEXXZ	1616	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))	DIFFER(1v1126)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008d5aa0.cpp	original
 008d7f10	CModeJackOfBladesFlash	OnActivate	528	parked	DIFFER(527v523)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/008d7f10.cpp	original
 008d9b00	CModeScorpionKingVulnerable	AnimUpdate	416	parked	DIFFER(406v408)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/008d9b00.cpp	original
-008dbc80	NCreatureMode::CModeDragonFlying	FrameUpdate	2320	reserved (acctB p25E, 2026-11-20)	DIFFER(2321v2319)	2	rebuild/candidates/manual/pending/2026-11-20_p25_open/008dbc80/008dbc80.cpp	gapscan/boundary
 008dcc80	NCreatureMode::CModeJackOfBladesFlash	Flash	1136	parked	DIFFER(1v1136)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008dcc80.cpp	original
 008dd0f0	CModeScorpionKingVulnerable	OnActivate	1520	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008dd0f0.cpp	original
 008de080	CModeDragonStrafeBurninate	FrameUpdate	1440	parked	DIFFER(5v1437)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008de080.cpp	original
