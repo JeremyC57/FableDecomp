@@ -1,0 +1,8 @@
+addr       parity           behav  name
+008dbc80   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 1
+  008dbc80 RELOCATION_MATCH NCreatureMode::CModeDragonFlying::?FrameUpdate@CModeDragonFlying@NCreatureMode@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCreatureModeCModeDragonFlying_FrameUpdate_008dbc80

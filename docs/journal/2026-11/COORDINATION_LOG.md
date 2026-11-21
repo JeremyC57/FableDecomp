@@ -691,3 +691,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Name fixes: the placeholder class labels and the QAE/ABU spellings become UAE/ABV (batches/2026-11-20_landing_p25_0083b6b0/NAME_FIXES.tsv).
   - Label fix: 0x004C79A0 is labelled CAnimateThing::GetMeshBank (BSim propagation), but CThing.h and landed 0x00837050 / 0x00837060 / 0x006A9590 bind it as PeekGlobalDefinition.
   - Superseded pending drafts: hand237 / hand993 / hand764 / handQ14.
+2026-11-20 B->A: Landed p25 0x008DBC80 NCreatureMode::CModeDragonFlying::FrameUpdate (batches/2026-11-20_landing_p25_008dbc80). Headers: engine/CTCAnimationComplex.h .
