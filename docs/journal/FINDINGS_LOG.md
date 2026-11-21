@@ -1500,3 +1500,8 @@ against CODAApi.lib, or stay compiled C++?
   - The paletted_position_track finish piece (#103, by p25P's resolution; c2prio_x reuses ids after a split, so the lineage is unconfirmed) is dropped (`drop refs 1 spill -18`) and reloaded as a short edx temp.
   - Retail keeps it in ebx across the imul chain, which forces the compressed sum after the imul into eax.
   - In-block statement order, locals and operand order do not move it.
+- 2026-11-21 (Account B p25P, 0x00A4EFC0, open; addendum)
+  - Revision: FableWin 3936 B v Ego_d 3872 B, so FableWin is the oracle; added to the Windows request.
+  - The position size==1 branch and its clear() placement are pinned by retail bytes and Ego_d 1188..1203 alike; the only fitted text there is ISNONZERO_ZYX.
+  - An extra read of the paletted finish hoists its load as in retail but closes none of the residue (3505v3491 / 3489v3491), so the "finish piece in ebx" mechanism is not confirmed.
+  - Existing vector clear / erase / resize / size opt-ins either break retail bytes elsewhere or leave the residue unchanged.
