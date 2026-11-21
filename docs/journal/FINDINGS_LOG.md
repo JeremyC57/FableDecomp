@@ -1531,3 +1531,8 @@ against CODAApi.lib, or stay compiled C++?
   - ifs inside an inlinee still apply below its call site (GetTC's HasTC gives a further ×0.5);
   - code after a for loop inside an if arm merges at 0.5·1 + 0.5·5 = 3.
   - For 0x008E18D0, retail behaves as if both loop bodies carry an extra ×0.5 that the sky lacks. Ego_d shows no extra if record, so the open question is a branch inside an inline helper the loops reach.
+- 2026-11-21 (Account B p25Q, mechanism; 0x00763060 NShape::FractureShape, open) VC7.1 never moves a pre-increment argument after the call: with `g(++s, e, k)` in a while loop, the add stays at the loop top. With `g(s++, e, k)` it lands right after the call, which is retail's shape at 0x0076310B.
+  - So retail's bytes are a post-increment find_if(it_start++, ...), with it_start already one past it_anchor before the loop.
+  - Ego_d's lines 199 (17 B, `b = *it_anchor`) and 204 (16 B, `it_start = it_anchor`) leave no room for that.
+  - Either retail's TLC source differs from the Ego_d / FableWin revision (both 2245 B) at these lines, or the VC10 sizes read differently (198 = 18 B v 199 = 17 B is unexplained).
+  - Ruling: the post-increment text is held as a bracket, and the row is on the Windows request.

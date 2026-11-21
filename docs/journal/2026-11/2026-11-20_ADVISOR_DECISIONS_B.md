@@ -277,3 +277,4 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
 - **Ruling: not landable yet.**
   - The edges get the 0x008DBC80 line-5093 size test (fits: no label; can't fit: out; undecidable: Inferred), and Ego_d's TPI types for first / second / this_line / last_line decide whether a 2D text is the real one.
   - The paren body is acceptable as Inferred (the PAREN family), re-measured after the edges settle. Every landed GFArcCos user is regraded with it, and it lands only with the row.
+- **2026-11-21 (0x00763060, coordinator ruling; the advisor call timed out):** p25Q's VC7.1 probe proves Ego_d's pre-increment text cannot produce retail. The post-increment text still contradicts Ego_d 199 / 204, so it is not Inferred. The probe is evidence about the revision, not a second source for the spelling. The row stays reserved behind its bracket and on the Windows request.
