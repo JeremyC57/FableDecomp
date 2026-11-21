@@ -18,3 +18,6 @@ objects and retail-derived listings are left out. Overlay: `007602f0/hdr.diff` (
 Advisor (2026-11-21): neither row lands yet. AUTH6 decodes 007602F0's 313 / 342 as object lifetime (one more checked iterator / scope),
 and on 00763060 runs one C2X_FORCE readout, an Ego_r iterator-type check and the minimal-deviation grade (g1 + e5 at 195-204), then an
 owner packet if it still does not match. Before 197 counts as settled, B's p25Q decode (`it_anchor = begin() + 1`, also 74 B?) is measured.
+
+Correction (AUTH6, 2026-11-21): 007602f0/NOTES.md's "none 100" for line 313 is mis-recorded: AUTH5's own variant x4
+(`it_second != pts.end() != false`) measures 100 B when re-run. AUTH6 decoded both open lines; the row landed (batches/2026-11-21_landing_auth6).

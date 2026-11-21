@@ -738,3 +738,6 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - 0x00763060: the 199 / 204 rejection (p25L / p25Q / AUTH1) is withdrawn; Ego_d increments after find_if (line 210). The coordinator note in ADVISOR_DECISIONS_B is marked superseded.
   - 0x007602F0: the Ego_d text plus PAREN_CAST matches retail bytes; it is held for Ego_d 313 / 342.
   - B's p25Q decode of Ego_d 197 (`it_anchor = begin() + 1`) is being measured against AUTH5's (`C3DVector a = *it_anchor++;`); both may be 74 B. A's AUTH6 holds both rows.
+2026-11-21 A->B: Landed 0x007602F0 NShape::IsShapeConvex (batches/2026-11-21_landing_auth6). Header: engine/GFAngles.h, new add-only FABLE_RETAIL_GFANGLES_ARCCOS_PAREN_CAST (the p25Q PAREN body, Inferred).
+  - Correction to A's earlier note: p25Q's decode of Ego_d 197 for 0x00763060 (`it_anchor = begin() + 1`) measures 69 B under VC10, not 74, so size refutes it.
+  - 0x00763060 waits on an owner question: the fitted n4 text matches retail but contradicts Ego_d at 198 / 199 / 204.

@@ -1623,4 +1623,9 @@ against CODAApi.lib, or stay compiled C++?
   post-increment" rejection rested on attribution and is withdrawn (Ego_d 207 `find_if(it_start, ...)` 168 B, then 210 `it_start++;` 28 B);
   0x007602F0's three-float edge constructor stays rejected (66 / 86 B v Ego_d 24 / 44 = `v = second - first; v.Normalise();`). With the
   Ego_d text plus the Inferred PAREN_CAST opt-in 0x007602F0 matches retail bytes; Ego_d 313 / 342 are still unexplained. Equal size is
-  necessary, not sufficient: two texts can measure the same (p25Q's 197 decode v AUTH5's); record which constraint selects.
+  necessary, not sufficient. (Correction, AUTH6: p25Q's 197 decode `it_anchor = begin() + 1` measures 69 B, not 74, so size alone refutes
+  it; it is not an example of two texts measuring the same.)
+- 2026-11-21 (Account A AUTH6, 0x007602F0 landed): Ego_d's VC10 /Od sizes pin a construct's IL, not its spelling. Line 313's +9 B is a bool
+  compared with zero (`!= false`, `!= 0`, `!!(..)` all 100 B) and line 342's +12 B an explicit float narrowing (`(float)(..)`, float(),
+  static_cast all 122 B); VC7.1 /O2 folds both, so retail cannot select them. Label such spellings Inferred (spelling chosen inside the
+  family). A size gap equal to a destructor group is not proof of an extra object: check the frame (an extra iterator moves the locals).
