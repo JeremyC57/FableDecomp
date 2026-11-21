@@ -141,6 +141,19 @@ parked `/GS` rows whose stack-cookie prologue 4035 could not reproduce now match
 and zero-register rows, the inline-once destructor band and the biased /GS frame (00581b33) do not change, so those are
 source-formulation questions, not compiler-build ones.
 
+## VC10 SP1 on the Linux lane (evidence only: cl 16.00.40219.01)
+
+Ego_d.pdb and FableWin.pdb were built with VC10 SP1 (compiland records `16.00.40219`; EGOD_FINDINGS.md), so their line tables are
+only comparable byte for byte with a VC10 compile. `S=$S bash tools/decomp_pipeline/linux_lane/fetch_vc10sp1.sh` fetches Microsoft's
+"Visual C++ 2010 SP1 Compiler Update for the Windows SDK 7.1" (KB2519277, `VC-Compiler-KB2519277.exe`, 126,890,440 bytes, sha256
+`46497a249dac03f8a6d6b4f4a737546246752ca751ae16c34127a1d784232645`) and copies the x86-native cl / c1 / c1xx / c2 / clui plus
+mspdb100 / msobj100 / msvcr100 / msvcp100 into `$S/wine/vc10sp1/bin` (no Windows SDK ISO needed). Then
+`python3 tools/decomp_pipeline/linux_lane/lane_tools/odall10.py <src.cpp> <proc substr>...` compiles with Ego_d's own command line
+(from its S_ENVBLOCK: `-Od -Oy- -W3 -GF- -Gm- -EHs -EHc -MDd -GS -Gy -fp:precise -Zc:wchar_t -Zc:forScope -GR- -Gd -TP`) and prints the
+bytes per source line. Calibration (2026-11-21, AUTH2's 0x00A4EFC0 helper texts): SetScaling 34 and GetMaximumAbsoluteComponent 259 now
+equal Ego_d (VC7.1 /Od gave 30 / 227); SetupIdentityFlag equals under both. **Never build, grade or land a row with it**: rows are VC7.1 3077.
+Never commit its binaries or the package.
+
 ## Third-party source trees
 
 `bash tools/decomp_pipeline/libsig/fetch_lzo108.sh` (LZO 1.08, public) puts the vendor .asm that `lib_verify.py` proves 0x00C069D0 from under `$S/thirdparty/lzo/lzo-1.08`; `FABLE_THIRDPARTY` overrides the directory. `docs/pipeline/LIBRARY_SIGNATURES.md`.
