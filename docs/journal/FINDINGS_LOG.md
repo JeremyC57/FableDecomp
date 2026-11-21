@@ -1536,3 +1536,5 @@ against CODAApi.lib, or stay compiled C++?
   - Ego_d's lines 199 (17 B, `b = *it_anchor`) and 204 (16 B, `it_start = it_anchor`) leave no room for that.
   - Either retail's TLC source differs from the Ego_d / FableWin revision (both 2245 B) at these lines, or the VC10 sizes read differently (198 = 18 B v 199 = 17 B is unexplained).
   - Ruling: the post-increment text is held as a bracket, and the row is on the Windows request.
+- 2026-11-21 (Account B p25Q) FableWin and Ego_d are nearly always the same revision: 92,050 of 92,096 shared functions have equal procedure lengths, so FableWin's line tables only add information where the lengths differ (46 functions, among them 0x00A4EFC0).
+  - Also measured, on 0x00763060's TU, from known texts: in Ego_d (VC10 /Od) an iterator declared from `it + 1` is 38 B, a post-increment read `C3DVector x = *it++;` costs 51..62 B over the plain 17 B form, and a begin() temporary costs 28..37 B. Ego_d 197 (74 B) is therefore `it_anchor = duplicate_shape.begin() + 1` and holds no increment.
