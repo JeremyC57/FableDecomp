@@ -1,0 +1,7 @@
+# NF214 lessons (one line each)
+- Making a self row's member const can force const on header-less stand-in callees it defines in-object; check reloc_bindings first: the const spelling may already be bound by a sibling (0x00A2EA60 QBE CDummyObjectMap::LowerBound), so defining it with a body that differs from the owner is a new pick-any copy. `mutable` on the local stand-in members kept the HEAD symbols unchanged (one grade).
+- Moving a row's local CCharString onto fable_string.h can fix a hidden relocation: the local `Data == 0 ? "" : ...` bound an in-object "" literal where retail loads ?NullChar@CCharString@@1DB (0x0129AAF4); grep the retail bytes for 0x129AAF4 before keeping a local GetText.
+- A family whose callers have their own stand-in leaves moves whole: port the callers onto the header with their PDB leaves too; when their only referencers bind unrelated stand-ins (July rows), the self renames are count-neutral (gate CREATED needs before <= 1).
+- For a size-pragma scaffolding block, run the control with only the pragma lines removed: the row body must be byte-identical and only the COMDAT may change (0x007E4B60: 165 = 165, fill_n 30 -> 23).
+- In a quick python header-rewrite, an assertion over the whole block text can trip on a `#pragma` quoted in a comment: count only lines that start with `#pragma` (one wasted compile on an unchanged overlay).
+- A folded owner (0x0048514C's Leaf is the unsigned long instance) is checked by grading the copy with q.py against the owner's address, not by cmpbody by name.

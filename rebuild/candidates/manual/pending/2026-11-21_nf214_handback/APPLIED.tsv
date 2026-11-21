@@ -1,0 +1,4 @@
+entry	address	status	binders_respelled	note
+q12343	0x00A2ED10	done	3	family moved whole: self 0x00A2ED10 leaf -> PDB ABE vector form; binders 0x00A2F0F0 / 0x00A2F120 / 0x00A2F150 ported onto engine/C3DMeshStats.h (with their own leaves -> PDB QBE vector forms) and bind it; 0x00A2F170 already did: 4 of 4 REFS referencers bind the self leaf (3 spellings -> 1); CCharStringVector wrapper dropped; vland RELOCATION_MATCH + PASS x4
+q6333	0x00485DBC	done	2	last two stand-in binders 0x006116E0 / 0x007E4B60 (CRetailVector) ported onto std::vector<NUISystem::CComponent*> with NF213 option d (NF214 fill_n size-body opt-in): both RELOCATION_MATCH + PASS and bind the IAE self leaf; with NF213 11 of 11 REFS referencers bind it (the CRetailVector spelling at 0x00485DBC is gone); every new pick-any copy equals its owner; catalog CompilerFlags /d2inlS12 needed for both rows
+q6342	0x00485DBC	done	2	same unit as q6333

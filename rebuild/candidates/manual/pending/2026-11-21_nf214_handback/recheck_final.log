@@ -1,0 +1,29 @@
+addr       parity           behav  name
+00a2ed10   WARN SHARED_HEADER_AVAILABLE C3DMeshStats (engine/C3DMeshStats.h)
+00a2ed10   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00a2ed10   RELOCATION_MATCH PASS   C3DMeshStats::UnpackNames
+00a2f0f0   RELOCATION_MATCH PASS   C3DMeshStats::GetAllDummyObjectNames
+00a2f120   RELOCATION_MATCH PASS   C3DMeshStats::GetAllHelperPointNames
+00a2f150   RELOCATION_MATCH PASS   C3DMeshStats::GetDummyObjectNamesStartingWith
+007e4b60   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+007e4b60   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e4b60   RELOCATION_MATCH PASS   CTCCreditsUI::Activate
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap (engine/CTCInventoryMap.h)
+006116e0   WARN RELOC_NAME: ?ResetOpenState@CTCInventoryBase@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+006116e0   WARN RELOC_NAME: ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled 'NHeroInformationScreens::CManager::SelectScreenOfType'
+006116e0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006116e0   WARN RELOC_NAME: ?BuildMapMenu@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@JJ@Z -> 0060eeb0 labelled 'CTCInventoryMap::ConstructPCMapList'
+006116e0   RELOCATION_MATCH PASS   CTCInventoryMap::OpenInventory
+
+WINS: 6
+  00a2ed10 RELOCATION_MATCH C3DMeshStats::?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_NABVCCharString@@1@Z
+  00a2f0f0 RELOCATION_MATCH C3DMeshStats::?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z
+  00a2f120 RELOCATION_MATCH C3DMeshStats::?GetAllHelperPointNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z
+  00a2f150 RELOCATION_MATCH C3DMeshStats::?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z
+  007e4b60 RELOCATION_MATCH CTCCreditsUI::?Activate@CTCCreditsUI@@QAEXVCCharString@@@Z
+  006116e0 RELOCATION_MATCH CTCInventoryMap::?OpenInventory@CTCInventoryMap@@QAEXXZ
