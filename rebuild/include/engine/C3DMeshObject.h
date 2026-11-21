@@ -4,6 +4,9 @@
 #include "engine/CMatrix3x4.h"
 #include "engine/CCountedPointer.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_GETNAMES
+#include "stlport/fable_containers.h"   // std::vector<CCharString> (NF217 opt-in below)
+#endif
 #ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE
 #define FABLE_RETAIL_C3DMESHSTATS_ISANIMATED
 #include "engine/C3DMeshStats.h"
@@ -35,6 +38,16 @@ public:
  // Retail opt-in (wf17, row 0x0075B000): FableWin.pdb ?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z
  // (static __fastcall, landed at 0x00A358F0). Declaration only.
  static CMatrix3x4 __fastcall GetPositionMatrixFromRHSet(const class CRightHandedSet& set);   // 0x00A358F0
+#endif
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_GETNAMES
+ // Retail opt-in (NF217, q12368 / q12369 / q12370: rows 0x00A35B30 / 0x00A35AF0 / 0x00A35B50): the packed-name queries, public const
+ // over std::vector<CCharString>&, both PDBs: ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@..@std@@@Z (Ego_r.pdb
+ // 0x00B8C700, FableWin.pdb 0x031F77D0), ?GetAllDummyObjectNames@..QBE..@Z (0x00B8C740 / 0x031F89B0),
+ // ?GetDummyObjectNamesStartingWith@..QBE..ABVCCharString@@@Z (0x00B8C760 / 0x031F89E0). Each forwards to the C3DMeshStats query of the
+ // same name with sort = false. Declarations only, no layout change (std::vector from stlport/fable_containers.h, included above).
+ void GetAllHelperPointNames(std::vector<CCharString>& names)const;                                     // 0x00A35AF0
+ void GetAllDummyObjectNames(std::vector<CCharString>& names)const;                                     // 0x00A35B30
+ void GetDummyObjectNamesStartingWith(std::vector<CCharString>& names,const CCharString& prefix)const;  // 0x00A35B50
 #endif
 protected:
  const C3DMeshInfo* MeshInfo;

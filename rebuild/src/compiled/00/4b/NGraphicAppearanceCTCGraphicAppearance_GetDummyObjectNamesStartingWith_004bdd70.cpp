@@ -18,7 +18,11 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
 class CCharString;
-template <class T> struct CStdVector;                       // std::vector<T> (the caller's names)
+// Name fix (NF217, 2026-11-21, q12370): the caller's names are STLport std::vector<CCharString> from the shared
+//   stlport/fable_containers.h (was a CStdVector stand-in; NF108's 0x004BDB40 pattern, respelled in place in the existing local
+//   C3DMeshObject model). Own leaf: both PDBs (Ego_r.pdb 0x004C1330, FableWin.pdb 0x01D0BA90) spell it public const over
+//   std::vector<CCharString>&; the C3DMeshObject call binds the PDB ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z (0x00A35B50).
+#include "stlport/fable_containers.h"
 
 struct SCountBlock {
     long m_references;                                      // +0
@@ -56,7 +60,7 @@ class C3DMeshObject : public CBaseClass { public:                              /
     float              Scale;                               // +0x74
     C3DMeshObject() : CBaseClass(), Mesh(), InversePositionMatrixSetup(false) { }
     virtual ~C3DMeshObject() { }
-    void GetDummyObjectNamesStartingWith(CStdVector<CCharString>& names, const CCharString& prefix) const;   // 0x00A35B50
+    void GetDummyObjectNamesStartingWith(std::vector<CCharString>& names, const CCharString& prefix) const;   // 0x00A35B50
 };
 
 namespace NGraphicAppearance {
@@ -121,10 +125,10 @@ class CTCGraphicAppearance { public:
             node->m_value->GetAllMeshes(meshes);
     }
     void GetMeshObject(const CMeshInfo& info, float scale, C3DMeshObject& out) const;   // 0x004BC4F0
-    void GetDummyObjectNamesStartingWith(CStdVector<CCharString>& names, const CCharString& prefix) const;
+    void GetDummyObjectNamesStartingWith(std::vector<CCharString>& names, const CCharString& prefix) const;
 };
 
-void CTCGraphicAppearance::GetDummyObjectNamesStartingWith(CStdVector<CCharString>& names, const CCharString& prefix) const
+void CTCGraphicAppearance::GetDummyObjectNamesStartingWith(std::vector<CCharString>& names, const CCharString& prefix) const
 {
     CMeshVector meshes;
     GetAllMeshes(meshes);

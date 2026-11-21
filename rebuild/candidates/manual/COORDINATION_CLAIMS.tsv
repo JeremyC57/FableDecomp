@@ -212,3 +212,4 @@ date	account	item	kind	status	note
 2026-11-21	A	0x00A4EFC0	author	claimed	AUTH4 (Account A) takes 0x00A4EFC0 alone (c2 hook method; V1 AllocateType candidate under a new macro name)
 2026-11-21	A	q12378,q12374	naming	done	NF216 landed as nf216 (8 rows); 0x004FE630 0x00CBFB7D 0x005A5B31 0x005A04F7 0x0065A075 0x005A4CDD left (queued land1121nf216)
 2026-11-21	A	q12368,q12369,q12370,q12372,q12373,q12379,q12371,q12380	naming	claimed	round 10 agent NF217 (today's landing follow-ups): rows 00a35b30 00a35af0 00a35b50 006116e0 00577216 00c432f0 00c43a10 00c5b300 00c73050 0047e196 00c576e0 00c57460 00c57af0 00c57c90 00c57d80 00c72620 00c72800 00c72a40
+2026-11-21	A	q12368,q12369,q12370,q12372,q12373,q12379,q12371,q12380	naming	done	NF217 landed as nf217 (13 rows incl. 004bda30 004bdd70 00621720 00621c80 0066e7bd claimed during the pass)

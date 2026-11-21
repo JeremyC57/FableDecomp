@@ -4,6 +4,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C576E0, length 79 bytes.
 // Callees: CAudioContext::GetProcAddress 0x00C4D740, GetProcAddress (IAT 0x0143FE44), the resolved entry point (cdecl);
 //          "alSourceUnqueueBuffers" @ 0x012B8EAC is pushed once before the branch.
+// Inferred: named resolved address (NF217, 2026-11-21, q12380) -- the SourceUnqueueBuffers resolver keeps the resolved entry point in a
+//   named `void* proc` before the member store and calls through the member, the one spelling of landed 0x00C73050 CAudioSource::UpdateStream
+//   (batches/2026-11-21_landing_auth3; AUTH3 measured this text on 0x00C576E0: pending/2026-11-21_auth3/00c73050/cons/), so the TU has one
+//   spelling of CAudioContext::SourceUnqueueBuffers. The bytes do not tell it from the HEAD ternary here (same grade); 0x00C73050's do.
+//   The other resolvers stay on the ternary.
 struct CAudioContext;
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
 
@@ -43,8 +48,9 @@ struct CAudioContext {
 
 void CAudioContext::SourceUnqueueBuffers(unsigned long source, long count, unsigned long* buffers)
 {
-    if (!pfnSourceUnqueueBuffers)
-        pfnSourceUnqueueBuffers = (PFN_alSourceUnqueueBuffers)(UseALGetProcAddress ? GetProcAddress("alSourceUnqueueBuffers")
-                                                                                   : ::GetProcAddress(Module, "alSourceUnqueueBuffers"));
+    if (!pfnSourceUnqueueBuffers) {
+        void* proc = UseALGetProcAddress ? GetProcAddress("alSourceUnqueueBuffers") : ::GetProcAddress(Module, "alSourceUnqueueBuffers");
+        pfnSourceUnqueueBuffers = (PFN_alSourceUnqueueBuffers)proc;
+    }
     pfnSourceUnqueueBuffers(source, count, buffers);
 }

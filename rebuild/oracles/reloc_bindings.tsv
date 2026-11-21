@@ -4928,8 +4928,6 @@ _iswdigit	00bfede2	00a0ce90
 @callee@12	00a35150	00a35310
 ?SortRecords@@YIXPAUCRecord38@@0UCRecordCompare@@@Z	00a351b0	00a35330
 ?resize@CMeshVolumeVector@@QAEXIABUSMeshVolumePair@@@Z	00a35430	00a35580
-?h_00a2f120@N@@QAEXHH@Z	00a2f120	00a35af0
-?Build@Inner@@QAE_NPAXJH@Z	00a2f150	00a35b50
 ??_7CClass_Calls@@6B@	0129cf60	00a372d0
 ?RegisterAllocatedClass@CClassFactory_Calls@@QAEXPAUCClass_Calls@@K_N@Z	00a371f0	00a372d0
 ?RegisterAllocatedClass@CClassFactory_Retail@@QAEXPAUCClass_Retail@@K_N@Z	00a371f0	00a37300
@@ -6698,7 +6696,6 @@ __CIpow	00bfeb40	00c40e50
 ??0CAIStateGroupBase_00c42d60@@QAE@XZ	00c4cf20	00c42d60
 ??0CCoverMember_00c42d60@@QAE@XZ	00c44250	00c42d60
 ??_7CAIStateGroup_CreatureUseCoverBase_00c42d60@@6B@	012b5a88	00c42d60
-?GetMark@CMarkedBuffer_00c43810@@QAEXAAUSBufferMark_00c43810@@@Z	00c442f0	00c432f0
 ?Cleanup@CMarkedBufferOwner_00c43810@@QAEXXZ	00c436c0	00c43810
 ?ClearMarks@CMarkedBuffer_00c43810@@QAEXXZ	00c443d0	00c43810
 ?Release@CMarkedBuffer_00c43810@@QAEXXZ	00c44550	00c43810
@@ -8144,8 +8141,6 @@ _wcsrchr	00bfedb2	009a5340
 ?g_bQuestFinishScreensEnabled@@3_NA	01375741	0061ac60
 ?RevertVideoChanges@CTCInventory@@QAEXXZ	00582754	0047da50
 ??0CSignatureMap@@QAE@XZ	00486055	0047df8a
-?GetAllHelperPointNames@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@@Z	00a35af0	004bda30
-?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@ABVCCharString@@@Z	00a35b50	004bdd70
 ?_M_erase@CClanScoreboardMap@@QAEXPAUSScoreboardNode@@@Z	00569a80	005625f0
 ?g_bApplyCopiedHeroStats@@3_NA	013b8a88	0057c9c4
 ?GetAbilityStatType@CTCInventoryAbilities@@QAEJW4EHeroAbility@@@Z	005edeeb	006d7cb0
@@ -39388,3 +39383,8 @@ _EAXPROPERTYID_EAX40_Context	012b9448	00c4f600
 _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?IsAttackerOn@CCombatManager@@QBE_NABVCThingCreatureBase@@0@Z	006e9310	0096fa90
 ?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	006ea050	0096fa90
+?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	00a35af0	004bda30
+?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z	00a35b50	004bdd70
+?GetAllHelperPointNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z	00a2f120	00a35af0
+?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z	00a2f0f0	00a35b30
+?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z	00a2f150	00a35b50

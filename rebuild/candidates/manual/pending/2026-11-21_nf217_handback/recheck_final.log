@@ -1,0 +1,104 @@
+addr       parity           behav  name
+00a35b30   WARN STANDIN_LEAF ?GetAllDummyObjectNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z (catalog CMainGameComponent::BeginInputLoading; names another function)
+00a35b30   RELOCATION_MATCH PASS   BeginInputLoading
+00a35af0   WARN STANDIN_LEAF ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z (catalog CMainGameComponent::BeginInputLoading; names another function)
+00a35af0   RELOCATION_MATCH PASS   BeginInputLoading
+00a35b50   WARN STANDIN_LEAF ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z (catalog NGameText::ConstructString; names another function)
+00a35b50   RELOCATION_MATCH PASS   ConstructString
+004bda30   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004bda30   WARN SHARED_HEADER_AVAILABLE C3DMeshObject (engine/C3DMeshObject.h)
+004bda30   WARN RELOC_NAME: ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 00a35af0 labelled 'CMainGameComponent::BeginInputLoading'
+004bda30   RELOCATION_MATCH PASS   GetAllHelperPointNames
+004bdd70   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004bdd70   WARN SHARED_HEADER_AVAILABLE C3DMeshObject (engine/C3DMeshObject.h)
+004bdd70   WARN RELOC_NAME: ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z -> 00a35b50 labelled 'NGameText::ConstructString'
+004bdd70   RELOCATION_MATCH PASS   GetDummyObjectNamesStartingWith
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006116e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap (engine/CTCInventoryMap.h)
+006116e0   WARN RELOC_NAME: ?ResetOpenState@CTCInventoryBase@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+006116e0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006116e0   WARN RELOC_NAME: ?BuildMapMenu@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@JJ@Z -> 0060eeb0 labelled 'CTCInventoryMap::ConstructPCMapList'
+006116e0   RELOCATION_MATCH PASS   OpenInventory
+00621720   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00621720   WARN SHARED_HEADER_AVAILABLE CTCInventoryQuests (engine/CTCInventoryQuests.h)
+00621720   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621720   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621720   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621720   RELOCATION_MATCH PASS   CloseInventoryPC
+00621c80   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00621c80   WARN SHARED_HEADER_AVAILABLE CTCInventoryQuests (engine/CTCInventoryQuests.h)
+00621c80   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621c80   WARN RELOC_NAME: ?g_frontEndNodeList@@3UCNodeList@@A -> 013b8a98 labelled 'std::list<NUISystem::CList *, std::allocator<NUISystem::CList *>> NUISystem::CList::GPreviousSelected'
+00621c80   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621c80   RELOCATION_MATCH PASS   CloseInventory
+0066e7bd   MATCH            PASS   GetCurrentScreen
+00c432f0   WARN RELOC_NAME: ?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z -> 00c442f0 labelled 'CMarkedBuffer_00c44550::GetMark'
+00c432f0   WARN STANDIN_LEAF ?ReportQueueInfo@CAudioObject@@QAEXXZ (catalog CMarkedBufferOwner_00c43810::ReportMark; names another function)
+00c432f0   RELOCATION_MATCH PASS   ReportMark
+0047e196   WARN RELOC_NAME: ?IsValid@CDateAndTime@@QBE_NXZ -> 009e9c60 labelled 'C3DMeshInfo::HasPhysicsMesh'
+0047e196   RELOCATION_MATCH PASS   SaveGame
+00c576e0   RELOCATION_MATCH PASS   SourceUnqueueBuffers
+00c57c90   RELOCATION_MATCH PASS   UnqueueBuffer
+0075b000   RELOCATION_MATCH PASS   InitialiseBody
+00724630   WARN SHARED_HEADER_AVAILABLE CThingPhysicsMeshInfo (engine/CThingPhysicsMeshInfo.h)
+00724630   RELOCATION_MATCH PASS   SetPhysicsMeshBankIndex
+00c15a70   WARN STANDIN_LEAF ?ApplyScaledOwnerValue@CUnattributed_00c15a70@@QAEXXZ (catalog _unattributed::ApplyScaledOwnerValue; address-only name)
+00c15a70   RELOCATION_MATCH PASS   ApplyScaledOwnerValue
+00a36100   RELOCATION_MATCH PASS   HasHelperPoint
+004c0560   WARN RELOC_NAME: ?PeekAnimation@CTCAnimationComplex@@QBEABVCAnimateThing@@XZ -> 0070b470 labelled 'CTCTurnSource::GetState'
+004c0560   RELOCATION_MATCH PASS   GetHelperPoint
+0076eb00   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0076eb00   RELOCATION_MATCH PASS   InitialiseTrails
+004bdb40   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004bdb40   WARN SHARED_HEADER_AVAILABLE C3DMeshObject (engine/C3DMeshObject.h)
+004bdb40   WARN RELOC_NAME: ?GetAllDummyObjectNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 00a35b30 labelled 'CMainGameComponent::BeginInputLoading'
+004bdb40   RELOCATION_MATCH PASS   GetAllDummyObjectNames
+00577216   RELOCATION_MATCH PASS   OpenInventoryInternal
+00c73050   WARN RELOC_NAME: ?ReportQueueInfo@CAudioObject@@QAEXXZ -> 00c432f0 labelled 'CMarkedBufferOwner_00c43810::ReportMark'
+00c73050   RELOCATION_MATCH PASS   UpdateStream
+007e4b60   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+007e4b60   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e4b60   RELOCATION_MATCH PASS   Activate
+
+WINS: 23
+  00a35b30 RELOCATION_MATCH _global::?GetAllDummyObjectNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  00a35af0 RELOCATION_MATCH CMainGameComponent::?GetAllHelperPointNames@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  00a35b50 RELOCATION_MATCH _global::?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z
+  004bda30 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetAllHelperPointNames
+  004bdd70 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetDummyObjectNamesStartingWith
+  006116e0 RELOCATION_MATCH CTCInventoryMap::?OpenInventory@CTCInventoryMap@@QAEXXZ
+  00621720 RELOCATION_MATCH CTCInventoryQuests::?CloseInventoryPC@CTCInventoryQuests@@QAEXXZ
+  00621c80 RELOCATION_MATCH CTCInventoryQuests::?CloseInventory@CTCInventoryQuests@@QAEXXZ
+  0066e7bd MATCH CManager::?GetCurrentScreen@CManager@NHeroInformationScreens@@QAEPBVCBase@2@XZ
+  00c432f0 RELOCATION_MATCH CMarkedBufferOwner_00c43810::?ReportQueueInfo@CAudioObject@@QAEXXZ
+  0047e196 RELOCATION_MATCH CTCInGameMenu::?SaveGame@CTCInGameMenu@@QAEXJ@Z
+  00c576e0 RELOCATION_MATCH CAudioContext::SourceUnqueueBuffers
+  00c57c90 RELOCATION_MATCH COpenALVoice::?UnqueueBuffer@COpenALVoice@@
+  0075b000 RELOCATION_MATCH CTCPhysicsRigidBody::?InitialiseBody@CTCPhysicsRigidBody@@AAEXXZ
+  00724630 RELOCATION_MATCH CTCPhysicsStandard::?SetPhysicsMeshBankIndex@CTCPhysicsStandard@@UAEXJ@Z
+  00c15a70 RELOCATION_MATCH _unattributed::ApplyScaledOwnerValue
+  00a36100 RELOCATION_MATCH C3DMeshObject::?HasHelperPoint@C3DMeshObject@@QBE_NABVCCharString@@@Z
+  004c0560 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@M@Z
+  0076eb00 RELOCATION_MATCH CTCWeaponTrail::?InitialiseTrails@CTCWeaponTrail@@AAEXXZ
+  004bdb40 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetAllDummyObjectNames
+  00577216 RELOCATION_MATCH CTCInventoryExperience::?OpenInventoryInternal@CTCInventoryExperience@@UAEX_N@Z
+  00c73050 RELOCATION_MATCH CAudioSource::?UpdateStream@CAudioSource@@UAEJPAVCAudioObject@@_J@Z
+  007e4b60 RELOCATION_MATCH CTCCreditsUI::?Activate@CTCCreditsUI@@QAEXVCCharString@@@Z

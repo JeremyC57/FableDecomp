@@ -1214,9 +1214,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0066e7bd'
-        Module = 'CManager'
-        Source = '00/66/CManager_GetCurrentScreen_0066e7bd.cpp'
-        TestSource = '00/66/CManager_GetCurrentScreen_0066e7bd_test.cpp'
+        Module = 'NHeroInformationScreens::CManager'
+        Source = '00/66/NHeroInformationScreensCManager_GetCurrentScreen_0066e7bd.cpp'
+        TestSource = '00/66/NHeroInformationScreensCManager_GetCurrentScreen_0066e7bd_test.cpp'
         PassPattern = 'CManager_0066e7bd_TEST PASS'
     }
     [pscustomobject]@{
@@ -36083,9 +36083,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a35b30'
-        Module = '_global'
-        Source = '00/a3/global_BeginInputLoading_00a35b30.cpp'
-        TestSource = '00/a3/global_BeginInputLoading_00a35b30_test.cpp'
+        Module = 'C3DMeshObject'
+        Source = '00/a3/C3DMeshObject_GetAllDummyObjectNames_00a35b30.cpp'
+        TestSource = '00/a3/C3DMeshObject_GetAllDummyObjectNames_00a35b30_test.cpp'
         PassPattern = '00a35b30_TEST PASS'
     }
     [pscustomobject]@{
@@ -43310,9 +43310,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a35b50'
-        Module = '_global'
-        Source = '00/a3/global_ConstructString_00a35b50.cpp'
-        TestSource = '00/a3/global_ConstructString_00a35b50_test.cpp'
+        Module = 'C3DMeshObject'
+        Source = '00/a3/C3DMeshObject_GetDummyObjectNamesStartingWith_00a35b50.cpp'
+        TestSource = '00/a3/C3DMeshObject_GetDummyObjectNamesStartingWith_00a35b50_test.cpp'
         PassPattern = '00a35b50_TEST PASS'
     }
     [pscustomobject]@{
@@ -92456,9 +92456,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a35af0'
-        Module = 'CMainGameComponent'
-        Source = '00/a3/CMainGameComponent_BeginInputLoading_00a35af0.cpp'
-        TestSource = '00/a3/CMainGameComponent_BeginInputLoading_00a35af0_test.cpp'
+        Module = 'C3DMeshObject'
+        Source = '00/a3/C3DMeshObject_GetAllHelperPointNames_00a35af0.cpp'
+        TestSource = '00/a3/C3DMeshObject_GetAllHelperPointNames_00a35af0_test.cpp'
         PassPattern = 'PASS_00a35af0'
     }
     [pscustomobject]@{
@@ -203435,9 +203435,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c432f0'
-        Module = 'CMarkedBufferOwner_00c43810'
-        Source = '00/c4/CMarkedBufferOwner00c43810_ReportMark_00c432f0.cpp'
-        TestSource = '00/c4/CMarkedBufferOwner00c43810_ReportMark_00c432f0_test.cpp'
+        Module = 'CAudioObject'
+        Source = '00/c4/CAudioObject_ReportQueueInfo_00c432f0.cpp'
+        TestSource = '00/c4/CAudioObject_ReportQueueInfo_00c432f0_test.cpp'
         PassPattern = '00c432f0_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,0 +1,4 @@
+reloc_bindings.tsv: removed 5 stand-in witnesses, added 5 PDB first witnesses (?CloseMenus@@YIXXZ for 0x0041D165 left out: it would grow that pre-existing split; queued)
+spellings per target, before / after:
+00a35af0=1 00a35b30=1 00a35b50=1 0066e799=1 0066e7bd=1 00c432f0=1 00c442f0=2 00a2f120=1 00a2f150=1 00a2f0f0=0 0041d165=2 
+00a35af0=1 00a35b30=1 00a35b50=1 0066e799=1 0066e7bd=1 00c432f0=1 00c442f0=1 00a2f120=1 00a2f150=1 00a2f0f0=1 0041d165=2 

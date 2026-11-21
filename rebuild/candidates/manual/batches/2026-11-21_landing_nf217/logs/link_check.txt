@@ -1,0 +1,11 @@
+# link of the 44 rechecked objects, /FORCE; LNK4006 per symbol (HEAD control = the 13 rows from HEAD)
+HEAD
+      3 ??$fill_n@PAPAVCComponent@NUISystem@@IPAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@IABQAV12@@Z
+      1 ?GetOriginalExperience@CTCInventoryExperience@@QAEJJ@Z
+      1 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+      2 ?SourceUnqueueBuffers@CAudioContext@@QAEXKJPAK@Z
+      1 ?fn_00a35b30@@YIXPAUBL@@HH@Z
+landing
+      1 ?GetOriginalExperience@CTCInventoryExperience@@QAEJJ@Z
+      1 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+      2 ?SourceUnqueueBuffers@CAudioContext@@QAEXKJPAK@Z
