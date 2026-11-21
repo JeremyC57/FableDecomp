@@ -39373,3 +39373,5 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?ITEMS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b78	005b01fe
 ?RefreshSellDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005aeaee	005b01fe
 ?WEAPONS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b70	005b01fe
+?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ	0083b520	0083b6b0
+?GetCurrentGraphic@CThingPhysicalSwitch@@IBEABVCEngineGraphic@@XZ	0083db60	0083dc80

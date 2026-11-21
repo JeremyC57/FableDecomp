@@ -48,6 +48,13 @@ public:
     virtual bool IsEntitySerialisable() const;  // slot 22, 0x00529C90
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_DRAWPREPARE
+    // Retail opt-in (p25N, row 0x0083DC80): Ego_r.pdb 0x00812D10 / FableWin.pdb 0x028013F0
+    // ?DrawPreparePrimitivesForRendering@CThingPhysicalSwitch@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z (public virtual, vtable slot 36;
+    // overrides CThingPhysical's 0x006A64D0). Declaration only (no layout change).
+public:
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(45, sizeof(CThingPhysicalSwitch)==0xd8);
 #ifdef FABLE_RETAIL_CTHINGPHYSICALSWITCH_PEEKDEFINITION_SAMETU

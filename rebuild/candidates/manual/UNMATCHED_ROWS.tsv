@@ -324,7 +324,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00837b30	CThingTrackNode	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(313v314)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00837b30.cpp	gapscan/boundary
 00839420	NThingHelpers	CreateEffectOnHit	1312	parked	DIFFER(1304v1308)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00839420.cpp	original
 00839940	CThingGameObject	OnHit	5200	parked	DIFFER(5174v5195)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00839940.cpp	original
-0083b6b0	CThingVillage	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(308v309)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083b6b0.cpp	gapscan/boundary
 0083c2d0	CThingSwitch	ConstructFromLevelScript	768	parked	DIFFER(760v756)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/differ/0083c2d0.cpp	original
 0083d2e0	CThingMarker	DrawPreparePrimitivesForRendering	384	parked	DIFFER(356v372)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/0083d2e0.cpp	gapscan/boundary
 0083dc80	CThingPhysicalSwitch	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(308v309)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0083dc80.cpp	gapscan/boundary

@@ -36,6 +36,12 @@ protected:
     const CEngineGraphic* GetCurrentGraphic() const;                     // 0x0083B520
 public:
 #endif
+#ifdef FABLE_RETAIL_CTHINGVILLAGE_DRAWPREPARE
+    // Retail opt-in (p25N, row 0x0083B6B0): Ego_r.pdb / Ego_d.pdb ?DrawPreparePrimitivesForRendering@CThingVillage@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+    // (public virtual, vtable slot 36; overrides CThingPhysical's 0x006A64D0). Declaration only (no layout change).
+public:
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+#endif
 #ifdef FABLE_RETAIL_CTHINGVILLAGE_STATGETTYPE
     // Nested opt-in (chunk 853, row 0x0050A650): FableWin.pdb ?StatGetType@CThingVillage@@SIJXZ (inline); retail GetAllLeafThings<CThingVillage>
     // 0x005166B0 scans type list 4 (`push 4 ; call PeekTypeList`). No layout change.
