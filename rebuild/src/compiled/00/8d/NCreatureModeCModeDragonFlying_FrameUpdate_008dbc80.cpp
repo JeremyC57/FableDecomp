@@ -19,10 +19,12 @@
 //   5020 / 5045 / 5058 / 5119 `v = v.Normalise()`, 5061/5062 (15 B each) rhs.SetForward / rhs.SetUp (retail copies Forward first,
 //   0x008DC1A7), and the end block 5116..5121 = SetUp(C3DVector(0,0,1)) 41 B, GetForward copy 23, Z = 0 8, Normalise 37, SetForward 18,
 //   SetRHSet 53 (5016's 50 + disp32). Ego_d 4975 / 4976 (42 / 37 B) fit GetParentThing() calls (+4 B each over the member read).
-//   Unexplained Ego_d records: 5022 (12 B, the size of a C3DVector copy declaration; an early `ideal_movement_direction = movement_direction`
-//   costs retail 20 B of stores, 2339v2319) and 5048 (11 B; `roll_angle = angle_delta` is 9 B, retail pushes angle_delta unchanged).
+//   5022 (12 B, a C3DVector copy declaration) is `C3DVector ideal_movement_direction = movement_direction;`: the copy is never read, so
+//   VC7.1 drops it (an overwritten-then-read copy costs 20 B of stores, 2339v2319), and RotateXY takes movement_direction_2d (5057, 20 B
+//   either way). Unexplained Ego_d record: 5048 (11 B; `roll_angle = angle_delta` is 9 B, retail pushes angle_delta unchanged).
 // Inferred: the Normalise body is the existing FABLE_RETAIL_C3DVECTOR_NORMALISE_PAREN_SQUARES_XYZ opt-in (PAREN_SQUARES_ZYX gives the same
-//   bytes; the default and the other 8 body opt-ins differ: 2 to 116 lines).
+//   bytes; on this text the default body leaves 2 lines, the end-block Up.Z copy store at 0x008DC44D; the other 8 body opt-ins left 2 to
+//   116 lines on the pre-landing text).
 // Inferred: the look_pos operand order `GetParentThing().GetPos() + ...GetFacingVector() * 50.0f` (Ego_d 5093 is 136 B either way: VC7.1 /Od 129 B
 //   plus VC10's +2 virtual call and +5 float-constant argument, as 5066 = 123 + 7; so both reads are GetParentThing() calls, one-getter
 //   spellings decode to 132 B). Retail reloads `mov ecx,[esi+4]` after the GetFacingVector call (0x008DC31A); with the facing term first
@@ -128,6 +130,7 @@ void CModeDragonFlying::FrameUpdate()
     GetParentThing().GetPhysicsTC()->SetPosition(new_pos);
     C3DVector movement_direction = new_pos - PreviousPos;
     movement_direction = movement_direction.Normalise();
+    C3DVector ideal_movement_direction = movement_direction;
     C3DVector previous_facing_direction = GetParentThing().GetPhysicsTC()->GetFacingVector();
     float angle_delta = GFGetSignedAngleDifference(movement_direction.GetAngleXY(), previous_facing_direction.GetAngleXY());
     angle_delta *= 3.0f;
@@ -140,10 +143,9 @@ void CModeDragonFlying::FrameUpdate()
     movement_direction_2d = movement_direction_2d.Normalise();
     C3DVector up(0.0f, 0.0f, 1.0f);
     float roll_angle = angle_delta;
-    C3DVector ideal_movement_direction = movement_direction_2d;
     if (!(anim_percent_done > 0.75f && !PEndAction.IsNull() && NumAnimLoops == NumAnimLoopsToDo - 1) && !UsePreviousPos) {
         up.Rotate(C3DVector(0.0f, 1.0f, 0.0f), roll_angle);
-        up.RotateXY(ideal_movement_direction.GetAngleXY());
+        up.RotateXY(movement_direction_2d.GetAngleXY());
         up = up.Normalise();
     }
     CRightHandedSet rhs;
