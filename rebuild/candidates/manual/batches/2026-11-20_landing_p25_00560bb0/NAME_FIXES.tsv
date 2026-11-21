@@ -1,0 +1,6 @@
+address	kind	landed	fix	evidence
+0x0055E040	parameters/locals	in, out, key; v0, v1, sum, i (no delta)	v, w, k; v0, v1, sum, delta, i	Ego_d.pdb locals of `anonymous namespace'::EncipherMorsel
+0x0055E180	parameters/locals	in, out, key; no delta	v, w, k; v0, v1, sum, delta, i	Ego_d.pdb locals of `anonymous namespace'::DecipherMorsel
+0x00560920	parameters/locals	text, separator, out; pos, found, piece (while loop)	input, token, ret; startpos, findpos, newstr (do/while)	Ego_d.pdb locals + line table of `anonymous namespace'::Explode
+0x0055E040 / 0x0055E180 / 0x00560920	device removed	global function-pointer "keep" variables (g_keepEncipherMorsel, ...), local STLport/namespace models, noinline stand-ins	none: shared headers, the bodies sit in the anonymous namespace like retail	rule: no device retail lacked
+0x00560BB0	catalogue/label	manifest LHNetworkLib_DecryptResponseDocument (labels already respelled)	CTCHeroOnlineScoreboard::GetDecryptedDocument	Ego_r.pdb / FableWin.pdb ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV..@Z

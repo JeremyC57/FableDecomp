@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0055e2c0   RELOCATION_MATCH PASS   CryptoMatic
+00560bb0   RELOCATION_MATCH PASS   GetDecryptedDocument
+
+WINS: 2
+  0055e2c0 RELOCATION_MATCH _global::?CryptoMatic@
+  00560bb0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?GetDecryptedDocument@CTCHeroOnlineScoreboard@@
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  global_CryptoMatic_0055e2c0
+  CTCHeroOnlineScoreboard_GetDecryptedDocument_00560bb0

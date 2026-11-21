@@ -401762,6 +401762,22 @@ $catalog = @(
         TestSource = '00/c3/CRampedParam_ApplyGainToFrame_00c3a7d0_test.cpp'
         PassPattern = '00c3a7d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0055e2c0'
+        Module = '_global'
+        Source = '00/55/global_CryptoMatic_0055e2c0.cpp'
+        TestSource = '00/55/global_CryptoMatic_0055e2c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0055e2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00560bb0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_GetDecryptedDocument_00560bb0.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_GetDecryptedDocument_00560bb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00560bb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

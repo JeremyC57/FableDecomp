@@ -39364,3 +39364,9 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?_Destroy_range@@YIXPAUCSequencePointer@@0ABUCRetailAllocator@@@Z	006f2300	006ed510
 ?__copy@@YIPAUCSequencePointer@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	006f1410	006ed510
 ?erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@QAEIAB_K@Z	006f3200	006ed510
+?DecipherMorsel@?A0x4a5e4ce8@@YIXPAK00@Z	0055e180	0055e2c0
+?EncipherMorsel@?A0x4a5e4ce8@@YIXPAK00@Z	0055e040	0055e2c0
+?CryptoMatic@?A0x051e04a6@@YIHPBDPADH0D@Z	0055e2c0	00560bb0
+?Explode@?A0x051e04a6@@YIHAAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z	00560920	00560bb0
+?GetDocument@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@PAD@Z	0083eaa0	00560bb0
+?GetDocumentSize@LHHttp2@LHNetworkLib@@QAEKXZ	0083ea70	00560bb0
