@@ -43,6 +43,6 @@ Resume recipe: `docs/HANDOFF.md`.
 - Chunk 892's scheduler / operand-order tools: `rebuild/candidates/manual/pending/2026-11-09_linux_hand892/tools/` (README there).
 
 ## fast/ (author agents, 2026-11-12)
-`odall10.py` (2026-11-21): VC10 SP1 per-line sizes with Ego_d's flags (evidence only; install with `../fetch_vc10sp1.sh`).
+`odall10.py [--lib fablelib|bbb|engine|particle|ego] [--stl]` (2026-11-21): VC10 SP1 per-line sizes with the Ego_d library's own flags; `--stl` uses VC10's headers for STL statements (evidence only; install with `../fetch_vc10sp1.sh`).
 
 `fast/fg.py` grades up to three variants of one row per call and prints only the differing hunks; `fast/vt.py` runs a behaviour test with the lander's VC7.1 check; `fast/addmatch.py` writes a matched row into payload.json / oracle.tsv. Copy all three to `$S/tools/` when a lane is set up.

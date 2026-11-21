@@ -156,7 +156,7 @@ FableEngine / ParticleSystem use `-GS- -GR -Gr`, `-W4` or `-W3`, their own defin
 + rebuild/include), so a text on the repo's engine headers compiles and its non-STL statements compare exactly. Ego_d's library STL is
 VC10 Dinkumware (checked iterators), which the repo's STLport model cannot stand in for: measure STL statements with `--stl` (VC10 headers
 first) in a standalone text. Calibration (2026-11-21): AUTH2's 0x00A4EFC0 helpers all equal Ego_d (SetScaling 34, GetMaximumAbsoluteComponent
-259, GetBoneName 49, C3DVectorWord::operator== 86, SetupIdentityFlag; VC7.1 /Od gives 30 / 212 / 31 / 86); `--stl --lib bbb` reproduces
+259, GetBoneName 49, C3DVectorWord::operator== 86, SetupIdentityFlag 97; VC7.1 /Od gives SetScaling 30, GetMaximumAbsoluteComponent 227, GetBoneName 31); `--stl --lib bbb` reproduces
 all 13 `std::vector<unsigned long>` members of Ego_d's `BBBLibrary\Debug\lib_bank_file.obj` byte for byte (ctors 106 / 94,
 operator= 33, _Assign_rv 334, insert<_Vector_iterator> 205, _Insert 911, swap 222, ...). **Never build, grade or land a row with it**:
 rows are VC7.1 3077. Never commit its binaries or the package.
