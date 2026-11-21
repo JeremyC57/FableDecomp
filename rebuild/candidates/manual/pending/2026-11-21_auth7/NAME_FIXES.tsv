@@ -1,0 +1,1 @@
+0x00A4EFC0	C3DAnimationSequenceData::C3DVectorWord::operator==	parameter rhs (Ego_d.pdb S_BPREL32 +8 'rhs'; FableWin same TU)	other (overlay opt-in FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_VECTORWORD_FROMVECTOR, C3DAnimationSequenceData.h)	parameter name only, no code; needs header claim

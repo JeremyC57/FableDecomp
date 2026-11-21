@@ -223,3 +223,4 @@ date	account	item	kind	status	note
 2026-11-21	A	0x007602F0	author	done	landed as NShape::IsShapeConvex (batches/2026-11-21_landing_auth6), AUTH5 + AUTH6; RELOCATION_MATCH /Gr
 2026-11-21	A	0x00763060	authoring	parked-owner	AUTH6 escalated: owner question (n4 fitted v Ego_d-exact g1); no agent on it
 2026-11-21	A	0x00A4EFC0	authoring	claimed	AUTH7 (the advisor one-shot step: every Ego_d-evidenced correction as one set, VC10-calibrated; no open search)
+2026-11-21	A	0x00A4EFC0	authoring	parked-advisor	AUTH7 escalated (Ego_d-exact text, same residue 16; tie not header-set dependent); pending/2026-11-21_auth7
