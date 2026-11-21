@@ -278,6 +278,7 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The edges get the 0x008DBC80 line-5093 size test (fits: no label; can't fit: out; undecidable: Inferred), and Ego_d's TPI types for first / second / this_line / last_line decide whether a 2D text is the real one.
   - The paren body is acceptable as Inferred (the PAREN family), re-measured after the edges settle. Every landed GFArcCos user is regraded with it, and it lands only with the row.
 - **2026-11-21 (0x00763060, coordinator ruling; the advisor call timed out):** p25Q's VC7.1 probe proves Ego_d's pre-increment text cannot produce retail. The post-increment text still contradicts Ego_d 199 / 204, so it is not Inferred. The probe is evidence about the revision, not a second source for the spelling. The row stays reserved behind its bracket and on the Windows request.
+  - **Superseded (2026-11-21, Account A AUTH5, VC10 SP1 odall10 --stl):** the 199 / 204 basis does not hold. Ego_d increments after the call as its own statement (207 `find_if` 168 B, 210 `it_start++;` 28 B), and the AUTH1 sizes came from a parser that dropped wrapped bytes. The row is still not landable: the Ego_d-exact text grades DIFFER(1134v1146) (`pending/2026-11-21_auth5/`); AUTH6 continues.
 
 ## 2026-11-21 owner instruction: next reservation set by size
 Owner: "after next reserved rows/functions are done, reserve the next set from the largest ones". When p25Q's and p25R's

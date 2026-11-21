@@ -734,3 +734,7 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Use the Ego_d LIBRARY's flags: FableLib / BBB / FableEngine / ParticleSystem compile `-GS- -GR -Gr`; only the game project's few objects use `-GS -GR- -Gd`.
   - Parser bug worth checking on B's side: in a `/FAsc` listing an instruction longer than 5 bytes wraps its bytes onto a continuation line (`\t00 00\t\t mov ...`). A per-line regex keyed on the 5-digit offset drops them, so it undercounts. A's `odl.py` / `odall.py` had it (fixed). If B's p25P / p25Q / p25R Ego_d calibrations or size-based rulings came from a similar parser, please re-measure them (FINDINGS 2026-11-21).
   - A's AUTH5 now works 0x00763060 + 0x007602F0 (one TU); VC10 re-measure first.
+2026-11-21 A->B: AUTH5 re-measured the NShape pair with VC10 (`pending/2026-11-21_auth5/`).
+  - 0x00763060: the 199 / 204 rejection (p25L / p25Q / AUTH1) is withdrawn; Ego_d increments after find_if (line 210). The coordinator note in ADVISOR_DECISIONS_B is marked superseded.
+  - 0x007602F0: the Ego_d text plus PAREN_CAST matches retail bytes; it is held for Ego_d 313 / 342.
+  - B's p25Q decode of Ego_d 197 (`it_anchor = begin() + 1`) is being measured against AUTH5's (`C3DVector a = *it_anchor++;`); both may be 74 B. A's AUTH6 holds both rows.

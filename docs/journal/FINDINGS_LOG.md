@@ -1618,3 +1618,9 @@ against CODAApi.lib, or stay compiled C++?
   (`-GS -GR- -Gd -D_STLP_DEBUG`, few objects); the libraries (871 FableLib / 231 BBB / 100 FableEngine / 20 ParticleSystem compilands) use
   `-GS- -GR -Gr`, now `odall10.py --lib`. (2) Ego_d's library STL is VC10 Dinkumware; `odall10.py --stl` (VC10 headers) reproduces all 13
   `vector<unsigned long>` members of lib_bank_file.obj, so STL statements are exact evidence only in that mode.
+- 2026-11-21 (Account A AUTH5, VC10 odall10 --stl, NShape pair in FableLib tc_geometric_shapes.obj): the earlier size rulings on the pair
+  were VC7.1 /Od measurements with a byte-dropping parser. Exact VC10 results: 0x00763060's "lines 199 / 204 leave no room for the
+  post-increment" rejection rested on attribution and is withdrawn (Ego_d 207 `find_if(it_start, ...)` 168 B, then 210 `it_start++;` 28 B);
+  0x007602F0's three-float edge constructor stays rejected (66 / 86 B v Ego_d 24 / 44 = `v = second - first; v.Normalise();`). With the
+  Ego_d text plus the Inferred PAREN_CAST opt-in 0x007602F0 matches retail bytes; Ego_d 313 / 342 are still unexplained. Equal size is
+  necessary, not sufficient: two texts can measure the same (p25Q's 197 decode v AUTH5's); record which constraint selects.
