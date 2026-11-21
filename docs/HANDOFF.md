@@ -6,6 +6,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
+## Account A, 2026-11-21 (owner: B rows released; agents resumed)
+- Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0
+  0x00B4D370 0x00BD3070 0x00C73050 0x00CF4EC0): now `parked (released from Account B ...)`; claims line + COORDINATION_LOG entry.
+- Owner resumed agents on Account A: one authoring agent (no parking: keep working until a row matches; stalls escalate to the
+  advisor in the main chat) and one naming agent. This supersedes "no more agents or naming for now" below.
+
 ## Account B, 2026-11-20 (wind-down)
 - Landed today on FullDecomp-B: hand-authoring chunks hand3c2 (complete) and most of hand3c3; re-ports of CGenericException (9) and IDirect3D9 (13);
   the regressed 0x00589A30 re-authored. Batches: `rebuild/candidates/manual/batches/2026-11-20_*`.
