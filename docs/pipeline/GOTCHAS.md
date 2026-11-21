@@ -485,3 +485,8 @@
 - (Account B, 2026-11-20) Two agents share one box, so kill only PIDs your own run recorded, never a winedbg / cl.exe found by name. p25N killed p25O's il2 probe (winedbg) that way, and one of p25O's measurements had to be re-run.
 - (Account B p25O, 2026-11-20) g.py's work directory is fixed per address, so parallel grades of the same row overwrite each other: an empty or wrong grade can follow. Give each source its own work dir (a per-run tag) when sweeping variants in parallel.
 - (hdrfix 2026-11-21) An enum's enumerator names are in the PDB LF_ENUMERATE (0x1502) records even when no mangled symbol shows them: `grep -ao` the raw Ego_r / FableWin PDBs before calling enumerator spellings unproven.
+- (landing auth3, 2026-11-21) A one-register residue decided by c2 colouring order (0x00C73050: the queue temp's priority 23 v the item's 20)
+  is found by measuring, not by spelling sweeps: read each candidate's priority with the c2 hook (`pending/2026-11-21_auth2/c2x/c2prio_x.py`),
+  force the order (C2X_FORCE) to prove which change gives retail, then try texts and grade only those whose readout reaches the target.
+  The winning change sat in an INLINED HELPER (a named local in the AL resolver), and it was accepted only after every landed owner and inliner
+  of that helper regraded equal with it.

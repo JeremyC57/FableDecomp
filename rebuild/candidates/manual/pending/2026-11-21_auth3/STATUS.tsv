@@ -1,0 +1,2 @@
+address	state	best_grade	grades_used	best_source	note
+0x00C73050	matched (ruling requested: all-three vs smallest proc spelling)	RELOCATION_MATCH (/d2inlT145), test PASS	8 variant grades + ablation/consistency	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth3/00c73050/00c73050.cpp	alt /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth3/00c73050/00c73050_smallest.cpp; Inferred named resolved address; consistent with 3 out-of-line + 7 landed inline users

@@ -1,0 +1,142 @@
+/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth3/00c73050/v12b.cpp  (1 function(s) traced, 11.72 s in gdb; cl rc 0)
+
+==============================================================================================================
+?UpdateStream@CAudioSource@@UAEJPAVCAudioObject@@_J@Z  (defined at line 105)
+
+integer candidates in c2's colouring order (0x1078482f: priority desc, then key desc; equal -> later id first).
+allowed: a=eax c=ecx d=edx s=esi i=edi b=ebx p=ebp (table order; a value live across a call shows ...sibp)
+  #   id  candidate                lines            prio   key spill refs  allowed  register
+  0    1  this                     105..142           91    23    46   20  ...sibp  esi
+  1   12  type                     108-109            82     7    10    5  acdsibp  eax
+  2   26  global                   122                68   113     4    4  acdsibp  eax
+  3   11  processed                119                56   121     0    3  acdsibp  eax
+  4   32  temp                     126,130            50   134    16    9  acdsibp  eax
+  5   16  local                    122                30   104     8    2  ...sibp  edi
+  6    5  sound                    106-108,124        26    16    12    6  ...sibp  ebp
+  7   23  global                   117                22    87     2    3  acdsibp  eax
+  8    9  queue                    107..132           21    11    18    8  ...sibp  ebx
+  9   34  temp                     126                20   141     6    3  acdsibp  ecx
+ 10   35  temp                     126,130            20   139     6    3  acdsibp  edi
+ 11   22  global                   110                20    38     2    4  acdsibp  eax
+ 12   25  global                   138                16   225     2    3  acdsibp  eax
+ 13   24  global                   134                16   191     2    3  acdsibp  eax
+ 14   19  proc                     134                16   186     6    3  acdsibp  eax
+ 15   28  temp                     130                16   150     4    2  acdsibp  eax
+ 16   15  proc                     117                16    82     6    3  acdsibp  eax
+ 17   21  proc                     138                12   220     6    3  acdsibp  eax
+ 18    3  processed                118-119            12    90     2    2  acdsibp  eax
+ 19   14  local                    117                 9    73     4    2  ...sibp  edi
+ 20   13  local                    110                 7    30     4    2  ...sibp  edi
+ 21   20  local                    138                 5   212     4    2  ...sibp  edi
+ 22   18  local                    134                 3   178     4    2  ...sibp  edi
+ 23   10  const 0xc9ed7c                             -24     0    -1    2  ...sibp  split, immediate
+ 24   17  param                    106,111,132       -56    22     4    3  ...sibp  split, memory
+ 25    7  param                    106,111,132       -56    19     4    3  ...sibp  split, memory
+ 26    4  const 0                                    -60     0     1   23  .....b.  split, immediate
+ 27   27  _imp__GetProcAddress@8   109..138          -67     2    10    5  ...sibp  split, memory
+ 28    8  const 0xc9ed1c                             -74     0    -1    4  ...sibp  split, immediate
+ 29    2  const 1                                    -76     0    -1    5  .....b.  split, immediate
+ 30    6  const 0xc9ec5c                            -108     0    -1    6  ...sibp  split, immediate
+
+not in the list (dropped before the sort: fewer than 2 references and spill <= 0, a 2-reference copy forwarded into its use,
+or not an integer candidate):
+       1  const 0x7f                              refs 0   
+       3  const 0x10                              refs 0   
+       5  const 0xc9ecbc                          refs 0   
+       7  const 8                                 refs 0   
+       9  const 0x1016                            refs 0   
+      11  const 0x1010                            refs 0   
+      12  const 0x1012                            refs 0   
+      13  const 2                                 refs 0   
+      29  temp                     108,126,132    refs 4   
+      30  temp                     117..135       refs 5   
+      31  temp                     115,126        refs 3   
+      33  temp                     119-120        refs 3   
+
+where each priority comes from (priority pass 0x10782473, first run): per block, w = 1 << loop depth,
+K = candidates referenced in the block; a referenced candidate gains w*K*cost, one live through without a
+reference loses w*K.  cost: 2 per variable reference in the block, 0/1 for a constant.
+  block 1 (depth 0, lines 105-109): w 1 K 10
+      #9    queue                  referenced, cost   2: +20
+  block 2 (depth 0, lines 109): w 1 K 1
+      #9    queue                  live through, no reference: -1
+  block 3 (depth 0, lines 110): w 1 K 4
+      #9    queue                  live through, no reference: -4
+  block 4 (depth 0, lines 110): w 1 K 1
+      #9    queue                  live through, no reference: -1
+  block 5 (depth 0, lines 110): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 6 (depth 0, lines 110): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 7 (depth 0, lines 110): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 8 (depth 0, lines 110-111): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 9 (depth 0, lines 111): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 10 (depth 0, lines 111): w 1 K 0
+  block 11 (depth 0, lines 111): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 12 (depth 0, lines 112-113): w 1 K 2
+  block 13 (depth 0, lines 115): w 1 K 2
+      #9    queue                  referenced, cost   2: +4
+  block 14 (depth 0, lines 117): w 1 K 5
+      #9    queue                  live through, no reference: -5
+  block 15 (depth 0, lines 117): w 1 K 1
+      #9    queue                  live through, no reference: -1
+  block 16 (depth 0, lines 117): w 1 K 3
+      #9    queue                  live through, no reference: -3
+  block 17 (depth 0, lines 117): w 1 K 3
+      #9    queue                  live through, no reference: -3
+  block 18 (depth 0, lines 117): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 19 (depth 0, lines 117-118): w 1 K 4
+      #9    queue                  live through, no reference: -4
+  block 20 (depth 0, lines 119): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 21 (depth 0, lines -): w 1 K 0
+  block 22 (depth 0, lines 119): w 1 K 1
+      #9    queue                  live through, no reference: -1
+  block 23 (depth 1, lines 120,122): w 2 K 4
+      #9    queue                  live through, no reference: -8
+  block 24 (depth 1, lines 122): w 2 K 1
+      #9    queue                  live through, no reference: -2
+  block 25 (depth 1, lines 122): w 2 K 3
+      #9    queue                  live through, no reference: -6
+  block 26 (depth 1, lines 122): w 2 K 3
+      #9    queue                  live through, no reference: -6
+  block 27 (depth 1, lines 119,122-124): w 2 K 7
+      #9    queue                  referenced, cost   2: +28
+  block 28 (depth 0, lines -): w 1 K 0
+  block 29 (depth 0, lines 126): w 1 K 3
+      #9    queue                  referenced, cost   2: +6
+  block 30 (depth 0, lines 126): w 1 K 2
+      #9    queue                  referenced, cost   2: +4
+  block 31 (depth 0, lines 126): w 1 K 4
+      #9    queue                  referenced, cost   4: +16
+  block 32 (depth 0, lines 126): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 33 (depth 0, lines 126): w 1 K 2
+      #9    queue                  live through, no reference: -2
+  block 34 (depth 0, lines 130): w 1 K 4
+      #9    queue                  live through, no reference: -4
+  block 35 (depth 0, lines 127-128): w 1 K 2
+  block 36 (depth 0, lines 132): w 1 K 6
+      #9    queue                  referenced, cost   2: +12
+  block 37 (depth 0, lines 134): w 1 K 4
+  block 38 (depth 0, lines 134): w 1 K 1
+  block 39 (depth 0, lines 134): w 1 K 3
+  block 40 (depth 0, lines 134): w 1 K 3
+  block 41 (depth 0, lines 134): w 1 K 2
+  block 42 (depth 0, lines 134): w 1 K 2
+  block 43 (depth 0, lines 134): w 1 K 2
+  block 44 (depth 0, lines 135): w 1 K 2
+  block 45 (depth 0, lines 138): w 1 K 4
+  block 46 (depth 0, lines 138): w 1 K 1
+  block 47 (depth 0, lines 138): w 1 K 2
+  block 48 (depth 0, lines 138): w 1 K 2
+  block 49 (depth 0, lines 138): w 1 K 2
+  block 50 (depth 0, lines 138): w 1 K 2
+  block 51 (depth 0, lines 142-143): w 1 K 2
+  totals:
+      #9    queue                      21

@@ -401903,6 +401903,14 @@ $catalog = @(
         TestSource = '00/c4/CEAXManager_SetEAXProperty_00c4f600_test.cpp'
         PassPattern = '00c4f600_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c73050'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_UpdateStream_00c73050.cpp'
+        TestSource = '00/c7/CAudioSource_UpdateStream_00c73050_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT145'
+        PassPattern = '00c73050_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

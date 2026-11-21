@@ -208,3 +208,4 @@ date	account	item	kind	status	note
 2026-11-21	A	q12300,q12339,q12262	naming	done	NF215 landed as nf215 (batches/2026-11-21_landing_nf215): rows 0096fa90 006ed9e0 004115a0 00859040 004afe20 006238a0; q11760 / q11873 / q12265 blocked
 2026-11-21	A	q12378,q12374	naming	claimed	round 10 agent NF216 (owner 2026-11-21: "you can continue the naming queue agent too"): rows 004a0d90 004fdcb0 004fe630 005a04f7 005a4cdd 005a5b31 0065a075 007d2cc0 00870e00 00870fc0 00871290 009acee0 009af1e0 00cbfb7d
 2026-11-21	A	0x00C73050	author	claimed	AUTH3 (Account A) takes 0x00C73050 alone; 0x00A4EFC0 / 0x0093D270 / the other AUTH1 rows stay reserved acctA AUTH1 (escalated, pending advisor / owner)
+2026-11-21	A	0x00C73050	author	done	landed as CAudioSource::UpdateStream (batches/2026-11-21_landing_auth3), AUTH3; RELOCATION_MATCH /d2inlT145
