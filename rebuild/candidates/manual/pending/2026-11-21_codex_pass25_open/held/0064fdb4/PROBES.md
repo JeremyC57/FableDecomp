@@ -1,0 +1,104 @@
+- sprite_boxes — PDB-scoped named boxes, sprite boxes during sprite construction. DIFFER 2635/2593 bytes, 190 instruction hunks.
+- extent_input — PDB-scoped named boxes, extent input during sprite construction. DIFFER 2619/2593 bytes, 198 instruction hunks.
+- corner_input — PDB-scoped named boxes, corner input during sprite construction. DIFFER 2679/2593 bytes, 182 instruction hunks.
+- direct_edges — PDB-scoped named boxes, direct edges during sprite construction. DIFFER 2602/2593 bytes, 186 instruction hunks.
+- mutate_edges — PDB-scoped named boxes, mutate edges during sprite construction. DIFFER 2589/2593 bytes, 179 instruction hunks.
+- box_reference — PDB-scoped named boxes, box reference during sprite construction. DIFFER 2544/2593 bytes, 167 instruction hunks.
+- extents_reference — PDB-scoped named boxes, extents reference during sprite construction. DIFFER 2528/2593 bytes, 164 instruction hunks.
+- rgba_constructor — PDB-scoped named boxes, rgba constructor during sprite construction. DIFFER 2635/2593 bytes, 190 instruction hunks.
+- screen_copy_extent_input — Compile GFToScreen with the shared PDB-confirmed C2DBoxF copy constructor, extent input. DIFFER 2593/2593 bytes, 12 instruction hunks.
+- screen_copy_corner_input — Compile GFToScreen with the shared PDB-confirmed C2DBoxF copy constructor, corner input. DIFFER 2593/2593 bytes, 136 instruction hunks.
+- screen_copy_direct_edges — Compile GFToScreen with the shared PDB-confirmed C2DBoxF copy constructor, direct edges. DIFFER 2567/2593 bytes, 114 instruction hunks.
+- screen_copy_sprite_boxes — Compile GFToScreen with the shared PDB-confirmed C2DBoxF copy constructor, sprite boxes. DIFFER 2593/2593 bytes, 12 instruction hunks.
+- screen_copy_mutate_edges — Compile GFToScreen with the shared PDB-confirmed C2DBoxF copy constructor, mutate edges. DIFFER 2578/2593 bytes, 151 instruction hunks.
+- screen_corners — Check whether conversion to screen coordinates uses screen corners in the box-returning overload. DIFFER 2593/2593 bytes, 12 instruction hunks.
+- screen_return_copy — Check whether conversion to screen coordinates uses screen return copy in the box-returning overload. DIFFER 2619/2593 bytes, 198 instruction hunks.
+- true_channel_order — Restore channel assignment order R,G,B,A from the native field offsets. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- width_update — Use separate inner-bar X and width updates from the two 12-byte debug lines preceding box construction. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- width_then_position — Update the usable width before the inset position. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inner_by_corners — Use a corner-pair constructor for the final 80-byte debug line. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inner_four_edges — Build the final rectangle from four scalar edges. DIFFER 2589/2593 bytes, 7 instruction hunks.
+- inner_pdb_getters — Pass colour channels through their public inline accessors to the final sprite call. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inner_already_screen — Pass the inner rectangle directly to the primitive constructor. DIFFER 2585/2593 bytes, 92 instruction hunks.
+- inner_copy_uv — Use explicitly floating literals for the UV vector constructors, as in the landed timer sibling. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inner_second_default — Use a default last UV vector while supplying the first explicitly. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inner_defaults — Use the default UV vectors on the inner sprite. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- default_uv_in_scope — Use default UV vectors at every sprite construction. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- extent_percentage_first — Read percentage before width in the extents product. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- extent_scale_first — Read scale before height in the inner rectangle. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- extent_both_reversed — Read both scaling operands first in the extents constructor. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- scale_usable_width — Scale the inset width before constructing the extents. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- box_inner_default_copy — Pass the coordinate copy directly as a temporary in the final sprite call. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- read_and_set_channels — Call the SDK getters and setters on the four individual interpolation lines. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- screen_blit_angles — Use floating sprite angles and inline public colour setters. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- source_size_pragma — Match the size pragma from the landed CQuestInfoElementTimer::DrawAt TU. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- named_floor_extents — Enforce a float conversion at the extents-constructor boundary. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- schedule_G5 — Assess the compiler instruction schedule for /G5 with identical source and inlining. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- schedule_G6 — Assess the compiler instruction schedule for /G6 with identical source and inlining. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- schedule_G7 — Assess the compiler instruction schedule for /G7 with identical source and inlining. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- screen_on_declaration — Materialize the screen rectangle before constructing the primitive. DIFFER 2593/2593 bytes, 91 instruction hunks.
+- assign_box_value — Assign the rectangle in its own full expression before screen conversion. DIFFER 2625/2593 bytes, 170 instruction hunks.
+- assign_screen_value — Assign the converted rectangle before the sprite statement. DIFFER 2609/2593 bytes, 182 instruction hunks.
+- initialise_box_edges — Initialise the named box using the real shared copy-from-box method. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- copy_screen_argument — Copy the original box at entry to the coordinate conversion. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- top_left_to_screen — Use the real vector form of the same screen-coordinate conversion at the top-left position. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- copy_extent_argument — Separate the retained extents value from the box copy using its evidenced copy constructor. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- sequential_width_and_height — Apply the three original inline rectangle setters to the inner sprite only. DIFFER 2589/2593 bytes, 139 instruction hunks.
+- extents_ctor — Compare donor-ordered member writes in constructor body versus initializer list for extents. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- box_extent_ctor — Compare donor-ordered member writes in constructor body versus initializer list for box_extent. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- box_copy_ctor — Compare donor-ordered member writes in constructor body versus initializer list for box_copy. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- uv_ctor — Compare donor-ordered member writes in constructor body versus initializer list for uv. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- position_copy_ctor — Compare donor-ordered member writes in constructor body versus initializer list for vector_copy. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- complete_box — Compare donor-ordered member writes in constructor body versus initializer list for extents, box_extent, box_copy. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- uniform_ctor — Compare donor-ordered member writes in constructor body versus initializer list for box_extent, box_copy, extents, uv, vector_copy. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- donor_static_receiver — Restore the donor singleton receiver, explicit ThingValid branch and ScaleAlpha(255) arguments. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- donor_constants — Use the donor f64 arithmetic literals at inset, space and height adjustments. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_uv_ctor — Check early expansion of both genuine UV constructors in the final sprite expression. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_screen — Check early expansion of the real screen conversion returning the named box copy. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_extents — Test early expansion of the PDB-confirmed extents helper after the donor call-order restoration. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_box_extent — Test early expansion of the PDB-confirmed box_extent helper after the donor call-order restoration. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_box_copy — Test early expansion of the PDB-confirmed box_copy helper after the donor call-order restoration. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_scale_alpha — Test early expansion of the PDB-confirmed scale_alpha helper after the donor call-order restoration. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_early_copy_position — Test early expansion of the PDB-confirmed copy_position helper after the donor call-order restoration. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- donor_integer_offsets — Use integer tokens for four position arithmetic literals whose ordinary debug build promoted them to double. DIFFER 2596/2593 bytes, 47 instruction hunks.
+- size_driver — Check the VC7.1 /O1 /Oy option on this exact GUI translation unit with the proven call structure. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- strict_fp — Check the VC7.1 /Os /Op option on this exact GUI translation unit with the proven call structure. DIFFER 2797/2593 bytes, 159 instruction hunks.
+- traditional_fp — Check the VC7.1 /Os /Op- option on this exact GUI translation unit with the proven call structure. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- fast_floating_consistency — Check the VC7.1 /Os /QIfist option on this exact GUI translation unit with the proven call structure. DIFFER 2615/2593 bytes, 169 instruction hunks.
+- pentium_pro — Check the VC7.1 /G6 /O1 /Oy option on this exact GUI translation unit with the proven call structure. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- success_branch — Test success_branch on the donor-matched statements; compare UV scheduling while retaining every sprite operation. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- success_single_eval — Test success_single_eval on the donor-matched statements; compare UV scheduling while retaining every sprite operation. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- final_signed_uv — Test final_signed_uv on the donor-matched statements; compare UV scheduling while retaining every sprite operation. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inner_height_reverse — Test inner_height_reverse on the donor-matched statements; compare UV scheduling while retaining every sprite operation. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- inset_double_only — Evaluate the precision/conversion pattern of the donor colour and box boundary: inset_double_only. DIFFER 2593/2593 bytes, 7 instruction hunks.
+- extent_double_only — Evaluate the precision/conversion pattern of the donor colour and box boundary: extent_double_only. DIFFER 2593/2593 bytes, 7 instruction hunks.
+- both_insets_double — Evaluate the precision/conversion pattern of the donor colour and box boundary: both_insets_double. DIFFER 2593/2593 bytes, 8 instruction hunks.
+- alpha_intermediate_integer — Evaluate the precision/conversion pattern of the donor colour and box boundary: alpha_intermediate_integer. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- rgba_double_one — Evaluate the precision/conversion pattern of the donor colour and box boundary: rgba_double_one. DIFFER 2597/2593 bytes, 23 instruction hunks.
+- rgba_int_one — Evaluate the precision/conversion pattern of the donor colour and box boundary: rgba_int_one. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- double_insets_int_weight — Evaluate the precision/conversion pattern of the donor colour and box boundary: double_insets_int_weight. DIFFER 2593/2593 bytes, 8 instruction hunks.
+- unsigned_color_intermediate — Evaluate the precision/conversion pattern of the donor colour and box boundary: unsigned_color_intermediate. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- term_product_source_type — Evaluate the precision/conversion pattern of the donor colour and box boundary: term_product_source_type. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- selected_donor — Select source after verified debug donor, guarded portable compiler controls, shared headers and clean opt-ins. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- tu_eh — Test the full translation unit setting /EHsc with the donor-proven inline calls and exact frame. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- tu_cdecl_boundary — Test the full translation unit setting /Gr with the donor-proven inline calls and exact frame. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- tu_eh_stlp — Test the full translation unit setting /EHsc /Gr with the donor-proven inline calls and exact frame. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- tu_no_rtti — Test the full translation unit setting /GR- with the donor-proven inline calls and exact frame. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- tu_stack_check — Test the full translation unit setting /GS with the donor-proven inline calls and exact frame. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- tu_fp_exceptions — Test the full translation unit setting /EHa with the donor-proven inline calls and exact frame. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- group_extent_1 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_extent_1. DIFFER 2595/2593 bytes, 5 instruction hunks.
+- group_extent_2 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_extent_2. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- group_extent_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_extent_3. DIFFER 2595/2593 bytes, 5 instruction hunks.
+- group_blend_RGBA10_0 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_RGBA10_0. DIFFER 2593/2593 bytes, 20 instruction hunks.
+- group_blend_RGBA10_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_RGBA10_3. DIFFER 2595/2593 bytes, 20 instruction hunks.
+- group_blend_RGBA01_0 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_RGBA01_0. DIFFER 2593/2593 bytes, 4 instruction hunks.
+- group_blend_RGBA01_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_RGBA01_3. DIFFER 2595/2593 bytes, 4 instruction hunks.
+- group_blend_RGBA11_0 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_RGBA11_0. MASKED_MATCH_PENDING_AUDIT 2593/2593 bytes, 0 instruction hunks.
+- group_blend_RGBA11_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_RGBA11_3. DIFFER 2595/2593 bytes, 5 instruction hunks.
+- group_blend_A10_0 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_A10_0. DIFFER 2593/2593 bytes, 10 instruction hunks.
+- group_blend_A10_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_A10_3. DIFFER 2595/2593 bytes, 9 instruction hunks.
+- group_blend_A01_0 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_A01_0. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- group_blend_A01_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_A01_3. DIFFER 2595/2593 bytes, 5 instruction hunks.
+- group_blend_A11_0 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_A11_0. DIFFER 2593/2593 bytes, 6 instruction hunks.
+- group_blend_A11_3 — Natural parenthesization of scalar expressions changes VC7.1 scheduler tuple-region boundaries; compare group_blend_A11_3. DIFFER 2595/2593 bytes, 6 instruction hunks.
+- verified_gui — Rebuild the selected production source using grouped blend terms in all four visible original assignments and shared headers without any trial overlay. MASKED_MATCH_PENDING_AUDIT 2593/2593 bytes, 0 instruction hunks.

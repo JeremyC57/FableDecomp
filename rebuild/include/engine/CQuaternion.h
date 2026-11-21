@@ -22,6 +22,10 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CQUATERNION_PARTICLE_UPDATE
  // Both original PDB signatures; native A88C10/A88DE0, donor Update call sites.
+#ifdef FABLE_RETAIL_CQUATERNION_RHS_EARLY_PASS25
+ // Inline-budget: test receiver-address visibility before dead old_rhs removal.
+ FABLE_FORCEINLINE
+#endif
  void ToRightHandedSet(CRightHandedSet& dest)const {
   float d=GFSqr(X)+GFSqr(Y)+GFSqr(Z)+GFSqr(W);
 #if defined(FABLE_RETAIL_CQUATERNION_PARTICLE_ADD_FLOAT_SCALE) || defined(FABLE_RETAIL_CQUATERNION_TORIGHTHANDEDSET_FLOAT)

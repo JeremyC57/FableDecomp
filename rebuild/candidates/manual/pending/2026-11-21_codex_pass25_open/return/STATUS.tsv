@@ -1,0 +1,9 @@
+address	assigned_name	retail_leaf_bytes	object_bytes	status	verified_differing_bytes	disassembly_hunks	residue
+0064fdb4	NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::DrawAt	2593	2593	VERIFIED_MATCH	0	0	All checked operands and the full leaf match.
+0078fd60	CTCDivineWrath::FrameUpdate	9268	9268	VERIFIED_MATCH	0	0	All checked operands and the full leaf match.
+00795300	CTCUnholyPower::FrameUpdate	9268	9268	VERIFIED_MATCH	0	0	All checked operands and the full leaf match.
+00b0dc20	NParticleEngine::CPSCUpdateNormal::Update	5602	5602	VERIFIED_MATCH	0	0	All checked operands and the full leaf match.
+00c4f600	CEAXManager::SetEAXProperty	9204	9204	VERIFIED_MATCH	0	1	All checked operands and the full leaf match.
+00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter::Main	5178	5161	IN_PROGRESS	different_extent	29	Two timer cleanups called where retail expands them. The cold path must keep its call.
+00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	14510	14526	IN_PROGRESS	different_extent	43	Retail expands the two predicate-base cleanups. EBP is saved and restored at different locations. All 408 paired reduced branch destinations agree.
+00f1eed0	NScript::CQ_ArenaScript::PlayWave	9262	9262	IN_PROGRESS	1	1	One SIB operand byte differs at 0x00F1FFBA. Z3 proves the two addresses equal for all input values. All 321 operands were verified.

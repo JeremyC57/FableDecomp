@@ -1,0 +1,8 @@
+EQ  00b0dc20 0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+NEQ 00b0dc20 00a01c10 5 ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ
+EQ  00b0dc20 0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z
+EQ  00b0dc20 004cdae0 47 ?GFRandom@@YIKKPAK@Z
+EQ  00b0dc20 00403a00 11 ?GetLength@CCharString@@QBEJXZ
+EQ  00b0dc20 0049ce00 55 ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ
+EQ  00b0dc20 004bbe10 50 ?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z
+EQ  00b0dc20 0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ

@@ -39387,3 +39387,11 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?CopyHeroToHero@CThingManager@@AAEXAAVCThing@@0AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0051f0e0	00521cf0
 ?GetReplacedUIDScript@CThingScriptUIDReplacer@@QBEABVCCharString@@XZ	0083e1b0	00521cf0
 ?HeroSwapInProgress@NThingManager@@3_NA	013b8a88	00521cf0
+?AllocateDecal@CParticleSystem@NParticleEngine@@QAEPAVCDecal@2@XZ	00af5380	00b0dc20
+?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z	00aeabe0	00b0dc20
+?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AU?$_List_iterator@PAVCParticle@NParticleEngine@@U?$_Nonconst_traits@PAVCParticle@NParticleEngine@@@std@@@std@@AAU34@@Z	00af5330	00b0dc20
+?push_back@?$list@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@Z	00b0f920	00b0dc20
+?ApplyListenerProperties@CEAXManager@@QAEHPBU_EAXLISTENERPROPERTIES@@@Z	00c4e3c0	00c4f600
+?ApplyVoiceBufferProperties@CEAXManager@@QAEJPAUCEAXVoice@@KKPAXK@Z	00c4ea30	00c4f600
+_EAXPROPERTYID_EAX40_Context	012b9448	00c4f600
+_EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600

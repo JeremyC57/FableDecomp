@@ -1577,3 +1577,9 @@ against CODAApi.lib, or stay compiled C++?
   defer3.py) breaks three landed same-TU helpers, so "COMDAT after X" is no evidence X took the budget path. 0x00BD3070: with no row
   asserts plus the landed FABLE_RETAIL_CARRAY_INDEX_ASSERT opt-in the re-based draft is equal length (11288v11288, 62 hunks of c2
   numbering ties); the cross-jump gap in the assert-free variants flips with assert count alone.
+- 2026-11-21 (A, landing p25): Codex pass 25 returned five VERIFIED_MATCH rows. All five leaves grade RELOCATION_MATCH + PASS under
+  strict headers. Two landed (0x00B0DC20, 0x00C4F600). Three are held because their objects define pick-any copies that differ from
+  Fable.exe at the owners' addresses: 0x0078FD60 / 0x00795300 (leaf-bound GetAllThingsInRoughArea x2, map::operator[] and
+  vector::push_back, newly bound) and 0x0064FDB4 (/Os: Clear, which a speed-mode scaffolding opt-in fixes, plus HasTC 0x004118C0 and
+  LowerBound 0x004365B0). Evidence: pending/2026-11-21_codex_pass25_open/held/HELD.md. Also, 0x00797740 (14 bytes) and 0x00797750
+  (11 bytes), just past 0x00795300's leaf end 0x00797734, are code that no manifest row covers.

@@ -25,6 +25,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
 ## Account A, 2026-11-20 (naming round 10, landings nf148-nf213)
+- **Codex pass 25 landed 2026-11-21** (`batches/2026-11-21_landing_p25/README.md`): 0x00B0DC20 and 0x00C4F600. Three verified rows are
+  held for pick-any copies that differ from retail (`pending/2026-11-21_codex_pass25_open/held/HELD.md`). The three open rows
+  (0x00F1EED0, 0x00D01630, 0x00E20600) are with one Account A Opus agent. Codex pass 26 (100 parked near misses) is being packaged
+  in `pending/2026-11-21_codex_pass26/`.
 - Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf213),
   B's rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, opt-ins, advisor calls, checks.
 - **Owner (2026-11-21): no more agents or naming for now.** Landed through nf213. NF214's hand-back (UnpackNames family + the two

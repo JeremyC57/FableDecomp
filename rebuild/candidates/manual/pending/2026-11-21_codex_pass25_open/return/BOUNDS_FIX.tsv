@@ -1,0 +1,8 @@
+address	assigned_bytes	verified_leaf_bytes	reason
+0078fd60	9280	9268	The supplied span includes alignment or trailing bytes outside the compiled leaf.
+00795300	9312	9268	The supplied span continues beyond the compiled leaf. Retain the assigned start; exclude following code and padding.
+00b0dc20	5616	5602	The supplied span includes alignment or trailing bytes outside the compiled leaf.
+00c4f600	9216	9204	The supplied span includes alignment or trailing bytes outside the compiled leaf.
+00d01630	5184	5178	The supplied span includes alignment or trailing bytes outside the compiled leaf.
+00e20600	14512	14510	The supplied span includes alignment or trailing bytes outside the compiled leaf.
+00f1eed0	9264	9262	The supplied span includes alignment or trailing bytes outside the compiled leaf.

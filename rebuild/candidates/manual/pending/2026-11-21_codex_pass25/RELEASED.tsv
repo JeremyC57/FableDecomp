@@ -1,0 +1,9 @@
+address	status
+0064fdb4	held at landing p25 (pending/2026-11-21_codex_pass25_open/held)
+0078fd60	held at landing p25 (pending/2026-11-21_codex_pass25_open/held)
+00795300	held at landing p25 (pending/2026-11-21_codex_pass25_open/held)
+00b0dc20	landed 2026-11-21 (batches/2026-11-21_landing_p25)
+00c4f600	landed 2026-11-21 (batches/2026-11-21_landing_p25)
+00d01630	re-reserved for an Account A Opus agent (pending/2026-11-21_codex_pass25_open)
+00e20600	re-reserved for an Account A Opus agent (pending/2026-11-21_codex_pass25_open)
+00f1eed0	re-reserved for an Account A Opus agent (pending/2026-11-21_codex_pass25_open)

@@ -1,0 +1,96 @@
+- shape01_scope — Ego_d per-loop something replaces contradicted function-scope shared creature; all intelligent pointers also use PDB something. DIFFER 9292/9268 bytes, 241 instruction hunks.
+- shape02_names — Restore PDB spellings and remove absent creature_effect reference; tests symbol-identity contribution to frame packing. DIFFER 9296/9268 bytes, 241 instruction hunks.
+- shape03_parent_ref — Restore Ego_d parent_creature reference rather than pointer; same alias semantics and lifetime. DIFFER 9296/9268 bytes, 241 instruction hunks.
+- shape04_charge_end — Restore charging-loop cached endit attested in Ego_d scope. DIFFER 9296/9268 bytes, 241 instruction hunks.
+- shape05_charge_find — Restore charging-loop named findit from Ego_d rather than temporary expression. DIFFER 9296/9268 bytes, 241 instruction hunks.
+- shape06_release_ends — Restore cached endit for object and release-creature loops; eliminate invented lit spelling. DIFFER 9292/9268 bytes, 241 instruction hunks.
+- shape07_hit_point — Restore all three named point_of_hit locals attested in Ego_d, instead of anonymous ctor arguments. DIFFER 9292/9268 bytes, 241 instruction hunks.
+- shape08_effect_values — Restore PDB groundZ and fx locals at both victim-effect creation statements; hidden reference candidate S19. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- shape09_effect_calls — Remove absent found and found_effect booleans; restore release fx temporaries matching Ego_d scopes. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- shape10_death_locals — Remove absent hero and faction locals, restore graph appearance and focus spellings in death-effect blocks. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- slot01_release_else — Restore Ego_d enclosing release scope as charging else arm; target current something/pspecial_effects slot alias. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- slot02_object_aliases — Restore object-loop PDB somethingobject and three scoped somethingcreaturebase aliases plus creature_def; no invented locals. DIFFER 9295/9268 bytes, 241 instruction hunks.
+- slot03_creature_defs — Restore both intelligent-pointer hit scopes named creature_def reference from Ego_d; no statement-order change to calls. DIFFER 9296/9268 bytes, 245 instruction hunks.
+- slot04_reward_type — Restore Ego_d ptc_reward type CTCContainerRewardHero pointer using existing shared header; exact lifetime unchanged. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- slot05_plain_conversion — Correct shared-header Nov19 binding warning: plain conversion heuristic and Ego_d implicit temporary, remove absent sound local. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- slot06_operator_call — Explicit conversion-operator expression with plain header; same PDB-local set, targets actual retail operator symbol. DIFFER 9307/9268 bytes, 251 instruction hunks.
+- slot07_conversion_temp — Direct constructed CCharString temporary with plain header; no absent named sound variable. DIFFER 9327/9268 bytes, 246 instruction hunks.
+- slot08_selected_conversion — Select natural implicit conversion with correct callee identity, original release else scope and exact PDB reward-pointer type; carry equivalent shape to twin. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- slot09_iterator_scopes — Restore separate Ego_d map-iterator scopes for sweep and periodic damage, plus original vector it/endit names; remove shared cross-loop it. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.
+- slot10_iterator_init — Scope-correct iterators with first map iterator directly initialized rather than default construction and assignment; target hidden temporary node composition. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.
+- slot11_clean_asserts — Remove all six unsupported inherited assertion sites from matched iterator-scope source; separate admissibility grade. DIFFER 9302/9268 bytes, 13 instruction hunks.
+- cleanT73 — Clean asserted-free source with permitted per-row /d2inlT73; measure late constructor, IS_THING_ALIVE and bitset inline split. DIFFER 9262/9268 bytes, 184 instruction hunks.
+- cleanT72 — Clean asserted-free source with permitted per-row /d2inlT72; measure late constructor, IS_THING_ALIVE and bitset inline split. DIFFER 9261/9268 bytes, 186 instruction hunks.
+- cleanT71 — Clean asserted-free source with permitted per-row /d2inlT71; measure late constructor, IS_THING_ALIVE and bitset inline split. DIFFER 9298/9268 bytes, 248 instruction hunks.
+- cleanT70 — Clean asserted-free source with permitted per-row /d2inlT70; measure late constructor, IS_THING_ALIVE and bitset inline split. DIFFER 9260/9268 bytes, 218 instruction hunks.
+- cleanDepthCtor0 — Only final intelligent-pointer initialization depth0; verify incidental iterator helper calls. DIFFER 9287/9268 bytes, 11 instruction hunks.
+- cleanDepthAlive0 — Only final IS_THING_ALIVE condition depth0; restore pragma at body opening. DIFFER 9280/9268 bytes, 10 instruction hunks.
+- cleanDepthCtorAlive0 — Final pointer initialization and alive condition depth0, independent one-statement regions. DIFFER 9266/9268 bytes, 15 instruction hunks.
+- cleanDepthCtor1Alive0 — Final constructor depth1 allows trivial argument helpers; alive condition depth0. DIFFER 9280/9268 bytes, 10 instruction hunks.
+- cleanAutoCtor — Only final constructor auto_inline off, leaving whole-function threshold unchanged. COMPILE_FAIL ?/? bytes, ? instruction hunks.
+- cleanAutoCtorAlive — Constructor and alive condition separate auto_inline off regions. COMPILE_FAIL ?/? bytes, ? instruction hunks.
+- cleanAliveNymph1 — Final alive call fixed; sweep nested nymph-condition depth1 to call bitset test without extra GetTC wrapper calls. DIFFER 9280/9268 bytes, 10 instruction hunks.
+- cleanAliveNymph2 — Final alive call fixed; sweep nested nymph-condition depth2 to call bitset test without extra GetTC wrapper calls. DIFFER 9280/9268 bytes, 10 instruction hunks.
+- cleanAliveNymph3 — Final alive call fixed; sweep nested nymph-condition depth3 to call bitset test without extra GetTC wrapper calls. DIFFER 9280/9268 bytes, 10 instruction hunks.
+- cleanAliveNymph4 — Final alive call fixed; sweep nested nymph-condition depth4 to call bitset test without extra GetTC wrapper calls. DIFFER 9280/9268 bytes, 10 instruction hunks.
+- donor01_real_error_conditions — Restore two success-check conditions and seven error-condition sites from donor, each single evaluation; no invented damage assertions. DIFFER 9268/9268 bytes, 100 instruction hunks.
+- donor02_error_arm — Nine donor-proven success/error sites using existing bare release-arm macro rather than do-while wrapper; count/site fixed by donor. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor03_error_family_arm — Keep two donor success-assert facilities in wrapped form; seven ordinary error facilities use bare release arm; no site/count fitting. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor04_direction_group — Group vector difference before both intelligent-pointer hit normalizations. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor05_direction_lhs — Bracket source-position operand of both hit normalizations. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor06_direction_rhs — Bracket parent-position operand of both hit normalizations. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor07_direction_direct — Direct initialization of both named direction locals; same Ego_d local and single source statement. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor08_subtract_x_group — Shared operator-minus X difference grouping changes the tuple boundary feeding both normalization schedules; existing opt-in and no new locals. DIFFER 9273/9268 bytes, 19 instruction hunks.
+- donor09_subtract_xy_group — Shared operator-minus X and Y difference grouping; existing opt-in targets named hit vectors without source-variable changes. DIFFER 9269/9268 bytes, 16 instruction hunks.
+- donor10_named_initialise_sub — Original debug-sized named-result Initialise spelling of shared operator-minus, attested by shared-header FableWin size evidence. DIFFER 9273/9268 bytes, 12 instruction hunks.
+- donor11_square_helpers — Actual donor Normalise calls GFSqr three times then GFFastOneOverSqrt; restore existing helper-body opt-in instead of manual squares. DIFFER 9271/9268 bytes, 10 instruction hunks.
+- donor12_grouped_square_helpers — Donor-proven GFSqr helper body with whole-sum grouping; accepted bracket spelling for the two scheduling residues. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor13_helper_subx — Donor-proven square-helper body plus X-difference grouping at vector subtraction; target ctor flag-push scheduling. DIFFER 9272/9268 bytes, 13 instruction hunks.
+- donor14_helper_subxy — Square-helper body plus X/Y subtraction grouping; target remaining ctor store/push interleavings. DIFFER 9266/9268 bytes, 13 instruction hunks.
+- donor15_ctor_ref_groups — Group named vector-reference arguments at all three hit ctor statements, preserving PDB locals and statement order. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor16_spell_header_first — Own spell header before creature header, a natural same-TU include order. COMPILE_FAIL ?/? bytes, ? instruction hunks.
+- donor17_hit_header_first — Hit parameter definition before creature/spell declarations; target allocator/scheduler candidate ordinals. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor18_vector_header_first — Explicit vector header before creature/spell declarations; target scheduler candidate ordinals. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor19_definition_first — Spell definition header before creature/spell declarations; no new type declarations or helpers. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor20_component_ctor — Actual donor018A0BE0 component constructor stores X/Y/Z in body, not initializer list. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor21_copy_ctor — Actual donor018BFF40 copy constructor body and PDB formal p, rather than initializer-list/other model. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor22_original_vector_forms — Combine donor vector constructor bodies and original GFSqr formal n, preserving nine real error sites. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor23_original_union — Original shared vector forms plus original TFloatIntUnion fast inverse square-root text; no fitted statement counts. DIFFER 9271/9268 bytes, 9 instruction hunks.
+- donor24_plain_hit_ctor — new opt-in plain visible real nine-argument ctor instead of inherited noinline, default header path unchanged. DIFFER 9271/9268, 9 strict hunks.
+- donor25_square_product_group — Group original GFSqr product n*n via existing helper opt-in, three genuine arithmetic PAREN tuples before each ctor. DIFFER 9270/9268 bytes, 12 instruction hunks.
+- donor26_damage_arg_group — Group floating AddDamage argument expressions after all three hit ctor calls; scheduler region may span adjacent call. DIFFER 9275/9268 bytes, 12 instruction hunks.
+- donor27_tick_product_group — Group periodic tick frame-count floating product before direction/normalise/constructor region. DIFFER 9275/9268 bytes, 12 instruction hunks.
+- donor28_newton_group — Group earlier inverse-square-root Newton floating arithmetic via existing FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_PAREN opt-in; measure ctor store/push scheduling. DIFFER 9275/9268 bytes, 8 instruction hunks.
+- donor29_newton_group — Group earlier inverse-square-root Newton floating arithmetic via existing FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_SQUARE_PAREN opt-in; measure ctor store/push scheduling. DIFFER 9272/9268 bytes, 6 instruction hunks.
+- donor30_newton_group — Group earlier inverse-square-root Newton floating arithmetic via existing FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_STEP_PAREN opt-in; measure ctor store/push scheduling. DIFFER 9272/9268 bytes, 6 instruction hunks.
+- donor31_newton_group — Group earlier inverse-square-root Newton floating arithmetic via existing FABLE_RETAIL_GFFASTONEOVERSQRT_NEWTON_GROUPED opt-in; measure ctor store/push scheduling. DIFFER 9269/9268 bytes, 10 instruction hunks.
+- donor32_tick_group — Group the complete periodic float product before its integer cast. DIFFER 9272/9268 bytes, 6 instruction hunks.
+- donor33_tick_rhs_group — Group periodic float factor field operand. DIFFER 9272/9268 bytes, 6 instruction hunks.
+- donor34_tick_lhs_group — Group periodic FPS floating-return operand. DIFFER 9272/9268 bytes, 6 instruction hunks.
+- donor35_tick_cast_group — Group converted periodic frame count before integer frame-offset addition. DIFFER 9272/9268 bytes, 6 instruction hunks.
+- donor36_newton_subx — Combine proven Newton product grouping with FABLE_RETAIL_C3DVECTOR_SUBTRACT_X_GROUP; only periodic scheduling remains on the base. DIFFER 9266/9268 bytes, 15 instruction hunks.
+- donor37_newton_subxy — Combine proven Newton product grouping with FABLE_RETAIL_C3DVECTOR_SUBTRACT_XY_GROUP; only periodic scheduling remains on the base. DIFFER 9269/9268 bytes, 16 instruction hunks.
+- donor38_newton_square_group — Combine proven Newton product grouping with FABLE_RETAIL_C3DVECTOR_SQUARE_GROUPED_PASS23; only periodic scheduling remains on the base. DIFFER 9269/9268 bytes, 11 instruction hunks.
+- donor39_newton_sum_ungrouped — Combine proven Newton product grouping with no new field grouping and ungrouped normalise sum; only periodic scheduling remains on the base. DIFFER 9275/9268 bytes, 8 instruction hunks.
+- donor40_newton_ungrouped_square — Combine proven Newton product grouping with FABLE_RETAIL_C3DVECTOR_SQUARE_GROUPED_PASS23 and ungrouped normalise sum; only periodic scheduling remains on the base. DIFFER 9266/9268 bytes, 8 instruction hunks.
+- donor41_actual_tint — Restore actual donor GetTC tint predicate, ptc_tint local and cast AddTC assignment at both hit sites; exact static accessor independently named by both PDBs. DIFFER 9269/9268 bytes, 6 instruction hunks.
+- donor42_tint_creature_defs — With original tint calls, restore original creature_def reference locals in both intelligent-pointer hit scopes. DIFFER 9269/9268 bytes, 6 instruction hunks.
+- donor43_original_def_order — Actual donor sets do_exp_override false before PeekBaseDef and named creature_def binding at both hit sites; restore this witnessed statement order. DIFFER 9268/9268 bytes, 2 instruction hunks.
+- donor44_normalise_left_pair — donor-proven left-associated Normalise helper sum with genuine grouping ((GFSqr(X)+GFSqr(Y))+GFSqr(Z)). DIFFER 9270/9268, 12 strict hunks.
+- donor45_normalise_group_z — donor-proven left-associated Normalise helper sum with genuine grouping (GFSqr(X)+GFSqr(Y))+(GFSqr(Z)). DIFFER 9270/9268, 12 strict hunks.
+- donor46_normalise_each_return — donor-proven left-associated Normalise helper sum with genuine grouping ((GFSqr(X))+(GFSqr(Y)))+(GFSqr(Z)). DIFFER 9273/9268, 14 strict hunks.
+- donor47_focus_copy_init — Actual donor constructs each named focus with C3DVector copy ctor; restore direct initialization instead of default-plus-assignment. DIFFER 9282/9268 bytes, 46 instruction hunks.
+- donor48_original_object_aliases — Actual donor binds somethingobject after do_exp_override=false and uses three scoped somethingcreaturebase checked-cast aliases; restore original object block. DIFFER 9222/9268 bytes, 58 instruction hunks.
+- donor49_original_checked_casts — Restore actual donor GFDebugDynamicCast/GFDebugPDynamicCast helper boundaries for parent, creature definitions and tint AddTC results using existing shared opt-in. DIFFER 9222/9268 bytes, 58 instruction hunks.
+- donor50_original_fx_graphics — Restore original named unused fx returns in three explode-effect blocks and const graphic-appearance pointer types at helper-point sites. DIFFER 9226/9268 bytes, 60 instruction hunks.
+- donor51_effect_info_reference — Restore original PerEffectInfo reference info inside vector iteration, explicitly present in Ego_d scope and omitted by inherited draft. DIFFER 9226/9268 bytes, 60 instruction hunks.
+- donor52_original_tmp_scopes — Restore tmp iterator declarations before the nested cleanup/kill scopes they enclose in Ego_d, rather than after those scopes. DIFFER 9253/9268 bytes, 306 instruction hunks.
+- donor53_real_messages_partial — donor-proven messages/priorities in primitive release error-report arms; zero extra source sites. DIFFER 9263/9268, 90 strict hunks.
+- donor54_real_messages_full — donor-proven messages/priorities in primitive release error-report arms; zero extra source sites. DIFFER 9221/9268, 145 strict hunks.
+- checkpoint55_closest_assertfree — Immutable partial source checkpoint for combined rerun; no unsupported damage assertions and no experimental header changes. DIFFER 9268/9268 bytes, 2 instruction hunks.
+- checkpoint56_full_donor — Immutable fuller source checkpoint for combined rerun; no unsupported damage assertions and no experimental header changes. DIFFER 9226/9268 bytes, 60 instruction hunks.
+- donor57_plain_release_errors — Full donor source with existing plain release assertion path: no hidden error-report IL; real predicate expressions are still evaluated exactly once. DIFFER 9282/9268 bytes, 48 instruction hunks.
+- donor58_plain_errors_copy_inline — force original visible copy ctor only; native has no callable out-of-line C3DVector copy address, original formal p/body retained. MASKED_MATCH_PENDING_AUDIT 9268/9268, 0 strict hunks.
+- donor59_armed_errors_copy_inline — force original visible copy ctor only; native has no callable out-of-line C3DVector copy address, original formal p/body retained. DIFFER 9220/9268, 21 strict hunks.
+- final60_donor_match — Final donor-complete matched source with plain release reports, original scopes/aliases/casts, original copy body forced inline and cleaned metadata; verify staged add-only shared header. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.
+- final61_named_gumph — Restore Ego_d local static GUMPH=5.0f in range block; replace literal use with original local name, retaining all donor-complete code and selected header. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.

@@ -401886,6 +401886,21 @@ $catalog = @(
         TestSource = '00/52/CThingManager_LoadMainPlayerCreatureState_00521cf0_test.cpp'
         PassPattern = '00521cf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b0dc20'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_Update_00b0dc20.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_Update_00b0dc20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT200'
+        PassPattern = '00b0dc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4f600'
+        Module = 'CEAXManager'
+        Source = '00/c4/CEAXManager_SetEAXProperty_00c4f600.cpp'
+        TestSource = '00/c4/CEAXManager_SetEAXProperty_00c4f600_test.cpp'
+        PassPattern = '00c4f600_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00b0dc20   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00b0dc20   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b0dc20   RELOCATION_MATCH PASS   Update
+00c4f600   RELOCATION_MATCH PASS   SetEAXProperty
+
+WINS: 2
+  00b0dc20 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::Update
+  00c4f600 RELOCATION_MATCH CEAXManager::SetEAXProperty
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCUpdateNormal_Update_00b0dc20
+  CEAXManager_SetEAXProperty_00c4f600

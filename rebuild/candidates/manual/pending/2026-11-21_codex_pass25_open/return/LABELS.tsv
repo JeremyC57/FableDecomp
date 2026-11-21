@@ -1,0 +1,9 @@
+address	compiled_leaf
+0064fdb4	?DrawAt@CQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z
+0078fd60	?FrameUpdate@CTCDivineWrath@@UAEXXZ
+00795300	?FrameUpdate@CTCUnholyPower@@UAEXXZ
+00b0dc20	?Update@CPSCUpdateNormal@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z
+00c4f600	?SetEAXProperty@CEAXManager@@QAEJPBU_GUID@@KPAUCEAXVoice@@PAXK@Z
+00d01630	?Main@CGate1GuardOuter@CQ_BanditCampScript@NScript@@EAEXXZ
+00e20600	?Main@CTraderToEscort@CQR_EscortTraderScript@NScript@@EAEXXZ
+00f1eed0	?PlayWave@CQ_ArenaScript@NScript@@QAEXXZ

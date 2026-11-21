@@ -1,0 +1,7 @@
+rebuild/src/compiled/00/cb/global_RunCutsceneMacro_00cbfb7d.cpp
+rebuild/src/compiled/00/47/CSoundMap_TransferBinaryIn_0047042a.cpp
+rebuild/tests/00/47/CSoundMap_TransferBinaryIn_0047042a_test.cpp
+rebuild/src/compiled/00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupRenderModeShadersAndConstants_00ba2350.cpp
+rebuild/src/compiled/00/ba/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitive_00ba5260.cpp
+rebuild/src/compiled/00/ba/CEnginePrimitiveManagerStaticMeshesBase_SetupStaticBlocks_00ba50a0.cpp
+plus 1355 funclet rows whose ../src/compiled include does not resolve from the scratch HEAD tree

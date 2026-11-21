@@ -1,0 +1,18 @@
+- shape01_scope — Ego_d per-loop something replaces contradicted function-scope shared creature; all intelligent pointers also use PDB something. DIFFER 9292/9268 bytes, 244 instruction hunks.
+- shape02_names — Restore PDB spellings and remove absent creature_effect reference; tests symbol-identity contribution to frame packing. DIFFER 9296/9268 bytes, 244 instruction hunks.
+- shape03_parent_ref — Restore Ego_d parent_creature reference rather than pointer; same alias semantics and lifetime. DIFFER 9296/9268 bytes, 244 instruction hunks.
+- shape04_charge_end — Restore charging-loop cached endit attested in Ego_d scope. DIFFER 9296/9268 bytes, 244 instruction hunks.
+- shape05_charge_find — Restore charging-loop named findit from Ego_d rather than temporary expression. DIFFER 9296/9268 bytes, 244 instruction hunks.
+- shape06_release_ends — Restore cached endit for object and release-creature loops; eliminate invented lit spelling. DIFFER 9292/9268 bytes, 244 instruction hunks.
+- shape07_hit_point — Restore all three named point_of_hit locals attested in Ego_d, instead of anonymous ctor arguments. DIFFER 9292/9268 bytes, 244 instruction hunks.
+- shape08_effect_values — Restore PDB groundZ and fx locals at both victim-effect creation statements; hidden reference candidate S19. DIFFER 9291/9268 bytes, 244 instruction hunks.
+- shape09_effect_calls — Remove absent found and found_effect booleans; restore release fx temporaries matching Ego_d scopes. DIFFER 9291/9268 bytes, 244 instruction hunks.
+- shape10_death_locals — Remove absent hero and faction locals, restore graph appearance and focus spellings in death-effect blocks. DIFFER 9291/9268 bytes, 244 instruction hunks.
+- final_correct_damage — corrective final verification of three DivineWrath damage attributes (10 to 9); DIFFER 9291/9268, 241 strict / 6 loose hunks. Ten preceding strategy diagnostics preserved.
+- slot08_selected_conversion — Select natural implicit conversion with correct callee identity, original release else scope and exact PDB reward-pointer type; carry equivalent shape to twin. DIFFER 9291/9268 bytes, 241 instruction hunks.
+- slot10_iterator_init — Carry matched original iterator scopes from UnholyPower; matched source retains six unsupported assertion sites pending separate clean grade. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.
+- slot11_clean_asserts — Remove all six unsupported inherited assertion sites from matched iterator-scope source; separate admissibility grade. DIFFER 9302/9268 bytes, 13 instruction hunks.
+- checkpoint55_closest_assertfree — Immutable partial source checkpoint for combined rerun; no unsupported damage assertions and no experimental header changes. DIFFER 9268/9268 bytes, 2 instruction hunks.
+- checkpoint56_full_donor — Immutable fuller source checkpoint for combined rerun; no unsupported damage assertions and no experimental header changes. DIFFER 9226/9268 bytes, 60 instruction hunks.
+- final60_donor_match — Final donor-complete matched source with plain release reports, original scopes/aliases/casts, original copy body forced inline and cleaned metadata; verify staged add-only shared header. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.
+- final61_named_gumph — Restore Ego_d local static GUMPH=5.0f in range block; replace literal use with original local name, retaining all donor-complete code and selected header. MASKED_MATCH_PENDING_AUDIT 9268/9268 bytes, 0 instruction hunks.

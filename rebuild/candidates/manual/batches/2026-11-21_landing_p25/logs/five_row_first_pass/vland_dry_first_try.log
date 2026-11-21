@@ -1,0 +1,31 @@
+addr       parity           behav  name
+0064fdb4   NOT_GENUINE      -      DrawAt
+0078fd60   WARN SHARED_HEADER_AVAILABLE CThingFilter_CanBeHitByEpicSpell (engine/CThingFilter_CanBeHitByEpicSpell.h)
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71rtm/bin/cl.exe ude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/landverify/00/78/0078fd60/0078fd60.cpp
+0078fd60   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilter_CanBeHitByEpicSpell@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilter_CanBeHitByEpicSpell@@@@AAV?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z -> 00792e50 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::list<CThingCreatureBase *, std::allocator<CThingCreatureBase *>>, CFilter_Bind2<CThingFilter_OverlappingCircle, CThingFilter_CanBeHitByEpicSpell>>'
+0078fd60   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCThingCreatureBase@@@@QAEAAV0@ABV0@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+0078fd60   WARN RELOC_NAME: ??1?$_List_base@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@QAE@XZ -> 006f09d0 labelled '_global::StdList_Clear_006f09d0'
+0078fd60   WARN RELOC_NAME: ??0?$list@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@ABV?$allocator@PAVCThingObject@@@1@@Z -> 007926c0 labelled 'RBTree_AllocateNode'
+0078fd60   WARN RELOC_NAME: ??1?$_List_base@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+0078fd60   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@2@@std@@QAEAAU01@XZ -> 0078e3f0 labelled 'CRetailTreeIterator::Increment'
+0078fd60   WARN RELOC_NAME: ?erase@?$map@PAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@U?$less@PAVCThingCreatureBase@@@std@@V?$allocator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@5@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@2@@2@@Z -> 00792640 labelled '_global::CCreatureGroupCrowd_RemoveAt'
+0078fd60   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@VCThingCreatureBase@@@@QAE@AAV0@@Z -> 0078e5b0 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0078fd60   WARN RELOC_NAME: ?SetLeaveExperienceOrbsOverride@CThingCreatureBase@@QAEX_N@Z -> 0078ddb0 labelled 'CThing::SetAsGameStatePersisted'
+0078fd60   RELOCATION_MATCH["t"] PASS   FrameUpdate
+00795300   WARN SHARED_HEADER_AVAILABLE CThingFilter_CanBeHitByEpicSpell (engine/CThingFilter_CanBeHitByEpicSpell.h)
+00795300   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilter_CanBeHitByEpicSpell@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilter_CanBeHitByEpicSpell@@@@AAV?$list@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@@Z -> 00792e50 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::list<CThingCreatureBase *, std::allocator<CThingCreatureBase *>>, CFilter_Bind2<CThingFilter_OverlappingCircle, CThingFilter_CanBeHitByEpicSpell>>'
+00795300   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCThingCreatureBase@@@@QAEAAV0@ABV0@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+00795300   WARN RELOC_NAME: ??1?$_List_base@PAVCThingCreatureBase@@V?$allocator@PAVCThingCreatureBase@@@std@@@std@@QAE@XZ -> 006f09d0 labelled '_global::StdList_Clear_006f09d0'
+00795300   WARN RELOC_NAME: ??0?$list@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@ABV?$allocator@PAVCThingObject@@@1@@Z -> 007926c0 labelled 'RBTree_AllocateNode'
+00795300   WARN RELOC_NAME: ??1?$_List_base@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+00795300   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCUnholyPower@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCUnholyPower@@@std@@@2@@std@@QAEAAU01@XZ -> 00793a00 labelled 'CRetailTreeIterator::Increment'
+00795300   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@?$CIntelligentPointer@VCThingCreatureBase@@@@QAE@AAV0@@Z -> 0078e5b0 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+00795300   WARN RELOC_NAME: ?SetLeaveExperienceOrbsOverride@CThingCreatureBase@@QAEX_N@Z -> 0078ddb0 labelled 'CThing::SetAsGameStatePersisted'
+00795300   RELOCATION_MATCH PASS   FrameUpdate
+00b0dc20   DIFFER(4917v5602) PASS   Update
+00c4f600   RELOCATION_MATCH PASS   SetEAXProperty
+
+WINS: 3
+  0078fd60 RELOCATION_MATCH["t"] CTCDivineWrath::FrameUpdate
+  00795300 RELOCATION_MATCH CTCUnholyPower::FrameUpdate
+  00c4f600 RELOCATION_MATCH CEAXManager::SetEAXProperty

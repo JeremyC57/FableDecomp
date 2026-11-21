@@ -1,0 +1,12 @@
+The following notes describe earlier checkpoints. The latest source and measurements are in RETRY_NOTES.md and BUILD.json.
+
+# Gate guard
+The two debug WAIT_FOREVER blocks each include a termination check inside the loop and another after it. The selected source restores both original post-loop checks. The native compiler removes the unreachable checks and produces the same 5,161 bytes as the previous draft. The Go-to-frame loop also uses the original compiler-era for-scope workaround. Original debug ranges and headers confirm the two named movie locals and the timer all have their own real types.
+ 
+The selected build expands the four movie cleanups but calls the timer cleanup on two hot exits where retail expands it. A natural timer body at the same compiler threshold also expands the cold cleanup. Disabling the threshold restores the cold cleanup and costs four movie expansions. The debug body confirms direct access to the timer index and the global scripting interface. The handoff retains the per-site evidence and genuine trials in PROBES.md.
+
+The behavioral fixture uses the production body under an adapter class name. It records dialogue, item tests, gate operations, attack handling, and resource acquisition and release. It passes under VC7.1 and C++03 g++.
+
+A second debug audit traced the two successors of every conditional branch to their next observable script call. All 123 original decisions have the same two successor sets in the reconstructed /Od method. A separate projection matched 294 original termination and object-lifetime events. For the optimized build, all 46 cancellation checks were traced individually. Checks 3, 4, 36 and 40 (zero-based in native instruction order) take two shared paths that expand timer deregistration in retail.
+
+The captured_movie_normal experiment reproduced the movie-release and timer choice on all 46 paths. VC7.1 captured the inline depth at the closing brace of the Movie class and produced a 19-byte implicit destructor. This also suppressed required constructor expansions and made the resource-base cleanup a call. Its 5,177-byte total is one byte short, but has 49 instruction hunks. The selected 5,161-byte version has 29. Defining the original constructor after the class caused the compiler to compile its destructor normally again. This limits what can be recovered by moving a pragma without changing the genuine class.

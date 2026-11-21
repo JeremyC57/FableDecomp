@@ -1,0 +1,12 @@
+tag	size	retail_size	strict_hunks	verdict
+retry_gate2_current_fullzero	5134	5178	35	DIFFER; selected preserved
+retry_gate2_current_fullzero_S15	5247	5178	73	DIFFER; selected preserved
+retry_gate2_implicit_movie_current	5089	5178	119	DIFFER; selected preserved
+retry_gate2_implicit_movie_legacy_zero	5089	5178	119	preliminary source before restored post-wait checks; repeated against current source
+retry_gate2_implicit_movie_pause	5098	5178	142	DIFFER; selected preserved
+retry_gate2_legacy_zero	5134	5178	35	preliminary source before restored post-wait checks; repeated against current source
+retry_gate2_literal_true	5134	5178	35	DIFFER; selected preserved
+retry_gate2_movie_generation_Od	5134	5178	35	DIFFER; selected preserved
+retry_gate2_original_until_false	5134	5178	35	DIFFER; selected preserved
+retry_gate2_say_do_zero	5177	5178	36	REJECT: adds11 /Od decisions absent from donor
+retry_gate2_say_do_zero_S15	5247	5178	73	REJECT: adds11 /Od decisions absent from donor

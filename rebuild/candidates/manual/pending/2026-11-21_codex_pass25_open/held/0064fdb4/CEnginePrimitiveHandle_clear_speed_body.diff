@@ -1,0 +1,37 @@
+diff --git a/rebuild/include/engine/CEnginePrimitiveHandle.h b/rebuild/include/engine/CEnginePrimitiveHandle.h
+index 1fa65095cb..b866b28607 100644
+--- a/rebuild/include/engine/CEnginePrimitiveHandle.h
++++ b/rebuild/include/engine/CEnginePrimitiveHandle.h
+@@ -64,6 +64,10 @@ public:
+         if (Data.GetRefCount() == 1) Data->NotifyReleased(*this);
+         Data.Reset(0);
+     }
++#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_SPEED_BODY)
++    // Pass 25 opt-in (2026-11-21, row 0x0064FDB4 NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::DrawAt). Fidelity: scaffolding,
++    // not retail. The same Clear text as below, defined after the class under optimize("t", on); see the definition there.
++    inline void Clear();
+ #elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE)
+     // Retail opt-in (chunk 737, CPSCLight::PreparePrimitives 0x00B19C60; the landed CPSCLight::Kill 0x00B19C20 model): FableWin.pdb
+     // ?Clear@CEnginePrimitiveHandle@@QAEXXZ, inline in retail: the last handle notifies the primitive (slot 3), then `Data = 0`
+@@ -91,5 +95,21 @@ public:
+ private:
+     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
+ };
++#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_SPEED_BODY) && !defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_FORCEINLINE)
++// Pass 25 opt-in (2026-11-21, row 0x0064FDB4 DrawAt, catalog flags /O2 /Oy /W3 /Os /d2inlS200). Fidelity: scaffolding, not retail.
++// DrawAt expands Clear in place; its size-mode TU also emits the inline as an unreferenced pick-any COMDAT of 58 bytes
++// (`and dword ptr [esi+4],0`), where the owner row 0x0041BE70 (?Clear@CEnginePrimitiveHandle@@QAEXXZ, 57 bytes, catalog flags the
++// default /O2 /Oy /W3) stores `mov dword ptr [esi+4],0`. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body,
++// so this compiles the same text as the plain opt-in under optimize("t", on), which restores the owner's command-line speed mode
++// (advisor decision, owner delegated, landing p25: that counts as the owner setting the same pragmas). `#pragma optimize("", on)`
++// below returns to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a
++// row-head optimize pragma before its include of this header (nf189). Not with FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_FORCEINLINE_CLEAR.
++#pragma optimize("t", on)
++inline void CEnginePrimitiveHandle::Clear() {
++    if (Data.GetRefCount() == 1) Data->NotifyReleased(*this);
++    Data.Reset(0);
++}
++#pragma optimize("", on)
++#endif
+ FABLE_STATIC_ASSERT_AT(76, sizeof(CEnginePrimitiveHandle) == 8);
+ #endif
