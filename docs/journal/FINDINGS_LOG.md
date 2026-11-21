@@ -1516,3 +1516,9 @@ against CODAApi.lib, or stay compiled C++?
   - The heuristic inliner decides strictly in source order (loop 1 -> loop 2 -> sky), with a running growth counter rising 264 -> 4980, and sites decided late (g ≈ 4000) still expand.
   - The contested LowerBound sites in loop 2 and the sky have identical records (size 60, cost 52, f 6.25, score 63), so the decision depends on the site frequency alone. Retail's loop-2 and loop-1-dtor frequencies must therefore differ from ours: a branch-probability input, with the source CFG pinned by Ego_d.
   - A stock dead arm inside the expanded GetTC is removed before inlining here and adds no pre-inline IL (byte-identical at T60..74).
+- 2026-11-21 (Account B p25N, mechanism) VC7.1 c2 heuristic-inliner site frequencies, measured with inl.py on minis (adds to the 2026-11-20 loop table):
+  - a plain if-arm multiplies f by ×0.5, then or else alike, for every condition form tried;
+  - a caller-side `a && b` gives ×0.25 (×0.5 per term), but the same && inside an inline bool helper gives only ×0.5;
+  - ifs inside an inlinee still apply below its call site (GetTC's HasTC gives a further ×0.5);
+  - code after a for loop inside an if arm merges at 0.5·1 + 0.5·5 = 3.
+  - For 0x008E18D0, retail behaves as if both loop bodies carry an extra ×0.5 that the sky lacks. Ego_d shows no extra if record, so the open question is a branch inside an inline helper the loops reach.
