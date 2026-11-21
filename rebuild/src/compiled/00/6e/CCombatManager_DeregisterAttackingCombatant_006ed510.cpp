@@ -6,7 +6,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED510, 941 bytes, `ret 4`, frame 0x30.
 // Callees: the combatant map's find 0x006F0250 and erase(key) 0x006F50B0, the defender's attacker-map erase(key) 0x006F3200
-//   (same-TU stand-ins: retail compiles the map instantiations into this TU), CBaseIntelligentPointer ctor/GetPItem/SetPItem/
+//   (STLport map<unsigned __int64, ...> members of stlport/fable_map.h), CBaseIntelligentPointer ctor/GetPItem/SetPItem/
 //   dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10, IncrementDefenderAttackPattern 0x006E8600, UpdateAttackingCombatantsList
 //   0x006ED030, DeregisterAttackedCombatant 0x006ED8C0, CreatureUnsheathWeapon 0x006EBDD0, CThingCreatureBase::IsCombatant
 //   0x00662430, CThing::GetDefName 0x004C7CC0, CDefStringTable::GetString 0x009D49B0 (table 0x013CA828), `__fastcall` CCharString
@@ -27,6 +27,14 @@
 //   map node value CCombatantInfo at +0x18 (retail 0x70 bytes: AttackerInfo +0x04, DefenderInfo +0x34); retail CThing
 //   UniqueID +0x18, component bits +0x20, interface map +0x44, def +0x70, dead flag +0x91 bit 0, combat flags +0x15c.
 // Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
+// Name fix (NF210, 2026-11-20, q4389, family FP-COMBATMAP): the invented CCombatantMap / SCombatantNode / CAttackerMap stand-ins and their
+//   same-TU TmplSink stand-in bodies are replaced in place by the STLport map<unsigned __int64, CCombatantInfo> and
+//   map<unsigned __int64, CThingCreatureBase*> (stlport/fable_map.h): _M_find<unsigned __int64> 0x006F0250 visible but out of line
+//   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), erase(const key_type&) declared only (FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY): the calls
+//   bind the self Leaves of 0x006F0250, 0x006F50B0 and 0x006F3200.
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
 class CCharString { public:
     void* m_pData;
@@ -195,13 +203,6 @@ struct CSequenceVector {                           // retail vector<CCountedPoin
     }
     void clear() { erase(begin(), end()); }
 };
-struct CAttackerMap {                              // map<unsigned __int64, CThingCreatureBase*> (STLport, 12 bytes)
-    void*         _M_header;
-    unsigned long _M_node_count;
-    unsigned long _M_compare;
-    unsigned long size() const { return _M_node_count; }
-    unsigned long erase(const unsigned __int64& key);   // 0x006F3200
-};
 class CAttackingCombatantInfo { public:                   // retail 0x30 bytes
     CThingCreatureBase* Attacked;                  // +0x00
     long  AttackerNumber;                          // +0x04
@@ -214,7 +215,7 @@ class CAttackingCombatantInfo { public:                   // retail 0x30 bytes
     CSequenceVector CombatSequences;               // +0x24
 };
 class CDefendingCombatantInfo { public:                   // retail 0x3c bytes
-    CAttackerMap  Attackers;                       // +0x00
+    std::map<unsigned __int64, CThingCreatureBase*> Attackers;   // +0x00
     unsigned char CombatWheel[0x0c];               // +0x0c
     float         LastVictimWheelUpdatePos[3];     // +0x18
     long          LastWheelUpdateWorldFrame;       // +0x24
@@ -228,39 +229,6 @@ struct CCombatantInfo {                            // retail 0x70 bytes
     CAttackingCombatantInfo AttackerInfo;          // +0x04
     CDefendingCombatantInfo DefenderInfo;          // +0x34
 };
-struct SCombatantNode {
-    char             _M_color;
-    SCombatantNode*  _M_parent;
-    SCombatantNode*  _M_left;
-    SCombatantNode*  _M_right;
-    unsigned __int64 first;                        // +0x10
-    CCombatantInfo   second;                       // +0x18
-};
-struct CCombatantMap {
-    SCombatantNode* _M_header;
-    unsigned long   _M_node_count;
-    unsigned long   _M_key_compare;
-    SCombatantNode* find(const unsigned __int64& key);     // 0x006F0250
-    void erase(const unsigned __int64& key);               // 0x006F50B0
-};
-
-long TmplSink_0(const void* self, long seen);      // stand-ins: the work the STLport instantiations do (outside the graded bytes)
-#pragma auto_inline(off)
-// Same-TU stand-ins for the map instantiations (template bodies are compiled in the caller's TU): they read the key
-// through the reference and let no argument escape.
-__declspec(noinline) SCombatantNode* CCombatantMap::find(const unsigned __int64& key)
-{
-    return (SCombatantNode*)TmplSink_0(this, 0 + *(const long*)&key);
-}
-__declspec(noinline) void CCombatantMap::erase(const unsigned __int64& key)
-{
-    TmplSink_0(this, 1 + *(const long*)&key);
-}
-__declspec(noinline) unsigned long CAttackerMap::erase(const unsigned __int64& key)
-{
-    return TmplSink_0(this, 2 + *(const long*)&key);
-}
-#pragma auto_inline(on)
 FABLE_FORCEINLINE void TraceDeregister(CCharString attackerName, const CCharString& attackedName, const CCombatantInfo& attackedInfo)
 {
     CombatTrace("Deregistering combatant " + attackerName + " was attacking " + attackedName + " (who has " +
@@ -274,7 +242,7 @@ class CCombatManager {
 public:
     virtual void v00();
     unsigned char _sequences[0x0c];                // +0x04 RegisteredCombatSequences
-    CCombatantMap Combatants;                      // +0x10
+    std::map<unsigned __int64, CCombatantInfo> Combatants;   // +0x10
     void IncrementDefenderAttackPattern(CCombatantInfo& info);                    // 0x006E8600
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long weapon);        // 0x006EBDD0
     void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force);         // 0x006ED030

@@ -41,6 +41,21 @@ public:
  // lookup of the attacker's UID, then its AttackerInfo.Attacked compared with the defender). Declaration only: no layout change.
  bool IsAttackerOn(const CThingCreatureBase& attacker, const CThingCreatureBase& defender) const;   // 0x006E9310
 #endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_ISDEFENDERDUEFORATTACK
+ // Opt-in (NF210, 2026-11-20, row 0x006EA050; drafted by NF207): the two public const overloads of Ego_r.pdb (0x00712BC0 / 0x00713BF0)
+ // + FableWin.pdb (0x024187C0 / 0x024185D0) ?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z (out of line at
+ // 0x006E97F0, landed under that Leaf) and ?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (by body 0x006EA050:
+ // the defender's Combatants entry, a non-empty DefenderInfo.Attackers, then the CCombatantInfo overload on the entry).
+ // Declarations only: no layout change.
+ bool IsDefenderDueForAttack(const CCombatantInfo& info) const;                // 0x006E97F0
+ bool IsDefenderDueForAttack(const CThingCreatureBase& defender) const;        // 0x006EA050
+#endif
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATDEBUGINFO
+ // Opt-in (NF210, 2026-11-20, row 0x006EAC50): Ego_r.pdb (0x00715140) + FableWin.pdb (0x0241C2D0)
+ // ?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z (public const; CCombatDebugInfo returned by
+ // value, complete type supplied by the including row: no shared header). Declaration only: no layout change.
+ CCombatDebugInfo GetCombatDebugInfo(const CThingCreatureBase& creature) const;   // 0x006EAC50
+#endif
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_UNSHEATH
  // Retail opt-in (chunk Q17, row 0x0093C030): Ego_r.pdb ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
  // (out of line at 0x006EBDD0). Declaration only; needs engine/EUnsheatheWeaponType.h.

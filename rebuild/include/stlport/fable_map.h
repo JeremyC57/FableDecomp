@@ -125,6 +125,40 @@ template<class Dummy> _Rb_tree_node_base* __cdecl _Rb_global<Dummy>::_M_decremen
   return _M_node;
 }
 #endif
+#if defined(FABLE_RETAIL_STLP_RB_GLOBAL_DECREMENT_SIZE_BODY) && !defined(FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ) && defined(_MSC_VER)
+// NF210 opt-in (2026-11-20, q4389; row 0x006EDA80 CCombatManager::RegisterAttackingCombatant). Fidelity: scaffolding, not retail.
+// That /O2 TU sees the STLport insert_unique body (FABLE_RETAIL_STLP_MAP), whose `--j` calls the iterator's operator-- (pick-any copy
+// of 0x006F0030), which calls _Rb_global<bool>::_M_decrement out of line, so the TU emits _M_decrement as a pick-any COMDAT. Retail
+// kept the 57-byte copy from a size-optimised TU, row 0x004294E2; the plain /O2 copy differs. The advisor pick-any rule (EXTRA_RULES
+// 2026-11-20) needs the owner's body, so this explicit specialization compiles the same STLport 4.6 _tree.c body (the in-class body
+// above) under optimize("s"), as the owner's TU did (an out-of-class template definition under the pragma keeps the TU's /O2: the
+// instance is compiled at the end of the TU, NF207). Owner check: the owner row 0x004294E2 sets `#pragma optimize("s", on)` itself.
+// `#pragma optimize("", on)` below returns to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses
+// this opt-in must not carry a row-head optimize pragma before its include of this header (nf189). Needs no use of
+// _Rb_global<bool>::_M_decrement before this point.
+#pragma optimize("s", on)
+template<> inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_decrement(_Rb_tree_node_base* _M_node)
+{
+  if (_M_node->_M_color == false && _M_node->_M_parent->_M_parent == _M_node)
+    _M_node = _M_node->_M_right;
+  else if (_M_node->_M_left != 0) {
+    _Base_ptr __y = _M_node->_M_left;
+    while (__y->_M_right != 0)
+      __y = __y->_M_right;
+    _M_node = __y;
+  }
+  else {
+    _Base_ptr __y = _M_node->_M_parent;
+    while (_M_node == __y->_M_left) {
+      _M_node = __y;
+      __y = __y->_M_parent;
+    }
+    _M_node = __y;
+  }
+  return _M_node;
+}
+#pragma optimize("", on)
+#endif
 typedef _Rb_global<bool> _Rb_global_inst;
 struct _Rb_tree_base_iterator {
     _Rb_tree_node_base* _M_node;
@@ -419,6 +453,13 @@ public:
 #endif
     iterator insert_unique(iterator,const V&);
     Compare key_comp()const{return _M_key_compare;}
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY) && !defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY) && !defined(FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE)
+    // NF210 opt-in (2026-11-20, q4389; row 0x006ED510 CCombatManager::DeregisterAttackingCombatant): STLport 4.6 _tree.c
+    // `size_type erase(const key_type&)`, declared only, so the TU calls the owner rows' out-of-line instances (map<unsigned __int64,
+    // CCombatantInfo> 0x006F50B0, map<unsigned __int64,CThingCreatureBase*> 0x006F3200, both landed under the ?erase@?$_Rb_tree@..QAEIAB_K@Z
+    // spelling) and emits no pick-any copy of it or its helpers. Same function; declaration only. The map wrapper below forwards to it.
+    size_t erase(const K& key);
+#endif
 #ifdef FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE
     // Per-TU opt-in (wf4, row 0x004B3CE0 CQuestManager::ActivateQuests): STLport 4.6 _tree.h spelling -- lower_bound / upper_bound /
     // equal_range are inline wrappers over the out-of-line `_Base_ptr _M_lower_bound(const key_type&) const` / `_M_upper_bound`
@@ -946,6 +987,11 @@ public:
 #if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_CALLS) && defined(_MSC_VER)
     FABLE_FORCEINLINE
 #endif
+    size_t erase(const K& key){return _M_t.erase(key);}
+#endif
+#if defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY) && !defined(FABLE_RETAIL_STLP_TREE_ERASE_KEY) && !defined(FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE)
+    // NF210 opt-in (row 0x006ED510): STLport 4.6 _map.h `size_type erase(const key_type& __x) { return _M_t.erase(__x); }` over the
+    // declared-only tree erase above (inline wrapper, as in _map.h).
     size_t erase(const K& key){return _M_t.erase(key);}
 #endif
 };

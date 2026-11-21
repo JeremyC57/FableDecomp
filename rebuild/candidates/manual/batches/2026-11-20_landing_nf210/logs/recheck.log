@@ -1,0 +1,4 @@
+rows:       3 RELOCATION_MATCH PASS;
+removed 12 added 10 rows 3
+multi: 1
+nf210 good=979 bad=0; gate: 0 created split(s)

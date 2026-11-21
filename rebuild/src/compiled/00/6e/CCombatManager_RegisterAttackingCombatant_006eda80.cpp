@@ -4,11 +4,22 @@
 // flag it as attacking and put the attacked creature's stealth component in danger
 // Leaf: ?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
-// Shape: the map::insert(const value_type&) instantiation has a same-TU stand-in that builds the pair<iterator, bool>
-//   result in place, so the dropped result shares the find-key frame slot (frame 0xF8 as retail); find has its real
-//   same-TU body and LowerBound a same-TU body.
+// Shape: the map::insert(const value_type&) forwards to the visible STLport insert_unique body (FABLE_RETAIL_STLP_MAP), so the
+//   dropped result shares the find-key frame slot (frame 0xF8 as retail; declared only it keeps its own slot, 0x100: NF207);
+//   _M_find is visible but out of line and LowerBound has a same-TU body.
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 is ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb / FableWin.pdb), was IsAttackingCombatant / IsInCombatAsAttacker / IsRegisteredCombatant.
+// Name fix (NF210, 2026-11-20, q4389, family FP-COMBATMAP): the invented CRetailRbMap_UID_CombatantInfo / SCombatantValue stand-ins
+//   (and their same-TU noinline find / insert bodies) are replaced in place by the STLport map<unsigned __int64, CCombatantInfo> and
+//   pair<const unsigned __int64, CCombatantInfo> (stlport/fable_map.h): _M_find<unsigned __int64> 0x006F0250 visible but out of line
+//   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), map::insert forwards to the visible STLport insert_unique 0x006F4F30 (FABLE_RETAIL_STLP_MAP,
+//   as the HEAD same-TU insert stand-in was visible: the dropped result keeps the 0xF8 frame). Pick-any copies (insert_unique 0x006F4F30,
+//   operator-- 0x006F0030, _M_find 0x006F0250, less<_K> 0x00526120) equal their owners; _Rb_global<bool>::_M_decrement 0x004294E2 is
+//   kept equal to its /Os owner by FABLE_RETAIL_STLP_RB_GLOBAL_DECREMENT_SIZE_BODY (scaffolding; the row's own body is the same without it).
 #define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL_DECL
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_RB_GLOBAL_DECREMENT_SIZE_BODY
+#include "stlport/fable_map.h"
 #include "fable_compiler.h"
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
@@ -105,65 +116,11 @@ struct CCombatantInfo {                     // retail 0x70 bytes
     CCombatantInfo();                       // 0x006F4A00
     CCombatantInfo(const CCombatantInfo& other);    // 0x006F4990
 };
-struct SCombatantValue {                    // pair<const unsigned __int64, CCombatantInfo>
-    unsigned __int64 first;                 // +0x00
-    CCombatantInfo second;                  // +0x08
-    SCombatantValue(const unsigned __int64& k, const CCombatantInfo& v) : first(k), second(v) {}
-};
-struct CRetailRbMap_UID_CombatantInfo {     // STLport map<unsigned __int64, CCombatantInfo>
-    struct node {
-        long  colour; node* parent; node* left; node* right;
-        unsigned __int64 key;               // +0x10
-        CCombatantInfo value;               // +0x18
-    };
-    struct SResult {                        // pair<iterator, bool>
-        node* first;
-        bool second;
-    };
-    node* header;
-    unsigned long count;
-    unsigned long comp;
-    node* find(const unsigned __int64& key);    // 0x006F0250
-    SResult insert(const SCombatantValue& value);   // 0x006F4F30
-    node* end() { return header; }
-};
-#pragma auto_inline(off)
-// Same-TU body of the STLport map::find instantiation 0x006F0250 (as in the landed 0x006E9D90).
-__declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_CombatantInfo::find(const unsigned __int64& key)
-{
-    node* y = header;
-    node* x = header->parent;
-    while (x != 0) {
-        if (!(x->key < key)) {
-            y = x;
-            x = x->left;
-        } else
-            x = x->right;
-    }
-    if (y == header || key < y->key)
-        return header;
-    return y;
-}
-#pragma auto_inline(on)
-
-CRetailRbMap_UID_CombatantInfo::node* InsertNode_006F4F30(CRetailRbMap_UID_CombatantInfo* map, const SCombatantValue& value);
-#pragma auto_inline(off)
-// Same-TU stand-in for the STLport map::insert(const value_type&) instantiation 0x006F4F30: it builds the
-// pair<iterator, bool> result in place, so VC7.1 knows the hidden result slot does not escape.
-__declspec(noinline) CRetailRbMap_UID_CombatantInfo::SResult CRetailRbMap_UID_CombatantInfo::insert(const SCombatantValue& value)
-{
-    SResult result;
-    result.first = InsertNode_006F4F30(this, value);
-    result.second = true;
-    return result;
-}
-#pragma auto_inline(on)
-
 class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];          // +0x04 RegisteredCombatSequences
-    CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10
-    CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->value; }
+    std::map<unsigned __int64, CCombatantInfo> Combatants;  // +0x10
+    CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) { return Combatants.find(creature.GetUID())->second; }
     void RegisterAttackedCombatant(CThingCreatureBase& attacker, CThingCreatureBase& attacked);   // 0x006ED270
     private: void DeregisterAttackingCombatant(CThingCreatureBase& creature); public:   // 0x006ED510 (Ego_r.pdb + FableWin.pdb, private)
     void GetCombatSequences(CThingCreatureBase* attacker, CThingCreatureBase* attacked, CSequenceVector* sequences);   // 0x006EC4F0
@@ -177,14 +134,14 @@ void CCombatManager::RegisterAttackingCombatant(CThingCreatureBase& attacker, CT
         if (Combatants.find(attacked.GetUID()) == Combatants.end())
             RegisterAttackedCombatant(attacker, attacked);
     }
-    CRetailRbMap_UID_CombatantInfo::node* it = Combatants.find(attacker.GetUID());
+    std::map<unsigned __int64, CCombatantInfo>::iterator it = Combatants.find(attacker.GetUID());
     if (it == Combatants.end()) {
         CCombatantInfo info;
         info.Parent = &attacker;
-        CRetailRbMap_UID_CombatantInfo::SResult result = Combatants.insert(SCombatantValue(attacker.UniqueID, info));
+        std::pair<std::map<unsigned __int64, CCombatantInfo>::iterator, bool> result = Combatants.insert(std::pair<const unsigned __int64, CCombatantInfo>(attacker.UniqueID, info));
         it = result.first;
     }
-    CCombatantInfo& info = it->value;
+    CCombatantInfo& info = it->second;
     GetCombatSequences(&attacker, &attacked, &info.AttackerInfo.CombatSequences);
     info.AttackerInfo.Attacked = &attacked;
     info.AttackerInfo.AttackerNumber = GetCombatantInfo(attacked).DefenderInfo.Attackers.size();

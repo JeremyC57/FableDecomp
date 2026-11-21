@@ -1,0 +1,6 @@
+MISSING 006ea050 0041c830 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False
+OK  006ed510 -> 00526120 ??R?$less@_K@std@@QBE_NAB_K0@Z sizes 37 37 
+MISSING 006eda80 0041c820 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z owner leaf None True False
+OK  006eda80 -> 006f0030 ??F?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Noncon sizes 79 79 
+OK  006eda80 -> 00526120 ??R?$less@_K@std@@QBE_NAB_K0@Z sizes 37 37 
+OK  006eda80 -> 004294e2 ?_M_decrement@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z sizes 57 57 

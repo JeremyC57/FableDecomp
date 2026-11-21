@@ -1,0 +1,36 @@
+addr       parity           behav  name
+006ea050   WARN STANDIN_LEAF ?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (catalog CCombatManager::CheckSummonerChargeable; names another function)
+006ea050   RELOCATION_MATCH PASS   CCombatManager::CheckSummonerChargeable
+006eda80   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006eda80   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+006eda80   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006eda80   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo (engine/CDefendingCombatantInfo.h)
+006eda80   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006eda80   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006eda80   WARN RELOC_NAME: ?GetCombatSequences@CCombatManager@@QAEXPAVCThingCreatureBase@@0PAUCSequenceVector@@@Z -> 006ec4f0 labelled 'CCombatManager::FillCombatSequenceList'
+006eda80   RELOCATION_MATCH PASS   CCombatManager::RegisterAttackingCombatant
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo (engine/CDefendingCombatantInfo.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ed510   WARN RELOC_NAME: ?__copy@@YIPAUCSequencePointer@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z -> 006f1410 labelled '_global::Move_CountedPointer_006f1410'
+006ed510   WARN RELOC_NAME: ?_Destroy_range@@YIXPAUCSequencePointer@@0ABUCRetailAllocator@@@Z -> 006f2300 labelled 'std::__destroy_aux<CCountedPointer<CCombatSequenceBase>*>'
+006ed510   WARN RELOC_NAME: ?IsCombatant@CThingCreatureBase@@QAE_NXZ -> 00662430 labelled 'CThingCreatureBase::IsInMeleeAsAttacked'
+006ed510   RELOCATION_MATCH PASS   CCombatManager::DeregisterAttackingCombatant
+006eac50   RELOCATION_MATCH PASS   CCombatManager::GetCombatDebugInfo
+
+WINS: 4
+  006ea050 RELOCATION_MATCH CCombatManager::?IsDefenderDueForAttack@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  006eda80 RELOCATION_MATCH CCombatManager::?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z
+  006ed510 RELOCATION_MATCH CCombatManager::?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+  006eac50 RELOCATION_MATCH CCombatManager::?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z

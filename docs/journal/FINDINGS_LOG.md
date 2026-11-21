@@ -1477,3 +1477,9 @@ against CODAApi.lib, or stay compiled C++?
   - The zeroing temps are #1178 / #1180 / #1182 / #1184, and they did not move under extra locals, any of the six zeroing orders, Ego_d's split totals, or an extra ItemsToSell[] call before the zeroing (which adds 2 temps at L4).
   - Hypothesis (unmeasured): the kind-15 temp pool reuses freed numbers, so the zeroing number follows the pool state, not the count of earlier temps.
   - Our text still lacks Ego_d's two 12-B lines (7350/7351) and the function-scope def_index.
+- 2026-11-20 (Account A nf210, FP-COMBATMAP, 0x006E93C0 / 0x006EA770, blocked across agents) Two CCombatManager rows stay DIFFER after the
+  std::map<unsigned __int64, CCombatantInfo> port, with the same residue each time (NF199, NF207, NF210; 9 forms in all). Advisor decision
+  (owner delegated): keep them out of naming slices; q4389 is blocked on these two rows only.
+  - 0x006E93C0 DIFFER 137v139: it matches up to the GetRing argument push. Retail pushes the argument before the map find; every std::map
+    spelling tried pushes it after.
+  - 0x006EA770 DIFFER 796v799 (one form 809): VC7.1 keeps `this` in ebp where retail keeps it in esi (register choice).
