@@ -24,19 +24,18 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf210)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf210),
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf211)
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf211),
   B's rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, opt-ins, advisor calls, checks.
-- **Owner order (2026-11-20):** run ONE naming agent at a time. NF209 / NF210 landed (nf209, nf210). Ready for the next landing: q11772
-  0x0047DB73 (NF209 draft; HasTC copy-against-copy debt, link clean; needs RENAMES lines). Next slices: FP-VECTORINSERT (q6332 / q6341 /
-  q6333 / q6342); 0x006EAC50 (held at nf210: vector<C3DVector> copy-ctor decl-only opt-in + 0x006ED510's IsInMeleeAsAttacked binder).
-  Out of slices: 0x006E93C0 / 0x006EA770 (FINDINGS_LOG); q11760 / q11873 wait on the CBasicString operator== header decision (q12262 / q12265).
+- **Owner order (2026-11-20):** run ONE naming agent at a time. NF209 / NF210 / NF211 landed (nf209-nf211). Next slice: FP-VECTORINSERT
+  (q6332 / q6341 / q6333 / q6342). FP-COMBATMAP is done but for 0x006E93C0 / 0x006EA770 (out of slices, FINDINGS_LOG); q11760 / q11873
+  wait on the CBasicString operator== header decision (q12262 / q12265).
 - **The fresh naming queue is spent** (2 never-claimed entries). Advisor decision (owner delegated, nf204): entries returned twice with
   only ports left are noted `blocked (family pass ...)`, not returned; future agents are family passes sliced by shared rows (unit = row,
   census named in the brief, every family row locked up front). Candidates: q4394 + q12191 (0x009F03B0), q6315 / q6319 + q11942, the
   CCountedPointer ReleaseData family (q12226-q12229), the TU-emitter `??_G` family (q4411 / q6405 / q6513 / q12201 / q12202 / q12245),
   q4451 (split by shape first). Decision batch (one ruling): q11764, q6197, q6932 (libpk 0x1C record name), q4456 ctor bodies, q12244.
-- Held rows (drafts in each agent's naming dir): 0x006D41F0 / 0x006D4180 (inline budget, header decision), 0x006EAC50 (nf210), the q12300 cast decision (0x0096FA90 binds 0x006E9310 and 0x006EA050), the libpk unit 0x00C162A0 /
+- Held rows (drafts in each agent's naming dir): 0x006D41F0 / 0x006D4180 (inline budget, header decision), the q12300 cast decision (0x0096FA90 binds 0x006E9310 and 0x006EA050), the libpk unit 0x00C162A0 /
   0x00C2D3B0 / 0x01213B0A (nf200), 0x004115A0 (old leaf still bound by ~20 rows, nf202), 0x0048DA62 (one-definition with 0x006572A0, nf198).
 - Scratch tooling (not committed): `$S/tools/mkagent.py` takes `MAX=<n>`, `FRESH=1` (skip returned entries), `IDS=q1,q2` (explicit
   family slice); `$S/tools/merge_b_resolve.sh` now matches FETCH_HEAD conflict labels and stops on a failed union (GOTCHAS nf199).

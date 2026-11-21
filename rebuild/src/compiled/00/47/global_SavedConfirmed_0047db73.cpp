@@ -27,6 +27,15 @@
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+// NF209 (2026-11-20, q11772): the stand-in D::Do(int) on `(char*)c + 0x20` (?Do@D@@QAEXH@Z at 0x00410DE0) is the component-presence test on
+//   CThing::UsingComponents (std::bitset<274> +0x20): Ego_r.pdb + FableWin.pdb ?test@?$bitset@$0BBC@@std@@QBE_NI@Z, called out of line in this
+//   size-optimised TU (FABLE_RETAIL_STLP_BITSET_TEST_DECL, as the other 337 landed callers), reached through the inline CThing::HasTC;
+//   0xC6 = TCI_IN_GAME_MENU (engine/ETCInterfaceType.h). Inferred: retail discards the result (no test after the call), so the statement
+//   is the bare HasTC call; the local struct D is gone.
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+// NF211 (2026-11-21, q11772): landed as NF209's draft unchanged (coordinator ruling, batches/2026-11-20_landing_nf210/README.md):
+//   the object's 8-byte inline ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z COMDAT differs from landed 0x00488620's 58-byte COMDAT
+//   (retail 0x004118C0, no landed row); both are pick-any, so it is copy-against-copy debt (the nf198 case), queued.
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 #include "engine/CPlayerManager.h"
@@ -37,10 +46,6 @@
 #define FABLE_RETAIL_IS_THING_ALIVE_NOINLINE
 #include "engine/CThing.h"
 #include "engine/ThingAlive.h"
-
-struct D {
-    void Do(int arg);  // __fastcall, one stack arg (masked callee c4)
-};
 
 struct GlobalGui {
     void Notify();     // __fastcall, no args (masked callee c5)
@@ -53,7 +58,7 @@ void __fastcall SavedConfirmed()
     CThing* c = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPPlayerCharacterThing();
 
     if (IS_THING_ALIVE(static_cast<CThing*>(c))) {
-        ((D*)((char*)c + 0x20))->Do(0xC6);
+        c->HasTC(TCI_IN_GAME_MENU);
         g_pGlobalGui->Notify();
     }
 }

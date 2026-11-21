@@ -8,7 +8,7 @@
 // Callees: the combatant map's find 0x006F0250 and erase(key) 0x006F50B0, the defender's attacker-map erase(key) 0x006F3200
 //   (STLport map<unsigned __int64, ...> members of stlport/fable_map.h), CBaseIntelligentPointer ctor/GetPItem/SetPItem/
 //   dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10, IncrementDefenderAttackPattern 0x006E8600, UpdateAttackingCombatantsList
-//   0x006ED030, DeregisterAttackedCombatant 0x006ED8C0, CreatureUnsheathWeapon 0x006EBDD0, CThingCreatureBase::IsCombatant
+//   0x006ED030, DeregisterAttackedCombatant 0x006ED8C0, CreatureUnsheathWeapon 0x006EBDD0, CThingCreatureBase::IsInMeleeAsAttacked
 //   0x00662430, CThing::GetDefName 0x004C7CC0, CDefStringTable::GetString 0x009D49B0 (table 0x013CA828), `__fastcall` CCharString
 //   operator+ 0x0099F690/0x0099F600/0x0099F570, GFIntToCharString 0x0099F830, ~CCharString 0x0099EAE0 (manifest label is a
 //   propagated _Cons_val twin), the sequence vector's __copy 0x006F1410 and _Destroy_range 0x006F2300, CVectorMap LowerBound
@@ -32,6 +32,9 @@
 //   map<unsigned __int64, CThingCreatureBase*> (stlport/fable_map.h): _M_find<unsigned __int64> 0x006F0250 visible but out of line
 //   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), erase(const key_type&) declared only (FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY): the calls
 //   bind the self Leaves of 0x006F0250, 0x006F50B0 and 0x006F3200.
+// Name fix (NF211, 2026-11-21, q4389, with row 0x006EAC50): 0x00662430 was the stand-in CThingCreatureBase::IsCombatant() (?IsCombatant@
+//   CThingCreatureBase@@QAE_NXZ); it is Ego_r.pdb (0x0053D2C0) + FableWin.pdb (0x01DA3370) ?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ
+//   (public, const; the landed self row's Leaf). Respelled in place inside the row's existing local CThingCreatureBase model.
 #define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
 #define FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY
 #include "stlport/fable_map.h"
@@ -131,7 +134,7 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsCombatant();                            // 0x00662430
+    bool IsInMeleeAsAttacked() const;              // 0x00662430
 };
 class CTCCarrying { public:                               // interface 0x46
     CThing* GetThingInPrimarySlot() const;               // 0x006A1440
@@ -275,7 +278,7 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase& attacker)
     info.AttackerInfo.CombatSequences.clear();
     info.AttackerInfo.Attacked = 0;
     attacker.IsAttackingCombatant = 0;
-    if (!attacker.IsCombatant()) {
+    if (!attacker.IsInMeleeAsAttacked()) {
         Combatants.erase(attacker.GetUID());
         CTCCarrying* carrying;
         if (attacker.GetConstInterface(&carrying, 0x46)) {

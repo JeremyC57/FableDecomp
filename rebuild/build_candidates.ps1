@@ -275799,6 +275799,7 @@ $catalog = @(
         Source = '00/6e/CCombatManager_GetCombatDebugInfo_006eac50.cpp'
         TestSource = '00/6e/CCombatManager_GetCombatDebugInfo_006eac50_test.cpp'
         PassPattern = '006eac50_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3'
     }
     [pscustomobject]@{
         Address = '006fc130'

@@ -1,0 +1,45 @@
+0047db73 new: 1
+    ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z TABLE:004118c0
+006eac50 new: 41
+    ??$_Destroy@PAVC3DVector@@@std@@YAXPAVC3DVector@@0@Z
+    ??$_Destroy@VC3DVector@@@std@@YAXPAVC3DVector@@@Z
+    ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantI
+    ??$__destroy@PAVC3DVector@@V1@@std@@YAXPAVC3DVector@@00@Z
+    ??$__destroy_aux@PAVC3DVector@@@std@@YAXPAVC3DVector@@0ABU__false_type@0@@Z
+    ??0?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatan
+    ??0?$_STLP_alloc_proxy@PAVC3DVector@@V1@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV?$allocator@VC3DVector@@@1@PAVC3DVector@@@Z
+    ??0?$_Vector_base@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV?$allocator@VC3DVector@@@1@@Z
+    ??0?$allocator@VC3DVector@@@std@@QAE@ABV01@@Z
+    ??0?$allocator@VC3DVector@@@std@@QAE@XZ
+    ??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV?$allocator@VC3DVector@@@1@@Z
+    ??0CCombatDebugInfo@@QAE@ABV0@@Z
+    ??0CCombatDebugInfo@@QAE@XZ
+    ??0__false_type@std@@QAE@XZ
+    ??1?$_STLP_alloc_proxy@PAVC3DVector@@V1@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ
+    ??1?$_Vector_base@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ
+    ??1?$allocator@VC3DVector@@@std@@QAE@XZ
+    ??1?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ TABLE:004dcfbb
+    ??1CCombatDebugInfo@@QAE@XZ
+    ??A?$vector@V?$CCountedPointer@VCCombatSequenceBase@@@@V?$allocator@V?$CCountedPointer@VCCombatSequenceBase@@@@@std@@@std@@QBEABV?$CCountedPointer@VCCombatSequenceBase@@@
+    ??C?$CCountedPointer@VCCombatSequenceBase@@@@QBEPAVCCombatSequenceBase@@XZ
+    ??C?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEPBU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??D?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Const_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QBEABU?$pair@$$CB_KUCCombatantInfo@@@1@XZ
+    ??R?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@std@@QBEAB_KABU?$pair@$$CB_KUCCombatantInfo@@@1@@Z
+    ??R?$less@_K@std@@QBE_NAB_K0@Z TABLE:00526120
+    ?GetAsCharArray@CCharString@@QBEPBDXZ TABLE:00403a10
+    ?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z
+    ?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreatureBase@@@Z TABLE:006e9360
+    ?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetLength@CCharString@@QBEJXZ TABLE:00403a00
+    ?GetUniqueID@CThing@@QBE_KXZ
+    ?PeekData@?$CBasicString@D@@QBEPBDXZ
+    ?_M_root@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_key@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@
+    ?_S_left@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@
+    ?_S_right@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?_S_value@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@
+    ?begin@?$vector@V?$CCountedPointer@VCCombatSequenceBase@@@@V?$allocator@V?$CCountedPointer@VCCombatSequenceBase@@@@@std@@@std@@QBEPBV?$CCountedPointer@VCCombatSequenceBas
+    ?deallocate@?$allocator@VC3DVector@@@std@@QAEXPAVC3DVector@@I@Z
+    ?find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@st
+    ?find@?$map@_KUCCombatantInfo@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U
+006ed510 new: 0

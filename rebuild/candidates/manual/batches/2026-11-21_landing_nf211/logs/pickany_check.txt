@@ -1,0 +1,6 @@
+NO-OWNER-OBJ 0047db73 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+MISSING 006eac50 004dcfbb ??1?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ owner leaf ?ReleaseFirstMember_004dcfbb@CFirstMemberOwner_004dcfbb@ True False
+OK  006eac50 -> 00526120 ??R?$less@_K@std@@QBE_NAB_K0@Z sizes 37 37 
+MISSING 006eac50 00403a10 ?GetAsCharArray@CCharString@@QBEPBDXZ owner leaf None True False
+OK  006eac50 -> 006e9360 ?GetCombatantInfo@CCombatManager@@QBEABUCCombatantInfo@@ABVCThingCreat sizes 41 41 
+MISSING 006eac50 00403a00 ?GetLength@CCharString@@QBEJXZ owner leaf None True False

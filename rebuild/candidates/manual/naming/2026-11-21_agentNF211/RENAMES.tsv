@@ -1,0 +1,8 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x006EAC50	CCombatManager	GetCombatDebugInfo	?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z	CCombatManager::GetCombatDebugInfo	?GetCombatDebugInfo@CCombatManager@CombatDebug@@QBE?AUCCombatDebugInfo@2@ABVCThingCreatureBase@@@Z	q4389 (FP-COMBATMAP): leaf-only rename (catalog name already right). Ego_r.pdb 0x00715140 + FableWin.pdb 0x0241C2D0 (public const, CCombatDebugInfo by value); old leaf = the namespaced stand-in the HEAD object defines (q.py HEAD compile); 0 referrers (refs.py exe scan), old leaf bound by no landed row (no reloc_bindings line). NF210 draft + NF211 VECTOR_COPY_DECL_ONLY; RELOCATION_MATCH PASS.
+# Section 2
+0x0047DB73	?Do@D@@QAEXH@Z	?test@?$bitset@$0BBC@@std@@QBE_NI@Z	0x00410DE0
+0x006EAC50	?find@CombatantMap@CombatDebug@@QAEPAUnode@12@AB_K@Z	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatantInfo@@@std@@@1@AB_K@Z	0x006F0250
+0x006EAC50	?GetDefenderZone@CCombatManager@CombatDebug@@QBEJABVCThingCreatureBase@@0J@Z	?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z	0x006E99B0
+0x006EAC50	??0?$vector@UC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z	0x006F0810
+0x006ED510	?IsCombatant@CThingCreatureBase@@QAE_NXZ	?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ	0x00662430

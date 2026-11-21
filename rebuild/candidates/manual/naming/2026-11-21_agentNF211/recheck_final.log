@@ -1,0 +1,27 @@
+addr       parity           behav  name
+0047db73   WARN RELOC_NAME: ?g_pGlobalGui@@3PAUGlobalGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0047db73   WARN RELOC_NAME: ?Notify@GlobalGui@@QAEXXZ -> 00438310 labelled 'CPlayerGui::ToggleLiveGui'
+0047db73   RELOCATION_MATCH PASS   SavedConfirmed
+006eac50   RELOCATION_MATCH PASS   CCombatManager::GetCombatDebugInfo
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo (engine/CDefendingCombatantInfo.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ed510   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ed510   WARN RELOC_NAME: ?__copy@@YIPAUCSequencePointer@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z -> 006f1410 labelled '_global::Move_CountedPointer_006f1410'
+006ed510   WARN RELOC_NAME: ?_Destroy_range@@YIXPAUCSequencePointer@@0ABUCRetailAllocator@@@Z -> 006f2300 labelled 'std::__destroy_aux<CCountedPointer<CCombatSequenceBase>*>'
+006ed510   RELOCATION_MATCH PASS   CCombatManager::DeregisterAttackingCombatant
+
+WINS: 3
+  0047db73 RELOCATION_MATCH _global::SavedConfirmed
+  006eac50 RELOCATION_MATCH CCombatManager::?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z
+  006ed510 RELOCATION_MATCH CCombatManager::?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z

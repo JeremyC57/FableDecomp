@@ -307,6 +307,12 @@ public:
     void SetAttackedByCreature(CThingCreatureBase* creature);           // 0x006624F0
 #endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISINMELEEASATTACKED
+    // Opt-in (NF210, 2026-11-20, row 0x006EAC50): Ego_r.pdb (0x0053D2C0) + FableWin.pdb (0x01DA3370)
+    // ?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ, out of line at 0x00662430 (the IsInMeleeAsAttacker 0x00662410 twin; already bound
+    // under this spelling in reloc_bindings). Declaration only: no layout change.
+    bool IsInMeleeAsAttacked()const;                                     // 0x00662430
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISDEMONDOOR
     // Retail opt-in (agentC14, row 0x00603000 CreateMiniMapMarkers; first found by chunk 729): Ego_r.pdb / FableWin.pdb
     // ?IsDemonDoor@CThingCreatureBase@@QBE_NXZ, inline; retail emits it out of line at 0x005FA7F0 (`mov al,[ecx+15Dh]; shr al,3;
