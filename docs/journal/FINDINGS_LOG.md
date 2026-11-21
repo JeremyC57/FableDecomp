@@ -1483,3 +1483,10 @@ against CODAApi.lib, or stay compiled C++?
   - 0x006E93C0 DIFFER 137v139: it matches up to the GetRing argument push. Retail pushes the argument before the map find; every std::map
     spelling tried pushes it after.
   - 0x006EA770 DIFFER 796v799 (one form 809): VC7.1 keeps `this` in ebp where retail keeps it in esi (register choice).
+- 2026-11-20 (Account B p25P, mechanism; 0x00A4EFC0 InitialiseFromFileData, open) A kind-3 temp made at induction-variable elimination takes its number from the whole function's temp count before loop optimisation.
+  - Here it is the expanded __uninitialized_copy loop's `cur + off` (cur = pool local #1074, key 0x8640; off = kind-3 temp, key 0xDE40).
+  - Deleting the 4 std::copy lines moves it to 0xB600; a dead statement after `return` moves it to 0x0E40 and flips the tie. Local pads never move it.
+  - This corrects the earlier "never moves" notes on this row (p25C, p25O): those measured local pads.
+  - The landed opt-ins FABLE_RETAIL_CARRAY_INDEX_ASSERT + FABLE_RETAIL_ASSERT_DEAD_ARM alone take the row from 3481v3491 to DIFFER(3491v3491). Evidence: Ego_d's CArray<T>::operator[] is a 719-B line, a debug bounds check.
+  - Left: (2) the position compressed-size schedule, (3) the scaling |s-1| sum order, one pad at 0xA4FBE9.
+  - Ruling: no fitted extra IL inside the shared-header arm.

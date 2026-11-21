@@ -241,3 +241,10 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   3. Read the existing symbol log first: the extra call's temp numbers, the statements behind the temps just below #1178, and the function's first temp number (TU carry-over?).
   - Hook 0x107636A2 only if those leave it open.
 - **0x004FEB70 (p25N):** the 260v261 draft's `long map` / `CMap* pmap` are not Ego_d locals, so it cannot be the base. Ego_d's TPI types for map_list / it decide the single-load form.
+
+## 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData (p25P): fitted content inside a shared-header dead arm
+- **Question.** The stock CArray indexer arm gives 3491v3491. Adding k=4..6 dead calls inside the arm plus a 1..4 local shift gives 8 lines. May the arm carry a fitted size?
+- **Ruling: no.** It does not match anyway. Any dead statement moves the temp, so k plus a shift is a free dial with no oracle. And the arm is shared-header text for every row that expands the indexer.
+  - The 0x00B24850 / 0x00BB3E80 precedent covers fitted arm counts in a row's own body, not IL padded inside a header arm.
+- **When a larger arm would be acceptable:** Ego_d calibrates its content (the 719-B / 261-B lines in units of known one-assert lines), and the same header text keeps every landed CARRAY_INDEX_ASSERT user matching. It would then be a header contract labelled Inferred.
+- **The stock-arm configuration is the new base.** The helper-text sweeps for (2)/(3) are redone on it.
