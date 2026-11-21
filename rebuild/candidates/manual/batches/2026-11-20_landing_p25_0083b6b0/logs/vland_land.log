@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0083b6b0   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+0083dc80   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+00837b30   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+00837b30   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+
+WINS: 3
+  0083b6b0 RELOCATION_MATCH CThingVillage::?DrawPreparePrimitivesForRendering@CThingVillage@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+  0083dc80 RELOCATION_MATCH CThingPhysicalSwitch::?DrawPreparePrimitivesForRendering@CThingPhysicalSwitch@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+  00837b30 RELOCATION_MATCH CThingTrackNode::?DrawPreparePrimitivesForRendering@CThingTrackNode@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CThingVillage_DrawPreparePrimitivesForRendering_0083b6b0
+  CThingPhysicalSwitch_DrawPreparePrimitivesForRendering_0083dc80
+  CThingTrackNode_DrawPreparePrimitivesForRendering_00837b30

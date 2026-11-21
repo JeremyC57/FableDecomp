@@ -401787,6 +401787,27 @@ $catalog = @(
         TestSource = '00/5b/CTCInventoryTrade_SellItemPC_005b01fe_test.cpp'
         PassPattern = '005b01fe_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0083b6b0'
+        Module = 'CThingVillage'
+        Source = '00/83/CThingVillage_DrawPreparePrimitivesForRendering_0083b6b0.cpp'
+        TestSource = '00/83/CThingVillage_DrawPreparePrimitivesForRendering_0083b6b0_test.cpp'
+        PassPattern = '0083b6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083dc80'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_DrawPreparePrimitivesForRendering_0083dc80.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_DrawPreparePrimitivesForRendering_0083dc80_test.cpp'
+        PassPattern = '0083dc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00837b30'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_DrawPreparePrimitivesForRendering_00837b30.cpp'
+        TestSource = '00/83/CThingTrackNode_DrawPreparePrimitivesForRendering_00837b30_test.cpp'
+        PassPattern = '00837b30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

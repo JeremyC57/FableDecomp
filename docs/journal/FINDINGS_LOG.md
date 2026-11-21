@@ -1505,3 +1505,10 @@ against CODAApi.lib, or stay compiled C++?
   - The position size==1 branch and its clear() placement are pinned by retail bytes and Ego_d 1188..1203 alike; the only fitted text there is ISNONZERO_ZYX.
   - An extra read of the paletted finish hoists its load as in retail but closes none of the residue (3505v3491 / 3489v3491), so the "finish piece in ebx" mechanism is not confirmed.
   - Existing vector clear / erase / resize / size opt-ins either break retail bytes elsewhere or leave the residue unchanged.
+- 2026-11-21 (Account B p25P, Ego_d calibration; found on 0x008DBC80) Ego_d's C3DVector has a user copy constructor and no operator=, and Normalise returns C3DVector&. So Ego_d (VC10 /Od) line sizes read:
+  - copy-ctor declaration = 12 B;
+  - `.Z = 0.0f` = 5 B (8 B with disp32);
+  - memberwise assignment = 17 B;
+  - `v = v.Normalise()` = 25 B (37 B with disp32).
+  - Decoding 0x008DBC80's lines with these gave retail's text (a separate 2D copy with Z = 0, `x = x.Normalise()`, SetForward / SetUp instead of an Init), and the row matches.
+  - Use these sizes when reading other rows' Ego_d line tables.

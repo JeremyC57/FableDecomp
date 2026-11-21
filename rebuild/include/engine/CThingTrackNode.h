@@ -90,6 +90,20 @@ public:
     unsigned long DrawGetMesh() const;                                  // 0x00837050
     void DrawGetDrawSizeX(float, float* out) const;                     // 0x00837060
 #endif
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_DRAWPREPARE
+    // Retail opt-in (p25N, row 0x00837B30): Ego_r.pdb 0x0082B7E0 / FableWin.pdb 0x027FF610
+    // ?DrawPreparePrimitivesForRendering@CThingTrackNode@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z (public virtual, vtable slot 36;
+    // overrides CThingPhysical's 0x006A64D0) and ?GetCurrentGraphic@CThingTrackNode@@QBEPBVCEngineGraphic@@XZ (Ego_r 0x0082A880 /
+    // FableWin 0x027FD380, public const), inline in retail (0x00837B53: PeekGlobalDefinition 0x004C79A0, then +0xE6 = CGlobalDef::TrackGraphic,
+    // the member DrawGetMesh 0x00837050 reads). Declarations here, the body below the class. No layout change.
+public:
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+    const CEngineGraphic* GetCurrentGraphic() const;
+#endif
 };
 FABLE_STATIC_ASSERT_AT(64, sizeof(CThingTrackNode)==0xf0);
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_DRAWPREPARE
+// Needs engine/CGlobalDef.h and FABLE_RETAIL_CTHING_PEEKGLOBALDEFINITION.
+inline const CEngineGraphic* CThingTrackNode::GetCurrentGraphic() const { return &PeekGlobalDefinition().TrackGraphic; }
+#endif
 #endif

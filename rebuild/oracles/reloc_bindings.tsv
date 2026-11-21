@@ -39369,3 +39369,5 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?AddChildDynamically@CChangingStateComponent@NUISystem@@QAEXAAUCountedPointer@2@@Z	0052cab0	005414a0
 ?insert@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@PAPAV34@ABQAV34@@Z	005418c0	005414a0
 ?DisplayErrorMessage@CTCHeroOnlineScoreboard@@QAEXABVCWideString@@@Z	0055ef00	00563130
+?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ	0083b520	0083b6b0
+?GetCurrentGraphic@CThingPhysicalSwitch@@IBEABVCEngineGraphic@@XZ	0083db60	0083dc80
