@@ -106,10 +106,10 @@ namespace { extern CCharString WEAPONS_SUBTITLE; }                        // 0x0
 namespace { extern CCharString CLOTHES_SUBTITLE; }                        // 0x013B8B74 "Clothes_Subtitle"
 namespace { extern CCharString ITEMS_SUBTITLE; }                          // 0x013B8B78 "Items_Subtitle"
 
+#include "engine/CGameDefinitionManager.h"
 // Fidelity: same-TU strong definition of 0x0059C0C6 (retail TU-mate)
 // Reason: retail compiled GetMenuBranchFromDefIndexPC in this TU; with its body visible VC7.1 knows the out-parameter is only written
 // inside the call and reuses `sold_type`'s frame word after the switch (declaration only: DIFFER(2222v2222), 82 lines).
-#include "engine/CGameDefinitionManager.h"
 CComponent* CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, CComponent* menu, EItem_Menu_Type& type)
 {
     long melee, ranged, headwear, torso, gloves, legwear, footwear, suits;
