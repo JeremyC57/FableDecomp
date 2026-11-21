@@ -333,3 +333,11 @@ members a shared header already models* (CTimer::operator=, GetTime, CScriptThin
 model; those bodies go in the shared header as add-only opt-ins; (b) fitted counts the PDBs contradict (0x00BD3070's 16 dead asserts
 against FableWin's size for 3): out; fitted row-body statements Ego_d does not contradict may be Inferred under the 0x00B24850 checks;
 (c) duplicated calls or loop shapes must agree with Ego_d's line table (decode first; Inferred only if undecidable).
+
+## 2026-11-21 Standing criterion: when a "different revision" lifts the Ego_d rule (advisor, on p25Q's twins 0x00795300 / 0x0078FD60 and PlayWave 0x00F1EED0)
+Extra Ego_d locals or a larger debug size do not by themselves show a revision difference (0x008DBC80 and 0x00666D40 both ended
+Ego_d-consistent). The rule is lifted per block, by a mechanical test against retail's bytes: (1) a named, non-debug, out-of-line
+callee Ego_d's block calls that retail's function never calls, or the reverse; (2) for loops where Ego_d's local is a
+CIntelligentPointer, retail's loop lacking the intelligent-pointer ctor/dtor calls (if present, grade Ego_d's actual types). A block
+that passes stops binding to Ego_d; fitted text there may land as `// Inferred:` citing the test, under the 0x00B24850 checks. Every
+other block stays bound. The twins' draft (function-scope shared `creature`, x/y locals) cannot land until its blocks pass.
