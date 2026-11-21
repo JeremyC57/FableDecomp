@@ -401872,6 +401872,13 @@ $catalog = @(
         TestSource = '00/8d/NCreatureModeCModeScorpionKingVulnerable_AnimUpdate_008d9b00_test.cpp'
         PassPattern = '008d9b00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a4b670'
+        Module = 'NBBBMaths'
+        Source = '00/a4/NBBBMaths_IsPosInFOVWithWeight_00a4b670.cpp'
+        TestSource = '00/a4/NBBBMaths_IsPosInFOVWithWeight_00a4b670_test.cpp'
+        PassPattern = '00a4b670_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

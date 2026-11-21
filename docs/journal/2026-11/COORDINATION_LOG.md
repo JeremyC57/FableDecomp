@@ -718,3 +718,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x009CE370 CBankFile::WriteFileInformation (batches/2026-11-20_landing_p25_009ce370). Headers: engine/CBankFile.h .
 2026-11-20 B->A: Landed p25 0x008D9B00 NCreatureMode::CModeScorpionKingVulnerable::AnimUpdate (batches/2026-11-20_landing_p25_008d9b00). Headers: none.
 2026-11-21 B->A: NAME_FIXES (labels DB, from p25R): ghidra_out labels still carry FindCombinationAnim for 0x0070C4E0 (landed and PDB name CAnimateThing::GetFirstCombinationAnimFromType) and GetPHitLocationFromName for 0x00815820 (landed CTCHitLocations::GetPHitLocationWithDefName); several landed Callees comments (e.g. 0x008E0A10, 0x008C8550, 0x008D88A0) still use the old names. Left for A's label pass.
+2026-11-20 B->A: Landed p25 0x00A4B670 NBBBMaths::IsPosInFOVWithWeight (batches/2026-11-20_landing_p25_00a4b670). Headers: none.

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a4b670   RELOCATION_MATCH PASS   IsPosInFOVWithWeight
+
+WINS: 1
+  00a4b670 RELOCATION_MATCH NBBBMaths::?IsPosInFOVWithWeight@NBBBMaths@@YI_NABVC3DVector@@0M0AAM@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NBBBMaths_IsPosInFOVWithWeight_00a4b670
