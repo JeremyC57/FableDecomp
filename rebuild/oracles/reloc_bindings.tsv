@@ -39382,3 +39382,4 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?GetRandomValidationValue@CBankFile@@AAEKXZ	009cc0b0	009ce370
 ?WritePadding@CBankFile@@AAEXK@Z	009ccb20	009ce370
 ?WriteRecoveryFile@CBankFile@@AAEXKKK@Z	009cdf50	009ce370
+?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	00862ec0	008d9b00

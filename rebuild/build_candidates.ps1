@@ -401865,6 +401865,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '009ce370_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008d9b00'
+        Module = 'NCreatureMode::CModeScorpionKingVulnerable'
+        Source = '00/8d/NCreatureModeCModeScorpionKingVulnerable_AnimUpdate_008d9b00.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScorpionKingVulnerable_AnimUpdate_008d9b00_test.cpp'
+        PassPattern = '008d9b00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -716,3 +716,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x00852E10 NCameraModes::CScriptModuleFOVZoomStayRelative::CScriptModuleFOVZoomStayRelative (batches/2026-11-20_landing_p25_00852e10). Headers: engine/NCameraModes_CScriptModuleFOVZoom.h . Newly flagged: 10 rows (newly_flagged_rows.tsv).
 2026-11-20 B->A: Landed p25 0x00666D40 CThingCreatureBase::GetHeightZBelowAt (batches/2026-11-20_landing_p25_00666d40). Headers: engine/CThingFilter_SolidToThing.h engine/CThingFilter_PhysicsFlagsSolidToThing.h .
 2026-11-20 B->A: Landed p25 0x009CE370 CBankFile::WriteFileInformation (batches/2026-11-20_landing_p25_009ce370). Headers: engine/CBankFile.h .
+2026-11-20 B->A: Landed p25 0x008D9B00 NCreatureMode::CModeScorpionKingVulnerable::AnimUpdate (batches/2026-11-20_landing_p25_008d9b00). Headers: none.

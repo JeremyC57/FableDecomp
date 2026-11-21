@@ -1,0 +1,8 @@
+addr       parity           behav  name
+008d9b00   RELOCATION_MATCH PASS   AnimUpdate
+
+WINS: 1
+  008d9b00 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?AnimUpdate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXAAVCAnimateThing@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCreatureModeCModeScorpionKingVulnerable_AnimUpdate_008d9b00
