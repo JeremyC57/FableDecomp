@@ -117,7 +117,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00659625	CTCVillage	UpdateTorchTasks	475	parked	DIFFER(466v475)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00659625.cpp	original
 0065ad37	CTCVillage	UpdateCurfew	893	parked	DIFFER(873v893)	4	rebuild/candidates/manual/pending/2026-10-23_linux_hand306/differ/0065ad37.cpp	original
 00666310	CThingCreatureBase	OnCreate	912	parked	DIFFER(915v908)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00666310.cpp	original
-00666d40	CThingCreatureBase	GetHeightZBelowAt	352	reserved (acctB p25R, 2026-11-21)	DIFFER(346v348)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00666d40.cpp	original
 0066b370	CTCSoundPlayer	PlayAllSoundEvents	1808	parked	DIFFER(1805v1808)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/0066b370.cpp	gapscan/boundary
 0066c900	CRegionMinimap	IlluminateRegionMinimapTheme	384	parked	DIFFER(348v354)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/0066c900.cpp	original
 00670820	CTCCoopSpirit	UpdateMovement	496	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand682/differ/00670820.cpp	original

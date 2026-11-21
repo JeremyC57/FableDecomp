@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00666d40   RELOCATION_MATCH PASS   GetHeightZBelowAt
+
+WINS: 1
+  00666d40 RELOCATION_MATCH CThingCreatureBase::?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingCreatureBase_GetHeightZBelowAt_00666d40

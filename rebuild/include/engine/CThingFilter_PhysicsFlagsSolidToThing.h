@@ -29,4 +29,14 @@ inline bool CThingFilter_PhysicsFlagsSolidToThing::operator()(const CThing& test
     return false;
 }
 #endif
+#ifdef FABLE_RETAIL_CTHINGFILTER_PHYSICSFLAGSSOLIDTOTHING_CTOR_BODY
+// Opt-in (p25R 2026-11-21, row 0x00666D40 CThingCreatureBase::GetHeightZBelowAt): the constructor body, visible to the includer (retail expands
+// it there: 0x00666E40 / 0x00666E4F the source's PhysicsTC +0x60 into SourceThingPhysicsTC, 0x00666E78 SourceThing). Text: Ego_d.pdb
+// ??0CThingFilter_PhysicsFlagsSolidToThing@@QAE@ABVCThing@@@Z line table (40: 29 B = prolog + both initialisers with the GetPhysicsTC call,
+// 41: 9 B = `{}`) and its parameter source_thing. Needs CThing::GetPhysicsTC.
+inline CThingFilter_PhysicsFlagsSolidToThing::CThingFilter_PhysicsFlagsSolidToThing(const CThing& source_thing)
+    : SourceThing(source_thing), SourceThingPhysicsTC(source_thing.GetPhysicsTC())
+{
+}
+#endif
 #endif

@@ -26,4 +26,15 @@ inline bool CThingFilter_SolidToThing::operator()(const CThing& test_thing) cons
     return true;
 }
 #endif
+#ifdef FABLE_RETAIL_CTHINGFILTER_SOLIDTOTHING_CTOR_BODY
+// Opt-in (p25R 2026-11-21, row 0x00666D40 CThingCreatureBase::GetHeightZBelowAt): the constructor body, visible to the includer. Retail keeps an
+// out-of-line copy (0x00661620) and expands it in GetHeightZBelowAt (0x00666E74..0x00666E7C: SourceThing = edi, PTCSolidToThing = 0). Text:
+// Ego_d.pdb ??0CThingFilter_SolidToThing@@QAE@ABVCThing@@@Z line table (60: 15 B = prolog + SourceThing, 61: 10 B = PTCSolidToThing(NULL),
+// 62: 9 B = `{}`) and its parameter source_thing.
+inline CThingFilter_SolidToThing::CThingFilter_SolidToThing(const CThing& source_thing)
+    : SourceThing(&source_thing)
+    , PTCSolidToThing(0)
+{
+}
+#endif
 #endif

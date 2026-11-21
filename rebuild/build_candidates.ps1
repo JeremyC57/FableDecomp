@@ -401850,6 +401850,13 @@ $catalog = @(
         TestSource = '00/85/NCameraModesCScriptModuleFOVZoomStayRelative_CScriptModuleFOVZoomStayRelative_00852e10_test.cpp'
         PassPattern = '00852e10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00666d40'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetHeightZBelowAt_00666d40.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetHeightZBelowAt_00666d40_test.cpp'
+        PassPattern = '00666d40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
