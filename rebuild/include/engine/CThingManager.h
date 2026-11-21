@@ -41,6 +41,16 @@ bool IsDrawCombatCollisionDebug()const{return DrawCombatCollisionDebug;}
 private:static bool DrawPerceptionDebug;
 public:bool IsDrawingPerceptionDebug()const{return DrawPerceptionDebug;}
 #endif
+#if defined(FABLE_RETAIL_CTHINGMANAGER_DEBUGDRAWFLAGS) && !defined(FABLE_RETAIL_STEALTH_DRAW)
+// Retail opt-in (p25N, row 0x00833C00): Ego_d.pdb private statics ?DrawPerceptionDebug@CThingManager@@0_NA (0x013B8A80, set by
+// SetDrawThingPerception 0x0051E4A0) and ?DrawLinkedBuildingsDebug@CThingManager@@0_NA (0x013B8A81, set by 0x0051E4B0,
+// SetDrawThingLinkedBuildings), read through FableWin.pdb's inline accessors ?IsDrawingPerceptionDebug@CThingManager@@QBE_NXZ /
+// ?IsDrawingLinkedBuildingsDebug@CThingManager@@QBE_NXZ.
+private:static bool DrawPerceptionDebug;
+private:static bool DrawLinkedBuildingsDebug;
+public:bool IsDrawingPerceptionDebug()const{return DrawPerceptionDebug;}
+public:bool IsDrawingLinkedBuildingsDebug()const{return DrawLinkedBuildingsDebug;}
+#endif
 public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
     virtual ~CThingManager();

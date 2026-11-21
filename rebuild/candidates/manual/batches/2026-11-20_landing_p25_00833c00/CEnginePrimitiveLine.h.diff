@@ -1,0 +1,19 @@
+diff --git a/rebuild/include/engine/CEnginePrimitiveLine.h b/rebuild/include/engine/CEnginePrimitiveLine.h
+index 39ea643f1..ac1887e16 100644
+--- a/rebuild/include/engine/CEnginePrimitiveLine.h
++++ b/rebuild/include/engine/CEnginePrimitiveLine.h
+@@ -17,6 +17,14 @@ public:
+  // Real visible body reads every reference input; no writes through input references.
+  CEnginePrimitiveLine(unsigned __int64 id,const C3DVector& start,const C3DVector& end,const CRGBColour& colour,float width,EEnginePrimitiveBlendMode blend_mode,unsigned long bank_index,bool use_z,EEngineInterpolationSet interpolation_set,EEnginePrimitiveBlendOp blend_op)
+  :CEnginePrimitive(ENGINE_PRIMITIVE_LINE,id,interpolation_set),Start(start),End(end),Colour(colour),Width(width),BankIndex(bank_index),BlendMode(blend_mode),BlendOp(blend_op),UseZBuffer(use_z){}
++#elif defined(FABLE_RETAIL_CENGINEPRIMITIVELINE_INLINE_CTOR)
++ // Retail opt-in (p25N, row 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering): the constructor is an inline header
++ // function in the original (Ego_d.pdb holds it once, under tc_graphic_appearance.obj; FableWin.pdb emits its COMDAT in several objects;
++ // retail keeps one out-of-line copy, 0x004C3090, landed). Plain inline and visible: c2 still calls it out of line (as retail does at
++ // every 0x00833C00 site), but with the body in view it copies the end point's X / Y through ecx / edx and stores Z first.
++ // Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR (the original three-argument base constructor; the id is unused).
++ CEnginePrimitiveLine(unsigned __int64 id,const C3DVector& start,const C3DVector& end,const CRGBColour& colour,float width,EEnginePrimitiveBlendMode blend_mode,unsigned long bank_index,bool use_z,EEngineInterpolationSet interpolation_set,EEnginePrimitiveBlendOp blend_op)
++ :CEnginePrimitive((EEnginePrimitiveType)6,id,interpolation_set),Start(start),End(end),Colour(colour),Width(width),BankIndex(bank_index),BlendMode(blend_mode),BlendOp(blend_op),UseZBuffer(use_z){}
+ #elif defined(FABLE_RETAIL_CENGINEPRIMITIVELINE_CTOR_VISIBLE_OUTOFLINE)
+  // Retail opt-in (wf3, row 0x00761980): the inline constructor's real body (landed 0x004C3090: type 6, interpolation set, the three
+  // cleared channel bytes, Start/End/Colour copy constructors, then the scalars in declaration order) VISIBLE to the caller but kept

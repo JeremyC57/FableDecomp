@@ -39373,3 +39373,6 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?GetCurrentGraphic@CThingPhysicalSwitch@@IBEABVCEngineGraphic@@XZ	0083db60	0083dc80
 ?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z	0070b4a0	008dbc80
 ?GetAnimIndex@CTCAnimationComplex@@QBEJXZ	0070b490	008dbc80
+?DrawLinkedBuildingsDebug@CThingManager@@0_NA	013b8a81	00833c00
+?GetCurrentStateGroupDebugText@CAIBrain@@QBEPBVCCharString@@XZ	0088b7e0	00833c00
+?g_DebugDrawCreatureNames@@3_NA	013b86e8	00833c00
