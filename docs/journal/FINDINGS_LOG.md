@@ -1556,3 +1556,6 @@ against CODAApi.lib, or stay compiled C++?
   0x006E2500 lies outside this TU's range, so its COMDAT came from another obj; a single-TU build at T65 cannot produce retail's
   split. Open. 0x0093D270: the argument $T is c2's (a kind-4 "field of" symbol of the inlined getter's `this`, allocated in lowering,
   only when the call result is used), not the front end's.
+- 2026-11-21 (B, p25Q, 0x00F1EED0): c2's caller-size inline penalty is function-global, not top-down: moving 15 dead asserts from a
+  function's top to its end gives identical bytes. Dead asserts did not move PlayWave's per-site ~CTimer split on the natural text;
+  retail's colder sites (one conditional level deeper) come from the frequency model. /d2inlS above 8 only worsens it.
