@@ -1,0 +1,8 @@
+# old_name	new_name	address	evidence
+CThingManager_LoadMorphFromScript	CThingManager::LoadMainPlayerCreatureState	0x00521CF0	Ego_r.pdb 0x0052BD50, FableWin.pdb 0x01D37120, Ego_d.pdb ?LoadMainPlayerCreatureState@CThingManager@@QAEXAAVCCharString@@@Z (manifest / labels / catalog spelling is descriptive; Ego_d locals and the callee set confirm the body)
+g_SuppressInventoryBaseCopy	NThingManager::HeroSwapInProgress	0x013B8A88	Ego_d.pdb public ?HeroSwapInProgress@NThingManager@@3_NA (only PDB that names it; Ego_r / FableWin have no data symbol); role: set / cleared around the swap by this row (0x00521DC0 / 0x00521E49). Landed users: CTCInventoryStats::Copy 0x005CDC1C, CTCInventoryAbilities::Copy 0x005F3DC6
+g_bApplyCopiedHeroStats	NThingManager::HeroSwapInProgress	0x013B8A88	same; landed user CTCHeroStats::Copy 0x0057C9C4
+g_bCopyingThings	NThingManager::HeroSwapInProgress	0x013B8A88	same; landed users NHeroInformationScreens::CManager::RegisterScreen 0x0066EB11 / DeregisterScreen 0x0066EB78
+# Note, no fix: 0x0083E1B0 is `mov eax,ecx ; ret`, an identical-COMDAT fold; the landed row there is CFourierAnalysis::CFourierAnalysis, and this row
+# binds ?GetReplacedUIDScript@CThingScriptUIDReplacer@@QBEABVCCharString@@XZ (Ego_r 0x0082EC60 / FableWin 0x027EB030) to it (vland WARN RELOC_NAME,
+# expected for a folded body: both names are real at that address).

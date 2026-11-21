@@ -38,7 +38,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original
 00509a20	CWorldMap	GetMapNavigationAreaUpdateInfo	3120	parked	DIFFER(3188v3120)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00509a20.cpp	original
 0051eda0	CEntityRuntimePersistence	SaveToGameStateScript	544	parked	DIFFER(485v501)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0051eda0.cpp	original
-00521cf0	_global	CThingManager_LoadMorphFromScript	448	reserved (acctB p25Q, 2026-11-21)	DIFFER(448v446)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00521cf0.cpp	original
 005239cd	_global	CThingDeadCreature_SavePersistentState	371	parked	not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)	0	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/extent_wrong/005239cd/	original
 00524290	_global	CThingManager_SaveGameState	1568	parked	DIFFER(1500v1553)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00524290.cpp	original
 00524ec0	NThingManager::CEntityRuntimePersistence	LoadFromGameStateBinary	1008	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00524ec0.cpp	original

@@ -39383,3 +39383,7 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?WritePadding@CBankFile@@AAEXK@Z	009ccb20	009ce370
 ?WriteRecoveryFile@CBankFile@@AAEXKKK@Z	009cdf50	009ce370
 ?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	00862ec0	008d9b00
+??0CThingScriptUIDReplacer@@QAE@ABVCCharString@@@Z	0083e1f0	00521cf0
+?CopyHeroToHero@CThingManager@@AAEXAAVCThing@@0AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0051f0e0	00521cf0
+?GetReplacedUIDScript@CThingScriptUIDReplacer@@QBEABVCCharString@@XZ	0083e1b0	00521cf0
+?HeroSwapInProgress@NThingManager@@3_NA	013b8a88	00521cf0

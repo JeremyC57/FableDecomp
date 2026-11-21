@@ -401879,6 +401879,13 @@ $catalog = @(
         TestSource = '00/a4/NBBBMaths_IsPosInFOVWithWeight_00a4b670_test.cpp'
         PassPattern = '00a4b670_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00521cf0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadMainPlayerCreatureState_00521cf0.cpp'
+        TestSource = '00/52/CThingManager_LoadMainPlayerCreatureState_00521cf0_test.cpp'
+        PassPattern = '00521cf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00521cf0   WARN RELOC_NAME: ?GetReplacedUIDScript@CThingScriptUIDReplacer@@QBEABVCCharString@@XZ -> 0083e1b0 labelled 'CFourierAnalysis::CFourierAnalysis'
+00521cf0   RELOCATION_MATCH PASS   LoadMainPlayerCreatureState
+
+WINS: 1
+  00521cf0 RELOCATION_MATCH CThingManager::?LoadMainPlayerCreatureState@CThingManager@@QAEXAAVCCharString@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingManager_LoadMainPlayerCreatureState_00521cf0
