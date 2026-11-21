@@ -37,6 +37,14 @@ protected:
     std::basic_string<unsigned short> Data;
 public:
     long NoRefs;
+#ifdef FABLE_RETAIL_CWIDESTRINGDATA_CTOR_TEXT
+    // Opt-in (NF220, q12401: row 0x0099C120): Ego_r.pdb / FableWin.pdb ??0CWideStringData@@QAE@PB_WJ@Z (public). Declaration only.
+    CWideStringData(const wchar_t* text, long length);
+#endif
+#ifdef FABLE_RETAIL_CWIDESTRINGDATA_APPEND_CHAR
+    // Opt-in (NF220, q12401: row 0x0099C120): Ego_r.pdb / FableWin.pdb ?Append@CWideStringData@@QAEX_W@Z (public). Declaration only.
+    void Append(wchar_t character);
+#endif
 #ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
     void Append(const wchar_t* text,long length) {
         if (length < 0) Data.append(text);
@@ -186,6 +194,25 @@ bool CBasicString<T>::operator<(const CBasicString<T>& other) const
     return result < 0;
 }
 #endif
+#if defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY) && defined(FABLE_RETAIL_CBASICSTRING_COMPARE_BODY)
+// NF220 opt-in (2026-11-21, q12383; rows 0x005A4CDD, ...). Fidelity: scaffolding, not retail. A size-compiled TU that calls
+// CBasicString<char>::operator==(const char*) out of line carries a pick-any copy of ??8?$CBasicString@D@@QBE_NPBD@Z; as an implicit
+// template instantiation VC7.1 compiles it in the optimize mode in force at the END of the TU (NF216 FINDINGS 2026-11-21), so a size TU
+// emits a 19 / 20-byte copy. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body: the 88-byte copy of row
+// 0x004115A0 (catalog flags: the default /O2 /Oy /W3; Compare expanded, `xor ecx,ecx ; test eax,eax ; sete cl` on each return). An
+// explicit specialization takes the mode at its definition, so this one is compiled under optimize("ty", on), the owner's
+// command-line mode (EXTRA_RULES 2026-11-21, size-pragma condition 2), noinline as retail calls it. `#pragma optimize("", on)` below
+// returns to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a
+// row-head optimize pragma before its include of this header (nf189). Needs FABLE_RETAIL_CBASICSTRING_COMPARE_BODY and none of the
+// FABLE_RETAIL_CBASICSTRING_TEXT_EQ_* bodies (the declaration-only operator== above); place before any use of this operator.
+#pragma optimize("ty", on)
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+bool CBasicString<char>::operator==(const char* text) const { return Compare(PData,text)==0; }   // 0x004115A0
+#pragma optimize("", on)
+#endif
 class CCharStringData
 { public:
     CBasicString<char> Data;
@@ -237,7 +264,16 @@ protected:
     void MakeOwnCopyOfData();
 public:
 #endif
+#if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_COPYCTOR_INLINE)
+    // Opt-in (NF220, q12401: row 0x0099C120): the CWideString TU expands the copy constructor (owner 0x0099B720 ??0CWideString@@QAE@ABV0@@Z)
+    // inside operator+ (0x0099C12A..: zero, NoStrings++, the self / same-block tests, UnassignString 0x0099B4D0 out of line, share + NoRefs++).
+    CWideString(const CWideString& other) : PStringData(0) {
+        ++NoStrings;
+        if(&other!=this && other.PStringData!=PStringData){if(PStringData)UnassignString();CWideStringData* data=other.PStringData;if(data){PStringData=data;++data->NoRefs;}}
+    }
+#else
     CWideString(const CWideString& other);
+#endif
 #ifdef FABLE_RETAIL_CWIDESTRING
     // Retail converts bare wide literals implicitly (0x006286F0 Replace(L".xmv", L".wmv"): each temporary's address is
     // re-taken with `lea` after the 0x0099B6B0 call, the implicit-conversion shape; an explicit CWideString(L"...")
@@ -246,7 +282,15 @@ public:
 #else
     explicit CWideString(const wchar_t* text);
 #endif
+#if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_DTOR_INLINE)
+    // Opt-in (NF220, q12401: row 0x0099C120): the CWideString TU expands the destructor (owner 0x0099B510 ??1CWideString@@QAE@XZ)
+    // inside operator+ (0x0099C17B..: NoRefs--, on zero the STLport text freed and the block deleted, the pointer cleared, NoStrings--).
+    // The owner row's own text (coordinator, landing nf220): its pick-any copy equals retail 0x0099B510 (68 = 68 B, relocations masked);
+    // the shorter `if(--NoRefs<=0)` spelling gave a differing 65-B copy. 0x0099C120's bytes are the same with either.
+    ~CWideString() { CWideStringData* storage = PStringData; if (storage != 0) { --storage->NoRefs; if (storage->NoRefs <= 0) { storage = PStringData; if (storage != 0) delete storage; } PStringData = 0; } --NoStrings; }
+#else
     ~CWideString();
+#endif
     operator const wchar_t*() const;
 #if defined(FABLE_RETAIL_CWIDESTRING) && defined(FABLE_RETAIL_CWIDESTRING_TOCHARSTRING_BODY)
     // Retail opt-in (NF80, q10939: row 0x0099B2C0 CWideString::ToCharString): Ego_r.pdb / FableWin.pdb ?GetAsCharArray@CWideString@@QBEPB_WXZ
@@ -274,6 +318,11 @@ public:
 #endif
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
+#ifdef FABLE_RETAIL_CWIDESTRING_ADDCHAR
+    // Opt-in (NF220, q12401: row 0x0099C120 operator+(const CWideString&, wchar_t)): Ego_r.pdb / FableWin.pdb ??YCWideString@@QAEABV0@_W@Z (G here: wchar_t is unsigned short under the retail flags),
+    // out of line in retail (landed 0x0099B9A0, called at 0x0099C15C). Declaration only.
+    const CWideString& operator+=(wchar_t character);         // 0x0099B9A0
+#endif
     bool operator!=(const wchar_t* other) const;
 #ifdef FABLE_RETAIL_CTCQUESTCOMPLETIONUI_DESCRIPTION
     // Both original PDBs; native0099b0f0, called at005e50a2.
@@ -342,6 +391,11 @@ private:
 #endif
 
 protected:
+#if defined(FABLE_RETAIL_CWIDESTRING_MAKEOWNCOPYOFDATA) && !defined(FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24)
+    // Opt-in (NF220, q12401: row 0x0099C120): Ego_r.pdb / FableWin.pdb ?MakeOwnCopyOfData@CWideString@@IAEXXZ (protected; landed
+    // 0x0099B560). Declaration only (FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24 declares the same member).
+    void MakeOwnCopyOfData();
+#endif
     CWideStringData* AllocStringData(                          // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
         const wchar_t* text,
         long length);

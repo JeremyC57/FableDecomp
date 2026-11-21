@@ -17,7 +17,6 @@
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-#pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
 #define FABLE_RETAIL_CWIDESTRING
@@ -45,6 +44,13 @@
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
 #define FABLE_RETAIL_CPLAYERMANAGER
 #define FABLE_RETAIL_PLAYER
+// q12383 (NF220, 2026-11-21): the row-head `#pragma optimize("s", on)` moves after the fable_string.h include (the opt-in ends with
+//   optimize("", on), nf189); the CBasicString<char>::operator==(const char*) pick-any copy is the owner 0x004115A0 body through
+//   FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY (was the row-local out-of-class Compare / operator== template definitions).
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY
+#include "fable_string.h"
+#pragma optimize("s", on)
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
 #include "engine/CTCInventoryTrade.h"
@@ -76,27 +82,6 @@ namespace { extern CCharString WEAPONS_SUBTITLE; }                              
 namespace { extern CCharString CLOTHES_SUBTITLE; }                                // "Clothes_Subtitle"
 namespace { extern CCharString ITEMS_SUBTITLE; }                                // "Items_Subtitle"
 
-#pragma auto_inline(off)
-template <class T> long __fastcall CBasicString<T>::Compare(const T* a, const T* b)
-{
-    for (;;) {
-        T ca = *a;
-        if (ca == 0 && *b == 0)
-            return 0;
-        T cb = *b;
-        if (ca < cb)
-            return -1;
-        if (ca > cb)
-            return 1;
-        ++a;
-        ++b;
-    }
-}
-template <class T> bool CBasicString<T>::operator==(const T* text) const
-{
-    return Compare(PData, text) == 0;
-}
-#pragma auto_inline(on)
 
 void CTCInventoryTrade::ConstructActualWantedInventoryPC()
 {

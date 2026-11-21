@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0099c120   RELOCATION_MATCH PASS   operator+
+005a4cdd   WARN RELOC_NAME: ??1?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005a4cdd   RELOCATION_MATCH PASS   ConstructActualSellInventoryPC
+005a5b31   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005a5b31   WARN RELOC_NAME: ??1?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005a5b31   RELOCATION_MATCH PASS   ConstructActualWantedInventoryPC
+
+WINS: 3
+  0099c120 RELOCATION_MATCH global::??H@YI?AVCWideString@@ABV0@G@Z
+  005a4cdd RELOCATION_MATCH CTCInventoryTrade::?ConstructActualSellInventoryPC@CTCInventoryTrade@@AAEXXZ
+  005a5b31 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ
+done

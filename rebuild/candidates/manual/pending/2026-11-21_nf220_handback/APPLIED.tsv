@@ -1,0 +1,8 @@
+entry	address	status	binders_respelled	note
+q12226	0x004190B6	blocked	0	blocked: family (about 40 rows, one component with 0x0042918C / 0x0042F948 / 0x00403750 / 0x004057A0); gates A-B measured, census + plan in NOTES.md; no row changed
+q12227	0x00419108	blocked	0	blocked: family (about 40 rows, one component with 0x0042918C / 0x0042F948 / 0x00403750 / 0x004057A0); gates A-B measured, census + plan in NOTES.md; no row changed
+q12228	0x0042F974	blocked	0	blocked: family (about 40 rows, one component with 0x0042918C / 0x0042F948 / 0x00403750 / 0x004057A0); gates A-B measured, census + plan in NOTES.md; no row changed
+q12229	0x0042F9A0	blocked	0	blocked: family (about 40 rows, one component with 0x0042918C / 0x0042F948 / 0x00403750 / 0x004057A0); gates A-B measured, census + plan in NOTES.md; no row changed
+q12401	0x0099C120	done	0	ported onto fable_string.h (6 add-only declaration / inline opt-ins); UnassignString copy now pick-any 62 = 62, the 0x0099B4D0 duplicate gone; RELOCATION_MATCH PASS
+q12383	0x004115A0	blocked	0	partial: 2 of 5 size-TU rows handed back (0x005A4CDD, 0x005A5B31: == copy 19 -> 88 = owner via FABLE_RETAIL_CBASICSTRING_TEXT_EQ_OWNER_BODY); 0x005A04F7 (1 form, SRC_FAIL), 0x00CBFB7D, 0x0065A075 left (context); condition-1 reading for the coordinator (NOTES)
+entry4	0x00429C53	done	0	measure only: census + plan in NOTES.md (4 rows bind ??1 at 0x004291DE, 47 sites, all compiled; 104 rows on ReleaseData; the 6 thunk rows on ??1; the table ??1 line (witness 0x00570332) is stale); nothing changed

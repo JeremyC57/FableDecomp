@@ -1,0 +1,24 @@
+address	change	grade	test	grades_used	entries	note
+0x00403750	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/00403750_g1.cpp
+0x0042f50b	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/0042f50b_g1.cpp
+0x00416c8a	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/00416c8a_g1.cpp
+0x004175e5	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/004175e5_g1.cpp
+0x00418b7a	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/00418b7a_g1.cpp
+0x0042dd28	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/0042dd28_g1.cpp
+0x0056f177	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/0056f177_g1.cpp
+0x005958f5	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/005958f5_g1.cpp
+0x0042fd04	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/0042fd04_g1.cpp
+0x0042fd6f	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/0042fd6f_g1.cpp
+0x00419134	none (probe)	RELOCATION_MATCH (probe)	-	1	q12226-q12229	blocked: family; probe work/00419134_g1.cpp
+0x0041afa0	none	RELOCATION_MATCH (HEAD)	-	1	q12226-q12229	not-a-binder: already binds ??1<CGraphicDataBank> at thunk 0x004194B5
+0x0099c120	port onto fable_string.h	RELOCATION_MATCH	PASS	2	q12401	form 1 DIFFER 184v177; form 2 handed back; symdiff + cmpcopy + lnk in NOTES
+0x005a4cdd	size-TU == owner copy (header opt-in + pragma after include)	RELOCATION_MATCH	PASS	2	q12383	== 19->88 = owner; __copy_trivial now = owner; ??8CCharString 35->39 ownerless
+0x005a5b31	size-TU == owner copy (header opt-in + pragma after include)	RELOCATION_MATCH	PASS	1	q12383	== 19->88 = owner; ??8CCharString 35->39 ownerless
+0x005a04f7	none (draft work/005a04f7_f1.cpp)	SRC_FAIL	-	1	q12383	open: CCharString not found when fable_string.h goes first
+0x00cbfb7d	none	-	-	0	q12383	open: not attempted (context)
+0x0065a075	none	-	-	0	q12383	open: not attempted (context)
+0x004190b6	none	-	-	0	q12226-q12229	blocked: family (self / thunk row; recipe in NOTES)
+0x00419108	none	-	-	0	q12226-q12229	blocked: family (self / thunk row; recipe in NOTES)
+0x0042f974	none	-	-	0	q12226-q12229	blocked: family (self / thunk row; recipe in NOTES)
+0x0042f9a0	none	-	-	0	q12226-q12229	blocked: family (self / thunk row; recipe in NOTES)
+0x004194b5	none	-	-	0	q12226-q12229	blocked: family (self / thunk row; recipe in NOTES)
