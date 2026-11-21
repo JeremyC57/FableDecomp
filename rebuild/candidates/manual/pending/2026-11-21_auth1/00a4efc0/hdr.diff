@@ -1,0 +1,154 @@
+--- rebuild/include/engine/C3DAnimFileSequenceChunk.h
++++ overlay/engine/C3DAnimFileSequenceChunk.h
+@@ -29,6 +29,19 @@
+ virtual ~C3DAnimFileSequenceChunk();
+ #endif
+ public:long GetParentIndex()const{return ParentIndex;}
++#if defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_GETTERS) && defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX)
++ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): FableWin.pdb
++ // ?GetBoneName@C3DAnimFileSequenceChunk@@QBE?BVCCharString@@XZ (by value: the row copy-constructs from +0x34, 0x00A4EFDE),
++ // ?GetBoneType@C3DAnimFileSequenceChunk@@QBE?AW4EBoneType@@XZ (+0x3C), ?GetSamplesPerSecond@C3DAnimFileSequenceChunk@@QBEMXZ (+0x38),
++ // ?GetMatrixCount@C3DAnimFileSequenceChunk@@QBEKXZ (Matrices.size(): the /48 at 0x00A4F05C) and
++ // ?GetMatrix@C3DAnimFileSequenceChunk@@QBEPBVCMatrix3x4@@K@Z (&Matrices[index]), all inline in retail. Needs ADDMATRIX (the
++ // CArray<CMatrix3x4> member type).
++ const CCharString GetBoneName() const { return BoneName; }
++ EBoneType GetBoneType() const { return BoneType; }
++ float GetSamplesPerSecond() const { return SamplesPerSecond; }
++ unsigned long GetMatrixCount() const { return Matrices.size(); }
++ const CMatrix3x4* GetMatrix(unsigned long index) const { return &Matrices[index]; }
++#endif
+ private:long BoneIndex,ParentIndex;CCharString BoneName;float SamplesPerSecond;EBoneType BoneType;
+ #ifdef FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX
+  CArray<CMatrix3x4> Matrices;
+--- rebuild/include/engine/C3DAnimationSequenceData.h
++++ overlay/engine/C3DAnimationSequenceData.h
+@@ -50,6 +50,20 @@
+  unsigned long GetFrameCount()const{return FrameCount;}float GetSamplesPerSecond()const{return SamplesPerSecond;}
+  bool InitialiseFromFileData(const C3DAnimFileSequenceChunk&,CSimpleMemoryPool&);
+ private:
++#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_FROMFILEDATA
++ // Retail opt-in (p25C, row 0x00A4EFC0 InitialiseFromFileData): Ego_d.pdb nested enum C3DAnimationSequenceData::ETrackMode
++ // (type 0x2901D: TRACKMODE_IDENTITY 0, CONSTANT 1, NORMAL 2, PALETTED 3, MOTION_BIT 2), stored in the 2-bit track-mode fields;
++ // and the private helper Ego_r.pdb / FableWin.pdb ?GetMaximumAbsoluteComponent@C3DAnimationSequenceData@@AAEMABVC3DVector@@@Z
++ // (no out-of-line copy in retail: expanded twice per frame in the row's factor loop, 0x00A4F110..). Declaration only: the row's
++ // TU defines it.
++ enum ETrackMode { TRACKMODE_IDENTITY=0, TRACKMODE_CONSTANT=1, TRACKMODE_NORMAL=2, TRACKMODE_PALETTED=3, TRACKMODE_MOTION_BIT=2 };
++ float GetMaximumAbsoluteComponent(const C3DVector& vect);
++#ifndef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_READ
++ // The private ?SetupIdentityFlag@C3DAnimationSequenceData@@AAEXXZ (see READ above; expanded at the end of the row, 0x00A4FC83:
++ // `test byte ptr [esi+0Bh],3Fh`). Declaration only, as under READ.
++ void SetupIdentityFlag();
++#endif
++#endif
+ char* BoneName;float SamplesPerSecond;unsigned short FrameCount;
+  unsigned char BoneType:5;unsigned char EnabledFlag:1;unsigned char AnimatedFlag:1;unsigned char IdentityFlag:1;
+  unsigned char RotationTrackMode:2;unsigned char PositionTrackMode:2;unsigned char ScalingTrackMode:2;
+@@ -66,6 +80,22 @@
+  short X,Y,Z;
+ };
+ #endif
++#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_VECTORWORD_FROMVECTOR
++// Retail opt-in (p25C, row 0x00A4EFC0 InitialiseFromFileData): FableWin.pdb ??0C3DVectorWord@C3DAnimationSequenceData@@QAE@XZ,
++// ??0C3DVectorWord@C3DAnimationSequenceData@@QAE@ABVC3DVector@@@Z and ??8C3DVectorWord@C3DAnimationSequenceData@@QBE_NABV01@@Z
++// (Ego_d.pdb field list 0x29DF1: two constructors, operator==, operator*, X / Y / Z, Sizeof), all inline in retail: the
++// conversion is three _ftol2 calls into a stack temporary (0x00A4F654..0x00A4F66C), the comparison three word compares
++// (0x00A4F6B0..0x00A4F6CA). The user default constructor makes the element non-POD (STLport's __false_type paths, as the
++// landed 0x00A55070 _M_insert_overflow). Needs FABLE_RETAIL_C3DVECTOR (the full C3DVector).
++class C3DAnimationSequenceData::C3DVectorWord {
++public:
++ short X,Y,Z;
++ C3DVectorWord() { }
++ C3DVectorWord(const C3DVector& vect) { X=(short)vect.X; Y=(short)vect.Y; Z=(short)vect.Z; }
++ bool operator==(const C3DVectorWord& other) const { return X==other.X && Y==other.Y && Z==other.Z; }
++ C3DVector operator*(float scale) const { return C3DVector(X*scale,Y*scale,Z*scale); }
++};
++#endif
+ #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE
+ class C3DAnimationSequenceData::C3DVectorWord {
+ public:
+--- rebuild/include/engine/C3DKeyframe.h
++++ overlay/engine/C3DKeyframe.h
+@@ -66,6 +66,15 @@
+  // Retail opt-in (chunk 2044): FableWin.pdb ?GetRotation@C3DKeyframe@@QBE?AVCQuaternion@@XZ (inline, by value).
+  CQuaternion GetRotation() const { return Rotation; }
+ #endif
++#ifdef FABLE_RETAIL_C3DKEYFRAME_FROMMATRIX
++ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
++ // ?InitialiseFromMatrix@C3DKeyframe@@QAE_NABVCMatrix3x4@@@Z (out of line in retail, 0x00AAF1E0, called per frame at 0x00A4F0C6),
++ // and FableWin.pdb ?SetScaling@C3DKeyframe@@QAEXABVC3DVector@@@Z / ?GetScaling@C3DKeyframe@@QBE?AVC3DVector@@XZ (inline: the
++ // row stores 1, 1, 1, 0 into Scaling at 0x00A4F0D0..0x00A4F0D8, and reads Scaling X / Y / Z in place at 0x00A4F110).
++ bool InitialiseFromMatrix(const CMatrix3x4& matrix);
++ void SetScaling(const C3DVector& scaling) { Scaling.Initialise(scaling, 0.0f); }
++ C3DVector GetScaling() const { return Scaling.ToC3DVector(); }
++#endif
+ #ifdef FABLE_RETAIL_C3DKEYFRAME_POSTAPPLY
+  // Retail opt-in (chunk 2005, row 0x00A4D920): FableWin.pdb ?PostApplyRelativeAnimation@C3DKeyframe@@QAEXABV1@@Z (expanded in
+  // retail: the out-of-line CQuaternion::operator*= 0x00A88C10, then C4DVector::operator+= ??YC4DVector@@QAEABV0@ABV0@@Z inline).
+--- rebuild/include/engine/C3DVector.h
++++ overlay/engine/C3DVector.h
+@@ -483,7 +483,15 @@
+     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+ #endif
+ #endif
+-#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_X_THEN_YZ)
++#if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_DIAG_YZX)
++    FABLE_VECTOR_INLINE float GetMagnitude()const{return (float)sqrt(Y*Y+Z*Z+X*X);}
++#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_DIAG_XZY_COMPOUND)
++    FABLE_VECTOR_INLINE float GetMagnitude()const{float squared=X*X;squared+=Z*Z;squared+=Y*Y;return (float)sqrt(squared);}
++#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_DIAG_YZX_INLINE)
++    inline float GetMagnitude()const{return (float)sqrt(Y*Y+Z*Z+X*X);}
++#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_DIAG_XYZ_INLINE)
++    inline float GetMagnitude()const{return (float)sqrt(X*X+Y*Y+Z*Z);}
++#elif defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_X_THEN_YZ)
+     // Retail opt-in (egod e03, row 0x008E5D40 CTCPhysicsStandard::Move): the named squared sum as X plus the Y/Z pair. There retail loads
+     // the copied components Z, Y, X and forms (Y*Y + Z*Z) + X*X (0x008E5D57..0x008E5D85); FableWin.pdb ?GetMagnitude@C3DVector@@QBEMXZ
+     // is 26i/66b (this text, fwsize SAME). FITTED grouping (the other 26i texts give other orders there). Body only.
+--- rebuild/include/engine/CQuaternion.h
++++ overlay/engine/CQuaternion.h
+@@ -48,6 +48,13 @@
+  void SetIdentity(){X=0.0f;Y=0.0f;Z=0.0f;W=1.0f;}
+ #endif
+  void SetFromAxisAngle(const C3DVector& axis,float angle);
++#ifdef FABLE_RETAIL_CQUATERNION_EQUALS
++ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
++ // ?Equals@CQuaternion@@QBE_NABV1@@Z (out of line in retail, 0x00A88C50) and ?IsIdentity@CQuaternion@@QBE_NXZ (0x00A88CB0).
++ // Declarations only.
++ bool Equals(const CQuaternion& other) const;
++ bool IsIdentity() const;
++#endif
+ #ifdef FABLE_RETAIL_CQUATERNION_INLINE_TOMATRIX
+  // Native00B0EAB8 begins this expanded math body after axis-angle call00B0EAB3.
+  // Natural,T200/T400 and scoped
+--- rebuild/include/engine/CSimpleMemoryPool.h
++++ overlay/engine/CSimpleMemoryPool.h
+@@ -46,10 +46,30 @@
+     unsigned long CalculateMemoryAllocatedByClient() const;
+ #endif
+     // FableWin ??$AllocateType@_N@CSimpleMemoryPool@@QAEPA_NK@Z (0x03237A60; inline in retail): the 64-bit size check, then Allocate.
++#ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_ALLOCATETYPE_EGOD
++    // Opt-in (AUTH1 2026-11-21, row 0x00A4EFC0): Ego_d's AllocateType<T> line table (21..34: `if (count)` 10 B = cmp + je near over the
++    // body; the 64-bit size local 11 B for char / 16 B for CQuaternion; its test 16 B; a 261-B one-assert line; `return NULL;` 4 B;
++    // the Allocate return 14 / 17 B, which re-multiplies count by sizeof(T); the final `return NULL;` 2 B). Same results as the default.
++    template<class T> T* AllocateType(unsigned long count)
++    {
++        if (count)
++        {
++            unsigned __int64 total_size = (unsigned __int64)count * sizeof(T);
++            if (total_size > 0xffffffffUL)
++            {
++                FABLE_RETAIL_ASSERT(FABLE_ALLOCATETYPE_ASSERT_COND);
++                return 0;
++            }
++            return (T*)Allocate(count * sizeof(T));
++        }
++        return 0;
++    }
++#else
+     template<class T> T* AllocateType(unsigned long count)
+     {
+         return count != 0 ? ((unsigned __int64)count * sizeof(T) > 0xffffffffUL ? 0 : (T*)Allocate(count * sizeof(T))) : 0;
+     }
++#endif
+ #ifdef FABLE_RETAIL_CSIMPLEMEMORYPOOL_FREEALL
+     // Retail opt-in (chunk 2044, rows 0x00AA0090 / 0x00A9F540): Ego_r.pdb ?FreeAll@CSimpleMemoryPool@@QAEXXZ (retail 0x00A5C720, out of
+     // line; bound in reloc_bindings.tsv from landed 0x0098B420). Declaration only.
