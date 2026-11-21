@@ -278,3 +278,12 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The edges get the 0x008DBC80 line-5093 size test (fits: no label; can't fit: out; undecidable: Inferred), and Ego_d's TPI types for first / second / this_line / last_line decide whether a 2D text is the real one.
   - The paren body is acceptable as Inferred (the PAREN family), re-measured after the edges settle. Every landed GFArcCos user is regraded with it, and it lands only with the row.
 - **2026-11-21 (0x00763060, coordinator ruling; the advisor call timed out):** p25Q's VC7.1 probe proves Ego_d's pre-increment text cannot produce retail. The post-increment text still contradicts Ego_d 199 / 204, so it is not Inferred. The probe is evidence about the revision, not a second source for the spelling. The row stays reserved behind its bracket and on the Windows request.
+
+## 2026-11-21 owner instruction: next reservation set by size
+Owner: "after next reserved rows/functions are done, reserve the next set from the largest ones". When p25Q's and p25R's
+current queues are done, B reserves the next set from the largest parked UNMATCHED rows (length descending) that no claim
+line, log entry or A lock names. Pre-scout (2026-11-21), largest first: 0x00E20600 Main (14512), 0x00502E90
+PopulateRegionWithVillagers (13632), 0x00BD3070 RenderMeshPrimitive (11296), 0x00795300 / 0x0078FD60 FrameUpdate (9312 /
+9280), 0x00F1EED0 PlayWave (9264), 0x00C4F600 (9216), 0x00B4D370 UpdateShadowSpace (7184), 0x00CF4EC0 Main (6176),
+0x00D09010 Main (5872). Several carry acctC round-six drafts (released 2026-11-16/18, pending/2026-11-16_acctC_open).
+Re-check claims at reservation time.
