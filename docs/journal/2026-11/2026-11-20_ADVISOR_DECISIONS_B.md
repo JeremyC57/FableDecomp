@@ -270,3 +270,10 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   2. the 5093 decode with the new calibration does not fit two calls (one call: Ego_d shape, no label);
   3. the getter bodies are proven, and the const overload and operand order are tried.
 - If it lands, the row stays on the Windows request for line 5093.
+
+## 0x007602F0 NShape::IsShapeConvex (p25Q, 2026-11-21): paren cast and three-float edges
+- **Facts.** RELOCATION_MATCH with all three sites through GFArcCos, plus a new add-only FABLE_RETAIL_GFANGLES_ARCCOS_PAREN_CAST (`((float)acos(value)) * K`). The parentheses add one no-code IL 0x269 tuple, the float-copy node p25O traced.
+  - The edges are built with the three-float ctor, but Ego_d 309/317/328/338 decode as `second - first` plus an 8-B call.
+- **Ruling: not landable yet.**
+  - The edges get the 0x008DBC80 line-5093 size test (fits: no label; can't fit: out; undecidable: Inferred), and Ego_d's TPI types for first / second / this_line / last_line decide whether a 2D text is the real one.
+  - The paren body is acceptable as Inferred (the PAREN family), re-measured after the edges settle. Every landed GFArcCos user is regraded with it, and it lands only with the row.
