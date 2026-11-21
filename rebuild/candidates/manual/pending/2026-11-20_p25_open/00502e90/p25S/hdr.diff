@@ -1,0 +1,113 @@
+--- a/rebuild/include/engine/CShopDef.h
++++ b/rebuild/include/engine/CShopDef.h
+@@ -58,4 +58,9 @@
+ };
+ FABLE_STATIC_ASSERT(sizeof(CShopDef)==0xd0);
+ FABLE_STATIC_ASSERT(offsetof(CShopDef,IsStockDisplayPermanent)==0x98);
++#ifdef FABLE_RETAIL_CSHOPDEF_STATGETTYPENAME_INLINE
++// Additive opt-in (agent wfE10-15, row 0x00502E90): CShopDef::StatGetTypeName is inline in retail, like the other def classes'
++// (GetSubDef<CShopDef> 0x005130A0 builds CCharString("CShopDef", -1) in place: `push -1 ; push 0x01244044 ; call 0x0099EBF0`).
++inline CCharString FABLE_FASTCALL CShopDef::StatGetTypeName() { return CCharString("CShopDef", -1); }
++#endif
+ #endif
+--- a/rebuild/include/engine/CTCBuyableHouse.h
++++ b/rebuild/include/engine/CTCBuyableHouse.h
+@@ -33,6 +33,12 @@
+     // row; reloc_bindings binds the same symbol from 0x0082ACD0). Declaration only.
+     bool IsForSale() const;                                  // 0x006BF960
+ #endif
++#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_GETPDEF
++    // Nested opt-in (wfE10-14, row 0x00502E90 CWorldMap::PopulateRegionWithVillagers): Ego_r.pdb / FableWin.pdb
++    // ?GetPDef@CTCBuyableHouse@@QBE?AV?$CDefPointer@$$CBVCBuyableHouseDef@@@@XZ, inline (retail 0x005033F4 copies PDef +0x0C into a
++    // flagged temporary and AddRefs it before reading InitiallyEmpty +0x26). No layout change.
++    CDefPointer<const CBuyableHouseDef> GetPDef() const { return PDef; }
++#endif
+ private:
+     CDefPointer<const CBuyableHouseDef> PDef;                // +0x0c
+     bool IsScripted;                                         // +0x10
+--- a/rebuild/include/engine/CTCVillage.h
++++ b/rebuild/include/engine/CTCVillage.h
+@@ -45,6 +45,13 @@
+ #ifdef FABLE_RETAIL_HORN_TASKS
+ private:void UpdateHornTasks();void RemoveThingFromAllTasks(const CThing&);
+ #endif
++#ifdef FABLE_RETAIL_CTCVILLAGE_GAYVILLAGERS
++public:
++    // Retail opt-in (chunk 879, row 0x00502E90; re-based by agent wfE10): Ego_r.pdb ?GetNumberOfGayVillagers@CTCVillage@@QBEJXZ,
++    // out of line in retail at 0x00658F41 (call 0x00505091). Declaration only.
++    long GetNumberOfGayVillagers() const;                    // 0x00658F41
++private:
++#endif
+ public:
+ #ifdef FABLE_RETAIL_SECURITY_SWEEP_LIFETIMES_PASS23
+     // Both original CTCVillage TPI records: public CThing& ctor and virtual dtor.
+--- a/rebuild/include/engine/CThingAICreature.h
++++ b/rebuild/include/engine/CThingAICreature.h
+@@ -182,6 +182,25 @@
+     void SetWorkBuilding(CThingBuilding* thing){WorkBuilding=thing;}
+ #endif
+     CThingBuilding* GetHomeBuilding() const;                            // body in the includer once CThingBuilding is complete
++#ifdef FABLE_RETAIL_CTHINGAICREATURE_RELATIONS
++    // Retail opt-in (chunk 879, row 0x00502E90 CWorldMap::PopulateRegionWithVillagers; re-based by agent wfE10): Ego_r.pdb / FableWin.pdb
++    // ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z, ?SetWorkBuilding@..QAEXPAVCThingBuilding@@@Z,
++    // ?SetFatherCreature@CThingAICreature@@QAEXPAV1@@Z, ?SetMotherCreature@..QAEXPAV1@@Z, ?SetSpouseCreature@..QAEXPAV1@@Z: inline bodies
++    // (the member assigned from a CIntelligentPointer temporary; retail expands SetHomeBuilding at 0x005052AC and keeps the out-of-line
++    // COMDATs 0x00512210 / 0x00512260 / 0x005122B0 / 0x00512300 / 0x00512350 for the other sites) and FableWin.pdb's inline
++    // ?GetSpouseCreature@ / ?GetFatherCreature@ / ?GetMotherCreature@CThingAICreature@@QBEPAV1@XZ. Needs FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
++    // and FABLE_RETAIL_CTHINGAICREATURE_SAVE (the members). No layout change.
++#ifndef FABLE_RETAIL_CTCWIFE_MARRY
++    void SetHomeBuilding(CThingBuilding* building) { HomeBuilding = CIntelligentPointer<CThingBuilding>(building); }
++    void SetWorkBuilding(CThingBuilding* building) { WorkBuilding = CIntelligentPointer<CThingBuilding>(building); }
++#endif
++    void SetFatherCreature(CThingAICreature* creature) { FatherCreature = CIntelligentPointer<CThingAICreature>(creature); }
++    void SetMotherCreature(CThingAICreature* creature) { MotherCreature = CIntelligentPointer<CThingAICreature>(creature); }
++    void SetSpouseCreature(CThingAICreature* creature) { SpouseCreature = CIntelligentPointer<CThingAICreature>(creature); }
++    CThingAICreature* GetFatherCreature() const { return FatherCreature.Get(); }
++    CThingAICreature* GetMotherCreature() const { return MotherCreature.Get(); }
++    CThingAICreature* GetSpouseCreature() const { return SpouseCreature.Get(); }
++#endif
+ #ifdef FABLE_RETAIL_CTHINGAICREATURE_SAVE
+     // Retail opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb / FableWin.pdb ?Save@CThingAICreature@@UAEXAAVCCharString@@@Z
+     // (public virtual; it calls ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z 0x00661A60 by name). The Ego_r.pdb members after
+--- a/rebuild/include/engine/CThingBuilding.h
++++ b/rebuild/include/engine/CThingBuilding.h
+@@ -44,6 +44,11 @@
+     // Both PDBs and native 0082d2d0, caller 0090bc1c.
+     CDefPointer<const CSimBuildingDef> PeekPSimDefinition() const;
+ #endif
++#ifdef FABLE_RETAIL_CTHINGBUILDING_RESIDENCY
++    // agent wfE10 (row 0x00502E90, chunk 879's SIMDEF text re-based): FableWin.pdb ?GetIsAvailableForResidency@CThingBuilding@@QBE_NXZ,
++    // the spelling bound to retail 0x0082E0E0 (rebuild/oracles/reloc_bindings.tsv; Ego_r spells it QAE). Declaration only.
++    bool GetIsAvailableForResidency() const;                             // 0x0082E0E0
++#endif
+     bool IsPointInside(const C3DVector&) const;
+ #ifdef FABLE_RETAIL_CTHINGBUILDING_DEFINITION
+     // Retail opt-in (agentNF9). Spellings: Ego_r.pdb / FableWin.pdb name sets, all `@CThingBuilding@@`; Ego_r donor order
+--- a/rebuild/include/engine/CThingCreatureDef.h
++++ b/rebuild/include/engine/CThingCreatureDef.h
+@@ -3,6 +3,9 @@
+ #include "engine/CThingBaseDef.h"
+ #ifdef FABLE_RETAIL_CTHINGCREATUREDEF_MEMBERS
+ #include <stddef.h>
++#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_SEX_TYPED
++enum ESex; enum ECreatureType;
++#endif
+ #include "engine/CEngineGraphic.h"
+ #endif
+ // Original TPI0x14ae8; complete native14c, original flags begin148.
+@@ -95,8 +98,15 @@
+     float MaxAcceleration;                                  // +0xB4 (PDB +184)
+     float HearingRadius;                                    // +0xB8 (PDB +188)
+     float FOV;                                              // +0xBC (PDB +192)
++#ifdef FABLE_RETAIL_CTHINGCREATUREDEF_SEX_TYPED
++    // agent wfE10 (row 0x00502E90 CWorldMap::PopulateRegionWithVillagers, which compares the shopkeeper def's Sex in place): the same two
++    // words with their Ego_r.pdb types (ESex / ECreatureType, MS forward enums). Same offsets and sizes.
++    ESex Sex;                                               // +0xC0 (PDB +196)
++    ECreatureType CreatureType;                             // +0xC4 (PDB +200)
++#else
+     unsigned char Sex[0x4];                                 // +0xC0 ESex (PDB +196)
+     unsigned char CreatureType[0x4];                        // +0xC4 ECreatureType (PDB +200)
++#endif
+     unsigned char NavigatorTypes[0xc];                      // +0xC8 vector<ENavigatorType> (PDB +204)
+     long InitialWeaponDef;                                  // +0xD4 (PDB +220)
+     long PrimaryMeleeWeaponDef;                             // +0xD8 (PDB +224)

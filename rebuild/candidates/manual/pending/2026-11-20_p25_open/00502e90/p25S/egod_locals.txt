@@ -1,0 +1,195 @@
+== CWorldMap::PopulateRegionWithVillagers (debug length 24594)
+  bprel -2988 type 0x2a01d this
+  bprel +8 type 0x9a89 village
+  bprel -16 type 0x3c783 pvillage_people_def
+  {
+    bprel -280 type 0x12 num_servant_places_left
+    bprel -276 type 0x12 num_apprentice_places_left
+    bprel -272 type 0x12 num_ghosts_left
+    bprel -268 type 0x55486 homes_to_villagers_map
+    bprel -248 type 0x25456 ptc_village
+    bprel -244 type 0x32982 children
+    bprel -224 type 0x12 num_guards_left
+    bprel -220 type 0x32982 men
+    bprel -200 type 0x12 num_teacher_places_left
+    bprel -196 type 0x12 num_women
+    bprel -192 type 0x12 num_boys
+    bprel -188 type 0x55695 empty_houses
+    bprel -168 type 0x12 num_warehouse_workers_places_left
+    bprel -164 type 0x12 num_barman_places_left
+    bprel -160 type 0x40 desired_female_weight
+    bprel -156 type 0x40 total_weight
+    bprel -152 type 0x1b927 hand_placed_villagers
+    bprel -136 type 0x12 num_games_master_places_left
+    bprel -132 type 0x12 num_men
+    bprel -128 type 0x12 num_shop_keepers_places_left
+    bprel -124 type 0x40 desired_child_weight
+    bprel -120 type 0x1b418 school_building
+    bprel -113 type 0x30 dont_populate_next_loaded_region
+    bprel -112 type 0x55486 work_places_to_villagers_map
+    bprel -92 type 0x55695 homes
+    bprel -72 type 0x12 num_home_places_left
+    bprel -68 type 0x12 num_market_trader_places_left
+    bprel -64 type 0x40 desired_male_weight
+    bprel -60 type 0x12 num_children
+    bprel -56 type 0x32982 women
+    bprel -36 type 0x12 num_barmaid_places_left
+    bprel -32 type 0x12 num_girls
+    bprel -28 type 0x556f9 rand_func
+    bprel -24 type 0x74 total_people
+    bprel -20 type 0x558cb pvillager_vector
+    {
+      bprel -304 type 0x1be22 end_it
+      bprel -292 type 0x1be22 it
+      {
+        bprel -312 type 0xc8a3 person
+        {
+          bprel -313 type 0x30 find_house
+          {
+            bprel -320 type 0x3cba9 sim_building_def
+    {
+      bprel -344 type 0x3cb14 building_end_it
+      bprel -332 type 0x3cb14 building_it
+      {
+        bprel -348 type 0x1b418 pbuilding
+        {
+          bprel -356 type 0x3bb1d ptc_buyable_house
+          bprel -352 type 0x3cba9 sim_building_def
+          {
+            bprel -360 type 0x12 empty_places
+          {
+            bprel -364 type 0x12 empty_places
+            {
+              bprel -368 type 0x3c705 ptc_thing_owner
+              {
+                bprel -392 type 0x267cb games_it
+                bprel -380 type 0x267cb games_end_it
+                {
+                  bprel -396 type 0x9a77 pthing
+            {
+              bprel -400 type 0x3c705 ptc_thing_owner
+              {
+                bprel -424 type 0x267cb games_it
+                bprel -412 type 0x267cb games_end_it
+                {
+                  bprel -428 type 0x9a77 pthing
+    {
+      bprel -468 type 0x25b85 init
+      bprel -432 type 0xa9bb new_person
+    {
+      bprel -520 type 0x12 female_def_index
+      bprel -516 type 0x4b016 shop_def
+      bprel -512 type 0x12 male_def_index
+      bprel -508 type 0x25b85 init
+      bprel -472 type 0xa9bb new_person
+      {
+        bprel -524 type 0x25b31 pdef
+    {
+      bprel -564 type 0x25b85 init
+      bprel -528 type 0xa9bb new_person
+    {
+      bprel -604 type 0x25b85 init
+      bprel -568 type 0xa9bb new_person
+    {
+      bprel -644 type 0x25b85 init
+      bprel -608 type 0xa9bb new_person
+    {
+      bprel -684 type 0x25b85 init
+      bprel -648 type 0xa9bb new_person
+    {
+      bprel -724 type 0x25b85 init
+      bprel -688 type 0xa9bb new_person
+    {
+      bprel -768 type 0x25b85 init
+      bprel -732 type 0xa9bb new_person
+      bprel -725 type 0x30 evil_apprentice
+    {
+      bprel -788 type 0x40 females_left
+      bprel -784 type 0x40 children_left
+      bprel -780 type 0xa9bb ret
+      bprel -776 type 0x40 males_left
+      bprel -772 type 0x12 num_warehouse_workers_left_last
+      {
+        bprel -824 type 0x25b85 init
+      {
+        bprel -860 type 0x25b85 init
+      {
+        bprel -896 type 0x25b85 init
+      {
+        bprel -932 type 0x25b85 init
+      {
+        bprel -968 type 0x25b85 init
+    {
+      bprel -980 type 0x41a8a it
+    {
+      bprel -1004 type 0x26b02 ptc_talk
+      bprel -1000 type 0x32982 men_shuffled
+      {
+        bprel -1016 type 0x41a8a it
+    {
+      bprel -1040 type 0x41a8a next_it
+      bprel -1028 type 0x41a8a it
+      {
+        bprel -1045 type 0x30 assigned_to_work_home
+        bprel -1044 type 0x1b418 pwork_building
+        {
+          bprel -1060 type 0x556c2 homes_it
+          {
+            bprel -1064 type 0x3cba9 sim_building_def
+    {
+      bprel -1076 type 0x556c2 i
+      {
+        bprel -1080 type 0x74 spaces
+    {
+      bprel -1084 type 0x74 n
+    {
+      bprel -1096 type 0x555d3 it
+      {
+        bprel -1112 type 0xa9bb plast_mum
+        bprel -1108 type 0xa9bb plooking_for_wife
+        bprel -1104 type 0xa9bb plast_dad
+        bprel -1100 type 0xa9bb plooking_for_husband
+        {
+          bprel -1136 type 0x49f12 it2
+          bprel -1124 type 0x49f12 end_it2
+          {
+            bprel -1140 type 0xa9bb president
+        {
+          bprel -1164 type 0x49f12 it2
+          bprel -1152 type 0x49f12 end_it2
+          {
+            bprel -1168 type 0xa9bb president
+    {
+      bprel -1208 type 0x25b85 init
+      bprel -1172 type 0xa9bb new_guard
+    {
+      bprel -1252 type 0xa9bb new_ghost
+      bprel -1248 type 0x12 ghost
+      bprel -1244 type 0x25b85 init
+    {
+      bprel -1276 type 0x556c2 end_it
+      bprel -1264 type 0x556c2 it
+      {
+        bprel -1284 type 0x3cba9 sim_building_def
+        bprel -1280 type 0x1b418 pbuilding
+        {
+          bprel -1288 type 0x12 num_people_in_house
+          {
+            bprel -1312 type 0x40 females_left
+            bprel -1308 type 0x40 children_left
+            bprel -1304 type 0x9a77 ret
+            bprel -1300 type 0x40 males_left
+            bprel -1296 type 0x3bdda ptc_owned_entity
+            bprel -1292 type 0x3d35a ptc_dummy_villager
+            {
+              bprel -1316 type 0x1b418 work_building
+            {
+              bprel -1320 type 0x1b418 work_building
+    {
+      bprel -1344 type 0x1be22 end_it
+      bprel -1332 type 0x1be22 it
+      {
+        bprel -1348 type 0xa9bb creature
+        {
+          bprel -1356 type 0x9a77 ret
+          bprel -1352 type 0x3d35a ptc_dummy_villager

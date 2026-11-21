@@ -1571,3 +1571,9 @@ against CODAApi.lib, or stay compiled C++?
   (natural base) compiles 47th of 47 with every callee compiled first, so all its sites take the score heuristic. 0x00E20600 Main
   has direct, non-back callee edges to every predicate function and no TU symbol has +0x37 & 0x400. Harness:
   pending/2026-11-20_c2_symbol_order/tools_c1harness.
+- 2026-11-21 (B, p25S, 0x00502E90): retail's TU layout is NOT c2 compile order. Retail world_map.cpp puts every source function first
+  (a merge of source-ordered runs by Ego_d line) and every inline/template COMDAT after; our 3077 c2 compiles callees first under PCH,
+  /Zi, /Z7, /Gy, /Gy-, /Ob1, /Gm, /EHsc /GR and a 3000-function TU. Forcing retail's layout as compile order (diagnostic hook
+  defer3.py) breaks three landed same-TU helpers, so "COMDAT after X" is no evidence X took the budget path. 0x00BD3070: with no row
+  asserts plus the landed FABLE_RETAIL_CARRAY_INDEX_ASSERT opt-in the re-based draft is equal length (11288v11288, 62 hunks of c2
+  numbering ties); the cross-jump gap in the assert-free variants flips with assert count alone.
