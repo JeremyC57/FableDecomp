@@ -1490,3 +1490,9 @@ against CODAApi.lib, or stay compiled C++?
   - The landed opt-ins FABLE_RETAIL_CARRAY_INDEX_ASSERT + FABLE_RETAIL_ASSERT_DEAD_ARM alone take the row from 3481v3491 to DIFFER(3491v3491). Evidence: Ego_d's CArray<T>::operator[] is a 719-B line, a debug bounds check.
   - Left: (2) the position compressed-size schedule, (3) the scaling |s-1| sum order, one pad at 0xA4FBE9.
   - Ruling: no fitted extra IL inside the shared-header arm.
+- 2026-11-21 (Account B p25N, 0x008E18D0, open) Under /Gr every callee compares SAME with no STL opt-in, and the TU-mates (0x008E16A0 / 0x008E20F0 / 0x008E24F0 / 0x008DDAD0) are flag-neutral.
+  - Two inline-site contradictions remain at /Gr T64:
+    - LowerBound in loop 2 and in the sky share instantiation, f 6.25 and score 63, but retail calls one and expands the other.
+    - ~CParticleUpdateParameters scores 23 in loop 1 (called in retail) and 20 in the sky (expanded), needing T in 20..23 where LowerBound needs 59..63.
+  - The frame is 0xA0 v retail 0xB0, exactly one pair<ulong,C3DVector>.
+  - Ego_d's dead locals lifetime_in_seconds / lifetime_of_main_beams (lines 3283 / 3285, the landed 0x008DD7E0 pair) are byte-neutral and kept.

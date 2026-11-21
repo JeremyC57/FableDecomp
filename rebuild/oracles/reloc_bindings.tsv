@@ -39369,3 +39369,7 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?LowerBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z	00a316b0	00a2ed10
 ?UpperBound@CDummyObjectMap@@QAEPAUSDummyObjectEntry@@ABK@Z	00a317e0	00a2ed10
 ?UpperBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z	00a31700	00a2ed10
+?CLOTHES_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b74	005b01fe
+?ITEMS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b78	005b01fe
+?RefreshSellDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005aeaee	005b01fe
+?WEAPONS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b70	005b01fe

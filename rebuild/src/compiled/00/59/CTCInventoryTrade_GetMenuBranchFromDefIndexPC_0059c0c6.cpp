@@ -1,5 +1,5 @@
-// CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, CMenuTree* menu, long* type) -- picks the trade menu branch for an item def by its inventory category and reports the tab type (1 weapons, 0 clothing, 2 other)
-// Leaf: GetMenuBranchFromDefIndexPC
+// CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, NUISystem::CComponent* menu, EItem_Menu_Type& type) -- picks the trade menu branch for an item def by its inventory category and reports the tab type (MENU_TYPE_WEAPONS 1, MENU_TYPE_CLOTHING 0, MENU_TYPE_ITEMS 2)
+// Leaf: ?GetMenuBranchFromDefIndexPC@CTCInventoryTrade@@AAEPAVCComponent@NUISystem@@JPAV23@AAW4EItem_Menu_Type@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059C0C6, 897 bytes, size-optimised TU (`leave`, `or esi,-1`, `and [ecx],0`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0,
 // CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0,
@@ -18,7 +18,13 @@
 //   (FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY: the static __fastcall def accessors) supply them. 0x005D96F0 is
 //   ?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z (Ego_r.pdb 0x0055A650 + FableWin.pdb 0x01E02250), its result
 //   compared with the EUIInventoryCategory enumerators (both PDBs: TROPHIES 0 .. OTHER 4).
+// Re-port (p25P, 2026-11-21): the local CMenuTree / CMenuBranch / CTCInventoryTrade models are gone. engine/CTCInventoryTrade.h declares
+//   the PDB signature ?GetMenuBranchFromDefIndexPC@CTCInventoryTrade@@AAEPAVCComponent@NUISystem@@JPAV23@AAW4EItem_Menu_Type@1@@Z
+//   (private; NUISystem::CComponent* menu, EItem_Menu_Type& type), the branch lookup is CComponent::FindChild (vtable slot 3, +0x0C,
+//   CCharString by value) and the tab type is stored as the PDB enumerators (FABLE_RETAIL_CTCINVENTORYTRADE_SELLITEM: MENU_TYPE_CLOTHING 0,
+//   MENU_TYPE_WEAPONS 1, MENU_TYPE_ITEMS 2). Body otherwise unchanged; the TU-mate row 0x005B01FE carries it verbatim as its same-TU copy.
 #define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CRESOURCELIST
@@ -27,22 +33,20 @@
 #define FABLE_RETAIL_CTCINVENTORYITEM
 #define FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
 #define FABLE_RETAIL_PASS22_INVENTORY_ITEMS_ORIGINAL_ENUM
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYTRADE
+#define FABLE_RETAIL_CTCINVENTORYTRADE_SELLITEM
+#define FABLE_RETAIL_STLP_MAP
 #include "fable_string.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CTCInventoryItem.h"
+#include "engine/CTCInventoryTrade.h"
+#include "engine/NUISystem_CComponent.h"
+using NUISystem::CComponent;
 
-struct CMenuBranch;
-struct CMenuTree {
-    virtual void V0();
-    virtual void V1();
-    virtual void V2();
-    virtual CMenuBranch* GetBranch(CCharString name);   // vtable +0x0C
-};
-class CTCInventoryTrade { public:
-    CMenuBranch* GetMenuBranchFromDefIndexPC(long defIndex, CMenuTree* menu, long* type);
-};
-
-CMenuBranch* CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, CMenuTree* menu, long* type)
+CComponent* CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, CComponent* menu, EItem_Menu_Type& type)
 {
     long melee, ranged, headwear, torso, gloves, legwear, footwear, suits;
     { CCharString name("INVENTORY_CATEGORY_FOOD", -1); CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name); }
@@ -58,50 +62,50 @@ CMenuBranch* CTCInventoryTrade::GetMenuBranchFromDefIndexPC(long defIndex, CMenu
     { CCharString name("INVENTORY_CATEGORY_TROPHIES", -1); CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name); }
     { CCharString name("INVENTORY_CATEGORY_POTIONS", -1); CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name); }
 
-    CMenuBranch* branch;
+    CComponent* branch;
     long category = CTCInventoryItem::GetInventoryCategory(defIndex);
     if (category == melee) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_MELEE_ENTRY", -1));
-        *type = 1;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_MELEE_ENTRY", -1));
+        type = MENU_TYPE_WEAPONS;
     } else if (category == ranged) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_RANGED_ENTRY", -1));
-        *type = 1;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_RANGED_ENTRY", -1));
+        type = MENU_TYPE_WEAPONS;
     } else if (category == headwear) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_HEAD_ENTRY", -1));
-        *type = 0;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_HEAD_ENTRY", -1));
+        type = MENU_TYPE_CLOTHING;
     } else if (category == torso) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_TORSO_ENTRY", -1));
-        *type = 0;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_TORSO_ENTRY", -1));
+        type = MENU_TYPE_CLOTHING;
     } else if (category == gloves) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_HANDS_ENTRY", -1));
-        *type = 0;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_HANDS_ENTRY", -1));
+        type = MENU_TYPE_CLOTHING;
     } else if (category == legwear) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_LEGS_ENTRY", -1));
-        *type = 0;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_LEGS_ENTRY", -1));
+        type = MENU_TYPE_CLOTHING;
     } else if (category == footwear) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_FEET_ENTRY", -1));
-        *type = 0;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_FEET_ENTRY", -1));
+        type = MENU_TYPE_CLOTHING;
     } else if (category == suits) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_SUITS_ENTRY", -1));
-        *type = 0;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_SUITS_ENTRY", -1));
+        type = MENU_TYPE_CLOTHING;
     } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_TROPHIES) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_TROPHIES_ENTRY", -1));
-        *type = 2;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_TROPHIES_ENTRY", -1));
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_POTIONS) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_POTIONS_ENTRY", -1));
-        *type = 2;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_POTIONS_ENTRY", -1));
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_GIFTS) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_GIFTS_ENTRY", -1));
-        *type = 2;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_GIFTS_ENTRY", -1));
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_PRODUCE) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_PRODUCE_ENTRY", -1));
-        *type = 2;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_PRODUCE_ENTRY", -1));
+        type = MENU_TYPE_ITEMS;
     } else if (CTCInventoryItem::GetUIInventoryCategory(defIndex) == UI_INVENTORY_CATEGORY_OTHER) {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_OTHERS_ENTRY", -1));
-        *type = 2;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_OTHERS_ENTRY", -1));
+        type = MENU_TYPE_ITEMS;
     } else {
-        branch = menu->GetBranch(CCharString("PC_TRADING_MENU_OTHERS_ENTRY", -1));
-        *type = 2;
+        branch = menu->FindChild(CCharString("PC_TRADING_MENU_OTHERS_ENTRY", -1));
+        type = MENU_TYPE_ITEMS;
     }
     return branch;
 }
