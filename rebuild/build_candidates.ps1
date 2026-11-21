@@ -401815,6 +401815,13 @@ $catalog = @(
         TestSource = '00/8d/NCreatureModeCModeDragonFlying_FrameUpdate_008dbc80_test.cpp'
         PassPattern = '008dbc80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00833c00'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_DrawPreparePrimitivesForRendering_00833c00.cpp'
+        TestSource = '00/83/CThingAICreature_DrawPreparePrimitivesForRendering_00833c00_test.cpp'
+        PassPattern = '00833c00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -46,10 +46,21 @@ public:
     float       Scale;               // +0x18
     CRGBColour  Colour;              // +0x1C
     CWideString Text;                // +0x20
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVETEXT_INLINE_CTOR
+    const CFontBank* PFont;          // +0x24 (Ego_r.pdb: const CFontBank*)
+#else
     CFontBank*  PFont;               // +0x24
+#endif
     bool        ScaleIn3D;           // +0x28
 };
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveText) == 0x2C);
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVETEXT_INLINE_CTOR
+// Retail opt-in (p25N, row 0x00833C00): the constructor is an inline header function in the original (Ego_d.pdb holds it once, under
+// tc_graphic_appearance.obj; FableWin.pdb emits its COMDAT in several objects; retail keeps one out-of-line copy, 0x004C3120, landed).
+// Plain inline and visible (the body of the STEALTH_DRAW branch above): c2 still calls it out of line, as retail does, but the visible
+// body changes how the callers copy the position (0x00833C00). Needs FABLE_RETAIL_CENGINEPRIMITIVE_ID_CTOR.
+inline CEnginePrimitiveText::CEnginePrimitiveText(unsigned __int64 id,const C3DVector&pos,float scale,const CWideString&text,const CFontBank&font,const CRGBColour&colour,bool scale_in_3d,EEngineInterpolationSet interpolation_set):CEnginePrimitive((EEnginePrimitiveType)5,id,interpolation_set),Pos(pos),Scale(scale),Colour(colour),Text(text),PFont(&font),ScaleIn3D(scale_in_3d){}
+#endif
 #endif
 
 #endif

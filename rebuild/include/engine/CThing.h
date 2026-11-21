@@ -730,6 +730,11 @@ protected:
     // Both original PDBs protected member; donor01ceeb10 forwards this exact static accessor.
     CThingManager& GetThingManager(){return *GetPCurrentThingManager();}
 #endif
+#if defined(FABLE_RETAIL_CTHING_GETTHINGMANAGER) && !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+    // Retail opt-in (p25N, row 0x00833C00): the same protected inline accessor as the ONHIT branch above (Ego_r.pdb / FableWin.pdb
+    // ?GetThingManager@CThing@@IAEAAVCThingManager@@XZ), alone.
+    CThingManager& GetThingManager(){return *GetPCurrentThingManager();}
+#endif
     CThingSearchTools& GetThingSearchTools();                    // 0x004C7A50
     const CThingSearchTools& PeekThingSearchTools() const;       // 0x004C7A60
     void CheckUID() const;                                       // 0x004C7BC0

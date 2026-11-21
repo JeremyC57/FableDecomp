@@ -318,7 +318,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0082afa0	CMiniMapDisplay	InitialiseRegionExitMarkers	1408	parked	DIFFER(16v1393)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0082afa0.cpp	original
 00832260	CThingAICreature	InitialActivate	1088	parked	DIFFER(1052v1076)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand327/differ/00832260.cpp	original
 008329b0	CThingAICreature	OnHit	1200	parked	DIFFER(1208v1187)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/008329b0.cpp	original
-00833c00	CThingAICreature	DrawPreparePrimitivesForRendering	2352	reserved (acctB p25H, 2026-11-20)	DIFFER(2296v2300)	17	rebuild/candidates/manual/pending/2026-11-20_p25_open/00833c00/00833c00.cpp	gapscan/boundary
 00837220	CThingTrackNode	UpdateFacingDirection	720	parked	codex pass24 PARKED: The third normalization setup and cross-product Z operand order differ at 0x008373EC and 0x00837419.	21	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00837220/00837220.cpp	original
 00837570	CThingTrackNode	Save	704	parked	codex pass24 PARKED: The entry cleanup-state store and last ScriptName temporary use different scheduling and stack placement.	16	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00837570/00837570.cpp	original
 00837b30	CThingTrackNode	DrawPreparePrimitivesForRendering	320	reserved (acctB p25N, 2026-11-20)	DIFFER(313v314)	5	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00837b30.cpp	gapscan/boundary

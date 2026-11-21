@@ -697,3 +697,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Name fix: inline CRightHandedSet::Set is Init (Ego_r / FableWin / Ego_d).
   - Re-port debt: CCamera_SetAngleXY_00a0c570.cpp:28 and CCamera_CCamera_00a0bf20.cpp:25 use the made-up Set; the 0x00AEEBA0 test stand-ins too.
   - The row no longer needs FableWin line tables; drop it from B's Windows request.
+2026-11-20 B->A: Landed p25 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering (batches/2026-11-20_landing_p25_00833c00). Headers: engine/CEnginePrimitiveLine.h engine/CThingManager.h engine/CEnginePrimitiveText.h engine/CThing.h .

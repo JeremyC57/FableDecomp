@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00833c00   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+
+WINS: 1
+  00833c00 RELOCATION_MATCH CThingAICreature::?DrawPreparePrimitivesForRendering@CThingAICreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingAICreature_DrawPreparePrimitivesForRendering_00833c00
