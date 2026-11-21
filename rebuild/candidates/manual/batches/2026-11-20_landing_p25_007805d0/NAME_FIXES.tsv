@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x007805D0	NFire::CFirePoint::SetAsSmoldering ?SetAsSmoldering@CFirePoint@NFire@@AAEXXZ	Ego_r.pdb 0x00594710 (tc_flammable.obj, after GetClosestFirePointTo); Ego_d.pdb NFire::CFirePoint::SetAsSmoldering locals pspecial_fx/fx_index/peffect/tcd_particle_emitter; landed caller AddFireDamage 0x00780800 already binds this symbol	UNMATCHED_ROWS.tsv _gapscan::sub_007805d0

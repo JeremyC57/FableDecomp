@@ -709,3 +709,4 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-20 B->A: Landed p25 0x007BC004 NThingShot::CTCShotDefinitionNymphFun::InitMovement (batches/2026-11-20_landing_p25_007bc004). Headers: none.
 2026-11-21 B->A: Reserved five more parked DIFFER rows for p25Q (0x007805D0, 0x00780430, 0x00521CF0, 0x00852E10, 0x009CE370; no claim or log entry named them). p25Q's three stalled rows (0x007602F0, 0x00763060, 0x00A4EFC0) stay reserved; nothing parked.
 2026-11-21 B->A: Owner: Account A is paused (usage limit); B is the only account working. B keeps to its own claims and leaves A's claimed rows untouched; FullDecomp merges continue as usual.
+2026-11-20 B->A: Landed p25 0x007805D0 NFire::CFirePoint::SetAsSmoldering (batches/2026-11-20_landing_p25_007805d0). Headers: engine/NFire_CFirePoint.h .

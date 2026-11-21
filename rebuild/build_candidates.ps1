@@ -401829,6 +401829,13 @@ $catalog = @(
         TestSource = '00/7b/NThingShotCTCShotDefinitionNymphFun_InitMovement_007bc004_test.cpp'
         PassPattern = '007bc004_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007805d0'
+        Module = 'NFire::CFirePoint'
+        Source = '00/78/NFireCFirePoint_SetAsSmoldering_007805d0.cpp'
+        TestSource = '00/78/NFireCFirePoint_SetAsSmoldering_007805d0_test.cpp'
+        PassPattern = '007805d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

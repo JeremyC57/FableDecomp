@@ -1,0 +1,8 @@
+addr       parity           behav  name
+007805d0   RELOCATION_MATCH PASS   SetAsSmoldering
+
+WINS: 1
+  007805d0 RELOCATION_MATCH NFire::CFirePoint::?SetAsSmoldering@CFirePoint@NFire@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NFireCFirePoint_SetAsSmoldering_007805d0

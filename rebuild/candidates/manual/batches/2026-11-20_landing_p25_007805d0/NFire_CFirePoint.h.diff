@@ -1,0 +1,26 @@
+diff --git a/rebuild/include/engine/NFire_CFirePoint.h b/rebuild/include/engine/NFire_CFirePoint.h
+index 8d9b93e8a..eb01cf6a2 100644
+--- a/rebuild/include/engine/NFire_CFirePoint.h
++++ b/rebuild/include/engine/NFire_CFirePoint.h
+@@ -15,6 +15,14 @@ public:
+     bool IsOnFire() const { return Resistance <= 0; }
+     bool IsBurning() const { return Burning; }
+     void SetAsBurning();                                                 // 0x00780540
++#ifdef FABLE_RETAIL_NFIRE_CFIREPOINT_SETASSMOLDERING
++    // Retail opt-in (p25Q, row 0x007805D0): Ego_r.pdb ?SetAsSmoldering@CFirePoint@NFire@@AAEXXZ (private; Ego_r 0x00594710, between
++    // GetClosestFirePointTo and AddFireDamage in tc_flammable.obj), out of line in retail at 0x007805D0 (the landed AddFireDamage
++    // 0x00780800 calls it). Declaration only: no layout change.
++private:
++    void SetAsSmoldering();                                              // 0x007805D0
++public:
++#endif
+     CCharString                 HelperName;                              // +0x00
+     long                        HelperIndex;                             // +0x04
+     long                        EffectIndex;                             // +0x08
+@@ -26,5 +34,5 @@ public:
+     CIntelligentPointer<CThing> PSingeEffect;                            // +0x24
+ };
+ }
+-FABLE_STATIC_ASSERT(sizeof(NFire::CFirePoint) == 0x2c);
++FABLE_STATIC_ASSERT_AT(29, sizeof(NFire::CFirePoint) == 0x2c);
+ #endif
