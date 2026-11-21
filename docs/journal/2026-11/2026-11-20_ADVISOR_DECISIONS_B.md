@@ -257,3 +257,8 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - the land order kept every copy verbatim.
 - **Follow-up:** check whether 0x008E18D0's "fastcall STL helpers" fact is the same /Gr TU default.
 - **Note (2026-11-21, p25N):** YI mangling is project-wide in both debug PDBs (Ego_r 3,753 YI against 27 YA), so it is not per-TU evidence for /Gr. The scoreboard ruling still stands on retail's ecx/edx out-of-line STLport instances, the same-TU landed /Gr row, and the Explode ablation.
+- **2026-11-21 follow-up (0x00A4EFC0).** p25P traced the residue to the colouring split: the paletted-finish piece is dropped in ours and kept in ebx in retail. Not ruled "no source handle" yet; one more bounded pass first:
+  1. FableWin v Ego_d length (revision);
+  2. settle whether Ego_d pins the position size==1 branch before the clear();
+  3. confirm the mechanism with one extra read, as a measurement only;
+  4. clear / erase / resize / size header opt-ins, measured by the candidate's refs.

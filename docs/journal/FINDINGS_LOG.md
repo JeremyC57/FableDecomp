@@ -1496,3 +1496,7 @@ against CODAApi.lib, or stay compiled C++?
     - ~CParticleUpdateParameters scores 23 in loop 1 (called in retail) and 20 in the sky (expanded), needing T in 20..23 where LowerBound needs 59..63.
   - The frame is 0xA0 v retail 0xB0, exactly one pair<ulong,C3DVector>.
   - Ego_d's dead locals lifetime_in_seconds / lifetime_of_main_beams (lines 3283 / 3285, the landed 0x008DD7E0 pair) are byte-neutral and kept.
+- 2026-11-21 (Account B p25P, 0x00A4EFC0, open) c2prio_x on the 3491v3491 base: the last residue is decided at the colouring split (event 1255), a single split of 15 candidates right after #115 (allowed esi only) is coloured.
+  - The paletted_position_track finish piece (#103, by p25P's resolution; c2prio_x reuses ids after a split, so the lineage is unconfirmed) is dropped (`drop refs 1 spill -18`) and reloaded as a short edx temp.
+  - Retail keeps it in ebx across the imul chain, which forces the compressed sum after the imul into eax.
+  - In-block statement order, locals and operand order do not move it.
