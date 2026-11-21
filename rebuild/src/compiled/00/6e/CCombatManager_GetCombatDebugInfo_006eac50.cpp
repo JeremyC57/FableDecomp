@@ -1,50 +1,82 @@
 // 006eac50 CCombatManager::GetCombatDebugInfo
 // Flags: /O2 /Oy /W3
-// Leaf: GetCombatDebugInfo
-// Layout: active CThingCreatureBase header plus genuine inherited CThing UniqueID+0x18; method-only extension adds no storage. CCombatManager Combatants+0x10 is retail map12, node payload+0x18. CCombatantInfo112 has AttackerInfo+4, CurrentSequence+0x24, CombatSequences+0x28. CCombatDebugInfo44: Zone0,Attacker4,AttackerNumber8,Defender12,MovingByAction13,CurrentSequenceName16,PlacementVectors20,AttackerPos32. Packed CBasicStringData17 has text0,length4,capacity8,growth12,refs13.
-#include "fable_compiler.h"
-#include <stdlib.h>
+// Leaf: ?GetCombatDebugInfo@CCombatManager@@QBE?AVCCombatDebugInfo@@ABVCThingCreatureBase@@@Z
+// CCombatManager::GetCombatDebugInfo(const CThingCreatureBase&) const -- a debug snapshot of a creature's melee state: whether it is an
+// attacker (then its defender zone, the current sequence name cut after 15 characters when longer, its attacker number) and whether it is
+// attacked; returned by value.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006EAC50. Callees: CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 / IsInMeleeAsAttacked 0x00662430,
+//   the combatant map's _M_find<unsigned __int64> 0x006F0250 (through the inline GetCombatantInfo), GetDefenderZone 0x006E99B0, the
+//   sequence's virtual GetName (slot 2), CCharString members, and the vector<C3DVector> copy constructor 0x006F0810 (twice). The
+//   CCombatDebugInfo copy constructor (out of line at 0x006F3000) and destructor (0x006F2FD0) are expanded here, not called (NF211 binds).
+// Name fix (NF210, 2026-11-20, q4389, family FP-COMBATMAP): self leaf ?GetCombatDebugInfo@CCombatManager@CombatDebug@@QBE?AUCCombatDebugInfo@2@..
+//   (namespaced stand-in) -> the Ego_r.pdb (0x00715140) + FableWin.pdb (0x0241C2D0) spelling above. The row is ported onto the shared headers:
+//   engine/CCombatManager.h (FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATDEBUGINFO, GETCOMBATANTINFO_INLINE), engine/CThingCreatureBase.h
+//   (FABLE_RETAIL_CTHINGCREATUREBASE_ISINMELEEASATTACKED), engine/CCombatantInfo.h, fable_string.h, engine/C3DVector.h and
+//   stlport/fable_map.h (MFIND_NOINLINE + CONSTFIND: the HEAD find had a same-TU noinline body). The macro-renamed include of
+//   engine/CThingCreatureBase.h and the namespaced CThing / CCharString / C3DVector / vector / CCountedPointer / CAttackingCombatantInfo /
+//   CCombatantInfo / CombatantMap / CCombatManager models are gone. Kept in place (no shared header): CCombatDebugInfo (HEAD layout; Ego_r.pdb
+//   members; the landed owner of its destructor, 0x006F2FD0, models the same global class) and CCombatSequenceBase (engine/_quarantine
+//   only; landed 0x006E97F0 models it globally), both moved out of the CombatDebug namespace (same class tokens as HEAD).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ISINMELEEASATTACKED
+#define FABLE_RETAIL_CCOMBATMANAGER
+#define FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATDEBUGINFO
+#define FABLE_RETAIL_CCOMBATMANAGER_GETCOMBATANTINFO_INLINE
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_CONSTFIND
+// NF211 (2026-11-21, q4389): the vector<C3DVector> copy constructor 0x006F0810 is declared only (FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY,
+//   stlport/fable_containers.h): the TU calls it out of line, and the implicit CCombatDebugInfo copy constructor's pick-any copy (retail
+//   0x006F3000) now reaches it as an external symbol, as the owner row does, not as a COMDAT defined in this object.
+//   Pick-any copies this object defines, each equal to its owner: ??0CCombatDebugInfo@@QAE@XZ = retail 0x006F2BD0 (landed stand-in
+//   SNamedZeroRecord; FableWin.pdb 0x0241C530), ??0CCombatDebugInfo@@QAE@ABV0@@Z = 0x006F3000 (stand-in CRecord_006f3000),
+//   ??1CCombatDebugInfo@@QAE@XZ = 0x006F2FD0.
+#define FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY
+#include "stlport/fable_map.h"
 #include <string.h>
-#define CThingCreatureBase CThingCreatureBaseLayout
-#include "engine/CThingCreatureBase.h"
-#undef CThingCreatureBase
-
-class CThingCreatureBase : public CThingCreatureBaseLayout
-{
-public:
-    bool IsInMeleeAsAttacked() const;   // 0x00662430
-    bool IsInMeleeAsAttacker() const;   // 0x00662410
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/ECombatZone.h"
+class CCombatSequenceBase { public:                // quarantined header: header-less for the local-model rule
+    virtual ~CCombatSequenceBase();
+    virtual void Delete();
+    virtual CCharString GetName() const;           // slot 2 (+8)
 };
-namespace CombatDebug{
-#pragma pack(push,1)
-struct CBasicStringData{char*PData;unsigned StringLength,DataLength;bool UseFastExtend;int RefCount;};
-#pragma pack(pop)
-} // (hoisted to global scope: naming wave 9)
-class CCharString{ public:CombatDebug::CBasicStringData*PData;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);const CCharString&operator=(const char*);FABLE_FORCEINLINE const char*c_str()const{return !PData?"":PData->PData;}};
-namespace CombatDebug {
-struct C3DVector{float X,Y,Z;};
-namespace std{template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;FABLE_FORCEINLINE vector():_M_start(0),_M_finish(0),_M_end_of_storage(0){}vector(const vector&);FABLE_FORCEINLINE ~vector(){if(_M_start)free(_M_start);}};}
-// Only the genuine inherited CThing base prefix is viewed; active creature fields are never shadowed.
-struct CThing{unsigned char BasePrefix[24];unsigned __int64 UniqueID;};
-struct CreatureMethods:CThingCreatureBase{};
-struct CCPPointerInfo;template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;FABLE_FORCEINLINE T*operator->()const{return Data;}};
-struct CCombatSequenceBase{virtual~CCombatSequenceBase();virtual void Delete();virtual CCharString GetName()const;};
-struct CAttackingCombatantInfo{CThingCreatureBase*Attacked;long AttackerNumber,CombatWheelRingIndex;bool PreferredAttackDollySet;long PreferredAttackDollyTimer;float PreferredAttackDollyVector[2];bool UsingCombatWheel;long CurrentSequence;std::vector<CCountedPointer<CCombatSequenceBase> >CombatSequences;};
-struct CCombatantInfo{CThingCreatureBase*Parent;CAttackingCombatantInfo AttackerInfo;unsigned char DefenderInfo[60];};
-struct CombatantMap{struct node{unsigned Colour;node*Parent,*Left,*Right;unsigned __int64 Key;CCombatantInfo Value;};node*Head;unsigned Count,Compare;node*find(const unsigned __int64&);};
-__declspec(noinline) CombatantMap::node*CombatantMap::find(const unsigned __int64&key){node*y=Head,*x=Head->Parent;while(x){if(!(x->Key<key)){y=x;x=x->Left;}else x=x->Right;}if(y==Head||key<y->Key)return Head;return y;}
-FABLE_FORCEINLINE CCombatantInfo&FindCombatant(CombatantMap&map,const CThingCreatureBase&creature){unsigned __int64 id=((const CThing&)creature).UniqueID;return map.find(id)->Value;}
-struct CCombatDebugInfo{long Zone;bool Attacker;long AttackerNumber;bool Defender,MovingByAction;CCharString CurrentSequenceName;std::vector<C3DVector>PlacementVectors,AttackerPos;FABLE_FORCEINLINE CCombatDebugInfo(){memset(this,0,sizeof(*this));}FABLE_FORCEINLINE CCombatDebugInfo(const CCombatDebugInfo&x):Zone(x.Zone),Attacker(x.Attacker),AttackerNumber(x.AttackerNumber),Defender(x.Defender),MovingByAction(x.MovingByAction),CurrentSequenceName(x.CurrentSequenceName),PlacementVectors(x.PlacementVectors),AttackerPos(x.AttackerPos){}};
-struct CCombatManager{unsigned Padding;unsigned char RegisteredCombatSequences[12];CombatantMap Combatants;long GetDefenderZone(const CThingCreatureBase&,const CThingCreatureBase&,long)const;CCombatDebugInfo GetCombatDebugInfo(const CThingCreatureBase&)const;};
-CCombatDebugInfo CCombatManager::GetCombatDebugInfo(const CThingCreatureBase&creature)const{
- CCombatDebugInfo info;
- info.Attacker=((const CreatureMethods&)creature).IsInMeleeAsAttacker();
- if(info.Attacker){CCombatantInfo&combatant=FindCombatant(const_cast<CombatantMap&>(Combatants),creature);
-  info.Zone=GetDefenderZone(*combatant.AttackerInfo.Attacked,creature,0);
-  info.CurrentSequenceName=combatant.AttackerInfo.CurrentSequence>=0?combatant.AttackerInfo.CombatSequences._M_start[combatant.AttackerInfo.CurrentSequence]->GetName():CCharString("");
-  if(info.CurrentSequenceName.PData&&int(info.CurrentSequenceName.PData->StringLength)>15){CCharString shortened;shortened=info.CurrentSequenceName.c_str()+15;info.CurrentSequenceName=shortened;}
-  info.AttackerNumber=combatant.AttackerInfo.AttackerNumber;
- }
- info.Defender=((const CreatureMethods&)creature).IsInMeleeAsAttacked();return info;
-}
+class CCombatDebugInfo { public:                   // no shared header; the HEAD layout
+    long Zone;                                     // +0x00
+    bool Attacker;                                 // +0x04
+    long AttackerNumber;                           // +0x08
+    bool Defender;                                 // +0x0c
+    bool MovingByAction;                           // +0x0d
+    CCharString CurrentSequenceName;               // +0x10
+    std::vector<C3DVector> PlacementVectors;       // +0x14
+    std::vector<C3DVector> AttackerPos;            // +0x20
+    CCombatDebugInfo() { memset(this, 0, sizeof(*this)); }
+};
+#include "engine/CThingCreatureBase.h"
+#include "engine/CCombatManager.h"
+
+CCombatDebugInfo CCombatManager::GetCombatDebugInfo(const CThingCreatureBase& creature) const
+{
+    CCombatDebugInfo info;
+    info.Attacker = creature.IsInMeleeAsAttacker();
+    if (info.Attacker) {
+        const CCombatantInfo& combatant = GetCombatantInfo(creature);
+        info.Zone = GetDefenderZone(*combatant.AttackerInfo.Attacked, creature, 0);
+        info.CurrentSequenceName = combatant.AttackerInfo.CurrentSequence >= 0
+            ? combatant.AttackerInfo.CombatSequences[combatant.AttackerInfo.CurrentSequence]->GetName() : CCharString("");
+        if (info.CurrentSequenceName.GetLength() > 15) {
+            CCharString shortened;
+            shortened = info.CurrentSequenceName.GetAsCharArray() + 15;
+            info.CurrentSequenceName = shortened;
+        }
+        info.AttackerNumber = combatant.AttackerInfo.AttackerNumber;
+    }
+    info.Defender = creature.IsInMeleeAsAttacked();
+    return info;
 }

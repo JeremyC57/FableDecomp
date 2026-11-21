@@ -5,9 +5,12 @@
 // NF200 (2026-11-20): the Wrapper::Check stand-in is gone; the row calls the shared IS_THING_ALIVE<CThing*> (engine/ThingAlive.h, its
 // pick-any COMDAT is in the row object), which reads CThing::Dead, so the thing store is a real CThing-sized buffer and the test flips
 // the Dead bit (+0x91 bit 0, engine/CThing.h) instead of a Wrapper double.
+// NF209 (2026-11-20, q11772): the D::Do stand-in is gone; the row calls std::bitset<274>::test (declared only under
+// FABLE_RETAIL_STLP_BITSET_TEST_DECL), so the test defines that member as the recording double.
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 #include "engine/CPlayerManager.h"
@@ -17,10 +20,6 @@
 #include "engine/CThing.h"
 
 #include <cstdio>
-
-struct D {
-    void Do(int arg);
-};
 
 struct GlobalGui {
     void Notify();
@@ -51,7 +50,7 @@ CThing* CPlayer::GetPPlayerCharacterThing() const
     g_player_seen = this;
     return reinterpret_cast<CThing*>(g_thingStore);
 }
-void D::Do(int a)        { g_do_called++; g_do_arg = a; g_do_this = this; }
+namespace std { template<> bool bitset<274>::test(size_t n) const { g_do_called++; g_do_arg = (int)n; g_do_this = this; return false; } }
 void GlobalGui::Notify() { g_notify++; }
 
 void __fastcall SavedConfirmed();

@@ -715,6 +715,13 @@ public:
     // VC7.1 knows the copy never captures the new vector and keeps its start/finish in CPU locations across the caller's loop
     // (0x008A838C `mov ebp,[esp+18h] ; mov edi,[esp+14h]`, never reloaded).
     vector(const vector& x);
+#elif defined(FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY)
+    // Per-TU opt-in (NF211, 2026-11-21, row 0x006EAC50 CCombatManager::GetCombatDebugInfo): the copy constructor declared only.
+    // That TU calls vector<C3DVector>'s copy constructor 0x006F0810 out of line (0x006EADCA / 0x006EADD7, from the expanded implicit
+    // CCombatDebugInfo copy constructor, whose out-of-line retail copy is 0x006F3000); with the inline body visible VC7.1 emits a pick-any COMDAT
+    // copy of it inside the row's object, which the copy-constructor copy then reaches as a symbol defined in that object (a
+    // different target under the nf205 amendment). Declaration only (the FABLE_RETAIL_STLP_TREE_MERASE_DECL_ONLY pattern); same function.
+    vector(const vector& x);
 #else
 #if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_STLP_PASS22_FLARE_ABI)
     FABLE_FORCEINLINE vector(const vector& x) : _Vector_base<_Tp,_Alloc>(x.size(),x.get_allocator()) {

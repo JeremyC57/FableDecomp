@@ -28160,9 +28160,6 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 ?IsCourtingHero@CTCWife@@QBE_NXZ	006cf890	006cfe80
 ?SetEmoteIcon@CTCEmoteIcon@@QAEXW4EEmotePriority@1@JMME@Z	0071aab0	006d4fd0
 ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	006ea2c0	006ea430
-??0?$vector@UC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z	006f0810	006eac50
-?GetDefenderZone@CCombatManager@CombatDebug@@QBEJABVCThingCreatureBase@@0J@Z	006e99b0	006eac50
-?find@CombatantMap@CombatDebug@@QAEPAUnode@12@AB_K@Z	006f0250	006eac50
 ?SetActiveTimer@CTCEmoteIcon@@QAEXM@Z	0071aa50	0071aab0
 ?GetMorphStrength@CTCHeroMorph@@QBEMW4EHeroMorphType@@@Z	0071ba60	0071c9f0
 ?KillIdleParticles@CTCHeroMorph@@QAEXXZ	0071c1f0	0071c9f0
@@ -39264,9 +39261,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?GetAnimGroupName@@YIABVCCharString@@J@Z	004cd9c0	008d9220
 ?GetAttitude@CTCTalk@@QBEJXZ	006e3180	008d9220
 ?ApplyColourFilter@CEngineScreenEffectColourFilter@@AAEXXZ	00b5a3f0	00b5af60
-?Do@D@@QAEXH@Z	00410de0	0047db73
-?Notify@GlobalGui@@QAEXXZ	00438310	0047db73
-?g_pGlobalGui@@3PAUGlobalGui@@A	013b8790	0047db73
 ?AttachParticles@CTCLight@@QAEXXZ	00641260	006412b0
 ?RemovePrimitive@CTCGraphicAppearance@@QAEXPAVCPrimitive@NGraphicAppearance@@@Z	004bf920	006412b0
 ??0CCreatureAction_FinishFireballSpell@@QAE@AAVCThingCreatureBase@@@Z	008bce10	007c9180
@@ -39359,12 +39353,14 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z	008e9710	008e9850
 ?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@QAEXXZ	008e9190	008e9850
 ?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z	006e97f0	006ea050
+?GetCombatSequences@CCombatManager@@QAEXPAVCThingCreatureBase@@0PAUCSequenceVector@@@Z	006ec4f0	006eda80
+?SetAsInDanger@CTCStealth@@QAEXPAVCThingCreatureBase@@W4EDangerStatus@@@Z	00747b80	006eda80
+?Notify@GlobalGui@@QAEXXZ	00438310	0047db73
+?g_pGlobalGui@@3PAUGlobalGui@@A	013b8790	0047db73
 ?DeregisterAttackedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	006ed8c0	006ed510
-?IsCombatant@CThingCreatureBase@@QAE_NXZ	00662430	006ed510
+?IsCombatant@CThingCreatureBase@@QAE_NXZ	00662430	006ed9e0
 ?ResetAiming@CTCWeapon@@QAEXXZ	005da4e0	006ed510
 ?UpdateAttackingCombatantsList@CCombatManager@@QAEXAAUCCombatantInfo@@_N@Z	006ed030	006ed510
 ?_Destroy_range@@YIXPAUCSequencePointer@@0ABUCRetailAllocator@@@Z	006f2300	006ed510
 ?__copy@@YIPAUCSequencePointer@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	006f1410	006ed510
 ?erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@QAEIAB_K@Z	006f3200	006ed510
-?GetCombatSequences@CCombatManager@@QAEXPAVCThingCreatureBase@@0PAUCSequenceVector@@@Z	006ec4f0	006eda80
-?SetAsInDanger@CTCStealth@@QAEXPAVCThingCreatureBase@@W4EDangerStatus@@@Z	00747b80	006eda80
