@@ -39370,3 +39370,7 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?Explode@?A0x051e04a6@@YIHAAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z	00560920	00560bb0
 ?GetDocument@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@PAD@Z	0083eaa0	00560bb0
 ?GetDocumentSize@LHHttp2@LHNetworkLib@@QAEKXZ	0083ea70	00560bb0
+?CLOTHES_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b74	005b01fe
+?ITEMS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b78	005b01fe
+?RefreshSellDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005aeaee	005b01fe
+?WEAPONS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b70	005b01fe

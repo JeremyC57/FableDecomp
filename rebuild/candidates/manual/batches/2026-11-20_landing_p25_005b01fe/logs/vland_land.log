@@ -1,0 +1,11 @@
+addr       parity           behav  name
+005b01fe   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005b01fe   WARN RELOC_NAME: ?BuyItem@CTCShop@@QAEXJ@Z -> 00774d20 labelled '_global::CTCShop_SellHighlightedItem'
+005b01fe   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+005b01fe   RELOCATION_MATCH PASS   SellItemPC
+
+WINS: 1
+  005b01fe RELOCATION_MATCH CTCInventoryTrade::?SellItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryTrade_SellItemPC_005b01fe

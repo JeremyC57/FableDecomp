@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00774d20	?BuyItem@CTCShop@@QAEXJ@Z	Ego_r.pdb + FableWin.pdb BuyItem (engine/CTCShop.h FABLE_RETAIL_CTCSHOP_BUYITEM, "native00774d20"); retail 0x005B01FE calls it once per item sold (the shop buys from the hero). ?SellItem@CTCShop@@QAEXJ@Z is 0x00774730 (labels_landing_2026-11-11db, landed 0x005A3581)	ghidra_out/labels_forge_autoname2.tsv label CTCShop_SellHighlightedItem (vland RELOC_NAME); the p25J/p25O drafts of this row spelled the call ptc_shop->SellItem (RELOC_CONFLICT with 005a3581)
