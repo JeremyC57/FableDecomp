@@ -38,7 +38,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original
 00509a20	CWorldMap	GetMapNavigationAreaUpdateInfo	3120	parked	DIFFER(3188v3120)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00509a20.cpp	original
 0051eda0	CEntityRuntimePersistence	SaveToGameStateScript	544	parked	DIFFER(485v501)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0051eda0.cpp	original
-00521cf0	_global	CThingManager_LoadMorphFromScript	448	parked	DIFFER(448v446)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00521cf0.cpp	original
+00521cf0	_global	CThingManager_LoadMorphFromScript	448	reserved (acctB p25Q, 2026-11-21)	DIFFER(448v446)	1	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00521cf0.cpp	original
 005239cd	_global	CThingDeadCreature_SavePersistentState	371	parked	not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)	0	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/extent_wrong/005239cd/	original
 00524290	_global	CThingManager_SaveGameState	1568	parked	DIFFER(1500v1553)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00524290.cpp	original
 00524ec0	NThingManager::CEntityRuntimePersistence	LoadFromGameStateBinary	1008	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/00524ec0.cpp	original
@@ -219,8 +219,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0077a890	CTCDExperienceOrb	Create	720	parked	DIFFER(724v707)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand684/differ/0077a890.cpp	original
 0077ba40	NGraphicAppearance::CTCGraphicAppearanceStaticMesh	NGraphicAppearance::CTCGraphicAppearanceStaticMesh::vfunc_0	576	parked	DIFFER(559v563)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/0077ba40.cpp	gapscan/boundary
 0077dc40	_global	CTCCampfire_BuildPlayerRegion	688	parked	DIFFER(591v626)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/0077dc40.cpp	original
-00780430	_gapscan	sub_00780430	272	parked	DIFFER(273v271)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand510/differ/00780430.cpp	gapscan/boundary
-007805d0	_gapscan	sub_007805d0	304	parked	DIFFER(300v299)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/007805d0.cpp	gapscan/boundary
+00780430	_gapscan	sub_00780430	272	reserved (acctB p25Q, 2026-11-21)	DIFFER(273v271)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand510/differ/00780430.cpp	gapscan/boundary
+007805d0	_gapscan	sub_007805d0	304	reserved (acctB p25Q, 2026-11-21)	DIFFER(300v299)	1	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/differ/007805d0.cpp	gapscan/boundary
 007808b0	CTCFlammable	InitFirePoints	976	parked	DIFFER(1027v923)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand686/differ/007808b0.cpp	original
 007820e0	CTCBoastingPosition	FrameUpdate	688	parked	DIFFER(688v680)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/007820e0.cpp	original
 00785160	_global	CTCPhysicsBase_Update_CustomerInteraction	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00785160.cpp	original
@@ -335,7 +335,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0084e420	NCameraModes::CBase	CBase	368	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0084e420.cpp	original
 0084e810	NCameraModes::CBase	AddSubComponent	240	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/hdr/0084e810.cpp	original
 00850a80	CContextSensitiveItemDef	IsValidOverride	2576	parked	DIFFER(2652v2576)	13	rebuild/candidates/manual/pending/2026-11-07_linux_hand826/differ/00850a80.test.cpp	original
-00852e10	CScriptModuleFOVZoomStayRelative	CScriptModuleFOVZoomStayRelative	448	parked	DIFFER(447v445)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00852e10.cpp	original
+00852e10	CScriptModuleFOVZoomStayRelative	CScriptModuleFOVZoomStayRelative	448	reserved (acctB p25Q, 2026-11-21)	DIFFER(447v445)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ13/differ/00852e10.cpp	original
 00853d30	CScriptModuleOpenGate	OnInitLeaf	640	parked	DIFFER(627v625)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ12/differ/00853d30.cpp	original
 00854180	NCameraModes::CScriptModuleSpline	NCameraModes::CScriptModuleSpline::vfunc_1	400	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/00854180.cpp	gapscan/boundary
 00856310	_global	ProcessWeaponTrailPointsToIncludeCylinderCloseToCreatureAxis	608	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand480/differ/00856310.cpp	original
@@ -537,7 +537,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009c5170	_global	CPatchTesselationEdgeStrip_DestructorHelper	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009c5170.cpp	original
 009c8c00	NGameText::CDataBank	NGameText::CDataBank::vfunc_12	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand646/differ/009c8c00.cpp	gapscan/boundary
 009c8de0	CTextEntry	ReadFromDataStream	464	parked	DIFFER(459v452)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009c8de0.cpp	original
-009ce370	CBankFile	WriteFileInformation	624	parked	DIFFER(622v620)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/009ce370.cpp	original
+009ce370	CBankFile	WriteFileInformation	624	reserved (acctB p25Q, 2026-11-21)	DIFFER(622v620)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/009ce370.cpp	original
 009cec60	CBankFile	Update	1856	parked	DIFFER(1840v1850)	2	rebuild/candidates/manual/pending/2026-10-27_linux_hand690/differ/009cec60.test.cpp	original
 009cfbc0	CBankFile	ReadEntryList	1984	parked	DIFFER(1973v1969)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009cfbc0.cpp	original
 009d0880	CBankFile	ReadFileInformation	1648	parked	DIFFER(1570v1635)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009d0880.cpp	original
