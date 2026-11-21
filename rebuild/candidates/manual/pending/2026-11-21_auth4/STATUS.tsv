@@ -1,0 +1,2 @@
+address	state	best_grade	grades_used	best_source	note
+0x00A4EFC0	escalated	DIFFER(3491v3491) residue16 (forced tree key: RELOCATION_MATCH)	3	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth4/00a4efc0/a2.cpp	mechanism proven (compare operand order by tree-key hash16); early return for context; ESCALATE.md
