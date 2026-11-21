@@ -1559,3 +1559,10 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-21 (B, p25Q, 0x00F1EED0): c2's caller-size inline penalty is function-global, not top-down: moving 15 dead asserts from a
   function's top to its end gives identical bytes. Dead asserts did not move PlayWave's per-site ~CTimer split on the natural text;
   retail's colder sites (one conditional level deeper) come from the frequency model. /d2inlS above 8 only worsens it.
+- 2026-11-21 (B, p25R, c1xx harness W/tools/c1 in p25R scratch): VC7.1's "budget path" inline behaviour is c2 COMPILE ORDER, not a c1
+  attribute. c1 sets function-flag bit 0x1000 (inline-info record) for every function under /Og (global copy of the -Og option byte),
+  so no source attribute clears it. c2 sets sym+0x69 bit 2 itself when a function's compile starts (0x107AFF88); a caller compiled
+  before its callee sees the callee uncompiled and takes the budget path. c2 orders by a callees-first topological sort
+  (0x1070CFDF), dropping only DFS back edges (cycles); "needed" (0x20) propagates over callee edges whose callee+0x37 lacks 0x400;
+  functions reached only through vtables (??_G) are compiled later. Retail compiled 0x00E20600 Main before ~CIsThingAlive and
+  CPredicate_And<CITA,CITA> (their COMDATs sit after Main). TU composition can therefore decide per-row inline splits.

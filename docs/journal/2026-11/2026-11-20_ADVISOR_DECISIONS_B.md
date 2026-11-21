@@ -341,3 +341,6 @@ callee Ego_d's block calls that retail's function never calls, or the reverse; (
 CIntelligentPointer, retail's loop lacking the intelligent-pointer ctor/dtor calls (if present, grade Ego_d's actual types). A block
 that passes stops binding to Ego_d; fitted text there may land as `// Inferred:` citing the test, under the 0x00B24850 checks. Every
 other block stays bound. The twins' draft (function-scope shared `creature`, x/y locals) cannot land until its blocks pass.
+Clarification 2026-11-21 (revision test without Ego_d code): Ego_d has line tables and procs but no code, so test (a) is run by
+size: a block passes only if an Ego_d line decodes (calibrated size) as a call to a named function that Ego_d lists as a proc and
+retail's function never calls (or the reverse). Size arguments that only show "more code" do not pass; untestable blocks stay bound.
