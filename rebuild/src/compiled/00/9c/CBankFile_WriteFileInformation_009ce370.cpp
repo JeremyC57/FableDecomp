@@ -4,8 +4,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CE370, 620 bytes, thiscall, `ret 4`; /GS (cookie 0x0139C8A8, check 0x00BFE9F9; char header[5]
 //   from "BBBB" 0x0129B5A4). lib_bank_file.obj.
 // Identity: Ego_r.pdb / FableWin.pdb (0x02F9ACC0) / Ego_d.pdb ?WriteFileInformation@CBankFile@@AAEX_N@Z (private). Ego_d.pdb (debug length
-//   887): parameter is_valid; locals info_offset, data_version, max_index, rand_val, entry_count (frame -16..-32: declared in that order,
-//   before os -48 and header -56), os (CFileDataOutputStream), header, and c_entry in the loop.
+//   887): parameter is_valid; locals info_offset, data_version, max_index, rand_val, entry_count (frame -16..-32,
+//   above os -48 and header -56), os (CFileDataOutputStream), header, and c_entry in the loop.
 // Callees: CFileDataOutputStream ctor 0x00994400 / SetPosition 0x00994450 / Write 0x00994480 / GetPosition 0x00994460 / dtor 0x00994430,
 //   CDataOutputStream::WriteULONG 0x00993EA0, CPackedUIntArray::operator[] 0x00A629F0, GetRandomValidationValue 0x009CC0B0, the virtual
 //   GetDataFormatVersion (slot 8, pure in CBankFile), WritePadding 0x009CCB20, WriteRecoveryFile 0x009CDF50, InternalWriteEntryList
@@ -24,6 +24,10 @@
 //   asserts, e.g. GetEntryDataOffset line 329, 274 B); they are left out.
 // Inferred: the order of the two zero stores (max_index first, as retail stores [esp+18h] before [esp+14h] at 0x009CE410) and the
 //   comparison spelling `max_index < c_entry` (retail `cmp [esp+18h],edi ; jae`, 0x009CE499); /Od sizes are the same either way.
+// Inferred: info_offset, data_version, max_index, rand_val and entry_count are declared together at the top (uninitialised) and
+//   assigned on Ego_d's lines 1679/1680/1681/1693/1695; declared at first assignment, VC7.1 seeds the loop's offset temporary from
+//   c_entry in a 0x28 frame (622v620), while retail gives it its own slot [esp+28h] in a 0x2C frame. Ego_d's frame order is consistent
+//   with this but does not prove it (Ego_d 0x00521CF0 places reference locals out of declaration order).
 // Header: FABLE_RETAIL_CBANKFILE_WRITEFILEINFORMATION (new, add-only) in engine/CBankFile.h: the Ego_r member types of BankFile /
 //   Filename, inline MakeWritable / IsEntryInitialised / Align, and the private writer declarations.
 #define FABLE_RETAIL_CCHARSTRING

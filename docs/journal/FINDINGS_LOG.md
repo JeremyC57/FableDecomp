@@ -1547,3 +1547,6 @@ against CODAApi.lib, or stay compiled C++?
   0.0f literal and +3 B per float variable argument over VC7.1 (0x0075C420 l.206 `offset(0.0f,0.0f,0.0f)` 14 v 26); `+= 1.0f` is
   equal (0x00B187D0 l.74, 18 B). A "missing" Ego_d local can be an offset vector (`to_centre(0,0,radius)`, `from = pos + to_centre`)
   rather than a point: check the local's role before ruling it contradicted.
+- 2026-11-21 (B, p25Q): Ego_d (VC10 /Od) frame offsets do NOT give declaration order: Ego_d 0x00521CF0 puts the reference locals
+  script / hero (-28 / -32) between level / uid_replacer and later-declared locals. A declaration block fitted to Ego_d's frame
+  order is `// Inferred:` (0x009CE370 relabelled), not decoded. In VC7.1 a top-of-function declaration block does move frame slots.
