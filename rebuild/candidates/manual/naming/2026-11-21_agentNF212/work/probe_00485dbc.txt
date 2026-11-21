@@ -1,0 +1,11 @@
+00486024 *, ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z 
+00541390 RELOCATION_MATCH ?InsertOverflow@ScrollingArray@NUISystem@@QAEXPAPAVCComponent@2@ABQAV32@ABUFalseType@2@K_N@Z 
+005414a0 'vfunc_147' ?Grow@ChildVector@NUISystem@@QAEXPAPAVCComponent@2@ABQAV32@ABUEmptyTag@2@I_N@Z 
+005418c0 RELOCATION_MATCH ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z 
+0055fec0 RELOCATION_MATCH ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z 
+00563130 RELOCATION_MATCH ?_M_insert_overflow@?$vector@PAUCComponent@@@std@@QAEXPAPAUCComponent@@ABQAU3@ABU__true_type@2@I_N@Z 
+0056ad40 RELOCATION_MATCH ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z 
+005e5f30 RELOCATION_MATCH ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z 
+006116e0 RELOCATION_MATCH ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAPAVCComponent@NUISystem@@ABQAV23@ABU__true_type@@K_N@Z 
+00622a00 RELOCATION_MATCH ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z 
+007e4b60 RELOCATION_MATCH ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAPAVCComponent@NUISystem@@ABQAV23@ABU__true_type@@K_N@Z 

@@ -11,11 +11,17 @@
 // four-way unrolled body + remainder switch over the inlined CCharString operator==, value and tag by const reference)
 // as retail compiled it in the caller's TU; with the body visible VC7.1 schedules `lea esi,[edi+4Ch]` between the tag
 // and key pushes as retail. Compare 0x00411570 is the landed body.
-// Leaf: OnQuestStartScreenDisplayed
+// Name fix (NF212, 2026-11-21, q6332 / q6341): the header-less CStringVector / __false_type stand-ins move onto the shared STLport
+//   vector (stlport/fable_containers.h, overflow declaration-only as at HEAD), so push_back's growth call binds the protected IAE
+//   vector<CCharString>::_M_insert_overflow of the owner row 0x00433530. The CCharString / CQuestManager local models are HEAD
+//   debt, unchanged (engine/CQuestManager.h port queued: its __find 0x004B8E40 / Compare 0x00411570 same-TU bodies and the
+//   inlined operator== shape need the header CCharString first). Leaf line completed to the mangled self symbol (same symbol).
+// Leaf: ?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z
 #include <stddef.h>
 #include <new>
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#include "stlport/fable_containers.h"
 
-struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
 class CCharStringData { public:                            // the shared string block
@@ -87,23 +93,6 @@ __declspec(noinline) CCharString* __fastcall FindString(CCharString* first, CCha
 }
 #pragma auto_inline(on)
 
-struct CStringVector {                              // STLport vector<CCharString>
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharString* begin() { return _M_start; }
-    CCharString* end() { return _M_finish; }
-    void _M_insert_overflow(CCharString* pos, const CCharString& x, const __false_type&, size_t n, bool atend);   // 0x00433530
-    void push_back(const CCharString& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CCharString(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
-
 inline CCharString* find(CCharString* first, CCharString* last, const CCharString& value)
 {
     return FindString(first, last, value, random_access_iterator_tag());
@@ -111,7 +100,7 @@ inline CCharString* find(CCharString* first, CCharString* last, const CCharStrin
 
 class CQuestManager { public:
     unsigned char _pad00[0x4c];
-    CStringVector BetweenStartAndEndScreenQuests;               // +0x4c
+    std::vector<CCharString> BetweenStartAndEndScreenQuests;    // +0x4c
     unsigned char _pad58[0x40];
     long          NumberOfQuestsBetweenStartAndFinishScreens;   // +0x98
     bool OnQuestStartScreenDisplayed(const CCharString& questName);

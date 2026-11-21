@@ -456,6 +456,12 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   retail address (both symbols external, both bound at that address in reloc_bindings.tsv) is not a different target, so the copy
   matches and the stand-in is queued for respelling (0x008E9850's GetCRC copy: ?NullChar@CCharString@@1DB against 0x00404310's
   ?g_EmptyString@@3QBDB, both 0x0129AAF4). A symbol defined inside the row's own object (a string literal COMDAT) is always a different target.
+  (nf212 refinement, advisor decision, owner delegated) The exception is a pick-any COMDAT defined in the object under the exact
+  spelling the owner's own copy names: the linker keeps one body for that name, so the call resolves to the same function. All three
+  must hold: (1) the owner's copy names the same symbol (objdump -dr on the owner object); (2) the in-object symbol is a pick-any COMDAT
+  (no LNK2005 on it in the landing link); (3) it is itself equal to its own owner (pickany_check OK). 0x00A2ED10 / 0x004B4A10:
+  push_back reaches the in-object IAE `_M_insert_overflow`, which equals 0x00433530 (316 = 316), and owner 0x0044BFF0's push_back names
+  the same symbol. A different spelling (the 0x006EAC50 hold at nf210) or a strong definition is still a different target.
 - (nf203) A function copy that the HEAD object already defined, and that already differed from its owner, may change body in a port and
   stays debt (the function-copy counterpart of the nf176 data-COMDAT rule). A row is held only for a newly defined copy, or for a copy
   that matched at HEAD and stops matching (0x00993B20's ??_GCDataStream / ??_GCDataInputStream: 34 v 36 at HEAD, 28 v 36 after).

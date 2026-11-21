@@ -24,12 +24,13 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf211)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf211),
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf212)
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf212),
   B's rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, opt-ins, advisor calls, checks.
-- **Owner order (2026-11-20):** run ONE naming agent at a time. NF209 / NF210 / NF211 landed (nf209-nf211). Next slice: FP-VECTORINSERT
-  (q6332 / q6341 / q6333 / q6342). FP-COMBATMAP is done but for 0x006E93C0 / 0x006EA770 (out of slices, FINDINGS_LOG); q11760 / q11873
-  wait on the CBasicString operator== header decision (q12262 / q12265).
+- **Owner order (2026-11-20):** run ONE naming agent at a time. NF209-NF212 landed (nf209-nf212). Next slice: the five 0x00485DBC
+  stand-in binders (q6333 / q6342: 0x00541390 0x005414A0 0x00563130 0x006116E0 0x007E4B60, census in naming/2026-11-21_agentNF212/work/),
+  then the UnpackNames family (0x00A2ED10 / 0x00A2F0F0 / 0x00A2F150 / 0x00A2F120). Out of slices: 0x006E93C0 / 0x006EA770 (FINDINGS_LOG).
+  Owed to one advisor call: the q12300 cast (0x0096FA90) and the CBasicString operator== header control (q11760 / q11873 / q12262 / q12265).
 - **The fresh naming queue is spent** (2 never-claimed entries). Advisor decision (owner delegated, nf204): entries returned twice with
   only ports left are noted `blocked (family pass ...)`, not returned; future agents are family passes sliced by shared rows (unit = row,
   census named in the brief, every family row locked up front). Candidates: q4394 + q12191 (0x009F03B0), q6315 / q6319 + q11942, the

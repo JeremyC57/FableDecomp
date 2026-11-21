@@ -314783,9 +314783,10 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004333b3'
         Module = 'std::vector<CCharString>'
-        Source = '00/43/stdvectorCCharString_Mfillinsert_004333b3.cpp'
-        TestSource = '00/43/stdvectorCCharString_Mfillinsert_004333b3_test.cpp'
+        Source = '00/43/stdvector_Mfillinsert_004333b3.cpp'
+        TestSource = '00/43/stdvector_Mfillinsert_004333b3_test.cpp'
         PassPattern = '004333b3_TEST PASS'
+        CompilerFlags = '/d2inlS34'
     }
     [pscustomobject]@{
         Address = '004413c0'

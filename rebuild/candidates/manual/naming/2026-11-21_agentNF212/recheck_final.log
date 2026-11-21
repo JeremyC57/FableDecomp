@@ -1,0 +1,19 @@
+addr       parity           behav  name
+004333b3   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCCharString@@IV1@@std@@YIPAVCCharString@@PAV1@IABV1@@Z -> 00433504 labelled 'std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+004333b3   RELOCATION_MATCH PASS   std::vector<CCharString>::_M_fill_insert
+004b2fe0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004b2fe0   WARN RELOC_NAME: ?FindString@@YIPAVCCharString@@PAV1@0ABV1@ABUrandom_access_iterator_tag@@@Z -> 004b8e40 labelled 'std::__find<CCharString*, CCharString>'
+004b2fe0   RELOCATION_MATCH PASS   CQuestManager::OnQuestStartScreenDisplayed
+004b4a10   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004b4a10   RELOCATION_MATCH PASS   CQuestManager::ActivateQuest
+00a2ed10   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00a2ed10   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a2ed10   WARN SHARED_HEADER_AVAILABLE C3DMeshStats (engine/C3DMeshStats.h)
+00a2ed10   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00a2ed10   RELOCATION_MATCH PASS   C3DMeshStats::UnpackNames
+
+WINS: 4
+  004333b3 RELOCATION_MATCH std::vector<CCharString>::?_M_fill_insert@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXPAVCCharString@@IABV3@@Z
+  004b2fe0 RELOCATION_MATCH CQuestManager::?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z
+  004b4a10 RELOCATION_MATCH CQuestManager::?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z
+  00a2ed10 RELOCATION_MATCH C3DMeshStats::?UnpackNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_NABVCCharString@@1@Z

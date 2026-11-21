@@ -1,0 +1,3 @@
+GREW 00a316b0 1 -> 2 ?LowerBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z row 00a2ed10 SAME
+GREW 00a31790 1 -> 2 ?LowerBound@CDummyObjectMap@@QAEPAUSDummyObjectEntry@@ABK@Z row 00a2ed10 SAME
+shrank [('00433530', 4, 1)]

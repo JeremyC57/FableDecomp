@@ -1,5 +1,5 @@
 // C3DMeshStats::UnpackNames(std::vector<CCharString>&, bool, const CCharString&, bool) const -- append every packed helper-point (or dummy-object) name that starts with the prefix, once per object stored under it
-// Leaf: UnpackNames
+// Leaf: ?UnpackNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_NABVCCharString@@1@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00A2ED10, 468 bytes (ret 10h).
 // Callees: strncmp 0x00BFEAF8, CCharString(const char*, long) 0x0099EBF0 / copy ctor 0x0099EC30 / ~CCharString 0x0099EAE0,
@@ -11,13 +11,25 @@
 // `count` times -- 1 when every name is wanted once, else the number of map entries under the name's CRC
 // (UpperBound - LowerBound over 56- or 20-byte pairs). push_back is the inline STLport form with the __false_type
 // tag over the dead bool slot.
+// Name fix (NF212, 2026-11-21, q6332 / q6341): the header-less __false_type stand-in and the CCharStringVector stand-in's own
+//   three words, push_back and same-TU growth body move onto the shared STLport vector (stlport/fable_containers.h):
+//   CCharStringVector keeps its token (no class of that name under rebuild/include; this row's self leaf uses it) and sits on
+//   std::vector<CCharString> (header-less local class on a shared base). The growth body is STLport's own, visible and out of line
+//   (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE, with the owner row 0x00433530's FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE so its
+//   pick-any copy is the owner's), so push_back's growth call binds the protected IAE vector<CCharString>::_M_insert_overflow
+//   (was the stand-in ?_M_insert_overflow@CCharStringVector@@QAE...K_N, strong in this object). The PDB self spelling
+//   (private const, std::vector<CCharString>&: ?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@..., FableWin.pdb and Ego_r.pdb name
+//   sets) is a separate family: reloc_bindings already holds three spellings at 0x00A2ED10 (QAE stand-in from 0x00A2F0F0, QBE
+//   stand-in from 0x00A2F150, the PDB form from 0x00A2F170); this hand-back leaves the self leaf as it was.
 // Layout: C3DMeshStats retail offsets as in the landed SaveBinary 0x00A2EAA0 / GetHelperPoint 0x00A2E8C0:
 // HelperPoints +0x38, DummyObjects +0x48, PackedNames +0x74.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE
+#include "stlport/fable_containers.h"
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
-inline void* operator new(unsigned int, void* where) { return where; }
 
 class CCRC {
 public:
@@ -34,51 +46,7 @@ class CCharString { public:
     long GetLength() const { return Data == 0 ? 0 : Data->Length; }
 };
 
-struct __false_type { __false_type() {} };
-struct CCharStringVector {                              // STLport vector<CCharString>
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&,
-                            unsigned long fill_len, bool atend);   // 0x00433530
-    void push_back(const CCharString& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CCharString(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
-
-extern "C" void* __cdecl malloc(unsigned int size);
-extern "C" void __cdecl free(void* p);
-// Same-TU stand-in for the out-of-line STLport growth path (retail 0x00433530): it reads the value only through
-// its const reference and never touches the empty tag, so VC7.1 may home the caller's temporaries in dead slots.
-#pragma auto_inline(off)
-void CCharStringVector::_M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&,
-                                           unsigned long fill_len, bool atend)
-{
-    unsigned long oldSize = (unsigned long)(_M_finish - _M_start);
-    unsigned long len = oldSize + (oldSize > fill_len ? oldSize : fill_len);
-    CCharString* start = (CCharString*)malloc(len * sizeof(CCharString));
-    CCharString* finish = start;
-    for (CCharString* p = _M_start; p != position; ++p, ++finish)
-        new (finish) CCharString(*p);
-    for (unsigned long n = 0; n < fill_len; ++n, ++finish)
-        new (finish) CCharString(x);
-    if (!atend)
-        for (CCharString* q = position; q != _M_finish; ++q, ++finish)
-            new (finish) CCharString(*q);
-    for (CCharString* d = _M_start; d != _M_finish; ++d)
-        d->~CCharString();
-    free(_M_start);
-    _M_start = start;
-    _M_finish = finish;
-    _M_end_of_storage = start + len;
-}
-#pragma auto_inline(on)
+struct CCharStringVector : std::vector<CCharString> { };   // the landed callers' name for the names vector (STLport vector<CCharString>)
 
 #include "engine/C3DVector.h"
 class CMatrix3x4 { public: float m_row[3][4]; };

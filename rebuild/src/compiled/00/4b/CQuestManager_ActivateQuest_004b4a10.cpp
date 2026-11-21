@@ -15,91 +15,20 @@
 //   retail keeps start/finish in edi/ebp across the element destructors only because the array's address provably
 //   does not escape, which VC7.1 sees once ActivateMultipleQuests has a same-TU body (declared-only: start reloaded).
 // Label correction: catalogued as `CQuestManager_ActivateQuest` (right).
-#include <stdlib.h>                                   // malloc @ 0x00BFEA0E, free @ 0x00BFEA14
-#include <new>
-
-struct __false_type { __false_type() { } };            // user constructor: no zero-initialised tag temporary
-
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const CCharString& other);           // 0x0099EC30
-    ~CCharString();                                  // 0x0099EAE0
-};
-
-template <class _Tp> struct allocator {
-    allocator() { }
-    _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-struct _STLP_alloc_proxy : public _MaybeReboundAlloc {
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-
-inline void _Destroy(CCharString* __first, CCharString* __last)
-{
-    for ( ; __first != __last; ++__first)
-        __first->~CCharString();
-}
-
-struct _CCharStringVectorBase {                      // STLport _Vector_base<CCharString>
-    CCharString* _M_start;                           // +0x00
-    CCharString* _M_finish;                          // +0x04
-    _STLP_alloc_proxy<CCharString*, CCharString, allocator<CCharString> > _M_end_of_storage;   // +0x08
-    _CCharStringVectorBase() : _M_start(0), _M_finish(0), _M_end_of_storage(allocator<CCharString>(), (CCharString*)0) { }
-    ~_CCharStringVectorBase()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-
-struct CCharStringVector : _CCharStringVectorBase {   // STLport vector<CCharString>
-    ~CCharStringVector() { _Destroy(this->_M_start, this->_M_finish); }
-    void _M_insert_overflow(CCharString* __position, const CCharString& __x, const __false_type&,
-                            unsigned int __fill_len, bool __atend);   // 0x00433530
-    void push_back(const CCharString& __x)
-    {
-        if (_M_finish != _M_end_of_storage._M_data) {
-            new (_M_finish) CCharString(__x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);
-    }
-};
-
-#pragma auto_inline(off)
-// Same-TU stand-in for the STLport growth COMDAT 0x00433530: reads the vector and x first, never touches the tag.
-void CCharStringVector::_M_insert_overflow(CCharString* __position, const CCharString& __x, const __false_type&,
-                                           unsigned int __fill_len, bool __atend)
-{
-    CCharString* __old_start = _M_start;
-    CCharString* __old_finish = _M_finish;
-    unsigned int __old_size = unsigned int(__old_finish - __old_start);
-    unsigned int __len = __old_size + (__old_size < __fill_len ? __fill_len : __old_size);
-    CCharString* __new_start = _M_end_of_storage.allocate(__len);
-    CCharString* __new_finish = __new_start;
-    for (CCharString* __p = __old_start; __p != __position; ++__p, ++__new_finish)
-        new (__new_finish) CCharString(*__p);
-    for ( ; __fill_len > 0; --__fill_len, ++__new_finish)
-        new (__new_finish) CCharString(__x);
-    if (!__atend)
-        for (CCharString* __q = __position; __q != __old_finish; ++__q, ++__new_finish)
-            new (__new_finish) CCharString(*__q);
-    for (CCharString* __d = __old_start; __d != __old_finish; ++__d)
-        __d->~CCharString();
-    _M_end_of_storage.deallocate(__old_start, _M_end_of_storage._M_data - __old_start);
-    _M_start = __new_start;
-    _M_finish = __new_finish;
-    _M_end_of_storage._M_data = __new_start + __len;
-}
-#pragma auto_inline(on)
-
-template <class T> class CArray;
-template <> class CArray<CCharString> : public CCharStringVector { };
+// Name fix (NF212, 2026-11-21, q6332 / q6341): the header-less CCharStringVector / _CCharStringVectorBase / allocator /
+//   _STLP_alloc_proxy / _Destroy / __false_type stand-ins, the local CArray<CCharString> specialization and the local CCharString
+//   move onto the shared headers (fable_string.h, stlport/fable_containers.h, engine/CArray.h). The same-TU growth body is now
+//   STLport's own (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE, visible and out of line, with the owner row 0x00433530's
+//   FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE so its pick-any copy is the owner's), so push_back's growth call binds the
+//   protected IAE vector<CCharString>::_M_insert_overflow (was the stand-in ?_M_insert_overflow@CCharStringVector@@...).
+//   The local CQuestManager declaration and the ActivateMultipleQuests stand-in body are HEAD debt (engine/CQuestManager.h port
+//   queued); the stand-in now reads the names through size() / operator[].
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CArray.h"
 
 class CQuestManager {
 public:
@@ -116,8 +45,8 @@ public:
 bool CQuestManager::ActivateMultipleQuests(const CArray<CCharString>& quest_names, bool flag, bool load_resources)
 {
     bool activated = false;
-    for (unsigned int i = 0; i < unsigned int(quest_names._M_finish - quest_names._M_start); ++i)
-        if (IsQuestRegistered(quest_names._M_start[i]) && (flag || load_resources))
+    for (unsigned int i = 0; i < quest_names.size(); ++i)
+        if (IsQuestRegistered(quest_names[i]) && (flag || load_resources))
             activated = true;
     return activated;
 }

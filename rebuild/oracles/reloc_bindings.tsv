@@ -8526,8 +8526,6 @@ _wcsncmp	00bfeb0a	004071c0
 ?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@QAE_NXZ	00958c00	00958e20
 ?IsStaffed@CAIStateGroup_EatAtTavern@@QAE_NXZ	0096d2d0	0096d380
 ?IsTimeBetween@CTCVillage@@QAE_NPAXJ@Z	00658620	0096d380
-?UpperBound@CDummyObjectMap@@QAEPAUSDummyObjectEntry@@ABK@Z	00a317e0	00a2ed10
-?UpperBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z	00a31700	00a2ed10
 ?UpdateFrameLogic@CAnimateThing@@QAEXABUCAnimFrameUpdate@@@Z	0070e8b0	00750470
 ?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ	00939e70	00939ed0
 ?IsPlayerExtendedLineOfSight@CTCPerceiveThing@@QBE_NXZ	00744830	00939ed0
@@ -12883,8 +12881,6 @@ _fclose	00bfea20	00402130
 ?Get@CStartupDefinitionManager@@SIAAV1@XZ	0043368d	0042f5a9
 ?InitAndCompilePlatformSpecific@CStartupDefinitionManager@@QAEX_N@Z	004336bc	0042f5a9
 ?Set@CStartupDefinitionManager@@SIXPAV1@@Z	004336b0	0042f5a9
-?_M_insert_overflow@?$vector@VCCharString@@@std@@QAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	00433530	004333b3
-?uninitialized_fill_n@std@@YIPAVCCharString@@PAV2@IABV2@@Z	00433504	004333b3
 ??$__uninitialized_copy@PAVCEnginePrimitiveHandle@@PAV1@@std@@YIPAVCEnginePrimitiveHandle@@PAV1@00ABU__false_type@0@@Z	004400c0	004413c0
 ??$__uninitialized_fill_n@PAVCEnginePrimitiveHandle@@IV1@@std@@YIPAVCEnginePrimitiveHandle@@PAV1@IABV1@ABU__false_type@0@@Z	0043f6c0	004413c0
 ??$__copy_backward@PAVCEnginePrimitiveHandle@@PAV1@H@std@@YIPAVCEnginePrimitiveHandle@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	00440390	00442350
@@ -29359,8 +29355,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?g_pCodeSectionManager@@3UCCodeSectionManagerPointer@@A	013caa68	004b3a20
 ?insert@CSectionSet@@QAE?AUCSectionInsertResult@@ABVCCharString@@@Z	004ac380	004b3a20
 ?remove@CActiveQuestList@@QAEXABV?$CCountedPointer@UCActiveQuest@@@@@Z	004ba390	004b3a20
-?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z	004b4260	004b4a10
-?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__false_type@@I_N@Z	00433530	004b4a10
 ??_7CIconText@NUISystem@@6BCActionParam@1@@	012470a0	00542330
 ??_7CIconText@NUISystem@@6BCObserver@1@@	012470a8	00542330
 ??_7CIconText@NUISystem@@6BCUIInterface@1@@	012470cc	00542330
@@ -32793,8 +32787,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?GetAutoSavePathName@CUserProfileManager@@QBE?AVCWideString@@XZ	00406f70	004a0ae0
 ?DeleteCheckPointSave@CWorld@@SIXXZ	0049e740	004a0cd0
 ?GetAutoSaveQuestStartFileName@CUserProfileManager@@QBE?AVCWideString@@XZ	004066b0	004a0cd0
-?FindString@@YIPAVCCharString@@PAV1@0ABV1@ABUrandom_access_iterator_tag@@@Z	004b8e40	004b2fe0
-?_M_insert_overflow@CStringVector@@QAEXPAVCCharString@@ABV2@ABU__false_type@@I_N@Z	00433530	004b2fe0
 ?GetMeshStats@C3DMeshInfo@@QBE?AV?$CCountedPointer@$$CBVC3DMeshStats@@@@XZ	00a25530	004bc410
 ?HasDummyObject@C3DMeshStats@@QBE_NK@Z	00a2ea60	004bc410
 ?g_pMeshDataBank@@3PAVCMeshDataBank@@A	013b8a04	004bc410
@@ -39370,3 +39362,10 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?Explode@?A0x051e04a6@@YIHAAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z	00560920	00560bb0
 ?GetDocument@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@PAD@Z	0083eaa0	00560bb0
 ?GetDocumentSize@LHHttp2@LHNetworkLib@@QAEKXZ	0083ea70	00560bb0
+??$uninitialized_fill_n@PAVCCharString@@IV1@@std@@YIPAVCCharString@@PAV1@IABV1@@Z	00433504	004333b3
+?FindString@@YIPAVCCharString@@PAV1@0ABV1@ABUrandom_access_iterator_tag@@@Z	004b8e40	004b2fe0
+?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z	004b4260	004b4a10
+?LowerBound@CDummyObjectMap@@QAEPAUSDummyObjectEntry@@ABK@Z	00a31790	00a2ed10
+?LowerBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z	00a316b0	00a2ed10
+?UpperBound@CDummyObjectMap@@QAEPAUSDummyObjectEntry@@ABK@Z	00a317e0	00a2ed10
+?UpperBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z	00a31700	00a2ed10

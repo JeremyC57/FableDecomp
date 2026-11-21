@@ -511,6 +511,17 @@ template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,co
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __true_type&) {
     return std::fill_n(first,n,x);
 }
+#ifdef FABLE_RETAIL_STLP_UNINITIALIZED_FILL_N_DECL_ONLY
+// NF212 opt-in (2026-11-21, row 0x004333B3 vector<CCharString>::_M_fill_insert): declaration only. That size TU (frame pointer on)
+// calls uninitialized_fill_n<CCharString*, unsigned int, CCharString> 0x00433504 out of line as a __fastcall COMDAT (first in ecx,
+// n in edx, `ret 4`), the landed owner row's body. The visible noinline body (..._NOINLINE below) would emit a 41-byte pick-any
+// copy that differs from the owner's 38 bytes (pick-any rule); same function, declaration only.
+#ifdef _MSC_VER
+template<class I,class N,class T> I __fastcall uninitialized_fill_n(I first,N n,const T& x);
+#else
+template<class I,class N,class T> I uninitialized_fill_n(I first,N n,const T& x);
+#endif
+#else
 #if defined(FABLE_RETAIL_STLP_UNINITIALIZED_FILL_N_NOINLINE) && defined(_MSC_VER)
 // NF68 opt-in (row 0x00AD85D0 vector<QuadricOptimiserInternals::COptimisedVertex>::_M_fill_insert): the same STLport body, kept out
 // of line as a __fastcall COMDAT (0x00AD7B90: first in ecx, n in edx, `ret 4`), as that retail TU calls it.
@@ -527,6 +538,7 @@ template<class I,class N,class T> inline I uninitialized_fill_n(I first,N n,cons
     typedef typename __type_traits<Value>::is_POD_type IsPOD;
     return __uninitialized_fill_n(first,n,x,IsPOD());
 }
+#endif
 #endif
 // _alloc.h (malloc-based allocator)
 #ifdef FABLE_RETAIL_STLP_MALLOC_ALLOC_DEALLOCATE

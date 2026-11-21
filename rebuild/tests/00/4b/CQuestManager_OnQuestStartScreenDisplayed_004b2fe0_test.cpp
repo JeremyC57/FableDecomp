@@ -1,4 +1,5 @@
-// Behaviour test for 004b2fe0: src/004b2fe0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
+// Behaviour test for 004b2fe0 (NF212 2026-11-21: the vector member on the shared STLport header; the overflow stub is the
+// vector<CCharString> specialization of the declaration-only member): src/004b2fe0.cpp copied verbatim, the declared callees stubbed below so calls and arguments
 // are observable. CQuestManager::OnQuestStartScreenDisplayed
 #include <cstdio>
 #include <cstring>
@@ -18,11 +19,17 @@ static int fails = 0;
 // four-way unrolled body + remainder switch over the inlined CCharString operator==, value and tag by const reference)
 // as retail compiled it in the caller's TU; with the body visible VC7.1 schedules `lea esi,[edi+4Ch]` between the tag
 // and key pushes as retail. Compare 0x00411570 is the landed body.
-// Leaf: OnQuestStartScreenDisplayed
+// Name fix (NF212, 2026-11-21, q6332 / q6341): the header-less CStringVector / __false_type stand-ins move onto the shared STLport
+//   vector (stlport/fable_containers.h, overflow declaration-only as at HEAD), so push_back's growth call binds the protected IAE
+//   vector<CCharString>::_M_insert_overflow of the owner row 0x00433530. The CCharString / CQuestManager local models are HEAD
+//   debt, unchanged (engine/CQuestManager.h port queued: its __find 0x004B8E40 / Compare 0x00411570 same-TU bodies and the
+//   inlined operator== shape need the header CCharString first). Leaf line completed to the mangled self symbol (same symbol).
+// Leaf: ?OnQuestStartScreenDisplayed@CQuestManager@@QAE_NABVCCharString@@@Z
 #include <stddef.h>
 #include <new>
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#include "stlport/fable_containers.h"
 
-struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
 class CCharStringData { public:                            // the shared string block
@@ -94,23 +101,6 @@ __declspec(noinline) CCharString* __fastcall FindString(CCharString* first, CCha
 }
 #pragma auto_inline(on)
 
-struct CStringVector {                              // STLport vector<CCharString>
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CCharString* begin() { return _M_start; }
-    CCharString* end() { return _M_finish; }
-    void _M_insert_overflow(CCharString* pos, const CCharString& x, const __false_type&, size_t n, bool atend);   // 0x00433530
-    void push_back(const CCharString& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CCharString(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-};
-
 inline CCharString* find(CCharString* first, CCharString* last, const CCharString& value)
 {
     return FindString(first, last, value, random_access_iterator_tag());
@@ -118,7 +108,7 @@ inline CCharString* find(CCharString* first, CCharString* last, const CCharStrin
 
 class CQuestManager { public:
     unsigned char _pad00[0x4c];
-    CStringVector BetweenStartAndEndScreenQuests;               // +0x4c
+    std::vector<CCharString> BetweenStartAndEndScreenQuests;    // +0x4c
     unsigned char _pad58[0x40];
     long          NumberOfQuestsBetweenStartAndFinishScreens;   // +0x98
     bool OnQuestStartScreenDisplayed(const CCharString& questName);
@@ -133,19 +123,28 @@ bool CQuestManager::OnQuestStartScreenDisplayed(const CCharString& questName)
     }
     return false;
 }
-
 // ---- stubs ----
 static int g_copies;
 CCharString::CCharString(const CCharString& other) { PStringData = other.PStringData; ++g_copies; }
 static int g_over; static CCharString* g_overPos; static const CCharString* g_overX; static size_t g_overN; static bool g_overEnd;
 static CCharStringData* g_raw2[16]; static CCharString* const g_storage2 = (CCharString*)g_raw2;
-void CStringVector::_M_insert_overflow(CCharString* pos, const CCharString& x, const __false_type&, size_t n, bool atend)
+// Test helper (not a model): reaches the protected _Vector_base words through pointers to members formed in a derived class.
+struct CVecAccess : std::vector<CCharString> {
+    static CCharString*& Start(std::vector<CCharString>& v) { CCharString* Base::* p = &CVecAccess::_M_start; return v.*p; }
+    static CCharString*& Finish(std::vector<CCharString>& v) { CCharString* Base::* p = &CVecAccess::_M_finish; return v.*p; }
+    static CCharString*& EndOfStorage(std::vector<CCharString>& v) { return (v.*(&CVecAccess::_M_end_of_storage))._M_data; }
+private:
+    typedef std::_Vector_base<CCharString, std::allocator<CCharString> > Base;
+};
+namespace std {
+template<> void vector<CCharString>::_M_insert_overflow(CCharString* pos, const CCharString& x, const __false_type&, size_t n, bool atend)
 {
     ++g_over; g_overPos = pos; g_overX = &x; g_overN = n; g_overEnd = atend;
     long count = _M_finish - _M_start;
     for (long i = 0; i < count; ++i) g_storage2[i].PStringData = _M_start[i].PStringData;
     g_storage2[count].PStringData = x.PStringData;
-    _M_start = g_storage2; _M_finish = g_storage2 + count + 1; _M_end_of_storage = g_storage2 + 16;
+    _M_start = g_storage2; _M_finish = g_storage2 + count + 1; _M_end_of_storage._M_data = g_storage2 + 16;
+}
 }
 static CCharStringData MakeData(const char* s) { CCharStringData d; d.m_pData = s; d.m_length = (unsigned long)strlen(s); return d; }
 int main()
@@ -154,8 +153,8 @@ int main()
     static CCharStringData* rawStore[8]; CCharString* storage = (CCharString*)rawStore;
     CCharStringData d[7] = { MakeData("Q0"), MakeData("Q1"), MakeData("Q2"), MakeData("Q3"), MakeData("Q4"), MakeData("Q5"), MakeData("QX") };
     for (int i = 0; i < 6; ++i) storage[i].PStringData = &d[i];
-    qm->BetweenStartAndEndScreenQuests._M_start = storage; qm->BetweenStartAndEndScreenQuests._M_finish = storage + 6;
-    qm->BetweenStartAndEndScreenQuests._M_end_of_storage = storage + 7;
+    CVecAccess::Start(qm->BetweenStartAndEndScreenQuests) = storage; CVecAccess::Finish(qm->BetweenStartAndEndScreenQuests) = storage + 6;
+    CVecAccess::EndOfStorage(qm->BetweenStartAndEndScreenQuests) = storage + 7;
     qm->NumberOfQuestsBetweenStartAndFinishScreens = 10;
     // already listed: same block, and an equal string in another block (unrolled part and remainder)
     CCharStringData* sameRaw = &d[1]; CCharString& same = *(CCharString*)&sameRaw;
@@ -167,21 +166,21 @@ int main()
     // new name, room left: copied in place
     CCharStringData* nxRaw = &d[6]; CCharString& nx = *(CCharString*)&nxRaw;
     CHECK(qm->OnQuestStartScreenDisplayed(nx) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 11 && g_copies == 1 && g_over == 0);
-    CHECK(qm->BetweenStartAndEndScreenQuests._M_finish == storage + 7 && storage[6].PStringData == &d[6]);
+    CHECK(CVecAccess::Finish(qm->BetweenStartAndEndScreenQuests) == storage + 7 && storage[6].PStringData == &d[6]);
     // same length, different text: still new; storage full -> overflow path
     CCharStringData qy = MakeData("QY"); CCharStringData* nyRaw = &qy; CCharString& ny = *(CCharString*)&nyRaw;
     CHECK(qm->OnQuestStartScreenDisplayed(ny) && qm->NumberOfQuestsBetweenStartAndFinishScreens == 12 && g_over == 1);
     CHECK(g_overPos == storage + 7 && g_overX == &ny && g_overN == 1 && g_overEnd && g_copies == 1);
-    CHECK(qm->BetweenStartAndEndScreenQuests._M_finish - qm->BetweenStartAndEndScreenQuests._M_start == 8);
+    CHECK(CVecAccess::Finish(qm->BetweenStartAndEndScreenQuests) - CVecAccess::Start(qm->BetweenStartAndEndScreenQuests) == 8);
     // null block entry versus a non-null key: not equal; null key equals the null entry
     static CCharStringData* oneRaw[2]; CCharString* one = (CCharString*)oneRaw; one[0].PStringData = 0;
-    qm->BetweenStartAndEndScreenQuests._M_start = one; qm->BetweenStartAndEndScreenQuests._M_finish = one + 1;
-    qm->BetweenStartAndEndScreenQuests._M_end_of_storage = one + 2;
+    CVecAccess::Start(qm->BetweenStartAndEndScreenQuests) = one; CVecAccess::Finish(qm->BetweenStartAndEndScreenQuests) = one + 1;
+    CVecAccess::EndOfStorage(qm->BetweenStartAndEndScreenQuests) = one + 2;
     CCharStringData* nulRaw = 0; CCharString& nul = *(CCharString*)&nulRaw;
     CHECK(!qm->OnQuestStartScreenDisplayed(nul));
     CHECK(qm->OnQuestStartScreenDisplayed(nx) && one[1].PStringData == &d[6]);
     // empty vector
-    qm->BetweenStartAndEndScreenQuests._M_start = qm->BetweenStartAndEndScreenQuests._M_finish = one;
+    CVecAccess::Start(qm->BetweenStartAndEndScreenQuests) = CVecAccess::Finish(qm->BetweenStartAndEndScreenQuests) = one;
     CHECK(qm->OnQuestStartScreenDisplayed(nx));
     if (fails == 0) printf("004b2fe0_TEST PASS\n"); else printf("004b2fe0_TEST FAIL\n");
     return fails;
