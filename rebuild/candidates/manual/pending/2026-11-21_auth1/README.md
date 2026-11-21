@@ -8,7 +8,7 @@ stall packets: `<addr>/ESCALATE.md`. Header overlays are per row, stored as `<ad
 
 | row | best | state |
 |---|---|---|
-| 0x00A4EFC0 | DIFFER(3491v3491), 1 residue (e1.cpp, /Gr) | escalated early; new opt-in FABLE_RETAIL_CSIMPLEMEMORYPOOL_ALLOCATETYPE_EGOD |
+| 0x00A4EFC0 | DIFFER(3491v3491), 1 residue (e1.cpp, /Gr) | escalated early; its AllocateType opt-in text is FITTED (AUTH2: breaks 3 of 5 landed users), rejected |
 | 0x00C73050 | DIFFER(672v672), 1 register (b0.cpp, /d2inlT150) | escalated early; c2 pressure-counter dump x0.json / x0.txt / x4.txt |
 | 0x0093D270 | DIFFER(305v295) (e1.cpp) | escalated early; float getter return-value home, minis in mini/ |
 | 0x007602F0 | DIFFER(1126v1126) bracket class; Ego_d text 1181v1126 | escalated (needs FableWin / Ego_r line records or an owner ruling) |
@@ -29,3 +29,6 @@ Tools AUTH1 wrote (scratch-lane helpers, no retail data): `nd.py` (relocation-ma
 Advisor (2026-11-21, owner delegated): next agent works 0x00A4EFC0, 0x0093D270, 0x00C73050 only (measurements first: helper calibration
 against Ego_d; c2path.py on the m2 mini plus an Ego_r spelling check of the getter; force #32 before #9 with the hook). An owner decision
 is pending for 0x007602F0 / 0x00763060 (accept an Inferred TLC-revision text, or hold for Windows line records).
+
+Update (AUTH2, 2026-11-21): see `../2026-11-21_auth2/README.md`. Ego_d and FableWin are both VC10, so the Ego_d /Od size decodes above
+(e.g. 0x007602F0's 24/44 v 41/58, 0x00763060's lines 199/204) bound texts but do not select them; re-read those rejections on that basis.
