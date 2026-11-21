@@ -692,3 +692,7 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - Label fix: 0x004C79A0 is labelled CAnimateThing::GetMeshBank (BSim propagation), but CThing.h and landed 0x00837050 / 0x00837060 / 0x006A9590 bind it as PeekGlobalDefinition.
   - Superseded pending drafts: hand237 / hand993 / hand764 / handQ14.
 2026-11-20 B->A: Landed p25 0x008DBC80 NCreatureMode::CModeDragonFlying::FrameUpdate (batches/2026-11-20_landing_p25_008dbc80). Headers: engine/CTCAnimationComplex.h .
+2026-11-21 B->A: Landed 0x008DBC80 NCreatureMode::CModeDragonFlying::FrameUpdate (p25P), text read off Ego_d's line sizes with the new VC10 calibration (FINDINGS 2026-11-21).
+  - Name fix: inline CRightHandedSet::Set is Init (Ego_r / FableWin / Ego_d).
+  - Re-port debt: CCamera_SetAngleXY_00a0c570.cpp:28 and CCamera_CCamera_00a0bf20.cpp:25 use the made-up Set; the 0x00AEEBA0 test stand-ins too.
+  - The row no longer needs FableWin line tables; drop it from B's Windows request.
