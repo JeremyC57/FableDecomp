@@ -1604,3 +1604,8 @@ against CODAApi.lib, or stay compiled C++?
   explicit specialization, take the mode at their definition: the 0x005A4CDD draft (Flags above) is the measured exception.
 - 2026-11-21 (Account A, NF216, landing nf216): 0x004FE630's NF62 residue (PStringData reloaded after each == call) is gone with TEXT_EQ_NOINLINE_COMPARE_ZERO +
   COMPARE_BODY; what is left is a loop-counter register choice (DIFFER(453v440), above).
+- 2026-11-21 (Account A): VC10 SP1 (cl 16.00.40219.01) is on the lane as an evidence tool (docs/BUILDING.md "VC10 SP1"). With Ego_d's own
+  flags it reproduces Ego_d's sizes where VC7.1 /Od did not: C3DKeyframe::SetScaling 34 (VC7.1 30), GetMaximumAbsoluteComponent 259
+  (body 244; VC7.1 212). C3DAnimFileSequenceChunk::GetBoneName (47 v Ego_d 49) and C3DVectorWord::operator== (82 v 86) still differ under
+  VC10, so for those two the gap is a real text difference, not compiler drift. Earlier size-only "contradicts Ego_d" rejections, all
+  measured with VC7.1, should be re-measured with odall10.py before they are cited.
