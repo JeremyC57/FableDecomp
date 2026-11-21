@@ -287,3 +287,16 @@ PopulateRegionWithVillagers (13632), 0x00BD3070 RenderMeshPrimitive (11296), 0x0
 9280), 0x00F1EED0 PlayWave (9264), 0x00C4F600 (9216), 0x00B4D370 UpdateShadowSpace (7184), 0x00CF4EC0 Main (6176),
 0x00D09010 Main (5872). Several carry acctC round-six drafts (released 2026-11-16/18, pending/2026-11-16_acctC_open).
 Re-check claims at reservation time.
+
+## 2026-11-21 0x0093D270 CAIStateGroup_MeleeCombatNearbyBase::IsRunnable (p25R): reference-returning getter ruled out
+Residue: the GetProximityForNavigation argument. Retail reads CCombatManager+0x28 late (after GetPItem); every by-value inline
+getter form gives a front-end $T. Only `const float& GetProximityForNavigation() const` (or a direct read of the private member, or
+Ego_d-absent named locals) reproduces retail. Ruling (advisor): not landable. FableWin ?GetProximityForNavigation@CCombatManager@@QBEMXZ
+returns float by value; a reference return is a different signature the PDB contradicts, and "inline-only in retail" does not free
+the return type (rules: PDB-contradicted text is not Inferred; no fitted choices in shared-header arms). Retail sequencing the load
+after an opaque call is a source-level fact, consistent with flags not moving it. Held as a bracket (93_A1.cpp + the h3 form) in
+pending/2026-11-20_p25_open/0093d270; the row stays reserved (rotation, not parking). Legitimate flips: (1) a landed byte-matching
+row with the same shape (by-value inline getter on a call-returned object, argument of a call whose result is used, an opaque call
+between) that shows retail's deferred load: then the mini misses a factor, which also reopens 0x006AA720; (2) Ego_r type records
+for CCombatManager showing a reference return, public ProximityForNavigation or a friend; (3) close the result-usage lever by listing
+the result-consuming forms of Ego_d line 55 measured at 76 B.

@@ -1538,3 +1538,8 @@ against CODAApi.lib, or stay compiled C++?
   - Ruling: the post-increment text is held as a bracket, and the row is on the Windows request.
 - 2026-11-21 (Account B p25Q) FableWin and Ego_d are nearly always the same revision: 92,050 of 92,096 shared functions have equal procedure lengths, so FableWin's line tables only add information where the lengths differ (46 functions, among them 0x00A4EFC0).
   - Also measured, on 0x00763060's TU, from known texts: in Ego_d (VC10 /Od) an iterator declared from `it + 1` is 38 B, a post-increment read `C3DVector x = *it++;` costs 51..62 B over the plain 17 B form, and a begin() temporary costs 28..37 B. Ego_d 197 (74 B) is therefore `it_anchor = duplicate_shape.begin() + 1` and holds no increment.
+- 2026-11-21 (B, p25R, 0x0093D270): VC7.1 pre-evaluates a by-value inline getter used as an argument of a call whose result is used
+  into a front-end $T (dead store or reload), whatever the getter body, forceinline, flags (/GX /Gr /G6 /Oa); a discarded-result call
+  or a named float local drops it; /Op drops the $T but loads early. Retail at 0x0093D270 and 0x006AA720 (both
+  GetCombatManager().GetProximityForNavigation()) shows the deferred load a `const float&` getter gives, against FableWin's by-value
+  QBEMXZ mangling. Minis: scratch p25R tmp/mini/o3..o14.cpp. Ruling in 2026-11-20_ADVISOR_DECISIONS_B.md.
