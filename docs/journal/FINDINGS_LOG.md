@@ -1597,3 +1597,10 @@ against CODAApi.lib, or stay compiled C++?
   CCharString .cpp bodies, and 0x006D41F0 never calls it. Still to try: a "(" test that reaches CBasicString<char>::Compare directly, with
   the other two tests calling 0x004115A0. CCharString cannot call the protected static Compare, so that body changes fable_string.h access
   (a header claim). Keep 0x006D41F0 / 0x006D4180 out of naming slices until then.
+- 2026-11-21 (Account A, NF216, landing nf216): VC7.1 compiles a template member's implicit instantiation (a pick-any COMDAT) in the `#pragma optimize` mode in
+  force at the END of the TU; moving the row-head optimize("s") after the header include (0x00CBFB7D f3) and an explicit
+  instantiation between optimize("t") and ("s") (0x005A5B31 f2) leave the size-mode copy, and an end-of-TU optimize("", on) gives
+  the owner copy but changes the leaf and 61 other COMDATs (0x005A5B31 f3). Ordinary inline functions, including a non-template
+  explicit specialization, take the mode at their definition: the 0x005A4CDD draft (Flags above) is the measured exception.
+- 2026-11-21 (Account A, NF216, landing nf216): 0x004FE630's NF62 residue (PStringData reloaded after each == call) is gone with TEXT_EQ_NOINLINE_COMPARE_ZERO +
+  COMPARE_BODY; what is left is a loop-counter register choice (DIFFER(453v440), above).

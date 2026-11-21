@@ -7,7 +7,7 @@
 // Callees: CDefClassBase::GetSubDef<CTavernGameCoinGolfDef> 0x007D4BD0 (same-TU template COMDAT, visible but out of line:
 //   FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_NOINLINE); CBaseIntelligentPointer::GetPItem 0x00A01B50; CCharString copy ctor 0x0099EC30 /
 //   dtor 0x0099EAE0; CBasicString<char>::operator==(const char*) 0x004115A0 (visible template body, called out of line;
-//   its Compare 0x00411570 inlined into it -- the landed real body sits below); CThing::SetAsDrawable (vtable slot 28, 0x004C8E50);
+//   its Compare 0x00411570 inlined into it -- the header body, FABLE_RETAIL_CBASICSTRING_COMPARE_BODY); CThing::SetAsDrawable (vtable slot 28, 0x004C8E50);
 //   CThing::SetAsFrameUpdated 0x004C7C40; CThing::SetAsRenderedThisFrame 0x004C7590; _CIfmod 0x00BFEB28; atan2 as `fpatan`.
 // Shape: the CBasicString text equality's body being visible tells VC7.1 the call writes no memory, so one null test of the
 //   name's data serves both literal tests and the length/char reads (no reload, no second null test). The skip of an empty /
@@ -15,7 +15,11 @@
 //   (XAngle's store is scheduled before the loads, as retail). Members: CTCBase::ParentThing +0x04, CTCTavernGameCoinBase::Coins
 //   +0xFC (PDB +0x114), ZAngle +0x148, XAngle +0x14C, CoinStartPos +0x168 (PDB - 0x18); Coin (packed, 0x3C) Thing +0x25.
 #define FABLE_RETAIL_CCHARSTRING
-#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE
+// Name fix (NF216, 2026-11-21, q12378): ported onto fable_string.h FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO +
+//   FABLE_RETAIL_CBASICSTRING_COMPARE_BODY (was TEXT_EQ_NOINLINE with a local explicit specialization of Compare 0x00411570, now the header Compare body); the pick-any ??8?$CBasicString@D@@QBE_NPBD@Z copy
+//   this object carries is now the owner 0x004115A0's 88-byte body, equal in bytes and relocation targets.
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
 #define FABLE_RETAIL_CTHING_STATEACCESS
@@ -38,22 +42,6 @@
 #pragma intrinsic(atan2)
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
-// CBasicString<char>::Compare 0x00411570 (landed real body; the header template's static helper, visible to this TU).
-template<> long __fastcall CBasicString<char>::Compare(const char* a, const char* b)
-{
-    for (;;) {
-        char ca = *a;
-        if (ca == 0 && *b == 0)
-            return 0;
-        char cb = *b;
-        if (ca < cb)
-            return -1;
-        if (ca > cb)
-            return 1;
-        ++a;
-        ++b;
-    }
-}
 
 #include "engine/CThing.h"
 #include "engine/CThingBaseDef.h"

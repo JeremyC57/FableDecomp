@@ -15,6 +15,16 @@
 //   one call over the CFilter_Bind2 temporary built from the two filter temporaries; its bool result is dropped and the
 //   out pointer is tested.
 #include "fable_compiler.h"
+// Name fix (NF216, 2026-11-21, q12378): ported onto fable_string.h: the local CBasicString / CCharStringData / CCharString models
+//   and the same-TU CBasicString<char>::operator==(const char*) specialization (auto_inline(off)) are replaced by FABLE_RETAIL_CCHARSTRING
+//   with FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (the inline CCharString::operator==) + FABLE_RETAIL_CBASICSTRING_COMPARE_BODY +
+//   FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO (the visible, called 0x004115A0 body); the pick-any
+//   ??8?$CBasicString@D@@QBE_NPBD@Z copy this object carries is now the owner's 88-byte body, equal in bytes and relocation targets.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+#define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+#include "fable_string.h"
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -25,53 +35,6 @@ extern "C" int __cdecl strcmp(const char* a, const char* b);
 #include "engine/CThingSearchTools.h"
 #undef CThingSearchTools
 #include "engine/CWorld.h"
-
-#pragma pack(push, 1)
-template <class T> class CBasicString { public:
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-    bool operator==(const char* text) const;        // 0x004115A0
-};
-class CCharStringData { public:
-    CBasicString<char> Data;
-    long             NoRefs;
-};
-#pragma pack(pop)
-// The CBasicString<char>::operator== body (landed 0x004115A0) compiled in this TU under auto_inline(off): retail's caller
-// keeps PStringData in ebp across the first call, which needs VC7.1 to see that the comparison writes no memory.
-#pragma auto_inline(off)
-template <> bool CBasicString<char>::operator==(const char* text) const
-{
-    const char* a = PData;
-    const char* b = text;
-    for (;;) {
-        char ca = *a;
-        if (ca == 0 && *b == 0)
-            return true;
-        if (ca != *b)
-            return false;
-        ++a;
-        ++b;
-    }
-}
-#pragma auto_inline(on)
-
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const CCharString& other);                                      // 0x0099EC30
-    ~CCharString();                                                             // 0x0099EAE0
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
 
 class CThingObject;
 class CThingBuilding;

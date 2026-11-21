@@ -1,0 +1,3 @@
+reloc_bindings.tsv: removed 2 stale witnesses (0x00870FC0's struct-CCharString GetDataFromEventString stand-in for 0x00870C90), added 0
+004115a0=3 00411570=4 0129aaf4=18 00403a10=1 
+004115a0=3 00411570=4 0129aaf4=18 00403a10=1 

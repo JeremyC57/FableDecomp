@@ -27,7 +27,10 @@
 #define FABLE_RETAIL_CSTRINGPARSER
 #define FABLE_RETAIL_CARRAY
 #define FABLE_RETAIL_CCHARSTRING
-#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE
+// Name fix (NF216, 2026-11-21, q12378): FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE -> FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
+//   (with FABLE_RETAIL_CBASICSTRING_COMPARE_BODY): the pick-any ??8?$CBasicString@D@@QBE_NPBD@Z copy this object carries is now the
+//   owner 0x004115A0's 88-byte body (Compare-result == 0, Compare expanded), equal in bytes and relocation targets.
+#define FABLE_RETAIL_CBASICSTRING_TEXT_EQ_NOINLINE_COMPARE_ZERO
 #define FABLE_RETAIL_CBASICSTRING_COMPARE_BODY
 #include "engine/CWorld.h"
 #include "engine/CQuestManager.h"

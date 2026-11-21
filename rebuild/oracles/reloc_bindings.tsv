@@ -9480,11 +9480,9 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?Enable@CIME@NUISystem@@QAEX_N@Z	00404f40	005401b0
 ?SetEditBoxRegion@CIME@NUISystem@@QAEXJJJJ@Z	00404bb0	005401b0
 ??8?$CBasicString@D@@QBE_NPBD@Z	004115a0	00870fc0
-?GetDataFromEventString@?A0x37137490@@YI_NABUCCharString@@JAAU2@@Z	00870c90	00870fc0
 ?reserve@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z	00920ff0	00b1a700
 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z	0075c040	00b1a700
 ??0CEnginePrimitiveParticleDecalGroup@@QAE@J_NW4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@MK@Z	00b1b4d0	00b1b710
-?GetDataFromEventString@?A0x5ba2ddd2@@YI_NABUCCharString@@JAAU2@@Z	00870c90	00870fc0
 ??1CEnginePrimitiveManagerOcclusionBase@@UAE@XZ	00b38590	00ba8c70
 ?AllocateCopy@?$Vector@URecord24_0045cc79@@@@QAEPAURecord24_0045cc79@@IPBU2@0@Z	0045cd9b	0045cc79
 ?Dispose@?$Vector@URecord24_0045cc79@@@@QAEXXZ	0045cde2	0045cc79

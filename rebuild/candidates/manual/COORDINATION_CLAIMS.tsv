@@ -210,3 +210,4 @@ date	account	item	kind	status	note
 2026-11-21	A	0x00C73050	author	claimed	AUTH3 (Account A) takes 0x00C73050 alone; 0x00A4EFC0 / 0x0093D270 / the other AUTH1 rows stay reserved acctA AUTH1 (escalated, pending advisor / owner)
 2026-11-21	A	0x00C73050	author	done	landed as CAudioSource::UpdateStream (batches/2026-11-21_landing_auth3), AUTH3; RELOCATION_MATCH /d2inlT145
 2026-11-21	A	0x00A4EFC0	author	claimed	AUTH4 (Account A) takes 0x00A4EFC0 alone (c2 hook method; V1 AllocateType candidate under a new macro name)
+2026-11-21	A	q12378,q12374	naming	done	NF216 landed as nf216 (8 rows); 0x004FE630 0x00CBFB7D 0x005A5B31 0x005A04F7 0x0065A075 0x005A4CDD left (queued land1121nf216)

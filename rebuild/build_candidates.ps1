@@ -273446,8 +273446,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00870fc0'
         Module = 'NCreatureAction::CActionEventCameraShake'
-        Source = '00/87/NCreatureActionCActionEventCameraShake_vfunc4_00870fc0.cpp'
-        TestSource = '00/87/NCreatureActionCActionEventCameraShake_vfunc4_00870fc0_test.cpp'
+        Source = '00/87/NCreatureActionCActionEventCameraShake_SetDataFromString_00870fc0.cpp'
+        TestSource = '00/87/NCreatureActionCActionEventCameraShake_SetDataFromString_00870fc0_test.cpp'
         PassPattern = '00870fc0_TEST PASS'
     }
     [pscustomobject]@{

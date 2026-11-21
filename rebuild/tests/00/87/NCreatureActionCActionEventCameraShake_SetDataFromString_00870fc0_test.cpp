@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
-// BEGIN exact source snapshot SHA256 602bb7df736f9c6de90cad30eff8ac78b685b4465239ab1632b23230223ba711
+// BEGIN source snapshot of the row before the NF216 header port (SHA256 602bb7df736f9c6de90cad30eff8ac78b685b4465239ab1632b23230223ba711;
+//   NF216, 2026-11-21: the row now uses fable_string.h + engine/NCreatureActionEvents.h; this standalone behaviour model is unchanged)
 #include <string.h>
 #include <stddef.h>
 #define CCharString CCharStringPdb
