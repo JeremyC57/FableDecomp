@@ -248,3 +248,11 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - The 0x00B24850 / 0x00BB3E80 precedent covers fitted arm counts in a row's own body, not IL padded inside a header arm.
 - **When a larger arm would be acceptable:** Ego_d calibrates its content (the 719-B / 261-B lines in units of known one-assert lines), and the same header text keeps every landed CARRAY_INDEX_ASSERT user matching. It would then be a header contract labelled Inferred.
 - **The stock-arm configuration is the new base.** The helper-text sweeps for (2)/(3) are redone on it.
+
+## Scoreboard crypto TU (p25N, 2026-11-21): /Gr as the TU's calling-convention default
+- **Ruling: accept /Gr.** It is a calling-convention default, not an inline control. Two sources: Ego_r mangles every helper YI, and retail's out-of-line STLport instances take ecx/edx. The same-TU landed 0x00563480 already uses it, and it removes devices from the re-ported rows.
+- **Conditions met:**
+  - the catalogue records CompilerFlags /Gr for the re-ported rows, and Explode regrading RELOCATION_MATCH proves the flag is honoured;
+  - the only vland warnings are import-thunk aliases;
+  - the land order kept every copy verbatim.
+- **Follow-up:** check whether 0x008E18D0's "fastcall STL helpers" fact is the same /Gr TU default.
