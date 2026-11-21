@@ -243595,6 +243595,7 @@ $catalog = @(
         Source = '00/7e/CTCCreditsUI_Activate_007e4b60.cpp'
         TestSource = '00/7e/CTCCreditsUI_Activate_007e4b60_test.cpp'
         PassPattern = '007e4b60_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS12'
     }
     [pscustomobject]@{
         Address = '007ecee0'
@@ -271419,6 +271420,7 @@ $catalog = @(
         Source = '00/61/CTCInventoryMap_OpenInventory_006116e0.cpp'
         TestSource = '00/61/CTCInventoryMap_OpenInventory_006116e0_test.cpp'
         PassPattern = '006116e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS12'
     }
     [pscustomobject]@{
         Address = '00621720'

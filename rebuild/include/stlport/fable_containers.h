@@ -2476,6 +2476,28 @@ void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIt
         __insertion_sort(__first,__last,__comp);
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_FILL_N_NUISYSTEM_CCOMPONENT_SIZE_BODY
+// NF214 opt-in (2026-11-21, q6333 / q6342; rows 0x007E4B60 CTCCreditsUI::Activate, 0x006116E0 CTCInventoryMap::OpenInventory).
+// Fidelity: scaffolding, not retail. With FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY those TUs compile
+// vector<NUISystem::CComponent*>::_M_insert_overflow visibly (retail's caller knows the callee does not let `x` escape); with
+// fill_n declared only, VC7.1 loses that knowledge and moves the caller's registers. This gives the overflow's callee
+// fill_n<NUISystem::CComponent**, unsigned int, NUISystem::CComponent*> the STLport 4.6 _algobase.h body of the generic
+// FABLE_RETAIL_STLP_FILL_N_FASTCALL fill_n above, visible and out of line (noinline, as retail calls 0x0048514C), a pick-any COMDAT.
+// Retail kept the 23-byte copy (x re-read every pass, no frame) from a size-optimised TU, row 0x0048514C, which sets
+// `#pragma optimize("s", on)` itself (no "y" change); the plain /O2 copy hoists x (30 bytes). `#pragma optimize("", on)` below returns
+// to the command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a row-head optimize
+// pragma before its include of this header (nf189). Needs FABLE_RETAIL_STLP_FILL_N_FASTCALL; place before any use of this fill_n.
+}
+namespace NUISystem { class CComponent; }
+#pragma optimize("s", on)
+namespace std {
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+NUISystem::CComponent** FABLE_FASTCALL fill_n(NUISystem::CComponent** first,unsigned int n,NUISystem::CComponent* const& x) { for(;n>0;--n,++first) *first=x;return first; }   // 0x0048514C
+#pragma optimize("", on)
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY
 // NF213 opt-in (2026-11-21, q6333 / q6342; row 0x005414A0 NUISystem::CDynamicList::InsertChild, ...). Fidelity: scaffolding, not retail.
 // That TU calls vector<NUISystem::CComponent*>::_M_insert_overflow 0x00485DBC out of line with the STLport stl/_vector.c body visible:

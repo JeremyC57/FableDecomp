@@ -1,0 +1,3 @@
+regrade with the rows own // Flags lines (recheck.py adds /Oy- to partial CompilerFlags entries):
+005414a0 RELOCATION_MATCH flags= [/d2inlS12]
+00e0a510 RELOCATION_MATCH flags= [/d2inlS22]

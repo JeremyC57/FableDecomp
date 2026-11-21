@@ -1,0 +1,59 @@
+00a2ed10 new: 6 gone: 5
+    ??_C@_00CNPNBAHC@?$AA@
+    	?GetAsCharArray@CCharString@@QBEPBDXZ
+    	?GetLength@?$CBasicString@D@@QBEKXZ
+    ?GetNoDummyObjects@C3DMeshStats@@QAEJABVCCharString@@@Z
+    	?GetNoDummyObjects@C3DMeshStats@@QBEJABVCCharString@@@Z
+    ?GetNoHelperPoints@C3DMeshStats@@QAEJABVCCharString@@@Z
+    	?GetNoHelperPoints@C3DMeshStats@@QBEJABVCCharString@@@Z
+    ?GetText@CCharString@@QBEPBDXZ
+    	?PeekData@?$CBasicString@D@@QBEPBDXZ
+    	?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_NABVCCharString@@1@Z
+    ?UnpackNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_NABVCCharString@@1@Z
+00a2f0f0 new: 1 gone: 1
+    ?GetAllDummyObjectNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_N@Z
+    	?GetAllDummyObjectNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z
+00a2f120 new: 1 gone: 1
+    ?GetAllHelperPointNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_N@Z
+    	?GetAllHelperPointNames@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N@Z
+00a2f150 new: 1 gone: 1
+    ?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAUCCharStringVector@@ABVCCharString@@_N@Z
+    	?GetDummyObjectNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z
+007e4b60 new: 15 gone: 3
+    	??$_Construct@PAVCComponent@NUISystem@@PAV12@@std@@YAXPAPAVCComponent@NUISystem@@ABQAV12@@Z
+    	??$_Destroy@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0@Z
+    	??$__destroy@PAPAVCComponent@NUISystem@@PAV12@@std@@YAXPAPAVCComponent@NUISystem@@00@Z
+    	??$__destroy_aux@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0ABU__true_type@0@@Z
+    	??$fill_n@PAPAVCComponent@NUISystem@@IPAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@IABQAV12@@Z
+    	??$max@I@std@@YAABIABI0@Z
+    ??0__true_type@@QAE@XZ
+    	??0__true_type@std@@QAE@XZ
+    	??2@YAPAXIPAX@Z
+    	?_M_clear@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXXZ
+    ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAPAVCComponent@NUISystem@@ABQAV23@ABU__true_type@@K_N@Z
+    	?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z
+    	?_M_set@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@00@Z
+    	?allocate@?$allocator@PAVCComponent@NUISystem@@@std@@QAEPAPAVCComponent@NUISystem@@IPBX@Z
+    	?deallocate@?$allocator@PAVCComponent@NUISystem@@@std@@QAEXPAPAVCComponent@NUISystem@@I@Z
+    ?push_back@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXABQAVCComponent@NUISystem@@@Z
+    	?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z
+    	?size@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QBEIXZ
+006116e0 new: 15 gone: 3
+    	??$_Construct@PAVCComponent@NUISystem@@PAV12@@std@@YAXPAPAVCComponent@NUISystem@@ABQAV12@@Z
+    	??$_Destroy@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0@Z
+    	??$__destroy@PAPAVCComponent@NUISystem@@PAV12@@std@@YAXPAPAVCComponent@NUISystem@@00@Z
+    	??$__destroy_aux@PAPAVCComponent@NUISystem@@@std@@YAXPAPAVCComponent@NUISystem@@0ABU__true_type@0@@Z
+    	??$fill_n@PAPAVCComponent@NUISystem@@IPAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@IABQAV12@@Z
+    	??$max@I@std@@YAABIABI0@Z
+    ??0__true_type@@QAE@XZ
+    	??0__true_type@std@@QAE@XZ
+    	??2@YAPAXIPAX@Z
+    	?_M_clear@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXXZ
+    ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAPAVCComponent@NUISystem@@ABQAV23@ABU__true_type@@K_N@Z
+    	?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z
+    	?_M_set@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@00@Z
+    	?allocate@?$allocator@PAVCComponent@NUISystem@@@std@@QAEPAPAVCComponent@NUISystem@@IPBX@Z
+    	?deallocate@?$allocator@PAVCComponent@NUISystem@@@std@@QAEXPAPAVCComponent@NUISystem@@I@Z
+    ?push_back@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXABQAVCComponent@NUISystem@@@Z
+    	?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXABQAVCComponent@NUISystem@@@Z
+    	?size@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QBEIXZ

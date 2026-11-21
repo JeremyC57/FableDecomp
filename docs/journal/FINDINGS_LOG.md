@@ -1583,3 +1583,10 @@ against CODAApi.lib, or stay compiled C++?
   vector::push_back, newly bound) and 0x0064FDB4 (/Os: Clear, which a speed-mode scaffolding opt-in fixes, plus HasTC 0x004118C0 and
   LowerBound 0x004365B0). Evidence: pending/2026-11-21_codex_pass25_open/held/HELD.md. Also, 0x00797740 (14 bytes) and 0x00797750
   (11 bytes), just past 0x00795300's leaf end 0x00797734, are code that no manifest row covers.
+- 2026-11-21 (Account A, landing nf214): `rebuild/build_candidates.ps1` uses an entry's `CompilerFlags` INSTEAD of the default `/O2 /Oy /W3`
+  (`$entryFlags = ... -split ... else @('/O2','/Oy','/W3')`), so a bare value builds that row unoptimised. 15 landed entries carry one:
+  0x00C8DB10 '/Gr', 0x009A4350 / 0x009C6020 / 0x00BD9B90 / 0x00A02190 / 0x00A02220 / 0x009D61F0 / 0x009A1660 '/d2inlT114', 0x009D52D0
+  '/d2inlT78', 0x00BDE860 '/d2inlT91', 0x00E0A510 / 0x00DA8510 '/d2inlS22', 0x00B21E90 '/d2inlS84', 0x005414A0 '/d2inlS12', 0x004333B3
+  '/d2inlS34'. The lane's `recheck.py` also mis-grades them: it adds `/Oy-` to such an entry (0x005414A0 / 0x00E0A510 graded DIFFER in the
+  nf214 recheck and RELOCATION_MATCH with their own `// Flags:` lines). Fix: write each as `/O2 /Oy /W3 <extra>` (verify_and_land.py's own
+  form) and regrade; nf214's two new entries use the full form. Not changed in nf214 (outside its scope).

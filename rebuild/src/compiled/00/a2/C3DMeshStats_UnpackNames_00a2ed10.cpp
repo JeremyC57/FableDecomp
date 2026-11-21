@@ -1,5 +1,5 @@
 // C3DMeshStats::UnpackNames(std::vector<CCharString>&, bool, const CCharString&, bool) const -- append every packed helper-point (or dummy-object) name that starts with the prefix, once per object stored under it
-// Leaf: ?UnpackNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_NABVCCharString@@1@Z
+// Leaf: ?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_NABVCCharString@@1@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00A2ED10, 468 bytes (ret 10h).
 // Callees: strncmp 0x00BFEAF8, CCharString(const char*, long) 0x0099EBF0 / copy ctor 0x0099EC30 / ~CCharString 0x0099EAE0,
@@ -11,16 +11,23 @@
 // `count` times -- 1 when every name is wanted once, else the number of map entries under the name's CRC
 // (UpperBound - LowerBound over 56- or 20-byte pairs). push_back is the inline STLport form with the __false_type
 // tag over the dead bool slot.
-// Name fix (NF212, 2026-11-21, q6332 / q6341): the header-less __false_type stand-in and the CCharStringVector stand-in's own
-//   three words, push_back and same-TU growth body move onto the shared STLport vector (stlport/fable_containers.h):
-//   CCharStringVector keeps its token (no class of that name under rebuild/include; this row's self leaf uses it) and sits on
-//   std::vector<CCharString> (header-less local class on a shared base). The growth body is STLport's own, visible and out of line
-//   (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE, with the owner row 0x00433530's FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE so its
-//   pick-any copy is the owner's), so push_back's growth call binds the protected IAE vector<CCharString>::_M_insert_overflow
-//   (was the stand-in ?_M_insert_overflow@CCharStringVector@@QAE...K_N, strong in this object). The PDB self spelling
-//   (private const, std::vector<CCharString>&: ?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@..., FableWin.pdb and Ego_r.pdb name
-//   sets) is a separate family: reloc_bindings already holds three spellings at 0x00A2ED10 (QAE stand-in from 0x00A2F0F0, QBE
-//   stand-in from 0x00A2F150, the PDB form from 0x00A2F170); this hand-back leaves the self leaf as it was.
+// Name fix (NF212, 2026-11-21, q6332 / q6341): the header-less __false_type stand-in and the stand-in vector's own push_back and
+//   same-TU growth body moved onto the shared STLport vector (stlport/fable_containers.h). The growth body is STLport's own,
+//   visible and out of line (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE, with the owner row 0x00433530's
+//   FABLE_RETAIL_STLP_UNINIT_COPY_FORCEINLINE so its pick-any copy is the owner's), so push_back's growth call binds the
+//   protected IAE vector<CCharString>::_M_insert_overflow.
+// Name fix (NF214, 2026-11-21, q12343): the self leaf is the PDB spelling, private with a const `this` over
+//   std::vector<CCharString>& (FableWin.pdb 0x031E4CD0 / Ego_r.pdb 0x00B8E770
+//   ?UnpackNames@C3DMeshStats@@ABEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_NABVCCharString@@1@Z; was the
+//   stand-in ?UnpackNames@C3DMeshStats@@QAEXAAUCCharStringVector@@_NABVCCharString@@1@Z), with its callers 0x00A2F0F0 / 0x00A2F120 /
+//   0x00A2F150 on engine/C3DMeshStats.h (0x00A2F170 already bound it). The transitional CCharStringVector wrapper is gone; the local
+//   CCharString / CCRC / CMatrix3x4 models moved onto fable_string.h (FABLE_RETAIL_CCHARSTRING: GetAsCharArray now binds
+//   ?NullChar@CCharString@@1DB 0x0129AAF4 where the local model bound an in-object "" literal), engine/CCRC.h and engine/CMatrix3x4.h.
+//   Still local (no shared header): the C3DMeshStats model (engine/C3DMeshStats.h types the two maps only under
+//   FABLE_RETAIL_C3DMESHSTATS_INITIALISEFROMFILEDATA, whose engine/CPreAllocVectorMap.h / engine/C3DHelperPoint.h exist only in
+//   candidates/manual/pending/2026-11-08_linux_hand868/hdr) and the CHelperPointMap / CDummyObjectMap stand-ins with their same-TU
+//   bound searches. The two map members are `mutable` (stand-in device): the const UnpackNames keeps the HEAD non-const stand-in
+//   bound-search symbols, which landed siblings bind, unchanged.
 // Layout: C3DMeshStats retail offsets as in the landed SaveBinary 0x00A2EAA0 / GetHelperPoint 0x00A2E8C0:
 // HelperPoints +0x38, DummyObjects +0x48, PackedNames +0x74.
 #include "fable_compiler.h"
@@ -31,25 +38,13 @@ extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
 
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0: CRC
+#include "engine/CCRC.h"
 
-class CCharStringData { public: char* Text; long Length; };
-class CCharString { public:
-    CCharStringData* Data;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    CCharString(const CCharString& other);              // 0x0099EC30
-    ~CCharString();                                     // 0x0099EAE0
-    const char* GetText() const { return Data == 0 ? "" : Data->Text; }
-    long GetLength() const { return Data == 0 ? 0 : Data->Length; }
-};
-
-struct CCharStringVector : std::vector<CCharString> { };   // the landed callers' name for the names vector (STLport vector<CCharString>)
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
 
 #include "engine/C3DVector.h"
-class CMatrix3x4 { public: float m_row[3][4]; };
+#include "engine/CMatrix3x4.h"
 struct SHelperPointEntry { unsigned long first; C3DVector Position; long BoneIndex; };        // 20 bytes
 struct SDummyObjectEntry { unsigned long first; CMatrix3x4 Transform; long BoneIndex; };      // 56 bytes
 struct CHelperPointMap {                   // CPreAllocVectorMap<unsigned long, C3DHelperPoint>
@@ -114,26 +109,27 @@ SDummyObjectEntry* CDummyObjectMap::UpperBound(const unsigned long& key)
 class C3DMeshStats { public:
     virtual void v00();
     unsigned char _pad_0x04[0x38 - 0x04];
-    CHelperPointMap HelperPoints;          // +0x38
-    CDummyObjectMap DummyObjects;          // +0x48
+    mutable CHelperPointMap HelperPoints;  // +0x38 (stand-in device: the header-less map stand-ins keep their non-const bound searches under the const UnpackNames)
+    mutable CDummyObjectMap DummyObjects;  // +0x48
     unsigned char _pad_0x58[0x74 - 0x58];
     char* PackedNames;                     // +0x74
     unsigned short PackedNamesSize;        // +0x78
     bool AnimatedFlag;                     // +0x7A
-    FABLE_FORCEINLINE long GetNoHelperPoints(const CCharString& name)
+    FABLE_FORCEINLINE long GetNoHelperPoints(const CCharString& name) const
     {
-        unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
+        unsigned long crc = CCRC::Calc(0, name.GetAsCharArray(), name.GetLength());
         return HelperPoints.UpperBound(crc) - HelperPoints.LowerBound(crc);
     }
-    FABLE_FORCEINLINE long GetNoDummyObjects(const CCharString& name)
+    FABLE_FORCEINLINE long GetNoDummyObjects(const CCharString& name) const
     {
-        unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
+        unsigned long crc = CCRC::Calc(0, name.GetAsCharArray(), name.GetLength());
         return DummyObjects.UpperBound(crc) - DummyObjects.LowerBound(crc);
     }
-    void UnpackNames(CCharStringVector& names, bool dummyObjects, const CCharString& prefix, bool once);
+private:
+    void UnpackNames(std::vector<CCharString>& names, bool dummyObjects, const CCharString& prefix, bool once) const;
 };
 
-void C3DMeshStats::UnpackNames(CCharStringVector& names, bool dummyObjects, const CCharString& prefix, bool once)
+void C3DMeshStats::UnpackNames(std::vector<CCharString>& names, bool dummyObjects, const CCharString& prefix, bool once) const
 {
     if (!PackedNames)
         return;
@@ -145,7 +141,7 @@ void C3DMeshStats::UnpackNames(CCharStringVector& names, bool dummyObjects, cons
     long prefixLength = prefix.GetLength();
     unsigned long length;
     while ((length = strlen(text)) != 0) {
-        if (prefixLength == 0 || strncmp(text, prefix.GetText(), prefixLength) == 0) {
+        if (prefixLength == 0 || strncmp(text, prefix.GetAsCharArray(), prefixLength) == 0) {
             CCharString name(text);
             long count = 1;
             if (!once) {

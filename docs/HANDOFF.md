@@ -9,6 +9,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 ## Account A, 2026-11-21 (owner: B rows released; agents resumed)
 - Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0
   0x00B4D370 0x00BD3070 0x00C73050 0x00CF4EC0): now `parked (released from Account B ...)`; claims line + COORDINATION_LOG entry.
+- **Landed nf214** (`batches/2026-11-21_landing_nf214/README.md`): NF214's 6 rows (UnpackNames family, the two CRetailVector binders), 2,220-row
+  recheck clean, link +1 expected fill_n duplicate (0x0047E196 debt). Naming agent NF215 was paused for it (owner) and resumes now;
+  its scratch is `$S/w22/agentNF215/` (this container: `$S` = /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad).
+  Authoring agent AUTH1 works `$S/w22/auth1/`. FINDINGS 2026-11-21: 15 catalog entries have bare CompilerFlags (build drops /O2).
 - Owner resumed agents on Account A: one authoring agent (no parking: keep working until a row matches; stalls escalate to the
   advisor in the main chat) and one naming agent. This supersedes "no more agents or naming for now" below.
 

@@ -1,0 +1,3 @@
+reloc_bindings.tsv: removed 3 stand-in witnesses (rows no longer emit them), added 0
+00a2ed10 spellings 3 -> 1; 00485dbc 3 -> 2; none grows (two new 0x006116E0 pairs for 0x0066E7BD / 0x0066E799 left out: they would record a pre-existing split, queued)
+0x00A2ED10 binds ?NullChar@CCharString@@1DB -> 0x0129AAF4, the table witness 0x00AE8D50 agrees
