@@ -401857,6 +401857,14 @@ $catalog = @(
         TestSource = '00/66/CThingCreatureBase_GetHeightZBelowAt_00666d40_test.cpp'
         PassPattern = '00666d40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009ce370'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_WriteFileInformation_009ce370.cpp'
+        TestSource = '00/9c/CBankFile_WriteFileInformation_009ce370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '009ce370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

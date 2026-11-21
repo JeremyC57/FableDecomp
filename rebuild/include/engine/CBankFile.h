@@ -145,9 +145,14 @@ public:
     unsigned char               PackedValid[0x10];           // +0x68 CPackedUIntArray
 #endif
     unsigned long               OpenFlags;                   // +0x78
+#ifdef FABLE_RETAIL_CBANKFILE_WRITEFILEINFORMATION
+    CCountedPointer<CDiskFileWin32> BankFile;                // +0x7c (Ego_r.pdb member type)
+    CWideString                 Filename;                    // +0x84 (Ego_r.pdb member type)
+#else
     CDiskFileWin32*             BankFile_Data;               // +0x7c CCountedPointer<CDiskFileWin32>::Data
     CCPPointerInfo*             BankFile_Info;               // +0x80 CCountedPointer<CDiskFileWin32>::Info
     CWideStringData*            Filename_PStringData;        // +0x84 CWideString::PStringData
+#endif
     CCharStringData*            BankHandle_PStringData;      // +0x88 CCharString::PStringData
     bool                        RetailMode;                  // +0x8c
     bool                        ReadOnly;                    // +0x8d
@@ -319,6 +324,51 @@ public:
     void InternalWriteEntryData(unsigned long index, unsigned long dest_offset, const void* src_data, unsigned long src_size);   // 0x009CCCD0
     void UpdateEntryInfoOnly(unsigned long index, class CDataInputStream& info, unsigned long info_size); // 0x009CC8B0
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_WRITEFILEINFORMATION
+    // p25Q opt-in (row 0x009CE370 CBankFile::WriteFileInformation; needs FABLE_RETAIL_CBANKFILE_FILENAMEINDICES,
+    // FABLE_RETAIL_CBANKFILE_ADDENTRYMULTIPLEFILES, FABLE_RETAIL_CBANKFILE_PACKRUNTIMEDATA and FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS;
+    // the includer includes engine/CCountedPointer.h, fable_string.h, engine/CDiskFileWin32.h (FABLE_RETAIL_CDISKFILEWIN32) and
+    // engine/CDataOutputStream.h first): the Ego_r.pdb member types of BankFile / Filename (above) and these members, all with their
+    // Ego_r.pdb / FableWin.pdb spellings and Ego_d.pdb parameter / local names:
+    // - ?MakeWritable@CBankFile@@AAEXXZ (private; out of line in retail at 0x009CBF90, landed, and expanded by WriteFileInformation,
+    //   0x009CE381..0x009CE3BA). Ego_d lines 1464 (the test), 1466 (319 B: a debug-only check), 1467 file_pos from the file's
+    //   GetPosition, 1468 Close, 1469 Open(Filename, read/write, 4), 1470 SetPosition(file_pos), 1471 WrittenToFile = true.
+    // - ?IsEntryInitialised@CBankFile@@ABE_NK@Z (private const; no out-of-line retail copy, expanded at 0x009CE428..0x009CE445). Ego_d
+    //   lines 1931 (43 B: two RuntimeData[index] reads, Valid then DataOffset), 1933 (25 B: UpdateData[index]->RequiresUpdate), 1935
+    //   (`return true`, 4 B), 1938 (`return false`, 2 B).
+    // - ?Align@CBankFile@@QBEKK@Z (out of line in retail at 0x009CBB90, landed; expanded at 0x009CE4C6 and 0x009CE561): Ego_d line 1216
+    //   (37 B), parameter n.
+    // - declarations: GetRandomValidationValue 0x009CC0B0, WritePadding 0x009CCB20, WriteRecoveryFile 0x009CDF50, WriteFileInformation
+    //   0x009CE370 (private), InternalWriteEntryList 0x009CDA70 (public).
+private:
+    void MakeWritable()
+    {
+        if (!WrittenToFile) {
+            unsigned long file_pos = BankFile->GetPosition();
+            BankFile->Close();
+            BankFile->Open(Filename, FILE_ACCESS_READ_WRITE, 4);
+            BankFile->SetPosition(file_pos);
+            WrittenToFile = true;
+        }
+    }
+    bool IsEntryInitialised(unsigned long index) const
+    {
+        if (RuntimeData[index].Valid && RuntimeData[index].DataOffset != 0) {
+            if (!UpdateData[index]->RequiresUpdate)
+                return true;
+        }
+        return false;
+    }
+    unsigned long GetRandomValidationValue();                            // 0x009CC0B0
+    void WritePadding(unsigned long no_bytes);                           // 0x009CCB20
+    void WriteRecoveryFile(unsigned long validate, unsigned long max_index, unsigned long entry_count);   // 0x009CDF50
+    void WriteFileInformation(bool is_valid);                            // 0x009CE370
+public:
+    unsigned long InternalWriteEntryList(CDataOutputStream& os);         // 0x009CDA70
+#ifndef FABLE_RETAIL_CBANKFILE_ALIGN
+    unsigned long Align(unsigned long n) const { return (n + Alignment - 1) / Alignment * Alignment; }
+#endif
+#endif
 };
 #pragma pack(pop)
 
@@ -336,9 +386,14 @@ FABLE_STATIC_ASSERT_AT(256, offsetof(CBankFile, PackedDataSize) == 0x48);
 FABLE_STATIC_ASSERT_AT(257, offsetof(CBankFile, PackedDataType) == 0x58);
 FABLE_STATIC_ASSERT_AT(258, offsetof(CBankFile, PackedValid) == 0x68);
 FABLE_STATIC_ASSERT_AT(259, offsetof(CBankFile, OpenFlags) == 0x78);
+#ifdef FABLE_RETAIL_CBANKFILE_WRITEFILEINFORMATION
+FABLE_STATIC_ASSERT_AT(260, offsetof(CBankFile, BankFile) == 0x7c);
+FABLE_STATIC_ASSERT_AT(262, offsetof(CBankFile, Filename) == 0x84);
+#else
 FABLE_STATIC_ASSERT_AT(260, offsetof(CBankFile, BankFile_Data) == 0x7c);
 FABLE_STATIC_ASSERT_AT(261, offsetof(CBankFile, BankFile_Info) == 0x80);
 FABLE_STATIC_ASSERT_AT(262, offsetof(CBankFile, Filename_PStringData) == 0x84);
+#endif
 FABLE_STATIC_ASSERT_AT(263, offsetof(CBankFile, BankHandle_PStringData) == 0x88);
 FABLE_STATIC_ASSERT_AT(264, offsetof(CBankFile, RetailMode) == 0x8c);
 FABLE_STATIC_ASSERT_AT(265, offsetof(CBankFile, ReadOnly) == 0x8d);

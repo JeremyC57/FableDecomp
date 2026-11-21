@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009ce370   RELOCATION_MATCH PASS   WriteFileInformation
+
+WINS: 1
+  009ce370 RELOCATION_MATCH CBankFile::?WriteFileInformation@CBankFile@@AAEX_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CBankFile_WriteFileInformation_009ce370
