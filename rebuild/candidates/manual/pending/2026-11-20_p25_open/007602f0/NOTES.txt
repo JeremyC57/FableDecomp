@@ -27,3 +27,10 @@ Measured flat (2 lines): six GFArcCos body spellings (all three sites / closings
 interp, index; 443 B) is a table lookup; retail calls _CIacos. No FableWin float(float) helper is a no-op.
 Ego_d lines: 309:24 / 317:24 vector inits, 328:44 / 338:44 assignments, no Normalise-sized lines (310/318/329/339), 313:100, 324:8, 342:122 single tail.
 Open lead: a construct that stores closing1's acos result to a float and reads it back, without an Ego_d-absent local.
+
+p25Q (2026-11-21), via the coordinator:
+- bracket_p25Q_paren_threefloat.cpp is a RELOCATION_MATCH. It is held as a `// Bracket:` because its three-float edges contradict Ego_d.
+- Ego_d's first / second / this_line / last_line are all C3DVector (TPI 0x2460).
+- The three-float declaration is 30 B and the assignment 47 B at VC7.1 /Od (41 / 58 B with VC10 deltas), against Ego_d's 24 / 44 B. Ego_d-fitting edge texts fail retail (1181 / 1114 / 1130).
+- FABLE_RETAIL_GFANGLES_ARCCOS_PAREN_CAST (hdr_p25Q_gfangles_paren.diff): the parentheses add the IL 0x269 float-copy node. 0x005DB180 compares SAME for both bodies, and the landed GFArcCos users 0x007C0690 / 0x006AB820 stay RELOCATION_MATCH with it.
+- The row stays reserved and on the Windows request: retail's text at the edge lines may differ from the Ego_d / FableWin revision.
