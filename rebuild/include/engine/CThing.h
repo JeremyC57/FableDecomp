@@ -121,6 +121,18 @@ protected:
 private:
     unsigned char InitialisationStage : 3;
 public:
+#ifdef FABLE_RETAIL_CTHING_ENTITYINITLEVEL
+    // p25Q opt-in (rows 0x0051E2F0 CThingManager::ActivateThings / 0x00521CF0): Ego_d.pdb nested enum CThing::EEntityInitLevel (TPI 0xB79E:
+    // ENTITY_INIT_NONE 0, ENTITY_INIT_ON_CREATE 1, ENTITY_INIT_INITIAL_ACTIVATE 2, ENTITY_INIT_DONE 3; the InitialisationStage bitfield
+    // type) and the private const accessor ?GetEntityInitLevel@CThing@@ABE?AW4EEntityInitLevel@1@XZ (FableWin.pdb 0x01CF5C90; Ego_d line 192,
+    // 26 B), inline in retail (0x0051E332 `test byte ptr [ecx+94h],7`). ActivateThings calls it from CThingManager (Ego_d lines 2059 /
+    // 2075 / 2093: one 8-B call each), so CThingManager is a friend of CThing. No layout change.
+    enum EEntityInitLevel { ENTITY_INIT_NONE = 0, ENTITY_INIT_ON_CREATE = 1, ENTITY_INIT_INITIAL_ACTIVATE = 2, ENTITY_INIT_DONE = 3 };
+    friend class CThingManager;
+private:
+    EEntityInitLevel GetEntityInitLevel() const { return (EEntityInitLevel)InitialisationStage; }
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHING_TCDRIVER
     // Retail opt-in (chunk 864, row 0x0050A650 via the CThingSearchTools TCD rough-area body; kept outside the FABLE_RETAIL_CTHING
     // method block so the body opt-in does not need it): FableWin.pdb

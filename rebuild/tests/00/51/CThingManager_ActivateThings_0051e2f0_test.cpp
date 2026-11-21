@@ -1,147 +1,101 @@
-#include "fable_compiler.h"
-#include <cstdio>
-#include <cstring>
-#if !defined(_MSC_VER)
-#define __int64 long long
-#define __fastcall
-#define __cdecl
-#define __stdcall
-#define __forceinline inline
-#define __declspec(x)
-#endif
-// CThingManager::ActivateThings(vector<CThing*>& things) -- bring freshly created things through their three initialisation stages (stage 0: virtual slot 8, stage 1: OnCreate slot 9, stage 2: Activate slot 10) with a progress line before each thing; the hero is skipped while the game component's flag at +0x101 is set, and the stage-2 hero is activated last (when alive)
-// Leaf: ?ActivateThings@CThingManager
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0051E2F0, length 395 bytes (+5 int3), `ret 4`.
-//   Name and argument from the catalog / engine_api (`CThingManager::ActivateThings(vector<CThing*>*)`).
-// Callees: CCharString(const char*, long) @ 0x0099EBF0, DisplayProgress(const CCharString&, float, bool, bool)
-//   @ 0x009E9F40 (`__fastcall`), ~CCharString @ 0x0099EAE0; the things' virtual slots 8/9/10 (+0x20/+0x24/+0x28).
-//   Strings "Activate Things" @ 0x01244E24, "Activate Things: OnCreate" @ 0x01244E08, "Activate Things: Initial
-//   Activate" @ 0x01244DE4, "Activate Things End" @ 0x01244DD0.
-// Shape: each progress line is an inline helper with a named CCharString local (retail builds the string before the
-//   float/bool pushes and re-leas its address for the call -- the 0x0051E2F0 "named local in an inline" idiom).
-// Layout (retail): CThing ThingType byte +0x10, Dead bit 0 of +0x91, InitialisationStage bits 0..2 of +0x94 (Ego_r.pdb
-//   +0xa1/+0xa4, CThing 0x10 lower); CThingManager +0x24 the main game component (Ego_r.pdb Component +0x28 -- the
-//   base part is 4 smaller in retail; unproven), whose bool at +0x101 holds the hero back.
+// Behaviour test for 0x0051E2F0 CThingManager::ActivateThings (links the REAL row object). The things are raw retail-layout objects:
+// a fake vtable whose slots 8 / 9 / 10 (OnCreate / InitialActivate / OnInitialActivate) log the call, the type byte +0x10, the Dead bit
+// 0 of +0x91 and the InitialisationStage bits 0..2 of +0x94 (higher bits of that word set to check the mask). The manager is raw
+// storage whose World reference +0x24 points at a CWorld buffer with SerialiseAboutToLoadHeroState at +0x101. CCharString and
+// NProgressDisplay::DisplayProgress are stubs under the row's mangled names. The expected call log comes from an independent model:
+// three passes in thing order (a progress line per thing in each), the held-back player creature, and the closing progress line.
+#include <stdio.h>
+#include <string.h>
+namespace std {
+template<class T> class allocator {};
+template<class T, class A = allocator<T> > class vector { public: T* s; T* f; T* e; };   // STLport: _M_start, _M_finish, _M_end_of_storage
+}
+class CThing;
 class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
+    const char* Text;
+    CCharString(const char* text, long length);
+    ~CCharString();
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
-FABLE_FORCEINLINE void ShowProgress(const char* message)
-{
-    CCharString text(message);
-    DisplayProgress(text, -1.0f, false, false);
-}
-
-class CThing { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void Initialise();                          // slot 8
-    virtual void OnCreate();                            // slot 9
-    virtual void Activate();                            // slot 10
-    unsigned char  _pad04[0x10 - 4];
-    unsigned char  ThingType;                           // +0x10
-    unsigned char  _pad11[0x91 - 0x11];
-    unsigned char  Dead : 1;                            // +0x91 bit 0
-    unsigned char  _bits91 : 7;
-    unsigned char  _pad92[2];
-    unsigned char  InitialisationStage : 3;             // +0x94 bits 0..2
-    unsigned char  _bits94 : 5;
-};
-
-template<class T> struct vector {
-    T* _Myfirst;
-    T* _Mylast;
-    T* _Myend;
-    T* begin() { return _Myfirst; }
-    T* end() { return _Mylast; }
-};
-
-class CMainGameComponent { public:
-    unsigned char _pad00[0x101];
-    bool          HoldHero;                             // +0x101
-};
-
 class CThingManager { public:
-    unsigned char       _pad00[0x24];
-    CMainGameComponent* Component;                      // +0x24
-    void ActivateThings(vector<CThing*>& things);
+    void ActivateThings(const std::vector<CThing*>& activate_these_things);
 };
-
-void CThingManager::ActivateThings(vector<CThing*>& things)
-{
-    CThing** it;
-    for (it = things.begin(); it != things.end(); ++it) {
-        ShowProgress("Activate Things");
-        CThing* thing = *it;
-        if (thing->InitialisationStage == 0 && (thing->ThingType != 2 || !Component->HoldHero))
-            thing->Initialise();
-    }
-    for (it = things.begin(); it != things.end(); ++it) {
-        ShowProgress("Activate Things: OnCreate");
-        CThing* thing = *it;
-        if (thing->InitialisationStage == 1 && (thing->ThingType != 2 || !Component->HoldHero))
-            thing->OnCreate();
-    }
-    CThing* hero = 0;
-    for (it = things.begin(); it != things.end(); ++it) {
-        ShowProgress("Activate Things: Initial Activate");
-        CThing* thing = *it;
-        if (thing->InitialisationStage == 2) {
-            if (thing->ThingType == 2)
-                hero = thing;
-            else
-                thing->Activate();
-        }
-    }
-    if (hero && !hero->Dead && !Component->HoldHero)
-        hero->Activate();
-    ShowProgress("Activate Things End");
-}
-
-void CThing::v00() {}
-void CThing::v01() {}
-void CThing::v02() {}
-void CThing::v03() {}
-void CThing::v04() {}
-void CThing::v05() {}
-void CThing::v06() {}
-void CThing::v07() {}
-static int g_lines = 0, g_strings = 0;
-CCharString::CCharString(const char* text, long) { PStringData = (void*)text; ++g_strings; }
-CCharString::~CCharString() { --g_strings; }
-static const char* g_last = 0;
+static int g_fail = 0, g_live = 0;
+static char g_log[4096]; static int g_len = 0;
+static void Log(const char* s) { int n = (int)strlen(s); if (g_len + n + 2 < (int)sizeof(g_log)) { memcpy(g_log + g_len, s, n); g_len += n; g_log[g_len++] = ' '; g_log[g_len] = 0; } }
+static void Check(bool ok, int line) { if (!ok) { g_fail = 1; printf("check failed at line %d\n", line); } }
+CCharString::CCharString(const char* text, long length) { Text = text; ++g_live; if (length != -1) { g_fail = 1; printf("length %ld\n", length); } }
+CCharString::~CCharString() { --g_live; }
+namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b)
-{ ++g_lines; g_last = (const char*)text.PStringData; if (progress != -1.0f || a || b) g_lines = -1000; }
-static char g_log[64]; static int g_n = 0;
-struct CTestThing : CThing { char id; };
-void CThing::Initialise() { g_log[g_n++] = 'i'; g_log[g_n++] = ((CTestThing*)this)->id; InitialisationStage = 1; }
-void CThing::OnCreate() { g_log[g_n++] = 'c'; g_log[g_n++] = ((CTestThing*)this)->id; InitialisationStage = 2; }
-void CThing::Activate() { g_log[g_n++] = 'a'; g_log[g_n++] = ((CTestThing*)this)->id; }
-#define CHECK(c) if (!(c)) { std::printf("0051e2f0_TEST FAIL line %d\n", __LINE__); return 1; }
-
+{
+    if (progress != -1.0f || a || b) { g_fail = 1; printf("bad progress args\n"); }
+    if (!strcmp(text.Text, "Activate Things")) Log("P1");
+    else if (!strcmp(text.Text, "Activate Things: OnCreate")) Log("P2");
+    else if (!strcmp(text.Text, "Activate Things: Initial Activate")) Log("P3");
+    else if (!strcmp(text.Text, "Activate Things End")) Log("P4");
+    else { g_fail = 1; printf("unexpected text %s\n", text.Text); }
+}
+}
+class FakeThing { public:
+    virtual void v0() {} virtual void v1() {} virtual void v2() {} virtual void v3() {}
+    virtual void v4() {} virtual void v5() {} virtual void v6() {} virtual void v7() {}
+    virtual void OnCreate() { Mark('C'); }              // slot 8
+    virtual void InitialActivate() { Mark('I'); }       // slot 9
+    virtual void OnInitialActivate() { Mark('A'); }     // slot 10
+    unsigned char Raw[0xA0];                            // +0x04..
+    int Id;
+    void Mark(char c) { char b[16]; sprintf(b, "%c%d", c, Id); Log(b); }
+    void Set(int id, int type, int stage, bool dead)
+    {
+        memset(Raw, 0xA5, sizeof(Raw)); Id = id;
+        Raw[0x10 - 4] = (unsigned char)type;
+        Raw[0x91 - 4] = (unsigned char)(dead ? 0xFF : 0xFE);           // only bit 0 is Dead
+        unsigned long w = 0xFFFFFFF8ul | (unsigned long)stage;          // only bits 0..2 are the stage
+        memcpy(&Raw[0x94 - 4], &w, 4);
+    }
+};
+struct Spec { int type, stage; bool dead; };
+static void Model(const Spec* t, int n, bool flag, char* out)
+{
+    char b[16]; out[0] = 0;
+#define ADD(s) strcat(out, s), strcat(out, " ")
+    for (int i = 0; i != n; ++i) { ADD("P1"); if (t[i].stage == 0 && !(t[i].type == 2 && flag)) { sprintf(b, "C%d", i); ADD(b); } }
+    for (int i = 0; i != n; ++i) { ADD("P2"); if (t[i].stage == 1 && !(t[i].type == 2 && flag)) { sprintf(b, "I%d", i); ADD(b); } }
+    int hero = -1;
+    for (int i = 0; i != n; ++i) { ADD("P3"); if (t[i].stage == 2) { if (t[i].type == 2) hero = i; else { sprintf(b, "A%d", i); ADD(b); } } }
+    if (hero >= 0 && !t[hero].dead && !flag) { sprintf(b, "A%d", hero); ADD(b); }
+    ADD("P4");
+#undef ADD
+}
+static void Run(const Spec* t, int n, bool flag, int line)
+{
+    static FakeThing things[16]; CThing* ptrs[16];
+    for (int i = 0; i != n; ++i) { things[i].Set(i, t[i].type, t[i].stage, t[i].dead); ptrs[i] = (CThing*)&things[i]; }
+    unsigned char world[0x200]; memset(world, 0x5A, sizeof(world)); world[0x101] = flag ? 1 : 0;
+    unsigned char mgr[0x100]; memset(mgr, 0, sizeof(mgr)); void* pw = world; memcpy(mgr + 0x24, &pw, 4);
+    std::vector<CThing*> v; v.s = ptrs; v.f = ptrs + n; v.e = ptrs + n;
+    g_len = 0; g_log[0] = 0;
+    ((CThingManager*)mgr)->ActivateThings(v);
+    char want[4096]; Model(t, n, flag, want);
+    Check(!strcmp(g_log, want), line);
+    if (strcmp(g_log, want)) printf("  got  %s\n  want %s\n", g_log, want);
+    Check(g_live == 0, line);
+}
 int main()
 {
-    static CTestThing a, b, hero, deadHero; a.id = 'A'; b.id = 'B'; hero.id = 'H'; deadHero.id = 'D';
-    a.ThingType = 1; b.ThingType = 3; hero.ThingType = 2; b.InitialisationStage = 1;
-    static CThing* list[3] = { &a, &b, &hero };
-    vector<CThing*> v; v._Myfirst = list; v._Mylast = list + 3; v._Myend = list + 3;
-    static CMainGameComponent comp; static CThingManager mgr; mgr.Component = &comp;
-    mgr.ActivateThings(v);
-    CHECK(std::strcmp(g_log, "iAiHcAcBcHaAaBaH") == 0);
-    CHECK(g_lines == 10 && g_strings == 0 && std::strcmp(g_last, "Activate Things End") == 0);
-    g_n = 0; std::memset(g_log, 0, sizeof g_log); g_lines = 0;
-    a.InitialisationStage = 0; b.InitialisationStage = 2; hero.InitialisationStage = 0; comp.HoldHero = true;
-    mgr.ActivateThings(v);                                   // hero held back at every stage
-    CHECK(std::strcmp(g_log, "iAcAaAaB") == 0 && g_lines == 10);
-    g_n = 0; std::memset(g_log, 0, sizeof g_log);
-    comp.HoldHero = false; hero.InitialisationStage = 2; hero.Dead = 1; a.InitialisationStage = 3; b.InitialisationStage = 3;
-    mgr.ActivateThings(v);                                   // dead stage-2 hero is not activated
-    CHECK(g_n == 0);
-    hero.Dead = 0; v._Mylast = list;
-    mgr.ActivateThings(v);                                   // empty list: only the end line
-    CHECK(g_n == 0 && std::strcmp(g_last, "Activate Things End") == 0);
-    std::printf("0051e2f0_TEST PASS\n");
-    return 0;
+    // every type / stage / dead mix, a player creature at each stage, two player creatures at stage 2 (the last one is held back)
+    Spec a[] = { { 1, 0, false }, { 2, 0, false }, { 3, 1, false }, { 2, 1, true }, { 1, 2, false }, { 2, 2, false }, { 4, 3, false },
+                 { 2, 2, false }, { 0, 2, true }, { 15, 1, false }, { 2, 3, false }, { 1, 0, true } };
+    Run(a, 12, false, __LINE__);
+    Run(a, 12, true, __LINE__);                 // the world is about to load hero state: player creatures skipped, held hero not activated
+    Spec b[] = { { 1, 2, false }, { 2, 2, true } };
+    Run(b, 2, false, __LINE__);                 // the held hero is dead: not activated
+    Spec c[] = { { 2, 2, false }, { 3, 2, false } };
+    Run(c, 2, false, __LINE__);                 // the held hero is activated after the others
+    Run(c, 2, true, __LINE__);
+    Spec d[] = { { 3, 0, false }, { 3, 1, false }, { 3, 2, false } };
+    Run(d, 3, true, __LINE__);                  // no player creature: the flag changes nothing
+    Run(d, 0, false, __LINE__);                 // empty: only the closing progress line
+    if (!g_fail) printf("0051e2f0_TEST PASS\n");
+    return g_fail;
 }

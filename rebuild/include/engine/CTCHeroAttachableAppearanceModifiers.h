@@ -21,8 +21,19 @@ enum EHeroAttachableAppearanceModifierType {
     NO_OF_APPEARANCE_MODIFIER_TYPES=3
 };
 #endif
+#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
+// p25Q opt-in (row 0x0051F0E0 CThingManager::CopyHeroToHero): the class's RTTI bases (ghidra_out/rtti_bases.tsv
+// .?AVCTCHeroAttachableAppearanceModifiers@@: CTCBase@0, NGraphicAppearance::CAGraphicAppearanceComponent@12) in place of the flattened
+// vptr / +0x04 / +0x08 / +0x0C words below (CTCBase is 0xC; the second base's vptr is +0xC), so a `const CTCHeroAttachableAppearanceModifiers&`
+// converts to `const CTCBase&` (CThing::AddAndCopyTC). Needs FABLE_RETAIL_CTCBASE. Layout unchanged (the asserts below hold).
+#include "engine/CTCBase.h"
+#include "engine/NGraphicAppearance_CAGraphicAppearanceComponent.h"
+#pragma pack(push, 1)
+class CTCHeroAttachableAppearanceModifiers : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent {
+#else
 #pragma pack(push, 1)
 class CTCHeroAttachableAppearanceModifiers {
+#endif
 public:
 #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_ADDWITHREPLACE
     // NF91 opt-in (round 7, q11198 row 0x0059D9C2 CTCInventoryTrade::ApplyHairCard): Ego_r.pdb (0x0055BD50) + FableWin.pdb
@@ -63,12 +74,14 @@ public:
     // out of line at 0x00706000 (`push ebx(0) ; push [eax+28h] ; call 00706000h`, 0x0059FC6E).
     bool IsWearingAppearanceModifier(long defIndex, EHeroAttachableAppearanceModifierType type) const;   // 0x00706000
 #endif
+#ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
 #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
 #endif
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
+#endif
     unsigned long FrameLastChanged;                          // +0x10
     unsigned char AppearanceModifiersLoaded[0x2];            // +0x14 bitfield group: bool:1
     unsigned char _pad_0x16[0x2];                            // +0x16
@@ -96,8 +109,10 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT_AT(85, sizeof(CTCHeroAttachableAppearanceModifiers) == 0x48);
+#ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
 #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
 FABLE_STATIC_ASSERT_AT(87, offsetof(CTCHeroAttachableAppearanceModifiers, __vftable) == 0x0);
+#endif
 #endif
 FABLE_STATIC_ASSERT_AT(89, offsetof(CTCHeroAttachableAppearanceModifiers, FrameLastChanged) == 0x10);
 FABLE_STATIC_ASSERT_AT(90, offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiersLoaded) == 0x14);

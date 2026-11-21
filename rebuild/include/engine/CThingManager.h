@@ -13,6 +13,21 @@
 class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
 class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
 class CMemoryDataInputStream; class CASuspendableProcess;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADMAINPLAYERCREATURESTATE
+// p25Q opt-in (row 0x00521CF0): Ego_d.pdb public ?HeroSwapInProgress@NThingManager@@3_NA, the byte flag at 0x013B8A88. The row sets it around
+// the hero swap (0x00521DC0 / 0x00521E49), and the hero-component Copy bodies test it (landed CTCHeroStats::Copy 0x0057C9C4,
+// CTCInventoryStats::Copy 0x005CDC1C, CTCInventoryAbilities::Copy 0x005F3DC6; descriptive spellings there).
+namespace NThingManager { extern bool HeroSwapInProgress; }             // 0x013B8A88
+#endif
+#ifdef FABLE_RETAIL_THING_TYPE_IDS
+// p25Q opt-in (rows 0x0051E2F0 / 0x00521CF0): Ego_d.pdb unnamed enum (TPI 0x22AF, field list 0x22AE), the thing type ids
+// CThingManager::InitThingTypes registers (landed 0x00522A20: 2 = "PlayerCreature", 1 = "AICreature", 13 = "Dead Creature", ...),
+// i.e. CClass::Type +0x10.
+enum { THING_TYPE_NULL = 0, THING_TYPE_AI_CREATURE = 1, THING_TYPE_PLAYER_CREATURE = 2, THING_TYPE_BUILDING = 3, THING_TYPE_VILLAGE = 4,
+       THING_TYPE_OBJECT = 5, THING_TYPE_SOUND_EMITTER = 6, THING_TYPE_HOLY_SITE = 7, THING_TYPE_PLAYER_START = 8, THING_TYPE_SWITCH = 9,
+       THING_TYPE_TRACK_NODE = 10, THING_TYPE_MARKER = 11, THING_TYPE_PHYSICAL_SWITCH = 12, THING_TYPE_DEAD_CREATURE = 13,
+       THING_TYPE_NOISE = 14, THING_TYPE_DRIVER = 15, MAX_NO_THING_TYPES = 16 };
+#endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_RUNTIMESAVE
 class CMemoryDataOutputStream;                                  // row 0x00523CF0: SaveEntitiesBinary's parameter
 #endif
@@ -160,6 +175,19 @@ public:
     void LoadFromFile(CCountedPointer<CAFile> file, long version, std::set<CCharString> names,
                       std::vector<CThing*>& things, CASuspendableProcess* process, int mode);   // 0x00521AE0
     void ActivateThings(const std::vector<CThing*>& things);   // 0x0051E2F0
+#endif
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADMAINPLAYERCREATURESTATE
+    // p25Q opt-in (row 0x00521CF0): Ego_r.pdb (0x0052BD50) / FableWin.pdb (0x01D37120) ?LoadMainPlayerCreatureState@CThingManager@@QAEXAAVCCharString@@@Z
+    // (public) and ?CopyHeroToHero@CThingManager@@AAEXAAVCThing@@0AAV?$vector@PAVCThing@@..@std@@@Z (private, landed 0x0051F0E0), and
+    // ?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@..@std@@@Z (landed 0x0051E2F0) when FABLE_RETAIL_CTHINGMANAGER_WORLDLOAD
+    // does not already declare it. Declarations only (Ego_d parameter names): no layout change.
+    void LoadMainPlayerCreatureState(CCharString& old_script);           // 0x00521CF0
+#ifndef FABLE_RETAIL_CTHINGMANAGER_WORLDLOAD
+    void ActivateThings(const std::vector<CThing*>& activate_these_things);   // 0x0051E2F0
+#endif
+private:
+    void CopyHeroToHero(CThing& loaded_hero, CThing& hero, std::vector<CThing*>& loaded_things);   // 0x0051F0E0
+public:
 #endif
 #ifdef FABLE_RETAIL_CTHINGMANAGER_THINGTYPEFLAGS
     // Retail opt-in (chunk 2008, row 0x004CA390 CThing::ConstructFromBinarySave): Ego_r.pdb 0x00528260 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z,

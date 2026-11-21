@@ -1,0 +1,107 @@
+--- a/rebuild/include/engine/CThingManager.h
++++ b/rebuild/include/engine/CThingManager.h
+@@ -13,6 +13,21 @@
+ class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
+ class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
+ class CMemoryDataInputStream; class CASuspendableProcess;
++#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADMAINPLAYERCREATURESTATE
++// p25Q opt-in (row 0x00521CF0): Ego_d.pdb public ?HeroSwapInProgress@NThingManager@@3_NA, the byte flag at 0x013B8A88. The row sets it around
++// the hero swap (0x00521DC0 / 0x00521E49), and the hero-component Copy bodies test it (landed CTCHeroStats::Copy 0x0057C9C4,
++// CTCInventoryStats::Copy 0x005CDC1C, CTCInventoryAbilities::Copy 0x005F3DC6; descriptive spellings there).
++namespace NThingManager { extern bool HeroSwapInProgress; }             // 0x013B8A88
++#endif
++#ifdef FABLE_RETAIL_THING_TYPE_IDS
++// p25Q opt-in (rows 0x0051E2F0 / 0x00521CF0): Ego_d.pdb unnamed enum (TPI 0x22AF, field list 0x22AE), the thing type ids
++// CThingManager::InitThingTypes registers (landed 0x00522A20: 2 = "PlayerCreature", 1 = "AICreature", 13 = "Dead Creature", ...),
++// i.e. CClass::Type +0x10.
++enum { THING_TYPE_NULL = 0, THING_TYPE_AI_CREATURE = 1, THING_TYPE_PLAYER_CREATURE = 2, THING_TYPE_BUILDING = 3, THING_TYPE_VILLAGE = 4,
++       THING_TYPE_OBJECT = 5, THING_TYPE_SOUND_EMITTER = 6, THING_TYPE_HOLY_SITE = 7, THING_TYPE_PLAYER_START = 8, THING_TYPE_SWITCH = 9,
++       THING_TYPE_TRACK_NODE = 10, THING_TYPE_MARKER = 11, THING_TYPE_PHYSICAL_SWITCH = 12, THING_TYPE_DEAD_CREATURE = 13,
++       THING_TYPE_NOISE = 14, THING_TYPE_DRIVER = 15, MAX_NO_THING_TYPES = 16 };
++#endif
+ #ifdef FABLE_RETAIL_CTHINGMANAGER_RUNTIMESAVE
+ class CMemoryDataOutputStream;                                  // row 0x00523CF0: SaveEntitiesBinary's parameter
+ #endif
+@@ -161,6 +176,19 @@
+                       std::vector<CThing*>& things, CASuspendableProcess* process, int mode);   // 0x00521AE0
+     void ActivateThings(const std::vector<CThing*>& things);   // 0x0051E2F0
+ #endif
++#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADMAINPLAYERCREATURESTATE
++    // p25Q opt-in (row 0x00521CF0): Ego_r.pdb (0x0052BD50) / FableWin.pdb (0x01D37120) ?LoadMainPlayerCreatureState@CThingManager@@QAEXAAVCCharString@@@Z
++    // (public) and ?CopyHeroToHero@CThingManager@@AAEXAAVCThing@@0AAV?$vector@PAVCThing@@..@std@@@Z (private, landed 0x0051F0E0), and
++    // ?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@..@std@@@Z (landed 0x0051E2F0) when FABLE_RETAIL_CTHINGMANAGER_WORLDLOAD
++    // does not already declare it. Declarations only (Ego_d parameter names): no layout change.
++    void LoadMainPlayerCreatureState(CCharString& old_script);           // 0x00521CF0
++#ifndef FABLE_RETAIL_CTHINGMANAGER_WORLDLOAD
++    void ActivateThings(const std::vector<CThing*>& activate_these_things);   // 0x0051E2F0
++#endif
++private:
++    void CopyHeroToHero(CThing& loaded_hero, CThing& hero, std::vector<CThing*>& loaded_things);   // 0x0051F0E0
++public:
++#endif
+ #ifdef FABLE_RETAIL_CTHINGMANAGER_THINGTYPEFLAGS
+     // Retail opt-in (chunk 2008, row 0x004CA390 CThing::ConstructFromBinarySave): Ego_r.pdb 0x00528260 ?ThingTypeToTypeFlags@CThingManager@@QBEKJ@Z,
+     // out of line in retail at 0x0051E580 (`mov ecx,[ecx+3Ch] ; lea eax,[eax+eax*2] ; mov eax,[ecx+eax*4+4]`: ThingTypeInfo[type].ThingTypeFlags;
+--- a/rebuild/include/engine/CTCHeroMorph.h
++++ b/rebuild/include/engine/CTCHeroMorph.h
+@@ -24,6 +24,11 @@
+ class CTCHeroMorph : public CTCBase {
+ public:
+     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_APPEARANCE_MORPH; }
++#ifdef FABLE_RETAIL_CTCHEROMORPH_KILLPARTICLES
++    // p25Q opt-in (row 0x0051F0E0 CThingManager::CopyHeroToHero): Ego_r.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ, out of line in retail at
++    // 0x0071C260 (`mov ecx,<morph> ; call 0071C260h`, 0x0051F17B). Declaration only.
++    void KillParticles();                                                 // 0x0071C260
++#endif
+ #ifdef FABLE_RETAIL_CTCHEROMORPH
+     void GetTattoos(std::vector<CDefPointer<const CTattooDef> >& tattoos) const;   // 0x0071DD50
+     long HasAPermanentTattooCoveringArea() const;                                   // 0x0071C2D0
+--- a/rebuild/include/engine/CTCHeroAttachableAppearanceModifiers.h
++++ b/rebuild/include/engine/CTCHeroAttachableAppearanceModifiers.h
+@@ -21,8 +21,19 @@
+     NO_OF_APPEARANCE_MODIFIER_TYPES=3
+ };
+ #endif
++#ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
++// p25Q opt-in (row 0x0051F0E0 CThingManager::CopyHeroToHero): the class's RTTI bases (ghidra_out/rtti_bases.tsv
++// .?AVCTCHeroAttachableAppearanceModifiers@@: CTCBase@0, NGraphicAppearance::CAGraphicAppearanceComponent@12) in place of the flattened
++// vptr / +0x04 / +0x08 / +0x0C words below (CTCBase is 0xC; the second base's vptr is +0xC), so a `const CTCHeroAttachableAppearanceModifiers&`
++// converts to `const CTCBase&` (CThing::AddAndCopyTC). Needs FABLE_RETAIL_CTCBASE. Layout unchanged (the asserts below hold).
++#include "engine/CTCBase.h"
++#include "engine/NGraphicAppearance_CAGraphicAppearanceComponent.h"
++#pragma pack(push, 1)
++class CTCHeroAttachableAppearanceModifiers : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent {
++#else
+ #pragma pack(push, 1)
+ class CTCHeroAttachableAppearanceModifiers {
++#endif
+ public:
+ #ifdef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_ADDWITHREPLACE
+     // NF91 opt-in (round 7, q11198 row 0x0059D9C2 CTCInventoryTrade::ApplyHairCard): Ego_r.pdb (0x0055BD50) + FableWin.pdb
+@@ -63,12 +74,14 @@
+     // out of line at 0x00706000 (`push ebx(0) ; push [eax+28h] ; call 00706000h`, 0x0059FC6E).
+     bool IsWearingAppearanceModifier(long defIndex, EHeroAttachableAppearanceModifierType type) const;   // 0x00706000
+ #endif
++#ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
+ #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
+     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+ #endif
+     unsigned char _pad_0x04[0x4];                            // +0x04
+     unsigned char _pad_0x08[0x4];                            // +0x08
+     unsigned char _pad_0x0c[0x4];                            // +0x0c
++#endif
+     unsigned long FrameLastChanged;                          // +0x10
+     unsigned char AppearanceModifiersLoaded[0x2];            // +0x14 bitfield group: bool:1
+     unsigned char _pad_0x16[0x2];                            // +0x16
+@@ -96,9 +109,11 @@
+ #pragma pack(pop)
+ 
+ FABLE_STATIC_ASSERT_AT(85, sizeof(CTCHeroAttachableAppearanceModifiers) == 0x48);
++#ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_TCBASE
+ #ifndef FABLE_RETAIL_CTCHEROATTACHABLEAPPEARANCEMODIFIERS_VSLOTS
+ FABLE_STATIC_ASSERT_AT(87, offsetof(CTCHeroAttachableAppearanceModifiers, __vftable) == 0x0);
+ #endif
++#endif
+ FABLE_STATIC_ASSERT_AT(89, offsetof(CTCHeroAttachableAppearanceModifiers, FrameLastChanged) == 0x10);
+ FABLE_STATIC_ASSERT_AT(90, offsetof(CTCHeroAttachableAppearanceModifiers, AppearanceModifiersLoaded) == 0x14);
+ FABLE_STATIC_ASSERT_AT(91, offsetof(CTCHeroAttachableAppearanceModifiers, PrimHandles) == 0x18);

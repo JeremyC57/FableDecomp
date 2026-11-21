@@ -1,0 +1,6 @@
+# old_name	new_name	address	evidence
+# The row's own name is right: ?CopyHeroToHero@CThingManager@@AAEXAAVCThing@@0AAV?$vector@PAVCThing@@..@std@@@Z (Ego_r.pdb, FableWin.pdb, Ego_d.pdb; private).
+# Spellings the re-port removes from the landed row text and test (local models, no other landed user):
+CTCBase::CopyStateFrom (slot 12, local model)	CTCBase::Copy (here CTCInventoryAbilities::Copy / CTCInventoryStats::Copy)	slot 12 (+0x30)	Ego_r.pdb ?Copy@CTCBase@@UAEXABV1@@Z 0x006B1CA0, ?Copy@CTCInventoryAbilities@@UAEXABVCTCBase@@@Z 0x005852A5; shared engine/CTCBase.h slot 12 Copy
+parameters from / to / things	loaded_hero / hero / loaded_things	-	Ego_d.pdb CopyHeroToHero parameters
+"the type-3 component's reset" (comment)	CTCHeroMorph::KillParticles	0x0071C260	Ego_r.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ (already the landed binding name)

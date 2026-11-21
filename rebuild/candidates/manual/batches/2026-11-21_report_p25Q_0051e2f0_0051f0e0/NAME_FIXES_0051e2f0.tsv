@@ -1,0 +1,14 @@
+# old_name	new_name	address	evidence
+# The row's own name is right: ?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@..@std@@@Z (Ego_r.pdb, FableWin.pdb 0x01D3B850, Ego_d.pdb).
+# Spellings the re-port removes from the landed row text and test (local models, no other landed user):
+CThing::Initialise (slot 8, local model)	CThing::OnCreate	0x004C9560	vtable slot 8 = ?OnCreate@CThing@@UAE_NXZ (Ego_r.pdb; shared engine/CThing.h ORIGINAL_VTABLE order); Ego_d ActivateThings line 2066
+CThing::OnCreate (slot 9, local model)	CThing::InitialActivate	0x004C9690	vtable slot 9 = ?InitialActivate@CThing@@UAEXXZ (Ego_r.pdb; shared engine/CThing.h); Ego_d line 2082
+CThing::Activate (slot 10, local model)	CThing::OnInitialActivate	0x004C97B0	vtable slot 10 = ?OnInitialActivate@CThing@@UAEXXZ (Ego_r.pdb; shared engine/CThing.h); Ego_d line 2102
+ShowProgress (local forceinline helper)	(dropped)	-	no PDB names it; Ego_d lines 2056 / 2072 / 2090 / 2116 are direct NProgressDisplay::DisplayProgress calls with a string temporary
+DisplayProgress (global, local declaration)	NProgressDisplay::DisplayProgress	0x009E9F40	Ego_r.pdb 0x00B3BFE0 / FableWin.pdb 0x02FB35A0 ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z
+CMainGameComponent +0x24 "HoldHero" byte +0x101 (local model)	CThingManager::World (CWorld&) / CWorld::SerialisingAboutToLoadHeroState via IsSerialisingAboutToLoadHeroState()	-	shared engine/CThingManager.h (World +0x24, GETWORLD) and engine/CWorld.h (ABOUTTOLOADHEROSTATE, +0x101); FableWin lists ?IsSerialisingAboutToLoadHeroState@CWorld@@QBE_NXZ right after ActivateThings
+# Observed, NOT in this row (other landed rows bind other names to 0x009E9F40; one retail address, one name -- coordinator's call):
+?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	0x009E9F40	bound by 0x00B428E0 CEngineWorldMap::SetStaticMapFileForUse (reloc_bindings.tsv); same fastcall ABI, different spelling and parameter types
+?DisplayProgress@NFactory006ac910@@YIXABVCCharString@@_NMH@Z	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	0x009E9F40	bound by 0x006AC910
+@DisplayProgress@16	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	0x009E9F40	bound by 0x0041735A CMainGameComponent::InitWorld
+?DisplayProgress@@YIXABVCCharString@@_NM1@Z	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	0x009E9F40	bound by 0x00A25530 C3DMeshInfo::GetMeshStats

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0051e2f0   RELOCATION_MATCH PASS   CThingManager::ActivateThings
+0051f0e0   RELOCATION_MATCH PASS   CThingManager::CopyHeroToHero
+
+WINS: 2
+  0051e2f0 RELOCATION_MATCH CThingManager::?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  0051f0e0 RELOCATION_MATCH CThingManager::?CopyHeroToHero@CThingManager@@AAEXAAVCThing@@0AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z

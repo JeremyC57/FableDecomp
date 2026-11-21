@@ -24,6 +24,11 @@ class CWideString;
 class CTCHeroMorph : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_APPEARANCE_MORPH; }
+#ifdef FABLE_RETAIL_CTCHEROMORPH_KILLPARTICLES
+    // p25Q opt-in (row 0x0051F0E0 CThingManager::CopyHeroToHero): Ego_r.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ, out of line in retail at
+    // 0x0071C260 (`mov ecx,<morph> ; call 0071C260h`, 0x0051F17B). Declaration only.
+    void KillParticles();                                                 // 0x0071C260
+#endif
 #ifdef FABLE_RETAIL_CTCHEROMORPH
     void GetTattoos(std::vector<CDefPointer<const CTattooDef> >& tattoos) const;   // 0x0071DD50
     long HasAPermanentTattooCoveringArea() const;                                   // 0x0071C2D0
