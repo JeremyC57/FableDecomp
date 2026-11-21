@@ -37,3 +37,5 @@ FINDINGS-ready: 2026-11-20 (p25N, 0x008E18D0 parked) callee texts proved by cmpc
 0x004014A0 SAME; _M_insert_overflow 0x0076ADA0 SAME only with __fastcall __uninitialized_copy / fill_n (0x00768FC0 ecx/edx ret 8), so the
 TU's STL uninitialized helpers are fastcall. With them no T matches (best T64..66 2149v2073); loop-2 and sky LowerBound sites have the same
 instantiation, f and score but opposite retail decisions, so the heuristic inliner cannot reproduce retail from this text. Files: parked/008e18d0.
+
+Coordinator, 2026-11-21: hdr.diff removed. Under /Gr the STL helpers compare SAME with no header opt-in (p25N); the only overlay still needed is the add-only IMPLICIT_DTOR declaration. Latest /Gr site table: FINDINGS 2026-11-21.

@@ -256,3 +256,4 @@ The duplicate-symbol and b30 wording items need their facts pulled from the sess
   - the only vland warnings are import-thunk aliases;
   - the land order kept every copy verbatim.
 - **Follow-up:** check whether 0x008E18D0's "fastcall STL helpers" fact is the same /Gr TU default.
+- **Note (2026-11-21, p25N):** YI mangling is project-wide in both debug PDBs (Ego_r 3,753 YI against 27 YA), so it is not per-TU evidence for /Gr. The scoreboard ruling still stands on retail's ecx/edx out-of-line STLport instances, the same-TU landed /Gr row, and the Explode ablation.
