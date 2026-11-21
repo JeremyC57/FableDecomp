@@ -17,6 +17,15 @@
 //   NUISystem::FindIndex(.., const RandomAccessTag&).
 #define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
 #define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
+// NF213 (2026-11-21, q6333 / q6342): the header-less ScrollingArray stand-in (ScrollingArray::InsertOverflow with a FalseType tag,
+//   bound to 0x00485DBC) is the STLport vector<NUISystem::CComponent*> it stood for (Ego_r.pdb CDynamicList::ScrollingChildren).
+//   push_back is the header body; its growth call now binds the protected IAE
+//   ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z
+//   (the 0x00485DBC self leaf), declaration-only as at HEAD (FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY: no pick-any copy).
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+//   push_back's pick-any COMDAT takes the owner 0x00486024's size-optimised frame-pointer body through the scaffolding opt-in
+//   FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY (Fidelity: scaffolding, not retail); the row still expands it.
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
 #include "stlport/fable_containers.h"
 #include "stlport/fable_algorithm.h"
 #define CComponent CComponentDonor
@@ -25,7 +34,6 @@
 namespace NUISystem {
 class CComponent;
 struct ChildPointer {CComponent* Data;void* CountInfo;CComponent* GetPItem()const{return Data;}operator CComponent*()const{return GetPItem();}};
-struct FalseType {FalseType(){}};
 struct ChildArray {ChildPointer* Start;ChildPointer* Finish;ChildPointer* Limit;unsigned long size()const{return Finish-Start;}ChildPointer& operator[](unsigned long n){return Start[n];}};
 struct IndexArray {unsigned long* Start;unsigned long* Finish;unsigned long* Limit;};
 struct Vector2 {float X,Y;};
@@ -47,13 +55,9 @@ struct DefinitionResultStorage {
  ~DefinitionResultStorage(){if(Data)Data->ReleaseReference();}
  const CUIDef* operator->()const{return Data;}
 };
-struct ScrollingArray {CComponent** Start;CComponent** Finish;CComponent** Limit;
- void InsertOverflow(CComponent**,CComponent* const&,const FalseType&,unsigned long,bool); //00485DBC
- void push_back(CComponent* const& value){if(Finish!=Limit){if(Finish)new(Finish) CComponent*(value);++Finish;}else InsertOverflow(Finish,value,FalseType(),1,true);}
-};
 class CDynamicList { public:
  void* VTable;unsigned char ComponentPrefix[0xb0-4];ChildArray Children;unsigned char ComponentSuffix[0x15c-0xbc];
- long BInitialised;Vector2 PositionOffset;long TopIndex,SelectionIndex,NumVisible;ScrollingArray ScrollingChildren;
+ long BInitialised;Vector2 PositionOffset;long TopIndex,SelectionIndex,NumVisible;std::vector<CComponent*> ScrollingChildren;
  // Lowering of actual LoadAndReturnDef() const: thiscall, hidden stack result address, same address in EAX.
  typedef DefinitionResultStorage*(CDynamicList::*LoadDefinitionMethod)(DefinitionResultStorage*)const;
 

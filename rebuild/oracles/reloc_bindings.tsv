@@ -9479,8 +9479,6 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?EditActive_013b8ab0@@3_NA	013b8ab0	005401b0
 ?Enable@CIME@NUISystem@@QAEX_N@Z	00404f40	005401b0
 ?SetEditBoxRegion@CIME@NUISystem@@QAEXJJJJ@Z	00404bb0	005401b0
-?AddChild@CComponent@NUISystem@@QAEXAAUCountedPointer@2@@Z	00533b50	005414a0
-?AddChildDynamically@CChangingStateComponent@NUISystem@@QAEXAAUCountedPointer@2@@Z	0052cab0	005414a0
 ??8?$CBasicString@D@@QBE_NPBD@Z	004115a0	00870fc0
 ?GetDataFromEventString@?A0x37137490@@YI_NABUCCharString@@JAAU2@@Z	00870c90	00870fc0
 ?reserve@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z	00920ff0	00b1a700
@@ -15249,8 +15247,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??H@YI?AVCWideString@@ABV0@G@Z	0099c120	0053fe50
 ?Get@CIME@NUISystem@@SIAAV12@XZ	00404a80	005401b0
 ?insert@CActionList@@QAE?AUCActionListIterator@@U2@ABV?$CCountedPointer@VCAction@NUISystem@@@@@Z	005355c0	00540d70
-?Grow@ChildVector@NUISystem@@QAEXPAPAVCComponent@2@ABQAV32@ABUEmptyTag@2@I_N@Z	00485dbc	005414a0
-?Insert@ChildVector@NUISystem@@QAEXPAPAVCComponent@2@ABQAV32@@Z	005418c0	005414a0
 ??0CDraggableInto@NUISystem@@QAE@ABV01@@Z	0052cca0	00548350
 ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	0054f4b0
 ?HideComponent@CScrollableList@NUISystem@@QAEXPAVCComponent@2@MMUC2DVector@2@E@Z	00555440	005559d0
@@ -18597,7 +18593,6 @@ _kOctaveScale	0125a4dc	00c6bdc0
 ??$uninitialized_fill_n@PAVCAbilityTrackDef@@IV1@@std@@YIPAVCAbilityTrackDef@@PAV1@IABV1@@Z	0047a6e7	0047a4a2
 ??1CAbilityTrackDef@@UAE@XZ	00478722	0047a4a2
 ?_M_insert_overflow@?$vector@VCAbilityTrackDef@@V?$allocator@VCAbilityTrackDef@@@std@@@std@@IAEXPAVCAbilityTrackDef@@ABV3@ABU__false_type@2@I_N@Z	0047a5ff	0047a4a2
-??$fill_n@PAPAVCComponent@NUISystem@@IPAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@IABQAV12@@Z	0048514c	00485dbc
 ?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z	00436ac0	0048d400
 ?_M_destroy_nodes@?$_Deque_base@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@IAEXPAPAVC2DVector@@0@Z	0048c820	0048d520
 ?_M_insert_overflow@?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@IAEXPAPBVCThingBuilding@@ABQBV3@ABU__true_type@2@I_N@Z	004ac610	004ad780
@@ -28841,9 +28836,6 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ??_7CTCHeroOnlineScoreboard@@6B@	0124db34	00562ec0
 ?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@QAEXXZ	00562710	00562ec0
 ?g_bScoreboardInitialised@@3_NA	013b8ae0	00562ec0
-?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@PAU3@@Z	0041db1d	00563130
-?DisplayErrorMessage@CTCHeroOnlineScoreboard@@QAEXABVCWideString@@@Z	0055ef00	00563130
-?_M_insert_overflow@?$vector@PAUCComponent@@@std@@QAEXPAPAUCComponent@@ABQAU3@ABU__true_type@2@I_N@Z	00485dbc	00563130
 ?AbortWithMessage@CTCHeroOnlineScoreboard@@QAEXABVCCharString@@@Z	00563410	00564570
 ?ChooseAClan@CTCHeroOnlineScoreboard@@QAEXXZ	0055fec0	00564570
 ?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@QAEXXZ	00563920	00564570
@@ -35281,7 +35273,6 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?BuildMesh@CMeshData@CPhysicsMeshInfo@@QAEXXZ	00a25d20	00a262b0
 ?IsFinished@CBankFileAsyncData@@QAE_NXZ	009d54e0	00a262b0
 ?clear@?$_Rb_tree@JU?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Select1st@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAEXXZ	004e7720	004f9660
-?InsertOverflow@ScrollingArray@NUISystem@@QAEXPAPAVCComponent@2@ABQAV32@ABUFalseType@2@K_N@Z	00485dbc	00541390
 ?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@AAVCWideString@@MABVCCharString@@1_N@Z	00596a68	00596cce
 ?ShareData@?$CCountedPointer@VCScrollableList@NUISystem@@@@QAEXPAVCScrollableList@NUISystem@@PAVCCPPointerInfo@@@Z	0059aa86	00596cce
 ?ActivateTestQuestCard@CQuestManager@@QAE_NABVCCharString@@0@Z	004b4c50	0061ab30
@@ -39373,3 +39364,8 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?ITEMS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b78	005b01fe
 ?RefreshSellDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	005aeaee	005b01fe
 ?WEAPONS_SUBTITLE@?A0x7912cb2d@@3VCCharString@@A	013b8b70	005b01fe
+??$fill_n@PAPAVCComponent@NUISystem@@IPAV12@@std@@YIPAPAVCComponent@NUISystem@@PAPAV12@IABQAV12@@Z	0048514c	00485dbc
+?AddChild@CComponent@NUISystem@@QAEXAAUCountedPointer@2@@Z	00533b50	005414a0
+?AddChildDynamically@CChangingStateComponent@NUISystem@@QAEXAAUCountedPointer@2@@Z	0052cab0	005414a0
+?insert@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@PAPAV34@ABQAV34@@Z	005418c0	005414a0
+?DisplayErrorMessage@CTCHeroOnlineScoreboard@@QAEXABVCWideString@@@Z	0055ef00	00563130

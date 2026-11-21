@@ -3873,7 +3873,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00485d1a	clear	std::vector<long, std::allocator<long>>	__thiscall	void	2	CCountedPointer<NUISystem::CList> *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00485d25	clear	std::vector<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*> >	__thiscall	void	2	CCountedPointer<NUISystem::CList> *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00485d30	vector	std::vector	__thiscall	CEnginePrimitiveHandle *	2	map<long,CEnginePrimitiveHandle,std::less<long>,std::allocator<std::pair<long_const_,CEnginePrimitiveHandle>_>_> *,long *	1	yes	accepted									
-00485dbc	Std_Vector_Insert_Range_Fill	_global	unknown	undefined	0		0	yes	accepted									
+00485dbc	_M_insert_overflow	std::vector<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	unknown	undefined	0		0	yes	accepted									
 00485e45	~_Rb_tree	std::_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st<..>, less<CWideString>, allocator<..> >	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CActiveFile_OnReadFinished_00485e45.cpp
 00485e5c	insert_unique	std::_Rb_tree<CWideString, std::pair<CWideString const, bool>, std::less<CWideString>>	unknown	undefined	0		0	yes	accepted									
 00485eee	GetInterface_0xb1	CTCInterface	unknown	undefined	0		0	yes	accepted									

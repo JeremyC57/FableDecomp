@@ -1,0 +1,5 @@
+OK  00541390 -> 00486024 ?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponen sizes 49 49 
+OK  005414a0 -> 00486024 ?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponen sizes 49 49 
+NO-OWNER-OBJ 00563130 004118c0 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+OK  00563130 -> 00486024 ?push_back@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponen sizes 49 49 
+OK  00563130 -> 00410de0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z sizes 63 63 

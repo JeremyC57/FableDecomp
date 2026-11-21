@@ -1,7 +1,32 @@
 // 005414a0 NUISystem::CDynamicList::InsertChild recovered PDB005baf00.
+// Leaf: ?InsertChild@CDynamicList@NUISystem@@QAEXKAAUCountedPointer@2@@Z
+// Flags: /d2inlS12
+// Inline-budget: /d2inlS12 -- only the size-optimised scaffolding COMDATs see it (the row body is /O2 and grades RELOCATION_MATCH from
+//   S10 up): it expands allocator::allocate -> malloc in the _M_insert_overflow copy as the owner 0x00485DBC does (S11 and below call
+//   ?allocate@?$allocator@PAVCComponent@NUISystem@@... out of line: 135 v 137 bytes); smallest N.
 // Retail field layout inherited from Update00541020: initialized15c, selection16c, vector174.
+// NF213 (2026-11-21, q6333 / q6342): the header-less ChildVector stand-in (Insert @ 0x005418C0, Grow @ 0x00485DBC with an EmptyTag,
+//   and a same-TU noinline Grow body) is the STLport vector<NUISystem::CComponent*> it stood for (Ego_r.pdb CDynamicList::
+//   ScrollingChildren, +0x174). The calls now bind the two landed self leaves: vector::insert 0x005418C0 (declaration-only,
+//   FABLE_RETAIL_STLP_VECTOR_INSERT_OUTOFLINE; was ?Insert@ChildVector@...) and the protected IAE vector::_M_insert_overflow
+//   0x00485DBC (was ?Grow@ChildVector@..., whose same-TU stand-in body is gone). push_back's pick-any COMDAT
+//   takes the owner 0x00486024's body through FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY (Fidelity: scaffolding,
+//   not retail). The Leaf line names the symbol the HEAD object already defined (same symbol). The local CComponent /
+//   CChangingStateComponent / CDynamicList models and the CountedPointer stand-in are HEAD debt, unchanged.
+// The growth body stays visible and out of line (OVERFLOW_OUTOFLINE): with it VC7.1 homes push_back's tag on the value slot as retail
+//   does (0x00541526 / 0x0054152B); declaration-only gives DIFFER(334v334) (the value takes the dead index word). Its pick-any copy
+//   is the owner's through FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY (Fidelity: scaffolding, not retail; cmpbody
+//   137 = 137 with __copy_trivial / fill_n out of line as the owner calls them).
+#define FABLE_RETAIL_STLP_VECTOR_INSERT_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+#define FABLE_RETAIL_STLP_COPY_TRIVIAL_OUTOFLINE
+#define FABLE_RETAIL_STLP_FILL_N_FASTCALL
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
 #include <new>
 #include <stdlib.h>
+#include "rebuild_abi.h"
+#include "stlport/fable_containers.h"
 namespace NUISystem {
 class CComponent { public:void AddChild(struct CountedPointer&); //00533b50
 
@@ -150,30 +175,18 @@ virtual void Slot141()=0;
 virtual void ResetPositions()=0;
 };
 struct CountedPointer {CComponent* Object;void* Count;CComponent* GetObject()const{return Object;}};
-struct EmptyTag{EmptyTag(){}};
-struct ChildVector {CComponent** Start;CComponent** Finish;CComponent** Limit;
- unsigned int size()const{return Finish-Start;}CComponent** begin()const{return Start;}
- void Insert(CComponent**,CComponent*const&); //005418c0
- void Grow(CComponent**,CComponent*const&,const EmptyTag&,unsigned int,bool); //00485dbc
- void push_back(CComponent* const& value){if(Finish!=Limit){new(Finish) CComponent*(value);++Finish;}else Grow(Finish,value,EmptyTag(),1,true);}
-};
-// 00485dbc is the scalar-pointer vector overflow; bfea0e imports malloc.
-// Values are copied into new storage and the const-reference is not retained.
-#pragma auto_inline(off)
-void ChildVector::Grow(CComponent** position,CComponent*const& value,const EmptyTag&,unsigned int count,bool atEnd){unsigned int oldSize=Finish-Start;unsigned int capacity=oldSize+(oldSize>count?oldSize:count);CComponent** storage=capacity?(CComponent**)malloc(capacity*sizeof(CComponent*)):0;CComponent** out=storage;CComponent** p;for(p=Start;p!=position;++p,++out)*out=*p;for(unsigned int i=0;i<count;++i,++out)*out=value;if(!atEnd)for(p=position;p!=Finish;++p,++out)*out=*p;if(Start)free(Start);Start=storage;Finish=out;Limit=storage+capacity;}
-#pragma auto_inline(on)
 class CChangingStateComponent:public CComponent { public:void AddChildDynamically(CountedPointer&);}; //0052cab0
 
 class CDynamicList:public CChangingStateComponent { public:
- unsigned char BeforeInit[0x15c-4];int Initialised;unsigned char BeforeTop[8];int TopIndex,SelectionIndex,NumVisible;ChildVector Children;
+ unsigned char BeforeInit[0x15c-4];int Initialised;unsigned char BeforeTop[8];int TopIndex,SelectionIndex,NumVisible;std::vector<CComponent*> Children;
  void InsertChild(unsigned long,CountedPointer&);
 };
 void CDynamicList::InsertChild(unsigned long index,CountedPointer& child){
  if(Initialised)CChangingStateComponent::AddChildDynamically(child);else CComponent::AddChild(child);
- if(index<Children.size()){Children.Insert(Children.begin()+index,child.GetObject());}
+ if(index<Children.size()){Children.insert(Children.begin()+index,child.GetObject());}
  else {index=Children.size();Children.push_back(child.GetObject());}
  if(Initialised){
- if(Children.size()==1){TopIndex=0;SelectionIndex=0;if(IsActive()&&GetActiveState()==1)Children.Start[SelectionIndex]->ChangeState(3);}
+ if(Children.size()==1){TopIndex=0;SelectionIndex=0;if(IsActive()&&GetActiveState()==1)Children[SelectionIndex]->ChangeState(3);}
  else if(index<=(unsigned)SelectionIndex&&(unsigned)SelectionIndex<Children.size()-1){++SelectionIndex;if(SelectionIndex>=TopIndex+NumVisible)TopIndex=SelectionIndex-NumVisible+1;}
  ResetPositions();
  }

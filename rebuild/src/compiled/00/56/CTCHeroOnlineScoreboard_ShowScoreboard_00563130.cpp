@@ -21,301 +21,53 @@
 // inline CCharString==; the `||` gives the conditional-temporary flags word.
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
 //   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
+// NF213 (2026-11-21, q6333 / q6342): ported onto the shared headers. The global stand-in `struct CComponent` (whose vector bound
+//   0x00485DBC as ?_M_insert_overflow@?$vector@PAUCComponent@@@std@@QAE... and CreateComponent as ...PAUCComponent@@...) is the real
+//   NUISystem::CComponent (engine/NUISystem_CComponent.h: Initialise slot 43, ChangeState(unsigned long) slot 48, the stand-in SetVisible(bool)); the GUI component at interface 0x11 is
+//   the inventory (TCI_INVENTORY, NInventory::CTCInventoryBase::GetComponents slot 82); the local CCharString / CWideString / CDataBank /
+//   CMainGameComponent / CUserProfileManager / CThing / CVectorMap / LHHttp2 / CTCHeroOnlineScoreboard models move onto their headers.
+//   push_back's growth call binds the protected IAE ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@... (0x00485DBC
+//   self leaf; declaration-only as at HEAD); push_back's pick-any COMDAT is the owner 0x00486024's through
+//   FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY (Fidelity: scaffolding, not retail).
+//   Slot 48 is NUISystem::CComponent::ChangeState(unsigned long) (the stand-in SetVisible(bool); push 0 / push 1 as before);
+//   CreateComponent takes the shared header's (const CCharString&, bool) spelling ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+//   (was ...QAEPAUCComponent@@ABVCCharString@@PAU3@@Z, this row only). PHttp.reset() deletes through the declared user destructor
+//   ??1LHHttp2@LHNetworkLib@@QAE@XZ 0x008410D0 (FABLE_RETAIL_LHHTTP2_DTOR; without it the implicit destructor is a different in-object copy).
+//   The GetTC lookup's CVectorMap::LowerBound is the shared header's pick-any copy under 0x0040F020's own Leaf spelling (cmpbody equal).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CWIDESTRING_NULLSTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
+#define FABLE_RETAIL_CTCHEROONLINESCOREBOARD_MEMBERS
+#define FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK
+#define FABLE_RETAIL_CTCHEROONLINESCOREBOARD_CLEARSCOREBOARD
+#define FABLE_RETAIL_CTCHEROONLINESCOREBOARD_SHOWSCOREBOARD
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_SCOPED_PTR_RESET
+#define FABLE_RETAIL_LHHTTP2
+#define FABLE_RETAIL_LHHTTP2_DTOR
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CDATABANK
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
 #include "fable_compiler.h"
-#include <new>
-extern "C" int __cdecl strcmp(const char* a, const char* b);
-#pragma intrinsic(strcmp)
-
-#pragma pack(push, 1)
-template <class T> class CBasicString { public:
-    char*         PData;
-    unsigned long StringLength;
-    unsigned long DataLength : 31;
-    bool          UseFastExtend : 1;
-    bool operator==(const char* text) const;        // 0x004115A0
-};
-class CCharStringData { public:
-    CBasicString<char> Data;
-    long             NoRefs;
-};
-#pragma pack(pop)
-class CCharString { public:
-    CCharStringData* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    FABLE_FORCEINLINE bool operator==(const char* text) const
-    {
-        if (PStringData == 0) {
-            if (strcmp(text, "") == 0)
-                return true;
-            return false;
-        }
-        return PStringData->Data == text;
-    }
-};
-class CWideString {
-public:
-    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
-private: public:
-    void* PStringData;
-    CWideString(const CWideString& other);              // 0x0099B720
-    ~CWideString();                                     // 0x0099B510
-    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-public:
-    static CWideString NullString;                  // 0x013BCA24 ?NullString@CWideString@@2V1@A
-};
-
-namespace NGameText {
-class CDataBank { public:
-    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
-};
-}
-using NGameText::CDataBank;
-class CMainGameComponent {
-protected:
-    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
-public:
-    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
-private: public:
-    unsigned char _pad[0x14];
-    CDataBank*    m_pTextBank;                          // +0x14
-};
-
-class CUserProfileManager { public:
-    unsigned char _pad[0x110];
-    CWideString   SignedInUserName;                     // +0x110
-    CWideString   SignedInPassword;                     // +0x114
-public:
-    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
-};
-
-struct CComponent {
-    virtual void v000();
-    virtual void v001();
-    virtual void v002();
-    virtual void v003();
-    virtual void v004();
-    virtual void v005();
-    virtual void v006();
-    virtual void v007();
-    virtual void v008();
-    virtual void v009();
-    virtual void v010();
-    virtual void v011();
-    virtual void v012();
-    virtual void v013();
-    virtual void v014();
-    virtual void v015();
-    virtual void v016();
-    virtual void v017();
-    virtual void v018();
-    virtual void v019();
-    virtual void v020();
-    virtual void v021();
-    virtual void v022();
-    virtual void v023();
-    virtual void v024();
-    virtual void v025();
-    virtual void v026();
-    virtual void v027();
-    virtual void v028();
-    virtual void v029();
-    virtual void v030();
-    virtual void v031();
-    virtual void v032();
-    virtual void v033();
-    virtual void v034();
-    virtual void v035();
-    virtual void v036();
-    virtual void v037();
-    virtual void v038();
-    virtual void v039();
-    virtual void v040();
-    virtual void v041();
-    virtual void v042();
-    virtual void Initialise();                          // slot 43 (+0xac)
-    virtual void v044();
-    virtual void v045();
-    virtual void v046();
-    virtual void v047();
-    virtual void SetVisible(bool visible);              // slot 48 (+0xc0)
-};
-
-namespace std {
-struct __true_type { __true_type() { } };
-template <class T> struct vector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void _M_insert_overflow(T* pos, const T& x, const __true_type&, unsigned int fillLen, bool atEnd);   // 0x00485DBC
-    void push_back(const T& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
-        }
-        else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
-    }
-};
-}
-
-struct CTCGUI {
-    virtual void v000();
-    virtual void v001();
-    virtual void v002();
-    virtual void v003();
-    virtual void v004();
-    virtual void v005();
-    virtual void v006();
-    virtual void v007();
-    virtual void v008();
-    virtual void v009();
-    virtual void v010();
-    virtual void v011();
-    virtual void v012();
-    virtual void v013();
-    virtual void v014();
-    virtual void v015();
-    virtual void v016();
-    virtual void v017();
-    virtual void v018();
-    virtual void v019();
-    virtual void v020();
-    virtual void v021();
-    virtual void v022();
-    virtual void v023();
-    virtual void v024();
-    virtual void v025();
-    virtual void v026();
-    virtual void v027();
-    virtual void v028();
-    virtual void v029();
-    virtual void v030();
-    virtual void v031();
-    virtual void v032();
-    virtual void v033();
-    virtual void v034();
-    virtual void v035();
-    virtual void v036();
-    virtual void v037();
-    virtual void v038();
-    virtual void v039();
-    virtual void v040();
-    virtual void v041();
-    virtual void v042();
-    virtual void v043();
-    virtual void v044();
-    virtual void v045();
-    virtual void v046();
-    virtual void v047();
-    virtual void v048();
-    virtual void v049();
-    virtual void v050();
-    virtual void v051();
-    virtual void v052();
-    virtual void v053();
-    virtual void v054();
-    virtual void v055();
-    virtual void v056();
-    virtual void v057();
-    virtual void v058();
-    virtual void v059();
-    virtual void v060();
-    virtual void v061();
-    virtual void v062();
-    virtual void v063();
-    virtual void v064();
-    virtual void v065();
-    virtual void v066();
-    virtual void v067();
-    virtual void v068();
-    virtual void v069();
-    virtual void v070();
-    virtual void v071();
-    virtual void v072();
-    virtual void v073();
-    virtual void v074();
-    virtual void v075();
-    virtual void v076();
-    virtual void v077();
-    virtual void v078();
-    virtual void v079();
-    virtual void v080();
-    virtual void v081();
-    virtual std::vector<CComponent*>* GetComponents();  // slot 82 (+0x148)
-};
-
-namespace NUISystem { class CManager { public:
-    static CManager* __fastcall GetInstance();  // 0x0041E5F2
-    CComponent* CreateComponent(const CCharString& name, CComponent* parent);   // 0x0041DB1D
-}; }
-
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  UsingComponents[9];                  // +0x20
-    CInterfaceMap  Interfaces;                          // +0x44
-    template<class T> FABLE_FORCEINLINE T* GetTC(long id)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(id);
-        CInterfaceMap* m = &Interfaces;
-        CInterfaceMap::SEntry* p = m->LowerBound(key);
-        if (p == m->last || id < p->first)
-            p = m->last;
-        return (T*)((void*)p->second);
-    }
-};
-
-namespace LHNetworkLib {
-class LHHttp2 { public:
-    ~LHHttp2();                                         // 0x008410D0
-};
-}
-struct CHttpScopedPtr {
-    LHNetworkLib::LHHttp2* px;
-    void reset(LHNetworkLib::LHHttp2* p = 0)
-    {
-        LHNetworkLib::LHHttp2* old = px;
-        px = p;
-        delete old;
-    }
-};
-
-class CTCHeroOnlineScoreboard {
-public:
-    virtual void v00();
-    CThing*        Thing;                               // +0x04
-    long           m_8;                                 // +0x08
-    CHttpScopedPtr PHttp;                               // +0x0c
-    unsigned char  _pad10[0x3c - 0x10];
-    CWideString    SelectedClan;                        // +0x3c
-    unsigned char  _pad40[0x50 - 0x40];
-    long           ScoreboardState;                     // +0x50
-    long           TaskState;                           // +0x54
-    CComponent*    PScoreboardScreen;                   // +0x58
-    CComponent*    PClanMenuEntry;                      // +0x5c
-    CComponent*    PConnectingMessage;                  // +0x60
-    CComponent*    PConnectingMessage1;                 // +0x64
-private:
-    void ClearScoreboard();                             // 0x00562E10 ?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ (Ego_r.pdb / FableWin.pdb: private)
-public:
-    void DisplayErrorMessage(const CWideString& text);  // 0x0055EF00
-    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
-    CCharString GetSignedInPassword() { CWideString password = CUserProfileManager::Get().SignedInPassword; return ((CWideString*)&password)->ToCharString(); }
-    void ShowScoreboard();
-};
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CTCHeroOnlineScoreboard.h"
+#include "engine/NUISystem_CComponent.h"
+#include "engine/NUISystem_CManager.h"
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
 
 void CTCHeroOnlineScoreboard::ShowScoreboard()
 {
@@ -323,20 +75,20 @@ void CTCHeroOnlineScoreboard::ShowScoreboard()
     ClearScoreboard();
     PHttp.reset();
     TaskState = 100;
-    if (Thing->UsingComponents[0] & 0x20000) {
-        CTCGUI* gui = Thing->GetTC<CTCGUI>(0x11);
+    NInventory::CTCInventoryBase* gui;
+    if (ParentThing->GetTC(TCI_INVENTORY, &gui)) {
         NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
-        PConnectingMessage = manager->CreateComponent("UI_CONNECTING", 0);
+        PConnectingMessage = manager->CreateComponent("UI_CONNECTING", false);
         PConnectingMessage->Initialise();
-        PConnectingMessage->SetVisible(false);
-        gui->GetComponents()->push_back(PConnectingMessage);
-        PConnectingMessage1 = manager->CreateComponent("UI_CONNECTING1", 0);
+        PConnectingMessage->ChangeState(0);
+        gui->GetComponents().push_back(PConnectingMessage);
+        PConnectingMessage1 = manager->CreateComponent("UI_CONNECTING1", false);
         PConnectingMessage1->Initialise();
-        gui->GetComponents()->push_back(PConnectingMessage1);
-        PConnectingMessage1->SetVisible(true);
+        gui->GetComponents().push_back(PConnectingMessage1);
+        PConnectingMessage1->ChangeState(1);
         bool notSignedIn = GetSignedInUserName() == "" || GetSignedInPassword() == "";
         if (notSignedIn) {
-            CWideString text = CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol("TEXT_GUI_SCOREBOARD_ERROR_LOGIN_DETAILS_MISSING");
+            CWideString text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_SCOREBOARD_ERROR_LOGIN_DETAILS_MISSING");
             DisplayErrorMessage(text);
             return;
         }

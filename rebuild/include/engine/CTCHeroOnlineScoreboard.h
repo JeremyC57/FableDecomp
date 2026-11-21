@@ -35,6 +35,16 @@ public:
     enum EOnlineScoreboardActivity { };
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_ONLINE_SCOREBOARD; }
+#ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_SHOWSCOREBOARD
+    // NF213 opt-in (2026-11-21, q6333 / q6342; row 0x00563130): Ego_r.pdb / FableWin.pdb ?ShowScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ
+    // (public; the row's Leaf) and the by-value signed-in password getter next to GetSignedInUserName below (the row's inline
+    // `GetSignedInUserName() == "" || GetSignedInPassword() == ""` test; the password word +0x114 beside the user name +0x110). Needs
+    // FABLE_RETAIL_CTCHEROONLINESCOREBOARD_NETWORK. Declarations / inline accessor only: no layout change.
+    void ShowScoreboard();
+private:   // Ego_r.pdb / FableWin.pdb ?GetSignedInPassword@CTCHeroOnlineScoreboard@@AAE?AVCCharString@@XZ (private; 0x005D7780 out of line)
+    CCharString GetSignedInPassword() { return CUserProfileManager::Get().GetScoreboardPassword().ToCharString(); }
+public:
+#endif
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool flag);   // 0x0055F3B0
 #ifdef FABLE_RETAIL_CTCHEROONLINESCOREBOARD_CLOSE
     // NF62 opt-in (2026-11-17, row 0x00587847 CTCInventory::ClosePCInventory): Ego_r.pdb / FableWin.pdb ?Close@CTCHeroOnlineScoreboard@@QAEXXZ,

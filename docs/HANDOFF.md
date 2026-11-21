@@ -24,12 +24,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   symbol-key wrap decides x87 operand order, setter block copies fold only after an earlier same-member read.
 - Shared-header fixes: CRenderStateManager.h EARLY_RETURN braces; C2DVector.h PASS21 double operator*. Tool fixes: reloc_identity operator codes, rand/srand.
 
-## Account A, 2026-11-20 (naming round 10, landings nf148-nf212)
-- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf212),
+## Account A, 2026-11-20 (naming round 10, landings nf148-nf213)
+- Landed on FullDecomp today: naming batches `rebuild/candidates/manual/batches/2026-11-20_landing_nf1*` / `_nf2*` (nf148-nf213),
   B's rows, and the engine/CSpawnedFunc1.h include fix. Each batch README lists its rows, opt-ins, advisor calls, checks.
-- **Owner order (2026-11-20):** run ONE naming agent at a time. NF209-NF212 landed (nf209-nf212). Next slice: the five 0x00485DBC
-  stand-in binders (q6333 / q6342: 0x00541390 0x005414A0 0x00563130 0x006116E0 0x007E4B60, census in naming/2026-11-21_agentNF212/work/),
-  then the UnpackNames family (0x00A2ED10 / 0x00A2F0F0 / 0x00A2F150 / 0x00A2F120). Out of slices: 0x006E93C0 / 0x006EA770 (FINDINGS_LOG).
+- **Owner order (2026-11-20):** run ONE naming agent at a time. NF209-NF213 landed (nf209-nf213). Next slice: the UnpackNames family
+  (q12343: 0x00A2ED10 / 0x00A2F0F0 / 0x00A2F150 / 0x00A2F120; engine/C3DMeshStats.h exists; @@ABE = private const), then 0x006116E0 /
+  0x007E4B60 (q6333, option d in naming/2026-11-21_agentNF213/NOTES.md). Out of slices: 0x006E93C0 / 0x006EA770 (FINDINGS_LOG).
   Then (advisor 2026-11-21, owner delegated): q12300 0x0096FA90 needs no cast (targeting slot 29 = GetPBestEnemyCreatureForAttack,
   CThingCreatureBase*); q12262 is a binder family pass on the old ??8CBasicStringChar leaf (q12265 copies are debt); q11760 / q11873 try
   a plain inline CCharString::operator!=(const char*) (both PDBs) for 0x006D41F0's "(" test; 0x006ED9E0's IsCombatant respell as filler.

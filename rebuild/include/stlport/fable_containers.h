@@ -2476,6 +2476,63 @@ void __fastcall __final_insertion_sort(_RandomAccessIter __first,_RandomAccessIt
         __insertion_sort(__first,__last,__comp);
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_OVERFLOW_NUISYSTEM_CCOMPONENT_SIZE_BODY
+// NF213 opt-in (2026-11-21, q6333 / q6342; row 0x005414A0 NUISystem::CDynamicList::InsertChild, ...). Fidelity: scaffolding, not retail.
+// That TU calls vector<NUISystem::CComponent*>::_M_insert_overflow 0x00485DBC out of line with the STLport stl/_vector.c body visible:
+// with the body visible VC7.1 homes push_back's __true_type tag on the value slot it passes by reference (0x00541526 / 0x0054152B both
+// `[esp+20h]` / `[esp+24h]` = one word); declared only, the tag takes the dead index argument word (DIFFER, two operands). A visible
+// body is a pick-any COMDAT, and retail kept the 137-byte copy from a size-optimised frame-pointer TU, row 0x00485DBC (its Leaf), which
+// calls the out-of-line __fastcall __copy_trivial 0x00405BA0 and fill_n 0x0048514C. The advisor pick-any rule (EXTRA_RULES 2026-11-20)
+// needs the owner's body, so this explicit specialization compiles the same STLport 4.6 _vector.c __true_type body as the
+// out-of-line definition above under optimize("y", off) + ("s", on), as the owner's TU did; inline (a pick-any COMDAT like the owner's) and noinline, as retail calls it. fill_n for
+// this element type is declared only here (the owner's callee); needs FABLE_RETAIL_STLP_FILL_N_FASTCALL and
+// FABLE_RETAIL_STLP_COPY_TRIVIAL_OUTOFLINE. Owner check: the owner row 0x00485DBC sets `#pragma optimize("y", off)` and
+// `#pragma optimize("s", on)` itself. `#pragma optimize("", on)` below returns to the command-line settings (VC7.1 has no push / pop
+// for optimize), so a row that uses this opt-in must not carry a row-head optimize pragma before its include of this header (nf189).
+// Needs no use of the member before this point; not with FABLE_RETAIL_PASS22_SCOREBOARD_ORIGINAL_OVERFLOW_SCOPE.
+}
+namespace NUISystem { class CComponent; }
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+namespace std {
+template<> NUISystem::CComponent** FABLE_FASTCALL fill_n(NUISystem::CComponent** first,unsigned int n,NUISystem::CComponent* const& x);   // 0x0048514C
+template<> inline
+#ifdef _MSC_VER
+__declspec(noinline)
+#endif
+void vector<NUISystem::CComponent*,allocator<NUISystem::CComponent*> >::_M_insert_overflow(NUISystem::CComponent** position,NUISystem::CComponent* const& x,const __true_type&,size_t fillLength,bool atEnd) {
+    const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
+    NUISystem::CComponent** newStart=this->_M_end_of_storage.allocate(len);
+    NUISystem::CComponent** newFinish=(NUISystem::CComponent**)__copy_trivial(this->_M_start,position,newStart);
+    newFinish=fill_n(newFinish,fillLength,x);
+    if(!atEnd) newFinish=(NUISystem::CComponent**)__copy_trivial(position,this->_M_finish,newFinish);
+    _M_clear();_M_set(newStart,newFinish,newStart+len);
+}
+#pragma optimize("", on)
+#endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_PUSHBACK_NUISYSTEM_CCOMPONENT_SIZE_BODY
+// NF213 opt-in (2026-11-21, q6333 / q6342; rows 0x00541390, ...). Fidelity: scaffolding, not retail. A row that expands
+// vector<NUISystem::CComponent*>::push_back emits the inline as a pick-any COMDAT. Retail kept the 49-byte out-of-line copy from a
+// size-optimised frame-pointer TU, row 0x00486024 (Leaf ?push_back@?$vector@PAVCComponent@NUISystem@@...); the plain copy is 50 bytes
+// (no frame, `[esp+..]` operands). The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body, so this explicit
+// specialization compiles the same STLport 4.6 _vector.h body as the default push_back above under optimize("y", off) + ("s", on), as
+// the owner's TU did; callers still expand it. Owner check: the owner row 0x00486024 sets `#pragma optimize("y", off)` and
+// `#pragma optimize("s", on)` itself. `#pragma optimize("", on)` below returns to the command-line settings (VC7.1 has no push / pop
+// for optimize), so a row that uses this opt-in must not carry a row-head optimize pragma before its include of this header (nf189).
+// Needs no use of vector<NUISystem::CComponent*>::push_back before this point. Not with FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE /
+// _NOINLINE / _FINISH_LOCAL_PASS24.
+}
+namespace NUISystem { class CComponent; }
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+namespace std {
+template<> inline void vector<NUISystem::CComponent*,allocator<NUISystem::CComponent*> >::push_back(NUISystem::CComponent* const& x) {
+    if(this->_M_finish!=this->_M_end_of_storage._M_data) {
+        _Construct(this->_M_finish,x); ++this->_M_finish;
+    } else _M_insert_overflow(this->_M_finish,x,_IsPODType(),1,true);
+}
+#pragma optimize("", on)
+#endif
 
 }
 #endif

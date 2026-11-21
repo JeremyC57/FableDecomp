@@ -1,0 +1,3 @@
+existing 0041db1d new= ['?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z'] | others: {'?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@': ['005e4430']}
+existing 00485dbc new= ['?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z'] | others: {'?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAP': ['006116e0']}
+gate: 0 created split(s)

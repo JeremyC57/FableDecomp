@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00485dbc   WARN RELOC_NAME: ?__copy_trivial@std@@YIPAXPBX0PAX@Z -> 00405ba0 labelled 'Std_Move_Backward'
+00485dbc   WARN STANDIN_LEAF ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z (catalog _global::Std_Vector_Insert_Range_Fill; names another function)
+00485dbc   RELOCATION_MATCH PASS   _global::Std_Vector_Insert_Range_Fill
+00541390   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+00541390   RELOCATION_MATCH PASS   GetDataFromDef
+005414a0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+005414a0   RELOCATION_MATCH PASS   NUISystem::CDynamicList::vfunc_147
+00563130   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+00563130   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::ShowScoreboard
+
+WINS: 4
+  00485dbc RELOCATION_MATCH std::vector<NUISystem::CComponent*>::?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z
+  00541390 RELOCATION_MATCH CDynamicList::GetDataFromDef
+  005414a0 RELOCATION_MATCH NUISystem::CDynamicList::?InsertChild@CDynamicList@NUISystem@@QAEXKAAUCountedPointer@2@@Z
+  00563130 RELOCATION_MATCH CTCHeroOnlineScoreboard::?ShowScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ

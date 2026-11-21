@@ -1,5 +1,5 @@
 // std::vector<NUISystem::CComponent*>::_M_insert_overflow(NUISystem::CComponent** position, NUISystem::CComponent* const& x, const __true_type&, unsigned int fillLength, bool atEnd) -- STLport POD growth insert: allocate size + max(size, n), copy the head, n copies of x, the tail unless atEnd, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@
+// Leaf: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00485DBC, 137 bytes, thiscall `ret 14h`; size TU with a frame pointer.
 // Identity (proven): reloc_bindings names it ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@...ABU__true_type@2@I_N@Z (vector<NUISystem::CComponent*>, among
 //   propagated stand-ins); caller push_back 0x00486024 / CDynamicList::GetDataFromDef 0x00541390.

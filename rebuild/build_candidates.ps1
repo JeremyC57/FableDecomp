@@ -273227,6 +273227,7 @@ $catalog = @(
         Source = '00/54/NUISystemCDynamicList_vfunc147_005414a0.cpp'
         TestSource = '00/54/NUISystemCDynamicList_vfunc147_005414a0_test.cpp'
         PassPattern = '005414a0_TEST PASS'
+        CompilerFlags = '/d2inlS12'
     }
     [pscustomobject]@{
         Address = '00542140'
@@ -334444,9 +334445,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00485dbc'
-        Module = 'std::vector<NUISystem::CComponent*>'
-        Source = '00/48/stdvectorNUISystemCComponent_Minsertoverflow_00485dbc.cpp'
-        TestSource = '00/48/stdvectorNUISystemCComponent_Minsertoverflow_00485dbc_test.cpp'
+        Module = 'std::vector<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>'
+        Source = '00/48/stdvector_Minsertoverflow_00485dbc.cpp'
+        TestSource = '00/48/stdvector_Minsertoverflow_00485dbc_test.cpp'
         PassPattern = '00485dbc_TEST PASS'
     }
     [pscustomobject]@{
