@@ -1512,3 +1512,12 @@ against CODAApi.lib, or stay compiled C++?
   - `v = v.Normalise()` = 25 B (37 B with disp32).
   - Decoding 0x008DBC80's lines with these gave retail's text (a separate 2D copy with Z = 0, `x = x.Normalise()`, SetForward / SetUp instead of an Init), and the row matches.
   - Use these sizes when reading other rows' Ego_d line tables.
+- 2026-11-21 (Account A, matching-progress check, open) The unmatched-row list and the landed-function count disagree, though the dashboard
+  count itself is right (functions.tsv minus auto-re-candidates.tsv: 938 not landed).
+  - Fixed: UNMATCHED_ROWS.tsv listed four rows that have landed (0x0055E2C0, 0x00837B30, 0x0083DC80, 0x009C33A0); they are removed.
+  - Open, catalog start against manifest start: four landed rows sit at an address a few bytes before the start the function manifest
+    knows: 0x0074BC20 / 0x0074BC30, 0x00BA1140 / 0x00BA115C (its PassPattern names 0x00BA115C), 0x00BC3F30 / 0x00BC3F3D, 0x00BD71B0 /
+    0x00BD71CC (PassPattern 0x00BD71CC). The dashboard counts the manifest address as not landed. Decide which start is the true
+    function entry for each, then make the catalog and manifest agree.
+  - Open: 0x00407A70 / 0x00407BA0 are listed and landed but are not in the manifest. 0x004A1C41, 0x00537E70, 0x00564D5D, 0x008F92EF and
+    0x00D2988B are not landed and are not in the list.
