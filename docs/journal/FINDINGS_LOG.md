@@ -1512,3 +1512,7 @@ against CODAApi.lib, or stay compiled C++?
   - `v = v.Normalise()` = 25 B (37 B with disp32).
   - Decoding 0x008DBC80's lines with these gave retail's text (a separate 2D copy with Z = 0, `x = x.Normalise()`, SetForward / SetUp instead of an Init), and the row matches.
   - Use these sizes when reading other rows' Ego_d line tables.
+- 2026-11-21 (Account B p25N, 0x008E18D0, open) No inline growth cap at play.
+  - The heuristic inliner decides strictly in source order (loop 1 -> loop 2 -> sky), with a running growth counter rising 264 -> 4980, and sites decided late (g ≈ 4000) still expand.
+  - The contested LowerBound sites in loop 2 and the sky have identical records (size 60, cost 52, f 6.25, score 63), so the decision depends on the site frequency alone. Retail's loop-2 and loop-1-dtor frequencies must therefore differ from ours: a branch-probability input, with the source CFG pinned by Ego_d.
+  - A stock dead arm inside the expanded GetTC is removed before inlining here and adds no pre-inline IL (byte-identical at T60..74).
