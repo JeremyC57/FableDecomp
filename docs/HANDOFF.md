@@ -30,7 +30,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 - **Owner order (2026-11-20):** run ONE naming agent at a time. NF209-NF212 landed (nf209-nf212). Next slice: the five 0x00485DBC
   stand-in binders (q6333 / q6342: 0x00541390 0x005414A0 0x00563130 0x006116E0 0x007E4B60, census in naming/2026-11-21_agentNF212/work/),
   then the UnpackNames family (0x00A2ED10 / 0x00A2F0F0 / 0x00A2F150 / 0x00A2F120). Out of slices: 0x006E93C0 / 0x006EA770 (FINDINGS_LOG).
-  Owed to one advisor call: the q12300 cast (0x0096FA90) and the CBasicString operator== header control (q11760 / q11873 / q12262 / q12265).
+  Then (advisor 2026-11-21, owner delegated): q12300 0x0096FA90 needs no cast (targeting slot 29 = GetPBestEnemyCreatureForAttack,
+  CThingCreatureBase*); q12262 is a binder family pass on the old ??8CBasicStringChar leaf (q12265 copies are debt); q11760 / q11873 try
+  a plain inline CCharString::operator!=(const char*) (both PDBs) for 0x006D41F0's "(" test; 0x006ED9E0's IsCombatant respell as filler.
 - **The fresh naming queue is spent** (2 never-claimed entries). Advisor decision (owner delegated, nf204): entries returned twice with
   only ports left are noted `blocked (family pass ...)`, not returned; future agents are family passes sliced by shared rows (unit = row,
   census named in the brief, every family row locked up front). Candidates: q4394 + q12191 (0x009F03B0), q6315 / q6319 + q11942, the
