@@ -260,3 +260,4 @@ date	account	item	kind	status	note
 2026-11-22	A	18 /d2inl rows	authoring	done	AUTH17 sweep: no new match
 2026-11-22	A	q12589-q12604 (minus 0x0042BEC0)	naming	claimed	agent NF228 (nf227 follow-ups)
 2026-11-22	A	0x00A4EFC0	codex	done	landed as Inferred by owner decision (batches/2026-11-22_landing_codex_00a4efc0)
+2026-11-22	A	0x0093D270,0x00B4D370,0x00BD3070,0x00502E90	authoring	claimed	agent AUTH18 (the last four released AUTH1 rows; pending/2026-11-22_auth18/BRIEF.md)
