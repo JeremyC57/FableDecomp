@@ -258,3 +258,4 @@ date	account	item	kind	status	note
 2026-11-22	A	0x008E18D0	authoring	done	AUTH15: landed
 2026-11-22	A	q12573-q12585	naming	done	NF227 landed as nf227 (20 rows)
 2026-11-22	A	18 /d2inl rows	authoring	done	AUTH17 sweep: no new match
+2026-11-22	A	q12589-q12604 (minus 0x0042BEC0)	naming	claimed	agent NF228 (nf227 follow-ups)
