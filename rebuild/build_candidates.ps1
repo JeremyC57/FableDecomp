@@ -106,12 +106,12 @@ $catalog = @(
         TestSource = '00/40/Global_MemCmpUnsigned16_00403c60_test.cpp'; PassPattern = 'MEMCMP_UNSIGNED16_TEST PASS'
     },
     [pscustomobject]@{
-        Address = '00404690'; Module = '_global'; Source = '00/40/Global_StdListNodeInit_00404690.cpp'
-        TestSource = '00/40/Global_StdListNodeInit_00404690_test.cpp'; PassPattern = 'STD_LIST_NODE_INIT_TEST PASS'
+        Address = '00404690'; Module = 'std::_List_base<CStringParserCommentBoundaries>'; Source = '00/40/stdListbaseCStringParserCommentBoundaries_Listbase_00404690.cpp'
+        TestSource = '00/40/stdListbaseCStringParserCommentBoundaries_Listbase_00404690_test.cpp'; PassPattern = 'STD_LIST_NODE_INIT_TEST PASS'
     },
     [pscustomobject]@{
-        Address = '004046f0'; Module = '_global'; Source = '00/40/Global_ListNodeCreateCircular_004046f0.cpp'
-        TestSource = '00/40/Global_ListNodeCreateCircular_004046f0_test.cpp'; PassPattern = 'LIST_NODE_CREATE_CIRCULAR_TEST PASS'
+        Address = '004046f0'; Module = 'std::list<CStringParserCommentBoundaries>'; Source = '00/40/stdlistCStringParserCommentBoundaries_list_004046f0.cpp'
+        TestSource = '00/40/stdlistCStringParserCommentBoundaries_list_004046f0_test.cpp'; PassPattern = 'LIST_NODE_CREATE_CIRCULAR_TEST PASS'
     },
     [pscustomobject]@{
         Address = '00404280'; Module = 'std'; Source = '00/40/std_operator_00404280.cpp'
@@ -312311,9 +312311,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004046b0'
-        Module = 'std::list<CStringParserCommentBoundaries>'
-        Source = '00/40/stdlistCStringParserCommentBoundaries_list_004046b0.cpp'
-        TestSource = '00/40/stdlistCStringParserCommentBoundaries_list_004046b0_test.cpp'
+        Module = 'std::_List_base<CStringParserCommentBoundaries>'
+        Source = '00/40/stdListbaseCStringParserCommentBoundaries_Listbase_004046b0.cpp'
+        TestSource = '00/40/stdListbaseCStringParserCommentBoundaries_Listbase_004046b0_test.cpp'
         PassPattern = '004046b0_TEST PASS'
     }
     [pscustomobject]@{

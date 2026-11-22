@@ -10,7 +10,7 @@
 //   CDiskFileWin32::Open 0x0099A6A0 / Read 0x0099A960 / Close 0x0099A920 (direct: the file is a local of known type),
 //   vector<char>(n) 0x00411910 (inside the retail CArray<char>), GFRemoveComments 0x00A60410 (x4), CCharString(const char*, long) 0x0099EBF0 / () 0x0099E4B0 /
 //   ~ 0x0099EAE0, CStringParser(const char*, callback, const CCharString&, long) 0x00414E30 with its inlined dtor
-//   (~list<CStringParserCommentBoundaries> 0x004046B0, ~CBaseClass 0x0099A2E0), CConsole::RunTextCommand 0x009EC710, free.
+//   (~_List_base<CStringParserCommentBoundaries> 0x004046B0, ~CBaseClass 0x0099A2E0), CConsole::RunTextCommand 0x009EC710, free.
 // Shape: an early `return` when the path is missing (the hoisted `lea ecx, file` before the branch: the if-block form
 //   recomputes it after the Open pushes); the default ctor assigns Opened in its body (after the Pathname ctor); the parser
 //   and a CParsedItem are built and left unused (as in RunTextCommand's loop prologue); the text is the buffer's
@@ -61,14 +61,12 @@ void __fastcall GFRemoveComments(char* text, const char* start, const char* end)
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
-template <class _Tp, class _Alloc = allocator<_Tp> > class list { public:   // STLport list: the sentinel node pointer
-    void* _M_node;
-    ~list();                                            // 0x004046B0
-};
-}
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_N_OUTOFLINE                // vector<char>(size_type) 0x00411910 called, declared only (as the HEAD stand-in did)
+#include "stlport/fable_containers.h"
 struct CCursorPos {
     bool          InQuotes;
     unsigned long StringPos;
@@ -90,17 +88,7 @@ class CParsedItem { public:                             // 12 bytes
     long        Value;
     CCharString Text;
 };
-namespace std {
-template <class _Tp> class allocator { public: };
-template <class _Tp, class _Alloc> class vector { public:
-    _Tp* _M_start; _Tp* _M_finish; _Tp* _M_end_of_storage;
-    explicit vector(unsigned int __n);                  // 0x00411910
-    ~vector() { if (_M_start) free(_M_start); }
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    _Tp& operator[](unsigned int __n) { return *(_M_start + __n); }
-    const _Tp& operator[](unsigned int __n) const { return *(_M_start + __n); }
-};
-}
+// NF245: the row-local std::vector stand-in (vector(size_type) 0x00411910) replaced by the shared STLport vector above.
 template <class T> class CArray : public std::vector<T> {  // retail CArray<T>: the STLport vector plus the engine helpers
 public:
     explicit CArray(unsigned int size) : std::vector<T>(size) { }

@@ -6,7 +6,7 @@
 // Callees: SetDefaultValue (vtable slot 8, 0x005DB410), CCharString::CCharString(const char*, long)
 // 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&,
 // long) 0x00404720, CCharString::~CCharString 0x0099EAE0, CPersistTraits<float>::TransferIn 0x0040F7E0,
-// list<CStringParserCommentBoundaries>::~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
+// std::_List_base<CStringParserCommentBoundaries>::~_List_base 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
 // Shape: the default reset is a real virtual call (`call [eax+20h]`). The parser is a 0x28-byte stack
 // object built from the text with no error callback, an explicit `CCharString("", -1)` temporary as
 // its file name (the constructor's returned `this` is pushed straight from eax; the literal is the
@@ -29,15 +29,11 @@ public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                   // list<CStringParserCommentBoundaries>, retail 8 bytes
-public:
-    void* m_pHead;
-    unsigned long m_size;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 
 class CStringParser : public CBaseClass {
 public:
@@ -45,9 +41,9 @@ public:
     unsigned long BaseLineOffset;                  // +0x08
     CCharString Filename;                          // +0x0C
     CCharString TempCharString;                    // +0x10
-    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
-    void (*ErrorCallback)(CCharString*);           // +0x1C
-    long CursorPos[2];                             // +0x20
+    std::list<CStringParserCommentBoundaries> Comments;             // +0x14 (STLport list: the sentinel pointer, 4 bytes)
+    void (*ErrorCallback)(CCharString*);           // +0x18
+    long CursorPos[3];                             // +0x1C (retail CStringParser is 0x28 bytes; NF245: was an 8-byte list stand-in + CursorPos[2])
     CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long mode);  // 0x00404720
 };
 

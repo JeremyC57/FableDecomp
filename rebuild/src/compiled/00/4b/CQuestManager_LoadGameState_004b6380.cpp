@@ -3,7 +3,7 @@
 // Retail 0x004B6380, 346 bytes, ret 4 (the reader of the landed SaveGameState 0x004B64E0). Callees: the stream's inline
 // ReadLong (slow path CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0), vector<unsigned char>(n) 0x00411910, the
 // stream's virtual ReadBuffer (slot 4, +0x10), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
-// CStringParser ctor 0x00404720 and its implicit inline dtor (~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0),
+// CStringParser ctor 0x00404720 and its implicit inline dtor (~_List_base 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0),
 // free 0x00BFEA14, CQuestManager::LoadGameState(CStringParser&) 0x004B5500, TransferBoasts 0x004B05C0.
 // Layout: CPersistContext per Ego_r.pdb (PParser +8, Mode +0x18, PLoadStream +0x24); the load stream is
 // engine/CDataInputStream.h's layout, modelled locally because the body makes a virtual call through its vptr (the
@@ -64,14 +64,11 @@ class CMemoryDataInputStream { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08

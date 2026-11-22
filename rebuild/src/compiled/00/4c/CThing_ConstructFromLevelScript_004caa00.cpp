@@ -12,7 +12,7 @@
 //   GetLevelBeingLoaded 0x0051E2C0 / RemapUIDForSerialisation 0x0051E210, CWorld::GetFrame 0x0049D870, CStringParser(const CCharString&,
 //   cb, const CCharString&, long) 0x00404720 / NextItemExists 0x009BA4F0 / ReadAsString 0x009BA6F0 / PeekNextItemType 0x009BA900 /
 //   ReadAsSymbol 0x009BA790 / ReadAsStringUntilString 0x009BA330 / SkipPastString 0x009B9BA0 and the generated ~CStringParser (expanded:
-//   ~list<CStringParserCommentBoundaries> 0x004046B0, two ~CCharString, ~CBaseClass 0x0099A2E0), CPlayerManager::GetMainPlayer 0x00449970,
+//   ~_List_base<CStringParserCommentBoundaries> 0x004046B0, two ~CCharString, ~CBaseClass 0x0099A2E0), CPlayerManager::GetMainPlayer 0x00449970,
 //   CPlayer::GetPControlledCreature 0x00487DC0, CThing::SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) 0x004C88E0 (called,
 //   loading) / InitFromThingInfo 0x004C7F40 / CreateUID 0x004C7FF0 / AddTC 0x004C9D60 / CreateSerialiseCreatableTCs 0x004CA230,
 //   CPersistContext(CStringParser&, ...) 0x009BADD0 / Transfer<short> 0x004CC3F0 / Transfer<bool> 0x004045C0, CBasicString<char>::
@@ -55,7 +55,10 @@
 #define FABLE_RETAIL_CTHINGMANAGER_LEVELBEINGLOADED_OUTOFLINE
 #define FABLE_RETAIL_CWORLD
 #define FABLE_RETAIL_CSTRINGPARSER
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF245 (2026-11-22, the 0x004046B0 family): the out-of-line list destructor call binds _List_base<CStringParserCommentBoundaries>'s
+//   destructor 0x004046B0 (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x00404710 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x004046B0`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_CPERSISTCONTEXT
 #define FABLE_RETAIL_CGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT

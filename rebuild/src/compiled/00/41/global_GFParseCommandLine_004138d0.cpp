@@ -48,14 +48,11 @@ public:
 };
 
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                  // retail list<CStringParserCommentBoundaries>: the head pointer only
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 struct CCursorPos {
     bool          InQuotes;                        // +0x0
     unsigned long StringPos;                       // +0x4

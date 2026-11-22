@@ -14120,7 +14120,7 @@ _fclose	00bfea20	00402130
 ?ParserIsSeparatorNext@CAFile@@SI_NAAVCStringParser@@@Z	00997da0	00998010
 ?ReadAsStringUntilString@CStringParser@@QAE_NABVCCharString@@AAVCParsedItem@@@Z	009ba110	00998250
 ?Truncate@CCharString@@QAEXK@Z	0099f2a0	00998250
-??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	004046b0	00998a30
+??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	004046b0	00501d30
 ?ParserIsSeparatorNext@CAFile@@CI_NAAVCStringParser@@@Z	00997da0	00998a30
 ?ParserReadPastComponent@CAFile@@CI_NAAVCStringParser@@AAVCCharString@@@Z	00998010	00998a30
 ?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z	00998170	00998a30

@@ -1,0 +1,89 @@
+// CDefinitionManager::ParseStringForSymbols(const char* text, bool instantiate) -- symbol pre-pass over a definition
+// source: optionally instantiate every "#definition_template" and then every "#definition" (class name, instance
+// name; unknown classes reported), rewinding the parser after each pass; then parse every "enum" for its symbols
+// Leaf: ?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+// Naming wave 27 (family dm, DECISIONS_W26 D5): ParseStringForSymbols is protected in both PDBs (IAE). Was public (QAE).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009ADE90, length 699 bytes, `ret 8`. Mangled (PDB):
+//   ?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+// Callees: CBaseClass ctor 0x0099A2D0 / ~ 0x0099A2E0, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~
+//   0x0099EAE0, malloc 0x00BFEA0E (comment-list head node), CStringParser::Init 0x009B9530 / SkipPastWholeString 0x009B9C00
+//   (descriptive) / ReadAsString 0x009BA6F0 / SetStringPos 0x009B9940, the comment list dtor 0x004046B0,
+//   InstantiateDef 0x009ADC90, operator+(const char*, const CCharString&) 0x0099F690 (__fastcall), Error 0x009AC9F0,
+//   ParseEnumForSymbols 0x009ACEE0.
+// Layout: retail CDefinitionManager: ErrorCallback +0xb0, CurrentFilename +0xb4 (PDB +0xcc/+0xd0); the parser is the
+//   retail 0x28-byte CStringParser (vtable 0x0122D874; inline default ctor model: landed CTCBase::SerialiseLevelState
+//   0x00686E10).
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CCharString {
+public:
+    void* PStringData;
+    CCharString();                                 // 0x0099E4B0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                // 0x0099EAE0
+};
+CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
+struct CCursorPos {
+    bool          InQuotes;
+    unsigned long StringPos;
+    unsigned long Line;
+};
+typedef void (__fastcall* TErrorCallback)(const CCharString&);
+class CStringParser : public CBaseClass {          // vtable 0x0122D874
+public:
+    char*                    String;               // +0x04
+    unsigned long            BaseLineOffset;       // +0x08
+    CCharString              Filename;             // +0x0C
+    CCharString              TempCharString;       // +0x10
+    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
+    TErrorCallback           ErrorCallback;        // +0x18
+    CCursorPos               CursorPos;            // +0x1C
+    CStringParser(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine)
+    {
+        Init(text, callback, filename, baseLine);
+    }
+    void Init(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
+    bool SkipPastWholeString(const CCharString& name); // 0x009B9C00
+    CCharString ReadAsString();                    // 0x009BA6F0
+    void SetStringPos(unsigned long pos);          // 0x009B9940
+};
+class CDefinitionManager { public:
+    unsigned char  _pad000[0xb0];
+    TErrorCallback ErrorCallback;                  // +0xb0
+    CCharString    CurrentFilename;                // +0xb4
+    bool InstantiateDef(const CCharString& className, const CCharString& instanceName, bool isTemplate);   // 0x009ADC90
+    void Error(const CStringParser& parser, const CCharString& message);   // 0x009AC9F0
+    void ParseEnumForSymbols(CStringParser& parser);   // 0x009ACEE0
+protected:
+    void ParseStringForSymbols(const char* text, bool instantiate);   // protected (Ego_r.pdb / FableWin.pdb IAE)
+};
+
+void CDefinitionManager::ParseStringForSymbols(const char* text, bool instantiate)
+{
+    CStringParser parser(text, ErrorCallback, CurrentFilename, 0);
+    if (instantiate) {
+        while (parser.SkipPastWholeString("#definition_template")) {
+            CCharString className = parser.ReadAsString();
+            CCharString instanceName = parser.ReadAsString();
+            if (!InstantiateDef(className, instanceName, true))
+                Error(parser, "Unable to find def class called " + className);
+        }
+        parser.SetStringPos(0);
+        while (parser.SkipPastWholeString("#definition")) {
+            CCharString className = parser.ReadAsString();
+            CCharString instanceName = parser.ReadAsString();
+            if (!InstantiateDef(className, instanceName, false))
+                Error(parser, "Unable to find def class called " + className);
+        }
+        parser.SetStringPos(0);
+    }
+    while (parser.SkipPastWholeString("enum"))
+        ParseEnumForSymbols(parser);
+}

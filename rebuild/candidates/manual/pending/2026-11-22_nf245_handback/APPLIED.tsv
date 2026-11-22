@@ -1,0 +1,11 @@
+entry	address	status	binders_respelled	note
+E1	0x004046B0	done (ruling 2 (a) split 3 + 61)	43	self row onto engine/CStringParser.h's new add-only partial mode FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY + stlport/fable_containers.h; 40 row-local list stand-ins -> shared list (33 BASE_OUTOFLINE, 7 BASE_DTOR_VISIBLE_NOINLINE + partial mode), 3 DTOR_OUTOFLINE rows swapped to BASE_DTOR_VISIBLE_NOINLINE; 18 already right; 0x00501D30 / 0x00756D00 / 0x007AE3D0 stay on ~list (vector / map ports out of scope)
+E1	0x00404690	done	0	self row off the std_list_node_Init stand-in onto _List_base(const allocator&); its only caller 0x00463871 already binds that spelling: 2 -> 1
+E1	0x004046F0	done (decision 2)	0	self row off ListNode_Create_Circular onto list(const allocator&); no referencer; one discriminating source (layout)
+E1	0x00404710	name-fix (catalog-only)	0	NAME_FIXES: ~list owner (the jmp thunk)
+E2	0x004AB4F0	open (context)	0	census in refs_e2_census.tsv: 7 landed referencer rows (incl. tree / map rows 0x00519560, 0x0051A2F0, 0x0051BF90)
+E2	0x005127A0	open (context)	0	census: 13 landed referencer rows (heap / sort templates of pair<unsigned __int64, list<C2DLineF> >)
+E2	0x00685BC0	open (context)	0	census: 0x00682810 + 0x00986510 (its global-namespace list model must be ported first)
+E3	QUEUE_LINES.tsv	open (context)	0	39 lines untouched
+E3	0x0049D800	open (context)	0	
+E3	0x01296F14	open (context)	0	

@@ -10,10 +10,11 @@ class CPersistContext;
 class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* head; ~list(); };
-} // namespace std -- retail sentinel-only list, 4 bytes
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  std::list<CStringParserCommentBoundaries> Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];

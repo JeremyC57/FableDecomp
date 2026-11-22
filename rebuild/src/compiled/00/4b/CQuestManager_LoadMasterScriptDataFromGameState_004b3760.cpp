@@ -7,7 +7,7 @@
 //   (on RuntimeQuestPersistence +0xC; returns `const CCharString*` or 0), CCharString copy ctor 0x0099EC30,
 //   CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E), CStringParser ctor 0x00404720, ~CCharString 0x0099EAE0,
 //   CGameDefinitionManager::Get 0x0044C6B0 (static __fastcall), CPersistContext ctor 0x009BADD0, the script data's
-//   slot 1 (OnPersist), the inlined ~CStringParser (~list 0x004046B0, two ~CCharString, ~CBaseClass 0x0099A2E0).
+//   slot 1 (OnPersist), the inlined ~CStringParser (~_List_base 0x004046B0, two ~CCharString, ~CBaseClass 0x0099A2E0).
 // Layout (retail): CQuestManager RuntimeQuestPersistence +0xC (Ego_r.pdb +0xC); CStringParser 0x28 bytes, CPersistContext
 //   0x2C bytes with a trivial destructor (the landed CGameTimeManager::Load 0x006BBBA0 model).
 // Shape: the persisted text is copied into a named local (homed in the dead quest-name argument slot); the parser is
@@ -25,14 +25,11 @@ public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                    // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();                     // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char*                    String;                 // +0x04
     unsigned long            BaseLineOffset;         // +0x08

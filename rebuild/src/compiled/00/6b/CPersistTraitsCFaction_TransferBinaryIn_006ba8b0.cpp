@@ -7,7 +7,7 @@
 //   long) @ 0x0099EBF0 (the buffer text, then the "" file name @ 0x0122D70E), CStringParser::CStringParser @ 0x00404720,
 //   ~CCharString @ 0x0099EAE0, CPersistContext::CPersistContext(CStringParser*, callback, bool, CDefinitionManager*,
 //   CSymbolMap*, CCharString*) @ 0x009BADD0, CPersistTraits<CFaction>::TransferIn @ 0x006BA480, and the inlined
-//   ~CStringParser (~list @ 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass @ 0x0099A2E0).
+//   ~CStringParser (~_List_base @ 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass @ 0x0099A2E0).
 // Shape: the length through an inline by-pointer long read wrapping CMemoryDataInputStream::Read (64-bit position range check, 4-byte fast copy, else
 //   ReadWithSrcChunkOverflow into the dead stream slot); a CArray<char> (STLport vector) of length + 1 zero bytes (allocate,
 //   inline memset through STLport uninitialized_fill_n, whose begin copy is spilled over the rep stos and gives the end); its `size ? first : (char*)this` GetData feeds the virtual read and the
@@ -27,14 +27,11 @@ class CCharString { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {                  // retail std::list<CStringParserCommentBoundaries>: sentinel only
-public:
-    void* m_pHead;
-    ~list();                   // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08

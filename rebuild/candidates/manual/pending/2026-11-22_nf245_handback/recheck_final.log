@@ -1,0 +1,364 @@
+##### PART 1: the 46 changed rows (work/fin1_payload.json)
+addr       parity           behav  name
+00404690   WARN STANDIN_LEAF ??0?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z (catalog std_list_node_Init; names another function)
+00404690   RELOCATION_MATCH PASS   std_list_node_Init
+004046b0   WARN STANDIN_LEAF ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ (catalog std::list<CStringParserCommentBoundaries>::~list; names another function)
+004046b0   RELOCATION_MATCH PASS   ~list
+004046f0   WARN STANDIN_LEAF ??0?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z (catalog ListNode_Create_Circular; names another function)
+004046f0   RELOCATION_MATCH PASS   ListNode_Create_Circular
+004047a0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004047a0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004047a0   RELOCATION_MATCH PASS   ~CStringParser
+004047d0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004047d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004047d0.obj; graded the largest function
+004047d0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004047d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004138d0   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+004138d0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004138d0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+004138d0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004138d0   RELOCATION_MATCH PASS   GFParseCommandLine
+004b3760   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004b3760   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+004b3760   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004b3760   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004b3760   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+004b3760   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004b3760   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b3760   RELOCATION_MATCH PASS   LoadMasterScriptDataFromGameState
+004b6380   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+004b6380   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+004b6380   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004b6380   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004b6380   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004b6380   WARN RELOC_NAME: ??0CByteArray@N_00411910@@QAE@K@Z -> 00411910 labelled 'std::vector<char, std::allocator<char>>::vector'
+004b6380   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b6380   RELOCATION_MATCH PASS   LoadGameState
+004c88e0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004c88e0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004c88e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004c88e0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004c88e0   RELOCATION_MATCH PASS   SerialiseThingInfo
+004c8a30   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004c8a30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+004c8a30   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004c8a30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004c8a30   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004c8a30   RELOCATION_MATCH PASS   GetSubTypeFromScript
+004c9120   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004c9120   RELOCATION_MATCH PASS   Save
+004ca230   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+004ca230   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004ca230   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004ca230   RELOCATION_MATCH PASS   CreateSerialiseCreatableTCs
+004caa00   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004caa00   RELOCATION_MATCH PASS   ConstructFromLevelScript
+00520570   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00520570   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00520570   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00520570   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00520570   RELOCATION_MATCH PASS   LoadHeroStateScript
+00521ae0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00521ae0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00521ae0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00521ae0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00521ae0   RELOCATION_MATCH PASS   LoadFromFile
+005dc3c0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc3c0   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc3c0   WARN SHARED_HEADER_AVAILABLE CAnimComponentFlags (engine/CAnimComponentFlags.h)
+005dc3c0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc3c0   RELOCATION_MATCH PASS   Initialise
+005dc450   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc450   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc450   WARN SHARED_HEADER_AVAILABLE CAnimComponentTransitionInTime (engine/CAnimComponentTransitionInTime.h)
+005dc450   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc450   RELOCATION_MATCH PASS   Initialise
+005dc4d0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc4d0   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc4d0   WARN SHARED_HEADER_AVAILABLE CAnimComponentDelayTime (engine/CAnimComponentDelayTime.h)
+005dc4d0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc4d0   RELOCATION_MATCH PASS   Initialise
+005dc550   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc550   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness (engine/CAnimComponentCombatHandedness.h)
+005dc550   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc550   RELOCATION_MATCH PASS   Initialise
+005dc650   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc650   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc650   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatComboChain (engine/CAnimComponentCombatComboChain.h)
+005dc650   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc650   RELOCATION_MATCH PASS   Initialise
+005dc730   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc730   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc730   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatRecoil (engine/CAnimComponentCombatRecoil.h)
+005dc730   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc730   RELOCATION_MATCH PASS   Initialise
+005dc7b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc7b0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005dc7b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatMisc (engine/CAnimComponentCombatMisc.h)
+005dc7b0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc7b0   RELOCATION_MATCH PASS   Initialise
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatFlourishTargetOffset (engine/CAnimComponentCombatFlourishTargetOffset.h)
+005dc8b0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc8b0   RELOCATION_MATCH PASS   Initialise
+005dc9b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dc9b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentBase (engine/CAnimComponentBase.h)
+005dc9b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentSetCreatureMode (engine/CAnimComponentSetCreatureMode.h)
+005dc9b0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dc9b0   RELOCATION_MATCH PASS   Initialise
+005dca60   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+005dca60   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005dca60   WARN SHARED_HEADER_AVAILABLE CAnimComponentStrikeSpeedMultiplier (engine/CAnimComponentStrikeSpeedMultiplier.h)
+005dca60   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+005dca60   RELOCATION_MATCH PASS   Initialise
+00686e10   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00686e10   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00686e10   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00686e10   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00686e10   RELOCATION_MATCH PASS   SerialiseLevelState
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+006ba8b0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+006ba8b0   RELOCATION_MATCH PASS   TransferBinaryIn
+006bbba0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+006bbba0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006bbba0   WARN SHARED_HEADER_AVAILABLE CGameTimeManager (engine/CGameTimeManager.h)
+006bbba0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+006bbba0   RELOCATION_MATCH PASS   Load
+00814260   WARN SHARED_HEADER_AVAILABLE CTCBoastingPodium (engine/CTCBoastingPodium.h)
+00814260   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00814260   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00814260   RELOCATION_MATCH PASS   OnInitialActivate
+00816000   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00816000   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00816000   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+  WARN leaf 'vfunc_4' matches no symbol in 00816000.obj; graded the largest function
+  WARN leaf 'vfunc_4' matches no symbol in 00816000.obj; graded the largest function
+00816000   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00816000   RELOCATION_MATCH PASS   vfunc_4
+00816150   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00816150   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00816150   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00816150   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00816150   RELOCATION_MATCH PASS   Init
+00998a30   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00998a30   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+00998a30   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00998a30   WARN RELOC_NAME: ?ParserReadPastSeparator@CAFile@@CI_NAAVCStringParser@@@Z -> 00997e90 labelled 'CAFile::ParserIsSeparatorNext'
+00998a30   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00998a30   RELOCATION_MATCH PASS   IsFilePathSyntaxValid
+009ade90   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ade90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009ade90   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ade90   RELOCATION_MATCH PASS   ParseStringForSymbols
+009ae150   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009ae150   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ae150   RELOCATION_MATCH PASS   CompileSubDefinition
+009af1e0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009af1e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009af1e0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009af1e0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009af1e0   RELOCATION_MATCH PASS   CompileString
+009bba40   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009bba40   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009bba40   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bba40   RELOCATION_MATCH PASS   TransferObjectLoadText
+009e5ad0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009e5ad0   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+009e5ad0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009e5ad0   RELOCATION_MATCH PASS   ParseBuffer
+009eb2c0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009eb2c0   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+009eb2c0   WARN RELOC_NAME: ?FindInput@CConsole_Retail@@QAEPAVCConsoleInputBase@@ABVCCharString@@@Z -> 009eb220 labelled 'CConsole_Retail::GetRegisteredConsoleInput'
+009eb2c0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009eb2c0   RELOCATION_MATCH PASS   SetHelpBarString
+009eb430   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009eb430   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+009eb430   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009eb430   RELOCATION_MATCH PASS   RunCommandLine
+009ec430   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ec430   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ec430   RELOCATION_MATCH PASS   ProcessCommandLine
+009ec710   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ec710   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+009ec710   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ec710   RELOCATION_MATCH PASS   RunTextCommand
+009ec890   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009ec890   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009ec890   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009ec890   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ec890   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+009ec890   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+009ec890   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ec890   RELOCATION_MATCH PASS   RunScript
+00a38e50   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00a38e50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00a38e50   RELOCATION_MATCH PASS   ParseBuffer
+00cb7cb0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00cb7cb0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00cb7cb0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb7cb0   RELOCATION_MATCH PASS   DoScriptDataPersist
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase (engine/CActiveEntityScriptBase.h)
+00cb7da0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb7da0   RELOCATION_MATCH PASS   DoEntityScriptPersist
+00cb8690   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00cb8690   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist (engine/CRuntimeScriptedEntityPersist.h)
+00cb8690   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00cb8690   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb8690   RELOCATION_MATCH PASS   LoadGameState
+
+WINS: 46
+  00404690 RELOCATION_MATCH _global::??0?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z
+  004046b0 RELOCATION_MATCH std::list<CStringParserCommentBoundaries>::??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ
+  004046f0 RELOCATION_MATCH _global::??0?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z
+  004047a0 RELOCATION_MATCH CStringParser::??1CStringParser@@UAE@XZ
+  004047d0 RELOCATION_MATCH CStringParser::`scalar_deleting_destructor'
+  004138d0 RELOCATION_MATCH _global::?GFParseCommandLine@@
+  004b3760 RELOCATION_MATCH CQuestManager::?LoadMasterScriptDataFromGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z
+  004b6380 RELOCATION_MATCH CQuestManager::?LoadGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  004c88e0 RELOCATION_MATCH CThing::?SerialiseThingInfo@CThing@@SIX_NAAVCCharString@@AAVCSerialiseInfo@1@@Z
+  004c8a30 RELOCATION_MATCH CThing::?GetSubTypeFromScript@CThing@@SIJPBD@Z
+  004c9120 RELOCATION_MATCH CThing::?Save@CThing@@UAEXAAVCCharString@@@Z
+  004ca230 RELOCATION_MATCH CThing::CreateSerialiseCreatableTCs
+  004caa00 RELOCATION_MATCH CThing::?ConstructFromLevelScript@CThing@@UAE_NPBD@Z
+  00520570 RELOCATION_MATCH CThingManager::LoadHeroStateScript
+  00521ae0 RELOCATION_MATCH CThingManager::LoadFromFile
+  005dc3c0 RELOCATION_MATCH CAnimComponentFlags::?Initialise@CAnimComponentFlags@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc450 RELOCATION_MATCH CAnimComponentTransitionInTime::?Initialise@CAnimComponentTransitionInTime@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc4d0 RELOCATION_MATCH CAnimComponentDelayTime::?Initialise@CAnimComponentDelayTime@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc550 RELOCATION_MATCH CAnimComponentCombatHandedness::?Initialise@CAnimComponentCombatHandedness@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc650 RELOCATION_MATCH CAnimComponentCombatComboChain::?Initialise@CAnimComponentCombatComboChain@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc730 RELOCATION_MATCH CAnimComponentCombatRecoil::?Initialise@CAnimComponentCombatRecoil@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc7b0 RELOCATION_MATCH CAnimComponentCombatMisc::?Initialise@CAnimComponentCombatMisc@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc8b0 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::?Initialise@CAnimComponentCombatFlourishTargetOffset@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc9b0 RELOCATION_MATCH CAnimComponentSetCreatureMode::?Initialise@CAnimComponentSetCreatureMode@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dca60 RELOCATION_MATCH CAnimComponentStrikeSpeedMultiplier::?Initialise@CAnimComponentStrikeSpeedMultiplier@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  00686e10 RELOCATION_MATCH CTCBase::SerialiseLevelState
+  006ba8b0 RELOCATION_MATCH CPersistTraits<CFaction>::?TransferBinaryIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCMemoryDataInputStream@@AAVCFaction@@@Z
+  006bbba0 RELOCATION_MATCH CGameTimeManager::?Load@CGameTimeManager@@QAEXABVCCharString@@@Z
+  00814260 RELOCATION_MATCH CTCBoastingPodium::?OnInitialActivate@CTCBoastingPodium@@UAEXXZ
+  00816000 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveSphere::vfunc_4
+  00816150 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?Init@CPhysicalPrimitiveCylinder@
+  00998a30 RELOCATION_MATCH CAFile::?IsFilePathSyntaxValid@CAFile@@SI_NABVCWideString@@_N@Z
+  009ade90 RELOCATION_MATCH CDefinitionManager::?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+  009ae150 RELOCATION_MATCH CDefinitionManager::CompileSubDefinition
+  009af1e0 RELOCATION_MATCH CDefinitionManager::?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z
+  009bba40 RELOCATION_MATCH CPersistContext::?TransferObjectLoadText@CPersistContext@
+  009e5ad0 RELOCATION_MATCH CSymbolMap::ParseBuffer
+  009eb2c0 RELOCATION_MATCH CConsole::SetHelpBarString
+  009eb430 RELOCATION_MATCH CConsole::RunCommandLine
+  009ec430 RELOCATION_MATCH CConsoleVariable::?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z
+  009ec710 RELOCATION_MATCH CConsole::RunTextCommand
+  009ec890 RELOCATION_MATCH CConsole::?RunScript@CConsole@@QAEXABVCWideString@@@Z
+  00a38e50 RELOCATION_MATCH CCRCSymbolMap::?ParseBuffer@CCRCSymbolMap@@IAE_NPBDABVCCharString@@@Z
+  00cb7cb0 RELOCATION_MATCH CScriptBase::DoScriptDataPersist
+  00cb7da0 RELOCATION_MATCH CScriptBase::DoEntityScriptPersist
+  00cb8690 RELOCATION_MATCH CScriptBase::?LoadGameState@CScriptBase@@QAEXABVCCharString@@@Z
+FIN_DONE
+##### PART 2: the 21 unchanged referencers (18 already ~_List_base + 3 blocked) + 0x004046F0 after its comment-only reword (work/fin2_payload.json)
+addr       parity           behav  name
+004a0d90   WARN RELOC_CONFLICT: ??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z -> 00410f30 here, 00411910 in landed 009ec890
+004a0d90   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+004a0d90   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a0d90   RELOCATION_MATCH PASS   LoadQuestsFromFile
+004a21f0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004a21f0   WARN RELOC_NAME: ??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z -> 004ab640 labelled 'CPersistContext::Transfer<CWorld::ESaveType>'
+004a21f0   RELOCATION_MATCH PASS   LoadGameStateInternal
+004b5080   WARN RELOC_NAME: ??$sort@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@YIXPAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@Z -> 004bbb40 labelled 'std::sort<std::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *, CKeyPairCompareLess<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>>'
+004b5080   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b5080   RELOCATION_MATCH PASS   LoadFromGameStateScript
+004ce1b0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004ce1b0   RELOCATION_MATCH PASS   AddMasterShotCameraTagFromText
+004fe2a0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004fe2a0   RELOCATION_MATCH PASS   LoadAllLoadableGlobalThingsFromSingleFile
+00520d00   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00520d00   RELOCATION_MATCH PASS   LoadEntitiesFromScript
+00684610   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00684610   RELOCATION_MATCH PASS   OnSerialise
+006a5d90   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+006a5d90   RELOCATION_MATCH PASS   ConstructFromLevelScript
+008315c0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+008315c0   RELOCATION_MATCH PASS   ConstructFromLevelScript
+00837e40   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00837e40   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00837e40   RELOCATION_MATCH PASS   ConstructFromLevelScript
+0083c2d0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+0083c2d0   RELOCATION_MATCH PASS   ConstructFromLevelScript
+0083d990   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+0083d990   RELOCATION_MATCH PASS   ConstructFromLevelScript
+00998570   WARN RELOC_ALIAS: __splitpath -> 00bfed52 is the import thunk 'MSVCR71.DLL::_splitpath'
+00998570   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00998570   RELOCATION_MATCH PASS   GetRelativeFilePath
+009bb110   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bb110   RELOCATION_MATCH PASS   TransferVectorLoadText
+009bbbf0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bbbf0   RELOCATION_MATCH PASS   CheckUnknownSymbols
+009bc120   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bc120   RELOCATION_MATCH PASS   TransferVectorOfSubComponentsLoadText
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   Load
+00cb8440   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist (engine/CRuntimeScriptedEntityPersist.h)
+00cb8440   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00cb8440   WARN RELOC_NAME: ?erase@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@std@@QAEPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2@PAU32@0@Z -> 00cbbda0 labelled '_global::Container_MoveAndConstruct'
+00cb8440   WARN RELOC_NAME: ??$sort@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$CKeyPairCompareLess@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@@@std@@YIXPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@0V?$CKeyPairCompareLess@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@@@Z -> 00cbd370 labelled 'std::sort<std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *, CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>'
+00cb8440   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb8440   RELOCATION_MATCH PASS   LoadFromGameStateScript
+00501d30   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CParsedItem (engine/CParsedItem.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00501d30   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+00501d30   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00501d30   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00501d30   RELOCATION_MATCH PASS   GetLevelFilesFromWorldFile
+00756d00   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+00756d00   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00756d00   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00756d00   RELOCATION_MATCH PASS   TransferMap<std::pair<long, long>, CCharString>
+007ae3d0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+007ae3d0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+007ae3d0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+007ae3d0   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@std@@QAEAAU01@XZ -> 007ab8a0 labelled 'CRetailTreeIterator::Increment'
+007ae3d0   RELOCATION_MATCH PASS   TransferMap<bool,CCharString>
+004046f0   WARN STANDIN_LEAF ??0?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z (catalog ListNode_Create_Circular; names another function)
+004046f0   RELOCATION_MATCH PASS   ListNode_Create_Circular
+
+WINS: 22
+  004a0d90 RELOCATION_MATCH CWorld::?LoadQuestsFromFile@CWorld@@QAEXAAVCAFile@@_N@Z
+  004a21f0 RELOCATION_MATCH CWorld::?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+  004b5080 RELOCATION_MATCH NQuestManager::CRuntimeQuestPersistence::?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z
+  004ce1b0 RELOCATION_MATCH CSubtitledMessage::?AddMasterShotCameraTagFromText@CSubtitledMessage@@AAE_NMABVCCharString@@@Z
+  004fe2a0 RELOCATION_MATCH CWorldMap::?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@QAEXABVCWideString@@@Z
+  00520d00 RELOCATION_MATCH CThingManager::?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z
+  00684610 RELOCATION_MATCH CTCCreatureOpinionOfHero::?OnSerialise@CTCCreatureOpinionOfHero@@UAEXAAVCPersistContext@@_N@Z
+  006a5d90 RELOCATION_MATCH CThingPhysical::?ConstructFromLevelScript@CThingPhysical@@UAE_NPBD@Z
+  008315c0 RELOCATION_MATCH CThingAICreature::?ConstructFromLevelScript@CThingAICreature@@UAE_NPBD@Z
+  00837e40 RELOCATION_MATCH CThingTrackNode::?ConstructFromLevelScript@CThingTrackNode@@UAE_NPBD@Z
+  0083c2d0 RELOCATION_MATCH CThingSwitch::?ConstructFromLevelScript@CThingSwitch@@MAE_NPBD@Z
+  0083d990 RELOCATION_MATCH CThingPhysicalSwitch::?ConstructFromLevelScript@CThingPhysicalSwitch@@UAE_NPBD@Z
+  00998570 RELOCATION_MATCH CAFile::?GetRelativeFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z
+  009bb110 RELOCATION_MATCH CPersistContext::?TransferVectorLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z
+  009bbbf0 RELOCATION_MATCH CPersistContext::?CheckUnknownSymbols@CPersistContext@@QAEXXZ
+  009bc120 RELOCATION_MATCH CPersistContext::?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00cb8440 RELOCATION_MATCH NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript
+  00501d30 RELOCATION_MATCH CWorldMap::?GetLevelFilesFromWorldFile@CWorldMap@@IAEXABVCWideString@@AAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00756d00 RELOCATION_MATCH CPersistContext::??$TransferMap@U?$pair@JJ@std@@VCCharString@@@CPersistContext@@QAEXPBDAAV?$map@VCCharString@@U?$pair@JJ@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABU?$pair@JJ@2@@Z
+  007ae3d0 RELOCATION_MATCH CPersistContext::??$TransferMap@_NVCCharString@@@CPersistContext@@QAEXPBDAAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AB_N@Z
+  004046f0 RELOCATION_MATCH _global::??0?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@ABV?$allocator@VCStringParserCommentBoundaries@@@1@@Z
+FIN_DONE

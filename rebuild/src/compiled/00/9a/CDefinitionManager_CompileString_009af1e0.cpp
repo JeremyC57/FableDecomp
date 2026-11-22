@@ -47,40 +47,13 @@ typedef void (__fastcall* TParserErrorCallback)(const CCharString& message);
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CStringParserCommentBoundaries
-{
-public:
-    long Start;                                         // +0x00
-    long End;                                           // +0x04
-};
-namespace std {
-class _List_node_base
-{
-public:
-    _List_node_base* _M_next;
-    _List_node_base* _M_prev;
-};
-template <class _Tp> class _List_node : public _List_node_base
-{
-public:
-    _Tp _M_data;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list
-{
-public:
-    typedef _List_node<_Tp> _Node;
-    _List_node_base* _M_node;                           // +0x00 the sentinel
-    list() : _M_node(0)
-    {
-        _Node* __sentinel = (_Node*)malloc(sizeof(_Node));
-        __sentinel->_M_next = __sentinel;
-        __sentinel->_M_prev = __sentinel;
-        _M_node = __sentinel;
-    }
-    ~list();                                            // 0x004046B0 (CStringParserCommentBoundaries)
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (the visible out-of-line _List_base dtor) and the element by engine/CStringParser.h's partial mode: the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#define FABLE_RETAIL_CSTRINGPARSER_COMMENT_BOUNDARIES_ONLY
+#include "engine/CStringParser.h"
+#include "stlport/fable_containers.h"
 
 class CStringParser : public CBaseClass                      // vtable 0x0122D874, 0x28 bytes
 {

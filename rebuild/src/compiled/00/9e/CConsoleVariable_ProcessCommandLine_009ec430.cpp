@@ -3,7 +3,7 @@
 // report the error and the variable's type (bool / float / slong / string)
 // Leaf: ?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z
 // Callees: CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CStringParser ctor 0x00404720 and
-//   its implicit inline dtor (~list 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0), ReadNextItem
+//   its implicit inline dtor (~_List_base 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0), ReadNextItem
 //   0x009BA080, NextItemExists 0x009BA4F0, CConsoleTarget::PrintToString 0x00A63C00 / ReadFromParser 0x00A63FC0,
 //   operator+ 0x0099F600 / 0x0099F570 / 0x0099F690 (__fastcall), operator+= 0x0099F100, CConsole::SendMessageToUser 0x009EB260.
 // Shape: the 12-byte parser item (type, value, text) is constructed first and filled by ReadNextItem; the printed value
@@ -20,14 +20,11 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CStringParserCommentBoundaries;
-namespace std {
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* m_pHead;
-    ~list();                      // 0x004046B0
-};
-} // namespace std
+// NF245 (2026-11-22, the 0x004046B0 family; nf243 ruling 2 (a)): the row-local std::allocator / std::list stand-ins replaced by the
+//   shared STLport list (declaration-only _List_base ctor / dtor): the comment list's destructor call
+//   binds ??1?$_List_base@VCStringParserCommentBoundaries@@..@std@@QAE@XZ (0x004046B0; list's own ~list is the 5-byte jmp 0x00404710).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
 class CStringParser : public CBaseClass { public:                   // retail 0x28 bytes
     char*                    String;                  // +0x04
     unsigned long            BaseLineOffset;          // +0x08
