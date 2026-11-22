@@ -5,7 +5,7 @@
 //   lists' EnsureCapacity(width * height); the callees are this vector's erase 0x00A84090 and _M_fill_insert 0x00A84690.
 //   The catalog's "Vector_EnsureCapacity_TreeLines" is descriptive.
 // Callees: malloc 0x00BFEA0E (the default list's sentinel), erase(first, last) 0x00A84090, _M_fill_insert(pos, n, x)
-//   0x00A84690, list::~list 0x005127A0.
+//   0x00A84690, _List_base<C2DLineF>::~_List_base 0x005127A0 (list's `~list() {}` inline).
 // Shape: STLport `resize(n) { resize(n, _Tp()); }` with `resize(n, x) { if (n < size()) erase(begin() + n, end()); else
 //   insert(end(), n - size(), x); }` inline: the default list temporary lives in the `push ecx` frame word (sentinel
 //   malloc'd and self-linked, the proxy's zero store dropped), and its destructor runs on both exits. The same-TU
@@ -49,13 +49,13 @@ public:
         _M_node._M_data->_M_next = _M_node._M_data;
         _M_node._M_data->_M_prev = _M_node._M_data;
     }
+    ~_List_base();                                      // 0x005127A0 (same-TU body below)
 };
 
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class list : public _List_base<_Tp, _Alloc> {
 public:
     list() : _List_base<_Tp, _Alloc>(allocator<_List_node<_Tp> >()) { }
-    ~list();                                            // 0x005127A0 (same-TU body below)
 };
 
 template <class _Tp> class vector_allocator {
@@ -96,23 +96,28 @@ public:
     void resize(unsigned int __new_size) { resize(__new_size, _Tp()); }
 };
 
-// Same-TU stand-ins for ~list 0x005127A0 and _M_fill_insert 0x00A84690 (simplified; only their visibility matters): they do
-// not let the temporary's address escape, so VC7.1 drops the proxy's dead zero store as retail.
+// Same-TU bodies for ~_List_base 0x005127A0 (the STLport clear + free, the landed self row's body) and a stand-in for
+// _M_fill_insert 0x00A84690 (simplified; only its visibility matters): they do not let the temporary's address escape, so VC7.1
+// drops the proxy's dead zero store as retail.
+// NF246 (2026-11-22, the 0x005127A0 family, nf243 NOTES section 2): in-place respelling of the row-local list model: the same-TU
+//   destructor moves from `list` (a 50-byte simplified stand-in, NEQ) to `_List_base` with the STLport clear + free body (the old
+//   0x005127A0 model's statements, re-reading the sentinel after each free): the temporary's destructor call binds
+//   ??1?$_List_base@VC2DLineF@@..@std@@QAE@XZ at 0x005127A0 and the copy equals it (62 bytes); list's implicit ~list is the
+//   5-byte jmp (0x00514280). No class token added.
 #pragma auto_inline(off)
 template <class _Tp, class _Alloc>
-__declspec(noinline) list<_Tp, _Alloc>::~list()
+__declspec(noinline) _List_base<_Tp, _Alloc>::~_List_base()
 {
-    _List_node_base* __head = this->_M_node._M_data;
-    _List_node_base* __cur = __head->_M_next;
-    while (__cur != __head) {
+    _List_node_base* __cur = this->_M_node._M_data->_M_next;
+    while (__cur != this->_M_node._M_data) {
         _List_node_base* __tmp = __cur;
         __cur = __cur->_M_next;
         free(__tmp);
     }
-    __head->_M_next = __head;
-    __head->_M_prev = __head;
-    if (__head)
-        free(__head);
+    this->_M_node._M_data->_M_next = this->_M_node._M_data;
+    this->_M_node._M_data->_M_prev = this->_M_node._M_data;
+    if (this->_M_node._M_data != 0)
+        free(this->_M_node._M_data);
 }
 
 template <class _Tp, class _Alloc>

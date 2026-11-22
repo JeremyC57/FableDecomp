@@ -10288,8 +10288,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ??4CSoundBankRecord@N00992940@@QAEAAU01@ABU01@@Z	00992630	00992940
 ??4?$CArray@K@N009b77b0@@QAEAAU01@ABU01@@Z	0045bc09	009b77b0
 ??$_Push_heap@PAMHMU?$less@M@std@@@std@@YIXPAMHHMU?$less@M@0@@Z	00a586d0	00a5a7d0
-??1SList8_00517720@N00a820e0@@QAE@XZ	005127a0	00a820e0
-??4SList8_00517720@N00a820e0@@QAEAAU01@ABU01@@Z	00517720	00a820e0
 ??4?$CRetailVector@UCCompositeBlendDesc@N00bee420@@@N00bee420@@QAEAAU01@ABU01@@Z	006cade0	00bee420
 ??0CEntryVector@@QAE@ABU0@@Z	00673e10	00674ce0
 ?__adjust_heap@@YIXPAUPairULongParamDesc@@JJU1@UCParticleUpdateCCompareParamDesc@@@Z	0076a4e0	0076b650
@@ -11511,7 +11509,6 @@ __imp__LocalFree@4	0143fe78	00a5ed60
 ??$__destroy_aux@PAUSKeyedList@@@std@@YIXPAUSKeyedList@@0ABU__false_type@0@@Z	00a83420	00a84c20
 ??$__uninitialized_copy@PAUSKeyedList@@PAU1@@std@@YIPAUSKeyedList@@PAU1@00ABU__false_type@0@@Z	00a83030	00a84c20
 ??$__uninitialized_fill_n@PAUSKeyedList@@IU1@@std@@YIPAUSKeyedList@@PAU1@IABU1@ABU__false_type@0@@Z	00a830a0	00a84c20
-??1?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAE@XZ	005127a0	00a85240
 ?_M_fill_insert@?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$vector_allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@QAEXPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@IABV32@@Z	00a84690	00a85240
 ?erase@?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$vector_allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@QAEPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@PAV32@0@Z	00a84090	00a85240
 ??0?$vector@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@QAE@ABV01@@Z	00a80b80	00a85e40
@@ -14242,7 +14239,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$__uninitialized_copy@PAVC2DBoxF@@PAV1@@std@@YIPAVC2DBoxF@@PAV1@00ABU__false_type@0@@Z	0050d600	00517cb0
 ??$__uninitialized_fill_n@PAVC2DBoxF@@IV1@@std@@YIPAVC2DBoxF@@PAV1@IABV1@ABU__false_type@0@@Z	0050d640	00517cb0
 ??$_M_insert_dispatch@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXU?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@1@U?$_List_iterator@V?$CIntelligentPointer@VCThingAICreature@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@1@1ABU__false_type@1@@Z	00517130	00519420
-??1?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@QAE@XZ	004ab4f0	0051a2f0
 ?__destroy_aux@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@1@0ABU__false_type@1@@Z	00519050	0051c8e0
 ??$__copy@PAVCRegion@@PAV1@H@std@@YIPAVCRegion@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0051ab90	0051cc80
 ?_M_erase@?$_Rb_tree@W4ETableSprites@NUISystem@@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@U?$less@W4ETableSprites@NUISystem@@@4@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z	00553690	00553690
@@ -31965,7 +31961,7 @@ _mip	0139a838	00b70230
 ?IsBrainUpdateZoneActiveThisFrame@CThingAICreature@@QBE_NXZ	00830130	006d1e30
 ?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z	0057ac89	006d1e30
 ??0?$list@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@ABV?$allocator@PBVCThingAICreature@@@1@@Z	006860c0	00682810
-??1?$list@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@XZ	00685bc0	00682810
+??1?$_List_base@PBVCThingAICreature@@V?$allocator@PBVCThingAICreature@@@std@@@std@@QAE@XZ	00685bc0	00682810
 ?AttachOpinionSource@COpinionReactionManager@@QBE_NAAVCThing@@ABVCCharString@@PAPAVCTCOpinionSource@@@Z	00700780	00682810
 ?EnableUnknownThreatOpinionSources@NGlobalConsole@@3_NA	01375733	00682810
 ?GetCrowdGroup@CTCBoastingCrowdControl@@QBE_NAAVCThing@@PAPAVCTCCreatureGroupBoastingCrowd@@@Z	00783730	00682810
@@ -36701,9 +36697,6 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?GetRandomLoadedAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@_N@Z	00662fa0	008d6da0
 ?GetTimeToBlendIn@CAnimationEntry@@QAEJPAVCThing@@@Z	005dc230	008d6da0
 ?GetBlockingAnimationEntry@CTCCombat@@QBEPAVCAnimationEntry@@XZ	00733690	008d8dd0
-??0?$list@PBVCThingAICreature@@@@QAE@ABU?$allocator@PBVCThingAICreature@@@@@Z	006860c0	00986510
-??1?$list@PBVCThingAICreature@@@@QAE@XZ	00685bc0	00986510
-?GetWivesInMarriageState@CTCHeroStats@@QBEXAAU?$list@PBVCThingAICreature@@@@J@Z	0057ae53	00986510
 ?CalcSWLightingNoClip@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@@Z	00b45cf0	00b99300
 ?CalcSWLightingNoClipSeparateMainLight@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@2@Z	00b45a40	00b99300
 ?CalcSWLightingNoClipSeparateMainLightVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@0PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z	00b44a60	00b99300

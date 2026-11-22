@@ -4,7 +4,7 @@
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface: 0x23 villager = bit 3 of +0x24, 4 hero stats =
 // bit 4 of +0x20), GFGetPVillageInterface @ 0x007EE540 (__fastcall; manifest "IS_THING_ALIVE<...>" is propagated),
 // CAIStateGroup_OpinionReactionRoot::CommentAboutHeroIsRunnable @ 0x009863E0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
-// std::list<const CThingAICreature*>(const allocator&) @ 0x006860C0 / ~list @ 0x00685BC0 (manifest labels propagated),
+// std::list<const CThingAICreature*>(const allocator&) @ 0x006860C0 / _List_base::~_List_base @ 0x00685BC0 (manifest labels propagated),
 // CTCHeroStats::GetWivesInMarriageState @ 0x0057AE53, CTCHeroStats::PeekMarriageInfo(unsigned __int64, CHeroMarriageInfo&)
 // @ 0x0057AC89.
 // Layout: engine/CAIStateGroup_OpinionReactionRoot.h is pack(1) with ThingReactingTo (CIntelligentPointer<CThing>) at
@@ -14,6 +14,15 @@
 // false epilogue, keeping 0 in ebx); the loop reads the node's value afresh for each use; the UID goes through an inline
 // by-value getter (loads before the &info address); the state test is a named bool set in an `||` chain (1,3,2,4,5).
 #include "fable_compiler.h"
+// NF246 (2026-11-22, the 0x00685BC0 family, nf243 NOTES section 2): the row-local global-namespace allocator / list_node / list models
+//   (which spelled ??0?$list@PBVCThingAICreature@@@@.., ??1?$list@PBVCThingAICreature@@@@QAE@XZ and the long-state
+//   GetWivesInMarriageState(list&, long)) replaced by the shared STLport list (stlport/fable_containers.h, with
+//   FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE: ~_List_base out of line, as retail calls it); the local CTCHeroStats model's
+//   member and GetWivesInMarriageState are respelled in place onto the PDB signature (Ego_r / FableWin, as engine/CTCHeroStats.h
+//   declares it: std::list<const CThingAICreature*>&, EMarriageState). The three relocations now bind the spellings landed
+//   0x00682810 binds at the same addresses: list(const allocator&) 0x006860C0, ~_List_base 0x00685BC0, GetWivesInMarriageState 0x0057AE53.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
+#include "stlport/fable_containers.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -44,14 +53,7 @@ class CThingAICreature;
 class CTCVillage;
 struct CTCVillager;
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
-template<class T> struct allocator { allocator() { } };
-template<class T> struct list_node { list_node* _M_next; list_node* _M_prev; T _M_data; };
-template<class T> struct list {
-    list_node<T>* _M_node;
-    list(const allocator<T>& a);                // 0x006860C0
-    ~list();                                    // 0x00685BC0
-    bool empty() const { return _M_node->_M_next == _M_node; }
-};
+enum EMarriageState;                            // MS forward enum (as engine/CTCHeroStats.h)
 class CHeroMarriageInfo { public:
     long a, b, c, d;
     long State;                                 // +0x10 EMarriageState
@@ -60,8 +62,8 @@ class CHeroMarriageInfo { public:
 };
 class CTCHeroStats { public:
     unsigned char _pad[0x1d8];
-    list<const CThingAICreature*> Wives;        // +0x1d8
-    void GetWivesInMarriageState(list<const CThingAICreature*>& wives, long state) const;   // 0x0057AE53
+    std::list<const CThingAICreature*> Wives;   // +0x1d8
+    void GetWivesInMarriageState(std::list<const CThingAICreature*>& wives, EMarriageState state) const;   // 0x0057AE53
     // NF113 (PRIORITY q4715): respelled in place to Ego_r.pdb / FableWin.pdb ?PeekMarriageInfo@CTCHeroStats@@QBE_N_KAAVCHeroMarriageInfo@@@Z
     //   (the record by reference; was CHeroMarriageInfo*). Same code: the reference is passed as the address.
     bool PeekMarriageInfo(unsigned __int64 uid, CHeroMarriageInfo& info) const;            // 0x0057AC89
@@ -107,10 +109,11 @@ bool CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable()
         if (village != 0 && CommentAboutHeroIsRunnable()) {
             CTCHeroStats* stats;
             if (((CIntelligentPointer<CThing>*)ThingReactingTo)->GetPItem()->GetInterface(&stats, 4) && !stats->Wives.empty()) {
-                list<const CThingAICreature*> wives = list<const CThingAICreature*>(allocator<const CThingAICreature*>());
-                stats->GetWivesInMarriageState(wives, 0);
-                list_node<const CThingAICreature*>* end = wives._M_node;
-                for (list_node<const CThingAICreature*>* node = end->_M_next; node != end; node = node->_M_next) {
+                std::list<const CThingAICreature*> wives;
+                stats->GetWivesInMarriageState(wives, (EMarriageState)0);
+                std::_List_node<const CThingAICreature*>* end = wives._M_node._M_data;
+                for (std::_List_node<const CThingAICreature*>* node = (std::_List_node<const CThingAICreature*>*)end->_M_next; node != end;
+                     node = (std::_List_node<const CThingAICreature*>*)node->_M_next) {
                     CTCVillager* wifeVillager;
                     if (node->_M_data != 0 && !(((const CThing*)node->_M_data)->m_flags91 & 1)
                         && ((const CThing*)node->_M_data)->GetInterface(&wifeVillager, 0x23)

@@ -1,0 +1,88 @@
+004ab4f0   RELOCATION_MATCH PASS   ~_List_base
+004ac060   RELOCATION_MATCH PASS   list
+005127a0   RELOCATION_MATCH PASS   ~_List_base
+0051a2f0   WARN STANDIN_LEAF ?erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@PBVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@PBVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@PBVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@PBVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@PBVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@2@@Z (catalog std::_Rb_tree<CThingBuilding *, std::pair<CThingBuilding const *, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>>, std::_Select1st<std::pair<CThingBuilding const *, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>>>, std::less<CThingBuilding *>, std::allocator<std::pair<CThingBuilding const *, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>>>>::erase; names another function)
+0051a2f0   RELOCATION_MATCH PASS   erase
+005eb590   WARN RELOC_NAME: ??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVCThingFilter_OverlappingCircle@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 005ed7d0 labelled 'CThingSearchTools::GetAllThings<CThingAICreature, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>, CThingFilter_OverlappingCircle>'
+005eb590   RELOCATION_MATCH PASS   GivePrize
+00682810   RELOCATION_MATCH PASS   InformOfDeed
+00685bc0   RELOCATION_MATCH PASS   ~_List_base
+006860c0   RELOCATION_MATCH PASS   list
+00986510   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CHeroMarriageInfo (engine/CHeroMarriageInfo.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00986510   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot (engine/CAIStateGroup_OpinionReactionRoot.h)
+00986510   RELOCATION_MATCH PASS   MarriageCommentIsRunnable
+00a81d60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a820e0   WARN STANDIN_LEAF ??$__push_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z (catalog std::__push_heap<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, int, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>; names another function)
+00a820e0   RELOCATION_MATCH PASS   allocator<C2DLineF>>>>
+00a82be0   WARN RELOC_NAME: ??$__push_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z -> 00a820e0 labelled 'std::__push_heap<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, int, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>'
+00a82be0   WARN STANDIN_LEAF ??$__adjust_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z (catalog _Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std::_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std; names another function)
+00a82be0   RELOCATION_MATCH PASS   pair<struct_std
+00a83570   WARN RELOC_NAME: ??$__adjust_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z -> 00a82be0 labelled '_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std::_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std'
+00a83570   RELOCATION_MATCH PASS   __pop_heap
+00a84470   RELOCATION_MATCH PASS   sort_heap
+00a84690   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a84690   WARN SHARED_HEADER_AVAILABLE C2DLineF (engine/C2DLineF.h)
+00a84690   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@PAV12@@std@@YIPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@0@PAV10@00ABU__false_type@0@@Z -> 00a831d0 labelled 'std::__uninitialized_copy<std::list<C2DLineF,std::allocator<C2DLineF> >*,std::list<C2DLineF,std::allocator<C2DLineF> >*>'
+00a84690   WARN RELOC_NAME: ??$__copy_backward_ptrs@PAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@PAV12@@std@@YIPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@0@PAV10@00ABU__false_type@0@@Z -> 00a83230 labelled 'std::__copy_backward_ptrs<std::list<C2DLineF, std::allocator<C2DLineF>> *, std::list<C2DLineF, std::allocator<C2DLineF>> *>'
+00a84690   WARN STANDIN_LEAF ?_M_fill_insert@?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@QAEXPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@IABV32@@Z (catalog std::vector<std::list<C2DLineF, std::allocator<C2DLineF>>, std::allocator<std::list<C2DLineF, std::allocator<C2DLineF>>>>::_M_fill_insert; names another function)
+00a84690   RELOCATION_MATCH PASS   _M_fill_insert
+00a85240   RELOCATION_MATCH PASS   resize
+00a852b0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a852b0   WARN SHARED_HEADER_AVAILABLE C2DLineF (engine/C2DLineF.h)
+00a852b0   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+00a852b0   WARN STANDIN_LEAF ?Insert@?$CVectorMap@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@@QAEXAB_KABV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@Z (catalog CVectorMap<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>::Insert; names another function)
+00a852b0   RELOCATION_MATCH PASS   Insert
+00517650   WARN RELOC_NAME: ??1CMember_005127a0@@QAE@XZ -> 005127a0 labelled 'std::_List_base<C2DLineF>::~_List_base'
+00517650   WARN STANDIN_LEAF ??_GCOwner_00517650@@QAEPAXI@Z (catalog _unattributed::ScalarDeletingDestructor_COwner_00517650; address-only name)
+00517650   RELOCATION_MATCH PASS   ScalarDeletingDestructor_COwner_00517650
+00a81030   WARN RELOC_NAME: ?Dtor_005127a0@T@@QAEXXZ -> 005127a0 labelled 'std::_List_base<C2DLineF>::~_List_base'
+00a81030   WARN STANDIN_LEAF ?VecDel@T@@QAEPAXI@Z (catalog _global::ScalarDeletingDtor_00a81030; generic placeholder)
+00a81030   RELOCATION_MATCH PASS   ScalarDeletingDtor_00a81030
+00a81e20   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a81e20   WARN SHARED_HEADER_AVAILABLE C2DLineF (engine/C2DLineF.h)
+00a81e20   RELOCATION_MATCH PASS   __unguarded_linear_insert
+00a82b10   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00a82b10   WARN SHARED_HEADER_AVAILABLE C2DLineF (engine/C2DLineF.h)
+00a82b10   RELOCATION_MATCH PASS   iter_swap
+00a83cc0   RELOCATION_MATCH PASS   __unguarded_partition
+00a843f0   WARN RELOC_NAME: ?__copy_backward@@YIPAUSKeyedList@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z -> 00a821c0 labelled 'std::__copy_backward<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *, int>'
+00a843f0   WARN RELOC_NAME: ??0SKeyedList@@QAE@ABU0@@Z -> 00a825d0 labelled 'std::pair::pair'
+00a843f0   RELOCATION_MATCH PASS   __linear_insert
+004a3740   WARN RELOC_NAME: ?SetTeleportParticle@CTCHero@@QAEXAAVCThing@@@Z -> 004ab270 labelled '_unattributed::AssignTarget_004ab270'
+004a3740   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004a3740   WARN RELOC_NAME: ?PauseMusic@CMusicManager@@QAEX_N@Z -> 006bd830 labelled '_global::SetMember_byte0x3c_006bd830'
+004a3740   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+004a3740   WARN RELOC_NAME: ?SetGuildSealRecallPos@CWorld@@QAEXABVC3DVector@@@Z -> 0049c9b0 labelled 'CTCCoopSpirit::ApplyMovementVector'
+004a3740   WARN RELOC_NAME: ?SetMiniMapRegion@CPlayerGui@@QAEXABVCRegion@@@Z -> 004378b0 labelled '_global::Forward_SetRegion_via0x160_004378b0'
+004a3740   WARN RELOC_NAME: ?IsMiniMapFinishedOpening@CPlayerGui@@QBE_NXZ -> 00437830 labelled '_global::Forward_IsFinishedOpening_via0x160_00437830'
+004a3740   WARN RELOC_NAME: ?Close@CManager@NHeroInformationScreens@@QAEXXZ -> 0066e73d labelled '_global::SetMemberConst_0066e73d'
+004a3740   WARN RELOC_NAME: ?PlayerPutWeaponAway@CTCHeroOpinionDeedLog@@QAEXXZ -> 006c6010 labelled 'CDeedOwner_006c6010::ClearDeed'
+004a3740   WARN RELOC_NAME: ?OnHeroReturnToRegion@CTCWife@@QAEXXZ -> 006ced30 labelled '_global::SetMemberConst_006ced30'
+004a3740   WARN RELOC_NAME: ?IsMiniMapFinishedClosing@CPlayerGui@@QBE_NXZ -> 00437840 labelled '_global::Forward_IsFinishedClosing_via0x160_00437840'
+004a3740   WARN RELOC_NAME: ?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ -> 00419650 labelled 'CThing::GetPBaseDef'
+004a3740   RELOCATION_MATCH PASS   UpdateRegionLoad
+00516f10   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00516f10   RELOCATION_MATCH PASS   ScalarDeletingDtor_00516f10
+00519560   WARN RELOC_NAME: _Unlink_0042a34e -> 0042a34e labelled 'std::_Rb_global<bool>::_Rebalance_for_erase'
+00519560   WARN RELOC_NAME: ??1CValue_004ab4f0@@QAE@XZ -> 004ab4f0 labelled 'std::_List_base<CThingAICreature*>::~_List_base'
+00519560   WARN STANDIN_LEAF ?Erase_CRetailTree_00519560@CRetailTree_00519560@@QAEKPAUSNode@1@@Z (catalog _unattributed::Erase_CRetailTree_00519560; address-only name)
+00519560   RELOCATION_MATCH PASS   Erase_CRetailTree_00519560
+006c5e90   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+006c5e90   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+006c5e90   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+006c5e90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero (engine/CTCCreatureOpinionOfHero.h)
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCHeroOpinionDeedLog (engine/CTCHeroOpinionDeedLog.h)
+006c5e90   WARN RELOC_NAME: ??1CThingList@N_004ab4f0@@QAE@XZ -> 004ab4f0 labelled 'std::_List_base<CThingAICreature*>::~_List_base'
+006c5e90   RELOCATION_MATCH PASS   IsDeedWitnessed
+00a83680   WARN RELOC_NAME: ??$__adjust_heap@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z -> 00a82be0 labelled '_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std::pair<long,long>,class_CEngineTextureDecal>,CKeyPairCompareLess<std::_Adjust_heap<std::pair<std::pair<long,long>,CEngineTextureDecal>*,int,std::pair<struct_std'
+00a83680   RELOCATION_MATCH PASS   __make_heap
+00a84a60   RELOCATION_MATCH PASS   __partial_sort
+0051bf90   RELOCATION_MATCH PASS   operator[]
+00463871   RELOCATION_MATCH PASS   list

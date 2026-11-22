@@ -9,14 +9,17 @@
 //   long>,CEngineTextureDecal>..." is propagated from a byte-identical body (wrong element).
 // Source: the shared STLport body (fable_containers.h FABLE_RETAIL_STLP_DECAL_HEAP), explicit instantiation, with the STLport list as
 //   this TU calls it: list::operator= out of line (0x00517720, FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL), the copy constructor's
-//   range insert _M_insert_dispatch out of line (0x005152C0, FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE), ~list out of line
-//   (0x005127A0, FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE). This closes the parked val-copy scheduling residue (local list model).
+//   range insert _M_insert_dispatch out of line (0x005152C0, FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE), ~_List_base out of line
+//   (0x005127A0, FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE). This closes the parked val-copy scheduling residue (local list model).
 // Callees: list<C2DLineF>::operator= 0x00517720, _M_insert_dispatch 0x005152C0, malloc 0x00BFEA0E (val copy's sentinel),
-//   __push_heap 0x00A820E0, list<C2DLineF>::~list 0x005127A0.
+//   __push_heap 0x00A820E0, _List_base<C2DLineF>::~_List_base 0x005127A0.
 #define FABLE_RETAIL_STLP_DECAL_HEAP
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_INSERT_DISPATCH_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF246 (2026-11-22, the 0x005127A0 family, nf243 NOTES section 2): FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE (a noinline `~list() {}`, so the
+//   leaf called ~list and bound it at 0x005127A0) -> FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE (NF241's swap): ~list inline, the
+//   leaf calls ~_List_base<C2DLineF> 0x005127A0 out of line, as retail (the 5-byte ~list jmp is 0x00514280).
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
 #include "stlport/fable_containers.h"
 #include "engine/C2DLineF.h"

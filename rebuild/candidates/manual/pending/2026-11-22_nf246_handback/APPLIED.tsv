@@ -1,0 +1,14 @@
+entry	address	status	binders_respelled	note
+E1	0x005127A0	done (self + 8 binders; 4 left on other stand-ins)	8	self ~list<C2DLineF> -> ~_List_base<C2DLineF> (shared headers); binders 0x00A81D60 / 0x00A820E0 (local models -> shared headers), 0x00A82BE0 / 0x00A83570 (NF241 swap), 0x00A84690 / 0x00A85240 / 0x00A852B0 (in-place respells of their local list models), 0x00A84470 (NF241 swap; only its pick-any __pop_heap copy bound ~list); 0x00A81E20 / 0x00A82B10 already right; 0x00517650 (CMember_005127a0), 0x00A81030 (Dtor_005127a0@T), 0x00A83CC0 / 0x00A843F0 (??1list@@) left: unidentified owner classes / bare stand-in self leaves; spellings 5 -> 4
+E1	0x00514280	name-fix (catalog-only)	0	NAME_FIXES: ~list<C2DLineF> (the jmp thunk), descriptive-by-layout; 0x00A81C40 (the second jmp) undecided
+E1	0x004AB4F0	done (self + 2 binders; 4 left)	2	self SortTreeRecursively_00436900 stand-in -> ~_List_base<CThingAICreature*>; 0x005EB590 (NF241 swap), 0x0051A2F0 (local tree / list models -> fable_map.h TREE_ERASE + _BODY); 0x004A3740 already right; 0x0051BF90 blocked (one-parameter local list / map models, stand-in own leaf); 0x00516F10 / 0x00519560 / 0x006C5E90 on generated stand-ins (unidentified classes); spellings 7 -> 5
+E1	0x004AC060	done (self row, catalog made-up name -> list ctor)	0	only caller 0x004A3740 already binds the list(const allocator&) spelling: 2 -> 1
+E1	0x004AC080	name-fix (catalog-only)	0	NAME_FIXES: ~list<CThingAICreature*> (the jmp thunk), descriptive-by-layout
+E1	0x00685BC0	done (self + both binders)	3	self SortTreeRecursively stand-in -> ~_List_base<const CThingAICreature*>; 0x00682810 (NF241 swap), 0x00986510 (global-namespace list model -> shared std::list, 2 relocations); spellings 3 -> 1
+E1	0x006860C0	done (self row + 1 binder)	1	self DoubleLinkedList_InitializeEmpty (made-up) -> list<const CThingAICreature*>::list(const allocator&); 0x00986510 respelled onto it; spellings 3 -> 1
+E1	0x0057AE53	binder respelled (0x00986510)	1	GetWivesInMarriageState: 0x00986510's long-state / global-list stand-in -> the PDB spelling 0x00682810 binds (binder spellings 2 -> 1; the self row's own leaf `GetWivesInMarriageState` not checked)
+E1	0x006860E0	name-fix (catalog-only)	0	NAME_FIXES: ~list<const CThingAICreature*> (the jmp thunk)
+E1	0x004B8940	undecided (unchanged)	0	no thunk anywhere: one source, as the brief says
+E2	QUEUE_LINES.tsv	open (context)	0	39 lines untouched
+E2	0x0049D800	open (context)	0	
+E2	0x01296F14	open (context)	0	

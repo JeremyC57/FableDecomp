@@ -4585,7 +4585,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004ab470	ListNode_AllocateSelfLinked	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\global_ListNodeAllocateSelfLinked_004ab470.cpp
 004ab490	~_List_base	std::_List_base<CThing*>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CGuiControlTreePane_SortTreeRecursively_004ab490.cpp
 004ab4d0	vector_Initialize_Circular	std	__fastcall	void **	3	void **,void *,void *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\global_ListSentinelDefaultConstruct004ab4d0_004ab4d0.cpp
-004ab4f0	StdList_Clear_004ab4f0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CGuiControlTreePane_SortTreeRecursively_004ab4f0.cpp
+004ab4f0	~_List_base	std::_List_base<CThingAICreature*>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CGuiControlTreePane_SortTreeRecursively_004ab4f0.cpp
 004ab540	_Rb_tree_base	std::_Rb_tree_base<node0x14_004ab540>	unknown	undefined	0		0	yes	accepted									
 004ab570	RbTree_Clear_004ab570	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CTCCarryable_OnKill_004ab570.cpp
 004ab5e0	_Rb_tree_base	std::_Rb_tree_base<node0x1c_004ab5e0>	unknown	undefined	0		0	yes	accepted									
@@ -4615,7 +4615,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004abf40	MsgWhoExpressedToMe	CScriptThing	__thiscall	CScriptThing	1	CScriptThing *	1	yes	accepted									
 004abf80	MsgWhoKnockedMeOut	CScriptThing	__thiscall	CScriptThing	1	CScriptThing *	1	yes	accepted									
 004ac030	DList_InitEmpty	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\global_DListInitEmpty_004ac030.cpp
-004ac060	ListNode_AllocateSelfLinked_RegionLoad	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\global_ListNodeAllocateSelfLinkedRegionLoad_004ac060.cpp
+004ac060	list	std::list<CThingAICreature*>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\global_ListNodeAllocateSelfLinkedRegionLoad_004ac060.cpp
 004ac0b0	_Rb_tree	std::_Rb_tree<CUnprovenKey_004ac0b0,CUnprovenValue_004ac0b0,CUnprovenKeyOfValue_004ac0b0,std::less<CUnprovenKey_004ac0b0>,std::allocator<CUnprovenValue_004ac0b0> >	unknown	undefined	0		0	yes	accepted									
 004ac0f0	erase	std::vector	unknown	undefined	0		0	yes	accepted									
 004ac140	~CRetailTree_erase004a9cb0	CRetailTree_erase004a9cb0	unknown	undefined	0		0	yes	accepted									
@@ -8515,7 +8515,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00512410	operator()	CIsHouseLargerThan	__thiscall	bool	3	CIsHouseLargerThan *,CThingBuilding *,CThingBuilding *	1	yes	accepted									
 00512630	vector	std::vector<unsigned long,std::allocator<unsigned long> >	unknown	undefined	0		0	yes	accepted									
 00512780	list	std::list<T_0x10_00512780>	unknown	undefined	0		0	yes	accepted									
-005127a0	~list	std::list<C2DLineF, std::allocator<C2DLineF>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CGuiControlTreePane_SortTreeRecursively_005127a0.cpp
+005127a0	~_List_base	std::_List_base<C2DLineF>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CGuiControlTreePane_SortTreeRecursively_005127a0.cpp
 00512870	list	std::list<T_0x8_00512870>	unknown	undefined	0		0	yes	accepted									
 00512890	StdList_Dtor_00512890	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CActiveFile_OnReadFinished_00512890.cpp
 005128b0	Vector_UninitializedCopy_Allocator	_global	unknown	undefined	0		0	yes	accepted									
@@ -15360,7 +15360,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006859b0	TransferOut	CPersistContext_TransferableComponent<COpinionTransientOffset>	__thiscall	void	3	CPersistContext_TransferableComponent<float> *,CPersistContext *,CStringParser *	1	yes	accepted									
 006859f0	TransferOut	CPersistTraits<COpinionTransientOffset>	__thiscall	void	4	CPersistTraits<COpinionTransientOffset> *,CPersistContext *,CCharString *,COpinionTransientOffset *	1	yes	accepted									
 00685ba0	StdList_InitEmpty_00685ba0	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\global_StdListInitEmpty00685ba0_00685ba0.cpp
-00685bc0	StdList_Clear_00685bc0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CGuiControlTreePane_SortTreeRecursively_00685bc0.cpp
+00685bc0	~_List_base	std::_List_base<const CThingAICreature*>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CGuiControlTreePane_SortTreeRecursively_00685bc0.cpp
 00685c00	GetSubDef<COpinionOfHeroDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 00685cc0	Transfer<EOpinionAttitudeType>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00685d90	GetDef_00685d90	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
@@ -15369,7 +15369,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00685ee0	GetPFirstLeafThing<CThingFilter_AICreatureHasProperty, CThingAICreature>	CThingSearchTools	__thiscall	bool	3	CThingSearchTools *,CThingFilter_AICreatureHasProperty *,CThingAICreature * *	1	yes	accepted									
 00685f80	Transfer<COpinionTransientOffset>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00686090	ClearElements	CPointerVector	unknown	undefined	0		0			discovered	boundary							
-006860c0	DoubleLinkedList_InitializeEmpty	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\global_DoubleLinkedListInitializeEmpty_006860c0.cpp
+006860c0	list	std::list<const CThingAICreature*>	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\global_DoubleLinkedListInitializeEmpty_006860c0.cpp
 006860f0	_M_fill_assign	std::vector<bool>	unknown	undefined	0		0	yes	accepted									
 006861c0	Transfer<COpinionTransientOffset>	CPersistContext	__thiscall	pair<long,CCountedPointer<CContainmentVolume>_> *	4	vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_> *,pair<long,class_CCountedPointer<class_CContainmentVolume>_> *,pair<long,class_CCountedPointer<class_CContainmentVolume>_> *,pair<long,class_CCountedPointer<class_CContainmentVolume>_> *	1	yes	accepted									
 00686200	TransferIn	CPersistContext_TransferableComponent<COpinionTransientOffset>	__thiscall	void	3	CPersistContext_TransferableComponent<float> *,CPersistContext *,CStringParser *	1	yes	accepted									

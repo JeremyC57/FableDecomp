@@ -87391,9 +87391,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ab4f0'
-        Module = '_global'
-        Source = '00/4a/CGuiControlTreePane_SortTreeRecursively_004ab4f0.cpp'
-        TestSource = '00/4a/CGuiControlTreePane_SortTreeRecursively_004ab4f0_test.cpp'
+        Module = 'std::_List_base<CThingAICreature*>'
+        Source = '00/4a/stdListbaseCThingAICreature_Listbase_004ab4f0.cpp'
+        TestSource = '00/4a/stdListbaseCThingAICreature_Listbase_004ab4f0_test.cpp'
         PassPattern = 'PASS_004ab4f0'
     }
     [pscustomobject]@{
@@ -87412,9 +87412,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005127a0'
-        Module = 'std::list<C2DLineF>'
-        Source = '00/51/stdlistC2DLineF_list_005127a0.cpp'
-        TestSource = '00/51/stdlistC2DLineF_list_005127a0_test.cpp'
+        Module = 'std::_List_base<C2DLineF>'
+        Source = '00/51/stdListbaseC2DLineF_Listbase_005127a0.cpp'
+        TestSource = '00/51/stdListbaseC2DLineF_Listbase_005127a0_test.cpp'
         PassPattern = '005127a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -87531,9 +87531,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00685bc0'
-        Module = '_global'
-        Source = '00/68/CGuiControlTreePane_SortTreeRecursively_00685bc0.cpp'
-        TestSource = '00/68/CGuiControlTreePane_SortTreeRecursively_00685bc0_test.cpp'
+        Module = 'std::_List_base<const CThingAICreature*>'
+        Source = '00/68/stdListbaseconstCThingAICreature_Listbase_00685bc0.cpp'
+        TestSource = '00/68/stdListbaseconstCThingAICreature_Listbase_00685bc0_test.cpp'
         PassPattern = 'PASS_00685bc0'
     }
     [pscustomobject]@{
@@ -125935,9 +125935,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004ac060'
-        Module = '_global'
-        Source = '00/4a/global_ListNodeAllocateSelfLinkedRegionLoad_004ac060.cpp'
-        TestSource = '00/4a/global_ListNodeAllocateSelfLinkedRegionLoad_004ac060_test.cpp'
+        Module = 'std::list<CThingAICreature*>'
+        Source = '00/4a/stdlistCThingAICreature_list_004ac060.cpp'
+        TestSource = '00/4a/stdlistCThingAICreature_list_004ac060_test.cpp'
         PassPattern = 'LIST_SENTINEL_CTOR_004ac060_PASS'
     }
     [pscustomobject]@{
@@ -126180,9 +126180,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006860c0'
-        Module = '_global'
-        Source = '00/68/global_DoubleLinkedListInitializeEmpty_006860c0.cpp'
-        TestSource = '00/68/global_DoubleLinkedListInitializeEmpty_006860c0_test.cpp'
+        Module = 'std::list<const CThingAICreature*>'
+        Source = '00/68/stdlistconstCThingAICreature_list_006860c0.cpp'
+        TestSource = '00/68/stdlistconstCThingAICreature_list_006860c0_test.cpp'
         PassPattern = 'LIST_SENTINEL_CTOR_006860c0_PASS'
     }
     [pscustomobject]@{
