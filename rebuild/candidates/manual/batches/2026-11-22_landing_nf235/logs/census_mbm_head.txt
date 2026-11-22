@@ -1,0 +1,58 @@
+### 00a0a110 [rebuild/src/compiled/00/a0/CMeshBankManager_CMeshBankManager_00a0a110.cpp] 00a0a110 CMeshBankManager::CMeshBankManager RELOCATION_MATCH flags= []
+      1   REL 0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
+      1   REL 00bfea0e _malloc
+      1   REL 0122de50 ??_7CMeshBankListener@@6B@
+      1   REL 0129c980 ??_7CMeshBankManager@@6BCMeshBankListener@@@
+      1   REL 0129c98c ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+VT ??_7CMeshBankListener@@6B@ slots 1
+  0 ?v00@CMeshBankListener@@UAEXXZ
+VT ??_7CMeshBankManager@@6BCMeshBankListener@@@ slots 1
+  0 ?v00@CMeshBankListener@@UAEXXZ
+VT ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECMeshBankManager@@UAEPAXI@Z
+  SYM DEF ??0CMeshBankListener@@QAE@XZ
+  SYM DEF ??0CMeshBankManager@@QAE@XZ
+  SYM DEF ??_7CMeshBankListener@@6B@
+  SYM DEF ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CMeshBankManager@@6BCMeshBankListener@@@
+  SYM DEF ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM UND ??0CBaseClassNonCopyable@@IAE@XZ
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM UND ?v00@CMeshBankListener@@UAEXXZ
+### 00a0a150 [rebuild/src/compiled/00/a0/CMeshBankManager_CMeshBankManager_00a0a150.cpp] 00a0a150 CMeshBankManager::~CMeshBankManager RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 00a0a720 ?clear@CBankInfoList@@QAEXXZ
+      1   REL 00bfe9bc ??3@YAXPAX@Z
+      1   REL 00bfea14 _free
+      1   REL 0129c980 ??_7CMeshBankManager@@6BCMeshBankListener@@@
+      1   REL 0129c98c ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+VT ??_7CMeshBankManager@@6BCMeshBankListener@@@ slots 1
+  0 ?v00@CMeshBankManager@@UAEXXZ
+VT ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECMeshBankManager@@UAEPAXI@Z
+  SYM DEF ??1CMeshBankManager@@UAE@XZ
+  SYM DEF ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CMeshBankManager@@6BCMeshBankListener@@@
+  SYM DEF ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCMeshBankManager@@UAEPAXI@Z
+  SYM UND ?clear@CBankInfoList@@QAEXXZ
+  SYM UND ?v00@CMeshBankManager@@UAEXXZ
+### 00a0a720 [rebuild/src/compiled/00/a0/STLListbase_clear_00a0a720.cpp] 00a0a720 std::_List_base::clear RELOCATION_MATCH flags= []
+      1   REL 00bfe9bc ??3@YAXPAX@Z
+      1   REL 00bfea14 _free
+  SYM DEF ??$_Destroy@VCMeshDataBankInfo@CMeshBankManager@@@std@@YAXPAVCMeshDataBankInfo@CMeshBankManager@@@Z
+  SYM DEF ??1CMeshDataBankInfo@CMeshBankManager@@QAE@XZ
+  SYM DEF ??_GCMeshDataBankInfo@CMeshBankManager@@QAEPAXI@Z
+  SYM DEF ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ
+  SYM DEF ?deallocate@?$allocator@U?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXPAU?$_List_node@VCMeshDataBankInfo@CMeshBankManager@@@2@I@Z
+### 00a0a8a0 [rebuild/src/compiled/00/a0/CMeshBankManager_scalardeletingdestructor_00a0a8a0.cpp] 00a0a8a0 CMeshBankManager::`scalar_deleting_destructor' RELOCATION_MATCH flags= []
+      1   REL 00bfe9bc ??3@YAXPAX@Z
+  SYM DEF ?ScalarDeletingDestructor@CMeshBankManager@@QAEPAXI@Z
+  SYM UND ?Dtor@CMeshBankManager@@QAEXXZ
+### 00a09d80 [rebuild/src/compiled/00/a0/CMeshBankManager_OnPostDeviceReset_00a09d80.cpp] 00a09d80 CMeshBankManager::OnPostDeviceReset MATCH flags= []
+  SYM DEF ?CMeshBankManager_OnPostDeviceReset@@YI_NXZ
+### 00a09d90 [rebuild/src/compiled/00/a0/CMeshBankManager_OnPreDeviceReset_00a09d90.cpp] 00a09d90 CMeshBankManager::OnPreDeviceReset RELOCATION_MATCH flags= []
+  SYM DEF ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ
+DONE

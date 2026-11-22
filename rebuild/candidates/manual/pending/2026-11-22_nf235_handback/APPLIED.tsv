@@ -1,0 +1,5 @@
+entry	address	status	binders_respelled	note
+q12656	0x00495620, 0x00496070, 0x00496CF0	done (a six-row family: + slot rows 0x00494370 / 0x00494350 / 0x00494360; brief id q12655)	2 emitters x 7 vtable slots + 4 vtable names; 0x00496CF0 Input / Output / 0x013B7D58	first form on every row; 0x01238768 2 -> 1, 0x0122ECA4 2 -> 1, 0x00494350 2 -> 1, 0x004963A0 / 0x00494900 2 -> 1; no address grows (NOTES census)
+q12657	0x00A0A110, 0x00A0A150	done (+ slot row 0x00A09D80; brief id q12656)	2 emitters x 3 vtable slots + 3 vtable names; 0x00A0A150 clear	0x0122DE50 3 -> 2, 0x00A09D90 3 -> 1, 0x00A0A720 4 -> 3
+q12658	0x00B260B0	blocked: needs a CEngine.h override opt-in (83 slots; NOTES entry 3; brief id q12657)	0	the last 0x0122DE50 stand-in; decision 3
+q12659	0x00418DCA	open (not started; coordinator order: last; brief id q12658)	0	

@@ -392,7 +392,7 @@ public:
 };
 
 #endif
-#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY)
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CMESHDATABANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CMESHDATABANK_RESET_SIZE_BODY)
 // NF225 opt-ins (2026-11-22, q12562; rows 0x00494840 CFrontendGameComponent::InitGraphics, 0x0054ED90 NUISystem::CText::GetDataFromDef).
 // Fidelity: scaffolding, not retail. Those /O2 TUs expand every CCountedPointer<CFontBank> / <const CFontBank> member at the call
 // site (as retail does), and VC7.1 still emits each expanded inline as a pick-any COMDAT. Retail kept the out-of-line copies from the
@@ -497,6 +497,36 @@ template<> inline void CCountedPointer<CGraphicDataBank>::Reset(CGraphicDataBank
 // NF234 opt-in (2026-11-22, q12650; row 0x00495780): ?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z = 0x0042FC13
 // (calls ReleaseData 0x0042F948, stores DeleteData 0x0042F864; owner row: optimize("s", on)). The default Reset body.
 template<> inline void CCountedPointer<const CFontBank>::Reset(const CFontBank* data)
+{
+    ReleaseData();
+    Data = data;
+    if (data)
+        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CMESHDATABANK_RELEASEDATA_SIZE_BODY
+class CMeshDataBank;
+// NF235 opt-in (2026-11-22, q12657; row 0x00A0A150 ~CMeshBankManager), the same scaffolding as the CGRAPHICDATABANK one above:
+// ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ = 0x0042918C (53 bytes: the Data-first FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+// body under optimize("s", on), `and dword ptr [esi],0 ; and dword ptr [esi+4],0`).
+template<> inline void CCountedPointer<CMeshDataBank>::ReleaseData()
+{
+    if (Info) {
+        --Info->RefCount;
+        if (Info->RefCount == 0) {
+            Info->DeleteFunc(Info->Data);
+            delete Info;
+        }
+    }
+    Data = 0;
+    Info = 0;
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CMESHDATABANK_RESET_SIZE_BODY
+// NF235 opt-in (2026-11-22, q12657; row 0x00A0A150): ?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z = 0x0042FC86
+// (calls ReleaseData 0x0042918C, stores DeleteData 0x00428AE7; landed owner row 0x0042FC86). The default Reset body.
+class CMeshDataBank;
+template<> inline void CCountedPointer<CMeshDataBank>::Reset(CMeshDataBank* data)
 {
     ReleaseData();
     Data = data;

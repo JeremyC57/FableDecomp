@@ -18,17 +18,25 @@ public:
 #else
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
 #endif
+#ifdef FABLE_RETAIL_CGAMEJOYSTICKMANAGER_MAINPLAYERJOYSTICK
+    // NF235 opt-in (2026-11-22, q12656; row 0x00496CF0 CFrontendGameComponent::Run): Ego_r.pdb + FableWin.pdb
+    // ?Get@CGameJoystickManager@@SIAAV1@XZ (public static __fastcall, 0x0049BB90) and
+    // ?SetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QAEXJ@Z (public, 0x0049BB30), both out of line in retail (Run
+    // 0x00496E00..0x00496E0B: `push [esi+14h] ; call 0x0049BB90 ; mov ecx,eax ; call 0x0049BB30`). Declarations only; no layout change.
+    static CGameJoystickManager& __fastcall Get();           // 0x0049BB90
+    void SetMainPlayerJoystickDeviceNumber(long device);     // 0x0049BB30
+#endif
     long          MainPlayerJoystickDeviceNumber;            // +0x04
     bool          MainPlayerJoystickDeviceNumberSet;         // +0x08
     unsigned char _pad_0x09[0x3];                            // +0x09
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGameJoystickManager) == 0xc);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CGameJoystickManager) == 0xc);
 #ifndef FABLE_RETAIL_CGAMEJOYSTICKMANAGER_VIRTUAL_DTOR
-FABLE_STATIC_ASSERT(offsetof(CGameJoystickManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CGameJoystickManager, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CGameJoystickManager, MainPlayerJoystickDeviceNumber) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CGameJoystickManager, MainPlayerJoystickDeviceNumberSet) == 0x8);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CGameJoystickManager, MainPlayerJoystickDeviceNumber) == 0x4);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CGameJoystickManager, MainPlayerJoystickDeviceNumberSet) == 0x8);
 
 #endif // FABLE_ENGINE_CGAMEJOYSTICKMANAGER_H

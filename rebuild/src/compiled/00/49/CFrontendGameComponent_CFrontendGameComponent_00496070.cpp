@@ -23,138 +23,81 @@
 //   `Get().SetProfileName(Get().GetDefaultProfileName(), true)` pushes `true` first; a member wrapper calls Get() early).
 //   The name vectors use the real STLport _Vector_base / _STLP_alloc_proxy shape (the "24i" lesson) so the CWideString
 //   ctor's `lea ecx` lands after two of the three zero stores. The key table is written keypad first, then the top row.
+// Header port (NF235, 2026-11-22, q12656): the local CBase / CGameComponentInterface / CGameComponent / CWideString / CTexture /
+//   CTBaseSingleton / CUserProfileManager / CFrontendGameComponent models replaced by the shared headers: engine/CGameComponent.h,
+//   fable_string.h, engine/CTexture.h (FABLE_RETAIL_CTEXTURE: the inline default ctor), engine/CUserProfileManager.h (new
+//   DEFAULTPROFILENAME opt-in), engine/GFGetTime.h and engine/CFrontendGameComponent.h (CTOR_DTOR: the typed layout and the private
+//   members; SETQUIT: the slot-4 override; GETPROFILENAMES / GETSAVENAMES). The two vtables now carry their PDB / RTTI names
+//   ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ (0x01238768) / ??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@
+//   (0x0123875C) and their retail slots. The two helpers retail expands are the real private members, defined inline here as the
+//   ctor's TU-mates (retail keeps their out-of-line copies 0x00494410 / 0x00495FE0 beside the ctor): ?LoadProfile@CFrontendGameComponent@@
+//   AAEXABVCWideString@@_N@Z (Ego_r + FableWin; the singleton is fetched inside it, which is the push order retail shows) and
+//   ?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z (Ego_r + FableWin; the body of the landed owner 0x00495FE0, verbatim).
 #include <string.h>
-
-struct CMainGameComponentParent;
-class CGame;
-class CFrontendGameComponentInit;
-struct CBase {
-    virtual ~CBase();                                      // 0x0099A300
-};
-struct CGameComponentInterface {
-    virtual void v00();
-};
-class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
-    bool m_bShutDown;                                      // +0x08
-    CGameComponent(CGame& game);                           // 0x0051D8E0 (Ego_r + FableWin ??0CGameComponent@@QAE@AAVCGame@@@Z; NF233: was CMainGameComponentParent*)
-};
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_DEFAULTPROFILENAME
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETPROFILENAMES
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_GETSAVENAMES
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_SETQUIT
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_CTOR_DTOR
 #include "engine/CCountedPointer.h"
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                         // 0x0099AED0
-    ~CWideString();                                        // 0x0099B510
-    const CWideString& operator=(const CWideString& other);
-};
-// NF197 (2026-11-20): the local STLport vector stand-ins (CWideStringAllocator / CWideStringStorageProxy / CWideStringVectorBase /
-//   CWideStringVector) replaced by the shared stlport/fable_containers.h std::vector<CWideString> (the same _Vector_base /
-//   _STLP_alloc_proxy shape), and the free stand-ins GetSaveNames / GetProfileNames(CWideStringVector*) by the static __fastcall
-//   CFrontendGameComponent members (Ego_r.pdb + FableWin.pdb ?GetSaveNames / ?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@
-//   VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z, 0x00495830 / 0x004959E0).
 #include "stlport/fable_containers.h"
-class CTexture { public:
-    void* PTexture;
-    void* PData;
-    CTexture() : PTexture(0), PData(0) { }
-};
-template <class T> struct CTBaseSingleton {
-    static T& __fastcall Get();                            // 0x0040D2A0 for CUserProfileManager
-};
-class CUserProfileManager { public:
-    CWideString GetDefaultProfileName() const;             // 0x004065D0
-    void SetProfileName(const CWideString& name, bool load);   // 0x0040D400
-    static void LoadProfile(const CWideString& name, bool load) { CUserProfileManager::Get().SetProfileName(name, load); }
-public:
-    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
-};
-double __fastcall GFGetTime();                             // 0x009E1BC0
+#include "fable_string.h"
+#include "engine/CTexture.h"
+#include "engine/GFGetTime.h"
+#include "engine/CUserProfileManager.h"
+#include "engine/CGameComponent.h"
+#include "engine/CFrontendGameComponent.h"
+
 extern bool g_bLoadDefaultProfile;                         // 0x013B8644
-extern CWideString g_EmptyWideString;
 extern long g_KeyToNumber[122];                            // 0x013B87B0
 
-class CGraphicDataBank; class CFontBank;
-enum EGameMode { GAME_MODE_NONE = 0 };
-enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
+inline void CFrontendGameComponent::LoadProfile(const CWideString& profileName, bool loadProfile)
+{
+    CUserProfileManager::Get().SetProfileName(profileName, loadProfile);
+}
 
-struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768 / 0x0123875C
-    static void __fastcall GetSaveNames(std::vector<CWideString>& names);      // 0x00495830
-    static void __fastcall GetProfileNames(std::vector<CWideString>& names);   // 0x004959E0
-    unsigned char                     _pad00c[0x4];
-    bool                              CreateGame;                 // +0x10
-    long                              CreateGameJoystickDeviceNumber;   // +0x14
-    bool                              CreateEditor;               // +0x18
-    bool                              CreateReleaseFrontEnd;      // +0x19
-    long                              Mode;                       // +0x1c
-    long                              NoConnections;              // +0x20
-    long                              NoSessions;                 // +0x24
-    unsigned char                     _pad028[0x168 - 0x28];      // Connections, Sessions
-    char                              String[128];                // +0x168
-    long                              StringPos;                  // +0x1e8
-    unsigned char                     _pad1ec[0x1df0 - 0x1ec];    // CurrentConnection, TempBuffer, SessionString
-    long                              FirstSessionString;         // +0x1df0
-    long                              LastSessionString;          // +0x1df4
-    long                              NoSessionStrings;           // +0x1df8
-    CCountedPointer<CGraphicDataBank> PTempGraphics;              // +0x1dfc
-    CCountedPointer<const CFontBank>  MainFont;                   // +0x1e04
-    std::vector<CWideString>          ProfileNames;               // +0x1e0c
-    long                              ProfileNamesOffset;         // +0x1e18
-    std::vector<CWideString>          SaveNames;                  // +0x1e1c
-    long                              SaveNamesOffset;            // +0x1e28
-    CWideString                       SaveToLoad;                 // +0x1e2c
-    std::vector<CWideString>          WorldNames;                 // +0x1e30
-    long                              WorldNamesOffset;           // +0x1e3c
-    CWideString                       WorldToLoad;                // +0x1e40
-    long                              CursorHighlight;            // +0x1e44
-    double                            TimeLastMovementHappened;   // +0x1e48
-    bool                              StartedRepeatingMovement;   // +0x1e50
-    ECursorMovement                   CurrentMovement;            // +0x1e54
-    CTexture                          SplashScreen;               // +0x1e58
-
-    CFrontendGameComponent(CGame& game, const CFrontendGameComponentInit& init);
-    virtual ~CFrontendGameComponent();
-    void SetMode(long mode)
-    {
-        Mode = mode;
-        CursorHighlight = 1;
-        memset(String, 0, sizeof(String));
-        StringPos = 0;
-        if (Mode == 10) {
-            GetWorldNames();
-            return;
-        }
-        if (mode == 11) {
-            GetSaveNames(SaveNames);
-            WorldToLoad = g_EmptyWideString;
-            SaveNamesOffset = 0;
-            return;
-        }
-        if (mode == 12) {
-            GetProfileNames(ProfileNames);
-            ProfileNamesOffset = 0;
-        }
+inline void CFrontendGameComponent::SetMode(EGameMode mode)
+{
+    Mode = mode;
+    CursorHighlight = 1;
+    memset(String, 0, sizeof(String));
+    StringPos = 0;
+    if (Mode == 10) {
+        GetWorldNames();
+        return;
     }
-private:
-    bool InitGraphics();   // 0x00494840
-    void GetWorldNames();   // 0x00495890
-};
+    if (mode == 11) {
+        GetSaveNames(SaveNames);
+        WorldToLoad = L"";
+        SaveNamesOffset = 0;
+        return;
+    }
+    if (mode == 12) {
+        GetProfileNames(ProfileNames);
+        ProfileNamesOffset = 0;
+    }
+}
 
 CFrontendGameComponent::CFrontendGameComponent(CGame& game, const CFrontendGameComponentInit& init)
     : CGameComponent(game), CursorHighlight(1), TimeLastMovementHappened(GFGetTime()), StartedRepeatingMovement(false),
-      CurrentMovement(CURSOR_MOVEMENT_NONE)
+      CurrentMovement(NGameComponentHelpers::ECursorMovement())
 {
-    Mode = 0;
-    m_bShutDown = false;
+    Mode = EGameMode();
+    Quit = false;
     NoConnections = 0;
     NoSessions = 0;
     FirstSessionString = 0;
     LastSessionString = 0;
     NoSessionStrings = 0;
     if (g_bLoadDefaultProfile) {
-        CUserProfileManager::LoadProfile(CUserProfileManager::Get().GetDefaultProfileName(), true);
-        SetMode(1);
+        LoadProfile(CUserProfileManager::Get().GetDefaultProfileName(), true);
+        SetMode(EGameMode(1));
     } else {
-        SetMode(12);
+        SetMode(EGameMode(12));
     }
-    m_bShutDown = false;
+    Quit = false;
     CreateGame = false;
     CreateGameJoystickDeviceNumber = 0;
     CreateEditor = false;

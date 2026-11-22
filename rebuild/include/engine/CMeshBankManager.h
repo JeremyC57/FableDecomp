@@ -8,8 +8,41 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CMESHBANKMANAGER_CTOR_DTOR
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CDeviceResetCallback.h"
+#include "engine/CCountedPointer.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+class CMeshDataBank;
+#endif
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CMESHBANKMANAGER_CTOR_DTOR
+// NF235 opt-in (2026-11-22, q12657; rows 0x00A0A110 ctor / 0x00A0A150 dtor, the two emitters of the class's vtables): the retail class
+// with its bases and member. Bases (retail RTTI: COL 0x01356AB4 / 0x01356A64; CBaseClassNonCopyable (CBaseClass) mdisp 0,
+// CDeviceResetCallback mdisp 4) and the vtable names of all three PDBs, ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@ (0x0129C98C:
+// ??_G 0x00A0A8A0) / ??_7CMeshBankManager@@6BCDeviceResetCallback@@@ (0x0129C980: OnPreDeviceReset 0x00A09D90, OnPostDeviceReset
+// 0x00A09D80). Members (Ego_r.pdb + FableWin.pdb, all public): ??0CMeshBankManager@@QAE@XZ (0x00A0A110), ??1CMeshBankManager@@UAE@XZ
+// (0x00A0A150), ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ, ?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ; the nested
+// CMeshBankManager::CMeshDataBankInfo (struct_layouts_egor.tsv: BankHandle CCharString +0, MeshDataBank CCountedPointer<CMeshDataBank>
+// +4; 12 bytes) and MeshDataBanks, the STLport list<CMeshDataBankInfo> +0x08 (4 bytes in retail: the node pointer; the ctor 0x00A0A12C
+// mallocs the 0x14-byte sentinel, the dtor calls _List_base::clear 0x00A0A720 then frees it). Same size and offsets as the default path.
+// The includer includes this header before any header that includes it.
+class CMeshBankManager : public CBaseClassNonCopyable, public CDeviceResetCallback {
+public:
+    class CMeshDataBankInfo {
+    public:
+        CCharString BankHandle;                                  // +0x00
+        CCountedPointer<CMeshDataBank> MeshDataBank;             // +0x04
+    };
+    CMeshBankManager();                                          // 0x00A0A110
+    virtual ~CMeshBankManager();                                 // 0x00A0A150
+    virtual void OnPreDeviceReset();                             // 0x00A09D90
+    virtual bool OnPostDeviceReset();                            // 0x00A09D80
+    std::list<CMeshDataBankInfo> MeshDataBanks;                  // +0x08
+};
+#else
 class CMeshBankManager {
 public:
 #ifdef FABLE_RETAIL_CMESHBANKMANAGER_VIRTUAL_DTOR
@@ -22,12 +55,13 @@ public:
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char MeshDataBanks[0x4];                        // +0x08 list<CMeshBankManager::CMeshDataBankInfo,std::allocator<CMeshBankManager::CMeshDataBankInfo>_>
 };
+#endif
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CMeshBankManager) == 0xc);
-#ifndef FABLE_RETAIL_CMESHBANKMANAGER_VIRTUAL_DTOR
-FABLE_STATIC_ASSERT(offsetof(CMeshBankManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CMeshBankManager) == 0xc);
+#if !defined(FABLE_RETAIL_CMESHBANKMANAGER_VIRTUAL_DTOR) && !defined(FABLE_RETAIL_CMESHBANKMANAGER_CTOR_DTOR)
+FABLE_STATIC_ASSERT_AT(29, offsetof(CMeshBankManager, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CMeshBankManager, MeshDataBanks) == 0x8);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CMeshBankManager, MeshDataBanks) == 0x8);
 
 #endif // FABLE_ENGINE_CMESHBANKMANAGER_H

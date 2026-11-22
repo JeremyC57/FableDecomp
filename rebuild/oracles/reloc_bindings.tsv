@@ -4830,9 +4830,6 @@ __imp__TryEnterCriticalSection@4	0143fd30	00a02140
 ??_7CRenderStateManager@@6B@	0129c978	00a044b0
 ?FreeDeviceSpecificResources@CMeshDataBank@@QAEXXZ	00a24000	00a09d90
 ?erase@CRetailList_00a09e70@@QAE?AUCListIterator_00a09e70@@U2@@Z	00a0a650	00a09e70
-??_7CMeshBankListener@@6B@	0122de50	00a0a110
-??_7CMeshBankManager@@6BCMeshBankListener@@@	0129c980	00a0a110
-?clear@CBankInfoList@@QAEXXZ	00a0a720	00a0a150
 ?Notify@CActiveFile@@QAEXXZ	00a0a720	00a0a840
 ?PreFinish@CActiveFile@@QAEXXZ	00a0a720	00a0a880
 ??_7CSystemFont@@6B@	0129c998	00a0a8f0
@@ -33867,7 +33864,6 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ??_7CTypedListBase@@6B@	012b1ab0	00c2dbe0
 ??1CShaderRenderManager@@UAE@XZ	0098abf0	0122a4c0
 ??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	00410ac0	00411060
-??_7CGameComponent@@6BCGameComponentInterface@@@	0122eca4	00495620
 ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@	01230ca0	0042f50b
 ?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z	00458f89	00458f2b
 ?WriteFloat@CDataOutputStream@@QAEXM@Z	00993ee0	00458f2b
@@ -37212,9 +37208,6 @@ _time	00bfed22	008405f0
 ??4CCharString@@QAEABV0@PBD@Z	0099efe0	00404970
 ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z	00418dca	00496cf0
 ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	0042ea8f	00496cf0
-?Input@CFrontendGameComponent@@QAEXXZ	004963a0	00496cf0
-?Output@CFrontendGameComponent@@QAEXXZ	00494900	00496cf0
-?g_pLastFrontend@@3PAUCFrontendGameComponent@@A	013b7d58	00496cf0
 ?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z	004b5ee0	004b64e0
 ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z	004b05c0	004b64e0
 ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	00996610	004b64e0
@@ -37427,7 +37420,6 @@ _c_dfDIMouse2	012addfc	00ab5710
 ?GetDamageMultiplierFromThingAtBuildUpTime@?A0x277421ce@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	00789ce0	0078a690
 _TWO_PI	0124f2b8	008185b0
 ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@	01238768	00495620
-??_7CFrontendGameComponent@@6BCGameComponentInterface@@@	0123875c	00495620
 ??$__uninitialized_copy@PAVCTexture@@PAV1@@std@@YIPAVCTexture@@PAV1@00ABU__false_type@0@@Z	0049ad70	0049b480
 ??$__copy_backward_ptrs@PAVCTexture@@PAV1@@std@@YIPAVCTexture@@PAV1@00ABU__false_type@0@@Z	0049b0f0	0049b5a0
 ??$fill@PAVCTexture@@V1@@std@@YIXPAVCTexture@@0ABV1@@Z	0049add0	0049b5a0
@@ -39027,7 +39019,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	004959e0	00495fe0
 ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	00495830	00495fe0
 ?GetWorldNames@CFrontendGameComponent@@AAEXXZ	00495890	00495fe0
-??_7CFrontendGameComponent@@6BCBase@@@	01238768	00496070
 ?InitGraphics@CFrontendGameComponent@@AAE_NXZ	00494840	00496070
 ?g_KeyToNumber@@3PAJA	013b87b0	00496070
 ?g_bLoadDefaultProfile@@3_NA	013b8644	00496070
@@ -39623,3 +39614,9 @@ _SKY_ONE_ON_STEPS_H	0139a70c	00b61dd0
 ??$GetAllThingsInRoughArea@VCThingPhysical@@V?$vector@PAVCThingPhysical@@V?$allocator@PAVCThingPhysical@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@VCThingFilter_IsNot@@VCThingFilter_HasInstantiationName@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@VCThingFilter_IsNot@@VCThingFilter_HasInstantiationName@@@@AAV?$vector@PAVCThingPhysical@@V?$allocator@PAVCThingPhysical@@@std@@@std@@@Z	007a9580	007a7d20
 @bitreverse@4	00c954f0	00c95580
 _sort32a	00c95560	00c95580
+??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@	0123875c	00495620
+?Input@CFrontendGameComponent@@AAEXXZ	004963a0	00496cf0
+?Output@CFrontendGameComponent@@AAEXXZ	00494900	00496cf0
+?GOldGameComponentToDelete@@3PAVCGameComponent@@A	013b7d58	00496cf0
+??_7CMeshBankManager@@6BCDeviceResetCallback@@@	0129c980	00a0a110
+?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ	00a0a720	00a0a150

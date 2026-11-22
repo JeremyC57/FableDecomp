@@ -10,40 +10,19 @@
 // Dinkumware std::list whose constructor nulls the head, allocates a 0x14-byte sentinel node through
 // the allocator (malloc) and links it to itself (`next = prev = node`); the size counter is not stored
 // here (the list's element type is 12 bytes: 0x14 - two links).
-extern "C" void* __cdecl malloc(unsigned int size);
-
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();   // 0x0099A300
-    CBaseClassNonCopyable();                                    // 0x0099A2F0
-};
-
-struct CMeshBankListener {                      // second base, vtable 0x0122DE50
-    virtual void v00();
-    CMeshBankListener() { }
-};
-
-struct CRetailList0x14 {                        // std::list<T> with 12-byte T: {next, prev, value[12]} nodes
-    struct SNode { SNode* next; SNode* prev; unsigned char value[12]; };
-    SNode* head;                                // +0x00 sentinel
-    long size;                                  // +0x04 (not written by this constructor)
-    CRetailList0x14() : head(0)
-    {
-        SNode* node = (SNode*)malloc(0x14);     // built in a local: retail stores the head LAST
-        node->next = node;
-        node->prev = node;
-        head = node;
-    }
-};
-
-class CMeshBankManager : public CBaseClassNonCopyable, public CMeshBankListener { public:
-    CRetailList0x14 m_banks;                    // +0x08
-    CMeshBankManager();
-};
+// Header port (NF235, 2026-11-22, q12657): the local CBaseClassNonCopyable / CMeshBankListener / CRetailList0x14 / CMeshBankManager models
+//   replaced by engine/CMeshBankManager.h (new CTOR_DTOR opt-in: bases CBaseClassNonCopyable + CDeviceResetCallback, the STLport
+//   list<CMeshBankManager::CMeshDataBankInfo> MeshDataBanks +8). The vtables now carry their PDB / RTTI names: the inline
+//   CDeviceResetCallback ctor's ??_7CDeviceResetCallback@@6B@ (0x0122DE50; FableWin / Ego_r / Ego_d publics, RTTI COL 0x0132CAD8; was
+//   ??_7CMeshBankListener@@6B@), ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@ (0x0129C98C) and ??_7CMeshBankManager@@6BCDeviceResetCallback@@@
+//   (0x0129C980; was 6BCMeshBankListener), slots OnPreDeviceReset 0x00A09D90 / OnPostDeviceReset 0x00A09D80 under their PDB spellings.
+//   The list's sentinel comes from the shared STLport _List_base ctor (Data 0 stored first, then the 0x14-byte malloc'd node linked to itself).
+//   FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE: _List_base::clear stays declared only (retail 0x00A0A720, out of line in this class TU), so the
+//   TU carries no clear / CMeshDataBankInfo / CCountedPointer<CMeshDataBank> pick-any copies.
+#define FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+#define FABLE_RETAIL_CMESHBANKMANAGER_CTOR_DTOR
+#include "engine/CMeshBankManager.h"
 
 CMeshBankManager::CMeshBankManager()
-    : CBaseClassNonCopyable()
-    , CMeshBankListener()
-    , m_banks()
 {
 }

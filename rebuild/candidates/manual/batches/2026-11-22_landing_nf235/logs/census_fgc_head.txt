@@ -1,0 +1,71 @@
+### 00495620 [rebuild/src/compiled/00/49/CFrontendGameComponent_CFrontendGameComponent_00495620.cpp] 00495620 CFrontendGameComponent::~CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 0122eca4 ??_7CGameComponent@@6BCGameComponentInterface@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+      1   REL 0123875c ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+      1   REL 01238768 ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??1CFrontendGameComponent@@UAE@XZ
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ?v00@CGameComponentInterface@@UAEXXZ
+### 00496070 [rebuild/src/compiled/00/49/CFrontendGameComponent_CFrontendGameComponent_00496070.cpp] 00496070 CFrontendGameComponent::CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0051d8e0 ??0CGameComponent@@QAE@AAVCGame@@@Z
+      1   REL 0123875c ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+      1   REL 01238768 ??_7CFrontendGameComponent@@6BCBase@@@
+VT ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CFrontendGameComponent@@6BCBase@@@ slots 1
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CFrontendGameComponent@@6BCBase@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ?SetMode@CFrontendGameComponent@@QAEXJ@Z
+  SYM UND ??0CGameComponent@@QAE@AAVCGame@@@Z
+  SYM UND ??1CFrontendGameComponent@@UAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  SYM UND ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  SYM UND ?GetWorldNames@CFrontendGameComponent@@AAEXXZ
+  SYM UND ?InitGraphics@CFrontendGameComponent@@AAE_NXZ
+  SYM UND ?v00@CGameComponentInterface@@UAEXXZ
+### 00496cf0 [rebuild/src/compiled/00/49/CFrontendGameComponent_Run_00496cf0.cpp] 00496cf0 CFrontendGameComponent::Run RELOCATION_MATCH flags= []
+      1   REL 00418dca ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+      1   REL 0042ea8f ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z
+  SYM DEF ??0CMainGameComponentInit@@QAE@XZ
+  SYM DEF ??0CNewFrontendGameComponentInit@@QAE@XZ
+  SYM DEF ??1CMainGameComponentInit@@QAE@XZ
+  SYM DEF ?Run@CFrontendGameComponent@@QAE_NAAPAVCGameComponent@@@Z
+  SYM UND ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+  SYM UND ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z
+  SYM UND ?Input@CFrontendGameComponent@@QAEXXZ
+  SYM UND ?Output@CFrontendGameComponent@@QAEXXZ
+  SYM UND ?Shutdown@CFrontendGameComponent@@AAEXXZ
+  SYM UND ?g_pLastFrontend@@3PAUCFrontendGameComponent@@A
+### 00494370 [rebuild/src/compiled/00/49/CFrontendGameComponent_SetQuit_00494370.cpp] 00494370 CFrontendGameComponent::SetQuit MATCH flags= []
+  SYM DEF ?SetQuit@CFrontendGameComponent@@QAEXXZ
+### 00494350 [rebuild/src/compiled/00/49/CFrontendGameComponent_OnPreDeviceReset_00494350.cpp] 00494350 CFrontendGameComponent::OnPreDeviceReset MATCH flags= []
+  SYM DEF ?CFrontendGameComponent_OnPreDeviceReset@@YIXXZ
+### 00494360 [rebuild/src/compiled/00/49/CFrontendGameComponent_OnPostDeviceReset_00494360.cpp] 00494360 CFrontendGameComponent::OnPostDeviceReset MATCH flags= []
+  SYM DEF ?CFrontendGameComponent_OnPostDeviceReset@@YI_NXZ
+### 00497720 [rebuild/src/compiled/00/49/CFrontendGameComponent_scalardeletingdestructor_00497720.cpp] 00497720 CFrontendGameComponent::`scalar_deleting_destructor' RELOCATION_MATCH flags= []
+      1   REL 00495620 ?CFrontendGameComponent_dtor@@YIXPAUCFrontendGameComponent@@@Z
+  SYM DEF ?CFrontendGameComponent_scalar_deleting_destructor@@YIPAXPAUCFrontendGameComponent@@HI@Z
+  SYM UND ?CFrontendGameComponent_dtor@@YIXPAUCFrontendGameComponent@@@Z
+### 00495610 [rebuild/src/compiled/00/49/CFrontendGameComponent_ChangeTextureColourDepth_00495610.cpp] 00495610 CFrontendGameComponent::ChangeTextureColourDepth RELOCATION_MATCH flags= []
+  SYM DEF ?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z
+  SYM UND ?InitGraphics@CFrontendGameComponent@@AAE_NXZ
+DONE

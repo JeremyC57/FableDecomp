@@ -1,0 +1,31 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00496CF0	CFrontendGameComponent	Run	?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z	CFrontendGameComponent::Run	?Run@CFrontendGameComponent@@QAE_NAAPAVCGameComponent@@@Z	Ego_r.pdb + FableWin.pdb + Ego_d.pdb (public virtual, CGameComponent**); retail RTTI vtable 0x01238768 slot 2; signature from both PDBs + the body (`mov ecx,[esp+20h] ; mov [ecx],edi`: a pointer out-parameter, `ret 4`)
+0x00494370	CFrontendGameComponent	SetQuit	?SetQuit@CFrontendGameComponent@@UAEXXZ	CFrontendGameComponent::SetQuit	?SetQuit@CFrontendGameComponent@@QAEXXZ	Ego_r.pdb + FableWin.pdb + Ego_d.pdb (public virtual override of the protected CGameComponent::SetQuit); retail RTTI vtable 0x01238768 slot 4
+0x00494350	CFrontendGameComponent	OnPreDeviceReset	?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ	CFrontendGameComponent::OnPreDeviceReset	?CFrontendGameComponent_OnPreDeviceReset@@YIXXZ	Ego_r.pdb + FableWin.pdb + Ego_d.pdb; retail RTTI vtable 0x0123875C (CDeviceResetCallback at +4) slot 0
+0x00494360	CFrontendGameComponent	OnPostDeviceReset	?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ	CFrontendGameComponent::OnPostDeviceReset	?CFrontendGameComponent_OnPostDeviceReset@@YI_NXZ	Ego_r.pdb + FableWin.pdb + Ego_d.pdb; retail RTTI vtable 0x0123875C slot 1
+0x00A09D80	CMeshBankManager	OnPostDeviceReset	?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ	CMeshBankManager::OnPostDeviceReset	?CMeshBankManager_OnPostDeviceReset@@YI_NXZ	Ego_r.pdb + FableWin.pdb; retail RTTI vtable 0x0129C980 (CDeviceResetCallback at +4) slot 1
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00495620	??_7CFrontendGameComponent@@6BCGameComponentInterface@@@	??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@	0x0123875C
+0x00495620	??_7CGameComponent@@6BCGameComponentInterface@@@	??_7CGameComponent@@6BCDeviceResetCallback@@@	0x0122ECA4
+0x00495620	?v00@CGameComponentInterface@@UAEXXZ (vtable 0x0123875C slot 0)	?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ	0x00494350
+0x00495620	(vtable 0x0123875C slot 1, not emitted at HEAD)	?OnPostDeviceReset@CFrontendGameComponent@@UAE_NXZ	0x00494360
+0x00495620	(vtable 0x01238768 slots 1-4, not emitted at HEAD)	?Init@CGameComponent@@UAEXXZ / ?Run@CFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z / ?ChangeTextureColourDepth@CFrontendGameComponent@@UAEXJ@Z / ?SetQuit@CFrontendGameComponent@@UAEXXZ	0x00415920 / 0x00496CF0 / 0x00495610 / 0x00494370
+0x00495620	?v00@CGameComponentInterface@@UAEXXZ (vtable 0x0122ECA4 slots 0-1)	__purecall	0x00BFEA08
+0x00495620	(vtable 0x0122ECB0 slots 1-4, not emitted at HEAD)	?Init@CGameComponent@@UAEXXZ / __purecall x2 / ?SetQuit@CGameComponent@@MAEXXZ	0x00415920 / 0x00BFEA08 / 0x00415930
+0x00496070	??_7CFrontendGameComponent@@6BCBase@@@	??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@	0x01238768
+0x00496070	??_7CFrontendGameComponent@@6BCGameComponentInterface@@@	??_7CFrontendGameComponent@@6BCDeviceResetCallback@@@	0x0123875C
+0x00496070	?v00@CGameComponentInterface@@UAEXXZ (vtable 0x0123875C slot 0)	?OnPreDeviceReset@CFrontendGameComponent@@UAEXXZ	0x00494350
+0x00496070	(vtables 0x01238768 slots 1-4 / 0x0123875C slot 1, not emitted at HEAD)	as 0x00495620	0x00415920 / 0x00496CF0 / 0x00495610 / 0x00494370 / 0x00494360
+0x00496CF0	?Input@CFrontendGameComponent@@QAEXXZ	?Input@CFrontendGameComponent@@AAEXXZ	0x004963A0
+0x00496CF0	?Output@CFrontendGameComponent@@QAEXXZ	?Output@CFrontendGameComponent@@AAEXXZ	0x00494900
+0x00496CF0	?g_pLastFrontend@@3PAUCFrontendGameComponent@@A	?GOldGameComponentToDelete@@3PAVCGameComponent@@A	0x013B7D58
+0x00A0A110	??_7CMeshBankListener@@6B@	??_7CDeviceResetCallback@@6B@	0x0122DE50
+0x00A0A110	??_7CMeshBankManager@@6BCMeshBankListener@@@	??_7CMeshBankManager@@6BCDeviceResetCallback@@@	0x0129C980
+0x00A0A110	?v00@CMeshBankListener@@UAEXXZ (vtable 0x0129C980 slot 0)	?OnPreDeviceReset@CMeshBankManager@@UAEXXZ	0x00A09D90
+0x00A0A110	?v00@CMeshBankListener@@UAEXXZ (vtable 0x0122DE50 slot 0)	__purecall (slots 0-1)	0x00BFEA08
+0x00A0A110	(vtable 0x0129C980 slot 1, not emitted at HEAD)	?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ	0x00A09D80
+0x00A0A150	??_7CMeshBankManager@@6BCMeshBankListener@@@	??_7CMeshBankManager@@6BCDeviceResetCallback@@@	0x0129C980
+0x00A0A150	?v00@CMeshBankManager@@UAEXXZ (vtable 0x0129C980 slot 0)	?OnPreDeviceReset@CMeshBankManager@@UAEXXZ	0x00A09D90
+0x00A0A150	(vtable 0x0129C980 slot 1, not emitted at HEAD)	?OnPostDeviceReset@CMeshBankManager@@UAE_NXZ	0x00A09D80
+0x00A0A150	?clear@CBankInfoList@@QAEXXZ	?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ	0x00A0A720
