@@ -1,0 +1,20 @@
+17:36:17 0062eac0 NF259
+17:36:17 0062ead0 NF259
+17:36:17 00692670 NF259
+17:36:17 00692880 NF259
+17:36:17 006928b0 NF259
+17:40:09 00955620 NF259 (control: vtmap emitter)
+17:42:14 008b7a20 NF259
+17:42:14 008c2ad0 NF259
+17:42:14 008c0560 NF259
+17:42:14 0096ae50 NF259
+17:42:14 006f5c10 NF259
+17:42:14 008f41d0 NF259
+17:50:44 0072d990 NF259 (control: includer recheck)
+17:50:44 008c2550 NF259 (control: includer recheck)
+17:50:44 009735d0 NF259 (control: includer recheck)
+17:50:44 007c3fb0 NF259 (control: includer recheck)
+17:50:44 007c4430 NF259 (control: includer recheck)
+17:50:55 0072caa0 NF259 (control: includer recheck)
+17:50:55 008cd470 NF259 (control: includer recheck)
+17:59:34 control locks 00955620 0072d990 0072caa0 007c3fb0 007c4430 008c2550 008cd470 009735d0 -> released

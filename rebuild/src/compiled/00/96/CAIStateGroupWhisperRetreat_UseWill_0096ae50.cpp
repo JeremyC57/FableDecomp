@@ -12,6 +12,12 @@
 // Shape: the retail headers (CAIStateGroupBase::GetCreature() -> *PBrain->Creature, CThing::HasTC / IsDead / GetTypeFlags, the retail
 //   CCountedPointer copy into the argument area) replace the draft's local model; that model's out-of-line counted-pointer members and
 //   pointer-typed signatures moved the argument pushes and the creature register.
+// NF259 (2026-11-22, q12731, nf257 port debt): the row-local CAIStateGroup_WhisperRetreat / CAIStateGroup_EnemyCreatureBase models and the
+//   renaming-macro CCreatureAction_CastAssassinRush model (`#define ... Donor...` + include + local class) moved onto the shared headers:
+//   engine/CAIStateGroup_WhisperRetreat.h (nf257 WHISPERRETREAT_UPDATE: UseWill protected), engine/CAIStateGroup_EnemyCreatureBase.h
+//   (PTargetThing +0x14), engine/CCreatureAction_CastAssassinRush.h (retail class, its implicit destructor = 0x0072D990's pick-any COMDAT,
+//   and the add-only NF259 opt-in TARGETCTOR for the 0x008CE040 constructor). CCreatureAction_MidAttack360 has no shared header (none under
+//   rebuild/include) and keeps the HEAD row's local declaration over the shared CCombatActionBase.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -28,6 +34,11 @@
 #define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
 #define FABLE_RETAIL_CAIBRAIN_GETCREATURE
 #define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT
+#define FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_UPDATE
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_TARGETCTOR
 #include "fable_string.h"
 #include "engine/CThing.h"
 #include "engine/CTCBase.h"
@@ -38,29 +49,11 @@
 #include "engine/CAIBrain.h"
 #include "engine/CCreatureActionBase.h"
 #include "engine/CCombatActionBase.h"
-#define CCreatureAction_CastAssassinRush DonorCCreatureAction_CastAssassinRush
 #include "engine/CCreatureAction_CastAssassinRush.h"
-#undef CCreatureAction_CastAssassinRush
-class CCreatureAction_CastAssassinRush : public CCombatActionBase {      // RTTI: CCombatActionBase@0
-public:
-    CCreatureAction_CastAssassinRush(CThingCreatureBase& creature, CThing& target, bool zTargeting, long level,
-                                     CCountedPointer<CCreatureActionBase> finalAction);   // 0x008CE040
-    ~CCreatureAction_CastAssassinRush();                                                  // 0x0072D990
-    virtual void PerformAction();                                                         // 0x008CEBE0
-    virtual CCreatureActionBase* Clone() const;                                           // 0x008CEF20
-    unsigned char _pad_0x114[sizeof(DonorCCreatureAction_CastAssassinRush) - 0x114];
-};
+#include "engine/CAIStateGroup_WhisperRetreat.h"
 class CCreatureAction_MidAttack360 : public CCombatActionBase {        // no shared header; RTTI: CCombatActionBase@0, retail sizeof 0x114
 public:
     CCreatureAction_MidAttack360(CThingCreatureBase& creature, CThingCreatureBase& target);   // 0x0090A700 (Ego_r / FableWin ??0..@AAVCThingCreatureBase@@0@Z)
-};
-class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase {
-protected:
-    CIntelligentPointer<CThingCreatureBase> PTargetThing;              // +0x14
-};
-class CAIStateGroup_WhisperRetreat : public CAIStateGroup_EnemyCreatureBase {
-protected:
-    void UseWill();
 };
 
 void CAIStateGroup_WhisperRetreat::UseWill()

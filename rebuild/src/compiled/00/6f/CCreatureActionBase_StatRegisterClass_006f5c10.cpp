@@ -18,6 +18,9 @@
 //   FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (the out-of-line ~CCountedPointer 0x0048C5C0 / pair dtors 0x00695D90 / 0x006F5260).
 // Shared headers: the 41 action classes with an engine/<Class>.h are modelled there under new FABLE_RETAIL_<CLASS>_PROTOTYPE
 //   opt-ins (hdr/README.md); the 14 classes without a shared header stay local (ctor addresses / inline ctors from the call sites).
+// NF259 (2026-11-22, q12731, nf257 port debt): the row-local CCreatureAction_SummonCreatures model (a class that has engine/
+//   CCreatureAction_SummonCreatures.h) moved onto that header with the nf257 SUMMONCREATURES_OVERRIDES opt-in, which declares the default
+//   constructor 0x008B83C0 this row calls (??0CCreatureAction_SummonCreatures@@QAE@XZ, unchanged); its ctor stays out of line, so no vtable.
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_STLP_MAP
@@ -73,6 +76,7 @@
 #define FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_PROTOTYPE
 #define FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_PROTOTYPE
 #define FABLE_RETAIL_CCREATUREACTION_SUMMONERDIE_PROTOTYPE
+#define FABLE_RETAIL_CCREATUREACTION_SUMMONCREATURES_OVERRIDES
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
@@ -129,11 +133,7 @@ class CCreatureAction_BreakIntoMelee : public CCombatActionBase {
 public:
     CCreatureAction_BreakIntoMelee() : CCombatActionBase(50) { }
 };
-class CCreatureAction_SummonCreatures : public CCombatActionBase {
-public:
-    CCreatureAction_SummonCreatures();                                   // 0x008B83C0
-    bool SpawnOnTarget;
-};
+#include "engine/CCreatureAction_SummonCreatures.h"
 #include "engine/CCreatureAction_LeapBack.h"
 #include "engine/CCreatureAction_GenericStrafeLeft.h"
 #include "engine/CCreatureAction_GenericStrafeRight.h"

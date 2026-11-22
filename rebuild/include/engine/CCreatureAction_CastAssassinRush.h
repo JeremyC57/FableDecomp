@@ -21,6 +21,12 @@ public:
  // Both PDBs: ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@M_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z
  // (Ego_r 0x00905670, FableWin 0x017C5939 / 0x029F92D0); retail 0x008CE1B0.
  CCreatureAction_CastAssassinRush(CThingCreatureBase&,const C3DVector&,float,bool,long,CCountedPointer<CCreatureActionBase>);
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_TARGETCTOR
+ // NF259 opt-in (2026-11-22, q12731, row 0x0096AE50 CAIStateGroup_WhisperRetreat::UseWill): Ego_r.pdb 0x009054E0 + FableWin.pdb 0x029F8E90
+ // ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z (creature, target,
+ // z-targeting, level, final action), out of line in retail at 0x008CE040 (reloc_bindings witness 0x0072CAA0). Declaration only; no layout change.
+ CCreatureAction_CastAssassinRush(CThingCreatureBase&,CThing&,bool,long,CCountedPointer<CCreatureActionBase>);
+#endif
 private:
  bool Override;
  C3DVector Dir;
@@ -34,13 +40,13 @@ private:
 };
 #pragma pack(pop)
 struct CCreatureAction_CastAssassinRush_LayoutCheck {
- FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Override)==0x114);
- FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Dir)==0x115);
- FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Distance)==0x124);
- FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,FinalAction)==0x12C);
- FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,UseCollision)==0x134);
+ FABLE_STATIC_ASSERT_AT(37, offsetof(CCreatureAction_CastAssassinRush,Override)==0x114);
+ FABLE_STATIC_ASSERT_AT(38, offsetof(CCreatureAction_CastAssassinRush,Dir)==0x115);
+ FABLE_STATIC_ASSERT_AT(39, offsetof(CCreatureAction_CastAssassinRush,Distance)==0x124);
+ FABLE_STATIC_ASSERT_AT(40, offsetof(CCreatureAction_CastAssassinRush,FinalAction)==0x12C);
+ FABLE_STATIC_ASSERT_AT(41, offsetof(CCreatureAction_CastAssassinRush,UseCollision)==0x134);
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastAssassinRush)==0x138);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CCreatureAction_CastAssassinRush)==0x138);
 #else
 
 class CCPPointerInfo;
@@ -73,16 +79,16 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastAssassinRush) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Override) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Dir) == 0x115);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Distance) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Level) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, FinalAction_Data) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, FinalAction_Info) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, UseCollision) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, IsZTargetting) == 0x135);
+FABLE_STATIC_ASSERT_AT(76, sizeof(CCreatureAction_CastAssassinRush) == 0x138);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CCreatureAction_CastAssassinRush, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CCreatureAction_CastAssassinRush, Override) == 0x114);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CCreatureAction_CastAssassinRush, Dir) == 0x115);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CCreatureAction_CastAssassinRush, Distance) == 0x124);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_CastAssassinRush, Level) == 0x128);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_CastAssassinRush, FinalAction_Data) == 0x12c);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_CastAssassinRush, FinalAction_Info) == 0x130);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_CastAssassinRush, UseCollision) == 0x134);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_CastAssassinRush, IsZTargetting) == 0x135);
 
 #endif // FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTASSASSINRUSH_H

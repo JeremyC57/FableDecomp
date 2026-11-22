@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0062eac0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+0062ead0   RELOCATION_MATCH PASS   GetIsToFaceTargetMinDist
+00692670   MATCH            PASS   IsPreventingLookTurning
+00692880   RELOCATION_MATCH PASS   OverrideFaceWithDefault
+006928b0   RELOCATION_MATCH PASS   CanAnimationTransitionOut
+
+WINS: 5
+  0062eac0 RELOCATION_MATCH CCombatActionBase::?GetIsToFaceTargetCone@CCombatActionBase@@UBEMXZ
+  0062ead0 RELOCATION_MATCH CCombatActionBase::?GetIsToFaceTargetMinDist@CCombatActionBase@@UBEMXZ
+  00692670 MATCH CCreatureActionBase::?IsPreventingLookTurning@CCreatureActionBase@@UBE_NXZ
+  00692880 RELOCATION_MATCH CCreatureActionBase::?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+  006928b0 RELOCATION_MATCH CCreatureActionBase::?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+EXIT 0

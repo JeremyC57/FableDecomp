@@ -15501,7 +15501,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetButtonPressureForEvent@CGamePlayerInterfaceCalls@@QAEMPAVCInputEvent@@@Z	00445800	00687d10
 ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z	00687d00	00691c50
 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	00691fe0
-?cat_probe@@YIHPAVCAnimationEntry@@@Z	005dc210	006928b0
 ?GetWorld@CThing@@QBEPAVCWorld@@XZ	004c7ab0	00692b30
 ?GetAnimMovementVector@CThingCreatureBase@@QBE?AVC3DVector@@J@Z	006626e0	00692c80
 ?GetWorld@CThingCreatureBase@@QBEPAVCWorld@@XZ	004c7ab0	00692c80

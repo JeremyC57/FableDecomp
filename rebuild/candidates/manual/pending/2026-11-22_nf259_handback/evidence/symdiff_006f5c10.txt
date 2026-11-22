@@ -1,0 +1,3 @@
+# 006f5c10: defined / undefined external symbols, HEAD (<) v NF259 (>): no difference
+HEAD: DEF 141 UND 137 ??_7 31
+objdump -s -r of HEAD v NF259 objects: one difference, the compile-directory path string (pL v pS) in a .debug section; code, .rdata (31 vtables) and relocations identical

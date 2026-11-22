@@ -22,8 +22,10 @@
 //   action temporary is 0x114 bytes (no members of its own), built at the bottom of the 0x120-byte frame. The effect index is
 //   block-scoped: its frame word [esp+10h] is reused by the "" and "CTCHealLife" strings (at function scope it takes the "HEAL"
 //   string's word instead, unless the GetEffectFromString body opt-in is on -- both spellings were graded).
-// Local declarations: no shared header exists for CCombatAction_WillHealInto, CCombatAction_WillHealRelease or CTCHealLife; they
-//   are declared here over the shared bases (no layout of a shared class is modelled locally).
+// NF259 (2026-11-22, q12731, nf257 port debt): the row-local CTCHealLife and CCombatAction_WillHealInto models moved onto their shared
+//   headers (engine/CTCHealLife.h with the add-only NF259 opt-in SETAICAST; engine/CCombatAction_WillHealInto.h with the nf257
+//   WILLHEALINTO_OVERRIDES). CCombatAction_WillHealRelease has no shared header (none under rebuild/include) and keeps the HEAD row's
+//   local declaration over the shared CCombatActionBase.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -47,6 +49,8 @@
 #define FABLE_RETAIL_CCREATUREACTIONBASE_ACCESSORS
 #define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
 #define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTION_WILLHEALINTO_OVERRIDES
+#define FABLE_RETAIL_CTCHEALLIFE_SETAICAST
 #include "rebuild_abi.h"
 #include "fable_string.h"
 #include "engine/ETCInterfaceType.h"
@@ -63,20 +67,12 @@
 #include "engine/CTCDParticleEmitter.h"
 #include "engine/CCreatureActionBase.h"
 #include "engine/CCombatActionBase.h"
+#include "engine/CTCHealLife.h"
+#include "engine/CCombatAction_WillHealInto.h"
 
-class CTCHealLife : public CTCBase {
-public:
-    void SetAICast(long spell_level);                                    // 0x007C3EA0
-};
 class CCombatAction_WillHealRelease : public CCombatActionBase {
 public:
     CCombatAction_WillHealRelease(CThingCreatureBase& creature);         // 0x008C3930
-};
-class CCombatAction_WillHealInto : public CCombatActionBase {
-public:
-    virtual void FinishAction();
-protected:
-    long SpellLevel;                                                     // +0x114
 };
 
 void CCombatAction_WillHealInto::FinishAction()

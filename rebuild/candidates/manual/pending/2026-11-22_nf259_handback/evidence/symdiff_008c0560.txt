@@ -1,0 +1,1 @@
+# 008c0560: defined / undefined external symbols, HEAD (<) v NF259 (>)

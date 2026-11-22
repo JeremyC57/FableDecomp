@@ -1,0 +1,11 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0062EAC0	CCombatActionBase	GetIsToFaceTargetCone	?GetIsToFaceTargetCone@CCombatActionBase@@UBEMXZ	CCombatActionBase::GetIsToFaceTargetCone	_CCombatActionBase_GetIsToFaceTargetCone	Ego_r 0x00545E10 + FableWin 0x01D918A0; retail vftable 0x01259E44 slot 78; leaf-only (catalog name unchanged)
+0x0062EAD0	CCombatActionBase	GetIsToFaceTargetMinDist	?GetIsToFaceTargetMinDist@CCombatActionBase@@UBEMXZ	CCombatActionBase::GetIsToFaceTargetMinDist	?CCombatActionBase_GetIsToFaceTargetMinDist@@YIMPAUCAIStateGroup_EnemyCreatureBase@@@Z	Ego_r 0x00545E20 + FableWin 0x01D918C0; retail vftable 0x01259E44 slot 79; leaf-only
+0x00692670	CCreatureActionBase	IsPreventingLookTurning	?IsPreventingLookTurning@CCreatureActionBase@@UBE_NXZ	CCreatureActionBase::IsPreventingLookTurning	?CCreatureActionBase_IsPreventingLookTurning@@YI_NPAVCCreatureActionBase@@@Z	Ego_r 0x00518FD0 + FableWin 0x01DB9450; retail vftable 0x01259D24 slot 50; leaf-only
+0x00692880	CCreatureActionBase	OverrideFaceWithDefault	?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ	CCreatureActionBase::OverrideFaceWithDefault	?CCreatureActionBase_OverrideFaceWithDefault@@YI_NPAVCCreatureActionBase@@@Z	Ego_r 0x005191E0 + FableWin 0x01DB9510; retail vftable 0x01259D24 slot 65; leaf-only
+0x006928B0	CCreatureActionBase	CanAnimationTransitionOut	?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ	CCreatureActionBase::CanAnimationTransitionOut	?CCreatureActionBase_CanAnimationTransitionOut@@YI_NPAVCCreatureActionBase@@@Z	Ego_r 0x00519210 + FableWin 0x01DB9570; retail vftable 0x01259D24 slot 67; leaf-only
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x006928B0	?cat_probe@@YIHPAVCAnimationEntry@@@Z	?GetFlags@CAnimationEntry@@QBEJXZ	0x005DC210
+0x0062EAC0	?g_value_01259d18@@3MA	__real@3de38e39	0x01259D18
+0x0062EAD0	?g_CombatMinDistance_0122f59c@@3MA	__real@3f000000	0x0122F59C

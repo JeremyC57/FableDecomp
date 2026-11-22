@@ -1,0 +1,56 @@
+addr       parity           behav  name
+0062eac0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+0062ead0   RELOCATION_MATCH PASS   GetIsToFaceTargetMinDist
+00692670   MATCH            PASS   IsPreventingLookTurning
+00692880   RELOCATION_MATCH PASS   OverrideFaceWithDefault
+006928b0   RELOCATION_MATCH PASS   CanAnimationTransitionOut
+008b7a20   RELOCATION_MATCH PASS   Initialise
+008c2ad0   RELOCATION_MATCH PASS   FinishAction
+008c0560   RELOCATION_MATCH PASS   Initialise
+0096ae50   RELOCATION_MATCH PASS   UseWill
+006f5c10   WARN RELOC_NAME: ??1?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 00695d90 labelled '_global::Dtor_CountedPtrAt0x8_00695d90'
+006f5c10   WARN RELOC_NAME: ??1?$pair@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 006f5260 labelled '_global::Dtor_CountedPtrAt0x8_006f5260'
+006f5c10   RELOCATION_MATCH PASS   StatRegisterClass
+008f41d0   RELOCATION_MATCH PASS   Initialise
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+0072d990   RELOCATION_MATCH PASS   ~CCreatureAction_CastAssassinRush
+0072caa0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+0072caa0   RELOCATION_MATCH PASS   SetupAssassinRush
+007c3fb0   WARN RELOC_ALIAS: _floor -> 00bfeb8a is the import thunk 'MSVCR71.DLL::floor'
+007c3fb0   RELOCATION_MATCH PASS   FrameUpdate
+007c4430   RELOCATION_MATCH PASS   StartHealingEffect
+008c2550   RELOCATION_MATCH PASS   FinishAction
+008cd470   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+008cd470   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008cd470   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cd470   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+008cd470   RELOCATION_MATCH PASS   Initialise
+009735d0   RELOCATION_MATCH PASS   RushToPos
+
+WINS: 19
+  0062eac0 RELOCATION_MATCH CCombatActionBase::?GetIsToFaceTargetCone@CCombatActionBase@@UBEMXZ
+  0062ead0 RELOCATION_MATCH CCombatActionBase::?GetIsToFaceTargetMinDist@CCombatActionBase@@UBEMXZ
+  00692670 MATCH CCreatureActionBase::?IsPreventingLookTurning@CCreatureActionBase@@UBE_NXZ
+  00692880 RELOCATION_MATCH CCreatureActionBase::?OverrideFaceWithDefault@CCreatureActionBase@@MBE_NXZ
+  006928b0 RELOCATION_MATCH CCreatureActionBase::?CanAnimationTransitionOut@CCreatureActionBase@@MBE_NXZ
+  008b7a20 RELOCATION_MATCH CCreatureAction_SummonCreatures::?Initialise@CCreatureAction_SummonCreatures@@UAEXXZ
+  008c2ad0 RELOCATION_MATCH CCombatAction_WillHealInto::?FinishAction@CCombatAction_WillHealInto@@UAEXXZ
+  008c0560 RELOCATION_MATCH CCombatAction_WillHealInto::?Initialise@CCombatAction_WillHealInto@@UAEXXZ
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+  006f5c10 RELOCATION_MATCH CCreatureActionBase::?StatRegisterClass@CCreatureActionBase@@SIXXZ
+  008f41d0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::?Initialise@CCreatureAction_DragonFireBeamInto@@UAEXXZ
+  00955620 RELOCATION_MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+  0072d990 RELOCATION_MATCH CCreatureAction_CastAssassinRush::??1CCreatureAction_CastAssassinRush@@UAE@XZ
+  0072caa0 RELOCATION_MATCH CTCSpecialAbilities::SetupAssassinRush
+  007c3fb0 RELOCATION_MATCH CTCHealLife::?FrameUpdate@CTCHealLife@@UAEXXZ
+  007c4430 RELOCATION_MATCH CTCHealLife::?StartHealingEffect@CTCHealLife@@QAEXXZ
+  008c2550 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
+  008cd470 RELOCATION_MATCH CCreatureAction_CastAssassinRush::Initialise
+  009735d0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z
+EXIT 0

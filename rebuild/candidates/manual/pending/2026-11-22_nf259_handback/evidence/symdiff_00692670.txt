@@ -1,0 +1,5 @@
+# 00692670: defined / undefined external symbols, HEAD (<) v NF259 (>)
+1c1
+< DEF ?CCreatureActionBase_IsPreventingLookTurning@@YI_NPAVCCreatureActionBase@@@Z
+---
+> DEF ?IsPreventingLookTurning@CCreatureActionBase@@UBE_NXZ
