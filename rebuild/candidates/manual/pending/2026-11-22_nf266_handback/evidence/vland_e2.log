@@ -1,0 +1,6 @@
+addr       parity           behav  name
+008cd470   RELOCATION_MATCH PASS   Initialise
+
+WINS: 1
+  008cd470 RELOCATION_MATCH CCreatureAction_CastAssassinRush::?Initialise@CCreatureAction_CastAssassinRush@@UAEXXZ
+EXIT 0

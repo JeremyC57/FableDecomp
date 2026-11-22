@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+# none for q12760: reloc_bindings.tsv has no line for any of the U*E spellings that moved (vtable slots only); the two M*E lines it has (FrameUpdate 0x00694020, OnAnimationLoaded 0x00692830) are already the new spelling
+delete	?SetFinalAction@CTCAssassinRush@@QAEXUCCountedAction@@@Z	008ceae0	008cd470	q12743: the stand-in line; its only binder 0x008CD470 now binds the PDB spelling
+add	?SetFinalAction@CTCAssassinRush@@QAEXV?$CCountedPointer@VCCreatureActionBase@@@@@Z	008ceae0	008cd470	q12743: the PDB spelling (both PDBs; 0x008CEAE0's own leaf), witness 0x008CD470

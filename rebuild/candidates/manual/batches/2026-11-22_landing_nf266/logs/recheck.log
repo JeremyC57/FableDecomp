@@ -1,0 +1,37 @@
+00693b30   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00693b30   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00693b30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00693b30   RELOCATION_MATCH PASS   CCreatureActionBase
+00693dc0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00693dc0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00693dc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00693dc0   RELOCATION_MATCH PASS   CCreatureActionBase
+0069f0f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0069f0f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0069f0f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0069f0f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+0069f0f0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+0069f0f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheItemFromInventory (engine/CCreatureAction_UnsheatheItemFromInventory.h)
+0069f0f0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+006a0d50   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+006a0d50   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+006a0d50   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a0d50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseObject (engine/CCreatureAction_UseObject.h)
+006a0d50   RELOCATION_MATCH PASS   CCreatureAction_UseObject
+008cd470   RELOCATION_MATCH PASS   Initialise
+00692890   RELOCATION_MATCH PASS   AllowsCombinationAnims
+006df800   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheToShowToSheatheTrophy
+008ceae0   RELOCATION_MATCH PASS   SetFinalAction
+0072d990   RELOCATION_MATCH PASS   ~CCreatureAction_CastAssassinRush
+0096ae50   RELOCATION_MATCH PASS   UseWill
+009735d0   RELOCATION_MATCH PASS   RushToPos
+008c2550   RELOCATION_MATCH PASS   FinishAction
+008cef50   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cef50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+008cef50   RELOCATION_MATCH PASS   CCreatureAction_CastAssassinRush
+0072caa0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+0072caa0   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+0072caa0   RELOCATION_MATCH PASS   SetupAssassinRush

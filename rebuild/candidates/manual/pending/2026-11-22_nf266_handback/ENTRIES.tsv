@@ -1,0 +1,5 @@
+qid	source	address	claim
+q12760	land1122nf264	0x00693B30 / 0x00693DC0 / 0x0069F0F0 / 0x006A0D50	these four rows' tables bind ?AllowsCombinationAnims@CCreatureActionBase@@UBE_NXZ (public) where both PDBs say MBE (protected): respell in place or port so they bind the MBE spelling 0x00692890 now defines (0x00692890 2 -> 1); check each slot's retail target first (vtmap): if retail has a CCombatActionBase / derived override there, bind that instead, as nf264 did
+q12743	land1122nf259	0x0072CAA0 / 0x008CD470	the CastAssassinRush local models onto engine/CCreatureAction_CastAssassinRush.h: two new add-only declarations, pin_asserts, whole-tree equiv_check (wait for it), includer rechecks, then the two ports (nf261 NOTES entry 4, incl. the SetFinalAction respelling); with 0x008CEAE0 / 0x008CE040 / 0x008CE100 if they fall in the same unit
+q12744	land1122nf258	0x00AD9770 / 0x00AD9980	mirror FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY; link before and after: nothing may newly need ??1?$_Rb_tree@KU?$pair@$$CBKJ... undefined
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

@@ -1,0 +1,49 @@
+# 008cd470: defined/undefined external symbols, HEAD (<) v new (>)
+1,4c1,6
+< DEF ??0C3DVector@@QAE@XZ
+< DEF ??0CCountedAction@@QAE@ABU0@@Z
+< DEF ??0CRightHandedSet@@QAE@XZ
+< DEF ??1CCountedAction@@QAE@XZ
+---
+> DEF ??0?$CCountedPointer@VCCreatureActionBase@@@@QAE@ABV0@@Z
+> DEF ??0C3DVector@@QAE@ABV0@@Z
+> DEF ??0C3DVector@@QAE@MMM@Z
+> DEF ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z
+> DEF ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ
+> DEF ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+6,7c8,11
+< DEF ?CopyDirection@CCreatureAction_CastAssassinRush@@QBEXAAVC3DVector@@@Z
+< DEF ?GetPhysics@CThing@@QBEPAUCPhysicsMethods@@XZ
+---
+> DEF ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+> DEF ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+> DEF ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ
+> DEF ?GetType@CClass@@QBEKXZ
+9d12
+< DEF ?SetFacingAnglesFromRHSet@CPhysicsMethods@@QAEXABVCRightHandedSet@@@Z
+17c20
+< UND ?SetFinalAction@CTCAssassinRush@@QAEXUCCountedAction@@@Z
+---
+> UND ?SetFinalAction@CTCAssassinRush@@QAEXV?$CCountedPointer@VCCreatureActionBase@@@@@Z
+# function COMDATs (name size hash relocs) HEAD v new:
+1,8c1,11
+< ??0C3DVector@@QAE@XZ	3	03ca90960a9c	
+< ??0CCountedAction@@QAE@ABU0@@Z	25	8c89ebf47dde	
+< ??0CRightHandedSet@@QAE@XZ	3	03ca90960a9c	
+< ??1CCountedAction@@QAE@XZ	40	8da02d7c8303	??3@YAXPAX@Z
+< ?CopyDirection@CCreatureAction_CastAssassinRush@@QBEXAAVC3DVector@@@Z	33	0c0d9421c6be	
+< ?GetPhysics@CThing@@QBEPAUCPhysicsMethods@@XZ	4	dddc5e68a47e	
+< ?Initialise@CCreatureAction_CastAssassinRush@@UAEXXZ	298	5c883c258a6e	?Initialise@CCombatActionBase@@UAEXXZ,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z,??_C@_0BA@GFGFBAJD@CTCAssassinRush?$AA@,??0CCharString@@QAE@PBDJ@Z,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z,??1CCharString@@QAE@XZ,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?SetFinalAction@CTCAssassinRush@@QAEXUCCountedAction@@@Z
+< ?SetFacingAnglesFromRHSet@CPhysicsMethods@@QAEXABVCRightHandedSet@@@Z	8	a9db62649090	
+---
+> ??0?$CCountedPointer@VCCreatureActionBase@@@@QAE@ABV0@@Z	25	8c89ebf47dde	
+> ??0C3DVector@@QAE@ABV0@@Z	25	79571e26f4e7	
+> ??0C3DVector@@QAE@MMM@Z	25	3e1ab915b20d	
+> ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z	46	8593b2415025	
+> ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ	53	6cc2c2750214	??3@YAXPAX@Z
+> ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ	5	1c6805f0905b	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+> ?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ	5	1c6805f0905b	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+> ?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ	5	1c6805f0905b	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
+> ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ	4	dddc5e68a47e	
+> ?GetType@CClass@@QBEKXZ	5	960429163300	
+> ?Initialise@CCreatureAction_CastAssassinRush@@UAEXXZ	298	5c883c258a6e	?Initialise@CCombatActionBase@@UAEXXZ,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z,??_C@_0BA@GFGFBAJD@CTCAssassinRush?$AA@,??0CCharString@@QAE@PBDJ@Z,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z,??1CCharString@@QAE@XZ,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,?SetFinalAction@CTCAssassinRush@@QAEXV?$CCountedPointer@VCCreatureActionBase@@@@@Z

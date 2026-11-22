@@ -334,3 +334,4 @@ date	account	item	kind	status	note
 2026-11-22	A	L129 GB unit	naming	done	agent NF263 landed 5 rows (batches/2026-11-22_landing_nf263); the rest of L129 + 0x009B0AC0 pass to NF265
 2026-11-22	A	AllowsCombinationAnims unit	naming	done	agent NF264 landed 24 rows (batches/2026-11-22_landing_nf264); q12743 / q12744 / q12659 + the four UBE binders pass to NF266
 2026-11-22	A	L129 DeleteTexture unit	naming	blocked	agent NF265: blocked on the CEngineLandscapeMemoryManager Delete trio family (pending/2026-11-22_nf265_handback/RULINGS.md); passes to NF267
+2026-11-22	A	UBE AllowsCombinationAnims binders / CastAssassinRush::Initialise	naming	done	agent NF266 landed 5 rows (batches/2026-11-22_landing_nf266); 0x0072CAA0 / q12744 / q12659 pass to NF268

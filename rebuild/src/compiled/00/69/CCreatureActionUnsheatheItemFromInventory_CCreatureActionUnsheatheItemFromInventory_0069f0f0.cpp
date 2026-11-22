@@ -77,7 +77,7 @@ class CCreatureActionBase { public:
     virtual void UpdateActionRunningTime();
     virtual bool IsDecapitatingAttack() const;
     virtual bool PreventSneaking() const;
-    virtual void FrameUpdate();
+    protected: virtual void FrameUpdate(); // NF266: slots 56-69 protected (Ego_r + FableWin MAE / MBE; engine/CCreatureActionBase.h)
     virtual bool IsUsingAnimationMovement() const;
     virtual bool IsUsingForcedMovement() const;
     virtual bool IsMovementUsingPhysics() const;
@@ -91,7 +91,7 @@ class CCreatureActionBase { public:
     virtual bool CanAnimationTransitionOut() const;
     virtual void OnAnimationLoaded();
     virtual bool WaitForMeshToLoad() const;
-    unsigned char nativeFields[0xa4]; // actual native state after its vptr; native size 0xA8
+    public: unsigned char nativeFields[0xa4]; // actual native state after its vptr; native size 0xA8
     CCreatureActionBase(CThingCreatureBase&,float,float,const CAnimationEntry&,const CSoundPair&,long,long); // 00693B30
 protected:
     // Ego_r.pdb 0x00518E00 / FableWin.pdb 0x01DB7950 protected static __fastcall (engine/CCreatureActionBase.h ANIMCTOR).

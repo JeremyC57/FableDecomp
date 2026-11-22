@@ -28048,7 +28048,6 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 ?GetScorpionBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCScorpionKingBattleDef@@@@@Z	008c5a50	008c4680
 ??$GetSubDef@UCLungeDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@UCLungeDef@@@@@Z	008cd0d0	008cc8e0
 ?SetLungedThisFrame@@YIXXZ	009054f0	008cc8e0
-?SetFinalAction@CTCAssassinRush@@QAEXUCCountedAction@@@Z	008ceae0	008cd470
 ?SetPTarget@CTCAssassinRush@@QAEXPAVCThing@@_N@Z	007a9ab0	008cd470
 ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	008e8e50	008e8ff0
 ?SetSpecificSamplePitch@CTCSoundPlayer@@QAEXKM@Z	0066afa0	008ef400
@@ -39559,3 +39558,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36a0	00bdd3e0
 ??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36e0	00bdd3e0
 ??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z	00bf9920	00bdfd60
+?SetFinalAction@CTCAssassinRush@@QAEXV?$CCountedPointer@VCCreatureActionBase@@@@@Z	008ceae0	008cd470

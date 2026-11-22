@@ -1,0 +1,5 @@
+entry	address	status	binders_respelled	note
+q12760	0x00693B30 / 0x00693DC0 / 0x0069F0F0 / 0x006A0D50	done	4	slot 66 of all four tables now binds ?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ (retail slot 66 of 0x01259D24 / 0x0125CCBC / 0x0125CEFC = 0x00692890 in every case, no derived override); in the same in-place edit the whole PDB-protected run, slots 56-69, moved to protected (decision 1); 0x00692890 2 -> 1 spellings (nf264 census: these four were the only UBE binders; no E8/E9 caller)
+q12743	0x0072CAA0 / 0x008CD470	open	1	0x008CD470 done, 0x0072CAA0 not started: 0x008CD470 ported onto the shared headers + the add-only Initialise declaration (first form, RELOCATION_MATCH, Initialise bytes unchanged); its SetFinalAction binder moved off the CCountedAction stand-in, so 0x008CEAE0 2 -> 1 (sole binder, callers.py); 0x0072CAA0 (and the 3-argument ctor declaration it needs) not started; 0x008CE040 / 0x008CE100 left queued (NOTES)
+q12744	0x00AD9770 / 0x00AD9980	open	0	not started yet
+q12659	0x00418DCA	open	0	not started yet

@@ -27,6 +27,11 @@ public:
  // z-targeting, level, final action), out of line in retail at 0x008CE040 (reloc_bindings witness 0x0072CAA0). Declaration only; no layout change.
  CCreatureAction_CastAssassinRush(CThingCreatureBase&,CThing&,bool,long,CCountedPointer<CCreatureActionBase>);
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_INITIALISE
+ // NF266 opt-in (2026-11-22, q12743, row 0x008CD470): Ego_r.pdb 0x009047C0 + FableWin.pdb 0x029F9410 ?Initialise@CCreatureAction_CastAssassinRush@@UAEXXZ
+ // (public virtual; retail vftable 0x01284254 slot 12 = 0x008CD470). Declaration only: overrides slot 12, no layout change.
+ virtual void Initialise();
+#endif
 private:
  bool Override;
  C3DVector Dir;
