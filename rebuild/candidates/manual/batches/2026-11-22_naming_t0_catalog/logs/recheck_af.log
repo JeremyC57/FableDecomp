@@ -1,0 +1,195 @@
+addr       parity           behav  name
+0041ca31   WARN STANDIN_LEAF ?CObservable_AddExclusiveObserver@@YIXPAUCObservable@@PAX1@Z (catalog CTCInventory::SetThingToAssign; names another function)
+0041ca31   MATCH            PASS   SetThingToAssign
+0041ca52   WARN STANDIN_LEAF ?CObservable_AddExclusiveObserver@@YIXPAUCObservable@@PAX1@Z (catalog CTCInventory::SetComponentSlotToSwap; names another function)
+0041ca52   MATCH            PASS   SetComponentSlotToSwap
+00581995   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventory::GetItemNameTableString; names another function)
+00581995   MATCH            PASS   GetItemNameTableString
+0058199b   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventory::GetItemIconString; names another function)
+0058199b   MATCH            PASS   GetItemIconString
+005819a1   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventory::GetItemDescriptionString; names another function)
+005819a1   MATCH            PASS   GetItemDescriptionString
+00581bfe   WARN STANDIN_LEAF ?GetContextSensitivePreferredItemButtonIndex@@YIJJ@Z (catalog CTCInventory::GetContextSensitivePreferredItemButtonIndex; free function lacks its class)
+00581bfe   RELOCATION_MATCH PASS   GetContextSensitivePreferredItemButtonIndex
+0041c965   WARN STANDIN_LEAF ?CObservable_AddExclusiveObserver@@YIXPAUCObservable@@HPAX@Z (catalog CTCInventoryAbilities::SetSpellToAssign; names another function)
+0041c965   MATCH            PASS   SetSpellToAssign
+0041c972   WARN STANDIN_LEAF ?CObservable_AddExclusiveObserver@@YIXPAUCObservable@@HPAX@Z (catalog CTCInventoryAbilities::SetSpellSlotToSwap; names another function)
+0041c972   MATCH            PASS   SetSpellSlotToSwap
+0041c994   WARN STANDIN_LEAF ?CObservable_AddExclusiveObserver@@YIXPAUCObservable@@PAX1@Z (catalog CTCInventoryAbilities::SetComponentSlotToSwap; names another function)
+0041c994   MATCH            PASS   SetComponentSlotToSwap
+005eedcf   WARN STANDIN_LEAF ?AddLearnedExpression@FableAddLearned_005eedcf@@QAEXJ@Z (catalog CTCInventoryAbilities::AddLearnedExpression; address-only name)
+005eedcf   RELOCATION_MATCH PASS   AddLearnedExpression
+005b34bb   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryClothing::GetClothingIconString; names another function)
+005b34bb   MATCH            PASS   GetClothingIconString
+005b34c1   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryClothing::GetClothingDescriptionString; names another function)
+005b34c1   MATCH            PASS   GetClothingDescriptionString
+005b34c7   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryClothing::GetClothingTitleString; names another function)
+005b34c7   MATCH            PASS   GetClothingTitleString
+0059b6bc   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryTrade::GetSellItemIconString; names another function)
+0059b6bc   MATCH            PASS   GetSellItemIconString
+0059b6c2   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryTrade::GetSellItemDescriptionString; names another function)
+0059b6c2   MATCH            PASS   GetSellItemDescriptionString
+0059b6c8   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryTrade::GetBuyItemIconString; names another function)
+0059b6c8   MATCH            PASS   GetBuyItemIconString
+0059b6ce   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryTrade::GetBuyItemDescriptionString; names another function)
+0059b6ce   MATCH            PASS   GetBuyItemDescriptionString
+0059b6d4   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryTrade::GetWantedItemIconString; names another function)
+0059b6d4   MATCH            PASS   GetWantedItemIconString
+0059b6da   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryTrade::GetWantedItemDescriptionString; names another function)
+0059b6da   MATCH            PASS   GetWantedItemDescriptionString
+005c2de1   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryWeapons::GetWeaponDescriptionString; names another function)
+005c2de1   MATCH            PASS   GetWeaponDescriptionString
+005c2de7   WARN STANDIN_LEAF ?AddChildPrimitive@@YIHXZ (catalog CTCInventoryWeapons::GetWeaponTitleString; names another function)
+005c2de7   MATCH            PASS   GetWeaponTitleString
+0091c080   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+  WARN leaf 'ClearReadyToAttackFlags' matches no symbol in 0091c080.obj; graded the largest function
+  WARN leaf 'ClearReadyToAttackFlags' matches no symbol in 0091c080.obj; graded the largest function
+0091c080   WARN STANDIN_LEAF ?Cleanup@CAIStateGroupWithBuilding_0091c080@@QAEXXZ (catalog CTCNymph::ClearReadyToAttackFlags; address-only name)
+0091c080   RELOCATION_MATCH PASS   ClearReadyToAttackFlags
+  WARN leaf 'IsOpen' matches no symbol in 00787c1b.obj; graded the largest function
+  WARN leaf 'IsOpen' matches no symbol in 00787c1b.obj; graded the largest function
+00787c1b   WARN RELOC_NAME: ?Method_0048da30@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ -> 0048da30 labelled 'CFadeInFadeOutBase::IsOpen'
+00787c1b   WARN STANDIN_LEAF ?GetTarget_00787c1b@CClass_00787c1b@@UAEPAVCBaseObject@@XZ (catalog CTCTrapBase::IsOpen; address-only name)
+00787c1b   RELOCATION_MATCH PASS   IsOpen
+007c76d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+  WARN leaf 'SetTurncoatOriginator' matches no symbol in 007c76d0.obj; graded the largest function
+  WARN leaf 'SetTurncoatOriginator' matches no symbol in 007c76d0.obj; graded the largest function
+007c76d0   WARN STANDIN_LEAF ?AssignTarget_007c76d0@CClass_007c76d0@@QAEXPAVCBaseObject@@@Z (catalog CTCTurncoat::SetTurncoatOriginator; address-only name)
+007c76d0   RELOCATION_MATCH PASS   SetTurncoatOriginator
+004e787c   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUS@@@Z (catalog CTextureMorphs::~CTextureMorphs; names another function)
+004e787c   RELOCATION_MATCH PASS   ~CTextureMorphs
+  WARN leaf '??1CThemeChannel@' matches no symbol in 006b5b80.obj; graded the largest function
+  WARN leaf '??1CThemeChannel@' matches no symbol in 006b5b80.obj; graded the largest function
+006b5b80   WARN STANDIN_LEAF ??1CBufferPairTriple_006b5b80@@QAE@XZ (catalog CIDrawEnvironmentParams::CThemeChannel::~CThemeChannel; address-only name)
+006b5b80   RELOCATION_MATCH PASS   ~CThemeChannel
+00662030   WARN STANDIN_LEAF ?GetFloatThrough_0xe0_0x78_00662030@_unattributed@@QAEMXZ (catalog CThingCreatureBase::GetStunnedHealthThreshold; address-only name)
+00662030   MATCH            PASS   GetStunnedHealthThreshold
+006a73f0   WARN STANDIN_LEAF _Cons_val_pair_morph_b@4 (catalog CThingFilter_IsIncapacitated::operator(); names another function)
+006a73f0   RELOCATION_MATCH PASS   operator()
+006a7400   WARN STANDIN_LEAF _Cons_val_pair_morph_c@4 (catalog CThingFilter_IsLyingDown::operator(); names another function)
+006a7400   RELOCATION_MATCH PASS   operator()
+00406770   WARN STANDIN_LEAF ?$E2@@YGXPAX@Z (catalog CUserProfileManager::DeleteTempSavesForProfile; names another function)
+00406770   MATCH            PASS   DeleteTempSavesForProfile
+004067b0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+004067b0   WARN STANDIN_LEAF ?CEngineInternalPrimitiveBase_AddChildPrimitive@@YIKPAVCEngineInternalPrimitiveBase@@PAX@Z (catalog CUserProfileManager::GetMaxSaveSlots; names another function)
+004067b0   MATCH            PASS   GetMaxSaveSlots
+004e34ec   WARN RELOC_NAME: ?AutoTinyFinishRead_004dd79f@@YIXPAX0PAD@Z -> 004dd79f labelled 'std::__destroy_aux<std::pair<long, CIntelligentPointer<CThing>> *>'
+004e34ec   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<long,CIntelligentPointer<CThing>>>::~CVectorMap; names another function)
+004e34ec   RELOCATION_MATCH PASS   ~CVectorMap
+004ebace   WARN RELOC_NAME: ?CGuiVarTransferBool_Sink_004eb9a6@@YIXPAXHE@Z -> 004eb9a6 labelled 'std::sort<std::pair<CCharString, CTCBase::CRegisteredTCInfo> *, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>>'
+004ebace   WARN STANDIN_LEAF ?CGuiVarTransferBool_TransferToGui@@YIXPAVCGuiVarTransferBool@@@Z (catalog CVectorMap<CCharString,CTCBase::CRegisteredTCInfo,CKeyPairCompareLess<CCharString,CTCBase::CRegisteredTCInfo>>::Sort; names another function)
+004ebace   RELOCATION_MATCH PASS   Sort
+00ac7990   WARN STANDIN_LEAF ?Contains@CPairList_00ac7990@@QAE_NPAX@Z (catalog QuadricOptimiserInternals::CVertexPairContraction::HasVertex; address-only name)
+00ac7990   MATCH            PASS   HasVertex
+006dba50   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+006dba50   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+006dba50   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006dba50   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+006dba50   RELOCATION_MATCH PASS   less<long>>
+00431277   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<unsigned long>>' matches no symbol in 00431277.obj; graded the largest function
+  WARN leaf 'less<unsigned long>>' matches no symbol in 00431277.obj; graded the largest function
+00431277   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+00431277   WARN STANDIN_LEAF ?WriteState_00431277@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<unsigned long,unsigned long,std::less<unsigned long>>; address-only name)
+00431277   RELOCATION_MATCH PASS   less<unsigned long>>
+0045da9a   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<ETargetingType>>' matches no symbol in 0045da9a.obj; graded the largest function
+  WARN leaf 'less<ETargetingType>>' matches no symbol in 0045da9a.obj; graded the largest function
+0045da9a   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+0045da9a   WARN STANDIN_LEAF ?WriteState_0045da9a@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,ETargetingType,std::less<ETargetingType>>; address-only name)
+0045da9a   RELOCATION_MATCH PASS   less<ETargetingType>>
+0045f31f   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EOpinion>>' matches no symbol in 0045f31f.obj; graded the largest function
+  WARN leaf 'less<EOpinion>>' matches no symbol in 0045f31f.obj; graded the largest function
+0045f31f   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+0045f31f   WARN STANDIN_LEAF ?WriteState_0045f31f@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,EOpinion,std::less<EOpinion>>; address-only name)
+0045f31f   RELOCATION_MATCH PASS   less<EOpinion>>
+00461695   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EObjectAugmentationType>>' matches no symbol in 00461695.obj; graded the largest function
+  WARN leaf 'less<EObjectAugmentationType>>' matches no symbol in 00461695.obj; graded the largest function
+00461695   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+00461695   WARN STANDIN_LEAF ?WriteState_00461695@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,EObjectAugmentationType,std::less<EObjectAugmentationType>>; address-only name)
+00461695   RELOCATION_MATCH PASS   less<EObjectAugmentationType>>
+004618c9   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EDamageAttribute>>' matches no symbol in 004618c9.obj; graded the largest function
+  WARN leaf 'less<EDamageAttribute>>' matches no symbol in 004618c9.obj; graded the largest function
+004618c9   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004618c9   WARN STANDIN_LEAF ?WriteState_004618c9@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,EDamageAttribute,std::less<EDamageAttribute>>; address-only name)
+004618c9   RELOCATION_MATCH PASS   less<EDamageAttribute>>
+00463cdb   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EHeroTrainableStatType>>' matches no symbol in 00463cdb.obj; graded the largest function
+  WARN leaf 'less<EHeroTrainableStatType>>' matches no symbol in 00463cdb.obj; graded the largest function
+00463cdb   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+00463cdb   WARN STANDIN_LEAF ?WriteState_00463cdb@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,EHeroTrainableStatType,std::less<EHeroTrainableStatType>>; address-only name)
+00463cdb   RELOCATION_MATCH PASS   less<EHeroTrainableStatType>>
+004645e0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EWorldMapNameGraphic>>' matches no symbol in 004645e0.obj; graded the largest function
+  WARN leaf 'less<EWorldMapNameGraphic>>' matches no symbol in 004645e0.obj; graded the largest function
+004645e0   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004645e0   WARN STANDIN_LEAF ?WriteState_004645e0@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<unsigned long,EWorldMapNameGraphic,std::less<EWorldMapNameGraphic>>; address-only name)
+004645e0   RELOCATION_MATCH PASS   less<EWorldMapNameGraphic>>
+00466848   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<EHeroTrainableStatType>>' matches no symbol in 00466848.obj; graded the largest function
+  WARN leaf 'less<EHeroTrainableStatType>>' matches no symbol in 00466848.obj; graded the largest function
+00466848   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+00466848   WARN STANDIN_LEAF ?WriteState_00466848@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,EHeroTrainableStatType,std::less<EHeroTrainableStatType>>; address-only name)
+00466848   RELOCATION_MATCH PASS   less<EHeroTrainableStatType>>
+0046fa57   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<ECombatCreatureType>>' matches no symbol in 0046fa57.obj; graded the largest function
+  WARN leaf 'less<ECombatCreatureType>>' matches no symbol in 0046fa57.obj; graded the largest function
+0046fa57   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+0046fa57   WARN STANDIN_LEAF ?WriteState_0046fa57@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<long,ECombatCreatureType,std::less<ECombatCreatureType>>; address-only name)
+0046fa57   RELOCATION_MATCH PASS   less<ECombatCreatureType>>
+004e507f   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+  WARN leaf 'less<long>>' matches no symbol in 004e507f.obj; graded the largest function
+  WARN leaf 'less<long>>' matches no symbol in 004e507f.obj; graded the largest function
+004e507f   WARN RELOC_NAME: ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+004e507f   WARN STANDIN_LEAF ?WriteState_004e507f@@YIXPAVCDataOutputStream@@PAUSTree@@@Z (catalog _global::GFSerialiseMapBinaryOut<float,long,std::less<long>>; address-only name)
+004e507f   RELOCATION_MATCH PASS   less<long>>
+
+WINS: 45
+  0041ca31 MATCH CTCInventory::AddExclusiveObserver
+  0041ca52 MATCH CTCInventory::AddExclusiveObserver
+  00581995 MATCH CTCInventory::AddChildPrimitive
+  0058199b MATCH CTCInventory::AddChildPrimitive
+  005819a1 MATCH CTCInventory::AddChildPrimitive
+  00581bfe RELOCATION_MATCH CTCInventory::GetContextSensitivePreferredItemButtonIndex
+  0041c965 MATCH CTCInventoryAbilities::AddExclusiveObserver
+  0041c972 MATCH CTCInventoryAbilities::AddExclusiveObserver
+  0041c994 MATCH CTCInventoryAbilities::AddExclusiveObserver
+  005eedcf RELOCATION_MATCH CTCInventoryAbilities::AddLearnedExpression
+  005b34bb MATCH CTCInventoryClothing::AddChildPrimitive
+  005b34c1 MATCH CTCInventoryClothing::AddChildPrimitive
+  005b34c7 MATCH CTCInventoryClothing::AddChildPrimitive
+  0059b6bc MATCH CTCInventoryTrade::AddChildPrimitive
+  0059b6c2 MATCH CTCInventoryTrade::AddChildPrimitive
+  0059b6c8 MATCH CTCInventoryTrade::AddChildPrimitive
+  0059b6ce MATCH CTCInventoryTrade::AddChildPrimitive
+  0059b6d4 MATCH CTCInventoryTrade::AddChildPrimitive
+  0059b6da MATCH CTCInventoryTrade::AddChildPrimitive
+  005c2de1 MATCH CTCInventoryWeapons::AddChildPrimitive
+  005c2de7 MATCH CTCInventoryWeapons::AddChildPrimitive
+  0091c080 RELOCATION_MATCH CTCNymph::ClearReadyToAttackFlags
+  00787c1b RELOCATION_MATCH CTCTrapBase::IsOpen
+  007c76d0 RELOCATION_MATCH CTCTurncoat::SetTurncoatOriginator
+  004e787c RELOCATION_MATCH CTextureMorphs::OnReadFinished
+  006b5b80 RELOCATION_MATCH CIDrawEnvironmentParams::CThemeChannel::??1CThemeChannel@
+  00662030 MATCH CThingCreatureBase::?GetFloatThrough_0xe0_0x78_00662030@_unattributed@@
+  006a73f0 RELOCATION_MATCH CThingFilter_IsIncapacitated::_Cons_val_pair_morph_b@4
+  006a7400 RELOCATION_MATCH CThingFilter_IsLyingDown::_Cons_val_pair_morph_c@4
+  00406770 MATCH CUserProfileManager::$E2
+  004067b0 MATCH CUserProfileManager::AddChildPrimitive
+  004e34ec RELOCATION_MATCH CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<long,CIntelligentPointer<CThing>>>::OnReadFinished
+  004ebace RELOCATION_MATCH CVectorMap<CCharString,CTCBase::CRegisteredTCInfo,CKeyPairCompareLess<CCharString,CTCBase::CRegisteredTCInfo>>::TransferToGui
+  00ac7990 MATCH QuadricOptimiserInternals::CVertexPairContraction::Contains
+  006dba50 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  00431277 RELOCATION_MATCH _global::less<unsigned long>>
+  0045da9a RELOCATION_MATCH _global::less<ETargetingType>>
+  0045f31f RELOCATION_MATCH _global::less<EOpinion>>
+  00461695 RELOCATION_MATCH _global::less<EObjectAugmentationType>>
+  004618c9 RELOCATION_MATCH _global::less<EDamageAttribute>>
+  00463cdb RELOCATION_MATCH _global::less<EHeroTrainableStatType>>
+  004645e0 RELOCATION_MATCH _global::less<EWorldMapNameGraphic>>
+  00466848 RELOCATION_MATCH _global::less<EHeroTrainableStatType>>
+  0046fa57 RELOCATION_MATCH _global::less<ECombatCreatureType>>
+  004e507f RELOCATION_MATCH _global::less<long>>

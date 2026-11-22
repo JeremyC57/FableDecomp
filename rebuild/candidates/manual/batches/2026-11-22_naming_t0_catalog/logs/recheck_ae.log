@@ -1,0 +1,202 @@
+addr       parity           behav  name
+007df380   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+007df380   WARN STANDIN_LEAF ?DestroyMembers@CCreatureAction_007df380@@QAEXXZ (catalog CCreatureAction_UseWallMount::~CCreatureAction_UseWallMount; address-only name)
+007df380   RELOCATION_MATCH PASS   ~CCreatureAction_UseWallMount
+009be380   MATCH            PASS   CalcPresentationIntervalTime
+  WARN leaf 'UpdateMarkers' matches no symbol in 00643e9a.obj; graded the largest function
+  WARN leaf 'UpdateMarkers' matches no symbol in 00643e9a.obj; graded the largest function
+00643e9a   WARN RELOC_NAME: ?Method_0082b7c0@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ -> 0082b7c0 labelled 'CMiniMapDisplay::UpdateMarkers'
+00643e9a   WARN STANDIN_LEAF ?GetTarget_00643e9a@CClass_00643e9a@@UAEPAVCBaseObject@@XZ (catalog NPlayerGui::CDrawMiniMap::UpdateMarkers; address-only name)
+00643e9a   RELOCATION_MATCH PASS   UpdateMarkers
+0064639c   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0064639c   WARN RELOC_NAME: ?find@@YI?AUCThingListIterator@@U1@0ABQAVCThing@@@Z -> 00655cdc labelled '_unattributed::CVector_00655cdc'
+0064639c   WARN STANDIN_LEAF ?RemoveThing@CPlayerGuiThingList_0064639c@@QAEXPAVCThingCreatureBase@@@Z (catalog NPlayerGui::CDrawPerceivers::RemovePerceivingThing; address-only name)
+0064639c   RELOCATION_MATCH PASS   RemovePerceivingThing
+00708a30   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00708a30   WARN SHARED_HEADER_AVAILABLE C3DAnimationInterpolator (engine/C3DAnimationInterpolator.h)
+  WARN leaf '??1CEnginePrimitiveAnimatingMesh@' matches no symbol in 00708a30.obj; graded the largest function
+  WARN leaf '??1CEnginePrimitiveAnimatingMesh@' matches no symbol in 00708a30.obj; graded the largest function
+00708a30   WARN STANDIN_LEAF ??1CAnimationInterpolatorOwner_00708a30@@QAE@XZ (catalog CEnginePrimitiveAnimatingMesh::~CEnginePrimitiveAnimatingMesh; address-only name)
+00708a30   RELOCATION_MATCH PASS   ~CEnginePrimitiveAnimatingMesh
+00810f10   WARN STANDIN_LEAF ?CanBeHitByMeleeStrike@@YI_NPAUCTCShotDefinitionBase@@@Z (catalog NEntityEvents::CEventHitBase::IsDecapitate; names another function)
+00810f10   MATCH            PASS   IsDecapitate
+0081e4f0   WARN RELOC_ALIAS: __snprintf -> 00bfeb96 is the import thunk 'MSVCR71.DLL::_snprintf'
+0081e4f0   WARN STANDIN_LEAF ?CopyFrom@CRigidBodyFileRecord_0081e4f0@@QAEXABU1@@Z (catalog CFileFormatBrush::ConvertFromOld; address-only name)
+0081e4f0   RELOCATION_MATCH PASS   ConvertFromOld
+009f16e0   WARN STANDIN_LEAF ?DrawGetEnvironment@@YIHPBE@Z (catalog CGameEventPackage::GetNoEvents; names another function)
+009f16e0   MATCH            PASS   GetNoEvents
+00445b90   WARN STANDIN_LEAF ?CTCShotDefinitionBase_CanBeHitByMeleeStrike@@YI_NPBUCTCShotDefinitionBase@@@Z (catalog CGamePlayerInterface::IsToggleSpells; names another function)
+00445b90   MATCH            PASS   IsToggleSpells
+006bb790   WARN SHARED_HEADER_AVAILABLE CGameTimeManager (engine/CGameTimeManager.h)
+  WARN leaf 'IsNightSounds' matches no symbol in 006bb790.obj; graded the largest function
+  WARN leaf 'IsNightSounds' matches no symbol in 006bb790.obj; graded the largest function
+006bb790   WARN STANDIN_LEAF ?IsNotDay_006bb790@CGameTimeManager@@QAE_NXZ (catalog CGameTimeManager::IsNightSounds; address-only name)
+006bb790   RELOCATION_MATCH PASS   IsNightSounds
+009fe550   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+009fe550   WARN SHARED_HEADER_AVAILABLE CManagedTexture (engine/CManagedTexture.h)
+009fe550   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame (engine/CGraphicInfoFrame.h)
+009fe550   RELOCATION_MATCH PASS   InitialiseFrame
+004517a4   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+004517a4   WARN RELOC_NAME: ?notify@CActiveFile@@QAEXXZ -> 00450edf labelled '_global::RbTree_Clear_00450edf'
+004517a4   WARN STANDIN_LEAF ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z (catalog CHeroAbilityStatWeight::~CHeroAbilityStatWeight; names another function)
+004517a4   RELOCATION_MATCH PASS   ~CHeroAbilityStatWeight
+00f14250   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00f14250   WARN STANDIN_LEAF ?DrawGetEnvironment@CWorld@@QAEPAXXZ (catalog CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>::GetMasterData; names another function)
+00f14250   MATCH            PASS   GetMasterData
+  WARN leaf 'GetEventNames' matches no symbol in 006f9b20.obj; graded the largest function
+  WARN leaf 'GetEventNames' matches no symbol in 006f9b20.obj; graded the largest function
+006f9b20   WARN RELOC_NAME: ?FirstPass@CRenderHelper_006f9b20@@QAEXPAX0@Z -> 006f9240 labelled 'CAnimationEventQuery_006f9240::GetEmbeddedEventNames'
+006f9b20   WARN RELOC_NAME: ?SecondPass@CRenderHelper_006f9b20@@QAEXPAX0@Z -> 006f9ac0 labelled 'NAnimationEvents::CManager::GetExtraEventNames'
+006f9b20   WARN STANDIN_LEAF ?Render@CRenderHelper_006f9b20@@QAEXPAX0@Z (catalog NAnimationEvents::CManager::GetEventNames; address-only name)
+006f9b20   RELOCATION_MATCH PASS   GetEventNames
+0082c060   WARN RELOC_NAME: _ForwardTarget_0082be60 -> 0082be60 labelled 'CMiniMapDisplay::DrawMap'
+0082c060   WARN STANDIN_LEAF _Forward (catalog CMiniMapDisplay::DrawPreparePrimitivesForEngine; names another function)
+0082c060   RELOCATION_MATCH PASS   DrawPreparePrimitivesForEngine
+006bd830   WARN SHARED_HEADER_AVAILABLE CTCPhysicsNavigator (engine/CTCPhysicsNavigator.h)
+006bd830   WARN STANDIN_LEAF ?CTCPhysicsNavigator_EnableNavigator@@YIXPAUCTCPhysicsNavigator@@HD@Z (catalog CMusicManager::PauseMusic; names another function)
+006bd830   MATCH            PASS   PauseMusic
+006bd870   WARN STANDIN_LEAF ?ResetMusicEntriesOffsets@CMusicManager_006bd870@@QAEXXZ (catalog CMusicManager::ResetMusicEntriesOffsets; address-only name)
+006bd870   MATCH            PASS   ResetMusicEntriesOffsets
+0047955b   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+0047955b   WARN STANDIN_LEAF ?OnDie@@YIXPAVCTCInventoryItem@@@Z (catalog COpinionDeedReactionDef::~COpinionDeedReactionDef; names another function)
+0047955b   RELOCATION_MATCH PASS   ~COpinionDeedReactionDef
+006815f0   WARN STANDIN_LEAF ??0SRecord_006815f0@@QAE@XZ (catalog COpinionTransientOffset::COpinionTransientOffset; address-only name)
+006815f0   MATCH            PASS   COpinionTransientOffset
+004e794c   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUS@@@Z (catalog CParticleMorphs::~CParticleMorphs; names another function)
+004e794c   RELOCATION_MATCH PASS   ~CParticleMorphs
+00ae3330   WARN SHARED_HEADER_AVAILABLE C3DGroup2 (engine/C3DGroup2.h)
+00ae3330   WARN STANDIN_LEAF ?ReserveBoth@CVectorPairOwner_00ae3330@@QAEXK@Z (catalog CParticleProgram::ReserveGroups; address-only name)
+00ae3330   RELOCATION_MATCH PASS   ReserveGroups
+004ea2bb   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUS@@@Z (catalog CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::~CPersistTraits; names another function)
+004ea2bb   RELOCATION_MATCH PASS   ~CPersistTraits
+00e1e040   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00e1e040   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00e1e040   WARN STANDIN_LEAF ?TransferBinaryIn_00e1e040@@YGXPAVCMemoryDataInputStream@@PAJ@Z (catalog CPersistTraits<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferBinaryIn; address-only name)
+00e1e040   RELOCATION_MATCH PASS   TransferBinaryIn
+00e38eb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00e38eb0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00e38eb0   WARN STANDIN_LEAF ?TransferBinaryIn_00e38eb0@@YGXPAVCMemoryDataInputStream@@PAJ@Z (catalog CPersistTraits<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>::TransferBinaryIn; address-only name)
+00e38eb0   RELOCATION_MATCH PASS   TransferBinaryIn
+  WARN leaf '??0CPlane@' matches no symbol in 0063ec80.obj; graded the largest function
+  WARN leaf '??0CPlane@' matches no symbol in 0063ec80.obj; graded the largest function
+0063ec80   WARN STANDIN_LEAF ?M@C0063ec80@@QAEPAU1@XZ (catalog CPlane::CPlane; generic placeholder)
+0063ec80   MATCH            PASS   CPlane
+00633400   WARN GENERIC_STRUCT module=CPlayer (use engine/CPlayer.h)
+  WARN leaf 'InitModeLookThroughWindow' matches no symbol in 00633400.obj; graded the largest function
+  WARN leaf 'InitModeLookThroughWindow' matches no symbol in 00633400.obj; graded the largest function
+00633400   WARN STANDIN_LEAF ?Hook@T@@QAEXHH@Z (catalog CPlayer::InitModeLookThroughWindow; generic placeholder)
+00633400   MATCH            PASS   InitModeLookThroughWindow
+00437940   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+  WARN leaf 'CEntry>_const&>' matches no symbol in 00437940.obj; graded the largest function
+  WARN leaf 'CEntry>_const&>' matches no symbol in 00437940.obj; graded the largest function
+00437940   RELOCATION_MATCH PASS   AddDamageChange
+00a0d3b0   WARN STANDIN_LEAF ?DrawGetEnvironment@@YIHPBE@Z (catalog CProcessedInput::GetPriority; names another function)
+00a0d3b0   MATCH            PASS   GetPriority
+  WARN leaf 'IsActiveQuestInRegion' matches no symbol in 004afdd0.obj; graded the largest function
+  WARN leaf 'IsActiveQuestInRegion' matches no symbol in 004afdd0.obj; graded the largest function
+004afdd0   WARN STANDIN_LEAF ?ContainsMember@CGroupList_004afdd0@@QAE_NUSMemberEntry_004afdd0@@@Z (catalog CQuestManager::IsActiveQuestInRegion; address-only name)
+004afdd0   RELOCATION_MATCH PASS   IsActiveQuestInRegion
+006bc4a0   WARN RELOC_NAME: ?InsertGrow@CRetailVector_006bc4a0@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+006bc4a0   WARN STANDIN_LEAF ?push_back@CRetailVector_006bc4a0@@QAEXJ@Z (catalog CRegion::AddMap; address-only name)
+006bc4a0   RELOCATION_MATCH PASS   AddMap
+00df2090   WARN STANDIN_LEAF ?Init@CScript_00df2090@@QAEX_N@Z (catalog NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::FollowHero; address-only name)
+00df2090   MATCH            PASS   FollowHero
+00a5d4f0   WARN STANDIN_LEAF ?AddExclusiveObserver@CObservable@@QAEXPAX@Z (catalog CShaderResource::SetVertexFormat; names another function)
+00a5d4f0   MATCH            PASS   SetVertexFormat
+  WARN leaf '??0CShopItem@' matches no symbol in 004d4033.obj; graded the largest function
+  WARN leaf '??0CShopItem@' matches no symbol in 004d4033.obj; graded the largest function
+004d4033   WARN STANDIN_LEAF ??0CFloatRecord_004d4033@@QAE@XZ (catalog CShopItem::CShopItem; address-only name)
+004d4033   MATCH            PASS   CShopItem
+004e78e4   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUS@@@Z (catalog CSkeletalMorphs::~CSkeletalMorphs; names another function)
+004e78e4   RELOCATION_MATCH PASS   ~CSkeletalMorphs
+008709f0   WARN STANDIN_LEAF ?Erase@?$SmallVector@UEntry_008709f0@@@@QAEPAUEntry_008709f0@@PAU2@@Z (catalog CSmallVector<CThingComponentSet::CEntry,8>::erase; names another function)
+008709f0   RELOCATION_MATCH PASS   erase
+  WARN leaf 'ErrorCallback' matches no symbol in 0043368c.obj; graded the largest function
+  WARN leaf 'ErrorCallback' matches no symbol in 0043368c.obj; graded the largest function
+0043368c   WARN STANDIN_LEAF ?M@C0043368c@@QAEXXZ (catalog CStartupDefinitionManager::ErrorCallback; generic placeholder)
+0043368c   MATCH            PASS   ErrorCallback
+009a5000   WARN STANDIN_LEAF ?GetCanItemBeQuickAssigned@@YIDPAUCTCInventoryBase@@@Z (catalog CSystemManager::IsMouseButton4Pressed; names another function)
+009a5000   MATCH            PASS   IsMouseButton4Pressed
+0072f0e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsNavigator (engine/CTCPhysicsNavigator.h)
+0072f0e0   WARN STANDIN_LEAF ?CTCPhysicsNavigator_EnableNavigator@@YIXPAUCTCPhysicsNavigator@@PAXE@Z (catalog CTCDummyVillager::SetRespawnable; names another function)
+0072f0e0   MATCH            PASS   SetRespawnable
+0085ab00   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+  WARN leaf 'SetAttacker' matches no symbol in 0085ab00.obj; graded the largest function
+  WARN leaf 'SetAttacker' matches no symbol in 0085ab00.obj; graded the largest function
+0085ab00   WARN STANDIN_LEAF ?AssignTarget_0085ab00@CClass_0085ab00@@QAEXPAVCBaseObject@@@Z (catalog CTCFlourishTarget::SetAttacker; address-only name)
+0085ab00   RELOCATION_MATCH PASS   SetAttacker
+0074d0d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+  WARN leaf 'SetGenerator' matches no symbol in 0074d0d0.obj; graded the largest function
+  WARN leaf 'SetGenerator' matches no symbol in 0074d0d0.obj; graded the largest function
+0074d0d0   WARN STANDIN_LEAF ?AssignTarget_0074d0d0@CClass_0074d0d0@@QAEXPAVCBaseObject@@@Z (catalog CTCGeneratedCreature::SetGenerator; address-only name)
+0074d0d0   RELOCATION_MATCH PASS   SetGenerator
+  WARN leaf 'IsFriendly' matches no symbol in 008fa2f0.obj; graded the largest function
+  WARN leaf 'IsFriendly' matches no symbol in 008fa2f0.obj; graded the largest function
+008fa2f0   WARN RELOC_NAME: ?Method@CClass_008fa2f0@@QAEXJ@Z -> 008fa280 labelled 'CTCGift::IsGiftOfType'
+008fa2f0   WARN STANDIN_LEAF ?CallWith_008fa2f0@CClass_008fa2f0@@QAEXXZ (catalog CTCGift::IsFriendly; address-only name)
+008fa2f0   RELOCATION_MATCH PASS   IsFriendly
+  WARN leaf 'IsOffensive' matches no symbol in 008fa300.obj; graded the largest function
+  WARN leaf 'IsOffensive' matches no symbol in 008fa300.obj; graded the largest function
+008fa300   WARN RELOC_NAME: ?Method@CClass_008fa300@@QAEXJ@Z -> 008fa280 labelled 'CTCGift::IsGiftOfType'
+008fa300   WARN STANDIN_LEAF ?CallWith_008fa300@CClass_008fa300@@QAEXXZ (catalog CTCGift::IsOffensive; address-only name)
+008fa300   RELOCATION_MATCH PASS   IsOffensive
+004ab270   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+  WARN leaf 'SetTeleportParticle' matches no symbol in 004ab270.obj; graded the largest function
+  WARN leaf 'SetTeleportParticle' matches no symbol in 004ab270.obj; graded the largest function
+004ab270   WARN STANDIN_LEAF ?AssignTarget_004ab270@CClass_004ab270@@QAEXPAVCBaseObject@@@Z (catalog CTCHero::SetTeleportParticle; address-only name)
+004ab270   RELOCATION_MATCH PASS   SetTeleportParticle
+  WARN leaf 'PlayerPutWeaponAway' matches no symbol in 006c6010.obj; graded the largest function
+  WARN leaf 'PlayerPutWeaponAway' matches no symbol in 006c6010.obj; graded the largest function
+006c6010   WARN RELOC_NAME: ?DestroyDeed@CDeedOwner_006c6010@@QAEXJ@Z -> 006c59e0 labelled 'CTCHeroOpinionDeedLog::RemoveDeed'
+006c6010   WARN STANDIN_LEAF ?ClearDeed@CDeedOwner_006c6010@@QAEXXZ (catalog CTCHeroOpinionDeedLog::PlayerPutWeaponAway; address-only name)
+006c6010   RELOCATION_MATCH PASS   PlayerPutWeaponAway
+00815870   WARN RELOC_NAME: _ForwardTarget_008153c0 -> 008153c0 labelled 'CTCHitLocations::GetPCombatFirstHitLocationPosInside'
+00815870   WARN STANDIN_LEAF _Forward (catalog CTCHitLocations::GetPCombatFirstHitLocationPosInside; names another function)
+00815870   RELOCATION_MATCH PASS   GetPCombatFirstHitLocationPosInside
+
+WINS: 45
+  007df380 RELOCATION_MATCH CCreatureAction_UseWallMount::DestroyMembers
+  009be380 MATCH CDisplayManager::?CalcPresentationIntervalTime@CDisplayManager@@AAEMJJ@Z
+  00643e9a RELOCATION_MATCH NPlayerGui::CDrawMiniMap::UpdateMarkers
+  0064639c RELOCATION_MATCH NPlayerGui::CDrawPerceivers::RemoveThing
+  00708a30 RELOCATION_MATCH CEnginePrimitiveAnimatingMesh::??1CEnginePrimitiveAnimatingMesh@
+  00810f10 MATCH NEntityEvents::CEventHitBase::CanBeHitByMeleeStrike
+  0081e4f0 RELOCATION_MATCH CFileFormatBrush::CopyFrom
+  009f16e0 MATCH CGameEventPackage::DrawGetEnvironment
+  00445b90 MATCH CGamePlayerInterface::CanBeHitByMeleeStrike
+  006bb790 RELOCATION_MATCH CGameTimeManager::IsNightSounds
+  009fe550 RELOCATION_MATCH CGraphicInfoFrame::InitialiseFrame
+  004517a4 RELOCATION_MATCH CHeroAbilityStatWeight::OnReadFinished
+  00f14250 MATCH CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>::DrawGetEnvironment
+  006f9b20 RELOCATION_MATCH NAnimationEvents::CManager::GetEventNames
+  0082c060 RELOCATION_MATCH CMiniMapDisplay::_Forward
+  006bd830 MATCH CMusicManager::EnableNavigator
+  006bd870 MATCH CMusicManager::ResetMusicEntriesOffsets
+  0047955b RELOCATION_MATCH COpinionDeedReactionDef::OnDie
+  006815f0 MATCH COpinionTransientOffset::??0SRecord_006815f0
+  004e794c RELOCATION_MATCH CParticleMorphs::OnReadFinished
+  00ae3330 RELOCATION_MATCH CParticleProgram::ReserveBoth
+  004ea2bb RELOCATION_MATCH CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::OnReadFinished
+  00e1e040 RELOCATION_MATCH CPersistTraits<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>::TransferBinaryIn
+  00e38eb0 RELOCATION_MATCH CPersistTraits<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>::TransferBinaryIn
+  0063ec80 MATCH CPlane::??0CPlane@
+  00633400 MATCH CPlayer::InitModeLookThroughWindow
+  00437940 RELOCATION_MATCH CPlayerGui::CEntry>_const&>
+  00a0d3b0 MATCH CProcessedInput::DrawGetEnvironment
+  004afdd0 RELOCATION_MATCH CQuestManager::IsActiveQuestInRegion
+  006bc4a0 RELOCATION_MATCH CRegion::push_back
+  00df2090 MATCH NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Init
+  00a5d4f0 MATCH CShaderResource::AddExclusiveObserver
+  004d4033 MATCH CShopItem::??0CShopItem@
+  004e78e4 RELOCATION_MATCH CSkeletalMorphs::OnReadFinished
+  008709f0 RELOCATION_MATCH CSmallVector<CThingComponentSet::CEntry,8>::Erase
+  0043368c MATCH CStartupDefinitionManager::ErrorCallback
+  009a5000 MATCH CSystemManager::GetCanItemBeQuickAssigned
+  0072f0e0 MATCH CTCDummyVillager::EnableNavigator
+  0085ab00 RELOCATION_MATCH CTCFlourishTarget::SetAttacker
+  0074d0d0 RELOCATION_MATCH CTCGeneratedCreature::SetGenerator
+  008fa2f0 RELOCATION_MATCH CTCGift::IsFriendly
+  008fa300 RELOCATION_MATCH CTCGift::IsOffensive
+  004ab270 RELOCATION_MATCH CTCHero::SetTeleportParticle
+  006c6010 RELOCATION_MATCH CTCHeroOpinionDeedLog::PlayerPutWeaponAway
+  00815870 RELOCATION_MATCH CTCHitLocations::_Forward

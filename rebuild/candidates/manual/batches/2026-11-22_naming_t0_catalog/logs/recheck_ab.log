@@ -1,0 +1,175 @@
+addr       parity           behav  name
+00444ad0   WARN RELOC_NAME: ?Destroy_00443a60@@YIXPAX@Z -> 00443a60 labelled 'CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre>::DeleteData'
+00444ad0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443a60@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre>::Reset; address-only name)
+00444ad0   RELOCATION_MATCH PASS   Reset
+00444bb0   WARN RELOC_NAME: ?Destroy_00443ac0@@YIXPAX@Z -> 00443ac0 labelled 'Catch@0047e8cc'
+00444bb0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443ac0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawSpiritScores>::Reset; address-only name)
+00444bb0   RELOCATION_MATCH PASS   Reset
+00444c20   WARN RELOC_NAME: ?Destroy_00443b00@@YIXPAX@Z -> 00443b00 labelled '_global::DeleteObject_00443b00'
+00444c20   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443b00@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawSpiritTargetingCursor>::Reset; address-only name)
+00444c20   RELOCATION_MATCH PASS   Reset
+00444c90   WARN RELOC_NAME: ?Destroy_00443b20@@YIXPAX@Z -> 00443b20 labelled 'Catch@0047e8cc'
+00444c90   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443b20@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawMouseCursor>::Reset; address-only name)
+00444c90   RELOCATION_MATCH PASS   Reset
+00444d00   WARN RELOC_NAME: ?Destroy_00443b60@@YIXPAX@Z -> 00443b60 labelled 'CCountedPointer<NPlayerGui::CDrawNPCName>::DeleteData'
+00444d00   WARN STANDIN_LEAF ?Reset@CCountedPointer_00443b60@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawNPCName>::Reset; address-only name)
+00444d00   RELOCATION_MATCH PASS   Reset
+00445120   WARN RELOC_NAME: ?Destroy_00444d70@@YIXPAX@Z -> 00444d70 labelled '_global::DeleteObject_00444d70'
+00445120   WARN STANDIN_LEAF ?Reset@CCountedPointer_00444d70@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDraw2DText>::Reset; address-only name)
+00445120   RELOCATION_MATCH PASS   Reset
+00445190   WARN RELOC_NAME: ?Destroy_00444d90@@YIXPAX@Z -> 00444d90 labelled 'CCountedPointer<NPlayerGui::CStatBar>::DeleteData'
+00445190   WARN STANDIN_LEAF ?Reset@CCountedPointer_00444d90@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CStatBar>::Reset; address-only name)
+00445190   RELOCATION_MATCH PASS   Reset
+00445200   WARN RELOC_NAME: ?Destroy_00444dd0@@YIXPAX@Z -> 00444dd0 labelled 'CCountedPointer<NPlayerGui::CCrimeStatBar>::DeleteData'
+00445200   WARN STANDIN_LEAF ?Reset@CCountedPointer_00444dd0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CCrimeStatBar>::Reset; address-only name)
+00445200   RELOCATION_MATCH PASS   Reset
+00445270   WARN RELOC_NAME: ?Destroy_00444e10@@YIXPAX@Z -> 00444e10 labelled 'CGuiControlTreePane_Destructor_4'
+00445270   WARN STANDIN_LEAF ?Reset@CCountedPointer_00444e10@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CMultiStatBar>::Reset; address-only name)
+00445270   RELOCATION_MATCH PASS   Reset
+004452e0   WARN RELOC_NAME: ?Destroy_00444e50@@YIXPAX@Z -> 00444e50 labelled 'CGuiControlTreePane_Destructor_5'
+004452e0   WARN STANDIN_LEAF ?Reset@CCountedPointer_00444e50@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CAutoPickupBar>::Reset; address-only name)
+004452e0   RELOCATION_MATCH PASS   Reset
+00445400   WARN RELOC_NAME: ?Destroy_00445350@@YIXPAX@Z -> 00445350 labelled '_global::DeleteObject_00445350'
+00445400   WARN STANDIN_LEAF ?Reset@CCountedPointer_00445350@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawMiniMap>::Reset; address-only name)
+00445400   RELOCATION_MATCH PASS   Reset
+00445470   WARN RELOC_NAME: ?Destroy_00445370@@YIXPAX@Z -> 00445370 labelled '_global::DeleteObject_00445370'
+00445470   WARN STANDIN_LEAF ?Reset@CCountedPointer_00445370@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo>::Reset; address-only name)
+00445470   RELOCATION_MATCH PASS   Reset
+00445520   WARN RELOC_NAME: ?Destroy_004454e0@@YIXPAX@Z -> 004454e0 labelled '_global::DeleteObject_004454e0'
+00445520   WARN STANDIN_LEAF ?Reset@CCountedPointer_004454e0@@QAEXPAX@Z (catalog CCountedPointer<NPlayerGui::CDrawGuildSeal>::Reset; address-only name)
+00445520   RELOCATION_MATCH PASS   Reset
+0049bce0   WARN RELOC_NAME: ?Destroy_0049bc20@@YIXPAX@Z -> 0049bc20 labelled 'CCountedPointer<CGameJoystickManager>::DeleteData'
+0049bce0   WARN STANDIN_LEAF ?Reset@CCountedPointer_0049bc20@@QAEXPAX@Z (catalog CCountedPointer<CGameJoystickManager>::Reset; address-only name)
+0049bce0   RELOCATION_MATCH PASS   Reset
+004a9a10   WARN RELOC_NAME: ?Destroy_004a8220@@YIXPAX@Z -> 004a8220 labelled 'CCountedPointer<CQuestManager>::DeleteData'
+004a9a10   WARN STANDIN_LEAF ?Reset@CCountedPointer_004a8220@@QAEXPAX@Z (catalog CCountedPointer<CQuestManager>::Reset; address-only name)
+004a9a10   RELOCATION_MATCH PASS   Reset
+004a9a80   WARN RELOC_NAME: ?Destroy_004a8260@@YIXPAX@Z -> 004a8260 labelled 'CCountedPointer<CSkeletalMorphResourceManager>::DeleteData'
+004a9a80   WARN STANDIN_LEAF ?Reset@CCountedPointer_004a8260@@QAEXPAX@Z (catalog CCountedPointer<CSkeletalMorphResourceManager>::Reset; address-only name)
+004a9a80   RELOCATION_MATCH PASS   Reset
+004ab300   WARN RELOC_NAME: ?Destroy_004a9b50@@YIXPAX@Z -> 004a9b50 labelled 'CCountedPointer<CAtmosProcess>::DeleteData'
+004ab300   WARN STANDIN_LEAF ?Reset@CCountedPointer_004a9b50@@QAEXPAX@Z (catalog CCountedPointer<CAtmosProcess>::Reset; address-only name)
+004ab300   RELOCATION_MATCH PASS   Reset
+004ab370   WARN RELOC_NAME: ?Destroy_004a9b70@@YIXPAX@Z -> 004a9b70 labelled '_global::DeleteObject_CActiveEntity_004a9b70'
+004ab370   WARN STANDIN_LEAF ?Reset@CCountedPointer_004a9b70@@QAEXPAX@Z (catalog CCountedPointer<CScriptInfoManager>::Reset; address-only name)
+004ab370   RELOCATION_MATCH PASS   Reset
+004adf80   WARN RELOC_NAME: ?Destroy_004adc40@@YIXPAX@Z -> 004adc40 labelled 'CCountedPointer<CMessageEventManager>::DeleteData'
+004adf80   WARN STANDIN_LEAF ?Reset@CCountedPointer_004adc40@@QAEXPAX@Z (catalog CCountedPointer<CMessageEventManager>::Reset; address-only name)
+004adf80   RELOCATION_MATCH PASS   Reset
+004ae650   WARN RELOC_NAME: ?Destroy_004ae510@@YIXPAX@Z -> 004ae510 labelled 'CCountedPointer<CMusicManager>::DeleteData'
+004ae650   WARN STANDIN_LEAF ?Reset@CCountedPointer_004ae510@@QAEXPAX@Z (catalog CCountedPointer<CMusicManager>::Reset; address-only name)
+004ae650   RELOCATION_MATCH PASS   Reset
+004bb9d0   WARN RELOC_NAME: ?Destroy_004bb990@@YIXPAX@Z -> 004bb990 labelled '_global::DeleteObject_CGameScriptThingManager_004bb990'
+004bb9d0   WARN STANDIN_LEAF ?Reset@CCountedPointer_004bb990@@QAEXPAX@Z (catalog CCountedPointer<CGameScriptThingManager>::Reset; address-only name)
+004bb9d0   RELOCATION_MATCH PASS   Reset
+004da6f7   WARN RELOC_NAME: _ForwardTarget_004d799a -> 004d799a labelled '_global::CCountedPointer_Release_004d799a'
+004da6f7   WARN STANDIN_LEAF _Forward (catalog CCountedPointer<CTCLightningNode::CLightningBranch>::~CCountedPointer; names another function)
+004da6f7   RELOCATION_MATCH PASS   ~CCountedPointer
+0050cdd0   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050cdd0@@YIXPAX@Z (catalog CCountedPointer<CFileFormatMapHeader>::DeleteData; address-only name)
+0050cdd0   RELOCATION_MATCH PASS   DeleteData
+0050cde0   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050cde0@@YIXPAX@Z (catalog CCountedPointer<CFileFormatLevel>::DeleteData; address-only name)
+0050cde0   RELOCATION_MATCH PASS   DeleteData
+0050cec0   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050cec0@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatLevel3>::DeleteData; address-only name)
+0050cec0   RELOCATION_MATCH PASS   DeleteData
+0050cf90   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050cf90@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatMapHeader7>::DeleteData; address-only name)
+0050cf90   RELOCATION_MATCH PASS   DeleteData
+0050cfa0   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050cfa0@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatLevel2>::DeleteData; address-only name)
+0050cfa0   RELOCATION_MATCH PASS   DeleteData
+0050d030   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050d030@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatMapHeader6>::DeleteData; address-only name)
+0050d030   RELOCATION_MATCH PASS   DeleteData
+0050d040   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050d040@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatLevel1>::DeleteData; address-only name)
+0050d040   RELOCATION_MATCH PASS   DeleteData
+0050d0a0   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050d0a0@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatMapHeader5>::DeleteData; address-only name)
+0050d0a0   RELOCATION_MATCH PASS   DeleteData
+0050d120   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050d120@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatMapHeader4>::DeleteData; address-only name)
+0050d120   RELOCATION_MATCH PASS   DeleteData
+0050d180   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050d180@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatMapHeader3>::DeleteData; address-only name)
+0050d180   RELOCATION_MATCH PASS   DeleteData
+0050d230   WARN STANDIN_LEAF ?OperatorDelete_thunk_0050d230@@YIXPAX@Z (catalog CCountedPointer<COldFileFormatMapHeader1>::DeleteData; address-only name)
+0050d230   RELOCATION_MATCH PASS   DeleteData
+0050f2b0   WARN RELOC_NAME: ?Destroy_0050bcc0@@YIXPAX@Z -> 0050bcc0 labelled 'CCountedPointer<CWADBank>::DeleteData'
+0050f2b0   WARN STANDIN_LEAF ?Reset@CCountedPointer_0050bcc0@@QAEXPAX@Z (catalog CCountedPointer<CWADBank>::Reset; address-only name)
+0050f2b0   RELOCATION_MATCH PASS   Reset
+0050faa0   WARN RELOC_NAME: ?Destroy_0050c210@@YIXPAX@Z -> 0050c210 labelled 'CCountedPointer<CMap>::DeleteData'
+0050faa0   WARN STANDIN_LEAF ?Reset@CCountedPointer_0050c210@@QAEXPAX@Z (catalog CCountedPointer<CMap>::Reset; address-only name)
+0050faa0   RELOCATION_MATCH PASS   Reset
+0050fb90   WARN RELOC_NAME: ?Destroy_0050c2e0@@YIXPAX@Z -> 0050c2e0 labelled 'CCountedPointer<CLevelLoader>::DeleteData'
+0050fb90   WARN STANDIN_LEAF ?Reset@CCountedPointer_0050c2e0@@QAEXPAX@Z (catalog CCountedPointer<CLevelLoader>::Reset; address-only name)
+0050fb90   RELOCATION_MATCH PASS   Reset
+0051cea0   WARN RELOC_NAME: ?Destroy_0051ccd0@@YIXPAX@Z -> 0051ccd0 labelled 'CCountedPointer<CRegionConnectionGraph>::DeleteData'
+0051cea0   WARN STANDIN_LEAF ?Reset@CCountedPointer_0051ccd0@@QAEXPAX@Z (catalog CCountedPointer<CRegionConnectionGraph>::Reset; address-only name)
+0051cea0   RELOCATION_MATCH PASS   Reset
+00618660   WARN RELOC_NAME: ?Destroy_006174f0@@YIXPAX@Z -> 006174f0 labelled 'CCountedPointer<std::vector<unsigned __int64, std::allocator<unsigned __int64>>>::DeleteData'
+00618660   WARN STANDIN_LEAF ?Reset@CCountedPointer_006174f0@@QAEXPAX@Z (catalog CCountedPointer<std::vector<unsigned __int64,std::allocator<unsigned __int64>>>::Reset; address-only name)
+00618660   RELOCATION_MATCH PASS   Reset
+006570bc   WARN RELOC_NAME: ?Destroy_00656ffe@@YIXPAX@Z -> 00656ffe labelled '_global::CallIfNonNull_00656ffe'
+006570bc   WARN STANDIN_LEAF ??0CCountedPointer_00656ffe@@QAE@PAX@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer>::CCountedPointer; address-only name)
+006570bc   RELOCATION_MATCH PASS   CCountedPointer
+00657138   WARN RELOC_NAME: ?Destroy_00657016@@YIXPAX@Z -> 00657016 labelled '_global::CallIfNonNull_00657016'
+00657138   WARN STANDIN_LEAF ??0CCountedPointer_00657016@@QAE@PAX@Z (catalog CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounterList>::CCountedPointer; address-only name)
+00657138   RELOCATION_MATCH PASS   CCountedPointer
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0065e25a.obj; graded the largest function
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0065e25a.obj; graded the largest function
+0065e25a   WARN STANDIN_LEAF ??0CCountedPointer_0065d290@@QAE@PAX@Z (catalog CCountedPointer<CVillageTaskTorch>::CCountedPointer; address-only name)
+0065e25a   RELOCATION_MATCH PASS   CCountedPointer
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0065e29d.obj; graded the largest function
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0065e29d.obj; graded the largest function
+0065e29d   WARN STANDIN_LEAF ??0CCountedPointer_0065d29b@@QAE@PAX@Z (catalog CCountedPointer<CVillageTaskHorn>::CCountedPointer; address-only name)
+0065e29d   RELOCATION_MATCH PASS   CCountedPointer
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0065e33b.obj; graded the largest function
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0065e33b.obj; graded the largest function
+0065e33b   WARN STANDIN_LEAF ??0CCountedPointer_0065d2df@@QAE@PAX@Z (catalog CCountedPointer<CVillageTaskCarryCrate>::CCountedPointer; address-only name)
+0065e33b   RELOCATION_MATCH PASS   CCountedPointer
+00673500   WARN RELOC_NAME: ?Destroy_00672aa0@@YIXPAX@Z -> 00672aa0 labelled 'CCountedPointer<CCreatureStatsDef>::DeleteData'
+00673500   WARN STANDIN_LEAF ?Reset@CCountedPointer_00672aa0@@QAEXPAX@Z (catalog CCountedPointer<CCreatureStatsDef>::Reset; address-only name)
+00673500   RELOCATION_MATCH PASS   Reset
+00675060   WARN RELOC_NAME: ?Destroy_00674e50@@YIXPAX@Z -> 00674e50 labelled 'CCountedPointer<CWoundMorphs>::DeleteData'
+00675060   WARN STANDIN_LEAF ?Reset@CCountedPointer_00674e50@@QAEXPAX@Z (catalog CCountedPointer<CWoundMorphs>::Reset; address-only name)
+00675060   RELOCATION_MATCH PASS   Reset
+
+WINS: 45
+  00444ad0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre>::Reset
+  00444bb0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawSpiritScores>::Reset
+  00444c20 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawSpiritTargetingCursor>::Reset
+  00444c90 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawMouseCursor>::Reset
+  00444d00 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawNPCName>::Reset
+  00445120 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDraw2DText>::Reset
+  00445190 RELOCATION_MATCH CCountedPointer<NPlayerGui::CStatBar>::Reset
+  00445200 RELOCATION_MATCH CCountedPointer<NPlayerGui::CCrimeStatBar>::Reset
+  00445270 RELOCATION_MATCH CCountedPointer<NPlayerGui::CMultiStatBar>::Reset
+  004452e0 RELOCATION_MATCH CCountedPointer<NPlayerGui::CAutoPickupBar>::Reset
+  00445400 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawMiniMap>::Reset
+  00445470 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawQuestInfo>::Reset
+  00445520 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawGuildSeal>::Reset
+  0049bce0 RELOCATION_MATCH CCountedPointer<CGameJoystickManager>::Reset
+  004a9a10 RELOCATION_MATCH CCountedPointer<CQuestManager>::Reset
+  004a9a80 RELOCATION_MATCH CCountedPointer<CSkeletalMorphResourceManager>::Reset
+  004ab300 RELOCATION_MATCH CCountedPointer<CAtmosProcess>::Reset
+  004ab370 RELOCATION_MATCH CCountedPointer<CScriptInfoManager>::Reset
+  004adf80 RELOCATION_MATCH CCountedPointer<CMessageEventManager>::Reset
+  004ae650 RELOCATION_MATCH CCountedPointer<CMusicManager>::Reset
+  004bb9d0 RELOCATION_MATCH CCountedPointer<CGameScriptThingManager>::Reset
+  004da6f7 RELOCATION_MATCH CCountedPointer<CTCLightningNode::CLightningBranch>::_Forward
+  0050cdd0 RELOCATION_MATCH CCountedPointer<CFileFormatMapHeader>::OperatorDelete_thunk_0050cdd0
+  0050cde0 RELOCATION_MATCH CCountedPointer<CFileFormatLevel>::OperatorDelete_thunk_0050cde0
+  0050cec0 RELOCATION_MATCH CCountedPointer<COldFileFormatLevel3>::OperatorDelete_thunk_0050cec0
+  0050cf90 RELOCATION_MATCH CCountedPointer<COldFileFormatMapHeader7>::OperatorDelete_thunk_0050cf90
+  0050cfa0 RELOCATION_MATCH CCountedPointer<COldFileFormatLevel2>::OperatorDelete_thunk_0050cfa0
+  0050d030 RELOCATION_MATCH CCountedPointer<COldFileFormatMapHeader6>::OperatorDelete_thunk_0050d030
+  0050d040 RELOCATION_MATCH CCountedPointer<COldFileFormatLevel1>::OperatorDelete_thunk_0050d040
+  0050d0a0 RELOCATION_MATCH CCountedPointer<COldFileFormatMapHeader5>::OperatorDelete_thunk_0050d0a0
+  0050d120 RELOCATION_MATCH CCountedPointer<COldFileFormatMapHeader4>::OperatorDelete_thunk_0050d120
+  0050d180 RELOCATION_MATCH CCountedPointer<COldFileFormatMapHeader3>::OperatorDelete_thunk_0050d180
+  0050d230 RELOCATION_MATCH CCountedPointer<COldFileFormatMapHeader1>::OperatorDelete_thunk_0050d230
+  0050f2b0 RELOCATION_MATCH CCountedPointer<CWADBank>::Reset
+  0050faa0 RELOCATION_MATCH CCountedPointer<CMap>::Reset
+  0050fb90 RELOCATION_MATCH CCountedPointer<CLevelLoader>::Reset
+  0051cea0 RELOCATION_MATCH CCountedPointer<CRegionConnectionGraph>::Reset
+  00618660 RELOCATION_MATCH CCountedPointer<std::vector<unsigned __int64,std::allocator<unsigned __int64>>>::Reset
+  006570bc RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer>::CCountedPointer
+  00657138 RELOCATION_MATCH CCountedPointer<NPlayerGui::CDrawQuestInfo::CQuestInfoElementCounterList>::CCountedPointer
+  0065e25a RELOCATION_MATCH CCountedPointer<CVillageTaskTorch>::??0?$CCountedPointer@
+  0065e29d RELOCATION_MATCH CCountedPointer<CVillageTaskHorn>::??0?$CCountedPointer@
+  0065e33b RELOCATION_MATCH CCountedPointer<CVillageTaskCarryCrate>::??0?$CCountedPointer@
+  00673500 RELOCATION_MATCH CCountedPointer<CCreatureStatsDef>::Reset
+  00675060 RELOCATION_MATCH CCountedPointer<CWoundMorphs>::Reset

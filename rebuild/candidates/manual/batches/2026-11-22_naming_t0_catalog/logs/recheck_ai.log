@@ -1,0 +1,105 @@
+addr       parity           behav  name
+004dfa12   WARN RELOC_NAME: ?AutoTinyFinishRead_004da61a@@YIXPAX0PAD@Z -> 004da61a labelled 'std::__destroy_aux<CCardPositionsDef*>'
+004dfa12   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog std::vector<CCardPositionsDef,std::allocator<CCardPositionsDef>>::~vector; names another function)
+004dfa12   RELOCATION_MATCH PASS   ~vector
+004dfa35   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+004dfa35   WARN RELOC_NAME: ?Consume_004da636@@YIXPAX0PAD@Z -> 004da636 labelled 'std::__destroy_aux<CCardDef*>'
+004dfa35   WARN STANDIN_LEAF ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z (catalog std::vector<CCardDef,std::allocator<CCardDef>>::~vector; names another function)
+004dfa35   RELOCATION_MATCH PASS   ~vector
+004e6dd2   WARN RELOC_NAME: ?AutoTinyFinishRead_004e1c5c@@YIXPAX0PAD@Z -> 004e1c5c labelled '_global::ForEachElem0x1c__CHitLocation_004da6c8_004e1c5c'
+004e6dd2   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog std::vector<std::pair<NHitLocations::CHitLocation,long>,std::allocator<std::pair<NHitLocations::CHitLocation,long>>>::~vector; names another function)
+004e6dd2   RELOCATION_MATCH PASS   ~vector
+005156d0   WARN STANDIN_LEAF ?clear@CRetailVector_char_005156d0@@QAEXXZ (catalog std::vector<unsigned long,std::allocator<unsigned long>>::clear; address-only name)
+005156d0   RELOCATION_MATCH PASS   clear
+0051d200   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+  WARN leaf 'push_back' matches no symbol in 0051d200.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 0051d200.obj; graded the largest function
+0051d200   WARN RELOC_NAME: ?InsertGrow@CRetailVector_CRegion@@QAEXPAVCRegion@@ABV2@ABUSScalarTag@@K_N@Z -> 0051cf10 labelled 'std::vector::_M_insert_overflow'
+0051d200   WARN STANDIN_LEAF ?PushBack_CRegion_0051d200@CRetailVector_CRegion@@QAEXABVCRegion@@@Z (catalog std::vector<CRegion,std::allocator<CRegion>>::push_back; address-only name)
+0051d200   RELOCATION_MATCH PASS   push_back
+00543c90   WARN RELOC_NAME: ?InsertGrow@CRetailVector_SRecord28@@QAEXPAUSRecord28@@ABU2@ABUSScalarTag@@K_N@Z -> 00543b70 labelled 'std::vector<NUISystem::CIconText::CEmbeddedIcon, std::allocator<NUISystem::CIconText::CEmbeddedIcon>>::_M_insert_overflow'
+00543c90   WARN STANDIN_LEAF ?PushBack_SRecord28_00543c90@CRetailVector_SRecord28@@QAEXABUSRecord28@@@Z (catalog std::vector<NUISystem::CIconText::CEmbeddedIcon,std::allocator<NUISystem::CIconText::CEmbeddedIcon>>::push_back; address-only name)
+00543c90   RELOCATION_MATCH PASS   push_back
+  WARN leaf 'push_back' matches no symbol in 0056dce0.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 0056dce0.obj; graded the largest function
+0056dce0   WARN RELOC_NAME: ?InsertGrow_0056d850@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 0056d850 labelled 'std::vector::_M_insert_overflow'
+0056dce0   WARN STANDIN_LEAF ?PushBack_dword_0056dce0@CRetailVector_dword@@QAEXABJ@Z (catalog std::vector<NUISystem::CMenuEntry*,std::allocator<NUISystem::CMenuEntry*>>::push_back; address-only name)
+0056dce0   RELOCATION_MATCH PASS   push_back
+00594be8   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+00594be8   WARN RELOC_NAME: ?Consume_00594697@@YIXPAX0PAD@Z -> 00594697 labelled '_global::ForEachElem0x8__Dest_val_std__allocator__00594697'
+00594be8   WARN STANDIN_LEAF ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z (catalog std::vector<std::pair<long,CDefPointer<CContextSensitiveItemDef const>>,std::allocator<std::pair<long,CDefPointer<CContextSensitiveItemDef const>>>>::~vector; names another function)
+00594be8   RELOCATION_MATCH PASS   ~vector
+005b31ac   WARN RELOC_NAME: ?AutoTinyFinishRead_005b26e9@@YIXPAX0PAD@Z -> 005b26e9 labelled '_global::ForEachElem0x4__scalar_deleting_destruct_005b26e9'
+005b31ac   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog std::vector<CDefPointer<CThingBaseDef const>,std::allocator<CDefPointer<CThingBaseDef const>>>::~vector; names another function)
+005b31ac   RELOCATION_MATCH PASS   ~vector
+005bc080   WARN RELOC_NAME: ?AutoTinyFinishRead_005bbdcc@@YIXPAX0PAD@Z -> 005bbdcc labelled 'std::__destroy_aux<CUnprovenRecord_005bbdcc *>'
+005bc080   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog std::vector<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>,std::allocator<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>>>::~vector; names another function)
+005bc080   RELOCATION_MATCH PASS   ~vector
+  WARN leaf 'push_back' matches no symbol in 005bc237.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 005bc237.obj; graded the largest function
+005bc237   WARN RELOC_NAME: ??0CElement12_005baec4@@QAE@ABU0@@Z -> 005baec4 labelled 'std::vector<std::pair<long, long>, std::allocator<std::pair<long, long>>>::vector'
+005bc237   WARN RELOC_NAME: ?InsertGrow@CRetailVector_CElement12_005baec4@@QAEXPAUCElement12_005baec4@@ABU2@ABUSScalarTag@@K_N@Z -> 005bc0fb labelled 'std::vector<std::vector<std::pair<long, long>, std::allocator<std::pair<long, long>>>, std::allocator<std::vector<std::pair<long, long>, std::allocator<std::pair<long, long>>>>>::_M_insert_overflow'
+005bc237   WARN STANDIN_LEAF ?PushBack_CElement12_005baec4_005bc237@CRetailVector_CElement12_005baec4@@QAEXABUCElement12_005baec4@@@Z (catalog std::vector<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>,std::allocator<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>>>::push_back; address-only name)
+005bc237   RELOCATION_MATCH PASS   push_back
+  WARN leaf 'push_back' matches no symbol in 005e1eb0.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 005e1eb0.obj; graded the largest function
+005e1eb0   WARN RELOC_NAME: ?InsertGrow_005e1420@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 005e1420 labelled 'std::vector::_M_insert_overflow'
+005e1eb0   WARN STANDIN_LEAF ?PushBack_dword_005e1eb0@CRetailVector_dword@@QAEXABJ@Z (catalog std::vector<CAnimationEntry const*,std::allocator<CAnimationEntry const*>>::push_back; address-only name)
+005e1eb0   RELOCATION_MATCH PASS   push_back
+005f9f14   WARN RELOC_NAME: ?AutoTinyFinishRead_005f939f@@YIXPAX0PAD@Z -> 005f939f labelled '_global::ForEachElem0x4__scalar_deleting_destruct_005f939f'
+005f9f14   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog std::vector<CDefPointer<CHeroAbilityDef const>,std::allocator<CDefPointer<CHeroAbilityDef const>>>::~vector; names another function)
+005f9f14   RELOCATION_MATCH PASS   ~vector
+  WARN leaf 'push_back' matches no symbol in 0066c4d0.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 0066c4d0.obj; graded the largest function
+0066c4d0   WARN RELOC_NAME: ?InsertGrow_0066c3f0@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 0066c3f0 labelled 'std::vector::_M_insert_overflow'
+0066c4d0   WARN STANDIN_LEAF ?PushBack_dword_0066c4d0@CRetailVector_dword@@QAEXABJ@Z (catalog std::vector<CAnimSet*,std::allocator<CAnimSet*>>::push_back; address-only name)
+0066c4d0   RELOCATION_MATCH PASS   push_back
+  WARN leaf 'push_back' matches no symbol in 0074fae0.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 0074fae0.obj; graded the largest function
+0074fae0   WARN RELOC_NAME: ?InsertGrow_0074f900@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 0074f900 labelled 'std::vector::_M_insert_overflow'
+0074fae0   WARN STANDIN_LEAF ?PushBack_dword_0074fae0@CRetailVector_dword@@QAEXABJ@Z (catalog std::vector<CThingObject*,std::allocator<CThingObject*>>::push_back; address-only name)
+0074fae0   RELOCATION_MATCH PASS   push_back
+  WARN leaf 'push_back' matches no symbol in 00841a70.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 00841a70.obj; graded the largest function
+00841a70   WARN RELOC_NAME: ?InsertGrow_00841820@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00841820 labelled 'std::vector::_M_insert_overflow'
+00841a70   WARN STANDIN_LEAF ?PushBack_dword_00841a70@CRetailVector_dword@@QAEXABJ@Z (catalog std::vector<LHNetworkLib::LHHttpDocumentParts*,std::allocator<LHNetworkLib::LHHttpDocumentParts*>>::push_back; address-only name)
+00841a70   RELOCATION_MATCH PASS   push_back
+00cd2d0b   WARN STANDIN_LEAF ?ReleaseFirstMember_00cd2d0b@CFirstMemberOwner_00cd2d0b@@QAEXXZ (catalog std::vector<long,std::allocator<long>>::~vector; address-only name)
+00cd2d0b   RELOCATION_MATCH PASS   ~vector
+  WARN leaf 'push_back' matches no symbol in 00cd3a79.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 00cd3a79.obj; graded the largest function
+00cd3a79   WARN RELOC_NAME: ??0CElement16_00905330@@QAE@ABU0@@Z -> 00905330 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00cd3a79   WARN RELOC_NAME: ?InsertGrow@CRetailVector_CElement16_00905330@@QAEXPAUCElement16_00905330@@ABU2@ABUSScalarTag@@K_N@Z -> 00cd36df labelled '_global::CActiveFile_ReadBodyPartMeshArray'
+00cd3a79   WARN STANDIN_LEAF ?PushBack_CElement16_00905330_00cd3a79@CRetailVector_CElement16_00905330@@QAEXABUCElement16_00905330@@@Z (catalog std::vector<CScriptGameResourceObjectScriptedThingBase,std::allocator<CScriptGameResourceObjectScriptedThingBase>>::push_back; address-only name)
+00cd3a79   RELOCATION_MATCH PASS   push_back
+00cd3c8b   WARN RELOC_NAME: ?AutoTinyFinishRead_00cd3625@@YIXPAX0PAD@Z -> 00cd3625 labelled '_global::ForEachElem0x10__C3DClothPrimitive_00cd3625'
+00cd3c8b   WARN STANDIN_LEAF ?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z (catalog std::vector<CScreenFilterSThingByPass,std::allocator<CScreenFilterSThingByPass>>::~vector; names another function)
+00cd3c8b   RELOCATION_MATCH PASS   ~vector
+  WARN leaf 'vector' matches no symbol in 00f26e60.obj; graded the largest function
+  WARN leaf 'vector' matches no symbol in 00f26e60.obj; graded the largest function
+00f26e60   WARN RELOC_NAME: ??0CRetailVectorBase_CClanMember@@QAE@KABUCRetailAllocator@@@Z -> 00f26ec0 labelled 'std::_Vector_base<CHeroSoulsWaveDef, std::allocator<CHeroSoulsWaveDef> >::_Vector_base'
+00f26e60   WARN RELOC_NAME: ?ConstructCopy_CClanMember@@YIXPAUCClanMember@@ABU1@@Z -> 00f26f00 labelled 'std::_Construct<CHeroSoulsWaveDef, CHeroSoulsWaveDef>'
+00f26e60   WARN STANDIN_LEAF ??0CRetailVector_CClanMember_00f26e60@@QAE@ABU0@@Z (catalog std::vector<CHeroSoulsWaveDef,std::allocator<CHeroSoulsWaveDef>>::vector; address-only name)
+00f26e60   RELOCATION_MATCH PASS   vector
+
+WINS: 20
+  004dfa12 RELOCATION_MATCH std::vector<CCardPositionsDef,std::allocator<CCardPositionsDef>>::OnReadFinished
+  004dfa35 RELOCATION_MATCH std::vector<CCardDef,std::allocator<CCardDef>>::OnReadFinished
+  004e6dd2 RELOCATION_MATCH std::vector<std::pair<NHitLocations::CHitLocation,long>,std::allocator<std::pair<NHitLocations::CHitLocation,long>>>::OnReadFinished
+  005156d0 RELOCATION_MATCH std::vector<unsigned long,std::allocator<unsigned long>>::clear
+  0051d200 RELOCATION_MATCH std::vector<CRegion,std::allocator<CRegion>>::push_back
+  00543c90 RELOCATION_MATCH std::vector<NUISystem::CIconText::CEmbeddedIcon,std::allocator<NUISystem::CIconText::CEmbeddedIcon>>::PushBack_SRecord28_00543c90
+  0056dce0 RELOCATION_MATCH std::vector<NUISystem::CMenuEntry*,std::allocator<NUISystem::CMenuEntry*>>::push_back
+  00594be8 RELOCATION_MATCH std::vector<std::pair<long,CDefPointer<CContextSensitiveItemDef const>>,std::allocator<std::pair<long,CDefPointer<CContextSensitiveItemDef const>>>>::OnReadFinished
+  005b31ac RELOCATION_MATCH std::vector<CDefPointer<CThingBaseDef const>,std::allocator<CDefPointer<CThingBaseDef const>>>::OnReadFinished
+  005bc080 RELOCATION_MATCH std::vector<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>,std::allocator<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>>>::OnReadFinished
+  005bc237 RELOCATION_MATCH std::vector<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>,std::allocator<std::vector<std::pair<long,long>,std::allocator<std::pair<long,long>>>>>::push_back
+  005e1eb0 RELOCATION_MATCH std::vector<CAnimationEntry const*,std::allocator<CAnimationEntry const*>>::push_back
+  005f9f14 RELOCATION_MATCH std::vector<CDefPointer<CHeroAbilityDef const>,std::allocator<CDefPointer<CHeroAbilityDef const>>>::OnReadFinished
+  0066c4d0 RELOCATION_MATCH std::vector<CAnimSet*,std::allocator<CAnimSet*>>::push_back
+  0074fae0 RELOCATION_MATCH std::vector<CThingObject*,std::allocator<CThingObject*>>::push_back
+  00841a70 RELOCATION_MATCH std::vector<LHNetworkLib::LHHttpDocumentParts*,std::allocator<LHNetworkLib::LHHttpDocumentParts*>>::push_back
+  00cd2d0b RELOCATION_MATCH std::vector<long,std::allocator<long>>::?ReleaseFirstMember_00cd2d0b@CFirstMemberOwner_00cd2d0b@
+  00cd3a79 RELOCATION_MATCH std::vector<CScriptGameResourceObjectScriptedThingBase,std::allocator<CScriptGameResourceObjectScriptedThingBase>>::push_back
+  00cd3c8b RELOCATION_MATCH std::vector<CScreenFilterSThingByPass,std::allocator<CScreenFilterSThingByPass>>::OnReadFinished
+  00f26e60 RELOCATION_MATCH std::vector<CHeroSoulsWaveDef,std::allocator<CHeroSoulsWaveDef>>::vector

@@ -1,0 +1,191 @@
+addr       parity           behav  name
+005cbdbd   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005cbdbd   WARN STANDIN_LEAF @FableIsDead_5cbdbd@4 (catalog _global::IS_THING_DEAD<CThing*>; names another function)
+005cbdbd   MATCH            PASS   IS_THING_DEAD<CThing*>
+  WARN leaf 'IsTaskTaken<CVillageTaskTorch>' matches no symbol in 0065ff8e.obj; graded the largest function
+  WARN leaf 'IsTaskTaken<CVillageTaskTorch>' matches no symbol in 0065ff8e.obj; graded the largest function
+0065ff8e   WARN RELOC_NAME: ?Find@CNodeRef@@QAEAAU1@UCListIterator@@0PAUCListNode@@@Z -> 0065f943 labelled 'std::find_if<std::_List_iterator<CCountedPointer<CVillageTaskTorch> >,CIsThingInvolvedWithTask>'
+0065ff8e   WARN STANDIN_LEAF ?IsListedNodeActive_0065ff8e@@YG_NUCNodeRef@@PAUCNodeList@@@Z (catalog CTCVillage::IsTaskTaken<CVillageTaskTorch>; address-only name)
+0065ff8e   RELOCATION_MATCH PASS   IsTaskTaken<CVillageTaskTorch>
+  WARN leaf '??0PerCreatureInfo@' matches no symbol in 00793a80.obj; graded the largest function
+  WARN leaf '??0PerCreatureInfo@' matches no symbol in 00793a80.obj; graded the largest function
+00793a80   WARN STANDIN_LEAF ??0SIcicleRecord_00793a80@@QAE@ABU0@@Z (catalog CTCUnholyPower::PerCreatureInfo::PerCreatureInfo; address-only name)
+00793a80   RELOCATION_MATCH PASS   PerCreatureInfo
+  WARN leaf 'fill<ThingLList*,ThingLList>' matches no symbol in 00526d70.obj; graded the largest function
+  WARN leaf 'fill<ThingLList*,ThingLList>' matches no symbol in 00526d70.obj; graded the largest function
+00526d70   WARN STANDIN_LEAF ?Fill_SElement8_00526d70@@YIXPAUSElement8@@0ABU1@@Z (catalog std::fill<ThingLList*,ThingLList>; address-only name)
+00526d70   MATCH            PASS   fill<ThingLList*,ThingLList>
+  WARN leaf 'CEntry>>' matches no symbol in 00819280.obj; graded the largest function
+  WARN leaf 'CEntry>>' matches no symbol in 00819280.obj; graded the largest function
+00819280   WARN STANDIN_LEAF ?Fill_SElement40_00819280@@YIXPAUSElement40@@0ABU1@@Z (catalog std::fill<std::pair<EHeroMorphType,CParticleMorphs::CEntry>*,std::pair<EHeroMorphType,CParticleMorphs::CEntry>>; address-only name)
+00819280   MATCH            PASS   CEntry>>
+  WARN leaf 'CEntry>>' matches no symbol in 008192b0.obj; graded the largest function
+  WARN leaf 'CEntry>>' matches no symbol in 008192b0.obj; graded the largest function
+008192b0   WARN STANDIN_LEAF ?Fill_008192b0@@YIXPAUSElement@@0ABU1@@Z (catalog std::fill<std::pair<unsigned long,CSkeletalMorphs::CEntry>*,std::pair<unsigned long,CSkeletalMorphs::CEntry>>; address-only name)
+008192b0   MATCH            PASS   CEntry>>
+  WARN leaf 'CSkeletalMorph>>' matches no symbol in 0086a3f0.obj; graded the largest function
+  WARN leaf 'CSkeletalMorph>>' matches no symbol in 0086a3f0.obj; graded the largest function
+0086a3f0   WARN STANDIN_LEAF ?Fill_0086a3f0@@YIXPAUSElement@@0ABU1@@Z (catalog std::fill<std::pair<long,CRandomAppearanceMorph::CSkeletalMorph>*,std::pair<long,CRandomAppearanceMorph::CSkeletalMorph>>; address-only name)
+0086a3f0   MATCH            PASS   CSkeletalMorph>>
+  WARN leaf 'CTextureMorph>>' matches no symbol in 0086a4f0.obj; graded the largest function
+  WARN leaf 'CTextureMorph>>' matches no symbol in 0086a4f0.obj; graded the largest function
+0086a4f0   WARN STANDIN_LEAF ?Fill_0086a4f0@@YIXPAUSElement@@0ABU1@@Z (catalog std::fill<std::pair<unsigned long,CRandomAppearanceMorph::CTextureMorph>*,std::pair<unsigned long,CRandomAppearanceMorph::CTextureMorph>>; address-only name)
+0086a4f0   MATCH            PASS   CTextureMorph>>
+  WARN leaf 'CEntry>>' matches no symbol in 0086ef60.obj; graded the largest function
+  WARN leaf 'CEntry>>' matches no symbol in 0086ef60.obj; graded the largest function
+0086ef60   WARN STANDIN_LEAF ?Fill_0086ef60@@YIXPAUSElement@@0ABU1@@Z (catalog std::fill<std::pair<EExpressionType,CExpressionSet::CEntry>*,std::pair<EExpressionType,CExpressionSet::CEntry>>; address-only name)
+0086ef60   MATCH            PASS   CEntry>>
+  WARN leaf 'fill<CGraphicInfo*,CGraphicInfo>' matches no symbol in 009fff90.obj; graded the largest function
+  WARN leaf 'fill<CGraphicInfo*,CGraphicInfo>' matches no symbol in 009fff90.obj; graded the largest function
+009fff90   WARN STANDIN_LEAF ?Fill_SElement44_009fff90@@YIXPAUSElement44@@0ABU1@@Z (catalog std::fill<CGraphicInfo*,CGraphicInfo>; address-only name)
+009fff90   MATCH            PASS   fill<CGraphicInfo*,CGraphicInfo>
+004cc220   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<CTCBase*,std::allocator<CTCBase*>>::~list; address-only name)
+004cc220   RELOCATION_MATCH PASS   ~list
+  WARN leaf 'push_back' matches no symbol in 005f8f6f.obj; graded the largest function
+  WARN leaf 'push_back' matches no symbol in 005f8f6f.obj; graded the largest function
+005f8f6f   WARN RELOC_NAME: ?InsertBefore@ListWrapper_005f8f6f@@QAEXPAKUListIterator_005f8f6f@@K@Z -> 005f891f labelled '_global::StdList_Insert_005f891f'
+005f8f6f   WARN STANDIN_LEAF ?ListPushFrontWrapper_005f8f6f@ListWrapper_005f8f6f@@QAEXK@Z (catalog std::list<CWideString,std::allocator<CWideString>>::push_back; address-only name)
+005f8f6f   RELOCATION_MATCH PASS   push_back
+0075f6c0   WARN STANDIN_LEAF ??1list_T_0075f6c0@std@@QAE@XZ (catalog std::list<CCharString,std::allocator<CCharString>>::~list; address-only name)
+0075f6c0   RELOCATION_MATCH PASS   ~list
+007e6dc0   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<EOracleMinigameInput,std::allocator<EOracleMinigameInput>>::~list; address-only name)
+007e6dc0   RELOCATION_MATCH PASS   ~list
+0090b7d0   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<LHNetworkLib::DatagrammPacket*,std::allocator<LHNetworkLib::DatagrammPacket*>>::~list; address-only name)
+0090b7d0   RELOCATION_MATCH PASS   ~list
+00936910   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<CThingDeadCreature*,std::allocator<CThingDeadCreature*>>::~list; address-only name)
+00936910   RELOCATION_MATCH PASS   ~list
+009c6730   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<CFileInstaller::CPendingWrite,std::allocator<CFileInstaller::CPendingWrite>>::~list; address-only name)
+009c6730   RELOCATION_MATCH PASS   ~list
+009c67d0   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<CFileInstaller::CActiveRead*,std::allocator<CFileInstaller::CActiveRead*>>::~list; address-only name)
+009c67d0   RELOCATION_MATCH PASS   ~list
+00a16cb0   WARN STANDIN_LEAF ?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z (catalog std::list<std::pair<long,CNavigatorBase const*>,std::allocator<std::pair<long,CNavigatorBase const*>>>::~list; address-only name)
+00a16cb0   RELOCATION_MATCH PASS   ~list
+00a17570   WARN STANDIN_LEAF ??1list_T_00a17570@std@@QAE@XZ (catalog std::list<CNavQuadTreeMap,std::allocator<CNavQuadTreeMap>>::~list; address-only name)
+00a17570   RELOCATION_MATCH PASS   ~list
+0042bf35   WARN RELOC_NAME: ?_Rb_tree_0042b72b@map_T_0042bf35@std@@QAEXPAD0@Z -> 0042b72b labelled 'CTexture_InitEmpty_56bytes'
+0042bf35   WARN STANDIN_LEAF ?map@map_T_0042bf35@std@@QAEPAU12@XZ (catalog std::map<unsigned long,NUISystem::CUIState,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,NUISystem::CUIState>>>::map; address-only name)
+0042bf35   RELOCATION_MATCH PASS   map
+0045338b   WARN RELOC_NAME: ?_Rb_tree_00451876@map_T_0045338b@std@@QAEXPAD0@Z -> 00451876 labelled 'ListNode_Init_G'
+0045338b   WARN STANDIN_LEAF ?map@map_T_0045338b@std@@QAEPAU12@XZ (catalog std::map<ECombatCreatureType,long,std::less<ECombatCreatureType>,std::allocator<std::pair<ECombatCreatureType const,long>>>::map; address-only name)
+0045338b   RELOCATION_MATCH PASS   map
+00453447   WARN RELOC_NAME: ?_Rb_tree_00451957@map_T_00453447@std@@QAEXPAD0@Z -> 00451957 labelled 'ListNode_Init_J'
+00453447   WARN STANDIN_LEAF ?map@map_T_00453447@std@@QAEPAU12@XZ (catalog std::map<EOpinionReactionType,bool,std::less<EOpinionReactionType>,std::allocator<std::pair<EOpinionReactionType const,bool>>>::map; address-only name)
+00453447   RELOCATION_MATCH PASS   map
+00453465   WARN RELOC_NAME: ?_Rb_tree_00451998@map_T_00453465@std@@QAEXPAD0@Z -> 00451998 labelled 'ListNode_Init_K'
+00453465   WARN STANDIN_LEAF ?map@map_T_00453465@std@@QAEPAU12@XZ (catalog std::map<EOpinionDeedType,bool,std::less<EOpinionDeedType>,std::allocator<std::pair<EOpinionDeedType const,bool>>>::map; address-only name)
+00453465   RELOCATION_MATCH PASS   map
+004534c4   WARN RELOC_NAME: ?_Rb_tree_00451a1a@map_T_004534c4@std@@QAEXPAD0@Z -> 00451a1a labelled 'ListNode_Init_M'
+004534c4   WARN STANDIN_LEAF ?map@map_T_004534c4@std@@QAEPAU12@XZ (catalog std::map<EOpinion,float,std::less<EOpinion>,std::allocator<std::pair<EOpinion const,float>>>::map; address-only name)
+004534c4   RELOCATION_MATCH PASS   map
+00453536   WARN RELOC_NAME: ?_Rb_tree_00451a5b@map_T_00453536@std@@QAEXPAD0@Z -> 00451a5b labelled 'ListNode_Init_N'
+00453536   WARN STANDIN_LEAF ?map@map_T_00453536@std@@QAEPAU12@XZ (catalog std::map<EObjectAugmentationType,float,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType const,float>>>::map; address-only name)
+00453536   RELOCATION_MATCH PASS   map
+004dd5ad   WARN STANDIN_LEAF ??1list_T_004dd5ad@std@@QAE@XZ (catalog std::map<EQuakeStrength,float,std::less<EQuakeStrength>,std::allocator<std::pair<EQuakeStrength const,float>>>::~map; address-only name)
+004dd5ad   RELOCATION_MATCH PASS   ~map
+004dd5ee   WARN STANDIN_LEAF ??1list_T_004dd5ee@std@@QAE@XZ (catalog std::map<EQuakeLength,float,std::less<EQuakeLength>,std::allocator<std::pair<EQuakeLength const,float>>>::~map; address-only name)
+004dd5ee   RELOCATION_MATCH PASS   ~map
+004df8ad   WARN RELOC_NAME: ?_Rb_tree_004dd301@map_T_004df8ad@std@@QAEXPAD0@Z -> 004dd301 labelled 'TextureFormat_Handler_08'
+004df8ad   WARN STANDIN_LEAF ?map@map_T_004df8ad@std@@QAEPAU12@XZ (catalog std::map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType const,CDefString>>>::map; address-only name)
+004df8ad   RELOCATION_MATCH PASS   map
+004ebab0   WARN RELOC_NAME: ?_Rb_tree_004dd2d7@map_T_004ebab0@std@@QAEXPAD0@Z -> 004dd2d7 labelled 'TextureFormat_Handler_07'
+004ebab0   WARN STANDIN_LEAF ?map@map_T_004ebab0@std@@QAEPAU12@XZ (catalog std::map<EObjectAugmentationType,CObjectAugmentationParticleSet,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType const,CObjectAugmentationParticleSet>>>::map; address-only name)
+004ebab0   RELOCATION_MATCH PASS   map
+00594803   WARN RELOC_NAME: ?_Rb_tree_00593b3f@map_T_00594803@std@@QAEXPAD0@Z -> 00593b3f labelled 'HashBucket_Init'
+00594803   WARN STANDIN_LEAF ?map@map_T_00594803@std@@QAEPAU12@XZ (catalog std::map<CDateAndTime,CWideString,std::less<CDateAndTime>,std::allocator<std::pair<CDateAndTime const,CWideString>>>::map; address-only name)
+00594803   RELOCATION_MATCH PASS   map
+005bb3d1   WARN RELOC_NAME: ?_Rb_tree_005bb066@map_T_005bb3d1@std@@QAEXPAD0@Z -> 005bb066 labelled 'List_InitializeEmpty_24Bytes'
+005bb3d1   WARN STANDIN_LEAF ?map@map_T_005bb3d1@std@@QAEPAU12@XZ (catalog std::map<EClothingSuitPart,bool,std::less<EClothingSuitPart>,std::allocator<std::pair<EClothingSuitPart const,bool>>>::map; address-only name)
+005bb3d1   RELOCATION_MATCH PASS   map
+00cd365e   WARN RELOC_NAME: ?Helper_00cd2d61@map_T_00cd365e@std@@QAEXPAD0@Z -> 00cd2d61 labelled 'CTree_InitSentinelNode'
+00cd365e   WARN STANDIN_LEAF ?map@map_T_00cd365e@std@@QAEPAU12@XZ (catalog std::map<int,CCharString,std::less<int>,std::allocator<std::pair<int const,CCharString>>>::map; address-only name)
+00cd365e   RELOCATION_MATCH PASS   map
+0045433f   WARN RELOC_NAME: ?Grab@map_T_0045433f@std@@QAEXPAD0@Z -> 0043019f labelled 'LinkedList_Initialize'
+0045433f   WARN STANDIN_LEAF ?map@map_T_0045433f@std@@QAEPAU12@XZ (catalog std::multimap<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString const,long>>>::multimap; address-only name)
+0045433f   RELOCATION_MATCH PASS   multimap
+  WARN leaf '??0?$pair@' matches no symbol in 00cb9c20.obj; graded the largest function
+  WARN leaf '??0?$pair@' matches no symbol in 00cb9c20.obj; graded the largest function
+00cb9c20   WARN STANDIN_LEAF ??0SCountedRecord_00cb9c20@@QAE@ABU0@@Z (catalog std::pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>::pair; address-only name)
+00cb9c20   MATCH            PASS   pair
+  WARN leaf 'pair<ETCInterfaceType,CTCBase*>*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>>' matches no symbol in 004cd130.obj; graded the largest function
+  WARN leaf 'pair<ETCInterfaceType,CTCBase*>*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>>' matches no symbol in 004cd130.obj; graded the largest function
+004cd130   WARN STANDIN_LEAF ?SortHeap_004cd130@@YIXPAUSPair@@0USLess@@@Z (catalog std::sort_heap<std::pair<ETCInterfaceType,CTCBase*>*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>>; address-only name)
+004cd130   RELOCATION_MATCH PASS   pair<ETCInterfaceType,CTCBase*>*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>>
+  WARN leaf 'pair<EReactionSpeechType,long>*,CKeyPairCompareLess<EReactionSpeechType,long>>' matches no symbol in 00680e00.obj; graded the largest function
+  WARN leaf 'pair<EReactionSpeechType,long>*,CKeyPairCompareLess<EReactionSpeechType,long>>' matches no symbol in 00680e00.obj; graded the largest function
+00680e00   WARN STANDIN_LEAF ?SortHeap_00680e00@@YIXPAUSPair@@0USLess@@@Z (catalog std::sort_heap<std::pair<EReactionSpeechType,long>*,CKeyPairCompareLess<EReactionSpeechType,long>>; address-only name)
+00680e00   RELOCATION_MATCH PASS   pair<EReactionSpeechType,long>*,CKeyPairCompareLess<EReactionSpeechType,long>>
+  WARN leaf 'pair<long,CAIStateGroupBase*>*,CKeyPairCompareGreater<long,CAIStateGroupBase*>>' matches no symbol in 0088cea0.obj; graded the largest function
+  WARN leaf 'pair<long,CAIStateGroupBase*>*,CKeyPairCompareGreater<long,CAIStateGroupBase*>>' matches no symbol in 0088cea0.obj; graded the largest function
+0088cea0   WARN STANDIN_LEAF ?SortHeap_0088cea0@@YIXPAUSPair@@0USLess@@@Z (catalog std::sort_heap<std::pair<long,CAIStateGroupBase*>*,CKeyPairCompareGreater<long,CAIStateGroupBase*>>; address-only name)
+0088cea0   RELOCATION_MATCH PASS   pair<long,CAIStateGroupBase*>*,CKeyPairCompareGreater<long,CAIStateGroupBase*>>
+  WARN leaf 'pair<unsigned long,long>*,CKeyPairCompareLess<unsigned long,long>>' matches no symbol in 009b5bb0.obj; graded the largest function
+  WARN leaf 'pair<unsigned long,long>*,CKeyPairCompareLess<unsigned long,long>>' matches no symbol in 009b5bb0.obj; graded the largest function
+009b5bb0   WARN STANDIN_LEAF ?SortHeap_009b5bb0@@YIXPAUSPair@@0USLess@@@Z (catalog std::sort_heap<std::pair<unsigned long,long>*,CKeyPairCompareLess<unsigned long,long>>; address-only name)
+009b5bb0   RELOCATION_MATCH PASS   pair<unsigned long,long>*,CKeyPairCompareLess<unsigned long,long>>
+  WARN leaf 'pair<unsigned long,unsigned long>*,CKeyPairCompareLess<unsigned long,unsigned long>>' matches no symbol in 009b5c10.obj; graded the largest function
+  WARN leaf 'pair<unsigned long,unsigned long>*,CKeyPairCompareLess<unsigned long,unsigned long>>' matches no symbol in 009b5c10.obj; graded the largest function
+009b5c10   WARN STANDIN_LEAF ?SortHeap_009b5c10@@YIXPAUSPair@@0USLess@@@Z (catalog std::sort_heap<std::pair<unsigned long,unsigned long>*,CKeyPairCompareLess<unsigned long,unsigned long>>; address-only name)
+009b5c10   RELOCATION_MATCH PASS   pair<unsigned long,unsigned long>*,CKeyPairCompareLess<unsigned long,unsigned long>>
+0041971e   WARN STANDIN_LEAF ?ReleaseFirstMember_0041971e@CFirstMemberOwner_0041971e@@QAEXXZ (catalog std::vector<float,std::allocator<float>>::~vector; address-only name)
+0041971e   RELOCATION_MATCH PASS   ~vector
+004533e3   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+004533e3   WARN RELOC_NAME: ?Consume_00450ab2@@YIXPAX0PAD@Z -> 00450ab2 labelled 'std::__destroy_aux<CAppearanceModifierScalingDef*>'
+004533e3   WARN STANDIN_LEAF ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z (catalog std::vector<CAppearanceModifierScalingDef,std::allocator<CAppearanceModifierScalingDef>>::~vector; names another function)
+004533e3   RELOCATION_MATCH PASS   ~vector
+00453406   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+00453406   WARN RELOC_NAME: ?Reader_Read@@YIXPAX0PAE@Z -> 00450ace labelled '_global::DestroyRange_Elem0x50_00450ace'
+00453406   WARN STANDIN_LEAF ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z (catalog std::vector<CAbilityTrackDef,std::allocator<CAbilityTrackDef>>::~vector; names another function)
+00453406   RELOCATION_MATCH PASS   ~vector
+0045359e   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+0045359e   WARN RELOC_NAME: ?Consume_00450b1b@@YIXPAX0PAD@Z -> 00450b1b labelled 'std::__destroy_aux<CEnvironmentThemeDef*>'
+0045359e   WARN STANDIN_LEAF ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z (catalog std::vector<CEnvironmentThemeDef,std::allocator<CEnvironmentThemeDef>>::~vector; names another function)
+0045359e   RELOCATION_MATCH PASS   ~vector
+004dcfbb   WARN STANDIN_LEAF ?ReleaseFirstMember_004dcfbb@CFirstMemberOwner_004dcfbb@@QAEXXZ (catalog std::vector<C3DVector,std::allocator<C3DVector>>::~vector; address-only name)
+004dcfbb   RELOCATION_MATCH PASS   ~vector
+
+WINS: 45
+  005cbdbd MATCH _global::@FableIsDead_5cbdbd@4
+  0065ff8e RELOCATION_MATCH CTCVillage::IsTaskTaken<CVillageTaskTorch>
+  00793a80 RELOCATION_MATCH CTCUnholyPower::PerCreatureInfo::??0PerCreatureInfo@
+  00526d70 MATCH std::fill<ThingLList*,ThingLList>
+  00819280 MATCH std::CEntry>>
+  008192b0 MATCH std::CEntry>>
+  0086a3f0 MATCH std::CSkeletalMorph>>
+  0086a4f0 MATCH std::CTextureMorph>>
+  0086ef60 MATCH std::CEntry>>
+  009fff90 MATCH std::fill<CGraphicInfo*,CGraphicInfo>
+  004cc220 RELOCATION_MATCH std::list<CTCBase*,std::allocator<CTCBase*>>::SortTreeRecursively
+  005f8f6f RELOCATION_MATCH std::list<CWideString,std::allocator<CWideString>>::push_back
+  0075f6c0 RELOCATION_MATCH std::list<CCharString,std::allocator<CCharString>>::??1list_T_0075f6c0@std@@
+  007e6dc0 RELOCATION_MATCH std::list<EOracleMinigameInput,std::allocator<EOracleMinigameInput>>::SortTreeRecursively
+  0090b7d0 RELOCATION_MATCH std::list<LHNetworkLib::DatagrammPacket*,std::allocator<LHNetworkLib::DatagrammPacket*>>::SortTreeRecursively
+  00936910 RELOCATION_MATCH std::list<CThingDeadCreature*,std::allocator<CThingDeadCreature*>>::SortTreeRecursively
+  009c6730 RELOCATION_MATCH std::list<CFileInstaller::CPendingWrite,std::allocator<CFileInstaller::CPendingWrite>>::SortTreeRecursively
+  009c67d0 RELOCATION_MATCH std::list<CFileInstaller::CActiveRead*,std::allocator<CFileInstaller::CActiveRead*>>::SortTreeRecursively
+  00a16cb0 RELOCATION_MATCH std::list<std::pair<long,CNavigatorBase const*>,std::allocator<std::pair<long,CNavigatorBase const*>>>::SortTreeRecursively
+  00a17570 RELOCATION_MATCH std::list<CNavQuadTreeMap,std::allocator<CNavQuadTreeMap>>::??1list_T_00a17570@std@@
+  0042bf35 RELOCATION_MATCH std::map<unsigned long,NUISystem::CUIState,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,NUISystem::CUIState>>>::?map@map_T_0042bf35@std@@
+  0045338b RELOCATION_MATCH std::map<ECombatCreatureType,long,std::less<ECombatCreatureType>,std::allocator<std::pair<ECombatCreatureType const,long>>>::?map@map_T_0045338b@std@@
+  00453447 RELOCATION_MATCH std::map<EOpinionReactionType,bool,std::less<EOpinionReactionType>,std::allocator<std::pair<EOpinionReactionType const,bool>>>::?map@map_T_00453447@std@@
+  00453465 RELOCATION_MATCH std::map<EOpinionDeedType,bool,std::less<EOpinionDeedType>,std::allocator<std::pair<EOpinionDeedType const,bool>>>::?map@map_T_00453465@std@@
+  004534c4 RELOCATION_MATCH std::map<EOpinion,float,std::less<EOpinion>,std::allocator<std::pair<EOpinion const,float>>>::?map@map_T_004534c4@std@@
+  00453536 RELOCATION_MATCH std::map<EObjectAugmentationType,float,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType const,float>>>::?map@map_T_00453536@std@@
+  004dd5ad RELOCATION_MATCH std::map<EQuakeStrength,float,std::less<EQuakeStrength>,std::allocator<std::pair<EQuakeStrength const,float>>>::??1list_T_004dd5ad@std@@
+  004dd5ee RELOCATION_MATCH std::map<EQuakeLength,float,std::less<EQuakeLength>,std::allocator<std::pair<EQuakeLength const,float>>>::??1list_T_004dd5ee@std@@
+  004df8ad RELOCATION_MATCH std::map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType const,CDefString>>>::?map@map_T_004df8ad@std@@
+  004ebab0 RELOCATION_MATCH std::map<EObjectAugmentationType,CObjectAugmentationParticleSet,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType const,CObjectAugmentationParticleSet>>>::?map@map_T_004ebab0@std@@
+  00594803 RELOCATION_MATCH std::map<CDateAndTime,CWideString,std::less<CDateAndTime>,std::allocator<std::pair<CDateAndTime const,CWideString>>>::?map@map_T_00594803@std@@
+  005bb3d1 RELOCATION_MATCH std::map<EClothingSuitPart,bool,std::less<EClothingSuitPart>,std::allocator<std::pair<EClothingSuitPart const,bool>>>::?map@map_T_005bb3d1@std@@
+  00cd365e RELOCATION_MATCH std::map<int,CCharString,std::less<int>,std::allocator<std::pair<int const,CCharString>>>::?map@map_T_00cd365e@std@@
+  0045433f RELOCATION_MATCH std::multimap<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString const,long>>>::?map@map_T_0045433f@std@@
+  00cb9c20 MATCH std::pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>::??0?$pair@
+  004cd130 RELOCATION_MATCH std::pair<ETCInterfaceType,CTCBase*>*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>>
+  00680e00 RELOCATION_MATCH std::pair<EReactionSpeechType,long>*,CKeyPairCompareLess<EReactionSpeechType,long>>
+  0088cea0 RELOCATION_MATCH std::pair<long,CAIStateGroupBase*>*,CKeyPairCompareGreater<long,CAIStateGroupBase*>>
+  009b5bb0 RELOCATION_MATCH std::pair<unsigned long,long>*,CKeyPairCompareLess<unsigned long,long>>
+  009b5c10 RELOCATION_MATCH std::pair<unsigned long,unsigned long>*,CKeyPairCompareLess<unsigned long,unsigned long>>
+  0041971e RELOCATION_MATCH std::vector<float,std::allocator<float>>::?ReleaseFirstMember_0041971e@CFirstMemberOwner_0041971e@
+  004533e3 RELOCATION_MATCH std::vector<CAppearanceModifierScalingDef,std::allocator<CAppearanceModifierScalingDef>>::OnReadFinished
+  00453406 RELOCATION_MATCH std::vector<CAbilityTrackDef,std::allocator<CAbilityTrackDef>>::OnReadFinished
+  0045359e RELOCATION_MATCH std::vector<CEnvironmentThemeDef,std::allocator<CEnvironmentThemeDef>>::OnReadFinished
+  004dcfbb RELOCATION_MATCH std::vector<C3DVector,std::allocator<C3DVector>>::?ReleaseFirstMember_004dcfbb@CFirstMemberOwner_004dcfbb@
