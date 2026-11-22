@@ -15,8 +15,8 @@ All ten are rows earlier rounds (acctB / acctC) had parked as hard near misses.
 | 0x00A4EFC0 InitialiseFromFileData | not matched by authoring (escalated); Codex matched it, landed as Inferred | AUTH4 / AUTH7 / AUTH11 |
 | 0x00CF4EC0 CFanMarker::Main | terminal (A), proven inline tie | AUTH10-AUTH16 |
 | 0x0093D270 IsRunnable | terminal (A), header form contradicts the PDBs (oracle matches) | AUTH18 |
-| 0x00B4D370 UpdateShadowSpace | open, DIFFER(7162v7176) | AUTH19-AUTH21 |
-| 0x00BD3070 RenderMeshPrimitive | open, DIFFER(11288v11288) | AUTH20 (resume point) |
+| 0x00B4D370 UpdateShadowSpace | open, DIFFER(7162v7176); residue = x87 operand order + a 10-B loop pad it costs; waits on C2T1 | AUTH19-AUTH21 |
+| 0x00BD3070 RenderMeshPrimitive | escalated, DIFFER(11288v11288): 13 operand-order picks after all 14 forceinlines moved to headers; waits on C2T1 | AUTH20, AUTH21 |
 | 0x00502E90 PopulateRegionWithVillagers | open, DIFFER(13587v13622) | not started |
 Also: 0x00B30B50 SetCameraState landed (AUTH9, Codex p26 text); AUTH17 default-flag sweep of 18 rows: 0 new matches.
 Opus scorecard on the 10: 3 matched by authoring (0x00C73050, 0x007602F0, 0x008E18D0), 1 landed from Codex p26 text (0x00763060),
@@ -31,3 +31,4 @@ The three open rows above are the hardest left, so they alone are a poor sample.
 not worked this week (smallest residue first, excluding rows from the last Codex passes and 0x006AA720): 0x0066B370, 0x00A68DE0,
 0x00839420, 0x00651273, 0x00816410. For an Opus comparison on fresh rows, the next Opus authoring run can take the next five on the same
 list (0x005A94BD, 0x00409730, 0x00A15890, 0x00CFBDF0, 0x006B97E0).
+| AUTH22 | 0x00502E90 + 0x0066B370, 0x00A68DE0, 0x00839420, 0x00651273, 0x00816410 | running (started 2026-11-22) | | Fable 5.2 high |

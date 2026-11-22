@@ -1,0 +1,4 @@
+address	state	best_grade	grades_used	best_source	note
+0x00B4D370	bounded-item-done (handed back)	DIFFER(7162v7176) p9 (unchanged)	0	$S/w22/auth20/00b4d370/best_evidence.cpp	p5 lacks retail placement (0x8C, frame 0x3c0); 14-B gap = order picks + suppressed 10-B loop pad, frame length-neutral; see auth21/00b4d370/NOTES.md
+0x00BD3070	escalated	DIFFER(11288v11288) rc151 (c6)	22	$S/w22/auth21/00bd3070/00bd3070.cpp	all row-local FORCEINLINE member bodies moved to header opt-ins (hdr_00bd3070.patch); residue = 13 commutative operand picks (11 test/or, 1 x87, 1 SIB) + jump-table/reloc display; ESCALATE.md
+0x00502E90	not_started	DIFFER(13587v13622) (record)	0	-	handed back before start (coordinator stop); see 00502e90_HANDOFF.md

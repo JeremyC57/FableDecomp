@@ -1,0 +1,24 @@
+- c1 = b6 - row-local PeekGraphic/PeekGraphicInfoFrame + existing CGraphicInfo.h opt-ins _PEEKGRAPHIC (plain inline, &GraphicList[index]) / _PEEKGRAPHICINFOFRAME (FORCEINLINE, same text). Expect: identical bytes if keyword/begin() spelling are neutral.
+- c1 result: DIFFER(11128v11288) rc 307: plain-inline PeekGraphic left called (5 calls). c2 = c1 + nested opt-in _PEEKGRAPHIC_FORCEINLINE (keyword only; body text &GraphicList[index] kept).
+- c2 result: DIFFER(11288v11288) rc 158 (b6 128), bytes differ from b6. c3 probe = b6 with only the PeekGraphic text &GraphicList[index] (row-local kept): separates text from definition order.
+- (moves graded one at a time from b6; hash vs b6 ee83b86f3634) m2 = b6 - row SetTextureFactor(unsigned long) + existing CRenderStateManager.h _SETTEXTUREFACTOR_INLINE (in-class FORCEINLINE, same text).
+- m3 = b6 - row SelectVertexBuffer + existing CShaderRenderManager.h _SELECTVERTEXBUFFER (plain in-class inline, same body).
+- m4 = b6 - row FlushRender + new CRenderManagerCore.h _FLUSHRENDER_FORCEINLINE (after the last assert; same text).
+- m4 result: DIFFER(11016v11288) rc 1317 (block layout reshuffled from 0x00BD3075 on; 4 fewer calls): definition position matters. m4b alt placement = in-class body at the declaration (line 343), probe overlay alt/hdr4b.
+- m4b result: identical to b6 (ee83b86f3634). Adopted in-class (comment added; comments only).
+- m5 = b6 - row GetAlphaIncludingDistanceFade; ALPHAFADE (decl-only) replaced by the existing _GETALPHAINCLUDINGDISTANCEFADE + _FORCEINLINE (in-class, landed 0x00BA7B30 text).
+- m6 = b6 - row GetTexture + existing CGraphicInfo.h _GETTEXTURE_INLINE (wfA5 text: IsInitialised / Frame.GetTexture / FileData.Get; FORCEINLINE).
+- m7 = b6 - row GetCurrentAlphaMask (plain inline) + existing CEnginePrimitive2DViewportManager.h _ALPHAMASK (in-class, same body); dependency of GetCurrent2DAlphaMaskInfo.
+- m8 = b6 - six row CEnginePrimitiveRenderUtil bodies + new nested in-class opt-ins (_APPLYPIXELSHADER/_SETTEXTUREFACTOR/_GETCURRENT2DALPHAMASKINFO/_ALPHAMASKTEXTUREMODE/_ALPHABLENDSTATES _FORCEINLINE) with includes at header top. Note the in-class order puts DisableTextureFiltering after Set2DAlphaMaskTextureMode.
+- m8 SRC_FAIL: an in-class GetCurrent2DAlphaMaskInfo needs CEnginePrimitive2DViewportManager complete, a class derived from CEnginePrimitiveRenderUtil (include cycle). m8b: that one body out-of-class after the class; the other four stay in-class.
+- m9a = b6 - row GFGetTopBitInByte/g_highestSetBitTable + new GFGetNextPowerOfTwo.h _GFGETTOPBITINBYTE (landed name GTopBitInByteTable), header included where the row included GFLimit.h.
+- m9b = m9a - row GetMipmapSizeMultiplier + new RenderUtil.h _GETMIPMAPSIZEMULTIPLIER_INLINE (out-of-class after the class, plain inline, same text).
+- m9c = m9b - row GetAppropriateMipmap + new MeshBase.h nested _GETAPPROPRIATEMIPMAP_FORCEINLINE (out-of-class after the class, b6 text, includes inside).
+- m9d probe: header body = the landed 0x00BB3E80 text (GetRadius/GetCenter, (d - r) * stretch, 1L/255L), probe overlay alt/h9d.
+- m9d result: DIFFER(11272v11288) rc 397: the landed text is worse here. Kept the b6 text (m9c).
+- c4 = all moves composed (m2..m9c) + PeekGraphic via the header text (_PEEKGRAPHIC + _FORCEINLINE); row extern g_pEnginePrimitiveTypeInfo dropped (the header uses the landed NEngineInternal::GPPrimitiveTypeInfo). Expect c2's bytes 0001251cabe5.
+- p1 probe = c4 without FABLE_RETAIL_CARRAY_INDEX_ASSERT: is the PeekGraphic text cost the operator[] dead-arm assert?
+- hcls on b6: 4 PERM, 17 SAMECOUNT, 3 UNEQUAL; two UNEQUAL are the jump table at 0x00BD5C40 (data), the real one is 0x00BD4D13: ours calls C3DVector(float,float,float) out of line at one of the three SetUserVertexShaderConstant(0, C3DVector(...), w) sites, retail expands it. Pre-reg c6 = c4 + existing C3DVector.h opt-in FABLE_RETAIL_C3DVECTOR_CTOR_FORCEINLINE (the 0x00CBFB7D budget-spent ctor). Expect: that call gone; the SAMECOUNT hunks may move.
+- c6 result: DIFFER(11288v11288) rc 151 (c4 158); UNEQUAL hunks 3 -> 2 (only the jump-table data remains). Kept. p2 = b6 + the same opt-in (the begin()[index] bracket).
+- c6 final: header comment updated (Inline-budget lists the macros); ALPHAFADE overlay block dropped (unused once _GETALPHAINCLUDINGDISTANCEFADE is used). Regrade to confirm 506c5c674d66.
+- pin_asserts over all 12 overlay headers: 1 pinned (CEngineSubPrimitiveAnimatedMesh.h, an AUTH1 addition had moved one assert). Regrade c6 after the pin.

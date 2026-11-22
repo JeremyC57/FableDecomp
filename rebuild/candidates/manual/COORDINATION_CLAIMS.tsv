@@ -275,3 +275,5 @@ date	account	item	kind	status	note
 2026-11-22	A	q12625,q12627,q12628	naming	done	NF231 landed as nf231 (3 rows)
 2026-11-22	A	q12629-q12634	naming	claimed	agent NF232 (nf231 follow-ups)
 2026-11-22	A	0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410	authoring	reserved	AUTH22 (Fable 5.2 authoring trial, owner 2026-11-22; pending/AUTHORING_MODEL_TRIAL.md)
+2026-11-22	A	0x00B4D370,0x00BD3070	authoring	parked-advisor	AUTH21 (last Opus run): both wait on the C2T1 comparator readout (pending/2026-11-22_auth21/)
+2026-11-22	A	0x00502E90,0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410	authoring	claimed	agent AUTH22 on Fable 5.2 (owner trial; pending/2026-11-22_auth22/BRIEF.md)

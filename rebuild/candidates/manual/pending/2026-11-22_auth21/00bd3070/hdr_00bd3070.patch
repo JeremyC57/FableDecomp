@@ -1,0 +1,472 @@
+--- a/rebuild/include/engine/C3DMeshMaterial.h
++++ b/rebuild/include/engine/C3DMeshMaterial.h
+@@ -4,6 +4,10 @@
+ // PDB complete48-byte object. The unnamed first word and IV-counted filenames handle retain their storage.
+ class C3DMeshMaterial {
+ public:
++#ifdef FABLE_RETAIL_C3DMESHMATERIAL_GETDECALID
++    // Scout 4010 (row 0x00BD3070): FableWin.pdb ?GetDecalID@C3DMeshMaterial@@QBEJXZ (17b/9i, FableWin 0x02E8E830); +0x0C.
++    long GetDecalID() const{return DecalID;}
++#endif
+ #ifdef FABLE_RETAIL_C3DMESH2_LOADBINARY
+  // Retail opt-in (Codex pass22): both-PDB exact public LoadBinary signature and native caller.
+  void LoadBinary(class CMemoryDataInputStream&,const class CGraphicDataBank*);
+--- a/rebuild/include/engine/CEngineInternalPrimitiveAnimatedMesh.h
++++ b/rebuild/include/engine/CEngineInternalPrimitiveAnimatedMesh.h
+@@ -23,6 +23,18 @@
+ public:
+ 
+ #ifdef FABLE_RETAIL_PASS22_ANIMATED_MESH_RENDER
++#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ORIGINAL_CACHE) && defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEANIMATEDMESH_ACCESSORS)
++ // Opt-in (chunk 4010 scout, row 0x00BD3070): FableWin.pdb inline accessors listed around RenderMeshPrimitive (debug sizes: PeekRenderInfo
++ // 9i/19b, PeekMesh 10i/22b, PeekLights 10i/21b, GetLOD 10i/22b) and the out-of-line
++ // ?GetBoneTransformations@CEngineInternalPrimitiveAnimatedMesh@@QAEPBVCMatrix4x4@@XZ (retail 0x00BD2D90, bound in reloc_bindings; call 0x00BD56D5).
++ // RenderInfo (retail +0xE0): Lights +0xE0 (0x00BD3B14), Mesh +0xE4 (0x00BD318D), ObjectTransform +0xEC (0x00BD3257..), Distance +0x11C
++ // (0x00BD5792). Bodies FITTED (check with fwsize).
++ const CEngineRenderInfoAnimatedMesh* PeekRenderInfo()const{return &RenderInfo;}
++ const C3DMesh2& PeekMesh()const{return *PeekRenderInfo()->Mesh;}
++ const CEngineLocalLightArray& PeekLights()const{return *PeekRenderInfo()->Lights;}
++ unsigned long GetLOD()const{return PeekRenderInfo()->LOD;}
++ const CMatrix4x4* GetBoneTransformations();                            // 0x00BD2D90
++#endif
+ // Original two PDBs, donor02E82300 and native00BD71B0; evidence in00bd71cc.
+  CEngineRenderInfoAnimatedMesh* GetRenderInfo(){return &RenderInfo;}
+  bool SetupMesh(float,float);
+--- a/rebuild/include/engine/CEngineInternalPrimitiveMorphInfo.h
++++ b/rebuild/include/engine/CEngineInternalPrimitiveMorphInfo.h
+@@ -32,6 +32,10 @@
+ // Layout notes: see that header (retail sizeof 0x38: TextureDecals +0x00, CompositeSurfaces +0x10, names +0x20, array +0x2C).
+ #include "rebuild_abi.h"
+ #include "engine/CVectorMap.h"
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_GETTEXTUREDECAL
++#include "engine/CEngineTextureDecal.h"
++#include "fable_compiler.h"
++#endif
+ #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_HIDDENMATERIALS
+ #include "stlport/fable_containers.h"
+ #include "stlport/fable_map.h"
+@@ -44,6 +48,21 @@
+ class CCompositeSurfaceInfo;
+ class CEngineInternalPrimitiveMorphInfo {
+ public:
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_GETTEXTUREDECAL
++    // Opt-in (wfE7 chunk 4010 / p25S, row 0x00BD3070): FableWin.pdb ?GetTextureDecal@CEngineInternalPrimitiveMorphInfo@@QAEPAVCEngineTextureDecal@@JJ@Z
++    // (60i/204b; retail keeps an uncalled copy 0x00BD8800, landed with this body): the decal registered for (original texture index, decal ID),
++    // or null. _FORCEINLINE: the expanded form.
++    typedef std::pair<long,long> TTextureDecalKey;
++    typedef CVectorMap<TTextureDecalKey,CEngineTextureDecal,CKeyPairCompareLess<TTextureDecalKey,CEngineTextureDecal> > TTextureDecalMap;
++#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_GETTEXTUREDECAL_FORCEINLINE
++    FABLE_FORCEINLINE
++#endif
++    CEngineTextureDecal* GetTextureDecal(long original_texture_index, long decal_id)
++    {
++        TTextureDecalMap::iterator it = TextureDecals.Find(TTextureDecalKey(original_texture_index, decal_id));
++        return it != TextureDecals.end() ? &it->second : 0;
++    }
++#endif
+     CVectorMap<std::pair<long,long>,CEngineTextureDecal,CKeyPairCompareLess<std::pair<long,long>,CEngineTextureDecal> > TextureDecals;   // +0x00
+     CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> > CompositeSurfaces;                       // +0x10
+ #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_HIDDENMATERIALS
+--- a/rebuild/include/engine/CEngineLightingManager.h
++++ b/rebuild/include/engine/CEngineLightingManager.h
+@@ -195,6 +195,13 @@
+     // Opt-in (bwf1 / agentC2, row 0x00BB3E80): Ego_r.pdb / FableWin.pdb ?SetupShaderSpotLight@CEngineLightingManager@@QAEXABVCMatrix3x4@@@Z (0x00B47390).
+     void SetupShaderSpotLight(const CMatrix3x4& transform);              // 0x00B47390
+ #endif
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_SPOTLIGHT_REFLECTION
++    // Opt-in (wfE7, row 0x00BD3070; chunk 4010 text): Ego_r.pdb / FableWin.pdb ?SetupShaderSpotLight@CEngineLightingManager@@QAEXXZ (0x00B47310,
++    // called with no argument at 0x00BD3BFA) and the FableWin.pdb inline ?PeekPrimitiveReflectionColour@CEngineLightingManager@@QBEABVCRGBFloatColour@@XZ
++    // (14i/36b): ThemeChannels[CurrentThemeChannel.ChannelIndex0].ReflectionColour (0x00BD3D78..0x00BD3D8A: movzx [+0xE0], imul 70h, + [+0x3C] + 30h).
++    void SetupShaderSpotLight();                                          // 0x00B47310
++    const CRGBFloatColour& PeekPrimitiveReflectionColour() const { return ThemeChannels[CurrentThemeChannel.ChannelIndex0].ReflectionColour; }
++#endif
+ #if defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_SHADOWED_UPDATE_PASS23) && !defined(FABLE_RETAIL_CENGINELIGHTINGMANAGER_FRAMESTART)
+ private:
+  void UpdateShadowedSpotLights();
+@@ -339,6 +346,24 @@
+         }
+     }
+ #else
++#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER_FADEDSHADOW_MODE_CHECK
++    // Opt-in (chunk 4010, row 0x00BD3070 RenderMeshPrimitive; needs _MEMBERS and _PEEKGLOBALSHADOWMODE): the full FableWin.pdb body
++    // (debug ?SetEnableFadedShadowFactor@CEngineLightingManager@@QAEX_N@Z 24 instructions / 80 bytes; the text below without the
++    // mode test is 20 / 64, and a direct `ShadowMode != 1` test is exactly the missing 4 / 16: `mov eax,this ; cmp [eax+4694h],1 ; je ;
++    // mov byte [ebp+8],0`; through PeekGlobalShadowMode() it is 25 / 81).
++    // Retail 0x00BD3E22..0x00BD3E46 expands it with `true`: `cmp [ecx+4694h],1 ; mov al,1 ; je ; xor al,al ; cmp al,[ecx+0CEh]`.
++    // Second source: the landed 0x00B671A0 SetupBackgroundStates restates this body (retail out-of-line copy 0x00B66EB0).
++    // With `false` (RestoreDefaultPrimitiveParameters) the mode test folds away, so the default text below emits the same code there.
++    FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
++    {
++        if (ShadowMode != 1)
++            enable = false;
++        if (enable != FadedShadowDiffuseFactorEnabled) {
++            FadedShadowDiffuseFactorEnabled = enable;
++            StateUpdateFlags |= 1;
++        }
++    }
++#else
+     FABLE_FORCEINLINE void SetEnableFadedShadowFactor(bool enable)
+     {
+         if (FadedShadowDiffuseFactorEnabled != enable) {
+@@ -347,6 +372,7 @@
+         }
+     }
+ #endif
++#endif
+     FABLE_FORCEINLINE void SetCurrentEnvironmentThemeChannel(const CEnginePrimitiveThemeChannelDesc& channel)
+     {
+         if (CurrentThemeChannel.ChannelIndex0 != channel.ChannelIndex0 || CurrentThemeChannel.ChannelIndex1 != channel.ChannelIndex1 ||
+--- a/rebuild/include/engine/CEnginePrimitiveManagerMeshBase.h
++++ b/rebuild/include/engine/CEnginePrimitiveManagerMeshBase.h
+@@ -74,6 +74,48 @@
+     static const CTexture* FABLE_FASTCALL GetComposedTexture(long&,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo> >&,unsigned long,bool,const CGraphicDataBank*);
+ };
+ FABLE_STATIC_ASSERT_AT(27, sizeof(CEnginePrimitiveManagerMeshBase)==0x20);
++#if defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_GETAPPROPRIATEMIPMAP) && defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERMESHBASE_GETAPPROPRIATEMIPMAP_FORCEINLINE)
++// Nested opt-in (AUTH21, row 0x00BD3070 RenderMeshPrimitive): the FABLE_FORCEINLINE body of the GetAppropriateMipmap declared above (no
++// out-of-line copy: retail expands it in place). Text: the 0x00BD3070 draft's (bounding-sphere centre transformed, distance to the camera
++// less the scaled radius, times the average texture stretch; above DELTA_NOTIONAL_ZERO the diffuse graphic's width over
++// GetMipmapSizeMultiplier() / distance * scale, floored, clamped to 1..255, then its top bit). The 5 landed in-row copies (0x00BA2350,
++// 0x00BB3E80, ...) spell it differently; FableWin.pdb's locals (cam_pos, object_transform, prim, object_scale, bsphere, divisor, dtexdpos,
++// min_distance, mipmap_level, diffuse_index, ideal_size, texture_size, ratio) match neither. Needs FABLE_RETAIL_GFGETTOPBITINBYTE and
++// FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_GETMIPMAPSIZEMULTIPLIER_INLINE (and the CGraphicInfo.h PeekGraphic opt-in).
++#include "engine/C3DVector.h"
++#include "engine/C2DVector.h"
++#include "engine/CMatrix3x4.h"
++#include "engine/C3DPrimitive2.h"
++#include "engine/C3DMeshMaterial.h"
++#include "engine/CGraphicInfo.h"
++#include "engine/GFFloatToLongFloor.h"
++#include "engine/GFLimit.h"
++#include "engine/GFGetNextPowerOfTwo.h"
++FABLE_FORCEINLINE unsigned long FABLE_FASTCALL CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap(const C3DVector& camera_position,
++    const CMatrix3x4& transform, const C3DPrimitive2& mesh_primitive, float scale, const C3DMeshMaterial* material,
++    const CGraphicDataBank* graphic_bank)
++{
++    C3DBoundingSphere sphere = mesh_primitive.GetBoundingSphere();
++    transform.TransformPoint(sphere.Center);
++    unsigned long mipmap = 0;
++    float camera_distance = (camera_position - sphere.Center).GetMagnitude() - scale * sphere.Radius;
++    float distance = mesh_primitive.GetAverageTextureStretch() * camera_distance;
++
++    if (distance > DELTA_NOTIONAL_ZERO) {
++        long graphic_index = material->GetDiffuseMapBankIndex();
++        if (graphic_index > 0) {
++            const CGraphicInfo* graphic = graphic_bank->PeekGraphic(graphic_index);
++            unsigned long width = graphic->GetWidth();
++            float texel_size = CEnginePrimitiveRenderUtil::GetMipmapSizeMultiplier() / distance * scale;
++            float ratio = (float)width / texel_size;
++            long size = GFFloatToLongFloor(ratio);
++            GFLimit(size, 1, 255);
++            mipmap = GFGetTopBitInByte((unsigned char)size);
++        }
++    }
++    return mipmap;
++}
++#endif
+ 
+ #else
+ // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+--- a/rebuild/include/engine/CEnginePrimitiveRenderUtil.h
++++ b/rebuild/include/engine/CEnginePrimitiveRenderUtil.h
+@@ -5,6 +5,28 @@
+ // static fastcall (SI) functions in the PDBs and are declared where a row needs them.
+ #include "rebuild_abi.h"
+ #include "engine/CBaseClassNonCopyable.h"
++#if defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_APPLYPIXELSHADER_FORCEINLINE) || defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR_FORCEINLINE) || defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_GETCURRENT2DALPHAMASKINFO_FORCEINLINE) || \
++    defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ALPHAMASKTEXTUREMODE_FORCEINLINE) || defined(FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ALPHABLENDSTATES_FORCEINLINE)
++// Nested opt-ins (AUTH21, row 0x00BD3070 RenderMeshPrimitive; advisor 2026-11-21: a row-local FABLE_FORCEINLINE body of a member this
++// header models goes in the header). The FABLE_FORCEINLINE bodies of the FableWin.pdb inline members ApplyPixelShader, SetTextureFactor,
++// Set2DAlphaMaskTextureMode / DisableTextureFiltering, SetupAlphaBlendingStatesFromRenderFlags (in-class) and GetCurrent2DAlphaMaskInfo
++// (after the class) (no Ego_r.pdb or retail out-of-line copy; retail expands them in place). Each needs its
++// declaring opt-in. Texts: the landed in-row bodies (0x00BA5260, 0x00BB30A0, 0x00BA1B00, ...). The engine globals use the landed spellings.
++#include "fable_compiler.h"
++#include "engine/CEngineRenderEnums.h"
++#include "engine/RenderStateEnums.h"
++#include "engine/C4DVector.h"
++#include "engine/CRGBFloatColour.h"
++#include "engine/GFDebugPDynamicCast.h"
++#include "engine/CEnginePrimitiveTypeInfo.h"
++#include "engine/CRenderManager.h"
++#include "engine/CShaderRenderManager.h"
++namespace NEngineInternal {
++extern CRenderManager* GPRenderManager;               // 0x01436E18
++extern CShaderRenderManager* GPShaderRenderManager;   // 0x01436E14
++extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; // 0x01436E84
++}
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ANIMATEDMESH
+ class CEngineMeshEffect;
+ class CEngineMeshEffectOutline;
+@@ -272,8 +294,39 @@
+     // Opt-in (chunk 2060 row 0x00BA5260, lane bwf1 row 0x00BD3070: both RenderMeshPrimitive rows expand it): FableWin.pdb
+     // ?SetupAlphaBlendingStatesFromRenderFlags@CEnginePrimitiveRenderUtil@@QAEXKW4ERenderPassType@@EE@Z (268 bytes / 71 debug instructions;
+     // no Ego_r.pdb or retail out-of-line copy). The including row defines the body.
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ALPHABLENDSTATES_FORCEINLINE
++    FABLE_FORCEINLINE void SetupAlphaBlendingStatesFromRenderFlags(unsigned long render_flags, ERenderPassType pass, unsigned char alpha, unsigned char alpha_ref)
++    {
++        if (pass == RENDER_PASS_Z_WRITE) {
++            NEngineInternal::GPRenderManager->SetZBufferWriteEnable(true);
++            NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
++            NEngineInternal::GPRenderManager->SetAlphaTestEnable(true);
++            NEngineInternal::GPRenderManager->SetAlphaRef(alpha_ref);
++            NEngineInternal::GPRenderManager->SetColourWriteEnable(false);
++        } else {
++            if (render_flags & 2) {
++                NEngineInternal::GPRenderManager->SetAlphaTestEnable(true);
++                NEngineInternal::GPRenderManager->SetAlphaRef((alpha * alpha_ref) >> 8);
++            } else {
++                NEngineInternal::GPRenderManager->SetAlphaTestEnable(false);
++                NEngineInternal::GPRenderManager->SetAlphaRef(0);
++            }
++            if (render_flags & 1) {
++                NEngineInternal::GPRenderManager->SetZBufferWriteEnable(false);
++                NEngineInternal::GPRenderManager->SetAlphaBlendEnable(true);
++                NEngineInternal::GPRenderManager->SetSourceAlphaBlendMode(ALPHA_BLEND_SRC_ALPHA);
++                NEngineInternal::GPRenderManager->SetDestAlphaBlendMode(ALPHA_BLEND_INV_SRC_ALPHA);
++                NEngineInternal::GPRenderManager->SetAlphaTestEnable(true);
++            } else {
++                NEngineInternal::GPRenderManager->SetZBufferWriteEnable(true);
++                NEngineInternal::GPRenderManager->SetAlphaBlendEnable(false);
++            }
++        }
++    }
++#else
+     void SetupAlphaBlendingStatesFromRenderFlags(unsigned long render_flags, ERenderPassType pass, unsigned char alpha, unsigned char alpha_ref);
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL
+     // Retail opt-in (chunk 742, the particle manager render passes 0x00BBE090 / 0x00BC25F0 / 0x00BC3F30; chunk 723c's RenderSingleSprite
+     // draft declares the same): Ego_r.pdb / FableWin.pdb members with no out-of-line copy in retail. The including row defines the
+@@ -281,7 +334,14 @@
+     // SetupBlendOpState maps the primitive blend op (1, 2, default) to the D3D blend op and SetupAlphaBlendingStatesFromBlendMode the
+     // blend mode (3, 4, default) to the source / dest blend factors, true when the colour must be premultiplied by alpha.
+     static void __fastcall ApplyVertexShader(const CVertexShader& shader);   // ?ApplyVertexShader@CEnginePrimitiveRenderUtil@@SIXABVCVertexShader@@@Z
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_APPLYPIXELSHADER_FORCEINLINE
++    FABLE_FORCEINLINE static void __fastcall ApplyPixelShader(const CPixelShader& shader)
++    {
++        NEngineInternal::GPShaderRenderManager->ApplyPixelShader(shader);
++    }
++#else
+     static void __fastcall ApplyPixelShader(const CPixelShader& shader);     // ?ApplyPixelShader@CEnginePrimitiveRenderUtil@@SIXABVCPixelShader@@@Z
++#endif
+     static CEngineCamera& __fastcall GetCurrentCamera();                 // ?GetCurrentCamera@CEnginePrimitiveRenderUtil@@SIAAVCEngineCamera@@XZ
+     void SetupBlendOpState(EEnginePrimitiveBlendOp op);                   // ?SetupBlendOpState@CEnginePrimitiveRenderUtil@@QAEXW4EEnginePrimitiveBlendOp@@@Z
+     bool SetupAlphaBlendingStatesFromBlendMode(EEnginePrimitiveBlendMode mode);   // ?SetupAlphaBlendingStatesFromBlendMode@CEnginePrimitiveRenderUtil@@QAE_NW4EEnginePrimitiveBlendMode@@@Z
+@@ -296,8 +356,18 @@
+     // Opt-in (chunk 851, row 0x00BA1B00 DisplayMirroredTextures): Ego_r.pdb / FableWin.pdb
+     // ?SetTextureFactor@CEnginePrimitiveRenderUtil@@SIXABVCRGBFloatColour@@@Z, no out-of-line copy in retail (0x00BA1BDC / 0x00BA1F56
+     // expand it: pixel-shader constant 2 when pixel shaders are on, else the TEXTUREFACTOR render state). The row defines the body.
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_SETTEXTUREFACTOR_FORCEINLINE
++    FABLE_FORCEINLINE static void __fastcall SetTextureFactor(const CRGBFloatColour& colour)
++    {
++        if (NEngineInternal::GPShaderRenderManager->GetPixelShadersEnabled())
++            NEngineInternal::GPShaderRenderManager->SetPixelShaderConstant(2, C4DVector(colour.R, colour.G, colour.B, colour.A));
++        else
++            NEngineInternal::GPRenderManager->SetTextureFactor(colour.GetRGBColour().IntValue);
++    }
++#else
+     static void __fastcall SetTextureFactor(const CRGBFloatColour& colour);
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_OUTLINESTENCIL
+     // Opt-in (chunk 892, row 0x00BF01E0): Ego_r.pdb / FableWin.pdb
+     // ?SetupOutlineSmoothAlphaStencilMaskStates@CEnginePrimitiveRenderUtil@@QAEXABVCEngineMeshEffectOutline@@@Z (a non-static member
+@@ -353,6 +423,28 @@
+     static const CPixelShader& __fastcall GetPixelShaderShadowBufferRender();
+     static const CPixelShader& __fastcall GetPixelShaderShadowBufferRenderAlpha();
+ #endif
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ALPHAMASKTEXTUREMODE
++    // Opt-in (wfE7, row 0x00BD3070): only the two 2D alpha-mask texture-mode helpers of CLOTH2D (FableWin.pdb ?Set2DAlphaMaskTextureMode@CEnginePrimitiveRenderUtil@@QAEXK_N0@Z,
++    // ?DisableTextureFiltering@CEnginePrimitiveRenderUtil@@QAEXK@Z), for rows that already declare GetCurrent2DAlphaMaskInfo via _ANIMATEDMESH. No retail copy; the row defines the bodies.
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_ALPHAMASKTEXTUREMODE_FORCEINLINE
++    FABLE_FORCEINLINE void Set2DAlphaMaskTextureMode(unsigned long stage, bool filter, bool clamp)
++    {
++        if (!filter)
++            DisableTextureFiltering(stage);
++        NEngineInternal::GPRenderManager->SetTextureUVModeU(stage, TEXTURE_UV_CLAMP);
++        NEngineInternal::GPRenderManager->SetTextureUVModeV(stage, TEXTURE_UV_CLAMP);
++    }
++    FABLE_FORCEINLINE void DisableTextureFiltering(unsigned long stage)
++    {
++        NEngineInternal::GPRenderManager->SetTextureFilterModeMag(stage, TEXTURE_FILTER_POINT);
++        NEngineInternal::GPRenderManager->SetTextureFilterModeMin(stage, TEXTURE_FILTER_POINT);
++        NEngineInternal::GPRenderManager->SetTextureMipMapMode(stage, TEXTURE_MIPMAP_DISABLE);
++    }
++#else
++    void Set2DAlphaMaskTextureMode(unsigned long stage, bool filter, bool clamp);
++    void DisableTextureFiltering(unsigned long stage);
++#endif
++#endif
+ #ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_STATICMESHSHADERS
+     // Opt-in (agentC20, row 0x00BA2350 CEnginePrimitiveManagerStaticMeshesBase::SetupRenderModeShadersAndConstants): the remaining FableWin.pdb static
+     // shader getters that row reads (?GetPixelShaderDiffuseFog@CEnginePrimitiveRenderUtil@@SIABVCPixelShader@@XZ and its siblings, 6 debug
+@@ -443,4 +535,24 @@
+ 
+ FABLE_STATIC_ASSERT_AT(110, sizeof(CEnginePrimitiveRenderUtil) == 0x4);
+ 
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_GETCURRENT2DALPHAMASKINFO_FORCEINLINE
++// GetCurrent2DAlphaMaskInfo is defined after the class: it needs the complete CEnginePrimitive2DViewportManager, which derives from
++// CEnginePrimitiveManager : CEnginePrimitiveRenderUtil. Needs FABLE_RETAIL_CENGINEPRIMITIVE2DVIEWPORTMANAGER_ALPHAMASK (GetCurrentAlphaMask).
++#include "engine/CEnginePrimitive2DViewportManager.h"
++FABLE_FORCEINLINE const C2DAlphaMaskInfo* CEnginePrimitiveRenderUtil::GetCurrent2DAlphaMaskInfo()
++{
++    CEnginePrimitive2DViewportManager* manager = GFDebugPDynamicCast(NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(ENGINE_PRIMITIVE_2D_VIEWPORT),
++                                                                      (CEnginePrimitive2DViewportManager*)0);
++    return manager->GetCurrentAlphaMask();
++}
++#endif
++
++#ifdef FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL_GETMIPMAPSIZEMULTIPLIER_INLINE
++// Opt-in (AUTH21, row 0x00BD3070 RenderMeshPrimitive, for GetAppropriateMipmap): FableWin.pdb ?GetMipmapSizeMultiplier@CEnginePrimitiveRenderUtil@@SIMXZ
++// (6i/16b, inline; no Ego_r.pdb or retail copy): the shared render data's MipmapSizeMultiplier (+0xB0). Needs a declaring opt-in
++// (_ANIMATEDMESH or _MESHPRIMITIVE). After the class: it needs the complete CEnginePrimitiveRendererSharedData. The landed in-row text.
++#include "engine/CEnginePrimitiveRendererSharedData.h"
++namespace NEngineInternal { extern CEnginePrimitiveRendererSharedData* GPPrimitiveRendererSharedData; }   // 0x01436E78
++inline float __fastcall CEnginePrimitiveRenderUtil::GetMipmapSizeMultiplier() { return NEngineInternal::GPPrimitiveRendererSharedData->MipmapSizeMultiplier; }
++#endif
+ #endif // FABLE_ENGINE_CENGINEPRIMITIVERENDERUTIL_H
+--- a/rebuild/include/engine/CEngineScreenEffectOutlineGlow.h
++++ b/rebuild/include/engine/CEngineScreenEffectOutlineGlow.h
+@@ -122,6 +122,11 @@
+ public:
+     CEngineScreenEffectOutlineGlow(const CEngineInit&); // 0x00B891B0 ??0CEngineScreenEffectOutlineGlow@@QAE@ABVCEngineInit@@@Z
+     virtual unsigned long PeekSceneFilterFlags() const;
++#ifdef FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_DEPTHTRANSFORM
++    // Opt-in (chunk 4010, row 0x00BD3070): Ego_r.pdb ?SetupDepthBufferTransform@CEngineScreenEffectOutlineGlow@@QAEXABVCMatrix3x4@@@Z
++    // (Ego_r 0x00A2FD30; retail 0x00B89070 is an empty `ret 4`; called on 0x01436E3C with &ObjectTransform at 0x00BD531E).
++    void SetupDepthBufferTransform(const class CMatrix3x4& object_transform);   // 0x00B89070
++#endif
+ #ifdef FABLE_RETAIL_CENGINESCREENEFFECTOUTLINEGLOW_OUTLINERENDERING
+     // FAM13 (CEnginePrimitiveRenderer::Render 0x00B33010, layer 0x80 around sub-primitive list 0xD): Ego_r.pdb / FableWin.pdb names.
+     void BeginOutlineRendering();                     // 0x00B89A20 ?BeginOutlineRendering@CEngineScreenEffectOutlineGlow@@QAEXXZ
+--- a/rebuild/include/engine/CEngineSubPrimitiveAnimatedMesh.h
++++ b/rebuild/include/engine/CEngineSubPrimitiveAnimatedMesh.h
+@@ -4,11 +4,20 @@
+ // Layout: original PDB bases/fields and native00BD71B0 operands; no synthetic members.
+ #include "engine/CEngineSubPrimitiveRepeatedStaticMesh.h"
+ class CEngineInternalPrimitiveAnimatedMesh;
++class CMatrix3x4;
+ class CEngineSubPrimitiveAnimatedMesh:public CEngineSubPrimitiveMeshBase {
+ public:
+  CEngineSubPrimitiveAnimatedMesh(CEngineInternalPrimitiveAnimatedMesh*,C3DPrimitive2*,ERenderMode,bool);
+  virtual ~CEngineSubPrimitiveAnimatedMesh();
++#ifdef FABLE_RETAIL_CENGINESUBPRIMITIVEANIMATEDMESH_ACCESSORS
++ // Opt-in (wfE7 chunk 4010 scout / p25S, row 0x00BD3070): FableWin.pdb inline ?GetParent@CEngineSubPrimitiveAnimatedMesh@@QAEPAVCEngineInternalPrimitiveAnimatedMesh@@XZ,
++ // ?PeekParent@..@@QBEPBVCEngineInternalPrimitiveAnimatedMesh@@XZ (9i/19b, a member read) and ?PeekObjectTransform@..@@QBEABVCMatrix3x4@@XZ (12i/29b; the
++ // body needs CEngineInternalPrimitiveAnimatedMesh, so the including row defines it). Needs FABLE_RETAIL_CENGINESUBPRIMITIVEBASE_ACCESSORS.
++ CEngineInternalPrimitiveAnimatedMesh* GetParent() { return (CEngineInternalPrimitiveAnimatedMesh*)GetParentBase(); }
++ const CEngineInternalPrimitiveAnimatedMesh* PeekParent() const { return (const CEngineInternalPrimitiveAnimatedMesh*)PeekParentBase(); }
++ const CMatrix3x4& PeekObjectTransform() const;
++#endif
+ };
+-FABLE_STATIC_ASSERT(sizeof(CEngineSubPrimitiveAnimatedMesh)==36);
++FABLE_STATIC_ASSERT_AT(12, sizeof(CEngineSubPrimitiveAnimatedMesh)==36);
+ #endif
+ #endif
+--- a/rebuild/include/engine/CGraphicInfo.h
++++ b/rebuild/include/engine/CGraphicInfo.h
+@@ -116,6 +116,13 @@
+     friend class CGraphicInfoFrame;
+ #endif
+     CGraphicDataBank* GetBank() const {return Bank;}
++#ifdef FABLE_RETAIL_CGRAPHICINFO_GETTRANSPARENCYTYPE
++    // Opt-in (wfE7, row 0x00BD3070; chunk 4010 text): FableWin.pdb ?GetTransparencyType@CGraphicInfo@@QBE?AW4ETransparencyType@CGraphicDataBank@@XZ
++    // (inline; reads the header byte +0x10, 0x00BD50DD `mov al,[edx+10h]`). The PDB returns CGraphicDataBank::ETransparencyType (no enumerators
++    // recovered; the header has no such enum): the byte is returned as stored.
++public:
++    unsigned char GetTransparencyType() const {return Header.TransparencyType;}
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_LOADFRAME
+     // Retail opt-in (chunk 2004, row 0x009FED30 CGraphicDataBank::LoadGraphicFrame): Ego_r.pdb
+     // ?InitialiseFramesAsSurfaceSections@CGraphicInfo@@AAEXAAVCManagedTexture@@CAAV?$CCountedPointer@VCTexture@@@@_N2@Z (private; the
+@@ -138,6 +145,11 @@
+     CGraphicInfoFrame* Frames;
+ };
+ FABLE_STATIC_ASSERT_AT(121, sizeof(CGraphicInfo)==44);
++#if defined(FABLE_RETAIL_CGRAPHICINFOFRAME_ISALPHA) && defined(FABLE_RETAIL_CGRAPHICINFO_GETTRANSPARENCYTYPE)
++// Opt-in (wfE7, row 0x00BD3070; chunk 4010 text): FableWin.pdb ?IsAlpha@CGraphicInfoFrame@@QBE_NXZ, inline in retail (0x00BD50DA..0x00BD50E0
++// `mov edx,[eax+0Ch] ; mov al,[edx+10h] ; test al,al`).
++inline bool CGraphicInfoFrame::IsAlpha() const {return GraphicInfo->GetTransparencyType()!=0;}
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_PASS22_SPRITE
+ // Retail opt-in (Codex pass22): exact original header accessors, native0x0077C59C..0x0077C608.
+ inline unsigned long CGraphicInfoFrame::GetWidth() const { return GraphicInfo->PeekGraphicHeader().FrameWidth; }
+@@ -422,7 +434,14 @@
+ // Retail opt-in (chunk 2045, row 0x00BB8EF0): FableWin.pdb ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (donor 0x01D2D7A0), inline in
+ // retail: 0x00BB8F49..0x00BB8F81 reads GraphicList (+0x1E0 begin / +0x1E4 end), divides by sizeof(CGraphicInfo) 0x2C and returns the element
+ // address for an index below the count, else 0. Defined here because the element type must be complete.
+-inline const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
++#ifdef FABLE_RETAIL_CGRAPHICDATABANK_PEEKGRAPHIC_FORCEINLINE
++// Nested opt-in (AUTH21, row 0x00BD3070 RenderMeshPrimitive): the same body FABLE_FORCEINLINE, as 13 landed rows spell it in-row
++// (e.g. 0x00BB3E80, 0x00BA2350). Plain `inline` leaves the four RenderMeshPrimitive sites called (DIFFER 11128v11288, five calls).
++FABLE_FORCEINLINE
++#else
++inline
++#endif
++const CGraphicInfo* CGraphicDataBank::PeekGraphic(unsigned long index) const
+ {
+     return index < GraphicList.size() ? &GraphicList[index] : 0;
+ }
+--- a/rebuild/include/engine/CGraphicInfoFrame.h
++++ b/rebuild/include/engine/CGraphicInfoFrame.h
+@@ -135,6 +135,11 @@
+     bool GetTexture(const CTexture**,unsigned long,unsigned long) const;
+     const CTexture* GetBlankTexture() const; // native009fd3f0
+     void TouchFrame(unsigned long) const;
++#ifdef FABLE_RETAIL_CGRAPHICINFOFRAME_ISALPHA
++    // Opt-in (chunk 4010, row 0x00BD3070): FableWin.pdb ?IsAlpha@CGraphicInfoFrame@@QBE_NXZ (inline; 0x00BD50DA `mov edx,[eax+0Ch] ;
++    // mov al,[edx+10h] ; test al,al`: the graphic's transparency type is not 0). Body in engine/CGraphicInfo.h. FITTED.
++    bool IsAlpha() const;
++#endif
+ #ifdef FABLE_RETAIL_CGRAPHICINFO_TEXTURETYPE
+     // Retail opt-in (wf8, row 0x00BA4A40): FableWin.pdb ?GetTextureType@CGraphicInfoFrame@@QBE?AW4ETextureType@CGraphicDataBank@@XZ;
+     // the inline body is in engine/CGraphicInfo.h (needs the complete CGraphicInfo). No layout change.
+--- a/rebuild/include/engine/CRenderManagerCore.h
++++ b/rebuild/include/engine/CRenderManagerCore.h
+@@ -340,7 +340,27 @@
+     void SetMaterial(const class CRGBColour&, const class CRGBColour&);   // 0x00A0AA10
+ #endif
+     void SetVertexFormat(unsigned long);
++#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_FLUSHRENDER_FORCEINLINE
++    // Opt-in (AUTH21, row 0x00BD3070 RenderMeshPrimitive): FableWin.pdb ?FlushRender@CRenderManagerCore@@QAEXXZ (no Ego_r.pdb or retail
++    // out-of-line copy; retail expands it in place). Deselects stream 0 through SelectVertexBuffer(0, 0), clears the index buffer, unbinds
++    // every bound texture stage below TextureStagesInUse, then zeroes the count. The text 7 landed rows carry in-row (0x00BA1B00,
++    // 0x00BA6240, 0x00B8B780, ...), FABLE_FORCEINLINE as they spell it. In-class: an out-of-class body after the class reshuffles
++    // 0x00BD3070's block layout (DIFFER 11016v11288), and the in-class body gives the in-row bytes.
++    FABLE_FORCEINLINE void FlushRender()
++    {
++        SelectVertexBuffer(0, 0);
++        PD3DDevice->SetIndices(0);
++        for (long stage = 0; stage < TextureStagesInUse; ++stage) {
++            if (CurrentlySelectedTextures[stage]) {
++                CurrentlySelectedTextures[stage] = 0;
++                PD3DDevice->SetTexture(stage, 0);
++            }
++        }
++        TextureStagesInUse = 0;
++    }
++#else
+     void FlushRender();
++#endif
+ #ifdef FABLE_RETAIL_CRENDERMANAGERCORE_WAITWHILEGPUISBUSY
+     // Retail opt-in (chunk 2018, row 0x00B2D330): Ego_r.pdb ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ (Ego_r 0x00B74540, a 16-byte
+     // stub between DrawAsIndexedTris(user) 0x00B74500 and CheckBufferedTextures 0x00B74550 = retail 0x00A0AF40 / 0x00A0AF80 / 0x00A0AF90):
+--- a/rebuild/include/engine/GFGetNextPowerOfTwo.h
++++ b/rebuild/include/engine/GFGetNextPowerOfTwo.h
+@@ -36,4 +36,15 @@
+         return 0;
+     return 1 << GFGetTopBit(value * 2 - 1);
+ }
++#ifdef FABLE_RETAIL_GFGETTOPBITINBYTE
++// Opt-in (AUTH21, row 0x00BD3070 RenderMeshPrimitive; needs header claim: no shared home existed): FableWin.pdb GFGetTopBitInByte
++// (S_GPROC32, inline in retail), the byte-table form of GFGetTopBit: the index of the highest set bit of a byte, read from the 256-entry
++// table GTopBitInByteTable 0x0143B990 (the landed spelling, 9 rows; Anniversary PDB GTopBitInByteTable, unsigned char[256]). The text
++// 5 landed rows carry in-row (0x00BA2350, 0x00BA5260, 0x00BB3E80, ...).
++extern unsigned char GTopBitInByteTable[256];   // 0x0143B990
++inline unsigned long FABLE_FASTCALL GFGetTopBitInByte(unsigned char value)
++{
++    return GTopBitInByteTable[value];
++}
++#endif
+ #endif
