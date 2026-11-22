@@ -1,0 +1,19 @@
+# A: HEAD 0x00A96DA0 + HEAD 0x00AD94F0 + HEAD 0x00ADCE60
+duplicates 2
+H_00ad94f0.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in H_00a96da0.obj; second definition ignored
+H_00adce60.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in H_00a96da0.obj; second definition ignored
+UNRESOLVED 1 ??A?$map@KVCGroupInfo@CVertexGroupBlockOptimiser@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@4@@std@@QAEAAVCGroupInfo@CVertexGroupBlockOptimiser@@ABK@Z
+# B: HEAD 0x00A96DA0 + HEAD 0x00AD94F0 + NF273 0x00ADCE60
+duplicates 1
+H_00ad94f0.obj : warning LNK4006: "public: __thiscall CVertexGroupBlock::~CVertexGroupBlock(void)" (??1CVertexGroupBlock@@QAE@XZ) already defined in H_00a96da0.obj; second definition ignored
+UNRESOLVED 1 ??A?$map@KVCGroupInfo@CVertexGroupBlockOptimiser@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@4@@std@@QAEAAVCGroupInfo@CVertexGroupBlockOptimiser@@ABK@Z
+# C: HEAD 0x00A96DA0 + NF273 0x00ADCE60
+duplicates 0
+
+# D: NF273 0x00ADCE60 alone (control: the reference is unresolved without the owner)
+duplicates 0
+
+UNRESOLVED 1 ??1CVertexGroupBlock@@QAE@XZ
+# E: HEAD 0x00AD94F0 + NF273 0x00ADCE60 (no owner: the pick-any EQ copy of 0x00AD94F0 resolves it)
+duplicates 0
+

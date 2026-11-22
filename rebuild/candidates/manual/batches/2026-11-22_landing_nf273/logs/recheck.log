@@ -1,0 +1,42 @@
+addr       parity           behav  name
+006a0e50   RELOCATION_MATCH PASS   Clone
+006a0d20   RELOCATION_MATCH PASS   Clone
+00adce60   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00adce60   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00adce60   RELOCATION_MATCH PASS   _M_insert_overflow
+006a0d50   RELOCATION_MATCH PASS   CCreatureAction_UseObject
+0069f0f0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+006a0150   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+005ca68e   WARN RELOC_NAME: ??$IS_THING_DEAD@PAVCThing@@@@YI_NABQAVCThing@@@Z -> 005cbdbd labelled '_global::IsThingAlive_ptr_005cbdbd'
+005ca68e   WARN RELOC_NAME: ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z -> 005cbdd2 labelled 'operator!=<CThing>'
+005ca68e   RELOCATION_MATCH PASS   SetupActiveWeaponsOnCarrier
+006666a0   RELOCATION_MATCH PASS   WorldUpdate
+00694430   RELOCATION_MATCH PASS   FinishAction
+006deee0   RELOCATION_MATCH PASS   GlobalUpdate
+006df800   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheToShowToSheatheTrophy
+006df860   RELOCATION_MATCH PASS   ~CCreatureAction_UnsheatheToShowToSheatheTrophy
+00a96da0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00a96da0   RELOCATION_MATCH PASS   ~CVertexGroupBlock
+00ad94f0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00ad94f0   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ad94f0   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00ad94f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad94f0   RELOCATION_MATCH PASS   FindBestStartingBlock
+00adbe50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 15
+  006a0e50 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+  006a0d20 RELOCATION_MATCH CCreatureAction_UseObject::?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+  00adce60 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCVertexGroupBlock@@
+  006a0d50 RELOCATION_MATCH CCreatureAction_UseObject::??0CCreatureAction_UseObject@@QAE@ABV0@@Z
+  0069f0f0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+  006a0150 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z
+  005ca68e RELOCATION_MATCH CTCInventoryWeapons::?SetupActiveWeaponsOnCarrier@CTCInventoryWeapons@@AAEXXZ
+  006666a0 RELOCATION_MATCH CThingCreatureBase::?WorldUpdate@CThingCreatureBase@@UAE_NXZ
+  00694430 RELOCATION_MATCH CCreatureActionBase::?FinishAction@CCreatureActionBase@@UAEXXZ
+  006deee0 RELOCATION_MATCH CTCTrophy::?GlobalUpdate@CTCTrophy@@UAEX_N@Z
+  006df800 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??0CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z
+  006df860 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??1CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAE@XZ
+  00a96da0 RELOCATION_MATCH CVertexGroupBlock::??1CVertexGroupBlock@@QAE@XZ
+  00ad94f0 RELOCATION_MATCH CVertexGroupBlockOptimiser::?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ
+  00adbe50 RELOCATION_MATCH CVertexGroupBlock::??_GCVertexGroupBlock@@QAEPAXI@Z

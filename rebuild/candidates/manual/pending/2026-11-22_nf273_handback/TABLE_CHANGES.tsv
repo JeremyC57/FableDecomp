@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+# none: reloc_bindings has no Clone line (vtable-slot references only); the two copy-ctor lines (??0CCreatureAction_UseObject@@QAE@ABV0@@Z 006a0d50 witness 006a0d20, ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@ABV0@@Z 006a0e80 witness 006a0e50) are unchanged and still bound by the same rows
+# entry 2: none: 0x00ADCE60 now references ??1CVertexGroupBlock@@QAE@XZ, which the table already binds at 00a96da0 (the owner leaf); no retail call site in the row, so no witness change

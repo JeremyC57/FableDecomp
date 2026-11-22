@@ -1,0 +1,17 @@
+## H_00a96da0
+DEF section 41 selection 1 (1=NODUPLICATES 2=ANY)
+REF from section 42 (no function symbol: .debug$F)
+## H_00ad94f0
+DEF section 107 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 108 (no function symbol: .debug$F)
+## H_00adce60
+DEF section 21 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 22 (no function symbol: .debug$F)
+## d1_00adce60
+UND
+REF from section 21 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 25 ??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z
+REF from section 31 ??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z
+## d1_00ad94f0
+UND
+REF from section 109 ?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ

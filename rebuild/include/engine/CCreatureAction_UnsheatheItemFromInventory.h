@@ -25,6 +25,11 @@ public:
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature, CThing& item, CCreatureActionBase* followUp, long priority);   // 0x006A0150
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& creature, const CCharString& animation, CThing& item, long, long,
                                                CCreatureActionBase* followUp);
+#ifdef FABLE_RETAIL_CCREATUREACTION_UNSHEATHE_COPYCTOR
+    // Copy constructor 0x006A0E80 (Ego_r.pdb 0x006C57A0 + FableWin.pdb 0x02211700 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@ABV0@@Z,
+    // public); out of line, called by the private Clone 0x006A0E50. Opt-in (NF273): declaration only, no slot, no layout change.
+    CCreatureAction_UnsheatheItemFromInventory(const CCreatureAction_UnsheatheItemFromInventory& other);
+#endif
     virtual ~CCreatureAction_UnsheatheItemFromInventory();                    // 0x005CC091
     virtual void Initialise();
     virtual void PerformAction();                                             // 0x0069F9E0
@@ -41,6 +46,6 @@ public:
     CIntelligentPointer<CThing> PUnsheatheItem;                               // +0xA8
     CCountedPointer<CCreatureActionBase> PFollowUpAction;                     // +0xB0
 };
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheItemFromInventory) == 0xb8);
+FABLE_STATIC_ASSERT_AT(44, sizeof(CCreatureAction_UnsheatheItemFromInventory) == 0xb8);
 #endif
 #endif // FABLE_ENGINE_CCREATUREACTION_UNSHEATHEITEMFROMINVENTORY_H

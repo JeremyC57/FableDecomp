@@ -1,0 +1,7 @@
+pH 00adce60 std::vector::_M_insert_overflow RELOCATION_MATCH flags= [] leaf=?_M_insert_overflow@?$vector@VCVertexGroupBlock@@
+pS 00adce60 std::vector::_M_insert_overflow RELOCATION_MATCH flags= [] leaf=?_M_insert_overflow@?$vector@VCVertexGroupBlock@@
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ??1CVertexGroupBlock@@QAE@XZ
+< UND ??1?$vector@KV?$allocator@K@std@@@std@@QAE@XZ
+> UND ??1CVertexGroupBlock@@QAE@XZ

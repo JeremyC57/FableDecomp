@@ -1,0 +1,8 @@
+addr       parity           behav  name
+006a0e50   RELOCATION_MATCH PASS   Clone
+006a0d20   RELOCATION_MATCH PASS   Clone
+
+WINS: 2
+  006a0e50 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+  006a0d20 RELOCATION_MATCH CCreatureAction_UseObject::?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+VLDONE

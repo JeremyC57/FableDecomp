@@ -7,6 +7,10 @@
 //   __uninitialized_copy<T*, T*> 0x00ADC330, __uninitialized_fill_n 0x00ADC3B0 and __destroy_aux 0x00ADC190 (whose
 //   notes already name this caller). The catalog's "vector_insert" is descriptive.
 // Callees: malloc 0x00BFEA0E, free 0x00BFEA14 and the five above.
+// NF273 (2026-11-22): the local CVertexGroupBlock model now declares its destructor (??1CVertexGroupBlock@@QAE@XZ, retail 0x00A96DA0,
+//   Ego_r.pdb 0x00BD5B30 + FableWin.pdb; the landed self row's leaf) instead of letting VC7.1 emit the implicit one. The HEAD object defined a
+//   19-byte pick-any copy of that symbol (calls to the out-of-line ~map / ~vector) that differed from its owner's 84 bytes; the copy is gone
+//   and the three helper references bind 0x00A96DA0's body. The leaf's bytes and relocations are unchanged (RELOCATION_MATCH).
 // Shape: byte twin of vector<QuadricOptimiserInternals::COptimisedSubMesh>::_M_insert_overflow 0x00AD83D0 (this
 //   chunk): STLport 4.6 verbatim with the copy/fill/destroy helpers as same-TU noinline bodies (each `__false_type()`
 //   tag homed on the `atend` slot), CVertexGroupBlock's implicit copy constructor inline (vector copy constructor, then
@@ -168,6 +172,7 @@ class CVertexGroupBlock {                                   // Ego_r.pdb, 0x18 b
 public:
     std::vector<unsigned long>    Groups;                  // +0x00
     std::map<unsigned long, long> GroupToIndexMap;         // +0x0C
+    ~CVertexGroupBlock();                                   // 0x00A96DA0 (declaration only)
 };
 
 template void std::vector<CVertexGroupBlock>::_M_insert_overflow(CVertexGroupBlock*, const CVertexGroupBlock&,

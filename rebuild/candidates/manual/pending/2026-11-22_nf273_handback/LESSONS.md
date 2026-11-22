@@ -1,0 +1,6 @@
+# NF273 lessons (one line each)
+- A Clone row (`return new T(*this);` with an out-of-line copy constructor) ports onto the class header in one form once the header declares the copy constructor; check the header for it first, or the implicit copy expands inline.
+- Neither July Clone row had a Leaf line: grade the HEAD object with the old leaf passed explicitly (sc.sh HLEAF) and take RENAMES' old leaf from its objdump -t, or the HEAD grade silently picks the largest function.
+- A private virtual leaf can be called from a linking test through an extern "C" __fastcall alias bound by /alternatename (thiscall with no stack argument), and a test-defined global operator new lets the null-allocation path be tested without touching the row.
+- Before making a caller "reference" an out-of-line function instead of defining a copy, scan the whole exe for retail call sites from that caller: retail expanded ~CVertexGroupBlock inline in FindBestStartingBlock and __destroy_aux, so declare-only DIFFERs there (420v536) and the duplicate is the owner's strong definition of an inline function.
+- tools/comdat.py (COMDAT selection + referencing sections of one symbol) separates a legitimate pick-any copy (selection ANY, EQ to its owner) from the strong definition that causes LNK4006 in one step.

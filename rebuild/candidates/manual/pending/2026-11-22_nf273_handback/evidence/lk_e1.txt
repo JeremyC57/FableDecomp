@@ -1,0 +1,12 @@
+# A: HEAD objects 0x0069F0F0 0x006A0150 0x006A0D50 0x006A0E80 + HEAD Clone rows
+duplicates 0
+
+UNRESOLVED 2 ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z
+UNRESOLVED 2 ??0CCreatureActionBase@@QAE@ABV0@@Z
+UNRESOLVED 2 ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+UNRESOLVED 1 ?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+# B: same controls + NF273 Clone rows
+duplicates 0
+
+UNRESOLVED 2 ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z
+UNRESOLVED 2 ??0CCreatureActionBase@@QAE@ABV0@@Z

@@ -1,0 +1,17 @@
+pH 006a0d20 CCreatureAction_UseObject::Clone RELOCATION_MATCH flags= [] leaf=?Clone@CCreatureAction_UseObject@@QAEPAVCCreatureActionBase@@XZ
+pS 006a0d20 CCreatureAction_UseObject::Clone RELOCATION_MATCH flags= [] leaf=?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?Clone@CCreatureAction_UseObject@@QAEPAVCCreatureActionBase@@XZ
+> DEF ?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+# new object symbols
+DEF ?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+UND ??0CCreatureAction_UseObject@@QAE@ABV0@@Z
+UND ??2@YAPAXI@Z
+# new relocations (target, symbol, count)
+006a0d50	??0CCreatureAction_UseObject@@QAE@ABV0@@Z	x1
+00bfea1a	??2@YAPAXI@Z	x1
+# HEAD object symbols
+DEF ?Clone@CCreatureAction_UseObject@@QAEPAVCCreatureActionBase@@XZ
+UND ??0CCreatureAction_UseObject@@QAE@ABV0@@Z
+UND ??2@YAPAXI@Z

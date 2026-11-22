@@ -1,0 +1,17 @@
+pH 00ad94f0 CVertexGroupBlockOptimiser::FindBestStartingBlock RELOCATION_MATCH flags= [] leaf=?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ
+pS 00ad94f0 CVertexGroupBlockOptimiser::FindBestStartingBlock DIFFER(420v536) flags= [] leaf=?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+< 004507a1	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z	x1
+< 00535470	??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z	x1
+< 00a96e40	??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z	x1
+< 00adae00	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@Z	x1
+< 00bfea14	_free	x5
+> 0495c18e	??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z	x1
+> 4e225896	_free	x1
+> 83b5d8dd	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@Z	x1
+> 8c000a7f	??1CVertexGroupBlock@@QAE@XZ	x1
+> c795cd9b	??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z	x1
+> ca329ecf	_free	x1
+--- symbols HEAD(<) new(>)
+< DEF ??1CVertexGroupBlock@@QAE@XZ
+> UND ??1CVertexGroupBlock@@QAE@XZ

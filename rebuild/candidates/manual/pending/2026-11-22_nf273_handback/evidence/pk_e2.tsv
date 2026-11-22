@@ -1,0 +1,96 @@
+H_00ad94f0	??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z	22	0041c830	EQ
+H_00ad94f0	?size@?$vector@KV?$allocator@K@std@@@std@@QBEIXZ	9	-	NO-OWNER
+H_00ad94f0	??A?$vector@KV?$allocator@K@std@@@std@@QBEABKI@Z	12	-	NO-OWNER
+H_00ad94f0	?size@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ	25	-	NO-OWNER
+H_00ad94f0	??A?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEABVCVertexGroupBlock@@I@Z	15	-	NO-OWNER
+H_00ad94f0	??A?$vector@_NV?$allocator@_N@std@@@std@@QBEAB_NI@Z	9	-	NO-OWNER
+H_00ad94f0	??D?$_Rb_tree_iterator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QBEAAU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@1@XZ	6	-	NO-OWNER
+H_00ad94f0	??0?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@QAE@XZ	3	-	NO-OWNER
+H_00ad94f0	?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z	54	004292c0	NEQ:bytes(54 v 54)
+H_00ad94f0	?deallocate@?$allocator@K@std@@QAEXPAKI@Z	18	-	NO-OWNER
+H_00ad94f0	?_M_root@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@IBEAAPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@XZ	6	-	NO-OWNER
+H_00ad94f0	?_M_leftmost@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@IBEAAPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@XZ	6	-	NO-OWNER
+H_00ad94f0	?_M_rightmost@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@IBEAAPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@XZ	6	-	NO-OWNER
+H_00ad94f0	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@I@Z	18	-	NO-OWNER
+H_00ad94f0	?_M_root@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@
+H_00ad94f0	?_M_leftmost@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@s
+H_00ad94f0	?_M_rightmost@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@
+H_00ad94f0	?_M_empty_initialize@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@st
+H_00ad94f0	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@I@Z	18	-	NO-OWNER
+H_00ad94f0	??0?$_Rb_tree_iterator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@st
+H_00ad94f0	??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@@std@@QAE@XZ	3	-	NO-OWNER
+H_00ad94f0	?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@I@Z	28	-	NO-OWNER
+H_00ad94f0	??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@@std@@QAE@ABV01@@Z	5	-	NO-OWNER
+H_00ad94f0	?GetGroupCount@CVertexGroupBlock@@QBEKXZ	9	-	NO-OWNER
+H_00ad94f0	?GetGroup@CVertexGroupBlock@@QBEKK@Z	12	-	NO-OWNER
+H_00ad94f0	?GetBlockCount@CVertexGroupBlockList@@QBEKXZ	25	-	NO-OWNER
+H_00ad94f0	??C?$_Rb_tree_iterator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QBEPAU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@1@XZ	6	-	NO-OWNER
+H_00ad94f0	??E?$_Rb_tree_iterator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAEAAU01@XZ	62	-	NO-OWNER
+H_00ad94f0	??1?$_Vector_base@KV?$allocator@K@std@@@std@@QAE@XZ	14	-	NO-OWNER
+H_00ad94f0	??1?$_Rb_tree_base@U?$pair@$$CBKJ@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ	14	-	NO-OWNER
+H_00ad94f0	?begin@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QA
+H_00ad94f0	?end@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAE?
+H_00ad94f0	??1?$_Rb_tree_base@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAE@XZ	14	-	NO-OWNER
+H_00ad94f0	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z	51	004507a1	NEQ:bytes(51 v 51)
+H_00ad94f0	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@
+H_00ad94f0	??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_Rb_tree_nod
+H_00ad94f0	??1?$vector@KV?$allocator@K@std@@@std@@QAE@XZ	14	-	NO-OWNER
+H_00ad94f0	?begin@?$map@KVCGroupInfo@CVertexGroupBlockOptimiser@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Nonconst_t
+H_00ad94f0	?end@?$map@KVCGroupInfo@CVertexGroupBlockOptimiser@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Nonconst_tra
+H_00ad94f0	?clear@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEXXZ	51	00451046	NEQ:bytes(51 v 51)
+H_00ad94f0	?clear@?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QA
+H_00ad94f0	??0?$_Rb_tree_base@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@1@@Z	27	-	N
+H_00ad94f0	??0?$CArray@K@@QAE@ABV0@@Z	19	-	NO-OWNER
+H_00ad94f0	??1?$CArray@K@@QAE@XZ	14	-	NO-OWNER
+H_00ad94f0	??1?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ	66	-	NO-OWNER
+H_00ad94f0	??1?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAE@XZ
+H_00ad94f0	??0?$_Rb_tree@KU?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@U?$_Select1st@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@2@@std@@QAE@AB
+H_00ad94f0	??1?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ	66	-	NO-OWNER
+H_00ad94f0	??1?$map@KVCGroupInfo@CVertexGroupBlockOptimiser@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@4@@std@@QAE@XZ	66	-	NO-OWNER
+H_00ad94f0	??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z	19	00a96e40	NEQ:bytes(19 v 161)
+H_00ad94f0	??0?$map@KVCGroupInfo@CVertexGroupBlockOptimiser@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCGroupInfo@CVertexGroupBlockOptimiser@@@std@@@4@@std@@QAE@XZ	54	-	NO-OWNER
+H_00ad94f0	??0CVertexGroupBlock@@QAE@ABV0@@Z	33	-	NO-OWNER
+H_00ad94f0	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	EQ
+H_00ad94f0	?GetBlock@CVertexGroupBlockList@@QBE?AVCVertexGroupBlock@@K@Z	45	-	NO-OWNER
+H_00adce60	??2@YAPAXIPAX@Z	5	00405c10	EQ
+H_00adce60	??0__false_type@std@@QAE@XZ	3	-	NO-OWNER
+H_00adce60	?size@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ	25	-	NO-OWNER
+H_00adce60	?_M_set@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@IAEXPAVCVertexGroupBlock@@00@Z	23	-	NO-OWNER
+H_00adce60	?allocate@?$allocator@VCVertexGroupBlock@@@std@@QAEPAVCVertexGroupBlock@@I@Z	31	-	NO-OWNER
+H_00adce60	?deallocate@?$allocator@VCVertexGroupBlock@@@std@@QAEXPAVCVertexGroupBlock@@I@Z	18	-	NO-OWNER
+H_00adce60	??$max@I@std@@YAABIABI0@Z	17	-	NO-OWNER
+H_00adce60	??1?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ	5	-	NO-OWNER
+H_00adce60	??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z	19	00a96e40	NEQ:bytes(19 v 161)
+H_00adce60	??1CVertexGroupBlock@@QAE@XZ	19	00a96da0	NEQ:bytes(19 v 84)
+H_00adce60	??0CVertexGroupBlock@@QAE@ABV0@@Z	33	-	NO-OWNER
+H_00adce60	??_GCVertexGroupBlock@@QAEPAXI@Z	40	-	NO-OWNER
+H_00adce60	??$_Construct@VCVertexGroupBlock@@V1@@std@@YAXPAVCVertexGroupBlock@@ABV1@@Z	37	-	NO-OWNER
+H_00adce60	??$__uninitialized_fill_n@PAVCVertexGroupBlock@@IV1@@std@@YIPAVCVertexGroupBlock@@PAV1@IABV1@ABU__false_type@0@@Z	54	00adc3b0	NEQ:bytes(54 v 139)
+H_00adce60	??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z	21	-	NO-OWNER
+H_00adce60	??$__uninitialized_copy@PAVCVertexGroupBlock@@PAV1@@std@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@0@@Z	58	00adc330	NEQ:bytes(58 v 127)
+H_00adce60	??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	43	00adc190	NEQ:bytes(43 v 141)
+H_00adce60	??$_Destroy@PAVCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@0@Z	21	-	NO-OWNER
+H_00adce60	?_M_clear@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@IAEXXZ	37	-	NO-OWNER
+d1_00adce60	??2@YAPAXIPAX@Z	5	00405c10	EQ
+d1_00adce60	??0__false_type@std@@QAE@XZ	3	-	NO-OWNER
+d1_00adce60	?size@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QBEIXZ	25	-	NO-OWNER
+d1_00adce60	?_M_set@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@IAEXPAVCVertexGroupBlock@@00@Z	23	-	NO-OWNER
+d1_00adce60	?allocate@?$allocator@VCVertexGroupBlock@@@std@@QAEPAVCVertexGroupBlock@@I@Z	31	-	NO-OWNER
+d1_00adce60	?deallocate@?$allocator@VCVertexGroupBlock@@@std@@QAEXPAVCVertexGroupBlock@@I@Z	18	-	NO-OWNER
+d1_00adce60	??$max@I@std@@YAABIABI0@Z	17	-	NO-OWNER
+d1_00adce60	??1?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@XZ	5	-	NO-OWNER
+d1_00adce60	??0?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z	19	00a96e40	NEQ:bytes(19 v 161)
+d1_00adce60	??_GCVertexGroupBlock@@QAEPAXI@Z	30	-	NO-OWNER
+d1_00adce60	??0CVertexGroupBlock@@QAE@ABV0@@Z	33	-	NO-OWNER
+d1_00adce60	??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z	9	-	NO-OWNER
+d1_00adce60	??$_Construct@VCVertexGroupBlock@@V1@@std@@YAXPAVCVertexGroupBlock@@ABV1@@Z	37	-	NO-OWNER
+d1_00adce60	??$__uninitialized_fill_n@PAVCVertexGroupBlock@@IV1@@std@@YIPAVCVertexGroupBlock@@PAV1@IABV1@ABU__false_type@0@@Z	54	00adc3b0	NEQ:bytes(54 v 139)
+d1_00adce60	??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	35	00adc190	NEQ:bytes(35 v 141)
+d1_00adce60	??$__uninitialized_copy@PAVCVertexGroupBlock@@PAV1@@std@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@0@@Z	58	00adc330	NEQ:bytes(58 v 127)
+d1_00adce60	??$_Destroy@PAVCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@0@Z	21	-	NO-OWNER
+d1_00adce60	?_M_clear@?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@IAEXXZ	37	-	NO-OWNER
+H_00adce60	??1CVertexGroupBlock@@QAE@XZ	19	00a96da0	NEQ:bytes(19 v 84)
+H_00adce60	??_GCVertexGroupBlock@@QAEPAXI@Z	40	00adbe50	NEQ:bytes(40 v 40)
+H_00adce60	??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	43	00adc190	NEQ:bytes(43 v 141)
+d1_00adce60	??_GCVertexGroupBlock@@QAEPAXI@Z	30	00adbe50	EQ
+d1_00adce60	??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	35	00adc190	NEQ:bytes(35 v 141)
