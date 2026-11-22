@@ -1,5 +1,7 @@
 // CGame::Play() -- create the first game component (the main game when starting straight into it, else the legacy or new front end), start it, and run components until one reports no successor; when only compiling front-end definitions, just build and discard it
 // Leaf: Play
+// Names (NF233, 2026-11-22, q12638, in place): the CFrontendGameComponent (0x00496070) and CNewFrontendGameComponent (0x0042EA8F) ctor declarations
+//   take CGame& (the PDB spellings every other binder binds); were CGame*. Same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00412F90, length 394 bytes (`ret`).
 // Callees: CompileDefs @ 0x0042F70B, operator new @ 0x00BFEA1A, CWideString ctor/dtor/operator= @ 0x0099AED0 / 0x0099B510 /
 //   0x0099B7D0, CCharString ctor/dtor @ 0x0099E4B0 / 0x0099EAE0, CMainGameComponent ctor @ 0x00418DCA,
@@ -44,11 +46,11 @@ class CMainGameComponent : public CGameComponent { public:
     unsigned char _body[0x161e4];
 };
 struct CFrontendGameComponent : CGameComponent {
-    CFrontendGameComponent(CGame* game, const CFrontendGameComponentInit& init);   // 0x00496070
+    CFrontendGameComponent(CGame& game, const CFrontendGameComponentInit& init);   // 0x00496070 (FableWin.pdb + Ego_r.pdb ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z; NF233: was CGame*)
     unsigned char _body[0x1e5c];
 };
 class CNewFrontendGameComponent : public CGameComponent { public:
-    CNewFrontendGameComponent(CGame* game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F
+    CNewFrontendGameComponent(CGame& game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F (FableWin.pdb + Ego_r.pdb + Ego_d.pdb ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z; NF233: was CGame*)
     static void __fastcall CompileDefs();               // 0x0042F70B ?CompileDefs@CNewFrontendGameComponent@@SIXXZ (Ego_r / FableWin)
     unsigned char _body[0x144];
 };
@@ -81,12 +83,12 @@ void CGame::Play()
         if (g_bUseLegacyFrontend) {
             CFrontendGameComponentInit init;
             init.Nowt = 0;
-            component = new CFrontendGameComponent(this, init);
+            component = new CFrontendGameComponent(*this, init);
             component->Start();
         } else {
             CNewFrontendGameComponentInit init;
             init.Nothing = 0;
-            component = new CNewFrontendGameComponent(this, init);
+            component = new CNewFrontendGameComponent(*this, init);
             component->Start();
         }
     }

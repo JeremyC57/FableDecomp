@@ -1,0 +1,2 @@
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004330d2.obj; graded the largest function
+004330d2 CNewFrontendGameComponent::`scalar_deleting_destructor' RELOCATION_MATCH flags= []

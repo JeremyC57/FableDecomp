@@ -1,0 +1,5 @@
+DEF ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+DEF ?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z
+UND ??2@YAPAXI@Z
+UND ?DeleteData@?$CCountedPointer@VCStartupDefinitionManager@@@@SIXPAX@Z
+UND ?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ

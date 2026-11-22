@@ -1,0 +1,1 @@
+DEF ?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ

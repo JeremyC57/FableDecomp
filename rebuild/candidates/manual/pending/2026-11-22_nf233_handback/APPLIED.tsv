@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q12638	0x0042F50B, 0x0042EA8F, 0x00412F90, 0x0051D8E0 binders	done	12 rows (0x0042F50B, 0x0042EA8F, 0x0051D8E0, 0x00412F90, 0x00418DCA, 0x00496070, 0x004330D2, 0x0042DC5C, 0x0042DC5F, 0x0042DC60, 0x00415920, 0x00415930)	one header unit (4 add-only opt-ins); vtable names = PDB / RTTI; spellings: 0x0042EA8F 3->1, 0x0051D8E0 2->1, 0x0042F50B 2->1, 0x00418DCA 2->1, 0x00496070 3->1, 0x01230CA0 2->1, 0x01230C94 1->1 (stand-in -> PDB), 0x0122ECA4 3->2, 0x0122DE50 3->2, 0x00415930 3->2, 0x00415920 2->1, 0x0042DC5F 2->1; table line 0x01230C94 respelled (TABLE_CHANGES)
+q12639	0x00495780	blocked (pick-any copies)	0	NOTES entry 2; 0x00412450 stays at 2 spellings
+q12635	0x00412450	done-already / blocked with q12639	0	nothing left on 0x00412450 but the 0x00495780 binder
+q12636	0x00433D3A	done	1 (self row; callees 0x00433CC0 / 0x00433CB5 onto their FableWin spellings)	0x00433D3A 2 -> 1
+q12637	0x013B8760	open (needs the pair unit)	0	0x01228AF1 (atexit destructor) is half of a static initializer / atexit pair with 0x0121A2DC; NOTES entry 3
+q12640	tests	open (context)	0	the 13 changed rows keep their HEAD tests (all PASS); header tests not written

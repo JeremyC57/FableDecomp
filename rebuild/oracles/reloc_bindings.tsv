@@ -1291,8 +1291,6 @@ __stricmp	00bfeba8	004fb880
 ?UnguardedInsertionSortAux_005154c0@@YIXPAUSElement4@@00USCompare@@@Z	005154c0	0051c400
 ?Destroy_0051ccd0@@YIXPAX@Z	0051ccd0	0051cea0
 ?DestroyRange_0051cd80@@YIXPAUSEntry_0051d530@@0ABUSScalarTag@@@Z	0051cd80	0051d530
-??_7CGameComponent@@6BCGameListener@@@	0122eca4	0051d8e0
-??_7CGameListener@@6B@	0122de50	0051d8e0
 ?SetInLimbo@CThing@@QAEX_N@Z	004c8cf0	0051e5a0
 ?Find@Sub@@QAEPAUNode@@PAX@Z	00527d80	0051ed80
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0051fba0
@@ -7962,7 +7960,6 @@ __imp__realloc	01440054	00c90fc0
 ?SetupArena@CAIStateGroup_HoverHornetQueen@@QAEXXZ	0095b3e0	0095b5a0
 ??0CDiskFileWin32@@QAE@XZ	00415c30	00418dca
 ??0CFrameRateSmoother@@QAE@XZ	00419747	00418dca
-??0CGameComponent@@QAE@PAUCMainGameComponentParent@@@Z	0051d8e0	00418dca
 ??0CGameEventPackageSet@@QAE@XZ	009f1a80	00418dca
 ??0CInterpolationInfo@@QAE@XZ	00415a60	00418dca
 ??0CNetworkClient@@QAE@XZ	00419323	00418dca
@@ -7976,7 +7973,6 @@ __imp__realloc	01440054	00c90fc0
 ?Kill@CParticleSystem@@QAEXXZ	00af5870	00aee8c0
 ??0CMainGameComponentInit@@QAE@XZ	004131a0	0042ea8f
 ??0CStopWatch@@QAE@XZ	0062f740	0042ea8f
-_g_emptyWide	0122d70c	0042ea8f
 ??1CInputProcessManager@@QAE@XZ	00a0d810	00446be0
 ??_7CGamePlayerInterface@@6B@	01231bdc	00446be0
 ?DestroyRange@@YIXPAUSControlEntry@@0ABUSNonscalarPtrIteratorTag@@@Z	004488b0	00446be0
@@ -8659,8 +8655,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ??$TransferVectorBinary@VCActionInputControl@@@CPersistContext@@QAEXAAV?$vector@VCActionInputControl@@@std@@@Z	0043318d	004330f0
 ??$GFSerialiseVectorBinaryIn@VCActionInputControl@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@VCActionInputControl@@@std@@@Z	00412c70	0043318d
 ??$GFSerialiseVectorBinaryOut@VCActionInputControl@@@@YIXAAVCDataOutputStream@@AAV?$vector@VCActionInputControl@@@std@@@Z	0040fca0	0043318d
-?DeleteData@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@SIXPAX@Z	00433cb5	00433d3a
-?Release@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@QAEXXZ	00433cc0	00433d3a
 ?GetFadeInOutAlpha@CFadeInFadeOutBase_Methods@@QBEMXZ	004348d0	00434a00
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00435070
 ?RenderHeroDrunkenness@CTCHeroStats@@QAEXPAVCIEngine@@@Z	0057b43f	00435070
@@ -14652,7 +14646,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@VCUIIconsDef@NUISystem@@@@@Z	0042b374	0041d98a
 ?g_pActiveScrollingViewport@NUISystem@@3PAVCScrollingViewport@1@A	013b8aac	0041da2d
 ?RemoveEventFromQueue@CInputManager@@QAEXPAVCInputEvent@@@Z	009f4f70	0041e10d
-??0CGameComponent@@QAE@PAVCGame@@@Z	0051d8e0	0042ea8f
 ?clear@?$map@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAEXXZ	0043027a	0043151d
 ?insert@?$map@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABU?$pair@$$CBVCCharString@@J@2@@Z	00431606	0043151d
 ?CopyImpl@CControlsDef@@QAEXPBV1@@Z	00431e80	00431e70
@@ -33875,9 +33868,8 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ??_7CTypedListBase@@6B@	012b1ab0	00c2dbe0
 ??1CShaderRenderManager@@UAE@XZ	0098abf0	0122a4c0
 ??$Transfer@VCWideString@@@CPersistContext@@QAEXPBDAAVCWideString@@ABV1@@Z	00410ac0	00411060
-??_7CGameComponent@@6BCGameComponentInterface@@@	0122eca4	0042f50b
+??_7CGameComponent@@6BCGameComponentInterface@@@	0122eca4	00495620
 ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@	01230ca0	0042f50b
-??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@	01230c94	0042f50b
 ?TransferBinaryIn@?$CPersistTraits@VCFloatRange@@@@QAEXAAVCMemoryDataInputStream@@AAVCFloatRange@@@Z	00458f89	00458f2b
 ?WriteFloat@CDataOutputStream@@QAEXM@Z	00993ee0	00458f2b
 ??$TransferVector@_N@CPersistContext@@QAEXAAV?$vector@_NV?$allocator@_N@std@@@std@@@Z	00467597	00467553
@@ -38869,8 +38861,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?WifeAppearanceDialogueGroupStemNames@CTCWife@@2PAVCCharString@@A	013bab40	0121e260
 ?gIME@@3VCIME@NUISystem@@A	013b7cd8	012288b0
 ??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ	008f9f50	0122a200
-??0CFrontendGameComponent@@QAE@PAVCGame@@ABVCFrontendGameComponentInit@@@Z	00496070	00412f90
-??0CNewFrontendGameComponent@@QAE@PAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	0042ea8f	00412f90
 ?CompileDefs@CNewFrontendGameComponent@@SIXXZ	0042f70b	00412f90
 ?g_bCompileFrontendDefinitions@@3_NA	013b8648	00412f90
 ?g_bStartMainGame@@3_NA	013b8605	00412f90
@@ -39457,3 +39447,9 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z	0042b8fc	0042c02f
 ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	00429e16	0042b8fc
 ?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z	00433d3a	004336b0
+??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@	01230c94	0042f50b
+??_7CDeviceResetCallback@@6B@	0122de50	0051d8e0
+??0CGameComponent@@QAE@AAVCGame@@@Z	0051d8e0	0042ea8f
+?DeleteData@?$CCountedPointer@VCStartupDefinitionManager@@@@SIXPAX@Z	00433cb5	00433d3a
+?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ	00433cc0	00433d3a
+??1CNewFrontendGameComponent@@UAE@XZ	0042f50b	004330d2

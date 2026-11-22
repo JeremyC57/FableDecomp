@@ -1,5 +1,9 @@
-// CMainGameComponent::CMainGameComponent(CMainGameComponentParent*, const CMainGameComponentInit&) -- main game component ctor: game-component base, empty banks/scoped pointers, force-update tuning (3.0x at 30 fps), the event/network/file/frame-rate members, a copy of the init structure, then registration in the component list
+// CMainGameComponent::CMainGameComponent(CGame&, const CMainGameComponentInit&) -- main game component ctor: game-component base, empty banks/scoped pointers, force-update tuning (3.0x at 30 fps), the event/network/file/frame-rate members, a copy of the init structure, then registration in the component list
 // Leaf: ??0CMainGameComponent
+// Names (NF233, 2026-11-22, q12638, in place): the self signature is the PDB one, ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+//   (Ego_r.pdb 0x004172C9 + FableWin.pdb), which its binders 0x00412F90 / 0x0042EC7C / 0x00496CF0 already bind; was CMainGameComponentParent*. The
+//   base ctor 0x0051D8E0 is bound as ??0CGameComponent@@QAE@AAVCGame@@@Z (was ...@@PAUCMainGameComponentParent@@@Z). Same bytes (a reference is a pointer).
+//   The local CGameComponent / vtable stand-ins (6BCBaseClass@@@, 6BCComponentListEntry@@@) are unchanged (NAME_FIXES).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00418DCA, 294 bytes (`ret 8`). Vtables 0x0122F180 (+0) / 0x0122F174 (+4).
@@ -20,6 +24,7 @@ class CGamePlayerInterface;
 class CWorld;
 class CDisplayEngine;
 struct CMainGameComponentParent;
+class CGame;
 #include "engine/CCountedPointer.h"
 template <class T> struct scoped_ptr {
     T* ptr;
@@ -46,7 +51,7 @@ class CGameComponent : public CBaseClass, public CComponentListEntry { public:
     bool  m_b08;                                   // +0x08
     bool  m_b09;                                   // +0x09
     CMainGameComponentParent* m_pParent;           // +0x0c
-    CGameComponent(CMainGameComponentParent* parent);   // 0x0051D8E0
+    CGameComponent(CGame& game);                        // 0x0051D8E0 (Ego_r + FableWin ??0CGameComponent@@QAE@AAVCGame@@@Z; NF233: was CMainGameComponentParent*)
 };
 struct CComponentList {
     void AddComponent(CComponentListEntry* component);  // 0x009C0190
@@ -98,13 +103,13 @@ public:
     bool                                 AllowRender;               // +0x161e1
     bool                                 Rendered;                  // +0x161e2
     long                                 DebugNoFramesUnableToRender;   // +0x161e4
-    CMainGameComponent(CMainGameComponentParent* parent, const CMainGameComponentInit& init);
+    CMainGameComponent(CGame& game, const CMainGameComponentInit& init);
     virtual ~CMainGameComponent();
     virtual void v00();
 };
 
-CMainGameComponent::CMainGameComponent(CMainGameComponentParent* parent, const CMainGameComponentInit& init)
-    : CGameComponent(parent),
+CMainGameComponent::CMainGameComponent(CGame& game, const CMainGameComponentInit& init)
+    : CGameComponent(game),
       ForceUpdateTick(false), ForceUpdateTickSpeedMultipler(3.0f), ForceUpdateTickSpeedDesiredFramerate(30.0f),
       ForceUpdateNoFailedUpdates(0), FirstWorldFrameUpdate(true), CurrentServerFrame(0), InputServerFrame(0),
       NoRenderFramesSinceLastGameUpdate(0), WorldSeed(0), LocalSeed(0),

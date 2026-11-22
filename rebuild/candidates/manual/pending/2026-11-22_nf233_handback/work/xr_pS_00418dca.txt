@@ -1,0 +1,12 @@
+00415a60	??0CInterpolationInfo@@QAE@XZ	x1
+00415c30	??0CDiskFileWin32@@QAE@XZ	x1
+00415e17	??0CMainGameComponentInit@@QAE@ABV0@@Z	x1
+00419323	??0CNetworkClient@@QAE@XZ	x1
+00419747	??0CFrameRateSmoother@@QAE@XZ	x1
+0051d8e0	??0CGameComponent@@QAE@AAVCGame@@@Z	x1
+009c0190	?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z	x1
+009f1a80	??0CGameEventPackageSet@@QAE@XZ	x1
+009f8b10	??0CRoughFrameCounter@@QAE@XZ	x1
+0122f174	??_7CMainGameComponent@@6BCComponentListEntry@@@	x1
+0122f180	??_7CMainGameComponent@@6BCBaseClass@@@	x1
+013b8390	?GPDisplayManager@@3PAVCDisplayManager@@A	x1

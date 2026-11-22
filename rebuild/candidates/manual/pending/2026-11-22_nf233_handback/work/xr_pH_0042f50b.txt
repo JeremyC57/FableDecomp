@@ -1,0 +1,16 @@
+00403750	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	x1
+00412130	??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	x1
+004131d0	??1CMainGameComponentInit@@QAE@XZ	x1
+00419108	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	x1
+0042918c	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	x1
+0042ebb6	?Shutdown@CNewFrontendGameComponent@@AAEXXZ	x1
+0042f948	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	x1
+0042f974	?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ	x1
+0042f9a0	?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ	x1
+0099a300	??1CBaseClassNonCopyable@@MAE@XZ	x1
+0099b510	??1CWideString@@QAE@XZ	x1
+00bfea14	_free	x1
+0122eca4	??_7CGameComponent@@6BCGameComponentInterface@@@	x1
+0122ecb0	??_7CGameComponent@@6BCBaseClassNonCopyable@@@	x1
+01230c94	??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@	x1
+01230ca0	??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@	x1

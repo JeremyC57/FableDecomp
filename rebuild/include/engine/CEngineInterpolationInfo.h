@@ -5,6 +5,13 @@
 #include "rebuild_abi.h"
 class CEngineInterpolationInfoSet {
 public:
+#ifdef FABLE_RETAIL_CENGINEINTERPOLATIONINFOSET_CTOR
+    // NF233 opt-in (row 0x0042EA8F CNewFrontendGameComponent::CNewFrontendGameComponent, m_LastInterp +0xCC): the user default
+    // constructor, Ego_d.pdb and FableWin.pdb ??0CEngineInterpolationInfoSet@CEngineInterpolationInfo@@QAE@XZ (no Ego_r.pdb copy:
+    // inline in release); retail expands it as three float zero stores (0x0042EB41..0x0042EB58 `fldz ; fstp dword ptr [eax]` / +4 / +8).
+    // The PDBs nest the class in CEngineInterpolationInfo; this header keeps the existing top-level spelling (a header item).
+    CEngineInterpolationInfoSet() : GTPredictedRenderAt(0.0f), GTPredictedTimeSinceLastRenderFrame(0.0f), WFInterpolate(0.0f) {}
+#endif
     float GTPredictedRenderAt;                                                // +0x00
     float GTPredictedTimeSinceLastRenderFrame;                                // +0x04
     float WFInterpolate;                                                      // +0x08
@@ -21,5 +28,5 @@ public:
     long WFServerCurrentTime;                                                 // +0x48
     CEngineInterpolationInfoSet InterpolationSetList[3];                      // +0x4C
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineInterpolationInfo) == 0x70);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CEngineInterpolationInfo) == 0x70);
 #endif

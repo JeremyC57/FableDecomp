@@ -259816,9 +259816,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00433d3a'
-        Module = '_global'
-        Source = '00/43/CCountedPointerCPolymorphicData00433D3A_Reset_00433d3a.cpp'
-        TestSource = '00/43/CCountedPointerCPolymorphicData00433D3A_Reset_00433d3a_test.cpp'
+        Module = 'CCountedPointer<CStartupDefinitionManager>'
+        Source = '00/43/CCountedPointerCStartupDefinitionManager_Reset_00433d3a.cpp'
+        TestSource = '00/43/CCountedPointerCStartupDefinitionManager_Reset_00433d3a_test.cpp'
         PassPattern = '00433d3a_TEST PASS'
     }
     [pscustomobject]@{

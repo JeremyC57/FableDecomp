@@ -1,0 +1,32 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0042EA8F	CNewFrontendGameComponent	CNewFrontendGameComponent	??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	CNewFrontendGameComponent::CNewFrontendGameComponent	??0CNewFrontendGameComponent@@QAE@PAVCGame@@PAVCNewFrontendGameComponentInit@@@Z	Ego_r.pdb + FableWin.pdb + Ego_d.pdb; binders 0x00496CF0 / 0x0049DCC0 bind it, 0x00412F90 moved here. Catalog name unchanged
+0x0051D8E0	CGameComponent	CGameComponent	??0CGameComponent@@QAE@AAVCGame@@@Z	CGameComponent::CGameComponent	??0CGameComponent@@QAE@PAVCGame@@@Z	Ego_r.pdb + FableWin.pdb + Ego_d.pdb (CGame&; engine/CGameComponent.h declares it so); binders 0x0042EA8F / 0x00418DCA / 0x00496070 moved here. Catalog name unchanged
+0x00418DCA	CMainGameComponent	CMainGameComponent	??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z	CMainGameComponent::CMainGameComponent	??0CMainGameComponent@@QAE@PAUCMainGameComponentParent@@ABVCMainGameComponentInit@@@Z	Ego_r.pdb 0x004172C9 + FableWin.pdb; binders 0x00412F90 / 0x0042EC7C / 0x00496CF0 already bind it. Catalog name unchanged
+0x00496070	CFrontendGameComponent	CFrontendGameComponent	??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z	CFrontendGameComponent::CFrontendGameComponent	??0CFrontendGameComponent@@QAE@PAUCMainGameComponentParent@@J@Z	Ego_r.pdb + FableWin.pdb; binders 0x0042EC7C / 0x0049DCC0 bind it, 0x00412F90 moved here; the init argument is unused (`ret 8`). Catalog name unchanged
+0x0042DC5C	CNewFrontendGameComponent	ChangeTextureColourDepth	?ChangeTextureColourDepth@CNewFrontendGameComponent@@UAEXJ@Z	CNewFrontendGameComponent::ChangeTextureColourDepth	?ChangeTextureColourDepth@CNewFrontendGameComponent@@QAEXPBD@Z	Ego_r.pdb + FableWin.pdb + Ego_d.pdb (public virtual, long); retail vtable 0x01230CA0 slot 3; the ported vtables bind it. Catalog name unchanged
+0x0042DC5F	CNewFrontendGameComponent	OnPreDeviceReset	?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ	CNewFrontendGameComponent::OnPreDeviceReset	?OnPreDeviceReset@CNewFrontendGameComponent@@QAEXXZ	all three PDBs; vtable 0x01230C94 slot 0. Catalog name unchanged
+0x0042DC60	CNewFrontendGameComponent	OnPostDeviceReset	?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ	CNewFrontendGameComponent::OnPostDeviceReset	?OnPostDeviceReset@CNewFrontendGameComponent@@QAE_NXZ	all three PDBs; vtable 0x01230C94 slot 1. Catalog name unchanged
+0x00415920	CGameComponent	Init	?Init@CGameComponent@@UAEXXZ	CGameComponent::Init	?Init@T@@QAEXXZ	all three PDBs (public virtual); vtable 0x0122ECB0 slot 1; 0x00418B7A / 0x0051D8E0 / 0x0042F50B vtables bind it. Catalog name unchanged
+0x00415930	CGameComponent	SetQuit	?SetQuit@CGameComponent@@MAEXXZ	CGameComponent::SetQuit	?Init@T@@QAEXXZ	all three PDBs (protected virtual, MAE); vtable 0x0122ECB0 slot 4; the header-built vtables (0x0051D8E0 / 0x0042F50B) bind it. Catalog name unchanged
+0x00433D3A	CCountedPointer<CStartupDefinitionManager>	Reset	?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z	CCountedPointer<CPolymorphicData_00433D3A>::Reset	?Reset@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@QAEXPAVCPolymorphicData_00433D3A@@@Z	FableWin.pdb 0x01B32936; body = header Reset on PClass 0x013B8760; sole caller 0x004336B0 (Set) binds it (nf232). Module and catalog name -> CCountedPointer<CStartupDefinitionManager>::Reset (the coordinator renames the file)
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x0042EA8F	??0CGameComponent@@QAE@PAVCGame@@@Z	??0CGameComponent@@QAE@AAVCGame@@@Z	0x0051D8E0
+0x0042EA8F	??_7CNewFrontendGameComponent@@6BCBase@@@	??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@	0x01230CA0
+0x0042EA8F	??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@	??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@	0x01230C94
+0x0042EA8F	_g_emptyWide	??_C@_11LOCGONAA@?$AA?$AA@	0x0122D70C
+0x0042EA8F	?v00@CGameComponentInterface@@UAEXXZ (vtable 0x01230C94 slot 0)	?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ	0x0042DC5F
+0x0042F50B	??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@	??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@	0x01230C94
+0x0042F50B	??_7CGameComponent@@6BCGameComponentInterface@@@	??_7CGameComponent@@6BCDeviceResetCallback@@@	0x0122ECA4
+0x0042F50B	?v00@CGameComponentInterface@@UAEXXZ (vtable 0x01230C94 slot 0)	?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ	0x0042DC5F
+0x0042F50B	?v00@CGameComponentInterface@@UAEXXZ (vtable 0x0122ECA4 slot 0)	__purecall (retail 0x00BFEA08)	0x00BFEA08
+0x0042F50B / 0x0042EA8F	(truncated one-slot vtables)	slots 1-4 / 1: Init 0x0042F75E, Run 0x0042EC7C, ChangeTextureColourDepth 0x0042DC5C, SetQuit 0x00430340, OnPostDeviceReset 0x0042DC60 (+ CGameComponent Init 0x00415920, SetQuit 0x00415930 in 0x0042F50B)	vtables
+0x0051D8E0	??_7CGameComponent@@6BCGameListener@@@	??_7CGameComponent@@6BCDeviceResetCallback@@@	0x0122ECA4
+0x0051D8E0	??_7CGameListener@@6B@	??_7CDeviceResetCallback@@6B@	0x0122DE50
+0x0051D8E0	?v00@CGameListener@@UAEXXZ (vtable slot 0)	__purecall	0x00BFEA08
+0x00418DCA	??0CGameComponent@@QAE@PAUCMainGameComponentParent@@@Z	??0CGameComponent@@QAE@AAVCGame@@@Z	0x0051D8E0
+0x00496070	??0CGameComponent@@QAE@PAUCMainGameComponentParent@@@Z	??0CGameComponent@@QAE@AAVCGame@@@Z	0x0051D8E0
+0x00412F90	??0CNewFrontendGameComponent@@QAE@PAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	0x0042EA8F
+0x00412F90	??0CFrontendGameComponent@@QAE@PAVCGame@@ABVCFrontendGameComponentInit@@@Z	??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z	0x00496070
+0x004330D2	?Dtor@CNewFrontendGameComponent@@QAEXXZ	??1CNewFrontendGameComponent@@UAE@XZ	0x0042F50B
+0x00433D3A	?Release@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ	0x00433CC0
+0x00433D3A	?DeleteData@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCStartupDefinitionManager@@@@SIXPAX@Z	0x00433CB5

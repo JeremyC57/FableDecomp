@@ -1,8 +1,12 @@
-// CFrontendGameComponent::CFrontendGameComponent(CMainGameComponentParent* parent, long unused) -- construct the debug front end: game-component base, empty counted pointers / name lists / strings, the movement timer, then (with the default-profile flag) load the default profile and enter mode 1, else enter the profile list mode 12; reset the create flags, load the graphics and rebuild the key-to-number table
+// CFrontendGameComponent::CFrontendGameComponent(CGame& game, const CFrontendGameComponentInit& init) -- construct the debug front end: game-component base, empty counted pointers / name lists / strings, the movement timer, then (with the default-profile flag) load the default profile and enter mode 1, else enter the profile list mode 12; reset the create flags, load the graphics and rebuild the key-to-number table
 // Leaf: ??0CFrontendGameComponent
+// Names (NF233, 2026-11-22, q12638, in place): the self signature is the PDB one, ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z
+//   (Ego_r.pdb + FableWin.pdb), which its binders 0x0042EC7C / 0x0049DCC0 bind (and 0x00412F90 with this hand-back); was (CMainGameComponentParent*,
+//   long unused). The init reference is unused, as the long was (`ret 8` either way). The base ctor 0x0051D8E0 is bound as
+//   ??0CGameComponent@@QAE@AAVCGame@@@Z (was ...@@PAUCMainGameComponentParent@@@Z). Local vtable stand-ins unchanged (NAME_FIXES).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00496070, length 592 bytes, `ret 8` (the second argument is unused).
-// Callees: CGameComponent::CGameComponent(CMainGameComponentParent*) @ 0x0051D8E0, CWideString::CWideString() @ 0x0099AED0
+// Callees: CGameComponent::CGameComponent(CGame&) @ 0x0051D8E0, CWideString::CWideString() @ 0x0099AED0
 //   (manifest "CCharString" -- byte-identical body), GFGetTime @ 0x009E1BC0, CTBaseSingleton<CUserProfileManager>::Get
 //   @ 0x0040D2A0, CUserProfileManager::GetDefaultProfileName @ 0x004065D0, SetProfileName(const CWideString&, bool)
 //   @ 0x0040D400, ~CWideString @ 0x0099B510, the mode-10 preparation @ 0x00495890 (manifest "CBrushLibraryDialog::
@@ -22,6 +26,8 @@
 #include <string.h>
 
 struct CMainGameComponentParent;
+class CGame;
+class CFrontendGameComponentInit;
 struct CBase {
     virtual ~CBase();                                      // 0x0099A300
 };
@@ -30,7 +36,7 @@ struct CGameComponentInterface {
 };
 class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
-    CGameComponent(CMainGameComponentParent* parent);      // 0x0051D8E0
+    CGameComponent(CGame& game);                           // 0x0051D8E0 (Ego_r + FableWin ??0CGameComponent@@QAE@AAVCGame@@@Z; NF233: was CMainGameComponentParent*)
 };
 #include "engine/CCountedPointer.h"
 class CWideString { public:
@@ -103,7 +109,7 @@ struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768
     ECursorMovement                   CurrentMovement;            // +0x1e54
     CTexture                          SplashScreen;               // +0x1e58
 
-    CFrontendGameComponent(CMainGameComponentParent* parent, long unused);
+    CFrontendGameComponent(CGame& game, const CFrontendGameComponentInit& init);
     virtual ~CFrontendGameComponent();
     void SetMode(long mode)
     {
@@ -131,8 +137,8 @@ private:
     void GetWorldNames();   // 0x00495890
 };
 
-CFrontendGameComponent::CFrontendGameComponent(CMainGameComponentParent* parent, long unused)
-    : CGameComponent(parent), CursorHighlight(1), TimeLastMovementHappened(GFGetTime()), StartedRepeatingMovement(false),
+CFrontendGameComponent::CFrontendGameComponent(CGame& game, const CFrontendGameComponentInit& init)
+    : CGameComponent(game), CursorHighlight(1), TimeLastMovementHappened(GFGetTime()), StartedRepeatingMovement(false),
       CurrentMovement(CURSOR_MOVEMENT_NONE)
 {
     Mode = 0;

@@ -1,0 +1,2 @@
+  WARN leaf 'SetQuit' matches no symbol in 00415930.obj; graded the largest function
+00415930 CGameComponent::SetQuit MATCH flags= []

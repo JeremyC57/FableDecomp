@@ -1,39 +1,18 @@
-// CGameComponent::CGameComponent(CGame* pGame) -- one-argument constructor.
-// Leaf: ??0CGameComponent@
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0051D8E0, length 49 bytes.
-// Manifest label "CAIStateGroup_GazeAtHome" is propagated; the vtables stored are 0x0122ECB0 (+0) and
-// 0x0122ECA4 (+4), both CGameComponent (rtti-vtables.tsv): a class with two polymorphic bases.
-// Callee: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (first base, out of line); the second base's constructor is inline
-// and only stores its vtable 0x0122DE50 at +4 (the same listener base as CMeshBankManager @ 0x00A0A110).
-//
-// Shape: base #1 ctor, base #2 vtable, then the initialiser list: two false flags at +8/+9 and the owner
-// pointer argument at +0xc, then both derived vtables (sunk below the member stores by the scheduler).
-// `ret 4`: one stack argument. Member names are descriptive.
-class CGame;
+// CGameComponent::CGameComponent(CGame& game) -- base constructor of every game component: not quitting, not running, the owning game
+// Leaf: ??0CGameComponent@@QAE@AAVCGame@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0051D8E0, 49 bytes, `ret 4`: CBaseClassNonCopyable's ctor 0x0099A2F0 (out of line), the
+//   CDeviceResetCallback vtable 0x0122DE50 (its implicit ctor), the flags +8 / +9 and the game reference +0xC, then both CGameComponent vtables
+//   0x0122ECB0 / 0x0122ECA4 (sunk below the member stores by the scheduler).
+// Header port (NF233, 2026-11-22, q12638): engine/CGameComponent.h (Quit +8, Running +9, CGame& Game +0xC; Ego_r.pdb). Self leaf: Ego_r.pdb +
+//   FableWin.pdb + Ego_d.pdb ??0CGameComponent@@QAE@AAVCGame@@@Z, which every binder (0x0042EA8F, 0x00418DCA, 0x00496070) now binds; was
+//   ??0CGameComponent@@QAE@PAVCGame@@@Z (binders also PAUCMainGameComponentParent). Vtables now the PDB names ??_7CGameComponent@@6BCBaseClassNonCopyable@@@,
+//   ...@@6BCDeviceResetCallback@@@ (was 6BCGameListener@@@) and ??_7CDeviceResetCallback@@6B@ (FableWin.pdb; was the stand-in ??_7CGameListener@@6B@).
+//   FABLE_RETAIL_CGAMECOMPONENT_DTOR_INLINE (NF233): the pick-any ??_GCGameComponent this object emits (43 B) then equals its owner 0x00415940,
+//   which expands ~CGameComponent; HEAD's copy (30 B, a call to an ownerless ~CGameComponent) differed.
+#define FABLE_RETAIL_CGAMECOMPONENT_DTOR_INLINE
+#include "engine/CGameComponent.h"
 
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();   // 0x0099A300
-    CBaseClassNonCopyable();                                    // 0x0099A2F0
-};
-
-struct CGameListener {                          // second base, vtable 0x0122DE50
-    virtual void v00();
-    CGameListener() { }
-};
-
-class CGameComponent : public CBaseClassNonCopyable, public CGameListener { public:
-    bool m_initialised;                         // +0x08
-    bool m_active;                              // +0x09
-    CGame* m_pGame;                             // +0x0c
-    CGameComponent(CGame* pGame);
-};
-
-CGameComponent::CGameComponent(CGame* pGame)
-    : CBaseClassNonCopyable()
-    , CGameListener()
-    , m_initialised(false)
-    , m_active(false)
-    , m_pGame(pGame)
+CGameComponent::CGameComponent(CGame& game)
+    : Quit(false), Running(false), Game(game)
 {
 }

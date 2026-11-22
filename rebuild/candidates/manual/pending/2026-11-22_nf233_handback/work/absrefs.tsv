@@ -1,0 +1,331 @@
+01230ca0	.text	0042eaa2	0042ea8f	CNewFrontendGameComponent::CNewFrontendGameComponent
+01230ca0	.text	0042f514	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent
+0122eca4	.text	00415909	-	
+0122eca4	.text	0041594c	00415940	CGameComponent::`scalar deleting destructor'
+0122eca4	.text	00418c2f	00418b7a	CMainGameComponent::~CMainGameComponent
+0122eca4	.text	0042f59d	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent
+0122eca4	.text	0049576a	00495620	CFrontendGameComponent::~CFrontendGameComponent
+0122eca4	.text	0051d907	0051d8e0	CGameComponent::CGameComponent
+0122d70c	.text	00402157	00402130	_global::FableCheckMyDocumentsWritePermissions
+0122d70c	.text	00403393	-	
+0122d70c	.text	0040439c	-	
+0122d70c	.text	00406ffd	00406f70	CUserProfileManager::GetAutoSavePathName
+0122d70c	.text	004082a6	00408120	CUserProfileManager::GetPathNameFromFileName
+0122d70c	.text	0040920d	004091c0	CUserProfileManager::GetSortedSaveNamesAndTimes
+0122d70c	.text	004092b9	004091c0	CUserProfileManager::GetSortedSaveNamesAndTimes
+0122d70c	.text	004092be	004091c0	CUserProfileManager::GetSortedSaveNamesAndTimes
+0122d70c	.text	0040a764	0040a740	CUserProfileManager::Save
+0122d70c	.text	0040c53f	0040bca0	CUserProfileManager::LoadGameState
+0122d70c	.text	0040c66a	0040bca0	CUserProfileManager::LoadGameState
+0122d70c	.text	0040cbf9	0040c790	CUserProfileManager::SetDefaultValues
+0122d70c	.text	0040cc63	0040c790	CUserProfileManager::SetDefaultValues
+0122d70c	.text	0040d369	0040d350	CUserProfileManager::Load
+0122d70c	.text	00413a71	004138d0	_global::GFParseCommandLine
+0122d70c	.text	00417b3f	00417a58	CMainGameComponent::InitSound
+0122d70c	.text	00417db8	00417a58	CMainGameComponent::InitSound
+0122d70c	.text	00417dd2	00417a58	CMainGameComponent::InitSound
+0122d70c	.text	00417f99	00417a58	CMainGameComponent::InitSound
+0122d70c	.text	00424eb9	0041e6d3	NUISystem::CManager::Action
+0122d70c	.text	00426252	0041e6d3	NUISystem::CManager::Action
+0122d70c	.text	004276e2	00427216	NUISystem::CManager::CreateTickSlider
+0122d70c	.text	0042eb00	0042ea8f	CNewFrontendGameComponent::CNewFrontendGameComponent
+0122d70c	.text	00434f80	00434f60	CDisplayEngine::WorldUpdate
+0122d70c	.text	00434f8f	00434f60	CDisplayEngine::WorldUpdate
+0122d70c	.text	004468a3	00446720	_global::GetActionName
+0122d70c	.text	0044a2aa	0044a2a0	CPlayerManager::DrawGetEnvironmentInfo
+0122d70c	.text	0047e27f	0047e196	CTCInGameMenu::SaveGame
+0122d70c	.text	0047ff3b	0047fe83	CTCInGameMenu::GetFileNameList
+0122d70c	.text	0047ff69	0047fe83	CTCInGameMenu::GetFileNameList
+0122d70c	.text	00480278	0047fe83	CTCInGameMenu::GetFileNameList
+0122d70c	.text	00480364	0047fe83	CTCInGameMenu::GetFileNameList
+0122d70c	.text	00480392	0047fe83	CTCInGameMenu::GetFileNameList
+0122d70c	.text	00481382	004804de	CTCInGameMenu::OpenInGameMenuPC
+0122d70c	.text	004813e2	004804de	CTCInGameMenu::OpenInGameMenuPC
+0122d70c	.text	00484030	004830a1	CTCInGameMenu::OpenInGameMenu
+0122d70c	.text	00484090	004830a1	CTCInGameMenu::OpenInGameMenu
+0122d70c	.text	0048db99	0048db98	_global::Forward_operator___member0x6c_0048db98
+0122d70c	.text	0048ecf6	0048e78e	CSubtitleRenderer::DrawButtonGraphics
+0122d70c	.text	0048eeac	0048e78e	CSubtitleRenderer::DrawButtonGraphics
+0122d70c	.text	0048ef38	0048e78e	CSubtitleRenderer::DrawButtonGraphics
+0122d70c	.text	0048efc7	0048e78e	CSubtitleRenderer::DrawButtonGraphics
+0122d70c	.text	0048f36a	0048f230	CSubtitleRenderer::DrawTextEmbeddedGraphics
+0122d70c	.text	0048f593	0048f50c	CSubtitleRenderer::FormatTextForVWindow
+0122d70c	.text	0048f9bd	0048f939	CSubtitleRenderer::InitPlayerMode
+0122d70c	.text	0048f9d4	0048f939	CSubtitleRenderer::InitPlayerMode
+0122d70c	.text	0048fa14	0048f939	CSubtitleRenderer::InitPlayerMode
+0122d70c	.text	0048fd4b	-	
+0122d70c	.text	0048fef5	-	
+0122d70c	.text	0048ff3a	-	
+0122d70c	.text	0048ff7b	-	
+0122d70c	.text	004902fa	-	
+0122d70c	.text	00490c27	00490be0	CSubtitleRenderer::GetGraphicFromEmbeddedTag
+0122d70c	.text	0049180f	004917b5	CSubtitleRenderer::FormatTextWithGameActionNames
+0122d70c	.text	00491b4a	-	
+0122d70c	.text	00491cc6	-	
+0122d70c	.text	004921ad	-	
+0122d70c	.text	00492283	-	
+0122d70c	.text	00492297	-	
+0122d70c	.text	00492404	00492381	CSubtitleRenderer::ProcessEmbeddedGraphicTags
+0122d70c	.text	004927b6	00492381	CSubtitleRenderer::ProcessEmbeddedGraphicTags
+0122d70c	.text	00492872	00492381	CSubtitleRenderer::ProcessEmbeddedGraphicTags
+0122d70c	.text	00492886	00492381	CSubtitleRenderer::ProcessEmbeddedGraphicTags
+0122d70c	.text	004929cc	00492973	CSubtitleRenderer::SetText
+0122d70c	.text	00492c24	00492bab	CSubtitleRenderer::Clear
+0122d70c	.text	00492e56	00492e4b	CSubtitleRenderer::SetText
+0122d70c	.text	00492edc	00492ed1	CSubtitleRenderer::SetText
+0122d70c	.text	00492f71	00492f69	CSubtitleRenderer::SetText
+0122d70c	.text	00492fbe	00492fb4	CSubtitleRenderer::SetText
+0122d70c	.text	004933a7	-	
+0122d70c	.text	004958a0	00495890	CFrontendGameComponent::GetWorldNames
+0122d70c	.text	00496031	00495fe0	CFrontendGameComponent::SetMode
+0122d70c	.text	00498067	00497fd0	CProgressDisplay::DisplayCenteredText
+0122d70c	.text	004980ad	00497fd0	CProgressDisplay::DisplayCenteredText
+0122d70c	.text	004980e6	00497fd0	CProgressDisplay::DisplayCenteredText
+0122d70c	.text	004983c7	00497fd0	CProgressDisplay::DisplayCenteredText
+0122d70c	.text	00499340	00498490	CProgressDisplay::DrawRetailDisplay
+0122d70c	.text	0049934e	00498490	CProgressDisplay::DrawRetailDisplay
+0122d70c	.text	0049962f	00498490	CProgressDisplay::DrawRetailDisplay
+0122d70c	.text	00499701	00498490	CProgressDisplay::DrawRetailDisplay
+0122d70c	.text	00499803	00498490	CProgressDisplay::DrawRetailDisplay
+0122d70c	.text	0049aa45	0049a0b0	CProgressDisplay::InitialiseTextures
+0122d70c	.text	0049aa4a	0049a0b0	CProgressDisplay::InitialiseTextures
+0122d70c	.text	0049aa75	0049a0b0	CProgressDisplay::InitialiseTextures
+0122d70c	.text	0049f030	0049ef50	CWorld::GetPathNameForFileName
+0122d70c	.text	0049f035	0049ef50	CWorld::GetPathNameForFileName
+0122d70c	.text	0049f059	0049ef50	CWorld::GetPathNameForFileName
+0122d70c	.text	004a010f	004a00e0	CWorld::SaveHeroStateInternal
+0122d70c	.text	004a0618	004a05c0	CWorld::SaveGameState
+0122d70c	.text	004a061d	004a05c0	CWorld::SaveGameState
+0122d70c	.text	004a0641	004a05c0	CWorld::SaveGameState
+0122d70c	.text	004a0667	004a05c0	CWorld::SaveGameState
+0122d70c	.text	004a19c9	004a1840	CWorld::Load
+0122d70c	.text	004a324e	004a3200	CWorld::LoadGameState
+0122d70c	.text	004a33d6	004a3200	CWorld::LoadGameState
+0122d70c	.text	004a35ab	004a34f0	CWorld::AutoLoadRegionLeaving
+0122d70c	.text	004a3694	004a34f0	CWorld::AutoLoadRegionLeaving
+0122d70c	.text	004a5f14	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a5ff5	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a60f9	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a61f2	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a62b8	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a6395	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a641a	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004a64de	004a5e90	CWorld::AutoLoadRespawn
+0122d70c	.text	004b1e3f	004b1d30	CQuestManager::SetQuestAsCompleted
+0122d70c	.text	004b2b1b	004b2ad0	CQuestManager::FailAllActiveQuests
+0122d70c	.text	004fdac3	004fdab0	CWorldMap::SetAsUsingWAD
+0122d70c	.text	004fdac8	004fdab0	CWorldMap::SetAsUsingWAD
+0122d70c	.text	004fdb14	004fdab0	CWorldMap::SetAsUsingWAD
+0122d70c	.text	0053ff28	0053fe50	CEditBox::AddCharacter
+0122d70c	.text	00540416	00540320	CEditBox::KeyPressed
+0122d70c	.text	005409bd	00540980	NUISystem::CEditBox::UpdateDisplayText
+0122d70c	.text	00541c5f	-	
+0122d70c	.text	005581fe	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558203	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558231	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	005582a0	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	005582a5	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	005582d3	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558342	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558347	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558375	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	005583e4	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	005583e9	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558417	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558484	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	00558489	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	005584ad	00558170	NUISystem::CKeyRedefiner::GetActionText
+0122d70c	.text	0056ea5d	0056ea4e	CTCInventoryExperience::GetXString
+0122d70c	.text	0056ed63	0056ed08	CTCInventoryExperience::GetExperienceStatCategoryName
+0122d70c	.text	005708e6	00570332	CTCInventoryExperience::AddAbilityToList
+0122d70c	.text	00571852	00571280	CTCInventoryExperience::AddAbilityToListPC
+0122d70c	.text	00586089	0058578b	CTCInventory::OpenInventory
+0122d70c	.text	0058609f	0058578b	CTCInventory::OpenInventory
+0122d70c	.text	005950d5	00594fdb	CFrontEndManager::GenerateAboutMessage
+0122d70c	.text	00597ea7	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	00597ed5	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	00598170	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	00598260	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	0059828e	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	0059840c	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	00598439	00597df7	NUISystem::CFrontEndManager::GetSavedGameNames
+0122d70c	.text	005aa0e9	005a9cbe	CTCInventoryTrade::ConstructTradeDescriptionWeapon
+0122d70c	.text	005ab353	005aaf28	CTCInventoryTrade::ConstructTradeDescriptionClothing
+0122d70c	.text	005bda42	005bda1d	NInventory::CCategory::GetHighlightedItemText
+0122d70c	.text	005bda71	005bda1d	NInventory::CCategory::GetHighlightedItemText
+0122d70c	.text	005ce11f	005ce0e6	CTCInventoryStats::ConstructPersonalityList
+0122d70c	.text	005d1f45	005d1f0c	CTCInventoryStats::ConstructPersonalityListPC
+0122d70c	.text	005e4cf0	005e4be0	CTCQuestCompletionUI::GetQuestDescription
+0122d70c	.text	005e4db9	005e4be0	CTCQuestCompletionUI::GetQuestDescription
+0122d70c	.text	005e520a	005e4be0	CTCQuestCompletionUI::GetQuestDescription
+0122d70c	.text	005e5eb1	005e4be0	CTCQuestCompletionUI::GetQuestDescription
+0122d70c	.text	005e6ee0	005e5f30	CTCQuestCompletionUI::ActivateReal
+0122d70c	.text	005e9c5d	005e9c50	CTCTavernGame::CallFuncAfterYesNo
+0122d70c	.text	005e9d6d	005e9d60	CTCTavernGame::CallFuncAfterOK
+0122d70c	.text	005e9d7f	005e9d60	CTCTavernGame::CallFuncAfterOK
+0122d70c	.text	005eae11	005eadc0	CTCTavernGame::SetStateAfterYesNoAlt
+0122d70c	.text	005eaf83	005eaf30	CTCTavernGame::SetStateAfterYesNo
+0122d70c	.text	005eb0ca	005eb080	CTCTavernGame::SetStateAfterOK
+0122d70c	.text	005eb0d8	005eb080	CTCTavernGame::SetStateAfterOK
+0122d70c	.text	005eb25b	005eb180	CTCTavernGame::SetStateAfterInstructions
+0122d70c	.text	005eb269	005eb180	CTCTavernGame::SetStateAfterInstructions
+0122d70c	.text	005ece76	-	
+0122d70c	.text	005eff49	005eeff2	CTCInventoryAbilities::GetMagicListUIComponent
+0122d70c	.text	005f3424	005f1b10	CTCInventoryAbilities::ConstructPCMagicList
+0122d70c	.text	00605943	00605570	CTCInventoryMap::ConstructRegionDescription
+0122d70c	.text	006062a6	006061b0	CTCInventoryMap::FrameUpdate
+0122d70c	.text	00639a99	00639a90	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639ab2	00639a90	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639ad7	00639a90	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639ae1	00639a90	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639b78	00639b70	CTCRegionDisplay::IsDrawing
+0122d70c	.text	00639d7b	00639ba0	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639da9	00639ba0	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639db6	00639ba0	CTCRegionDisplay::SetCurrentAreaName
+0122d70c	.text	00639e56	-	
+0122d70c	.text	00639e98	-	
+0122d70c	.text	00639eac	-	
+0122d70c	.text	0063a130	-	
+0122d70c	.text	006493d0	00648820	NPlayerGui::CDrawMiniMap::Draw
+0122d70c	.text	006493e4	00648820	NPlayerGui::CDrawMiniMap::Draw
+0122d70c	.text	00649485	00648820	NPlayerGui::CDrawMiniMap::Draw
+0122d70c	.text	00649492	00648820	NPlayerGui::CDrawMiniMap::Draw
+0122d70c	.text	0064ad6c	-	
+0122d70c	.text	0064add0	-	
+0122d70c	.text	00650fe1	00650e98	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::DrawAt
+0122d70c	.text	00651081	00650e98	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::DrawAt
+0122d70c	.text	00656c51	00656c3c	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::CQuestInfoElementTick
+0122d70c	.text	006ab3d9	006ab300	CThingPlayerCreature::PreOnKill
+0122d70c	.text	006d7aca	006d7960	CTCHeroExperience::GetFullHeroTitle
+0122d70c	.text	006dd7fb	006dd7e0	CTCTrophy::StartDialogBox
+0122d70c	.text	006dd80f	006dd7e0	CTCTrophy::StartDialogBox
+0122d70c	.text	006dda92	006dda50	CTCTrophy::EndMinigame
+0122d70c	.text	006dda9f	006dda50	CTCTrophy::EndMinigame
+0122d70c	.text	006ddaac	006dda50	CTCTrophy::EndMinigame
+0122d70c	.text	006ddf0c	006ddd30	CTCTrophy::OnTrophyUseAction
+0122d70c	.text	006ddf19	006ddd30	CTCTrophy::OnTrophyUseAction
+0122d70c	.text	006ddf88	006ddd30	CTCTrophy::OnTrophyUseAction
+0122d70c	.text	006ddf95	006ddd30	CTCTrophy::OnTrophyUseAction
+0122d70c	.text	006ddfa2	006ddd30	CTCTrophy::OnTrophyUseAction
+0122d70c	.text	006de5e8	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de5f5	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de602	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de751	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de75e	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de76b	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de82f	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de83c	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006de849	006de280	CTCTrophy::TerminateMinigame
+0122d70c	.text	006dee24	006de8c0	CTCTrophy::OnShowTrophyPerformAction
+0122d70c	.text	006dee31	006de8c0	CTCTrophy::OnShowTrophyPerformAction
+0122d70c	.text	006dee3e	006de8c0	CTCTrophy::OnShowTrophyPerformAction
+0122d70c	.text	006df211	006deee0	CTCTrophy::GlobalUpdate
+0122d70c	.text	006df21e	006deee0	CTCTrophy::GlobalUpdate
+0122d70c	.text	006df340	006deee0	CTCTrophy::GlobalUpdate
+0122d70c	.text	006df34d	006deee0	CTCTrophy::GlobalUpdate
+0122d70c	.text	006df41c	006deee0	CTCTrophy::GlobalUpdate
+0122d70c	.text	006df429	006deee0	CTCTrophy::GlobalUpdate
+0122d70c	.text	006df511	006df480	CTCTrophy::FrameUpdate
+0122d70c	.text	006df51e	006df480	CTCTrophy::FrameUpdate
+0122d70c	.text	006df52b	006df480	CTCTrophy::FrameUpdate
+0122d70c	.text	0070233d	00702310	CTCQuestCard::GetQuestName
+0122d70c	.text	0070249d	00702470	CTCQuestCard::GetQuestObjective
+0122d70c	.text	0070bd34	0070bd30	CAnimFromFileInfo::CAnimFromFileInfo
+0122d70c	.text	0070e7c6	0070e710	CAnimateThing::CAnimateThing
+0122d70c	.text	00713312	007132c0	NTCScriptedControl::CActionTalkToThing::DisplayText
+0122d70c	.text	007133df	007132c0	NTCScriptedControl::CActionTalkToThing::DisplayText
+0122d70c	.text	0071ac87	0071ac70	CTCEmoteIcon::SetEmoteText
+0122d70c	.text	0071acf5	0071ac70	CTCEmoteIcon::SetEmoteText
+0122d70c	.text	0072e8dc	0072e810	CTCActionUseBuyHouse::OnActionUseRent
+0122d70c	.text	0072eade	0072e940	CTCActionUseBuyHouse::OnActionUseMain
+0122d70c	.text	007d7c16	007d7c10	CUserProfileManager::GetAutoSaveFileName
+0122d70c	.text	007e4eaf	007e4e30	CTCBetting::FrameUpdate
+0122d70c	.text	007e514c	007e50c0	CTCBetting::GetBetText
+0122d70c	.text	007e5650	007e5570	CTCBetting::GetPlayersMoney
+0122d70c	.text	007e7b0d	007e7ac0	CTCFireheartMinigame::DelayedQuit
+0122d70c	.text	007e80e5	007e80c0	CTCActionUseReadable::OnActionUse
+0122d70c	.text	007ec588	-	
+0122d70c	.text	00813ab9	008139c0	CTCBoastingPodium::OnHeroEnterBoastArea
+0122d70c	.text	00813ac7	008139c0	CTCBoastingPodium::OnHeroEnterBoastArea
+0122d70c	.text	00844654	-	
+0122d70c	.text	00844659	-	
+0122d70c	.text	0084467c	-	
+0122d70c	.text	00846fc2	00846dd0	CCreatureAction_PerformExpression::FinishAction
+0122d70c	.text	008477bd	00847520	CCreatureAction_PerformExpressionExtended::FinishAction
+0122d70c	.text	008645b1	00864580	NCreatureAI::StopSpeaking
+0122d70c	.text	00891359	00891340	CGameScriptInterface::GetFormattedString
+0122d70c	.text	008929a0	00892850	CGameScriptInterface::AddScreenMessage
+0122d70c	.text	00892a87	00892a80	CGameScriptInterface::DisplayGameInfoText
+0122d70c	.text	00892a95	00892a80	CGameScriptInterface::DisplayGameInfoText
+0122d70c	.text	00892aa3	00892a80	CGameScriptInterface::DisplayGameInfoText
+0122d70c	.text	00892ab1	00892a80	CGameScriptInterface::DisplayGameInfoText
+0122d70c	.text	00896c32	-	
+0122d70c	.text	00896d71	00896d20	CGameScriptInterface::KickOffDeathScreen
+0122d70c	.text	0092fe6b	0092fab0	CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction
+0122d70c	.text	00991a32	-	
+0122d70c	.text	00997f8e	00997f80	CAFile::GetCurrentPath
+0122d70c	.text	00997f93	00997f80	CAFile::GetCurrentPath
+0122d70c	.text	00997fc5	00997f80	CAFile::GetCurrentPath
+0122d70c	.text	009996bf	00999620	CAFile::CreateDirectoryForFile
+0122d70c	.text	009996cd	00999620	CAFile::CreateDirectoryForFile
+0122d70c	.text	00999b4a	00999ab0	CAFile::IsRoomForFile
+0122d70c	.text	00999b58	00999ab0	CAFile::IsRoomForFile
+0122d70c	.text	0099b15c	0099b150	CWideString::operator!=
+0122d70c	.text	009a7eae	009a7e20	CBankFileManager::GetDevHeaderFilePath
+0122d70c	.text	009a7f5e	009a7ed0	CBankFileManager::GetRetailHeaderFilePath
+0122d70c	.text	009a85ee	009a8170	CBankFileManager::OpenIniFile
+0122d70c	.text	009bcaa7	009bca20	_global::DisplayCenteredText
+0122d70c	.text	009bcaf2	009bca20	_global::DisplayCenteredText
+0122d70c	.text	009bcb2e	009bca20	_global::DisplayCenteredText
+0122d70c	.text	009bce33	009bca20	_global::DisplayCenteredText
+0122d70c	.text	009c4ba5	009c47a0	CFileInstaller::AddFile
+0122d70c	.text	009c4baa	009c47a0	CFileInstaller::AddFile
+0122d70c	.text	009c4cb0	009c47a0	CFileInstaller::AddFile
+0122d70c	.text	009e5dbb	009e5c90	CSymbolMap::LoadFromFile
+0122d70c	.text	009e90a4	009e90a0	CMemoryFile::Open
+0122d70c	.text	009e93c6	009e93c0	CMemoryFile::Open
+0122d70c	.text	00a0cc21	00a0cbb0	CWStringParser::ReadAsStringUntilCharacter
+0122d70c	.text	00a0cd17	00a0ccd0	CWStringParser::ReadAsStringUntilCharacter
+0122d70c	.text	00a39140	00a39010	CCRCSymbolMap::LoadFromFile
+0122d70c	.text	00a60c76	00a60c30	CChecksumCacheFile::Close
+0122d70c	.text	00cd0744	00cbfb7d	_global::RunCutsceneMacro
+0122d70c	.text	00d01324	00d01290	NScript::CQ_BanditCampScript::WatchForTermination
+0122d70c	.text	00d0431c	00d04260	NScript::CQ_BanditCampBossBattleScript::WatchForTermination
+0122d70c	.text	00d2c018	00d2aa40	NScript::CQ_EndGameFocalSitesScript::Main
+0122d70c	.text	00d621a9	00d62140	NScript::CQ_GuildTrainingWoodsDepartureScript::WatchForTermination
+0122d70c	.text	00d668dc	00d66880	NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForTermination
+0122d70c	.text	00d6865c	00d68600	NScript::CQ_GuildTrainingWoodsWillScript::WatchForTermination
+0122d70c	.text	00d85813	00d84d60	NScript::CQ_HeroSoulsGuildmasterScript::Main
+0122d70c	.text	00d8a19a	00d89e60	NScript::CQ_HerosOldHouseScript::Main
+0122d70c	.text	00d8ecd2	00d8e990	NScript::CQ_HobbeCaveScript::WatchForTermination
+0122d70c	.text	00da41b3	00da3f40	NScript::CQ_MinionClifftopChaseScript::WatchForTermination
+0122d70c	.text	00dc3c64	00dc3bd0	NScript::CQ_OpeningGraveyardSecretPassageScript::WatchForTermination
+0122d70c	.text	00ded118	00ded0c0	NScript::CQ_SecretPassageScript::WatchForTermination
+0122d70c	.text	00e0c431	00e0c350	NScript::CQ_UndeadRisingScript::WatchForTermination
+0122d70c	.text	00e0f22d	00e0f1d0	NScript::CQ_WaspBossScript::EndMission
+0122d70c	.text	00e1555c	00e15500	NScript::CQ_WhiteBalverineKnotholeGladeScript::WatchForTermination
+0122d70c	.text	00e18e00	00e18630	NScript::CQ_WhiteBalverineWWScript::Main
+0122d70c	.text	00e1adb8	00e1ad60	NScript::CQ_WizardBattleScript::WatchForTermination
+0122d70c	.text	00e1e74d	00e1e670	CQR_EscortTraderScript::EndMission
+0122d70c	.text	00e689e9	00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster::Main
+0122d70c	.text	00e81cc0	00e81b40	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight
+0122d70c	.text	00ea7538	00ea7460	NScript::CV_LostTraderScript::WatchForQuestFailureState
+0122d70c	.text	00f01a9c	00f01a40	NScript::CQ_CinemaTestScript::WatchForTermination
+0122d70c	.text	00f1c077	00f1b9c0	NScript::CQ_ArenaScript::CArenaCellExitGuard::Main
+0122d70c	.text	00f1c4c6	00f1b9c0	NScript::CQ_ArenaScript::CArenaCellExitGuard::Main
+0122d70c	.text	0121a3e1	0121a3e0	_static_init::GResetProgressTipText
+0122d70c	.text	0121a401	0121a400	_static_init::GResetProgressTipTitleText
+0122d70c	.text	01223da1	01223da0	_static_init::CWideString::NullString
+0122ecb0	.text	00415902	-	
+0122ecb0	.text	00415945	00415940	CGameComponent::`scalar deleting destructor'
+0122ecb0	.text	00418c28	00418b7a	CMainGameComponent::~CMainGameComponent
+0122ecb0	.text	0042f596	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent
+0122ecb0	.text	00495763	00495620	CFrontendGameComponent::~CFrontendGameComponent
+0122ecb0	.text	0051d900	0051d8e0	CGameComponent::CGameComponent
+0122de50	.text	00406324	-	
+0122de50	.text	0040ced1	0040cec0	CUserProfileManager::CUserProfileManager
+0122de50	.text	0051d8eb	0051d8e0	CGameComponent::CGameComponent
+0122de50	.text	00a0a11b	00a0a110	CMeshBankManager::CMeshBankManager
+0122de50	.text	00b260c7	00b260b0	CEngine::CEngine
+01230c94	.text	0042eaa9	0042ea8f	CNewFrontendGameComponent::CNewFrontendGameComponent
+01230c94	.text	0042f51b	0042f50b	CNewFrontendGameComponent::~CNewFrontendGameComponent

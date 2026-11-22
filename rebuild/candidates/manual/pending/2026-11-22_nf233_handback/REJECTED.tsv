@@ -1,0 +1,2 @@
+address	claim	reason
+0x0042F50B	the inline ~CGameComponent needs __forceinline (HEAD row comment)	measured: plain inline expands at stock flags in the size TU (RELOCATION_MATCH, form 1)

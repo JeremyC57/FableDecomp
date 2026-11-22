@@ -1,0 +1,3 @@
+00433cb5	?DeleteData@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@SIXPAX@Z	x1
+00433cc0	?Release@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@QAEXXZ	x1
+00bfea1a	??2@YAPAXI@Z	x1

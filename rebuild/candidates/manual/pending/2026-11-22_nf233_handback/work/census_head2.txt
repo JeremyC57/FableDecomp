@@ -1,0 +1,81 @@
+### 00415920 [rebuild/src/compiled/00/41/CGameComponent_Init_00415920.cpp] 00415920 CGameComponent::Init MATCH flags= []
+### 00415930 [rebuild/src/compiled/00/41/CGameComponent_SetQuit_00415930.cpp] 00415930 CGameComponent::SetQuit MATCH flags= []
+### 0042dc5c [rebuild/src/compiled/00/42/CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c.cpp] 0042dc5c CNewFrontendGameComponent::ChangeTextureColourDepth MATCH flags= []
+  SYM DEF ?ChangeTextureColourDepth@CNewFrontendGameComponent@@QAEXPBD@Z
+### 00415940 [rebuild/src/compiled/00/41/CGameComponent_scalardeletingdestructor_00415940.cpp] 00415940 CGameComponent::`scalar deleting destructor' RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 0122eca4 ??_7CGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 __purecall
+  1 __purecall
+VT ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECGameComponent@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 __purecall
+  3 __purecall
+  4 ?SetQuit@CGameComponent@@MAEXXZ
+VT ??_7CBaseClassNonCopyable@@6B@ slots 1
+  0 ??_ECBaseClassNonCopyable@@MAEPAXI@Z
+VT ??_7CDeviceResetCallback@@6B@ slots 2
+  0 __purecall
+  1 __purecall
+VT ??_7CGameComponent_Concrete@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CGameComponent_Concrete@@UAE_NXZ
+  1 ?OnPostDeviceReset@CGameComponent_Concrete@@UAE_NXZ
+VT ??_7CGameComponent_Concrete@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECGameComponent_Concrete@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 ?Run@CGameComponent_Concrete@@UAEXXZ
+  3 ?Shutdown@CGameComponent_Concrete@@UAEXXZ
+  4 ?SetQuit@CGameComponent@@MAEXXZ
+  SYM DEF ??0CBaseClassNonCopyable@@QAE@XZ
+  SYM DEF ??0CDeviceResetCallback@@QAE@XZ
+  SYM DEF ??0CGameComponent@@QAE@PAVCGame@@@Z
+  SYM DEF ??0CGameComponent_Concrete@@QAE@XZ
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CBaseClassNonCopyable@@6B@
+  SYM DEF ??_7CDeviceResetCallback@@6B@
+  SYM DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent@@6BCDeviceResetCallback@@@
+  SYM DEF ??_7CGameComponent_Concrete@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent_Concrete@@6BCDeviceResetCallback@@@
+  SYM DEF ??_GCBaseClassNonCopyable@@MAEPAXI@Z
+  SYM DEF ??_GCGameComponent@@UAEPAXI@Z
+  SYM DEF ??_GCGameComponent_Concrete@@UAEPAXI@Z
+  SYM DEF ?ConstructCGameComponent@@YAXPAX@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCBaseClassNonCopyable@@MAEPAXI@Z
+  SYM UND ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ??_GCGameComponent_Concrete@@UAEPAXI@Z
+  SYM UND ?Init@CGameComponent@@UAEXXZ
+  SYM UND ?OnPostDeviceReset@CGameComponent_Concrete@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@CGameComponent_Concrete@@UAE_NXZ
+  SYM UND ?Run@CGameComponent_Concrete@@UAEXXZ
+  SYM UND ?SetQuit@CGameComponent@@MAEXXZ
+  SYM UND ?Shutdown@CGameComponent_Concrete@@UAEXXZ
+### 00495620 [rebuild/src/compiled/00/49/CFrontendGameComponent_CFrontendGameComponent_00495620.cpp] 00495620 CFrontendGameComponent::~CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 0122eca4 ??_7CGameComponent@@6BCGameComponentInterface@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECGameComponent@@UAEPAXI@Z
+VT ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??1CFrontendGameComponent@@UAE@XZ
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ?v00@CGameComponentInterface@@UAEXXZ
+DONE

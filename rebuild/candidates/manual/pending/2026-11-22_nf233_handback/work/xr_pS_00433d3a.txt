@@ -1,0 +1,3 @@
+00433cb5	?DeleteData@?$CCountedPointer@VCStartupDefinitionManager@@@@SIXPAX@Z	x1
+00433cc0	?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ	x1
+00bfea1a	??2@YAPAXI@Z	x1

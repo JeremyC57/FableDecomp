@@ -1,0 +1,5 @@
+DEF ??0CCPPointerInfo@@QAE@JP6IXPAX@Z0@Z
+DEF ?Reset@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@QAEXPAVCPolymorphicData_00433D3A@@@Z
+UND ??2@YAPAXI@Z
+UND ?DeleteData@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@SIXPAX@Z
+UND ?Release@?$CCountedPointer@VCPolymorphicData_00433D3A@@@@QAEXXZ
