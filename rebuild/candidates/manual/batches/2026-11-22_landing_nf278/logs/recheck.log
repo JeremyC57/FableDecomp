@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00415e83   MATCH            PASS   OnPreDeviceReset
+004197a0   MATCH            PASS   SetQuit
+004197b0   MATCH            PASS   IsEditorActive
+004197b3   WARN STANDIN_LEAF ??_GCMainGameComponent@@UAEPAXI@Z (catalog CMainGameComponent::`scalar_deleting_destructor'; names another function)
+004197b3   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00418b7a   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CFrameRateSmoother (engine/CFrameRateSmoother.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00418b7a   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+00418dca   WARN RELOC_NAME: ??0CRoughFrameCounter@@QAE@XZ -> 009f8b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00418dca   RELOCATION_MATCH PASS   CMainGameComponent
+
+WINS: 6
+  00415e83 MATCH CMainGameComponent::?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+  004197a0 MATCH CMainGameComponent::?SetQuit@CMainGameComponent@@UAEXXZ
+  004197b0 MATCH CMainGameComponent::?IsEditorActive@CMainGameComponent@@UBE_NXZ
+  004197b3 RELOCATION_MATCH CMainGameComponent::??_GCMainGameComponent@@UAEPAXI@Z
+  00418b7a RELOCATION_MATCH CMainGameComponent::??1CMainGameComponent@@UAE@XZ
+  00418dca RELOCATION_MATCH CMainGameComponent::??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z

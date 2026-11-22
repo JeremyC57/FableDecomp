@@ -1,0 +1,5 @@
+pH 00adc250 std::_List_base<CVertexGroupBlock>::clear RELOCATION_MATCH flags= [] leaf=?clear@?$_List_base@VCVertexGroupBlock
+--- reloc (target symbol count) HEAD(<) new(>)
+diff: /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF278/work/xr_pS_00adc250.txt: No such file or directory
+--- symbols HEAD(<) new(>)
+diff: /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF278/work/sym_pS_00adc250.txt: No such file or directory

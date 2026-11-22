@@ -1,0 +1,7 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00415E83	CMainGameComponent	OnPreDeviceReset	?OnPreDeviceReset@CMainGameComponent@@UAEXXZ	CMainGameComponent::OnPreDeviceReset	?Hook@T@@QAEXXZ	Ego_r.pdb 0x00415023 + FableWin.pdb 0x018A169C; retail vtable 0x0122F174 slot 0 (both emitters 0x00418DCA / 0x00418B7A bind it); body `ret`
+0x004197A0	CMainGameComponent	SetQuit	?SetQuit@CMainGameComponent@@UAEXXZ	CMainGameComponent::SetQuit	?SetQuit@T@@QAEXXZ	FableWin.pdb 0x018A11F0; retail vtable 0x0122F180 slot 4 (both emitters bind it); body `mov byte ptr [ecx+8],1 ; ret` (CGameComponent::Quit +8)
+0x004197B0	CMainGameComponent	IsEditorActive	?IsEditorActive@CMainGameComponent@@UBE_NXZ	CMainGameComponent::IsEditorActive	?IsEditorActive@T@@QAE_NXZ	FableWin.pdb 0x018A1210; retail vtable 0x0122F180 slot 9 (both emitters bind it); body `xor al,al ; ret`
+0x004197B3	CMainGameComponent	`scalar_deleting_destructor'	??_GCMainGameComponent@@UAEPAXI@Z	CMainGameComponent::`scalar_deleting_destructor'	?ScalarDeletingDestructor@CMainGameComponent@@QAEPAXI@Z	Ego_r.pdb 0x00418362 + FableWin.pdb 0x018A1307; retail vtable 0x0122F180 slot 0 (both emitters bind slot 0 as ??_E, the weak alias of this ??_G, and define the ??_G); folded under the dtor TU 0x00418B7A (nf251 pattern)
+# Section 2 (caller, old symbol, new symbol, callee address)
+0x004197B3	?Dtor@CMainGameComponent@@QAEXXZ	??1CMainGameComponent@@UAE@XZ	0x00418B7A

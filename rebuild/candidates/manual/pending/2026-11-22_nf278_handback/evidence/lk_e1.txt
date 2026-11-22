@@ -1,0 +1,28 @@
+## set B: HEAD emitters + 4 new self rows
+duplicates 1
+new_004197b3.obj : warning LNK4006: "public: __thiscall CMainGameComponent::CMainGameComponent(class CGame &,class CMainGameComponentInit const &)" (??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z) already defined in head_00418dca.obj; secon
+UNRESOLVED 2 ??0CMainGameComponentInit@@QAE@ABV0@@Z
+UNRESOLVED 1 ??1CMainGameComponentInit@@QAE@XZ
+UNRESOLVED 3 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+UNRESOLVED 3 ?GetInputs@CMainGameComponent@@MAEXXZ
+UNRESOLVED 3 ?Init@CMainGameComponent@@UAEXXZ
+UNRESOLVED 3 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+UNRESOLVED 3 ?PostInit@CMainGameComponent@@MAEXXZ
+UNRESOLVED 3 ?Render@CMainGameComponent@@MAEXXZ
+UNRESOLVED 3 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+UNRESOLVED 1 ?Shutdown@CMainGameComponent@@QAEXXZ
+UNRESOLVED 3 ?Update@CMainGameComponent@@MAEXXZ
+## set B2: HEAD emitters + 3 new (no fold row)
+duplicates 0
+
+UNRESOLVED 1 ??0CMainGameComponentInit@@QAE@ABV0@@Z
+UNRESOLVED 1 ??1CMainGameComponentInit@@QAE@XZ
+UNRESOLVED 2 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+UNRESOLVED 2 ?GetInputs@CMainGameComponent@@MAEXXZ
+UNRESOLVED 2 ?Init@CMainGameComponent@@UAEXXZ
+UNRESOLVED 2 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+UNRESOLVED 2 ?PostInit@CMainGameComponent@@MAEXXZ
+UNRESOLVED 2 ?Render@CMainGameComponent@@MAEXXZ
+UNRESOLVED 2 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+UNRESOLVED 1 ?Shutdown@CMainGameComponent@@QAEXXZ
+UNRESOLVED 2 ?Update@CMainGameComponent@@MAEXXZ

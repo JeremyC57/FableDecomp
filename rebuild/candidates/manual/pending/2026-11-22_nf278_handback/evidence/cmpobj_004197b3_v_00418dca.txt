@@ -1,0 +1,14 @@
+SAME	??0?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ
+SAME	??0?$CCountedPointer@VCFontBank@@@@QAE@XZ
+SAME	??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ
+SAME	??0?$CCountedPointer@VCLUA@@@@QAE@XZ
+SAME	??0?$scoped_ptr@VCDisplayEngine@@@boost@@QAE@PAVCDisplayEngine@@@Z
+SAME	??0?$scoped_ptr@VCGamePlayerInterface@@@boost@@QAE@PAVCGamePlayerInterface@@@Z
+SAME	??0?$scoped_ptr@VCPlayerManager@@@boost@@QAE@PAVCPlayerManager@@@Z
+SAME	??0?$scoped_ptr@VCWorld@@@boost@@QAE@PAVCWorld@@@Z
+SAME	??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+SAME	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ
+SAME	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ
+SAME	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ
+SAME	??1?$CCountedPointer@VCLUA@@@@QAE@XZ
+SAME	??_GCMainGameComponent@@UAEPAXI@Z

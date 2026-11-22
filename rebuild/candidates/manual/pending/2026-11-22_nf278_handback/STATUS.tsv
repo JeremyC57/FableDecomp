@@ -1,0 +1,9 @@
+address	change	grade	test	grades_used	entries	note
+0x00415E83	ported onto engine/CMainGameComponent.h (default path): ?Hook@T@@QAEXXZ -> ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ	MATCH	PASS (HEAD test unchanged)	2 (HEAD + v1) + vland x2	1	object defines only the leaf
+0x004197A0	ported (+ landed FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_SETQUIT): ?SetQuit@T@@QAEXXZ -> ?SetQuit@CMainGameComponent@@UAEXXZ	MATCH	PASS (HEAD test unchanged)	2 + vland x2	1	object defines only the leaf
+0x004197B0	ported (+ landed FABLE_RETAIL_CMAINGAMECOMPONENT_EDITOR): ?IsEditorActive@T@@QAE_NXZ -> ?IsEditorActive@CMainGameComponent@@UBE_NXZ	MATCH	PASS (HEAD test unchanged)	2 + vland x2	1	object defines only the leaf
+0x004197B3	folded under the dtor TU 0x00418B7A (nf251 pattern): ?ScalarDeletingDestructor@CMainGameComponent@@QAEPAXI@Z -> ??_GCMainGameComponent@@UAEPAXI@Z; dtor binding ?Dtor stand-in -> ??1CMainGameComponent@@UAE@XZ	RELOCATION_MATCH	PASS (HEAD test unchanged)	3 (HEAD + ctor-fold + dtor-fold) + vland x3 (last after a comment-only edit)	1	pk all EQ / NO-OWNER; object SAME as the dtor object; ctor-fold alternative (1 NEQ copy) kept in work/alt/
+0x00416E78	none (open: needs a port, map in NOTES)	-	-	0	1	slot 6 stays {MAE emitters, QAE self}
+controls	0x00418DCA / 0x00418B7A HEAD objects (vtable census, link, vland)	RELOCATION_MATCH each	PASS	2 each	1	unchanged
+census	0x00ADC190 / 0x00ADC250 / 0x00ADC4E0 / 0x00ADCB90 / 0x00ADCC80 / 0x00ADC3B0 / 0x00ADC330 / 0x00ADC440 / 0x00A96DA0 HEAD objects	RELOCATION_MATCH each	-	1 each	2	measurement only (NOTES entry 2); no row changed
+0x00ADCE60	none (entry 3 not started)	-	-	0	3	-

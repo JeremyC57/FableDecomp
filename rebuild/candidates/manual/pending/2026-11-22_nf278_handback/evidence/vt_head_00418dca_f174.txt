@@ -1,0 +1,3 @@
+0	00415e83	NOLINE	?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+1	004175da	NOLINE	?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+slots 2 not-OK 2 retail next word 0132d260 COL@-4 sym ?
