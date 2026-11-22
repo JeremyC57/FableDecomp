@@ -1,0 +1,2 @@
+address	assigned_name	leaf
+00a4efc0	C3DAnimationSequenceData::InitialiseFromFileData	?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z

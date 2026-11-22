@@ -1,0 +1,20 @@
+{
+  "row": "00a50510",
+  "tag": "extra5_exact_delivery_witness",
+  "source_sha256": "9e5445f15e0ceb5f24f297608c89e18e9d150b89d93347f71bcc8283c567ddb4",
+  "requested_leaf": "?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z",
+  "flags": [],
+  "retail_bytes": 1748,
+  "leaf": "?InitialiseAnimationSequences@C3DAnimation2@@AAE_NAAV1@ABVC3DMesh2@@_NAAK@Z",
+  "status": "MASKED_EQUAL",
+  "object_bytes": 1748,
+  "matched_instructions": 515,
+  "retail_instructions": 515,
+  "built_instructions": 515,
+  "hunks": 0,
+  "same_size_different_bytes": 0,
+  "pickany_complete": true,
+  "pickany_eq": 2,
+  "pickany_neq": 2,
+  "pickany_referenced_neq": 0
+}

@@ -1,0 +1,20 @@
+{
+  "row": "00aa0fa0",
+  "tag": "extra5_exact_delivery_witness",
+  "source_sha256": "277634f99d9d7ae36c7310af05666a2f8cb52e0f5d1218c15aeebc3849e89cbd",
+  "requested_leaf": "?CalcBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@ABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z",
+  "flags": [],
+  "retail_bytes": 4460,
+  "leaf": "?CalcBoneTransformation@C3DAnimationManager@@QAEXABVC3DAnimationBlendState@@ABVC3DMesh2@@KAAVCMatrix3x4@@AAVC3DVector@@@Z",
+  "status": "MASKED_EQUAL",
+  "object_bytes": 4460,
+  "matched_instructions": 1205,
+  "retail_instructions": 1205,
+  "built_instructions": 1205,
+  "hunks": 0,
+  "same_size_different_bytes": 0,
+  "pickany_complete": true,
+  "pickany_eq": 4,
+  "pickany_neq": 3,
+  "pickany_referenced_neq": 2
+}

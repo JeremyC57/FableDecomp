@@ -61,3 +61,6 @@ The three PDBs are in the shared "debug tlc" folder: https://drive.google.com/dr
 (Ego_d.pdb, Ego_r.pdb, FableWin.pdb; Ego_r / FableWin need `tools/repack4k.py` before llvm-pdbutil).
 
 Package: `fabledecomp_codex_row_00a4efc0_2026-11-22.zip` (6.4 MB, sha256 fe4648c825148490dbd7a7f1af6dc52a986282d83dfdacfc61992324e6771398), built by hand from AUTH7 / AUTH11 files and HEAD 2c68aace4b include/ (scratch, not in git). No PDB, exe or object files; regraded before sending: DIFFER(3491v3491).
+
+## Returned (2026-11-22)
+Codex returned `returned/` (VERIFIED_EXACT claim, CArray release-bounds opt-in, OPINION.md recommends accepting it as Inferred). Coordinator verification in progress; landing waits on the owner decision (the opt-in is chosen by grading: a fitted release form).

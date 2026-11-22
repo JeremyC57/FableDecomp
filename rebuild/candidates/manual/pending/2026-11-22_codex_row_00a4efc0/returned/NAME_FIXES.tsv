@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00a4efc0	?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z	Ego_r and FableWin procedure records, native caller argument types, final object symbol	Previously queued InitialiseFromChunk label with incompatible return and parameter types

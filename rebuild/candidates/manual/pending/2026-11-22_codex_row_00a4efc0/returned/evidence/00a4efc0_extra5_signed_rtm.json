@@ -1,0 +1,23 @@
+{
+  "row": "00a4efc0",
+  "tag": "extra5_signed_rtm",
+  "source_sha256": "8f2625462471c6066a516c4f7396ca54ce7562a1567e8b82c498cb1a8b5ffc7e",
+  "requested_leaf": "?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z",
+  "flags": [
+    "/Gr",
+    "/IZ:\\workspace\\work\\extra_a4\\runtime\\vs2003_rtm_include"
+  ],
+  "retail_bytes": 3491,
+  "leaf": "?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z",
+  "status": "MASKED_EQUAL",
+  "object_bytes": 3491,
+  "matched_instructions": 1084,
+  "retail_instructions": 1084,
+  "built_instructions": 1084,
+  "hunks": 0,
+  "same_size_different_bytes": 0,
+  "pickany_complete": true,
+  "pickany_eq": 26,
+  "pickany_neq": 0,
+  "pickany_referenced_neq": 0
+}

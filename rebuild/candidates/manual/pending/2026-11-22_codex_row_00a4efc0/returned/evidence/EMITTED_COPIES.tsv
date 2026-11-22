@@ -1,0 +1,34 @@
+address	symbol	address_evidence	object_bytes	catalog_bytes	masked_prefix
+0x403a00	?GetLength@CCharString@@QBEJXZ	table	11	11	EQUAL
+0x403a10	?GetAsCharArray@CCharString@@QBEPBDXZ	table	15	15	EQUAL
+0x405ba0	?__copy_trivial@std@@YIPAXPBX0PAX@Z	table	30	30	EQUAL
+0x405bc0	?__copy_trivial_backward@std@@YIPAXPBX0PAX@Z	table	26	26	EQUAL
+0x405c10	??2@YAPAXIPAX@Z	table	5	5	EQUAL
+0x47ce40	?fill@std@@YIXPAE0ABE@Z	table	46	46	EQUAL
+0x485b6c	?_M_insert_overflow@?$vector@EV?$allocator@E@std@@@std@@IAEXPAEABEABU__true_type@2@I_N@Z	aligned direct operand	132	132	EQUAL
+0x485f3a	?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z	aligned direct operand	174	174	EQUAL
+0x486189	?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXIABE@Z	table	53	53	EQUAL
+0x4861df	?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z	table	24	24	EQUAL
+0xa4efc0	?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z	table	3491		EQUAL
+0xa51be0	??$__uninitialized_copy@PAVCQuaternion@@PAV1@@std@@YIPAVCQuaternion@@PAV1@00ABU__false_type@0@@Z	table	62	62	EQUAL
+0xa51c20	??$__uninitialized_fill_n@PAVCQuaternion@@IV1@@std@@YIPAVCQuaternion@@PAV1@IABV1@ABU__false_type@0@@Z	table	58	58	EQUAL
+0xa51c60	??$__uninitialized_copy@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABU__false_type@0@@Z	table	52	52	EQUAL
+0xa51fa0	??$__uninitialized_copy@PBVCQuaternion@@PAV1@@std@@YIPAVCQuaternion@@PBV1@0PAV1@ABU__false_type@0@@Z	table	62	62	EQUAL
+0xa51fe0	??$fill@PAVCQuaternion@@V1@@std@@YIXPAVCQuaternion@@0ABV1@@Z	table	55	55	EQUAL
+0xa52040	??$__uninitialized_copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABU__false_type@0@@Z	table	52	52	EQUAL
+0xa52080	??$fill@PAVC3DVectorWord@C3DAnimationSequenceData@@V12@@std@@YIXPAVC3DVectorWord@C3DAnimationSequenceData@@0ABV12@@Z	table	45	45	EQUAL
+0xa520b0	??$uninitialized_fill_n@PAVC3DVectorWord@C3DAnimationSequenceData@@IV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@IABV12@@Z	table	48	48	EQUAL
+0xa52120	??$__copy@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z	table	70	70	EQUAL
+0xa52210	??$__copy_backward@PAVCQuaternion@@PAV1@H@std@@YIPAVCQuaternion@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	table	68	68	EQUAL
+0xa52260	??$__copy@PBVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z	table	70	70	EQUAL
+0xa522b0	??$__copy_backward@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@H@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z	table	71	71	EQUAL
+0xa535f0	??$__copy_ptrs@PBVCQuaternion@@PAV1@@std@@YIPAVCQuaternion@@PBV1@0PAV1@ABU__false_type@0@@Z	table	57	57	EQUAL
+0xa53650	??$_M_allocate_and_copy@PBVC3DVectorWord@C3DAnimationSequenceData@@@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEPAVC3DVectorWord@C3DAnimationSequenceData@@IPBV23@0@Z	table	83	83	EQUAL
+0xa54580	??0?$vector@VC3DKeyframe@@V?$allocator@VC3DKeyframe@@@std@@@std@@QAE@I@Z	aligned direct operand	117	117	EQUAL
+0xa54bb0	??4?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEAAV01@ABV01@@Z	aligned direct operand	253	253	EQUAL
+0xa54cb0	??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	aligned direct operand	268	268	EQUAL
+0xa54fa0	?_M_insert_overflow@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@IAEXPAVCQuaternion@@ABV3@ABU__false_type@2@I_N@Z	table	207	207	EQUAL
+0xa55070	?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@IAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z	aligned direct operand	279	279	EQUAL
+0xa55190	?_M_fill_insert@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEXPAVCQuaternion@@IABV3@@Z	aligned direct operand	285	285	EQUAL
+0xa552b0	?_M_fill_insert@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@IABV34@@Z	aligned direct operand	299	299	EQUAL
+0xc25970	?GetMagnitude@C3DVector@@QBEMXZ	table	33	33	EQUAL
