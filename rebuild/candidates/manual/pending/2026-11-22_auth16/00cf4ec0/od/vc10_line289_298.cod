@@ -1,0 +1,198 @@
+; 289  :             if (Game->GetHealth(seh_OakValeFan.GetScriptThing()) > 0.0f) {
+
+  01dc3	8d 85 b0 fe ff
+	ff		 lea	 eax, DWORD PTR $T7641[ebp]
+  01dc9	50		 push	 eax
+  01dca	8d 4d d8	 lea	 ecx, DWORD PTR _seh_OakValeFan$[ebp]
+  01dcd	e8 00 00 00 00	 call	 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ; CScriptGameResourceObjectScriptedThingBase::GetScriptThing
+  01dd2	89 85 30 fe ff
+	ff		 mov	 DWORD PTR tv1775[ebp], eax
+  01dd8	8b 8d 30 fe ff
+	ff		 mov	 ecx, DWORD PTR tv1775[ebp]
+  01dde	89 8d 2c fe ff
+	ff		 mov	 DWORD PTR tv2762[ebp], ecx
+  01de4	c6 45 fc 29	 mov	 BYTE PTR __$EHRec$[ebp+8], 41 ; 00000029H
+  01de8	8b 95 2c fe ff
+	ff		 mov	 edx, DWORD PTR tv2762[ebp]
+  01dee	52		 push	 edx
+  01def	8b 85 68 fe ff
+	ff		 mov	 eax, DWORD PTR _this$[ebp]
+  01df5	8b 48 04	 mov	 ecx, DWORD PTR [eax+4]
+  01df8	8b 95 68 fe ff
+	ff		 mov	 edx, DWORD PTR _this$[ebp]
+  01dfe	8b 42 04	 mov	 eax, DWORD PTR [edx+4]
+  01e01	8b 11		 mov	 edx, DWORD PTR [ecx]
+  01e03	8b c8		 mov	 ecx, eax
+  01e05	8b 82 20 04 00
+	00		 mov	 eax, DWORD PTR [edx+1056]
+  01e0b	ff d0		 call	 eax
+  01e0d	dc 1d 00 00 00
+	00		 fcomp	 QWORD PTR __real@0000000000000000
+  01e13	df e0		 fnstsw	 ax
+  01e15	f6 c4 41	 test	 ah, 65			; 00000041H
+  01e18	75 0c		 jne	 SHORT $LN99@Main
+  01e1a	c7 85 28 fe ff
+	ff 01 00 00 00	 mov	 DWORD PTR tv1803[ebp], 1
+  01e24	eb 0a		 jmp	 SHORT $LN100@Main
+$LN99@Main:
+  01e26	c7 85 28 fe ff
+	ff 00 00 00 00	 mov	 DWORD PTR tv1803[ebp], 0
+$LN100@Main:
+  01e30	8a 8d 28 fe ff
+	ff		 mov	 cl, BYTE PTR tv1803[ebp]
+  01e36	88 8d bf fe ff
+	ff		 mov	 BYTE PTR $T7640[ebp], cl
+  01e3c	c6 45 fc 28	 mov	 BYTE PTR __$EHRec$[ebp+8], 40 ; 00000028H
+  01e40	8d 8d b0 fe ff
+	ff		 lea	 ecx, DWORD PTR $T7641[ebp]
+  01e46	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01e4b	0f b6 95 bf fe
+	ff ff		 movzx	 edx, BYTE PTR $T7640[ebp]
+  01e52	85 d2		 test	 edx, edx
+  01e54	0f 84 95 01 00
+	00		 je	 $LN31@Main
+
+; 290  :                 seh_OakValeFan.Speak(Game->GetHero(), "TEXT_QST_005_V2_FAN_OAKVALE_CHAT_HIT", GROUP_SELECT_NONE, false, true, false);
+
+  01e5a	6a 00		 push	 0
+  01e5c	6a 01		 push	 1
+  01e5e	6a 00		 push	 0
+  01e60	6a 00		 push	 0
+  01e62	68 00 00 00 00	 push	 OFFSET $SG7273
+  01e67	8b 85 68 fe ff
+	ff		 mov	 eax, DWORD PTR _this$[ebp]
+  01e6d	8b 48 04	 mov	 ecx, DWORD PTR [eax+4]
+  01e70	8b 95 68 fe ff
+	ff		 mov	 edx, DWORD PTR _this$[ebp]
+  01e76	8b 42 04	 mov	 eax, DWORD PTR [edx+4]
+  01e79	8b 11		 mov	 edx, DWORD PTR [ecx]
+  01e7b	8b c8		 mov	 ecx, eax
+  01e7d	8b 82 18 01 00
+	00		 mov	 eax, DWORD PTR [edx+280]
+  01e83	ff d0		 call	 eax
+  01e85	50		 push	 eax
+  01e86	8d 4d d8	 lea	 ecx, DWORD PTR _seh_OakValeFan$[ebp]
+  01e89	e8 00 00 00 00	 call	 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z ; CScriptGameResourceObjectScriptedThingBase::Speak
+$LN34@Main:
+
+; 291  :                 while (seh_OakValeFan.IsPerformingScriptTask()) {
+
+  01e8e	8d 4d d8	 lea	 ecx, DWORD PTR _seh_OakValeFan$[ebp]
+  01e91	e8 00 00 00 00	 call	 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; CScriptGameResourceObjectScriptedThingBase::IsPerformingScriptTask
+  01e96	0f b6 c8	 movzx	 ecx, al
+  01e99	85 c9		 test	 ecx, ecx
+  01e9b	0f 84 b6 00 00
+	00		 je	 $LN33@Main
+
+; 292  :                     Game->NewScriptFrame();
+
+  01ea1	8b 95 68 fe ff
+	ff		 mov	 edx, DWORD PTR _this$[ebp]
+  01ea7	8b 42 04	 mov	 eax, DWORD PTR [edx+4]
+  01eaa	8b 8d 68 fe ff
+	ff		 mov	 ecx, DWORD PTR _this$[ebp]
+  01eb0	8b 49 04	 mov	 ecx, DWORD PTR [ecx+4]
+  01eb3	8b 10		 mov	 edx, DWORD PTR [eax]
+  01eb5	8b 42 1c	 mov	 eax, DWORD PTR [edx+28]
+  01eb8	ff d0		 call	 eax
+
+; 293  :                     if (IsActiveThreadTerminating())
+
+  01eba	8b 8d 68 fe ff
+	ff		 mov	 ecx, DWORD PTR _this$[ebp]
+  01ec0	e8 00 00 00 00	 call	 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ ; CEntityScriptBase::IsActiveThreadTerminating
+  01ec5	0f b6 c8	 movzx	 ecx, al
+  01ec8	85 c9		 test	 ecx, ecx
+  01eca	0f 84 82 00 00
+	00		 je	 $LN32@Main
+
+; 294  :                         return _Fail_Val.Return();
+
+  01ed0	8d 4d bb	 lea	 ecx, DWORD PTR __Fail_Val$[ebp]
+  01ed3	e8 00 00 00 00	 call	 ?Return@TRetVoid@@QAEXXZ ; TRetVoid::Return
+  01ed8	c6 45 fc 26	 mov	 BYTE PTR __$EHRec$[ebp+8], 38 ; 00000026H
+  01edc	8d 8d 74 ff ff
+	ff		 lea	 ecx, DWORD PTR _PauseMyEntitiesPlease$7269[ebp]
+  01ee2	e8 00 00 00 00	 call	 ??1CWideScreenMagicPauseEntities@@QAE@XZ ; CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities
+  01ee7	c6 45 fc 0d	 mov	 BYTE PTR __$EHRec$[ebp+8], 13 ; 0000000dH
+  01eeb	8d 8d 64 ff ff
+	ff		 lea	 ecx, DWORD PTR _speech_movie$7266[ebp]
+  01ef1	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  01ef6	c6 45 fc 0c	 mov	 BYTE PTR __$EHRec$[ebp+8], 12 ; 0000000cH
+  01efa	8d 4d 94	 lea	 ecx, DWORD PTR _ChatTimer$[ebp]
+  01efd	e8 00 00 00 00	 call	 ??1CTimer@@QAE@XZ	; CTimer::~CTimer
+  01f02	c6 45 fc 0b	 mov	 BYTE PTR __$EHRec$[ebp+8], 11 ; 0000000bH
+  01f06	8d 4d a8	 lea	 ecx, DWORD PTR _seh_HookCoastFan$[ebp]
+  01f09	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  01f0e	c6 45 fc 0a	 mov	 BYTE PTR __$EHRec$[ebp+8], 10 ; 0000000aH
+  01f12	8d 4d 98	 lea	 ecx, DWORD PTR _seh_BowerstoneFan$[ebp]
+  01f15	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  01f1a	c6 45 fc 09	 mov	 BYTE PTR __$EHRec$[ebp+8], 9
+  01f1e	8d 4d d8	 lea	 ecx, DWORD PTR _seh_OakValeFan$[ebp]
+  01f21	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  01f26	c6 45 fc 06	 mov	 BYTE PTR __$EHRec$[ebp+8], 6
+  01f2a	8d 4d e8	 lea	 ecx, DWORD PTR _HookCoastFan$[ebp]
+  01f2d	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01f32	c6 45 fc 03	 mov	 BYTE PTR __$EHRec$[ebp+8], 3
+  01f36	8d 4d c8	 lea	 ecx, DWORD PTR _BowerstoneFan$[ebp]
+  01f39	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01f3e	c7 45 fc ff ff
+	ff ff		 mov	 DWORD PTR __$EHRec$[ebp+8], -1
+  01f45	8d 4d bc	 lea	 ecx, DWORD PTR _OakValeFan$[ebp]
+  01f48	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01f4d	e9 d2 0e 00 00	 jmp	 $LN89@Main
+$LN32@Main:
+
+; 295  :                 }
+
+  01f52	e9 37 ff ff ff	 jmp	 $LN34@Main
+$LN33@Main:
+
+; 296  :                 if (IsActiveThreadTerminating())
+
+  01f57	8b 8d 68 fe ff
+	ff		 mov	 ecx, DWORD PTR _this$[ebp]
+  01f5d	e8 00 00 00 00	 call	 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ ; CEntityScriptBase::IsActiveThreadTerminating
+  01f62	0f b6 d0	 movzx	 edx, al
+  01f65	85 d2		 test	 edx, edx
+  01f67	0f 84 82 00 00
+	00		 je	 $LN31@Main
+
+; 297  :                     return _Fail_Val.Return();
+
+  01f6d	8d 4d bb	 lea	 ecx, DWORD PTR __Fail_Val$[ebp]
+  01f70	e8 00 00 00 00	 call	 ?Return@TRetVoid@@QAEXXZ ; TRetVoid::Return
+  01f75	c6 45 fc 26	 mov	 BYTE PTR __$EHRec$[ebp+8], 38 ; 00000026H
+  01f79	8d 8d 74 ff ff
+	ff		 lea	 ecx, DWORD PTR _PauseMyEntitiesPlease$7269[ebp]
+  01f7f	e8 00 00 00 00	 call	 ??1CWideScreenMagicPauseEntities@@QAE@XZ ; CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities
+  01f84	c6 45 fc 0d	 mov	 BYTE PTR __$EHRec$[ebp+8], 13 ; 0000000dH
+  01f88	8d 8d 64 ff ff
+	ff		 lea	 ecx, DWORD PTR _speech_movie$7266[ebp]
+  01f8e	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  01f93	c6 45 fc 0c	 mov	 BYTE PTR __$EHRec$[ebp+8], 12 ; 0000000cH
+  01f97	8d 4d 94	 lea	 ecx, DWORD PTR _ChatTimer$[ebp]
+  01f9a	e8 00 00 00 00	 call	 ??1CTimer@@QAE@XZ	; CTimer::~CTimer
+  01f9f	c6 45 fc 0b	 mov	 BYTE PTR __$EHRec$[ebp+8], 11 ; 0000000bH
+  01fa3	8d 4d a8	 lea	 ecx, DWORD PTR _seh_HookCoastFan$[ebp]
+  01fa6	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  01fab	c6 45 fc 0a	 mov	 BYTE PTR __$EHRec$[ebp+8], 10 ; 0000000aH
+  01faf	8d 4d 98	 lea	 ecx, DWORD PTR _seh_BowerstoneFan$[ebp]
+  01fb2	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  01fb7	c6 45 fc 09	 mov	 BYTE PTR __$EHRec$[ebp+8], 9
+  01fbb	8d 4d d8	 lea	 ecx, DWORD PTR _seh_OakValeFan$[ebp]
+  01fbe	e8 00 00 00 00	 call	 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  01fc3	c6 45 fc 06	 mov	 BYTE PTR __$EHRec$[ebp+8], 6
+  01fc7	8d 4d e8	 lea	 ecx, DWORD PTR _HookCoastFan$[ebp]
+  01fca	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01fcf	c6 45 fc 03	 mov	 BYTE PTR __$EHRec$[ebp+8], 3
+  01fd3	8d 4d c8	 lea	 ecx, DWORD PTR _BowerstoneFan$[ebp]
+  01fd6	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01fdb	c7 45 fc ff ff
+	ff ff		 mov	 DWORD PTR __$EHRec$[ebp+8], -1
+  01fe2	8d 4d bc	 lea	 ecx, DWORD PTR _OakValeFan$[ebp]
+  01fe5	e8 00 00 00 00	 call	 ??1CScriptThing@@UAE@XZ	; CScriptThing::~CScriptThing
+  01fea	e9 35 0e 00 00	 jmp	 $LN89@Main
+$LN31@Main:
+
+; 298  :             }
