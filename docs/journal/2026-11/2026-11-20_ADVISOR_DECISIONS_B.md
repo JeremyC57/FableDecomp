@@ -401,3 +401,14 @@ retail's function never calls (or the reverse). Size arguments that only show "m
   - Pick-any: the rule applies. A copy landed rows already emit with the same bytes is queued debt, not a hold (2026-11-21): verify for the
     movie dtor (any of the 55) and for ??1CIsThingAlive (0x00DE6C20). A copy new to this row holds it.
   - 0x008E18D0: the locals check must compare per block (Ego_d's block 2 has no vtStartPos / vtEndPos / upParams).
+
+- **2026-11-22 (Account A, advisor): AUTH18's 0x0093D270 IsRunnable escalation.** Outcome (A), not a `const float&` opt-in: unlike the CArray
+  case (0x00A4EFC0), the reference form does not extend attested evidence, it contradicts all three PDBs' by-value signature, so it cannot
+  land on advisor or coordinator authority; only the owner can override.
+  - Before adopting the terminal: grade the reference form once on the REAL row (pre-registered, unlanded oracle). Done: e1.cpp + CCombatManager.h:144
+    `const float&` = RELOCATION_MATCH (control DIFFER(305v295)), so the whole residue is that one inline.
+  - The sibling site 0x006AAA24 sits in parked 0x006AA720 (DIFFER 1218v1212): name both rows as one item in the terminal. Its 2026-11-03
+    draft hung cl.exe, so it is not graded.
+  - Record 305v295 as the row's rule-clean grade (297v295 was a local-model bracket). Queue "TLC-era form of GetProximityForNavigation" for the
+    next Codex package (`pending/NEXT_CODEX_QUESTIONS.md`, with the 0x00CF4EC0 line-887 question). Restart authoring on the other three rows
+    (AUTH19), restating "never run git, including read-only".
