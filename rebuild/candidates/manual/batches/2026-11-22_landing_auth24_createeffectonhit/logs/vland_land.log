@@ -1,0 +1,3 @@
+00839420   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00839420   RELOCATION_MATCH PASS   CreateEffectOnHit
+  00839420 RELOCATION_MATCH NThingHelpers::?CreateEffectOnHit@NThingHelpers@@YIXABVCThing@@ABVCHitParameters@@ABVCWorldMap@@M@Z

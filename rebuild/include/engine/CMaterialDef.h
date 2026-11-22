@@ -17,6 +17,14 @@ class CMaterialDef:public CParentDefClassBase {public:
 // ?Alloc@CMaterialDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CMATERIALDEF_SWORDHITEFFECTS
+// AUTH24 opt-in (2026-11-22, row 0x00839420 NThingHelpers::CreateEffectOnHit): Ego_r.pdb + FableWin.pdb
+// ?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z (retail 0x008EE790, landed), ?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
+// (0x008EE720, landed) and ?GetRandomSwordHitParticleEffect@CMaterialDef@@QBEJXZ (0x008EE600, landed). Declarations only; no layout change.
+public: bool GetBlendedSwordHitEffect(long region_def_index, float delta_health, long& from_effect_id, long& to_effect_id, float& interpolate) const;
+public: long GetRandomBerserkedSwordHitParticleEffect() const;
+public: long GetRandomSwordHitParticleEffect() const;
+#endif
 #ifdef FABLE_RETAIL_CMATERIALDEF_GETRANDOMSLIDEFOOTPARTICLEEFFECT
 // NF49 opt-in (2026-11-17, row 0x008F7950 NCombatActionHelpers::CreateDustEffectForCreature): Ego_r.pdb
 // ?GetRandomSlideFootParticleEffect@CMaterialDef@@QBEJXZ (retail 0x008EE5A0, landed; labels_familypass6 L093). Declaration only; no layout change.

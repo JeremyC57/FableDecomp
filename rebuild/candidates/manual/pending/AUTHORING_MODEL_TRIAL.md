@@ -40,7 +40,9 @@ list (0x005A94BD, 0x00409730, 0x00A15890, 0x00CFBDF0, 0x006B97E0).
 | AUTH23 | 0x00A68DE0 | escalated, still moving: DIFFER(911v919) (same-TU Lock body as the landed 2D twin moved it) | 6 | |
 | AUTH23 | 0x00839420 | working: DIFFER(1316v1308), 29 masked lines (from 75) | 3 | HANDOFF.md |
 | AUTH23 | 0x00651273, 0x00816410, 0x00502E90 | not started | 0 | context |
+| AUTH24 | 0x00839420 | **landed** RELOCATION_MATCH (Inferred: GFDebugPDynamicCast release dead-arm assert, Ego_d line 129 = 13 B) | 6 (+3 AUTH23) | `batches/2026-11-22_landing_auth24_createeffectonhit/` |
+| AUTH24 | 0x00651273, 0x00816410, 0x00A68DE0, 0x00502E90 | not started | 0 | context |
 
-**Running score (fresh rows, Fable 5.2):** of the five fresh near misses, 1 landed (0x0066B370, with an owner-approved Inferred accessor
-form), 1 escalated (0x00A68DE0), 1 working (0x00839420), 2 not started; 0x00502E90 (old hard row) escalated. Opus on its 10 hard rows:
+**Running score (fresh rows, Fable 5.2):** of the five fresh near misses, 2 landed (0x0066B370 with an owner-approved Inferred accessor
+form; 0x00839420 with an Inferred assert arm), 1 escalated (0x00A68DE0), 2 not started; 0x00502E90 (old hard row) escalated. Opus on its 10 hard rows:
 3 authored matches (+1 from Codex text, +1 Inferred by owner override). Not yet comparable: different rows; run the Opus control set.

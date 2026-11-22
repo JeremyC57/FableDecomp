@@ -403366,6 +403366,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /TC /MD /Gr /Ob1'
         PassPattern = '00c95580_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00839420'
+        Module = 'NThingHelpers'
+        Source = '00/83/NThingHelpers_CreateEffectOnHit_00839420.cpp'
+        TestSource = '00/83/NThingHelpers_CreateEffectOnHit_00839420_test.cpp'
+        PassPattern = '00839420_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

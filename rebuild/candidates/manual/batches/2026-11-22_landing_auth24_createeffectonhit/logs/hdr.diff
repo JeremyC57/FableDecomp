@@ -1,0 +1,58 @@
+--- orig/engine/CMaterialDef.h	2026-11-22 09:59:15.072969994 +0000
++++ hdr/engine/CMaterialDef.h	2026-11-22 10:30:31.108134142 +0000
+@@ -17,6 +17,14 @@
+ // ?Alloc@CMaterialDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
+ public: static class CDefClassBase* FABLE_FASTCALL Alloc();
+ #endif
++#ifdef FABLE_RETAIL_CMATERIALDEF_SWORDHITEFFECTS
++// AUTH24 opt-in (2026-11-22, row 0x00839420 NThingHelpers::CreateEffectOnHit): Ego_r.pdb + FableWin.pdb
++// ?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z (retail 0x008EE790, landed), ?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
++// (0x008EE720, landed) and ?GetRandomSwordHitParticleEffect@CMaterialDef@@QBEJXZ (0x008EE600, landed). Declarations only; no layout change.
++public: bool GetBlendedSwordHitEffect(long region_def_index, float delta_health, long& from_effect_id, long& to_effect_id, float& interpolate) const;
++public: long GetRandomBerserkedSwordHitParticleEffect() const;
++public: long GetRandomSwordHitParticleEffect() const;
++#endif
+ #ifdef FABLE_RETAIL_CMATERIALDEF_GETRANDOMSLIDEFOOTPARTICLEEFFECT
+ // NF49 opt-in (2026-11-17, row 0x008F7950 NCombatActionHelpers::CreateDustEffectForCreature): Ego_r.pdb
+ // ?GetRandomSlideFootParticleEffect@CMaterialDef@@QBEJXZ (retail 0x008EE5A0, landed; labels_familypass6 L093). Declaration only; no layout change.
+--- orig/engine/CDefinitionManager.h	2026-11-22 10:27:06.699631363 +0000
++++ hdr/engine/CDefinitionManager.h	2026-11-22 10:30:31.110901593 +0000
+@@ -282,6 +282,38 @@
+ #pragma optimize("", on)
+ #endif
+ #endif
++#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CCREATUREDEF_SIZE_BODY
++// Nested opt-in (AUTH24 2026-11-22, row 0x00839420 NThingHelpers::CreateEffectOnHit): the CCreatureDef twin of the block above, same
++// device and same conditions. Fidelity: scaffolding, not retail: it is for link determinism and makes no claim about retail's text. A /O2
++// TU that keeps the GetSubDef body visible emits its own pick-any copy of
++// ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z (182 B), while retail's linker kept the copy of
++// the owner row 0x00485815 (162 B), which was built in a frame-pointer size TU and sets these same two pragmas itself
++// (rebuild/src/compiled/00/48/CDefClassBase_GetSubDefCCreatureDef_00485815.cpp: optimize("y", off) / optimize("s", on)). The body is the
++// template body above with T = CCreatureDef, token for token; it needs a CCreatureDef.h branch with the inline StatGetTypeName (e.g.
++// FABLE_RETAIL_CCREATUREDEF_DIALOGUEVOICES). The pair ends with optimize("", on), which restores the command-line default (VC7.1 has no
++// push / pop for optimize), so this is valid only in a TU with no optimize pragma above this include.
++#include "engine/CCreatureDef.h"
++#if defined(_MSC_VER)
++#pragma optimize("y", off)
++#pragma optimize("s", on)
++template<> __declspec(noinline) inline
++#else
++template<> inline
++#endif
++bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out)const
++{
++ const CSubDefInfo* info=GetPSubDefInfo(CCreatureDef::StatGetTypeName());
++ if(info){
++  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
++  out->SetDynamicCast(def);
++  return true;
++ }
++ return false;
++}
++#if defined(_MSC_VER)
++#pragma optimize("", on)
++#endif
++#endif
+ #endif
+ #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY
+ // Nested opt-in (chunk 1012, row 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds): the same-TU body of the by-class-index

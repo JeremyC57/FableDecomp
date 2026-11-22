@@ -1,0 +1,6 @@
+address	state	best_grade	grades_used	best_source	note
+00839420	matched (ruling needed: 1 Inferred device, 2 open Ego_d lines)	RELOCATION_MATCH	6 (AUTH24) + 3 (AUTH23)	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth24/00839420/00839420.cpp	stock flags; Ego_d text incl. line 87 as one statement (the separate = 0 was never needed); visible GetSubDef body + GFDebugPDynamicCast at line 129 with its release dead-arm assert (c2 sort-key wrap orders the x87 products); test PASS; vland dry-run WINS 1; overlay hdr/ (2 add-only opt-ins), hdr.diff; pick-any 11 EQ + 1 HEAD debt (_M_insert_overflow); NOTES.md
+00651273	not started		0		
+00816410	not started		0		
+00a68de0	not started by AUTH24 (AUTH23: escalated, p4 DIFFER(911v919))		0	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth23/00a68de0/p4_00a68de0.cpp	resume from AUTH23 ESCALATE.md UPDATE section
+00502e90	not started		0		

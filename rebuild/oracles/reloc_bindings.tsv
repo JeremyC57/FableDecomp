@@ -39620,3 +39620,6 @@ _sort32a	00c95560	00c95580
 ?GOldGameComponentToDelete@@3PAVCGameComponent@@A	013b7d58	00496cf0
 ??_7CMeshBankManager@@6BCDeviceResetCallback@@@	0129c980	00a0a110
 ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@V?$allocator@VCMeshDataBankInfo@CMeshBankManager@@@std@@@std@@QAEXXZ	00a0a720	00a0a150
+?GetBlendedSwordHitEffect@CMaterialDef@@QBE_NJMAAJ0AAM@Z	008ee790	00839420
+?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ	008ee720	00839420
+?GetRandomSwordHitParticleEffect@CMaterialDef@@QBEJXZ	008ee600	00839420
