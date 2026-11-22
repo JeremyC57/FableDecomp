@@ -4953,7 +4953,7 @@ __imp__CoInitialize@4	01440644	00a3bc70
 ?FinalInsertionSort_00a418f0@@YIXPAUSElement12@@0USCompare@@@Z	00a418f0	00a42060
 ?IntrosortLoop_00a41ea0@@YIXPAUSElement12@@00JUSCompare@@@Z	00a41ea0	00a42060
 ?SetGuiValue@@YIXPAUGuiTarget@@HE@Z	00a42060	00a420e0
-?DoUpdate@CLipSyncDataBank_Methods@@QAEXXZ	009cec60	00a427a0
+?Update@CBankFile@@UAEXXZ	009cec60	00a427a0
 ?EntryExists@CLipSyncDataBank@@QBE_NK@Z	009cc190	00a42830
 ??0CResourceBank@@QAE@XZ	009fc5f0	00a42b80
 ??_7CLipSyncDataBank@@6B@	0129d3d4	00a42b80
@@ -8257,7 +8257,6 @@ __CIacos	00bfeba2	0084cdf0
 ?SetScriptTargetOverride@CTCTargetingAI@@QAEXPAUCThing_Retail@@@Z	008abba0	008a0260
 ?GetFollowers@CTCFollowed_Retail@@QAEXAAUCThingVector@@@Z	006d5850	008a80f0
 ?reserve@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXI@Z	008acd30	008a8570
-?_M_insert_overflow@CBoastVector@@QAEXPAUCBoastPair@@ABU2@ABU__false_type@@K_N@Z	0074fce0	008a9ae0
 ??1CMovieImpPointer@@QAE@XZ	006e7ab0	00df2d30
 ??_7CScriptGameResourceObjectMovieBase@@6B@	01260ef4	00df2d30
 ?UpdateErrorMessage@CManager@NUISystem@@QAEXM@Z	0041ce9d	0041d03c
@@ -22348,8 +22347,8 @@ _crc_table	012af780	00c059d0
 ?DisplayProgress@NFactory006ac910@@YIXABVCCharString@@_NMH@Z	009e9f40	006ac910
 ?__uninitialized_copy@FableVector_006fc130@@YIPAU?$pair@VCCharString@@H@1@PBU21@0PAU21@ABU__false_type@1@@Z	006fb1c0	006fc130
 ?__uninitialized_fill_n@FableVector_006fc130@@YIPAU?$pair@VCCharString@@H@1@PAU21@IABU21@ABU__false_type@1@@Z	006fb200	006fc130
-?__uninitialized_copy@FableVector_0074fce0@@YIPAU?$pair@HVCCharString@@@1@PBU21@0PAU21@ABU__false_type@1@@Z	0074f4f0	0074fce0
-?__uninitialized_fill_n@FableVector_0074fce0@@YIPAU?$pair@HVCCharString@@@1@PAU21@IABU21@ABU__false_type@1@@Z	0074f530	0074fce0
+??$__uninitialized_copy@PAU?$pair@JVCCharString@@@std@@PAU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@00ABU__false_type@0@@Z	0074f4f0	0074fce0
+??$__uninitialized_fill_n@PAU?$pair@JVCCharString@@@std@@IU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z	0074f530	0074fce0
 ?__uninitialized_copy@FableVector_0086d370@@YIPAU?$pair@VCCharString@@H@1@PBU21@0PAU21@ABU__false_type@1@@Z	0086ab10	0086d370
 ?__uninitialized_fill_n@FableVector_0086d370@@YIPAU?$pair@VCCharString@@H@1@PAU21@IABU21@ABU__false_type@1@@Z	0086ab50	0086d370
 ?__uninitialized_copy@FableVector_009cad20@@YIPAU?$pair@HVCCharString@@@1@PBU21@0PAU21@ABU__false_type@1@@Z	009ca190	009cad20
@@ -26910,7 +26909,6 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ??0CEventHeroHasBeenSpottedPickingLock@NEntityEvents@@QAE@PAVCThing@@0@Z	008ab840	008957c0
 ??0CEventHeroHasBeenSpottedPickpocketing@NEntityEvents@@QAE@PAVCThing@@0@Z	008ab7b0	008957c0
 ??0CEventHeroHasBeenSpottedStealing@NEntityEvents@@QAE@PAVCThing@@0@Z	008ab8d0	008957c0
-?_M_insert_overflow@CContainerItemVector@@QAEXPAUSContainerItem@@ABU2@ABU__false_type@@K_N@Z	0074fce0	008ed1f0
 ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z	00e80d60	00e81b40
 ?IMERenderAlpha@@3EA	013750b0	00405220
 ??$remove_if@VCIsQuestCardWithDefName@@@?$list@VCQuestCard@CQuestManager@@V?$allocator@VCQuestCard@CQuestManager@@@std@@@std@@QAEXVCIsQuestCardWithDefName@@@Z	004b9250	004b2280
@@ -37542,10 +37540,10 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?SaveBinary@CAnimatedBlock@@QBEXAAVCDataOutputStream@@@Z	00a8e770	00a8fd40
 ?ConvertAnimatedVertices@@YIXPBXKPAXKKAAVCVertexCompressionParams@@@Z	00a90fc0	00a91560
 ?ConvertStaticVertices@@YIXPBXKPAXKKAAVCVertexCompressionParams@@@Z	00a91390	00a91560
-?BuildBand@CSkyRendererMethods@@QAEXAAPAX0II@Z	00b61cd0	00b620a0
-?BuildClouds@CSkyRendererMethods@@QAEXAAPAX0II@Z	00b61dd0	00b620a0
-?BuildSky@CSkyRendererMethods@@QAEXAAPAX0II@Z	00b61b30	00b620a0
-?BuildSolidBaseBand@CSkyRendererMethods@@QAEXXZ	00b61ff0	00b620a0
+?BuildBaseBandMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	00b61cd0	00b620a0
+?BuildCloudMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	00b61dd0	00b620a0
+?BuildOuterSkyMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	00b61b30	00b620a0
+?BuildStarFieldVB@CEngineSkyRenderer@@AAEXXZ	00b61ff0	00b620a0
 ?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ	00b3b030	00b620a0
 ?Decompress@CRangeCompressor@@QAEXPBEJJPAX@Z	00f39ed0	00b6d940
 ?SetPositionAssumeWithinSourceChunk@CMemoryDataInputStream@@QAEXK@Z	00993c10	00b6d940
@@ -39581,3 +39579,4 @@ _sort32a	00c95560	00c95580
 ??_7CModeSitBench@NCreatureMode@@6B@	01267bfc	00740040
 ??1?$_List_base@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ	0063f360	0063e6f0
 __real@0000000000000000	0122ed70	00b260b0
+??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ	00a978c0	00a978a0

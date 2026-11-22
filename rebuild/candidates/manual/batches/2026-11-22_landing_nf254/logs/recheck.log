@@ -1,0 +1,52 @@
+004dd782   WARN RELOC_NAME: ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z -> 004da68a labelled 'std::pair<long,CCharString>::`scalardeletingdestructor''
+004dd782   RELOCATION_MATCH PASS   pair<long,CCharString>*>
+0074f4f0   RELOCATION_MATCH PASS   pair<long,CCharString>*>
+0074f530   RELOCATION_MATCH PASS   pair<long,CCharString>>
+0074fce0   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@JVCCharString@@@std@@PAU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@00ABU__false_type@0@@Z -> 0074f4f0 labelled 'std::__uninitialized_copy<std::pair<long,CCharString>*,std::pair<long,CCharString>*>'
+0074fce0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@JVCCharString@@@std@@IU12@@std@@YIPAU?$pair@JVCCharString@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 0074f530 labelled 'std::__uninitialized_fill_n<std::pair<long,CCharString>*,unsigned int,std::pair<long,CCharString>>'
+0074fce0   RELOCATION_MATCH PASS   _M_insert_overflow
+0074fe50   RELOCATION_MATCH PASS   push_back
+008a9ae0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008a9ae0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008a9ae0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+008a9ae0   RELOCATION_MATCH PASS   MsgOnBoastsMade
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+008ed1f0   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+008ed1f0   RELOCATION_MATCH PASS   InsertItem
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+008ed440   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+008ed440   RELOCATION_MATCH PASS   operator()
+009cec60   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009cec60   RELOCATION_MATCH PASS   Update
+00a427a0   RELOCATION_MATCH PASS   Update
+00a90ae0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00a90ae0   RELOCATION_MATCH PASS   InitialiseFromMeshFileData
+00a978a0   WARN STANDIN_LEAF ??_GCDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAEPAXI@Z (catalog N3DPrimitive::CAnimatedBlock::CDeviceIndependent::`scalar_deleting_destructor'; names another function)
+00a978a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a978c0   RELOCATION_MATCH PASS   ~CDeviceIndependent
+00b61b30   WARN SHARED_HEADER_AVAILABLE CTVertexColTex1 (engine/CTVertexColTex1.h)
+00b61b30   WARN SHARED_HEADER_AVAILABLE CEngineSkyRenderer (engine/CEngineSkyRenderer.h)
+00b61b30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00b61b30   RELOCATION_MATCH PASS   BuildOuterSkyMesh
+00b61cd0   WARN SHARED_HEADER_AVAILABLE CEngineSkyRenderer (engine/CEngineSkyRenderer.h)
+00b61cd0   RELOCATION_MATCH PASS   BuildBaseBandMesh
+00b61dd0   RELOCATION_MATCH PASS   BuildCloudMesh
+00b61ff0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00b61ff0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00b61ff0   WARN STANDIN_LEAF ?BuildStarFieldVB@CSkyRendererMethods@@QAEXXZ (catalog CEngineSkyRenderer::BuildStarFieldVB; names another function)
+00b61ff0   RELOCATION_MATCH PASS   BuildStarFieldVB
+00b620a0   RELOCATION_MATCH PASS   BuildBuffers
+00b625e0   RELOCATION_MATCH PASS   CEngineSkyRenderer
+00d17a80   WARN RELOC_NAME: ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z -> 004da68a labelled 'std::pair<long,CCharString>::`scalardeletingdestructor''
+00d17a80   RELOCATION_MATCH PASS   WatchForBoasts

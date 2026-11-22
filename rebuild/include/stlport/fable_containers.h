@@ -2784,5 +2784,22 @@ template<> __declspec(noinline) inline vector<bool,allocator<bool> >::vector(uns
 #pragma optimize("",on)
 #endif
 
+#ifdef FABLE_RETAIL_STLP_DESTROY_AUX_PAIR_LONG_CCHARSTRING_SIZE_BODY
+// NF254 opt-in (2026-11-22, CODEXP27 L4 / L5; row 0x0074FCE0 vector<pair<long, CCharString> >::_M_insert_overflow, a /Gr TU).
+// Fidelity: scaffolding, not retail. That TU's _M_clear expands the element destroy loop in place (0x0074FD98..0x0074FDAD), but c1
+// still instantiates the range destroy __destroy_aux<pair<long, CCharString>*> (fastcall under /Gr: ??$__destroy_aux@...@std@@YIX...),
+// a pick-any COMDAT the linker can keep. Retail kept the 29-byte copy (each element's ??_G called with flag 0) from a size-optimised
+// TU, row 0x004DD782 (its Leaf), which sets `#pragma optimize("s", on)` itself; the plain /O2 copy expands ~pair (36 bytes). A pick-any
+// template copy takes the optimize mode in force at the END of the TU (NF216), so this explicit specialization compiles the same STLport
+// 4.6 _construct.h body in place under optimize("s", on), as the owner's TU did. `#pragma optimize("", on)` below returns to the
+// command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a row-head optimize pragma
+// before its include of this header (nf189). Needs CCharString complete (fable_string.h first) and a /Gr TU (the primary template's
+// default convention then is __fastcall, as the owner's symbol is).
+#pragma optimize("s", on)
+template<> inline void __destroy_aux<pair<long,CCharString>*>(pair<long,CCharString>* first,pair<long,CCharString>* last,const __false_type&) {
+    for(;first!=last;++first) _Destroy(&*first);
+}
+#pragma optimize("", on)
+#endif
 }
 #endif

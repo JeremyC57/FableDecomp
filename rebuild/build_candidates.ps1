@@ -165220,9 +165220,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074f530'
-        Module = '_global'
-        Source = '00/74/global_UninitFillNSPairLongCSecond0099ec300074f530_0074f530.cpp'
-        TestSource = '00/74/global_UninitFillNSPairLongCSecond0099ec300074f530_0074f530_test.cpp'
+        Module = 'std'
+        Source = '00/74/std_uninitializedfillnstdpairlongCCharStringunsigned_0074f530.cpp'
+        TestSource = '00/74/std_uninitializedfillnstdpairlongCCharStringunsigned_0074f530_test.cpp'
         PassPattern = '0074f530_TEST PASS'
     }
     [pscustomobject]@{
@@ -173890,9 +173890,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074f4f0'
-        Module = '_global'
-        Source = '00/74/global_UninitCopySPairLongCSecond0099ec300074f4f0_0074f4f0.cpp'
-        TestSource = '00/74/global_UninitCopySPairLongCSecond0099ec300074f4f0_0074f4f0_test.cpp'
+        Module = 'std'
+        Source = '00/74/std_uninitializedcopystdpairlongCCharStringstdpairlo_0074f4f0.cpp'
+        TestSource = '00/74/std_uninitializedcopystdpairlongCCharStringstdpairlo_0074f4f0_test.cpp'
         PassPattern = '0074f4f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -200445,9 +200445,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a978c0'
-        Module = 'CCountedBufferPair_00a978c0'
-        Source = '00/a9/CCountedBufferPair00a978c0_CCountedBufferPair00a978c0_00a978c0.cpp'
-        TestSource = '00/a9/CCountedBufferPair00a978c0_CCountedBufferPair00a978c0_00a978c0_test.cpp'
+        Module = 'N3DPrimitive::CAnimatedBlock::CDeviceIndependent'
+        Source = '00/a9/N3DPrimitiveCAnimatedBlockCDeviceIndependent_CDeviceIndependent_00a978c0.cpp'
+        TestSource = '00/a9/N3DPrimitiveCAnimatedBlockCDeviceIndependent_CDeviceIndependent_00a978c0_test.cpp'
         PassPattern = '00a978c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275837,9 +275837,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074fce0'
-        Module = 'std::vector<std::pair<int,CCharString>>'
-        Source = '00/74/STLvectorstdpairintCCharString_Minsertoverflow_0074fce0.cpp'
-        TestSource = '00/74/STLvectorstdpairintCCharString_Minsertoverflow_0074fce0_test.cpp'
+        Module = 'std::vector<std::pair<long,CCharString>>'
+        Source = '00/74/stdvectorstdpairlongCCharString_Minsertoverflow_0074fce0.cpp'
+        TestSource = '00/74/stdvectorstdpairlongCCharString_Minsertoverflow_0074fce0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '0074fce0_TEST PASS'
     }

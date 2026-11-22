@@ -20141,8 +20141,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0074f460	CIVCountedPointer_Release_0074f460	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f460.cpp
 0074f480	CIVCountedPointer_Release_0074f480	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f480.cpp
 0074f4b0	_STLP_alloc_proxy	std::_STLP_alloc_proxy	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\global_EHepilog3_0074f4b0.cpp
-0074f4f0	UninitCopy_SPairLongCSecond_0099ec30_0074f4f0	_global	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-0074f530	UninitFillN_SPairLongCSecond_0099ec30_0074f530	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
+0074f4f0	__uninitialized_copy<std::pair<long,CCharString>*,std::pair<long,CCharString>*>	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
+0074f530	__uninitialized_fill_n<std::pair<long,CCharString>*,unsigned int,std::pair<long,CCharString>>	std	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 0074f640	__copy<std::pair<long, CCharString> *, std::pair<long, CCharString> *, int>	std	__fastcall	CSkeletalMorph *	4	CSkeletalMorph *,CSkeletalMorph *,CSkeletalMorph *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0074f680	_Vector_base	std::_Vector_base<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > >	__thiscall	undefined	1	CIndexBuffer *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CIndexBuffer_CIndexBuffer_0074f680.cpp
 0074f6a0	GetSubDef<CContainerRewardHeroDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
@@ -20154,7 +20154,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0074fbb0	for_each<CThingObject **, CAddObjectsNotSolidTo>	std	__fastcall	CAddObjectsNotSolidTo	3	CThingObject * *,CThingObject * *,CAddObjectsNotSolidTo	1	yes	accepted									
 0074fca0	IsComponentSerialisable	CTCContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0074fcb0	GetClassTypeName	CTCContainerRewardHero	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
-0074fce0	_M_insert_overflow	std::vector<std::pair<int,CCharString>>	unknown	undefined	0		0	yes	accepted									
+0074fce0	_M_insert_overflow	std::vector<std::pair<long,CCharString>>	unknown	undefined	0		0	yes	accepted									
 0074fde0	ScalarDeletingDestructor	CTCContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0074fe30	`scalar_deleting_destructor'	CTCContainerRewardHero	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CLandscapeBackgroundPatch_vectordeletingdestructor_0074fe30.cpp
 0074fe50	push_back	std::vector<std::pair<long, CCharString>, std::allocator<std::pair<long, CCharString>>>	unknown	undefined	0		0	yes	accepted									
@@ -38629,7 +38629,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a97830	`scalar_deleting_destructor'	N3DPrimitive::CTriangleList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\CLandscapeBackgroundPatch_vectordeletingdestructor_00a97830.cpp
 00a97850	~CCountedBufferPair_00a97850	CCountedBufferPair_00a97850	__thiscall	void	1	CEngineScreenEffectDisplacementRenderer *	1	yes	accepted									
 00a978a0	`scalar_deleting_destructor'	N3DPrimitive::CAnimatedBlock::CDeviceIndependent	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a9\CLandscapeBackgroundPatch_vectordeletingdestructor_00a978a0.cpp
-00a978c0	~CCountedBufferPair_00a978c0	CCountedBufferPair_00a978c0	__thiscall	void	1	CEngineScreenEffectDisplacementRenderer *	1	yes	accepted									
+00a978c0	~CDeviceIndependent	N3DPrimitive::CAnimatedBlock::CDeviceIndependent	__thiscall	void	1	CEngineScreenEffectDisplacementRenderer *	1	yes	accepted									
 00a97a50	resize	std::vector<C3DTriangle2>	__thiscall	void	3	vector<CBrainBehaviour,std::allocator<CBrainBehaviour>_> *,uint,CBrainBehaviour	1	yes	accepted									
 00a97ab0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 00a97be0	_M_insert_overflow	std::vector<CIVCountedPointer<N3DPrimitive::CTriangleList>, std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>>>	unknown	undefined	0		0	yes	accepted									

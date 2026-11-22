@@ -93,6 +93,14 @@ private:
     // Ego_r and FableWin both record the private cloud mesh builder at retail 0x00B61DD0.
     void BuildCloudMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);
 #endif
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDBUFFERS_CALLEES
+    // NF254 opt-in (2026-11-22, CODEXP27 L120; row 0x00B620A0 BuildBuffers): the other private builders it calls, Ego_r.pdb and FableWin.pdb
+    // ?BuildOuterSkyMesh@ / ?BuildBaseBandMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z and ?BuildStarFieldVB@CEngineSkyRenderer@@AAEXXZ
+    // (retail 0x00B61B30 / 0x00B61CD0 / 0x00B61FF0, called from 0x00B620A0 in that order around BuildCloudMesh). Declarations only.
+    void BuildOuterSkyMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);    // 0x00B61B30
+    void BuildBaseBandMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);    // 0x00B61CD0
+    void BuildStarFieldVB();                                                                                                            // 0x00B61FF0
+#endif
     void BuildBuffers();                                                 // 0x00B620A0
 #ifdef FABLE_RETAIL_CENGINESKYRENDERER_ENVMAP
     // Retail opt-in (chunk 2008, row 0x00B665E0): Ego_r.pdb / FableWin.pdb ?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z (private,

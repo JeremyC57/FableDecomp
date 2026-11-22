@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00B61CD0	?BuildBaseBandMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z	Ego_r.pdb + FableWin.pdb; the caller 0x00B620A0 passes &vertices / &indices (pointer-to-pointer) and the body reaches both arrays through their first word	self row ?BuildBaseBandMesh@CEngineSkyRenderer@@QAEXAAV?$CArray@USSkyVertex@@@@AAV?$CArray@G@@JJ@Z (public, CArray& parameters)
+0x00B61FF0	?BuildStarFieldVB@CEngineSkyRenderer@@AAEXXZ	Ego_r.pdb + FableWin.pdb; caller 0x00B620A0 (now bound)	self row ?BuildStarFieldVB@CSkyRendererMethods@@QAEXXZ (stand-in struct over the flat sky header)
