@@ -1,4 +1,6 @@
 // CThingPhysical::ValidateInitialisation() -- when virtual slot 17 holds and the thing has a physics component, the component's position must lie inside the world map; true otherwise
+// Leaf: ?ValidateInitialisation@CThingPhysical@@IAE_NXZ
+// NF236 (2026-11-22, q12667): leaf-only self respell onto the Ego_r.pdb + FableWin.pdb spelling (access); 0x00666310 / 0x007032F0 bind it; 0x006A9EF0 / 0x00833A70 still bind a CThingCreatureBase stand-in (NAME_FIXES).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A4D60, length 47 bytes (called from 0x006665DA, 0x006AA0D4, 0x00703356, 0x00833A9B).
 // Callees: this's virtual slot 17 (+0x44), CThing::GetWorldMap() @ 0x004C79D0 (the definition manager's +0xd0
@@ -26,7 +28,9 @@ class CThingPhysical { public:
     unsigned char   _pad04[0x5c];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
     CWorldMap* GetWorldMap();                                // 0x004C79D0
-    bool ValidateInitialisation();
+protected:
+    bool ValidateInitialisation();  // NF236: Ego_r + FableWin spelling IAE (protected)
+public:
 };
 
 bool CThingPhysical::ValidateInitialisation()

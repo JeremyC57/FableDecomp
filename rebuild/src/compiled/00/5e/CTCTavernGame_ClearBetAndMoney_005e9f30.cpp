@@ -1,4 +1,6 @@
 // CTCTavernGame::ClearBetAndMoney() -- reset every primitive handle of the bet, money and winnings displays (telling the primitive when the last handle goes)
+// Leaf: ?ClearBetAndMoney@CTCTavernGame@@IAEXXZ
+// NF236 (2026-11-22, q12667): leaf-only self respell onto the Ego_r.pdb + FableWin.pdb spelling (access); every landed binder binds it after this hand-back.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E9F30, 208 bytes (plain `ret`).
 // Callees: the engine primitive's virtual slot 3 (+0xC, passed the handle, when this is its last handle) and slot 1 (destroy,
 // at refcount 0); no direct calls.
@@ -47,7 +49,9 @@ class CTCTavernGame { public:
     CHandleVector BetHandles;                   // +0x5c
     CHandleVector MoneyHandles;                 // +0x68
     CHandleVector WinningsHandles;              // +0x74
-    void ClearBetAndMoney();
+protected:
+    void ClearBetAndMoney();  // NF236: Ego_r + FableWin spelling IAE (protected)
+public:
 };
 
 void CTCTavernGame::ClearBetAndMoney()

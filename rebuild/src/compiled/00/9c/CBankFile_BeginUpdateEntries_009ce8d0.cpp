@@ -85,7 +85,9 @@ class CBankFile { public:
     CChecksumCacheFile ChecksumCache;              // +0xf8
     unsigned long Align(unsigned long size) const { return (Alignment + size - 1) / Alignment * Alignment; }
     void WriteZeros(unsigned long count);          // 0x009CCB20
-    void WriteFileInformation(bool flush);         // 0x009CE370
+private:
+    void WriteFileInformation(bool flush);         // 0x009CE370; NF236: Ego_r / FableWin spelling AAE (private)
+public:
     void BeginUpdateEntries();
 };
 

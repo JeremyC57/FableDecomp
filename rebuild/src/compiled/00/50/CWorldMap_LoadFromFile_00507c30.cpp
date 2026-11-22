@@ -95,7 +95,7 @@ template<class T> inline bool CBasicString<T>::operator==(const T* text) const
 
 namespace NResourceDirectoryNames { CWideString __fastcall GetLevelDir(); }   // 0x0041A060 (Ego_r.pdb; landed CWorldMap::SaveMapsToString 0x004FB990 declares it so)
 extern bool g_bUseCompiledWorldFiles;                   // 0x013B8618 (landed CProgressDisplay::DrawRetailDisplay 0x00498490)
-extern bool g_WADBuildEnabled;                          // 0x01375459 (landed CNewFrontendGameComponent::InitialiseEngine 0x0042E204)
+extern bool GAllowDataGeneration;                          // 0x01375459 (landed CNewFrontendGameComponent::InitialiseEngine 0x0042E204) (Ego_r / FableWin / Ego_d publics; NF236: was g_WADBuildEnabled)
 extern bool g_bUseCompiledGlobalThings;                 // 0x013B8609 (landed CProgressDisplay::DrawRetailDisplay 0x00498490)
 
 
@@ -301,7 +301,7 @@ void CWorldMap::LoadFromFile(CAFile& file, long length)
                 parser.ReadLineAsString();             // 0x009BA390
         }
 
-        if (g_WADBuildEnabled) {
+        if (GAllowDataGeneration) {
             CWideString directory;
             CWideString drive;
             CWideString name;

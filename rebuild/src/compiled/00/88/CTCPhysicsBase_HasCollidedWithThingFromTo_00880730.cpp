@@ -17,7 +17,7 @@ class CPhysicsCollideResponse { public:
     C3DVector CollideNormal;                            // +0x0c
     float     Friction;                                 // +0x18
 };
-extern bool g_flipMeshCollideNormals_013b86ec;          // 0x013B86EC
+namespace NGlobalConsole { extern bool GJossTestPhysics; }   // 0x013B86EC ?GJossTestPhysics@NGlobalConsole@@3_NA (Ego_r / FableWin / Ego_d publics; NF236: was g_flipMeshCollideNormals_013b86ec)
 class CTCPhysicsBase { public:
     virtual void v000();
     bool IsPhysicsMeshTypeMesh() const;                 // 0x006AFD30
@@ -37,7 +37,7 @@ bool CTCPhysicsBase::HasCollidedWithThingFromTo(const CTCPhysicsBase& other, con
 {
     if (other.IsPhysicsMeshTypeMesh()) {
         if (HasSphereMeshCollidedFromTo(other, from, to, response)) {
-            float scale = g_flipMeshCollideNormals_013b86ec ? -1.0f : 1.0f;
+            float scale = NGlobalConsole::GJossTestPhysics ? -1.0f : 1.0f;
             response.CollideNormal *= scale;
             return true;
         }

@@ -1,0 +1,3 @@
+claim	reason
+q12665: respelling 0x00690030 alone takes 0x00687BD0 2 -> 1	the table keeps one witness per symbol: a bindat census of all 53 landed callers (work/e3_bind.tsv) found seven QAE Released binders (0x0068C760 0x0068C7F0 0x0068CAC0 0x0068F180 0x00690030 0x00690390 0x00690D30); all seven are respelled here, which is what takes the address to one spelling
+q12667: 0x01375741 binders keep their own types	the three old spellings differ in type (bool / unsigned char / char); retail reads the byte with the same `cmp`/`test` in each, and all five rows graded RELOCATION_MATCH as bool (the PDB type), so the types moved too

@@ -1,125 +1,77 @@
-#include "fable_compiler.h"
+// Test for 0x00495620 CFrontendGameComponent::~CFrontendGameComponent() on the shared headers (NF236, replaces the HEAD host model):
+// the row's defines, includes and (empty) body; the work is the member and base destructors the compiler emits, retail's order.
+// Stubbed: the CWideString destructor, CTexture::Uninitialise (0x009F9F70, the inline ~CTexture calls it) and the CBaseClass(NonCopyable) destructors (recording), the class's other out-of-line virtuals. The object
+// is a zeroed buffer of the class size whose members are seeded at the CTOR_DTOR offsets (PTempGraphics +0x1DFC, MainFont +0x1E04,
+// ProfileNames +0x1E0C, SaveToLoad +0x1E2C, WorldNames +0x1E30, WorldToLoad +0x1E40, SplashScreen +0x1E58), then destroyed in place.
+// Case 1: PTempGraphics holds the only reference: its deleter runs once. Case 2: MainFont shares its block: the count drops 2 -> 1.
+// Case 3: every CWideString is destroyed once, members in reverse declaration order (WorldToLoad, WorldNames' two, SaveToLoad,
+// SaveNames (empty), ProfileNames' one). Case 4: SplashScreen's destructor runs first, the base destructor last, once each.
 #include <cstdio>
-extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-class CBaseClassNonCopyable {
-protected:
-    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
-};
-struct CGameComponentInterface {
-    virtual void v00();
-};
-class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
-    bool m_bShutDown;                                      // +0x08
-    virtual FABLE_FORCEINLINE ~CGameComponent() { }
-};
-class CCPPointerInfo { public:
-    long  References;
-    void  (__fastcall* Destroy)(void* object);
-    void* Object;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
-class CWideString { public:
-    void* PStringData;
-    ~CWideString();                                        // 0x0099B510
-};
-struct CWideStringVector {                                 // STLport vector<CWideString>
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
-    static FABLE_FORCEINLINE void _Destroy(CWideString* first, CWideString* last)
-    {
-        for (; first != last; ++first)
-            first->~CWideString();
-    }
-    ~CWideStringVector()
-    {
-        _Destroy(_M_start, _M_finish);
-        if (_M_start)
-            free(_M_start);
-    }
-};
-class CTexture { public:
-    unsigned char _data[8];
-    ~CTexture();                                           // 0x009F9F70
-};
-class CGraphicDataBank; class CFontBank;
-enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
-struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768 / 0x0123875C
-    unsigned char                     _pad00c[0x1dfc - 0x0c];
-    CCountedPointer<CGraphicDataBank> PTempGraphics;              // +0x1dfc
-    CCountedPointer<const CFontBank>  MainFont;                   // +0x1e04
-    CWideStringVector                 ProfileNames;               // +0x1e0c
-    long                              ProfileNamesOffset;         // +0x1e18
-    CWideStringVector                 SaveNames;                  // +0x1e1c
-    long                              SaveNamesOffset;            // +0x1e28
-    CWideString                       SaveToLoad;                 // +0x1e2c
-    CWideStringVector                 WorldNames;                 // +0x1e30
-    long                              WorldNamesOffset;           // +0x1e3c
-    CWideString                       WorldToLoad;                // +0x1e40
-    long                              CursorHighlight;            // +0x1e44
-    double                            TimeLastMovementHappened;   // +0x1e48
-    bool                              StartedRepeatingMovement;   // +0x1e50
-    ECursorMovement                   CurrentMovement;            // +0x1e54
-    CTexture                          SplashScreen;               // +0x1e58
-    virtual ~CFrontendGameComponent();
-};
-
+#include <cstdlib>
+#include <cstring>
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CGAMECOMPONENT_DTOR_INLINE
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_SETQUIT
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_CTOR_DTOR
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CTexture.h"
+#include "engine/CGameComponent.h"
+#include "engine/CFrontendGameComponent.h"
+static int g_log[16]; static int g_n = 0;
+static void Log(int v) { if (g_n < 16) g_log[g_n++] = v; }
+static int g_deletes = 0;
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { Log(1000); }
+CWideString::~CWideString() { Log((int)(size_t)PStringData); }
+void CTexture::Uninitialise() { Log(2000); }
+void CGameComponent::Init() {}
+void CGameComponent::SetQuit() {}
+bool CFrontendGameComponent::Run(CGameComponent**) { return false; }
+void CFrontendGameComponent::ChangeTextureColourDepth(long) {}
+void CFrontendGameComponent::OnPreDeviceReset() {}
+bool CFrontendGameComponent::OnPostDeviceReset() { return true; }
+void CFrontendGameComponent::SetQuit() {}
+long CWideString::NoStrings = 0;
 CFrontendGameComponent::~CFrontendGameComponent()
 {
 }
-
-#include <stdlib.h>
-#include <string.h>
-#include <new>
-static int g_fail = 0;
-static void check(bool c, const char* w) { if (!c) { printf("FAIL %s\n", w); g_fail = 1; } }
-static int g_strDtors = 0, g_texDtors = 0, g_baseDtors = 0, g_destroyed = 0;
-static char g_order[256];
-CBaseClassNonCopyable::~CBaseClassNonCopyable() { ++g_baseDtors; strcat(g_order, "Base;"); }
-void CGameComponentInterface::v00() {}
-CWideString::~CWideString() { ++g_strDtors; char t[16]; sprintf(t, "S%ld;", (long)PStringData); strcat(g_order, t); }
-CTexture::~CTexture() { ++g_texDtors; strcat(g_order, "Tex;"); }
-static void __fastcall DestroyObj(void* o) { ++g_destroyed; strcat(g_order, (const char*)o); }
-static void FillVector(CWideStringVector& v, int n, long base)
+static void FABLE_FASTCALL Deleter(void*) { ++g_deletes; }
+static double g_raw[sizeof(CFrontendGameComponent) / sizeof(double) + 1];
+static void SetPtr(unsigned off, void* p) { std::memcpy((char*)g_raw + off, &p, sizeof(p)); }
+static void SetStrings(unsigned off, int first, int count)
 {
-    v._M_start = n ? (CWideString*)malloc(n * sizeof(CWideString)) : 0;
-    for (int i = 0; i < n; ++i) v._M_start[i].PStringData = (void*)(base + i);
-    v._M_finish = v._M_start + n; v._M_end_of_storage = v._M_finish;
-}
-static CCPPointerInfo* MakeInfo(long refs, const char* tag)
-{
-    CCPPointerInfo* i = new CCPPointerInfo; i->References = refs; i->Destroy = DestroyObj; i->Object = (void*)tag; return i;
+    void** a = (void**)std::malloc(count * sizeof(void*));
+    for (int i = 0; i < count; ++i) a[i] = (void*)(size_t)(first + i);
+    SetPtr(off, a); SetPtr(off + 4, a + count); SetPtr(off + 8, a + count);
 }
 int main()
 {
-    void* mem = malloc(sizeof(CFrontendGameComponent));
-    memset(mem, 0, sizeof(CFrontendGameComponent));
-    CFrontendGameComponent* c = new (mem) CFrontendGameComponent;
-    FillVector(c->ProfileNames, 2, 10); FillVector(c->SaveNames, 0, 20); FillVector(c->WorldNames, 3, 30);
-    c->SaveToLoad.PStringData = (void*)2; c->WorldToLoad.PStringData = (void*)3;
-    c->MainFont.Info = MakeInfo(1, "Font;"); c->MainFont.Data = (CFontBank*)1;
-    CCPPointerInfo* shared = MakeInfo(2, "Temp;");
-    c->PTempGraphics.Info = shared; c->PTempGraphics.Data = (CGraphicDataBank*)1;
-    c->~CFrontendGameComponent();
-    check(strcmp(g_order, "Tex;S3;S30;S31;S32;S2;S10;S11;Font;Base;") == 0, "destruction order");
-    check(g_strDtors == 7 && g_texDtors == 1 && g_baseDtors == 1 && g_destroyed == 1, "counts");
-    check(shared->References == 1, "shared pointer only decremented");
-    check(c->MainFont.Data == 0 && c->MainFont.Info == 0 && c->PTempGraphics.Data == 0 && c->PTempGraphics.Info == 0, "pointers cleared");
-    if (!g_fail) printf("00495620_TEST PASS\n");
-    else printf("%s\n", g_order);
-    return g_fail;
+    int fails = 0;
+    if (sizeof(CFrontendGameComponent) != 0x1E60) fails |= 16;
+    int graphics = 0, font = 0;
+    CCPPointerInfo* gi = new CCPPointerInfo(1, Deleter, &graphics);
+    CCPPointerInfo* fi = new CCPPointerInfo(2, Deleter, &font);
+    SetPtr(0x1DFC, &graphics); SetPtr(0x1E00, gi);
+    SetPtr(0x1E04, &font); SetPtr(0x1E08, fi);
+    SetStrings(0x1E0C, 11, 1);
+    SetPtr(0x1E2C, (void*)31);
+    SetStrings(0x1E30, 41, 2);
+    SetPtr(0x1E40, (void*)51);
+    CFrontendGameComponent* c = (CFrontendGameComponent*)g_raw;
+    c->CFrontendGameComponent::~CFrontendGameComponent();
+    if (g_deletes != 1) fails |= 1;
+    if (fi->RefCount != 1) fails |= 2;
+    static const int want[] = { 2000, 51, 41, 42, 31, 11, 1000 };
+    if (g_n != 7 || std::memcmp(g_log, want, sizeof(want)) != 0) fails |= 4;
+    if (g_n < 1 || g_log[0] != 2000 || g_log[g_n - 1] != 1000) fails |= 8;
+    delete fi;
+    if (fails) { std::printf("00495620_TEST FAIL %d (n=%d)\n", fails, g_n); for (int i = 0; i < g_n; ++i) std::printf(" %d", g_log[i]); std::printf("\n"); return 1; }
+    std::printf("00495620_TEST PASS\n");
+    return 0;
 }

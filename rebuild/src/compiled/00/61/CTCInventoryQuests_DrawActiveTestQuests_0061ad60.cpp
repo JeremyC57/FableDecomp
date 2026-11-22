@@ -92,7 +92,7 @@ const CRGBColour TEST_QUEST_RED(100, 25, 25, 255);      // 0x0137D714
 // 0x00487570). GFACoordToVCoord: Ego_r.pdb / FableWin.pdb ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (no shared header declares it).
 extern double VIRTUAL_SCREEN_WIDTH;                     // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                    // 0x013961F0
-extern CRenderManager* PRenderManager;                  // 0x013B8384
+extern CRenderManager* GPRenderManager;                  // 0x013B8384 (Ego_r / FableWin / Ego_d publics; NF236: was PRenderManager)
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out);   // 0x009E21D0
 
 // 0x0061A8A0 (landed), the same TU, compiled before this function: its body is visible here but not expanded (retail calls it,
@@ -120,7 +120,7 @@ void CTCInventoryQuests::DrawActiveTestQuests(const CEnginePrimitivePrepareInfo&
     colours[1].Initialise(100, 0, 100, 255);
     colours[2].Initialise(0, 100, 100, 255);
     colours[3].Initialise(0, 0, 128, 255);
-    PRenderManager->Draw2DBoxColours(screen, &colours[0], 0);
+    GPRenderManager->Draw2DBoxColours(screen, &colours[0], 0);
 
     const CFontBank* font = PFontManager->GetFont(GetPDef()->GenericFont).Get();
     C2DVector title_pos(GetPDef()->QuestCardInfo2TLPos.X, GetPDef()->QuestCardInfo2TLPos.Y);

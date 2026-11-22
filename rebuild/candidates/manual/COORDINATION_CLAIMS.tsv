@@ -298,3 +298,4 @@ date	account	item	kind	status	note
 2026-11-22	A	Codex pass 28 (25 rows)	codex	reserved	the 25 longest parked rows with a graded draft, none had by a Codex pass (pending/2026-11-22_codex_pass28/RESERVED.tsv); package from post-p27 / nf235 / auth24 headers, NAMING_AND_HEADERS section 8 (p27 lessons)
 2026-11-22	A	0x00651273,0x00816410,0x00A68DE0,0x00502E90	authoring	released	AUTH25 stopped by the owner ("stop authoring"); 0x00651273 partial (p3/p4 DIFFER(1681v1681)) saved in pending/2026-11-22_auth25_stopped/
 2026-11-22	A	land1122p27 + land1122auth24 NAME_FIXES (137 lines)	naming	claimed	agent NF237, second naming agent beside NF236 ($S/w22/agentNF237/QUEUE_LINES.tsv; the 54 held-binding addresses stay with NF236)
+2026-11-22	A	q12663-q12667	naming	done	agent NF236 landed (batches/2026-11-22_landing_nf236); q12659 released (not started)

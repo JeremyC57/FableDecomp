@@ -37,7 +37,7 @@ class CWorld { public:
 };
 namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    CMatrix3x4 GetPositionMatrix(float scale);  // 0x004BC800
+    CMatrix3x4 GetPositionMatrix(float scale) const;  // 0x004BC800; NF236: Ego_r / FableWin spelling QBE (const)
 };
 }
 using NGraphicAppearance::CTCGraphicAppearance;

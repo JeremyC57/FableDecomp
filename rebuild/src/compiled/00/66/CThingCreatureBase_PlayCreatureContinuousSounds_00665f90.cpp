@@ -1,5 +1,6 @@
 // CThingCreatureBase::PlayCreatureContinuousSounds() -- when the creature def has the sound sub-def and the thing a sound component, play "SE_CREATURE_CONTINUOUS" on the next of eight round-robin "VOICE<n>" channels
-// Leaf: ?PlayCreatureContinuousSounds@CThingCreatureBase
+// Leaf: ?PlayCreatureContinuousSounds@CThingCreatureBase@@IAEXXZ
+// NF236 (2026-11-22, q12667): leaf-only self respell onto the Ego_r.pdb + FableWin.pdb spelling (access); every landed binder binds it after this hand-back.
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665F90, 246 bytes (+10 int3), `ret`.
 // Callees: CDefClassBase::GetSubDef<T>(CDefPointer<const T>*) @ 0x0065F604 (manifest names a propagated CAbilityDef
@@ -86,7 +87,9 @@ class CThingCreatureBase { public:
         CInterfaceMap::value_type* it = map->LowerBound(type);
         return (it == map->end() || interfaceType < it->first ? map->end() : it)->second;
     }
-    void PlayCreatureContinuousSounds();
+protected:
+    void PlayCreatureContinuousSounds();  // NF236: Ego_r + FableWin spelling IAE (protected)
+public:
 };
 
 void CThingCreatureBase::PlayCreatureContinuousSounds()

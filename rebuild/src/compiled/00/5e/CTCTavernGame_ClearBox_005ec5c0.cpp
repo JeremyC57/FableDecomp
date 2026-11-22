@@ -1,5 +1,6 @@
 // CTCTavernGame::ClearBox() -- release every box primitive handle (telling the primitive when the last handle goes), then empty the box-handle vector
-// Leaf: ClearBox
+// Leaf: ?ClearBox@CTCTavernGame@@IAEXXZ
+// NF236 (2026-11-22, q12667): leaf-only self respell onto the Ego_r.pdb + FableWin.pdb spelling (access); every landed binder binds it after this hand-back.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC5C0, length 136 bytes (padded row 144).
 // Callees: the primitive's virtual slot 3 (+0xC, passed the handle, when this is the last handle) and slot 1 (destroy, at refcount 0); STLport
 // __copy<CEnginePrimitiveHandle*>(first, last, result, const random_access_iterator_tag&, int*) @ 0x00440260 (__fastcall, `ret 0Ch`;
@@ -63,7 +64,9 @@ class CTCTavernGame { public:
     unsigned char _pad08[0x44 - 0x08];
     CHandleVector Handles;                      // +0x44
     CHandleVector BoxHandles;                   // +0x50
-    void ClearBox();
+protected:
+    void ClearBox();  // NF236: Ego_r + FableWin spelling IAE (protected)
+public:
 };
 
 void CTCTavernGame::ClearBox()

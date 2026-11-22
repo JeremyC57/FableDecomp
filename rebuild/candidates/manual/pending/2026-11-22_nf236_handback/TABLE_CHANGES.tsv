@@ -1,0 +1,50 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	?g_pLastComponent@@3PAVCGameComponent@@A	013b7d58	004189c2	q12663: its only binder 0x004189C2 now binds ?GOldGameComponentToDelete@@3PAVCGameComponent@@A (existing line, witness 0x00496CF0)
+delete	rebuild/oracles/reloc_bindings.tsv	?g_pRetiredGameComponent@@3PAVCGameComponent@@A	013b7d58	00412f90	q12663: both binders 0x00412F90 / 0x0042EC7C now bind ?GOldGameComponentToDelete@@3PAVCGameComponent@@A
+delete	rebuild/oracles/reloc_bindings.tsv	?IsEventButtonReleased@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687bd0	00690030	q12665: all seven QAE binders (bindat census work/e3_bind.tsv) now bind the IBE line (witness 0x0068BC70)
+delete	rebuild/oracles/reloc_bindings.tsv	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687a90	00690030	q12665: re-witness (the old witness 0x00690030 now binds the IBE line); the add below keeps the line with its last QAE binder
+add	rebuild/oracles/reloc_bindings.tsv	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	00687a90	007e5230	q12665: 12 of its 13 binders now bind the IBE line; 0x007E5230 CTCBetting::ProcessInput (a non-derived caller) is the last QAE binder (decision 2)
+add	rebuild/oracles/reloc_bindings.tsv	?GBuildRetailStaticMaps@@3_NA	013b864a	00435190	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?g_bBuildRetailStaticMaps@@3_NA	013b864a	004138d0	q12667: retired; respelled binder(s) 0x004138D0
+add	rebuild/oracles/reloc_bindings.tsv	?GStaticMapQuality@@3JA	01375490	00435190	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?g_CommandLineQ@@3JA	01375490	004138d0	q12667: retired; respelled binder(s) 0x004138D0
+add	rebuild/oracles/reloc_bindings.tsv	?GEngineMemoryInit@@3VCEngineMemoryInit@@A	0137549c	00435190	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?g_DefaultEngineMemoryInit@@3VCEngineMemoryInit@@A	0137549c	00413c50	q12667: retired; respelled binder(s) 0x00413C50, 0x0042E204
+add	rebuild/oracles/reloc_bindings.tsv	?GAllowDataGeneration@@3_NA	01375459	00435190	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?g_WADBuildEnabled@@3_NA	01375459	00502170	q12667: retired; respelled binder(s) 0x00413C50, 0x0042E204, 0x00498490, 0x00502170, 0x00507C30
+add	rebuild/oracles/reloc_bindings.tsv	?GPRenderManager@@3PAVCRenderManager@@A	013b8384	00435190	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?PRenderManager@@3PAVCRenderManager@@A	013b8384	00487570	q12667: retired; respelled binder(s) 0x0042DF9E, 0x0042EC7C, 0x00435530, 0x00487570, 0x00494900, 0x0061AD60
+add	rebuild/oracles/reloc_bindings.tsv	?GJossTestPhysics@NGlobalConsole@@3_NA	013b86ec	00726ce0	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?g_flipMeshCollideNormals_013b86ec@@3_NA	013b86ec	00880730	q12667: retired; respelled binder(s) 0x00880730
+add	rebuild/oracles/reloc_bindings.tsv	?PlayCreatureContinuousSounds@CThingCreatureBase@@IAEXXZ	00665f90	00666310	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?PlayCreatureContinuousSounds@CThingCreatureBase@@QAEXXZ	00665f90	008337b0	q12667: retired; respelled binder(s) 0x008337B0
+add	rebuild/oracles/reloc_bindings.tsv	?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVCMatrix3x4@@M@Z	004bc800	008575c0	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QAE?AVCMatrix3x4@@M@Z	004bc800	006626e0	q12667: retired; respelled binder(s) 0x006626E0
+add	rebuild/oracles/reloc_bindings.tsv	?GetThingLayerCellPositions@CThingMapManager@NThingMap@@IBEXMABVC2DVector@@JAAVCMapCellPosInfoGroup@2@@Z	00637e70	00637fc0	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?GetThingLayerCellPositions@CThingMapManager@NThingMap@@QBEXMABVC2DVector@@JAAVCMapCellPosInfoGroup@2@@Z	00637e70	00637f40	q12667: retired; respelled binder(s) 0x00637F40
+add	rebuild/oracles/reloc_bindings.tsv	?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@ABE?AVC2DBoxI@@ABVC3DVector@@@Z	007267c0	00726ce0	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@QBE?AVC2DBoxI@@ABVC3DVector@@@Z	007267c0	00726be0	q12667: retired; respelled binder(s) 0x00726BE0
+add	rebuild/oracles/reloc_bindings.tsv	?ClearBetAndMoney@CTCTavernGame@@IAEXXZ	005e9f30	005eca50	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?ClearBetAndMoney@CTCTavernGame@@QAEXXZ	005e9f30	005ec650	q12667: retired; respelled binder(s) 0x005EC650
+add	rebuild/oracles/reloc_bindings.tsv	?ClearBox@CTCTavernGame@@IAEXXZ	005ec5c0	005eca50	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?ClearBox@CTCTavernGame@@QAEXXZ	005ec5c0	005ec650	q12667: retired; respelled binder(s) 0x005EC650
+add	rebuild/oracles/reloc_bindings.tsv	?IsDecentAttackRange@CTCNymph@@QBE_NABVC3DVector@@@Z	0080f190	0091c6a0	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?IsDecentAttackRange@CTCNymph@@QAE_NABVC3DVector@@@Z	0080f190	0080fad0	q12667: retired; respelled binder(s) 0x0080FAD0
+add	rebuild/oracles/reloc_bindings.tsv	?WriteFileInformation@CBankFile@@AAEX_N@Z	009ce370	009cec60	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?WriteFileInformation@CBankFile@@QAEX_N@Z	009ce370	009ce8d0	q12667: retired; respelled binder(s) 0x009CE8D0 (?WriteFileInformation@CBankFile_Retail@@QAEX_N@Z stays: 0x009CEA70, a stand-in class with a header, CBankFile.h)
+add	rebuild/oracles/reloc_bindings.tsv	?ValidateInitialisation@CThingPhysical@@IAE_NXZ	006a4d60	00666310	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?ValidateInitialisation@CThingPhysical@@QAE_NXZ	006a4d60	007032f0	q12667: retired; respelled binder(s) 0x007032F0 (?ValidateInitialisation@CThingCreatureBase@@QAE_NXZ stays: 0x006A9EF0, 0x00833A70)
+add	rebuild/oracles/reloc_bindings.tsv	?IsToggleSpells@CGamePlayerInterface@@QBE_NXZ	00445b90	00688360	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?IsSpellModeForced@CGamePlayerInterface@@QBE_NXZ	00445b90	006881d0	q12667: retired; respelled binder(s) 0x006881D0
+add	rebuild/oracles/reloc_bindings.tsv	?IsToggleExpressionShift@CGamePlayerInterface@@QBE_NXZ	00445bb0	00688360	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?IsExpressionShiftModeForced@CGamePlayerInterface@@QBE_NXZ	00445bb0	006881d0	q12667: retired; respelled binder(s) 0x006881D0
+add	rebuild/oracles/reloc_bindings.tsv	?IsLocal@CThing@@QBE_NXZ	004c7e30	00637fc0	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?IsMapwhoExempt@CThing@@QBE_NXZ	004c7e30	00637a10	q12667: retired; respelled binder(s) 0x00637A10
+add	rebuild/oracles/reloc_bindings.tsv	@_book_unquantize@12	00c951b0	00c95580	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?BuildSynthesisTable_00c951b0@@YIPAXPAUSCodecSource_00c954a0@@JJ@Z	00c951b0	00c954a0	q12667: retired; respelled binder(s) none: stale, its witness 0x00C954A0 already binds @_book_unquantize@12 (bindat, work/e5_census_rest.tsv)
+add	rebuild/oracles/reloc_bindings.tsv	@_make_words@12	00c94fd0	00c95580	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored
+delete	rebuild/oracles/reloc_bindings.tsv	?BuildCodeTable_00c94fd0@@YIPAXPAXJJ@Z	00c94fd0	00c954a0	q12667: retired; respelled binder(s) none: stale, its witness 0x00C954A0 already binds @_make_words@12
+delete	rebuild/oracles/reloc_bindings.tsv	?g_bQuestFinishScreensEnabled@@3_NA	01375741	0061ac60	q12667: retired; respelled binder(s) 0x004A3740, 0x0061AC60
+delete	rebuild/oracles/reloc_bindings.tsv	?g_questScreenFlag@@3EA	01375741	004af290	q12667: retired; respelled binder(s) 0x004AF290
+delete	rebuild/oracles/reloc_bindings.tsv	?g_someFlag@@3DA	01375741	00892f80	q12667: retired; respelled binder(s) 0x00892F80, 0x00892FD0
+add	rebuild/oracles/reloc_bindings.tsv	?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA	01375741	00896b60	q12667: the PDB name (Ego_r / FableWin / Ego_d publics; Codex p27 evidence); the held p27 line is restored

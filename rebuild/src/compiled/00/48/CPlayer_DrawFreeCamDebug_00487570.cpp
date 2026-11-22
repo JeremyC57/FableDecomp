@@ -42,7 +42,7 @@
 
 extern double VIRTUAL_SCREEN_WIDTH;                                 // 0x013961E8
 extern double VIRTUAL_SCREEN_HEIGHT;                                // 0x013961F0
-extern CRenderManager* PRenderManager;                              // 0x013B8384
+extern CRenderManager* GPRenderManager;                              // 0x013B8384 (Ego_r / FableWin / Ego_d publics; NF236: was PRenderManager)
 CWideString __fastcall GFFloatToWideString(double value);           // 0x00486C40
 inline CWideString __fastcall GFIntToWideString(long value)         // 0x00405F00 (out of line elsewhere)
 {
@@ -64,30 +64,30 @@ void CPlayer::DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const
     float fov = GFRoundFloat(CurrentFreeCamera.GetHorizontalFOV() * 360.0f, 1);
     C2DVector pos((float)(VIRTUAL_SCREEN_WIDTH * 0.25), (float)(VIRTUAL_SCREEN_HEIGHT * 0.125));
     unsigned long lineHeight = (unsigned long)font.GetVFontMaxHeight();
-    PRenderManager->SetVWindow(*box);
+    GPRenderManager->SetVWindow(*box);
     CWideString title(L"Freecam Info");
-    PRenderManager->Draw2DText(pos, title, font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, title, font, CRGBColour(255, 255, 255, 255), 0);
     C2DExtentsF extents = font.GetVStringExtents(title);
     pos.Y += lineHeight * 2.0f;
-    PRenderManager->Draw2DText(pos, L"CameraPos", font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, L"CameraPos", font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekWorldPos().X, 2)), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekWorldPos().X, 2)), font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekWorldPos().Y, 2)), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekWorldPos().Y, 2)), font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekWorldPos().Z, 2)), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekWorldPos().Z, 2)), font, CRGBColour(255, 255, 255, 255), 0);
     pos.X = VIRTUAL_SCREEN_WIDTH * 0.25;
     pos.Y += lineHeight;
-    PRenderManager->Draw2DText(pos, L"CameraVec", font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, L"CameraVec", font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekViewDirection().X, 2)), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekViewDirection().X, 2)), font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekViewDirection().Y, 2)), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekViewDirection().Y, 2)), font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekViewDirection().Z, 2)), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFFloatToWideString(GFRoundFloat(CurrentFreeCamera.PeekViewDirection().Z, 2)), font, CRGBColour(255, 255, 255, 255), 0);
     pos.X = VIRTUAL_SCREEN_WIDTH * 0.25;
     pos.Y += lineHeight;
-    PRenderManager->Draw2DText(pos, L"FOV", font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, L"FOV", font, CRGBColour(255, 255, 255, 255), 0);
     pos.X += extents.X;
-    PRenderManager->Draw2DText(pos, GFIntToWideString((long)fov), font, CRGBColour(255, 255, 255, 255), 0);
+    GPRenderManager->Draw2DText(pos, GFIntToWideString((long)fov), font, CRGBColour(255, 255, 255, 255), 0);
 }

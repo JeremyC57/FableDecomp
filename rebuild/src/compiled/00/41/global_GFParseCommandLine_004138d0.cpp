@@ -87,13 +87,13 @@ public:
 
 extern CWideString GForceLevel;                  // 0x013B8668
 extern bool g_bCompileFrontendDefinitions;         // 0x013B8648
-extern bool g_bBuildRetailStaticMaps;              // 0x013B864A
+extern bool GBuildRetailStaticMaps;              // 0x013B864A (Ego_r / FableWin / Ego_d publics; NF236: was g_bBuildRetailStaticMaps)
 extern bool g_bEnableMapOptimisations;             // 0x013B864B
 extern bool g_bRuntimeLevelFiles;                  // 0x013B8616
 extern bool g_bStartMainGame;                      // 0x013B8605
 extern bool g_bFrontEndFlag_137548F;               // 0x0137548F
 extern bool g_bFrontEndFlag_137544A;               // 0x0137544A
-extern long g_CommandLineQ;                        // 0x01375490
+extern long GStaticMapQuality;                        // 0x01375490 (Ego_r / FableWin / Ego_d publics; NF236: was g_CommandLineQ)
 
 void GFParseCommandLine(char* commandLine)
 {
@@ -115,9 +115,9 @@ void GFParseCommandLine(char* commandLine)
                 }
             }
             else if (option.EqualsNoCase("q"))
-                g_CommandLineQ = parser.ReadAsInteger();
+                GStaticMapQuality = parser.ReadAsInteger();
             else if (option.EqualsNoCase("build_retail_static_maps")) {
-                g_bBuildRetailStaticMaps = true;
+                GBuildRetailStaticMaps = true;
                 g_bRuntimeLevelFiles = true;
                 g_bCompileFrontendDefinitions = true;
                 g_bEnableMapOptimisations = true;

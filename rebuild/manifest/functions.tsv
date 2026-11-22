@@ -131,7 +131,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00406070	CStringOwner_00406070	_unattributed	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
 004060e0	CStringOwner_004060e0	_unattributed	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
 00406350	GetValidProfileName	_global	__fastcall	CWideString	1	CWideString *	1	yes	accepted									
-004065d0	GetAutoSaveFileName	CUserProfileManager	__thiscall	CWideString	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CUserProfileManager_GetAutoSaveFileName_004065d0.cpp
+004065d0	GetDefaultProfileName	CUserProfileManager	__thiscall	CWideString	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CUserProfileManager_GetAutoSaveFileName_004065d0.cpp
 004065f0	GetManualSaveBaseFileName	CUserProfileManager	unknown	undefined	0		0			discovered	gapscan							
 00406610	GetManualSaveFileName	CUserProfileManager	__thiscall	CWideString	2	CUserProfileManager *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CUserProfileManager_GetManualSaveFileName_00406610.cpp
 00406690	GetAutoSaveFileName	CUserProfileManager	__thiscall	CWideString	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CUserProfileManager_GetAutoSaveFileName_00406690.cpp

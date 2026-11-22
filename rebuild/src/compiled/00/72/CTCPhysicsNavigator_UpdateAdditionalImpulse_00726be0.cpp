@@ -176,7 +176,9 @@ class CTCPhysicsNavigator : public CTCPhysicsBase {
 public:
     unsigned char _pad38[0x95 - 0x38];
     C3DVector     AdditionalImpulse;                // +0x95
-    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;   // 0x007267C0
+private:
+    C2DBoxI GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const;   // 0x007267C0; NF236: Ego_r / FableWin spelling ABE (private const)
+public:
     void UpdateAdditionalImpulse();
 };
 #pragma pack(pop)

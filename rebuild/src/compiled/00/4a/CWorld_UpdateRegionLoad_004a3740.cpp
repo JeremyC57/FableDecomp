@@ -235,7 +235,7 @@
 #include "engine/NProgressDisplay.h"
 #include "engine/NHeroInformationScreens_CManager.h"
 
-extern bool g_bQuestFinishScreensEnabled;                        // 0x01375741 (descriptive)
+namespace NGlobalConsole { extern bool GEnableRegionLockingSaveSystem; }                        // 0x01375741 ?GEnableRegionLockingSaveSystem@NGlobalConsole@@3_NA (Ego_r / FableWin / Ego_d publics; Codex p27 NAME_FIXES cross-reference); NF236: was g_bQuestFinishScreensEnabled
 static bool GAutoSaveQuestStartOnScreenFade;                     // 0x013B89D2 (Anniversary PDB S_LDATA32, CWorld.cpp file static)
 static long GExtraFramesToWaitBeforeProgressRender = 2;          // 0x01378880 (Anniversary PDB S_LDATA32 long; retail .data value 2)
 
@@ -353,7 +353,7 @@ void CWorld::UpdateRegionLoad()
     FABLE_RETAIL_ASSERT(phero);
     switch (RegionLoadStatus) {
     case 1: {
-        if (g_bQuestFinishScreensEnabled) {
+        if (NGlobalConsole::GEnableRegionLockingSaveSystem) {
             if (!RegionLoadWaitingForConfirmation && CQuestManager::Get().IsBetweenQuestStartAndFinishScreens() &&
                 !CPlayerGui::Get().GetSubtitleRenderer().IsInCutscene() && !PGameScriptInterface_ptr->IsInMovieSequence()) {
                 const CRegion& region = PeekWorldMap().GetRegion(PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(RegionLoadStartPos)));
@@ -569,7 +569,7 @@ void CWorld::UpdateRegionLoad()
                 }
             }
         }
-        if (g_bQuestFinishScreensEnabled && !CQuestManager::Get().IsBetweenQuestStartAndFinishScreens() && CQuestManager::Get().IsAnyQuestActive()) {
+        if (NGlobalConsole::GEnableRegionLockingSaveSystem && !CQuestManager::Get().IsBetweenQuestStartAndFinishScreens() && CQuestManager::Get().IsAnyQuestActive()) {
             const CRegion& region = PeekWorldMap().GetRegion(PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(RegionLoadStartPos)));
             if (CQuestManager::Get().IsRegionStartOfRegionLockingMode(region)) {
                 long regionIndex = PeekWorldMap().GetRegionNumberMapIsIn(phero->GetCurrentMapNumber());
@@ -805,7 +805,7 @@ void CWorld::UpdateRegionLoad()
         if (PutIntoPauseModeOnRegionChange)
             PGameScriptInterface_ptr->PauseAllEntities(false);
         RegionLoadStatus = (ERegionLoadStatus)9;
-        if (!g_bQuestFinishScreensEnabled)
+        if (!NGlobalConsole::GEnableRegionLockingSaveSystem)
             SetSaveGameMarkerPos(RegionLoadStartPos);
         else if (!CQuestManager::Get().IsBetweenQuestStartAndFinishScreens() && !CQuestManager::Get().IsRegionStartOfRegionLockingMode(region))
             SetSaveGameMarkerPos(RegionLoadStartPos);

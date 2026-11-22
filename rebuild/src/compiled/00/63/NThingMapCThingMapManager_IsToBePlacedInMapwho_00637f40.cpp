@@ -57,8 +57,10 @@ class CThingMapManager : public CThingMapManager_PDB {
 protected:
     unsigned char GetThingMapwhoLevel(float radius) const;                                       // 0x006378E0 (Ego_r.pdb protected const)
 public:
+protected:
     void GetThingLayerCellPositions(float radius, const C2DVector& pos, long layer,
-                                    CMapCellPosInfoGroup& group) const;                          // 0x00637E70
+                                    CMapCellPosInfoGroup& group) const;                          // 0x00637E70; NF236: Ego_r / FableWin spelling IBE (protected const)
+public:
     bool IsToBePlacedInMapwho(const CTCMapwho& mapwho, const C3DVector& pos) const;
 };
 

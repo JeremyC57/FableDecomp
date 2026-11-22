@@ -31,7 +31,7 @@ class CWideString { public:
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b); }   // 0x009E9F40
 CWideString __fastcall GetThingFilenameFromLevelFilename(const CWideString& levelFile);    // 0x004FAFF0
 unsigned long GetDefaultBankBlockSize();                // 0x00997B30
-extern bool g_WADBuildEnabled;                          // 0x01375459
+extern bool GAllowDataGeneration;                          // 0x01375459 (Ego_r / FableWin / Ego_d publics; NF236: was g_WADBuildEnabled)
 extern bool g_WADBuildLevels;                           // 0x0137545A
 template <class T> struct vector {                      // STLport vector (12 bytes)
     T* _M_start;
@@ -78,7 +78,7 @@ void CWorldMap::GetLevelFilesFromWorldFile(const CWideString& worldFile, vector<
 #pragma auto_inline(on)
 void CWorldMap::CreateWorldLevelWad(const CWideString& worldFile, const CWideString& wadFile)
 {
-    if (!g_WADBuildEnabled || !g_WADBuildLevels)
+    if (!GAllowDataGeneration || !g_WADBuildLevels)
         return;
     vector<CWideString> levelFiles;
     GetLevelFilesFromWorldFile(worldFile, levelFiles);

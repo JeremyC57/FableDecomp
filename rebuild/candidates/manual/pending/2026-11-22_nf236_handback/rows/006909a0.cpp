@@ -1,0 +1,100 @@
+// CInputProcessCutScene::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0x15 marks the input handled and queues game event 0x39; otherwise post message 0x4b (flags 0x32) to the world's message manager -- in cutscene action mode for a joystick (device 3) event of type 4, else for game action 0x16
+// Leaf: ?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
+//   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Flags: /GS
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006909A0, length 288 bytes, `ret 8`.
+// Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
+//   CProcessedInput::SetAsPerformedEvent @ 0x00A0D390 and AddGameEvent(const CGameEvent&) @ 0x00A0D340, CInputEvent::GetType
+//   @ 0x00A03B40 / GetDeviceType @ 0x00A03B50, CMessageEventManager::AddMessage(EMessageEventType, ulong, C3DVector*,
+//   CThing*, CThing*, float, float, long) @ 0x00687540 (the world's manager at +0x60), __security_check_cookie @ 0x00BFE9F9.
+// Globals: the player GUI singleton pointer @ 0x013B8790, byte +0xfa (inside its CSubtitleRenderer at +0x18: retail
+//   +0xe2, most likely CutsceneActionMode -- the same byte CInputProcessCutScene::ProcessWhilePaused 0x00690AC0 returns).
+// Layout: engine/CInputProcessGameBase.h (World +0x14), modelled locally as in the landed 0x00690C70; CGameEvent
+//   (Ego_r.pdb, 40 bytes) as there.
+// Shape: the handled arm returns on its own; the two message arms make the same call (retail tail-merges them).
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
+class CInputEvent {
+public:
+    EInputEventType GetType() const;                          // 0x00A03B40
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
+};
+struct CMemoryBuffer {
+};
+class CGameEvent : public CMemoryBuffer { public:
+    long          Type;                            // +0x00
+    signed char   Player;                          // +0x04
+    unsigned char Data[32];                        // +0x05
+    unsigned char EndPos;                          // +0x25
+    bool          Valid;                           // +0x26
+    bool          Replacement;                     // +0x27
+    CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
+};
+class CProcessedInput {
+public:
+    void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
+    void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
+};
+#include "engine/C3DVector.h"
+class CThing;
+// Name fix (naming agent NF21, 2026-11-11): AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@
+//   W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): shared header.
+#include "rebuild_abi.h"
+#include "engine/CMessageEventManager.h"
+class CWorld { public:
+    unsigned char         _pad00[0x60];
+    CMessageEventManager* PMessageEventManager;    // +0x60
+};
+#include "engine/CCountedPointer.h"
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
+    unsigned char _pad00[0xfa];
+    bool          CutsceneActionMode;              // +0xfa (SubtitleRenderer +0xe2)
+};
+class CPlayer;
+class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+#include "engine/EGameAction.h"
+class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
+public:
+    virtual void v00();
+    unsigned char           _pad04[0x10];          // +0x04 CAInputProcess
+    CWorld*                 World;                 // +0x14
+    CPlayer*                MyPlayer;              // +0x18
+    CGameDefinitionManager* DefinitionManager;     // +0x1c
+    CMainGameComponent*     Component;             // +0x20
+    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
+public:
+    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
+};
+class CInputProcessCutScene : public CInputProcessGameBase {
+public:
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
+};
+
+void CInputProcessCutScene::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
+{
+    if (!IsEventButtonPressed(event))
+        return;
+    if (IsEventGameAction((EGameAction)(0x15), event)) {
+        CGameEvent gameEvent(0x39);
+        processed.SetAsPerformedEvent();
+        processed.AddGameEvent(gameEvent);
+        return;
+    }
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().CutsceneActionMode) {
+        if (event.GetDeviceType() == 3 && event.GetType() == 4)
+            World->PMessageEventManager->AddMessage(MESSAGE_EVENT_ACTION_MODE_BUTTON_PRESSED, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+    } else if (IsEventGameAction((EGameAction)(0x16), event))
+        World->PMessageEventManager->AddMessage(MESSAGE_EVENT_ACTION_MODE_BUTTON_PRESSED, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+}

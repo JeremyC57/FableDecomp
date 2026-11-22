@@ -41,7 +41,9 @@ public:
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void Refresh();                        // slot 9 (+0x24)
     unsigned char _pad04[0x24];                    // +0x04 CAInputProcess .. PGamePlayerInterface
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
+public:
 protected:
     bool IsEventButtonHeld(const CInputEvent& event) const;       // 0x00687B30
 public:

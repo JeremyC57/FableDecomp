@@ -99,9 +99,9 @@ extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds
 extern bool g_bFrontEndFlag_01375448;                                    // 0x01375448
 extern bool g_bFrontEndFlag_137544A;                                     // 0x0137544A
 extern bool g_bRuntimeLevelFiles;                                        // 0x013B8616
-extern CRenderManager* PRenderManager;                                   // 0x013B8384
+extern CRenderManager* GPRenderManager;                                   // 0x013B8384 (Ego_r / FableWin / Ego_d publics; NF236: was PRenderManager)
 extern CInputManager* PInputManager;                                     // 0x013B8388
-extern CGameComponent* g_pRetiredGameComponent;                          // 0x013B7D58
+extern CGameComponent* GOldGameComponentToDelete;                          // 0x013B7D58 (Ego_r / FableWin / Ego_d publics; NF236: was g_pRetiredGameComponent)
 
 bool CNewFrontendGameComponent::Run(CGameComponent** next_component)
 {
@@ -155,7 +155,7 @@ bool CNewFrontendGameComponent::Run(CGameComponent** next_component)
         m_pMenuFont->Preload(glyphs, true);
     }
     CDisplayManager* display = GFGetSystemManager()->GetDisplayManager();
-    PRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 255), 0);
+    GPRenderManager->ClearRenderTarget(CRGBColour(0, 0, 0, 255), 0);
     display->SwapScreens();
     GPlayMusic(0.0f);
     m_pFrontEndManager->ChangeStateFirstTime();
@@ -241,13 +241,13 @@ bool CNewFrontendGameComponent::Run(CGameComponent** next_component)
         CGameComponent* component = new CMainGameComponent(game, init);
         component->Init();
         *next_component = component;
-        g_pRetiredGameComponent = this;
+        GOldGameComponentToDelete = this;
         return true;
     } else {
         m_pNewFrontendGameComponent = 0;
         Shutdown();
         result = false;
     }
-    g_pRetiredGameComponent = this;
+    GOldGameComponentToDelete = this;
     return result;
 }

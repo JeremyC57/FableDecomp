@@ -45132,8 +45132,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004065d0'
         Module = 'CUserProfileManager'
-        Source = '00/40/CUserProfileManager_GetAutoSaveFileName_004065d0.cpp'
-        TestSource = '00/40/CUserProfileManager_GetAutoSaveFileName_004065d0_test.cpp'
+        Source = '00/40/CUserProfileManager_GetDefaultProfileName_004065d0.cpp'
+        TestSource = '00/40/CUserProfileManager_GetDefaultProfileName_004065d0_test.cpp'
         PassPattern = '004065d0_TEST PASS'
     }
     [pscustomobject]@{

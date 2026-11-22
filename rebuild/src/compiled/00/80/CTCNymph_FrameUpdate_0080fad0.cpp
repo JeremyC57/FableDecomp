@@ -230,7 +230,7 @@ class CTCNymph : public CTCBase { public:
     long FadeCounter;                                       // +0x60
     long TotalFadeTime;                                     // +0x64
     CIntelligentPointerConstThing PTarget;                  // +0x68
-    bool IsDecentAttackRange(const C3DVector& target);      // 0x0080F190
+    bool IsDecentAttackRange(const C3DVector& target) const;      // 0x0080F190; NF236: Ego_r / FableWin spelling QBE (const)
     void FrameUpdate();
     void PickNewTargetPos();                                // 0x0080F270
 };

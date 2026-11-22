@@ -103,7 +103,9 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonReleased(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
+protected:
+    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0 (kind 0x15); NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessSetRangedWeaponMode : public CInputProcessGameBase {

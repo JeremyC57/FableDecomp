@@ -58,7 +58,7 @@ extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
 extern bool g_bStartMainGame;                           // 0x013B8605
 extern bool g_bUseLegacyFrontend;                       // 0x013B8642
 extern CWideString RelaunchSaveGameName;               // 0x013B7D5C
-extern CGameComponent* g_pRetiredGameComponent;         // 0x013B7D58
+extern CGameComponent* GOldGameComponentToDelete;         // 0x013B7D58 (Ego_r / FableWin / Ego_d publics; NF236: was g_pRetiredGameComponent)
 
 class CGame { public:
     void*           __vftable;                          // +0x00
@@ -100,9 +100,9 @@ void CGame::Play()
         CurrentGameComponent = component;
     while (!Quit) {
         bool running = CurrentGameComponent->Run(component);
-        if (g_pRetiredGameComponent) {
-            delete g_pRetiredGameComponent;
-            g_pRetiredGameComponent = 0;
+        if (GOldGameComponentToDelete) {
+            delete GOldGameComponentToDelete;
+            GOldGameComponentToDelete = 0;
         }
         if (!running)
             Quit = true;

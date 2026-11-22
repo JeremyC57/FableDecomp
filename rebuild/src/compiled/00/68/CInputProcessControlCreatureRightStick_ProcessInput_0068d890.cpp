@@ -68,7 +68,9 @@ struct CInputProcessGameBase {                     // engine/CInputProcessGameBa
     void*         DefinitionManager;               // +0x1c
     void*         Component;                       // +0x20
     void*         PGamePlayerInterface;            // +0x24
-    bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
+protected:
+    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const;   // 0x00687D00
 };

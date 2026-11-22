@@ -22,7 +22,9 @@ struct CInputProcessGameBase {                      // engine/CInputProcessGameB
     void*         DefinitionManager;                // +0x1c
     void*         Component;                        // +0x20
     void*         PGamePlayerInterface;             // +0x24
-    bool IsEventButtonReleased(const CInputEvent& event);                  // 0x00687BD0
+protected:
+    bool IsEventButtonReleased(const CInputEvent& event) const;                  // 0x00687BD0; NF236: protected const (Ego_r / FableWin IBE)
+public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;     // 0x00687CF0
 };
 class CInputProcessFirstPersonTargeting : public CInputProcessGameBase { public:   // vtable 0x01237C98

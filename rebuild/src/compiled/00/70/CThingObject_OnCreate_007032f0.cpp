@@ -117,7 +117,9 @@ class CThing { public:
 class CThingPhysical : public CThing { public:
     unsigned char _pad94[0x9c - 0x94];                  // CThing rounds to 0x94
     float         Scale;                                // +0x9c
-    bool ValidateInitialisation();                      // 0x006A4D60
+protected:
+    bool ValidateInitialisation();                      // 0x006A4D60; NF236: Ego_r / FableWin spelling IAE (protected)
+public:
 };
 class CThingGameObject : public CThingPhysical { public:
     bool OnCreate();                                    // 0x00838A40
