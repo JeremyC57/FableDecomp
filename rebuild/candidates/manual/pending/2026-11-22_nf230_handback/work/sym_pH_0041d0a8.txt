@@ -1,0 +1,5 @@
+DEF ?PlaySoundW@CManager@NUISystem@@UAEXAAVCCharString@@J@Z
+UND ??0CSoundInit@@QAE@XZ
+UND ?GetPSoundBank@CASoundManager@@QBEPAVCASoundBank@@J@Z
+UND ?PSoundManager@@3PAVCASoundManager@@A
+UND ?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A

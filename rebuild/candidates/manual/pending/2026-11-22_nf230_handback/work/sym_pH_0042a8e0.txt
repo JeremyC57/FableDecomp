@@ -1,0 +1,3 @@
+DEF @CAssoc_scalar_deleting_dtor@12
+UND ??3@YAXPAX@Z
+UND @CAssoc_dtor@4

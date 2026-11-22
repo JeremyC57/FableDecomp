@@ -118,7 +118,6 @@ _RegionExitTextHelper	004292c0	0042a0ce
 ??0CMember_0052e5d0Member@@QAE@XZ	0052e5d0	0042a33f
 ?RBTree__GetMaxNode@@YAPAXPAX@Z	004294e2	0042a58d
 ?GetNoAllocatedAreas@@YAPAXPAX@Z	004292c0	0042a8bd
-@CAssoc_dtor@4	00429e16	0042a8e0
 ??0CSecond_00429e29@@QAE@ABU0@@Z	00429e29	0042a944
 ?LinkedList_AllocateNode_12bytes@@YGPAULinkedListNode12@@K@Z	00429fbe	0042aadc
 ?Base_0042a141@CActiveFile@@QAEXXZ	0042a141	0042ab1c
@@ -39464,4 +39463,3 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?GetExclusiveObserver@CObservable@NUISystem@@UAEPAVCObserver@2@XZ	0042bea9	0042be7b
 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z	0042b8fc	0042c02f
 ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	00429e16	0042b8fc
-?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	013b871c	0041d0a8

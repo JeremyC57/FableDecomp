@@ -1,0 +1,9 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0042A8E0	std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>	`scalar deleting destructor'	??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z	_global::ScalarDeletingDtor_0042a8e0	@CAssoc_scalar_deleting_dtor@12	Ego_r.pdb + FableWin.pdb S_GPROC32 ??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z (ui_manager.obj); the retail body calls 0x00429E16 (the landed ~pair of the same pair); the compiler COMDAT equals the 28 retail bytes (q.py RELOCATION_MATCH; NF229 cmpcopy). Files keep their CAssoc_scalardeletingdestructor_0042a8e0 names (the coordinator renames)
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x0042A8E0	@CAssoc_dtor@4	??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	0x00429E16
+0x00541F20	?System_013b871c@@3PAUSystem@@A	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	0x013B871C
+0x00542140	?System_013b871c@@3PAUSystem@@A	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	0x013B871C
+0x00597BF2	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@2PAV1@A	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	0x013B871C
+0x0059A238	?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	0x013B871C
+0x0041D0A8	?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	0x013B871C

@@ -1,0 +1,6 @@
+entry	address	status	binders_respelled	note
+q12620	0x0042A8E0	done	0x0042A8E0 own call: @CAssoc_dtor@4 -> ??1pair (0x00429E16)	self row on the PDB ??_G; table line @CAssoc_dtor@4 deleted (TABLE_CHANGES)
+q12621	0x013B871C	done (stand-ins); ?g_ left on 0x0042EBB6 only	0x00541F20 (x1) 0x00542140 (x3): ?System_013b871c@@3PAUSystem@@A -> ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A; 0x00597BF2 (x1): @@2PAV1@A -> @@0PAV1@A	compiled census of all 28 exe referencers (work/bind_013b871c.tsv, rows/ + overlay): 27 bind the PDB private static, 0x0042EBB6 the ?g_ stand-in; spellings 4 -> 2 (1 with the in-place draft)
+q12622	0x0059A238	done	0x0059A238 (x4): ?g_ -> @@0PAV1@A	header Get / GetTextBank / StartGame + new opt-ins ResetAttractModeTimer, SetQuit; first form
+q12623	0x0041D0A8, 0x0042EBB6	partial: 0x0041D0A8 done; 0x0042EBB6 blocked (header claim; in-place draft ready)	0x0041D0A8 (x1): ?g_ -> @@0PAV1@A	0x0041D0A8 via the new opt-in GetPSoundBank (Ego_d.pdb + retail read); 0x0042EBB6 write-up in NOTES, draft work/e3/0042ebb6_inplace.cpp
+q12624	(14 rows)	partial: 11 of 14	-	new header tests for the 6 CObservable rows and 5 CManager rows (0x0042D4F0 0x0042D5AA 0x0042D592 0x0041E3B2 0x0041DED2), all PASS; open: 0x0041D98A, 0x00446720, 0x00599D5C (context)

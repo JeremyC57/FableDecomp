@@ -31,12 +31,12 @@ public:
 #define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
 #include "engine/CSoundInit.h"
 #include "engine/CASoundManager.h"
-class CNewFrontendGameComponent {
-public:
-    unsigned char _pad00[0x50];
-    CASoundBank*  PSampleBank;                          // +0x50 CCountedPointer<CASoundBank>::Data (Ego_r.pdb PSampleBank)
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
+// NF230 (2026-11-22, q12623): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static; Ego_d.pdb LF_STMEMBER
+//   private; the header's spelling) read through the header's inline Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ); the bank word
+//   (PSampleBank +0x50, private) through the opt-in GetPSoundBank() (Ego_d.pdb, public: hdr/README). Was a row-local
+//   CNewFrontendGameComponent model and the stand-in ?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A.
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETPSOUNDBANK
+#include "engine/CNewFrontendGameComponent.h"
 class CDefinitionManager;
 namespace NUISystem {
 class CManager {
@@ -52,9 +52,9 @@ void CManager::PlaySoundW(CCharString& symbol, long bankId)
     {
         CSoundInit init;
         init.GainFaderBits = 0x20;
-        if (g_pNewFrontendGameComponent)
+        if (CNewFrontendGameComponent::Get())
         {
-            CASoundBank* bank = g_pNewFrontendGameComponent->PSampleBank;
+            CASoundBank* bank = CNewFrontendGameComponent::Get()->GetPSoundBank();
             if (bank)
                 soundSystem->Get2DEmitter().PlaySoundEvent(*bank, symbol, true, init, false);
         }

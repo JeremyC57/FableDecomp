@@ -1,0 +1,8 @@
+0099b510	??1CWideString@@QAE@XZ	x2
+0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	x3
+009c7a40	?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ	x2
+009c7d00	?GetTextInfo@CDataBank@NGameText@@QBEPBVCDataBankTextEntry@2@K@Z	x2
+009c9070	?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z	x4
+013b86a0	?Game_013b86a0@@3PAUGame@@A	x3
+013b871c	?System_013b871c@@3PAUSystem@@A	x3
+013bca24	?NullString@CWideString@@2V1@A	x1

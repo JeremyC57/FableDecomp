@@ -1,74 +1,41 @@
-#include <cstdio>
-
-struct CAssoc { int x; };
-
-static int g_order = 0;
-static int g_dtor_seq = 0;
-static int g_delete_seq = 0;
-static void* g_dtor_arg = 0;
-static void* g_delete_arg = 0;
-
-// Masked callees the reconstruction invokes: the non-deleting destructor
-// (thiscall / ecx = this, modeled __fastcall) and the global __cdecl delete.
-void __fastcall CAssoc_dtor(CAssoc* thisptr)
-{
-    g_dtor_arg = (void*)thisptr;
-    g_dtor_seq = ++g_order;
-}
-
-void __cdecl fable_operator_delete(void* p)
-{
-    g_delete_arg = p;
-    g_delete_seq = ++g_order;
-}
-
-// Faithful, self-contained mirror of the scalar deleting destructor idiom.
-void* __fastcall CAssoc_scalar_deleting_dtor(CAssoc* thisptr, int edx, unsigned int flags)
-{
-    (void)edx;
-    CAssoc_dtor(thisptr);
-    if (flags & 1)
-        fable_operator_delete(thisptr);
-    return thisptr;
-}
-
-static unsigned long g_obj[4];
-
-static int run(unsigned int flags, int expect_delete)
-{
-    g_obj[0] = g_obj[1] = g_obj[2] = g_obj[3] = 0;
-    g_order = 0; g_dtor_seq = 0; g_delete_seq = 0;
-    g_dtor_arg = 0; g_delete_arg = 0;
-
-    void* ret = CAssoc_scalar_deleting_dtor((CAssoc*)g_obj, 0, flags);
-
-    int ok = 1;
-    ok &= (ret == (void*)g_obj);
-    ok &= (g_dtor_seq == 1);
-    ok &= (g_dtor_arg == (void*)g_obj);
-    if (expect_delete)
-    {
-        ok &= (g_delete_seq == 2);
-        ok &= (g_delete_arg == (void*)g_obj);
-    }
-    else
-    {
-        ok &= (g_delete_seq == 0);
-    }
-    return ok;
-}
-
+// Behaviour test for 0x0042A8E0 (NF230) on the shared headers engine/NUISystem_CManager.h / engine/CCountedPointer.h: the scalar deleting
+// destructor of NUISystem::CManager's map value type pair<const CCharString, CCountedPointer<CComponent> >, reached through `delete` of a
+// heap pair: the pair is destroyed (its key destructor runs once), its storage goes to operator delete exactly once with the pair's own
+// address, and deleting a null pointer destroys and frees nothing. Stubbed: the out-of-line CCharString constructors / destructor
+// (counted); operator new / delete are counted wrappers of malloc / free. The null counted pointer's release is the header's inline ReleaseData.
+#define FABLE_RETAIL_CCHARSTRING   // test only: the retail CCharString (PStringData) as the binder rows 0x0042B7EE / 0x0042B76C use
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#include <stdio.h>
+#include <stdlib.h>
+#include "engine/CCountedPointer.h"
+#include "engine/NUISystem_CManager.h"
+static int g_fails = 0;
+static void Check(bool ok, const char* what) { if (!ok) { printf("FAIL: %s\n", what); ++g_fails; } }
+static int g_live = 0, g_news = 0, g_deletes = 0;
+static void* g_last_deleted = 0;
+CCharString::CCharString(const char* text, long) { PStringData = (CCharStringData*)text; ++g_live; }
+CCharString::CCharString(const CCharString& other) { PStringData = other.PStringData; ++g_live; }
+CCharString::~CCharString() { --g_live; }
+void* operator new(size_t n) { ++g_news; return malloc(n); }
+void operator delete(void* p) { if (p) { ++g_deletes; g_last_deleted = p; } free(p); }
+typedef std::pair<const CCharString, CCountedPointer<NUISystem::CComponent> > ChildPair;
 int main()
 {
-    int ok = 1;
-    ok &= run(1u, 1);
-    ok &= run(0u, 0);
-    ok &= run(2u, 0);
-    ok &= run(3u, 1);
-
-    if (ok)
-        std::printf("ULTRA2_0042a8e0_CASSOC_SDD PASS\n");
-    else
-        std::printf("ULTRA2_0042a8e0_CASSOC_SDD FAIL\n");
-    return 0;
+    {
+        CCharString key("Child", -1);
+        CCountedPointer<NUISystem::CComponent> none;
+        ChildPair* p = new ChildPair(key, none);
+        Check(p != 0 && g_news == 1 && g_live == 2, "heap pair holds a live key copy");
+        Check(p->second.Data == 0, "the counted pointer is null");
+        void* at = p;
+        delete p;
+        Check(g_live == 1, "delete destroys the pair's key once");
+        Check(g_deletes == 1 && g_last_deleted == at, "delete frees the pair's own storage once");
+        ChildPair* q = 0;
+        delete q;
+        Check(g_live == 1 && g_deletes == 1, "deleting a null pair destroys and frees nothing");
+    }
+    Check(g_live == 0, "nothing left");
+    printf(g_fails ? "FAIL_0042a8e0\n" : "ULTRA2_0042a8e0_CASSOC_SDD PASS\n");
+    return g_fails ? 1 : 0;
 }

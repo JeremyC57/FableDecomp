@@ -1,0 +1,30 @@
+diff --git a/rebuild/include/engine/CNewFrontendGameComponent.h b/rebuild/include/engine/CNewFrontendGameComponent.h
+index bf63ebbd25..64167ec5d7 100644
+--- a/rebuild/include/engine/CNewFrontendGameComponent.h
++++ b/rebuild/include/engine/CNewFrontendGameComponent.h
+@@ -113,6 +113,25 @@ public:
+     // (out of line at 0x00594F36). No layout change.
+     void StartGame() { SetQuit(); m_bCreateGame = true; }
+     void LoadGame(CWideString& game);                                    // 0x00594F36
++#endif
++#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RESETATTRACTMODETIMER
++    // NF230 opt-in (rows 0x00597BF2 GotoPreviousScreen, 0x0059A238 CFrontEndManager::Action): Ego_r.pdb and FableWin.pdb
++    // ?ResetAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ (public, non-virtual), out of line at 0x0042DBEE. No layout change.
++    void ResetAttractModeTimer();                                        // 0x0042DBEE
++#endif
++#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETPSOUNDBANK
++    // NF230 opt-in (row 0x0041D0A8 NUISystem::CManager::PlaySoundW): Ego_d.pdb CNewFrontendGameComponent field list LF_ONEMETHOD
++    // `GetPSoundBank`, public, non-const, `CASoundBank* ()` (?GetPSoundBank@CNewFrontendGameComponent@@QAEPAVCASoundBank@@XZ; not in
++    // Ego_r / FableWin: inline, no out-of-line copy). Second source: the retail read 0x0041D0A8 `mov eax,[0x013B871C] ... mov eax,[eax+50h]`
++    // (PSampleBank's Data word; the body is reconstructed from those bytes with the FableWin CCountedPointer<T>::Get). No layout change.
++    CASoundBank* GetPSoundBank() { return PSampleBank.Get(); }
++#endif
++#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_SETQUIT
++    // NF230 opt-in (row 0x0059A238 CFrontEndManager::Action): FableWin.pdb ?SetQuit@CNewFrontendGameComponent@@UAEXXZ, the PUBLIC
++    // override of the protected CGameComponent::SetQuit (?SetQuit@CGameComponent@@MAEXXZ); retail RTTI vtable CNewFrontendGameComponent
++    // slot 4 holds 0x00430340 (`mov byte ptr [ecx+8],1 ; ret`), not CGameComponent's 0x00415930. Callers reach it through slot 4
++    // (`call [eax+10h]`). Declaration only: an override adds no vtable slot; no layout change.
++    virtual void SetQuit();                                              // 0x00430340
+ #endif
+     static CNewFrontendGameComponent* __fastcall Get() { return m_pNewFrontendGameComponent; }
+     bool IsTextBankInitialised() const { return !m_pTextBank.IsNull(); }

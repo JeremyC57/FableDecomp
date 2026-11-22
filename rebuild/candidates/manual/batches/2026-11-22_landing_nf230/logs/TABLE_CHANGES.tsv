@@ -1,0 +1,4 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	@CAssoc_dtor@4	00429e16	0042a8e0	stand-in: 0x0042A8E0 now binds ~pair (the existing line ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ 00429e16 0042b8fc covers it); q12620
+delete	rebuild/oracles/reloc_bindings.tsv	?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	013b871c	0041d0a8	re-witness: 0x0041D0A8 now binds the PDB static (q12623); the stand-in stays on 0x0042EBB6 only (work/bind_013b871c.tsv), re-added below
+add	rebuild/oracles/reloc_bindings.tsv	?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	013b871c	0042ebb6	re-witness of the line above: 0x0042EBB6 (blocked) is the last ?g_ user; delete this line too if the in-place draft work/e3/0042ebb6_inplace.cpp lands

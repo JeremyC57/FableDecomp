@@ -1,0 +1,2 @@
+00429e16	??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	x1
+00bfe9bc	??3@YAXPAX@Z	x1

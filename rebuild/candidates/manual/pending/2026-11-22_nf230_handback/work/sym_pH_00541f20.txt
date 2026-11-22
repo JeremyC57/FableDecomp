@@ -1,0 +1,12 @@
+DEF ?GetTextDataBank@Game@@QBEPAVCDataBank@NGameText@@XZ
+DEF ?GetTextDataBank@System@@QBEPAVCDataBank@NGameText@@XZ
+DEF ?SetValue@CIconText@NUISystem@@UAEXABVCWideString@@@Z
+UND ??1CCharString@@QAE@XZ
+UND ??1CWideString@@QAE@XZ
+UND ??4CWideString@@QAEABV0@ABV0@@Z
+UND ??9CWideString@@QBE_NABV0@@Z
+UND ?Game_013b86a0@@3PAUGame@@A
+UND ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+UND ?NullString@CWideString@@2V1@A
+UND ?System_013b871c@@3PAUSystem@@A
+UND ?ToCharString@CWideString@@QBE?AVCCharString@@XZ

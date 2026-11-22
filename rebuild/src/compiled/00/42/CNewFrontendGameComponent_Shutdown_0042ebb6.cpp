@@ -56,7 +56,6 @@ struct CFrontendGlobal_013b838c {
 };
 class CNewFrontendGameComponent;
 void __fastcall SetActiveFrontend_004336b0(CNewFrontendGameComponent* component);   // 0x004336B0
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 class CFontManager;
 extern CFontManager* PFontManager;    // 0x013B838C
 extern CDisplayManager* GPDisplayManager;                        // 0x013B8390
@@ -71,6 +70,7 @@ public:
     vector<CWideString>       FileNames;           // +0x6c
     vector<CDateAndTime>      FileTimes;           // +0x78
 private:                                           // NF35: Ego_r + FableWin private (AAE) members
+    static CNewFrontendGameComponent* m_pNewFrontendGameComponent;   // 0x013B871C (NF230 in-place respell, full header port queued (land1122nf230), Ego_r / Ego_d / FableWin private static)
     void CleanUpInterfaces();                      // 0x0042DD28 (was the made-up ReleaseScene_0042dd28)
     void ReleaseXMVCode();                         // 0x0042DBD8
     void Shutdown();
@@ -80,7 +80,7 @@ void CNewFrontendGameComponent::Shutdown()
 {
     m_pFrontEndDef = 0;
     SetActiveFrontend_004336b0(0);
-    g_pNewFrontendGameComponent = 0;
+    m_pNewFrontendGameComponent = 0;
     CleanUpInterfaces();
     ((CFrontendGlobal_013b838c*)PFontManager)->Flag38 = true;
     if (!m_bCreateGame && PSoundManager) {

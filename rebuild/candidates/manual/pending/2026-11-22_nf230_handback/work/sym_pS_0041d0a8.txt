@@ -1,0 +1,8 @@
+DEF ?Get@?$CCountedPointer@VCASoundBank@@@@QBEPAVCASoundBank@@XZ
+DEF ?Get@CNewFrontendGameComponent@@SIPAV1@XZ
+DEF ?GetPSoundBank@CNewFrontendGameComponent@@QAEPAVCASoundBank@@XZ
+DEF ?PlaySoundW@CManager@NUISystem@@UAEXAAVCCharString@@J@Z
+UND ??0CSoundInit@@QAE@XZ
+UND ?GetPSoundBank@CASoundManager@@QBEPAVCASoundBank@@J@Z
+UND ?PSoundManager@@3PAVCASoundManager@@A
+UND ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A

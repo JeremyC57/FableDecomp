@@ -1,0 +1,7 @@
+DEF ??$_Destroy@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@0@@Z
+DEF ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+DEF ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ
+DEF ??_G?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEPAXI@Z
+DEF ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+UND ??1CCharString@@QAE@XZ
+UND ??3@YAXPAX@Z
