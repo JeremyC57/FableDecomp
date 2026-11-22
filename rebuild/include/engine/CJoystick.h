@@ -72,19 +72,25 @@ public:
 #pragma pack(pop)
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
 // Original nested type has natural alignment and sizeof20 in both PDBs.
-class CJoystick::CInitRumble {public:CInitRumble(float,float,float,float,bool);float MaxLevel,Smoothness,AttackTime,DecayTime;bool Cumulative;};
-FABLE_STATIC_ASSERT(sizeof(CJoystick::CInitRumble)==20);
+class CJoystick::CInitRumble {public:
+#ifdef FABLE_RETAIL_CJOYSTICK_INITRUMBLE_BODY_PASS26
+CInitRumble(float level,float smoothness,float attack,float decay,bool cumulative):MaxLevel(level),Smoothness(smoothness),AttackTime(attack),DecayTime(decay),Cumulative(cumulative){}
+#else
+CInitRumble(float,float,float,float,bool);
+#endif
+float MaxLevel,Smoothness,AttackTime,DecayTime;bool Cumulative;};
+FABLE_STATIC_ASSERT_AT(76, sizeof(CJoystick::CInitRumble)==20);
 #endif
 
-FABLE_STATIC_ASSERT(sizeof(CJoystick) == 0xd18);
+FABLE_STATIC_ASSERT_AT(79, sizeof(CJoystick) == 0xd18);
 #ifndef FABLE_RETAIL_CJOYSTICK
-FABLE_STATIC_ASSERT(offsetof(CJoystick, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CJoystick, __vftable) == 0x0);
 #endif
-FABLE_STATIC_ASSERT(offsetof(CJoystick, EventStore) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CJoystick, InputManager) == 0xd04);
-FABLE_STATIC_ASSERT(offsetof(CJoystick, ExclusiveMode) == 0xd08);
-FABLE_STATIC_ASSERT(offsetof(CJoystick, MaintainedEventsList) == 0xd0c);
-FABLE_STATIC_ASSERT(offsetof(CJoystick, NoStoredEvents) == 0xd10);
-FABLE_STATIC_ASSERT(offsetof(CJoystick, NoEventScansRunning) == 0xd14);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CJoystick, EventStore) == 0x4);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CJoystick, InputManager) == 0xd04);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CJoystick, ExclusiveMode) == 0xd08);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CJoystick, MaintainedEventsList) == 0xd0c);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CJoystick, NoStoredEvents) == 0xd10);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CJoystick, NoEventScansRunning) == 0xd14);
 
 #endif // FABLE_ENGINE_CJOYSTICK_H

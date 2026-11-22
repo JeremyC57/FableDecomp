@@ -41,6 +41,9 @@ class CEnginePrimitiveHandle; class CEnginePrimitivePrepareInfo; class C2DBoxF; 
 #include "engine/CBaseClassNonCopyable.h"
 class CMiniMapDisplay:public CBaseClassNonCopyable {
 #else
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWAPI_PASS26
+class CEnginePrimitivePrepareInfo; class C2DBoxF; class C2DVector; class C3DVector;
+#endif
 class CMiniMapDisplay {
 #endif
 public:
@@ -53,6 +56,11 @@ public:
 #endif
         CIntelligentPointer<const CThing> PThing;            // +0x00
         long GraphicIndex;                                   // +0x08
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_MARKER_DRAW_PASS26
+        bool IsRotatedOnMap()const;
+        bool IsPulsingOnMap()const;
+        bool IsReversedOnMap()const;
+#endif
         bool AutoMarker;                                     // +0x0c
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWMARKERS
         bool IsHeroMarker() const;                           // inline (out-of-line copy 0x0082A210); defined by the user TU
@@ -76,6 +84,16 @@ public:
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_ADDMARKER
     void AddMarker(const CThing&,long);
 #endif
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWAPI_PASS26
+    // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb
+    // ?DrawPreparePrimitivesForEngine@CMiniMapDisplay@@QAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z (0x0082C060),
+    // ?IsThingAsPosBeingDrawn@CMiniMapDisplay@@QBE_NABVC3DVector@@@Z (0x00829D20) and
+    // ?GetDrawPosition@CMiniMapDisplay@@QBE?AVC2DVector@@ABVC3DVector@@ABVC2DBoxF@@@Z (0x0082A020), all public, called out of line by
+    // the row. Declarations only, no layout change.
+    void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front);   // 0x0082C060
+    bool IsThingAsPosBeingDrawn(const C3DVector& pos) const;                                       // 0x00829D20
+    C2DVector GetDrawPosition(const C3DVector& pos, const C2DBoxF& box) const;                      // 0x0082A020
+#endif
     void RemoveAllMarkers();                                 // 0x0082A300
     void RemoveMarker(const CThing& thing);                  // 0x0082A380
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_INITIALISE
@@ -91,6 +109,13 @@ public:
     void GetNonAutoMarkers(std::list<const CMarkerInfo*>& markers) const;   // 0x0082A390
 #endif
 #ifdef FABLE_RETAIL_CMINIMAPDISPLAY_DRAWMARKERS
+#ifdef FABLE_RETAIL_CMINIMAPDISPLAY_MARKER_DRAW_PASS26
+public:
+    bool IsThingAsPosBeingDrawn(const C3DVector&)const;
+#ifndef FABLE_RETAIL_CMINIMAPDISPLAY_GETDRAWPOSITION
+    C2DVector GetDrawPosition(const C3DVector&,const C2DBoxF&)const;
+#endif
+#endif
 protected:
     void AddAutoMarker(const CThing& thing, long graphic_index);                                  // 0x0082A500
     bool DrawMarker(const CEnginePrimitivePrepareInfo& info, const CMarkerInfo& marker, long index,

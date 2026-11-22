@@ -12,7 +12,11 @@ namespace NShape {
 enum EShape;
 class CShape {
 public:
+#ifdef FABLE_RETAIL_NSHAPE_CONSTRUCTOR_BODIES_PASS26
+ CShape(CTCShapeManager& owner,const std::vector<C3DVector>& pnts):Owner(owner),Points(pnts){}
+#else
  CShape(CTCShapeManager&,const std::vector<C3DVector>&);
+#endif
  virtual ~CShape();
  virtual EShape GetType()const=0;
  virtual void OnSerialise(CPersistContext&,long,const C2DCoordI&);
@@ -52,7 +56,11 @@ public:
 };
 class CClosedShapeBase:public CShape {
 public:
+#ifdef FABLE_RETAIL_NSHAPE_CONSTRUCTOR_BODIES_PASS26
+ CClosedShapeBase(CTCShapeManager& owner,const std::vector<C3DVector>& pnts):CShape(owner,pnts){}
+#else
  CClosedShapeBase(CTCShapeManager&,const std::vector<C3DVector>&);
+#endif
  virtual ~CClosedShapeBase();
  virtual EShape GetType()const;
  virtual void EditorDrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&,const CWorldMap&,const C3DVector&,const CRGBColour&);

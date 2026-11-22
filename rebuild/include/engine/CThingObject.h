@@ -87,7 +87,12 @@ public:
     // retail tests property 10 as `call [edx+0C0h] ; shr eax,0Ah ; test al,1 ; jne` (0x007CB356..0x007CB365); a mask argument
     // (`& 0x400`) folds to `test ah,4`. Body FITTED: the shift-and-mask text that gives retail's shr/test (scout/headers.md has the
     // FableWin /Od size check).
+#ifdef FABLE_RETAIL_CTHINGOBJECT_HASPROPERTY_MASK_PASS26
+    // FableWin 01D860F0 applies the accessor argument as the original mask.
+    bool HasProperty(unsigned long property) const { return (GetProperties() & property) != 0; }
+#else
     bool HasProperty(unsigned long property) const { return ((GetProperties() >> property) & 1) != 0; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_VSLOTS2
 // agentFAM04 (2026-11-11): retail CThingObject overrides (TLC vtable slots aligned with the Xbox 360 Test PDB order;

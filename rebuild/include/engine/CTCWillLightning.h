@@ -27,6 +27,13 @@ class CSpecialAbilitiesLightningSpellDef;
 enum ELightningState;                                                    // MS forward enum (Ego_r.pdb)
 class CTCWillLightning : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_BEAM_ACTIVATE_PASS26
+    // FableWin and Ego_d TPI 0x3208B entries with enumerators from 0x3208A.
+    enum ELightningState {
+        INACTIVE = 0, DELAYING, ACTIVATING, ACTIVE, DEACTIVATINGCHILDREN, DEACTIVATING, DEAD
+    };
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_WILL_LIGHTNING; }
+#endif
     class CLightningBeam {
     public:
         CLightningBeam(CThing* home, CThing* target);                    // 0x007A0630
@@ -36,6 +43,18 @@ public:
         bool AllChildrenInactive();                                      // Ego_r.pdb ?AllChildrenInactive@CLightningBeam@CTCWillLightning@@QAE_NXZ
         void UpdatePositions();                                          // Ego_r.pdb ?UpdatePositions@CLightningBeam@CTCWillLightning@@QAEXXZ
         void FrameUpdate(CIntelligentPointer<CThingCreatureBase> player, unsigned long* seed);   // 0x007A1B20
+#endif
+#ifdef FABLE_RETAIL_CTCWILLLIGHTNING_BEAM_ACTIVATE_PASS26
+        // FableWin 0x026B81D0, called for ACTIVATING and DELAYING by Activate.
+        void ChangeState(ELightningState state) {
+            m_fTimeBase = m_fTime;
+            m_lsState = state;
+            if (state == ACTIVE)
+                m_nFrameCount = -1;
+        }
+        // Original FableWin PUB32/GDATA32 at 0x04AC3350 and 0x04AC3354.
+        static long g_nLightningEffect;
+        static long g_nLargeLightningEffect;
 #endif
         ELightningState  m_lsState;                                      // +0x00
         CIntelligentPointer<CThing> m_tpParticleHandle;                  // +0x04

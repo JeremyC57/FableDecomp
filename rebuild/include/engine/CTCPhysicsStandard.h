@@ -25,6 +25,10 @@ class CThing;
 class CThingPhysicsMeshInfo;
 class CTCPhysicsStandard : public CTCPhysicsBase {
 public:
+#ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_FLUSHNORMAL_PASS26
+    // Pass26 row00723e50: both original PDBs and native slot77 prove this override.
+    virtual void SetRHSetAsFlushOnNormal(const C3DVector& normal);
+#endif // FABLE_RETAIL_CTCPHYSICSSTANDARD_FLUSHNORMAL_PASS26
     virtual void ResetInterpolation();                       // slot 80 0x007236E0
 #ifdef FABLE_RETAIL_CTCPHYSICSSTANDARD_UPDATEINTERPOLATION
     // Nested opt-in (NF154, PRIORITY q3906 / q5088, row 0x00723730): Ego_r.pdb 0x0073A570 / FableWin.pdb 0x02526850

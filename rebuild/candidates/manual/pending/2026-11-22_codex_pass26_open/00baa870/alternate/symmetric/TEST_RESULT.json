@@ -1,0 +1,52 @@
+{
+  "source_sha256": "81e69b2406854911bb677dacbf62e5601cee115a4728569c3474b978550b2eb0",
+  "test_sha256": "fea2e07a936fa24ed8d27a256fe1a2a55581e29a0b0e951bdb09048a520bf34a",
+  "tag": "alternate_replay_5bf00538c146_symmetric",
+  "complete_body_verbatim": true,
+  "cases": 6144,
+  "limitations": "Executes the complete selected body and its visible helpers with shared C3DVector, C3DBoundingSphere, C3DBoundingBox, CMatrix3x4, C2DBoxF and CEngineFadeDistance. Deterministic fixtures stand in for mesh loading, shader and device state, and the reciprocal-square-root seed table.",
+  "runs": {
+    "native": {
+      "compile": 0,
+      "run": 0,
+      "output": "00baa870_TEST PASS",
+      "flags": [
+        "/Od",
+        "/W3",
+        "/GR-"
+      ],
+      "test_sha256": "fea2e07a936fa24ed8d27a256fe1a2a55581e29a0b0e951bdb09048a520bf34a",
+      "compiler": "13.10.3077",
+      "test_flags": [
+        "/Od",
+        "/W3",
+        "/GR-"
+      ],
+      "object_sha256": "083beb8e311475ec4ca9b364db6017b58bb8db53cb2ba8807425f654ecc9aa52",
+      "built_header_sha256": "7f96ac8753ab8bb5554b3f6c481853337f82adf545da5eb750fe8cbfa6afb1b8"
+    },
+    "portable": {
+      "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+      "flags": [
+        "-std=c++03",
+        "-DFABLE_PORTABLE",
+        "-DFABLE_RETAIL_PASS23_HOST_TEST_ABI",
+        "-DFABLE_RETAIL_STLP_HOST_TAGS_PASS23",
+        "-D__fastcall=",
+        "-D__cdecl=",
+        "-D__stdcall=",
+        "-D__thiscall=",
+        "-D__int64=long long",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-no-pie"
+      ],
+      "output": "00baa870_TEST PASS",
+      "sanitizer_environment": {
+        "ASAN_OPTIONS": "detect_leaks=0",
+        "UBSAN_OPTIONS": "halt_on_error=1"
+      }
+    }
+  },
+  "primitive_conversion_mappings": 6
+}

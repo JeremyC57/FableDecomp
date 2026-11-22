@@ -34,6 +34,10 @@ extern const C2DCoordI g_BlockNeighbourOffsets[9];                    // 0x01385
 #endif
 class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
 public:
+#ifdef FABLE_RETAIL_CWORLDMAP_LOCAL_TO_WORLD_VECTOR_PASS26
+    // Ego_r 004CFC10 and FableWin 01C83290, called by LoadRoute on PeekWorldMap().
+    C2DVector ConvertLocalCoordsToWorldMapCoords(long region, const C2DVector& position) const;
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_IMPASSABILITYAROUND
     // Ego_r.pdb ?GetImpassabilityFactorAround@CWorldMap@@QBEXABVC3DVector@@AAV?$vector@MV?$allocator@M@std@@@std@@_N@Z (out of line,
     // retail 0x0063E3C0; called at 0x0072441E). Declaration only.

@@ -13,7 +13,12 @@ public:
     void BackplaneFriction(float strength, float radius);
 #endif
     Mass();
+#ifdef FABLE_RETAIL_MASS_INLINE_DTOR_PASS26
+    // FableWin 0x02AE9930 only stores the Mass vtable. Retail expands the body after Coin destruction.
+    virtual ~Mass() { }
+#else
     virtual ~Mass();
+#endif
     C2DVector GetVel(C2DVector pos) const;
     void ApplyImpulse(C2DVector pos,C2DVector force);
     void ApplyMove(C2DVector pos,C2DVector move);

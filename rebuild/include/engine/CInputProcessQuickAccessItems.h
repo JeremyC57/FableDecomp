@@ -13,6 +13,14 @@ class CProcessedInput;
 class CInputProcessQuickAccessItems : public CInputProcessGameBase {
 public:
     CInputProcessQuickAccessItems(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_PROCESS_PASS26
+    virtual void ProcessInput(const CInputEvent& event,CProcessedInput& processed_input);
+private:
+    // Both original PUBLIC/GDATA records: private static longs.
+    static long ItemIndex;
+    static long ButtonIndex;
+public:
+#endif
 #ifdef FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_UPDATE
     // NF55 opt-in (2026-11-17, row 0x0068E450): Ego_r.pdb / FableWin.pdb ?Update@CInputProcessQuickAccessItems@@UAEXAAVCProcessedInput@@@Z
     // (0x0068E450) and the private ?CancelQuickAccessCharge@CInputProcessQuickAccessItems@@AAEXXZ (0x0068E3C0). Declarations only: the

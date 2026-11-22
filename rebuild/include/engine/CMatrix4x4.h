@@ -19,10 +19,20 @@ enum EMatrix34Init { MATRIX34_INIT_IDENTITY };
 #endif
 class CMatrix4x4 {
 public:
+#ifdef FABLE_RETAIL_CMATRIX4X4_CAMERA_INITIALISE_PASS26
+    // Both original type records place the sixteen floats in row order at offsets 0 through 60.
+    float E11,E12,E13,E14,E21,E22,E23,E24,E31,E32,E33,E34,E41,E42,E43,E44;
+    void Initialise(float e11,float e12,float e13,float e14,float e21,float e22,float e23,float e24,
+                                      float e31,float e32,float e33,float e34,float e41,float e42,float e43,float e44) {
+        E11=e11; E12=e12; E13=e13; E14=e14; E21=e21; E22=e22; E23=e23; E24=e24;
+        E31=e31; E32=e32; E33=e33; E34=e34; E41=e41; E42=e42; E43=e43; E44=e44;
+    }
+#else
     union {
         struct { float E11,E12,E13,E14,E21,E22,E23,E24,E31,E32,E33,E34,E41,E42,E43,E44; };
         float Data[4][4];
     };
+#endif
 #ifdef FABLE_RETAIL_CMATRIX4X4_ELEMENT_ACCESS
     // Retail opt-in (Codex pass20): both original TPI overloads; FableWin02e8e480.
     float& operator()(int row,int column) { return Data[row][column]; }

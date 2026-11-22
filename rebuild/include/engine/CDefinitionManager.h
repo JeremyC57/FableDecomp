@@ -352,10 +352,18 @@ template<class T> bool CDefinitionManager::GetDef(const CCharString& name, CDefP
 #endif
 {
     CDefPointer<const CDefClassBase> def = GetPDefFromInstantiationName(name);
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_NAME_ORIGINAL_PASS26
+    // FableWin 0x01D7D8F0 calls Get and SetDynamicCast in that order.
+    if (def.Get()) {
+        out->SetDynamicCast(def);
+        return true;
+    }
+#else
     if (!def.IsNull()) {
         *out = def;
         return true;
     }
+#endif
     return false;
 }
 #if defined(_MSC_VER)

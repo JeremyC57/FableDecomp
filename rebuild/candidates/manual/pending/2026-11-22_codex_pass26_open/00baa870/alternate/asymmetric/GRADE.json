@@ -1,0 +1,31 @@
+{
+  "final_tree_patch_fingerprint": "5bf00538c146",
+  "final_tree_patch_sha256": "54bed1e4a9eeed7d188085cd173ab3ea2e454a1419b7062d9a924ddff1af5bab",
+  "checked_files": 2931,
+  "alternate_patch_sha256": "cb270b8ab68f087a70676855a38dc885c2614a19205a099871113b524bdaf318",
+  "candidate_header_sha256": "07bdbe533d9044bc70ab02d67d78aeacab38b29f4f0ab26db20e054184f7a3bf",
+  "expected_leaf_sha256": "3150382ea95c3a6dd7f886482010cad5a041074596c589c2eea5dd8df604ff56",
+  "replay_leaf_sha256": "3150382ea95c3a6dd7f886482010cad5a041074596c589c2eea5dd8df604ff56",
+  "replay_relocations_sha256": "c1390a0f1f04bb37a65446ad08e578658ee972bcaf19e772d58e8559f5be1e69",
+  "exact_transition_helper_bytes": 112,
+  "grade": {
+    "row": "00baa870",
+    "tag": "alternate_replay_5bf00538c146_asymmetric",
+    "source_sha256": "89c4a1937307767c770798409c12396d9dcf8e81471d1fd9909448813e718bee",
+    "requested_leaf": "?RenderFromSortList@CEnginePrimitiveManagerRepeatedZSprites@@AAEXAAVCEngineInternalPrimitiveRepeatedZSprite@@@Z",
+    "flags": [],
+    "retail_bytes": 4600,
+    "leaf": "?RenderFromSortList@CEnginePrimitiveManagerRepeatedZSprites@@AAEXAAVCEngineInternalPrimitiveRepeatedZSprite@@@Z",
+    "status": "DIFFER",
+    "object_bytes": 4600,
+    "matched_instructions": 1185,
+    "retail_instructions": 1198,
+    "built_instructions": 1198,
+    "hunks": 12,
+    "same_size_different_bytes": 36,
+    "pickany_complete": true,
+    "pickany_eq": 3,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  }
+}

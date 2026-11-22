@@ -44,6 +44,10 @@ public:
     // inline bool-getter shape, where a direct `!action->Valid` test compiles to `cmp byte ptr [eax+0Ch],0`.
     bool IsValid() { return Valid; }
 #endif
+#ifdef FABLE_RETAIL_CACTION_ORIGINAL_DTOR_DECL_PASS26
+    // Original user destructor; native0053fd00 deletes action parameters then destroys both lists.
+    ~CAction();
+#endif
     EActionType ActionType;                                                 // +0x00
     std::list<CActionParam*> UIActionParams;                                // +0x04
     std::list<long> ThingActionParams;                                      // +0x08

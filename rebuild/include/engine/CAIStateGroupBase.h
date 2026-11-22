@@ -49,6 +49,9 @@ class CThingCreatureBase; class CPlayerManager; class CWorldMap;    // chunk 795
 
 class CAIStateGroupBase : public CBaseClass {
 public:
+#ifdef FABLE_RETAIL_CAIBRAIN_INITGROUPS_PASS26
+    long GetPriority() const { return Priority; }
+#endif
     CAIStateGroupBase();                                                 // 0x008FD255 ??0CAIStateGroupBase@@QAE@XZ
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority,

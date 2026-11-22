@@ -5,6 +5,9 @@
 #ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREEN_BOX_PASS23
 #include "engine/C2DBoxF.h"
 #endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREENSCALED_PASS26
+#include "engine/C2DBoxF.h"
+#endif
 namespace NPlayerGui {
 #ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREEN_BOX_PASS23
 // Both original overload names; identity-copy expansion native006507d5/006509f8.
@@ -27,6 +30,12 @@ inline C2DVector FABLE_FASTCALL GFAnchorToTopLeft(const C2DVector& pos) { return
 C2DVector FABLE_FASTCALL GFAnchorToTopRight(const C2DVector& pos);                         // 0x00643CA1
 C2DVector FABLE_FASTCALL GFAnchorToBottomLeft(const C2DVector& pos);                       // 0x00643CDA
 C2DVector FABLE_FASTCALL GFAnchorToBottomRight(const C2DVector& pos);                      // 0x00643D0C
+#endif
+#ifdef FABLE_RETAIL_NPLAYERGUI_GFTOSCREENSCALED_PASS26
+// Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb / FableWin.pdb
+// ?GFToScreenScaled@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z (__fastcall, hidden C2DBoxF result), out of line at 0x00643BFC (landed row
+// NPlayerGui_GFToScreenScaled_00643bfc.cpp). Declaration only (includes engine/C2DBoxF.h).
+C2DBoxF FABLE_FASTCALL GFToScreenScaled(const C2DBoxF& box);                               // 0x00643BFC
 #endif
 }
 #endif

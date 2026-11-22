@@ -1,0 +1,747 @@
+# Preserved grade ledger
+
+- baseline: DIFFER, 306/310 bytes, 13 hunks; graded object True.
+- spell01_original_locals: COMPILE_FAIL, ?/310 bytes, ? hunks; graded object False.
+- spell02_original_accessors: DIFFER, 306/310 bytes, 12 hunks; graded object True.
+- spell03_original_operator: DIFFER, 306/310 bytes, 12 hunks; graded object True.
+- spell04_original_helpers: DIFFER, 306/310 bytes, 14 hunks; graded object True.
+- spell05_grouped_original_helpers: DIFFER, 306/310 bytes, 11 hunks; graded object True.
+- spell06_grouped_cross: DIFFER, 310/310 bytes, 7 hunks; graded object True.
+- spell07_parenthesized_heading: DIFFER, 306/310 bytes, 8 hunks; graded object True.
+- spell08_grouped_cross_heading: DIFFER, 310/310 bytes, 6 hunks; graded object True.
+- spell09_newton_square: DIFFER, 310/310 bytes, 3 hunks; graded object True.
+- spell10_retail_float_quarter: DIFFER, 310/310 bytes, 3 hunks; graded object True.
+
+Actual graded objects: 10.
+
+The owner authorized additional grades after the first ten. The history preserves the native trigonometric, normalization grouping, processor profile and seed-expression experiments.
+
+| Grades | Outcome | Evidence under test |
+| --- | --- | --- |
+| Original expression, trig, constructor and seed families | Best 310/310, 96/98 | Independently vary the original three cross products, floating angle forms, double TWO_PI, compiler processor profile and checked seed union. The checked union form moves an additional late pair. |
+| flush11 through flush22 | Best 310/310, 96/98 | Activate the host-safe bit path in the production row. Use the original angle helper formals and cosine local, the `vec` formals in both setters, grouped arguments, and the named double TWO_PI. An opaque TWO_PI declaration leaves two extra multiplies. |
+| flush23 through flush41 | Best 310/310, 96/98 | Direct initialization and member operator syntax, integer zero and unit arguments, calling profiles, unsigned exponent literal widths, grouped bit masks and seed, and alternate angle helper declaration timing. `/Os` and `/Op` materially change the leaf. |
+| flush42 through flush54 | Best 310/310, 96/98 | Copy float bits through an unsigned 32-bit word with `memcpy`. VC7.1 folds both copies and pure inlining is sufficient. Retain the existing square grouping and left-associated Newton products. The host branch with one further Newton group moves additional suffix instructions. |
+| flush55 through flush60 | 310/310, 96/98 | Make the true same-TU virtual implementations visible before and after the leaf. FableWin 0x02526C40 uses `GetWorld().GetFrame()` and FableWin 0x02526880 delegates to `RHSet.GetForward().GetAngleXY()`. The original wrapping helpers and either placement preserve the same indirect calls. |
+
+The selected new source shares the safe bit conversion between VC7.1 and LP64. Its 537-case test passes under native VC7.1 `/Od /W3 /GR-` and GCC C++03 on LP64 with memory and undefined behavior checks. The audited source still differs at the two instruction moves described in NOTES.md.
+
+The active history contains 156 graded objects, including the incoming baseline. Setup failures remain in history.
+
+FableWin 01DCB548..01DCB595 loads magnitude first in both products with cos_yz before calling the trigonometric helpers. The original single-precision product in that operand order retains 96/98 instructions in the 310-byte leaf. Promoting magnitude to double before the product worsens it to 93/98. A duplicate opt-in declaration found in the merged draft was removed from the patch ledger. The clean shared header tree efee91b366bb compiles the source and passes the native test.
+
+The selected opt-in now preserves the original four local and parameter spellings of InitialiseFromAngles. FableWin creature_action.obj record 0x2E588 and Ego_d independently name anglexy, angleyz, magnitude and cos_yz, all float. The two-source disclosure and final replay identify this as a fidelity improvement with the same two scheduling differences.
+
+C3DVector::InitialiseFromAngles now uses the donor-proven magnitude formal and cos_yz local in the shared opt-in. Independent native regrade on tree 6a20af7d676e retained 310 bytes and 96/98 instructions; the behavior test passed. All 34 real neighbouring-header permutations emitted the same 15 differing bytes. The pointer load remains after the angle subtraction in the build.
+
+The native compiler trace puts the normal-pointer load in the first cross-product statement and observes VC7.1 moving it towards the earlier angle conversion. The selected build still issues the pointer load after the subtraction and zero load. Additional product-grouping and commutative-operand changes did not advance it to its retail position.
+
+The native fixture adds 24 live-reference cases, with normal bound to each of current Forward, current Up, previous Forward and previous Up over six headings. This checks the updated snapshot before the cross-product and the final reread of normal after SetForward. VC7.1 passed all 561 cases, including 512 reciprocal seeds.
+The fixture includes only the two shared geometry classes it instantiates. Its portable x64 test disables the VC-only calling convention and uses the established host ABI setting. The same 561-case source passed GCC in strict C++03 mode with AddressSanitizer and UndefinedBehaviorSanitizer, and passed the dedicated VC7.1 native build.
+
+## Donor-anchored grouping redistribution
+
+Both original CodeView tables match the source checksum and preserve the distinct angle, cross-product and normalization statements. FableWin at `02526F60` names `InitialiseFromAngles`, `operator^` and `Normalise` on lines 455–457. The optimized Ego_r at `0073ADE0` has the same statement order with separate trigonometric CRT calls.
+
+- `flush_redistribute_normal_*` moved the existing squared-sum grouping to terms, the first subtotal or the full return. The Z-term placement retained 96/98 and did not move either remaining instruction.
+- `flush_redistribute_newton_*` moved grouping among the seed square, product, final multiplication and complete return. The best variants retained the same 96/98 schedule.
+- `flush_redistribute_cross_*` moved each cross-component grouping to the left or right product or removed it. Additional cases paired these moves with normalization regrouping. The 89 redistribution grades preserve operator order and use only existing donor expressions. None advances the normal-reference load ahead of the quarter-turn subtraction.
+- `flush_heading_dep_*` tried grouping the original virtual facing query result and its later use in the quarter-turn expression. These 29 diagnostics include single-precision equivalent spellings. None advances the normal-reference load ahead of the subtraction.
+
+The native RTM ready-list trace identifies the first remaining order difference. After the second virtual call, the normal-pointer and seed exponent loads are both ready. The pointer load has a critical-path score of 148480, the exponent load 34816, and the selected angle subtraction, zero angle load and first `fcos` score 507904, 450560 and 468992 respectively. Redistribution within the original helper expressions did not bridge that priority difference. No eligible source calls the angle helper with values derived from the normal or adds a separate early access.
+
+The selected 310-byte build passed the 561-case behavior fixture on VC7.1 and GCC C++03 with address and undefined-behavior checks. A separate audit paired all seven relocated operands by instruction and verified both virtual targets from their native table.
+
+FableWin 01ACE0A0 and the Ego_d debug locals independently identify n, seed of type TFloatIntUnion, and r in GFFastOneOverSqrt. The selected shared branch uses that exact union from the existing header and assigns r before returning it. The extra unsigned int copies a 32-bit representation via memcpy on both VC7.1 and LP64. Neither compiler reads an inactive union member. All seven compiled operands and the leaf are identical to the previous selection. Native VC7.1 and strict GCC C++03 with ASan/UBSan passed all 561 cases. Seven genuine same-TU facing/interpolation owner combinations, 30 selective optimization diagnostics, 30 temporary materializations and 18 named-seed variants did not move the two early instructions into their retail order.
+
+## Native neighboring scheduling
+
+The two original CodeView records give the same `tc_physics_standard.cpp` source anchors for both neighboring functions. `GetRHSet(float interpolate)` computes `up` and `fw` at lines 442 and 443, normalizes at 444 and 445, then constructs the result at 446. Retail loads `edx = 0x17c` at `00723C86` between the first `fld` and `fsub`, 54 instructions ahead of its first exponent consumer. It loads the second initializer at `00723D99` between `fld st(2)` and a multiply. Ego_r loads the first constant next to its consumer and the second at the line-445 anchor, 52 instructions ahead of its own consumer. These schedules place independent integer loads within x87 work while the normalizations have their original places in the source.
+
+The pre-existing `flush_same_compiland_neighbors_123` diagnostic uses the same shared header as the selected target. Its 458-byte `GetRHSet(float)` reproduces the first early exponent load at offset `+0x6`. The second load is `+0x10F` in the object and `+0x119` in retail. An independent multiply and the result-pointer load also exchange positions near `+0x16A`. All six table and floating constant operands resolve to their original retail targets. This demonstrates a shared helper able to produce an early exponent load in the sibling while preserving the two scheduling differences in the target.
+
+`SetRHSetAsFlushOnGround` has zero x87 instructions in FableWin, Ego_r and retail. Both donor records name `C3DVector normal` at line 465 and mark the virtual call at 466. The debug direct calls identify `PeekWorldMap().GetGroundFaceNormalAt(GetPosition())`. Retail confirms the equivalent named calls and dispatches through slot 77 to this target. Neither sibling uses the trigonometric instructions in the flush-normal leaf.
+
+The original project records `/Yustandard_headers.hpp` in both donors and `/Oi` in Ego_r. Replaying the PCH boundary at the shared geometry headers and after the complete target dependencies made the PCH and ordinary-preprocessed builds byte-identical. Both boundaries with the compatible original speed options, and the geometry boundary with the ordinary packet flags, reproduce the complete 310-byte selected leaf and all seven relocations on merged tree `5bf00538c146`. The native and strict C++03 GCC AddressSanitizer and UndefinedBehaviorSanitizer fixtures also pass on that tree. The donor evidence supports optimizing and hoisting ready operations without establishing a source-level change for the remaining target schedule.
+
+# Compiler attempts for 00723e50
+
+Each line records a compiler invocation. Regrading an inherited file establishes a baseline. Historical rechecks and compiler failures do not establish a new successful source shape.
+
+- `baseline`  DIFFER  306/310  13 differing instruction groups.
+- `spell01_original_locals`  COMPILE_FAIL  —/310
+- `spell02_original_accessors`  DIFFER  306/310  12 differing instruction groups.
+- `spell03_original_operator`  DIFFER  306/310  12 differing instruction groups.
+- `spell04_original_helpers`  DIFFER  306/310  14 differing instruction groups.
+- `spell05_grouped_original_helpers`  DIFFER  306/310  11 differing instruction groups.
+- `spell06_grouped_cross`  DIFFER  310/310  7 differing instruction groups.
+- `spell07_parenthesized_heading`  DIFFER  306/310  8 differing instruction groups.
+- `spell08_grouped_cross_heading`  DIFFER  310/310  6 differing instruction groups.
+- `spell09_newton_square`  DIFFER  310/310  3 differing instruction groups.
+- `spell10_retail_float_quarter`  DIFFER  310/310  3 differing instruction groups.
+- `angle_length_first`  DIFFER  310/310  3 differing instruction groups.
+- `angle_prefactor_first`  DIFFER  310/310  3 differing instruction groups.
+- `angle_ordered_first`  DIFFER  310/310  3 differing instruction groups.
+- `angle_component_casts`  DIFFER  310/310  6 differing instruction groups.
+- `argument_terms7`  DIFFER  310/310  6 differing instruction groups.
+- `argument_terms1`  DIFFER  310/310  6 differing instruction groups.
+- `argument_terms2`  DIFFER  310/310  6 differing instruction groups.
+- `argument_terms4`  DIFFER  310/310  6 differing instruction groups.
+- `argument_first7`  DIFFER  310/310  6 differing instruction groups.
+- `argument_first1`  DIFFER  310/310  6 differing instruction groups.
+- `argument_first2`  DIFFER  310/310  6 differing instruction groups.
+- `argument_first4`  DIFFER  310/310  6 differing instruction groups.
+- `argument_last7`  DIFFER  310/310  6 differing instruction groups.
+- `argument_last1`  DIFFER  310/310  6 differing instruction groups.
+- `argument_last2`  DIFFER  310/310  6 differing instruction groups.
+- `argument_last4`  DIFFER  310/310  6 differing instruction groups.
+- `argument_cast7`  DIFFER  310/310  3 differing instruction groups.
+- `argument_cast1`  DIFFER  310/310  3 differing instruction groups.
+- `argument_cast2`  DIFFER  310/310  3 differing instruction groups.
+- `argument_cast4`  DIFFER  310/310  3 differing instruction groups.
+- `argument_both_cast7`  DIFFER  310/310  6 differing instruction groups.
+- `argument_both_cast1`  DIFFER  310/310  6 differing instruction groups.
+- `argument_both_cast2`  DIFFER  310/310  6 differing instruction groups.
+- `argument_both_cast4`  DIFFER  310/310  6 differing instruction groups.
+- `argument_raw_terms7`  DIFFER  306/310  8 differing instruction groups.
+- `argument_raw_terms1`  DIFFER  310/310  6 differing instruction groups.
+- `argument_raw_terms2`  DIFFER  310/310  6 differing instruction groups.
+- `argument_raw_terms4`  DIFFER  306/310  7 differing instruction groups.
+- `original_shapes_0000`  DIFFER  306/310  12 differing instruction groups.
+- `original_shapes_0001`  DIFFER  306/310  11 differing instruction groups.
+- `original_shapes_0010`  DIFFER  306/310  11 differing instruction groups.
+- `original_shapes_0011`  DIFFER  306/310  9 differing instruction groups.
+- `original_shapes_0100`  DIFFER  310/310  7 differing instruction groups.
+- `original_shapes_0101`  DIFFER  310/310  6 differing instruction groups.
+- `original_shapes_0110`  DIFFER  310/310  7 differing instruction groups.
+- `original_shapes_0111`  DIFFER  310/310  5 differing instruction groups.
+- `original_shapes_1000`  DIFFER  306/310  11 differing instruction groups.
+- `original_shapes_1001`  DIFFER  306/310  11 differing instruction groups.
+- `original_shapes_1010`  DIFFER  306/310  11 differing instruction groups.
+- `original_shapes_1011`  DIFFER  306/310  11 differing instruction groups.
+- `original_shapes_1100`  DIFFER  310/310  9 differing instruction groups.
+- `original_shapes_1101`  DIFFER  310/310  7 differing instruction groups.
+- `original_shapes_1110`  DIFFER  310/310  6 differing instruction groups.
+- `original_shapes_1111`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_LEFT_EXACT_DOUBLE`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_LEFT_PROMOTED_ANGLE`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_LEFT_CONSTANT_LEFT`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_LEFT_ANGLE_IN_PARENS`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_GROUP_EXACT_DOUBLE`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_GROUP_PROMOTED_ANGLE`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_GROUP_CONSTANT_LEFT`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_DONOR_GROUP_ANGLE_IN_PARENS`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_CURRENT_EXACT_DOUBLE`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_CURRENT_PROMOTED_ANGLE`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_CURRENT_CONSTANT_LEFT`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_raw_CURRENT_ANGLE_IN_PARENS`  DIFFER  310/310  3 differing instruction groups.
+- `native_trig_union_DONOR_LEFT_EXACT_DOUBLE`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_LEFT_PROMOTED_ANGLE`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_LEFT_CONSTANT_LEFT`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_LEFT_ANGLE_IN_PARENS`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_GROUP_EXACT_DOUBLE`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_GROUP_PROMOTED_ANGLE`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_GROUP_CONSTANT_LEFT`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_DONOR_GROUP_ANGLE_IN_PARENS`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_CURRENT_EXACT_DOUBLE`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_CURRENT_PROMOTED_ANGLE`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_CURRENT_CONSTANT_LEFT`  DIFFER  310/310  5 differing instruction groups.
+- `native_trig_union_CURRENT_ANGLE_IN_PARENS`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_0`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_1`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_2`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_3`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_4`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_5`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_6`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_7`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_8`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_9`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_10`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_11`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_12`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_13`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_14`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_15`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_16`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_17`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_18`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_19`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_20`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_21`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_22`  DIFFER  310/310  5 differing instruction groups.
+- `original_seed_fields_seed_23`  DIFFER  310/310  5 differing instruction groups.
+- `processor_profile_g6`  DIFFER  310/310  3 differing instruction groups.
+- `processor_profile_g7`  DIFFER  310/310  3 differing instruction groups.
+- `processor_profile_gb`  DIFFER  310/310  3 differing instruction groups.
+- `processor_profile_g5`  DIFFER  310/310  3 differing instruction groups.
+- `flush11_portable_seed_active`  DIFFER  310/310  3 differing instruction groups.
+- `flush12_original_scalar_formals`  DIFFER  310/310  3 differing instruction groups.
+- `flush13_original_scalar_formals_no_setter_change`  DIFFER  310/310  3 differing instruction groups.
+- `flush14_original_setter_formals`  DIFFER  310/310  3 differing instruction groups.
+- `flush15_group_facing_query`  DIFFER  310/310  6 differing instruction groups.
+- `flush16_group_zero_and_unit_arguments`  DIFFER  310/310  3 differing instruction groups.
+- `flush17_original_cosine_cast`  DIFFER  310/310  6 differing instruction groups.
+- `flush18_original_cosine_direct_initialisation`  DIFFER  310/310  3 differing instruction groups.
+- `flush19_original_const_cosine_local`  DIFFER  310/310  3 differing instruction groups.
+- `flush20_original_both_trig_const_pi`  DIFFER  310/310  3 differing instruction groups.
+- `flush21_original_both_trig_declared_pi`  DIFFER  322/310  14 differing instruction groups.
+- `flush22_original_cross_cosine_const_locals`  DIFFER  310/310  3 differing instruction groups.
+- `flush23_direct_forward_initialisation`  DIFFER  310/310  3 differing instruction groups.
+- `flush24_explicit_cross_member_operator`  DIFFER  310/310  3 differing instruction groups.
+- `flush25_group_cross_call_expression`  DIFFER  310/310  3 differing instruction groups.
+- `flush26_original_integer_zero_and_unit`  DIFFER  310/310  3 differing instruction groups.
+- `flush27_parenthesised_normalisation_call`  DIFFER  310/310  3 differing instruction groups.
+- `flush28_original_constructor_forced_inline`  DIFFER  310/310  3 differing instruction groups.
+- `flush29_speed_with_explicit_inline_calls`  DIFFER  310/310  3 differing instruction groups.
+- `flush30_size_mode`  DIFFER  274/310  25 differing instruction groups.
+- `flush31_improved_float_consistency`  DIFFER  398/310  16 differing instruction groups.
+- `flush32_relaxed_aliasing`  DIFFER  310/310  6 differing instruction groups.
+- `flush33_exponent_literal_unsigned_long`  DIFFER  310/310  3 differing instruction groups.
+- `flush34_exponent_literal_unsigned_int`  DIFFER  310/310  3 differing instruction groups.
+- `flush35_group_seed_exponent`  DIFFER  310/310  3 differing instruction groups.
+- `flush36_group_seed_whole`  DIFFER  310/310  3 differing instruction groups.
+- `flush37_group_newton_result`  DIFFER  312/310  7 differing instruction groups.
+- `flush38_group_seed_integer_masks`  DIFFER  310/310  3 differing instruction groups.
+- `flush39_angle_owner_size_inline`  DIFFER  310/310  3 differing instruction groups.
+- `flush40_angle_owner_plain_inline`  DIFFER  310/310  3 differing instruction groups.
+- `flush41_angle_owner_declared_late`  DIFFER  310/310  3 differing instruction groups.
+- `flush42_reviewed_portable_seed`  DIFFER  310/310  3 differing instruction groups.
+- `flush43_fixed_width_seed_memcpy`  DIFFER  310/310  3 differing instruction groups.
+- `flush44_fixed_width_seed_memcpy_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush45_fixed_width_seed_integer_word`  DIFFER  310/310  3 differing instruction groups.
+- `flush46_fixed_width_seed_const_integer_word`  DIFFER  310/310  3 differing instruction groups.
+- `flush47_original_square_sum_left_group`  DIFFER  310/310  9 differing instruction groups.
+- `flush48_original_square_left_product_group`  DIFFER  310/310  8 differing instruction groups.
+- `flush49_original_square_middle_product_group`  DIFFER  310/310  8 differing instruction groups.
+- `flush50_original_square_final_product_group`  DIFFER  310/310  6 differing instruction groups.
+- `flush51_original_three_square_call_groups`  DIFFER  310/310  6 differing instruction groups.
+- `flush52_shared_portable_seed_helper`  DIFFER  310/310  6 differing instruction groups.
+- `flush53_shared_portable_seed_products`  DIFFER  310/310  3 differing instruction groups.
+- `flush54_shared_portable_seed_inline_budget`  DIFFER  310/310  3 differing instruction groups.
+- `flush55_visible_original_angle_neighbor`  DIFFER  310/310  3 differing instruction groups.
+- `flush56_visible_original_frame_neighbor`  DIFFER  310/310  3 differing instruction groups.
+- `flush57_visible_original_two_neighbors`  DIFFER  310/310  3 differing instruction groups.
+- `flush58_visible_late_original_two_neighbors`  DIFFER  310/310  3 differing instruction groups.
+- `flush59_visible_original_angle_and_wrapping_helpers`  DIFFER  310/310  3 differing instruction groups.
+- `flush60_visible_original_neighbors_and_wrapping_helpers`  DIFFER  310/310  3 differing instruction groups.
+- `flush_donor_magnitude_float000`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float001`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float010`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float011`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float100`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float101`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float110`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_float111`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote000`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote001`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote010`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote011`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote100`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote101`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote110`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_promote111`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product000`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product001`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product010`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product011`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product100`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product101`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product110`  COMPILE_FAIL  —/310
+- `flush_donor_magnitude_cast_product111`  COMPILE_FAIL  —/310
+- `flush_checked_magnitude_float000`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float001`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float010`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float011`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float100`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float101`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float110`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_float111`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_promote000`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote001`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote010`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote011`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote100`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote101`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote110`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_promote111`  DIFFER  310/310  6 differing instruction groups.
+- `flush_checked_magnitude_cast_product000`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_efee91b366bb_63301bff`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product001`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product010`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product011`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product100`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product101`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product110`  DIFFER  310/310  3 differing instruction groups.
+- `flush_checked_magnitude_cast_product111`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_2de865f160dd_63301bff`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_6a20af7d676e_6f1ab3a8`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre0`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post0`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre1`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post1`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre2`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post2`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre3`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post3`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre4`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post4`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre5`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post5`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre6`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post6`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre7`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post7`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre8`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post8`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre9`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post9`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre10`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post10`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre11`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post11`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre12`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post12`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre13`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post13`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre14`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post14`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre15`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post15`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_pre16`  DIFFER  310/310  3 differing instruction groups.
+- `compiland_include_post16`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_0product_left`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_0product_right`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_0both_products`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_0const_member`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_0receiver`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_0reverse_left`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_0reverse_right`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_0both_reverse`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_1product_left`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_1product_right`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_1both_products`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_1const_member`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_1receiver`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_1reverse_left`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_1reverse_right`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_1both_reverse`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_2product_left`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_2product_right`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_2both_products`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_2const_member`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_2receiver`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_2reverse_left`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_2reverse_right`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_2both_reverse`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_3product_left`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_3product_right`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_3both_products`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_3const_member`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_3receiver`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_3reverse_left`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_3reverse_right`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_3both_reverse`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_4product_left`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_4product_right`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_4both_products`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_4const_member`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_4receiver`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_4reverse_left`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_4reverse_right`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_4both_reverse`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_5product_left`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_5product_right`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_5both_products`  DIFFER  310/310  6 differing instruction groups.
+- `trace_operands_5const_member`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_5receiver`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_5reverse_left`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_5reverse_right`  DIFFER  310/310  3 differing instruction groups.
+- `trace_operands_5both_reverse`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_plain_z7`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_plain_zi`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_plain_zd`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_original_lines_z7`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_original_lines_zi`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_original_lines_zd`  DIFFER  310/310  3 differing instruction groups.
+- `codeview_positions_original_lines_none`  DIFFER  310/310  3 differing instruction groups.
+- `original_numeric_mode_ow`  DIFFER  310/310  6 differing instruction groups.
+- `original_numeric_mode_oa`  DIFFER  310/310  6 differing instruction groups.
+- `original_numeric_mode_op`  DIFFER  398/310  16 differing instruction groups.
+- `original_numeric_mode_op_`  DIFFER  310/310  3 differing instruction groups.
+- `original_numeric_mode_o2__ob1`  DIFFER  310/310  3 differing instruction groups.
+- `original_numeric_mode_og`  DIFFER  310/310  3 differing instruction groups.
+- `original_numeric_mode_ox`  DIFFER  310/310  3 differing instruction groups.
+- `original_numeric_mode_ot`  DIFFER  310/310  3 differing instruction groups.
+- `original_numeric_mode_o2__og_`  DIFFER  365/310  10 differing instruction groups.
+- `original_numeric_mode_zp8`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_gr`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_gz`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_gdmd`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_grmd`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_grgf`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_grgy`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_grgtgr`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_zp4gr`  DIFFER  310/310  3 differing instruction groups.
+- `observed_build_defaults_gy`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_xy`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_cross`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_right`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_offset`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_pitch`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_normal`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_cross`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_right`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_offset`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_pitch`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xy_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_offset`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_normal_pitch`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_normal_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_right`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_cross_offset`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_cross_pitch`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cross_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_offset`  DIFFER  310/310  3 differing instruction groups.
+- `flush_trig_boundary_right_pitch`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_right_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_pitch`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_offset_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_pitch_sine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_pitch_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_pitch_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_pitch_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_pitch_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_pitch_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_sine_cosine`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_sine_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_sine_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_sine_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cosine_vertical`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cosine_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_cosine_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_vertical_xresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_vertical_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xresult_yresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_xresult_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_trig_boundary_yresult_zresult`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_normal_partial`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_normal_x`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_normal_y`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_normal_z`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_normal_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_normal_partial_inner`  DIFFER  310/310  9 differing instruction groups.
+- `flush_redistribute_newton_bare_square`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_newton_bare_product`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_newton_left_final`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_newton_left_square`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_newton_whole`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_x_left`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_x_right`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_x_both`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_cross_y_left`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_y_right`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_y_both`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_cross_z_left`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_z_right`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_z_both`  DIFFER  306/310  7 differing instruction groups.
+- `flush_redistribute_cross_z_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_z_none`  DIFFER  306/310  9 differing instruction groups.
+- `flush_redistribute_cross_xy_left`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_xy_right`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_xy_both`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_xy_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_xy_none`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_xz_left`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_xz_right`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_xz_both`  DIFFER  306/310  5 differing instruction groups.
+- `flush_redistribute_cross_xz_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_xz_none`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_yz_left`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_yz_right`  DIFFER  306/310  8 differing instruction groups.
+- `partial_tree_1d4aa74860b1_6f1ab3a8`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_yz_both`  DIFFER  306/310  5 differing instruction groups.
+- `flush_redistribute_cross_yz_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_yz_none`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_xyz_left`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_xyz_right`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_xyz_both`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_xyz_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_xyz_none`  DIFFER  306/310  11 differing instruction groups.
+- `flush_redistribute_cross_x_left_normal_partial`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_left_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_left_normal_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_cross_x_right_normal_partial`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_right_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_right_normal_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_cross_x_double_normal_partial`  DIFFER  310/310  9 differing instruction groups.
+- `flush_redistribute_cross_x_double_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_x_double_normal_none`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_x_none_normal_partial`  DIFFER  310/310  8 differing instruction groups.
+- `flush_redistribute_cross_x_none_normal_twice`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_x_none_normal_none`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_left_normal_partial`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_left_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_left_normal_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_cross_y_right_normal_partial`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_right_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_right_normal_none`  DIFFER  310/310  5 differing instruction groups.
+- `flush_redistribute_cross_y_double_normal_partial`  DIFFER  310/310  9 differing instruction groups.
+- `flush_redistribute_cross_y_double_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_y_double_normal_none`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_y_none_normal_partial`  DIFFER  310/310  8 differing instruction groups.
+- `flush_redistribute_cross_y_none_normal_twice`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_y_none_normal_none`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_z_left_normal_partial`  DIFFER  306/310  10 differing instruction groups.
+- `flush_redistribute_cross_z_left_normal_twice`  DIFFER  306/310  7 differing instruction groups.
+- `flush_redistribute_cross_z_left_normal_none`  DIFFER  306/310  9 differing instruction groups.
+- `flush_redistribute_cross_z_right_normal_partial`  DIFFER  306/310  10 differing instruction groups.
+- `flush_redistribute_cross_z_right_normal_twice`  DIFFER  306/310  7 differing instruction groups.
+- `flush_redistribute_cross_z_right_normal_none`  DIFFER  306/310  9 differing instruction groups.
+- `flush_redistribute_cross_z_double_normal_partial`  DIFFER  310/310  9 differing instruction groups.
+- `flush_redistribute_cross_z_double_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_cross_z_double_normal_none`  DIFFER  310/310  3 differing instruction groups.
+- `flush_redistribute_cross_z_none_normal_partial`  DIFFER  306/310  11 differing instruction groups.
+- `flush_redistribute_cross_z_none_normal_twice`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_cross_z_none_normal_none`  DIFFER  306/310  8 differing instruction groups.
+- `flush_redistribute_ungroup_square_normal_partial`  DIFFER  310/310  10 differing instruction groups.
+- `flush_redistribute_ungroup_square_normal_x`  DIFFER  310/310  9 differing instruction groups.
+- `flush_redistribute_ungroup_square_normal_y`  DIFFER  310/310  9 differing instruction groups.
+- `flush_redistribute_ungroup_square_normal_z`  DIFFER  310/310  7 differing instruction groups.
+- `flush_redistribute_ungroup_square_normal_twice`  DIFFER  310/310  6 differing instruction groups.
+- `flush_redistribute_ungroup_square_normal_partial_inner`  DIFFER  310/310  9 differing instruction groups.
+- `flush_heading_dep_call_group_2_heading_group`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_2_heading_group`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_call_group_2`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_2`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_call_group_3_heading_group`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_3_heading_group`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_call_group_3`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_3`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_call_group_4_heading_group`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_4_heading_group`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_call_group_4`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_4`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_call_group_5_heading_group`  DIFFER  310/310  7 differing instruction groups.
+- `flush_heading_dep_xy_group_5_heading_group`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_call_group_5`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_5`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_call_group_6_heading_group`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_6_heading_group`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_call_group_6`  DIFFER  310/310  7 differing instruction groups.
+- `flush_heading_dep_xy_group_6`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_call_group_7_heading_group`  DIFFER  310/310  7 differing instruction groups.
+- `flush_heading_dep_xy_group_7_heading_group`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_call_group_7`  DIFFER  310/310  6 differing instruction groups.
+- `flush_heading_dep_xy_group_7`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_zero_fraction`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_named_float`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_grouped_call_scope`  DIFFER  310/310  3 differing instruction groups.
+- `flush_heading_dep_return_float`  DIFFER  310/310  5 differing instruction groups.
+- `flush_heading_dep_both_float`  DIFFER  310/310  5 differing instruction groups.
+- `partial_tree_a6c63044ee0e_6f1ab3a8`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_ecee975d2a37_6f1ab3a8`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_17db647dc01f_6f1ab3a8`  DIFFER  310/310  3 differing instruction groups.
+- `flush_original_profile_sse`  DIFFER  378/310  13 differing instruction groups.
+- `flush_original_profile_sse2`  DIFFER  378/310  13 differing instruction groups.
+- `flush_original_profile_fist`  DIFFER  310/310  3 differing instruction groups.
+- `flush_original_profile_intrinsics`  DIFFER  310/310  3 differing instruction groups.
+- `flush_original_profile_no_inherent`  DIFFER  236/310  19 differing instruction groups.
+- `flush_original_profile_speed_cross`  DIFFER  310/310  3 differing instruction groups.
+- `flush_original_profile_portable_precise`  DIFFER  310/310  3 differing instruction groups.
+- `flush_original_profile_Pentium6fp`  DIFFER  310/310  3 differing instruction groups.
+- `flush_original_profile_speed_no_alias`  DIFFER  310/310  6 differing instruction groups.
+- `flush_inline_boundary_angles_precise`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_angles_no_global`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_angles_size`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_angles_no_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_angles_speed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cross_precise`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cross_no_global`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cross_size`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cross_no_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cross_speed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_square_precise`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_square_no_global`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_square_size`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_square_no_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_square_speed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_inverse_precise`  DIFFER  398/310  16 differing instruction groups.
+- `flush_inline_boundary_inverse_no_global`  DIFFER  236/310  19 differing instruction groups.
+- `flush_inline_boundary_inverse_size`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_inverse_no_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_inverse_speed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cos_precise`  DIFFER  398/310  16 differing instruction groups.
+- `flush_inline_boundary_cos_no_global`  DIFFER  329/310  20 differing instruction groups.
+- `flush_inline_boundary_cos_size`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cos_no_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_cos_speed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_123`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_12`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_13`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_23`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_1`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_2`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_compiland_neighbors_3`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_sin_precise`  DIFFER  398/310  16 differing instruction groups.
+- `flush_inline_boundary_sin_no_global`  DIFFER  337/310  20 differing instruction groups.
+- `flush_inline_boundary_sin_size`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_sin_no_intrinsic`  DIFFER  310/310  3 differing instruction groups.
+- `flush_inline_boundary_sin_speed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_heading`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_donorheading`  DIFFER  310/310  5 differing instruction groups.
+- `flush_materialize26_query`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_cross_result`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_cos_yz_float`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_cos_yz_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_materialize26_scale`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_sine_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_materialize26_cosine_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_materialize26_vertical_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_materialize26_seed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_tableword`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_heading_cos_yz_float`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_heading_seed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_heading_tableword`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_heading_cross_result`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_donorheading_cos_yz_float`  DIFFER  310/310  5 differing instruction groups.
+- `flush_materialize26_donorheading_seed`  DIFFER  310/310  5 differing instruction groups.
+- `flush_materialize26_donorheading_tableword`  DIFFER  310/310  5 differing instruction groups.
+- `flush_materialize26_donorheading_cross_result`  DIFFER  310/310  5 differing instruction groups.
+- `flush_materialize26_query_cos_yz_float`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_query_seed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_query_tableword`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_query_cross_result`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_scale_cos_yz_float`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_scale_seed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_scale_tableword`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_scale_cross_result`  DIFFER  310/310  3 differing instruction groups.
+- `flush_materialize26_scale_sine_double_cosine_double`  DIFFER  310/310  6 differing instruction groups.
+- `flush_materialize26_cos_yz_float_scale_seed`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_stage_return_single`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_stage_return_debug_double`  DIFFER  310/310  5 differing instruction groups.
+- `flush_named_seed_stage_assign_single`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_stage_assign_debug_double`  DIFFER  310/310  5 differing instruction groups.
+- `flush_named_seed_stage_split_single`  DIFFER  310/310  6 differing instruction groups.
+- `flush_named_seed_stage_split_debug_double`  DIFFER  310/310  7 differing instruction groups.
+- `flush_named_seed_reuse_return_single`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_reuse_return_debug_double`  DIFFER  310/310  5 differing instruction groups.
+- `flush_named_seed_reuse_assign_single`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_reuse_assign_debug_double`  DIFFER  310/310  5 differing instruction groups.
+- `flush_named_seed_reuse_split_single`  DIFFER  310/310  6 differing instruction groups.
+- `flush_named_seed_reuse_split_debug_double`  DIFFER  310/310  7 differing instruction groups.
+- `flush_named_seed_two_reads_return_single`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_two_reads_return_debug_double`  DIFFER  310/310  5 differing instruction groups.
+- `flush_named_seed_two_reads_assign_single`  DIFFER  310/310  3 differing instruction groups.
+- `flush_named_seed_two_reads_assign_debug_double`  DIFFER  310/310  5 differing instruction groups.
+- `flush_named_seed_two_reads_split_single`  DIFFER  310/310  6 differing instruction groups.
+- `flush_named_seed_two_reads_split_debug_double`  DIFFER  310/310  7 differing instruction groups.
+- `flush_original_seed_portable_selected`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_paren`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float012`  DIFFER  306/310  11 differing instruction groups.
+- `flush_xprod_materialized_ref012`  DIFFER  306/310  11 differing instruction groups.
+- `flush_xprod_materialized_value012`  DIFFER  306/310  11 differing instruction groups.
+- `flush_xprod_materialized_float_ref012`  DIFFER  306/310  11 differing instruction groups.
+- `flush_xprod_materialized_unary012`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float01`  DIFFER  310/310  6 differing instruction groups.
+- `flush_xprod_materialized_ref01`  DIFFER  310/310  6 differing instruction groups.
+- `flush_xprod_materialized_value01`  DIFFER  310/310  6 differing instruction groups.
+- `flush_xprod_materialized_float_ref01`  DIFFER  310/310  6 differing instruction groups.
+- `flush_xprod_materialized_unary01`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float02`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_ref02`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_value02`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_float_ref02`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_unary02`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float12`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_ref12`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_value12`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_float_ref12`  DIFFER  306/310  8 differing instruction groups.
+- `flush_xprod_materialized_unary12`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float0`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_ref0`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_value0`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_float_ref0`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_unary0`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float1`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_ref1`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_value1`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_float_ref1`  DIFFER  310/310  5 differing instruction groups.
+- `flush_xprod_materialized_unary1`  DIFFER  310/310  3 differing instruction groups.
+- `flush_xprod_materialized_float2`  DIFFER  306/310  9 differing instruction groups.
+- `flush_xprod_materialized_ref2`  DIFFER  306/310  9 differing instruction groups.
+- `flush_xprod_materialized_value2`  DIFFER  306/310  9 differing instruction groups.
+- `flush_xprod_materialized_float_ref2`  DIFFER  306/310  9 differing instruction groups.
+- `flush_xprod_materialized_unary2`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_5bf00538c146_1cb8c0a7`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_tu_calibrate_canonical_original`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_tu_calibrate_canonical_group_left`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_canonical_direct`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_canonical_group_z`  DIFFER  310/310  3 differing instruction groups.
+- `flush_same_tu_calibrate_stock_original`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_stock_group_left`  DIFFER  310/310  9 differing instruction groups.
+- `flush_same_tu_calibrate_stock_direct`  DIFFER  310/310  7 differing instruction groups.
+- `flush_same_tu_calibrate_stock_group_z`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_direct_original`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_direct_group_left`  DIFFER  310/310  8 differing instruction groups.
+- `flush_same_tu_calibrate_direct_direct`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_direct_group_z`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_split_half_original`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_split_half_group_left`  DIFFER  310/310  8 differing instruction groups.
+- `flush_same_tu_calibrate_split_half_direct`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_split_half_group_z`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_split_seed_original`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_split_seed_group_left`  DIFFER  310/310  8 differing instruction groups.
+- `flush_same_tu_calibrate_split_seed_direct`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_split_seed_group_z`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_right_half_original`  DIFFER  312/310  7 differing instruction groups.
+- `flush_same_tu_calibrate_right_half_group_left`  DIFFER  312/310  10 differing instruction groups.
+- `flush_same_tu_calibrate_right_half_direct`  DIFFER  312/310  7 differing instruction groups.
+- `flush_same_tu_calibrate_right_half_group_z`  DIFFER  312/310  7 differing instruction groups.
+- `flush_same_tu_calibrate_quarter_product_original`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_quarter_product_group_left`  DIFFER  310/310  8 differing instruction groups.
+- `flush_same_tu_calibrate_quarter_product_direct`  DIFFER  310/310  6 differing instruction groups.
+- `flush_same_tu_calibrate_quarter_product_group_z`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_double_update_original`  DIFFER  310/310  5 differing instruction groups.
+- `flush_same_tu_calibrate_double_update_group_left`  DIFFER  310/310  8 differing instruction groups.
+- `flush_same_tu_calibrate_double_update_direct`  DIFFER  310/310  7 differing instruction groups.
+- `flush_same_tu_calibrate_double_update_group_z`  DIFFER  310/310  5 differing instruction groups.
+- `flush_original_cross_formal_final`  DIFFER  310/310  3 differing instruction groups.
+- `partial_tree_5bf00538c146_41dbce79`  DIFFER  310/310  3 differing instruction groups.

@@ -26,6 +26,10 @@ enum EOpinionAttitudeType;
 class CTCOpinionSource;
 #endif
 class COpinionReactionManager {
+#ifdef FABLE_RETAIL_OPINION_STRENGTH_PASS26
+private:
+    void GetOpinions(const CTCCreatureOpinionOfHero* ptc_opinion,COpinionSet& opinions,const CTCOpinionSource* ptc_source) const;
+#endif
 #ifdef FABLE_RETAIL_COPINIONREACTIONMANAGER_CTOR
     // Opt-in (chunk 2051, row 0x004A6E30 CWorld::Init): Ego_r.pdb ??0COpinionReactionManager@@QAE@ABVCWorld@@@Z, retail 0x007004B0. Declaration only.
 public:

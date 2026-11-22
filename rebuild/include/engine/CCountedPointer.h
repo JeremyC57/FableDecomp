@@ -257,7 +257,22 @@ public:
         Data = 0;
     }
 #endif
-#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_SHAREDATA_DECL_ONLY
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_SHAREDATA_VISIBLE_PASS26)
+    // The original SetStaticCast calls this visible ShareData body out of line in CList::Initialise.
+#ifdef _MSC_VER
+    __declspec(noinline)
+#endif
+    void ShareData(T* data, CCPPointerInfo* info)
+    {
+        if (Info != info) {
+            ReleaseData();
+            Data = data;
+            Info = info;
+            if (info)
+                ++info->RefCount;
+        }
+    }
+#elif defined(FABLE_RETAIL_CCOUNTEDPOINTER_SHAREDATA_DECL_ONLY)
     // Per-TU opt-in (NF194, 2026-11-20; the CEntityScriptBinding<T>::CreateActiveEntityScript family, q5992): retail CALLS the
     // out-of-line copy 0x00CE1040 ?ShareData@?$CCountedPointer@VCEntityScriptBase@@@@QAEXPAVCEntityScriptBase@@PAVCCPPointerInfo@@@Z
     // from the speed-optimised binding TUs, where the in-class body below would be expanded. Declaration only; the retail body is

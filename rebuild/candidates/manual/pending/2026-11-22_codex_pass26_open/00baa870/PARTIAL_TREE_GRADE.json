@@ -1,0 +1,29 @@
+{
+  "row": "00baa870",
+  "header_tree": "5bf00538c146",
+  "source_sha256": "be5e19f5e976cc90d26c9915373769c6fcd1a8836d970d1b5e80abfb8bd2c5bb",
+  "grade": "DIFFER",
+  "bytes": 4600,
+  "retail_bytes": 4600,
+  "matching_instructions": 1190,
+  "total_instructions": 1198,
+  "helper_equal": 3,
+  "helper_different": 0,
+  "tag": "partial_tree_5bf00538c146_be5e19f5",
+  "behavior_test_passed": true,
+  "test_sha256": "ce8ee80e1ee7d73cc1a5cadde64fe03b0dc2c3222abc56d065da0c461e840540",
+  "compiler": "13.10.3077",
+  "test_flags": [
+    "/Od",
+    "/W3",
+    "/GR-"
+  ],
+  "test_scenarios": 6144,
+  "portable_test": "GCC C++03 LP64 ASan/UBSan PASS",
+  "semantic_operands": {
+    "relocations": 155,
+    "local_transfers": 70,
+    "device_slots": 4,
+    "exact_transition_helper_bytes": 112
+  }
+}

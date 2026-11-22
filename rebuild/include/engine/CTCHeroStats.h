@@ -7,6 +7,12 @@
 // out of line at 0x0057A690).
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCHEROSTATS_RENDERDRUNKENNESS_PASS26
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/CDefPointer.h"
+class CIEngine;
+class CSpecialAbilitiesDrunkennessDef;
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_SERIALISE
 // Nested opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise): the typed members the serialiser transfers (map, vectors,
 // CCharString, list), so the includes they need come in only under the macro.
@@ -36,6 +42,14 @@ class CThingAICreature; class CHeroMarriageInfo;
 enum EMarriageState;                                         // MS forward enum
 #endif
 class CTCHeroStats : public CTCBase {
+#ifdef FABLE_RETAIL_CTCHEROSTATS_TROPHYGAME_PASS26
+public:
+    // Original FableWin021bc9c3/0249be20 and native member+0xd8; setter parameter val.
+#ifndef FABLE_RETAIL_CTCHEROSTATS_PERSONALITY
+    long GetNumTrophyGamePlayed() const { return NumTrophyGamePlayed; }
+#endif
+    void SetNumTrophyGamePlayed(long val) { NumTrophyGamePlayed=val; }
+#endif
 #ifdef FABLE_RETAIL_GREETING_PASS23
 public:
     // Both original PDB constructors: public CThing&; normal fixture lifetimes.
@@ -77,6 +91,19 @@ public:
     void UpdateOutstandingCrimes(const CCharString&);
     void GetOutstandingFineAndFramesLeft(const CCharString&,long&,long&);
     void GetCrimeReport(const CCharString&,CWideString&,bool);
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_QUEST_COMPLETION_PASS26
+    // FableWin 0x01C5B4B0..0x01C5B590 and Ego_d quest_manager.obj, native +0xBC..+0xC8.
+    long GetNumCompletedAQuest() const { return NumCompletedAQuest; }
+    long GetNumCompletedACoreQuest() const { return NumCompletedACoreQuest; }
+    long GetNumCompletedAFeatQuest() const { return NumCompletedAFeatQuest; }
+    long GetNumCompletedAnOptionalQuest() const { return NumCompletedAnOptionalQuest; }
+    void SetNumCompletedAQuest(long count) { NumCompletedAQuest = count; }
+    void SetNumCompletedACoreQuest(long count) { NumCompletedACoreQuest = count; }
+    void SetNumCompletedAFeatQuest(long count) { NumCompletedAFeatQuest = count; }
+    void SetNumCompletedAnOptionalQuest(long count) { NumCompletedAnOptionalQuest = count; }
+    void AddMoney(long amount, bool display);
+    void AddRewardMoney(long amount);
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_FAILEDQUEST
     // Original FW01c5c050/70; Ego typed NumFailedAQuest, native+b8.
@@ -127,6 +154,11 @@ public:
     // ?GetMaxDrunkenness@CTCHeroStats@@QBEMXZ (public const), out of line in retail at 0x0057A874 / 0x0057A89D (both read the
     // hero-stats def through CTCBase::GetDefinitionManager: PintsToDrunk +0xA0 / PintsToVomit +0xA4). Declarations only.
     bool IsDrunk() const;                                                 // 0x0057A874
+#ifdef FABLE_RETAIL_CTCHEROSTATS_RENDERDRUNKENNESS_PASS26
+    // Ego_r 0x0056F397 and FableWin 0x01E6A6F7. The original getter is FableWin 0x01E6AE0A.
+    void RenderHeroDrunkenness(CIEngine* engine);
+    float GetDrunkenness() const { return Drunkenness; }
+#endif
     float GetMaxDrunkenness() const;                                      // 0x0057A89D
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_ONHEALTHMODIFIED
@@ -375,8 +407,13 @@ public:
     long             DeedHandle;                                         // +0x1b0
     long             FrameEndVomit;                                      // +0x1b4
     bool             UpdateDrunkenness;                                  // +0x1b8
+#ifdef FABLE_RETAIL_CTCHEROSTATS_RENDERDRUNKENNESS_PASS26
+    CDefPointer<const CSpecialAbilitiesDrunkennessDef> PDef;             // +0x1bc
+    CEnginePrimitiveHandle PrimitiveHandle;                              // +0x1c0
+#else
     unsigned char    PDef[0x4];                                          // +0x1bc CDefPointer<const CSpecialAbilitiesDrunkennessDef>
     unsigned char    PrimitiveHandle[0x8];                               // +0x1c0 CEnginePrimitiveHandle
+#endif
     float            UCounter;                                           // +0x1c8
     float            VCounter;                                           // +0x1cc
     float            RotCounter;                                         // +0x1d0

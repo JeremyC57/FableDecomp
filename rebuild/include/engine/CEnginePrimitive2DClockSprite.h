@@ -18,8 +18,12 @@ public:
  CEnginePrimitive2DClockSprite(unsigned __int64 id,const C2DVector&pos,EEngine2DLayer layer,unsigned long bank,unsigned long frame,const CRGBColour&colour,
   unsigned long bank2,unsigned long frame2,const CRGBColour&colour2,EEnginePrimitiveBlendMode blend,float angle_start,float angle_end,
   const C2DVector&uv_start,const C2DVector&uv_end,unsigned long flags,EEngineInterpolationSet interpolation)
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVE_CLOCKSPRITE_CTOR_DECL_PASS26
+ ;
+#else
  :CEnginePrimitive((EEnginePrimitiveType)35,id,interpolation),ClipBox(pos,pos),Layer(layer),BankIndex(bank),Frame(frame),BankIndex2(bank2),Frame2(frame2),AngleStart(angle_start),AngleEnd(angle_end),BlendMode(blend),Colour(colour),Colour2(colour2),ClipBoxIsPos(true),Flags(flags),Filter(false),UVOffsetsStart(uv_start),UVOffsetsEnd(uv_end){}
+#endif
 
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitive2DClockSprite)==96);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CEnginePrimitive2DClockSprite)==96);
 #endif

@@ -1,0 +1,203 @@
+{
+  "header_tree": "6a20af7d676e",
+  "native_standalone_leaf_grade": {
+    "row": "009f3da0",
+    "tag": "final_6a20af7d676e_c32d883f_surfaceproof",
+    "source_sha256": "c32d883ff28d2d692db5e26e34666ff4382240324827d6b9a920c2bab3a5e5a0",
+    "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "flags": [],
+    "retail_bytes": 582,
+    "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 582,
+    "matched_instructions": 194,
+    "retail_instructions": 194,
+    "built_instructions": 194,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 5,
+    "pickany_neq": 2,
+    "pickany_referenced_neq": 0
+  },
+  "original_donors": [
+    {
+      "executable_sha256": "a9d6d0977d9d7fc8242da4292ae7ed92e926ca80364a95c003d9b9f689e41845",
+      "rsds": "0b63010e-1e75-49e7-adda-5e6b10298bab",
+      "age": 8,
+      "leaf_va": "030c9020",
+      "extent_vas": [
+        "018a67c0",
+        "018a67f0"
+      ],
+      "extent_call_sites": [
+        "018a67d0",
+        "018a6800"
+      ],
+      "get_dimensions": "030c5db0",
+      "leaf_extent_sites": [
+        "030c9066",
+        "030c9074"
+      ],
+      "leaf_extent_mode": "direct named getter calls in the debug leaf",
+      "build": "FableWin"
+    },
+    {
+      "executable_sha256": "aeb372d37adce0b17affc0744eb20c3fe75d05c5a80cd134b0a4a7f5d607ea96",
+      "rsds": "774b3052-bdd8-43b4-808d-48481cc576ce",
+      "age": 4,
+      "leaf_va": "00b47aa0",
+      "extent_vas": [
+        "00414f70",
+        "00414f90"
+      ],
+      "extent_call_sites": [
+        "00414f77",
+        "00414f97"
+      ],
+      "get_dimensions": "00b46c70",
+      "leaf_extent_sites": [
+        "00b47acb",
+        "00b47adf"
+      ],
+      "leaf_extent_mode": "two successive GetDesc expansions in the optimized leaf",
+      "build": "Ego_r"
+    }
+  ],
+  "owner_compilation": {
+    "retail_release": {
+      "object_sha256": "070aa14c79ba266cb928bb99405c2df5fd32031d03cda750cff239e8345e2f2d",
+      "exact_owners": [
+        {
+          "symbol": "?GetWidth@CSurface@@QBEKXZ",
+          "native_extent": 18,
+          "owner_va": "00415bd0",
+          "verified_target": "009f2f90",
+          "relocation_offset": 8
+        },
+        {
+          "symbol": "?GetHeight@CSurface@@QBEKXZ",
+          "native_extent": 19,
+          "owner_va": "00415bf0",
+          "verified_target": "009f2f90",
+          "relocation_offset": 8
+        }
+      ]
+    },
+    "donor_release": {
+      "object_sha256": "a620e26a1f10c5ac4c03b61ae87ad6ab5769a8ac7616d19761415d7ce4599b77",
+      "exact_owners": [
+        {
+          "symbol": "?GetWidth@CSurface@@QBEKXZ",
+          "native_extent": 18,
+          "owner_va": "00415bd0",
+          "verified_target": "009f2f90",
+          "relocation_offset": 8
+        },
+        {
+          "symbol": "?GetHeight@CSurface@@QBEKXZ",
+          "native_extent": 19,
+          "owner_va": "00415bf0",
+          "verified_target": "009f2f90",
+          "relocation_offset": 8
+        }
+      ]
+    }
+  },
+  "link_controls": {
+    "owner_first": {
+      "exact_leaf_bytes": 582,
+      "getters": [
+        {
+          "symbol": "?GetWidth@CSurface@@QBEKXZ",
+          "input_object": "retail_release.obj",
+          "retail_bytes_match": true,
+          "linked_call": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ"
+        },
+        {
+          "symbol": "?GetHeight@CSurface@@QBEKXZ",
+          "input_object": "retail_release.obj",
+          "retail_bytes_match": true,
+          "linked_call": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ"
+        }
+      ]
+    },
+    "leaf_first": {
+      "exact_leaf_bytes": 582,
+      "getters": [
+        {
+          "symbol": "?GetWidth@CSurface@@QBEKXZ",
+          "input_object": "leaf.obj",
+          "retail_bytes_match": false
+        },
+        {
+          "symbol": "?GetHeight@CSurface@@QBEKXZ",
+          "input_object": "leaf.obj",
+          "retail_bytes_match": false
+        }
+      ]
+    }
+  },
+  "compiled_profiles": {
+    "retail_release": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "donor_release": [
+      "/nologo",
+      "/c",
+      "/Ox",
+      "/Ob2",
+      "/Oi",
+      "/Ot",
+      "/Oy",
+      "/GT",
+      "/Gr",
+      "/GR"
+    ]
+  },
+  "clean_header_recipe": "Apply the merged Pass 26 PATCHES.json to a fresh input include/ directory in order.",
+  "clean_tree_replay": {
+    "selected": "final_6a20af7d676e_c32d883f_clean_leaf",
+    "diagnostic": "final_6a20af7d676e_9404c43e_clean_control"
+  },
+  "pch_controls": {
+    "complete_dimensions": {
+      "create": {},
+      "use": {
+        "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z": {
+          "bytes": 582,
+          "exact": true
+        },
+        "?GetWidth@CSurface@@QBEKXZ": {
+          "bytes": 24,
+          "exact": false
+        },
+        "?GetHeight@CSurface@@QBEKXZ": {
+          "bytes": 24,
+          "exact": false
+        }
+      }
+    },
+    "original_late_dimensions": {
+      "create": {},
+      "use": {
+        "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z": {
+          "bytes": 582,
+          "exact": true
+        },
+        "?GetWidth@CSurface@@QBEKXZ": {
+          "bytes": 24,
+          "exact": false
+        },
+        "?GetHeight@CSurface@@QBEKXZ": {
+          "bytes": 24,
+          "exact": false
+        }
+      }
+    }
+  }
+}

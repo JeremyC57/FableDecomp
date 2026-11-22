@@ -14,6 +14,10 @@ public:
  class CSplinePosParamData {
  public:
   CSplinePosParamData(const CCardinalSpline&);
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_UPDATE_PASS26
+  // Both original PDBs, donor02f5e230, native00b20ba0.
+  void Update(const CParticleUpdateParameters<unsigned long,unsigned long>& params,CCardinalSpline& spline);
+#endif
  private:
   void TransformPosToMaintainShape(C3DVector&,const C3DVector&,const C3DVector&,const C3DVector&,const C3DVector&);
   const CParticleSystem* PParentParticleSystem;

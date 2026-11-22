@@ -1,0 +1,7 @@
+[
+  {
+    "path": "engine/C2DBoxF.h",
+    "old_text": " float GetWidth() const { return BRX-TLX; }\n float GetHeight() const { return BRY-TLY; }",
+    "new_text": "#ifdef FABLE_RETAIL_C2DBOXF_VIEWPORT_FLOAT_TEMPORARY_PASS26\n // Both original extents round through a float scratch in optimized Ego_r at 00A6256B and 00A6258D.\n float GetWidth() const { return static_cast<const float&>(BRX - TLX); }\n float GetHeight() const { return static_cast<const float&>(BRY - TLY); }\n#else\n float GetWidth() const { return BRX-TLX; }\n float GetHeight() const { return BRY-TLY; }\n#endif // FABLE_RETAIL_C2DBOXF_VIEWPORT_FLOAT_TEMPORARY_PASS26"
+  }
+]

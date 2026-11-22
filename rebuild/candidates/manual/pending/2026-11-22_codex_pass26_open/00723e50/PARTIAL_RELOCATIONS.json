@@ -1,0 +1,95 @@
+{
+  "row": "00723e50",
+  "status": "DIFFER",
+  "build_tag": "partial_tree_1d4aa74860b1_6f1ab3a8",
+  "header_tree": "1d4aa74860b1",
+  "relocations": [
+    {
+      "symbol": "__real@3e800000",
+      "object_offset": 27,
+      "retail_offset": 31,
+      "retail_target": "0x0123078C",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@0000000000000000",
+      "object_offset": 33,
+      "retail_offset": 37,
+      "retail_target": "0x0122ED70",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@401921fb60000000",
+      "object_offset": 54,
+      "retail_offset": 54,
+      "retail_target": "0x0124F2B8",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@0000000000000000",
+      "object_offset": 76,
+      "retail_offset": 76,
+      "retail_target": "0x0122ED70",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+      "object_offset": 180,
+      "retail_offset": 180,
+      "retail_target": "0x013CE558",
+      "addend": 0,
+      "verified_by": "named native seed table at retail target and 4-byte element scale"
+    },
+    {
+      "symbol": "__real@40400000",
+      "object_offset": 216,
+      "retail_offset": 216,
+      "retail_target": "0x0122DED4",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    },
+    {
+      "symbol": "__real@3f000000",
+      "object_offset": 226,
+      "retail_offset": 226,
+      "retail_target": "0x0122F59C",
+      "addend": 0,
+      "verified_by": "exact native floating-point width and value"
+    }
+  ],
+  "virtual_calls": [
+    {
+      "name": "UpdateOldRHSet",
+      "call_site": "0x00723E59",
+      "slot": 95,
+      "table": "0x01265F84",
+      "base_target": "0x00723930"
+    },
+    {
+      "name": "GetFacingAngleXY",
+      "call_site": "0x00723E63",
+      "slot": 63,
+      "table": "0x01265F84",
+      "base_target": "0x00723B30"
+    }
+  ],
+  "local_jumps": [],
+  "nonmatching_window": [
+    "0x19",
+    "0x2f"
+  ],
+  "checked_build_tag": "partial_tree_5bf00538c146_41dbce79",
+  "schedule_equivalence": {
+    "compared_instructions": 98,
+    "normalized_relocations": 7,
+    "difference": "Three adjacent exchanges suffice to obtain the release instruction sequence.",
+    "read_sets": "The normal argument load reads ESP and its valid incoming stack slot. The seed immediate load reads no memory. Their only outputs are EAX and EDI respectively.",
+    "floating_operations": "The subtraction, double constant load and cosine execute in the same order. They access the x87 state and read two constants at fixed addresses. They do not read EAX or EDI, change ESP, or write the incoming argument slot.",
+    "scope": "Instruction effects commute for normal completion under the game ABI with readable constant and argument memory. A debugger or floating-point exception handler inspecting intermediate general registers could observe their order.",
+    "byte_status": "DIFFER"
+  }
+}

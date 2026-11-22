@@ -1,0 +1,141 @@
+{
+  "bindings": [
+    {
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "target": "0x00429c53",
+      "evidence": "Ego_r 00438DDC is the five-byte dtor body, and FableWin 01ABA8AE calls ReleaseData. The exact native five-byte jump at 00429C53 targets ReleaseData at 004291DE.",
+      "replaces": "0x004291de"
+    },
+    {
+      "symbol": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "target": "0x005f45b5",
+      "evidence": "Ego_r 005832E6 and FableWin 01ECAE7C give the exact original name. The native expressions leaf calls 005F45B5 once per category in the same order as FableWin. The complete emitted 1233-byte category builder matches its native extent after masking operands."
+    },
+    {
+      "symbol": "?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z",
+      "target": "0x00429fbe",
+      "evidence": "The exact list::insert at 0042AADC calls this STLport 4.6 node allocator. At 00429FBE the exact 26-byte object allocates a 12-byte node via malloc, then placement-copies the action parameter pointer at +8."
+    }
+  ],
+  "allocation_control": {
+    "production_status": "IN_PROGRESS",
+    "compiler": "13.10.3077",
+    "unchanged_output_control": "Read-only trace required all emitted function sections and normalized COFF operands to equal the uninstrumented objects.",
+    "selected_grade": "partial_tree_ecee975d2a37_312bb061",
+    "count_reference_diagnostic": "expressions_original_def_scope_countref_direct",
+    "latest_equivalent_leaf": "partial_tree_17db647dc01f_312bb061",
+    "selected": {
+      "zero_references": 67,
+      "zero_priority": 48,
+      "bank_references": 5,
+      "bank_priority": 56
+    },
+    "diagnostic": {
+      "zero_references": 73,
+      "zero_priority": 61,
+      "bank_references": 5,
+      "bank_priority": 56
+    },
+    "bank_priority_block": {
+      "number": 87,
+      "cost": 7,
+      "weight": 1,
+      "referenced_candidates": 8,
+      "operands": [
+        "this",
+        "ptop_list",
+        "string length -1",
+        "rTextBank",
+        "PeekComponent result temporary",
+        "leaf result temporary",
+        "pexpressions_list_component",
+        "zero"
+      ],
+      "priority_delta": 56
+    },
+    "zero_delta_blocks": [
+      {
+        "number": 8,
+        "context": "missing inventory return definition cleanup",
+        "delta": 2
+      },
+      {
+        "number": 24,
+        "context": "first definition cleanup at item loop end",
+        "delta": 3
+      },
+      {
+        "number": 27,
+        "context": "second definition cleanup at item loop end",
+        "delta": 3
+      },
+      {
+        "number": 30,
+        "context": "third definition cleanup at item loop end",
+        "delta": 3
+      },
+      {
+        "number": 98,
+        "context": "final return definition cleanup",
+        "delta": 2
+      }
+    ],
+    "disposition": "The added weight comes from separate explicit zero comparisons after decrement. Retail uses the decrement flags at all five sites, which the selected leaf preserves. The diagnostic changes helper bodies and remains outside the selected source."
+  },
+  "same_unit_original_names": {
+    "sources": [
+      "FableWin debug tc_inventory_abilities.obj 0x43DA8 and 0x40278",
+      "Ego_d complete category and misc-things procedures, 2110 and 693 debug bytes"
+    ],
+    "category_owner": "005f45b5",
+    "category_size": 1233,
+    "original_named_casts": [
+      "01ECAEE2 to CViewport",
+      "01ECB0E6 to CText"
+    ],
+    "reused_ptext_frame_offset": -120,
+    "reused_ptext_assignment_sites": [
+      "01ECB470",
+      "01ECB5B3"
+    ],
+    "misc_owner": "005ee3b3",
+    "misc_size": 101,
+    "misc_operands": [
+      {
+        "offset": 8,
+        "target": "01230018",
+        "symbol": "??_C@_0BD@HLIOEIDB@UI_MISC_THINGS_DEF?$AA@"
+      },
+      {
+        "offset": 16,
+        "target": "0099ebf0",
+        "symbol": "??0CCharString@@QAE@PBDJ@Z"
+      },
+      {
+        "offset": 27,
+        "target": "0044c6b0",
+        "symbol": "?Get@CGameDefinitionManager@@SIAAV1@XZ"
+      },
+      {
+        "offset": 34,
+        "target": "009ad390",
+        "symbol": "?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z"
+      },
+      {
+        "offset": 44,
+        "target": "0099eae0",
+        "symbol": "??1CCharString@@QAE@XZ"
+      },
+      {
+        "offset": 58,
+        "target": "0044c6b0",
+        "symbol": "?Get@CGameDefinitionManager@@SIAAV1@XZ"
+      },
+      {
+        "offset": 65,
+        "target": "0042b312",
+        "symbol": "??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z"
+      }
+    ]
+  }
+}

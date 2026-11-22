@@ -9,7 +9,17 @@
 #include "engine/CBaseClass.h"
 #include "engine/C3DVector.h"
 #include "engine/CVectorMap.h"
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_VECTORKEY_PASS26
+#include <string.h>
+#include "engine/CCRC.h"
+#endif
 namespace NParticleEngine {
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_VECTORKEY_PASS26
+// Original FableWin 0x025F1360 calls strlen, then CCRC::Calc; retail Activate inlines this wrapper.
+inline unsigned long FABLE_FASTCALL MAKE_VECTOR_PARAM_FROM_BASE(unsigned long base, const char* parameter) {
+    return CCRC::Calc(base, parameter, (unsigned long)strlen(parameter));
+}
+#endif
 template <class K, class V> class CParticleUpdateParamCallback;
 template <class K, class V> class CParticleUpdateParamDesc : public CBaseClass {
 public:
@@ -43,7 +53,12 @@ public:
     CParticleUpdateParameters() { }
 #endif
     virtual ~CParticleUpdateParameters();                    // 0x006E2500
+#ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_UPDATE_DECL_PASS26
+    // Original named COMDAT at native 0x0076C750, called by Activate.
+    void Update();
+#else
     void Update() { VectorParams.Update(); UpdateParams.Update(); }
+#endif
 };
 }
 #endif

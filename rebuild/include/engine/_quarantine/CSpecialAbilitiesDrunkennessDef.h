@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSPECIALABILITIESDRUNKENNESSDEF_CLASS_PASS26
+#include "engine/CParentDefClassBase.h"
+// Ego_d complete type 0x1CE69 inherits CParentDefClassBase. Retail fields at 0x3C..0x4C.
+class CSpecialAbilitiesDrunkennessDef : public CParentDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    static CDefClassBase* FABLE_FASTCALL Alloc();
+
+    long DrunkenGraphic;
+    long MaxAlpha;
+    float USpeed;
+    float VSpeed;
+    float RotSpeed;
+};
+FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesDrunkennessDef) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, DrunkenGraphic) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, RotSpeed) == 0x4c);
+#else
 #pragma pack(push, 1)
 class CSpecialAbilitiesDrunkennessDef {
 public:
@@ -32,12 +52,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesDrunkennessDef) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, DrunkenGraphic) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, MaxAlpha) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, USpeed) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, VSpeed) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDrunkennessDef, RotSpeed) == 0x4c);
+FABLE_STATIC_ASSERT_AT(35, sizeof(CSpecialAbilitiesDrunkennessDef) == 0x50);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CSpecialAbilitiesDrunkennessDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CSpecialAbilitiesDrunkennessDef, DrunkenGraphic) == 0x3c);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CSpecialAbilitiesDrunkennessDef, MaxAlpha) == 0x40);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CSpecialAbilitiesDrunkennessDef, USpeed) == 0x44);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CSpecialAbilitiesDrunkennessDef, VSpeed) == 0x48);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CSpecialAbilitiesDrunkennessDef, RotSpeed) == 0x4c);
+
+#endif
 
 #endif // FABLE_ENGINE_CSPECIALABILITIESDRUNKENNESSDEF_H

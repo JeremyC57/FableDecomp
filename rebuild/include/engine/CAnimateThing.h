@@ -8,6 +8,10 @@
 #endif
 class CThing;
 class CAnimateThing {public:
+#ifdef FABLE_RETAIL_CANIMATETHING_CTOR_PASS26
+ // Pass26 native caller0070b418 and both PDBs prove CThing& formal.
+ CAnimateThing(CThing& parent_thing);
+#endif
 #ifdef FABLE_RETAIL_LOOK_HEAD_ANIM
  CAnimSet* GetFirstCombinationAnimFromType(long);
  void AddCombinationAnim(const CAnimInit&,long,long,bool,bool);
@@ -16,7 +20,12 @@ class CAnimateThing {public:
  // Retail opt-in (Codex pass17): both PDBs; donor1E964F0 called in actual helper.
  bool AnimsCanBeIgnored()const;
 #endif
- class CCompleteAnimation{public:CAnimSet MainAnimSet;std::list<CAnimSet> TransitionAnimSets,CombinationAnims;bool MainAnimCanTransitionOut;};
+ class CCompleteAnimation{public:
+#ifdef FABLE_RETAIL_CANIMATETHING_CTOR_PASS26
+ // Original user constructor, called at native0070e717.
+ CCompleteAnimation();
+#endif
+CAnimSet MainAnimSet;std::list<CAnimSet> TransitionAnimSets,CombinationAnims;bool MainAnimCanTransitionOut;};
  class CDelayedAnimation{public:std::list<CAnimSet> CombinationAnims;};
 #ifdef FABLE_RETAIL_CANIMATETHING_UPDATE_CALLEES
  // Opt-in (p25A, row 0x0070E8B0 CAnimateThing::Update): the private members Update calls out of line, Ego_r.pdb / FableWin.pdb
@@ -34,6 +43,10 @@ public:
  // ?PeekMainAnim@CAnimateThing@@QBEABVCAnimSet@@XZ (inline: CurrentAnim.MainAnimSet at +0, so the caller reads [animator+4] for the
  // anim indices), and the out-of-line ?Update@CAnimateThing@@QAEXABVCAnimateThingUpdate@@@Z (Ego_r.pdb / FableWin.pdb, retail 0x0070E8B0).
  CAnimSet& GetMainAnim(){return CurrentAnim.MainAnimSet;}
+#ifdef FABLE_RETAIL_CANIMATETHING_MAINANIMINDEX_PASS26
+ // Both original PDBs; original01d92650 directly indexes the main set Anims.
+ long GetMainAnimIndex()const{return CurrentAnim.MainAnimSet.Anims[0];}
+#endif
  const CAnimSet& PeekMainAnim()const{return CurrentAnim.MainAnimSet;}
  void Update(const CAnimateThingUpdate& update);                       // 0x0070E8B0
 #endif

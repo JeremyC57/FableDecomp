@@ -10,6 +10,10 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
 // ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ, out of line at 0x0049CE00 (landed: Forward x Up) and expanded in
 // PreparePrimitivesForEngine (0x004A1D95..0x004A1E01). FableWin.pdb: GetRight (0x01B409F0) is followed by ??TC3DVector (0x01B40A20).
 class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; }
+#ifdef FABLE_RETAIL_PREDICTIVE_RHS_COPY_PASS26
+    // FableWin 018C4620 constructs Up, then Forward, from the same two source members.
+    CRightHandedSet(const CRightHandedSet& other) : Up(other.Up), Forward(other.Forward) {}
+#endif
     const C3DVector& GetUp() const { return Up; }
 #if defined(FABLE_RETAIL_CRIGHTHANDEDSET_RIGHT_COMPONENTS_GROUPED)
     // Retail opt-in (chunk F1, row 0x00BC2480 CEngineInternalPrimitiveParticleMesh::Update): the component form with all three

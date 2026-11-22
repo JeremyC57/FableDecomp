@@ -123,6 +123,12 @@ public:
     CWorld(const class CWorldInit&);
 #endif
     virtual ~CWorld();                                       // slot 0 (??1CWorld@@UAE@XZ 0x004A6AB0)
+#ifdef FABLE_RETAIL_CWORLD_QUEST_COMPLETION_SAVE_PASS26
+    // Both PDBs and native 0x004A0AE0 / 0x0049E740. FableWin setter 0x018A3AE0.
+    bool AutoSave(bool force_regular_auto_save);
+    static void FABLE_FASTCALL DeleteCheckPointSave();
+    void SetAutoSaveCheckPointExists(bool exists) { AutoSaveCheckPointExists = exists; }
+#endif
 #ifdef FABLE_RETAIL_CWORLD_CONSOLESETFREECAMERALOOKVECTOR
     // Opt-in (hand2b_more, row 0x0049ED80): Ego_r.pdb / FableWin.pdb
     // ?ConsoleSetFreeCameraLookVector@CWorld@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z (protected static

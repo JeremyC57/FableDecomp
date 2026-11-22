@@ -13,11 +13,18 @@ public:
  const unsigned char* GetHiddenMaterials(const C3DMesh2&);
  // Both original PDB signatures and native00BA1490 call00BEC8D0; existing binding agrees.
  void InitialiseHiddenMaterials(const C3DMesh2&);
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_DECALS_PASS26
+ // Both original PDBs; original02ee4700 and native00becde0 are the same three-phase rebuild.
+ void InitialiseTextureDecals(const std::vector<CEngineTextureDecal>& texture_decals);
+#endif
  CVectorMap<std::pair<long,long>,CEngineTextureDecal> TextureDecals;
  CVectorMap<long,CCompositeSurfaceInfo> CompositeSurfaces;
  std::set<CCharString> HiddenMaterialNames;
  CArray<unsigned char> HiddenMaterials;
 };
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEMORPHINFO_DECALS_PASS26
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveMorphInfo)==0x38);
+#endif
 #else
 // CEngineInternalPrimitiveMorphInfo (Ego_r.pdb / FableWin.pdb), moved out of agentC22's engine/CEngineInternalPrimitiveMorphedStaticMesh.h
 // unchanged (wfA6b) so the morphed animated-mesh headers can share it without pulling CEngineInternalPrimitiveStaticMesh.h (its

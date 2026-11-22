@@ -6,6 +6,10 @@
 #include "rebuild_abi.h"
 struct CPreTransposedBoneMatrix {
     CPreTransposedBoneMatrix() { }
+#ifdef FABLE_RETAIL_CPRETRANSPOSEDBONEMATRIX_ZSPRITE_CONSTRUCTOR
+    // FableWin 0x02ED7600 delegates to Set with the original matrix.
+    CPreTransposedBoneMatrix(const class CMatrix3x4& matrix) { Set(matrix); }
+#endif
 #ifdef FABLE_RETAIL_CPRETRANSPOSEDBONEMATRIX_SET
     // Overlay opt-in (row 0x00BAA870): Ego_r.pdb ?Set@CPreTransposedBoneMatrix@@QAEXABVCMatrix3x4@@@Z (landed out of line at 0x00987F70).
     void Set(const class CMatrix3x4& matrix);                            // 0x00987F70

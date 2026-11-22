@@ -39,6 +39,12 @@ class CDateAndTime;class CBankStateBlock;class CDataOutputStream;class CBankFile
 #include "engine/CCountedPointer.h"
 class CBankStateBlock;
 #endif
+#ifdef FABLE_RETAIL_BANKFILE_INDEX_UPDATE_PASS26
+#include "engine/CVectorMap.h"
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
+class CFileDataInputStream;
+#endif
 class CBankFileEntryDependencies;
 class CCPPointerInfo;
 class CCharStringData;
@@ -104,6 +110,18 @@ public:
         bool Valid;
         unsigned char _pad_0xa[0x2];
     };
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_GETSIZE_PASS26
+public:
+    // FableWin 0x02D96070 and donor composition call. Retail 0x00B2BA00 reads Size.
+    long GetSize() const { return Size; }
+#endif
+#ifdef FABLE_RETAIL_CBANKFILE_READENTRIES_PASS26
+private:
+    bool ReadEntryList(CFileDataInputStream& is,unsigned long max_index,unsigned long entry_count);
+    void PostInitEntries();
+public:
+    long GetSize() const { return Size; }
 #endif
     unsigned long               Size;                        // +0x04
 #ifdef FABLE_RETAIL_CBANKFILE_FILENAMEINDICES
@@ -183,7 +201,11 @@ public:
 #else
     unsigned char               FilenameIndices[0xc];        // +0xc4 multimap<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>_>
 #endif
+#ifdef FABLE_RETAIL_BANKFILE_INDEX_UPDATE_PASS26
+    CVectorMap<unsigned long,unsigned long> SymbolCRCIndices;
+#else
     unsigned char               SymbolCRCIndices[0x10];      // +0xd0 CVectorMap<unsigned_long,unsigned_long,CKeyPairCompareLess<unsigned_long,unsigned_long>_>
+#endif
     unsigned char               BlockOrder[0xc];             // +0xe0 CArray<unsigned_long>
     CProgressCallback*          ProgressCallback;            // +0xec
     CCharStringData*            HeaderEnumerationType_PStringData; // +0xf0 CCharString::PStringData

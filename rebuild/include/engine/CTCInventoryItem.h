@@ -49,6 +49,10 @@ class CWideString; class CRightHandedSet;
 class CTCInventoryItem : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
+#ifdef FABLE_RETAIL_GIVE_ITEM_ACTION_PASS26
+    NInventory::CTCInventoryBase* GetPInventory() const { return PInventory; }
+    void RemoveFromInventory();
+#endif
     void ReturnToInventory();                                 // 0x005D8E50
 #ifdef FABLE_RETAIL_CTCINVENTORYITEM_INVENTORYCATEGORY_MEMBER
     // NF92 opt-in (round 7, q11215 binder row 0x005BF654 NInventory::CTCInventoryBase::AddItemToInventory(CThing&, ..)): Ego_r.pdb (0x0055A140) +

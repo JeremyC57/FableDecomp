@@ -8,6 +8,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTCKRAKENTENTACLE_TRACK_PASS26
+#include "engine/CSubDefClassBase.h"
+// Retail RTTI 0123DA24 names the primary CSubDefClassBase. The native accesses and
+// Ego_r agree on 28h..5Ch for all fourteen fields.
+class CKrakenTentacleDef : public CSubDefClassBase {
+public:
+    float         TentacleSmackDownTime;                     // +0x28
+    float         TentacleTurnSpeed;                         // +0x2c
+    float         TentacleMoveSpeed;                         // +0x30
+    float         TentacleStrikeAngleTolerence;              // +0x34
+    float         TentacleStrikeDistTolerence;               // +0x38
+    float         TentacleHeightOffset;                      // +0x3c
+    float         TentacleTimeBeforeExplosion;               // +0x40
+    float         TentacleTimeBetweenAttacks;                // +0x44
+    float         TentacleTimeBeforeObstructionRemoval;      // +0x48
+    float         TentacleObstructionRadius;                 // +0x4c
+    float         TentacleExplosionBodgeAngle;               // +0x50
+    float         TentacleExplosionRadius;                   // +0x54
+    float         TentacleObstructionRadiusMin;              // +0x58
+    float         TentacleObstructionRadiusMax;              // +0x5c
+};
+#else
 #pragma pack(push, 1)
 class CKrakenTentacleDef {
 public:
@@ -38,21 +60,22 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CKrakenTentacleDef) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleSmackDownTime) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleTurnSpeed) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleMoveSpeed) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleStrikeAngleTolerence) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleStrikeDistTolerence) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleHeightOffset) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleTimeBeforeExplosion) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleTimeBetweenAttacks) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleTimeBeforeObstructionRemoval) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleObstructionRadius) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleExplosionBodgeAngle) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleExplosionRadius) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleObstructionRadiusMin) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CKrakenTentacleDef, TentacleObstructionRadiusMax) == 0x5c);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CKrakenTentacleDef) == 0x60);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CKrakenTentacleDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CKrakenTentacleDef, TentacleSmackDownTime) == 0x28);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CKrakenTentacleDef, TentacleTurnSpeed) == 0x2c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CKrakenTentacleDef, TentacleMoveSpeed) == 0x30);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CKrakenTentacleDef, TentacleStrikeAngleTolerence) == 0x34);
+FABLE_STATIC_ASSERT_AT(47, offsetof(CKrakenTentacleDef, TentacleStrikeDistTolerence) == 0x38);
+FABLE_STATIC_ASSERT_AT(48, offsetof(CKrakenTentacleDef, TentacleHeightOffset) == 0x3c);
+FABLE_STATIC_ASSERT_AT(49, offsetof(CKrakenTentacleDef, TentacleTimeBeforeExplosion) == 0x40);
+FABLE_STATIC_ASSERT_AT(50, offsetof(CKrakenTentacleDef, TentacleTimeBetweenAttacks) == 0x44);
+FABLE_STATIC_ASSERT_AT(51, offsetof(CKrakenTentacleDef, TentacleTimeBeforeObstructionRemoval) == 0x48);
+FABLE_STATIC_ASSERT_AT(52, offsetof(CKrakenTentacleDef, TentacleObstructionRadius) == 0x4c);
+FABLE_STATIC_ASSERT_AT(53, offsetof(CKrakenTentacleDef, TentacleExplosionBodgeAngle) == 0x50);
+FABLE_STATIC_ASSERT_AT(54, offsetof(CKrakenTentacleDef, TentacleExplosionRadius) == 0x54);
+FABLE_STATIC_ASSERT_AT(55, offsetof(CKrakenTentacleDef, TentacleObstructionRadiusMin) == 0x58);
+FABLE_STATIC_ASSERT_AT(56, offsetof(CKrakenTentacleDef, TentacleObstructionRadiusMax) == 0x5c);
 
+#endif
 #endif // FABLE_ENGINE_CKRAKENTENTACLEDEF_H

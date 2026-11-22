@@ -30,12 +30,20 @@ protected:
 #else
     unsigned char PAnimFilter[8]; // +d0 CCountedPointer<CAnimFilterBase>, ctor835c55/835c5b
 #endif
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_KILLER_PASS26
+    CIntelligentPointer<const CThingCreatureBase> PKiller; // Original field and type, native +0xD8.
+#else
     unsigned char PKiller[8]; // +d8 CIntelligentPointer<const CThingCreatureBase>, ctor835c4d/835c66
+#endif
     long BodyDieTimer; // +e0, original member between the two known composites
     unsigned char BodyReorienter[4]; // +e4 boost::scoped_ptr<CThingBodyReorienter>, ctor835c6c
     bool StartedDecay; // +e8, ctor835c73
     unsigned char _pad_0xe9[7];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGDEADCREATURE_KILLER_PASS26
+    // Original FableWin 0x02B6E390 calls the intelligent-pointer accessor on PKiller.
+    const CThingCreatureBase* GetKiller() const { return PKiller.Get(); }
+#endif
 #ifdef FABLE_RETAIL_CTHINGDEADCREATURE_GETANIMATIONFILTER
     // Opt-in (chunk 2053, row 0x0087F3A0): FableWin.pdb ?GetAnimationFilter@CThingDeadCreature@@QBEAAVCAnimFilterBase@@XZ (debug copy
     // 0x02878DD0, listed right after CCombatAction_KickThingOnGround::PerformAction: its first user; no Ego_r.pdb / Fable.exe copy: the

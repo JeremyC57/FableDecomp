@@ -30,6 +30,14 @@ class CEngineLayerRenderer;
 #endif
 class CEngine : public CIEngine, public CDeviceResetCallback {
 public:
+#ifdef FABLE_RETAIL_CENGINE_RENDER_PASS26
+    virtual void Render(const CEngineInterpolationInfo& interpolation, unsigned long render_flags);
+private:
+    void UpdateOffGameTickProcessInfo(bool);
+    void LoadNewScene(const CEngineInterpolationInfo&);
+    void RenderFrame(const CEngineInterpolationInfo&);
+public:
+#endif
     virtual bool Initialise(const CEngineInit& init);                    // slot 2 0x00B26360 ?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
     virtual void OnPreDeviceReset();                                     // 0x00B26010 ?OnPreDeviceReset@CEngine@@UAEXXZ
     virtual bool OnPostDeviceReset();                                    // 0x00B25D00 ?OnPostDeviceReset@CEngine@@UAE_NXZ

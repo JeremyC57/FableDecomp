@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00baa460	?GetTransitionFade@CEngineInternalPrimitiveRepeatedZSprite@@QBE?AVCEngineFadeDistance@@XZ	Ego_r 0x00A60BF0 and FableWin 0x02ED27B0. The original procedure and the complete fresh native helper comparison identify the true owning class.	?GetTransitionFade@CEngineInternalPrimitiveRepeatedZSprite_Methods@@QBE?AVCEngineFadeDistance@@XZ
+00987f70	?Set@CPreTransposedBoneMatrix@@QAEXABVCMatrix3x4@@@Z	Ego_r 0x00AE45D0 and FableWin 0x0302F940. FableWin constructor 0x02ED7600 delegates to Set. Retail call site 0x00BAB2FB.	-
+00b8b780	?RenderBillboard@CEngineBillboardGenerator@@QAEXPBVC3DMesh2@@PAVCEngineBillboard@@MMJ@Z	Ego_r 0x00A32CA0 and FableWin 0x02DBE530. Donor call +0x145 corresponds to retail call 0x00BAA9A4 and the landed label.	-

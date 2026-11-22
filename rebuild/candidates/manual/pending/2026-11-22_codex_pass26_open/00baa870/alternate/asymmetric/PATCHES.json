@@ -1,0 +1,7 @@
+[
+  {
+    "path": "engine/C2DBoxF.h",
+    "old_text": " float GetWidth() const { return BRX-TLX; }\n float GetHeight() const { return BRY-TLY; }",
+    "new_text": "#ifdef FABLE_RETAIL_C2DBOXF_VIEWPORT_WIDTH_TEMPORARY_CONTROL_PASS26\n // Diagnostic control selects one extent. Both original extents use float scratch storage in Ego_r.\n float GetWidth() const { return static_cast<const float&>(BRX - TLX); }\n float GetHeight() const { return BRY-TLY; }\n#else\n float GetWidth() const { return BRX-TLX; }\n float GetHeight() const { return BRY-TLY; }\n#endif // FABLE_RETAIL_C2DBOXF_VIEWPORT_WIDTH_TEMPORARY_CONTROL_PASS26"
+  }
+]

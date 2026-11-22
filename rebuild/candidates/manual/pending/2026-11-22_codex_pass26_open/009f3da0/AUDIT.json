@@ -1,0 +1,272 @@
+{
+  "row": "009f3da0",
+  "build_tag": "spell21_portable_lock_owner",
+  "result": {
+    "row": "009f3da0",
+    "tag": "spell21_portable_lock_owner",
+    "source_sha256": "c32d883ff28d2d692db5e26e34666ff4382240324827d6b9a920c2bab3a5e5a0",
+    "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "flags": [],
+    "retail_bytes": 582,
+    "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 582,
+    "matched_instructions": 194,
+    "retail_instructions": 194,
+    "built_instructions": 194,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 5,
+    "pickany_neq": 2,
+    "pickany_referenced_neq": 0
+  },
+  "relocations": [
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 127,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 141,
+      "symbol": "?GD3DFormats@@3QBVCD3DFormatInfo@@B",
+      "retail": "0x0129BA40",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 159,
+      "symbol": "??_7CSurface@@6B@",
+      "retail": "0x0122F84C",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 182,
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "retail": "0x009F33E0",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 216,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 272,
+      "symbol": "?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z",
+      "retail": "0x009F3230",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 286,
+      "symbol": "?CopyFromSurface@CSurface@@QAEXPBVC2DBoxI@@ABV1@0K@Z",
+      "retail": "0x009F37E0",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 301,
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "retail": "0x009F33E0",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+      "offset": 563,
+      "symbol": "??_7CSurface@@6B@",
+      "retail": "0x0122F84C",
+      "addend": 0,
+      "verified_by": "binding table"
+    },
+    {
+      "owner": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+      "offset": 30,
+      "symbol": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+      "retail": "0x009E3830",
+      "addend": 0,
+      "verified_by": "binding table"
+    }
+  ],
+  "local_branches": [
+    {
+      "site": "009f3db8",
+      "target": "009f3dec"
+    },
+    {
+      "site": "009f3dea",
+      "target": "009f3dfb"
+    },
+    {
+      "site": "009f3e4b",
+      "target": "009f3e69"
+    },
+    {
+      "site": "009f3e67",
+      "target": "009f3ede"
+    },
+    {
+      "site": "009f3efe",
+      "target": "009f3f91"
+    },
+    {
+      "site": "009f3f19",
+      "target": "009f3f73"
+    },
+    {
+      "site": "009f3f2b",
+      "target": "009f3f30"
+    },
+    {
+      "site": "009f3f65",
+      "target": "009f3f30"
+    },
+    {
+      "site": "009f3f8f",
+      "target": "009f3f11"
+    },
+    {
+      "site": "009f3f97",
+      "target": "009f3fa8"
+    },
+    {
+      "site": "009f3fa6",
+      "target": "009f3fca"
+    },
+    {
+      "site": "009f3fb8",
+      "target": "009f3fca"
+    },
+    {
+      "site": "009f3fd8",
+      "target": "009f3fe0"
+    }
+  ],
+  "indirect_calls": [
+    {
+      "site": "009f3dcb",
+      "slot": 48,
+      "identity": "IDirect3DSurface9::GetDesc"
+    },
+    {
+      "site": "009f3de0",
+      "slot": 48,
+      "identity": "IDirect3DSurface9::GetDesc"
+    },
+    {
+      "site": "009f3e12",
+      "slot": 48,
+      "identity": "IDirect3DSurface9::GetDesc"
+    },
+    {
+      "site": "009f3e87",
+      "slot": 48,
+      "identity": "IDirect3DSurface9::GetDesc"
+    },
+    {
+      "site": "009f3f9f",
+      "slot": 56,
+      "identity": "IDirect3DSurface9::UnlockRect"
+    },
+    {
+      "site": "009f3faf",
+      "slot": 56,
+      "identity": "IDirect3DSurface9::UnlockRect"
+    },
+    {
+      "site": "009f3fbd",
+      "slot": 8,
+      "identity": "IDirect3DSurface9::Release"
+    },
+    {
+      "site": "009f3fdd",
+      "slot": 8,
+      "identity": "IDirect3DSurface9::Release"
+    }
+  ],
+  "lock_branches": [
+    {
+      "site": "009f342b",
+      "target": "009f344e"
+    }
+  ],
+  "lock_indirect_calls": [
+    {
+      "site": "009f33f4",
+      "slot": 48,
+      "identity": "IDirect3DSurface9::GetDesc"
+    },
+    {
+      "site": "009f3426",
+      "slot": 52,
+      "identity": "IDirect3DSurface9::LockRect"
+    }
+  ],
+  "helpers": [
+    {
+      "symbol": "?Uninitialise@CSurface@@QAEXXZ",
+      "address": "009f2e20",
+      "bytes": 32,
+      "status": "EQ",
+      "referenced_as_relocation": false
+    },
+    {
+      "symbol": "?GetDimensions@CSurface@@QBE?AVC2DExtentsI@@XZ",
+      "address": "009f2f90",
+      "bytes": 39,
+      "status": "EQ",
+      "referenced_as_relocation": false
+    },
+    {
+      "symbol": "?GetWidth@CSurface@@QBEKXZ",
+      "address": "00415bd0",
+      "bytes": 24,
+      "status": "NEQ",
+      "referenced_as_relocation": false
+    },
+    {
+      "symbol": "?GetHeight@CSurface@@QBEKXZ",
+      "address": "00415bf0",
+      "bytes": 24,
+      "status": "NEQ",
+      "referenced_as_relocation": false
+    },
+    {
+      "symbol": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+      "address": "009f2f60",
+      "bytes": 43,
+      "status": "EQ",
+      "referenced_as_relocation": false
+    },
+    {
+      "symbol": "?Unlock@CSurface@@QBEXXZ",
+      "address": "009f2dc0",
+      "bytes": 10,
+      "status": "EQ",
+      "referenced_as_relocation": false
+    },
+    {
+      "symbol": "?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z",
+      "address": "009f33e0",
+      "bytes": 141,
+      "status": "EQ",
+      "referenced_as_relocation": true
+    }
+  ],
+  "limitations": "GetWidth and GetHeight inline copies are unreferenced by the leaf and differ from their out-of-line owners. Both differences were already present in the transported baseline."
+}

@@ -1,0 +1,49 @@
+{
+  "original": {
+    "test_sha256": "ec38d635b3d441154b33e7cda7f4742fc0bd8125e9127fb1380abab4b2c9d633",
+    "compiler": "13.10.3077",
+    "test_flags": [
+      "/Od",
+      "/W3",
+      "/GR-"
+    ],
+    "output": "009f3da0_TEST PASS",
+    "portable_cxx03": [
+      "-std=c++03",
+      "-pedantic-errors"
+    ],
+    "portable_output": "009f3da0_TEST PASS",
+    "body_sha256": "1776f2531693193b50abdd0d65cf14f7da06e6aaa3b7a1648273a34b37ad3e67"
+  },
+  "expanded_extent_diagnostic": {
+    "test_sha256": "3c58ff6eea4c5cf71791a0294d7ea632c6c3b7816e90d2a69be7ef7a66c66d3e",
+    "compiler": "13.10.3077",
+    "test_flags": [
+      "/Od",
+      "/W3",
+      "/GR-"
+    ],
+    "output": "009f3da0_TEST PASS",
+    "portable_cxx03": [
+      "-std=c++03",
+      "-pedantic-errors"
+    ],
+    "portable_output": "009f3da0_TEST PASS",
+    "body_sha256": "12c22e5f7d1b3875a2525e9ffc8a3fbd117a26c8be633340d68f6a7c2ce29e10"
+  },
+  "separated_original_owner": {
+    "owner_source_sha256": "c14a99e977e85716964e74c9df23efb30922f4a5b1b9932fc27f763769dc0153",
+    "test_sha256": "0143259a8a0c0c435b20fe3b6b14f1239b6bad900b163246a730f429180d02d2",
+    "compiler": "13.10.3077",
+    "flags": [
+      "/Od",
+      "/W3",
+      "/GR-"
+    ],
+    "results": {
+      "retail_release": "009f3da0_OWNER_TEST PASS",
+      "donor_release": "009f3da0_OWNER_TEST PASS",
+      "portable": "009f3da0_OWNER_TEST PASS"
+    }
+  }
+}

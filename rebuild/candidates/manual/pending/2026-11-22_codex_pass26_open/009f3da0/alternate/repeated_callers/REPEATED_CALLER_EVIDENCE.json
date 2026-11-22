@@ -1,0 +1,918 @@
+{
+  "diagnostic": true,
+  "header_tree": "17db647dc01f",
+  "debug_library_extent_edges": [
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::GetPitch",
+      "caller_va": "030c5f40",
+      "call_va": "030c5f62",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c6790",
+      "call_va": "030c67da",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c6790",
+      "call_va": "030c680a",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CanDoProperSignedConversion",
+      "caller_va": "030c6d80",
+      "call_va": "030c6df4",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CanDoProperSignedConversion",
+      "caller_va": "030c6d80",
+      "call_va": "030c6e08",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CanDoProperSignedConversion",
+      "caller_va": "030c6d80",
+      "call_va": "030c6e3b",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CanDoProperSignedConversion",
+      "caller_va": "030c6d80",
+      "call_va": "030c6e4f",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromUnsignedDataToSignedSurface",
+      "caller_va": "030c7370",
+      "call_va": "030c74f0",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromUnsignedDataToSignedSurface",
+      "caller_va": "030c7370",
+      "call_va": "030c7525",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c7c4d",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c7c59",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c7e22",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c7e32",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c82c5",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c82d5",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c82f1",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c8301",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemory",
+      "caller_va": "030c7bc0",
+      "call_va": "030c84a8",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c880e",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c881a",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c89e3",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c89f3",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c8d09",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c8d19",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c8d35",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c8d45",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c8d86",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyFromMemory",
+      "caller_va": "030c8780",
+      "call_va": "030c8d93",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemoryB8G8R8A8",
+      "caller_va": "030c9020",
+      "call_va": "030c9066",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::CopyToMemoryB8G8R8A8",
+      "caller_va": "030c9020",
+      "call_va": "030c9074",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::SetPixel",
+      "caller_va": "030c9bb0",
+      "call_va": "030c9bea",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::SetPixel",
+      "caller_va": "030c9bb0",
+      "call_va": "030c9d09",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030c9fb1",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030c9fbe",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030c9fd8",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030c9fe5",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030c9fff",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030ca00c",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030ca026",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::ClearArea",
+      "caller_va": "030c9f70",
+      "call_va": "030ca033",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::SaveAsTGA",
+      "caller_va": "030ca140",
+      "call_va": "030ca16a",
+      "target_va": "018a67f0",
+      "callee": "CSurface::GetHeight"
+    },
+    {
+      "owner": ".\\Debug\\lib_surface.obj",
+      "caller": "CSurface::SaveAsTGA",
+      "caller_va": "030ca140",
+      "call_va": "030ca176",
+      "target_va": "018a67c0",
+      "callee": "CSurface::GetWidth"
+    }
+  ],
+  "Ego_r_library_extent_edges": {
+    "CSurface::CanDoProperSignedConversion": [
+      {
+        "site": "00b47361",
+        "target": "00414f90",
+        "name": "GetHeight"
+      }
+    ],
+    "CSurface::CopyFromMemory": [
+      {
+        "site": "00b4791f",
+        "target": "00414f90",
+        "name": "GetHeight"
+      },
+      {
+        "site": "00b47938",
+        "target": "00414f70",
+        "name": "GetWidth"
+      },
+      {
+        "site": "00b47943",
+        "target": "00414f90",
+        "name": "GetHeight"
+      }
+    ]
+  },
+  "retail_library_extent_edges": {
+    "CSurface::CanDoProperSignedConversion": [
+      {
+        "site": "009f364d",
+        "target": "00415bf0",
+        "name": "GetHeight"
+      },
+      {
+        "site": "009f366d",
+        "target": "00415bd0",
+        "name": "GetWidth"
+      },
+      {
+        "site": "009f3679",
+        "target": "00415bf0",
+        "name": "GetHeight"
+      }
+    ]
+  },
+  "original_debug_dimensions": {
+    "compiler_profile": "/Od",
+    "native_address": "030c5db0",
+    "compiland": "lib_surface.obj",
+    "source": "lib_surface.cpp",
+    "native_bytes": 254,
+    "statements": [
+      {
+        "line": 159,
+        "address": "030c5dd5",
+        "detail": "GetDesc indirect COM call and HRESULT hr initialization."
+      },
+      {
+        "line": 160,
+        "address": "030c5df0",
+        "detail": "Debug Direct3D error check, ending at 030c5e8a."
+      },
+      {
+        "line": 162,
+        "address": "030c5e8b",
+        "detail": "Construct the returned C2DExtentsI from desc.Width and desc.Height."
+      }
+    ]
+  },
+  "selected_controls": {
+    "repeat_signed_original_order": {
+      "leaf_grade": {
+        "row": "009f3da0",
+        "tag": "repeat_signed_original_order",
+        "source_sha256": "ce96d6f9c21422e62b3440e9a3f00f643942912b54314f351f874a78563416c6",
+        "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "flags": [],
+        "retail_bytes": 582,
+        "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "status": "MASKED_EQUAL",
+        "object_bytes": 582,
+        "matched_instructions": 194,
+        "retail_instructions": 194,
+        "built_instructions": 194,
+        "hunks": 0,
+        "same_size_different_bytes": 0,
+        "pickany_complete": true,
+        "pickany_eq": 6,
+        "pickany_neq": 2,
+        "pickany_referenced_neq": 0
+      },
+      "signed_sibling": {
+        "entry": "009f35d0",
+        "bytes": 271,
+        "masked_exact": true,
+        "operands": [
+          {
+            "site": "009f35ef",
+            "name": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+            "target": "009e3830"
+          },
+          {
+            "site": "009f35f8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3607",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f364d",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f366d",
+            "name": "?GetWidth@CSurface@@QBEKXZ",
+            "target": "00415bd0"
+          },
+          {
+            "site": "009f3679",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f3685",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3690",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          },
+          {
+            "site": "009f36a1",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36a8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f36b8",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36bf",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          }
+        ]
+      },
+      "object_extents": {
+        "GetWidth": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        },
+        "GetHeight": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        }
+      }
+    },
+    "repeat_signed_release_profile": {
+      "leaf_grade": {
+        "row": "009f3da0",
+        "tag": "repeat_signed_release_profile",
+        "source_sha256": "ce96d6f9c21422e62b3440e9a3f00f643942912b54314f351f874a78563416c6",
+        "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "flags": [
+          "/Ox",
+          "/Ob2",
+          "/Oi",
+          "/Ot",
+          "/Oy",
+          "/GT",
+          "/Gr",
+          "/GR"
+        ],
+        "retail_bytes": 582,
+        "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "status": "MASKED_EQUAL",
+        "object_bytes": 582,
+        "matched_instructions": 194,
+        "retail_instructions": 194,
+        "built_instructions": 194,
+        "hunks": 0,
+        "same_size_different_bytes": 0,
+        "pickany_complete": true,
+        "pickany_eq": 6,
+        "pickany_neq": 2,
+        "pickany_referenced_neq": 0
+      },
+      "signed_sibling": {
+        "entry": "009f35d0",
+        "bytes": 271,
+        "masked_exact": true,
+        "operands": [
+          {
+            "site": "009f35ef",
+            "name": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+            "target": "009e3830"
+          },
+          {
+            "site": "009f35f8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3607",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f364d",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f366d",
+            "name": "?GetWidth@CSurface@@QBEKXZ",
+            "target": "00415bd0"
+          },
+          {
+            "site": "009f3679",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f3685",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3690",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          },
+          {
+            "site": "009f36a1",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36a8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f36b8",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36bf",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          }
+        ]
+      },
+      "object_extents": {
+        "GetWidth": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        },
+        "GetHeight": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        }
+      }
+    },
+    "repeat_full_original_order": {
+      "leaf_grade": {
+        "row": "009f3da0",
+        "tag": "repeat_full_original_order",
+        "source_sha256": "e08ddeb56845af601637a23bf5f4fa8237f66730b5a19e569dada6430d618e72",
+        "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "flags": [],
+        "retail_bytes": 582,
+        "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "status": "MASKED_EQUAL",
+        "object_bytes": 582,
+        "matched_instructions": 194,
+        "retail_instructions": 194,
+        "built_instructions": 194,
+        "hunks": 0,
+        "same_size_different_bytes": 0,
+        "pickany_complete": true,
+        "pickany_eq": 7,
+        "pickany_neq": 3,
+        "pickany_referenced_neq": 0
+      },
+      "signed_sibling": {
+        "entry": "009f35d0",
+        "bytes": 271,
+        "masked_exact": true,
+        "operands": [
+          {
+            "site": "009f35ef",
+            "name": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+            "target": "009e3830"
+          },
+          {
+            "site": "009f35f8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3607",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f364d",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f366d",
+            "name": "?GetWidth@CSurface@@QBEKXZ",
+            "target": "00415bd0"
+          },
+          {
+            "site": "009f3679",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f3685",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3690",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          },
+          {
+            "site": "009f36a1",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36a8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f36b8",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36bf",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          }
+        ]
+      },
+      "object_extents": {
+        "GetWidth": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        },
+        "GetHeight": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        }
+      }
+    },
+    "repeat_native_plain_dimensions": {
+      "leaf_grade": {
+        "row": "009f3da0",
+        "tag": "repeat_native_plain_dimensions",
+        "source_sha256": "74388c6a7726ab04ae8be871dbc33a35490b6c85a1fdc93309c431be352fc948",
+        "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "flags": [],
+        "retail_bytes": 582,
+        "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "status": "MASKED_EQUAL",
+        "object_bytes": 582,
+        "matched_instructions": 194,
+        "retail_instructions": 194,
+        "built_instructions": 194,
+        "hunks": 0,
+        "same_size_different_bytes": 0,
+        "pickany_complete": true,
+        "pickany_eq": 7,
+        "pickany_neq": 3,
+        "pickany_referenced_neq": 0
+      },
+      "signed_sibling": {
+        "entry": "009f35d0",
+        "bytes": 271,
+        "masked_exact": true,
+        "operands": [
+          {
+            "site": "009f35ef",
+            "name": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+            "target": "009e3830"
+          },
+          {
+            "site": "009f35f8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3607",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f364d",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f366d",
+            "name": "?GetWidth@CSurface@@QBEKXZ",
+            "target": "00415bd0"
+          },
+          {
+            "site": "009f3679",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f3685",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3690",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          },
+          {
+            "site": "009f36a1",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36a8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f36b8",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36bf",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          }
+        ]
+      },
+      "object_extents": {
+        "GetWidth": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        },
+        "GetHeight": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        }
+      }
+    },
+    "repeat_native_plain_dimensions_late": {
+      "leaf_grade": {
+        "row": "009f3da0",
+        "tag": "repeat_native_plain_dimensions_late",
+        "source_sha256": "502f29f752a0da7a935b28b6f5032efd06e16694b0ed2d30c78c89d57a911ab5",
+        "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "flags": [],
+        "retail_bytes": 582,
+        "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+        "status": "MASKED_EQUAL",
+        "object_bytes": 582,
+        "matched_instructions": 194,
+        "retail_instructions": 194,
+        "built_instructions": 194,
+        "hunks": 0,
+        "same_size_different_bytes": 0,
+        "pickany_complete": true,
+        "pickany_eq": 7,
+        "pickany_neq": 3,
+        "pickany_referenced_neq": 0
+      },
+      "signed_sibling": {
+        "entry": "009f35d0",
+        "bytes": 271,
+        "masked_exact": true,
+        "operands": [
+          {
+            "site": "009f35ef",
+            "name": "?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z",
+            "target": "009e3830"
+          },
+          {
+            "site": "009f35f8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3607",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f364d",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f366d",
+            "name": "?GetWidth@CSurface@@QBEKXZ",
+            "target": "00415bd0"
+          },
+          {
+            "site": "009f3679",
+            "name": "?GetHeight@CSurface@@QBEKXZ",
+            "target": "00415bf0"
+          },
+          {
+            "site": "009f3685",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f3690",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          },
+          {
+            "site": "009f36a1",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36a8",
+            "name": "?IsSigned@CPixelFormat@@QBE_NXZ",
+            "target": "009e3970"
+          },
+          {
+            "site": "009f36b8",
+            "name": "?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ",
+            "target": "009f2f60"
+          },
+          {
+            "site": "009f36bf",
+            "name": "?GetByteColourDepth@CPixelFormat@@QBEKXZ",
+            "target": "009e3800"
+          }
+        ]
+      },
+      "object_extents": {
+        "GetWidth": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        },
+        "GetHeight": {
+          "object_bytes": 24,
+          "direct_operands": 0
+        }
+      }
+    }
+  },
+  "interpretation": "Different calls in original caller context may leave the outer extent accessor as a call. The reproduced exact 271-byte sibling contains those calls while the exact 582-byte leaf expands the named accessors. Those different caller decisions coexist in one object, but the object still emits both getters with the 24-byte bodies. The native executable instead selects the 18- and 19-byte wrappers from main_game_component.obj."
+}

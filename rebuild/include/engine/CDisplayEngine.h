@@ -41,6 +41,11 @@ class CWorld;
 #pragma pack(push, 1)
 class CDisplayEngine {
 public:
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW_PASS26
+    // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb ?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ,
+    // out of line at 0x00434B50 (the row passes a hidden result slot: `push eax ; call 0x00434B50`). Declaration only, no layout change.
+    class C2DBoxF GetMainWindow() const;                                // 0x00434B50
+#endif // FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW_PASS26
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_RECEIVEFEEDBACKGAMEEVENT
     // NF56 opt-in (rows 0x00434A30 and its caller 0x0041649C CMainGameComponent::AddGameEvent): Ego_r.pdb 0x00446820 / FableWin.pdb 0x01ADE350
     // ?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z (public), out of line in retail at 0x00434A30. Declaration only.
@@ -148,6 +153,10 @@ public:
     // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.
     CIEngine& Get3DEngine() { return *Engine3D; }
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_RENDERING_NORMAL_PASS26
+    // Ego_r 0x00446B60 and FableWin 0x01ADDD70. The latter returns !IsScreenFadeOut(), as does retail 0x00434D60.
+    bool IsRenderingNormalScene() const;
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_DORENDER_BODY
     // Ego_r.pdb / FableWin.pdb names. Public: SetAboutToRun 0x00434CD0 / EndScreenFadeOut 0x00434C90 (?..@CDisplayEngine@@QAEXXZ, landed),
     // the inline ?IsInitialFadeActive@ / ?IsRenderingNormalScene@ / ?IsLetterBoxMode@CDisplayEngine@@QBE_NXZ (bytes tested in place in
@@ -160,7 +169,9 @@ public:
     void SetAboutToRun();                                                // 0x00434CD0
     void EndScreenFadeOut();                                             // 0x00434C90
     bool IsInitialFadeActive() const { return InitialFadeActive; }
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_RENDERING_NORMAL_PASS26
     bool IsRenderingNormalScene() const { return DrawGame; }
+#endif
 #ifndef FABLE_RETAIL_CDISPLAYENGINE_ISLETTERBOXMODE
     bool IsLetterBoxMode() const { return LetterBox.Active; }
 #endif

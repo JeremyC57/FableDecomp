@@ -5,6 +5,10 @@
 // TriggerRadius, EnvironmentDef, TimeToChangeEnvironmentDef, Triggered, TriggerableObjectScriptName, TimesTriggered; native allocation52ace0.
 class CThingSwitch:public CThingGameObject {
 protected:
+#ifdef FABLE_RETAIL_CTHINGSWITCH_LEVELSCRIPT_PASS26
+ // Actual FableWin027f9220 and both PDBs: protected override MAE.
+ virtual bool ConstructFromLevelScript(const char* script);
+#endif
     float TriggerRadius; // +d0 getter529b80/setter529b90
     CCharString EnvironmentDef; // +d4 ctor529b24
     float TimeToChangeEnvironmentDef; // +d8
@@ -39,5 +43,5 @@ public:
 public:
 #endif // FABLE_RETAIL_CTHINGSWITCH_VSLOTS2
 };
-FABLE_STATIC_ASSERT(sizeof(CThingSwitch)==0xe8);
+FABLE_STATIC_ASSERT_AT(42, sizeof(CThingSwitch)==0xe8);
 #endif

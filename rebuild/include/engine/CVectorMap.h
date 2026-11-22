@@ -267,6 +267,26 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
     return first;
 }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_COMPONENT_LOWERBOUND_OWNER_PASS26
+// Fidelity scaffolding: explicit instance retains the genuine generic body and caller visibility.
+// The caller includes this definition before its size-optimised row body.
+#include "engine/ETCInterfaceType.h"
+class CTCBase;
+template<> inline __declspec(noinline)
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::iterator
+CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound(const ETCInterfaceType& key)
+{
+ iterator first=this->begin();
+ long count=this->end()-first;
+ while(count>0) {
+  long half=count/2;
+  iterator middle=first+half;
+  if(middle->first<key) { first=middle+1; count-=half+1; }
+  else count=half;
+ }
+ return first;
+}
+#endif
 #ifdef FABLE_RETAIL_CVECTORMAP_PODIUM_UPPERBOUND
 template<class K,class V,class CompareType>
 #ifdef FABLE_RETAIL_CVECTORMAP_UPPERBOUND_COUNT_FIRST

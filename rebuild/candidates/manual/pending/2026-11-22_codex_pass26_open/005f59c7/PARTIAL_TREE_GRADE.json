@@ -1,0 +1,24 @@
+{
+  "row": "005f59c7",
+  "header_tree": "5bf00538c146",
+  "source_sha256": "21e5685f35f1bdc67d6d8f2dfd1407d8e4ad9f483ea1a10545ca48316bd018c7",
+  "grade": "DIFFER",
+  "bytes": 2649,
+  "retail_bytes": 2652,
+  "matching_instructions": 638,
+  "total_instructions": 869,
+  "helper_equal": 15,
+  "helper_different": 1,
+  "tag": "partial_tree_5bf00538c146_21e5685f",
+  "behavior_test_passed": true,
+  "test_sha256": "77d274787dd1bcd53bc839a1eec246b919ee0bd5c3c7db3b34e36201bcfbe7ec",
+  "compiler": "13.10.3077",
+  "test_flags": [
+    "/Od",
+    "/W3",
+    "/GR-"
+  ],
+  "corrected_helper_equal": 18,
+  "corrected_helper_different": 0,
+  "semantic_operands": 278
+}

@@ -1,0 +1,19 @@
+{
+  "row": "00eb5750",
+  "status": "HELD_PICKANY",
+  "residue": "1 nonmatching helper copies on supplied bindings, 1 referenced by leaf.",
+  "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+  "bytes": 1536,
+  "selected_source_sha256": "f88e6b297773186705530d0b404f1145daff114c61d1c435c7305028b8a15b39",
+  "header_overlay_fingerprint": "5bf00538c146",
+  "build_tag": "final_5bf00538c146_f88e6b29",
+  "comparison_tag": "native_movie_pointer_owner",
+  "object_symbol_table": "objdump -t full leaf confirmed",
+  "same_leaf_relocations": true,
+  "pickany_equal": 4,
+  "pickany_different": 1,
+  "pickany_referenced_different": 1,
+  "test_output": "00eb5750_TEST PASS",
+  "test_flags": "/Od /W3 /GR-",
+  "test_sha256": "62529175d370ccfd0fd7be76a6487b3246228c5539f2aeacc844d37c8cc9bcca"
+}

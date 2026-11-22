@@ -65,4 +65,10 @@ private:
     long LevelToCast;
 };
 FABLE_STATIC_ASSERT(sizeof(CWillButtonHelperTimer)==0x34);
+#ifdef FABLE_RETAIL_CWILLBUTTONHELPERTIMER_GET_ACCUMULATED_LEVEL_PASS26
+// Both PDBs name this accessor. The checked copy reads WillAccumulatedLevel at +4.
+inline long CWillButtonHelperTimer::GetWillAccumulatedLevel() const {
+    return WillAccumulatedLevel;
+}
+#endif
 #endif

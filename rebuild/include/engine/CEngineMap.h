@@ -27,6 +27,11 @@ public:
     };
     CEngineMap(const CIDrawMap*,long,long,long,long,long,CCharString,bool);
     ~CEngineMap();
+#ifdef FABLE_RETAIL_CENGINEMAP_OPENRETAILSTATICMAP_PASS26
+    // Original Ego_d/FableWin method, actual caller donor02d62360; declaration only.
+    void OpenRetailStaticMap(class CStaticMapBankFile&, class CDataInputStream&,
+        std::map<CCharString,long>&);
+#endif
 #ifdef FABLE_RETAIL_CENGINEMAP_OPENDEVELOPMENTSTATICMAP
     // NF65 overlay opt-in (row 0x00B42750 CEngineWorldMap::OpenStaticMaps): Ego_r.pdb 0x009E31E0
     // ?OpenDevelopmentStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@W4STATIC_MAP_OPEN_STATE@1@@Z (public), out of line at 0x00B42530 (the

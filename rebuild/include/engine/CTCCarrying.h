@@ -20,6 +20,10 @@ public:
     // ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z (public static fastcall), out of line in retail at 0x006A15A0. Declaration only.
     static bool __fastcall IsThingCarryingMeleeWeapon(const CThing& thing);   // 0x006A15A0
 #endif
+#ifdef FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+    static bool FABLE_FASTCALL IsThingCarryingRangedWeapon(const CThing&);
+    bool IsPrimarySlotFree()const;
+#endif
     CThing* GetThingInPrimarySlot() const;                   // 0x006A1440
     CThing* RemoveThingFromPrimarySlot(bool);                // 0x006A1E00
 #ifdef FABLE_RETAIL_CTCCARRYING_SETBYPASSFILTER

@@ -44,6 +44,24 @@ public:
     std::vector<CScriptThing> Guards;                                    // +0x60
     CScriptGameResourceObjectScriptedThingBase seh_Sheriff;              // +0x6C
     std::vector<CScriptGameResourceObjectScriptedThingBase> seh_Guards;  // +0x7C
+#ifdef FABLE_RETAIL_MURDER_ASSASSIN_GUARD_PASS26
+    // Both PDBs and native Init at 00EB5500 establish the member order and original types.
+    class CMurderTwistAssassinGuard : public CEntityScriptBase {
+    public:
+        virtual CScriptBase* GetParentScript() const;
+    protected:
+        CV_MurderTwistFinalScript& ParentClass;
+        CQ_SunnyvaleMasterData* PMasterData;
+        CScriptGameResourceObjectScriptedThingBase MyEntityHandle;
+        unsigned long NextLine;
+        bool HasBeenSpokenTo;
+        bool PreemptiveAttackInProgress;
+    private:
+        virtual void Init();
+        virtual void Main();
+        void DoAskingHeroToTalkToAssassin();
+    };
+#endif
     class CMurderTwistSheriff : public CEntityScriptBase {
     public:
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_MurderTwistFinalScript&,CScriptDataBase*,const CScriptThing&);
@@ -127,10 +145,10 @@ private:
 };
 #endif
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript)==0x88);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff)==0x38);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard)==0x38);
+FABLE_STATIC_ASSERT_AT(130,sizeof(NScript::CV_MurderTwistFinalScript)==0x88);
+FABLE_STATIC_ASSERT_AT(131,sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff)==0x38);
+FABLE_STATIC_ASSERT_AT(132,sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard)==0x38);
 #ifdef FABLE_RETAIL_CV_MURDERTWISTFINALSCRIPT_ASSASSIN
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin)==0x3C);
+FABLE_STATIC_ASSERT_AT(134,sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin)==0x3C);
 #endif
 #endif

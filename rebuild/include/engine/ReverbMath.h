@@ -6,10 +6,22 @@
 // `f -= 0.5f`, the bare `fld f ; fistp i` (libpk's inline-asm float-to-long, here through the shared libpk/FtoL.h helper, which carries
 // the asm and its FABLE_PORTABLE twin), then `+1` when negative: truncation toward zero under round-to-nearest.
 #include "libpk/FtoL.h"
+#ifdef FABLE_RETAIL_REVERBMATH_ORIGINAL_DS_FTOI_PASS26
+// Pass26 actual SDK FloatEcho/FloatPitch debug CodeView: value and result.
+// Shared LIBPK_FTOL macro preserves the original inline instruction block and portable twin.
+inline int ds_ftoi(float value)
+{
+    value-=0.5f;
+    int result;
+    LIBPK_FTOL(result,value);
+    return result<0?result+1:result;
+}
+#else
 inline int ds_ftoi(float f)
 {
     f -= 0.5f;
     int i = FtoL(f);
     return i < 0 ? i + 1 : i;
 }
+#endif
 #endif

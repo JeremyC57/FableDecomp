@@ -9,6 +9,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_JACK_STAGE3_ACTIONS_PASS26
+#include "engine/CCombatActionBase.h"
+
+#include "engine/CCountedPointer.h"
+namespace NCreatureMode { class CModeJackOfBladesScream; }
+
+// FableWin and Ego_r original base, formals and data. Sizes follow the retail action layouts.
+class CCreatureAction_JackScream : public CCombatActionBase {
+public:
+    CCreatureAction_JackScream(CThingCreatureBase& creature);
+private:
+    CCountedPointer<NCreatureMode::CModeJackOfBladesScream> PModeCountedPointer;
+};
+
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackScream) == 0x11c);
+#else
 class CCPPointerInfo;
 struct CModeJackOfBladesScream;
 
@@ -81,9 +97,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackScream) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackScream, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackScream, PModeCountedPointer_Data) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackScream, PModeCountedPointer_Info) == 0x118);
+FABLE_STATIC_ASSERT_AT(84, sizeof(CCreatureAction_JackScream) == 0x11c);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_JackScream, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_JackScream, PModeCountedPointer_Data) == 0x114);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_JackScream, PModeCountedPointer_Info) == 0x118);
+
+#endif
 
 #endif // FABLE_ENGINE_CCREATUREACTION_JACKSCREAM_H

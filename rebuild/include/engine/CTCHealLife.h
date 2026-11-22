@@ -13,6 +13,10 @@ public:
 public: CTCHealLife(CThing&);
 #endif
  void StartHealingEffect();
+#ifdef FABLE_RETAIL_CTCHEALLIFE_FRAMEUPDATE_PASS26
+ // Ego_r 0x007C2D30 / FableWin 0x02713BD0; retail vtable slot 0x0126E390.
+ virtual void FrameUpdate();
+#endif
 private:
  CCharString GetLevelEffectName();
  CDefPointer<const CSpecialAbilitiesHealLifeDef> PDef;

@@ -25,6 +25,10 @@ public:
  C3DMeshObject();
  virtual ~C3DMeshObject();
  #endif
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_STATIC_DUMMY_PASS26
+ // Ego_r 00B8D180 and FableWin 031F7A90 agree on the class, constness and arguments.
+ void GetDummyObjectPositionStatic(const CCharString&, long, C3DVector&, C3DVector&, C3DVector&) const;
+#endif
  bool HasHelperPoint(const CCharString&)const;
  long GetNoHelperPoints(const CCharString&)const;
  #ifdef FABLE_RETAIL_C3DMESHOBJECT_INLINE

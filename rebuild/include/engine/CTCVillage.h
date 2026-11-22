@@ -33,6 +33,10 @@ class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class
 class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 #pragma pack(push, 1)
 class CTCVillage : public CTCBase {
+#ifdef FABLE_RETAIL_CTCVILLAGE_PEEKCAMPFIRES_PASS26
+public:const std::list<CIntelligentPointer<CThing> >& PeekVillageCampfires()const{return VillageCampfires;}
+private:
+#endif
 #ifdef FABLE_RETAIL_HEARING
 public:long GetFrameBribeEnds()const{return FrameBribeEnds;}
 #endif

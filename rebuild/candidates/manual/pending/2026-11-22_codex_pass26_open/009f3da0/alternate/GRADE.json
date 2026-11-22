@@ -1,0 +1,20 @@
+{
+  "row": "009f3da0",
+  "tag": "final_6a20af7d676e_9404c43e_clean_control",
+  "source_sha256": "9404c43ec3e7673c32ff57d2e712fa71f6388273bb1c3f474fa053195a859120",
+  "requested_leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+  "flags": [],
+  "retail_bytes": 582,
+  "leaf": "?CopyToMemoryB8G8R8A8@CSurface@@QAEXPAEPBVC2DBoxI@@@Z",
+  "status": "MASKED_EQUAL",
+  "object_bytes": 582,
+  "matched_instructions": 194,
+  "retail_instructions": 194,
+  "built_instructions": 194,
+  "hunks": 0,
+  "same_size_different_bytes": 0,
+  "pickany_complete": true,
+  "pickany_eq": 7,
+  "pickany_neq": 0,
+  "pickany_referenced_neq": 0
+}

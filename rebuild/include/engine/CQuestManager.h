@@ -160,6 +160,10 @@ public:
     // Original Ego_r complete nested type2c092 and FableWin donor020ed41c.
     class CActiveQuest {
     public:long GetID()const{return ID;}
+#ifdef FABLE_RETAIL_CQUESTMANAGER_COMPLETE_PASS26
+        // FableWin 0x01C5B430 and Ego_d quest_manager.obj, native +0x24.
+        void SetPersistent(bool persistent) { Persistent = persistent; }
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_ACTIVEQUEST_CONTAINSREGION
         // NF66 opt-in (row 0x004B11A0 IsRegionStartOfRegionLockingMode): Ego_r.pdb / FableWin.pdb
         // ?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z, called out of line in that TU (0x004AFD80). Declaration only.
@@ -326,6 +330,11 @@ public:
     void TransferBoasts(CPersistContext& context);
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CQuestManager@@QAEXXZ (retail 0x004B4490, landed).
     void Update();                                           // 0x004B4490
+#ifdef FABLE_RETAIL_CQUESTMANAGER_COMPLETE_PASS26
+    // Ego_r and FableWin public signatures, native 0x004B1D30 and 0x004B0AA0.
+    bool SetQuestAsCompleted(const CCharString&, bool, bool, bool);
+    void RemoveActiveQuestCard(const CCharString&);
+#endif
     // Chunk 734 (row 0x004A5E90 CWorld::AutoLoadRespawn): Ego_r.pdb / FableWin.pdb ?IsBetweenQuestStartAndFinishScreens@CQuestManager@@QBE_NXZ.
     bool IsBetweenQuestStartAndFinishScreens() const;        // 0x004AF290
     // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): Ego_r.pdb / FableWin.pdb ?RegisterQuest@CQuestManager@@QAEXABVCCharString@@@Z.

@@ -16,6 +16,12 @@ class CDrawQuickAccessIcons : public CDrawBase
 {
 public:
     virtual void Draw(const CEnginePrimitivePrepareInfo& info);
+#ifdef FABLE_RETAIL_NPLAYERGUI_CHARGE_GRAPHIC_PASS26
+private:
+    // Ego_r and FableWin spell both private members; the native drawing routine calls activation at 0064B5C1.
+    float GetActivationTimeForButton(long button_index);
+    void DrawChargeGraphic(const CEnginePrimitivePrepareInfo& info, const C2DVector& button_offset, long button_index);
+#endif
 protected:
     unsigned long ChargingSoundID;
     long ChargingButtonIndex;
@@ -32,5 +38,5 @@ protected:
     std::vector<C2DCoordI> EffectPositions;
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawQuickAccessIcons) == 0x94);
+FABLE_STATIC_ASSERT_AT(35, sizeof(NPlayerGui::CDrawQuickAccessIcons) == 0x94);
 #endif

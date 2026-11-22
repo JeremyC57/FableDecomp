@@ -1,0 +1,820 @@
+{
+  "row": "00723e50",
+  "original_sibling_scheduling": {
+    "row": "00723e50",
+    "donor_executable_facts": {
+      "FableWin": {
+        "image_sha256": "a9d6d0977d9d7fc8242da4292ae7ed92e926ca80364a95c003d9b9f689e41845",
+        "ground_entry": "02527020",
+        "ground_native_extent": 61,
+        "ground_x87_instructions": 0,
+        "ground_direct_calls": [
+          {
+            "0252702c": "01b41370"
+          },
+          {
+            "02527039": "021914e0"
+          },
+          {
+            "02527040": "024a4450"
+          }
+        ],
+        "get_set_entry": "02526e60",
+        "get_set_native_extent": 200
+      },
+      "Ego_r": {
+        "image_sha256": "aeb372d37adce0b17affc0744eb20c3fe75d05c5a80cd134b0a4a7f5d607ea96",
+        "ground_entry": "0073a6d0",
+        "ground_native_extent": 51,
+        "ground_x87_instructions": 0,
+        "ground_direct_calls": [
+          {
+            "0073a6e1": "006b2110"
+          },
+          {
+            "0073a6e8": "006e7420"
+          }
+        ],
+        "get_set_entry": "0073ab80",
+        "get_set_native_extent": 606,
+        "get_set_exponent_loads": [
+          {
+            "native_address": "0073aca1",
+            "consumer": "0073aca6",
+            "instructions_between_load_and_consumer": 0,
+            "scheduling_context": [
+              "0073ac9b and ecx, 0xff",
+              "0073aca1 mov edx, 0x17c",
+              "0073aca6 sub edx, ecx"
+            ]
+          },
+          {
+            "native_address": "0073acbc",
+            "consumer": "0073ad59",
+            "instructions_between_load_and_consumer": 52,
+            "scheduling_context": [
+              "0073acb9 fld dword ptr [esp]",
+              "0073acbc mov edx, 0x17c",
+              "0073acc1 fld st(0)"
+            ]
+          }
+        ],
+        "get_set_prefix": [
+          "0073ab80 sub esp, 0x28",
+          "0073ab83 fld dword ptr [ecx + 0x50]",
+          "0073ab86 fsub dword ptr [ecx + 0x68]",
+          "0073ab89 fstp dword ptr [esp + 0x10]",
+          "0073ab8d fld dword ptr [ecx + 0x54]",
+          "0073ab90 fsub dword ptr [ecx + 0x6c]",
+          "0073ab93 fstp dword ptr [esp + 0x14]",
+          "0073ab97 fld dword ptr [ecx + 0x58]"
+        ],
+        "get_set_trig_instructions": []
+      },
+      "Retail": {
+        "image_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+        "ground_entry": "00723a10",
+        "ground_native_extent": 49,
+        "ground_x87_instructions": 0,
+        "ground_direct_calls": [
+          {
+            "00723a21": "00686d20"
+          },
+          {
+            "00723a28": "0063ab10"
+          }
+        ],
+        "get_set_entry": "00723c80",
+        "get_set_native_extent": 458,
+        "ground_virtual_slot": {
+          "slot": 77,
+          "site": "00723a36",
+          "retail_target": "00723e50"
+        },
+        "get_set_exponent_loads": [
+          {
+            "native_address": "00723c86",
+            "consumer": "00723d42",
+            "instructions_between_load_and_consumer": 54,
+            "scheduling_context": [
+              "00723c83 fld dword ptr [ecx + 0x50]",
+              "00723c86 mov edx, 0x17c",
+              "00723c8b fsub dword ptr [ecx + 0x68]"
+            ]
+          },
+          {
+            "native_address": "00723d99",
+            "consumer": "00723dc8",
+            "instructions_between_load_and_consumer": 13,
+            "scheduling_context": [
+              "00723d97 fld st(2)",
+              "00723d99 mov edx, 0x17c",
+              "00723d9e fmul st(3)"
+            ]
+          }
+        ],
+        "get_set_prefix": [
+          "00723c80 sub esp, 0x28",
+          "00723c83 fld dword ptr [ecx + 0x50]",
+          "00723c86 mov edx, 0x17c",
+          "00723c8b fsub dword ptr [ecx + 0x68]",
+          "00723c8e fld dword ptr [ecx + 0x54]",
+          "00723c91 fsub dword ptr [ecx + 0x6c]",
+          "00723c94 fld dword ptr [ecx + 0x58]",
+          "00723c97 fsub dword ptr [ecx + 0x70]"
+        ],
+        "get_set_trig_instructions": []
+      }
+    },
+    "original_compilands": {
+      "FableWin": {
+        "module": "debug\\tc_physics_standard.obj",
+        "library": "E:\\FableTLC\\Fable TLC Build Repository\\BBBProjects\\Fable1_5MainPC\\libs\\wishworld_d.lib",
+        "stream": 56,
+        "flag_subset": [
+          "-Od",
+          "-Oy-",
+          "-DLIB_NOT_DLL",
+          "-DWIN32",
+          "-DNDEBUG",
+          "-D_WINDOWS",
+          "-DGAME_COMP_DEBUG",
+          "-DUSE_VIRTUAL_KEYBOARD",
+          "-D_CRT_SECURE_NO_WARNINGS",
+          "-D_CRT_NON_CONFORMING_SWPRINTFS",
+          "-D_MBCS",
+          "-Gm-",
+          "-EHs",
+          "-EHc",
+          "-fp:precise",
+          "-Yustandard_headers.hpp",
+          "-Gr"
+        ],
+        "procedures": {
+          "GetRHSet": {
+            "native_address": "02526e60",
+            "bytes": 200,
+            "type_index": "2c59e",
+            "record": 46692,
+            "signature": {
+              "return": "CRightHandedSet",
+              "owner": "CTCPhysicsStandard",
+              "this_type": {
+                "pointer_to": {
+                  "modifier_type": "CTCPhysicsStandard",
+                  "const": true,
+                  "cv_flags": "0x1"
+                },
+                "mode": "pointer",
+                "attributes": "0x840a"
+              },
+              "calling_convention": "thiscall",
+              "parameter_count": 1,
+              "parameters": [
+                "float"
+              ],
+              "options": "0x1",
+              "this_adjust": 0
+            },
+            "line_tables": [
+              {
+                "filename": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablelib\\tc_physics_standard.cpp",
+                "checksum": "6d2d1da326cab57934ed11b6fc8d5142",
+                "lines": [
+                  {
+                    "line": 440,
+                    "address": "02526e60"
+                  },
+                  {
+                    "line": 442,
+                    "address": "02526e69"
+                  },
+                  {
+                    "line": 443,
+                    "address": "02526eb4"
+                  },
+                  {
+                    "line": 444,
+                    "address": "02526eff"
+                  },
+                  {
+                    "line": 445,
+                    "address": "02526f07"
+                  },
+                  {
+                    "line": 446,
+                    "address": "02526f0f"
+                  },
+                  {
+                    "line": 447,
+                    "address": "02526f22"
+                  }
+                ]
+              }
+            ],
+            "locals": [
+              {
+                "name": "this",
+                "type": {
+                  "pointer_to": {
+                    "modifier_type": "CTCPhysicsStandard",
+                    "const": true,
+                    "cv_flags": "0x1"
+                  },
+                  "mode": "pointer",
+                  "attributes": "0x840a"
+                }
+              },
+              {
+                "name": "interpolate",
+                "type": "float"
+              },
+              {
+                "name": "fw",
+                "type": "C3DVector"
+              },
+              {
+                "name": "up",
+                "type": "C3DVector"
+              }
+            ]
+          },
+          "SetRHSetAsFlushOnNormal": {
+            "native_address": "02526f60",
+            "bytes": 151,
+            "type_index": "2c5a1",
+            "record": 46872,
+            "signature": {
+              "return": "void",
+              "owner": "CTCPhysicsStandard",
+              "this_type": {
+                "pointer_to": "CTCPhysicsStandard",
+                "mode": "pointer",
+                "attributes": "0x840a"
+              },
+              "calling_convention": "thiscall",
+              "parameter_count": 1,
+              "parameters": [
+                {
+                  "pointer_to": {
+                    "modifier_type": "C3DVector",
+                    "const": true,
+                    "cv_flags": "0x1"
+                  },
+                  "mode": "lvalue_reference",
+                  "attributes": "0x802a"
+                }
+              ],
+              "options": "0x0",
+              "this_adjust": 0
+            },
+            "line_tables": [
+              {
+                "filename": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablelib\\tc_physics_standard.cpp",
+                "checksum": "6d2d1da326cab57934ed11b6fc8d5142",
+                "lines": [
+                  {
+                    "line": 451,
+                    "address": "02526f60"
+                  },
+                  {
+                    "line": 452,
+                    "address": "02526f69"
+                  },
+                  {
+                    "line": 453,
+                    "address": "02526f79"
+                  },
+                  {
+                    "line": 454,
+                    "address": "02526f8c"
+                  },
+                  {
+                    "line": 455,
+                    "address": "02526f94"
+                  },
+                  {
+                    "line": 456,
+                    "address": "02526fbb"
+                  },
+                  {
+                    "line": 457,
+                    "address": "02526fcb"
+                  },
+                  {
+                    "line": 458,
+                    "address": "02526fd3"
+                  },
+                  {
+                    "line": 459,
+                    "address": "02526fe2"
+                  },
+                  {
+                    "line": 460,
+                    "address": "02526ff1"
+                  }
+                ]
+              }
+            ],
+            "locals": [
+              {
+                "name": "this",
+                "type": {
+                  "pointer_to": "CTCPhysicsStandard",
+                  "mode": "pointer",
+                  "attributes": "0x840a"
+                }
+              },
+              {
+                "name": "normal",
+                "type": {
+                  "pointer_to": {
+                    "modifier_type": "C3DVector",
+                    "const": true,
+                    "cv_flags": "0x1"
+                  },
+                  "mode": "lvalue_reference",
+                  "attributes": "0x802a"
+                }
+              },
+              {
+                "name": "xy",
+                "type": "float"
+              },
+              {
+                "name": "forward",
+                "type": "C3DVector"
+              },
+              {
+                "name": "right_2d",
+                "type": "C3DVector"
+              }
+            ]
+          },
+          "SetRHSetAsFlushOnGround": {
+            "native_address": "02527020",
+            "bytes": 61,
+            "type_index": "2c57d",
+            "record": 47124,
+            "signature": {
+              "return": "void",
+              "owner": "CTCPhysicsStandard",
+              "this_type": {
+                "pointer_to": "CTCPhysicsStandard",
+                "mode": "pointer",
+                "attributes": "0x840a"
+              },
+              "calling_convention": "thiscall",
+              "parameter_count": 0,
+              "parameters": [],
+              "options": "0x0",
+              "this_adjust": 0
+            },
+            "line_tables": [
+              {
+                "filename": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablelib\\tc_physics_standard.cpp",
+                "checksum": "6d2d1da326cab57934ed11b6fc8d5142",
+                "lines": [
+                  {
+                    "line": 464,
+                    "address": "02527020"
+                  },
+                  {
+                    "line": 465,
+                    "address": "02527029"
+                  },
+                  {
+                    "line": 466,
+                    "address": "02527045"
+                  },
+                  {
+                    "line": 467,
+                    "address": "02527059"
+                  }
+                ]
+              }
+            ],
+            "locals": [
+              {
+                "name": "this",
+                "type": {
+                  "pointer_to": "CTCPhysicsStandard",
+                  "mode": "pointer",
+                  "attributes": "0x840a"
+                }
+              },
+              {
+                "name": "normal",
+                "type": "C3DVector"
+              }
+            ]
+          }
+        }
+      },
+      "Ego_r": {
+        "module": "release\\tc_physics_standard.obj",
+        "library": "E:\\FableTLC\\Fable TLC Build Repository\\BBBProjects\\Fable1_5MainPC\\libs\\wishworld_r.lib",
+        "stream": 58,
+        "flag_subset": [
+          "-Ox",
+          "-Ob2",
+          "-Oi",
+          "-Ot",
+          "-Oy",
+          "-GT",
+          "-DLIB_NOT_DLL",
+          "-DWIN32",
+          "-DNDEBUG",
+          "-D_WINDOWS",
+          "-DGAME_COMP_RELEASE",
+          "-DUSE_VIRTUAL_KEYBOARD",
+          "-D_CRT_SECURE_NO_WARNINGS",
+          "-GF",
+          "-Gm-",
+          "-fp:precise",
+          "-Yustandard_headers.hpp",
+          "-Gr"
+        ],
+        "procedures": {
+          "SetRHSetAsFlushOnGround": {
+            "native_address": "0073a6d0",
+            "bytes": 51,
+            "type_index": "29dcf",
+            "record": 4320,
+            "signature": {
+              "return": "void",
+              "owner": "CTCPhysicsStandard",
+              "this_type": {
+                "pointer_to": "CTCPhysicsStandard",
+                "mode": "pointer",
+                "attributes": "0x840a"
+              },
+              "calling_convention": "thiscall",
+              "parameter_count": 0,
+              "parameters": [],
+              "options": "0x0",
+              "this_adjust": 0
+            },
+            "line_tables": [
+              {
+                "filename": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablelib\\tc_physics_standard.cpp",
+                "checksum": "6d2d1da326cab57934ed11b6fc8d5142",
+                "lines": [
+                  {
+                    "line": 464,
+                    "address": "0073a6d0"
+                  },
+                  {
+                    "line": 465,
+                    "address": "0073a6d6"
+                  },
+                  {
+                    "line": 466,
+                    "address": "0073a6ed"
+                  },
+                  {
+                    "line": 467,
+                    "address": "0073a6ff"
+                  }
+                ]
+              }
+            ],
+            "locals": [
+              {
+                "name": "normal",
+                "type": "C3DVector"
+              }
+            ]
+          },
+          "GetRHSet": {
+            "native_address": "0073ab80",
+            "bytes": 606,
+            "type_index": "29df0",
+            "record": 6392,
+            "signature": {
+              "return": "CRightHandedSet",
+              "owner": "CTCPhysicsStandard",
+              "this_type": {
+                "pointer_to": {
+                  "modifier_type": "CTCPhysicsStandard",
+                  "const": true,
+                  "cv_flags": "0x1"
+                },
+                "mode": "pointer",
+                "attributes": "0x840a"
+              },
+              "calling_convention": "thiscall",
+              "parameter_count": 1,
+              "parameters": [
+                "float"
+              ],
+              "options": "0x1",
+              "this_adjust": 0
+            },
+            "line_tables": [
+              {
+                "filename": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablelib\\tc_physics_standard.cpp",
+                "checksum": "6d2d1da326cab57934ed11b6fc8d5142",
+                "lines": [
+                  {
+                    "line": 440,
+                    "address": "0073ab80"
+                  },
+                  {
+                    "line": 442,
+                    "address": "0073ab83"
+                  },
+                  {
+                    "line": 443,
+                    "address": "0073abe8"
+                  },
+                  {
+                    "line": 444,
+                    "address": "0073ac43"
+                  },
+                  {
+                    "line": 445,
+                    "address": "0073acbc"
+                  },
+                  {
+                    "line": 446,
+                    "address": "0073ad89"
+                  },
+                  {
+                    "line": 447,
+                    "address": "0073add8"
+                  }
+                ]
+              }
+            ],
+            "locals": [
+              {
+                "name": "interpolate",
+                "type": "float"
+              },
+              {
+                "name": "fw",
+                "type": "C3DVector"
+              },
+              {
+                "name": "up",
+                "type": "C3DVector"
+              }
+            ]
+          },
+          "SetRHSetAsFlushOnNormal": {
+            "native_address": "0073ade0",
+            "bytes": 412,
+            "type_index": "29df3",
+            "record": 6568,
+            "signature": {
+              "return": "void",
+              "owner": "CTCPhysicsStandard",
+              "this_type": {
+                "pointer_to": "CTCPhysicsStandard",
+                "mode": "pointer",
+                "attributes": "0x840a"
+              },
+              "calling_convention": "thiscall",
+              "parameter_count": 1,
+              "parameters": [
+                {
+                  "pointer_to": {
+                    "modifier_type": "C3DVector",
+                    "const": true,
+                    "cv_flags": "0x1"
+                  },
+                  "mode": "lvalue_reference",
+                  "attributes": "0x802a"
+                }
+              ],
+              "options": "0x0",
+              "this_adjust": 0
+            },
+            "line_tables": [
+              {
+                "filename": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablelib\\tc_physics_standard.cpp",
+                "checksum": "6d2d1da326cab57934ed11b6fc8d5142",
+                "lines": [
+                  {
+                    "line": 451,
+                    "address": "0073ade0"
+                  },
+                  {
+                    "line": 452,
+                    "address": "0073ade6"
+                  },
+                  {
+                    "line": 453,
+                    "address": "0073adf1"
+                  },
+                  {
+                    "line": 455,
+                    "address": "0073adfd"
+                  },
+                  {
+                    "line": 456,
+                    "address": "0073ae55"
+                  },
+                  {
+                    "line": 457,
+                    "address": "0073ae9b"
+                  },
+                  {
+                    "line": 458,
+                    "address": "0073af43"
+                  },
+                  {
+                    "line": 459,
+                    "address": "0073af64"
+                  },
+                  {
+                    "line": 460,
+                    "address": "0073af76"
+                  }
+                ]
+              }
+            ],
+            "locals": [
+              {
+                "name": "normal",
+                "type": {
+                  "pointer_to": {
+                    "modifier_type": "C3DVector",
+                    "const": true,
+                    "cv_flags": "0x1"
+                  },
+                  "mode": "lvalue_reference",
+                  "attributes": "0x802a"
+                }
+              },
+              {
+                "name": "forward",
+                "type": "C3DVector"
+              },
+              {
+                "name": "right_2d",
+                "type": "C3DVector"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "previous_read_only_neighbor_build": {
+      "control": "flush_same_compiland_neighbors_123",
+      "retail_native_va": "00723c80",
+      "object_bytes": 458,
+      "direct_operands": [
+        {
+          "offset": 202,
+          "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+          "target": "013ce558"
+        },
+        {
+          "offset": 237,
+          "symbol": "__real@40400000",
+          "target": "0122ded4"
+        },
+        {
+          "offset": 247,
+          "symbol": "__real@3f000000",
+          "target": "0122f59c"
+        },
+        {
+          "offset": 336,
+          "symbol": "?GFastOneOverSqrtTable@@3PAKA",
+          "target": "013ce558"
+        },
+        {
+          "offset": 375,
+          "symbol": "__real@40400000",
+          "target": "0122ded4"
+        },
+        {
+          "offset": 385,
+          "symbol": "__real@3f000000",
+          "target": "0122f59c"
+        }
+      ],
+      "compiled_exponent_load_offsets": [
+        6,
+        271
+      ],
+      "retail_exponent_load_offsets": [
+        6,
+        281
+      ],
+      "different_masked_byte_offsets": [
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        362,
+        363,
+        365,
+        366,
+        367,
+        369
+      ],
+      "second_permutation": "The result-pointer load and preceding or following fmul [esp+0x30] swap at +0x16a."
+    },
+    "current_target_pch_controls": {
+      "geometry": {
+        "pch_and_uncached_identical_bytes_and_relocations": true,
+        "same_as_selected_310_byte_leaf": true,
+        "same_as_selected_prefix_0x80": true,
+        "byte_differences_vs_package_leaf": [],
+        "flags": [
+          "/nologo",
+          "/c",
+          "/Ox",
+          "/Ob2",
+          "/Oi",
+          "/Ot",
+          "/Oy",
+          "/GT",
+          "/GF",
+          "/GR",
+          "/Gr"
+        ],
+        "header_tree": "5bf00538c146",
+        "source_sha256": "41dbce79a9a8c58ae2fec6bf357c964927534e26cae64438e315387db06eb884",
+        "bytes": 310,
+        "relocations": 7,
+        "body_sha256": "ff79d4740b07e297fd287061471a4ec56eaf40ae7a6a8a7d055062322f043f10"
+      },
+      "complete_dependencies": {
+        "pch_and_uncached_identical_bytes_and_relocations": true,
+        "same_as_selected_310_byte_leaf": true,
+        "same_as_selected_prefix_0x80": true,
+        "byte_differences_vs_package_leaf": [],
+        "flags": [
+          "/nologo",
+          "/c",
+          "/Ox",
+          "/Ob2",
+          "/Oi",
+          "/Ot",
+          "/Oy",
+          "/GT",
+          "/GF",
+          "/GR",
+          "/Gr"
+        ],
+        "header_tree": "5bf00538c146",
+        "source_sha256": "41dbce79a9a8c58ae2fec6bf357c964927534e26cae64438e315387db06eb884",
+        "bytes": 310,
+        "relocations": 7,
+        "body_sha256": "ff79d4740b07e297fd287061471a4ec56eaf40ae7a6a8a7d055062322f043f10"
+      },
+      "geometry_retail": {
+        "pch_and_uncached_identical_bytes_and_relocations": true,
+        "same_as_selected_310_byte_leaf": true,
+        "same_as_selected_prefix_0x80": true,
+        "byte_differences_vs_package_leaf": [],
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Oy",
+          "/W3"
+        ],
+        "header_tree": "5bf00538c146",
+        "source_sha256": "41dbce79a9a8c58ae2fec6bf357c964927534e26cae64438e315387db06eb884",
+        "bytes": 310,
+        "relocations": 7,
+        "body_sha256": "ff79d4740b07e297fd287061471a4ec56eaf40ae7a6a8a7d055062322f043f10"
+      }
+    },
+    "interpretation": "The original GetRHSet(float) supports a general earlier scheduling of the seed exponent initializer, including an interleave of x87 instructions. Its donor local normalizations are lexically after both interpolations. The reproduced same shared header gives the first early load in the neighbor while leaving both target moves. Ground uses a local terrain normal, calls the target indirectly, and contains no x87 operation.",
+    "native_and_portable_fixture": {
+      "header_tree": "5bf00538c146",
+      "test_sha256": "721d8b2ea33de3e4b59d7b64298f5ae4ac18dc918a788b900a24997079bbac62",
+      "native_flags": [
+        "/Od",
+        "/W3",
+        "/GR-"
+      ],
+      "native_result": "00723e50_TEST PASS",
+      "portable_flags": [
+        "-std=c++03",
+        "-pedantic-errors",
+        "-fsanitize=address,undefined"
+      ],
+      "portable_result": "00723e50_TEST PASS",
+      "portable_execution_note": "ASAN_OPTIONS=detect_leaks=0 because LeakSanitizer cannot inspect processes in this environment."
+    }
+  }
+}

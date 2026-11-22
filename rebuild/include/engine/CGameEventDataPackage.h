@@ -13,6 +13,10 @@ class CGameEventDataPackage {
 public:
     CGameEventDataPackage() : Length(0), StartPos(0), EndPos(0) { }
     void GetData(long size, void* data);                                 // 0x009F18F0
+#ifdef FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_GETULONG_PASS26
+    // FableWin 0x018A8690 and the inlined 4-byte read in retail CWorld::EAOpenHeroInformationScreen.
+    unsigned long GetULONG() { unsigned long value; GetData(sizeof(value), &value); return value; }
+#endif
 #ifdef FABLE_RETAIL_CGAMEEVENTDATAPACKAGE_GETUHUGE
     // Opt-in (NF95 q11320, row 0x00628E80): FableWin.pdb 0x023D5E10 ?GetUHUGE@CGameEventDataPackage@@QAE_KXZ (the only 8-byte typed
     // reader: GetData(8, &value), the 64-bit result in edx:eax), out of line in retail at 0x00628E80. Declaration only.

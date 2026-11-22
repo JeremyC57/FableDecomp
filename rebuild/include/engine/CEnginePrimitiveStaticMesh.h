@@ -13,6 +13,9 @@ public:
     // The native eye draw expands the base and the default mesh fields in place.
     CEnginePrimitiveStaticMesh() : CEnginePrimitive(static_cast<EEnginePrimitiveType>(8), static_cast<EEngineInterpolationSet>(0)) {}
 #endif
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVESTATICMESH_CTOR_CALLED_PASS26
+    __declspec(noinline)
+#endif
     CEnginePrimitiveStaticMesh(unsigned __int64,unsigned long,const C3DVector&,const CRightHandedSet&,float,bool,unsigned char,CRGBColour,float,EEngineInterpolationSet,const CEnginePrimitiveThemeChannelDesc&,bool);
     unsigned long MeshIndex;
     C3DVector WorldPos;

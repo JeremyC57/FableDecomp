@@ -1,0 +1,2622 @@
+{
+  "tag": "expr_selected_original_template_parameters",
+  "method": "Exact-byte offsets for matching bodies; ordered reference sequences for the partial leaf.",
+  "checks": {
+    "binding evidence and native target": 239,
+    "complete COFF string including terminator": 39
+  },
+  "helpers": [
+    {
+      "symbol": "??2@YAPAXIPAX@Z",
+      "status": "EQ",
+      "target": "0x00405c10",
+      "bytes": 5
+    },
+    {
+      "symbol": "??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z",
+      "status": "EQ",
+      "target": "0x0041c780",
+      "bytes": 11
+    },
+    {
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "status": "EQ",
+      "target": "0x004291de",
+      "bytes": 44
+    },
+    {
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "status": "EQ",
+      "target": "0x00429160",
+      "bytes": 44
+    },
+    {
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "status": "EQ",
+      "target": "0x0040f020",
+      "bytes": 60
+    },
+    {
+      "symbol": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "status": "EQ",
+      "target": "0x00429c53",
+      "bytes": 5
+    },
+    {
+      "symbol": "??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ",
+      "status": "EQ",
+      "target": "0x00429b72",
+      "bytes": 5
+    },
+    {
+      "symbol": "?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z",
+      "status": "EQ",
+      "target": "0x00429fbe",
+      "bytes": 26
+    },
+    {
+      "symbol": "??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z",
+      "status": "EQ",
+      "target": "0x0042b312",
+      "bytes": 98
+    },
+    {
+      "symbol": "??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z",
+      "status": "EQ",
+      "target": "0x0042af3c",
+      "bytes": 98
+    },
+    {
+      "symbol": "??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z",
+      "status": "EQ",
+      "target": "0x005f81be",
+      "bytes": 98
+    },
+    {
+      "symbol": "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "status": "EQ",
+      "target": "0x005da240",
+      "bytes": 182
+    },
+    {
+      "symbol": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "status": "EQ",
+      "target": "0x005ee3b3",
+      "bytes": 101
+    },
+    {
+      "symbol": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "status": "EQ",
+      "target": "0x005f45b5",
+      "bytes": 1233
+    },
+    {
+      "symbol": "?insert@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCActionParam@NUISystem@@U?$_Nonconst_traits@PAVCActionParam@NUISystem@@@std@@@2@U32@ABQAVCActionParam@NUISystem@@@Z",
+      "status": "EQ",
+      "target": "0x0042aadc",
+      "bytes": 37
+    },
+    {
+      "symbol": "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "status": "EQ",
+      "target": "0x00410de0",
+      "bytes": 63
+    },
+    {
+      "symbol": "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+      "status": "EQ",
+      "target": "0x004118c0",
+      "bytes": 58
+    },
+    {
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "status": "EQ",
+      "target": "0x0042b646",
+      "bytes": 26
+    }
+  ],
+  "operands": [
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 20,
+      "operand": "0x005F59DB",
+      "symbol": "?GetInstance@CManager@NUISystem@@SIPAV12@XZ",
+      "retail": "0x0041E5F2",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 43,
+      "operand": "0x005F59F2",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 62,
+      "operand": "0x005F5A05",
+      "symbol": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "retail": "0x005EE3B3",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 77,
+      "operand": "0x005F5A14",
+      "symbol": "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "retail": "0x00410DE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 102,
+      "operand": "0x005F5A2D",
+      "symbol": "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+      "retail": "0x0040F020",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 132,
+      "operand": "0x005F5A4B",
+      "symbol": "?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAEXXZ",
+      "retail": "0x00593235",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 143,
+      "operand": "0x005F5A56",
+      "symbol": "?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAEXXZ",
+      "retail": "0x00593235",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 201,
+      "operand": "0x005F5A90",
+      "symbol": "?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z",
+      "retail": "0x005BF482",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 246,
+      "operand": "0x005F5ABD",
+      "symbol": "?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ",
+      "retail": "0x006869D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 253,
+      "operand": "0x005F5AC4",
+      "symbol": "??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z",
+      "retail": "0x0042AF3C",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 271,
+      "operand": "0x005F5AD6",
+      "symbol": "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "retail": "0x005DA240",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 297,
+      "operand": "0x005F5AF0",
+      "symbol": "?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ",
+      "retail": "0x006869D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 304,
+      "operand": "0x005F5AF7",
+      "symbol": "??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z",
+      "retail": "0x005F81BE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 392,
+      "operand": "0x005F5B4F",
+      "symbol": "?push_back@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAEXABU?$pair@JJ@2@@Z",
+      "retail": "0x005947B6",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 479,
+      "operand": "0x005F5BA6",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 492,
+      "operand": "0x005F5BB3",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 502,
+      "operand": "0x005F5BBD",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 517,
+      "operand": "0x005F5BCC",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 530,
+      "operand": "0x005F5BD9",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 539,
+      "operand": "0x005F5BE2",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 547,
+      "operand": "0x005F5BEA",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 576,
+      "operand": "0x005F5C07",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 589,
+      "operand": "0x005F5C14",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 598,
+      "operand": "0x005F5C1D",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 606,
+      "operand": "0x005F5C25",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 674,
+      "operand": "0x005F5C69",
+      "symbol": "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+      "retail": "0x0099F830",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 688,
+      "operand": "0x005F5C77",
+      "symbol": "??H@YI?AVCCharString@@PBDABV0@@Z",
+      "retail": "0x0099F690",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 696,
+      "operand": "0x005F5C7F",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 710,
+      "operand": "0x005F5C8D",
+      "symbol": "??0CCharString@@QAE@ABV0@@Z",
+      "retail": "0x0099EC30",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 733,
+      "operand": "0x005F5CA4",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 745,
+      "operand": "0x005F5CB0",
+      "symbol": "??0CAction@NUISystem@@QAE@XZ",
+      "retail": "0x0042BE50",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 758,
+      "operand": "0x005F5CBD",
+      "symbol": "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "retail": "0x0042AA29",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 787,
+      "operand": "0x005F5CDA",
+      "symbol": "?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z",
+      "retail": "0x0053FDE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 794,
+      "operand": "0x005F5CE1",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 842,
+      "operand": "0x005F5D11",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 863,
+      "operand": "0x005F5D26",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 875,
+      "operand": "0x005F5D32",
+      "symbol": "??0CAction@NUISystem@@QAE@XZ",
+      "retail": "0x0042BE50",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 888,
+      "operand": "0x005F5D3F",
+      "symbol": "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "retail": "0x0042AA29",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 912,
+      "operand": "0x005F5D57",
+      "symbol": "?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z",
+      "retail": "0x0053FDE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 919,
+      "operand": "0x005F5D5E",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 967,
+      "operand": "0x005F5D8E",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 988,
+      "operand": "0x005F5DA3",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1000,
+      "operand": "0x005F5DAF",
+      "symbol": "??0CAction@NUISystem@@QAE@XZ",
+      "retail": "0x0042BE50",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1013,
+      "operand": "0x005F5DBC",
+      "symbol": "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "retail": "0x0042AA29",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1041,
+      "operand": "0x005F5DD8",
+      "symbol": "?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z",
+      "retail": "0x0053FDE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1048,
+      "operand": "0x005F5DDF",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1095,
+      "operand": "0x005F5E0E",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1141,
+      "operand": "0x005F5E3C",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1154,
+      "operand": "0x005F5E49",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1163,
+      "operand": "0x005F5E52",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1171,
+      "operand": "0x005F5E5A",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1206,
+      "operand": "0x005F5E7D",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1219,
+      "operand": "0x005F5E8A",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1228,
+      "operand": "0x005F5E93",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1236,
+      "operand": "0x005F5E9B",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1259,
+      "operand": "0x005F5EB2",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1303,
+      "operand": "0x005F5EDE",
+      "symbol": "?GetQuickAccessItemGraphicIndex@CTCInventory@@QBEJJ@Z",
+      "retail": "0x00581FA4",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1323,
+      "operand": "0x005F5EF2",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1335,
+      "operand": "0x005F5EFE",
+      "symbol": "??0CAction@NUISystem@@QAE@XZ",
+      "retail": "0x0042BE50",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1348,
+      "operand": "0x005F5F0B",
+      "symbol": "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "retail": "0x0042AA29",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1376,
+      "operand": "0x005F5F27",
+      "symbol": "?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z",
+      "retail": "0x0053FDE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1383,
+      "operand": "0x005F5F2E",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1427,
+      "operand": "0x005F5F5A",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1449,
+      "operand": "0x005F5F70",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1461,
+      "operand": "0x005F5F7C",
+      "symbol": "??0CAction@NUISystem@@QAE@XZ",
+      "retail": "0x0042BE50",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1474,
+      "operand": "0x005F5F89",
+      "symbol": "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "retail": "0x0042AA29",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1510,
+      "operand": "0x005F5FAD",
+      "symbol": "?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z",
+      "retail": "0x0053FDE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1517,
+      "operand": "0x005F5FB4",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1565,
+      "operand": "0x005F5FE4",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1586,
+      "operand": "0x005F5FF9",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1598,
+      "operand": "0x005F6005",
+      "symbol": "??0CAction@NUISystem@@QAE@XZ",
+      "retail": "0x0042BE50",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1611,
+      "operand": "0x005F6012",
+      "symbol": "??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z",
+      "retail": "0x0042AA29",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1627,
+      "operand": "0x005F6022",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1683,
+      "operand": "0x005F605A",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1690,
+      "operand": "0x005F6061",
+      "symbol": "??2@YAPAXI@Z",
+      "retail": "0x00BFEA1A",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1734,
+      "operand": "0x005F608D",
+      "symbol": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042B646",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1749,
+      "operand": "0x005F609C",
+      "symbol": "?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z",
+      "retail": "0x0053FDB0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1786,
+      "operand": "0x005F60C1",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1794,
+      "operand": "0x005F60C9",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1802,
+      "operand": "0x005F60D1",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1810,
+      "operand": "0x005F60D9",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1818,
+      "operand": "0x005F60E1",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1826,
+      "operand": "0x005F60E9",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1834,
+      "operand": "0x005F60F1",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1842,
+      "operand": "0x005F60FC",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1889,
+      "operand": "0x005F612F",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1902,
+      "operand": "0x005F613C",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1911,
+      "operand": "0x005F6145",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1919,
+      "operand": "0x005F614D",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1987,
+      "operand": "0x005F6192",
+      "symbol": "?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ",
+      "retail": "0x00686D60",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1998,
+      "operand": "0x005F61A0",
+      "symbol": "??0CWideString@@QAE@XZ",
+      "retail": "0x0099AED0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2013,
+      "operand": "0x005F61AE",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2028,
+      "operand": "0x005F61BE",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "retail": "0x009C95E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2037,
+      "operand": "0x005F61C7",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B7D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2045,
+      "operand": "0x005F61CF",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2053,
+      "operand": "0x005F61D7",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2068,
+      "operand": "0x005F61E5",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2083,
+      "operand": "0x005F61F3",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2111,
+      "operand": "0x005F620F",
+      "symbol": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "retail": "0x005F45B5",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2119,
+      "operand": "0x005F6217",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2127,
+      "operand": "0x005F621F",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2142,
+      "operand": "0x005F622D",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2157,
+      "operand": "0x005F623D",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "retail": "0x009C95E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2166,
+      "operand": "0x005F6246",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B7D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2174,
+      "operand": "0x005F624E",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2182,
+      "operand": "0x005F6256",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2197,
+      "operand": "0x005F6264",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2212,
+      "operand": "0x005F6272",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2240,
+      "operand": "0x005F628E",
+      "symbol": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "retail": "0x005F45B5",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2248,
+      "operand": "0x005F6296",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2256,
+      "operand": "0x005F629E",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2271,
+      "operand": "0x005F62AC",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2286,
+      "operand": "0x005F62BC",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "retail": "0x009C95E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2295,
+      "operand": "0x005F62C5",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B7D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2303,
+      "operand": "0x005F62CD",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2311,
+      "operand": "0x005F62D5",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2326,
+      "operand": "0x005F62E3",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2341,
+      "operand": "0x005F62F1",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2369,
+      "operand": "0x005F630D",
+      "symbol": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "retail": "0x005F45B5",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2377,
+      "operand": "0x005F6315",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2385,
+      "operand": "0x005F631D",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2400,
+      "operand": "0x005F632B",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2415,
+      "operand": "0x005F633B",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "retail": "0x009C95E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2424,
+      "operand": "0x005F6344",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B7D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2432,
+      "operand": "0x005F634C",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2440,
+      "operand": "0x005F6354",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2455,
+      "operand": "0x005F6362",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2470,
+      "operand": "0x005F6370",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2498,
+      "operand": "0x005F638C",
+      "symbol": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "retail": "0x005F45B5",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2506,
+      "operand": "0x005F6394",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2514,
+      "operand": "0x005F639C",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2522,
+      "operand": "0x005F63A4",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2530,
+      "operand": "0x005F63AC",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2538,
+      "operand": "0x005F63B4",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2546,
+      "operand": "0x005F63BC",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2559,
+      "operand": "0x005F63C9",
+      "symbol": "_free",
+      "retail": "0x00BFEA14",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2573,
+      "operand": "0x005F63D7",
+      "symbol": "_free",
+      "retail": "0x00BFEA14",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2587,
+      "operand": "0x005F63E5",
+      "symbol": "_free",
+      "retail": "0x00BFEA14",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2601,
+      "operand": "0x005F63F3",
+      "symbol": "_free",
+      "retail": "0x00BFEA14",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2615,
+      "operand": "0x005F6401",
+      "symbol": "_free",
+      "retail": "0x00BFEA14",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 35,
+      "operand": "0x005F59EA",
+      "symbol": "??_C@_0M@CJFIGKEH@PC_UI_FRAME?$AA@",
+      "retail": "0x0124EFA8",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 471,
+      "operand": "0x005F5B9E",
+      "symbol": "??_C@_0M@MIDDFJC@PC_SUB_LIST?$AA@",
+      "retail": "0x012303F4",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 509,
+      "operand": "0x005F5BC4",
+      "symbol": "??_C@_0CL@DNBEBLDA@PC_EXPRESSIONS_ITEMS_CONTAINMENT@",
+      "retail": "0x012520DC",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 568,
+      "operand": "0x005F5BFF",
+      "symbol": "??_C@_0BO@MICOFILD@PC_POSITION_DUMMY_BOTTOM_LEFT?$AA@",
+      "retail": "0x012520BC",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 680,
+      "operand": "0x005F5C6F",
+      "symbol": "??_C@_0CA@EJADIEIM@PC_EXPRESSION_ITEM_CONTAINMENT_?$AA@",
+      "retail": "0x0125209C",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 812,
+      "operand": "0x005F5CF3",
+      "symbol": "??_7CActionParamULONG@NUISystem@@6B@",
+      "retail": "0x0122F844",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 937,
+      "operand": "0x005F5D70",
+      "symbol": "??_7CActionParamULONG@NUISystem@@6B@",
+      "retail": "0x0122F844",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1069,
+      "operand": "0x005F5DF4",
+      "symbol": "??_7CActionParamULONG@NUISystem@@6B@",
+      "retail": "0x0122F844",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1133,
+      "operand": "0x005F5E34",
+      "symbol": "??_C@_0CE@IFGMKGAA@PC_EXPRESSION_ITEM_INSIDE_CONTAI@",
+      "retail": "0x01250220",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1198,
+      "operand": "0x005F5E75",
+      "symbol": "??_C@_0DE@OPEMBCFE@PC_EXPRESSION_ITEM_ASSIGNMENT_IC@",
+      "retail": "0x01250244",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1251,
+      "operand": "0x005F5EAA",
+      "symbol": "??_C@_0CK@FINBLHMB@PC_EXPRESSION_ITEM_ASSIGNMENT_IC@",
+      "retail": "0x012501F4",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1401,
+      "operand": "0x005F5F40",
+      "symbol": "??_7CActionParamULONG@NUISystem@@6B@",
+      "retail": "0x0122F844",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1535,
+      "operand": "0x005F5FC6",
+      "symbol": "??_7CActionParamULONG@NUISystem@@6B@",
+      "retail": "0x0122F844",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1657,
+      "operand": "0x005F6040",
+      "symbol": "??_7CActionParamSLONG@NUISystem@@6B@",
+      "retail": "0x012366F4",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1708,
+      "operand": "0x005F6073",
+      "symbol": "??_7CActionParamSLONG@NUISystem@@6B@",
+      "retail": "0x012366F4",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1881,
+      "operand": "0x005F6127",
+      "symbol": "??_C@_0BF@FGNLHEGB@PC_TITLE_EXPRESSIONS?$AA@",
+      "retail": "0x01256C68",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 1929,
+      "operand": "0x005F6157",
+      "symbol": "?TITLE_NAME@?A0x71ec6cf5@@3VCCharString@@A",
+      "retail": "0x013B8C60",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2005,
+      "operand": "0x005F61A6",
+      "symbol": "??_C@_0BF@ODIKBJCN@TEXT_GUI_MENU_SOCIAL?$AA@",
+      "retail": "0x01256DD8",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2060,
+      "operand": "0x005F61DD",
+      "symbol": "??_C@_0CN@OHBHJDKN@TEXT_GUI_MENUGUIDE_SKILLS_EXPRES@",
+      "retail": "0x01256DA8",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2075,
+      "operand": "0x005F61EB",
+      "symbol": "??_C@_0BI@NFCECPA@PC_RING_PIC_EXPR_SOCIAL?$AA@",
+      "retail": "0x01256F3C",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2134,
+      "operand": "0x005F6225",
+      "symbol": "??_C@_0BF@BDAABHNC@TEXT_GUI_MENU_RENOWN?$AA@",
+      "retail": "0x01253CF0",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2189,
+      "operand": "0x005F625C",
+      "symbol": "??_C@_0CN@BHJNJNFC@TEXT_GUI_MENUGUIDE_SKILLS_EXPRES@",
+      "retail": "0x01256D60",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2204,
+      "operand": "0x005F626A",
+      "symbol": "??_C@_0BI@PNNIEMAP@PC_RING_PIC_EXPR_RENOWN?$AA@",
+      "retail": "0x01256F24",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2263,
+      "operand": "0x005F62A4",
+      "symbol": "??_C@_0BI@LJPOBHAD@TEXT_GUI_MENU_ALIGNMENT?$AA@",
+      "retail": "0x01256D30",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2318,
+      "operand": "0x005F62DB",
+      "symbol": "??_C@_0DA@BHBJJDLP@TEXT_GUI_MENUGUIDE_SKILLS_EXPRES@",
+      "retail": "0x01256D00",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2333,
+      "operand": "0x005F62E9",
+      "symbol": "??_C@_0BL@ONOIGPPH@PC_RING_PIC_EXPR_ALIGNMENT?$AA@",
+      "retail": "0x01256F08",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2392,
+      "operand": "0x005F6323",
+      "symbol": "??_C@_0BG@BODDFJJM@TEXT_GUI_MENU_STEALTH?$AA@",
+      "retail": "0x01256CCC",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2447,
+      "operand": "0x005F635A",
+      "symbol": "??_C@_0CO@PDIPEHDG@TEXT_GUI_MENUGUIDE_SKILLS_EXPRES@",
+      "retail": "0x01256C9C",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z",
+      "offset": 2462,
+      "operand": "0x005F6368",
+      "symbol": "??_C@_0BJ@OGLPCPKO@PC_RING_PIC_EXPR_STEALTH?$AA@",
+      "retail": "0x01256EEC",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "offset": 30,
+      "operand": "0x004291FC",
+      "symbol": "??3@YAXPAX@Z",
+      "retail": "0x00BFE9BC",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "offset": 30,
+      "operand": "0x0042917E",
+      "symbol": "??3@YAXPAX@Z",
+      "retail": "0x00BFE9BC",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ",
+      "offset": 1,
+      "operand": "0x00429C54",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ",
+      "offset": 1,
+      "operand": "0x00429B73",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ",
+      "retail": "0x00429160",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z",
+      "offset": 3,
+      "operand": "0x00429FC1",
+      "symbol": "_malloc",
+      "retail": "0x00BFEA0E",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z",
+      "offset": 17,
+      "operand": "0x0042B323",
+      "symbol": "?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z",
+      "retail": "0x009AD9E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z",
+      "offset": 17,
+      "operand": "0x0042AF4D",
+      "symbol": "?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z",
+      "retail": "0x009AD9E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z",
+      "offset": 17,
+      "operand": "0x005F81CF",
+      "symbol": "?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z",
+      "retail": "0x009AD9E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "offset": 8,
+      "operand": "0x005DA248",
+      "symbol": "??_C@_0BC@EPEDAJNC@CExpressionSubDef?$AA@",
+      "retail": "0x01243ED8",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "offset": 17,
+      "operand": "0x005DA251",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "offset": 40,
+      "operand": "0x005DA268",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z",
+      "offset": 60,
+      "operand": "0x005DA27C",
+      "symbol": "?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z",
+      "retail": "0x009ADA10",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 8,
+      "operand": "0x005EE3BB",
+      "symbol": "??_C@_0BD@HLIOEIDB@UI_MISC_THINGS_DEF?$AA@",
+      "retail": "0x01230018",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 16,
+      "operand": "0x005EE3C3",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 27,
+      "operand": "0x005EE3CE",
+      "symbol": "?Get@CGameDefinitionManager@@SIAAV1@XZ",
+      "retail": "0x0044C6B0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 34,
+      "operand": "0x005EE3D5",
+      "symbol": "?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z",
+      "retail": "0x009AD390",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 44,
+      "operand": "0x005EE3DF",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 58,
+      "operand": "0x005EE3ED",
+      "symbol": "?Get@CGameDefinitionManager@@SIAAV1@XZ",
+      "retail": "0x0044C6B0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ",
+      "offset": 65,
+      "operand": "0x005EE3F4",
+      "symbol": "??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z",
+      "retail": "0x0042B312",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 13,
+      "operand": "0x005F45C2",
+      "symbol": "?GetInstance@CManager@NUISystem@@SIPAV12@XZ",
+      "retail": "0x0041E5F2",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 30,
+      "operand": "0x005F45D3",
+      "symbol": "??_C@_0BI@IPIPCKOD@PC_DESCRIPTION_VIEWPORT?$AA@",
+      "retail": "0x012370F4",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 38,
+      "operand": "0x005F45DB",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 54,
+      "operand": "0x005F45EB",
+      "symbol": "??_C@_0M@CJFIGKEH@PC_UI_FRAME?$AA@",
+      "retail": "0x0124EFA8",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 62,
+      "operand": "0x005F45F3",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 104,
+      "operand": "0x005F461D",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "retail": "0x0099B720",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 122,
+      "operand": "0x005F462F",
+      "symbol": "?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ",
+      "retail": "0x005CC772",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 131,
+      "operand": "0x005F4638",
+      "symbol": "??YCWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B8D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 139,
+      "operand": "0x005F4640",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 155,
+      "operand": "0x005F4650",
+      "symbol": "?GFIntToWideString@@YI?AVCWideString@@J@Z",
+      "retail": "0x00405F00",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 164,
+      "operand": "0x005F4659",
+      "symbol": "??YCWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B8D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 172,
+      "operand": "0x005F4661",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 178,
+      "operand": "0x005F4667",
+      "symbol": "??_C@_0BO@NNAPLCPC@PC_MENU_ENTRY_BRANCH_TEMPLATE?$AA@",
+      "retail": "0x01236EE4",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 186,
+      "operand": "0x005F466F",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 195,
+      "operand": "0x005F4678",
+      "symbol": "??_C@_0BC@NNOGNHJ@PC_BUTTON_BASTARD?$AA@",
+      "retail": "0x01236ED0",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 200,
+      "operand": "0x005F467D",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 216,
+      "operand": "0x005F468D",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "retail": "0x0122D70E",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 221,
+      "operand": "0x005F4692",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 256,
+      "operand": "0x005F46B5",
+      "symbol": "?CreateMenuEntryComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MMABVCCharString@@MV5@MV5@@Z",
+      "retail": "0x00428494",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 265,
+      "operand": "0x005F46BE",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 273,
+      "operand": "0x005F46C6",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 294,
+      "operand": "0x005F46DB",
+      "symbol": "??_C@_0P@GAHMAJMD@PC_DESCRIPTION?$AA@",
+      "retail": "0x01236F38",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 302,
+      "operand": "0x005F46E3",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 316,
+      "operand": "0x005F46F1",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 325,
+      "operand": "0x005F46FA",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 333,
+      "operand": "0x005F4702",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 344,
+      "operand": "0x005F470D",
+      "symbol": "?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ",
+      "retail": "0x00686D60",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 367,
+      "operand": "0x005F4724",
+      "symbol": "?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z",
+      "retail": "0x009C95E0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 384,
+      "operand": "0x005F4735",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 441,
+      "operand": "0x005F476E",
+      "symbol": "??_C@_0M@EIHEACDO@PC_SUBTITLE?$AA@",
+      "retail": "0x01230428",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 449,
+      "operand": "0x005F4776",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 462,
+      "operand": "0x005F4783",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 471,
+      "operand": "0x005F478C",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 479,
+      "operand": "0x005F4794",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 538,
+      "operand": "0x005F47CF",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "retail": "0x0122D70E",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 543,
+      "operand": "0x005F47D4",
+      "symbol": "??9CCharString@@QBE_NPBD@Z",
+      "retail": "0x0099E960",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 559,
+      "operand": "0x005F47E4",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 568,
+      "operand": "0x005F47ED",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 608,
+      "operand": "0x005F4815",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 614,
+      "operand": "0x005F481B",
+      "symbol": "??_C@_0M@MIDDFJC@PC_SUB_LIST?$AA@",
+      "retail": "0x012303F4",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 622,
+      "operand": "0x005F4823",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 635,
+      "operand": "0x005F4830",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 644,
+      "operand": "0x005F4839",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 652,
+      "operand": "0x005F4841",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 663,
+      "operand": "0x005F484C",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "retail": "0x0122D70E",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 668,
+      "operand": "0x005F4851",
+      "symbol": "??9CCharString@@QBE_NPBD@Z",
+      "retail": "0x0099E960",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 682,
+      "operand": "0x005F485F",
+      "symbol": "??_C@_09ILPPAIHK@_FOR_LIST?$AA@",
+      "retail": "0x01256C44",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 690,
+      "operand": "0x005F4867",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "retail": "0x0099F600",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 699,
+      "operand": "0x005F4870",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 708,
+      "operand": "0x005F4879",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 716,
+      "operand": "0x005F4881",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 755,
+      "operand": "0x005F48A8",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 816,
+      "operand": "0x005F48E5",
+      "symbol": "??_C@_0BF@FGNLHEGB@PC_TITLE_EXPRESSIONS?$AA@",
+      "retail": "0x01256C68",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 825,
+      "operand": "0x005F48EE",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 839,
+      "operand": "0x005F48FC",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 848,
+      "operand": "0x005F4905",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 856,
+      "operand": "0x005F490D",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 878,
+      "operand": "0x005F4923",
+      "symbol": "??0CWideString@@QAE@ABV0@@Z",
+      "retail": "0x0099B720",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 883,
+      "operand": "0x005F4928",
+      "symbol": "??_C@_15ELOONFKJ@?$AA?3?$AA?5?$AA?$AA@",
+      "retail": "0x01236A50",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 891,
+      "operand": "0x005F4930",
+      "symbol": "??YCWideString@@QAEABV0@PBG@Z",
+      "retail": "0x0099B940",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 902,
+      "operand": "0x005F493B",
+      "symbol": "??YCWideString@@QAEABV0@ABV0@@Z",
+      "retail": "0x0099B8D0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 930,
+      "operand": "0x005F4957",
+      "symbol": "?TITLE_NAME@?A0x71ec6cf5@@3VCCharString@@A",
+      "retail": "0x013B8C60",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 976,
+      "operand": "0x005F4985",
+      "symbol": "??_C@_0BG@DEEPEKNA@PC_LIST_ITEMS_ACTIONS?$AA@",
+      "retail": "0x01256C50",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 984,
+      "operand": "0x005F498D",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 995,
+      "operand": "0x005F4998",
+      "symbol": "?GetInstance@CManager@NUISystem@@SIPAV12@XZ",
+      "retail": "0x0041E5F2",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1002,
+      "operand": "0x005F499F",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1011,
+      "operand": "0x005F49A8",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1019,
+      "operand": "0x005F49B0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1036,
+      "operand": "0x005F49C1",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "retail": "0x0099EBF0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1050,
+      "operand": "0x005F49CF",
+      "symbol": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z",
+      "retail": "0x0041DB1D",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1059,
+      "operand": "0x005F49D8",
+      "symbol": "??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z",
+      "retail": "0x00429C15",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1067,
+      "operand": "0x005F49E0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "retail": "0x0099EAE0",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1150,
+      "operand": "0x005F4A33",
+      "symbol": "?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z",
+      "retail": "0x005F1526",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1158,
+      "operand": "0x005F4A3B",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1166,
+      "operand": "0x005F4A43",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1174,
+      "operand": "0x005F4A4B",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1182,
+      "operand": "0x005F4A53",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1190,
+      "operand": "0x005F4A5B",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1198,
+      "operand": "0x005F4A63",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1206,
+      "operand": "0x005F4A6B",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1214,
+      "operand": "0x005F4A73",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ",
+      "retail": "0x004291DE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z",
+      "offset": 1222,
+      "operand": "0x005F4A7B",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "retail": "0x0099B510",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?insert@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCActionParam@NUISystem@@U?$_Nonconst_traits@PAVCActionParam@NUISystem@@@std@@@2@U32@ABQAVCActionParam@NUISystem@@@Z",
+      "offset": 5,
+      "operand": "0x0042AAE1",
+      "symbol": "?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x00429FBE",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "offset": 16,
+      "operand": "0x00410DF0",
+      "symbol": "??_C@_06CBNGNPJL@bitset?$AA@",
+      "retail": "0x0122E068",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "offset": 21,
+      "operand": "0x00410DF5",
+      "symbol": "_puts",
+      "retail": "0x00BFEAF2",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+      "offset": 29,
+      "operand": "0x00410DFD",
+      "symbol": "_abort",
+      "retail": "0x00BFEAEC",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+      "offset": 14,
+      "operand": "0x004118CE",
+      "symbol": "??_C@_06CBNGNPJL@bitset?$AA@",
+      "retail": "0x0122E068",
+      "addend": 0,
+      "verified_by": "complete COFF string including terminator"
+    },
+    {
+      "owner": "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+      "offset": 19,
+      "operand": "0x004118D3",
+      "symbol": "_puts",
+      "retail": "0x00BFEAF2",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+      "offset": 27,
+      "operand": "0x004118DB",
+      "symbol": "_abort",
+      "retail": "0x00BFEAEC",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    },
+    {
+      "owner": "?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z",
+      "offset": 18,
+      "operand": "0x0042B658",
+      "symbol": "?insert@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCActionParam@NUISystem@@U?$_Nonconst_traits@PAVCActionParam@NUISystem@@@std@@@2@U32@ABQAVCActionParam@NUISystem@@@Z",
+      "retail": "0x0042AADC",
+      "addend": 0,
+      "verified_by": "binding evidence and native target"
+    }
+  ]
+}

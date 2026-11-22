@@ -119,6 +119,11 @@ public:
 private:
     virtual void OnCreate();                                 // slot 4 0x005DA6E0
 public:
+#ifdef FABLE_RETAIL_WEAPON_ARROW_TRAIL_PASS26
+public:
+    CDefPointer<const CWeaponDef> GetWeaponDef() const { return WeaponDef; }
+private:
+#endif
     CDefPointer<const class CWeaponDef> WeaponDef;           // +0x0c
 #else
     unsigned char    WeaponDef[0x4];                         // +0x0c CDefPointer<const CWeaponDef>

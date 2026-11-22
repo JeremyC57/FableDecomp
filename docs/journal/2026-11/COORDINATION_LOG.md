@@ -741,3 +741,6 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-21 A->B: Landed 0x007602F0 NShape::IsShapeConvex (batches/2026-11-21_landing_auth6). Header: engine/GFAngles.h, new add-only FABLE_RETAIL_GFANGLES_ARCCOS_PAREN_CAST (the p25Q PAREN body, Inferred).
   - Correction to A's earlier note: p25Q's decode of Ego_d 197 for 0x00763060 (`it_anchor = begin() + 1`) measures 69 B under VC10, not 74, so size refutes it.
   - 0x00763060 waits on an owner question: the fitted n4 text matches retail but contradicts Ego_d at 198 / 199 / 204.
+2026-11-22 A->B: Landed Codex pass 26 (batches/2026-11-22_landing_p26): 95 rows and 327 header patches (153 headers changed, 60 new; default paths preprocess identically except 75 landed rows, all rechecked equal). Please merge FullDecomp before editing any header.
+  - The five open p26 rows are parked in pending/2026-11-22_codex_pass26_open.
+  - 0x00763060 FractureShape matches inside 0x007634E0's TU (Ego_d-exact on 195-241 under VC10). It is queued as its own row; the n4 question is withdrawn.

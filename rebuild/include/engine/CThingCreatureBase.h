@@ -58,6 +58,10 @@ public:
  // Ego_r.pdb ?GetNominalMeshRadius / ?GetNominalMeshHeight / ?GetCurrentMeshRadius@CThingCreatureBase@@QBEMXZ (all out of line in retail).
  float GetNominalMeshRadius() const;                                     // 0x006625C0
  float GetNominalMeshHeight() const;                                     // 0x006625E0
+#ifdef FABLE_RETAIL_PHYSICAL_SHIELD_EFFECT_PASS26
+ float GetCurrentMeshHeight() const;
+ float GetApproxMaxMeshHeight() const;
+#endif
  float GetCurrentMeshRadius() const;                                     // 0x00664BA0
 private:
 #endif
@@ -519,6 +523,10 @@ public:
     // ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (out of line in retail at 0x006622A0) and
     // ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (0x00662D80; FableWin.pdb the same).
     // Declarations only: no layout change.
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_HIDDENMINIMAP_PASS26
+    // Both original PDBs; native006626a0 and original02be4250 caller.
+    void SetHiddenOnMiniMap(bool hidden);
+#endif
     bool IsPerformingAnyAction() const;                                  // 0x006622A0
     const class CAnimationEntry& GetRandomAnimFromName(const CCharString& name, long index) const;   // 0x00662D80
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMDURATION

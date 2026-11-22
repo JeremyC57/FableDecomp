@@ -8,6 +8,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_MINIONWATCHFIRES_UPDATE_PASS26
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThingBuilding;
+class CAIStateGroup_MinionWatchFires:public CAIStateGroupBase {
+public:virtual void Update();
+protected:CIntelligentPointer<CThingBuilding> PBuildingOnFire;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionWatchFires)==0x1c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -29,4 +39,5 @@ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_MinionWatchFires) == 0x1c);
 FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_MinionWatchFires, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_MinionWatchFires, PBuildingOnFire) == 0x14);
 
+#endif // new original complete owner opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONWATCHFIRES_H

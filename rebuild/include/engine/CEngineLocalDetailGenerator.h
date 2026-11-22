@@ -14,8 +14,18 @@ class CEngineLocalDetailGenerator : public CEngineComponent {
 public:
     CEngineLocalDetailGenerator(bool);         // 0x00B59B60 ??0CEngineLocalDetailGenerator@@QAE@_N@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINELOCALDETAILGENERATOR_ZSPRITE_PASS26
+    // Overlay opt-in (row 0x00BAA870): FableWin.pdb inline ?PeekZSpriteGenerationEnabled@CEngineLocalDetailGenerator@@QBE_NXZ; Ego_r.pdb
+    // ZSpriteGenerationEnabled at retail +0x24 (0x00BAA944 reads [g_pLocalDetailGenerator]+24h; the landed 0x00B59B60 ctor stores it there).
+    bool PeekZSpriteGenerationEnabled() const { return ZSpriteGenerationEnabled; }
+private:
+    unsigned char _pad_0xc[0x24 - 0xc];
+    bool ZSpriteGenerationEnabled;                                       // +0x24
+    unsigned char _pad_0x25[0x7c - 0x25];
+#else
 private:
     unsigned char _pad_0xc[0x70];               // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineLocalDetailGenerator) == 0x7c);
+FABLE_STATIC_ASSERT_AT(20, sizeof(CEngineLocalDetailGenerator) == 0x7c);
 #endif // FABLE_ENGINE_CENGINELOCALDETAILGENERATOR_H

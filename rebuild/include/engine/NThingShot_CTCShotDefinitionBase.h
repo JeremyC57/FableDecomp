@@ -62,6 +62,13 @@ public:
 #endif
     bool IsAbleToBeDeflected() const;                                   // 0x007BED60
 #endif
+#ifdef FABLE_RETAIL_PREDICTIVE_SUBSHOT_PASS26
+    CThing* GetPShooter() const { return PShooter.Get(); }
+#endif
+#ifdef FABLE_RETAIL_SHOT_UPDATEMOVEMENT_PASS26
+    // Original donor call graph0270d6c7/027096fc; access through named const pointer getter.
+    const CThing* GetPTargetThing()const{return PTargetThing.Get();}
+#endif
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_UPDATE
     // NF66 opt-in (row 0x006666A0 CThingCreatureBase::WorldUpdate): Ego_r.pdb ?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ (public,

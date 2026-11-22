@@ -166,6 +166,9 @@ public:
  const C2DExtentsI& PeekBackBufferResolution() const { return BackBufferDimensions; }
  #endif
  const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_ENUMERATE_MODES_PASS26
+ void EnumerateDisplayModes(CArray<CDisplayModeDesc>& modes, C2DExtentsI min_size, C2DExtentsI max_size);
+#endif
  void AddDeviceResetCallback(CDeviceResetCallback* callback);          // 0x009C0190 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (CEngine::Initialise)
  unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0 ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (Ego_r 0x00B23A60, FableWin)
  // FableWin.pdb ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ (debug only: inline in release; 0x006286F0 reads

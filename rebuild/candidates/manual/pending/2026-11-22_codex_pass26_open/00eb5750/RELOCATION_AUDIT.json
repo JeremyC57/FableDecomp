@@ -1,0 +1,626 @@
+[
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 14,
+    "symbol": "??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@",
+    "retail": "0x0125D1C8",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 27,
+    "symbol": "??0CCharString@@QAE@PBDJ@Z",
+    "retail": "0x0099EBF0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 54,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 69,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 86,
+    "symbol": "??0CBaseObject@@IAE@XZ",
+    "retail": "0x0099A380",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 93,
+    "symbol": "??_C@_00CNPNBAHC@?$AA@",
+    "retail": "0x0122D70E",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 105,
+    "symbol": "??_7CScriptGameResourceObjectMovieBase@@6B@",
+    "retail": "0x01260EF4",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 118,
+    "symbol": "??0CCharString@@QAE@PBDJ@Z",
+    "retail": "0x0099EBF0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 148,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 186,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 219,
+    "symbol": "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+    "retail": "0x0099F830",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 238,
+    "symbol": "??_C@_0BL@KLBNDNAA@TEXT_QST_B07_HENCHMAN_BUSY?$AA@",
+    "retail": "0x012F03A8",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 247,
+    "symbol": "??H@YI?AVCCharString@@PBDABV0@@Z",
+    "retail": "0x0099F690",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 258,
+    "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+    "retail": "0x0099F570",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 267,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 276,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 285,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 320,
+    "symbol": "__real@00000000",
+    "retail": "0x0122DEDC",
+    "addend": 0,
+    "verified_by": "value and width at target"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 342,
+    "symbol": "??1CScriptThing@@UAE@XZ",
+    "retail": "0x004AA840",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 381,
+    "symbol": "??BCCharString@@QBEPBDXZ",
+    "retail": "0x0099E4C0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 433,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 455,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 468,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 490,
+    "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+    "retail": "0x006E7B80",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 507,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 529,
+    "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+    "retail": "0x006E7B80",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 553,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 563,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 622,
+    "symbol": "__real@00000000",
+    "retail": "0x0122DEDC",
+    "addend": 0,
+    "verified_by": "value and width at target"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 644,
+    "symbol": "??1CScriptThing@@UAE@XZ",
+    "retail": "0x004AA840",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 688,
+    "symbol": "??_C@_0BL@KLBNDNAA@TEXT_QST_B07_HENCHMAN_BUSY?$AA@",
+    "retail": "0x012F03A8",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 697,
+    "symbol": "??H@YI?AVCCharString@@PBDABV0@@Z",
+    "retail": "0x0099F690",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 704,
+    "symbol": "??BCCharString@@QBEPBDXZ",
+    "retail": "0x0099E4C0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 732,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 741,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 768,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 791,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 818,
+    "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+    "retail": "0x006E7B80",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 849,
+    "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+    "retail": "0x006E7B80",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 887,
+    "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+    "retail": "0x006E7AB0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 899,
+    "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+    "retail": "0x0126008C",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 904,
+    "symbol": "??1CBaseObject@@MAE@XZ",
+    "retail": "0x0099A430",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 913,
+    "symbol": "??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@",
+    "retail": "0x0125D1C8",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 922,
+    "symbol": "??0CCharString@@QAE@PBDJ@Z",
+    "retail": "0x0099EBF0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 950,
+    "symbol": "??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@",
+    "retail": "0x0125D1C8",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 959,
+    "symbol": "??0CCharString@@QAE@PBDJ@Z",
+    "retail": "0x0099EBF0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 990,
+    "symbol": "??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@",
+    "retail": "0x0125D1C8",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 999,
+    "symbol": "??0CCharString@@QAE@PBDJ@Z",
+    "retail": "0x0099EBF0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1034,
+    "symbol": "?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z",
+    "retail": "0x00EB07D0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1065,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1082,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1096,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1115,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1132,
+    "symbol": "??0CBaseObject@@IAE@XZ",
+    "retail": "0x0099A380",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1139,
+    "symbol": "??_C@_00CNPNBAHC@?$AA@",
+    "retail": "0x0122D70E",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1151,
+    "symbol": "??_7CScriptGameResourceObjectMovieBase@@6B@",
+    "retail": "0x01260EF4",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1164,
+    "symbol": "??0CCharString@@QAE@PBDJ@Z",
+    "retail": "0x0099EBF0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1194,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1235,
+    "symbol": "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+    "retail": "0x0099F830",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1254,
+    "symbol": "??_C@_0BP@PMNMNKBD@TEXT_QST_B07_HENCHMAN_ATTACKED?$AA@",
+    "retail": "0x012F0388",
+    "addend": 0,
+    "verified_by": "complete COFF string equals retail string including terminator"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1263,
+    "symbol": "??H@YI?AVCCharString@@PBDABV0@@Z",
+    "retail": "0x0099F690",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1274,
+    "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+    "retail": "0x0099F570",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1283,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1292,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1301,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1338,
+    "symbol": "__real@00000000",
+    "retail": "0x0122DEDC",
+    "addend": 0,
+    "verified_by": "value and width at target"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1360,
+    "symbol": "??1CScriptThing@@UAE@XZ",
+    "retail": "0x004AA840",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1390,
+    "symbol": "??BCCharString@@QBEPBDXZ",
+    "retail": "0x0099E4C0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1435,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1461,
+    "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+    "retail": "0x00F35B30",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1485,
+    "symbol": "??1CCharString@@QAE@XZ",
+    "retail": "0x0099EAE0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1507,
+    "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+    "retail": "0x006E7AB0",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1519,
+    "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+    "retail": "0x0126008C",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+    "offset": 1524,
+    "symbol": "??1CBaseObject@@MAE@XZ",
+    "retail": "0x0099A430",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "??0CScriptGameResourceObjectBase@@QAE@XZ",
+    "offset": 4,
+    "symbol": "??0CBaseObject@@IAE@XZ",
+    "retail": "0x0099A380",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "??0CScriptGameResourceObjectBase@@QAE@XZ",
+    "offset": 10,
+    "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+    "retail": "0x0126008C",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "??0CScriptGameResourceObjectMovieBase@@QAE@XZ",
+    "offset": 4,
+    "symbol": "??0CBaseObject@@IAE@XZ",
+    "retail": "0x0099A380",
+    "addend": 0,
+    "verified_by": "binding table"
+  },
+  {
+    "owner": "??0CScriptGameResourceObjectMovieBase@@QAE@XZ",
+    "offset": 12,
+    "symbol": "??_7CScriptGameResourceObjectMovieBase@@6B@",
+    "retail": "0x01260EF4",
+    "addend": 0,
+    "verified_by": "binding table"
+  }
+]

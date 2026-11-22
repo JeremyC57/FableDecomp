@@ -1118,6 +1118,41 @@ public:
 };
 }
 FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
+#if defined(FABLE_RETAIL_STLP_TREE_ULONG_ULONG_SIZE_OWNER_PASS26) && defined(_MSC_VER)
+// Fidelity: scaffolding, not retail. The owners 0042FE07 and 00430046 use optimize("s", on).
+// These are the original STLport 4.6 bodies for the CUIDef alias map's tree. The reset
+// returns to optimize("", on), so any caller's own optimization pragmas follow this include.
+#pragma optimize("s", on)
+namespace std {
+typedef pair<const unsigned long, unsigned long> CUIAliasEntry;
+typedef _Rb_tree<unsigned long, CUIAliasEntry, _Select1st<CUIAliasEntry>, less<unsigned long>, allocator<CUIAliasEntry> > CUIAliasTree;
+
+template<>
+inline void CUIAliasTree::_M_erase(_Rb_tree_node<CUIAliasEntry>* node)
+{
+    while (node != 0) {
+        _M_erase(static_cast<_Rb_tree_node<CUIAliasEntry>*>(node->_M_right));
+        _Rb_tree_node<CUIAliasEntry>* left = static_cast<_Rb_tree_node<CUIAliasEntry>*>(node->_M_left);
+        _Destroy(&node->_M_value_field);
+        this->_M_header.deallocate(node, 1);
+        node = left;
+    }
+}
+
+template<>
+inline void CUIAliasTree::clear()
+{
+    if (_M_node_count != 0) {
+        _M_erase(static_cast<_Rb_tree_node<CUIAliasEntry>*>(this->_M_header._M_data->_M_parent));
+        this->_M_header._M_data->_M_left = this->_M_header._M_data;
+        this->_M_header._M_data->_M_parent = 0;
+        this->_M_header._M_data->_M_right = this->_M_header._M_data;
+        _M_node_count = 0;
+    }
+}
+}
+#pragma optimize("", on)
+#endif // FABLE_RETAIL_STLP_TREE_ULONG_ULONG_SIZE_OWNER_PASS26
 #ifdef FABLE_RETAIL_STLP_LESS_CCHARSTRING_SIZE_BODY
 // NF184 opt-in (2026-11-20, q4391; row 0x009A80B0 CBankFileManager::BankExists). Fidelity: scaffolding, not retail. That TU's
 // out-of-line _M_find copies call std::less<CCharString>::operator() (Ego_r.pdb ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z),
@@ -1133,6 +1168,33 @@ FABLE_STATIC_ASSERT_AT(699, sizeof(std::map<unsigned long,long>)==12);
 #pragma optimize("s", on)
 namespace std { template<> inline bool less<CCharString>::operator()(const CCharString& x,const CCharString& y) const { return x<y; } }
 #pragma optimize("", on)
+#endif
+#ifdef FABLE_RETAIL_ARROW_TREE_FIND_SIZE_OWNER_PASS26
+// Fidelity: scaffolding, not retail. Owner 005CC04A sets optimize("s",on).
+// The reset optimize("",on) requires that row-level pragmas follow this header.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+namespace std {
+typedef pair<const EObjectAugmentationType,long> ArrowTrailValue;
+typedef _Rb_tree<EObjectAugmentationType,ArrowTrailValue,_Select1st<ArrowTrailValue>,
+                 less<EObjectAugmentationType>,allocator<ArrowTrailValue> > ArrowTrailTree;
+template<> template<> inline _Rb_tree_node<ArrowTrailValue>*
+ArrowTrailTree::_M_find<EObjectAugmentationType>(const EObjectAugmentationType& key) const
+{
+    _Link_type y=this->_M_header._M_data;
+    _Link_type x=_M_root();
+    while (x) {
+        if (!_M_key_compare(_S_key(x),key)) { y=x; x=_S_left(x); }
+        else x=_S_right(x);
+    }
+    if (y==this->_M_header._M_data || _M_key_compare(key,_S_key(y))) y=this->_M_header._M_data;
+    return y;
+}
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_FIND_LONG_LONG_SIZE_BODY
 // NF189 opt-in (2026-11-20, q4385; row 0x006D0630 CTCWife::ReceivedNiceGiftIsOpinionReactionHappening). Fidelity: scaffolding, not retail.
@@ -1168,6 +1230,35 @@ namespace std {
 template<> inline map<unsigned long,long,less<unsigned long>,allocator<pair<const unsigned long,long> > >::iterator
 map<unsigned long,long,less<unsigned long>,allocator<pair<const unsigned long,long> > >::find(const unsigned long& key)
 { return _M_t.find(key); }
+}
+#pragma optimize("", on)
+#endif
+
+#if defined(FABLE_RETAIL_STLP_CHAR_LONG_ERASE_OWNER_PASS26) && defined(_MSC_VER)
+// The actual0043020a owner is the standard recursive body compiled for size.
+#pragma optimize("s", on)
+namespace std {
+template<> FABLE_FORCEINLINE void _Destroy(pair<const CCharString,long>* p) { p->~pair(); }
+template<> inline void _Rb_tree<CCharString,pair<const CCharString,long>,_Select1st<pair<const CCharString,long> >,less<CCharString>,allocator<pair<const CCharString,long> > >::_M_erase(_Rb_tree_node<pair<const CCharString,long> >* x)
+{
+    while(x!=0) {
+        _M_erase(static_cast<_Rb_tree_node<pair<const CCharString,long> >*>(x->_M_right));
+        _Rb_tree_node<pair<const CCharString,long> >* y=static_cast<_Rb_tree_node<pair<const CCharString,long> >*>(x->_M_left);
+        _Destroy(&x->_M_value_field);
+        this->_M_header.deallocate(x,1);
+        x=y;
+    }
+}
+template<> inline void _Rb_tree<CCharString,pair<const CCharString,long>,_Select1st<pair<const CCharString,long> >,less<CCharString>,allocator<pair<const CCharString,long> > >::clear(){
+ if(_M_node_count!=0){
+  _M_erase(static_cast<_Rb_tree_node<pair<const CCharString,long> >*>(this->_M_header._M_data->_M_parent));
+  this->_M_header._M_data->_M_left=this->_M_header._M_data;
+  this->_M_header._M_data->_M_parent=0;
+  this->_M_header._M_data->_M_right=this->_M_header._M_data;
+  _M_node_count=0;
+ }
+}
+template<> inline _Rb_tree<CCharString,pair<const CCharString,long>,_Select1st<pair<const CCharString,long> >,less<CCharString>,allocator<pair<const CCharString,long> > >::~_Rb_tree(){clear();}
 }
 #pragma optimize("", on)
 #endif

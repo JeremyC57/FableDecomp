@@ -18,6 +18,9 @@
 #include "engine/C3DVector.h"
 #endif
 class CIEngine;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_INVERSE_TRANSLATE_PASS26
+class CMatrix3x4;
+#endif
 namespace NParticleEngine {
 #ifdef FABLE_RETAIL_CPARTICLESYSTEM_ADDCOMPONENT
 class CPSCBase;
@@ -30,6 +33,11 @@ class CDecal;
 #endif
 // Layout: native ctor00af4e10 and original TPI complete fields; size0x70.
 class CParticleSystem:public CBaseClass {
+public:
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_INVERSE_TRANSLATE_PASS26
+ // Both PDBs, donor02f5e230 caller; native00b201d0.
+ void GetInverseSystemTransformWithTranslate(CMatrix3x4&)const;
+#endif
 public:CParticleSystem();virtual ~CParticleSystem();
  void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSerialiseInfo&);
  void SetParentEmitter(const CParticleEmitter& p){PParentEmitter=&p;}

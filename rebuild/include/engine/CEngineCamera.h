@@ -155,6 +155,14 @@ public:
 #endif
 #endif
 private:
+#ifdef FABLE_RETAIL_CENGINECAMERA_DEBUGSCRIPT_PASS26
+ // FableWin 0x02DC0580 and the Ego_d engine_camera.obj procedure record.
+ void ProcessDebugScript();
+#ifdef FABLE_RETAIL_CENGINECAMERA_SETSTATE_CONTEXT_PASS26
+ // Both donor PDBs identify SetupGamut. The native setter calls it at 00B3110F.
+ void SetupGamut();
+#endif
+#endif
  const CCamera* GameCamera;
  const C2DBoxF* GameWindow;
  CEngineCameraDesc CameraDesc;
@@ -167,7 +175,12 @@ private:
  C3DVector LookVector;
  CPlane FrustrumPlanes[4];
  long ConsoleOverrideViewPortWidth,ConsoleOverrideViewPortHeight;
+#ifdef FABLE_RETAIL_CENGINECAMERA_DEBUGSCRIPT_PASS26
+ // FableWin CArray<CDebugScriptElement>::operator[] mangles the nested element as a struct.
+ struct CDebugScriptElement {C3DVector WorldPos,LookVector;float FOV,TimeToNextElement;};
+#else
  class CDebugScriptElement {public:C3DVector WorldPos,LookVector;float FOV,TimeToNextElement;};
+#endif
  CArray<CDebugScriptElement> DebugScript;
  long CurrentDebugScriptElement;
  bool DebugScriptRunning;

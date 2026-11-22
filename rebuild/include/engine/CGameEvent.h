@@ -11,6 +11,10 @@
 #pragma pack(push, 1)
 class CGameEvent {
 public:
+#ifdef FABLE_RETAIL_CGAMEEVENT_DEFAULT_CONSTRUCTOR_PASS26
+    // FableWin 018A13F0 and Ego_r 00414EC0 set only Player and Valid.
+    CGameEvent() : Player(-1), Valid(false) {}
+#endif // FABLE_RETAIL_CGAMEEVENT_DEFAULT_CONSTRUCTOR_PASS26
 #ifdef FABLE_RETAIL_CGAMEEVENT_INLINE_CTOR
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 #endif
@@ -32,6 +36,9 @@ public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddData(long size, const void* data);               // 0x009F1760
     void AddFloat(float value) { AddData(sizeof(value), &value); }
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+    void AddUWORD(unsigned short value) { AddData(sizeof(value), &value); }
+#endif
     void AddUBYTE(unsigned char value) { AddData(sizeof(value), &value); }
     void SetPlayer(long player) { Player = (signed char)player; }
 #ifdef FABLE_RETAIL_CGAMEEVENT_INLINE_ADDULONG
@@ -66,12 +73,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGameEvent) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CGameEvent, Type) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CGameEvent, Player) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CGameEvent, Data) == 0x5);
-FABLE_STATIC_ASSERT(offsetof(CGameEvent, EndPos) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CGameEvent, Valid) == 0x26);
-FABLE_STATIC_ASSERT(offsetof(CGameEvent, Replacement) == 0x27);
+FABLE_STATIC_ASSERT_AT(69, sizeof(CGameEvent) == 0x28);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CGameEvent, Type) == 0x0);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CGameEvent, Player) == 0x4);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CGameEvent, Data) == 0x5);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CGameEvent, EndPos) == 0x25);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CGameEvent, Valid) == 0x26);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CGameEvent, Replacement) == 0x27);
 
 #endif // FABLE_ENGINE_CGAMEEVENT_H

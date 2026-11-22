@@ -21,6 +21,10 @@ class CRightHandedSet;
 class CTCUserActionPointBase : public CTCBase {
 public:
     bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& rh_set, long& index);   // 0x007FEDE0
+#ifdef FABLE_RETAIL_CTCUSERACTIONPOINTBASE_ACTIONPOINTFREE_PASS26
+    // Ego_r and FableWin const member, out of line at 007FEBF0.
+    bool IsActionPointFree() const;
+#endif
     void SetActionPointAsFree(long index);                               // 0x007FEF40
 };
 class CTCSingleUserActionPoints : public CTCUserActionPointBase {

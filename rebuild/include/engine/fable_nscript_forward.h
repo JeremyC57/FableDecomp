@@ -51,7 +51,11 @@ enum ECrime;
 enum ECutsceneBehaviour;
 enum EDoorTriggerType;
 enum EGameAction;
+#ifdef FABLE_RETAIL_MURDER_ASSASSIN_GUARD_PASS26
+#include "engine/EHeroAbility.h"
+#else
 enum EHeroAbility;
+#endif
 enum EHeroTitle;
 enum EHeroTrainableStatType;
 enum EMiniGameType;
@@ -62,12 +66,20 @@ enum EOpinionAttitudeType;
 enum EOpinionDeedType;
 enum EOpinionPostDeedType;
 enum EOpinionReactionType;
+#ifdef FABLE_RETAIL_PHASE1_ARCHER_PASS26
+#include "engine/EScriptAIPriority.h"
+#else
 enum EScriptAIPriority;
+#endif
 enum EScriptVillageAttitude;
 enum EScriptingStateGroups;
 enum ESex;
 enum ETargetingType;
+#ifdef FABLE_RETAIL_MURDER_ASSASSIN_GUARD_PASS26
+#include "engine/ETextGroupSelectionMethod.h"
+#else
 enum ETextGroupSelectionMethod;
+#endif
 enum ETutorialCategory;
 namespace NEntityEvents { enum EEventType; }
 #else
@@ -80,7 +92,11 @@ enum ECrime { };
 enum ECutsceneBehaviour { };
 enum EDoorTriggerType { };
 enum EGameAction { };
+#ifdef FABLE_RETAIL_MURDER_ASSASSIN_GUARD_PASS26
+#include "engine/EHeroAbility.h"
+#else
 enum EHeroAbility { };
+#endif
 enum EHeroTitle { };
 enum EHeroTrainableStatType { };
 enum EMiniGameType { };
@@ -91,12 +107,20 @@ enum EOpinionAttitudeType { };
 enum EOpinionDeedType { };
 enum EOpinionPostDeedType { };
 enum EOpinionReactionType { };
+#ifdef FABLE_RETAIL_PHASE1_ARCHER_PASS26
+#include "engine/EScriptAIPriority.h"
+#else
 enum EScriptAIPriority { };
+#endif
 enum EScriptVillageAttitude { };
 enum EScriptingStateGroups { };
 enum ESex { };
 enum ETargetingType { };
+#ifdef FABLE_RETAIL_MURDER_ASSASSIN_GUARD_PASS26
+#include "engine/ETextGroupSelectionMethod.h"
+#else
 enum ETextGroupSelectionMethod { };
+#endif
 enum ETutorialCategory { };
 namespace NEntityEvents { enum EEventType { }; }
 #endif

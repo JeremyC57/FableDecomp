@@ -1,5 +1,18 @@
 #ifndef FABLE_ENGINE_DIRECT3D9_TYPES_H
 #define FABLE_ENGINE_DIRECT3D9_TYPES_H
+
+#ifdef FABLE_RETAIL_ORIGINAL_PRIMITIVE_TO_D3D_PASS26
+enum _D3DPRIMITIVETYPE {
+    D3DPT_POINTLIST = 1,
+    D3DPT_LINELIST = 2,
+    D3DPT_LINESTRIP = 3,
+    D3DPT_TRIANGLELIST = 4,
+    D3DPT_TRIANGLESTRIP = 5,
+    D3DPT_TRIANGLEFAN = 6,
+    D3DPT_FORCE_DWORD = 0x7fffffff
+};
+typedef _D3DPRIMITIVETYPE D3DPRIMITIVETYPE;
+#endif // FABLE_RETAIL_ORIGINAL_PRIMITIVE_TO_D3D_PASS26
 // Selected original Direct3D9 SDK declarations, independently checked against Ego_r TPI.
 // Copyright (C) Microsoft Corporation. All Rights Reserved.
 typedef unsigned long DWORD;

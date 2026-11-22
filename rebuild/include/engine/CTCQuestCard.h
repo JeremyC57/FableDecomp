@@ -77,6 +77,10 @@ public:
     // and the inline ?GetPDef@CTCQuestCard@@QBE?AV?$CDefPointer@$$CBVCQuestCardDef@@@@XZ (FableWin.pdb 0x01C543E0; retail copies PDef
     // +0x0C in place: null test, `inc [ecx+4]`, read, `dec [ecx+4]` / release, 0x0061E7D3). Needs the complete engine/CQuestCardDef.h.
     bool IsCore() const;                                                 // 0x00702280
+#ifdef FABLE_RETAIL_CTCQUESTCARD_ISFEAT_PASS26
+    // FableWin 0x01C54420 and the native +0x14 comparison at 0x004B1F43.
+    bool IsFeat() const { return FeatIndex > -1; }
+#endif
     bool IsOptional() const;                                             // 0x007022C0
 #ifdef FABLE_RETAIL_CTCQUESTCARD_ISVIGNETTE
     // Nested opt-in (bwf1, CreateMapMarkers body in the 0x0060EEB0 TU): Ego_r.pdb / FableWin.pdb ?IsVignette@CTCQuestCard@@QBE_NXZ, out of line.

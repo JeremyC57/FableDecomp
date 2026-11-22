@@ -168,6 +168,30 @@ public:
     bool operator<(const CBasicString& other) const;                 // 0x00429950 (CBasicString<char>)
 #endif
 };
+#ifdef FABLE_RETAIL_CBASICSTRING_CHAR_COMPARE_MINIMAP_PASS26
+// FableWin 01899DC0 and 01899D90, retail 00411570 and 004115A0.
+// The two signed character operands are read again for the ordering tests.
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+template<> inline long FABLE_FASTCALL CBasicString<char>::Compare(const char* a,const char* b)
+{
+    while (*a || *b) {
+        if (*a < *b) return -1;
+        else if (*a > *b) return 1;
+        ++a;
+        ++b;
+    }
+    return 0;
+}
+template<> inline bool CBasicString<char>::operator==(const char* text) const
+{
+    return Compare(PData,text)==0;
+}
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+#endif // FABLE_RETAIL_CBASICSTRING_CHAR_COMPARE_MINIMAP_PASS26
 #if defined(FABLE_RETAIL_CCHARSTRING_LESS_INLINE) && defined(FABLE_RETAIL_CBASICSTRING_LESS_BODY)
 // Retail opt-in (NF80, q10763 / q10923): the one definition of Ego_r.pdb ??M?$CBasicString@D@@QBE_NABV0@@Z (0x00429950), as a
 // template member so every object that sees it emits a pick-any COMDAT (selection 2) and the copies link together. Never inlined:
@@ -257,6 +281,10 @@ inline bool FABLE_FASTCALL GFStringsAreEqual(const wchar_t* a, const wchar_t* b)
 class CWideString
 {
 public:
+#ifdef FABLE_RETAIL_STRING_MEMTRACKING_PASS26
+    // Both original PDB PUBLIC/GDATA records; native string allocation category.
+    static long MemTrackingID;
+#endif
     CWideString();
 #ifdef FABLE_RETAIL_CWIDESTRING_REPLACE_PASS24
     void SetAsSubString(const wchar_t* data, long length) { SetString(data,length); }
@@ -458,6 +486,10 @@ CWideString FABLE_FASTCALL operator+(
 class CCharString
 {
 public:
+#ifdef FABLE_RETAIL_STRING_MEMTRACKING_PASS26
+    // Both original PDB PUBLIC/GDATA records; native string allocation category.
+    static long MemTrackingID;
+#endif
     CCharString();
 #ifdef FABLE_RETAIL_CCHARSTRING
     // Retail opt-in (chunk 717): retail's only const char* constructor is ??0CCharString@@QAE@PBDJ@Z 0x0099EBF0 (Ego_r.pdb +

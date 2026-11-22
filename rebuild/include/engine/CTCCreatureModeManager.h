@@ -1,6 +1,9 @@
 #ifndef FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
 #define FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CMODEBASE_ORIGINAL_GETTYPE_PASS26
+#include "engine/NCreatureMode.h"
+#endif
 #include "engine/CCountedPointer.h"
 #include "stlport/fable_containers.h"
 #ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY
@@ -27,7 +30,11 @@ public:
         CModeBase(CThing& parent_thing);                                                         // 0x0073EAC0
 #endif
         virtual ~CModeBase();
-        virtual unsigned long GetType() const=0; // Native slot1, used by006680f5.
+#ifdef FABLE_RETAIL_CMODEBASE_ORIGINAL_GETTYPE_PASS26
+        virtual NCreatureMode::EMode GetType()const=0;
+#else
+        virtual unsigned long GetType() const=0;
+#endif // Native slot1, used by006680f5.
 #ifdef FABLE_RETAIL_CMODEBASE_VIRTUALS
         // Retail opt-in (chunk 802, row 0x008EACB0 NCreatureMode::CModeHoverBase::OnActivate): the rest of the CModeBase vtable
         // 0x012673CC (12 slots), Ego_r.pdb / FableWin.pdb spellings (all public virtual, UAE / UBE): slot 2 AnimUpdate, 3 FrameUpdate,

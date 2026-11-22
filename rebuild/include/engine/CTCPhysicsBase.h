@@ -313,6 +313,10 @@ public:
     const C3DVector& GetLastPosition() const { return OldPosition; }
 #endif
     CPhysicsMeshObject GetPhysicsMeshObject() const;
+#ifdef FABLE_RETAIL_MAP_CACHED_VOLUMES_PASS26
+    bool HasPhysicsMeshObject() const { return GetPhysicsMeshInfo()!=0; }
+#endif
+
 #ifdef FABLE_RETAIL_CTCPHYSICSBASE_GETMASS
 // agentFAM04 (2026-11-11): Ego_r.pdb ?GetMass@CTCPhysicsBase@@QBEMXZ (public const, out of line in retail at 0x006AFE00: the
 // PhysicsDef Mass +0x38 read; CTCPhysicsStandard::EnableGravity 0x007235E0 calls it). Declaration only: no layout change.

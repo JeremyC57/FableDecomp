@@ -1,0 +1,6 @@
+{
+  "selected_history_tag": "spell21_portable_lock_owner",
+  "body_sha256": "1776f2531693193b50abdd0d65cf14f7da06e6aaa3b7a1648273a34b37ad3e67",
+  "body_identical": true,
+  "dependencies": "Deterministic surface storage, pitch, conversion and dimensions adapters. The complete selected copy body executes in both native and portable C++03."
+}

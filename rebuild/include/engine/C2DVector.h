@@ -15,6 +15,9 @@
 // `lea ecx,[esi+146h]` -> Transfer<float> 0x00431061) right after Inverted at +0x141; Ego_r.pdb places the same member
 // at CUIDef+0x15E and COldFileFormatThingBrushInfo::PositionOffset at +0x11 (struct_layouts_egor.tsv), neither reachable
 // with 4-byte alignment; the raw C2DVector TPI records (Ego_r 0x9ebe, FableWin 0x9b09) carry the packed property bit.
+#ifdef FABLE_RETAIL_C2DVECTOR_MAGNITUDE_GFFASTSQRT_PASS26
+float FABLE_FASTCALL GFFastSqrt(float);
+#endif
 extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (1e-4f)
 #pragma pack(push, 1)
 class C2DVector {
@@ -33,7 +36,12 @@ public:
     FABLE_FORCEINLINE
 #endif
     C2DVector(float x,float y) : X(x),Y(y) { }
+#ifdef FABLE_RETAIL_C2DVECTOR_ORIGINAL_COPIES_PASS26
+    // Original01898e60/01a3f600: direct two-component copies, shared lib_coord constructor form.
+    C2DVector(const C2DVector& p) {X=p.X;Y=p.Y;}
+#else
     C2DVector(const C2DVector& p) : X(p.X),Y(p.Y) { }
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_CLEAR
     // Nested opt-in (hand3c3, row 0x00B16410 NParticleEngine::CPSCOrbit::COrbitState::Update): FableWin.pdb / Ego_d.pdb
     // ?Clear@C2DVector@@QAEXXZ (FableWin 0x01F72120), inline in retail (no Fable.exe copy). Ego_d: one 26-byte line = two separate
@@ -86,6 +94,10 @@ public:
     const C2DVector& operator+=(const C2DVector& vector) { X+=vector.X; Y+=vector.Y; return *this; }
     // lib_coord.hpp division through the reciprocal (row 0x00547050 NUISystem::CScrollingComponent::UpdatePosition:
     // `fld 1.0 ; fdiv [time]` then two fmul; also the landed base 0x0052FFD0's local model).
+#ifdef FABLE_RETAIL_C2DVECTOR_DIVASSIGN_PASS26
+    // Original02190580, reciprocal then in-place X/Y; originalcaller031ac720 divides by2.
+    const C2DVector& operator/=(float scale){const float oo_scale=1.0f/scale;X*=oo_scale;Y*=oo_scale;return *this;}
+#endif
     const C2DVector operator/(float scalar) const { float inverse = 1.0f/scalar; return C2DVector(X*inverse,Y*inverse); }
     // Component-wise scale (row 0x00547050: RenderPosition *= ParentZoom, `fld [zoom.X] ; fmul [pos.X]`).
     const C2DVector& operator*=(const C2DVector& vector) { X*=vector.X; Y*=vector.Y; return *this; }
@@ -114,7 +126,12 @@ public:
     // in a named local, then sqrtf.
     float GetMagnitude() const { float squared=X*X+Y*Y; return sqrtf(squared); }
 #else
+#ifdef FABLE_RETAIL_C2DVECTOR_MAGNITUDE_GFFASTSQRT_PASS26
+    // Original02089cb0 calls GFFastSqrt on the direct squared sum.
+    float GetMagnitude() const { return GFFastSqrt(X*X+Y*Y); }
+#else
     float GetMagnitude() const { return sqrtf(X*X+Y*Y); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_C2DVECTOR_TOC2DCOORDI
     // Opt-in (agentC39, row 0x00652FA4 CDrawQuickAccessIcons::Draw): Ego_r.pdb / FableWin.pdb ?ToC2DCoordI@C2DVector@@QBE?AVC2DCoordI@@XZ,
@@ -196,7 +213,11 @@ public:
 #pragma pack(pop)
 #ifdef FABLE_RETAIL_C2DVECTOR_FROM3D
 #include "engine/C3DVector.h"
+#ifdef FABLE_RETAIL_C2DVECTOR_ORIGINAL_COPIES_PASS26
+inline C2DVector::C2DVector(const C3DVector& v) {X=v.X;Y=v.Y;}
+#else
 inline C2DVector::C2DVector(const C3DVector& v) : X(v.X),Y(v.Y) { }
+#endif
 #ifdef FABLE_RETAIL_C2DVECTOR_ASSIGN3D
 inline void C2DVector::operator=(const C3DVector& v) {X=v.X;Y=v.Y;}
 #endif
@@ -206,6 +227,14 @@ inline void C2DVector::operator=(const C3DVector& v) {X=v.X;Y=v.Y;}
 // (global __fastcall; FableWin COMDAT 0x01B4F090, 64 bytes / 25 instructions, emitted right after UpdateRegionLoad; no Ego_r copy: inline
 // in retail). Body FITTED to the row's bytes (0x004A44C5..0x004A450F: both differences stored as separate floats, second minus first,
 // then dy*dy + dx*dx); this text is 24 instructions / 62 bytes at /Od.
+#ifdef FABLE_RETAIL_C2DVECTOR_ORIGINAL_DISTANCE_PASS26
+// FableWin 0x01B4F090 and Ego_d locals dx/dy: read their squares in X/Y order.
+inline float FABLE_FASTCALL GFGet2DDistanceSquared(const C2DVector& pos1, const C2DVector& pos2) {
+    float dx = pos2.X - pos1.X;
+    float dy = pos2.Y - pos1.Y;
+    return dx * dx + dy * dy;
+}
+#else
 inline float __fastcall GFGet2DDistanceSquared(const C2DVector& pos1, const C2DVector& pos2) {
     float dx = pos2.X - pos1.X;
     float dy = pos2.Y - pos1.Y;
@@ -213,6 +242,7 @@ inline float __fastcall GFGet2DDistanceSquared(const C2DVector& pos1, const C2DV
     squared += dx * dx;
     return squared;
 }
+#endif
 #endif
 #else
 class C2DVector {

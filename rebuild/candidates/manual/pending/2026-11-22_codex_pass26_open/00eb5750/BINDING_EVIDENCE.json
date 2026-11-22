@@ -1,0 +1,2045 @@
+{
+  "row": "00eb5750",
+  "selected": "native_movie_pointer_owner",
+  "full_owner_grade": "release_donor_direct_all_t150",
+  "leaf_normal_cleanup_call_sites": [
+    "00eb5ac6",
+    "00eb5d32"
+  ],
+  "selected_referenced_movie_copy": {
+    "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+    "bytes": 25,
+    "calls_counted_symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ"
+  },
+  "alternate_full_owner_objects": [
+    {
+      "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+      "address": "006e7b80",
+      "extent": 66,
+      "verified_operands": [
+        {
+          "offset": 31,
+          "symbol": "??3@YAXPAX@Z",
+          "retail_target": "00bfe9bc"
+        },
+        {
+          "offset": 54,
+          "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+          "retail_target": "0126008c"
+        },
+        {
+          "offset": 62,
+          "symbol": "??1CBaseObject@@MAE@XZ",
+          "retail_target": "0099a430"
+        }
+      ],
+      "indirect_delete": {
+        "site": "006e7b97",
+        "member": "CCPPointerInfo::DeleteFunc",
+        "offset": 4
+      }
+    },
+    {
+      "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+      "address": "006e7ab0",
+      "extent": 53,
+      "verified_operands": [
+        {
+          "offset": 31,
+          "symbol": "??3@YAXPAX@Z",
+          "retail_target": "00bfe9bc"
+        }
+      ],
+      "indirect_delete": {
+        "site": "006e7ac7",
+        "member": "CCPPointerInfo::DeleteFunc",
+        "offset": 4
+      }
+    }
+  ],
+  "selected_four_exact_owners": [
+    {
+      "symbol": "??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z",
+      "retail_address": "00cbe09a",
+      "extent": 25,
+      "verified_operands": [],
+      "virtual_receiver": "CGameScriptInterfaceBase::PauseAllNonScriptedEntities",
+      "virtual_call_site": "00cbe0a7",
+      "virtual_slot": 379
+    },
+    {
+      "symbol": "??1CWideScreenMagicPauseEntities@@QAE@XZ",
+      "retail_address": "00cbe0b3",
+      "extent": 13,
+      "verified_operands": [],
+      "virtual_receiver": "CGameScriptInterfaceBase::PauseAllNonScriptedEntities",
+      "virtual_call_site": "00cbe0b9",
+      "virtual_slot": 379
+    },
+    {
+      "symbol": "??0CScriptGameResourceObjectBase@@QAE@XZ",
+      "retail_address": "006e7a60",
+      "extent": 18,
+      "verified_operands": [
+        {
+          "offset": 4,
+          "symbol": "??0CBaseObject@@IAE@XZ",
+          "retail_target": "0099a380"
+        },
+        {
+          "offset": 10,
+          "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+          "retail_target": "0126008c"
+        }
+      ]
+    },
+    {
+      "symbol": "??0CScriptGameResourceObjectMovieBase@@QAE@XZ",
+      "retail_address": "006e7b60",
+      "extent": 26,
+      "verified_operands": [
+        {
+          "offset": 4,
+          "symbol": "??0CBaseObject@@IAE@XZ",
+          "retail_target": "0099a380"
+        },
+        {
+          "offset": 12,
+          "symbol": "??_7CScriptGameResourceObjectMovieBase@@6B@",
+          "retail_target": "01260ef4"
+        }
+      ]
+    }
+  ],
+  "measured_byte_exact_alternate": {
+    "tag": "release_measured_late_t189",
+    "exact_leaf_bytes": 1536,
+    "matching_mapped_owners": 6,
+    "unresolved_leaf_bindings": [
+      {
+        "site": "00eb5ac6",
+        "retail_target": "006e7ab0",
+        "expected_symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+        "measured_symbol": "?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ"
+      },
+      {
+        "site": "00eb5d32",
+        "retail_target": "006e7ab0",
+        "expected_symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+        "measured_symbol": "?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ"
+      }
+    ],
+    "checked_full_owners": [
+      {
+        "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+        "address": "006e7b80",
+        "extent": 66,
+        "verified_operands": [
+          {
+            "offset": 31,
+            "symbol": "??3@YAXPAX@Z",
+            "retail_target": "00bfe9bc"
+          },
+          {
+            "offset": 54,
+            "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+            "retail_target": "0126008c"
+          },
+          {
+            "offset": 62,
+            "symbol": "??1CBaseObject@@MAE@XZ",
+            "retail_target": "0099a430"
+          }
+        ],
+        "indirect_delete": {
+          "site": "006e7b97",
+          "member": "CCPPointerInfo::DeleteFunc",
+          "offset": 4
+        }
+      },
+      {
+        "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+        "address": "006e7ab0",
+        "extent": 53,
+        "verified_operands": [
+          {
+            "offset": 31,
+            "symbol": "??3@YAXPAX@Z",
+            "retail_target": "00bfe9bc"
+          }
+        ],
+        "indirect_delete": {
+          "site": "006e7ac7",
+          "member": "CCPPointerInfo::DeleteFunc",
+          "offset": 4
+        }
+      }
+    ],
+    "compiler_diagnostic": "VC7.1 inliner at the measured T189 cutoff; diagnostic and unmodified native objects agree in every emitted public function and relocation."
+  },
+  "exact_late_counted_alternate": {
+    "tag": "release_latemember_000_nomovie_inline",
+    "same_leaf_bytes_and_relocations": true,
+    "movie_owner_bytes": 25,
+    "verified_counted_owner": {
+      "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+      "address": "006e7ab0",
+      "extent": 53,
+      "verified_operands": [
+        {
+          "offset": 31,
+          "symbol": "??3@YAXPAX@Z",
+          "retail_target": "00bfe9bc"
+        }
+      ],
+      "indirect_delete": {
+        "site": "006e7ac7",
+        "member": "CCPPointerInfo::DeleteFunc",
+        "offset": 4
+      }
+    }
+  },
+  "checked_donor_chain": [
+    {
+      "site": "02467cb9",
+      "target": "02468220",
+      "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ"
+    },
+    {
+      "site": "0246822a",
+      "target": "02468530",
+      "symbol": "?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ"
+    },
+    {
+      "site": "02467cc8",
+      "target": "02467c20",
+      "symbol": "??1CScriptGameResourceObjectBase@@UAE@XZ"
+    }
+  ],
+  "release_donor_checks": [
+    144,
+    147,
+    153,
+    155,
+    159
+  ],
+  "raw_compilands": {
+    "FableWin.pdb": {
+      "publics": [
+        {
+          "record": 99968,
+          "flags": 2,
+          "offset": 13470752,
+          "section": 2,
+          "name": "??1CScriptGameResourceObjectBase@@UAE@XZ"
+        },
+        {
+          "record": 112288,
+          "flags": 2,
+          "offset": 13470864,
+          "section": 2,
+          "name": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ"
+        },
+        {
+          "record": 136712,
+          "flags": 2,
+          "offset": 13472288,
+          "section": 2,
+          "name": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ"
+        },
+        {
+          "record": 263988,
+          "flags": 2,
+          "offset": 13473072,
+          "section": 2,
+          "name": "?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ"
+        }
+      ],
+      "modules": [
+        {
+          "index": 625,
+          "stream": 636,
+          "name": "debug\\game_script_interface.obj",
+          "library": "E:\\FableTLC\\Fable TLC Build Repository\\BBBProjects\\Fable1_5MainPC\\libs\\wishworld_d.lib",
+          "procedure_count": 65,
+          "selected": [
+            {
+              "record": 95088,
+              "kind": "1110",
+              "section": 2,
+              "offset": 13470752,
+              "size": 28,
+              "type_index": "a403",
+              "name": "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+              "lines": [
+                {
+                  "block_start": 13470752,
+                  "block_bytes": 28,
+                  "path": "game_script_interface_base.hpp",
+                  "entries": [
+                    [
+                      0,
+                      1058
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "record": 95552,
+              "kind": "1110",
+              "section": 2,
+              "offset": 13470864,
+              "size": 75,
+              "type_index": "afa7",
+              "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+              "lines": []
+            },
+            {
+              "record": 98036,
+              "kind": "1110",
+              "section": 2,
+              "offset": 13472288,
+              "size": 19,
+              "type_index": "2a5c",
+              "name": "CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer<CScriptGameResourceObjectMovieBase>",
+              "lines": [
+                {
+                  "block_start": 13472288,
+                  "block_bytes": 19,
+                  "path": "lib_counted_pointer.hpp",
+                  "entries": [
+                    [
+                      0,
+                      71
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "record": 100580,
+              "kind": "1110",
+              "section": 2,
+              "offset": 13473072,
+              "size": 265,
+              "type_index": "2a5c",
+              "name": "CCountedPointer<CScriptGameResourceObjectMovieBase>::ReleaseData",
+              "lines": [
+                {
+                  "block_start": 13473072,
+                  "block_bytes": 265,
+                  "path": "lib_counted_pointer.hpp",
+                  "entries": [
+                    [
+                      0,
+                      143
+                    ],
+                    [
+                      9,
+                      144
+                    ],
+                    [
+                      44,
+                      145
+                    ],
+                    [
+                      57,
+                      147
+                    ],
+                    [
+                      66,
+                      148
+                    ],
+                    [
+                      85,
+                      149
+                    ],
+                    [
+                      96,
+                      151
+                    ],
+                    [
+                      116,
+                      152
+                    ],
+                    [
+                      137,
+                      153
+                    ],
+                    [
+                      172,
+                      155
+                    ],
+                    [
+                      207,
+                      157
+                    ],
+                    [
+                      216,
+                      158
+                    ],
+                    [
+                      226,
+                      159
+                    ],
+                    [
+                      261,
+                      160
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "surroundings": {
+            "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase": [
+              "CScriptGameResourceObjectMovie::CScriptGameResourceObjectMovie",
+              "CScriptGameResourceObjectMovie::`scalar deleting destructor'",
+              "CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase",
+              "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+              "CScriptGameResourceObjectBase::`scalar deleting destructor'",
+              "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+              "CScriptGameResourceObjectMovieBase::`scalar deleting destructor'"
+            ],
+            "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+              "CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase",
+              "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+              "CScriptGameResourceObjectBase::`scalar deleting destructor'",
+              "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+              "CScriptGameResourceObjectMovieBase::`scalar deleting destructor'",
+              "CScriptGameResourceObjectBase::CScriptGameResourceObjectBase",
+              "CScriptGameResourceObjectMovie::~CScriptGameResourceObjectMovie"
+            ],
+            "CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer<CScriptGameResourceObjectMovieBase>": [
+              "CGameScriptInterface::CheckForCameraMessage",
+              "CCountedPointer<CScriptThing>::CCountedPointer<CScriptThing>",
+              "CCountedPointer<CScriptGameResourceObjectMovieBase>::CCountedPointer<CScriptGameResourceObjectMovieBase>",
+              "CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer<CScriptGameResourceObjectMovieBase>",
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::find",
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::lower_bound",
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::_Lbound"
+            ],
+            "CCountedPointer<CScriptGameResourceObjectMovieBase>::ReleaseData": [
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::find",
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::lower_bound",
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::_Lbound",
+              "CCountedPointer<CScriptGameResourceObjectMovieBase>::ReleaseData",
+              "CThing::GetTC<CTCCameraPointScriptedSpline>",
+              "GFDebugPDynamicCast<CTCBase *,CTCCameraPointScriptedSpline *>"
+            ]
+          }
+        }
+      ]
+    },
+    "Ego_r.pdb": {
+      "publics": [
+        {
+          "record": 89344,
+          "flags": 2,
+          "offset": 3208048,
+          "section": 1,
+          "name": "??1CScriptGameResourceObjectBase@@UAE@XZ"
+        },
+        {
+          "record": 122004,
+          "flags": 2,
+          "offset": 4071072,
+          "section": 1,
+          "name": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ"
+        }
+      ],
+      "modules": [
+        {
+          "index": 626,
+          "stream": 639,
+          "name": "release\\game_script_interface.obj",
+          "library": "E:\\FableTLC\\Fable TLC Build Repository\\BBBProjects\\Fable1_5MainPC\\libs\\wishworld_r.lib",
+          "procedure_count": 45,
+          "selected": [
+            {
+              "record": 86856,
+              "kind": "1110",
+              "section": 1,
+              "offset": 3208048,
+              "size": 11,
+              "type_index": "a7d1",
+              "name": "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+              "lines": [
+                {
+                  "block_start": 3208048,
+                  "block_bytes": 11,
+                  "path": "e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fablescripting\\game_script_interface_base.hpp",
+                  "entries": [
+                    [
+                      0,
+                      1058
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "record": 87448,
+              "kind": "1110",
+              "section": 1,
+              "offset": 4071072,
+              "size": 68,
+              "type_index": "285d",
+              "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+              "lines": []
+            }
+          ],
+          "surroundings": {
+            "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase": [
+              "CGameScriptInterface::CheckForCameraMessage",
+              "CGameScriptInterface::RegisterTimer",
+              "CGameScriptInterface::CGameScriptInterface",
+              "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+              "CScriptGameResourceObjectBase::`scalar deleting destructor'",
+              "CScriptThing::CScriptThing",
+              "CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase"
+            ],
+            "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+              "CScriptGameResourceObjectBase::`scalar deleting destructor'",
+              "CScriptThing::CScriptThing",
+              "CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase",
+              "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+              "CScriptGameResourceObjectMovieBase::`scalar deleting destructor'",
+              "CScriptGameResourceObjectMovie::`scalar deleting destructor'",
+              "std::_Tree<std::_Tmap_traits<long,long,std::less<long>,std::allocator<std::pair<long const ,long> >,0> >::find"
+            ]
+          }
+        }
+      ]
+    },
+    "Ego_d.pdb": {
+      "publics": [],
+      "modules": [],
+      "carved": [
+        {
+          "file_offset": 85378876,
+          "block": 83377,
+          "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "size": 75,
+          "type_index": "afa7",
+          "section": 2,
+          "offset": 13442752,
+          "lines": []
+        },
+        {
+          "file_offset": 85381360,
+          "block": 83380,
+          "name": "CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer<CScriptGameResourceObjectMovieBase>",
+          "size": 19,
+          "type_index": "2a5c",
+          "section": 2,
+          "offset": 13444176,
+          "lines": [
+            {
+              "file_offset": 85393008,
+              "file_id": 1488,
+              "lines": [
+                [
+                  0,
+                  71
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "file_offset": 85383904,
+          "block": 83382,
+          "name": "CCountedPointer<CScriptGameResourceObjectMovieBase>::ReleaseData",
+          "size": 265,
+          "type_index": "2a5c",
+          "section": 2,
+          "offset": 13444960,
+          "lines": [
+            {
+              "file_offset": 85393296,
+              "file_id": 1488,
+              "lines": [
+                [
+                  0,
+                  143
+                ],
+                [
+                  9,
+                  144
+                ],
+                [
+                  44,
+                  145
+                ],
+                [
+                  57,
+                  147
+                ],
+                [
+                  66,
+                  148
+                ],
+                [
+                  85,
+                  149
+                ],
+                [
+                  96,
+                  151
+                ],
+                [
+                  116,
+                  152
+                ],
+                [
+                  137,
+                  153
+                ],
+                [
+                  172,
+                  155
+                ],
+                [
+                  207,
+                  157
+                ],
+                [
+                  216,
+                  158
+                ],
+                [
+                  226,
+                  159
+                ],
+                [
+                  261,
+                  160
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "file_offset": 85378412,
+          "block": 83377,
+          "name": "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+          "size": 28,
+          "type_index": "a403",
+          "section": 2,
+          "offset": 13442640,
+          "lines": [
+            {
+              "file_offset": 85392544,
+              "file_id": 3360,
+              "lines": [
+                [
+                  0,
+                  1058
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "independent_live_lifetime_test": {
+    "source": "spell_lane/00eb5750/lifetimes_test.cpp",
+    "sha256": "8c389b6eb59667b08575a9faecfcaa30720211c1a0a024dfe62b33bcf92057ca",
+    "vc71_flags": [
+      "/Od",
+      "/W3",
+      "/GR-"
+    ],
+    "native_output": "00eb5750_TEST PASS",
+    "gnu_cpp03_lp64_output": "00eb5750_TEST PASS",
+    "cases": [
+      "empty",
+      "sole owner",
+      "shared count reaches one and then zero",
+      "repeat release after clear"
+    ]
+  },
+  "optimized_donor": {
+    "pdb": "ego_r.pdb",
+    "rsds_guid": "774b3052-bdd8-43b4-808d-48481cc576ce",
+    "age": 4,
+    "executable_sha256": "aeb372d37adce0b17affc0744eb20c3fe75d05c5a80cd134b0a4a7f5d607ea96",
+    "leaf": "00f21060",
+    "destructor": "007e2ea0",
+    "destructor_symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+    "normal_leaf_calls": [
+      "00f2144a",
+      "00f21750"
+    ],
+    "expanded_layers": [
+      "CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer",
+      "CCountedPointer<CScriptGameResourceObjectMovieBase>::ReleaseData",
+      "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase"
+    ],
+    "destructor_extent": 68,
+    "member_delete_and_clear": {
+      "indirect_deleter": "007e2eba",
+      "deleter_offset": 4,
+      "data_zero": "007e2ec8",
+      "info_zero": "007e2ecf"
+    },
+    "base_destructor_tail": {
+      "site": "007e2edf",
+      "target": "00b02090",
+      "symbol": "??1CBaseObject@@MAE@XZ"
+    }
+  },
+  "two_object_link_control": {
+    "row": "00eb5750",
+    "purpose": "Diagnostic link of two independently compiled objects; external game imports unresolved. No executable behavior claimed for this link.",
+    "native_leaf_bytes": 1536,
+    "results": [
+      {
+        "order": "owner_first",
+        "masked_leaf_exact": true,
+        "calls_to_checked_symbols": 6,
+        "copies": [
+          {
+            "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+            "bytes": 66,
+            "matches": true,
+            "object": "owner.obj"
+          },
+          {
+            "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+            "bytes": 53,
+            "matches": true,
+            "object": "owner.obj"
+          }
+        ]
+      },
+      {
+        "order": "leaf_first",
+        "masked_leaf_exact": true,
+        "calls_to_checked_symbols": 6,
+        "copies": [
+          {
+            "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+            "bytes": 66,
+            "matches": false,
+            "object": "guard.obj"
+          },
+          {
+            "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+            "bytes": 53,
+            "matches": true,
+            "object": "owner.obj"
+          }
+        ]
+      }
+    ],
+    "owner_operands": [
+      {
+        "owner": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+        "offset": 31,
+        "symbol": "??3@YAXPAX@Z",
+        "retail_target": "00bfe9bc"
+      },
+      {
+        "owner": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+        "offset": 54,
+        "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+        "retail_target": "0126008c"
+      },
+      {
+        "owner": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+        "offset": 62,
+        "symbol": "??1CBaseObject@@MAE@XZ",
+        "retail_target": "0099a430"
+      },
+      {
+        "owner": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+        "offset": 31,
+        "symbol": "??3@YAXPAX@Z",
+        "retail_target": "00bfe9bc"
+      }
+    ],
+    "ordinary_tests": "00eb5750_TEST PASS on the final include tree",
+    "link_scope": "All six direct edges to these two shared owners were resolved in the diagnostic image. Other imports remain unresolved here."
+  },
+  "independent_declaration_order_controls": {
+    "header_tree": "ecee975d2a37",
+    "selected_replay_tag": "movie_discrete_owner_replay_ecee975d2a37",
+    "retail_checked_selected_leaf_and_mapped_operands": 78,
+    "standalone_grade": "HELD_PICKANY",
+    "original_source_file": "v_murdertwistfinal.hpp",
+    "matching_donor_checksum": "8ea52e2265de5b64c1aa2554ae5a0814",
+    "original_FableWin_movie_local_scopes": [
+      [
+        "0x9c",
+        "0x75d"
+      ],
+      [
+        "0x92b",
+        "0xd5f"
+      ]
+    ],
+    "scope_grade_family": "movie_donor_scope_*",
+    "template_definition_grade_family": "movie_original_def_order_*",
+    "specialization_visibility_family": "movie_member_visibility_*",
+    "additional_Release_owner": {
+      "FableWin": "0x03611F90",
+      "Ego_r": "0x00CDB1A0",
+      "object": "register_scripts.obj",
+      "name": "?Release@CScriptGameResourceObjectMovieBase@@QAEXXZ",
+      "native_verification": [
+        {
+          "tag": "movie_member_visibility_native_movie_pointer_owner_release_early_noninline",
+          "body_extent": 11,
+          "target": "00cf8850",
+          "operand": {
+            "offset": 6,
+            "name": "?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z",
+            "target": "008ab2b0"
+          }
+        },
+        {
+          "tag": "movie_member_visibility_native_movie_pointer_owner_release_late_noninline",
+          "body_extent": 11,
+          "target": "00cf8850",
+          "operand": {
+            "offset": 6,
+            "name": "?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z",
+            "target": "008ab2b0"
+          }
+        }
+      ]
+    },
+    "separate_tu_replay": {
+      "row": "00eb5750",
+      "purpose": "Diagnostic link of two independently compiled objects; external game imports unresolved. No executable behavior claimed for this link.",
+      "native_leaf_bytes": 1536,
+      "results": [
+        {
+          "order": "owner_first",
+          "masked_leaf_exact": true,
+          "calls_to_checked_symbols": 6,
+          "copies": [
+            {
+              "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+              "bytes": 66,
+              "matches": true,
+              "object": "owner.obj"
+            },
+            {
+              "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+              "bytes": 53,
+              "matches": true,
+              "object": "owner.obj"
+            }
+          ]
+        },
+        {
+          "order": "leaf_first",
+          "masked_leaf_exact": true,
+          "calls_to_checked_symbols": 6,
+          "copies": [
+            {
+              "symbol": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+              "bytes": 66,
+              "matches": false,
+              "object": "guard.obj"
+            },
+            {
+              "symbol": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+              "bytes": 53,
+              "matches": true,
+              "object": "owner.obj"
+            }
+          ]
+        }
+      ],
+      "header_tree": "ecee975d2a37",
+      "owner_operands": [
+        {
+          "owner": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+          "offset": 31,
+          "symbol": "??3@YAXPAX@Z",
+          "retail_target": "00bfe9bc"
+        },
+        {
+          "owner": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+          "offset": 54,
+          "symbol": "??_7CScriptGameResourceObjectBase@@6B@",
+          "retail_target": "0126008c"
+        },
+        {
+          "owner": "??1CScriptGameResourceObjectMovieBase@@UAE@XZ",
+          "offset": 62,
+          "symbol": "??1CBaseObject@@MAE@XZ",
+          "retail_target": "0099a430"
+        },
+        {
+          "owner": "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ",
+          "offset": 31,
+          "symbol": "??3@YAXPAX@Z",
+          "retail_target": "00bfe9bc"
+        }
+      ],
+      "first_object_recipe": "Ordinary counted resource owner TU, then unchanged guard TU."
+    }
+  },
+  "native_compiland_followup": {
+    "header_tree": "17db647dc01f",
+    "source_evidence": {
+      "FableWin": {
+        "modules": [
+          {
+            "module": "Debug\\register_scripts.obj",
+            "archive": "egoscripting_d.lib",
+            "stream": 23,
+            "flags": [
+              "-Od",
+              "-Oy-",
+              "-DWIN32",
+              "-DNDEBUG",
+              "-D_LIB",
+              "-DLIB_COMP_DEBUG",
+              "-DLIB_NOT_DLL",
+              "-D_CRT_SECURE_NO_WARNINGS",
+              "-D_CRT_NON_CONFORMING_SWPRINTFS",
+              "-D_MBCS",
+              "-EHs",
+              "-EHc"
+            ],
+            "procedures": [
+              {
+                "name": "CScriptGameResourceObjectMovieBase::Release",
+                "record_offset": 237756,
+                "extent": 24,
+                "flags": "01",
+                "segment": 2,
+                "offset": "01e82f90",
+                "type": {
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::DoAskingHeroToTalkToAssassin",
+                "record_offset": 4048364,
+                "extent": 3437,
+                "flags": "01",
+                "segment": 2,
+                "offset": "022d7cd0",
+                "type": {
+                  "owner": "NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              }
+            ]
+          },
+          {
+            "module": "debug\\tc_fireheart_minigame.obj",
+            "archive": "wishworld_d.lib",
+            "stream": 375,
+            "flags": [
+              "-Od",
+              "-Oy-",
+              "-DLIB_NOT_DLL",
+              "-DWIN32",
+              "-DNDEBUG",
+              "-D_WINDOWS",
+              "-DGAME_COMP_DEBUG",
+              "-DUSE_VIRTUAL_KEYBOARD",
+              "-D_CRT_SECURE_NO_WARNINGS",
+              "-D_CRT_NON_CONFORMING_SWPRINTFS",
+              "-D_MBCS",
+              "-EHs",
+              "-EHc",
+              "-Yustandard_headers.hpp"
+            ],
+            "procedures": [
+              {
+                "name": "CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase",
+                "record_offset": 80472,
+                "extent": 75,
+                "flags": "01",
+                "segment": 2,
+                "offset": "0101bc30",
+                "type": {
+                  "owner": "CScriptGameResourceObjectScriptedThingBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectScriptedThingBase::`scalar deleting destructor'",
+                "record_offset": 81044,
+                "extent": 44,
+                "flags": "01",
+                "segment": 2,
+                "offset": "0101bd20",
+                "type": {
+                  "owner": "CScriptGameResourceObjectScriptedThingBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 1
+                }
+              }
+            ]
+          },
+          {
+            "module": "debug\\game_script_interface.obj",
+            "archive": "wishworld_d.lib",
+            "stream": 636,
+            "flags": [
+              "-Od",
+              "-Oy-",
+              "-DLIB_NOT_DLL",
+              "-DWIN32",
+              "-DNDEBUG",
+              "-D_WINDOWS",
+              "-DGAME_COMP_DEBUG",
+              "-DUSE_VIRTUAL_KEYBOARD",
+              "-D_CRT_SECURE_NO_WARNINGS",
+              "-D_CRT_NON_CONFORMING_SWPRINTFS",
+              "-D_MBCS",
+              "-EHs",
+              "-EHc",
+              "-Yustandard_headers.hpp"
+            ],
+            "procedures": [
+              {
+                "name": "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+                "record_offset": 95088,
+                "extent": 28,
+                "flags": "01",
+                "segment": 2,
+                "offset": "00cd8c20",
+                "type": {
+                  "owner": "CScriptGameResourceObjectBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectBase::`scalar deleting destructor'",
+                "record_offset": 95248,
+                "extent": 44,
+                "flags": "01",
+                "segment": 2,
+                "offset": "00cd8c50",
+                "type": {
+                  "owner": "CScriptGameResourceObjectBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 1
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+                "record_offset": 95552,
+                "extent": 75,
+                "flags": "01",
+                "segment": 2,
+                "offset": "00cd8c90",
+                "type": {
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectMovieBase::`scalar deleting destructor'",
+                "record_offset": 95720,
+                "extent": 44,
+                "flags": "01",
+                "segment": 2,
+                "offset": "00cd8cf0",
+                "type": {
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 1
+                }
+              },
+              {
+                "name": "CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                "record_offset": 98036,
+                "extent": 19,
+                "flags": "01",
+                "segment": 2,
+                "offset": "00cd9220",
+                "type": {
+                  "owner": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CCountedPointer<CScriptGameResourceObjectMovieBase>::ReleaseData",
+                "record_offset": 100580,
+                "extent": 265,
+                "flags": "01",
+                "segment": 2,
+                "offset": "00cd9530",
+                "type": {
+                  "owner": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              }
+            ]
+          }
+        ],
+        "classes": {
+          "CCountedPointer<CScriptGameResourceObjectMovieBase>": {
+            "type_index": "0x2a6e",
+            "size": 8,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0x54",
+                "access": "public",
+                "type_index": "0x2a5c",
+                "type": {
+                  "return": "void",
+                  "owner": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                  "this_type": {
+                    "pointer_to": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "normal",
+                "name": "~CCountedPointer<CScriptGameResourceObjectMovieBase>"
+              }
+            ],
+            "PImp": null
+          },
+          "CScriptGameResourceObjectBase": {
+            "type_index": "0xa40e",
+            "size": 8,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0xc",
+                "access": "public",
+                "type_index": "0xa403",
+                "type": {
+                  "return": "void",
+                  "owner": "CScriptGameResourceObjectBase",
+                  "this_type": {
+                    "pointer_to": "CScriptGameResourceObjectBase",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "virtual",
+                "name": "~CScriptGameResourceObjectBase"
+              }
+            ],
+            "PImp": null
+          },
+          "CScriptGameResourceObjectMovieBase": {
+            "type_index": "0xafb1",
+            "size": 16,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0x74",
+                "access": "public",
+                "type_index": "0xafa7",
+                "type": {
+                  "return": "void",
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "this_type": {
+                    "pointer_to": "CScriptGameResourceObjectMovieBase",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "virtual",
+                "name": "~CScriptGameResourceObjectMovieBase"
+              }
+            ],
+            "PImp": {
+              "leaf": "0x150d",
+              "field_list_offset": "0xc",
+              "access": "private",
+              "type_index": "0x2a51",
+              "type": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+              "offset": 8,
+              "name": "PImp"
+            }
+          }
+        }
+      },
+      "Ego_r": {
+        "modules": [
+          {
+            "module": ".\\Release\\register_scripts.obj",
+            "archive": "EgoScripting_r.lib",
+            "stream": 24,
+            "flags": [
+              "-Ox",
+              "-Ob2",
+              "-Oi",
+              "-Ot",
+              "-Oy",
+              "-DWIN32",
+              "-DNDEBUG",
+              "-D_LIB",
+              "-DLIB_COMP_RELEASE",
+              "-DLIB_NOT_DLL",
+              "-D_CRT_SECURE_NO_WARNINGS",
+              "-D_CRT_NON_CONFORMING_SWPRINTFS",
+              "-D_MBCS",
+              "-EHs",
+              "-EHc"
+            ],
+            "procedures": [
+              {
+                "name": "CScriptGameResourceObjectMovieBase::Release",
+                "record_offset": 243720,
+                "extent": 51,
+                "flags": "00",
+                "segment": 1,
+                "offset": "008da1a0",
+                "type": {
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::DoAskingHeroToTalkToAssassin",
+                "record_offset": 4059316,
+                "extent": 1800,
+                "flags": "00",
+                "segment": 1,
+                "offset": "00b20060",
+                "type": {
+                  "owner": "NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              }
+            ]
+          },
+          {
+            "module": "release\\tc_fireheart_minigame.obj",
+            "archive": "wishworld_r.lib",
+            "stream": 378,
+            "flags": [
+              "-Ox",
+              "-Ob2",
+              "-Oi",
+              "-Ot",
+              "-Oy",
+              "-DLIB_NOT_DLL",
+              "-DWIN32",
+              "-DNDEBUG",
+              "-D_WINDOWS",
+              "-DGAME_COMP_RELEASE",
+              "-DUSE_VIRTUAL_KEYBOARD",
+              "-D_CRT_SECURE_NO_WARNINGS",
+              "-Yustandard_headers.hpp"
+            ],
+            "procedures": [
+              {
+                "name": "CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase",
+                "record_offset": 65512,
+                "extent": 68,
+                "flags": "00",
+                "segment": 1,
+                "offset": "003e1ea0",
+                "type": {
+                  "owner": "CScriptGameResourceObjectScriptedThingBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectScriptedThingBase::`scalar deleting destructor'",
+                "record_offset": 65708,
+                "extent": 89,
+                "flags": "00",
+                "segment": 1,
+                "offset": "0030fdd0",
+                "type": {
+                  "owner": "CScriptGameResourceObjectScriptedThingBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 1
+                }
+              }
+            ]
+          },
+          {
+            "module": "release\\game_script_interface.obj",
+            "archive": "wishworld_r.lib",
+            "stream": 639,
+            "flags": [
+              "-Ox",
+              "-Ob2",
+              "-Oi",
+              "-Ot",
+              "-Oy",
+              "-DLIB_NOT_DLL",
+              "-DWIN32",
+              "-DNDEBUG",
+              "-D_WINDOWS",
+              "-DGAME_COMP_RELEASE",
+              "-DUSE_VIRTUAL_KEYBOARD",
+              "-D_CRT_SECURE_NO_WARNINGS",
+              "-Yustandard_headers.hpp"
+            ],
+            "procedures": [
+              {
+                "name": "CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase",
+                "record_offset": 86856,
+                "extent": 11,
+                "flags": "00",
+                "segment": 1,
+                "offset": "0030f370",
+                "type": {
+                  "owner": "CScriptGameResourceObjectBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectBase::`scalar deleting destructor'",
+                "record_offset": 87012,
+                "extent": 36,
+                "flags": "00",
+                "segment": 1,
+                "offset": "0030f380",
+                "type": {
+                  "owner": "CScriptGameResourceObjectBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 1
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+                "record_offset": 87448,
+                "extent": 68,
+                "flags": "00",
+                "segment": 1,
+                "offset": "003e1ea0",
+                "type": {
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0
+                }
+              },
+              {
+                "name": "CScriptGameResourceObjectMovieBase::`scalar deleting destructor'",
+                "record_offset": 87628,
+                "extent": 89,
+                "flags": "00",
+                "segment": 1,
+                "offset": "0030fdd0",
+                "type": {
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "calling_convention": "thiscall",
+                  "parameter_count": 1
+                }
+              }
+            ]
+          }
+        ],
+        "classes": {
+          "CScriptGameResourceObjectMovieBase": {
+            "type_index": "0x2869",
+            "size": 16,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0x74",
+                "access": "public",
+                "type_index": "0x285d",
+                "type": {
+                  "return": "void",
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "this_type": {
+                    "pointer_to": "CScriptGameResourceObjectMovieBase",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "virtual",
+                "name": "~CScriptGameResourceObjectMovieBase"
+              }
+            ],
+            "PImp": {
+              "leaf": "0x150d",
+              "field_list_offset": "0xc",
+              "access": "private",
+              "type_index": "0x2857",
+              "type": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+              "offset": 8,
+              "name": "PImp"
+            }
+          },
+          "CCountedPointer<CScriptGameResourceObjectMovieBase>": {
+            "type_index": "0x3449",
+            "size": 8,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0x54",
+                "access": "public",
+                "type_index": "0x3438",
+                "type": {
+                  "return": "void",
+                  "owner": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                  "this_type": {
+                    "pointer_to": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "normal",
+                "name": "~CCountedPointer<CScriptGameResourceObjectMovieBase>"
+              }
+            ],
+            "PImp": null
+          },
+          "CScriptGameResourceObjectBase": {
+            "type_index": "0xa7dc",
+            "size": 8,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0xc",
+                "access": "public",
+                "type_index": "0xa7d1",
+                "type": {
+                  "return": "void",
+                  "owner": "CScriptGameResourceObjectBase",
+                  "this_type": {
+                    "pointer_to": "CScriptGameResourceObjectBase",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "virtual",
+                "name": "~CScriptGameResourceObjectBase"
+              }
+            ],
+            "PImp": null
+          }
+        }
+      },
+      "Ego_d": {
+        "modules": [],
+        "classes": {
+          "CCountedPointer<CScriptGameResourceObjectMovieBase>": {
+            "type_index": "0x2a6e",
+            "size": 8,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0x54",
+                "access": "public",
+                "type_index": "0x2a5c",
+                "type": {
+                  "return": "void",
+                  "owner": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                  "this_type": {
+                    "pointer_to": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "normal",
+                "name": "~CCountedPointer<CScriptGameResourceObjectMovieBase>"
+              }
+            ],
+            "PImp": null
+          },
+          "CScriptGameResourceObjectBase": {
+            "type_index": "0xa40e",
+            "size": 8,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0xc",
+                "access": "public",
+                "type_index": "0xa403",
+                "type": {
+                  "return": "void",
+                  "owner": "CScriptGameResourceObjectBase",
+                  "this_type": {
+                    "pointer_to": "CScriptGameResourceObjectBase",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "virtual",
+                "name": "~CScriptGameResourceObjectBase"
+              }
+            ],
+            "PImp": null
+          },
+          "CScriptGameResourceObjectMovieBase": {
+            "type_index": "0xafb1",
+            "size": 16,
+            "destructor": [
+              {
+                "leaf": "0x1511",
+                "field_list_offset": "0x74",
+                "access": "public",
+                "type_index": "0xafa7",
+                "type": {
+                  "return": "void",
+                  "owner": "CScriptGameResourceObjectMovieBase",
+                  "this_type": {
+                    "pointer_to": "CScriptGameResourceObjectMovieBase",
+                    "mode": "pointer",
+                    "attributes": "0x840a"
+                  },
+                  "calling_convention": "thiscall",
+                  "parameter_count": 0,
+                  "parameters": [],
+                  "options": "0x0",
+                  "this_adjust": 0
+                },
+                "method_kind": "virtual",
+                "name": "~CScriptGameResourceObjectMovieBase"
+              }
+            ],
+            "PImp": {
+              "leaf": "0x150d",
+              "field_list_offset": "0xc",
+              "access": "private",
+              "type_index": "0x2a51",
+              "type": "CCountedPointer<CScriptGameResourceObjectMovieBase>",
+              "offset": 8,
+              "name": "PImp"
+            }
+          }
+        }
+      }
+    },
+    "vc71_profile_diagnostics": {
+      "movie_nativelibrary_native_movie_pointer_owner": {
+        "grade": {
+          "row": "00eb5750",
+          "tag": "movie_nativelibrary_native_movie_pointer_owner",
+          "source_sha256": "f88e6b297773186705530d0b404f1145daff114c61d1c435c7305028b8a15b39",
+          "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "flags": [
+            "/Ox",
+            "/Ob2",
+            "/Oi",
+            "/Ot",
+            "/Oy",
+            "/GT",
+            "/GF",
+            "/GR",
+            "/Gr"
+          ],
+          "retail_bytes": 1536,
+          "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "status": "MASKED_EQUAL",
+          "object_bytes": 1536,
+          "matched_instructions": 486,
+          "retail_instructions": 486,
+          "built_instructions": 486,
+          "hunks": 0,
+          "same_size_different_bytes": 0,
+          "pickany_complete": true,
+          "pickany_eq": 4,
+          "pickany_neq": 1,
+          "pickany_referenced_neq": 1
+        },
+        "selected_leaf_relocations_exact": true,
+        "masked_body_sites": [
+          [
+            887,
+            20,
+            "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ"
+          ],
+          [
+            1507,
+            20,
+            "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ"
+          ]
+        ]
+      },
+      "movie_nativescripting_native_movie_pointer_owner": {
+        "grade": {
+          "row": "00eb5750",
+          "tag": "movie_nativescripting_native_movie_pointer_owner",
+          "source_sha256": "f88e6b297773186705530d0b404f1145daff114c61d1c435c7305028b8a15b39",
+          "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "flags": [
+            "/Ox",
+            "/Ob2",
+            "/Oi",
+            "/Ot",
+            "/Oy",
+            "/GT",
+            "/GF",
+            "/GR",
+            "/Gr",
+            "/GX"
+          ],
+          "retail_bytes": 1536,
+          "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "status": "DIFFER",
+          "object_bytes": 1786,
+          "matched_instructions": 290,
+          "retail_instructions": 486,
+          "built_instructions": 511,
+          "hunks": 111,
+          "same_size_different_bytes": null,
+          "pickany_complete": true,
+          "pickany_eq": 4,
+          "pickany_neq": 1,
+          "pickany_referenced_neq": 1
+        },
+        "selected_leaf_relocations_exact": false,
+        "masked_body_sites": []
+      },
+      "movie_nativelibrary_complete_handle_owners": {
+        "grade": {
+          "row": "00eb5750",
+          "tag": "movie_nativelibrary_complete_handle_owners",
+          "source_sha256": "b81cb6a2bb9b6db1b08a097fc1f60f8b3818efdca6f231d57ea06f08fd597b18",
+          "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "flags": [
+            "/Ox",
+            "/Ob2",
+            "/Oi",
+            "/Ot",
+            "/Oy",
+            "/GT",
+            "/GF",
+            "/GR",
+            "/Gr"
+          ],
+          "retail_bytes": 1536,
+          "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "status": "DIFFER",
+          "object_bytes": 1434,
+          "matched_instructions": 428,
+          "retail_instructions": 486,
+          "built_instructions": 452,
+          "hunks": 13,
+          "same_size_different_bytes": null,
+          "pickany_complete": true,
+          "pickany_eq": 6,
+          "pickany_neq": 0,
+          "pickany_referenced_neq": 0
+        },
+        "selected_leaf_relocations_exact": false,
+        "masked_body_sites": []
+      },
+      "movie_nativescripting_complete_handle_owners": {
+        "grade": {
+          "row": "00eb5750",
+          "tag": "movie_nativescripting_complete_handle_owners",
+          "source_sha256": "b81cb6a2bb9b6db1b08a097fc1f60f8b3818efdca6f231d57ea06f08fd597b18",
+          "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "flags": [
+            "/Ox",
+            "/Ob2",
+            "/Oi",
+            "/Ot",
+            "/Oy",
+            "/GT",
+            "/GF",
+            "/GR",
+            "/Gr",
+            "/GX"
+          ],
+          "retail_bytes": 1536,
+          "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "status": "DIFFER",
+          "object_bytes": 1786,
+          "matched_instructions": 290,
+          "retail_instructions": 486,
+          "built_instructions": 511,
+          "hunks": 111,
+          "same_size_different_bytes": null,
+          "pickany_complete": true,
+          "pickany_eq": 5,
+          "pickany_neq": 1,
+          "pickany_referenced_neq": 1
+        },
+        "selected_leaf_relocations_exact": false,
+        "masked_body_sites": []
+      },
+      "movie_nativelibrary_release_measured_late_t189": {
+        "grade": {
+          "row": "00eb5750",
+          "tag": "movie_nativelibrary_release_measured_late_t189",
+          "source_sha256": "9772d8b318c9b0b7bae18b3c0f6790d3b71e71882c0e58295ecde08753b7495d",
+          "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "flags": [
+            "/Ox",
+            "/Ob2",
+            "/Oi",
+            "/Ot",
+            "/Oy",
+            "/GT",
+            "/GF",
+            "/GR",
+            "/Gr",
+            "/d2inlT189"
+          ],
+          "retail_bytes": 1536,
+          "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "status": "MASKED_EQUAL",
+          "object_bytes": 1536,
+          "matched_instructions": 486,
+          "retail_instructions": 486,
+          "built_instructions": 486,
+          "hunks": 0,
+          "same_size_different_bytes": 0,
+          "pickany_complete": true,
+          "pickany_eq": 6,
+          "pickany_neq": 0,
+          "pickany_referenced_neq": 0
+        },
+        "selected_leaf_relocations_exact": false,
+        "masked_body_sites": [
+          [
+            887,
+            20,
+            "?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ"
+          ],
+          [
+            1507,
+            20,
+            "?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ"
+          ]
+        ]
+      },
+      "movie_nativescripting_release_measured_late_t189": {
+        "grade": {
+          "row": "00eb5750",
+          "tag": "movie_nativescripting_release_measured_late_t189",
+          "source_sha256": "9772d8b318c9b0b7bae18b3c0f6790d3b71e71882c0e58295ecde08753b7495d",
+          "requested_leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "flags": [
+            "/Ox",
+            "/Ob2",
+            "/Oi",
+            "/Ot",
+            "/Oy",
+            "/GT",
+            "/GF",
+            "/GR",
+            "/Gr",
+            "/GX",
+            "/d2inlT189"
+          ],
+          "retail_bytes": 1536,
+          "leaf": "?DoAskingHeroToTalkToAssassin@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ",
+          "status": "DIFFER",
+          "object_bytes": 1786,
+          "matched_instructions": 290,
+          "retail_instructions": 486,
+          "built_instructions": 511,
+          "hunks": 111,
+          "same_size_different_bytes": null,
+          "pickany_complete": true,
+          "pickany_eq": 5,
+          "pickany_neq": 1,
+          "pickany_referenced_neq": 1
+        },
+        "selected_leaf_relocations_exact": false,
+        "masked_body_sites": []
+      }
+    },
+    "vc71_pch_diagnostics": {
+      "full_before_movie_header": {
+        "same_public_function_bodies_and_operands": true,
+        "movie_destructor_lengths": {
+          "??1CScriptGameResourceObjectMovieBase@@UAE@XZ": 66,
+          "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ": 53
+        },
+        "public_procedure_count": 13
+      },
+      "full_after_movie_header": {
+        "same_public_function_bodies_and_operands": true,
+        "movie_destructor_lengths": {
+          "??1CScriptGameResourceObjectMovieBase@@UAE@XZ": 66,
+          "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ": 53
+        },
+        "public_procedure_count": 13
+      },
+      "late_after_movie_header": {
+        "same_public_function_bodies_and_operands": true,
+        "movie_destructor_lengths": {
+          "??1CScriptGameResourceObjectMovieBase@@UAE@XZ": 66,
+          "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ": 53
+        },
+        "public_procedure_count": 13
+      },
+      "owner_before_movie_header": {
+        "same_public_function_bodies_and_operands": true,
+        "movie_destructor_lengths": {
+          "??1CScriptGameResourceObjectMovieBase@@UAE@XZ": 66,
+          "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ": 53
+        },
+        "public_procedure_count": 10
+      },
+      "owner_after_movie_header": {
+        "same_public_function_bodies_and_operands": true,
+        "movie_destructor_lengths": {
+          "??1CScriptGameResourceObjectMovieBase@@UAE@XZ": 66,
+          "??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ": 53
+        },
+        "public_procedure_count": 10
+      }
+    },
+    "native_named_cleanup_edges": {
+      "FableWin": {
+        "sha256": "a9d6d0977d9d7fc8242da4292ae7ed92e926ca80364a95c003d9b9f689e41845",
+        "named_cleanup_edges": {
+          "Guard": [
+            {
+              "site": "03a66e16",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a66e79",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a67134",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a6717f",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a671df",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a673c2",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a673fe",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a67428",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a676c5",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a679a1",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a679ec",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "03a67a2a",
+              "target": "02467c90",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            }
+          ],
+          "MovieBase": [
+            {
+              "site": "02467cb9",
+              "target": "02468220",
+              "symbol": "CountedMovie",
+              "opcode": "call"
+            },
+            {
+              "site": "02467cc8",
+              "target": "02467c20",
+              "symbol": "ResourceBase",
+              "opcode": "call"
+            }
+          ],
+          "CountedMovie": [
+            {
+              "site": "0246822a",
+              "target": "02468530",
+              "symbol": "ReleaseData",
+              "opcode": "call"
+            }
+          ],
+          "ResourceBase": [],
+          "ReleaseData": []
+        }
+      },
+      "Ego_r": {
+        "sha256": "aeb372d37adce0b17affc0744eb20c3fe75d05c5a80cd134b0a4a7f5d607ea96",
+        "named_cleanup_edges": {
+          "Guard": [
+            {
+              "site": "00f2144a",
+              "target": "007e2ea0",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "00f21750",
+              "target": "007e2ea0",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            }
+          ],
+          "MovieBase": [
+            {
+              "site": "007e2edf",
+              "target": "00b02090",
+              "symbol": "CBaseObject",
+              "opcode": "jmp"
+            }
+          ],
+          "ResourceBase": [
+            {
+              "site": "00710376",
+              "target": "00b02090",
+              "symbol": "CBaseObject",
+              "opcode": "jmp"
+            }
+          ]
+        }
+      },
+      "Retail": {
+        "sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+        "named_cleanup_edges": {
+          "Guard": [
+            {
+              "site": "00eb5939",
+              "target": "006e7b80",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5960",
+              "target": "006e7b80",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5a81",
+              "target": "006e7b80",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5aa0",
+              "target": "006e7b80",
+              "symbol": "MovieBase",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5ac6",
+              "target": "006e7ab0",
+              "symbol": "CountedMovie",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5ad7",
+              "target": "0099a430",
+              "symbol": "CBaseObject",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5d32",
+              "target": "006e7ab0",
+              "symbol": "CountedMovie",
+              "opcode": "call"
+            },
+            {
+              "site": "00eb5d43",
+              "target": "0099a430",
+              "symbol": "CBaseObject",
+              "opcode": "call"
+            }
+          ],
+          "MovieBase": [
+            {
+              "site": "006e7bbd",
+              "target": "0099a430",
+              "symbol": "CBaseObject",
+              "opcode": "jmp"
+            }
+          ],
+          "CountedMovie": []
+        }
+      }
+    }
+  }
+}

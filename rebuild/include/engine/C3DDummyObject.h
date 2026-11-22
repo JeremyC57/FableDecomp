@@ -10,6 +10,10 @@
 class C3DDummyObject {
 public:
     C3DDummyObject();                                                    // 0x00A2E4B0
+#ifdef FABLE_RETAIL_C3DMESHOBJECT_STATIC_DUMMY_PASS26
+    // FableWin 031D2270 calls GetTranslation on Transform; retail GetDummyObjectPositionStatic reads its last row.
+    C3DVector GetPosition() const { return Transform.GetTranslation(); }
+#endif
     const CMatrix3x4& PeekTransform() const { return Transform; }
     long GetBoneIndex() const { return BoneIndex; }
 #ifdef FABLE_RETAIL_C3DDUMMYOBJECT_MESH_FRIEND_PASS23

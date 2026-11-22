@@ -133,7 +133,16 @@ class CInputEvent;
 class C2DVector;
 #endif
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+#include "engine/EGameAction.h"
+#include "stlport/fable_containers.h"
+#endif
 class CGamePlayerInterface {
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+public:
+    bool IsControlInputSharedBetweenGameActions(const std::vector<EGameAction>& gas) const;
+    bool IsRequireAttackButtonHeldForFlourish() const;
+#endif
 public:
 #ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_GETACTIONNAME
     // Retail opt-in (bwf1 / agentC2, row 0x00651B04): Ego_r.pdb ?GetActionName@CGamePlayerInterface@@SI_NABVCActionInputControl@@AAVCWideString@@_N@Z

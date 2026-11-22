@@ -9,6 +9,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_JACK_STAGE3_ACTIONS_PASS26
+#include "engine/CCombatActionBase.h"
+
+// FableWin and Ego_r original base, formals and data. Sizes follow the retail action layouts.
+class CCreatureAction_JackFall : public CCombatActionBase {
+public:
+    CCreatureAction_JackFall(CThingCreatureBase& creature);
+};
+
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackFall) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_JackFall {
 public:
@@ -27,7 +38,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackFall) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackFall, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_JackFall) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_JackFall, __vftable) == 0x0);
+
+#endif
 
 #endif // FABLE_ENGINE_CCREATUREACTION_JACKFALL_H

@@ -8,6 +8,10 @@
 #include "rebuild_abi.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CHitParameters.h"
+#ifdef FABLE_RETAIL_NENTITYEVENTS_BASE_ORIGINAL_PASS26
+#include "engine/NEntityEvents_EEventType.h"
+class CTCEntityEvents;
+#endif
 class CThing;
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
 #include "engine/NEntityEvents_EEventType.h"
@@ -22,7 +26,15 @@ namespace NEntityEvents {
 // rows write the retail values as casts). Under the Codex pass 21 opt-in the full enum comes from engine/NEntityEvents_EEventType.h instead.
 enum EEventType { };
 #endif // FABLE_RETAIL_NENTITYEVENTS_CEVENTBASE_VSLOTS3
-#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
+#ifdef FABLE_RETAIL_NENTITYEVENTS_BASE_ORIGINAL_PASS26
+class CEventBase {public:
+ CEventBase();virtual ~CEventBase();
+ virtual EEventType GetType()const=0;
+ virtual void OnAdd(const ::CTCEntityEvents&);
+ virtual long GetLifeTime()const;virtual bool IsReadyToDie()const;
+protected:long WorldFrame;
+};
+#elif defined(FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION)
 class CEventBase {public:
  CEventBase():WorldFrame(0){} virtual ~CEventBase(){}
  virtual EEventType GetType()const=0;

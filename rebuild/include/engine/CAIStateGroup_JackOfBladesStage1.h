@@ -31,6 +31,10 @@ protected:
  bool HasAttacked;
  long ZigZagCounter;
  CIntelligentPointer<CThing> PObstruction,PShieldThing;
+#ifdef FABLE_RETAIL_JACK_STAGE1_GETRUSHTOPOS_PASS26
+ // Both original PDB identities, protected method; original donor02be9ff0.
+ bool GetRushToPos(C3DVector& rush_to_pos);
+#endif
  bool GetRushToPosForLunge(C3DVector& rush_to_pos);
 };
 FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_JackOfBladesStage1)==0x64);

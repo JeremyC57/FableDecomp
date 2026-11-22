@@ -266,6 +266,12 @@ template <class T> class CCountedPointer;
 #endif
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_INVENTORY_EXPRESSIONS_PASS26
+    // Original FableWin method calls at 01EC93FF, 01EC940E and 01EC995E.
+    std::map<long,NUISystem::CComponent*>& GetItemsMenuEntries() { return ItemsMenuEntries; }
+    std::map<long,NUISystem::CComponent*>& GetAssignedIcons() { return AssignedIcons; }
+    std::vector<long>& GetQuickAccessItems() { return QuickAccessItems; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_OPENINVENTORY
     // Retail opt-in (agentC23, row 0x0058578B; first written by the acctB lane): Ego_r.pdb 0x005F4D20 / FableWin.pdb 0x0212841C
     // ?OpenInventory@CTCInventory@@UAEXXZ, the console inventory's top-level menu (CTCInventory vtable 0x01250DE4 slot 30 = the base
@@ -394,6 +400,9 @@ public:
     //   ?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z                                             0x00584B86
     //   ?SetThingAsQuickAccessItem@CTCInventory@@QAEXJJ_N@Z                                                      0x00584157
     // (the second out of line in retail: `push 1 ; push slot ; push thing ; call 0x00584157`). Declarations only.
+#ifdef FABLE_RETAIL_CTCINVENTORY_BUTTON_INDEX_PASS26
+    long GetQuickAccessItemButtonIndex(long thingIndex) const;
+#endif
     void SetThingAsQuickAccessItem(long thingIndex, long slot, bool assign);                     // 0x00584157
     void AssignThingPC(long thingIndex, unsigned long slot, NUISystem::CComponent* container);    // 0x00584B86
 #endif
@@ -426,6 +435,10 @@ public:
     long          ThingSlotToSwap;                           // +0x138
     NUISystem::CComponent* PComponentSlotToSwap;                      // +0x13c
     long          ScreenToShortcut;                          // +0x140
+#ifdef FABLE_RETAIL_CTCINVENTORY_SHORTCUT_PASS26
+    // FableWin 0x023D9DF0 reads the corresponding field; retail inlines it at 0x0062B2DF.
+    long GetScreenToShortcut() const { return ScreenToShortcut; }
+#endif
     unsigned char EditBoxes[0x4];                            // +0x144 list<NUISystem::CEditBox_*,std::allocator<NUISystem::CEditBox_*>_>
 #ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
     std::vector<long> QuickAccessItems;                      // +0x148

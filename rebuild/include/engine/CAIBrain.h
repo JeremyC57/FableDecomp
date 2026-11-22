@@ -31,6 +31,11 @@ class CWorld;
 #ifdef FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
 #include "engine/CSuspendableProcessMicrothread.h"
 #endif
+#ifdef FABLE_RETAIL_CAIBRAIN_INITGROUPS_PASS26
+#include "engine/CKeyPairCompareGreater.h"
+#include "engine/CVectorMap.h"
+#include "engine/CBrainDef.h"
+#endif
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPINFO
 class CAIStateGroupInfo;
@@ -114,7 +119,11 @@ public:
     CThingManager*      ThingManager;                        // +0x1c
     CPlayerManager*     PlayerManager;                       // +0x20
     CWorld*             World;                               // +0x24
+#ifdef FABLE_RETAIL_CAIBRAIN_INITGROUPS_PASS26
+    CVectorMap<long,CAIStateGroupBase*,CKeyPairCompareGreater<long,CAIStateGroupBase*> > StateGroupList;
+#else
     unsigned char       StateGroupList[0x10];                // +0x28 CVectorMap<long,CAIStateGroupBase_*,CKeyPairCompareGreater<long,CAIStateGroupBase_*>_>
+#endif
     CAIStateGroupBase*  PActiveStateGroup;                   // +0x38
     CAIStateGroupBase*  PLastStateGroup;                     // +0x3c
     CAIStateGroupBase*  PPendingStateGroup;                  // +0x40
@@ -134,6 +143,9 @@ public:
     // StateGroupInfo, private, const CAIStateGroupInfo[] (declared without a bound). 0x013BB008, 203 entries. No layout change.
 private:
     static const CAIStateGroupInfo StateGroupInfo[];
+#ifdef FABLE_RETAIL_CAIBRAIN_INITGROUPS_PASS26
+    void InitStateGroups(CDefPointer<const CBrainDef> pbrain_def);
+#endif
 #endif
 };
 #pragma pack(pop)

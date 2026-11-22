@@ -34,6 +34,9 @@ template<> std::vector<CEngineTextureMorph,std::allocator<CEngineTextureMorph> >
 class CEngineTextureMorphSet {
 public:
     CArray<CEngineTextureMorph> Morphs;                       // +0x00
+#ifdef FABLE_RETAIL_CENGINETEXTUREMORPHSET_ADDTEXTUREMORPH_PASS26
+    void AddTextureMorph(long original_texture,const CCompositeBlendDesc& blend);
+#endif
 #ifdef FABLE_RETAIL_CENGINETEXTUREMORPHSET_ADDENGINEMORPH
     // hand4f opt-in (2026-11-19, row 0x006CA8C0): Ego_r.pdb / FableWin.pdb ?AddEngineMorph@CEngineTextureMorphSet@@IAEPAVCEngineTextureMorph@@J@Z
     // (protected; Ego_d field list 0x270FB; out of line in retail at 0x006CA8C0, called by AddTextureMorph 0x006CA950). Needs

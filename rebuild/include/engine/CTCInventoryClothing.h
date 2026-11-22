@@ -62,6 +62,10 @@ class CTCInventoryClothing
 #endif
 {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_STAT_INTERFACE_PASS26
+    // FableWin 0x01900290, Ego_d GetTC instantiation, retail vtable getter and lookup key 18.
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_INVENTORY_CLOTHING; }
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORYCLOTHING_PROCESSBUTTONARELEASED
     // NF95 opt-in (q11234, row 0x005B34D5): Ego_r.pdb (0x0055ED72) + FableWin.pdb (0x01E27000) ?ProcessButtonAReleased@CTCInventoryClothing@@UAEXXZ,
     // the override in vtable slot 58 (0x0124356C). Requires FABLE_RETAIL_CTCINVENTORYCLOTHING_CALCULATE (the base). Declaration only: no layout change.

@@ -24,10 +24,14 @@ public:
     bool                        Owned;                                   // +0x24
     CIntelligentPointer<CThing> Thing;                                   // +0x25
     float                       Radius;                                  // +0x30
+#ifdef FABLE_RETAIL_COIN_OWNER_TYPE_PASS26
+    int                         Owner;                                  // +0x34, both PDB records
+#else
     long                        Owner;                                   // +0x34 (PDB int)
+#endif
     unsigned long               Sound;                                   // +0x38
 };
-FABLE_STATIC_ASSERT(offsetof(Coin, Owned) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(Coin, Radius) == 0x30);
-FABLE_STATIC_ASSERT(sizeof(Coin) == 0x3c);
+FABLE_STATIC_ASSERT_AT(30, offsetof(Coin, Owned) == 0x24);
+FABLE_STATIC_ASSERT_AT(31, offsetof(Coin, Radius) == 0x30);
+FABLE_STATIC_ASSERT_AT(32, sizeof(Coin) == 0x3c);
 #endif

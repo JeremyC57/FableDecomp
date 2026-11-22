@@ -27,6 +27,10 @@ namespace NSpeechGainManager { enum EDialogueLayer; }                    // MS f
 class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase {
 private:
     EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);   // 0x0095ED80
+#ifdef FABLE_RETAIL_OPINIONREACTIONROOT_FLEEUPDATE_PASS26
+    // Original private procedure in Ego_r 0x009A6280 and FableWin 0x02C79150.
+    bool FleeUpdate();
+#endif
     EAIActionReturn SayToThingReactingTo(const CCharString& text);      // 0x0095EE70
     bool WifeFeelingUpdate(EOpinionAttitudeType attitude);              // 0x00982EB0
     bool WifeGeneralUpdate(EOpinionAttitudeType attitude);              // 0x00982F10

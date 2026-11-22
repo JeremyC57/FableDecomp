@@ -23,7 +23,18 @@ enum EInputButtonEventType;                                              // as e
 enum EInputButtonEventType { };
 #endif
 #endif
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+#include "engine/EInputButtonEventType.h"
+#include "engine/EGameAction.h"
+class CInputEvent;
+#endif
 class CInputProcessGameBase : public CAInputProcess {
+#ifdef FABLE_RETAIL_COMBAT_INPUT_PASS26
+public:
+    float GetButtonPressureForEvent(const CInputEvent& event) const;
+protected:
+    bool IsGameActionEventInQueue(EGameAction action,EInputButtonEventType type) const;
+#endif
 public:
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);        // 0x00687A30
 #ifdef FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
@@ -73,6 +84,12 @@ public:
 protected:
     bool IsQuickAccessEventInQueue(long button, EInputButtonEventType type) const;   // 0x00687CB0
 public:
+#endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_QUICKACCESS_PASS26
+protected:
+    bool IsEventQuickAccessItemButton(const CInputEvent& event,long& item_index) const;
+    bool IsOtherQuickAccessItemButtonHeld(long item_index) const;
+    bool IsEventContextSensitiveItemButton(const CInputEvent& event,long& item_index) const;
 #endif
     CWorld*                 World;                                       // +0x14
     CPlayer*                MyPlayer;                                    // +0x18

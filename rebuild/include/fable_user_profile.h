@@ -66,6 +66,10 @@ public:
     // Retail opt-in addition (chunk 719): the config-options defaults def (landed 0x004083E0) and the four detail caps that read it,
     // Ego_r.pdb / FableWin.pdb QBE members in Ego_r order (0x00406D40 / D80 / DC0 / E00 = retail 0x004084B0 / 0x00408500 /
     // 0x00408550 / 0x004085A0; fields MaxEffectsDetail +0x70, MaxTextureDetail +0x58, MaxShadowDetail +0x60, MaxMeshDetail +0x68).
+#ifdef FABLE_RETAIL_PROFILE_DEFAULT_NAME_PASS26
+    // Both original PDBs identify this const public accessor, native 004065D0.
+    CWideString GetDefaultProfileName() const;
+#endif
     CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef() const;   // 0x004083E0
     float GetMaxEffectsDetail() const;                                   // 0x004084B0
     float GetMaxTextureDetail() const;                                   // 0x00408500
@@ -240,7 +244,12 @@ private:
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_RENDERUIBACKGROUND
     unsigned char _pad_defaults_124[0x138-0x124];
     CTexture*     PBackBufferTexture;                                    // +0x138
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_CTOR_PASS26
+    bool VideoChangesAccepted; // Ego_r +0x140; the retail constructor initializes +0x13c.
+    unsigned char _pad_defaults_13d[3];
+#else
     unsigned char _pad_defaults_13c[0x140-0x13c];
+#endif
 #else
     unsigned char _pad_defaults_124[0x140-0x124];
 #endif
