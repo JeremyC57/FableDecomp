@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+// Leaf: ??0CCountedPointer_00419086@@QAE@PAX@Z
 // CCountedPointer_00419086::CCountedPointer_00419086(T*) -- adopt the object: null-checked count block with the per-type destroy function
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041956C, oracle length 62 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -9,13 +10,18 @@
 // then for a non-null object allocates the 12-byte block {1, destroy fn 0x00419086, object}
 // (operator new @ 0x00BFEA1A, null-checked), else leaves the block pointer null. Named like the
 // Reset family (unique manifest label, else the destroy function). One of 15 bodies.
-void __fastcall Destroy_00419086(void* object);   // 0x00419086: the per-type deleter stored in the block
+// Naming (NF282, 2026-11-22): the count block's deleter 0x00419086 now binds its PDB spelling ?DeleteData@?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@SIXPAX@Z (FableWin.pdb name set;
+//   retail stores 0x00419086 as the count block's DeleteFunc here), declared by the shared engine/CCountedPointer.h under FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (only its
+//   address is stored here, T is only declared); was the free stand-in ?Destroy_00419086@@YIXPAX@Z. Object otherwise unchanged.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+namespace NParticleEngine { class CAEnvironmentInteraction; }
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00419086), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(&CCountedPointer<NParticleEngine::CAEnvironmentInteraction>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_00419086 {

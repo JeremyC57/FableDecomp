@@ -6,7 +6,7 @@
 // (CIVCountedPointer<C3DMeshLODInfo>), MeshStats +0x18; C3DMeshLODInfo IVRefCount +4, UsedMeshStats (bool) +0x31.
 // Shape: the intrusive pointer's inline `= 0` (release, clear, store) and `= other` (skip when equal, release, clear, store,
 // add-ref with no null test: the LOD was dereferenced already); a local copy of the LOD keeps it alive across the reset.
-// Leaf: RemoveLOD@C3DMeshInfo
+// Leaf: ?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z
 #include "fable_compiler.h"
 class C3DMeshLODInfo { public:
     virtual void Destroy(int flags);
@@ -60,7 +60,7 @@ class C3DMeshInfo { public:
     virtual void v00();
     long m_04, m_08;
     CMeshData* MeshData;                            // +0xc CIVCountedPointer<CMeshData>
-    void RemoveLOD(unsigned long lod, bool keepAsMeshStats) const;
+private: void RemoveLOD(unsigned long lod, bool keepAsMeshStats) const;
 };
 
 void C3DMeshInfo::RemoveLOD(unsigned long lod, bool keepAsMeshStats) const

@@ -1,0 +1,6 @@
+VT ??_7?$CIntelligentPointer@VCThingAICreature@@@@6B@ slots 2 retail 0123e7e0
+  0 004d6931 DIFF ?v00@?$CIntelligentPointer@VCThingAICreature@@@@UAEXXZ ??_G?$CIntelligentPointer@VCThingAICreature@@@@UAEPAXI@Z
+  1 00000000 NOTLANDED ??_E?$CIntelligentPointer@VCThingAICreature@@@@UAEPAXI@Z 
+VT ??_7?$CIntelligentPointer@VCThingObject@@@@6B@ slots 2 retail 0125a858
+  0 0065d7ba NOLEAF ?v00@?$CIntelligentPointer@VCThingObject@@@@UAEXXZ -
+  1 0133d820 NOTLANDED ??_E?$CIntelligentPointer@VCThingObject@@@@UAEPAXI@Z 

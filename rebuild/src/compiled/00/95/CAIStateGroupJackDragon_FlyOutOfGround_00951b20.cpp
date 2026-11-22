@@ -1,5 +1,5 @@
 // CAIStateGroup_JackDragon::FlyOutOfGround() -- kill the invisible bodge creature, stop head turning and wait out the anim loop, then (enemy alive and not stopping) build the fly-out route on a random side (left/right ground-exit positions), remember the side's third point as the previous flight position, take off along it and choose the hover/strafe state; terminate otherwise
-// Leaf: ?FlyOutOfGround@CAIStateGroup_JackDragon@@QAEXXZ
+// Leaf: ?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00951B20, length 553 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill @ 0x004C9B80, SetHeadTurning @ 0x00950BB0,
 // WaitForAnimLoop @ 0x00950950, CAIStateGroupBase::IsStopping @ 0x008FD010, Terminate @ 0x008FCF40, C3DVector::RotateAboutZ
@@ -123,7 +123,7 @@ private:                                    // NF35: Ego_r + FableWin private (A
     void WaitForAnimLoop(float time);           // 0x00950950 (AAEXM@Z: float)
     EDragonState ChooseHoverOrStrafeState();    // 0x0094FFF0
 public:
-    void FlyOutOfGround();
+    private: void FlyOutOfGround(); public:
 };
 #pragma pack(pop)
 

@@ -30,7 +30,7 @@ class C3DPrimitive2 { public:
 
     bool UploadRepeatedBuffers(unsigned long flags, unsigned long reps);
     bool UploadToVertexBufferStatic(unsigned long flags);   // 0x00A931F0
-    bool UploadToIndexBuffer(unsigned long flags);          // 0x00A8F9E0
+    private: bool UploadToIndexBuffer(unsigned long flags); public:          // 0x00A8F9E0
 };
 
 bool C3DPrimitive2::UploadRepeatedBuffers(unsigned long flags, unsigned long /*reps*/)

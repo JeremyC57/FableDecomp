@@ -1,5 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby::AttackEnemy() -- flag a registered combatant ready to attack, then pump combat
-// Leaf: ?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@QAEXXZ
+// Leaf: ?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- the loop-exit manager call goes through the inline GetPCombatManager() accessor (mov eax,[eax+0x4c] ; push edi ; mov ecx,eax).
 // actions (terminating when the enemy dies or a pump neither succeeds nor waits) until the group stops, stops
@@ -136,8 +136,8 @@ struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                                // +0x1c (engine header)
     virtual bool IsStillRunnable(bool checkEnemy);   // slot 14 (+0x38), first after the base's slots 0..13
-    bool IsEnemyCreatureNearCombatPosition();   // 0x0096E830
-    void AttackEnemy();
+    private: bool IsEnemyCreatureNearCombatPosition() const; public:   // 0x0096E830
+    private: void AttackEnemy(); public:
     virtual void Cleanup();
 };
 

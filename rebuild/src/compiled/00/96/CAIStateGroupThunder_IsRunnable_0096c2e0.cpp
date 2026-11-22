@@ -143,7 +143,7 @@ struct CAIStateGroup_Thunder : CAIStateGroupBase {
     CIntelligentPointerCreature PTargetThing;   // +0x1d
     unsigned char _pad25[3];
     long HitCount;                              // +0x28
-    bool FindHitEvent();                        // 0x0096C250
+    protected: bool FindHitEvent(); public:                        // 0x0096C250
     virtual bool IsRunnable();
 };
 #pragma pack(pop)

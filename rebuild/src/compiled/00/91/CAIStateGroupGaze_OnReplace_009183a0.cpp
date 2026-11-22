@@ -2,7 +2,7 @@
 // NF83 (round 7, q11021 / q11022 binder): the local CBaseIntelligentPointer-derived vtable stand-in(s) replaced by the shared
 //   engine/CIntelligentPointer.h CIntelligentPointer<CThing> / <CThingCreatureBase> (vtables ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C,
 //   ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@ 0x0123E7D8).
-// Leaf: ?OnReplace@CAIStateGroup_Gaze@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_Gaze@@MAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // pointer (interface 0x2f, +0xc); then forget the gaze marker.
@@ -149,7 +149,7 @@ struct CAIStateGroup_Gaze : CAIStateGroupBase {
     float MaxDistanceForCreaturesToLookAt;      // +0x24
     long PrimaryMarkerDef;                      // +0x28
     long SecondaryMarkerDef;                    // +0x2c
-    virtual void OnReplace();
+    protected: virtual void OnReplace(); public:
 };
 
 void CAIStateGroup_Gaze::OnReplace()

@@ -1,0 +1,15 @@
+## HEAD set: H_0088c160.obj H_0092b110.obj H_0093ae80.obj H_0096d450.obj 0088bf30.obj 0092ace0.obj 0092ae70.obj 0092afe0.obj 0093ab70.obj 0096cb40.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetPNearCampfire@CAIStateGroup_BanditSitRoundCampfire@@QBEPAVCThingObject@@XZ
+UNRESOLVED 1 ?GetSeat@CAIStateGroup_EatAtTable@@QAE_NXZ
+UNRESOLVED 1 ?GetSeat@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3PBVCCharString@@@Z
+UNRESOLVED 1 ?GoToLibrary@CAIStateGroup_ApprenticeHero@@QAE_NXZ
+UNRESOLVED 1 ?InitStateGroups@CAIBrain@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z
+UNRESOLVED 1 ?LookAtLeaderBoard@CAIStateGroup_ApprenticeHero@@QAE_NXZ
+UNRESOLVED 1 ?LookAtMap@CAIStateGroup_ApprenticeHero@@QAE_NXZ
+## new set: 0088c160.obj 0092b110.obj 0093ae80.obj 0096d450.obj 0088bf30.obj 0092ace0.obj 0092ae70.obj 0092afe0.obj 0093ab70.obj 0096cb40.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetSeat@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3PBVCCharString@@@Z
+LK_DONE

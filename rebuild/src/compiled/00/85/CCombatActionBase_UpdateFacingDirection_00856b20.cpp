@@ -70,7 +70,7 @@ class CCombatActionBase { public:
     CAnimationEntry*        PAnimEntry;         // +0x74
     unsigned char           _pad78[0xa8 - 0x78];
     CIntelligentPointer<CThing> PTarget;            // +0xa8
-    void UpdateFacingDirection();
+    protected: void UpdateFacingDirection(); public:
 };
 
 void CCombatActionBase::UpdateFacingDirection()

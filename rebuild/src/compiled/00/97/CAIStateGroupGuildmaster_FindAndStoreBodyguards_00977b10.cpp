@@ -15,7 +15,7 @@
 // template instantiation in retail's TU, so VC7.1 sees that the vector's address does not escape: the stand-in below
 // hands the extern only the bounds and writes them back, which keeps the loop's start/count in ebx/edi across the
 // SetHelperCreature calls while the boss is re-read from its frame word.
-// Leaf: FindAndStoreBodyguards@CAIStateGroup_Guildmaster
+// Leaf: ?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // NF131 (2026-11-20, q4994 / q5140): the PeekThingSearchTools declaration moves in place from the derived local class onto the row's existing local
@@ -151,7 +151,7 @@ class CTCBoss { public:                                // the interface-0xad com
 };
 
 struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
-    void FindAndStoreBodyguards();
+    protected: void FindAndStoreBodyguards(); public:
 };
 
 void CAIStateGroup_Guildmaster::FindAndStoreBodyguards()

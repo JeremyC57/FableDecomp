@@ -1,0 +1,26 @@
+## HEAD set: H_0094fe30.obj H_00951b20.obj H_00915290.obj H_0096ea50.obj H_0093e2d0.obj H_0093e5e0.obj H_0096ee90.obj H_00936020.obj H_00930ee0.obj H_00931010.obj H_00930a70.obj H_0095d200.obj H_0096c2e0.obj H_0096a7a0.obj 0096e830.obj 0093d7a0.obj 00935e40.obj 0092f240.obj 0095d0e0.obj 0096c250.obj 0096a260.obj 00931200.obj 00952890.obj 00915350.obj
+duplicates 0
+
+UNRESOLVED 3 ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ
+UNRESOLVED 1 ?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@AAEXXZ
+UNRESOLVED 1 ?AttackEnemy@CAIStateGroup_MeleeCombatNearby@@AAEXXZ
+UNRESOLVED 1 ?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ
+UNRESOLVED 1 ?FindHitEvent@CAIStateGroup_JackDragon@@AAE_NXZ
+UNRESOLVED 1 ?FindHitEvent@CAIStateGroup_Thunder@@QAE_NXZ
+UNRESOLVED 1 ?FindHitEvent@CAIStateGroup_WhisperRetreat@@QAE_NXZ
+UNRESOLVED 1 ?FlyOutOfGround@CAIStateGroup_JackDragon@@AAEXXZ
+UNRESOLVED 1 ?InteractionFailed@CAIStateGroup_MinionReactToPlayerInteraction@@QAEXXZ
+UNRESOLVED 1 ?IsEnemyCreatureNearCombatPosition@CAIStateGroup_MeleeCombatNearby@@QAE_NXZ
+UNRESOLVED 1 ?IsStillRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ
+UNRESOLVED 1 ?IsValid@CAIStateGroup_MinionReactToCriminal@@ABE_NXZ
+UNRESOLVED 1 ?IsValid@CAIStateGroup_MinionReactToCriminal@@QBE_NXZ
+UNRESOLVED 1 ?PutOutFire@CAIStateGroup_MinionPutOutFires@@QAE_NXZ
+UNRESOLVED 1 ?SendMessageToMother@CAIStateGroup_KidHurtSelfRunToMother@@AAEXXZ
+UNRESOLVED 1 ?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z
+## new set: 0094fe30.obj 00951b20.obj 00915290.obj 0096ea50.obj 0093e2d0.obj 0093e5e0.obj 0096ee90.obj 00936020.obj 00930ee0.obj 00931010.obj 00930a70.obj 0095d200.obj 0096c2e0.obj 0096a7a0.obj 0096e830.obj 0093d7a0.obj 00935e40.obj 0092f240.obj 0095d0e0.obj 0096c250.obj 0096a260.obj 00931200.obj 00952890.obj 00915350.obj
+duplicates 0
+
+UNRESOLVED 1 ?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@AAEXXZ
+UNRESOLVED 1 ?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ
+UNRESOLVED 1 ?FindHitEvent@CAIStateGroup_JackDragon@@AAE_NXZ
+LK_DONE

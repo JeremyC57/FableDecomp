@@ -72,8 +72,8 @@ public:
 class CAFile
 {
 public:
-    static bool __fastcall ParserIsSeparatorNext(CStringParser& parser);              // 0x00997DA0
-    static bool __fastcall IsForbiddenSymbolInComponent(const CCharString& component); // 0x009975E0
+    private: static bool __fastcall ParserIsSeparatorNext(CStringParser& parser); public:              // 0x00997DA0
+    private: static bool __fastcall IsForbiddenSymbolInComponent(const CCharString& component); public: // 0x009975E0
     static bool __fastcall ParserReadPastComponent(CStringParser& parser, CCharString& component);
 };
 

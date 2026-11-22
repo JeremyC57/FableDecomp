@@ -1,0 +1,64 @@
+binder	target	T_arg	caller_symbol	caller	verdict
+004a98c0	00403600	VCAProgressDisplay	-	-	no caller line
+00403db0	00403630	VCFileInstaller	?Reset@?$CCountedPointer@VCFileInstaller@@@@QAEXPAVCFileInstaller@@@Z	00404440	agree
+00403e40	00403650	VCDataBank@NGameText	?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z	00416832	agree
+00413520	004132f0	VCConsole	?Reset@?$CCountedPointer@VCConsole@@@@QAEXPAVCConsole@@@Z	00414c90	agree
+00413520	004132f0	VCConsole	?Reset@CCountedPointer_CConsole@@QAEXPAVCConsole@@@Z	00687f80	stand-in caller spelling
+0041956c	00419086	VCAEnvironmentInteraction@NParticleEngine	??0?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@QAE@PAVCAEnvironmentInteraction@NParticleEngine@@@Z	004174f1	agree
+005669c0	0041bd80	VCTexture	?Reset@?$CCountedPointer@VCTexture@@@@QAEXPAVCTexture@@@Z	00a6a540	agree
+005669c0	0041bd80	VCTexture	?Reset@CTexturePointer@@QAEXPAVCTexture@@@Z	0055fc90	stand-in caller spelling
+004366b0	004361e0	VCEngineManager	?Reset@?$CCountedPointer@VCEngineManager@@@@QAEXPAVCEngineManager@@@Z	00436fb0	agree
+004441a0	00443580	VCDrawSpiritsHealth@NPlayerGui	?Reset@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@QAEXPAVCDrawSpiritsHealth@NPlayerGui@@@Z	0043b570	agree
+00444210	004435c0	VCDrawScreenFade@NPlayerGui	?Reset@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@QAEXPAVCDrawScreenFade@NPlayerGui@@@Z	0043b570	agree
+00444280	00443600	VCDrawMoney@NPlayerGui	?Reset@?$CCountedPointer@VCDrawMoney@NPlayerGui@@@@QAEXPAVCDrawMoney@NPlayerGui@@@Z	0043b570	agree
+004442f0	00443640	VCDrawRenown@NPlayerGui	?Reset@?$CCountedPointer@VCDrawRenown@NPlayerGui@@@@QAEXPAVCDrawRenown@NPlayerGui@@@Z	0043b570	agree
+00444360	00443680	VCDrawMorality@NPlayerGui	?Reset@?$CCountedPointer@VCDrawMorality@NPlayerGui@@@@QAEXPAVCDrawMorality@NPlayerGui@@@Z	0043b570	agree
+004443d0	004436c0	VCDrawExperience@NPlayerGui	?Reset@?$CCountedPointer@VCDrawExperience@NPlayerGui@@@@QAEXPAVCDrawExperience@NPlayerGui@@@Z	0043b570	agree
+00444440	00443700	VCDrawCrime@NPlayerGui	?Reset@?$CCountedPointer@VCDrawCrime@NPlayerGui@@@@QAEXPAVCDrawCrime@NPlayerGui@@@Z	0043b570	agree
+004444b0	00443740	VCDrawReceivedItems@NPlayerGui	?Reset@?$CCountedPointer@VCDrawReceivedItems@NPlayerGui@@@@QAEXPAVCDrawReceivedItems@NPlayerGui@@@Z	0043b570	agree
+00444520	00443780	VCDrawFishingGame@NPlayerGui	?Reset@?$CCountedPointer@VCDrawFishingGame@NPlayerGui@@@@QAEXPAVCDrawFishingGame@NPlayerGui@@@Z	0043b570	agree
+004446e0	00443840	VCDrawDamage@NPlayerGui	?Reset@?$CCountedPointer@VCDrawDamage@NPlayerGui@@@@QAEXPAVCDrawDamage@NPlayerGui@@@Z	0043b570	agree
+00444830	004438f0	VCDrawTargetInfo@NPlayerGui	?Reset@?$CCountedPointer@VCDrawTargetInfo@NPlayerGui@@@@QAEXPAVCDrawTargetInfo@NPlayerGui@@@Z	0043b570	agree
+004448a0	00443930	VCDrawHighlightingTargetingCursor@NPlayerGui	?Reset@?$CCountedPointer@VCDrawHighlightingTargetingCursor@NPlayerGui@@@@QAEXPAVCDrawHighlightingTargetingCursor@NPlayerGui@@@Z	0043b570	agree
+00444a60	00443a20	VCDrawBettingHUD@NPlayerGui	?Reset@?$CCountedPointer@VCDrawBettingHUD@NPlayerGui@@@@QAEXPAVCDrawBettingHUD@NPlayerGui@@@Z	0043b570	agree
+00444ad0	00443a60	VCDrawProjectileTargetingCentre@NPlayerGui	?Reset@?$CCountedPointer@VCDrawProjectileTargetingCentre@NPlayerGui@@@@QAEXPAVCDrawProjectileTargetingCentre@NPlayerGui@@@Z	0043b570	agree
+00444d00	00443b60	VCDrawNPCName@NPlayerGui	?Reset@?$CCountedPointer@VCDrawNPCName@NPlayerGui@@@@QAEXPAVCDrawNPCName@NPlayerGui@@@Z	0043b570	agree
+00445190	00444d90	VCStatBar@NPlayerGui	?Reset@?$CCountedPointer@VCStatBar@NPlayerGui@@@@QAEXPAVCStatBar@NPlayerGui@@@Z	0043b570	agree
+00445200	00444dd0	VCCrimeStatBar@NPlayerGui	?Reset@?$CCountedPointer@VCCrimeStatBar@NPlayerGui@@@@QAEXPAVCCrimeStatBar@NPlayerGui@@@Z	0043b570	agree
+0049bce0	0049bc20	VCGameJoystickManager	?Reset@?$CCountedPointer@VCGameJoystickManager@@@@QAEXPAVCGameJoystickManager@@@Z	0049bb90	agree
+004a9a10	004a8220	VCQuestManager	?Reset@?$CCountedPointer@VCQuestManager@@@@QAEXPAVCQuestManager@@@Z	004a6550	agree
+004a9a80	004a8260	VCSkeletalMorphResourceManager	?Reset@?$CCountedPointer@VCSkeletalMorphResourceManager@@@@QAEXPAVCSkeletalMorphResourceManager@@@Z	004a2e90	agree
+004adf80	004adc40	VCMessageEventManager	?Reset@?$CCountedPointer@VCMessageEventManager@@@@QAEXPAVCMessageEventManager@@@Z	004a6e30	agree
+0050f2b0	0050bcc0	VCWADBank	?Reset@?$CCountedPointer@VCWADBank@@@@QAEXPAVCWADBank@@@Z	004fdab0	agree
+0050faa0	0050c210	VCMap	?Reset@?$CCountedPointer@VCMap@@@@QAEXPAVCMap@@@Z	004ff080	agree
+0050fb90	0050c2e0	VCLevelLoader	?Reset@?$CCountedPointer@VCLevelLoader@@@@QAEXPAVCLevelLoader@@@Z	00507c30	agree
+0051cea0	0051ccd0	VCRegionConnectionGraph	?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z	00506d40	agree
+0065e198	0065d258	VCVillageTaskPatrol	??0?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@PAVCVillageTaskPatrol@@@Z	0065b854	agree
+0065e2e0	0065d2b1	VCVillageTaskSecuritySweep	??0?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@PAVCVillageTaskSecuritySweep@@@Z	00659800	agree
+00673500	00672aa0	VCCreatureStatsDef	?Reset@?$CCountedPointer@VCCreatureStatsDef@@@@QAEXPAVCCreatureStatsDef@@@Z	006765a0	agree
+00675060	00674e50	VCWoundMorphs	?Reset@?$CCountedPointer@VCWoundMorphs@@@@QAEXPAVCWoundMorphs@@@Z	006765a0	agree
+0067fc10	0067f650	VCPhysicalPrimitiveBase@NHitLocations	?Reset@?$CCountedPointer@UCPhysicalPrimitiveBase@@@@QAEXPAUCPhysicalPrimitiveBase@@@Z	0067f810	DISAGREE:UCPhysicalPrimitiveBase
+006fd460	006fd400	VCManager@NAnimationEvents	?Reset@?$CCountedPointer@VCManager@NAnimationEvents@@@@QAEXPAVCManager@NAnimationEvents@@@Z	006faa90	agree
+00718940	00718080	VCScriptConversation@NTCScriptedControl	?Reset@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAEXPAVCScriptConversation@NTCScriptedControl@@@Z	00714d30	agree
+00771b60	00771b30	VCOpinionSet	?Reset@?$CCountedPointer@VCOpinionSet@@@@QAEXPAVCOpinionSet@@@Z	00771660	agree
+00786bf0	00786a20	VC3DSkeletalMorph	?Reset@?$CCountedPointer@VC3DSkeletalMorph@@@@QAEXPAVC3DSkeletalMorph@@@Z	007865e0	agree
+008ab230	008aa7e0	VCScriptGameResourceObjectScriptedThingBase	?Reset@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@@Z	008ab960	agree
+008ab2b0	008aa7f0	VCScriptGameResourceObjectMovieBase	?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z	00cf8850	agree
+00992170	00991e00	VCResourceBank	?Reset@?$CCountedPointer@VCResourceBank@@@@QAEXPAVCResourceBank@@@Z	00991910	agree
+009b1f50	009b0e90	VCSymbolMap	?Reset@?$CCountedPointer@VCSymbolMap@@@@QAEXPAVCSymbolMap@@@Z	009e2e30	agree
+009e3090	009e2960	VCFontDataBank	?Reset@?$CCountedPointer@VCFontDataBank@@@@QAEXPAVCFontDataBank@@@Z	009e2e30	agree
+009e3100	009e2970	VCStreamingFontDataBank	?Reset@?$CCountedPointer@VCStreamingFontDataBank@@@@QAEXPAVCStreamingFontDataBank@@@Z	009e2e30	agree
+00a31640	00a110d0	VCContainmentVolume	?Reset@CCountedPointer@@QAEXPAVCContainmentVolume@@@Z	00a2e860	stand-in caller spelling
+00a31640	00a110d0	VCContainmentVolume	?Reset@?$CCountedPointer@VCContainmentVolume@@@@QAEXPAVCContainmentVolume@@@Z	00a2e9a0	agree
+00a16640	00a16270	VCNavQuadTree	?Reset@?$CCountedPointer@VCNavQuadTree@@@@QAEXPAVCNavQuadTree@@@Z	00a156d0	agree
+00a29c50	00a282f0	VC3DAnimation2	?Reset@?$CCountedPointer@VC3DAnimation2@@@@QAEXPAVC3DAnimation2@@@Z	00a24d70	agree
+00a44170	00a44130	VCLipSyncSampleData	?Reset@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXPAVCLipSyncSampleData@@@Z	00a42ea0	agree
+00a52be0	00a51180	VCSimpleMemoryPool	?Reset@?$CCountedPointer@VCSimpleMemoryPool@@@@QAEXPAVCSimpleMemoryPool@@@Z	00a4ee10	agree
+00a6ae60	00a6acb0	VCVolumeTexture	?Reset@?$CCountedPointer@VCVolumeTexture@@@@QAEXPAVCVolumeTexture@@@Z	00a699d0	agree
+00a8d400	00a8cb70	VC3DBone2	-	-	no caller line
+00a9a420	00a99fe0	VC3DAnimFileRootChunk	?Reset@?$CCountedPointer@VC3DAnimFileRootChunk@@@@QAEXPAVC3DAnimFileRootChunk@@@Z	00a999b0	agree
+00a9ced0	00a9cb20	VC3DMeshFileRootChunk	?Reset@?$CCountedPointer@VC3DMeshFileRootChunk@@@@QAEXPAVC3DMeshFileRootChunk@@@Z	00a9bbe0	agree
+00ac38a0	00ac3810	VC3DMeshPartitionElement	?Reset@?$CCountedPointer@VC3DMeshPartitionElement@@@@QAEXPAVC3DMeshPartitionElement@@@Z	00ac2970	agree
+00ac3ff0	00ac3fd0	VCParticleProgram	?Reset@?$CCountedPointer@VCParticleProgram@@@@QAEXPAVCParticleProgram@@@Z	00ac3bd0	agree
+00ad65a0	00ad5ed0	VCVertexPairContraction@QuadricOptimiserInternals	-	-	no caller line
+00ae93e0	00ae91c0	VCParticleDataBank@NParticleEngine	?Reset@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAEXPAVCParticleDataBank@NParticleEngine@@@Z	00ae8980	agree

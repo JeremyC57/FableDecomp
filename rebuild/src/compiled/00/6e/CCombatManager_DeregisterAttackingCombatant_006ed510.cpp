@@ -248,7 +248,7 @@ public:
     std::map<unsigned __int64, CCombatantInfo> Combatants;   // +0x10
     void IncrementDefenderAttackPattern(CCombatantInfo& info);                    // 0x006E8600
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long weapon);        // 0x006EBDD0
-    void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force);         // 0x006ED030
+    private: void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force); public:         // 0x006ED030
     void DeregisterAttackedCombatant(CThingCreatureBase* attacked);               // 0x006ED8C0
     private: void DeregisterAttackingCombatant(CThingCreatureBase& attacker); public:   // Ego_r.pdb 0x00716DB0 + FableWin.pdb 0x024145F0 (private, by reference)
 };

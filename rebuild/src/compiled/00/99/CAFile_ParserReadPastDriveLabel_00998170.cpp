@@ -12,7 +12,7 @@
 // 2 (the drive name) then 1 (a symbol).
 // Fix (sweep 3, FINDINGS chunk 482): the callee 0x009B9870 is CParsedItem::GetSymbol (retail body order = the PDB's
 // GetSymbol, GetString, GetInteger, GetFloat run 0x009B9870..0x009B98A0); GetString is 0x009B9880.
-// Leaf: ?ParserReadPastDriveLabel@CAFile
+// Leaf: ?ParserReadPastDriveLabel@CAFile@@CI_NAAVCStringParser@@AAVCParsedItem@@@Z
 #include "fable_compiler.h"
 #include <string.h>
 
@@ -58,7 +58,7 @@ public:
 class CAFile
 {
 public:
-    static bool __fastcall ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item);
+    private: static bool __fastcall ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item); public:
 };
 
 bool __fastcall CAFile::ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item)

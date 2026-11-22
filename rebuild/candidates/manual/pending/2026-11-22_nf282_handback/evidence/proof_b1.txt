@@ -1,0 +1,240 @@
+##### 004a98c0 renames: ?Destroy_00403600@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCAProgressDisplay@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00403db0 renames: ?Destroy_00403630@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCFileInstaller@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00403e40 renames: ?Destroy_00403650@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDataBank@NGameText@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00413520 renames: ?Destroy_004132f0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCConsole@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0041956c renames: ?Destroy_00419086@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 005669c0 renames: ?Destroy_0041bd80@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004366b0 renames: ?Destroy_004361e0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004441a0 renames: ?Destroy_00443580@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444210 renames: ?Destroy_004435c0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444280 renames: ?Destroy_00443600@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawMoney@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004442f0 renames: ?Destroy_00443640@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawRenown@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444360 renames: ?Destroy_00443680@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawMorality@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004443d0 renames: ?Destroy_004436c0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawExperience@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444440 renames: ?Destroy_00443700@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawCrime@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004444b0 renames: ?Destroy_00443740@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawReceivedItems@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444520 renames: ?Destroy_00443780@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawFishingGame@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004446e0 renames: ?Destroy_00443840@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawDamage@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444830 renames: ?Destroy_004438f0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawTargetInfo@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004448a0 renames: ?Destroy_00443930@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawHighlightingTargetingCursor@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444a60 renames: ?Destroy_00443a20@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawBettingHUD@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444ad0 renames: ?Destroy_00443a60@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawProjectileTargetingCentre@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00444d00 renames: ?Destroy_00443b60@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawNPCName@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00445190 renames: ?Destroy_00444d90@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCStatBar@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00445200 renames: ?Destroy_00444dd0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCCrimeStatBar@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0049bce0 renames: ?Destroy_0049bc20@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCGameJoystickManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004a9a10 renames: ?Destroy_004a8220@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCQuestManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004a9a80 renames: ?Destroy_004a8260@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCSkeletalMorphResourceManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004adf80 renames: ?Destroy_004adc40@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCMessageEventManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0050f2b0 renames: ?Destroy_0050bcc0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCWADBank@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0050faa0 renames: ?Destroy_0050c210@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCMap@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0050fb90 renames: ?Destroy_0050c2e0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCLevelLoader@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0051cea0 renames: ?Destroy_0051ccd0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCRegionConnectionGraph@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0065e198 renames: ?Destroy_0065d258@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCVillageTaskPatrol@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0065e2e0 renames: ?Destroy_0065d2b1@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00673500 renames: ?Destroy_00672aa0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCCreatureStatsDef@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00675060 renames: ?Destroy_00674e50@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCWoundMorphs@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0067fc10 renames: ?Destroy_0067f650@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 006fd460 renames: ?Destroy_006fd400@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCManager@NAnimationEvents@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00718940 renames: ?Destroy_00718080@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00771b60 renames: ?Destroy_00771b30@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCOpinionSet@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00786bf0 renames: ?Destroy_00786a20@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DSkeletalMorph@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 008ab230 renames: ?Destroy_008aa7e0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 008ab2b0 renames: ?Destroy_008aa7f0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00992170 renames: ?Destroy_00991e00@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCResourceBank@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 009b1f50 renames: ?Destroy_009b0e90@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCSymbolMap@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 009e3090 renames: ?Destroy_009e2960@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCFontDataBank@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 009e3100 renames: ?Destroy_009e2970@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCStreamingFontDataBank@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a31640 renames: ?Destroy_00a110d0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a16640 renames: ?Destroy_00a16270@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCNavQuadTree@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a29c50 renames: ?Destroy_00a282f0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DAnimation2@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a44170 renames: ?Destroy_00a44130@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCLipSyncSampleData@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a52be0 renames: ?Destroy_00a51180@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCSimpleMemoryPool@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a6ae60 renames: ?Destroy_00a6acb0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCVolumeTexture@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a8d400 renames: ?Destroy_00a8cb70@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a9a420 renames: ?Destroy_00a99fe0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DAnimFileRootChunk@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00a9ced0 renames: ?Destroy_00a9cb20@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00ac38a0 renames: ?Destroy_00ac3810@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00ac3ff0 renames: ?Destroy_00ac3fd0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCParticleProgram@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00ad65a0 renames: ?Destroy_00ad5ed0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00ae93e0 renames: ?Destroy_00ae91c0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0

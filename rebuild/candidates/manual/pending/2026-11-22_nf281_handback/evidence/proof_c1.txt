@@ -1,0 +1,20 @@
+##### 00a249a0 renames: ?RemoveLOD@C3DMeshInfo@@QBEXK_N@Z=?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z
+sections head 9 new 9
+ALL_EQ 0
+ONLY_A	?RemoveLOD@C3DMeshInfo@@QBEXK_N@Z
+funcs SAME=7 vtbl_H=0 vtbl_N=0
+##### 00a25470 renames: ?BuildMesh@C3DMeshLODInfo@@QAE_N_N0@Z=?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z ?RemoveLOD@C3DMeshInfo@@AAEXK_N@Z=?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?OnResourceLoaded@C3DMeshLODInfo@@QAEXXZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00a254a0 renames: ?RemoveLOD@C3DMeshInfo@@QAEXK_N@Z=?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z
+sections head 3 new 3
+ALL_EQ 0
+DIFF	?OnResourceLoadAborted@C3DMeshLODInfo_Methods@@QAEXXZ
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 00a25e70 renames: ?BuildMesh@C3DMeshLODInfo@@QAE_N_N0@Z=?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z
+sections head 10 new 10
+ALL_EQ 0
+DIFF	?GetMesh@C3DMeshInfo@@QBE_NAAUCMeshPointer@@KK@Z
+funcs SAME=6 vtbl_H=0 vtbl_N=0

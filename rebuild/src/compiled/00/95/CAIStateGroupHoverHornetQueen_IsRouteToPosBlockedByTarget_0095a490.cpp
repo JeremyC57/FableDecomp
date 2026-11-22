@@ -1,5 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget(long circlePoint) -- true when the target and the circle marker are alive, the direction to the marker is within 60 degrees of the direction to the target (dot > 0.5) and the target is within 3 units in XY
-// Leaf: ?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@QAE_NJ@Z
+// Leaf: ?IsRouteToPosBlockedByTarget@CAIStateGroup_HoverHornetQueen@@IAE_NJ@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095A490, length 558 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0.
@@ -76,7 +76,7 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
     long EnemyKnockDownFrame;                   // +0x5c
     bool TimingCritical;                        // +0x60
     long RouteDirection;                        // +0x64
-    bool IsRouteToPosBlockedByTarget(long circlePoint);
+    protected: bool IsRouteToPosBlockedByTarget(long circlePoint); public:
 };
 
 bool CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget(long circlePoint)

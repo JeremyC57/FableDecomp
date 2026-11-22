@@ -1,0 +1,10 @@
+## HEAD set: H_00a249a0.obj H_00a25470.obj H_00a254a0.obj H_00a25e70.obj 00a24520.obj
+duplicates 0
+
+UNRESOLVED 2 ?BuildMesh@C3DMeshLODInfo@@QAE_N_N0@Z
+UNRESOLVED 1 ?RemoveLOD@C3DMeshInfo@@AAEXK_N@Z
+UNRESOLVED 1 ?RemoveLOD@C3DMeshInfo@@QAEXK_N@Z
+## new set: 00a249a0.obj 00a25470.obj 00a254a0.obj 00a25e70.obj 00a24520.obj
+duplicates 0
+
+LK_DONE

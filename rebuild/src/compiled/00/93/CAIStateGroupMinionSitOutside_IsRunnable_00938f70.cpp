@@ -99,7 +99,7 @@ class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007E
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBase {
     unsigned char _seat[0x2c];                  // +0x14..+0x3f UsesSeat / SitOnSeatBase members
     long FrameToStopSitting;                    // +0x40
-    virtual bool IsRunnable();                  // 0x0090F9C0
+    protected: virtual bool IsRunnable(); public:                  // 0x0090F9C0
 };
 
 struct CAIStateGroup_MinionSitOutside : CAIStateGroup_MinionSitOnSeatBase {

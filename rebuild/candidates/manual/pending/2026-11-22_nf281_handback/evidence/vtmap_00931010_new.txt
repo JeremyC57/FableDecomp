@@ -1,0 +1,6 @@
+VT ??_7CIntelligentPointerPlayer@@6B@ slots 2 retail NONE
+  0 ??_ECIntelligentPointerPlayer@@UAEPAXI@Z
+  1 ?v00@CIntelligentPointerPlayer@@UAEXXZ
+VT ??_7CIntelligentPointerBuilding@@6B@ slots 2 retail NONE
+  0 ??_ECIntelligentPointerBuilding@@UAEPAXI@Z
+  1 ?v00@CIntelligentPointerBuilding@@UAEXXZ

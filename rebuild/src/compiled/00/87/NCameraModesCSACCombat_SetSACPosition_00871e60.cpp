@@ -12,7 +12,7 @@ namespace NCameraModes {
 class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                     // +0x04..+0xa3 (retail)
-    void AddAttractorGoTo(const C3DVector& position, float weight);   // 0x0084E1A0
+    protected: void AddAttractorGoTo(const C3DVector& position, float weight); public:   // 0x0084E1A0
 };
 class CStringAndCageBase : public CBase { public:
     virtual void SetSACPosition(const C3DVector& position);

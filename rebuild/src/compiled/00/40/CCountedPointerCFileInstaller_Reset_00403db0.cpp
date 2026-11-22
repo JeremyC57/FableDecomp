@@ -1,4 +1,5 @@
 // CCountedPointer_00403630::Reset(T* object) -- let go of the current object (deleting it on the last reference) and take shared ownership of a new one
+// Leaf: ?Reset@CCountedPointer_00403630@@QAEXPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00403DB0, oracle length 103 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -14,14 +15,19 @@
 // Matching: the block pointer is re-read after the decrement (the count is touched through a
 // reference); operator new @ 0x00BFEA1A is null-checked, delete @ 0x00BFE9BC; the new block takes the
 // object re-read through `this` ([esi]), not the argument. One of 121 bodies of this shape.
-void __fastcall Destroy_00403630(void* object);   // the per-type deleter stored in the block
+// Naming (NF282, 2026-11-22): the count block's deleter 0x00403630 now binds its PDB spelling ?DeleteData@?$CCountedPointer@VCFileInstaller@@@@SIXPAX@Z (FableWin.pdb name set;
+//   retail stores 0x00403630 as the count block's DeleteFunc here), declared by the shared engine/CCountedPointer.h under FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (only its
+//   address is stored here, T is only declared); was the free stand-in ?Destroy_00403630@@YIXPAX@Z. Object otherwise unchanged.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CFileInstaller;
 
 // Count block shared by all pointers to one object.
 struct SCountBlock {
     long m_references;                     // how many pointers share the object
     void (__fastcall* m_pfnDestroy)(void*);// deletes the object on the last release
     void* m_pObject;                       // the object handed to the deleter
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00403630), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(&CCountedPointer<CFileInstaller>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_00403630 {

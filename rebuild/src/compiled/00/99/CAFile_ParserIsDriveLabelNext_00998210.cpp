@@ -53,7 +53,7 @@ public:
 class CAFile
 {
 public:
-    static bool __fastcall ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item);   // 0x00998170
+    private: static bool __fastcall ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item); public:   // 0x00998170
     static bool __fastcall ParserIsDriveLabelNext(CStringParser& parser);
 };
 

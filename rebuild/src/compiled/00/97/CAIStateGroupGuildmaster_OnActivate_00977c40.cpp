@@ -89,7 +89,7 @@ struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
     std::vector<CIntelligentPointer<CThing> > TeleportMarkers;   // +0x28
     long LastWillFrame;                         // +0x34
     long LastTeleportFrame;                     // +0x38
-    void FindAndStoreBodyguards();              // 0x00977B10
+    protected: void FindAndStoreBodyguards(); public:              // 0x00977B10
     virtual void OnActivate();
 };
 

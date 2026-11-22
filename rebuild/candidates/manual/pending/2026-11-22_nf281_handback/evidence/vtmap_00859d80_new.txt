@@ -1,0 +1,9 @@
+VT ??_7CEventBase@NEntityEvents@@6B@ slots 2 retail 0124f2c4
+  0 0057a502 DIFF ??_ECEventBase@NEntityEvents@@UAEPAXI@Z ??_GCEventBase@@UAEPAXI@Z
+  1 00bfea08 NOLEAF __purecall -
+VT ??_7CEventAttackedWithMeleeWeaponWithoutHittingAnything@NEntityEvents@@6B@ slots 2 retail 01276484
+  0 0085a7b0 DIFF ??_ECEventAttackedWithMeleeWeaponWithoutHittingAnything@NEntityEvents@@UAEPAXI@Z ScalarDeletingDestructor
+  1 0085a430 DIFF ?GetEventType@CEventAttackedWithMeleeWeaponWithoutHittingAnything@NEntityEvents@@UBEJXZ ?GetType@CEventAttackedWithMeleeWeaponWithoutHittingAnything@NEntityEvents@@UBE?AW4EEventType@2@XZ
+VT ??_7CEventAttackedWithBareHandsWithoutHittingAnything@NEntityEvents@@6B@ slots 2 retail 0127649c
+  0 0085a7d0 DIFF ??_ECEventAttackedWithBareHandsWithoutHittingAnything@NEntityEvents@@UAEPAXI@Z ScalarDeletingDestructor
+  1 0085a450 DIFF ?GetEventType@CEventAttackedWithBareHandsWithoutHittingAnything@NEntityEvents@@UBEJXZ ?GetType@CEventAttackedWithBareHandsWithoutHittingAnything@NEntityEvents@@UBE?AW4EEventType@2@XZ

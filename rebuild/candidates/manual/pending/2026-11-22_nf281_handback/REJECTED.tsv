@@ -1,0 +1,4 @@
+entry	address	claim	reason
+2	0x00A24A80	?BeginLoadingStats@C3DMeshInfo@@QBEX_N@Z (Ego_r + FableWin)	not in place (T3): the self row 0x00A24A80 defines QAE; making it const needs `mutable` on MeshData and the ctor call respelled to ??0C3DMeshLODInfo@@AAE@PBVC3DMeshInfo@@K@Z (both PDBs); binders 0x00A25530 / 0x00B393D0 bind the self spelling and must move with it; 0x00B39080 already QBE
+24	0x0094FBB0	?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ (Ego_r + FableWin; shared header private)	self respell would duplicate 0x00951FB0's strong same-TU copy of the AAE symbol (LNK2005); needs the copy made pick-any / declaration-only or a ruling (T3)
+23	0x00961C50	?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@ABE_NXZ	skipped: the only binder 0x009624D0 fails the clang precheck at HEAD (address-of-temporary); edit drafted in work/unused/009624d0.cpp, not compiled

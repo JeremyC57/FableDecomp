@@ -13,14 +13,14 @@ class CCPPointerInfo { public:                                  // PDB: RefCount
 };
 class C3DMeshInfo { public:
 private:
-    void RemoveLOD(unsigned long lod, bool keepStats);   // 0x00A249A0 ?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z (private; the LOD info is its friend)
+    void RemoveLOD(unsigned long lod, bool keepStats) const;   // 0x00A249A0 ?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z (private; the LOD info is its friend)
     friend class C3DMeshLODInfo;
 public:
 };
 
 struct C3DMeshLODInfo : C3DMeshLODInfoPdb {
-    bool BuildMesh(bool fromFileData, bool stats);       // 0x00A24520
-    void OnResourceLoaded();
+private: bool BuildMesh(bool fromFileData, bool stats);       // 0x00A24520 ?BuildMesh@C3DMeshLODInfo@@AAE_N_N0@Z (private)
+public: void OnResourceLoaded();
 };
 void C3DMeshLODInfo::OnResourceLoaded()
 {

@@ -85,7 +85,7 @@ class C3DPrimitive2 { public:
     bool UploadedFlag;                                  // +0x64
     unsigned char VertexStreamFlags;                    // +0x65
     unsigned long InitFlags;                            // +0x68
-    bool UploadToIndexBuffer(unsigned long flags);      // 0x00A8F9E0
+    private: bool UploadToIndexBuffer(unsigned long flags); public:      // 0x00A8F9E0
     void SaveBinary(CDataOutputStream& out);
 };
 

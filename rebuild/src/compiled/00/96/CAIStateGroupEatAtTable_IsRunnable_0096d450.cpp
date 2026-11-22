@@ -19,7 +19,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
-    bool GetSeat();                         // 0x0096CB40
+    protected: bool GetSeat(); public:                         // 0x0096CB40
     virtual bool IsRunnable();
 };
 

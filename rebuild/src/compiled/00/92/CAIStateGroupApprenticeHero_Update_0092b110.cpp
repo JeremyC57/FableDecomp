@@ -114,9 +114,9 @@ public:
 struct CAIStateGroup_ApprenticeHero : CAIStateGroupBase {
     long NextFramePractice;                          // +0x14
     bool PracticeAgainstApprentice();                // 0x0092A3F0
-    bool GoToLibrary();                              // 0x0092ACE0
-    bool LookAtLeaderBoard();                        // 0x0092AE70
-    bool LookAtMap();                                // 0x0092AFE0
+    protected: bool GoToLibrary(); public:                              // 0x0092ACE0
+    protected: bool LookAtLeaderBoard(); public:                        // 0x0092AE70
+    protected: bool LookAtMap(); public:                                // 0x0092AFE0
     virtual void Update();
 };
 

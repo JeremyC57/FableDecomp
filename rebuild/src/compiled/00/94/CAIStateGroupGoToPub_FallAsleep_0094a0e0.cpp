@@ -1,5 +1,5 @@
 // CAIStateGroup_GoToPub::FallAsleep() -- play the FALLING_ASLEEP into/loop/out-of animation set with a random
-// Leaf: ?FallAsleep@CAIStateGroup_GoToPub@@QAE_NXZ
+// Leaf: ?FallAsleep@CAIStateGroup_GoToPub@@IAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // loop time of 0..19 seconds (the 20-range overload; its twin 0x0094A200 plays SLUMPED_DRUNK_AT_TABLE with range 10).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094A0E0, length 165 bytes (+ int3 padding).
@@ -139,7 +139,7 @@ class CCharStringData;
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, float loopTime);   // 0x00948EF0
-    bool FallAsleep();
+    protected: bool FallAsleep(); public:
 };
 
 bool CAIStateGroup_GoToPub::FallAsleep()

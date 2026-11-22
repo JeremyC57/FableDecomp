@@ -186,7 +186,7 @@ public:
 };
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
-    void AddStrafeMode();                       // 0x0093D7A0
+    protected: void AddStrafeMode(); public:                       // 0x0093D7A0
 };
 struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroup_MeleeCombatNearbyBase {
     virtual void Update();

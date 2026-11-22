@@ -40,7 +40,7 @@ class CCharString : public CBasicString<char> { public:
 };
 
 class CBankFile { public:
-    CCharString GetBankHandle();                   // 0x009CBA40
+    CCharString GetBankHandle() const;                   // 0x009CBA40
 };
 class CMeshDataBank : public CBankFile { public: };
 

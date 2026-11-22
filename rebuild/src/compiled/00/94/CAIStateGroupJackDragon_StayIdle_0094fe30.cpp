@@ -1,5 +1,5 @@
 // CAIStateGroup_JackDragon::StayIdle(float seconds) -- idle frame by frame for `seconds`; terminate the group as soon as the enemy dies or the group stops
-// Leaf: ?StayIdle@CAIStateGroup_JackDragon@@QAEXM@Z
+// Leaf: ?StayIdle@CAIStateGroup_JackDragon@@AAEXM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094FE30, length 126 bytes (+ int3 padding).
 // Callees: the world accessor @ 0x008FCFC0 (PBrain->+0x1c->+0x24), CWorld::GetWorldFrame @ 0x0049D870 (a
 // static returning the frame global @ 0x013B89BC; manifest "GFGetPreMainMemoryUsed" is propagated),
@@ -55,7 +55,7 @@ public:
 
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
-    void StayIdle(float seconds);
+    private: void StayIdle(float seconds); public:
 };
 
 void CAIStateGroup_JackDragon::StayIdle(float seconds)

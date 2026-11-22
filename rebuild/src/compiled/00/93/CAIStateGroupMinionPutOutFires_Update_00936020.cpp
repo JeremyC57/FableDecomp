@@ -76,7 +76,7 @@ public:
 struct CAIStateGroup_MinionPutOutFires : CAIStateGroupBase {
     CIntelligentPointer<CThing> PBuildingOnFire;    // +0x14 CIntelligentPointer<CThingBuilding>
     bool GoToWell();                            // 0x00935C40
-    bool PutOutFire();                          // 0x00935E40
+    private: bool PutOutFire(); public:                          // 0x00935E40
     virtual void Update();
 };
 

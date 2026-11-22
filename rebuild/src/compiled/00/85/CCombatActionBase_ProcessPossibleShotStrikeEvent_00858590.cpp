@@ -239,7 +239,7 @@ class CCombatActionBase { public:
     };
     bool IsThingInStruckThingList(const CThingGameObject& thing) const;   // 0x00856F00
     CStrikeEvent* GetPActiveStrikeEvent();      // 0x00856E50
-    CThing* GetWeaponUsedInStrikeAction();      // 0x00857070
+    CThing* GetWeaponUsedInStrikeAction() const;      // 0x00857070
     bool HasPerformedAction() const;            // 0x006925A0
     void ProcessPossibleShotStrikeEvent(float time, const std::pair<C3DVector, C3DVector>& previous,
         const std::pair<C3DVector, C3DVector>& current, CThingGameObject& thing);

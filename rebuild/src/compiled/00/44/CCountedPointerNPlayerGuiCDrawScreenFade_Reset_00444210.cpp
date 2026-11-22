@@ -1,4 +1,5 @@
 // CCountedPointer_004435c0::Reset(T*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
+// Leaf: ?Reset@CCountedPointer_004435c0@@QAEXPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00444210, oracle length 103 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -11,13 +12,18 @@
 // allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
 // instantiation is named from the manifest label when unique, else from the destroy function.
 // One of 121 bodies of this shape.
-void __fastcall Destroy_004435c0(void* object);   // 0x004435C0: the per-type deleter stored in the block
+// Naming (NF282, 2026-11-22): the count block's deleter 0x004435C0 now binds its PDB spelling ?DeleteData@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@SIXPAX@Z (FableWin.pdb name set;
+//   retail stores 0x004435C0 as the count block's DeleteFunc here), declared by the shared engine/CCountedPointer.h under FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (only its
+//   address is stored here, T is only declared); was the free stand-in ?Destroy_004435c0@@YIXPAX@Z. Object otherwise unchanged.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+namespace NPlayerGui { class CDrawScreenFade; }
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_004435c0), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(&CCountedPointer<NPlayerGui::CDrawScreenFade>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_004435c0 {

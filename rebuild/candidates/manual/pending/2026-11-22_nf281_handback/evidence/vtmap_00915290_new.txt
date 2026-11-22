@@ -1,0 +1,5 @@
+VT ??_7CIntelligentPointerConstThing@@6B@ slots 2 retail NONE
+  0 ??_ECIntelligentPointerConstThing@@UAEPAXI@Z
+  1 ?v00@CIntelligentPointerConstThing@@UAEXXZ
+VT ??_7CEventChildHurtGoToMother@NEntityEvents@@6B@ slots 1 retail 0128fa80
+  0 00915720 DIFF ?v00@CEventChildHurtGoToMother@NEntityEvents@@UAEXXZ ??_GCEventChildHurtGoToMother@NEntityEvents@@UAEPAXI@Z

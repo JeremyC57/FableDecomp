@@ -1,0 +1,12 @@
+##### 004a98c0 renames: ?Destroy_00403600@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCAProgressDisplay@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0041956c renames: ?Destroy_00419086@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 004441a0 renames: ?Destroy_00443580@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0

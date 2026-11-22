@@ -1,0 +1,3 @@
+VT ??_7CIntelligentPointer@@6B@ slots 2 retail NONE
+  0 ?v00@CIntelligentPointer@@UAEXXZ
+  1 ??_ECIntelligentPointer@@UAEPAXI@Z

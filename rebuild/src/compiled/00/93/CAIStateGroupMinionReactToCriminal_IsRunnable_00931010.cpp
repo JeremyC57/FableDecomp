@@ -115,7 +115,7 @@ struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
     CIntelligentPointerPlayer PHero;            // +0x14
     CIntelligentPointerBuilding PHome;          // +0x1c
     long FrameLastLeftStategroup;               // +0x24
-    bool IsValid() const;                       // 0x00930EE0
+    private: bool IsValid() const; public:                       // 0x00930EE0
     bool IsRunnable();
 };
 

@@ -89,7 +89,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBaseW {
     unsigned char _seat[0x28];                  // +0x14..+0x3b UsesSeat members + POwner
-    virtual bool IsRunnable();                  // 0x0090F9C0
+    protected: virtual bool IsRunnable(); public:                  // 0x0090F9C0
 };
 
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase {

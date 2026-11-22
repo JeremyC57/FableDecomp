@@ -110,7 +110,7 @@ struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
     bool IsTooFarFromThePlayer(CThing* player);         // 0x0092ECD0
     bool IsTooNearToThePlayer(CThing* player);          // 0x0092ED40
     bool TestOrDoInteraction(bool test, CThing* player);   // 0x0092FAB0
-    void InteractionFailed();                           // 0x0092F240
+    private: void InteractionFailed(); public:                           // 0x0092F240
     virtual bool IsRunnable();
 };
 

@@ -112,7 +112,7 @@ struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
     unsigned long FrameToNextSitOnSeat;         // +0x24
     unsigned long FrameToNextCheckIsRunnable;   // +0x28
     bool WasCarryingWeapon;                     // +0x2c
-    CThingObject* GetPNearCampfire() const;     // 0x0093AB70
+    private: CThingObject* GetPNearCampfire() const; public:     // 0x0093AB70
     virtual bool IsRunnable();
 };
 
