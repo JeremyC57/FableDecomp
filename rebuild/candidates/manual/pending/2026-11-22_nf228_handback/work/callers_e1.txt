@@ -1,0 +1,43 @@
+##### 0042a879
+0042a879	0041e3d2	0041e3b2	NUISystem::CManager::GetLayer
+0042a879	0042b430	-	
+0042a879	0042b71b	-	
+##### 0042d246
+0042d246	0041e205	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e21d	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e232	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e247	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e25f	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e277	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e28f	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e2a3	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e2b7	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e2cf	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e2e7	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e2ff	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e317	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e32f	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e347	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e35f	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e377	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e39a	0041e1cd	NUISystem::CManager::SetMetaLayer
+0042d246	0041e3ea	0041e3b2	NUISystem::CManager::GetLayer
+##### 0042c02f
+0042c02f	0041df0b	0041ded2	NUISystem::CManager::ClearBastardChild
+0042c02f	0042cda1	-	
+0042c02f	0042ce66	0042ce63	std::_Rb_tree<CCharString,std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> >,std::_Select1st<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > >,std::less<CCharString>,std::allocator<std::pair<CCh
+##### 0042acc3
+0042acc3	0042b7da	0042b7d7	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::~_Rb_tree
+##### 0042ac76
+0042ac76	0042b799	0042b796	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pa
+##### 0042b76c
+0042b76c	0042bf76	0042bf67	std::map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::map
+##### 0042b7ad
+0042b7ad	0042bf94	0042bf85	std::map<long,EEngine2DLayer,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::map
+##### 0042b7ee
+0042b7ee	0042d29a	0042d28b	std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::map
+##### 0042ab01
+0042ab01	0041e434	0041e3f6	NUISystem::CManager::CManager
+0042ab01	0042b62b	-	
+0042ab01	0042be61	0042be50	NUISystem::CAction::CAction
+0042ab01	00595402	005953e2	NUISystem::CFrontEndManager::CFrontEndManager

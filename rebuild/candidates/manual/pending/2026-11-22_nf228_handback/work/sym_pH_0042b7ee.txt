@@ -1,0 +1,2 @@
+DEF ?CTexture_InitEmpty_28bytes@NodeInitOwner_0042b7ee@@QAEPAU1@KK@Z
+UND ?Allocator_Alloc_28bytes@@YGXK@Z

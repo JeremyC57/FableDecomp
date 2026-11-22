@@ -1,4 +1,39 @@
-#include <cstdio>
-static int g_calls = 0; static char* g_a = 0; static char* g_b = 0;
-namespace std { struct map_T_0042d28b { void _Rb_tree_ctor(char* a, char* b) { ++g_calls; g_a = a; g_b = b; } map_T_0042d28b* map() { char* p; char* q; { char a; p = &a; } { char b; q = &b; } _Rb_tree_ctor(p, q); return (map_T_0042d28b*)this; } }; }
-int main() { std::map_T_0042d28b m; bool ok = m.map() == &m && g_calls == 1 && g_a && g_b; std::printf(ok ? "0042d28b_TEST PASS\n" : "0042d28b_TEST FAIL\n"); return ok ? 0 : 1; }
+// Behaviour test for 0x0042D28B (NF228, test only: the landed source is unchanged) on the shared headers engine/NUISystem_CManager.h / stlport/fable_map.h / engine/CCountedPointer.h:
+// NUISystem::CManager's map<CCharString, CCountedPointer<CComponent> > (BastardChildren). Under test: the map no-argument constructor map() (the Compare() / allocator() temporaries to the tree constructor): a new map is empty and usable. Also: the tree clear(): an empty tree stays empty, a non-empty one ends empty and each node value (key, counted pointer) is destroyed.
+// Stubbed: the out-of-line CCharString constructors / destructor (counted; they hold no text here, so the tree gets one key, which
+// needs no comparison) and the STLport rebalance. The null counted pointer's release is the header's inline ReleaseData.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_TREE_INSERT_UNIQUE_HINT_BODY
+#define FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY
+#include <stdio.h>
+#include "engine/CCountedPointer.h"
+#include "engine/NUISystem_CManager.h"
+namespace std { template<> void _Rb_global<bool>::_Rebalance(_Rb_tree_node_base*, _Rb_tree_node_base*&) { } }
+static int g_live = 0;
+CCharString::CCharString(const char*, long) { ++g_live; }
+CCharString::CCharString(const CCharString&) { ++g_live; }
+CCharString::~CCharString() { --g_live; }
+CCharString::operator const char*() const { return ""; }   // referenced by less<CCharString>; never reached with one key
+typedef std::map<CCharString, CCountedPointer<NUISystem::CComponent> > ChildMap;
+static int g_fails = 0;
+static void Check(bool ok, const char* what) { if (!ok) { printf("FAIL: %s\n", what); ++g_fails; } }
+int main()
+{
+    {
+        ChildMap m;
+        Check(m.size() == 0 && m.begin() == m.end(), "new map empty");
+        m.clear();
+        Check(m.size() == 0 && m.begin() == m.end(), "clear empty");
+        {
+            CCharString key("BASTARD", -1);
+            m[key];
+        }
+        Check(m.size() == 1 && g_live == 1, "one node: its key copy is live");
+        m.clear();
+        Check(m.size() == 0 && m.begin() == m.end() && g_live == 0, "clear non-empty destroys the node's key");
+    }
+    Check(g_live == 0, "nothing left");
+    printf(g_fails ? "0042d28b_TEST FAIL\n" : "0042d28b_TEST PASS\n");
+    return g_fails ? 1 : 0;
+}

@@ -1,0 +1,2 @@
+0042ac0a	??0?$_List_base@PAVCObserver@NUISystem@@V?$allocator@PAVCObserver@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCObserver@NUISystem@@@1@@Z	x2
+01230044	??_7CObservable@NUISystem@@6B@	x1

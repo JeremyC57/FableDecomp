@@ -1,9 +1,11 @@
 // Behaviour test for 0x0041E3F6 NUISystem::CManager::CManager (protected) on engine/NUISystem_CManager.h. Links against the row
 // object (verify_and_land's second link), so the constructor under test is the row's own ??0CManager@NUISystem@@IAE@XZ; a derived test
 // class constructs it in a 0x5A-filled buffer and reads the protected members. Stubbed here: the CObservable constructor 0x0042BE7B, the 45
-// vtable slots (SetMetaLayer records its layer), SetInput, SetGraphicsBank, SetIsUsingRelativeCoords, the CGraphicDataBankInit
+// vtable slots (SetMetaLayer records its layer), SetInput, SetGraphicsBank, CUIScreenUnitConverter::SetIsUsingRelativeCoords, the CGraphicDataBankInit
 // constructor, the six CDisplayManager texture-format pickers (engine/CDisplayManager.h), GFGetSystemManager, the bank manager's
 // OpenGraphicBank (CGraphicBankManager has no shared header) and CCharString(const char*, long) / ~CCharString.
+// NF228: the front-end component is the header class (engine/CNewFrontendGameComponent.h; its private static set through a stubbed
+// Init(), its Running byte +9 in the header-sized buffer), SetIsUsingRelativeCoords the header static member.
 // Cases: no front-end component -> GBANK_MAIN; an active one -> GBANK_FRONT_END; an inactive one -> GBANK_MAIN; in each, the call order,
 // the scalar member initialisers, the ten cleared inventory pointers, the pickers' bit depths and target formats, the bank parameters.
 #include <stdio.h>
@@ -15,6 +17,11 @@
 #define FABLE_RETAIL_COBSERVABLE_CTOR_DECL_ONLY
 #define FABLE_RETAIL_CMANAGER_WORLDINIT
 #define FABLE_RETAIL_CMANAGER_SETGRAPHICSBANK
+#define FABLE_RETAIL_CUISCREENUNITCONVERTER_SETISUSINGRELATIVECOORDS
+#define FABLE_RETAIL_CGAMECOMPONENT_ISRUNNING
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_INIT   // test only: the declared Init() is the stub that sets the private static
+#include "engine/CGameComponent.h"
+#include "engine/NUISystem_CUIScreenUnitConverter.h"
 #include "engine/NUISystem_CObservable.h"
 class CGraphicDataBank;
 #include "engine/CCountedPointer.h"
@@ -25,12 +32,12 @@ class CGraphicDataBank;
 #include "engine/CGraphicDataBankInit.h"
 #define FABLE_RETAIL_CDISPLAYMANAGER_ALLTEXTUREFORMATS
 #include "engine/CDisplayManager.h"
+#include "engine/CNewFrontendGameComponent.h"
 class CGraphicBankManager { public:             // no shared header: the declaration the stub defines
     CCountedPointer<CGraphicDataBank> OpenGraphicBank(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);
 };
-class CSystemManager; class CNewFrontendGameComponent;
+class CSystemManager;
 CSystemManager* __fastcall GFGetSystemManager();
-void __fastcall SetIsUsingRelativeCoords(bool relative);
 
 static char g_log[64]; static int g_n = 0;
 static void Log(char c) { if (g_n < 63) g_log[g_n++] = c; g_log[g_n] = 0; }
@@ -39,15 +46,19 @@ static char g_name[32]; static unsigned long g_bits[6]; static long g_fmtOff[6];
 static const CGraphicDataBankInit* g_init = 0; static CGraphicDataBankInit g_initCopy;
 static bool g_bankFlags = false;
 static int g_bankObject; static NUISystem::CManager* g_setThis = 0; static void* g_setData = 0;
-static unsigned char g_systemBytes[0x100]; static unsigned char g_frontEndBytes[0x10]; static CGraphicBankManager g_bankManager;
+static unsigned char g_systemBytes[0x100]; static unsigned char g_frontEndBytes[sizeof(CNewFrontendGameComponent)]; static CGraphicBankManager g_bankManager;
 CDisplayManager* GPDisplayManager;
-CNewFrontendGameComponent* g_pNewFrontendGameComponent;
+CNewFrontendGameComponent* CNewFrontendGameComponent::m_pNewFrontendGameComponent = 0;   // 0x013B871C (private static)
+static CNewFrontendGameComponent* g_nextFrontEnd = 0;
+void CNewFrontendGameComponent::Init() { m_pNewFrontendGameComponent = g_nextFrontEnd; }   // stub: sets the static
+static void SetFrontEnd(void* p)
+{ g_nextFrontEnd = static_cast<CNewFrontendGameComponent*>(p); reinterpret_cast<CNewFrontendGameComponent*>(g_frontEndBytes)->CNewFrontendGameComponent::Init(); }
 
 NUISystem::CObservable::CObservable() : m_pExclusiveObserver(0) { Log('O'); }
 void NUISystem::CManager::SetInput(EInputType input) { Log('K'); g_input = input; }
 void NUISystem::CManager::SetGraphicsBank(CCountedPointer<CGraphicDataBank> graphics_bank)
 { Log('G'); g_setThis = this; g_setData = graphics_bank.Data; }
-void __fastcall SetIsUsingRelativeCoords(bool relative) { Log('R'); g_relative = relative; }
+void __fastcall NUISystem::CUIScreenUnitConverter::SetIsUsingRelativeCoords(bool relative) { Log('R'); g_relative = relative; }
 CGraphicDataBankInit::CGraphicDataBankInit() { Log('P'); memset(this, 0x77, sizeof(*this)); }
 static bool Pick(unsigned long bits, CPixelFormat& format) { Log('x'); if (g_picks < 6) { g_bits[g_picks] = bits; g_fmtAddr[g_picks] = (char*)&format; } ++g_picks; return true; }
 bool CDisplayManager::GetBestCompressedOpaqueTextureFormat(unsigned long b, CPixelFormat& f) { return Pick(b, f); }
@@ -152,10 +163,10 @@ static void RunCase(const char* expectBank, const char* label)
 int main()
 {
     *reinterpret_cast<CGraphicBankManager**>(g_systemBytes + 0x6c) = &g_bankManager;
-    g_pNewFrontendGameComponent = 0;
+    SetFrontEnd(0);
     RunCase("GBANK_MAIN", "no front end: order");
     g_frontEndBytes[9] = 1;
-    g_pNewFrontendGameComponent = reinterpret_cast<CNewFrontendGameComponent*>(g_frontEndBytes);
+    SetFrontEnd(g_frontEndBytes);
     RunCase("GBANK_FRONT_END", "active front end: order");
     g_frontEndBytes[9] = 0;
     RunCase("GBANK_MAIN", "inactive front end: order");

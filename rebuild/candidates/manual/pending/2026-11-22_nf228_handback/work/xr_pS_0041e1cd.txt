@@ -1,0 +1,2 @@
+0042d246	??A?$map@JW4EEngine2DLayer@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@3@@std@@QAEAAW4EEngine2DLayer@@ABJ@Z	x18
+01230118	?g_metaLayerBase@@3PAJA	x1

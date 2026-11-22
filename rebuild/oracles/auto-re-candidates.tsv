@@ -9891,10 +9891,10 @@ address	name	length	bytes
 0042a264	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e890477d0085ff598bf775e65f5e5bc20400
 0042fe07	std::_Rb_tree::_M_erase	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e8edeb7c0085ff598bf775e65f5e5bc20400
 0042abe1	CTCCarryable::OnKill	41	568bf1837e0400741e8b06ff7004e8c2f5ffff8b068940088b06836004008b0689400c836604005ec3
-0042ac76	CTCCarryable::OnKill	41	568bf1837e0400741e8b06ff7004e8aef5ffff8b068940088b06836004008b0689400c836604005ec3
-0042acc3	CTCCarryable::OnKill	41	568bf1837e0400741e8b06ff7004e88ef5ffff8b068940088b06836004008b0689400c836604005ec3
+0042ac76	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::clear	41	568bf1837e0400741e8b06ff7004e8aef5ffff8b068940088b06836004008b0689400c836604005ec3
+0042acc3	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::clear	41	568bf1837e0400741e8b06ff7004e88ef5ffff8b068940088b06836004008b0689400c836604005ec3
 0042ade5	std::_Rb_tree<NUISystem::CComponent*,std::pair<NUISystem::CComponent* const,NUISystem::CComponent*>,std::_Select1st<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*> >,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*> > >::clear	41	568bf1837e0400741e8b06ff7004e812f4ffff8b068940088b06836004008b0689400c836604005ec3
-0042c02f	CTCCarryable::OnKill	41	568bf1837e0400741e8b06ff7004e8baf8ffff8b068940088b06836004008b0689400c836604005ec3
+0042c02f	std::_Rb_tree<CCharString,std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> >,std::_Select1st<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > >,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::clear	41	568bf1837e0400741e8b06ff7004e8baf8ffff8b068940088b06836004008b0689400c836604005ec3
 00430046	CTCCarryable::OnKill	41	568bf1837e0400741e8b06ff7004e8aefdffff8b068940088b06836004008b0689400c836604005ec3
 004190e2	CCountedPointer<CFontBank>::ShareData	38	56578b7c24108bf1397e047414e8acc6feff85ff8b44240c8906897e047402ff075f5ec20800
 00419134	CCountedPointer<CGraphicDataBank>::ShareData	38	56578b7c24108bf1397e047414e8c2ffffff85ff8b44240c8906897e047402ff075f5ec20800
@@ -14046,9 +14046,9 @@ address	name	length	bytes
 00451add	CList_Initialize	42	56ff74240c8bf1e81af8ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
 00443980	Catch@0047e8cc	63	538bd985db7436568b731c578b7b203bf7740f8b066a008bceff1083c6083bf775f18b431c85c05f5e740950e863b07b0083c40453e802b07b0083c4045bc3
 0042b72b	CTexture_InitEmpty_56bytes	42	56ff74240c8bf1e81bf5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
-0042b76c	CTexture_InitEmpty_24bytes	42	56ff74240c8bf1e827f5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
-0042b7ad	LinkedList_InitializeNode	42	56ff74240c8bf1e833f5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
-0042b7ee	CTexture_InitEmpty_28bytes	42	56ff74240c8bf1e816f5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
+0042b76c	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::_Rb_tree	42	56ff74240c8bf1e827f5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
+0042b7ad	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::_Rb_tree	42	56ff74240c8bf1e833f5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
+0042b7ee	std::_Rb_tree<CCharString,std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> >,std::_Select1st<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > >,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::_Rb_tree	42	56ff74240c8bf1e816f5ffff8b0e33c089460488018b0e8941048b068940088b0689400c8bc65ec20800
 0042c48b	CTC_FindInterface_0x11	75	558bec51568bf16a118d4e20e84449feff84c0742f8d45fc83c644508bcec745fc11000000e86b2bfeff8b76043bc674058338117e028bc68b40048b4d088901b001eb0232c05ec9c20400
 0042c521	CTC_FindInterface_4	75	558bec51568bf16a048d4e20e8ae48feff84c0742f8d45fc83c644508bcec745fc04000000e8d52afeff8b76043bc674058338047e028bc68b40048b4d088901b001eb0232c05ec9c20400
 0042c64d	CTCBase_FindInterfaceType_0xe8	76	558bec5156578bf1bfe8000000578d4e20e87d47feff84c0742a8d45fc83c644508bce897dfce8a829feff8b76043bc6740439387e028bc68b40048b4d088901b001eb0232c05f5ec9c20400
@@ -14066,7 +14066,7 @@ address	name	length	bytes
 0042c85c	CTCBase_FindInterfaceType_0x10d	76	558bec5156578bf1bf0d010000578d4e20e86e45feff84c0742a8d45fc83c644508bce897dfce89927feff8b76043bc6740439387e028bc68b40048b4d088901b001eb0232c05f5ec9c20400
 0042c8a8	CTCBase_FindInterfaceType_0xd0	76	558bec5156578bf1bfd0000000578d4e20e82245feff84c0742a8d45fc83c644508bce897dfce84d27feff8b76043bc6740439387e028bc68b40048b4d088901b001eb0232c05f5ec9c20400
 0042c8f4	CTCBase_FindInterfaceType_0xfc	76	558bec5156578bf1bffc000000578d4e20e8d644feff84c0742a8d45fc83c644508bce897dfce80127feff8b76043bc6740439387e028bc68b40048b4d088901b001eb0232c05f5ec9c20400
-0042ab01	Std_DoubleLinkedList_CreateNode	27	568bf18326006a0ce8003f7d0089008940048906598bc65ec20400
+0042ab01	std::_List_base<NUISystem::CActionParam*,std::allocator<NUISystem::CActionParam*> >::_List_base	27	568bf18326006a0ce8003f7d0089008940048906598bc65ec20400
 004d55d0	CTCCoopSpirit::Alloc	29	566a348bf1e84094720085c059740a568bc8e869aa19005ec333c05ec3
 00447390	Catch@0040d959	13	8b81a407000050e854fbffffc3
 00449960	CPlayerManager::GetMainPlayer	10	8b411c50e8a7ffffffc3
@@ -36868,7 +36868,7 @@ address	name	length	bytes
 0042c058	std::_Rb_tree<NUISystem::CComponent*,std::pair<NUISystem::CComponent* const,NUISystem::CComponent*>,std::_Select1st<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*> >,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent* const,NUISystem::CComponent*> > >::equal_range	42	5657ff7424108bf9e850eeffffff7424108bcf8bf0e81eeeffff8b4c240c89015f8971048bc15ec20800
 0042d1b7	std::map<NUISystem::CComponent*,long,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,long>_>_>::operator[]	69	558bec5151568b750857568bf9e8c8dbffff3b0774078b0e3b4810731f8b0e8365fc00894df88d4df851518bcc89018d4508508bcfe8d2fbffff8b005f83c0145ec9c20400
 0042d201	std::map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>::operator[]	69	558bec5151568b750857568bf9e8fbdbffff3b0774078b0e3b48107d1f8b0e8365fc00894df88d4df851518bcc89018d4508508bcfe8eefbffff8b005f83c0145ec9c20400
-0042d246	std::map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>::operator[]	69	558bec5151568b750857568bf9e8dbdbffff3b0774078b0e3b48107d1f8b0e8365fc00894df88d4df851518bcc89018d4508508bcfe8c6fbffff8b005f83c0145ec9c20400
+0042d246	std::map<long,EEngine2DLayer,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::operator[]	69	558bec5151568b750857568bf9e8dbdbffff3b0774078b0e3b48107d1f8b0e8365fc00894df88d4df851518bcc89018d4508508bcfe8c6fbffff8b005f83c0145ec9c20400
 0042d405	CTCInventoryClothing::SetClothingMappingToMenuEntry	25	8d4424045081c170010000e8a2fdffff8b4c24088908c20800
 0042d41e	CTCInventoryClothing::SetClothingMappingToMenuEntry	25	8d4424045081c160010000e889fdffff8b4c24088908c20800
 0042dae0	CDefClassInit::CDefClassInit	26	8b44240456508bf1e8431157008b4c240c894e048bc65ec20800
@@ -45628,7 +45628,7 @@ address	name	length	bytes
 0040b610	CUserProfileManager::SetMeshDetail	53	568bf18a460c84c0740a8b4424088986000100008b4c2408894e448bcee83ebdffff8a44240c84c074078bcee8fff0ffff5ec20800
 0040b650	CUserProfileManager::SetEffectsDetail	53	568bf18a460c84c0740a8b4424088986240100008b4c2408894e708bcee8febcffff8a44240c84c074078bcee8bff0ffff5ec20800
 00410460	std::vector<CDisplayModeDesc, std::allocator<CDisplayModeDesc>>::vector	87	538b5c24088b03568b73042bf033c0578bf9c1fe043bf08907894704894708740e8bc6c1e00450e882e57e0083c404c1e6048d4c241003f05189078947048977088b53048b0b50e834f1ffff8947048bc75f5e5bc20400
-0042a879	std::_Rb_tree::_M_find	56	8b118b4a0485c9578b7c24088bc27417568b373971107c078bc18b4908eb038b490c85c975ed5e3bc274078b0f3b48107d028bc25fc20400
+0042a879	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::_M_find<long>	56	8b118b4a0485c9578b7c24088bc27417568b373971107c078bc18b4908eb038b490c85c975ed5e3bc274078b0f3b48107d028bc25fc20400
 0042b854	std::_Rb_tree::erase	68	558bec518b0153568b75083b700857894dfc752439450c751fe873f5ffffeb1d518bfc568bdee841daffff598b4dfc8bf0891fe82af5ffff3b750c75e35f5e5bc9c20800
 0042cde0	std::_Rb_tree::erase	73	558bec51515657ff75088d45f8508bf1e863f2ffff8d450b508d45fc508d45f850e8b7daffff8b4dfc83c4088bf88bc48908518b4df88bc489088bcee833eaffff8bc75f5ec9c20400
 0042fd04	CCountedPointer::Reset	59	568bf1e868fcffff8b44240885c0890674256a0ce8fdec7c0085c05974148b0ec70001000000c7400487f84200894808eb0233c08946045ec20400

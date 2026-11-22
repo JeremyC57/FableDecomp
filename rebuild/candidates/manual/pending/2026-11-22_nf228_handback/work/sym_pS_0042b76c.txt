@@ -1,0 +1,13 @@
+DEF ??0?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@ABU?$less@W4EUsedKeys@CManager@NUISystem@@@1@ABV?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@1@@Z
+DEF ??0?$_Rb_tree_base@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@1@@Z
+DEF ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@1@PAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@1@@Z
+DEF ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@std@@QAE@ABV01@@Z
+DEF ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@std@@QAE@XZ
+DEF ??1?$_Rb_tree_base@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@std@@QAE@XZ
+DEF ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@2@@std@@QAE@XZ
+DEF ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@std@@QAE@XZ
+DEF ?_M_empty_initialize@?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@AAEXXZ
+DEF ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@IPBX@Z
+DEF ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@I@Z
+UND _free
+UND _malloc

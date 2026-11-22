@@ -1,0 +1,3 @@
+# link of the 18 rechecked objects (/FORCE); LNK4006 HEAD control 2, landing 0; LNK2005 0
+1d0
+<       2 ?OnKill@T@@QAEXXZ

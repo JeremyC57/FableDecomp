@@ -1,0 +1,6 @@
+DEF ??0CObservable@NUISystem@@QAE@XZ
+DEF ??0CRetailList@NUISystem@@QAE@ABUSRetailAllocator@1@@Z
+DEF ??0SRetailAllocator@NUISystem@@QAE@XZ
+DEF ??_7CObservable@NUISystem@@6B@
+UND ??0CRetailListBase@NUISystem@@QAE@ABUSRetailAllocator@1@@Z
+UND ?v00@CObservable@NUISystem@@UAEXXZ

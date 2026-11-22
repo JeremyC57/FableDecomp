@@ -1,0 +1,5 @@
+DEF ??$_Destroy@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@std@@YAXPAU?$pair@$$CBJW4EEngine2DLayer@@@0@@Z
+DEF ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@Z
+DEF ?clear@?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAEXXZ
+DEF ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@I@Z
+UND _free

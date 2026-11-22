@@ -1,0 +1,2 @@
+DEF ?LinkedList_InitializeNode@NodeInitOwner_0042b7ad@@QAEPAU1@KK@Z
+UND ?LinkedList_Initialize@@YGXK@Z
