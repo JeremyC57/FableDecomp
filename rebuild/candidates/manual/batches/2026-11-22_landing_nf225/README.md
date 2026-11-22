@@ -36,3 +36,5 @@ Agent NF225. Hand-back: `pending/2026-11-22_nf225_handback/`. Entries q12562-q12
 
 Equivalence (57k rows): the 4 opt-in users (0x00494840, 0x0054ED90, 0x0042FB40, 0x0042DB20) plus the 6 rows that differ on every run
 (GOTCHAS, landing nf222 / nf223). Nothing else changes.
+
+The 6 always-differ rows recheck RELOCATION_MATCH + PASS on the nf225 tree (`logs/recheck_equiv_rows.log`). Cause found afterwards: `__FILE__` in engine/GFDebugPDynamicCast.h expands to the include-tree path, so the two trees differ only there; equiv_check now normalises the tree path (re-run on those rows: no longer differ; the opt-in users still do).

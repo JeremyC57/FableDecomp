@@ -358,3 +358,21 @@ retail's function never calls (or the reverse). Size arguments that only show "m
       also goes to the owner as a proven order tie.
   - 0x00CF4EC0: port onto the shared headers before more forcing.
   - Authoring briefs stay narrow (two agents in a row ran out of context on six-row briefs).
+
+- **2026-11-22 (Account A, advisor, owner delegated): AUTH12's 0x00CF4EC0 escalation.**
+  - Does not land yet. (b) (keep /d2inlS15 + inline_depth regions at the retail-called ~CTimer sites) is out: the row's own call to
+    0x00CD4470 contradicts S15, and regions placed where retail calls are the decision list written by hand.
+  - (a) (a header opt-in that lowers the implicit movie dtor's c2 cost) is admissible only after four checks:
+    1. close the 5-B Ego_d misfit in the fan hit blocks (do they hold the seven movie-dtor sites?);
+    2. is the movie class's dtor compiler-generated (PDB method list)? Measure it, GROBase and CCountedPointer<MovieBase>'s dtor with odall10;
+    3. does the row's movie-dtor COMDAT equal retail 0x006E7B80, and does retail's body call or carry ReleaseData?
+    4. falsify "cost <= 13": a straight-line call to 0x006E7B80 in a landed stock-flag row kills (a). Confirm the one-TU premise from
+       Ego_d's compiland record, and count the landed /d2inlS15 rows with this class (they join the acceptance set).
+  - Then (a) pre-registered: a capped candidate list, one pick using this row only. Acceptance: the row matches at stock S9; 0x00CF2B70 /
+    0x00CF3D20 match with /d2inlS15 removed (graded once, no re-fit); every other header user still matches; the dtor copy equals
+    0x006E7B80. On failure, an owner packet with the forced oracle. If Ego_d confirms one TU, queue the siblings' S15 as debt either way.
+  - CTimer forcing is convention: if the row is byte-identical with a row-local body, the add-only header opt-in wins (2026-11-21 (a));
+    fix CTimer.h's wave-8 comment in the same claim. Grade the local EScriptAIPriority enum under strict headers before land-ready.
+  - 0x008E18D0, before any c2 hunt: grade e5 with and without C5 in e4's configuration (/Gr /d2inlT65); C5 replaces an arm documented
+    as fitted and must stand alone. Apply the always-inline rule (inlined iff cost - 4 <= S) to the four sites: list retail's decision
+    per occurrence per callee. A uniformly treated callee is a cost question (calibrate it); only a mixed one needs the frequency hunt.

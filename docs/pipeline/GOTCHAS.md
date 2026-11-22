@@ -490,4 +490,4 @@
   force the order (C2X_FORCE) to prove which change gives retail, then try texts and grade only those whose readout reaches the target.
   The winning change sat in an INLINED HELPER (a named local in the AL resolver), and it was accepted only after every landed owner and inliner
   of that helper regraded equal with it.
-- (landing nf222 / nf223, 2026-11-22) equiv_check flags the same 6 rows (0x00CBFB7D, 0x0047042A src + test, 0x00BA2350, 0x00BA5260, 0x00BA50A0, 0x0093AB70) for two unrelated header changes: they differ on every run whatever changed (cause not examined). Recheck them; do not read their DIFF as caused by the header.
+- (landing nf222 / nf223 / nf225, 2026-11-22) equiv_check flagged the same 6 rows (0x00CBFB7D, 0x0047042A, 0x00BA2350, 0x00BA5260, 0x00BA50A0, 0x0093AB70) for every header change: `__FILE__` in engine/GFDebugPDynamicCast.h expands to the include-tree path, which differs between the old and new trees. equiv_check now replaces the tree path with TREE; those rows no longer differ.

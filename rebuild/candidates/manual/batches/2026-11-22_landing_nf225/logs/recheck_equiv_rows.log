@@ -1,0 +1,6 @@
+00cbfb7d   RELOCATION_MATCH PASS   RunCutsceneMacro
+0047042a   RELOCATION_MATCH PASS   TransferBinaryIn
+00ba2350   RELOCATION_MATCH PASS   SetupRenderModeShadersAndConstants
+00ba5260   RELOCATION_MATCH PASS   RenderMeshPrimitive
+00ba50a0   RELOCATION_MATCH PASS   SetupStaticBlocks
+0093ab70   RELOCATION_MATCH PASS   GetPNearCampfire
