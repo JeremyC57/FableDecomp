@@ -1,0 +1,25 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x0048f50c	?GFAYToVY_009e1dd0@@YGMM@Z	?GFAYToVY@@YIMM@Z	0x009e1dd0
+0x00437210	?GFAYToVY_009e1dd0@@YIMM@Z	?GFAYToVY@@YIMM@Z	0x009e1dd0
+0x0043e4d0	?GFAYToVY_009e1dd0@@YIMM@Z	?GFAYToVY@@YIMM@Z	0x009e1dd0
+0x00967650	?FreeBarPoint@CAIStateGroupTavernServerMethods@@QAEXXZ	?FreeBarPoint@CAIStateGroup_TavernServer@@QAEXXZ	0x00967110
+0x00967650	?FreeServingPoint@CAIStateGroupTavernServerMethods@@QAEXXZ	?FreeServingPoint@CAIStateGroup_TavernServer@@QAEXXZ	0x009670a0
+0x00967650	?GetBar@CAIStateGroupTavernServerMethods@@QAE_NXZ	?GetBar@CAIStateGroup_TavernServer@@QAE_NXZ	0x00966af0
+0x00967650	?GetJug@CAIStateGroupTavernServerMethods@@QAE_NXZ	?GetJug@CAIStateGroup_TavernServer@@QAE_NXZ	0x00967180
+0x00967650	?GetServingPoint@CAIStateGroupTavernServerMethods@@QAE_NXZ	?GetServingPoint@CAIStateGroup_TavernServer@@QAE_NXZ	0x00966da0
+0x00967650	?IsCarryingJug@CAIStateGroupTavernServerMethods@@QAE_NXZ	?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ	0x00966cf0
+0x00967b40	?FreeBarPoint_009670a0@CAIStateGroup_TavernServer@@QAEXXZ	?FreeServingPoint@CAIStateGroup_TavernServer@@QAEXXZ	0x009670a0
+0x008e9b60	?ResetStrafeAnims_008e97b0@CModeStrafe@NCreatureMode@@AAEXXZ	?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAEXXZ	0x008e97b0
+0x00d17da0	?RemoveBoastQuestInfo_00d17e70@CQ_BountyHuntScript@NScript@@QAEXXZ	?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ	0x00d17e70
+0x007a9c80	?SetupCameraFromStick_007a9b10@CTCAssassinRush@@QAEXXZ	?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ	0x007a9b10
+0x0061b560	?QuestListHook_0061A9D0@CTCInventoryQuests@@QAEXXZ	?MoveToNextTestQuest@CTCInventoryQuests@@QAEXXZ	0x0061a9d0
+0x0061b530	?QuestListHook_0061AA80@CTCInventoryQuests@@QAEXXZ	?MoveToPreviousTestQuest@CTCInventoryQuests@@QAEXXZ	0x0061aa80
+0x004b1590	?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ	?IsActivatable@CTCQuestCard@@QBE_NXZ	0x00702810
+0x004b4aa0	?IsActivatable_00702810@CTCQuestCard@@QBE_NXZ	?IsActivatable@CTCQuestCard@@QBE_NXZ	0x00702810
+0x008455c0	?OnShownByCreature_006de8c0@CTCTrophy@@QAEXPAVCThing@@@Z	?OnShowTrophyPerformAction@CTCTrophy@@QAEXAAVCThing@@@Z	0x006de8c0
+0x00947840	?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ	?IsEatTime@CTCVillage@@QBE_NXZ	0x00658bb9
+0x00947a30	?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ	?IsEatTime@CTCVillage@@QBE_NXZ	0x00658bb9
+0x00665190	?IsThingInViewAngle_00664e50@CThingCreatureBase@@QAE_NPAVCThing@@M_N@Z	?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z	0x00664e50
+0x00704150	?UpdateObject_007034d0@CThingObject@@QAEXXZ	?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ	0x007034d0
+0x005be028	?IsAugmentation_005d9830@@YI_NJ@Z	?IsExpression@CTCInventoryItem@@SI_NJ@Z	0x005d9830

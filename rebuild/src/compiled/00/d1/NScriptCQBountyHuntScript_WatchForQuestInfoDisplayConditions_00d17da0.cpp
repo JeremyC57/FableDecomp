@@ -43,7 +43,7 @@ class CQ_BountyHuntScript : public CScriptBase { public:
     long BoastTime;                                     // +0x80 (CTimer)
     bool BoastQuestInfoDisplayed;                       // +0x84
     void WatchForQuestInfoDisplayConditions();
-    void RemoveBoastQuestInfo_00d17e70();               // 0x00D17E70
+    void RemoveBoastQuestInfo();                        // 0x00D17E70 ?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ (FableWin + the self row; NF285, was RemoveBoastQuestInfo_00d17e70)
     void AddBoastQuestInfo();                           // 0x00D17EA0
 };
 
@@ -60,7 +60,7 @@ void CQ_BountyHuntScript::WatchForQuestInfoDisplayConditions()
             if (QuestSucceeded || QuestFailed || PMasterData->BountyHuntTimeLimitExceeded) {
                 if (IsActiveThreadTerminating())
                     return;
-                RemoveBoastQuestInfo_00d17e70();
+                RemoveBoastQuestInfo();
                 IsActiveThreadTerminating();
                 return;
             }

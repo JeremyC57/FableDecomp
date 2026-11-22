@@ -353,3 +353,4 @@ date	account	item	kind	status	note
 2026-11-22	A	tracker batches 1 (T1-access/T2, CCountedPointer DeleteData)	naming	done	agents NF281 / NF282 landed 113 rows (batches/2026-11-22_landing_nf281_282); continuations NF283 / NF284
 2026-11-22	A	tracker batch T1 standin_alias continuation (CCountedPointer DeleteData)	naming	done	agent NF284 landed 31 rows (batches/2026-11-22_landing_nf284); continuation NF285 (ENTRIES order), 12 deferred CCountedPointer entries a later T3 unit
 2026-11-22	A	tracker batch T1-access + T2 continuation	naming	done	agent NF283 landed 47 rows (batches/2026-11-22_landing_nf283); continuation NF286 (12 precheck retries + 131 unreached)
+2026-11-22	A	tracker batch T1 standin_alias continuation 2	naming	done	agent NF285 landed 18 rows + 1 header opt-in (batches/2026-11-22_landing_nf285); 67 ports queued T3; continuation NF287

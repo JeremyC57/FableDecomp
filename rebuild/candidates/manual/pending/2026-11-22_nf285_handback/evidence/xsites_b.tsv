@@ -1,0 +1,17 @@
+00702810	call	004b15ef	004b1590L CQuestManager::ActivateFeatCard
+00702810	call	004b4b06	004b4aa0L CQuestManager::ActivateQuestCard
+0061aa80	jmp	0061b53a	0061b530L CTCInventoryQuests::ProcessInventoryInputUp
+0061a9d0	jmp	0061b56a	0061b560L CTCInventoryQuests::ProcessInventoryInputDown
+00664e50	call	00665247	00665190L CThingCreatureBase::IsThingInFOV
+007034d0	call	007041d7	00704150L CThingObject::WorldUpdate
+007a9b10	call	007a9d53	007a9c80L CTCAssassinRush::SetupCameraOnStick
+006de8c0	call	00845823	008455c0L CCreatureAction_ShowTrophy::PerformAction
+008e97b0	jmp	008e9b6b	008e9b60L NCreatureMode::CModeStrafe::OnDeactivate
+00658bb9	call	00923aea	00923aa0L CAIStateGroup_ServeFoodAtHome::IsTime
+00658bb9	call	00923b4a	00923b00L CAIStateGroup_ServeFoodAtTavern::IsTime
+00658bb9	call	009455fa	009455b0L CAIStateGroup_SitForMeal::IsMealTime
+00658bb9	call	0094590e	-
+00658bb9	call	00947882	00947840L CAIStateGroup_WorkBase::IsInWorkHours
+00658bb9	call	00947b03	00947a30L CAIStateGroup_StayNearFoodHall::Update
+00658bb9	call	0096d24a	0096d200L CAIStateGroup_EatAtHome::IsTime
+00d17e70	call	00d17df2	00d17da0L NScript::CQ_BountyHuntScript::WatchForQuestInfoDisplayCondit

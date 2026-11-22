@@ -102,7 +102,6 @@ T1	standin_alias	vector	19	18		00411910 004df88a 004e34b2 0056d490 005bba94 005e
 T1	standin_alias	CCountedPointer	13	14	engine/CCountedPointer.h	004850f9 0048afb0 0056c0f0 005ed2c0 006174f0 0065d5a0 006e46f0 007180b0 007222b0 0085a5a0 009a4400 00ac3a10 00b230e0
 T1	standin_alias	pair	12	12		00448380 004d6902 004d788d 004dd728 005799fd 005f8736 006b8e20 00825090 00827f80 00a7faf0 00ae98e0 00cd27b4
 T1	standin_alias	GetSubDef	10	10		007086f0 0077e430 007a6ca0 007c8000 007e0540 007e1400 007f5560 007f9330 007fe5b0 00810c80
-T1	standin_alias	CAIStateGroup_TavernServer	6	2	engine/CAIStateGroup_TavernServer.h	00966af0 00966cf0 00966da0 009670a0 00967110 00967180
 T1	standin_alias	CBankFile	6	5	engine/CBankFile.h	009cb960 009cbfe0 009ce370 009cfbc0 009d1160 009d1260
 T1	standin_alias	CTCInventoryBase	6	6		005bd404 005bd427 005bdcb4 005bdcdc 005bf3f1 005bf91a
 T1	standin_alias	GetBestTaskForThing	6	6		0065f856 0065f884 00660034 00660062 00660090 006600be
@@ -110,17 +109,15 @@ T1	standin_alias	CThing	5	5	engine/CThing.h	004c78a0 004c7a10 004c7a80 004c9c40 
 T1	standin_alias	remove_if	5	5		006603a0 006603dd 0066041a 00660457 00660494
 T1	standin_alias	CCriticalSectionLock	4	2	engine/CCriticalSectionLock.h	00a62920 00a62960 00a62980 00a629a0
 T1	standin_alias	CEngineSkyRenderer	4	2	engine/CEngineSkyRenderer.h	00b64550 00b64fa0 00b65a20 00b66190
-T1	standin_alias	CThingCreatureBase	4	4	engine/CThingCreatureBase.h	00663610 006647f0 00664e50 00666830
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
 T1	standin_alias	CArray	3	3	engine/CArray.h	00675230 006755a0 00af7210
 T1	standin_alias	CMemoryDataOutputStream	3	2	engine/CMemoryDataOutputStream.h	00994b40 00995e70 00996af0
 T1	standin_alias	CPlayer	3	2	engine/CPlayer.h	00487cf0 00489d40 006345c0
 T1	standin_alias	CTCBuyableHouse	3	2	engine/CTCBuyableHouse.h	006c0330 006c1150 006c17b0
-T1	standin_alias	CTCVillage	3	3	engine/CTCVillage.h	00658bb9 0065b349 0065bffa
+T1	standin_alias	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00663610 006647f0 00666830
 T1	standin_alias	CWorldMap	3	3	engine/CWorldMap.h	004fb4a0 004fb880 004fc970
 T1	standin_alias	map	3	4		009ac310 00ad64c0 00cd3640
-T1	standin_alias	(none)	2	2		009e1dd0 00cbe2ff
 T1	standin_alias	C3DMeshFileMaterialChunk	2	1	engine/C3DMeshFileMaterialChunk.h	00ac0e50 00ac0ee0
 T1	standin_alias	CAnimationSet	2	2	engine/CAnimationSet.h	00461f3b 005dd2e0
 T1	standin_alias	CBankFileAsync	2	5	engine/CBankFileAsync.h	009d5f80 009d6490
@@ -144,17 +141,16 @@ T1	standin_alias	CTCFollowed	2	2	engine/CTCFollowed.h	006d4d70 006d5850
 T1	standin_alias	CTCHeroOpinionDeedLog	2	1	engine/CTCHeroOpinionDeedLog.h	006c59e0 006c5f80
 T1	standin_alias	CTCInventoryClothing	2	2	engine/CTCInventoryClothing.h	005b43a2 005b4a95
 T1	standin_alias	CTCInventoryExperience	2	2	engine/CTCInventoryExperience.h	0056ff3d 0056ffc5
-T1	standin_alias	CTCInventoryItem	2	2	engine/CTCInventoryItem.h	005d9320 005d9830
-T1	standin_alias	CTCInventoryQuests	2	2	engine/CTCInventoryQuests.h	0061a9d0 0061aa80
-T1	standin_alias	CTCQuestCard	2	2	engine/CTCQuestCard.h	007022e0 00702810
 T1	standin_alias	CTCSoundPlayer	2	2	engine/CTCSoundPlayer.h	0066aeb0 0066b120
 T1	standin_alias	CTCTargetingBase	2	3	engine/CTCTargetingBase.h	007f5890 008abb50
+T1	standin_alias	CTCVillage	2	2	engine/CTCVillage.h	0065b349 0065bffa
 T1	standin_alias	CUIState	2	3		00429e29 0052e5d0
 T1	standin_alias	CV_TempleOfLightScript	2	1	engine/CV_TempleOfLightScript.h	00edc980 00edcb80
 T1	standin_alias	GFSerialiseMapBinaryIn	2	2		0043151d 004e5a76
 T1	standin_alias	GFSerialiseMapBinaryOut	2	2		004314c8 00475a51
 T1	standin_alias	GetAllThings	2	3		004acf90 005ed860
 T1	standin_alias	NCameraModes	2	1		00874ee0 00874f10
+T1	standin_alias	(none)	1	1		00cbe2ff
 T1	standin_alias	AttackParticleAndEndPoints	1	1	engine/AttackParticleAndEndPoints.h	00769040
 T1	standin_alias	C3DAnimationStats	1	1	engine/C3DAnimationStats.h	00a50bf0
 T1	standin_alias	C3DAnimationUtil	1	2		00c72600
@@ -231,7 +227,6 @@ T1	standin_alias	CManager	1	2	engine/CManager.h	0041e5f2
 T1	standin_alias	CMemoryAreaChunk	1	1		00a658e0
 T1	standin_alias	CMiniMapDisplay	1	1	engine/CMiniMapDisplay.h	0082a890
 T1	standin_alias	CMinimapData	1	1		0082cac0
-T1	standin_alias	CModeStrafe	1	1		008e97b0
 T1	standin_alias	CNavigationLayer	1	1		00a851e0
 T1	standin_alias	CObjectAugmentationsDef	1	1	engine/CObjectAugmentationsDef.h	004ebba3
 T1	standin_alias	COpinionReactionManager	1	1	engine/COpinionReactionManager.h	007018b0
@@ -240,7 +235,6 @@ T1	standin_alias	COptimisedPrimitive	1	1	engine/COptimisedPrimitive.h	00ac96e0
 T1	standin_alias	CParticleSimulation	1	1	engine/CParticleSimulation.h	00ae18c0
 T1	standin_alias	CPersistTraits	1	1	engine/CPersistTraits.h	004ddf0c
 T1	standin_alias	CPlayerGui	1	1	engine/CPlayerGui.h	0043a2a0
-T1	standin_alias	CQ_BountyHuntScript	1	1	engine/CQ_BountyHuntScript.h	00d17e70
 T1	standin_alias	CRegion	1	1	engine/CRegion.h	0051a110
 T1	standin_alias	CScreenFilterSThingByPass	1	1	engine/CScreenFilterSThingByPass.h	00cd2ae2
 T1	standin_alias	CScriptConversation	1	3	engine/CScriptConversation.h	004ae0e0
@@ -252,7 +246,6 @@ T1	standin_alias	CSteeringAgent	1	1	engine/CSteeringAgent.h	00a1c950
 T1	standin_alias	CSummonableCreatureDef	1	1		004d4c3e
 T1	standin_alias	CSurface	1	1	engine/CSurface.h	00415bd0
 T1	standin_alias	CSymbolMap	1	1	engine/CSymbolMap.h	009e5200
-T1	standin_alias	CTCAssassinRush	1	1		007a9b10
 T1	standin_alias	CTCCombat	1	1	engine/CTCCombat.h	00736590
 T1	standin_alias	CTCDExperienceOrb	1	1	engine/CTCDExperienceOrb.h	00779e10
 T1	standin_alias	CTCDHeroSuit	1	1		007ff7d0
@@ -261,15 +254,16 @@ T1	standin_alias	CTCFadeOutAndIn	1	1	engine/CTCFadeOutAndIn.h	006c3b70
 T1	standin_alias	CTCFireheartMinigame	1	1		007e78e0
 T1	standin_alias	CTCFlammable	1	1	engine/CTCFlammable.h	00780410
 T1	standin_alias	CTCHeroMorph	1	1	engine/CTCHeroMorph.h	0071d7c0
+T1	standin_alias	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	005d9320
 T1	standin_alias	CTCLight	1	1	engine/CTCLight.h	00640bb0
 T1	standin_alias	CTCOpinionSource	1	1	engine/CTCOpinionSource.h	007713c0
+T1	standin_alias	CTCQuestCard	1	1	engine/CTCQuestCard.h	007022e0
 T1	standin_alias	CTCQuestCompletionUI	1	1	engine/CTCQuestCompletionUI.h	005e4740
 T1	standin_alias	CTCRotate	1	1	engine/CTCRotate.h	004d2b17
 T1	standin_alias	CTCShop	1	1	engine/CTCShop.h	0074ac80
 T1	standin_alias	CTCSpecialAbilities	1	1	engine/CTCSpecialAbilities.h	0072acf0
 T1	standin_alias	CTCTargetingSpirit	1	1	engine/CTCTargetingSpirit.h	004d5853
 T1	standin_alias	CTCTrapBase	1	1	engine/CTCTrapBase.h	00787bfe
-T1	standin_alias	CTCTrophy	1	1	engine/CTCTrophy.h	006de8c0
 T1	standin_alias	CTCTurncoat	1	1	engine/CTCTurncoat.h	007c7890
 T1	standin_alias	CTargetPoint	1	1		00806ae0
 T1	standin_alias	CTavernGameCardBaseDef	1	1	engine/CTavernGameCardBaseDef.h	004e1195
@@ -277,7 +271,6 @@ T1	standin_alias	CTestQuest	1	1	engine/CTestQuest.h	004a89d0
 T1	standin_alias	CTextureManager	1	1	engine/CTextureManager.h	00a69f70
 T1	standin_alias	CThingAICreature	1	1	engine/CThingAICreature.h	00830eb0
 T1	standin_alias	CThingManager	1	1	engine/CThingManager.h	0051efc0
-T1	standin_alias	CThingObject	1	1	engine/CThingObject.h	007034d0
 T1	standin_alias	CTimer	1	1	engine/CTimer.h	00cd4470
 T1	standin_alias	CUIDef	1	1		0062fe60
 T1	standin_alias	CUIStateDef	1	1		006250b0

@@ -1,0 +1,8 @@
+##### 00967650 renames: ?FreeBarPoint@CAIStateGroupTavernServerMethods@@QAEXXZ=?FreeBarPoint@CAIStateGroup_TavernServer@@QAEXXZ ?FreeServingPoint@CAIStateGroupTavernServerMethods@@QAEXXZ=?FreeServingPoint@CAIStateGroup_TavernServer@@QAEXXZ ?GetBar@CAIStateGroupTavernServerMethods@@QAE_NXZ=?GetBar@CAIStateGroup_TavernServer@@QAE_NXZ ?GetJug@CAIStateGroupTavernServerMethods@@QAE_NXZ=?GetJug@CAIStateGroup_TavernServer@@QAE_NXZ ?GetServingPoint@CAIStateGroupTavernServerMethods@@QAE_NXZ=?GetServingPoint@CAIStateGroup_TavernServer@@QAE_NXZ ?IsCarryingJug@CAIStateGroupTavernServerMethods@@QAE_NXZ=?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ
+sections head 28 new 28
+ALL_EQ 0
+funcs SAME=25 vtbl_H=2 vtbl_N=2
+##### 00967b40 renames: ?FreeBarPoint_009670a0@CAIStateGroup_TavernServer@@QAEXXZ=?FreeServingPoint@CAIStateGroup_TavernServer@@QAEXXZ
+sections head 23 new 23
+ALL_EQ 0
+funcs SAME=21 vtbl_H=0 vtbl_N=0

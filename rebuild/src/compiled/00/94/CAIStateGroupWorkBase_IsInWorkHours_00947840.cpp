@@ -38,7 +38,7 @@ class CThing { public:
 };
 
 class CTCVillage { public:
-    bool IsCookTime_00658bb9();                                  // 0x00658BB9
+    bool IsEatTime() const;                                      // 0x00658BB9 ?IsEatTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin, the self row; NF285, was IsCookTime_00658bb9)
 };
 
 struct CTCVillager;
@@ -70,7 +70,7 @@ bool CAIStateGroup_WorkBase::IsInWorkHours()
     if (PBrain->Creature->GetInterface(&pComponent, 0x23)) {
         CTCVillage* pOwner = ((CTCVillageMember*)pComponent)->GetPVillage();
         if (pOwner != 0) {
-            if (pOwner->IsCookTime_00658bb9())
+            if (pOwner->IsEatTime())
                 return true;
         }
     }

@@ -77,7 +77,8 @@ class CTCEntityEvents { public:                             // interface type 0x
 class CTCHero { public:                                     // interface type 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
-bool __fastcall IsAugmentation_005d9830(long itemDefIndex);           // 0x005D9830
+class CWideString;                     // NF285: the KINDS block also declares GetDescription (CWideString by value)
+#define FABLE_RETAIL_CTCINVENTORYITEM_KINDS   // NF285: 0x005D9830 is the static ?IsExpression@CTCInventoryItem@@SI_NJ@Z (Ego_r + FableWin; was the free stand-in IsAugmentation_005d9830)
 bool __fastcall IsTutorialSubDefItem(long itemDefIndex);     // 0x005D98B0
 // NF64 (round 7, q10650): the free stand-in `GetInventoryCategory_005d9b70` is the static __fastcall CTCInventoryItem::GetTutorialCategory (Ego_r.pdb / FableWin.pdb; the
 //   NF59 self row defines it), declared by engine/CTCInventoryItem.h.
@@ -99,7 +100,7 @@ void CTCInventoryBase::OnItemAdded(long itemDefIndex, bool unused, bool suppress
     if (!suppressTutorials) {
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29)) {
-            if (!IsAugmentation_005d9830(itemDefIndex))
+            if (!CTCInventoryItem::IsExpression(itemDefIndex))
                 hero->GiveTutorialForCategory(3, false);
             if (IsTutorialSubDefItem(itemDefIndex))
                 hero->GiveTutorialForCategory(0x20, false);

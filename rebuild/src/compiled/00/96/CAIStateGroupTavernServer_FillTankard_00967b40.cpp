@@ -97,7 +97,7 @@ struct CAIStateGroup_TavernServer : CAIStateGroupBase {
     CIntelligentPointer<CThing> PTable;             // +0x24
     CIntelligentPointer<CThing> PTankard;           // +0x2c
     CIntelligentPointer<CThing> PPub;               // +0x34
-    void FreeBarPoint_009670a0();                        // 0x009670A0
+    void FreeServingPoint();                    // 0x009670A0 ?FreeServingPoint@CAIStateGroup_TavernServer@@QAEXXZ (Ego_r + FableWin; NF285, was FreeBarPoint_009670a0)
     bool IsServingPointValid();                 // 0x00967250
     bool FillTankard();
 };
@@ -113,7 +113,7 @@ bool CAIStateGroup_TavernServer::FillTankard()
     PTankard.Get()->GetTC(TCI_TAVERN_TANKARD, &tankard);
     tankard->SetBarmaid(GetAICreature());
     if (AIAction_PerformActionAndWait(CCreatureAction_FillTankardFromJug(GetAICreature()), false) != 2) {
-        FreeBarPoint_009670a0();
+        FreeServingPoint();
         SetPushableByHero(true);
         return false;
     }
@@ -121,7 +121,7 @@ bool CAIStateGroup_TavernServer::FillTankard()
     long endFrame = CWorld::GetFrame() + fps * 4;
     do {
         if (AIAction_DoNothing() != 4) {
-            FreeBarPoint_009670a0();
+            FreeServingPoint();
             SetPushableByHero(true);
             return false;
         }
@@ -131,11 +131,11 @@ bool CAIStateGroup_TavernServer::FillTankard()
     PJug.Get()->GetTC(TCI_TAVERN_JUG, &jug);
     jug->Servings--;
     if (AIAction_PerformActionAndWait(CCreatureAction_PutDownJug(GetAICreature()), false) != 2) {
-        FreeBarPoint_009670a0();
+        FreeServingPoint();
         SetPushableByHero(true);
         return false;
     }
-    FreeBarPoint_009670a0();
+    FreeServingPoint();
     SetPushableByHero(true);
     return true;
 }

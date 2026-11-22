@@ -1692,7 +1692,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1904	c610	005b4eba	?CalculateArmorValues@CTCInventoryClothing@@ABEXAAUArgPasser@1@J@Z	closed	
 1905	c610	008128f0	?GetNearestMember@CTCCreatureGroup@@QBEPBVCThingAICreature@@ABVC3DVector@@@Z	partial	?GetNearestMember@CTCCreatureGroupTag@@QAEPAVCThing@@ABVC3DVector@@@Z
 1906	c610	004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	partial	?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
-1907	c610	009e1dd0	?GFAYToVY@@YIMM@Z	partial	?GFAYToVY_009e1dd0@@YGMM@Z
+1907	c610	009e1dd0	?GFAYToVY@@YIMM@Z	closed	
 1908	c610	009de3f0	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z	partial	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z
 1909	c610	00497890	?GFROR13@@YIJK@Z	partial	?GFROR13@@YIKK@Z || GFROR13
 1910	c610	006622a0	?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ	closed	
@@ -2149,7 +2149,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2496	c645	00868ca0	?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z	closed	
 2497	c645	00815280	?IsToCauseDecapitionOnHit@CHitLocation@NHitLocations@@QBE_NXZ	closed	
 2501	c646	004167c8	?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ	closed	
-2503	c646	009e1dd0	?GFAYToVY@@YIMM@Z	partial	?GFAYToVY_009e1dd0@@YGMM@Z
+2503	c646	009e1dd0	?GFAYToVY@@YIMM@Z	closed	
 2504	c646	00438010	?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	partial	?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z
 2505	c646	00487dd0	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	partial	?GetControlledCreature@CPlayer@NCondition00935160@@QAEPAUCThing@2@XZ
 2506	c646	00449970	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	partial	@Sub_ResolveA@4
@@ -2372,7 +2372,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2745	c661	013bc3a0	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x<TU	open	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x3af106f4@@3VCCharString@@A
 2746	c661	013bc3a8	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x<TU	open	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x42531127@@3VCCharString@@A
 2747	c659	005cc772	?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ	closed	
-2748	c659	005d9830	?IsExpression@CTCInventoryItem@@SI_NJ@Z	partial	?IsAugmentation_005d9830@@YI_NJ@Z
+2748	c659	005d9830	?IsExpression@CTCInventoryItem@@SI_NJ@Z	closed	
 2749	c659	005d96f0	?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	closed	
 2750	c659	0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	partial	?GetInstance@CFrontEndManager_00404c00@@SIPAU1@XZ || ?GetInstance_0041e5f2@@YIPAUCFrontEndManager@@XZ
 2751	c659	0042cd84	??0CDeletion@NUISystem@@QAE@ABV01@@Z	closed	
@@ -10470,3 +10470,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13305	land1122nf283	00b4b830	?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ	closed	
 13306	land1122nf283	00692aa0	?UpdateActionMovement@CCreatureActionBase@@IAEXXZ	partial	?UpdateActionMovement@CCreatureActionBase@@QAEXXZ
 13307	land1122nf283	005955ab	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	partial	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+13308	land1122nf285	009e1e40	?GFVYToAY@@YIMM@Z	partial	?GFAYToVY@@YGMM@Z || ?GFVYToAY@@YGMM@Z

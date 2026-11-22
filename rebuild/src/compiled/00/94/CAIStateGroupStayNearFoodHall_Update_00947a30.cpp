@@ -26,7 +26,7 @@ class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 struct CTCVillager;
-class CTCVillage { public: bool IsCookTime_00658bb9(); };
+class CTCVillage { public: bool IsEatTime() const; };   // 0x00658BB9 ?IsEatTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin, the self row; NF285, was IsCookTime_00658bb9)
 struct CAIStateGroup_StayNearFoodHall : CAIStateGroupBase {
 public:
     C3DVector Position;
@@ -61,7 +61,7 @@ void CAIStateGroup_StayNearFoodHall::Update()
         it = map->LowerBound(&key);
         if (it == map->last || it->type > 0x23) it = map->last;
         village = ((CTCVillageMember*)((CTCVillager*)it->component))->GetPVillage();
-        if (!village || !village->IsCookTime_00658bb9()) goto done;
+        if (!village || !village->IsEatTime()) goto done;
     } while (result == 4);
 done:
     Terminate();

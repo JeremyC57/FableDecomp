@@ -15,6 +15,7 @@
 // Layout: engine/CAIStateGroup_TavernServer.h (PJug +0x14, PBar +0x1c, PPub +0x34, ServingActionPointIndex +0x40);
 //          PBrain is the first dword of the flattened base at +0x04.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CAISTATEGROUP_TAVERNSERVER_FLAT_METHODS   // NF285: the six callees as the PDB members of the real class (was declared on the Methods stand-in)
 #include "engine/CAIStateGroup_TavernServer.h"
 
 class CTCBase;
@@ -66,12 +67,6 @@ struct CAIStateGroupTavernServerMethods : CAIStateGroup_TavernServer {
     CIntelligentPointerConstThing& Jug() { return *(CIntelligentPointerConstThing*)PJug; }
     CIntelligentPointer<CThingObject>& Bar() { return *(CIntelligentPointer<CThingObject>*)PBar; }
     CIntelligentPointerThing& Pub() { return *(CIntelligentPointerThing*)PPub; }
-    bool IsCarryingJug();                       // 0x00966CF0
-    bool GetBar();                              // 0x00966AF0
-    bool GetServingPoint();                     // 0x00966DA0
-    void FreeServingPoint();                    // 0x009670A0
-    bool GetJug();                              // 0x00967180
-    void FreeBarPoint();                        // 0x00967110
     bool IsRunnable();
 };
 

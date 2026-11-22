@@ -1,0 +1,2 @@
+# vtcheck 0x00967650 HEAD v new: ??_7CIntelligentPointerThing@@6B@ (row-local stand-in table, pre-existing; 2 slots) checked against retail 0x01244344 with tools/vtcheck.py
+IDENTICAL HEAD v new (the slot-by-slot outputs of the HEAD and new objects compare equal; per-slot retail words omitted: no retail bytes in hand-back files)

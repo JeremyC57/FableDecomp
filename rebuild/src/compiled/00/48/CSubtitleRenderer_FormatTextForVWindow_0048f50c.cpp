@@ -25,7 +25,7 @@ public:
 };
 
 float __fastcall GFAXToVX(float);                           // 0x009E1DA0
-float __stdcall GFAYToVY_009e1dd0(float y);                           // 0x009E1DD0
+float __fastcall GFAYToVY(float y);                                    // 0x009E1DD0 ?GFAYToVY@@YIMM@Z (Ego_r + FableWin; NF285, was the __stdcall stand-in GFAYToVY_009e1dd0)
 extern double g_VirtualScreenWidth;                          // 0x013961E8
 template <class T, class TMin, class TMax> void __fastcall GFLimit(T& value, const TMin& minimum, const TMax& maximum);   // 0x0048DAE0 <float,float,float>
 
@@ -35,7 +35,7 @@ public:
     virtual C2DExtentsF GetStringExtents(const wchar* text, bool wrap) const;
     virtual float GetMaxHeight() const;                      // slot 2 (+0x08)
     C2DExtentsF GetVStringExtents(const CWideString& text) const;   // 0x00437210
-    float GetVFontMaxHeight() const { return GFAYToVY_009e1dd0(GetMaxHeight()); }
+    float GetVFontMaxHeight() const { return GFAYToVY(GetMaxHeight()); }
 };
 extern const CFontBank* g_pWordWrapFont;                     // 0x013B87AC
 

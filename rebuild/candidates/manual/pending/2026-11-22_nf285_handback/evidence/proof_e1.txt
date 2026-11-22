@@ -1,0 +1,12 @@
+##### 0048f50c renames: ?GFAYToVY_009e1dd0@@YGMM@Z=?GFAYToVY@@YIMM@Z
+sections head 8 new 8
+ALL_EQ 0
+funcs SAME=4 vtbl_H=0 vtbl_N=0
+##### 00437210 renames: ?GFAYToVY_009e1dd0@@YIMM@Z=?GFAYToVY@@YIMM@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 0043e4d0 renames: ?GFAYToVY_009e1dd0@@YIMM@Z=?GFAYToVY@@YIMM@Z
+sections head 4 new 4
+ALL_EQ 0
+funcs SAME=3 vtbl_H=0 vtbl_N=0

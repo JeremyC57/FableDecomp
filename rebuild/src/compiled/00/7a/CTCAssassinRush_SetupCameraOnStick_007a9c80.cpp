@@ -53,7 +53,7 @@ public:
     unsigned char _pad08[0x74 - 0x08];
     C3DVector LocalRelativeVectorForCamera;     // +0x74
     C3DVector RelativeVectorForCamera;          // +0x80
-    void SetupCameraFromStick_007a9b10();                // 0x007A9B10 (descriptive)
+private: void ResetCameraOnStick(); public:            // 0x007A9B10 ?ResetCameraOnStick@CTCAssassinRush@@AAEXXZ (Ego_r + FableWin, private; NF285, was public SetupCameraFromStick_007a9b10)
     void SetupCameraOnStick();
 };
 
@@ -68,5 +68,5 @@ void CTCAssassinRush::SetupCameraOnStick()
     C3DVector heroPosition = ParentThing->GetPos();
     LocalRelativeVectorForCamera = stick - heroPosition;
     RelativeVectorForCamera = GetWorld().GetCameraManager()->PeekCurrentPos() - stick;
-    SetupCameraFromStick_007a9b10();
+    ResetCameraOnStick();
 }

@@ -40,7 +40,7 @@ class CModeStrafe : public CTCCreatureModeManager::CModeBase {
 public:
     virtual void OnDeactivate();
 private:
-    void ResetStrafeAnims_008e97b0();                       // 0x008E97B0, descriptive name
+    void LockStrafingCombinationAnimsToMainAnim();          // 0x008E97B0 ?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAEXXZ (Ego_r + FableWin; NF285, was ResetStrafeAnims_008e97b0)
 
     float AnimMovementDistance;                             // +0x1C
     CCharString StrafeAnimName;                             // +0x20
@@ -54,6 +54,6 @@ void CModeStrafe::OnDeactivate()
 {
     ActiveWeapon = -1;
     CModeBase::OnDeactivate();
-    ResetStrafeAnims_008e97b0();
+    LockStrafingCombinationAnimsToMainAnim();
 }
 }

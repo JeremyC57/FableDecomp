@@ -75,7 +75,7 @@ class CTCQuestCard { public:                                    // TC type 0x6c 
     CCharString    RegionName;                           // +0x20
     CCharString    TeleporterRegionName;                 // +0x24
     CCharString    ScriptQuestName;                      // +0x28
-    bool IsActivatable_00702810() const;                 // 0x00702810
+    bool IsActivatable() const;                          // 0x00702810 ?IsActivatable@CTCQuestCard@@QBE_NXZ (Ego_r + FableWin; NF285, was IsActivatable_00702810)
     CCharString GetRegionName() const;                   // 0x007025A0
 };
 
@@ -139,7 +139,7 @@ bool CQuestManager::ActivateQuestCard(CThing* card, bool loadResources)
         CTCQuestCard* tc;
         if (card->HasTC(0x6c))
             tc = (CTCQuestCard*)card->GetTCK<0x6c>();
-        if (tc->IsActivatable_00702810()) {
+        if (tc->IsActivatable()) {
             CQuestCardDef* def = tc->PDef.PDef;
             if (def) {
                 ++def->RefCount;

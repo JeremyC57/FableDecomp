@@ -44,7 +44,7 @@ public:
 
 class CThingCreatureBase : public CThing {
 public:
-    bool IsThingInViewAngle_00664e50(CThing* thing, float fieldOfView, bool flag);   // 0x00664E50
+    bool IsThingInViewAngle(const CThing& thing, float fieldOfView, bool flag) const;   // 0x00664E50 ?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z (Ego_r + FableWin; NF285, was IsThingInViewAngle_00664e50(CThing*, float, bool))
     bool IsThingInFOV(CThing* thing, bool flag);
 };
 
@@ -58,6 +58,6 @@ bool CThingCreatureBase::IsThingInFOV(CThing* thing, bool flag)
         fieldOfView = perceive->GetFOV();
     }
     if ((GetPos() - thing->GetPos()).GetSquaredMagnitude() <= sightRadius * sightRadius)
-        return IsThingInViewAngle_00664e50(thing, fieldOfView, flag);
+        return IsThingInViewAngle(*thing, fieldOfView, flag);
     return false;
 }

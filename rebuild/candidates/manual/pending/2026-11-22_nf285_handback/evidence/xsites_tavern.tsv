@@ -1,0 +1,19 @@
+00966cf0	call	009673bf	-
+009670a0	call	0096751c	-
+00967110	call	00967523	-
+00966cf0	call	00967656	00967650L CAIStateGroup_TavernServer::IsRunnable
+00966af0	call	0096772c	00967650L CAIStateGroup_TavernServer::IsRunnable
+00966da0	call	0096773d	00967650L CAIStateGroup_TavernServer::IsRunnable
+009670a0	call	00967748	00967650L CAIStateGroup_TavernServer::IsRunnable
+00967180	call	0096774f	00967650L CAIStateGroup_TavernServer::IsRunnable
+00967110	call	0096775a	00967650L CAIStateGroup_TavernServer::IsRunnable
+00967110	call	0096795a	00967930L CAIStateGroup_TavernServer::PickUpJug
+00967110	call	009679e6	00967930L CAIStateGroup_TavernServer::PickUpJug
+00967110	call	009679ff	00967930L CAIStateGroup_TavernServer::PickUpJug
+00967110	call	00967a82	00967a20L CAIStateGroup_TavernServer::PutDownJug
+009670a0	call	00967c1f	00967b40L CAIStateGroup_TavernServer::FillTankard
+009670a0	call	00967cde	00967b40L CAIStateGroup_TavernServer::FillTankard
+00966da0	call	00967d9c	00967d40L CAIStateGroup_TavernServer::Update
+00966cf0	call	00967dab	00967d40L CAIStateGroup_TavernServer::Update
+00967180	call	00967db6	00967d40L CAIStateGroup_TavernServer::Update
+00966da0	call	00967e7d	00967d40L CAIStateGroup_TavernServer::Update

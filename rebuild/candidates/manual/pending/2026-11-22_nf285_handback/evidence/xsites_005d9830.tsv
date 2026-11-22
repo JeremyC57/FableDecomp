@@ -1,0 +1,8 @@
+005d9830	call	00585182	-
+005d9830	call	00586970	0058578bL CTCInventory::OpenInventory
+005d9830	call	00588a2e	0058807dL CTCInventory::OpenPCInventoryMenu
+005d9830	call	005894a3	-
+005d9830	call	005902e4	00590235L CTCInventory::GetItemsListUIComponent
+005d9830	call	00591018	-
+005d9830	call	005be0d1	005be028L NInventory::CTCInventoryBase::OnItemAdded
+005d9830	call	00627806	006276f0L CTCQuickAccessMenu::GetItemsListUI

@@ -1,0 +1,2 @@
+SAME	??0C2DExtentsF@@QAE@MM@Z
+SAME	?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z

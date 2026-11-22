@@ -75,7 +75,7 @@ public:
     const CThingObjectDef* PDef;                // +0xd0
     long DieOffTimer;                           // +0xd4
     bool DiesOff;                               // +0xd8
-    void UpdateObject_007034d0();               // 0x007034D0
+protected: void WorldUpdateWeaponTrails(); public:   // 0x007034D0 ?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ (Ego_r + FableWin, protected; NF285, was public UpdateObject_007034d0)
     FABLE_FORCEINLINE bool IsDieOffHeld() const
     {
         const CTCDieOffHold_47* hold;
@@ -94,7 +94,7 @@ bool CThingObject::WorldUpdate()
             --DieOffTimer;
     }
     if (!(Health <= 0.0f) && (!diesOff || DieOffTimer > 0)) {
-        UpdateObject_007034d0();
+        WorldUpdateWeaponTrails();
         if (HasTC(0x77))
             GetTC<CTCShotDefinitionBase>(0x77)->Update();
         return false;
