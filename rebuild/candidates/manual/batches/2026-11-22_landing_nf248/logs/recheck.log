@@ -1,0 +1,44 @@
+00446b40   RELOCATION_MATCH PASS   IsButtonForGameEvent
+00446b90   RELOCATION_MATCH PASS   IsMouseButtonForGameEvent
+00499a70   RELOCATION_MATCH PASS   SetToDisplayText
+004ddab4   RELOCATION_MATCH PASS   SetPTargetedThing
+005348e0   MATCH            PASS   __find<unsigned long*, unsigned long>
+005518e0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005518e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+005518e0   WARN RELOC_NAME: ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z -> 005359d0 labelled 'std::vector::_M_insert_overflow'
+005518e0   RELOCATION_MATCH PASS   ConstructHorizontalLine
+00551bc0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00551bc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00551bc0   WARN RELOC_NAME: ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z -> 005359d0 labelled 'std::vector::_M_insert_overflow'
+00551bc0   RELOCATION_MATCH PASS   ConstructVerticalLine
+006a9ef0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CHeroCombatDef (engine/CHeroCombatDef.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CPlayerMovementDef (engine/CPlayerMovementDef.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006a9ef0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+006a9ef0   WARN RELOC_NAME: ?GetDefinitionManager@CThingCreatureBase@@QAEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+006a9ef0   RELOCATION_MATCH PASS   OnCreate
+00833a70   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00833a70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00833a70   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00833a70   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+00833a70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00833a70   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00833a70   WARN RELOC_NAME: ?GetDefinitionManager@CThingCreatureBase@@QAEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+00833a70   RELOCATION_MATCH PASS   OnCreate
+00b09d50   RELOCATION_MATCH PASS   clear
+00666310   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00666310   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00666310   RELOCATION_MATCH PASS   OnCreate
+00497b60   RELOCATION_MATCH PASS   CalculateNextTextTag
+0049a0b0   WARN RELOC_NAME: ?LongToWideString@@YI?AVCWideString@@J@Z -> 00405f00 labelled '_global::GFIntToWideString'
+0049a0b0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+0049a0b0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0049a0b0   RELOCATION_MATCH PASS   InitialiseTextures
+00531090   RELOCATION_MATCH PASS   GetBoundingBox

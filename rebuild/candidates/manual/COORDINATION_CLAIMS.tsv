@@ -316,3 +316,4 @@ date	account	item	kind	status	note
 2026-11-22	A	CEngine unit / CModeBase follow-ups	naming	done	agent NF244 landed q12680 steps 1-2 + q12681 (batches/2026-11-22_landing_nf244); step 3 queued; entries 3-6 pass to NF247
 2026-11-22	A	wrong DTOR_OUTOFLINE families	naming	done	agent NF246 landed 17 rows (batches/2026-11-22_landing_nf246); its entry 2 passes to NF248
 2026-11-22	A	CModeBase slot bindings / 0x006A1620	naming	done	agent NF247 landed 7 rows (batches/2026-11-22_landing_nf247); q12676 / q12659 open
+2026-11-22	A	NF241 open CODEXP27 lines	naming	done	agent NF248 landed 10 rows / 7 lines (batches/2026-11-22_landing_nf248); 29 lines + E2 / E3 pass to NF250

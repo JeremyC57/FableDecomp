@@ -1,5 +1,5 @@
 // CGamePlayerInterface::IsButtonForGameEvent(EXboxControllerButton button, EGameAction action) const -- true when the input type bound to the game action is that pad button
-// Leaf: ?IsButtonForGameEvent@CGamePlayerInterface_Methods@@
+// Leaf: ?IsButtonForGameEvent@CGamePlayerInterface@@QBE_NW4EXboxControllerButton@@W4EGameAction@@@Z
 // Retail: Fable.exe @ 0x00446B40, 72 bytes (+ int3 padding), `ret 8`; speed TU (no frame, no pragma).
 // Name: the Ego_r.pdb name set holds ?IsButtonForGameEvent@CGamePlayerInterface@@QBE_NW4EXboxControllerButton@@W4EGameAction@@@Z
 // next to ?IsMouseButtonForGameEvent@... (the twin at 0x00446B90); the donor addresses differ, the shape fits: the CInputTypeBase
@@ -12,11 +12,11 @@
 // pair<EGameAction, CCountedPointer<const CInputTypeBase> > = 12 bytes, the input type object at +4.
 // Shape: the map's inline Find (lower bound, then end() when it hit end or key < entry key -- the signed `jge`), compared
 // against the re-read end(); hit -> the virtual call's bool is returned; miss -> `xor al,al`.
-#include "engine/CGamePlayerInterface.h"
-
 enum EGameAction { GAME_ACTION_FORCE_DWORD = 0x7fffffff };
 enum EXboxControllerButton { XBOX_CONTROLLER_BUTTON_FORCE_DWORD = 0x7fffffff };
 enum EMouseButtonControl { MOUSE_BUTTON_CONTROL_FORCE_DWORD = 0x7fffffff };
+#define FABLE_RETAIL_CDRAWABILITYBUTTONS_WEAPONABILITIES_PASS27
+#include "engine/CGamePlayerInterface.h"
 
 class CInputTypeBase { public:
     virtual ~CInputTypeBase();                                                      // slot 0
@@ -57,15 +57,13 @@ struct CControlsMap {                           // CVectorMap<EGameAction, CCoun
     }
 };
 
-struct CGamePlayerInterface_Methods : CGamePlayerInterface {
-    const CControlsMap& GetControls() const { return *reinterpret_cast<const CControlsMap*>(Controls); }
-    bool IsButtonForGameEvent(EXboxControllerButton button, EGameAction action) const;
-};
+// Controls (+0x7a8) is opaque in the shared header: view it as the retail map (the call boundary keeps retail's re-read of end()).
+static inline const CControlsMap& ControlsMapOf(const unsigned char* controls) { return *reinterpret_cast<const CControlsMap*>(controls); }
 
-bool CGamePlayerInterface_Methods::IsButtonForGameEvent(EXboxControllerButton button, EGameAction action) const
+bool CGamePlayerInterface::IsButtonForGameEvent(EXboxControllerButton button, EGameAction action) const
 {
-    const SControlEntry* it = GetControls().Find(action);
-    if (it != GetControls().end())
+    const SControlEntry* it = ControlsMapOf(Controls).Find(action);
+    if (it != ControlsMapOf(Controls).end())
         return it->second.m_pObject->IsInputTypeWithButton(button);
     return false;
 }

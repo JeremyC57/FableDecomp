@@ -1,0 +1,4 @@
+table	change	symbol	target	witness	note
+reloc_bindings.tsv	replace	?OnCreate@CThingCreatureBase@@QAE_NXZ -> ?OnCreate@CThingCreatureBase@@MAE_NXZ	00666310	00833a70	both binders (0x006A9EF0 / 0x00833A70) now bind the self spelling MAE (FableWin / Ego_r); no landed row binds QAE
+reloc_bindings.tsv	delete	?CalculateNextTextTag@CProgressDisplay@@QAEXXZ	00497b60	00499a70	its witness now binds AAE (the self spelling; line already present, witness 0x0049A0B0)
+reloc_bindings.tsv	delete	?Find@RetailUI@@YIPAJPAJ0ABJABUTag@1@@Z	005348e0	005518e0	both users (0x005518E0 / 0x00551BC0) now bind the STLport spelling (line kept, witness 0x00531090)

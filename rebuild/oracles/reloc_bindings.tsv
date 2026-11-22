@@ -640,7 +640,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CAProgressDisplay@@6B@	012387a0	00497870
 ??_7CSurface@@6B@	0122f84c	004979a0
 ?Uninitialise@CSurface@@QAEXXZ	009f2e20	004979a0
-?CalculateNextTextTag@CProgressDisplay@@QAEXXZ	00497b60	00499a70
 ?g_FableEmptyText_0122D70E@@3QBDB	0122d70e	00499a70
 ?CalculateSmoothedTime@CFrameRateSmoother@@AAEXXZ	0049b9a0	0049b9e0
 ??_7CGameJoystickManager@@6B@	01238b54	0049bb60
@@ -8178,7 +8177,7 @@ _wcsrchr	00bfedb2	009a5340
 ??_7CThingAICreature@@6B@	0127293c	00831f80
 ?CreateDefaultWeapons@CThingCreatureBase@@QAEXXZ	00664680	00833a70
 ?InitialiseFromDef@CThingAICreature@@QAEXXZ	008338d0	00833a70
-?OnCreate@CThingCreatureBase@@QAE_NXZ	00666310	00833a70
+?OnCreate@CThingCreatureBase@@MAE_NXZ	00666310	00833a70
 ?ValidateInitialisation@CThingCreatureBase@@QAE_NXZ	006a4d60	00833a70
 ?CanBeHitByMeleeStrike@CTCMeleeHittable@@QBE_NXZ	007befa0	00857250
 ??_7?$CSpawnedFunc0@UCTestTheInventoryScript@@@@6B@	012f59ac	00eeed20
@@ -33316,7 +33315,6 @@ _lzo1x_999_compress	00c08130	00a99840
 ?GetTextureDetail@CUserProfileManager@@QBEMXZ	0054a530	0054bbb0
 ??0Pointer@RetailUI@@QAE@PAUComponent@1@@Z	00429c15	005518e0
 ?CreateComponent@Manager@RetailUI@@QAEPAUComponent@2@K@Z	0041d21b	005518e0
-?Find@RetailUI@@YIPAJPAJ0ABJABUTag@1@@Z	005348e0	005518e0
 ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z	005359d0	005518e0
 ?CreateComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@@Z	00594f94	00596a68
 ?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z	00adebc0	00b242a0

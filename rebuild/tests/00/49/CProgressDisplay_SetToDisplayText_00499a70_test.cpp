@@ -1,8 +1,12 @@
-#include "fable_boot.h"
+// Behaviour test for 0x00499A70 CProgressDisplay::SetToDisplayText(bool) on the shared engine/CProgressDisplay.h:
+// false -> DisplayText (+0x7C) cleared, TextTag = the shared empty literal, TextTagIndex (+0x44) = 0, no CalculateNextTextTag;
+// true -> DisplayText set, CalculateNextTextTag called once, no assignment, TextTagIndex left to it.
+#include "engine/CProgressDisplay.h"
 
 #include <stdio.h>
 #include <string.h>
 
+extern const char g_FableEmptyText_0122D70E[];
 const char g_FableEmptyText_0122D70E[] = "";
 
 namespace
@@ -10,6 +14,7 @@ namespace
     int g_AssignmentCalls = 0;
     int g_CalculateCalls = 0;
     const char* g_AssignedText = 0;
+    unsigned char* g_Storage = 0;
 }
 
 const CCharString& CCharString::operator=(const char* text)
@@ -22,37 +27,28 @@ const CCharString& CCharString::operator=(const char* text)
 void CProgressDisplay::CalculateNextTextTag()
 {
     ++g_CalculateCalls;
-    value44 = 7;
+    *reinterpret_cast<long*>(g_Storage + 0x44) = 7;
 }
 
 int main()
 {
-    unsigned char storage[sizeof(CProgressDisplay)] = {0};
-    CProgressDisplay* display =
-        reinterpret_cast<CProgressDisplay*>(storage);
-    display->value44 = 9;
+    static unsigned char storage[sizeof(CProgressDisplay)];
+    memset(storage, 0, sizeof(storage));
+    g_Storage = storage;
+    CProgressDisplay* display = reinterpret_cast<CProgressDisplay*>(storage);
+    long* index = reinterpret_cast<long*>(storage + 0x44);
 
-    display->SetToDisplayText(false);
-    if (
-        display->displayText7C ||
-        display->value44 != 0 ||
-        g_AssignmentCalls != 1 ||
-        g_AssignedText != g_FableEmptyText_0122D70E ||
+    *index = 9;
+    storage[0x7c] = 1;
+    display->CProgressDisplay::SetToDisplayText(false);          // direct (non-virtual) call: no vtable in raw storage
+    if (storage[0x7c] != 0 || *index != 0 || g_AssignmentCalls != 1 || g_AssignedText != g_FableEmptyText_0122D70E ||
         g_CalculateCalls != 0)
-    {
         return 1;
-    }
 
-    display->value44 = 9;
-    display->SetToDisplayText(true);
-    if (
-        !display->displayText7C ||
-        display->value44 != 7 ||
-        g_AssignmentCalls != 1 ||
-        g_CalculateCalls != 1)
-    {
+    *index = 9;
+    display->CProgressDisplay::SetToDisplayText(true);
+    if (storage[0x7c] != 1 || *index != 7 || g_AssignmentCalls != 1 || g_CalculateCalls != 1)
         return 1;
-    }
 
     printf("FABLETLC_PROGRESS_DISPLAY_TEXT_MODE_BEHAVIOR PASS\n");
     return 0;

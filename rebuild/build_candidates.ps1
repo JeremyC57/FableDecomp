@@ -86705,9 +86705,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b09d50'
-        Module = '_global'
-        Source = '00/b0/CGuiControlTreePane_SortTreeRecursively_00b09d50.cpp'
-        TestSource = '00/b0/CGuiControlTreePane_SortTreeRecursively_00b09d50_test.cpp'
+        Module = 'std::_List_base<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry>'
+        Source = '00/b0/stdListbaseCEnginePrimitiveSpriteTrailCSpriteTrailEntry_clear_00b09d50.cpp'
+        TestSource = '00/b0/stdListbaseCEnginePrimitiveSpriteTrailCSpriteTrailEntry_clear_00b09d50_test.cpp'
         PassPattern = 'PASS_00b09d50'
     }
     [pscustomobject]@{
@@ -159924,9 +159924,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005348e0'
-        Module = '_global'
-        Source = '00/53/global_Find005348e0_005348e0.cpp'
-        TestSource = '00/53/global_Find005348e0_005348e0_test.cpp'
+        Module = 'std'
+        Source = '00/53/std_findunsignedlongunsignedlong_005348e0.cpp'
+        TestSource = '00/53/std_findunsignedlongunsignedlong_005348e0_test.cpp'
         PassPattern = '005348e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -192503,8 +192503,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004ddab4'
         Module = 'CTCTargetingBase'
-        Source = '00/4d/CTCTargetingBase_SetTargetedThing_004ddab4.cpp'
-        TestSource = '00/4d/CTCTargetingBase_SetTargetedThing_004ddab4_test.cpp'
+        Source = '00/4d/CTCTargetingBase_SetPTargetedThing_004ddab4.cpp'
+        TestSource = '00/4d/CTCTargetingBase_SetPTargetedThing_004ddab4_test.cpp'
         PassPattern = '004ddab4_TEST PASS'
     }
     [pscustomobject]@{

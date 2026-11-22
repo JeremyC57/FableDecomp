@@ -12951,3 +12951,4 @@ land1122nf247	0x006648D0 / 0x006649C0 / 0x00664A50 / 0x00664A10	UnsheatheWeapon 
 land1122nf247	0x00890250 / 0x00890D80	the last two ?IsThingCarryingRangedWeapon stand-in binders of 0x006A1620	0x00890250 authoring; 0x00890D80 after CGameScriptInterface / CScriptThing header ports (3 -> 1)
 land1122nf247	q12682 / q12679 rows (7)	linked header tests	the HEAD tests are standalone host models; 0x00664A10 test still names slot 77 AreWeaponsUnsheathed (retail IsPlayerCharacter)
 land1122nf247	q12676 / q12659	open	q12676 blockers did not fall; q12659 needs the full proof
+land1122nf248	NF248 open lines	29 CODEXP27 lines + E2 0x0049D800 + E3 0x01296F14	pass to NF250 (pending/2026-11-22_nf248_handback/APPLIED.tsv has each census / blocker)

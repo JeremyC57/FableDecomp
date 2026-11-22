@@ -20,6 +20,9 @@ template <class T> class CCountedPointer { public: static void __fastcall Delete
 #include "engine/NUISystem_CUIState.h"
 #define FABLE_RETAIL_STLP_MAP
 #include "stlport/fable_map.h"
+#define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_STLP_FIND_NOINLINE_BODY
+#include "stlport/fable_algorithm.h"
 namespace RetailUI {
 typedef ::C2DVector Vec;
 typedef ::NUISystem::CUIState State;
@@ -153,15 +156,12 @@ virtual void Slot106();
 virtual unsigned long GetName()const;
 };
 struct Manager {Component* CreateComponent(unsigned long);}; //0041d21b; the instance is NUISystem::CManager::GetInstance() 0x0041e5f2
-struct Lookup {long* First;long* Last;long* Limit;};
-// 005348e0 is std::find over four-byte scalar entries, not a pair/map search.
-#pragma auto_inline(off)
-long* __fastcall Find(long* first,long* last,const long& key,const Tag&){for(;first!=last;++first)if(*first==key)return first;return last;}
-#pragma auto_inline(on)
+struct Lookup {unsigned long* First;unsigned long* Last;unsigned long* Limit;};   // vector<unsigned long> (binders 0x00531090 / 0x00531560 / 0x00533BC0)
+// 005348e0 is STLport std::__find<unsigned long*, unsigned long> (random-access overload; stlport/fable_algorithm.h declaration).
 struct Table {unsigned char BeforeChildren[0xb0];ChildrenVector Children;unsigned char BeforeLookup[0x168-0xbc];Lookup* Entries;void ConstructVerticalLine(Pointer,Pointer,const Vec&,unsigned long,long);};
 void Table::ConstructVerticalLine(Pointer start,Pointer element,const Vec& position,unsigned long count,long offset){
  Vec at=position;Pointer line(((Manager*)NUISystem::CManager::GetInstance())->CreateComponent(start->GetName()));{float extent=(float)count;line->GetStateMap()[0UL].Zoom.Y=extent;line->Initialise();line->SetPosition(at);line->GetStateMap()[0UL].Position=at;Children.push_back(line);at.Y+=start->GetSize().Y;}
- for(unsigned long i=0;i<count;++i){long key=(long)i-offset;if(element.Object&&Find(Entries->First,Entries->Last,key,Tag())!=Entries->Last){
+ for(unsigned long i=0;i<count;++i){unsigned long key=i-offset;if(element.Object&&std::__find(Entries->First,Entries->Last,key,std::random_access_iterator_tag())!=Entries->Last){
 Component* created=((Manager*)NUISystem::CManager::GetInstance())->CreateComponent(element->GetName());
 #pragma inline_depth(0)
 Pointer child(created);
