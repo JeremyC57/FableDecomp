@@ -1,0 +1,69 @@
+--- orig/engine/CVolumeTexture.h	2026-11-22 08:58:26.619267472 +0000
++++ hdr/engine/CVolumeTexture.h	2026-11-22 08:58:26.639504101 +0000
+@@ -41,6 +41,16 @@
+     class CPixelFormat GetPixelFormat() const;
+     void GetAsTextureList(class CTexture* textures);                     // 0x00A68910
+ #endif
++#ifdef FABLE_RETAIL_CVOLUMETEXTURE_LOADFROMDATASTREAM
++    // Retail opt-in (AUTH23 2026-11-22, row 0x00A68DE0 CVolumeTexture::LoadFromDataStream): Ego_r.pdb / FableWin.pdb
++    // ?LoadFromDataStream@CVolumeTexture@@QAEXAAVCDataInputStream@@@Z (0x00A68DE0), ?GetLevelByteLength@CVolumeTexture@@QBEJJ@Z (0x00A681F0)
++    // and GetNoLevels (Ego_d.pdb / FableWin.pdb method list of CVolumeTexture, `long () const`; inline in retail: 0x00A68EB7
++    // `call [ecx+34h]` = IDirect3DVolumeTexture9::GetLevelCount, compared signed against the level counter). Declarations only: as with
++    // FABLE_RETAIL_CVOLUMETEXTURE_GETASTEXTURELIST the row's TU defines the inline body over its own D3D interface model. No layout change.
++    long GetNoLevels() const;
++    long GetLevelByteLength(long level) const;                           // 0x00A681F0
++    void LoadFromDataStream(class CDataInputStream& stream);             // 0x00A68DE0
++#endif
+ };
+ FABLE_STATIC_ASSERT_AT(15, sizeof(CVolumeTexture) == 0x10);
+ #endif
+--- /dev/null	2026-11-19 23:29:15.240941367 +0000
++++ hdr/engine/CVolumeLockedBox.h	2026-11-22 08:58:26.639638299 +0000
+@@ -0,0 +1,19 @@
++#ifndef FABLE_ENGINE_CVOLUMELOCKEDBOX_H
++#define FABLE_ENGINE_CVOLUMELOCKEDBOX_H
++// NEW shared header (AUTH23 2026-11-22, row 0x00A68DE0 CVolumeTexture::LoadFromDataStream). Ego_d.pdb CVolumeLockedBox (class 0xBB5A, 24 bytes,
++// field list 0xBB59): Dimensions +0x00 (C3DExtentsI), RowPitch +0x0C, SlicePitch +0x10, PMem +0x14 (unsigned char*), all public, and two
++// constructors (LF_METHOD `CVolumeLockedBox`, 2 overloads); Ego_r.pdb has the same layout. The text is the model the landed
++// CVolumeTexture::Lock row 0x00A685E0 carries locally (that row and 0x00A68910 can move onto this header: queued, not done here).
++#include "rebuild_abi.h"
++#include "engine/C3DExtentsI.h"
++class CVolumeLockedBox {
++public:
++    C3DExtentsI    Dimensions;                                           // +0x00
++    long           RowPitch;                                             // +0x0c
++    long           SlicePitch;                                           // +0x10
++    unsigned char* PMem;                                                 // +0x14
++    CVolumeLockedBox() {}
++    CVolumeLockedBox(const CVolumeLockedBox& o) : Dimensions(o.Dimensions), RowPitch(o.RowPitch), SlicePitch(o.SlicePitch), PMem(o.PMem) {}
++};
++FABLE_STATIC_ASSERT(sizeof(CVolumeLockedBox) == 24);
++#endif
+--- /dev/null	2026-11-19 23:29:15.240941367 +0000
++++ hdr/engine/CVolumeTextureFileInfo.h	2026-11-22 08:58:26.639681078 +0000
+@@ -0,0 +1,25 @@
++#ifndef FABLE_ENGINE_CVOLUMETEXTUREFILEINFO_H
++#define FABLE_ENGINE_CVOLUMETEXTUREFILEINFO_H
++// NEW shared header (AUTH23 2026-11-22, row 0x00A68DE0 CVolumeTexture::LoadFromDataStream). Ego_d.pdb CVolumeTextureFileInfo (class 0x7046B,
++// 21 bytes, field list 0x7046A, all public): Width +0x00, Height +0x02, Depth +0x04 (unsigned short), NoLevels +0x06 (unsigned char),
++// PixelFormatInit +0x07 (CPixelFormatInit, 6 bytes), UseageFlags +0x0D (unsigned long; the PDB spelling), Pool +0x11 (EVolumePool, Ego_d
++// type 0x22D9). The 21-byte header of a volume texture in a data stream: retail 0x00A68E73 reads 0x15 bytes, 0x00A68E7D passes +0x07 to
++// CPixelFormat::Initialise(const CPixelFormatInit&), 0x00A68E8F / 0x00A68EA0 read the unaligned dwords at +0x11 / +0x0D. Packed (the
++// class's own header packs it, as CPixelFormatInit.h). Needs FABLE_RETAIL_CVOLUMETEXTURE_INITIALISE (EVolumePool lives in CVolumeTexture.h).
++#include "rebuild_abi.h"
++#include "engine/CPixelFormatInit.h"
++#include "engine/CVolumeTexture.h"
++#pragma pack(push, 1)
++class CVolumeTextureFileInfo {
++public:
++    unsigned short   Width;                                              // +0x00
++    unsigned short   Height;                                             // +0x02
++    unsigned short   Depth;                                              // +0x04
++    unsigned char    NoLevels;                                           // +0x06
++    CPixelFormatInit PixelFormatInit;                                    // +0x07
++    unsigned long    UseageFlags;                                        // +0x0d
++    EVolumePool      Pool;                                               // +0x11
++};
++#pragma pack(pop)
++FABLE_STATIC_ASSERT(sizeof(CVolumeTextureFileInfo) == 21);
++#endif
