@@ -1,0 +1,6 @@
+entry	address	status	binders_respelled	note
+1 (slot 1 via the port)	0x0069F0F0 / 0x006A0D50	done	2 vtable slot-1 bindings, 2 slot-11 bindings	both rows RELOCATION_MATCH + PASS on the shared headers
+2 (0x0069FCD0 forwarder)	0x0069FCD0	done	1 (the tail jump: ForwardTarget_0069f9e0 -> ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ)	self leaf placeholder -> PDB ?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ (no binders); 0x0069F9E0 3 -> 2 spellings; new linking test
+3 (q12744 census)	0x00AD9770 / 0x00AD9980	done (census: 4 other landed pick-any definers; mirror applied)	0	both rows RELOCATION_MATCH + PASS; 0x00AD9980's test gains one probe
+4 (0x0072CAA0 test)	0x0072CAA0	done	0	new test links the row, 8 cases, PassPattern kept
+5 (q12659)	0x00418DCA	open (not started)	-	needs the 469-includer proof; context

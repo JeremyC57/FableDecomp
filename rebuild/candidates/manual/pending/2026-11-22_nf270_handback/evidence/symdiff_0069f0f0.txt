@@ -1,0 +1,17 @@
+# 0069f0f0 defined/undefined external symbols, HEAD (<) v NF270 final form (>)
+6a7
+> DEF ??1?$CIVCountedPointer@VCAnimComponentMap@@@@QAE@XZ
+14c15,17
+< DEF ?Release@CIVCountedPointeeBase@@QAEXXZ
+---
+> DEF ?Release@?$CIVCountedPointer@VCAnimComponentMap@@@@QAEXXZ
+> DEF ?Release@CIVCountedPointeeBase@@QBEJXZ
+> DEF ?SetPointer@?$CIntelligentPointer@VCThing@@@@AAEXPBVCThing@@@Z
+26c29
+< UND ?Clone@CCreatureAction_UnsheatheItemFromInventory@@UBEPAVCCreatureActionBase@@XZ
+---
+> UND ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+93c96
+< UND ?Validate@CCreatureActionBase@@UBEXXZ
+---
+> UND ?Validate@CBaseObject@@UBEXXZ

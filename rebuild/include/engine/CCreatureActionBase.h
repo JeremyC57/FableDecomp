@@ -53,6 +53,11 @@ private:
 public:
 public:
     virtual ~CCreatureActionBase();
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_COPYCTOR
+    // NF270 opt-in (row 0x006A0D50 CCreatureAction_UseObject copy constructor): Ego_r.pdb 0x0042B6B0 + FableWin.pdb 0x018C2740
+    // ??0CCreatureActionBase@@QAE@ABV0@@Z (public), out of line in retail at 0x0062EBC0 (landed row). Declaration only.
+    CCreatureActionBase(const CCreatureActionBase& other);              // 0x0062EBC0
+#endif
 #ifdef FABLE_RETAIL_CCREATUREACTIONBASE_ANIMCTOR
     // Opt-in (wf11, row 0x009810B0): Ego_r.pdb ??0CCreatureActionBase@@QAE@AAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z
     // (retail 0x00693B30, out of line) and the protected static __fastcall

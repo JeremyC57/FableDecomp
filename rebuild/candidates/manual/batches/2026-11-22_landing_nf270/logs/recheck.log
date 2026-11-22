@@ -1,0 +1,56 @@
+addr       parity           behav  name
+0069f0f0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+006a0d50   RELOCATION_MATCH PASS   CCreatureAction_UseObject
+0069fcd0   RELOCATION_MATCH PASS   PerformAction
+00ad9770   RELOCATION_MATCH PASS   RemoveAllSubsets
+00ad9980   RELOCATION_MATCH PASS   ReorderInput
+0072caa0   RELOCATION_MATCH PASS   SetupAssassinRush
+006a0150   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+006a02b0   RELOCATION_MATCH PASS   FinishAction
+008cdd40   RELOCATION_MATCH PASS   FinishAction
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheItemFromInventory (engine/CCreatureAction_UnsheatheItemFromInventory.h)
+0069f9e0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0069f9e0   RELOCATION_MATCH PASS   PerformAction
+006a0e50   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+006a0e50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheItemFromInventory (engine/CCreatureAction_UnsheatheItemFromInventory.h)
+006a0e50   RELOCATION_MATCH PASS   Clone
+006a0d20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+006a0d20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseObject (engine/CCreatureAction_UseObject.h)
+006a0d20   RELOCATION_MATCH PASS   Clone
+00a96da0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00a96da0   RELOCATION_MATCH PASS   ~CVertexGroupBlock
+00ad9f10   RELOCATION_MATCH PASS   AddBlocks
+00ad94f0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00ad94f0   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ad94f0   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00ad94f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad94f0   RELOCATION_MATCH PASS   FindBestStartingBlock
+00add020   RELOCATION_MATCH PASS   operator=
+006df800   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheToShowToSheatheTrophy
+
+WINS: 17
+  0069f0f0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z
+  006a0d50 RELOCATION_MATCH CCreatureAction_UseObject::??0CCreatureAction_UseObject@@QAE@ABV0@@Z
+  0069fcd0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::?PerformAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+  00ad9770 RELOCATION_MATCH CVertexGroupBlockList::?RemoveAllSubsets@CVertexGroupBlockList@@QAEXXZ
+  00ad9980 RELOCATION_MATCH CVertexGroupBlockOptimiser::?ReorderInput@CVertexGroupBlockOptimiser@@QAEXABVCVertexGroupBlockList@@@Z
+  0072caa0 RELOCATION_MATCH CTCSpecialAbilities::?SetupAssassinRush@CTCSpecialAbilities@@AAE_NXZ
+  006a0150 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z
+  006a02b0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventoryWithHasteAction::?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ
+  008cdd40 RELOCATION_MATCH CCreatureAction_ReleaseTimeSpell::?FinishAction@CCreatureAction_ReleaseTimeSpell@@UAEXXZ
+  0069f9e0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+  006a0e50 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::Clone
+  006a0d20 RELOCATION_MATCH CCreatureAction_UseObject::Clone
+  00a96da0 RELOCATION_MATCH CVertexGroupBlock::??1CVertexGroupBlock@@QAE@XZ
+  00ad9f10 RELOCATION_MATCH CVertexGroupBlockOptimiser::?AddBlocks@CVertexGroupBlockOptimiser@@AAEXK@Z
+  00ad94f0 RELOCATION_MATCH CVertexGroupBlockOptimiser::?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ
+  00add020 RELOCATION_MATCH std::list<CVertexGroupBlock>::??4?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAEAAV01@ABV01@@Z
+  006df800 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::??0CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@@Z

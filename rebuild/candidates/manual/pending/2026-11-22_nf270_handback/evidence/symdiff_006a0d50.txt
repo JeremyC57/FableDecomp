@@ -1,0 +1,13 @@
+# 006a0d50 defined/undefined external symbols, HEAD (<) v NF270 final form (>)
+1a2
+> DEF ??0C3DVector@@QAE@ABV0@@Z
+2a4
+> DEF ??0CRightHandedSet@@QAE@ABV0@@Z
+17c19
+< UND ?Clone@CCreatureAction_UseObject@@UBEPAVCCreatureActionBase@@XZ
+---
+> UND ?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ
+84c86
+< UND ?Validate@CCreatureActionBase@@UBEXXZ
+---
+> UND ?Validate@CBaseObject@@UBEXXZ

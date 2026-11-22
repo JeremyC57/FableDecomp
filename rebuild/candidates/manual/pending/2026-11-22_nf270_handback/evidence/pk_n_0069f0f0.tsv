@@ -1,0 +1,14 @@
+n_0069f0f0	?Release@CIVCountedPointeeBase@@QBEJXZ	17	-	NO-OWNER
+n_0069f0f0	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER
+n_0069f0f0	??0CSoundPair@@QAE@XZ	16	-	NO-OWNER
+n_0069f0f0	??1?$CIntelligentPointer@VCThing@@@@UAE@XZ	5	-	NO-OWNER
+n_0069f0f0	??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ	53	0048c5c0	EQ
+n_0069f0f0	?SetPointer@?$CIntelligentPointer@VCThing@@@@AAEXPBVCThing@@@Z	5	-	NO-OWNER
+n_0069f0f0	?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z	11	00668610	EQ
+n_0069f0f0	?Release@?$CIVCountedPointer@VCAnimComponentMap@@@@QAEXXZ	27	-	NO-OWNER
+n_0069f0f0	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	32	004a96f0	EQ
+n_0069f0f0	??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z	30	-	NO-OWNER
+n_0069f0f0	??0?$CCountedPointer@VCCreatureActionBase@@@@QAE@PAVCCreatureActionBase@@@Z	78	00695880	EQ
+n_0069f0f0	??1?$CIVCountedPointer@VCAnimComponentMap@@@@QAE@XZ	27	-	NO-OWNER
+n_0069f0f0	??1CAnimationEntry@@QAE@XZ	29	-	NO-OWNER
+n_0069f0f0	??_GCCreatureAction_UnsheatheItemFromInventory@@UAEPAXI@Z	30	-	NO-OWNER

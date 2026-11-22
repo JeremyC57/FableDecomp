@@ -1,0 +1,3 @@
+duplicates 0
+
+UNRESOLVED 1 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ

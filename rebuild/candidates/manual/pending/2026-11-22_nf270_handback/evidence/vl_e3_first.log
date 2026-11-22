@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00ad9770   RELOCATION_MATCH PASS   RemoveAllSubsets
+00ad9980   RELOCATION_MATCH LINK_FAIL ReorderInput
+
+WINS: 1
+  00ad9770 RELOCATION_MATCH CVertexGroupBlockList::?RemoveAllSubsets@CVertexGroupBlockList@@QAEXXZ
+VL_DONE 0
