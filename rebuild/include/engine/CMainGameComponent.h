@@ -259,6 +259,11 @@ public:
     CASoundBank& GetSampleBank() const { return *PSampleBank; }
     unsigned long* GetWorldSeed() const { return const_cast<unsigned long*>(&WorldSeed); }
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_GETLOCALSEED
+    // NF250 opt-in (row 0x0049D800 CWorld::GetLocalSeed): FableWin.pdb ?GetLocalSeed@CMainGameComponent@@QBEPAKXZ, inline in retail
+    // (CWorld::GetLocalSeed 0x0049D800 forms `Component + 0x16140` in place). LocalSeed +0x16140 (Ego_r.pdb). No layout change.
+    unsigned long* GetLocalSeed() const { return const_cast<unsigned long*>(&LocalSeed); }
+#endif
     static long __fastcall GetConstantFPS() { return ConstantFPS; }
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITLUA
     // Opt-in (agentNF26, 2026-11-12, row 0x004BBC00 and its caller 0x00416953 PostInit): Ego_r.pdb + FableWin.pdb protected

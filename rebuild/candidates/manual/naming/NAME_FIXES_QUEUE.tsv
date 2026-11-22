@@ -12959,3 +12959,9 @@ land1122nf249	0x00B23750	??0CIEngine@@IAE@XZ	FableWin.pdb + Ego_d.pdb (protected
 land1122nf249	0x00B260B0 / 0x00B261D0	the CEngine ctor / dtor pair (graded RELOCATION_MATCH, drafts in pending/2026-11-22_nf249_handback/rows)	HELD on 0x00B2AB10: its strong scaffolding CEngine::CEngine() {} must stop defining ??0CEngine (nf159 TU-emitter rule: fold or re-point it), then land the pair + its q12692 table lines
 land1122nf249	0x006648D0 / 0x006649C0 / 0x00664A50	header ports (in-place local models today)	onto CThingCreatureBase.h like 0x00664A10
 land1122nf249	0x00418DCA (q12659)	CMainGameComponent family header port	not started: needs the full 469-includer proof
+land1122nf250	0x00B3E1A0	?DeleteData@?$CCountedPointer@VCMeshBankStateBlock@@@@SIXPAX@Z	Ego_r + FableWin S_PUB32; the deleter the CCountedPointer<CMeshBankStateBlock>(T*) ctor 0x00B3E580 stores (operand 0x00B3E5A6); the L119 row's pick-any DeleteData copy is EQ retail 0x00B3E1A0 (11 B). Catalog-only (no row)	?Destroy_00b3e1a0@@YIXPAX@Z (0x00B3E580 at HEAD)
+land1122nf250	0x0091C080 (L86)	CTCNymph::ClearReadyToAttackFlags (draft in pending/2026-11-22_nf250_handback/rows)	HELD: its ??_G?$CIntelligentPointer<CThingCreatureBase> copy is 30 B v owner 0x004D6915 28 B; land when EQ
+land1122nf250	L72 / L74 / L92 / L100	four ctor rows (drafts in .../blocked)	declare the class overrides in their headers first, then land the drafts
+land1122nf250	L89	??_GCCreatureAction_PickUpTankard 30 B v owner 0x0094B350 43 B	blocked on the pick-any copy
+land1122nf250	0x008EE720	GetLocalSeed binder	full port onto CWorld.h FABLE_RETAIL_CWORLD_GETLOCALSEED
+land1122nf250	L4 / L5, L28, L37, L57, L111, L114, L120, L129, E3 + L101-L103	open CODEXP27 lines	not started; E3 plan in nf250 NOTES (7-row unit, anonymous-namespace opt-in)

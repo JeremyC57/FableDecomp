@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00B3E1A0	?DeleteData@?$CCountedPointer@VCMeshBankStateBlock@@@@SIXPAX@Z	Ego_r + FableWin S_PUB32; the deleter the CCountedPointer<CMeshBankStateBlock>(T*) ctor 0x00B3E580 stores (operand 0x00B3E5A6); the L119 row's pick-any DeleteData copy is EQ retail 0x00B3E1A0 (11 B). Catalog-only (no row)	?Destroy_00b3e1a0@@YIXPAX@Z (0x00B3E580 at HEAD)

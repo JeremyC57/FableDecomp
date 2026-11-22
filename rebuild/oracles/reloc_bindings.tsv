@@ -4357,9 +4357,8 @@ N_008fdb27	008fdb27	008fdb55
 ?GetSeat@CAIStateGroup_EatAtTable@@QAE_NXZ	0096cb40	0096d450
 ??_7CCreatureAction_StartEatingAtTable@@6B@	01296c9c	0096d4d0
 ??_7CCreatureAction_ScreamerIntoAggressive@@6B@	01296f14	0096db60
-?InsertionSort_0096d980@@YIXPAUSElement4@@0USCompare@@@Z	0096d980	0096e4a0
-?IntrosortLoop_0096e410@@YIXPAUSElement4@@00JUSCompare@@@Z	0096e410	0096e4a0
-?UnguardedInsertionSortAux_0096d780@@YIXPAUSElement4@@00USCompare@@@Z	0096d780	0096e4a0
+??$__insertion_sort@PAPAVCThing@@V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@std@@YIXPAPAVCThing@@0V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@Z	0096d980	0096e4a0
+??$__unguarded_insertion_sort_aux@PAPAVCThing@@PAV1@V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@std@@YIXPAPAVCThing@@00V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@Z	0096d780	0096e4a0
 ?CanRun@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ	0096f180	0096f240
 ??_7CCreatureAction_SummonerCharge@@6B@	012971ec	009702d0
 ??_7CCreatureAction_JackFlash@@6B@	01297744	00976e80
@@ -5484,7 +5483,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?g_pEngine_01436ea8@@3PAUCEngineGlobal_01436ea8@@A	01436ea8	00b3b1a0
 ?Flush@CDeviceOwner_009f8200@@QAEXXZ	009f8200	00b3b7c0
 ?Destroy_00b3e080@@YIXPAX@Z	00b3e080	00b3e510
-?Destroy_00b3e1a0@@YIXPAX@Z	00b3e1a0	00b3e580
+?DeleteData@?$CCountedPointer@VCMeshBankStateBlock@@@@SIXPAX@Z	00b3e1a0	00b3e580
 ??1CLayoutBase@@QAE@XZ	0098d710	00b3eb90
 ??0CBankFile_Retail@@QAE@XZ	009d5f80	00b3ecc0
 ??_7CStaticMapBankFile@@6B@	012a1ee4	00b3ecc0

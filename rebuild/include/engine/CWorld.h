@@ -200,6 +200,12 @@ public:
     static long GetFramesPerSecond();
 #endif
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+#ifdef FABLE_RETAIL_CWORLD_GETLOCALSEED
+    // NF250 opt-in (row 0x0049D800 CWorld::GetLocalSeed): Ego_r.pdb / FableWin.pdb ?GetLocalSeed@CWorld@@QBEPAKXZ, out of line in retail at
+    // 0x0049D800 (`mov eax,[ecx+8] ; add eax,16140h`: &Component->LocalSeed; Ego_r donor order GetLocalSeed / GetWorldSeed = retail
+    // 0x0049D800 / 0x0049D810), called by the landed CMaterialDef::GetRandom*ParticleEffect rows. Declaration only; no layout change.
+    unsigned long* GetLocalSeed() const;                     // 0x0049D800 ?GetLocalSeed@CWorld@@QBEPAKXZ
+#endif
 #ifdef FABLE_RETAIL_CWORLD_SAVEGAMEMARKERPOS
     // Nested opt-in (row 0x006B08F0 CTCPhysicsBase::OnSerialise): FableWin.pdb ?GetSaveGameMarkerPos@CWorld@@QBEABVC3DVector@@XZ
     // (0x0184F602 thunk), inline in retail: the const& to the unaligned C3DVector at +0x141 read in place.
@@ -957,6 +963,12 @@ public:
     static long GetFramesPerSecond();
 #endif
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+#ifdef FABLE_RETAIL_CWORLD_GETLOCALSEED
+    // NF250 opt-in (row 0x0049D800 CWorld::GetLocalSeed): Ego_r.pdb / FableWin.pdb ?GetLocalSeed@CWorld@@QBEPAKXZ, out of line in retail at
+    // 0x0049D800 (`mov eax,[ecx+8] ; add eax,16140h`: &Component->LocalSeed; Ego_r donor order GetLocalSeed / GetWorldSeed = retail
+    // 0x0049D800 / 0x0049D810), called by the landed CMaterialDef::GetRandom*ParticleEffect rows. Declaration only; no layout change.
+    unsigned long* GetLocalSeed() const;                     // 0x0049D800 ?GetLocalSeed@CWorld@@QBEPAKXZ
+#endif
 };
 #pragma pack(pop)
 

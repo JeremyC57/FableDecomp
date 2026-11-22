@@ -496,3 +496,4 @@
 - Lane cl.exe (VC7.1 under wine) HANGS on a missing #include instead of printing C1083 (AUTH23, 2026-11-22: 0x00A68DE0's draft included a header that never landed). Run grades under `timeout` and check includes first.
 - Codex header patches can edit a shared inline for every includer (p27: CBankFile assert, IsAwareOfThing decl-only); equiv_check + recheck of the differing rows on the patched tree catch it, a HEAD-overlay control proves it is the patch.
 - A relocated operand is masked, so a wrong float literal can still grade RELOCATION_MATCH: 0x0041735A passed 0.5f where retail pushes -1.0f (found by NF239's compiled census of 0x0122DEE0's binders). Census a literal's binders by symbol, not by grade.
+- A `// Flags:` comment in a row source does not reach the grade: the flags come only from `CompilerFlags` in build_candidates.ps1 (landing nf250, 0x008F69B0 DIFFER until added).

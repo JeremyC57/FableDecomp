@@ -69182,9 +69182,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049d800'
-        Module = 'DoSizeof'
-        Source = '00/49/DoSizeof_DoSizeof_0049d800.cpp'
-        TestSource = '00/49/DoSizeof_DoSizeof_0049d800_test.cpp'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_GetLocalSeed_0049d800.cpp'
+        TestSource = '00/49/CWorld_GetLocalSeed_0049d800_test.cpp'
         PassPattern = 'OK_0049d800'
     }
     [pscustomobject]@{
@@ -122678,9 +122678,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008aa9b0'
-        Module = '_global'
-        Source = '00/8a/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_008aa9b0.cpp'
-        TestSource = '00/8a/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_008aa9b0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeSitBase>'
+        Source = '00/8a/CCountedPointerNCreatureModeCModeSitBase_CCountedPointerNCreatureModeCModeSitFloor_008aa9b0.cpp'
+        TestSource = '00/8a/CCountedPointerNCreatureModeCModeSitBase_CCountedPointerNCreatureModeCModeSitFloor_008aa9b0_test.cpp'
         PassPattern = 'PASS_008aa9b0'
     }
     [pscustomobject]@{
@@ -150429,9 +150429,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b3e580'
-        Module = 'CCountedPointer_00b3e1a0'
-        Source = '00/b3/CCountedPointer00b3e1a0_CCountedPointer00b3e1a0_00b3e580.cpp'
-        TestSource = '00/b3/CCountedPointer00b3e1a0_CCountedPointer00b3e1a0_00b3e580_test.cpp'
+        Module = 'CCountedPointer<CMeshBankStateBlock>'
+        Source = '00/b3/CCountedPointerCMeshBankStateBlock_CCountedPointer_00b3e580.cpp'
+        TestSource = '00/b3/CCountedPointerCMeshBankStateBlock_CCountedPointer_00b3e580_test.cpp'
         PassPattern = '00b3e580_TEST PASS'
     }
     [pscustomobject]@{
@@ -170298,9 +170298,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0096e4a0'
-        Module = '_global'
-        Source = '00/96/global_SortSElement40096e4a0_0096e4a0.cpp'
-        TestSource = '00/96/global_SortSElement40096e4a0_0096e4a0_test.cpp'
+        Module = 'std'
+        Source = '00/96/std_sortCThingCAdaptThingCompareToSTLComparitorCThin_0096e4a0.cpp'
+        TestSource = '00/96/std_sortCThingCAdaptThingCompareToSTLComparitorCThin_0096e4a0_test.cpp'
         PassPattern = '0096e4a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -230501,9 +230501,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008f69b0'
-        Module = 'CSTLportVector<C3DVector>'
-        Source = '00/8f/CSTLportVectorC3DVector_CSTLportVector_008f69b0.cpp'
-        TestSource = '00/8f/CSTLportVectorC3DVector_CSTLportVector_008f69b0_test.cpp'
+        Module = 'std::vector<CHeightMapCell>'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        Source = '00/8f/stdvectorCHeightMapCell_vector_008f69b0.cpp'
+        TestSource = '00/8f/stdvectorCHeightMapCell_vector_008f69b0_test.cpp'
         PassPattern = '008f69b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -255901,9 +255902,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ab15f0'
-        Module = 'CBoneInfo'
-        Source = '00/ab/CBoneInfo_FindChildIndex_00ab15f0.cpp'
-        TestSource = '00/ab/CBoneInfo_FindChildIndex_00ab15f0_test.cpp'
+        Module = 'C3DAnimationBuilder::CBoneInfo'
+        Source = '00/ab/C3DAnimationBuilderCBoneInfo_FindChildIndex_00ab15f0.cpp'
+        TestSource = '00/ab/C3DAnimationBuilderCBoneInfo_FindChildIndex_00ab15f0_test.cpp'
         PassPattern = '00ab15f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -273585,9 +273586,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b209c0'
-        Module = 'NParticleEngine::CPSCSingleSprite'
-        Source = '00/b2/NParticleEngineCPSCSingleSprite_vfunc31_00b209c0.cpp'
-        TestSource = '00/b2/NParticleEngineCPSCSingleSprite_vfunc31_00b209c0_test.cpp'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_GetApproximateSplineLength_00b209c0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_GetApproximateSplineLength_00b209c0_test.cpp'
         PassPattern = '00b209c0_TEST PASS'
     }
     [pscustomobject]@{

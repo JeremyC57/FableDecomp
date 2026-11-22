@@ -318,3 +318,4 @@ date	account	item	kind	status	note
 2026-11-22	A	CModeBase slot bindings / 0x006A1620	naming	done	agent NF247 landed 7 rows (batches/2026-11-22_landing_nf247); q12676 / q12659 open
 2026-11-22	A	NF241 open CODEXP27 lines	naming	done	agent NF248 landed 10 rows / 7 lines (batches/2026-11-22_landing_nf248); 29 lines + E2 / E3 pass to NF250
 2026-11-22	A	UnsheatheWeapon / 0x00890D80 / CEngine step 3	naming	done	agent NF249 landed 5 rows + 4 header opt-ins (batches/2026-11-22_landing_nf249); CEngine pair held on 0x00B2AB10, passes to NF251
+2026-11-22	A	NF248 open CODEXP27 lines	naming	done	agent NF250 landed 12 rows (batches/2026-11-22_landing_nf250); L86 held, 5 blocked, the rest pass to NF252

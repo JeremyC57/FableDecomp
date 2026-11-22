@@ -1,0 +1,37 @@
+addr       parity           behav  name
+0049d800   WARN STANDIN_LEAF ?GetLocalSeed@CWorld@@QBEPAKXZ (catalog CVertexBufferWin32::DoSizeof; names another function)
+0049d800   MATCH            PASS   DoSizeof
+004a9710   WARN STANDIN_LEAF ??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z (catalog CIntelligentPointer<CThing>::`scalar_deleting_destructor'; names another function)
+004a9710   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004d6915   WARN STANDIN_LEAF ??_G?$CIntelligentPointer@VCThingCreatureBase@@@@UAEPAXI@Z (catalog CIntelligentPointer<CThingCreatureBase>::`scalar_deleting_destructor'; names another function)
+004d6915   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f8010   WARN STANDIN_LEAF ??_GCCreatureAction_CombatIdle@@UAEPAXI@Z (catalog CCreatureAction_CombatIdle::`scalar_deleting_destructor'; names another function)
+006f8010   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008aa9b0   MATCH            PASS   CCountedPointer_CopyCtor_008aa9b0
+008f69b0   RELOCATION_MATCH PASS   CSTLportVector
+0091c080   WARN STANDIN_LEAF ?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ (catalog CAIStateGroupWithBuilding_0091c080::Cleanup; names another function)
+0091c080   RELOCATION_MATCH PASS   Cleanup
+009539a0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z (catalog CCreatureAction_DragonHoverOutOf::`scalar_deleting_destructor'; names another function)
+009539a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00953a00   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBlastForward::`scalar_deleting_destructor'; names another function)
+00953a00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0096e4a0   RELOCATION_MATCH PASS   Sort_SElement4_0096e4a0
+00ab15f0   RELOCATION_MATCH PASS   FindChildIndex
+00b209c0   WARN SHARED_HEADER_AVAILABLE CPSCSplineBase (engine/CPSCSplineBase.h)
+00b209c0   RELOCATION_MATCH PASS   vfunc_31
+00b3e580   RELOCATION_MATCH PASS   CCountedPointer_00b3e1a0
+
+WINS: 13
+  0049d800 MATCH DoSizeof::?GetLocalSeed@CWorld@@QBEPAKXZ
+  004a9710 RELOCATION_MATCH CIntelligentPointer<CThing>::??_G?$CIntelligentPointer@VCThing@@@@UAEPAXI@Z
+  004d6915 RELOCATION_MATCH CIntelligentPointer<CThingCreatureBase>::??_G?$CIntelligentPointer@VCThingCreatureBase@@@@UAEPAXI@Z
+  006f8010 RELOCATION_MATCH CCreatureAction_CombatIdle::??_GCCreatureAction_CombatIdle@@UAEPAXI@Z
+  008aa9b0 MATCH _global::??$?0VCModeSitFloor@NCreatureMode@@@?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@ABV?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@@Z
+  008f69b0 RELOCATION_MATCH CSTLportVector<C3DVector>::??0?$vector@VCHeightMapCell@@V?$allocator@VCHeightMapCell@@@std@@@std@@QAE@I@Z
+  0091c080 RELOCATION_MATCH CAIStateGroupWithBuilding_0091c080::?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ
+  009539a0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z
+  00953a00 RELOCATION_MATCH CCreatureAction_DragonFireBlastForward::??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z
+  0096e4a0 RELOCATION_MATCH _global::??$sort@PAPAVCThing@@V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@std@@YIXPAPAVCThing@@0V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@Z
+  00ab15f0 RELOCATION_MATCH CBoneInfo::?FindChildIndex@CBoneInfo@C3DAnimationBuilder@@QBEJABVCCharString@@@Z
+  00b209c0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?GetApproximateSplineLength@CPSCSplineBase@NParticleEngine@@UAEMXZ
+  00b3e580 RELOCATION_MATCH CCountedPointer_00b3e1a0::??0?$CCountedPointer@VCMeshBankStateBlock@@@@QAE@PAVCMeshBankStateBlock@@@Z
