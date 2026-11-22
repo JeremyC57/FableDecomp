@@ -1,0 +1,14 @@
+00401630	??1CDiskFileWin32@@UAE@XZ	x1
+00403750	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	x1
+004057a0	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	x2
+004131d0	??1CMainGameComponentInit@@QAE@XZ	x1
+004175e5	?Shutdown@CMainGameComponent@@QAEXXZ	x1
+004190b6	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	x1
+00419108	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	x1
+00419352	??1CNetworkClient@@UAE@XZ	x1
+00419764	??1CFrameRateSmoother@@UAE@XZ	x1
+0099a300	??1CBaseClassNonCopyable@@MAE@XZ	x1
+0122eca4	??_7CGameComponent@@6BCDeviceResetCallback@@@	x1
+0122ecb0	??_7CGameComponent@@6BCBaseClassNonCopyable@@@	x1
+0122f174	??_7CMainGameComponent@@6BCDeviceResetCallback@@@	x1
+0122f180	??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@	x1

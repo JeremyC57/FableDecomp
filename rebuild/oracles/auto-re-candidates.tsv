@@ -2113,7 +2113,7 @@ address	name	length	bytes
 01228ad3	_global::AtexitDtor_CCharString_at_013b8754_01228ad3	10	b954873b01e9036077ff
 01228add	_global::AtexitDtor_CCharString_at_013b8758_01228add	10	b958873b01e9f95f77ff
 01228ae7	_global::AtexitDtor_CCharString_at_013b875c_01228ae7	10	b95c873b01e9ef5f77ff
-01228af1	_global::Static__Dest_val_std__allocator_CCountedPointer_on_013b8760_01228af1	10	b960873b01e9c5b120ff
+01228af1	CStartupDefinitionManager::`dynamic atexit destructor for 'PClass''	10	b960873b01e9c5b120ff
 01228b00	_global::AtexitDtor_CCharString_at_013b8778_01228b00	10	b978873b01e9d65f77ff
 01228b10	_global::AtexitDtor_CCharString_at_013b877c_01228b10	10	b97c873b01e9f62977ff
 01228b20	_global::AtexitDtor_CCharString_at_013b8788_01228b20	10	b988873b01e9b65f77ff
@@ -26257,7 +26257,7 @@ address	name	length	bytes
 00a23fc0	C3DAnimationInfo::CAnimationData::IsResourceLoaded	15	8b493085c97405e91415fbffb001c3
 00a23ff0	CPhysicsMeshInfo::CMeshData::IsResourceLoaded	15	8b491c85c97405e9e414fbffb001c3
 00c1baa0	CSoundPlayParameters::GetFadeIn	5	668b4106c3
-0121a2dc	_global::g_global_0121a2dc	12	68f18a2201e8d66f1eff59c3
+0121a2dc	CStartupDefinitionManager::`dynamic initializer for 'PClass''	12	68f18a2201e8d66f1eff59c3
 0121a389	_global::g_global_0121a389	12	68a28b2201e8296f1eff59c3
 006925d0	CCreatureActionBase::GetFramesRemaining	7	8b41102b411cc3
 0071ab10	CTCEmoteIcon::OnCreate	15	c7410c00000000c7411c02000000c3

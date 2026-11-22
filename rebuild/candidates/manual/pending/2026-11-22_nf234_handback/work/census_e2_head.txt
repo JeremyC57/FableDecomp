@@ -1,0 +1,158 @@
+### 00418b7a [rebuild/src/compiled/00/41/CMainGameComponent_CMainGameComponent_00418b7a.cpp] 00418b7a CMainGameComponent::~CMainGameComponent RELOCATION_MATCH flags= []
+      1   REL 004131d0 ??1CMainGameComponentInit@@QAE@XZ
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 0122eca4 ??_7CGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+      1   REL 0122f174 ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 0122f180 ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 __purecall
+  1 __purecall
+VT ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECGameComponent@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 __purecall
+  3 __purecall
+  4 ?SetQuit@CGameComponent@@UAEXXZ
+VT ??_7CMainGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+  1 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+VT ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@ slots 10
+  0 ??_ECMainGameComponent@@UAEPAXI@Z
+  1 ?Init@CMainGameComponent@@UAEXXZ
+  2 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  3 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+  4 ?SetQuit@CMainGameComponent@@UAEXXZ
+  5 ?Update@CMainGameComponent@@UAEXXZ
+  6 ?GetInputs@CMainGameComponent@@UAEXXZ
+  7 ?Render@CMainGameComponent@@UAEXXZ
+  8 ?PostInit@CMainGameComponent@@UAEXXZ
+  9 ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??1CMainGameComponent@@UAE@XZ
+  SYM DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent@@6BCDeviceResetCallback@@@
+  SYM DEF ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+  SYM DEF ??_GCGameComponent@@UAEPAXI@Z
+  SYM DEF ??_GCMainGameComponent@@UAEPAXI@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??1CMainGameComponentInit@@QAE@XZ
+  SYM UND ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ??_GCMainGameComponent@@UAEPAXI@Z
+  SYM UND ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+  SYM UND ?GetInputs@CMainGameComponent@@UAEXXZ
+  SYM UND ?Init@CGameComponent@@UAEXXZ
+  SYM UND ?Init@CMainGameComponent@@UAEXXZ
+  SYM UND ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+  SYM UND ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+  SYM UND ?PostInit@CMainGameComponent@@UAEXXZ
+  SYM UND ?Render@CMainGameComponent@@UAEXXZ
+  SYM UND ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  SYM UND ?SetQuit@CGameComponent@@UAEXXZ
+  SYM UND ?SetQuit@CMainGameComponent@@UAEXXZ
+  SYM UND ?Shutdown@CMainGameComponent@@QAEXXZ
+  SYM UND ?Update@CMainGameComponent@@UAEXXZ
+### 00418dca [rebuild/src/compiled/00/41/CMainGameComponent_CMainGameComponent_00418dca.cpp] 00418dca CMainGameComponent::CMainGameComponent RELOCATION_MATCH flags= []
+      1   REL 0051d8e0 ??0CGameComponent@@QAE@AAVCGame@@@Z
+      1   REL 0122f174 ??_7CMainGameComponent@@6BCComponentListEntry@@@
+      1   REL 0122f180 ??_7CMainGameComponent@@6BCBaseClass@@@
+VT ??_7CMainGameComponent@@6BCComponentListEntry@@@ slots 1
+  0 ?v00@CMainGameComponent@@UAEXXZ
+VT ??_7CMainGameComponent@@6BCBaseClass@@@ slots 1
+  0 ??_ECMainGameComponent@@UAEPAXI@Z
+  SYM DEF ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CMainGameComponent@@6BCBaseClass@@@
+  SYM DEF ??_7CMainGameComponent@@6BCComponentListEntry@@@
+  SYM DEF ??_GCMainGameComponent@@UAEPAXI@Z
+  SYM UND ??0CGameComponent@@QAE@AAVCGame@@@Z
+  SYM UND ??0CMainGameComponentInit@@QAE@ABV0@@Z
+  SYM UND ??1CBaseClass@@UAE@XZ
+  SYM UND ??1CMainGameComponent@@UAE@XZ
+  SYM UND ??_GCMainGameComponent@@UAEPAXI@Z
+  SYM UND ?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z
+  SYM UND ?v00@CMainGameComponent@@UAEXXZ
+### 00495620 [rebuild/src/compiled/00/49/CFrontendGameComponent_CFrontendGameComponent_00495620.cpp] 00495620 CFrontendGameComponent::~CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 0122eca4 ??_7CGameComponent@@6BCGameComponentInterface@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+      1   REL 0123875c ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+      1   REL 01238768 ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECGameComponent@@UAEPAXI@Z
+VT ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??1CFrontendGameComponent@@UAE@XZ
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ??_GCGameComponent@@UAEPAXI@Z
+  SYM UND ?v00@CGameComponentInterface@@UAEXXZ
+### 00496070 [rebuild/src/compiled/00/49/CFrontendGameComponent_CFrontendGameComponent_00496070.cpp] 00496070 CFrontendGameComponent::CFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 0051d8e0 ??0CGameComponent@@QAE@AAVCGame@@@Z
+      1   REL 0123875c ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+      1   REL 01238768 ??_7CFrontendGameComponent@@6BCBase@@@
+VT ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CFrontendGameComponent@@6BCBase@@@ slots 1
+  0 ??_ECFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z
+  SYM DEF ??1CGameComponent@@UAE@XZ
+  SYM DEF ??_7CFrontendGameComponent@@6BCBase@@@
+  SYM DEF ??_7CFrontendGameComponent@@6BCGameComponentInterface@@@
+  SYM DEF ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM DEF ?SetMode@CFrontendGameComponent@@QAEXJ@Z
+  SYM UND ??0CGameComponent@@QAE@AAVCGame@@@Z
+  SYM UND ??1CFrontendGameComponent@@UAE@XZ
+  SYM UND ??_GCFrontendGameComponent@@UAEPAXI@Z
+  SYM UND ?GetProfileNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  SYM UND ?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  SYM UND ?GetWorldNames@CFrontendGameComponent@@AAEXXZ
+  SYM UND ?InitGraphics@CFrontendGameComponent@@AAE_NXZ
+  SYM UND ?v00@CGameComponentInterface@@UAEXXZ
+### 00a0a110 [rebuild/src/compiled/00/a0/CMeshBankManager_CMeshBankManager_00a0a110.cpp] 00a0a110 CMeshBankManager::CMeshBankManager RELOCATION_MATCH flags= []
+      1   REL 0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
+      1   REL 0122de50 ??_7CMeshBankListener@@6B@
+  SYM DEF ??0CMeshBankListener@@QAE@XZ
+  SYM DEF ??_7CMeshBankListener@@6B@
+  SYM DEF ??_7CMeshBankManager@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CMeshBankManager@@6BCMeshBankListener@@@
+  SYM UND ??0CBaseClassNonCopyable@@IAE@XZ
+  SYM UND ??1CBaseClassNonCopyable@@MAE@XZ
+  SYM UND ?v00@CMeshBankListener@@UAEXXZ
+### 0040cec0 [rebuild/src/compiled/00/40/CUserProfileManager_CUserProfileManager_0040cec0.cpp] 0040cec0 CUserProfileManager::CUserProfileManager RELOCATION_MATCH flags= []
+      1   REL 0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
+      1   REL 0122de50 ??_7CDeviceResetCallback@@6B@
+  SYM DEF ??0CDeviceResetCallback@@QAE@XZ
+  SYM DEF ??_7CDeviceResetCallback@@6B@
+  SYM DEF ??_7CUserProfileManager@@6BCBaseClassNonCopyable@@@
+  SYM DEF ??_7CUserProfileManager@@6BCDeviceResetCallback@@@
+  SYM DEF ?Get@CMainGameComponent@@SIPAV1@XZ
+  SYM DEF ?Get@CNewFrontendGameComponent@@SIPAV1@XZ
+  SYM UND ??0CBaseClassNonCopyable@@IAE@XZ
+  SYM UND ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+  SYM UND ?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ
+  SYM UND ?OnPreDeviceReset@CUserProfileManager@@MAEXXZ
+  SYM UND ?PMainGameComponent@CMainGameComponent@@1PAV1@A
+  SYM UND ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A
+### 00b260b0 [rebuild/src/compiled/00/b2/CEngine_CEngine_00b260b0.cpp] 00b260b0 CEngine::CEngine RELOCATION_MATCH flags= []
+  SYM DEF ??0NativeDeviceResetCallback@@QAE@XZ
+  SYM DEF ??_7EngineNative@@6BNativeDeviceResetCallback@@@
+  SYM DEF ??_7NativeDeviceResetCallback@@6B@
+  SYM UND ??0CInitBaseClass@@QAE@XZ
+  SYM UND ?OnPostDeviceReset@EngineNative@@UAE_NXZ
+  SYM UND ?OnPreDeviceReset@EngineNative@@UAEXXZ
+  SYM UND ?Validate@CInitBaseClass@@UBEXXZ
+DONE

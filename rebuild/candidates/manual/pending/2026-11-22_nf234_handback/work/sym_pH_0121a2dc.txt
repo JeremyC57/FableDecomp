@@ -1,0 +1,3 @@
+DEF ?g_global_0121a2dc@@3UCGlobal_0121a2dc@@A
+UND ??1CGlobal_0121a2dc@@QAE@XZ
+UND _atexit

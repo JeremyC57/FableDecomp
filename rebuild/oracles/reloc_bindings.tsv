@@ -8692,7 +8692,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z	004082d0	004945b0
 ?SetDefaultValues@CUserProfileManager@@QAEXXZ	0040c790	004945b0
 ?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z	0040d400	004945b0
-?erase@?$vector@VCWideString@@@std@@QAEPAVCWideString@@PAV3@0@Z	00412450	00495780
 ?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ	004945b0	004962c0
 ?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ	004065d0	004962c0
 ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z	00408120	0049d4e0
@@ -37215,7 +37214,6 @@ _time	00bfed22	008405f0
 ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	0042ea8f	00496cf0
 ?Input@CFrontendGameComponent@@QAEXXZ	004963a0	00496cf0
 ?Output@CFrontendGameComponent@@QAEXXZ	00494900	00496cf0
-?Shutdown@CFrontendGameComponent@@QAEXXZ	00495780	00496cf0
 ?g_pLastFrontend@@3PAUCFrontendGameComponent@@A	013b7d58	00496cf0
 ?SaveGameState@CQuestManager@@QAEXAAVCCharString@@@Z	004b5ee0	004b64e0
 ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z	004b05c0	004b64e0
@@ -39454,3 +39452,4 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ	00433cc0	00433d3a
 ??1CNewFrontendGameComponent@@UAE@XZ	0042f50b	004330d2
 ??_C@_06CBNGNPJL@bitset?$AA@	0122e068	0093d270
+?Shutdown@CFrontendGameComponent@@AAEXXZ	00495780	00496cf0

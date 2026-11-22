@@ -1,0 +1,14 @@
+DEF ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+DEF ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ
+DEF ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ
+DEF ?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z
+DEF ?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z
+DEF ?Shutdown@CFrontendGameComponent@@AAEXXZ
+DEF ?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ
+DEF ?clear@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXXZ
+DEF ?end@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ
+UND ??2@YAPAXI@Z
+UND ??3@YAXPAX@Z
+UND ?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z
+UND ?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z
+UND ?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z

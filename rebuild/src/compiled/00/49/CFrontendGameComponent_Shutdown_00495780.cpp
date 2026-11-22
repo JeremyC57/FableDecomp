@@ -1,71 +1,41 @@
 // CFrontendGameComponent::Shutdown() -- release the frontend font and temporary graphics bank and empty the save and world name lists
-// Leaf: ?Shutdown@CFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ, private; modelled public)
+// Leaf: ?Shutdown@CFrontendGameComponent@@AAEXXZ
 // Retail: Fable.exe @ 0x00495780, 162 bytes, plain `ret`. Catalog label C3DMeshStripifier::~C3DMeshStripifier is wrong: the
 // three callers 0x00496D40 / 0x00496DB7 / 0x00496E78 are the exit paths of CFrontendGameComponent::Run (vtable 0x01238768
 // slot 2, 0x00496CF0) before it hands over to the next component, and the offsets are CFrontendGameComponent members.
-// Name from Ego_r.pdb ?Shutdown@CFrontendGameComponent@@AAEXXZ (the only private void() teardown in the class's symbol list).
-// Body: MainFont.Clear() then PTempGraphics.Clear() (inline CCountedPointer release: --RefCount, at zero DeleteFunc(Data)
-// and operator delete 0x00BFE9BC; Info = 0, Object = 0), then SaveNames.clear() and WorldNames.clear() (each the
-// out-of-line vector<CWideString>::erase(begin, end) 0x00412450).
-// Layout: Ego_r.pdb CFrontendGameComponent PTempGraphics +0x1dfc, MainFont +0x1e04, ProfileNames +0x1e0c; retail STLport
-// vectors are 12 bytes (Ego_r Dinkumware 16), so SaveNames is +0x1e1c and WorldNames +0x1e30 (both pushed as ecx).
+// Name: Ego_r.pdb 0x0049E380 + FableWin.pdb 0x01A41790 ?Shutdown@CFrontendGameComponent@@AAEXXZ (private).
+// Header port (NF233 / NF234, 2026-11-22, q12639 / q12650): engine/CFrontendGameComponent.h (the SHUTDOWN layout opt-in: PTempGraphics
+//   +0x1DFC, MainFont +0x1E04, ProfileNames / SaveNames / WorldNames STLport vectors, SaveToLoad), engine/CCountedPointer.h, stlport/
+//   fable_containers.h (clear() = erase(begin(), end()), the erase kept out of line by FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE as in
+//   0x0042EBB6) and fable_string.h. Was a row-local CWideString / CCPPointerInfo / CCountedPointer / allocator-less std::vector /
+//   CFrontendGameComponent model; the erase binder 0x00412450 now takes the STLport spelling (2 -> 1), the self leaf the PDB's private AAE
+//   (was QAE; binder 0x00496CF0 moves with it).
+// Body: MainFont.Reset(0) then PTempGraphics.Reset(0), expanded: the Data-first FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA release followed by
+//   Data = 0, which dead-store elimination turns into retail's Info-then-Data stores (0x004957B9 / 0x004957BF ...).
+// Fidelity: the CCountedPointer size-body opt-ins are scaffolding, not retail: this /O2 TU expands both Resets, and VC7.1 still emits
+//   Reset / ReleaseData <CGraphicDataBank> and <const CFontBank> as pick-any COMDATs; the opt-ins compile them under optimize("s", on),
+//   as their owner rows do (0x004194D1 / 0x0042FC13 / 0x00419108 / 0x0042F948), so each copy is its owner's body. DELETEDATA_DECL_ONLY
+//   keeps the T-incomplete DeleteData copies out (owners 0x00419036 / 0x0042F864 are the virtual delete).
 // Opt: /O2 (16-aligned entry).
-class CWideString { public: void* PStringData; };
-class CGraphicDataBank;
-class CFontBank;
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Object;
-    CCPPointerInfo* Info;
-    void Clear()
-    {
-        if (Info)
-        {
-            --Info->RefCount;
-            if (Info->RefCount == 0)
-            {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Info = 0;
-        Object = 0;
-    }
-};
-namespace std {
-template <class T> class vector {
-public:
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() { return _M_start; }
-    T* end() { return _M_finish; }
-    T* erase(T* first, T* last);                         // 0x00412450 for CWideString
-    void clear() { erase(begin(), end()); }
-};
-}
-class CFrontendGameComponent {
-public:
-    unsigned char                     _pad0000[0x1dfc];
-    CCountedPointer<CGraphicDataBank> PTempGraphics;     // +0x1dfc
-    CCountedPointer<const CFontBank>  MainFont;          // +0x1e04
-    std::vector<CWideString>          ProfileNames;      // +0x1e0c
-    long                              ProfileNamesOffset; // +0x1e18
-    std::vector<CWideString>          SaveNames;         // +0x1e1c
-    long                              SaveNamesOffset;   // +0x1e28
-    CWideString                       SaveToLoad;        // +0x1e2c
-    std::vector<CWideString>          WorldNames;        // +0x1e30
-    void Shutdown();
-};
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CFRONTENDGAMECOMPONENT_SHUTDOWN
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+#include "engine/CGameComponent.h"
+#include "engine/CFrontendGameComponent.h"
+
 void CFrontendGameComponent::Shutdown()
 {
-    MainFont.Clear();
-    PTempGraphics.Clear();
+    MainFont.Reset(0);
+    PTempGraphics.Reset(0);
     SaveNames.clear();
     WorldNames.clear();
 }

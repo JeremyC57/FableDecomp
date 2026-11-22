@@ -1,0 +1,12 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00495780	CFrontendGameComponent	Shutdown	?Shutdown@CFrontendGameComponent@@AAEXXZ	CFrontendGameComponent::Shutdown	?Shutdown@CFrontendGameComponent@@QAEXXZ	Ego_r.pdb 0x0049E380 + FableWin.pdb 0x01A41790 + Ego_d.pdb (private); access-only leaf change, catalog name unchanged
+0x01228AF1	CStartupDefinitionManager	`dynamic atexit destructor for 'PClass''	_$E2	_global::Static__Dest_val_std__allocator_CCountedPointer_on_013b8760_01228af1	?GlobalMethodTailThunk_01228af1@@YIXXZ	FableWin.pdb 0x0101B611 + Ego_r.pdb + Ego_d.pdb `dynamic atexit destructor for 'CStartupDefinitionManager::PClass''; retail mov ecx,0x013B8760 ; jmp 0x00433CC0; the pair TU's _$E2 RELOCATION_MATCH (the 0x0122A5E0 pattern)
+0x0121A2DC	CStartupDefinitionManager	`dynamic initializer for 'PClass''	_$E1	_global::g_global_0121a2dc	(none: data stand-in ?g_global_0121a2dc@@3UCGlobal_0121a2dc@@A)	FableWin.pdb 0x0100C6EC + Ego_r.pdb + Ego_d.pdb `dynamic initializer for 'CStartupDefinitionManager::PClass''; retail push 0x01228AF1 ; call _atexit; the pair TU's _$E1 RELOCATION_MATCH (the 0x01223EC0 pattern)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00496CF0	?Shutdown@CFrontendGameComponent@@QAEXXZ	?Shutdown@CFrontendGameComponent@@AAEXXZ	0x00495780
+0x00495780	?erase@?$vector@VCWideString@@@std@@QAEPAVCWideString@@PAV3@0@Z	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	0x00412450
+0x00418B7A	?SetQuit@CGameComponent@@UAEXXZ (vtable ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slot 4)	?SetQuit@CGameComponent@@MAEXXZ	0x00415930
+0x01228AF1	?g_AutoTinyThunkObject_013b8760@@3UAutoTinyThunkTarget@@A	?PClass@CStartupDefinitionManager@@1V?$CCountedPointer@VCStartupDefinitionManager@@@@A	0x013B8760
+0x01228AF1	?Invoke_00433cc0@AutoTinyThunkTarget@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ	0x00433CC0
+0x0121A2DC	(local ??1CGlobal_0121a2dc@@QAE@XZ through its own $E2)	_$E2 (file-local, the pair TU)	0x01228AF1

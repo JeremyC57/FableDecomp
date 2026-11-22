@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0122DE50	??_7CDeviceResetCallback@@6B@	FableWin / Ego_r / Ego_d publics; RTTI COL 0x0132CAD8; NF234 census: 0x00B260B0 (CEngine ctor, local EngineNative / NativeDeviceResetCallback models) also emits a stand-in	??_7NativeDeviceResetCallback@@6B@ (0x00B260B0; table line witness 0x00B260B0), ??_7CMeshBankListener@@6B@ (0x00A0A110)
+0x009C0190	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	bound so by 0x0040CEC0; the CMainGameComponent ctor passes its +4 CDeviceResetCallback subobject (RTTI mdisp 4)	?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z (0x00418DCA local CComponentListEntry stand-in; moves with its header port)
+0x0129C980	??_7CMeshBankManager@@6BCDeviceResetCallback@@@	all three PDB publics; RTTI COL 0x01356A64 (offset 4, CDeviceResetCallback mdisp 4)	??_7CMeshBankManager@@6BCMeshBankListener@@@ (0x00A0A110, 0x00A0A150; table line witness 0x00A0A110)

@@ -48,7 +48,8 @@ class CGameComponent : public CBaseClassNonCopyable,public CDeviceResetCallback 
  virtual void Init();
  virtual bool Run(CGameComponent**)=0;
  virtual void ChangeTextureColourDepth(long)=0;
- virtual void SetQuit();
+protected:
+ virtual void SetQuit(); // 0x00415930 ?SetQuit@CGameComponent@@MAEXXZ (protected virtual: Ego_r / FableWin / Ego_d; NF234 in-place, q12642)
 };
 // Deleted-pointee interface views: only destructor prefix is used; fixtures supply pre-existing interface doubles, not native game constructors.
 class CWorld { public: virtual ~CWorld(); };

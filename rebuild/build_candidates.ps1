@@ -14891,9 +14891,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01228af1'
-        Module = '_global'
-        Source = '01/22/global_GlobalMethodTailThunk01228af1_01228af1.cpp'
-        TestSource = '01/22/global_GlobalMethodTailThunk01228af1_01228af1_test.cpp'
+        Module = 'CStartupDefinitionManager'
+        Source = '01/22/CStartupDefinitionManager_dynamicatexitdestructorforPClass_01228af1.cpp'
+        TestSource = '01/22/CStartupDefinitionManager_dynamicatexitdestructorforPClass_01228af1_test.cpp'
         PassPattern = 'AUTO_TINY_01228af1_TEST PASS'
     }
     [pscustomobject]@{
@@ -184533,9 +184533,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0121a2dc'
-        Module = '_global'
-        Source = '01/21/global_gglobal0121a2dc_0121a2dc.cpp'
-        TestSource = '01/21/global_gglobal0121a2dc_0121a2dc_test.cpp'
+        Module = 'CStartupDefinitionManager'
+        Source = '01/21/CStartupDefinitionManager_dynamicinitializerforPClass_0121a2dc.cpp'
+        TestSource = '01/21/CStartupDefinitionManager_dynamicinitializerforPClass_0121a2dc_test.cpp'
         PassPattern = '0121a2dc_TEST PASS'
     }
     [pscustomobject]@{

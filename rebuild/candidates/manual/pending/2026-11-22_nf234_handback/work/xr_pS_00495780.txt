@@ -1,0 +1,2 @@
+00412450	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	x2
+00bfe9bc	??3@YAXPAX@Z	x2

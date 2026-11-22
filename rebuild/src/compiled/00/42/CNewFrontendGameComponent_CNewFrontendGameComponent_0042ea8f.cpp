@@ -18,6 +18,9 @@
 //   StartPosition). FABLE_RETAIL_CGAMECOMPONENT_DTOR_INLINE is not defined here: the ctor needs no ~CGameComponent, and with it the object
 //   would emit CGameComponent's vtable and a size-mode ??_GCGameComponent (41 B) that differs from its owner 0x00415940 (43 B, speed).
 // Pragma scaffolding: `#pragma optimize("", on)` after the body restores the TU default before the pick-any copies (as 0x0042F50B).
+// Naming (NF234, 2026-11-22, q12646 / q12649): m_LastInterp's class is CEngineInterpolationInfo::CEngineInterpolationInfoSet (nested in all
+//   three PDBs), so the inline set ctor's pick-any copy is the PDB ??0CEngineInterpolationInfoSet@CEngineInterpolationInfo@@QAE@XZ (was
+//   ??0CEngineInterpolationInfoSet@@QAE@XZ): engine/CEngineInterpolationInfo.h FABLE_RETAIL_CENGINEINTERPOLATIONINFO_NESTED_SET.
 #include "fable_compiler.h"
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -25,6 +28,7 @@
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #define FABLE_RETAIL_CSTOPWATCH_CTOR
 #define FABLE_RETAIL_CENGINEINTERPOLATIONINFOSET_CTOR
+#define FABLE_RETAIL_CENGINEINTERPOLATIONINFO_NESTED_SET
 #define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN
 #define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
 #define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_CTOR_DTOR

@@ -388,7 +388,7 @@ public:
 };
 
 #endif
-#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY)
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY)
 // NF225 opt-ins (2026-11-22, q12562; rows 0x00494840 CFrontendGameComponent::InitGraphics, 0x0054ED90 NUISystem::CText::GetDataFromDef).
 // Fidelity: scaffolding, not retail. Those /O2 TUs expand every CCountedPointer<CFontBank> / <const CFontBank> member at the call
 // site (as retail does), and VC7.1 still emits each expanded inline as a pick-any COMDAT. Retail kept the out-of-line copies from the
@@ -403,6 +403,23 @@ public:
 // this header). Not with FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22 (that class has no member-template operator=).
 class CFontBank;
 #pragma optimize("s", on)
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RELEASEDATA_SIZE_BODY
+class CGraphicDataBank;
+// NF234 opt-in (2026-11-22, q12650; row 0x00495780 CFrontendGameComponent::Shutdown), the same scaffolding as the CONSTCFONTBANK one below:
+// ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ = 0x00419108 (owner row: optimize("s", on) + FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA).
+template<> inline void CCountedPointer<CGraphicDataBank>::ReleaseData()
+{
+    if (Info) {
+        --Info->RefCount;
+        if (Info->RefCount == 0) {
+            Info->DeleteFunc(Info->Data);
+            delete Info;
+        }
+    }
+    Data = 0;
+    Info = 0;
+}
+#endif
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY
 // ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ = 0x0042F948 (44 bytes, owner row: optimize("s", on)).
 template<> inline void CCountedPointer<const CFontBank>::ReleaseData()
@@ -458,6 +475,29 @@ template<> template<> inline CCountedPointer<const CFontBank>& CCountedPointer<c
 {
     ShareData(other.Data, other.Info);
     return *this;
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CGRAPHICDATABANK_RESET_SIZE_BODY
+// NF234 opt-in (2026-11-22, q12650; row 0x00495780): ?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z = 0x004194D1
+// (57 bytes, calls ReleaseData 0x00419108, stores DeleteData 0x00419036; owner row: optimize("s", on)). The default Reset body.
+class CGraphicDataBank;
+template<> inline void CCountedPointer<CGraphicDataBank>::Reset(CGraphicDataBank* data)
+{
+    ReleaseData();
+    Data = data;
+    if (data)
+        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RESET_SIZE_BODY
+// NF234 opt-in (2026-11-22, q12650; row 0x00495780): ?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z = 0x0042FC13
+// (calls ReleaseData 0x0042F948, stores DeleteData 0x0042F864; owner row: optimize("s", on)). The default Reset body.
+template<> inline void CCountedPointer<const CFontBank>::Reset(const CFontBank* data)
+{
+    ReleaseData();
+    Data = data;
+    if (data)
+        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
 }
 #endif
 #pragma optimize("", on)

@@ -1,0 +1,43 @@
+### 0042ea8f [rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp] 0042ea8f CNewFrontendGameComponent::CNewFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 004131a0 ??0CMainGameComponentInit@@QAE@XZ
+      1   REL 0051d8e0 ??0CGameComponent@@QAE@AAVCGame@@@Z
+      1   REL 0122d70c ??_C@_11LOCGONAA@?$AA?$AA@
+      1   REL 01230c94 ??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 01230ca0 ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ
+  1 ?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ
+VT ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECNewFrontendGameComponent@@UAEPAXI@Z
+  1 ?Init@CNewFrontendGameComponent@@UAEXXZ
+  2 ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  3 ?ChangeTextureColourDepth@CNewFrontendGameComponent@@UAEXJ@Z
+  4 ?SetQuit@CNewFrontendGameComponent@@UAEXXZ
+  SYM DEF ??0CEngineInterpolationInfoSet@@QAE@XZ
+### 0042f50b [rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042f50b.cpp] 0042f50b CNewFrontendGameComponent::~CNewFrontendGameComponent RELOCATION_MATCH flags= []
+      1   REL 00412130 ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ
+      1   REL 004131d0 ??1CMainGameComponentInit@@QAE@XZ
+      1   REL 0099a300 ??1CBaseClassNonCopyable@@MAE@XZ
+      1   REL 0122eca4 ??_7CGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 0122ecb0 ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+      1   REL 01230c94 ??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@
+      1   REL 01230ca0 ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@
+VT ??_7CGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 __purecall
+  1 __purecall
+VT ??_7CGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECGameComponent@@UAEPAXI@Z
+  1 ?Init@CGameComponent@@UAEXXZ
+  2 __purecall
+  3 __purecall
+  4 ?SetQuit@CGameComponent@@MAEXXZ
+VT ??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@ slots 2
+  0 ?OnPreDeviceReset@CNewFrontendGameComponent@@UAEXXZ
+  1 ?OnPostDeviceReset@CNewFrontendGameComponent@@UAE_NXZ
+VT ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 5
+  0 ??_ECNewFrontendGameComponent@@UAEPAXI@Z
+  1 ?Init@CNewFrontendGameComponent@@UAEXXZ
+  2 ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  3 ?ChangeTextureColourDepth@CNewFrontendGameComponent@@UAEXJ@Z
+  4 ?SetQuit@CNewFrontendGameComponent@@UAEXXZ
+DONE

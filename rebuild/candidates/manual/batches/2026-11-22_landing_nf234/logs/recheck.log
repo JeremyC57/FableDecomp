@@ -1,0 +1,29 @@
+00418b7a   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00418b7a   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+0042ea8f   RELOCATION_MATCH PASS   CNewFrontendGameComponent
+00495780   RELOCATION_MATCH PASS   Shutdown
+00496cf0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager (engine/CGameJoystickManager.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00496cf0   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+00496cf0   RELOCATION_MATCH PASS   Run
+0121a2dc   WARN RELOC_CONFLICT: _$E2 -> 01228af1 here, 01228930 in landed 01219f00
+0121a2dc   WARN RELOC_NAME: _$E2 -> 01228af1 labelled 'CStartupDefinitionManager::`dynamic atexit destructor for 'PClass'''
+0121a2dc   RELOCATION_MATCH PASS   `dynamic initializer for 'PClass''
+01228af1   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'PClass''

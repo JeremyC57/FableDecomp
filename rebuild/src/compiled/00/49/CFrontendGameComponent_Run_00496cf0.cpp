@@ -8,6 +8,8 @@
 //   fastcall) / SetMainPlayerJoystickDeviceNumber 0x0049BB30; the new component's virtual slot 1. Global 0x013B7D58.
 // Layout: PDB CFrontendGameComponent with retail offsets (Game +0xc, Quit +8, Running +9, CreateGame +0x10, joystick +0x14,
 //   CreateReleaseFrontEnd +0x19, SaveToLoad +0x1e2c, WorldToLoad +0x1e40; the network arrays are smaller in retail).
+// Naming (NF234, 2026-11-22, q12650): Shutdown 0x00495780 is private in Ego_r.pdb 0x0049E380 + FableWin.pdb 0x01A41790
+//   (?Shutdown@CFrontendGameComponent@@AAEXXZ); respelled in place in the local model with its self row.
 class CWideString { public:
     void* PStringData;
     CWideString();                                       // 0x0099AED0
@@ -68,7 +70,9 @@ struct CFrontendGameComponent {
     CWideString   WorldToLoad;                           // +0x1e40
     void Input();                                        // 0x004963A0
     void Output();                                       // 0x00494900
-    void Shutdown();                                     // 0x00495780
+private:
+    void Shutdown();                                     // 0x00495780 (private: Ego_r.pdb + FableWin.pdb ?Shutdown@CFrontendGameComponent@@AAEXXZ)
+public:
     bool Run(CGameComponent*& nextComponent);
 };
 

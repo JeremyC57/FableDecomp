@@ -1,0 +1,16 @@
+00418dca	??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z	x1
+0042ea8f	??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z	x1
+00494900	?Output@CFrontendGameComponent@@QAEXXZ	x1
+00495780	?Shutdown@CFrontendGameComponent@@QAEXXZ	x3
+004963a0	?Input@CFrontendGameComponent@@QAEXXZ	x1
+0049bb30	?SetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QAEXJ@Z	x1
+0049bb90	?Get@CGameJoystickManager@@SIAAV1@XZ	x1
+0099aed0	??0CWideString@@QAE@XZ	x3
+0099b510	??1CWideString@@QAE@XZ	x3
+0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	x2
+0099e4b0	??0CCharString@@QAE@XZ	x1
+0099eae0	??1CCharString@@QAE@XZ	x1
+009a4ec0	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	x1
+009a6460	?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ	x1
+00bfea1a	??2@YAPAXI@Z	x2
+013b7d58	?g_pLastFrontend@@3PAUCFrontendGameComponent@@A	x4
