@@ -57,6 +57,10 @@ class CDisplayManager { public:
     bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat& out);                   // 0x009BE590
 };
 class CGraphicDataBank;
+// NF221 (family q12226 / q12402): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: retail calls each T's out-of-line ReleaseData
+//   (FableWin.pdb ?ReleaseData@?$CCountedPointer@<T>@@QAEXXZ; ~CCountedPointer() { ReleaseData(); } is the 5-byte jmp thunk), so the
+//   release sites bind ReleaseData<T> (was ??1<T> at the ReleaseData addresses).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 struct CGraphicDataBankManager {
     CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0

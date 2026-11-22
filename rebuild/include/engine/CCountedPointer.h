@@ -196,11 +196,19 @@ public:
         return *this;
     }
 #endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONVERTING_ASSIGN_DECL_ONLY
+    // NF222 per-TU opt-in (2026-11-22, row 0x0042DDB3 CNewFrontendGameComponent::InitialiseGraphics): that TU calls the converting
+    // assignment COMDAT out of line (0x0042FE34 ??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z,
+    // FableWin.pdb), and its frame-pointer TU (optimize("y", off)) would emit a pick-any copy of the body below with `push ebp` that
+    // the retail owner lacks. Declaration only; the retail body is the default one below.
+    template <class U> CCountedPointer& operator=(const CCountedPointer<U>& other);
+#else
     template <class U> CCountedPointer& operator=(const CCountedPointer<U>& other)
     {
         ShareData(other.Data, other.Info);
         return *this;
     }
+#endif
     T* operator->() const { return Data; }
     T& operator*() const { return *Data; }
     T* Get() const { return Data; }
@@ -367,7 +375,16 @@ public:
         ShareData(static_cast<T*>(other.Data), other.Info);              // landed 0x00A32620 (C3DMeshFile::GetRoot) expands it
     }
     void reset(T* data) { Reset(data); }                                 // unproven body (FableWin name only)
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+    // NF222 per-TU opt-in (2026-11-22, the CCountedPointer<T>::ReleaseData family Reset rows 0x00419428 / 0x0041947A / 0x004194D1 /
+    // 0x0042FC13 / 0x0042FC86): those TUs only store the deleter's address (retail 0x0041901D / 0x00419028 / 0x00419036 / 0x0042F864 /
+    // 0x00428AE7, each the virtual delete `test ecx,ecx; je; mov eax,[ecx]; push 1; call [eax]; ret`) while T is only declared, so the
+    // inline body below would emit a pick-any copy that is a plain operator delete. Declaration only (as the rows declared it at HEAD);
+    // the retail body is the default one with T complete.
+    static void FABLE_FASTCALL DeleteData(void* data);
+#else
     static void FABLE_FASTCALL DeleteData(void* data) { delete static_cast<T*>(data); }                    // per-T deleter, address stored in the count block
+#endif
 };
 
 #endif

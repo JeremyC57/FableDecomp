@@ -1,0 +1,64 @@
+action	line	symbol	target	witness	note
+delete	83	?ReleaseCur@CCPtr@@QAEXXZ	004057a0	004190e2	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	87	?ShareData@CCPtr@@QAEXPAXPAJ@Z	004190e2	00419463	no landed row binds this spelling at 004190e2 after the family lands (work/census_final.txt)
+delete	127	??1CCountedPointer_CGraphicDataBank@@QAE@XZ	00419108	0042a9b7	no landed row binds this spelling at 00419108 after the family lands (work/census_final.txt)
+delete	5070	??0CStaticFontBank@@QAE@JJ@Z	00ab8e10	00a634f0	no landed row binds this spelling at 00ab8e10 after the family lands (work/census_final.txt)
+delete	5071	?Reset@CCountedPointer_00a634f0@@QAEXPAUCStaticFontBank@@@Z	0041947a	00a634f0	no landed row binds this spelling at 0041947a after the family lands (work/census_final.txt)
+delete	8651	?DeleteData@?$CCountedPointer@VCPolymorphicData_00419428@@@@SIXPAX@Z	0041901d	00419428	no landed row binds this spelling at 0041901d after the family lands (work/census_final.txt)
+delete	8652	?Release@?$CCountedPointer@VCPolymorphicData_00419428@@@@QAEXXZ	004190b6	00419428	no landed row binds this spelling at 004190b6 after the family lands (work/census_final.txt)
+delete	8653	?DeleteData@?$CCountedPointer@VCPolymorphicData_0041947A@@@@SIXPAX@Z	00419028	0041947a	no landed row binds this spelling at 00419028 after the family lands (work/census_final.txt)
+delete	8654	?Release@?$CCountedPointer@VCPolymorphicData_0041947A@@@@QAEXXZ	004057a0	0041947a	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	8655	?DeleteData@?$CCountedPointer@VCPolymorphicData_004194D1@@@@SIXPAX@Z	00419036	004194d1	no landed row binds this spelling at 00419036 after the family lands (work/census_final.txt)
+delete	8656	?Release@?$CCountedPointer@VCPolymorphicData_004194D1@@@@QAEXXZ	00419108	004194d1	no landed row binds this spelling at 00419108 after the family lands (work/census_final.txt)
+delete	8661	?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAUCCPPointerInfo@@@Z	004291b8	0041d198	no landed row binds this spelling at 004291b8 after the family lands (work/census_final.txt)
+delete	8681	?DeleteData@?$CCountedPointer@VCPolymorphicData_0042FC13@@@@SIXPAX@Z	0042f864	0042fc13	no landed row binds this spelling at 0042f864 after the family lands (work/census_final.txt)
+delete	8682	?Release@?$CCountedPointer@VCPolymorphicData_0042FC13@@@@QAEXXZ	0042f948	0042fc13	no landed row binds this spelling at 0042f948 after the family lands (work/census_final.txt)
+delete	9050	??1CFontPointer@@QAE@XZ	004057a0	0064560d	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	14685	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	00403750	00418b7a	no landed row binds this spelling at 00403750 after the family lands (work/census_final.txt)
+delete	14686	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	004057a0	00418b7a	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	14687	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	004190b6	00418b7a	no landed row binds this spelling at 004190b6 after the family lands (work/census_final.txt)
+delete	14695	?ShareData@CCountedPointer_CGraphicDataBank@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	00419134	0042a9b7	no landed row binds this spelling at 00419134 after the family lands (work/census_final.txt)
+delete	16703	?AcquireFont@CFontDataBankEntry@@QAE?AV?$CCountedPointer@VCFontBank@@@@XZ	00a634f0	009e2ba0	no landed row binds this spelling at 00a634f0 after the family lands (work/census_final.txt)
+delete	16705	?AcquireFont@CStreamingFontDataBankEntry@@QAE?AV?$CCountedPointer@VCFontBank@@@@XZ	00a5f1c0	009e2c10	no landed row binds this spelling at 00a5f1c0 after the family lands (work/census_final.txt)
+delete	26108	??1SMember10@@QAE@XZ	00419108	0041e641	no landed row binds this spelling at 00419108 after the family lands (work/census_final.txt)
+delete	26109	??1SMember18@@QAE@XZ	0042918c	0041e641	no landed row binds this spelling at 0042918c after the family lands (work/census_final.txt)
+delete	26595	??1?$CCountedPointer@UCFont@@@@QAE@XZ	004057a0	004168dc	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	26596	??4?$CCountedPointer@UCFont@@@@QAEAAV0@ABV0@@Z	00419463	004168dc	no landed row binds this spelling at 00419463 after the family lands (work/census_final.txt)
+delete	32706	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	00419108	00416c8a	no landed row binds this spelling at 00419108 after the family lands (work/census_final.txt)
+delete	32730	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	0042f948	0042dd28	no landed row binds this spelling at 0042f948 after the family lands (work/census_final.txt)
+delete	32731	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	0042f974	0042dd28	no landed row binds this spelling at 0042f974 after the family lands (work/census_final.txt)
+delete	32732	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	0042918c	0042dd28	no landed row binds this spelling at 0042918c after the family lands (work/census_final.txt)
+delete	32735	??1?$CCountedPointer_0042fe34@UCFont@@@@QAE@XZ	004057a0	0042ddb3	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	32736	??1?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@QAE@XZ	00419108	0042ddb3	no landed row binds this spelling at 00419108 after the family lands (work/census_final.txt)
+delete	32737	??4?$CCountedPointer_0042fe34@UCFont@@@@QAEAAV0@ABV0@@Z	0042fe34	0042ddb3	no landed row binds this spelling at 0042fe34 after the family lands (work/census_final.txt)
+delete	32738	??4?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	004194ba	0042ddb3	no landed row binds this spelling at 004194ba after the family lands (work/census_final.txt)
+delete	33961	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	0042f9a0	0042f50b	no landed row binds this spelling at 0042f9a0 after the family lands (work/census_final.txt)
+delete	34037	?Reset@CCountedPointer_00a5f1c0@@QAEXPAVCStreamingFontBank@@@Z	0041947a	00a5f1c0	no landed row binds this spelling at 0041947a after the family lands (work/census_final.txt)
+delete	38412	?Release@CCountedPointer4057a0@@QAEXXZ	004057a0	004175e5	no landed row binds this spelling at 004057a0 after the family lands (work/census_final.txt)
+delete	38413	?Release@CCountedPointer4190b6@@QAEXXZ	004190b6	004175e5	no landed row binds this spelling at 004190b6 after the family lands (work/census_final.txt)
+delete	38414	?Release@CCountedPointer419108@@QAEXXZ	00419108	004175e5	no landed row binds this spelling at 00419108 after the family lands (work/census_final.txt)
+delete	9051	?GetFont@CFontBankManager@@QAE?AUCFontPointer@@ABVCCharString@@@Z	009e2c80	0064560d	witness respelled onto the callee self leaf; no other landed binder (work/gf_out.tsv)
+delete	26597	?GetFont@CFontBank@@QAE?AV?$CCountedPointer@UCFont@@@@ABVCCharString@@@Z	009e2c80	004168dc	witness respelled onto the callee self leaf; no other landed binder (work/gf_out.tsv)
+delete	32739	?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	009f83d0	0042ddb3	witness respelled onto the callee self leaf; no other landed binder (work/gf_out.tsv)
+delete	32741	?GetFont@CFontBank@@QAE?AV?$CCountedPointer_0042fe34@UCFont@@@@ABVCCharString@@@Z	009e2c80	0042ddb3	witness respelled onto the callee self leaf; no other landed binder (work/gf_out.tsv)
+add	-	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	00403750	004175e5	new spelling bound after the family lands
+add	-	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	004057a0	004168dc	new spelling bound after the family lands
+add	-	?DeleteData@?$CCountedPointer@VCLUA@@@@SIXPAX@Z	0041901d	00419428	new spelling bound after the family lands
+add	-	?DeleteData@?$CCountedPointer@VCFontBank@@@@SIXPAX@Z	00419028	0041947a	new spelling bound after the family lands
+add	-	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	004190b6	004175e5	new spelling bound after the family lands
+add	-	?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z	004190e2	00419463	new spelling bound after the family lands
+add	-	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	00419108	00416c8a	new spelling bound after the family lands
+add	-	?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	00419134	004194ba	new spelling bound after the family lands
+add	-	?Reset@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@@Z	0041947a	00a5f1c0	new spelling bound after the family lands
+add	-	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	004194b5	0041afa0	binding unchanged since HEAD, the table had no line; REQUIRED with the delete of line 32706 (??1<CGraphicDataBank> -> 00419108, witness 00416c8a): recheck_final.log RELOC_CONFLICT for 0x0041AFA0 (also at HEAD)
+add	-	?Dtor@CManager@@QAEXXZ	0041e641	0042db20	binding unchanged since HEAD, the table had no line
+add	-	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0042918c	0041d198	new spelling bound after the family lands
+add	-	?ShareData@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@PAVCCPPointerInfo@@@Z	004291b8	0041d198	new spelling bound after the family lands
+add	-	?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z	0042f864	0042fc13	new spelling bound after the family lands
+add	-	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	0042f948	0042dd28	new spelling bound after the family lands
+add	-	?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	0042f9f2	0042fe34	new spelling bound after the family lands
+add	-	??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	0042fe34	0042ddb3	new spelling bound after the family lands
+add	-	?AcquireFont@CStreamingFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ	00a5f1c0	009e2c10	new spelling bound after the family lands
+add	-	?AcquireFont@CFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ	00a634f0	009e2ba0	new spelling bound after the family lands
+add	-	??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z	00ab8e10	00a634f0	new spelling bound after the family lands
+add	-	?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	009f83d0	0042ddb3	the callee self leaf, bound by 0x0042DDB3 (NF221 port)

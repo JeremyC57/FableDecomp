@@ -36,6 +36,10 @@ public:
 class CGraphicDataBank : public CBankFileAsync { public:
 };
 
+// NF221 (family q12226 / q12402): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: retail calls each T's out-of-line ReleaseData
+//   (FableWin.pdb ?ReleaseData@?$CCountedPointer@<T>@@QAEXXZ; ~CCountedPointer() { ReleaseData(); } is the 5-byte jmp thunk), so the
+//   release sites bind ReleaseData<T> (was ??1<T> at the ReleaseData addresses).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 
 namespace NUISystem {

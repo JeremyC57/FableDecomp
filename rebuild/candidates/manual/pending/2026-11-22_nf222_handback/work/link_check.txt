@@ -1,0 +1,6 @@
+== 69 row objects
+duplicates 1
+00a09f20.obj : warning LNK4006: "protected: static long __fastcall CBasicString<char>::Compare(char const *,char const *)" (?Compare@?$CBasicString@D@@KIJPBD0@Z) already defined in 009f83d0.obj; second definition ignored
+== control: 0x00A634F0 object linked twice (copy)
+duplicates 1
+dupctl.obj : warning LNK4006: "public: class CCountedPointer<class CFontBank> __thiscall CFontDataBankEntry::AcquireFont(void)const " (?AcquireFont@CFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ) already defined in 00a634f0.obj; second definition

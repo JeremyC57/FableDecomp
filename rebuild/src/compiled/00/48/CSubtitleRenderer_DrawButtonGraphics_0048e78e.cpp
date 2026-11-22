@@ -45,6 +45,10 @@
 #define FABLE_RETAIL_CIENGINE_CONVERTWORLDPOS
 #define FABLE_RETAIL_CFONTBANK
 #define FABLE_RETAIL_CFONTBANK_VSTRINGWIDTH
+// NF221 (family q12226 / q12402): the font pointer is the shared CCountedPointer<CFontBank> (engine/CCountedPointer.h,
+//   RELEASEDATA_DECL_ONLY): its release 0x004057A0 is the out-of-line ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ (FableWin.pdb; no
+//   jmp thunk), called by the temporary's inline destructor (was ??1<CFontBank> bound there).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_FADE
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISOPEN_OUTOFLINE

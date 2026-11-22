@@ -1,0 +1,7 @@
+entry	address	status	binders respelled	note
+q12226	0x004190B6	done (family hands back whole, q12402)	0x004175E5 0x00418B7A 0x00419428	self ReleaseData<CLUA> (NF221 row, rechecked NF222); 0x004190B6 ends on one spelling (work/census_final.txt)
+q12227	0x00419108	done (family, q12402)	0x00416C8A 0x004175E5 0x00418B7A 0x00419134 0x004194B5 0x004194D1 0x0041E641 0x0042A9B7 0x0042DD28 0x0042DDB3 0x0042F50B 0x0056F177 0x005958F5 0x005BFF07	self ReleaseData<CGraphicDataBank>; 0x005BFF07 now ported onto engine/CCountedPointer.h (ruling 1); one spelling
+q12228	0x0042F974	done (family, q12402)	0x0042DD28 0x0042F50B	self ReleaseData<CIEngine> (0x0042FD04 already right); one spelling
+q12229	0x0042F9A0	done (family, q12402)	0x0042F50B	self ReleaseData<CASoundBank> (0x0042FD6F already right); one spelling
+q12402	0x004190B6	done (whole family: 42 rows, NF221's 38 + 0x00A5F1C0 0x00A634F0 0x009E2C10 0x009E2BA0)	STATUS.tsv	every family address on one spelling incl. 0x0041947A (Reading A: the two AcquireFont rows bind Reset<CFontBank>); 0x005BFF07 per ruling 1; header overlay hdr/engine/CCountedPointer.h (2 add-only DECL_ONLY opt-ins, 6 rows); no new NEQ pick-any copy (work/pk_summary.tsv)
+q12403	0x004291DE	done-already (landed nf221 2026-11-22)	-	0x0042D45D 0x0058F016 0x005C8459 0x005C9A95 landed with the table move; not in this hand-back

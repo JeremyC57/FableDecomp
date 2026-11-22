@@ -37,15 +37,14 @@ class CPlayerGuiDef { public:
     const CCharString& GetStatBarsFontName() const { return *(const CCharString*)StatBarsFontName; }
 };
 
-struct CFontPointer {                                         // CCountedPointer<CFontBank>
-    CFontBank* m_pObject;
-    void*      m_pInfo;
-    ~CFontPointer();                                          // 0x004057A0
-};
-struct CFontBankManager {
-    CFontPointer GetFont(const CCharString& name);            // 0x009E2C80
-};
-class CFontManager;
+// NF221 (family q12226 / q12402): the font pointer is the shared CCountedPointer<CFontBank> (engine/CCountedPointer.h,
+//   RELEASEDATA_DECL_ONLY): its release 0x004057A0 is the out-of-line ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ (FableWin.pdb; no
+//   jmp thunk), called by the temporary's inline destructor; GetFont is CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb / Ego_r.pdb
+//   ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80). Were the local
+//   CFontPointer / CFontBankManager stand-ins (??1CFontPointer@@QAE@XZ, ?GetFont@CFontBankManager@@QAE?AUCFontPointer@@ABVCCharString@@@Z).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+#include "engine/CFontManager.h"
 extern CFontManager* PFontManager;                  // 0x013B838C
 
 // (the local std::allocator model dropped: stlport/fable_containers.h provides it)
@@ -132,7 +131,7 @@ CStatBar::CStatBar(const CPlayerGuiDef& def)
       BorderGraphicIndex(0),
       EffectIndex(0),
       OldEffectIndex(0),
-      FontBank(((CFontBankManager*)PFontManager)->GetFont(def.GetStatBarsFontName()).m_pObject),
+      FontBank(PFontManager->GetFont(def.GetStatBarsFontName()).Data),
       ChangeTexts()
 {
     PrimitiveHandles.resize(5);

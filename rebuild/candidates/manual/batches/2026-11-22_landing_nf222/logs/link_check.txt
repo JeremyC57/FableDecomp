@@ -1,0 +1,7 @@
+# link of the 69 rechecked objects (/FORCE); LNK4006 per symbol: HEAD 6, landing 1
+HEAD
+      2 ?AssignFrom@CCPtr@@QAEAAU1@ABU1@@Z
+      1 ?Compare@?$CBasicString@D@@KIJPBD0@Z
+      3 ?ShareData@CCPtr@@QAEXPAXPAJ@Z
+landing
+      1 ?Compare@?$CBasicString@D@@KIJPBD0@Z

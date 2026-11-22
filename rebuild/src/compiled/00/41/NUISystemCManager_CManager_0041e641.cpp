@@ -13,13 +13,14 @@
 //   the size-TU zero register ebx (`push ecx ; push ecx ; mov eax,esp ; mov [eax],ebx`); GetInstance is evaluated after the argument.
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
+// NF221 (family q12226 / q12402): PGraphicsBank / PMeshBank are the shared CCountedPointer<CGraphicDataBank> / <CMeshDataBank>
+//   (Ego_r.pdb CManager members); their inline destructors call the out-of-line ReleaseData<T> 0x00419108 / 0x0042918C (FableWin.pdb
+//   names, their own rows). Were the local SMember10 / SMember18 wrappers binding ??1SMember10@@QAE@XZ / ??1SMember18@@QAE@XZ.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #pragma optimize("s", on)
 class CGraphicDataBank;
 class CMeshDataBank;
 #include "engine/CCountedPointer.h"
-struct SMember10 { void* a; void* b; ~SMember10(); };            // 0x00419108
-struct SMember18 { void* a; void* b; ~SMember18(); };            // 0x0042918C
 struct SMember24 { unsigned char _d[0x38]; ~SMember24(); };       // 0x0042B796
 namespace NUISystem { class CComponent; }
 namespace std {                                                   // STLport 4.6 list<long> base: only the out-of-line destructor is called
@@ -38,8 +39,8 @@ class CManager : public CManagerBase { public:
     static CManager* __fastcall GetInstance();                                 // 0x0041E5F2
     void SetMeshBank(CCountedPointer<CMeshDataBank> bank);                    // 0x0041D198
     void SetGraphicsBank(CCountedPointer<CGraphicDataBank> bank);             // 0x0042A9B7
-    SMember10     PGraphicsBank;                   // +0x10
-    SMember18     PMeshBank;                       // +0x18
+    CCountedPointer<CGraphicDataBank> PGraphicsBank;   // +0x10
+    CCountedPointer<CMeshDataBank>    PMeshBank;       // +0x18
     unsigned char _pad20[4];
     SMember24     m_24;                            // +0x24
     std::_List_base<long, std::allocator<long> > m_5c;   // +0x5c std::list<long> (~_List_base 0x0042AB73)

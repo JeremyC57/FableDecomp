@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFF07, length 409 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CTCBase::CTCBase(CThing*) 0x00686800, CGraphicBankParams ctor 0x00415B80, CDisplayManager format pickers
 // 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::CreateAndInitialize 0x009F83D0,
-// ~CCountedPointer<CGraphicDataBank> 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
+// CCountedPointer<CGraphicDataBank>::ReleaseData 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
 // Leaf: ??0CTCInventoryBase
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
@@ -14,19 +14,24 @@
 
 class CThing;
 class CGraphicDataBank;
-class CCPPointerInfo;
 class CPixelFormat { public: long Format; };
-template <class T> class CCountedPointer { public:
-    T*              m_pObject;
-    CCPPointerInfo* m_pInfo;
-    CCountedPointer() : m_pObject(0), m_pInfo(0) { }
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();                         // 0x00419108 (CGraphicDataBank)
-    T* GetPItem() const { return m_pObject; }
-};
+// NF222 (family q12226 / q12402, coordinator ruling 1): the HEAD row's local `template <class T> class CCountedPointer` model is replaced by
+//   the shared engine/CCountedPointer.h with FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (`~CCountedPointer() { ReleaseData(); }`,
+//   ReleaseData out of line), the shape of the landed sibling ~CTCInventoryBase row 0x005C00A0. The temporary's release 0x00419108 is
+//   ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ (FableWin.pdb; was the declared ??1 bound at 0x00419108). The two
+//   serialised pointers take their Ego_r.pdb pointees (SerialisedItems CCountedPointer<vector<NInventory::CItem>> +0x78,
+//   SerialisedSelectedItems CCountedPointer<vector<CCharString>> +0x80; were CCountedPointer<void>), declared as in 0x005C00A0.
+//   The local GetPItem() accessor (no PDB spelling) is gone: the temporary's Data member is read directly.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
 class CCharString { public:
     void* m_pData;
 };
+namespace NInventory { class CItem; }
+namespace std {
+template <class T> class allocator;
+template <class T, class A> class vector;
+}
 namespace { extern CCharString BANK_HANDLE; }      // 0x013B8BA4 "GBANK_MAIN"
 struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80
     CPixelFormat  CompressedAlpha;              // +0x00
@@ -117,8 +122,8 @@ public:
     long                      GlobalDefIndex;               // +0x6c
     long                      SelectedCategoryIndex;        // +0x70
     CGraphicDataBank*         GraphicManager;               // +0x74
-    CCountedPointer<void>     SerialisedItems;              // +0x78
-    CCountedPointer<void>     SerialisedSelectedItems;      // +0x80
+    CCountedPointer<std::vector<CItem, std::allocator<CItem> > >             SerialisedItems;           // +0x78 (ReleaseData 0x005C0511)
+    CCountedPointer<std::vector<CCharString, std::allocator<CCharString> > > SerialisedSelectedItems;   // +0x80 (ReleaseData 0x005C0563)
     bool                      Dying;                        // +0x88
     bool                      CategoryMoving;               // +0x89
     float                     CategoryMovement;             // +0x8c
@@ -184,7 +189,7 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
     params.Flag1c = false;
     params.Flag28 = false;
     CGraphicBankManager* manager = GFGetSystemManager()->GraphicBankManager;
-    GraphicManager = manager->CreateAndInitialize(BANK_HANDLE, &params, true, true).GetPItem();
+    GraphicManager = manager->CreateAndInitialize(BANK_HANDLE, &params, true, true).Data;
     AddToGlobalTCs();
 }
 

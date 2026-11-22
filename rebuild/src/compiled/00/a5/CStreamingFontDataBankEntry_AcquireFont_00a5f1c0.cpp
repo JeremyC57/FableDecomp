@@ -6,41 +6,38 @@
 // built by an inline helper whose arguments are evaluated first), `ret 4`.
 // Name (round 7, NF53): the font constructor 0x009A3C20 is ??0CStreamingFontBank@@QAE@PAVCStreamingFontDataBank@@K@Z (Ego_r.pdb / FableWin.pdb;
 //   engine/CStreamingFontBank.h _CTOR), built from the entry's Bank (+0x0C, CStreamingFontDataBank*) and Index (+0x10) as
-//   engine/CStreamingFontDataBankEntry.h lays them out; was a local 0x3034-byte CStreamingFontBank(long, long) model. The counted-pointer
-//   stand-in and the entry's own self name are unchanged (header debt: AcquireFont is const and returns CCountedPointer<CFontBank> in the PDB).
+//   engine/CStreamingFontDataBankEntry.h lays them out; was a local 0x3034-byte CStreamingFontBank(long, long) model.
+// Leaf: ?AcquireFont@CStreamingFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ
+// Name (NF222, family q12402): the self leaf is the Ego_d / Ego_r / FableWin.pdb spelling (const, returns CCountedPointer<CFontBank>);
+//   the local CCountedPointer_00a5f1c0 stand-in is replaced by engine/CCountedPointer.h (member Font, Ego_r.pdb CStreamingFontDataBankEntry
+//   +0x04 CCountedPointer<CFontBank>, `mutable`: the const member re-seats it), Reset = ?Reset@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@@Z
+//   (0x0041947A, FableWin.pdb; declaration only), the inlined copy constructor is the header's. Its one landed caller 0x009E2C10 binds
+//   the same const spelling in the same hand-back.
 #define FABLE_RETAIL_CARRAY
 #define FABLE_RETAIL_CTEXTURE
 #define FABLE_RETAIL_CFONTBANK
 #define FABLE_RETAIL_CFONTBANK_BASE
 #define FABLE_RETAIL_CSTREAMINGFONTBANK
 #define FABLE_RETAIL_CSTREAMINGFONTBANK_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#include "engine/CCountedPointer.h"
 #include "engine/CArray.h"
 #include "engine/CTexture.h"
 #include "engine/CStreamingFontBank.h"
 
-struct CCountedPointer_00a5f1c0 {                        // 8 bytes: object + count block (references first)
-    CStreamingFontBank* m_pObject;
-    long*  m_pCount;
-    CCountedPointer_00a5f1c0(const CCountedPointer_00a5f1c0& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount)
-            ++*m_pCount;
-    }
-    void Reset(CStreamingFontBank* object);                        // 0x0041947A
-};
-
 class CStreamingFontDataBankEntry { public:
     virtual void v00();
-    CCountedPointer_00a5f1c0 m_font;                     // +0x04
+    mutable CCountedPointer<CFontBank> Font;           // +0x04
     CStreamingFontDataBank* Bank;                   // +0x0c
     unsigned long Index;                            // +0x10
     static CStreamingFontBank* CreateBank(CStreamingFontDataBank* bank, unsigned long index) { return new CStreamingFontBank(bank, index); }
-    CCountedPointer_00a5f1c0 AcquireFont();
+    CCountedPointer<CFontBank> AcquireFont() const;
 };
 
-CCountedPointer_00a5f1c0 CStreamingFontDataBankEntry::AcquireFont()
+CCountedPointer<CFontBank> CStreamingFontDataBankEntry::AcquireFont() const
 {
-    if (!m_font.m_pObject)
-        m_font.Reset(CreateBank(Bank, Index));
-    return m_font;
+    if (!Font.Data)
+        Font.Reset(CreateBank(Bank, Index));
+    return Font;
 }

@@ -8,6 +8,8 @@
 // Layout (PDB CFontManager): PStreamingFontDataBank (+0x0c) CCountedPointer whose Data is the bank; CFontBank (PDB, 0x10) PManager +0x0c.
 // Shape: `CCountedPointer<T> p = ...; return p;` -- VC7.1 has no NRVO, so the hidden-result copy (count +1) and the local's release
 //   (count -1, delete function + operator delete on zero) both appear; the local's hidden-return slot is pushed before GetFontInfo's argument.
+// Name (NF222, family q12402): the callee 0x00A5F1C0 is ?AcquireFont@CStreamingFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ (const;
+//   Ego_d / Ego_r / FableWin.pdb), the spelling its self row binds in the same hand-back; was the non-const QAE spelling.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 class CFontManager;
@@ -18,7 +20,7 @@ class CFontBank { public:                                 // PDB, 0x10
     CFontManager*  PManager;                       // +0x0c
 };
 class CStreamingFontDataBankEntry { public:
-    CCountedPointer<CFontBank> AcquireFont();      // 0x00A5F1C0
+    CCountedPointer<CFontBank> AcquireFont() const;   // 0x00A5F1C0
 };
 class CStreamingFontDataBank { public:
     CStreamingFontDataBankEntry* GetFontInfo(unsigned long index);   // 0x00A5F090

@@ -1,0 +1,196 @@
+address	symbol	size	owner	class	head_class	head_size
+004168dc	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	absent	-
+00416c8a	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	NEQ:bytes(44 v 44)	44
+00416c8a	??D?$CCountedPointer@VCGraphicDataBank@@@@QBEAAVCGraphicDataBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+00416c8a	?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	40	00419134	NEQ:bytes(40 v 40)	NEQ:bytes(40 v 40)	40
+00416c8a	??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	26	004194ba	NEQ:bytes(26 v 26)	NEQ:bytes(26 v 26)	26
+004175e5	?Clear@CCountedPointer41915a@@QAEXXZ	13	-	NO-OWNER	NO-OWNER	13
+004175e5	?reset@?$scoped_ptr@VCPolymorphic@@@@QAEXXZ	18	-	NO-OWNER	NO-OWNER	18
+004175e5	??C?$scoped_ptr@VCNetworkSession@@@@QBEPAVCNetworkSession@@XZ	3	-	NO-OWNER	NO-OWNER	3
+004175e5	?reset@?$scoped_ptr@VCNetworkSession@@@@QAEXXZ	18	-	NO-OWNER	NO-OWNER	18
+004175e5	?get@?$scoped_ptr@VCNetworkSession@@@@QBEPAVCNetworkSession@@XZ	3	00418f47	EQ	EQ	3
+004175e5	??B?$scoped_ptr@VCNetworkSession@@@@QBEP80@BEPAVCNetworkSession@@XZXZ	12	-	NO-OWNER	NO-OWNER	12
+00418b7a	??1CGameComponent@@UAE@XZ	18	-	NO-OWNER	NO-OWNER	18
+00418b7a	??_GCGameComponent@@UAEPAXI@Z	41	00415940	NEQ:bytes(41 v 43)	NEQ:bytes(41 v 43)	41
+00418b7a	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	5	-	NO-OWNER	NO-OWNER	44
+00418b7a	??1?$scoped_ptr@VCPlayerManager@@@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+00418b7a	??1?$scoped_ptr@VCGamePlayerInterface@@@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+00418b7a	??1?$scoped_ptr@VCWorld@@@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+00418b7a	??1?$scoped_ptr@VCDisplayEngine@@@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+00418b7a	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	5	00419423	EQ	NEQ:bytes(44 v 44)	44
+00418b7a	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	NO-OWNER	44
+00418b7a	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	NEQ:bytes(44 v 44)	44
+00418b7a	??1CMainGameComponent@@UAE@XZ	193	-	NO-OWNER	NO-OWNER	193
+00418b7a	??_GCMainGameComponent@@UAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+00419428	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER	absent	-
+0041947a	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER	absent	-
+004194d1	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER	absent	-
+0041d198	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5	00429bf9	EQ	absent	-
+0041d198	??4?$CCountedPointer@VCMeshDataBank@@@@QAEAAV0@ABV0@@Z	23	00429bfe	EQ	absent	-
+0041e641	??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	10	-	NO-OWNER	NO-OWNER	10
+0041e641	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	10	-	NO-OWNER	NO-OWNER	10
+0041e641	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	44	00419108	EQ	EQ	44
+0041e641	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	44	0042918c	EQ	EQ	44
+0041e641	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	44	004291de	EQ	EQ	44
+0041e641	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	EQ	5
+0041e641	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5	00429bf9	EQ	EQ	5
+0041e641	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	5	00429c53	EQ	EQ	5
+0041e641	??_GCManager@NUISystem@@UAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0042a9b7	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	absent	-
+0042a9b7	??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	23	004194ba	EQ	absent	-
+0042dd28	?GetMeshBankManager@CSystemManager@@QBEPAVCMeshBankManager@@XZ	4	-	NO-OWNER	NO-OWNER	4
+0042dd28	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	5	0042fc0e	EQ	NEQ:bytes(44 v 44)	44
+0042dd28	??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@ABV0@@Z	25	0041ba30	EQ	EQ	25
+0042dd28	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	NEQ:bytes(44 v 44)	44
+0042dd28	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z	25	00428905	EQ	EQ	25
+0042dd28	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5	00429bf9	EQ	NEQ:bytes(44 v 44)	44
+0042dd28	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	5	0042fcff	EQ	NEQ:bytes(44 v 44)	44
+0042dd28	??_G?$CCountedPointer@VCIEngine@@@@QAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0042dd28	??_G?$CCountedPointer@VCGraphicDataBank@@@@QAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0042dd28	??_G?$CCountedPointer@VCMeshDataBank@@@@QAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0042dd28	??_G?$CCountedPointer@$$CBVCFontBank@@@@QAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0042ddb3	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	absent	-
+0042ddb3	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	absent	-
+0042f50b	??1CGameComponent@@UAE@XZ	18	-	NO-OWNER	NO-OWNER	18
+0042f50b	??_GCGameComponent@@UAEPAXI@Z	41	00415940	NEQ:bytes(41 v 43)	NEQ:bytes(41 v 43)	41
+0042f50b	??1CDefPointer_CFrontEndDef@@QAE@XZ	24	-	NO-OWNER	NO-OWNER	24
+0042f50b	??1CDateAndTimeVector@@QAE@XZ	14	-	NO-OWNER	NO-OWNER	14
+0042f50b	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	5	0042fc0e	EQ	NEQ:bytes(44 v 44)	44
+0042f50b	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	NEQ:bytes(44 v 44)	44
+0042f50b	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5	00429bf9	EQ	NEQ:bytes(44 v 44)	44
+0042f50b	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	5	0042fbcb	EQ	NEQ:bytes(44 v 44)	44
+0042f50b	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	5	0042fcff	EQ	NEQ:bytes(44 v 44)	44
+0042f50b	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	5	-	NO-OWNER	NO-OWNER	44
+0042f50b	??_GCNewFrontendGameComponent@@UAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0042fc13	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER	absent	-
+0042fc86	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z	25	-	NO-OWNER	NO-OWNER	25
+0048e78e	??0C2DVector@@QAE@MM@Z	18	-	NO-OWNER	NO-OWNER	18
+0048e78e	??0C2DVector@@QAE@ABV0@@Z	19	-	NO-OWNER	NO-OWNER	19
+0048e78e	??HC2DVector@@QBE?AV0@ABV0@@Z	26	-	NO-OWNER	NO-OWNER	26
+0048e78e	??YC2DVector@@QAEABV0@ABV0@@Z	24	-	NO-OWNER	NO-OWNER	24
+0048e78e	??0C2DBoxF@@QAE@ABV0@@Z	31	-	NO-OWNER	NO-OWNER	31
+0048e78e	??0C2DExtentsF@@QAE@MM@Z	18	-	NO-OWNER	NO-OWNER	18
+0048e78e	??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z	39	0041a7e0	EQ	EQ	39
+0048e78e	??0C2DBoxF@@QAE@ABVC2DVector@@0@Z	34	004371a0	EQ	EQ	34
+0048e78e	?Initialise@CRGBColour@@QAEXEEEE@Z	30	-	NO-OWNER	NO-OWNER	30
+0048e78e	?AddRef@CIVCountedPointeeBase@@QBEXXZ	4	-	NO-OWNER	NO-OWNER	4
+0048e78e	?Release@CIVCountedPointeeBase@@QBEJXZ	7	-	NO-OWNER	NO-OWNER	7
+0048e78e	?GetRefCount@CIVCountedPointeeBase@@QBEJXZ	4	-	NO-OWNER	NO-OWNER	4
+0048e78e	??0CEnginePrimitiveThemeChannelDesc@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+0048e78e	??0CEnginePrimitive@@QAE@W4EEnginePrimitiveType@@_KW4EEngineInterpolationSet@@@Z	29	-	NO-OWNER	NO-OWNER	29
+0048e78e	?IsActive@CFadeInFadeOutBase@@QBE_NXZ	3	-	NO-OWNER	NO-OWNER	3
+0048e78e	?Open@CFadeInFadeOutBase@@QAEXMMVCRGBColour@@@Z	43	00434840	NEQ:bytes(43 v 44)	NEQ:bytes(43 v 44)	43
+0048e78e	?Close@CFadeInFadeOutBase@@QAEXXZ	9	-	NO-OWNER	NO-OWNER	9
+0048e78e	?Update@CFadeInFadeOutBase@@QAEXM@Z	90	00434870	NEQ:bytes(90 v 95)	NEQ:bytes(90 v 95)	90
+0048e78e	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ	76	004348d0	NEQ:bytes(76 v 79)	NEQ:bytes(76 v 79)	76
+0048e78e	?IsCutsceneActionModeEnabled@CSubtitleRenderer@@QBE_NXZ	7	-	NO-OWNER	NO-OWNER	7
+0048e78e	?IsFlagSet@CSubtitleRenderer@@QBE_NW4ESubtitleFlag@@@Z	16	-	NO-OWNER	NO-OWNER	16
+0048e78e	?PeekGraphicBank@CPlayerGui@@QBEABVCGraphicDataBank@@XZ	4	-	NO-OWNER	NO-OWNER	4
+0048e78e	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER	NO-OWNER	6
+0048e78e	?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ	4	-	NO-OWNER	NO-OWNER	4
+0048e78e	?PeekWorld@CMainGameComponent@@QBEABVCWorld@@XZ	4	-	NO-OWNER	NO-OWNER	4
+0048e78e	?IsPaused@CWorld@@QBE_NXZ	7	-	NO-OWNER	NO-OWNER	7
+0048e78e	?IsPerformingRegionLoadReally@CWorld@@QBE_NXZ	12	-	NO-OWNER	NO-OWNER	12
+0048e78e	?GetPlayerRespawnDelay@CPlayer@@QBEJXZ	4	-	NO-OWNER	NO-OWNER	4
+0048e78e	?IsCutsceneSkippable@CSubtitleRenderer@@QBE_NXZ	70	0048de44	EQ	EQ	70
+0048e78e	?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z	16	0048e062	EQ	EQ	16
+0048e78e	?IsTextReadyForClickPast@CSubtitleRenderer@@QBE_NXZ	48	0048e072	NEQ:relocs __real@3e4ccccd@012305a0	NEQ:relocs __real@3e4ccccd@012305a0	48
+0048e78e	??C?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBEPAVCEnginePersistentPrimitiveBase@@XZ	3	-	NO-OWNER	NO-OWNER	3
+0048e78e	?GetRefCount@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QBEKXZ	13	-	NO-OWNER	NO-OWNER	13
+0048e78e	??D?$CCountedPointer@VCDrawQuestInfo@NPlayerGui@@@@QBEAAVCDrawQuestInfo@NPlayerGui@@XZ	3	-	NO-OWNER	NO-OWNER	3
+0048e78e	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	NO-OWNER	44
+0048e78e	??D?$CCountedPointer@VCFontBank@@@@QBEAAVCFontBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+0048e78e	?Release@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAEXXZ	24	-	NO-OWNER	NO-OWNER	24
+0048e78e	??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ	3	-	NO-OWNER	NO-OWNER	3
+0048e78e	?begin@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@XZ	3	-	NO-OWNER	NO-OWNER	3
+0048e78e	??0CRGBColour@@QAE@EEEE@Z	32	-	NO-OWNER	NO-OWNER	32
+0048e78e	??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z	153	00493ac2	EQ	EQ	153
+0048e78e	??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z	149	0041beb0	NEQ:bytes(149 v 171)	NEQ:bytes(149 v 171)	149
+0048e78e	?GetQuestInfo@CPlayerGui@@QAEAAVCDrawQuestInfo@NPlayerGui@@XZ	7	-	NO-OWNER	NO-OWNER	7
+0048e78e	?Reset@?$CIVCountedPointer@VCEnginePersistentPrimitiveBase@@@@QAEXPAVCEnginePersistentPrimitiveBase@@@Z	39	-	NO-OWNER	NO-OWNER	39
+0048e78e	?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ	6	-	NO-OWNER	NO-OWNER	6
+0048e78e	??A?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEAAVCEnginePrimitiveHandle@@I@Z	12	-	NO-OWNER	NO-OWNER	12
+0048e78e	?Clear@CEnginePrimitiveHandle@@QAEXXZ	58	0041be70	NEQ:bytes(58 v 58)	NEQ:bytes(58 v 58)	58
+0056f177	??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@ABV0@@Z	28	0041ba30	NEQ:bytes(28 v 28)	NEQ:bytes(28 v 28)	28
+0056f177	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	NEQ:bytes(44 v 44)	44
+0056f177	??C?$CCountedPointer@VCGraphicDataBank@@@@QBEPAVCGraphicDataBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+005958f5	?clear@?$map@VCWideString@@_NU?$less@VCWideString@@@std@@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@QAEXXZ	5	-	NO-OWNER	NO-OWNER	5
+005958f5	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	NEQ:bytes(44 v 44)	44
+005958f5	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z	28	00428905	NEQ:bytes(28 v 28)	NEQ:bytes(28 v 28)	28
+005958f5	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	5	00429bf9	EQ	NEQ:bytes(44 v 44)	44
+005958f5	?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ	3	-	NO-OWNER	NO-OWNER	3
+005958f5	?size@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QBEIXZ	9	-	NO-OWNER	NO-OWNER	9
+005958f5	??0?$allocator@VCWideString@@@std@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+005958f5	??1?$allocator@VCWideString@@@std@@QAE@XZ	1	-	NO-OWNER	NO-OWNER	1
+005958f5	??1?$_STLP_alloc_proxy@PAVCWideString@@V1@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	1	-	NO-OWNER	NO-OWNER	1
+005958f5	?deallocate@?$allocator@VCWideString@@@std@@QAEXPAVCWideString@@I@Z	22	-	NO-OWNER	NO-OWNER	22
+005958f5	??0?$allocator@VCWideString@@@std@@QAE@ABV01@@Z	5	-	NO-OWNER	NO-OWNER	5
+005958f5	??1?$_Vector_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	14	-	NO-OWNER	NO-OWNER	14
+005958f5	??0?$_STLP_alloc_proxy@PAVCWideString@@V1@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@PAVCWideString@@@Z	14	-	NO-OWNER	NO-OWNER	14
+005958f5	??0?$_Vector_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z	15	-	NO-OWNER	NO-OWNER	15
+005958f5	??0?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z	15	-	NO-OWNER	NO-OWNER	15
+005bff07	??0CDefPointerBase@@QAE@XZ	6	-	NO-OWNER	NO-OWNER	6
+005bff07	??0C3DVector@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+005bff07	??0CRightHandedSet@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+005bff07	??0?$CRetailVector@PAX@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+005bff07	??0?$CRetailVector@VCCategory@NInventory@@@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+005bff07	??0?$CCountedPointer@V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@@QAE@XZ	10	-	NO-OWNER	absent	-
+005bff07	??1?$CCountedPointer@V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@@QAE@XZ	5	005c07df	EQ	absent	-
+005bff07	??0?$CCountedPointer@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@@QAE@XZ	10	-	NO-OWNER	absent	-
+005bff07	??1?$CCountedPointer@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@@QAE@XZ	5	005c07fb	EQ	absent	-
+005bff07	??0?$CRetailVector@J@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+005bff07	??0?$CRetailVector@VCItem@NInventory@@@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+005bff07	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	5	004194b5	EQ	absent	-
+005bff07	??_GCTCInventoryBase@NInventory@@UAEPAXI@Z	31	-	NO-OWNER	NO-OWNER	31
+005bff07	??1CTCInventoryBase@NInventory@@UAE@XZ	30	005c00a0	NEQ:bytes(30 v 129)	NEQ:bytes(30 v 129)	30
+0064560d	??0C2DVector@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+0064560d	??0C2DVector@@QAE@MM@Z	20	-	NO-OWNER	NO-OWNER	20
+0064560d	??8CCharString@@QBE_NPBD@Z	39	-	NO-OWNER	NO-OWNER	39
+0064560d	??0CRGBColour@@QAE@EEEE@Z	32	-	NO-OWNER	NO-OWNER	32
+0064560d	?begin@?$CList@USScriptTextNode@@@@QBEPAUSScriptTextNode@@XZ	5	-	NO-OWNER	NO-OWNER	5
+0064560d	?end@?$CList@USScriptTextNode@@@@QBEPAUSScriptTextNode@@XZ	3	-	NO-OWNER	NO-OWNER	3
+0064560d	?empty@?$CList@USScriptTextNode@@@@QBE_NXZ	12	-	NO-OWNER	NO-OWNER	12
+0064560d	?empty@?$CList@USScriptLineNode@@@@QBE_NXZ	12	-	NO-OWNER	NO-OWNER	12
+0064560d	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	absent	-
+0064560d	??E?$CListIter@USScriptLineNode@@@@QAEAAU0@XZ	9	-	NO-OWNER	NO-OWNER	9
+0064560d	??9?$CListIter@USScriptLineNode@@@@QBE_NABU0@@Z	21	-	NO-OWNER	NO-OWNER	21
+0064560d	??0?$CListIter@USScriptLineNode@@@@QAE@PAUSScriptLineNode@@@Z	14	-	NO-OWNER	NO-OWNER	14
+0064560d	?ibegin@?$CList@USScriptLineNode@@@@QBE?AU?$CListIter@USScriptLineNode@@@@XZ	16	-	NO-OWNER	NO-OWNER	16
+0064560d	?iend@?$CList@USScriptLineNode@@@@QBE?AU?$CListIter@USScriptLineNode@@@@XZ	14	-	NO-OWNER	NO-OWNER	14
+0065431d	??0__false_type@std@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+0065431d	?GetStatBarsFontName@CPlayerGuiDef@@QBEABVCCharString@@XZ	7	-	NO-OWNER	NO-OWNER	7
+0065431d	??0CRetailEmitterVector@NPlayerGui@@QAE@XZ	13	-	NO-OWNER	NO-OWNER	13
+0065431d	??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+0065431d	??1?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@XZ	1	-	NO-OWNER	NO-OWNER	1
+0065431d	??0?$allocator@VCChangeText@CStatBar@NPlayerGui@@@std@@QAE@XZ	3	-	NO-OWNER	NO-OWNER	3
+0065431d	??1?$allocator@VCChangeText@CStatBar@NPlayerGui@@@std@@QAE@XZ	1	-	NO-OWNER	NO-OWNER	1
+0065431d	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	absent	-
+0065431d	??1?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ	1	-	NO-OWNER	NO-OWNER	1
+0065431d	?deallocate@?$allocator@VCEnginePrimitiveHandle@@@std@@QAEXPAVCEnginePrimitiveHandle@@I@Z	20	-	NO-OWNER	NO-OWNER	20
+0065431d	??0?$allocator@VCEnginePrimitiveHandle@@@std@@QAE@ABV01@@Z	5	-	NO-OWNER	NO-OWNER	5
+0065431d	??$_Destroy@VCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@@Z	11	-	NO-OWNER	NO-OWNER	11
+0065431d	??1?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ	14	-	NO-OWNER	NO-OWNER	14
+0065431d	??0?$_STLP_alloc_proxy@PAVCEnginePrimitiveHandle@@V1@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@PAVCEnginePrimitiveHandle@@@Z	11	-	NO-OWNER	NO-OWNER	11
+0065431d	??$__destroy_aux@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0ABU__false_type@0@@Z	26	-	NO-OWNER	NO-OWNER	26
+0065431d	??0?$_Vector_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z	15	-	NO-OWNER	NO-OWNER	15
+0065431d	??$__destroy@PAVCEnginePrimitiveHandle@@V1@@std@@YAXPAVCEnginePrimitiveHandle@@00@Z	24	-	NO-OWNER	NO-OWNER	24
+0065431d	??0?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@ABV?$allocator@VCEnginePrimitiveHandle@@@1@@Z	15	-	NO-OWNER	NO-OWNER	15
+0065431d	??$_Destroy@PAVCEnginePrimitiveHandle@@@std@@YAXPAVCEnginePrimitiveHandle@@0@Z	24	-	NO-OWNER	NO-OWNER	24
+0065431d	??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ	30	00440c40	NEQ:bytes(30 v 50)	NEQ:bytes(30 v 50)	30
+0065431d	??0CStatBase@NPlayerGui@@QAE@ABVCPlayerGuiDef@@@Z	84	0064cc11	EQ	EQ	84
+0065431d	??_GCStatBase@NPlayerGui@@UAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+0065431d	??_GCStatBar@NPlayerGui@@UAEPAXI@Z	28	-	NO-OWNER	NO-OWNER	28
+009e2ba0	??C?$CCountedPointer@VCFontDataBank@@@@QBEPAVCFontDataBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+009e2ba0	??0?$CCountedPointer@VCFontBank@@@@QAE@ABV0@@Z	25	-	NO-OWNER	NO-OWNER	25
+009e2ba0	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER	NO-OWNER	53
+009e2ba0	??C?$CCountedPointer@VCFontBank@@@@QBEPAVCFontBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+009e2c10	??C?$CCountedPointer@VCStreamingFontDataBank@@@@QBEPAVCStreamingFontDataBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+009e2c10	??0?$CCountedPointer@VCFontBank@@@@QAE@ABV0@@Z	25	-	NO-OWNER	NO-OWNER	25
+009e2c10	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	53	-	NO-OWNER	NO-OWNER	53
+009e2c10	??C?$CCountedPointer@VCFontBank@@@@QBEPAVCFontBank@@XZ	3	-	NO-OWNER	NO-OWNER	3
+00a5f1c0	?CreateBank@CStreamingFontDataBankEntry@@SAPAVCStreamingFontBank@@PAVCStreamingFontDataBank@@K@Z	38	-	NO-OWNER	NO-OWNER	38
+00a5f1c0	??0?$CCountedPointer@VCFontBank@@@@QAE@ABV0@@Z	25	-	NO-OWNER	absent	-
+00a5f1c0	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	absent	-
+00a634f0	?CreateBank@CFontDataBankEntry@@SAPAVCStaticFontBank@@PAVCFontDataBank@@K@Z	38	-	NO-OWNER	absent	-
+00a634f0	??0?$CCountedPointer@VCFontBank@@@@QAE@ABV0@@Z	25	-	NO-OWNER	absent	-
+00a634f0	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	5	-	NO-OWNER	absent	-

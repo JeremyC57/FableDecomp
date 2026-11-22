@@ -59,15 +59,14 @@ class CRGBColour { public:
 };
 enum EEngine2DLayer { ENGINE_2D_LAYER_TEXT = 0x43 };
 class CFontBank;
-struct CFontPointer {                               // CCountedPointer<CFontBank>
-    CFontBank* m_pObject;
-    void*      m_pInfo;
-    ~CFontPointer();                                // 0x004057A0
-};
-struct CFontBankManager {
-    CFontPointer GetFont(const CCharString& name);  // 0x009E2C80
-};
-class CFontManager;
+// NF221 (family q12226 / q12402): the font pointer is the shared CCountedPointer<CFontBank> (engine/CCountedPointer.h,
+//   RELEASEDATA_DECL_ONLY): its release 0x004057A0 is the out-of-line ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ (FableWin.pdb; no
+//   jmp thunk), called by the temporary's inline destructor; GetFont is CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb / Ego_r.pdb
+//   ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80). Were the local
+//   CFontPointer / CFontBankManager stand-ins (??1CFontPointer@@QAE@XZ, ?GetFont@CFontBankManager@@QAE?AUCFontPointer@@ABVCCharString@@@Z).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+#include "engine/CFontManager.h"
 extern CFontManager* PFontManager;        // 0x013B838C
 
 struct SScriptScreenText {                          // list element (node +8)
@@ -155,14 +154,14 @@ void CDrawScriptScreenText::Draw(CEnginePrimitivePrepareInfo* info)
         Drawing = true;
         for (SScriptTextNode* node = gui->ScriptTexts.begin(); node != gui->ScriptTexts.end(); node = node->Next) {
             SScriptScreenText& text = node->Data;
-            CFontBank* font = text.FontName == "" ? Resources->DefaultFont : ((CFontBankManager*)PFontManager)->GetFont(text.FontName).m_pObject;
+            CFontBank* font = text.FontName == "" ? Resources->DefaultFont : PFontManager->GetFont(text.FontName).Data;
             PlayerGui->Draw2DText(text.Position, text.Text, font, text.Colour, 1.0f, ENGINE_2D_LAYER_TEXT, true);
         }
     }
     CList<SScriptLineNode>& lines = PlayerGui->ScriptLines;
     if (!lines.empty()) {
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
-        CFontBank* font = ((CFontBankManager*)PFontManager)->GetFont(def->ScriptTextFont).m_pObject;
+        CFontBank* font = PFontManager->GetFont(def->ScriptTextFont).Data;
         C2DVector pos;
         GFACoordToVCoord(&def->ScriptTextPos, &pos);
         C2DVector step;

@@ -60,6 +60,10 @@ template<class T>struct scoped_ptr {
  scoped_ptr():ptr(0){}
  ~scoped_ptr(){delete ptr;}
 };
+// NF221 (family q12226 / q12402): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: retail calls each T's out-of-line ReleaseData
+//   (FableWin.pdb ?ReleaseData@?$CCountedPointer@<T>@@QAEXXZ; ~CCountedPointer() { ReleaseData(); } is the 5-byte jmp thunk), so the
+//   release sites bind ReleaseData<T> (was ??1<T> at the ReleaseData addresses).
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 class CInitBaseClass : public CBaseClass { public:bool Valid;CInitBaseClass();virtual void Validate()const;};
 struct CNetworkClient : CInitBaseClass {unsigned char NetworkState[0x2678];CNetworkClient();virtual ~CNetworkClient();}; //00419352

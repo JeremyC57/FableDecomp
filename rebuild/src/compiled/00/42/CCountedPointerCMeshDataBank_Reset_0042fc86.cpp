@@ -1,29 +1,14 @@
-// CCountedPointer::Reset(T* object) -- release the old share then adopt a new raw object
-// Grade: pending owner naming preflight; historical exact grade2 preserved
-// Leaf: ?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z
-// Flags:
-// Retail: 0042fc86, 59 bytes. PDB Reset/DeleteData, destructor-feed and callback targets prove CMeshDataBank.
-// PDB complete member layout Data@0,Info@4 and no base fields; CCPPointerInfo ctor exact KP6IXPAX@Z0.
 #pragma optimize("s", on)
+// CCountedPointer<CMeshDataBank>::Reset(CMeshDataBank* data) -- release (ReleaseData 0x0042918C), take data and give it a fresh count block (1, DeleteData, Data)
+// Leaf: ?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0042FC86, 59 bytes, thiscall `ret 4`. Callee: 0x0042918C.
+// Identity (NF221, family q12226 / q12402): FableWin.pdb ?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z; DeleteData<CMeshDataBank> 0x00428AE7 stored in the count block (also stored by CMeshBankManager::OpenMeshBank 0x00A09F20).
+// Was same leaf; was a local CCountedPointer model calling ~CCountedPointer<CMeshDataBank>; ported onto engine/CCountedPointer.h (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY: the callee is out of line in this size TU).
+// DeleteData<T> (address stored) is declared only (NF222: FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY, as the row declared it at HEAD): with T only
+//   declared here the header's inline body would emit a pick-any plain-delete copy unlike the retail virtual-delete owner.
+void* __cdecl operator new(unsigned int size);             // 0x00BFEA1A
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
 class CMeshDataBank;
-class CCPPointerInfo { public:
- unsigned long RefCount;
- void (__fastcall* DeleteFunc)(void*);
- void* Data;
- CCPPointerInfo(unsigned long n, void (__fastcall* fn)(void*), void* p)
- : RefCount(n), DeleteFunc(fn), Data(p) {}
-};
-template<class T> class CCountedPointer { public:
- T* Data;
- CCPPointerInfo* Info;
- ~CCountedPointer();
- static void __fastcall DeleteData(void*);
- void Reset(T* object);
-};
-template<class T> void CCountedPointer<T>::Reset(T* object)
-{
- this->~CCountedPointer<T>();
- Data=object;
- if (Data) Info=new CCPPointerInfo(1, DeleteData, Data);
-}
 template void CCountedPointer<CMeshDataBank>::Reset(CMeshDataBank*);

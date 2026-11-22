@@ -47,9 +47,6 @@ template <class T> struct scoped_ptr {
         void Release();                                                      \
         FABLE_FORCEINLINE void Clear() { Release(); Data = 0; }                  \
     };
-COUNTED_POINTER(CCountedPointer4190b6, 0x004190B6)
-COUNTED_POINTER(CCountedPointer4057a0, 0x004057A0)
-COUNTED_POINTER(CCountedPointer419108, 0x00419108)
 COUNTED_POINTER(CCountedPointer41915a, 0x0041915A)
 #undef COUNTED_POINTER
 // NF174 (q5222): +0x14 is the text bank, the shared engine/CCountedPointer.h CCountedPointer<NGameText::CDataBank> (NGameText_CDataBank.h:
@@ -59,11 +56,21 @@ COUNTED_POINTER(CCountedPointer41915a, 0x0041915A)
 //   kept as is with the release spelled as that destructor. Not Reset(0): this TU's Reset<CDataBank> is the out-of-line 0x00403E40
 //   (bound by the landed 0x00416832), which this site does not call. Was the local CCountedPointer403750 stand-in binding
 //   ?Release@CCountedPointer403750@@QAEXXZ.
-// Inferred: the source spelling of "release, then Data = 0" is unproven; the explicit destructor call is the one that names the retail
-//   callee (0x00403750) and emits no new COMDAT.
-#define FABLE_RETAIL_CCOUNTEDPOINTER_DTOR_DECL_ONLY
+// NF221 (family q12226 / q12402): members respelled to Ego_r.pdb CMainGameComponent (PTextBank +0x14, PLUA +0x2c, PDebugFont +0x16144,
+//   PCutSceneMainFont +0x1614c, PMainGraphicBank: CCountedPointer<T> with these T). The four releases 0x00403750 / 0x004190B6 / 0x004057A0 / 0x00419108 are the out-of-line
+//   ?ReleaseData@?$CCountedPointer@<T>@@QAEXXZ of T = NGameText::CDataBank / CLUA / CFontBank / CGraphicDataBank (FableWin.pdb names;
+//   each is a 44/53-byte release with Data zeroed before Info, ~CCountedPointer is the 5-byte jmp thunk where one exists), so +0x2c,
+//   +0x16144, +0x1614c and +0x161c8 are the shared CCountedPointer<T> (FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY) and each
+//   site is `ReleaseData(); Data = 0;`. Was the destructor call (DTOR_DECL_ONLY) for +0x14 and the local CCountedPointer4190b6 /
+//   CCountedPointer4057a0 / CCountedPointer419108 stand-ins (?Release@CCountedPointer<addr>@@QAEXXZ) for the other three.
+// Inferred: the source spelling of "release, then Data = 0" is unproven (an explicit ReleaseData call names the retail callee and
+//   emits no new COMDAT); T of +0x2c / +0x16144 / +0x161c8 from the callee identity (FableWin.pdb ReleaseData names) only.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 namespace NGameText { class CDataBank; }
+class CLUA;
+class CFontBank;
+class CGraphicDataBank;
 
 class CNetworkSession : public CPolymorphic {
 public:
@@ -121,21 +128,21 @@ protected:
     static CMainGameComponent* PMainGameComponent;   // 0x013B86A0
 public:
     long                   m_10;                     // +0x10
-    CCountedPointer<NGameText::CDataBank> m_14;      // +0x14 (Ego_r.pdb: the text bank)
+    CCountedPointer<NGameText::CDataBank> PTextBank;      // +0x14 (Ego_r.pdb: the text bank)
     scoped_ptr<CPolymorphic> m_1c;                   // +0x1c
     scoped_ptr<CPolymorphic> m_20;                   // +0x20
     scoped_ptr<CNetworkSession> NetworkSession;      // +0x24
     scoped_ptr<CPolymorphic> m_28;                   // +0x28
-    CCountedPointer4190b6  m_2c;                     // +0x2c
+    CCountedPointer<CLUA>  PLUA;                     // +0x2c
     unsigned char          _pad34[0x13ab8 - 0x34];
     CNetworkClient         Client;                   // +0x13ab8 (0x2680 bytes)
     unsigned char          _pad16138[0x16144 - 0x16138];
-    CCountedPointer4057a0  ConsoleFont;              // +0x16144
-    CCountedPointer4057a0  ConsoleFont2;             // +0x1614c
+    CCountedPointer<CFontBank> PDebugFont;          // +0x16144
+    CCountedPointer<CFontBank> PCutSceneMainFont;         // +0x1614c
     unsigned char          _pad16154[0x16178 - 0x16154];
     CFrameRateSmoother     FrameRateSmoother;        // +0x16178
     unsigned char          _pad16179[0x161c8 - 0x16179];
-    CCountedPointer419108  m_161c8;                  // +0x161c8
+    CCountedPointer<CGraphicDataBank> PMainGraphicBank;       // +0x161c8
     unsigned char          _pad161d0[0x161e0 - 0x161d0];
     bool                   Running;                  // +0x161e0
 
@@ -166,16 +173,20 @@ void CMainGameComponent::Shutdown()
     UninitEventPackageLoading();
     UninitEventPackageSaving();
     UninitialiseParticles();
-    CConsole::Get()->Initialise(0x60, 0x29, ConsoleFont.Data);
-    m_14.~CCountedPointer();
-    m_14.Data = 0;
+    CConsole::Get()->Initialise(0x60, 0x29, PDebugFont.Data);
+    PTextBank.ReleaseData();
+    PTextBank.Data = 0;
     m_1c.reset();
     m_20.reset();
     NetworkSession.reset();
     m_28.reset();
-    m_2c.Clear();
-    ConsoleFont.Clear();
-    ConsoleFont2.Clear();
-    m_161c8.Clear();
+    PLUA.ReleaseData();
+    PLUA.Data = 0;
+    PDebugFont.ReleaseData();
+    PDebugFont.Data = 0;
+    PCutSceneMainFont.ReleaseData();
+    PCutSceneMainFont.Data = 0;
+    PMainGraphicBank.ReleaseData();
+    PMainGraphicBank.Data = 0;
     CGameDefinitionManager::Set(0);
 }
