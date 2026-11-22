@@ -249,3 +249,4 @@ date	account	item	kind	status	note
 2026-11-22	A	0x00CF4EC0	authoring	done	AUTH12: escalated (pending/2026-11-22_auth12), advisor ruling 2026-11-22
 2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH13 (four checks, then (a) pre-registered)
 2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH14 (two grades, per-site decision table)
+2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH15 (land-ready: test, notes, opt-in evidence, header proof)
