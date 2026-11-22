@@ -402642,6 +402642,13 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupMeleeCombatNearbyBase_IsRunnable_0093d270_test.cpp'
         PassPattern = '0093d270_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0066b370'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_PlayAllSoundEvents_0066b370.cpp'
+        TestSource = '00/66/CTCSoundPlayer_PlayAllSoundEvents_0066b370_test.cpp'
+        PassPattern = '0066b370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

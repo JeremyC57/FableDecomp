@@ -250,6 +250,38 @@ bool CDefClassBase::GetSubDef(CDefPointer<const T>* out)const
  }
  return false;
 }
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CENTITYSOUNDDEF_SIZE_BODY
+// Nested opt-in (AUTH23 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents). Fidelity: scaffolding, not retail: it is for link
+// determinism and makes no claim about retail's text. A /O2 TU that keeps the GetSubDef body visible emits its own pick-any copy of
+// ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z (182 B), while retail's linker kept the
+// copy of the owner row 0x0065F604 (162 B), which was built in a frame-pointer size TU and sets these same two pragmas itself
+// (rebuild/src/compiled/00/65/CDefClassBase_GetSubDefCEntitySoundDef_0065f604.cpp: optimize("y", off) / optimize("s", on)). VC7.1 takes a
+// template instance's optimize mode at the end of the TU, so a pragma pair around the template does nothing and a row-tail pragma re-modes
+// every instance; an `inline` explicit specialization is an ordinary definition and takes the mode at this point. Its body is the template
+// body above with T = CEntitySoundDef, token for token. The pair ends with optimize("", on), which restores the command-line default
+// (VC7.1 has no push / pop for optimize), so this is valid only in a TU with no optimize pragma above this include.
+#include "engine/CEntitySoundDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef>* out)const
+{
+ const CSubDefInfo* info=GetPSubDefInfo(CEntitySoundDef::StatGetTypeName());
+ if(info){
+  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+  out->SetDynamicCast(def);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
 #endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY
 // Nested opt-in (chunk 1012, row 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds): the same-TU body of the by-class-index

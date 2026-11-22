@@ -38,6 +38,35 @@ class CAnimSet{friend class CAnimateThing;public:
  float GetChangeAlphaBy()const{return ChangeAlphaBy;}
  void SetChangeAlphaBy(float value){ChangeAlphaBy=value;}
  float GetAlpha()const{return CurrentAlpha;}
+#ifdef FABLE_RETAIL_CANIMSET_ANIMINDICES
+ // Retail opt-in (AUTH22 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents): FableWin.pdb
+ // ?GetAnimIndices@CAnimSet@@QBEABV?$vector@FV?$allocator@F@std@@@std@@XZ, ?GetAnimBlendStrength@CAnimSet@@QBEMJ@Z,
+ // ?GetPercentageComplete@CAnimSet@@QBEMXZ and ?GetLastPercentageComplete@CAnimSet@@QBEMXZ, inline in retail (0x0066B5BA reads
+ // Anims +0x04 / +0x08 and InternalAlphas +0x10 in place, 0x0066B6CB `fld [set+1Ch] ; fcomp [set+20h]`). Ego_d.pdb's locals of
+ // that row (`const vector<short>& anim_indeces`, `float strength`) and its 11-B / 15-B /Od lines 189 / 195 are one accessor call
+ // each. GetAnimBlendStrength's debug body carries asserts (FableWin has EH funclets for it); the release body is the element read.
+ // No layout change.
+ const std::vector<short,std::allocator<short> >& GetAnimIndices()const{return Anims;}
+ float GetAnimBlendStrength(long index)const{return InternalAlphas[index].CurrentAlpha;}
+ // The two percentage accessors. All three later VC10 PDBs (Ego_d / Ego_r / FableWin) give them as public, by value
+ // (`?GetPercentageComplete@CAnimSet@@QBEMXZ`, `?GetLastPercentageComplete@CAnimSet@@QBEMXZ`) over private members, and hold no friend
+ // record of any class. Retail's CTCSoundPlayer::PlayAllSoundEvents passes both to GetAnimEventsBetweenTimes with no temporary
+ // (0x0066B6E0 `mov ecx,[set+1Ch] ; mov edx,[set+20h] ; push ecx ; .. ; push edx`, frame 0x74); under VC7.1 an inlined by-value float
+ // accessor used as an argument always keeps a stored temporary (frame 0x7C, DIFFER(1844v1808)), and a `const float&` return graded
+ // RELOCATION_MATCH on that row with Ego_d's line-208 calls unchanged. Inferred TLC-era form (owner 2026-11-22, as
+ // FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY_REF_INFERRED in engine/CCombatManager.h); off by default. No layout change.
+#ifdef FABLE_RETAIL_CANIMSET_PERCENTAGE_REF_INFERRED
+ const float& GetLastPercentageComplete()const{return LastPercentageComplete;}
+#if !(defined(FABLE_RETAIL_CANIMSET_TYPE) && defined(FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24))
+ const float& GetPercentageComplete()const{return CurrentPercentageComplete;}
+#endif
+#else
+ float GetLastPercentageComplete()const{return LastPercentageComplete;}
+#if !(defined(FABLE_RETAIL_CANIMSET_TYPE) && defined(FABLE_RETAIL_CANIMSET_STRAFE_ACCESSORS_PASS24))
+ float GetPercentageComplete()const{return CurrentPercentageComplete;}
+#endif
+#endif
+#endif
 #ifdef FABLE_RETAIL_CANIMSET_FRAME
  // Retail opt-in (chunk 1006, row 0x005B3E4E): FableWin.pdb ?GetAnimIndex@CAnimSet@@QBEJXZ (the first anim index, `mov eax,[set+4] ;
  // movsx eax,word ptr [eax]`, 0x005B3FD4) and ?GetFrame@CAnimSet@@QBE?AVCAnimFrameInfo@@XZ (the percentage-complete pair +0x1C/+0x20

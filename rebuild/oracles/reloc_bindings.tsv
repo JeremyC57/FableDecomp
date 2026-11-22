@@ -39453,3 +39453,7 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ??1CNewFrontendGameComponent@@UAE@XZ	0042f50b	004330d2
 ??_C@_06CBNGNPJL@bitset?$AA@	0122e068	0093d270
 ?Shutdown@CFrontendGameComponent@@AAEXXZ	00495780	00496cf0
+?GetAnimEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z	006f99b0	0066b370
+?GetSoundEventManager@NAnimationEvents@@YIAAVCManager@1@XZ	006f90c0	0066b370
+?g_bPlayAnimationSoundEvents@@3_NA	01375758	0066b370
+??_C@_0BA@OKBMKDFK@CEntitySoundDef?$AA@	01235dd0	0066b370

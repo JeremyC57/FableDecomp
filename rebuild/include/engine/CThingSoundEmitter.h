@@ -62,6 +62,15 @@ public: static CClass* __fastcall Alloc();
     void ReleaseLoop(unsigned long sampleID);                                              // 0x008368F0
     void SetSpecificSamplePitch(unsigned long sampleID, float pitch);
     void SetSpecificSampleVolume(unsigned long sampleID, float volume);
+#ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_STOPALLCRITERIACONTAININGSTRING
+    // Nested opt-in (AUTH22 2026-11-22, row 0x0066B370 CTCSoundPlayer::PlayAllSoundEvents): the inline forwarder to CASoundEmitter slot 12
+    // StopAllCriteriaContainingString (+0x30), the same shape as the Ego_r.pdb forwarders above (null test on PSoundEmitter, then the
+    // virtual). Retail expands it at 0x0066B769: `mov ecx,[eax+98h] ; test ecx,ecx ; je ; mov eax,[ecx] ; push edi ; call [eax+30h]`
+    // (the emitter loaded once, straight into ecx). TLC-only: neither PDB has a CThingSoundEmitter member for slot 12 (the code of the
+    // caller's arm is absent from Ego_d's line table, lines 216..227), so the forwarder's NAME is DESCRIPTIVE: it repeats the slot's
+    // Anniversary name as the eight PDB forwarders do. No layout change.
+    void StopAllCriteriaContainingString(const CCharString& text) { if (PSoundEmitter) PSoundEmitter->StopAllCriteriaContainingString(text); }
+#endif
 protected:
     virtual bool OnCreate();                                                               // 0x00836740 ?OnCreate@CThingSoundEmitter@@MAE_NXZ
 public:
@@ -71,5 +80,5 @@ public:
 #ifdef FABLE_RETAIL_CTHINGSOUNDEMITTER_MEMBERS
 #pragma pack(pop)
 #endif
-FABLE_STATIC_ASSERT(sizeof(CThingSoundEmitter)==0xb8);
+FABLE_STATIC_ASSERT_AT(74, sizeof(CThingSoundEmitter)==0xb8);
 #endif

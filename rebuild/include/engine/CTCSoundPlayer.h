@@ -116,6 +116,16 @@ public:
     virtual void BulletTimeFrameUpdate();  // slot 10, 0x0066A910
 public:
 #endif // FABLE_RETAIL_CTCSOUNDPLAYER_VSLOTS3
+#ifdef FABLE_RETAIL_CTCSOUNDPLAYER_PLAYALLSOUNDEVENTS
+    // Opt-in (chunk 853 text, re-ported by AUTH22 2026-11-22; row 0x0066B370): Ego_r.pdb / FableWin.pdb
+    // ?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ (Ego_r 0x005749A0, FableWin 0x01E7E870; sole retail caller FrameUpdate 0x0066BBF0, tail
+    // jump) and the private ?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z 0x0066B120 (landed).
+    // Declarations only: no layout change.
+public:
+    void PlayAllSoundEvents();                                           // 0x0066B370
+private:
+    unsigned long InternalPlaySoundEvent(class CASoundBank&,const CCharString&,bool,bool,bool,long);   // 0x0066B120
+#endif
 #ifdef FABLE_RETAIL_CTCSOUNDPLAYER_INTERNALPLAYSOUNDEVENTATPOS
     // Retail opt-in (Codex pass 24, 0x0066A9E0). The call at 0x0066AA5C
     // and both PDBs identify this private sound-event entry point.

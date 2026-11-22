@@ -27,3 +27,17 @@ Not grades: mini/t1.cpp (a pragma pair around a member-template DEFINITION does 
 mini/t2.cpp (a pair around an explicit INSTANTIATION after the use: no effect), mini/t3.cpp (a pair around an `inline` explicit SPECIALIZATION:
 that one instance gets the frame-pointer size mode, a sibling instance is untouched).
 Grades used by AUTH23 on this row: 3 (c0 control, a1, c1).
+## Follow-up (coordinator, after the owner's "land as Inferred" decision for the const float& form)
+Not a grade: mini/t4.cpp. `extern template` on one instance of a noinline member template: VC7.1 3077 prints C4231 and then dies with
+fatal error C1001 (INTERNAL COMPILER ERROR) at the call. Out. (Control: the visible body gives the caller the no-escape knowledge, the
+declaration-only form does not.)
+Pre-registration (ONE grade): f1 = a1 + the renamed opt-in FABLE_RETAIL_CANIMSET_PERCENTAGE_REF_INFERRED (same tokens as a1's accessors) +
+FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CENTITYSOUNDDEF_SIZE_BODY (an `inline` explicit specialization inside optimize("y", off) / ("s", on) ..
+optimize("", on), body = the template's tokens with T = CEntitySoundDef, nested beside the template in engine/CDefinitionManager.h), overlay
+hdr_f. Pass = leaf RELOCATION_MATCH, GetSubDef<CEntitySoundDef> EQ 0x0065F604, every other defined symbol's size / class unchanged from
+a1.obj, no new symbol. If the leaf moves the device is out; no variants.
+4. f1 (final): RELOCATION_MATCH. pk.py on every defined symbol (f1.pk.full.txt v a1.pk.full.txt, 100 symbols each): the only change is
+   GetSubDef<CEntitySoundDef> 182 -> 162 B, now EQ 0x0065F604 (its class-name literal bound to 0x01235DD0, which holds "CEntitySoundDef");
+   no new symbol, no other size or class change, 0 NEQ lines. vt.py PASS; strict vland dry-run (LANDVERIFY_STRICT_HEADERS=1
+   LANDVERIFY_STRICT_RELOCS=1, overlay hdr_f): RELOCATION_MATCH PASS, WINS 1 (land/vland.log).
+Grades used by AUTH23 on this row: 4 (c0 control, a1, c1, f1).

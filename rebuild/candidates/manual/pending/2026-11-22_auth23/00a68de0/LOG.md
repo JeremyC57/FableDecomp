@@ -11,3 +11,7 @@
    /Oa result: frame 0xB4, the inline Read caches the stream fields across `rep movs` (retail re-reads them), X still a memory operand. Rejected; not retail's flag.
 Not grades: VC10 /Od line sizes (odall10, p1 / p2 / od/v1.cpp), mini TUs (mini/al.cpp, cse.cpp, kill.cpp, k2.cpp, k3.cpp, h0..h2.cpp).
 Grades used: 4 (p1, p2, p3, p3 /Oa). Best: p3 DIFFER(923v919), 43 masked lines. ESCALATE.md written.
+5. Pre-registered candidate (advisor pointer to the landed 2D twin 0x009FB750, which carries its same-TU Lock body): p4 = p3 + the landed text of CVolumeTexture::Lock 0x00A685E0 (and its GetDimensions) in the TU before the function + Ego_d-style count-up cz / cy loops. Expectation: locked_box becomes unaliased (X in ebx, Z in edi, countdown from one load).
+00a68de0 CVolumeTexture::LoadFromDataStream DIFFER(911v919) flags= []
+6. p5 = p4 with Z * Y operand order (p1's) in overflow_check2 / data_length: 00a68de0 CVolumeTexture::LoadFromDataStream DIFFER(911v919) flags= []
+Grades used: 6 (p1, p2, p3, p3 /Oa, p4, p5). Best: p4 DIFFER(911v919), 41 masked lines; ESCALATE.md UPDATE section.

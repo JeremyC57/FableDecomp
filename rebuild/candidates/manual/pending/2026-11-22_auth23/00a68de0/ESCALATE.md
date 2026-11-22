@@ -1,4 +1,25 @@
 # 0x00A68DE0 CVolumeTexture::LoadFromDataStream -- ESCALATE (AUTH23, 2026-11-22)
+## UPDATE (last step before hand-back): the main question below is ANSWERED; read this section first
+The landed 2D twin 0x009FB750 CTexture::LoadFromDataStreamToPreallocatedSurface carries its same-TU `CTexture::Lock` body in the row, and its
+header says why: with Lock's body visible VC7.1 knows the callee keeps no pointer to the caller's result object. That is the missing fact here.
+- **p4_00a68de0.cpp** = p3 + the landed text of CVolumeTexture::Lock 0x00A685E0 (and its inline GetDimensions) placed before the function
+  (retail's TU order: 0x00A685E0 < 0x00A68DE0) + Ego_d-style count-up cz / cy loops: **DIFFER(911v919)**, 41 masked lines, but of a different
+  kind: `stream` / `this` are now in esi / edi with `this` homed at [esp+1Ch] as retail, X is held in a register across the three calls,
+  and VC7.1 itself turns the count-up loops into retail's load-once countdowns (so the loop text no longer fights Ego_d).
+- p5 (p4 with Z * Y operand order): same count, wrong register roles. p4 is the best text. Grades used: 6.
+- What is left in p4 (`p4.out`; `python3 ../tools/rmd.py p4.out 0`):
+  1. Frame order: retail has locked_box at [esp+48h] and the two CPixelFormat temporaries of GetPixelFormat() after it ([esp+60h] / [64h]);
+     p4 has the two temporaries first ([48h] / [4Ch]) and the box at [50h]. Every other hunk with a shifted displacement is this.
+  2. Z: retail loads it into edi before `mov ebp,eax` (0x00A69008), keeps it for the cz loop and reloads it after the inline Read's
+     `rep movs`; p4 loads it one instruction later, into another register, and reads it again at the loop.
+  3. PMem: retail re-reads [esp+5Ch] at the Read (0x00A6908F, 0x00A690CA); p4 keeps it in a register.
+- Not tried (each one grade): the same-TU bodies as plain (non-inline) member definitions in TU order as the twin has them (GetPixelFormat,
+  GetDimensions, Lock, Unlock), which is the likeliest lever for the frame order; the twin's cast spelling
+  `(unsigned __int64)GetByteColourDepth() * (__int64)X`; the 3D twin of this function, LoadFromDataStreamToExistingVolume, if retail has one.
+- Lander notes for p4: it defines `?Lock@CVolumeTexture@@QAE?AVCVolumeLockedBox@@KK@Z` a second time (the twin's known-LNK2005 pattern;
+  its copy must be compared with 0x00A685E0: not done), and it carries the Lock row's 13 extra defines / 4 includes.
+The sections below are the state before this update (p3, without the Lock body); their "Questions for the advisor" are superseded by the list above.
+
 Best: `p3_00a68de0.cpp` + overlay `hdr/` (patch `hdr.diff`), stock flags: **DIFFER(923v919)**, 43 register-masked lines (`p3.rmd.txt`), frame 0xAC
 as retail. Grades used: 4 (p1 939v919, p2 923, p3 923 / 43 lines, p3 under /Oa 946). The recorded draft could not be regraded: it includes
 engine/CVolumeTextureFileInfo.h, which never landed, and on this lane a missing #include makes cl.exe hang instead of failing (mini/h2.cpp).

@@ -36,3 +36,11 @@ list (0x005A94BD, 0x00409730, 0x00A15890, 0x00CFBDF0, 0x006B97E0).
 | AUTH22 | 0x00A68DE0, 0x00839420, 0x00651273, 0x00816410 | not started (baseline regrades only) | 3 | context ran out on rows 1-2 |
 | AUTH23 | 0x0066B370 checks | `const float&` accessor oracle RELOCATION_MATCH (one form covers 0x0093D270 too); `friend` not attested (0 friend records in any PDB); row-tail pragma rejected (re-modes every template copy) | 3 | owner: land as Inferred once the GetSubDef copy is solved |
 | AUTH23 | 0x00A68DE0 | escalated, DIFFER(923v919) after the Ego_d port (from 939): retail keeps a return-slot local (`locked_box`) live across calls, which VC7.1 kills at every real call in every spelling tried | 4 | Fable 5.2; the old "cl hang" was a missing include |
+| AUTH23 | 0x0066B370 | **landed** RELOCATION_MATCH as Inferred (owner), pick-any device per advisor | 4 (+17 AUTH22) | `batches/2026-11-22_landing_auth23_playallsoundevents/` |
+| AUTH23 | 0x00A68DE0 | escalated, still moving: DIFFER(911v919) (same-TU Lock body as the landed 2D twin moved it) | 6 | |
+| AUTH23 | 0x00839420 | working: DIFFER(1316v1308), 29 masked lines (from 75) | 3 | HANDOFF.md |
+| AUTH23 | 0x00651273, 0x00816410, 0x00502E90 | not started | 0 | context |
+
+**Running score (fresh rows, Fable 5.2):** of the five fresh near misses, 1 landed (0x0066B370, with an owner-approved Inferred accessor
+form), 1 escalated (0x00A68DE0), 1 working (0x00839420), 2 not started; 0x00502E90 (old hard row) escalated. Opus on its 10 hard rows:
+3 authored matches (+1 from Codex text, +1 Inferred by owner override). Not yet comparable: different rows; run the Opus control set.

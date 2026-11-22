@@ -1,5 +1,5 @@
-# 0x00A68DE0 CVolumeTexture::LoadFromDataStream -- NOTES (AUTH23): escalated, DIFFER(923v919)
-See ESCALATE.md for the residue. Source `p3_00a68de0.cpp`, overlay `hdr/` (`hdr.diff`), stock flags.
+# 0x00A68DE0 CVolumeTexture::LoadFromDataStream -- NOTES (AUTH23): escalated, best p4 DIFFER(911v919), 41 masked lines of a new kind
+See ESCALATE.md (UPDATE section first). Source `p4_00a68de0.cpp` (p3 + the same-TU Lock body; p3 was 923v919), overlay `hdr/` (`hdr.diff`), stock flags.
 ## Names and evidence
 | name | evidence |
 |---|---|
