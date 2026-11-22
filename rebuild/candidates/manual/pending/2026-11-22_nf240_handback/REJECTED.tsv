@@ -1,0 +1,3 @@
+address	claim	reason
+0x006A1620	the stand-in name IsThingCarryingMeleeWeapon (0x0068F9D0, 0x0091F050 and their comments)	rejected: 0x006A1620 is the ranged predicate (Ego_r 0x006C60F0 / FableWin 0x02214CE0; Codex p27); the melee one is 0x006A15A0 (Ego_r 0x006C6040)
+0x00739E90 / 0x00739EA0	slot 9 = IsRemoveOnDeactivate, slot 11 = IsAllowingPlayerSpecialMovementMoves (the nine local CModeBase models)	rejected: header order, catalog, CModeStandBase's slot-9 override and FableWin code order all put IsAllowing... at slot 9 (NAME_FIXES)

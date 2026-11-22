@@ -75713,9 +75713,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c2ded'
-        Module = '_global'
-        Source = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2ded.cpp'
-        TestSource = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2ded_test.cpp'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_IsMeleeWeaponDrawn_005c2ded.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_IsMeleeWeaponDrawn_005c2ded_test.cpp'
         PassPattern = 'PASS_005c2ded'
     }
     [pscustomobject]@{
@@ -77176,9 +77176,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005c2df5'
-        Module = '_global'
-        Source = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2df5.cpp'
-        TestSource = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2df5_test.cpp'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_IsRangedWeaponDrawn_005c2df5.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_IsRangedWeaponDrawn_005c2df5_test.cpp'
         PassPattern = 'PASS_005c2df5'
     }
     [pscustomobject]@{

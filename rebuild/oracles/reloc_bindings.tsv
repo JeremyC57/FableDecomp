@@ -5481,7 +5481,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CEnginePrimitiveAttachmentManager@@6BCBaseClassNonCopyable@@@	012a1ab0	00b39f30
 ??0CEngineInternalPrimitiveBase@@QAE@JJ@Z	00b8ff00	00b3a910
 ??_7CEngineInternalAttachedPrimitive@@6B@	012a1a04	00b3a910
-?g_frame@@3GA	0143b8d8	00b3aaa0
 ??_7CEngineInternalAttachedPrimitiveInfo@@6B@	012a1ab8	00b3aae0
 ?Sub_Update@@YIXPAUSub@@@Z	009fc430	00b3b180
 ?Defragment@CBufferOwner_00bd9b50@@QAEXXZ	00bd9b50	00b3b1a0
@@ -27106,7 +27105,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?DrawStatBarOnLeft@CStatBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z	00646762	00646dbd
 ?pop_front@CRetailList_AutoPickup@NPlayerGui@@QAEXXZ	00655aa4	00646dbd
 ?push_back@CMessageDeque@NPlayerGui@@QAEXABUSGuildSealMessage@2@@Z	00656e0c	0064e0da
-?IsThingCarryingRangedWeapon@@YI_NABVCThing@@@Z	006a1620	00664a50
 ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ	006649c0	00664a50
 ?find@CSubDefMap@@QAEPAUSSubDefMapNode@@J@Z	0042b467	00666850
 ?PlayAttachedSampleIndex@CTCSoundPlayer@@QAEKPAVCASoundBank@@JPAVCSoundInit@@_N22@Z	0066b080	0066b300
@@ -32469,7 +32467,6 @@ _CODA_SourceQueueBuffer@16	00c35a10	00c49470
 ?GetGame@CTCGamePlayer@@QBEPAVCTCTavernGame@@XZ	005edc90	0087c070
 ?GetCamera@CTCTavernGameCoinGolf@@QAEXAAVC3DVector@@0@Z	007d3560	0087c150
 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z	0097da40	0091e050
-?IsThingCarryingMeleeWeapon@@YI_NPAVCThing@@@Z	006a1620	0091f050
 ?SetStockState@CTCShop@@QAEXJ@Z	00773c00	00927df0
 ?RemoveStockItemsFromShop@CTCShop@@QAEXXZ	00773e10	00927ea0
 ?StockDisplay@CTCShop@@QAEXXZ	00774c60	00927ea0
@@ -32902,7 +32899,6 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ??_7CEngineBillboardGenerator@@6BCEnginePrimitiveRenderUtil@@@	012a3bf4	00b8b630
 ?DrawCurrentBuffersAsTriFan@CRenderManagerCore@@QAEXJJ@Z	00a0ae40	00b8df50
 ?SelectFlareTestVertexBuffer@CEngineOcclusionManager@@AAEXK@Z	00b8dcd0	00b8df50
-?g_engineFrameNumber@@3GA	0143b8d8	00b91760
 ?ClipWorldSpaceBoundingBox@CEngineCameraMethods@@QBE_NABVC3DBoundingBox@@MAA_N@Z	00b308e0	00b91f50
 ?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAVC3DBoundingBox@@AAMKK@Z	00b919c0	00b91f50
 ?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABVCEngineCamera@@K@Z	00b91f50	00b91f50
@@ -38211,7 +38207,6 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?ReadFromFile@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	0051a240	00500230
 ?CancelAimingWeapon@CTCHeroRangedAttacks@@QAEXXZ	00789ff0	0068f9d0
 ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ	004c7a30	0068f9d0
-?IsThingCarryingMeleeWeapon@@YI_NPBVCThing@@@Z	006a1620	0068f9d0
 ?ProcessRangedAttackInput@CInputProcessUseRangedWeapon@@QAEXABVCInputEvent@@AAVCProcessedInput@@PAVCThing@@@Z	0068ef50	0068f9d0
 ??0CCountedPointer@@QAE@PAUCCreatureAction@@@Z	00695880	00715110
 ??0CCreatureAction_AimMissileWeapon@@QAE@PAVCThing@@@Z	00718650	00715110
@@ -39610,3 +39605,5 @@ _sort32a	00c95560	00c95580
 ?_M_create_node@?$list@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@IAEPAU?$_List_node@W4EHeroAbility@@@2@ABW4EHeroAbility@@@Z	005f807c	005f88c8
 ?SitInSeat@CAIStateGroup_UsesSeat@@IAE_NXZ	00938380	009387c0
 ?UpdateTorchTasks@CTCVillage@@AAEXXZ	00659625	0065c781
+?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0143b8d8	00b92950
+?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a1620	0091ec30

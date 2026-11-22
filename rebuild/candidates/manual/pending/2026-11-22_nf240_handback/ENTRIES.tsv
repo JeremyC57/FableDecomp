@@ -1,0 +1,6 @@
+qid	queue_line
+q12673	land1122nf238	0x0143B8D8 / 0x006A1620	the two held p27 lines no agent probed (0x0143B8D8 first: CEngineInternalPrimitiveBase::CurrentRenderFrame v g_frame / g_engineFrameNumber; 0x006A1620 CTCCarrying::IsThingCarryingRangedWeapon v six stand-ins)
+q12674	land1122nf238	0x00740040	the CModeSitBench ctor self row: port onto NCreatureMode_CModeSitFloor.h (it emits the class vtable) so the address reaches 1 spelling
+q12675	land1122nf238	0x00B260B0 / 0x00B261D0	the CEngine unit: (1) PDB names for CIEngine.h Virtual08_00b27d90 / Virtual11_00b23cf0 / Virtual12_00b24400 / Virtual13_00b242d0; (2) a CEngine.h override opt-in with the 83 overrides in PDB spelling; (3) both rows off their local EngineNative models together (pending/2026-11-22_nf235_handback/NOTES.md entry 3, pending/2026-11-22_nf238_handback/NOTES.md entry 5)
+q12676	land1122nf238	-	the other 23 held p27 lines, where a blocker has fallen (NF236 NOTES entry 5 lists each)
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

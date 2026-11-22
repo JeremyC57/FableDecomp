@@ -39,9 +39,14 @@ class CEnginePrimitiveTypeInfo { public:
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
 namespace NEngineInternal { extern CEnginePrimitiveTypeInfo* GPPrimitiveTypeInfo; }   // 0x01436E84
-extern unsigned short g_engineFrameNumber;                     // 0x0143B8D8
 
 class CEngineInternalPrimitiveBase {
+public:
+    // NF240 (q12673): 0x0143B8D8 is the private static ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA (all three PDBs), stored
+    // through the public inline ?SetAsRendered@CEngineInternalPrimitiveBase@@QAEXXZ (FableWin.pdb / Ego_d.pdb; as in the header).
+    void SetAsRendered() { LastFrameRendered = CurrentRenderFrame; }
+private:
+    static unsigned short CurrentRenderFrame;           // 0x0143B8D8
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -118,7 +123,7 @@ bool CEngineSceneGrid::RenderCellClippedOcclusion(unsigned long x, unsigned long
                 CEngineSubPrimitiveChain chain;
                 long result = manager->RenderPrimitive(*primitive, layer, chain);
                 if (result == 2)
-                    primitive->LastFrameRendered = g_engineFrameNumber;
+                    primitive->SetAsRendered();
                 rendered |= result;
             }
             primitive = primitive->NextPrimitive;

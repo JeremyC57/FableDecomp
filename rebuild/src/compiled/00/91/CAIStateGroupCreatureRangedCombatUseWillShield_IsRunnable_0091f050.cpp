@@ -1,8 +1,8 @@
-// CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable() -- runnable while the creature carries a melee weapon, its targeting component (interface 8) has a target it should attack, and it has no interface 0x93 component
+// CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable() -- runnable while the creature carries a ranged weapon, its targeting component (interface 8) has a target it should attack, and it has no interface 0x93 component
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091F050, length 126 bytes (+ int3 padding).
-// Callees: IsThingCarryingMeleeWeapon(CThing*) @ 0x006A1620 (__fastcall), the interface-map lower bound @ 0x004365B0
+// Callees: CTCCarrying::IsThingCarryingRangedWeapon(const CThing&) @ 0x006A1620 (static __fastcall), the interface-map lower bound @ 0x004365B0
 // (a second instantiation of CVectorMap::LowerBound; interface 8 = bitset word 0 bit 8 -> `mov ecx,[eax+20h] ;
 // test ch,1`), the component's virtual slot 29 (+0x74, its current target), IsToAttackTarget(CThingAICreature*,
 // CThingCreatureBase*) @ 0x00864D00 (__fastcall: creature in ecx, target in edx).
@@ -12,11 +12,14 @@
 // interface-0x93 test is the inline raw bitset probe (`test dword ptr [eax+30h],80000h ; jne false`).
 // Model: local (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h is a flattened base blob).
 #include "fable_compiler.h"
-class CTCBase;
+// NF240 (q12673): 0x006A1620 is ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z (Ego_r.pdb 0x006C60F0 / FableWin.pdb
+//   0x02214CE0; the melee predicate is 0x006A15A0), declared by engine/CTCCarrying.h (PLAYERHIT_PASS26 opt-in, as the witness
+//   0x0091EC30); ETCInterfaceType now comes from the header CTCCarrying.h includes (was a local empty enum).
+#define FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+#include "engine/CTCCarrying.h"
 class CThingCreatureBase;
 class CThingAICreature;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -34,7 +37,6 @@ class CThing { public:
     }
 };
 
-bool __fastcall IsThingCarryingMeleeWeapon(CThing* thing);                              // 0x006A1620
 // NF34 name fix: Ego_r.pdb + FableWin.pdb ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z.
 class CThingAICreature;
 namespace NCreatureAI { bool __fastcall IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target); }   // 0x00864D00
@@ -71,7 +73,7 @@ struct CAIStateGroup_CreatureRangedCombatUseWillShield : CAIStateGroupBase {
 
 bool CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable()
 {
-    if (IsThingCarryingMeleeWeapon(PBrain->Creature)) {
+    if (CTCCarrying::IsThingCarryingRangedWeapon(*PBrain->Creature)) {
         CThing* creature = PBrain->Creature;
         if (creature->HasInterface(8)) {
             CThingCreatureBase* target = ((CTCTargeting*)creature->FindInterface(8))->GetTarget();

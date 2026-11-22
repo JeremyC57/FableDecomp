@@ -233,6 +233,19 @@ class CEngineSceneGridCell;
 #pragma pack(push, 1)
 class CEngineInternalPrimitiveBase {
 public:
+#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTRENDERFRAME
+    // Opt-in (NF240, 2026-11-22, rows 0x00B32660 CEnginePrimitiveRenderer::FrameStart / 0x00B92C20 CEngineSceneGrid::RenderCellAll):
+    // the frame counter @ 0x0143B8D8 is ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA (a private static ushort; Ego_r.pdb,
+    // FableWin.pdb, Ego_d.pdb). Its two public accessors, inline in retail: ?SetAsRendered@CEngineInternalPrimitiveBase@@QAEXXZ
+    // (FableWin.pdb / Ego_d.pdb; the store to +0x36 the scene renderers expand, as in the PASS27 block above) and
+    // ?IncrementFrameCounter@CEngineInternalPrimitiveBase@@SIXXZ (FableWin.pdb / Ego_d.pdb; retail FrameStart 0x00B3271B
+    // `inc word ptr [0x0143B8D8]`). Static members only: no layout change.
+    void SetAsRendered() { LastFrameRendered = CurrentRenderFrame; }
+    static void FABLE_FASTCALL IncrementFrameCounter() { ++CurrentRenderFrame; }
+private:
+    static unsigned short CurrentRenderFrame;                // 0x0143B8D8
+public:
+#endif
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08

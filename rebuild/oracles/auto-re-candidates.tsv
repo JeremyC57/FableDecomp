@@ -10782,7 +10782,7 @@ address	name	length	bytes
 0058a724	CTCInventory::GetStyleCardsListUIComponent	5	e9d4a9ffff
 005bcf4c	NInventory::CTCInventoryBase::SetQuestPersistentFlagForItems	5	e9b4faffff
 005bd1ae	NInventory::CCategory::GetCategoryThingAssociation	5	e99d494400
-005c2ded	_global::Forward_IsThingCarryingMeleeWeapon_via0x4_005c2ded	8	8b4904e9abe70d00
+005c2ded	CTCInventoryWeapons::IsMeleeWeaponDrawn	8	8b4904e9abe70d00
 00643d7c	NPlayerGui::CDrawBase::GetPlayer	8	8b4908e9ec5be0ff
 00643d84	NPlayerGui::CDrawBase::GetPlayer	8	8b4908e9e45be0ff
 006590bf	CTCVillage::EndSecuritySweep	5	e9dcffffff
@@ -10991,7 +10991,7 @@ address	name	length	bytes
 00566550	_global::Dtor_CCharStringBase_00566550	19	568bf18d4e08e8b54f43008bce5ee9ad4f4300
 0056d6e0	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	20	568bf18d4e28e835f8ffff8d4e245ee92cf8ffff
 00591f62	_global::Dtor_CCharStringBase_00591f62	19	568bf18d4e04e873cb40008bce5ee96bcb4000
-005c2df5	_global::Forward_IsThingCarryingMeleeWeapon_via0x4_005c2df5	8	8b4904e923e80d00
+005c2df5	CTCInventoryWeapons::IsRangedWeaponDrawn	8	8b4904e923e80d00
 00628fb0	_global::Dtor_CCreatureActionBaseBase_00628fb0	22	568bf18d8ea8000000e8528c3d008bce5ee92aaf0600
 006290e0	_global::Dtor_CCreatureActionBaseBase_006290e0	22	568bf18d8ea8000000e8228b3d008bce5ee9faad0600
 00643ff6	NPlayerGui::CCrimeStatBar::SetFine	10	8b442404894168c20400

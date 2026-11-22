@@ -1,0 +1,24 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x005C2DED	CTCInventoryWeapons	IsMeleeWeaponDrawn	?IsMeleeWeaponDrawn@CTCInventoryWeapons@@QBE_NXZ	_global::Forward_IsThingCarryingMeleeWeapon_via0x4_005c2ded	?Run@T@@QAEXXZ	Ego_r.pdb 0x00624F7A / FableWin.pdb 0x0237C819 (CODEXP27 L38); binder 0x0064B1AC (paired call at retail 0x0064B293) binds it; body mov ecx,[ecx+4] (CTCBase::ParentThing) ; jmp 0x006A15A0 (CTCCarrying::IsThingCarryingMeleeWeapon). Files: rename to 00/5c/CTCInventoryWeapons_IsMeleeWeaponDrawn_005c2ded(.cpp|_test.cpp)
+0x005C2DF5	CTCInventoryWeapons	IsRangedWeaponDrawn	?IsRangedWeaponDrawn@CTCInventoryWeapons@@QBE_NXZ	_global::Forward_IsThingCarryingMeleeWeapon_via0x4_005c2df5	?Run@T@@QAEXXZ	Ego_r.pdb 0x00624F82 / FableWin.pdb 0x0237C837 (CODEXP27 L39); binder 0x0064B1AC (paired call at retail 0x0064B2B7) binds it; body mov ecx,[ecx+4] ; jmp 0x006A1620 (CTCCarrying::IsThingCarryingRangedWeapon). Files: rename to 00/5c/CTCInventoryWeapons_IsRangedWeaponDrawn_005c2df5(.cpp|_test.cpp)
+0x00B3AAA0	CEngineInternalPrimitiveBase	WasRendered	?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ	CEngineInternalPrimitiveBase::WasRendered	?WasRendered@CEngineInternalPrimitiveBase_Methods@@QAEHXZ	leaf-only (catalog name already right): Ego_r.pdb / FableWin.pdb / Ego_d.pdb protected virtual const; 43 vtable references (absrefs); the stand-in leaf is bound by no landed row
+0x00740040	NCreatureMode::CModeSitBench	CModeSitBench	??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z	NCreatureMode::CModeSitBench::CModeSitBench	??0CModeSitBench@@QAE@PAVCThing@@@Z	leaf-only (catalog name right): Ego_r.pdb / FableWin.pdb / Ego_d.pdb; binders 0x00742790 / 0x00938380 bind it; header port (it emits the vtable)
+0x00739E70	CTCCreatureModeManager::CModeBase	GetMovementSpeed	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	CTCCreatureModeManager::CModeBase::GetMovementSpeed	?vfunc_7@CClass_00739e70@@QAEMJJJ@Z	leaf-only: Ego_r.pdb 0x0051C5F0 / FableWin.pdb 0x01DD6780 / Ego_d.pdb; vtable slot 7 of 0x012673CC (25 vtable refs, no code ref)
+0x00739E90	CTCCreatureModeManager::CModeBase	IsAllowingPlayerSpecialMovementMoves	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	CTCCreatureModeManager::CModeBase::IsAllowingPlayerSpecialMovementMoves	?IsAllowingPlayerSpecialMovementMoves@CModeBase@@QAE_NXZ	leaf-only: Ego_r.pdb / FableWin.pdb 0x01DD67A0 / Ego_d.pdb; vtable slot 9 (29 vtable refs, no code ref); FableWin order GetMovementSpeed 0x01DD6780 then this 0x01DD67A0
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x00B32660	?g_engineFrameNumber@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00B91760	?g_engineFrameNumber@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00B92500	?g_engineFrameNumber@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00B92790	?g_engineFrameNumber@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00B92C20	?g_engineFrameNumber@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00B943F0	?g_engineFrameNumber@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00B3AAA0	?g_frame@@3GA	?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0x0143B8D8
+0x00664A50	?IsThingCarryingRangedWeapon@@YI_NABVCThing@@@Z	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A1620
+0x0068F9D0	?IsThingCarryingMeleeWeapon@@YI_NPBVCThing@@@Z	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A1620
+0x0091F050	?IsThingCarryingMeleeWeapon@@YI_NPAVCThing@@@Z	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A1620
+0x005C2DF5	?Run_006a1620@Sub@@QAEXXZ	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A1620
+0x005C2DED	?Run_006a15a0@Sub@@QAEXXZ	?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A15A0
+0x00740040	??0CModeSitBase@@QAE@PAVCThing@@@Z	??0CModeSitBase@NCreatureMode@@QAE@AAVCThing@@@Z	0x008D7CA0
+0x00740040	??_7CModeSitBench@@6B@	??_7CModeSitBench@NCreatureMode@@6B@	0x01267BFC
+0x00740040	?v00@CModeSitBench@@UAEXXZ	??_ECModeSitBench@NCreatureMode@@UAEPAXI@Z	0x007400E0
+0x00740040	??_C@_00CNPNBAHC@?$AA@	?NullChar@CCharString@@1DB	0x0129AAF4

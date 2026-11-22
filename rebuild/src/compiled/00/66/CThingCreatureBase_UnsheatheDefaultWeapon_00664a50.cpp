@@ -18,7 +18,11 @@
 //   dereference); the creature def is peeked through an inline copy that is released before its fields are read; the
 //   name compare is `!(a == b)` with the manager call evaluated first (member operator== argument).
 #include "fable_compiler.h"
-class CTCBase;
+// NF240 (q12673): 0x006A1620 is ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z (Ego_r.pdb 0x006C60F0 / FableWin.pdb
+//   0x02214CE0, public static fastcall), declared by engine/CTCCarrying.h (PLAYERHIT_PASS26 opt-in, as the witness 0x0091EC30);
+//   ETCInterfaceType now comes from the header that CTCCarrying.h includes (was a local empty enum).
+#define FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+#include "engine/CTCCarrying.h"
 
 class CDefString { public:
     long m_index;
@@ -82,7 +86,6 @@ class CTCCombat { public:
     void SetCombatType(const CDefPointer<const CCombatTypeDef>& def);   // 0x007355F0 (Ego_r.pdb)
 };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -110,7 +113,6 @@ class CThing { public:
         return (it == end || type < it->first ? end : it)->second;
     }
 };
-bool __fastcall IsThingCarryingRangedWeapon(const CThing& thing);   // 0x006A1620
 
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad74[0xe0 - 0x74];
@@ -131,7 +133,7 @@ void CThingCreatureBase::UnsheatheDefaultWeapon()
 {
     if (GetDef()->UseMeleeWeaponAsDefault) {
         UnsheatheMeleeWeapon();
-    } else if (!IsBusy() && !IsThingCarryingRangedWeapon(*this)) {
+    } else if (!IsBusy() && !CTCCarrying::IsThingCarryingRangedWeapon(*this)) {
         SheatheAllWeapons();
         UnsheatheWeapon(GetDef()->RangedWeaponDef, true);
     }

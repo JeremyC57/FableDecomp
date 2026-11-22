@@ -19,12 +19,15 @@
 //   CArray of 8-byte counted pointers), ClothRenderer +0x2f0 (the PDB +0x2f4 less 4).
 // Shape: the screen size is `min((float)width, LODVirtualScreenSize)` converted to unsigned (ftol + 2^32 fix-up); the by-value
 //   C2DExtentsI result must land in a NAMED local (`fild [esp+4]`; a temporary member read gives `fild [eax]`).
+// NF240 (q12673): the frame number @ 0x0143B8D8 is the private static ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA (all three
+//   PDBs); FrameStart bumps it through the public static inline IncrementFrameCounter (FableWin.pdb / Ego_d.pdb, `inc word ptr`).
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_CURRENTRENDERFRAME
+#include "engine/CEngineInternalPrimitiveBase.h"
 class CEngineComponentParams;
 class CPixelShader { public: void* _vptr; void* PShader; };
 
 class CEngineInterpolationInfo { public: long _body[0x70 / 4]; };
 extern CEngineInterpolationInfo g_EngineInterpolationInfo;   // 0x0143B8E0
-extern unsigned short g_engineFrameNumber;                     // 0x0143B8D8
 
 class CEngineComponentParams {
 public:
@@ -160,7 +163,7 @@ void CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params)
         PixelShaderDiffuseDP3BumpFogShadowOutputFactor = &PixelShaderDiffuseDP3BumpFogDepthBufferShadowOutputFactor;
     }
     g_EngineInterpolationInfo = params.InterpolationInfo;
-    ++g_engineFrameNumber;
+    CEngineInternalPrimitiveBase::IncrementFrameCounter();
     for (unsigned long i = 0; i < PrimitiveManagers.GetCount(); ++i)
         PrimitiveManagers.m_pFirst[i].Data->FrameStart();
     ClothRenderer.Data->FrameStart();
