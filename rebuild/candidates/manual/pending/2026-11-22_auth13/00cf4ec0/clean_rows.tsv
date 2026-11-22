@@ -1,0 +1,215 @@
+00cbf6dc	290	1	pragma	_global::GiveGameInfo	00cbf7f4
+00e0ad40	531	1	no-shared-header,Destroy,localclass	NScript::CQ_TraderEscortScript::CRockTrollTrigger::Main	00e0af25
+00deb000	636	2	no-shared-header,Destroy,localclass,fi-dtor	NScript::CQ_RansomVictimScript::CVictimsBrother::DealWithHeroHittingMe	00deb1f0 00deb20d
+00efc500	721	1	no-shared-header,Destroy,localclass,fi-dtor	NScript::CPersonalScript_AardvarkScript::Main	00efc74b
+00dc21f0	750	1	no-shared-header,pragma,Destroy,localclass,fi-dtor	NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::Main	00dc24b7
+00e9a270	838	1	no-shared-header,localclass	CV_HeroDuelScript::WatchForHeroEnteringCave	00e9a586
+00da0230	925	1	no-shared-header,localclass	NScript::CQ_MinionCampScript::DoMission	00da04de
+00d44cb0	944	1	CLEAN	NScript::CQ_GuildTrainingScript::RunArrivalCutscene	00d4501d
+00dd1af0	959	2	no-shared-header,localclass,fi-dtor	NScript::CQ_OrchardFarmRaidScript::DoMultiplierCutscene	00dd1e4c 00dd1e62
+00dd9520	986	1	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_PrisonEscapeRescueMotherScript::SplittingUpCutscene	00dd98ca
+00eb15c0	1010	3	no-shared-header,Destroy,localclass,fi-dtor	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoGivingRewardToHero	00eb171c 00eb194e 00eb196c
+00ddd030	1019	2	no-shared-header,Destroy,localclass,fi-dtor	NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::Main	00ddd37b 00ddd3e9
+00eb4f80	1044	2	no-shared-header,Destroy,localclass,fi-dtor	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoRemindingHeroToKillSheriff	00eb5123 00eb5387
+00e73410	1091	2	no-shared-header,localclass,fi-dtor	NScript::CV_DemonDoorsScript::CDF_MarryLadyGrey::Main	00e73714 00e73834
+00e9b240	1094	2	flags	NScript::CV_HeroDuelScript::DuelLost	00e9b54d 00e9b5d4
+00dbeb20	1095	1	no-shared-header,Destroy,localclass	NScript::CQ_NewOakValeIntroScript::PostAttackStuff	00dbeea5
+00e6f710	1107	2	no-shared-header,localclass,fi-dtor	NScript::CV_DemonDoorsScript::CDF_CombatMult::Main	00e6fa23 00e6fb44
+00e71450	1108	2	no-shared-header,localclass,fi-dtor	NScript::CV_DemonDoorsScript::CDF_EatPies::Main	00e71765 00e71885
+00eb3740	1108	2	no-shared-header,Destroy,localclass,fi-dtor	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoSayingThankYouToHero	00eb38f9 00eb3b4e
+00dc3fc0	1111	1	no-shared-header,Destroy,localclass,fi-dtor	NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon::Main	00dc4401
+00e1b1f0	1131	1	no-shared-header,Destroy,localclass,fi-dtor	NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer::Main	00e1b645
+00daa700	1133	1	pragma	NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner::Main	00daa8ab
+00e6f1c0	1140	2	no-shared-header,localclass,fi-dtor	NScript::CV_DemonDoorsScript::CDF_ThunderHelmet::Main	00e6f4fa 00e6f615
+00e9be60	1171	2	flags	NScript::CV_HeroDuelScript::Duel	00e9c236 00e9c2b3
+00daa260	1172	1	no-shared-header,pragma,localclass,fi-dtor	NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator::Main	00daa404
+00eb5d50	1185	3	no-shared-header,Destroy,localclass,fi-dtor	CMurderTwistAssassinGuard::DoSayingThankYouToHero	00eb5f1a 00eb618b 00eb61aa
+00d33280	1190	1	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_EndGameBossBattleScript::CSwordVoid::Main	00d33695
+00ea8130	1191	2	no-shared-header,localclass,fi-dtor	NScript::CV_MazeResearchScript::CEmptyGrave::Main	00ea8526 00ea85b8
+00eb2900	1203	3	flags	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoRemindingHeroToKillAssassin	00eb2ab9 00eb2d46 00eb2d6c
+00eb2dc0	1203	3	flags	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBossAgain	00eb2f79 00eb3206 00eb322c
+00eb3280	1203	3	flags	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoCongratulatingHero	00eb3439 00eb36c6 00eb36ec
+00e71980	1205	2	no-shared-header,localclass	NScript::CV_DemonDoorsScript::CDF_GiveGift::Main	00e71c99 00e71dfe
+00eebdf0	1240	2	CLEAN	NScript::CExpression_StealScript::Main	00eec256 00eec28a
+00ef4b40	1268	3	flags,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CPersonalScript_EmptyScript::CTestPerson::Main	00ef4e56 00ef4fd4 00ef5012
+00eeb7b0	1272	2	no-shared-header,localclass	NScript::CExpression_PicklockScript::Main	00eebc36 00eebc6a
+00eb10c0	1274	2	no-shared-header,Destroy,localclass,fi-dtor	CMurderTwistSheriff::DoBecomingSuspiciousOfHero	00eb1289 00eb12b0
+00eb19c0	1274	2	no-shared-header,Destroy,localclass,fi-dtor	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoSayingWellDoneToHero	00eb1b89 00eb1bb0
+00e7ab50	1275	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_ExposeMayorScript::PhaseFour	00e7af67 00e7afec 00e7b037
+00d86c30	1296	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR	NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::Main	00d86e9a 00d870b7 00d8712a
+00eb23e0	1298	3	no-shared-header,Destroy,localclass,fi-dtor	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::DoAskingHeroToSpeakToBoss	00eb25b8 00eb2885 00eb28ab
+00d49d50	1304	1	no-shared-header,localclass	CQ_GuildTrainingScript::RunCeremonyCutscene	00d4a226
+00d79d50	1333	3	no-shared-header,localclass	NScript::CQ_HeroSoulsScript::CEndScythe::Main	00d79fdb 00d7a1f8 00d7a26f
+00d7a360	1333	3	no-shared-header,localclass	NScript::CQ_HeroSoulsScript::CEndBriarRose::Main	00d7a5eb 00d7a808 00d7a87f
+00e9a970	1341	2	flags	NScript::CV_HeroDuelScript::FirstFleeCutscene	00e9ad95 00e9ae3e
+00e96110	1356	1	flags,pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_HauntedHouseScript::CM_QuestControl::Main	00e96453
+00efa4f0	1362	3	flags	NScript::Cbandit_level_cutsceneScript::Main	00efa92b 00efaa19 00efaa35
+00edf3a0	1387	1	no-shared-header,localclass,fi-dtor	NScript::CV_TravellingHeroesScript::CTH_ThunderBoy::Main	00edf8c7
+00edfa00	1387	1	no-shared-header,localclass,fi-dtor	NScript::CV_TravellingHeroesScript::CTH_ThunderGirl::Main	00edff27
+00e2a320	1503	2	no-shared-header,pragma,localclass,fi-dtor	NScript::CQS_ScytheInfoScript::CScytheNearOracle::Main	00e2a838 00e2a8e0
+00eea7c0	1506	1	no-shared-header,localclass	NScript::CExpression_DigScript::Main	00eead8d
+00da9c70	1509	1	no-shared-header,localclass	NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard::Main	00da9f8e
+00ec4a00	1540	1	pragma	NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll::Main	00ec4ed5
+00eec890	1544	2	no-shared-header,localclass,fi-dtor	NScript::CGlobal_OpenChestScript::Main	00eecdac 00eecdf9
+00e6ea30	1549	2	no-shared-header,localclass	NScript::CV_DemonDoorsScript::CDF_ShineLight::Main	00e6edec 00e6f00f
+00eaf1e0	1573	3	flags	NScript::CV_MurderTwistFinalScript::PlayBeingRumbledCutscene	00eaf6f6 00eaf790 00eaf7f8
+00eb40c0	1601	4	CLEAN	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoWatchingForTrouble	00eb429a 00eb42c1 00eb45e2 00eb4600
+00ee1e40	1603	5	no-shared-header,localclass,fi-dtor	NScript::CV_TravellingHeroesScript::CTH_Maze::Main	00ee23c5 00ee2434 00ee244c 00ee2464 00ee247c
+00e71f10	1605	4	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_DemonDoorsScript::CDF_DressAsBandit::Main	00e72392 00e724af 00e72507 00e72536
+00e7c010	1623	3	CLEAN	NScript::CV_FishermanScript::NPCAttitudeProcess	00e7c461 00e7c61c 00e7c660
+00e1cfd0	1638	1	no-shared-header,Destroy,localclass	NScript::CQ_WizardBattleScript::PhaseOne	00e1d505
+00ee7a20	1659	4	no-shared-header,localclass	NScript::CV_TrophyDealerScript::CDemonDoorFace::Main	00ee7cc4 00ee7db3 00ee7dd9 00ee7f8f
+00e6fc40	1664	1	CLEAN	NScript::CV_DemonDoorsScript::CDF_Dragon::Main	00e70272
+00e73930	1725	2	no-shared-header,localclass,fi-dtor	NScript::CV_DemonDoorsScript::CDF_SexMad::Main	00e73eaa 00e73fce
+00e8b020	1748	2	CLEAN	NScript::CV_FisticuffsClubScript::CRingFighter::Main	00e8b574 00e8b5b7
+00d37530	1783	1	no-shared-header,Destroy,localclass,fi-dtor	NScript::CQ_FireHeartScript::CFH_Villager::Main	00d37bef
+00ed5830	1819	4	pragma	NScript::CV_SwordInTheStoneScript::SwordPullCutscene	00ed5b7e 00ed5c1d 00ed5def 00ed5e83
+00e9cfd0	1833	1	CLEAN	NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher::Main	00e9d6a9
+00efdc40	1847	4	CLEAN	NScript::CMarkTestScriptsScript::CShopKeeper::Main	00efe277 00efe29f 00efe2f3 00efe31b
+00d50c60	1882	2	no-shared-header,localclass,fi-dtor	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main	00d5102a 00d513a4
+00dc8c80	1901	1	no-shared-header,pragma,Destroy,localclass	NScript::CQ_OpeningGraveyardSecretPassageScript::CheckDoor	00dc9290
+00e70bc0	1970	3	CLEAN	NScript::CV_DemonDoorsScript::CDF_DoDamage::Main	00e710b8 00e71204 00e71350
+00e46d30	1971	1	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_BanditCampPathScript::Main	00e4723a
+00df80b0	2004	1	no-shared-header,localclass,fi-dtor	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Main	00df8854
+00eccad0	2033	7	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_SickChildScript::CTalkingTrader2::Main	00eccefc 00ecd1dc 00ecd216 00ecd231 00ecd24f 00ecd26d 00ecd296
+00e25f70	2049	3	pragma	NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::Main	00e264b8 00e26682 00e26758
+00eb4760	2075	2	CLEAN	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::DoDealWithHero	00eb4ea4 00eb4f6e
+00e74d70	2080	4	CLEAN	NScript::CV_DemonDoorsScript::CDF_SummonsCreatures::Main	00e751dc 00e75215 00e75230 00e7555f
+00eac5b0	2089	4	CLEAN	NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend::Main	00eacca5 00eacd4c 00eacd9d 00eacdc3
+00eacf00	2089	4	CLEAN	NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend::Main	00ead5f5 00ead69c 00ead6ed 00ead713
+00d368d0	2147	6	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_FireHeartScript::CFH_GuildMaster::Main	00d36d48 00d36f57 00d370db 00d370f3 00d3710e 00d37129
+00eb0830	2185	6	flags	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoRemindingHeroToKillAssassin	00eb099e 00eb09c8 00eb0d73 00eb0e66 00eb1083 00eb10ac
+00e72630	2252	1	CLEAN	NScript::CV_DemonDoorsScript::CDF_ThreeSuits::Main	00e72ec8
+00d51520	2280	1	pragma	NScript::CQ_GuildTrainingPreMeleeScript::Main	00d51c4f
+00f000e0	2343	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::COracleMinigameTestScript::COracleGamesmaster::Main	00f00888 00f009e5
+00ee95c0	2357	1	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CExpression_FishScript::Main	00ee9edf
+00ea0090	2392	3	CLEAN	NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::Main	00ea0423 00ea056a 00ea09d2
+00dcfa60	2412	2	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_OrchardFarmRaidScript::DoCutsceneIfRequired	00dd00fd 00dd02f5
+00eadbb0	2452	5	CLEAN	NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger::Main	00eae266 00eae2c3 00eae458 00eae507 00eae52e
+00eabb30	2468	4	CLEAN	NScript::CV_MurderTwistScript::CMurderTwistBrotherOlder::Main	00eac2e1 00eac3dc 00eac492 00eac4bb
+00e26e30	2477	4	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::Main	00e272e7 00e274df 00e27680 00e2769b
+00d328c0	2484	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_EndGameBossBattleScript::CEndGameSister::Main	00d32ef4 00d33137
+00ec5de0	2499	3	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_SickChildScript::CSickChild::Main	00ec64d6 00ec66f8 00ec6781
+00e17840	2515	3	flags,pragma	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Main	00e17e74 00e180f6 00e181fa
+00efcc50	2517	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CMarkTestScriptsScript::CTestMan::Main	00efd433 00efd603
+00deb280	2528	7	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_RansomVictimScript::CVictimsBrotherHelper::Main	00deb5b1 00deb71b 00deb987 00deba15 00deba2f 00deba73 00deba90
+00e19d80	2539	3	CLEAN	NScript::CQ_WhiteBalverineWWScript::CKG_Chief::Main	00e1a2c2 00e1a6e5 00e1a752
+00d524a0	2540	2	CLEAN	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::Main	00d52763 00d52dc7
+00dc1770	2546	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit::Main	00dc1eb2 00dc2110
+00e776f0	2564	3	CLEAN	NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager::Main	00e78063 00e7808d 00e780b4
+00e799f0	2580	6	pragma	NScript::CV_ExposeMayorScript::CEM_Rhodri::Main	00e79de9 00e7a30d 00e7a325 00e7a36f 00e7a387 00e7a3fa
+00eaafe0	2598	4	CLEAN	NScript::CV_MurderTwistScript::CMurderTwistBrother::Main	00eab770 00eab909 00eab9c5 00eab9ed
+00e40420	2647	4	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_BordelloScript::CBordelloGuard::Main	00e40a67 00e40caa 00e40dfa 00e40e5e
+00ecd9e0	2679	10	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_SickChildScript::CSickChildsMother::Main	00ecdcd1 00ecdfa8 00ece087 00ece2bd 00ece36c 00ece3c7 00ece3e7 00ece407 00ece427 00ece447
+00e055b0	2716	6	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_TraderEscortScript::CEndTrader::Main	00e058da 00e05a66 00e05c55 00e05f7b 00e05fcc 00e06021
+00f170c0	2724	2	CLEAN	NScript::CQ_ArenaScript::CCellWhisper::Main	00f17a54 00f17b36
+00eedc20	2728	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CPersonalScript_alextestScript::CBurningPerson::Main	00eee0b8 00eee44c 00eee694
+00dc7490	2745	9	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend::Main	00dc7dc3 00dc7e8c 00dc7ea6 00dc7ebd 00dc7ed4 00dc7eee 00dc7f0b 00dc7f25 00dc7f3f
+00f14a90	2746	3	CLEAN	NScript::CQ_ArenaScript::CFlick::Main	00f1517f 00f1546e 00f15531
+00da91a0	2765	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_MinionClifftopChaseScript::CMapKeeper::Main	00da9454 00da9c0c
+00dadf80	2787	5	flags,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Main	00dae2e4 00dae3ab 00daea06 00daea21 00daea39
+00e740c0	2812	2	CLEAN	NScript::CV_DemonDoorsScript::CDF_KeyHoarder::Main	00e748ab 00e74b8b
+00d7e0c0	2834	3	CLEAN	NScript::CQ_HeroSoulsArenaScript::CHOHGuard::Main	00d7e8f4 00d7e9da 00d7eb64
+00f15660	2876	3	CLEAN	NScript::CQ_ArenaScript::CNeedle::Main	00f15dbd 00f160ae 00f16171
+00e8bef0	2922	3	CLEAN	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyDaughterInLaw::Main	00e8c6a8 00e8c998 00e8ca38
+00ecbdf0	2928	7	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_SickChildScript::CTalkingTrader1::Main	00ecc53c 00ecc841 00ecc891 00ecc8b2 00ecc8d0 00ecc8ee 00ecc91a
+00eaf810	2945	5	flags	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoAskingHeroToKillAssassin	00eafc53 00eafc79 00eb00c1 00eb0309 00eb0338
+00ecb0e0	2963	3	CLEAN	NScript::CV_SickChildScript::CIngredientOwner::Main	00ecb9e6 00ecbb95 00ecbc48
+00eb8900	2964	5	CLEAN	NScript::CV_MayorsInvitationScript::CMI_InfoKeeper::Main	00eb8ebc 00eb9059 00eb91e8 00eb9381 00eb93a8
+00d77690	3064	3	CLEAN	NScript::CQ_HangingTreeGoodScript::DoCutscene	00d77cb6 00d7802d 00d78262
+00dea3f0	3076	4	pragma	NScript::CQ_RansomVictimScript::CVictimsBrother::Main	00dea9ec 00dead79 00deaf9d 00deafc4
+00f19bb0	3158	3	CLEAN	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::Main	00f1a355 00f1a6d4 00f1a7ed
+00d82640	3260	4	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_HeroSoulsBriarScript::CBriarRose::Main	00d82b79 00d82e12 00d82e2d 00d82e48
+00d33730	3292	3	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster::Main	00d33b89 00d33ffb 00d3437a
+00eb7b00	3334	8	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR	NScript::CV_MayorsInvitationScript::CWiseVillager::Main	00eb81d7 00eb84b7 00eb84e1 00eb850e 00eb853b 00eb875c 00eb8786 00eb87d3
+00f162b0	3368	3	CLEAN	NScript::CQ_ArenaScript::CShadow::Main	00f16beb 00f16ede 00f16fa1
+00d40cf0	3380	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_GuildTrainingScript::CMeleeApprentice::Main	00d41236 00d41813 00d41a02
+00d45060	3439	1	flags,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks	00d45c12
+00dd4ad0	3467	2	pragma,fi-dtor	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice::Main	00dd4f7b 00dd545c
+00d7b510	3524	3	CLEAN	NScript::CQ_HeroSoulsThunderScript::CHeroThunder::Main	00d7baa5 00d7bd53 00d7bdc4
+00e54e90	3534	5	CLEAN	NScript::CV_BookCollectingScript::CBS_Teacher::Main	00e55a03 00e55a33 00e55bef 00e55c2a 00e55c4e
+00e57e60	3567	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_BeggarAndChildScript::Main	00e58574 00e58be8
+00e27e90	3595	5	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::Main	00e283f5 00e28659 00e28ac4 00e28c12 00e28c85
+00e97070	3619	4	fi-dtor	NScript::CV_HeroDollsScript::CBS_Teacher::Main	00e97d6c 00e97d96 00e97dc0 00e97e71
+00e8dfa0	4056	2	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::Main	00e8eb9b 00e8ec14
+00ece7f0	4086	9	CLEAN	NScript::CV_SickChildScript::CWitch::Main	00ecf2a1 00ecf2c1 00ecf3d9 00ecf3f6 00ecf4e5 00ecf73d 00ecf77e 00ecf79d 00ecf7cd
+00dc27c0	4134	1	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_OpeningGraveyardSecretPassageScript::Main	00dc31f4
+00f1b9c0	4198	3	CLEAN	NScript::CQ_ArenaScript::CArenaCellExitGuard::Main	00f1c523 00f1c7bb 00f1ca0d
+00db6c60	4241	4	CLEAN	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::Main	00db6f49 00db739b 00db7bab 00db7cd8
+00dc5f80	4245	2	pragma,Destroy	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main	00dc6b99 00dc6ff6
+00d3d150	4252	3	CLEAN	NScript::CQ_GuildTrainingScript::CAppleGirl::Main	00d3e004 00d3e07b 00d3e096
+00ed17d0	4279	15	flags,pragma	NScript::CV_SingingStonesScript::CManWithDoorName::Main	00ed1bf9 00ed1db3 00ed2414 00ed2613 00ed2700 00ed271a 00ed2761 00ed277b 00ed27a6 00ed27c3 00ed27e0 00ed27fd 00ed281a 00ed2834 00ed285c
+00d8abf0	4306	2	CLEAN	NScript::CQ_HerosOldHouseScript::CGhostFisherman::Main	00d8bc00 00d8bc68
+00dbcd60	4309	8	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Main	00dbd15c 00dbd3f7 00dbd4e8 00dbd9ae 00dbdc4a 00dbddba 00dbddd5 00dbde0a
+00dc4d70	4319	3	pragma	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan::Main	00dc56d8 00dc59cd 00dc5e2d
+00db86b0	4325	5	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Main	00db8a58 00db8ad7 00db9494 00db971b 00db977c
+00e0f8a0	4389	3	flags,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR,noinline	NScript::CQ_WaspBossScript::CWaspHelper::Main	00e0fc14 00e0fd86 00e0fda1
+00de2610	4420	4	pragma	NScript::CQ_RansomVictimScript::CVictimsFatherGuard::Main	00de2f4e 00de350d 00de3665 00de368c
+00d9a190	4441	5	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_HobbeToothContestScript::Main	00d9a9e0 00d9a9fc 00d9aa18 00d9abe1 00d9b2ac
+00e0b160	4584	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_UndeadRisingScript::Main	00e0bce1 00e0c038 00e0c245
+00ddf090	4599	4	pragma	NScript::CQ_PrisonWardenGameScript::CPrisonWarden::Main	00ddf99e 00ddffcf 00de0063 00de0218
+00dd9a50	4696	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_PrisonEscapeRescueMotherScript::ResetCells	00dda179 00dda231 00dda6aa
+00ec9d30	4708	5	CLEAN	NScript::CV_SickChildScript::CMansLover::Main	00eca337 00ecae33 00ecaf2c 00ecaf42 00ecaf5b
+00d706e0	4755	1	pragma	NScript::CQ_HangingTreeGoodScript::CHTG_Guard::Main	00d71755
+00ea36b0	4804	5	CLEAN	NScript::CV_LostTraderScript::CLostTraderTrader::Main	00ea4208 00ea4527 00ea4869 00ea4897 00ea4935
+00ecf7f0	4885	8	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR,noinline	NScript::CV_SickChildScript::CWomanToAttract::Main	00ed01e8 00ed068b 00ed09a2 00ed0a00 00ed0a23 00ed0a66 00ed0a8c 00ed0aa6
+00db2b10	4890	7	CLEAN	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::Main	00db32a5 00db396b 00db3b37 00db3cf0 00db3d23 00db3d65 00db3e11
+00de8370	4894	4	flags	NScript::CQ_RansomVictimScript::CRansommer::Main	00de8644 00de87e3 00de8ac1 00de94b1
+00e90be0	4914	7	CLEAN	NScript::CV_GuildMasterScript::CGuildMasterGameFlow::Main	00e90f11 00e918aa 00e91dc5 00e91e29 00e91e5d 00e91e9e 00e91ef9
+00ed5f50	5024	4	pragma	NScript::CV_SwordInTheStoneScript::CSwordCrowd::Main	00ed6575 00ed6709 00ed72a8 00ed72c5
+00e78630	5045	8	CLEAN	NScript::CV_ExposeMayorScript::CEM_Sheriff::Main	00e7955d 00e79588 00e79658 00e7973b 00e7995e 00e79995 00e799b5 00e799d5
+00db09e0	5058	12	CLEAN	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::Main	00db0dbd 00db1093 00db15f8 00db1c9c 00db1cb5 00db1ccf 00db1ce9 00db1d03 00db1d1c 00db1d35 00db1d4c 00db1d63
+00e7c8e0	5358	5	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_FishermanScript::CFisherman::Main	00e7ce3e 00e7d571 00e7d5c3 00e7db80 00e7dc5d
+00daf080	5504	4	pragma	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::Main	00dafa96 00db0189 00db0426 00db05d5
+00de6c20	5511	11	pragma	NScript::CQ_RansomVictimScript::CVictim::Main	00de70bc 00de7489 00de74d6 00de7650 00de7798 00de8002 00de802d 00de805a 00de8087 00de80b4 00de80e1
+00ebcf70	5572	2	pragma	NScript::CV_OracleScript::CVO_OracleMarker::Main	00ebe056 00ebe387
+00e13f10	5589	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_WhiteBalverineKnotholeGladeScript::Main	00e1492b 00e14e8f 00e154a7
+00f063b0	5651	11	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR,noinline	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Main	00f0719b 00f0743e 00f0777f 00f0779c 00f077b9 00f077d6 00f077f3 00f07810 00f0782d 00f0784a 00f07867
+00d6d670	5786	2	flags	NScript::CQ_HangingTreeEvilScript::Conclusion	00d6e9eb 00d6ec25
+00dac760	5867	3	flags,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Main	00dad879 00dadd0a 00dade32
+00e9e420	5915	3	fi-dtor	NScript::CV_IntroductionToTrophiesScript::CBriarRose::Main	00e9e8ed 00e9f8ad 00e9fafe
+00ec68a0	5962	13	FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA	NScript::CV_SickChildScript::CSickChildsSister::Main	00ec6e01 00ec6e42 00ec6e74 00ec7027 00ec75c8 00ec77d5 00ec7821 00ec79c4 00ec7af6 00ec7cc6 00ec7ee6 00ec7f8e 00ec7fd1
+00f0d630	5989	4	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR,noinline	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::Main	00f0e32a 00f0e9be 00f0eb9e 00f0ed46
+00e8ef80	5996	3	flags,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR,noinline	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::Main	00e90236 00e90533 00e906ca
+00db5330	6148	4	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::Main	00db5daf 00db6099 00db6872 00db6af8
+00d56790	6151	3	pragma	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::Main	00d56b7e 00d56e9c 00d56ec6
+00d62480	6195	11	pragma,fi-dtor	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::Main	00d635f3 00d638bf 00d638d8 00d639ff 00d63a46 00d63a72 00d63a8c 00d63aa6 00d63ae2 00d63b00 00d63b17
+00e3eb10	6330	2	pragma	NScript::CV_BordelloScript::CBordelloLady::Main	00e3f73b 00e4007e
+00d8bcd0	6343	14	pragma	NScript::CQ_HerosOldHouseScript::CFishermansWife::Main	00d8c614 00d8c760 00d8c8be 00d8cfb9 00d8cfd3 00d8cfef 00d8d00f 00d8d075 00d8d125 00d8d394 00d8d519 00d8d531 00d8d549 00d8d561
+00ec8300	6394	8	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_SickChildScript::CManInLove::Main	00ec95e4 00ec96c4 00ec9964 00ec9b13 00ec9b3f 00ec9b69 00ec9b95 00ec9bc1
+00dca6d0	6395	17	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper::Main	00dcac18 00dcaf6d 00dcb797 00dcbd4c 00dcbd79 00dcbda6 00dcbdd3 00dcbe00 00dcbe2d 00dcbe5a 00dcbe87 00dcbeb4 00dcbee1 00dcbf0e 00dcbf3b 00dcbf68 00dcbf95
+00dd6a60	6494	4	pragma	NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::Main	00dd744b 00dd7919 00dd79d0 00dd7a4b
+00edd170	6594	19	CLEAN	NScript::CV_TempleOfLightScript::CTOL_AcolyteGood::Main	00ede171 00ede92f 00ede94b 00ede967 00ede983 00ede99f 00ede9bb 00ede9d7 00ede9f3 00edea0f 00edea2b 00edea47 00edea63 00edea7f 00edea9b 00edeab7 00edead0 00edeae9 00edeb02
+00dbb310	6639	12	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::Main	00dbbd7e 00dbc1d3 00dbc299 00dbc79e 00dbc7bf 00dbc7e0 00dbc801 00dbc822 00dbc843 00dbc861 00dbcc13 00dbcc8f
+00de4cb0	6778	7	pragma	NScript::CQ_RansomVictimScript::CVictimsFather::Main	00de5758 00de57cb 00de5bc1 00de5dee 00de642a 00de666c 00de66ff
+00ea59e0	6780	23	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_LostTraderScript::CLostTraderBrother::Main	00ea5d8a 00ea6854 00ea6ac0 00ea6aea 00ea6b17 00ea6b44 00ea6b71 00ea6b9e 00ea6bcb 00ea6bf8 00ea6c22 00ea6c4c 00ea702b 00ea7129 00ea7147 00ea7161 00ea717c 00ea7197 00ea71ae 00ea71c9 00ea71e4 00ea71fb 00ea7345
+00e44ea0	7002	19	CLEAN	NScript::CV_BordelloScript::CBordelloClient::Main	00e45341 00e45633 00e45680 00e456a3 00e456c0 00e456dd 00e45c82 00e464d4 00e465d5 00e46603 00e46631 00e4665f 00e46682 00e466a5 00e466c8 00e466eb 00e46923 00e46991 00e469b1
+00e5b3b0	7012	7	pragma,noinline	NScript::CV_BeggarAndChildScript::CBeggarBully::Main	00e5bac8 00e5bc9f 00e5be33 00e5c318 00e5ce67 00e5ce7d 00e5ce9a
+00db97a0	7013	16	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main	00db9ea8 00dba3d6 00dba80f 00dbaad6 00dbaf0c 00dbaf40 00dbaf65 00dbaf97 00dbafc9 00dbaffa 00dbb02b 00dbb051 00dbb077 00dbb09d 00dbb0d1 00dbb2d3
+00d647f0	7389	6	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::Main	00d64ae0 00d6536a 00d65b95 00d65bb1 00d65bf1 00d66458
+00e6bc50	7655	6	CLEAN	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil::Main	00e6c88a 00e6c9b5 00e6d0ee 00e6d913 00e6d9ca 00e6d9e3
+00f17c70	7740	3	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_ArenaScript::CArenaCellDoorGuard::Main	00f194c8 00f19784 00f19a72
+00ea8f40	7933	9	CLEAN	NScript::CV_MurderTwistScript::CMurderTwistLeader::Main	00ea9a14 00ea9b55 00ea9bbd 00ea9be7 00ea9d33 00eaa0af 00eaa6ff 00eaadd9 00eaadfd
+00e2ff00	8567	15	flags,pragma	NScript::CV_AmbushScamScript::CAS_Buddy::Main	00e30cbc 00e30ecb 00e31106 00e31316 00e3152a 00e317f3 00e31aa6 00e31b76 00e31fab 00e31fc8 00e31fe5 00e31fff 00e32019 00e32030 00e3204a
+00e84b80	8836	3	pragma	NScript::CV_FisticuffsClubScript::CFisticuffsMember::Main	00e85106 00e86d81 00e86d9b
+00e2c100	8945	10	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_AmbushScamScript::CAS_Trickster::Main	00e2c987 00e2ca4d 00e2ca72 00e2cf29 00e2d0dd 00e2d7c8 00e2d98d 00e2e101 00e2e218 00e2e3a2
+00e33ea0	9228	3	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_ArcheryCompetitionScript::CAC_Owner::Main	00e34507 00e361db 00e36281
+00e5fd40	9381	2	CLEAN	NScript::CV_BodyGuardScript::CBodyGuard::Main	00e61b5b 00e621b1
+00d4a270	9388	19	pragma,Destroy,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main	00d4a8c6 00d4aa0a 00d4ab86 00d4ae63 00d4b12f 00d4b6f6 00d4c3d0 00d4c564 00d4c581 00d4c59e 00d4c5bb 00d4c5d8 00d4c5f5 00d4c60f 00d4c62c 00d4c649 00d4c663 00d4c67d 00d4c6a5
+00d3e2e0	9440	4	pragma	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::Main	00d3f531 00d3fd86 00d403dc 00d40729
+00dfe0f0	9501	9	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::Main	00dfeb9e 00dfebbb 00dfebd8 00dff251 00dffecf 00e0026e 00e0028b 00e002a8 00e002c5
+00d58490	9560	6	CLEAN	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::Main	00d58d04 00d59227 00d59364 00d599f0 00d5a572 00d5a971
+00e58d40	9616	14	pragma,noinline	NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::Main	00e59439 00e59945 00e59aa3 00e59c8a 00e59fdd 00e5a136 00e5a283 00e5a535 00e5b1c8 00e5b1df 00e5b1f5 00e5b20b 00e5b221 00e5b241
+00d973d0	9821	5	pragma,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_HobbeCaveScript::CBanditSacrifice::Main	00d97b49 00d97b8c 00d97bfc 00d99390 00d993dd
+00e50fd0	9885	14	pragma	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	00e51644 00e51c6a 00e51ec5 00e5228c 00e5277c 00e52c54 00e52d8a 00e52fe3 00e53309 00e535d4 00e535ee 00e53611 00e53629 00e53640
+00e3bb70	10149	6	flags,pragma	NScript::CV_BordelloScript::CMadame::Main	00e3be32 00e3caab 00e3d08b 00e3dfd0 00e3e2ab 00e3e2ea
+00e4b5b0	10594	7	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CV_BanditTollScript::CTollBandit::Main	00e4c1b9 00e4c59c 00e4caf4 00e4ce89 00e4cea4 00e4d0f1 00e4d4e5
+00d5ae70	11636	7	CLEAN	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::Main	00d5b702 00d5b7d8 00d5c503 00d5d7c7 00d5dacb 00d5db26 00d5db73
+00d52e90	11892	13	Destroy	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::Main	00d53521 00d53b26 00d53fff 00d54256 00d5465c 00d54f3a 00d5547b 00d55607 00d5596e 00d55c83 00d55cb0 00d55ccb 00d55ce9
+00e07640	11984	5	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR,FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Main	00e07dfc 00e07e7c 00e08379 00e0a2de 00e0a341
+00e87030	12551	9	CLEAN	NScript::CV_FisticuffsClubScript::CTyler::Main	00e87dd7 00e87e49 00e894de 00e897d3 00e899d2 00e89eb4 00e89ee3 00e89f12 00e89f2e
+00eb9980	12753	25	noinline	NScript::CV_MayorsInvitationScript::CLadyGrey::Main	00eb9f85 00eb9fd0 00eba731 00eba9f6 00ebada7 00ebadd3 00ebadfb 00ebae23 00ebaf4f 00ebb01f 00ebb04e 00ebb84e 00ebbc9b 00ebbcbe 00ebbcec 00ebbd1a 00ebc033 00ebc27f 00ebc2ad 00ebc61b 00ebc974 00ebc99a 00ebc9d5 00ebca09 00ebcb1d
+00d5e0c0	15084	7	pragma	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::Main	00d5e88f 00d5e97f 00d5ed78 00d606c5 00d61362 00d61aee 00d61b64
+00e40e80	15104	14	CLEAN	NScript::CV_BordelloScript::CMagicman::Main	00e43033 00e43afa 00e43e73 00e444c2 00e445ae 00e44742 00e44821 00e44836 00e4489c 00e448dc 00e448f9 00e44913 00e4492b 00e44945
+00e64fb0	15210	15	CLEAN	NScript::CV_ChickenKickingScript::CChickenMaster::Main	00e6611b 00e66162 00e6617b 00e661f3 00e66444 00e667da 00e66c34 00e6762e 00e68082 00e68a09 00e68a4f 00e68a6c 00e68a88 00e68aa4 00e68ac9
+00f0fb70	18144	9	pragma	NScript::CQ_ArenaScript::Main	00f10efe 00f1179c 00f1346d 00f13755 00f13e92 00f13ee9 00f13f24 00f13f84 00f1415b
