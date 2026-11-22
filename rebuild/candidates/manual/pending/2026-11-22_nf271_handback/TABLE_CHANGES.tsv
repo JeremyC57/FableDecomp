@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+delete	?FreeAlignedVirtual@LandscapeMemoryMethods@@QAEXPAX@Z	00bd9ca0	00bfaae0	its only binder moves
+add	?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9ca0	00bfaae0	PDB spelling (self 0x00BD9CA0 defines it)
+delete	?g_LocalDetailEngine@@3PAULocalDetailEngine@@A	01436ea8	00bfaae0	both binders (0x00BFAAE0 / 0x00BFB590) move
+delete	?g_pEngineGlobal_01436EA8@@3PAUCEngineGlobal_01436EA8@@A	01436ea8	00b684f0	its only binder moves

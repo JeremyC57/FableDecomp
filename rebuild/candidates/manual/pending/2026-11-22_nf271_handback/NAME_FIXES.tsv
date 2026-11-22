@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00BD9CE0	?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ	Ego_r 009c2700 + FableWin 02cb7670 name sets; landed self row 0x00BD9CE0 defines it; vland RELOC_NAME warning on 0x00B684F0	?ClearTexturePool@CEngineLandscapeMemoryManagerCallView@@QAEXXZ (0x00B684F0, not applied: needs a memory-manager declaration on that row, port)

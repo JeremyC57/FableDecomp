@@ -13094,3 +13094,8 @@ land1122nf269	0x00BFD480 / 0x00BFDE20	port onto the shared headers	row-local CMo
 land1122nf269	0x00BEAA00 / 0x00BEAAA0 / 0x00BEB4D0 + 0x00BFDD40	CWaterPatchMesh unit + the 0x00BFDD40 split	ReleaseBuffers / ??1CWaterPatchMesh@@UAE@XZ / ??_GCWaterPatchMesh@@UAEPAXI@Z; DeleteForegroundVertexBuffer v 0x00BF38F0 ClearBlock	nf269 ruling 2
 land1122nf269	four host-model tests (0x00BEAA00 / 0x00BFDD40 / 0x00BFD480 / 0x00BFDE20)	rewrite on the shared headers	they carry the stand-in names	with D6
 land1122nf269	rest of L129 / D4 / D6 0x00BE6090 test / 0x009B0AC0	open	NF269 entries 2-5 not started	next agent
+land1122nf271	0x00BD9CE0	?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ	Ego_r 009c2700 + FableWin 02cb7670 name sets; landed self row 0x00BD9CE0 defines it; vland RELOC_NAME warning on 0x00B684F0	?ClearTexturePool@CEngineLandscapeMemoryManagerCallView@@QAEXXZ (0x00B684F0, not applied: needs a memory-manager declaration on that row, port)
+land1122nf271	0x00B684F0	CallView port	self leaf + five callee stand-ins (FreeDisposalList 0x00BD9CE0 for ClearTexturePool)	nf271 ruling 2
+land1122nf271	0x00BE61B0 / 0x00BE79D0 / 0x00BF8030 / 0x00BF84C0	CEngineGlobal family as one header unit	renderer Settings +0x36, CLandscapePatchTesselator / TesselatePatch 0x00BE3910, AllocVirtual / FreeVirtual on 0x00BF8030	nf271 ruling 3
+land1122nf271	host-model tests 0x00BFAAE0 / 0x00BFB590 / 0x00B684F0	rewrite on the shared headers	they carry stand-in names	with D6
+land1122nf271	CWaterPatchMesh unit / D4 / D6 tests / 0x009B0AC0	open	NF271 entries 2-5 not started; entry 2 first measures 0x00BF4220's binding	next agent

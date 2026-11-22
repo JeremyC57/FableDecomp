@@ -1,0 +1,8 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00BD9CA0	CEngineLandscapeMemoryManager	FreeVirtualAligned	?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z	CEngineLandscapeMemoryManager::FreeVirtualAligned	?FreeVirtualAligned@CEngineLandscapeMemoryManagerMethods@@QAEXPAX@Z	Ego_r 009c2430 + FableWin 02cb7a40; Ego_r order = retail 0x00BD9C40 / CA0 / CC0; body (evidence/unitA_freevirtualaligned.md)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00BFAAE0	?FreeAlignedVirtual@LandscapeMemoryMethods@@QAEXPAX@Z	?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z	0x00BD9CA0
+0x00BFAAE0	?g_LocalDetailEngine@@3PAULocalDetailEngine@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BFB590	?g_LocalDetailEngine@@3PAULocalDetailEngine@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00B684F0	?g_pEngineGlobal_01436EA8@@3PAUCEngineGlobal_01436EA8@@A	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8

@@ -60,6 +60,14 @@ public:
     // DeleteTextureBlockWhileBusy run = retail 0x00BD9B90 .. 0x00BD9CC0). Declaration only.
     void DeleteTexture(CTexture* texture);                               // 0x00BDA110
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_FREEVIRTUALALIGNED
+    // Retail opt-in (NF271, rows 0x00BD9CA0 / 0x00BFAAE0): Ego_r.pdb 009c2430 / FableWin.pdb 02cb7a40
+    // ?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z (public: the landscape primitives' destructors release their
+    // AllocVirtualAligned blocks through retail 0x00BD9CA0, which steps back by the stored offset and tail-jumps to FreeVirtual; Ego_r's
+    // AllocVirtualAligned 009c23d0 / FreeVirtualAligned 009c2430 / DeleteTextureBlockWhileBusy 009c2450 = retail 0x00BD9C40 / CA0 / CC0).
+    // Declaration only.
+    void FreeVirtualAligned(void* block);                                // 0x00BD9CA0
+#endif
     void* AllocVirtual(long size, CMovableResource* owner);              // 0x00BD9AF0 ?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJPAVCMovableResource@@@Z
     void FreeVirtual(void* block);                                       // 0x00BD9B90 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
     CIndexBuffer* AllocateIndexBuffer(CMovableResource* owner, long count, unsigned long usage, EIndexBufferFormat format, EPrimitiveType type);   // 0x00BDA360

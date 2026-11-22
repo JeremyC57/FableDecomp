@@ -25958,8 +25958,6 @@ __vsnwprintf	00bfed9a	0099bb80
 ?PaintSegment@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXKJAAV?$list@JV?$allocator@J@std@@@std@@@Z	00ac8170	00ac8540
 ?clear@CPrimitiveHandleList@@QAEXXZ	00834f90	00bba140
 ??_7CLocalDetailPrimitiveRepeatedMesh@@6B@	012a82ac	00bfaae0
-?FreeAlignedVirtual@LandscapeMemoryMethods@@QAEXPAX@Z	00bd9ca0	00bfaae0
-?g_LocalDetailEngine@@3PAULocalDetailEngine@@A	01436ea8	00bfaae0
 ??1CObject@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ	00bfbbf0	00bfb590
 ??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@	012a82d8	00bfb590
 ?QueryInterface@CBaseInputPin@@UAGJABU_GUID@@PAPAX@Z	00ca53c0	00ca6170
@@ -33426,7 +33424,6 @@ _wcscpy	00bfed76	00999850
 ?UpdateBackgroundLOD@CEngineLandscapeMapCallView@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z	00bdc180	00b684f0
 ?UpdateBackgroundTesselation@CEngineLandscapeMapCallView@@QAEXXZ	00bdc020	00b684f0
 ?UpdateForeground@CEngineLandscapeMapCallView@@QAE?AW4LS_LOADING_STATUS@@XZ	00bdc510	00b684f0
-?g_pEngineGlobal_01436EA8@@3PAUCEngineGlobal_01436EA8@@A	01436ea8	00b684f0
 ?ApplyDisplacement@CEngineScreenEffectDisplacementRenderer_Render@@QAEXXZ	00b87870	00b88ed0
 ?CopyBackBufferToTexture@CDisplayManager@@QAEPAVCTexture@@XZ	009bf5e0	00b88ed0
 ?ShowDisplacementTexture@CEngineScreenEffectDisplacementRenderer_Render@@QAEXXZ	00b88bc0	00b88ed0
@@ -39554,3 +39551,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090
 ?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z	00bda110	00be5c30
 ?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z	00b677a0	00be6090
+?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9ca0	00bfaae0

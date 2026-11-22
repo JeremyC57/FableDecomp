@@ -1,0 +1,8 @@
+entry	address	status	binders respelled	note
+E1 L129 LocalDetailEngine	0x00BFAAE0 / 0x00BFB590 (+ 0x00BD9CA0)	done	0x00BFAAE0 (global + 3 callee sites), 0x00BFB590 (global)	the FreeAlignedVirtual target is 0x00BD9CA0 FreeVirtualAligned, not 0x00BD9B90: the self row moves with it
+E1 L129 0x00B684F0	0x00B684F0	done (global only)	0x00B684F0	its five CallView callee spellings + self leaf stay: blocked: port (NOTES)
+E1 L129 CEngineGlobal	0x00BE61B0 / 0x00BE79D0 / 0x00BF8030 / 0x00BF84C0	blocked: port	-	one shared stand-in pointee whose members carry callee stand-ins / unnamed Settings bytes (NOTES)
+E2 CWaterPatchMesh unit	0x00BEAA00 / 0x00BEAAA0 / 0x00BEB4D0 / 0x00BFDD40	open	-	
+E3 D4 one definition	0x00BDA150 / 0x00BD9CE0	open	-	
+E4 host-model tests	0x00BE6090 / 0x00BEAA00 / 0x00BFDD40 / 0x00BFD480 / 0x00BFDE20	open	-	
+E5 0x009B0AC0	0x009B0AC0	open	-	
