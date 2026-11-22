@@ -500,3 +500,4 @@
 - A row may fold under another row's TU by `#include "../src/compiled/..."` (not only Unwind funclets: 0x00B2AB10 under 0x00B260B0, landing nf251); includer greps must follow every such include.
 - An anonymous-namespace hash that the retail exe's own RTTI carries is retail's (landing nf252: `?A0x6cb5dcbb` v the PDBs' `?A0x4c815337`): catalog / table / Names lines use the exe's; only a hash in neither the exe nor a PDB is a rebuild hash.
 - recheck.py used to force `/Oy-` onto any CompilerFlags entry lacking `/Oy`, including add-only entries like `/d2inlT114` or `/Gr` (15 rows): those regraded DIFFER. Fixed (landing nf262): `/Oy-` only when the entry spells a full /O set.
+- A census on new symbol NAMES, not only on addresses, before landing a rename: landed rows can define same-TU helpers under the target name with another body, invisible to relocation / pk / table checks (nf265, CEngineLandscapeMemoryManager::DeleteTexture).

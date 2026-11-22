@@ -1,0 +1,6 @@
+entry	address	status	binders_respelled	note
+L129 0x00BE5C30 + 0x00BE6090 with 0x00BDA110 onto DeleteTexture	0x00BDA110	blocked	0	blocked: family. The names of the CEngineLandscapeMemoryManager queue / destroy-now trios are swapped across five landed rows (0x00BDA090 / 0x00BDA0D0 / 0x00BDA110 self leaves; the same-TU helpers of 0x00BDA150 / 0x00BD9CE0), so ?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z is already defined (destroy-now body) where the unit needs it to mean 0x00BDA110. Rows left: 0x00BDA110 0x00BE5C30 0x00BE6090 (graded drafts held in work/held/), plus 0x00BDA090 0x00BDA0D0 0x00BDA150 0x00BD9CE0 and the binders 0x00BFD480 0x00BFDE20 0x00BEAA00 0x00BEAAA0 0x00BEB4D0 0x00BFDD40 (NOTES family plan; decision D1).
+L129 LocalDetailEngine 0x00BFAAE0 / 0x00BFB590, 0x00B684F0	0x01436EA8	open	0	not started (ports)
+L129 0x00BEB4D0 ?DAT_01436ea8@@3PAEA	0x01436EA8	open	0	not started; 0x00BEB4D0 is also a 0x00BDA0D0 binder of the family above
+L129 CEngineGlobal rows	0x01436EA8	open	0	not started (last)
+0x009B0AC0 (entry 2)	0x009B0AC0	open	0	not started; NF260 plan stands

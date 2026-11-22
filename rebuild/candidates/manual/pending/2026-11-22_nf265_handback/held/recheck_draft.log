@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00bda110   WARN STANDIN_LEAF ?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z (catalog CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy; names another function)
+00bda110   RELOCATION_MATCH PASS   DeleteTextureBlockWhileBusy
+00be5c30   RELOCATION_MATCH PASS   ClearTextures
+00be6090   RELOCATION_MATCH PASS   ~CLandscapeBackgroundPatch
+00beae50   RELOCATION_MATCH PASS   Load
+00be5c60   RELOCATION_MATCH PASS   GetEdgeStrip
+
+WINS: 5
+  00bda110 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z
+  00be5c30 RELOCATION_MATCH CLandscapeBackgroundPatch::?ClearTextures@CLandscapeBackgroundPatch@@QAEXXZ
+  00be6090 RELOCATION_MATCH CLandscapeBackgroundPatch::??1Patch@
+  00beae50 RELOCATION_MATCH CWaterPatchMesh::?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z
+  00be5c60 RELOCATION_MATCH CLandscapeBackgroundPatch::?GetEdgeStrip@CLandscapeBackgroundPatch@@QAEPAVCPatchTesselationEdgeStrip@@W4LANDSCAPE_EDGE_STRIP_SIDE@@@Z
