@@ -33277,8 +33277,6 @@ _CreateSource_00c35ec0@4	00c35ec0	00c49820
 ?insert_unique@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z	0042cee3	0042d1a3
 ?_M_lower_bound@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@ABEPAU_Rb_tree_node_base@2@ABK@Z	0042ad6c	0042d5b1
 ?insert@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@U32@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z	0042d4d3	0042d5b1
-??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z	0042abaf	00583815
-??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ	0042abca	00583815
 ?AdjustValueToProfile@CSlider@NUISystem@@QAEXXZ	0054a6f0	00583815
 ?AdjustValueToProfile@CTextSlider@NUISystem@@QAEXXZ	00548b50	00583815
 ??0?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@QAE@ABQAVCComponent@NUISystem@@ABU?$pair@VCWideString@@J@1@@Z	005b17c6	005b3100

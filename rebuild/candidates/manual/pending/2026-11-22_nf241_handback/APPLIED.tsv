@@ -1,0 +1,47 @@
+entry	address	status	binders_respelled	note
+E1 list<CComponent*> family	0x0042ABAF / 0x0042ABCA	done	42	self rows 0x0042ABAF / 0x0042ABCA (NF239 hand-back) + 33 binder rows (31 dtor + 10 ctor + 1 CComponentList relocations); both addresses end on one spelling (18 / 18 and 65 / 65 compiled referencers); header comment fix (comment only)
+E1b 0x004046B0 family	0x004046B0	open: not started (context)	0	same shape as E1 (list<CStringParserCommentBoundaries>, about 70 referencers): recipe in NOTES
+L2 (land1122p27)	0x00666310	open: not started (context; NF239 NOTES 3 order kept)	0	
+L4 (land1122p27)	0x0074F4F0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L5 (land1122p27)	0x0074F530	open: not started (context; NF239 NOTES 3 order kept)	0	
+L17 (land1122p27)	0x0042ABAF	done (with E1)	11	0x0042ABAF: 10 ??0?$list binders + 0x005C3947 ??0CComponentList onto ??0?$_List_base (E1)
+L18 (land1122p27)	0x0042ABCA	done (with E1)	31	0x0042ABCA: 31 ??1?$list binders onto ??1?$_List_base (E1)
+L23 (land1122p27)	0x00446B40	open: not started (context; NF239 NOTES 3 order kept)	0	
+L24 (land1122p27)	0x00446B90	open: not started (context; NF239 NOTES 3 order kept)	0	
+L27 (land1122p27)	0x00497B60	open: not started (context; NF239 NOTES 3 order kept)	0	
+L28 (land1122p27)	0x0049C490	open: not started (context; NF239 NOTES 3 order kept)	0	
+L29 (land1122p27)	0x004A9710	open: not started (context; NF239 NOTES 3 order kept)	0	
+L32 (land1122p27)	0x004D6915	open: not started (context; NF239 NOTES 3 order kept)	0	
+L34 (land1122p27)	0x004DDAB4	open: not started (context; NF239 NOTES 3 order kept)	0	
+L36 (land1122p27)	0x005348E0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L37 (land1122p27)	0x00535470	open: not started (context; NF239 NOTES 3 order kept)	0	
+L50 (land1122p27)	0x006F8010	open: not started (context; NF239 NOTES 3 order kept)	0	
+L57 (land1122p27)	0x00733EE0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L71 (land1122p27)	0x008AA9B0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L72 (land1122p27)	0x008B83E0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L74 (land1122p27)	0x008CA600	open: not started (context; NF239 NOTES 3 order kept)	0	
+L83 (land1122p27)	0x008F69B0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L86 (land1122p27)	0x0091C080	open: not started (context; NF239 NOTES 3 order kept)	0	
+L89 (land1122p27)	0x00947B70	open: not started (context; NF239 NOTES 3 order kept)	0	
+L92 (land1122p27)	0x009535B0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L95 (land1122p27)	0x009539A0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L96 (land1122p27)	0x00953A00	open: not started (context; NF239 NOTES 3 order kept)	0	
+L100 (land1122p27)	0x00956870	open: not started (context; NF239 NOTES 3 order kept)	0	
+L101 (land1122p27)	0x0096DBA0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L102 (land1122p27)	0x0096DBB0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L103 (land1122p27)	0x0096E3F0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L104 (land1122p27)	0x0096E4A0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L107 (land1122p27)	0x009CBA80	done	0	self 0x009CBA80 onto ?UpdateEntry@CBankFile@@QAEXK@Z (binder 0x00B3BC90 already right)
+L108 (land1122p27)	0x009CBD30	open: needs a header opt-in: SetBankUpdateStatus is an inline protected member of engine/CBankFile.h (FABLE_RETAIL_CBANKFILE_UPDATE_PASS27); a self row can only define it with a declaration-only opt-in (unit with L109 / L110; binder 0x009CEC60 already right)	0	
+L109 (land1122p27)	0x009CBD50	open: with L108 (inline private SetBankUpdateProgress in the same header block; no landed binder)	0	
+L110 (land1122p27)	0x009CBD70	open: with L108 (inline protected WriteBankLog; no landed binder)	0	
+L111 (land1122p27)	0x009CEC60	open: not started (context; NF239 NOTES 3 order kept)	0	
+L114 (land1122p27)	0x00A978C0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L115 (land1122p27)	0x00AB15F0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L117 (land1122p27)	0x00B09D50	open: not started (context; NF239 NOTES 3 order kept)	0	
+L118 (land1122p27)	0x00B209C0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L119 (land1122p27)	0x00B3E1A0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L120 (land1122p27)	0x00B61DD0	open: not started (context; NF239 NOTES 3 order kept)	0	
+L129 (land1122p27)	0x01436EA8	open: not started (context; NF239 NOTES 3 order kept)	0	
+E3 0x0049D800	0x0049D800	open: not started	0	
+E3 0x01296F14	0x01296F14	open: not started	0	

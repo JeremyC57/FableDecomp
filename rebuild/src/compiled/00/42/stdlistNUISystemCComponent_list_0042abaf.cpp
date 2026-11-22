@@ -1,52 +1,17 @@
-// std::list<NUISystem::CComponent*>::list(const allocator& a) -- STLport list constructor: allocate the sentinel node and
-//   link it to itself
-// Leaf: ??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0042ABAF, 27 bytes, `ret 4` (the allocator reference), returns this.
-// Identity: STLport 4.6 `explicit list(const allocator_type& = allocator_type())` with _List_base's constructor inline
-//   (`_M_node(__a, 0)` -> `and [esi],0`, then allocate(1), self-linked); the landed stand-in was a free function `list`.
-//   Instantiation: the run 0x0042A008 (_M_create_node), 0x0042AB8A (insert), 0x0042ABAF (list()), 0x0042ABCA (~list) is one
-//   std::list<NUISystem::CComponent*> (no ICF in retail): ~list is the landed list<CComponent*> destructor, insert is the
-//   callee of the landed list<CComponent*>::_M_insert_dispatch 0x0042B4C3 (Ego_r NUISystem::CDeletion::AssociatedParents
-//   list<CComponent*>), and the constructor's callers include NUISystem::CDeletion::CDeletion 0x0042CD84 / 0x0042BED4.
-// Callees: malloc 0x00BFEA0E (allocate(1)).
+// std::_List_base<NUISystem::CComponent*>::_List_base(const allocator&) -- STLport list base constructor: allocate the sentinel node
+//   and link it to itself (an empty list<CComponent*>)
+// Leaf: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0042ABAF, 27 bytes, `ret 4` (the allocator reference), returns this; size-optimised TU
+//   (`and [esi],0`, malloc(0xc), next = prev = node).
+// Name (NF239, 2026-11-22, CODEXP27 L17): the base-class constructor, not list's own. Two sources: retail 0x0042B6A6 is the
+//   size-optimised list<CComponent*>::list(const allocator&) COMDAT, `push [esp+8] ; mov esi,ecx ; call 0x0042ABAF ; mov eax,esi ;
+//   ret 4` (STLport 4.6 _list.h `explicit list(const allocator_type& __a) : _List_base<_Tp,_Alloc>(__a) {}`), so 0x0042ABAF is
+//   _List_base's constructor (STLport 4.6 _list.h: the sentinel allocation lives in _List_base); the landed binders 0x0042BF06,
+//   0x0058AF10, 0x00598A1C, 0x005B01FE, 0x005B0AAC, 0x005B690B already bind this spelling. (Ego_r / FableWin carry a Dinkumware list
+//   with no _List_base: no PDB arbitrates STLport layering.) Was ??0?$list@PAVCComponent@..@QAE@ABV?$allocator@..@1@@Z from a
+//   row-local list model; 10 landed binders still spell that (the list<CComponent*> ctor/dtor family pass, NOTES).
+// Model: stlport/fable_containers.h (the 0x0042AB01 pattern): the explicit instantiation emits the member as its own COMDAT.
 #pragma optimize("s", on)
-extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
-inline void* operator new(unsigned int, void* where) { return where; }
+#include "stlport/fable_containers.h"
 namespace NUISystem { class CComponent; }
-namespace std {
-template <class _Tp> class allocator {                       // STLport 4.6 (malloc-based): a class
-public:
-    allocator() { }
-    _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
-};
-struct _List_node_base {
-    _List_node_base* _M_next;                                // +0x00
-    _List_node_base* _M_prev;                                // +0x04
-};
-template <class _Tp> struct _List_node : public _List_node_base {
-    _Tp _M_data;                                             // +0x08
-};
-template <class _Tp> struct _Nonconst_traits { };
-template <class _Tp, class _Traits> struct _List_iterator {
-    _List_node_base* _M_node;
-    _List_iterator(_List_node_base* __x) : _M_node(__x) { }
-    _List_iterator(const _List_iterator& __x) : _M_node(__x._M_node) { }
-};
-template <class _Tp, class _Alloc> class list {              // _List_base folded in: one word, the sentinel node
-public:
-    typedef _List_node<_Tp> _Node;
-    typedef _List_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
-    _Node* _M_node;
-    explicit list(const allocator<_Tp>& __a);
-};
-
-template <class _Tp, class _Alloc>
-list<_Tp, _Alloc>::list(const allocator<_Tp>&) : _M_node(0)
-{
-    _Node* __n = allocator<_Node>().allocate(1);
-    __n->_M_next = __n;
-    __n->_M_prev = __n;
-    _M_node = __n;
-}
-template class list<NUISystem::CComponent*, allocator<NUISystem::CComponent*> >;
-}
+template std::_List_base<NUISystem::CComponent*, std::allocator<NUISystem::CComponent*> >::_List_base(const std::allocator<NUISystem::CComponent*>&);

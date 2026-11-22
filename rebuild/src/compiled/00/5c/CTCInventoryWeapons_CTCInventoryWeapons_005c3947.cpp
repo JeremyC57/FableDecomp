@@ -9,7 +9,7 @@
 // Callees: NInventory::CTCInventoryBase::CTCInventoryBase(CThing*) @ 0x005BFF07, NHeroInformationScreens::CBase::CBase()
 //          @ 0x0066E734, CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0 (x2),
 //          vector<CEnginePrimitiveHandle>::vector(size_type) @ 0x00485D30 (count 2), map<NUISystem::CComponent*,long>
-//          ctor @ 0x004DF81D, list<NUISystem::CComponent*>::list(const allocator_type&) @ 0x0042ABAF.
+//          ctor @ 0x004DF81D, _List_base<NUISystem::CComponent*>::_List_base(const allocator&) @ 0x0042ABAF.
 // Shape: initialiser list in declaration order; only WeaponsList of the raw component pointers is zeroed; the list's
 // default allocator temporary lives in the dead argument slot (`lea eax,[ebp+0Bh]`).
 #pragma optimize("y", off)
@@ -25,12 +25,13 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentP
 };
 #pragma pack(pop)
 
-struct SAllocator { SAllocator() { } };
-struct SComponentListNode;
-struct CComponentList {                              // std::list<NUISystem::CComponent*> (head pointer)
-    SComponentListNode* m_pNode;
-    CComponentList(const SAllocator& allocator = SAllocator());   // 0x0042ABAF
-};
+// NF241 (2026-11-22, the list<CComponent*> family pass): the local CComponentList / SAllocator stand-ins replaced by the shared
+// STLport 4.6 list<NUISystem::CComponent*> (stlport/fable_containers.h). 0x0042ABAF is _List_base<CComponent*>'s constructor
+// (retail 0x0042B6A6 is list's own size-optimised list(const allocator&), `push [esp+8] ; mov esi,ecx ; call 0x0042ABAF`), which
+// this TU calls out of line (FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE); was ??0CComponentList@@QAE@ABUSAllocator@@@Z.
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+namespace NUISystem { class CComponent; }
 struct CComponentItemMap {                           // std::map<NUISystem::CComponent*, long> (12 bytes)
     void* _M_header; long _M_node_count; long _M_compare;
     CComponentItemMap();                             // 0x004DF81D
@@ -83,7 +84,7 @@ public:
     NUISystemComponent*          PAssignedMeleeMenuEntry;       // +0x18C
     NUISystemComponent*          PRangedList;                   // +0x190
     NUISystemComponent*          PMeleeList;                    // +0x194
-    CComponentList               AvailableWeaponsEntries;       // +0x198
+    std::list<NUISystem::CComponent*> AvailableWeaponsEntries;  // +0x198
     CTCInventoryWeapons(CThing* thing);
     virtual ~CTCInventoryWeapons();
     virtual void v00();

@@ -17,7 +17,10 @@
 //   ??1CComponentList@NUISystem@@QAE@XZ) and 0x00535800 as the self row's list<CComponent*>::operator= (was ??4CComponentList@NUISystem@@..).
 #define FABLE_RETAIL_NUISYSTEM_CCOMPONENT_MEMBERS
 #define FABLE_RETAIL_STLP_LIST_ASSIGN_POPBACK_DECL
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF241 (2026-11-22, the list<CComponent*> family pass): the out-of-line list destructor call binds _List_base<CComponent*>'s
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x0042B6D2 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #include "engine/NUISystem_CComponent.h"
 #include "engine/NUISystem_CDeletion.h"
 

@@ -25,7 +25,10 @@
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_PUSHBACK_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF241 (2026-11-22, the list<CComponent*> family pass): the out-of-line list destructor call binds _List_base<CComponent*>'s
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x0042B6D2 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
 #define FABLE_RETAIL_CTCSHOP

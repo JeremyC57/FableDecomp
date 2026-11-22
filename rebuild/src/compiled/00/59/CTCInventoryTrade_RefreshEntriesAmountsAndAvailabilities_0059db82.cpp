@@ -26,7 +26,10 @@
 // (nf44 entry 53). The row's own leaf is now the PDB symbol: the real map parameter (AAV?$map@..., was AAUCListMap@@) and the PDB
 // access (AAE private, as engine/CTCInventoryTrade.h and the landed callers bind it; was QAE).
 #define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF241 (2026-11-22, the list<CComponent*> family pass): the out-of-line list destructor call binds _List_base<CComponent*>'s
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x0042B6D2 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #include "stlport/fable_map.h"
 // NF156 (2026-11-20, q4776): the local CActionParamList stand-in replaced by the shared STLport std::list<NUISystem::CComponent*>
 //   (stlport/fable_containers.h; ~list 0x0042ABCA out of line, FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE). The 8-byte object at

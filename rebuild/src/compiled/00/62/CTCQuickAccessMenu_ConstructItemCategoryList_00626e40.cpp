@@ -16,7 +16,6 @@
 #include "engine/CTCQuickAccessMenu.h"
 #pragma auto_inline(off)
 namespace std {
-template<> list<NUISystem::CComponent*>::~list() {}
 template<> void _List_base<NUISystem::CComponent*,allocator<NUISystem::CComponent*> >::clear() {
     _List_node<NUISystem::CComponent*>* cur=(_List_node<NUISystem::CComponent*>*)_M_node._M_data->_M_next;
     while(cur!=_M_node._M_data) {
@@ -27,6 +26,10 @@ template<> void _List_base<NUISystem::CComponent*,allocator<NUISystem::CComponen
     _M_node._M_data->_M_next=_M_node._M_data;
     _M_node._M_data->_M_prev=_M_node._M_data;
 }
+// NF241 (2026-11-22): the out-of-line list destructor this TU calls is _List_base<CComponent*>::~_List_base 0x0042ABCA (STLport 4.6:
+// `~list() {}`, the clear + free in the base; retail 0x0042B6D2 is list's own ~list, a 5-byte `jmp 0x0042ABCA`); was an explicit
+// `list<CComponent*>::~list() {}` specialisation binding ??1?$list there. Same bytes.
+template<> _List_base<NUISystem::CComponent*,allocator<NUISystem::CComponent*> >::~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
 }
 #pragma auto_inline(on)
 inline CWideString __fastcall GFIntToWideString(long value)

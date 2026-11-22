@@ -68769,9 +68769,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009cba80'
-        Module = '_global'
-        Source = '00/9c/E2_E2_009cba80.cpp'
-        TestSource = '00/9c/E2_E2_009cba80_test.cpp'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_UpdateEntry_009cba80.cpp'
+        TestSource = '00/9c/CBankFile_UpdateEntry_009cba80_test.cpp'
         PassPattern = 'OK_009cba80'
     }
     [pscustomobject]@{

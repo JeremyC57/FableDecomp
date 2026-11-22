@@ -42,19 +42,18 @@ public:
 
 #include "engine/CCountedPointer.h"
 
+// Port (NF241, 2026-11-22, the list<CComponent*> family pass): the row-local std::allocator / list / pair / vector models replaced by the
+//   shared STLport 4.6 ones (stlport/fable_containers.h). The inlined ~CDeletion's list destructor call binds 0x0042ABCA as
+//   _List_base<CComponent*>::~_List_base (was ??1?$list@..): retail 0x0042B6D2 is list's own size-optimised `~list() {}`, a 5-byte
+//   `jmp 0x0042ABCA` (STLport 4.6 _list.h keeps the clear + free in ~_List_base); FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE declares
+//   the base destructor out of line, as this TU calls it. The map / tree iterator models stay row-local (in place).
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+
 namespace NUISystem { class CComponent; }
 
 namespace std {
 
-// NF156 (2026-11-20, q4776): in-place respell of this row-local list model to STLport 4.6's two template parameters (class allocator,
-//   declared only), so the destructor binds 0x0042ABCA as ??1?$list@PAVCComponent@NUISystem@@V?$allocator@..@std@@@std@@QAE@XZ, the
-//   catalog / self-row spelling (was ??1?$list@PAVCComponent@NUISystem@@@std@@QAE@XZ).
-template <class _Tp> class allocator;
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* _M_node;                                                                     // +0x00 (STLport, 4 bytes)
-    ~list();                                                                           // 0x0042ABCA
-};
 
 struct _Rb_tree_node_base {
     bool                _M_color;                                                      // +0x00
@@ -66,11 +65,6 @@ struct _Rb_tree_node_base {
 template <class _Dummy> class _Rb_global {
 public:
     static _Rb_tree_node_base* _M_increment(_Rb_tree_node_base* __x);                  // 0x004292C0
-};
-
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
 };
 
 template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
@@ -159,15 +153,6 @@ public:
 namespace { extern CCharString BUY_ITEM_DESC_STRING; }                                        // 0x013B8B80
 namespace { extern CCharString SELL_ITEM_DESC_STRING; }                                       // 0x013B8B7C
 
-namespace std {
-template <class _Tp> class vector {
-public:
-    _Tp* _M_start;                                                                     // +0x00
-    _Tp* _M_finish;                                                                    // +0x04
-    _Tp* _M_end_of_storage;                                                            // +0x08
-    _Tp& operator[](unsigned int __n) { return _M_start[__n]; }
-};
-}
 
 class CTCInventoryTrade {
 public:

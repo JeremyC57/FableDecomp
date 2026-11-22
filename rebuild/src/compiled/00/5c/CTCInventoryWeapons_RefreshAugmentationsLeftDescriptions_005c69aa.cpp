@@ -22,8 +22,10 @@
 #define FABLE_RETAIL_CTCINVENTORYITEM_ISAUGMENTATION
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #define FABLE_RETAIL_STLP_LIST
-#define FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF241 (2026-11-22, the list<CComponent*> family pass): the list calls bind _List_base<CComponent*>'s constructor 0x0042ABAF and
+//   destructor 0x0042ABCA (was FABLE_RETAIL_STLP_LIST_DEFAULT_CTOR_NOINLINE + _DTOR_OUTOFLINE, binding list's own names there; retail
+//   0x0042B6A6 / 0x0042B6D2 are list's size-optimised wrappers, a `call 0x0042ABAF` and a 5-byte `jmp 0x0042ABCA`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_VISIBLE_NOINLINE
 #define FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE
 #define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
 #include "engine/ETCInterfaceType.h"

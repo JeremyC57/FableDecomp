@@ -9790,7 +9790,7 @@ address	name	length	bytes
 00988730	CShaderRenderManager::SetUVCompressionVertexShaderConstant	3	c21000
 0098e1b0	_global::Nop_ret0_0098e1b0	1	c3
 009ac9e0	_global::Nop_ret4_009ac9e0	3	c20400
-009cba80	_global::Nop_ret4_009cba80	3	c20400
+009cba80	CBankFile::UpdateEntry	3	c20400
 009d5230	_global::Nop_ret4_009d5230	3	c20400
 009ea550	_global::Nop_ret4_009ea550	3	c20400
 009f1f00	CMemoryAllocator::OnFailedAllocation	1	c3
@@ -9910,7 +9910,7 @@ address	name	length	bytes
 005c053d	CCountedPointer<NUISystem::CAction>::ShareData	38	56578b7c24108bf1397e047414e8c2ffffff85ff8b44240c8906897e047402ff075f5ec20800
 0042ab1c	std::_List_base<NUISystem::CActionParam*>::~_List_base	23	568bf1e81df6ffff8b3685f6740756e8e43e7d00595ec3
 0042ab73	std::_List_base<long, std::allocator<long>>::~_List_base	23	568bf1e8edf5ffff8b3685f6740756e88d3e7d00595ec3
-0042abca	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list	23	568bf1e8bdf5ffff8b3685f6740756e8363e7d00595ec3
+0042abca	std::_List_base<NUISystem::CComponent*>::~_List_base	23	568bf1e8bdf5ffff8b3685f6740756e8363e7d00595ec3
 0042b755	std::list<T_0042b755>::~list	23	568bf1e884f4ffff8b3685f6740756e8ab327d00595ec3
 0042b796	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::~_Rb_tree	23	568bf1e8d8f4ffff8b3685f6740756e86a327d00595ec3
 0042b7d7	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::~_Rb_tree	23	568bf1e8e4f4ffff8b3685f6740756e829327d00595ec3
@@ -14313,7 +14313,7 @@ address	name	length	bytes
 00660fc9	std::list<class CIntelligentPointer<class CThingTrackNode>,class std::allocator<class CIntelligentPointer<class CThingTrackNode>>>::push_back	26	558becff75088b11518bc489108d450850e8f6f5ffff5dc20400
 0044bff0	std::vector<CCharString>::push_back	59	568bf18b4e043b4e08741685c9740a8b44240850e8272c5500834604045ec204008b4424086a016a018d5424105250518bcee80975feff5ec20400
 0042ab58	std::_List_base<long, std::allocator<long>>::_List_base	27	568bf18326006a0ce8a93e7d0089008940048906598bc65ec20400
-0042abaf	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list	27	568bf18326006a0ce8523e7d0089008940048906598bc65ec20400
+0042abaf	std::_List_base<NUISystem::CComponent*>::_List_base	27	568bf18326006a0ce8523e7d0089008940048906598bc65ec20400
 00493bc2	std::_List_base<const CMessageEvent*,std::allocator<const CMessageEvent*> >::_List_base	27	568bf18326006a0ce83fae760089008940048906598bc65ec20400
 004db60e	ListNode_InitSelfLinked_10	27	568bf18326006a10e8f333720089008940048906598bc65ec20400
 004db674	ListNode_InitSelfLinked_34	27	568bf18326006a34e88d33720089008940048906598bc65ec20400
