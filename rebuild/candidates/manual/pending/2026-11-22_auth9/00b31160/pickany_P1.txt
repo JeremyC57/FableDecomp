@@ -1,0 +1,1 @@
+EQ  00b30b50 1499 ?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z 

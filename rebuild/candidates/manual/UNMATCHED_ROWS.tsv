@@ -597,7 +597,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b2f760	CEnginePrimitiveOcclusionManager	CEnginePrimitiveOcclusionManager	96	parked		0	rebuild/candidates/manual/pending/2026-10-28_retry535/differ/00b2f760.cpp	original
 00b2fd60	CEngineCamera	SetupGamut	1824	parked	DIFFER(1802v1812)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00b2fd60.cpp	original
 00b30610	CEngineCamera	ClipBox	720	parked	codex pass24 PARKED: The shared matrix operator produces fewer repeated corner sums and shrinks the leaf by 32 bytes.	27	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00b30610/00b30610.cpp	original
-00b30b50	CEngineCamera	SetCameraState	1552	parked (2026-11-22: Codex p26 0x00B31160 TU carries a 1499-B SetCameraState copy equal to retail; needs its own row + test)	DIFFER(3v1499)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00b30b50.cpp	original
 00b33390	CEnginePrimitiveRenderer	ProcessPrimitiveStats	400	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand600/differ/00b33390.cpp	original
 00b3bc90	CEngineResourceManager	SetupEditorAnimation	384	reserved (Codex pass 27, 2026-11-22; Account B agents off it)	DIFFER(384v371)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00b3bc90.cpp	original
 00b40670	CEngineMap	PeekWaterType	1376	parked	DIFFER(1072v1125)	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand316/differ/00b40670.cpp	original

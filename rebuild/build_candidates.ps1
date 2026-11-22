@@ -402612,6 +402612,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00763060_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b30b50'
+        Module = 'CEngineCamera'
+        Source = '00/b3/CEngineCamera_SetCameraState_00b30b50.cpp'
+        TestSource = '00/b3/CEngineCamera_SetCameraState_00b30b50_test.cpp'
+        PassPattern = '00b30b50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

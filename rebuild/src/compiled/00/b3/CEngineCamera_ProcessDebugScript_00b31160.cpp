@@ -46,7 +46,8 @@ const float ENGINE_FAR_CLIP_PLANE = 4000.0f;
 extern const float ZBUFFER_PARTITION_MAIN_SCENE_START;
 const float ZBUFFER_PARTITION_MAIN_SCENE_END = 0.99f;
 
-// The original engine_camera.obj defines this member alongside ProcessDebugScript.
+// Fidelity: same-TU strong definition of 0x00B30B50 (retail TU-mate: engine_camera.obj defines it alongside ProcessDebugScript), the
+// owner row's body verbatim. Declaration-only measured DIFFER for this leaf (886v886: the `mov byte ptr [esp+0ACh],0` / `fld [edi+18h]` pair at 0x00B313A4 swaps).
 // Inferred: grouping the two dimension results reproduces the native x87 scheduling.
 void CEngineCamera::SetCameraState(const CEngineCameraDesc& desc, bool rebuild_gamut, bool refresh_d3d)
 {

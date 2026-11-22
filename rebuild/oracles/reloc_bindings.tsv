@@ -39469,3 +39469,4 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z	00760020	00763060
 ?IsTriangleWithPointsInside@NShape@@YI_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@0W4ECirculationOrder@1@@Z	00760190	00763060
 ?push_back@?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@std@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@2@@Z	00765c80	00763060
+?SetupGamut@CEngineCamera@@AAEXXZ	00b2fd60	00b30b50

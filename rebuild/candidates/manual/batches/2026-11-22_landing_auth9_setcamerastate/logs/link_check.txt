@@ -1,0 +1,2 @@
+# link of the 14 rechecked CEngineCamera objects (/FORCE); LNK4006 per symbol at landing
+      1 ?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z
