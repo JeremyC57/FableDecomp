@@ -247,3 +247,5 @@ date	account	item	kind	status	note
 2026-11-22	A	q12562,q12563,q12564	naming	done	NF225 landed as nf225 (5 rows)
 2026-11-22	A	q12566,q12567,q12568,q12569,q12570	naming	claimed	agent NF226 (access specifiers, tests onto shared headers)
 2026-11-22	A	0x00CF4EC0	authoring	done	AUTH12: escalated (pending/2026-11-22_auth12), advisor ruling 2026-11-22
+2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH13 (four checks, then (a) pre-registered)
+2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH14 (two grades, per-site decision table)
