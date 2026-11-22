@@ -1,73 +1,37 @@
-// NCreatureMode::CModeSitBench::CModeSitBench(CThing*) -- base CModeSitBase(thing), own vtable, CAnimFilterOfGroup member at +0x2c built from CCharString(SIT_BENCH, -1): string assigned, CRC of the name stored
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00740040, oracle length 116 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  mov eax,[esp+4] ; push esi ; push edi ; push eax ; mov esi,ecx ; call CModeSitBase::CModeSitBase ; push -1 ; push offset "SIT_BENCH" ; lea ecx,[esp+14h] ; mov dword ptr [esi],offset CModeSitBench::`vftable' ; call CCharString::CCharString(const char*, long) ; lea edi,[esi+0x30] ; mov ecx,edi ; mov dword ptr [esi+0x2c],offset CAnimFilterOfGroup::`vftable' ; call CCharString::CCharString() ; lea ecx,[esp+0Ch] ; push ecx ; mov ecx,edi ; call CCharString::operator= ; mov eax,[esp+0Ch] ; test eax,eax ; jne C ; xor ecx,ecx ; mov eax,offset "" ; jmp D ; C: mov ecx,[eax+4] ; mov eax,[eax] ; D: push ecx ; mov edx,eax ; xor ecx,ecx ; call Calc ; lea ecx,[esp+0Ch] ; mov [esi+0x34],eax ; call CCharString::~CCharString ; pop edi ; mov eax,esi ; pop esi ; ret 4
-// One-argument constructor of a CModeSitBase-derived class: the base constructor @ 0x008D7CA0
-// runs with the owner, this class's vtable (0x01267BFC) is installed, then the CAnimFilterOfGroup member at
-// +0x2c (vtable 0x01267568) is constructed from a CCharString temporary built from the
-// literal: the member's own constructor is inlined -- default-construct its string
-// (@ 0x0099E4B0), assign the name (@ 0x0099EFB0) and store the name's CRC
-// (Calc @ 0x004014A0, `__fastcall(seed, data, length)`, run over the empty literal when the
-// string has no data block). The temporary is destroyed (@ 0x0099EAE0) before returning
-// `this`. Names come from rtti-vtables.tsv. One of 46 bodies of this shape.
-class CThing;
+// NCreatureMode::CModeSitBench::CModeSitBench(CThing&) -- base CModeSitBase(thing), own vtable, the CAnimFilterOfGroup member at +0x2c
+// built from CCharString("SIT_BENCH"): string assigned, CRC of the name stored
+// Leaf: ??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00740040, 116 bytes, `ret 4`: CModeSitBase::CModeSitBase(CThing&) 0x008D7CA0, the vtable
+//   0x01267BFC (12 slots: ??_E 0x007400E0, GetType 0x007400C0, CModeSitBase AnimUpdate / FrameUpdate 0x008D6AC0 / 0x008D6C80,
+//   GetAnimFilter 0x007400D0, CModeSitBase::OnActivate 0x008D6580, then the CModeBase slots 6..11), CCharString(const char*, long)
+//   0x0099EBF0, the filter's inline constructor (vptr 0x01267568, CCharString() 0x0099E4B0, operator= 0x0099EFB0, CCRC::Calc
+//   0x004014A0 over the name), ~CCharString 0x0099EAE0 on the temporary.
+// NF240 (q12674): ported off the row-local CModeSitBench / CModeSitBase / CAnimFilterOfGroup / CCharString / CCRC models onto
+//   engine/NCreatureMode_CModeSitFloor.h (the PASS27 class; Ego_r.pdb / FableWin.pdb / Ego_d.pdb ??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z,
+//   the spelling 0x00742790 and 0x00938380 bind) with the filter's inline constructor (engine/CAnimFilterOfGroup.h INLINE_CTOR, as
+//   the sibling mode ctor 0x00743600). The vtable is now ??_7CModeSitBench@NCreatureMode@@6B@ with every slot in PDB spelling.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_FRAMEUPDATE
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ANIMUPDATE
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBASE_ONACTIVATE
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_PASS27
+#define FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_IMPLICIT_DTOR
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CThing.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CAnimFilterOfGroup.h"
+#include "engine/NCreatureMode_CModeSitFloor.h"
 
-class CCharStringData { public:
-    const char* m_pData;                   // +0  (CBasicString<char>::PData)
-    unsigned long m_length;                // +4  (StringLength)
-};
-
-class CCharString { public:
-    CCharStringData* m_pData;
-    CCharString();                         // 0x0099E4B0
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0; the default argument makes the literal convert implicitly
-    ~CCharString();                        // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-
-class CCRC {
-public:
-    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
-};   // 0x004014A0: CRC
-
-class CAnimFilterOfGroup { public:
-    virtual void v00();
-    CCharString m_string;                  // +4
-    unsigned long m_hash;                  // +8
-    CAnimFilterOfGroup(const CCharString& name)
-        : m_string()
-    {
-        m_string = name;
-        const char* data;
-        unsigned long length;
-        if (name.m_pData == 0) {
-            length = 0;
-            data = "";
-        }
-        else {
-            length = name.m_pData->m_length;
-            data = name.m_pData->m_pData;
-        }
-        m_hash = CCRC::Calc(0, data, length);
-    }
-};
-
-struct CModeSitBase {
-    virtual void v00();
-    unsigned char _body[0x28];
-    CModeSitBase(CThing* thing);              // 0x008D7CA0
-};
-
-struct CModeSitBench : CModeSitBase {
-    CAnimFilterOfGroup m_name;                         // +0x2c
-    virtual void v00();
-    CModeSitBench(CThing* thing);
-};
-
-CModeSitBench::CModeSitBench(CThing* thing)
-    : CModeSitBase(thing)
-    , m_name("SIT_BENCH")                        // implicit CCharString conversion: the temporary is re-addressed with lea (an explicit CCharString("..", -1) would reuse the constructor's returned pointer)
+NCreatureMode::CModeSitBench::CModeSitBench(CThing& thing)
+    : CModeSitBase(thing), Filter("SIT_BENCH")
 {
 }

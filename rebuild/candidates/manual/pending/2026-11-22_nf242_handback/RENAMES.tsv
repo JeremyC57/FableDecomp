@@ -1,0 +1,36 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00740040	NCreatureMode::CModeSitBench	CModeSitBench	??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z	NCreatureMode::CModeSitBench::CModeSitBench	??0CModeSitBench@@QAE@PAVCThing@@@Z	leaf-only (catalog name right): Ego_r.pdb / FableWin.pdb / Ego_d.pdb; binders 0x00742790 / 0x00938380 bind it; header port (it emits the vtable)
+0x00739E70	CTCCreatureModeManager::CModeBase	GetMovementSpeed	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	CTCCreatureModeManager::CModeBase::GetMovementSpeed	?vfunc_7@CClass_00739e70@@QAEMJJJ@Z	leaf-only: Ego_r.pdb 0x0051C5F0 / FableWin.pdb 0x01DD6780 / Ego_d.pdb; vtable slot 7 of 0x012673CC (25 vtable refs, no code ref)
+0x00739E90	CTCCreatureModeManager::CModeBase	IsAllowingPlayerSpecialMovementMoves	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	CTCCreatureModeManager::CModeBase::IsAllowingPlayerSpecialMovementMoves	?IsAllowingPlayerSpecialMovementMoves@CModeBase@@QAE_NXZ	leaf-only: Ego_r.pdb / FableWin.pdb 0x01DD67A0 / Ego_d.pdb; vtable slot 9 (29 vtable refs, no code ref); FableWin order GetMovementSpeed 0x01DD6780 then this 0x01DD67A0
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x00740040	??0CModeSitBase@@QAE@PAVCThing@@@Z	??0CModeSitBase@NCreatureMode@@QAE@AAVCThing@@@Z	0x008D7CA0
+0x00740040	??_7CModeSitBench@@6B@	??_7CModeSitBench@NCreatureMode@@6B@	0x01267BFC
+0x00740040	?v00@CModeSitBench@@UAEXXZ	??_ECModeSitBench@NCreatureMode@@UAEPAXI@Z	0x007400E0
+0x00740040	??_C@_00CNPNBAHC@?$AA@	?NullChar@CCharString@@1DB	0x0129AAF4
+0x00740420	?AnimUpdate@CModeBase@CTCCreatureModeManager@@UAEXAAVCAnimateThing@@@Z	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	0x00862EC0
+0x00740420	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x00740420	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x00740420	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0
+0x00741390	?AnimUpdate@CModeBase@CTCCreatureModeManager@@UAEXAAVCAnimateThing@@@Z	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	0x00862EC0
+0x00741390	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x00741390	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x00741390	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0
+0x00743FE0	?AnimUpdate@CModeBase@CTCCreatureModeManager@@UAEXAAVCAnimateThing@@@Z	?AnimUpdate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXAAVCAnimateThing@@@Z	0x008D6850
+0x00743FE0	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x00743FE0	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x00743FE0	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UBE_NXZ	0x00743CB0
+0x008AC4D0	?AnimUpdate@CModeBase@CTCCreatureModeManager@@UAEXAAVCAnimateThing@@@Z	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	0x00862EC0
+0x008AC4D0	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x008AC4D0	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x008AC4D0	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0
+0x008E31A0	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x008E31A0	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x008E31A0	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0
+0x008E3720	?AnimUpdate@CModeBase@CTCCreatureModeManager@@UAEXAAVCAnimateThing@@@Z	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	0x00862EC0
+0x008E3720	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x008E3720	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x008E3720	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0
+0x008E37C0	?AnimUpdate@CModeBase@CTCCreatureModeManager@@UAEXAAVCAnimateThing@@@Z	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	0x00862EC0
+0x008E37C0	?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x008E37C0	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x008E37C0	?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0

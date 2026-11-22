@@ -82,7 +82,14 @@ public:
     static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);   // 0x00742790
 #endif
     CModeSitBench(CThing&);
+#ifndef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_IMPLICIT_DTOR
     virtual ~CModeSitBench();
+#else
+    // NF240 opt-in (q12674, row 0x00740040 the ctor, which emits the vtable): no user-declared destructor, as retail's scalar deleting
+    // destructor 0x007400E0 expands it in place (~Filter 0x00739DB0, then ~CModeSitBase 0x008D71D0; vtable 0x01267BFC slot 0); the
+    // implicit destructor is still the virtual ??1CModeSitBench@NCreatureMode@@UAE@XZ (FableWin.pdb 0x024B9E50). The
+    // CModeGuildmasterPowerUpShield PASS22_IMPLICIT_DTOR pattern. No layout change.
+#endif
     virtual unsigned long GetType() const;
     virtual const CAnimFilterBase& GetAnimFilter() const;
 private:

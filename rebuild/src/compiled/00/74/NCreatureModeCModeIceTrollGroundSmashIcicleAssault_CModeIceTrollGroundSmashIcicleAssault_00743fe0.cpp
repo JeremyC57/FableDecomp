@@ -96,9 +96,10 @@ public:
         virtual void OnDeactivate();
         virtual float GetMovementSpeed(const C3DVector& from, const C3DVector& to, EMovementType type) const;
         virtual bool IsIdleMode() const;
-        virtual bool IsRemoveOnDeactivate() const;
-        virtual bool IsHoldWeaponWithBothHands() const;
         virtual bool IsAllowingPlayerSpecialMovementMoves() const;
+        virtual bool IsHoldWeaponWithBothHands() const;
+        virtual bool IsRemoveOnDeactivate() const;
+        // NF242 (q12677): slots 9 / 11 in retail order (vtable 0x012673CC; CModeStandBase 0x0073DA00 and CModeCarryingWeaponStand 0x008E35F0 override slot 9)
         CThing*            ParentThing;                     // +0x04
         CAnimFilterOfGroup WeaponBasedFilter;               // +0x08
         long               FramesBeforeRemovingSelf;        // +0x14
@@ -113,6 +114,7 @@ public:
 };
 
 #define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE                  // NF242 (q12677): CModeStandBase's slot 2 / 7 / 9 overrides (0x00862EC0 / 0x00861900 / 0x0073DA00), as 0x00743600 / 0x008E3A20
 #include "engine/CModeStandBase.h"
 
 class CSnowTrollDef;
@@ -130,6 +132,11 @@ public:
     };
     CModeIceTrollGroundSmashIcicleAssault(CThing& thing);
     virtual unsigned long GetType() const;
+    // NF242 (q12677): the class's own overrides at slots 2 / 11 of its vtable 0x01268774 (retail 0x008D6850 / 0x00743CB0), Ego_r.pdb /
+    // FableWin.pdb / Ego_d.pdb ?AnimUpdate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXAAVCAnimateThing@@@Z and
+    // ?IsRemoveOnDeactivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UBE_NXZ (0x00743CB0 `mov al,1 ; ret`). Declarations only.
+    virtual void AnimUpdate(CAnimateThing& animateThing);
+    virtual bool IsRemoveOnDeactivate() const;
     CIntelligentPointer<CThing>        PTarget;             // +0x68
     CAnimFilterOfGroup                 Filter;              // +0x70
     long                               Timer;               // +0x7c

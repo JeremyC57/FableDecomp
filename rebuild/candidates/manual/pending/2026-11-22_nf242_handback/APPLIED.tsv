@@ -1,0 +1,6 @@
+entry	address	status	binders respelled	note
+q12677	0x00740040 / 0x00739E70 / 0x00739E90 + nine	done	7 vtable emitters respelled (RENAMES section 2: 27 slot lines; 0x0073B0D0 / 0x0073AEA0 emit no CModeBase vtable) + NF240's 4 lines of 0x00740040	the held q12674 unit (3 rows, NF240 hdr) + the nine slot-9 / 11 rows; seven of the nine also take CModeStandBase.h PASS22_VTABLE (slots 2 / 7 / 9), 0x00743FE0 declares its own AnimUpdate / IsRemoveOnDeactivate; 0x00740040 gains a linked test. 12 / 12 RELOCATION_MATCH or MATCH + PASS
+q12678	0x00B260B0 / 0x00B261D0	blocked (step 1 held)	-	step 1 prepared and proven except one row: CIEngine.h default switch + ten tests respelled (work/q12678/), equiv_check 108 differing rows, recheck 107 MATCH / RELOCATION_MATCH + PASS, 0x0058578B DIFFER (codegen perturbed by the PDB declarations themselves); steps 2 / 3 not started (decision 2)
+q12679	0x006A1620	open	-	not started (context: handed back after q12678 step 1)
+q12676	-	open	-	not started (context)
+q12659	0x00418DCA	open	-	not started (needs the full 469-includer proof; context)

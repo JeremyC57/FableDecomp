@@ -2714,7 +2714,6 @@ __CIfmod	00bfeb28	006f99b0
 ??_7CModeCarryingGoodsStand@@6B@	01267ae8	0073fce0
 ??_7CModeCrouch@NCreatureMode@@6B@	01267b34	0073fdb0
 ??_7CModeSitFloor@@6B@	01267bbc	0073ff70
-??_7CModeSitBench@@6B@	01267bfc	00740040
 ??_7CModeOutOfActionBase@NCreatureMode@@6B@	0126743c	00740160
 ??_7CModeStunned@NCreatureMode@@6B@	01267c74	00740160
 ??_7CModeDazed@NCreatureMode@@6B@	01267cc4	00740250
@@ -39605,3 +39604,4 @@ _sort32a	00c95560	00c95580
 ?UpdateTorchTasks@CTCVillage@@AAEXXZ	00659625	0065c781
 ?CurrentRenderFrame@CEngineInternalPrimitiveBase@@0GA	0143b8d8	00b92950
 ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a1620	0091ec30
+??_7CModeSitBench@NCreatureMode@@6B@	01267bfc	00740040

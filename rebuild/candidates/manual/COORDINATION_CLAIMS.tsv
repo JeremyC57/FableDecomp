@@ -310,3 +310,4 @@ date	account	item	kind	status	note
 2026-11-22	A	q12677-q12679,q12676,q12659	naming	claimed	agent NF242 (held CModeSitBench unit + slot swap, CEngine unit, 0x006A1620 binders) beside NF241
 2026-11-22	A	NF239 open lines + list<CComponent*> family	naming	done	agent NF241 landed 36 rows (batches/2026-11-22_landing_nf241); the rest released to NF243
 2026-11-22	A	NF241 open lines (39) + 0x004046B0 family + DTOR_OUTOFLINE census + L108-L110	naming	claimed	agent NF243 beside NF242
+2026-11-22	A	q12677	naming	done	agent NF242 landed the 12-row CModeSitBench unit (batches/2026-11-22_landing_nf242); q12678-q12679 / q12676 / q12659 released

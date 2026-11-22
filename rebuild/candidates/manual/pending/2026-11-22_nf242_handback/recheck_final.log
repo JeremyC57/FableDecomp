@@ -1,0 +1,51 @@
+addr       parity           behav  name
+00740040   RELOCATION_MATCH PASS   CModeSitBench
+00739e70   RELOCATION_MATCH PASS   GetMovementSpeed
+00739e90   MATCH            PASS   IsAllowingPlayerSpecialMovementMoves
+008e3720   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+008e3720   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e3720   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008e3720   RELOCATION_MATCH PASS   ~CModeJackOfBladesFlash
+008e31a0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+008e31a0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e31a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008e31a0   RELOCATION_MATCH PASS   ~CModeDragonHover
+008e37c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+008e37c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008e37c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008e37c0   RELOCATION_MATCH PASS   ~CModeScorpionKingTailPlunge
+00741390   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+00741390   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00741390   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00741390   RELOCATION_MATCH PASS   ~CModeScreamerAggressive
+00740420   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+00740420   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00740420   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00740420   RELOCATION_MATCH PASS   ~CModeJackOfBladesFloat
+008ac4d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+008ac4d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008ac4d0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008ac4d0   RELOCATION_MATCH PASS   ~CModeScreamerSuperAttack
+0073b0d0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0073b0d0   RELOCATION_MATCH PASS   ResetModes
+0073aea0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0073aea0   RELOCATION_MATCH PASS   ~CTCCreatureModeManager
+00743fe0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+00743fe0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00743fe0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00743fe0   RELOCATION_MATCH PASS   ~CModeIceTrollGroundSmashIcicleAssault
+
+WINS: 12
+  00740040 RELOCATION_MATCH NCreatureMode::CModeSitBench::??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z
+  00739e70 RELOCATION_MATCH CTCCreatureModeManager::CModeBase::?GetMovementSpeed@CModeBase@CTCCreatureModeManager@@UBEMABVC3DVector@@0W4EMovementType@@@Z
+  00739e90 MATCH CTCCreatureModeManager::CModeBase::?IsAllowingPlayerSpecialMovementMoves@CModeBase@CTCCreatureModeManager@@UBE_NXZ
+  008e3720 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFlash::??1CModeJackOfBladesFlash@NCreatureMode@@UAE@XZ
+  008e31a0 RELOCATION_MATCH NCreatureMode::CModeDragonHover::??1CModeDragonHover@NCreatureMode@@UAE@XZ
+  008e37c0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingTailPlunge::??1CModeScorpionKingTailPlunge@NCreatureMode@@UAE@XZ
+  00741390 RELOCATION_MATCH NCreatureMode::CModeScreamerAggressive::??1CModeScreamerAggressive@NCreatureMode@@UAE@XZ
+  00740420 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFloat::??1CModeJackOfBladesFloat@NCreatureMode@@UAE@XZ
+  008ac4d0 RELOCATION_MATCH NCreatureMode::CModeScreamerSuperAttack::??1CModeScreamerSuperAttack@NCreatureMode@@UAE@XZ
+  0073b0d0 RELOCATION_MATCH CTCCreatureModeManager::?ResetModes@CTCCreatureModeManager@@QAEXXZ
+  0073aea0 RELOCATION_MATCH CTCCreatureModeManager::??1CTCCreatureModeManager@@UAE@XZ
+  00743fe0 RELOCATION_MATCH NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::??1CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAE@XZ
+EXIT 0
