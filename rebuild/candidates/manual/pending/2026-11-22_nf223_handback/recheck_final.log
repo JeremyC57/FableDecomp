@@ -1,0 +1,109 @@
+addr       parity           behav  name
+00419036   MATCH            PASS   DeleteViaVtable0_00419036
+00428ae7   MATCH            PASS   DeleteViaVtable0_00428ae7
+0042f864   MATCH            PASS   sub_0042f864
+00438aa0   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00438aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00438aa0   WARN RELOC_NAME: ?GFVXToAX@@YGMM@Z -> 009e1da0 labelled 'GFAXToVX'
+00438aa0   RELOCATION_MATCH PASS   AddScreenMessage
+00405020   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00405020   RELOCATION_MATCH PASS   DrawTextW
+00416c8a   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00416c8a   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+00416c8a   RELOCATION_MATCH PASS   InitGraphics
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041e3f6   WARN RELOC_NAME: ??0CManagerBase@NUISystem@@QAE@XZ -> 0042be7b labelled 'NUISystem::CObservable::CObservable'
+0041e3f6   WARN RELOC_NAME: ??0CKeyMap@NUISystem@@QAE@XZ -> 0042bf67 labelled 'std::map<T_0042bf67>::map'
+0041e3f6   WARN RELOC_NAME: ??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z -> 0042ab01 labelled 'Std_DoubleLinkedList_CreateNode'
+0041e3f6   WARN RELOC_NAME: ??0CLayerMap@NUISystem@@QAE@XZ -> 0042bf85 labelled 'std::map<T_0042bf85>::map'
+0041e3f6   WARN RELOC_NAME: ??0CChildrenMap@NUISystem@@QAE@XZ -> 0042d28b labelled 'std::map<T_0042d28b>::map'
+0041e3f6   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0041e3f6   RELOCATION_MATCH PASS   CManager
+005bff07   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005bff07   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+005bff07   RELOCATION_MATCH PASS   CTCInventoryBase
+0042db20   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0042db20   WARN STANDIN_LEAF ??_GCManager@NUISystem@@IAEPAXI@Z (catalog NUISystem::CManager::`scalar_deleting_destructor'; names another function)
+0042db20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00765c80   RELOCATION_MATCH PASS   PushBack_CElement12_006f0810_00765c80
+004194d1   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z -> 00419036 labelled '_global::DeleteViaVtable0_00419036'
+004194d1   RELOCATION_MATCH PASS   Reset
+009f83d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009f83d0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009f83d0   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009f83d0   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009f83d0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+009f83d0   WARN SHARED_HEADER_AVAILABLE CResourceBank (engine/CResourceBank.h)
+009f83d0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009f83d0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z -> 00419036 labelled '_global::DeleteViaVtable0_00419036'
+009f83d0   RELOCATION_MATCH PASS   OpenGraphicBank
+0042fc86   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z -> 00428ae7 labelled '_global::DeleteViaVtable0_00428ae7'
+0042fc86   RELOCATION_MATCH PASS   Reset
+00a09f20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00a09f20   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a09f20   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+00a09f20   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+00a09f20   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00a09f20   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+00a09f20   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z -> 00428ae7 labelled '_global::DeleteViaVtable0_00428ae7'
+00a09f20   RELOCATION_MATCH PASS   OpenMeshBank
+0042fc13   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z -> 0042f864 labelled 'sub_0042f864'
+0042fc13   RELOCATION_MATCH PASS   Reset
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042ddb3   WARN RELOC_NAME: ??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z -> 0042fe34 labelled 'CCountedPointer<const CFontBank>::operator=<CFontBank>'
+0042ddb3   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0042ddb3   RELOCATION_MATCH PASS   InitialiseGraphics
+0042fb40   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0042fb40   RELOCATION_MATCH PASS   Clear
+00763060   RELOCATION_MATCH PASS   FractureShape
+007634e0   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00764bc0 labelled '_global::Move_CountedPointer_00764bc0'
+007634e0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@@std@@YIXPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@0ABU__false_type@0@@Z -> 00764ee0 labelled 'std::__destroy_aux<CCountedPointer<NShape::CSubdivisionTriangle>*>'
+007634e0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@SIXPAX@Z -> 00763a20 labelled '_global::DeleteViaVtable0_00763a20'
+007634e0   RELOCATION_MATCH PASS   UpdateSubdivisions
+00b30b50   WARN RELOC_NAME: ?SetupGamut@CEngineCamera@@AAEXXZ -> 00b2fd60 labelled 'CPlane_InitializeFromCorners'
+00b30b50   RELOCATION_MATCH PASS   SetCameraState
+
+WINS: 20
+  00419036 MATCH _global::?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z
+  00428ae7 MATCH _global::?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z
+  0042f864 MATCH _gapscan::?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z
+  00438aa0 RELOCATION_MATCH CPlayerGui::AddScreenMessage
+  00405020 RELOCATION_MATCH NUISystem::CIMEFont::DrawTextW
+  00416c8a RELOCATION_MATCH CMainGameComponent::?InitGraphics@CMainGameComponent@@QAE_NXZ
+  0041e3f6 RELOCATION_MATCH NUISystem::CManager::??0CManager@NUISystem
+  005bff07 RELOCATION_MATCH NInventory::CTCInventoryBase::??0CTCInventoryBase
+  0042db20 RELOCATION_MATCH NUISystem::CManager::??_GCManager@NUISystem@@IAEPAXI@Z
+  00765c80 RELOCATION_MATCH _global::?push_back@?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@std@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@2@@Z
+  004194d1 RELOCATION_MATCH CCountedPointer<CGraphicDataBank>::?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z
+  009f83d0 RELOCATION_MATCH CGraphicBankManager::?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z
+  0042fc86 RELOCATION_MATCH CCountedPointer<CMeshDataBank>::?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z
+  00a09f20 RELOCATION_MATCH CMeshBankManager::?OpenMeshBank@CMeshBankManager@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@ABVCCharString@@_N@Z
+  0042fc13 RELOCATION_MATCH CCountedPointer<const CFontBank>::?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z
+  0042ddb3 RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+  0042fb40 RELOCATION_MATCH NUISystem::CManager::?Clear@CManager@NUISystem@@SIXXZ
+  00763060 RELOCATION_MATCH NShape::?FractureShape@NShape@@YIXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAW4ECirculationOrder@1@AAV?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@3@2@Z
+  007634e0 RELOCATION_MATCH NShape::CBasicShape::?UpdateSubdivisions@CBasicShape@NShape@@UAEXXZ
+  00b30b50 RELOCATION_MATCH CEngineCamera::?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z

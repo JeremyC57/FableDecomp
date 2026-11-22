@@ -1,7 +1,7 @@
 // NInventory::CTCInventoryBase::CTCInventoryBase(CThing&) -- inventory component ctor: empty containers, selection states 1, cleared def/bank pointers and animation angles, then loads the main graphics bank with the best texture formats and registers for global updates
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFF07, length 409 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CTCBase::CTCBase(CThing*) 0x00686800, CGraphicBankParams ctor 0x00415B80, CDisplayManager format pickers
-// 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::CreateAndInitialize 0x009F83D0,
+// Callees: CTCBase::CTCBase(CThing*) 0x00686800, CGraphicDataBankInit ctor 0x00415B80, CDisplayManager format pickers
+// 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::OpenGraphicBank 0x009F83D0,
 // CCountedPointer<CGraphicDataBank>::ReleaseData 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
 // Leaf: ??0CTCInventoryBase
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -14,7 +14,6 @@
 
 class CThing;
 class CGraphicDataBank;
-class CPixelFormat { public: long Format; };
 // NF222 (family q12226 / q12402, coordinator ruling 1): the HEAD row's local `template <class T> class CCountedPointer` model is replaced by
 //   the shared engine/CCountedPointer.h with FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (`~CCountedPointer() { ReleaseData(); }`,
 //   ReleaseData out of line), the shape of the landed sibling ~CTCInventoryBase row 0x005C00A0. The temporary's release 0x00419108 is
@@ -33,22 +32,11 @@ template <class T> class allocator;
 template <class T, class A> class vector;
 }
 namespace { extern CCharString BANK_HANDLE; }      // 0x013B8BA4 "GBANK_MAIN"
-struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80
-    CPixelFormat  CompressedAlpha;              // +0x00
-    CPixelFormat  CompressedAlpha2;             // +0x04
-    CPixelFormat  _f08;
-    CPixelFormat  CompressedAlpha3;             // +0x0c
-    CPixelFormat  Opaque;                       // +0x10
-    CPixelFormat  Alpha;                        // +0x14
-    CPixelFormat  Signed;                       // +0x18
-    bool          Flag1c;                       // +0x1c
-    long          Value20;                      // +0x20
-    long          Value24;                      // +0x24
-    bool          Flag28;                       // +0x28
-    bool          Flag29;
-    bool          Flag2a;
-    CGraphicBankParams();
-};
+// NF223: the bank parameters are engine/CGraphicDataBankInit.h (Ego_r.pdb CGraphicDataBankInit, 0x2c; ctor 0x00415B80
+//   ??0CGraphicDataBankInit@@QAE@XZ) and CPixelFormat its engine/CPixelFormat.h (were the local CGraphicBankParams / CPixelFormat stand-ins).
+//   FABLE_RETAIL_CGRAPHICDATABANKINIT_CTOR_DECL_ONLY: this TU calls the out-of-line ctor 0x00415B80; the inline body would emit a copy unlike it.
+#define FABLE_RETAIL_CGRAPHICDATABANKINIT_CTOR_DECL_ONLY
+#include "engine/CGraphicDataBankInit.h"
 class CDisplayManager { public:
     bool GetBestCompressedOpaqueTextureFormat(unsigned long bits, CPixelFormat& out);    // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat(unsigned long bits, CPixelFormat& out);   // 0x009BE870
@@ -58,7 +46,7 @@ class CDisplayManager { public:
     bool GetBestSignedTextureFormat(unsigned long bits, CPixelFormat& out);             // 0x009BE590
 };
 class CGraphicBankManager { public:
-    CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, CGraphicBankParams* params, bool a, bool b);   // 0x009F83D0
+    CCountedPointer<CGraphicDataBank> OpenGraphicBank(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0 (FableWin.pdb / Ego_r.pdb)
 };
 class CSystemManager { public:
     unsigned char        _pad00[0x6c];
@@ -177,19 +165,19 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
       RHSetInvItemDefIndex(0),
       ParentMapNumber(0)
 {
-    CGraphicBankParams params;
-    GPDisplayManager->GetBestCompressedOpaqueTextureFormat(0x10, params.CompressedAlpha);
-    GPDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, params.CompressedAlpha2);
-    GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(0x10, params.CompressedAlpha3);
-    GPDisplayManager->GetBestAlphaTextureFormat(0x20, params.Alpha);
-    GPDisplayManager->GetBestOpaqueTextureFormat(0x20, params.Opaque, false);
-    GPDisplayManager->GetBestSignedTextureFormat(0x10, params.Signed);
-    params.Value20 = -1;
-    params.Value24 = -1;
-    params.Flag1c = false;
-    params.Flag28 = false;
+    CGraphicDataBankInit params;
+    GPDisplayManager->GetBestCompressedOpaqueTextureFormat(0x10, params.NonAlphaFormat);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat(0x10, params.AlphaFormat);
+    GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(0x10, params.BooleanAlphaFormat);
+    GPDisplayManager->GetBestAlphaTextureFormat(0x20, params.UncompressedAlphaFormat);
+    GPDisplayManager->GetBestOpaqueTextureFormat(0x20, params.UncompressedNonAlphaFormat, false);
+    GPDisplayManager->GetBestSignedTextureFormat(0x10, params.SignedFormat);
+    params.MaxGraphicWidth = (unsigned long)-1;
+    params.MaxGraphicHeight = (unsigned long)-1;
+    params.GenerateMipmaps = false;
+    params.AllowDither = false;
     CGraphicBankManager* manager = GFGetSystemManager()->GraphicBankManager;
-    GraphicManager = manager->CreateAndInitialize(BANK_HANDLE, &params, true, true).Data;
+    GraphicManager = manager->OpenGraphicBank(BANK_HANDLE, params, true, true).Data;
     AddToGlobalTCs();
 }
 

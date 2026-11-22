@@ -2846,7 +2846,6 @@ __CIfmod	00bfeb28	006f99b0
 ??4CElement12_0075b8d0@@QAEAAU0@ABU0@@Z	0075b8d0	00764e90
 ??1CBase_00764f70@@QAE@XZ	00764f70	007650d0
 ??_7CTrack@@6B@	0126a288	007650d0
-?InsertGrow@CRetailVector_CElement12_006f0810@@QAEXPAUCElement12_006f0810@@ABU2@ABUSScalarTag@@K_N@Z	00765b70	00765c80
 ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NJ@Z	007660c0	00766480
 ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z	00766050	00766480
 ?Erase@CRetailTree_erase00769650@@QAEXPAUnode@1@@Z	00769650	0076a6b0
@@ -14637,7 +14636,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?erase@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEPAV?$CArray@G@@PAV3@0@Z	00f3f7c0	00f3faf0
 ?TransferIn@?$CPersistTraits@_N@@QAEXPAVCPersistContext@@PAVCStringParser@@PA_N@Z	00403ff0	00403fc0
 ?Draw3DScaledText@CRenderManager2D@@QAE_NABVC3DVector@@MVCWideString@@PAVCFontBank@@ABVCRGBColour@@K@Z	009dbff0	00405020
-?GetFont@CFontBankSource@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	00405020
 ?TransferOutLong@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z	009e2560	00405a10
 ?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z	00435f70	00406cc0
 ?CreateDirectoryW@CDriveManager@@QAEJABVCWideString@@@Z	009e4da0	00406e30
@@ -14685,7 +14683,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDef@CDefinitionManager@@QAE_NABVCCharString@@PAUCPlayerGuiDefPointer@@@Z	0043ff30	00438770
 ??0CScreenMessage@NPlayerGui@@QAE@ABVCWideString@@JJ@Z	00438020	00438aa0
 ?FormatStringForArea@CPlayerGui@@SIXABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV4@@Z	00437d10	00438aa0
-?GetFont@CFontBankManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	00438aa0
 ?GetVVisibleTelevisionScreenArea@CDisplayManager@@QBE?AVC2DBoxF@@XZ	009bece0	00438aa0
 ?PeekGuiDef@@YAPAVCPlayerGuiDef@@XZ	00438570	00439e00
 ?UpdateStat@CPlayerGui@@QAEXMMMMMPAVCStatBar@NPlayerGui@@@Z	00437ae0	00439f20
@@ -32677,7 +32674,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?GetSupportedAntialiasingLevels@CDisplayManager@@QAEXAAUCLongVector@@@Z	009c05c0	00409140
 ??0CGraphicDataBankInit@@QAE@XZ	00415b80	00416c8a
 ??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	004194ba	00416c8a
-?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	009f83d0	00416c8a
 ?GetBestBooleanAlphaTextureFormat@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z	009be750	00416c8a
 ?IsSupportingCompressedTextures@CDisplayManager@@QAE_NXZ	009be800	00416c8a
 ?SetGraphicBank@CTCGraphicAppearance@NGraphicAppearance@@SIXAAVCGraphicDataBank@@@Z	004bbfc0	00416c8a
@@ -32688,12 +32684,10 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?g_TextureBitDepth@@3KA	013b7d68	00416c8a
 ??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z	0042ab01	0041e3f6
 ??0CChildrenMap@NUISystem@@QAE@XZ	0042d28b	0041e3f6
-??0CGraphicBankParams@@QAE@XZ	00415b80	0041e3f6
 ??0CKeyMap@NUISystem@@QAE@XZ	0042bf67	0041e3f6
 ??0CLayerMap@NUISystem@@QAE@XZ	0042bf85	0041e3f6
 ??0CManagerBase@NUISystem@@QAE@XZ	0042be7b	0041e3f6
 ??_7CManager@NUISystem@@6B@	01230134	0041e3f6
-?CreateAndInitialize@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@PAUCGraphicBankParams@@_N2@Z	009f83d0	0041e3f6
 ?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z	0042a9b7	0041e3f6
 ?SetIsUsingRelativeCoords@@YIX_N@Z	004299a8	0041e3f6
 ?SetMetaLayer@CManager@NUISystem@@QAEXJ@Z	0041e1cd	0041e3f6
@@ -39448,3 +39442,4 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?AcquireFont@CFontDataBankEntry@@QBE?AV?$CCountedPointer@VCFontBank@@@@XZ	00a634f0	009e2ba0
 ??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z	00ab8e10	00a634f0
 ?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	009f83d0	0042ddb3
+?_M_insert_overflow@?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@std@@IAEXPAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	00765b70	00763060

@@ -1,0 +1,7 @@
+address	state	best_grade	grades_used	best_source	note
+0x008E18D0	escalated	DIFFER(2165v2073) /Gr T65 unforced; RELOCATION_MATCH with 4 forced c2 inline decisions (proof/)	~45	$S/w22/auth10/008e18d0/proof/e4.cpp	ESCALATE.md: text pinned (sky end_pos one statement), residue = 4 inline decisions
+0x00CF4EC0	working (handover)	DIFFER(6244v6164); forced movie dtor 6220v6164	6	$S/w22/auth10/00cf4ec0/c0.cpp	HANDOVER.md; draft not yet on shared headers
+0x00B4D370	not started	-	0	-	AUTH10 returned for context
+0x00BD3070	not started	-	0	-	AUTH10 returned for context
+0x00502E90	not started	-	0	-	AUTH10 returned for context
+0x0093D270	not started	-	0	-	AUTH10 returned for context

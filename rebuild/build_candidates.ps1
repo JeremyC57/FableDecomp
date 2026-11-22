@@ -76938,9 +76938,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00419036'
-        Module = '_global'
-        Source = '00/41/global_DeleteData_00419036.cpp'
-        TestSource = '00/41/global_DeleteData_00419036_test.cpp'
+        Module = 'CCountedPointer<CGraphicDataBank>'
+        Source = '00/41/CCountedPointerCGraphicDataBank_DeleteData_00419036.cpp'
+        TestSource = '00/41/CCountedPointerCGraphicDataBank_DeleteData_00419036_test.cpp'
         PassPattern = 'PASS_00419036'
     }
     [pscustomobject]@{
@@ -76952,9 +76952,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00428ae7'
-        Module = '_global'
-        Source = '00/42/global_DeleteData_00428ae7.cpp'
-        TestSource = '00/42/global_DeleteData_00428ae7_test.cpp'
+        Module = 'CCountedPointer<CMeshDataBank>'
+        Source = '00/42/CCountedPointerCMeshDataBank_DeleteData_00428ae7.cpp'
+        TestSource = '00/42/CCountedPointerCMeshDataBank_DeleteData_00428ae7_test.cpp'
         PassPattern = 'PASS_00428ae7'
     }
     [pscustomobject]@{
@@ -95175,9 +95175,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042f864'
-        Module = '_gapscan'
-        Source = '00/42/gapscan_sub0042f864_0042f864.cpp'
-        TestSource = '00/42/gapscan_sub0042f864_0042f864_test.cpp'
+        Module = 'CCountedPointer<const CFontBank>'
+        Source = '00/42/CCountedPointerconstCFontBank_DeleteData_0042f864.cpp'
+        TestSource = '00/42/CCountedPointerconstCFontBank_DeleteData_0042f864_test.cpp'
         PassPattern = 'PASS_0042f864'
     }
     [pscustomobject]@{
@@ -165924,9 +165924,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00765c80'
-        Module = '_global'
-        Source = '00/76/global_PushBackCElement12006f081000765c80_00765c80.cpp'
-        TestSource = '00/76/global_PushBackCElement12006f081000765c80_00765c80_test.cpp'
+        Module = 'std::vector<std::vector<C3DVector> >'
+        Source = '00/76/stdvectorstdvectorC3DVector_pushback_00765c80.cpp'
+        TestSource = '00/76/stdvectorstdvectorC3DVector_pushback_00765c80_test.cpp'
         PassPattern = '00765c80_TEST PASS'
     }
     [pscustomobject]@{

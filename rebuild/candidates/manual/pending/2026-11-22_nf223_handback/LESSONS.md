@@ -1,0 +1,8 @@
+# NF223 lessons (one line each)
+- A pointee header's polymorphic opt-in can need a second opt-in. DeleteData<CGraphicDataBank> needed FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS plus FABLE_RETAIL_CRESOURCELIST, and CMeshDataBank needed BASES on top. Without a virtual dtor, the explicit instantiation compiles to a plain `push ecx; call; pop ecx` (8 B v 11).
+- A stand-in respell can expose pick-any debt that its misspelling hid. A copy that was NO-OWNER at HEAD only because of a stand-in namespace or pointee (NUISystem::CCountedPointer<NUISystem::CFontBank>, CCountedPointer<const CFontBank>::operator=) gains an owner and reads NEQ. Run pk.py on HEAD and NEW before handing a respell back.
+- An existing DECL_ONLY opt-in is free where retail calls the member out of line: ASSIGN_DECL_ONLY cleared both NEQ copies (??4, ShareData) of 0x00416C8A without touching the code.
+- A header's inline constructor can emit a NEQ pick-any copy in a size TU even when the call stays out of line (CGraphicDataBankInit 0x00415B80: the TU stores the constants directly, retail goes through dl / cl). Add a member-specific CTOR_DECL_ONLY opt-in.
+- VC7.1 emits a class's ??_G scalar deleting destructor for an unqualified explicit destructor call (`p->~T()`), but not for a qualified one (`this->Base::~Base()`). A TU-internal friend gives a protected-dtor class its ??_G as the row's own leaf, with no fabricated member.
+- pay.py parsed `// Flags:\s*(.*)`, and on an empty Flags line `\s` crossed the newline, so `#include <stddef.h>` became flags. Use `[ \t]*` and treat `(none)` as no flags.
+- The CodeView member record has no mutable bit. For a const member that re-seats a field, the body is the only evidence, and mutable or const_cast give the same bytes.

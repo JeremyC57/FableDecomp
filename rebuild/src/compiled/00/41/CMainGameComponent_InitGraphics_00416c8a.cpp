@@ -9,7 +9,7 @@
 //   CGraphicDataBankInit() 0x00415B80 (manifest label "CNavigationLayer::CNavigationLayer" is wrong), the display
 //   manager (0x013B8390) IsSupportingCompressedTextures 0x009BE800 and format pickers 0x009BE830/870/8B0 (compressed
 //   non-alpha / alpha / boolean alpha), 0x009BE610 opaque, 0x009BE6C0 alpha, 0x009BE750 boolean alpha, 0x009BE590
-//   signed, CPixelFormat::Initialise 0x009E3830 (D3DFMT_DXT5), CreateAndInitialize 0x009F83D0 (manager 0x013B837C),
+//   signed, CPixelFormat::Initialise 0x009E3830 (D3DFMT_DXT5), OpenGraphicBank 0x009F83D0 (manager 0x013B837C),
 //   CCountedPointer<CGraphicDataBank>::operator= 0x004194BA / dtor 0x00419108, __fastcall SetGraphicBank 0x004BBFC0
 //   (manifest label "SetCurrentThingManager" is wrong; the graphic twin of SetMeshBank 0x004BBFD0).
 // Globals: texture bit depth 0x013B7D68, maxima 0x013B7D64 / 0x013B7D60, compressed-textures option 0x01375453,
@@ -61,9 +61,15 @@ class CGraphicDataBank;
 //   (FableWin.pdb ?ReleaseData@?$CCountedPointer@<T>@@QAEXXZ; ~CCountedPointer() { ReleaseData(); } is the 5-byte jmp thunk), so the
 //   release sites bind ReleaseData<T> (was ??1<T> at the ReleaseData addresses).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
+// NF223 (q12557): FABLE_RETAIL_CCOUNTEDPOINTER_ASSIGN_DECL_ONLY: retail calls the out-of-line operator= 0x004194BA (which calls ShareData
+//   0x00419134); with the inline body this frame-pointer size TU emitted pick-any ??4 / ShareData<CGraphicDataBank> copies unlike both owners.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_ASSIGN_DECL_ONLY
 #include "engine/CCountedPointer.h"
-struct CGraphicDataBankManager {
-    CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
+// NF223: the bank comes from CGraphicBankManager::OpenGraphicBank (FableWin.pdb / Ego_r.pdb, the self leaf of 0x009F83D0; was a local
+//   CGraphicDataBankManager::CreateAndInitialize stand-in cast from PGraphicBankManager). No header for the class: a local declaration of the
+//   one method, the shape of the landed sibling 0x0042DDB3.
+class CGraphicBankManager { public:
+    CCountedPointer<CGraphicDataBank> OpenGraphicBank(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
 };
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
@@ -115,7 +121,7 @@ bool CMainGameComponent::InitGraphics()
     }
     {
         CCharString name("GBANK_MAIN", -1);
-        PMainGraphicBank = ((CGraphicDataBankManager*)PGraphicBankManager)->CreateAndInitialize(name, init, true, true);
+        PMainGraphicBank = PGraphicBankManager->OpenGraphicBank(name, init, true, true);
     }
     {
         CCharString text("Setting Main Graphic Bank", -1);

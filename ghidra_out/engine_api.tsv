@@ -37053,7 +37053,7 @@
 00b2fc00	__thiscall	void	0	2	CObservable *,CObserver *	AddExclusiveObserver
 00b2fc10	__fastcall	void	0	2	CEngineCamera *,vector<CGenericVar,std::allocator<CGenericVar>_> *	ConsoleRunDebugScript
 00b2fc50	__thiscall	void	0	1	CEngineCamera *	RefreshD3DTransforms
-00b2fd60	unknown	undefined	1	0		CPlane_InitializeFromCorners
+00b2fd60	unknown	undefined	1	0		CEngineCamera::SetupGamut
 00b30480	__thiscall	bool	1	4	CEngineCamera *,C3DVector *,float,ulong *	ClipSphere
 00b30610	__thiscall	bool	1	2	CEngineCamera *,CMatrix3x4 *	ClipBox
 00b308e0	__thiscall	bool	1	4	CEngineCamera *,C3DBoundingBox *,float,bool *	ClipWorldSpaceBoundingBox

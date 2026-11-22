@@ -1,0 +1,7 @@
+duplicates 6
+007634e0.obj : warning LNK4006: "bool __fastcall NShape::IsLineIntersectingWithOthersInList(class C2DLineF const &,class std::vector<class C3DVector,class std::allocator<class C3DVector> > const &)" (?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@
+007634e0.obj : warning LNK4006: "bool __fastcall NShape::IsTriangleWithPointsInside(class std::vector<class C3DVector,class std::allocator<class C3DVector> > const &,class std::vector<class C3DVector,class std::allocator<class C3DVector> > const &,enum NShape:
+007634e0.obj : warning LNK4006: "void __fastcall std::__destroy_aux<class CCountedPointer<class NShape::CSubdivisionTriangle> *>(class CCountedPointer<class NShape::CSubdivisionTriangle> *,class CCountedPointer<class NShape::CSubdivisionTriangle> *,struct std:
+007634e0.obj : warning LNK4006: "class CCountedPointer<class NShape::CSubdivisionTriangle> * __fastcall std::__copy<class CCountedPointer<class NShape::CSubdivisionTriangle> *,class CCountedPointer<class NShape::CSubdivisionTriangle> *,int>(class CCountedPoint
+007634e0.obj : warning LNK4006: "void __fastcall NShape::FractureShape(class std::vector<class C3DVector,class std::allocator<class C3DVector> > const &,enum NShape::ECirculationOrder &,class std::vector<class std::vector<class C3DVector,class std::allocator<c
+00a09f20.obj : warning LNK4006: "protected: static long __fastcall CBasicString<char>::Compare(char const *,char const *)" (?Compare@?$CBasicString@D@@KIJPBD0@Z) already defined in 009f83d0.obj; second definition ignored

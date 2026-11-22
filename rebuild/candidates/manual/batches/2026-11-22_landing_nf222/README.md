@@ -37,3 +37,11 @@ Agents NF221 (ports, census) and NF222 (the open rows, the pick-any pass, the wh
   - 0x0041E641 ~CManager's second spelling;
   - the 0x00416C8A ShareData / `??4` copy debt;
   - the unproven `mutable` on the AcquireFont Font member.
+
+## Header proof (added 2026-11-22 after the advisor review)
+- pin_asserts: 0 pinned. assert_names_check: 0 mismatches (`logs/assert_names_check.txt`).
+- equiv_check, exact preprocessing of every landed row and test, old header v new (`logs/equivalence_differing_rows.tsv`): 13 files differ.
+  - 6 are the rows that define the new opt-ins (0x0042DDB3 and the five Reset rows). Their grades are in `logs/recheck.log`.
+  - The other 7 files belong to 6 rows (0x00CBFB7D, 0x0047042A src + test, 0x00BA2350, 0x00BA5260, 0x00BA50A0, 0x0093AB70), which include the header on its default
+    path (cause of the text difference not examined). All 6 recheck RELOCATION_MATCH + PASS on the tree with the new header
+    (`logs/recheck_equiv_rows.log`).

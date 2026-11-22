@@ -345,3 +345,16 @@ other block stays bound. The twins' draft (function-scope shared `creature`, x/y
 Clarification 2026-11-21 (revision test without Ego_d code): Ego_d has line tables and procs but no code, so test (a) is run by
 size: a block passes only if an Ego_d line decodes (calibrated size) as a call to a named function that Ego_d lists as a proc and
 retail's function never calls (or the reverse). Size arguments that only show "more code" do not pass; untestable blocks stay bound.
+
+- **2026-11-22 (Account A, advisor, owner delegated): AUTH10 / AUTH7 escalations.**
+  - 0x008E18D0: does not land. A hooked c2 with forced inline decisions is an oracle, never a grade; no bracket grade is recorded.
+    Next is a bounded measurement: e4 against Ego_d with VC10, line by line plus the wrappers to the four sites; the for-scope idiom
+    check; then c2's decision inputs within a budget, else an owner packet (`pending/2026-11-22_auth10/README.md`).
+  - 0x00A4EFC0: b3 replaces a2 as the recorded best text (D and E labelled Inferred; the `rhs` parameter name queued).
+    - AllocateType's Ego_d `overflow_check` local is admissible only if something besides the 261-B debug assert uses it, and if
+      Ego_r.pdb / FableWin.pdb show it. Then: one pre-registered readout. Acceptance is fixed before grading: the row flips AND
+      0x00A50510 / 0x00AA0FA0 / 0x00BD2D90 still match with the same shape, with no re-fit. Otherwise the row goes to the owner.
+    - No fitted text in the STLport / CArray bodies: nothing calibrates them, so a pick there is chosen by readout. That case
+      also goes to the owner as a proven order tie.
+  - 0x00CF4EC0: port onto the shared headers before more forcing.
+  - Authoring briefs stay narrow (two agents in a row ran out of context on six-row briefs).
