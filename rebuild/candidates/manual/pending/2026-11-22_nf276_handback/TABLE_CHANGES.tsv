@@ -1,0 +1,7 @@
+symbol	address	witness	change	note
+# reloc_bindings.tsv: no change. ??1CLandscapeLayerMesh@@UAE@XZ 00bfde20 is already tabled (witness 0x00BFE900). ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z 00bfddb0 has no leaf-relocation witness (vtable slot only), so no line is added (as nf272 for ReleaseBuffers).
+# build_candidates.ps1 CompilerFlags (coordinator-only; GOTCHAS 449 / 499), D4 S3, only if S3 + the owner pick-any land together:
+# address	CompilerFlags	before	after
+0x00BDA150	CompilerFlags	(none)	/d2inlT114
+0x00BD9CE0	CompilerFlags	(none)	/d2inlT114
+# 0x00BD9B90 keeps its CompilerFlags '/d2inlT114' (unchanged).

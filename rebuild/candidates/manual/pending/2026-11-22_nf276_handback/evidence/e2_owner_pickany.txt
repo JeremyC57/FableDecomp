@@ -1,0 +1,28 @@
+##### 00bd9b90
+pH 00bd9b90 CEngineLandscapeMemoryManager::FreeVirtual RELOCATION_MATCH flags= ['/d2inlT114'] leaf=?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+pS 00bd9b90 CEngineLandscapeMemoryManager::FreeVirtual RELOCATION_MATCH flags= ['/d2inlT114'] leaf=?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+> DEF ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ
+ALLDONE
+00bd9b90 NEW	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009a4350	EQ
+00bd9b90 NEW	?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ	6	-	NO-OWNER
+00bd9b90 HEAD	?Deallocate@CMemoryAllocator@@SIXPAX@Z	92	009a4350	EQ
+# objsec HEAD v new owner (new has one more section: the anonymous helper)
+sections head 5 new 6
+NOT_EQ 0
+# cmpobj
+SAME	??_GCMemoryAllocator@@IAEPAXI@Z
+SAME	?Deallocate@CMemoryAllocator@@SIXPAX@Z
+SAME	?Destroy@CMemoryAllocator@@KIXXZ
+SAME	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+# COMDAT selection (1 NODUPLICATES, 2 ANY)
+## H_00bd9b90
+1 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+## 00bd9b90
+2 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+1 ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ
+## S3 00bda150
+2 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+## S3 00bd9ce0
+2 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z

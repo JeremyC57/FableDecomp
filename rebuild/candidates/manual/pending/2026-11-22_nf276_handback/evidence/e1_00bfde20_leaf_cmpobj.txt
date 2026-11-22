@@ -1,0 +1,16 @@
+# leafcmp HEAD QAE v new UAE
+len 93 93 bytes_equal True
+relocs_equal True
+# cmpobj new 0x00BFDE20 v HEAD 0x00BFE900
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??_GCLandscapeLayerMesh@@UAEPAXI@Z
+SAME	??_GCMovableResource@@UAEPAXI@Z
+ONLY_A	??1CLandscapeLayerMesh@@UAE@XZ
+# pk HEAD 0x00BFE900 object copies
+00bfe900 HEAD	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00bfe900 HEAD	?Verify@CMovableResource@@UBEKXZ	3	-	NO-OWNER
+00bfe900 HEAD	?CanRelocateData@CMovableResource@@UBE_NJ@Z	5	-	NO-OWNER
+00bfe900 HEAD	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00bfe900 HEAD	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+00bfe900 HEAD	??0CLandscapeLayerMesh@@QAE@XZ	9	-	NO-OWNER
+00bfe900 HEAD	?ForceNew_00bfe900@@YAPAVCLandscapeLayerMesh@@XZ	24	-	NO-OWNER

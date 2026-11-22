@@ -1,0 +1,25 @@
+##### 00bfddb0
+pH 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z
+pS 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z
+> DEF ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+> DEF ?IsLockedFromMemoryFreeing@CEngineLandscapeMap@@QBE_NXZ
+ALLDONE
+pS 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z
+> DEF ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+##### 00bfddb0
+pH 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z
+pS 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< DEF ?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z
+> DEF ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+ALLDONE
+# objsec 0x00BFDDB0 HEAD v final (leaf renamed)
+sections head 2 new 2
+ALL_EQ 0

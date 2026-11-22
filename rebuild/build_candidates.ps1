@@ -372427,6 +372427,7 @@ $catalog = @(
         Source = '00/bd/CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0.cpp'
         TestSource = '00/bd/CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0_test.cpp'
         PassPattern = '00bd9ce0_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00c057d0'
@@ -373466,6 +373467,7 @@ $catalog = @(
         Source = '00/bd/CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150.cpp'
         TestSource = '00/bd/CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150_test.cpp'
         PassPattern = '00bda150_TEST PASS'
+        CompilerFlags = '/d2inlT114'
     }
     [pscustomobject]@{
         Address = '00c677c0'

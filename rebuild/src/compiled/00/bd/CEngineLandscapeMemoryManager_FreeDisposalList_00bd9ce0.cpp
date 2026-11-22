@@ -1,5 +1,9 @@
 // CEngineLandscapeMemoryManager::FreeDisposalList() -- empty the three generations of delayed-disposal lists: destroy every queued texture, vertex buffer and index buffer and give its block back to the global allocator
 // Leaf: ?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+// Flags: /d2inlT114
+// Inline-budget: /d2inlT114 (EXTRA_RULES 2026-11-08 preference 2; NF276 D4 S3) -- the owner 0x00BD9B90's own CompilerFlags, so this TU's
+//   pick-any FreeVirtual copy (and the inlined CMemoryAllocator::Deallocate) come out as the owner's 97-byte body (pk EQ 0x00BD9B90; at the
+//   default threshold 68 bytes, NEQ); the row's own leaf is unchanged at T114 (one retail TU, one setting).
 // Inline: the header inlines CMemoryAllocator::Deallocate and Destroy (engine/CMemoryAllocator.h opt-in
 //   FABLE_RETAIL_CMEMORYALLOCATOR_DEALLOCATE) are plain inline; VC7.1 expands both here at its default threshold (NF145 sweep:
 //   MATCH with no inline control; the nf140 FABLE_FORCEINLINE is gone from the header).

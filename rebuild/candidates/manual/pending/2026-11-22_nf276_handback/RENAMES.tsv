@@ -1,0 +1,4 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00BFDE20	CLandscapeLayerMesh	~CLandscapeLayerMesh	??1CLandscapeLayerMesh@@UAE@XZ	CLandscapeLayerMesh::~CLandscapeLayerMesh	??1CLandscapeLayerMesh@@QAE@XZ	Ego_r.pdb 00a494c0 + FableWin.pdb 02ddd720 ??1CLandscapeLayerMesh@@UAE@XZ; its only caller 0x00BFE900 (??_G, vtable 0x012A835C slot 0) already binds UAE (table line); body stores vtable 0x012A835C first; leaf bytes + relocations equal HEAD (93 = 93)
+0x00BFDDB0	CLandscapeLayerMesh	CanRelocateData	?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z	CLandscapeLayerMesh::CanRelocateData	?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z	Ego_r.pdb 00a493d0 + FableWin.pdb 02dde0c0 ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z (private virtual const, long); RTTI vtable 0x012A835C slot 2 = 0x00BFDDB0; no call site (exe scan); MATCH, objsec ALL_EQ with the leaf rename
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)

@@ -1,0 +1,6 @@
+1	0x00BFDE20	landed=Y	lock=NF276	leaf=??1CLandscapeLayerMesh@@QAE@XZ	want=??1CLandscapeLayerMesh@@UAE@XZ	ok=DIFF	spell={'??1CLandscapeLayerMesh@@UAE@XZ': 1}	refs=00bfe900r
+2	0x00BFDDB0	landed=Y	lock=NF276	leaf=?CanRelocateData@CLandscapeLayerMesh@@QAE_NH@Z	want=?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z	ok=DIFF	spell={}	refs=
+3	0x00BFDD70	landed=Y	lock=NF276	leaf=?noleaf	want=?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ	ok=DIFF	spell={'?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ': 1}	refs=00bf3980r
+4	0x00BFDE80	landed=Y	lock=NF276	leaf=?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z	want=?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z	ok=SAME	spell={}	refs=
+5	0x00BFE900	landed=Y	lock=NF276	leaf=??_GCLandscapeLayerMesh@@UAEPAXI@Z	want=??_GCLandscapeLayerMesh@@UAEPAXI@Z	ok=SAME	spell={}	refs=
+6	0x012A835C	landed=N	lock=-	leaf=-	want=??_7CLandscapeLayerMesh@@6B@	ok=DIFF	spell={'?CLandscapeLayerMesh_vtbl@@3PAXA': 1, '??_7CLandscapeLayerMesh@@6B@': 1}	refs=00bfddd0a,00bfde20a

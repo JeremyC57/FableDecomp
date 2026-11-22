@@ -1,0 +1,36 @@
+# new 0x00BFDE20 ??_7CLandscapeLayerMesh v retail 0x012A835C
+0	00bfe900	NOLINE	??_ECLandscapeLayerMesh@@UAEPAXI@Z
+1	00bfde80	NOLINE	?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+2	00bfddb0	NOLINE	?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 0135eb68 COL@-4 sym ?
+# new 0x00BFDE20 ??_7CMovableResource v retail 0x0129B860
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	__purecall
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 01355d84 COL@-4 sym ?
+# HEAD 0x00BFDE20 ??_7CLandscapeLayerMesh
+0	00bfe900	NOLINE	?v00@CMovableResource@@UAEXXZ
+slots 1 not-OK 1 retail next word 00bfde80 COL@-4 sym ?
+# HEAD 0x00BFE900 ??_7CLandscapeLayerMesh
+0	00bfe900	NOLINE	??_ECLandscapeLayerMesh@@UAEPAXI@Z
+1	00bfde80	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	00bfddb0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+# HEAD 0x00BFE900 ??_7CMovableResource
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+# vtmap new 0x00BFDE20 (ROWS=rows/)
+VT ??_7CMovableResource@@6B@ slots 4 retail 0129b860
+  0 009d5110 DIFF ??_ECMovableResource@@UAEPAXI@Z ??_GCMovableResource@@UAEPAXI@Z
+  1 00bfea08 NOLEAF __purecall -
+  2 009d50f0 NOLEAF ?CanRelocateData@CMovableResource@@UBE_NJ@Z -
+  3 009d5100 NOLEAF ?Verify@CMovableResource@@UBEKXZ -
+VT ??_7CLandscapeLayerMesh@@6B@ slots 4 retail 012a835c
+  0 00bfe900 DIFF ??_ECLandscapeLayerMesh@@UAEPAXI@Z ??_GCLandscapeLayerMesh@@UAEPAXI@Z
+  1 00bfde80 SAME ?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z 
+  2 00bfddb0 SAME ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z 
+  3 009d5100 NOLEAF ?Verify@CMovableResource@@UBEKXZ -

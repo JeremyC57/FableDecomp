@@ -1,0 +1,44 @@
+### n_00bd9b90.obj s3_00bda150.obj s3_00bd9ce0.obj
+duplicates 0
+
+MAP 0001:000000b0 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 100010b0 f i n_00bd9b90.obj
+MAP 0001:00000120 ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ 10001120 f n_00bd9b90.obj
+### s3_00bda150.obj n_00bd9b90.obj s3_00bd9ce0.obj
+duplicates 0
+
+MAP 0001:00000360 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001360 f i s3_00bda150.obj
+MAP 0001:00000820 ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ 10001820 f n_00bd9b90.obj
+### s3_00bda150.obj s3_00bd9ce0.obj n_00bd9b90.obj
+duplicates 0
+
+MAP 0001:00000360 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001360 f i s3_00bda150.obj
+MAP 0001:00000a10 ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ 10001a10 f n_00bd9b90.obj
+### n_00bd9b90.obj h_00bda150.obj h_00bd9ce0.obj
+duplicates 0
+
+MAP 0001:000000b0 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 100010b0 f i n_00bd9b90.obj
+MAP 0001:00000120 ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ 10001120 f n_00bd9b90.obj
+### h_00bda150.obj h_00bd9ce0.obj n_00bd9b90.obj
+duplicates 0
+
+MAP 0001:00000340 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001340 f i h_00bda150.obj
+MAP 0001:00000970 ?ReferenceFreeVirtual@?A0x7c6bd4ba@@YAP8CEngineLandscapeMemoryManager@@AEXPAX@ZXZ 10001970 f n_00bd9b90.obj
+### h_00bd9b90.obj s3_00bda150.obj s3_00bd9ce0.obj
+duplicates 2
+s3_00bda150.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in h_00bd9b90.obj; second definition ignored
+s3_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in h_00bd9b90.obj; second definition ignored
+MAP 0001:000000b0 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 100010b0 f h_00bd9b90.obj
+### s3_00bda150.obj s3_00bd9ce0.obj h_00bd9b90.obj
+duplicates 1
+h_00bd9b90.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in s3_00bda150.obj; second definition ignored
+MAP 0001:00000360 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001360 f i s3_00bda150.obj
+### h_00bd9b90.obj h_00bda150.obj h_00bd9ce0.obj
+duplicates 2
+h_00bda150.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in h_00bd9b90.obj; second definition ignored
+h_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in h_00bd9b90.obj; second definition ignored
+MAP 0001:000000b0 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 100010b0 f h_00bd9b90.obj
+### h_00bda150.obj h_00bd9ce0.obj h_00bd9b90.obj
+duplicates 1
+h_00bd9b90.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in h_00bda150.obj; second definition ignored
+MAP 0001:00000340 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z 10001340 f i h_00bda150.obj
+LDONE

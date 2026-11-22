@@ -1,0 +1,4 @@
+entry	address	status	binders respelled	note
+1	0x00BFDE20 (+0x00BFDD70, 0x00BFDE80, 0x00BFDDB0)	done	none needed (0x00BFE900 already binds UAE)	self rename + vtable/??_G unit; siblings base-ported; 0x00BFDDB0 self leaf moved to the PDB spelling the new vtable binds
+2	D4 S3 (0x00BDA150 / 0x00BD9CE0) + owner 0x00BD9B90 pick-any	done (measured; lands only as one set with the CompilerFlags change)	none	S3 regenerated and vland-graded; owner FreeVirtual pick-any with bytes unchanged; every link order of the three keeps an EQ 97-byte FreeVirtual, 0 duplicates
+3	landscape host-model tests	open	-	-

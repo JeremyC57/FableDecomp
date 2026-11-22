@@ -1,0 +1,75 @@
+### n_00bfde20.obj h_00bfe900.obj n_00bfde80.obj n_00bfdd70.obj
+duplicates 0
+
+MAP 0001:00000030 ??1CLandscapeLayerMesh@@UAE@XZ 10001030 f n_00bfde20.obj
+MAP 0001:00000090 ??_GCLandscapeLayerMesh@@UAEPAXI@Z 10001090 f i n_00bfde20.obj
+MAP 0001:00000090 ??_ECLandscapeLayerMesh@@UAEPAXI@Z 10001090 f i n_00bfde20.obj
+MAP 0001:000000f0 ??0CLandscapeLayerMesh@@QAE@XZ 100010f0 f i h_00bfe900.obj
+MAP 0001:00000100 ?ForceNew_00bfe900@@YAPAVCLandscapeLayerMesh@@XZ 10001100 f h_00bfe900.obj
+MAP 0001:00000160 ?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z 10001160 f n_00bfde80.obj
+MAP 0001:000001a0 ?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ 100011a0 f n_00bfdd70.obj
+MAP 0002:00000010 ??_7CLandscapeLayerMesh@@6B@ 10002010 n_00bfde20.obj
+
+MAP 0001:00000000 ??1CMovableResource@@UAE@XZ 10001000 f i n_00bfde20.obj
+MAP 0001:00000010 ??_ECMovableResource@@UAEPAXI@Z 10001010 f i n_00bfde20.obj
+MAP 0001:00000010 ??_GCMovableResource@@UAEPAXI@Z 10001010 f i n_00bfde20.obj
+MAP 0001:000000c0 ?Verify@CMovableResource@@UBEKXZ 100010c0 f i h_00bfe900.obj
+MAP 0001:000000d0 ?CanRelocateData@CMovableResource@@UBE_NJ@Z 100010d0 f i h_00bfe900.obj
+MAP 0001:000000e0 ??0CMovableResource@@QAE@XZ 100010e0 f i h_00bfe900.obj
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 n_00bfde20.obj
+### h_00bfe900.obj n_00bfde20.obj n_00bfde80.obj n_00bfdd70.obj
+duplicates 0
+
+MAP 0001:00000060 ??0CLandscapeLayerMesh@@QAE@XZ 10001060 f i h_00bfe900.obj
+MAP 0001:00000070 ??_GCLandscapeLayerMesh@@UAEPAXI@Z 10001070 f i h_00bfe900.obj
+MAP 0001:00000070 ??_ECLandscapeLayerMesh@@UAEPAXI@Z 10001070 f i h_00bfe900.obj
+MAP 0001:000000a0 ?ForceNew_00bfe900@@YAPAVCLandscapeLayerMesh@@XZ 100010a0 f h_00bfe900.obj
+MAP 0001:000000c0 ??1CLandscapeLayerMesh@@UAE@XZ 100010c0 f n_00bfde20.obj
+MAP 0001:00000160 ?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z 10001160 f n_00bfde80.obj
+MAP 0001:000001a0 ?OnPostRelocation@CLandscapeLayerMesh@@QAEXXZ 100011a0 f n_00bfdd70.obj
+MAP 0002:0000000c ??_7CLandscapeLayerMesh@@6B@ 1000200c h_00bfe900.obj
+
+MAP 0001:00000000 ??1CMovableResource@@UAE@XZ 10001000 f i h_00bfe900.obj
+MAP 0001:00000010 ?Verify@CMovableResource@@UBEKXZ 10001010 f i h_00bfe900.obj
+MAP 0001:00000020 ?CanRelocateData@CMovableResource@@UBE_NJ@Z 10001020 f i h_00bfe900.obj
+MAP 0001:00000030 ??_GCMovableResource@@UAEPAXI@Z 10001030 f i h_00bfe900.obj
+MAP 0001:00000030 ??_ECMovableResource@@UAEPAXI@Z 10001030 f i h_00bfe900.obj
+MAP 0001:00000050 ??0CMovableResource@@QAE@XZ 10001050 f i h_00bfe900.obj
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 h_00bfe900.obj
+### h_00bfde20.obj h_00bfe900.obj
+duplicates 0
+
+MAP 0001:00000010 ??1CLandscapeLayerMesh@@QAE@XZ 10001010 f h_00bfde20.obj
+MAP 0001:000000d0 ??0CLandscapeLayerMesh@@QAE@XZ 100010d0 f i h_00bfe900.obj
+MAP 0001:000000e0 ??_GCLandscapeLayerMesh@@UAEPAXI@Z 100010e0 f i h_00bfe900.obj
+MAP 0001:000000e0 ??_ECLandscapeLayerMesh@@UAEPAXI@Z 100010e0 f i h_00bfe900.obj
+MAP 0001:00000110 ?ForceNew_00bfe900@@YAPAVCLandscapeLayerMesh@@XZ 10001110 f h_00bfe900.obj
+MAP 0002:00000004 ??_7CLandscapeLayerMesh@@6B@ 10002004 h_00bfde20.obj
+
+MAP 0001:00000000 ??1CMovableResource@@QAE@XZ 10001000 f i h_00bfde20.obj
+MAP 0001:00000070 ??1CMovableResource@@UAE@XZ 10001070 f i h_00bfe900.obj
+MAP 0001:00000080 ?Verify@CMovableResource@@UBEKXZ 10001080 f i h_00bfe900.obj
+MAP 0001:00000090 ?CanRelocateData@CMovableResource@@UBE_NJ@Z 10001090 f i h_00bfe900.obj
+MAP 0001:000000a0 ??_ECMovableResource@@UAEPAXI@Z 100010a0 f i h_00bfe900.obj
+MAP 0001:000000a0 ??_GCMovableResource@@UAEPAXI@Z 100010a0 f i h_00bfe900.obj
+MAP 0001:000000c0 ??0CMovableResource@@QAE@XZ 100010c0 f i h_00bfe900.obj
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 h_00bfde20.obj
+### h_00bfe900.obj h_00bfde20.obj
+duplicates 0
+
+MAP 0001:00000060 ??0CLandscapeLayerMesh@@QAE@XZ 10001060 f i h_00bfe900.obj
+MAP 0001:00000070 ??_ECLandscapeLayerMesh@@UAEPAXI@Z 10001070 f i h_00bfe900.obj
+MAP 0001:00000070 ??_GCLandscapeLayerMesh@@UAEPAXI@Z 10001070 f i h_00bfe900.obj
+MAP 0001:000000a0 ?ForceNew_00bfe900@@YAPAVCLandscapeLayerMesh@@XZ 100010a0 f h_00bfe900.obj
+MAP 0001:000000d0 ??1CLandscapeLayerMesh@@QAE@XZ 100010d0 f h_00bfde20.obj
+MAP 0002:0000000c ??_7CLandscapeLayerMesh@@6B@ 1000200c h_00bfe900.obj
+
+MAP 0001:00000000 ??1CMovableResource@@UAE@XZ 10001000 f i h_00bfe900.obj
+MAP 0001:00000010 ?Verify@CMovableResource@@UBEKXZ 10001010 f i h_00bfe900.obj
+MAP 0001:00000020 ?CanRelocateData@CMovableResource@@UBE_NJ@Z 10001020 f i h_00bfe900.obj
+MAP 0001:00000030 ??_GCMovableResource@@UAEPAXI@Z 10001030 f i h_00bfe900.obj
+MAP 0001:00000030 ??_ECMovableResource@@UAEPAXI@Z 10001030 f i h_00bfe900.obj
+MAP 0001:00000050 ??0CMovableResource@@QAE@XZ 10001050 f i h_00bfe900.obj
+MAP 0001:000000c0 ??1CMovableResource@@QAE@XZ 100010c0 f i h_00bfde20.obj
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 h_00bfe900.obj
+LDONE
