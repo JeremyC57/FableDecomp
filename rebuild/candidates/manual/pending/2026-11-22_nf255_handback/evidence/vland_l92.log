@@ -1,0 +1,19 @@
+addr       parity           behav  name
+009535b0   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBeamInto
+00953cf0   RELOCATION_MATCH PASS   Clone
+009539c0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBeamInto::`scalar_deleting_destructor'; names another function)
+009539c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009539a0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z (catalog CCreatureAction_DragonHoverOutOf::`scalar_deleting_destructor'; names another function)
+009539a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00953a00   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBlastForward::`scalar_deleting_destructor'; names another function)
+00953a00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00951fb0   RELOCATION_MATCH PASS   UpdateHover
+
+WINS: 6
+  009535b0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::??0CCreatureAction_DragonFireBeamInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z
+  00953cf0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::?Clone@CCreatureAction_DragonFireBeamInto@@UBEPAVCCreatureActionBase@@XZ
+  009539c0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z
+  009539a0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z
+  00953a00 RELOCATION_MATCH CCreatureAction_DragonFireBlastForward::??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z
+  00951fb0 RELOCATION_MATCH CAIStateGroup_JackDragon::?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ
+EXIT 0

@@ -1,0 +1,6 @@
+009535b0	??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z	30	009539c0	EQ
+00953cf0	??0CCreatureAction_DragonFireBeamInto@@QAE@ABV0@@Z	39	-	NO-OWNER
+00953cf0	??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z	30	009539c0	EQ
+009539c0	??2@YAPAXIPAX@Z	5	00405c10	EQ
+009539c0	??0CCreatureAction_DragonFireBeamInto@@QAE@ABV0@@Z	39	-	NO-OWNER
+009539c0	?ReferenceDragonFireBeamIntoVtable@?A0x9b1f676d@@YAXPAXABVCCreatureAction_DragonFireBeamInto@@@Z	43	-	NO-OWNER

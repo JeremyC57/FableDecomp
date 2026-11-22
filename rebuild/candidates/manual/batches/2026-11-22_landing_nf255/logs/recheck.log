@@ -1,0 +1,27 @@
+009535b0   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBeamInto
+00953cf0   RELOCATION_MATCH PASS   Clone
+009539c0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBeamInto::`scalar_deleting_destructor'; names another function)
+009539c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ca600   RELOCATION_MATCH PASS   CCreatureAction_NymphSummonOutOf
+008caa70   RELOCATION_MATCH PASS   Clone
+008c9e40   RELOCATION_MATCH PASS   FinishAction
+008ca9a0   WARN STANDIN_LEAF ??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z (catalog CCreatureAction_NymphSummonOutOf::`scalar_deleting_destructor'; names another function)
+008ca9a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00951fb0   RELOCATION_MATCH PASS   UpdateHover
+009539a0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z (catalog CCreatureAction_DragonHoverOutOf::`scalar_deleting_destructor'; names another function)
+009539a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00953a00   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBlastForward::`scalar_deleting_destructor'; names another function)
+00953a00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0091c6a0   WARN RELOC_NAME: ?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ -> 0091c080 labelled 'CAIStateGroupWithBuilding_0091c080::Cleanup'
+0091c6a0   RELOCATION_MATCH PASS   Update
+008f41d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f41d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f41d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonFireBeamInto (engine/CCreatureAction_DragonFireBeamInto.h)
+008f41d0   RELOCATION_MATCH PASS   Initialise
+00955620   WARN RELOC_NAME: ?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+00955620   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+00955620   RELOCATION_MATCH PASS   Update
+00859a20   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00859a20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00859a20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00859a20   RELOCATION_MATCH PASS   FinishAction

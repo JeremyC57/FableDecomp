@@ -1,0 +1,16 @@
+addr       parity           behav  name
+008ca600   RELOCATION_MATCH PASS   CCreatureAction_NymphSummonOutOf
+008caa70   RELOCATION_MATCH PASS   Clone
+008c9e40   RELOCATION_MATCH PASS   FinishAction
+008ca9a0   WARN STANDIN_LEAF ??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z (catalog CCreatureAction_NymphSummonOutOf::`scalar_deleting_destructor'; names another function)
+008ca9a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0091c6a0   WARN RELOC_NAME: ?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ -> 0091c080 labelled 'CAIStateGroupWithBuilding_0091c080::Cleanup'
+0091c6a0   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  008ca600 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::??0CCreatureAction_NymphSummonOutOf@@QAE@AAVCThingCreatureBase@@@Z
+  008caa70 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::?Clone@CCreatureAction_NymphSummonOutOf@@UBEPAVCCreatureActionBase@@XZ
+  008c9e40 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ
+  008ca9a0 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z
+  0091c6a0 RELOCATION_MATCH CAIStateGroup_NymphAttack::?Update@CAIStateGroup_NymphAttack@@UAEXXZ
+EXIT 0

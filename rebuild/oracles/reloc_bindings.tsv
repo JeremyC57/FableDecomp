@@ -16263,7 +16263,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_BanditKingAttack@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@JJ@Z	008c9410	008c92c0
 ?IsHitFromBehind@@YI_NPAVCThingCreatureBase@@PAVCThing@@@Z	008c7e50	008c92c0
 ?AttachEffectToStaff@@YIPAVCThing@@PAVCThingCreatureBase@@ABVCCharString@@@Z	008c9a40	008c9c80
-?base_FinishAction_859a20@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z	00859a20	008c9e40
 ?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z	0063e480	008c9f40
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSummonerDef@@@@@Z	008cbff0	008cb940
 ?GetWorld@CCombatActionBase@@QBEPAVCWorld@@XZ	00692950	008cb940

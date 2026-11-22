@@ -1,0 +1,17 @@
+16:29:14 claim 009535b0 NF255
+16:29:14 claim 00953cf0 NF255
+16:29:14 claim 009539c0 NF255
+16:37:28 claim 008f41d0 NF255 (link control)
+16:37:28 claim 00951fb0 NF255 (link control)
+16:37:55 claim 009539a0 NF255 (recheck control: header includer)
+16:37:55 claim 00953a00 NF255 (recheck control: header includer)
+16:41:19 claim 008ca600 was=released now=NF255
+16:41:19 claim 008caa70 was=NONE now=NF255
+16:41:19 claim 008c9e40 was=NONE now=NF255
+16:41:19 claim 008ca9a0 was=NONE now=NF255
+16:41:19 claim 0091c6a0 was=NONE now=NF255
+16:51:20 release 008f41d0 -> released
+16:51:20 release 00951fb0 -> released
+16:51:20 release 009539a0 -> released
+16:51:20 release 00953a00 -> released
+16:51:20 release 0091c6a0 -> released

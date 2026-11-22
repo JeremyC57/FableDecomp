@@ -1,44 +1,58 @@
-// Byte-exact reconstruction of
-// Leaf: ?CCreatureAction_NymphSummonOutOf_FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ  @ 0x008c9e40
-
-// The invoked object at [Inner+0x60]. Its used method is the 37th virtual (byte
-// offset 0x90 = index 36). Declaring 36 leading virtuals + the real one makes VC71
-// emit a proper __fastcall virtual call (this in ecx, one arg pushed).
-#include "engine/CCreatureAction_NymphSummonOutOf.h"  // retyped onto the PDB layout; byte parity re-verified
-class CBaseObject;
-class CBaseObjectPointer;
+// CCreatureAction_NymphSummonOutOf::FinishAction() -- turn the creature's physics off, then the base CCombatActionBase::FinishAction
+// Leaf: ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008C9E40, 32 bytes: PCreature.GetPItem() (0x00A01B50), its PhysicsTC (+0x60), virtual slot 36
+//   (+0x90) EnablePhysics(false), then a tail `jmp` to CCombatActionBase::FinishAction 0x00859A20.
+// Identity: retail vftable 0x01282354 slot 4 (its only reference; CCombatActionBase's slot 4 is 0x00859A20). CTCPhysicsBase slot 36 is
+//   EnablePhysics(bool) (engine/CTCPhysicsBase.h; the landed 0x006B10B0 row), CThing +0x60 PhysicsTC (engine/CThing.h, GetPhysicsTC()).
+// Names (agentNF255, 2026-11-22, q12721, with its ctor 0x008CA600): own leaf now the PDB ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ
+//   (Ego_r.pdb 0x009014A0 + FableWin.pdb 0x02A2D6F0: public virtual), was the free __fastcall stand-in
+//   ?CCreatureAction_NymphSummonOutOf_FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z over row-local Target / Inner models (36
+//   placeholder virtuals) and the free stand-in base_FinishAction_859a20; now the protected ?FinishAction@CCombatActionBase@@MAEXXZ.
+// Vtable: this object emits ??_7CCreatureAction_NymphSummonOutOf@@6B@ (81 slots, retail 0x01282354). The prelude is the CCombatActionBase
+//   MELEE branch with the override opt-ins of the landed 0x00955620 (MAZE_DEFENSIVE_MELEE_PASS27, FRAMEUPDATE, INITIALISE, FINISHACTION,
+//   ONANIMATIONLOADED, MELEE_OWN_VIRTUALS) plus the class's own overrides (NYMPHSUMMONOUTOF_OVERRIDES: Clone, FinishAction), so each slot
+//   names the retail owner of its target (0 / 4 / 11 this class). The same prelude text is in the four rows of the class (ctor 0x008CA600,
+//   Clone 0x008CAA70, FinishAction 0x008C9E40, deleting destructor 0x008CA9A0), so the COMDAT copies are one.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_NYMPH_ATTACK_PASS27
+#define FABLE_RETAIL_CCREATUREACTION_NYMPHSUMMONOUTOF_OVERRIDES
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
 #include "engine/CIntelligentPointer.h"
-struct Target {
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
-    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
-    virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
-    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void slot36(int a);   // vtable byte offset 0x90
-};
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CCreatureAction_NymphSummonOutOf.h"
 
-struct Inner {
-    char pad[0x60];
-    Target* pField60;   // [Inner + 0x60]
-};
-
-// callee at 0xa01b50: __fastcall(ecx = self+8) -> Inner*
-
-
-// base method tail-jumped to: 0x859a20, __fastcall(self)
-extern void __fastcall base_FinishAction_859a20(CCreatureAction_NymphSummonOutOf* action);
-
-void __fastcall CCreatureAction_NymphSummonOutOf_FinishAction(CCreatureAction_NymphSummonOutOf* action)
+void CCreatureAction_NymphSummonOutOf::FinishAction()
 {
-    Inner* p = ((Inner*)(((CBaseIntelligentPointer*)((char*)action + 8))->GetPItem()));
-    Target* h = p->pField60;      // ecx = [eax+0x60]; slot fetched from [ecx]
-    h->slot36(0);                 // push 0; call [eax+0x90]
-    base_FinishAction_859a20(action);
+    PCreature->GetPhysicsTC()->EnablePhysics(false);
+    CCombatActionBase::FinishAction();
 }

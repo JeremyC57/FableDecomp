@@ -17,6 +17,13 @@ class CThingCreatureBase;
 class CCreatureAction_NymphSummonOutOf : public CCombatActionBase {
 public:
     CCreatureAction_NymphSummonOutOf(CThingCreatureBase& creature);
+#ifdef FABLE_RETAIL_CCREATUREACTION_NYMPHSUMMONOUTOF_OVERRIDES
+    // NF255 opt-in (2026-11-22, q12721, row 0x008CA600 and its Clone / FinishAction / deleting-destructor rows): the class's own
+    // overrides, Ego_r.pdb 0x00902060 / 0x009014A0 + FableWin.pdb 0x02A2D5D0 / 0x02A2D6F0 (public virtual), retail vftable 0x01282354
+    // slot 11 = 0x008CAA70 and slot 4 = 0x008C9E40. Declarations only; no layout change.
+    virtual CCreatureActionBase* Clone() const;                          // 0x008CAA70
+    virtual void FinishAction();                                         // 0x008C9E40
+#endif
 };
 FABLE_STATIC_ASSERT_AT(33, sizeof(CCreatureAction_NymphSummonOutOf) == 0x114);
 #else

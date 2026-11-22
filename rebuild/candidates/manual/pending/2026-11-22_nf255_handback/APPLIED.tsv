@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q12720	L92 0x009535B0	done	3 self rows (ctor, Clone, ??_G); 0 binders needed (0x00951FB0 already AAV)	class header opt-in DRAGONFIREBEAMINTO_INITIALISE; 81-slot vtable slot for slot; no new split
+q12721	L74 0x008CA600	done	4 self rows (ctor, Clone, FinishAction, ??_G); 1 callee respelled in 0x008C9E40 (0x00859A20 onto the PDB spelling); 0 binders needed	class header opt-in NYMPHSUMMONOUTOF_OVERRIDES; 81-slot vtable slot for slot; one stand-in table line deleted
+q12722	L72 0x008B83E0	open	-	not started
+q12723	L100 0x00956870	open	-	not started
+q12724	0x0096B600	open	-	not started
+q12659	0x00418DCA	open	-	not started

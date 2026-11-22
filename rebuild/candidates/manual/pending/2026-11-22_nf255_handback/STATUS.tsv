@@ -1,0 +1,13 @@
+address	change	grade	test	grades_used	entries	note
+0x009535B0	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12720	ctor onto CCreatureAction_DragonFireBeamInto.h + CCombatActionBase.h MELEE branch (0x00955620 opt-in set); self leaf PAV -> AAV (PDBs; binder 0x00951FB0 already AAV); emits the 81-slot ??_7 (evidence/owners_l92.tsv: 0 owner errors)
+0x00953CF0	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12720	Clone onto the headers (0x00956960 recipe); self leaf stand-in QAE CBase_0062f3b0 -> PDB UBE; base copy ctor 0x0062F3B0 onto the PDB spelling
+0x009539C0	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12720	free __fastcall stand-in -> ??_G member via copy-ctor harness (0x009568E0 recipe); ??_G EQ in all three objects
+0x009539A0	not-a-binder	RELOCATION_MATCH	PASS	1 (recheck)	q12720	header includer, unchanged source; recheck only
+0x00953A00	not-a-binder	RELOCATION_MATCH	PASS	1 (recheck)	q12720	header includer, unchanged source; recheck only
+0x00951FB0	not-a-binder	RELOCATION_MATCH	PASS	2 (link control + recheck)	q12720	header includer and ctor binder (already AAV); unchanged
+0x008F41D0	not-a-binder	RELOCATION_MATCH	-	1 (link control)	q12720	slot-12 self row, PDB Leaf already; models the class locally (port debt, NAME_FIXES)
+0x008CA600	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12721	ctor onto CCreatureAction_NymphSummonOutOf.h + the MELEE prelude; self leaf PAV -> AAV (PDBs; binder 0x0091C6A0 already AAV); emits the 81-slot ??_7
+0x008CAA70	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12721	Clone stand-in QAE -> PDB UBE (0x00956960 recipe)
+0x008C9E40	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12721	free __fastcall stand-in over Target / Inner models -> the PDB member on the headers (PCreature->GetPhysicsTC()->EnablePhysics(false); CCombatActionBase::FinishAction()); first form
+0x008CA9A0	ported	RELOCATION_MATCH	PASS (HEAD test)	3 (g1, HEAD control, recheck)	q12721	free __fastcall stand-in -> ??_G via the copy-ctor harness; ??_G EQ in the ctor / Clone objects
+0x0091C6A0	not-a-binder	RELOCATION_MATCH	PASS	2 (link control, recheck)	q12721	header includer and ctor binder (already AAV); unchanged

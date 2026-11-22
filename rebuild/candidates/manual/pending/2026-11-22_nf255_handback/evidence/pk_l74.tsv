@@ -1,0 +1,9 @@
+008ca600	??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z	30	008ca9a0	EQ
+008caa70	??0CCreatureAction_NymphSummonOutOf@@QAE@ABV0@@Z	25	-	NO-OWNER
+008caa70	??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z	30	008ca9a0	EQ
+008c9e40	?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ	4	-	NO-OWNER
+008c9e40	?Get@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ	5	-	NO-OWNER
+008c9e40	??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ	5	-	NO-OWNER
+008ca9a0	??2@YAPAXIPAX@Z	5	00405c10	EQ
+008ca9a0	??0CCreatureAction_NymphSummonOutOf@@QAE@ABV0@@Z	25	-	NO-OWNER
+008ca9a0	?ReferenceNymphSummonOutOfVtable@?A0x950bb394@@YAXPAXABVCCreatureAction_NymphSummonOutOf@@@Z	29	-	NO-OWNER

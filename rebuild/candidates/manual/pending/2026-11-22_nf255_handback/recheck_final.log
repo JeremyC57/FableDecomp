@@ -1,0 +1,31 @@
+addr       parity           behav  name
+009535b0   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBeamInto
+00953cf0   RELOCATION_MATCH PASS   Clone
+009539c0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBeamInto::`scalar_deleting_destructor'; names another function)
+009539c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ca600   RELOCATION_MATCH PASS   CCreatureAction_NymphSummonOutOf
+008caa70   RELOCATION_MATCH PASS   Clone
+008c9e40   RELOCATION_MATCH PASS   FinishAction
+008ca9a0   WARN STANDIN_LEAF ??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z (catalog CCreatureAction_NymphSummonOutOf::`scalar_deleting_destructor'; names another function)
+008ca9a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00951fb0   RELOCATION_MATCH PASS   UpdateHover
+009539a0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z (catalog CCreatureAction_DragonHoverOutOf::`scalar_deleting_destructor'; names another function)
+009539a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00953a00   WARN STANDIN_LEAF ??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z (catalog CCreatureAction_DragonFireBlastForward::`scalar_deleting_destructor'; names another function)
+00953a00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0091c6a0   WARN RELOC_NAME: ?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ -> 0091c080 labelled 'CAIStateGroupWithBuilding_0091c080::Cleanup'
+0091c6a0   RELOCATION_MATCH PASS   Update
+
+WINS: 11
+  009535b0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::??0CCreatureAction_DragonFireBeamInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z
+  00953cf0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::?Clone@CCreatureAction_DragonFireBeamInto@@UBEPAVCCreatureActionBase@@XZ
+  009539c0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::??_GCCreatureAction_DragonFireBeamInto@@UAEPAXI@Z
+  008ca600 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::??0CCreatureAction_NymphSummonOutOf@@QAE@AAVCThingCreatureBase@@@Z
+  008caa70 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::?Clone@CCreatureAction_NymphSummonOutOf@@UBEPAVCCreatureActionBase@@XZ
+  008c9e40 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ
+  008ca9a0 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::??_GCCreatureAction_NymphSummonOutOf@@UAEPAXI@Z
+  00951fb0 RELOCATION_MATCH CAIStateGroup_JackDragon::?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ
+  009539a0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::??_GCCreatureAction_DragonHoverOutOf@@UAEPAXI@Z
+  00953a00 RELOCATION_MATCH CCreatureAction_DragonFireBlastForward::??_GCCreatureAction_DragonFireBlastForward@@UAEPAXI@Z
+  0091c6a0 RELOCATION_MATCH CAIStateGroup_NymphAttack::?Update@CAIStateGroup_NymphAttack@@UAEXXZ
+EXIT 0

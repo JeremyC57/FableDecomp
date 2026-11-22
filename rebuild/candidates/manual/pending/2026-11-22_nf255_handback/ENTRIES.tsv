@@ -1,0 +1,7 @@
+qid	source	address	claim
+q12720	land1122nf253	L92 (DragonFireBeamInto)	declare the class's own overrides (Initialise UAE) in its header as an add-only opt-in, take the full 81-slot vtable from the landed 0x00955620 define block (retail has CCombatActionBase's own overrides at slots 4, 51, 53, 56, 62, 68), then land the nf250 draft (pending/2026-11-22_nf250_handback/blocked/) with every Clone / free-function stand-in row that would otherwise split (nf253 NOTES entry 4, evidence/e4)
+q12721	land1122nf253	L74 (NymphSummonOutOf)	the same: Clone UBE, FinishAction UAE
+q12722	land1122nf253	L72 (SummonCreatures)	the same: Clone UBE, Initialise UAE
+q12723	land1122nf253	L100 (WillHealInto)	the same: Clone EBE, FinishAction UAE, Initialise UAE; 0x008C9E40 (free-function stand-in) moves with its ctor
+q12724	land1122nf253	0x0096B600	the last UnsheatheMeleeWeapon stand-in binder (0x006649C0 2 -> 1)
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof
