@@ -36237,9 +36237,6 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?SetWhatsThatSound@CAIStateGroup_StealthSeekEnemy@@AAEXXZ	0093c600	0093c830
 ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	0094e5f0	009624d0
 ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ	00961c50	009624d0
-?JumpToSafety@CAIStateGroup_WhisperRetreat@@QAEXXZ	0096ac20	0096b600
-?UnsheatheMeleeWeapon@CThing@@QAEXXZ	006649c0	0096b600
-?UseWill@CAIStateGroup_WhisperRetreat@@QAEXXZ	0096ae50	0096b600
 ??0CCreatureAction_SummonerLightningOrbInto@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008cbd90	0096fcd0
 ??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z	00970240	0096fcd0
 ??0CCreatureAction_SummonerSheatheWeapon@@QAE@PAVCThingCreatureBase@@@Z	008cbf00	0096fcd0
@@ -39577,3 +39574,5 @@ _sort32a	00c95560	00c95580
 ??1?$_List_base@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ	0063f360	0063e6f0
 __real@0000000000000000	0122ed70	00b260b0
 ??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ	00a978c0	00a978a0
+?JumpToSafety@CAIStateGroup_WhisperRetreat@@IAEXXZ	0096ac20	0096b600
+?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ	0096ae50	0096b600

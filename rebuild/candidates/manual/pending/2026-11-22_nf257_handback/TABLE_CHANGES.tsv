@@ -1,0 +1,8 @@
+action	symbol	target	witness	note
+# L72: none. ??_7CCreatureAction_SummonCreatures@@6B@ 0127addc 008b83c0 stays (the witness still emits it, now the 81-slot table); ??0...AAV...0_N 008b83e0 0091c6a0 stays. Stand-in lines with other witnesses stay: ??0CBase_0062f3b0@@QAE@ABU0@@Z 0062f3b0 (006f8280), ??0CCombatActionBase@@QAE@J@Z 00857e40 (006f5b50), ??0CCombatActionBase@@QAE@PAV...@Z 00857f30 (0066a690).
+# L100: none. ??_7CCombatAction_WillHealInto@@6B@ 012948ac 00956870 and ??0...AAV...J 00956870 00955620 stay.
+delete	?UnsheatheMeleeWeapon@CThing@@QAEXXZ	006649c0	0096b600	q12724: the only witness now binds ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ (already a table line, witness 00664a50); grep of rebuild/src: no other landed row spells the CThing stand-in
+delete	?JumpToSafety@CAIStateGroup_WhisperRetreat@@QAEXXZ	0096ac20	0096b600	q12724: the only witness now binds the PDB IAE spelling (next line)
+add	?JumpToSafety@CAIStateGroup_WhisperRetreat@@IAEXXZ	0096ac20	0096b600	q12724: Ego_r + FableWin; replaces the QAE line
+delete	?UseWill@CAIStateGroup_WhisperRetreat@@QAEXXZ	0096ae50	0096b600	q12724: the only witness now binds IAE, the self row 0x0096AE50's own leaf
+add	?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ	0096ae50	0096b600	q12724: Ego_r + FableWin; replaces the QAE line

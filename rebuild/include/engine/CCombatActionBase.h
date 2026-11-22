@@ -166,6 +166,12 @@ public: CCombatActionBase(CThingCreatureBase& creature, CThing& target, long pri
     // call it, then store their own vftable). The first branch above declares it too. Declaration only; no layout change.
 public: CCombatActionBase(const CCombatActionBase& other);               // 0x0062F3B0
 #endif
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_PRIORITYCTOR
+    // NF257 opt-in (2026-11-22, q12722, row 0x008B83C0 CCreatureAction_SummonCreatures::CCreatureAction_SummonCreatures()): Ego_r.pdb 0x00838AC0
+    // + FableWin.pdb 0x02823960 ??0CCombatActionBase@@IAE@J@Z (protected), out of line in retail at 0x00857E40 (the third branch's PRIORITYCTOR
+    // declares the same constructor). Declaration only; no layout change.
+protected: CCombatActionBase(long priority);                             // 0x00857E40
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SCREAMER_VTABLE_PASS27

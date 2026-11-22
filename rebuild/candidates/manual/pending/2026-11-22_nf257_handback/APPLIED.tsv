@@ -1,0 +1,5 @@
+entry	address	status	binders_respelled	note
+q12722	L72 0x008B83E0	done	5 self rows (three ctors, Clone, ??_G); 0 binders needed (0x0091C6A0 / 0x006F5C10 already bind the PDB ctor spellings)	class header opt-in SUMMONCREATURES_OVERRIDES + CCombatActionBase.h MELEE_PRIORITYCTOR; 81-slot vtable slot for slot; no new split
+q12723	L100 0x00956870	done	3 self rows (ctor, Clone, ??_G); 0 binders needed (0x00955620 already AAV)	class header opt-in WILLHEALINTO_OVERRIDES; 81-slot vtable slot for slot; no new split; 0x008C9E40 part rejected by NF255 (REJECTED.tsv there)
+q12724	0x0096B600	done	1 binder ported (0x0096B600: 0x006649C0 / 0x0096AC20 / 0x0096AE50 onto the PDB spellings)	port off ten local models onto the shared headers + WHISPERRETREAT_UPDATE opt-in; 0x006649C0 table spellings 2 -> 1; 3 table lines replaced / deleted
+q12659	0x00418DCA	open	-	not started (context; needs the full 469-includer proof)

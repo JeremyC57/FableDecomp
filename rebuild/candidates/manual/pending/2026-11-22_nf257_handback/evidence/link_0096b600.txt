@@ -1,0 +1,14 @@
+## new 0x0096B600 + HEAD 0x006961F0 / 0x00410DE0 / 0x0040F020 (owners of its pick-any copies) + HEAD 0x0096AE50 / 0x0096A260
+duplicates 0
+
+## HEAD 0x0096B600 + the same
+duplicates 0
+
+## 006961f0 symbol table class of its leaf:
+[ 38](sec 11)(fl 0x00)(ty 20)(scl 2) ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingCreatureBase
+## 00410de0 symbol table class of its leaf:
+[ 37](sec 11)(fl 0x00)(ty 20)(scl 2) ?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+[ 42](sec 13)(fl 0x00)(ty 20)(scl 2) ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+## 0040f020 symbol table class of its leaf:
+[ 37](sec 11)(fl 0x00)(ty 20)(scl 2) ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$
+[ 42](sec 13)(fl 0x00)(ty 20)(scl 2) ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$

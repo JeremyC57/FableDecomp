@@ -1,0 +1,29 @@
+addr       parity           behav  name
+008b83c0   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+008b83e0   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+008b8440   RELOCATION_MATCH PASS   CCreatureAction_SummonCreatures
+008b89a0   RELOCATION_MATCH PASS   Clone
+008b87a0   WARN STANDIN_LEAF ??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z (catalog CCreatureAction_SummonCreatures::`scalar_deleting_destructor'; names another function)
+008b87a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0091c6a0   WARN RELOC_NAME: ?ClearReadyToAttackFlags@CTCNymph@@QAEXXZ -> 0091c080 labelled 'CAIStateGroupWithBuilding_0091c080::Cleanup'
+0091c6a0   RELOCATION_MATCH PASS   Update
+006f5c10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonCreatures (engine/CCreatureAction_SummonCreatures.h)
+006f5c10   WARN RELOC_NAME: ??1?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 00695d90 labelled '_global::Dtor_CountedPtrAt0x8_00695d90'
+006f5c10   WARN RELOC_NAME: ??1?$pair@W4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@QAE@XZ -> 006f5260 labelled '_global::Dtor_CountedPtrAt0x8_006f5260'
+006f5c10   RELOCATION_MATCH PASS   StatRegisterClass
+008b7a20   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008b7a20   WARN SHARED_HEADER_AVAILABLE CSummonDef (engine/CSummonDef.h)
+008b7a20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008b7a20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonCreatures (engine/CCreatureAction_SummonCreatures.h)
+008b7a20   RELOCATION_MATCH PASS   Initialise
+
+WINS: 8
+  008b83c0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@XZ
+  008b83e0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@AAVCThingCreatureBase@@0_N@Z
+  008b8440 RELOCATION_MATCH CCreatureAction_SummonCreatures::??0CCreatureAction_SummonCreatures@@QAE@AAVCThingCreatureBase@@@Z
+  008b89a0 RELOCATION_MATCH CCreatureAction_SummonCreatures::?Clone@CCreatureAction_SummonCreatures@@UBEPAVCCreatureActionBase@@XZ
+  008b87a0 RELOCATION_MATCH CCreatureAction_SummonCreatures::??_GCCreatureAction_SummonCreatures@@UAEPAXI@Z
+  0091c6a0 RELOCATION_MATCH CAIStateGroup_NymphAttack::?Update@CAIStateGroup_NymphAttack@@UAEXXZ
+  006f5c10 RELOCATION_MATCH CCreatureActionBase::?StatRegisterClass@CCreatureActionBase@@SIXXZ
+  008b7a20 RELOCATION_MATCH CCreatureAction_SummonCreatures::?Initialise@CCreatureAction_SummonCreatures@@UAEXXZ
+EXIT 0

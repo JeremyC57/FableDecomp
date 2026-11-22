@@ -1,0 +1,2 @@
+f1 (GetPos read through GetCreature() / PTargetThing-> at each use): DIFFER(351v355) -- retail loads the creature, then the target's GetPItem, then the two GetPos calls (named locals in that order, as the HEAD row had)
+f2 (named creature reference + target pointer before the two GetPos calls): RELOCATION_MATCH (rows/0096b600.cpp)

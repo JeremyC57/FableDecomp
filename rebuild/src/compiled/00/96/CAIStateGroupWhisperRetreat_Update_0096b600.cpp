@@ -7,135 +7,82 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096B600, length 355 bytes (plain `ret`, virtual).
 // Callees: CTCCarrying::IsThingCarryingWeapon(const CThing&) @ 0x006A1540 (static __fastcall), CThingCreatureBase::UnsheatheMeleeWeapon
 //          @ 0x006649C0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 173 = bit 13 of +0x34 = CTCBoss, 54 = bit 22
-//          of +0x24 = CTCStealth), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCStealth::SetAsInDanger(CThing*, long)
+//          of +0x24 = CTCStealth), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCStealth::SetAsInDanger(const CThing&, NStealth::EDangerStatus)
 //          @ 0x00747B80, CThing::GetPosition @ 0x004C73D0, CAIStateGroup_WhisperRetreat::JumpToSafety @ 0x0096AC20 and
 //          UseWill @ 0x0096AE50, CTCBoss::GetBossPhase @ 0x007AED10, IsReadyForPhaseChange @ 0x007AEE90, SetNextBossPhase
 //          @ 0x007AEDA0, CAIStateGroupBase::Terminate @ 0x008FCF40; float pool 3.0f @ 0x0122DED4.
-// Shape: the boss lookup is the out-parameter GetInterface (miss path reads the never-written slot); IS_THING_ALIVE is the
-//          two-GetPItem inline test and the stealth lookup is a third GetPItem whose hit path alone calls SetAsInDanger; the
+// Shape: the boss lookup is the out-parameter CThing::GetTC<CTCBoss> (miss path reads the never-written slot); IS_THING_ALIVE is the
+//          two-GetPItem inline test and the stealth GetTC is a third GetPItem whose hit path alone calls SetAsInDanger; the
 //          planar distance (`dx*dx + dy*dy`, dy squared first) is compared `< 3.0f` (`fcomp ; test ah,5 ; jp`); the phase
 //          switch is `sub eax,0 ; je` / `sub eax,2 ; jne` with the phase-2 arm ending in its own Terminate + epilogue.
-// Layout: engine/CAIStateGroup_WhisperRetreat.h over the landed CAIStateGroupBase model; the retail target pointer sits at
-//          +0x14 (the PDB header's `_pad_0x14/_0x18`; PArenaCentre +0x1c is unused here).
-#include "fable_compiler.h"
+// Layout: engine/CAIStateGroup_WhisperRetreat.h (FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT, size 0x30) over engine/CAIStateGroup_EnemyCreatureBase.h:
+//          the target is the inherited PTargetThing (CIntelligentPointer<CThingCreatureBase>, +0x14); PArenaCentre +0x1c is unused here.
+// Leaf: ?Update@CAIStateGroup_WhisperRetreat@@UAEXXZ
+// Names (agentNF257, 2026-11-22, q12724): was on row-local CThing / CIntelligentPointer / CAIStateGroupBase / CAIBrain / CTCBoss /
+//   CTCStealth / CTCCarrying / CAIStateGroup_WhisperRetreat models, binding ?UnsheatheMeleeWeapon@CThing@@QAEXXZ (0x006649C0) and the public
+//   ?JumpToSafety@ / ?UseWill@CAIStateGroup_WhisperRetreat@@QAEXXZ (0x0096AC20 / 0x0096AE50). Now on the shared headers: the callees take
+//   the PDB spellings ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ (Ego_r / FableWin / Ego_d; engine/CThingCreatureBase.h
+//   UNSHEATHEMELEEWEAPON, the spelling 0x00664A50 / 0x00666830 / 0x008B7BA0 / 0x00890C80 bind) and the protected IAE pair (Ego_r + FableWin;
+//   the landed UseWill row 0x0096AE50 defines IAE).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHEMELEEWEAPON
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTCCARRYING
+#define FABLE_RETAIL_CTCBOSS_ISREADYFORPHASECHANGE
+#define FABLE_RETAIL_NSTEALTH_EDANGERSTATUS
+#define FABLE_RETAIL_CTCSTEALTH_STATTYPE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE
+#define FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT
+#define FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_UPDATE
+#include "fable_string.h"
 #include <math.h>
-class CTCBase;
-class CThing;
-
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-#include "engine/CVectorMap.h"
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
 #include "engine/C3DVector.h"
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad9[0x3d];
-    unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPos() const;    // 0x004C73D0
-    void UnsheatheMeleeWeapon();                // 0x006649C0 (CThingCreatureBase)
-    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
-class CTCCarrying { public:
-    static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540 (Ego_r/FableWin ?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z)
-};
-
-class CBaseObject;
-class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-
-inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
-{
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
-            return true;
-    }
-    return false;
-}
-
-class CTCBoss { public:                                // interface 173
-    long GetBossPhase() const;                        // 0x007AED10
-    bool IsReadyForPhaseChange() const;               // 0x007AEE90
-    void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
-};
-namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
-enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
-}
-class CTCStealth { public:                             // interface 54
-    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);     // 0x00747B80
-};
-
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                           // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    unsigned char Terminated;                   // +0x10
-    unsigned char Priority;                     // +0x11
-    unsigned char Enabled;                      // +0x12
-    unsigned char _pad_0x13;
-    void Terminate();                           // 0x008FCF40
-};
-
-struct CAIStateGroup_WhisperRetreat : CAIStateGroupBase {
-    CIntelligentPointer<CThing> PTarget;            // +0x14 CIntelligentPointer<CThing>
-    CIntelligentPointer<CThing> PArenaCentre;       // +0x1c
-    bool bIsRangeAttack;                        // +0x24
-    long NumHits;                               // +0x28
-    long FrameOfLastHit;                        // +0x2c
-    void JumpToSafety();                        // 0x0096AC20
-    void UseWill();                             // 0x0096AE50
-    virtual void Update();
-};
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCBoss.h"
+#include "engine/CTCStealth.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_WhisperRetreat.h"
 
 void CAIStateGroup_WhisperRetreat::Update()
 {
-    if (!CTCCarrying::IsThingCarryingWeapon(*PBrain->PCreature))
-        PBrain->PCreature->UnsheatheMeleeWeapon();
+    if (!CTCCarrying::IsThingCarryingWeapon(GetCreature()))
+        GetCreature().UnsheatheMeleeWeapon();
     CTCBoss* boss;
-    PBrain->PCreature->GetInterface(&boss, 173);
-    if (IS_THING_ALIVE(PTarget)) {
+    GetCreature().GetTC(&boss);
+    if (IS_THING_ALIVE(PTargetThing)) {
         CTCStealth* stealth;
-        if (PTarget.GetPItem()->GetInterface(&stealth, 54))
-            stealth->SetAsInDanger(*PBrain->PCreature, NStealth::DANGER_STATUS_COMBAT);
-        CThing* creature = PBrain->PCreature;
-        CThing* target = PTarget.GetPItem();
-        const C3DVector* pos = &creature->GetPos();
-        const C3DVector* targetPos = &target->GetPos();
-        float dx = targetPos->X - pos->X;
-        float dy = targetPos->Y - pos->Y;
+        if (PTargetThing->GetTC(&stealth))
+            stealth->SetAsInDanger(GetCreature(), NStealth::DANGER_STATUS_COMBAT);
+        CThingAICreature& creature = GetCreature();
+        CThingCreatureBase* target = PTargetThing.Get();
+        const C3DVector& pos = creature.GetPos();
+        const C3DVector& target_pos = target->GetPos();
+        float dx = target_pos.X - pos.X;
+        float dy = target_pos.Y - pos.Y;
         if ((float)sqrt(dx * dx + dy * dy) < 3.0f)
             JumpToSafety();
         switch (boss->GetBossPhase()) {
