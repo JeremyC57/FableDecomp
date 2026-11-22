@@ -1,0 +1,62 @@
+pS 00418dca CMainGameComponent::CMainGameComponent RELOCATION_MATCH flags= [] leaf=??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z
+--- reloc (target symbol count) HEAD(<) new(>)
+< 009c0190	?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z	x1
+> 009c0190	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	x1
+< 0122f174	??_7CMainGameComponent@@6BCComponentListEntry@@@	x1
+< 0122f180	??_7CMainGameComponent@@6BCBaseClass@@@	x1
+> 0122f174	??_7CMainGameComponent@@6BCDeviceResetCallback@@@	x1
+> 0122f180	??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@	x1
+--- symbols HEAD(<) new(>)
+< DEF ??0?$scoped_ptr@VCDisplayEngine@@@@QAE@XZ
+< DEF ??0?$scoped_ptr@VCGamePlayerInterface@@@@QAE@XZ
+< DEF ??0?$scoped_ptr@VCPlayerManager@@@@QAE@XZ
+< DEF ??0?$scoped_ptr@VCWorld@@@@QAE@XZ
+> DEF ??0?$scoped_ptr@VCDisplayEngine@@@boost@@QAE@PAVCDisplayEngine@@@Z
+> DEF ??0?$scoped_ptr@VCGamePlayerInterface@@@boost@@QAE@PAVCGamePlayerInterface@@@Z
+> DEF ??0?$scoped_ptr@VCPlayerManager@@@boost@@QAE@PAVCPlayerManager@@@Z
+> DEF ??0?$scoped_ptr@VCWorld@@@boost@@QAE@PAVCWorld@@@Z
+< DEF ??1CGameComponent@@UAE@XZ
+< DEF ??_7CMainGameComponent@@6BCBaseClass@@@
+< DEF ??_7CMainGameComponent@@6BCComponentListEntry@@@
+> DEF ??1CAFile@@UAE@XZ
+> DEF ??1CDiskFileWin32@@UAE@XZ
+> DEF ??1CNetworkClient@@UAE@XZ
+> DEF ??_7CDiskFileWin32@@6B@
+> DEF ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+> DEF ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+> DEF ??_GCDiskFileWin32@@UAEPAXI@Z
+> DEF ?GetLength@CDiskFileWin32@@UBEJXZ
+> DEF ?GetPosition@CDiskFileWin32@@UBEJXZ
+< UND ??1CBaseClass@@UAE@XZ
+> UND ??1CBaseClassNonCopyable@@MAE@XZ
+> UND ??1CInitBaseClass@@UAE@XZ
+> UND ??1CWideString@@QAE@XZ
+> UND ??_GCDiskFileWin32@@UAEPAXI@Z
+< UND ?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z
+> UND ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+> UND ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+> UND ?Clone@CDiskFileWin32@@UBEPAVCAFile@@XZ
+> UND ?Close@CDiskFileWin32@@UAEXXZ
+< UND ?v00@CMainGameComponent@@UAEXXZ
+> UND ?GetAlignment@CAFile@@UBEJXZ
+> UND ?GetFileInformation@CDiskFileWin32@@UAE?AVCFileInformation@@XZ
+> UND ?GetInputs@CMainGameComponent@@MAEXXZ
+> UND ?GetPathname@CDiskFileWin32@@UBE?AVCWideString@@XZ
+> UND ?Init@CMainGameComponent@@UAEXXZ
+> UND ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+> UND ?IsIOFinished@CAFile@@UBE_NXZ
+> UND ?IsOpen@CDiskFileWin32@@UBE_NXZ
+> UND ?MovePosition@CDiskFileWin32@@UAEXJ@Z
+> UND ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+> UND ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+> UND ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z
+> UND ?PostInit@CMainGameComponent@@MAEXXZ
+> UND ?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z
+> UND ?Render@CMainGameComponent@@MAEXXZ
+> UND ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+> UND ?SetLength@CDiskFileWin32@@UAEXJ@Z
+> UND ?SetPosition@CDiskFileWin32@@UAEXJ@Z
+> UND ?SetQuit@CMainGameComponent@@UAEXXZ
+> UND ?Update@CMainGameComponent@@MAEXXZ
+> UND ?Write@CDiskFileWin32@@UAEXPBXJPAVCASuspendableProcess@@@Z
+EXIT 0

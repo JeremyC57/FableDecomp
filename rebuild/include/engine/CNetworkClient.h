@@ -17,6 +17,14 @@ struct CNetworkPlayer;
 #include "engine/CInitBaseClass.h"
 class CNetworkClient : public CInitBaseClass {
 public:
+#ifdef FABLE_RETAIL_CNETWORKCLIENT_CTOR
+    // NF275 opt-in (row 0x00418DCA CMainGameComponent ctor): Ego_r.pdb / FableWin.pdb ??0CNetworkClient@@QAE@XZ, out of line in retail
+    // at 0x00419323 (landed; the ctor calls it with ecx = this + 0x13AB8, 0x00418E38). Declaration only.
+    CNetworkClient();                                        // 0x00419323
+    // ??1CNetworkClient@@UAE@XZ (FableWin.pdb; retail 0x00419352, bound so by 0x00418B7A) declared only as well: with the header's opaque
+    // Server the implicit dtor would be a 5-byte copy against retail's 19 (it also destroys Server +0x08).
+    virtual ~CNetworkClient();                               // 0x00419352
+#endif
     void Update(long,unsigned long,unsigned long);
 #ifdef FABLE_RETAIL_CNETWORKCLIENT_UNINITIALISE
     // Retail opt-in (NF132, q4019): Ego_r.pdb ?Uninitialise@CNetworkClient@@QAEXXZ (0x004B43D0, right before SendGameEvent

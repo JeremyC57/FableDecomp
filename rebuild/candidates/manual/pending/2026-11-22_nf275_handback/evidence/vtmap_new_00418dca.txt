@@ -1,0 +1,14 @@
+VT ??_7CMainGameComponent@@6BCDeviceResetCallback@@@ slots 2 retail NONE
+  0 ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+  1 ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+VT ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@ slots 10 retail NONE
+  0 ??_ECMainGameComponent@@UAEPAXI@Z
+  1 ?Init@CMainGameComponent@@UAEXXZ
+  2 ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z
+  3 ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+  4 ?SetQuit@CMainGameComponent@@UAEXXZ
+  5 ?Update@CMainGameComponent@@MAEXXZ
+  6 ?GetInputs@CMainGameComponent@@MAEXXZ
+  7 ?Render@CMainGameComponent@@MAEXXZ
+  8 ?PostInit@CMainGameComponent@@MAEXXZ
+  9 ?IsEditorActive@CMainGameComponent@@UBE_NXZ

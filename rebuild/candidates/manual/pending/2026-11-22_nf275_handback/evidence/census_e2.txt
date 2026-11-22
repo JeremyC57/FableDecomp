@@ -1,0 +1,90 @@
+## 00aa5720 | pH 00aa5720 C3DMeshFileXAnimatedPrimitiveBlockChunk::WriteToFile RELOCATION_MATCH flags= [
+## 00aa5c20 | pH 00aa5c20 C3DMeshFileXAnimatedPrimitiveBlockChunk::CreateNewInstance RELOCATION_MATCH fl
+## 00aa65a0 | pH 00aa65a0 C3DMeshFileXAnimatedPrimitiveBlockChunk::AddVertex RELOCATION_MATCH flags= [] 
+## 00aa6c70 | pH 00aa6c70 C3DMeshFileXAnimatedPrimitiveBlockChunk::ReadFromFile RELOCATION_MATCH flags= 
+## 00aa7480 | pH 00aa7480 C3DMeshFileXAnimatedPrimitiveBlockChunk::~C3DMeshFileXAnimatedPrimitiveBlockCh
+UND
+REF from section 7 ??1C3DMeshFileXAnimatedPrimitiveBlockChunk@@UAE@XZ
+## 00ad8c30 | pH 00ad8c30 CVertexGroupBlock::IsSubsetOf RELOCATION_MATCH flags= [] leaf=?IsSubsetOf@CVer
+## 00ad8ca0 | pH 00ad8ca0 CVertexGroupBlock::IsProperSubsetOf RELOCATION_MATCH flags= [] leaf=?IsProperS
+## 00ad8d10 | pH 00ad8d10 CVertexGroupBlockList::HasBlock MATCH flags= [] leaf=?HasBlock@CVertexGroupBlo
+## 00ad8dd0 | pH 00ad8dd0 CVertexGroupBlockOptimiser::CanInsertMoreBlocks MATCH flags= [] leaf=?CanInser
+## 00ad8ed0 | pH 00ad8ed0 CVertexGroupBlockOptimiser::CountRemainingGroups RELOCATION_MATCH flags= [] le
+## 00ad8fe0 | pH 00ad8fe0 CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock RELOCATIO
+## 00ad9030 | pH 00ad9030 CVertexGroupBlock::CVertexGroupBlock RELOCATION_MATCH flags= [] leaf=??0CVerte
+## 00ad91f0 | pH 00ad91f0 CVertexGroupBlock::AddGroup RELOCATION_MATCH flags= [] leaf=?AddGroup@CVertexG
+## 00ad9260 | pH 00ad9260 CVertexGroupBlock::AddGroupsFrom RELOCATION_MATCH flags= [] leaf=?AddGroupsFro
+## 00ad92e0 | pH 00ad92e0 CVertexGroupBlockOptimiser::InsertBlock RELOCATION_MATCH flags= [] leaf=?Inser
+## 00ad9380 | pH 00ad9380 CVertexGroupBlockOptimiser::PaintCurrentBlockSegment RELOCATION_MATCH flags= [
+## 00ad9470 | pH 00ad9470 CVertexGroupBlock::RemoveLast RELOCATION_MATCH flags= [] leaf=
+## 00ad94f0 | pH 00ad94f0 CVertexGroupBlockOptimiser::FindBestStartingBlock RELOCATION_MATCH flags= [] l
+DEF section 107 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 108 (no function symbol: .debug$F)
+00ad94f0	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	EQ
+## 00ad9720 | pH 00ad9720 CArray<CVertexGroupBlock>::push_back RELOCATION_MATCH flags= [] leaf=?push_bac
+## 00ad9770 | pH 00ad9770 CVertexGroupBlockList::RemoveAllSubsets RELOCATION_MATCH flags= [] leaf=?Remov
+## 00ad9980 | pH 00ad9980 CVertexGroupBlockOptimiser::ReorderInput RELOCATION_MATCH flags= [] leaf=?Reor
+## 00ad9b20 | pH 00ad9b20 CVertexGroupBlockOptimiser::CalcCurrentBlockSegments RELOCATION_MATCH flags= [
+DEF section 77 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 78 (no function symbol: .debug$F)
+00ad9b20	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	EQ
+## 00ad9d10 | pH 00ad9d10 CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock2 RELOCATI
+## 00ad9d70 | pH 00ad9d70 CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResult RELOCATION_MATCH 
+## 00ad9f10 | pH 00ad9f10 CVertexGroupBlockOptimiser::AddBlocks RELOCATION_MATCH flags= ['/Gr'] leaf=?Ad
+UND
+REF from section 239 ?AddBlocks@CVertexGroupBlockOptimiser@@AAEXK@Z
+## 00ada240 | pH 00ada240 CVertexGroupBlockOptimiser::Process RELOCATION_MATCH flags= [] leaf=Process
+UND
+REF from section 97 ?Process@CVertexGroupBlockOptimiser@@QAEXAAVCVertexGroupBlockList@@_N@Z
+## 00adb570 | pH 00adb570 std::list<CVertexGroupBlock,std::allocator<CVertexGroupBlock> >::size MATCH fl
+## 00adbe50 | pH 00adbe50 CVertexGroupBlock::`scalar deleting destructor' RELOCATION_MATCH flags= [] lea
+UND
+REF from section 3 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 5 ?Kill_00adbe50@@YAXPAVCVertexGroupBlock@@@Z
+## 00adc190 | pH 00adc190 std::__destroy_aux RELOCATION_MATCH flags= ['/Gr'] leaf=??$__destroy_aux@PAVCV
+DEF section 35 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 36 (no function symbol: .debug$F)
+REF from section 37 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 39 ??$_Destroy@VCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@@Z
+00adc190	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	NEQ:relocs ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$less@K@2@@std@@@004507a1
+## 00adc250 | pH 00adc250 std::_List_base<CVertexGroupBlock>::clear RELOCATION_MATCH flags= [] leaf=?cle
+DEF section 37 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 38 (no function symbol: .debug$F)
+REF from section 39 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 41 ??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z
+00adc250	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	NEQ:relocs ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$less@K@2@@std@@@004507a1
+## 00adc310 | pH 00adc310 std::_Construct<CVertexGroupBlock, CVertexGroupBlock> RELOCATION_MATCH flags= 
+## 00adc330 | pH 00adc330 std::__uninitialized_copy RELOCATION_MATCH flags= ['/Gr'] leaf=??$__uninitiali
+## 00adc3b0 | pH 00adc3b0 std::__uninitialized_fill_n RELOCATION_MATCH flags= ['/Gr'] leaf=??$__uninitia
+## 00adc440 | pH 00adc440 std::__uninitialized_copy RELOCATION_MATCH flags= ['/Gr'] leaf=??$__uninitiali
+## 00adc4e0 | pH 00adc4e0 std::list<CVertexGroupBlock>::erase RELOCATION_MATCH flags= [] leaf=?erase@?$l
+DEF section 49 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 50 (no function symbol: .debug$F)
+REF from section 51 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 53 ??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z
+REF from section 55 ?erase@?$list@VCVertexGroupBlock@@@std@@QAE?AU?$_List_iterator@VCVertexGroupBlock@@@2@U32@@Z
+00adc4e0	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	NEQ:relocs ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$less@K@2@@std@@@004507a1
+## 00adc790 | pH 00adc790 std::list<CVertexGroupBlock>::pop_back RELOCATION_MATCH flags= [] leaf=?pop_ba
+UND
+REF from section 13 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 17 ??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z
+REF from section 19 ?erase@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAE?AU?$_List_iterator@VCVertexGroupBlock@@@2@U32@@Z
+REF from section 21 ?pop_back@?$list@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAEXXZ
+## 00adc7c0 | pH 00adc7c0 std::vector<CVertexGroupBlock, std::allocator<CVertexGroupBlock>>::vector RELO
+## 00adca30 | pH 00adca30 std::vector<CVertexGroupBlock, std::allocator<CVertexGroupBlock>>::operator= R
+## 00adcb90 | pH 00adcb90 std::vector<CVertexGroupBlock>::reserve RELOCATION_MATCH flags= ['/Gr'] leaf=?
+DEF section 67 selection 2 (1=NODUPLICATES 2=ANY)
+REF from section 68 (no function symbol: .debug$F)
+REF from section 73 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 77 ??$_Destroy@VCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@@Z
+00adcb90	??1CVertexGroupBlock@@QAE@XZ	84	00a96da0	NEQ:relocs ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$less@K@2@@std@@@004507a1
+## 00adcc80 | pH 00adcc80 std::list<CVertexGroupBlock>::_M_insert_dispatch RELOCATION_MATCH flags= [] le
+## 00adce10 | pH 00adce10 std::list<CVertexGroupBlock>::push_back RELOCATION_MATCH flags= [] leaf=?push_
+## 00adce60 | pH 00adce60 std::vector::_M_insert_overflow RELOCATION_MATCH flags= [] leaf=?_M_insert_ove
+UND
+REF from section 21 ??_GCVertexGroupBlock@@QAEPAXI@Z
+REF from section 25 ??$_Destroy@VCVertexGroupBlock@@@std@@YAXPAVCVertexGroupBlock@@@Z
+REF from section 31 ??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z
+## 00adcfd0 | pH 00adcfd0 std::vector<CVertexGroupBlock, std::allocator<CVertexGroupBlock>>::push_back R
+## 00add020 | pH 00add020 std::list<CVertexGroupBlock>::operator= RELOCATION_MATCH flags= [] leaf=??4?$l
+CENSUS_DONE

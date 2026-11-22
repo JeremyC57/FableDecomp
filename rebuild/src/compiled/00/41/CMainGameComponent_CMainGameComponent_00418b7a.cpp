@@ -1,4 +1,5 @@
 // CMainGameComponent::~CMainGameComponent() -- conditionally shut down, then destroy owned game resources.
+// Leaf: ??1CMainGameComponent@@UAE@XZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Native00418b7a length193. RTTI: CGameComponent->CBaseClassNonCopyable->CBaseClass, secondary CDeviceResetCallback at4.
 // Actual fable_game.h included as donor; full native vtable signatures below, no fabricated slots.
@@ -129,10 +130,12 @@ class CMainGameComponent : public CGameComponent { public:
  virtual bool Run(CGameComponent**); //slot2 004189c2
  virtual void ChangeTextureColourDepth(long); //slot3 0041799b
  virtual void SetQuit(); //slot4 004197a0
+protected: // NF275 (q12659, in place): slots 5..8 are protected virtuals in Ego_r.pdb / FableWin.pdb (?Update@ / ?GetInputs@ / ?Render@ / ?PostInit@CMainGameComponent@@MAEXXZ), as engine/CMainGameComponent.h's EDITOR opt-in and the 0x00418DCA port's vtable copy spell them
  virtual void Update(); //slot5 00418289
  virtual void GetInputs(); //slot6 00416e78
  virtual void Render(); //slot7 00417001
  virtual void PostInit(); //slot8 00416953
+public:
  virtual bool IsEditorActive()const; //slot9 004197b0
  virtual void OnPreDeviceReset(); //secondary0 00415e83
  virtual bool OnPostDeviceReset(); //secondary1 004175da

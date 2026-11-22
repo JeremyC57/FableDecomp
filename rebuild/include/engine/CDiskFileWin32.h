@@ -11,7 +11,19 @@ public:
     // operator new(0x1C) (0x009A886E: base ctor 0x0099A2F0, vtable 0x0122D06C, Pathname() 0x0099AED0, then Opened = false).
     CDiskFileWin32() { Opened = false; }
 #endif
+#if defined(FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR_OUTOFLINE) && !defined(FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR)
+    // NF275 opt-in (row 0x00418DCA CMainGameComponent ctor): the same ??0CDiskFileWin32@@QAE@XZ (Ego_r.pdb / FableWin.pdb), called out of
+    // line in that TU (0x00418E6B `call 0x00415C30`, ecx = this + 0x16154; the landed row 0x00415C30 is its body). Declaration only.
+    CDiskFileWin32();                                        // 0x00415C30
+#endif
+#ifdef FABLE_RETAIL_CDISKFILEWIN32_DTOR_DECL_ONLY
+    // NF275 opt-in (row 0x00418DCA CMainGameComponent ctor, which holds a CDiskFileWin32 member but never destroys one): the same
+    // ??1CDiskFileWin32@@UAE@XZ (Ego_r.pdb / FableWin.pdb; retail COMDAT 0x00401630) declared only, so that TU emits no copy of the dtor,
+    // of the vtable it stores, or of the header-implicit ~CAFile it calls (a 5-byte copy NEQ to the folded 0x0099A300 table line).
+    virtual ~CDiskFileWin32();
+#else
     virtual ~CDiskFileWin32() { Close(); }
+#endif
     virtual void Open(const CWideString&,FileAccessType,unsigned long);
     virtual void Close();
     virtual void Read(void*,long,CASuspendableProcess* = 0);
@@ -40,7 +52,7 @@ private:
     bool Opened;
     CWideString Pathname;
 };
-FABLE_STATIC_ASSERT(sizeof(CDiskFileWin32)==0x1c);
+FABLE_STATIC_ASSERT_AT(43, sizeof(CDiskFileWin32)==0x1c);
 #endif
 #else
 #ifndef FABLE_ENGINE_CDISKFILEWIN32_H
@@ -69,14 +81,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CDiskFileWin32) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, AccessType) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Position) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Length) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, WinFileHandle) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Opened) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
+FABLE_STATIC_ASSERT_AT(72, sizeof(CDiskFileWin32) == 0x1c);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CDiskFileWin32, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CDiskFileWin32, AccessType) == 0x4);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CDiskFileWin32, Position) == 0x8);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CDiskFileWin32, Length) == 0xc);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CDiskFileWin32, WinFileHandle) == 0x10);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CDiskFileWin32, Opened) == 0x14);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
 
 #endif // FABLE_ENGINE_CDISKFILEWIN32_H
 #endif

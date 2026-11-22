@@ -1,0 +1,21 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1: no self renames (0x00418DCA keeps ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z, NF233; 0x00418B7A keeps ??1CMainGameComponent@@UAE@XZ and gains a Leaf line; 0x00A96DA0 keeps ??1CVertexGroupBlock@@QAE@XZ, now pick-any)
+# Section 2 (caller, old symbol, new symbol, callee address); vtable slot lines: the slot is in NOTES entry 1, old "-" = the HEAD table had no such slot
+0x00418DCA	?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	0x009C0190
+0x00418DCA	??_7CMainGameComponent@@6BCBaseClass@@@	??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@	0x0122F180
+0x00418DCA	??_7CMainGameComponent@@6BCComponentListEntry@@@	??_7CMainGameComponent@@6BCDeviceResetCallback@@@	0x0122F174
+0x00418DCA	?v00@CMainGameComponent@@UAEXXZ	?OnPreDeviceReset@CMainGameComponent@@UAEXXZ	0x00415E83
+0x00418DCA	-	?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ	0x004175DA
+0x00418DCA	-	?Init@CMainGameComponent@@UAEXXZ	0x004184BD
+0x00418DCA	-	?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z	0x004189C2
+0x00418DCA	-	?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z	0x0041799B
+0x00418DCA	-	?SetQuit@CMainGameComponent@@UAEXXZ	0x004197A0
+0x00418DCA	-	?Update@CMainGameComponent@@MAEXXZ	0x00418289
+0x00418DCA	-	?GetInputs@CMainGameComponent@@MAEXXZ	0x00416E78
+0x00418DCA	-	?Render@CMainGameComponent@@MAEXXZ	0x00417001
+0x00418DCA	-	?PostInit@CMainGameComponent@@MAEXXZ	0x00416953
+0x00418DCA	-	?IsEditorActive@CMainGameComponent@@UBE_NXZ	0x004197B0
+0x00418B7A	?Update@CMainGameComponent@@UAEXXZ	?Update@CMainGameComponent@@MAEXXZ	0x00418289
+0x00418B7A	?GetInputs@CMainGameComponent@@UAEXXZ	?GetInputs@CMainGameComponent@@MAEXXZ	0x00416E78
+0x00418B7A	?Render@CMainGameComponent@@UAEXXZ	?Render@CMainGameComponent@@MAEXXZ	0x00417001
+0x00418B7A	?PostInit@CMainGameComponent@@UAEXXZ	?PostInit@CMainGameComponent@@MAEXXZ	0x00416953

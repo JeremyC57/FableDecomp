@@ -1,0 +1,12 @@
+pS 00418b7a CMainGameComponent::~CMainGameComponent RELOCATION_MATCH flags= [] leaf=??1CMainGameComponent@@UAE@XZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+< UND ?GetInputs@CMainGameComponent@@UAEXXZ
+> UND ?GetInputs@CMainGameComponent@@MAEXXZ
+< UND ?PostInit@CMainGameComponent@@UAEXXZ
+> UND ?PostInit@CMainGameComponent@@MAEXXZ
+< UND ?Render@CMainGameComponent@@UAEXXZ
+> UND ?Render@CMainGameComponent@@MAEXXZ
+< UND ?Update@CMainGameComponent@@UAEXXZ
+> UND ?Update@CMainGameComponent@@MAEXXZ
+EXIT 0

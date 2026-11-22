@@ -14,6 +14,11 @@ class CGameEventPackage;
 #endif
 class CGameEventPackageSet {
 public:
+#ifdef FABLE_RETAIL_CGAMEEVENTPACKAGESET_CTOR
+    // NF275 opt-in (row 0x00418DCA CMainGameComponent ctor): Ego_r.pdb / FableWin.pdb ??0CGameEventPackageSet@@QAE@XZ, out of line in
+    // retail at 0x009F1A80 (landed; the ctor calls it with ecx = this + 0xA4, 0x00418E2D). Declaration only.
+    CGameEventPackageSet();                                  // 0x009F1A80
+#endif
 #ifdef FABLE_RETAIL_CGAMEEVENTPACKAGESET_ACCESSORS
     // Retail opt-in (Codex pass 17): original public const accessors,
     // both PDBs and native calls 009F1730/009F1750.
@@ -28,8 +33,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CGameEventPackageSet) == 0x13a14);
-FABLE_STATIC_ASSERT(offsetof(CGameEventPackageSet, NoPackages) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CGameEventPackageSet, Packages) == 0x4);
+FABLE_STATIC_ASSERT_AT(31, sizeof(CGameEventPackageSet) == 0x13a14);
+FABLE_STATIC_ASSERT_AT(32, offsetof(CGameEventPackageSet, NoPackages) == 0x0);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CGameEventPackageSet, Packages) == 0x4);
 
 #endif // FABLE_ENGINE_CGAMEEVENTPACKAGESET_H

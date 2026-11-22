@@ -1,0 +1,6 @@
+action	symbol	target	witness	note
+remove	?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z	009c0190	00418dca	0x00418DCA now binds ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (line kept: witness 009a6610); no other row binds the stand-in
+remove	??_7CMainGameComponent@@6BCBaseClass@@@	0122f180	00418dca	0x00418DCA now binds ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@ (line kept: witness 00418b7a)
+remove	??_7CMainGameComponent@@6BCComponentListEntry@@@	0122f174	00418dca	0x00418DCA now binds ??_7CMainGameComponent@@6BCDeviceResetCallback@@@ (line kept: witness 00418b7a)
+# vtable-slot references (0x00418B7A slots 5..8, 0x00418DCA slots) have no table lines
+# entry 2: none: ??1CVertexGroupBlock@@QAE@XZ stays bound at 00a96da0 (the owner leaf); the scaffolding helper calls only the ctor (??0CVertexGroupBlock@@QAE@XZ 00ad9030, already in the table) and the dtor

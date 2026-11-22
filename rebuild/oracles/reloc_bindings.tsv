@@ -7925,9 +7925,6 @@ __imp__realloc	01440054	00c90fc0
 ??0CInterpolationInfo@@QAE@XZ	00415a60	00418dca
 ??0CNetworkClient@@QAE@XZ	00419323	00418dca
 ??0CRoughFrameCounter@@QAE@XZ	009f8b10	00418dca
-??_7CMainGameComponent@@6BCBaseClass@@@	0122f180	00418dca
-??_7CMainGameComponent@@6BCComponentListEntry@@@	0122f174	00418dca
-?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z	009c0190	00418dca
 ?IsShopKeeperAvailable@CTCShop@@QBE_NXZ	00773aa0	0082ae80
 ?IsAttractedToHero@CTCWife@@QBE_NXZ	006cfe80	0082b520
 ?IsMarriedToThePlayer@CTCWife@@QBE_NXZ	006cec80	0082b520

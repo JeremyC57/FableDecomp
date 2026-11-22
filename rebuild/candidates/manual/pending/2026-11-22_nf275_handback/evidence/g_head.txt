@@ -1,0 +1,13 @@
+	push   %esi
+	mov    %ecx,%esi
+	call   8 <??_GCMainGameComponent@@UAEPAXI@Z+0x8>
+			4: DISP32	??1CMainGameComponent@@UAE@XZ
+	testb  $0x1,0x8(%esp)
+	je     16 <??_GCMainGameComponent@@UAEPAXI@Z+0x16>
+	push   %esi
+	call   15 <??_GCMainGameComponent@@UAEPAXI@Z+0x15>
+			11: DISP32	??3@YAXPAX@Z
+	pop    %ecx
+	mov    %esi,%eax
+	pop    %esi
+	ret    $0x4

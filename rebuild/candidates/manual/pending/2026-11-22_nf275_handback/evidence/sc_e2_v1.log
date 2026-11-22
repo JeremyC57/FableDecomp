@@ -1,0 +1,7 @@
+pH 00a96da0 CVertexGroupBlock::~CVertexGroupBlock RELOCATION_MATCH flags= [] leaf=??1CVertexGroupBlock@@QAE@XZ
+pS 00a96da0 CVertexGroupBlock::~CVertexGroupBlock RELOCATION_MATCH flags= [] leaf=??1CVertexGroupBlock@@QAE@XZ
+--- reloc (target symbol count) HEAD(<) new(>)
+--- symbols HEAD(<) new(>)
+> DEF ?ReferenceVertexGroupBlockDtor@?A0xe61cc6a9@@YAXXZ
+> UND ??0CVertexGroupBlock@@QAE@XZ
+EXIT 0

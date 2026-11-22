@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a96da0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00a96da0   RELOCATION_MATCH PASS   ~CVertexGroupBlock
+
+WINS: 1
+  00a96da0 RELOCATION_MATCH CVertexGroupBlock::??1CVertexGroupBlock@@QAE@XZ
+VL_EXIT 0

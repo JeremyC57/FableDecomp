@@ -75,6 +75,22 @@ class CGameEventDispatch;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PEEKEVENTDISPATCHTABLEENTRY
 #include "engine/CGameEventDispatch.h"
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_CTOR
+// NF275 opt-in (row 0x00418DCA, the ctor ??0CMainGameComponent@@QAE@AAVCGame@@ABVCMainGameComponentInit@@@Z): the members the ctor
+// constructs that the default path keeps opaque, typed as Ego_r.pdb declares them (PPlayerManager boost::scoped_ptr<CPlayerManager>
+// +0x1C, PLUA CCountedPointer<CLUA> +0x2C, PDebugFont CCountedPointer<CFontBank> +0x16144, EventPackageFile CDiskFileWin32 +0x16154,
+// FrameRateSmoother CFrameRateSmoother +0x16178). Retail 0x00418DCA zero-stores the smart pointers in place (0x00418DEF, 0x00418DFB /
+// 0x00418DFE, 0x00418E55 / 0x00418E57) and calls the two class ctors out of line (0x00418E6B 0x00415C30, 0x00418E82 0x00419747).
+// Same sizes and offsets. The other members the ctor builds come from the existing opt-ins (SMART_POINTER_ACCESSORS / PPLAYERINTERFACE /
+// EVENTPACKAGES / FORCEDTICK / UPDATE / MAINFONT / ENGINEGRAPHICS / INITSTRUCTURE). Needs FABLE_RETAIL_SCOPED_PTR, FABLE_RETAIL_CDISKFILEWIN32
+// (+ FABLE_RETAIL_CDISKFILEWIN32_DEFAULTCTOR_OUTOFLINE for the out-of-line default ctor); not combinable with the PLAYERMANAGER accessors,
+// which read PPlayerManager as an opaque word.
+#include "engine/CCountedPointer.h"
+#include "boost/scoped_ptr.h"
+#include "engine/CDiskFileWin32.h"
+#include "engine/CFrameRateSmoother.h"
+class CPlayerManager; class CLUA; class CFontBank;
+#endif
 class CMainGameComponent : public CGameComponent {
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INITSOUND
 protected:
@@ -105,7 +121,11 @@ protected:
 #else
     unsigned char PTextBank[8];                     // +0x14 CCountedPointer<NGameText::CDataBank>
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_CTOR
+    boost::scoped_ptr<CPlayerManager> PPlayerManager; // +0x1C (NF275 opt-in)
+#else
     unsigned char PPlayerManager[4];                // +0x1C boost::scoped_ptr<CPlayerManager>
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PPLAYERINTERFACE
     boost::scoped_ptr<CGamePlayerInterface> PPlayerInterface; // +0x20 (NF94 opt-in)
 #else
@@ -121,7 +141,11 @@ protected:
 #else
     unsigned char PDisplayEngine[4];                // +0x28 boost::scoped_ptr<CDisplayEngine>
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_CTOR
+    CCountedPointer<CLUA> PLUA;                     // +0x2C (NF275 opt-in)
+#else
     unsigned char PLUA[8];                          // +0x2C CCountedPointer<CLUA>
+#endif
     bool ForceUpdateTick;                           // +0x34
     float ForceUpdateTickSpeedMultipler;            // +0x38
     float ForceUpdateTickSpeedDesiredFramerate;     // +0x3C
@@ -151,7 +175,7 @@ protected:
     unsigned long NoRenderFramesSinceLastGameUpdate; // +0x16138
     unsigned long WorldSeed;                        // +0x1613C
     unsigned long LocalSeed;                        // +0x16140
-#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG) || defined(FABLE_RETAIL_CTHINGPHYSICAL_DEBUGDRAW_PASS24)
+#if defined(FABLE_RETAIL_STEALTH_DRAW) || defined(FABLE_RETAIL_PASS22_CREATURE_GENERATOR_DEBUG) || defined(FABLE_RETAIL_CTHINGPHYSICAL_DEBUGDRAW_PASS24) || defined(FABLE_RETAIL_CMAINGAMECOMPONENT_CTOR)
     CCountedPointer<CFontBank> PDebugFont;
 #else
     unsigned char PDebugFont[8];
@@ -162,12 +186,20 @@ protected:
 #else
     unsigned char PCutSceneMainFont[8];
 #endif             // +0x1614C CCountedPointer<CFontBank>
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_CTOR
+    CDiskFileWin32 EventPackageFile;                // +0x16154 (NF275 opt-in)
+#else
     unsigned char EventPackageFile[0x1C];           // +0x16154 CDiskFileWin32
+#endif
     bool LoadingEventPackages;                      // +0x16170
     bool SavingEventPackages;                       // +0x16171
     unsigned char _pad_0x16172[2];
     unsigned char EventPackageFileHeader[4];        // +0x16174 CEventPackageFileHeader
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_CTOR
+    CFrameRateSmoother FrameRateSmoother;           // +0x16178 (NF275 opt-in)
+#else
     unsigned char FrameRateSmoother[0x30];          // +0x16178 CFrameRateSmoother
+#endif
     double LastRenderFrameStartTime;                // +0x161A8
     float TimePassedSinceLastUpdate;                // +0x161B0
     float LastUpdateTime;                           // +0x161B4
@@ -383,6 +415,14 @@ public:
 #endif
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     virtual ~CMainGameComponent();
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_INIT_SETQUIT
+    // NF275 opt-in (row 0x00418DCA, which emits the class's vtables): the two CGameComponent virtuals the class overrides. Retail vtable
+    // 0x0122F180 slot 1 = 0x004184BD (Ego_r.pdb / FableWin.pdb ?Init@CMainGameComponent@@UAEXXZ) and slot 4 = 0x004197A0 (FableWin.pdb
+    // ?SetQuit@CMainGameComponent@@UAEXXZ, public; body `mov byte ptr [ecx+8],1 ; ret`, Quit = true), where the base table 0x0122ECB0
+    // has 0x00415920 Init / 0x00415930 SetQuit (CGameComponent's own). Declarations only: same layout, same slot count.
+    virtual void Init();                                // slot 1 0x004184BD
+    virtual void SetQuit();                             // slot 4 0x004197A0
+#endif
     virtual bool Run(CGameComponent**);
     virtual void ChangeTextureColourDepth(long);
     virtual void OnPreDeviceReset();
