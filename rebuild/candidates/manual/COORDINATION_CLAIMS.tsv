@@ -241,3 +241,5 @@ date	account	item	kind	status	note
 2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	claimed	agent AUTH11 (bounded steps per the 2026-11-22 advisor rulings)
 2026-11-22	A	q12559,q12560,q12561	naming	done	NF224 landed as nf224 (0x00415B80); q12559 / q12560 re-queued (q12562+)
 2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	done	AUTH11: 0x00A4EFC0 owner packet; 0x008E18D0 measured (pending/2026-11-22_auth11)
+2026-11-22	A	q12562,q12563,q12564	naming	claimed	agent NF225 (GetFont size-body probe, ~CManager evidence check, GPUniqueInstance)
+2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH12 (port onto shared headers, then measure; one row)
