@@ -1,0 +1,6 @@
+# 00974110 symbol diff (HEAD < > new)
+136c136
+< UND ?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+---
+> UND ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ
+# function COMDAT bodies (bytes + relocation symbols): identical

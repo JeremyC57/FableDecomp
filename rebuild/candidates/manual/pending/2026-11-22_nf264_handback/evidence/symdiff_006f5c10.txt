@@ -1,0 +1,6 @@
+# 006f5c10 symbol diff (HEAD object < > new object; DEF = defined external, UND = undefined)
+206c206,207
+< UND ?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ
+---
+> UND ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ
+> UND ?AllowsCombinationAnims@CCombatAction_StrikeResponseScorpionKing@@UBE_NXZ

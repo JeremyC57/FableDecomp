@@ -23,6 +23,7 @@
 // Layout: overlay opt-ins (hdr/README.md): CAIStateGroup_JackOfBladesBase (+ _SUMMON), CAIStateGroupBase PERFORMACTION_NOWAIT, CTCBoss
 //   SETHELPERCREATURE, CTCTargetingAI SETSCRIPTTARGETOVERRIDE (inline), CCreatureAction_OnGenerate retail class, new
 //   CCombatAction_WillForcePushInto.h / CCreatureGenerationFamilyDef.h, stlport/position_algorithms.h REMOVE_IF_INLINE.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

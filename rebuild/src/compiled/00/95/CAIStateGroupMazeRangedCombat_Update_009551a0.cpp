@@ -19,6 +19,7 @@
 //   NF148 (2026-11-20, q11785, one vtable): also defines FABLE_RETAIL_CCREATUREACTION_THROWSHOTOBJECT_CLONE / _INITIALISE, so this object's
 //   ??_7CCreatureAction_ThrowShotObject@@6B@ COMDAT holds the retail overrides at slots 11 / 12 (0x00956960 Clone, 0x008B66D0 Initialise; were
 //   the inherited CCombatActionBase::Clone / CCreatureActionBase::Initialise), identical to the copies 0x009566C0 and 0x00956960 emit.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CTHING

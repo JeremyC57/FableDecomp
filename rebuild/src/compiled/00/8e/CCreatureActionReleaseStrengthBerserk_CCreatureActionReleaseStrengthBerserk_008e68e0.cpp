@@ -12,6 +12,7 @@
 // One of 35 bodies of this shape.
 // Identity: Ego_r.pdb / Ego_d.pdb ??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z (the creature by
 // reference; b12 landing re-port onto engine/CCreatureAction_ReleaseStrengthBerserk.h, was a local model taking a pointer).
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

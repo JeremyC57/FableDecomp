@@ -27,6 +27,7 @@
 //   from its header with the 4-argument ctor body visible in this TU (retail's TU holds its COMDAT 0x00860150 next to this function).
 // NF86 (round 7, q11120): that body now comes from the header (FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_CTOR_INLINE), the one shared
 //   inline definition the self row 0x00860150 also emits; this object still carries it as a pick-any COMDAT only.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

@@ -8,6 +8,7 @@
 //   0x00858030, std::vector<C3DVector> copy constructor 0x006F0810.
 // Shape: the literal is an implicit CCharString temporary built before the base arguments and destroyed after the base call;
 //   init-list members in declaration order (C3DVector's memberwise user copy ctor; floats copied as dwords).
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CDEFSTRINGTABLE

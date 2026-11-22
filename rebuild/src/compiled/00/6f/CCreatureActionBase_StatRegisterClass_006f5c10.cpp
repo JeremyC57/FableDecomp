@@ -6,12 +6,9 @@
 //   ?RegisterActionEventTypes@CCreatureActionBase@@SIXXZ 0x006932B0 first and fills the map 0x013BA8C8 (Ego_r / FableWin
 //   `dynamic initializer for 'CCreatureActionBase::RegisteredActions'`) through insert_unique 0x006F5400. The catalog's
 //   `_global::StatRegisterClass` lacks the class.
-// Inferred: 1 dead release assert (FABLE_RETAIL_ASSERT(RegisteredActions.empty()), fable_assert.h dead arm, emits no bytes): device d of
-//   the owner's acceptance test. Measured: the row's inline budget (c2 caller-size penalty pen = (sz/2)*(a+g)/9000 once a+g > 9000)
-//   puts four call-v-expand transitions on retail's blocks (value_type ~CCountedPointer called from block 21, temp ~CCountedPointer
-//   called from block 23, CCountedPointer(T*) called from block 21, the pair destructors called from block 45) only with the dead
-//   arm's front-end tuples in the caller: without it block 21 expands one destructor too many (a+g 8995 < 9000), with a ~pair(){}
-//   instead block 44 calls the pair destructors one block early. Any one assert on the map (empty() / size() == 0, before or after
+// Inferred: 1 dead release assert (FABLE_RETAIL_ASSERT(RegisteredActions.empty()), fable_assert.h dead arm, emits no bytes): device d of the owner's acceptance test. Measured: the row's inline budget (c2 caller-size penalty pen = (sz/2)*(a+g)/9000 once a+g > 9000)
+//   puts four call-v-expand transitions on retail's blocks (value_type ~CCountedPointer called from block 21, temp ~CCountedPointer called from block 23, CCountedPointer(T*) called from block 21, the pair destructors called from block 45) only with the dead
+//   arm's front-end tuples in the caller: without it block 21 expands one destructor too many (a+g 8995 < 9000), with a ~pair(){} instead block 44 calls the pair destructors one block early. Any one assert on the map (empty() / size() == 0, before or after
 //   RegisterActionEventTypes) matches; `ASSERT(true)` does not.
 // EVIDENCED: the 55 insert blocks (keys, new sizes, ctor calls, vtables), FABLE_RETAIL_STLP_MAP_ORIGINAL_INSERT_BODY (the visible
 //   STLport _M_insert body: c2 then sees the value_type temporary is not captured -- no Info reload, no dead zero stores, frame 0x2C),
@@ -21,6 +18,7 @@
 // NF259 (2026-11-22, q12731, nf257 port debt): the row-local CCreatureAction_SummonCreatures model (a class that has engine/
 //   CCreatureAction_SummonCreatures.h) moved onto that header with the nf257 SUMMONCREATURES_OVERRIDES opt-in, which declares the default
 //   constructor 0x008B83C0 this row calls (??0CCreatureAction_SummonCreatures@@QAE@XZ, unchanged); its ctor stays out of line, so no vtable.
+// NF264 (2026-11-22, q12750): two declaration-only opt-ins, so the 30 prototype vtables bind slot 66 as retail: CCombatActionBase::AllowsCombinationAnims 0x0062EA10 (29) and the Scorpion King override 0x006F57B0 (1).
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_STLP_MAP
@@ -77,6 +75,8 @@
 #define FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_PROTOTYPE
 #define FABLE_RETAIL_CCREATUREACTION_SUMMONERDIE_PROTOTYPE
 #define FABLE_RETAIL_CCREATUREACTION_SUMMONCREATURES_OVERRIDES
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS
+#define FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSESCORPIONKING_ALLOWSCOMBINATIONANIMS
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"

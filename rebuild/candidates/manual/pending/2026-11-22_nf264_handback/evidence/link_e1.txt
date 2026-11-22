@@ -1,0 +1,30 @@
+## unit link: new 0x0062EA10 / 0x006F57B0 / 0x006F5C10 / 0x00692890 + HEAD 0x006DF800 (LINK unset, /DLL /NOENTRY /FORCE /NODEFAULTLIB)
+duplicates 0
+
+watched unresolved 1
+00692890.obj : error LNK2019: unresolved external symbol "public: long __thiscall CAnimationEntry::GetFlags(void)const " (?GetFlags@CAnimationEntry@@QBEJXZ) referenced in function "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(
+## positive control: the same + a renamed copy of the new 0x0062EA10 object
+duplicates 1
+ctl_copy_0062ea10.obj : warning LNK4006: "public: virtual bool __thiscall CCombatActionBase::AllowsCombinationAnims(void)const " (?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ) already defined in 0062ea10.obj; second definition ignored
+watched unresolved 1
+00692890.obj : error LNK2019: unresolved external symbol "public: long __thiscall CAnimationEntry::GetFlags(void)const " (?GetFlags@CAnimationEntry@@QBEJXZ) referenced in function "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(
+## HEAD control: HEAD 0x0062EA10 / 0x006F57B0 / 0x006F5C10 + HEAD 0x006DF800 (no 0x00692890)
+duplicates 0
+
+watched unresolved 2
+006f5c10.obj : error LNK2001: unresolved external symbol "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(void)const " (?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ)
+006df800.obj : error LNK2001: unresolved external symbol "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(void)const " (?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ)
+
+## full unit link: new 0x0062EA10 / 0x006F57B0 / 0x006F5C10 / 0x00692890 + the 20 new emitter objects + HEAD 0x006DF800 (LINK unset, /DLL /NOENTRY /FORCE /NODEFAULTLIB); watched = AllowsCombinationAnims
+duplicates 1
+009537b0.obj : warning LNK4006: "public: __thiscall CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(class CThingCreatureBase &,class std::vector<class C3DVector,class std::allocator<class C3DVector> > &,class C3DVector &,float,float,cl
+watched unresolved 1
+00692890.obj : error LNK2019: unresolved external symbol "public: long __thiscall CAnimationEntry::GetFlags(void)const " (?GetFlags@CAnimationEntry@@QBEJXZ) referenced in function "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(
+## HEAD control for the 20: their HEAD objects + HEAD 0x0062EA10 / 0x006F57B0 / 0x006F5C10 (no 0x00692890)
+      1 watched unresolved 21
+      1 duplicates 1
+      1 00974110.obj LNK2001 AllowsCombinationAnims@CCreatureActionBase MBE
+## HEAD control duplicates (same 20 HEAD objects)
+duplicates 1
+009537b0.obj : warning LNK4006: "public: __thiscall CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(class CThingCreatureBase &,class std::vector<class C3DVector,class std::allocator<class C3DVector> > &,class C3DVector &,float,float,cl
+watched unresolved 0

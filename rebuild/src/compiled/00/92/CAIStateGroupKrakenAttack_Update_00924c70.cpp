@@ -20,6 +20,7 @@
 //   engine/CCombatActionBase.h FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION, engine/CThingAICreature.h FABLE_RETAIL_CTHINGAICREATURE_IMMUNETOATTACK.
 // The anonymous-namespace action classes of retail (RTTI .?AVCCreatureAction_KrakenReturnToWater@?A0x29922355@@) are spelled at global
 //   scope, as the landed binding ??_7CCreatureAction_KrakenReturnToWater@@6B@ has it.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

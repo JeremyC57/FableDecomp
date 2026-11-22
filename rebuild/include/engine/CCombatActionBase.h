@@ -278,6 +278,16 @@ public:
     virtual float GetDamageMultiplier() const;
 protected:
 #endif
+#if defined(FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS) && !defined(FABLE_RETAIL_CCOMBATACTIONBASE_SCREAMER_VTABLE_PASS27) && !defined(FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27)
+    // NF264 opt-in (2026-11-22, q12750, row 0x0062EA10 and the vtable emitters): FableWin.pdb 0x01D916B0
+    // ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ (public virtual const: CCombatActionBase's override of the protected
+    // CCreatureActionBase slot 66) + retail CCombatActionBase vftable 0x01259E44 slot 66 = 0x0062EA10 (body `xor al,al ; ret`), so the
+    // tables of classes that do not override it bind slot 66 to 0x0062EA10, not to CCreatureActionBase's 0x00692890. Both class branches;
+    // the PASS27 blocks above already declare it. Declaration only; no layout change; the access before and after is protected.
+public:
+    virtual bool AllowsCombinationAnims() const;                         // 0x0062EA10
+protected:
+#endif
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
     // p25E opt-in (row 0x00859EF0 CCombatActionBase::OnAnimationLoaded): the protected members it uses, with the Ego_r.pdb / FableWin.pdb
     // spellings the first class branch declares (Ego_r ?UpdateFacingDirection / ?InitialiseActionTimes / ?SetUpCombatAnimationNotes /
@@ -425,6 +435,12 @@ public:
     // it), out of line in retail at 0x0085AA90. Declaration only, no layout change.
 public:
     void SetTarget(CThing& target);                                    // 0x0085AA90
+#endif
+#if defined(FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS) && !defined(FABLE_RETAIL_JACKDRAGON_NATIVE_ACTION_SLOTS_PASS27)
+    // NF264 opt-in (2026-11-22, q12750): the declaration the MELEE branch has under the same macro (FableWin.pdb 0x01D916B0
+    // ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ + retail vftable 0x01259E44 slot 66 = 0x0062EA10). Declaration only.
+public:
+    virtual bool AllowsCombinationAnims() const;                         // 0x0062EA10
 #endif
 protected: unsigned char _pad_0xa8[0x6c];
 };

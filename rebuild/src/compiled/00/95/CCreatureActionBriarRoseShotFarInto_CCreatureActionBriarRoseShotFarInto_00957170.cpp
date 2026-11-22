@@ -14,6 +14,7 @@
 //   The callees now bind the PDB spellings: ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@AAVCThing@@JABVCSoundPair@@@Z (0x00857F30,
 //   the q11677 reference form; was the pointer form) and ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z (0x008574D0;
 //   was the stand-in ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z).
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CTHING

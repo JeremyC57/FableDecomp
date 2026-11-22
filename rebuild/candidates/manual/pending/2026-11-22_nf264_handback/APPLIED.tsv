@@ -1,0 +1,5 @@
+entry	address	status	binders_respelled	note
+q12750	0x00692890 + 0x006F5C10 + 0x0062EA10	done	21	the unit is 24 rows: self rows 0x0062EA10 (CCombatActionBase UBE) and 0x006F57B0 (the ScorpionKing override, UBE; not in the queue line, decision 2) off free stand-ins; 0x006F5C10's 30 prototype tables + the 20 other VC7.1 emitters (decision 1) respelled at slot 66 by the new declaration-only opt-in; 0x00692890 = the nf261 draft, unchanged, landable only with them; census: after the unit no landed table binds a wrong body's symbol at slot 66; 2 add-only header opt-ins (equiv_check)
+q12743	0x0072CAA0 / 0x008CD470	open	0	not started (context: hand-back after entry 1 on the advisor's advice; it needs a second header change + equiv_check + two multi-class ports)
+q12744	0x00AD9770 / 0x00AD9980	open	0	not started
+q12659	0x00418DCA	open	0	not started (needs the full 469-includer proof)

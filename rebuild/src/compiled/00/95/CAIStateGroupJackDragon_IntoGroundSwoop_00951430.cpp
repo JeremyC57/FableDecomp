@@ -19,6 +19,7 @@
 //   schedules the flame start copy as retail (0x00951734..0x0095179B); declaration-only exposes both locals (Z-first sums).
 // Layout: overlay opt-ins (hdr/README.md): CAIStateGroup_JackDragon retail class (+ _INTOGROUND: StartFlying / ChooseHoverOrStrafeState /
 //   IntoGroundSwoop), CCreatureAction_DragonBurninateInto retail class (new opt-in); retail STLport vector<C3DVector> (12 bytes).
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE

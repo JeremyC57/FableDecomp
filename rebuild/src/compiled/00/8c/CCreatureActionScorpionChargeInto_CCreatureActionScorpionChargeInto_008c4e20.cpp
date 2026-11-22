@@ -13,6 +13,7 @@
 //   (creature, target, priority, sound) constructor 0x00857F30). Evidence: Ego_r.pdb ??0CCreatureAction_ScorpionChargeInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@M@Z
 //   (references, float stored as ChargeDistance); CAIStateGroup_ScorpionKing::UpdateCombat 0x0097BDA0 already binds it.
 // Defines: the landed 0x0097BDA0 UpdateCombat preamble + SOUNDCTOR + TARGETCTOR.
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ALLOWSCOMBINATIONANIMS  // NF264 (q12750): CCombatActionBase::AllowsCombinationAnims override, so emitted tables bind slot 66 = 0x0062EA10 as retail
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CDEFSTRINGTABLE

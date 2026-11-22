@@ -1,0 +1,5 @@
+# 0062ea10 symbol diff (HEAD object < > new object; DEF = defined external, UND = undefined)
+1c1
+< DEF ?CCombatActionBase_AllowsCombinationAnims@@YI_NXZ
+---
+> DEF ?AllowsCombinationAnims@CCombatActionBase@@UBE_NXZ
