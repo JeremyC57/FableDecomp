@@ -521,7 +521,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00a475c0	CNavigatorBase	FindNearestNavigableNode	1872	released by B wind-down (owner 2026-11-20; was: hand-off (2026-11-19, pending/2026-11-19_authoring_handoff/hand3c; not plain C++, see its HANDOFF.md))		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a475c0.cpp	original
 00a4cec0	C3DAnimation2	CalcLocalTransformations	1136	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a4cec0.cpp	original
 00a4d330	C3DAnimation2	CalcLocalBoneTransformation	1088	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a4d330.cpp	original
-00a4efc0	C3DAnimationSequenceData	InitialiseFromFileData	3504	reserved (acctA AUTH7, 2026-11-21, one-shot step; released from Account B, owner 2026-11-21; was: reserved (acctB p25A, 2026-11-20))	DIFFER(3481v3491)	9	rebuild/candidates/manual/pending/2026-11-20_p25_open/00a4efc0/00a4efc0.cpp	original
 00a53c50	C3DAnimation2	CalcLocalBoneTransformation	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00a53c50.cpp	original
 00a56270	CMatrix3x4	Orthonormalise	704	reserved (Codex pass 27, 2026-11-22; Account B agents off it)	DIFFER(706v693)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/00a56270.cpp	original
 00a57030	C2DLineF	Intersects2D	272	parked		0	rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/00a57030.cpp	original

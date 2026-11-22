@@ -1,0 +1,229 @@
+diff --git a/rebuild/include/engine/C3DAnimFileSequenceChunk.h b/rebuild/include/engine/C3DAnimFileSequenceChunk.h
+index c294ca4102..6065985d5e 100644
+--- a/rebuild/include/engine/C3DAnimFileSequenceChunk.h
++++ b/rebuild/include/engine/C3DAnimFileSequenceChunk.h
+@@ -29,6 +29,19 @@ void AddMatrix(const CMatrix3x4&);
+ virtual ~C3DAnimFileSequenceChunk();
+ #endif
+ public:long GetParentIndex()const{return ParentIndex;}
++#if defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_GETTERS) && defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX)
++ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): FableWin.pdb
++ // ?GetBoneName@C3DAnimFileSequenceChunk@@QBE?BVCCharString@@XZ (by value: the row copy-constructs from +0x34, 0x00A4EFDE),
++ // ?GetBoneType@C3DAnimFileSequenceChunk@@QBE?AW4EBoneType@@XZ (+0x3C), ?GetSamplesPerSecond@C3DAnimFileSequenceChunk@@QBEMXZ (+0x38),
++ // ?GetMatrixCount@C3DAnimFileSequenceChunk@@QBEKXZ (Matrices.size(): the /48 at 0x00A4F05C) and
++ // ?GetMatrix@C3DAnimFileSequenceChunk@@QBEPBVCMatrix3x4@@K@Z (&Matrices[index]), all inline in retail. Needs ADDMATRIX (the
++ // CArray<CMatrix3x4> member type).
++ const CCharString GetBoneName() const { return BoneName; }
++ EBoneType GetBoneType() const { return BoneType; }
++ float GetSamplesPerSecond() const { return SamplesPerSecond; }
++ unsigned long GetMatrixCount() const { return Matrices.size(); }
++ const CMatrix3x4* GetMatrix(unsigned long index) const { return &Matrices[index]; }
++#endif
+ private:long BoneIndex,ParentIndex;CCharString BoneName;float SamplesPerSecond;EBoneType BoneType;
+ #ifdef FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX
+  CArray<CMatrix3x4> Matrices;
+diff --git a/rebuild/include/engine/C3DAnimationSequenceData.h b/rebuild/include/engine/C3DAnimationSequenceData.h
+index 00a460fea5..2ea2e291c4 100644
+--- a/rebuild/include/engine/C3DAnimationSequenceData.h
++++ b/rebuild/include/engine/C3DAnimationSequenceData.h
+@@ -50,6 +50,20 @@ public:
+  unsigned long GetFrameCount()const{return FrameCount;}float GetSamplesPerSecond()const{return SamplesPerSecond;}
+  bool InitialiseFromFileData(const C3DAnimFileSequenceChunk&,CSimpleMemoryPool&);
+ private:
++#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_FROMFILEDATA
++ // Retail opt-in (p25C, row 0x00A4EFC0 InitialiseFromFileData): Ego_d.pdb nested enum C3DAnimationSequenceData::ETrackMode
++ // (type 0x2901D: TRACKMODE_IDENTITY 0, CONSTANT 1, NORMAL 2, PALETTED 3, MOTION_BIT 2), stored in the 2-bit track-mode fields;
++ // and the private helper Ego_r.pdb / FableWin.pdb ?GetMaximumAbsoluteComponent@C3DAnimationSequenceData@@AAEMABVC3DVector@@@Z
++ // (no out-of-line copy in retail: expanded twice per frame in the row's factor loop, 0x00A4F110..). Declaration only: the row's
++ // TU defines it.
++ enum ETrackMode { TRACKMODE_IDENTITY=0, TRACKMODE_CONSTANT=1, TRACKMODE_NORMAL=2, TRACKMODE_PALETTED=3, TRACKMODE_MOTION_BIT=2 };
++ float GetMaximumAbsoluteComponent(const C3DVector& vect);
++#ifndef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_READ
++ // The private ?SetupIdentityFlag@C3DAnimationSequenceData@@AAEXXZ (see READ above; expanded at the end of the row, 0x00A4FC83:
++ // `test byte ptr [esi+0Bh],3Fh`). Declaration only, as under READ.
++ void SetupIdentityFlag();
++#endif
++#endif
+ char* BoneName;float SamplesPerSecond;unsigned short FrameCount;
+  unsigned char BoneType:5;unsigned char EnabledFlag:1;unsigned char AnimatedFlag:1;unsigned char IdentityFlag:1;
+  unsigned char RotationTrackMode:2;unsigned char PositionTrackMode:2;unsigned char ScalingTrackMode:2;
+@@ -57,7 +71,7 @@ char* BoneName;float SamplesPerSecond;unsigned short FrameCount;
+  unsigned short RotationTrackSize,PositionTrackSize,PalettedRotationTrackSize,PalettedPositionTrackSize;
+  C3DVectorWord* PositionTrack;unsigned char* PalettedRotationTrack;unsigned char* PalettedPositionTrack;
+ };
+-FABLE_STATIC_ASSERT(sizeof(C3DAnimationSequenceData)==0x2c);
++FABLE_STATIC_ASSERT_AT(60, sizeof(C3DAnimationSequenceData)==0x2c);
+ #if defined(FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_READ) && !defined(FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE)
+ // (chunk 2033) the reader allocates PositionTrack as an array of C3DVectorWord: Ego_r.pdb short X / Y / Z, 6 bytes (the retail
+ // AllocateType<C3DVectorWord> size check multiplies by 6 at 0x00A4CB7F).
+@@ -66,6 +80,22 @@ public:
+  short X,Y,Z;
+ };
+ #endif
++#ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_VECTORWORD_FROMVECTOR
++// Retail opt-in (p25C, row 0x00A4EFC0 InitialiseFromFileData): FableWin.pdb ??0C3DVectorWord@C3DAnimationSequenceData@@QAE@XZ,
++// ??0C3DVectorWord@C3DAnimationSequenceData@@QAE@ABVC3DVector@@@Z and ??8C3DVectorWord@C3DAnimationSequenceData@@QBE_NABV01@@Z
++// (Ego_d.pdb field list 0x29DF1: two constructors, operator==, operator*, X / Y / Z, Sizeof), all inline in retail: the
++// conversion is three _ftol2 calls into a stack temporary (0x00A4F654..0x00A4F66C), the comparison three word compares
++// (0x00A4F6B0..0x00A4F6CA). The user default constructor makes the element non-POD (STLport's __false_type paths, as the
++// landed 0x00A55070 _M_insert_overflow). Needs FABLE_RETAIL_C3DVECTOR (the full C3DVector).
++class C3DAnimationSequenceData::C3DVectorWord {
++public:
++ short X,Y,Z;
++ C3DVectorWord() { }
++ C3DVectorWord(const C3DVector& vect) { X=(short)vect.X; Y=(short)vect.Y; Z=(short)vect.Z; }
++ bool operator==(const C3DVectorWord& rhs) const { return X==rhs.X && Y==rhs.Y && Z==rhs.Z; }
++ C3DVector operator*(float scale) const { return C3DVector(X*scale,Y*scale,Z*scale); }
++};
++#endif
+ #ifdef FABLE_RETAIL_C3DANIMATIONSEQUENCEDATA_INTERPOLATE
+ class C3DAnimationSequenceData::C3DVectorWord {
+ public:
+diff --git a/rebuild/include/engine/C3DKeyframe.h b/rebuild/include/engine/C3DKeyframe.h
+index 6177329d46..39b8746158 100644
+--- a/rebuild/include/engine/C3DKeyframe.h
++++ b/rebuild/include/engine/C3DKeyframe.h
+@@ -66,6 +66,15 @@ public:
+  // Retail opt-in (chunk 2044): FableWin.pdb ?GetRotation@C3DKeyframe@@QBE?AVCQuaternion@@XZ (inline, by value).
+  CQuaternion GetRotation() const { return Rotation; }
+ #endif
++#ifdef FABLE_RETAIL_C3DKEYFRAME_FROMMATRIX
++ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
++ // ?InitialiseFromMatrix@C3DKeyframe@@QAE_NABVCMatrix3x4@@@Z (out of line in retail, 0x00AAF1E0, called per frame at 0x00A4F0C6),
++ // and FableWin.pdb ?SetScaling@C3DKeyframe@@QAEXABVC3DVector@@@Z / ?GetScaling@C3DKeyframe@@QBE?AVC3DVector@@XZ (inline: the
++ // row stores 1, 1, 1, 0 into Scaling at 0x00A4F0D0..0x00A4F0D8, and reads Scaling X / Y / Z in place at 0x00A4F110).
++ bool InitialiseFromMatrix(const CMatrix3x4& matrix);
++ void SetScaling(const C3DVector& scaling) { Scaling.Initialise(scaling, 0.0f); }
++ C3DVector GetScaling() const { return Scaling.ToC3DVector(); }
++#endif
+ #ifdef FABLE_RETAIL_C3DKEYFRAME_POSTAPPLY
+  // Retail opt-in (chunk 2005, row 0x00A4D920): FableWin.pdb ?PostApplyRelativeAnimation@C3DKeyframe@@QAEXABV1@@Z (expanded in
+  // retail: the out-of-line CQuaternion::operator*= 0x00A88C10, then C4DVector::operator+= ??YC4DVector@@QAEABV0@ABV0@@Z inline).
+diff --git a/rebuild/include/engine/CArray.h b/rebuild/include/engine/CArray.h
+index beff6ac764..a83743e675 100644
+--- a/rebuild/include/engine/CArray.h
++++ b/rebuild/include/engine/CArray.h
+@@ -8,6 +8,9 @@
+ #ifdef FABLE_RETAIL_CARRAY_INDEX_ASSERT
+ #include "fable_assert.h"
+ #endif
++#if defined(FABLE_RETAIL_CARRAY_DEBUGGER_BOUNDS_PASS27) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
++extern "C" __declspec(dllimport) int __stdcall IsDebuggerPresent(void);
++#endif
+ #ifdef FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
+ // Both original TPI records:23 real methods, generated assignment omitted.
+ // Inverse LF_METHOD overload groups: measured VC71 reversal supports this
+@@ -21,10 +24,23 @@ public:
+  ~CArray() { }
+  typename std::vector<T>::reference At(unsigned int index);
+  typename std::vector<T>::const_reference At(unsigned int index) const;
++#if defined(FABLE_RETAIL_CARRAY_DEBUGGER_BOUNDS_PASS27) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
++ // Fidelity: FableWin 0322E450 and 0322C360 check index < size() and break only with a debugger.
++ // The disabled release form is inferred from code generation in 00A4EFC0.
++ typename std::vector<T>::reference operator[](unsigned int index) {
++  if (0) { if (!(index < this->size())) { if (IsDebuggerPresent()) __debugbreak(); } }
++  return std::vector<T>::operator[](index);
++ }
++ typename std::vector<T>::const_reference operator[](unsigned int index) const {
++  if (0) { if (!(index < this->size())) { if (IsDebuggerPresent()) __debugbreak(); } }
++  return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
++ }
++#else
+  typename std::vector<T>::reference operator[](unsigned int index) { return std::vector<T>::operator[](index); }
+  typename std::vector<T>::const_reference operator[](unsigned int index) const {
+   return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
+  }
++#endif
+  typename std::vector<T>::iterator Find(const T& value);
+  typename std::vector<T>::const_iterator Find(const T& value) const;
+  void push_back(const T& _Val) { std::vector<T>::push_back(_Val); }
+diff --git a/rebuild/include/engine/CQuaternion.h b/rebuild/include/engine/CQuaternion.h
+index 84faaef5aa..fca6f30a69 100644
+--- a/rebuild/include/engine/CQuaternion.h
++++ b/rebuild/include/engine/CQuaternion.h
+@@ -48,6 +48,13 @@ public:
+  void SetIdentity(){X=0.0f;Y=0.0f;Z=0.0f;W=1.0f;}
+ #endif
+  void SetFromAxisAngle(const C3DVector& axis,float angle);
++#ifdef FABLE_RETAIL_CQUATERNION_EQUALS
++ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
++ // ?Equals@CQuaternion@@QBE_NABV1@@Z (out of line in retail, 0x00A88C50) and ?IsIdentity@CQuaternion@@QBE_NXZ (0x00A88CB0).
++ // Declarations only.
++ bool Equals(const CQuaternion& other) const;
++ bool IsIdentity() const;
++#endif
+ #ifdef FABLE_RETAIL_CQUATERNION_INLINE_TOMATRIX
+  // Native00B0EAB8 begins this expanded math body after axis-angle call00B0EAB3.
+  // Natural,T200/T400 and scoped
+diff --git a/rebuild/include/stlport/fable_animation_byte_vector_owners.h b/rebuild/include/stlport/fable_animation_byte_vector_owners.h
+new file mode 100644
+index 0000000000..438e6c10f1
+--- /dev/null
++++ b/rebuild/include/stlport/fable_animation_byte_vector_owners.h
+@@ -0,0 +1,66 @@
++#ifndef FABLE_STLP_ANIMATION_BYTE_VECTOR_OWNERS_H
++#define FABLE_STLP_ANIMATION_BYTE_VECTOR_OWNERS_H
++#ifdef FABLE_RETAIL_STLP_ANIMATION_BYTE_VECTOR_OWNERS
++// Inline-budget: the speed-built enclosing leaf expands both resize overloads.
++// The out-of-line copies at 00486189 and 004861DF use size code; the latter has a frame.
++#if defined(_MSC_VER)
++#pragma optimize("s",on)
++#endif
++#if defined(_MSC_VER)
++#pragma optimize("y",off)
++#endif
++// Inline-budget: 00485B6C expands the unsigned-byte fill_n and directly calls fill.
++template<> FABLE_FORCEINLINE unsigned char* std::fill_n(unsigned char* first,unsigned int n,const unsigned char& value) {
++    fill(first,first+n,value);
++    return first+n;
++}
++// Inline-budget: the retail caller invokes the size-built byte specialization at 00485B6C.
++template<> inline
++#ifdef _MSC_VER
++__declspec(noinline)
++#endif
++void std::vector<unsigned char>::_M_insert_overflow(iterator position,const unsigned char& x,const std::__true_type&,size_type fillLength,bool atEnd) {
++    const size_type oldSize=size();const size_type len=oldSize+(max)(oldSize,fillLength);
++    unsigned char* newStart=this->_M_end_of_storage.allocate(len);
++    unsigned char* newFinish=(unsigned char*)__copy_trivial(this->_M_start,position,newStart);
++    newFinish=fill_n(newFinish,fillLength,x);
++    if(!atEnd) newFinish=(unsigned char*)__copy_trivial(position,this->_M_finish,newFinish);
++    _M_clear();_M_set(newStart,newFinish,newStart+len);
++}
++template<> inline void std::vector<unsigned char>::_M_fill_insert(
++    iterator position, size_type n, const unsigned char& x) {
++    if(n!=0) {
++        if(size_type(this->_M_end_of_storage._M_data-this->_M_finish)>=n) {
++            value_type x_copy=x;
++            const size_type elems_after=this->_M_finish-position;
++            value_type* old_finish=this->_M_finish;
++            if(elems_after>n) {
++                __copy_trivial(this->_M_finish-n,this->_M_finish,this->_M_finish);
++                this->_M_finish+=n;
++                __copy_trivial_backward(position,old_finish-n,old_finish);
++                fill(position,position+n,x_copy);
++            } else {
++                fill(this->_M_finish,this->_M_finish+(n-elems_after),x_copy);
++                this->_M_finish+=n-elems_after;
++                __copy_trivial(position,old_finish,this->_M_finish);
++                this->_M_finish+=elems_after;
++                fill(position,old_finish,x_copy);
++            }
++        } else _M_insert_overflow(position,x,_IsPODType(),n,false);
++    }
++}
++#if defined(_MSC_VER)
++#pragma optimize("",on)
++#pragma optimize("s",on)
++#endif
++template<> inline void std::vector<unsigned char>::resize(size_type n,const unsigned char& x) { if (n<size()) erase(begin()+n,end()); else insert(end(),n-size(),x); }
++#if defined(_MSC_VER)
++#pragma optimize("y",off)
++#endif
++template<> inline void std::vector<unsigned char>::resize(size_type n) { resize(n,value_type()); }
++#if defined(_MSC_VER)
++#pragma optimize("",on)
++#endif
++
++#endif
++#endif

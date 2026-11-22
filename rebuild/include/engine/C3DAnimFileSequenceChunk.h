@@ -29,6 +29,19 @@ void AddMatrix(const CMatrix3x4&);
 virtual ~C3DAnimFileSequenceChunk();
 #endif
 public:long GetParentIndex()const{return ParentIndex;}
+#if defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_GETTERS) && defined(FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX)
+ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): FableWin.pdb
+ // ?GetBoneName@C3DAnimFileSequenceChunk@@QBE?BVCCharString@@XZ (by value: the row copy-constructs from +0x34, 0x00A4EFDE),
+ // ?GetBoneType@C3DAnimFileSequenceChunk@@QBE?AW4EBoneType@@XZ (+0x3C), ?GetSamplesPerSecond@C3DAnimFileSequenceChunk@@QBEMXZ (+0x38),
+ // ?GetMatrixCount@C3DAnimFileSequenceChunk@@QBEKXZ (Matrices.size(): the /48 at 0x00A4F05C) and
+ // ?GetMatrix@C3DAnimFileSequenceChunk@@QBEPBVCMatrix3x4@@K@Z (&Matrices[index]), all inline in retail. Needs ADDMATRIX (the
+ // CArray<CMatrix3x4> member type).
+ const CCharString GetBoneName() const { return BoneName; }
+ EBoneType GetBoneType() const { return BoneType; }
+ float GetSamplesPerSecond() const { return SamplesPerSecond; }
+ unsigned long GetMatrixCount() const { return Matrices.size(); }
+ const CMatrix3x4* GetMatrix(unsigned long index) const { return &Matrices[index]; }
+#endif
 private:long BoneIndex,ParentIndex;CCharString BoneName;float SamplesPerSecond;EBoneType BoneType;
 #ifdef FABLE_RETAIL_C3DANIMFILESEQUENCECHUNK_ADDMATRIX
  CArray<CMatrix3x4> Matrices;

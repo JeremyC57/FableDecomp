@@ -402627,6 +402627,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '008e18d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a4efc0'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a4/C3DAnimationSequenceData_InitialiseFromFileData_00a4efc0.cpp'
+        TestSource = '00/a4/C3DAnimationSequenceData_InitialiseFromFileData_00a4efc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a4efc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

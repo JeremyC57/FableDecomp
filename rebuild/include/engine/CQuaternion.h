@@ -48,6 +48,13 @@ public:
  void SetIdentity(){X=0.0f;Y=0.0f;Z=0.0f;W=1.0f;}
 #endif
  void SetFromAxisAngle(const C3DVector& axis,float angle);
+#ifdef FABLE_RETAIL_CQUATERNION_EQUALS
+ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
+ // ?Equals@CQuaternion@@QBE_NABV1@@Z (out of line in retail, 0x00A88C50) and ?IsIdentity@CQuaternion@@QBE_NXZ (0x00A88CB0).
+ // Declarations only.
+ bool Equals(const CQuaternion& other) const;
+ bool IsIdentity() const;
+#endif
 #ifdef FABLE_RETAIL_CQUATERNION_INLINE_TOMATRIX
  // Native00B0EAB8 begins this expanded math body after axis-angle call00B0EAB3.
  // Natural,T200/T400 and scoped

@@ -8,6 +8,9 @@
 #ifdef FABLE_RETAIL_CARRAY_INDEX_ASSERT
 #include "fable_assert.h"
 #endif
+#if defined(FABLE_RETAIL_CARRAY_DEBUGGER_BOUNDS_PASS27) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+extern "C" __declspec(dllimport) int __stdcall IsDebuggerPresent(void);
+#endif
 #ifdef FABLE_RETAIL_CARRAY_ORIGINAL_COMPLETE_DECLARATIONS_PASS22
 // Both original TPI records:23 real methods, generated assignment omitted.
 // Inverse LF_METHOD overload groups: measured VC71 reversal supports this
@@ -21,10 +24,23 @@ public:
  ~CArray() { }
  typename std::vector<T>::reference At(unsigned int index);
  typename std::vector<T>::const_reference At(unsigned int index) const;
+#if defined(FABLE_RETAIL_CARRAY_DEBUGGER_BOUNDS_PASS27) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
+ // Fidelity: FableWin 0322E450 and 0322C360 check index < size() and break only with a debugger.
+ // The disabled release form is inferred from code generation in 00A4EFC0.
+ typename std::vector<T>::reference operator[](unsigned int index) {
+  if (0) { if (!(index < this->size())) { if (IsDebuggerPresent()) __debugbreak(); } }
+  return std::vector<T>::operator[](index);
+ }
+ typename std::vector<T>::const_reference operator[](unsigned int index) const {
+  if (0) { if (!(index < this->size())) { if (IsDebuggerPresent()) __debugbreak(); } }
+  return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
+ }
+#else
  typename std::vector<T>::reference operator[](unsigned int index) { return std::vector<T>::operator[](index); }
  typename std::vector<T>::const_reference operator[](unsigned int index) const {
   return const_cast<std::vector<T>*>(static_cast<const std::vector<T>*>(this))->operator[](index);
  }
+#endif
  typename std::vector<T>::iterator Find(const T& value);
  typename std::vector<T>::const_iterator Find(const T& value) const;
  void push_back(const T& _Val) { std::vector<T>::push_back(_Val); }

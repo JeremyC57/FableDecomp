@@ -1,0 +1,5 @@
+00a4efc0   RELOCATION_MATCH PASS   InitialiseFromFileData
+0047042a   RELOCATION_MATCH PASS   TransferBinaryIn
+00a50510   RELOCATION_MATCH PASS   InitialiseAnimationSequences
+00aa0fa0   RELOCATION_MATCH PASS   CalcBoneTransformation
+00bd2d90   RELOCATION_MATCH PASS   GetBoneTransformations

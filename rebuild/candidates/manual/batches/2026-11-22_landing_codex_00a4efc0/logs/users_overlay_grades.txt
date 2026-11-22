@@ -1,0 +1,3 @@
+00a50510 C3DAnimation2::InitialiseAnimationSequences RELOCATION_MATCH flags= []
+00aa0fa0 C3DAnimationManager::CalcBoneTransformation RELOCATION_MATCH flags= []
+00bd2d90 CEngineInternalPrimitiveAnimatedMesh::GetBoneTransformations RELOCATION_MATCH flags= []

@@ -66,6 +66,15 @@ public:
  // Retail opt-in (chunk 2044): FableWin.pdb ?GetRotation@C3DKeyframe@@QBE?AVCQuaternion@@XZ (inline, by value).
  CQuaternion GetRotation() const { return Rotation; }
 #endif
+#ifdef FABLE_RETAIL_C3DKEYFRAME_FROMMATRIX
+ // Retail opt-in (p25C, row 0x00A4EFC0 C3DAnimationSequenceData::InitialiseFromFileData): Ego_r.pdb / FableWin.pdb
+ // ?InitialiseFromMatrix@C3DKeyframe@@QAE_NABVCMatrix3x4@@@Z (out of line in retail, 0x00AAF1E0, called per frame at 0x00A4F0C6),
+ // and FableWin.pdb ?SetScaling@C3DKeyframe@@QAEXABVC3DVector@@@Z / ?GetScaling@C3DKeyframe@@QBE?AVC3DVector@@XZ (inline: the
+ // row stores 1, 1, 1, 0 into Scaling at 0x00A4F0D0..0x00A4F0D8, and reads Scaling X / Y / Z in place at 0x00A4F110).
+ bool InitialiseFromMatrix(const CMatrix3x4& matrix);
+ void SetScaling(const C3DVector& scaling) { Scaling.Initialise(scaling, 0.0f); }
+ C3DVector GetScaling() const { return Scaling.ToC3DVector(); }
+#endif
 #ifdef FABLE_RETAIL_C3DKEYFRAME_POSTAPPLY
  // Retail opt-in (chunk 2005, row 0x00A4D920): FableWin.pdb ?PostApplyRelativeAnimation@C3DKeyframe@@QAEXABV1@@Z (expanded in
  // retail: the out-of-line CQuaternion::operator*= 0x00A88C10, then C4DVector::operator+= ??YC4DVector@@QAEABV0@ABV0@@Z inline).

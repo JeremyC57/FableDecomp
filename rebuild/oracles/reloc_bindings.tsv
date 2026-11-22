@@ -39447,3 +39447,9 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?ClearObservers@CObservable@NUISystem@@UAEXXZ	0055c950	0041e641
 ?GetMouseDisabled@CManager@NUISystem@@UAE_NXZ	0042d4f0	0041e641
 ?GetRightStickForce@CManager@NUISystem@@UAEAAVC2DVector@@XZ	0042d5aa	0041e641
+??0?$vector@VC3DKeyframe@@V?$allocator@VC3DKeyframe@@@std@@@std@@QAE@I@Z	00a54580	00a4efc0
+??4?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEAAV01@ABV01@@Z	00a54cb0	00a4efc0
+??4?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEAAV01@ABV01@@Z	00a54bb0	00a4efc0
+?Equals@CQuaternion@@QBE_NABV1@@Z	00a88c50	00a4efc0
+?IsIdentity@CQuaternion@@QBE_NXZ	00a88cb0	00a4efc0
+?_M_fill_insert@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEXPAVCQuaternion@@IABV3@@Z	00a55190	00a4efc0
