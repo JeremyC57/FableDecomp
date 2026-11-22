@@ -1,0 +1,12 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2
+0x00BFD480	?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	0x00BDA090
+0x00BFD480	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	0x00BDA0D0
+0x00BFDE20	?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	0x00BDA090
+0x00BFDE20	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	0x00BDA0D0
+0x00BEAA00	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	0x00BDA0D0
+0x00BFDD40	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	0x00BDA0D0
+0x00BEAAA0	?InsertNode@LandscapeLayerList@@QAEXH@Z	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	0x00BDA0D0
+0x00BEAAA0	?DAT_01436ea8@@3PAEA	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8
+0x00BEB4D0	?InsertNode@LandscapeLayerList@@QAEXH@Z	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	0x00BDA0D0
+0x00BEB4D0	?DAT_01436ea8@@3PAEA	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	0x01436EA8

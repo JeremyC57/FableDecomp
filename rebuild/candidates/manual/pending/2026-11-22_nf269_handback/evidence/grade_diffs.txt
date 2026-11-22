@@ -1,0 +1,58 @@
+##### 00beaa00
+pH 00beaa00 CTextureOwner_00beaa00::void ClearBlock RELOCATION_MATCH flags= [] leaf=?ClearBlock@CTextureOwner_00beaa00@@QAEXXZ
+pS 00beaa00 CTextureOwner_00beaa00::void ClearBlock RELOCATION_MATCH flags= [] leaf=?ClearBlock@CTextureOwner_00beaa00@@QAEXXZ
+< 00bda0d0	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	x1
+> 00bda0d0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	x1
+< UND ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+##### 00bfdd40
+pH 00bfdd40 CTextureOwner_00bfdd40::void ClearBlock RELOCATION_MATCH flags= [] leaf=?ClearBlock@CTextureOwner_00bfdd40@@QAEXXZ
+pS 00bfdd40 CTextureOwner_00bfdd40::void ClearBlock RELOCATION_MATCH flags= [] leaf=?ClearBlock@CTextureOwner_00bfdd40@@QAEXXZ
+< 00bda0d0	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	x1
+> 00bda0d0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	x1
+< UND ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+##### 00bfd480
+pH 00bfd480 CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch RELOCATION_MATCH flags= [] leaf=??1CEngineWaterBackgroundSubPatch
+pS 00bfd480 CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch RELOCATION_MATCH flags= [] leaf=??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+< 00bda090	?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	x2
+< 00bda0d0	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	x2
+> 00bda090	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	x2
+> 00bda0d0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	x2
+< UND ?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+< UND ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+> UND ?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+##### 00bfde20
+pH 00bfde20 CLandscapeLayerMesh::~CLandscapeLayerMesh RELOCATION_MATCH flags= [] leaf=??1CLandscapeLayerMesh@@QAE@XZ
+pS 00bfde20 CLandscapeLayerMesh::~CLandscapeLayerMesh RELOCATION_MATCH flags= [] leaf=??1CLandscapeLayerMesh@@QAE@XZ
+< 00bda090	?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	x1
+< 00bda0d0	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	x1
+> 00bda090	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	x1
+> 00bda0d0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	x1
+< UND ?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+< UND ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+> UND ?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+##### 00beaaa0
+pH 00beaaa0 CEngineScreenEffectOutlineGlow::FinishWithDynamicTextures RELOCATION_MATCH flags= [] leaf=??1CEngineScreenEffectOutlineGlow@@QAE@XZ
+pS 00beaaa0 CEngineScreenEffectOutlineGlow::FinishWithDynamicTextures RELOCATION_MATCH flags= [] leaf=??1CEngineScreenEffectOutlineGlow@@QAE@XZ
+< 00bda0d0	?InsertNode@LandscapeLayerList@@QAEXH@Z	x1
+> 00bda0d0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	x1
+< 01436ea8	?DAT_01436ea8@@3PAEA	x1
+> 01436ea8	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	x1
+< UND ?DAT_01436ea8@@3PAEA
+< UND ?InsertNode@LandscapeLayerList@@QAEXH@Z
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+> UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+##### 00beb4d0
+pH 00beb4d0 CWaterPatchMesh::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=?ScalarDeletingDestructor@CEngineScreenEffectOutlineGlow@@QAEPAV1@I@Z
+pS 00beb4d0 CWaterPatchMesh::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=?ScalarDeletingDestructor@CEngineScreenEffectOutlineGlow@@QAEPAV1@I@Z
+< 00bda0d0	?InsertNode@LandscapeLayerList@@QAEXH@Z	x1
+> 00bda0d0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	x1
+< 01436ea8	?DAT_01436ea8@@3PAEA	x2
+> 01436ea8	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	x2
+< UND ?DAT_01436ea8@@3PAEA
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+< UND ?InsertNode@LandscapeLayerList@@QAEXH@Z
+> UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A

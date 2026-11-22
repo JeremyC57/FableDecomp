@@ -1,0 +1,46 @@
+addr       parity           behav  name
+00bfd480   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfd480   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfd480   WARN SHARED_HEADER_AVAILABLE CEngineWaterBackgroundSubPatch (engine/CEngineWaterBackgroundSubPatch.h)
+00bfd480   RELOCATION_MATCH PASS   ~CEngineWaterBackgroundSubPatch
+00bfde20   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfde20   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfde20   RELOCATION_MATCH PASS   ~CLandscapeLayerMesh
+00beaa00   WARN STANDIN_LEAF ?ClearBlock@CTextureOwner_00beaa00@@QAEXXZ (catalog CTextureOwner_00beaa00::void ClearBlock; address-only name)
+00beaa00   RELOCATION_MATCH PASS   void ClearBlock
+00bfdd40   WARN STANDIN_LEAF ?ClearBlock@CTextureOwner_00bfdd40@@QAEXXZ (catalog CTextureOwner_00bfdd40::void ClearBlock; address-only name)
+00bfdd40   RELOCATION_MATCH PASS   void ClearBlock
+00beaaa0   WARN STANDIN_LEAF ??1CEngineScreenEffectOutlineGlow@@QAE@XZ (catalog CEngineScreenEffectOutlineGlow::FinishWithDynamicTextures; names another function)
+00beaaa0   RELOCATION_MATCH PASS   FinishWithDynamicTextures
+00beb4d0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CEngineScreenEffectOutlineGlow@@QAEPAV1@I@Z (catalog CWaterPatchMesh::`scalar deleting destructor'; names another function)
+00beb4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bda090   RELOCATION_MATCH PASS   DeleteIndexBuffer
+00bda0d0   RELOCATION_MATCH PASS   DeleteVertexBuffer
+00be8920   DIFFER(328v365)  PASS   LoadCompressed
+00bf9b40   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9b40   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf9b40   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf9b40   WARN RELOC_NAME: ?RebindBufferOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ae0 labelled '_global::Nop_ret8_00bd9ae0'
+00bf9b40   RELOCATION_MATCH PASS   OnPostRelocation
+00bf9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9b90   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAUCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf9b90   RELOCATION_MATCH PASS   OnPostRelocation
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfdd70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfdd70   RELOCATION_MATCH PASS   OnPostRelocation
+00be6090   RELOCATION_MATCH PASS   ~CLandscapeBackgroundPatch
+
+WINS: 12
+  00bfd480 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+  00bfde20 RELOCATION_MATCH CLandscapeLayerMesh::??1CLandscapeLayerMesh@@QAE@XZ
+  00beaa00 RELOCATION_MATCH CTextureOwner_00beaa00::?ClearBlock@CTextureOwner_00beaa00@@QAEXXZ
+  00bfdd40 RELOCATION_MATCH CTextureOwner_00bfdd40::?ClearBlock@CTextureOwner_00bfdd40@@QAEXXZ
+  00beaaa0 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::??1CEngineScreenEffectOutlineGlow@@QAE@XZ
+  00beb4d0 RELOCATION_MATCH CWaterPatchMesh::?ScalarDeletingDestructor@CEngineScreenEffectOutlineGlow@@QAEPAV1@I@Z
+  00bda090 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+  00bda0d0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+  00bf9b40 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::OnPostRelocation
+  00bf9b90 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation
+  00bfdd70 RELOCATION_MATCH CLandscapeLayerMesh::OnPostRelocation
+  00be6090 RELOCATION_MATCH CLandscapeBackgroundPatch::??1Patch@

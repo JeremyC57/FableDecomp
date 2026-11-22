@@ -5699,8 +5699,7 @@ _SpriteHelper@4	00bade40	00baf9e0
 ??_7Movable@Native@@6B@	0129b860	00be6090
 ??_7Patch@Native@@6B@	012a803c	00be6090
 ?g_asyncRoot@@3PAUAsyncRoot@@A	01436ea8	00beaa30
-?DAT_01436ea8@@3PAEA	01436ea8	00beaaa0
-?InsertNode@LandscapeLayerList@@QAEXH@Z	00bda0d0	00beaaa0
+?DAT_01436ea8@@3PAEA	01436ea8	00be8920
 ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9b90	00beb4d0
 ??_7CEnginePrimitiveManagerMeshBase@@6B@	012a815c	00bebc30
 ??4CRetailTree_erase004aba70@@QAEAAU0@ABU0@@Z	006b9e00	00bebe90
@@ -29214,7 +29213,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?DestroyRange@@YIXPAUSMeshVolumePair@@0ABUSNonscalarPtrIteratorTag@@@Z	00a33720	00a2f190
 ?DisposeVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAUSVertexBufferNode_00bdd8e0@@PAUCVertexBufferChainOwner_00bdd8e0@@@Z	00bd9ab0	00bdd8e0
 ??1CObjectTypeCollection@CLocalDetailCacheMap@@UAE@XZ	00bddda0	00bdf9b0
-?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bda0d0	00beaa00
 ??1CLandscapeBackgroundTreeNode@@QAE@XZ	00bf73a0	00bf8d10
 ?RebindBufferOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z	00bd9ae0	00bf9b40
 ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAX0@Z	00bd9ab0	00bfd3b0
@@ -29408,7 +29406,6 @@ __imp__GetVersionExA@4	0143fe70	00a0fdb0
 ?OnPostRelocation@CQuadTreeElement@@QAEXXZ	00bddcb0	00bde0c0
 ?InvalidateEdge@CEngineLandscapeMap@@QAEXJJJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z	00bdcbb0	00bf6750
 ??_7CEngineWaterBackgroundSubPatch@@6B@	012a8334	00bfd480
-?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bda090	00bfd480
 ??0CActiveSound@CSoundEmitterLH@@QAE@JAAVCASoundBank@@ABVCCharString@@M_N2@Z	00aab8b0	00aabd50
 ??0CEventPlayOptions@LHA@@QAE@XZ	00c0a790	00aabd50
 ??1?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@QAE@XZ	00aac870	00aabd50

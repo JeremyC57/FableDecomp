@@ -1,0 +1,7 @@
+action	symbol	target	witness	note
+delete	?InsertNode@LandscapeLayerList@@QAEXH@Z	00bda0d0	00beaaa0	its only binders 0x00BEAAA0 / 0x00BEB4D0 now bind DeleteVertexBuffer (no other source or test declares LandscapeLayerList outside candidates/outline_glow_compiled.h's default branch and the unused candidates/00beaaa0.hpp)
+delete	?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bda0d0	00beaa00	its binders 0x00BEAA00 / 0x00BFDD40 / 0x00BFD480 / 0x00BFDE20 all moved; 0x00BF9B40 / 0x00BF9B90 / 0x00BFDD70 only DECLARE FreeBlock in their local models and never call it (not callers of 0x00BDA0D0 in the exe scan; nothing emitted)
+delete	?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bda090	00bfd480	its binders 0x00BFD480 / 0x00BFDE20 moved; 0x00BF9B40 / 0x00BF9B90 / 0x00BFDD70 declare it unused (as above)
+rewitness	?DAT_01436ea8@@3PAEA	01436ea8	00beaaa0 -> 00be8920	0x00BEAAA0 / 0x00BEB4D0 no longer bind it; 0x00BE8920 still does (candidates/landscape_background_patch_compressed.h `extern fable_u8* DAT_01436ea8;`, read in its body), as do 0x00BF4220 / 0x00BF4130 / 0x00BDC510
+keep	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	00bda090	00be6090	unchanged
+keep	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090	unchanged

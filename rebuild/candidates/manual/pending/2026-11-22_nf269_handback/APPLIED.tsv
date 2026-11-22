@@ -1,0 +1,6 @@
+entry	address	status	binders_respelled	note
+E1 D5 the six Delete binders onto the PDB Delete<X> spellings	0x00BDA090 / 0x00BDA0D0	done	6 rows (0x00BFD480, 0x00BFDE20, 0x00BEAA00, 0x00BFDD40, 0x00BEAAA0, 0x00BEB4D0)	call targets re-proven (exe scan + per-site xdis, evidence/callsites.txt; parameter types from the PDB layouts). Census: 0x00BDA090 2 -> 1, 0x00BDA0D0 3 -> 1 spellings; 0x01436EA8: 0x00BEAAA0 / 0x00BEB4D0 move from DAT_01436ea8 onto GPLandscapeRenderer (count 11 -> 11: DAT_01436ea8 keeps 4 July rows). One header opt-in (candidates/outline_glow_compiled.h), equiv_check 1,374 rows 0 differ, planted control 2 rows differ.
+E2 the rest of L129: LocalDetailEngine 0x00BFAAE0 / 0x00BFB590, 0x00B684F0, the CEngineGlobal rows	0x01436EA8	open	0	not started (handed back after entry 1: context)
+E3 D4 one definition of FreeVirtual + the BlockWhileBusy helpers in 0x00BDA150 / 0x00BD9CE0	0x00BD9B90 / 0x00BD9C00 / 0x00BD9C20 / 0x00BD9CC0	open	0	not started
+E4 D6 0x00BE6090's landed test onto the shared headers	0x00BE6090	open	0	not started
+E5 0x009B0AC0 (nf260 plan)	0x009B0AC0	open	0	not started
