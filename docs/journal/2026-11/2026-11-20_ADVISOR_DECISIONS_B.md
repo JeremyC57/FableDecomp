@@ -379,3 +379,25 @@ retail's function never calls (or the reverse). Size arguments that only show "m
   - **Owner (2026-11-22), on 0x00CF4EC0: "have advisor decide".** The owner-packet branch of this ruling is delegated: if the checks kill
     (a) or its pre-registered acceptance fails, the row goes to the advisor (ESCALATE_ADVISOR.md), not to the owner, and the advisor's
     ruling is final for this row.
+
+- **2026-11-22 (Account A, advisor, owner delegated as final): AUTH13's 0x00CF4EC0 checks.** Check 4 falsified the cost route: the movie
+  dtor is a MIXED callee (retail both expands and calls it in stock row 0x00EB40C0; 55 stock landed rows match with today's cost), and one
+  TU is confirmed (register_scripts.obj in all three PDBs).
+  - (B) is out as a route to a match: a callee-side change cannot separate sites and puts the 55 rows at risk. The finding stays: Ego_d's
+    19-B `{ ReleaseData(); }` PImp dtor contradicts the header default (112 B). Queue it as a family item with the 55 rows as acceptance;
+    name 0x006E7AB0 from the PDBs / reloc_bindings.
+  - (C), bounded, then (A) as terminal. First, a pruning check: at one hit-block return retail expands the movie dtor (cost 19) and calls
+    ~CTimer (cost 14). If the readout gives both the same f, no S / T / frequency change or loop idiom can produce the pair, and the missing
+    text must change WHICH callee or inline context sits there. Compare Ego_d's type for the object destroyed there with the class the 55
+    rows use, say what the two costs 19/22 are, and confirm 0x00EB40C0's expanded and called dtors are one class.
+  - The 5-B instruments, in order: (1) a PROC diff of Ego_d's register_scripts.obj against our VC10 object (catches a no-argument static
+    call); (2) one extra imm32 / address argument (exactly 5 B under -Gr): compare PDB parameter counts with our declarations for every
+    function the macro calls; (3) FableWin's code for one macro expansion (Mod 0011): if (1) and (2) fail, put that one question in the
+    next Codex package instead of searching spellings.
+  - Pre-register: at most three candidates, each fitting Ego_d's line sizes at all 14 macro lines (this row and 0x00CF2B70), never chosen
+    by readout. Grade once: this row at stock; both siblings without /d2inlS15; other users of any changed header. Bonus: regrade a few of
+    the 16 /d2inlS rows at stock, no re-fit.
+  - Terminal: if the 5 B is not named, record (A) (forced oracle, row unlanded, no owner packet); reopen only on a FableWin read.
+  - Pick-any: the rule applies. A copy landed rows already emit with the same bytes is queued debt, not a hold (2026-11-21): verify for the
+    movie dtor (any of the 55) and for ??1CIsThingAlive (0x00DE6C20). A copy new to this row holds it.
+  - 0x008E18D0: the locals check must compare per block (Ego_d's block 2 has no vtStartPos / vtEndPos / upParams).
