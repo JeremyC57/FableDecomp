@@ -65,6 +65,9 @@ public:
     float FindPosZAt(const C3DVector& pos,bool useNavigation) const {return PInterface->FindPosZAt(pos,useNavigation);}
 protected:
 #endif
+#ifdef FABLE_RETAIL_CNAVIGATORBASE_LEVEL_PASS27
+    long GetNavigationLevelAt(const C3DVector& pos) const {return PInterface->GetNavigationLevelAt(pos);}
+#endif
     float FindPosZAtIncludingThemes(const C3DVector& pos,bool useNavigation) const {return PInterface->FindPosZAtIncludingThemes(pos,useNavigation);}
 #endif
 #ifdef FABLE_RETAIL_CNAVIGATORBASE_RADIUS

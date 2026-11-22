@@ -1,0 +1,7 @@
+#ifndef FABLE_ENGINE_ETHINGCREATUREPROPERTY_H
+#define FABLE_ENGINE_ETHINGCREATUREPROPERTY_H
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+// Both original type streams give this value.
+enum EThingCreatureProperty { THING_CREATURE_PROPERTY_FIREFLY=4 };
+#endif
+#endif

@@ -34,6 +34,13 @@ public:
 #endif
 
 private:
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+public:
+    void SetScale(float);
+protected:
+    bool ValidateInitialisation();
+private:
+#endif
     unsigned char HealthOverTimeEffects[4];
 protected:
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_SCALE_ACCESS_PASS24

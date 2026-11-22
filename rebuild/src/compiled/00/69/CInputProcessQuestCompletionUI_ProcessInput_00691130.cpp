@@ -125,7 +125,7 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         }
         return;
     }
-    if (IsEventButtonHeld(event)) {
+    if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1c);
             processed.SetAsPerformedEvent();
@@ -137,7 +137,7 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         }
         return;
     }
-    if (IsEventButtonReleased(event)) {
+    if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_SELECT, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0x1f);
             processed.SetAsPerformedEvent();

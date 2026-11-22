@@ -35,6 +35,10 @@ public:
     virtual bool SetEffectQuality(const class CEngineVideoOptionsDef& options);
 #endif
 private:
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_APPLYGLOW
+    // Both donor PDBs give the private ApplyGlow at retail 0x00B60F70.
+    void ApplyGlow();
+#endif
     bool InitialiseTextures();                  // 0x00B5ECE0 ?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
 #ifdef FABLE_RETAIL_CENGINESCREENEFFECTGLOWRENDERER_CAPTUREBACKBUFFER
     // Retail opt-in (row 0x00B5FAB0): Ego_r.pdb / FableWin.pdb ?CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@AAEXXZ.

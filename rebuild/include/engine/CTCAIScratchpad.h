@@ -12,6 +12,10 @@
 class CAIScratchpadDef;
 class CTCAIScratchpad:public CTCBase {
 public:
+#ifdef FABLE_RETAIL_DRINK_FIXTURE_PASS27
+public:
+    CTCAIScratchpad(CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCAISCRATCHPAD_GOSSIP_MAPS
     // Opt-in (NF48 round 7, rows 0x008AA010 / 0x008AA270 / 0x008AA4D0 CGameScriptInterface::ClearGossip*): the static gossip maps,
     // Ego_r.pdb `dynamic initializer for 'CTCAIScratchpad::Gossip'` / GossipVillages / GossipFactions (0x0100CD00..0x0100CE00 in that
@@ -80,6 +84,9 @@ public: long GossipCounter;
 public: long MaxGossipPhrase;
 public: unsigned long WarningPhrase;
 public: unsigned long BeerRequestPhrase;
+#ifdef FABLE_RETAIL_GOTOPUB_DRINK_PASS27
+    unsigned long GetBeerRequestPhrase() const { return BeerRequestPhrase; }
+#endif
 public: EScriptingStateGroups ScriptingStateGroup;
 public: float MaxHeroReactionDistance;
 public: long ActionFrequency;

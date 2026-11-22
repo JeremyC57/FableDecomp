@@ -35,6 +35,10 @@ class CSpecialAbilitiesSummonSpellDef; class CThingAICreature;
 #endif
 class CTCSummonSpell : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CTCSUMMONSPELL_TEST_CTOR_PASS27
+    // Both original PDBs ??0CTCSummonSpell@@QAE@AAVCThing@@@Z and retail 0x0079A6E0.
+    CTCSummonSpell(CThing& thing);
+#endif
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SUMMON_SPELL; }
     long GetResetCreatureManaCost() const;                               // 0x0079A610
 #ifdef FABLE_RETAIL_CTCSUMMONSPELL_TELEPORT

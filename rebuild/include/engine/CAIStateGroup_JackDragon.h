@@ -46,6 +46,10 @@ private:
                      CCountedPointer<CCreatureActionBase> action);   // 0x00950C30
     void FlyOutOfGround();                                   // 0x00951B20
     void IntoHover();                                        // 0x00951D60
+#ifdef FABLE_RETAIL_JACKDRAGON_HOVER_PASS27
+    bool IsTargetOnATower();
+    void StayIdleAndTurnToFace(float time,const C3DVector& facing);
+#endif
     void UpdateHover();                                      // 0x00951FB0
 #ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_UPDATESTRAFE_PASS26
     // Ego_r 0x00975840, FableWin 0x02BE27B0 and retail Update's direct call.
@@ -63,6 +67,9 @@ private:
 #ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_INTOGROUND
     // Nested opt-in (acctB chunk 2017, row 0x00951430 IntoGroundSwoop): Ego_r.pdb ?IntoGroundSwoop@CAIStateGroup_JackDragon@@AAEXXZ,
     // private (donor 0x00975F70 = retail 0x00951430). ChooseHoverOrStrafeState / StartFlying are declared above.
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_INTOGROUND_PASS27
+    void IntoGround();
+#endif
     void IntoGroundSwoop();                                  // 0x00951430
 #endif
     CIntelligentPointer<CThingCreatureBase> PEnemy;          // +0x14

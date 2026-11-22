@@ -17,6 +17,9 @@ class CTCBed : public CTCBase {
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_BED; }
     CDefPointer<const CBedDef> GetDefinition() const { return PDef; }
+#ifdef FABLE_RETAIL_CTCBED_CLEAR_PASS27
+    void Clear();
+#endif
     void StartGetOutOfBedAnimation(long animation);                      // 0x00746A70
 private:
     bool                       Empty;                                    // +0x0c

@@ -6,6 +6,11 @@ class CScriptThing;
 bool FABLE_FASTCALL IsDistanceBetweenThingsOver(const CScriptThing&, const CScriptThing&, float);
 // Both original PDBs; native00cbe2ff, fastcall two references and float.
 bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float);
+#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_GUARD_PASS27
+// FableWin and the retail guard call at 00DDBD3F.
+class C3DVector;
+bool FABLE_FASTCALL IsDistanceFromThingToPositionOver(const CScriptThing&, const C3DVector&, float);
+#endif
 #ifdef FABLE_RETAIL_SCRIPT_GETDISTANCEBETWEENTHINGS
 // Retail opt-in (wfA1, row 0x00DFCA90 CBanditExtra::Main): Ego_r.pdb ?GetDistanceBetweenThings@@YIMABVCScriptThing@@0@Z, out of line at
 // 0x00CBE512 (reloc_bindings; fastcall ECX/EDX references, float result; landed callers 0x00E64210 / 0x00E0F8A0 declare it locally).

@@ -5,6 +5,9 @@
 // operators returning T& and const T&, the (n) and (n, value) constructors, GetAsCArray over a private zero-size array.
 #include "stlport/fable_containers.h"
 #include "fable_compiler.h"
+#ifdef FABLE_RETAIL_CARRAY_FOLD_ORIGINAL_AT_PASS27
+#include "fable_assert.h"
+#endif
 #ifdef FABLE_RETAIL_CARRAY_INDEX_ASSERT
 #include "fable_assert.h"
 #endif
@@ -22,7 +25,15 @@ public:
  CArray(unsigned int n,const T& t) : std::vector<T>(n,t) { }
  CArray(const CArray& a) : std::vector<T>(a) { }
  ~CArray() { }
+#ifdef FABLE_RETAIL_CARRAY_FOLD_ORIGINAL_AT_PASS27
+ typename std::vector<T>::reference At(unsigned int index) { 
+#ifdef _DEBUG
+        FABLE_RETAIL_ASSERT(index < this->size());
+#endif
+ return std::vector<T>::operator[](index); }
+#else
  typename std::vector<T>::reference At(unsigned int index);
+#endif
  typename std::vector<T>::const_reference At(unsigned int index) const;
 #if defined(FABLE_RETAIL_CARRAY_DEBUGGER_BOUNDS_PASS27) && defined(_MSC_VER) && !defined(FABLE_PORTABLE)
  // Fidelity: FableWin 0322E450 and 0322C360 check index < size() and break only with a debugger.
@@ -174,6 +185,9 @@ public:
     __declspec(noinline)
 #endif
     void push_back(const T& x) { std::vector<T>::push_back(x); }
+#endif
+#ifdef FABLE_RETAIL_CARRAY_PUSHBACK_VALUE_DECL_PASS27
+    void push_back(const T& x);
 #endif
 #ifdef FABLE_RETAIL_CARRAY_PUSHBACK_DEFAULT_DECL
     // Opt-in (NF62, row 0x007E7C90 CTCFireheartMinigame::DrawPreparePrimitivesForRendering): Lionhead's argument-less push_back

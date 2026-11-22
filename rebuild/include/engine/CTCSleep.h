@@ -12,6 +12,14 @@ public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_SLEEP; }
     virtual ETCInterfaceType GetInterfaceType() const;
     virtual CCharString GetClassTypeName() const;
+#ifdef FABLE_RETAIL_CTCSLEEP_WAKE_PASS27
+    void SetIsNotReadyToSleep() { IsReadyToSleep = false; }
+    void SetLastFrameWokeUp(long frame) { LastFrameWokeUp = frame; }
+    void SetFastTrack(bool fast) {
+        FastTrack = fast;
+        if (FastTrack) PosAtFastTrackSetting = GetParentThing().GetPos();
+    }
+#endif
     long GetLastFrameWokeUp() { return LastFrameWokeUp; }
 #ifdef FABLE_RETAIL_CTCSLEEP_FASTTRACK
     // chunk Q15 (row 0x0092E130): Ego_r.pdb ?GetFastTrack@CTCSleep@@QAE_NXZ (out of line, 0x0092C3B0) and
@@ -31,6 +39,6 @@ protected:
     long LastFrameWokeUp;
     C3DVector PosAtFastTrackSetting;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCSleep)==32);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CTCSleep)==32);
 #endif
 #endif

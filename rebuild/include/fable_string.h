@@ -99,6 +99,18 @@ protected:
     // ?Compare@?$CBasicString@D@@KIJPBD0@Z (out of line at 0x00411570, landed CBasicStringchar_Compare_00411570.cpp) is visible to the
     // caller's TU; VC7.1 keeps calling it (the loop is not inlined) but then knows the call writes no memory, so the caller keeps a
     // loaded array base across it (0x009C937F `mov edi,[esi+204h]` reused at 0x009C93D7 after both Compare calls).
+#ifdef FABLE_RETAIL_BEARDY_ORIGINAL_TEXT_COMPARISON_PASS27
+    static long __fastcall Compare(const T* str1,const T* str2)
+    {
+        while (*str1 || *str2) {
+            if (*str1 < *str2) return -1;
+            else if (*str1 > *str2) return 1;
+            ++str1;
+            ++str2;
+        }
+        return 0;
+    }
+#else
     static long __fastcall Compare(const T* a,const T* b)
     {
         for (;;) {
@@ -114,6 +126,7 @@ protected:
             ++b;
         }
     }
+#endif
 #else
     static long __fastcall Compare(const T*,const T*);
 #endif
@@ -143,7 +156,21 @@ public:
 #endif
     // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds the template body expands it, 0x009BC120).
 #if defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_COMPARE_ZERO)
+#ifdef FABLE_RETAIL_BEARDY_ORIGINAL_TEXT_COMPARISON_PASS27
+    // Inline-budget: 00E4FB8F calls the 40-byte Compare inside two expanded equalities.
+    // The 88-byte standalone equality at 004115A0 expands Compare one level below its own entry.
+    FABLE_FORCEINLINE bool operator==(const T* text) const {
+#ifdef _MSC_VER
+#pragma inline_depth(1)
+#endif
+        return Compare(PData,text)==0;
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
+    }
+#else
     bool operator==(const T* text) const { return Compare(PData,text)==0; }   // Codex pass 22: native 0x004115A0 keeps the original compare-result == 0.
+#endif
 #elif defined(FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE)
     // Retail opt-in (chunk 780): the quest-script TUs expand CBasicString<char>::operator==(const char*) in place as
     // `call Compare 0x00411570 ; neg eax ; sbb al,al ; inc al` (CV_BeardyBaldyScript::Main 0x00E4FB88..0x00E4FB98, the landed
@@ -519,7 +546,13 @@ public:
     // Retail opt-in (chunk 892, row 0x00B21A50): Ego_r.pdb ?GetCRC@CCharString@@QBEKXZ; retail's out-of-line copy 0x00404310 is
     // `CCRC::Calc(0, GetAsCharArray(), GetLength())` (length test first, then the NullChar select, then the fastcall), and the
     // link-time-code-generated callers expand that body (0x00B21AB0..0x00B21AD0, 0x00B21BCF..0x00B21BE5).
+#ifdef FABLE_RETAIL_CCHARSTRING_GETCRC_BYTELENGTH_PASS27
+    // FableWin 0x0186D2A0 calls GetByteLength at 0x0186D370, which directly forwards to GetLength.
+    long GetByteLength() const { return GetLength(); }
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetAsCharArray(), GetByteLength()); }
+#else
     unsigned long GetCRC() const { return CCRC::Calc(0, GetAsCharArray(), GetLength()); }
+#endif
 #else
     unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
 #endif
@@ -671,7 +704,18 @@ public:
     // null / non-null arms in place where the plain inline operator is called out of line.
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_BEARDY_ORIGINAL_TEXT_COMPARISON_PASS27
+    bool operator==(const char* text) const {
+        if (!PStringData) {
+            if (strcmp(text,"")==0) return true;
+        } else {
+            return PStringData->Data==text;
+        }
+        return false;
+    }
+#else
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_CHAR_EQ
     // Nested opt-in (chunk 778, row 0x00615E70 CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferIn): FableWin.pdb
     // ??8CCharString@@QBE_ND@Z (0x020C8690; Ego_r keeps only ??9CCharString@@QBE_ND@Z, retail's out-of-line operator!= 0x0099E520).

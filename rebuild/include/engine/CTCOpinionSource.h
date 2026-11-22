@@ -29,6 +29,10 @@ private:
 #endif
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_OPINION_SOURCE; }
+#ifdef FABLE_RETAIL_OPINION_FILTER_PASS27
+    bool IsReactToSelfPermitted() const { return ReactToSelfPermitted; }
+    bool IsUnknownThreatSource() const { return UnknownThreatSource; }
+#endif
     bool IsAlwaysAwareOf() const { return AlwaysAwareOf; }
     EOpinionDeedType PeekVirtualDeed() const { return VirtualDeed; }
     long PeekVirtualDeedID() const { return VirtualDeedID; }

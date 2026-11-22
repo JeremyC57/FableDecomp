@@ -48,7 +48,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event) { ++g_pressedCalls; return g_pressed; }
-    bool IsEventButtonHeld(const CInputEvent& event) { ++g_heldCalls; return g_held; }
+    bool IsEventButtonReleased(const CInputEvent& event) { ++g_heldCalls; return g_held; }
     bool IsEventGameAction(long action, const CInputEvent& event) { ++g_actionCalls; g_lastAction = action; return ActionMatches(action); }
 };
 static void Reset() { g_pressedCalls = g_heldCalls = g_actionCalls = g_addCalls = g_handledCalls = g_copyCalls = 0; g_addedType = -1; g_addedLong = -12345; g_addedPlayer = 0; g_addedValid = g_addedReplacement = g_addedEndPos = -1; }

@@ -33,6 +33,9 @@ long GetExplosionType()const;void IncrementNumThingsKilled(CThing*);
 #endif
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WEAPON; }
+#ifdef FABLE_RETAIL_RANGED_COMBAT_FIXTURE_PASS27
+    CTCWeapon(CThing&);
+#endif
 #ifdef FABLE_RETAIL_CTCWEAPON_SETLOADED
     // Both PDBs original nonconst void(bool,CThing*), native005dac50.
     void SetProjectileWeaponLoaded(bool,CThing*);

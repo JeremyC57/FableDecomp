@@ -32,6 +32,12 @@ public:
  class CCombatWheel;
 #endif
  class CCombatRing {public:
+#ifdef FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
+ private:
+  void AssignAttackerToProng(CProng*,CThingCreatureBase*,CAttackingCombatantInfo*,bool);
+ public:
+  bool IsRotating() const {return (float)fabs(DeltaRotation)>DELTA_NOTIONAL_ZERO;}
+#endif
 #ifdef FABLE_RETAIL_CDEFENDINGCOMBATANTINFO_PASS22_INIT
   // Ego_r00711D10 / FableWin024113C0, retail006E8B60.
   void Reset();

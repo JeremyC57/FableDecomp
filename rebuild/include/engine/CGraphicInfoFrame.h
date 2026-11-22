@@ -31,9 +31,18 @@
 #include "engine/CIVCountedPointer.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CGraphicFrame.h"
+#ifdef FABLE_RETAIL_CGRAPHICINFO_FRAMESECTIONS_PASS27
+class CManagedTexture;
+#endif
 class CGraphicInfo; class CBankFileAsyncData;
 class CGraphicInfoFrame : public CBaseClass {
 public:
+#ifdef FABLE_RETAIL_CGRAPHICINFO_FRAMESECTIONS_PASS27
+private:
+    friend class CGraphicInfo;
+    void InitialiseFrame(CGraphicFrame&, CManagedTexture&, signed char);
+public:
+#endif
     class CFrameData;
     bool IsAlpha() const;
     unsigned long GetWidth() const;                          // FableWin.pdb ?GetWidth@CGraphicInfoFrame@@QBEKXZ (inline)

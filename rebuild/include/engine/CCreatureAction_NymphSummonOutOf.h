@@ -9,6 +9,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_NYMPH_ATTACK_PASS27
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+
+// Original class hierarchy and constructor types from Ego_r and FableWin.
+class CCreatureAction_NymphSummonOutOf : public CCombatActionBase {
+public:
+    CCreatureAction_NymphSummonOutOf(CThingCreatureBase& creature);
+};
+FABLE_STATIC_ASSERT_AT(33, sizeof(CCreatureAction_NymphSummonOutOf) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_NymphSummonOutOf {
 public:
@@ -29,8 +40,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_NymphSummonOutOf) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphSummonOutOf, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphSummonOutOf, sub8) == 0x8);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CCreatureAction_NymphSummonOutOf) == 0x114);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CCreatureAction_NymphSummonOutOf, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CCreatureAction_NymphSummonOutOf, sub8) == 0x8);
+
+#endif // FABLE_RETAIL_NYMPH_ATTACK_PASS27
 
 #endif // FABLE_ENGINE_CCREATUREACTION_NYMPHSUMMONOUTOF_H

@@ -99,6 +99,10 @@ public:
 #ifndef FABLE_RETAIL_CPSCBASE_IMPLICIT_DTOR
  virtual ~CPSCBase();
 #endif // NF158 opt-in: implicit destructor (see FABLE_RETAIL_CPARTICLEUPDATEPARAMCALLBACK_IMPLICIT_DTOR).
+#ifdef FABLE_RETAIL_CPSCBASE_GETUPDATESTARTED_PASS27
+public:
+ bool GetUpdateStarted() const { return UpdateStarted; }
+#endif
 private: const CParticleSystem* ParticleSystem;bool UpdateStarted:1;
 protected: bool Initialised:1;
 };

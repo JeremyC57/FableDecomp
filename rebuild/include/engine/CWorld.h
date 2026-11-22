@@ -797,6 +797,10 @@ FABLE_STATIC_ASSERT_AT(536, sizeof(CWorld) == 0x198);
 #pragma pack(push, 1)
 class CWorld {
 public:
+#ifdef FABLE_RETAIL_CWORLD_INVENTORY_SERIALISE_PASS27
+    // FableWin 0236B884 and its inventory caller: read the flag at +0x103.
+    bool IsSerialisingNonPersistentQuestItems() const { return SerialisingNonPersistentQuestItems; }
+#endif
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08

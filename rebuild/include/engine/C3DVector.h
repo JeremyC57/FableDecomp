@@ -180,6 +180,9 @@ public:
         return fabs(X-v.X)>DELTA_NOTIONAL_ZERO || fabs(Y-v.Y)>DELTA_NOTIONAL_ZERO || fabs(Z-v.Z)>DELTA_NOTIONAL_ZERO;
     }
 #endif
+#ifdef FABLE_RETAIL_C3DVECTOR_PLUSASSIGN2D_PASS27
+    const C3DVector& operator+=(const C2DVector& v) { X+=v.X; Y+=v.Y; return *this; }
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR_ADD2D
     // Retail opt-in (Codex pass17): original non-const value return, donor01cf3ca0.
     // Fidelity: X value capture gives native006b0b97 operand order.
@@ -548,7 +551,13 @@ public:
     // parenthesis itself is in no donor.
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return ((float)sqrt(magnitude));}
 #else
+#ifdef FABLE_RETAIL_COMBAT_SEQUENCE_MAGNITUDE_GROUP_PASS27
+    // Bracket: grouping the X and Z squares puts the null store before the world load at 006EB123.
+    // Either square alone leaves the pair reversed. Grouping all three also misses.
+    FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=(X*X)+Y*Y+(Z*Z);return (float)sqrt(magnitude);}
+#else
     FABLE_VECTOR_INLINE float GetAccurateMagnitude()const {float magnitude=X*X+Y*Y+Z*Z;return (float)sqrt(magnitude);}
+#endif
 #endif
 #endif
 #if defined(FABLE_RETAIL_C3DVECTOR_MAGNITUDE_X_THEN_YZ)

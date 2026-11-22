@@ -7,6 +7,10 @@ struct IDirect3DSurface9;
 class CSurface {
 public:
  CSurface() :PD3DSurface(0),AllocationSource(0) {}
+#ifdef FABLE_RETAIL_SHADOW_BUFFERS_PASS27
+public:
+ bool InitialiseAsDepthBuffer(const C2DExtentsI&,const CPixelFormat&,ESurfaceMultisampleType,bool);
+#endif
 #ifdef FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
  // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): the destructor is inline in retail (the
  // GetSurfaceLevel temporary is destroyed in place: vtable 0x0122F84C stored, then ?Uninitialise@CSurface@@QAEXXZ 0x009F2E20
@@ -192,7 +196,7 @@ private:
  void* PAllocatedMemory;
 };
 #ifdef FABLE_RETAIL_CSURFACE_COPYTOMEMORY_PASS26
-FABLE_STATIC_ASSERT(sizeof(CSurface)==0x10);
+FABLE_STATIC_ASSERT_AT(195, sizeof(CSurface)==0x10);
 #endif
 #endif
 #else

@@ -25,6 +25,12 @@
 #ifdef FABLE_RETAIL_CMESHDATABANK
 #include "engine/CResourceBank.h"
 #endif
+#ifdef FABLE_RETAIL_CMESHDATABANK_INITIALISEENTRY_PASS27
+#include "fable_string.h"
+#include "engine/CArray.h"
+#include "stlport/fable_map.h"
+class CMeshDataBankEntry;
+#endif
 #ifdef FABLE_RETAIL_CMESHDATABANK_BASES
 #include "engine/CBankFile.h"
 #ifdef FABLE_RETAIL_CMESHDATABANK_CTOR
@@ -69,6 +75,21 @@ class CMeshDataBank : public CBankFileAsync {
 public:
     CMeshDataBank();                                                     // 0x00A27030
 protected:
+#ifdef FABLE_RETAIL_CMESHDATABANK_INITIALISEENTRY_PASS27
+    virtual void InitialiseEntry(unsigned long datatype, unsigned long index, const CArray<char>& info_buffer);
+public:
+    static bool FABLE_FASTCALL IsRenderMesh(unsigned long type) { return type == 1 || type == 2 || type == 4 || type == 5; }
+    static bool FABLE_FASTCALL IsAnimation(unsigned long type) { return type == 6 || type == 10 || type == 7 || type == 8 || type == 9; }
+    static bool FABLE_FASTCALL IsStaticMesh(unsigned long type) { return type == 1; }
+    static bool FABLE_FASTCALL IsAnimatedMesh(unsigned long type) { return type == 5; }
+    class CLipSyncEntry {
+    public:
+        CLipSyncEntry(const CCharString& phoneme, unsigned long index) : PhonemeName(phoneme), AnimationIndex(index) {}
+        CCharString PhonemeName;
+        unsigned long AnimationIndex;
+    };
+protected:
+#endif
     virtual unsigned long GetDataFormatVersion();                        // Ego_r.pdb ?GetDataFormatVersion@..@@MAEKXZ (the CBankFile pure virtual)
 public:
     void SetTextureBank(const CGraphicDataBank* bank);                   // 0x00A23B50
@@ -208,7 +229,11 @@ public:
     CCPPointerInfo*               MeshDataMemoryPool_Info;   // +0x374 CCountedPointer<CMovableResourceMemoryPool>::Info
     CXboxBufferMemoryPool*        XboxMemoryPool_Data;       // +0x378 CCountedPointer<CXboxBufferMemoryPool>::Data
     CCPPointerInfo*               XboxMemoryPool_Info;       // +0x37c CCountedPointer<CXboxBufferMemoryPool>::Info
+#ifdef FABLE_RETAIL_CMESHDATABANK_INITIALISEENTRY_PASS27
+    CArray<CMeshDataBankEntry*> MeshesAndAnimations;
+#else
     unsigned char                 MeshesAndAnimations[0xc];  // +0x380 CArray<CMeshDataBankEntry_*>
+#endif
     unsigned char                 MeshInfoBuffer[0xc];       // +0x38c CArray<C3DMeshInfo>
     unsigned char                 PhysicsMeshInfoBuffer[0xc];  // +0x398 CArray<CPhysicsMeshInfo>
     unsigned char                 AnimationInfoBuffer[0xc];  // +0x3a4 CArray<C3DAnimationInfo>
@@ -216,7 +241,11 @@ public:
     CCharStringData*              AnimationEnumType_PStringData; // +0x3bc CCharString::PStringData
     C3DAnimationManager*          AnimationManager_Data;     // +0x3c0 CCountedPointer<C3DAnimationManager>::Data
     CCPPointerInfo*               AnimationManager_Info;     // +0x3c4 CCountedPointer<C3DAnimationManager>::Info
+#ifdef FABLE_RETAIL_CMESHDATABANK_INITIALISEENTRY_PASS27
+    std::map<CCharString, CArray<CLipSyncEntry> > LipSyncAnimations;
+#else
     unsigned char                 LipSyncAnimations[0xc];    // +0x3c8 map<CCharString,CArray<CMeshDataBank::CLipSyncEntry>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CArray<CMeshDataBank::CLipSyncEntry>_>_>_>
+#endif
     CGraphicDataBank*             TextureBank;               // +0x3d4
     bool                          DP3BumpEnable;             // +0x3d8
     unsigned char                 _pad_0x3d9[0x1];           // +0x3d9

@@ -105,7 +105,11 @@ public:
     long InitialSheathedWeapon;                             // +0xE4 (PDB +236)
     long BrainDef;                                          // +0xE8 (PDB +240)
     unsigned char CreatureInteractionType[0x4];             // +0xEC ECreatureInteractionType (PDB +244)
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+    EThingCreatureProperty Property;
+#else
     unsigned char Property[0x4];                            // +0xF0 EThingCreatureProperty (PDB +248)
+#endif
     float Damage;                                           // +0xF4 (PDB +252)
     long DamageEffectDef;                                   // +0xF8 (PDB +256)
     long StunnedParticle;                                   // +0xFC (PDB +260)

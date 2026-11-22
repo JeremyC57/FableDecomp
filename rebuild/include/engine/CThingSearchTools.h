@@ -253,7 +253,12 @@ protected:
         return clipped_area;
     }
 public:
-    template<class T,class Container,class Filter> void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& things) const {
+    template<class T,class Container,class Filter>
+#if defined(_MSC_VER) && (defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREA_NOINLINE_PASS27) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_SEARCH_BUDGET_PASS27))
+    // Inline-budget: both TUs call the original rough-area scan.
+    __declspec(noinline)
+#endif
+    void GetAllThingsInRoughArea(const C2DBoxI& area,const Filter& filter_func,Container& things) const {
         unsigned long flags=T::StatGetTypeFlags();
         GetAllThingMapsInArea(area,const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps));
         ++NoLookups;

@@ -91,8 +91,17 @@ FABLE_STATIC_ASSERT_AT(74, sizeof(CTCHeroRangedAttacks)==76);
 class CThingCreatureBase;
 class CHeroCombatDef;
 class CTCHeroRangedAttacks : public CTCBase {
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_TEST_CTORS_PASS27
+public:
+    CTCHeroRangedAttacks(CThing&);
+private:
+#endif
+
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_RANGED_ATTACKS; }
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_WEAPONABILITIES_PASS27
+    bool IsInProcessOfFiringRangedWeapon() const { return FireCycleInProgress; }
+#endif
     float GetPullBackAmount() const;                            // 0x00789A70
     float GetShotAccuracyFraction() const;                      // 0x00789A80
 #ifdef FABLE_RETAIL_CTCHERORANGEDATTACKS_PROJECTILEMODE

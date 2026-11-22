@@ -5,7 +5,7 @@
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068C760, length 131 bytes.
-// Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::GetCurrentMode
+// Callees: CInputProcessGameBase::IsEventButtonReleased @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::GetCurrentMode
 // @ 0x00633BE0, CMemoryBuffer::Copy @ 0x009F1760, CProcessedInput::AddGameEvent @ 0x00A0D340.
 // Shape: the inlined `AddLong(mode)` homes its by-value long in the dead `event` argument slot (`mov [esp+38h],eax`).
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes:
@@ -50,7 +50,7 @@ public:
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90 (kind 0x13; manifest "IsEventButtonHeld")
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
+    bool IsEventButtonReleased(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     bool IsGameActionEventInQueue(long action, long buttonEventType); // 0x00687D50
 };
@@ -61,7 +61,7 @@ public:
 
 void CInputProcessBButtonExitMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (IsEventButtonHeld(event) && IsEventGameAction((EGameAction)(0x30), event)) {
+    if (IsEventButtonReleased(event) && IsEventGameAction((EGameAction)(0x30), event)) {
         CGameEvent gameEvent(0x3f);
         gameEvent.AddLong(MyPlayer->GetCurrentMode());
         processed.AddGameEvent(gameEvent);

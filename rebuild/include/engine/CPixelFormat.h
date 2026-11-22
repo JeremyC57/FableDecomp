@@ -7,6 +7,9 @@ class CPixelFormat {
 protected: long FormatIndex;
 public:
  CPixelFormat() :FormatIndex(-1) {}
+#ifdef FABLE_RETAIL_SHADOW_BUFFERS_PASS27
+ bool IsValid() const {return FormatIndex!=-1;}
+#endif
  CPixelFormat(_D3DFORMAT format) { Initialise(format); }
  // Movie row 0x006286F0: FableWin.pdb ??0CPixelFormat@@QAE@JJJJ@Z (debug only: inline in release). 0x006286F0 calls
  // Initialise(8,8,8,8,false) on a stack CPixelFormat with no -1 store first, so this constructor does not run the

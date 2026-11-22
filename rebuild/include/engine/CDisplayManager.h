@@ -22,6 +22,11 @@ class CRGBColour;
 struct IDirect3D9;struct IDirect3DDevice9;
 // Layout: original fields; native STLport list/vector shrink later offsets. Complete native size0x2cc.
 class CDisplayManager:public CBaseClassNonCopyable {
+#ifdef FABLE_RETAIL_SHADOW_BUFFERS_PASS27
+public:
+ bool IsValidTextureFormat(const CPixelFormat&);
+ bool IsValidRenderTargetFormat(const CPixelFormat&,const CPixelFormat&);
+#endif
 public:
  class CPresentationIntervalDesc {public:bool PresentImmediate,PresentImmediateIfSyncMissed;long VSyncCount;};
  struct CCreateDeviceParameters {

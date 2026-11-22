@@ -294,6 +294,11 @@ public:
 template<> class CPersistTraits<unsigned __int64> {
 public:
     unsigned __int64 DefaultVal;
+#ifdef FABLE_RETAIL_CPERSISTTRAITS_UID_DEFAULT_PASS27
+    // FableWin 01A628D0 and 01A62900 are the UID default constructor and destructor.
+    CPersistTraits() : DefaultVal() {}
+    ~CPersistTraits() {}
+#endif
     unsigned __int64 TransferBinaryIn(CMemoryDataInputStream&);
     void TransferBinaryIn(CMemoryDataInputStream&,unsigned __int64&);
     void TransferBinaryOut(CDataOutputStream& stream,const unsigned __int64& val) { stream.WriteUHUGE(val); }

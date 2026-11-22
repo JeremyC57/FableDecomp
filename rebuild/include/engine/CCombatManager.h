@@ -152,6 +152,12 @@ public:
 #endif
 #endif
 private:
+#ifdef FABLE_RETAIL_COMBAT_SEQUENCE_SELECTION_PASS27
+ long GetBestSequenceIndexAttackerOnDefender(const CCombatantInfo& attacker_info,const CCombatantInfo& defender_info) const;
+ long PickBestSequenceFromIndexList(const std::vector<long>& index_list) const;
+ CWorld& GetWorld() const { return World; }
+ const CThingSearchTools& PeekThingSearchTools() const { return World.PeekThingSearchTools(); }
+#endif
  std::map<CCharString,CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&,CThingCreatureBase&)> RegisteredCombatSequences;
  std::map<unsigned __int64,CCombatantInfo> Combatants;bool CombatStrafeTurningEnabled;CWorld& World;
  bool DrawDebug;bool TraceDebug;float ProximityForNavigation;bool EnableAINonAttackMode;float AttackPatternIdleStandardInterval;

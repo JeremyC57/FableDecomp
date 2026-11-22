@@ -435,6 +435,9 @@ public:
     long          ThingSlotToSwap;                           // +0x138
     NUISystem::CComponent* PComponentSlotToSwap;                      // +0x13c
     long          ScreenToShortcut;                          // +0x140
+#ifdef FABLE_RETAIL_CONTROL_CREATURE_INPUT_PASS27
+    void SetScreenToShortcut(long screen){ScreenToShortcut=screen;}
+#endif
 #ifdef FABLE_RETAIL_CTCINVENTORY_SHORTCUT_PASS26
     // FableWin 0x023D9DF0 reads the corresponding field; retail inlines it at 0x0062B2DF.
     long GetScreenToShortcut() const { return ScreenToShortcut; }

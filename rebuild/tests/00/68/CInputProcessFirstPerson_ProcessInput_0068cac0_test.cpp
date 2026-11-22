@@ -18,7 +18,7 @@ class CPlayer { public: long removed; long mode; CPlayer() : removed(0), mode(0)
 struct CInputProcessGameBase {
     CPlayer* MyPlayer;
     bool IsEventButtonPressed(const CInputEvent& e) { return e.kind == 0x13; }
-    bool IsEventButtonHeld(const CInputEvent& e) { return e.kind == 0x15; }
+    bool IsEventButtonReleased(const CInputEvent& e) { return e.kind == 0x15; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.type == a; }
 };
 
@@ -30,7 +30,7 @@ class CInputProcessFirstPerson : public CInputProcessGameBase { public:
             if (!(std::sqrt(x * x + y * y) > 0.0001f))
                 return;
         } else {
-            if (!IsEventButtonHeld(event) || IsEventGameAction(5, event) || IsEventGameAction(2, event)
+            if (!IsEventButtonReleased(event) || IsEventGameAction(5, event) || IsEventGameAction(2, event)
                 || IsEventGameAction(0x13, event))
                 return;
         }

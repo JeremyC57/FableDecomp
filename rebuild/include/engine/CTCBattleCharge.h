@@ -45,16 +45,38 @@ private:
     // Ego_d complete class and native reads at 0x007A7724–0x007A7755.
     void CreateStartUpEffect();
     CDefPointer<const CSpecialAbilitiesBattleChargeDef> PDef;             // +0x14
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_CREATEHIT_PASS27
+    void CreateHitEffect();
+    C3DVector PositionStartedFrom;
+    CIntelligentPointer<CThing> CollidedThing;
+    bool StartedMoving;
+    bool JustReleased;
+#else
     unsigned char _unmodelled_0x18[0x2E - 0x18];
+#endif
     bool DirectionOverride;                                              // +0x2E
     C3DVector DirectionOverrideVector;                                   // +0x2F
     unsigned char _unmodelled_0x3B[0x40 - 0x3B];
     long SpellLevel;                                                     // +0x40
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_CREATEHIT_PASS27
+    CIntelligentPointer<CThing> PItemRemoved;
+    float RadiusOfEffect;
+#else
     unsigned char _unmodelled_0x44[0x50 - 0x44];
+#endif
     CIntelligentPointer<CThing> ShieldEffect;                             // +0x50
     CIntelligentPointer<CThing> LeftFeetEffect;                           // +0x58
     CIntelligentPointer<CThing> RightFeetEffect;                          // +0x60
+#ifdef FABLE_RETAIL_CTCBATTLECHARGE_CREATEHIT_PASS27
+    long PoseDelay;
+    bool StartPoseDelay;
+    bool HitSomething;
+    unsigned char _pad_0x6e[2];
+    std::vector<CIntelligentPointer<CThing> > PeopleHit;
+    C3DVector DisplacementVector;
+#else
     unsigned char _unmodelled_0x68[0x88 - 0x68];
+#endif
 #else
     unsigned char _unmodelled_0x14[0x88 - 0x14];                         // +0x14 PDef .. PeopleHit (not modelled)
 #endif

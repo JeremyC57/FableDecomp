@@ -70,4 +70,20 @@ extern "C" __declspec(dllimport) int __stdcall GetCursorPos(POINT*);
 extern "C" __declspec(dllimport) int __stdcall ClientToScreen(HWND,POINT*);
 extern "C" __declspec(dllimport) int __stdcall GetClientRect(HWND,RECT*);
 #endif
+#ifdef FABLE_RETAIL_WIN32_OVERLAPPED_FILE_API_PASS27
+// Platform SDK WinBase declarations. The leaf imports the Kernel32 overlapped file APIs.
+struct _OVERLAPPED;
+#ifndef INFINITE
+#define INFINITE 0xffffffffUL
+#endif
+#ifndef TRUE
+#define TRUE 1
+#endif
+extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObjectEx(void*, unsigned long, int);
+extern "C" __declspec(dllimport) int __stdcall SetEvent(void*);
+extern "C" __declspec(dllimport) unsigned long __stdcall SleepEx(unsigned long, int);
+typedef void (__stdcall* LPOVERLAPPED_COMPLETION_ROUTINE)(unsigned long, unsigned long, _OVERLAPPED*);
+extern "C" __declspec(dllimport) int __stdcall ReadFileEx(void*, void*, unsigned long, _OVERLAPPED*, LPOVERLAPPED_COMPLETION_ROUTINE);
+extern "C" __declspec(dllimport) int __stdcall WriteFileEx(void*, const void*, unsigned long, _OVERLAPPED*, LPOVERLAPPED_COMPLETION_ROUTINE);
+#endif
 #endif // FABLE_ENGINE_WIN32_TYPES_H

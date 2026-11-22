@@ -19,6 +19,9 @@ public:
     bool IsDrawing() const;                                             // 0x00639B70
 #endif
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_REGION_DISPLAY; }
+#ifdef FABLE_RETAIL_TARGETING_PLAYER_TEST_PASS27
+    CTCRegionDisplay(CThing& thing);
+#endif
     void SetCurrentAreaName(const CCharString&, float, bool, bool, bool);
     void SetCurrentAreaName(const CWideString&, float, bool, bool, bool);
 };

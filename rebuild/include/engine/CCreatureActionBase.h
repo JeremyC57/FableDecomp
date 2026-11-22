@@ -321,6 +321,11 @@ protected:
  bool Initialised;
  long NextMovementPosWorldFrame;
  C3DVector NextMovementPos;
+#ifdef FABLE_RETAIL_COMBAT_NEXT_POS_PASS27
+public:
+    const CCountedPointer<CAnimationEntry>& GetPAnimationEntry() const { return PAnimEntry; }
+protected:
+#endif
  CCountedPointer<CAnimationEntry> PAnimEntry;
  CCountedPointer<CAnimationEntry> PPreceedingPAnimEntry;
 private:

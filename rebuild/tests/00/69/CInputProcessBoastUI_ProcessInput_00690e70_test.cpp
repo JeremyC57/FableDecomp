@@ -11,8 +11,8 @@ static CFrontEndManager g_fe;
 static CFrontEndManager* GetInstance() { return &g_fe; }
 class CInputProcessBoastUI { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
-    bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 2; }
-    bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 3; }
+    bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 2; }
+    bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 3; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed)
     {
@@ -22,11 +22,11 @@ class CInputProcessBoastUI { public:
             else if (IsEventGameAction(0x58, event)) GetInstance()->SendEvent(6);
             else if (IsEventGameAction(0x59, event)) GetInstance()->SendEvent(7);
             else return;
-        } else if (IsEventButtonHeld(event)) {
+        } else if (IsEventButtonReleased(event)) {
             if (IsEventGameAction(0x19, event)) GetInstance()->SendEvent(0x1c);
             else if (IsEventGameAction(0x4c, event)) GetInstance()->SendEvent(0x1d);
             else return;
-        } else if (IsEventButtonReleased(event)) {
+        } else if (IsEventButtonHeld(event)) {
             if (IsEventGameAction(0x19, event)) GetInstance()->SendEvent(0x1f);
             else if (IsEventGameAction(0x4c, event)) GetInstance()->SendEvent(0x20);
             else if (IsEventGameAction(0x58, event)) GetInstance()->SendEvent(6);

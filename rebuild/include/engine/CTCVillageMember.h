@@ -28,6 +28,9 @@ class CTCVillageMember : public CTCBase {
 public:
     static CTCBase* __fastcall Alloc(CThing&);                           // ?Alloc@CTCVillageMember@@SIPAVCTCBase@@AAVCThing@@@Z
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_VILLAGE_MEMBER; }   // ?StatGetInterfaceType@CTCVillageMember@@SI?AW4ETCInterfaceType@@XZ
+#ifdef FABLE_RETAIL_GUARD_BRIBE_FIXTURE_PASS27
+    CTCVillageMember(CThing&);
+#endif
     static CCharString __fastcall StatGetClassTypeName();                // ?StatGetClassTypeName@CTCVillageMember@@SI?AVCCharString@@XZ
     virtual void OnCreate();                                             // ?OnCreate@CTCVillageMember@@UAEXXZ
     virtual void OnInitialActivate();                                    // ?OnInitialActivate@CTCVillageMember@@UAEXXZ
@@ -46,11 +49,11 @@ private:
     unsigned __int64                     VillageUID;                     // +0x18
 public:
     static void CheckRetailLayout() {
-        FABLE_STATIC_ASSERT(offsetof(CTCVillageMember, PDef) == 0x0c);
-        FABLE_STATIC_ASSERT(offsetof(CTCVillageMember, PVillage) == 0x10);
-        FABLE_STATIC_ASSERT(offsetof(CTCVillageMember, VillageUID) == 0x18);
+        FABLE_STATIC_ASSERT_AT(49, offsetof(CTCVillageMember, PDef) == 0x0c);
+        FABLE_STATIC_ASSERT_AT(50, offsetof(CTCVillageMember, PVillage) == 0x10);
+        FABLE_STATIC_ASSERT_AT(51, offsetof(CTCVillageMember, VillageUID) == 0x18);
     }
 };
-FABLE_STATIC_ASSERT(sizeof(CTCVillageMember) == 0x20);
+FABLE_STATIC_ASSERT_AT(54, sizeof(CTCVillageMember) == 0x20);
 
 #endif // FABLE_ENGINE_CTCVILLAGEMEMBER_H

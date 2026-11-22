@@ -8,6 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_COIN_UPDATE_PASS27
+#include "engine/CSubDefClassBase.h"
+// Retail RTTI 0x0123D44C and the original donor records identify the subdefinition base.
+class CTavernGameCoinBaseDef : public CSubDefClassBase {
+public:
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    float CoinIDensity;
+    float CoinRadius;
+    float CoinEdgeRestitution;
+    float CoinEdgeFriction;
+    float CoinSurfaceFriction;
+    long CoinDefIndex;
+    long ArrowDefIndex;
+};
+FABLE_STATIC_ASSERT(sizeof(CTavernGameCoinBaseDef) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinSurfaceFriction) == 0x38);
+#else
 #pragma pack(push, 1)
 class CTavernGameCoinBaseDef {
 public:
@@ -31,14 +50,16 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTavernGameCoinBaseDef) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinIDensity) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinRadius) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinEdgeRestitution) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinEdgeFriction) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinSurfaceFriction) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, CoinDefIndex) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCoinBaseDef, ArrowDefIndex) == 0x40);
+FABLE_STATIC_ASSERT_AT(34, sizeof(CTavernGameCoinBaseDef) == 0x44);
+FABLE_STATIC_ASSERT_AT(35, offsetof(CTavernGameCoinBaseDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(36, offsetof(CTavernGameCoinBaseDef, CoinIDensity) == 0x28);
+FABLE_STATIC_ASSERT_AT(37, offsetof(CTavernGameCoinBaseDef, CoinRadius) == 0x2c);
+FABLE_STATIC_ASSERT_AT(38, offsetof(CTavernGameCoinBaseDef, CoinEdgeRestitution) == 0x30);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CTavernGameCoinBaseDef, CoinEdgeFriction) == 0x34);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CTavernGameCoinBaseDef, CoinSurfaceFriction) == 0x38);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CTavernGameCoinBaseDef, CoinDefIndex) == 0x3c);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CTavernGameCoinBaseDef, ArrowDefIndex) == 0x40);
+
+#endif
 
 #endif // FABLE_ENGINE_CTAVERNGAMECOINBASEDEF_H

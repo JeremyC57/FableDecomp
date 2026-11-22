@@ -9,7 +9,10 @@
 #include "engine/CInputProcessGameBase.h"
 class CInputProcessControlCreature : public CInputProcessGameBase {
 public:
+#ifdef FABLE_RETAIL_CONTROL_CREATURE_INPUT_PASS27
+    virtual void ProcessInput(const CInputEvent&,CProcessedInput&);
+#endif
     CInputProcessControlCreature(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessControlCreature) == 0x28);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessControlCreature) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSCONTROLCREATURE_H

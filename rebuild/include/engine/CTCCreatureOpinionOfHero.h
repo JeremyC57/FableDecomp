@@ -213,6 +213,10 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }   // inline (the GetTC key 0x4F)
 #endif
 #endif
+#ifdef FABLE_RETAIL_OPINION_FILTER_PASS27
+public:
+    const CThing* PeekUnknownThreatOpinionSource() const { return PUnknownThreatOpinionSource.Get(); }
+#endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_HEADPENDINGDEED
     // Nested opt-in (chunk 2004, row 0x009609B0 CAIStateGroup_DeedReactionRoot::IsRunnable): Ego_r.pdb / FableWin.pdb
     // ?GetHeadPendingDeed@CTCCreatureOpinionOfHero@@QAEPBVCOpinionDeed@@XZ (non-const member returning a const deed), out of line in

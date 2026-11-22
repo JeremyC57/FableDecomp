@@ -55,7 +55,7 @@ void CInputProcessCreatureMovement::ProcessInput(const CInputEvent& event, CProc
                 break;
             }
         }
-        if (button && !IsEventButtonReleased(event)) return;
+        if (button && !IsEventButtonHeld(event)) return;
         CGameEvent game_event(0x10);
         if (PCreature.Get() && !PCreature->IsDead()) {
             long key = -1;

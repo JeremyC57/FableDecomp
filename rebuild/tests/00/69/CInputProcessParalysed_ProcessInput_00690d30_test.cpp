@@ -18,7 +18,7 @@ class CPlayer { public: long removed; long mode; CPlayer() : removed(0), mode(0)
 struct CInputProcessGameBase {
     CPlayer* MyPlayer;
     bool IsEventButtonPressed(const CInputEvent& e) { return e.kind == 0x13; }
-    bool IsEventButtonHeld(const CInputEvent& e) { return e.kind == 0x15; }
+    bool IsEventButtonReleased(const CInputEvent& e) { return e.kind == 0x15; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.type == a; }
 };
 
@@ -27,7 +27,7 @@ class CInputProcessParalysed : public CInputProcessGameBase { public:
     CThingCreatureBase* hero; long m_pressCount;
     void ProcessInput(const CInputEvent& event, CProcessedInput&)
     {
-        if (IsEventGameAction(9, event) && IsEventButtonHeld(event)) {
+        if (IsEventGameAction(9, event) && IsEventButtonReleased(event)) {
             if (++m_pressCount > 10) {
                 CThingCreatureBase* h = hero;
                 if (h && !h->dead)

@@ -151,7 +151,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             }
             processed.SetAsPerformedEvent();
         }
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(GAME_ACTION_INVENTORY_UP, event)) {
             NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetAsPerformedEvent();

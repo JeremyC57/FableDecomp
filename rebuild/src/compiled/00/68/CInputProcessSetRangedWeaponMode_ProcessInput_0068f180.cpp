@@ -3,7 +3,7 @@
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068F180, 201 bytes, `ret 8`.
-// Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0 and IsEventGameAction @ 0x00687CF0 (landed model
+// Callees: CInputProcessGameBase::IsEventButtonReleased @ 0x00687BD0 and IsEventGameAction @ 0x00687CF0 (landed model
 //   names), CPlayer::IsFirstPersonTargeting @ 0x004874D0, CPlayer::GetPControlledCreature @ 0x00487DC0 (x2), the const component-map
 //   LowerBound @ 0x004365B0, CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340.
 // Globals: a bool gate @ 0x01375752 (unnamed).
@@ -103,7 +103,7 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
+    bool IsEventButtonReleased(const CInputEvent& event);                 // 0x00687BD0 (kind 0x15)
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessSetRangedWeaponMode : public CInputProcessGameBase {
@@ -113,7 +113,7 @@ public:
 
 void CInputProcessSetRangedWeaponMode::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
-    if (IsEventButtonHeld(event) && IsEventGameAction((EGameAction)(0x2d), event)) {
+    if (IsEventButtonReleased(event) && IsEventGameAction((EGameAction)(0x2d), event)) {
         if (g_rangedWeaponModeGate && !MyPlayer->IsFirstPersonTargeting()) {
             CTC81* tc;
             if (MyPlayer->GetPControlledCreature()->GetInterface(&tc, 0x81) && !tc->m_15)

@@ -10,6 +10,10 @@ class CCamera;
 class CEngineCamera:public CEngineComponent {
 public:
  CEngineCamera(bool);
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+ // Ego_r and FableWin names, retail 0x00B308E0.
+ bool ClipWorldSpaceBoundingBox(const class C3DBoundingBox& box, float max_draw_dist, bool& all_inside) const;
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_SETGAMEWINDOW
  // NF172 opt-in (row 0x00B2FC00): Ego_r.pdb 0x009D0510 / FableWin.pdb 0x02DC15E0 ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z
  // (stores the argument in GameWindow +0x10; CEngine::SetWindow 0x00B23B80 tail-jumps here on the engine camera). Declaration only.
@@ -113,6 +117,15 @@ public:
   const float one_over_z=1.0f/point.Z;
   point.X=WindowCenterX+one_over_z*HalfWindowWidth*point.X;
   point.Y=WindowCenterY-one_over_z*HalfWindowHeight*point.Y;
+ }
+#endif
+#ifdef FABLE_RETAIL_PROJECT_TEXT_PASS27
+ // Raw FableWin 02C9F690 stores reciprocal depth transformed by Factor and Offset.
+ void TransformViewToScreen(const C3DVector& from,C3DVector& to)const {
+  const float invz=1.0f/from.Z;
+  to.X=WindowCenterX+from.X*invz*HalfWindowWidth;
+  to.Y=WindowCenterY-from.Y*invz*HalfWindowHeight;
+  to.Z=ZBufferFactor*invz+ZBufferOffset;
  }
 #endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_VIEWTOSCREEN_TWO_ARGS

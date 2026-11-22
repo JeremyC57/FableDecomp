@@ -9,6 +9,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_NYMPH_ATTACK_PASS27
+#include "engine/CCombatActionBase.h"
+class CThingCreatureBase;
+
+// Original class hierarchy and constructor types from Ego_r and FableWin.
+class CCreatureAction_NymphSummonInto : public CCombatActionBase {
+public:
+    CCreatureAction_NymphSummonInto(CThingCreatureBase& creature, CThingCreatureBase& target);
+};
+FABLE_STATIC_ASSERT_AT(33, sizeof(CCreatureAction_NymphSummonInto) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_NymphSummonInto {
 public:
@@ -27,7 +38,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_NymphSummonInto) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphSummonInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_NymphSummonInto) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_NymphSummonInto, __vftable) == 0x0);
+
+#endif // FABLE_RETAIL_NYMPH_ATTACK_PASS27
 
 #endif // FABLE_ENGINE_CCREATUREACTION_NYMPHSUMMONINTO_H

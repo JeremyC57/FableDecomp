@@ -19,6 +19,10 @@ public:
     virtual void OnReplace();                                            // ?OnReplace@CAIStateGroup_UsesSeat@@UAEXXZ
 protected:
     CAIStateGroup_UsesSeat();                                            // ??0CAIStateGroup_UsesSeat@@IAE@XZ
+#ifdef FABLE_RETAIL_CAISTATEGROUP_USESSEAT_VIRTUALS_PASS27
+    // FableWin complete class record, and native derived vtables at slot 14.
+    virtual bool IsStateGroupStillValid() const = 0;
+#endif
     virtual NCreatureMode::CModeSitBase* AllocChairSittingMode() const;  // ?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ
     CThingObject* GetFreeSeatInBuilding(CThingBuilding& building) const;         // IBE
     CThingObject* GetRandomFreeSeatInBuilding(CThingBuilding& building) const;   // IBE, retail 0x00938BF0
@@ -35,6 +39,6 @@ protected:
     C3DVector SeatPos;                                                   // +0x24
     bool SittingOnBench;                                                 // +0x30
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_UsesSeat) == 0x34);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CAIStateGroup_UsesSeat) == 0x34);
 // end of class CAIStateGroup_UsesSeat
 #endif // FABLE_ENGINE_CAISTATEGROUP_USESSEAT_H

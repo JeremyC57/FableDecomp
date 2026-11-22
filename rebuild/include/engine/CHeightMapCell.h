@@ -25,6 +25,10 @@ public:
     unsigned char NavPreferred : 1;
     unsigned char _pad_0x0a[0x2];
     // FableWin.pdb ?Clear@CHeightMapCell@@QAEXXZ (inline): the reset CHeightMap::Clear (0x008F6050) applies to every cell.
+#ifdef FABLE_RETAIL_CHEIGHTMAPCELL_EMPTY_CTOR_PASS27
+    // The original empty constructor is used by the native vector size owner at 0x008F69B0.
+    CHeightMapCell() {}
+#endif
     void Clear()
     {
         Changed = false;
@@ -61,12 +65,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CHeightMapCell) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, Height) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, EngineThemePaletteIndex) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, EngineBlend) == 0x7);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CHeightMapCell) == 0xc);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CHeightMapCell, Height) == 0x0);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CHeightMapCell, EngineThemePaletteIndex) == 0x4);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CHeightMapCell, EngineBlend) == 0x7);
 #ifndef FABLE_RETAIL_CHEIGHTMAPCELL
-FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, NavPreferred) == 0x9);
+FABLE_STATIC_ASSERT_AT(69, offsetof(CHeightMapCell, NavPreferred) == 0x9);
 #endif
 
 #endif // FABLE_ENGINE_CHEIGHTMAPCELL_H

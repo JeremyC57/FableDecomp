@@ -10,6 +10,9 @@ class CThingBuilding; class CThingCreatureDef; class CCreatureActionBase;
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
 class CAnimationEntry;                                                   // chunk 796 opt-in: GetAnimFromName's return type
 #endif
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+#include "engine/ECombatAnimationHandedness.h"
+#endif
 class CCreatureInteraction; class CTCCreatureModeManager;
 class CHeroCombatDef;
 #if defined(FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE) || defined(FABLE_RETAIL_CTHINGCREATUREBASE_GETCOMBATTYPEDEF)
@@ -246,7 +249,11 @@ protected:
     float TurnSpeed;
     CCountedPointer<CCreatureInteraction> PCreatureInteraction;
     CTCCreatureModeManager* PTCModeManager;
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+    ECombatAnimationHandedness PreviousActionHandedness;
+#else
     unsigned char PreviousActionHandedness[4];
+#endif
     long PreviousActionHandednessWF;
     unsigned char BodyReorienter[4];
     unsigned char CombatDebugGraphics[12];
@@ -277,6 +284,10 @@ public:
     bool IsFollowingHeroThroughTeleporters() const { return FollowHeroThroughTeleporters; }
 protected:
 #endif // FABLE_RETAIL_CTHINGCREATUREBASE_ISFOLLOWINGTELEPORTERS
+#ifdef FABLE_RETAIL_CREATURE_ONCREATE_PASS27
+    virtual bool OnCreate();
+    void PlayCreatureContinuousSounds();
+#endif
     void ReactToGenericStrike(const CHitParameters&);
     // FableWin-only ?PeekDefinition@CThingCreatureBase@@IBEABVCThingCreatureDef@@XZ (0x01D6DD10; inline in Ego_r and retail): the body
     // `return *PDef;` needs the complete CThingCreatureDef, so it is defined inline below once both classes are complete.
@@ -311,6 +322,9 @@ public:
     void SetAttackedByCreature(CThingCreatureBase* creature);           // 0x006624F0
 #endif
     bool IsInMelee()const;bool IsInMeleeAsAttacker()const;
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+    bool IsAbleToStrafe() const;                                        // 0x006621A0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ISINMELEEASATTACKED
     // Opt-in (NF210, 2026-11-20, row 0x006EAC50): Ego_r.pdb (0x0053D2C0) + FableWin.pdb (0x01DA3370)
     // ?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ, out of line at 0x00662430 (the IsInMeleeAsAttacker 0x00662410 twin; already bound

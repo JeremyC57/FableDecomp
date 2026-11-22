@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068CAC0, length 149 bytes.
 // Callees: CInputEvent::GetEventType @ 0x00A03B40 (`mov eax,[ecx+28h]`), CInputEvent::GetAnalogueVector @ 0x00A043A0
 // (C2DVector by hidden pointer; manifest label GetDefaultVal<CEngineGraphic> is propagated),
-// CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::RemoveMode @ 0x00634190
+// CInputProcessGameBase::IsEventButtonReleased @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, CPlayer::RemoveMode @ 0x00634190
 // (MyPlayer +0x18), CProcessedInput::SetAsPerformedEvent @ 0x00A0D390. Float constant 0x0129BA3C = 0.0001f.
 // Shape: `!(len > eps)` (not `len <= eps`, which adds a `jnp`); `x*x + y*y` in one expression squares y first; the length test and the action tests both end
 // in one shared `jne` to the exit; the event rides in esi, `this` in edi.
@@ -40,7 +40,7 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonHeld(const CInputEvent& event);                 // 0x00687BD0
+    bool IsEventButtonReleased(const CInputEvent& event);                 // 0x00687BD0
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 };
 class CInputProcessFirstPerson : public CInputProcessGameBase {
@@ -55,7 +55,7 @@ void CInputProcessFirstPerson::ProcessInput(const CInputEvent& event, CProcessed
         if (!(sqrt(stick.x * stick.x + stick.y * stick.y) > 0.0001f))
             return;
     } else {
-        if (!IsEventButtonHeld(event) || IsEventGameAction((EGameAction)(5), event) || IsEventGameAction((EGameAction)(2), event)
+        if (!IsEventButtonReleased(event) || IsEventGameAction((EGameAction)(5), event) || IsEventGameAction((EGameAction)(2), event)
             || IsEventGameAction((EGameAction)(0x13), event))
             return;
     }

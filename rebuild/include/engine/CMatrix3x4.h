@@ -57,6 +57,10 @@ public:
     }
 #endif
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4_ORTHONORMALISE
+    // Ego_r and FableWin agree on the public out-of-line orthonormalisation method at 0x00A56270.
+    void Orthonormalise();
+#endif
 #ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_PASS23
 #ifdef FABLE_RETAIL_CMATRIX3X4_INVERSE_NO_TRANSLATE_FORCEINLINE
  // Overlay opt-in (hand4d, row 0x00AEDE60 CParticleEmitter::SetOrientation): retail expands SetInverseNoTranslate and its

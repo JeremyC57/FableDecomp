@@ -1,0 +1,94 @@
+{
+  "row": "00acd0e0",
+  "stale_symbol": "??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ",
+  "input_address": "00517850",
+  "input_owner_operands": [
+    {
+      "owner": "??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ",
+      "offset": 19,
+      "symbol": "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+      "retail": "0x004A9CB0",
+      "addend": 0,
+      "verified_by": "unbound"
+    },
+    {
+      "owner": "??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ",
+      "offset": 57,
+      "symbol": "_free",
+      "retail": "0x00BFEA14",
+      "addend": 0,
+      "verified_by": "binding table"
+    }
+  ],
+  "actual_candidates": [
+    {
+      "candidate": "004d0740",
+      "complete_bytes": 66,
+      "references": [
+        [
+          19,
+          "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "004cf810"
+        ],
+        [
+          57,
+          "_free",
+          "00bfea14"
+        ]
+      ]
+    },
+    {
+      "candidate": "004d0e20",
+      "complete_bytes": 66,
+      "references": [
+        [
+          19,
+          "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "004cf810"
+        ],
+        [
+          57,
+          "_free",
+          "00bfea14"
+        ]
+      ]
+    },
+    {
+      "candidate": "00ad4a00",
+      "complete_bytes": 66,
+      "references": [
+        [
+          19,
+          "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "004cf810"
+        ],
+        [
+          57,
+          "_free",
+          "00bfea14"
+        ]
+      ]
+    },
+    {
+      "candidate": "00ae7150",
+      "complete_bytes": 66,
+      "references": [
+        [
+          19,
+          "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "004cf810"
+        ],
+        [
+          57,
+          "_free",
+          "00bfea14"
+        ]
+      ]
+    }
+  ],
+  "explanation": "The input unsigned destructor mapping at 00517850 is false. Its erase callee is 004A9CB0, signed long; the two native exits of the assigned leaf and its emitted destructor call 004CF810, unsigned long. Native text scan identified four 66-byte copies with both operands correct, two called from 00EE91E0, one from 00ACCBF0, and one with no direct references. No exact one-to-one address assignment is asserted. Input NAME_FIXES_QUEUE.tsv rows 583 and land1120nf197 describe the same conflict.",
+  "caller_evidence": {
+    "FableWin": "At 03AD6640, all six source cleanup sites call std::set<unsigned long>::~set. The retail caller at 00EE91E0 calls 004D0740 on one exit, 004D0E20 on another and separately expands the remaining cleanup. The debugger build confirms the wrapper type but cannot discriminate the two expanded levels in retail.",
+    "PDB_order": "FableWin subtitled_message.obj lists the outer set destructor at module index 592 then the inner Dinkumware tree at 593. The present VC7.1 STLport CIndexList consumer emits its inner tree before the outer set in COFF sections 81 and 83. Object-order evidence cannot uniquely label the pair."
+  }
+}

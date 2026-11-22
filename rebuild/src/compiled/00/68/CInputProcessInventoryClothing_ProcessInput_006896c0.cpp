@@ -5,7 +5,7 @@
 //   Ego_r.pdb ?ProcessInput@CInputProcessInventoryClothing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z.
 // Callees: CInputEvent::GetType 0x00A03B40, CInputEvent::GetJoystickPosition 0x00A043A0 (hidden C2DVector),
 //   NUISystem::CManager::GetInstance 0x0041E5F2 (__fastcall) + its slot 0 (ProcessEvent),
-//   CInputProcessGameBase::IsEventButtonPressed 0x00687A90 / IsEventButtonReleased 0x00687B30 / IsEventGameAction 0x00687CF0,
+//   CInputProcessGameBase::IsEventButtonPressed 0x00687A90 / IsEventButtonHeld 0x00687B30 / IsEventGameAction 0x00687CF0,
 //   CProcessedInput::SetAsPerformedEvent 0x00A0D390; the virtual GetPInventory (slot 9) whose result is unused.
 // Shape (family M192, representative 0x006896C0): the landed CInputProcessInGameMenu::ProcessInput 0x00690480 pattern -- one
 //   `GetInstance()->ProcessEvent(n); input.SetAsPerformedEvent();` per arm, which VC tail-merges into `call GetInstance; push n;
@@ -57,7 +57,7 @@ public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
 protected:
     bool IsEventButtonPressed(const CInputEvent& event) const;                     // 0x00687A90
-    bool IsEventButtonReleased(const CInputEvent& event) const;                    // 0x00687B30
+    bool IsEventButtonHeld(const CInputEvent& event) const;                    // 0x00687B30
     virtual bool IsInputEventToBeSentToThisInputProcess(const CInputEvent& event) const;   // slot 8
 };
 class CInputProcessInventoryBase : public CInputProcessGameBase {
@@ -102,7 +102,7 @@ void CInputProcessInventoryClothing::ProcessInput(const CInputEvent& event, CPro
             NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)3);
             input.SetAsPerformedEvent();
         }
-    } else if (IsEventButtonReleased(event)) {
+    } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction((EGameAction)0x25, event)) {
             NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
             input.SetAsPerformedEvent();

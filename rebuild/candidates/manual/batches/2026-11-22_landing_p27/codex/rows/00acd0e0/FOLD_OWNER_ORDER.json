@@ -1,0 +1,516 @@
+{
+  "speech_object_sha256": "8ab69518b2d9989eb732b9096803b69e4c8dbd1bfe32736a6c4ad9b3bc4b708c",
+  "speech": {
+    "section": 87,
+    "shape_address": "00ee91e0",
+    "extent": 613,
+    "masked_sha256": "098d6a8104914716f16c5ee80f603ec13fbf1dc07ebe1eedd8513e2c970982e4",
+    "relocations": [
+      {
+        "site": "00ee91f8",
+        "symbol": "??_7CScriptThing@@6B@",
+        "address": "01238c8c",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9231",
+        "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+        "address": "00cb7940",
+        "package_binding": true
+      },
+      {
+        "site": "00ee924c",
+        "symbol": "??0?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@ABU?$less@K@1@ABV?$allocator@K@1@@Z",
+        "address": "00a394d0",
+        "package_binding": false
+      },
+      {
+        "site": "00ee926d",
+        "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+        "address": "00cb7940",
+        "package_binding": true
+      },
+      {
+        "site": "00ee927a",
+        "symbol": "??1?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@XZ",
+        "address": "004d0740",
+        "package_binding": false,
+        "evidence": "diagnostic caller relocation only"
+      },
+      {
+        "site": "00ee9283",
+        "symbol": "??1CScriptThing@@UAE@XZ",
+        "address": "004aa840",
+        "package_binding": true
+      },
+      {
+        "site": "00ee92a1",
+        "symbol": "??0CBaseObject@@IAE@XZ",
+        "address": "0099a380",
+        "package_binding": true
+      },
+      {
+        "site": "00ee92b7",
+        "symbol": "??_7CScriptGameResourceObjectScriptedThingBase@@6B@",
+        "address": "0127094c",
+        "package_binding": true
+      },
+      {
+        "site": "00ee92db",
+        "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+        "address": "00cb7940",
+        "package_binding": true
+      },
+      {
+        "site": "00ee92f7",
+        "symbol": "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+        "address": "0099f830",
+        "package_binding": true
+      },
+      {
+        "site": "00ee930a",
+        "symbol": "??1CCharString@@QAE@XZ",
+        "address": "0099eae0",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9328",
+        "symbol": "?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z",
+        "address": "007e7380",
+        "package_binding": false
+      },
+      {
+        "site": "00ee9331",
+        "symbol": "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ",
+        "address": "007e7450",
+        "package_binding": true
+      },
+      {
+        "site": "00ee934b",
+        "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+        "address": "00cb7940",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9358",
+        "symbol": "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ",
+        "address": "007e7450",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9363",
+        "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+        "address": "00cb7940",
+        "package_binding": true
+      },
+      {
+        "site": "00ee936d",
+        "symbol": "?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z",
+        "address": "004292c0",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9385",
+        "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+        "address": "00cb7940",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9392",
+        "symbol": "??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ",
+        "address": "007e74d0",
+        "package_binding": true
+      },
+      {
+        "site": "00ee939b",
+        "symbol": "?clear@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAEXXZ",
+        "address": "004cff70",
+        "package_binding": false,
+        "evidence": "exact supporting body and anchored compiler relocation"
+      },
+      {
+        "site": "00ee93a4",
+        "symbol": "??1?$_Rb_tree_base@KV?$allocator@K@std@@@std@@QAE@XZ",
+        "address": "004cffb0",
+        "package_binding": false,
+        "evidence": "exact supporting body and anchored compiler relocation"
+      },
+      {
+        "site": "00ee93ad",
+        "symbol": "??1CScriptThing@@UAE@XZ",
+        "address": "004aa840",
+        "package_binding": true
+      },
+      {
+        "site": "00ee93ca",
+        "symbol": "??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ",
+        "address": "007e74d0",
+        "package_binding": true
+      },
+      {
+        "site": "00ee93d3",
+        "symbol": "??1?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@XZ",
+        "address": "004d0e20",
+        "package_binding": false,
+        "evidence": "diagnostic caller relocation only"
+      },
+      {
+        "site": "00ee93fb",
+        "symbol": "??1CCharString@@QAE@XZ",
+        "address": "0099eae0",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9409",
+        "symbol": "??_7CScriptThing@@6B@",
+        "address": "01238c8c",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9425",
+        "symbol": "??3@YAXPAX@Z",
+        "address": "00bfe9bc",
+        "package_binding": true
+      },
+      {
+        "site": "00ee9439",
+        "symbol": "??1CBaseClass@@UAE@XZ",
+        "address": "0099a2e0",
+        "package_binding": true
+      }
+    ]
+  },
+  "crc_object": "runtime/geometry/fold_owner_order/crc-external-first-base/anchors.obj",
+  "crc_object_sha256": "73e545a1a9633a2ffbcdecbce78c64ceb6f1e3f642d603e8d72ee218c8333f47",
+  "crc_and_heap_order": [
+    {
+      "section": 27,
+      "shape_address": "004cfd80",
+      "extent": 86,
+      "masked_sha256": "687fea3aeb40b8fdebd1231a49a12ba28e4d340cb8f24e83854341a649579529",
+      "relocations": [],
+      "symbol": "??$__push_heap@PAU?$pair@MW4EConversationAttitude@@@std@@HU12@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@HHU10@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z"
+    },
+    {
+      "section": 29,
+      "shape_address": "004cfe10",
+      "extent": 119,
+      "masked_sha256": "0b3dc147d23ad105c7e5ea8548dc84ee16c6e5b162446a6072aa4390149320ca",
+      "relocations": [
+        {
+          "site": "004cfe4e",
+          "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+          "address": "0099efb0",
+          "package_binding": true
+        },
+        {
+          "site": "004cfe73",
+          "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+          "address": "0099efb0",
+          "package_binding": true
+        },
+        {
+          "site": "004cfe7c",
+          "symbol": "??1CCharString@@QAE@XZ",
+          "address": "0099eae0",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??$__push_heap@PAU?$pair@MVCCharString@@@std@@HU12@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@HHU10@V?$CKeyPairCompareLess@MVCCharString@@@@@Z"
+    },
+    {
+      "section": 37,
+      "shape_address": "004cf810",
+      "extent": 51,
+      "masked_sha256": "0721497682defaf898bc3694ac92a3a8b4400ce8ad89adfee23f6a443aa74ec5",
+      "relocations": [
+        {
+          "site": "004cf827",
+          "symbol": "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "address": "004cf810",
+          "package_binding": true
+        },
+        {
+          "site": "004cf830",
+          "symbol": "_free",
+          "address": "00bfea14",
+          "package_binding": true
+        }
+      ],
+      "symbol": "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z"
+    },
+    {
+      "section": 39,
+      "shape_address": "004d04f0",
+      "extent": 111,
+      "masked_sha256": "f65bec87696d0e7b5907f3538a448a413bdfc0bf8d7a6bfa2de3e637d1b4a40d",
+      "relocations": [
+        {
+          "site": "004d0555",
+          "symbol": "??$__push_heap@PAU?$pair@MW4EConversationAttitude@@@std@@HU12@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@HHU10@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z",
+          "address": "004cfd80",
+          "package_binding": false
+        }
+      ],
+      "symbol": "??$__adjust_heap@PAU?$pair@MW4EConversationAttitude@@@std@@HU12@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@HHU10@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z"
+    },
+    {
+      "section": 41,
+      "shape_address": "004d0590",
+      "extent": 163,
+      "masked_sha256": "d674607e153cc4822df27fa9d34b71f14ce317578c552beb1eb99b06b461ebfb",
+      "relocations": [
+        {
+          "site": "004d05cf",
+          "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+          "address": "0099efb0",
+          "package_binding": true
+        },
+        {
+          "site": "004d05f0",
+          "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+          "address": "0099efb0",
+          "package_binding": true
+        },
+        {
+          "site": "004d0610",
+          "symbol": "??0CCharString@@QAE@ABV0@@Z",
+          "address": "0099ec30",
+          "package_binding": true
+        },
+        {
+          "site": "004d061e",
+          "symbol": "??$__push_heap@PAU?$pair@MVCCharString@@@std@@HU12@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@HHU10@V?$CKeyPairCompareLess@MVCCharString@@@@@Z",
+          "address": "004cfe10",
+          "package_binding": false
+        },
+        {
+          "site": "004d0627",
+          "symbol": "??1CCharString@@QAE@XZ",
+          "address": "0099eae0",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??$__adjust_heap@PAU?$pair@MVCCharString@@@std@@HU12@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@HHU10@V?$CKeyPairCompareLess@MVCCharString@@@@@Z"
+    },
+    {
+      "section": 49,
+      "shape_address": "004cff70",
+      "extent": 51,
+      "masked_sha256": "ffdc7928457e2fc3a9237652aad86e70ca5014935ef28a92036e599b9ab2083e",
+      "relocations": [
+        {
+          "site": "004cff83",
+          "symbol": "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "address": "004cf810",
+          "package_binding": true
+        }
+      ],
+      "symbol": "?clear@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAEXXZ"
+    },
+    {
+      "section": 51,
+      "shape_address": "004cffb0",
+      "extent": 14,
+      "masked_sha256": "351519bb1d967b9ee56d861614802879a0a3a004a25657d4f6f1db6df43cee14",
+      "relocations": [
+        {
+          "site": "004cffb8",
+          "symbol": "_free",
+          "address": "00bfea14",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??1?$_Rb_tree_base@KV?$allocator@K@std@@@std@@QAE@XZ"
+    },
+    {
+      "section": 53,
+      "shape_address": "004d0bf0",
+      "extent": 74,
+      "masked_sha256": "57bb16f65f5b5e413a2640122b9555d9baf22ad4a77ed3554baf108dc0815a6f",
+      "relocations": [
+        {
+          "site": "004d0c28",
+          "symbol": "??$__adjust_heap@PAU?$pair@MW4EConversationAttitude@@@std@@HU12@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@HHU10@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@@Z",
+          "address": "004d04f0",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??$__make_heap@PAU?$pair@MW4EConversationAttitude@@@std@@V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@U12@H@std@@YIXPAU?$pair@MW4EConversationAttitude@@@0@0V?$CKeyPairCompareLess@MW4EConversationAttitude@@@@0PAH@Z"
+    },
+    {
+      "section": 55,
+      "shape_address": "004d0c40",
+      "extent": 80,
+      "masked_sha256": "0102da1014b35322cd5bdf7a996b8c01bcfc286dbce53afceaee0bae5d353f22",
+      "relocations": [
+        {
+          "site": "004d0c74",
+          "symbol": "??0CCharString@@QAE@ABV0@@Z",
+          "address": "0099ec30",
+          "package_binding": true
+        },
+        {
+          "site": "004d0c7e",
+          "symbol": "??$__adjust_heap@PAU?$pair@MVCCharString@@@std@@HU12@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@HHU10@V?$CKeyPairCompareLess@MVCCharString@@@@@Z",
+          "address": "004d0590",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??$__make_heap@PAU?$pair@MVCCharString@@@std@@V?$CKeyPairCompareLess@MVCCharString@@@@U12@H@std@@YIXPAU?$pair@MVCCharString@@@0@0V?$CKeyPairCompareLess@MVCCharString@@@@0PAH@Z"
+    },
+    {
+      "section": 57,
+      "shape_address": "004d0d60",
+      "extent": 110,
+      "masked_sha256": "92a571059402b5d42c6cb60e3480cfcb9692d9130f70282fce44c5b01e3f174c",
+      "relocations": [
+        {
+          "site": "004d0d79",
+          "symbol": "??0CCharString@@QAE@ABV0@@Z",
+          "address": "0099ec30",
+          "package_binding": true
+        },
+        {
+          "site": "004d0d8a",
+          "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+          "address": "0099efb0",
+          "package_binding": true
+        },
+        {
+          "site": "004d0da7",
+          "symbol": "??0CCharString@@QAE@ABV0@@Z",
+          "address": "0099ec30",
+          "package_binding": true
+        },
+        {
+          "site": "004d0db9",
+          "symbol": "??$__adjust_heap@PAU?$pair@MVCCharString@@@std@@HU12@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@HHU10@V?$CKeyPairCompareLess@MVCCharString@@@@@Z",
+          "address": "004d0590",
+          "package_binding": true
+        },
+        {
+          "site": "004d0dc2",
+          "symbol": "??1CCharString@@QAE@XZ",
+          "address": "0099eae0",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??$__pop_heap_aux@PAU?$pair@MVCCharString@@@std@@U12@V?$CKeyPairCompareLess@MVCCharString@@@@@std@@YIXPAU?$pair@MVCCharString@@@0@00V?$CKeyPairCompareLess@MVCCharString@@@@@Z"
+    },
+    {
+      "section": 73,
+      "shape_address": "004d1d50",
+      "extent": 93,
+      "masked_sha256": "8b3a72ac32ec681f309118ddc6bf9ac7526dfd353267b5bd1a66931f300f64f0",
+      "relocations": [
+        {
+          "site": "004d1d67",
+          "symbol": "?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z",
+          "address": "004cf810",
+          "package_binding": true
+        },
+        {
+          "site": "004d1d8d",
+          "symbol": "_free",
+          "address": "00bfea14",
+          "package_binding": true
+        },
+        {
+          "site": "004d1d9d",
+          "symbol": "_free",
+          "address": "00bfea14",
+          "package_binding": true
+        },
+        {
+          "site": "004d1da9",
+          "symbol": "??1CBaseClassNonCopyable@@MAE@XZ",
+          "address": "0099a300",
+          "package_binding": true
+        }
+      ],
+      "symbol": "??1CCRCSymbolMap@@UAE@XZ"
+    },
+    {
+      "section": 75,
+      "shape_address": "0121a630",
+      "extent": 22,
+      "masked_sha256": "3ab0849171911457d65ae2100319c57a9fc965687bf436b389df749fc4d700dd",
+      "relocations": [
+        {
+          "site": "0121a631",
+          "symbol": "?g_MiscDefTypesSymbolMap@@3VCCRCSymbolMap@@A",
+          "address": "013b8a54",
+          "package_binding": true
+        },
+        {
+          "site": "0121a636",
+          "symbol": "??0CCRCSymbolMap@@QAE@XZ",
+          "address": "00a38500",
+          "package_binding": true
+        },
+        {
+          "site": "0121a63b",
+          "symbol": "_$E2",
+          "address": "01228dd0",
+          "package_binding": false
+        },
+        {
+          "site": "0121a640",
+          "symbol": "_atexit",
+          "address": "004012bc",
+          "package_binding": true
+        }
+      ],
+      "symbol": "_$E1"
+    },
+    {
+      "section": 78,
+      "shape_address": "01228dd0",
+      "extent": 10,
+      "masked_sha256": "ca34c0ed9d479badab9000276bbae84bbbea38ee18333947c45c888d68010f22",
+      "relocations": [
+        {
+          "site": "01228dd1",
+          "symbol": "?g_MiscDefTypesSymbolMap@@3VCCRCSymbolMap@@A",
+          "address": "013b8a54",
+          "package_binding": true
+        },
+        {
+          "site": "01228dd6",
+          "symbol": "??1CCRCSymbolMap@@UAE@XZ",
+          "address": "004d1d50",
+          "package_binding": false
+        }
+      ],
+      "symbol": "_$E2"
+    }
+  ],
+  "candidates": {
+    "??1?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@XZ": {
+      "coff_section": 61,
+      "indistinguishable_candidates": [
+        "004d0740",
+        "004d0e20",
+        "00ad4a00",
+        "00ae7150"
+      ]
+    },
+    "??1?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@XZ": {
+      "coff_section": 65,
+      "indistinguishable_candidates": [
+        "004d0740",
+        "004d0e20",
+        "00ad4a00",
+        "00ae7150"
+      ]
+    }
+  },
+  "optional_native_debug": {
+    "guid": "f308a910-fbeb-4fff-9da4-4525bb45a745",
+    "age": 17,
+    "pdb_reference": "C:\\Dev\\BBBProjects\\Fable1_5Release\\Fable\\Build\\Fable.pdb",
+    "coff_symbol_count": 0
+  },
+  "scope": "No one-to-one retail address is assigned to either destructor spelling."
+}

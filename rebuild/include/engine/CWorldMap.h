@@ -198,7 +198,18 @@ public:
     float GetWaterSizeZAt(const C3DVector&)const;
 #endif
 protected:
+#ifdef FABLE_RETAIL_CWORLDMAP_PLAYERPOSITION_PASS27
+    // Ego_r nested record CPlayerPositionInfo. Set is at +0 and Pos at +1.
+#pragma pack(push, 1)
+    class CPlayerPositionInfo {
+    public:
+        bool Set;
+        C3DVector Pos;
+    };
+#pragma pack(pop)
+#else
     class CPlayerPositionInfo;
+#endif
     void UnloadRegion(long,bool);
     void SaveMapsToString(CCharString&);                      // 0x004FB990 ?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z
     void SaveRegionsToString(CCharString&);                   // 0x004FD040 ?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z

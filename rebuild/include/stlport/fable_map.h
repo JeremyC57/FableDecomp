@@ -90,6 +90,9 @@ public:
   return _M_node;
 }
 #endif
+#ifdef FABLE_RETAIL_STLP_RB_INCREMENT_SIZE_OWNER_PASS27
+    static _Rb_tree_node_base* __cdecl _M_increment(_Rb_tree_node_base* node);
+#else
     static _Rb_tree_node_base* __cdecl _M_increment(_Rb_tree_node_base* node) {
         if(node->_M_right!=0) {
             node=node->_M_right;
@@ -101,7 +104,55 @@ public:
         }
         return node;
     }
+#endif
 };
+#ifdef FABLE_RETAIL_COMBATRING_ASSIGN_PASS27
+// The same library specialization is selected from a size-built compiland at 004292C0.
+#ifdef _MSC_VER
+#pragma optimize("s",on)
+#endif
+template<> inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_increment(_Rb_tree_node_base* _M_node)
+{
+  if (_M_node->_M_right != 0) {
+    _M_node = _M_node->_M_right;
+    while (_M_node->_M_left != 0)
+      _M_node = _M_node->_M_left;
+  }
+  else {
+    _Base_ptr __y = _M_node->_M_parent;
+    while (_M_node == __y->_M_right) {
+      _M_node = __y;
+      __y = __y->_M_parent;
+    }
+    if (_M_node->_M_right != __y)
+      _M_node = __y;
+  }
+  return _M_node;
+}
+#ifdef _MSC_VER
+#pragma optimize("",on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_STLP_RB_INCREMENT_SIZE_OWNER_PASS27
+// Fidelity: scaffolding, not retail.
+// The standalone 0x004292C0 owner uses optimize("s", on), as recorded in
+// stdRbtreebase_Rbtreeincrement_004292c0.cpp. The block resets with
+// optimize("", on). Put the consuming TU's own pragmas after this include.
+#pragma optimize("s", on)
+template<> inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_increment(_Rb_tree_node_base* node) {
+        if(node->_M_right!=0) {
+            node=node->_M_right;
+            while(node->_M_left!=0) node=node->_M_left;
+        } else {
+            _Rb_tree_node_base* parent=node->_M_parent;
+            while(node==parent->_M_right) {node=parent;parent=parent->_M_parent;}
+            if(node->_M_right!=parent) node=parent;
+        }
+        return node;
+    }
+#pragma optimize("", on)
+#endif
+
 #ifdef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
 // Original _tree.c272: the global template member is defined out of class.
 template<class Dummy> _Rb_tree_node_base* __cdecl _Rb_global<Dummy>::_M_decrement(_Rb_tree_node_base* _M_node)
@@ -156,6 +207,30 @@ template<> inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_decrement(_Rb
     _M_node = __y;
   }
   return _M_node;
+}
+#pragma optimize("", on)
+#endif
+#if defined(FABLE_RETAIL_STLP_RB_GLOBAL_INCREMENT_SIZE_BODY_PASS27) && defined(_MSC_VER)
+// Fidelity: scaffolding, not retail. The 44-byte 0x004292C0 STLport
+// owner is compiled with optimize("s", on). Instantiate that original body
+// and restore the caller's command-line mode with optimize("", on).
+#pragma optimize("s", on)
+template<> inline _Rb_tree_node_base* __cdecl _Rb_global<bool>::_M_increment(_Rb_tree_node_base* node)
+{
+    if (node->_M_right != 0) {
+        node = node->_M_right;
+        while (node->_M_left != 0)
+            node = node->_M_left;
+    } else {
+        _Rb_tree_node_base* parent = node->_M_parent;
+        while (node == parent->_M_right) {
+            node = parent;
+            parent = parent->_M_parent;
+        }
+        if (node->_M_right != parent)
+            node = parent;
+    }
+    return node;
 }
 #pragma optimize("", on)
 #endif

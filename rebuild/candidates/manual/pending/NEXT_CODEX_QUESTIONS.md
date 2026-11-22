@@ -10,3 +10,11 @@
 3. **0x00B4D370 CEngineShadowRenderer::UpdateShadowSpace, FableWin's code for Engine_Shadow_Renderer2.cpp line 590 and the tail lines
    636-657** (`pending/2026-11-22_auth20/00b4d370/ESCALATE.md`): line 590 (diag's GetMagnitude) is 96 B in FableWin and no measured
    spelling (68..112 B) gives 96; read the instructions and name the text.
+4. **Gate every shared-header edit (pass 27 lesson).** Two pass-27 patches changed text for every includer: an unconditional
+   `FABLE_RETAIL_ASSERT_ARM(index != 0)` in CBankFile::GetEntryDataType (12 landed rows stopped compiling) and an unconditional
+   declaration-only IsAwareOfThing in CTCPerceiveThing.h (2 rows DIFFER). Both are now gated (`batches/2026-11-22_landing_p27/README.md`).
+   Every edit to an existing line belongs under the row's opt-in macro. Before handing back, run equiv_check, then a recheck of every
+   landed row whose preprocessed text changes.
+5. **Inline-budget markers:** 16 pass-27 rows carry inline devices without the `// Inline-budget:` line and per-device ablation
+   (`batches/2026-11-22_landing_p27/logs/inline_devices_without_marker.txt`). Add them; rows whose device turns out unnecessary
+   drop it.

@@ -47,6 +47,10 @@ public:
     void FinishDecompressStream();                              // 0x00A3ABB0
     bool GetErrorFlag() const { return ErrorFlag; }
 #endif
+#ifdef FABLE_RETAIL_CCOMPRESSORZLIB_NATIVE_BUFFER_PASS27
+    // Original FableWin and Ego_r QAEKPBXKPAXK, called at native 009AE390.
+    unsigned long InternalCompress(const void*, unsigned long, void*, unsigned long);
+#endif
     unsigned long InternalDecompress(const void*,unsigned long,void*,unsigned long);
 #ifdef FABLE_RETAIL_CCOMPRESSORZLIB_INTERNALCOMPRESS
     // Opt-in (row 0x00523CF0, for the same-TU NThingManager::CEntityRuntimePersistence::SetGamePersistentSaveData body): Ego_r.pdb

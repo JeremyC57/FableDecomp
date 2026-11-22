@@ -47,7 +47,7 @@ public:
 protected:
     const CGamePlayerInterface& GetGamePlayerInterface() const { return *PGamePlayerInterface; }
     bool IsEventButtonPressed(const CInputEvent& event) const;
-    bool IsEventButtonHeld(const CInputEvent& event) const;
+    bool IsEventButtonReleased(const CInputEvent& event) const;
 public:
 #endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_GETMOUSEMOVEMENT
@@ -62,10 +62,10 @@ public:
     // Retail opt-in (agent1022, row 0x00691D70 CInputProcessCreatureMovement::ProcessInput), declarations only:
     // Ego_r.pdb ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z
     // (retail 0x00687D00, landed under the made-up spelling GetEventGameActionVector) and
-    // ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (retail 0x00687B30).
+    // ?IsEventButtonHeld@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (retail 0x00687B30).
     bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& movement) const;   // 0x00687D00
 protected:
-    bool IsEventButtonReleased(const CInputEvent& event) const;                                                       // 0x00687B30
+    bool IsEventButtonHeld(const CInputEvent& event) const;                                                       // 0x00687B30
 public:
 #endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_EVENTINQUEUE
@@ -132,10 +132,12 @@ struct CInputProcessGameBase {
     // branch's FABLE_RETAIL_INPUTPROCESS_ZTARGET / _MOVEMENT button queries, as Ego_r.pdb (0x006B2BA0 / 0x006B2C40 / 0x006B2CE0) and
     // FableWin.pdb (0x021D3D20 / 0x021D3E10 / 0x021D3F00) spell them: ?IsEventButtonPressed / ?IsEventButtonHeld /
     // ?IsEventButtonReleased@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z (protected const). Declarations only, the layout is unchanged.
+    // Held = 0x00687B30 (tests every IE_*_HELD code: 2/5/8/11/20/27..31), Released = 0x00687BD0 (IE_*_RELEASED: 3/6/9/12/21/32..36),
+    // Ego_r.pdb EInputEvent; the same order as both PDBs. Landed swapped until 2026-11-22 (Codex pass 27 + chunk 829, land0711e).
 protected:
     bool IsEventButtonPressed(const CInputEvent& event) const;                                                        // 0x00687A90
-    bool IsEventButtonHeld(const CInputEvent& event) const;                                                           // 0x00687BD0
-    bool IsEventButtonReleased(const CInputEvent& event) const;                                                       // 0x00687B30
+    bool IsEventButtonReleased(const CInputEvent& event) const;                                                           // 0x00687BD0
+    bool IsEventButtonHeld(const CInputEvent& event) const;                                                       // 0x00687B30
 public:
 #endif
 #ifdef FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS

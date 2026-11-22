@@ -49,8 +49,13 @@ public:
         long LowRepeatFactorUserVertexShaderConstant;                    // +0x08
     };
     enum EShadowRenderingTechnique {
+#ifdef FABLE_RETAIL_SHADOW_BUF_ENUM_PASS27
+        SHADOW_RENDERING_TECHNIQUE_NO_SHADOWS,
+        SHADOW_RENDERING_TECHNIQUE_DEPTH_BUFFER,
+#else
         SHADOW_RENDERING_TECHNIQUE_NONE,                                 // descriptive (0: unshadowed shaders)
         SHADOW_RENDERING_TECHNIQUE_SHADOW_BUFFER,                        // descriptive (1: the "Shadowed" shaders)
+#endif
         SHADOW_RENDERING_TECHNIQUE_COLOUR_BUFFER                         // descriptive (2: the "ColbuffShadowed" shaders)
     };
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESCENE
@@ -108,6 +113,9 @@ private:
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_INITIALISETEXTURES
     // Retail opt-in (Codex pass 24): both PDB names and call at 0x00B504FB.
     bool InitialiseTextures();
+#ifdef FABLE_RETAIL_SHADOW_BUFFERS_PASS27
+    void UninitialiseTextures();
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESPACE
     // Opt-in (NF53, round 7, row 0x00B4F390 UpdateShadowScene; needs _UPDATESCENE for the forward declarations): Ego_r.pdb private members

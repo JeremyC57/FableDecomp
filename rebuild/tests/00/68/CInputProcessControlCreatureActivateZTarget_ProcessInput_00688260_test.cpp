@@ -15,7 +15,7 @@ class CGamePlayerInterface {public:bool toggle;bool IsToggleZTarget()const{step(
 class CInputProcessGameBase {public:CPlayer* MyPlayer;CGamePlayerInterface* PGamePlayerInterface;
  bool IsEventGameAction(EGameAction a,const CInputEvent& e)const{step('A');if(&e!=want_event)++failures;return e.action==a;}
  protected:const CGamePlayerInterface& GetGamePlayerInterface()const{return *PGamePlayerInterface;}
- bool IsEventButtonHeld(const CInputEvent& e)const{step('H');if(&e!=want_event)++failures;return e.held;}
+ bool IsEventButtonReleased(const CInputEvent& e)const{step('H');if(&e!=want_event)++failures;return e.held;}
  bool IsEventButtonPressed(const CInputEvent& e)const{step('P');if(&e!=want_event)++failures;return e.pressed;}
 };
 class CInputProcessControlCreatureActivateZTarget:public CInputProcessGameBase {public:void ProcessInput(const CInputEvent&,CProcessedInput&);};
@@ -24,7 +24,7 @@ void CInputProcessControlCreatureActivateZTarget::ProcessInput(const CInputEvent
     if(MyPlayer->GetCurrentMode()==PLAYER_MODE_Z_TARGET)return;
     bool activate=false;
     if(GetGamePlayerInterface().IsToggleZTarget()) {
-        if(IsEventButtonHeld(event))activate=true;
+        if(IsEventButtonReleased(event))activate=true;
     } else {
         if(IsEventButtonPressed(event))activate=true;
     }

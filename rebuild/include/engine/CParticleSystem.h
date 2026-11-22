@@ -49,6 +49,22 @@ public:CParticleSystem();virtual ~CParticleSystem();
  // (debug copy 0x02F384F0 in the CPSCSingleSprite TU; __forceinline: plain inline is called out of line in the 2.5 KB rows): with the system not StayWithEmitter (+0x50 bit 6 clear) the
  // position is moved through GetSystemTransform's matrix (CMatrix3x4::TransformPoint; the retail rows read it with FABLE_RETAIL_CMATRIX3X4) (both PreparePrimitives rows; 0x00B18AF0 AddToBoundingSphere).
  void GetSystemTransform(CMatrix3x4&) const;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_TRANSFORMPOSIFWORLDEND
+ // FableWin exposes both original transforms. Update at 0x00B08530 expands the end-position
+ // wrapper around GetSystemEndTransform at 0x00B05B10, which both donor name sets spell identically.
+ void GetSystemEndTransform(CMatrix3x4&) const;
+#ifdef FABLE_RETAIL_CPARTICLESYSTEM_TRANSFORMPOSIFWORLDEND_INLINE
+ FABLE_FORCEINLINE
+#endif
+ void TransformPosIfWorldEnd(C3DVector& pos) const
+ {
+     if (!StayWithEmitter) {
+         CMatrix3x4 transform;
+         GetSystemEndTransform(transform);
+         transform.TransformPoint(pos);
+     }
+ }
+#endif
  #ifdef FABLE_RETAIL_CPARTICLESYSTEM_SCALEPARTICLEDIMENSIONS_FLOAT_INLINE
  // Opt-in (hand3c, row 0x00B05C60 CPSCSingleSprite::GetComponentCost; needs FABLE_RETAIL_CPARTICLESYSTEM_SCALE): the body is a header
  // inline -- Ego_r.pdb / FableWin.pdb place ?ScaleParticleDimensions@...@QBEXAAM@Z (and the C2DVector& / unsigned long& overloads) in

@@ -1,0 +1,7 @@
+# Copies the link check and Codex's LINK_REVIEW flag, masked bytes against Fable.exe (rvsobj: relocations zeroed in both)
+?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ @0094FDF0 55 B: 00951070 EQ, 00951fb0 EQ (owner 0x0094FDF0 landed; same retail TU)
+??$GetSubDef@VCTavernGameShoveHaPennyDef@@...  @007D1260 182 B: 007d04f0 EQ (implicit), 007cf9a0 EQ (landed explicit specialization)
+?erase@?$vector@KV?$allocator@K@std@@@std@@QAEPAKPAK0@Z @0046496F 52 B: 00a90ae0 EQ with the PASS27 header device; 34 B NEQ without it
+??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z (no table entry; retail scalar 87 B, landed 0x00E17840 emits it):
+  00cfce90 46 B = the 46-B copy landed 0x00D50C60 / 0x00EDFA00 / 0x00ED17D0 (+19 more of 29 checked) already emit
+  00f00c90 30 B = the 30-B copy landed 0x00DAC760 / 0x00DADF80 / 0x00E8EF80 already emit (byte-identical, relocations masked)

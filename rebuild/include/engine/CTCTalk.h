@@ -10,6 +10,10 @@ enum EConversationAttitude;                                              // MS f
 #endif
 // TPI0x23414 full original fields and base; no container-width changes here.
 class CTCTalk : public CTCBase {
+#ifdef FABLE_RETAIL_DRINK_FIXTURE_PASS27
+public:
+    CTCTalk(CThing&);
+#endif
 private:
     long SpeechSample,SampleStartedFrame,SampleDurationFrames;
 #ifdef FABLE_RETAIL_CTCTALK_CONVERSATION

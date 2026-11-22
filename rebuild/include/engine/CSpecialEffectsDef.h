@@ -40,7 +40,12 @@ inline bool CSpecialEffectsDef::GetEffectFromString(const CCharString& name,long
  const char* str=name.GetAsCharArray();
  std::map<unsigned long,long>::const_iterator it=SpecialEffectsMap.ContainmentMap.find(CCRC::Calc(0,str,len));
 #else
+#ifdef FABLE_RETAIL_CSPECIALEFFECTSDEF_GETEFFECT_GETCRC_PASS27
+ // FableWin 0x01D89A40 calls CCharString::GetCRC for the search key.
+ std::map<unsigned long,long>::const_iterator it=SpecialEffectsMap.ContainmentMap.find(name.GetCRC());
+#else
  std::map<unsigned long,long>::const_iterator it=SpecialEffectsMap.ContainmentMap.find(CCRC::Calc(0,name.GetAsCharArray(),name.GetLength()));
+#endif
 #endif
  if(it!=SpecialEffectsMap.ContainmentMap.end()){effect=it->second;return true;}
  return false;

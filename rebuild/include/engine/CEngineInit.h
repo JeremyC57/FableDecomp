@@ -17,7 +17,12 @@ class CMeshDataBank;
 class CEngineInit {
 public:
     CEngineInit();                                                       // 0x0042D830 ??0CEngineInit@@QAE@XZ
+#ifdef FABLE_RETAIL_CENGINEINIT_INLINE_DESTRUCTOR_PASS27
+    // Display initialization expands the same five wide-string destructions as 0x0042F7C1.
+    ~CEngineInit() {}
+#else
     ~CEngineInit();                                                      // 0x0042F7C1 ??1CEngineInit@@QAE@XZ
+#endif
     CDefinitionManager* DefinitionManager;                               // +0x00
     CEngineDef*         EngineDef;                                       // +0x04
     CRenderManager*     RenderManager;                                   // +0x08
@@ -35,5 +40,5 @@ public:
     long                StaticMapQuality;                                // +0x5c
     long                InitFlags;                                       // +0x60
 };
-FABLE_STATIC_ASSERT(sizeof(CEngineInit) == 0x64);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CEngineInit) == 0x64);
 #endif // FABLE_ENGINE_CENGINEINIT_H

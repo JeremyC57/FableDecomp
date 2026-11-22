@@ -10,12 +10,16 @@
 #include "engine/CDefIndex.h"
 class COpinionOfHeroDef : public CSubDefClassBase {
 public:
+#ifdef FABLE_RETAIL_COPINIONOFHERODEF_TYPENAME_PASS27
+    // FableWin 01DE8660 and the original native GetSubDef at 00685C00.
+    static CCharString __fastcall StatGetTypeName() { return CCharString("COpinionOfHeroDef", -1); }
+#endif
     CDefIndex ThreatenGift;                                              // +0x28
     bool      WillAttackCriminals;                                       // +0x2c
     long      Personality;                                               // +0x30
     long      ReactionMask;                                              // +0x34
     long      DeedMask;                                                  // +0x38
 };
-FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, WillAttackCriminals) == 0x2c);
-FABLE_STATIC_ASSERT(sizeof(COpinionOfHeroDef) == 0x3c);
+FABLE_STATIC_ASSERT_AT(19, offsetof(COpinionOfHeroDef, WillAttackCriminals) == 0x2c);
+FABLE_STATIC_ASSERT_AT(20, sizeof(COpinionOfHeroDef) == 0x3c);
 #endif

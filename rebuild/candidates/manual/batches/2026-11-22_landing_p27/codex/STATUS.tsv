@@ -1,0 +1,101 @@
+row	bytes	grade	pickany	residue
+005bfd5e	425	VERIFIED	EQ 9, NEQ 0	All 425 bytes match; behavior PASS on common include tree.
+00a1ad40	370	VERIFIED	EQ 0, NEQ 0	All 370 bytes match; behavior PASS on common include tree.
+006ebf70	1026	VERIFIED	EQ 2, NEQ 0	All 1026 bytes match; behavior PASS on common include tree.
+009ae390	600	VERIFIED	EQ 6, NEQ 0	All 600 bytes match; behavior PASS on common include tree.
+0072f750	643	VERIFIED	EQ 9, NEQ 0	All 643 bytes match; behavior PASS on common include tree.
+00ac70f0	237	VERIFIED	EQ 0, NEQ 0	All 237 bytes match; behavior PASS on common include tree.
+00b4f8e0	811	VERIFIED	EQ 0, NEQ 0	All 811 bytes match; behavior PASS on common include tree.
+00666310	908	VERIFIED	EQ 7, NEQ 0	All 908 bytes match; behavior PASS on common include tree.
+0091f140	949	VERIFIED	EQ 5, NEQ 0	All 949 bytes match; behavior PASS on common include tree.
+008575c0	1032	VERIFIED	EQ 4, NEQ 0	All 1032 bytes match; behavior PASS on common include tree.
+00acd0e0	1041	LANDABLE_WITH_PREEXISTING_BINDING_DEBT	EQ 4, NEQ 0	All 1041 bytes match; behavior PASS on common include tree. One unique correct retail address for the exported unsigned tree destructor. Four complete bodies match both operands. Original binding uses signed erase and is demonstrably wrong.
+006eae20	1387	VERIFIED	EQ 9, NEQ 0	All 1387 bytes match; behavior PASS on common include tree.
+005a6ca1	1662	VERIFIED	EQ 8, NEQ 1; documented binding correction	All 1662 bytes match; behavior PASS on common include tree.
+00688360	1690	VERIFIED	EQ 5, NEQ 0	All 1690 bytes match; behavior PASS on common include tree.
+00e4fa20	1756	VERIFIED	EQ 5, NEQ 0	All 1756 bytes match; behavior PASS on common include tree.
+0094dd90	1761	VERIFIED	EQ 5, NEQ 0	All 1761 bytes match; behavior PASS on common include tree.
+00951fb0	2272	VERIFIED	EQ 15, NEQ 0	All 2272 bytes match; behavior PASS on common include tree. Strong copy 0x0094FDF0 (55 bytes, RELOCATION_MATCH). Strong copy 0x0094FBB0 (65 bytes, RELOCATION_MATCH).
+006bb860	181	VERIFIED	EQ 1, NEQ 0	All 181 bytes match; behavior PASS on common include tree.
+008ef200	231	VERIFIED	EQ 2, NEQ 0	All 231 bytes match; behavior PASS on common include tree.
+00637fc0	243	VERIFIED	EQ 0, NEQ 0	All 243 bytes match; behavior PASS on common include tree. 243/243 bytes with the original unconditional list-head assignment. Whole graph fixture and 1024 combinations of list insertions passed. Strong copy 0x00637da0 (158 bytes, Exact body and native relocation targets). Strong copy 0x00637e70 (193 bytes, Exact body and native relocation targets). Strong copy 0x00637b10 (305 bytes, Exact body and native relocation targets).
+0055c6f0	276	VERIFIED	EQ 0, NEQ 0	All 276 bytes match; behavior PASS on common include tree.
+00ed9bb0	306	VERIFIED	EQ 0, NEQ 0	All 306 bytes match; behavior PASS on common include tree.
+009fe780	343	VERIFIED	EQ 3, NEQ 0	All 343 bytes match; behavior PASS on common include tree.
+00844740	350	VERIFIED	EQ 0, NEQ 0	All 350 bytes match; behavior PASS on common include tree.
+00896b60	445	VERIFIED	EQ 4, NEQ 0	All 445 bytes match; behavior PASS on common include tree.
+0095fb40	451	VERIFIED	EQ 5, NEQ 0	All 451 bytes match; behavior PASS on common include tree.
+00935e40	468	VERIFIED	EQ 4, NEQ 0	All 468 bytes match; behavior PASS on common include tree.
+00bc6930	530	VERIFIED	EQ 3, NEQ 0	All 530 bytes match; behavior PASS on common include tree.
+0074ec50	564	VERIFIED	EQ 21, NEQ 0	All 564 bytes match; behavior PASS on common include tree.
+007820e0	680	VERIFIED	EQ 11, NEQ 0	All 680 bytes match; behavior PASS on common include tree.
+00b16aa0	681	VERIFIED	EQ 0, NEQ 0	All 681 bytes match; behavior PASS on common include tree.
+0092cda0	701	VERIFIED	EQ 7, NEQ 0	All 701 bytes match; behavior PASS on common include tree.
+00a58790	707	VERIFIED	EQ 0, NEQ 0	All 707 bytes match; behavior PASS on common include tree.
+006c5a80	737	VERIFIED	EQ 6, NEQ 0	All 737 bytes match; behavior PASS on common include tree. Strong copy 0x006C5630 (78 bytes, RELOCATION_MATCH).
+007d04f0	851	VERIFIED	EQ 9, NEQ 0	All 851 bytes match; behavior PASS on common include tree.
+00497b60	1052	VERIFIED	EQ 4, NEQ 0	All 1052 bytes match; behavior PASS on common include tree.
+00627be0	1056	VERIFIED	EQ 43, NEQ 3; documented binding correction	All 1056 bytes match; behavior PASS on common include tree. Both reserved members are defined in the same original compiland. Compile 00628000.cpp once. The 00627be0.cpp grading view has identical source except the address and Leaf comments. Category builders 00626750 (1771) and 00627400 (742) also match.
+00628000	1315	VERIFIED	EQ 42, NEQ 3; documented binding correction	All 1315 bytes match; behavior PASS on common include tree. Both reserved members are defined in the same original compiland. Compile 00628000.cpp once. The 00627be0.cpp grading view has identical source except the address and Leaf comments. Category builders 00626750 (1771) and 00627400 (742) also match.
+00a276d0	1330	VERIFIED	EQ 1, NEQ 1; documented binding correction	All 1330 bytes match; behavior PASS on common include tree.
+0095ef80	1528	VERIFIED	EQ 12, NEQ 0	All 1528 bytes match; behavior PASS on common include tree.
+00922860	1612	VERIFIED	EQ 10, NEQ 0	All 1612 bytes match; behavior PASS on common include tree.
+00cfce90	1852	VERIFIED	EQ 9, NEQ 0	All 1852 bytes match; behavior PASS on common include tree. See LINK_REVIEW.json for the unmapped MovieBase destructor and the tested link order. All 1852 bytes and 90 leaf fixups agree. Native LINK selects the 87-byte MovieBase scalar from the original game_script_interface.obj first. The script contains a 46-byte copy with the same symbol. Keep this advisory in the handoff.
+00ddb720	2158	VERIFIED	EQ 8, NEQ 0	All 2158 bytes match; behavior PASS on common include tree.
+007a7d20	2520	VERIFIED	EQ 20, NEQ 0	All 2520 bytes match; behavior PASS on common include tree.
+0081ea50	391	VERIFIED	EQ 0, NEQ 0	All 391 bytes match; behavior PASS on common include tree.
+00a898d0	402	VERIFIED	EQ 0, NEQ 0	All 402 bytes match; behavior PASS on common include tree.
+004bc1a0	406	VERIFIED	EQ 2, NEQ 0	All 406 bytes match; behavior PASS on common include tree.
+00659625	475	VERIFIED	EQ 7, NEQ 0	All 475 bytes match; behavior PASS on common include tree.
+00a90ae0	629	VERIFIED	EQ 5, NEQ 0	All 629 bytes match; behavior PASS on common include tree.
+00d90290	702	VERIFIED	EQ 5, NEQ 0	All 702 bytes match; behavior PASS on common include tree. The 702-byte script, 45-byte live predicate scalar destructor and all five vtables are verified in the same object. Four weak emissions have no established address. Strong copy 00d90250 (4 bytes, exact; all operands resolved). Strong copy 00d90260 (1 bytes, exact; all operands resolved). Strong copy 00d901b0 (145 bytes, exact; all operands resolved).
+00435190	774	VERIFIED	EQ 1, NEQ 0	All 774 bytes match; behavior PASS on common include tree.
+0098ecd0	786	VERIFIED	EQ 2, NEQ 0	All 786 bytes match; behavior PASS on common include tree.
+006fda20	819	VERIFIED	EQ 7, NEQ 0	All 819 bytes match; behavior PASS on common include tree.
+00c95580	910	VERIFIED	EQ 1, NEQ 0	All 910 bytes match; behavior PASS on common include tree. Unmodified Xiph source rebuilt independently: all 910 bytes, 16 operands, two static helpers and _ilog. Both six-case tests pass. Strong copy 0x00C954F0 (99 bytes, RELOCATION_MATCH). Strong copy 0x00C95560 (31 bytes, RELOCATION_MATCH).
+00951070	953	VERIFIED	EQ 15, NEQ 0	All 953 bytes match; behavior PASS on common include tree. Strong copy 0x0094F9E0 (28 bytes, RELOCATION_MATCH). Strong copy 0x0094FDF0 (55 bytes, RELOCATION_MATCH).
+00726ce0	1011	VERIFIED	EQ 1, NEQ 0	All 1011 bytes match; behavior PASS on common include tree.
+0096df50	1150	VERIFIED	EQ 11, NEQ 0	All 1150 bytes match; behavior PASS on common include tree.
+005eca50	1176	VERIFIED	EQ 3, NEQ 0	All 1176 bytes match; behavior PASS on common include tree.
+00a92900	2274	VERIFIED	EQ 12, NEQ 0	All 2274 bytes match; behavior PASS on common include tree.
+009e3f60	189	VERIFIED	EQ 1, NEQ 0	All 189 bytes match; behavior PASS on common include tree.
+00873930	221	VERIFIED	EQ 0, NEQ 0	All 221 bytes match; behavior PASS on common include tree.
+006e0880	228	VERIFIED	EQ 3, NEQ 0	All 228 bytes match; behavior PASS on common include tree.
+00944300	354	VERIFIED	EQ 3, NEQ 0	All 354 bytes match; behavior PASS on common include tree.
+008fa660	366	VERIFIED	EQ 0, NEQ 0	All 366 bytes match; behavior PASS on common include tree.
+006eb700	411	VERIFIED	EQ 9, NEQ 0	All 411 bytes match; behavior PASS on common include tree.
+00938380	499	VERIFIED	EQ 4, NEQ 0	All 499 bytes match; behavior PASS on common include tree.
+0049c490	583	VERIFIED	EQ 2, NEQ 0	All 583 bytes match; behavior PASS on common include tree. 583 bytes and 14 verified leaf operands. Placement new and the 216-byte STLport overflow helper match. No additional strong copies.
+007b8840	608	VERIFIED	EQ 5, NEQ 0	All 608 bytes match; behavior PASS on common include tree. 608 bytes, 33 verified leaf operands, all five mapped COMDATs match, no other strong copies. Runtime passed.
+00b08530	654	VERIFIED	EQ 5, NEQ 0	All 654 bytes match; behavior PASS on common include tree. 654 bytes; 10 verified operands, 5 mapped copies equal, no strong copies, behavior PASS
+0091c6a0	786	VERIFIED	EQ 5, NEQ 0	All 786 bytes match; behavior PASS on common include tree. 786 bytes, 44 leaf relocations and 11 helper operands verified, five mapped copies match. Runtime branch fixture passed.
+00974770	807	VERIFIED	EQ 13, NEQ 0	All 807 bytes match; behavior PASS on common include tree. 807 bytes, 48 leaf, 18 weak and five strong helper relocations verified, 12 mapped weak copies and one 85-byte strong copy match. Runtime fixture passed.
+009334f0	1347	VERIFIED	EQ 4, NEQ 0	All 1347 bytes match; behavior PASS on common include tree. 1347 bytes and all 91 leaf operands match. 7 exact weak code bodies and both generated pointer vtable slots match. Runtime passed 17 cases.
+009cec60	1850	VERIFIED	EQ 4, NEQ 0	All 1850 bytes match; behavior PASS on common include tree. 1850 bytes and all 106 leaf operands match. Seven weak bodies, all six weak operands and the generated EH handler and records match with 17 verified operands. Nine-case runtime fixture passed.
+00b97c10	150	VERIFIED	EQ 8, NEQ 0	All 150 bytes match; behavior PASS on common include tree. 150 bytes and 2 leaf operands match. Nine verified weak bodies and all 18 helper operands match. No additional strong code. Runtime passed.
+0079a890	508	VERIFIED	EQ 10, NEQ 1; documented binding correction	All 508 bytes match; behavior PASS on common include tree. 508 bytes and 16 leaf operands match. Twelve exact weak bodies including the search and corrected list thunk. All 23 helper operands verified. Six-case runtime fixture passed.
+00b61dd0	532	VERIFIED	EQ 0, NEQ 0	All 532 bytes match; behavior PASS on common include tree. 532 bytes, 14 verified operands, 21-byte static initializer exact with all three operands, zero mapped pick-anys and other strong copies, behavior PASS
+0072f380	968	VERIFIED	EQ 9, NEQ 0	All 968 bytes match; behavior PASS on common include tree. 968 bytes, 69 leaf and 17 helper operands verified, 9 mapped weak copies match, no other strong code. Save and load fixture passed.
+00b412a0	1081	VERIFIED	EQ 1, NEQ 0	All 1081 bytes match; behavior PASS on common include tree. 1,081 bytes and 17 verified leaf operands. The 324-byte PeekThemeId COMDAT and its world-map operand match. No additional strong code. Nineteen-case runtime fixture passed.
+00531090	1227	VERIFIED	EQ 4, NEQ 0	All 1227 bytes match; behavior PASS on common include tree. 1227 bytes and 8 leaf operands match. Four mapped weak members and 3 helper operands match. No additional strong code. Seven-case runtime fixture passed.
+008764e0	1340	VERIFIED	EQ 3, NEQ 0	All 1340 bytes match; behavior PASS on common include tree. 1340 bytes and 26 leaf operands match. Three mapped weak copies match and carry no relocations. No other strong methods. Three-case runtime fixture passed.
+00b60f70	1823	VERIFIED	EQ 0, NEQ 0	All 1823 bytes match; behavior PASS on common include tree. 1823 bytes; 67 verified operands; no mapped pick-any or strong copies; behavior PASS
+0083e1f0	1973	VERIFIED	EQ 12, NEQ 1; documented binding correction	All 1973 bytes match; behavior PASS on common include tree. 1973 bytes and 143 leaf operands match. Fourteen exact weak bodies, all 43 helper operands and five native vtable slots verified. Six-case runtime fixture passed.
+008f61a0	530	VERIFIED	EQ 5, NEQ 0	All 530 bytes match; behavior PASS on common include tree. 530 bytes and six leaf operands match. Nine exact weak copies and all 7 helper operands verified. No additional strong copies. Five-case runtime fixture passed.
+00b92950	707	VERIFIED	EQ 0, NEQ 0	All 707 bytes match; behavior PASS on common include tree. 707 bytes, 14 verified relocations, no mapped weak or additional strong bodies, runtime branch fixture passed.
+009392a0	761	VERIFIED	EQ 9, NEQ 0	All 761 bytes match; behavior PASS on common include tree. 761 bytes and all 39 leaf operands match. Twelve mapped weak code bodies, both filter tables, three initializers, and the string cleanup match. All 12 behavior cases passed.
+00802e00	990	VERIFIED	EQ 7, NEQ 0	All 990 bytes match; behavior PASS on common include tree. 990 bytes, 51 leaf and 14 weak helper operands verified, seven mapped weak copies match. Runtime fixture passed.
+008ef520	998	VERIFIED	EQ 6, NEQ 0	All 998 bytes match; behavior PASS on common include tree. 998 bytes and 36 leaf operands match. Seven exact weak copies and the 131-byte strong Mass::BackplaneFriction match. All 22 companion operands verified. Nine-case runtime fixture passed.
+0091ec30	1047	VERIFIED	EQ 7, NEQ 0	All 1047 bytes match; behavior PASS on common include tree. 1047 bytes, 51 leaf and 12 weak helper operands verified, seven mapped weak copies match. Fourteen-case runtime fixture passed.
+00948880	1206	VERIFIED	EQ 5, NEQ 0	All 1206 bytes match; behavior PASS on common include tree. 1206 bytes, 48 leaf and nine weak helper operands verified, five mapped weak copies match. Local cooldown data verified. Runtime fixture passed.
+007c57c0	1519	VERIFIED	EQ 17, NEQ 0	All 1519 bytes match; behavior PASS on common include tree. 1519 bytes and all 100 leaf operands match. 19 exact weak code bodies and both generated pointer vtable slots match. Runtime passed 6 cases.
+00955620	1647	VERIFIED	EQ 8, NEQ 0	All 1647 bytes match; behavior PASS on common include tree. 1647 bytes and all 79 leaf operands match. Ten mapped weak code bodies, one 55-byte strong helper, and all 81 CombatIdle vtable slots verified. Nineteen-case behavior fixture passed. Strong copy 0x009542B0 (55 bytes, RELOCATION_MATCH).
+006af4e0	52	VERIFIED	EQ 0, NEQ 0	All 52 bytes match; behavior PASS on common include tree. 52 bytes; three GetPItem relocations verified, no mapped pick-any mismatches or strong copies, behavior PASS
+00493281	357	VERIFIED	EQ 1, NEQ 0	All 357 bytes match; behavior PASS on common include tree. 357 bytes; 19 verified relocations; profile accessor 0048DB35 equal; no strong copies; behavior PASS
+00b3bc90	371	VERIFIED	EQ 0, NEQ 0	All 371 bytes match; behavior PASS on common include tree. 371 bytes, 29 verified leaf operands, three verified counted-pointer copies, no other strong owners, behavior PASS
+00c76880	513	VERIFIED	EQ 0, NEQ 0	All 513 bytes match; behavior PASS on common include tree. 513 C++ bytes and the one native float operand match. No mapped pick-any or other strong code. Six-case VC7.1 and host C++03 fixtures passed. SDK comparison preserved separately.
+00ab1740	592	VERIFIED	EQ 6, NEQ 0	All 592 bytes match; behavior PASS on common include tree. 592 bytes and 14 leaf operands match. Six exact weak bodies and the 109-byte FindChildIndex strong owner match. All 5 companion operands verified. Six-case runtime fixture passed.
+00a56270	693	VERIFIED	EQ 0, NEQ 0	All 693 bytes match; behavior PASS on common include tree. 693 bytes, nine proved table/literal operands, zero mapped pick-anys and strong same-TU copies, behavior PASS
+00625af0	989	VERIFIED	EQ 16, NEQ 1; documented binding correction	All 989 bytes match; behavior PASS on common include tree. 989 bytes and 53 verified leaf operands. Twenty-two weak code bodies and both action-parameter vtable slots equal retail. Five-case runtime fixture passed.
+0064b1ac	1045	VERIFIED	EQ 6, NEQ 0	All 1045 bytes match; behavior PASS on common include tree. 1045 bytes and all 40 leaf operands match. Six exact weak copies and all seven helper operands verified. No additional strong copies. Fifteen-case runtime fixture passed.
+00f00c90	1203	VERIFIED	EQ 11, NEQ 0	All 1203 bytes match; behavior PASS on common include tree. See LINK_REVIEW.json for the unmapped MovieBase destructor and the tested link order. 1203 bytes and all 65 leaf operands match. Eleven exact weak copies and all 15 helper operands verified. No additional strong copies. Twelve-case runtime fixture passed.

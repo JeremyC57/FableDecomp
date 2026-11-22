@@ -24,6 +24,9 @@ class C3DVector;
 class CTCFlourishTarget : public CTCBase {
 public:
     CTCFlourishTarget(CThing&);                                          // ??0CTCFlourishTarget@@QAE@AAVCThing@@@Z
+#ifdef FABLE_RETAIL_COMBAT_NEXT_POS_PASS27
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_FLOURISH_TARGET; }
+#endif
     static CTCBase* __fastcall Alloc(CThing&);                           // ?Alloc@CTCFlourishTarget@@SIPAVCTCBase@@AAVCThing@@@Z
     static CCharString __fastcall StatGetClassTypeName();                // ?StatGetClassTypeName@CTCFlourishTarget@@SI?AVCCharString@@XZ
     virtual ETCInterfaceType GetInterfaceType() const;                   // ?GetInterfaceType@CTCFlourishTarget@@UBE?AW4ETCInterfaceType@@XZ

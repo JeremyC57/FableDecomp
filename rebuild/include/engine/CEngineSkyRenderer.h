@@ -89,6 +89,10 @@ public:
     bool               EnableClouds;                                     // +0x18c
     CDefPointer<const CSkyDef> PSkyDef;                                  // +0x190
 private:
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDCLOUDMESH
+    // Ego_r and FableWin both record the private cloud mesh builder at retail 0x00B61DD0.
+    void BuildCloudMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);
+#endif
     void BuildBuffers();                                                 // 0x00B620A0
 #ifdef FABLE_RETAIL_CENGINESKYRENDERER_ENVMAP
     // Retail opt-in (chunk 2008, row 0x00B665E0): Ego_r.pdb / FableWin.pdb ?RenderSky@CEngineSkyRenderer@@AAEXMABVC3DVector@@_N@Z (private,
@@ -171,6 +175,10 @@ public:
     bool             EnableClouds;                           // +0x18c
     unsigned char    _pad_0x18d[0x3];                        // +0x18d
     CDefPointeeBase* PSkyDef_Object;                         // +0x190 CDefPointer<CSkyDef_const_>::Object
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER_BUILDCLOUDMESH
+    // The layout-only branch exposes BuildCloudMesh for the stand-alone geometry fixture.
+    void BuildCloudMesh(class CTVertexColTex1** verts_ptr, unsigned short** indices_ptr, long index_offset, long vertex_offset);
+#endif
 };
 #pragma pack(pop)
 

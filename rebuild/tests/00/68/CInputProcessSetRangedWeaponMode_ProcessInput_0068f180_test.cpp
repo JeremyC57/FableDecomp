@@ -102,7 +102,7 @@ public:
     CGameDefinitionManager* DefinitionManager;     // +0x1c
     CMainGameComponent*     Component;             // +0x20
     CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-    bool IsEventButtonHeld(const CInputEvent& event) { return event.m_held != 0; }
+    bool IsEventButtonReleased(const CInputEvent& event) { return event.m_held != 0; }
     bool IsEventGameAction(long action, const CInputEvent& event) { return event.m_action == action; }
 };
 class CInputProcessSetRangedWeaponMode : public CInputProcessGameBase {
@@ -112,7 +112,7 @@ public:
 
 void CInputProcessSetRangedWeaponMode::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
-    if (IsEventButtonHeld(event) && IsEventGameAction(0x2d, event)) {
+    if (IsEventButtonReleased(event) && IsEventGameAction(0x2d, event)) {
         if (g_rangedWeaponModeGate && !MyPlayer->IsFirstPersonTargeting()) {
             CTC81* tc;
             if (MyPlayer->GetHeroThing()->GetInterface(&tc, 0x81) && !tc->m_15)

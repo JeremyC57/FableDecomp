@@ -1,0 +1,3 @@
+address	name	evidence
+00687b30	CInputProcessGameBase::IsEventButtonHeld	body tests every Ego_r.pdb EInputEvent IE_*_HELD code (2/5/8/11/20/27..31); FableWin.pdb 0x021D3E10 / Ego_r.pdb 0x006B2C40 same order (Codex pass 27, chunk 829 land0711e)
+00687bd0	CInputProcessGameBase::IsEventButtonReleased	body tests every IE_*_RELEASED code (3/6/9/12/21/32..36); FableWin.pdb 0x021D3F00 / Ego_r.pdb 0x006B2CE0

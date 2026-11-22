@@ -17,6 +17,9 @@ class CThing;
 class CBuyableHouseDef;
 class CTCBuyableHouse : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CREATE_VILLAGER_PASS27
+    void MovedInNotification(long);
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BUYABLE_HOUSE; }
 #if defined(FABLE_RETAIL_CTCWIFE_MARRY) || defined(FABLE_RETAIL_CTCBUYABLEHOUSE_WIFE)
     void SetWifeLivingHere(CThing*);

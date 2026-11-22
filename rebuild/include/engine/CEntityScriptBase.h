@@ -24,6 +24,9 @@ class CGameScriptInterfaceBase;
 
 class CEntityScriptBase {
 public:
+#ifdef FABLE_RETAIL_SCYTHE_BEFORE_TABLETS_PASS27
+    CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me);
+#else
     CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) :
 #ifdef FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
         Game(game),
@@ -31,6 +34,7 @@ public:
         Game(&game),
 #endif
         Me(me) {}
+#endif
     virtual ~CEntityScriptBase();                                        // slot 0  0x00CDEBF0 (scalar deleting); 0x00F35B40
     virtual void Main() = 0;                                             // slot 1
     virtual void Init();                                                 // slot 2  0x00CDEBB0
@@ -48,7 +52,7 @@ protected:
 #endif
     CScriptThing              Me;                                        // +0x08
 };
-FABLE_STATIC_ASSERT(sizeof(CEntityScriptBase) == 0x14);
+FABLE_STATIC_ASSERT_AT(51, sizeof(CEntityScriptBase) == 0x14);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CENTITYSCRIPTBASE_H

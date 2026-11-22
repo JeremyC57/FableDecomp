@@ -116,6 +116,10 @@ public:
     // A visible body that is not expanded keeps the object tracked. Default path unchanged.
     __declspec(noinline)
 #endif
+#ifdef FABLE_RETAIL_JACKDRAGON_HOT_CTORS_PASS27
+    // Inline-budget: UpdateHover initializes the counted mode pointer in place before AddMode.
+    FABLE_FORCEINLINE
+#endif
     CCountedPointer(T* data) : Data(data)
     {
 #ifdef FABLE_RETAIL_CCOUNTEDPOINTER

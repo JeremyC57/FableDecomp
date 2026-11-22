@@ -27,6 +27,17 @@ template<class T>class CIVCountedPointer;
 class CEngineInternalPrimitiveBase : public CEnginePersistentPrimitiveBase {
 public:
  CEngineInternalPrimitiveBase(long,unsigned long);
+#ifdef FABLE_RETAIL_SCENEGRID_VISIBILITY_PASS27
+ // Original FableWin methods, expanded at 0x00B92950.
+ unsigned long GetRenderLayerMask() const { return RenderLayerMask; }
+ void SetAsRendered() { LastFrameRendered = CurrentRenderFrame; }
+ void RemoveFromList();                                                        // retail 0x00B8FE60
+private:
+ static unsigned short CurrentRenderFrame;
+public:
+ void SetGridCell(CEngineSceneGridCell* cell) { GridCell = cell; }
+ void AddToList(CEngineInternalPrimitiveBase** list);
+#endif
 #ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_NEXT_PASS23
  // Both original PDB public const getter; private original field at38.
  CEngineInternalPrimitiveBase* GetNextPrimitive() const {return NextPrimitive;}

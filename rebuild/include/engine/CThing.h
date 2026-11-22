@@ -337,6 +337,9 @@ public:
 #endif
     unsigned __int64 GetUniqueID() const { return UniqueID; }
     long GetCurrentMapNumber() const { return CurrentMapNumber; }
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_PLACE_PASS27
+    bool IsLocal() const;
+#endif
     bool IsLevelLess() const;
     bool IsDead() const { return Dead!=0; }
 #ifdef FABLE_RETAIL_CTHING_SCANINCLUSION_OUTOFLINE
@@ -371,7 +374,11 @@ public:
     // Fable.exe. No layout change.
     FABLE_FORCEINLINE
 #endif
+#ifdef FABLE_RETAIL_CTHING_HASTC_SPEED_OWNER_PASS27
+    bool HasTC(ETCInterfaceType type) const;
+#else
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
     // Original FableWin donor024db630: presence, GetTC, exact class-name equality.
     template<class T> FABLE_FORCEINLINE bool HasTC()const {
@@ -413,7 +420,12 @@ public:
         return false;
     }
     template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id,T** ptc) const {
+#ifdef FABLE_RETAIL_CTHING_COMPONENT_QUERY_PASS27
+        // Inline-budget: retain the direct const bitset test in the exclusive-use predicate at 006A8AF0.
+        if(UsingComponents.test(id)) {
+#else
         if(HasTC(id)) {
+#endif
             ETCInterfaceType type=id;
             const CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >* map=&Components;
             CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::const_iterator it=map->LowerBound(type);

@@ -17,7 +17,7 @@ class CThing { public:
 static CThing g_hero;
 class CInputProcessTavernGame { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
-    bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 2; }
+    bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 2; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed)
     {
@@ -28,7 +28,7 @@ class CInputProcessTavernGame { public:
         if (IsEventButtonPressed(event)) {
             if (IsEventGameAction(0x19, event)) GetInstance()->SendEvent(0x1a);
             else if (IsEventGameAction(0x4c, event)) GetInstance()->SendEvent(0x1b);
-        } else if (IsEventButtonHeld(event)) {
+        } else if (IsEventButtonReleased(event)) {
             if (IsEventGameAction(0x19, event)) GetInstance()->SendEvent(0x1c);
             else if (IsEventGameAction(0x4c, event)) GetInstance()->SendEvent(0x1d);
         } else if (IsEventGameAction(0x47, event)) {

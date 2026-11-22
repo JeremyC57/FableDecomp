@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_DRUNK_UPDATE_PASS27
+#include "engine/CAIStateGroupBase.h"
+// 00922860: original inherited state group, method access from both donor PDBs.
+class CAIStateGroup_Drunk : public CAIStateGroupBase {
+public:
+    virtual void Update();
+private:
+    void TalkToSelfUpdate();
+    long FrameToNextTalkToSelf;
+};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_Drunk)==0x18);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -29,4 +41,5 @@ FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_Drunk) == 0x18);
 FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_Drunk, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_Drunk, FrameToNextTalkToSelf) == 0x14);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_DRUNK_UPDATE_PASS27
 #endif // FABLE_ENGINE_CAISTATEGROUP_DRUNK_H

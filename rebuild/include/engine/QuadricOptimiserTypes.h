@@ -21,6 +21,12 @@ class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator
  // ?GetInverseMatrixPart@CQuadric@QuadricOptimiserInternals@@QBE?AVCMatrix3x4@@XZ, out of line in retail at 0x00AC70F0. Declaration only.
  CMatrix3x4 GetInverseMatrixPart()const;
 #endif
+#if defined(FABLE_RETAIL_CQUADRIC_DETERMINANT_PASS27) && !defined(FABLE_RETAIL_CQUADRIC_OPTIMALPLACEMENT)
+ double GetDeterminant() const {
+    double det = AA * (BB * CC - BC * BC) + AB * (BC * AC - AB * CC) + AC * (AB * BC - BB * AC);
+    return det;
+ }
+#endif
 #ifdef FABLE_RETAIL_CQUADRIC_OPTIMALPLACEMENT
  // Retail opt-in (Codex pass 24): FableWin and Ego_r carry these two helpers expanded at 0x00AC77B6 and 0x00AC780E.
  double GetDeterminant() const {
@@ -44,6 +50,11 @@ class CQuadric {public:double AA,AB,AC,AD,BB,BC,BD,CC,CD,DD,Weight;void operator
 // FableWin.pdb ?AddIndex@CIndexList@QuadricOptimiserInternals@@QAEXK@Z (inline), ~CUniqueVertex 0x00AD4A70 out of line.
 class CIndexList {public:
  std::set<unsigned long> Indices;
+#ifdef FABLE_RETAIL_QUADRIC_FACE_FOLD_PASS27
+ CIndexList GetSymmetricDifference(const CIndexList& other) const;
+ std::set<unsigned long>::iterator Begin() const { return Indices.begin(); }
+ std::set<unsigned long>::iterator End() const { return Indices.end(); }
+#endif
 #ifdef FABLE_RETAIL_QUADRIC_CINDEXLIST_INTERSECTION
  // Retail opt-in (Codex pass 24): both PDBs name the public const member at 0x00AC8960.
  CIndexList GetIntersection(const CIndexList& other) const;
@@ -101,6 +112,16 @@ class CContractionReference {public:
 class COptimisedFace {public:
  unsigned long VertexIndices[3];unsigned long UniqueVertexIndices[3];long Edges[3];C3DVector UTangent,VTangent;bool Exists;
  unsigned long OutputIndex;long Segment;
+#ifdef FABLE_RETAIL_QUADRIC_FACE_FOLD_PASS27
+ unsigned long GetA() const { return VertexIndices[0]; }
+ unsigned long GetB() const { return VertexIndices[1]; }
+ unsigned long GetC() const { return VertexIndices[2]; }
+ unsigned long GetVertexIndex(unsigned long index) const { return VertexIndices[index]; }
+ long FindVertex(unsigned long vertex) const {
+     for (unsigned long c=0;c<3;++c) if (VertexIndices[c]==vertex) return c;
+     return -1;
+ }
+#endif
 #ifdef FABLE_RETAIL_QUADRIC_COPTIMISEDFACE_HASUNIQUEVERTEX
  // Retail opt-in (row 0x00AC8AE0): FableWin.pdb ?HasUniqueVertex@COptimisedFace@QuadricOptimiserInternals@@QBE_NK@Z (Ego_r 0x00C5F860),
  // inline in retail (expanded six times in JoinAdjacentFaces; compare order U[0], U[1], U[2]).

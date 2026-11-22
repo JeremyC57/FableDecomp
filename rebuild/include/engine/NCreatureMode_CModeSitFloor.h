@@ -13,6 +13,9 @@
 #include "rebuild_abi.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CTCCreatureModeManager.h"
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_PASS27
+#include "engine/CAnimFilterOfGroup.h"
+#endif
 class CThing;
 class CCharString;
 class CCreatureActionBase;
@@ -68,6 +71,19 @@ public:
 private:
     unsigned char Filter[0xc];                                           // +0x2c CAnimFilterOfGroup
 };
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_PASS27
+// Both PDBs and retail allocation/constructor at 0x00938421 / 0x00740040.
+class CModeSitBench : public CModeSitBase {
+public:
+    CModeSitBench(CThing&);
+    virtual ~CModeSitBench();
+    virtual unsigned long GetType() const;
+    virtual const CAnimFilterBase& GetAnimFilter() const;
+private:
+    CAnimFilterOfGroup Filter;
+};
+FABLE_STATIC_ASSERT(sizeof(CModeSitBench) == 0x38);
+#endif
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITTAVERNSTOOL
 // Retail opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): RTTI .?AVCModeSitTavernStool@NCreatureMode@@ (vtable
 // 0x01292FF8: slot 0 0x0094B5D0, 1 GetType 0x0094B5B0, 4 GetAnimFilter 0x0094B5C0). Ego_r.pdb: CModeSitBase + Filter

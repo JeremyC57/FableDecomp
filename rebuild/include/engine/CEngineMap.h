@@ -182,6 +182,31 @@ extern CEngineWorldMap* g_pEngineWorldMap;   // 0x01436E8C (landed spelling, CEn
 #define FABLE_CENGINEMAP_WORLDMAP g_pEngineWorldMap
 #endif
 
+#ifdef FABLE_RETAIL_CENGINEMAP_PEEKTHEMEID_ORIGINAL_PASS27
+// FableWin 0x02D5CE80 and Pass26 retail 0x00B43720: GetMap receives world coordinates
+// and handles the map origin itself. Shared by callers that expand this inline member.
+inline long CEngineMap::PeekThemeId(long xp, long yp, long level) const
+{
+    if (!MapHasDataAtPoint(xp,yp)) {
+        CEngineMap* map = NEngineInternal::GPEngineWorldMap->GetMap(
+            PeekWorldX() + xp,
+            PeekWorldY() + yp);
+        if (map && map->MapHasDataAtPoint(PeekWorldX() + xp - map->PeekWorldX(), PeekWorldY() + yp - map->PeekWorldY()))
+            return map->PeekThemeId(PeekWorldX() + xp - map->PeekWorldX(), PeekWorldY() + yp - map->PeekWorldY(), level);
+        if (xp < 0)
+            xp = 0;
+        else if (xp > PeekWidth() - 1)
+            xp = PeekWidth() - 1;
+        if (yp < 0)
+            yp = 0;
+        else if (yp > PeekHeight() - 1)
+            yp = PeekHeight() - 1;
+    }
+    if (GameMap)
+        return GameMap->DrawGetEngineThemeAt(xp, yp, level);
+    return 0;
+}
+#else
 inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
 {
     if (x >= PeekWidth() || y >= PeekHeight() || x < 0 || y < 0 || !GameMap) {
@@ -213,6 +238,8 @@ inline long CEngineMap::PeekThemeId(long x, long y, long layer) const
         return GameMap->DrawGetEngineThemeAt(x, y, layer);
     return 0;
 }
+
+#endif
 
 inline unsigned char CEngineMap::PeekThemeBlend(long x, long y, long layer) const
 {

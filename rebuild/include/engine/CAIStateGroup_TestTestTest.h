@@ -5,6 +5,13 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_PASS27
+#include "engine/CAIStateGroupBase.h"
+class CAIStateGroup_TestTestTest : public CAIStateGroupBase {
+public:
+    virtual void Update();
+};
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -24,4 +31,5 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_TestTestTest) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_TestTestTest, __vftable) == 0x0);
 
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_TESTTESTTEST_H

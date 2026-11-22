@@ -1,0 +1,17 @@
+# Pass 27 verification checkpoint
+
+This handoff verifies 99 of 100 functions against their retail extents and package copy checks (87280 of 88,321 bytes). STATUS.tsv lists all 100 addresses. OPEN means the row needs further work or common-tree verification. It also contains 1 landable rows (1041 additional bytes) with a pre-existing binding debt explicitly allowed by the package. Their source, tests, and LANDING_REVIEW.json are included; the verified count above excludes them. Use the original Pass 27 package as the base.
+
+Apply each old_text/new_text entry in hdr/PATCHES.json to its path under include/ in file order. An empty old_text creates a new file. Require exactly one occurrence for each nonempty old_text. Use the stock 13.10.3077 compiler and the flags in each source to reproduce the leaf. Compare masked bytes, then verify every relocation and any mapped inline or strong companion functions. Compile the self-contained behavior fixture at /Od /W3 /GR- without /EHsc. The expected output is the eight lowercase hexadecimal digits followed by _TEST PASS. Recheck the naming evidence and any corrected bindings before integrating.
+
+COMMON_TREE.json records the exact selected source and test hashes, common-tree grade and pick-any counts. Where a packaged binding needed correction, inspect BINDING_EVIDENCE.json or PICKANY_CORRECTED.txt. Raw counts in COMMON_TREE.json retain the stock checker result. Test doubles exercise entity, hardware or external service boundaries as documented per row.
+
+## Final shared-header replay
+
+All 100 assigned source files reproduce their leaf's full extent with relocated operands masked and have passing native behavior fixtures. One previously bound copy requires a naming decision, recorded separately in STATUS.tsv. The strict package check applies to table-bound copies. Independently discovered linker-sensitive copies are described below.
+
+- Build 00628000.cpp once for tc_quick_access_menu.obj. Its 00627be0.cpp sibling is an independent grading view of the same original translation unit. It contains both reserved entry points and both verified category builders. Including both grading snapshots as separate object inputs duplicates their definitions.
+- The script objects for 00cfce90 and 00f00c90 emit 46-byte and 30-byte MovieBase deleting destructors. This symbol has no table entry. Both native script leaves pass the package checks. The original game_script_interface.obj supplies the correct 87-byte scalar. Microsoft LINK selected it when that object came first; reversing order selected the shorter script copy. Both row directories contain LINK_REVIEW.json. The Scythe test additionally ran the selected 87-byte body in a native executable with all dependencies resolved.
+- The 1041-byte DetectFoldOver leaf at 00acd0e0 passes 51 behavior cases. Its signed/unsigned table conflict and the candidate native destructor addresses are documented in LANDING_REVIEW.json. Preserve the unresolved name until a unique assignment is proven.
+- The 243-byte PlaceThing source uses the original single list-head assignment. It has three exact same-file helpers. Its single fixture runs 1024 list-insertion cases and 98 cases through the production cell-lookup graph.
+- ATTEMPTS.tsv lists compiler records from exploratory builds. Repeated confirmation builds on shared header trees are excluded from that list. Each row has a PROBES.md and COMMON_TREE.json. No compiler, game binary, object file, or donor database is included.

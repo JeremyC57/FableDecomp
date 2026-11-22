@@ -1,0 +1,16 @@
+{
+  "strong_copies": [
+    {
+      "symbol": "?Alloc@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z",
+      "address": "0xcfcdc0",
+      "length": 145,
+      "status": "EXACT"
+    },
+    {
+      "symbol": "?GetParentScript@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@UBEPAVCScriptBase@@XZ",
+      "address": "0xcfce60",
+      "length": 4,
+      "status": "EXACT"
+    }
+  ]
+}

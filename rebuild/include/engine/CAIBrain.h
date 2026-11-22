@@ -127,7 +127,12 @@ public:
     CAIStateGroupBase*  PActiveStateGroup;                   // +0x38
     CAIStateGroupBase*  PLastStateGroup;                     // +0x3c
     CAIStateGroupBase*  PPendingStateGroup;                  // +0x40
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+    CBrainOutput Output;                                     // +0x44
+    CBrainOutput& GetOutput() { return Output; }
+#else
     unsigned char       Output[0x48];                        // +0x44 CBrainOutput
+#endif
     bool                OutputValid;                         // +0x8c
     bool                UpdatingStateGroup;                  // +0x8d
     bool                StateGroupUpdated;                   // +0x8e

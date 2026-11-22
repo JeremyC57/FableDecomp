@@ -19,7 +19,7 @@ class CThing { public:
 static CThing* g_hero;
 class CInputProcessQuickAccessMenu { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
-    bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 3; }
+    bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 3; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed)
     {
@@ -34,7 +34,7 @@ class CInputProcessQuickAccessMenu { public:
             else if (IsEventGameAction(0x28, event)) GetInstance()->SendEvent(3);
             else if (IsEventGameAction(2, event)) { menu->RequestClose(); processed.SetHandled(); return; }
             else return;
-        } else if (IsEventButtonReleased(event)) {
+        } else if (IsEventButtonHeld(event)) {
             if (IsEventGameAction(0x25, event)) GetInstance()->SendEvent(0);
             else if (IsEventGameAction(0x26, event)) GetInstance()->SendEvent(1);
             else return;

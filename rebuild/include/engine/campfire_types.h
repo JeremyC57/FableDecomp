@@ -37,6 +37,9 @@ private: C3DVector MoveToPos;
 private: C3DVector LookAtPos;
 private: CIntelligentPointer<CThing const > LookAtThing;
 public: CBrainOutput();
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+public: CBrainOutput(const CBrainOutput&);
+#endif
 public: void Clear();
 public: void SetAsPumpCombatActions();
 public: void SetAsFaceMovementDirection();

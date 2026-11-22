@@ -121,12 +121,21 @@ public:
     bool              TextGroupHasEntriesRemaining;          // +0x28
     unsigned char     _pad_0x29[0x3];                        // +0x29
     long              TextGroupIndex;                        // +0x2c
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST_ORIGINAL
+    // FableWin's ClickPast compares this CWideString at +0x30 with the empty string.
+    CWideString       TextGroupTag;
+#else
     CWideStringData*  TextGroupTag_PStringData;              // +0x30 CWideString::PStringData
+#endif
     unsigned char     TextInfoQueue[0x28];                   // +0x34 queue<CSubtitleRenderer::CSetTextInfo,std::deque<CSubtitleRenderer::CSetTextInfo,std::allocator<CSubtitleRenderer::CSetTextInfo>_>_>
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
     CWideString       Text;                                  // +0x5c
 #else
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST_ORIGINAL
+    CWideString       Text;                      // +0x5c CWideString::PStringData
+#else
     CWideStringData*  Text_PStringData;                      // +0x5c CWideString::PStringData
+#endif
 #endif
     CWideStringData*  NameText_PStringData;                  // +0x60 CWideString::PStringData
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONGRAPHICS
@@ -191,6 +200,10 @@ public:
     bool IsCutsceneSkippable() const;                                    // 0x0048DE44
     // Ego_r.pdb / FableWin.pdb ?IsTextReadyForClickPast@CSubtitleRenderer@@QBE_NXZ, out of line at 0x0048E072 (landed; called at 0x0048EDC3).
     bool IsTextReadyForClickPast() const;                                // 0x0048E072
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST_ORIGINAL
+    // Ego_r and FableWin agree on this public method called at 0x00629F39.
+    bool ClickPast();
+#endif
 private:
     // Ego_r.pdb / FableWin.pdb ?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z (private const), out of line
     // at 0x0048E062 (`push [esp+4] ; mov ecx,[esp+0Ch] ; call CFontBank::GetVStringWidth 0x0043E4D0 ; ret 8`; landed under the wrong name
@@ -375,12 +388,20 @@ FABLE_STATIC_ASSERT_AT(264, offsetof(CSubtitleRenderer, VTelevisionWindow_BRY) =
 FABLE_STATIC_ASSERT_AT(265, offsetof(CSubtitleRenderer, TextCharactersShowing) == 0x24);
 FABLE_STATIC_ASSERT_AT(266, offsetof(CSubtitleRenderer, TextGroupHasEntriesRemaining) == 0x28);
 FABLE_STATIC_ASSERT_AT(267, offsetof(CSubtitleRenderer, TextGroupIndex) == 0x2c);
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST_ORIGINAL
+FABLE_STATIC_ASSERT_AT(268, offsetof(CSubtitleRenderer, TextGroupTag) == 0x30);
+#else
 FABLE_STATIC_ASSERT_AT(268, offsetof(CSubtitleRenderer, TextGroupTag_PStringData) == 0x30);
+#endif
 FABLE_STATIC_ASSERT_AT(269, offsetof(CSubtitleRenderer, TextInfoQueue) == 0x34);
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_EMBEDDED
 FABLE_STATIC_ASSERT_AT(271, offsetof(CSubtitleRenderer, Text) == 0x5c);
 #else
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLICKPAST_ORIGINAL
+FABLE_STATIC_ASSERT_AT(273, offsetof(CSubtitleRenderer, Text) == 0x5c);
+#else
 FABLE_STATIC_ASSERT_AT(273, offsetof(CSubtitleRenderer, Text_PStringData) == 0x5c);
+#endif
 #endif
 FABLE_STATIC_ASSERT_AT(275, offsetof(CSubtitleRenderer, NameText_PStringData) == 0x60);
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_BUTTONGRAPHICS

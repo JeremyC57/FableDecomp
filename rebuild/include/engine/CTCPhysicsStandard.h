@@ -51,6 +51,10 @@ protected:
     virtual void UpdateOnSurface(std::vector<CThing*>& things, C3DVector& pos);              // slot 97
     virtual C2DBoxI GetPossibleCollidedWithArea() const;                                     // slot 98
     void PerformForceUpdates();                                                              // 0x008E5670
+#ifdef FABLE_RETAIL_CTCPHYSICSNAVIGATOR_MOVE_PASS27
+    // 00726CE0: protected const RemoveIntersectingCreaturesFromList per both donors and native 00724240.
+    void RemoveIntersectingCreaturesFromList(std::vector<CThing*>& thing_list) const;
+#endif
     void UpdateIsMoving();                                                                   // 0x008E5270
     void PerformStepBasedMovement(std::vector<CThing*>& things, C3DVector& pos);             // 0x008E5880
     void GetPossibleInteractedWithList(const C2DBoxI& area, std::vector<CThing*>& things, float range) const;   // 0x008E57D0

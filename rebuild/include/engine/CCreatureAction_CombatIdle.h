@@ -11,7 +11,15 @@ public:
     CCreatureAction_CombatIdle() : CCombatActionBase(50) { }
 #endif
 #ifdef FABLE_RETAIL_CCREATUREACTION_COMBATIDLE_MAZE
+#ifdef FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+    CCreatureAction_CombatIdle(CThingCreatureBase& creature, CThingCreatureBase& target)
+        : CCombatActionBase(creature, target, 50, CSoundPair()) { }
+    virtual CCreatureActionBase* Clone() const;                          // 0x006F86E0
+    virtual void Initialise();                                         // 0x008B6650
+    virtual bool IsToFaceTargetAtStart() const;                          // 0x006F5940
+#else
     CCreatureAction_CombatIdle(CThingCreatureBase& creature, CThingCreatureBase& target); // 0x00906AC0
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT_AT(12, sizeof(CCreatureAction_CombatIdle) == 0x114);

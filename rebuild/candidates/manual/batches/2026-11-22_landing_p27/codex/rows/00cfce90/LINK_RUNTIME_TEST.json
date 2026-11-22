@@ -1,0 +1,8 @@
+{
+  "runtime_fixture": "00cfce90_TEST PASS",
+  "case_count": 13,
+  "native_scalar_bytes": 87,
+  "vtable_verified": true,
+  "linked_without_unresolved_symbols": true,
+  "source_test_sha256": "dd6f7727af2014c07c5f01bbf4d446804261d4413540fce764136deaa5e703df"
+}

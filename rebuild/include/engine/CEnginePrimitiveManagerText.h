@@ -6,10 +6,13 @@
 #include "engine/CPixelShader.h"
 class CEnginePrimitiveManagerText:public CEnginePrimitiveManager {
 public:
+#ifdef FABLE_RETAIL_PROJECT_TEXT_PASS27
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
+#endif
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);
 private:
     CVertexShader VShader,VShaderMask;
     CPixelShader PShader,PShaderMask;
 };
-FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerText)==44);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CEnginePrimitiveManagerText)==44);
 #endif

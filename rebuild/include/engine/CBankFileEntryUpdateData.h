@@ -85,6 +85,12 @@ private:
         }
     }
 #endif
+#ifdef FABLE_RETAIL_CBANKFILE_UPDATE_PASS27
+public:
+    unsigned long GetFileCount() const { return Filenames.Size; }
+    const CCharString& GetFilename(unsigned long index) const { return Filenames.Start[index]; }
+private:
+#endif
     bool RequiresUpdate;                                            // +0x14
     bool Exists;                                                    // +0x15
 #ifdef FABLE_RETAIL_CBANKFILEENTRYUPDATEDATA_RETAIL

@@ -7,6 +7,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
+#include "engine/CBaseClass.h"
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT
 #define FABLE_RETAIL_CFADEINFADEOUTBASE_ISACTIVE
 #include "engine/CFadeInFadeOutBase.h"
@@ -39,7 +42,17 @@ class CPlayerManager;
 class CWorld;
 
 #pragma pack(push, 1)
-class CDisplayEngine {
+class CDisplayEngine
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
+    : public CBaseClass
+#endif
+{
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
+protected:
+    // Ego_r and FableWin, matched to CDisplayEngine's retail vtable slot 1.
+    virtual bool InitEngine();         // 0x00435190
+    static float GamePrimitiveDefaultFadeRangeRatio;                     // 0x013B8774
+#endif
 public:
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_GETMAINWINDOW_PASS26
     // Retail opt-in (wfE9, row 0x00648820 NPlayerGui::CDrawMiniMap::Draw): Ego_r.pdb ?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ,
@@ -184,7 +197,9 @@ protected:
     void RenderHeroDrunkenness(const CInterpolationInfo& info) const;   // 0x00435070
 public:
 #endif
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08
     CPlayerManager*         PlayerManager;                   // +0x0c
@@ -244,7 +259,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT_AT(124, sizeof(CDisplayEngine) == 0x100);
+#ifndef FABLE_RETAIL_CDISPLAYENGINE_INITENGINE_PASS27
 FABLE_STATIC_ASSERT_AT(125, offsetof(CDisplayEngine, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT_AT(126, offsetof(CDisplayEngine, EnginePreloadFlags) == 0x4);
 FABLE_STATIC_ASSERT_AT(127, offsetof(CDisplayEngine, Component) == 0x8);
 FABLE_STATIC_ASSERT_AT(128, offsetof(CDisplayEngine, PlayerManager) == 0xc);
