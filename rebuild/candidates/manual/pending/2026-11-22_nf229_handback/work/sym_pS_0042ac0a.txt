@@ -1,0 +1,8 @@
+DEF ??0?$_List_base@PAVCObserver@NUISystem@@V?$allocator@PAVCObserver@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCObserver@NUISystem@@@1@@Z
+DEF ??0?$_STLP_alloc_proxy@PAU?$_List_node@PAVCObserver@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@1@PAU?$_List_node@PAVCObserver@NUISystem@@@1@@Z
+DEF ??0?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+DEF ??0?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@std@@QAE@XZ
+DEF ??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCObserver@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@2@@std@@QAE@XZ
+DEF ??1?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@std@@QAE@XZ
+DEF ?allocate@?$allocator@U?$_List_node@PAVCObserver@NUISystem@@@std@@@std@@QAEPAU?$_List_node@PAVCObserver@NUISystem@@@2@IPBX@Z
+UND _malloc

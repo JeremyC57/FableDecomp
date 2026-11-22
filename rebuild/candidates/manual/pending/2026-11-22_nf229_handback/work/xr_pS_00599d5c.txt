@@ -1,0 +1,15 @@
+004082d0	?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z	x1
+0040bc80	?Apply@CUserProfileManager@@QAEXXZ	x1
+0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	x3
+00412130	??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	x1
+0049bb30	?SetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QAEXJ@Z	x1
+0049bb90	?Get@CGameJoystickManager@@SIAAV1@XZ	x1
+005955ab	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	x1
+005957d9	?VerifySignatureCached@CFrontEndManager@NUISystem@@QAE_NABVCWideString@@@Z	x1
+00595845	?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ	x1
+00596763	?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z	x1
+00597b20	?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ	x1
+0059899a	?LoadProfile@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z	x1
+0059b5d7	??A?$map@W4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@U?$less@W4FRONTEND_SCREEN@@@std@@V?$allocator@U?$pair@$$CBW4FRONTEND_SCREEN@@PAVCComponent@NUISystem@@@std@@@5@@std@@QAEAAPAVCComponent@NUISystem@@ABW4FRONTEND_SCREEN@@@Z	x1
+0099b510	??1CWideString@@QAE@XZ	x1
+013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	x1

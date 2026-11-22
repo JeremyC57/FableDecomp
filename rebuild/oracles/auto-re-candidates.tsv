@@ -9887,8 +9887,8 @@ address	name	length	bytes
 00b8ede0	std::__uninitialized_copy<std::pair<unsigned long,CCountedPointer<CVertexBufferWin32> >*,std::pair<unsigned long,CCountedPointer<CVertexBufferWin32> >*>	56	3bca8b442404742d568da4240000000085c074168b3189308b71048970048b710885f68970087402ff0683c10c83c00c3bca75dc5ec20800
 0042a1b6	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e83e487d0085ff598bf775e65f5e5bc20400
 0042a20a	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e8ea477d0085ff598bf775e65f5e5bc20400
-0042a237	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e8bd477d0085ff598bf775e65f5e5bc20400
-0042a264	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e890477d0085ff598bf775e65f5e5bc20400
+0042a237	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::_M_erase	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e8bd477d0085ff598bf775e65f5e5bc20400
+0042a264	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::_M_erase	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e890477d0085ff598bf775e65f5e5bc20400
 0042fe07	std::_Rb_tree::_M_erase	45	53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff8b7e0856e8edeb7c0085ff598bf775e65f5e5bc20400
 0042abe1	CTCCarryable::OnKill	41	568bf1837e0400741e8b06ff7004e8c2f5ffff8b068940088b06836004008b0689400c836604005ec3
 0042ac76	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::clear	41	568bf1837e0400741e8b06ff7004e8aef5ffff8b068940088b06836004008b0689400c836604005ec3
@@ -13254,7 +13254,7 @@ address	name	length	bytes
 00429f43	CCountedPointer::DeleteData	21	568bf185f6740ce8b15d110056e8674a7d00595ec3
 0042b44a	CEngineSceneGrid::GetCellBoundingBox	24	558bec518d45ff50ff750cff7508e860f4ffff83c40cc9c3
 0042b707	std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>::size	16	8b118b0a33c0eb038b09403bca75f9c3
-0042b8fc	CEngineInternalPrimitiveBase::ClearPrimitiveList	53	53568b74240c85f68bd9742457ff760c8bcbe8e9ffffff8b7e088d4e10e8f8e4ffff56e8f0307d0085ff598bf775de5f5e5bc20400
+0042b8fc	std::_Rb_tree<CCharString,std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> >,std::_Select1st<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > >,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::_M_erase	53	53568b74240c85f68bd9742457ff760c8bcbe8e9ffffff8b7e088d4e10e8f8e4ffff56e8f0307d0085ff598bf775de5f5e5bc20400
 0043020a	std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::_Select1st<std::pair<CCharString const, long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, long>>>::_M_erase	53	53568b74240c85f68bd9742457ff760c8bcbe8e9ffffff8b7e088d4e10e8b4e8560056e8e2e77c0085ff598bf775de5f5e5bc20400
 00431242	CPersistContext::TransferMap<unsigned long, unsigned long>	53	56680ed722018bf1e8b132fdff8b46184848741148751a8b5424088b4e28e812000000eb0c8b5424088b4e24e8410000005ec20400
 00431493	CPersistContext::TransferMap<long, CCharString>	53	56680ed722018bf1e86030fdff8b46184848741148751a8b5424088b4e28e812000000eb0c8b5424088b4e24e8590000005ec20400
@@ -13309,7 +13309,7 @@ address	name	length	bytes
 0041ca52	_global::SetMember_dword0x13c_0041ca52	13	8b44240489813c010000c20400
 00428c1a	_global::CIVCountedPointer_Release_00428c1a	24	568bf18b0e85c9740dff490475058b01ff50048326005ec3
 0042ad6c	std::_Rb_tree<unsigned long, std::pair<const unsigned long, NUISystem::CUIState>, std::_Select1st<std::pair<const unsigned long, NUISystem::CUIState> >, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, NUISystem::CUIState> > >::_M_lower_bound	37	8b018b480485c974198b5424048b1239511072078bc18b4908eb038b490c85c975edc20400
-0042ae33	BinaryTree_Find	37	8b018b480485c974198b5424048b123951107c078bc18b4908eb038b490c85c975edc20400
+0042ae33	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::_M_lower_bound	37	8b018b480485c974198b5424048b123951107c078bc18b4908eb038b490c85c975edc20400
 0042b402	std::map::find	20	ff742408e820f4ffff8b4c240489018bc1c20800
 0042b6dc	CRegion::SetMiniMapRegionExitTextOffsetX	20	ff742408e846f1ffff8b4c240489018bc1c20800
 0042bef2	CRegion::SetMiniMapRegionExitTextOffsetX	20	ff742408e86cf5ffff8b4c240489018bc1c20800
@@ -13955,8 +13955,8 @@ address	name	length	bytes
 00454961	CActiveFile::AllocateArray	50	558bec8b450885c056740ec1e00250e899a07a00598bf0eb0233f68b55108b4d0c8d450b5056e8b2ffffff8bc65e5dc20c00
 00c9cb60	Math_ComputeByteChunkCount	24	b881808080f7e903d1c1fa078bc2c1e81f03c28d440801c3
 0042ac52	Allocator_Alloc_56bytes	22	568bf18326006a38e8af3d7d008906598bc65ec20400
-0042ac9f	Allocator_Alloc_24bytes	22	568bf18326006a18e8623d7d008906598bc65ec20400
-0042ad10	Allocator_Alloc_28bytes	22	568bf18326006a1ce8f13c7d008906598bc65ec20400
+0042ac9f	std::_Rb_tree_base<std::pair<NUISystem::CManager::EUsedKeys const,long>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::_Rb_tree_base	22	568bf18326006a18e8623d7d008906598bc65ec20400
+0042ad10	std::_Rb_tree_base<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> >,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::_Rb_tree_base	22	568bf18326006a1ce8f13c7d008906598bc65ec20400
 00450e6e	ListNode_AllocateNode	22	568bf18326006a18e893db7a008906598bc65ec20400
 0088f610	CGameScriptInterface::IsSoundPlaying	11	8b0d94833b018b01ff603c
 0088f710	CGameScriptInterface::EntitySetCombatEnabled	189	515356576aff8bf1683c8127018d4c2414e8caf410008b7c24188b5c24148b06578d4c241051538bceff90380900008d4c240ce898f310006aff68248127018d4c2420e898f410008b16578d44241c50538bceff92380900008d4c2418e86ef310006aff680c8127018d4c2420e86ef410008b16578d44241c50538bceff92380900008d4c2418e844f310006aff68dc8027018d4c2420e844f410008b16578d44241c50538bceff92380900008d4c2418e81af310005f5e5b59c20800
@@ -13979,7 +13979,7 @@ address	name	length	bytes
 004510e8	ListNode_AllocateNode_Variant_I	22	568bf18326006a18e819d97a008906598bc65ec20400
 0045106f	ListNode_AllocateNode_Variant_H	22	568bf18326006a18e892d97a008906598bc65ec20400
 00430022	Queue_Initialize	22	568bf18326006a18e8dfe97c008906598bc65ec20400
-0042acec	LinkedList_Initialize	22	568bf18326006a18e8153d7d008906598bc65ec20400
+0042acec	std::_Rb_tree_base<std::pair<long const,EEngine2DLayer>,std::allocator<std::pair<long const,EEngine2DLayer> > >::_Rb_tree_base	22	568bf18326006a18e8153d7d008906598bc65ec20400
 004511cf	ListNode_AllocateNode_Variant_L	22	568bf18326006a18e832d87a008906598bc65ec20400
 00450f79	ListNode_AllocateNode_Variant_E	22	568bf18326006a18e888da7a008906598bc65ec20400
 0043f510	FreePointerArray	43	568b742408578b7c24103bf773188bff8b0685c0740950e8e8f47b0083c40483c6043bf772ea5f5ec20800
@@ -14015,7 +14015,7 @@ address	name	length	bytes
 004303f0	CMemoryBlock_Destructor	54	568bf18b462985c0740950e814e67c0083c4048bcec706a00b2301e840c15c00f644240801740956e89fe57c0083c4048bc65ec20400
 0040f0a0	std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >	56	8b4424048b088b4004568b74240c8b168b76042bf22bc1d1fed1f83bc65e7515505251e8984bffff83c40c85c07506b801000000c333c0c3
 00440590	std::vector<long, std::allocator<long>>::erase	58	8b44240856578bf98b77043bf0750c8b44240c8947045f5ec20800538b5c24102bf0565053e82ce57b0003c683c40c8947048bc35b5f5ec20800
-0042ac0a	_global::StdList_Ctor_0042ac0a	27	568bf18326006a0ce8f73d7d0089008940048906598bc65ec20400
+0042ac0a	std::_List_base<NUISystem::CObserver*,std::allocator<NUISystem::CObserver*> >::_List_base	27	568bf18326006a0ce8f73d7d0089008940048906598bc65ec20400
 0040f390	Buffer_RellocateAndUpdateWritePointer	58	8b44240856578bf98b77043bf0750c8b44240c8947045f5ec20800538b5c24102bf0565053e82cf77e0003c683c40c8947048bc35b5f5ec20800
 0042cd3e	FID_conflict:max_size	35	568db1500100008d442408508bcee8a2e7ffff3b065e74058b4018eb0383c8ffc20400
 00443bd0	CGuiControlTreePane_Destructor_2	59	568bf1578d7e648bcfe8d2cbffff8b3f85ff740957e82aae7b0083c4048bcee88ce6fffff644240c01740956e8bbad7b0083c4045f8bc65ec20400

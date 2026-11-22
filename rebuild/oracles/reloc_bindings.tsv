@@ -129,7 +129,6 @@ _EraseTreeNode	0042a34e	0042adb6
 ?Helper592f92@@YGHH@Z	0042a82b	0042b402
 _helper_5b155a	0042a8bd	0042b44a
 ?Allocator_Alloc_56bytes@@YGXK@Z	0042ac52	0042b72b
-?Cleanup_00429e16@SubObject@@QAEXXZ	00429e16	0042b8fc
 ??_7CObservable@NUISystem@@6B@	01230044	0042be7b
 ?Grab_0042b72b@CDisplayManager@@QAEXPAD0@Z	0042b72b	0042bf35
 ?FindLessOrEqual_Copy@BinarySearchTreeOverlay@@QAEPAXPBK@Z	0042b4f3	0042cd3e
@@ -14658,7 +14657,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@VCUIIconsDef@NUISystem@@@@@Z	0042b374	0041d98a
 ?g_pActiveScrollingViewport@NUISystem@@3PAVCScrollingViewport@1@A	013b8aac	0041da2d
 ?RemoveEventFromQueue@CInputManager@@QAEXPAVCInputEvent@@@Z	009f4f70	0041e10d
-?BuildTreeArray@CTextTreeWalkThrough@@QAEXPAVTreeNode@@@Z	0042b8fc	0042b8fc
 ??0CGameComponent@@QAE@PAVCGame@@@Z	0051d8e0	0042ea8f
 ?clear@?$map@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAEXXZ	0043027a	0043151d
 ?insert@?$map@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABU?$pair@$$CBVCCharString@@J@2@@Z	00431606	0043151d
@@ -35285,7 +35283,6 @@ __wcsicmp	00f3fb84	00599e3f
 ?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	005955ab	00599d5c
 ?GotoNewProfileScreen@CFrontEndManager@NUISystem@@IAEXXZ	00595845	00599d5c
 ?GotoProfileMenu@CFrontEndManager@NUISystem@@IAEXXZ	00597b20	00599d5c
-?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	013b871c	00599d5c
 ?SetEngineThemeAt@CMap@@IAEXJJKKW4EThemePaintType@@@Z	0081ee60	0063a970
 ?SetEngineBlendAt@CMap@@IAEXJJEKW4EThemePaintType@@@Z	0081efc0	0063a9e0
 ?GetEngineThemeAt@CMap@@IBEKJJKW4EThemePaintType@@@Z	0081f090	0063aa50
@@ -39465,3 +39462,6 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?AddExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z	0055c930	0042be7b
 ?RemoveExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z	0055c940	0042be7b
 ?GetExclusiveObserver@CObservable@NUISystem@@UAEPAVCObserver@2@XZ	0042bea9	0042be7b
+?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z	0042b8fc	0042c02f
+??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	00429e16	0042b8fc
+?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A	013b871c	0041d0a8

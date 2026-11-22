@@ -1,0 +1,3 @@
+# link of the 12 rechecked objects (/FORCE); LNK4006 HEAD control 1, landing 0; LNK2005 0
+1d0
+<       1 ?BuildTreeArray@Tree@@QAEXPAUNode@@@Z

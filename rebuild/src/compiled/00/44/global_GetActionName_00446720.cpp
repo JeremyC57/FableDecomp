@@ -53,12 +53,11 @@ private: public:
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-class CNewFrontendGameComponent { public:
-    unsigned char _pad00[0x60];
-    NGameText::CDataBank* PGameTextDataBank;            // +0x60
-    NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
+// NF229 (2026-11-22, q12616): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static) read
+//   through the header's inline CNewFrontendGameComponent::Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ), the bank
+//   (m_pTextBank +0x60) through GetTextBank() (FableWin.pdb ?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ), as
+//   0x0041CFB2 does; was the row-local CNewFrontendGameComponent model and the stand-in ?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A.
+#include "engine/CNewFrontendGameComponent.h"
 
 class CKeyboard {
 public:
@@ -113,8 +112,8 @@ bool GetActionName(const CActionInputControl& control, CWideString& name, bool s
             if (tag != "") {
                 if (CMainGameComponent::Get())
                     name = CMainGameComponent::Get()->GetGameTextDataBank()->GetTextBySymbol(tag);
-                else if (g_pNewFrontendGameComponent)
-                    name = g_pNewFrontendGameComponent->GetGameTextDataBank()->GetTextBySymbol(tag);
+                else if (CNewFrontendGameComponent::Get())
+                    name = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol(tag);
                 return true;
             }
             if (GFGetSystemManager()->PInputManager->PKeyboard->GetKeyName(control.KeyboardKey, name))
@@ -141,8 +140,8 @@ bool GetActionName(const CActionInputControl& control, CWideString& name, bool s
         if (tag != "") {
             if (CMainGameComponent::Get())
                 name = CMainGameComponent::Get()->GetGameTextDataBank()->GetTextBySymbol(tag);
-            else if (g_pNewFrontendGameComponent)
-                name = g_pNewFrontendGameComponent->GetGameTextDataBank()->GetTextBySymbol(tag);
+            else if (CNewFrontendGameComponent::Get())
+                name = CNewFrontendGameComponent::Get()->GetTextBank().GetTextBySymbol(tag);
             if (name != (const wchar16*)L"")
                 return true;
         }

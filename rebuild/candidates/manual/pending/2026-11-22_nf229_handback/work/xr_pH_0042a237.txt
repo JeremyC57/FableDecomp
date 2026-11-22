@@ -1,0 +1,2 @@
+0042a237	?BuildTreeArray@Tree@@QAEXPAUNode@@@Z	x1
+00bfea14	_free	x1

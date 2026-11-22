@@ -6,7 +6,7 @@
 // temporary destroyed only when built) -> LoadProfile(profiles[0]) (0x0059899A) and GotoNextScreen(m_mapScreens[0],
 // true) (map::operator[] 0x0059B5D7, GotoNextScreen 0x00596763). Otherwise GotoProfileMenu() (0x00597B20) and the
 // profile manager re-applies its values (UseNewProfileValues +0x0C = true, then 0x0040BC80). Every path ends by
-// handing the frontend's last active joystick (g_pNewFrontendGameComponent 0x013B871C, +0x140) to
+// handing the frontend's last active joystick (CNewFrontendGameComponent::Get() 0x013B871C, +0x140) to
 // CGameJoystickManager::Get() (0x0049BB90).SetMainPlayerJoystickDeviceNumber (0x0049BB30); ~vector<CWideString>
 // (0x00412130) closes the function.
 // Shape: frame-pointer size TU (`optimize("s")` + `("y",off)`, as the landed GotoProfileMenu); the single-profile
@@ -89,12 +89,13 @@ public:
     void SetMainPlayerJoystickDeviceNumber(long device);  // 0x0049BB30
 };
 
-class CNewFrontendGameComponent
-{ public:
-    unsigned char _pad[0x140];
-    long LastActiveJoystickDeviceNumber;                  // +0x140
-};
-extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
+// NF229 (2026-11-22, q12616): 0x013B871C is ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A (private static) read
+//   through the header's inline CNewFrontendGameComponent::Get() (FableWin.pdb ?Get@CNewFrontendGameComponent@@SIPAV1@XZ), the device
+//   number (+0x140) through the inline GetLastActiveJoystickDeviceNumber() (FableWin.pdb ?GetLastActiveJoystickDeviceNumber@CNewFrontendGameComponent@@QBEJXZ
+//   + the retail read 0x00599E20; new header opt-in); was the row-local CNewFrontendGameComponent model and the stand-in
+//   ?g_pNewFrontendGameComponent@@3PAVCNewFrontendGameComponent@@A.
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETLASTACTIVEJOYSTICKDEVICENUMBER
+#include "engine/CNewFrontendGameComponent.h"
 
 enum FRONTEND_SCREEN { FRONTEND_SCREEN_0 = 0 };
 
@@ -158,6 +159,6 @@ void CFrontEndManager::DoPressStart()
             CUserProfileManager::Get().Apply();
         }
     }
-    CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(g_pNewFrontendGameComponent->LastActiveJoystickDeviceNumber);
+    CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(CNewFrontendGameComponent::Get()->GetLastActiveJoystickDeviceNumber());
 }
 }

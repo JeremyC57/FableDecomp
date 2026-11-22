@@ -1,0 +1,16 @@
+00599d5c e2head	??_GCWideString@@QAEPAXI@Z	31	-	NO-OWNER
+00599d5c e2head	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	36	005955ab	NEQ:bytes(36 v 558)
+00599d5c e2head	??0?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	13	-	NO-OWNER
+00599d5c e2head	?empty@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QBE_NXZ	11	-	NO-OWNER
+00599d5c e2head	?size@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QBEIXZ	9	-	NO-OWNER
+00599d5c e2head	?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QBEPAVCWideString@@XZ	3	-	NO-OWNER
+00599d5c e2head	??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ	41	00412130	NEQ:bytes(41 v 49)
+00599d5c e2head	??A?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QBEAAVCWideString@@I@Z	15	-	NO-OWNER
+00558170 e2head	?length@?$char_traits@G@std@@SAIPBG@Z	25	-	NO-OWNER
+00558170 e2head	?size@wstring@std@@QBEIXZ	8	-	NO-OWNER
+00558170 e2head	?data@wstring@std@@QBEPBGXZ	3	-	NO-OWNER
+00558170 e2head	??8std@@YA_NABVwstring@0@PBG@Z	67	-	NO-OWNER
+00558170 e2head	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER
+00558170 e2head	?GetGameTextDataBank@CMainGameComponent@@QBEPAVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+00558170 e2head	?GetGameTextDataBank@CNewFrontendGameComponent@@QBEPAVCDataBank@NGameText@@XZ	4	-	NO-OWNER
+00558170 e2head	?front@?$list@W4EGameAction@@@std@@QBEABW4EGameAction@@XZ	8	-	NO-OWNER

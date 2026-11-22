@@ -90,8 +90,20 @@ public:
 public:
     virtual void Init();                                                 // 0x0042F75E
 #else
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETLASTACTIVEJOYSTICKDEVICENUMBER
+    // NF229 opt-in (row 0x00599D5C NUISystem::CFrontEndManager::DoPressStart): Ego_r.pdb LastActiveJoystickDeviceNumber (+0x148 there,
+    // +0x140 in retail: the two STLport vectors are 0xC, as the RUN opt-in above) and FableWin.pdb's public inline
+    // ?GetLastActiveJoystickDeviceNumber@CNewFrontendGameComponent@@QBEJXZ (0x0201D7C8); retail expands it in 0x00599D5C
+    // (0x00599E1B `mov eax,[0x013B871C] ; push dword ptr [eax+140h]`). No layout change (the opaque pad split around the member).
+    unsigned char _pad_0x6c[0x140 - 0x6c];                               // +0x6C FileNames .. m_inputDelayTimer (opaque)
+    long LastActiveJoystickDeviceNumber;                                 // +0x140
+    unsigned char _pad_0x144[0x148 - 0x144];                             // +0x144 WindowsMediaPlayerInstalled (opaque)
+public:
+    long GetLastActiveJoystickDeviceNumber() const { return LastActiveJoystickDeviceNumber; }
+#else
     unsigned char _pad_0x6c[0x148 - 0x6c];                               // +0x6C FileNames .. WindowsMediaPlayerInstalled (opaque)
 public:
+#endif
 #endif
 #endif
 #ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_STARTGAME

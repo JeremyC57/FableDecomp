@@ -1,0 +1,28 @@
+diff --git a/rebuild/include/engine/CNewFrontendGameComponent.h b/rebuild/include/engine/CNewFrontendGameComponent.h
+index fa58384937..bf63ebbd25 100644
+--- a/rebuild/include/engine/CNewFrontendGameComponent.h
++++ b/rebuild/include/engine/CNewFrontendGameComponent.h
+@@ -89,11 +89,23 @@ public:
+     void InitialiseDefs();                                               // 0x0042F722
+ public:
+     virtual void Init();                                                 // 0x0042F75E
++#else
++#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_GETLASTACTIVEJOYSTICKDEVICENUMBER
++    // NF229 opt-in (row 0x00599D5C NUISystem::CFrontEndManager::DoPressStart): Ego_r.pdb LastActiveJoystickDeviceNumber (+0x148 there,
++    // +0x140 in retail: the two STLport vectors are 0xC, as the RUN opt-in above) and FableWin.pdb's public inline
++    // ?GetLastActiveJoystickDeviceNumber@CNewFrontendGameComponent@@QBEJXZ (0x0201D7C8); retail expands it in 0x00599D5C
++    // (0x00599E1B `mov eax,[0x013B871C] ; push dword ptr [eax+140h]`). No layout change (the opaque pad split around the member).
++    unsigned char _pad_0x6c[0x140 - 0x6c];                               // +0x6C FileNames .. m_inputDelayTimer (opaque)
++    long LastActiveJoystickDeviceNumber;                                 // +0x140
++    unsigned char _pad_0x144[0x148 - 0x144];                             // +0x144 WindowsMediaPlayerInstalled (opaque)
++public:
++    long GetLastActiveJoystickDeviceNumber() const { return LastActiveJoystickDeviceNumber; }
+ #else
+     unsigned char _pad_0x6c[0x148 - 0x6c];                               // +0x6C FileNames .. WindowsMediaPlayerInstalled (opaque)
+ public:
+ #endif
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_STARTGAME
+     // NF76 opt-in (row 0x00599E3F NUISystem::CFrontEndManager::Update): Ego_r.pdb ?StartGame@CNewFrontendGameComponent@@QAEXXZ, expanded in
+     // that row (`mov eax,[edi] ; mov ecx,edi ; call [eax+10h]` = CGameComponent slot 4 SetQuit, then `mov byte ptr [edi+29h],1`,

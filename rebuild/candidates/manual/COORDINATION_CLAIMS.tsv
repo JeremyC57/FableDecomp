@@ -265,3 +265,5 @@ date	account	item	kind	status	note
 2026-11-22	A	q12608-q12618	naming	claimed	agent NF229 (nf228 follow-ups)
 2026-11-22	A	0x0093D270	authoring	done	AUTH18: terminal (A) by advisor ruling (pending/2026-11-22_auth18/0093d270/TERMINAL.md)
 2026-11-22	A	0x00B4D370,0x00BD3070,0x00502E90	authoring	claimed	agent AUTH19 (continues AUTH18; pending/2026-11-22_auth19/BRIEF.md)
+2026-11-22	A	q12608-q12618	naming	done	NF229 landed as nf229 (12 rows)
+2026-11-22	A	q12620-q12624	naming	claimed	agent NF230 (nf229 follow-ups)

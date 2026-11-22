@@ -1,0 +1,5 @@
+# NF229 lessons (one line each)
+- An explicit instantiation of a private STLport member (`template void _Rb_tree<...>::_M_erase(...)`) compiles under VC7.1 (access is not checked on explicit instantiations) and emits the member as its own COMDAT; 8/8 second-layer self rows matched on the first form with the binder row's defines / pragma.
+- A pick-any copy can name an unrelated landed row: 0x0042B8FC's `??_G` pair copy equals 0x0042A8E0 (catalog CAssoc scalar deleting dtor); compare every NO-OWNER copy of a near-address object with cmpcopy.py before calling it owner-less.
+- The ?g_ grep found 6 users of 0x013B871C; the compiled census of all 28 exe referencers found two more spellings (?System_013b871c, a public-static @@2): census from the objects, not from source text.
+- A test-only FABLE_RETAIL_CCHARSTRING gives a self-contained CCharString-keyed map test a real PStringData to hang stub keys on (stubbed ctor / dtor / operator<), so more than one key can be inserted without a string model.

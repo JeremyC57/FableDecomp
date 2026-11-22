@@ -1,0 +1,2 @@
+0042a237	?_M_erase@?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@2@@Z	x1
+00bfea14	_free	x1

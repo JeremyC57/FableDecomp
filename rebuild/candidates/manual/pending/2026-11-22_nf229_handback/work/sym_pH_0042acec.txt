@@ -1,0 +1,2 @@
+DEF ?LinkedList_Initialize@@YIPAPAXPAPAXPAX1@Z
+UND _malloc
