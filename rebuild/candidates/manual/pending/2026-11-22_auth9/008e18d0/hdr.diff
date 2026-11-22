@@ -1,0 +1,15 @@
+--- a/rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
++++ b/rebuild/include/engine/NParticleEngine_CParticleUpdateParameters.h
+@@ -52,7 +52,12 @@
+ #else
+     CParticleUpdateParameters() { }
+ #endif
++#ifndef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_IMPLICIT_DTOR
+     virtual ~CParticleUpdateParameters();                    // 0x006E2500
++#else
++    // Opt-in (p25N, row 0x008E18D0; re-made by AUTH1, re-based on HEAD by AUTH9): no user-declared destructor -- the implicit one
++    // (virtual through CBaseClass) is expanded in the row's sky block and its out-of-line COMDAT compares SAME with retail 0x006E2500.
++#endif
+ #ifdef FABLE_RETAIL_CPARTICLEUPDATEPARAMETERS_UPDATE_DECL_PASS26
+     // Original named COMDAT at native 0x0076C750, called by Activate.
+     void Update();

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence1	evidence2	wrong_spelling
+0x0093D270	CAIStateGroup_MeleeCombatNearbyBase::IsRunnable (?IsRunnable@CAIStateGroup_MeleeCombatNearbyBase@@MAE_NXZ)	Ego_r.pdb egor_pdb_names.tsv 00961280 exact	FableWin.pdb fablewin_pdb_names.tsv 02B8E0A0 exact; address tie: ghidra_out/labels_rtti_port.tsv and rebuild/oracles/auto-re-candidates.tsv bind 0x0093D270 to this symbol	UNMATCHED_ROWS.tsv name column holds the mangled string (module column holds the class)

@@ -233,3 +233,4 @@ date	account	item	kind	status	note
 2026-11-22	A	q12226,q12227,q12228,q12229,q12402	naming	claimed	agent NF222: finish the ReleaseData family (2 AcquireFont rows, 0x005BFF07) and hand it back whole
 2026-11-22	A	0x00763060	authoring	done	AUTH9: landed (batches/2026-11-22_landing_auth9_fractureshape)
 2026-11-22	A	0x00B30B50	authoring	done	AUTH9: landed (batches/2026-11-22_landing_auth9_setcamerastate)
+2026-11-22	A	0x008E18D0,0x00CF4EC0,0x00B4D370,0x00BD3070,0x00502E90,0x0093D270	authoring	claimed	agent AUTH10 (AUTH9 returned early on 0x008E18D0 with a hand-over; 0x00A4EFC0 waits on the advisor)
