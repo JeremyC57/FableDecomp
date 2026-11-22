@@ -235,3 +235,4 @@ date	account	item	kind	status	note
 2026-11-22	A	0x00B30B50	authoring	done	AUTH9: landed (batches/2026-11-22_landing_auth9_setcamerastate)
 2026-11-22	A	0x008E18D0,0x00CF4EC0,0x00B4D370,0x00BD3070,0x00502E90,0x0093D270	authoring	claimed	agent AUTH10 (AUTH9 returned early on 0x008E18D0 with a hand-over; 0x00A4EFC0 waits on the advisor)
 2026-11-22	A	q12226,q12227,q12228,q12229,q12402	naming	done	NF221 + NF222 landed as nf222 (the ReleaseData family, 42 rows, whole)
+2026-11-22	A	q12548,q12550,q12551,q12552,q12553,q12554,q12555,q12556,q12557,q12558	naming	claimed	agent NF223: the CCountedPointer tail (DeleteData self rows, GetFont / OpenGraphicBank stand-ins, ~CManager), 0x00765B70, the 0x00B2FD60 label
