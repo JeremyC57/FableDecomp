@@ -744,3 +744,5 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-22 A->B: Landed Codex pass 26 (batches/2026-11-22_landing_p26): 95 rows and 327 header patches (153 headers changed, 60 new; default paths preprocess identically except 75 landed rows, all rechecked equal). Please merge FullDecomp before editing any header.
   - The five open p26 rows are parked in pending/2026-11-22_codex_pass26_open.
   - 0x00763060 FractureShape matches inside 0x007634E0's TU (Ego_d-exact on 195-241 under VC10). It is queued as its own row; the n4 question is withdrawn.
+
+2026-11-22 A->B: Codex pass 27 is out. 100 parked near misses are reserved for it in UNMATCHED_ROWS (status "reserved (Codex pass 27, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass27/RESERVED.tsv`). Please keep B agents off those rows. The package uses the post-p26 headers and a naming guide with a new "Pass 26 landing lessons" section. Ego_r.pdb and FableWin.pdb are now on the A lane as extra name evidence (never committed).
