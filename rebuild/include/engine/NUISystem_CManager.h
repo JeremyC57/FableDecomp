@@ -44,6 +44,23 @@ public: static void __fastcall OnCloseMenus();                                  
 #ifdef FABLE_RETAIL_CMANAGER_CLEAR
  static void __fastcall Clear();
 #endif
+#if defined(FABLE_RETAIL_CMANAGER_CLEAR_INLINE) && !defined(FABLE_RETAIL_CMANAGER_CLEAR)
+// NF225 opt-in (2026-11-22, q12563 / q12564; rows 0x0042FB40 NUISystem::CManager::Clear, 0x0042DB20 its scalar deleting destructor).
+// Ego_r.pdb / FableWin.pdb ?Clear@CManager@NUISystem@@SIXXZ (public static __fastcall) is an inline member: in both PDBs its only
+// S_GPROC32 sits in new_frontend_game_component.obj (not ui_manager.obj, which holds the ctor, ~CManager, GetInstance and Action) with
+// S_FRAMEPROC "marked inline", and FableWin puts ??_GCManager@NUISystem@@IAEPAXI@Z ("marked inline") in the same compiland. Retail: both
+// sit among that TU's COMDATs (0x0042DB20, 0x0042FB40; Clear 39 bytes = `delete GPUniqueInstance; GPUniqueInstance = 0;`, the delete
+// calling ??_G, which calls the protected ~CManager 0x0041E641). Needs FABLE_RETAIL_CMANAGER_GPUNIQUEINSTANCE. Not with
+// FABLE_RETAIL_CMANAGER_CLEAR (the declaration-only form for TUs that call the COMDAT).
+public: static void __fastcall Clear() { delete GPUniqueInstance; GPUniqueInstance = 0; }
+#endif
+#ifdef FABLE_RETAIL_CMANAGER_GPUNIQUEINSTANCE
+// NF225 opt-in (2026-11-22, q12564): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?GPUniqueInstance@CManager@NUISystem@@1PAV12@A, the
+// protected static singleton pointer at 0x013B8710 (GetInstance 0x0041E5F2 creates it, Clear 0x0042FB40 deletes and zeroes it).
+// Declaration only; no layout change.
+protected: static NUISystem::CManager* GPUniqueInstance;               // 0x013B8710
+public:
+#endif
 #ifdef FABLE_RETAIL_CMANAGER_ERRORMESSAGE
 // Retail opt-in (chunk 1022, row 0x00418289 CMainGameComponent::Update): Ego_r.pdb (0x0042D784) / FableWin.pdb (0x01B0ED72)
 // ?ClearErrorMessage@CManager@NUISystem@@QAEXXZ, out of line in retail at 0x0041CE6A, and the HasErrorMessage accessor of the

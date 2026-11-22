@@ -1,6 +1,8 @@
 // CFrontendGameComponent::InitGraphics() -- debug front end: take the ENG_ARIAL_16 font from the global font bank into MainFont; always succeeds
 // Leaf: ?InitGraphics@CFrontendGameComponent@@AAE_NXZ (Ego_r.pdb, private; modelled public)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
+// Names (NF223, 2026-11-22): CFontManager::GetFont (engine/CFontManager.h; FableWin.pdb / Ego_r.pdb ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z, the self leaf of 0x009E2C80; was a local CFontBank::GetFont stand-in returning CCountedPointer<const CFontBank>, cast from PFontManager). MainFont is CCountedPointer<const CFontBank> (Ego_r.pdb CFrontendGameComponent +0x1E04), so the store is the header's converting operator= (inline, as retail expands it).
+// Pick-any (NF225, 2026-11-22): this /O2 TU expands the converting operator=, ShareData and ReleaseData<const CFontBank> as retail does and emits their COMDATs; the engine/CCountedPointer.h size-body opt-ins (FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY / _SHAREDATA_SIZE_BODY / _CONVERTING_ASSIGN_SIZE_BODY, `optimize("s", on)` as the owner rows set) make those copies the owners' bodies: 0x0042F948 (44 B), 0x0042F9F2 (38 B), 0x0042FE34 (23 B), each equal with its relocations bound alike. The leaf grades the same with them removed.
 // Retail: Fable.exe @ 0x00494840, 187 bytes, plain `ret`.
 // Body: MainFont = g_pFontBank->GetFont("ENG_ARIAL_16") (implicit conversion: the temporary is addressed with lea) -- CCharString(const char*, long) 0x0099EBF0
 // (literal 0x01231168), CFontBank::GetFont(const CCharString&) 0x009E2C80 (bank pointer 0x013B838C, CCountedPointer by
@@ -16,13 +18,11 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-#include "engine/CCountedPointer.h"
-class CFontBank {
-public:
-    CCountedPointer<const CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
-};
-class CFontManager;
-extern CFontManager* PFontManager;                          // 0x013B838C
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY
+#include "engine/CCountedPointer.h"                         // the size-body opt-ins above (pick-any copies = owners 0x0042F948 / 0x0042F9F2 / 0x0042FE34)
+#include "engine/CFontManager.h"                           // CFontManager::GetFont 0x009E2C80, PFontManager 0x013B838C
 
 class CFrontendGameComponent {
 public:
@@ -33,6 +33,6 @@ public:
 
 bool CFrontendGameComponent::InitGraphics()
 {
-    MainFont = ((CFontBank*)PFontManager)->GetFont("ENG_ARIAL_16");
+    MainFont = PFontManager->GetFont("ENG_ARIAL_16");
     return true;
 }

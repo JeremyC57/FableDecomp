@@ -8664,7 +8664,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?Reset@CStopWatch@@QAEXXZ	0062f8b0	0042dbee
 ?CompileDefsPlatformSpecific@CNewFrontendGameComponent@@SIX_N@Z	0042f5a9	0042f70b
 ??1CManager@NUISystem@@IAE@XZ	0041e641	0042fb40
-?Instance@CManager@NUISystem@@2PAV12@A	013b8710	0042fb40
 ?TransferBinaryIn@?$CPersistTraits@M@@QAEXAAVCMemoryDataInputStream@@AAM@Z	0040efb0	00431061
 ??1?$vector@VCCharString@@@std@@QAE@XZ	00414ea0	00431e40
 ??_7CFrontEndDef@@6B@	01230fbc	00431e40
@@ -8790,7 +8789,6 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?GetEnumerationType@CBankFile@@MBE?AVCCharString@@K@Z	009cbd10	00a427e0
 ?DefaultAppearance@CIME@NUISystem@@2UIMEUI_APPEARANCE@@A	013b7ce4	00404a90
 ??0CManager@NUISystem@@QAE@XZ	0041e3f6	0041e5f2
-?g_pUIManagerInstance@NUISystem@@3PAVCManager@1@A	013b8710	0041e5f2
 ?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z	00598a1c	0042e98f
 ?Clear@CManager@NUISystem@@SIXXZ	0042fb40	0042e98f
 ?GetTextBankName@NLocalisation@@YI?AVCCharString@@XZ	00415260	0042e98f
@@ -14889,7 +14887,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$?R$$CBVCThingVillage@@@CThingCompare_Nearest@@QBEPBVCThingVillage@@PBV1@0@Z	0048b220	0048cbd0
 ?CTCMapwho_helper@@YIXPAVCTCMapwho@@@Z	0048d7c0	0048d890
 ?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	0048f1f4
-?GetFont@CFontBank@@QAE?AV?$CCountedPointer@$$CBVCFontBank@@@@ABVCCharString@@@Z	009e2c80	00494840
 ?_Push_heap@@YIXPAVCWideString@@JJV1@VCCaseInsensitiveStringCompare@NGameComponentHelpers@@@Z	00497060	00497160
 ?__adjust_heap@@YIXPAVCWideString@@HHV1@VCCaseInsensitiveStringCompare@NGameComponentHelpers@@@Z	00497160	00497350
 ?__unguarded_linear_insert@@YIXPAVCWideString@@V1@VCCaseInsensitiveStringCompare@NGameComponentHelpers@@@Z	00496fd0	00497500
@@ -24323,7 +24320,6 @@ _New_c35b10@8	00c35b10	00c275e0
 ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@QAEAAU01@ABU01@@Z	00ae98e0	00ae9df0
 ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	00533b50	00546c90
 ?DeleteData@?$CCountedPointer@VCGuiVarTransferBase@@@@SIXPAX@Z	00af0710	00aeef40
-?GetFont@CFontBankSource@NUISystem@@QAE?AV?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z	009e2c80	0054ed90
 ?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z	0072abd0	00794c10
 ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z	0088ae40	006c0810
 ?IS_THING_ALIVE_Pointer@@YI_NABVCBaseIntelligentPointer@@@Z	0048c740	00933310
@@ -39443,3 +39439,4 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z	00ab8e10	00a634f0
 ?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	009f83d0	0042ddb3
 ?_M_insert_overflow@?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@std@@IAEXPAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	00765b70	00763060
+?GPUniqueInstance@CManager@NUISystem@@1PAV12@A	013b8710	0041e5f2

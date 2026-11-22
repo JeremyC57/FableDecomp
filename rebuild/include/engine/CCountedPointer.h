@@ -388,4 +388,78 @@ public:
 };
 
 #endif
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY)
+// NF225 opt-ins (2026-11-22, q12562; rows 0x00494840 CFrontendGameComponent::InitGraphics, 0x0054ED90 NUISystem::CText::GetDataFromDef).
+// Fidelity: scaffolding, not retail. Those /O2 TUs expand every CCountedPointer<CFontBank> / <const CFontBank> member at the call
+// site (as retail does), and VC7.1 still emits each expanded inline as a pick-any COMDAT. Retail kept the out-of-line copies from the
+// 0x00419xxx / 0x0042Fxxx size TUs. These explicit specializations compile the header's own bodies (ReleaseData: the
+// FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA body, Data zeroed before Info; ShareData / operator=: the default bodies, which then call
+// ReleaseData / ShareData out of line) under optimize("s", on), as each owner's TU did, so each COMDAT is the owner's body; callers
+// still expand them. Owner check: the owner rows set `#pragma optimize("s", on)` themselves (0x0042F948, 0x0042F9F2, 0x0042FE34,
+// 0x004190E2, 0x00419463; catalog flags /O2). ReleaseData<CFontBank> (0x004057A0, an /O2 body, no pragma) needs no opt-in here: a row
+// takes it from FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA. `#pragma optimize("", on)` below returns to the command-line settings
+// (VC7.1 has no push / pop for optimize), so a row that uses these opt-ins must not carry a row-head optimize pragma before its include
+// of this header (nf189). Needs no use of the specialised member before this point (define the macros before the first include of
+// this header). Not with FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22 (that class has no member-template operator=).
+class CFontBank;
+#pragma optimize("s", on)
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_RELEASEDATA_SIZE_BODY
+// ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ = 0x0042F948 (44 bytes, owner row: optimize("s", on)).
+template<> inline void CCountedPointer<const CFontBank>::ReleaseData()
+{
+    if (Info) {
+        --Info->RefCount;
+        if (Info->RefCount == 0) {
+            Info->DeleteFunc(Info->Data);
+            delete Info;
+        }
+    }
+    Data = 0;
+    Info = 0;
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_SHAREDATA_SIZE_BODY
+// ?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z = 0x004190E2 (38 bytes, calls ReleaseData; owner row: optimize("s", on)).
+template<> inline void CCountedPointer<CFontBank>::ShareData(CFontBank* data, CCPPointerInfo* info)
+{
+    if (Info != info) {
+        ReleaseData();
+        Data = data;
+        Info = info;
+        if (info)
+            ++info->RefCount;
+    }
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_SHAREDATA_SIZE_BODY
+// ?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z = 0x0042F9F2 (38 bytes, calls ReleaseData; owner row: optimize("s", on)).
+template<> inline void CCountedPointer<const CFontBank>::ShareData(const CFontBank* data, CCPPointerInfo* info)
+{
+    if (Info != info) {
+        ReleaseData();
+        Data = data;
+        Info = info;
+        if (info)
+            ++info->RefCount;
+    }
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CFONTBANK_ASSIGN_SIZE_BODY
+// ??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z = 0x00419463 (23 bytes, calls ShareData; owner row: optimize("s", on)).
+template<> inline CCountedPointer<CFontBank>& CCountedPointer<CFontBank>::operator=(const CCountedPointer<CFontBank>& other)
+{
+    ShareData(other.Data, other.Info);
+    return *this;
+}
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CONSTCFONTBANK_CONVERTING_ASSIGN_SIZE_BODY
+// ??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z = 0x0042FE34 (23 bytes, calls ShareData; owner row: optimize("s", on)).
+template<> template<> inline CCountedPointer<const CFontBank>& CCountedPointer<const CFontBank>::operator=<CFontBank>(const CCountedPointer<CFontBank>& other)
+{
+    ShareData(other.Data, other.Info);
+    return *this;
+}
+#endif
+#pragma optimize("", on)
+#endif
 #endif // FABLE_ENGINE_CCOUNTEDPOINTER_H

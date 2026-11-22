@@ -1,0 +1,47 @@
+addr       parity           behav  name
+00494840   WARN SHARED_HEADER_AVAILABLE CFrontendGameComponent (engine/CFrontendGameComponent.h)
+  WARN leaf '?InitGraphics@CFrontendGameComponent@@AAE_NXZ' matches no symbol in 00494840.obj; graded the largest function
+  WARN leaf '?InitGraphics@CFrontendGameComponent@@AAE_NXZ' matches no symbol in 00494840.obj; graded the largest function
+00494840   RELOCATION_MATCH PASS   InitGraphics
+0054ed90   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0054ed90   WARN SHARED_HEADER_AVAILABLE CText (engine/CText.h)
+0054ed90   WARN STANDIN_LEAF ?GetDataFromDef@CText@NUISystem@@QAEXXZ (catalog NUISystem::CDefString::GetString; names another function)
+0054ed90   RELOCATION_MATCH PASS   GetString
+0042db20   WARN STANDIN_LEAF ??_GCManager@NUISystem@@IAEPAXI@Z (catalog NUISystem::CManager::`scalar_deleting_destructor'; names another function)
+0042db20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0042fb40   RELOCATION_MATCH PASS   Clear
+0041e5f2   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041e5f2   RELOCATION_MATCH PASS   GetInstance
+0041e641   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041e641   WARN RELOC_NAME: ??1SMember88@@QAE@XZ -> 0042ce63 labelled 'std::list<T_0042ce63>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember70@@QAE@XZ -> 0042b7d7 labelled 'std::list<T_0042b7d7>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember60@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember24@@QAE@XZ -> 0042b796 labelled 'std::list<T_0042b796>::~list'
+0041e641   WARN RELOC_NAME: ??1CManagerBase@NUISystem@@UAE@XZ -> 0042bec0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0041e641   RELOCATION_MATCH PASS   ~CManager
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CStartupDefinitionManager (engine/CStartupDefinitionManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+0042e98f   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042e98f   RELOCATION_MATCH PASS   Init2
+005954ad   WARN RELOC_NAME: ??1?$_Deque_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0059ac77 labelled '_unattributed::FreeBuffer'
+005954ad   WARN RELOC_NAME: ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+005954ad   WARN RELOC_NAME: ??1?$_Rb_tree@W4EEvent@NUISystem@@W412@U?$_Identity@W4EEvent@NUISystem@@@std@@U?$less@W4EEvent@NUISystem@@@4@V?$allocator@W4EEvent@NUISystem@@@4@@std@@QAE@XZ -> 0052e050 labelled 'CRetailTree_erase0052dca0::~CRetailTree_erase0052dca0'
+005954ad   RELOCATION_MATCH PASS   ~CFrontEndManager
+
+WINS: 8
+  00494840 RELOCATION_MATCH CFrontendGameComponent::?InitGraphics@CFrontendGameComponent@@AAE_NXZ
+  0054ed90 RELOCATION_MATCH NUISystem::CDefString::GetDataFromDef@CText
+  0042db20 RELOCATION_MATCH NUISystem::CManager::??_GCManager@NUISystem@@IAEPAXI@Z
+  0042fb40 RELOCATION_MATCH NUISystem::CManager::?Clear@CManager@NUISystem@@SIXXZ
+  0041e5f2 RELOCATION_MATCH NUISystem::CManager::GetInstance
+  0041e641 RELOCATION_MATCH NUISystem::CManager::??1CManager@NUISystem
+  0042e98f RELOCATION_MATCH CNewFrontendGameComponent::?Init2@CNewFrontendGameComponent@@QAEXXZ
+  005954ad RELOCATION_MATCH NUISystem::CFrontEndManager::??1CFrontEndManager@NUISystem@@UAE@XZ
+EXIT 0
