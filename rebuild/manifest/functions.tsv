@@ -13672,7 +13672,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0063f1e0	operator()<CThingPhysical>	CFilter_Bind3<CThingFilter_IsNot,CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>	unknown	undefined	0		0	yes	accepted									
 0063f2c0	operator()	CFilter_Bind2	unknown	undefined	0		0	yes	accepted									
 0063f340	StdList_InitEmpty_0063f340	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\global_StdListInitEmpty0063f340_0063f340.cpp
-0063f360	StdList_Clear_0063f360	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\CGuiControlTreePane_SortTreeRecursively_0063f360.cpp
+0063f360	~_List_base	std::_List_base<const CThingGameObject*>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\CGuiControlTreePane_SortTreeRecursively_0063f360.cpp
 0063f3a0	GetDef<CEngineThemeDef>	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
 0063f450	StdList_InitEmpty_0063f450	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\global_StdListInitEmpty0063f450_0063f450.cpp
 0063f4b0	ForEachInRoughArea<CThingPhysical,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox>,CThingFindNavigationLayerAt>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_HasNavigationInformation,CThingFilter_OverlappingBoundingBox> *,CThingFindNavigationLayerAt *	1	yes	accepted									
@@ -34512,7 +34512,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cbd10	GetEnumerationType	CBankFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CBankFile_GetBankHandle_009cbd10.cpp
 009cbd30	SetBankUpdateStatus	CBankFile	__thiscall	void	8	CScriptGameResourceObjectScriptedThingBase *,CScriptThing *,char *,CCharString *,CCharString *,CCharString *,bool,bool	1	yes	accepted									
 009cbd50	SetBankUpdateProgress	CBankFile	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
-009cbd70	func_009cbd70	CScriptGameResourceObjectScriptedThingBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+009cbd70	WriteBankLog	CBankFile	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 009cbd90	WriteBankWarning	CBankFile	__thiscall	void	2	CBankFile *,CCharString *	1	yes	accepted									
 009cbe10	ConvertPathToFilename	CBankFile	__thiscall	CCharString	2	CBankFile *,CCharString *	1	yes	accepted									
 009cbe90	ReadInfo	CBankFileEntryUpdateData	unknown	undefined	0		0	yes	accepted									

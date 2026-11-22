@@ -214175,9 +214175,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009cbd30'
-        Module = 'CScriptGameResourceObjectScriptedThingBase'
-        Source = '00/9c/CScriptGameResourceObjectScriptedThingBase_func009cbd30_009cbd30.cpp'
-        TestSource = '00/9c/CScriptGameResourceObjectScriptedThingBase_func009cbd30_009cbd30_test.cpp'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_SetBankUpdateStatus_009cbd30.cpp'
+        TestSource = '00/9c/CBankFile_SetBankUpdateStatus_009cbd30_test.cpp'
         PassPattern = '009cbd30_TEST PASS'
     }
     [pscustomobject]@{
@@ -214287,16 +214287,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009cbd50'
-        Module = 'CScriptGameResourceObjectScriptedThingBase'
-        Source = '00/9c/CScriptGameResourceObjectScriptedThingBase_func009cbd50_009cbd50.cpp'
-        TestSource = '00/9c/CScriptGameResourceObjectScriptedThingBase_func009cbd50_009cbd50_test.cpp'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_SetBankUpdateProgress_009cbd50.cpp'
+        TestSource = '00/9c/CBankFile_SetBankUpdateProgress_009cbd50_test.cpp'
         PassPattern = '009cbd50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009cbd70'
-        Module = 'CScriptGameResourceObjectScriptedThingBase'
-        Source = '00/9c/CScriptGameResourceObjectScriptedThingBase_func009cbd70_009cbd70.cpp'
-        TestSource = '00/9c/CScriptGameResourceObjectScriptedThingBase_func009cbd70_009cbd70_test.cpp'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_WriteBankLog_009cbd70.cpp'
+        TestSource = '00/9c/CBankFile_WriteBankLog_009cbd70_test.cpp'
         PassPattern = '009cbd70_TEST PASS'
     }
     [pscustomobject]@{

@@ -86,6 +86,13 @@ public:
     void BeginUpdateEntries();
     void EndUpdateEntries();
 protected:
+#ifdef FABLE_RETAIL_CBANKFILE_PROGRESS_WRAPPERS_DECL
+    // Per-TU opt-in (NF243, 2026-11-22, CODEXP27 L108 / L110): Ego_r.pdb / FableWin.pdb ?SetBankUpdateStatus@CBankFile@@IAEXABVCCharString@@@Z
+    // and ?WriteBankLog@CBankFile@@IAEXABVCCharString@@@Z (protected), declared only: the self rows 0x009CBD30 (callback slot 1,
+    // `jmp [eax+4]`, `ret 4`; called from CBankFile::Update at 0x009CF27B) and 0x009CBD70 (slot 2, `jmp [eax+8]`) define them.
+    void SetBankUpdateStatus(const CCharString& text);                  // 0x009CBD30
+    void WriteBankLog(const CCharString& text);                         // 0x009CBD70
+#else
     void SetBankUpdateStatus(const CCharString& text)
     {
         if (ProgressCallback)
@@ -95,15 +102,22 @@ protected:
         if (ProgressCallback)
             ProgressCallback->WriteLog(text);
     }
+#endif
 private:
     void DeleteEntry(unsigned long index);
 public:
     unsigned long GetEntryChecksum(unsigned long index) const { return Checksums[index]; }
 private:
+#ifdef FABLE_RETAIL_CBANKFILE_PROGRESS_WRAPPERS_DECL
+    // NF243 (CODEXP27 L109): Ego_r.pdb / FableWin.pdb ?SetBankUpdateProgress@CBankFile@@AAEXKK@Z (private), declared only: the self
+    // row 0x009CBD50 (callback slot 0, `jmp [eax]`, `ret 8`) defines it.
+    void SetBankUpdateProgress(unsigned long done, unsigned long total); // 0x009CBD50
+#else
     void SetBankUpdateProgress(unsigned long done, unsigned long total) {
         if (ProgressCallback)
             ProgressCallback->SetProgress(done, total);
     }
+#endif
 public:
 #endif
 protected:

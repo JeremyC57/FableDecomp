@@ -1,0 +1,3 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	??1?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ	0063f360	0063e6f0	no landed row binds it any more (0x0063E6F0 now binds the _List_base spelling; 0x0063F360 is ~_List_base, ~list is the jmp 0x0063F470)
+add	rebuild/oracles/reloc_bindings.tsv	??1?$_List_base@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ	0063f360	0063e6f0	the new binding (vland RELOC_NAME WARN until it is in the table)

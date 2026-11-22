@@ -35,7 +35,10 @@
 #define FABLE_RETAIL_CWORLDMAP_LINEOFSIGHT
 #define FABLE_RETAIL_SCOPED_PTR
 #define FABLE_RETAIL_STLP_LIST
-#define FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE
+// NF243 (2026-11-22, the DTOR_OUTOFLINE census): the out-of-line list destructor call binds _List_base<const CThingGameObject*>'s
+//   destructor 0x0063F360 (was FABLE_RETAIL_STLP_LIST_DTOR_OUTOFLINE, binding list's own name there; retail 0x0063F470 is list's
+//   size-optimised `~list() {}`, a 5-byte `jmp 0x0063F360`). Same bytes.
+#define FABLE_RETAIL_STLP_LIST_BASE_DTOR_VISIBLE_NOINLINE
 #include "fable_string.h"
 #include "engine/C3DVector.h"
 #include "engine/C2DBoxI.h"

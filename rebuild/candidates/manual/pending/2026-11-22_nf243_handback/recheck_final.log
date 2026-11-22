@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0063f360   RELOCATION_MATCH PASS   StdList_Clear_0063f360
+0063e6f0   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingGameObject@@V?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_IsNot@@V1@@@AAV?$list@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@@Z -> 0063fae0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingGameObject, std::list<CThingGameObject const *, std::allocator<CThingGameObject const *>>, CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsNot>>'
+0063e6f0   WARN RELOC_NAME: ??1?$_List_base@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ -> 0063f360 labelled '_global::StdList_Clear_0063f360'
+0063e6f0   RELOCATION_MATCH PASS   IsLineOfSight
+009cbd30   MATCH            PASS   SetBankUpdateStatus
+009cbd50   MATCH            PASS   SetBankUpdateProgress
+009cbd70   MATCH            PASS   func_009cbd70
+
+WINS: 5
+  0063f360 RELOCATION_MATCH _global::??1?$_List_base@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ
+  0063e6f0 RELOCATION_MATCH CWorldMap::?IsLineOfSight@CWorldMap@@QBE_NABVCThing@@0_N@Z
+  009cbd30 MATCH CScriptGameResourceObjectScriptedThingBase::?SetBankUpdateStatus@CBankFile@@IAEXABVCCharString@@@Z
+  009cbd50 MATCH CScriptGameResourceObjectScriptedThingBase::?SetBankUpdateProgress@CBankFile@@AAEXKK@Z
+  009cbd70 MATCH CScriptGameResourceObjectScriptedThingBase::?WriteBankLog@CBankFile@@IAEXABVCCharString@@@Z
