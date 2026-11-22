@@ -1,4 +1,8 @@
 // CMaterialDef::GetRandomBerserkedSwordHitParticleEffect() -- pick one entry of the material's berserked sword-hit particle-effect list with the engine's random generator (0 when the list is empty)
+// Name (NF237, land1122auth24): the const member, Ego_r.pdb + FableWin.pdb publics ?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
+//   (engine/CMaterialDef.h FABLE_RETAIL_CMATERIALDEF_SWORDHITEFFECTS declares it); landed 0x00839420 binds that spelling. In-place respell of the
+//   HEAD local models (const member, const element read); bytes unchanged.
+// Leaf: ?GetRandomBerserkedSwordHitParticleEffect@CMaterialDef@@QBEJXZ
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EE720, length 100 bytes.
@@ -30,14 +34,14 @@ template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     bool empty() const { return _M_start == _M_finish; }
     unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long n) { return *(_M_start + n); }
+    const T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
 class CMaterialDef { public:
     unsigned char _pad[0x80];                      // vptr/base, sounds, rumble, the first four effect vectors
     vector<long> BerserkedSwordHitParticleEffect;
-    long GetRandomBerserkedSwordHitParticleEffect();
+    long GetRandomBerserkedSwordHitParticleEffect() const;
 };
-long CMaterialDef::GetRandomBerserkedSwordHitParticleEffect()
+long CMaterialDef::GetRandomBerserkedSwordHitParticleEffect() const
 {
     if (!BerserkedSwordHitParticleEffect.empty()) {
         CRandomGenerator* rng = CMainGameComponent::Get()->m_pOwner->GetRandomGenerator();

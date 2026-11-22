@@ -4075,7 +4075,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0048dae0	GFLimit	_global	__fastcall	double *	3	double *,double *,double *	1	yes	accepted									
 0048db08	sub_0048db08	_global	unknown	undefined	0		0			discovered	gapscan							
 0048db13	Query_48db13	CWorld	__thiscall	bool	1	CPersistContext *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CPersistContext_IsBinary_0048db13.cpp
-0048db35	IsCameraResetting	CUserProfileManager	__thiscall	bool	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CUserProfileManager_IsCameraResetting_0048db35.cpp
+0048db35	IsSubtitlingEnabled	CUserProfileManager	__thiscall	bool	1	CUserProfileManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CUserProfileManager_IsCameraResetting_0048db35.cpp
 0048db46	IsWaitingForClickPast	CSubtitleRenderer	__thiscall	bool	1	CSubtitleRenderer *	1	yes	accepted									
 0048db98	Forward_operator___member0x6c_0048db98	_global	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 0048dba6	SetVWindowsForDeprecatedDrawInterface	CSubtitleRenderer	__thiscall	void	3	CSubtitleRenderer *,C2DBoxF *,C2DBoxF *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CSubtitleRenderer_SetVWindowsForDeprecatedDrawInterface_0048dba6.cpp

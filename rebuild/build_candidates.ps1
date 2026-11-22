@@ -30680,8 +30680,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0048db35'
         Module = 'CUserProfileManager'
-        Source = '00/48/CUserProfileManager_IsCameraResetting_0048db35.cpp'
-        TestSource = '00/48/CUserProfileManager_IsCameraResetting_0048db35_test.cpp'
+        Source = '00/48/CUserProfileManager_IsSubtitlingEnabled_0048db35.cpp'
+        TestSource = '00/48/CUserProfileManager_IsSubtitlingEnabled_0048db35_test.cpp'
         PassPattern = 'OK_0x0048db35'
     }
     [pscustomobject]@{

@@ -8571,7 +8571,6 @@ __TI1?AVCBBBFileException@@	01369380	009e90c0
 ?SetAICast@CTCMultiArrow@@QAEXJ@Z	007cbf20	008cdc40
 ?Close@CTCDoor@@QAEXXZ	00730dd0	00730f90
 ?Open@CTCDoor@@QAEX_N@Z	00730c00	00730f90
-?find@CBlendedEffectMap@@QAE?AUSMapIterator@@ABJ@Z	008ee890	008ee790
 __CItanh	00bfece2	008ee790
 ?UpdateGuiTimer@CPlayerGui@@QAEXMMMPAW4EPlayerGuiMode@@PAM@Z	00437500	004387f0
 ?InitInterfaces@CPlayer@@QAEXXZ	00488d10	0048a210
@@ -9877,7 +9876,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?IsCameraYZInverted@CUserProfileManager@@QBE_NXZ	005485b0	00548b50
 ?IsGuildMasterEnabled@CUserProfileManager@@QBE_NXZ	005485f0	00548b50
 ?IsHUDTooltipEnabled@CUserProfileManager@@QBE_NXZ	00548610	00548b50
-?IsShowTargetingStatus@CUserProfileManager@@QBE_NXZ	00548740	00548b50
 ?IsShowingBuddyNames@CUserProfileManager@@QBE_NXZ	00548650	00548b50
 ?IsSubtitlingEnabled@CUserProfileManager@@QBE_NXZ	0048db35	00548b50
 ?IsUsingHeadPhones@CUserProfileManager@@QBE_NXZ	00548630	00548b50
@@ -12931,14 +12929,6 @@ _fclose	00bfea20	00402130
 ?GetMaxAntialiasing@CUserProfileManager@@QBEJXZ	00409090	00548790
 ?GetMaxRefreshRate@CUserProfileManager@@QBEJXZ	00406890	00548790
 ?GetMaxResolution@CUserProfileManager@@QBEJXZ	00408900	00548790
-?GetOption48DB35@CUserProfileManager@@QBE_NXZ	0048db35	00548790
-?GetOption548650@CUserProfileManager@@QBE_NXZ	00548650	00548790
-?GetOption548670@CUserProfileManager@@QBEJXZ	00548670	00548790
-?GetOption548690@CUserProfileManager@@QBE_NXZ	00548690	00548790
-?GetOption5486B0@CUserProfileManager@@QBEJXZ	005486b0	00548790
-?GetOption5486D0@CUserProfileManager@@QBEJXZ	005486d0	00548790
-?GetOption5486F0@CUserProfileManager@@QBEJXZ	005486f0	00548790
-?GetOption548740@CUserProfileManager@@QBE_NXZ	00548740	00548790
 ?GFIntToWideString@@YI?AVCWideString@@J@Z	00405f00	00558170
 ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z	009c95e0	00558170
 ??A?$map@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@M@std@@QAEAAMABW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@Z	005692b0	00560720
@@ -14980,7 +14970,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CTCEnemy@@QAE@PAVCThing@@@Z	0076c8a0	004d3d69
 ??0CTCDParticleEmitter@@QAE@AAVCThing@@@Z	006dff30	004d3ddf
 ??0CTCDriverBase@@QAE@AAVCThing@@@Z	00771200	004d3f10
-??0CTCHeroOpinionDeedLog@@QAE@PAVCThing@@@Z	006c5a80	004d3f50
 ??0CTCHeroPodium@@QAE@AAVCThing@@@Z	00771db0	004d4003
 ??0CTCShop@@QAE@AAVCThing@@@Z	007744a0	004d407c
 ??0CTCGraphicAppearanceAnimatedMesh@@QAE@PAVCThing@@@Z	0077b250	004d43f8
@@ -29454,7 +29443,6 @@ _s_SpreadShotAngle	013bae7c	007bbe34
 ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z	0097e270	0097e890
 ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z	0097e2d0	0097e890
 ??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z	009badd0	009ae150
-??1CPersistContext@@QAE@XZ	009bbbf0	009ae150
 ?InstantiateSubDef@CDefinitionManager@@QAE?AUCDefPointer@@ABVCCharString@@K@Z	009adae0	009ae150
 ??0CDefKeyData@@QAE@XZ	009baa70	009ae6b0
 ??ACDefMap@@QAEPAUCCountedPointer@@ABUCDefKey@@@Z	009b7bc0	009ae6b0
@@ -39058,7 +39046,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??_7CChestDef@@6B@	0123acdc	004d3826
 ??ECAttackerIterator@@QAEAAU0@XZ	006ef790	006e97f0
 ?ApplyBlockResponse@CTCCombat@@QAEXPAVCThing@@@Z	00733cf0	006eb390
-?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@QBEJABUCCombatantInfo@@0@Z	006eae20	006eb390
 ?GetBestSpeechForCreature@CombatDialogueManager@@QBEKABVCThingCreatureBase@@0ABVCCombatManager@@@Z	008af990	006eb390
 ?GetMeleeWeaponDef@CThingCreatureBase@@QBEJXZ	006623f0	006eb390
 ?GetRangedWeaponDef@CThingCreatureBase@@QBEJXZ	00662400	006eb390
@@ -39622,3 +39609,7 @@ _sort32a	00c95560	00c95580
 ?SIT_ON_BENCH_ANIM_NAME@?A0x353fab2a@@3VCCharString@@A	013bb6e4	00938380
 ?SIT_ON_CHAIR_ANIM_NAME@?A0x353fab2a@@3VCCharString@@A	013bb6dc	00938380
 ?SIT_ON_FLOOR_ANIM_NAME@?A0x2575a88b@@3VCCharString@@A	013bb6ec	009392a0
+?find@CBlendedEffectMap@@QBE?AUSMapIterator@@ABJ@Z	008ee890	008ee790
+?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	00548740	00548b50
+??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z	006c5a80	004d3f50
+?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z	006eae20	006eb390

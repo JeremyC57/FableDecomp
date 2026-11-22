@@ -1,0 +1,4 @@
+address	name	evidence
+0129ba3c	DELTA_NOTIONAL_ZERO	reloc_bindings binds ?DELTA_NOTIONAL_ZERO@@3MB there (0x0040ED10); engine/C3DVector.h line 39 (AUTH24 / NF237)
+0048db35	CUserProfileManager::IsSubtitlingEnabled	FableWin.pdb public + Ego_r method record (NF237)
+00548630	CUserProfileManager::IsUsingHeadPhones	Ego_r UsingHeadPhones at +0x30 (NF237)

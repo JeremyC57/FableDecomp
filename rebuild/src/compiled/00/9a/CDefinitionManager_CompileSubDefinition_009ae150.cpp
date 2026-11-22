@@ -4,8 +4,9 @@
 // Callees: CDefinitionManager::LoadDef @ 0x009AD6E0 (GetPDefFromGlobalIndex inlined), InstantiateSubDef @ 0x009ADAE0
 //          (CDefPointer by value), parent def vslots 13 (+0x34 RemoveSubDef) / 15 (+0x3c GetPSubDefInfo), sub def vslots
 //          18 (+0x48 Persist) / 19 (+0x4c SetParent), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CStringParser
-//          @ 0x00404720, list dtor @ 0x004046B0, ~CBaseClass @ 0x0099A2E0, CPersistContext @ 0x009BADD0, ~CPersistContext
-//          @ 0x009BBBF0.
+//          @ 0x00404720, list dtor @ 0x004046B0, ~CBaseClass @ 0x0099A2E0, CPersistContext @ 0x009BADD0, CPersistContext::
+//          CheckUnknownSymbols @ 0x009BBBF0 (an explicit call after `Flags |= 5`, NF237: engine/CPersistContext.h has an empty
+//          ~CPersistContext, 0x009BC120 calls CheckUnknownSymbols explicitly, and no retail unwind path calls 0x009BBBF0).
 // Layout: retail CDefinitionManager (vectors 12 bytes): PSymbolMap +0x58, InstantiatedDefs +0xa4, ErrorCallback +0xb0
 //   (PDB +0x60/+0xbc/+0xcc); retail CStringParser 0x28 bytes (STLport list 4 bytes; PDB 0x30).
 // Shape: two counted-pointer flavours. InstantiateSubDef's by-value result (address escapes) releases through the
@@ -47,7 +48,7 @@ class CPersistContext { public:
     unsigned char _body[0x2c];
     CPersistContext(CStringParser& parser, TErrorCallback callback, bool isNew, const CDefinitionManager* manager,
                     const CSymbolMap* symbols, CCharString* text);  // 0x009BADD0 (Ego_r signature; naming wave 17)
-    ~CPersistContext();                                       // 0x009BBBF0
+    void CheckUnknownSymbols();                               // 0x009BBBF0 (Ego_r.pdb ?CheckUnknownSymbols@CPersistContext@@QAEXXZ)
 };
 
 struct CRefCounted {                                         // second base: the count sits at +4 behind the vptr
@@ -178,5 +179,6 @@ void CDefinitionManager::CompileSubDefinition(CCharString text, const CCharStrin
         CPersistContext context(parser, ErrorCallback, isNew, this, PSymbolMap, &text);
         subDef->Persist(context);
         subDef->Flags |= 5;
+        context.CheckUnknownSymbols();                       // 0x009BBBF0 (NF237: the only retail call; no unwind path calls it)
     }
 }

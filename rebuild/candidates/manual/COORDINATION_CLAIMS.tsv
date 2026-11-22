@@ -300,3 +300,4 @@ date	account	item	kind	status	note
 2026-11-22	A	land1122p27 + land1122auth24 NAME_FIXES (137 lines)	naming	claimed	agent NF237, second naming agent beside NF236 ($S/w22/agentNF237/QUEUE_LINES.tsv; the 54 held-binding addresses stay with NF236)
 2026-11-22	A	q12663-q12667	naming	done	agent NF236 landed (batches/2026-11-22_landing_nf236); q12659 released (not started)
 2026-11-22	A	q12668-q12672,q12659	naming	claimed	agent NF238 (nf236 follow-ups, CEngine ctor/dtor unit, CMainGameComponent last) beside NF237
+2026-11-22	A	land1122p27 + land1122auth24 NAME_FIXES	naming	done	agent NF237 landed 8 rows (batches/2026-11-22_landing_nf237); 41 open + 22 deferred lines released for the next agent
