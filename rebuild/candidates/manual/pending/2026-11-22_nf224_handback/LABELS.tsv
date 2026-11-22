@@ -1,0 +1,5 @@
+file	line	address	action	old_name	new_name	evidence
+ghidra_out/labels_manifest_sync_2026-11-03.tsv	222	00415b80	replace name	SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80	CGraphicDataBankInit::CGraphicDataBankInit	Ego_r.pdb + FableWin.pdb + Ego_d.pdb ??0CGraphicDataBankInit@@QAE@XZ; 4 landed callers bind it; rows/00415b80.cpp MATCH
+ghidra_out/engine_api.tsv	390	00415b80	regenerate or respell (derived dump carries the propagated chunk label)	CNavigationLayer	CGraphicDataBankInit::CGraphicDataBankInit	same
+rebuild/manifest/functions.tsv	455	00415b80	respell module / name (coordinator, with the catalog)	SNavigationLayerDefaults_00415b80	CGraphicDataBankInit::CGraphicDataBankInit	same
+rebuild/manifest/manifest-gaps.tsv	129	00415b80	respell or regenerate (derived)	CNavigationLayer	CGraphicDataBankInit::CGraphicDataBankInit	same

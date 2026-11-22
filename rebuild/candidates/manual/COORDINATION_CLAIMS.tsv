@@ -239,3 +239,5 @@ date	account	item	kind	status	note
 2026-11-22	A	q12548,q12550,q12551,q12552,q12553,q12554,q12555,q12556,q12557,q12558	naming	done	NF223 landed as nf223 (9 rows; 2 GetFont rows held, 0x0042DB20 rejected, queued q12559-q12561)
 2026-11-22	A	q12559,q12560,q12561	naming	claimed	agent NF224
 2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	claimed	agent AUTH11 (bounded steps per the 2026-11-22 advisor rulings)
+2026-11-22	A	q12559,q12560,q12561	naming	done	NF224 landed as nf224 (0x00415B80); q12559 / q12560 re-queued (q12562+)
+2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	done	AUTH11: 0x00A4EFC0 owner packet; 0x008E18D0 measured (pending/2026-11-22_auth11)

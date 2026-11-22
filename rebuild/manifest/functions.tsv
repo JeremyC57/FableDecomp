@@ -452,7 +452,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00415a10	fabs	_global	unknown	undefined	0		0			discovered	gapscan							
 00415a60	CInterpolationInfo	CInterpolationInfo	__thiscall	undefined	1	CInterpolationInfo *	0	yes	accepted									
 00415ae0	sub_00415ae0	_global	unknown	undefined	0		0			discovered	gapscan							
-00415b80	SNavigationLayerDefaults_00415b80	SNavigationLayerDefaults_00415b80	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted									
+00415b80	CGraphicDataBankInit	CGraphicDataBankInit	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted									
 00415bd0	GetWidth	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CSurface_GetWidth_00415bd0.cpp
 00415bf0	GetHeight	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CSurface_GetHeight_00415bf0.cpp
 00415c10	CAFile	CAFile	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									

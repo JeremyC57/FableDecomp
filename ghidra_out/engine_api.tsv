@@ -387,7 +387,7 @@
 004159b0	__thiscall	undefined	1	2	CGameEvent *,long	CGameEvent
 004159e0	__thiscall	void	0	2	CGameEvent *,uchar	AddUBYTE
 00415a60	__thiscall	undefined	1	1	CInterpolationInfo *	CInterpolationInfo
-00415b80	__thiscall	undefined	1	1	CNavigationLayer *	CNavigationLayer
+00415b80	__thiscall	undefined	1	1	CNavigationLayer *	CGraphicDataBankInit::CGraphicDataBankInit
 00415bd0	__thiscall	ulong	4	1	CSurface *	GetWidth
 00415bf0	__thiscall	ulong	4	1	CSurface *	GetHeight
 00415c10	__thiscall	undefined	1	1	C3DAnimationUtil *	C3DAnimationUtil

@@ -205857,9 +205857,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00415b80'
-        Module = 'SNavigationLayerDefaults_00415b80'
-        Source = '00/41/SNavigationLayerDefaults00415b80_SNavigationLayerDefaults00415b80_00415b80.cpp'
-        TestSource = '00/41/SNavigationLayerDefaults00415b80_SNavigationLayerDefaults00415b80_00415b80_test.cpp'
+        Module = 'CGraphicDataBankInit'
+        Source = '00/41/CGraphicDataBankInit_CGraphicDataBankInit_00415b80.cpp'
+        TestSource = '00/41/CGraphicDataBankInit_CGraphicDataBankInit_00415b80_test.cpp'
         PassPattern = '00415b80_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,0 +1,44 @@
+addr       parity           behav  name
+00415b80   WARN STANDIN_LEAF ??0CGraphicDataBankInit@@QAE@XZ (catalog SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80; names another function)
+00415b80   MATCH            PASS   SNavigationLayerDefaults_00415b80
+00416c8a   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00416c8a   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+00416c8a   RELOCATION_MATCH PASS   InitGraphics
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042ddb3   WARN RELOC_NAME: ??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z -> 0042fe34 labelled 'CCountedPointer<const CFontBank>::operator=<CFontBank>'
+0042ddb3   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0042ddb3   RELOCATION_MATCH PASS   InitialiseGraphics
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041e3f6   WARN RELOC_NAME: ??0CManagerBase@NUISystem@@QAE@XZ -> 0042be7b labelled 'NUISystem::CObservable::CObservable'
+0041e3f6   WARN RELOC_NAME: ??0CKeyMap@NUISystem@@QAE@XZ -> 0042bf67 labelled 'std::map<T_0042bf67>::map'
+0041e3f6   WARN RELOC_NAME: ??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z -> 0042ab01 labelled 'Std_DoubleLinkedList_CreateNode'
+0041e3f6   WARN RELOC_NAME: ??0CLayerMap@NUISystem@@QAE@XZ -> 0042bf85 labelled 'std::map<T_0042bf85>::map'
+0041e3f6   WARN RELOC_NAME: ??0CChildrenMap@NUISystem@@QAE@XZ -> 0042d28b labelled 'std::map<T_0042d28b>::map'
+0041e3f6   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0041e3f6   RELOCATION_MATCH PASS   CManager
+005bff07   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005bff07   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+005bff07   RELOCATION_MATCH PASS   CTCInventoryBase
+
+WINS: 5
+  00415b80 MATCH SNavigationLayerDefaults_00415b80::??0CGraphicDataBankInit@@QAE@XZ
+  00416c8a RELOCATION_MATCH CMainGameComponent::?InitGraphics@CMainGameComponent@@QAE_NXZ
+  0042ddb3 RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+  0041e3f6 RELOCATION_MATCH NUISystem::CManager::??0CManager@NUISystem
+  005bff07 RELOCATION_MATCH NInventory::CTCInventoryBase::??0CTCInventoryBase
+EXIT 0
+# after the comment-only edit to rows/00415b80.cpp (constructor-leaf precedent line): 00415b80 SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80 MATCH flags= []

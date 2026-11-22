@@ -1,0 +1,2 @@
+address	correct_symbol	evidence1	evidence2	wrong_spelling	note
+0x00A4EFC0 (helper CSimpleMemoryPool::AllocateType<T>, rebuild/include/engine/CSimpleMemoryPool.h)	parameter `elements`	Ego_d.pdb S_BPREL32 `elements` +8 in all 12 AllocateType<T> records	FableWin.pdb S_BPREL32 `elements` +8 (12 records); Ego_r.pdb AllocateType<C3DKeyframe> `elements` +4	parameter `count`	needs header claim (shared header rename; not applied)

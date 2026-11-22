@@ -1,0 +1,4 @@
+00415b80	00416cc5	00416c8a	CMainGameComponent::InitGraphics
+00415b80	0041e4d5	0041e3f6	NUISystem::CManager::CManager
+00415b80	0042dde4	0042ddb3	CNewFrontendGameComponent::InitialiseGraphics
+00415b80	005bffeb	005bff07	NInventory::CTCInventoryBase::CTCInventoryBase

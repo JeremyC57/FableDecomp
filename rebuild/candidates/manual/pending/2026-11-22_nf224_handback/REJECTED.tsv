@@ -1,0 +1,3 @@
+address	claim	reason
+0x00415B80	NF223 census_final: "self row not landed" (entry framed as catalog-only)	the row is landed (build_candidates.ps1, Address 00415b80, source SNavigationLayerDefaults00415b80_..._00415b80.cpp) with the stand-in leaf ??0SNavigationLayerDefaults_00415b80@@QAE@XZ; ported here instead (STATUS)
+0x00494840 / 0x0054ED90	"clear the new NEQ pick-any copies with the existing decl-only opt-ins"	retail expands every CCountedPointer member at both sites; each opt-in DIFFERs the row (work/e1/grades.txt)

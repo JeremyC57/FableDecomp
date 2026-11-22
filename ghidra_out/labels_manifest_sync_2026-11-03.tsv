@@ -219,7 +219,7 @@ address	name	evidence
 00415930	CGameComponent::SetQuit	catalog name (landed row); manifest module/name resynced; was CGameComponent::CGameComponent::SetQuit
 004159e0	AddUBYTE	catalog name (landed row); manifest module/name resynced; was CGameEvent::AddUBYTE
 00415ae0	sub_00415ae0	catalog name (landed row); manifest module/name resynced; was _gapscan::sub_00415ae0
-00415b80	SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80	catalog name (landed row); manifest module/name resynced; was CNavigationLayer::CNavigationLayer
+00415b80	CGraphicDataBankInit::CGraphicDataBankInit	catalog name (landed row); manifest module/name resynced; was CNavigationLayer::CNavigationLayer
 00415c10	CAFile::CAFile	catalog name (landed row); manifest module/name resynced; was C3DAnimationUtil::C3DAnimationUtil
 00415cc0	NParticleEngine::CAEnvironmentInteraction::vfunc_2	catalog name (landed row); manifest module/name resynced; was NParticleEngine::CAEnvironmentInteraction::NParticleEngine::CAEnvironmentInteraction::vfunc_2
 00415cf0	NParticleEngine::CAEnvironmentInteraction::GetVectorParam	catalog name (landed row); manifest module/name resynced; was NParticleEngine::CAEnvironmentInteraction::NParticleEngine::CAEnvironmentInteraction::vfunc_5
