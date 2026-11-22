@@ -226,3 +226,4 @@ date	account	item	kind	status	note
 2026-11-21	A	0x00A4EFC0	authoring	parked-advisor	AUTH7 escalated (Ego_d-exact text, same residue 16; tie not header-set dependent); pending/2026-11-21_auth7
 2026-11-21	A	q12401,q12383	naming	done	NF220 landed as nf220 (3 rows); q12226-q12229 blocked (family ~40 rows; to a dedicated agent); q12383 remainder queued
 2026-11-22	A	Codex pass 26 (100 rows)	codex	done	landed 95 (batches/2026-11-22_landing_p26); 5 parked (pending/2026-11-22_codex_pass26_open)
+2026-11-22	A	q12226,q12227,q12228,q12229,q12402,q12403	naming	claimed	round 10 agent NF221 (the CCountedPointer ReleaseData family, ~40 rows, plus the 4-row CComponent ??1 pass): rows it locks after its census
