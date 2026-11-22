@@ -1,0 +1,28 @@
+### order: D_00bfde20 00bfe900
+duplicates 1
+00bfe900.obj : warning LNK4006: "public: virtual __thiscall CLandscapeLayerMesh::~CLandscapeLayerMesh(void)" (??1CLandscapeLayerMesh@@UAE@XZ) already defined in D_00bfde20.obj; second definition ignored
+### order: 00bfe900 D_00bfde20
+duplicates 1
+D_00bfde20.obj : warning LNK4006: "public: virtual __thiscall CLandscapeLayerMesh::~CLandscapeLayerMesh(void)" (??1CLandscapeLayerMesh@@UAE@XZ) already defined in 00bfe900.obj; second definition ignored
+### order: D_00bfde20 H_00bfe900
+duplicates 0
+
+### order: H_00bfe900 D_00bfde20
+duplicates 0
+
+LNKDONE
+### order: D_00bfde20 00bfe900 (map lines: ??_7 / Verify)
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 D_00bfde20.obj
+MAP 0002:00000010 ??_7CLandscapeLayerMesh@@6B@ 10002010 D_00bfde20.obj
+### order: 00bfe900 D_00bfde20 (map lines: ??_7 / Verify)
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 00bfe900.obj
+MAP 0002:00000010 ??_7CLandscapeLayerMesh@@6B@ 10002010 00bfe900.obj
+### order: D_00bfde20 H_00bfe900 (map lines: ??_7 / Verify)
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 D_00bfde20.obj
+MAP 0002:00000010 ??_7CLandscapeLayerMesh@@6B@ 10002010 D_00bfde20.obj
+MAP 0001:000000c0 ?Verify@CMovableResource@@UBEKXZ 100010c0 f i H_00bfe900.obj
+### order: H_00bfe900 D_00bfde20 (map lines: ??_7 / Verify)
+MAP 0002:00000000 ??_7CMovableResource@@6B@ 10002000 H_00bfe900.obj
+MAP 0002:0000000c ??_7CLandscapeLayerMesh@@6B@ 1000200c H_00bfe900.obj
+MAP 0001:00000010 ?Verify@CMovableResource@@UBEKXZ 10001010 f i H_00bfe900.obj
+LNKDONE

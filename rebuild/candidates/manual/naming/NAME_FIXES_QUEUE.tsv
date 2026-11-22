@@ -13133,3 +13133,8 @@ land1122nf275	0x00ADC190 / 0x00ADC250 / 0x00ADC4E0 / 0x00ADCB90	their byte-equal
 land1122nf275	0x00ADCE60	port onto engine/CVertexGroupBlock.h, then back to the inline dtor	its local copy is 19 v 84 bytes	nf275 ruling 5
 land1122nf275	0x00418DCA (test)	write a test that links the row	HEAD standalone test kept	nf275 ruling 3
 land1122nf275	12 rows with a local CFrameRateSmoother	re-port onto engine/CFrameRateSmoother.h	SHARED_HEADER_AVAILABLE now flags them	nf275 ruling 1
+land1122nf277	0x00BFD480	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	Ego_r.pdb 00a4bba0 + FableWin.pdb 02e05150; reloc_bindings already binds it at 00bfd480 (binder 0x00BFDC90): HEAD self-vs-callers split, needs the row unit (REJECTED.tsv)	??1CEngineWaterBackgroundSubPatch@@QAE@XZ (self leaf of 0x00BFD480)
+land1122nf277	0x00BE8E60 / 0x00BFBD80 / 0x00AE04E0 / 0x00AE0540 / 0x00AE05A0	port onto the shared CMovableResource	they define ?Verify@CMovableResource@@UBEKXZ pick-any returning 0 (retail 0x009D5100 returns 0x7B)	nf277 ruling 2
+land1122nf277	0x009D5100	authoring list: CMovableResource::Verify has no landed definer	no authoring agent runs now	nf277 ruling 2
+land1122nf277	0x00BFD480 (+ binder 0x00BFDC90)	row unit in the 0x00BFDE20 shape: ??1...QAE -> UAE (both PDBs; table binds UAE), then its test	blocked its test rewrite	nf277 ruling 4
+land1122nf277	landscape host-model tests	0x00BE6090 / 0x00BFAAE0 / 0x00BFB590 / 0x00B684F0	rewrite on the shared headers so each links its row	NF277 entry 2 not reached

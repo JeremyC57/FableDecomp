@@ -1,0 +1,7 @@
+## 00bfde20 test object: DEF externals naming CLandscapeLayerMesh / CMovableResource / CEngineLandscapeMap
+DEF ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+DEF ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+DEF ?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+DEF ?Verify@CMovableResource@@UBEKXZ
+## 00bfddb0 test object: DEF externals naming CLandscapeLayerMesh / CMovableResource / CEngineLandscapeMap
+DEF ?CanRelocate@CLandscapeLayerMeshTestAccess@@SA_NPBVCLandscapeLayerMesh@@J@Z

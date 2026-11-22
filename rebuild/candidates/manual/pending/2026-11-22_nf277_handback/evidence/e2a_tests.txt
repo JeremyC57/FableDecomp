@@ -1,0 +1,36 @@
+D 00bfddb0 CLandscapeLayerMesh::CanRelocateData MATCH flags= [] leaf=?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+### 00bfde20 test alone (expect link failure)
+CL rc 0
+t.cpp
+LINK rc 96
+t.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall CLandscapeLayerMesh::~CLandscapeLayerMesh(void)" (??1CLandscapeLayerMesh@@UAE@XZ) referenced in function "int __cdecl RunDestructor(bool,void * *)" (?RunDestructor@@YAH_NPAPAX@Z)
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF277\work\tst_foe6jhzk\t.exe : fatal error LNK1120: 1 unresolved externals
+WORKDIR /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF277/work/tst_foe6jhzk
+### 00bfde20 test + row object
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+00bfde20_TEST PASS
+
+PATTERN PASS
+### 00bfddb0 test alone (expect link failure)
+CL rc 0
+t.cpp
+LINK rc 96
+t.obj : error LNK2019: unresolved external symbol "private: virtual bool __thiscall CLandscapeLayerMesh::CanRelocateData(long)const " (?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z) referenced in function "public: static bool __cdecl CLandscapeLayerMeshTestAccess::CanRelocate(class CLandscapeLayerMesh const *,long)" (?CanRelocate@CLandscapeLayerMeshTestAccess@@SA_NPBVCLandscapeLayerMesh@@J@Z)
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\agentNF277\work\tst_tax082p_\t.exe : fatal error LNK1120: 1 unresolved externals
+WORKDIR /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF277/work/tst_tax082p_
+### 00bfddb0 test + row object
+CL rc 0
+t.cpp
+LINK rc 0
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+RUN rc 0
+RB_bfddb0_OK
+
+PATTERN PASS
+00bfde20 ??1CLandscapeLayerMesh@@UAE@XZ []
+00bfddb0 ?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z []
+E2ADONE

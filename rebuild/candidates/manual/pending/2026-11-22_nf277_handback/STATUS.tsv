@@ -1,0 +1,9 @@
+address	change	grade	test	grades_used	entries	note
+0x00BFE900	re-port as a fold of 0x00BFDE20's landed file (by-path include, no code); test rewritten on the shared headers, links the row	RELOCATION_MATCH (q.py + vland)	PASS (self-link fails LNK2019 ??1; PASS with the row object)	3 (gr.sh e1, fin.sh e1, recheck_final)	entry 1	leaf cmpobj SAME v HEAD; fold object objsec ALL_EQ v 0x00BFDE20 object; both tables slot-for-slot retail; 1 LNK4006 on identical ??1
+0x00BFDE20	test only (rows/00bfde20_test.cpp), row unchanged	RELOCATION_MATCH	PASS (self-link fails LNK2019 ??1; PASS with the row object)	3 (g2.sh D, e2a vland, recheck_final)	entry 2 (+ entry 1 witness)	same harness as 0x00BFE900 test
+0x00BFDDB0	test only (rows/00bfddb0_test.cpp), row unchanged	MATCH	PASS (self-link fails LNK2019 CanRelocateData; PASS with the row object)	3 (g2.sh D, e2a vland, recheck_final)	entry 2	test-only friend for the private member call
+0x00BFD480	none	-	-	0	entry 2	blocked: row leaf ??1...QAE on a local CMovableResource; both PDBs UAE; needs the row port first (REJECTED.tsv)
+0x00BE6090	none	-	-	0	entry 2	open (context)
+0x00BFAAE0	none	-	-	0	entry 2	open (context)
+0x00BFB590	none	-	-	0	entry 2	open (context; scouted in NOTES)
+0x00B684F0	none	-	-	0	entry 2	open (context)

@@ -1,0 +1,51 @@
+## cmpobj HEAD 00bfe900 v new fold
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??_GCLandscapeLayerMesh@@UAEPAXI@Z
+SAME	??_GCMovableResource@@UAEPAXI@Z
+ONLY_A	??0CLandscapeLayerMesh@@QAE@XZ
+ONLY_A	??0CMovableResource@@QAE@XZ
+ONLY_A	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+ONLY_A	?ForceNew_00bfe900@@YAPAVCLandscapeLayerMesh@@XZ
+ONLY_A	?Verify@CMovableResource@@UBEKXZ
+## cmpobj new fold v 0x00BFDE20 (landed)
+SAME	??1CLandscapeLayerMesh@@UAE@XZ
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??_GCLandscapeLayerMesh@@UAEPAXI@Z
+SAME	??_GCMovableResource@@UAEPAXI@Z
+## objsec 0x00BFDE20 v fold
+sections head 7 new 7
+ALL_EQ 0
+## vtcheck 00bfe900 ??_7CLandscapeLayerMesh v 0x012A835C
+0	00bfe900	NOLINE	??_ECLandscapeLayerMesh@@UAEPAXI@Z
+1	00bfde80	NOLINE	?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+2	00bfddb0	NOLINE	?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 0135eb68 COL@-4 sym ?
+## vtcheck 00bfe900 ??_7CMovableResource v 0x0129B860
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	__purecall
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 01355d84 COL@-4 sym ?
+## vtcheck H_00bfe900 ??_7CLandscapeLayerMesh v 0x012A835C
+0	00bfe900	NOLINE	??_ECLandscapeLayerMesh@@UAEPAXI@Z
+1	00bfde80	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	00bfddb0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+## vtcheck H_00bfe900 ??_7CMovableResource v 0x0129B860
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+## vtcheck D_00bfde20 ??_7CLandscapeLayerMesh v 0x012A835C
+0	00bfe900	NOLINE	??_ECLandscapeLayerMesh@@UAEPAXI@Z
+1	00bfde80	NOLINE	?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+2	00bfddb0	NOLINE	?CanRelocateData@CLandscapeLayerMesh@@EBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 0135eb68 COL@-4 sym ?
+## vtcheck D_00bfde20 ??_7CMovableResource v 0x0129B860
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	__purecall
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 01355d84 COL@-4 sym ?

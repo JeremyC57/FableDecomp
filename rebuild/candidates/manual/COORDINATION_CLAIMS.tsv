@@ -345,3 +345,4 @@ date	account	item	kind	status	note
 2026-11-22	A	0x00BEB490 ??_G copy / D4 one definition	naming	done	agent NF274 landed 3 rows (batches/2026-11-22_landing_nf274); D4 S3 / the CLandscapeLayerMesh unit go to NF276
 2026-11-22	A	CLandscapeLayerMesh unit / D4 S3 + FreeVirtual owner	naming	done	agent NF276 landed 7 rows + 2 CompilerFlags (batches/2026-11-22_landing_nf276); 0x00BFE900 fold and the host-model tests go to NF277
 2026-11-22	A	q12659 CMainGameComponent ctor / CVertexGroupBlock owner dtor	naming	done	agent NF275 landed 3 rows + 7 headers (batches/2026-11-22_landing_nf275); the _M_erase split, 0x00ADCE60 port and test debt go to NF278
+2026-11-22	A	0x00BFE900 fold / CLandscapeLayerMesh tests	naming	done	agent NF277 landed 1 row + 3 tests (batches/2026-11-22_landing_nf277); 0x00BFD480 unit, the Verify rows and four tests go to NF279
