@@ -1,0 +1,124 @@
+##### 00b2e290 renames: ?Destroy_00b2de20@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCCompositeSurfaceCache@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37470 renames: ?Destroy_00b36060@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerStaticMeshes@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37520 renames: ?Destroy_00b36070@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerAnimatedMeshes@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b375d0 renames: ?Destroy_00b36080@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedStaticMeshes@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37680 renames: ?Destroy_00b36090@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedZSprites@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37730 renames: ?Destroy_00b360a0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerSprites@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b377e0 renames: ?Destroy_00b360b0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerFlareSprites@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37890 renames: ?Destroy_00b360c0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37940 renames: ?Destroy_00b360d0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b379f0 renames: ?Destroy_00b360e0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerLines@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37aa0 renames: ?Destroy_00b360f0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerText@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37b90 renames: ?Destroy_00b36100@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37c40 renames: ?Destroy_00b36110@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveGroupManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37cf0 renames: ?Destroy_00b36120@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveChangerManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37da0 renames: ?Destroy_00b36130@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEngineClothRenderer@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37e50 renames: ?Destroy_00b36140@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleLineGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37f00 renames: ?Destroy_00b36150@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleMeshGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b37fb0 renames: ?Destroy_00b36160@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b38060 renames: ?Destroy_00b36170@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteTrailGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b38110 renames: ?Destroy_00b36180@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b381c0 renames: ?Destroy_00b36190@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerDecal@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b38270 renames: ?Destroy_00b361a0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerParticleDecalGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b38320 renames: ?Destroy_00b361b0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b4b360 renames: ?Destroy_00b4b020@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b4b410 renames: ?Destroy_00b4b030@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DAnimatedMeshes@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b4b4c0 renames: ?Destroy_00b4b040@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DSprites@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b4b570 renames: ?Destroy_00b4b050@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitive2DViewportManager@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b4b620 renames: ?Destroy_00b4b060@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEnginePrimitiveManager2DParticleGroup@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b95a30 renames: ?Destroy_00b94f90@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEngineSceneGrid@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b95aa0 renames: ?Destroy_00b95000@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCEngineSceneMap@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00bb64a0 renames: ?Destroy_00bb6330@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCParticleSimulationRenderData@@@@SIXPAX@Z
+sections head 3 new 3
+ALL_EQ 0
+funcs SAME=2 vtbl_H=0 vtbl_N=0

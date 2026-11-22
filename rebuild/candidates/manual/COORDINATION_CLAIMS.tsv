@@ -351,3 +351,4 @@ date	account	item	kind	status	note
 2026-11-22	A	GetInputs and its callee family	naming	done	agent NF280 landed 4 rows + 1 test + 3 headers (batches/2026-11-22_landing_nf280); the _M_erase port and 0x00ADCE60 stay queued
 2026-11-22	A	Codex pass 28	authoring	done	landed 21 of 25 rows (batches/2026-11-22_landing_p28); 0x00850A80 / 0x00879900 / 0x00A2F740 / 0x00D07490 parked and still reserved
 2026-11-22	A	tracker batches 1 (T1-access/T2, CCountedPointer DeleteData)	naming	done	agents NF281 / NF282 landed 113 rows (batches/2026-11-22_landing_nf281_282); continuations NF283 / NF284
+2026-11-22	A	tracker batch T1 standin_alias continuation (CCountedPointer DeleteData)	naming	done	agent NF284 landed 31 rows (batches/2026-11-22_landing_nf284); continuation NF285 (ENTRIES order), 12 deferred CCountedPointer entries a later T3 unit
