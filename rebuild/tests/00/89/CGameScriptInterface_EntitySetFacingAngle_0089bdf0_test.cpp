@@ -25,7 +25,6 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-extern const double g_zeroPitch;                        // 0x0122ED70 (0.0)
 extern const double g_twoPi;                            // 0x0124F2B8 ((double)6.2831855f)
 struct CTCBase_Retail;
 struct CInterfaceMap_Retail {
@@ -104,9 +103,9 @@ void CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, floa
     if (look)
         look->StopLooking(0);
     if (!immediate && look) {
-        float cosPitch = (float)cos(g_zeroPitch);
+        float cosPitch = (float)cos(0.0);
         double yaw = angle * g_twoPi;
-        C3DVector direction((float)(sin(yaw) * cosPitch), (float)(cos(yaw) * cosPitch), (float)sin(g_zeroPitch));
+        C3DVector direction((float)(sin(yaw) * cosPitch), (float)(cos(yaw) * cosPitch), (float)sin(0.0));
         look->LookAtPos(entity.GetPosition() + direction, 0x21);
         return;
     }
@@ -116,7 +115,6 @@ void CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, floa
 }
 
 // ---- stubs ----
-const double g_zeroPitch = 0.0;
 const double g_twoPi = (double)6.2831855f;
 void CThingPhysics_Retail::v00() {}
 void CThingPhysics_Retail::v01() {}

@@ -5298,7 +5298,6 @@ __chkstk	00bfea30	00ab6060
 ??_7CFile@@6B@	0129f06c	00add0e0
 ??_7CFile@LHA@@6B@	0129f06c	00add1f0
 ??_7CLHFile@@6B@	0129f094	00add1f0
-?g_clearDouble@@3NB	0122ed70	00adf1e0
 ?LinearInsert_00ae6760@@YIXPAUSElement8@@0U1@USCompare@@@Z	00ae6760	00ae7110
 ??0C3DGroup2@@QAE@XZ	00ac40c0	00ae8490
 ??0CParticleDataBank@NParticleEngine@@QAE@XZ	00af1670	00ae8980
@@ -37667,7 +37666,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?LowerBound@CTCMap_Retail@@QAEPAUSTCEntry_Retail@@ABK@Z	0040f020	0089b780
 ?SetAsGameStatePersisted@CTeleportThing@@QAEX_N@Z	00661ea0	0089b780
 ?StopLooking@CTCLook@@QAEXJ@Z	00751b80	0089bdf0
-?g_zeroPitch@@3NB	0122ed70	0089bdf0
 ?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ	004c7a60	00692990
 ?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_None@@AAUCThingList@@@Z	006ae830	006ac140
 ?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ	004c7a50	006ac140
@@ -38499,10 +38497,6 @@ __beginthread	00bfed3a	0098f3a0
 ??1CTCCreatureTintEffect@@UAE@XZ	007cf0b0	007cf390
 ??_7CMaintainedEvent@@6B@	0129c0e0	009e45b0
 ??1CShaderBankEntry@@UAE@XZ	00a628d0	00a628b0
-??_7EngineNative@@6BCIEngineNative@@@	012a0f3c	00b260b0
-??_7EngineNative@@6BNativeDeviceResetCallback@@@	012a0f30	00b260b0
-??_7NativeDeviceResetCallback@@6B@	0122de50	00b260b0
-?InitialPreloadTime@@3NB	0122ed70	00b260b0
 ??_7CEngineDynamic3DResource@@6B@	012a81b8	00bf3290
 ??_7?$CEntityScriptBinding@VCbandit_level_cutsceneScript@NScript@@@@6B@	012f6a54	00efa4f0
 ?Alloc@Cwelcome_guy@Cbandit_level_cutsceneScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00efaa60	00efa4f0
@@ -39592,3 +39586,4 @@ _sort32a	00c95560	00c95580
 ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a1620	0091ec30
 ??_7CModeSitBench@NCreatureMode@@6B@	01267bfc	00740040
 ??1?$_List_base@PBVCThingGameObject@@V?$allocator@PBVCThingGameObject@@@std@@@std@@QAE@XZ	0063f360	0063e6f0
+__real@0000000000000000	0122ed70	00b260b0

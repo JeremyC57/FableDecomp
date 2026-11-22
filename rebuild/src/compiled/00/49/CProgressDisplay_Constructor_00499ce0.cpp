@@ -3,11 +3,13 @@
 // Retail: Fable.exe @ 0x00499CE0, 163 bytes; vtable 0x012388B4 (CProgressDisplay, RTTI), callers 0x00413150 / 0x0049E85A.
 // The catalog label C3DMeshStats::C3DMeshStats is propagated. The five STLport vectors and the two indices are
 // initialised (zeroed from one register), then CWideString (0x0099AED0) and two CCharString (0x0099E4B0) default
-// ctors; the body sets the three timers from the shared 0.0 double global 0x0122ED70 (`fld qword`, not fldz, so it
-// is a named constant), FullScreen and DisplayText true, the frame/stage counters 0 and the other flags false (the
+// ctors; the body sets the three timers to 0.0 (VC7.1 loads a double 0.0 store from its shared constant
+// __real@0000000000000000 0x0122ED70 with `fld qword`, not fldz), FullScreen and DisplayText true, the frame/stage counters 0 and the other flags false (the
 // two IgnoreNext*RenderCall flags are left alone).
 // Shape: the body's statement order fixes where VC7.1 slots the integer stores between each `fld` and its `fstp`
 // (two timers, the two true flags, the third timer, the counters, then the false flags).
+// NF251 (q12702): the timers take the literal 0.0 (binds __real@0000000000000000, the compiler's spelling of 0x0122ED70 that the CEngine
+//   ctor 0x00B260B0 and 0x00ADF1E0 bind); was the stand-in global ?g_ProgressTimeZero@@3NB.
 // Layout: Ego_r.pdb CProgressDisplay with 12-byte retail STLport vectors, as the landed destructor 0x00499FB0
 // (no engine header).
 class CCharString { public:
@@ -31,7 +33,6 @@ template <class T> struct CVector {                // STLport vector<T> (12 byte
     T* _M_end_of_storage;
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-extern const double g_ProgressTimeZero;            // 0x0122ED70 (0.0)
 class CAProgressDisplay { public:                         // vtable 0x012387A0
     virtual ~CAProgressDisplay() {}
     virtual void v01();
@@ -74,11 +75,11 @@ CProgressDisplay::CProgressDisplay()
     : LoadingScreenIndex(0),
       TextTagIndex(0)
 {
-    LastUpdateTime = g_ProgressTimeZero;
-    LastScreenUpdate = g_ProgressTimeZero;
+    LastUpdateTime = 0.0;
+    LastScreenUpdate = 0.0;
     FullScreen = true;
     DisplayText = true;
-    LastProgressUpdate = g_ProgressTimeZero;
+    LastProgressUpdate = 0.0;
     GuildSealFrameIndex = 0;
     StageCount = 0;
     DebugDisplay = false;

@@ -497,3 +497,4 @@
 - Codex header patches can edit a shared inline for every includer (p27: CBankFile assert, IsAwareOfThing decl-only); equiv_check + recheck of the differing rows on the patched tree catch it, a HEAD-overlay control proves it is the patch.
 - A relocated operand is masked, so a wrong float literal can still grade RELOCATION_MATCH: 0x0041735A passed 0.5f where retail pushes -1.0f (found by NF239's compiled census of 0x0122DEE0's binders). Census a literal's binders by symbol, not by grade.
 - A `// Flags:` comment in a row source does not reach the grade: the flags come only from `CompilerFlags` in build_candidates.ps1 (landing nf250, 0x008F69B0 DIFFER until added).
+- A row may fold under another row's TU by `#include "../src/compiled/..."` (not only Unwind funclets: 0x00B2AB10 under 0x00B260B0, landing nf251); includer greps must follow every such include.

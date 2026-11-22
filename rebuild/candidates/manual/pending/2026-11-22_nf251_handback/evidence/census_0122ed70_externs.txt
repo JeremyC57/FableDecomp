@@ -1,0 +1,15 @@
+rebuild/src/compiled/00/41/global_GFLogMemoryUse_00415e85.cpp:56:extern double g_LastMemLogTime;                                         // 0x01375600
+rebuild/src/compiled/00/49/CProgressDisplay_StartProgress_00499aa0.cpp:46:extern double g_AutoSaveProgressEndTime;                    // 0x013B89C8
+rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp:34:extern const double g_ProgressTimeZero;            // 0x0122ED70 (0.0)
+rebuild/src/compiled/00/68/CInputProcessControlFreeCamera_ProcessInput_0068cb90.cpp:48:extern float FreeCameraTurnSpeed;                  // 0x0137EE6C (1.0f)
+rebuild/src/compiled/00/68/CInputProcessControlFreeCamera_ProcessInput_0068cb90.cpp:49:extern float FreeCameraMoveSpeed;                  // 0x0137EE68 (1.0f)
+rebuild/src/compiled/00/68/CInputProcessControlFreeCamera_ProcessInput_0068cb90.cpp:50:extern float FreeCameraStepDistance;               // 0x0137EE70 (1.0f)
+rebuild/src/compiled/00/68/CInputProcessControlFreeCamera_ProcessInput_0068cb90.cpp:51:extern float FreeCameraHeightStep;                 // 0x0137EE74 (0.25f)
+rebuild/src/compiled/00/74/CTCContainerRewardHero_GeneratePopoutVectorFromVars_0074e140.cpp:17:extern const double TWO_PI;
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetFacingAngle_0089bdf0.cpp:21:extern const double g_zeroPitch;                        // 0x0122ED70 (0.0)
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetFacingAngle_0089bdf0.cpp:22:extern const double TWO_PI; // 0x0124F2B8 ((double)6.2831855f)
+rebuild/src/compiled/00/9f/CVsyncCallbackTimer_CVsyncCallbackTimer_009f70e0.cpp:84:extern double g_GPUTimeStamp;                       // 0x013CB4E0
+rebuild/src/compiled/00/9f/CVsyncCallbackTimer_CVsyncCallbackTimer_009f70e0.cpp:85:extern double g_GPUPrevTimeStamp;                   // 0x013CB4E8
+rebuild/src/compiled/00/b2/CEngine_CEngine_00b260b0.cpp:146:extern const double InitialPreloadTime=0.0; // native122ED70 = double0
+rebuild/src/compiled/00/c9/libvorbis_setuptonecurves_00c91ab0.cpp:121:extern float ATH[MAX_ATH];                              // 0x0139DE60
+rebuild/src/compiled/00/c9/libvorbis_setuptonecurves_00c91ab0.cpp:122:extern float tonemasks[P_BANDS][6][EHMER_MAX];          // 0x0139DFC0

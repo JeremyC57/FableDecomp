@@ -1,0 +1,86 @@
+slot	retail_target	object_symbol	landed_self_leaf	verdict	table_spellings
+0	00b23770	??_ECIEngine@@UAEPAXI@Z	(no Leaf line)	NOLEAF	
+1	0099a340	?Validate@CInitBaseClass@@UBEXXZ	(no Leaf line)	NOLEAF	
+2	00b232d0	?Initialise@CIEngine@@UAE_NABVCEngineInit@@@Z	(no Leaf line)	NOLEAF	
+3	00b232e0	?Release@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+4	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+5	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+6	00b232f0	?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z	(no Leaf line)	NOLEAF	
+7	00b23300	?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z	(no Leaf line)	NOLEAF	
+8	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+9	00b23310	?WorldFrameUpdate@CIEngine@@UAEX_N@Z	(no Leaf line)	NOLEAF	
+10	00b23320	?PausedWorldFrameUpdate@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+11	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+12	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+13	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+14	00b23330	?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z	(no Leaf line)	NOLEAF	
+15	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+16	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+17	00b23340	?Refresh@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+18	00b23350	?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z	?CheckPrimitiveVisibility@CIEngine_Methods@@QAE_NHH@Z	DIFF	
+19	00b23360	?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ	(no Leaf line)	NOLEAF	
+20	00b23370	?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z	(no Leaf line)	NOLEAF	
+21	00b23380	?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z	(no Leaf line)	NOLEAF	
+22	00b23390	?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z	(no Leaf line)	NOLEAF	
+23	00bfea08	__purecall	(no Leaf line)	NOLEAF/purecall	
+24	00b233a0	?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z	(no Leaf line)	NOLEAF	
+25	00b233b0	?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z	(no Leaf line)	NOLEAF	
+26	00b233c0	?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z	?AddChildPrimitive@CIEngine_Methods@@QAEHHHH@Z	DIFF	
+27	00b233e0	?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z	(no Leaf line)	NOLEAF	
+28	00b233d0	?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z	(no Leaf line)	NOLEAF	
+29	00b233f0	?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z	(no Leaf line)	NOLEAF	
+30	00b23400	?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z	(no Leaf line)	NOLEAF	
+31	00b23410	?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z	(no Leaf line)	NOLEAF	
+32	00b23420	?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z	(no Leaf line)	NOLEAF	
+33	00b23430	?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z	(no Leaf line)	NOLEAF	
+34	00b23440	?ProcessPrimitiveStats@CIEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z	(no Leaf line)	NOLEAF	
+35	00b23450	?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z	?GetEditorAnimation@CIEngine_Methods@@QAEHH@Z	DIFF	
+36	00b23460	?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z	?AddCustomMorphTexture@CIEngine_Methods@@QAEKHH@Z	DIFF	
+37	00b23470	?GetStaticMapUpdatePassCount@CIEngine@@UAEJXZ	(no Leaf line)	NOLEAF	
+38	00b23480	?StartStaticMapUpdatePass@CIEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z	(no Leaf line)	NOLEAF	
+39	00b23490	?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z	?IsStaticMapNeedingUpdate@CIEngine_Methods@@QAE_NHHH@Z	DIFF	
+40	00b234a0	?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z	(no Leaf line)	NOLEAF	
+41	00b234b0	?CloseStaticMapFile@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+42	00b234c0	?AddMap@CIEngine@@UAEXJJ@Z	(no Leaf line)	NOLEAF	
+43	00b234d0	?RemoveMap@CIEngine@@UAEXJ@Z	(no Leaf line)	NOLEAF	
+44	00b234e0	?SetMapAsLoaded@CIEngine@@UAEXJ@Z	(no Leaf line)	NOLEAF	
+45	00b234f0	?SetMapAsUnloaded@CIEngine@@UAEXJ@Z	(no Leaf line)	NOLEAF	
+46	00b23500	?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z	(no Leaf line)	NOLEAF	
+47	00b23510	?SetMapVisibility@CIEngine@@UAEXJ_N@Z	(no Leaf line)	NOLEAF	
+48	00b23520	?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z	(no Leaf line)	NOLEAF	
+49	00b23530	?OnActivate@CIEngine@@UAEXXZ	?OnActivate@CIEngine_Methods@@QAEXXZ	DIFF	
+50	00b23540	?OnDeactivate@CIEngine@@UAEXXZ	?OnDeactivate@CIEngine_Methods@@QAEXXZ	DIFF	
+51	00b23550	?IsActive@CIEngine@@UBE_NXZ	(no Leaf line)	NOLEAF	
+52	00b23560	?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z	(no Leaf line)	NOLEAF	
+53	00b23570	?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z	(no Leaf line)	NOLEAF	
+54	00b23580	?ReloadLocalDetailDefs@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+55	00b23590	?StartNewScene@CIEngine@@UAEXKM@Z	(no Leaf line)	NOLEAF	
+56	00b235a0	?CutscenePreload@CIEngine@@UAEX_N0@Z	(no Leaf line)	NOLEAF	
+57	00b235b0	?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z	(no Leaf line)	NOLEAF	
+58	00b235c0	?ChangeCameraAngle@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+59	00b235d0	?IsPreloaded@CIEngine@@UBE_NXZ	(no Leaf line)	NOLEAF	
+60	00b235e0	?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z	(no Leaf line)	NOLEAF	
+61	00b235f0	?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z	(no Leaf line)	NOLEAF	
+62	00b23600	?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z	(no Leaf line)	NOLEAF	
+63	00b23610	?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z	(no Leaf line)	NOLEAF	
+64	00b23620	?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z	(no Leaf line)	NOLEAF	
+65	00b23630	?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z	(no Leaf line)	NOLEAF	
+66	00b23640	?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z	(no Leaf line)	NOLEAF	
+67	00b23650	?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z	(no Leaf line)	NOLEAF	
+68	00b23660	?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z	(no Leaf line)	NOLEAF	
+69	00b23670	?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z	(no Leaf line)	NOLEAF	
+70	00b23680	?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z	(no Leaf line)	NOLEAF	
+71	00b23690	?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ	(no Leaf line)	NOLEAF	
+72	00b236a0	?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ	(no Leaf line)	NOLEAF	
+73	00b236b0	?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ	(no Leaf line)	NOLEAF	
+74	00b236c0	?DeallocateShadowBuffer@CIEngine@@UAE_NXZ	(no Leaf line)	NOLEAF	
+75	00b236d0	?ReallocateShadowBuffer@CIEngine@@UAEXXZ	(no Leaf line)	NOLEAF	
+76	00b236e0	?Enable3DSceneRendering@CIEngine@@UAEX_N@Z	(no Leaf line)	NOLEAF	
+77	00b236f0	?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ	(no Leaf line)	NOLEAF	
+78	00b23700	?Enable2DSceneRendering@CIEngine@@UAEX_N@Z	(no Leaf line)	NOLEAF	
+79	00b23710	?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ	(no Leaf line)	NOLEAF	
+80	00b23720	?OverrideRain@CIEngine@@UAEXM@Z	(no Leaf line)	NOLEAF	
+81	00b23730	?OverrideSnow@CIEngine@@UAEXM@Z	(no Leaf line)	NOLEAF	
+82	00b23740	?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z	(no Leaf line)	NOLEAF	
+83	00b28b40	?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ	(no Leaf line)	NOLEAF	
+84	00b28b60	?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ	(no Leaf line)	NOLEAF	

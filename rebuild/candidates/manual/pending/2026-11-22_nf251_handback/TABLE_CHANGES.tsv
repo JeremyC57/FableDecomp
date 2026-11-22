@@ -1,0 +1,11 @@
+action	table	line	note
+delete	rebuild/oracles/reloc_bindings.tsv	??_7NativeDeviceResetCallback@@6B@	0122de50	00b260b0	q12700 (q12692 line): no landed row emits it any more (source grep: only the HEAD 0x00B260B0 file)
+delete	rebuild/oracles/reloc_bindings.tsv	?InitialPreloadTime@@3NB	0122ed70	00b260b0	q12700 (q12692 line): no landed row emits it any more
+delete	rebuild/oracles/reloc_bindings.tsv	??_7EngineNative@@6BCIEngineNative@@@	012a0f3c	00b260b0	q12700 (q12692 line): no landed row emits it any more
+delete	rebuild/oracles/reloc_bindings.tsv	??_7EngineNative@@6BNativeDeviceResetCallback@@@	012a0f30	00b260b0	q12700 (q12692 line): no landed row emits it any more
+add	rebuild/oracles/reloc_bindings.tsv	__real@0000000000000000	0122ed70	00b260b0	q12700 (q12692 line): the compiler double constant 0.0 (the CPreloadStats ctor)
+keep	rebuild/oracles/reloc_bindings.tsv	??1CEngine@@UAE@XZ	00b261d0	00b2ab10	q12700: the folded 0x00B2AB10 object still relocates ??1CEngine from its ??_GCEngine (witness holds)
+delete	rebuild/oracles/reloc_bindings.tsv	?g_clearDouble@@3NB	0122ed70	00adf1e0	q12702: stale: the witness 0x00ADF1E0 binds __real@0000000000000000 at HEAD (xref of the HEAD object); no landed source spells g_clearDouble
+delete	rebuild/oracles/reloc_bindings.tsv	?g_zeroPitch@@3NB	0122ed70	0089bdf0	q12702: 0x0089BDF0 now binds __real@0000000000000000; no other landed row emits it
+none	rebuild/oracles/reloc_bindings.tsv	?g_ProgressTimeZero@@3NB	0122ed70	00499ce0	q12702: the stand-in had no table line; 0x00499CE0 now binds __real@0000000000000000 (the q12700 add line covers it)
+alt-add	rebuild/oracles/reloc_bindings.tsv	__real@0000000000000000	0122ed70	00adf1e0	if decision 1 holds the q12700 pair: q12701 / q12702 still land; add the __real@0 line with witness 0x00ADF1E0 (binds it at HEAD) instead of 0x00B260B0, keep ?InitialPreloadTime@@3NB and the two ??_7EngineNative / NativeDeviceResetCallback lines; the five CIEngine slot rows (0x00B233C0 ... 0x00B23530) and 0x00B23750 still land (0x00B23750 alone emits the PDB ??_7CIEngine)
