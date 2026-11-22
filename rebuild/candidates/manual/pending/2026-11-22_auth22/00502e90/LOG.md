@@ -1,0 +1,8 @@
+# 0x00502E90 LOG (AUTH22)
+1. a0.cpp (AUTH1 a0 = p25S = wfE10-15) + overlay rebased on HEAD (CTCVillage.h, CThingAICreature.h re-ported add-only): DIFFER(13587v13622), residue_lines=2379. GRADE 1.
+2. b0.cpp = a0 minus the 9 `#pragma inline_depth(0)` regions and minus the Ego_d-contradicted `bool listCreatures` (helper param renamed find_house = Ego_d, literal true at the servant / apprentice sites): stock flags DIFFER(13971v13622), residue_lines=2671. GRADE 2. Honest stock baseline.
+   Readout (b0.f.json, not a grade) + cc.py (call list by retail target): stock b0 differs from retail's call list at exactly 4 places: loop-1 list push_back x2 (retail calls 0x004AC4B0, ours expands, sc 50), teacher/shop Create cross-jump (4/2 v 3/3), servant CreateRelevant (retail calls, ours expands: g 8515, no pen, sc 29), female push_back (retail expands, ours calls: pen 26, sc 99). Apprentice call, 5 fill-loop init ctors, vector copy, SetHomeBuilding x3 are all right at stock (pen on from g=9009).
+3. b1.cpp = b0 + 11 dead FABLE_RETAIL_ASSERT arms at Ego_d's debug-only lines before the servant block (1 in the helper). Readout: g 8974 at the servant site, both CreateRelevant sites called, six expanded. GRADE 3: DIFFER(13606v13622), residue_lines=2742. Helper leaf at 0x004FF750 from b1.f.obj: RELOCATION_MATCH.
+   Readout b2 (b1 + FABLE_RETAIL_STLP_LIST_CONSTRUCT_HELPER): list push_back c1 stays 37. Negative, dropped.
+4. b3.cpp = b1 + apprentice indices as ternary arguments (Ego_d 4889:184, no index locals). GRADE 4: DIFFER(13606v13622), residue_lines=2736, 269 unmasked hunks (a0: 285).
+   STOP: ESCALATE.md (female push_back v servant penalty contradiction).

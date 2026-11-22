@@ -441,3 +441,18 @@ retail's function never calls (or the reverse). Size arguments that only show "m
     if fsolve gives a shift the allocator hook can force, force it on the real row; RELOCATION_MATCH proves a numbering tie = outcome (A)
     unless evidence supplies the text; an empty solution set means not a uniform shift (report the conflicting sites). Candidates still
     come from PDB evidence, pre-registered, graded once; never fit text to a record count.
+
+- **2026-11-22 (Account A, advisor): AUTH22 (Fable 5.2 trial) on 0x0066B370 and 0x00502E90.**
+  - 0x0066B370 (RELOCATION_MATCH) does not land yet. Ego_d line 208 (by-value float accessors as arguments, retail reads them like
+    lvalues) is the 0x0093D270 mechanism and meets neither clause of the standing criterion: an owner decision, put to the owner with
+    0x0093D270 (a third site in a second class makes "the TLC headers differed" more likely). Before asking: grade the `const float&`
+    accessor form once on the real row (if it matches, one form covers both rows: offer that, not direct-read + `friend`), and check the
+    three PDBs for the two CAnimSet members' access and any friend record. The GetSubDef<CEntitySoundDef> copy (182 v 162, owner in a size
+    frame-pointer TU) holds the row under the pick-any rule; no "losing instance" exception: try ONE row-tail pragma matching the owner's
+    mode, then pk.py. Run the full header proof (equiv over all rows, recheck the differing, dry run, leafrel, link) whatever the rulings.
+  - 0x00502E90: not terminal; do not pick AUTH22's (a) / (b) / (c). The penalty model is unverified (without the 288-unit block the
+    stretch is still 172 against a window of 81): give dt.py a control on a matched row first; confirm the 11 assert arms are every Ego_d
+    assert line before the servant block; list what retail's early-return block at 0x005048C6 destroys v ours v Ego_d; then the Ego_d
+    declaration-order port.
+  - Trial: score 0x0066B370 as "matched, pending owner; same mechanism as Opus's 0x0093D270 oracle", not as a landed match. AUTH23 (Fable)
+    takes the three checks, the four untouched rows, then 0x00502E90; every grade under a timeout (stale drafts hung cl twice).

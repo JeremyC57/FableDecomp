@@ -22,13 +22,15 @@ Also: 0x00B30B50 SetCameraState landed (AUTH9, Codex p26 text); AUTH17 default-f
 Opus scorecard on the 10: 3 matched by authoring (0x00C73050, 0x007602F0, 0x008E18D0), 1 landed from Codex p26 text (0x00763060),
 1 matched only by Codex (0x00A4EFC0), 2 proven terminal, 3 open.
 
-## Fable 5.2 runs
-| agent | rows | outcome | grades used | notes |
-|---|---|---|---|---|
-
 ## Fresh rows for the trial (coordinator pick, 2026-11-22)
 The three open rows above are the hardest left, so they alone are a poor sample. AUTH22 also gets five unreserved parked near misses
 not worked this week (smallest residue first, excluding rows from the last Codex passes and 0x006AA720): 0x0066B370, 0x00A68DE0,
 0x00839420, 0x00651273, 0x00816410. For an Opus comparison on fresh rows, the next Opus authoring run can take the next five on the same
 list (0x005A94BD, 0x00409730, 0x00A15890, 0x00CFBDF0, 0x006B97E0).
-| AUTH22 | 0x00502E90 + 0x0066B370, 0x00A68DE0, 0x00839420, 0x00651273, 0x00816410 | running (started 2026-11-22) | | Fable 5.2 high |
+
+## Fable 5.2 runs
+| agent | rows | outcome | grades used | notes |
+|---|---|---|---|---|
+| AUTH22 | 0x00502E90 | escalated, DIFFER(13606v13622) (record was 13587v13622 with nine inline_depth devices; device-free 13971) | 5 | Fable 5.2 high; advisor: not terminal |
+| AUTH22 | 0x0066B370 | **matched (RELOCATION_MATCH), pending owner**: same mechanism as Opus's 0x0093D270 oracle (by-value float accessor read like an lvalue; text departs from Ego_d line 208); one pick-any copy holds it | 17 | not counted as a landed match until the owner rules |
+| AUTH22 | 0x00A68DE0, 0x00839420, 0x00651273, 0x00816410 | not started (baseline regrades only) | 3 | context ran out on rows 1-2 |

@@ -282,3 +282,5 @@ date	account	item	kind	status	note
 2026-11-22	A	c2 comparator readout (lk / lka / fsolve)	tools	done	C2T1: committed to lane_tools/c2probe/lk/ (advisor: accepted as an instrument)
 2026-11-22	A	0x00B4D370,0x00BD3070	tools	claimed	agent C2T2 (apply lk; pending/2026-11-22_c2t2/BRIEF.md)
 2026-11-22	A	q12636,q12638	naming	done	NF233 landed as nf233 (13 rows)
+2026-11-22	A	0x0066B370,0x00502E90	authoring	done	AUTH22 (Fable 5.2): 0x0066B370 matched pending owner; 0x00502E90 escalated (pending/2026-11-22_auth22/)
+2026-11-22	A	0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410,0x00502E90	authoring	claimed	agent AUTH23 on Fable 5.2 (pending/2026-11-22_auth23/BRIEF.md)
