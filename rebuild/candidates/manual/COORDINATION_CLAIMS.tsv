@@ -288,3 +288,5 @@ date	account	item	kind	status	note
 2026-11-22	A	0x0093D270	authoring	done	landed as Inferred by owner decision (batches/2026-11-22_landing_auth18_isrunnable)
 2026-11-22	A	q12641-q12652	naming	done	NF234 landed as nf234 (6 rows)
 2026-11-22	A	0x0066B370	authoring	done	landed as Inferred (owner) by AUTH22/AUTH23 on Fable 5.2 (batches/2026-11-22_landing_auth23_playallsoundevents)
+2026-11-22	A	q12653-q12658	naming	claimed	agent NF235 (nf234 follow-ups: vtable families)
+2026-11-22	A	0x00839420,0x00651273,0x00816410,0x00A68DE0,0x00502E90	authoring	claimed	agent AUTH24 on Fable 5.2 (pending/2026-11-22_auth24/BRIEF.md)
