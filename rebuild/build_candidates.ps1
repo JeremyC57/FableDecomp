@@ -63152,9 +63152,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00adc310'
-        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
-        Source = '00/ad/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00adc310.cpp'
-        TestSource = '00/ad/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00adc310_test.cpp'
+        Module = 'std'
+        Source = '00/ad/std_ConstructCVertexGroupBlockCVertexGroupBlock_00adc310.cpp'
+        TestSource = '00/ad/std_ConstructCVertexGroupBlockCVertexGroupBlock_00adc310_test.cpp'
         PassPattern = 'CONSVAL_OK'
     }
     [pscustomobject]@{
@@ -91838,9 +91838,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009d3ca0'
-        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
-        Source = '00/9d/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_009d3ca0.cpp'
-        TestSource = '00/9d/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_009d3ca0_test.cpp'
+        Module = 'std'
+        Source = '00/9d/std_ConstructstdpairCCharStringconstCArrayunsignedlo_009d3ca0.cpp'
+        TestSource = '00/9d/std_ConstructstdpairCCharStringconstCArrayunsignedlo_009d3ca0_test.cpp'
         PassPattern = 'PASS_009d3ca0'
     }
     [pscustomobject]@{

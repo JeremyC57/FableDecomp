@@ -326,3 +326,4 @@ date	account	item	kind	status	note
 2026-11-22	A	CCreatureAction L92 / L74	naming	done	agent NF255 landed 7 rows (batches/2026-11-22_landing_nf255); L72 / L100 / 0x0096B600 / 0x00418DCA pass to NF257
 2026-11-22	A	L28 / L57 / sky builders / L129 proof	naming	done	agent NF256 landed 4 rows (batches/2026-11-22_landing_nf256); L37 / L129 family pass to NF258
 2026-11-22	A	CCreatureAction L72 / L100 / 0x0096B600	naming	done	agent NF257 landed 9 rows (batches/2026-11-22_landing_nf257); q12659 + port debt pass to NF259
+2026-11-22	A	L37 vector<unsigned long> family	naming	done	agent NF258 landed 7 rows (batches/2026-11-22_landing_nf258); 0x009B0AC0 blocked; L129 passes to NF260

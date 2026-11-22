@@ -15,8 +15,13 @@
 //   std::vector<bool> of stlport/fable_containers.h (Ego_r.pdb CVertexGroupBlockOptimiser::RemainingBlocks); the fill-insert call
 //   binds ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z (0x004676EF; was ?_M_fill_insert@CByteArray@@..).
 #include <new>
+// NF258 (2026-11-22, L37): the CGroupArray stand-in (CArray<unsigned long>) is replaced by engine/CArray.h CArray<unsigned long> (Ego_r
+//   CVertexGroupBlock::Groups; engine/CVertexGroupBlock.h); the STLport vector copy constructor is declaration-only
+//   (FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY), so CVertexGroupBlock's inline copy binds ??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z
+//   at 0x00535470 (the landed self row's spelling). The local CVertexGroupBlock model is HEAD debt (port queued).
 #define FABLE_RETAIL_STLP_VECTOR_ORIGINAL_RESIZE_INSERT_CHAIN_PASS22   // STLport 4.6 insert(pos, n, x) forwarding to _M_fill_insert
-#include "stlport/fable_containers.h"
+#define FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY
+#include "engine/CArray.h"
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 extern "C" void* __cdecl malloc(unsigned int size);            // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
@@ -30,14 +35,6 @@ struct CRbNode {
     CRbNode* _M_right;
 };
 
-struct CGroupArray {                                           // CArray<unsigned long>
-    unsigned long* _M_start;
-    unsigned long* _M_finish;
-    unsigned long* _M_end_of_storage;
-    CGroupArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    CGroupArray(const CGroupArray& other);                     // 0x00535470
-    ~CGroupArray() { if (_M_start) free(_M_start); }
-};
 
 struct CGroupToIndexMap {                                      // map<unsigned long, long> (STLport _Rb_tree)
     CRbNode* _M_header;
@@ -74,7 +71,7 @@ struct CGroupToIndexMap {                                      // map<unsigned l
 
 class CVertexGroupBlock {
 public:
-    CGroupArray Groups;                                        // +0x00
+    CArray<unsigned long> Groups;                                          // +0x00
     CGroupToIndexMap GroupToIndexMap;                          // +0x0c
     ~CVertexGroupBlock();                                      // 0x00A96DA0
 };

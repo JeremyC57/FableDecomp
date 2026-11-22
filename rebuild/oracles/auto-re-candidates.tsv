@@ -8988,7 +8988,7 @@ address	name	length	bytes
 00a35310	NPlayerGui::CSetIllustratorAsDrawing::operator()	31	568bf18b4e0433c08a06508b46088d14808d1491e827feffffc6460c005ec3
 00a48650	std::_Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>,std::pair<CCharString_const_,std::pair<long,long>_>,std::pair<class_CCharString_const_,struct_std::pair<long,long>_>_>	31	568bf185f6578bfa741257e8d065f5ff8b47048946048b4f08894e085f5ec3
 00ad75d0	std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>	31	568bf185f6578bfa741257e8f0b0ffff83c70c578d4e0ce844b1ffff5f5ec3
-00adc310	std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>	31	568bf185f6578bfa741257e85091a5ff83c70c578d4e0ce814abfbff5f5ec3
+00adc310	std::_Construct<CVertexGroupBlock, CVertexGroupBlock>	31	568bf185f6578bfa741257e85091a5ff83c70c578d4e0ce814abfbff5f5ec3
 00ae4fc0	_global::Fill_Elem0x4_00ae4fc0	31	3bca74188b442404568da424000000008b30893183c1043bca75f55ec20400
 00b23bc0	CEngine::SetPersistentPrimitive	31	8b44240c8b4c24088b5424046a0050518b0d806e430152e8c4e80000c20c00
 00b5af60	CEngineScreenEffectColourFilter::Render	31	8a410884c07415d94110d81d3cba2901dfe0f6c4417505e874f4ffffc20400
@@ -13084,7 +13084,7 @@ address	name	length	bytes
 00686d40	CTCBase::GetPlayerManager	9	a11c8a3b018b4030c3
 00686d50	CTCBase::PeekPlayerManager	9	a11c8a3b018b4030c3
 009aa570	std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>	31	568bf185f6578bfa741257e8b046ffff83c704578d4e04e8a446ffff5f5ec3
-009d3ca0	std::_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>	31	568bf185f6578bfa741257e880affcff83c704578d4e04e8b417b6ff5f5ec3
+009d3ca0	std::_Construct<std::pair<CCharString const, CArray<unsigned long> >, std::pair<CCharString const, CArray<unsigned long> > >	31	568bf185f6578bfa741257e880affcff83c704578d4e04e8b417b6ff5f5ec3
 00580a0b	_global::ForEachElem0x4__scalar_deleting_destruct_00580a0b	29	56578bfa8bf1eb0c6a008bcee8a3efffff83c6043bf775f05f5ec20400
 005f939f	_global::ForEachElem0x4__scalar_deleting_destruct_005f939f	29	56578bfa8bf1eb0c6a008bcee86ef2ffff83c6043bf775f05f5ec20400
 008fa2e0	std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>	8	6a01e899ffffffc3

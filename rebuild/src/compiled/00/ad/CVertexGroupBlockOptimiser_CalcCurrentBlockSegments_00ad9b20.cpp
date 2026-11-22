@@ -14,7 +14,14 @@
 // Layout (retail, STLport containers 12 bytes, lists 4 bytes; the PDB view uses 16/12-byte containers): InputList +0x00
 // (CArray<CVertexGroupBlock>), OptimalBlockList +0x0c, Blocks +0x10, CurrentBlock +0x14, RemainingBlocks +0x18 (byte per
 // block), CurrentBlockSegmentGroups +0x24, CurrentBlockSegmentIndices +0x30, CurrentBlockSegmentCount +0x3c.
+// NF258 (2026-11-22, L37): the CGroupArray stand-in (CArray<unsigned long>) is replaced by engine/CArray.h CArray<unsigned long> (Ego_r
+//   CVertexGroupBlock::Groups; engine/CVertexGroupBlock.h); the STLport vector copy constructor is declaration-only
+//   (FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY), so CVertexGroupBlock's inline copy binds ??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z
+//   at 0x00535470 (the landed self row's spelling). The local CVertexGroupBlock model is HEAD debt (port queued).
 #include <new>
+#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
+#define FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY
+#include "engine/CArray.h"
 extern "C" void* __cdecl malloc(unsigned int size);            // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 
@@ -27,14 +34,6 @@ struct CRbNode {
     CRbNode* _M_right;
 };
 
-struct CGroupArray {                                           // CArray<unsigned long>
-    unsigned long* _M_start;
-    unsigned long* _M_finish;
-    unsigned long* _M_end_of_storage;
-    CGroupArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    CGroupArray(const CGroupArray& other);                     // 0x00535470
-    ~CGroupArray() { if (_M_start) free(_M_start); }
-};
 
 struct CGroupToIndexMap {                                      // map<unsigned long, long> (STLport _Rb_tree)
     CRbNode* _M_header;
@@ -71,7 +70,7 @@ struct CGroupToIndexMap {                                      // map<unsigned l
 
 class CVertexGroupBlock {
 public:
-    CGroupArray Groups;                                        // +0x00
+    CArray<unsigned long> Groups;                                          // +0x00
     CGroupToIndexMap GroupToIndexMap;                          // +0x0c
 };
 
@@ -107,8 +106,6 @@ struct CBlockArray {                                           // CArray<CVertex
     }
 };
 
-#define FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE
-#include "stlport/fable_containers.h"
 
 struct CByteArray {                                            // the retail RemainingBlocks (one byte per block)
     bool* _M_start;

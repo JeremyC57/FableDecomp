@@ -9,6 +9,11 @@
 // InstantiationName +0x25, SubDefInfoMap +0x29 (Dirty +0x36), GraphicIndex +0x3c, StateChangeFlag +0x40,
 // StateChangeType +0x44, Position +0x48, Zoom +0x50, Colour (CRGBFloatColour) +0x58, UpdateTime +0x68,
 // ChildrenNotAffected +0x6c (12-byte vector), LinearChange +0x78.
+// NF258 (2026-11-22, L37): the CULongVector stand-in is replaced by stlport/fable_containers.h std::vector<unsigned long>; its copy
+//   constructor is declaration-only (FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY), so the call binds
+//   ??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z at 0x00535470 (the landed self row's spelling).
+#define FABLE_RETAIL_STLP_VECTOR_COPY_DECL_ONLY
+#include "stlport/fable_containers.h"
 #pragma pack(push, 1)
 class CDefClassBase { public:
     virtual void v00();
@@ -49,12 +54,6 @@ class CParentDefClassBase : public CDefClassBase { public:       // vtable 0x012
 #pragma pack(pop)
 class C2DVector { public: float X, Y; };
 class CRGBFloatColour { public: float R, G, B, A; };
-struct CULongVector {                              // retail std::vector<unsigned long> (12 bytes)
-    unsigned long* m_first;
-    unsigned long* m_last;
-    unsigned long* m_end;
-    CULongVector(const CULongVector& other);       // 0x00535470
-};
 struct CUIStateDef : CParentDefClassBase {         // vtable 0x0125871C (NUISystem::CUIStateDef)
     unsigned long   GraphicIndex;                  // +0x3c
     unsigned long   StateChangeFlag;               // +0x40
@@ -63,7 +62,7 @@ struct CUIStateDef : CParentDefClassBase {         // vtable 0x0125871C (NUISyst
     C2DVector       Zoom;                          // +0x50
     CRGBFloatColour Colour;                        // +0x58
     float           UpdateTime;                    // +0x68
-    CULongVector    ChildrenNotAffected;           // +0x6c
+    std::vector<unsigned long> ChildrenNotAffected; // +0x6c (STLport vector<unsigned long>, 12 bytes; copy ctor 0x00535470)
     bool            LinearChange;                  // +0x78
     virtual void v00();
     CUIStateDef(const CUIStateDef& other);

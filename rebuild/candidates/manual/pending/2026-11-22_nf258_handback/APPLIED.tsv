@@ -1,0 +1,3 @@
+entry	address	status	binders_respelled	note
+L37 (land1122p27)	0x00535470	blocked (1 row left: 0x009B0AC0)	7	7 of the 8 stand-in binders moved onto ??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z (0x006250B0, 0x00AD9B20, 0x00ADA240, 0x00ADCE10, 0x009D4810, 0x009D3CA0, 0x00ADC310); 0x00535470 7 spellings -> 2 (STLport + ??0?$CRetailVector@K@@QAE@ABU0@@Z, 0x009B0AC0 blocked after 3 forms); 0x00ADC310 catalog name fixed (RENAMES s1 / NAME_FIXES), 0x009D3CA0 too
+L129 (land1122p27)	0x01436EA8	open: not started (handed back after L37, context)	0	nf256's address proof and family plan stand; no row touched

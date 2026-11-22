@@ -1,0 +1,2 @@
+entry	address	claim	reason
+L37 (nf256 NOTES)	0x00ADC310	the _Cons_val / construct of a pair<const X, map<unsigned long,long> > with X a 12-byte vector<unsigned long> (or CArray<unsigned long>)	Ego_r.pdb has no pair type whose first member is CArray<unsigned long> / vector<unsigned long>; both PDBs carry the construct helper for CVertexGroupBlock, whose layout (Groups +0, GroupToIndexMap +0xC) the body copies; it is _Construct<CVertexGroupBlock, CVertexGroupBlock> (NAME_FIXES)

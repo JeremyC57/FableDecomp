@@ -1880,7 +1880,6 @@ _MAX_ABILITY_LEVEL	01256188	005edea3
 ?Erase@CRetailTree_erase00623560@@QAEXPAUnode@1@@Z	00623560	006241a0
 ??0CTestQuest@@QAE@ABV0@@Z	004a89d0	00624800
 ??4CTestQuest@@QAEAAV0@ABV0@@Z	004a8f50	00624800
-??0CULongVector@@QAE@ABU0@@Z	00535470	006250b0
 ??_7CUIStateDef@@6B@	0125871c	006250b0
 ??4CAssignedMember@@QAEAAU0@ABU0@@Z	0045bc09	00625350
 ??4CItemVector@@QAEAAU0@ABU0@@Z	005c1f42	006255b0
@@ -5293,7 +5292,6 @@ __chkstk	00bfea30	00ab6060
 ?PaintCurrentBlockSegment@CVertexGroupBlockOptimiser@@QAEXK@Z	00ad9380	00ad9380
 ?InsertionSort_00adbe70@@YIXPAUSElement12@@0USCompare@@@Z	00adbe70	00adc080
 ?UnguardedInsertionSortAux_00adaf90@@YIXPAUSElement12@@00USCompare@@@Z	00adaf90	00adc080
-?ctor@CArrayUL@@QAEXPAU1@@Z	00a96e40	00adc310
 ??_7CFile@@6B@	0129f06c	00add0e0
 ??_7CFile@LHA@@6B@	0129f06c	00add1f0
 ??_7CLHFile@@6B@	0129f094	00add1f0
@@ -11534,7 +11532,6 @@ __imp__LocalFree@4	0143fe78	00a5ed60
 ??$__introsort_loop@PAVCBlockInfo@CVertexGroupBlockOptimiser@@V12@HU?$less@VCBlockInfo@CVertexGroupBlockOptimiser@@@std@@@std@@YIXPAVCBlockInfo@CVertexGroupBlockOptimiser@@00HU?$less@VCBlockInfo@CVertexGroupBlockOptimiser@@@0@@Z	00adc650	00adc890
 ??$__destroy_aux@PAVCVertexGroupBlock@@@std@@YIXPAVCVertexGroupBlock@@0ABU__false_type@0@@Z	00adc190	00adcb90
 ??$__uninitialized_copy@PAVCVertexGroupBlock@@PAV1@@std@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@0@@Z	00adc330	00adcb90
-??0?$vector@K@std@@QAE@ABV01@@Z	00535470	00adce10
 ??_7CLHFileCompletionCallback@@6B@	0129f084	00add240
 ?AddObject@CThreadedFile@@QAEKABVCThreadedFileObjectDesc@@@Z	0098f350	00add240
 ?g_LHFileReadPriority@@3W4EThreadedFilePriority@@A	01399460	00add240
@@ -12328,8 +12325,8 @@ _ImmAssociateContext@8	00cb5564	00cb5130
 ?insert_unique@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@@2@U32@ABU?$pair@$$CBJVCShopItem@@@2@@Z	00777ba0	00778280
 ?_M_lower_bound@?$_Rb_tree@VCPendingObjectSortKey@CThreadedFileManager@@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Select1st@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@U?$less@VCPendingObjectSortKey@CThreadedFileManager@@@4@V?$allocator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@@std@@ABEPAU_Rb_tree_node_base@2@ABVCPendingObjectSortKey@CThreadedFileManager@@@Z	009901d0	00991350
 ?insert_unique@?$_Rb_tree@VCPendingObjectSortKey@CThreadedFileManager@@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Select1st@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@U?$less@VCPendingObjectSortKey@CThreadedFileManager@@@4@V?$allocator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@2@U32@ABU?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@2@@Z	00990dc0	00991350
-?_M_lower_bound@?$map@VCCharString@@V?$vector@K@std@@U?$less@VCCharString@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	009d2ba0	009d4810
-?insert_unique@?$map@VCCharString@@V?$vector@K@std@@U?$less@VCCharString@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@K@std@@@std@@@2@U32@ABU?$pair@$$CBVCCharString@@V?$vector@K@std@@@2@@Z	009d4380	009d4810
+?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	009d2ba0	009d4810
+?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@V?$CArray@K@@@2@@Z	009d4380	009d4810
 ??0?$vector@VCLipSyncEntry@CMeshDataBank@@@std@@QAE@ABV01@@Z	00a2b970	00a2e290
 ?_M_lower_bound@?$map@VCCharString@@V?$vector@VCLipSyncEntry@CMeshDataBank@@@std@@U?$less@VCCharString@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	00a2ac30	00a2e290
 ?insert_unique@?$map@VCCharString@@V?$vector@VCLipSyncEntry@CMeshDataBank@@@std@@U?$less@VCCharString@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCLipSyncEntry@CMeshDataBank@@@std@@@std@@@2@U32@ABU?$pair@$$CBVCCharString@@V?$vector@VCLipSyncEntry@CMeshDataBank@@@std@@@2@@Z	00a2def0	00a2e290
@@ -16839,7 +16836,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@U?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABU01@@Z	00ad5920	00ad77f0
 ?AddGroupsFrom@CVertexGroupBlock@@QAEXABV1@@Z	00ad9260	00ad9380
 ?HasIntersection@CVertexGroupBlock@@QBE_NABV1@@Z	00ad8af0	00ad9380
-?ctor@CCharString@@QAEXPAV1@@Z	00535470	00adc310
 ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z	00a62e40	00adf2a0
 ?AlignedTransformTransposedAssumeW@CMatrix4x4@@QBEXPBVC4DVector@@PAV2@KM@Z	00a5cb90	00adf300
 ?AllocateArrays@CParticleSimulation@@QAE_NPAVCMovableResourceMemoryPool@@@Z	00adf2a0	00adf610
@@ -34712,7 +34708,6 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?ConvertPFDDataToRGB@CPixelFormat@@QBEXPBEAAVCRGBColour@@@Z	009e3df0	009fbbd0
 ?clear@CNavConnectorNodeMap@@QAEXXZ	00a83fd0	00a792e0
 ??_7C3DMeshFilePrimitiveChunk@@6B@	0129ed74	00abd080
-??0CGroupArray@@QAE@ABU0@@Z	00535470	00ad9b20
 ??0CGroupToIndexMap@@QAE@ABU0@@Z	00a96e40	00ad9b20
 ?CopyBlocks@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@@PAH@Z	00adc0d0	00ad9b20
 ?DestroyBlocks@@YIXPAVCVertexGroupBlock@@0ABU__false_type@@@Z	00adc190	00ad9b20

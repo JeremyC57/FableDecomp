@@ -1,0 +1,53 @@
+00535470   RELOCATION_MATCH PASS   vector
+006250b0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase (engine/CParentDefClassBase.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006250b0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+006250b0   WARN RELOC_NAME: ??0CSubDefInfoVector@@QAE@ABU0@@Z -> 0046eecf labelled 'std::vector::vector'
+006250b0   RELOCATION_MATCH PASS   CUIStateDef
+009b0ac0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+009b0ac0   WARN SHARED_HEADER_AVAILABLE CDefClassInit (engine/CDefClassInit.h)
+009b0ac0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+009b0ac0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+009b0ac0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009b0ac0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009b0ac0   WARN RELOC_NAME: ??0?$CRetailVector@K@@QAE@ABU0@@Z -> 00535470 labelled 'std::vector::vector'
+009b0ac0   WARN RELOC_NAME: ?SortDefClassInfo@@YIXPAUSDefClassInfoPair@@0UCKeyPairCompareLess@@@Z -> 009b9490 labelled 'std::sort<ClassInfoPair24>'
+009b0ac0   WARN RELOC_NAME: ?GetClassInfo@CDefinitionManager@@QAEPAUCDefClassInfo@@ABVCCharString@@@Z -> 009ad2e0 labelled 'CFactionDatabase::FindFactionBySymbolName'
+009b0ac0   RELOCATION_MATCH PASS   AddDefClass
+009cf3a0   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009cf3a0   RELOCATION_MATCH PASS   WriteSymbolHeaderFile
+009d2ba0   WARN RELOC_NAME: ?Less@CCharString@@QAE_NPAV1@@Z -> 00429950 labelled 'CBasicString<char>::operator<'
+009d2ba0   WARN STANDIN_LEAF @Tree_Lbound@12 (catalog std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound; free function lacks its class)
+009d2ba0   RELOCATION_MATCH PASS   _Lbound
+009d3ca0   RELOCATION_MATCH PASS   pair<CCharString const, CArray<unsigned long> > >
+009d4380   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@@2@@std@@QAEAAU01@XZ -> 009d1f90 labelled 'CRetailTreeIterator::Increment'
+009d4380   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@@2@@std@@QAEAAU01@XZ -> 009d23a0 labelled 'CRetailTreeIterator::Decrement'
+009d4380   WARN STANDIN_LEAF ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@V?$vector@KV?$allocator@K@std@@@std@@@2@@Z (catalog std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<unsigned long, std::allocator<unsigned long>>>, std::_Select1st<std::pair<CCharString const, std::vector<unsigned long, std::allocator<unsigned long>>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<unsigned long, std::allocator<unsigned long>>>>>::insert_unique; names another function)
+009d4380   RELOCATION_MATCH PASS   insert_unique
+009d4810   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z -> 009d2ba0 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+009d4810   RELOCATION_MATCH PASS   operator[]
+00a96e40   RELOCATION_MATCH PASS   map
+00ad9770   RELOCATION_MATCH PASS   RemoveAllSubsets
+00ad9980   RELOCATION_MATCH PASS   ReorderInput
+00ad9b20   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ad9b20   WARN RELOC_NAME: ?CopyBlocks@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@@PAH@Z -> 00adc0d0 labelled '_global::Copy_SArrayTreePair18_00adc0d0'
+00ad9b20   WARN RELOC_NAME: ?DestroyBlocks@@YIXPAVCVertexGroupBlock@@0ABU__false_type@@@Z -> 00adc190 labelled 'std::__destroy_aux'
+00ad9b20   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ad9b20   WARN RELOC_NAME: ?_M_erase@CGroupToIndexMap@@QAEXPAUCRbNode@@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad9b20   RELOCATION_MATCH PASS   CalcCurrentBlockSegments
+00ad9f10   RELOCATION_MATCH PASS   AddBlocks
+00ada240   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ada240   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ada240   RELOCATION_MATCH PASS   Process
+00adc190   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00adc190   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$less@K@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00adc190   RELOCATION_MATCH PASS   __destroy_aux
+00adc310   RELOCATION_MATCH PASS   _Construct<CVertexGroupBlock, CVertexGroupBlock>
+00adc330   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00adc330   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$less@K@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00adc330   RELOCATION_MATCH PASS   __uninitialized_copy
+00adcb90   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00adcb90   RELOCATION_MATCH PASS   reserve
+00adce10   RELOCATION_MATCH PASS   push_back
