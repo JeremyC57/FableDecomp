@@ -1,0 +1,6 @@
+q12711	?GetTypeFlags@CThing@@QBEKXZ	4	-	NO-OWNER
+q12711	?GetPlayerNumber@CThing@@QBEKXZ	8	-	NO-OWNER
+q12711	?GetCombatManager@CWorld@@QAEAAVCCombatManager@@XZ	4	-	NO-OWNER
+q12711	??0CGameEvent@@QAE@J@Z	27	004159b0	EQ
+q12711	?SetPlayer@CGameEvent@@QAEXJ@Z	10	-	NO-OWNER
+q12711	?Get@CMainGameComponent@@SIPAV1@XZ	6	-	NO-OWNER

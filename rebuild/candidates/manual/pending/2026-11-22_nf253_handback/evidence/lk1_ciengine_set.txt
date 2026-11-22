@@ -1,0 +1,12 @@
+## h
+duplicates 3
+00b23770.obj : warning LNK4006: "public: __thiscall CInitBaseClass::CInitBaseClass(void)" (??0CInitBaseClass@@QAE@XZ) already defined in 0099a310.obj; second definition ignored
+00b23770.obj : warning LNK4006: "void * __cdecl MakeOne(void)" (?MakeOne@@YAPAXXZ) already defined in 00834cd0.obj; second definition ignored
+00b2ab10.obj : warning LNK4006: "public: __thiscall CEngine::CEngine(void)" (??0CEngine@@QAE@XZ) already defined in 00b260b0.obj; second definition ignored
+## n
+duplicates 1
+00b2ab10.obj : warning LNK4006: "public: __thiscall CEngine::CEngine(void)" (??0CEngine@@QAE@XZ) already defined in 00b260b0.obj; second definition ignored
+## n1 (one object per TU)
+duplicates 0
+
+DONE

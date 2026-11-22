@@ -147588,8 +147588,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b23770'
         Module = 'CIEngine'
-        Source = '00/b2/CIEngine_ScalarDeletingDestructor_00b23770.cpp'
-        TestSource = '00/b2/CIEngine_ScalarDeletingDestructor_00b23770_test.cpp'
+        Source = '00/b2/CIEngine_scalardeletingdestructor_00b23770.cpp'
+        TestSource = '00/b2/CIEngine_scalardeletingdestructor_00b23770_test.cpp'
         PassPattern = '00b23770_TEST PASS'
     }
     [pscustomobject]@{

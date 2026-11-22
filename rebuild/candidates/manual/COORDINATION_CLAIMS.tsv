@@ -321,3 +321,4 @@ date	account	item	kind	status	note
 2026-11-22	A	NF248 open CODEXP27 lines	naming	done	agent NF250 landed 12 rows (batches/2026-11-22_landing_nf250); L86 held, 5 blocked, the rest pass to NF252
 2026-11-22	A	CEngine pair / CIEngine stand-ins / 0.0 constant	naming	done	agent NF251 landed 16 rows (batches/2026-11-22_landing_nf251); q12703 / q12704 / q12659 pass to NF253
 2026-11-22	A	E3 0x01296F14 unit	naming	done	agent NF252 landed 6 rows (batches/2026-11-22_landing_nf252); remaining CODEXP27 lines pass to NF254
+2026-11-22	A	??_GCIEngine / UnsheatheMeleeWeapon / GetLocalSeed binder	naming	done	agent NF253 landed 4 rows (batches/2026-11-22_landing_nf253); the four blocked ctor rows pass to NF255

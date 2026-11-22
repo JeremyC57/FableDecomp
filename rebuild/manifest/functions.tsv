@@ -40880,7 +40880,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b23730	OverrideSnow	CIEngine	__thiscall	void	2	CIEngine *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\CIEngine_OverrideSnow_00b23730.cpp
 00b23740	RenderColorFilteredQuad	CIEngine	__thiscall	void	7	CIEngine *,float,float,C4DVector const &,float,float,CTexture *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\CIEngine_RenderColorFilteredQuad_00b23740.cpp
 00b23750	CIEngine	CIEngine	__thiscall	undefined	1	CAIStateGroup_MoveGoodsBase *	0	yes	accepted									
-00b23770	ScalarDeletingDestructor	CIEngine	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
+00b23770	`scalar deleting destructor'	CIEngine	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 00b23990	Release	CEngine	__thiscall	void	1	CEngine *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\CEngine_Release_00b23990.cpp
 00b239a0	StartNewScene	CEngine	__thiscall	void	3	CEngine *,ulong,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\CEngine_StartNewScene_00b239a0.cpp
 00b239c0	UpdateTextureMorphCache	CEngine	__thiscall	void	5	CEngine *,CArray<CEngineTextureMorph> const &,bool,float,std::set<long,std::less<long>,std::allocator<long> > const *	1	yes	accepted									

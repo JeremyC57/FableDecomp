@@ -1,0 +1,6 @@
+qid	source	address	claim
+q12710	land1122nf251	0x00B23770	??_GCIEngine row: onto the 0x00B23750 scaffolding (nf251) with leaf ??_GCIEngine@@UAEPAXI@Z; stop strongly defining ??0CIEngine@@QAE@XZ / ??0CInitBaseClass / the global ?MakeOne@@YAPAXXZ (clears the last QAE CIEngine ctor spelling and the remaining LNK4006)
+q12711	land1122nf251	0x006649C0 opt-in + 0x00890C80 + 0x006648D0 / 0x006649C0 / 0x00664A50	a new add-only CThingCreatureBase.h opt-in declaring ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ (three PDBs) with the includer proof; then 0x00890C80 (EntityUnsheatheMeleeWeapon) with the 0x00890D80 recipe (binder ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z 0x006A15A0), then the three in-place UnsheatheWeapon rows onto the header (nf251 NOTES plan)
+q12712	land1122nf250	0x008EE720	the GetLocalSeed binder: full port onto CWorld.h FABLE_RETAIL_CWORLD_GETLOCALSEED (0x0049D800 to one spelling)
+q12713	land1122nf250	L72 / L74 / L92 / L100	four ctor rows (drafts in pending/2026-11-22_nf250_handback/blocked/): declare each class's overrides in its header (add-only opt-ins, PDB spellings, vtcheck the emitted vtable against retail slot by slot), then land the drafts so no vtable slot splits
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

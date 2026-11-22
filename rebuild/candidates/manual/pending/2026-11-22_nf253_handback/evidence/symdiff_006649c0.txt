@@ -1,0 +1,7 @@
+0a1,2
+> DEF ??C?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+> DEF ?Get@?$CDefPointer@$$CBVCThingCreatureDef@@@@QBEPBVCThingCreatureDef@@XZ
+2c4
+< UND ?IsThingCarryingMeleeWeapon@@YI_NABVCThingCreatureBase@@@Z
+---
+> UND ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z

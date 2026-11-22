@@ -1,0 +1,9 @@
+action	table	line	note
+delete	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingMeleeWeapon@@YI_NABVCThingCreatureBase@@@Z	006a15a0	006649c0	q12711: 0x006649C0 now binds ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z (line exists, witness 0x008E4100); no other landed source spells the stand-in (grep)
+delete	rebuild/oracles/reloc_bindings.tsv	?IsThingCarryingMeleeWeapon@@YI_NPAUCThingNative@@@Z	006a15a0	00890c80	q12711: 0x00890C80 now binds the CTCCarrying spelling; no other landed source spells the stand-in (grep)
+delete	rebuild/oracles/reloc_bindings.tsv	?UnsheatheMeleeWeapon@CThingNative@@QAEXXZ	006649c0	00890c80	q12711: 0x00890C80 now binds ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ (line exists, witness 0x00664A50); no other landed source declares it on CThingNative
+delete	rebuild/oracles/reloc_bindings.tsv	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z	006ebdd0	00890c80	q12711: 0x00890C80 now binds the PDB spelling (line exists, witness 0x00979F70); no other landed source spells the stand-in
+delete	rebuild/oracles/reloc_bindings.tsv	?AddData@GameEventMethods@@QAEXJPBX@Z	009f1760	00890c80	q12711: 0x00890C80 now binds ?AddData@CGameEvent@@QAEXJPBX@Z (line exists, witness 0x0049F180); no other landed source has a GameEventMethods::AddData
+delete	rebuild/oracles/reloc_bindings.tsv	?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ	0049d800	008ee720	q12712: 0x008EE720 now binds ?GetLocalSeed@CWorld@@QBEPAKXZ (line exists, witness 0x008EE5A0); CEngineRandomOwner appears in no other landed source: 0x0049D800 ends on one spelling
+keep	rebuild/oracles/reloc_bindings.tsv	?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ	006647f0	006649c0	q12711: still bound by the new 0x006649C0 object
+keep	rebuild/oracles/reloc_bindings.tsv	?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	006648d0	006649c0	q12711: still bound by the new 0x006649C0 object

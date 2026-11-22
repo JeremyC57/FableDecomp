@@ -1,0 +1,13 @@
+DEF ??0CIEngine@@QAE@XZ
+DEF ??0CInitBaseClass@@QAE@XZ
+DEF ??_7CIEngine@@6B@
+DEF ??_7CInitBaseClass@@6B@
+DEF ??_GCIEngine@@UAEPAXI@Z
+DEF ??_GCInitBaseClass@@UAEPAXI@Z
+DEF ?MakeOne@@YAPAXXZ
+UND ??1CInitBaseClass@@UAE@XZ
+UND ??2@YAPAXI@Z
+UND ??3@YAXPAX@Z
+UND ??_GCIEngine@@UAEPAXI@Z
+UND ??_GCInitBaseClass@@UAEPAXI@Z
+UND ?v00@CInitBaseClass@@UAEXXZ

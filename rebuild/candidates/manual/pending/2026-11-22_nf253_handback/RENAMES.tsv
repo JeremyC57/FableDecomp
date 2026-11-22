@@ -1,0 +1,10 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00B23770	CIEngine	ScalarDeletingDestructor	??_GCIEngine@@UAEPAXI@Z	CIEngine::ScalarDeletingDestructor	??_GCIEngine@@UAEPAXI@Z	leaf pinned (the HEAD row had no Leaf line; its object defined the same ??_GCIEngine@@UAEPAXI@Z from local models); ??_GCIEngine@@UAEPAXI@Z in Ego_r.pdb / FableWin.pdb / Ego_d.pdb (raw grep), CIEngine vtable 0x012A0D24 slot 0 (the only reference); catalog name unchanged here (a rename to `scalar deleting destructor' is decision 2)
+0x00890C80	CGameScriptInterface	EntityUnsheatheMeleeWeapon	?EntityUnsheatheMeleeWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	CGameScriptInterface::EntityUnsheatheMeleeWeapon	?EntityUnsheatheMeleeWeapon@CGameScriptInterfaceMethods@@QBEXABUScriptMethods@@_N@Z	Ego_r.pdb + FableWin.pdb ?EntityUnsheatheMeleeWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z; engine/CGameScriptInterface.h slot 508; retail vtable 0x012616FC (the only reference); the melee twin of landed 0x00890D80 (same 242-byte shape)
+# Section 2
+0x00890C80	?IsThingCarryingMeleeWeapon@@YI_NPAUCThingNative@@@Z	?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A15A0
+0x00890C80	?UnsheatheMeleeWeapon@CThingNative@@QAEXXZ	?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ	0x006649C0
+0x00890C80	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	0x006EBDD0
+0x00890C80	?AddData@GameEventMethods@@QAEXJPBX@Z	?AddData@CGameEvent@@QAEXJPBX@Z	0x009F1760
+0x006649C0	?IsThingCarryingMeleeWeapon@@YI_NABVCThingCreatureBase@@@Z	?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A15A0
+0x008EE720	?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ	?GetLocalSeed@CWorld@@QBEPAKXZ	0x0049D800

@@ -1,0 +1,172 @@
+VT ??_7CIEngine@@6B@ slots 85 retail 012a0d24
+  0 00b23770 NOLEAF ??_ECIEngine@@UAEPAXI@Z -
+  1 0099a340 NOLEAF ?Validate@CInitBaseClass@@UBEXXZ -
+  2 00b232d0 NOLEAF ?Initialise@CIEngine@@UAE_NABVCEngineInit@@@Z -
+  3 00b232e0 NOLEAF ?Release@CIEngine@@UAEXXZ -
+  4 00bfea08 NOLEAF __purecall -
+  5 00bfea08 NOLEAF __purecall -
+  6 00b232f0 NOLEAF ?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z -
+  7 00b23300 NOLEAF ?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z -
+  8 00bfea08 NOLEAF __purecall -
+  9 00b23310 NOLEAF ?WorldFrameUpdate@CIEngine@@UAEX_N@Z -
+  10 00b23320 NOLEAF ?PausedWorldFrameUpdate@CIEngine@@UAEXXZ -
+  11 00bfea08 NOLEAF __purecall -
+  12 00bfea08 NOLEAF __purecall -
+  13 00bfea08 NOLEAF __purecall -
+  14 00b23330 NOLEAF ?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z -
+  15 00bfea08 NOLEAF __purecall -
+  16 00bfea08 NOLEAF __purecall -
+  17 00b23340 NOLEAF ?Refresh@CIEngine@@UAEXXZ -
+  18 00b23350 SAME ?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z 
+  19 00b23360 NOLEAF ?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ -
+  20 00b23370 NOLEAF ?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z -
+  21 00b23380 NOLEAF ?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z -
+  22 00b23390 NOLEAF ?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z -
+  23 00bfea08 NOLEAF __purecall -
+  24 00b233a0 NOLEAF ?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z -
+  25 00b233b0 NOLEAF ?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z -
+  26 00b233c0 SAME ?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z 
+  27 00b233e0 NOLEAF ?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z -
+  28 00b233d0 NOLEAF ?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z -
+  29 00b233f0 NOLEAF ?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z -
+  30 00b23400 NOLEAF ?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z -
+  31 00b23410 NOLEAF ?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z -
+  32 00b23420 NOLEAF ?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z -
+  33 00b23430 NOLEAF ?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z -
+  34 00b23440 NOLEAF ?ProcessPrimitiveStats@CIEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z -
+  35 00b23450 SAME ?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z 
+  36 00b23460 SAME ?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z 
+  37 00b23470 NOLEAF ?GetStaticMapUpdatePassCount@CIEngine@@UAEJXZ -
+  38 00b23480 NOLEAF ?StartStaticMapUpdatePass@CIEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z -
+  39 00b23490 SAME ?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z 
+  40 00b234a0 NOLEAF ?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z -
+  41 00b234b0 NOLEAF ?CloseStaticMapFile@CIEngine@@UAEXXZ -
+  42 00b234c0 NOLEAF ?AddMap@CIEngine@@UAEXJJ@Z -
+  43 00b234d0 NOLEAF ?RemoveMap@CIEngine@@UAEXJ@Z -
+  44 00b234e0 NOLEAF ?SetMapAsLoaded@CIEngine@@UAEXJ@Z -
+  45 00b234f0 NOLEAF ?SetMapAsUnloaded@CIEngine@@UAEXJ@Z -
+  46 00b23500 NOLEAF ?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z -
+  47 00b23510 NOLEAF ?SetMapVisibility@CIEngine@@UAEXJ_N@Z -
+  48 00b23520 NOLEAF ?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z -
+  49 00b23530 SAME ?OnActivate@CIEngine@@UAEXXZ 
+  50 00b23540 SAME ?OnDeactivate@CIEngine@@UAEXXZ 
+  51 00b23550 NOLEAF ?IsActive@CIEngine@@UBE_NXZ -
+  52 00b23560 NOLEAF ?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z -
+  53 00b23570 NOLEAF ?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z -
+  54 00b23580 NOLEAF ?ReloadLocalDetailDefs@CIEngine@@UAEXXZ -
+  55 00b23590 NOLEAF ?StartNewScene@CIEngine@@UAEXKM@Z -
+  56 00b235a0 NOLEAF ?CutscenePreload@CIEngine@@UAEX_N0@Z -
+  57 00b235b0 NOLEAF ?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z -
+  58 00b235c0 NOLEAF ?ChangeCameraAngle@CIEngine@@UAEXXZ -
+  59 00b235d0 NOLEAF ?IsPreloaded@CIEngine@@UBE_NXZ -
+  60 00b235e0 NOLEAF ?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z -
+  61 00b235f0 NOLEAF ?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z -
+  62 00b23600 NOLEAF ?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z -
+  63 00b23610 NOLEAF ?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z -
+  64 00b23620 NOLEAF ?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z -
+  65 00b23630 NOLEAF ?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z -
+  66 00b23640 NOLEAF ?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z -
+  67 00b23650 NOLEAF ?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z -
+  68 00b23660 NOLEAF ?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z -
+  69 00b23670 NOLEAF ?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z -
+  70 00b23680 NOLEAF ?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z -
+  71 00b23690 NOLEAF ?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ -
+  72 00b236a0 NOLEAF ?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ -
+  73 00b236b0 NOLEAF ?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ -
+  74 00b236c0 NOLEAF ?DeallocateShadowBuffer@CIEngine@@UAE_NXZ -
+  75 00b236d0 NOLEAF ?ReallocateShadowBuffer@CIEngine@@UAEXXZ -
+  76 00b236e0 NOLEAF ?Enable3DSceneRendering@CIEngine@@UAEX_N@Z -
+  77 00b236f0 NOLEAF ?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ -
+  78 00b23700 NOLEAF ?Enable2DSceneRendering@CIEngine@@UAEX_N@Z -
+  79 00b23710 NOLEAF ?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ -
+  80 00b23720 NOLEAF ?OverrideRain@CIEngine@@UAEXM@Z -
+  81 00b23730 NOLEAF ?OverrideSnow@CIEngine@@UAEXM@Z -
+  82 00b23740 NOLEAF ?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z -
+  83 00b28b40 NOLEAF ?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ -
+  84 00b28b60 NOLEAF ?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ -
+VT ??_7CIEngineConstructorReference@?A0xda7ecc07@@6B@ slots 85 retail NONE
+  0 ??_ECIEngineConstructorReference@?A0xda7ecc07@@UAEPAXI@Z
+  1 ?Validate@CInitBaseClass@@UBEXXZ
+  2 ?Initialise@CIEngine@@UAE_NABVCEngineInit@@@Z
+  3 ?Release@CIEngine@@UAEXXZ
+  4 __purecall
+  5 __purecall
+  6 ?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z
+  7 ?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z
+  8 __purecall
+  9 ?WorldFrameUpdate@CIEngine@@UAEX_N@Z
+  10 ?PausedWorldFrameUpdate@CIEngine@@UAEXXZ
+  11 __purecall
+  12 __purecall
+  13 __purecall
+  14 ?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z
+  15 __purecall
+  16 __purecall
+  17 ?Refresh@CIEngine@@UAEXXZ
+  18 ?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z
+  19 ?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ
+  20 ?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z
+  21 ?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z
+  22 ?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z
+  23 __purecall
+  24 ?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z
+  25 ?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z
+  26 ?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+  27 ?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z
+  28 ?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z
+  29 ?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z
+  30 ?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z
+  31 ?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z
+  32 ?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z
+  33 ?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z
+  34 ?ProcessPrimitiveStats@CIEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z
+  35 ?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z
+  36 ?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z
+  37 ?GetStaticMapUpdatePassCount@CIEngine@@UAEJXZ
+  38 ?StartStaticMapUpdatePass@CIEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z
+  39 ?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z
+  40 ?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z
+  41 ?CloseStaticMapFile@CIEngine@@UAEXXZ
+  42 ?AddMap@CIEngine@@UAEXJJ@Z
+  43 ?RemoveMap@CIEngine@@UAEXJ@Z
+  44 ?SetMapAsLoaded@CIEngine@@UAEXJ@Z
+  45 ?SetMapAsUnloaded@CIEngine@@UAEXJ@Z
+  46 ?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z
+  47 ?SetMapVisibility@CIEngine@@UAEXJ_N@Z
+  48 ?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z
+  49 ?OnActivate@CIEngine@@UAEXXZ
+  50 ?OnDeactivate@CIEngine@@UAEXXZ
+  51 ?IsActive@CIEngine@@UBE_NXZ
+  52 ?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z
+  53 ?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z
+  54 ?ReloadLocalDetailDefs@CIEngine@@UAEXXZ
+  55 ?StartNewScene@CIEngine@@UAEXKM@Z
+  56 ?CutscenePreload@CIEngine@@UAEX_N0@Z
+  57 ?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z
+  58 ?ChangeCameraAngle@CIEngine@@UAEXXZ
+  59 ?IsPreloaded@CIEngine@@UBE_NXZ
+  60 ?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z
+  61 ?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z
+  62 ?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z
+  63 ?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z
+  64 ?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z
+  65 ?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z
+  66 ?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+  67 ?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+  68 ?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z
+  69 ?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z
+  70 ?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z
+  71 ?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ
+  72 ?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ
+  73 ?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ
+  74 ?DeallocateShadowBuffer@CIEngine@@UAE_NXZ
+  75 ?ReallocateShadowBuffer@CIEngine@@UAEXXZ
+  76 ?Enable3DSceneRendering@CIEngine@@UAEX_N@Z
+  77 ?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ
+  78 ?Enable2DSceneRendering@CIEngine@@UAEX_N@Z
+  79 ?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ
+  80 ?OverrideRain@CIEngine@@UAEXM@Z
+  81 ?OverrideSnow@CIEngine@@UAEXM@Z
+  82 ?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z
+  83 ?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ
+  84 ?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ

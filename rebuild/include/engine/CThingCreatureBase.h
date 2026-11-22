@@ -488,6 +488,12 @@ public:
     void UnsheatheRangedWeapon();                                                                                                // 0x00664A10
 protected: void UnsheatheWeapon(long weapon_def, bool primary); public:                                                         // 0x006648D0
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHEMELEEWEAPON
+    // NF253 opt-in (q12711, rows 0x00890C80 / 0x006649C0): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?UnsheatheMeleeWeapon@CThingCreatureBase@@QAEXXZ
+    // (public, out of line in retail at 0x006649C0: `call` from 0x00890CE7, 0x00664A67, 0x00666842, 0x008B7C37, 0x0096B61C). Declaration only.
+public:
+    void UnsheatheMeleeWeapon();                                                                                                 // 0x006649C0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHANDEDNESS
     // Retail opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb
     // ?SetLastActionHandedness@CThingCreatureBase@@QAEXW4ECombatAnimationHandedness@@@Z (public, out of line in retail at 0x006619F0,

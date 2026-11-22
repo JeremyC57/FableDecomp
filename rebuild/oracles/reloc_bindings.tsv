@@ -3906,7 +3906,6 @@ _kName	012786ac	008b34d0
 ?FindPossessionEntry@@YIPAUSPossessionEntry@@PAU1@0PAUCThing@@ABUSRandomAccessTag@@@Z	008ecf60	008ed010
 ??_7CCreatureAction_Die@@6B@	01287fc4	008ed650
 ??_7CCombatAction_FallStunned@@6B@	012880e4	008edc10
-?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ	0049d800	008ee720
 ??_7Mass@@6B@	01288230	008ee910
 ??0CElement60_008eff40@@QAE@ABU0@@Z	008eff40	008f0280
 ?InsertGrow@CRetailVector_CElement60_008eff40@@QAEXPAUCElement60_008eff40@@ABU2@ABUSScalarTag@@K_N@Z	008f0450	008f0570
@@ -15446,7 +15445,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RemoveParticipant@CCreatureInteraction@@QAEXAAVCThingCreatureBase@@@Z	008631b0	006629b0
 ??0CThingBodyReorienter@@QAE@PAVCThingCreatureBase@@@Z	00863750	00663490
 ?GetAnimFromName@CThingPlayerCreature@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	00662a00	006635d0
-?IsThingCarryingMeleeWeapon@@YI_NABVCThingCreatureBase@@@Z	006a15a0	006649c0
 ??$GetDef@VCHeroAbilityDef@@@CDefinitionManager@@QAE_NJPAV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@Z	0043ffa0	00665510
 ?GetPCombatTypeDef@CThingCreatureBase@@QBE?AV?$CDefPointer@VCCombatTypeDef@@@@XZ	00664d40	00667c00
 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z	00a12450	00668ab0
@@ -38713,10 +38711,6 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?erase@CHitThingVector@@QAEPAUSHitThing@@PAU2@@Z	00789085	007888b4
 ?EndHeadEffects@CTCKraken@@QAEXXZ	007fb150	007fc820
 ?RaiseSunkenTentacles@CTCKraken@@QAEXXZ	007fb610	007fc820
-?AddData@GameEventMethods@@QAEXJPBX@Z	009f1760	00890c80
-?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z	006ebdd0	00890c80
-?IsThingCarryingMeleeWeapon@@YI_NPAUCThingNative@@@Z	006a15a0	00890c80
-?UnsheatheMeleeWeapon@CThingNative@@QAEXXZ	006649c0	00890c80
 ??_7CCreatureAction_BriarRoseShotFarInto@@6B@	01294a2c	00957170
 ??0CNavQuadTree@@QAE@XZ	00a7a760	00a156d0
 ?Initialise@CNavQuadTree@@QAEXABVCNavigationAreaInit@@@Z	00a7a8d0	00a156d0
