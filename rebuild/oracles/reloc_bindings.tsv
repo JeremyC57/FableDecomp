@@ -119,8 +119,6 @@ _RegionExitTextHelper	004292c0	0042a0ce
 ?RBTree__GetMaxNode@@YAPAXPAX@Z	004294e2	0042a58d
 ?GetNoAllocatedAreas@@YAPAXPAX@Z	004292c0	0042a8bd
 ??0CSecond_00429e29@@QAE@ABU0@@Z	00429e29	0042a944
-?LinkedList_AllocateNode_12bytes@@YGPAULinkedListNode12@@K@Z	00429fbe	0042aadc
-?Base_0042a141@CActiveFile@@QAEXXZ	0042a141	0042ab1c
 ?LinkedList_AllocateNode@@YGPAULinkedListInsertNode@@K@Z	00429fe3	0042ab33
 ?BuildTreeArray@T@@QAEXPAX@Z	0042a1b6	0042abe1
 _EraseTreeNode	0042a34e	0042adb6
@@ -1839,7 +1837,6 @@ _MAX_ABILITY_LEVEL	01256188	005edea3
 ?Helper@CForwarder_005f8310@@QAEPAXPAXABUSScalarTag@@J@Z	005f7c3a	005f8310
 ?Helper@CForwarder_005f870c@@QAEPAXPAXABUSScalarTag@@J@Z	005f7e23	005f870c
 ?Helper@CForwarder_005f8721@@QAEPAXPAXABUSScalarTag@@J@Z	005f7e52	005f8721
-?AllocateInsertNode_005f88c8@@YGPAUInsertNode_005f88c8@@K@Z	005f807c	005f88c8
 ?AllocateInsertNode_005f891f@@YGPAUInsertNode_005f891f@@K@Z	005f80a1	005f891f
 ?Helper@CForwarder_005f8c0a@@QAEPAXPAXABUSScalarTag@@J@Z	005f847f	005f8c0a
 ?Helper@CForwarder_005f8dfd@@QAEPAXPAXABUSScalarTag@@J@Z	005f7e23	005f8dfd
@@ -2774,7 +2771,6 @@ __CIfmod	00bfeb28	006f99b0
 ?IntrosortLoop_00743ec0@@YIXPAUSElement8@@00JUSCompare@@@Z	00743ec0	007441d0
 ?UnguardedInsertionSortAux_0073d720@@YIXPAUSElement8@@00USCompare@@@Z	0073d720	007441d0
 ?CGuiVarTransferBool_helper@@YIXPAUCGuiVarTarget@@H_N@Z	007441d0	007442d0
-?g_fMinusOne@@3MA	0122dee0	00744500
 @Perceiver_GetTarget@4	00a01b50	00744830
 ?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ	00744730	007449b0
 ??_7CTCBed@@6B@	01268964	00746820
@@ -4296,7 +4292,6 @@ N_008fdb27	008fdb27	008fdb55
 ?GoToWell@CAIStateGroup_MinionPutOutFires@@QAE_NXZ	00935c40	00936020
 ?PutOutFire@CAIStateGroup_MinionPutOutFires@@QAE_NXZ	00935e40	00936020
 ?MoveToSeat@CAIStateGroup_UsesSeat@@QAE_NJ@Z	009385f0	009387c0
-?SitInSeat@CAIStateGroup_UsesSeat@@QAE_NXZ	00938380	009387c0
 ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ	00662410	0093dcd0
 ?IsInSchoolHours@CAIStateGroup_WorkBase@@QAE_NXZ	00940120	00940180
 ??_7CIntelligentPointerTask@@6B@	0125a8a4	00940240
@@ -27838,7 +27833,6 @@ __imp___strupr	0144002c	00c0c910
 ?PreChangeResolution@CDisplayEngine@@QAEXXZ	00434a10	004167da
 ??1CTCCarriedActionUseRead@@UAE@XZ	004dcda4	004dcd88
 ??1CTCSoundAtmosphere@@UAE@XZ	004db47d	004dce88
-??1?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAE@XZ	004ab490	004de6ed
 ??1?$vector@V?$CIntelligentPointer@$$CBVCThing@@@@V?$allocator@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@QAE@XZ	004df88a	004e0ae8
 ?g_TrainableAbilityTable@@3PAUSTrainableEntry@@A	0137c960	0056e674
 ?UpdateExperienceSpendAbility@CTCInventoryExperience@@QAEXXZ	0057238f	00572636
@@ -38968,7 +38962,6 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?UpdateCurfew@CTCVillage@@QAEXXZ	0065ad37	0065c781
 ?UpdateHornTasks@CTCVillage@@AAEXXZ	0065be6c	0065c781
 ?UpdateSecuritySweepTasks@CTCVillage@@QAEXXZ	0065c08a	0065c781
-?UpdateTorchTasks@CTCVillage@@QAEXXZ	00659625	0065c781
 ?g_RepopulateVillages@@3_NA	013b86e9	0065c781
 ?UpdateCollision@CTCShotDefinitionBase@@QAEXPA_N@Z	007bfe30	007bdac7
 ?IsStillRunnable@CAIStateGroup_StealthSeekEnemy@@QAE_NPAVCTCPerceiveThing@@@Z	0093c4e0	0093c6d0
@@ -39613,3 +39606,7 @@ _sort32a	00c95560	00c95580
 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B	01436e28	00b412a0
 ??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z	00740040	00938380
 ??RCGetBestFreeProngForAttacker@?A0x1c1f655f@@QAEXAAVCProng@CDefendingCombatantInfo@@@Z	006f2c00	006ebf70
+?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z	00429fbe	0042aadc
+?_M_create_node@?$list@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@IAEPAU?$_List_node@W4EHeroAbility@@@2@ABW4EHeroAbility@@@Z	005f807c	005f88c8
+?SitInSeat@CAIStateGroup_UsesSeat@@IAE_NXZ	00938380	009387c0
+?UpdateTorchTasks@CTCVillage@@AAEXXZ	00659625	0065c781

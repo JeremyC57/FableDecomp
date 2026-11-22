@@ -927,9 +927,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00437640'
-        Module = '_global'
-        Source = '00/43/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00437640.cpp'
-        TestSource = '00/43/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00437640_test.cpp'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_IsDrawingTargetingCentre_00437640.cpp'
+        TestSource = '00/43/CPlayerGui_IsDrawingTargetingCentre_00437640_test.cpp'
         PassPattern = 'CTCShotDefinitionBase_00437640_TEST PASS'
     }
     [pscustomobject]@{
@@ -40445,9 +40445,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b2990'
-        Module = '_global'
-        Source = '00/7b/CEngineInternalPrimitiveBase_AddChildPrimitive_007b2990.cpp'
-        TestSource = '00/7b/CEngineInternalPrimitiveBase_AddChildPrimitive_007b2990_test.cpp'
+        Module = 'CTCGuard'
+        Source = '00/7b/CTCGuard_GetWaitForRebribeInSeconds_007b2990.cpp'
+        TestSource = '00/7b/CTCGuard_GetWaitForRebribeInSeconds_007b2990_test.cpp'
         PassPattern = '007b2990_TEST PASS'
     }
     [pscustomobject]@{
@@ -76792,8 +76792,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00437650'
         Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_AddMoralityChange_00437650.cpp'
-        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437650_test.cpp'
+        Source = '00/43/CPlayerGui_SetFlourishEffect_00437650.cpp'
+        TestSource = '00/43/CPlayerGui_SetFlourishEffect_00437650_test.cpp'
         PassPattern = 'PASS_00437650'
     }
     [pscustomobject]@{

@@ -1,28 +1,16 @@
-#pragma optimize("s",on)
-// CRetailList_node0xc_dword::Buynode(const long&) -- malloc a 0xc-byte node and placement-copy the dword value at +0x8
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00429FBE, oracle length 26 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push 0xc ; call malloc ; pop ecx ; lea ecx,[eax+0x8] ; test ecx,ecx ; je S ; mov edx,[esp+4] ; mov edx,[edx] ; mov [ecx],edx ; S: ret 4
-// Retail std::list node factory for a 4-byte scalar value: one malloc'd node (malloc @
-// 0x00BFEA0E) whose value at +0x8 is placement-copied (hence the null test on the value
-// address); the node (malloc's result, still in eax) is returned. `this` (the list) is unused.
-// One of 10 bodies of this shape.
-#include <new>
-extern "C" void* __cdecl malloc(unsigned int size);
-
-struct CRetailList_node0xc_dword {
-    struct SNode {
-        unsigned char _links[0x8];       // prev/next (and any further link) pointers
-        long m_value;                      // +0x8
-    };
-    SNode* Buynode(const long& value);
-};
-
-CRetailList_node0xc_dword::SNode* CRetailList_node0xc_dword::Buynode(const long& value)
-{
-    SNode* node = (SNode*)malloc(sizeof(SNode));
-    new (&node->m_value) long(value);
-    return node;
-}
+// std::list<NUISystem::CActionParam*>::_M_create_node(CActionParam* const&) -- STLport list node factory: allocate one 12-byte node
+//   (malloc) and copy-construct the element pointer at +0x8 in place (the placement new's null test on the element address)
+// Leaf: ?_M_create_node@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@IAEPAU?$_List_node@PAVCActionParam@NUISystem@@@2@ABQAVCActionParam@NUISystem@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00429FBE, 26 bytes, `ret 4`, size-optimised TU (`push 0Ch ; call malloc ; pop ecx`).
+// Name (NF239, 2026-11-22, CODEXP27 L13): the STLport 4.6 _list.h spelling the shared header produces (STL instances have no PDB
+//   names, and Ego_r / FableWin carry a Dinkumware list: EXTRA_RULES 2026-11-20 "descriptive-by-library"). T = NUISystem::CActionParam*:
+//   its only caller is list<CActionParam*>::insert(iterator, const T&) 0x0042AADC (landed binder 0x0042B646 push_back binds that insert
+//   under the STLport spelling), the same run as _List_base<CActionParam*> 0x0042AB01 / clear 0x0042A141 / ~_List_base 0x0042AB1C.
+//   Was the stand-in ?Buynode@CRetailList_node0xc_dword@@QAEPAUSNode@1@ABJ@Z (catalog CRetailList_node0xc_dword::Buynode), whose
+//   caller row bound ?LinkedList_AllocateNode_12bytes@@YGPAULinkedListNode12@@K@Z here.
+// Model: stlport/fable_containers.h (FABLE_RETAIL_STLP_LIST) and engine/NUISystem_CAction.h, the 0x0042AB01 pattern: the explicit
+//   instantiation emits the member as its own COMDAT.
+#pragma optimize("s", on)
+#define FABLE_RETAIL_STLP_LIST
+#include "engine/NUISystem_CAction.h"
+template std::_List_node<NUISystem::CActionParam*>* std::list<NUISystem::CActionParam*, std::allocator<NUISystem::CActionParam*> >::_M_create_node(NUISystem::CActionParam* const&);

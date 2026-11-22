@@ -14,7 +14,11 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     bool MoveToSeat(EMovementType movementType);    // 0x009385F0
+    // Name fix (NF239, 2026-11-22, CODEXP27 L88): protected in Ego_r + FableWin (?SitInSeat@CAIStateGroup_UsesSeat@@IAE_NXZ, the self
+    //   row 0x00938380's leaf); was public (QAE).
+protected:
     bool SitInSeat();                               // 0x00938380
+public:
     bool MoveToSeatAndSitDown(EMovementType movementType);
 };
 

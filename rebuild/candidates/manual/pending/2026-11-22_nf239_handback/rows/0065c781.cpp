@@ -1,0 +1,285 @@
+// CTCVillage::FrameUpdate() -- per-frame village upkeep: prune members, refresh tasks and crowds, run the def's task updaters, crimes and enemy status; every 30 frames switch the village lights with the day and recount the working villagers; play the curfew / cook-time change announcement near the hero; then update the curfew
+// Leaf: ?FrameUpdate@CTCVillage@@QAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad24[0x20] removed re-padded by-value maps +8.
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
+// Sound manager (agentSND2, 2026-11-10): PSoundManager of engine/CASoundManager.h, GetPSoundBank(const CCharString&) 0x009917E0
+//   (FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP, Anniversary name); was a local CSymbolMap::FindFirstSymbolWithVal.
+// Name fix (agentNF24): 0x00658DB3 respelled CTCVillage::IsCurfewTime() const (Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ, the landed row's own leaf) (was IsCurfewTime_00658db3)
+#include "fable_compiler.h"
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+class CTCBase;
+#include "engine/C3DVector.h"
+class CRightHandedSet { public: C3DVector Up, Forward; };
+// Name fix (agentNF54): the local CCharString / CTextBank / CGroupEntryRef / CMainGameComponent stand-ins replaced by the shared
+//   fable_string.h, engine/NGameText_CDataBank.h and engine/CMainGameComponent.h: 0x00404310 is ?GetCRC@CCharString@@QBEKXZ (Ego_r +
+//   FableWin; was the made-up GetString), whose CRC goes to ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z 0x009CC410 (Ego_r + FableWin; was the
+//   local CTextBank::LookupValue(const char*)); EntryExists 0x009CC190 and GetPTextEntry 0x009C9070 (was GetPGroupEntry) on the bank read
+//   through the inline CMainGameComponent::GetTextBank(); the entry's speech bank / sound name are CTextEntry::SpeechBank / SoundName.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+#define FABLE_RETAIL_CBANKFILE_FINDINDEXBYSYMBOLCRC
+#define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
+#define FABLE_RETAIL_NGAMETEXT_TEXTENTRY_SPEECH
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT
+#include "fable_string.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/NGameText_CDataBank.h"
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CTCPhysicsBase { public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
+    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
+    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
+    virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53();
+    virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
+    virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65();
+    virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
+    virtual const CRightHandedSet& GetRHSet() const;   // slot 72 (+0x120)
+};
+class CThing {
+public:
+    unsigned char _pad00[0x20];
+    std::bitset<274>       m_present;                    // +0x20
+    CInterfaceMap m_interfaces;                 // +0x44
+    unsigned char _pad54[0xc];
+    CTCPhysicsBase* PhysicsTC;                  // +0x60
+    bool HasTC(long type) const { return m_present.test(type); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long interfaceType)
+    {
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+        CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return it->second;
+    }
+    const C3DVector& GetPos() const;       // 0x004C73D0
+};
+// 0x00662010 (NF115, PRIORITY q4488; was the descriptive CThing::GetVillagerState): FableWin.pdb / Ego_r.pdb
+// ?GetProperty@CThingCreatureBase@@QBEKXZ (the creature def's Property), declared by the shared flattened header (NF115 opt-in).
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FLAT_GETPROPERTY
+#include "engine/CThingCreatureBase.h"
+class CBaseObject;
+// NF196 (2026-11-20, q4492): the row-local CBaseIntelligentPointer stand-in replaced by the shared engine/CIntelligentPointer.h; the
+//   village lists hold CIntelligentPointer<CThingAICreature> (VillagePeople) and CIntelligentPointer<CThing> (the torch list), the Ego_r.pdb
+//   CTCVillage member types, and their liveness tests call the declared IS_THING_ALIVE<T> instances: FableWin.pdb
+//   ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z at 0x004CC340 (was
+//   ?IS_THING_ALIVE_004cc340@@YI_NABUCBaseIntelligentPointer@@@Z) and ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingAICreature@@@@@@YI_N...
+//   at 0x004AB8F0 (was ?IS_THING_ALIVE_Villager@@YI_NABUCBaseIntelligentPointer@@@Z; landed 0x00658EC3 already binds the PDB form).
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+class CThingAICreature;
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
+template <> bool __fastcall IS_THING_ALIVE<CIntelligentPointer<CThing> >(const CIntelligentPointer<CThing>& thing);   // 0x004CC340
+template <> bool __fastcall IS_THING_ALIVE<CIntelligentPointer<CThingAICreature> >(const CIntelligentPointer<CThingAICreature>& thing);   // 0x004AB8F0
+class CASoundBank { public:
+    long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
+};
+class CSoundInit { public:
+    float Volume, Pitch, Pan;
+    long NoPlays, PlaybackType;
+    unsigned long GainFaderBits, PitchFaderBits;
+    long OverrideID;
+    CSoundInit();                               // 0x0041C930
+};
+class CThingSoundEmitter : public CThing {
+public:
+    static CThingSoundEmitter* __fastcall Create(const C3DVector& position, const CThing* parent, bool unattached);   // 0x008369F0
+    unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);       // 0x00836810
+};
+bool __fastcall IS_THING_ALIVE(CThingSoundEmitter* const& thing);   // 0x0065D55F
+#define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#include "engine/CASoundManager.h"
+extern bool g_RepopulateVillages;               // 0x013B86E9
+// NF122 (2026-11-20, q4490): 0x006BB2C0 is Ego_r.pdb / FableWin.pdb ?IsDay@CGameTimeManager@@QBE_NXZ (const), declared by
+//   engine/CGameTimeManager.h (FABLE_RETAIL_CGAMETIMEMANAGER + _ISDAY); was the non-const IsDay() on a local CGameTimeManager model.
+#define FABLE_RETAIL_CGAMETIMEMANAGER
+#define FABLE_RETAIL_CGAMETIMEMANAGER_ISDAY
+#include "engine/CGameTimeManager.h"
+class CWorld { public:
+    unsigned char _pad00[0x1c];
+    CGameTimeManager* PTimeManager;             // +0x1c
+    static long __fastcall GetFrame();                // 0x0049D870
+};
+class CWorldMap { public:
+    void PopulateRegionWithVillagers(CThing* village);   // 0x00502E90
+};
+class CTCLight { public:
+    unsigned char _pad00[0x1c];
+    bool OnDuringDay;                           // +0x1c (descriptive)
+    void SetActive(bool active);                // 0x006412B0
+};
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public:
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+template <class T> struct SNode {
+    SNode* _M_next;
+    SNode* _M_prev;
+    T      _M_data;
+};
+class CVillageDef { public:
+    unsigned char _pad00[0x28];
+    long* TaskTypesStart;                       // +0x28
+    long* TaskTypesFinish;                      // +0x2c
+    unsigned char _pad30[0xe6 - 0x30];
+    bool HasCurfewAnnouncements;                // +0xe6
+    unsigned char _pad_e7[0xe8 - 0xe7];
+    CCharString CurfewEndText;                  // +0xe8
+    CCharString CurfewStartText;                // +0xec
+    CCharString CookEndText;                    // +0xf0
+    CCharString CookStartText;                  // +0xf4
+};
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    CWorldMap& GetWorldMap();   // 0x00686D30
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCVillage : public CTCBase { public:
+    void* _vfptr;
+    CThing* ParentThing;                        // +0x04
+    unsigned char _pad08[0x2c - 0x08];
+    SNode<CIntelligentPointer<CThingAICreature> >* VillagePeople;   // +0x2c
+    SNode<CIntelligentPointer<CThing> >* Lights;     // +0x30
+    unsigned char _pad34[0x88 - 0x34];
+    long NumWorkingVillagers;                   // +0x88
+    unsigned char _pad8c[0x94 - 0x8c];
+    CVillageDef* PDef;                          // +0x94
+    unsigned char _pad98[0xb0 - 0x98];
+    bool WorkTimeAccordingToCrier;                           // +0xb0
+    bool WasCurfewTime;                         // +0xb1
+    unsigned char _padb2;
+    bool AnnouncementsDisabled;                 // +0xb3
+    void ClearOutNullMembers();                 // 0x0065890B
+    void ReleaseInvalidTasks();                 // 0x0065BE32
+    void UpdateCrowds();                        // 0x006594BB
+    void UpdateSecuritySweepTasks();            // 0x0065C08A
+private:
+    void UpdateTorchTasks();                    // 0x00659625 Ego_r/FableWin ?UpdateTorchTasks@CTCVillage@@AAEXXZ (private; NF239 CODEXP27 L45, was QAE)
+    void UpdateHornTasks();                     // 0x0065BE6C Ego_r/FableWin ?UpdateHornTasks@CTCVillage@@AAEXXZ (private)
+public:
+    void SetEnemyToHeroStatus();                // 0x0065A852
+    void RemoveTimedoutCrimes();                // 0x0065A7A9
+    void UpdateMirroredCrimeData();             // 0x0065C5BB
+    bool IsCurfewTime() const;                  // 0x00658DB3 Ego_r/FableWin ?IsCurfewTime@CTCVillage@@QBE_NXZ
+    bool IsWorkTime() const;   // 0x00658B20 ?IsWorkTime@CTCVillage@@QBE_NXZ (Ego_r + FableWin; agentNF25b)
+    void UpdateCurfew();                        // 0x0065AD37
+    void FrameUpdate();
+};
+
+void CTCVillage::FrameUpdate()
+{
+    ClearOutNullMembers();
+    ReleaseInvalidTasks();
+    UpdateCrowds();
+    if (g_RepopulateVillages) {
+        GetWorldMap().PopulateRegionWithVillagers(ParentThing);
+        g_RepopulateVillages = false;
+    }
+    bool torchesUpdated = false;
+    for (long* type = PDef->TaskTypesStart; type != PDef->TaskTypesFinish; ++type) {
+        switch (*type) {
+        case 0:
+            UpdateTorchTasks();
+            torchesUpdated = true;
+            break;
+        case 3:
+            UpdateSecuritySweepTasks();
+            break;
+        case 4:
+            UpdateHornTasks();
+            break;
+        }
+    }
+    SetEnemyToHeroStatus();
+    RemoveTimedoutCrimes();
+    if (CWorld::GetFrame() % 30 == 0) {
+        if (!torchesUpdated) {
+            for (SNode<CIntelligentPointer<CThing> >* node = Lights->_M_next; node != Lights; node = node->_M_next) {
+                if (IS_THING_ALIVE(node->_M_data)) {
+                    CThing* thing = ((CThing*)node->_M_data.GetPItem());
+                    if (thing->HasTC(0x27)) {
+                        CTCLight* light = (CTCLight*)thing->GetTC(0x27);
+                        bool onDuringDay = light->OnDuringDay;
+                        if (onDuringDay == PeekWorld().PTimeManager->IsDay())
+                            light->SetActive(!PeekWorld().PTimeManager->IsDay());
+                    }
+                }
+            }
+        }
+        NumWorkingVillagers = 0;
+        SNode<CIntelligentPointer<CThingAICreature> >* end = VillagePeople;
+        for (SNode<CIntelligentPointer<CThingAICreature> >* node = end->_M_next; node != end; node = node->_M_next) {
+            if (IS_THING_ALIVE(node->_M_data) && ((CThingCreatureBase*)node->_M_data.GetPItem())->GetProperty() == 3)
+                ++NumWorkingVillagers;
+        }
+        UpdateMirroredCrimeData();
+    }
+    if (PDef->HasCurfewAnnouncements && !AnnouncementsDisabled) {
+        CCharString text(0);
+        bool was = WasCurfewTime;
+        if (was != IsCurfewTime())
+            text = was ? PDef->CurfewStartText : PDef->CurfewEndText;
+        was = WorkTimeAccordingToCrier;
+        if (was != IsWorkTime())
+            text = was ? PDef->CookStartText : PDef->CookEndText;
+        if (text != "") {
+            const NGameText::CDataBank& bank = CMainGameComponent::Get()->GetTextBank();
+            unsigned long id = bank.FindIndexBySymbolCRC(text.GetCRC());
+            bool exists = bank.EntryExists(id);
+            const NGameText::CTextEntry* entry = bank.GetPTextEntry(id, false).operator->();
+            if (entry || !exists) {
+                WasCurfewTime = IsCurfewTime();
+                WorkTimeAccordingToCrier = IsWorkTime();
+                if (entry) {
+                    CASoundBank* soundBank = PSoundManager->GetPSoundBank(entry->SpeechBank);
+                    if (soundBank) {
+                        long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
+                        if (sample > 0) {
+                            C3DVector pos = ParentThing->GetPos();
+                            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+                            if (IS_THING_ALIVE(hero)) {
+                                C3DVector offset = hero->PhysicsTC->GetRHSet().Forward * 20.0f;
+                                pos = hero->GetPos() + offset;
+                            }
+                            {
+                                CThingSoundEmitter* emitter = CThingSoundEmitter::Create(pos, 0, true);
+                                if (IS_THING_ALIVE(emitter)) {
+                                    CSoundInit init;
+                                    init.GainFaderBits = 0x8040;
+                                    emitter->PlaySample(*soundBank, sample, false, init, false);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    UpdateCurfew();
+}

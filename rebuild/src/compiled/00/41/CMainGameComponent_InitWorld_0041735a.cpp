@@ -41,7 +41,9 @@ void CMainGameComponent::InitWorld()
     if (g_flag2) this->InitEventPackageSaving(GEventPackageFileName);
     {
         CCharString2 s(0x122eea4, -1);
-        DisplayProgress(&s, false, 0.5f, 0);
+        // NF239 (2026-11-22, 0x0122DEE0 census): retail pushes the -1.0f literal at 0x0122DEE0 here (Fable.exe: 00 00 80 BF); the row
+        //   had 0.5f (__real@3f000000), which graded only because relocation fields are masked.
+        DisplayProgress(&s, false, -1.0f, 0);
     }
     this->f24.ptr->vtbl9();
 }

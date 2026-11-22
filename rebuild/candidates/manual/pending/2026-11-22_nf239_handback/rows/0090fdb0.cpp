@@ -1,0 +1,174 @@
+// CAIStateGroup_MinionSitAtSchool::Update() -- read the village school times, pick a randomly staggered end time, walk (seat within 10 units) or run to the seat and sit; then idle while the time of day stays in the school window (leaving at a 1-in-5-seconds random once it is over), raising a hand at random intervals while the village has a lesson on; finally get up and Terminate()
+// Leaf: ?Update@CAIStateGroup_MinionSitAtSchool@@UAEXXZ
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0090FDB0, length 848 bytes (+ int3 padding), plain `ret` (virtual).
+// Callees: CVectorMap::LowerBound @ 0x0040F020 (GetInterface 0x23 = CTCVillageMember, bit 3 of +0x24, unchecked),
+// CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::GetSchoolTimes @ 0x00658ACB, GetPThingWorld @ 0x008FCFA0,
+// GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890 (__fastcall), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
+// CThing::GetPos @ 0x004C73D0, CAIStateGroup_UsesSeat::MoveToSeat @ 0x009385F0 / SitInSeat @ 0x00938380 / the get-up
+// @ 0x00938A10, CWorld::GetWorldFrame @ 0x0049D870, AIAction_DoNothing @ 0x0097E200, CCharString(const char*, long) @ 0x0099EBF0
+// / ~CCharString @ 0x0099EAE0, CCreatureAction_PlayAnimation ctor @ 0x008424F0 / ~CCreatureActionBase @ 0x00693EF0,
+// AIAction_PerformActionAndWait @ 0x0097DB70, Terminate @ 0x008FCF40.
+// Data: 2^32 @ 0x0122DCB4, 1.0f @ 0x0122DED8, 10.0f @ 0x01237F0C, CMainGameComponent::GetConstantFPS() @ 0x01375550,
+// "ST_SEATED_CHAIR_RAISE_HAND" @ 0x0128F5D4.
+// Layout: local model (PBrain +4; brain PCreature +0x18; PSeat +0x14; thing world +0x1c time of day: now +0x08, stagger
+// step +0x10; village lesson flag +0xBC; CCreatureAction_PlayAnimation 0xb4 bytes).
+// Shape: the world-seed random is inline (seed*0x24A1+0x24DF, GFROR13, `range ? r % range : 0`) through a __forceinline
+// RandomFrames(seconds) helper that copies CMainGameComponent::GetConstantFPS() into a local BEFORE fetching the seed and forms the range
+// before the seed update: retail loads fps into a callee-saved register ahead of GetPWorldSeed and multiplies (x40/x5)
+// between the seed arithmetic and GFROR13; the leave test's fps load stays inside the `over` branch this way.
+#include "fable_compiler.h"
+class CTCBase;
+class C3DVector { public:
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    FABLE_FORCEINLINE C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
+    FABLE_FORCEINLINE float GetMagnitude() const;
+};
+extern "C" double __cdecl sqrt(double);
+#pragma intrinsic(sqrt)
+FABLE_FORCEINLINE float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+class CSoundPair { public:
+    long m_first;
+    long m_second;
+    CSoundPair() : m_first(0), m_second(0) { }
+};
+
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+
+class CThingCreatureBase : public CThing { public: };
+class CTCVillage { public:
+    unsigned char _pad[0xbc];
+    bool LessonOn;                              // +0xBC
+    bool GetSchoolTimes(float&a0, float&a1) const;   // 0x00658ACB
+};
+class CTCVillageMember { public:
+    CTCVillage* GetPVillage() const;                    // 0x007EE540
+};
+struct CTimeOfDay {
+    unsigned char _pad[0x08];
+    float Now;                                  // +0x08
+    unsigned char _pad0c[4];
+    float StaggerStep;                          // +0x10
+};
+class CWorld { public:
+    unsigned char _pad[0x1c];
+    CTimeOfDay* PTimeOfDay;                     // +0x1c
+    static long __fastcall GetFrame();                // 0x0049D870
+};
+class CBaseObject;
+class CBaseObjectPointer;
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
+class CCreatureActionBase { public:
+    virtual void v00();
+    unsigned char _body[0xa4];
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
+};
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
+    unsigned char _anim[0x0c];                  // +0xa8..+0xb3
+    CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
+        const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
+};
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
+class CAIBrain { public:
+    unsigned char _pad[0x18];
+    CThingCreatureBase* PCreature;              // +0x18
+};
+enum EAIActionReturn { };
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    unsigned char _pad08[0x0c];
+    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_DoNothing(); public:                  protected: // 0x0097E200
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
+    FABLE_FORCEINLINE unsigned long RandomFrames(unsigned long seconds)   // random frame count below seconds * fps
+    {
+        long fps = CMainGameComponent::GetConstantFPS();
+        unsigned long* seed = GetPWorldSeed();
+        unsigned long range = fps * seconds;
+        *seed = *seed * 0x24A1U + 0x24DFU;
+        *seed = GFROR13(*seed);
+        return range ? *seed % range : 0;
+    }
+};
+struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
+    CIntelligentPointer<CThing> PSeat;              // +0x14
+    bool MoveToSeat(long movementType);         // 0x009385F0
+    // Name fix (NF239, 2026-11-22, CODEXP27 L88): SitInSeat is protected in Ego_r + FableWin (?SitInSeat@CAIStateGroup_UsesSeat@@IAE_NXZ,
+    //   the self row 0x00938380's leaf); was public (QAE).
+protected:
+    bool SitInSeat();                           // 0x00938380
+public:
+    void GetUpFromSeat();                       // 0x00938A10
+};
+struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_UsesSeat {
+    virtual void Update();
+};
+
+void CAIStateGroup_MinionSitAtSchool::Update()
+{
+    CTCVillageMember* member;
+    GetCreature()->GetTC(TCI_VILLAGE_MEMBER, &member);
+    float startTime;
+    float endTime;
+    member->GetPVillage()->GetSchoolTimes(*(&startTime), *(&endTime));
+    float now = PeekWorld().PTimeOfDay->Now;
+    unsigned long* seed = GetPWorldSeed();
+    *seed = *seed * 0x24A1U + 0x24DFU;
+    *seed = GFROR13(*seed);
+    unsigned long stagger = *seed & 3;
+    endTime = (float)stagger * PeekWorld().PTimeOfDay->StaggerStep + endTime;
+    if (endTime > 1.0f)
+        endTime = endTime - 1.0f;
+    long movement = 5;
+    CThing* seat = PSeat.Get();
+    if (seat && !seat->IsDead()) {
+        const CThing* creature = GetCreature();
+        const CThing* item = PSeat.Get();
+        if ((item->GetPos() - creature->GetPos()).GetMagnitude() < 10.0f)
+            movement = 3;
+    }
+    if (MoveToSeat(movement) && SitInSeat()) {
+        long nextHand = CWorld::GetFrame() + RandomFrames(40);
+        while (AIAction_DoNothing() == 4) {
+            float time = PeekWorld().PTimeOfDay->Now;
+            bool over;
+            if (endTime > now)
+                over = time > endTime || time < now;
+            else
+                over = time > endTime && time < now;
+            if (over && RandomFrames(5) == 0)
+                break;
+            if (CWorld::GetFrame() > nextHand && member->GetPVillage()->LessonOn) {
+                AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SEATED_CHAIR_RAISE_HAND", CSoundPair(),
+                    false, true, false, 0, 0), false);
+                nextHand = CWorld::GetFrame() + RandomFrames(40);
+            }
+        }
+        GetUpFromSeat();
+    }
+    Terminate();
+}

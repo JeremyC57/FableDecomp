@@ -10,15 +10,11 @@ public:
     virtual ~CTCBase();
 };
 CTCBase::~CTCBase() { g_base = ++g_order; g_baseThis = this; }
-namespace std {
-template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class list {
-public:
-    void* _M_node;
-    ~list();
-};
-template <> list<CThing*>::~list() { g_list = ++g_order; g_listThis = this; }
-}
+// NF239 (2026-11-22): the row now calls STLport's _List_base<CThing*> destructor (0x004AB490) from the shared header, so the test
+//   stubs that out-of-line member (declared only under FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE) instead of a local std::list model.
+#define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
+#include "stlport/fable_containers.h"
+template <> std::_List_base<CThing*, std::allocator<CThing*> >::~_List_base() { g_list = ++g_order; g_listThis = this; }
 class CTCCreatureItemLevitationBase;
 void DestroyOne(CTCCreatureItemLevitationBase* object);
 int main()

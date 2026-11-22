@@ -1,28 +1,16 @@
-#pragma optimize("s",on)
-// CRetailList_node0xc_dword::Buynode(const long&) -- malloc a 0xc-byte node and placement-copy the dword value at +0x8
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005F807C, oracle length 26 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push 0xc ; call malloc ; pop ecx ; lea ecx,[eax+0x8] ; test ecx,ecx ; je S ; mov edx,[esp+4] ; mov edx,[edx] ; mov [ecx],edx ; S: ret 4
-// Retail std::list node factory for a 4-byte scalar value: one malloc'd node (malloc @
-// 0x00BFEA0E) whose value at +0x8 is placement-copied (hence the null test on the value
-// address); the node (malloc's result, still in eax) is returned. `this` (the list) is unused.
-// One of 10 bodies of this shape.
-#include <new>
-extern "C" void* __cdecl malloc(unsigned int size);
-
-struct CRetailList_node0xc_dword {
-    struct SNode {
-        unsigned char _links[0x8];       // prev/next (and any further link) pointers
-        long m_value;                      // +0x8
-    };
-    SNode* Buynode(const long& value);
-};
-
-CRetailList_node0xc_dword::SNode* CRetailList_node0xc_dword::Buynode(const long& value)
-{
-    SNode* node = (SNode*)malloc(sizeof(SNode));
-    new (&node->m_value) long(value);
-    return node;
-}
+// std::list<EHeroAbility>::_M_create_node(const EHeroAbility&) -- STLport list node factory: allocate one 12-byte node (malloc) and
+//   copy-construct the ability value at +0x8 in place (the placement new's null test on the element address)
+// Leaf: ?_M_create_node@?$list@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@IAEPAU?$_List_node@W4EHeroAbility@@@2@ABW4EHeroAbility@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005F807C, 26 bytes, `ret 4`, size-optimised TU.
+// Name (NF239, 2026-11-22, CODEXP27 L40): the STLport 4.6 _list.h spelling the shared header produces (STL instances have no PDB
+//   names; the PDBs carry a Dinkumware list). T = EHeroAbility: its only caller is list<EHeroAbility>::insert(iterator, const T&)
+//   0x005F88C8 (the landed binder 0x005F1B10 CTCInventoryAbilities::ConstructPCMagicList binds that insert under the STLport spelling).
+//   Was the stand-in ?Buynode@CRetailList_node0xc_dword@@QAEPAUSNode@1@ABJ@Z (catalog CRetailList_node0xc_dword::Buynode), whose caller
+//   row bound ?AllocateInsertNode_005f88c8@@YGPAUInsertNode_005f88c8@@K@Z here.
+// Model: stlport/fable_containers.h (FABLE_RETAIL_STLP_LIST) and engine/EHeroAbility.h; the explicit instantiation emits the member as
+//   its own COMDAT (the 0x0042AB01 / 0x00429FBE pattern).
+#pragma optimize("s", on)
+#define FABLE_RETAIL_STLP_LIST
+#include "stlport/fable_containers.h"
+#include "engine/EHeroAbility.h"
+template std::_List_node<EHeroAbility>* std::list<EHeroAbility, std::allocator<EHeroAbility> >::_M_create_node(const EHeroAbility&);

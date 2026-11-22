@@ -117,7 +117,11 @@ public:
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     CIntelligentPointer<CThing> PSeat;              // +0x14
     bool MoveToSeat(long movementType);         // 0x009385F0
+    // Name fix (NF239, 2026-11-22, CODEXP27 L88): SitInSeat is protected in Ego_r + FableWin (?SitInSeat@CAIStateGroup_UsesSeat@@IAE_NXZ,
+    //   the self row 0x00938380's leaf); was public (QAE).
+protected:
     bool SitInSeat();                           // 0x00938380
+public:
     void GetUpFromSeat();                       // 0x00938A10
 };
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_UsesSeat {

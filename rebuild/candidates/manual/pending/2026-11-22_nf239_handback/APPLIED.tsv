@@ -1,0 +1,68 @@
+entry	address	status	binders_respelled	note
+L2 (land1122p27)	0x00666310	open: binder respell needs analysis	0	binders 0x006A9EF0 / 0x00833A70 bind QAE; MAE is protected virtual: a caller outside the hierarchy cannot spell it from a local model; 0x00666310 is a held-p27 witness (NF238). Not started
+L4 (land1122p27)	0x0074F4F0	open: family port	0	0x0074FCE0 FableVector_0074fce0 stand-in namespace (pair<long,CCharString> vector growth); self + binder move together. Not started
+L5 (land1122p27)	0x0074F530	open: family port	0	with L4
+L13 (land1122p27)	0x00429FBE	done	1	0x00429FBE + 0x0042AADC ported onto stlport/fable_containers.h; 0x00429FBE 2 -> 1, 0x0042AADC 2 -> 1
+L14 (land1122p27)	0x0042A141	done	1	0x0042A141 self ported; 0x0042AB1C binds the STLport clear: 3 -> 1
+L16 (land1122p27)	0x0042AB1C	done (count-reducing)	0	0x0042AB1C self ported: 3 -> 2; left 0x0053E860 (its own ??_G stand-in, NAME_FIXES)
+L17 (land1122p27)	0x0042ABAF	partial: self only (count-neutral)	0	self 0x0042ABAF -> ??0?$_List_base (3 -> 3); 10 ??0?$list binders + 0x005C3947 CComponentList stand-in: list<CComponent*> family pass (NOTES 3)
+L18 (land1122p27)	0x0042ABCA	partial: self only (count-neutral)	0	self 0x0042ABCA -> ??1?$_List_base (2 -> 2); 31 ~list binders: family pass (NOTES 3)
+L20 (land1122p27)	0x00437640	done	0	self 0x00437640 ported (new header NPlayerGui_CDrawProjectileTargetingCentre.h): 2 -> 1
+L21 (land1122p27)	0x00437650	done	0	self 0x00437650 ported (new header NPlayerGui_CDrawMeleeActionButtonEffects.h): 2 -> 1
+L22 (land1122p27)	0x00438A20	done-already	0	HEAD object of 0x00438A20 DEFs ?SetAbilityButton@CPlayerGui@@QAEXJJ@Z and 0x0064B1AC binds it (the row-local CPlayerGui model is HEAD debt)
+L23 (land1122p27)	0x00446B40	open: self port	0	0x00446B40 derives a local CGamePlayerInterface_Methods; the port needs the retail Controls map typed in engine/CGamePlayerInterface.h and CInputTypeBase slots 6 / 7
+L24 (land1122p27)	0x00446B90	open: self port	0	with L23 (0x00446B90)
+L27 (land1122p27)	0x00497B60	open: header opt-in	0	binder 0x00499A70 takes CProgressDisplay from fable_boot.h (public QAE): needs a fable_boot.h opt-in + the equivalence proof, or a port onto engine/CProgressDisplay.h
+L28 (land1122p27)	0x0049C490	open	0	binder 0x0063E480 defines a local non-template GetAllThingsInRoughArea<CThingFilter_All>; port needed
+L29 (land1122p27)	0x004A9710	open: virtual slot self row	0	no table spelling, no code binder; vtcheck not run
+L32 (land1122p27)	0x004D6915	open: virtual slot self row	0	as L29
+L34 (land1122p27)	0x004DDAB4	open: self port	0	0x004DDAB4 stand-in; binder 0x00802E00 already right
+L36 (land1122p27)	0x005348E0	open	0	binders 0x005518E0 / 0x00551BC0 bind ?Find@RetailUI@@ from a RetailUI namespace model; self 0x005348E0 stand-in
+L37 (land1122p27)	0x00535470	deferred: held-p27 witness 0x00A90AE0 (NF238) + 6 stand-in spellings	0	family
+L38 (land1122p27)	0x005C2DED	deferred: callee is a held p27 target	0	0x005C2DED / 0x005C2DF5 tail-jump to CTCCarrying::IsThingCarrying*Weapon 0x006A15A0 / 0x006A1620; 0x006A1620 is NF238 q12668 held line
+L39 (land1122p27)	0x005C2DF5	deferred: callee is a held p27 target	0	as L38
+L40 (land1122p27)	0x005F807C	done	1	0x005F807C + 0x005F88C8 ported; 0x005F807C 2 -> 1, 0x005F88C8 3 -> 2 (0x005F8F50 ListWrapper stand-in left)
+L45 (land1122p27)	0x00659625	done	1	0x0065C781 in-place private:; 0x00659625 2 -> 1
+L48 (land1122p27)	0x006D6110	done-already	0	HEAD self DEFs the claim; binder 0x00955620 binds it
+L50 (land1122p27)	0x006F8010	open: virtual slot self row	0	as L29
+L52 (land1122p27)	0x00726BE0	done	0	self 0x00726BE0 in-place private (AAE); binder 0x00726CE0 already AAE: 2 -> 1
+L57 (land1122p27)	0x00733EE0	open: one binder	0	6 binders right; 0x00899DB0 binds extern "C" @Sub_IsMeleeFlourishValid@4 (live, the table line is its witness): port onto engine/CTCCombat.h needed (NAME_FIXES)
+L61 (land1122p27)	0x007B2990	done	0	self 0x007B2990 ported onto engine/CTCGuard.h (+ header test): 2 -> 1
+L66 (land1122p27)	0x007F4B60	done-already	0	HEAD self DEFs the claim; binder 0x00802E00 binds it
+L71 (land1122p27)	0x008AA9B0	open: self port	0	0x008AA9B0 CCountedPointer stand-in pointee; binder 0x009392A0 already right
+L72 (land1122p27)	0x008B83E0	open: self port	0	0x008B83E0 stand-in; binder 0x0091C6A0 (held-p27 witness, NF238) already right
+L74 (land1122p27)	0x008CA600	open: self port	0	as L72 (0x008CA600)
+L83 (land1122p27)	0x008F69B0	open: self port	0	0x008F69B0 CSTLportVector stand-in; binder 0x008F61A0 right
+L86 (land1122p27)	0x0091C080	open: self port	0	0x0091C080 stand-in; binder 0x0091C6A0 right
+L88 (land1122p27)	0x00938380	done	2	0x0090FDB0 + 0x009387C0 in-place protected:; 0x00938380 2 -> 1
+L89 (land1122p27)	0x00947B70	open: self port	0	0x00947B70; binder 0x00948880 right
+L92 (land1122p27)	0x009535B0	open: self port	0	0x009535B0; binder 0x00951FB0 right
+L95 (land1122p27)	0x009539A0	open: virtual slot self row	0	as L29
+L96 (land1122p27)	0x00953A00	open: virtual slot self row	0	as L29
+L100 (land1122p27)	0x00956870	open: self port	0	0x00956870; binder 0x00955620 right
+L101 (land1122p27)	0x0096DBA0	open: virtual slot self row	0	as L29
+L102 (land1122p27)	0x0096DBB0	open: virtual slot self row	0	as L29
+L103 (land1122p27)	0x0096E3F0	open: virtual slot self row	0	as L29
+L104 (land1122p27)	0x0096E4A0	open: self port	0	0x0096E4A0; binder 0x0096DF50 (held-p27 witness) right
+L107 (land1122p27)	0x009CBA80	open: self port	0	0x009CBA80; binder 0x00B3BC90 right
+L108 (land1122p27)	0x009CBD30	open: self port	0	0x009CBD30; binder 0x009CEC60 right
+L109 (land1122p27)	0x009CBD50	open: self port	0	0x009CBD50; no binder
+L110 (land1122p27)	0x009CBD70	open: self port	0	0x009CBD70; no binder
+L111 (land1122p27)	0x009CEC60	open: binder port	0	0x00A427A0 calls the stand-in DoUpdate; needs CLipSyncDataBank.h FABLE_RETAIL_CLIPSYNCDATABANK_CLASS with Update declared (CBankFile::Update qualified call)
+L114 (land1122p27)	0x00A978C0	open	0	self 0x00A978C0 + binder 0x00A978A0 both stand-ins (CDeviceIndependent nested in N3DPrimitive::CAnimatedBlock: no header)
+L115 (land1122p27)	0x00AB15F0	open: self port	0	0x00AB15F0; binder 0x00AB1740 right
+L117 (land1122p27)	0x00B09D50	open: self port	0	0x00B09D50 (list<CSpriteTrailEntry> clear, the L14 recipe); binder 0x00B08530 right
+L118 (land1122p27)	0x00B209C0	open: virtual slot self row	0	as L29
+L119 (land1122p27)	0x00B3E1A0	open: catalog-only	0	not landed; 0x00B3E580 holds the stand-in deleter ?Destroy_00b3e1a0@@YIXPAX@Z
+L120 (land1122p27)	0x00B61DD0	open: family port	0	0x00B620A0 binds four CSkyRendererMethods stand-ins (BuildSky/BuildClouds/BuildBand/BuildSolidBaseBand = BuildOuterSkyMesh/BuildCloudMesh/BuildBaseBandMesh/BuildStarFieldVB, all private in Ego_r) and its own leaf is a stand-in; needs CEngineSkyRenderer.h opt-ins for three members; the four self rows carry wrong leaves too
+L122 (land1122p27)	0x00B975E0	done-already	0	HEAD self DEFs the claim; binder 0x00B97C10 binds it
+L126 (land1122p27)	0x0138CEC4	done-already	0	data, not landed; binder 0x00948880 binds the claim
+L127 (land1122p27)	0x0139AC60	done-already	0	data, not landed; binder 0x00B92950 binds the claim
+L128 (land1122p27)	0x0139AC64	done-already	0	as L127
+L129 (land1122p27)	0x01436EA8	open: family pass	0	91 referencing rows, about 15 spellings (4 bind the PDB GPLandscapeRenderer); not started
+L136 (land1122auth24)	0x0122DEE0	done (entry 2)	2	the only two g_fMinusOne users 0x00744500 / 0x00744540 now use the -1.0f literal; table line deleted
+L137 (land1122auth24)	0x0129BA3C	done-already	0	table holds only ?DELTA_NOTIONAL_ZERO@@3MB; the label fix is the coordinator's (ruling 5)
+entry 2	0x0122DEE0	done	2	see L136
+entry 3a	0x0049D800	open: header port	0	0x008EE720 binds the CEngineRandomOwner stand-in; engine/CWorld.h declares no GetLocalSeed and CMainGameComponent.h keeps PWorld opaque, and 0x008EE720 models CMainGameComponent / CMaterialDef locally: a CWorld.h opt-in + a full port (its siblings 0x008EE5A0 / 600 / 660 / 6C0 reach the PDB spelling only through local CWorld models)
+entry 3b	0x004AB490	done (count-reducing)	1	self -> ~_List_base<CThing*> + 0x004DE6ED: 3 -> 2; 0x004FE030 ??1CThingList@@ stand-in left (its local CThingList with auto_inline(off) out-of-line dtor needs a port)
+entry 3c	0x004046B0	open: family pass	0	about 70 referencing rows (list<CStringParserCommentBoundaries>); not started; the L18 recipe applies

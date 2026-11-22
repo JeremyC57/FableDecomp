@@ -303,3 +303,6 @@ date	account	item	kind	status	note
 2026-11-22	A	land1122p27 + land1122auth24 NAME_FIXES	naming	done	agent NF237 landed 8 rows (batches/2026-11-22_landing_nf237); 41 open + 22 deferred lines released for the next agent
 2026-11-22	A	NF237 open + deferred lines (63), 0x0122DEE0, 0x0049D800, 0x004046B0 / 0x004AB490	naming	claimed	agent NF239 beside NF238
 2026-11-22	A	q12668-q12671	naming	done	agent NF238 landed 9 rows (batches/2026-11-22_landing_nf238); q12672 / q12659 released (not started)
+2026-11-22	A	NF237 remaining lines	naming	done	agent NF239 landed 18 rows (batches/2026-11-22_landing_nf239); 0x0042ABAF / 0x0042ABCA held for NF241
+2026-11-22	A	q12673-q12676,q12659 + L38/L39	naming	claimed	agent NF240 (held p27 lines, CModeSitBench ctor, CEngine unit, CMainGameComponent)
+2026-11-22	A	NF239 open lines (42) + list<CComponent*> family + 0x004046B0 / 0x0049D800 / 0x01296F14	naming	claimed	agent NF241 beside NF240
