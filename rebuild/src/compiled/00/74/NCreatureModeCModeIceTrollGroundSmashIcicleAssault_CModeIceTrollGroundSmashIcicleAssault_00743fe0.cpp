@@ -12,111 +12,31 @@
 //   ??1CBaseIntelligentPointer@@UAE@XZ 0x00A01C10 (PTarget), ??1CModeStandBase@@UAE@XZ 0x0073D860 (tail; RTTI .?AVCModeStandBase@@, global, and both PDBs spell it so).
 // Shape: members in reverse order; the PDB ctor (body not graded) is defined so the vtable, ??_G (RELOCATION_MATCH vs 0x00743FC0)
 //   and this ??1 are emitted.
-// Layout: Ego_r.pdb members PTarget +0x68 .. ViablePoints +0x90 (STLport vectors 12 bytes), retail sizeof 0x9C; CModeStandBase is
-//   engine/CModeStandBase.h FABLE_RETAIL_CMODESTANDBASE (chunk 710). CAnimFilterBase slots from retail vtables 0x0122FFCC /
-//   0x01267568: operator() 0, Clone 1, ??_G 2 (chunk 710 had the dtor at slot 0). CTCCreatureModeManager here is the minimal
-//   declaration CModeStandBase.h needs (its members are opaque storage at their Ego_r offsets).
-extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
-#include "fable_string.h"
+// Layout (NF247, q12682 header port): Ego_r.pdb members PTarget +0x68 .. ViablePoints +0x90 (STLport vectors 12 bytes), retail sizeof 0x9C,
+//   on CTCCreatureModeManager.h (FABLE_RETAIL_CMODEBASE_VIRTUALS; it brings stlport/fable_containers.h for std::vector), CModeStandBase.h
+//   (FABLE_RETAIL_CMODESTANDBASE + PASS22_VTABLE), CAnimFilterBase.h / CAnimFilterOfGroup.h (INLINE_CTOR: the implicit, inline
+//   ~CAnimFilterOfGroup), CIntelligentPointer.h, CDefPointer.h, C3DVector.h. NCreatureMode::CModeIceTrollGroundSmashIcicleAssault has no header
+//   anywhere under rebuild/include: it stays this row's local class (HEAD token) on the shared CModeStandBase base.
+// Vtable 0x01268774 (NF247, q12682): slots 3 / 4 / 5 / 6 now bind the class's own overrides (retail 0x008DE7A0 / 0x00743CA0 / 0x008D7630 /
+//   0x008D9650; Ego_r.pdb / FableWin.pdb / Ego_d.pdb), not the CModeBase names.
 #define FABLE_RETAIL_CTCBASE
-#include "engine/CTCBase.h"
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
+#define FABLE_RETAIL_CMODESTANDBASE
+#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE                  // NF242 (q12677): CModeStandBase's slot 2 / 7 / 9 overrides (0x00862EC0 / 0x00861900 / 0x0073DA00)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCHARSTRING                            // GetAsCharArray / GetLength for the inline CAnimFilterOfGroup ctor
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR
 #define FABLE_RETAIL_DEF_CLASS_BASE
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
 #include "engine/CDefPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CModeStandBase.h"
+#include "engine/CAnimFilterOfGroup.h"
+#include "engine/CIntelligentPointer.h"
 
 class CThing;
-class CBaseObject;
-class CBaseObjectPointer;
-class CAnimateThing;
-class CAnimationEntry;
-enum EMovementType;
-
-#include "engine/C3DVector.h"
-
-namespace std {
-template <class _Tp> class allocator { public:
-    allocator() { }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:
-    _Value _M_data;
-    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first) _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base { public:
-    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
-    ~_Vector_base() { if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> { public:
-    typedef _Alloc allocator_type;
-    explicit vector(const allocator_type& __a = allocator_type()) : _Vector_base<_Tp, _Alloc>(__a) { }
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
-
-#pragma pack(push, 1)
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-#pragma pack(pop)
-
-class CAnimFilterBase {
-public:
-    CAnimFilterBase() { }
-    virtual bool operator()(const CAnimationEntry& anim) const = 0;   // slot 0
-    virtual CAnimFilterBase* Clone() const = 0;             // slot 1
-    virtual ~CAnimFilterBase() { }                          // slot 2
-};
-class CAnimFilterOfGroup : public CAnimFilterBase {
-public:
-    CAnimFilterOfGroup(const CCharString& group);
-    virtual bool operator()(const CAnimationEntry& anim) const;
-    virtual CAnimFilterBase* Clone() const;
-    CCharString   Group;                                    // +0x04
-    unsigned long GroupCRC;                                 // +0x08
-};
-
-class CTCCreatureModeManager : public CTCBase {      // vtable 0x01268854, sizeof 0x24
-public:
-    class CModeBase {
-    public:
-        CModeBase(CThing& thing);
-        virtual ~CModeBase();
-        virtual unsigned long GetType() const = 0;
-        virtual void AnimUpdate(CAnimateThing& animateThing);
-        virtual void FrameUpdate();
-        virtual const CAnimFilterBase& GetAnimFilter() const;
-        virtual void OnActivate();
-        virtual void OnDeactivate();
-        virtual float GetMovementSpeed(const C3DVector& from, const C3DVector& to, EMovementType type) const;
-        virtual bool IsIdleMode() const;
-        virtual bool IsAllowingPlayerSpecialMovementMoves() const;
-        virtual bool IsHoldWeaponWithBothHands() const;
-        virtual bool IsRemoveOnDeactivate() const;
-        // NF242 (q12677): slots 9 / 11 in retail order (vtable 0x012673CC; CModeStandBase 0x0073DA00 and CModeCarryingWeaponStand 0x008E35F0 override slot 9)
-        CThing*            ParentThing;                     // +0x04
-        CAnimFilterOfGroup WeaponBasedFilter;               // +0x08
-        long               FramesBeforeRemovingSelf;        // +0x14
-        bool               Active;                          // +0x18
-    };
-    CTCCreatureModeManager(CThing& thing);
-    virtual ~CTCCreatureModeManager();                      // 0x0073AEA0
-    unsigned char PModes_[0x4];                             // std::list<CCountedPointer<CModeBase> > PModes +0x0c
-    long          TimeLeftForCurrentMode;
-    long          TimeForNextIdleMode;
-    unsigned char AvailableIdleModes_[0xc];                 // std::vector<NCreatureMode::EMode> AvailableIdleModes +0x18
-};
-
-#define FABLE_RETAIL_CMODESTANDBASE
-#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE                  // NF242 (q12677): CModeStandBase's slot 2 / 7 / 9 overrides (0x00862EC0 / 0x00861900 / 0x0073DA00), as 0x00743600 / 0x008E3A20
-#include "engine/CModeStandBase.h"
-
 class CSnowTrollDef;
 namespace NCreatureMode {
 class CModeIceTrollGroundSmashIcicleAssault : public CModeStandBase {
@@ -132,10 +52,14 @@ public:
     };
     CModeIceTrollGroundSmashIcicleAssault(CThing& thing);
     virtual unsigned long GetType() const;
-    // NF242 (q12677): the class's own overrides at slots 2 / 11 of its vtable 0x01268774 (retail 0x008D6850 / 0x00743CB0), Ego_r.pdb /
-    // FableWin.pdb / Ego_d.pdb ?AnimUpdate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXAAVCAnimateThing@@@Z and
-    // ?IsRemoveOnDeactivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UBE_NXZ (0x00743CB0 `mov al,1 ; ret`). Declarations only.
+    // NF242 (q12677) slots 2 / 11 (retail 0x008D6850 / 0x00743CB0) and NF247 (q12682) slots 3-6 (retail 0x008DE7A0 / 0x00743CA0 / 0x008D7630 /
+    // 0x008D9650): the class's own overrides of vtable 0x01268774, each spelled ?<name>@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@ in
+    // Ego_r.pdb / FableWin.pdb / Ego_d.pdb. Declarations only.
     virtual void AnimUpdate(CAnimateThing& animateThing);
+    virtual void FrameUpdate();
+    virtual const CAnimFilterBase& GetAnimFilter() const;
+    virtual void OnActivate();
+    virtual void OnDeactivate();
     virtual bool IsRemoveOnDeactivate() const;
     CIntelligentPointer<CThing>        PTarget;             // +0x68
     CAnimFilterOfGroup                 Filter;              // +0x70

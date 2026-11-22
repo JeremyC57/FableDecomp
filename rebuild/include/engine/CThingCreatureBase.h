@@ -479,6 +479,15 @@ public:
     bool HasAnim(const CCharString& name, const class CAnimFilterBase& filter) const;                                           // 0x00662C70
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHERANGEDWEAPON
+    // NF247 opt-in (q12679, row 0x00664A10): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ (public,
+    // the row's own leaf) and UnsheatheWeapon (out of line in retail at 0x006648D0, `push 1 ; push <def> ; mov ecx,esi ; call`). The three
+    // PDBs make UnsheatheWeapon protected (?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z), but its landed self row and every landed binder
+    // (0x006649C0, 0x00664A50) spell QAE: it is declared public here so the address keeps one spelling; the IAE move is a family item
+    // (NF247 NAME_FIXES). Declarations only: no layout change.
+    void UnsheatheRangedWeapon();                                                                                                // 0x00664A10
+    void UnsheatheWeapon(long weapon_def, bool primary);                                                                         // 0x006648D0
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHANDEDNESS
     // Retail opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb
     // ?SetLastActionHandedness@CThingCreatureBase@@QAEXW4ECombatAnimationHandedness@@@Z (public, out of line in retail at 0x006619F0,

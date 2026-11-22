@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00741390   RELOCATION_MATCH PASS   ~CModeScreamerAggressive
+00743fe0   RELOCATION_MATCH PASS   ~CModeIceTrollGroundSmashIcicleAssault
+008ac4d0   RELOCATION_MATCH PASS   ~CModeScreamerSuperAttack
+00740420   RELOCATION_MATCH PASS   ~CModeJackOfBladesFloat
+008e31a0   RELOCATION_MATCH PASS   ~CModeDragonHover
+008ac3f0   RELOCATION_MATCH PASS   CModeScreamerSuperAttack
+00664a10   RELOCATION_MATCH PASS   UnsheatheRangedWeapon
+
+WINS: 7
+  00741390 RELOCATION_MATCH NCreatureMode::CModeScreamerAggressive::??1CModeScreamerAggressive@NCreatureMode@@UAE@XZ
+  00743fe0 RELOCATION_MATCH NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::??1CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAE@XZ
+  008ac4d0 RELOCATION_MATCH NCreatureMode::CModeScreamerSuperAttack::??1CModeScreamerSuperAttack@NCreatureMode@@UAE@XZ
+  00740420 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFloat::??1CModeJackOfBladesFloat@NCreatureMode@@UAE@XZ
+  008e31a0 RELOCATION_MATCH NCreatureMode::CModeDragonHover::??1CModeDragonHover@NCreatureMode@@UAE@XZ
+  008ac3f0 RELOCATION_MATCH NCreatureMode::CModeScreamerSuperAttack::??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z
+  00664a10 RELOCATION_MATCH CThingCreatureBase::?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ
+EXIT 0

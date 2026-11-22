@@ -14,86 +14,26 @@
 // Shape: members destroyed in reverse declaration order; the implicit ~CAnimFilterOfGroup and the inline `virtual ~CAnimFilterBase() {}`
 //   expand here. Defining retail's own constructor (??0CModeScreamerSuperAttack@NCreatureMode@@QAE@AAVCThing@@ABV2@@Z (CThing&, const CThing&); body not reconstructed here, only its
 //   member-init order) emits the vtable, hence ??_G and this out-of-line ??1 -- no emission helper.
-// Layout: engine/CModeStandBase.h retail opt-in (hdr/ overlay, chunk 710); CModeBase / CTCCreatureModeManager / CAnimFilter* /
-//   CIntelligentPointer have no shared header (local models; CTCCreatureModeManager's STL members as opaque storage at their offsets).
-#include "fable_string.h"                                   // CCharString (~CCharString 0x0099EAE0)
+// Layout (NF247, q12682 header port): engine/NCreatureMode_CModeScreamerSuperAttack.h (Ego_r.pdb layout; FrameUpdate / OnActivate / OnDeactivate,
+//   plus the NF247 opt-ins _IMPLICIT_DTOR (no user-declared destructor, as retail) and _GETANIMFILTER (slot 4)), on CTCCreatureModeManager.h
+//   (FABLE_RETAIL_CMODEBASE_VIRTUALS), CModeStandBase.h (FABLE_RETAIL_CMODESTANDBASE + PASS22_VTABLE), CAnimFilterBase.h /
+//   CAnimFilterOfGroup.h (INLINE_CTOR: the implicit, inline ~CAnimFilterOfGroup) and CIntelligentPointer.h.
+// Vtable 0x01278338 (NF247, q12682): slots 3 / 4 / 5 / 6 now bind the class's own overrides (retail 0x008E16A0 / 0x008AC4A0 / 0x008D8330 /
+//   0x008D79A0; Ego_r.pdb / FableWin.pdb / Ego_d.pdb), not the CModeBase names.
 #define FABLE_RETAIL_CTCBASE
-#include "engine/CTCBase.h"                                 // CTCBase : CBaseClassNonCopyable (retail opt-in)
-
-class CThing;
-class CBaseObject;
-class CBaseObjectPointer;
-class CAnimateThing;
-class CAnimationEntry;
-class C3DVector;
-enum EMovementType;                                         // MS forward enum (no enumerator used here)
-
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-
-class CAnimFilterBase {                                     // vtable 0x0122FFCC (RTTI, no base)
-public:
-    CAnimFilterBase() { }                                   // ??0CAnimFilterBase@@QAE@XZ
-    virtual ~CAnimFilterBase() { }                          // inline: its vtable store survives in every implicit owner dtor
-    virtual bool operator()(const CAnimationEntry& anim) const = 0;   // slot 1
-    virtual CAnimFilterBase* Clone() const = 0;             // slot 2
-};
-
-class CAnimFilterOfGroup : public CAnimFilterBase {         // vtable 0x01267568 (RTTI : CAnimFilterBase); Ego_r 12 bytes
-public:
-    CAnimFilterOfGroup(const CCharString& group);           // ??0CAnimFilterOfGroup@@QAE@ABVCCharString@@@Z
-    virtual bool operator()(const CAnimationEntry& anim) const;       // 0x0073E9A0
-    virtual CAnimFilterBase* Clone() const;                 // 0x0073E970
-    CCharString   Group;                                    // +0x04
-    unsigned long GroupCRC;                                 // +0x08
-};
-
-class CTCCreatureModeManager : public CTCBase {             // vtable 0x01268854; new(0x24) in Alloc 0x004D3547
-public:
-    class CModeBase {                                       // vtable 0x012673CC (12 slots; RTTI no base)
-    public:
-        CModeBase(CThing& thing);                           // 0x0073EAC0 ??0CModeBase@CTCCreatureModeManager@@QAE@AAVCThing@@@Z
-        virtual ~CModeBase();                               // slot 0
-        virtual unsigned long GetType() const = 0;          // slot 1 (_purecall)
-        virtual void AnimUpdate(CAnimateThing& animateThing);   // slot 2 0x00739E40
-        virtual void FrameUpdate();                         // slot 3 0x0073AC50
-        virtual const CAnimFilterBase& GetAnimFilter() const;   // slot 4 0x00739E50
-        virtual void OnActivate();                          // slot 5 0x0073AAC0
-        virtual void OnDeactivate();                        // slot 6 0x00739E60 (Active = false)
-        virtual float GetMovementSpeed(const C3DVector& from, const C3DVector& to, EMovementType type) const;   // slot 7 0x00739E70
-        virtual bool IsIdleMode() const;                    // slot 8 0x00739E80
-        virtual bool IsAllowingPlayerSpecialMovementMoves() const;   // slot 9 0x00739E90
-        virtual bool IsHoldWeaponWithBothHands() const;     // slot 10 0x0073A9F0
-        virtual bool IsRemoveOnDeactivate() const;          // slot 11 0x00739EA0
-        // NF242 (q12677): slots 9 / 11 in retail order (vtable 0x012673CC; CModeStandBase 0x0073DA00 and CModeCarryingWeaponStand 0x008E35F0 override slot 9)
-        CThing*            ParentThing;                     // +0x04
-        CAnimFilterOfGroup WeaponBasedFilter;               // +0x08
-        long               FramesBeforeRemovingSelf;        // +0x14
-        bool               Active;                          // +0x18
-    };
-    unsigned char PModes_[0x4];                             // std::list<CCountedPointer<CModeBase> > PModes +0x0C
-    long          TimeLeftForCurrentMode;                   // +0x10
-    long          TimeForNextIdleMode;                      // +0x14
-    unsigned char AvailableIdleModes_[0xc];                 // std::vector<NCreatureMode::EMode> AvailableIdleModes +0x18
-};
-
+#define FABLE_RETAIL_CMODEBASE_VIRTUALS
 #define FABLE_RETAIL_CMODESTANDBASE
-#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE                  // NF242 (q12677): CModeStandBase's slot 2 / 7 / 9 overrides (0x00862EC0 / 0x00861900 / 0x0073DA00), as 0x00743600 / 0x008E3A20
-#include "engine/CModeStandBase.h"                          // CModeStandBase : CModeBase (retail opt-in, hdr/ overlay chunk 710)
+#define FABLE_RETAIL_CMODESTANDBASE_PASS22_VTABLE                  // NF242 (q12677): CModeStandBase's slot 2 / 7 / 9 overrides (0x00862EC0 / 0x00861900 / 0x0073DA00)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCHARSTRING                            // GetAsCharArray / GetLength for the inline CAnimFilterOfGroup ctor
+#define FABLE_RETAIL_CANIMFILTEROFGROUP_INLINE_CTOR
+#define FABLE_RETAIL_NCREATUREMODE_CMODESCREAMERSUPERATTACK_IMPLICIT_DTOR
+#define FABLE_RETAIL_NCREATUREMODE_CMODESCREAMERSUPERATTACK_GETANIMFILTER
+#include "fable_string.h"                                   // CCharString (~CCharString 0x0099EAE0)
+#include "engine/ETCInterfaceType.h"
+#include "engine/NCreatureMode_CModeScreamerSuperAttack.h"
 
-namespace NCreatureMode {
-class CModeScreamerSuperAttack : public CModeStandBase {                         // vtable 0x01278338
-public:
-    CModeScreamerSuperAttack(CThing& thing, const CThing& target);
-    virtual unsigned long GetType() const;
-    CAnimFilterOfGroup                  Filter;                     // +0x68
-    CIntelligentPointer<const CThing>  PTarget;               // +0x74
-    CIntelligentPointer<CThing>        PLightningBeamParticleEmitter; // +0x7C
-};
-FABLE_STATIC_ASSERT(sizeof(CModeScreamerSuperAttack) == 0x84);
-
-CModeScreamerSuperAttack::CModeScreamerSuperAttack(CThing& thing, const CThing& target)
+NCreatureMode::CModeScreamerSuperAttack::CModeScreamerSuperAttack(CThing& thing, const CThing& target)
     : CModeStandBase(thing), Filter(CCharString())
 {
-}
 }

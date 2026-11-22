@@ -1,0 +1,31 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2 (vtable-slot binders: caller row, old symbol, new symbol, callee address; the ??_7 COMDAT each caller row emits)
+0x00740420	?GetAnimFilter@CModeBase@CTCCreatureModeManager@@UBEABVCAnimFilterBase@@XZ	?GetAnimFilter@CModeJackOfBladesFloat@NCreatureMode@@UBEABVCAnimFilterBase@@XZ	0x007403F0
+0x00740420	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnActivate@CModeJackOfBladesFloat@NCreatureMode@@UAEXXZ	0x008D9740
+0x00740420	?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnDeactivate@CModeJackOfBladesFloat@NCreatureMode@@UAEXXZ	0x008D7730
+0x00741390	?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?FrameUpdate@CModeScreamerAggressive@NCreatureMode@@UAEXXZ	0x008DA610
+0x00741390	?GetAnimFilter@CModeBase@CTCCreatureModeManager@@UBEABVCAnimFilterBase@@XZ	?GetAnimFilter@CModeScreamerAggressive@NCreatureMode@@UBEABVCAnimFilterBase@@XZ	0x00741360
+0x00741390	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnActivate@CModeScreamerAggressive@NCreatureMode@@UAEXXZ	0x008DA410
+0x00741390	?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnDeactivate@CModeScreamerAggressive@NCreatureMode@@UAEXXZ	0x008DA690
+0x00743FE0	?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?FrameUpdate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXXZ	0x008DE7A0
+0x00743FE0	?GetAnimFilter@CModeBase@CTCCreatureModeManager@@UBEABVCAnimFilterBase@@XZ	?GetAnimFilter@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UBEABVCAnimFilterBase@@XZ	0x00743CA0
+0x00743FE0	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnActivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXXZ	0x008D7630
+0x00743FE0	?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnDeactivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXXZ	0x008D9650
+0x008AC3F0	?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	0x00862EC0
+0x008AC3F0	?OnActivate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	0x008E16A0
+0x008AC3F0	?OnDeactivate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	?GetAnimFilter@CModeScreamerSuperAttack@NCreatureMode@@UBEABVCAnimFilterBase@@XZ	0x008AC4A0
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?OnActivate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	0x008D8330
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?OnDeactivate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	0x008D79A0
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z	0x00861900
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?IsIdleMode@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739E80
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ	0x0073DA00
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?IsHoldWeaponWithBothHands@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x0073A9F0
+0x008AC3F0	(none: slot added; HEAD vtable had 5 slots)	?IsRemoveOnDeactivate@CModeBase@CTCCreatureModeManager@@UBE_NXZ	0x00739EA0
+0x008AC4D0	?FrameUpdate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?FrameUpdate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	0x008E16A0
+0x008AC4D0	?GetAnimFilter@CModeBase@CTCCreatureModeManager@@UBEABVCAnimFilterBase@@XZ	?GetAnimFilter@CModeScreamerSuperAttack@NCreatureMode@@UBEABVCAnimFilterBase@@XZ	0x008AC4A0
+0x008AC4D0	?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnActivate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	0x008D8330
+0x008AC4D0	?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnDeactivate@CModeScreamerSuperAttack@NCreatureMode@@UAEXXZ	0x008D79A0
+0x008E31A0	?FrameUpdate@CModeDragonHover@NCreatureMode@@UAEXXZ	?FrameUpdate@CModeDragonFireBeam@NCreatureMode@@UAEXXZ	0x008E0780
+0x008E31A0	?OnActivate@CModeDragonHover@NCreatureMode@@UAEXXZ	?OnActivate@CModeDragonFireBeam@NCreatureMode@@UAEXXZ	0x008D6A50
+0x008E31A0	?OnDeactivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	?OnDeactivate@CModeDragonFireBeam@NCreatureMode@@UAEXXZ	0x008DBB00
+0x00664A10	?IsThingCarryingRangedWeapon@@YI_NABVCThingCreatureBase@@@Z	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A1620

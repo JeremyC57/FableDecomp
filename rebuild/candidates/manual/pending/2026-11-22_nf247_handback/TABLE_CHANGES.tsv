@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	?IsThingCarryingRangedWeapon@@YI_NABVCThingCreatureBase@@@Z	006a1620	00664a10	q12679: the witness now binds ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z (line already present, witness 0x0091EC30); 0x006A1620 table lines 4 -> 3
+# kept: ??_7CModeScreamerSuperAttack@NCreatureMode@@6B@ 01278338 (witness 0x008AC3F0, still emitted, now 12 slots) and ??1?$vector@VCIcicleData@...@@QAE@XZ 00743a90 (witness 0x00743FE0, the same symbol, EQ copy); q12682 moves no other table line

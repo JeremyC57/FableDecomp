@@ -15452,7 +15452,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CThingBodyReorienter@@QAE@PAVCThingCreatureBase@@@Z	00863750	00663490
 ?GetAnimFromName@CThingPlayerCreature@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	00662a00	006635d0
 ?IsThingCarryingMeleeWeapon@@YI_NABVCThingCreatureBase@@@Z	006a15a0	006649c0
-?IsThingCarryingRangedWeapon@@YI_NABVCThingCreatureBase@@@Z	006a1620	00664a10
 ??$GetDef@VCHeroAbilityDef@@@CDefinitionManager@@QAE_NJPAV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@Z	0043ffa0	00665510
 ?GetPCombatTypeDef@CThingCreatureBase@@QBE?AV?$CDefPointer@VCCombatTypeDef@@@@XZ	00664d40	00667c00
 ?GetPointIntersectionFromTo@CPhysicsMeshObject@@QAE_NABVC3DVector@@0PAVCMeshIntersectionData@@@Z	00a12450	00668ab0
