@@ -1,0 +1,9 @@
+== A: HEAD emitters only
+duplicates 0
+
+UNRESOLVED 2 ?GetInputs@CMainGameComponent@@MAEXXZ
+== B: HEAD emitters + the four new rows
+duplicates 0
+
+UNRESOLVED 1 ?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z
+RUN4_DONE

@@ -20,13 +20,19 @@ public:
     // CInputEventPackage(CAFile&) at 0x009F5690 (chunk Q8).
     CChecksum() : Checksum1(0), Checksum2(0), Checksum3(0), Checksum4(0) { }
 #endif
+#ifdef FABLE_RETAIL_CCHECKSUM_CTOR_THREE
+    // NF280 opt-in (row 0x00416E78 CMainGameComponent::GetInputs): FableWin.pdb ??0CChecksum@@QAE@JJJ@Z, inline in retail: GetInputs
+    // builds the record in place (0x00416F72 `and [ebp-34h],0` = Checksum4, then Checksum1 0x00416F76, Checksum2 0x00416F80 and
+    // Checksum3 0x00416F83 from the three arguments). Parameter names descriptive. No layout change.
+    CChecksum(long checksum1, long checksum2, long checksum3) : Checksum1(checksum1), Checksum2(checksum2), Checksum3(checksum3), Checksum4(0) { }
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CChecksum) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CChecksum, Checksum1) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CChecksum, Checksum2) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CChecksum, Checksum3) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CChecksum, Checksum4) == 0xc);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CChecksum) == 0x10);
+FABLE_STATIC_ASSERT_AT(27, offsetof(CChecksum, Checksum1) == 0x0);
+FABLE_STATIC_ASSERT_AT(28, offsetof(CChecksum, Checksum2) == 0x4);
+FABLE_STATIC_ASSERT_AT(29, offsetof(CChecksum, Checksum3) == 0x8);
+FABLE_STATIC_ASSERT_AT(30, offsetof(CChecksum, Checksum4) == 0xc);
 
 #endif // FABLE_ENGINE_CCHECKSUM_H

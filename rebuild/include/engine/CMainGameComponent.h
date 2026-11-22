@@ -57,6 +57,9 @@ class CMainGameComponentInit;
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
 class CGameEvent;
 #endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PROCESSEVENT
+class CGameEvent;                                   // NF280 opt-in below
+#endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_UPDATE
 #include "engine/CGameEventPackageSet.h"
 #endif
@@ -412,6 +415,14 @@ protected:
     long GetFrameDifferenceFromCurrent(long frame) const;          // 0x004167A7
 public:
 #endif
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_PROCESSEVENT
+    // NF280 opt-in (row 0x00416E78 GetInputs): Ego_r.pdb 0x00415194 / FableWin.pdb 0x018A872E
+    // ?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z (protected), out of line in retail at 0x00415FE0 (called from GetInputs
+    // 0x00416FED and ProcessEventPackage 0x00416691). Declaration only.
+protected:
+    void ProcessEvent(const CGameEvent* event);                    // 0x00415FE0
+public:
 #endif
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     virtual ~CMainGameComponent();

@@ -1,19 +1,20 @@
 #pragma optimize("s",on)
-// Dispatch one event kind to a virtual (vtable slot 4). The `dec eax; dec eax` is the
-// switch lowering VC7.1 uses for a single-case switch. __fastcall this=ecx (ret 4).
-struct Event { int type; };
-struct T {
-    virtual void v0();
-    virtual void v1();
-    virtual void v2();
-    virtual void v3();
-    virtual void OnQuit();      // slot 4 -> call [eax+0x10]
-    void ProcessEvent(Event* e);
-};
-void T::ProcessEvent(Event* e) {
-    switch (e->type) {
+// CMainGameComponent::ProcessEvent(const CGameEvent* event) -- dispatch a system event: event type 2 calls the component's own SetQuit (vtable slot 4)
+// Leaf: ?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z
+// Retail: Fable.exe @ 0x00415FE0, 18 bytes, `ret 4`; the single-case switch lowers to `dec eax ; dec eax ; jne` (VC7.1).
+// Name: Ego_r.pdb 0x00415194 / FableWin.pdb 0x018A872E ?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z (protected); callers
+//   GetInputs 0x00416FED and ProcessEventPackage 0x00416691 bind this spelling. Was the stand-in ?ProcessEvent@T@@QAEXPAUEvent@@@Z.
+// Layout: engine/CMainGameComponent.h (FABLE_RETAIL_CMAINGAMECOMPONENT_PROCESSEVENT, NF280; SetQuit is CGameComponent's slot 4 virtual,
+//   `call [eax+10h]`), engine/CGameEvent.h (Type +0x00).
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_PROCESSEVENT
+#include "engine/CMainGameComponent.h"
+#include "engine/CGameEvent.h"
+
+void CMainGameComponent::ProcessEvent(const CGameEvent* event)
+{
+    switch (event->Type) {
     case 2:
-        this->OnQuit();
+        SetQuit();
         break;
     }
 }

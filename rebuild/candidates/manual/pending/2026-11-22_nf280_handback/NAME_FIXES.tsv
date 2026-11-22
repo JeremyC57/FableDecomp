@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x013B8388	?GPInputManager@@3PAVCInputManager@@A	Ego_r.pdb and FableWin.pdb publics both spell GPInputManager (raw grep: 1 hit each, no PInputManager); 34 landed rows bind GP	?PInputManager@@3PAVCInputManager@@A (engine/CInputManager.h FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE extern; table witness 0042ec7c): a data-name split, not changed here (header line + its users)

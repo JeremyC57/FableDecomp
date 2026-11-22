@@ -30581,9 +30581,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004457f0'
-        Module = '_global'
-        Source = '00/44/CXMVPlaybackInfo_CXMVPlaybackInfo_004457f0.cpp'
-        TestSource = '00/44/CXMVPlaybackInfo_CXMVPlaybackInfo_004457f0_test.cpp'
+        Module = 'CGamePlayerInterface'
+        Source = '00/44/CGamePlayerInterface_Update_004457f0.cpp'
+        TestSource = '00/44/CGamePlayerInterface_Update_004457f0_test.cpp'
         PassPattern = 'OK_0x004457f0'
     }
     [pscustomobject]@{

@@ -37946,10 +37946,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ	009f2f60	004163b7
 ?PostChangeResolution@CMainGameComponent@@QAEXKKK@Z	00416365	004163b7
 ?SetExclusiveMode@CSystemManager@@QAE_N_N@Z	009a59a0	004163b7
-?BeginEventPoll@CGamePlayerInterface@@QAEXXZ	004457f0	00416e78
-?EventIsSystemEvent@CMainGameComponent@@QAE_NPBVCGameEvent@@@Z	00415ff2	00416e78
-?ProcessEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z	00415fe0	00416e78
-?UpdateChecksum@CInputManager@@QAEXJPAVCChecksum@@@Z	009f4a90	00416e78
 ?Copy@CGameEventData@@QAEXJPBX@Z	009f1760	005eadc0
 ?g_bTavernSkipYesNo@@3_NA	013bae1c	005eadc0
 ?g_pSubtitleOwner@@3PAUCSubtitleOwner@@A	013b8790	005eadc0
@@ -39549,3 +39545,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z	00b677a0	00be6090
 ?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9ca0	00bfaae0
 ?DeleteForegroundVertexBuffer@CLandscapeLayerMesh@@QAEXXZ	00bfdd40	00bf38f0
+?Update@CGamePlayerInterface@@QAEXXZ	004457f0	00416e78
+?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z	009f4a90	00416e78

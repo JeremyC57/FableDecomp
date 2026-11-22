@@ -1,0 +1,31 @@
+pH 00416e78 CMainGameComponent::GetInputs RELOCATION_MATCH flags= ['/GS'] leaf=GetInputs
+pS 00416e78 CMainGameComponent::GetInputs RELOCATION_MATCH flags= ['/GS'] leaf=?GetInputs@CMainGameComponent@@MAEXXZ
+--- reloc (target symbol count) HEAD(<) new(>)
+< 00415fe0	?ProcessEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z	x1
+< 00415ff2	?EventIsSystemEvent@CMainGameComponent@@QAE_NPBVCGameEvent@@@Z	x1
+> 00415fe0	?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z	x1
+> 00415ff2	?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z	x1
+< 004457f0	?BeginEventPoll@CGamePlayerInterface@@QAEXXZ	x1
+> 004457f0	?Update@CGamePlayerInterface@@QAEXXZ	x1
+< 009f4a90	?UpdateChecksum@CInputManager@@QAEXJPAVCChecksum@@@Z	x1
+> 009f4a90	?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z	x1
+--- symbols HEAD(<) new(>)
+< DEF ??0CChecksum@@QAE@KKJ@Z
+> DEF ??0CChecksum@@QAE@JJJ@Z
+< DEF ?GetInputs@CMainGameComponent@@QAEXXZ
+< DEF ?GetPlayerInterface@CMainGameComponent@@QBEPAVCGamePlayerInterface@@XZ
+> DEF ??C?$scoped_ptr@VCGamePlayerInterface@@@boost@@QBEPAVCGamePlayerInterface@@XZ
+> DEF ??C?$scoped_ptr@VCWorld@@@boost@@QBEPAVCWorld@@XZ
+> DEF ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
+> DEF ?GetInputs@CMainGameComponent@@MAEXXZ
+> DEF ?PeekWorldPos@CCamera@@QBEABVC3DVector@@XZ
+> DEF ?PeekWorldSeed@CMainGameComponent@@QBEKXZ
+< UND ?BeginEventPoll@CGamePlayerInterface@@QAEXXZ
+< UND ?EventIsSystemEvent@CMainGameComponent@@QAE_NPBVCGameEvent@@@Z
+> UND ?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z
+< UND ?ProcessEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z
+< UND ?UpdateChecksum@CInputManager@@QAEXJPAVCChecksum@@@Z
+> UND ?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z
+> UND ?Update@CGamePlayerInterface@@QAEXXZ
+> UND ?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z
+RUN2_DONE

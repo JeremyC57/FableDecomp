@@ -16,6 +16,9 @@
 #include "stlport/fable_containers.h"
 #endif
 class CInputEvent; class CInputEventScanInfo;
+#ifdef FABLE_RETAIL_CINPUTMANAGER_UPDATECHECKSUM
+class CChecksum;                                                         // NF280 opt-in below
+#endif
 #ifdef FABLE_RETAIL_CINPUTMANAGER_JOYSTICKQUEUE
 #include "engine/CInputEvent.h"
 #endif
@@ -42,6 +45,12 @@ public:
     // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): Ego_r.pdb / FableWin.pdb
     // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
     void EventScanEnd(CInputEventScanInfo&) const;                       // 0x009F4AC0
+#endif
+#ifdef FABLE_RETAIL_CINPUTMANAGER_UPDATECHECKSUM
+    // NF280 opt-in (row 0x00416E78 CMainGameComponent::GetInputs): Ego_r.pdb / FableWin.pdb
+    // ?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z, out of line in retail at 0x009F4A90 (the self row's spelling; GetInputs
+    // pushes the record's address, 0x00416F79 `lea eax,[ebp-40h] ; push eax`). Declaration only.
+    void UpdateChecksum(long time_stamp, const CChecksum& checksum);    // 0x009F4A90
 #endif
 #if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CINPUTMANAGER_JOYSTICKS)
 protected:

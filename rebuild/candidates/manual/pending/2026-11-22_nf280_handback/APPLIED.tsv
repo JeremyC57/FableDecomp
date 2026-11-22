@@ -1,0 +1,4 @@
+entry	address	status	binders_respelled	note
+1 (0x00416E78 GetInputs, nf278 ruling 2)	0x00416E78 (+ self rows 0x004457F0 0x00415FE0 0x00415FF2)	done: 0x00416E78 2 -> 1, 0x00415FE0 3 -> 1, 0x00415FF2 3 -> 1, 0x004457F0 2 -> 1, 0x009F4A90 2 -> 1 spellings	4 (0x00416E78's four callee bindings, RENAMES section 2)	3 add-only header opt-ins; see NOTES entry 1
+2 (_M_erase split at 0x004507A1, nf278 ruling 3 option b)	0x00ADC190 0x00ADC250 0x00ADC4E0 0x00ADCB90	open (not started: context)	0	-
+3 (0x00ADCE60 onto CVertexGroupBlock.h)	0x00ADCE60	open (not started)	0	-

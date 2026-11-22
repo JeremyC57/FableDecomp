@@ -1,0 +1,11 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00416E78	CMainGameComponent	GetInputs	?GetInputs@CMainGameComponent@@MAEXXZ	CMainGameComponent::GetInputs	?GetInputs@CMainGameComponent@@QAEXXZ	Ego_r.pdb 0x00416188 + FableWin.pdb 0x018A6CB0 (protected virtual); retail vtable 0x0122F180 slot 6; both vtable emitters 0x00418DCA / 0x00418B7A bind MAE (link: unresolved with the HEAD self, resolved with the new one)
+0x004457F0	CGamePlayerInterface	Update	?Update@CGamePlayerInterface@@QAEXXZ	_global::SetMemberConst_004457f0	?CXMVPlaybackInfo@@YIXPAUCXMVPlaybackInfoObj@@@Z	(catalog Module _global, file CXMVPlaybackInfo_CXMVPlaybackInfo_004457f0.cpp) Ego_r.pdb + FableWin.pdb ?Update@CGamePlayerInterface@@QAEXXZ; Ego_r donor order Update 0x00442C50 / GetButtonPressureForEvent 0x00442C60 / GetMouseMovement 0x00442D40 = retail 0x004457F0 / 0x00445800 / 0x004458F0; FableWin /Od body 21 bytes (one byte store through this); body clears HasCalledInputUpdateThisFrame +0x894 (Ego_r member, engine/CGamePlayerInterface.h); only caller GetInputs 0x00416FB3 (once per frame before GetGameEvent)
+0x00415FE0	CMainGameComponent	ProcessEvent	?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z	CMainGameComponent::ProcessEvent	?ProcessEvent@T@@QAEXPAUEvent@@@Z	Ego_r.pdb 0x00415194 + FableWin.pdb 0x018A872E (protected); binders 0x00416670 and 0x00416E78 bind it (IAE)
+0x00415FF2	CMainGameComponent	EventIsSystemEvent	?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z	CMainGameComponent::EventIsSystemEvent	?IsSystemEvent@T@@QAE_NPBUEvent@@@Z	Ego_r.pdb 0x004151A6 + FableWin.pdb 0x018A8762 (protected); engine/CMainGameComponent.h EVENTISSYSTEMEVENT; binders 0x0041649C and 0x00416E78 bind it (IAE)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00416E78	?ProcessEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z	?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z	0x00415FE0
+0x00416E78	?EventIsSystemEvent@CMainGameComponent@@QAE_NPBVCGameEvent@@@Z	?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z	0x00415FF2
+0x00416E78	?BeginEventPoll@CGamePlayerInterface@@QAEXXZ	?Update@CGamePlayerInterface@@QAEXXZ	0x004457F0
+0x00416E78	?UpdateChecksum@CInputManager@@QAEXJPAVCChecksum@@@Z	?UpdateChecksum@CInputManager@@QAEXJABVCChecksum@@@Z	0x009F4A90
