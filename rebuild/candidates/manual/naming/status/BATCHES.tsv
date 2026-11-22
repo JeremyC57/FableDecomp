@@ -1,92 +1,4 @@
 tier	fix	klass	n_targets	n_rows_touched	header	targets
-T0	catalog	CCountedPointer	161	161	engine/CCountedPointer.h	00403db0 0041956c 004366b0 00436cc0 00443500 004440c0 004441a0 00444210 00444280 004442f0 00444360 004443d0 00444440 004444b0 00444520 00444590 00444600 00444670 004446e0 00444750 004447c0 00444830 004448a0 00444910 00444980 004449f0 00444a60 00444ad0 00444bb0 00444c20 00444c90 00444d00 00445120 00445190 00445200 00445270 004452e0 00445400 00445470 00445520 0049bce0 004a9a10 004a9a80 004ab300 004ab370 004adf80 004ae650 004bb9d0 004da6f7 0050cdd0 0050cde0 0050cec0 0050cf90 0050cfa0 0050d030 0050d040 0050d0a0 0050d120 0050d180 0050d230 0050f2b0 0050faa0 0050fb90 0051cea0 00618660 006570bc 00657138 0065e25a 0065e29d 0065e33b 00673500 00675060 006750d0 00676840 00695a00 0069c380 006c3ac0 006fd460 007180c0 00718940 00718a00 007374f0 00763a20 00764400 00771b60 00786bf0 007f3f00 00822bf0 00822c00 00822ca0 00822cb0 00822d10 00822d90 00822e60 00822ea0 00834d30 0085a840 0085b250 008ab230 008ab2b0 008ebdd0 0098ba10 00992170 009b1f50 009e3090 009e3100 00a16640 00a299c0 00a29c50 00a44170 00a47060 00a52be0 00a52ce0 00a52d90 00a6ae60 00a7c0a0 00a99fd0 00a9a000 00a9a420 00a9cb50 00ac38a0 00ac3ff0 00acf440 00ae93e0 00aecac0 00aeccc0 00b23170 00b23240 00b2e290 00b37470 00b37520 00b375d0 00b37680 00b37730 00b377e0 00b37890 00b37940 00b379f0 00b37aa0 00b37b90 00b37c40 00b37cf0 00b37da0 00b37e50 00b37f00 00b37fb0 00b38060 00b38110 00b381c0 00b38270 00b38320 00b4b360 00b4b410 00b4b4c0 00b4b570 00b4b620 00b8ebc0 00b95a30 00b95aa0 00bb64a0 00f39ca0
-T0	catalog	GetDef	33	33		00415890 0042b144 004ab920 004ab990 0057ff30 005f89f2 005f8a57 005f8ab9 005f8b1b 00637650 006697e0 00685e70 006f0e80 00737f80 00737ff0 0074f760 00792350 007923c0 00798c10 0079bd10 0079dbb0 007a5080 007a90f0 007ab530 007c4f80 007cc8e0 007ce100 007cec90 007cf2e0 0082e1e0 0083b970 0083bd10 0083d630
-T0	catalog	vector	25	25		0041971e 004533e3 00453406 0045359e 004dcfbb 004dfa12 004dfa35 004e6dd2 005156d0 0051d200 00543c90 0056dce0 00594be8 005b31ac 005bc080 005bc237 005e1eb0 005f9f14 0066c4d0 0074fae0 00841a70 00cd2d0b 00cd3a79 00cd3c8b 00f26e60
-T0	catalog	GFSerialiseMapBinaryOut	18	18		00431277 0045da9a 0045f31f 00461695 004618c9 00463cdb 004645e0 00466848 0046fa57 004e507f 004e52b3 004e5636 004e628d 004e67c0 004e6a5b 004e7a62 004e9356 004ec62f
-T0	catalog	map	13	13		0042bf35 0045338b 00453447 00453465 004534c4 00453536 004dd5ad 004dd5ee 004df8ad 004ebab0 00594803 005bb3d1 00cd365e
-T0	catalog	list	10	10		004cc220 005f8f6f 0075f6c0 007e6dc0 0090b7d0 00936910 009c6730 009c67d0 00a16cb0 00a17570
-T0	catalog	fill	7	7		00526d70 00819280 008192b0 0086a3f0 0086a4f0 0086ef60 009fff90
-T0	catalog	CTCInventory	6	6	engine/CTCInventory.h	0041ca31 0041ca52 00581995 0058199b 005819a1 00581bfe
-T0	catalog	CTCInventoryTrade	6	6	engine/CTCInventoryTrade.h	0059b6bc 0059b6c2 0059b6c8 0059b6ce 0059b6d4 0059b6da
-T0	catalog	sort_heap	5	5		004cd130 00680e00 0088cea0 009b5bb0 009b5c10
-T0	catalog	CAppearanceModifierGraphics	4	4		0045cc79 0046fe8a 0046fedb 0046fee9
-T0	catalog	CTCInventoryAbilities	4	4	engine/CTCInventoryAbilities.h	0041c965 0041c972 0041c994 005eedcf
-T0	catalog	GetDefaultVal	4	4		00cdca40 00cdca50 00cdca60 00e1df50
-T0	catalog	CPersistTraits	3	3	engine/CPersistTraits.h	004ea2bb 00e1e040 00e38eb0
-T0	catalog	CTCInventoryClothing	3	3	engine/CTCInventoryClothing.h	005b34bb 005b34c1 005b34c7
-T0	catalog	CMusicManager	2	2	engine/CMusicManager.h	006bd830 006bd870
-T0	catalog	CTCGift	2	2	engine/CTCGift.h	008fa2f0 008fa300
-T0	catalog	CTCInventoryWeapons	2	2	engine/CTCInventoryWeapons.h	005c2de1 005c2de7
-T0	catalog	CUserProfileManager	2	2	engine/CUserProfileManager.h	00406770 004067b0
-T0	catalog	CVectorMap	2	2	engine/CVectorMap.h	004e34ec 004ebace
-T0	catalog	(none)	1	1		00405c10
-T0	catalog	C3DAnimFileSequenceChunk	1	1	engine/C3DAnimFileSequenceChunk.h	00aaf800
-T0	catalog	C3DAnimationBlendState	1	1	engine/C3DAnimationBlendState.h	00710600
-T0	catalog	C3DAnimationSequenceData	1	1	engine/C3DAnimationSequenceData.h	00a4cd70
-T0	catalog	C3DGroup2	1	1	engine/C3DGroup2.h	00ac41d0
-T0	catalog	CAIBrain	1	1	engine/CAIBrain.h	0088bb60
-T0	catalog	CAIStateGroupInfo	1	1	engine/CAIStateGroupInfo.h	008fe93b
-T0	catalog	CAIStateGroup_OpinionReactionRoot	1	1	engine/CAIStateGroup_OpinionReactionRoot.h	00985420
-T0	catalog	CASuspendableProcess	1	1	engine/CASuspendableProcess.h	00a44610
-T0	catalog	CBBBFileException	1	1	engine/CBBBFileException.h	0099ae50
-T0	catalog	CBrainOutput	1	1		00835620
-T0	catalog	CBusyResourceManager	1	1	engine/CBusyResourceManager.h	00a61b10
-T0	catalog	CCombatAction_GenericStrikeResponseBase	1	1	engine/CCombatAction_GenericStrikeResponseBase.h	0066a510
-T0	catalog	CComponentInstance	1	1	engine/CComponentInstance.h	00af6690
-T0	catalog	CCreatureAction_ActivateQuest	1	1	engine/CCreatureAction_ActivateQuest.h	00629060
-T0	catalog	CCreatureAction_UseWallMount	1	1	engine/CCreatureAction_UseWallMount.h	007df380
-T0	catalog	CDisplayManager	1	1	engine/CDisplayManager.h	009be380
-T0	catalog	CDrawMiniMap	1	1	engine/CDrawMiniMap.h	00643e9a
-T0	catalog	CDrawPerceivers	1	1		0064639c
-T0	catalog	CEnginePrimitiveAnimatingMesh	1	1	engine/CEnginePrimitiveAnimatingMesh.h	00708a30
-T0	catalog	CEventHitBase	1	1		00810f10
-T0	catalog	CFileFormatBrush	1	1	engine/CFileFormatBrush.h	0081e4f0
-T0	catalog	CGameEventPackage	1	1	engine/CGameEventPackage.h	009f16e0
-T0	catalog	CGamePlayerInterface	1	1	engine/CGamePlayerInterface.h	00445b90
-T0	catalog	CGameTimeManager	1	1	engine/CGameTimeManager.h	006bb790
-T0	catalog	CGraphicInfoFrame	1	1	engine/CGraphicInfoFrame.h	009fe550
-T0	catalog	CHeroAbilityStatWeight	1	1	engine/CHeroAbilityStatWeight.h	004517a4
-T0	catalog	CLevelScriptBase	1	1	engine/CLevelScriptBase.h	00f14250
-T0	catalog	CManager	1	1	engine/CManager.h	006f9b20
-T0	catalog	CMiniMapDisplay	1	1	engine/CMiniMapDisplay.h	0082c060
-T0	catalog	COpinionDeedReactionDef	1	1	engine/COpinionDeedReactionDef.h	0047955b
-T0	catalog	COpinionTransientOffset	1	1		006815f0
-T0	catalog	CParticleMorphs	1	1		004e794c
-T0	catalog	CParticleProgram	1	1	engine/CParticleProgram.h	00ae3330
-T0	catalog	CPlane	1	1	engine/CPlane.h	0063ec80
-T0	catalog	CPlayer	1	1	engine/CPlayer.h	00633400
-T0	catalog	CPlayerGui	1	1	engine/CPlayerGui.h	00437940
-T0	catalog	CProcessedInput	1	1	engine/CProcessedInput.h	00a0d3b0
-T0	catalog	CQuestManager	1	1	engine/CQuestManager.h	004afdd0
-T0	catalog	CRegion	1	1	engine/CRegion.h	006bc4a0
-T0	catalog	CSTS_BriarRose	1	1		00df2090
-T0	catalog	CShaderResource	1	1	engine/CShaderResource.h	00a5d4f0
-T0	catalog	CShopItem	1	1	engine/CShopItem.h	004d4033
-T0	catalog	CSkeletalMorphs	1	1		004e78e4
-T0	catalog	CSmallVector	1	1	engine/CSmallVector.h	008709f0
-T0	catalog	CStartupDefinitionManager	1	1	engine/CStartupDefinitionManager.h	0043368c
-T0	catalog	CSystemManager	1	1	engine/CSystemManager.h	009a5000
-T0	catalog	CTCDummyVillager	1	1	engine/CTCDummyVillager.h	0072f0e0
-T0	catalog	CTCFlourishTarget	1	1	engine/CTCFlourishTarget.h	0085ab00
-T0	catalog	CTCGeneratedCreature	1	1	engine/CTCGeneratedCreature.h	0074d0d0
-T0	catalog	CTCHero	1	1	engine/CTCHero.h	004ab270
-T0	catalog	CTCHeroOpinionDeedLog	1	1	engine/CTCHeroOpinionDeedLog.h	006c6010
-T0	catalog	CTCHitLocations	1	1	engine/CTCHitLocations.h	00815870
-T0	catalog	CTCNymph	1	1	engine/CTCNymph.h	0091c080
-T0	catalog	CTCTrapBase	1	1	engine/CTCTrapBase.h	00787c1b
-T0	catalog	CTCTurncoat	1	1	engine/CTCTurncoat.h	007c76d0
-T0	catalog	CTextureMorphs	1	1		004e787c
-T0	catalog	CThemeChannel	1	1		006b5b80
-T0	catalog	CThingCreatureBase	1	1	engine/CThingCreatureBase.h	00662030
-T0	catalog	CThingFilter_IsIncapacitated	1	1		006a73f0
-T0	catalog	CThingFilter_IsLyingDown	1	1		006a7400
-T0	catalog	CVertexPairContraction	1	1		00ac7990
-T0	catalog	GFSerialiseMapBinaryIn	1	1		006dba50
-T0	catalog	IS_THING_DEAD	1	1		005cbdbd
-T0	catalog	IsTaskTaken	1	1		0065ff8e
-T0	catalog	PerCreatureInfo	1	1		00793a80
-T0	catalog	multimap	1	1		0045433f
-T0	catalog	pair	1	1		00cb9c20
 T1	access	CMainGameComponent	6	4	engine/CMainGameComponent.h	00415fe0 00415ff2 004160a6 00416122 00416231 0041674a
 T1	access	CWorld	6	5	engine/CWorld.h	0049d4e0 0049d8f0 0049e9f0 0049f4c0 004a21f0 004a2d70
 T1	access	CCombatActionBase	4	3	engine/CCombatActionBase.h	00856b20 00857070 00858a20 00859660
@@ -1430,7 +1342,6 @@ T3	signature	CCreatureAction_TeleportOut	1	1	engine/CCreatureAction_TeleportOut.
 T3	signature	CCreatureAction_TrollThrowProjectile	1	2	engine/CCreatureAction_TrollThrowProjectile.h	008c7400
 T3	signature	CDefClassInit	1	1	engine/CDefClassInit.h	0042dae0
 T3	signature	CEnginePrimitiveManagerFlareSprites	1	1	engine/CEnginePrimitiveManagerFlareSprites.h	00bce070
-T3	signature	CEngineWaterBackgroundSubPatch	1	1	engine/CEngineWaterBackgroundSubPatch.h	00bfd480
 T3	signature	CLandscapeBackgroundTreeNode	1	2	engine/CLandscapeBackgroundTreeNode.h	00bf73a0
 T3	signature	CModeConversation	1	1		008d92c0
 T3	signature	CNavigatorManager	1	1	engine/CNavigatorManager.h	00a14ee0

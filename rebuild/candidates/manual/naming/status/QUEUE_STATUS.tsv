@@ -10292,7 +10292,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13089	land1122nf269	00beaaa0	??1CWaterPatchMesh@@UAE@XZ	closed	
 13090	land1122nf269	00beb4d0	??_GCWaterPatchMesh@@UAEPAXI@Z	closed	
 13091	land1122nf269	00bfde20	??1CLandscapeLayerMesh@@UAE@XZ	closed	
-13092	land1122nf269	00bfd480	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	partial	??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+13092	land1122nf269	00bfd480	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	closed	
 13097	land1122nf271	00bd9ce0	?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ	partial	?ClearTexturePool@CEngineLandscapeMemoryManagerCallView@@QAEXXZ
 13102	land1122nf270	006a0e50	?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ	closed	
 13103	land1122nf270	006a0d20	?Clone@CCreatureAction_UseObject@@EBEPAVCCreatureActionBase@@XZ	closed	
@@ -10312,8 +10312,10 @@ line	tag	address	correct_symbol	status	other_spellings
 13129	land1122nf275	004197b3	??_GCMainGameComponent@@UAEPAXI@Z	closed	
 13130	land1122nf275	009f8b10	??0CRoughFrameCounter@@QAE@XZ	closed	
 13131	land1122nf275	004507a1	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z	partial	?BuildTreeArray@CTreeWalk@@QAEXPAVTreeNode@@@Z || ?EraseSubtree@CRetailTree@@QAEXPAUnode@1@@Z || ?FreeThing@@YGXPAX@Z || ?_M_erase@CGroupToIndexMap@@QAEXPAUCRbNode@@@Z
-13136	land1122nf277	00bfd480	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	partial	??1CEngineWaterBackgroundSubPatch@@QAE@XZ
+13136	land1122nf277	00bfd480	??1CEngineWaterBackgroundSubPatch@@UAE@XZ	closed	
 13141	land1122nf278	00416e78	?GetInputs@CMainGameComponent@@MAEXXZ	open	GetInputs
 13142	land1122nf278	00415fe0	?ProcessEvent@CMainGameComponent@@IAEXPBVCGameEvent@@@Z	partial	?ProcessEvent@CMainGameComponent@@QAEXPBVCGameEvent@@@Z
 13143	land1122nf278	00415ff2	?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z	partial	?EventIsSystemEvent@CMainGameComponent@@QAE_NPBVCGameEvent@@@Z
 13145	land1122nf278	004507a1	?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z	partial	?BuildTreeArray@CTreeWalk@@QAEXPAVTreeNode@@@Z || ?EraseSubtree@CRetailTree@@QAEXPAUnode@1@@Z || ?FreeThing@@YGXPAX@Z || ?_M_erase@CGroupToIndexMap@@QAEXPAUCRbNode@@@Z
+13149	land1122nf279	00bfd420	??0CEngineWaterBackgroundSubPatch@@QAE@PBVCEngineLandscapeMap@@@Z	no_binding	
+13150	land1122nf279	00ac1f60	?OnPostRelocation@CIndexBuffer@@QAEXXZ	partial	?M@C00ac1f60@@QAEXXZ

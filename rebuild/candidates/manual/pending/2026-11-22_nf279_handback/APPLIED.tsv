@@ -1,0 +1,5 @@
+entry	address	status	binders respelled	note
+1	0x00BFD480	done	none (0x00BFDC90 already binds UAE)	unit: 0x00BFD480 + fold 0x00BFDC90 + slot rows 0x00BFD5D0 / 0x00BFD390 + header opt-in + 0x00BFD480 test
+2	0x00AE04E0 0x00AE0540 0x00AE05A0	rejected	-	measured: the HEAD objects define no ?Verify@CMovableResource (no vtable emitted); REJECTED.tsv
+2	0x00BE8E60 0x00BFBD80	blocked (decision)	-	form 1 (shared header) does not compile (abstract class); form 2 (Verify declaration-only in the existing local model) measured clean, vland RELOCATION_MATCH PASS; coordinator decision
+3	0x00BE6090 0x00BFAAE0 0x00BFB590 0x00B684F0	open	-	not started (context; advisor: hand back)

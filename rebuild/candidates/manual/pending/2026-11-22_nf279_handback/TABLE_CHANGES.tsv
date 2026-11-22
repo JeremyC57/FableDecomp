@@ -1,0 +1,3 @@
+symbol	address	witness	change	note
+# reloc_bindings.tsv: no change. ??1CEngineWaterBackgroundSubPatch@@UAE@XZ 00bfd480 is already tabled (witness 0x00BFDC90); ??_7CEngineWaterBackgroundSubPatch@@6B@ 012a8334 (witness 0x00BFD480) unchanged. ?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z 00bfd5d0 and ?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z 00bfd390 have no leaf-relocation witness (vtable slots only).
+# build_candidates.ps1 CompilerFlags: no change (none of the four rows has or needs flags).

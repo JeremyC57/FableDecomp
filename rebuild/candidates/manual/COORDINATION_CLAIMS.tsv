@@ -347,3 +347,4 @@ date	account	item	kind	status	note
 2026-11-22	A	q12659 CMainGameComponent ctor / CVertexGroupBlock owner dtor	naming	done	agent NF275 landed 3 rows + 7 headers (batches/2026-11-22_landing_nf275); the _M_erase split, 0x00ADCE60 port and test debt go to NF278
 2026-11-22	A	0x00BFE900 fold / CLandscapeLayerMesh tests	naming	done	agent NF277 landed 1 row + 3 tests (batches/2026-11-22_landing_nf277); 0x00BFD480 unit, the Verify rows and four tests go to NF279
 2026-11-22	A	CMainGameComponent slot self rows	naming	done	agent NF278 landed 4 rows (batches/2026-11-22_landing_nf278); 0x00416E78, the _M_erase port and 0x00ADCE60 go to NF280
+2026-11-22	A	CEngineWaterBackgroundSubPatch dtor unit	naming	done	agent NF279 landed 4 rows + 1 test + 1 header (batches/2026-11-22_landing_nf279); the Verify rows held for the dtor-row ports

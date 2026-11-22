@@ -1,0 +1,161 @@
+# entry 2 HEAD measurement (g2.sh on the landed sources, no flags; pk.py v retail owners; DEF/UND externals; vtcheck)
+H2 00be8e60 CLandscapeBackgroundPatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=??_GCLandscapeBackgroundPatch@@UAEPAXI@Z
+H2 00bfbd80 CLocalDetailPrimitiveMeshZSpriteBatch::`scalar deleting destructor' RELOCATION_MATCH flags= [] leaf=??_GCLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+H2 00ae04e0 CParticleProgram::GetMatrixBuffer RELOCATION_MATCH flags= [] leaf=?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z
+H2 00ae0540 CParticleProgram::GetVectorBuffer RELOCATION_MATCH flags= [] leaf=?GetVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+H2 00ae05a0 CParticleProgram::GetGroupVectorBuffer RELOCATION_MATCH flags= [] leaf=?GetGroupVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+E2HDONE
+E2HVT
+## pk HEAD
+00be8e60 HEAD	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00be8e60 HEAD	?Verify@CMovableResource@@UBEKXZ	3	009d5100	NEQ:bytes(3 v 6)
+00be8e60 HEAD	?CanRelocateData@CMovableResource@@UBE_NJ@Z	5	009d50f0	EQ
+00be8e60 HEAD	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00be8e60 HEAD	??1CLandscapeBackgroundSubNodeBase@@UAE@XZ	7	-	NO-OWNER
+00be8e60 HEAD	??_H@YGXPAXIHP6EPAX0@Z@Z	48	004038c0	EQ
+00be8e60 HEAD	??_I@YGXPAXIHP6EX0@Z@Z	49	00401400	EQ
+00be8e60 HEAD	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+00be8e60 HEAD	??0CBaseClassNonCopyable@@QAE@XZ	18	-	NO-OWNER
+00be8e60 HEAD	??1CBaseClassNonCopyable@@UAE@XZ	5	0099a300	NEQ:bytes(5 v 7)
+00be8e60 HEAD	??_GCBaseClassNonCopyable@@UAEPAXI@Z	30	-	NO-OWNER
+00be8e60 HEAD	??0CLandscapeBackgroundSubNodeBase@@QAE@XZ	9	-	NO-OWNER
+00be8e60 HEAD	??_GCLandscapeBackgroundSubNodeBase@@UAEPAXI@Z	31	-	NO-OWNER
+00be8e60 HEAD	??0CPatchTesselationEdgeStrip@@QAE@XZ	18	00bfc370	NEQ:bytes(18 v 58)
+00be8e60 HEAD	??1CPatchTesselationEdgeStrip@@UAE@XZ	5	-	NO-OWNER
+00be8e60 HEAD	??_GCPatchTesselationEdgeStrip@@UAEPAXI@Z	30	-	NO-OWNER
+00be8e60 HEAD	??0CLandscapeBackgroundPatch@@QAE@XZ	44	-	NO-OWNER
+00be8e60 HEAD	?ForceNew_00be8e60@@YAPAVCLandscapeBackgroundPatch@@XZ	27	-	NO-OWNER
+00bfbd80 HEAD	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+00bfbd80 HEAD	?Verify@CMovableResource@@UBEKXZ	3	009d5100	NEQ:bytes(3 v 6)
+00bfbd80 HEAD	?CanRelocateData@CMovableResource@@UBE_NJ@Z	5	009d50f0	EQ
+00bfbd80 HEAD	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+00bfbd80 HEAD	??0C3DVector@@QAE@XZ	3	-	NO-OWNER
+00bfbd80 HEAD	??1CLocalDetailPrimitiveBase@@UAE@XZ	7	-	NO-OWNER
+00bfbd80 HEAD	??0CEnginePrimitiveHandle@@QAE@XZ	18	-	NO-OWNER
+00bfbd80 HEAD	??1CEnginePrimitiveHandle@@UAE@XZ	5	-	NO-OWNER
+00bfbd80 HEAD	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+00bfbd80 HEAD	??0C3DBoundingBox@@QAE@XZ	3	-	NO-OWNER
+00bfbd80 HEAD	??0C3DBoundingSphere@@QAE@XZ	3	-	NO-OWNER
+00bfbd80 HEAD	??_GCEnginePrimitiveHandle@@UAEPAXI@Z	30	-	NO-OWNER
+00bfbd80 HEAD	??0CLocalDetailPrimitiveBase@@QAE@XZ	9	-	NO-OWNER
+00bfbd80 HEAD	??_GCLocalDetailPrimitiveBase@@UAEPAXI@Z	31	-	NO-OWNER
+00bfbd80 HEAD	??0CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ	31	-	NO-OWNER
+00bfbd80 HEAD	?ForceNew_00bfbd80@@YAPAVCLocalDetailPrimitiveMeshZSpriteBatch@@XZ	49	-	NO-OWNER
+00ae04e0 HEAD	??$AllocateType@VCMatrix4x4@@@CSimpleMemoryPool@@QAEPAVCMatrix4x4@@K@Z	46	-	NO-OWNER
+00ae0540 HEAD	??$AllocateType@VC4DVector@@@CSimpleMemoryPool@@QAEPAVC4DVector@@K@Z	46	-	NO-OWNER
+00ae05a0 HEAD	??$AllocateType@VC4DVector@@@CSimpleMemoryPool@@QAEPAVC4DVector@@K@Z	46	-	NO-OWNER
+## externals
+### 00be8e60
+DEF ??0CBaseClassNonCopyable@@QAE@XZ
+DEF ??0CLandscapeBackgroundPatch@@QAE@XZ
+DEF ??0CLandscapeBackgroundSubNodeBase@@QAE@XZ
+DEF ??0CMovableResource@@QAE@XZ
+DEF ??0CPatchTesselationEdgeStrip@@QAE@XZ
+DEF ??1CBaseClassNonCopyable@@UAE@XZ
+DEF ??1CLandscapeBackgroundSubNodeBase@@UAE@XZ
+DEF ??1CMovableResource@@UAE@XZ
+DEF ??1CPatchTesselationEdgeStrip@@UAE@XZ
+DEF ??_7CBaseClassNonCopyable@@6B@
+DEF ??_7CLandscapeBackgroundPatch@@6B@
+DEF ??_7CLandscapeBackgroundSubNodeBase@@6B@
+DEF ??_7CMovableResource@@6B@
+DEF ??_7CPatchTesselationEdgeStrip@@6B@
+DEF ??_GCBaseClassNonCopyable@@UAEPAXI@Z
+DEF ??_GCLandscapeBackgroundPatch@@UAEPAXI@Z
+DEF ??_GCLandscapeBackgroundSubNodeBase@@UAEPAXI@Z
+DEF ??_GCMovableResource@@UAEPAXI@Z
+DEF ??_GCPatchTesselationEdgeStrip@@UAEPAXI@Z
+DEF ??_H@YGXPAXIHP6EPAX0@Z@Z
+DEF ??_I@YGXPAXIHP6EX0@Z@Z
+DEF ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+DEF ?ForceNew_00be8e60@@YAPAVCLandscapeBackgroundPatch@@XZ
+DEF ?Verify@CMovableResource@@UBEKXZ
+UND ??0CBaseClass@@QAE@XZ
+UND ??1CBaseClass@@UAE@XZ
+UND ??1CLandscapeBackgroundPatch@@UAE@XZ
+UND ??2@YAPAXI@Z
+UND ??3@YAXPAX@Z
+UND ??_GCBaseClassNonCopyable@@UAEPAXI@Z
+UND ??_GCLandscapeBackgroundPatch@@UAEPAXI@Z
+UND ??_GCLandscapeBackgroundSubNodeBase@@UAEPAXI@Z
+UND ??_GCMovableResource@@UAEPAXI@Z
+UND ??_GCPatchTesselationEdgeStrip@@UAEPAXI@Z
+UND ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+### 00bfbd80
+DEF ??0C3DBoundingBox@@QAE@XZ
+DEF ??0C3DBoundingSphere@@QAE@XZ
+DEF ??0C3DVector@@QAE@XZ
+DEF ??0CEnginePrimitiveHandle@@QAE@XZ
+DEF ??0CLocalDetailPrimitiveBase@@QAE@XZ
+DEF ??0CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ
+DEF ??0CMovableResource@@QAE@XZ
+DEF ??1CEnginePrimitiveHandle@@UAE@XZ
+DEF ??1CLocalDetailPrimitiveBase@@UAE@XZ
+DEF ??1CMovableResource@@UAE@XZ
+DEF ??_7CEnginePrimitiveHandle@@6B@
+DEF ??_7CLocalDetailPrimitiveBase@@6B@
+DEF ??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@
+DEF ??_7CMovableResource@@6B@
+DEF ??_GCEnginePrimitiveHandle@@UAEPAXI@Z
+DEF ??_GCLocalDetailPrimitiveBase@@UAEPAXI@Z
+DEF ??_GCLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+DEF ??_GCMovableResource@@UAEPAXI@Z
+DEF ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+DEF ?ForceNew_00bfbd80@@YAPAVCLocalDetailPrimitiveMeshZSpriteBatch@@XZ
+DEF ?Verify@CMovableResource@@UBEKXZ
+UND ??0CBaseClass@@QAE@XZ
+UND ??1CBaseClass@@UAE@XZ
+UND ??1CLocalDetailPrimitiveMeshZSpriteBatch@@UAE@XZ
+UND ??2@YAPAXI@Z
+UND ??3@YAXPAX@Z
+UND ??_GCEnginePrimitiveHandle@@UAEPAXI@Z
+UND ??_GCLocalDetailPrimitiveBase@@UAEPAXI@Z
+UND ??_GCLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+UND ??_GCMovableResource@@UAEPAXI@Z
+UND ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+### 00ae04e0
+DEF ??$AllocateType@VCMatrix4x4@@@CSimpleMemoryPool@@QAEPAVCMatrix4x4@@K@Z
+DEF ?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z
+UND ?Allocate@CSimpleMemoryPool@@QAEPAXK@Z
+UND ?FreeAll@CSimpleMemoryPool@@QAEXXZ
+UND ?MatrixBufferPool@@3VCSimpleMemoryPool@@A
+UND ?g_MatrixBufferCapacity_013D2D9C@@3KA
+UND ?g_MatrixBuffer_013D2D98@@3PAVCMatrix4x4@@A
+### 00ae0540
+DEF ??$AllocateType@VC4DVector@@@CSimpleMemoryPool@@QAEPAVC4DVector@@K@Z
+DEF ?GetVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+UND ?Allocate@CSimpleMemoryPool@@QAEPAXK@Z
+UND ?FreeAll@CSimpleMemoryPool@@QAEXXZ
+UND ?VectorBufferPool@@3VCSimpleMemoryPool@@A
+UND ?g_VectorBufferCapacity_013D2DA4@@3KA
+UND ?g_VectorBuffer_013D2DA0@@3PAVC4DVector@@A
+### 00ae05a0
+DEF ??$AllocateType@VC4DVector@@@CSimpleMemoryPool@@QAEPAVC4DVector@@K@Z
+DEF ?GetGroupVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+UND ?Allocate@CSimpleMemoryPool@@QAEPAXK@Z
+UND ?FreeAll@CSimpleMemoryPool@@QAEXXZ
+UND ?GroupVectorBufferPool@@3VCSimpleMemoryPool@@A
+UND ?g_GroupVectorBufferCapacity_013D2DAC@@3KA
+UND ?g_GroupVectorBuffer_013D2DA8@@3PAVC4DVector@@A
+## vtcheck HEAD
+0	00be8e60	NOLINE	??_ECLandscapeBackgroundPatch@@UAEPAXI@Z
+1	00be65a0	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	00be5e50	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+0	00bfbd80	NOLINE	??_ECLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+1	00bfa8a0	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	00bf9a80	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	?Verify@CMovableResource@@UBEKXZ
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+slots 3 not-OK 3 retail next word 009d5100 COL@-4 sym ?
+## form 1 (shared engine/CMovableResource.h, alias include and local CMovableResource removed), clang precheck only
+00be8e60: error: allocating an object of abstract class type 'CLandscapeBackgroundPatch' (ForceNew_00be8e60)
+00bfbd80: error: allocating an object of abstract class type 'CLocalDetailPrimitiveMeshZSpriteBatch' (ForceNew_00bfbd80)

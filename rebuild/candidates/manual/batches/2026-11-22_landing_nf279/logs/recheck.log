@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00bfd480   RELOCATION_MATCH PASS   ~CEngineWaterBackgroundSubPatch
+00bfdc90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bfd5d0   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00bfd5d0   RELOCATION_MATCH PASS   RelocateData
+00bfd390   MATCH            PASS   CanRelocateData
+00b6e010   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix (engine/CPreTransposedBoneMatrix.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00b6e010   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer (engine/CEngineWaterRenderer.h)
+00b6e010   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b6e010   RELOCATION_MATCH PASS   RenderBackgroundPatch
+00b6fa40   RELOCATION_MATCH PASS   RenderSeaMidground
+00b70230   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b70230   RELOCATION_MATCH PASS   RenderSeaBackground
+00be6090   RELOCATION_MATCH PASS   ~CLandscapeBackgroundPatch
+00be7be0   RELOCATION_MATCH PASS   Render
+00bfd290   WARN SHARED_HEADER_AVAILABLE CTesselationData (engine/CTesselationData.h)
+00bfd290   RELOCATION_MATCH PASS   TesselatePatch
+00bfd3b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfd3b0   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAX0@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfd3b0   RELOCATION_MATCH PASS   OnPostRelocation
+00bfd670   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00bfd670   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00bfd670   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00bfd670   WARN RELOC_NAME: ?WriteUShort@CDataOutputStream@@QAEXG@Z -> 00993e80 labelled 'CDataOutputStream::WriteUWORD'
+00bfd670   RELOCATION_MATCH PASS   Save
+
+WINS: 12
+  00bfd480 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+  00bfdc90 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+  00bfd5d0 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+  00bfd390 MATCH CEngineWaterBackgroundSubPatch::?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+  00b6e010 RELOCATION_MATCH CEngineWaterRenderer::RenderBackgroundPatch
+  00b6fa40 RELOCATION_MATCH CEngineWaterRenderer::?RenderSeaMidground@CEngineWaterRenderer@@AAEXM@Z
+  00b70230 RELOCATION_MATCH CEngineWaterRenderer::?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z
+  00be6090 RELOCATION_MATCH CLandscapeBackgroundPatch::??1Patch@
+  00be7be0 RELOCATION_MATCH CLandscapeBackgroundPatch::?Render@CLandscapeBackgroundPatch@@QAEX_NAAJAA_N@Z
+  00bfd290 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::TesselatePatch
+  00bfd3b0 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::OnPostRelocation
+  00bfd670 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::Save

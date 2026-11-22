@@ -1,30 +1,12 @@
-// CEngineWaterBackgroundSubPatch::`scalar deleting destructor'(unsigned int flags) -- the virtual destructor, then (bit 0) the class operator delete: the block goes back to the landscape memory manager
+// CEngineWaterBackgroundSubPatch::`scalar deleting destructor'(unsigned int flags) -- the virtual destructor (called out of line, 0x00BFD480), then (bit 0) the class operator delete: the block goes back to the landscape memory manager (FreeVirtual 0x00BD9B90)
 // Leaf: ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BFDC90, 38 bytes, thiscall, `ret 4`, returns this.
-// Identity (proven): slot 0 of vtable 0x012A8334 (rtti-vtables: CEngineWaterBackgroundSubPatch; RTTI bases CMovableResource); the destructor it calls,
-//   0x00BFD480, is the landed ~CEngineWaterBackgroundSubPatch; FableWin.pdb ??1CEngineWaterBackgroundSubPatch@@UAE@XZ (virtual) and the class's own
-//   ??3CEngineWaterBackgroundSubPatch@@SIXPAX@Z (static __fastcall operator delete).
-// Callees: CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch() 0x00BFD480, CEngineLandscapeMemoryManager::FreeVirtual(void*) 0x00BD9B90 on the manager at +0x6B0
-//   of the engine global 0x01436EA8.
-// Shape (family K057, representative 0x00BDF9B0): the landed CLandscapeBackgroundSubNodeSplitBranch ??_G 0x00BF8D10 with the
-//   destructor out of line; the class operator delete inlines to `mov eax,[global] ; mov ecx,[eax+6B0h] ; push esi ; call`.
-//   The engine global keeps the landed name and stand-in type g_pEngine_01436ea8 / SEngine_01436ea8 (descriptive).
-class CEngineLandscapeMemoryManager {
-public:
-    void FreeVirtual(void* block);                       // 0x00BD9B90
-};
-#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
-#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-class CMovableResource {                                 // vtable 0x0129B860
-public:
-    CMovableResource();
-    virtual ~CMovableResource();
-};
-class CEngineWaterBackgroundSubPatch : public CMovableResource {
-public:
-    CEngineWaterBackgroundSubPatch() { }                                          // model device: emits the vtable (and ??_G) in this file
-    virtual ~CEngineWaterBackgroundSubPatch();                                    // 0x00BFD480
-    static void __fastcall operator delete(void* block) { NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(block); }
-};
-inline void* operator new(unsigned int, void* where) { return where; }
-CEngineWaterBackgroundSubPatch* Construct_00bfdc90(void* where) { return new (where) CEngineWaterBackgroundSubPatch; }   // not part of the retail body
+// Identity (proven): slot 0 of vtable 0x012A8334 (rtti-vtables: CEngineWaterBackgroundSubPatch; RTTI bases CMovableResource); Ego_r.pdb
+//   ??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z (00a4c340); the destructor it calls, 0x00BFD480, is ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+//   (both PDBs); the class delete is FableWin.pdb ??3CEngineWaterBackgroundSubPatch@@SIXPAX@Z (static __fastcall, inline in retail).
+// TU (NF279, 2026-11-22; nf277 ruling 4): VC7.1 emits ??_GCEngineWaterBackgroundSubPatch as a pick-any COMDAT beside the vtable, only in a TU whose
+//   code stores the vptr: the destructor's. The destructor has its own row (0x00BFD480), so this function is produced by that translation unit,
+//   included below with no code of its own (the nf251 0x00B2AB10 / nf272 0x00BEB4D0 / nf277 0x00BFE900 fold pattern). This replaces the July
+//   row's local models (a local CMovableResource with a 1-slot vtable, its own 1-slot ??_7CEngineWaterBackgroundSubPatch and the
+//   Construct_00bfdc90 helper).
+#include "../src/compiled/00/bf/CEngineWaterBackgroundSubPatch_CEngineWaterBackgroundSubPatch_00bfd480.cpp"

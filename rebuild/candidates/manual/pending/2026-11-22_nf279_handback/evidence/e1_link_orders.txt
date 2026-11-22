@@ -1,0 +1,25 @@
+### new set, 0x00BFD480 first
+duplicates 1
+00bfdc90.obj : warning LNK4006: "public: virtual __thiscall CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch(void)" (??1CEngineWaterBackgroundSubPatch@@UAE@XZ) already defined in 00bfd480.obj; second definition ignored
+UNRESOLVED 2 ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+UNRESOLVED 2 ?Verify@CMovableResource@@UBEKXZ
+### new set, 0x00BFDC90 first
+duplicates 1
+00bfd480.obj : warning LNK4006: "public: virtual __thiscall CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch(void)" (??1CEngineWaterBackgroundSubPatch@@UAE@XZ) already defined in 00bfdc90.obj; second definition ignored
+UNRESOLVED 2 ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+UNRESOLVED 2 ?Verify@CMovableResource@@UBEKXZ
+### HEAD set, 0x00BFD480 first
+duplicates 0
+
+UNRESOLVED 1 ??0CMovableResource@@QAE@XZ
+UNRESOLVED 1 ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+UNRESOLVED 1 ?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+UNRESOLVED 1 ?v00@CMovableResource@@UAEXXZ
+### HEAD set, 0x00BFDC90 first
+duplicates 0
+
+UNRESOLVED 1 ??0CMovableResource@@QAE@XZ
+UNRESOLVED 1 ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+UNRESOLVED 1 ?v00@CEngineWaterBackgroundSubPatch@@UAEXXZ
+UNRESOLVED 1 ?v00@CMovableResource@@UAEXXZ
+E1FDONE

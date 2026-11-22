@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00bfd480   RELOCATION_MATCH PASS   ~CEngineWaterBackgroundSubPatch
+00bfdc90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bfd5d0   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00bfd5d0   RELOCATION_MATCH PASS   RelocateData
+00bfd390   MATCH            PASS   CanRelocateData
+
+WINS: 4
+  00bfd480 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+  00bfdc90 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+  00bfd5d0 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+  00bfd390 MATCH CEngineWaterBackgroundSubPatch::?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z

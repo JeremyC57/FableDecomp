@@ -1,0 +1,15 @@
+DEF ?CanRelocateData@CEngineWaterBackgroundSubPatch@@EBE_NJ@Z
+DEF ?CanRelocateData@CMovableResource@@UBE_NJ@Z
+DEF ?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+DEF ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+DEF ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+DEF ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+DEF ?RelocateData@CEngineWaterBackgroundSubPatch@@EAEXJPAX0J@Z
+DEF ?Verify@CMovableResource@@UBEKXZ
+DEF _main
+UND ??1CEngineWaterBackgroundSubPatch@@UAE@XZ
+UND _memcpy
+UND _memset
+UND _printf
+UND _strcmp
+UND _strlen
