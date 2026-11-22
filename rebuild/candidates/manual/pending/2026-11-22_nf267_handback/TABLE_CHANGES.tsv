@@ -1,0 +1,12 @@
+action	symbol	target	witness	note
+delete	?ReleaseTexture@CTexMgr@@QAEXPAX@Z	00bda110	00be5c30	no landed row binds it after the unit (its only binder moves)
+delete	?DeleteIndexBuffer@LandscapeMemory@Native@@QAEXPAVCIndexBuffer@@@Z	00bda090	00be6090	no landed row binds it after the unit (its only binder moves)
+delete	?DeleteTexture@LandscapeMemory@Native@@QAEXPAVCTexture@@@Z	00bda110	00be6090	no landed row binds it after the unit (its only binder moves)
+delete	?DeleteVertexBuffer@LandscapeMemory@Native@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090	no landed row binds it after the unit (its only binder moves)
+delete	?UnregisterSubPatchForZSorting@Renderer@Native@@QAEXAAJ@Z	00b677a0	00be6090	no landed row binds it after the unit (its only binder moves)
+delete	?gRenderer@Native@@3PAURenderer@1@A	01436ea8	00be6090	no landed row binds it after the unit (its only binder moves)
+add	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	00bda090	00be6090	new binding spelling (PDB)
+add	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090	new binding spelling (PDB)
+add	?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z	00bda110	00be5c30	new binding spelling (PDB)
+add	?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z	00b677a0	00be6090	new binding spelling (PDB)
+keep	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00beae50	already tabled; 0x00BE5C30 / 0x00BE6090 now bind it too

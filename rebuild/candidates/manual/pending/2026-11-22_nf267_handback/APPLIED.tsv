@@ -1,0 +1,6 @@
+entry	address	status	binders_respelled	note
+E1 the CEngineLandscapeMemoryManager Delete trio family (RULINGS D1-D3)	0x00BDA110	done	2	one unit: 0x00BDA150 / 0x00BD9CE0 helpers respelled in place onto the private BlockWhileBusy names; self rows 0x00BDA090 / 0x00BDA0D0 / 0x00BDA110 ported onto the header with the public names; binders 0x00BE5C30 (+ ClearTextures leaf) and 0x00BE6090. Identities re-proven from a second angle (evidence/identity.md). Census: 0x00BDA110 3 -> 1, 0x00BDA090 3 -> 2, 0x00BDA0D0 4 -> 3, 0x00B677A0 2 -> 2, 0x01436EA8 table 12 -> 11. Name census: each public Delete<X> name defined by one body (the queue row); each BlockWhileBusy name by the two identical TU-mate copies in 0x00BDA150 / 0x00BD9CE0, the same four-symbol duplicate HEAD already had (decision D4).
+E2 L129 remaining: LocalDetailEngine 0x00BFAAE0 / 0x00BFB590, 0x00B684F0	0x01436EA8	open	0	not started (context; handed back after entry 1 as the brief says)
+E2 L129 remaining: 0x00BEB4D0 ?DAT_01436ea8@@3PAEA (also a 0x00BDA0D0 stand-in binder)	0x01436EA8	open	0	not started
+E2 L129 remaining: the CEngineGlobal rows	0x01436EA8	open	0	not started
+E2 0x009B0AC0 (nf260 plan)	0x009B0AC0	open	0	not started

@@ -1,0 +1,22 @@
+00bda090	00be3807	-	
+00bda0d0	00be382b	-	
+00bda110	00be5c49	00be5c30	CLandscapeBackgroundPatch::ClearTextures
+00bda0d0	00be60c3	00be6090	~CLandscapeBackgroundPatch
+00bda090	00be60de	00be6090	~CLandscapeBackgroundPatch
+00bda110	00be6102	00be6090	~CLandscapeBackgroundPatch
+00bda090	00be612b	00be6090	~CLandscapeBackgroundPatch
+00bda0d0	00be6162	00be6090	~CLandscapeBackgroundPatch
+00bda0d0	00beaa16	00beaa00	CTextureOwner_00beaa00::void ClearBlock
+00bda0d0	00beaad3	00beaaa0	CEngineScreenEffectOutlineGlow::FinishWithDynamicTextures
+00bda0d0	00beb503	00beb4d0	CWaterPatchMesh::`scalar deleting destructor'
+00bda090	00bfd205	-	
+00bda090	00bfd4a3	00bfd480	CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch
+00bda0d0	00bfd4bc	00bfd480	CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch
+00bda090	00bfd4e4	00bfd480	CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch
+00bda0d0	00bfd4fb	00bfd480	CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch
+00bda0d0	00bfd530	-	
+00bda0d0	00bfd8c4	-	
+00bda090	00bfdad0	-	
+00bda0d0	00bfdd56	00bfdd40	CTextureOwner_00bfdd40::void ClearBlock
+00bda090	00bfde43	00bfde20	CLandscapeLayerMesh::~CLandscapeLayerMesh
+00bda0d0	00bfde5c	00bfde20	CLandscapeLayerMesh::~CLandscapeLayerMesh

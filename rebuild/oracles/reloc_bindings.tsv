@@ -5695,12 +5695,9 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?TesselateEdgeGeneric@CLandscapeTesselatorBase@@QAE_NJPAUSLandscapeEdge_00be3910@@PAX@Z	00be37e0	00be3910
 ?Method_00be4380@CDiscarder_Retail@@QAE?AUCResult24@@XZ	00be4380	00be4400
 ??_7CTesselationData@@6B@	012a800c	00be59c0
-?ReleaseTexture@CTexMgr@@QAEXPAX@Z	00bda110	00be5c30
 ??1EdgeStrip@Native@@QAE@XZ	00bfc410	00be6090
 ??_7Movable@Native@@6B@	0129b860	00be6090
 ??_7Patch@Native@@6B@	012a803c	00be6090
-?UnregisterSubPatchForZSorting@Renderer@Native@@QAEXAAJ@Z	00b677a0	00be6090
-?gRenderer@Native@@3PAURenderer@1@A	01436ea8	00be6090
 ?g_asyncRoot@@3PAUAsyncRoot@@A	01436ea8	00beaa30
 ?DAT_01436ea8@@3PAEA	01436ea8	00beaaa0
 ?InsertNode@LandscapeLayerList@@QAEXH@Z	00bda0d0	00beaaa0
@@ -16993,9 +16990,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z	00b67e30	00be5d20
 ?OnRegistedZSortingPatchRelocation@CEngineLandscapeRenderer@@QAEXJPAVCLandscapeBackgroundPatch@@@Z	00b67780	00be5d80
 ?SetMovableResourceHandler@CPatchTesselationEdgeStrip@@QAEXPAVCMovableResource@@@Z	00bfc510	00be5d80
-?DeleteIndexBuffer@LandscapeMemory@Native@@QAEXPAVCIndexBuffer@@@Z	00bda090	00be6090
-?DeleteTexture@LandscapeMemory@Native@@QAEXPAVCTexture@@@Z	00bda110	00be6090
-?DeleteVertexBuffer@LandscapeMemory@Native@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090
 ?TesselatePatch@CEngineWaterBackgroundSubPatch@@QAE_NAAVCTesselationData@@@Z	00bfd290	00be61b0
 ?TesselatePatch@CLandscapeTesselatorBase@@QAE_NPAVCTesselationData@@PAX@Z	00be3910	00be61b0
 ?Reprioritise@AsyncMgr@@QAEXPAXPAVCBankFileAsyncData@@@Z	00bd9ab0	00beaa30
@@ -39559,3 +39553,7 @@ __real@0000000000000000	0122ed70	00b260b0
 ??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36e0	00bdd3e0
 ??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z	00bf9920	00bdfd60
 ?SetFinalAction@CTCAssassinRush@@QAEXV?$CCountedPointer@VCCreatureActionBase@@@@@Z	008ceae0	008cd470
+?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	00bda090	00be6090
+?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090
+?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z	00bda110	00be5c30
+?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z	00b677a0	00be6090

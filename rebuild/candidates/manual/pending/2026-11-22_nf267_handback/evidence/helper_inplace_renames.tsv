@@ -1,0 +1,7 @@
+row	old_def_symbol	new_def_symbol	retail_copy
+0x00BDA150	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	0x00BD9C20
+0x00BDA150	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	0x00BD9C00
+0x00BDA150	?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	0x00BD9CC0
+0x00BD9CE0	?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	0x00BD9C20
+0x00BD9CE0	?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	0x00BD9C00
+0x00BD9CE0	?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	0x00BD9CC0

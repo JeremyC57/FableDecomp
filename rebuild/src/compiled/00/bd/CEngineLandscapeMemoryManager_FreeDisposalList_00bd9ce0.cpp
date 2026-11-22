@@ -5,9 +5,10 @@
 //   MATCH with no inline control; the nf140 FABLE_FORCEINLINE is gone from the header).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD9CE0, 488 bytes, thiscall, plain `ret`. Speed TU (no pragma).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ (Ego_r 009C2700, between
-//   DeleteTexture 009C26A0 and ??1 009C2910 -- retail has DeleteTexture 0x00BD9CC0, this body, ??1 0x00BD9ED0); the body walks
+//   DeleteTexture 009C26A0 and ??1 009C2910; retail has DeleteTextureBlockWhileBusy 0x00BD9CC0, this body, ??1 0x00BD9ED0, so the
+//   neighbour order differs between the builds and is not the proof); the body walks
 //   the Ego_r members TextureDisposalList[3] / VertexBufferDisposalList[3] / IndexBufferDisposalList[3] (three arrays of
-//   STLport lists at retail +0x10 / +0x1C / +0x28, the layout of the landed DeleteTextureBlockWhileBusy 0x00BDA110 and
+//   STLport lists at retail +0x10 / +0x1C / +0x28, the layout of the landed DeleteTexture 0x00BDA110 and
 //   ~CEngineLandscapeMemoryManager 0x00BD9ED0, which already calls this row as FreeDisposalList); callers are the class's
 //   ~CEngineLandscapeMemoryManager 0x00BD9EE4, EnablePoolAllocation 0x00BDA07D, 0x00BDA15F and CEngineLandscapeRenderer::
 //   LoadNewScene 0x00B6851D. The catalog name "_global::TexturePool_Clear" is descriptive and wrong (class member).
@@ -16,14 +17,20 @@
 //   CMemoryAllocator::InternalDeallocate 0x009F2920 / GetAllocationCount 0x009F1F10 / ~CMemoryAllocator 0x009F2310 /
 //   operator delete 0x009F1F90 (the inlined FreeVirtual 0x00BD9B90), free 0x00BFEA14 (list node).
 // Shape: for each of the three generations, `while (list.size() != 0) { DeleteX(list.front()); list.pop_front(); }` with
-//   STLport 4.6 size() (distance count loop) and erase(begin()). The three same-TU members DeleteTexture / DeleteVertexBuffer
-//   / DeleteIndexBuffer (`p->~T(); FreeVirtual(p);`) and FreeVirtual are auto-inlined by VC7.1 exactly as retail: the
+//   STLport 4.6 size() (distance count loop) and erase(begin()). The three same-TU private members DeleteTextureBlockWhileBusy /
+//   DeleteVertexBufferBlockWhileBusy / DeleteIndexBufferBlockWhileBusy (`p->~T(); FreeVirtual(p);`) and FreeVirtual are auto-inlined by VC7.1 exactly as retail: the
 //   texture path keeps FreeVirtual's `if (block)` test (the inline ~CTexture is a plain call), the two virtual-destructor
-//   paths lose it. The same TU reproduces retail's out-of-line DeleteTexture 0x00BD9CC0 byte for byte (unreferenced in
+//   paths lose it. The TU's out-of-line DeleteTextureBlockWhileBusy copy is NOT retail 0x00BD9CC0 (75 v 28 bytes: retail calls FreeVirtual there) (unreferenced in
 //   retail; not a chunk row). Layout and the polymorphic bases as in the landed ~CEngineLandscapeMemoryManager 0x00BD9ED0
 //   (engine/CEngineLandscapeMemoryManager.h flattens both bases and keeps the list arrays opaque); CTexture has no RTTI
 //   vtable (non-polymorphic, inline ~CTexture as in Ego_r: no ??1CTexture), CVertexBufferWin32 / CIndexBuffer have RTTI
 //   vtables 0x0129BA20 / 0x0129EF2C.
+// Names (NF267, 2026-11-22): the three destroy-now helpers were spelled with the public DeleteTexture / DeleteVertexBuffer /
+//   DeleteIndexBuffer names; those are the queue functions 0x00BDA110 / 0x00BDA0D0 / 0x00BDA090 (public, called only from other
+//   classes). The destroy-now bodies are the private ...BlockWhileBusy trio (Ego_r.pdb / FableWin.pdb / Ego_d.pdb, `AAE`): retail
+//   0x00BD9C00 / 0x00BD9C20 / 0x00BD9CC0 (out-of-line copies with no caller; VB / IB for the first two from Ego_r order only).
+// Fidelity: same-TU strong definitions of the retail TU-mates FreeVirtual 0x00BD9B90 and the BlockWhileBusy trio (as at HEAD,
+//   where the landed 0x00BDA150 defines the same four symbols).
 // NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
 // (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
 // statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
@@ -143,9 +150,11 @@ public:
     bool                        EnableDelayedResourceDestruction;   // +0x40
     virtual ~CEngineLandscapeMemoryManager();
     void FreeVirtual(void* block);                         // 0x00BD9B90
-    void DeleteIndexBuffer(CIndexBuffer* buffer);
-    void DeleteVertexBuffer(CVertexBufferWin32* buffer);
-    void DeleteTexture(CTexture* texture);                 // 0x00BD9CC0
+private:
+    void DeleteIndexBufferBlockWhileBusy(CIndexBuffer* buffer);         // 0x00BD9C20 (Ego_r order)
+    void DeleteVertexBufferBlockWhileBusy(CVertexBufferWin32* buffer);  // 0x00BD9C00 (Ego_r order)
+    void DeleteTextureBlockWhileBusy(CTexture* texture);                // 0x00BD9CC0
+public:
     void FreeDisposalList();                               // 0x00BD9CE0
 private:
     virtual bool HandleFailedAllocation(unsigned long size);
@@ -160,19 +169,19 @@ void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
     }
 }
 
-void CEngineLandscapeMemoryManager::DeleteIndexBuffer(CIndexBuffer* buffer)
+void CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(CIndexBuffer* buffer)
 {
     buffer->~CIndexBuffer();
     FreeVirtual(buffer);
 }
 
-void CEngineLandscapeMemoryManager::DeleteVertexBuffer(CVertexBufferWin32* buffer)
+void CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(CVertexBufferWin32* buffer)
 {
     buffer->~CVertexBufferWin32();
     FreeVirtual(buffer);
 }
 
-void CEngineLandscapeMemoryManager::DeleteTexture(CTexture* texture)
+void CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(CTexture* texture)
 {
     texture->~CTexture();
     FreeVirtual(texture);
@@ -182,15 +191,15 @@ void CEngineLandscapeMemoryManager::FreeDisposalList()
 {
     for (long i = 0; i < 3; ++i) {
         while (TextureDisposalList[i].size() != 0) {
-            DeleteTexture(TextureDisposalList[i].front());
+            DeleteTextureBlockWhileBusy(TextureDisposalList[i].front());
             TextureDisposalList[i].pop_front();
         }
         while (VertexBufferDisposalList[i].size() != 0) {
-            DeleteVertexBuffer(VertexBufferDisposalList[i].front());
+            DeleteVertexBufferBlockWhileBusy(VertexBufferDisposalList[i].front());
             VertexBufferDisposalList[i].pop_front();
         }
         while (IndexBufferDisposalList[i].size() != 0) {
-            DeleteIndexBuffer(IndexBufferDisposalList[i].front());
+            DeleteIndexBufferBlockWhileBusy(IndexBufferDisposalList[i].front());
             IndexBufferDisposalList[i].pop_front();
         }
     }

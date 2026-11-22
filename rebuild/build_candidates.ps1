@@ -357400,22 +357400,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00bda090'
         Module = 'CEngineLandscapeMemoryManager'
-        Source = '00/bd/CEngineLandscapeMemoryManager_DeleteIndexBufferBlockWhileBusy_00bda090.cpp'
-        TestSource = '00/bd/CEngineLandscapeMemoryManager_DeleteIndexBufferBlockWhileBusy_00bda090_test.cpp'
+        Source = '00/bd/CEngineLandscapeMemoryManager_DeleteIndexBuffer_00bda090.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_DeleteIndexBuffer_00bda090_test.cpp'
         PassPattern = '00bda090_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bda0d0'
         Module = 'CEngineLandscapeMemoryManager'
-        Source = '00/bd/CEngineLandscapeMemoryManager_DeleteVertexBufferBlockWhileBusy_00bda0d0.cpp'
-        TestSource = '00/bd/CEngineLandscapeMemoryManager_DeleteVertexBufferBlockWhileBusy_00bda0d0_test.cpp'
+        Source = '00/bd/CEngineLandscapeMemoryManager_DeleteVertexBuffer_00bda0d0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_DeleteVertexBuffer_00bda0d0_test.cpp'
         PassPattern = '00bda0d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bda110'
         Module = 'CEngineLandscapeMemoryManager'
-        Source = '00/bd/CEngineLandscapeMemoryManager_DeleteTextureBlockWhileBusy_00bda110.cpp'
-        TestSource = '00/bd/CEngineLandscapeMemoryManager_DeleteTextureBlockWhileBusy_00bda110_test.cpp'
+        Source = '00/bd/CEngineLandscapeMemoryManager_DeleteTexture_00bda110.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_DeleteTexture_00bda110_test.cpp'
         PassPattern = '00bda110_TEST PASS'
     }
     [pscustomobject]@{

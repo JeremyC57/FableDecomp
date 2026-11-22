@@ -42927,9 +42927,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bd9ed0	~CEngineLandscapeMemoryManager	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bd9fd0	CEngineLandscapeMemoryManager	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bda070	EnablePoolAllocation	CEngineLandscapeMemoryManager	__thiscall	void	2	CEngineLandscapeMemoryManager *,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bd\CEngineLandscapeMemoryManager_EnablePoolAllocation_00bda070.cpp
-00bda090	DeleteIndexBufferBlockWhileBusy	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
-00bda0d0	DeleteVertexBufferBlockWhileBusy	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
-00bda110	DeleteTextureBlockWhileBusy	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
+00bda090	DeleteIndexBuffer	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
+00bda0d0	DeleteVertexBuffer	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
+00bda110	DeleteTexture	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bda150	ProcessDisposalList	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bda360	AllocateIndexBuffer	CEngineLandscapeMemoryManager	__thiscall	CIndexBuffer *	6	CEngineLandscapeMemoryManager *,CMovableResource *,long,ulong,EIndexBufferFormat,EPrimitiveType	1	yes	accepted									
 00bda3d0	AllocateVertexBuffer	CEngineLandscapeMemoryManager	__thiscall	CVertexBufferWin32 *	6	CEngineLandscapeMemoryManager *,CMovableResource *,EVertexType,long,long,ulong	1	yes	accepted									

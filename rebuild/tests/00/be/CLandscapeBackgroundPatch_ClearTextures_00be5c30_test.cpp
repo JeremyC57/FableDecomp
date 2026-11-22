@@ -1,39 +1,39 @@
-#include <cstdio>
+// Behaviour test for CLandscapeBackgroundPatch::ClearTextures() @ 0x00BE5C30 on the shared headers: links the row object;
+// CEngineLandscapeMemoryManager::DeleteTexture and the renderer global are stubbed here (raw storage, no constructors run).
+#define FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER
+#define FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER_DELETETEXTURE
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER
+#define FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH
+#define FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH_CLEARTEXTURES
+#include <stdio.h>
+#include "engine/CEngineLandscapeMemoryManager.h"
+#include "engine/CEngineLandscapeRenderer.h"
+#include "engine/CLandscapeBackgroundPatch.h"
 
-struct CTexMgr {
-  int released;
-  void ReleaseTexture(void* t) { released = (t != 0) ? 1 : 0; }
-};
-struct CGlobal { char pad[0x6b0]; CTexMgr* mgr; };
-class CLandscapeBackgroundPatch { public: char pad[0xb8]; void* tex; };
+static CTexture* g_deleted; static const void* g_manager_seen; static int g_calls;
+void CEngineLandscapeMemoryManager::DeleteTexture(CTexture* texture) { g_deleted = texture; g_manager_seen = this; ++g_calls; }
+CEngineLandscapeRenderer* NEngineInternal::GPLandscapeRenderer;
 
-static CTexMgr g_mgrObj;
-static CGlobal g_globalObj;
-CGlobal* g_obj_01436ea8 = &g_globalObj;
+static double g_renderer_storage[sizeof(CEngineLandscapeRenderer) / sizeof(double) + 1];
+static double g_manager_storage[sizeof(CEngineLandscapeMemoryManager) / sizeof(double) + 1];
+static double g_patch_storage[sizeof(CLandscapeBackgroundPatch) / sizeof(double) + 1];
+static double g_texture_storage[4];
 
-void CLandscapeBackgroundPatch_ClearTextures(CLandscapeBackgroundPatch* self)
+int main()
 {
-  void* tex = self->tex;
-  if (tex) {
-    g_obj_01436ea8->mgr->ReleaseTexture(tex);
-    self->tex = 0;
-  }
-}
-
-int main() {
-  g_globalObj.mgr = &g_mgrObj;
-  CLandscapeBackgroundPatch p;
-  int dummy = 5;
-  p.tex = &dummy;
-  g_mgrObj.released = 0;
-  CLandscapeBackgroundPatch_ClearTextures(&p);
-  if (p.tex != 0) { std::printf("FAIL tex not cleared\n"); return 1; }
-  if (g_mgrObj.released != 1) { std::printf("FAIL not released\n"); return 1; }
-  CLandscapeBackgroundPatch p2;
-  p2.tex = 0;
-  g_mgrObj.released = 99;
-  CLandscapeBackgroundPatch_ClearTextures(&p2);
-  if (g_mgrObj.released != 99) { std::printf("FAIL released on null\n"); return 1; }
-  std::printf("CLandscapeBackgroundPatch_00be5c30_TEST PASS\n");
-  return 0;
+    CEngineLandscapeRenderer* renderer = reinterpret_cast<CEngineLandscapeRenderer*>(g_renderer_storage);
+    CEngineLandscapeMemoryManager* manager = reinterpret_cast<CEngineLandscapeMemoryManager*>(g_manager_storage);
+    CLandscapeBackgroundPatch* patch = reinterpret_cast<CLandscapeBackgroundPatch*>(g_patch_storage);
+    CTexture* texture = reinterpret_cast<CTexture*>(g_texture_storage);
+    renderer->MemoryManager = manager;
+    NEngineInternal::GPLandscapeRenderer = renderer;
+    patch->Texture = texture;
+    patch->IndexBuffer = reinterpret_cast<CIndexBuffer*>(g_texture_storage + 1);
+    patch->ClearTextures();                                    // a texture: handed to the manager once, then cleared
+    bool ok = g_deleted == texture && g_manager_seen == manager && g_calls == 1 && patch->Texture == 0;
+    ok = ok && patch->IndexBuffer == reinterpret_cast<CIndexBuffer*>(g_texture_storage + 1);   // nothing else touched
+    patch->ClearTextures();                                    // no texture: the manager is not called
+    ok = ok && g_calls == 1 && patch->Texture == 0;
+    printf(ok ? "CLandscapeBackgroundPatch_00be5c30_TEST PASS\n" : "CLandscapeBackgroundPatch_00be5c30_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

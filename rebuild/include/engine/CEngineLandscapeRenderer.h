@@ -158,6 +158,11 @@ public:
     // only caller 0x00BE5D20 passes the patch's slot word and the patch). A declaration only: no layout change.
     void RegisterSubPatchForZSorting(long& index, CLandscapeBackgroundPatch* patch);    // 0x00B67E30
 #endif
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_UNREGISTERSUBPATCHFORZSORTING
+    // Nested opt-in (NF265, row 0x00BE6090): Ego_r.pdb / FableWin.pdb ?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z
+    // (retail 0x00B677A0; ~CLandscapeBackgroundPatch 0x00BE6090 passes its ZSorterHandle slot by reference). Declaration only: no layout change.
+    void UnregisterSubPatchForZSorting(long& index);                     // 0x00B677A0
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_RENDERSORTED
     // Retail opt-in (row 0x00B68DA0): Ego_r.pdb / FableWin.pdb ?RenderSortedPatches@CEngineLandscapeRenderer@@AAEXXZ,
     // ?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ, ?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ (all private).
