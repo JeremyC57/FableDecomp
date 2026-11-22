@@ -153,7 +153,6 @@ _BeginProfile@4	00404500	00431020
 ??0CDefinitionManager@@QAE@ABVCWideString@@P6IXABVCCharString@@@Z@Z	009b0470	00433693
 ??_7CStartupDefinitionManager@@6B@	0123117c	00433693
 ?ErrorCallback@CStartupDefinitionManager@@KIXABVCCharString@@@Z	0043368c	00433693
-?Alloc@Pool@@QAEPAXI@Z	00433d3a	004336b0
 ?Helper@CForwarder_00433d75@@QAEPAXPAXABUSScalarTag@@J@Z	00433cec	00433d75
 ?_Uninit_copy@@YIXHHPAXPBX@Z	00433d8a	00433db5
 ??_7CDisplayEngine@@6B@	01231574	004354c0
@@ -10355,8 +10354,6 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ?IsTutorialCategoryGiven@CUserProfileManager@@QBE_NW4ETutorialCategory@@@Z	00407330	0040bb30
 ?pop_front@?$CRetailDeque@W4ETutorialCategory@@@@QAEXXZ	00410ed0	0040bb30
 ?_M_reallocate_map@?$CRetailDeque@W4ETutorialCategory@@@@QAEXI_N@Z	00411630	004127e0
-?erase@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	00412450	00412b70
-?insert@?$CRetailVector@VCWideString@@@@QAEXPAVCWideString@@IABV2@@Z	004126e0	00412b70
 ?TransferBinaryIn@CActionInputControl@@QAEXAAUCMemoryDataInputStreamReader@@@Z	00410120	00412c70
 ?resize@?$CRetailVector@VCActionInputControl@@@@QAEXIABVCActionInputControl@@@Z	004129f0	00412c70
 ?TransferBinaryIn@?$CPersistTraits@K@@QBEXAAUCMemoryDataInputStreamReader@@PAK@Z	0040fef0	00412d20
@@ -14640,7 +14637,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?TransferOut@?$CPersistTraits@VCActionInputControl@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVCActionInputControl@@@Z	0040fa20	0040f9d0
 ?TransferOut@?$CPersistTraits@VC2DVector@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVC2DVector@@@Z	009e7f00	0040fa20
 ?TransferIn@?$CPersistTraits@VCActionInputControl@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAVCActionInputControl@@@Z	004112a0	00411250
-?Vector_CopyImpl@@YIPAVCActionInputControl@@PAV1@00PAPAV1@PAX@Z	0040e350	00411b00
 ?Reset@CCountedCodeSectionManagerPointer@@QAEXPAVCCodeSectionManager@@@Z	00413590	00414ce0
 ??0CDisplayEngine@@QAE@ABVCDisplayEngineInit@@@Z	00434e10	00417418
 ?reset@?$scoped_ptr@VCDisplayEngine@@@@QAEXPAVCDisplayEngine@@@Z	0041940c	00417418
@@ -39460,3 +39456,4 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?GetExclusiveObserver@CObservable@NUISystem@@UAEPAVCObserver@2@XZ	0042bea9	0042be7b
 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@Z	0042b8fc	0042c02f
 ??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	00429e16	0042b8fc
+?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z	00433d3a	004336b0

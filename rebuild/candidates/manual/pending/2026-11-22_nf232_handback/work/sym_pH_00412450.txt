@@ -1,0 +1,7 @@
+DEF ??$RetailCopy@VCWideString@@@@YAPAVCWideString@@PAV0@00@Z
+DEF ??$RetailDestroy@VCWideString@@@@YAXPAVCWideString@@0@Z
+DEF ??_GCWideString@@QAEPAXI@Z
+DEF ?erase@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z
+UND ??1CWideString@@QAE@XZ
+UND ??3@YAXPAX@Z
+UND ??4CWideString@@QAEABV0@ABV0@@Z

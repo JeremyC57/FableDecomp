@@ -1,0 +1,17 @@
+addr       parity           behav  name
+004336b0   WARN STANDIN_LEAF ?Set@CStartupDefinitionManager@@SIXPAV1@@Z (catalog CEngineSubPrimitiveBase::operator_new; names another function)
+004336b0   RELOCATION_MATCH PASS   operator_new
+00411b00   WARN STANDIN_LEAF ?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z (catalog vector_push_back_copy; names another function)
+00411b00   RELOCATION_MATCH PASS   vector_push_back_copy
+00412450   RELOCATION_MATCH PASS   erase
+00412b70   RELOCATION_MATCH PASS   resize
+0054f410   RELOCATION_MATCH PASS   SetValue
+0054f370   RELOCATION_MATCH PASS   SetValue
+
+WINS: 6
+  004336b0 RELOCATION_MATCH _global::?Set@CStartupDefinitionManager@@SIXPAV1@@Z
+  00411b00 RELOCATION_MATCH _global::?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z
+  00412450 RELOCATION_MATCH std::vector<CWideString>::?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z
+  00412b70 RELOCATION_MATCH std::vector<CWideString>::?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXI@Z
+  0054f410 RELOCATION_MATCH NUISystem::CText::?SetValue@CText@NUISystem@@UAEXABVCWideString@@_N1@Z
+  0054f370 RELOCATION_MATCH NUISystem::CText::?SetValue@CText@NUISystem@@UAEXABVCCharString@@_N1@Z

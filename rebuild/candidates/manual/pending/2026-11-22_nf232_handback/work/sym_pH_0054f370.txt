@@ -1,0 +1,16 @@
+DEF ??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ
+DEF ??_C@_00CNPNBAHC@?$AA@
+DEF ?Get@CMainGameComponent@@SIPAV1@XZ
+DEF ?Get@CNewFrontendGameComponent@@SIPAV1@XZ
+DEF ?GetCRC@CCharString@@QBEKXZ
+DEF ?GetGameTextDataBank@CMainGameComponent@@QBEPAVCDataBank@NGameText@@XZ
+DEF ?GetLength@CCharString@@QBEKXZ
+DEF ?GetString@CCharString@@QBEPBDXZ
+DEF ?GetTextBank@CNewFrontendGameComponent@@QBEABVCDataBank@NGameText@@XZ
+DEF ?SetValue@CText@NUISystem@@UAEXABVCCharString@@_N1@Z
+UND ??1CWideString@@QAE@XZ
+UND ?Calc@CCRC@@SIKKPBXK@Z
+UND ?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z
+UND ?PMainGameComponent@CMainGameComponent@@1PAV1@A
+UND ?ToWideString@CCharString@@QBE?AVCWideString@@XZ
+UND ?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A

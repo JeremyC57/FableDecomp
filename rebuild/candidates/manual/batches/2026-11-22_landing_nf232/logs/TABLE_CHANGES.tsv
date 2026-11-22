@@ -1,0 +1,6 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	?Alloc@Pool@@QAEPAXI@Z	00433d3a	004336b0	0x004336B0 now binds FableWin ?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z; no other landed binder (callers.py: only 0x004336B6)
+add	rebuild/oracles/reloc_bindings.tsv	?Reset@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXPAVCStartupDefinitionManager@@@Z	00433d3a	004336b0	the PDB spelling 0x004336B0 emits (replaces the Pool stand-in; the self row 0x00433D3A keeps its CPolymorphicData_00433D3A stand-in leaf: NAME_FIXES)
+delete	rebuild/oracles/reloc_bindings.tsv	?Vector_CopyImpl@@YIPAVCActionInputControl@@PAV1@00PAPAV1@PAX@Z	0040e350	00411b00	0x00411B00 now binds ??$__copy@PAVCDateAndTime@@... (existing line, witness 0x0059AEAF; 0x004091C0 binds it too); no other emitter
+delete	rebuild/oracles/reloc_bindings.tsv	?erase@?$CRetailVector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	00412450	00412b70	0x00412B70 now binds the STLport spelling (existing line, witness 0x00412B20); no other emitter
+delete	rebuild/oracles/reloc_bindings.tsv	?insert@?$CRetailVector@VCWideString@@@@QAEXPAVCWideString@@IABV2@@Z	004126e0	00412b70	0x00412B70 now binds ?_M_fill_insert@?$vector@VCWideString@@... (existing line, witness 0x00412B20; 0x0040BCA0 / 0x0040C790 bind it too); no other emitter

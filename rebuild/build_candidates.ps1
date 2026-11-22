@@ -76854,9 +76854,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004336b0'
-        Module = '_global'
-        Source = '00/43/global_operatornew_004336b0.cpp'
-        TestSource = '00/43/global_operatornew_004336b0_test.cpp'
+        Module = 'CStartupDefinitionManager'
+        Source = '00/43/CStartupDefinitionManager_Set_004336b0.cpp'
+        TestSource = '00/43/CStartupDefinitionManager_Set_004336b0_test.cpp'
         PassPattern = 'PASS_004336b0'
     }
     [pscustomobject]@{

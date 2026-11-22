@@ -1,0 +1,2 @@
+00433d3a	?Alloc@Pool@@QAEPAXI@Z	x1
+013b8760	?g_pool_013b8760@@3UPool@@A	x1
