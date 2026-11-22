@@ -85,7 +85,11 @@ public:
 #else
  void SetObservedPos(const C3DVector & p0);
 #endif
+#ifdef FABLE_RETAIL_PROJECTILE_SETFOV_PASS28
+ void SetFOV(float fov) { CameraFOV = fov; }
+#else
  void SetFOV(float p0);
+#endif
 #ifndef FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS // agentFAM04 (2026-11-11)
  float GetFOV() const;
 #else // FABLE_RETAIL_NCAMERAMODES_CBASE_INLINE_ACCESSORS

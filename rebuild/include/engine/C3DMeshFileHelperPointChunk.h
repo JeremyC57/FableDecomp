@@ -12,6 +12,15 @@
 class C3DMeshFileHelperPointChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileHelperPointChunk();
+#ifdef FABLE_RETAIL_C3DMESHFILEHELPERPOINTCHUNK_GETTERS
+    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetPosition@C3DMeshFileHelperPointChunk@@QBE?AVC3DVector@@XZ,
+    // ?GetSubMeshIndex@..@@QBEJXZ, ?GetBoneIndex@..@@QBEJXZ, ?GetName@..@@QBEABVCCharString@@XZ -- inline in retail (0x00A2F858..0x00A2F86D
+    // reads Position +0x2C, BoneIndex +0x3C and Name +0x40 in place).
+    C3DVector GetPosition() const { return Position; }
+    long GetSubMeshIndex() const { return SubMeshIndex; }
+    long GetBoneIndex() const { return BoneIndex; }
+    const CCharString& GetName() const { return Name; }
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -23,7 +32,7 @@ private:
     long BoneIndex;
     CCharString Name;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelperPointChunk) == 0x44);
+FABLE_STATIC_ASSERT_AT(26, sizeof(C3DMeshFileHelperPointChunk) == 0x44);
 #endif // FABLE_ENGINE_C3DMESHFILEHELPERPOINTCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEHELPERPOINTCHUNK_H
@@ -57,14 +66,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileHelperPointChunk) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Position_X) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Position_Y) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Position_Z) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, SubMeshIndex) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, BoneIndex) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileHelperPointChunk, Name_PStringData) == 0x40);
+FABLE_STATIC_ASSERT_AT(60, sizeof(C3DMeshFileHelperPointChunk) == 0x44);
+FABLE_STATIC_ASSERT_AT(61, offsetof(C3DMeshFileHelperPointChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(62, offsetof(C3DMeshFileHelperPointChunk, Position_X) == 0x2c);
+FABLE_STATIC_ASSERT_AT(63, offsetof(C3DMeshFileHelperPointChunk, Position_Y) == 0x30);
+FABLE_STATIC_ASSERT_AT(64, offsetof(C3DMeshFileHelperPointChunk, Position_Z) == 0x34);
+FABLE_STATIC_ASSERT_AT(65, offsetof(C3DMeshFileHelperPointChunk, SubMeshIndex) == 0x38);
+FABLE_STATIC_ASSERT_AT(66, offsetof(C3DMeshFileHelperPointChunk, BoneIndex) == 0x3c);
+FABLE_STATIC_ASSERT_AT(67, offsetof(C3DMeshFileHelperPointChunk, Name_PStringData) == 0x40);
 
 #endif // FABLE_ENGINE_C3DMESHFILEHELPERPOINTCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEHELPERPOINTCHUNK

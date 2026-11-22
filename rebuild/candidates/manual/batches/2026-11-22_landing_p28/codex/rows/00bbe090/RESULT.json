@@ -1,0 +1,32 @@
+{
+  "include_snapshot": "cd9640ec9d46c9ba5ee9fae1afe9053ebae20b5c7dea761b4f172438c83014aa",
+  "tag": "handback_cd9640ec9d_47e0dac",
+  "compile": {
+    "row": "00bbe090",
+    "tag": "handback_cd9640ec9d_47e0dac",
+    "source_sha256": "47e0daced53d1fd5f185bde6ad9a1f43eb6517975330b975bf6d25f49c7ee572",
+    "requested_leaf": "?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "flags": [],
+    "retail_bytes": 2464,
+    "leaf": "?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "status": "MASKED_EQUAL",
+    "object_bytes": 2464,
+    "matched_instructions": 682,
+    "retail_instructions": 682,
+    "built_instructions": 682,
+    "hunks": 0,
+    "same_size_different_bytes": 0,
+    "pickany_complete": true,
+    "pickany_eq": 3,
+    "pickany_neq": 0,
+    "pickany_referenced_neq": 0
+  },
+  "tested": true,
+  "test_sha256": "b6a11fe5d7055212a60bea8b88bbcb1096e5655295ae2e919f8c6e5e717b8efc",
+  "grade": "RELOCATION_MATCH",
+  "symbol_table_checked": true,
+  "effective_pickany_eq": 3,
+  "effective_pickany_neq": 0,
+  "effective_pickany_referenced_neq": 0,
+  "strong_same_tu_copies": "none"
+}

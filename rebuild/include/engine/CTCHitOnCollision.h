@@ -11,6 +11,10 @@ class CTCHitOnCollision : public CTCBase
 {
 public:
     void OnCollision(const C3DVector&, const C3DVector&, CThing&);
+#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28
+    // FableWin IsThrowThingsOutLaterally and the native byte test at +0x1b.
+    bool IsThrowThingsOutLaterally() const { return PushSideways; }
+#endif
 private:
     std::vector<CThingGameObject*> CollidedList;
     bool DontHitWhenCombatAction;
@@ -19,5 +23,5 @@ private:
     bool PushSideways;
     float Damage;
 };
-FABLE_STATIC_ASSERT(sizeof(CTCHitOnCollision) == 0x20);
+FABLE_STATIC_ASSERT_AT(22, sizeof(CTCHitOnCollision) == 0x20);
 #endif

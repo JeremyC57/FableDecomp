@@ -36,6 +36,14 @@ private:
     bool FailPath;
     bool OnDirectApproach;
 public:
+#ifdef FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28
+    CSteeringAgent(const CNavigatorExternalInterface* navigator, bool dummy);
+    float GetDistCutoff() const { return DistCutoff; }
+    const C2DVector& GetGoal() const { return Goal; }
+    bool IsDead() const { return NavigatorInterface->IsDead(); }
+    float PeekBestDistRight() const { return BestDistRight; }
+    float PeekBestDistLeft() const { return BestDistLeft; }
+#endif
 #ifdef FABLE_RETAIL_CSTEERINGAGENT_MOVETOWARD_PASS26
  // Both PDBs and original031ac720 dispatch/accessor chain.
  void SetCurrentMaxSpeed(float speed){CurrentMaxSpeed=speed;}

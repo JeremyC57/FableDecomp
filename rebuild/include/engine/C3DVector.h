@@ -613,7 +613,11 @@ public:
     inline float GetMagnitude2D()const {return GFFastSqrt(X*X+Y*Y);}
 #endif
 #endif
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    FABLE_FORCEINLINE C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
+#else
     inline C2DCoordI ToC2DCoordI() const { return C2DCoordI((long)X,(long)Y); }
+#endif
 #ifdef FABLE_RETAIL_C3DVECTOR
     // Retail branch (pass 12 header wave, 0x00AC2BE0 PartitionSpace): inline in retail; FableWin.pdb keeps out-of-line debug
     // copies ?LimitLower@C3DVector@@QAEXABV1@@Z 0x02E345C0 / ?LimitUpper@C3DVector@@QAEXABV1@@Z 0x02E34650, retail expands them

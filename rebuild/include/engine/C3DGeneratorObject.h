@@ -10,6 +10,12 @@
 #include "fable_string.h"
 class C3DGeneratorObject : public C3DDummyObject {
 public:
+#ifdef FABLE_RETAIL_C3DGENERATOROBJECT_CTOR
+    // FableWin constructor, inlined at 0x00A2FAF8.
+    C3DGeneratorObject() : BankIndex(0), UseLocalOrigin(false) { }
+    C3DGeneratorObject(const C3DDummyObject& dummy,bool local_origin,const CCharString& name,unsigned long bank_index)
+        : C3DDummyObject(dummy), ObjectName(name), BankIndex(bank_index), UseLocalOrigin(local_origin) { }
+#endif
     unsigned long GetBankIndex() const { return BankIndex; }
     bool GetUseLocalOrigin() const { return UseLocalOrigin; }
     const CCharString& GetObjectName() const { return ObjectName; }
@@ -18,5 +24,5 @@ private:
     unsigned long BankIndex;                                             // +0x38
     bool UseLocalOrigin;                                                 // +0x3c
 };
-FABLE_STATIC_ASSERT(sizeof(C3DGeneratorObject) == 0x40);
+FABLE_STATIC_ASSERT_AT(21, sizeof(C3DGeneratorObject) == 0x40);
 #endif

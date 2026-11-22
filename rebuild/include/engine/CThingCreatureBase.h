@@ -28,6 +28,12 @@ enum ESex;
 class CCreatureAbilityDef;class CSoundPair;
 #endif
 class CThingCreatureBase : public CThingGameObject {
+#ifdef FABLE_RETAIL_KNOCKDOWN_INITIALISE_PASS28
+public:
+    // Both original symbol tables; native caller targets 00663490.
+    void SetBodyReorienterActive(bool active);
+private:
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ONDIE
 // NF62 opt-in (2026-11-17, row 0x006A9590 CThingPlayerCreature::OnDie, which calls it qualified last): Ego_r.pdb ?OnDie@CThingCreatureBase@@UAEXXZ
 // (public virtual; the CThing slot-11 override, out of line at 0x00663F50, vtable 0x0125AC38 is CThingCreatureBase's slot 11). Declaration only.
@@ -349,6 +355,9 @@ public:
         FABLE_STATIC_ASSERT_AT(223, offsetof(CThingCreatureBase,PQueuedActions)==0x108);
     }
     virtual void OnHit(CHitParameters&);
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    bool IsPickPocketable() const; // Both donor PDBs, retail 0x00665E90.
+#endif
     bool SetCurrentAction(const CCreatureActionBase&);
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETCURRENTACTION_COUNTED
     // NF83 opt-in (round 7, row 0x008D6C80 NCreatureMode::CModeSitBase::FrameUpdate): Ego_r.pdb 0x005429A0 / FableWin.pdb 0x01D94200

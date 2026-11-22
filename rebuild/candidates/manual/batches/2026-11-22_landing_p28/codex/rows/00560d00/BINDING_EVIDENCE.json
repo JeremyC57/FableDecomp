@@ -1,0 +1,104 @@
+[
+  [
+    "0x0055F090",
+    "?StdEncryptString@?A0xc1d737f7@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@0@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    true
+  ],
+  [
+    "0x0055F140",
+    "?StdDecryptString@?A0xc1d737f7@@YI?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@0@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    true
+  ],
+  [
+    "0x00569690",
+    "??$?HDV?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z",
+    "STLport source, typed call and complete independently matching retail owner.",
+    true
+  ],
+  [
+    "0x0055E040",
+    "?EncipherMorsel@?A0xc1d737f7@@YIXPAK00@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    true
+  ],
+  [
+    "0x0055E180",
+    "?DecipherMorsel@?A0xc1d737f7@@YIXPAK00@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    true
+  ],
+  [
+    "0x0055E2C0",
+    "?CryptoMatic@?A0xc1d737f7@@YIHPBDPADH0D@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    true
+  ],
+  [
+    "0x00560920",
+    "?Explode@?A0xc1d737f7@@YIHAAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    true
+  ],
+  [
+    "0x0040F6B0",
+    "?_M_insert_overflow@?$vector@DV?$allocator@D@std@@@std@@IAEXPADABDABU__true_type@2@I_N@Z",
+    "STLport source, typed call and complete independently matching retail owner.",
+    true
+  ],
+  [
+    "0x00568F10",
+    "??$__uninitialized_fill_n@PAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@IV12@@std@@YIPAV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@0@PAV10@IABV10@ABU__false_type@0@@Z",
+    "STLport source, typed call and complete independently matching retail owner.",
+    true
+  ],
+  [
+    "0x00569A40",
+    "?_M_clear@?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ",
+    "STLport source, typed call and complete independently matching retail owner.",
+    true
+  ],
+  [
+    "0x0055E5F0",
+    "?MD5@?A0xc1d737f7@@YI?AVCCharString@@ABV2@@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ],
+  [
+    "0x00569C50",
+    "??0LHHttpHeaderStatus@LHNetworkLib@@QAE@XZ",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ],
+  [
+    "0x00569D30",
+    "??1LHHttpHeaderStatus@LHNetworkLib@@QAE@XZ",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ],
+  [
+    "0x008405F0",
+    "?SendRequestAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ],
+  [
+    "0x00840740",
+    "?ReceiveHeaderAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ],
+  [
+    "0x00840B60",
+    "?GetHeader@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@AAULHHttpHeaderStatus@2@@Z",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ],
+  [
+    "0x0083EFE0",
+    "?ReceiveDocumentAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ",
+    "FableWin scoreboard module and exact call site in the retail member or its named transaction/crypto callee.",
+    false
+  ]
+]

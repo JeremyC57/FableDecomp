@@ -31,6 +31,18 @@ enum LANDSCAPE_EDGE_STRIP_SIDE { };                      // W4LANDSCAPE_EDGE_STR
 
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase {   // vtable 0x012A803C
 public:
+#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28
+#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28
+private:
+    long PeekWorldX() const;
+    long PeekWorldY() const;
+    static long __fastcall PackUVForVertexBuffer(float);
+    unsigned long PackVertexNormal(const C3DVector&);
+public:
+#endif
+    void BuildDefaultSection(); // Ego_r and FableWin, retail 0x00BE6880
+    static void __fastcall SetTargetVertexNormal(class CTVertexLandscapeBackground&, unsigned long);
+#endif
     CPatchTesselationEdgeStrip* GetEdgeStrip(LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BE5C60
 #ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_PATCH_CLEARTEXTURES
     // Nested opt-in (NF265, row 0x00BE5C30): Ego_r.pdb / FableWin.pdb ?ClearTextures@CLandscapeBackgroundPatch@@QAEXXZ (Ego_r donor

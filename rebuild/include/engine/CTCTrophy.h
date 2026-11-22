@@ -29,6 +29,9 @@ class CPersistContext;
 
 class CTCTrophy : public CTCBase {
 public:
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_TROPHY; }
+#endif
     CTCTrophy(CThing&);                                                  // 0x006DDAE0
     virtual ~CTCTrophy();                                                // 0x006DDB80
     static CTCBase* __fastcall Alloc(CThing&);

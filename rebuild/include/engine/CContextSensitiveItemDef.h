@@ -28,6 +28,12 @@ class CContextSensitiveItemDef : public CSubDefClassBase {
 public:
     static CCharString FABLE_FASTCALL StatGetTypeName() { return CCharString("CContextSensitiveItemDef", -1); }
     bool IsValidOverride(const CThing& thing, long thing_def_index, const CTCInventory* inventory) const;   // 0x00850A80
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+private:
+    bool TargetCreatureLikelyToReactToDeed(const class CThingPlayerCreature* player, const class CThingAICreature* target,
+                                          enum EOpinionDeedType deed) const; // Both donor PDBs and retail 0x008508B0.
+public:
+#endif
     EContextSensitiveType Type;                              // +0x28
     long          Priority;                                  // +0x2c
     long          SlotIndex;                                 // +0x30

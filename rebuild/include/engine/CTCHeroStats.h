@@ -178,6 +178,9 @@ public:
     // <stats> ; call`, 0x007C7319) and FableWin.pdb's inline ?GetStamina@CTCHeroStats@@QBEJXZ (no Ego_r.pdb / Fable.exe copy: the row
     // reads Stamina +0x58 in place, `mov eax,[ebx+58h] ; test eax,eax ; jle`, 0x007C73A0). No layout change.
     void ModifyStaminaBy(long amount);                                   // 0x0057B1DB
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    long GetMaxStamina() const { return MaxStamina; } // FableWin 0x01EF53A0, retail health/mana override reads +0x5C.
+#endif
     long GetStamina() const { return Stamina; }
 #endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_ADDEXPERIENCE

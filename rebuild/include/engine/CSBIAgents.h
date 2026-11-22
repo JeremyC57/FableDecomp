@@ -8,6 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28
+#include "engine/CSBConstraint.h"
+#include "engine/CSteeringAgent.h"
+// Ego_r names Agents at +0x14. FableWin's Process reads the vector at that offset.
+class CSBIAgents : public CSBInput {
+public:
+    CSBIAgents(const std::vector<const CSteeringAgent*>& agents);
+    virtual bool Process(const CSteeringAgent* agent);
+private:
+    const std::vector<const CSteeringAgent*>* Agents;
+};
+#else
 #pragma pack(push, 1)
 struct CSBIAgents {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -19,8 +31,9 @@ struct CSBIAgents {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CSBIAgents) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CSBIAgents, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSBIAgents, Agents) == 0x14);
+FABLE_STATIC_ASSERT_AT(22,sizeof(CSBIAgents) == 0x18);
+FABLE_STATIC_ASSERT_AT(23,offsetof(CSBIAgents, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24,offsetof(CSBIAgents, Agents) == 0x14);
 
+#endif // FABLE_RETAIL_CSBIAGENTS_PROCESS_PASS28
 #endif // FABLE_ENGINE_CSBIAGENTS_H

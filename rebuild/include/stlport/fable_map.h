@@ -1244,6 +1244,30 @@ inline void CUIAliasTree::clear()
 namespace std { template<> inline bool less<CCharString>::operator()(const CCharString& x,const CCharString& y) const { return x<y; } }
 #pragma optimize("", on)
 #endif
+#if defined(FABLE_RETAIL_STLP_ULONG_LONG_MFIND_SIZE_PASS28) && defined(_MSC_VER)
+// Fidelity scaffolding: use the size setting of the retail unsigned-long lookup owner 0x005D83B3.
+// The genuine STLport body remains visible to the speed-optimized Divine Wrath caller.
+#pragma optimize("s", on)
+namespace std {
+typedef pair<const unsigned long,long> EffectStringMapValue;
+typedef _Rb_tree<unsigned long,EffectStringMapValue,_Select1st<EffectStringMapValue>,
+                 less<unsigned long>,allocator<EffectStringMapValue> > EffectStringMapTree;
+template<> template<> inline _Rb_tree_node<EffectStringMapValue>*
+EffectStringMapTree::_M_find<unsigned long>(const unsigned long& key) const
+{
+    _Link_type y=this->_M_header._M_data;
+    _Link_type x=_M_root();
+    while (x!=0) {
+        if (!_M_key_compare(_S_key(x),key)) { y=x; x=_S_left(x); }
+        else x=_S_right(x);
+    }
+    if (y==this->_M_header._M_data || _M_key_compare(key,_S_key(y)))
+        y=this->_M_header._M_data;
+    return y;
+}
+}
+#pragma optimize("", on)
+#endif
 #ifdef FABLE_RETAIL_ARROW_TREE_FIND_SIZE_OWNER_PASS26
 // Fidelity: scaffolding, not retail. Owner 005CC04A sets optimize("s",on).
 // The reset optimize("",on) requires that row-level pragmas follow this header.
@@ -1334,6 +1358,56 @@ template<> inline void _Rb_tree<CCharString,pair<const CCharString,long>,_Select
  }
 }
 template<> inline _Rb_tree<CCharString,pair<const CCharString,long>,_Select1st<pair<const CCharString,long> >,less<CCharString>,allocator<pair<const CCharString,long> > >::~_Rb_tree(){clear();}
+}
+#pragma optimize("", on)
+#endif
+
+#if defined(FABLE_RETAIL_STLP_CUISTATE_MAP_OWNERS_PASS28) && defined(_MSC_VER)
+// ScrollBar::ProcessEvent 0x00559A90 uses a visible map index body so the const
+// key does not escape. Its distinct retail owners are the 0x0042D5B1 map index,
+// 0x0042AD6C tree lower-bound walk and 0x0042AA96 pair constructor. Rebuild the
+// original STLport declarations and bodies with each owner's size settings.
+#include "engine/NUISystem_CUIState.h"
+#pragma optimize("s", on)
+namespace std {
+typedef pair<const unsigned long, NUISystem::CUIState> CUIStatePair;
+typedef allocator<CUIStatePair> CUIStateAllocator;
+typedef _Rb_tree<unsigned long, CUIStatePair, _Select1st<CUIStatePair>, less<unsigned long>, CUIStateAllocator> CUIStateTree;
+typedef map<unsigned long, NUISystem::CUIState> CUIStateMap;
+
+template<> __declspec(noinline) inline
+_Rb_tree_node_base* CUIStateTree::_M_lower_bound(const unsigned long& __k) const
+{
+    _Link_type y = this->_M_header._M_data;
+    _Link_type x = _M_root();
+    while (x != 0) {
+        if (!_M_key_compare(_S_key(x), __k)) {
+            y = x;
+            x = _S_left(x);
+        } else {
+            x = _S_right(x);
+        }
+    }
+    return y;
+}
+
+template<> inline
+CUIStatePair::pair(const unsigned long& a, const NUISystem::CUIState& b) : first(a), second(b) {}
+
+template<>
+CUIStateMap::iterator CUIStateMap::insert(iterator, const value_type&);
+
+#pragma optimize("y", off)
+template<> inline
+NUISystem::CUIState& CUIStateMap::operator[](const unsigned long& k)
+{
+    iterator i = lower_bound(k);
+    if (i == end() || key_comp()(k, (*i).first)) {
+        NUISystem::CUIState __default;
+        i = insert(i, value_type(k, __default));
+    }
+    return (*i).second;
+}
 }
 #pragma optimize("", on)
 #endif

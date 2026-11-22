@@ -11,6 +11,11 @@
 
 class CPatchTesselationEdgeStrip : public CBaseClassNonCopyable {
 public:
+#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28
+    // Ego_r and FableWin spellings, called by BuildDefaultSection at 0x00BE6B91 and 0x00BE6E49.
+    void Reset(long start_pos, long size, bool vertical, class CMovableResource* owner);
+    void ResizeVertexCount(long verts, long fan_verts, long water_verts, long water_fan_verts, class CMovableResource* owner);
+#endif
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;
@@ -102,6 +107,6 @@ inline long CPatchTesselationEdgeStrip::GetMainAxisVertexWorldPos(unsigned long 
 }
 #endif
 
-FABLE_STATIC_ASSERT(sizeof(CPatchTesselationEdgeStrip) == 0x2C);
+FABLE_STATIC_ASSERT_AT(105, sizeof(CPatchTesselationEdgeStrip) == 0x2C);
 
 #endif // FABLE_ENGINE_CPATCHTESSELATIONEDGESTRIP_H

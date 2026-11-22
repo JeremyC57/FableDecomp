@@ -78,6 +78,10 @@ public:
     // ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z) and the private inline ?QuantiseLandscapeHeight@CEngineMap@@ABEMM@Z (FableWin).
     long PeekWidth() const { return MapWidth; }
     long PeekHeight() const { return MapHeight; }
+#ifdef FABLE_RETAIL_LANDSCAPE_BUILD_DEFAULT_SECTION_PASS28
+    // FableWin PeekWorldPosition and Ego_r MapWorldPosition, loaded at +0x0c in 0x00BE6880.
+    const C3DVector& PeekWorldPosition() const { return MapWorldPosition; }
+#endif
     long PeekWorldX() const { return WorldPosX; }
     long PeekWorldY() const { return WorldPosY; }
     const CIDrawMap* PeekGameMap() const { return GameMap; }

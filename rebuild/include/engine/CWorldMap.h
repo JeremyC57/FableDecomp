@@ -192,6 +192,10 @@ public:
 #endif
     bool IsPosInMap(const C3DVector&) const;
     bool IsPosPassable(const C2DCoordI&) const;
+#ifdef FABLE_RETAIL_EXPLOSIVE_TRAIL_UPDATE_PASS28
+    // Native 004fcc40 and both original PDB overload sets: the call uses create_pos directly.
+    bool IsPosPassable(const C3DVector&) const;
+#endif
     float GetGroundSizeZAt(const C3DVector&) const;
 #ifdef FABLE_RETAIL_CWORLDMAP_PASS22_WATERHEIGHT
     // Both original PDBs and native0063A420.

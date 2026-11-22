@@ -4680,7 +4680,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6222	land0511h	0143e8e0	?g_ZeroVector@@3VC3DVector@@B	open	?NullCoord@CScriptThing@@1VC3DVector@@A || ?g_ZeroVector@@3VC3DVector@@A
 6223	land0511i	007940f0	?PlaySoundW@CTCDivineWrath@@QAEKKK@Z	open	?PlaySoundW@CTCUnholyPower@@AAEKABVCCharString@@_N@Z
 6224	land0511i	00b5ece0	?InitialiseTextures@CGlowRendererMethods@@QAEHXZ	open	?InitialiseTextures@CEngineScreenEffectGlowRenderer@@AAE_NXZ
-6225	land0511i	00dfde30	??0CRetailVector_CScriptThing_Retail_00dfde30@@QAE@ABV0@@Z	no_binding	
+6225	land0511i	00dfde30	??0CRetailVector_CScriptThing_Retail_00dfde30@@QAE@ABV0@@Z	open	??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV01@@Z
 6226	land0511i	0072ab70	?CreateParticleEffect@@YIPAVCThing@@JPBVC3DVector@@@Z;	open	?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z
 6227	land0511i	006e11f0	?CreateScaledEffect@@YIPAVCThing@@JJMABVC3DVector@@_N@Z;	open	?Create@CTCDParticleEmitter@@SIPAVCThing@@JJMABVC3DVector@@_N@Z || Create
 6228	land0511i	006e0be0	?AttachToThing@EmitterMethods@@QAEXPAUCThingNative@@JABVCCharString@@JM@Z;	open	?AttachToThing@CTCDParticleEmitter@@QAEXAAVCThing@@JABVCCharString@@JM@Z || ?AttachToThing@CTCDParticleEmitter@NFoot008f7bd0@@QAEXPAUCThingCreatureBase@2@HABUCCharString@2@HH@Z
@@ -10320,3 +10320,44 @@ line	tag	address	correct_symbol	status	other_spellings
 13149	land1122nf279	00bfd420	??0CEngineWaterBackgroundSubPatch@@QAE@PBVCEngineLandscapeMap@@@Z	no_binding	
 13150	land1122nf279	00ac1f60	?OnPostRelocation@CIndexBuffer@@QAEXXZ	partial	?M@C00ac1f60@@QAEXXZ
 13152	land1122nf280	013b8388	?GPInputManager@@3PAVCInputManager@@A	partial	?PInputManager@@3PAVCInputManager@@A
+13155	land1122p28	0041a7c0	??0C2DBoxF@@QAE@ABV0@@Z	open	?helper@CPredicate_And@@QAEXPAUCIsThingAlive@@@Z
+13156	land1122p28	00491ad2	?ProcessEmbeddedHighlightTags@CSubtitleRenderer@@AAEXXZ	closed	
+13157	land1122p28	005121c0	?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ	no_binding	
+13158	land1122p28	0055f710	?ResetAndOpenHTTPAndPrepareRequest@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@ABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVCCharString@@_N@Z	partial	?ResetAndOpenHTTPAndPrepareRequest@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@ABULHString@@ABVCCharString@@_N@Z
+13159	land1122p28	0055fb80	?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	partial	?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ || UpdateTransaction
+13160	land1122p28	00560bb0	?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@ABVCCharString@@@Z	partial	?GetDecryptedDocument@CTCHeroOnlineScoreboard@@ || ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@QAEHAAULHStringVector@@ABVCCharString@@@Z
+13161	land1122p28	00560d00	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	partial	?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z
+13162	land1122p28	005dfa50	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@@QAEPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z	partial	?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@QBEPBU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@ABW4EAnimComponent@@@Z || ?LowerBound@?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@QBEPBU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@ABW4EAnimComponent@@@Z || ?LowerBound@
+13163	land1122p28	00642000	??0CEnginePrimitiveLight@@QAE@_KABVC3DVector@@ABVCRGBColour@@MMW4EEngineInterpolationSet@@K@Z	partial	??0CEnginePrimitiveLight
+13164	land1122p28	00643bef	?GFToScreen@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z	open	?ToScreenBox@@YI?AVC2DBoxF@@ABV1@@Z
+13165	land1122p28	00665e90	?IsPickPocketable@CThingCreatureBase@@QBE_NXZ	open	?IsPickPocketable@CThingCreatureBase || ?IsPickPocketable@CThing_Retail@@QAE_NXZ
+13166	land1122p28	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	partial	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z || ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
+13167	land1122p28	00669d30	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	closed	
+13168	land1122p28	00730ae0	?IsLockPickable@CTCDoor@@QBE_NXZ	open	?IsLockPickable@CGSIPickLockableDoor@@QAE_NXZ
+13169	land1122p28	00787c23	?IsClosed@CTCTrapBase@@QBE_NXZ	closed	
+13170	land1122p28	0078ebf0	?PlaySoundW@CTCDivineWrath@@AAEKABVCCharString@@_N@Z	closed	
+13171	land1122p28	0078ecd0	??0CTCDivineWrath@@QAE@AAVCThing@@@Z	partial	??0CTCDivineWrath@@QAE@PAVCThing@@@Z
+13172	land1122p28	00810c20	?insert@?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@U?$_Nonconst_traits@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@2@U32@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@J@2@@Z	open	?insert@?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@std@@QAE?AU?$_List_iterator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@U32@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@J@2@@Z || ?insert@?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@U?$allocator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@V?$CIntelligentPointer@VCThing@
+13173	land1122p28	00810fc0	?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	partial	?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ || ?GetPHitBy@HitEventBase@@QBEPAUCThingNative@@XZ || ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ
+13174	land1122p28	008e8bb0	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@AAVCThingCreatureBase@@0_N@Z	open	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z
+13175	land1122p28	00a01c10	??1CBaseIntelligentPointer@@UAE@XZ	partial	??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ || ??1BaseIntelligentPointer@@UAE@XZ || ??1CBaseIntelligentPointer@FableHeap_006a3300@@QAE@XZ || ??1CBaseIntelligentPointer@N006a2e20@@QAE@XZ || ??1CBaseIntelligentPointer@N0080df90@@QAE@XZ || ??1CBaseIntelligentPointer@NCreatureMode@@QAE@XZ || ??1CBaseIntelligentPointer@NRemap006a23e0@@UAE@XZ || ??1CBaseIntelligentPointerCtor@@Q
+13176	land1122p28	00ab7c20	?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z	closed	
+13177	land1122p28	00b1ad90	?SmoothFadeValue@CPSCLight@NParticleEngine@@QBEMM@Z	closed	
+13178	land1122p28	00bca950	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z	partial	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+13179	land1122p28	00cbeed2	?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z	partial	?IsPlayerThreateningEntity@@YIJABVCScriptThing@@@Z
+13180	land1122p28	00dfde30	??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV01@@Z	closed	
+13181	land1122p28	01375550	?ConstantFPS@CMainGameComponent@@1JA	partial	?g_framesPerSecond@@3JA || ?g_logicFramesPerSecond@@3JA
+13182	land1122p28	01375732	?EnableUnknownThreatDeedPostings@NGlobalConsole@@3_NA	closed	
+13183	land1122p28	013b86ef	?GCheatModeEnableRemoveProjectileModeWhenHit@NGlobalConsole@@3_NA	closed	
+13184	land1122p28	013bac30	?PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B	closed	
+13185	land1122p28	013bac34	?SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME@@3VCCharString@@B	closed	
+13186	land1122p28	013baf98	?InvertY@CProjectileWeapon@NCameraModes@@0_NA	open	?g_CUnprovenCameraInputFlag_013baf98@@3_NA
+13187	land1122p28	01436e20	?GPEngineDef@NEngineInternal@@3PBVCEngineDef@@B	open	?g_pEngineDef_01436e20@@3PBVCEngineDef@@B || ?g_pRenderSettings@@3PAUSRenderSettings@@A || ?g_pRenderSettings_01436e20@@3PAUSRenderSettings_01436e20@@A
+13188	land1122p28	0143e90c	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	partial	?pGlobalScriptDef@@3PAVCScriptDef@@A
+13189	land1122p28	013b8af8	?EASY_KEY@?A0x9aa6450b@@3VCCharString@@A	open	?EASY_KEY@?A0x77018dd4@@3VCCharString@@A
+13190	land1122p28	006c7830	??$find@J@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Const_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@1@ABJ@Z	open	?find@COpinionDeedMap@@QBE?AUCOpinionDeedIterator@@ABJ@Z
+13191	land1122p28	00682810	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z	partial	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z
+13192	land1122p28	00867f60	??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFollowingOnAnimFilter@@@Z	open	??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QAEXPAPAVCAnimComponentFollowingOnAnimFilter@@@Z
+13193	land1122p28	008e8bb0	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@AAVCThingCreatureBase@@0_N@Z	open	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z
+13194	land1122p28	00bca950	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z	partial	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+13195	land1122p28	01436e20	?GPEngineDef@NEngineInternal@@3PBVCEngineDef@@B	open	?g_pEngineDef_01436e20@@3PBVCEngineDef@@B || ?g_pRenderSettings@@3PAUSRenderSettings@@A || ?g_pRenderSettings_01436e20@@3PAUSRenderSettings_01436e20@@A

@@ -43,6 +43,14 @@ class CConfigOptionsDefaultsDef;                                         // chun
 template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
 class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback
 {
+#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28
+public:
+    // FableWin 029ccb70/029ccbb0 and the native Update profile accesses.
+    bool IsCameraFPBowXYInverted() const { return UseNewProfileValues ? CameraFPBowXYInvertedNewProfile : CameraFPBowXYInverted; }
+    bool IsCameraFPBowYZInverted() const { return UseNewProfileValues ? CameraFPBowYZInvertedNewProfile : CameraFPBowYZInverted; }
+    float GetCameraSensitivity() const { return UseNewProfileValues ? CameraSensitivityNewProfile : CameraSensitivity; }
+private:
+#endif
 public:
     CUserProfileManager();
     virtual ~CUserProfileManager();
@@ -259,7 +267,13 @@ private:
     CTexture*     PBackBufferTexture;                                    // +0x138
     unsigned char _pad_0x13c[0x140 - 0x13c];                             // VideoChangesAccepted (opaque)
 #else
-    unsigned char _pad_0x100[0x140 - 0x100];                             // +0x100 MeshDetailNewProfile .. (opaque)
+#ifdef FABLE_RETAIL_PROJECTILE_UPDATE_PASS28
+    unsigned char _pad_camera_100[0x30];
+    float CameraSensitivityNewProfile; // Ego_r +0x134, retail +0x130
+    unsigned char _pad_camera_134[0xc];
+#else
+    unsigned char _pad_0x100[0x140 - 0x100];
+#endif                             // +0x100 MeshDetailNewProfile .. (opaque)
 #endif
 #endif
 public:

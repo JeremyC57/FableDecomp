@@ -144,9 +144,16 @@ public:
  std::map<long,NUISystem::CComponent *,std::less<long>,std::allocator<std::pair<long const ,NUISystem::CComponent *> > > & GetAssignedIcons();
  const std::vector<long,std::allocator<long> > & GetQuickAccessItems() const;
  std::vector<long,std::allocator<long> > & GetQuickAccessItems();
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+ // Donor source lines 226, 228, 233 and 236, retail component offsets 0x1D8 / 0x1E4 / 0x1F0.
+ long GetCSOpinionExpressionCount(EContextSensitiveOpinionExpression expression) const { return NumberOfCSOpinionExpressions[expression]; }
+ long GetLastOpinionExpression(EContextSensitiveOpinionExpression expression) const { return LastCSOpinionExpression[expression]; }
+ long GetLastButOneOpinionExpression(EContextSensitiveOpinionExpression expression) const { return LastButOneCSOpinionExpression[expression]; }
+#else
  long GetCSOpinionExpressionCount(EContextSensitiveOpinionExpression p0) const;
  long GetLastOpinionExpression(EContextSensitiveOpinionExpression p0) const;
  long GetLastButOneOpinionExpression(EContextSensitiveOpinionExpression p0) const;
+#endif
  virtual void RemoveItemFromInventory(long p0, long p1);
  void OpenPCInventory();
  void ClosePCInventory(bool p0);

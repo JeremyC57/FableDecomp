@@ -6,6 +6,13 @@
 #include "engine/C2DVector.h"
 class CKinematic {
 public:
+#ifdef FABLE_RETAIL_KINEMATIC_ASSIGN_PASS28
+    // FableWin 031B5770 calls GetVector on its argument, then SetVector on this.
+    const CKinematic& operator=(const CKinematic& other) {
+        SetVector(other.GetVector());
+        return *this;
+    }
+#endif
     CKinematic() { }
     CKinematic(const C2DVector& vector) : Vector(vector) { }
     const C2DVector& GetVector() const { return Vector; }
@@ -13,5 +20,5 @@ public:
 private:
     C2DVector Vector;                                                    // +0x00
 };
-FABLE_STATIC_ASSERT(sizeof(CKinematic) == 8);
+FABLE_STATIC_ASSERT_AT(16,sizeof(CKinematic) == 8);
 #endif

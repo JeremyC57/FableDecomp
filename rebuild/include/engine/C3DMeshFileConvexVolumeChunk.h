@@ -12,6 +12,14 @@
 class C3DMeshFileConvexVolumeChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileConvexVolumeChunk();
+#ifdef FABLE_RETAIL_C3DMESHFILECONVEXVOLUMECHUNK_GETTERS
+    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetName@C3DMeshFileConvexVolumeChunk@@QBEABVCCharString@@XZ,
+    // ?GetPlaneCount@..@@QBEKXZ, ?PeekPlanes@..@@QBEPBVCPlane@@XZ -- inline in retail (0x00A2FCF9 reads Name +0x2C in place; the landed
+    // C3DMeshVolume constructor 0x00A2E9A0 reads the plane array through the CArray GetAsCArray idiom).
+    const CCharString& GetName() const { return Name; }
+    unsigned long GetPlaneCount() const { return Planes.size(); }
+    const CPlane* PeekPlanes() const { return Planes.GetAsCArray(); }
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual const CCharString GetChunkInfo() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -21,5 +29,5 @@ private:
     CCharString Name;
     CArray<CPlane> Planes;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileConvexVolumeChunk) == 0x3C);
+FABLE_STATIC_ASSERT_AT(24, sizeof(C3DMeshFileConvexVolumeChunk) == 0x3C);
 #endif // FABLE_ENGINE_C3DMESHFILECONVEXVOLUMECHUNK_H

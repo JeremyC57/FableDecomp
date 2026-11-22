@@ -19,6 +19,10 @@ public:
     virtual ~CFontManager();
 #endif
     CCountedPointer<CFontBank> GetFont(const CCharString& name);         // 0x009E2C80
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_RENDER_PASS28
+    // Both PDBs, retail 0x009E2CE0.
+    class CVertexBufferWin32& GetFreeVertexBuffer();
+#endif
 #ifdef FABLE_RETAIL_CFONTMANAGER_ASYNC
     // Opt-in (chunk 2051, row 0x0042EC7C CNewFrontendGameComponent::Run): Ego_r.pdb ?SetLoadFontGlyphsAsynchronously@CFontManager@@QAEX_N@Z, inline in retail (Run 0x0042EFB6 stores the
     // byte +0x38 in place: Ego_r LoadFontGlyphsAsynchronously +0x3C, the CArray 4 bytes smaller in retail).

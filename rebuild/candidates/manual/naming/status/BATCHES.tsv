@@ -1,16 +1,17 @@
 tier	fix	klass	n_targets	n_rows_touched	header	targets
+T0	catalog	vector	2	2		004942c3 00dfde30
 T1	access	CWorld	6	5	engine/CWorld.h	0049d4e0 0049d8f0 0049e9f0 0049f4c0 004a21f0 004a2d70
 T1	access	CCombatActionBase	4	3	engine/CCombatActionBase.h	00856b20 00857070 00858a20 00859660
 T1	access	CEngineLandscapeRenderer	4	1	engine/CEngineLandscapeRenderer.h	00b67480 00b67510 00b677d0 00b68da0
 T1	access	CMainGameComponent	4	3	engine/CMainGameComponent.h	004160a6 00416122 00416231 0041674a
 T1	access	CPlayer	4	3	engine/CPlayer.h	00487520 00488d10 00633bf0 00633cb0
+T1	access	CTCHeroOnlineScoreboard	4	2	engine/CTCHeroOnlineScoreboard.h	0055fb80 00560d00 00563480 00563920
 T1	access	CAFile	3	2	engine/CAFile.h	009975e0 00997da0 00998170
 T1	access	CAIStateGroup_ApprenticeHero	3	1	engine/CAIStateGroup_ApprenticeHero.h	0092ace0 0092ae70 0092afe0
 T1	access	CAIStateGroup_HoverHornetQueen	3	1	engine/CAIStateGroup_HoverHornetQueen.h	0095b820 0095b9e0 0095bcf0
 T1	access	CBankFile	3	3	engine/CBankFile.h	009cba40 009cbc20 009cbe10
 T1	access	CDefinitionManager	3	1	engine/CDefinitionManager.h	009ac9f0 009acee0 009adc90
 T1	access	CScriptGameResourceObjectScriptedThingBase	3	3	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7310 007e7360 007e7450
-T1	access	CTCHeroOnlineScoreboard	3	2	engine/CTCHeroOnlineScoreboard.h	0055fb80 00563480 00563920
 T1	access	CTCKrakenTentacle	3	3	engine/CTCKrakenTentacle.h	007f07a0 007f0c70 007f0f40
 T1	access	CThingBodyReorienter	3	2		00863250 00863280 00863ca0
 T1	access	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00662880 006628e0 00665860
@@ -528,6 +529,7 @@ T1	signature	CTCBulletTime	1	1	engine/CTCBulletTime.h	0079d360
 T1	signature	CTCCarryable	1	1	engine/CTCCarryable.h	007055d0
 T1	signature	CTCCreditsUI	1	1		007e4b60
 T1	signature	CTCDParticleEmitter	1	1	engine/CTCDParticleEmitter.h	006e0480
+T1	signature	CTCDivineWrath	1	1	engine/CTCDivineWrath.h	0078ecd0
 T1	signature	CTCDoor	1	1	engine/CTCDoor.h	00730630
 T1	signature	CTCEmoteIcon	1	2	engine/CTCEmoteIcon.h	0071ac70
 T1	signature	CTCFlashOnHit	1	1	engine/CTCFlashOnHit.h	004d6292
@@ -1061,7 +1063,7 @@ T1	other	CPhysicalPrimitiveCylinder	1	1		008158d0
 T1	other	CPhysicalPrimitiveSphere	1	2		00814c70
 T1	other	CPhysicsMesh	1	1	engine/CPhysicsMesh.h	00a6c560
 T1	other	CPlayerInventoryDef	1	1		00459b73
-T1	other	CPreAllocVectorMap	1	1		00a316b0
+T1	other	CPreAllocVectorMap	1	1	engine/CPreAllocVectorMap.h	00a316b0
 T1	other	CPredicate_And	1	1	engine/CPredicate_And.h	00ef7b50
 T1	other	CProfile	1	1		009f9450
 T1	other	CProfileManager	1	1		009f9020

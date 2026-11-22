@@ -109,6 +109,12 @@ public:
 #endif
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
+#ifdef FABLE_RETAIL_BED_USE_PASS28
+public:
+    // FableWin 02545650 and native read at +0xd9.
+    bool IsHeroSleepingEnabled() const { return HeroSleepingEnabled; }
+private:
+#endif
 public:
 #ifdef FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
     // Opt-in (agentNF54, rows 0x0049F4C0 / 0x004A21F0 / 0x004AB7F0): ESaveType is nested in CWorld -- both PDBs spell its

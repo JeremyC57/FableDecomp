@@ -17,6 +17,11 @@ private:
     float Multiplier;bool ToTerminate;long PauseFrames;
     std::map<void*,float> Multipliers;                                   // +0x18
     void UpdateActionSpeedMultiplier();                                  // 0x00800020
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWHEALTH_PASS28
+public:
+    float GetActionSpeedMultiplier(); // Ego_r and FableWin, retail 0x007FFFB0
+private:
+#endif
 #ifdef FABLE_RETAIL_CTCHASTE_UNSET
 public:
     // Chunk 764 (row 0x00859660 CCombatActionBase::ResetMeleeCombatAbilityEffects): Ego_r.pdb ?UnsetActionSpeedMultiplier@CTCHaste@@QAEXPAX@Z,

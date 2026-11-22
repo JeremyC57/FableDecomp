@@ -1,0 +1,8 @@
+symbol	target	witness	existing_spellings
+?EASY_KEY@?A0x9aa6450b@@3VCCharString@@A	013b8af8	00560d00	?EASY_KEY@?A0x77018dd4@@3VCCharString@@A
+??$find@J@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Const_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@1@ABJ@Z	006c7830	006c6040	?find@COpinionDeedMap@@QBE?AUCOpinionDeedIterator@@ABJ@Z
+?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z	00682810	006c6040	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z
+??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFollowingOnAnimFilter@@@Z	00867f60	008664f0	??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QAEXPAPAVCAnimComponentFollowingOnAnimFilter@@@Z
+??0CCreatureAction_BriarRoseConcentrateInto@@QAE@AAVCThingCreatureBase@@0_N@Z	008e8bb0	008e8060	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z
+?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z	00bca950	00bbe090	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+?GPEngineDef@NEngineInternal@@3PBVCEngineDef@@B	01436e20	00be6880	?g_pEngineDef_01436e20@@3PBVCEngineDef@@B || ?g_pRenderSettings@@3PAUSRenderSettings@@A || ?g_pRenderSettings_01436e20@@3PAUSRenderSettings_01436e20@@A

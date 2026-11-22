@@ -12,6 +12,17 @@
 class C3DMeshFileXBoundingBoxChunk : public CChunkedFileChunk {
 public:
     C3DMeshFileXBoundingBoxChunk() : CChunkedFileChunk("XBDB"),Center(0.0f,0.0f,0.0f),Diagonal(0.0f,0.0f,0.0f) { }
+#ifdef FABLE_RETAIL_C3DMESHFILEXBOUNDINGBOXCHUNK_GETTERS
+    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?GetCenter@C3DMeshFileXBoundingBoxChunk@@QBE?AVC3DVector@@XZ
+    // and ?GetDiagonal@..@@QBE?AVC3DVector@@XZ, inline in retail (0x00A30172..0x00A301FF: the box's min / max corners computed as
+    // Center -/+ Diagonal straight from the chunk's members).
+#ifdef FABLE_RETAIL_MESH_BOOTSTRAP_BOUNDS_PASS28
+    // FableWin 031E3AF0 and the original mesh reader both use the XBDB type name.
+    static const char* FABLE_FASTCALL GetStaticChunkType() { return "XBDB"; }
+#endif
+    C3DVector GetCenter() const { return Center; }
+    C3DVector GetDiagonal() const { return Diagonal; }
+#endif
     // no user destructor: the implicit one stores no vtable (retail: the temporaries' destruction calls the base dtor directly)
     virtual const CCharString GetChunkDescription() const;
     virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -20,7 +31,7 @@ public:
     C3DVector Center;                     // +0x10
     C3DVector Diagonal;                   // +0x1C
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);
+FABLE_STATIC_ASSERT_AT(23, sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);
 #endif // FABLE_ENGINE_C3DMESHFILEXBOUNDINGBOXCHUNK_H
 #else
 #ifndef FABLE_ENGINE_C3DMESHFILEXBOUNDINGBOXCHUNK_H
@@ -49,14 +60,14 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Center_X) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Center_Y) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Center_Z) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_X) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Y) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Z) == 0x24);
+FABLE_STATIC_ASSERT_AT(52, sizeof(C3DMeshFileXBoundingBoxChunk) == 0x28);
+FABLE_STATIC_ASSERT_AT(53, offsetof(C3DMeshFileXBoundingBoxChunk, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(54, offsetof(C3DMeshFileXBoundingBoxChunk, Center_X) == 0x10);
+FABLE_STATIC_ASSERT_AT(55, offsetof(C3DMeshFileXBoundingBoxChunk, Center_Y) == 0x14);
+FABLE_STATIC_ASSERT_AT(56, offsetof(C3DMeshFileXBoundingBoxChunk, Center_Z) == 0x18);
+FABLE_STATIC_ASSERT_AT(57, offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_X) == 0x1c);
+FABLE_STATIC_ASSERT_AT(58, offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Y) == 0x20);
+FABLE_STATIC_ASSERT_AT(59, offsetof(C3DMeshFileXBoundingBoxChunk, Diagonal_Z) == 0x24);
 
 #endif // FABLE_ENGINE_C3DMESHFILEXBOUNDINGBOXCHUNK_H
 #endif // FABLE_RETAIL_C3DMESHFILEXBOUNDINGBOXCHUNK

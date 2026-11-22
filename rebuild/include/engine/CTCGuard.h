@@ -15,6 +15,9 @@ class CTCGuard:public CTCBase {public:
 #ifdef FABLE_RETAIL_GUARD_BRIBE_FIXTURE_PASS27
     CTCGuard(CThing&);
 #endif
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+ bool PlayerIsCriminalAndCanApologise(); // Both donor PDBs and retail 0x007B2BF0.
+#endif
  bool IsAttackingToFineRatherThanKill()const;
 #ifdef FABLE_RETAIL_GUARD_REACT_TO_BRIBE_PASS27
  long GetBribePool() const { return BribePool; }

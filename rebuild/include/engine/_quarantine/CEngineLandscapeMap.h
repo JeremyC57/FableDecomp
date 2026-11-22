@@ -24,6 +24,9 @@ class CRGBColour;
 #pragma pack(push, 1)
 class CEngineLandscapeMap {
 public:
+#ifdef FABLE_RETAIL_BACKGROUND_VERTEX_HELPERS_PASS28
+    C3DVector PeekWorldPosition() const;
+#endif
 #ifdef FABLE_RETAIL_CENGINELANDSCAPEMAP_ONGAMEMAPUNLOADED
     // NF160 opt-in (row 0x00B40230): Ego_r.pdb 0x009B4730 / FableWin.pdb 0x02CC75D0 ?OnGameMapUnloaded@CEngineLandscapeMap@@QAEXXZ, out of
     // line at 0x00BDBFF0 (a bare `ret`, after OnGameMapLoaded 0x00BDBFE0 as in the PDB order). Declaration only: no layout change.

@@ -31,8 +31,16 @@ public:
  bool IsAimingRangedWeapon() const;
  bool IsLoadingRangedWeapon() const;
  bool IsInProcessOfFiringRangedWeapon() const;
+#ifdef FABLE_RETAIL_PROJECTILE_PRESSURE_PASS28
+ bool IsProjectileTargetingZLock() const { return GetProjectileTargetingZLockPressure() > 0.0f; }
+#else
  bool IsProjectileTargetingZLock() const;
+#endif
+#ifdef FABLE_RETAIL_PROJECTILE_PRESSURE_PASS28
+ float GetProjectileTargetingZLockPressure() const { return ProjectileWeaponZLockPressure; }
+#else
  float GetProjectileTargetingZLockPressure() const;
+#endif
  bool IsUsingProjectileTargetingAnalogueZoom() const;
  float GetProjectileTargetingZoomParameter() const;
  float GetProjectileWeaponFirstPersonTargetingModeZoomFOV() const;

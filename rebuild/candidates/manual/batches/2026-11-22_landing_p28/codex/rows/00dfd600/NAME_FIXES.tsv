@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00DFDE30	??0?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@ABV01@@Z	Both PDB name sets list this exact vector copy constructor. The caller constructs CurrentCreatures from AllCreatures at 00DFD616. The target constructs the vector base for the source size and copy-constructs the twelve-byte CScriptThing elements.	??0CRetailVector_CScriptThing_Retail_00dfde30@@QAE@ABV0@@Z (landed placeholder)

@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00AB7C20	?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z	Ego_r and FableWin lib_font_bank procedures and retail virtual slot 5 at 0x0129EAE8.	CStaticFontBank::CStaticFontBank::Render; ?Render@CStaticFontBank@@QAEXABVCWideString@@ABUC3DVector@@MPBUCRGBColour@@K_N@Z

@@ -8,6 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_BED_USE_PASS28
+#include "engine/CSubDefClassBase.h"
+class CTavernDef : public CSubDefClassBase {                    // RTTI .?AVCTavernDef@@ : CSubDefClassBase
+public:
+    static CCharString __fastcall StatGetTypeName() { return CCharString("CTavernDef", -1); }
+    virtual void Transfer(CPersistContext&);
+    virtual void Copy(const CDefClassBase*);
+    virtual unsigned long GetSizeofClass();
+    
+    long BedCost;                                                   // +0x28
+};
+
+#else
 #pragma pack(push, 1)
 class CTavernDef {
 public:
@@ -25,8 +38,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTavernDef) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTavernDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTavernDef, BedCost) == 0x28);
+FABLE_STATIC_ASSERT_AT(28,sizeof(CTavernDef) == 0x2c);
+FABLE_STATIC_ASSERT_AT(29,offsetof(CTavernDef, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30,offsetof(CTavernDef, BedCost) == 0x28);
 
+#endif // FABLE_RETAIL_BED_USE_PASS28
 #endif // FABLE_ENGINE_CTAVERNDEF_H

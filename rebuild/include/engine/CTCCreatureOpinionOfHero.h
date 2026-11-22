@@ -162,6 +162,9 @@ public:
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_FINDAGUARD
     // Nested opt-in (wf17, row 0x00958840): FableWin.pdb inline ?SetInFindAGuardAndYellForHelp@CTCCreatureOpinionOfHero@@QAEX_N@Z
     // (`mov byte ptr [eax+343h],1/0`). No layout change.
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    bool IsInFindAGuardAndYellForHelp() const { return InFindAGuardAndYellForHelp; } // FableWin 0x029BC550.
+#endif
     void SetInFindAGuardAndYellForHelp(bool value) { InFindAGuardAndYellForHelp = value; }
 #endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_CLEARPERSONALITY
@@ -195,6 +198,10 @@ public:
     // the row's call targets matched to the PDB signatures (one bool-returning (long, type, bool) const member, one (type, long, def&, bool)
     // member); declarations only, no layout change.
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }   // Ego_r ?StatGetInterfaceType@..@@SI?AW4ETCInterfaceType@@XZ (inline; vtable slot 21 returns 0x4F)
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDTYPE_QUERY_PASS28
+    // Ego_r and FableWin name this const query. FableWin at 01F27B20 indexes the vector, and retail 006C659B loads the byte from the mask at +3C.
+    bool IsDeedTypeEnabled(EOpinionDeedType deed_type) const { return DeedMask[deed_type]; }
+#endif
     bool KnowsOfDeed(long handle, EOpinionDeedType type, bool flag) const;                                // 0x00681AE0
     void InformOfDeed(EOpinionDeedType type, long handle, const COpinionDeedEffectsDef& def, bool flag);  // 0x00682810
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM_HANDLE

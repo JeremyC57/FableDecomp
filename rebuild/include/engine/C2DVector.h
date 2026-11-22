@@ -73,7 +73,15 @@ public:
 #elif defined(FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_ADD)
     C2DVector operator+(const C2DVector& vector) const { C2DVector result(X+vector.X,Y+vector.Y); return result; }
 #else
+    #ifdef FABLE_RETAIL_CDRAWHEALTH_ORIGINAL_EFFECTS_PASS28
+    // Fidelity: both FableWin component sums and retail GUI rounding order. The const reference keeps the same source vector.
+    C2DVector operator+(const C2DVector& vector) const {
+        const C2DVector& v=vector;
+        return C2DVector(X+v.X,Y+v.Y);
+    }
+#else
     C2DVector operator+(const C2DVector& vector) const { return C2DVector(X+vector.X,Y+vector.Y); }
+#endif
 #endif
 #ifdef FABLE_RETAIL_C2DVECTOR_NAMED_RESULT_SUB
     C2DVector operator-(const C2DVector& vector) const { C2DVector result(X-vector.X,Y-vector.Y); return result; }

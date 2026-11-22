@@ -9,8 +9,16 @@
 class C3DMeshFileRootChunk : public CChunkedFileSuperChunk {
 public:
     C3DMeshFileRootChunk() : CChunkedFileSuperChunk("3DRT") { }
+#ifdef FABLE_RETAIL_C3DMESHFILEROOTCHUNK_HELPERS
+    // Retail opt-in (chunk 868, row 0x00A2F740 C3DMeshStats::InitialiseFromFileData): FableWin.pdb ?HasHelpers@C3DMeshFileRootChunk@@QBE_NXZ
+    // (retail 0x00A9B2C0, landed: a "HLPR" FindFirstSubChunkOfType result tested for null), ?GetHelpers@..@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileHelpersChunk@@@@XZ
+    // (retail 0x00A9B3D0, landed: the same lookup static-cast into the counted pointer) and the non-const QAE GetHelpers. Declarations only.
+    bool HasHelpers() const;                                                 // 0x00A9B2C0
+    CCountedPointer<const class C3DMeshFileHelpersChunk> GetHelpers() const; // 0x00A9B3D0
+    CCountedPointer<class C3DMeshFileHelpersChunk> GetHelpers();
+#endif
     virtual const CCharString GetChunkDescription() const;
     virtual CChunkedFileChunk* CreateNewInstance() const;
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileRootChunk) == 0x2C);
+FABLE_STATIC_ASSERT_AT(15, sizeof(C3DMeshFileRootChunk) == 0x2C);
 #endif // FABLE_ENGINE_C3DMESHFILEROOTCHUNK_H

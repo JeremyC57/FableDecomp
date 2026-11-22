@@ -356,6 +356,9 @@ public:
     // all landed or out of line in retail. Declarations only.
     static CWideString __fastcall FormatTextWithGameActionNames(const CWideString& text, std::vector<CWideString>* action_names);   // 0x004917B5
 private:
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_PROCESSHIGHLIGHT_PASS28
+    void ProcessEmbeddedHighlightTags(); // Ego_r and FableWin, retail 0x00491AD2
+#endif
     float GetBlackBarHeight() const;                                     // 0x0048DBC3
     void FormatTextForVWindow(const C2DBoxF& vwindow, const CFontBank& font, const CWideString& text, CWideString& formatted_text,
                               C2DBoxF& formatted_box) const;            // 0x0048F50C

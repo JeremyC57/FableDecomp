@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00643BEF	?GFToScreen@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z	FableWin GUI overload order, plus the native 13-byte body calling the 31-byte box copy.	NScript::operator&&
+0x0041A7C0	??0C2DBoxF@@QAE@ABV0@@Z	Original box copy signature and exact 31-byte member-wise copy called from the verified GUI box overload.	NPlayerGui::GFToScreen
+0x00A01C10	??1CBaseIntelligentPointer@@UAE@XZ	Original class and deleting destructor, both native calls here and the owner decision explicitly identifying this folded alias.	??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ

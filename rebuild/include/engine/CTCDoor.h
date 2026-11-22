@@ -32,6 +32,9 @@ public:
 #ifdef FABLE_RETAIL_CTCDOOR_VANDALISM
     // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): Ego_r.pdb ?PostVandalismCrimeIfDestroyed@CTCDoor@@QBE_NXZ, out of line in
     // retail at 0x007305F0 (the landed row), and the interface key. Declarations only: no layout change.
+#ifdef FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    bool IsLockPickable() const; // Both donor PDBs, retail 0x00730AE0.
+#endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_DOOR; }
     bool PostVandalismCrimeIfDestroyed() const;                          // 0x007305F0
 #endif
@@ -74,10 +77,10 @@ public:
 public:
 #endif // FABLE_RETAIL_CTCDOOR_VSLOTS3
 };
-FABLE_STATIC_ASSERT(sizeof(CTCDoor) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, Jammed) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, PDef) == 0x20);
+FABLE_STATIC_ASSERT_AT(77, sizeof(CTCDoor) == 0x24);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CTCDoor, Jammed) == 0xc);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CTCDoor, PDef) == 0x20);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -102,18 +105,18 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CTCDoor) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, m4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, Jammed) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, CurrentOpen) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, OldOpen) == 0x11);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, Opening) == 0x12);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, Closing) == 0x13);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, UpdateID) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, TriggerType) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CTCDoor, PDef_Object) == 0x20);
+FABLE_STATIC_ASSERT_AT(105, sizeof(CTCDoor) == 0x24);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CTCDoor, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CTCDoor, m4) == 0x4);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CTCDoor, Jammed) == 0xc);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CTCDoor, CurrentOpen) == 0x10);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CTCDoor, OldOpen) == 0x11);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CTCDoor, Opening) == 0x12);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CTCDoor, Closing) == 0x13);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CTCDoor, LastCreatureFoundWF) == 0x14);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CTCDoor, UpdateID) == 0x18);
+FABLE_STATIC_ASSERT_AT(115, offsetof(CTCDoor, TriggerType) == 0x1c);
+FABLE_STATIC_ASSERT_AT(116, offsetof(CTCDoor, PDef_Object) == 0x20);
 
 #endif // FABLE_RETAIL_CTCDOOR
 

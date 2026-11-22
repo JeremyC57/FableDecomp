@@ -1,0 +1,9 @@
+EQ  0041a7e0 39 ??0C2DBoxF@@QAE@ABVC2DVector@@ABVC2DExtentsF@@@Z 
+EQ  00643d7c 8 ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ 
+EQ  00644644 8 ?ClearEffects@CDrawHealth@NPlayerGui@@QAEXXZ 
+EQ  00643be2 13 ?GFToScreen@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z 
+FOLDED_ALIAS_DEBT 00a01c10 5 ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ not referenced by the leaf
+EQ  0043dbf0 21 ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

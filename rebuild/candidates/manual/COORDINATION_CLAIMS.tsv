@@ -349,3 +349,4 @@ date	account	item	kind	status	note
 2026-11-22	A	CMainGameComponent slot self rows	naming	done	agent NF278 landed 4 rows (batches/2026-11-22_landing_nf278); 0x00416E78, the _M_erase port and 0x00ADCE60 go to NF280
 2026-11-22	A	CEngineWaterBackgroundSubPatch dtor unit	naming	done	agent NF279 landed 4 rows + 1 test + 1 header (batches/2026-11-22_landing_nf279); the Verify rows held for the dtor-row ports
 2026-11-22	A	GetInputs and its callee family	naming	done	agent NF280 landed 4 rows + 1 test + 3 headers (batches/2026-11-22_landing_nf280); the _M_erase port and 0x00ADCE60 stay queued
+2026-11-22	A	Codex pass 28	authoring	done	landed 21 of 25 rows (batches/2026-11-22_landing_p28); 0x00850A80 / 0x00879900 / 0x00A2F740 / 0x00D07490 parked and still reserved

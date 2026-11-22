@@ -224,4 +224,22 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CSpeedFriend) == 0x1c);
 #endif
+#if defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_PREMELEEMAZE) && defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)
+// Pass 28 0x00D43DB0. Ego_r and FableWin prove the private virtual Main and the two-member layout.
+namespace NScript {
+class CQ_GuildTrainingScript::CPreMeleeMaze : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingScript&, CScriptDataBase*, const CScriptThing&);
+    virtual CScriptBase* GetParentScript() const;
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_GuildTrainingScript& ParentClass;
+    CQ_SunnyvaleMasterData* PMasterData;
+private:
+    virtual void Main();
+    virtual void Init();
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CPreMeleeMaze) == 0x1c);
+#endif
 #endif

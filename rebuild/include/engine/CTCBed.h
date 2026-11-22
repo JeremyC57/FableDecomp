@@ -14,6 +14,11 @@
 #include "fable_compiler.h"
 class CBedDef;
 class CTCBed : public CTCBase {
+#ifdef FABLE_RETAIL_BED_USE_PASS28
+public:
+    // FableWin 02545670 and native read at +0x0c.
+    bool IsEmpty() { return Empty; }
+#endif
 public:
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType() { return TCI_BED; }
     CDefPointer<const CBedDef> GetDefinition() const { return PDef; }
