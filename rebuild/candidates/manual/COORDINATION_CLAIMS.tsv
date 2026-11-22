@@ -228,3 +228,4 @@ date	account	item	kind	status	note
 2026-11-22	A	Codex pass 26 (100 rows)	codex	done	landed 95 (batches/2026-11-22_landing_p26); 5 parked (pending/2026-11-22_codex_pass26_open)
 2026-11-22	A	q12226,q12227,q12228,q12229,q12402,q12403	naming	claimed	round 10 agent NF221 (the CCountedPointer ReleaseData family, ~40 rows, plus the 4-row CComponent ??1 pass): rows it locks after its census
 2026-11-22	A	Codex pass 27 (100 rows)	codex	reserved	100 parked near misses reserved for Codex (pending/2026-11-22_codex_pass27/RESERVED.tsv); package built from HEAD headers + pass 26 landing lessons
+2026-11-22	A	0x00763060,0x00B30B50,0x008E18D0,0x00CF4EC0,0x00B4D370,0x00BD3070,0x00502E90,0x0093D270	authoring	claimed	agent AUTH9 (FractureShape and SetCameraState as own rows first, then the AUTH1 rows; 0x00A4EFC0 waits on the advisor)
