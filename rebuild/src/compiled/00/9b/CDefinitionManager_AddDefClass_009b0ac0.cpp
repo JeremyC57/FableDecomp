@@ -120,7 +120,7 @@ class CDefinitionManager { public:
     CDefClassInfoMap DefClassInfo;                     // +0x78
     unsigned char _pad88[0xa4 - 0x88];
     CInstantiatedDefInfo** InstantiatedDefs;           // +0xa4 CArray start
-    bool InstantiateDef(const CCharString& className, const CCharString& instantiationName, bool a);   // 0x009ADC90
+    protected: bool InstantiateDef(const CCharString& className, const CCharString& instantiationName, bool a); public:   // 0x009ADC90
     CDefClassInfo* GetClassInfo(const CCharString& className);   // 0x009AD2E0
     protected:
     void LoadDef(unsigned long globalIndex) const;   // 0x009AD6E0 ?LoadDef@CDefinitionManager@@IBEXK@Z (Ego_r.pdb + FableWin.pdb, protected const; name-fix 2026-11-12)

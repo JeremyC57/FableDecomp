@@ -76,7 +76,7 @@ class CHandleBasedMemoryPool { public:
     SCriticalSection CriticalSection;              // +0x44c
     CHeader* FindFreeArea(long size);              // 0x00A01ED0
     void ResizeArea(CHeader* area, long newSize);  // 0x00A02410
-    void UpdateLargestFreeArea();                  // 0x00A01F80
+    private: void UpdateLargestFreeArea(); public:                  // 0x00A01F80
     long InternalAllocateHandle();                 // 0x00A03040
     bool InternalAllocate(long& handle, unsigned long size);
 };

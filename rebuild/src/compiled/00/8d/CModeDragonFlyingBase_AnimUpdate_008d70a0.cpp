@@ -9,7 +9,7 @@
 class CThing;
 class CAnimationEntry { public:
     long Index;                                // +0x00
-    unsigned long GetAnimateThingFlags();      // 0x005DC390
+    unsigned long GetAnimateThingFlags() const;      // 0x005DC390
     long GetTimeToBlendIn(CThing* thing);      // 0x005DC230
 };
 

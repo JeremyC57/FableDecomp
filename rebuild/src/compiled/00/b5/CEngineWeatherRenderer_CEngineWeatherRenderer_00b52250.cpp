@@ -101,7 +101,7 @@ class CEngineWeatherRenderer : public CEngineComponent { public: // vtable 0x012
     unsigned char      _debug[0x1328 - 0x12fc];    // +0x12fc debug switches and colours
     CEngineWeatherRenderer();
     virtual ~CEngineWeatherRenderer();
-    void BuildBuffers();                           // 0x00B51570
+    private: void BuildBuffers(); public:                           // 0x00B51570
 };
 
 CEngineWeatherRenderer::CEngineWeatherRenderer()

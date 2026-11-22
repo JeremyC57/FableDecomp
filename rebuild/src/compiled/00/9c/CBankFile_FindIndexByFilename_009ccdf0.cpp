@@ -39,7 +39,7 @@ class CBankFile { public:
     CPackedUIntArray PackedDataOffset,PackedDataSize,PackedDataType,PackedValid;
     unsigned char _otherBankState[0x4c];
     CFilenameMap FilenameIndices;
-    CCharString ConvertPathToFilename(const CCharString&) const; //009CBE10
+    private: CCharString ConvertPathToFilename(const CCharString&) const; public: //009CBE10
     unsigned long GetDataType(unsigned long i) const { if(PackedDataType.Size) return PackedDataType[i-1];return RuntimeData.begin()[i].DataType; }
     unsigned long FindIndexByFilename(const CCharString&,long);
 };

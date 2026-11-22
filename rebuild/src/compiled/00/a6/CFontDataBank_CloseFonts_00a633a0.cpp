@@ -37,7 +37,7 @@ public:
     unsigned char   _pad04[0x11c];
     CFontEntryArray Fonts;                  // +0x120 (PDB +0x184)
     CCharString     Filename;               // +0x12c (PDB +0x194)
-    void CloseFonts();
+    private: void CloseFonts(); public:
 };
 
 void CFontDataBank::CloseFonts()

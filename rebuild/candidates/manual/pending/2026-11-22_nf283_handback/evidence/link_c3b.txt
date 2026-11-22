@@ -1,0 +1,24 @@
+## HEAD set: H_00bc65d0.obj H_00b67480.obj H_00b6b0b0.obj H_00b46b90.obj H_00bcd490.obj H_00b91d20.obj H_00b8b550.obj H_00b4b830.obj H_00b71fb0.obj H_00b75ca0.obj H_00b52250.obj 00b80f90.obj 00bc6180.obj 00b68da0.obj 00b67510.obj 00b677d0.obj 00b46a30.obj 00bcc800.obj 00b92950.obj 00b947e0.obj 00b89c30.obj 00b4d210.obj 00b6dc40.obj 00b6e260.obj 00b51570.obj 00b51ea0.obj H_00b80ad0.obj H_00b80fe0.obj
+duplicates 1
+H_00b80fe0.obj : warning LNK4006: "public: class C3DVector __thiscall CEngineClothSimulationMeshBase::ConvertVectorToLocal(class C3DVector const &)const " (?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z) already defined in H_00b
+UNRESOLVED 1 ?ApplyOutline@CEngineScreenEffectOutlineGlow@@QAEXXZ
+UNRESOLVED 1 ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ
+UNRESOLVED 1 ?BuildBuffers@CEngineWeatherRenderer@@QAEXXZ
+UNRESOLVED 2 ?GetCellTotalPrimitiveCount@CEngineSceneGrid@@AAEKKK@Z
+UNRESOLVED 1 ?LookupSmallObjectLightCache@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@MMJ@Z
+UNRESOLVED 1 ?OnReleaseDefaultPoolResources@CEngineComponent@@UAEXXZ
+UNRESOLVED 1 ?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ
+UNRESOLVED 1 ?PostRenderClearRenderStates@CEngineLandscapeRenderer@@QAEXXZ
+UNRESOLVED 1 ?ProcessSeaLoading@CEngineWaterRenderer@@QAE_NXZ
+UNRESOLVED 1 ?RenderBackgroundList@CEngineWaterRenderer@@QAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z
+UNRESOLVED 1 ?RenderSortedPatches@CEngineLandscapeRenderer@@QAEXXZ
+UNRESOLVED 1 ?RenderWeaponTrail@CEnginePrimitiveManagerWeaponTrails@@QAEXABVCEngineInternalPrimitiveWeaponTrail@@@Z
+UNRESOLVED 1 ?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ
+UNRESOLVED 1 ?SetupForegroundStates@CEngineLandscapeRenderer@@QAEXXZ
+UNRESOLVED 1 ?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@QAEXXZ
+## new set: 00bc65d0.obj 00b67480.obj 00b6b0b0.obj 00b46b90.obj 00bcd490.obj 00b91d20.obj 00b8b550.obj 00b4b830.obj 00b71fb0.obj 00b75ca0.obj 00b52250.obj 00b80f90.obj 00bc6180.obj 00b68da0.obj 00b67510.obj 00b677d0.obj 00b46a30.obj 00bcc800.obj 00b92950.obj 00b947e0.obj 00b89c30.obj 00b4d210.obj 00b6dc40.obj 00b6e260.obj 00b51570.obj 00b51ea0.obj H_00b80ad0.obj H_00b80fe0.obj
+duplicates 1
+H_00b80fe0.obj : warning LNK4006: "public: class C3DVector __thiscall CEngineClothSimulationMeshBase::ConvertVectorToLocal(class C3DVector const &)const " (?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z) already defined in H_00b
+UNRESOLVED 1 ?BuildBoxPositionMatrix@CEngineWeatherRenderer@@AAEXXZ
+UNRESOLVED 1 ?OnReleaseDefaultPoolResources@CEngineComponent@@UAEXXZ
+LK_DONE

@@ -42,7 +42,7 @@ class CEngineSceneGrid { public:                          // 0x24 bytes (PDB lay
     CEngineSceneGrid*             LevelDown;       // +0x0c
     unsigned long                 Size;            // +0x10
     CArray<CEngineSceneGridCell*> GridCells;       // +0x14
-    unsigned long GetCellTotalPrimitiveCount(unsigned long x, unsigned long y);
+    private: unsigned long GetCellTotalPrimitiveCount(unsigned long x, unsigned long y); public:
 };
 
 unsigned long CEngineSceneGrid::GetCellTotalPrimitiveCount(unsigned long x, unsigned long y)

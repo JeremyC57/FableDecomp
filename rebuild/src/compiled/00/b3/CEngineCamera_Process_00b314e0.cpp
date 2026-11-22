@@ -69,7 +69,7 @@ struct CEngineCameraDesc {                              // 108 bytes
 };
 class CEngineCamera : public CEngineCameraDonor {
  public:
-    void ProcessDebugScript();                          // 0x00B31160
+    private: void ProcessDebugScript(); public:                          // 0x00B31160
     void SetCameraState(const CEngineCameraDesc& desc, bool a, bool b);   // 0x00B30B50
     void Process(bool flag);
 };

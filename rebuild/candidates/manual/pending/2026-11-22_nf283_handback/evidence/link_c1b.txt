@@ -1,0 +1,23 @@
+## HEAD set: H_009624d0.obj H_008d6da0.obj H_008d6ff0.obj H_008d70a0.obj H_008d8b00.obj H_008d8dd0.obj H_00a26d40.obj H_009ccdf0.obj 00961c50.obj 005dc390.obj 0099ebf0.obj 0099ec70.obj 0099ef40.obj 009a0880.obj 0099eae0.obj 0099f690.obj H_0099ea60.obj
+duplicates 4
+009a0880.obj : warning LNK4006: "public: void __thiscall CCharString::SetAsSubString(char const *,long)" (?SetAsSubString@CCharString@@QAEXPBDJ@Z) already defined in 0099ef40.obj; second definition ignored
+0099f690.obj : warning LNK4006: "public: __thiscall CCharString::~CCharString(void)" (??1CCharString@@QAE@XZ) already defined in 0099eae0.obj; second definition ignored
+0099f690.obj : warning LNK4006: "public: __thiscall CCharString::CCharString(char const *,long)" (??0CCharString@@QAE@PBDJ@Z) already defined in 0099ebf0.obj; second definition ignored
+H_0099ea60.obj : warning LNK4006: "public: class CCharStringData * __thiscall CCharString::AllocStringData(char const *,long)" (?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z) already defined in 0099f690.obj; second definition ignored
+UNRESOLVED 4 ?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z
+UNRESOLVED 1 ?ConvertPathToFilename@CBankFile@@QBE?AVCCharString@@ABV2@@Z
+UNRESOLVED 5 ?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ
+UNRESOLVED 1 ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ
+UNRESOLVED 1 ?NotifyEntryAdded@CBankFile@@UAEXKKABV?$CArray@D@@@Z
+UNRESOLVED 6 ?UnassignString@CCharString@@IAEXXZ
+## new set: 009624d0.obj 008d6da0.obj 008d6ff0.obj 008d70a0.obj 008d8b00.obj 008d8dd0.obj 00a26d40.obj 009ccdf0.obj 00961c50.obj 005dc390.obj 0099ebf0.obj 0099ec70.obj 0099ef40.obj 009a0880.obj 0099eae0.obj 0099f690.obj H_0099ea60.obj
+duplicates 4
+009a0880.obj : warning LNK4006: "public: void __thiscall CCharString::SetAsSubString(char const *,long)" (?SetAsSubString@CCharString@@QAEXPBDJ@Z) already defined in 0099ef40.obj; second definition ignored
+0099f690.obj : warning LNK4006: "public: __thiscall CCharString::~CCharString(void)" (??1CCharString@@QAE@XZ) already defined in 0099eae0.obj; second definition ignored
+0099f690.obj : warning LNK4006: "public: __thiscall CCharString::CCharString(char const *,long)" (??0CCharString@@QAE@PBDJ@Z) already defined in 0099ebf0.obj; second definition ignored
+H_0099ea60.obj : warning LNK4006: "public: class CCharStringData * __thiscall CCharString::AllocStringData(char const *,long)" (?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z) already defined in 0099f690.obj; second definition ignored
+UNRESOLVED 4 ?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z
+UNRESOLVED 1 ?ConvertPathToFilename@CBankFile@@ABE?AVCCharString@@ABV2@@Z
+UNRESOLVED 1 ?NotifyEntryAdded@CBankFile@@MAEXKKABV?$CArray@D@@@Z
+UNRESOLVED 6 ?UnassignString@CCharString@@IAEXXZ
+LK_DONE

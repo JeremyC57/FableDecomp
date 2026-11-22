@@ -58,9 +58,9 @@ class CDefinitionManager { public:
     unsigned char  _pad000[0xb0];
     TErrorCallback ErrorCallback;                  // +0xb0
     CCharString    CurrentFilename;                // +0xb4
-    bool InstantiateDef(const CCharString& className, const CCharString& instanceName, bool isTemplate);   // 0x009ADC90
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009AC9F0
-    void ParseEnumForSymbols(CStringParser& parser);   // 0x009ACEE0
+    protected: bool InstantiateDef(const CCharString& className, const CCharString& instanceName, bool isTemplate); public:   // 0x009ADC90
+    protected: void Error(const CStringParser& parser, const CCharString& message); public:   // 0x009AC9F0
+    protected: void ParseEnumForSymbols(CStringParser& parser); public:   // 0x009ACEE0
 protected:
     void ParseStringForSymbols(const char* text, bool instantiate);   // protected (Ego_r.pdb / FableWin.pdb IAE)
 };

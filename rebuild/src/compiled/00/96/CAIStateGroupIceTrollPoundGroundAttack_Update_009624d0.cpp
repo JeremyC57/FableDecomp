@@ -166,7 +166,7 @@ class CAIStateGroupBase { public:
 };
 struct CAIStateGroup_IceTrollPoundGroundAttack : CAIStateGroupBase {
     CBaseIntelligentPointer PTarget;            // +0x14
-    bool IsStillRunnable();                     // 0x00961C50
+    private: bool IsStillRunnable() const; public:                     // 0x00961C50
     void Update();
 };
 

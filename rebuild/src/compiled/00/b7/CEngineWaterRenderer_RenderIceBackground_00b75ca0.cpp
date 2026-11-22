@@ -185,7 +185,7 @@ class CEngineWaterRenderer { public:                      // retail layout (12-b
     CMatrix3x4 BoneMatrix2;                        // +0x474
     unsigned char _pad4a4[0x504 - 0x4a4];
     CMatrix3x4 BoneMatrix0;                        // +0x504
-    void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);   // 0x00B6E260
+    private: void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time); public:   // 0x00B6E260
     void RenderIceBackground(float time);
 };
 

@@ -1,0 +1,53 @@
+##### 009c3ae0 renames: ?SetDirtyDiscError@CFileInstaller@@SIX_N@Z=?SetDirtyDiscError@CFileInstaller@@KIX_N@Z
+sections head 3 new 3
+ALL_EQ 0
+DIFF	?ProcessActiveFileForRead@CFileInstaller@@QAEXAAVCActiveFile@1@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 00a633a0 renames: ?CloseFonts@CFontDataBank@@QAEXXZ=?CloseFonts@CFontDataBank@@AAEXXZ
+sections head 6 new 6
+ALL_EQ 0
+ONLY_A	?CloseFonts@CFontDataBank@@QAEXXZ
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 00a63b30 renames: ?CloseFonts@CFontDataBank@@QAEXXZ=?CloseFonts@CFontDataBank@@AAEXXZ
+sections head 10 new 10
+ALL_EQ 0
+DIFF	??_GCFontDataBank@@UAEPAXI@Z
+funcs SAME=6 vtbl_H=3 vtbl_N=3
+##### 0059697a renames: ?CreateNewProfile@CFrontEndManager@NUISystem@@QAE_NAAVCWideString@@@Z=?CreateNewProfile@CFrontEndManager@NUISystem@@IAE_NAAVCWideString@@@Z
+sections head 4 new 4
+ALL_EQ 0
+ONLY_A	?CreateNewProfile@CFrontEndManager@NUISystem@@QAE_NAAVCWideString@@@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 009fe380 renames: ?Sizeof@CGraphicFrameData@@QAEJXZ=?Sizeof@CGraphicFrameData@@QBEKXZ
+sections head 6 new 6
+ALL_EQ 0
+DIFF	??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z
+DIFF	?Sizeof@CFrameData@CGraphicInfoFrame@@QAEJXZ
+DIFF	?Sizeof@CFrameMember@@QBEJXZ
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b2afd0 renames: ?Sizeof@CGraphicFrameData@@QAEKXZ=?Sizeof@CGraphicFrameData@@QBEKXZ
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?UpdateResourceSize@CCompositeSurfaceCache_Retail@@QAEXXZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00b2b120 renames: ?Sizeof@CGraphicFrameData@@QAEKXZ=?Sizeof@CGraphicFrameData@@QBEKXZ
+sections head 3 new 3
+ALL_EQ 0
+DIFF	?ReleaseTexture@CCompositeSurfaceCache_Retail@@QAEXXZ
+DIFF	?UpdateResourceSize@CCompositeSurfaceCache_Retail@@QAEXXZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00a030d0 renames: ?UpdateLargestFreeArea@CHandleBasedMemoryPool@@QAEXXZ=?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ
+sections head 3 new 3
+ALL_EQ 0
+DIFF	?InternalAllocate@CHandleBasedMemoryPool@@QAE_NAAJK@Z
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 0068fb90 renames: ?ProcessCombatInput@CInputProcessCombat@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z=?ProcessCombatInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?ProcessInput@CInputProcessCombat@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 007e5230 renames: ?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z=?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z
+sections head 19 new 19
+ALL_EQ 0
+DIFF	?ProcessInput@CTCBetting@@QAEXABVCInputEvent@@AAVCProcessedInput@@PAUCInputProcessGameBase@@@Z
+funcs SAME=13 vtbl_H=0 vtbl_N=0

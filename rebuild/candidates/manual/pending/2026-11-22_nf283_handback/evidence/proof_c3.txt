@@ -1,0 +1,66 @@
+##### 00b80ad0 SET-ASIDE (graded, NOT handed back: entry 8 / 29, D3) renames: ?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z=?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z
+sections head 4 new 4
+ALL_EQ 0
+ONLY_A	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 00b80fe0 SET-ASIDE (graded, NOT handed back: entry 8 / 29, D3) renames: ?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z=?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z
+sections head 7 new 7
+ALL_EQ 0
+DIFF	?GetWindVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+ONLY_A	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 00bc65d0 renames: ?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@QAEXXZ=?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@AAEXXZ
+sections head 11 new 11
+ALL_EQ 0
+DIFF	?SetChildPrimitive@CEngineInternalPrimitiveGroup@@QAEXKABVCEnginePrimitive@@K@Z
+funcs SAME=9 vtbl_H=0 vtbl_N=0
+##### 00b67480 renames: ?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ=?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ
+sections head 3 new 3
+ALL_EQ 0
+ONLY_A	?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ
+funcs SAME=1 vtbl_H=0 vtbl_N=0
+##### 00b6b0b0 renames: ?PostRenderClearRenderStates@CEngineLandscapeRenderer@@QAEXXZ=?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ ?RenderSortedPatches@CEngineLandscapeRenderer@@QAEXXZ=?RenderSortedPatches@CEngineLandscapeRenderer@@AAEXXZ ?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ=?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ ?SetupForegroundStates@CEngineLandscapeRenderer@@QAEXXZ=?SetupForegroundStates@CEngineLandscapeRenderer@@AAEXXZ
+sections head 15 new 15
+ALL_EQ 0
+DIFF	?Render@CEngineLandscapeRenderer@@QAEXABUCEngineRenderParams@@@Z
+funcs SAME=13 vtbl_H=0 vtbl_N=0
+##### 00b46b90 renames: ?LookupSmallObjectLightCache@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@MMJ@Z=?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?GetLightsInSphereFast@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00bcd490 renames: ?RenderWeaponTrail@CEnginePrimitiveManagerWeaponTrails@@QAEXABVCEngineInternalPrimitiveWeaponTrail@@@Z=?RenderWeaponTrail@CEnginePrimitiveManagerWeaponTrails@@AAEXABVCEngineInternalPrimitiveWeaponTrail@@@Z
+sections head 9 new 9
+ALL_EQ 0
+DIFF	?RenderSubPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAEXAAVCEngineSubPrimitiveBase@@J@Z
+funcs SAME=7 vtbl_H=0 vtbl_N=0
+##### 00b91d20 renames: ?GetCellTotalPrimitiveCount@CEngineSceneGrid@@QAEKKK@Z=?GetCellTotalPrimitiveCount@CEngineSceneGrid@@AAEKKK@Z
+sections head 2 new 2
+ALL_EQ 0
+ONLY_A	?GetCellTotalPrimitiveCount@CEngineSceneGrid@@QAEKKK@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00b8b550 renames: ?ApplyOutline@CEngineScreenEffectOutlineGlow@@QAEXXZ=?ApplyOutline@CEngineScreenEffectOutlineGlow@@AAEXXZ
+sections head 2 new 2
+ALL_EQ 0
+DIFF	?Render@CEngineScreenEffectOutlineGlow@@QAEXABVCEngineComponentRenderParams@@@Z
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00b4b830 renames: ?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@QAEXXZ=?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ
+sections head 2 new 2
+ALL_EQ 0
+ONLY_A	?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@QAEXXZ
+funcs SAME=0 vtbl_H=0 vtbl_N=0
+##### 00b71fb0 renames: ?ProcessSeaLoading@CEngineWaterRenderer@@QAE_NXZ=?ProcessSeaLoading@CEngineWaterRenderer@@AAE_NXZ
+sections head 11 new 11
+ALL_EQ 0
+DIFF	?FrameStart@CEngineWaterRenderer@@UAEXABVCEngineComponentParams@@@Z
+funcs SAME=9 vtbl_H=0 vtbl_N=0
+##### 00b75ca0 renames: ?RenderBackgroundList@CEngineWaterRenderer@@QAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z=?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z
+sections head 20 new 20
+ALL_EQ 0
+DIFF	?RenderIceBackground@CEngineWaterRenderer@@QAEXM@Z
+funcs SAME=17 vtbl_H=0 vtbl_N=0
+##### 00b52250 renames: ?BuildBuffers@CEngineWeatherRenderer@@QAEXXZ=?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ
+sections head 44 new 44
+ALL_EQ 0
+DIFF	??0CEngineWeatherRenderer@@QAE@XZ
+funcs SAME=28 vtbl_H=12 vtbl_N=12

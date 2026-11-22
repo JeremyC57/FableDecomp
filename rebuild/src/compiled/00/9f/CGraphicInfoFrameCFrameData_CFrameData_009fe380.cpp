@@ -10,7 +10,7 @@
 #include "engine/_quarantine/CGraphicDataBank.h"
 #undef CGraphicDataBank
 // Donor bank has opaque inherited bytes: native ResourceBank+164 and CurrentFrame+194 are verified by009fe380 and CResourceList+2c; donor derived fields start254 and disagree.
-class CGraphicFrameData { public:long Sizeof();}; //009fcbf0
+class CGraphicFrameData { public:unsigned long Sizeof() const;}; //009fcbf0
 extern void* g_FrameDataVtable[]; //0129c89c CGraphicInfoFrame::CFrameData
 extern void* g_ManagedTextureVtable[]; //0129c880 CManagedTexture
 struct CBaseNative {void* Vtable;CBaseNative();}; //0099a2d0

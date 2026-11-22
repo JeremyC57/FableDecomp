@@ -1,5 +1,5 @@
 // CDisplayEngine::RenderHeroDrunkenness(const CInterpolationInfo&) const -- lets the hero's stats draw the drunkenness screen effect
-// Leaf: ?RenderHeroDrunkenness@CDisplayEngine@@QBEXABVCInterpolationInfo@@@Z
+// Leaf: ?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -113,7 +113,7 @@ class CDisplayEngine {
 public:
     unsigned char _pad00[0x2c];
     CIEngine*     Engine3D;                              // +0x2c
-    void RenderHeroDrunkenness(const CInterpolationInfo& info) const;
+    protected: void RenderHeroDrunkenness(const CInterpolationInfo& info) const; public:
 };
 
 void CDisplayEngine::RenderHeroDrunkenness(const CInterpolationInfo& info) const

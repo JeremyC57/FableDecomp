@@ -44,7 +44,7 @@ public:
     unsigned char    _pad2c[0x24];
     long             m_lastJoystickFrame;          // +0x50
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-    void ProcessCombatInput(const CInputEvent& event, CProcessedInput& processed);   // 0x0068F470
+    private: void ProcessCombatInput(const CInputEvent& event, CProcessedInput& processed); public:   // 0x0068F470
 };
 
 void CInputProcessCombat::ProcessInput(const CInputEvent& event, CProcessedInput& processed)

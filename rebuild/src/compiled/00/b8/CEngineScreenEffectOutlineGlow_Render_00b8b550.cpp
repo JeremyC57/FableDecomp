@@ -10,7 +10,7 @@ class CEngineComponentRenderParams { public:
 class CEngineScreenEffectOutlineGlow { public:
     unsigned char _pad[8];
     bool          m_enabled;                       // +0x08
-    void ApplyOutline();                           // 0x00B89C30
+    private: void ApplyOutline(); public:                           // 0x00B89C30
 private:
     void FinishWithDynamicTextures();              // 0x00B89080 (NF35: Ego_r + FableWin ?FinishWithDynamicTextures@CEngineScreenEffectOutlineGlow@@AAEXXZ)
 public:

@@ -1,0 +1,192 @@
+entry	address	status	binders_respelled	note
+1	0x00961C50	done	0x009624D0	only binder 0x009624D0 (D3 flag: clang precheck passes now): `private: bool IsStillRunnable() const; public:` on its line 169
+2	0x005DC390	done	0x008D6DA0,0x008D6FF0,0x008D70A0,0x008D8B00,0x008D8DD0	the five CModeConversation / DragonHover / DragonFlyingBase / Crouch / Block AnimUpdate local models get `const`; 0x00753630 (clang precheck fails: for_each over an anonymous-namespace functor) already binds QBE through engine/CAnimationEntry.h; self defines QBE (clang + VC7.1)
+3	0x009CBC20	done	0x00A26D40	0x00A26D40 local CBankFile model: `protected: virtual ...; public:`; self 0x009CBC20 is a free stand-in stub (no Leaf, no member symbol: T3); its own CMeshDataBank override keeps UAE (PDB MAE, NAME_FIXES)
+4	0x009CBE10	done	0x009CCDF0	0x009CCDF0 local CBankFile model `private: ... const; public:`; self 0x009CBE10 defines it on a stand-in class CBankFile_Retail (no Leaf: T3)
+5	0x009D54E0	rejected		T3: the self row defines QAE and its body writes m_completionPending: a const self needs a mutable member (or the port onto engine/CBankFileAsyncData.h); binders 0x00A262B0 / 0x00BDC510 / 0x00BF3B60 bind the QAE the self defines, so they stay
+6	0x00A5B650	skipped-precheck		both binders 0x00A5B710 / 0x00A5B760 fail the clang precheck (`short wchar_t`), also with -Wno-address-of-temporary
+7	0x0099E9B0	done-already		VC7.1 HEAD objects of the two table witnesses 0x0099EAE0 (AAE line) and 0x0099F690 (QAE line) bind IAE; all 25 referencing rows bind IAE (clang); TABLE_CHANGES deletes the two stale lines
+8	0x0099EA60	rejected		T3 (D2 pattern): 0x0099F9B0 (GFBoolToCharString) defines a strong same-TU copy of ?AllocStringData@CCharString@@IAE... (out-of-class, line 48), so moving the self leaf QAE -> IAE gives LNK2005; 0x0099F690 holds an in-class inline copy spelled QAE. Binders all bind IAE already
+9	0x00858A20	skipped-precheck		both binders 0x00859EC0 (QAE) / 0x00859EF0 fail the clang precheck (CTCFlourishTarget.h FABLE_STATIC_ASSERT typedef redefinition); the self QAE -> IAE cannot move alone (0x00859EC0 would be left unresolved)
+10	0x00531EC0	held-D4		held by the brief prefix (D4, NF281 entry 53): 0x0052C7E0 waits for 0x005367F3
+11	0x00692AA0	done-partial	0x00692DB0	0x00692DB0 moves QAE -> IAE; 0x00694020 (FrameUpdate) fails the clang precheck (fable_map.h iterator increment) and keeps QAE (line 217, public), so the split stays; TABLE_CHANGES re-witnesses the QAE line to it
+12	0x00692EC0	done	0x00692EC0	T2 self: `const` on decl + definition + Leaf; slot-36 local virtual IsPlayingPrecedingAnimation (descriptive name, no symbol: called through the vtable) made const so the const body compiles; binders 0x006644F0 / 0x00692F30 already QBE
+13	0x008C9FE0	done	0x008C9FE0,0x008CA110	self leaf (plain `DoEffect` Leaf kept) and binder 0x008CA110 `protected:`; 0x008CA170 already IAE
+14	0x0069FC40	done	0x006DD8F0	0x006DD8F0 local model: `virtual` on CCreatureAction_UnsheatheItemFromInventory::FinishAction (both PDBs UAE); side effect: its own override leaf QAE -> ?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAEXXZ (both PDBs; no Leaf line; no landed row binds 0x006DD8F0 by name); emitted ??_7CCreatureAction_ShowToSheatheTrophy unchanged (vtmap)
+15	0x009C8630	done-already		VC7.1 HEAD object of the QAE witness 0x009C9070 binds (and defines a same-TU copy of) QBE; TABLE_CHANGES deletes the stale QAE line
+16	0x009D49F0	done	0x004B7980,0x005B3440,0x005FA740,0x006AEB10,0x0073E1D0,0x0076D640	six CDefStringTable local models get `const`
+17	0x009AC9F0	done	0x009AC9F0,0x009ADE90	self leaf (plain `Error` Leaf kept) and binder 0x009ADE90 `protected:`
+18	0x009ACEE0	done	0x009ADE90	binder 0x009ADE90 `protected:`
+19	0x009ADC90	done	0x009ADE90,0x009B0AC0	binders 0x009ADE90 / 0x009B0AC0 `protected:`
+20	0x00A90900	rejected		T3: the only binder 0x00A91640 takes the declaration from the shared engine/C3DPrimitive2.h (line 32, public, "private in Ego_r"): a shared-header access change, not this batch
+21	0x0099A960	decision		not compiled: the binder 0x0055D070 local CDiskFileWin32 model emits ??_7CDiskFileWin32 (inline ctor); making Read virtual adds a slot and moves SetPosition (table change: DECISION D2)
+22	0x0099AA90	decision		not compiled: the binder 0x00B2C8E0 local CDiskFileWin32 model emits ??_7CDiskFileWin32; making Write virtual adds a slot (table change: DECISION D2); 0x00561980 / 0x005621B0 fail clang
+23	0x00435070	done	0x00435070	T2 self: `protected:` on the decl, Leaf respelled; binder 0x00435530 already IBE
+24	0x009BEE40	done	0x009BFB30	binder 0x009BFB30 `private:`
+25	0x00643E09	done	0x0064E019	binder 0x0064E019 `const`; 0x00437860 names no IsActive symbol
+26	0x00B31160	done	0x00B314E0	binder 0x00B314E0 `private:`
+27	0x00B81F00	skipped-precheck		signature (I v K), not access: binder 0x00BCFDE0 declares the ctor with `unsigned int`; its landed test fails the clang precheck (_assert); draft in work/unused/
+28	0x00B81ED0	skipped-precheck		signature (I v K): binder 0x00BCFCB0; landed test fails the clang precheck (_assert); draft in work/unused/
+29	0x00B80AD0	rejected		T3 (D2 pattern): the self 0x00B80AD0 and 0x00B80FE0 both define ConvertVectorToLocal QBE (HEAD duplicate) and control 0x00B80F90 defines a same-TU copy spelled IBE: moving the self onto IBE adds a new duplicate (link_c3: duplicates 1 -> 2). Graded ALL_EQ but not handed back (work/unused/)
+30	0x00B81050	skipped-precheck		binder 0x00B82100 (QAE) has a landed test that fails the clang precheck (VC7.1 <cwchar>); the self 0x00B81050 QAE -> IAE cannot move alone
+31	0x00B81EA0	skipped-precheck		signature (I v K): binder 0x00B9DE90; landed test fails the clang precheck (_assert); draft in work/unused/
+32	0x00BC6180	done	0x00BC65D0	binder 0x00BC65D0 `private:`
+33	0x00B67480	done	0x00B67480,0x00B6B0B0	T1 with a QAE self: self 0x00B67480 (no Leaf) and binder 0x00B6B0B0 `private:`; 0x00B68DA0 already AAE
+34	0x00B67510	done	0x00B6B0B0	binder 0x00B6B0B0 `private:`
+35	0x00B677D0	done	0x00B6B0B0	binder 0x00B6B0B0 `private:`
+36	0x00B68DA0	done	0x00B6B0B0	binder 0x00B6B0B0 `private:`
+37	0x00B46A30	done	0x00B46B90	binder 0x00B46B90 `private:`
+38	0x00BCC800	done	0x00BCD490	binder 0x00BCD490 `private:`
+39	0x00B2F8B0	rejected		D1 pattern: the only binder 0x00B2F8E0 calls ClearHandles from the stand-in CEnginePrimitiveOcclusionManager_Methods; a private callee needs a friend naming the stand-in (not landed, D1); needs the port onto the real class first
+40	0x00B91D20	done	0x00B91D20	T1 with a QAE self: self 0x00B91D20 (no Leaf) `private:`; binders 0x00B92950 / 0x00B947E0 already AAE
+41	0x00B5FAB0	skipped-precheck		the only binder 0x00B619B0 has a landed test that fails the clang precheck (VC7.1 <cwchar> / iostream)
+42	0x00B60F70	skipped-precheck		the only binder 0x00B619B0 (as entry 41)
+43	0x00B89C30	done	0x00B8B550	binder 0x00B8B550 `private:`
+44	0x00B4B830	done	0x00B4B830	T2 self: `virtual` on the decl of a non-polymorphic local model, with the leading pad shrunk 0x2af -> 0x2ab on its own line so every member keeps its offset (the vptr takes +0); Leaf respelled; no table emitted (no ctor in the TU), ALL_EQ
+45	0x00B6DC40	done	0x00B71FB0	binder 0x00B71FB0 `private:`
+46	0x00B6E260	done	0x00B75CA0	binder 0x00B75CA0 `private:`
+47	0x00B51570	done	0x00B52250	binder 0x00B52250 `private:`; its 6 emitted tables unchanged (vtmap)
+48	0x00B51AD0	done-already		VC7.1 HEAD object of the QAE witness 0x00B51EA0 binds AAE; TABLE_CHANGES deletes the stale QAE line
+49	0x006B93D0	rejected		T3: a const self GetPFaction(name) needs the inline GetPFaction(K) const (PDB QBE) and so a const Find / LowerBound on the local CFactionMap model, which respells the LowerBound stand-in callee 0x006B8AE0: not in place; the FactionMgr / CFactionMgr stand-in binders (0x00890870 ...) are T3
+50	0x009C3530	done	0x009C3AE0	binder 0x009C3AE0 `protected: static ...; public:`
+51	0x00A633A0	done	0x00A633A0,0x00A63B30	self 0x00A633A0 (no Leaf) and binder 0x00A63B30 `private:`; 0x00A63680 already AAE
+52	0x005955AB	skipped-precheck		the self 0x005955AB and binders 0x00596CCE / 0x00597006 / 0x00599E3F fail the clang precheck; 0x00599D5C defines a same-TU QAE copy
+53	0x0059697A	done	0x0059697A	T2 self: `protected:` on the decl, Leaf respelled (its "modelled public" note dropped on the same line); the only binder 0x00599E3F (clang fails, not compiled) binds IAE by source: its #define FABLE_RETAIL_CFRONTENDMANAGER_VIRTUALKEYBOARD (line 34) selects engine/CFrontEndManager.h lines 36-37 `protected: bool CreateNewProfile(CWideString&);`
+54	0x00598463	skipped-precheck		the only binder 0x0059A238 fails the clang precheck
+55	0x004962C0	skipped-precheck		T2 self 0x004962C0 fails the clang precheck
+56	0x00699130	skipped-precheck		the only binder 0x0069A990 has a landed test that fails the clang precheck (VC7.1 <cwchar> / iostream); draft in work/unused/
+57	0x009FCBF0	done	0x009FE380,0x00B2AFD0,0x00B2B120	0x00B2AFD0 / 0x00B2B120 `const`; 0x009FE380 `long Sizeof();` -> `unsigned long Sizeof() const;` on its one-line local model (return type K as both PDBs: a signature respell on the same line)
+58	0x00A01F80	done	0x00A030D0	binder 0x00A030D0 `private:`; the self 0x00A01F80 is on the stand-in CHandleBasedMemoryPool_Methods (no Leaf: T3), so AAE stays unresolved in the link as 0x00A02DF0 already was
+59	0x0068F470	done	0x0068FB90	binder 0x0068FB90 `private:`
+60	0x00687A90	done	0x007E5230	binder 0x007E5230 (CTCBetting::ProcessInput) local CInputProcessGameBase model: `protected: bool IsEventButtonPressed(...) const; friend class CTCBetting; public:` (the friend names the real class, the D1 ruling's accepted form; the PDB access plus retail's cross-class call imply it)
+61	0x00AB6450	open		not started
+62	0x00BE6F70	open		not started
+63	0x004160A6	open		not started
+64	0x00416122	open		not started
+65	0x00416231	open		not started
+66	0x0041674A	open		not started
+67	0x00416C8A	open		not started
+68	0x008DB810	open		not started
+69	0x00AB5710	open		not started
+70	0x0042E17C	open		not started
+71	0x0042E3EE	open		not started
+72	0x0042E98F	open		not started
+73	0x009B9870	open		not started
+74	0x009B9880	open		not started
+75	0x00AECF90	open		not started
+76	0x00AF0650	open		not started
+77	0x00A128E0	open		not started
+78	0x00487520	open		not started
+79	0x00488D10	open		not started
+80	0x00633BF0	open		not started
+81	0x00633CB0	open		not started
+82	0x004385F0	open		not started
+83	0x00439BB0	open		not started
+84	0x00449880	open		not started
+85	0x004499E0	open		not started
+86	0x004AFC60	open		not started
+87	0x005567B0	open		not started
+88	0x007E7310	open		not started
+89	0x007E7360	open		not started
+90	0x007E7450	open		not started
+91	0x00988290	open		not started
+92	0x00871FD0	open		not started
+93	0x0048F6BD	open		not started
+94	0x00A44660	open		not started
+95	0x0070B490	open		not started
+96	0x0070B4A0	open		not started
+97	0x006869E0	open		not started
+98	0x00686DB0	open		not started
+99	0x0074EC50	open		not started
+100	0x007B6660	open		not started
+101	0x007DD270	open		not started
+102	0x007DDDA0	open		not started
+103	0x0077D190	open		not started
+104	0x006827A0	open		not started
+105	0x007FD430	open		not started
+106	0x007F18B0	open		not started
+107	0x00730DD0	open		not started
+108	0x0071AD20	open		not started
+109	0x0076CCE0	open		not started
+110	0x006C3CA0	open		not started
+111	0x007C86F0	open		not started
+112	0x007E7580	open		not started
+113	0x006D5260	open		not started
+114	0x004BC4F0	open		not started
+115	0x004BE000	open		not started
+116	0x006D7F20	open		not started
+117	0x0055FB80	open		not started
+118	0x00563480	open		not started
+119	0x00563920	open		not started
+120	0x0057A89D	open		not started
+121	0x0057AAD9	open		not started
+122	0x0077C960	open		not started
+123	0x00582027	open		not started
+124	0x005BDD39	open		not started
+125	0x005D9070	open		not started
+126	0x005FBFA0	open		not started
+127	0x005FC840	open		not started
+128	0x005A8C66	open		not started
+129	0x005CA68E	open		not started
+130	0x007FB4A0	open		not started
+131	0x007FBB00	open		not started
+132	0x007FBC90	open		not started
+133	0x007F07A0	open		not started
+134	0x007F0C70	open		not started
+135	0x007F0F40	open		not started
+136	0x00751DA0	open		not started
+137	0x00766660	open		not started
+138	0x007674A0	open		not started
+139	0x00744830	open		not started
+140	0x0079E420	open		not started
+141	0x006AFA40	open		not started
+142	0x0075B000	open		not started
+143	0x008004D0	open		not started
+144	0x008008B0	open		not started
+145	0x00702400	open		not started
+146	0x007280C0	open		not started
+147	0x007F53A0	open		not started
+148	0x0066BC10	open		not started
+149	0x006E2840	open		not started
+150	0x007F9960	open		not started
+151	0x005E9AA0	open		not started
+152	0x005EA3C0	open		not started
+153	0x008F1D40	open		not started
+154	0x007D46D0	open		not started
+155	0x007881AD	open		not started
+156	0x00659EA9	open		not started
+157	0x004C8280	open		not started
+158	0x004C8C00	open		not started
+159	0x008338D0	open		not started
+160	0x00863250	open		not started
+161	0x00863280	open		not started
+162	0x00863CA0	open		not started
+163	0x006626E0	open		not started
+164	0x00662880	open		not started
+165	0x006628E0	open		not started
+166	0x00665860	open		not started
+167	0x0085D180	open		not started
+168	0x006378E0	open		not started
+169	0x006A4E90	open		not started
+170	0x006AC390	open		not started
+171	0x006AD970	open		not started
+172	0x0083B520	open		not started
+173	0x0098ECD0	open		not started
+174	0x00760E70	open		not started
+175	0x00F3B970	open		not started
+176	0x00408120	open		not started
+177	0x0040D350	open		not started
+178	0x00AD9F10	open		not started
+179	0x00AC44D0	open		not started
+180	0x00AC4910	open		not started
+181	0x00A67FF0	open		not started
+182	0x00A0CDD0	open		not started
+183	0x0049D4E0	open		not started
+184	0x0049D8F0	open		not started
+185	0x0049E9F0	open		not started
+186	0x0049F4C0	open		not started
+187	0x004A21F0	open		not started
+188	0x004A2D70	open		not started
+189	0x004FB310	open		not started
+190	0x004FCE20	open		not started
+191	0x008AF500	open		not started

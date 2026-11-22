@@ -76,7 +76,7 @@ class CFileInstaller { public:
 
     CBufferChunk* AllocateBuffer(bool pending);         // 0x009C3A60
     void FreeBuffer(CBufferChunk* chunk);               // 0x009C3330
-    static void __fastcall SetDirtyDiscError(bool error);   // 0x009C3530
+    protected: static void __fastcall SetDirtyDiscError(bool error); public:   // 0x009C3530
 protected:
     static void __stdcall OnFileReadCompletion(unsigned long error, unsigned long bytes, _OVERLAPPED* overlapped);   // 0x009C37A0
 public:

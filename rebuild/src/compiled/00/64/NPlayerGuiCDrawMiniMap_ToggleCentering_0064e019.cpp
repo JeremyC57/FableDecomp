@@ -63,7 +63,7 @@ class CDrawMiniMap { public:
     CWorld*            World;                      // +0x0c
     unsigned char      _body10[0x138 - 0x10];
     CFadeInFadeOutBase ScreenPosFadeInOut;         // +0x138
-    bool IsActive();                               // 0x00643E09
+    bool IsActive() const;                               // 0x00643E09
     void ToggleCentering();
 protected:
     void UpdateRegionExitNames(const CRegion& region);   // 0x0064DD9A

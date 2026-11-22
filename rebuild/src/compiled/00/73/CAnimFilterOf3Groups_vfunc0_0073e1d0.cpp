@@ -14,7 +14,7 @@ class CCharString { public:
 };
 class CDefString { public: long TablePos; };
 class CAnimationEntry { public: long BankIndex; CDefString AnimName; CDefString GroupName; void* Components; };
-class CDefStringTable { public: const char* GetStringAsCharArray(long); }; // 0x009D49F0
+class CDefStringTable { public: const char* GetStringAsCharArray(long) const; }; // 0x009D49F0
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21) // 0x013CA828
 struct CAnimFilterOf3Groups {
     virtual long Accepts(const CAnimationEntry* anim);

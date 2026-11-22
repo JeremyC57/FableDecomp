@@ -160,7 +160,7 @@ class CDisplayManager { public:
     _D3DDISPLAYMODE GetClosestMode(const C2DExtentsI& resolution, unsigned long colourDepth, bool fullScreen);   // 0x009BF600
     CPixelFormat GetDepthBufferFormat(const _D3DDISPLAYMODE& mode, long depthBits);   // 0x009BEBB0
     unsigned long CalculateD3DPresentationInterval(const CPresentationIntervalDesc& desc);   // 0x009BE2D0
-    bool SetupDepthAndBackBufferTextures();        // 0x009BEE40
+    private: bool SetupDepthAndBackBufferTextures(); public:        // 0x009BEE40
     void SetViewport(const C2DBoxI& box);          // 0x009BEF80
 private:
     void PreDeviceReset();                         // 0x009BF500

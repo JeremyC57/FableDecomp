@@ -31,7 +31,7 @@ extern const float g_smallObjectLightCacheDiameter_0122dcdc;   // 0x0122DCDC
 
 class CEngineLightingManager : public CEngineLightingManagerDonor {
  public:
-    CEngineLocalLightArray* LookupSmallObjectLightCache(float minX, float minY, long layerMask);   // 0x00B46A30
+    private: CEngineLocalLightArray* LookupSmallObjectLightCache(float minX, float minY, long layerMask); public:   // 0x00B46A30
     CEngineLocalLightArray* GetLightsInSphere(const C3DBoundingSphere& sphere, long layerMask,
                                               const CEnginePrimitiveThemeChannelDesc& theme);     // 0x00B45FB0
     CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& sphere, long layerMask,

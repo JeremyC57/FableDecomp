@@ -1,0 +1,56 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00692EC0	CCreatureActionBase	HasPrecedingAction	?HasPrecedingAction@CCreatureActionBase@@QBE_NXZ	CCreatureActionBase::HasPrecedingAction	?HasPrecedingAction@CCreatureActionBase@@QAE_NXZ	Ego_r + FableWin ?HasPrecedingAction@CCreatureActionBase@@QBE_NXZ; binders 0x006644F0 / 0x00692F30 already QBE; in-place const, leaf bytes identical (objsec ALL_EQ, proof_c2)
+0x008C9FE0	CCreatureAction_NymphTeleportLimboBase	DoEffect	?DoEffect@CCreatureAction_NymphTeleportLimboBase@@IAEXXZ	CCreatureAction_NymphTeleportLimboBase::DoEffect	?DoEffect@CCreatureAction_NymphTeleportLimboBase@@QAEXXZ	Ego_r + FableWin IAE; binder 0x008CA170 already IAE, 0x008CA110 moved here; access label only (proof_c2)
+0x006DD8F0	CCreatureAction_UnsheatheToShowToSheatheTrophy	FinishAction	?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAEXXZ	CCreatureAction_UnsheatheToShowToSheatheTrophy::FinishAction	?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@QAEXXZ	Ego_r + FableWin UAE; side effect of `virtual` on the base CCreatureAction_UnsheatheItemFromInventory::FinishAction (entry 14); no landed row names 0x006DD8F0; no Leaf line at HEAD (not added); proof_c2 ALL_EQ, vtmap unchanged
+0x009AC9F0	CDefinitionManager	Error	?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z	CDefinitionManager::Error	?Error@CDefinitionManager@@QAEXABVCStringParser@@ABVCCharString@@@Z	Ego_r + FableWin IAE; binder 0x009ACEE0 already IAE, 0x009ADE90 moved here; HEAD Leaf is the plain `Error` (kept); proof_c2
+0x00435070	CDisplayEngine	RenderHeroDrunkenness	?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z	CDisplayEngine::RenderHeroDrunkenness	?RenderHeroDrunkenness@CDisplayEngine@@QBEXABVCInterpolationInfo@@@Z	Ego_r + FableWin IBE; the only binder 0x00435530 already IBE; Leaf respelled; proof_c2
+0x00B67480	CEngineLandscapeRenderer	SetupCommonStates	?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ	CEngineLandscapeRenderer::SetupCommonStates	?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ	Ego_r + FableWin AAE; binder 0x00B68DA0 already AAE, 0x00B6B0B0 moved here; no Leaf line at HEAD; proof_c3
+0x00B91D20	CEngineSceneGrid	GetCellTotalPrimitiveCount	?GetCellTotalPrimitiveCount@CEngineSceneGrid@@AAEKKK@Z	CEngineSceneGrid::GetCellTotalPrimitiveCount	?GetCellTotalPrimitiveCount@CEngineSceneGrid@@QAEKKK@Z	Ego_r + FableWin AAE; binders 0x00B92950 / 0x00B947E0 already AAE; no Leaf line at HEAD; proof_c3
+0x00B4B830	CEngineShadowRenderer	OnReleaseDefaultPoolResources	?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ	CEngineShadowRenderer::OnReleaseDefaultPoolResources	?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@QAEXXZ	Ego_r + FableWin UAE; binders 0x00B4D210 / 0x00B4FC10 already UAE (retail vtable 0x012A2374 slot, as 0x00B4D210's model); `virtual` + pad 0x2af -> 0x2ab on its own line; proof_c3 ALL_EQ
+0x00A633A0	CFontDataBank	CloseFonts	?CloseFonts@CFontDataBank@@AAEXXZ	CFontDataBank::CloseFonts	?CloseFonts@CFontDataBank@@QAEXXZ	Ego_r + FableWin AAE; binder 0x00A63680 already AAE, 0x00A63B30 moved here; no Leaf line at HEAD; proof_c4
+0x0059697A	NUISystem::CFrontEndManager	CreateNewProfile	?CreateNewProfile@CFrontEndManager@NUISystem@@IAE_NAAVCWideString@@@Z	NUISystem::CFrontEndManager::CreateNewProfile	?CreateNewProfile@CFrontEndManager@NUISystem@@QAE_NAAVCWideString@@@Z	Ego_r + FableWin IAE; the only binder 0x00599E3F binds IAE (table); Leaf respelled; proof_c4
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x009624D0	?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ	?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@ABE_NXZ	0x00961C50
+0x008D6DA0	?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ	?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ	0x005DC390
+0x008D6FF0	?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ	?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ	0x005DC390
+0x008D70A0	?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ	?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ	0x005DC390
+0x008D8B00	?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ	?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ	0x005DC390
+0x008D8DD0	?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ	?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ	0x005DC390
+0x00A26D40	?NotifyEntryAdded@CBankFile@@UAEXKKABV?$CArray@D@@@Z	?NotifyEntryAdded@CBankFile@@MAEXKKABV?$CArray@D@@@Z	0x009CBC20
+0x009CCDF0	?ConvertPathToFilename@CBankFile@@QBE?AVCCharString@@ABV2@@Z	?ConvertPathToFilename@CBankFile@@ABE?AVCCharString@@ABV2@@Z	0x009CBE10
+0x00692DB0	?UpdateActionMovement@CCreatureActionBase@@QAEXXZ	?UpdateActionMovement@CCreatureActionBase@@IAEXXZ	0x00692AA0
+0x008CA110	?DoEffect@CCreatureAction_NymphTeleportLimboBase@@QAEXXZ	?DoEffect@CCreatureAction_NymphTeleportLimboBase@@IAEXXZ	0x008C9FE0
+0x006DD8F0	?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ	?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ	0x0069FC40
+0x004B7980	?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	0x009D49F0
+0x005B3440	?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	0x009D49F0
+0x005FA740	?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	0x009D49F0
+0x006AEB10	?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	0x009D49F0
+0x0073E1D0	?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	0x009D49F0
+0x0076D640	?GetStringAsCharArray@CDefStringTable@@QAEPBDJ@Z	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	0x009D49F0
+0x009ADE90	?Error@CDefinitionManager@@QAEXABVCStringParser@@ABVCCharString@@@Z	?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z	0x009AC9F0
+0x009ADE90	?InstantiateDef@CDefinitionManager@@QAE_NABVCCharString@@0_N@Z	?InstantiateDef@CDefinitionManager@@IAE_NABVCCharString@@0_N@Z	0x009ADC90
+0x009ADE90	?ParseEnumForSymbols@CDefinitionManager@@QAEXAAVCStringParser@@@Z	?ParseEnumForSymbols@CDefinitionManager@@IAEXAAVCStringParser@@@Z	0x009ACEE0
+0x009B0AC0	?InstantiateDef@CDefinitionManager@@QAE_NABVCCharString@@0_N@Z	?InstantiateDef@CDefinitionManager@@IAE_NABVCCharString@@0_N@Z	0x009ADC90
+0x009BFB30	?SetupDepthAndBackBufferTextures@CDisplayManager@@QAE_NXZ	?SetupDepthAndBackBufferTextures@CDisplayManager@@AAE_NXZ	0x009BEE40
+0x0064E019	?IsActive@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsActive@CDrawMiniMap@NPlayerGui@@QBE_NXZ	0x00643E09
+0x00B314E0	?ProcessDebugScript@CEngineCamera@@QAEXXZ	?ProcessDebugScript@CEngineCamera@@AAEXXZ	0x00B31160
+0x00BC65D0	?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@QAEXXZ	?UpdateRenderLayerMask@CEngineInternalPrimitiveGroup@@AAEXXZ	0x00BC6180
+0x00B6B0B0	?PostRenderClearRenderStates@CEngineLandscapeRenderer@@QAEXXZ	?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ	0x00B67510
+0x00B6B0B0	?RenderSortedPatches@CEngineLandscapeRenderer@@QAEXXZ	?RenderSortedPatches@CEngineLandscapeRenderer@@AAEXXZ	0x00B68DA0
+0x00B6B0B0	?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ	?SetupCommonStates@CEngineLandscapeRenderer@@AAEXXZ	0x00B67480
+0x00B6B0B0	?SetupForegroundStates@CEngineLandscapeRenderer@@QAEXXZ	?SetupForegroundStates@CEngineLandscapeRenderer@@AAEXXZ	0x00B677D0
+0x00B46B90	?LookupSmallObjectLightCache@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@MMJ@Z	?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z	0x00B46A30
+0x00BCD490	?RenderWeaponTrail@CEnginePrimitiveManagerWeaponTrails@@QAEXABVCEngineInternalPrimitiveWeaponTrail@@@Z	?RenderWeaponTrail@CEnginePrimitiveManagerWeaponTrails@@AAEXABVCEngineInternalPrimitiveWeaponTrail@@@Z	0x00BCC800
+0x00B8B550	?ApplyOutline@CEngineScreenEffectOutlineGlow@@QAEXXZ	?ApplyOutline@CEngineScreenEffectOutlineGlow@@AAEXXZ	0x00B89C30
+0x00B71FB0	?ProcessSeaLoading@CEngineWaterRenderer@@QAE_NXZ	?ProcessSeaLoading@CEngineWaterRenderer@@AAE_NXZ	0x00B6DC40
+0x00B75CA0	?RenderBackgroundList@CEngineWaterRenderer@@QAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z	?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z	0x00B6E260
+0x00B52250	?BuildBuffers@CEngineWeatherRenderer@@QAEXXZ	?BuildBuffers@CEngineWeatherRenderer@@AAEXXZ	0x00B51570
+0x009C3AE0	?SetDirtyDiscError@CFileInstaller@@SIX_N@Z	?SetDirtyDiscError@CFileInstaller@@KIX_N@Z	0x009C3530
+0x00A63B30	?CloseFonts@CFontDataBank@@QAEXXZ	?CloseFonts@CFontDataBank@@AAEXXZ	0x00A633A0
+0x009FE380	?Sizeof@CGraphicFrameData@@QAEJXZ	?Sizeof@CGraphicFrameData@@QBEKXZ	0x009FCBF0
+0x00B2AFD0	?Sizeof@CGraphicFrameData@@QAEKXZ	?Sizeof@CGraphicFrameData@@QBEKXZ	0x009FCBF0
+0x00B2B120	?Sizeof@CGraphicFrameData@@QAEKXZ	?Sizeof@CGraphicFrameData@@QBEKXZ	0x009FCBF0
+0x00A030D0	?UpdateLargestFreeArea@CHandleBasedMemoryPool@@QAEXXZ	?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ	0x00A01F80
+0x0068FB90	?ProcessCombatInput@CInputProcessCombat@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessCombatInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0x0068F470
+0x007E5230	?IsEventButtonPressed@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventButtonPressed@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	0x00687A90

@@ -1,0 +1,45 @@
+##### 009624d0 renames: ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@QAE_NXZ=?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@ABE_NXZ
+sections head 30 new 30
+ALL_EQ 0
+DIFF	?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
+funcs SAME=24 vtbl_H=0 vtbl_N=0
+##### 008d6da0 renames: ?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ=?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+sections head 5 new 5
+ALL_EQ 0
+DIFF	?AnimUpdate@CModeConversation@NCreatureMode@@QAEXAAVCAnimateThing@@@Z
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 008d6ff0 renames: ?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ=?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+sections head 5 new 5
+ALL_EQ 0
+DIFF	?AnimUpdate@CModeDragonHover@NCreatureMode@@QAEXAAVCAnimateThing@@@Z
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 008d70a0 renames: ?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ=?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+sections head 6 new 6
+ALL_EQ 0
+DIFF	?AnimUpdate@CModeDragonFlyingBase@@QAEXAAVCAnimateThing@@@Z
+funcs SAME=2 vtbl_H=0 vtbl_N=0
+##### 008d8b00 renames: ?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ=?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+sections head 13 new 13
+ALL_EQ 0
+DIFF	?AnimUpdate@CModeCrouch@NCreatureMode@@QAEXAAVCAnimateThing@@@Z
+funcs SAME=6 vtbl_H=0 vtbl_N=0
+##### 008d8dd0 renames: ?GetAnimateThingFlags@CAnimationEntry@@QAEKXZ=?GetAnimateThingFlags@CAnimationEntry@@QBEKXZ
+sections head 17 new 17
+ALL_EQ 0
+DIFF	?AnimUpdate@CModeBlock@NCreatureMode@@QAEXAAVCAnimateThing@@@Z
+funcs SAME=14 vtbl_H=0 vtbl_N=0
+##### 00a26d40 renames: ?NotifyEntryAdded@CBankFile@@UAEXKKABV?$CArray@D@@@Z=?NotifyEntryAdded@CBankFile@@MAEXKKABV?$CArray@D@@@Z
+sections head 30 new 30
+ALL_EQ 0
+DIFF	?NotifyEntryAdded@CMeshDataBank@@UAEXKKABV?$CArray@D@@@Z
+funcs SAME=24 vtbl_H=4 vtbl_N=4
+##### 009ccdf0 renames: ?ConvertPathToFilename@CBankFile@@QBE?AVCCharString@@ABV2@@Z=?ConvertPathToFilename@CBankFile@@ABE?AVCCharString@@ABV2@@Z
+sections head 5 new 5
+ALL_EQ 0
+DIFF	?FindIndexByFilename@CBankFile@@QAEKABVCCharString@@J@Z
+funcs SAME=3 vtbl_H=0 vtbl_N=0
+##### 0099ea60 SET-ASIDE (graded, NOT handed back: entry 8 / 29, D3) renames: ?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z=?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z
+sections head 5 new 5
+ALL_EQ 0
+ONLY_A	?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z
+funcs SAME=3 vtbl_H=0 vtbl_N=0

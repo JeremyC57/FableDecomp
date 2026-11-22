@@ -63,7 +63,7 @@ class CCreatureAction_ShowToSheatheTrophy : public CCreatureAction_ShowTrophy { 
 
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _pad_a8[0xb8 - 0xa8];     // PUnsheatheItem +0xa8, PFollowUpAction +0xb0
-    void FinishAction();                    // 0x0069FC40
+    virtual void FinishAction();                    // 0x0069FC40
 };
 
 class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_UnsheatheItemFromInventory { public:

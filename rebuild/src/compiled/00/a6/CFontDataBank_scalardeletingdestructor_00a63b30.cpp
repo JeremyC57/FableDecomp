@@ -46,7 +46,7 @@ class CFontDataBank : public CBankFile { public:                 // vtable 0x012
     CBankStateBlock m_stateBlock;                  // +0x110
     CFontArray      m_fonts;                       // +0x120
     CCharString     m_name;                        // +0x12c
-    void CloseFonts();                             // 0x00A633A0
+    private: void CloseFonts(); public:                             // 0x00A633A0
     CFontDataBank() { }
     FABLE_FORCEINLINE virtual ~CFontDataBank() { CloseFonts(); }
 };

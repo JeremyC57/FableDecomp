@@ -19,7 +19,7 @@ class CCharString { public:
 };
 
 class CDefStringTable { public:
-    const char* GetStringAsCharArray(long id);      // 0x009D49F0
+    const char* GetStringAsCharArray(long id) const;      // 0x009D49F0
 };
 
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828

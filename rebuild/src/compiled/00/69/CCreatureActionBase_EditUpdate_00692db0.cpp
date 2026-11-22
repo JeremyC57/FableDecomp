@@ -71,7 +71,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     bool  Finished;                         // +0x61
     unsigned char _pad62[0xa8 - 0x62];      // +0x62
     void UpdateActionRunningTime() { RunningTimeSeconds += GetFrameTimeStep(); }   // 0x00692480, inlined here
-    void UpdateActionMovement();            // 0x00692AA0
+    protected: void UpdateActionMovement(); public:            // 0x00692AA0
     virtual void EditUpdate(float timeStep);
 };
 

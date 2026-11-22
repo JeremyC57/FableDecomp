@@ -16,7 +16,7 @@ class CGraphicFrameData { public:
     unsigned char  _pad[0x14];
     unsigned short Width;                                       // +0x14
     unsigned short Height;                                      // +0x16
-    unsigned long Sizeof();                                     // 0x009FCBF0
+    unsigned long Sizeof() const;                                     // 0x009FCBF0
 };
 
 struct CGraphicFrame_Retail {                                   // engine/CGraphicFrame.h: one pointer
