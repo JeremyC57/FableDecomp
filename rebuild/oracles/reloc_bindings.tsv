@@ -5674,8 +5674,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?IsBackgroundAtFullDetailInArea@CLandscapeBackgroundTreeNodeCalls@@QAE_NJJJJ@Z	00bf6d50	00bdc150
 ?cl_h_00bdc4f0@@YIXPAUS@@@Z	00bdc450	00bdc4f0
 ??1CEngineLandscapePatch@@UAE@XZ	00bf3a40	00bdd3e0
-??3CEngineLandscapePatch@@SIXPAXJ@Z	00bf36a0	00bdd3e0
-??_VCEngineLandscapePatch@@SIXPAXJ@Z	00bf36e0	00bdd3e0
 ?ReleaseBlock@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00be0400	00bdd980
 ?Release@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00be0400	00bdda30
 ?Method@SubObj@@QAEXH@Z	00bddc00	00bddd50
@@ -5687,7 +5685,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?RemoveFinished@CBankFileList_00bded90@@QAEXXZ	00be04f0	00bded90
 ?Update@CQuadTreeElement_00bded90@@QAE_NPAUCBankFileList_00bded90@@PAUSCacheRecord_00bded90@@N@Z	00bdebf0	00bded90
 ?erase@CRetailVector_SBlockEntry16@@QAEPAUSBlockEntry16@@PAU2@0@Z	00515bc0	00bdf0d0
-?CEngineSubPrimitiveGameMesh_dealloc@@YIXPAUCEngineSubPrimitiveGameMesh@@H@Z	00bf9920	00bdfd60
 ?Insert@CRetailTree_00be0bf0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	00be0b20	00be0bf0
 ??_7CEngineInternalPrimitive2DParticleGroup@@6B@	012a7e3c	00be1a00
 ??_7CEngineInternalPrimitive2DViewport@@6B@	012a7f14	00be21f0
@@ -5727,9 +5724,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?ReleaseBuffer@@YGXPAX@Z	00bf29e0	00bf3160
 ?Initialise@CVertexBufferWin32Native@@QAE_NHJJKH@Z	00a63150	00bf3380
 ?ReleaseResources@CEngineVertexBufferPool@@QAEXXZ	00bf32b0	00bf3380
-?g_00bf36a0@@3PAUGB@@A	01436ea8	00bf36a0
-?m@That2@@QAEPAXH@Z	00bd9b90	00bf36a0
-?g_00bf36e0@@3PAUGB@@A	01436ea8	00bf36e0
 ?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00be0400	00bf63e0
 ?InvalidateEdge@CLandscapeBackgroundTreeNode@@QAEXJJJJ@Z	00bf67f0	00bf6cd0
 ?HelperRelocate@@YIXPAURelocatableLandscapeNode@@@Z	00bf6b70	00bf6d10
@@ -39562,3 +39556,6 @@ __real@0000000000000000	0122ed70	00b260b0
 ??1CDeviceIndependent@CAnimatedBlock@N3DPrimitive@@UAE@XZ	00a978c0	00a978a0
 ?JumpToSafety@CAIStateGroup_WhisperRetreat@@IAEXXZ	0096ac20	0096b600
 ?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ	0096ae50	0096b600
+??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36a0	00bdd3e0
+??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z	00bf36e0	00bdd3e0
+??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z	00bf9920	00bdfd60

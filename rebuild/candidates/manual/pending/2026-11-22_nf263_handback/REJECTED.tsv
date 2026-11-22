@@ -1,0 +1,2 @@
+entry	address	claim	reason
+L129 GB unit	0x00BF36A0 / 0x00BF36E0 / 0x00BF9920	the self leaves are FableWin's one-parameter ??3CEngineLandscapePatch@@SIXPAX@Z / ??_VCEngineLandscapePatch@@SIXPAX@Z (and ??3CLocalDetailPrimitiveMesh@@SIXPAX@Z)	every retail caller sets edx = 0 before the call (0x00BDD414, 0x00BDD431, 0x00BDFD6F), so the callee takes a second register argument; the one-parameter forms are separate retail functions, the stubs `xor edx,edx ; jmp` 0x00BDBF70 -> 0x00BF36A0 and 0x00BDBF80 -> 0x00BF36E0. The placement forms (both PDBs) were applied instead

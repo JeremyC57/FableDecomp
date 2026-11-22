@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00bf36a0   WARN STANDIN_LEAF ??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z (catalog CEngineSubPrimitiveBase::operator_new; names another function)
+00bf36a0   RELOCATION_MATCH PASS   operator_new
+00bf36e0   WARN STANDIN_LEAF ??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z (catalog CEngineSubPrimitiveBase::operator_new; names another function)
+00bf36e0   RELOCATION_MATCH PASS   operator_new
+00bf9920   WARN STANDIN_LEAF ??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z (catalog CEngineSubPrimitiveBase::operator_new; names another function)
+00bf9920   RELOCATION_MATCH PASS   operator_new
+00bdd3e0   WARN RELOC_NAME: ??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z -> 00bf36e0 labelled 'CEngineSubPrimitiveBase::operator_new'
+00bdd3e0   WARN RELOC_NAME: ??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z -> 00bf36a0 labelled 'CEngineSubPrimitiveBase::operator_new'
+00bdd3e0   WARN STANDIN_LEAF ??_ECEngineLandscapePatch@@UAEPAXI@Z (catalog CEngineLandscapePatch::`vector_deleting_destructor'; names another function)
+00bdd3e0   RELOCATION_MATCH PASS   `vector_deleting_destructor'
+00bdfd60   WARN RELOC_NAME: ??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z -> 00bf9920 labelled 'CEngineSubPrimitiveBase::operator_new'
+00bdfd60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bf36c0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf36c0   WARN STANDIN_LEAF ??_UCEngineLandscapePatch@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf36c0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bde600   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bde600   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00bde600   WARN RELOC_NAME: ??2CLocalDetailPrimitiveMeshZSpriteBatch@@SIPAXIPAVCMovableResource@@@Z -> 00bf9a00 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bde600   WARN RELOC_NAME: ??2CLocalDetailPrimitiveRepeatedMesh@@SIPAXIPAVCMovableResource@@@Z -> 00bf9980 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bde600   WARN RELOC_NAME: ??2CLocalDetailPrimitiveMesh@@SIPAXIPAVCMovableResource@@@Z -> 00bf9900 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bde600   RELOCATION_MATCH PASS   CreatePrimitiveOfType
+00bf5d30   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf5d30   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf5d30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 8
+  00bf36a0 RELOCATION_MATCH _global::??3CEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z
+  00bf36e0 RELOCATION_MATCH _global::??_VCEngineLandscapePatch@@SIXPAXPAVCMovableResource@@@Z
+  00bf9920 RELOCATION_MATCH _global::??3CLocalDetailPrimitiveMesh@@SIXPAXPAVCMovableResource@@@Z
+  00bdd3e0 RELOCATION_MATCH CEngineLandscapePatch::??_E
+  00bdfd60 RELOCATION_MATCH CLocalDetailPrimitiveMesh::?CLocalDetailPrimitiveMesh_scalar_deleting_destructor@@YIPAXPAUCLocalDetailPrimitiveMesh@@HI@Z
+  00bf36c0 RELOCATION_MATCH CEngineLandscapePatch::??_UCEngineLandscapePatch
+  00bde600 RELOCATION_MATCH CLocalDetailCacheMap::CObjectTypeCollection::?CreatePrimitiveOfType@CObjectTypeCollection@CLocalDetailCacheMap@@QAEPAVCLocalDetailPrimitiveBase@@W4LOCAL_DETAIL_PRIMITIVE_TYPE@@@Z
+  00bf5d30 RELOCATION_MATCH CEngineLandscapePatch::??_G

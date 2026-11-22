@@ -36118,16 +36118,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bf36a0'
-        Module = '_global'
-        Source = '00/bf/global_operatornew_00bf36a0.cpp'
-        TestSource = '00/bf/global_operatornew_00bf36a0_test.cpp'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bf/CEngineLandscapePatch_operatordelete_00bf36a0.cpp'
+        TestSource = '00/bf/CEngineLandscapePatch_operatordelete_00bf36a0_test.cpp'
         PassPattern = '00bf36a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bf36e0'
-        Module = '_global'
-        Source = '00/bf/global_operatornew_00bf36e0.cpp'
-        TestSource = '00/bf/global_operatornew_00bf36e0_test.cpp'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bf/CEngineLandscapePatch_operatordelete_00bf36e0.cpp'
+        TestSource = '00/bf/CEngineLandscapePatch_operatordelete_00bf36e0_test.cpp'
         PassPattern = '00bf36e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -92512,9 +92512,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bf9920'
-        Module = '_global'
-        Source = '00/bf/global_operatornew_00bf9920.cpp'
-        TestSource = '00/bf/global_operatornew_00bf9920_test.cpp'
+        Module = 'CLocalDetailPrimitiveMesh'
+        Source = '00/bf/CLocalDetailPrimitiveMesh_operatordelete_00bf9920.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMesh_operatordelete_00bf9920_test.cpp'
         PassPattern = 'PASS_00bf9920'
     }
     [pscustomobject]@{
