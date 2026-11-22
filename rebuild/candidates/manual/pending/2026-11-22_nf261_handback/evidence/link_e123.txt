@@ -1,0 +1,29 @@
+## lnk2.py (LINK unset, /DLL /NOENTRY /FORCE /NODEFAULTLIB): the 10 new objects + 11 HEAD controls (0062eac0 0062ead0 00692880 006928b0 0062ea10 00955620 008b83c0 006df800 00693b30 006f5c10 00857e40)
+duplicates 0
+
+watched unresolved 1
+00692890.obj : error LNK2019: unresolved external symbol "public: long __thiscall CAnimationEntry::GetFlags(void)const " (?GetFlags@CAnimationEntry@@QBEJXZ) referenced in function "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(
+## positive control: the same + a renamed copy of the new 0x0062EA40 object
+duplicates 1
+0062ea40_copy.obj : warning LNK4006: "public: virtual bool __thiscall CCombatActionBase::IsToUseRotationInAnimation(void)const " (?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ) already defined in 0062ea40.obj; second definition ignored
+watched unresolved 1
+00692890.obj : error LNK2019: unresolved external symbol "public: long __thiscall CAnimationEntry::GetFlags(void)const " (?GetFlags@CAnimationEntry@@QBEJXZ) referenced in function "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(
+## HEAD set: the 10 HEAD objects + the same controls
+duplicates 0
+
+watched unresolved 15
+00955620_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToHitProneThings(void)const " (?IsToHitProneThings@CCombatActionBase@@UBE_NXZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToHitProneThings(void)const " (?IsToHitProneThings@CCombatActionBase@@UBE_NXZ)
+00955620_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToPerformActionOnStrike(void)const " (?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToPerformActionOnStrike(void)const " (?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ)
+00955620_head.obj : error LNK2001: unresolved external symbol "public: virtual class C3DVector __thiscall CCombatActionBase::GetActionMovementVector(void)const " (?GetActionMovementVector@CCombatActionBase@@UBE?AVC3DVector@@XZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual class C3DVector __thiscall CCombatActionBase::GetActionMovementVector(void)const " (?GetActionMovementVector@CCombatActionBase@@UBE?AVC3DVector@@XZ)
+00955620_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToFaceTarget(void)const " (?IsToFaceTarget@CCombatActionBase@@UBE_NXZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToFaceTarget(void)const " (?IsToFaceTarget@CCombatActionBase@@UBE_NXZ)
+00955620_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToAlignWithGroundNormal(void)const " (?IsToAlignWithGroundNormal@CCombatActionBase@@UBE_NXZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToAlignWithGroundNormal(void)const " (?IsToAlignWithGroundNormal@CCombatActionBase@@UBE_NXZ)
+00955620_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToUseRotationInAnimation(void)const " (?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToUseRotationInAnimation(void)const " (?IsToUseRotationInAnimation@CCombatActionBase@@UBE_NXZ)
+008b83c0_head.obj : error LNK2001: unresolved external symbol "public: virtual bool __thiscall CCombatActionBase::IsToFaceTargetAtStart(void)const " (?IsToFaceTargetAtStart@CCombatActionBase@@UBE_NXZ)
+006df800_head.obj : error LNK2001: unresolved external symbol "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(void)const " (?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ)
+006f5c10_head.obj : error LNK2001: unresolved external symbol "protected: virtual bool __thiscall CCreatureActionBase::AllowsCombinationAnims(void)const " (?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ)

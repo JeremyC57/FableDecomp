@@ -1,0 +1,5 @@
+# 0062eaa0 defined/undefined externals: HEAD object (<) v NF261 row object (>)
+1c1
+< DEF ?CCombatActionBase_IsToPerformActionOnStrike@@YI_NXZ
+---
+> DEF ?IsToPerformActionOnStrike@CCombatActionBase@@UBE_NXZ

@@ -8,17 +8,22 @@
 //   float +0x18, frame count long +0x98.
 // Retail-asm: 0x00B0A848 / 0x00B0A8CC (fistp at 0x00B0A850 / 0x00B0A8D4) `fstp [slot] ; fld [slot] ; fistp dword ptr [slot]` in the inline table-cosine (x2) -- the engine's inline-assembly float-to-long helper (the by-value copy is stored and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
+// NF261 (2026-11-22, q12742): the two table-cosine scales are VC7.1 pooled float literals, not globals: retail multiplies by 0x0122F59C
+//   (0.5f, 0x3F000000) and then by 0x01230010 (1024.0f, 0x44800000; 94 references in Fable.exe) at 0x00B0A832 / 0x00B0A838 and 0x00B0A8B6 /
+//   0x00B0A8BC. The HEAD row's made-up extern `g_cosTableScale` (?g_cosTableScale@@3MB) bound the 0.5f site (0x0122F59C) and its literal 0.5f
+//   bound the 1024.0f site (crossed, by c2's operand order); both are now literals in retail's order, in two statements as the
+//   landed GFSmoothFadeValue body 0x00AF9000 spells them (one expression `x * 0.5f * 1024.0f` folds to 512.0f: graded DIFFER 444v456).
 #include "fable_compiler.h"
 extern float GFastCosTable[1025];                  // 0x013CD550 ?GFastCosTable@@3PAMA
 extern const float g_fadeScale;                     // 0x01266300
-extern const float g_cosTableScale;                 // 0x01230010
 namespace NParticleEngine { float __fastcall GetOneOverTickRate(); }   // 0x00AEAA00
 // the engine's inline-assembly float-to-long helper, expanded in place (VC7.1 homes the by-value parameter in a frame
 // word, often a dead argument slot, and reloads it for the bare dword fistp)
 #include "engine/GFFloatToLongNear.h"
 FABLE_FORCEINLINE float TableCos01(float x)
 {
-    float scaled = x * 0.5f * g_cosTableScale;
+    float scaled = x * 0.5f;
+    scaled = scaled * 1024.0f;
     long whole = GFFloatToLongNear(scaled - 0.5f);
     float frac = scaled - (float)whole;
     long index = whole & 0x3ff;

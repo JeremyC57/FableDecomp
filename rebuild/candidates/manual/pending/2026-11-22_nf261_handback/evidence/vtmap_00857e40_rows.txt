@@ -1,0 +1,8 @@
+VT ??_7CIntelligentPointer@@6B@ slots 2 retail NONE
+  0 ?v00@CIntelligentPointer@@UAEXXZ
+  1 ??_ECIntelligentPointer@@UAEPAXI@Z
+VT ??_7CConstIntelligentPointer@@6B@ slots 2 retail NONE
+  0 ?v00@CConstIntelligentPointer@@UAEXXZ
+  1 ??_ECConstIntelligentPointer@@UAEPAXI@Z
+VT ??_7CCombatActionBase@@6B@ slots 1 retail 01259e44
+  0 0062f6f0 NOLEAF ?v00@CCombatActionBase@@UAEXXZ -

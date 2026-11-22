@@ -330,3 +330,4 @@ date	account	item	kind	status	note
 2026-11-22	A	CCombatActionBase slot self rows / CCreatureAction port debt	naming	done	agent NF259 landed 11 rows (batches/2026-11-22_landing_nf259); q12659 open
 2026-11-22	A	L129 GPLandscapeRenderer units 1-2	naming	done	agent NF260 landed 54 rows (batches/2026-11-22_landing_nf260); the rest of L129 + 0x009B0AC0 pass to NF262
 2026-11-22	A	L129 units 3-4	naming	done	agent NF262 landed 4 rows (batches/2026-11-22_landing_nf262); recheck.py /Oy- fix; the rest of L129 + 0x009B0AC0 pass to NF263
+2026-11-22	A	CCombatActionBase slots 71-77 / pooled 0.5f	naming	done	agent NF261 landed 9 rows (batches/2026-11-22_landing_nf261); 0x00692890 held as a unit; q12743 / q12744 / q12659 pass to NF264

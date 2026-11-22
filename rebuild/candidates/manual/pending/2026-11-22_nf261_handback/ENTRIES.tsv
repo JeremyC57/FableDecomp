@@ -1,0 +1,7 @@
+qid	source	address	claim
+q12740	land1122nf259	0x0062EA40 .. 0x0062EAB0	the seven CCombatActionBase vtable slot rows (slots 71-77 of 0x01259E44) still on stand-ins: onto their member spellings (FableWin.pdb + the retail slot), each count-neutral or reducing; vtmap on 0x00955620 should flip each slot DIFF -> SAME
+q12741	land1122nf259	0x00692890	CCreatureActionBase::AllowsCombinationAnims off its stand-in (as nf259 did 0x00692670 / 0x00692880)
+q12742	land1122nf259	0x0122F59C	the pooled 0.5f constant: its two made-up data names onto the compiler spelling (__real@3f000000, as g_fMinusOne -> __real@bf800000), every reader moved
+q12743	land1122nf259	0x0072CAA0 / 0x008CD470	the CastAssassinRush local models onto engine/CCreatureAction_CastAssassinRush.h (nf259 TARGETCTOR opt-in)
+q12744	land1122nf258	0x00AD9770 / 0x00AD9980	mirror FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY so the unowned ??1?$map@KJ copies agree with 0x00ADCE10 / 0x00ADC310 (nf258 D1)
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

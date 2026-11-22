@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q12740	0x0062EA40 .. 0x0062EAB0	done	0	seven self rows onto their CCombatActionBase member spellings (FableWin + retail vftable 0x01259E44 slots 71-77); binders are vtable slots only (0 code refs) and the header-based emitters bind the PDB spellings already (vtmap 0x00955620 / 0x008B83C0: NOLEAF -> SAME, slot 74 only on 0x008B83C0; HEAD rows had no Leaf line; HEAD link left 13 emitter references to the seven symbols unresolved, now 0); each address loses its self stand-in spelling
+q12741	0x00692890	done	0	self row onto ?AllowsCombinationAnims@CCreatureActionBase@@MBE_NXZ (both PDBs + slot 66); vtmap 0x006DF800 slot 66 DIFF -> SAME; the stand-in ?...@CCreatureActionBase_Methods@@QAEDXZ gone
+q12742	0x0122F59C	done	2	both made-up names gone: 0x00661F90 g_scale -> 0.5f; 0x00B0A750 g_cosTableScale (a crossed binding: the name meant the 1024.0f pool literal 0x01230010) -> 0.5f / 1024.0f literals in retail order; census: 498 landed reader rows, the only source-declared names for 0x0122F59C are these two (grep of externs in the 98 rows with no 0.5 literal); table lines deleted
+q12743	0x0072CAA0 / 0x008CD470	open	0	not started (no compile): needs two new add-only declaration opt-ins in CCreatureAction_CastAssassinRush.h (Initialise, the 0x008CE100 ctor) + equiv_check and two multi-class ports; scoped in NOTES entry 4
+q12744	0x00AD9770 / 0x00AD9980	open	0	not started (order: after q12743); NOTES entry 5 has the undefined ~_Rb_tree caution
+q12659	0x00418DCA	open	0	not started (needs the full 469-includer proof)

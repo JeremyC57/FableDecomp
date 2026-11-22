@@ -1,0 +1,5 @@
+# 0062ea60 defined/undefined externals: HEAD object (<) v NF261 row object (>)
+1c1
+< DEF ?CCombatActionBase_IsToFaceTarget@@YI_NXZ
+---
+> DEF ?IsToFaceTarget@CCombatActionBase@@UBE_NXZ

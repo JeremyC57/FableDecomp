@@ -2128,7 +2128,6 @@ _helper_65e8b8	0065e8b8	0065f8b2
 ?Method_00660494@CSelfTarget_00660494@@QAEXPAU1@@Z	00660494	006610b5
 @ConstructString_helper@24	006611f7	0066124b
 ?CThingCreatureBase_GetCombatManagerHelper@@YIPAUCThingCreatureHelperResult@@PAX@Z	004c7ab0	00661ec0
-?g_scale@@3MA	0122f59c	00661f90
 ?g_thresh@@3MA	01230a5c	00661f90
 ?Add@Sub@@QAEXPAUC3DAnimationBlendState@@@Z	006e92c0	00662410
 ?GFGetDisplayEngine@@YAPAUCDisplayEngineCalls@@XZ	004c7ab0	00662820
@@ -28083,7 +28082,6 @@ _g_emptyWideStringData	0129a8e0	0099bdb0
 ?AccurateNormalise@C2DVector@@QAEAAV1@XZ	00a14510	00a471d0
 ?GetSize@CANavQuadTreeNode@@QBEMXZ	00a75b30	00a471d0
 ?PeekEmitterTransform@CParticleSystem@NParticleEngine@@ABEABVCMatrix3x4@@XZ	00af3d80	00af2250
-?g_cosTableScale@@3MB	0122f59c	00b0a750
 ?g_fadeScale@@3MB	01266300	00b0a750
 ?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z	00addd80	00b18af0
 ?GetCurrentPosition@CPSCBase@NParticleEngine@@QBE?AVC3DVector@@ABV?$CParticleUpdateParameters@KK@2@ABKM_NK@Z	00af2640	00b18af0
