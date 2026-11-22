@@ -1,0 +1,19 @@
+--- a/rebuild/include/engine/CTimer.h
++++ b/rebuild/include/engine/CTimer.h
+@@ -34,6 +34,16 @@
+     long TimerIndex;                                                     // +0x00
+ };
+ FABLE_STATIC_ASSERT(sizeof(CTimer) == 0x4);
++#ifdef FABLE_RETAIL_CTIMER_FORCEINLINE_SET_GET
++// Retail opt-in (AUTH12 2026-11-22, first user 0x00CF4EC0 CFanMarker::Main): operator= (slot 89 SetTimer) and GetTime (slot 90
++// GetTimer) expanded at every site, forced (plain inline leaves 21 ??4CTimer calls in that 6 KB Main; retail calls neither).
++// The same two bodies 98 landed rows define row-locally with FABLE_FORCEINLINE (wave 8 contract above); this is the shared-header
++// home the 2026-11-21 advisor ruling (a) asks for. Add-only: the default path is unchanged.
++#include "engine/CGameScriptInterfaceBase.h"
++extern CGameScriptInterfaceBase* pDSTGame;                               // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
++FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
++FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
++#endif
+ 
+ #endif // FABLE_RETAIL_NSCRIPT
+ #endif // FABLE_ENGINE_CTIMER_H
