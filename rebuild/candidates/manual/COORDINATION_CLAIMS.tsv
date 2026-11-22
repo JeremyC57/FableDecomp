@@ -243,3 +243,4 @@ date	account	item	kind	status	note
 2026-11-22	A	0x00A4EFC0,0x008E18D0	authoring	done	AUTH11: 0x00A4EFC0 owner packet; 0x008E18D0 measured (pending/2026-11-22_auth11)
 2026-11-22	A	q12562,q12563,q12564	naming	claimed	agent NF225 (GetFont size-body probe, ~CManager evidence check, GPUniqueInstance)
 2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH12 (port onto shared headers, then measure; one row)
+2026-11-22	A	0x00A4EFC0	codex	reserved	one-row Codex hand-off for an owner second opinion (pending/2026-11-22_codex_row_00a4efc0)
