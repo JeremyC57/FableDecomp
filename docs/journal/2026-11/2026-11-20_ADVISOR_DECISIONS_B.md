@@ -376,3 +376,6 @@ retail's function never calls (or the reverse). Size arguments that only show "m
   - 0x008E18D0, before any c2 hunt: grade e5 with and without C5 in e4's configuration (/Gr /d2inlT65); C5 replaces an arm documented
     as fitted and must stand alone. Apply the always-inline rule (inlined iff cost - 4 <= S) to the four sites: list retail's decision
     per occurrence per callee. A uniformly treated callee is a cost question (calibrate it); only a mixed one needs the frequency hunt.
+  - **Owner (2026-11-22), on 0x00CF4EC0: "have advisor decide".** The owner-packet branch of this ruling is delegated: if the checks kill
+    (a) or its pre-registered acceptance fails, the row goes to the advisor (ESCALATE_ADVISOR.md), not to the owner, and the advisor's
+    ruling is final for this row.
