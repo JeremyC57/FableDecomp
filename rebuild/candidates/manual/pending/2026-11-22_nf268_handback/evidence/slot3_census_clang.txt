@@ -1,0 +1,8 @@
+00694430 CLANG_FAIL
+0069f0f0 ??_7CCreatureAction_UnsheatheItemFromInventory@@6B@ 3 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ slots 70
+006a0150 ??_7CCreatureAction_UnsheatheItemFromInventory@@6B@ 3 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ slots 70
+006a0d50 ??_7CCreatureAction_UseObject@@6B@ 3 ?PerformAction@CCreatureAction_UseObject@@UAEXXZ slots 70
+006df800 ??_7CCreatureAction_UnsheatheToShowToSheatheTrophy@@6B@ 3 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ slots 70
+006df860 ??_7CCreatureAction_UnsheatheToShowToSheatheTrophy@@6B@ 3 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ slots 70
+0093ea90 CLANG_FAIL
+00940960 CLANG_FAIL

@@ -2,7 +2,7 @@
 // NF83 (round 7, q11021 / q11022 binder): the local CBaseIntelligentPointer-derived vtable stand-in(s) replaced by the shared
 //   engine/CIntelligentPointer.h CIntelligentPointer<CThing> / <CThingCreatureBase> (vtables ??_7?$CIntelligentPointer@VCThing@@@@6B@ 0x01238C6C,
 //   ??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@ 0x0123E7D8).
-// Leaf: ?PerformAction@CCreatureAction_UseObject@@QAEXXZ
+// Leaf: ?PerformAction@CCreatureAction_UseObject@@UAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FE60, length 366 bytes (+ int3 padding).
@@ -63,7 +63,7 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
 };
 class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CBaseIntelligentPointer PUsedThing;         // +0xa8
-    void PerformAction();
+    virtual void PerformAction();   // NF268 (q12772): virtual, as both PDBs (UAE, Ego_r 0x006C50F0 / FableWin 0x022138D0) and the UseObject vftable slot 3 (0x006A0D50 binds UAE); was QAE
 };
 
 void CCreatureAction_UseObject::PerformAction()

@@ -1,0 +1,7 @@
+0069f9e0 CCreatureAction_UnsheatheItemFromInventory::PerformAction RELOCATION_MATCH flags= []
+0069f9e0 CCreatureAction_UnsheatheItemFromInventory::PerformAction RELOCATION_MATCH flags= []
+--- defined/undefined diff HEAD(<) new(>)
+25c25
+< DEF ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@QAEXXZ
+---
+> DEF ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ

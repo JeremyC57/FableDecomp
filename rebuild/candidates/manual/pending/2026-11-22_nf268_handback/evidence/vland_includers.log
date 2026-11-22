@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0072d990   RELOCATION_MATCH PASS   ~CCreatureAction_CastAssassinRush
+008c2550   RELOCATION_MATCH PASS   FinishAction
+008cef50   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cef50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+008cef50   RELOCATION_MATCH PASS   CCreatureAction_CastAssassinRush
+008cd470   RELOCATION_MATCH PASS   Initialise
+0096ae50   RELOCATION_MATCH PASS   UseWill
+009735d0   RELOCATION_MATCH PASS   RushToPos
+
+WINS: 6
+  0072d990 RELOCATION_MATCH CCreatureAction_CastAssassinRush::??1CCreatureAction_CastAssassinRush@@UAE@XZ
+  008c2550 RELOCATION_MATCH CCombatAction_StrikeResponseJackOfBladesIntoRush::?FinishAction@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEXXZ
+  008cef50 RELOCATION_MATCH CCreatureAction_CastAssassinRush::??0CCreatureAction_CastAssassinRush@@QAE@ABV0@@Z
+  008cd470 RELOCATION_MATCH CCreatureAction_CastAssassinRush::?Initialise@CCreatureAction_CastAssassinRush@@UAEXXZ
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ
+  009735d0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z
+EXIT 0

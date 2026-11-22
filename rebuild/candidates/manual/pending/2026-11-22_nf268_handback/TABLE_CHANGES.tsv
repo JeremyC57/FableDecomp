@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+# none: ?SetupAssassinRush@CTCSpecialAbilities@@AAE_NXZ -> 0072caa0 (witness 0072cf40) and ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ -> 0069f9e0 (witness 005ca68e) are already the table lines; 0x0069FE60 has no line (vtable slot only); q12771 / q12744 changed nothing

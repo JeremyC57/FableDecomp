@@ -1,0 +1,7 @@
+0069fe60 CCreatureAction_UseObject::PerformAction RELOCATION_MATCH flags= []
+0069fe60 CCreatureAction_UseObject::PerformAction RELOCATION_MATCH flags= []
+--- defined/undefined diff HEAD(<) new(>)
+14c14
+< DEF ?PerformAction@CCreatureAction_UseObject@@QAEXXZ
+---
+> DEF ?PerformAction@CCreatureAction_UseObject@@UAEXXZ

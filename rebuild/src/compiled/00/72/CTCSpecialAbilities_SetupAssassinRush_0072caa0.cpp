@@ -1,5 +1,5 @@
 // CTCSpecialAbilities::SetupAssassinRush() -- start the assassin-rush cast action on the hero (not while interfaces 0xA8/0xA9 are present): aimed at a live creature target when the targeting component has one (with the player's Z-targeting flag for a player-controlled hero), otherwise untargeted; returns whether the action was set
-// Leaf: SetupAssassinRush
+// Leaf: ?SetupAssassinRush@CTCSpecialAbilities@@AAE_NXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Name fix (NF93 q11451, 2026-11-19): ~CCreatureAction_CastAssassinRush 0x0072D990 is virtual (??1CCreatureAction_CastAssassinRush@@UAE@XZ: the class is
@@ -7,7 +7,7 @@
 //   gains its vptr in place of the first 4 pad bytes (size unchanged, 0x138). Was the QAE spelling.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072CAA0, 252 bytes (plain `ret`).
 // Callees: the const interface LowerBound @ 0x004365B0 (interface 8), the targeting component's slot 33 (+0x84, target thing),
-//   CThing::GetPlayer() @ 0x004C7A10, CCreatureAction_CastAssassinRush(CThingCreatureBase&, CThing&, bool, long,
+//   CThing::PeekPlayer() @ 0x004C7A10, CCreatureAction_CastAssassinRush(CThingCreatureBase&, CThing&, bool, long,
 //   CCountedPointer<CCreatureActionBase>) @ 0x008CE040 and (CThingCreatureBase&, long, CCountedPointer<CCreatureActionBase>)
 //   @ 0x008CE100, CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0, ~CCreatureAction_CastAssassinRush
 //   @ 0x0072D990 (manifest "_Dest_val<...>" is propagated).
@@ -18,89 +18,72 @@
 //   loads (a hand-folded mask form lets VC merge 0xA9/0xA8 into one `test ch,3`); both actions are TEMPORARIES bound to
 //   SetCurrentAction's const reference (the ctor's eax is pushed and the two set+destroy tails cross-jump); the empty counted
 //   pointer is built in its argument slot (user copy constructor).
-#include "fable_compiler.h"
-extern "C" int __cdecl puts(const char* text);              // 0x00BFEAF2 (MSVCR71 import thunk)
-extern "C" __declspec(noreturn) void __cdecl abort(void);   // 0x00BFEAEC
-#include "engine/CVectorMap.h"
-class CTCBase;
-enum ETCInterfaceType { TC_NONE = 0 };
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CPlayer {
-public:
-    unsigned char _pad00[0x20a];
-    bool          ZTargeting;                           // +0x20a (Ego_r.pdb CPlayer::ZTargeting)
-};
-class CThing;
-class CTCTargeter {                                     // interface 8 (named descriptively)
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32();
-    virtual CThing* GetPTarget();                       // slot 33 (+0x84)
-};
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    std::bitset<274> UsingComponents;                   // +0x20
-    CInterfaceMap Components;                           // +0x44
-    unsigned char _pad54[0x18];
-    unsigned long ThingTypeFlags;                       // +0x6c
-    unsigned char _pad70[0x91 - 0x70];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-    const CPlayer& PeekPlayer() const;                 // 0x004C7A10 ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ (Ego_r.pdb / FableWin.pdb; catalog)
-    bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template <class T> FABLE_FORCEINLINE T* GetTC(ETCInterfaceType type) const
-    {
-        ETCInterfaceType key = type;
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
-class CCreatureActionBase;
+// Port (NF268, 2026-11-22, q12770; nf261 NOTES entry 4): the row-local CThing / CPlayer / CThingCreatureBase / CTCTargeter /
+//   CTCSpecialAbilities / CCreatureAction_CastAssassinRush models (and the latter's conversion operator) replaced by the shared headers:
+//   engine/CTCSpecialAbilities.h FULL + USE (the 0x0072CF40 UseSpecialAbility define set: Creature is the PDB reference +0x18, and the
+//   own leaf becomes the private PDB spelling ?SetupAssassinRush@CTCSpecialAbilities@@AAE_NXZ, Ego_r 0x00744040 + FableWin 0x0254D9F0,
+//   which 0x0072CF40 already binds; was the local model's public QAE); engine/CThing.h (HasTC on TCI_ASSASSIN_RUSH / TCI_BATTLE_CHARGE,
+//   the expanded const PeekTC, IsDead, GetTypeFlags, PeekPlayer), engine/CPlayer.h (FableWin inline IsZTargeting), engine/CTCTargetingBase.h
+//   (interface 8, slot 33 GetPTargetedThing; was the descriptive CTCTargeter::GetPTarget), engine/CThingCreatureBase.h (SetCurrentAction),
+//   engine/CCreatureAction_CastAssassinRush.h (retail class on CCombatActionBase, its implicit destructor = 0x0072D990's pick-any COMDAT;
+//   NF259 TARGETCTOR for 0x008CE040, the NF268 add-only UNTARGETEDCTOR for 0x008CE100, and NF266 INITIALISE so that any table this TU
+//   emits binds slot 12 to 0x008CD470). The SetupEnflameSpell 0x0072C790 recipe.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CCOUNTEDPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_USE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_TARGETCTOR
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_UNTARGETEDCTOR
+#define FABLE_RETAIL_CCREATUREACTION_CASTASSASSINRUSH_INITIALISE
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
 #include "engine/CCountedPointer.h"
-class CThingCreatureBase : public CThing {
-public:
-    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
-};
-class CCreatureAction_CastAssassinRush {                // vtable 0x01284254 (vptr +0x00; 0x138 bytes in all)
-public:
-    unsigned char _body[0x134];                         // +0x04
-    CCreatureAction_CastAssassinRush(CThingCreatureBase& creature, CThing& target, bool flag, long priority,
-                                     CCountedPointer<CCreatureActionBase> next);   // 0x008CE040
-    CCreatureAction_CastAssassinRush(CThingCreatureBase& creature, long priority, CCountedPointer<CCreatureActionBase> next);   // 0x008CE100
-    virtual ~CCreatureAction_CastAssassinRush();        // 0x0072D990 ??1CCreatureAction_CastAssassinRush@@UAE@XZ (implicit virtual dtor of the polymorphic action; 0x0096AE50 binds UAE)
-    operator const CCreatureActionBase&() const { return *(const CCreatureActionBase*)this; }
-};
-class CTCSpecialAbilities {
-public:
-    virtual void v00();
-    CThing* ParentThing;                                // +0x04 (CTCBase)
-    unsigned char _base08[4];
-    bool AbilityMutexLock;                              // +0x0c
-    bool UsingBed;                                      // +0x0d
-    long CurrentAbility;                                // +0x10
-    void* UndeadFollowers;                              // +0x14 list (retail 4 bytes)
-    CThingCreatureBase* Creature;                       // +0x18
-    bool SetupAssassinRush();
-};
+#include "stlport/fable_containers.h"
+#include "engine/CThing.h"
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CPlayer.h"
+#include "engine/CTCTargetingBase.h"
+#include "engine/CTCSpecialAbilities.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_CastAssassinRush.h"
 
 bool CTCSpecialAbilities::SetupAssassinRush()
 {
-    if (!Creature->HasTC((ETCInterfaceType)0xa9) && !Creature->HasTC((ETCInterfaceType)0xa8)) {
-        if (Creature->HasTC((ETCInterfaceType)8)) {
-            CThing* target = Creature->GetTC<CTCTargeter>((ETCInterfaceType)8)->GetPTarget();
-            if (target && !target->Dead && (target->ThingTypeFlags & 8)) {
+    if (!Creature.HasTC(TCI_ASSASSIN_RUSH) && !Creature.HasTC(TCI_BATTLE_CHARGE)) {
+        const CTCTargetingBase* targeting;
+        if (Creature.PeekTC(&targeting)) {
+            CThing* target = targeting->GetPTargetedThing();
+            if (target && !target->IsDead() && (target->GetTypeFlags() & 8)) {
                 bool flag = false;
-                if (Creature->ThingTypeFlags & 0x20)
-                    flag = Creature->PeekPlayer().ZTargeting;
-                return Creature->SetCurrentAction(CCreatureAction_CastAssassinRush(*Creature, *target, flag, 0, CCountedPointer<CCreatureActionBase>()));
+                if (Creature.GetTypeFlags() & 0x20)
+                    flag = Creature.PeekPlayer().IsZTargeting();
+                return Creature.SetCurrentAction(CCreatureAction_CastAssassinRush(Creature, *target, flag, 0, CCountedPointer<CCreatureActionBase>()));
             }
         }
-        return Creature->SetCurrentAction(CCreatureAction_CastAssassinRush(*Creature, 0, CCountedPointer<CCreatureActionBase>()));
+        return Creature.SetCurrentAction(CCreatureAction_CastAssassinRush(Creature, 0, CCountedPointer<CCreatureActionBase>()));
     }
     return false;
 }
