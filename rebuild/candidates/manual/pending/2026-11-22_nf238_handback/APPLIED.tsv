@@ -1,0 +1,11 @@
+entry	address	status	binders_respelled	note
+q12668	0x01436E28	done	0x00B26360 0x00B40260 0x00B40BD0 0x00B625E0 0x00BEAB40	held line ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B restored; 2 -> 1 (3 PDBs + the p27 witness 0x00B412A0's declaration)
+q12668	0x00740040	done (count-reducing, not 1)	0x00742790 (ported onto the PASS27 header; its own leaf 2 -> 1 too)	held ctor line restored; stale ??0CClass_00740040 line deleted; 0x00740040 3 -> 2 (the self row's own leaf stays; NAME_FIXES)
+q12668	23 other held lines	blocked (carried)	-	not re-probed: NF236 NOTES entry 5 blockers stand (header ports of stand-in classes, access paths, one-PDB names, a body claim, re-authoring); NOTES entry 1 lists them
+q12668	0x0143B8D8, 0x006A1620	open: not attempted	-	NF236 recorded these two as not attempted (no blocker found); 0x0143B8D8 (private static, 7 binders) is the one worth probing next
+q12669	0x006F2C00	done	0x006F3530 (ported onto CGetBestFreeProngForAttacker.h; self leaf renamed, no referencer)	held anonymous-namespace line restored, ??RCRotateThing retired; 2 -> 1 (?A0x stripped)
+q12669	0x01296F14	deferred: NF237 queue	-	its old binders 0x0096DB60 / 0x0096DDB0 / 0x0096E510 model CCreatureAction_ScreamerIntoAggressive at global scope; respelling them into the anonymous namespace changes the class of the slot functions NF237 is renaming (queue lines 0x0096DBA0, 0x0096DBB0, 0x0096E3F0)
+q12670	0x004C7E30	done	none needed (both binders already bind IsLocal)	self rename GetTypeName -> IsLocal (QBE, bool), in place; catalog + files (RENAMES section 1); 2 -> 1
+q12671	0x007D7C10	done	none (no landed binder)	CTCTavernGameSpotTheAddition::GetWinPhrase (vtable slot 42 + both PDBs + Ego_r layout); port onto CTCTavernGameSpotTheAddition.h; catalog, module + files (RENAMES section 1)
+q12672	0x00B260B0 / 0x00B261D0	open (not started)	-	too large for the remaining context; NOTES entry 5 has the scope
+q12659	0x00418DCA	open (not started)	-	only with the full 469-includer proof; not attempted

@@ -13,7 +13,7 @@
 //   CEngine::AddRenderLayer 0x00B262C0, CEngineLayerRenderer::AddComponent 0x00B2AC80 (inline operator<<), GFGetTime 0x009E1BC0.
 // Globals: the engine component pointers 0x01436E30..0x01436EAC, established spellings (NAME_FIXES_QUEUE c722/c723/c639 and the
 //   landed CEngine::SetVideoOptions 0x00B24690 ones); 0x01436E10 (the input manager), 0x01436E20 (the ENGINE def), 0x01436E24 (the
-//   ENVIRONMENT def), 0x01436E28 (the definition manager): descriptive (no PDB data symbol).
+//   ENVIRONMENT def), 0x01436E28 (the definition manager): NEngineInternal::GPDefinitionManager (PDB name).
 // Shape: the def names are plain string literals converted at the call (`GetDef("ENGINE", 1, &PEngineDef)`): retail builds the
 //   CCharString temporary first and re-leas it, and pushes &PEngineVideoOptionsDefs[i] after it; an explicit CCharString(...)
 //   argument passes the ctor's eax and pushes the def pointer before the ctor (DIFFER 5151v5174). The inline GetDef(name, index, def)
@@ -105,7 +105,7 @@ extern CInputManager*          g_pEngineInputManager_01436e10;   // 0x01436E10 (
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 extern const CEngineDef*       g_pEngineDef_01436e20;            // 0x01436E20 (descriptive)
 namespace NEngineInternal { extern const CEnvironmentDef* GPEnvironmentDef; }   // 0x01436E24 ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B (PDB PUBLIC, Codex pass 22; respelled 2026-11-16, was the descriptive g_pEngineEnvironmentDef)
-extern CDefinitionManager*     g_pEngineDefinitionManager;       // 0x01436E28 (descriptive, chunk 727)
+namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
 namespace NEngineInternal { extern CEngine* GPEngine; }               // 0x01436EA4
 extern CEngineScreenEffectRadialBlurRenderer*   g_pRadialBlurRenderer_01436e30;      // 0x01436E30
 extern CEngineScreenEffectGlowRenderer*         g_pGlowRenderer_01436e34;            // 0x01436E34
@@ -151,14 +151,14 @@ template <class T> bool CDefinitionManager::GetDef(const CCharString& name, long
 bool CEngine::Initialise(const CEngineInit& init)
 {
     Uninitialise();
-    g_pEngineDefinitionManager = init.DefinitionManager;
-    if (g_pEngineDefinitionManager) {
-        g_pEngineDefinitionManager->GetDef("ENGINE", 1, &PEngineDef);
+    NEngineInternal::GPDefinitionManager = init.DefinitionManager;
+    if (NEngineInternal::GPDefinitionManager) {
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE", 1, &PEngineDef);
         g_pEngineDef_01436e20 = PEngineDef.Get();
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_LOW", &PEngineVideoOptionsDefs[0]);
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_NORMAL", &PEngineVideoOptionsDefs[1]);
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGH", &PEngineVideoOptionsDefs[2]);
-        g_pEngineDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGHEST", &PEngineVideoOptionsDefs[3]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_LOW", &PEngineVideoOptionsDefs[0]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_NORMAL", &PEngineVideoOptionsDefs[1]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGH", &PEngineVideoOptionsDefs[2]);
+        NEngineInternal::GPDefinitionManager->GetDef("ENGINE_VIDEO_OPTIONS_HIGHEST", &PEngineVideoOptionsDefs[3]);
     }
     g_pEngineInputManager_01436e10 = GFGetSystemManager()->GetInputManager();
     NEngineInternal::GPDisplayManager = GFGetSystemManager()->GetDisplayManager();
@@ -187,7 +187,7 @@ bool CEngine::Initialise(const CEngineInit& init)
     AddEngineComponent(new CEngineSimulationManager(), g_pEngineSimulationManager, 0);
     AddEngineComponent(new CEngineShadowRenderer(), NEngineInternal::GPShadowRenderer, 0);
     if (init.InitFlags & 1) {
-        g_pEngineDefinitionManager->GetDef("ENVIRONMENT", 1, &PEnvironmentDef);
+        NEngineInternal::GPDefinitionManager->GetDef("ENVIRONMENT", 1, &PEnvironmentDef);
         NEngineInternal::GPEnvironmentDef = PEnvironmentDef.Get();
         AddEngineComponent(new CEngineWorldMap(init), NEngineInternal::GPEngineWorldMap, 0);
         AddEngineComponent(new CEngineWaterRenderer(init), g_pEngineWaterRenderer, 0);

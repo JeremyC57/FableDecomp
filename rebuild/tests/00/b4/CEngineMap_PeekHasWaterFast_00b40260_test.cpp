@@ -12,7 +12,7 @@ long CDefinitionManager::GetDefClassIndexFromGlobalIndex(long index) const { ret
 static unsigned char g_def_obj[16];
 static unsigned char g_world_obj[0x40];
 static unsigned char g_renderer_obj[0x500];
-CDefinitionManager* g_pEngineDefinitionManager = (CDefinitionManager*)g_def_obj;
+namespace NEngineInternal { const CDefinitionManager* GPDefinitionManager = (CDefinitionManager*)g_def_obj; }   // 0x01436E28 (PDB name)
 CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8 = (CEngineLandscapeRenderer*)g_renderer_obj;
 namespace NEngineInternal { CEngineWorldMap* GPEngineWorldMap = (CEngineWorldMap*)g_world_obj; }
 

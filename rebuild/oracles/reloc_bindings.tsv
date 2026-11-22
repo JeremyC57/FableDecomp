@@ -2753,7 +2753,6 @@ __CIfmod	00bfeb28	006f99b0
 ??0CClass_0073f310@@QAE@PAUCThing@@@Z	0073f310	00742590
 ??0CClass_0073f720@@QAE@PAUCThing@@@Z	0073f720	00742630
 ??0CClass_0073fa60@@QAE@PAUCThing@@@Z	0073fa60	007426b0
-??0CClass_00740040@@QAE@PAUCThing@@@Z	00740040	00742790
 ??0CModeDazed@@QAE@PAUCThing@@@Z	00740160	007427f0
 ??0CModeThunderLightningStorm@@QAE@ABU0@@Z	00740640	007428e0
 ??0CClass_00740820@@QAE@PAUCThing@@@Z	00740820	00742a40
@@ -10161,7 +10160,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ??RCNearestBuildingWithProperty@@QAEXABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	0065f056	0065f5d2
 ??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z	0065d89b	0065f96d
 ??RCIsHornTaskWithThisHorn@@QBE_NV?$CCountedPointer@VCVillageTaskHorn@@@@@Z	0065f116	0065f96d
-??RCRotateThing@@QAEXABUSAttackerSlot@@@Z	006f2c00	006f3530
 ??RCCollectEventNames@@QAEXABVCEvent@NAnimationEvents@@@Z	006fcc80	006fce00
 ??RCApplyAdditionalImpulseIfInCombatAndTooClose@@QAEXPAVCThing@@@Z	00726160	00726660
 ?GetComboDef@CAnimationEntry@@QBEXPAPBUCComboDef@@@Z	00738980	00738f30
@@ -37283,7 +37281,6 @@ _time	00bfed22	008405f0
 ?GPScreenEffectOutlineGlow@NEngineInternal@@3PAVCEngineScreenEffectOutlineGlow@@A	01436e3c	00b26360
 ?g_pEngineBillboardGenerator@@3PAVCEngineBillboardGenerator@@A	01436e4c	00b26360
 ?g_pEngineDef_01436e20@@3PBVCEngineDef@@B	01436e20	00b26360
-?g_pEngineDefinitionManager@@3PAVCDefinitionManager@@A	01436e28	00b26360
 ?g_pEngineEnvironment_01436e48@@3PAVCEngineEnvironment@@A	01436e48	00b26360
 ?g_pEngineInputManager_01436e10@@3PAVCInputManager@@A	01436e10	00b26360
 ?g_pEngineSimulationManager@@3PAVCEngineSimulationManager@@A	01436e68	00b26360
@@ -39613,3 +39610,6 @@ _sort32a	00c95560	00c95580
 ?GetShowTargetingStatus@CUserProfileManager@@QBE_NXZ	00548740	00548b50
 ??0CTCHeroOpinionDeedLog@@QAE@AAVCThing@@@Z	006c5a80	004d3f50
 ?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z	006eae20	006eb390
+?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B	01436e28	00b412a0
+??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z	00740040	00938380
+??RCGetBestFreeProngForAttacker@?A0x1c1f655f@@QAEXAAVCProng@CDefendingCombatantInfo@@@Z	006f2c00	006ebf70

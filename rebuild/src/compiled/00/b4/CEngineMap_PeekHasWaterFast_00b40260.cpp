@@ -30,22 +30,22 @@
 #include "engine/CDefinitionManager.h"
 #include "engine/CEngineLandscapeRenderer.h"
 
-extern CDefinitionManager* g_pEngineDefinitionManager;           // 0x01436E28 (landed spelling, CEngine::Initialise 0x00B26360)
+namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
 extern CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8;   // 0x01436EA8 (landed spelling, CEngine::Initialise 0x00B26360)
 
 bool CEngineMap::PeekHasWaterFast(const long mapx, const long mapy) const
 {
     long t0 = PeekThemeId(mapx, mapy, 0);
     if (t0 > 0) {
-        if (g_LandscapeRenderer_01436EA8->PeekTheme(g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(t0)).WaterType != WATER_TYPE_NULL)
+        if (g_LandscapeRenderer_01436EA8->PeekTheme(NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(t0)).WaterType != WATER_TYPE_NULL)
             return true;
         long t1 = PeekThemeId(mapx, mapy, 1);
         if (t1 > 0) {
-            if (g_LandscapeRenderer_01436EA8->PeekTheme(g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(t1)).WaterType != WATER_TYPE_NULL)
+            if (g_LandscapeRenderer_01436EA8->PeekTheme(NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(t1)).WaterType != WATER_TYPE_NULL)
                 return true;
             long t2 = PeekThemeId(mapx, mapy, 2);
             if (t2 > 0) {
-                if (g_LandscapeRenderer_01436EA8->PeekTheme(g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(t2)).WaterType != WATER_TYPE_NULL)
+                if (g_LandscapeRenderer_01436EA8->PeekTheme(NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(t2)).WaterType != WATER_TYPE_NULL)
                     return true;
             }
         }

@@ -40740,8 +40740,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004c7e30'
         Module = 'CThing'
-        Source = '00/4c/CThing_GetTypeName_004c7e30.cpp'
-        TestSource = '00/4c/CThing_GetTypeName_004c7e30_test.cpp'
+        Source = '00/4c/CThing_IsLocal_004c7e30.cpp'
+        TestSource = '00/4c/CThing_IsLocal_004c7e30_test.cpp'
         PassPattern = 'TN_4c7e30_OK'
     }
     [pscustomobject]@{
@@ -220211,9 +220211,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d7c10'
-        Module = 'CUserProfileManager'
-        Source = '00/7d/CUserProfileManager_GetAutoSaveFileName_007d7c10.cpp'
-        TestSource = '00/7d/CUserProfileManager_GetAutoSaveFileName_007d7c10_test.cpp'
+        Module = 'CTCTavernGameSpotTheAddition'
+        Source = '00/7d/CTCTavernGameSpotTheAddition_GetWinPhrase_007d7c10.cpp'
+        TestSource = '00/7d/CTCTavernGameSpotTheAddition_GetWinPhrase_007d7c10_test.cpp'
         PassPattern = '007d7c10_TEST PASS'
     }
     [pscustomobject]@{

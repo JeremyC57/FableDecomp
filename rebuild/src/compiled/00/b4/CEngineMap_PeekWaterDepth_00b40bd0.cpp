@@ -14,7 +14,7 @@
 //   CEngineMap::PeekInterpolatedWaterDepth 0x00B41C30, which declares it with this spelling).
 // Callees: the header inline CEngineMap::PeekThemeId (x3) / PeekThemeBlend (x2), expanded (their out-of-line COMDAT copies
 //   0x00B43720 / 0x00B43870 in this TU's inline run are called only for a cell held by the neighbouring map, the inline self
-//   call); ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z 0x009ACCA0 on g_pEngineDefinitionManager 0x01436E28;
+//   call); ?GetDefClassIndexFromGlobalIndex@CDefinitionManager@@QBEJJ@Z 0x009ACCA0 on NEngineInternal::GPDefinitionManager 0x01436E28;
 //   the inline FableWin.pdb ?PeekTheme@CEngineLandscapeRenderer@@QBEABUCLandscapeTheme@@K@Z on g_LandscapeRenderer_01436EA8
 //   (LandscapeThemes +0x4B8, 0x38-byte records, WaterHeight +0x34); the CIDrawMap virtuals DrawGetEngineThemeAt (slot 6,
 //   `call [reg+18h]`) and DrawGetEngineBlendAt (slot 7, `call [reg+1Ch]`); g_pEngineWorldMap 0x01436E8C (GetMap(x, y)).
@@ -47,24 +47,24 @@
 #include "engine/CDefinitionManager.h"
 #include "engine/CEngineLandscapeRenderer.h"
 
-extern CDefinitionManager* g_pEngineDefinitionManager;           // 0x01436E28 (landed spelling, CEngine::Initialise 0x00B26360)
+namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
 extern CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8;   // 0x01436EA8 (landed spelling, CEngine::Initialise 0x00B26360)
 
 float CEngineMap::PeekWaterDepth(long x, long y) const
 {
     long theme0 = PeekThemeId(x, y, 0);
     if (theme0 > 0) {
-        long index0 = g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(theme0);
+        long index0 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme0);
         unsigned char blend0 = PeekThemeBlend(x, y, 0);
         float depth = (blend0 * g_LandscapeRenderer_01436EA8->PeekTheme(index0).WaterHeight) * (1.0f / 255.0f);
         long theme1 = PeekThemeId(x, y, 1);
         if (theme1 > 0) {
-            long index1 = g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(theme1);
+            long index1 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme1);
             unsigned char blend1 = PeekThemeBlend(x, y, 1);
             depth += (blend1 * g_LandscapeRenderer_01436EA8->PeekTheme(index1).WaterHeight) * (1.0f / 255.0f);
             long theme2 = PeekThemeId(x, y, 2);
             if (theme2 > 0) {
-                long index2 = g_pEngineDefinitionManager->GetDefClassIndexFromGlobalIndex(theme2);
+                long index2 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme2);
                 unsigned char blend2 = 255 - blend1 - blend0;
                 depth += (blend2 * g_LandscapeRenderer_01436EA8->PeekTheme(index2).WaterHeight) * (1.0f / 255.0f);
             }

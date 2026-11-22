@@ -5265,7 +5265,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c7d90	GetMeshBank	CAnimateThing	__thiscall	CMeshDataBank *	1	CAnimateThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CAnimateThing_GetMeshBank_004c7d90.cpp
 004c7da0	GetChecksum	CThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004c7e10	GetTypeName	CThing	__thiscall	CCharString *	1	CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_GetTypeName_004c7e10.cpp
-004c7e30	GetTypeName	CThing	__thiscall	CCharString *	1	CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_GetTypeName_004c7e30.cpp
+004c7e30	IsLocal	CThing	__thiscall	CCharString *	1	CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CThing_GetTypeName_004c7e30.cpp
 004c7e50	GetScriptThing	CThing	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_004c7e50.cpp
 004c7e70	HasScriptThing	CThing	__fastcall	void *	1	uint	1	yes	accepted									
 004c7e90	IsUnderScriptSupervision	CThing	__thiscall	bool	1	CThing *	1	yes	accepted									
@@ -22817,7 +22817,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007d7b40	LeaveGame	CTCTavernGameSpotTheAddition	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007d7b80	EndCutFade	CTCTavernGame	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted									
 007d7ba0	EndRound	CTCTavernGameSpotTheAddition	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-007d7c10	GetAutoSaveFileName	CUserProfileManager	__thiscall	CWideString	1	CUserProfileManager *	1	yes	accepted									
+007d7c10	GetWinPhrase	CTCTavernGameSpotTheAddition	__thiscall	CWideString	1	CUserProfileManager *	1	yes	accepted									
 007d7c30	vfunc_50	CTCTavernGameSpotTheAddition	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007d7c40	FindTarget	CTCTavernGameSpotTheAddition	__thiscall	CThingObject *	2	CTCTavernGameSpotTheAddition *,float	1	yes	accepted									
 007d7c80	GetBestScore	CTCTavernGameSpotTheAddition	__thiscall	CWideString	1	CTCTavernGameSpotTheAddition *	1	yes	accepted									

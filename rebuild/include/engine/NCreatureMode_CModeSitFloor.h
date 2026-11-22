@@ -75,6 +75,12 @@ private:
 // Both PDBs and retail allocation/constructor at 0x00938421 / 0x00740040.
 class CModeSitBench : public CModeSitBase {
 public:
+#ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITBENCH_ALLOC
+    // NF238 opt-in (row 0x00742790): Ego_r.pdb / FableWin.pdb / Ego_d.pdb
+    // ?Alloc@CModeSitBench@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z, the MODE_SIT_BENCH factory that
+    // CTCCreatureModeManager::RegisterModes 0x0073B130 stores. Declaration only: a static member adds no slot and no layout.
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& owner);   // 0x00742790
+#endif
     CModeSitBench(CThing&);
     virtual ~CModeSitBench();
     virtual unsigned long GetType() const;
@@ -82,7 +88,7 @@ public:
 private:
     CAnimFilterOfGroup Filter;
 };
-FABLE_STATIC_ASSERT(sizeof(CModeSitBench) == 0x38);
+FABLE_STATIC_ASSERT_AT(85, sizeof(CModeSitBench) == 0x38);
 #endif
 #ifdef FABLE_RETAIL_NCREATUREMODE_CMODESITTAVERNSTOOL
 // Retail opt-in (chunk Q22, row 0x0096CD70 CAIStateGroup_EatAtTable::Update): RTTI .?AVCModeSitTavernStool@NCreatureMode@@ (vtable

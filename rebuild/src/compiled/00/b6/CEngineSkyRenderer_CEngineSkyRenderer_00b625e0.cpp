@@ -21,7 +21,7 @@
 //   ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCSkyDef@@@@QAEX..@Z), the two star paths and BuildBuffers().
 // Data: NEngineInternal::GPResourceManager 0x01436E98 (bank 5 +0x29E8, bank 6 +0x29F0, bank 16 +0x2A40 of VShaderResources[],
 //   PShader +0x2A98); g_pEngineEnvironmentDef 0x01436E24 (established descriptive label; CEngine::Initialise 0x00B26360 stores
-//   CEngine +0x118 there); g_pEngineDefinitionManager 0x01436E28 (descriptive: CEngine::Initialise stores init.DefinitionManager
+//   CEngine +0x118 there); NEngineInternal::GPDefinitionManager 0x01436E28 (PDB name; CEngine::Initialise stores init.DefinitionManager
 //   there at 0x00B2637B); L"Data\\Misc\\star_chart.tga" 0x012A29A4, L"Data\\Misc\\stars.dat" 0x012A297C.
 // Layout: shared headers only -- engine/CEngineInit.h (retail has no DebugString, InitFlags +0x60) and engine/CEnvironmentDef.h
 //   (FABLE_RETAIL_CENVIRONMENTDEF_PARENT: CloudSpeedMultiplier +0x118 .. CloudHeightOffset +0x128).
@@ -44,7 +44,7 @@
 
 enum EShaderBankNo;
 extern const CEnvironmentDef* g_pEngineEnvironmentDef;                   // 0x01436E24 (descriptive)
-extern CDefinitionManager* g_pEngineDefinitionManager;                   // 0x01436E28 (descriptive)
+namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }   // 0x01436E98
 
 CEngineSkyRenderer::CEngineSkyRenderer(const CEngineInit& init)
@@ -80,7 +80,7 @@ CEngineSkyRenderer::CEngineSkyRenderer(const CEngineInit& init)
     ScreenSpaceSpritePixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_SKY_SPRITE");
 
     StarCount = 0;
-    g_pEngineDefinitionManager->GetDef("SKY", 1, &PSkyDef);
+    NEngineInternal::GPDefinitionManager->GetDef("SKY", 1, &PSkyDef);
     StarBitmapFilePath = L"Data\\Misc\\star_chart.tga";
     StarVBFilePath = L"Data\\Misc\\stars.dat";
     BuildBuffers();
