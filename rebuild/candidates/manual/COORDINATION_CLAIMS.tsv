@@ -313,3 +313,4 @@ date	account	item	kind	status	note
 2026-11-22	A	q12677	naming	done	agent NF242 landed the 12-row CModeSitBench unit (batches/2026-11-22_landing_nf242); q12678-q12679 / q12676 / q12659 released
 2026-11-22	A	NF241 open lines etc.	naming	done	agent NF243 landed 5 rows (batches/2026-11-22_landing_nf243); 0x004046B0 family held, its 65 locks pass to NF245
 2026-11-22	A	0x004046B0 family	naming	done	agent NF245 landed 46 rows (batches/2026-11-22_landing_nf245); its entries 2-3 pass to NF246
+2026-11-22	A	CEngine unit / CModeBase follow-ups	naming	done	agent NF244 landed q12680 steps 1-2 + q12681 (batches/2026-11-22_landing_nf244); step 3 queued; entries 3-6 pass to NF247

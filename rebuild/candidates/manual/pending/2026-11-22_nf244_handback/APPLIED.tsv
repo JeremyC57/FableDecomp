@@ -1,0 +1,7 @@
+entry	address	status	binders_respelled	note
+q12680	0x00B260B0 / 0x00B261D0	blocked (rows left: 0x00B260B0, 0x00B261D0; step 1 done for 3 of 4 slots, step 2 done, step 3 blocked)	0	step 1: CIEngine.h slots 11-13 PDB declarations default (bisect: slot 8 moves 0x0058578B in combination; kept on its placeholder), 108 includers rechecked, 10 tests respelled; step 2: CEngine.h FABLE_RETAIL_CENGINE_OVERRIDES (84 spellings, two PDBs each); step 3 needs a typed-member CEngine.h mode (decision 3)
+q12681	0x0073DA00 / 0x00861900 / 0x008D6850 / 0x00743CB0	done	0	four self leaves onto the PDB spellings (each address 2 -> 1); new linked tests; two catalog renames
+q12682	-	open	0	not started (context)
+q12679	0x006A1620	open	0	not started (context)
+q12676	-	open	0	not started (context)
+q12659	0x00418DCA	open	0	not started (context)

@@ -1,0 +1,44 @@
+addr       parity           behav  name
+0058578b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0058578b   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+0058578b   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+0058578b   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0058578b   RELOCATION_MATCH PASS   OpenInventory
+004a1840   WARN RELOC_NAME: ?CreateStaticMaps@CWorldMap@@QAEXABVCWideString@@AAVCIEngine@@@Z -> 004fb320 labelled '_global::Nop_ret8_004fb320'
+004a1840   RELOCATION_MATCH PASS   Load
+004bc1a0   RELOCATION_MATCH PASS   DrawRHSet
+0054ef00   RELOCATION_MATCH PASS   Draw
+00646f67   WARN RELOC_NAME: ?GetCurrentType@CMultiStatBar@NPlayerGui@@QBE?AW4EStatUpdateType@@XZ -> 00646d90 labelled 'CMultiStatBar::GetCurrentChange'
+00646f67   RELOCATION_MATCH PASS   Draw
+0064a639   RELOCATION_MATCH PASS   Draw
+0064ae80   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::CTCSpecialAbilities::GetAbilityAvailability'
+0064ae80   RELOCATION_MATCH PASS   DrawAbilityButton
+0064e978   WARN RELOC_CONFLICT: ??0C3DAnimationBlendState@@QAE@XZ -> 004c2dd0 here, 00c59ba0 in landed 00c72600
+0064e978   RELOCATION_MATCH PASS   Draw
+00650e98   RELOCATION_MATCH PASS   DrawAt
+008764e0   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+008764e0   RELOCATION_MATCH PASS   DrawPyramid
+00aeeba0   RELOCATION_MATCH PASS   StartFrame
+0073da00   MATCH            PASS   IsAllowingPlayerSpecialMovementMoves
+00861900   WARN STANDIN_LEAF ?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z (catalog NCreatureMode::CModeCarryingStandBase::GetMovementSpeed; names another function)
+00861900   RELOCATION_MATCH PASS   GetMovementSpeed
+008d6850   MATCH            PASS   AnimUpdate
+00743cb0   MATCH            PASS   vfunc_11
+
+WINS: 15
+  0058578b RELOCATION_MATCH CTCInventory::?OpenInventory@CTCInventory@@UAEXXZ
+  004a1840 RELOCATION_MATCH CWorld::?Load@CWorld@@QAEXABVCWideString@@@Z
+  004bc1a0 RELOCATION_MATCH NGraphicAppearance::?DrawRHSet@NGraphicAppearance@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@ABVCRightHandedSet@@MJ@Z
+  0054ef00 RELOCATION_MATCH NUISystem::CText::?Draw@CText@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z
+  00646f67 RELOCATION_MATCH NPlayerGui::CDrawExperience::?Draw@CDrawExperience@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  0064a639 RELOCATION_MATCH NPlayerGui::CDrawGuildSeal::?Draw@CDrawGuildSeal@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  0064ae80 RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?DrawAbilityButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@AAV?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@JJJM@Z
+  0064e978 RELOCATION_MATCH NPlayerGui::CDrawReceivedItems::?Draw@CDrawReceivedItems@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00650e98 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::?DrawAt@CQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@UAEMABVC2DVector@@ABVCEnginePrimitivePrepareInfo@@@Z
+  008764e0 RELOCATION_MATCH NCameraModes::?DrawPyramid@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z
+  00aeeba0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?StartFrame@CParticleEmitter@NParticleEngine@@QAEXMABVCEnginePrimitivePrepareInfo@@@Z
+  0073da00 MATCH CModeStandBase::?IsAllowingPlayerSpecialMovementMoves@CModeStandBase@@UBE_NXZ
+  00861900 RELOCATION_MATCH NCreatureMode::CModeCarryingStandBase::?GetMovementSpeed@CModeStandBase@@UBEMABVC3DVector@@0W4EMovementType@@@Z
+  008d6850 MATCH NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::?AnimUpdate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXAAVCAnimateThing@@@Z
+  00743cb0 MATCH _gapscan::?IsRemoveOnDeactivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UBE_NXZ
+EXIT 0

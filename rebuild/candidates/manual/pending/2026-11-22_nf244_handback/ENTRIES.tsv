@@ -1,0 +1,7 @@
+qid	queue_line
+q12680	land1122nf242	0x00B260B0 / 0x00B261D0	the CEngine unit: (1) bisect the four CIEngine.h opt-ins (Virtual08_00b27d90 / Virtual11_00b23cf0 / Virtual12_00b24400 / Virtual13_00b242d0 -> PDB declarations) on 0x0058578B (four compiles; its swap is at 0x00585D7A); make the declarations that do not move it the default, with NF242's drafts (pending/2026-11-22_nf242_handback/q12678_step1/: 4 asserts pinned, ten tests respelled, the 108-row recheck); leave the one that moves it on its placeholder with the evidence; (2) the CEngine.h override opt-in (83 overrides, PDB spelling); (3) both rows off their local EngineNative models together
+q12681	land1122nf242	0x0073DA00 / 0x00861900 / 0x008D6850 / 0x00743CB0	self-leaf respells onto the PDB spellings (two sources each, NF242 NAME_FIXES)
+q12682	land1122nf242	-	the 16 off-address CModeBase slot bindings (slots 3-6) in five of NF242's nine vtables: header ports, as far as they go
+q12679	land1122nf240	0x006A1620	the three blocked binders: 0x00664A10 onto CThingCreatureBase.h; 0x00890250 / 0x00890D80 only if a header port suffices
+q12676	land1122nf238	-	the other 23 held p27 lines, where a blocker has fallen (NF236 NOTES entry 5)
+q12659	land1122nf234	0x00418DCA	CMainGameComponent family header port, LAST and only with the full 469-includer equivalence proof

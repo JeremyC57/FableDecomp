@@ -19846,7 +19846,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00743be0	CModeIceTrollGroundSmashIcicleAssault	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	__thiscall	undefined	2	CModeIceTrollGroundSmashIcicleAssault *,CThing *	0	yes	accepted									
 00743c90	GetType	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743ca0	GetAnimFilter	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00743cb0	vfunc_11	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00743cb0	IsRemoveOnDeactivate	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00743d10	Alloc	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan							
 00743d40	~CModeHoverBase	NCreatureMode::CModeHoverBase	unknown	undefined	0		0	yes	accepted									
 00743dd0	GetEffectName	NCreatureMode::CModeBase	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CActionDoCreatureAction_GetActionName_00743dd0.cpp
@@ -25749,7 +25749,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00861670	IsBetterThan	CVillageTaskCarryCrate	__thiscall	bool	3	CVillageTaskCarryCrate *,CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 00861800	CIntelligentPointer_Assign_00861800	_global	__thiscall	CIntelligentPointer<class_CThingCreatureBase> *	2	CIntelligentPointer<CThingCreatureBase> *,CIntelligentPointer<class_CThingCreatureBase> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\86\CIntelligentPointerCThingCreatureBase_operator_00861800.cpp
 008618b0	GetAnimationFromCreature	NCreatureMode	__fastcall	CAnimationEntry *	2	CCharString *,CThingCreatureBase *	1	yes	accepted									
-00861900	GetMovementSpeed	NCreatureMode::CModeCarryingStandBase	__thiscall	float	4	CModeStandBase *,C3DVector const &,C3DVector const &,EMovementType	1	yes	accepted									
+00861900	GetMovementSpeed	CModeStandBase	__thiscall	float	4	CModeStandBase *,C3DVector const &,C3DVector const &,EMovementType	1	yes	accepted									
 00861950	GetMovementSpeedFromAnimation	NCreatureMode	unknown	undefined	0		0	yes	accepted									
 008619c0	AddCombinationIdles	_global	__fastcall	void	2	CThingCreatureBase *,CAnimateThing *	1	yes	accepted									
 00861a80	SetUpMovementAnim	CModeStandBase	__thiscall	void	6	CModeStandBase *,CAnimateThing *,EExistingAnimStatus,float,CMovementSetup *,CMovementSetup *	1	yes	accepted									

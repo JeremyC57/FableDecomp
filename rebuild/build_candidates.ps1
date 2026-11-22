@@ -101440,9 +101440,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00743cb0'
-        Module = '_gapscan'
-        Source = '00/74/gapscan_sub00743cb0_00743cb0.cpp'
-        TestSource = '00/74/gapscan_sub00743cb0_00743cb0_test.cpp'
+        Module = 'NCreatureMode::CModeIceTrollGroundSmashIcicleAssault'
+        Source = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_IsRemoveOnDeactivate_00743cb0.cpp'
+        TestSource = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_IsRemoveOnDeactivate_00743cb0_test.cpp'
         PassPattern = 'PASS_00743cb0'
     }
     [pscustomobject]@{
@@ -206201,9 +206201,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00861900'
-        Module = 'NCreatureMode::CModeCarryingStandBase'
-        Source = '00/86/NCreatureModeCModeCarryingStandBase_GetMovementSpeed_00861900.cpp'
-        TestSource = '00/86/NCreatureModeCModeCarryingStandBase_GetMovementSpeed_00861900_test.cpp'
+        Module = 'CModeStandBase'
+        Source = '00/86/CModeStandBase_GetMovementSpeed_00861900.cpp'
+        TestSource = '00/86/CModeStandBase_GetMovementSpeed_00861900_test.cpp'
         PassPattern = '00861900_TEST PASS'
     }
     [pscustomobject]@{

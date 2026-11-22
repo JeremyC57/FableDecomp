@@ -1,3 +1,5 @@
+// NF244 (q12680 step 1): the CIEngine slot 11 / 12 / 13 overrides respelled from the retired VirtualNN_ placeholders to the PDB
+// declarations engine/CIEngine.h now makes the default (ConvertScreenPosToWorldPos, ...AtViewDistance, ConvertWorldPosToScreenPos).
 // Self-contained real-header fixture. All external methods are controlled test doubles.
 #include <assert.h>
 #include <stdio.h>
@@ -194,9 +196,9 @@ class FixtureEngine : public CIEngine { public:
 void SetCamera(const CCamera*)  { abort(); }
 void SetWindow(const C2DBoxF*)  { abort(); }
 void Virtual08_00b27d90()  { abort(); }
-void Virtual11_00b23cf0()  { abort(); }
-void Virtual12_00b24400()  { abort(); }
-void Virtual13_00b242d0()  { abort(); }
+bool ConvertScreenPosToWorldPos(const C2DVector&, C3DVector&) const  { abort(); }
+bool ConvertScreenPosToWorldPosAtViewDistance(float, const C2DVector&, C3DVector&) const  { abort(); }
+bool ConvertWorldPosToScreenPos(const C3DVector&, C2DVector&) const  { abort(); }
 bool PreChangeResolution()  { abort(); }
 bool PostChangeResolution(unsigned long, unsigned long, unsigned long)  { abort(); }
 void SetPersistentPrimitive(CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
