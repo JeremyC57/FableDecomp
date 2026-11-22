@@ -324,3 +324,4 @@ date	account	item	kind	status	note
 2026-11-22	A	??_GCIEngine / UnsheatheMeleeWeapon / GetLocalSeed binder	naming	done	agent NF253 landed 4 rows (batches/2026-11-22_landing_nf253); the four blocked ctor rows pass to NF255
 2026-11-22	A	last CODEXP27 lines	naming	done	agent NF254 landed 11 rows (batches/2026-11-22_landing_nf254); L28 / L57 / L37 / L129 queued with plans
 2026-11-22	A	CCreatureAction L92 / L74	naming	done	agent NF255 landed 7 rows (batches/2026-11-22_landing_nf255); L72 / L100 / 0x0096B600 / 0x00418DCA pass to NF257
+2026-11-22	A	L28 / L57 / sky builders / L129 proof	naming	done	agent NF256 landed 4 rows (batches/2026-11-22_landing_nf256); L37 / L129 family pass to NF258

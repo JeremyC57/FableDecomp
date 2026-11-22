@@ -15360,7 +15360,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?InitPassabilityFromThemesIfNecessary@CMap@@QAEXABVC2DBoxI@@@Z	008201e0	0063e2e0
 ?PeekDefinitionManager@CWorldMap@@QBEABVCGameDefinitionManager@@XZ	004fb310	0063e3c0
 ?g_BlockNeighbourOffsets@@3QBVC2DCoordI@@B	01385978	0063e3c0
-?GetAllThingsInRoughArea@CThingSearchTools@@QAEXABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingPtrVector@@@Z	0049c490	0063e480
 ?ForEachInRoughArea@CThingSearchTools@@QAEXABVC2DBoxI@@ABUCBoundThingFilter@@AAUCThingList@@@Z	0063fd40	0063e950
 ?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z	0063a390	0063e950
 ?remove@TList@@QAEXABQAVCTCBase@@@Z	006405b0	006404b0
@@ -27497,7 +27496,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?SetMoneyAsConfiscated@HeroStatsMethods@@QAEX_N@Z	0057c999	008986d0
 ?ConfiscateAllItemsOfType@InventoryMethods@@QAEXJ@Z	005bfac6	00898840
 @Sub_ResetExperiencePickUpMultiplier@4	006d8770	00899d50
-@Sub_IsMeleeFlourishValid@4	00733ee0	00899db0
 ?SetMorality@CGSITheftMoralityStats@@QAEXJ@Z	0057c2e6	0089a070
 ?SetMorality@CGSIPicklockMoralityStats@@QAEXJ@Z	0057c2e6	0089a0e0
 ?DoRemove@@YIXPAX@Z	005b40e6	0089b390

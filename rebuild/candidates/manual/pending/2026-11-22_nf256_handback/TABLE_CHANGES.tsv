@@ -1,0 +1,4 @@
+action	symbol	address	witness	reason
+delete	?GetAllThingsInRoughArea@CThingSearchTools@@QAEXABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingPtrVector@@@Z	0049c490	0063e480	L28: its only binder 0x0063E480 now binds the template spelling (line witness 0x0049BE90); 0x0049C490 2 -> 1
+delete	@Sub_IsMeleeFlourishValid@4	00733ee0	00899db0	L57: its only binder 0x00899DB0 now binds ?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ (line witness 0x0064BE45); 0x00733EE0 2 -> 1
+keep	?GetPointIntersectionFromTo@CPhysicsMeshObject@@QBE_NPBVC3DVector@@0PAVCMeshIntersectionData@@@Z	00a12450	00875e60	0x00875E60 still binds it (0x0063E480 moved to the PDB reference spelling, witness 0x00815070); 4 -> 4

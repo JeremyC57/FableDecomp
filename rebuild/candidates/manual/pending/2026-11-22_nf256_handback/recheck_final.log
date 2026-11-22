@@ -1,0 +1,20 @@
+addr       parity           behav  name
+0063e480   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 0049c490 labelled 'GetAllThingsInRoughArea<CThing const,std::vector<CThing const*,std::allocator<CThing const*> >,CThingFilter_HasPhysicsMesh>'
+0063e480   RELOCATION_MATCH PASS   GetHeightZBelowPos
+00899db0   RELOCATION_MATCH PASS   IsPlayerCreatureFlourishEnabled
+00b61cd0   RELOCATION_MATCH PASS   BuildBaseBandMesh
+00b61ff0   RELOCATION_MATCH PASS   BuildStarFieldVB
+0049be90   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasPhysicsMesh (engine/CThingFilter_HasPhysicsMesh.h)
+0049be90   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z -> 0049c490 labelled 'GetAllThingsInRoughArea<CThing const,std::vector<CThing const*,std::allocator<CThing const*> >,CThingFilter_HasPhysicsMesh>'
+0049be90   RELOCATION_MATCH PASS   IsParticleCollidingAt
+0049c490   RELOCATION_MATCH PASS   GetAllThingsInRoughArea<CThing const,std::vector<CThing const*,std::allocator<CThing const*> >,CThingFilter_HasPhysicsMesh>
+00b620a0   RELOCATION_MATCH PASS   BuildBuffers
+
+WINS: 7
+  0063e480 RELOCATION_MATCH CWorldMap::?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+  00899db0 RELOCATION_MATCH CGameScriptInterface::?IsPlayerCreatureFlourishEnabled@CGameScriptInterface@@UBE_NXZ
+  00b61cd0 RELOCATION_MATCH CEngineSkyRenderer::?BuildBaseBandMesh@CEngineSkyRenderer@@AAEXPAPAVCTVertexColTex1@@PAPAGJJ@Z
+  00b61ff0 RELOCATION_MATCH CEngineSkyRenderer::?BuildStarFieldVB@CEngineSkyRenderer@@AAEXXZ
+  0049be90 RELOCATION_MATCH CParticleEnvironmentInteraction::?IsParticleCollidingAt@CParticleEnvironmentInteraction@@UBE_NABVC3DVector@@0_NAAV2@2AA_N@Z
+  0049c490 RELOCATION_MATCH GetAllThingsInRoughArea<CThing const,std::vector<CThing const*,std::??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@VCThingFilter_HasPhysicsMesh@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasPhysicsMesh@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z
+  00b620a0 RELOCATION_MATCH CEngineSkyRenderer::?BuildBuffers@CEngineSkyRenderer@@AAEXXZ
