@@ -1,0 +1,20 @@
+# 0x00B4D370 LOG (AUTH19)
+- g1 base (acctC wfE6 best) /d2inlT314: DIFFER(7162v7176) reproduces.
+- Finding: Ego_d/FableWin have the full local+block list (egod_locals.txt) and FableWin line table (fw_lines_UpdateShadowSpace.txt, lines 358..657); the draft contradicts it (advisor ruling: port mandatory).
+- g2 pre-registered: p1 = full Ego_d port (names/scopes/GFLimitUpper/Lower/std::swap/bool flag/assignments in else), no SETINVERSE_TRANSLATION_LOCAL, /d2inlT314
+- g3 base regraded (metric nm.py: masked esp/abs): base 330, p1 = DIFFER(7240v7176) nm 279 (tail/end/grid better, else-axes worse). g4 pre-registered p2 = p1 + C2DVECTOR_ASSIGN3D (FableWin line 565/566 34 bytes = operator=(const C3DVector&) call)
+  -> p2 DIFFER(7176v7176) nm 128 (setinv 10+10 frustum 8+7; frame 0x3c0 v 0x3d0). best.cpp = p2.
+- g5 pre-reg p3 = p2 + SETINVERSE_TRANSLATION_LOCAL (setinv cofactor order); g6 pre-reg p4 = p2 without the dead max_y = 0 (line 488 uncertain)
+  -> p3 7192 nm2 295 (worse: SETINVERSE_TRANSLATION_LOCAL stays off); p4 byte-identical to p2 (dead max_y store neutral; p2 kept). New metric nm2.py (slot-mapped): base 702, p1 343, p2 164.
+- g7 pre-reg p5 = p2 + two dead-arm asserts (FableWin lines 636/637, 225 B each; 6 unwind funclets = 2 asserts x 3 string temporaries; frameproc has inline asm|has eh) before PostTranslate
+  -> p5 DIFFER(7176v7176) nm2 110 (persp/else 22->7, end 14->3). best = p5.
+- g8 pre-reg p6 = p5 + CMATRIX3X4_SETINVERSE_DONOR_PASS26 (+ INVERSE_NO_TRANSLATE_PASS23 for GetDeterminant): PDB-evidenced SetInverse text (matrix/det/rec, GetDeterminant, column-order stores)
+- g9 DIAGNOSTIC d7 = p5 with local_world_to_base declared then assigned (frame: does the NRV temp then share like retail 0x100?)
+  -> d7: frame 0x3d0 = retail and grid slots exact, but a temp->local rep movsd copy appears (not retail); nm2 177. Retail = NRV slot shared with the final PostMultiply result.
+- g10 p5 at stock flags (owner order)
+- g11 DIAGNOSTIC d8 = p5 + wfE6 R1 block (local_world_to_base .. PostMultiply(CMatrix4x4(local)), new_shadow_transform hoisted): what the scope buys
+  -> d8 7144 frame 0x3d4 nm2 165 (worse): the fitted block is not the frame answer on the port.
+- Advisor (2nd call): do not escalate yet; /Od per-line check, p6 as base, check FABLE_RETAIL_C3DVECTOR. Done: the switch only adds unary minus + decls for row-used members (operators, copy ctor, GetMagnitude bodies sit outside it) -> controlled.
+- VC10 /Od per-line sizes (odall10 --lib engine + lc.py v FableWin table): p6 matches all statement lines except 532 (+12), 546 (-2), 590 diag (FW 96 v 68; sqrt/C3DVector forms 74..82, none 96), 598 (+4), 605 (+6), 644 (+6), asserts, loop headers (systematic +6/+9), entry. Line 366 (65 B) MATCHES as copy-init (so residue 1 is not that line's text).
+- g12 pre-reg p7 = p6 + line 598 `/ 0.5f` (42 B = FW) + line 605 `*= SceneData.ShadowFadeEnd / MaxShadowDistance` (61 B = FW)
+  -> p7 DIFFER(7162v7176) nm2 149 (p6 127, p5 110). Remaining sites: PostMultiply(persp) reassociation, else GetSquaredMagnitude order 0x00B4E5E9, diag 0x00B4E74A, final-loop PerspectiveTransformPoint terms 0x00B4E988.., last PostMultiply; frame 0x3c0.
