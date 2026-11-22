@@ -43,7 +43,9 @@ for w in want:
     if fo and "Unwind@" in name: e["funclet_offset"] = int(fo.group(1), 0)
     fl = kv.get("CompilerFlags", "").split()
     extra = [f for f in fl if f not in BASE] if fl else []
-    if fl and "/Oy" not in fl and "/Oy-" not in extra: extra.append("/Oy-")
+    # /Oy- only for an entry that spells a full optimisation set without /Oy (e.g. '/O1'); an entry that only adds a flag ('/d2inlT114',
+    # '/GS') keeps the base /Oy (landing nf262: 0x00BD9B90 graded DIFFER 100v97 when /Oy- was forced on its '/d2inlT114')
+    if fl and any(re.match(r"/O[12sxtdgib]", f) for f in fl) and "/Oy" not in fl and "/Oy-" not in extra: extra.append("/Oy-")
     if extra: e["flags"] = extra
     auth.append(e); orc.append("\t".join(q[:4]))
 json.dump({"result": {"authored": auth}}, open(f"{out}/payload.json", "w"))

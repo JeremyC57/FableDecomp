@@ -3,20 +3,14 @@
 // Native layout Data+0 Count+4; PDB vertex layout reproduced with fixed-width integral fields.
 // AllocateVirtual 00BD9AF0, FreeVirtual 00BD9B90. Global01436EA8 renderer native MemoryManager+6B0.
 // Leaf: Resize
+#define FABLE_RETAIL_CENGINELANDSCAPEMEMORYMANAGER                // AllocVirtual 0x00BD9AF0 / FreeVirtual 0x00BD9B90 (Ego_r + FableWin)
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include <string.h>
 #include "engine/CEngineLandscapeMemoryManager.h"
 #include "engine/CEngineLandscapeRenderer.h"
-// Donor renderer MemoryManager+F58 differs from native+6B0; use a documented native view below.
+// NF262: the renderer is the shared CEngineLandscapeRenderer (MemoryManager +0x6B0) through NEngineInternal::GPLandscapeRenderer
+// (both PDBs, 0x01436EA8); was the NativeLandscapeRenderer / CEngineLandscapeMemoryManager_Methods stand-ins.
 class CMovableResource;
-struct CEngineLandscapeMemoryManager_Methods : CEngineLandscapeMemoryManager {
- void* AllocVirtual(int bytes, CMovableResource* owner); // 00BD9AF0
- void FreeVirtual(void* block); // 00BD9B90
-};
-struct NativeLandscapeRenderer {
- unsigned char RendererState[0x6b0];
- CEngineLandscapeMemoryManager_Methods* MemoryManager;
-};
-extern NativeLandscapeRenderer* g_LandscapeRenderer; //01436EA8
 struct CVertex { float WorldZ; unsigned int Normal; unsigned short WorldX,WorldY,VertexBufferIndex,IndexBufferIndex,FanBaseIndex; unsigned char U,V; };
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(CVertex)==20);
@@ -29,14 +23,14 @@ bool EdgeArray_CVertex::Resize(int count,CMovableResource* resource) {
  if(Count!=count) {
   if(count) {
    int copied=Count; if(count<copied)copied=count;
-   CEngineLandscapeMemoryManager_Methods* manager=g_LandscapeRenderer->MemoryManager;
+   CEngineLandscapeMemoryManager* manager=NEngineInternal::GPLandscapeRenderer->MemoryManager;
    CVertex* data=static_cast<CVertex*>(manager->AllocVirtual(count*sizeof(CVertex),resource));
    if(!data)return false;
    if(copied>0)memcpy(data,Data,copied*sizeof(CVertex));
-   if(Data)g_LandscapeRenderer->MemoryManager->FreeVirtual(Data);
+   if(Data)NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(Data);
    Count=count;Data=data;
   } else {
-   g_LandscapeRenderer->MemoryManager->FreeVirtual(Data);
+   NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(Data);
    Data=0;Count=0;
   }
  }

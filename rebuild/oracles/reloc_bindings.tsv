@@ -5688,7 +5688,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?RemoveFinished@CBankFileList_00bded90@@QAEXXZ	00be04f0	00bded90
 ?Update@CQuadTreeElement_00bded90@@QAE_NPAUCBankFileList_00bded90@@PAUSCacheRecord_00bded90@@N@Z	00bdebf0	00bded90
 ?erase@CRetailVector_SBlockEntry16@@QAEPAUSBlockEntry16@@PAU2@0@Z	00515bc0	00bdf0d0
-?gEngine@@3PAUEngineGlobal@@A	01436ea8	00bdfa10
 ?CEngineSubPrimitiveGameMesh_dealloc@@YIXPAUCEngineSubPrimitiveGameMesh@@H@Z	00bf9920	00bdfd60
 ?Insert@CRetailTree_00be0bf0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	00be0b20	00be0bf0
 ??_7CEngineInternalPrimitive2DParticleGroup@@6B@	012a7e3c	00be1a00
@@ -5746,8 +5745,6 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJJ@Z	00bd9af0	00bfb780
 ?AllocVirtualAligned@CEngineLandscapeMemoryManager@@QAEPAXJKJ@Z	00bd9c40	00bfb810
 __allmul	00bfeb50	00bfb810
-?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z	00bd9b90	00bfbe40
-?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A	01436ea8	00bfbe40
 ??_7CPatchTesselationEdgeStrip@@6B@	012a8318	00bfc2e0
 ?OnPostRelocation@CIndexBuffer@@QAEXXZ	00ac1f60	00bfd5d0
 ?CLandscapeLayerMesh_vtbl@@3PAXA	012a835c	00bfddd0
@@ -17022,7 +17019,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetSplitBranch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundSubNodeSplitBranch@@XZ	00bf6160	00bf7f70
 ?ProcessBackgroundLoading@CLandscapeBackgroundTreeNode@@QAE?AW4LS_LOADING_STATUS@@N_NPAVCEngineStaticMapFileBlockManager@@00@Z	00bf8030	00bf8430
 ?ClipSphere@CEngineCamera@@QAE_NPBVC3DVector@@MPAK@Z	00b30480	00bf9aa0
-?AllocVirtual@CEngineLandscapeMemoryManager_Methods@@QAEPAXHPAVCMovableResource@@@Z	00bd9af0	00bfbe40
 ?Resize@?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@QAE_NJPAVCMovableResource@@@Z	00bfbf40	00bfc2e0
 ?Resize@?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@QAE_NJPAVCMovableResource@@@Z	00bfbe40	00bfc2e0
 ?Resize@?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@QAE_NJPAVCMovableResource@@@Z	00bfc140	00bfc2e0

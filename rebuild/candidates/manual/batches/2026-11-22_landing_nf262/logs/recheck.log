@@ -1,0 +1,23 @@
+00bfbe40   RELOCATION_MATCH PASS   Resize
+00bfbf40   RELOCATION_MATCH PASS   Resize
+00bfc040   RELOCATION_MATCH PASS   Resize
+00bdfa10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bdfa10   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00bdfa10   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CQuadTreeElement@CLocalDetailCacheMap@@QAEPAXI@Z (catalog CLocalDetailCacheMap::CQuadTreeElement::`scalar_deleting_destructor'; names another function)
+00bdfa10   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bfc140   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfc140   WARN STANDIN_LEAF ?Resize@EdgeArray_CWaterFanBaseVertex@@QAE_NHPAVCMovableResource@@@Z (catalog CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CWaterFanBaseVertex>::Resize; names another function)
+00bfc140   RELOCATION_MATCH PASS   Resize
+00bf6530   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf6530   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf6530   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf6530   RELOCATION_MATCH PASS   StartTreeLoadTask
+00beb4d0   WARN RELOC_NAME: ?InsertNode@LandscapeLayerList@@QAEXH@Z -> 00bda0d0 labelled 'CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy'
+00beb4d0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CEngineScreenEffectOutlineGlow@@QAEPAV1@I@Z (catalog CWaterPatchMesh::`scalar deleting destructor'; names another function)
+00beb4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00beae50   RELOCATION_MATCH PASS   Load
+00bd9af0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9af0   RELOCATION_MATCH PASS   AllocVirtual
+00bd9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9b90   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9b90   RELOCATION_MATCH PASS   FreeVirtual
