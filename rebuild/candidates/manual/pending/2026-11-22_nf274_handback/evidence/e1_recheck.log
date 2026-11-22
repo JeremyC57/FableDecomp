@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00beb490   RELOCATION_MATCH PASS   CWaterPatchMesh
+00beaaa0   RELOCATION_MATCH PASS   ~CWaterPatchMesh
+00beb4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bf5a30   WARN RELOC_NAME: ??2CWaterPatchMesh@@SIPAXIPAVCMovableResource@@@Z -> 00bea7e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf5a30   RELOCATION_MATCH PASS   CreateFromStream
+
+WINS: 4
+  00beb490 RELOCATION_MATCH CWaterPatchMesh::??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z
+  00beaaa0 RELOCATION_MATCH CWaterPatchMesh::??1CWaterPatchMesh@@UAE@XZ
+  00beb4d0 RELOCATION_MATCH CWaterPatchMesh::??_GCWaterPatchMesh@@UAEPAXI@Z
+  00bf5a30 RELOCATION_MATCH CWaterPatchMesh::?CreateFromStream@CWaterPatchMesh@@SGPAV1@PAVCMovableResource@@PAVCEngineLandscapeMap@@PAVCDataInputStream@@@Z

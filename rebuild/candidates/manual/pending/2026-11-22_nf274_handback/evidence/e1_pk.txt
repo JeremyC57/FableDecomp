@@ -1,0 +1,13 @@
+## pk new 0x00BEB490 object (owners: work/owners.tsv + reloc_bindings)
+M1	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+M1	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+M1	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+M1	??0C2DCoordI@@QAE@ABV0@@Z	19	-	NO-OWNER
+M1	??1CWaterPatchMesh@@UAE@XZ	71	00beaaa0	EQ
+M1	??_GCWaterPatchMesh@@UAEPAXI@Z	100	00beb4d0	EQ
+## pk HEAD 0x00BEB490 object
+HEAD	??0CMovableResource@@QAE@XZ	9	-	NO-OWNER
+HEAD	??1CMovableResource@@UAE@XZ	7	-	NO-OWNER
+HEAD	??_GCMovableResource@@UAEPAXI@Z	31	009d5110	EQ
+HEAD	??0C2DCoordI@@QAE@ABV0@@Z	19	-	NO-OWNER
+HEAD	??_GCWaterPatchMesh@@UAEPAXI@Z	30	00beb4d0	NEQ:bytes(30 v 100)

@@ -21,8 +21,8 @@
 //   DeleteIndexBuffer names; those are the queue functions 0x00BDA110 / 0x00BDA0D0 / 0x00BDA090 (public, called only from other
 //   classes). The destroy-now bodies are the private ...BlockWhileBusy trio (Ego_r.pdb / FableWin.pdb / Ego_d.pdb, `AAE`): retail
 //   0x00BD9C00 / 0x00BD9C20 / 0x00BD9CC0 (out-of-line copies with no caller; VB / IB for the first two from Ego_r order only).
-// Fidelity: same-TU strong definitions of the retail TU-mates FreeVirtual 0x00BD9B90 and the BlockWhileBusy trio (as at HEAD,
-//   where the landed 0x00BD9CE0 defines the same four symbols).
+// Fidelity: scaffolding, not retail (NF274, D4): the retail TU-mates FreeVirtual 0x00BD9B90 and the BlockWhileBusy trio are defined `inline`
+//   here and in 0x00BD9CE0, so both objects emit them pick-any (one definition; at HEAD both defined them strongly: 4 LNK4006); bytes unchanged.
 // NF140 (q4197 / q4198): the allocation is the inline public static CMemoryAllocator::Allocate(size, flags) of engine/CMemoryAllocator.h
 // (Ego_r.pdb / FableWin.pdb ?Allocate@CMemoryAllocator@@SIPAXKK@Z, inline in release): ?Create@CMemoryAllocator@@KIXXZ 0x009F2870, the protected
 // statics ?EnterSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2000 / ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ 0x009F2010 (both PDBs),
@@ -155,26 +155,26 @@ private:
     virtual bool CanRelocateData(long id) const;
 };
 
-void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
+inline void CEngineLandscapeMemoryManager::FreeVirtual(void* block)
 {
     if (block) {
         CMemoryAllocator::Deallocate(block);
     }
 }
 
-void CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(CIndexBuffer* buffer)
+inline void CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(CIndexBuffer* buffer)
 {
     buffer->~CIndexBuffer();
     FreeVirtual(buffer);
 }
 
-void CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(CVertexBufferWin32* buffer)
+inline void CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(CVertexBufferWin32* buffer)
 {
     buffer->~CVertexBufferWin32();
     FreeVirtual(buffer);
 }
 
-void CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(CTexture* texture)
+inline void CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(CTexture* texture)
 {
     texture->~CTexture();
     FreeVirtual(texture);

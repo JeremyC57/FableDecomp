@@ -1,0 +1,160 @@
+## link HEAD 00bda150 + 00bd9ce0
+duplicates 4
+H_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bda150.obj; second definition ignored
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(class CIndexBuffer *)" (?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z) already defined in H_00b
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(class CVertexBufferWin32 *)" (?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z) already de
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(class CTexture *)" (?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z) already defined in H_00bda150.obj; secon
+## link HEAD 00bda150 + 00bd9ce0 + 00bd9b90
+duplicates 5
+H_00bd9ce0.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bda150.obj; second definition ignored
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy(class CIndexBuffer *)" (?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z) already defined in H_00b
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy(class CVertexBufferWin32 *)" (?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z) already de
+H_00bd9ce0.obj : warning LNK4006: "private: void __thiscall CEngineLandscapeMemoryManager::DeleteTextureBlockWhileBusy(class CTexture *)" (?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z) already defined in H_00bda150.obj; secon
+H_00bd9b90.obj : warning LNK4006: "public: void __thiscall CEngineLandscapeMemoryManager::FreeVirtual(void *)" (?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z) already defined in H_00bda150.obj; second definition ignored
+HEAD 00bda150	??_GCMemoryAllocator@@IAEPAXI@Z	28	-	NO-OWNER
+HEAD 00bda150	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z	11	0041c780	EQ
+HEAD 00bda150	?_M_incr@_List_iterator_base@std@@QAEXXZ	7	0041c7a0	EQ
+HEAD 00bda150	??9_List_iterator_base@std@@QBE_NABU01@@Z	22	0041c7c0	EQ
+HEAD 00bda150	??1CTexture@@QAE@XZ	5	-	NO-OWNER
+HEAD 00bda150	??_GCTexture@@QAEPAXI@Z	30	-	NO-OWNER
+HEAD 00bda150	??D?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QBEAAPAVCTexture@@XZ	6	-	NO-OWNER
+HEAD 00bda150	??D?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QBEAAPAVCVertexBufferWin32@@XZ	6	-	NO-OWNER
+HEAD 00bda150	??D?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QBEAAPAVCIndexBuffer@@XZ	6	-	NO-OWNER
+HEAD 00bda150	?deallocate@?$allocator@U?$_List_node@PAVCTexture@@@std@@@std@@QAEXPAU?$_List_node@PAVCTexture@@@2@I@Z	14	-	NO-OWNER
+HEAD 00bda150	?deallocate@?$allocator@U?$_List_node@PAVCVertexBufferWin32@@@std@@@std@@QAEXPAU?$_List_node@PAVCVertexBufferWin32@@@2@I@Z	14	-	NO-OWNER
+HEAD 00bda150	?deallocate@?$allocator@U?$_List_node@PAVCIndexBuffer@@@std@@@std@@QAEXPAU?$_List_node@PAVCIndexBuffer@@@2@I@Z	14	-	NO-OWNER
+HEAD 00bda150	??0?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QAE@PAU_List_node_base@1@@Z	11	-	NO-OWNER
+HEAD 00bda150	??0?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QAE@PAU_List_node_base@1@@Z	11	-	NO-OWNER
+HEAD 00bda150	??0?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QAE@PAU_List_node_base@1@@Z	11	-	NO-OWNER
+HEAD 00bda150	??$_Destroy@PAVCTexture@@@std@@YAXPAPAVCTexture@@@Z	1	-	NO-OWNER
+HEAD 00bda150	??$_Destroy@PAVCVertexBufferWin32@@@std@@YAXPAPAVCVertexBufferWin32@@@Z	1	-	NO-OWNER
+HEAD 00bda150	??$_Destroy@PAVCIndexBuffer@@@std@@YAXPAPAVCIndexBuffer@@@Z	1	-	NO-OWNER
+HEAD 00bda150	??E?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QAEAAU01@XZ	9	-	NO-OWNER
+HEAD 00bda150	??E?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QAEAAU01@XZ	9	-	NO-OWNER
+HEAD 00bda150	??E?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QAEAAU01@XZ	9	-	NO-OWNER
+HEAD 00bda150	?Destroy@CMemoryAllocator@@KIXXZ	37	-	NO-OWNER
+HEAD 00bda150	?begin@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@XZ	13	-	NO-OWNER
+HEAD 00bda150	?end@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@XZ	11	-	NO-OWNER
+HEAD 00bda150	?erase@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@U32@@Z	34	-	NO-OWNER
+HEAD 00bda150	?begin@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@XZ	13	-	NO-OWNER
+HEAD 00bda150	?end@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@XZ	11	-	NO-OWNER
+HEAD 00bda150	?erase@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@U32@@Z	34	-	NO-OWNER
+HEAD 00bda150	?begin@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@XZ	13	-	NO-OWNER
+HEAD 00bda150	?end@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@XZ	11	-	NO-OWNER
+HEAD 00bda150	?erase@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@U32@@Z	34	-	NO-OWNER
+HEAD 00bda150	??$distance@U?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@0@0@Z	24	-	NO-OWNER
+HEAD 00bda150	??$distance@U?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@0@0@Z	24	-	NO-OWNER
+HEAD 00bda150	??$distance@U?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@0@0@Z	24	-	NO-OWNER
+HEAD 00bda150	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	-	NO-OWNER
+HEAD 00bda150	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	68	00bd9b90	NEQ:bytes(68 v 97)
+HEAD 00bda150	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	72	00bd9c20	NEQ:bytes(72 v 72)
+HEAD 00bda150	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	72	00bd9c00	NEQ:bytes(72 v 72)
+HEAD 00bda150	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	75	00bd9cc0	NEQ:bytes(75 v 75)
+HEAD 00bda150	?size@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEIXZ	24	-	NO-OWNER
+HEAD 00bda150	?front@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEAAPAVCTexture@@XZ	8	-	NO-OWNER
+HEAD 00bda150	?pop_front@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEXXZ	22	-	NO-OWNER
+HEAD 00bda150	?size@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEIXZ	24	-	NO-OWNER
+HEAD 00bda150	?front@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEAAPAVCVertexBufferWin32@@XZ	8	-	NO-OWNER
+HEAD 00bda150	?pop_front@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEXXZ	22	-	NO-OWNER
+HEAD 00bda150	?size@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEIXZ	24	-	NO-OWNER
+HEAD 00bda150	?front@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEAAPAVCIndexBuffer@@XZ	8	-	NO-OWNER
+HEAD 00bda150	?pop_front@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEXXZ	22	-	NO-OWNER
+HEAD 00bd9ce0	??_GCMemoryAllocator@@IAEPAXI@Z	28	-	NO-OWNER
+HEAD 00bd9ce0	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z	11	0041c780	EQ
+HEAD 00bd9ce0	?_M_incr@_List_iterator_base@std@@QAEXXZ	7	0041c7a0	EQ
+HEAD 00bd9ce0	??9_List_iterator_base@std@@QBE_NABU01@@Z	22	0041c7c0	EQ
+HEAD 00bd9ce0	??1CTexture@@QAE@XZ	5	-	NO-OWNER
+HEAD 00bd9ce0	??_GCTexture@@QAEPAXI@Z	30	-	NO-OWNER
+HEAD 00bd9ce0	??D?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QBEAAPAVCTexture@@XZ	6	-	NO-OWNER
+HEAD 00bd9ce0	??D?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QBEAAPAVCVertexBufferWin32@@XZ	6	-	NO-OWNER
+HEAD 00bd9ce0	??D?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QBEAAPAVCIndexBuffer@@XZ	6	-	NO-OWNER
+HEAD 00bd9ce0	?deallocate@?$allocator@U?$_List_node@PAVCTexture@@@std@@@std@@QAEXPAU?$_List_node@PAVCTexture@@@2@I@Z	14	-	NO-OWNER
+HEAD 00bd9ce0	?deallocate@?$allocator@U?$_List_node@PAVCVertexBufferWin32@@@std@@@std@@QAEXPAU?$_List_node@PAVCVertexBufferWin32@@@2@I@Z	14	-	NO-OWNER
+HEAD 00bd9ce0	?deallocate@?$allocator@U?$_List_node@PAVCIndexBuffer@@@std@@@std@@QAEXPAU?$_List_node@PAVCIndexBuffer@@@2@I@Z	14	-	NO-OWNER
+HEAD 00bd9ce0	??0?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QAE@PAU_List_node_base@1@@Z	11	-	NO-OWNER
+HEAD 00bd9ce0	??0?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QAE@PAU_List_node_base@1@@Z	11	-	NO-OWNER
+HEAD 00bd9ce0	??0?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QAE@PAU_List_node_base@1@@Z	11	-	NO-OWNER
+HEAD 00bd9ce0	??$_Destroy@PAVCTexture@@@std@@YAXPAPAVCTexture@@@Z	1	-	NO-OWNER
+HEAD 00bd9ce0	??$_Destroy@PAVCVertexBufferWin32@@@std@@YAXPAPAVCVertexBufferWin32@@@Z	1	-	NO-OWNER
+HEAD 00bd9ce0	??$_Destroy@PAVCIndexBuffer@@@std@@YAXPAPAVCIndexBuffer@@@Z	1	-	NO-OWNER
+HEAD 00bd9ce0	??E?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QAEAAU01@XZ	9	-	NO-OWNER
+HEAD 00bd9ce0	??E?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QAEAAU01@XZ	9	-	NO-OWNER
+HEAD 00bd9ce0	??E?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QAEAAU01@XZ	9	-	NO-OWNER
+HEAD 00bd9ce0	?Destroy@CMemoryAllocator@@KIXXZ	37	-	NO-OWNER
+HEAD 00bd9ce0	?begin@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@XZ	13	-	NO-OWNER
+HEAD 00bd9ce0	?end@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@XZ	11	-	NO-OWNER
+HEAD 00bd9ce0	?erase@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@U32@@Z	34	-	NO-OWNER
+HEAD 00bd9ce0	?begin@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@XZ	13	-	NO-OWNER
+HEAD 00bd9ce0	?end@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@XZ	11	-	NO-OWNER
+HEAD 00bd9ce0	?erase@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@U32@@Z	34	-	NO-OWNER
+HEAD 00bd9ce0	?begin@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@XZ	13	-	NO-OWNER
+HEAD 00bd9ce0	?end@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@XZ	11	-	NO-OWNER
+HEAD 00bd9ce0	?erase@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@U32@@Z	34	-	NO-OWNER
+HEAD 00bd9ce0	??$distance@U?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@0@0@Z	24	-	NO-OWNER
+HEAD 00bd9ce0	??$distance@U?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@0@0@Z	24	-	NO-OWNER
+HEAD 00bd9ce0	??$distance@U?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@0@0@Z	24	-	NO-OWNER
+HEAD 00bd9ce0	?Deallocate@CMemoryAllocator@@SIXPAX@Z	63	-	NO-OWNER
+HEAD 00bd9ce0	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z	68	00bd9b90	NEQ:bytes(68 v 97)
+HEAD 00bd9ce0	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z	72	00bd9c20	NEQ:bytes(72 v 72)
+HEAD 00bd9ce0	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z	72	00bd9c00	NEQ:bytes(72 v 72)
+HEAD 00bd9ce0	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z	75	00bd9cc0	NEQ:bytes(75 v 75)
+HEAD 00bd9ce0	?size@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEIXZ	24	-	NO-OWNER
+HEAD 00bd9ce0	?front@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEAAPAVCTexture@@XZ	8	-	NO-OWNER
+HEAD 00bd9ce0	?pop_front@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEXXZ	22	-	NO-OWNER
+HEAD 00bd9ce0	?size@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEIXZ	24	-	NO-OWNER
+HEAD 00bd9ce0	?front@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEAAPAVCVertexBufferWin32@@XZ	8	-	NO-OWNER
+HEAD 00bd9ce0	?pop_front@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEXXZ	22	-	NO-OWNER
+HEAD 00bd9ce0	?size@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEIXZ	24	-	NO-OWNER
+HEAD 00bd9ce0	?front@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEAAPAVCIndexBuffer@@XZ	8	-	NO-OWNER
+HEAD 00bd9ce0	?pop_front@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEXXZ	22	-	NO-OWNER
+## cmpobj HEAD 00bda150 v 00bd9ce0
+SAME	??$_Destroy@PAVCIndexBuffer@@@std@@YAXPAPAVCIndexBuffer@@@Z
+SAME	??$_Destroy@PAVCTexture@@@std@@YAXPAPAVCTexture@@@Z
+SAME	??$_Destroy@PAVCVertexBufferWin32@@@std@@YAXPAPAVCVertexBufferWin32@@@Z
+SAME	??$distance@U?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@0@0@Z
+SAME	??$distance@U?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@0@0@Z
+SAME	??$distance@U?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@@std@@YAIU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@0@0@Z
+SAME	??0?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+SAME	??0?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+SAME	??0?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QAE@PAU_List_node_base@1@@Z
+SAME	??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+SAME	??1CTexture@@QAE@XZ
+SAME	??9_List_iterator_base@std@@QBE_NABU01@@Z
+SAME	??D?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QBEAAPAVCIndexBuffer@@XZ
+SAME	??D?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QBEAAPAVCTexture@@XZ
+SAME	??D?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QBEAAPAVCVertexBufferWin32@@XZ
+SAME	??E?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@std@@QAEAAU01@XZ
+SAME	??E?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@std@@QAEAAU01@XZ
+SAME	??E?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@std@@QAEAAU01@XZ
+SAME	??_GCMemoryAllocator@@IAEPAXI@Z
+SAME	??_GCTexture@@QAEPAXI@Z
+SAME	?Deallocate@CMemoryAllocator@@SIXPAX@Z
+SAME	?DeleteIndexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCIndexBuffer@@@Z
+SAME	?DeleteTextureBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCTexture@@@Z
+SAME	?DeleteVertexBufferBlockWhileBusy@CEngineLandscapeMemoryManager@@AAEXPAVCVertexBufferWin32@@@Z
+SAME	?Destroy@CMemoryAllocator@@KIXXZ
+SAME	?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+SAME	?_M_incr@_List_iterator_base@std@@QAEXXZ
+SAME	?begin@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@XZ
+SAME	?begin@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@XZ
+SAME	?begin@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@XZ
+SAME	?deallocate@?$allocator@U?$_List_node@PAVCIndexBuffer@@@std@@@std@@QAEXPAU?$_List_node@PAVCIndexBuffer@@@2@I@Z
+SAME	?deallocate@?$allocator@U?$_List_node@PAVCTexture@@@std@@@std@@QAEXPAU?$_List_node@PAVCTexture@@@2@I@Z
+SAME	?deallocate@?$allocator@U?$_List_node@PAVCVertexBufferWin32@@@std@@@std@@QAEXPAU?$_List_node@PAVCVertexBufferWin32@@@2@I@Z
+SAME	?end@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@XZ
+SAME	?end@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@XZ
+SAME	?end@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@XZ
+SAME	?erase@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAE?AU?$_List_iterator@PAVCIndexBuffer@@U?$_Nonconst_traits@PAVCIndexBuffer@@@std@@@2@U32@@Z
+SAME	?erase@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAE?AU?$_List_iterator@PAVCTexture@@U?$_Nonconst_traits@PAVCTexture@@@std@@@2@U32@@Z
+SAME	?erase@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAE?AU?$_List_iterator@PAVCVertexBufferWin32@@U?$_Nonconst_traits@PAVCVertexBufferWin32@@@std@@@2@U32@@Z
+SAME	?front@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEAAPAVCIndexBuffer@@XZ
+SAME	?front@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEAAPAVCTexture@@XZ
+SAME	?front@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEAAPAVCVertexBufferWin32@@XZ
+SAME	?pop_front@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEXXZ
+SAME	?pop_front@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEXXZ
+SAME	?pop_front@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEXXZ
+SAME	?size@?$list@PAVCIndexBuffer@@V?$allocator@PAVCIndexBuffer@@@std@@@std@@QAEIXZ
+SAME	?size@?$list@PAVCTexture@@V?$allocator@PAVCTexture@@@std@@@std@@QAEIXZ
+SAME	?size@?$list@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEIXZ
+ONLY_A	?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+BASE_DONE

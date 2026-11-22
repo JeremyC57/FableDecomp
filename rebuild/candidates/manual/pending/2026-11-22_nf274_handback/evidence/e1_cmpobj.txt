@@ -1,0 +1,31 @@
+## cmpobj HEAD 0x00BEB490 v new (every function COMDAT: bytes with reloc fields zeroed + reloc symbols)
+SAME	??0C2DCoordI@@QAE@ABV0@@Z
+SAME	??0CMovableResource@@QAE@XZ
+SAME	??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??_GCMovableResource@@UAEPAXI@Z
+DIFF	??_GCWaterPatchMesh@@UAEPAXI@Z
+## new 0x00BEB490 v HEAD 0x00BEB4D0 (fold) object
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??1CWaterPatchMesh@@UAE@XZ
+SAME	??_GCMovableResource@@UAEPAXI@Z
+SAME	??_GCWaterPatchMesh@@UAEPAXI@Z
+## new 0x00BEB490 v HEAD 0x00BEAAA0 object
+SAME	??1CMovableResource@@UAE@XZ
+SAME	??1CWaterPatchMesh@@UAE@XZ
+SAME	??_GCMovableResource@@UAEPAXI@Z
+SAME	??_GCWaterPatchMesh@@UAEPAXI@Z
+## leaf relocations (xref target / symbol / count) HEAD then new
+00beae50	?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z	x1
+012a8134	??_7CWaterPatchMesh@@6B@	x1
+--
+00beae50	?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z	x1
+012a8134	??_7CWaterPatchMesh@@6B@	x1
+## defined/undefined symbol diff HEAD(<) new(>)
+> DEF ??1CWaterPatchMesh@@UAE@XZ
+< UND ??1CWaterPatchMesh@@UAE@XZ
+> UND ?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+> UND ?FreeVirtual@CEngineLandscapeMemoryManager@@QAEXPAX@Z
+> UND ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A
+## final rows/00beb490.cpp object v measurement object M1
+ALL_EQ 0

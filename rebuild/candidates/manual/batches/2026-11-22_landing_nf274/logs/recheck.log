@@ -1,0 +1,40 @@
+addr       parity           behav  name
+00beb490   RELOCATION_MATCH PASS   CWaterPatchMesh
+00beaaa0   RELOCATION_MATCH PASS   ~CWaterPatchMesh
+00beb4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bf5a30   WARN RELOC_NAME: ??2CWaterPatchMesh@@SIPAXIPAVCMovableResource@@@Z -> 00bea7e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf5a30   RELOCATION_MATCH PASS   CreateFromStream
+00bda150   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bda150   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bda150   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bda150   RELOCATION_MATCH PASS   ProcessDisposalList
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9ce0   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9ce0   RELOCATION_MATCH PASS   FreeDisposalList
+00bd9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bd9b90   WARN RELOC_NAME: ?GetNoAllocations@CMemoryAllocator@@QAEKXZ -> 009f1f10 labelled 'CMemoryAllocator::GetAllocationCount'
+00bd9b90   RELOCATION_MATCH PASS   FreeVirtual
+00bda090   RELOCATION_MATCH PASS   DeleteIndexBuffer
+00bda0d0   RELOCATION_MATCH PASS   DeleteVertexBuffer
+00bda110   RELOCATION_MATCH PASS   DeleteTexture
+
+WINS: 10
+  00beb490 RELOCATION_MATCH CWaterPatchMesh::??0CWaterPatchMesh@@QAE@PBVCEngineLandscapeMap@@AAVCDataInputStream@@AAVC2DCoordI@@@Z
+  00beaaa0 RELOCATION_MATCH CWaterPatchMesh::??1CWaterPatchMesh@@UAE@XZ
+  00beb4d0 RELOCATION_MATCH CWaterPatchMesh::??_GCWaterPatchMesh@@UAEPAXI@Z
+  00bf5a30 RELOCATION_MATCH CWaterPatchMesh::?CreateFromStream@CWaterPatchMesh@@SGPAV1@PAVCMovableResource@@PAVCEngineLandscapeMap@@PAVCDataInputStream@@@Z
+  00bda150 RELOCATION_MATCH CEngineLandscapeMemoryManager::?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+  00bd9ce0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+  00bd9b90 RELOCATION_MATCH CEngineLandscapeMemoryManager::FreeVirtual
+  00bda090 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteIndexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCIndexBuffer@@@Z
+  00bda0d0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAVCVertexBufferWin32@@@Z
+  00bda110 RELOCATION_MATCH CEngineLandscapeMemoryManager::?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z

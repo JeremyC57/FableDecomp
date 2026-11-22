@@ -15,9 +15,14 @@
 //   Load without a dereference) on the shared engine/CWaterPatchMesh.h retail class (vptr from CMovableResource, Load by reference
 //   ?Load@CWaterPatchMesh@@AAE_NAAVCDataInputStream@@@Z) and engine/C2DCoordI.h with its memberwise copy (FABLE_RETAIL_C2DCOORDI_COPY);
 //   was a row-local model with pointer parameters.
-#define FABLE_RETAIL_CWATERPATCHMESH
+// TU (NF274, 2026-11-22; nf272 ruling 1): the destructor's TU, 0x00BEAAA0's file, is included first (the nf251 0x00B2AB10 fold pattern; retail
+//   keeps ~CWaterPatchMesh 0x00BEAAA0, this constructor and ??_GCWaterPatchMesh 0x00BEB4D0 in one translation unit). With the destructor body and
+//   the class operator delete (FABLE_RETAIL_CWATERPATCHMESH_OPERATORDELETE, set by that file) visible, this TU's pick-any
+//   ??_GCWaterPatchMesh@@UAEPAXI@Z is retail's 100-byte body (EQ 0x00BEB4D0); before, it was a 30-byte copy calling ??1 and ::operator delete.
+//   The constructor's bytes and relocations and both emitted vtables are unchanged. The TU also defines ??1CWaterPatchMesh@@UAE@XZ (identical
+//   to 0x00BEAAA0's object, as the 0x00BEB4D0 fold does).
 #define FABLE_RETAIL_C2DCOORDI_COPY
-#include "engine/CWaterPatchMesh.h"
+#include "../src/compiled/00/be/CWaterPatchMesh_CWaterPatchMesh_00beaaa0.cpp"
 
 CWaterPatchMesh::CWaterPatchMesh(const CEngineLandscapeMap* map, CDataInputStream& stream, C2DCoordI& offset)
     : Map(map), Offset(offset), VertexBuffer(0), VertexHeightData(0)

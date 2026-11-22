@@ -1,0 +1,15 @@
+## H_00beb490.obj H_00beaaa0.obj H_00beb4d0.obj
+duplicates 1
+MAP 0001:000000a0 ??_GCWaterPatchMesh@@UAEPAXI@Z 100010a0 f i H_00beb490.obj
+## H_00beaaa0.obj H_00beb4d0.obj H_00beb490.obj
+duplicates 1
+MAP 0001:00000080 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001080 f i H_00beaaa0.obj
+## M1_00beb490.obj H_00beaaa0.obj H_00beb4d0.obj
+duplicates 2
+MAP 0001:000000b0 ??_GCWaterPatchMesh@@UAEPAXI@Z 100010b0 f i M1_00beb490.obj
+## H_00beaaa0.obj H_00beb4d0.obj M1_00beb490.obj
+duplicates 2
+MAP 0001:00000080 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001080 f i H_00beaaa0.obj
+## H_00beb4d0.obj M1_00beb490.obj H_00beaaa0.obj
+duplicates 2
+MAP 0001:00000080 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001080 f i H_00beb4d0.obj

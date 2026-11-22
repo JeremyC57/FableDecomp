@@ -342,3 +342,4 @@ date	account	item	kind	status	note
 2026-11-22	A	slot 1 Validate port / WithHaste forwarder / map dtor mirror	naming	done	agent NF270 landed 6 rows + 3 tests + 2 headers (batches/2026-11-22_landing_nf270); q12659, the Clone rows and the CVertexGroupBlock dtor duplicate go to NF273
 2026-11-22	A	CWaterPatchMesh unit / 0x00BFDD40 split	naming	done	agent NF272 landed 6 rows + 3 tests + 2 headers (batches/2026-11-22_landing_nf272); the 0x00BEB490 ??_G measurement and D4 go to NF274
 2026-11-22	A	private Clone self rows / CVertexGroupBlock dtor copy	naming	done	agent NF273 landed 3 rows + 2 tests + 1 header (batches/2026-11-22_landing_nf273); 0x00AD94F0 rejected; q12659 and the owner-side dtor fix go to NF275
+2026-11-22	A	0x00BEB490 ??_G copy / D4 one definition	naming	done	agent NF274 landed 3 rows (batches/2026-11-22_landing_nf274); D4 S3 / the CLandscapeLayerMesh unit go to NF276
