@@ -1,0 +1,203 @@
+@@ 00b4d370 head
+- sub esp, 0x3d0
++ sub esp, 0x3c0    ; 
+@@ 00b4d464 setinv
++ fld dword ptr [esp + 0x8c]    ; 
++ fmul st(1)    ; 
+@@ 00b4d46b setinv
+- fmul st(2)
++ fmul st(3)    ; 
++ faddp st(1)    ; 
+@@ 00b4d476 setinv
+- faddp st(1)
+- fld st(1)
+- fmul dword ptr [esp + 0x8c]
+@@ 00b4db00 grid26
+- fld dword ptr [esp + eax + 0x2a8]
+- mov edx, dword ptr [esp + eax + 0x2b0]
+- fld dword ptr [esp + eax + 0x2ac]
++ fld dword ptr [esp + eax + 0x298]    ; 
++ mov edx, dword ptr [esp + eax + 0x2a0]    ; 
++ fld dword ptr [esp + eax + 0x29c]    ; 
+@@ 00b4db1e grid26
+- lea ecx, [esp + eax + 0x158]
++ lea ecx, [esp + eax + 0x148]    ; 
+@@ 00b4dbdb grid26
+- fld dword ptr [esp + eax + 0x2b4]
++ fld dword ptr [esp + eax + 0x2a4]    ; 
+@@ 00b4dbe5 grid26
+- fld dword ptr [esp + eax + 0x2b8]
+- mov ecx, dword ptr [esp + eax + 0x2bc]
++ fld dword ptr [esp + eax + 0x2a8]    ; 
++ mov ecx, dword ptr [esp + eax + 0x2ac]    ; 
+@@ 00b4dc92 grid26
+- lea edx, [esp + eax + 0x164]
++ lea edx, [esp + eax + 0x154]    ; 
+@@ 00b4e509 persp/else
+- fld st(1)
+- fadd st(1)
+@@ 00b4e516 persp/else
+- fld st(4)
++ fld st(3)    ; 
+@@ 00b4e51d persp/else
++ fadd st(3)    ; 
+@@ 00b4e52f persp/else
+- fld st(4)
++ fld st(3)    ; 
+@@ 00b4e538 persp/else
++ fadd st(3)    ; 
+@@ 00b4e53d persp/else
+- fld st(4)
++ fld st(3)    ; 
+@@ 00b4e548 persp/else
+- fadd st(4)
++ fadd st(3)    ; 
+@@ 00b4e54d persp/else
+- fstp st(0)
+@@ 00b4e5e2 persp/else
++ fld st(1)    ; 
+@@ 00b4e5e9 persp/else
+- fld st(0)
+- fmul st(1)
+- fld st(2)
+- fmul st(3)
++ fmul st(2)    ; 
++ fld st(1)    ; 
++ fmul st(2)    ; 
+@@ 00b4e5f3 persp/else
++ fld dword ptr [esp + 0x24]    ; 
++ fmul dword ptr [esp + 0x24]    ; 
+@@ 00b4e5fb persp/else
+- fld dword ptr [esp + 0x24]
+- fmul dword ptr [esp + 0x24]
+@@ 00b4e74a tail1
++ fld st(1)    ; 
++ fmulp st(2)    ; 
+@@ 00b4e74e tail1
+- fld st(2)
+- fmul st(3)
+- faddp st(1)
++ faddp st(2)    ; 
++ fxch st(1)    ; 
+@@ 00b4e756 tail1
+- fstp st(2)
+- fstp st(0)
++ fstp st(1)    ; 
+@@ 00b4e97e tail1
+- mov edi, edi
++ lea esp, [esp]    ; 
+@@ 00b4e988 tail1
+- fld dword ptr [esp + 0x58]
+- fmul st(1)
+@@ 00b4e992 tail1
+- fmul st(3)
+- faddp st(1)
++ fmul st(2)    ; 
+@@ 00b4e99e tail1
++ fld dword ptr [esp + 0x58]    ; 
++ fmul st(2)    ; 
++ faddp st(1)    ; 
+@@ 00b4e9a6 tail1
+- fld dword ptr [esp + 0x60]
+- fmul st(1)
+@@ 00b4e9b0 tail1
+- fmul st(3)
+- faddp st(1)
++ fmul st(2)    ; 
+@@ 00b4e9ba tail1
++ faddp st(1)    ; 
++ fld dword ptr [esp + 0x60]    ; 
++ fmul st(2)    ; 
+@@ 00b4e9ce tail1
+- fld dword ptr [esp + 0x54]
+- fmul st(1)
+- fxch st(3)
++ fxch st(2)    ; 
+@@ 00b4e9da tail1
+- faddp st(3)
+@@ 00b4e9e2 tail1
+- faddp st(3)
+- fxch st(2)
++ faddp st(1)    ; 
++ fld dword ptr [esp + 0x54]    ; 
++ fmul st(3)    ; 
++ faddp st(1)    ; 
+@@ 00b4ea55 tail1
+- fld dword ptr [esp + 0x58]
+- fmul st(1)
+@@ 00b4ea5f tail1
+- fmul st(3)
+- faddp st(1)
++ fmul st(2)    ; 
+@@ 00b4ea6b tail1
++ fld dword ptr [esp + 0x58]    ; 
++ fmul st(2)    ; 
++ faddp st(1)    ; 
+@@ 00b4ea73 tail1
+- fld dword ptr [esp + 0x60]
+- fmul st(1)
+@@ 00b4ea7d tail1
+- fmul st(3)
+- faddp st(1)
++ fmul st(2)    ; 
+@@ 00b4ea87 tail1
++ faddp st(1)    ; 
++ fld dword ptr [esp + 0x60]    ; 
++ fmul st(2)    ; 
+@@ 00b4ea9b tail1
+- fld dword ptr [esp + 0x54]
+- fmul st(1)
+- fxch st(3)
++ fxch st(2)    ; 
+@@ 00b4eaa7 tail1
+- faddp st(3)
+@@ 00b4eaaf tail1
+- faddp st(3)
+- fxch st(2)
++ faddp st(1)    ; 
++ fld dword ptr [esp + 0x54]    ; 
++ fmul st(3)    ; 
++ faddp st(1)    ; 
+@@ 00b4edc6 end
+- jmp A
+- lea esp, [esp]
+- nop 
+- fld dword ptr [esp + 0x100]
++ fld dword ptr [esp + 0x124]    ; fld dword ptr [esp + 0xfc]
+@@ 00b4edda end
+- fmul dword ptr [ecx - 0x18]
++ fmul dword ptr [ecx - 0xc]    ; 
+@@ 00b4ede1 end
+- fld dword ptr [esp + 0x124]
+- fmul dword ptr [ecx - 0xc]
+- faddp st(1)
+@@ 00b4ee03 end
++ faddp st(1)    ; 
++ fld dword ptr [esp + 0x100]    ; fld dword ptr [esp + 0xd8]
++ fmul dword ptr [ecx - 0x18]    ; 
+@@ 00b4ee98 end
+- lea edx, [esp + 0x104]
++ lea edx, [esp + 0x90]    ; 
+@@ 00b4eea4 end
+- fld dword ptr [esp + 0x34]
++ fld dword ptr [esp + 0x64]    ; 
+@@ 00b4eeab end
+- fmul dword ptr [ecx - 0x18]
++ fmul dword ptr [ecx - 0xc]    ; 
+@@ 00b4eeb2 end
+- fld dword ptr [esp + 0x64]
+- fmul dword ptr [ecx - 0xc]
+- faddp st(1)
+@@ 00b4eecb end
++ faddp st(1)    ; 
++ fld dword ptr [esp + 0x34]    ; 
++ fmul dword ptr [ecx - 0x18]    ; 
+@@ 00b4ef4c end
+- lea esi, [esp + 0x100]
++ lea esi, [esp + 0x8c]    ; 
+@@ 00b4ef6f end
+- add esp, 0x3d0
++ add esp, 0x3c0    ; 
+@@ 00b4ef75 end
++     ; 
+DIFFER(7162v7176) ['sub esp, 0x3c0'] head 1+1 setinv 4+4 frustum 0+0 grid26 8+8 corners 0+0 persp/else 13+12 tail1 34+32 end 16+14 TOTAL 147 amb 12

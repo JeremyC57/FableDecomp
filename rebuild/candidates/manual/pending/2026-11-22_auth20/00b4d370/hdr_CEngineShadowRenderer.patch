@@ -1,0 +1,17 @@
+--- a/rebuild/include/engine/CEngineShadowRenderer.h
++++ b/rebuild/include/engine/CEngineShadowRenderer.h
+@@ -93,6 +93,14 @@
+ public:
+ #endif
+     CTexture& GetDepthPackingTexture() { return DepthPackingLookupTexture; }
++#ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_UPDATESHADOWSPACE
++    // Retail opt-in (row 0x00B4D370 UpdateShadowSpace): the private shadow-space members (Ego_r.pdb / FableWin.pdb names).
++private:
++    CMatrix3x4 CalcLocalWorldToBaseShadowSpace(const C3DVector& light_vector, float, float);   // 0x00B4B8B0
++    void BuildDerivedShadowMatriciesFromWorldToShadowMatrix();                                 // 0x00B4BA60
++    void CalcClipVolume(const class CEngineCamera& camera);                                    // 0x00B4BCC0
++    void UpdateShadowSpace(const class CEngineCamera& camera);                                 // 0x00B4D370
++#endif
+ #ifdef FABLE_RETAIL_CENGINESHADOWRENDERER_PEEKMINWCLAMP
+     // Retail opt-in (wfA6b, row 0x00BA6240): FableWin.pdb ?PeekColourBufferShadowMinWClamp@CEngineShadowRenderer@@QBEMXZ (0x02E822A0,
+     // 9i/20b = the member read; no retail out-of-line copy). Read at 0x00BA6909 (+0x25C).

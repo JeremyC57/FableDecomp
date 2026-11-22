@@ -1,0 +1,4 @@
+address	state	best_grade	grades_used	best_source	note
+0x00B4D370	escalated	DIFFER(7162v7176) nm2 147 (p9, FW-faithful); p5 DIFFER(7176v7176) nm2 110	4+1 probe	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth20/00b4d370/best_evidence.cpp	ESCALATE.md: id-driven x87 order picks + one slot placement; lk tools absent
+0x00BD3070	working	DIFFER(11288v11288) (b6 reproduced, stock flags)	1	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth20/00bd3070/b6.cpp	resume: row-local FORCEINLINE -> header opt-ins
+0x00502E90	not started	-	0	-	-

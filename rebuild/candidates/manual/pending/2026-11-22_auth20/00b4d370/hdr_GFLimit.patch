@@ -1,0 +1,23 @@
+--- a/rebuild/include/engine/GFLimit.h
++++ b/rebuild/include/engine/GFLimit.h
+@@ -12,4 +12,20 @@
+ template <class T>
+ const T& FABLE_FASTCALL GFLimitReturn(const T& value, const T& lower, const T& upper);
+ #endif
++#ifdef FABLE_RETAIL_GFLIMIT_UPPER_LOWER
++// Retail opt-in (AUTH19, row 0x00B4D370 UpdateShadowSpace): the one-sided limits. FableWin.pdb S_GPROC32 GFLimitUpper<float,float> /
++// GFLimitLower<float,float>, type void (float&, const float&); FableWin's line table for UpdateShadowSpace gives each call 17 bytes
++// (lea edx / lea ecx / call: two register arguments, the /Gr convention). Not combined with engine/CAnimSet.h, which defines its own
++// GFLimitLower.
++template<class T, class U>
++inline void FABLE_FASTCALL GFLimitUpper(T& value, const U& upper)
++{
++    if (value > upper) value = upper;
++}
++template<class T, class L>
++inline void FABLE_FASTCALL GFLimitLower(T& value, const L& lower)
++{
++    if (value < lower) value = lower;
++}
++#endif
+ #endif

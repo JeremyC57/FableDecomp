@@ -412,3 +412,17 @@ retail's function never calls (or the reverse). Size arguments that only show "m
   - Record 305v295 as the row's rule-clean grade (297v295 was a local-model bracket). Queue "TLC-era form of GetProximityForNavigation" for the
     next Codex package (`pending/NEXT_CODEX_QUESTIONS.md`, with the 0x00CF4EC0 line-887 question). Restart authoring on the other three rows
     (AUTH19), restating "never run git, including read-only".
+
+- **2026-11-22 (Account A, advisor): AUTH20's 0x00B4D370 UpdateShadowSpace escalation.** Not terminal; no TERMINAL.md. The 0x00CF4EC0 model
+  needs a measured tie plus an oracle, and three parts of the packet are not shown to be c2 id ties:
+  1. The frame (0x3c0 v 0x3d0) is the whole 14-B size gap and is slot placement, not operand order. Check p5 (7176 B): if it has retail's
+     placement of the last PostMultiply result, the p5 v p9 difference there is the one pre-registered candidate, graded once on p9.
+  2. Line 590 (FableWin 96 B, ten spellings miss) sits on a residue site (diag's GetMagnitude): unsolved text. FableWin's code for 590 and
+     the tail 636-657 goes to `pending/NEXT_CODEX_QUESTIONS.md`.
+  3. The wfE6 id rule was measured on `or` / `test` operands, not x87; one flipped site (p8 -> p9) does not establish it here.
+  - Record: p9 is the row's DIFFER(7162v7176); p5 (7176v7176) is a bracket only.
+  - Tools: rebuild the wfE6 comparator readout (wfE6 NOTES 168-170, LESSONS gdb line) as a bounded tools task under `lane_tools/c2probe/`,
+    committed this time. Acceptance: it predicts the p8 -> p9 flip (that site's bit changes, no other). Readouts say where temps are
+    missing; candidates still come from evidence, never from the readout.
+  - Authoring restarts without waiting on the tools (AUTH21: item 1, then 0x00BD3070's ~15 row-local forceinlines into shared headers,
+    then 0x00502E90). Leave the GFLimit guard alone.
