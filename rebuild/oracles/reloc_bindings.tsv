@@ -4356,7 +4356,7 @@ N_008fdb27	008fdb27	008fdb55
 ??_7CCreatureAction_ThunderLightningStorm@@6B@	01296b54	0096c780
 ?GetSeat@CAIStateGroup_EatAtTable@@QAE_NXZ	0096cb40	0096d450
 ??_7CCreatureAction_StartEatingAtTable@@6B@	01296c9c	0096d4d0
-??_7CCreatureAction_ScreamerIntoAggressive@@6B@	01296f14	0096db60
+??_7CCreatureAction_ScreamerIntoAggressive@?A0x6cb5dcbb@@6B@	01296f14	0096db60
 ??$__insertion_sort@PAPAVCThing@@V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@std@@YIXPAPAVCThing@@0V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@Z	0096d980	0096e4a0
 ??$__unguarded_insertion_sort_aux@PAPAVCThing@@PAV1@V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@std@@YIXPAPAVCThing@@00V?$CAdaptThingCompareToSTLComparitor@VCThingCompare_Nearest@@@@@Z	0096d780	0096e4a0
 ?CanRun@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ	0096f180	0096f240

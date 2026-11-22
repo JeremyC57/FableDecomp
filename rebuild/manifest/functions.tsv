@@ -32678,17 +32678,17 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0096d980	__insertion_sort	std	unknown	undefined	0		0	yes	accepted									
 0096daa0	sort_heap<CThing **, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest>>	std	__fastcall	void	2	long *,long *	1	yes	accepted									
 0096daf0	__partial_sort	std	unknown	undefined	0		0	yes	accepted									
-0096db60	CCreatureAction_ScreamerIntoAggressive	CCreatureAction_ScreamerIntoAggressive	__thiscall	undefined	3	CCombatAction_GenericResponseToDrain *,CThingCreatureBase *,CThing *	0	yes	accepted									
-0096dba0	vfunc_74	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0096dbb0	vfunc_73	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0096dbc0	Initialise	CCreatureAction_ScreamerIntoAggressive	__thiscall	void	1	CCreatureAction_ScreamerIntoAggressive *	1	yes	accepted									
+0096db60	CCreatureAction_ScreamerIntoAggressive	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	__thiscall	undefined	3	CCombatAction_GenericResponseToDrain *,CThingCreatureBase *,CThing *	0	yes	accepted									
+0096dba0	IsToFaceTargetAtStart	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0096dbb0	IsToFaceTarget	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0096dbc0	Initialise	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	__thiscall	void	1	CCreatureAction_ScreamerIntoAggressive *	1	yes	accepted									
 0096dd10	CModeScreamerAggressive	NCreatureMode::CModeScreamerAggressive	__thiscall	undefined	3	CModeScreamerAggressive *,CThing *,CThing *	0	yes	accepted									
 0096ddb0	OnReplace	CAIStateGroup_ScreamerPursueTarget	__thiscall	void	1	CAIStateGroup_ScreamerPursueTarget *	1	yes	accepted									
 0096df50	?Update@CAIStateGroup_ScreamerPursueTarget@@UAEXXZ	CAIStateGroup_ScreamerPursueTarget	__thiscall	void	1	CAIStateGroup_ScreamerPursueTarget *	1	yes	accepted									
-0096e3f0	`scalar_deleting_destructor'	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\96\CLandscapeBackgroundPatch_vectordeletingdestructor_0096e3f0.cpp
+0096e3f0	`scalar deleting destructor'	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\96\CLandscapeBackgroundPatch_vectordeletingdestructor_0096e3f0.cpp
 0096e410	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 0096e4a0	sort<CThing**, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest> >	std	unknown	undefined	0		0	yes	accepted									
-0096e510	Clone	CCreatureAction_ScreamerIntoAggressive	__thiscall	CCreatureActionBase *	1	CCombatAction_FallStunned *	1	yes	accepted									
+0096e510	Clone	?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive	__thiscall	CCreatureActionBase *	1	CCombatAction_FallStunned *	1	yes	accepted									
 0096e540	IsRunnable	CAIStateGroup_SummonerSummon	__thiscall	bool	1	CAIStateGroup_SummonerSummon *	1	yes	accepted									
 0096e610	Update	CAIStateGroup_SummonerSummon	__thiscall	void	1	CAIStateGroup_SummonerSummon *	1	yes	accepted									
 0096e700	IsEnemyCreatureInCombatPosition	CAIStateGroup_MeleeCombatNearby	__thiscall	bool	1	CAIStateGroup_MeleeCombatNearby *	1	yes	accepted									

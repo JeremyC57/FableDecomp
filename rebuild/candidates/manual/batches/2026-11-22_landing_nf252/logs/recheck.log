@@ -1,0 +1,20 @@
+0096db60   RELOCATION_MATCH PASS   CCreatureAction_ScreamerIntoAggressive
+0096dba0   MATCH            PASS   IsToFaceTargetAtStart
+0096dbb0   MATCH            PASS   IsToFaceTarget
+0096ddb0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0096ddb0   RELOCATION_MATCH PASS   OnReplace
+0096e3f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+0096e510   RELOCATION_MATCH PASS   Clone
+0096df50   RELOCATION_MATCH PASS   Update
+0096dbc0   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+0096dbc0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScreamerIntoAggressive (engine/CCreatureAction_ScreamerIntoAggressive.h)
+0096dbc0   RELOCATION_MATCH PASS   Initialise
+0073a8a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0073a8a0   MATCH            PASS   IsModeActive
+00857f30   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00857f30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00857f30   WARN RELOC_NAME: ?InitialiseStrikeState@CCombatActionBase@@QAEXXZ -> 008561c0 labelled 'CCombatActionBase::ResetStrikeState'
+00857f30   RELOCATION_MATCH PASS   CCombatActionBase

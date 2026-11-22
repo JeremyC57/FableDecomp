@@ -1,0 +1,2 @@
+table	change	symbol	target	witness	note
+reloc_bindings.tsv	replace	??_7CCreatureAction_ScreamerIntoAggressive@@6B@ -> ??_7CCreatureAction_ScreamerIntoAggressive@?A0x6cb5dcbb@@6B@	01296f14	0096db60	E3: every landed referencer (0x0096DB60, 0x0096DDB0, 0x0096E510, 0x0096DF50, + the harness rows 0x0096E3F0 / 0x0096DBA0 / 0x0096DBB0) now emits the anonymous-namespace vtable (per-TU hash; EXTRA_RULES 2026-11-20: written with the retail RTTI hash ?A0x6cb5dcbb (PDBs ?A0x4c815337), judged by the normalised count): global spelling 1 -> 0, normalised count 2 -> 1

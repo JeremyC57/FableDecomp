@@ -105073,16 +105073,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0096dba0'
-        Module = '_gapscan'
-        Source = '00/96/gapscan_sub0096dba0_0096dba0.cpp'
-        TestSource = '00/96/gapscan_sub0096dba0_0096dba0_test.cpp'
+        Module = '?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive'
+        Source = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_IsToFaceTargetAtStart_0096dba0.cpp'
+        TestSource = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_IsToFaceTargetAtStart_0096dba0_test.cpp'
         PassPattern = 'PASS_0096dba0'
     }
     [pscustomobject]@{
         Address = '0096dbb0'
-        Module = '_gapscan'
-        Source = '00/96/gapscan_sub0096dbb0_0096dbb0.cpp'
-        TestSource = '00/96/gapscan_sub0096dbb0_0096dbb0_test.cpp'
+        Module = '?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive'
+        Source = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_IsToFaceTarget_0096dbb0.cpp'
+        TestSource = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_IsToFaceTarget_0096dbb0_test.cpp'
         PassPattern = 'PASS_0096dbb0'
     }
     [pscustomobject]@{
@@ -140013,9 +140013,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0096e510'
-        Module = 'CCreatureAction_ScreamerIntoAggressive'
-        Source = '00/96/CCreatureActionScreamerIntoAggressive_Clone_0096e510.cpp'
-        TestSource = '00/96/CCreatureActionScreamerIntoAggressive_Clone_0096e510_test.cpp'
+        Module = '?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive'
+        Source = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_Clone_0096e510.cpp'
+        TestSource = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_Clone_0096e510_test.cpp'
         PassPattern = '0096e510_TEST PASS'
     }
     [pscustomobject]@{
@@ -173294,9 +173294,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0096db60'
-        Module = 'CCreatureAction_ScreamerIntoAggressive'
-        Source = '00/96/CCreatureActionScreamerIntoAggressive_CCreatureActionScreamerIntoAggressive_0096db60.cpp'
-        TestSource = '00/96/CCreatureActionScreamerIntoAggressive_CCreatureActionScreamerIntoAggressive_0096db60_test.cpp'
+        Module = '?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive'
+        Source = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_CCreatureActionScreamerIntoAggressive_0096db60.cpp'
+        TestSource = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_CCreatureActionScreamerIntoAggressive_0096db60_test.cpp'
         PassPattern = '0096db60_TEST PASS'
     }
     [pscustomobject]@{
@@ -384013,9 +384013,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0096dbc0'
-        Module = 'CCreatureAction_ScreamerIntoAggressive'
-        Source = '00/96/CCreatureActionScreamerIntoAggressive_Initialise_0096dbc0.cpp'
-        TestSource = '00/96/CCreatureActionScreamerIntoAggressive_Initialise_0096dbc0_test.cpp'
+        Module = '?A0x6cb5dcbb::CCreatureAction_ScreamerIntoAggressive'
+        Source = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_Initialise_0096dbc0.cpp'
+        TestSource = '00/96/A0x6cb5dcbbCCreatureActionScreamerIntoAggressive_Initialise_0096dbc0_test.cpp'
         PassPattern = '0096DBC0_TEST PASS'
     }
     [pscustomobject]@{
