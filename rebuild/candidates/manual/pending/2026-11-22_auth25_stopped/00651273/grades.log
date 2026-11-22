@@ -1,0 +1,5 @@
+r0 baseline DIFFER(1677v1681) (/Os, Codex text)
+10:59 p1 00651273 NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0 DIFFER(1705v1681) flags= []
+11:00 p2 00651273 NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0 DIFFER(1705v1681) flags= ['/Os']
+11:01 p3 00651273 NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0 DIFFER(1681v1681) flags= []
+11:05 p4 00651273 NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0 DIFFER(1681v1681) flags= []
