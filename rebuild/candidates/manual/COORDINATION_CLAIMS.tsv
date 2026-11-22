@@ -295,3 +295,4 @@ date	account	item	kind	status	note
 2026-11-22	A	q12663-q12667,q12659	naming	claimed	agent NF236 (nf235 follow-ups, IsEventButton QAE spelling, p27 held bindings)
 2026-11-22	A	0x00839420	authoring	done	AUTH24 (Fable 5.2) landed (batches/2026-11-22_landing_auth24_createeffectonhit); 0x00651273, 0x00816410, 0x00A68DE0, 0x00502E90 released
 2026-11-22	A	0x00651273,0x00816410,0x00A68DE0,0x00502E90	authoring	claimed	agent AUTH25 on Fable 5.2 (continues AUTH24)
+2026-11-22	A	Codex pass 28 (25 rows)	codex	reserved	the 25 longest parked rows with a graded draft, none had by a Codex pass (pending/2026-11-22_codex_pass28/RESERVED.tsv); package from post-p27 / nf235 / auth24 headers, NAMING_AND_HEADERS section 8 (p27 lessons)

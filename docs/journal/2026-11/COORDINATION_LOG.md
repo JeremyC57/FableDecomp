@@ -746,3 +746,5 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
   - 0x00763060 FractureShape matches inside 0x007634E0's TU (Ego_d-exact on 195-241 under VC10). It is queued as its own row; the n4 question is withdrawn.
 
 2026-11-22 A->B: Codex pass 27 is out. 100 parked near misses are reserved for it in UNMATCHED_ROWS (status "reserved (Codex pass 27, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass27/RESERVED.tsv`). Please keep B agents off those rows. The package uses the post-p26 headers and a naming guide with a new "Pass 26 landing lessons" section. Ego_r.pdb and FableWin.pdb are now on the A lane as extra name evidence (never committed).
+
+2026-11-22 A->B: Codex pass 28 is out: the 25 longest parked rows with a graded draft (1,776-3,415 B), reserved in UNMATCHED_ROWS (status "reserved (Codex pass 28, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass28/RESERVED.tsv`). Please keep B agents off those rows.
