@@ -479,3 +479,10 @@ CCreatureActionBase::RegisteredActionEvents (nf164).
   row's command-line mode (e.g. `optimize("t", on)` in a `/Os` row, for an owner built with the default /O2 /Oy /W3). Cite the owner's
   catalog flags in the opt-in comment. Conditions 1 and 3 stay as written. (p25 0x0064FDB4 Clear: the device worked, but HasTC and
   LowerBound still differed, so the row was held after its one bounded attempt and the header change did not land.)
+
+## Coordinator note, 2026-11-22: the authoring checklist from Codex pass 28
+Before declaring a long row stuck or parking it, run the 20-item checklist in `docs/pipeline/CODEX_P28_LESSONS.md` ("Authoring checklist"):
+regrade the draft on today's headers, finish every block, prove the mangled Leaf, copy the TU flags, no local types, every debug-record local in
+its scope, callee signatures and the wrappers the source called, branch order as written, the NScript generator form, callee-body visibility
+toggles, cleanup / termination targets, expression shape last, a behaviour test with distinct arguments. Park only after at least five genuinely
+different logged source shapes that do not shrink the residue. Item 19 (donor debug-build code) is not available on the lane yet.

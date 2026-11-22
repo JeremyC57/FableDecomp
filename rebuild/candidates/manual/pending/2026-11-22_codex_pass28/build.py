@@ -276,6 +276,10 @@ cp(f'{P}/batches/2026-11-22_landing_p27/logs/inline_devices_without_marker.txt',
 cp(f'{P}/pending/NEXT_CODEX_QUESTIONS.md', f'{OUT}/lessons/NEXT_CODEX_QUESTIONS.md')
 for b in ('2026-11-22_landing_auth24_createeffectonhit', '2026-11-22_landing_auth23_playallsoundevents', '2026-11-22_landing_nf235'):
     cp(f'{P}/batches/{b}/README.md', f'{OUT}/lessons/{b}.md')
+# pass 28: why each row was stuck and how Codex unstuck it (lessons + authoring checklist; next passes copy this line forward)
+cp(f'{R}/docs/pipeline/CODEX_P28_LESSONS.md', f'{OUT}/lessons/CODEX_P28_LESSONS.md')
+cp(f'{P}/batches/2026-11-22_landing_p28/README.md', f'{OUT}/lessons/codex_pass28_landing_README.md')
+for fn in ('PER_ROW.md', 'PER_ROW.tsv', 'CAUSE_MATRIX.tsv'): cp(f'{P}/batches/2026-11-22_landing_p28/lessons/{fn}', f'{OUT}/lessons/p28_{fn}')
 cp(f'{HERE}/NAMING_AND_HEADERS.md', f'{OUT}/docs/NAMING_AND_HEADERS.md')
 for f in glob.glob(f'{P}/pending/2026-11-18_codex_pass24/return/*.md'): cp(f, f"{OUT}/lessons/codex_pass24_return__{os.path.basename(f)}")
 # tools: row cutter, xref, Ego_d extractors, and the c1xx / c2 compile-order harness (gdb under Wine)

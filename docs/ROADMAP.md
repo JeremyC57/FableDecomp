@@ -85,6 +85,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
     and defined symbols) to tell free bulk ports from naming work; a full-tree regrade before bulk ports (B's auditor found two header
     regressions on 2026-11-20 and nothing regrades the tree now); a landing ratchet so the count cannot grow. Naming stays the main line;
     authoring is a side lane (995 unlanded, 978 parked).
+- [ ] 2026-11-22 Codex p28 lessons (`docs/pipeline/CODEX_P28_LESSONS.md`): (1) the Codex package builder regrades every draft on today's headers before writing `rows.tsv` (10 of 25 pass-28 records were stale); (2) re-try parked NScript drafts with the TRetVoid generator form (none was re-tried after the 2026-11-12 rule); (3) owner action: the donor exes (FableWin / Ego_d / Ego_r) on the lane (checklist item 19, used by Codex in 7 rows).
 - [ ] Mislabelled dtor families (`_Dest_val`/`_Cons_val` BSim labels on non-dtor bodies) re-attributed on landing; sweep the rest
 - [ ] `00995e70 PeekData` honest DIFFER(16v15) — attack load-through-lea, not the compare
 - [ ] `LinkToNeighbouringMaps 0x00A7A650` 9 bytes long; `CNavQuadTree::UpdateLines 0x00A781A0` fixture-first
