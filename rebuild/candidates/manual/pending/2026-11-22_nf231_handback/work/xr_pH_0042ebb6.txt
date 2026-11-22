@@ -1,0 +1,13 @@
+00411b00	?erase@?$vector@VCDateAndTime@@@@QAEPAVCDateAndTime@@PAV2@0@Z	x1
+00412450	?erase@?$vector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	x1
+0042dbd8	?ReleaseXMVCode@CNewFrontendGameComponent@@AAEXXZ	x1
+0042dd28	?CleanUpInterfaces@CNewFrontendGameComponent@@AAEXXZ	x1
+004336b0	?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z	x1
+00991750	?UnloadAllBanks@CASoundManager@@QAEXXZ	x1
+009918f0	?CloseAllBanks@CASoundManager@@QAEXXZ	x1
+009be420	?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z	x1
+009beeb0	?SwapScreens@CDisplayManager@@QAE_NXZ	x1
+013b838c	?PFontManager@@3PAVCFontManager@@A	x1
+013b8390	?GPDisplayManager@@3PAVCDisplayManager@@A	x2
+013b8394	?PSoundManager@@3PAVCASoundManager@@A	x4
+013b871c	?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A	x1

@@ -32664,10 +32664,7 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?CloseMeshBank@CMeshBankManager@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z	00a09dc0	0042dd28
 ?DEFAULT_FRONT_END_FONT@?A0xce4c03c6@@3VCCharString@@A	013b875c	0042ddb3
 ?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z	009be420	0042ebb6
-?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z	004336b0	0042ebb6
 ?SwapScreens@CDisplayManager@@QAE_NXZ	009beeb0	0042ebb6
-?erase@?$vector@VCDateAndTime@@@@QAEPAVCDateAndTime@@PAV2@0@Z	00411b00	0042ebb6
-?erase@?$vector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	00412450	0042ebb6
 ?GOldAutoSaveProgressDisplay@@3UCCountedPointer_CAProgressDisplay@@A	013b89e0	0049e8c0
 ?SetProgressDisplay@@YIXPAUCCountedPointer_CAProgressDisplay@@@Z	009e9fd0	0049e8c0
 ?StopProgress@@YIX_N0@Z	009e9f20	0049e8c0

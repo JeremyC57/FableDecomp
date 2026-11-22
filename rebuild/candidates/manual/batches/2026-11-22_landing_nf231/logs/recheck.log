@@ -1,0 +1,3 @@
+0041d0a8   RELOCATION_MATCH PASS   PlaySoundW
+0042ebb6   RELOCATION_MATCH PASS   Shutdown
+00430340   MATCH            PASS   SetQuit

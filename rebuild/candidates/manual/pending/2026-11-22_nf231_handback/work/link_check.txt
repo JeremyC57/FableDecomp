@@ -1,0 +1,2 @@
+duplicates 1
+0042ea8f.obj : warning LNK4006: "public: virtual __thiscall CNewFrontendGameComponent::~CNewFrontendGameComponent(void)" (??1CNewFrontendGameComponent@@UAE@XZ) already defined in 0042f50b.obj; second definition ignored

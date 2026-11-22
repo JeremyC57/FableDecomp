@@ -4,85 +4,53 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042EBB6, 198 bytes (`ret`). Size-optimised TU with a frame pointer: `#pragma optimize("y",
 //   off)` + `#pragma optimize("s", on)` (as the landed CNewFrontendGameComponent rows of this module).
 // Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager with the slot names and the FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
-//   non-virtuals (Fable Anniversary 360 PDB names, TU order); was a local CGameStateOwner_013b8394 / CASoundManager model.
-// Callees: the __fastcall registration forwarder 0x004336B0 (pushes ecx and calls 0x00433D3A on the object at 0x013B8760; called
-//   with 0), the component's scene release 0x0042DD28 and ReleaseXMVCode 0x0042DBD8, PSoundManager's (0x013B8394) slots
-//   16 StopAllSounds (+0x40) and 18 StopMusic (+0x48, fade 0) and its UnloadAllBanks 0x00991750 / CloseAllBanks 0x009918F0, vector<CWideString>::erase(first, last) 0x00412450 and
-//   vector<CDateAndTime>::erase 0x00411B00 (out of line in /Os), CDisplayManager::ClearRenderTarget(const CRGBColour&, unsigned
-//   long) 0x009BE420 and SwapScreens 0x009BEEB0 on g_pDisplayDevice (0x013B8390); globals 0x013B871C (the live component) and
-//   0x013B838C (an object whose +0x38 flag is raised).
-// Layout = Ego_r.pdb CNewFrontendGameComponent: m_bCreateGame +0x29, m_pFrontEndDef +0x3c (CDefPointer: count at +4, slot 1
-//   destroys), FileNames +0x6c, FileTimes +0x78 (STLport 12-byte vectors; PDB +0x7c).
-// Shape: `m_pFrontEndDef = NULL` is CDefPointer::operator=(T*) = Clear() (release, null) then the store; clear() is
-//   erase(begin(), end()) pushing last then first; the colour is a CRGBColour local built R, G, B, A.
+//   non-virtuals (Fable Anniversary 360 PDB names, TU order).
+// Callees: CStartupDefinitionManager::Set 0x004336B0 (Ego_r + FableWin ?Set@CStartupDefinitionManager@@SIXPAV1@@Z, static __fastcall,
+//   called with 0), CleanUpInterfaces 0x0042DD28 and ReleaseXMVCode 0x0042DBD8, PSoundManager's (0x013B8394) slots 16 StopAllSounds
+//   (+0x40) and 18 StopMusic (+0x48, fade 0) and its UnloadAllBanks 0x00991750 / CloseAllBanks 0x009918F0, vector<CWideString>::erase(first,
+//   last) 0x00412450 and vector<CDateAndTime>::erase 0x00411B00 (out of line in /Os), CDisplayManager::ClearRenderTarget(const CRGBColour&,
+//   unsigned long) 0x009BE420 and SwapScreens 0x009BEEB0 on GPDisplayManager (0x013B8390); the private static
+//   CNewFrontendGameComponent::m_pNewFrontendGameComponent 0x013B871C (the live component) and PFontManager 0x013B838C, whose inline
+//   SetLoadFontGlyphsAsynchronously(true) stores the byte +0x38 (Ego_r.pdb; engine/CFontManager.h FABLE_RETAIL_CFONTMANAGER_ASYNC).
+// Header port (NF231, land1122nf230): engine/CNewFrontendGameComponent.h (RUN + the FILENAMES_FILETIMES opt-in: FileNames
+//   std::vector<CWideString> +0x6C, FileTimes std::vector<CDateAndTime> +0x78, Ego_r + Ego_d), m_pFrontEndDef CDefPointer<const
+//   CFrontEndDef> +0x3C (both PDBs); `m_pFrontEndDef = 0` is FableWin ?Reset@?$CDefPointer@$$CBVCFrontEndDef@@@@QAEXPBVCFrontEndDef@@@Z
+//   Reset(0) (release, then the second null store 0x0042EBD6). Was a row-local model of the class, CDefPointer, vector, CWideString,
+//   CDateAndTime, CRGBColour, CDisplayManager and CFrontEndDef, a CFrontendGlobal_013b838c stand-in and SetActiveFrontend_004336b0.
+// Shape: clear() is erase(begin(), end()) pushing last then first; the colour is a CRGBColour temporary built R, G, B, A.
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CFrontEndDef { public:
-    virtual void v00();
-    virtual void Destroy();                        // slot 1 (+0x04)
-    long RefCount;                                 // +0x04
-    FABLE_FORCEINLINE void ReleaseRef() { if (--RefCount == 0) Destroy(); }
-};
-template <class T> class CDefPointer { public:
-    T* Object;
-    FABLE_FORCEINLINE void Clear() { if (Object) { Object->ReleaseRef(); Object = 0; } }
-    FABLE_FORCEINLINE CDefPointer& operator=(T* p) { Clear(); Object = p; return *this; }
-};
-template <class T> struct vector {                 // STLport vector, 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* erase(T* first, T* last);                   // out of line
-    FABLE_FORCEINLINE void clear() { erase(_M_start, _M_finish); }
-};
-class CWideString { public: void* m_pData; };
-class CDateAndTime { public: unsigned char _body[0x10]; };
-class CRGBColour { public:
-    unsigned char B, G, R, A;
-    FABLE_FORCEINLINE CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
-};
-class CDisplayManager {
-public:
-    void ClearRenderTarget(const CRGBColour& colour, unsigned long flags);   // 0x009BE420
-public:
-    bool SwapScreens();   // 0x009BEEB0
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CDEFPOINTER_RESET
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_STLP_VECTOR_ERASE_RANGE_OUTOFLINE
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN
+#define FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
+#define FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
+#define FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_SET
+#define FABLE_RETAIL_CFONTMANAGER_ASYNC
 #define FABLE_RETAIL_CASOUNDMANAGER_BANKLOOKUP
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CDISPLAYMANAGER
+#define FABLE_RETAIL_CPIXELFORMAT
+#include "engine/CNewFrontendGameComponent.h"
+#include "engine/CStartupDefinitionManager.h"
+#include "engine/CFrontEndDef.h"
+#include "engine/CRGBColour.h"
+#include "engine/IDirect3DDevice9.h"
+#include "engine/CDisplayManager.h"
+#include "engine/CFontManager.h"
 #include "engine/CASoundManager.h"
-struct CFrontendGlobal_013b838c {
-    unsigned char _pad0[0x38];
-    bool          Flag38;                          // +0x38
-};
-class CNewFrontendGameComponent;
-void __fastcall SetActiveFrontend_004336b0(CNewFrontendGameComponent* component);   // 0x004336B0
-class CFontManager;
-extern CFontManager* PFontManager;    // 0x013B838C
 extern CDisplayManager* GPDisplayManager;                        // 0x013B8390
-class CNewFrontendGameComponent {
-public:
-    void*                     __vftable;           // +0x00
-    unsigned char             _pad04[0x25];
-    bool                      m_bCreateGame;       // +0x29
-    unsigned char             _pad2a[0x12];
-    CDefPointer<CFrontEndDef> m_pFrontEndDef;      // +0x3c
-    unsigned char             _pad40[0x2c];
-    vector<CWideString>       FileNames;           // +0x6c
-    vector<CDateAndTime>      FileTimes;           // +0x78
-private:                                           // NF35: Ego_r + FableWin private (AAE) members
-    static CNewFrontendGameComponent* m_pNewFrontendGameComponent;   // 0x013B871C (NF230 in-place respell, full header port queued (land1122nf230), Ego_r / Ego_d / FableWin private static)
-    void CleanUpInterfaces();                      // 0x0042DD28 (was the made-up ReleaseScene_0042dd28)
-    void ReleaseXMVCode();                         // 0x0042DBD8
-    void Shutdown();
-};
 
 void CNewFrontendGameComponent::Shutdown()
 {
-    m_pFrontEndDef = 0;
-    SetActiveFrontend_004336b0(0);
+    m_pFrontEndDef.Reset(0);
+    CStartupDefinitionManager::Set(0);
     m_pNewFrontendGameComponent = 0;
     CleanUpInterfaces();
-    ((CFrontendGlobal_013b838c*)PFontManager)->Flag38 = true;
+    PFontManager->SetLoadFontGlyphsAsynchronously(true);
     if (!m_bCreateGame && PSoundManager) {
         PSoundManager->StopAllSounds();
         PSoundManager->StopMusic(0);

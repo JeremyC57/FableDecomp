@@ -12,6 +12,13 @@
 class CStartupDefinitionManager : public CDefinitionManager {
 public:
     static CStartupDefinitionManager& __fastcall Get();
+#ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_SET
+    // NF231 opt-in (row 0x0042EBB6 CNewFrontendGameComponent::Shutdown): Ego_r.pdb 0x00441A90 / FableWin.pdb 0x01B31560
+    // ?Set@CStartupDefinitionManager@@SIXPAV1@@Z (public static __fastcall), out of line in retail at 0x004336B0 (`push ecx ;
+    // mov ecx,0x013B8760 ; call 0x00433D3A ; ret`: the pointer handed to the counted pointer PClass); Shutdown calls it with 0
+    // (0x0042EBD4 `xor ecx,ecx ; ... call 0x004336B0`). The landed 0x0042F5A9 binds the same spelling. Declaration only.
+    static void __fastcall Set(CStartupDefinitionManager* manager);      // 0x004336B0
+#endif
 #ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_ISALLOCATED
     // Nested opt-in (wf12 row 0x004085F0 CUserProfileManager::ResetAssignedInputs): FableWin.pdb
     // ?IsAllocated@CStartupDefinitionManager@@SI_NXZ (0x018377B4 thunk / 0x01888A60 body, static __fastcall bool), inlined in
@@ -29,7 +36,7 @@ protected:
 public:
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CStartupDefinitionManager)==0xd0);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CStartupDefinitionManager)==0xd0);
 #ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER_ISALLOCATED
 #include "engine/CCountedPointer.h"
 // The counted pointer at 0x013B8760 (Set stores it, Get 0x0043368D is `mov eax,[0x013B8760] ; ret`, atexit dtor 0x01228AF1 ->
@@ -69,8 +76,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CStartupDefinitionManager) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CStartupDefinitionManager, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(72, sizeof(CStartupDefinitionManager) == 0xd0);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CStartupDefinitionManager, __vftable) == 0x0);
 
 #endif // FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
 

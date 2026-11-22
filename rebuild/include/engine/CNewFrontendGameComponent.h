@@ -14,6 +14,10 @@
 #include "engine/CDefPointer.h"
 #include "engine/CStopWatch.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
+#include "stlport/fable_containers.h"
+#include "engine/CDateAndTime.h"
+#endif
 class CEngineInterpolationInfo;
 namespace NUISystem { class CFrontEndManager; }
 #endif
@@ -48,8 +52,19 @@ private:
     // SaveGame +0x84 (Run 0x0042F43C), m_pFrontEndManager +0xB4, m_fLastUpdateTime +0xB8 / m_fLastRenderTime +0xBC (0x0042EC91),
     // m_attractModeTimer +0x100, m_inputDelayTimer +0x120 (its m_bIsRunning read at +0x138, 0x0042F07F), WindowsMediaPlayerInstalled
     // +0x144 (0x0042EDE2); the AVI members stay opaque.
+#ifdef FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_FILENAMES_FILETIMES
+    // NF231 opt-in (row 0x0042EBB6 CNewFrontendGameComponent::Shutdown, needs FABLE_RETAIL_CNEWFRONTENDGAMECOMPONENT_RUN): the two
+    // STLport vectors typed as Ego_r.pdb (struct_layouts_egor.tsv: vector<CWideString,std::allocator<CWideString> > FileNames +0x6C,
+    // vector<CDateAndTime,std::allocator<CDateAndTime> > FileTimes) and Ego_d.pdb (field list 0x57888: FileNames type 0x7D2B
+    // std::vector<CWideString,std::allocator<CWideString> >, FileTimes type 0x1D9E0 std::vector<CDateAndTime,...>, both private)
+    // declare them; 12 bytes each in retail (+0x6C / +0x78, Shutdown 0x0042EC31 `lea ecx,[esi+6Ch]` -> erase 0x00412450, 0x0042EC3E `lea ecx,[esi+78h]` -> erase 0x00411B00).
+    // No layout change (same offsets and sizes as the opaque arrays below).
+    std::vector<CWideString> FileNames;                                  // +0x6C
+    std::vector<CDateAndTime> FileTimes;                                 // +0x78
+#else
     unsigned char FileNames[0xc];                                        // +0x6C vector<CWideString>
     unsigned char FileTimes[0xc];                                        // +0x78 vector<CDateAndTime>
+#endif
     CWideString SaveGame;                                                // +0x84
     unsigned char _pad_0x88[0xb4 - 0x88];                                // +0x88 PAVITextureShow .. XMVCodeLoaded
     NUISystem::CFrontEndManager* m_pFrontEndManager;                     // +0xB4

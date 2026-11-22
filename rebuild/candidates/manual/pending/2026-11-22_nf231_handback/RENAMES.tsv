@@ -1,0 +1,6 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x00430340	CNewFrontendGameComponent	SetQuit	?SetQuit@CNewFrontendGameComponent@@UAEXXZ	CNewFrontendGameComponent::SetQuit	?SetQuit@CNewFrontendGameComponent@@QAEXXZ	FableWin.pdb ?SetQuit@CNewFrontendGameComponent@@UAEXXZ (public virtual) + Ego_d.pdb field list 0x57888 (SetQuit, public virtual) + retail RTTI vtable 0x01230CA0 slot 4 (0x01230CB0) = 0x00430340; catalog name unchanged, leaf only (QAE -> UAE)
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x0042EBB6	?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z	?Set@CStartupDefinitionManager@@SIXPAV1@@Z	0x004336B0
+0x0042EBB6	?erase@?$vector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	?erase@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@PAV3@0@Z	0x00412450
+0x0042EBB6	?erase@?$vector@VCDateAndTime@@@@QAEPAVCDateAndTime@@PAV2@0@Z	?erase@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEPAVCDateAndTime@@PAV3@0@Z	0x00411B00

@@ -1,0 +1,1 @@
+00430340 CNewFrontendGameComponent::SetQuit MATCH flags= []

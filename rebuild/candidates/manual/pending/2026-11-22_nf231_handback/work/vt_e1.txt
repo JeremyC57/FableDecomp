@@ -1,0 +1,14 @@
+### 0042ea8f 0042ea8f CNewFrontendGameComponent::CNewFrontendGameComponent RELOCATION_MATCH f
+VT ??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CNewFrontendGameComponent@@6BCBase@@@ slots 1
+  0 ??_ECNewFrontendGameComponent@@UAEPAXI@Z
+### 0042f50b 0042f50b CNewFrontendGameComponent::~CNewFrontendGameComponent RELOCATION_MATCH 
+VT ??_7CNewFrontendGameComponent@@6BCGameComponentInterface@@@ slots 1
+  0 ?v00@CGameComponentInterface@@UAEXXZ
+VT ??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@ slots 1
+  0 ??_ECNewFrontendGameComponent@@UAEPAXI@Z
+### 004330d2 004330d2 CNewFrontendGameComponent::`scalar_deleting_destructor' RELOCATION_MATC
+### 0049dcc0 0049dcc0 CWorld::ResetToFrontEnd RELOCATION_MATCH flags= []
+### 00446be0 00446be0 CGamePlayerInterface::~CGamePlayerInterface RELOCATION_MATCH flags= []
+DONE

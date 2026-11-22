@@ -1,0 +1,4 @@
+action	table	symbol	target	witness	reason
+delete	rebuild/oracles/reloc_bindings.tsv	?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z	004336b0	0042ebb6	0x0042EBB6 now binds ?Set@CStartupDefinitionManager@@SIXPAV1@@Z (the table's existing line, witness 0x0042F5A9); no other landed row emits the stand-in (compiled census work/bind_004336b0.tsv)
+delete	rebuild/oracles/reloc_bindings.tsv	?erase@?$vector@VCDateAndTime@@@@QAEPAVCDateAndTime@@PAV2@0@Z	00411b00	0042ebb6	0x0042EBB6 now binds the STLport std spelling (existing line, witness 0x004861F7); no other emitter (work/bind_00411b00.tsv)
+delete	rebuild/oracles/reloc_bindings.tsv	?erase@?$vector@VCWideString@@@@QAEPAVCWideString@@PAV2@0@Z	00412450	0042ebb6	0x0042EBB6 now binds the STLport std spelling (existing line, witness 0x00412B20); no other emitter (work/bind_00412450.tsv)
