@@ -1,0 +1,26 @@
+## 00beaaa0 ??_7CWaterPatchMesh@@6B@
+0	00beb4d0	NOLINE	??_ECWaterPatchMesh@@UAEPAXI@Z
+1	00beab20	NOLINE	?RelocateData@CWaterPatchMesh@@EAEXJPAX0J@Z
+2	00beaa50	NOLINE	?CanRelocateData@CWaterPatchMesh@@EBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 3dcccccd COL@-4 sym ?
+## 00beaaa0 ??_7CMovableResource@@6B@
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	__purecall
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 01355d84 COL@-4 sym ?
+## 00beb4d0 ??_7CWaterPatchMesh@@6B@
+0	00beb4d0	NOLINE	??_ECWaterPatchMesh@@UAEPAXI@Z
+1	00beab20	NOLINE	?RelocateData@CWaterPatchMesh@@EAEXJPAX0J@Z
+2	00beaa50	NOLINE	?CanRelocateData@CWaterPatchMesh@@EBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 3dcccccd COL@-4 sym ?
+## 00beb4d0 ??_7CMovableResource@@6B@
+0	009d5110	NOLINE	??_ECMovableResource@@UAEPAXI@Z
+1	00bfea08	NOLINE	__purecall
+2	009d50f0	NOLINE	?CanRelocateData@CMovableResource@@UBE_NJ@Z
+3	009d5100	NOLINE	?Verify@CMovableResource@@UBEKXZ
+slots 4 not-OK 4 retail next word 01355d84 COL@-4 sym ?
+??_7CWaterPatchMesh@@6B@: 0x00BEB490(HEAD) v new 0x00BEAAA0 diff=0 v new 0x00BEB4D0 diff=0
+??_7CMovableResource@@6B@: 0x00BEB490(HEAD) v new 0x00BEAAA0 diff=0 v new 0x00BEB4D0 diff=0

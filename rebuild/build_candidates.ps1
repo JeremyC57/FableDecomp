@@ -247,16 +247,16 @@ $catalog = @(
     },
     [pscustomobject]@{
         Address = '00beaaa0'
-        Module = 'CEngineScreenEffectOutlineGlow'
-        Source = '00/be/CEngineScreenEffectOutlineGlow_FinishWithDynamicTextures_00beaaa0.cpp'
-        TestSource = '00/be/CEngineScreenEffectOutlineGlow_FinishWithDynamicTextures_00beaaa0_test.cpp'
+        Module = 'CWaterPatchMesh'
+        Source = '00/be/CWaterPatchMesh_CWaterPatchMesh_00beaaa0.cpp'
+        TestSource = '00/be/CWaterPatchMesh_CWaterPatchMesh_00beaaa0_test.cpp'
         PassPattern = 'OUTLINEGLOW_TEST PASS'
     },
     [pscustomobject]@{
         Address = '00beb4d0'
         Module = 'CWaterPatchMesh'
-        Source = '00/be/CEngineScreenEffectOutlineGlow_ScalarDeletingDestructor_00beb4d0.cpp'
-        TestSource = '00/be/CEngineScreenEffectOutlineGlow_ScalarDeletingDestructor_00beb4d0_test.cpp'
+        Source = '00/be/CWaterPatchMesh_scalardeletingdestructor_00beb4d0.cpp'
+        TestSource = '00/be/CWaterPatchMesh_scalardeletingdestructor_00beb4d0_test.cpp'
         PassPattern = 'OUTLINEGLOW_SCALAR_TEST PASS'
     },
     [pscustomobject]@{
@@ -204387,9 +204387,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00beaa00'
-        Module = 'CTextureOwner_00beaa00'
-        Source = '00/be/CTextureOwner00beaa00_voidClearBlock_00beaa00.cpp'
-        TestSource = '00/be/CTextureOwner00beaa00_voidClearBlock_00beaa00_test.cpp'
+        Module = 'CWaterPatchMesh'
+        Source = '00/be/CWaterPatchMesh_ReleaseBuffers_00beaa00.cpp'
+        TestSource = '00/be/CWaterPatchMesh_ReleaseBuffers_00beaa00_test.cpp'
         PassPattern = '00beaa00_TEST PASS'
     }
     [pscustomobject]@{
@@ -204436,9 +204436,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00bfdd40'
-        Module = 'CTextureOwner_00bfdd40'
-        Source = '00/bf/CTextureOwner00bfdd40_voidClearBlock_00bfdd40.cpp'
-        TestSource = '00/bf/CTextureOwner00bfdd40_voidClearBlock_00bfdd40_test.cpp'
+        Module = 'CLandscapeLayerMesh'
+        Source = '00/bf/CLandscapeLayerMesh_DeleteForegroundVertexBuffer_00bfdd40.cpp'
+        TestSource = '00/bf/CLandscapeLayerMesh_DeleteForegroundVertexBuffer_00bfdd40_test.cpp'
         PassPattern = '00bfdd40_TEST PASS'
     }
     [pscustomobject]@{

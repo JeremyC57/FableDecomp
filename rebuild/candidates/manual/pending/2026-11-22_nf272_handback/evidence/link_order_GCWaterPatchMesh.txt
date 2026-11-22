@@ -1,0 +1,8 @@
+## order h490.obj then n_aaa0.obj
+duplicates 0
+
+MAP 0001:000000a0 ??_GCWaterPatchMesh@@UAEPAXI@Z 100010a0 f i h490.obj
+## order n_aaa0.obj then h490.obj
+duplicates 0
+
+MAP 0001:00000080 ??_GCWaterPatchMesh@@UAEPAXI@Z 10001080 f i n_aaa0.obj

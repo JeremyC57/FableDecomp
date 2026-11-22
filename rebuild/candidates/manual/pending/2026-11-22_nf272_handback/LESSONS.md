@@ -1,0 +1,6 @@
+# NF272 lessons
+- A DIFFER row prints no xref pairs; objdump -r of its HEAD object is the binding measurement, and objsec ALL_EQ with the rename is the proof that a respell left it unchanged (0x00BF4220).
+- A self rename that moves a polymorphic destructor off cast-immediate vptr stores onto the shared class turns the stores into relocations and makes the TU emit the vtables and ??_G: prove it with leaf bytes (reloc fields zeroed) + pk of every new COMDAT + vtcheck against an existing emitter, not objsec.
+- A ??_G that inlines its destructor can only come from the destructor's TU; with the destructor on its own row, the ??_G row is that TU folded (nf251), and the class operator delete must be visible (an inline opt-in) for the copy to equal retail.
+- Before a ??_G self rename, pk every existing emitter's copy of that name: a ctor TU's pick-any copy that calls the destructor out of line is a second body under the same name, and link order then decides the slot (lnk.py needs /OPT:NOREF /MAP to show which copy is kept).
+- A planted-token control for a brand-new opt-in flags nothing (no includer defines the macro); plant a second token on a default line of the same branch so the control proves the closure is seen.

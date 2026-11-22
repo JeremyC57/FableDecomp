@@ -1,0 +1,17 @@
+# 0x00BF4220 HEAD object (landed source, no overlay): grade and relocation symbol counts (objdump -r)
+00bf4220 CEngineLandscapePatch::UpdateForeground DIFFER(615v634) flags= []
+      4 ??1?$CCountedPointer@VCBankFileAsyncEntry@@@@QAE@XZ
+      2 ?LoadTextures@CEngineLandscapePatch@@QAE_NM@Z
+      2 ?DeleteLayerMeshes@CEngineLandscapePatch@@QAEXXZ
+      2 ?ClearTextures@CWaterPatchMesh@@QAEXXZ
+      2 ??3@YAXPAX@Z
+      2 ??0?$CCountedPointer@VCBankFileAsyncEntry@@@@QAE@ABV0@@Z
+      1 ?UpdateForeground@CEngineLandscapePatch@@QAE?AW4LS_LOADING_STATUS@@V?$CCountedPointer@VCBankFileAsyncEntry@@@@@Z
+      1 ?LoadForegroundPatch@CEngineLandscapePatch@@QAE?AW4LS_LOADING_STATUS@@V?$CCountedPointer@VCBankFileAsyncEntry@@@@@Z
+      1 ?IsBackgroundAtFullDetailInArea@CEngineLandscapeMap@@QAE_NKKKK@Z
+      1 ?DiscardAsyncData@CBankFileAsyncData@@QAEXXZ
+      1 ?DAT_01436ea8@@3PAEA
+      1 ?DAT_01436ea0@@3PAEA
+      1 ?ClampForegroundCoordinate@@YAMMMM@Z
+
+# exe scan (callers.py): E8 sites of 0x00BEAA00 = 0x00BF43C3 / 0x00BF445D (both in 0x00BF4220); of 0x00BFDD40 = 0x00BF3903 (0x00BF38F0) and 0x00BF3773 (no landed row)

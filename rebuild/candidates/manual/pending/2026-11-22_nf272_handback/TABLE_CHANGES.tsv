@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+delete	?ClearBlock@CTextureOwner@@QAEXXZ	00bfdd40	00bf38f0	its only binder 0x00BF38F0 moves to the PDB name
+add	?DeleteForegroundVertexBuffer@CLandscapeLayerMesh@@QAEXXZ	00bfdd40	00bf38f0	
+optional	?ReleaseBuffers@CWaterPatchMesh@@QAEXXZ	00beaa00	00bf4220	HEAD had no line for the stand-in ?ClearTextures@CWaterPatchMesh@@QAEXXZ (its only binder is the DIFFER row 0x00BF4220); add only if the table takes a DIFFER-row witness
+none	??_GCWaterPatchMesh@@UAEPAXI@Z / ??1CWaterPatchMesh@@UAE@XZ	00beb4d0 / 00beaaa0	-	no line at HEAD (vtable-data / ??_G-internal references only); unchanged

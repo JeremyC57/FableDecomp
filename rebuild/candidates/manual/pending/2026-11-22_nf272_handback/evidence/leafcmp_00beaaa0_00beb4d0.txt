@@ -1,0 +1,7 @@
+# leaf bytes HEAD v new with every relocation field of EITHER object zeroed in both; relocation lists (offset, symbol, type) listed
+H_00beaaa0.obj -> 00beaaa0.obj lengths 71 71 equal: True differing offsets: []
+  relocations only in new: [(10, '??_7CWaterPatchMesh@@6B@'), (65, '??_7CMovableResource@@6B@')]
+  relocations only in HEAD: []
+H_00beb4d0.obj -> 00beb4d0.obj lengths 100 100 equal: True differing offsets: []
+  relocations only in new: [(10, '??_7CWaterPatchMesh@@6B@'), (70, '??_7CMovableResource@@6B@')]
+  relocations only in HEAD: []

@@ -29252,7 +29252,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 _D3DXCreateVolumeTexture@36	00bfeff2	00a68250
 ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAUCQuadTreeElement@@@Z	00bd9ab0	00bddcb0
 ??1CObjectCacheGroupCollection@CLocalDetailCacheMap@@UAE@XZ	00bdde80	00bdf9e0
-?ClearBlock@CTextureOwner@@QAEXXZ	00bfdd40	00bf38f0
 ?Discard@CCountedResourcePointer@@QAEXXZ	009d68a0	00bf38f0
 ??_7CEngineLandscapePatch@@6B@	012a8200	00bf5d30
 ?Clear@CEngineLandscapePatch@@QAEXXZ	00bf38f0	00bf5d30
@@ -39552,3 +39551,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?DeleteTexture@CEngineLandscapeMemoryManager@@QAEXPAVCTexture@@@Z	00bda110	00be5c30
 ?UnregisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJ@Z	00b677a0	00be6090
 ?FreeVirtualAligned@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bd9ca0	00bfaae0
+?DeleteForegroundVertexBuffer@CLandscapeLayerMesh@@QAEXXZ	00bfdd40	00bf38f0

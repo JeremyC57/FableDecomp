@@ -1,3 +1,8 @@
+// Leaf: ?UpdateForeground@CEngineLandscapePatch@@QAE?AW4LS_LOADING_STATUS@@V?$CCountedPointer@VCBankFileAsyncEntry@@@@@Z
+// Callee (NF272, 2026-11-22): 0x00BEAA00 (E8 sites 0x00BF43C3 / 0x00BF445D) is ?ReleaseBuffers@CWaterPatchMesh@@QAEXXZ (Ego_r.pdb 00aa2710 /
+//   FableWin.pdb 02e67fe0; Ego_r order ReleaseBuffers -> OnPostRelocation; the body frees CWaterPatchMesh::VertexBuffer +0x10), was the
+//   stand-in ?ClearTextures@CWaterPatchMesh@@QAEXXZ on the header's local model; respelled in place by the opt-in below.
+#define FABLE_RETAIL_LANDSCAPE_PATCH_UPDATE_FOREGROUND_RELEASEBUFFERS
 #include "fable_compiler.h"
 #include "candidates/landscape_patch_update_foreground_compiled.h"
 
@@ -35,7 +40,7 @@ LS_LOADING_STATUS CEngineLandscapePatch::UpdateForeground(
                 if (ForegroundDataSize > 0)
                     DeleteLayerMeshes();
                 if (WaterPatch != 0)
-                    WaterPatch->ClearTextures();
+                    WaterPatch->ReleaseBuffers();
                 AsyncData.DiscardAsyncData();
                 Flags = static_cast<fable_u8>(Flags & 0xF2);
             }
@@ -58,7 +63,7 @@ LS_LOADING_STATUS CEngineLandscapePatch::UpdateForeground(
                     {
                         DeleteLayerMeshes();
                         if (WaterPatch != 0)
-                            WaterPatch->ClearTextures();
+                            WaterPatch->ReleaseBuffers();
                         return LS_LOADING_FAILED;
                     }
                     if (loadStatus == LS_LOADING_PENDING)

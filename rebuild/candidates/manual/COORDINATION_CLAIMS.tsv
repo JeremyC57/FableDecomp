@@ -340,3 +340,4 @@ date	account	item	kind	status	note
 2026-11-22	A	Delete binders (nf267 D5)	naming	done	agent NF269 landed 6 rows + 2 tests + 1 header (batches/2026-11-22_landing_nf269); its entries 2-5 go to NF271
 2026-11-22	A	L129 rest (LocalDetailEngine, 0x00B684F0 global)	naming	done	agent NF271 landed 4 rows + 1 test + 1 header (batches/2026-11-22_landing_nf271); CEngineGlobal family queued as a header unit; entries 2-5 go to NF272
 2026-11-22	A	slot 1 Validate port / WithHaste forwarder / map dtor mirror	naming	done	agent NF270 landed 6 rows + 3 tests + 2 headers (batches/2026-11-22_landing_nf270); q12659, the Clone rows and the CVertexGroupBlock dtor duplicate go to NF273
+2026-11-22	A	CWaterPatchMesh unit / 0x00BFDD40 split	naming	done	agent NF272 landed 6 rows + 3 tests + 2 headers (batches/2026-11-22_landing_nf272); the 0x00BEB490 ??_G measurement and D4 go to NF274
