@@ -1,0 +1,224 @@
+addr       parity           behav  name
+00403750   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ (catalog CCountedPointer<NGameText::CDataBank>::~CCountedPointer; names another function)
+00403750   RELOCATION_MATCH PASS   ~CCountedPointer
+004057a0   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ (catalog CCountedPointer<CFontBank>::~CCountedPointer; names another function)
+004057a0   RELOCATION_MATCH PASS   ~CCountedPointer
+004168dc   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004168dc   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+004168dc   RELOCATION_MATCH PASS   InitialiseFonts
+00416c8a   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00416c8a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00416c8a   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+00416c8a   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+00416c8a   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+00416c8a   RELOCATION_MATCH PASS   InitGraphics
+004175e5   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004175e5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004175e5   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+004175e5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ -> 00403750 labelled 'CCountedPointer<NGameText::CDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ -> 004190b6 labelled 'CCountedPointer<CLUA>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   Shutdown
+00418b7a   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00418b7a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+  WARN leaf '~CMainGameComponent' matches no symbol in 00418b7a.obj; graded the largest function
+  WARN leaf '~CMainGameComponent' matches no symbol in 00418b7a.obj; graded the largest function
+00418b7a   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+00418b7a   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+00418b7a   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+00418b7a   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ -> 004190b6 labelled 'CCountedPointer<CLUA>::~CCountedPointer'
+00418b7a   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ -> 00403750 labelled 'CCountedPointer<NGameText::CDataBank>::~CCountedPointer'
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+004190b6   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ (catalog CCountedPointer<CLUA>::~CCountedPointer; names another function)
+004190b6   RELOCATION_MATCH PASS   ~CCountedPointer
+004190e2   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+004190e2   RELOCATION_MATCH PASS   ShareData
+00419108   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ (catalog CCountedPointer<CGraphicDataBank>::~CCountedPointer; names another function)
+00419108   RELOCATION_MATCH PASS   ~CCountedPointer
+00419134   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+00419134   RELOCATION_MATCH PASS   ShareData
+00419428   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ -> 004190b6 labelled 'CCountedPointer<CLUA>::~CCountedPointer'
+00419428   RELOCATION_MATCH PASS   Reset
+00419463   RELOCATION_MATCH PASS   operator=
+0041947a   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+0041947a   RELOCATION_MATCH PASS   Reset
+004194b5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+004194b5   RELOCATION_MATCH PASS   TailJmp__Dest_val_std__allocator_CCountedPointer_004194b5
+004194ba   RELOCATION_MATCH PASS   operator=
+004194d1   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+004194d1   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z -> 00419036 labelled '_global::DeleteViaVtable0_00419036'
+004194d1   RELOCATION_MATCH PASS   Reset
+0041d198   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d198   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+0041d198   RELOCATION_MATCH PASS   SetMeshBank
+0041e641   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041e641   WARN RELOC_NAME: ??1SMember88@@QAE@XZ -> 0042ce63 labelled 'std::list<T_0042ce63>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember70@@QAE@XZ -> 0042b7d7 labelled 'std::list<T_0042b7d7>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember60@@QAE@XZ -> 0042ab1c labelled 'std::list<T_0042ab1c>::~list'
+0041e641   WARN RELOC_NAME: ??1SMember24@@QAE@XZ -> 0042b796 labelled 'std::list<T_0042b796>::~list'
+0041e641   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+0041e641   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0041e641   WARN RELOC_NAME: ??1CManagerBase@NUISystem@@UAE@XZ -> 0042bec0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0041e641   RELOCATION_MATCH PASS   ~CManager
+0042918c   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ (catalog CCountedPointer<CMeshDataBank>::~CCountedPointer; names another function)
+0042918c   RELOCATION_MATCH PASS   ~CCountedPointer
+004291b8   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+004291b8   RELOCATION_MATCH PASS   ShareData
+00429bf9   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+00429bf9   RELOCATION_MATCH PASS   TailJmp__Dest_val_std__allocator_CCountedPointer_00429bf9
+0042a9b7   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0042a9b7   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0042a9b7   RELOCATION_MATCH PASS   SetGraphicsBank
+0042d45d   RELOCATION_MATCH PASS   operator[]
+0042dd28   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+0042dd28   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+0042dd28   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0042dd28   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042dd28   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ -> 0042f974 labelled 'CCountedPointer<CIEngine>::~CCountedPointer'
+0042dd28   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0042dd28   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+0042dd28   RELOCATION_MATCH PASS   CleanUpInterfaces
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CGraphicDataBankInit (engine/CGraphicDataBankInit.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042ddb3   WARN RELOC_NAME: ??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z -> 0042fe34 labelled 'CCountedPointer<CFontBank_const>::operator='
+0042ddb3   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+0042ddb3   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0042ddb3   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0042ddb3   RELOCATION_MATCH PASS   InitialiseGraphics
+0042f50b   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0042f50b   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+0042f50b   WARN SHARED_HEADER_AVAILABLE CFrontEndDef (engine/CFrontEndDef.h)
+0042f50b   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+0042f50b   WARN SHARED_HEADER_AVAILABLE CDateAndTime (engine/CDateAndTime.h)
+0042f50b   WARN SHARED_HEADER_AVAILABLE CNewFrontendGameComponent (engine/CNewFrontendGameComponent.h)
+0042f50b   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ -> 00403750 labelled 'CCountedPointer<NGameText::CDataBank>::~CCountedPointer'
+0042f50b   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ -> 0042f974 labelled 'CCountedPointer<CIEngine>::~CCountedPointer'
+0042f50b   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ -> 0042f9a0 labelled 'CCountedPointer<CASoundBank>::~CCountedPointer'
+0042f50b   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+0042f50b   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0042f50b   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+0042f50b   RELOCATION_MATCH PASS   ~CNewFrontendGameComponent
+0042f948   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ (catalog CCountedPointer<CFontBank_const>::Release; names another function)
+0042f948   RELOCATION_MATCH PASS   Release
+0042f974   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ (catalog CCountedPointer<CIEngine>::~CCountedPointer; names another function)
+0042f974   RELOCATION_MATCH PASS   ~CCountedPointer
+0042f9a0   WARN STANDIN_LEAF ?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ (catalog CCountedPointer<CASoundBank>::~CCountedPointer; names another function)
+0042f9a0   RELOCATION_MATCH PASS   ~CCountedPointer
+0042f9f2   RELOCATION_MATCH PASS   ShareData
+0042fc13   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z -> 0042f864 labelled 'sub_0042f864'
+0042fc13   RELOCATION_MATCH PASS   Reset
+0042fc86   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+0042fc86   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z -> 00428ae7 labelled '_global::DeleteViaVtable0_00428ae7'
+0042fc86   RELOCATION_MATCH PASS   Reset
+0042fe34   RELOCATION_MATCH PASS   operator=
+0048e78e   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+0048e78e   WARN RELOC_NAME: ?GetTextWidthFromText@CSubtitleRenderer@@ABEMABVCWideString@@ABVCFontBank@@@Z -> 0048e062 labelled 'CEngineSubPrimitiveBase::operator_new'
+0048e78e   RELOCATION_MATCH PASS   DrawButtonGraphics
+0056f177   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+0056f177   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+0056f177   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+0056f177   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0056f177   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0056f177   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+0056f177   RELOCATION_MATCH PASS   GetExperienceStatPic
+0058f016   RELOCATION_MATCH PASS   ConstructItemCategoryList
+005958f5   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+005958f5   WARN SHARED_HEADER_AVAILABLE CTBaseSingleton (engine/CTBaseSingleton.h)
+005958f5   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005958f5   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+005958f5   WARN RELOC_NAME: ?SetDefinitionManager@CManager@NUISystem@@QAEXPAVCDefinitionManager@@@Z -> 0041cd89 labelled '_global::SetMember_dword0x64_0041cd89'
+005958f5   WARN RELOC_NAME: ?DeleteTempSavesForProfile@CUserProfileManager@@QAEXABVCWideString@@@Z -> 00406770 labelled '_global::Nop_ret4_00406770'
+005958f5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+005958f5   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::~CCountedPointer'
+005958f5   RELOCATION_MATCH PASS   Init
+005bff07   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005bff07   WARN RELOC_NAME: ??0CGraphicBankParams@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+005bff07   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@PAUCGraphicBankParams@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+005bff07   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::~CCountedPointer'
+005bff07   RELOCATION_MATCH PASS   CTCInventoryBase
+005c8459   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c8459   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005c8459   RELOCATION_MATCH PASS   ConstructScreen
+005c9a95   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c9a95   RELOCATION_MATCH PASS   ConstructScreenPC
+0064560d   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0064560d   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0064560d   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+0064560d   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0064560d   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0064560d   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+0064560d   WARN RELOC_NAME: ?IsHighlighted@SScriptLine@@QBE_NXZ -> 004381b0 labelled 'CScreenMessage::IsHardCoded'
+0064560d   RELOCATION_MATCH PASS   Draw
+0065431d   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0065431d   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::~CCountedPointer'
+0065431d   RELOCATION_MATCH PASS   CStatBar
+
+WINS: 42
+  00403750 RELOCATION_MATCH CCountedPointer<NGameText::CDataBank>::?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ
+  004057a0 RELOCATION_MATCH CCountedPointer<CFontBank>::?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ
+  004168dc RELOCATION_MATCH CMainGameComponent::InitialiseFonts
+  00416c8a RELOCATION_MATCH CMainGameComponent::?InitGraphics@CMainGameComponent@@QAE_NXZ
+  004175e5 RELOCATION_MATCH CMainGameComponent::?Shutdown@CMainGameComponent@@QAEXXZ
+  00418b7a RELOCATION_MATCH CMainGameComponent::~CMainGameComponent
+  004190b6 RELOCATION_MATCH CCountedPointer<CLUA>::?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ
+  004190e2 RELOCATION_MATCH CCountedPointer<NUISystem::CAction>::?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z
+  00419108 RELOCATION_MATCH CCountedPointer<CGraphicDataBank>::?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ
+  00419134 RELOCATION_MATCH CCountedPointer<NUISystem::CAction>::?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z
+  00419428 RELOCATION_MATCH _global::?Reset@?$CCountedPointer@VCLUA@@@@QAEXPAVCLUA@@@Z
+  00419463 RELOCATION_MATCH CCountedPointer<CFontBank>::??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z
+  0041947a RELOCATION_MATCH _global::?Reset@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@@Z
+  004194b5 RELOCATION_MATCH _global::??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ
+  004194ba RELOCATION_MATCH CCountedPointer<CGraphicDataBank>::??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z
+  004194d1 RELOCATION_MATCH _global::?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z
+  0041d198 RELOCATION_MATCH NUISystem::CManager::?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z
+  0041e641 RELOCATION_MATCH NUISystem::CManager::??1CManager@NUISystem
+  0042918c RELOCATION_MATCH CCountedPointer<CMeshDataBank>::?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ
+  004291b8 RELOCATION_MATCH CCountedPointer<NUISystem::CAction>::?ShareData@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@PAVCCPPointerInfo@@@Z
+  00429bf9 RELOCATION_MATCH _global::??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ
+  0042a9b7 RELOCATION_MATCH NUISystem::CManager::?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z
+  0042d45d RELOCATION_MATCH std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::??A?$map
+  0042dd28 RELOCATION_MATCH CNewFrontendGameComponent::?CleanUpInterfaces@CNewFrontendGameComponent@@AAEXXZ
+  0042ddb3 RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+  0042f50b RELOCATION_MATCH CNewFrontendGameComponent::??1CNewFrontendGameComponent
+  0042f948 RELOCATION_MATCH CCountedPointer<CFontBank_const>::?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ
+  0042f974 RELOCATION_MATCH CCountedPointer<CIEngine>::?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ
+  0042f9a0 RELOCATION_MATCH CCountedPointer<CASoundBank>::?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ
+  0042f9f2 RELOCATION_MATCH CCountedPointer<NUISystem::CAction>::?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z
+  0042fc13 RELOCATION_MATCH _global::?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z
+  0042fc86 RELOCATION_MATCH CCountedPointer<CMeshDataBank>::?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z
+  0042fe34 RELOCATION_MATCH CCountedPointer<CFontBank_const>::??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z
+  0048e78e RELOCATION_MATCH CSubtitleRenderer::?DrawButtonGraphics@CSubtitleRenderer@@AAE_NABVCEnginePrimitivePrepareInfo@@AAV?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@ABVC2DVector@@_N@Z
+  0056f177 RELOCATION_MATCH CTCInventoryExperience::GetExperienceStatPic
+  0058f016 RELOCATION_MATCH CTCInventory::?ConstructItemCategoryList@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z
+  005958f5 RELOCATION_MATCH NUISystem::CFrontEndManager::?Init@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@V?$CCountedPointer@VCMeshDataBank@@@@PAVCInputManager@@PAVCDefinitionManager@@@Z
+  005bff07 RELOCATION_MATCH NInventory::CTCInventoryBase::??0CTCInventoryBase
+  005c8459 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  005c9a95 RELOCATION_MATCH CTCInventoryWeapons::?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  0064560d RELOCATION_MATCH NPlayerGui::CDrawScriptScreenText::Draw
+  0065431d RELOCATION_MATCH NPlayerGui::CStatBar::??0CStatBar@NPlayerGui@@QAE@ABVCPlayerGuiDef@@@Z

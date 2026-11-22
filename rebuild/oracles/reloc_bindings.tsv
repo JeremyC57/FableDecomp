@@ -26217,7 +26217,7 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	005bcae3	00583e26
 ?GetUseButtonActionType@CTCInventoryItem@@SI?AW4EInventoryActionType@@J@Z	005d9710	00583e26
 ??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z	005949c3	0058a0c7
-??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	004291de	00570332
+??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	00429c53	00563920
 ??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ	00578a8d	00570332
 ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	00429288	00570332
 ?GetAbilityGraphicIndex@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ede7f	00570332

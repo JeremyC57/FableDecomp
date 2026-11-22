@@ -1,0 +1,10 @@
+== 0042d45d (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD (44, 2) NEW (5, 2)  ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+== 0058f016 (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD None NEW (5, 2)  ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+== 005c8459 (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD (44, 2) NEW (5, 2)  ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+HEAD (44, 2) NEW (44, 2)  ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+== 005c9a95 (HEAD v landing, function COMDATs whose size/selection/bytes change)
+HEAD (44, 2) NEW (5, 2)  ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+HEAD (44, 2) NEW (44, 2)  ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ

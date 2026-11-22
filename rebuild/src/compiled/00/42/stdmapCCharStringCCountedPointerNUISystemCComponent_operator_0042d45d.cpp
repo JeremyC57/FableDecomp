@@ -91,5 +91,8 @@ public:
 };
 }
 namespace NUISystem { class CComponent; }
+// NF221 (q12403): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY so the 0x004291DE calls bind ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+//   (FableWin.pdb; ??1 is the 5-byte jmp thunk 0x00429C53, Ego_r.pdb 5-byte ??1), as the other 104 landed callers of 0x004291DE do.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 template CCountedPointer<NUISystem::CComponent>& std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[](const CCharString&);

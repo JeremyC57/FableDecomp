@@ -1,0 +1,65 @@
+address	change	grade	test	grades_used	entries	note
+0x0042D45D	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12403	+RELEASEDATA_DECL_ONLY: 2 sites at 0x004291DE ??1 -> ReleaseData<CComponent>
+0x0058F016	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12403	DTOR_DECL_ONLY -> RELEASEDATA_DECL_ONLY: 11 sites ??1 -> ReleaseData<CComponent>; now also defines the pick-any 5-byte ??1<CComponent> jmp copy
+0x005C8459	ported	RELOCATION_MATCH	PASS (recheck_final.log)	2	q12403	form 1 RELEASEDATA_DECL_ONLY DIFFER (3235 v 3235); form 2 RELEASEDATA_NOINLINE: 18 sites ??1 -> ReleaseData<CComponent>, defined-symbol set unchanged
+0x005C9A95	ported	RELOCATION_MATCH	PASS (recheck_final.log)	2	q12403	no flags; form 1 RELEASEDATA_DECL_ONLY DIFFER (3067 v 3065); form 2 RELEASEDATA_NOINLINE: 16 sites ??1 -> ReleaseData<CComponent>, defined-symbol set unchanged
+0x004190B6	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12226 q12402	??1<CLUA> -> ?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ
+0x00419108	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12227 q12402	??1<CGraphicDataBank> -> ?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ
+0x0042F974	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12228 q12402	??1<CIEngine> -> ?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ
+0x0042F9A0	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12229 q12402	??1<CASoundBank> -> ?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ
+0x0042918C	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	??1<CMeshDataBank> -> ?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ
+0x0042F948	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	??1<CUnprovenPointee_0042f948> -> ?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ
+0x00403750	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	??1<NGameText::CDataBank> -> ?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ (no size pragma, NF220 Gate A)
+0x004057A0	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	??1<CFontBank> -> ?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ (no size pragma)
+0x004194B5	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	_Forward -> ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ (jmp ReleaseData<CGraphicDataBank>)
+0x00429BF9	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	_GFGetPreMainMemoryUsed -> ??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ (jmp ReleaseData<CMeshDataBank>)
+0x0042F50B	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	+RELEASEDATA_DECL_ONLY: 6 sites ??1<T> -> ReleaseData<T> (CDataBank CGraphicDataBank CMeshDataBank const CFontBank CIEngine CASoundBank)
+0x00416C8A	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	+RELEASEDATA_DECL_ONLY: ??1<CGraphicDataBank> -> ReleaseData
+0x0042DD28	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	+RELEASEDATA_DECL_ONLY: 4 sites (CGraphicDataBank CMeshDataBank const CFontBank CIEngine)
+0x0056F177	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	+RELEASEDATA_DECL_ONLY: ??1<CGraphicDataBank> -> ReleaseData
+0x005958F5	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	+RELEASEDATA_DECL_ONLY: CGraphicDataBank + CMeshDataBank -> ReleaseData
+0x00418B7A	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	+RELEASEDATA_DECL_ONLY: 5 sites (CDataBank, CFontBank x2, CLUA, CGraphicDataBank) -> ReleaseData
+0x004175E5	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CCountedPointer4190b6/4057a0/419108 stand-ins + DTOR_DECL_ONLY -> shared CCountedPointer<CLUA/CFontBank/CGraphicDataBank> + RELEASEDATA_DECL_ONLY; 5 sites -> ReleaseData<T>; CCountedPointer41915a (0x0041915A, outside the family) stays local
+0x00419134	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CCPtr ?ShareData@CCPtr@@QAEXPAXPAJ@Z -> ShareData<CGraphicDataBank> on the header (RELEASEDATA_DECL_ONLY)
+0x004291B8	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CCPtr -> ShareData<CMeshDataBank> on the header
+0x0042F9F2	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CCPtr -> ShareData<const CFontBank> on the header
+0x004190E2	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CCPtr -> ShareData<CFontBank> on the header
+0x004194BA	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	?AssignFrom@CCPtr -> ??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z (SHAREDATA_DECL_ONLY)
+0x00419463	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	?AssignFrom@CCPtr -> ??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z (SHAREDATA_DECL_ONLY)
+0x0042FE34	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	?AssignFrom@CCPtr -> member template ??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z
+0x00419428	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local model Reset<CPolymorphicData_00419428> -> Reset<CLUA> on the header; DeleteData 0x0041901D respelled; new pick-any DeleteData<CLUA> copy
+0x0041947A	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local model -> Reset<CFontBank>; DeleteData 0x00419028 respelled; new pick-any DeleteData<CFontBank> copy
+0x004194D1	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local model -> Reset<CGraphicDataBank>; DeleteData 0x00419036 respelled; new pick-any DeleteData<CGraphicDataBank> copy
+0x0042FC13	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local model -> Reset<const CFontBank>; DeleteData 0x0042F864 respelled; new pick-any DeleteData<const CFontBank> copy
+0x0042FC86	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	leaf unchanged; local model -> header: release ??1<CMeshDataBank> -> ReleaseData<CMeshDataBank>; DeleteData<CMeshDataBank> now a pick-any copy (was UND)
+0x0041D198	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	?SetGraphicsBank@..CCountedPointer_0042918c<CGraphicDataBank> -> ?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z (4 landed callers already bind it); local CCountedPointer_0042918c stand-in -> header; member PMeshBank (in-place in the HEAD local CManager model)
+0x0042A9B7	ported (self rename)	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	?SetGraphicsBank@..UCCountedPointer_CGraphicDataBank -> ?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z (callers 0x0041E3F6 / 0x0041E641 already bind it); local stand-in -> header; member PGraphicsBank
+0x0041E641	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local SMember10 / SMember18 wrappers -> shared CCountedPointer<CGraphicDataBank> / <CMeshDataBank> members: ??1SMember10/18 -> ReleaseData<T>; CComponent binding (ReleaseData at 0x004291DE) unchanged; leaf unchanged
+0x005BFF07	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	in-place respell of the HEAD local CCountedPointer model: ~CCountedPointer() { ReleaseData(); } + declared ReleaseData: the temporary's release ??1<CGraphicDataBank> -> ReleaseData<CGraphicDataBank> at 0x00419108; new pick-any DEFs ??1<CGraphicDataBank> (5-byte jmp, owner 0x004194B5) and ??1<void> (ownerless stand-in, EH member cleanup), UND ??1<void> -> UND ReleaseData<void>; anonymous-namespace hash differs only by file path; port onto the header blocked on its SerialisedItems pointees + local CCharString
+0x0042DDB3	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CCountedPointer_0042fe34 (CFont) stand-in -> header CCountedPointer<const CFontBank> / <CGraphicDataBank> (RELEASEDATA_ + SHAREDATA_ + ASSIGN_DECL_ONLY) + engine/CFontManager.h; binders: 0x004057A0/0x00419108 ReleaseData, 0x004194BA ??4<CGraphicDataBank>, 0x0042FE34 member-template ??$?4, 0x009E2C80 -> CFontManager::GetFont (self leaf), 0x009F83D0 -> CGraphicBankManager::OpenGraphicBank (self leaf); pick-any DEFs ??$?4 (owner 0x0042FE34), ??1<CFontBank> (ownerless), ??1<CGraphicDataBank> (owner 0x004194B5)
+0x004168DC	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	CCountedPointer<CFont> -> <CFontBank> (member PCutSceneMainFont, Ego_r.pdb) + engine/CFontManager.h (RELEASEDATA_ + ASSIGN_DECL_ONLY): 0x004057A0 -> ReleaseData<CFontBank>, 0x00419463 -> ??4<CFontBank>, 0x009E2C80 -> CFontManager::GetFont (self leaf); the HEAD pick-any CFont copies (??1 / ??4 / ReleaseData / ShareData) gone
+0x0048E78E	ported	RELOCATION_MATCH	changed (rows/0048e78e_test.cpp), PASS	2	q12402	+RELEASEDATA_DECL_ONLY: 0x004057A0 ??1<CFontBank> -> ReleaseData<CFontBank>; recheck run 1 LINK_FAIL (unresolved ReleaseData<CFontBank> in the test link), test fixed, run 2 PASS
+0x0064560D	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	local CFontPointer / CFontBankManager stand-ins -> header CCountedPointer<CFontBank> + engine/CFontManager.h: 2 sites 0x004057A0 ??1CFontPointer -> ReleaseData<CFontBank>, 2 sites 0x009E2C80 -> CFontManager::GetFont (self leaf); new pick-any ??1<CFontBank> (ownerless)
+0x0065431D	ported	RELOCATION_MATCH	PASS (recheck_final.log)	1	q12402	same port as 0x0064560D (1 + 1 sites)
+0x0041AFA0	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0041E3F6	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0042DB20	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0042E98F	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0042FB40	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0042FD04	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0042FD6F	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x004A6AB0	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x004A6E30	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x004E7CC3	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0057832D	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x00590D32	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0059EB0C	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x005C3947	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x005CD2A6	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x005F3BCF	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x00606D20	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0061A420	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x0072DB90	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x00499AA0	not-a-binder	-	-	1 (HEAD census)	q12402	binds no family address under a changing spelling (work/hb_head*.tsv); lock released
+0x00A5F1C0	blocked (open: context)	-	-	1 (HEAD census)	q12402	CStreamingFontDataBankEntry::AcquireFont: local CCountedPointer_<addr> stand-in binds Reset 0x0041947A; not attempted (NOTES Open); lock kept NF221
+0x00A634F0	blocked (open: context)	-	-	1 (HEAD census)	q12402	CFontDataBankEntry::AcquireFont: local CCountedPointer_<addr> stand-in binds Reset 0x0041947A; not attempted (NOTES Open); lock kept NF221

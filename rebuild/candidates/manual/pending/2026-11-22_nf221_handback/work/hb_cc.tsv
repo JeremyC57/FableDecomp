@@ -1,0 +1,230 @@
+0041ded2	GRADE	RELOCATION_MATCH		  
+	0041ded2	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+0041e641	GRADE	RELOCATION_MATCH	??1CManager@NUISystem	  
+	0041e641	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0041e6d3	GRADE	RELOCATION_MATCH	?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z	/GS
+	0041e6d3	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x38
+00427216	GRADE	RELOCATION_MATCH	?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z	  
+	00427216	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x6
+0042920a	GRADE	RELOCATION_MATCH	?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z	  
+	0042920a	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00429c53	GRADE	RELOCATION_MATCH	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	  
+	00429c53	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00429c6f	GRADE	RELOCATION_MATCH	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z	  
+	00429c6f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00429e16	GRADE	RELOCATION_MATCH	??1?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@XZ	  
+	00429e16	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0042d45d	GRADE	RELOCATION_MATCH	??A?$map	  
+	0042d45d	004291de	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x2
+004804de	GRADE	RELOCATION_MATCH	?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z	  
+	004804de	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x27
+004830a1	GRADE	RELOCATION_MATCH	?OpenInGameMenu@CTCInGameMenu@@QAEXXZ	/GS
+	004830a1	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x25
+00485524	GRADE	RELOCATION_MATCH	??_G?$CActionParamCCountedPointer@VCComponent@NUISystem@@@NUISystem@@UAEPAXI@Z	  
+	00485524	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0053b321	GRADE	RELOCATION_MATCH	?RemoveChild@CList@NUISystem@@UAEXK@Z	  
+	0053b321	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0053b91e	GRADE	RELOCATION_MATCH	?Initialise@CList@NUISystem@@UAEXXZ	
+	0053b91e	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x6
+00544d20	GRADE	RELOCATION_MATCH	?ProcessEvent@CSpellContainerList@NUISystem@@UAEXW4EEvent@2@@Z	  
+	00544d20	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x1
+00563920	GRADE	RELOCATION_MATCH	?DisplayScoreboardGUI@CTCHeroOnlineScoreboard@@AAEXXZ	  
+	00563920	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x15
+0056ad40	GRADE	RELOCATION_MATCH	?Activate@CTCBoastUI@@QAEXXZ	  
+	0056ad40	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x7
+0056f69f	GRADE	RELOCATION_MATCH	?AddMagicCategoryToList@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@VCWideString@@VCCharString@@012@Z	  
+	0056f69f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+0056f8a4	GRADE	RELOCATION_MATCH	?AddMagicCategoryToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@PAVCList@3@VCWideString@@VCCharString@@123@Z	  
+	0056f8a4	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+00570332	GRADE	RELOCATION_MATCH	?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z	  
+	00570332	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+00571280	GRADE	RELOCATION_MATCH	?AddAbilityToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroAbility@@PAVCList@3@_N@Z	  
+	00571280	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+005729d8	GRADE	RELOCATION_MATCH	?AddStatToList@CTCInventoryExperience@@AAEXW4EHeroTrainableStatType@@PAVCList@NUISystem@@_NPAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	
+	005729d8	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+00573792	GRADE	RELOCATION_MATCH	?AddStatToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroTrainableStatType@@PAVCList@3@_NPAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	
+	00573792	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+00574885	GRADE	RELOCATION_MATCH	?ConstructCategoryStrength@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z	
+	00574885	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x18
+005759bf	GRADE	RELOCATION_MATCH	?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z	
+	005759bf	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x18
+00577216	GRADE	RELOCATION_MATCH	?OpenInventoryInternal@CTCInventoryExperience@@UAEX_N@Z	
+	00577216	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00577ac0	GRADE	RELOCATION_MATCH	?OpenInventoryInternalPC@CTCInventoryExperience@@UAEX_N@Z	
+	00577ac0	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005820e7	GRADE	RELOCATION_MATCH	?CreateMenuDesc@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	  
+	005820e7	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00582673	GRADE	RELOCATION_MATCH	?CreateMenuDescPC@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	  
+	00582673	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00582ace	GRADE	RELOCATION_MATCH	?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@ABVCCharString@@0@Z	  
+	00582ace	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+0058315b	GRADE	RELOCATION_MATCH	?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0ABVCCharString@@0@Z	  
+	0058315b	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+00584b86	GRADE	RELOCATION_MATCH	?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z	  
+	00584b86	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+00584f15	GRADE	RELOCATION_MATCH	UnAssignThingPC	  
+	00584f15	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0058578b	GRADE	RELOCATION_MATCH	?OpenInventory@CTCInventory@@UAEXXZ	  
+	0058578b	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+0058a0c7	GRADE	RELOCATION_MATCH	?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	  
+	0058a0c7	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+0058af10	GRADE	RELOCATION_MATCH	?OpenPCOptionsMenu@CTCInventory@@QAEXXZ	  
+	0058af10	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+0058e208	GRADE	RELOCATION_MATCH	?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	  
+	0058e208	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x4
+0058f016	GRADE	RELOCATION_MATCH	?ConstructItemCategoryList@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z	
+	0058f016	004291de	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x11
+0058f9bc	GRADE	RELOCATION_MATCH	?OpenPCPhotojournal@CTCInventory@@QAEXXZ	/GS
+	0058f9bc	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+00590235	GRADE	RELOCATION_MATCH	?GetItemsListUIComponent@CTCInventory@@QAEPAVCComponent@NUISystem@@PAV23@@Z	
+	00590235	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+005907ab	GRADE	RELOCATION_MATCH	?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z	  
+	005907ab	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x8
+00595cc1	GRADE	RELOCATION_MATCH	?ConstructFileDescription@CFrontEndManager@NUISystem@@IAEXKPAVCComponent@2@0AAVCWideString@@@Z	/GS
+	00595cc1	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+00596a68	GRADE	RELOCATION_MATCH	?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@AAVCWideString@@MABVCCharString@@1_N@Z	  
+	00596a68	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+00596cce	GRADE	RELOCATION_MATCH	?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ	  
+	00596cce	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+00597006	GRADE	RELOCATION_MATCH	?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@IAEJXZ	  
+	00597006	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+00598463	GRADE	RELOCATION_MATCH	?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@IAEJXZ	  
+	00598463	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+00598a1c	GRADE	RELOCATION_MATCH	?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z	  
+	00598a1c	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+0059cb90	GRADE	RELOCATION_MATCH	?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z	  
+	0059cb90	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059d0b8	GRADE	RELOCATION_MATCH	?FinalConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@@Z	  
+	0059d0b8	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059d270	GRADE	RELOCATION_MATCH	?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCViewport@3@@Z	  
+	0059d270	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059d65a	GRADE	RELOCATION_MATCH	?FinalConstructSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@PAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@0@Z	  
+	0059d65a	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059db82	GRADE	RELOCATION_MATCH	RefreshEntriesAmountsAndAvailabilities@CTCInventoryTrade	  
+	0059db82	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059e6bd	GRADE	RELOCATION_MATCH	RecurseRefreshEntriesAmountsAndAvailabilitiesPC	  
+	0059e6bd	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059ed42	GRADE	RELOCATION_MATCH	?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z	  
+	0059ed42	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059f51e	GRADE	RELOCATION_MATCH	?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCViewport@3@_N@Z	  
+	0059f51e	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+0059fee3	GRADE	RELOCATION_MATCH	?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z	  
+	0059fee3	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005a04f7	GRADE	RELOCATION_MATCH	?ConstructNormalShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@0@Z	  
+	005a04f7	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x13
+005a29f4	GRADE	RELOCATION_MATCH	?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@AAVCCharString@@@Z	  
+	005a29f4	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+005a3e47	GRADE	RELOCATION_MATCH	?ConstructBuyActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	  
+	005a3e47	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+005a45f6	GRADE	RELOCATION_MATCH	?ConstructSellActionsList@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	  
+	005a45f6	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+005a4cdd	GRADE	RELOCATION_MATCH	?ConstructActualSellInventoryPC@CTCInventoryTrade@@AAEXXZ	  
+	005a4cdd	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x4
+005a5b31	GRADE	RELOCATION_MATCH	?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ	  
+	005a5b31	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x4
+005a731f	GRADE	RELOCATION_MATCH	?ConstructSellActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	  
+	005a731f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+005a79e6	GRADE	RELOCATION_MATCH	?ConstructBuyActionsListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJ_N@Z	  
+	005a79e6	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+005a8c66	GRADE	RELOCATION_MATCH	?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ	  
+	005a8c66	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x7
+005a9cbe	GRADE	RELOCATION_MATCH	?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z	  
+	005a9cbe	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005aaf28	GRADE	RELOCATION_MATCH	?ConstructTradeDescriptionClothing@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z	  
+	005aaf28	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005ad571	GRADE	RELOCATION_MATCH	?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z	  
+	005ad571	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005ae6af	GRADE	RELOCATION_MATCH	?RefreshDescriptions@CTCInventoryTrade@@QAEXXZ	  
+	005ae6af	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005ae9de	GRADE	RELOCATION_MATCH	?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	  
+	005ae9de	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005aeaee	GRADE	RELOCATION_MATCH	?RefreshSellDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z	  
+	005aeaee	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005aecc0	GRADE	RELOCATION_MATCH	?SellItem@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z	  
+	005aecc0	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+005af64e	GRADE	RELOCATION_MATCH	?BuyItem@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z	  
+	005af64e	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005b358c	GRADE	RELOCATION_MATCH	?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	  
+	005b358c	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005b3613	GRADE	RELOCATION_MATCH	?CreateMenuDescPC@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	  
+	005b3613	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005b6a66	GRADE	RELOCATION_MATCH	?ConstructClothingListPC@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@PAV23@W4EClothingSuitPart@@_N@Z	  
+	005b6a66	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x4
+005b70b8	GRADE	RELOCATION_MATCH	?ConstructClothingList@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@3@W4EClothingSuitPart@@_N@Z	  
+	005b70b8	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x8
+005b76d1	GRADE	RELOCATION_MATCH	?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005b76d1	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x13
+005b8743	GRADE	RELOCATION_MATCH	?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005b8743	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x10
+005c323a	GRADE	RELOCATION_MATCH	?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z	  
+	005c323a	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+005c3444	GRADE	RELOCATION_MATCH	?ConstructWieldEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@PAVCComponent@4@J@Z	  
+	005c3444	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+005c3e91	GRADE	RELOCATION_MATCH	?FinalConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z	  
+	005c3e91	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005c47d5	GRADE	RELOCATION_MATCH	?FinalConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z	  
+	005c47d5	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+005c574e	GRADE	RELOCATION_MATCH	?ConstructAugEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@@Z	  
+	005c574e	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x11
+005c5f11	GRADE	RELOCATION_MATCH	?ConstructAugEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCViewport@NUISystem@@PAVCComponent@6@@Z	  
+	005c5f11	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+005c66b2	GRADE	RELOCATION_MATCH	?ConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z	  
+	005c66b2	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005c8176	GRADE	RELOCATION_MATCH	?ConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z	  
+	005c8176	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005c8459	GRADE	RELOCATION_MATCH	?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005c8459	004291de	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x18
+005c90fc	GRADE	RELOCATION_MATCH	?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@Z	  
+	005c90fc	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005c9a95	GRADE	RELOCATION_MATCH	?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005c9a95	004291de	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x16
+005cacb9	GRADE	RELOCATION_MATCH	?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ	  
+	005cacb9	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005cb2b0	GRADE	RELOCATION_MATCH	?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z	  
+	005cb2b0	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005ccf0e	GRADE	RELOCATION_MATCH		  
+	005ccf0e	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005ccffc	GRADE	RELOCATION_MATCH	CreateTitlePC	  
+	005ccffc	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005cdd86	GRADE	RELOCATION_MATCH		  
+	005cdd86	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005ce0e6	GRADE	RELOCATION_MATCH	?ConstructPersonalityList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005ce0e6	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005d1f0c	GRADE	RELOCATION_MATCH	?ConstructPersonalityListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005d1f0c	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005d64dd	GRADE	RELOCATION_MATCH	?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z	  
+	005d64dd	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005d6748	GRADE	RELOCATION_MATCH	?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005d6748	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005d7081	GRADE	RELOCATION_MATCH	?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005d7081	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005eeff2	GRADE	RELOCATION_MATCH	?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z	/Gr
+	005eeff2	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x23
+005f077f	GRADE	RELOCATION_MATCH	?ContructItemLists@CTCInventoryAbilities@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	  
+	005f077f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x5
+005f0c5f	GRADE	RELOCATION_MATCH	?AssignAbility@CTCInventoryAbilities@@QAEXJK@Z	  
+	005f0c5f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005f0dc5	GRADE	RELOCATION_MATCH	?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z	  
+	005f0dc5	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005f11a9	GRADE	RELOCATION_MATCH	?UnAssignAbility@CTCInventoryAbilities@@QAEXK@Z	  
+	005f11a9	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x1
+005f1320	GRADE	RELOCATION_MATCH	?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAVCComponent@NUISystem@@@Z	  
+	005f1320	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x2
+005f1526	GRADE	RELOCATION_MATCH	?ConstructPCItemLists@CTCInventoryAbilities@@QAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	  
+	005f1526	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x6
+005f1b10	GRADE	RELOCATION_MATCH	?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	005f1b10	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x18
+005f3f7b	GRADE	RELOCATION_MATCH	?ConstructExpressionCategoryList@CTCInventoryAbilities@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z	  
+	005f3f7b	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x13
+005f45b5	GRADE	RELOCATION_MATCH	?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z	  
+	005f45b5	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x9
+005f4c8f	GRADE	RELOCATION_MATCH	?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z	  
+	005f4c8f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x3
+005f519f	GRADE	RELOCATION_MATCH	?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z	
+	005f519f	004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	rel32	x13
+00601310	GRADE	RELOCATION_MATCH	?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z	  
+	00601310	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x1
+00626110	GRADE	RELOCATION_MATCH	?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	/d2inlT59
+	00626110	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x1
+00626750	GRADE	RELOCATION_MATCH	?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	/d2inlT59
+	00626750	00429c53	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	rel32	x1

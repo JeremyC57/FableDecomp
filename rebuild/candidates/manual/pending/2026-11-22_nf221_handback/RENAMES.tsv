@@ -1,0 +1,90 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x004190B6	CCountedPointer<CLUA>	ReleaseData	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	CCountedPointer<CLUA>::~CCountedPointer	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	FableWin.pdb name + 44-byte Data-first release + jmp thunk 0x00419423; called by Reset<CLUA> 0x00419428
+0x00419108	CCountedPointer<CGraphicDataBank>	ReleaseData	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	CCountedPointer<CGraphicDataBank>::~CCountedPointer	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	FableWin.pdb + body + jmp thunk 0x004194B5; called by ShareData 0x00419134 / Reset 0x004194D1
+0x0042F974	CCountedPointer<CIEngine>	ReleaseData	?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ	CCountedPointer<CIEngine>::~CCountedPointer	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	FableWin.pdb + body + jmp thunk 0x0042FCFF; Reset 0x0042FD04 binds it
+0x0042F9A0	CCountedPointer<CASoundBank>	ReleaseData	?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ	CCountedPointer<CASoundBank>::~CCountedPointer	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	FableWin.pdb + body + jmp thunk 0x0042FBCB; Reset 0x0042FD6F binds it
+0x0042918C	CCountedPointer<CMeshDataBank>	ReleaseData	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	CCountedPointer<CMeshDataBank>::~CCountedPointer	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	FableWin.pdb + body + jmp thunk 0x00429BF9; ShareData 0x004291B8 / Reset 0x0042FC86 call it
+0x0042F948	CCountedPointer<const CFontBank>	ReleaseData	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	CCountedPointer<CFontBank_const>::Release	??1?$CCountedPointer@VCUnprovenPointee_0042f948@@@@QAE@XZ	FableWin.pdb + body + jmp thunk 0x0042FC0E; T from 0x0042DDB3 (Ego_r m_pMenuFont CCountedPointer<const CFontBank>) and the ??$?4VCFontBank member template
+0x00403750	CCountedPointer<NGameText::CDataBank>	ReleaseData	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	CCountedPointer<NGameText::CDataBank>::~CCountedPointer	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	FableWin.pdb + /O2 release, no thunk; NF220 Gate A; /Os callers call the sibling ReleaseData bodies; Ego_r PTextBank
+0x004057A0	CCountedPointer<CFontBank>	ReleaseData	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	CCountedPointer<CFontBank>::~CCountedPointer	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	FableWin.pdb + /O2 release, no thunk; called by ShareData<CFontBank> 0x004190E2 and Reset<CFontBank> 0x0041947A; no CCountedPointer<CFont> in any PDB
+0x004194B5	CCountedPointer<CGraphicDataBank>	~CCountedPointer	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	_global::TailJmp__Dest_val_std__allocator_CCountedPointer_004194b5	_Forward	5-byte jmp 0x00419108; FableWin.pdb ??1; landed caller 0x0041AFA0 binds it
+0x00429BF9	CCountedPointer<CMeshDataBank>	~CCountedPointer	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429bf9	_GFGetPreMainMemoryUsed	5-byte jmp 0x0042918C; FableWin.pdb ??1; no landed caller
+0x00419134	CCountedPointer<CGraphicDataBank>	ShareData	?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	CCountedPointer<NUISystem::CAction>::ShareData	?ShareData@CCPtr@@QAEXPAXPAJ@Z	FableWin.pdb + body (calls ReleaseData 0x00419108); callers operator= 0x004194BA / SetGraphicsBank 0x0042A9B7
+0x004291B8	CCountedPointer<CMeshDataBank>	ShareData	?ShareData@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@PAVCCPPointerInfo@@@Z	CCountedPointer<NUISystem::CAction>::ShareData	?ShareData@CCPtr@@QAEXPAXPAJ@Z	FableWin.pdb + body (calls 0x0042918C); caller SetMeshBank 0x0041D198
+0x0042F9F2	CCountedPointer<const CFontBank>	ShareData	?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	CCountedPointer<NUISystem::CAction>::ShareData	?ShareData@CCPtr@@QAEXPAXPAJ@Z	FableWin.pdb + body (calls 0x0042F948); caller 0x0042FE34
+0x004190E2	CCountedPointer<CFontBank>	ShareData	?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z	CCountedPointer<NUISystem::CAction>::ShareData	?ShareData@CCPtr@@QAEXPAXPAJ@Z	FableWin.pdb + Ego_r.pdb + body (calls 0x004057A0); caller 0x00419463
+0x004194BA	CCountedPointer<CGraphicDataBank>	operator=	??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	CCountedPointer<CGraphicDataBank>::operator=	?AssignFrom@CCPtr@@QAEAAU1@ABU1@@Z	FableWin.pdb + body (calls ShareData 0x00419134); 0x00416C8A already binds it
+0x00419463	CCountedPointer<CFontBank>	operator=	??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z	CCountedPointer<CFontBank>::operator=	?AssignFrom@CCPtr@@QAEAAU1@ABU1@@Z	FableWin.pdb + body (calls ShareData 0x004190E2); 0x00499AA0 already binds it
+0x0042FE34	CCountedPointer<const CFontBank>	operator=<CFontBank>	??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	CCountedPointer<CFontBank_const>::operator=	?AssignFrom@CCPtr@@QAEAAU1@ABU1@@Z	FableWin.pdb member template + body (calls 0x0042F9F2) + caller 0x0042DDB3 assigns GetFont CCountedPointer<CFontBank> into const member
+0x00419428	CCountedPointer<CLUA>	Reset	?Reset@?$CCountedPointer@VCLUA@@@@QAEXPAVCLUA@@@Z	CCountedPointer<CPolymorphicData_00419428>::Reset	?Reset@?$CCountedPointer@VCPolymorphicData_00419428@@@@QAEXPAVCPolymorphicData_00419428@@@Z	body calls ReleaseData<CLUA> 0x004190B6, stores DeleteData 0x0041901D; FableWin.pdb Reset<CLUA>
+0x0041947A	CCountedPointer<CFontBank>	Reset	?Reset@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@@Z	CCountedPointer<CPolymorphicData_0041947A>::Reset	?Reset@?$CCountedPointer@VCPolymorphicData_0041947A@@@@QAEXPAVCPolymorphicData_0041947A@@@Z	FableWin.pdb + Ego_r.pdb Reset<CFontBank> + body (calls 0x004057A0); callers AcquireFont 0x00A5F1C0 / 0x00A634F0 (OPEN: they still bind stand-ins)
+0x004194D1	CCountedPointer<CGraphicDataBank>	Reset	?Reset@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@@Z	CCountedPointer<CPolymorphicData_004194D1>::Reset	?Reset@?$CCountedPointer@VCPolymorphicData_004194D1@@@@QAEXPAVCPolymorphicData_004194D1@@@Z	body calls 0x00419108, stores DeleteData 0x00419036 (OpenGraphicBank stores it too); FableWin.pdb Reset<CGraphicDataBank>
+0x0042FC13	CCountedPointer<const CFontBank>	Reset	?Reset@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@@Z	CCountedPointer<CPolymorphicData_0042FC13>::Reset	?Reset@?$CCountedPointer@VCPolymorphicData_0042FC13@@@@QAEXPAVCPolymorphicData_0042FC13@@@Z	FableWin.pdb Reset<const CFontBank> + body (calls 0x0042F948)
+0x0041D198	NUISystem::CManager	SetMeshBank	?SetMeshBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCMeshDataBank@@@@@Z	NUISystem::CManager::SetMeshBank	?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer_0042918c@VCGraphicDataBank@@@@@Z	FableWin.pdb + Ego_r.pdb; 4 landed callers already bind it; body writes +0x18 PMeshBank via ShareData<CMeshDataBank>
+0x0042A9B7	NUISystem::CManager	SetGraphicsBank	?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z	NUISystem::CManager::SetGraphicsBank	?SetGraphicsBank@CManager@NUISystem@@QAEXUCCountedPointer_CGraphicDataBank@@@Z	FableWin.pdb + Ego_r.pdb; callers 0x0041E3F6 / 0x0041E641 already bind it
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x004168DC	??1?$CCountedPointer@UCFont@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x004168DC	??4?$CCountedPointer@UCFont@@@@QAEAAV0@ABV0@@Z	??4?$CCountedPointer@VCFontBank@@@@QAEAAV0@ABV0@@Z	0x00419463
+0x004168DC	?GetFont@CFontBank@@QAE?AV?$CCountedPointer@UCFont@@@@ABVCCharString@@@Z	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	0x009E2C80
+0x00416C8A	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x004175E5	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	0x00403750
+0x004175E5	?Release@CCountedPointer4057a0@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x004175E5	?Release@CCountedPointer4190b6@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	0x004190B6
+0x004175E5	?Release@CCountedPointer419108@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x00418B7A	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	0x00403750
+0x00418B7A	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x00418B7A	??1?$CCountedPointer@VCLUA@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	0x004190B6
+0x00418B7A	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x004190E2	?ReleaseCur@CCPtr@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x00419134	?ReleaseCur_00419108@CCPtr@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x00419428	?DeleteData@?$CCountedPointer@VCPolymorphicData_00419428@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCLUA@@@@SIXPAX@Z	0x0041901D
+0x00419428	?Release@?$CCountedPointer@VCPolymorphicData_00419428@@@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	0x004190B6
+0x00419463	?ShareData@CCPtr@@QAEXPAXPAJ@Z	?ShareData@?$CCountedPointer@VCFontBank@@@@QAEXPAVCFontBank@@PAVCCPPointerInfo@@@Z	0x004190E2
+0x0041947A	?Release@?$CCountedPointer@VCPolymorphicData_0041947A@@@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x0041947A	?DeleteData@?$CCountedPointer@VCPolymorphicData_0041947A@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCFontBank@@@@SIXPAX@Z	0x00419028
+0x004194B5	_ForwardTarget_00419108	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x004194BA	?ShareData_00419134@CCPtr@@QAEXPAXPAJ@Z	?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	0x00419134
+0x004194D1	?DeleteData@?$CCountedPointer@VCPolymorphicData_004194D1@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z	0x00419036
+0x004194D1	?Release@?$CCountedPointer@VCPolymorphicData_004194D1@@@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0041D198	??1?$CCountedPointer_0042918c@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x0041D198	?ShareData@?$CCountedPointer_0042918c@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	?ShareData@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@PAVCCPPointerInfo@@@Z	0x004291B8
+0x0041E641	??1SMember10@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0041E641	??1SMember18@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x004291B8	?ReleaseCur_0042918c@CCPtr@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x00429BF9	_GFGetPreMainMemoryUsedImpl	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x0042A9B7	??1CCountedPointer_CGraphicDataBank@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0042A9B7	?ShareData@CCountedPointer_CGraphicDataBank@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	?ShareData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXPAVCGraphicDataBank@@PAVCCPPointerInfo@@@Z	0x00419134
+0x0042D45D	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	0x004291DE
+0x0042DD28	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0042DD28	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x0042DD28	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	0x0042F948
+0x0042DD28	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ	0x0042F974
+0x0042DDB3	??1?$CCountedPointer_0042fe34@UCFont@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x0042DDB3	??1?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0042DDB3	??4?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	??4?$CCountedPointer@VCGraphicDataBank@@@@QAEAAV0@ABV0@@Z	0x004194BA
+0x0042DDB3	??4?$CCountedPointer_0042fe34@UCFont@@@@QAEAAV0@ABV0@@Z	??$?4VCFontBank@@@?$CCountedPointer@$$CBVCFontBank@@@@QAEAAV0@ABV?$CCountedPointer@VCFontBank@@@@@Z	0x0042FE34
+0x0042DDB3	?GetFont@CFontBank@@QAE?AV?$CCountedPointer_0042fe34@UCFont@@@@ABVCCharString@@@Z	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	0x009E2C80
+0x0042DDB3	?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z	0x009F83D0
+0x0042F50B	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	0x00403750
+0x0042F50B	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0042F50B	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x0042F50B	??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	0x0042F948
+0x0042F50B	??1?$CCountedPointer@VCIEngine@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ	0x0042F974
+0x0042F50B	??1?$CCountedPointer@VCASoundBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ	0x0042F9A0
+0x0042F9F2	?ReleaseCur_0042f948@CCPtr@@QAEXXZ	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	0x0042F948
+0x0042FC13	?DeleteData@?$CCountedPointer@VCPolymorphicData_0042FC13@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@$$CBVCFontBank@@@@SIXPAX@Z	0x0042F864
+0x0042FC13	?Release@?$CCountedPointer@VCPolymorphicData_0042FC13@@@@QAEXXZ	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	0x0042F948
+0x0042FC86	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x0042FE34	?ShareData_0042f9f2@CCPtr@@QAEXPAXPAJ@Z	?ShareData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXPBVCFontBank@@PAVCCPPointerInfo@@@Z	0x0042F9F2
+0x0048E78E	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x0056F177	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x0058F016	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	0x004291DE
+0x005958F5	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x005958F5	??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	0x0042918C
+0x005BFF07	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	0x00419108
+0x005C8459	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	0x004291DE
+0x005C9A95	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	0x004291DE
+0x0064560D	??1CFontPointer@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x0064560D	?GetFont@CFontBankManager@@QAE?AUCFontPointer@@ABVCCharString@@@Z	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	0x009E2C80
+0x0065431D	??1CFontPointer@@QAE@XZ	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	0x004057A0
+0x0065431D	?GetFont@CFontBankManager@@QAE?AUCFontPointer@@ABVCCharString@@@Z	?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	0x009E2C80
