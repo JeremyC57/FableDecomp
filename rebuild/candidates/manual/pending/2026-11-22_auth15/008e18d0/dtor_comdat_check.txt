@@ -1,0 +1,19 @@
+# ??1?$CParticleUpdateParameters@KK@NParticleEngine@@UAE@XZ COMDAT in each G3 object v retail 0x006E2500 (reloc-masked; vsretail.py from AUTH14)
+008e18d0	73 diffs 0 [] after cccccc
+007a1380	73 diffs 0 [] after cccccc
+007a1b20	73 diffs 0 [] after cccccc
+007be3e0	33 diffs 20 [0, 1, 2, 3, 4, 5] after 1485c0
+007be4e0	33 diffs 20 [0, 1, 2, 3, 4, 5] after 1485c0
+007c2480	73 diffs 0 [] after cccccc
+007c25a0	73 diffs 0 [] after cccccc
+007f2dc0	73 diffs 0 [] after cccccc
+008548b0	73 diffs 0 [] after cccccc
+008e16a0	73 diffs 0 [] after cccccc
+008e20f0	73 diffs 0 [] after cccccc
+008e24f0	73 diffs 0 [] after cccccc
+008f7950	73 diffs 0 [] after cccccc
+008f7e70	73 diffs 0 [] after cccccc
+008f7f50	73 diffs 0 [] after cccccc
+  (TypeError = the symbol has no section in the object: an external reference only, no body emitted)
+007be3e0 default path (G3c): no ??1 body emitted
+007be4e0 default path (G3c): no ??1 body emitted

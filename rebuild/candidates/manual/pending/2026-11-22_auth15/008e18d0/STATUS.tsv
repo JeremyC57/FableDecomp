@@ -1,0 +1,2 @@
+address	state	best_grade	grades_used	best_source	note
+008e18d0	matched	RELOCATION_MATCH	28	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth15/008e18d0/008e18d0.cpp	/Gr default T, overlay hdr/ (IMPLICIT_DTOR opt-in); D1 strict dry run RELOCATION_MATCH PASS; equiv 0 diff; opt-in breaks pick-any in 007be3e0/007be4e0 (-Os TUs) if defined there: coordinator decision

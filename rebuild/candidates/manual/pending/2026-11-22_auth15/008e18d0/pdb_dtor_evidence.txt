@@ -1,0 +1,77 @@
+# PDB method attributes of NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long> (V?$CParticleUpdateParameters@KK@NParticleEngine@@)
+# Ego_d: dl_debug/types.txt (llvm-pdbutil dump -types Ego_d.pdb). Ego_r / FableWin: llvm-pdbutil dump -types on the 4 KB repacks (codex27/pdbx/*.4k.pdb, repack4k.py).
+
+## Ego_d.pdb
+   0x232B5 | LF_CLASS [size = 144] `NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>`
+             unique name: `V?$CParticleUpdateParameters@KK@NParticleEngine@@`
+             vtable: 0x24B9, base list: <no type>, field list: 0x232B4
+             options: has ctor / dtor | contains nested class | has unique name | overloaded operator | overloaded operator=, sizeof 52
+             - LF_ONEMETHOD [name = `GetVectorParam`]
+               type = 0x232A3, vftable offset = -1, attrs = public
+             - LF_ONEMETHOD [name = `GetUpdateParam`]
+               type = 0x232A5, vftable offset = -1, attrs = public
+             - LF_ONEMETHOD [name = `GetUpdateParamDesc`]
+               type = 0x232A9, vftable offset = -1, attrs = public
+             - LF_ONEMETHOD [name = `Update`]
+               type = 0x232AB, vftable offset = -1, attrs = public
+--
+             - LF_METHOD [name = `CParticleUpdateParameters<unsigned long,unsigned long>`, # overloads = 2, overload list = 0x232B0]
+             - LF_ONEMETHOD [name = `~CParticleUpdateParameters<unsigned long,unsigned long>`]
+               type = 0x232AB, vftable offset = -1, attrs = public virtual compiler-generated
+             - LF_ONEMETHOD [name = `operator=`]
+               type = 0x232B2, vftable offset = -1, attrs = public compiler-generated
+             - LF_ONEMETHOD [name = `__local_vftable_ctor_closure`]
+               type = 0x232AB, vftable offset = -1, attrs = public compiler-generated
+             - LF_ONEMETHOD [name = `__vecDelDtor`]
+               type = 0x232B3, vftable offset = 0, attrs = public intro virtual compiler-generated
+   0x232B0 | LF_METHODLIST [size = 20]
+             - Method [type = 0x232AE, vftable offset = -1, attrs = public compiler-generated]
+             - Method [type = 0x232AF, vftable offset = -1, attrs = public compiler-generated]
+
+## Ego_r.pdb
+   0x213EE | LF_CLASS [size = 144] `NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>`
+             unique name: `V?$CParticleUpdateParameters@KK@NParticleEngine@@`
+             vtable: 0x28F4, base list: <no type>, field list: 0x213ED
+             options: has ctor / dtor | contains nested class | has unique name | overloaded operator | overloaded operator=, sizeof 44
+
+## FableWin.pdb
+   0x232B5 | LF_CLASS [size = 144] `NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>`
+             unique name: `V?$CParticleUpdateParameters@KK@NParticleEngine@@`
+             vtable: 0x24B9, base list: <no type>, field list: 0x232B4
+             options: has ctor / dtor | contains nested class | has unique name | overloaded operator | overloaded operator=, sizeof 52
+
+### Ego_r field list (from the overload line on) and ctor overload list 0x213E9
+             - LF_ONEMETHOD [name = `GetVectorParam`]
+             - LF_ONEMETHOD [name = `GetUpdateParam`]
+             - LF_ONEMETHOD [name = `GetUpdateParamDesc`]
+             - LF_ONEMETHOD [name = `Update`]
+             - LF_METHOD [name = `CParticleUpdateParameters<unsigned long,unsigned long>`, # overloads = 2, overload list = 0x213E9]
+             - LF_ONEMETHOD [name = `~CParticleUpdateParameters<unsigned long,unsigned long>`]
+               type = 0x213E4, vftable offset = -1, attrs = public virtual compiler-generated
+             - LF_ONEMETHOD [name = `operator=`]
+               type = 0x213EB, vftable offset = -1, attrs = public compiler-generated
+             - LF_ONEMETHOD [name = `__local_vftable_ctor_closure`]
+               type = 0x213E4, vftable offset = -1, attrs = public compiler-generated
+             - LF_ONEMETHOD [name = `__vecDelDtor`]
+               type = 0x213EC, vftable offset = 0, attrs = public intro virtual compiler-generated
+   0x213E9 | LF_METHODLIST [size = 20]
+             - Method [type = 0x213E7, vftable offset = -1, attrs = public compiler-generated]
+             - Method [type = 0x213E8, vftable offset = -1, attrs = public compiler-generated]
+
+### FableWin field list (from the overload line on) and ctor overload list 0x232B0
+             - LF_ONEMETHOD [name = `GetVectorParam`]
+             - LF_ONEMETHOD [name = `GetUpdateParam`]
+             - LF_ONEMETHOD [name = `GetUpdateParamDesc`]
+             - LF_ONEMETHOD [name = `Update`]
+             - LF_METHOD [name = `CParticleUpdateParameters<unsigned long,unsigned long>`, # overloads = 2, overload list = 0x232B0]
+             - LF_ONEMETHOD [name = `~CParticleUpdateParameters<unsigned long,unsigned long>`]
+               type = 0x232AB, vftable offset = -1, attrs = public virtual compiler-generated
+             - LF_ONEMETHOD [name = `operator=`]
+               type = 0x232B2, vftable offset = -1, attrs = public compiler-generated
+             - LF_ONEMETHOD [name = `__local_vftable_ctor_closure`]
+               type = 0x232AB, vftable offset = -1, attrs = public compiler-generated
+             - LF_ONEMETHOD [name = `__vecDelDtor`]
+               type = 0x232B3, vftable offset = 0, attrs = public intro virtual compiler-generated
+   0x232B0 | LF_METHODLIST [size = 20]
+             - Method [type = 0x232AE, vftable offset = -1, attrs = public compiler-generated]
+             - Method [type = 0x232AF, vftable offset = -1, attrs = public compiler-generated]

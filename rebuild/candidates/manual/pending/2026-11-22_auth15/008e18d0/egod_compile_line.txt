@@ -1,0 +1,5 @@
+Ego_d.pdb byte offset 0x1da9cb0 (carved S_ENVBLOCK)
+  cwd = E:\FableTLC\Fable TLC Build Repository\BBBProjects\Fable1_5MainPC\FableLib
+  cmd = -c -Zi -nologo -W4 -WX- -MP -Od -Oy- -DLIB_NOT_DLL -DWIN32 -DNDEBUG -D_WINDOWS -DGAME_COMP_DEBUG -DUSE_VIRTUAL_KEYBOARD -D_CRT_SECURE_NO_WARNINGS -D_CRT_NON_CONFORMING_SWPRINTFS -D_MBCS -Gm- -EHs -EHc -MDd -GS- -Gy -fp:precise -Zc:wchar_t -Zc:forScope -GR -Yustandard_headers.hpp -Fp"E:\FableTLC\Fable -Fo"E:\FableTLC\Fable -Fd"E:\FableTLC\Fable -Gr -TP -analyze- -errorreport:prompt -Zm150 -X
+  src = creature_modes.cpp
+occurrences printed 1

@@ -402619,6 +402619,14 @@ $catalog = @(
         TestSource = '00/b3/CEngineCamera_SetCameraState_00b30b50_test.cpp'
         PassPattern = '00b30b50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008e18d0'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/8e/NCreatureModeCModeThunderLightningStorm_UpdateLightningBeams_008e18d0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeThunderLightningStorm_UpdateLightningBeams_008e18d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '008e18d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

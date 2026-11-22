@@ -1,0 +1,13 @@
+function scope: Ego_d 12 ['angle_between_beams', 'beam_length', 'lifetime_in_seconds', 'lifetime_of_main_beams', 'n', 'num_beams', 'num_beams_ends', 'rhs', 'start_pos', 'storm_rotation', 'storm_rotation_int', 'weapon_pos']
+   e5n 12 ['angle_between_beams', 'beam_length', 'lifetime_in_seconds', 'lifetime_of_main_beams', 'n', 'num_beams', 'num_beams_ends', 'rhs', 'start_pos', 'storm_rotation', 'storm_rotation_int', 'weapon_pos']
+   extra in e5n: []  missing in e5n: []  EQUAL
+block 1 (loop 1 if-body): Ego_d 6 ['beam_direction', 'end_pos', 'ptc_particle_emitter', 'upParams', 'vtEndPos', 'vtStartPos']
+   e5n 6 ['beam_direction', 'end_pos', 'ptc_particle_emitter', 'upParams', 'vtEndPos', 'vtStartPos']
+   extra in e5n: []  missing in e5n: []  EQUAL
+block 2 (loop 2 if-body): Ego_d 3 ['beam_direction', 'end_pos', 'ptc_particle_emitter']
+   e5n 3 ['beam_direction', 'end_pos', 'ptc_particle_emitter']
+   extra in e5n: []  missing in e5n: []  EQUAL
+block 3 (sky if-body): Ego_d 5 ['end_pos', 'ptc_particle_emitter', 'upParams', 'vtEndPos', 'vtStartPos']
+   e5n 5 ['end_pos', 'ptc_particle_emitter', 'upParams', 'vtEndPos', 'vtStartPos']
+   extra in e5n: []  missing in e5n: []  EQUAL
+ALL BLOCKS EQUAL

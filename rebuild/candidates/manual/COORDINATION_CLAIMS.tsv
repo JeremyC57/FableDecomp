@@ -255,3 +255,4 @@ date	account	item	kind	status	note
 2026-11-22	A	q12573-q12585	naming	claimed	agent NF227 (CManager vtable-slot self rows, CObservable, map / tree placeholders)
 2026-11-22	A	0x00CF4EC0	authoring	done	AUTH16: terminal (A), unlanded (pending/2026-11-22_auth16)
 2026-11-22	A	18 unlanded rows with /d2inl* drafts (scratch w22/auth17/ROWS.tsv)	authoring	claimed	agent AUTH17: default-inline-flag regrade sweep (measurement only)
+2026-11-22	A	0x008E18D0	authoring	done	AUTH15: landed
