@@ -402635,6 +402635,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a4efc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0093d270'
+        Module = 'CAIStateGroup_MeleeCombatNearbyBase'
+        Source = '00/93/CAIStateGroupMeleeCombatNearbyBase_IsRunnable_0093d270.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearbyBase_IsRunnable_0093d270_test.cpp'
+        PassPattern = '0093d270_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

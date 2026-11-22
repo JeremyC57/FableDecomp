@@ -1,0 +1,2 @@
+# equiv_check over 57,022 landed rows (old = pre-landing include copy, new = repo rebuild/include). Every flagged row except 0x0093D270 was an unwind funclet whose '#include "../src/compiled/..."' only resolves from the repo tree (a tool artifact, fixed the same day: equiv_check.py now adds -idirafter rebuild/include). Recheck with the fixed tool on 3 of those rows + 0x0093D270 + 0x00A4EFC0: only 0x0093D270 differs.
+0093d270	src	DIFF		rebuild/src/compiled/00/93/CAIStateGroupMeleeCombatNearbyBase_IsRunnable_0093d270.cpp

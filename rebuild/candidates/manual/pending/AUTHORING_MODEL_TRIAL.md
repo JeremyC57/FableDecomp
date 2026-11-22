@@ -14,7 +14,7 @@ All ten are rows earlier rounds (acctB / acctC) had parked as hard near misses.
 | 0x008E18D0 UpdateLightningBeams | landed RELOCATION_MATCH | AUTH9-AUTH15 |
 | 0x00A4EFC0 InitialiseFromFileData | not matched by authoring (escalated); Codex matched it, landed as Inferred | AUTH4 / AUTH7 / AUTH11 |
 | 0x00CF4EC0 CFanMarker::Main | terminal (A), proven inline tie | AUTH10-AUTH16 |
-| 0x0093D270 IsRunnable | terminal (A), header form contradicts the PDBs (oracle matches) | AUTH18 |
+| 0x0093D270 IsRunnable | terminal (A) (oracle matched); landed as Inferred by owner override 2026-11-22 | AUTH18 |
 | 0x00B4D370 UpdateShadowSpace | open, DIFFER(7162v7176); residue = x87 operand order + a 10-B loop pad it costs; waits on C2T1 | AUTH19-AUTH21 |
 | 0x00BD3070 RenderMeshPrimitive | escalated, DIFFER(11288v11288): 13 operand-order picks after all 14 forceinlines moved to headers; waits on C2T1 | AUTH20, AUTH21 |
 | 0x00502E90 PopulateRegionWithVillagers | open, DIFFER(13587v13622) | not started |
@@ -34,3 +34,4 @@ list (0x005A94BD, 0x00409730, 0x00A15890, 0x00CFBDF0, 0x006B97E0).
 | AUTH22 | 0x00502E90 | escalated, DIFFER(13606v13622) (record was 13587v13622 with nine inline_depth devices; device-free 13971) | 5 | Fable 5.2 high; advisor: not terminal |
 | AUTH22 | 0x0066B370 | **matched (RELOCATION_MATCH), pending owner**: same mechanism as Opus's 0x0093D270 oracle (by-value float accessor read like an lvalue; text departs from Ego_d line 208); one pick-any copy holds it | 17 | not counted as a landed match until the owner rules |
 | AUTH22 | 0x00A68DE0, 0x00839420, 0x00651273, 0x00816410 | not started (baseline regrades only) | 3 | context ran out on rows 1-2 |
+| AUTH23 | 0x0066B370 checks | `const float&` accessor oracle RELOCATION_MATCH (one form covers 0x0093D270 too); `friend` not attested (0 friend records in any PDB); row-tail pragma rejected (re-modes every template copy) | 3 | owner: land as Inferred once the GetSubDef copy is solved |

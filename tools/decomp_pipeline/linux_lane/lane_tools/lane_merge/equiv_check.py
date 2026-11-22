@@ -12,7 +12,10 @@ for m in re.finditer(r"\[pscustomobject\]@\{(.*?)\n\s*\}",bc,re.S):
         a=d['Address'].lower()
         if only is None or a in only: rows.append((a,'rebuild/src/compiled/'+d['Source'],'rebuild/tests/'+d['TestSource'] if d.get('TestSource') else None))
 def pp(tree,f):
-    args=['cpp','-P','-nostdinc','-undef','-D_MSC_VER=1310','-D_M_IX86=600','-D_WIN32','-x','c++','-I',tree,'-I',stub,f]
+    # -idirafter the repo include dir: unwind-funclet rows `#include "../src/compiled/..."` relative to the include tree, which only resolves
+    # from rebuild/include; a tree copied outside the repo used to miss it (stub) while the repo tree found it, so every such row "differed"
+    # (2026-11-22: AUTH21's 1,357-row and 0x0093D270's false positives). Searched last, so the tree's own headers still win.
+    args=['cpp','-P','-nostdinc','-undef','-D_MSC_VER=1310','-D_M_IX86=600','-D_WIN32','-x','c++','-I',tree,'-I',stub,'-idirafter',os.path.abspath('rebuild/include'),f]
     for _ in range(60):
         r=subprocess.run(args,capture_output=True,text=True,errors='replace')
         m=re.search(r"fatal error: ([^:\n]+): No such file",r.stderr)

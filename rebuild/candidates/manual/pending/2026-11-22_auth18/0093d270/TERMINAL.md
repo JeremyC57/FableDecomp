@@ -27,3 +27,7 @@ not graded there. Treat the two rows as one item: whatever settles the getter's 
 - the owner choosing to land the reference form as an Inferred opt-in against the three PDBs (the oracle above is the evidence).
 
 Best rule-clean text: `e1.cpp`, DIFFER(305v295). The 297v295 on record came from hand219's local struct model, not rule-clean.
+
+## Owner override (2026-11-22): landed as Inferred
+The owner chose "land as Inferred" for this row and 0x0066B370 (same mechanism, three retail sites in two classes). Landed:
+`batches/2026-11-22_landing_auth18_isrunnable/README.md` (engine/CCombatManager.h `FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY_REF_INFERRED`).

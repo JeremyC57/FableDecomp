@@ -141,7 +141,14 @@ public:
 #ifdef FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY
  // Nested opt-in (chunk 760, row 0x0093D270): FableWin.pdb ?GetProximityForNavigation@CCombatManager@@QBEMXZ (public const,
  // inline in retail: the row reads +0x28 straight off the manager).
+ // Owner decision 2026-11-22 (land as Inferred): retail reads this getter like a reference at both call sites (0x006AAA24,
+ // 0x0093D351; a `const float&` return graded RELOCATION_MATCH on 0x0093D270, the by-value form DIFFER(305v295)), against all three
+ // later VC10 PDBs (QBEMXZ, by value). Inferred TLC-era form; off by default. pending/2026-11-22_auth18/0093d270/TERMINAL.md.
+#ifdef FABLE_RETAIL_CCOMBATMANAGER_PROXIMITY_REF_INFERRED
+ const float& GetProximityForNavigation() const { return ProximityForNavigation; }
+#else
  float GetProximityForNavigation() const { return ProximityForNavigation; }
+#endif
 #endif
 #endif
 private:

@@ -1,0 +1,9 @@
+N1=0 N2=1328: solutions 0; best point satisfies 52/60 at F=-1024 T=844
+N1=0 N2=1335: solutions 0; best point satisfies 52/60 at F=-813 T=633
+N1=0 N2=1570: solutions 0; best point satisfies 52/60 at F=-589 T=409
+N1=0 N2=2364: solutions 0; best point satisfies 56/60 at F=-180 T=-251
+N1=0 N2=2475: solutions 0; best point satisfies 52/60 at F=-890 T=632
+N1=0 N2=3008: solutions 0; best point satisfies 52/60 at F=-431 T=173
+N1=0 N2=3328: solutions 0; best point satisfies 52/60 at F=-431 T=173
+N1=0 N2=3712: solutions 0; best point satisfies 52/60 at F=-431 T=173
+N1=1328 N2=1335: solutions 0; best point satisfies 52/60 at F=-813 T=633
