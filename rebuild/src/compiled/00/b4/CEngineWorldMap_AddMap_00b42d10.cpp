@@ -53,7 +53,7 @@ class CLocalDetailCacheMap { public:
 class CEngineLandscapeRenderer { public:
     void CreateMap(CEngineMap* map, long flags);    // 0x00B67140
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 class CEngineLocalDetailGenerator { public:
     void CreateMap(CEngineMap* map);                // 0x00B59800
 };
@@ -132,7 +132,7 @@ void CEngineWorldMap::AddMap(long mapIndex, long flags)
         return;
     DeleteMap(mapIndex);
     MapList[mapIndex] = new CEngineMap(info.PMap, info.PosX, info.PosY, info.ExtentsX, info.ExtentsY, info.UID, info.StaticMeshName, false);
-    g_pLandscapeRenderer->CreateMap(MapList[mapIndex], flags);
+    NEngineInternal::GPLandscapeRenderer->CreateMap(MapList[mapIndex], flags);
     if (!(flags & 1))
         g_pLocalDetailGenerator->CreateMap(MapList[mapIndex]);
     CEngineMap* map = MapList[mapIndex];

@@ -5,8 +5,8 @@ class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
     void FreeBlock(void* block);                   // 0x00BDA0D0 (labelled "LandscapeLayerList::InsertNode")
 };
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 struct CTextureOwner_00bfdd40 {
     unsigned char _pad[0x38];
     void*         m_pBlock;                        // +0x38
@@ -16,7 +16,7 @@ struct CTextureOwner_00bfdd40 {
 void CTextureOwner_00bfdd40::ClearBlock()
 {
     if (m_pBlock) {
-        g_pLandscapeRenderer->MemoryManager->FreeBlock(m_pBlock);
+        NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeBlock(m_pBlock);
         m_pBlock = 0;
     }
 }

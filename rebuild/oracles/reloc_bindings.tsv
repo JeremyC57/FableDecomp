@@ -17003,7 +17003,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RegisterSubPatchForZSorting@CEngineLandscapeRenderer@@QAEXAAJPAVCLandscapeBackgroundPatch@@@Z	00b67e30	00be5d20
 ?OnRegistedZSortingPatchRelocation@CEngineLandscapeRenderer@@QAEXJPAVCLandscapeBackgroundPatch@@@Z	00b67780	00be5d80
 ?SetMovableResourceHandler@CPatchTesselationEdgeStrip@@QAEXPAVCMovableResource@@@Z	00bfc510	00be5d80
-?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00be5d80
 ?DeleteIndexBuffer@LandscapeMemory@Native@@QAEXPAVCIndexBuffer@@@Z	00bda090	00be6090
 ?DeleteTexture@LandscapeMemory@Native@@QAEXPAVCTexture@@@Z	00bda110	00be6090
 ?DeleteVertexBuffer@LandscapeMemory@Native@@QAEXPAVCVertexBufferWin32@@@Z	00bda0d0	00be6090
@@ -20062,7 +20061,6 @@ __setdefaultprecision	0040135c	00401067
 ??_7CEngineInternalPrimitiveParticleLine@@6B@	012a63fc	00bc4cd0
 ??_7CEngineInternalPrimitiveParticleLineGroup@@6B@	012a6474	00bc4cd0
 ??1CLandscapeBackgroundPatch@@UAE@XZ	00be6090	00be8e60
-?g_LandscapeRenderer_01436EA8@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00be8e60
 ??1CLocalDetailPrimitiveMeshZSpriteBatch@@UAE@XZ	00bfb590	00bfbd80
 ??1CLandscapeLayerMesh@@UAE@XZ	00bfde20	00bfe900
 ?Compress@CRangeCompressor@@QAEJPBXJJAAV?$CArray@E@@@Z	00f3afc0	00bfcf00

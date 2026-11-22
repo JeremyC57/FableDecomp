@@ -19,8 +19,8 @@ class CEngineLandscapeMemoryManager { public:
 };
 // Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
 //   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
@@ -44,14 +44,14 @@ CEngineWaterBackgroundSubPatch::~CEngineWaterBackgroundSubPatch()
 {
     if (DeletableBuffers) {
         if (IndexBuffer)
-            g_pLandscapeRenderer->MemoryManager->AppendFreeEdgeNode(IndexBuffer);
+            NEngineInternal::GPLandscapeRenderer->MemoryManager->AppendFreeEdgeNode(IndexBuffer);
         if (VertexBuffer)
-            g_pLandscapeRenderer->MemoryManager->FreeBlock(VertexBuffer);
+            NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeBlock(VertexBuffer);
         for (long i = 0; i < 4; ++i) {
             if (BridgeIndexBuffers[i])
-                g_pLandscapeRenderer->MemoryManager->AppendFreeEdgeNode(BridgeIndexBuffers[i]);
+                NEngineInternal::GPLandscapeRenderer->MemoryManager->AppendFreeEdgeNode(BridgeIndexBuffers[i]);
             if (BridgeVertexBuffers[i])
-                g_pLandscapeRenderer->MemoryManager->FreeBlock(BridgeVertexBuffers[i]);
+                NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeBlock(BridgeVertexBuffers[i]);
         }
     }
 }

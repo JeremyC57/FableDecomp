@@ -29,6 +29,7 @@
 #define FABLE_RETAIL_CENGINELANDSCAPERENDERER_PEEKTHEME
 #define FABLE_RETAIL_CENGINEMAP_PEEK
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEFCLASSINDEX
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CWaterPatchMesh.h"
 #include "engine/CEngineLandscapeRenderer.h"
 #include "engine/CEngineMap.h"
@@ -45,7 +46,6 @@ public:
     CEngineMap* Map;                                             // +0x14
 };
 namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;           // 0x01436EA8 (descriptive)
 static inline EWaterType CombineWaterTypes(EWaterType current, EWaterType themeType)
 {
     return (current == WATER_TYPE_NONE || current == WATER_TYPE_OVERRIDABLE) ? themeType : current;
@@ -67,12 +67,12 @@ const EWaterType CWaterPatchMesh::GetWaterType() const
             theme2 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme2);
             if (waterType == WATER_TYPE_NONE || waterType == WATER_TYPE_OVERRIDABLE) {
                 EWaterType vertexType = WATER_TYPE_NONE;
-                if (g_pLandscapeRenderer->PeekTheme(theme0).WaterType)
-                    waterType = CombineWaterTypes(vertexType, g_pLandscapeRenderer->PeekTheme(theme0).WaterType);
-                if (theme1 && g_pLandscapeRenderer->PeekTheme(theme1).WaterType) {
-                    waterType = CombineWaterTypes(waterType, g_pLandscapeRenderer->PeekTheme(theme1).WaterType);
-                    if (theme2 && g_pLandscapeRenderer->PeekTheme(theme2).WaterType) {
-                        waterType = CombineWaterTypes(waterType, g_pLandscapeRenderer->PeekTheme(theme2).WaterType);
+                if (NEngineInternal::GPLandscapeRenderer->PeekTheme(theme0).WaterType)
+                    waterType = CombineWaterTypes(vertexType, NEngineInternal::GPLandscapeRenderer->PeekTheme(theme0).WaterType);
+                if (theme1 && NEngineInternal::GPLandscapeRenderer->PeekTheme(theme1).WaterType) {
+                    waterType = CombineWaterTypes(waterType, NEngineInternal::GPLandscapeRenderer->PeekTheme(theme1).WaterType);
+                    if (theme2 && NEngineInternal::GPLandscapeRenderer->PeekTheme(theme2).WaterType) {
+                        waterType = CombineWaterTypes(waterType, NEngineInternal::GPLandscapeRenderer->PeekTheme(theme2).WaterType);
                     }
                 }
             }

@@ -49,6 +49,7 @@
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CENVIRONMENTDEF_PARENT
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "fable_string.h"
 #include "engine/CEngineWaterSettings.h"
 #include "engine/CEngineComponentRenderParams.h"
@@ -68,7 +69,6 @@ namespace NEngineInternal { extern CEngineWorldMap* GPEngineWorldMap; }         
 namespace NEngineInternal { extern CEngineResourceManager* GPResourceManager; }             // 0x01436E98
 extern const CEnvironmentDef*    g_pEngineEnvironmentDef;        // 0x01436E24
 extern CDisplayManager*          g_pDisplayManager_01436e1c;     // 0x01436E1C
-extern CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8;   // 0x01436EA8
 
 void CEngineWaterSettings::CalcReflectToRefractBlendFactors(float start, float end)
 {
@@ -122,7 +122,7 @@ void CEngineWaterSettings::UpdateConstants(const CEngineComponentRenderParams& p
     C2DExtentsI resolution = g_pDisplayManager_01436e1c->PeekBackBufferResolution();
     float inv_width = 1.0f / resolution.X;
     float inv_height = 1.0f / resolution.Y;
-    float fade = g_LandscapeRenderer_01436EA8->GetSettings().ForegroundFadeStart - 22.627417f;
+    float fade = NEngineInternal::GPLandscapeRenderer->GetSettings().ForegroundFadeStart - 22.627417f;
     float inv_fade = 1.0f / fade;
     OtherShaderVars.Set(BumpmapSpan, inv_width, ReflectToRefractBlendMult,
                                  ShoreSinShift, inv_height, ReflectToRefractBlendAdd,
@@ -132,8 +132,8 @@ void CEngineWaterSettings::UpdateConstants(const CEngineComponentRenderParams& p
                                     ShoreSinShift, inv_height, ReflectToRefractBlendAdd,
                                     SinShift, fade, SoftEdgeMultFactor,
                                     CosShift, inv_fade, SoftEdgeAddFactor);
-    float background_x = g_LandscapeRenderer_01436EA8->GetSettings().BackgroundFadeTransform.X;
-    float background_w = g_LandscapeRenderer_01436EA8->GetSettings().BackgroundFadeTransform.W;
+    float background_x = NEngineInternal::GPLandscapeRenderer->GetSettings().BackgroundFadeTransform.X;
+    float background_w = NEngineInternal::GPLandscapeRenderer->GetSettings().BackgroundFadeTransform.W;
     OtherBackgroundShaderVars.Set(BumpmapSpan, inv_width, 0.0f,
                                            background_x, inv_height, 0.0f,
                                            background_w, 0.0f, 0.0f,

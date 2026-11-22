@@ -1,0 +1,308 @@
+addr       parity           behav  name
+00b42a90   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00b42a90   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42a90   RELOCATION_MATCH PASS   ~CEngineMap
+00b42b10   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b42b10   RELOCATION_MATCH PASS   DeleteMap
+00b42d10   WARN SHARED_HEADER_AVAILABLE CDrawMapInfo (engine/CDrawMapInfo.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CIDrawWorldMap (engine/CIDrawWorldMap.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b42d10   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b42d10   RELOCATION_MATCH PASS   AddMap
+00bdd8e0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bdd8e0   WARN RELOC_NAME: ?DisposeVertexBuffer@CEngineLandscapeMemoryManager@@QAEXPAUSVertexBufferNode_00bdd8e0@@PAUCVertexBufferChainOwner_00bdd8e0@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bdd8e0   WARN STANDIN_LEAF ?DestroyProceduralTextureVertexBuffers@CVertexBufferChainOwner_00bdd8e0@@QAEXXZ (catalog CObjectTypeCollection::OnPostRelocation; address-only name)
+00bdd8e0   RELOCATION_MATCH PASS   OnPostRelocation
+00bddcb0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bddcb0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bddcb0   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAUCQuadTreeElement@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bddcb0   RELOCATION_MATCH PASS   OnPostRelocation
+00bde0c0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bde0c0   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bde0c0   RELOCATION_MATCH PASS   RelocateData
+00bde390   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00bde390   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bde390   WARN RELOC_NAME: ?RequestFileBlock@CEngineStaticMapFileBlockManager@@QAEXJJJ@Z -> 00be06b0 labelled 'CEngineStaticMapFileBlockManager::AddRequest'
+00bde390   RELOCATION_MATCH PASS   LoadStaticContents
+00bdf9b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bdf9b0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bdf9b0   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00bdf9b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bdf9e0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bdf9e0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bdf9e0   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00bdf9e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00be5bb0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00be5bb0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00be5bb0   WARN STANDIN_LEAF ??2CLandscapeBackgroundPatch@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00be5bb0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00be5d20   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00be5d20   RELOCATION_MATCH PASS   RegisterForZSorting
+00be5d80   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00be5d80   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00be5d80   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00be5d80   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00be5d80   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00be5d80   RELOCATION_MATCH PASS   OnPostRelocation
+00bea7e0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bea7e0   WARN SHARED_HEADER_AVAILABLE CWaterPatchMesh (engine/CWaterPatchMesh.h)
+00bea7e0   WARN STANDIN_LEAF ??2CWaterPatchMesh@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bea7e0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00beaa00   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+  WARN leaf 'void ClearBlock' matches no symbol in 00beaa00.obj; graded the largest function
+  WARN leaf 'void ClearBlock' matches no symbol in 00beaa00.obj; graded the largest function
+00beaa00   WARN RELOC_NAME: ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda0d0 labelled 'CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy'
+00beaa00   WARN STANDIN_LEAF ?ClearBlock@CTextureOwner_00beaa00@@QAEXXZ (catalog CTextureOwner_00beaa00::void ClearBlock; address-only name)
+00beaa00   RELOCATION_MATCH PASS   void ClearBlock
+00beab40   RELOCATION_MATCH PASS   GetWaterType
+00bf36c0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf36c0   WARN STANDIN_LEAF ??_UCEngineLandscapePatch@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf36c0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bf3790   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf3790   RELOCATION_MATCH PASS   DeleteLayerMeshes
+00bf38f0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf38f0   RELOCATION_MATCH PASS   Clear
+00bf5d30   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf5d30   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf5d30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bf6260   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf6260   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf6260   WARN STANDIN_LEAF ??2CLandscapeBackgroundSubNodeSplitBranch@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf6260   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bf62e0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf62e0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf62e0   WARN STANDIN_LEAF ??2CLandscapeBackgroundTreeNode@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf62e0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bf6530   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf6530   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf6530   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf6530   RELOCATION_MATCH PASS   StartTreeLoadTask
+00bf65b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf65b0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf65b0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf65b0   RELOCATION_MATCH PASS   StartPatchLoadTask
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf6b70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf6b70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf6b70   RELOCATION_MATCH PASS   OnPostRelocation
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf73a0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf73a0   RELOCATION_MATCH PASS   ~CLandscapeBackgroundTreeNode
+00bf7df0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf7df0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bf7df0   RELOCATION_MATCH PASS   GetDesiredLODBand
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+  WARN leaf '?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ' matches no symbol in 00bf7f70.obj; graded the largest function
+  WARN leaf '?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ' matches no symbol in 00bf7f70.obj; graded the largest function
+00bf7f70   WARN RELOC_NAME: ?CalcCameraRangeState@CLandscapeBackgroundTreeNode@@QAEJXZ -> 00bf7df0 labelled 'CLandscapeBackgroundTreeNode::GetDesiredLODBand'
+00bf7f70   WARN RELOC_NAME: ??_GCLandscapeBackgroundLoadTask@@QAEPAXI@Z -> 00bf8c10 labelled 'CLandscapeBackgroundLoadTask::`scalar deleting destructor''
+00bf7f70   RELOCATION_MATCH PASS   FreeableResourceFreeBlock
+00bf8c10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf8c10   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf8c10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bf8ce0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf8ce0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf8ce0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeFreeableResource (engine/CEngineLandscapeFreeableResource.h)
+00bf8ce0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf8ce0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bf8d10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf8d10   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf8d10   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf8d10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bf9900   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9900   WARN STANDIN_LEAF ??2CLocalDetailPrimitiveMesh@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf9900   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bf9980   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9980   WARN STANDIN_LEAF ??2CLocalDetailPrimitiveRepeatedMesh@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf9980   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bf9a00   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9a00   WARN STANDIN_LEAF ??2CLocalDetailPrimitiveMeshZSpriteBatch@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bf9a00   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bf9b40   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9b40   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf9b40   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf9b40   WARN RELOC_NAME: ?RebindBufferOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ae0 labelled '_global::Nop_ret8_00bd9ae0'
+00bf9b40   RELOCATION_MATCH PASS   OnPostRelocation
+00bf9b90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf9b90   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAUCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bf9b90   RELOCATION_MATCH PASS   OnPostRelocation
+00bfbc50   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfbc50   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfbc50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bfc140   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfc140   WARN STANDIN_LEAF ?Resize@EdgeArray_CWaterFanBaseVertex@@QAE_NHPAVCMovableResource@@@Z (catalog CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CWaterFanBaseVertex>::Resize; names another function)
+00bfc140   RELOCATION_MATCH PASS   Resize
+00bfc410   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfc410   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bfc410   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfc410   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfc410   RELOCATION_MATCH PASS   ~CPatchTesselationEdgeStrip
+00bfc510   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfc510   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfc510   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfc510   RELOCATION_MATCH PASS   SetMovableResourceHandler
+00bfd160   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfd160   WARN SHARED_HEADER_AVAILABLE CEngineWaterBackgroundSubPatch (engine/CEngineWaterBackgroundSubPatch.h)
+00bfd160   WARN STANDIN_LEAF ??2CEngineWaterBackgroundSubPatch@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bfd160   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bfd3b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfd3b0   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAX0@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfd3b0   RELOCATION_MATCH PASS   OnPostRelocation
+00bfd480   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfd480   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfd480   WARN SHARED_HEADER_AVAILABLE CEngineWaterBackgroundSubPatch (engine/CEngineWaterBackgroundSubPatch.h)
+00bfd480   WARN RELOC_NAME: ?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda090 labelled 'CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy'
+00bfd480   WARN RELOC_NAME: ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda0d0 labelled 'CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy'
+00bfd480   RELOCATION_MATCH PASS   ~CEngineWaterBackgroundSubPatch
+00bfdc90   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfdc90   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfdc90   WARN SHARED_HEADER_AVAILABLE CEngineWaterBackgroundSubPatch (engine/CEngineWaterBackgroundSubPatch.h)
+00bfdc90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bfdcc0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfdcc0   WARN STANDIN_LEAF ??2CLandscapeLayerMesh@@SIPAXIPAVCMovableResource@@@Z (catalog std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>; names another function)
+00bfdcc0   RELOCATION_MATCH PASS   _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>
+00bfdd40   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+  WARN leaf 'void ClearBlock' matches no symbol in 00bfdd40.obj; graded the largest function
+  WARN leaf 'void ClearBlock' matches no symbol in 00bfdd40.obj; graded the largest function
+00bfdd40   WARN RELOC_NAME: ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda0d0 labelled 'CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy'
+00bfdd40   WARN STANDIN_LEAF ?ClearBlock@CTextureOwner_00bfdd40@@QAEXXZ (catalog CTextureOwner_00bfdd40::void ClearBlock; address-only name)
+00bfdd40   RELOCATION_MATCH PASS   void ClearBlock
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfdd70   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfdd70   WARN RELOC_NAME: ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAXPAVCMovableResource@@@Z -> 00bd9ab0 labelled 'CEngineLandscapeMemoryManager::SetMovableResourceHandler'
+00bfdd70   RELOCATION_MATCH PASS   OnPostRelocation
+00bfde20   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfde20   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfde20   WARN RELOC_NAME: ?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda090 labelled 'CEngineLandscapeMemoryManager::DeleteIndexBufferBlockWhileBusy'
+00bfde20   WARN RELOC_NAME: ?FreeBlock@CEngineLandscapeMemoryManager@@QAEXPAX@Z -> 00bda0d0 labelled 'CEngineLandscapeMemoryManager::DeleteVertexBufferBlockWhileBusy'
+00bfde20   RELOCATION_MATCH PASS   ~CLandscapeLayerMesh
+00b26360   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b26360   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b26360   WARN RELOC_NAME: ?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B -> 01436e24 labelled 'g_pEngineEnvironmentDef'
+00b26360   RELOCATION_MATCH PASS   Initialise
+00b40260   RELOCATION_MATCH PASS   PeekHasWaterFast
+00b40bd0   RELOCATION_MATCH PASS   PeekWaterDepth
+00be8e60   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00be8e60   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00be8e60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bea110   RELOCATION_MATCH PASS   UpdateConstants
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00bfbd80   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bfbd80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bfe900   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00bfe900   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bfe900   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 54
+  00b42a90 RELOCATION_MATCH CEngineMap::??1CEngineMap@@QAE@XZ
+  00b42b10 RELOCATION_MATCH CEngineWorldMap::?DeleteMap@CEngineWorldMap
+  00b42d10 RELOCATION_MATCH CEngineWorldMap::AddMap
+  00bdd8e0 RELOCATION_MATCH CObjectTypeCollection::DestroyProceduralTextureVertexBuffers
+  00bddcb0 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::OnPostRelocation
+  00bde0c0 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::?RelocateData@CQuadTreeElement
+  00bde390 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::LoadStaticContents
+  00bdf9b0 RELOCATION_MATCH CLocalDetailCacheMap::CObjectTypeCollection::??_GCObjectTypeCollection@CLocalDetailCacheMap@@UAEPAXI@Z
+  00bdf9e0 RELOCATION_MATCH CLocalDetailCacheMap::CObjectCacheGroupCollection::??_GCObjectCacheGroupCollection@CLocalDetailCacheMap@@UAEPAXI@Z
+  00be5bb0 RELOCATION_MATCH CLandscapeBackgroundPatch::??2CLandscapeBackgroundPatch
+  00be5d20 RELOCATION_MATCH CLandscapeBackgroundPatch::RegisterForZSorting
+  00be5d80 RELOCATION_MATCH CLandscapeBackgroundPatch::OnPostRelocation
+  00bea7e0 RELOCATION_MATCH CWaterPatchMesh::??2CWaterPatchMesh
+  00beaa00 RELOCATION_MATCH CTextureOwner_00beaa00::void ClearBlock
+  00beab40 RELOCATION_MATCH CWaterPatchMesh::?GetWaterType@CWaterPatchMesh@@ABE?BW4EWaterType@@XZ
+  00bf36c0 RELOCATION_MATCH CEngineLandscapePatch::??_UCEngineLandscapePatch
+  00bf3790 RELOCATION_MATCH CEngineLandscapePatch::DeleteLayerMeshes
+  00bf38f0 RELOCATION_MATCH CEngineLandscapePatch::Clear
+  00bf5d30 RELOCATION_MATCH CEngineLandscapePatch::??_G
+  00bf6260 RELOCATION_MATCH CLandscapeBackgroundSubNodeSplitBranch::??2CLandscapeBackgroundSubNodeSplitBranch
+  00bf62e0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::??2CLandscapeBackgroundTreeNode
+  00bf6530 RELOCATION_MATCH CLandscapeBackgroundTreeNode::StartTreeLoadTask
+  00bf65b0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::StartPatchLoadTask
+  00bf6b70 RELOCATION_MATCH CLandscapeBackgroundTreeNode::OnPostRelocation
+  00bf73a0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::??1CLandscapeBackgroundTreeNode@@QAE@XZ
+  00bf7df0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
+  00bf7f70 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ
+  00bf8c10 RELOCATION_MATCH CLandscapeBackgroundLoadTask::??_GCLandscapeBackgroundLoadTask@@QAEPAXI@Z
+  00bf8ce0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::??_GCLandscapeBackgroundTreeNode@@UAEPAXI@Z
+  00bf8d10 RELOCATION_MATCH CLandscapeBackgroundSubNodeSplitBranch::??_GCLandscapeBackgroundSubNodeSplitBranch@@QAEPAXI@Z
+  00bf9900 RELOCATION_MATCH CLocalDetailPrimitiveMesh::??2CLocalDetailPrimitiveMesh
+  00bf9980 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??2CLocalDetailPrimitiveRepeatedMesh
+  00bf9a00 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::??2CLocalDetailPrimitiveMeshZSpriteBatch
+  00bf9b40 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::OnPostRelocation
+  00bf9b90 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation
+  00bfbc50 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??_GCLocalDetailPrimitiveRepeatedMesh@@UAEPAXI@Z
+  00bfc140 RELOCATION_MATCH CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CWaterFanBaseVertex>::Resize
+  00bfc410 RELOCATION_MATCH CPatchTesselationEdgeStrip::??1CPatchTesselationEdgeStrip
+  00bfc510 RELOCATION_MATCH CPatchTesselationEdgeStrip::SetMovableResourceHandler
+  00bfd160 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??2CEngineWaterBackgroundSubPatch
+  00bfd3b0 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::OnPostRelocation
+  00bfd480 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??1CEngineWaterBackgroundSubPatch
+  00bfdc90 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::??_GCEngineWaterBackgroundSubPatch@@UAEPAXI@Z
+  00bfdcc0 RELOCATION_MATCH CLandscapeLayerMesh::??2CLandscapeLayerMesh
+  00bfdd40 RELOCATION_MATCH CTextureOwner_00bfdd40::void ClearBlock
+  00bfdd70 RELOCATION_MATCH CLandscapeLayerMesh::OnPostRelocation
+  00bfde20 RELOCATION_MATCH CLandscapeLayerMesh::??1CLandscapeLayerMesh@@QAE@XZ
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b40260 RELOCATION_MATCH CEngineMap::?PeekHasWaterFast@CEngineMap@@QBE_NJJ@Z
+  00b40bd0 RELOCATION_MATCH CEngineMap::?PeekWaterDepth@CEngineMap@@QBEMJJ@Z
+  00be8e60 RELOCATION_MATCH CLandscapeBackgroundPatch::??_GCLandscapeBackgroundPatch@@UAEPAXI@Z
+  00bea110 RELOCATION_MATCH CEngineWaterSettings::?UpdateConstants@CEngineWaterSettings@@QAEXABVCEngineComponentRenderParams@@@Z
+  00bfbd80 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::??_GCLocalDetailPrimitiveMeshZSpriteBatch@@UAEPAXI@Z
+  00bfe900 RELOCATION_MATCH CLandscapeLayerMesh::??_GCLandscapeLayerMesh@@UAEPAXI@Z

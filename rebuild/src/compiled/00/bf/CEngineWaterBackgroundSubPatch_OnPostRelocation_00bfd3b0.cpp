@@ -6,13 +6,13 @@
 // BridgeVertexBuffers[4] +0x20 (the method is attached through a derived shell: the header is a plain layout struct).
 // Shape: the manager is read once into a local (ebx); the bridge loop is rotated into a `dec ebp ; jne` count with one
 // pointer walking the vertex array (`[edi-10h]` reaches the index array); each buffer is null-tested before its call.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineWaterBackgroundSubPatch.h"
 
 class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, void* owner);   // 0x00BD9AB0
 };
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 
 struct CEngineWaterBackgroundSubPatch_OnPostRelocation : CEngineWaterBackgroundSubPatch {
     void OnPostRelocation();
@@ -20,7 +20,7 @@ struct CEngineWaterBackgroundSubPatch_OnPostRelocation : CEngineWaterBackgroundS
 
 void CEngineWaterBackgroundSubPatch_OnPostRelocation::OnPostRelocation()
 {
-    CEngineLandscapeMemoryManager* memory = g_pLandscapeRenderer->MemoryManager;
+    CEngineLandscapeMemoryManager* memory = NEngineInternal::GPLandscapeRenderer->MemoryManager;
     for (long i = 0; i < 4; ++i) {
         if (BridgeIndexBuffers[i])
             memory->RebindBlockOwner(BridgeIndexBuffers[i], this);

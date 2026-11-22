@@ -36,7 +36,7 @@ class CBankFileAsyncEntry;
 class CEngineLandscapeRenderer { public:
     void DeleteMap(CEngineMap* map);            // 0x00B67180
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;          // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 class CEngineLocalDetailGenerator { public:
     void DeleteMap(CEngineMap* map);            // 0x00B59840
 };
@@ -71,7 +71,7 @@ CEngineMap::~CEngineMap()
 {
     CloseStaticMap();
     if (LandscapeMap)
-        g_pLandscapeRenderer->DeleteMap(this);
+        NEngineInternal::GPLandscapeRenderer->DeleteMap(this);
     if (LocalDetailCacheMap)
         g_pLocalDetailGenerator->DeleteMap(this);
     FileBlockManager.Reset();

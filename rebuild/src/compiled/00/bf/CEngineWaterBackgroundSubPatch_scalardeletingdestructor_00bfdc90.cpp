@@ -13,8 +13,8 @@ class CEngineLandscapeMemoryManager {
 public:
     void FreeVirtual(void* block);                       // 0x00BD9B90
 };
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive; NF28: was a stand-in struct and the address-named pointer)
 class CMovableResource {                                 // vtable 0x0129B860
 public:
     CMovableResource();
@@ -24,7 +24,7 @@ class CEngineWaterBackgroundSubPatch : public CMovableResource {
 public:
     CEngineWaterBackgroundSubPatch() { }                                          // model device: emits the vtable (and ??_G) in this file
     virtual ~CEngineWaterBackgroundSubPatch();                                    // 0x00BFD480
-    static void __fastcall operator delete(void* block) { g_pLandscapeRenderer->MemoryManager->FreeVirtual(block); }
+    static void __fastcall operator delete(void* block) { NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(block); }
 };
 inline void* operator new(unsigned int, void* where) { return where; }
 CEngineWaterBackgroundSubPatch* Construct_00bfdc90(void* where) { return new (where) CEngineWaterBackgroundSubPatch; }   // not part of the retail body

@@ -1,0 +1,4 @@
+action	symbol	address	witness	reason
+delete	?g_pLandscapeRenderer@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00be5d80	L129 unit 1: all 47 landed rows whose objects name it (45 leaf relocations + 0x00BF5D30 / 0x00BF7F70 UND from in-class bodies) now name ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A; no other address is bound under it
+delete	?g_LandscapeRenderer_01436EA8@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00be8e60	L129 unit 2: all 7 landed rows that name it now name ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A; no other address is bound under it
+keep	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	01436ea8	00beae50	the PDB spelling; the 54 moved rows join the rows that already named it (0x00B412A0, 0x00B6FA40, 0x00BEAE50, 0x00BF7BC0 and other declarers such as 0x00B70230 / 0x00B7C510 / 0x00B7FA20)

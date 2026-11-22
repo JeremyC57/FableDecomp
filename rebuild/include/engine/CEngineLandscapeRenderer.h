@@ -342,4 +342,12 @@ FABLE_STATIC_ASSERT_AT(307, offsetof(CEngineLandscapeRenderer, FastForegroundTex
 FABLE_STATIC_ASSERT_AT(308, offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
 #endif // FABLE_RETAIL_CENGINELANDSCAPERENDERER
 
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER
+// NEngineInternal::GPLandscapeRenderer, the engine's landscape renderer instance, at 0x01436EA8 (add-only opt-in, NF260).
+// Spelling: ?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A (Ego_r.pdb / FableWin.pdb / Ego_d.pdb).
+// Address: both PDBs' S_GDATA32 records put it at GPResourceManager + 0x10, after GPLightingManager / GPCamera / GPEngine,
+// and the table binds those four at 0x01436E98 / 9C / A0 / A4 (nf256 proof). Declared for either layout branch above.
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }
+#endif
+
 #endif // FABLE_ENGINE_CENGINELANDSCAPERENDERER_H

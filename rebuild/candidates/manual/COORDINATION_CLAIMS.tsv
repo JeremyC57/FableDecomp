@@ -328,3 +328,4 @@ date	account	item	kind	status	note
 2026-11-22	A	CCreatureAction L72 / L100 / 0x0096B600	naming	done	agent NF257 landed 9 rows (batches/2026-11-22_landing_nf257); q12659 + port debt pass to NF259
 2026-11-22	A	L37 vector<unsigned long> family	naming	done	agent NF258 landed 7 rows (batches/2026-11-22_landing_nf258); 0x009B0AC0 blocked; L129 passes to NF260
 2026-11-22	A	CCombatActionBase slot self rows / CCreatureAction port debt	naming	done	agent NF259 landed 11 rows (batches/2026-11-22_landing_nf259); q12659 open
+2026-11-22	A	L129 GPLandscapeRenderer units 1-2	naming	done	agent NF260 landed 54 rows (batches/2026-11-22_landing_nf260); the rest of L129 + 0x009B0AC0 pass to NF262

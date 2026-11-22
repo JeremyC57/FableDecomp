@@ -15,8 +15,8 @@ public:
 };
 // Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
 //   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 class CMovableResource {                                 // vtable 0x0129B860
 public:
     CMovableResource();
@@ -27,7 +27,7 @@ class CLocalDetailPrimitiveRepeatedMesh : public CLocalDetailPrimitiveBase {
 public:
     CLocalDetailPrimitiveRepeatedMesh() { }                                          // model device: emits the vtable (and ??_G) in this file
     virtual ~CLocalDetailPrimitiveRepeatedMesh();                                    // 0x00BFAAE0
-    static void __fastcall operator delete(void* block) { g_pLandscapeRenderer->MemoryManager->FreeVirtual(block); }
+    static void __fastcall operator delete(void* block) { NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(block); }
 };
 inline void* operator new(unsigned int, void* where) { return where; }
 CLocalDetailPrimitiveRepeatedMesh* Construct_00bfbc50(void* where) { return new (where) CLocalDetailPrimitiveRepeatedMesh; }   // not part of the retail body

@@ -11,7 +11,7 @@
 class CEngineLandscapeRenderer { public:
     void RegisterSubPatchForZSorting(long& handle, CLandscapeBackgroundPatch* patch);   // 0x00B67E30
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;     // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 
 struct CLandscapeBackgroundPatchMethods : CLandscapeBackgroundPatch {
     void RegisterForZSorting();
@@ -19,5 +19,5 @@ struct CLandscapeBackgroundPatchMethods : CLandscapeBackgroundPatch {
 
 void CLandscapeBackgroundPatchMethods::RegisterForZSorting()
 {
-    g_pLandscapeRenderer->RegisterSubPatchForZSorting(ZSorterHandle, this);
+    NEngineInternal::GPLandscapeRenderer->RegisterSubPatchForZSorting(ZSorterHandle, this);
 }

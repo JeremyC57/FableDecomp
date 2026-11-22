@@ -39,7 +39,7 @@ class CEngineLandscapeRenderer { public:
     unsigned char _pad[0x6b0];
     CEngineLandscapeMemoryManager* MemoryManager;       // +0x6b0
 };
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;  // 0x01436EA8
+namespace NEngineInternal { extern CEngineLandscapeRenderer* GPLandscapeRenderer; }   // 0x01436EA8 (Ego_r / FableWin / Ego_d PDB spelling)
 class C3DBoundingSphere { public:
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) {}
@@ -62,7 +62,7 @@ struct CObjectCacheGroupCollection : CMovableResource {     // retail 0x38 bytes
     bool Loading : 1;                                   // +0x36 bit 1
     static void* operator new(unsigned int size, CMovableResource* owner)
     {
-        return g_pLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
+        return NEngineInternal::GPLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
     }
     static void operator delete(void*, CMovableResource*) {}
     CObjectCacheGroupCollection(CLocalDetailCacheMap* map)
@@ -90,7 +90,7 @@ struct CQuadTreeElement : CMovableResource {            // CLocalDetailCacheMap:
     bool               Loading : 1;                     // +0x48 bit 3
     static void* operator new(unsigned int size, CMovableResource* owner)
     {
-        return g_pLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
+        return NEngineInternal::GPLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
     }
     static void operator delete(void*, CMovableResource*) {}
     CQuadTreeElement(CLocalDetailCacheMap* map, long x, long y, long width, long height);   // 0x00BDDF30

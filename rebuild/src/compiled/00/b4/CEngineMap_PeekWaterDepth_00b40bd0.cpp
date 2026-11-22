@@ -41,6 +41,7 @@
 // NF44 (round 6): the world-map global 0x01436E8C is NEngineInternal::GPEngineWorldMap (Ego_r.pdb / FableWin.pdb
 // ?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A), through the engine/CEngineMap.h opt-in (was g_pEngineWorldMap).
 #define FABLE_RETAIL_CENGINEMAP_GPENGINEWORLDMAP
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include "engine/CEngineMap.h"
 #include "engine/CEngineWorldMap.h"
 #include "engine/CIDrawMap.h"
@@ -48,7 +49,6 @@
 #include "engine/CEngineLandscapeRenderer.h"
 
 namespace NEngineInternal { extern const CDefinitionManager* GPDefinitionManager; }   // 0x01436E28 ?GPDefinitionManager@NEngineInternal@@3PBVCDefinitionManager@@B (Ego_r / FableWin / Ego_d)
-extern CEngineLandscapeRenderer* g_LandscapeRenderer_01436EA8;   // 0x01436EA8 (landed spelling, CEngine::Initialise 0x00B26360)
 
 float CEngineMap::PeekWaterDepth(long x, long y) const
 {
@@ -56,17 +56,17 @@ float CEngineMap::PeekWaterDepth(long x, long y) const
     if (theme0 > 0) {
         long index0 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme0);
         unsigned char blend0 = PeekThemeBlend(x, y, 0);
-        float depth = (blend0 * g_LandscapeRenderer_01436EA8->PeekTheme(index0).WaterHeight) * (1.0f / 255.0f);
+        float depth = (blend0 * NEngineInternal::GPLandscapeRenderer->PeekTheme(index0).WaterHeight) * (1.0f / 255.0f);
         long theme1 = PeekThemeId(x, y, 1);
         if (theme1 > 0) {
             long index1 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme1);
             unsigned char blend1 = PeekThemeBlend(x, y, 1);
-            depth += (blend1 * g_LandscapeRenderer_01436EA8->PeekTheme(index1).WaterHeight) * (1.0f / 255.0f);
+            depth += (blend1 * NEngineInternal::GPLandscapeRenderer->PeekTheme(index1).WaterHeight) * (1.0f / 255.0f);
             long theme2 = PeekThemeId(x, y, 2);
             if (theme2 > 0) {
                 long index2 = NEngineInternal::GPDefinitionManager->GetDefClassIndexFromGlobalIndex(theme2);
                 unsigned char blend2 = 255 - blend1 - blend0;
-                depth += (blend2 * g_LandscapeRenderer_01436EA8->PeekTheme(index2).WaterHeight) * (1.0f / 255.0f);
+                depth += (blend2 * NEngineInternal::GPLandscapeRenderer->PeekTheme(index2).WaterHeight) * (1.0f / 255.0f);
             }
         }
         return depth;

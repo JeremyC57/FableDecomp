@@ -1,0 +1,26 @@
+// CWaterPatchMesh::operator new(unsigned int size, CMovableResource* owner) -- class allocator: takes the block from the landscape memory manager (CEngineLandscapeMemoryManager::AllocVirtual) with the owning movable resource
+// Leaf: ??2CWaterPatchMesh
+// Retail: Fable.exe @ 0x00BEA7E0, 22 bytes, `__fastcall` static (size in ecx, owner in edx), out of line. Catalog label
+// "_Cons_val<pair<unsigned long,CAnimationEntry>>" is wrong (ten byte-identical class allocators share it; see
+// GOTCHAS chunk 152 and landed 0x00BDE600 / 0x00BF6530). Evidence: CEngineLandscapePatch::LoadForegroundPatch 0x00BF4088/0x00BF5AEE allocate 0x20 bytes and run the CWaterPatchMesh ctor 0x00BEB490 (vtable 0x012A8134).
+// Callee: CEngineLandscapeMemoryManager::AllocVirtual(long, CMovableResource*) 0x00BD9AF0 on the engine global
+// 0x01436EA8 (+0x6b0), as modelled in landed 0x00BF6530.
+// Shape: the manager in a named local makes VC7.1 park the size in eax and load the manager straight into ecx
+// (the direct expression loads the global into eax and pushes ecx).
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
+    void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
+};
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
+#include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
+
+class CWaterPatchMesh {
+public:
+    static void* __fastcall operator new(unsigned int size, CMovableResource* owner);
+};
+
+void* __fastcall CWaterPatchMesh::operator new(unsigned int size, CMovableResource* owner)
+{
+    CEngineLandscapeMemoryManager* manager = NEngineInternal::GPLandscapeRenderer->MemoryManager;
+    return manager->AllocVirtual(size, owner);
+}

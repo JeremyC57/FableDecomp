@@ -12,6 +12,7 @@
 // manager loaded into a named local before the alloc, a `rep movsd/movsb` memcpy under `copied > 0`, the
 // old block freed through a fresh global read, Count and Data stored after the free; count == 0 frees and
 // zeroes both members.
+#define FABLE_RETAIL_CENGINELANDSCAPERENDERER_GPLANDSCAPERENDERER   // NEngineInternal::GPLandscapeRenderer, 0x01436EA8
 #include <string.h>
 // Callee and global symbols follow the catalog majority for these addresses (CEngineLandscapeMemoryManager::
 // AllocVirtual(long, CMovableResource*) / FreeVirtual(void*), SEngine_01436ea8* g_pEngine_01436ea8 with the
@@ -25,7 +26,6 @@ class CEngineLandscapeMemoryManager { public:
 // Name-fix pass (2026-11-12, NF29): the engine global 0x01436EA8 is g_pLandscapeRenderer (descriptive, CEngineLandscapeRenderer*, MemoryManager
 //   +0x6B0: engine/CEngineLandscapeRenderer.h), the spelling of the landed landscape rows; was SEngine_01436ea8 / g_pEngine_01436ea8.
 #include "engine/CEngineLandscapeRenderer.h"        // MemoryManager +0x6b0 (Ego_r.pdb CEngineLandscapeRenderer)
-extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8 (descriptive)
 
 struct CWaterFanBaseVertex {
     float          Z;                     // +0x00
@@ -45,18 +45,18 @@ bool EdgeArray_CWaterFanBaseVertex::Resize(int count, CMovableResource* resource
     if (Count != count) {
         if (count) {
             int copied = count < Count ? count : Count;
-            CEngineLandscapeMemoryManager* manager = g_pLandscapeRenderer->MemoryManager;
+            CEngineLandscapeMemoryManager* manager = NEngineInternal::GPLandscapeRenderer->MemoryManager;
             CWaterFanBaseVertex* data = static_cast<CWaterFanBaseVertex*>(manager->AllocVirtual(count * sizeof(CWaterFanBaseVertex), resource));
             if (!data)
                 return false;
             if (copied > 0)
                 memcpy(data, Data, copied * sizeof(CWaterFanBaseVertex));
             if (Data)
-                g_pLandscapeRenderer->MemoryManager->FreeVirtual(Data);
+                NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(Data);
             Count = count;
             Data = data;
         } else {
-            g_pLandscapeRenderer->MemoryManager->FreeVirtual(Data);
+            NEngineInternal::GPLandscapeRenderer->MemoryManager->FreeVirtual(Data);
             Data = 0;
             Count = 0;
         }
