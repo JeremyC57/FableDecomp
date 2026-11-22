@@ -251,3 +251,5 @@ date	account	item	kind	status	note
 2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH14 (two grades, per-site decision table)
 2026-11-22	A	0x008E18D0	authoring	claimed	agent AUTH15 (land-ready: test, notes, opt-in evidence, header proof)
 2026-11-22	A	0x00CF4EC0	authoring	claimed	agent AUTH16 (advisor ruling: (C) bounded, then (A))
+2026-11-22	A	q12566,q12567,q12568,q12569,q12570	naming	done	NF226 landed as nf226 (8 rows)
+2026-11-22	A	q12573-q12585	naming	claimed	agent NF227 (CManager vtable-slot self rows, CObservable, map / tree placeholders)

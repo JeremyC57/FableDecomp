@@ -34,6 +34,12 @@ public: void SetMeshBank(CCountedPointer<CMeshDataBank> mesh_bank);       // 0x0
 public: void SetInputManager(CInputManager* input_manager) { PInputManager = input_manager; }
 public: void SetInput(EInputType input);                                  // 0x0041DF10
 #endif
+#ifdef FABLE_RETAIL_CMANAGER_SETGRAPHICSBANK
+// NF226 opt-in (2026-11-22, q12566; row 0x0041E641 NUISystem::CManager::~CManager): Ego_r.pdb / FableWin.pdb
+// ?SetGraphicsBank@CManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@@Z (public, the bank by value), out of line at
+// 0x0042A9B7 (landed). Declaration only; no layout change.
+public: void SetGraphicsBank(CCountedPointer<CGraphicDataBank> graphics_bank);  // 0x0042A9B7
+#endif
 #ifdef FABLE_RETAIL_CMANAGER_MENUCOUNT
 // Retail opt-in (chunk 1005, row 0x0056F30B CTCInventoryExperience::CloseInventory): FableWin.pdb / Ego_r.pdb
 // ?OnOpenMenus@CManager@NUISystem@@SIXXZ / ?OnCloseMenus@CManager@NUISystem@@SIXXZ (public static, fastcall), out of line at

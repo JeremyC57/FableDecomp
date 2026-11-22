@@ -39,6 +39,17 @@ private:
     long StringPos;                                                           // +0x1E8
     unsigned char _body_1ec[0x1e60 - 0x1ec];
 };
+#elif defined(FABLE_RETAIL_CFRONTENDGAMECOMPONENT_INITGRAPHICS)
+    // Retail opt-in (NF226, 2026-11-22, q12568; row 0x00494840): Ego_r.pdb 0x0049D3B0 + FableWin.pdb 0x01A41C50
+    // ?InitGraphics@CFrontendGameComponent@@AAE_NXZ (private). Ego_r.pdb layout: CCountedPointer<const CFontBank> MainFont +0x1E04
+    // (retail InitGraphics stores +0x1E04 / +0x1E08); the rest stays opaque. Same size as the default path. The includer includes
+    // engine/CCountedPointer.h first. Not with FABLE_RETAIL_CFRONTENDGAMECOMPONENT_CLEARSTRING (one layout branch per TU).
+private:
+    bool InitGraphics();                                                      // 0x00494840
+    unsigned char _body_010[0x1e04 - 0x10];
+    CCountedPointer<const class CFontBank> MainFont;                          // +0x1E04
+    unsigned char _body_1e0c[0x1e60 - 0x1e0c];
+};
 #else
 private:
     unsigned char _body[0x1e60 - 0x10];

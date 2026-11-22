@@ -2,6 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E1CD, length 485 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: the layer tree's operator[] @ 0x0042D246 (const long& -> long&; see the landed GetLayer 0x0041E3B2). Data: the per-meta-layer
 //   base table @ 0x01230118.
+// Leaf: ?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z
+// Names (NF226, 2026-11-22, q12567 unit): virtual, ?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z in Ego_r.pdb (0x0042FC82) and FableWin.pdb
+//   (0x01B0E22B), slot 34 of the retail vtable 0x01230134 (= 0x0041E1CD; RenderErrorMessage 0x0041D03C calls it through +0x88);
+//   engine/NUISystem_CManager.h `virtual void SetMetaLayer(long)`. Respelled in place in this row's existing local model (`virtual`, the
+//   pad shortened by the vtable pointer; same class token, no new defined symbol), so the constructor 0x0041E3F6, now on the header, and the
+//   header vtable bind one spelling (was ?SetMetaLayer@CManager@NUISystem@@QAEXJ@Z, non-virtual).
 // Layout (retail NUISystem::CManager, as in the landed GetLayer 0x0041E3B2): layer tree +0x70, meta layer +0x7c; engine/CManager.h is the
 //   PDB view (Layers +0x94, MetaLayer +0xa4), so the class is modelled locally.
 // Shape: the clamp constants 4 and 5 are hoisted into edi/ebx (`push 4 ; pop edi`) and reused as the keys 4 and 5; every key is a
@@ -20,11 +26,11 @@ extern long g_metaLayerBase[5];                    // 0x01230118
 
 namespace NUISystem {
 class CManager { public:
-    unsigned char _pad[0x70];
+    unsigned char _pad[0x70 - 4];                  // +0x04 (the vtable pointer +0x00)
     CLayerTree    m_layers;                        // +0x70
     unsigned char _pad78[4];
     long          m_metaLayer;                     // +0x7c
-    void SetMetaLayer(long metaLayer);
+    virtual void SetMetaLayer(long metaLayer);     // vtable 0x01230134 slot 34
 };
 
 void CManager::SetMetaLayer(long metaLayer)

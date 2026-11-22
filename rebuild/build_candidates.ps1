@@ -69752,7 +69752,7 @@ $catalog = @(
         Module = 'NUISystem::CManager'
         Source = '00/42/NUISystemCManager_scalardeletingdestructor_0042db20.cpp'
         TestSource = '00/42/NUISystemCManager_scalardeletingdestructor_0042db20_test.cpp'
-        PassPattern = 'PASS_0042db20'
+        PassPattern = '0042db20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00430480'

@@ -1,0 +1,18 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0041E641	NUISystem::CManager	~CManager	??1CManager@NUISystem@@IAE@XZ	NUISystem::CManager::~CManager	??1CManager@NUISystem@@UAE@XZ (emitted; Leaf line prefix ??1CManager@NUISystem)	Ego_r.pdb 0x00438C6F, FableWin.pdb 0x01AE5392, Ego_d.pdb; engine/NUISystem_CManager.h protected ~CManager
+0x0041E3F6	NUISystem::CManager	CManager	??0CManager@NUISystem@@IAE@XZ	NUISystem::CManager::CManager	??0CManager@NUISystem@@QAE@XZ	Ego_r.pdb 0x00438A19, FableWin.pdb 0x01AE4BC6; header protected CManager()
+0x0041E1CD	NUISystem::CManager	SetMetaLayer	?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z	NUISystem::CManager::SetMetaLayer	?SetMetaLayer@CManager@NUISystem@@QAEXJ@Z (no Leaf line)	Ego_r.pdb 0x0042FC82, FableWin.pdb 0x01B0E22B; retail vtable 0x01230134 slot 34 = 0x0041E1CD
+0x00494840	CFrontendGameComponent	InitGraphics	?InitGraphics@CFrontendGameComponent@@AAE_NXZ	CFrontendGameComponent::InitGraphics	?InitGraphics@CFrontendGameComponent@@QAE_NXZ (emitted; Leaf line already AAE)	Ego_r.pdb 0x0049D3B0, FableWin.pdb 0x01A41C50
+# Section 2: caller respellings (caller row, old symbol, new symbol, callee address)
+0x0041E5F2	??0CManager@NUISystem@@QAE@XZ	??0CManager@NUISystem@@IAE@XZ	0x0041E3F6
+0x0041E3F6	?SetMetaLayer@CManager@NUISystem@@QAEXJ@Z	?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z	0x0041E1CD
+0x0041E3F6	??0CManagerBase@NUISystem@@QAE@XZ	??0CObservable@NUISystem@@QAE@XZ	0x0042BE7B
+0x0041E3F6	??0CKeyMap@NUISystem@@QAE@XZ	??0?$map@W4EUsedKeys@CManager@NUISystem@@JU?$less@W4EUsedKeys@CManager@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ	0x0042BF67
+0x0041E3F6	??0CLayerMap@NUISystem@@QAE@XZ	??0?$map@JW4EEngine2DLayer@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@3@@std@@QAE@XZ	0x0042BF85
+0x0041E3F6	??0CChildrenMap@NUISystem@@QAE@XZ	??0?$map@VCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@QAE@XZ	0x0042D28B
+0x0041E3F6	??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z	??0?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCActionParam@NUISystem@@@1@@Z	0x0042AB01
+0x0041E641	??1CManagerBase@NUISystem@@UAE@XZ	??1CObservable@NUISystem@@QAE@XZ	0x0042BEC0
+0x0041E641	??1SMember88@@QAE@XZ	??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE@XZ	0x0042CE63
+0x0041E641	??1SMember70@@QAE@XZ	??1?$_Rb_tree@JU?$pair@$$CBJW4EEngine2DLayer@@@std@@U?$_Select1st@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJW4EEngine2DLayer@@@std@@@2@@std@@QAE@XZ	0x0042B7D7
+0x0041E641	??1SMember60@@QAE@XZ	??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ	0x0042AB1C
+0x0041E641	??1SMember24@@QAE@XZ	??1?$_Rb_tree@W4EUsedKeys@CManager@NUISystem@@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@U?$_Select1st@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@U?$less@W4EUsedKeys@CManager@NUISystem@@@5@V?$allocator@U?$pair@$$CBW4EUsedKeys@CManager@NUISystem@@J@std@@@5@@std@@QAE@XZ	0x0042B796

@@ -1,5 +1,5 @@
 // NUISystem::CManager::CManager() -- constructor of the front-end UI manager: base, empty counted banks, key/layer maps and action lists, cleared component pointers and flags; selects keyboard input, picks the best texture formats into the bank parameters and loads the graphics bank (GBANK_FRONT_END while the new front-end component is active, else GBANK_MAIN), then resets the meta layer
-// Leaf: ??0CManager@NUISystem
+// Leaf: ??0CManager@NUISystem@@IAE@XZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E3F6, length 508 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
@@ -11,23 +11,40 @@
 //   Globals: g_pDisplayManager 0x013B8390, g_pNewFrontendGameComponent 0x013B871C (active byte +9).
 // Layout: retail NUISystem::CManager (vtable 0x01230134) as the landed ~CManager 0x0041E641 and SetGraphicsBank 0x0042A9B7: banks +0x10/+0x18,
 //   key map +0x24, input type +0x30, ten inventory pointers +0x34..+0x58, lists +0x5c/+0x60, definition manager +0x64, layer map +0x70,
-//   meta layer +0x7c, bastard child +0x80, children map +0x88 ... (engine/CManager.h is the PDB view, 0x10 higher from the banks on).
+//   meta layer +0x7c, bastard child +0x80, children map +0x88 ... (engine/CManager.h is the PDB view, 0x10 higher from the banks on; engine/NUISystem_CManager.h has the retail offsets and is the model
+//   now, NF226).
 // Shape: member initialisers for the scalar members in declaration order (fldz hoisted), the ten inventory pointers cleared in the body;
-//   the list ctors take an `allocator()` temporary (a user default ctor, else /Os zeroes it with stosb); the bank manager is a NAMED
+//   the list ctors take an `allocator()` temporary (STLport's list(const allocator&), folded with _List_base's); the bank manager is a NAMED
 //   local in each branch -- it is fetched first and spilled to the frame, which also keeps edi out of the function (an inline
 //   `GFGetSystemManager()->...` chain loads it last and pulls edi in for constant 0x10 and the argument-slot pointer).
-#pragma optimize("y", off)
+// Names (NF226, 2026-11-22, q12567): protected, ??0CManager@NUISystem@@IAE@XZ in Ego_r.pdb (0x00438A19) and FableWin.pdb (0x01AE4BC6);
+//   engine/NUISystem_CManager.h `protected: CManager();`. Was ??0CManager@NUISystem@@QAE@XZ on a row-local NUISystem::CManager model; its only
+//   binder 0x0041E5F2 (GetInstance) moves with it. The model is now engine/NUISystem_CManager.h (retail layout, 0xD0; the HEAD local model and
+//   its CManagerBase / CKeyMap / CActionParamList / CLayerMap / CChildrenMap / std::list stand-ins and the local CCharString are gone; the
+//   local CDisplayManager / CGraphicBankManager / CSystemManager / CNewFrontendGameComponent models are HEAD's, unchanged):
+//   - base: NUISystem::CObservable's constructor, out of line at 0x0042BE7B (Ego_r.pdb / FableWin.pdb ??0CObservable@NUISystem@@QAE@XZ):
+//     FABLE_RETAIL_COBSERVABLE_CTOR_DECL_ONLY (new, engine/NUISystem_CObservable.h, included first);
+//   - Keys / Layers / BastardChildren: STLport 4.6's no-argument map constructor (FABLE_RETAIL_STLP_MAP), called as this size TU's COMDATs
+//     0x0042BF67 / 0x0042BF85 / 0x0042D28B; the two lists: the _List_base(const allocator&) COMDATs 0x0042AB58 / 0x0042AB01;
+//   - SetInput (FABLE_RETAIL_CMANAGER_WORLDINIT), SetGraphicsBank (FABLE_RETAIL_CMANAGER_SETGRAPHICSBANK, new) and the virtual
+//     SetMetaLayer (?SetMetaLayer@CManager@NUISystem@@UAEXJ@Z, both PDBs; vtable 0x01230134 slot 34), called directly as in retail;
+//   - FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA: the counted-pointer destructors this TU instantiates are the 5-byte `jmp ReleaseData` owners.
+//   Every pick-any copy with a retail owner equals it (34 copies, relocations bound alike) except ~list<CObserver*> (5-byte jmp v 0x0042AC25's
+//   23 bytes; unreferenced; NOTES).
+// Pragmas: `optimize("s", on)` above the includes (the whole size TU); `optimize("y", off)` only around the constructor and
+//   `optimize("y", on)` after it (Fidelity: scaffolding, not retail): the template COMDATs VC7.1 instantiates at the end of the TU are then
+//   built without a frame pointer, as their retail owners are (with "y" off they differ from 0x0042A237 / 0x0042B76C / 0x0042B8FC ...).
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_COBSERVABLE_CTOR_DECL_ONLY
+#define FABLE_RETAIL_CMANAGER_WORLDINIT
+#define FABLE_RETAIL_CMANAGER_SETGRAPHICSBANK
+#include "engine/NUISystem_CObservable.h"
 class CGraphicDataBank;
 #include "engine/CCountedPointer.h"
-class CCharString { public:
-    void* m_pData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-// NF223: the bank parameters are engine/CGraphicDataBankInit.h (Ego_r.pdb CGraphicDataBankInit, 0x2c; ctor 0x00415B80
-//   ??0CGraphicDataBankInit@@QAE@XZ) and CPixelFormat its engine/CPixelFormat.h (were the local CGraphicBankParams / CPixelFormat stand-ins).
-//   FABLE_RETAIL_CGRAPHICDATABANKINIT_CTOR_DECL_ONLY: this TU calls the out-of-line ctor 0x00415B80; the inline body would emit a copy unlike it.
+#include "engine/NUISystem_CManager.h"
 #define FABLE_RETAIL_CGRAPHICDATABANKINIT_CTOR_DECL_ONLY
 #include "engine/CGraphicDataBankInit.h"
 class CDisplayManager { public:
@@ -54,80 +71,8 @@ extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 void __fastcall SetIsUsingRelativeCoords(bool relative);   // 0x004299A8
 
-namespace std {                                    // STLport 4.6 list<long>: its base constructor / destructor are out of line
-template <class _Tp> class allocator { public: allocator() { } };   // empty; a user constructor (the temporary is not zero-filled)
-template <class _Tp, class _Alloc> class _List_base {
-public:
-    void* _M_node;
-    _List_base(const _Alloc&);                     // 0x0042AB58 for long
-    ~_List_base();                                 // 0x0042AB73 for long
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
-public:
-    explicit list(const _Alloc& a = _Alloc()) : _List_base<_Tp, _Alloc>(a) { }
-};
-}
+#pragma optimize("y", off)
 namespace NUISystem {
-struct SAllocator { SAllocator() { } };
-struct CKeyMap { unsigned char _d[0xc]; CKeyMap(); };                                   // 0x0042BF67
-struct CActionParamList { void* _M_node; CActionParamList(const SAllocator& a = SAllocator()); };   // 0x0042AB01
-struct CLayerMap { unsigned char _d[0xc]; CLayerMap(); };                               // 0x0042BF85
-struct CChildrenMap { unsigned char _d[0xc]; CChildrenMap(); };                         // 0x0042D28B
-class CComponent;
-struct CManagerBase {
-    CManagerBase();                             // 0x0042BE7B
-    virtual ~CManagerBase();
-    unsigned char _d04[0xc];
-};
-class CManager : public CManagerBase { public:
-    enum EInputType { EIT_KEYBOARD = 0, EIT_PAD = 1 };  // NF35: nested (Ego_r + FableWin ?SetInput@CManager@NUISystem@@QAEXW4EInputType@12@@Z)
-    CCountedPointer<CGraphicDataBank> PGraphicsBank;    // +0x10
-    CCountedPointer<CGraphicDataBank> PMeshBank;        // +0x18
-    void*            PInputManager;             // +0x20
-    CKeyMap          Keys;                      // +0x24
-    EInputType       InputType;                 // +0x30
-    void*            PTCHeroExperience;         // +0x34
-    void*            PAbilitiesInventory;       // +0x38
-    void*            PWeaponsInventory;         // +0x3c
-    void*            PMapInventory;             // +0x40
-    void*            PQuestInventory;           // +0x44
-    void*            PExperienceInventory;      // +0x48
-    void*            PInventory;                // +0x4c
-    void*            PInventoryClothing;        // +0x50
-    void*            PInventoryTrade;           // +0x54
-    void*            PPlayer;                   // +0x58
-    std::list<long>  ThingActionParams;         // +0x5c
-    CActionParamList UIActionParams;            // +0x60
-    void*            m_pDefinitionManager;      // +0x64
-    unsigned long    NumberAugmentations;       // +0x68
-    long             Change;                    // +0x6c
-    CLayerMap        Layers;                    // +0x70
-    long             MetaLayer;                 // +0x7c
-    CCountedPointer<CComponent> BastardChild;   // +0x80
-    CChildrenMap     BastardChildren;           // +0x88
-    float            RightStickForce_X;         // +0x94
-    float            RightStickForce_Y;         // +0x98
-    bool             m_bHasErrorMessage;        // +0x9c
-    CComponent*      m_pErrorMessage;           // +0xa0
-    bool             Restoring;                 // +0xa4
-    double           m_fLastRenderTime;         // +0xa8
-    float            MouseMovement_X;           // +0xb0
-    float            MouseMovement_Y;           // +0xb4
-    CComponent*      PMouseCursor;              // +0xb8
-    CComponent*      PDropped;                  // +0xbc
-    unsigned short   KeyPressed;                // +0xc0
-    float            DescriptionScrollingOffset;    // +0xc4
-    bool             DescriptionScrollingToMax;     // +0xc8
-    bool             MouseDisabled;                 // +0xc9
-    bool             AssignmentItemsExpressionsSwapping;    // +0xca
-    bool             AssignmentSpellsSwapping;      // +0xcb
-    CManager();
-    virtual ~CManager();
-    void SetInput(EInputType type);                         // 0x0041DF10
-    void SetMetaLayer(long layer);                          // 0x0041E1CD
-    void SetGraphicsBank(CCountedPointer<CGraphicDataBank> bank);   // 0x0042A9B7
-};
-
 CManager::CManager()
     : m_pDefinitionManager(0), m_bHasErrorMessage(false), m_pErrorMessage(0), Restoring(false), m_fLastRenderTime(0.0),
       PMouseCursor(0), PDropped(0), DescriptionScrollingOffset(-1.0f), DescriptionScrollingToMax(false), MouseDisabled(false),
@@ -144,7 +89,7 @@ CManager::CManager()
     PInventoryTrade = 0;
     PPlayer = 0;
     SetIsUsingRelativeCoords(true);
-    SetInput(EIT_KEYBOARD);
+    SetInput(UI_INPUT_KEYBOARD);
     PWeaponsInventory = 0;
     CGraphicDataBankInit params;
     GPDisplayManager->GetBestCompressedOpaqueTextureFormat(0x10, params.NonAlphaFormat);
@@ -168,3 +113,4 @@ CManager::CManager()
 }
 
 }
+#pragma optimize("y", on)
