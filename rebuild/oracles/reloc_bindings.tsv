@@ -2136,7 +2136,7 @@ _helper_65e8b8	0065e8b8	0065f8b2
 ?IsCombinationAnimation@C3DAnimationInfoCalls@@QAE_NXZ	00a23f00	00662820
 ??1CThingBodyReorienter@@QAE@XZ	00863790	00663490
 ?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ	006647f0	006649c0
-?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z	006648d0	006649c0
+?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	006648d0	006649c0
 ?IsInMode@CTCCreatureModeQuery@@QBE_NJ@Z	00811340	00664c60
 ?GetMaxSneakingSpeed@CTCSneakMovement@@QBEMXZ	00747020	00664cb0
 ?GetPCombatTypeDef@CThingCreatureBase_Methods@@QAE?AUCDefPointer_CombatTypeDef@@XZ	00664d40	00666d10
@@ -3539,8 +3539,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?SheatheAllWeapons@CThing_Retail@@QAEXXZ	006647f0	00890ba0
 ?UnsheatheAllWeapons@CThing_Retail@@QAEXXZ	00666830	00890c10
 ?UnsheatheMeleeWeapon@CThing_Retail@@QAEXXZ	00666820	00890c10
-?IsThingCarryingRangedWeapon@@YI_NPAUCThingNative@@@Z	006a1620	00890d80
-?UnsheatheRangedWeapon@CThingNative@@QAEXXZ	00664a10	00890d80
 ?AddUBYTE@CGSIOverrideMusicEvent@@QAEXE@Z	006bdf40	00891220
 ?SetOverrideMusic@CGSIOverrideMusicEvent@@QAEXW4EMusicSetType@@_N@Z	006bdea0	00891220
 ?CGSIStopMusic_ResumeEvent@@YIXPAUCGSIStopMusicEvent@@@Z	006bdef0	008912a0

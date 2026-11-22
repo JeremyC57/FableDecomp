@@ -14,6 +14,7 @@
 //   CThingCreatureBase::PDef +0xe0; CThingCreatureDef RangedWeaponDef +0xe0, CombatTypeDef +0x124,
 //   ResetCombatTypeOnUnsheatheDefaultWeapons +0x128, UseMeleeWeaponAsDefault bit 4 of +0x148 (PDB 8 higher);
 //   CTCCombat::PCombatTypeDef +0x28.
+// NF249 (q12690): the local declaration of UnsheatheWeapon is protected, as in all three PDBs (IAE; the self row moved with it).
 // Shape: the combat type is a local counted copy (its release has no null test: VC drops it after the vcall
 //   dereference); the creature def is peeked through an inline copy that is released before its fields are read; the
 //   name compare is `!(a == b)` with the manager call evaluated first (member operator== argument).
@@ -124,7 +125,9 @@ class CThingCreatureBase : public CThing { public:
         return *def.Object;
     }
     void SheatheAllWeapons();                           // 0x006647F0
-    void UnsheatheWeapon(long weaponDef, bool primary); // 0x006648D0
+protected:
+    void UnsheatheWeapon(long weaponDef, bool primary); // 0x006648D0 (protected: three PDBs)
+public:
     void UnsheatheMeleeWeapon();                        // 0x006649C0
     void UnsheatheDefaultWeapon();
 };

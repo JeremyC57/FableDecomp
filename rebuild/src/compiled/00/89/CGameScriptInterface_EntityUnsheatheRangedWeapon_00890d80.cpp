@@ -1,140 +1,88 @@
-// CGameScriptInterface::EntityUnsheatheRangedWeapon -- unsheathe locally or enqueue player input
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail00890D80,242 bytes. Player creature RTTI table012457FC slot77=0052ABE0 returns true; base0125AC0C slot77 purecall.
-#include "engine/CGameScriptInterface.h"
-#include "engine/CScriptThing.h"
+// CGameScriptInterface::EntityUnsheatheRangedWeapon(const CScriptThing& thing, bool instant) const -- for a live creature that carries no ranged weapon: an AI creature finishes its current action and draws its ranged weapon (at once through the combat manager when `instant`); the player character's draw is queued as a controlled-creature game event instead
+// Leaf: ?EntityUnsheatheRangedWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00890D80, 242 bytes, `ret 8`, /GS (cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
+//   CGameScriptInterface vtable slot 509 (engine/CGameScriptInterface.h); Ego_r.pdb / FableWin.pdb
+//   ?EntityUnsheatheRangedWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z.
+// Callees (PDB spellings): CScriptThing::IsAlive (slot 75, +0x12C) / GetPThing (slot 11, +0x2C);
+//   ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z @ 0x006A1620 (Ego_r.pdb / FableWin.pdb, public static fastcall; the thing in
+//   ecx; engine/CTCCarrying.h PLAYERHIT_PASS26 as the witness 0x0091EC30); the creature's slot 77 IsPlayerCharacter (+0x134;
+//   engine/CThingCreatureBase.h ORIGINAL_VTABLE, as the landed 0x00664A10); ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ @ 0x00662650;
+//   ?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ @ 0x00664A10 (three PDBs); the inline CWorld::GetCombatManager (FableWin.pdb; World +0x04,
+//   PThingCombatManager +0x4C) and ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z @ 0x006EBDD0
+//   (UNSHEATHE_RANGED_WEAPON = 5); ?AddData@CGameEvent@@QAEXJPBX@Z @ 0x009F1760; the inline CMainGameComponent::Get() (protected static
+//   PMainGameComponent 0x013B86A0) and ?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z @ 0x0041649C.
+// Layout: CThing ThingTypeFlags +0x6C (bit 8: a creature), PlayerNumber +0x90; CGameEvent (Ego_r.pdb, 40 bytes) Type +0, Player +4,
+//   EndPos +0x25, Valid +0x26, Replacement +0x27; event type GAME_EVENT_CONTROLLED_CREATURE_UNSHEATHE_RANGED_WEAPON = 34 (FableWin TPI).
+// Shape: no null test on the thing (retail reads +0x6C straight after the slot-11 call); the event's bool payload is homed in the dead
+//   `instant` argument slot (`mov [esp+3Ch],al`).
+// NF249 (q12691): ported off the HEAD local models (the `#define CThingCreatureBase CThingCreatureBaseLayout` rename and its local
+//   CThingCreatureBase / CThingNative with a member-pointer slot-77 call, the local ScriptMethods / CBaseClassNative / CCPPointerInfo /
+//   CountedScriptImp models of CScriptThing, the CGameEvent rename, the local CCombatManager / CMainGameComponent and the stand-in
+//   CGameScriptInterfaceMethods) onto the shared headers; the self leaf, 0x006A1620, 0x00664A10, 0x006EBDD0 and 0x013B86A0 now bind their PDB
+//   spellings (were ?EntityUnsheatheRangedWeapon@CGameScriptInterfaceMethods@@QBEXABUScriptMethods@@_N@Z,
+//   ?IsThingCarryingRangedWeapon@@YI_NPAUCThingNative@@@Z, ?UnsheatheRangedWeapon@CThingNative@@QAEXXZ,
+//   ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z, ?g_MainGameComponent@@3PAVCMainGameComponent@@A).
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_FINISHACTION
+#define FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHERANGEDWEAPON
+#define FABLE_RETAIL_CTCCARRYING_PLAYERHIT_PASS26
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_COMBATMANAGER
+#define FABLE_RETAIL_CCOMBATMANAGER
+#define FABLE_RETAIL_CCOMBATMANAGER_UNSHEATH
+#define FABLE_RETAIL_COMBAT_INPUT_PASS26
+#define FABLE_RETAIL_CGAMEEVENT_INLINE
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT_ADDGAMEEVENT
+#define FABLE_RETAIL_NSCRIPT
 #include "fable_string.h"
 #include "engine/C3DVector.h"
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
-struct ScriptMethods;
-#define CThingCreatureBase CThingCreatureBaseLayout
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThing.h"
 #include "engine/CThingCreatureBase.h"
-#undef CThingCreatureBase
-
-class CThingCreatureBase : public CThingCreatureBaseLayout
-{
-public:
-    void FinishCurrentAction();   // 0x00662650
-};
-struct CThingNative:CThingCreatureBase{typedef bool(CThingNative::*PlayerMethod)()const;bool IsPlayer()const{return(this->*static_cast<PlayerMethod*>(__vftable)[77])();}void UnsheatheRangedWeapon();}; //00662650,00664A10
-FABLE_STATIC_ASSERT(sizeof(CThingNative::PlayerMethod)==4);
-
-// Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
-// Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
-namespace std {template<class T>class allocator;template<class T,class A>class vector;}
-typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
-struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
-struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
-struct ScriptMethods:CBaseClassNative{
- CountedScriptImp PImp;
- ScriptMethods(){}
- ScriptMethods(const ScriptMethods& other):CBaseClassNative(other),PImp(other.PImp){}
- virtual ~ScriptMethods(){}
- ScriptMethods& operator=(const ScriptMethods&); //008AB980
- CThingNative* GetThing() const {if(!PImp.Data)return 0;return reinterpret_cast<ScriptMethods*>(PImp.Data)->GetPThing();}
-virtual const CCharString& GetName() const; //slot1 0x004AA8B0
-virtual CCharString GetDefName() const; //slot2 0x004AA8D0
-virtual CCharString GetDataString() const; //slot3 0x004AA900
-virtual void SetDataString(const CCharString&); //slot4 0x004AA930
-virtual C3DVector GetFocalPos() const; //slot5 0x004AA940
-virtual const C3DVector& GetPos() const; //slot6 0x004AA980
-virtual C3DVector GetHomePos() const; //slot7 0x004AA9A0
-virtual CCharString GetCurrentMapName() const; //slot8 0x004AA9E0
-virtual CCharString GetHomeMapName() const; //slot9 0x004AAA10
-virtual float GetAngleXY() const; //slot10 0x004AAA40
-virtual CThingNative* GetPThing() const; //slot11 0x004AAA60
-virtual unsigned __int64 GetPThingUniqueID() const; //slot12 0x004AAA70
-virtual EAIStateGroupTypeABI GetCurrentStateGroupType() const; //slot13 0x004AAA90
-virtual EScriptAIPriorityABI GetCurrentScriptPriority() const; //slot14 0x004AAAA0
-virtual bool IsSneaking() const; //slot15 0x004AAAB0
-virtual bool IsAwareOfHero() const; //slot16 0x004AAAC0
-virtual bool MsgIsTriggeredBy(const CCharString&) const; //slot17 0x004AAAD0
-virtual bool MsgIsKilledBy(const CCharString&) const; //slot18 0x004AAAF0
-virtual ScriptMethods MsgWhoKilledMe() const; //slot19 0x004ABE60
-virtual bool MsgIsUsedBy(const CCharString&) const; //slot20 0x004AAB10
-virtual bool MsgIsHitBy(const CCharString&) const; //slot21 0x004AAB30
-virtual bool MsgIsHitByWithFlourish(const CCharString&) const; //slot22 0x004AAB50
-virtual bool MsgIsHitByWithDecapitate(const CCharString&) const; //slot23 0x004AAB70
-virtual bool MsgIsHitByWithWeapon(const CCharString&,const CCharString&) const; //slot24 0x004AAB90
-virtual bool MsgIsHitByWithProjectileWeapon(const CCharString&,float&) const; //slot25 0x004AABB0
-virtual ScriptMethods MsgWhoHitMe() const; //slot26 0x004ABEC0
-virtual bool MsgIsTalkedToBy(const CCharString&) const; //slot27 0x004AABD0
-virtual ScriptMethods MsgWhoTalkedToMe() const; //slot28 0x004ABF00
-virtual bool MsgExpressionPerformedTo(CCharString&) const; //slot29 0x004AABF0
-virtual ScriptMethods MsgWhoExpressedToMe() const; //slot30 0x004ABF40
-virtual long MsgHowLongWasExpressionPerformed() const; //slot31 0x004AAC10
-virtual bool MsgIsKnockedOutBy(const CCharString&) const; //slot32 0x004AAC20
-virtual ScriptMethods MsgWhoKnockedMeOut() const; //slot33 0x004ABF80
-virtual bool MsgReceivedMoney(long&) const; //slot34 0x004AAC40
-virtual bool MsgIsPresentedWithItem(CCharString&) const; //slot35 0x004AAC60
-virtual bool MsgReceivedInventoryItem() const; //slot36 0x004AAC80
-virtual bool MsgPerformedSpecialAbility(EHeroAbilityABI) const; //slot37 0x004AACA0
-virtual bool MsgPerformedAnySpecialAbility() const; //slot38 0x004AACC0
-virtual bool MsgPerformedAnyAggressiveSpecialAbility() const; //slot39 0x004AACE0
-virtual bool MsgPerformedAnyNonAggressiveSpecialAbility() const; //slot40 0x004AAD00
-virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbilityABI,const CCharString&) const; //slot41 0x004AAD20
-virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString&) const; //slot42 0x004AAD40
-virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString&) const; //slot43 0x004AAD60
-virtual bool MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString&) const; //slot44 0x004AAD80
-virtual bool MsgOpenedChest() const; //slot45 0x004AADA0
-virtual bool MsgHitEnemyWithMeleeWeapon() const; //slot46 0x004AADC0
-virtual bool MsgHitFriendWithMeleeWeapon() const; //slot47 0x004AADE0
-virtual bool MsgHitEnemyWithRangedWeapon() const; //slot48 0x004AAE00
-virtual bool MsgHitFriendWithRangedWeapon() const; //slot49 0x004AAE20
-virtual bool MsgHitEnemyWithBareHands() const; //slot50 0x004AAE40
-virtual bool MsgHitFriendWithBareHands() const; //slot51 0x004AAE60
-virtual bool MsgAttackedWithMeleeWeaponWithoutHittingAnything() const; //slot52 0x004AAE80
-virtual bool MsgAttackedWithBareHandsWithoutHittingAnything() const; //slot53 0x004AAEA0
-virtual bool MsgTalkedToAnyone() const; //slot54 0x004AAEC0
-virtual bool MsgGetThingsKilled(std::vector<unsigned long,std::allocator<unsigned long> >&) const; //slot55 0x004AAEE0
-virtual bool MsgPerformedFlourish() const; //slot56 0x004AAF00
-virtual bool MsgPerformedSuccessfulFlourish() const; //slot57 0x004AAF20
-virtual bool MsgOnMoralityChanged(long&) const; //slot58 0x004AAF40
-virtual bool MsgOnCutSceneAnimEvent(CCharString&) const; //slot59 0x004AAF60
-virtual bool MsgIsKicked() const; //slot60 0x004AAF80
-virtual bool IsUnconscious() const; //slot61 0x004AAFA0
-virtual bool IsUsable() const; //slot62 0x004AAFC0
-virtual bool IsBeingCarriedBy(const CCharString&) const; //slot63 0x004AAFE0
-virtual bool IsOpenDoor() const; //slot64 0x004AB000
-virtual bool IsSummonedCreature() const; //slot65 0x004AB020
-virtual void SetAsUsable(bool); //slot66 0x004AB040
-virtual void SetFriendsWithEverythingFlag(bool); //slot67 0x004AB060
-virtual bool GetActivationTriggerStatus() const; //slot68 0x004AB080
-virtual void SetActivationTriggerStatus(bool); //slot69 0x004AB0A0
-virtual void SetToKillOnLevelUnload(bool); //slot70 0x004AB0C0
-virtual void UpdateThingAttachment(); //slot71 0x004AB0E0
-virtual void IncrementScriptCounter(); //slot72 0x004AB0F0
-virtual void DecrementScriptCounter(); //slot73 0x004AB100
-virtual long GetScriptCounter(); //slot74 0x004AB110
-virtual bool IsAlive() const; //slot75 0x004AB130
-virtual bool IsDead() const; //slot76 0x004AA890
-virtual bool IsNull() const; //slot77 0x004AB150
-virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
-};
-FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
-FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
-FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-
-
+#include "engine/CTCBase.h"
+#include "engine/CTCCarrying.h"
+#include "engine/EUnsheatheWeaponType.h"
+#include "engine/CCombatManager.h"
 #include "engine/CWorld.h"
-#define CGameEvent CGameEventLayout
+#include "engine/EGameEventType.h"
 #include "engine/CGameEvent.h"
-#undef CGameEvent
+#include "engine/CMainGameComponent.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CGameScriptInterface.h"
 
-class CGameEvent : public CGameEventLayout
+void CGameScriptInterface::EntityUnsheatheRangedWeapon(const CScriptThing& thing, bool instant) const
 {
-public:
-    void AddData(long, const void*);   // 0x009F1760
-};
-bool __fastcall IsThingCarryingRangedWeapon(CThingNative*); //006A1620
-class CCombatManager{ public:void CreatureUnsheathWeapon(CThingNative*,long);}; //006EBDD0
-struct GameEventMethods:CGameEvent{}; //009F1760 appends to Data at current EndPos
-class CMainGameComponent{ public:void AddGameEvent(const CGameEvent&);};extern CMainGameComponent* g_MainGameComponent; //0041649C,013B86A0
-struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityUnsheatheRangedWeapon(const ScriptMethods&,bool)const;};
-void CGameScriptInterfaceMethods::EntityUnsheatheRangedWeapon(const ScriptMethods& script,bool instant)const{
- if(script.IsAlive()){CThingNative* creature=script.GetPThing();if(creature->_pad_0x6c[0]&8){if(!IsThingCarryingRangedWeapon(creature)){
- if(!creature->IsPlayer()){creature->FinishCurrentAction();if(!instant)creature->UnsheatheRangedWeapon();else World->PThingCombatManager_ptr->CreatureUnsheathWeapon(creature,5);}
- else{GameEventMethods event;event.Type=34;event.EndPos=0;event.Valid=true;event.Replacement=false;event.Player=(signed char)creature->_pad_0x90[0];instant=false;event.AddData(1,&instant);g_MainGameComponent->AddGameEvent(event);}
- }}}
+    if (thing.IsAlive()) {
+        CThing* pthing = thing.GetPThing();
+        if (pthing->GetTypeFlags() & 8) {
+            if (!CTCCarrying::IsThingCarryingRangedWeapon(*pthing)) {
+                CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(pthing);
+                if (!creature->IsPlayerCharacter()) {
+                    creature->FinishCurrentAction();
+                    if (!instant)
+                        creature->UnsheatheRangedWeapon();
+                    else
+                        World->GetCombatManager().CreatureUnsheathWeapon(*creature, UNSHEATHE_RANGED_WEAPON);
+                } else {
+                    CGameEvent event(GAME_EVENT_CONTROLLED_CREATURE_UNSHEATHE_RANGED_WEAPON);
+                    event.SetPlayer(creature->GetPlayerNumber());
+                    instant = false;
+                    event.AddData(1, &instant);
+                    CMainGameComponent::Get()->AddGameEvent(event);
+                }
+            }
+        }
+    }
 }

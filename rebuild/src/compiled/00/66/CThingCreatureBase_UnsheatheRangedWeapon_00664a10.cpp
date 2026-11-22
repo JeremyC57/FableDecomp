@@ -5,7 +5,8 @@
 //   CThingAICreature.h / CThingPlayerCreature.h overrides at slot 77 are 0x00835940 / 0x0052ABE0; landed 0x00847DF0 calls the same slot by
 //   that name), ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z @ 0x006A1620 (Ego_r.pdb 0x006C60F0 / FableWin.pdb 0x02214CE0; the
 //   thing in ecx), ?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ @ 0x006647F0, ?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z @ 0x006648D0
-//   (protected IAE in Ego_r.pdb / FableWin.pdb / Ego_d.pdb; bound QAE here as by its self row and every landed binder: NF247 NAME_FIXES).
+//   (protected IAE in Ego_r.pdb / FableWin.pdb / Ego_d.pdb; NF249 q12690: now bound IAE, the header opt-in declares it protected, and the
+//   self row 0x006648D0 and binders 0x006649C0 / 0x00664A50 moved with it).
 // Leaf (NF247, q12679): ?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ in Ego_r.pdb / FableWin.pdb / Ego_d.pdb (public); HEAD's row emitted
 //   the same spelling from a row-local CThingCreatureBase model (77 placeholder virtuals, `m_pDef` at +0xE0).
 // Layout (NF247, q12679 header port): engine/CThingCreatureBase.h retail branch (PDef = CDefPointer<const CThingCreatureDef> at +0xE0) with the

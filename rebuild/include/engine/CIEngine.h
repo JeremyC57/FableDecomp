@@ -47,9 +47,27 @@ class CEngineInterpolationInfo;
 #endif
 class CIEngine : public CInitBaseClass {
 public:
+#ifdef FABLE_RETAIL_CIENGINE_CTOR
+    // NF249 opt-in (q12692, CEngine ctor 0x00B260B0): FableWin.pdb / Ego_d.pdb ??0CIEngine@@IAE@XZ (protected), inline in retail (after the
+    // out-of-line CInitBaseClass ctor 0x0099A310: `mov byte ptr [esi+8],0`, 0x00B260C1). Declaration with its body only: no layout change.
+protected:
+    CIEngine() : Active(false) { }
+public:
+#endif
+#ifdef FABLE_RETAIL_CIENGINE_INLINE_DTOR
+    // NF249 opt-in (q12692): the destructor is inline in retail: ??_GCIEngine 0x00B23770 and ~CEngine 0x00B261D0 both expand it as the
+    // vtable store (0x012A0D24) and the out-of-line ~CInitBaseClass 0x0099A410 (FableWin.pdb / Ego_d.pdb ??1CIEngine@@UAE@XZ).
+    virtual ~CIEngine() { }                                                //  0 ??_G 0x00B23770
+#else
     virtual ~CIEngine();                                                   //  0 ??_G 0x00B23770
+#endif
+#ifndef FABLE_RETAIL_CIENGINE_INHERITED_VALIDATE
     // slot 1: CInitBaseClass::Validate 0x0099A340 (not declared by CInitBaseClass.h; modelled here at its slot)
     virtual void Validate() const;                                        //  1
+#else
+    // NF249 opt-in (q12692): slot 1 is inherited, ?Validate@CInitBaseClass@@UBEXXZ (0x0099A340; Ego_r / FableWin / Ego_d; no PDB has a
+    // CIEngine::Validate), declared by engine/CInitBaseClass.h under FABLE_RETAIL_CINITBASECLASS_VALIDATE, which the includer defines.
+#endif
     virtual bool Initialise(const CEngineInit&);                          //  2 0x00B232D0
     virtual void Release();                                               //  3 0x00B232E0
     virtual void SetCamera(const CCamera*) = 0;                           //  4

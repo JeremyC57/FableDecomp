@@ -481,12 +481,12 @@ public:
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_UNSHEATHERANGEDWEAPON
     // NF247 opt-in (q12679, row 0x00664A10): Ego_r.pdb / FableWin.pdb / Ego_d.pdb ?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ (public,
-    // the row's own leaf) and UnsheatheWeapon (out of line in retail at 0x006648D0, `push 1 ; push <def> ; mov ecx,esi ; call`). The three
-    // PDBs make UnsheatheWeapon protected (?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z), but its landed self row and every landed binder
-    // (0x006649C0, 0x00664A50) spell QAE: it is declared public here so the address keeps one spelling; the IAE move is a family item
-    // (NF247 NAME_FIXES). Declarations only: no layout change.
+    // the row's own leaf) and UnsheatheWeapon (out of line in retail at 0x006648D0, `push 1 ; push <def> ; mov ecx,esi ; call`), protected as
+    // in all three PDBs (?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z; NF249 q12690: its self row 0x006648D0 and binders 0x006649C0 /
+    // 0x00664A50 moved to IAE in the same unit, so the address keeps one spelling). The `public:` after it restores the region's access.
+    // Declarations only: no layout change (same line count as the NF247 form: no line below moves).
     void UnsheatheRangedWeapon();                                                                                                // 0x00664A10
-    void UnsheatheWeapon(long weapon_def, bool primary);                                                                         // 0x006648D0
+protected: void UnsheatheWeapon(long weapon_def, bool primary); public:                                                         // 0x006648D0
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SETHANDEDNESS
     // Retail opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb

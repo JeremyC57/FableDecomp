@@ -1,0 +1,18 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x006648D0	CThingCreatureBase	UnsheatheWeapon	?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	CThingCreatureBase::UnsheatheWeapon	?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z	leaf-only access fix (name unchanged, files unchanged): IAE in Ego_r.pdb (0x00540710, bsim = retail 0x006648D0), FableWin.pdb (0x01D94EA0), Ego_d.pdb
+0x00890D80	CGameScriptInterface	EntityUnsheatheRangedWeapon	?EntityUnsheatheRangedWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	CGameScriptInterface::EntityUnsheatheRangedWeapon	?EntityUnsheatheRangedWeapon@CGameScriptInterfaceMethods@@QBEXABUScriptMethods@@_N@Z	leaf-only (catalog name and files unchanged; HEAD row had no Leaf line): Ego_r.pdb + FableWin.pdb; CGameScriptInterface.h slot 509; only reference is the unlanded vtable 0x01260F0C slot 509 (.rdata 0x01261700)
+0x00B260B0	CEngine	CEngine	??0CEngine@@QAE@XZ	CEngine::CEngine	??0EngineNative@@QAE@XZ	leaf-only (catalog name and files unchanged; HEAD Leaf line "EngineNative"): Ego_r.pdb + FableWin.pdb ??0CEngine@@QAE@XZ; binder 0x00B26340 already binds it (reloc_bindings)
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x006649C0	?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z	?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	0x006648D0
+0x00664A50	?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z	?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	0x006648D0
+0x00664A10	?UnsheatheWeapon@CThingCreatureBase@@QAEXJ_N@Z	?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z	0x006648D0
+0x00890D80	?IsThingCarryingRangedWeapon@@YI_NPAUCThingNative@@@Z	?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z	0x006A1620
+0x00890D80	?UnsheatheRangedWeapon@CThingNative@@QAEXXZ	?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ	0x00664A10
+0x00890D80	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z	?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	0x006EBDD0
+0x00890D80	?g_MainGameComponent@@3PAVCMainGameComponent@@A	?PMainGameComponent@CMainGameComponent@@1PAV1@A	0x013B86A0
+0x00B260B0	??_7NativeDeviceResetCallback@@6B@	??_7CDeviceResetCallback@@6B@	0x0122DE50
+0x00B260B0	?InitialPreloadTime@@3NB	__real@0000000000000000	0x0122ED70
+0x00B260B0	??_7EngineNative@@6BNativeDeviceResetCallback@@@	??_7CEngine@@6BCDeviceResetCallback@@@	0x012A0F30
+0x00B260B0	??_7EngineNative@@6BCIEngineNative@@@	??_7CEngine@@6BCIEngine@@@	0x012A0F3C
+0x00B260B0 / 0x00B261D0	the ??_7CEngine slot symbols (HEAD ctor: ?<Name>@EngineNative / @CIEngineNative stand-ins; HEAD dtor: 1-2-slot stand-in tables)	the CEngine.h OVERRIDES / CIEngine.h PDB spellings, slot 1 ?Validate@CInitBaseClass@@UBEXXZ	the 86 + 2 slot targets (work/e3/slots.tsv)

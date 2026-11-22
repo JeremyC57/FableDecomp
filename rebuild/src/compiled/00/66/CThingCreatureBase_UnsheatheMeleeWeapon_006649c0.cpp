@@ -7,6 +7,7 @@
 // Layout (retail, local model): the creature definition pointer at +0xe0 (engine/CThingCreatureBase.h lists +0xe0 only as
 // a retail-only long); in the definition the default weapon def indices at +0xd8 / +0xdc (melee) and +0xe0 (ranged), as
 // the landed GetDefaultWeaponDef 0x00662860 reads them.
+// NF249 (q12690): the local declaration of UnsheatheWeapon is protected, as in all three PDBs (IAE; the self row moved with it).
 // Shape: two early returns on the bool tests (`jne` to the shared `pop esi ; ret`), the definition pointer re-read from
 // `this` for each UnsheatheWeapon call (a call may change it).
 class CThingCreatureBase;
@@ -35,7 +36,9 @@ class CThingCreatureBase { public:
     unsigned char      _pad04[0xdc];
     CThingCreatureDef* m_pDef;                  // +0xe0
     void SheatheAllWeapons();                   // 0x006647F0
-    void UnsheatheWeapon(long weaponDef, bool primary);     // 0x006648D0
+protected:
+    void UnsheatheWeapon(long weaponDef, bool primary);     // 0x006648D0 (protected: three PDBs)
+public:
     void UnsheatheMeleeWeapon();
 };
 

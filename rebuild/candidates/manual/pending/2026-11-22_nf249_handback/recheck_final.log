@@ -1,0 +1,34 @@
+addr       parity           behav  name
+006648d0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+006648d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006648d0   RELOCATION_MATCH PASS   UnsheatheWeapon
+006649c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+006649c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006649c0   RELOCATION_MATCH PASS   UnsheatheMeleeWeapon
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef (engine/CCombatTypeDef.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00664a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00664a50   WARN RELOC_NAME: ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+00664a50   RELOCATION_MATCH PASS   UnsheatheDefaultWeapon
+00664a10   RELOCATION_MATCH PASS   UnsheatheRangedWeapon
+00890d80   RELOCATION_MATCH PASS   EntityUnsheatheRangedWeapon
+00b260b0   RELOCATION_MATCH PASS   CEngine
+00b261d0   RELOCATION_MATCH PASS   ~CEngine
+
+WINS: 7
+  006648d0 RELOCATION_MATCH CThingCreatureBase::?UnsheatheWeapon@CThingCreatureBase@@IAEXJ_N@Z
+  006649c0 RELOCATION_MATCH CThingCreatureBase::UnsheatheMeleeWeapon
+  00664a50 RELOCATION_MATCH CThingCreatureBase::?UnsheatheDefaultWeapon@CThingCreatureBase@@QAEXXZ
+  00664a10 RELOCATION_MATCH CThingCreatureBase::?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ
+  00890d80 RELOCATION_MATCH CGameScriptInterface::?EntityUnsheatheRangedWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  00b260b0 RELOCATION_MATCH CEngine::??0CEngine@@QAE@XZ
+  00b261d0 RELOCATION_MATCH CEngine::??1CEngine@@UAE@XZ
+EXIT 0

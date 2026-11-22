@@ -28,6 +28,23 @@ class CEngineLayerRenderer;
 #ifdef FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF_TYPED
 #include "engine/EEngineVideoOptionQuality.h"
 #endif
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+// NF249 opt-in (q12692, CEngine ctor 0x00B260B0 / dtor 0x00B261D0): the seven composite members typed (Ego_r.pdb CEngine member records,
+// retail offsets: STLport 12-byte CArrays), the nested CEngine::CPreloadStats, CEngineVideoOptions with its inline ctor, and the retail
+// polymorphic CSimpleMemoryPool. Each typed member replaces its opaque line only under this macro (the #else keeps the line verbatim).
+#ifndef FABLE_RETAIL_CENGINEVIDEOOPTIONS_CTOR
+#define FABLE_RETAIL_CENGINEVIDEOOPTIONS_CTOR
+#endif
+#ifndef FABLE_RETAIL_CSIMPLEMEMORYPOOL
+#define FABLE_RETAIL_CSIMPLEMEMORYPOOL
+#endif
+#include "engine/CArray.h"
+#include "engine/CCamera.h"
+#include "engine/CEngineVideoOptions.h"
+#include "engine/CSimpleMemoryPool.h"
+class CSurface;
+class CEngineComponent;
+#endif
 class CEngine : public CIEngine, public CDeviceResetCallback {
 public:
 #ifdef FABLE_RETAIL_CENGINE_RENDER_PASS26
@@ -197,6 +214,20 @@ private:
     // 0x00B29930 .. 0x00B2A980): publish the component through its global pointer and append it to EngineComponents.
     template <class T> void AddEngineComponent(T* component, T*& global_pointer, unsigned char flag);
     CEngineLayerRenderer& AddRenderLayer(CEngineLayerRenderer* layer);   // 0x00B262C0 ?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+public:
+    // Ego_r.pdb CEngine::CPreloadStats (32 bytes: LastFullPreloadTime +0, LastFullPreloadTimedOut +8, LastFastPreloadTime +0x10,
+    // LastFastPreloadTimedOut +0x18); the user-declared ctor is FableWin.pdb / Ego_d.pdb ??0CPreloadStats@CEngine@@QAE@XZ, inline in retail
+    // (expanded in the CEngine ctor 0x00B260B0: both times 0.0 from the double constant 0x0122ED70, both flags false).
+    class CPreloadStats {
+    public:
+        CPreloadStats() : LastFullPreloadTime(0.0), LastFullPreloadTimedOut(false), LastFastPreloadTime(0.0), LastFastPreloadTimedOut(false) { }
+        double LastFullPreloadTime;
+        bool   LastFullPreloadTimedOut;
+        double LastFastPreloadTime;
+        bool   LastFastPreloadTimedOut;
+    };
+#endif
 public:
     bool             EnableWireFrame;                                    // +0x10
     bool             EnableEngine;                                       // +0x11
@@ -214,8 +245,13 @@ public:
     bool             ActorsLoading;                                      // +0x38
     bool             CameraAngleChanged;                                 // +0x39
     unsigned char    _pad_0x3a[0x2];                                     // +0x3a
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CArray<CCamera>  PreloadCameras;                                     // +0x3c
+    CPreloadStats    PreloadStats;                                       // +0x48
+#else
     unsigned char    PreloadCameras[0xc];                                // +0x3c CArray<CCamera>
     unsigned char    PreloadStats[0x20];                                 // +0x48 CPreloadStats
+#endif
     C3DVector        PreloadedCameraPos;                                 // +0x68
     C3DVector        PreloadedLookVector;                                // +0x74
     float            StartNewSceneTransitionTime;                        // +0x80
@@ -232,7 +268,11 @@ public:
     bool             EnableScreenShotMode;                               // +0xbc
     bool             EnablePostDeviceReset;                              // +0xbd
     unsigned char    _pad_0xbe[0x2];                                     // +0xbe
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CEngineVideoOptions VideoOptions;                                    // +0xc0
+#else
     unsigned char    VideoOptions[0x34];                                 // +0xc0 CEngineVideoOptions
+#endif
     struct {                                                             // +0xf8 <unnamed-type-OffWorldTickProcessInfo> (0x20)
         bool         ProcessThisFrame;                                   //   +0x00
         bool         ProcessingEnabled;                                  //   +0x01
@@ -245,11 +285,21 @@ public:
     CDefPointer<const CEnvironmentDef>        PEnvironmentDef;           // +0x118
     CDefPointer<const CEngineDef>             PEngineDef;                // +0x11c
     CDefPointer<const CEngineVideoOptionsDef> PEngineVideoOptionsDefs[4];   // +0x120
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CSimpleMemoryPool FrameMemoryPool;                                   // +0x130
+    CArray<CSurface*> ScratchZBuffersD24S8;                              // +0x14c
+#else
     unsigned char    FrameMemoryPool[0x1c];                              // +0x130 CSimpleMemoryPool
     unsigned char    ScratchZBuffersD24S8[0xc];                          // +0x14c CArray<CSurface*>
+#endif
     long             AnisotropicFilteringLevel;                          // +0x158
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CArray<CEngineLayerRenderer*> RenderLayers;                          // +0x15c
+    CArray<CEngineComponent*>     EngineComponents;                      // +0x168
+#else
     unsigned char    RenderLayers[0xc];                                  // +0x15c CArray<CEngineLayerRenderer*>
     unsigned char    EngineComponents[0xc];                              // +0x168 CArray<CEngineComponent*>
+#endif
 #ifdef FABLE_RETAIL_CENGINE_PEEKVIDEOOPTIONSDEF_TYPED
     // NF56 opt-in (row 0x00B244F0, the out-of-line body): Ego_r.pdb 0x009AEB40 / FableWin.pdb 0x02CA1700
     // ?PeekVideoOptionsDef@CEngine@@QAEABVCEngineVideoOptionsDef@@W4EEngineVideoOptionQuality@@@Z on the typed retail members (returns
@@ -260,7 +310,11 @@ public:
 #ifdef FABLE_RETAIL_CENGINE_GETFRAMEMEMORYPOOL
     // Retail opt-in (agentC40, row 0x00BD2D90): FableWin.pdb ?GetFrameMemoryPool@CEngine@@QAEPAVCSimpleMemoryPool@@XZ (inline in retail:
     // `mov ecx,[GPEngine] ; add ecx,130h`, 0x00BD2DB8). No layout change (the member stays the opaque block).
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+    CSimpleMemoryPool* GetFrameMemoryPool() { return &FrameMemoryPool; }
+#else
     class CSimpleMemoryPool* GetFrameMemoryPool() { return (class CSimpleMemoryPool*)FrameMemoryPool; }
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT_AT(102, sizeof(CEngine) == 0x178);
@@ -272,6 +326,15 @@ FABLE_STATIC_ASSERT_AT(107, offsetof(CEngine, OffWorldTickProcessInfo) == 0xf8);
 FABLE_STATIC_ASSERT_AT(108, offsetof(CEngine, PEngineDef) == 0x11c);
 FABLE_STATIC_ASSERT_AT(109, offsetof(CEngine, AnisotropicFilteringLevel) == 0x158);
 FABLE_STATIC_ASSERT_AT(110, offsetof(CEngine, EngineComponents) == 0x168);
+#ifdef FABLE_RETAIL_CENGINE_TYPED_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(CEngine::CPreloadStats) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CEngine, PreloadCameras) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEngine, PreloadStats) == 0x48);
+FABLE_STATIC_ASSERT(sizeof(CEngineVideoOptions) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CEngine, FrameMemoryPool) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CEngine, ScratchZBuffersD24S8) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CEngine, RenderLayers) == 0x15c);
+#endif
 #else // generated flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngine = 0x188.
