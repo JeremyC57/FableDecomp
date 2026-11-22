@@ -95056,9 +95056,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042d4f0'
-        Module = '_gapscan'
-        Source = '00/42/gapscan_sub0042d4f0_0042d4f0.cpp'
-        TestSource = '00/42/gapscan_sub0042d4f0_0042d4f0_test.cpp'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_GetMouseDisabled_0042d4f0.cpp'
+        TestSource = '00/42/NUISystemCManager_GetMouseDisabled_0042d4f0_test.cpp'
         PassPattern = 'PASS_0042d4f0'
     }
     [pscustomobject]@{
@@ -95168,9 +95168,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042d5aa'
-        Module = '_gapscan'
-        Source = '00/42/gapscan_sub0042d5aa_0042d5aa.cpp'
-        TestSource = '00/42/gapscan_sub0042d5aa_0042d5aa_test.cpp'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_GetRightStickForce_0042d5aa.cpp'
+        TestSource = '00/42/NUISystemCManager_GetRightStickForce_0042d5aa_test.cpp'
         PassPattern = 'PASS_0042d5aa'
     }
     [pscustomobject]@{
@@ -226786,8 +226786,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0055c950'
         Module = 'NUISystem::CObservable'
-        Source = '00/55/NUISystemCObservable_RemoveAllObservers_0055c950.cpp'
-        TestSource = '00/55/NUISystemCObservable_RemoveAllObservers_0055c950_test.cpp'
+        Source = '00/55/NUISystemCObservable_ClearObservers_0055c950.cpp'
+        TestSource = '00/55/NUISystemCObservable_ClearObservers_0055c950_test.cpp'
         PassPattern = '0055c950_TEST PASS'
     }
     [pscustomobject]@{

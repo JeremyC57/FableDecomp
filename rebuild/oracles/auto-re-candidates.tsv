@@ -9912,9 +9912,9 @@ address	name	length	bytes
 0042ab73	std::_List_base<long, std::allocator<long>>::~_List_base	23	568bf1e8edf5ffff8b3685f6740756e88d3e7d00595ec3
 0042abca	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list	23	568bf1e8bdf5ffff8b3685f6740756e8363e7d00595ec3
 0042b755	std::list<T_0042b755>::~list	23	568bf1e884f4ffff8b3685f6740756e8ab327d00595ec3
-0042b796	std::list<T_0042b796>::~list	23	568bf1e8d8f4ffff8b3685f6740756e86a327d00595ec3
-0042b7d7	std::list<T_0042b7d7>::~list	23	568bf1e8e4f4ffff8b3685f6740756e829327d00595ec3
-0042ce63	std::list<T_0042ce63>::~list	23	568bf1e8c4f1ffff8b3685f6740756e89d1b7d00595ec3
+0042b796	std::_Rb_tree<NUISystem::CManager::EUsedKeys,std::pair<NUISystem::CManager::EUsedKeys const,long>,std::_Select1st<std::pair<NUISystem::CManager::EUsedKeys const,long> >,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::~_Rb_tree	23	568bf1e8d8f4ffff8b3685f6740756e86a327d00595ec3
+0042b7d7	std::_Rb_tree<long,std::pair<long const,EEngine2DLayer>,std::_Select1st<std::pair<long const,EEngine2DLayer> >,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::~_Rb_tree	23	568bf1e8e4f4ffff8b3685f6740756e829327d00595ec3
+0042ce63	std::_Rb_tree<CCharString,std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> >,std::_Select1st<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > >,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::~_Rb_tree	23	568bf1e8c4f1ffff8b3685f6740756e89d1b7d00595ec3
 004301f3	std::list<T_004301f3>::~list	23	568bf1e84bfeffff8b3685f6740756e80de87c00595ec3
 00493bdd	std::_List_base<const CMessageEvent*,std::allocator<const CMessageEvent*> >::~_List_base	23	568bf1e82cfdffff8b3685f6740756e823ae7600595ec3
 004dd5ad	std::list<T_004dd5ad>::~list	23	568bf1e8d2e6ffff8b3685f6740756e853147200595ec3
@@ -13314,9 +13314,9 @@ address	name	length	bytes
 0042b6dc	CRegion::SetMiniMapRegionExitTextOffsetX	20	ff742408e846f1ffff8b4c240489018bc1c20800
 0042bef2	CRegion::SetMiniMapRegionExitTextOffsetX	20	ff742408e86cf5ffff8b4c240489018bc1c20800
 0042bf35	std::map<T_0042bf35>::map	25	558bec51568d45ff508d45ff508bf1e8e2f7ffff8bc65ec9c3
-0042bf67	std::map<T_0042bf67>::map	25	558bec51568d45ff508d45ff508bf1e8f1f7ffff8bc65ec9c3
-0042bf85	std::map<T_0042bf85>::map	25	558bec51568d45ff508d45ff508bf1e814f8ffff8bc65ec9c3
-0042d28b	std::map<T_0042d28b>::map	25	558bec51568d45ff508d45ff508bf1e84fe5ffff8bc65ec9c3
+0042bf67	std::map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys const,long> > >::map	25	558bec51568d45ff508d45ff508bf1e8f1f7ffff8bc65ec9c3
+0042bf85	std::map<long,EEngine2DLayer,std::less<long>,std::allocator<std::pair<long const,EEngine2DLayer> > >::map	25	558bec51568d45ff508d45ff508bf1e814f8ffff8bc65ec9c3
+0042d28b	std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString const,CCountedPointer<NUISystem::CComponent> > > >::map	25	558bec51568d45ff508d45ff508bf1e84fe5ffff8bc65ec9c3
 0043024e	std::map<T_0043024e>::map	25	558bec51568d45ff508d45ff508bf1e867ffffff8bc65ec9c3
 00430345	std::map<T_00430345>::map	25	558bec51568d45ff508d45ff508bf1e846feffff8bc65ec9c3
 0043fcd0	_global::StdList_Dtor_0043fcd0	25	568bf1e858f5ffff8b3685f6740956e830ed7b0083c4045ec3
@@ -14531,7 +14531,7 @@ address	name	length	bytes
 0041cbd7	NUISystem::COk::SetOkCallBack	13	8b44240489815c010000c20400
 0041cc11	NUISystem::CControllerDisconnect::ProcessEvent	3	c20400
 0042bea9	NUISystem::CObservable::GetExclusiveObserver	4	8b4108c3
-0042d4f0	NUISystem::CManager::vfunc_11	7	8a81c9000000c3
+0042d4f0	NUISystem::CManager::GetMouseDisabled	7	8a81c9000000c3
 0042d50e	NUISystem::CManager::SetWeaponsInventory	10	8b44240489413cc20400
 0042d518	NUISystem::CManager::SetMapInventory	10	8b442404894140c20400
 0042d522	NUISystem::CManager::SetQuestInventory	10	8b442404894144c20400
@@ -14547,7 +14547,7 @@ address	name	length	bytes
 0042d580	NUISystem::CManager::SetChange	10	8b44240489416cc20400
 0042d58a	NUISystem::CManager::GetChange	4	8b416cc3
 0042d58e	NUISystem::CManager::GetMetaLayer	4	8b417cc3
-0042d5aa	NUISystem::CManager::vfunc_39	7	8d8194000000c3
+0042d5aa	NUISystem::CManager::GetRightStickForce	7	8d8194000000c3
 0042f864	CCountedPointer<const CFontBank>::DeleteData	11	85c974068b016a01ff10c3
 0042f8a4	CCountedPointer<CASoundBank>::DeleteData	11	85c974068b016a01ff10c3
 004308f0	NUISystem::CUIMiscThingsDef::GetSizeofClass	6	b860020000c3
@@ -32178,7 +32178,7 @@ address	name	length	bytes
 00f2d200	CFeatDef::operator=	111	56578b7c240c578bf1e8024d50ff8b47288946288b4f2c894e2c8b57308956308b47348946348b4f38894e388b573c89563c8b47408946408a4f44884e448b57488956488a474c88464c8b4f50894e508b57548956548b47588946588a4f5c884e5c8b57605f8956608bc65ec20400
 00f2d270	CFeatDef::CFeatDef	117	56578b7c240c578bf1e8ce9153ffc70678b72f018b47288946288b4f2c894e2c8b57308956308b47348946348b4f38894e388b573c89563c8b47408946408a4f44884e448b57488956488a474c88464c8b4f50894e508b57548956548b47588946588a4f5c884e5c8b57605f8956608bc65ec20400
 0041c0e0	CGraphicFrame::operator=	106	56578bf98b3785f6744bff0e7547f6461a1074078bcee8a50a5e008b460c85c0741cff088b460c83380075128b4808ff50048b460c50e8a1287e0083c40456c7460800000000c7460c00000000e88a287e0083c4048b4c240c8b0185c089077402ff008bc75f5ec20400
-0055c950	NUISystem::CObservable::RemoveAllObservers	98	568bf18b4604578b383bf874178d49008bc78b3f50e8aa206a008b460483c4043bf875ec8b460489008b4604894004c74608000000008b460c8b383bf87415908bc78b3f50e87a206a008b460c83c4043bf875ec8b460c89008b760c5f8976045ec3
+0055c950	NUISystem::CObservable::ClearObservers	98	568bf18b4604578b383bf874178d49008bc78b3f50e8aa206a008b460483c4043bf875ec8b460489008b4604894004c74608000000008b460c8b383bf87415908bc78b3f50e87a206a008b460c83c4043bf875ec8b460c89008b760c5f8976045ec3
 005faba0	CTCInventoryMap::IsThingAsPosBeingDrawn	118	8a818401000084c08b5424047410d94208d81d403d2501dfe0f6c441744e8a818501000084c07410d94208d81d403d2501dfe0f6c4417b348a818601000084c07410d94204d81d88702501dfe0f6c4417b1a8a818701000084c07415d94204d81d88702501dfe0f6c441750532c0c20400b001c20400
 006bb720	CGameTimeManager::FastForwardTimeTo	101	d9442404d815dcde2201dfe0f6c4057a0addd8d905dcde2201eb15d815d8de2201dfe0f6c4417508ddd8d905d8de2201d9442408d81d3cba2901dfe0f6c44175118b442408d95924c6412101894128c20800d85108dfe0f6c4057a03ff4114d95908c20800
 006bbba0	CGameTimeManager::Load	129	83ec58566a006aff8bf1680ed722018d4c2410e838302e00508b4424686a00508d4c2418e8578bd4ff8d4c2404e80e2f2e006a006a006a006a016a008d4c241c518d4c2448e8e6f12f008d542430528bcee8cafeffff8d4c241ce8b18ad4ff8d4c2418e8d82e2e008d4c2414e8cf2e2e008d4c2408e8c6e62d005e83c458c20400

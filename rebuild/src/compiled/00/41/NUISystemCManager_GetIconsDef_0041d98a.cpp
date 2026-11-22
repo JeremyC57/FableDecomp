@@ -1,6 +1,14 @@
 // NUISystem::CManager::GetIconsDef() -- retrieve UI definition through supplied or global manager.
+// Leaf: ?GetIconsDef@CManager@NUISystem@@UAE?AV?$CDefPointer@VCUIIconsDef@NUISystem@@@@XZ
 // Retail0041d98a length163. String ctor99EBF0/dtor99EAE0; class-array index9AD390; global44C6B0.
 // Refcount base native destructor slot0/Delete const slot1; template erases pointee to this base.
+// Name (NF227, 2026-11-22, q12582 / q12583): virtual -- slot 43 of NUISystem::CManager's vtable 0x01230134 (its only reference,
+//   .rdata 0x012301E0; engine/NUISystem_CManager.h slot 43); Ego_r.pdb / FableWin.pdb / Ego_d.pdb
+//   ?GetIconsDef@CManager@NUISystem@@UAE?AV?$CDefPointer@VCUIIconsDef@NUISystem@@@@XZ (public virtual). In-place respell of the existing
+//   local CManager model, as its slot-42 sibling 0x0041D8E7 GetMiscThingsDef (agentNF16) and 0x0041E1CD SetMetaLayer (landing nf226):
+//   the member becomes `virtual` and the vptr takes the first dword of the opaque UI state (m_pDefinitionManager stays +0x64). Was
+//   ?GetIconsDef@CManager@NUISystem@@QAE?AV?$CDefPointer@VCUIIconsDef@NUISystem@@@@XZ (non-virtual), while the header vtable COMDAT of
+//   0x0041E641 / 0x0041E3F6 binds the slot as UAE. No vtable is emitted (no constructor / destructor in the TU).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 #define CManager CManagerDonor
@@ -57,10 +65,10 @@ namespace NUISystem {
 class CManager { public:
  // Explicit native member projection: PDB donor+88 is retail+64 (0041d8f3).
  // Header preserved above; preceding UI state is opaque, no fabricated vtable slots.
- unsigned char NativeUIState[0x64];
+ unsigned char NativeUIState[0x64-4];
  CDefinitionManager* m_pDefinitionManager;
- CDefPointer<CUIMiscThingsDef> GetMiscThingsDef();
- CDefPointer<CUIIconsDef> GetIconsDef();
+ virtual CDefPointer<CUIMiscThingsDef> GetMiscThingsDef();
+ virtual CDefPointer<CUIIconsDef> GetIconsDef();
 };
 }
 #ifdef _MSC_VER

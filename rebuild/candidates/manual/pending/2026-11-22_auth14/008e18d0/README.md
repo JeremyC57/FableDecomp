@@ -20,3 +20,9 @@
   IsDebuggerPresent assert lines, the prolog); the opt-in's PDB evidence and a regrade of the landed users of 0x006E2500 / sibling
   0x007A1380 with it defined; the Flags line (`/Gr`, against Ego_d's compile line and TU-mate 0x008DD7E0); a strict-headers dry run and
   the header proof.
+
+## Default-inline-flag sweep (AUTH17, 2026-11-22; `../sweep_default_inline_flags.tsv`)
+- 12 unlanded rows with `/d2inl*` drafts: every control reproduced, and none matches without the flag.
+- 0x00F3E120's `/Gr /d2inlT70` is byte-identical to `/Gr` alone (DIFFER 1411v1411 both ways), so drop the T70 from its record.
+- Closer without the flag but still DIFFER: 0x0089CE70 (616v616 exact length), 0x00D09010 (5832v5864, was 5672).
+- 6 rows had no flagged draft (the flag appears only in probes).

@@ -1,31 +1,16 @@
-// std::map<T_0042d28b>::map() -- STLport map default constructor (Compare() and allocator() temporaries passed to _Rb_tree(comp, alloc) @ 0x0042B7EE); kept as the landed by-value method shape returning this
-// Leaf: ?map@map_T_0042d28b@std@@
-// Renamed (fistp2, 2026-10-24) from CDisplayManager::CopyBackBufferToTexture @ 00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b.cpp: map/set default constructor: two empty temporaries (the Compare and the allocator) are built in one reused [ebp-1] slot and passed by reference to the two-argument tree constructor @ 0x0042B7EE (whose body is _Rb_tree(comp, alloc): _Rb_tree_base(alloc) then size = 0, head colour/parent cleared, left/right self-linked); the CDisplayManager::CopyBackBufferToTexture label is propagated nonsense (no display manager, no texture); key/value types not recoverable from the bytes
-#pragma optimize("s",on)
-// CDisplayManager::CopyBackBufferToTexture @ 0x004df7ff
-// __fastcall CTexture* (CDisplayManager*)
-//
-// The retail body forms two 1-byte stack temporaries in disjoint lifetimes
-// (so both reuse the same [ebp-1] slot), takes the address of each, passes
-// the pair to a __fastcall member helper (call 0x004dd12f), keeps `this` in a
-// callee-saved register (esi) across the call, and returns `this` cast to
-// CTexture*. VC7.1 emits two separate `lea eax,[ebp-1]` because the two temps
-// are distinct source objects that happen to share the reused slot.
-
-
-namespace std {
-struct map_T_0042d28b {
-    void _Rb_tree_0042b7ee(char* a, char* b);
-    map_T_0042d28b* map();
-};
-}
-
-std::map_T_0042d28b* std::map_T_0042d28b::map()
-{
-    char* p;
-    char* q;
-    { char a; p = &a; }
-    { char b; q = &b; }
-    _Rb_tree_0042b7ee(p, q);
-    return (map_T_0042d28b*)this;
-}
+// std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::map() -- STLport 4.6 map no-argument constructor of NUISystem::CManager's BastardChildren +0x88: the Compare() and allocator() temporaries (one reused [ebp-1] slot) passed to the tree constructor _Rb_tree(comp, alloc) (out of line)
+// Leaf: ??0?$map@VCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0042D28B, 25 bytes, frame-pointer size-optimised TU.
+// Name (NF227, 2026-11-22, q12577): the STLport spelling the header produces (FABLE_RETAIL_STLP_MAP: `map() : _M_t(Compare(), A()) {}`;
+//   STL instances have no PDB names: EXTRA_RULES 2026-11-20 "descriptive-by-library"). NF226's port of the CManager constructor
+//   0x0041E3F6 calls it for BastardChildren +0x88 and its pick-any copy equals this address (relocations alike); 0x0041E3F6 binds this spelling. Was the
+//   placeholder ?map@map_T_0042d28b@std@@QAEPAU12@XZ (catalog std::map<T_0042d28b>::map; first line was: std::map<T_0042d28b>::map() -- STLport map default constructor (Compare() and allocator() temporaries passed to _Rb_t...).
+// Model: engine/NUISystem_CManager.h (the member's map type) and stlport/fable_map.h; the explicit instantiation emits the member as
+//   its own COMDAT (the 0x008353B0 pattern). Defines and pragma as 0x0041E3F6 (the same retail TU).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
+#define FABLE_RETAIL_STLP_MAP
+#pragma optimize("s", on)
+#include "engine/CCountedPointer.h"
+#include "engine/NUISystem_CManager.h"
+template std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::map();
