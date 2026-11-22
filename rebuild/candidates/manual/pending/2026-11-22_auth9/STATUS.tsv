@@ -1,0 +1,2 @@
+address	state	best_grade	grades_used	best_source	note
+0x00763060	matched	RELOCATION_MATCH	14	/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/auth9/00763060/NShape_FractureShape_00763060.cpp	test PASS; TU-mate copies of 0x00760020/0x00760190; 0x007634E0 P1 (required) / P2 (optional) patches in ../007634e0

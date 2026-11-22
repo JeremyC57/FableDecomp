@@ -113,6 +113,8 @@ bool FABLE_FASTCALL IsTriangleWithPointsInside(const std::vector<C3DVector>& tri
     return false;
 }
 
+// Fidelity: same-TU strong definition of 0x00763060 (retail TU-mate), the owner row's body verbatim. Declaration-only measured
+// DIFFER for this leaf (639v627, frame 0x34 v 0x30).
 void FABLE_FASTCALL FractureShape(const std::vector<C3DVector>& test_shape,
                                  ECirculationOrder& circ,
                                  std::vector<std::vector<C3DVector> >& convex_shapes,

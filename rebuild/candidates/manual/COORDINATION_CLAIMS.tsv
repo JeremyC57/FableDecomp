@@ -230,3 +230,5 @@ date	account	item	kind	status	note
 2026-11-22	A	Codex pass 27 (100 rows)	codex	reserved	100 parked near misses reserved for Codex (pending/2026-11-22_codex_pass27/RESERVED.tsv); package built from HEAD headers + pass 26 landing lessons
 2026-11-22	A	0x00763060,0x00B30B50,0x008E18D0,0x00CF4EC0,0x00B4D370,0x00BD3070,0x00502E90,0x0093D270	authoring	claimed	agent AUTH9 (FractureShape and SetCameraState as own rows first, then the AUTH1 rows; 0x00A4EFC0 waits on the advisor)
 2026-11-22	A	q12403	naming	done	NF221 landed as nf221 (4 rows); the ReleaseData family (q12226-q12229, q12402) stays blocked, 42 rows saved in pending/2026-11-22_nf221_handback
+2026-11-22	A	q12226,q12227,q12228,q12229,q12402	naming	claimed	agent NF222: finish the ReleaseData family (2 AcquireFont rows, 0x005BFF07) and hand it back whole
+2026-11-22	A	0x00763060	authoring	done	AUTH9: landed (batches/2026-11-22_landing_auth9_fractureshape)

@@ -402604,6 +402604,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0068e510_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00763060'
+        Module = 'NShape'
+        Source = '00/76/NShape_FractureShape_00763060.cpp'
+        TestSource = '00/76/NShape_FractureShape_00763060_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00763060_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

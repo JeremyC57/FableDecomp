@@ -1,0 +1,63 @@
+--- a/rebuild/tests/00/76/NShapeCBasicShape_UpdateSubdivisions_007634e0_test.cpp
++++ b/rebuild/tests/00/76/NShapeCBasicShape_UpdateSubdivisions_007634e0_test.cpp
+@@ -9,6 +9,7 @@
+ #define FABLE_RETAIL_C2DLINEF_FROM3D
+ #define FABLE_RETAIL_C2DLINEF_INTERSECTS_LINE
+ #define FABLE_RETAIL_C2DVECTOR_SQUAREDMAGNITUDE_YX
++#define FABLE_RETAIL_C3DVECTOR_CROSSWITHUP
+ #define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_OUTOFLINE
+ #define FABLE_RETAIL_STLP_UNINIT_COPY_FALSE_FASTCALL_PASS26
+ #define FABLE_RETAIL_STLP_VECTOR_C
+@@ -55,8 +56,9 @@
+ }
+ namespace NShape {
+ 
+-// Fidelity: same-TU strong definition of 0x00760020
+-bool FABLE_FASTCALL IsLineIntersectingWithOthersInList(const C2DLineF& line, const std::vector<C3DVector>& points_list)
++// Fidelity: same-TU strong definition of 0x00760020 (retail TU-mate), the owner row's body verbatim; the FractureShape TU-mate
++// needs it (declaration-only measured DIFFER for 0x00763060: 0x00760020 declared 1156v1146, 0x00760190 declared 1164v1146).
++bool __fastcall IsLineIntersectingWithOthersInList(const C2DLineF& line, const std::vector<C3DVector>& points_list)
+ {
+     long number_of_intersections = 0;
+     std::vector<C3DVector>::const_iterator it = points_list.begin();
+@@ -79,17 +81,15 @@
+             number_of_intersections++;
+         else if ((this_line.Point1 - line.Point2).GetSquaredMagnitude() < DELTA_NOTIONAL_ZERO && (this_line.Point2 - line.Point1).GetSquaredMagnitude() < DELTA_NOTIONAL_ZERO)
+             number_of_intersections++;
+-        else {
+-            C2DVector intersection;
+-            if (this_line.IntersectsWith(line, intersection, DELTA_NOTIONAL_ZERO))
+-                number_of_intersections++;
+-        }
++        else if (this_line.IntersectsWith(line, C2DVector(), DELTA_NOTIONAL_ZERO))
++            number_of_intersections++;
+         start_pos = end_pos;
+     }
+     return number_of_intersections > 4;
+ }
+-// Fidelity: same-TU strong definition of 0x00760190
+-bool FABLE_FASTCALL IsTriangleWithPointsInside(const std::vector<C3DVector>& triangle, const std::vector<C3DVector>& p_list, ECirculationOrder circ)
++// Fidelity: same-TU strong definition of 0x00760190 (retail TU-mate), the owner row's body verbatim; the FractureShape TU-mate
++// needs it (declaration-only measured DIFFER for 0x00763060: 0x00760020 declared 1156v1146, 0x00760190 declared 1164v1146).
++bool __fastcall IsTriangleWithPointsInside(const std::vector<C3DVector>& triangle, const std::vector<C3DVector>& p_list, ECirculationOrder circ)
+ {
+     long number_of_points_inside = 0;
+     for (std::vector<C3DVector>::const_iterator it = p_list.begin(); it != p_list.end(); ++it)
+@@ -112,7 +112,7 @@
+             }
+             C3DVector line = end_pos - start_pos;
+             C3DVector edge = *it - start_pos;
+-            C3DVector perp(line.Y, -line.X, 0.0f);
++            C3DVector perp = line.CrossWithUp();
+             if (circ == CIRCULATION_ANTICLOCKWISE)
+                 perp *= -1.0f;
+             if (perp.Dot(edge) > -DELTA_NOTIONAL_ZERO)
+@@ -127,6 +127,8 @@
+     return false;
+ }
+ 
++// Fidelity: same-TU strong definition of 0x00763060 (retail TU-mate), the owner row's body verbatim. Declaration-only measured
++// DIFFER for this leaf (639v627, frame 0x34 v 0x30).
+ void FABLE_FASTCALL FractureShape(const std::vector<C3DVector>& test_shape,
+                                  ECirculationOrder& circ,
+                                  std::vector<std::vector<C3DVector> >& convex_shapes,

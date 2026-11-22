@@ -39465,3 +39465,7 @@ _EAXPROPERTYID_EAX40_Source	012b94a8	00c4f600
 ?IsEventContextSensitiveItemButton@CInputProcessGameBase@@IBE_NABVCInputEvent@@AAJ@Z	00687ce0	0068e510
 ?IsEventQuickAccessItemButton@CInputProcessGameBase@@IBE_NABVCInputEvent@@AAJ@Z	00687c80	0068e510
 ?IsOtherQuickAccessItemButtonHeld@CInputProcessGameBase@@IBE_NJ@Z	00687c90	0068e510
+??$__find_if@PAVC3DVector@@VCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@@std@@YIPAVC3DVector@@PAV1@0VCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@ABUrandom_access_iterator_tag@0@@Z	00763f50	00763060
+?IsLineIntersectingWithOthersInList@NShape@@YI_NABVC2DLineF@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z	00760020	00763060
+?IsTriangleWithPointsInside@NShape@@YI_NABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@0W4ECirculationOrder@1@@Z	00760190	00763060
+?push_back@?$vector@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@V?$allocator@V?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@2@@std@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@2@@Z	00765c80	00763060
