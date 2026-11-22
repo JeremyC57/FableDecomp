@@ -278,3 +278,4 @@ date	account	item	kind	status	note
 2026-11-22	A	0x00B4D370,0x00BD3070	authoring	parked-advisor	AUTH21 (last Opus run): both wait on the C2T1 comparator readout (pending/2026-11-22_auth21/)
 2026-11-22	A	0x00502E90,0x0066B370,0x00A68DE0,0x00839420,0x00651273,0x00816410	authoring	claimed	agent AUTH22 on Fable 5.2 (owner trial; pending/2026-11-22_auth22/BRIEF.md)
 2026-11-22	A	q12629-q12632	naming	done	NF232 landed as nf232 (6 rows)
+2026-11-22	A	q12635-q12640	naming	claimed	agent NF233 (nf232 follow-ups: CNewFrontendGameComponent family, 0x00495780)
