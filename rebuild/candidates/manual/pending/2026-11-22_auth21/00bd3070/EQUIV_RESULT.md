@@ -1,0 +1,1 @@
+# AUTH21 hdr_00bd3070.patch equivalence (equiv_check over all landed rows, finished after hand-back): NOT equivalent, 1357 differing lines (00BD1F70, 00BD71B0 and many 0x0121xxxx rows). Do not land the patch as is; find which opt-in leaks into the default token stream first.

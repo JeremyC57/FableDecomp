@@ -491,3 +491,4 @@
   The winning change sat in an INLINED HELPER (a named local in the AL resolver), and it was accepted only after every landed owner and inliner
   of that helper regraded equal with it.
 - (landing nf222 / nf223 / nf225, 2026-11-22) equiv_check flagged the same 6 rows (0x00CBFB7D, 0x0047042A, 0x00BA2350, 0x00BA5260, 0x00BA50A0, 0x0093AB70) for every header change: `__FILE__` in engine/GFDebugPDynamicCast.h expands to the include-tree path, which differs between the old and new trees. equiv_check now replaces the tree path with TREE; those rows no longer differ.
+- c2 comparator readout (2026-11-22, C2T1): a comparator bit that flips need not change the emitted code (12 of 12 flipped IND*symbol products on 0x00B4D370 emitted identical code); check tool order = emitted order at a site before using it (`lane_tools/c2probe/lk/README.md`).

@@ -426,3 +426,18 @@ retail's function never calls (or the reverse). Size arguments that only show "m
     missing; candidates still come from evidence, never from the readout.
   - Authoring restarts without waiting on the tools (AUTH21: item 1, then 0x00BD3070's ~15 row-local forceinlines into shared headers,
     then 0x00502E90). Leave the GFLimit guard alone.
+
+- **2026-11-22 (Account A, advisor): C2T1's comparator tools.** Accepted as an instrument and committed (`lane_tools/c2probe/lk/`); the
+  "no other bit changes" half of the acceptance test is withdrawn: it assumed every comparator bit is visible in code, and on 0x00B4D370
+  12 of 12 flipped binary products emitted identical code. Proven: keys recompute, the zero-shift replay reproduces all 34,291 sorts,
+  a repeat compile gives 0 flips, and the target site's tool order equals the emitted order in both builds. Scope + the corrected IND
+  rule (`[0x4000*(X mod 4) + 8 >= 64Y mod 65536]`) at the top of the README. Caveats: rerun the p8-v-p8b control with the final lka
+  (must give 0 flips); fsolve over-predicts (10 extra flips at +1), a screen only.
+  - Also: AUTH21 refuted the 2026-11-22 frame-placement item for 0x00B4D370 (p5 has the same wrong frame and is 7176 B; the 14 B are
+    x87 operand picks plus the 10-B loop pad they cost).
+  - Next (tools agent C2T2): (1) 0x00B4D370, no new run: per residue site, p9's tool order v p9's emitted order (agree = addressable;
+    disagree = the tool says nothing; check what the wfA6g notes found there). (2) 0x00BD3070, one lk run on c6 (11 of 13 picks are
+    test / or, the rule's measured domain): the same check on all 13 sites, then fsolve for the flips retail needs. (3) Terminal standard:
+    if fsolve gives a shift the allocator hook can force, force it on the real row; RELOCATION_MATCH proves a numbering tie = outcome (A)
+    unless evidence supplies the text; an empty solution set means not a uniform shift (report the conflicting sites). Candidates still
+    come from PDB evidence, pre-registered, graded once; never fit text to a record count.
