@@ -12,7 +12,7 @@ extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);   // I
 class CThreadedFile;
 
 class CThreadedFileManager { public:
-    void RemovePendingRequests(CThreadedFile* file);   // 0x0098E7D0
+    void CloseAllStreamsForFile(CThreadedFile* file);   // 0x0098E7D0; NF296: PDB name, was RemovePendingRequests
 };
 extern CThreadedFileManager g_ThreadedFileManager;    // 0x013BC870
 
@@ -35,7 +35,7 @@ class CThreadedFile { public:
 void CThreadedFile::Close()
 {
     if (FileHandle != (void*)-1) {
-        g_ThreadedFileManager.RemovePendingRequests(this);
+        g_ThreadedFileManager.CloseAllStreamsForFile(this);
         CloseHandle(FileHandle);
         FileHandle = (void*)-1;
         OpenFlag = false;

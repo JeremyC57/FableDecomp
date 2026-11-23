@@ -12,7 +12,7 @@
 class CTCBase;
 class CTCCreatureModeManager {
 public:
-    void RestartCurrentMode();                                   // 0x0073A840
+    void RefreshCurrentMode();                                   // 0x0073A840; NF296: PDB name, was RestartCurrentMode
 };
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
@@ -42,5 +42,5 @@ void CTCBerserk::OnKill()
 {
     CTCCreatureModeManager* tc;
     ParentThing->GetTC(TCI_ENTITY_MODE_MANAGER, &tc);
-    tc->RestartCurrentMode();
+    tc->RefreshCurrentMode();
 }

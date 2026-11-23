@@ -22,7 +22,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 class CThingManager { public:
-    CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80; NF296: PDB name, was GetThingByUID
 };
 class CTCBase
 {
@@ -43,5 +43,5 @@ class CTCPreCalculatedNavigationRoute : public CTCBase { public:
 void CTCPreCalculatedNavigationRoute::OnInitialActivate()
 {
     if (ThingToCalculateRouteToUID)
-        PThingToCalculateRouteTo = CIntelligentPointer<const CThing>(GetThingManager().GetThingByUID(ThingToCalculateRouteToUID));
+        PThingToCalculateRouteTo = CIntelligentPointer<const CThing>(GetThingManager().GetPThingWithUID(ThingToCalculateRouteToUID));
 }

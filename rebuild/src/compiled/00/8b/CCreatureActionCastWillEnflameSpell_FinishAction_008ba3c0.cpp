@@ -96,7 +96,7 @@ struct CTCShowableItem {
 class CTCCarrying;
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 class CTCCarrying { public:
-    bool IsPrimarySlotEmpty();                        // 0x006A1270
+    bool IsPrimarySlotFree() const;                        // 0x006A1270; NF296: PDB name, was IsPrimarySlotEmpty
     CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
     void RemoveThing(CThing& thing);                  // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     bool IsCarryingThing(const CThing& thing) const;   // 0x006A1060 (Ego_r/FableWin ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z)
@@ -110,7 +110,7 @@ class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);           // 0x00733E10
 };
 class CTCCreatureModeManager { public:
-    void UpdateFrontMode();                           // 0x0073A840
+    void RefreshCurrentMode();                           // 0x0073A840; NF296: PDB name, was UpdateFrontMode
 };
 struct CTCEnflame {
     unsigned char _pad[0xd];
@@ -140,7 +140,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
     if (IS_THING_ALIVE(item)) {
         CTCCarrying* carrying;
         ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46);
-        if (!carrying->IsPrimarySlotEmpty()) {
+        if (!carrying->IsPrimarySlotFree()) {
             CThing* thing = carrying->GetThingInPrimarySlot();
             if (thing->HasTC(0x48))
                 DropWeapon(thing, carrying, ((CThing*)PCreature.GetPItem()));
@@ -151,7 +151,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
                 if (!carrying->IsCarryingThing(*thing))
                     showable->OnShowEnded();
             }
-            if (!carrying->IsPrimarySlotEmpty())
+            if (!carrying->IsPrimarySlotFree())
                 carrying->RemoveThingFromPrimarySlot(false);
         }
         if (carrying->IsCarryingThing(*((CThing*)item.GetPItem())))
@@ -167,7 +167,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
             combat->SetMeleeFlourishValid(false);
         CTCCreatureModeManager* modes;
         ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
-        modes->UpdateFrontMode();
+        modes->RefreshCurrentMode();
         if (((CThing*)PCreature.GetPItem())->GetPlayer().IsMainPlayer())
             ((CThing*)PCreature.GetPItem())->GetPlayer().SetAggressiveMode(true);
     }

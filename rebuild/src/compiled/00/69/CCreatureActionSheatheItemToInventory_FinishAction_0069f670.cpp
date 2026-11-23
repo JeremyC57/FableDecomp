@@ -43,7 +43,7 @@ class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 class CTCCreatureModeManager { public:             // interface type 0x31 component
-    void UpdateFrontMode();                 // 0x0073A840
+    void RefreshCurrentMode();                 // 0x0073A840; NF296: PDB name, was UpdateFrontMode
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -63,7 +63,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     unsigned char _pad10[0x62 - 0x10];      // +0x10
     bool PerformedAction;                   // +0x62
     unsigned char _pad63[0xa8 - 0x63];
-    bool GetPerformedAction() const;        // 0x006925A0
+    bool HasPerformedAction() const;        // 0x006925A0; NF296: PDB name, was GetPerformedAction
 };
 struct SCountedBlock;
 class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
@@ -74,7 +74,7 @@ class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { publ
 
 void CCreatureAction_SheatheItemToInventory::FinishAction()
 {
-    if (!GetPerformedAction())
+    if (!HasPerformedAction())
         PerformAction();
     CCreatureActionBase::FinishAction();
     if (m_pNextAction) {
@@ -83,5 +83,5 @@ void CCreatureAction_SheatheItemToInventory::FinishAction()
     }
     CTCCreatureModeManager* pModes;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&pModes, 0x31))
-        pModes->UpdateFrontMode();
+        pModes->RefreshCurrentMode();
 }

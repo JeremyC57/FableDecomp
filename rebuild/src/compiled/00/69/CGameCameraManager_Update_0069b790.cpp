@@ -38,7 +38,7 @@ public:
 private:
  void UpdateRightStickLookAround(); //00697CC0
 public:
- void UpdateEarthQuakes(); //00698540
+ private: void UpdateEarthquake(); public: //00698540; NF296: PDB name, was UpdateEarthQuakes
  void CameraValidationCheck(); //0069AB80
  void Update();
 };
@@ -46,7 +46,7 @@ void CGameCameraManager::Update(){
  if(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())&&!(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())->LifetimeFlags&1)) {
   UpdatePrepareFlags();UpdateMode();UpdateCleanupFlags();OldCamera=Camera;
   UpdateHeightLimits();CamTools.FrameUpdate();CurrentMode->FrameUpdate();
-  UpdateCreatureControlAngleXY();UpdateRightStickLookAround();UpdateEarthQuakes();CameraValidationCheck();
+  UpdateCreatureControlAngleXY();UpdateRightStickLookAround();UpdateEarthquake();CameraValidationCheck();
   if(SingleCut){OldCamera=Camera;SingleCut=false;}
  }else OldCamera=Camera;
 }

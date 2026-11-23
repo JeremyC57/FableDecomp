@@ -62,7 +62,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
     return false;
 }
 
-float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00661540
+float __fastcall GFGetAngleXYTo(const C3DVector& from, const C3DVector& to);   // 0x00661540; NF296: PDB name, was AngleBetweenPositions
 float __fastcall GFGetSignedAngleDifference(float a, float b);                        // 0x00A441E0 (Ego_r.pdb ?GFGetSignedAngleDifference@@YIMMM@Z)
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) (1e-4f)
 
@@ -104,7 +104,7 @@ bool CTCLook::GetTurningAngles(float& targetAngle, float& turnAngle)
             if (LookFlags & 0x40) {
                 targetAngle = WrapAngle((float)atan2(DirectionToLookIn.X, DirectionToLookIn.Y) * 0.15915494f);
             } else if (physics->Position != PosToLookAt) {
-                targetAngle = AngleBetweenPositions(physics->Position, PosToLookAt);
+                targetAngle = GFGetAngleXYTo(physics->Position, PosToLookAt);
             }
             turnAngle = GFGetSignedAngleDifference(bodyXY, targetAngle);
             return true;

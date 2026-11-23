@@ -23,7 +23,7 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 class CTCCreatureModeManager { public:             // interface type 0x31
-    bool HasMode(unsigned long mode);       // 0x0073A8A0
+    bool IsModeActive(unsigned long mode) const;       // 0x0073A8A0; NF296: PDB name, was HasMode
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
@@ -55,7 +55,7 @@ void CCreatureAction_JackFall::FinishAction()
 {
     CTCCreatureModeManager* modes;
     PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-    if (modes->HasMode(0x33))
+    if (modes->IsModeActive(0x33))
         modes->RemoveMode(0x33);
     CThingCreatureBase* creature = GetCreature();
     CCombatActionBase::FinishAction();

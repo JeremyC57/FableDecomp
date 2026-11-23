@@ -104,7 +104,7 @@ class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);                  // 0x00733E10
 };
 class CTCCreatureModeManager { public:
-    void RestartCurrentMode();                               // 0x0073A840
+    void RefreshCurrentMode();                               // 0x0073A840; NF296: PDB name, was RestartCurrentMode
 };
 class CTCDivineWrath { public:
     virtual void v00();
@@ -153,6 +153,6 @@ void CTCDivineWrath::UnsheatheWeapon()
     CTCCreatureModeManager* modeManager;
     if (parent->HasTC(0x31))
         modeManager = parent->GetTC<CTCCreatureModeManager>(0x31);
-    modeManager->RestartCurrentMode();
+    modeManager->RefreshCurrentMode();
     parent->GetPlayer().SetAggressiveMode(true);
 }

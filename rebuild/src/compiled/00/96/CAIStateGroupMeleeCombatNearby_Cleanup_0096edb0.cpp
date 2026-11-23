@@ -141,7 +141,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 class CThingCreatureBase { public:
     bool IsInMeleeAsAttacker() const;         // 0x00662410 (Ego_r/FableWin ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ; manifest label C3DAnimationBlendState::AddCombinationBlend propagated)
-    bool IsInCombatMode();                      // 0x006621A0 (manifest label AreDefaultValsApplied propagated)
+    bool IsAbleToStrafe() const;                      // 0x006621A0 (manifest label AreDefaultValsApplied propagated); NF296: PDB name, was IsInCombatMode
 };
 
 enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED, AI_ACTION_RETURN_3, AI_ACTION_RETURN_4 };
@@ -187,7 +187,7 @@ void CAIStateGroup_MeleeCombatNearby::Cleanup()
         world = &GetWorld();
         world->CombatManager->DeregisterCombatant(*creature);
     }
-    if (((CThingCreatureBase*)PBrain->PCreature)->IsInCombatMode()) {
+    if (((CThingCreatureBase*)PBrain->PCreature)->IsAbleToStrafe()) {
         CTCCreatureModeManager* modes;
         PBrain->PCreature->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
         modes->RemoveMode(0x19);

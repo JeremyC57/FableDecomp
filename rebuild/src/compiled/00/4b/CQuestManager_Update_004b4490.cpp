@@ -52,7 +52,7 @@ class CGameScriptInterface { public:
     long          MainPlayerID;                        // +0x1c
 };
 class CScriptBase { public:
-    void UpdateScript();                               // 0x00CB8220
+    void RunSubThreads();                               // 0x00CB8220; NF296: PDB name, was UpdateScript
 };
 struct CActiveQuest {
     long         ID;                                   // +0x00
@@ -132,7 +132,7 @@ void CQuestManager::Update()
         if (quest->PScript != 0) {
             World->QuestRunState->CurrentQuestID = quest->ID;
             PQuestCurrentlyRunning = quest;
-            quest->PScript->UpdateScript();
+            quest->PScript->RunSubThreads();
             PQuestCurrentlyRunning = 0;
         }
     }

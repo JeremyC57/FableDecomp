@@ -1,0 +1,119 @@
+##### 004afa60 renames: 
+UNMAPPED old=['?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z'] new=['?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z']
+sections head 4 new 4
+DIFF 1 .text .text bytes True relocs False 160 160
+    (79, '?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z', 20) | (79, '?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z', 20)
+bad 1 text_sections_equal=0
+tables H=0 N=0
+##### 004afb00 renames: 
+UNMAPPED old=['?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z'] new=['?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z']
+sections head 4 new 4
+DIFF 1 .text .text bytes True relocs False 165 165
+    (79, '?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z', 20) | (79, '?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z', 20)
+bad 1 text_sections_equal=0
+tables H=0 N=0
+##### 004b26b0 renames: 
+UNMAPPED old=['?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z'] new=['?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z']
+sections head 11 new 11
+DIFF 10 .text .text bytes True relocs False 232 232
+    (75, '?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z', 20) | (75, '?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z', 20)
+bad 1 text_sections_equal=8
+tables H=1 N=1
+##### 0080fd30 renames: 
+UNMAPPED old=['?GetMaxCreatureCount@CTCAISummon@@QAEJXZ'] new=['?GetNumberCanSummon@CTCAISummon@@QBEJXZ']
+sections head 6 new 6
+DIFF 5 .text .text bytes True relocs False 85 85
+    (65, '?GetMaxCreatureCount@CTCAISummon@@QAEJXZ', 20) | (65, '?GetNumberCanSummon@CTCAISummon@@QBEJXZ', 20)
+bad 1 text_sections_equal=4
+tables H=0 N=0
+##### 0096e540 renames: 
+UNMAPPED old=['?GetMaxCreatureCount@CTCAISummon@@QAEJXZ'] new=['?GetNumberCanSummon@CTCAISummon@@QBEJXZ']
+sections head 12 new 12
+DIFF 11 .text .text bytes True relocs False 208 208
+    (145, '?GetMaxCreatureCount@CTCAISummon@@QAEJXZ', 20) | (145, '?GetNumberCanSummon@CTCAISummon@@QBEJXZ', 20)
+bad 1 text_sections_equal=10
+tables H=0 N=0
+##### 0065935e renames: ?ResetBrain@CThingAICreature@@QAEXXZ=?ForceAIReset@CThingAICreature@@QAEXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 006cd970 renames: 
+UNMAPPED old=['?FindPosZ@CThingCreatureBase@@QAEMABVC3DVector@@H_N@Z'] new=['?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z']
+sections head 2 new 2
+DIFF 1 .text .text bytes True relocs False 23 23
+    (16, '?FindPosZ@CThingCreatureBase@@QAEMABVC3DVector@@H_N@Z', 20) | (16, '?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z', 20)
+bad 1 text_sections_equal=0
+tables H=0 N=0
+##### 006cd990 renames: 
+UNMAPPED old=['?FindPosZAt@CThingCreatureBase@@QAEMABVC3DVector@@_N1@Z'] new=['?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z']
+sections head 2 new 2
+DIFF 1 .text .text bytes True relocs False 23 23
+    (16, '?FindPosZAt@CThingCreatureBase@@QAEMABVC3DVector@@_N1@Z', 20) | (16, '?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z', 20)
+bad 1 text_sections_equal=0
+tables H=0 N=0
+##### 0077b1c0 renames: ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z=?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 00730070 renames: ?FindThingByUID@CThingManager@@QAEPAVCThing@@_K@Z=?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z
+sections head 21 new 21
+ALL_EQ text_sections_equal=18
+tables H=2 N=2
+##### 00729bc0 renames: ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z=?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=1 N=1
+##### 00779340 renames: ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z=?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=9
+tables H=1 N=1
+##### 00800460 renames: ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z=?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=1 N=1
+##### 0098ec40 renames: ?RemovePendingRequests@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z=?CloseAllStreamsForFile@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0098ec70 renames: ?RemovePending@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z=?CloseAllStreamsForFile@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00991450 renames: ?RemovePendingRequests@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z=?CloseAllStreamsForFile@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=3
+tables H=1 N=1
+##### 00751c70 renames: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z=?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00751e80 renames: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z=?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z
+sections head 14 new 14
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 00752930 renames: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z=?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z=?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 007a9960 renames: ?GetAnaloguePosition@CInputEvent@@QBE?AVC2DVector@@XZ=?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ
+sections head 9 new 9
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0069f670 renames: ?GetPerformedAction@CCreatureActionBase@@QBE_NXZ=?HasPerformedAction@CCreatureActionBase@@QBE_NXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0069fc40 renames: 
+UNMAPPED old=['?GetPerformedAction@CCreatureActionBase@@QAE_NXZ'] new=['?HasPerformedAction@CCreatureActionBase@@QBE_NXZ']
+sections head 6 new 6
+DIFF 5 .text .text bytes True relocs False 136 136
+    (5, '?GetPerformedAction@CCreatureActionBase@@QAE_NXZ', 20) | (5, '?HasPerformedAction@CCreatureActionBase@@QBE_NXZ', 20)
+bad 1 text_sections_equal=4
+tables H=0 N=0
+##### 00848ae0 renames: 
+UNMAPPED old=['?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ'] new=['?HasPerformedAction@CCreatureActionBase@@QBE_NXZ']
+sections head 18 new 18
+DIFF 17 .text .text bytes True relocs False 143 143
+    (113, '?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ', 20) | (113, '?HasPerformedAction@CCreatureActionBase@@QBE_NXZ', 20)
+bad 1 text_sections_equal=15
+tables H=0 N=0

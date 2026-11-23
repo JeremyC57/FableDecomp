@@ -52,14 +52,14 @@ class CViewport : public CChangingStateComponent { public:   // vtables 0x01249A
     CEnginePrimitiveHandle m_primitive;        // +0x15c
     CComponentVector       m_fakeChildren;     // +0x164
     void*                  m_pView;            // +0x170
-    void InitialiseFromDef();                  // 0x0054E5D0
+    void GetDataFromDef();                  // 0x0054E5D0; NF296: PDB name, was InitialiseFromDef
     CViewport(long owner);
 };
 
 CViewport::CViewport(long owner)
     : CChangingStateComponent(owner), m_primitive(), m_fakeChildren(), m_pView(0)
 {
-    InitialiseFromDef();
+    GetDataFromDef();
 }
 
 }

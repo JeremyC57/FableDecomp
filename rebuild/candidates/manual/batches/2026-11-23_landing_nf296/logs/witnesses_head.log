@@ -1,0 +1,62 @@
+addr       parity           behav  name
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0069f9e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UnsheatheItemFromInventory (engine/CCreatureAction_UnsheatheItemFromInventory.h)
+0069f9e0   WARN RELOC_NAME: ?OnNotCarried@CTC1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+0069f9e0   RELOCATION_MATCH PASS   PerformAction
+006d83b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CTCHeroMorph (engine/CTCHeroMorph.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CAbilityTrackLevelDef (engine/CAbilityTrackLevelDef.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CAbilityTrackDef (engine/CAbilityTrackDef.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+006d83b0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+006d83b0   WARN RELOC_NAME: ?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ -> 0073a840 labelled 'CTCCreatureModeManager::RestartCurrentMode'
+006d83b0   RELOCATION_MATCH PASS   OnStatLevelChange
+00833010   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00833010   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00833010   WARN RELOC_NAME: ?OnNewBrain_008018b0@CTCIdleScheduler@@QAEXXZ -> 008018b0 labelled 'CTCIdleScheduler::Clear'
+00833010   WARN RELOC_NAME: ?PeekWorld@CThingAICreature@@QAEPAVCWorld@@XZ -> 004c7aa0 labelled 'CThing::GetWorld'
+00833010   WARN RELOC_NAME: ?GetDisplayEngine@CThingAICreature@@QAEPAVCDisplayEngine@@XZ -> 004c7a70 labelled 'CThing::PeekComponent'
+00833010   RELOCATION_MATCH PASS   SetNewBrain
+00977c40   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Guildmaster (engine/CAIStateGroup_Guildmaster.h)
+00977c40   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTrackName@@AAUCThingPtrVector@@@Z -> 00978250 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasScriptName>'
+00977c40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00977c40   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+00977c40   RELOCATION_MATCH PASS   OnActivate
+0097ec00   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0097ec00   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0097ec00   WARN RELOC_NAME: ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z -> 0097e270 labelled 'CAIStateGroupBase::SetThingToNotAvoid'
+0097ec00   WARN RELOC_NAME: ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z -> 0097e2d0 labelled 'CAIStateGroupBase::SetProximityForDirectApproach'
+0097ec00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+0097ec00   RELOCATION_MATCH PASS   AIAction_MoveToPos
+
+WINS: 5
+  0069f9e0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+  006d83b0 RELOCATION_MATCH CTCHeroExperience::OnStatLevelChange
+  00833010 RELOCATION_MATCH CThingAICreature::SetNewBrain
+  00977c40 RELOCATION_MATCH CAIStateGroup_Guildmaster::?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ
+  0097ec00 RELOCATION_MATCH CAIStateGroupBase::AIAction_MoveToPos

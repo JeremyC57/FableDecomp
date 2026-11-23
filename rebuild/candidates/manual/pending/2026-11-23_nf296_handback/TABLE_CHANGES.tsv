@@ -1,0 +1,81 @@
+action	symbol	target	witness	note
+delete	?IsSpawnPointToSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z	00d9f070	00d9ee20	no landed binder left (NF296)
+add	?ShouldSpawnPointSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z	00d9f070	00d9ee20	binder respelled by NF296
+delete	?DeactivateQuestLater@CQuestManager@@QAEXABVCCharString@@K@Z	004b0a30	00892f10	no landed binder left (NF296)
+delete	?ContainsMap@CRegion@@QBE_NJ@Z	006bbfa0	004fc190	no landed binder left (NF296)
+add	?IsMapIncluded@CRegion@@QBE_NJ@Z	006bbfa0	004fc190	binder respelled by NF296
+delete	?SetSunTan@CTCHeroMorph@@QAEXM@Z	0071c0c0	0057b0f7	no landed binder left (NF296)
+add	?SetTan@CTCHeroMorph@@QAEXM@Z	0071c0c0	0057b0f7	binder respelled by NF296
+delete	?CreateHeadEffect@CTCKrakenTentacle@@QAEXXZ	007f0b10	007f14f0	no landed binder left (NF296)
+add	?DoDieFX@CTCKrakenTentacle@@QAEXXZ	007f0b10	007f14f0	binder respelled by NF296
+delete	?AddRenownEntry@CTCOverheadDisplay@@QAEXM@Z	007b7cd0	0057d8be	no landed binder left (NF296)
+add	?AddRenownChange@CTCOverheadDisplay@@QAEXM@Z	007b7cd0	0057d8be	binder respelled by NF296
+delete	?UpdateSounds@CTCSoundPlayer@@QAEXXZ	0066b370	0066bbf0	no landed binder left (NF296)
+add	?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ	0066b370	0066bbf0	binder respelled by NF296
+delete	?CancelAbilities@CTCUnholyPower@@QAEXXZ	00794d90	0069f8b0	no landed binder left (NF296)
+add	?CancelMove@CTCUnholyPower@@QAEXXZ	00794d90	0069f8b0	binder respelled by NF296
+delete	?InitialiseVariablesCheck@CV_FisticuffsClubScript@NScript@@QAEXXZ	00e827a0	00e82650	no landed binder left (NF296)
+add	?SetCompletedThisClub@CV_FisticuffsClubScript@NScript@@QAEXXZ	00e827a0	00e82650	binder respelled by NF296
+delete	?ResetMissionState@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ	00e9fec0	00e9fcd0	no landed binder left (NF296)
+add	?InitialiseVariables@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ	00e9fec0	00e9fcd0	binder respelled by NF296
+delete	?InitialiseFromDef@CViewport@NUISystem@@QAEXXZ	0054e5d0	0054ea00	no landed binder left (NF296)
+delete	?InitialiseFromVolume@CVolume@@QAEXPAUIDirect3DVolume9@@@Z	00a67770	00a67ea0	no landed binder left (NF296)
+delete	?OnPresent@CVsyncCallbackTimer@@QAEXXZ	009f73c0	009beeb0	no landed binder left (NF296)
+delete	?SetEnabled@CWorld@@QAEX_N@Z	0049ea10	0088e400	no landed binder left (NF296)
+add	?SetMiniMapEnabled@CWorld@@QAEX_N@Z	0049ea10	0088e400	binder respelled by NF296
+delete	?ResetBrain@CThingAICreature@@QAEXXZ	006d5ab0	0065935e	no landed binder left (NF296)
+delete	?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z	0051ed80	0077b1c0	no landed binder left (NF296)
+delete	?FindThingByUID@CThingManager@@QAEPAVCThing@@_K@Z	0051ed80	00730070	no landed binder left (NF296)
+delete	?RemovePendingRequests@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z	0098e7d0	0098ec40	no landed binder left (NF296)
+delete	?RemovePending@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z	0098e7d0	0098ec70	no landed binder left (NF296)
+delete	?AngleBetweenPositions@@YIMABVC3DVector@@0@Z	00661540	00751c70	no landed binder left (NF296)
+delete	?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z	00754e70	00752930	no landed binder left (NF296)
+delete	?GetAnaloguePosition@CInputEvent@@QBE?AVC2DVector@@XZ	00a043a0	007a9960	no landed binder left (NF296)
+delete	?GetPerformedAction@CCreatureActionBase@@QBE_NXZ	006925a0	0069f670	no landed binder left (NF296)
+delete	?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z	00cb7d60	004afa60	no landed binder left (NF296)
+delete	?GetMaxCreatureCount@CTCAISummon@@QAEJXZ	007fdf60	0080fd30	no landed binder left (NF296)
+add	?GetNumberCanSummon@CTCAISummon@@QBEJXZ	007fdf60	0080fd30	binder respelled by NF296
+delete	?FindPosZ@CThingCreatureBase@@QAEMABVC3DVector@@H_N@Z	00666d40	006cd970	no landed binder left (NF296)
+delete	?FindPosZAt@CThingCreatureBase@@QAEMABVC3DVector@@_N1@Z	00666d40	006cd990	no landed binder left (NF296)
+delete	?GetPerformedAction@CCreatureActionBase@@QAE_NXZ	006925a0	0069fc40	no landed binder left (NF296)
+delete	?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ	006925a0	00848ae0	no landed binder left (NF296)
+delete	?SelectPrettyThing@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@PAV2@@Z	00947110	00947280	no landed binder left (NF296)
+add	?FindPrettyThingInShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@PAV2@@Z	00947110	00947280	binder respelled by NF296
+delete	?Initialise@CEngineLandscapeMeshBuilder@@QAEXXZ	00be3110	00be32a0	no landed binder left (NF296)
+add	?BuildSharedIndexBuffers@CEngineLandscapeMeshBuilder@@AAEXXZ	00be3110	00be32a0	binder respelled by NF296
+delete	?InitializeOcclusionBuffers@CEngineOcclusionManager@@QAEXXZ	00b8d0d0	00b8d780	no landed binder left (NF296)
+add	?BuildUnitBox@CEngineOcclusionManager@@AAEXXZ	00b8d0d0	00b8d780	binder respelled by NF296
+delete	?FrameStartCommon@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAEXXZ	00b99860	00b99b50	no landed binder left (NF296)
+add	?CalcFrameConstantSIMDVars@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXXZ	00b99860	00b99b50	binder respelled by NF296
+delete	?UpdateEarthQuakes@CGameCameraManager@@QAEXXZ	00698540	0069b790	no landed binder left (NF296)
+add	?UpdateEarthquake@CGameCameraManager@@AAEXXZ	00698540	0069b790	binder respelled by NF296
+delete	?GetTimeSinceLastRenderFrameStart@CMainGameComponent@@QAENXZ	00416258	00417001	no landed binder left (NF296)
+add	?GetPredictedTimeSinceLastRenderFrame@CMainGameComponent@@IBENXZ	00416258	00417001	binder respelled by NF296
+delete	?DeleteShaderEntries@CShaderDataBank@@QAEXXZ	00a62050	00a62860	no landed binder left (NF296)
+delete	?UpdateGravity@CTCCoopSpirit@@QAEXXZ	00670470	00670a10	no landed binder left (NF296)
+add	?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ	00670470	00670a10	binder respelled by NF296
+delete	?Update@CTCHighlightItem@@QAEXXZ	0077cca0	0077cdd0	no landed binder left (NF296)
+rewitness	?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z	0097e270	0097ec00	was 0097e890; witness respelled by NF296; CONDITIONAL: 0x0097EC00 (NF295 entry, not compiled here) names the stand-in in code; its exact spelling not verified
+add	?SetThingToNotAvoid@CAIStateGroupBase@@IAEXPBVCThing@@@Z	0097e270	0097e890	binder respelled by NF296
+rewitness	?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z	0097e2d0	0097ec00	was 0097e890; witness respelled by NF296; CONDITIONAL: 0x0097EC00 (NF295 entry, not compiled here) names the stand-in in code; its exact spelling not verified
+add	?SetProximityForDirectApproach@CAIStateGroupBase@@IAEXM@Z	0097e2d0	0097e890	binder respelled by NF296
+delete	?UpdateScript@CScriptBase@@QAEXXZ	00cb8220	004b4490	no landed binder left (NF296)
+add	?RunSubThreads@CScriptBase@@QAEXXZ	00cb8220	004b4490	binder respelled by NF296
+delete	?GetHeadAngleOffset@CTCLook@@QAEMXZ	00751a80	00665260	no landed binder left (NF296)
+delete	?IsMoveActive@CTCPhysicalShieldSpell@@QAE_NXZ	0079dcb0	0072ac90	no landed binder left (NF296)
+delete	?GetCombatTypeIndex@CThingCreatureBase@@QBEJXZ	00662170	007363a0	no landed binder left (NF296)
+delete	?IsCollidingWithLandscape@CThingCreatureBase@@QBE_NXZ	00661e70	008c55b0	no landed binder left (NF296)
+delete	?IsInCombatMode@CThingCreatureBase@@QAE_NXZ	006621a0	0093d180	no landed binder left (NF296)
+delete	?UsesCreatureModes@CThingCreatureBase@@QAE_NXZ	006621a0	0093e240	no landed binder left (NF296)
+delete	?IsInSpecialMode@CWorld@@QAE_NXZ	0048db13	00490927	no landed binder left (NF296)
+delete	?ClearMeshEffect_004bffc0@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z	004bffc0	007d8e20	no landed binder left (NF296)
+rewitness	?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ	0073a840	0069f9e0	was 008ed850; CONDITIONAL: witness respelled by NF296; 0x0069f9e0 (an NF295 entry, held, not compiled here) names the stand-in in code; exact spelling not verified
+delete	?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ	006a1270	008ba3c0	no landed binder left (NF296)
+rewitness	?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ	0073a840	006d83b0	was 0069f670; CONDITIONAL: witness respelled by NF296; 0x006d83b0 (an NF295 entry, held, not compiled here) names the stand-in in code; exact spelling not verified
+rewitness	?HasMode@CTCCreatureModeManager@@QAE_NK@Z	0073a8a0	00977c40	was 008c2490; CONDITIONAL: witness respelled by NF296; 0x00977C40 / 0x0097EF60 / 0x0097F3A0 (NF295 entries, held, not compiled here) declare HasMode(unsigned long)
+delete	?IsCrimeHandled@CTCVillage@@QAE_NJ@Z	0065914b	00684210	no landed binder left (NF296)
+delete	?ProcessCrimeDeeds@CTCVillage@@QAEXXZ	0065c2d0	0065c36e	no landed binder left (NF296)
+delete	?HasDamage@CTCWeapon@@QBE_NXZ	005daa00	00838bc0	no landed binder left (NF296)
+rewitness	?Reset@CTCIdleScheduler@@QAEXXZ	008018b0	00833010	was 004e1537; CONDITIONAL: witness respelled by NF296; 0x00833010 (an NF295 entry, held, not compiled here) names the stand-in in code; exact spelling not verified
+add	?Clear@CTCIdleScheduler@@QAEXXZ	008018b0	004e1537	binder respelled by NF296
+delete	?OnUnsheatheFinished@CTCCreatureModeManager@@QAEXXZ	0073a840	0069fc40	no landed binder left (NF296)

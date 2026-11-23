@@ -2,13 +2,13 @@
 #include <cstdio>
 
 class C3DVector { public: float x, y, z; };
-class CThingCreatureBase { public: float FindPosZ(const C3DVector& pos, int flag, bool b); };
+class CThingCreatureBase { public: float GetHeightZBelowAt(const C3DVector& pos, bool flag, bool b) const; };
 
 static const C3DVector* g_expect_pos;
 static bool g_expect_b;
 static const float g_ret = 42.5f;
 
-float CThingCreatureBase::FindPosZ(const C3DVector& pos, int flag, bool b)
+float CThingCreatureBase::GetHeightZBelowAt(const C3DVector& pos, bool flag, bool b) const
 {
     if (this != (CThingCreatureBase*)0x12345678) { printf("BAD this "); return 0.0f; }
     if (&pos != g_expect_pos) { printf("BAD pos "); return 0.0f; }

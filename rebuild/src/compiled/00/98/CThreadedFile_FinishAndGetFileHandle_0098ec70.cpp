@@ -5,7 +5,7 @@ class CThreadedFile;
 
 class CThreadedFileManager
 { public:
-    void RemovePending(CThreadedFile* f);
+    void CloseAllStreamsForFile(CThreadedFile* f);   // NF296: PDB name, was RemovePending
 };
 
 // Global manager instance at 0x13bc870
@@ -24,7 +24,7 @@ void* CThreadedFile::FinishAndGetFileHandle()
 {
     if (this->handle != (void*)-1)
     {
-        g_ThreadedFileManager.RemovePending(this);
+        g_ThreadedFileManager.CloseAllStreamsForFile(this);
     }
     return this->handle;
 }

@@ -912,7 +912,7 @@ class CQ_MinionCampScript { public:
  long CurrentStage;                                 // +0x74 (PDB +0x88)
  unsigned char _pad78[0x98 - 0x78];
  bool ShouldSpawn;                                  // +0x98 (PDB +0xbc)
- bool IsSpawnPointToSpawn(const CScriptThing& thing);   // 0x00D9F070 (descriptive)
+ bool ShouldSpawnPointSpawn(const CScriptThing& thing);   // 0x00D9F070 NF296: PDB name, was IsSpawnPointToSpawn
 };
 struct CMC_SpawnPoint : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
@@ -935,7 +935,7 @@ void CMC_SpawnPoint::Main()
  while (ParentClass->CurrentStage == 3) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;
-  if (ParentClass->IsSpawnPointToSpawn(Me)) {
+  if (ParentClass->ShouldSpawnPointSpawn(Me)) {
    if (IsActiveThreadTerminating()) return;
    if (rand() % 3 != 0) {
     if (IsActiveThreadTerminating()) return;

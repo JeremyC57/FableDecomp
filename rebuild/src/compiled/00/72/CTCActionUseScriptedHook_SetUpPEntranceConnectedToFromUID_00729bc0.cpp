@@ -30,7 +30,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 class CThingManager { public:
-    CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80; NF296: PDB name, was GetThingByUID
 };
 class CTCBase
 {
@@ -57,7 +57,7 @@ private:
 
 void CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID()
 {
-    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetThingByUID(EntranceConnectedToUID));
+    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(EntranceConnectedToUID));
     if (PEntranceConnectedTo.GetPItem())
         PEntranceConnectedTo.GetPItem();
 }

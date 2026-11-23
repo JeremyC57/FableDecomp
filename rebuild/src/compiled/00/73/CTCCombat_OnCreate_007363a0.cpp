@@ -132,7 +132,7 @@ class CThing { public:
     unsigned char ThingClass;                           // +0x10 (2: creature)
 };
 class CThingCreatureBase : public CThing { public:
-    long GetCombatTypeIndex() const;                    // 0x00662170
+    long GetCombatType() const;                    // 0x00662170; NF296: PDB name, was GetCombatTypeIndex
     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;  // 0x00663340 (Ego_r.pdb QBE)
 };
 
@@ -197,7 +197,7 @@ void CTCCombat::OnCreate()
         GetDefinitionManager().GetDef("HERO_MELEE_COMBAT_ABILITY_FLOURISH_360_STRIKE", &PFlourish360Ability);
     }
     CDefPointer<const CCombatTypeDef> combatType;
-    long combatTypeIndex = GetParentCreature().GetCombatTypeIndex();
+    long combatTypeIndex = GetParentCreature().GetCombatType();
     if (GetDefinitionManager().GetDef(combatTypeIndex, &combatType)) {
         SetCombatType(combatType);
         ReadyForMelee = combatType->StartsAsReadyForMelee;

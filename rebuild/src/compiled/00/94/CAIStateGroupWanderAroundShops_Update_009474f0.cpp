@@ -102,7 +102,7 @@ struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
     CIntelligentPointer<CThing> Shop;              // +0x14
     CIntelligentPointer<CThing> PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
-    CThing* SelectPrettyThing(CThing* shop);    // 0x00947110
+    private: CThing* FindPrettyThingInShop(CThing* shop); public:    // 0x00947110; NF296: PDB name, was SelectPrettyThing
     virtual void Update();
 };
 
@@ -162,7 +162,7 @@ void CAIStateGroup_WanderAroundShops::Update()
             }
             if (result != 2)
                 break;
-            PrettyThing = SelectPrettyThing(Shop.GetPItem());
+            PrettyThing = FindPrettyThingInShop(Shop.GetPItem());
             if (!PrettyThing.GetPItem())
                 break;
         }

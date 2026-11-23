@@ -41,7 +41,7 @@ class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);     // 0x00733E10
 };
 class CTCCreatureModeManager { public:
-    void RestartCurrentMode();                  // 0x0073A840
+    void RefreshCurrentMode();                  // 0x0073A840; NF296: PDB name, was RestartCurrentMode
 };
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
@@ -78,7 +78,7 @@ void CCreatureAction_SheatheItemToInventory::PerformAction()
         if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
             modeManager = ((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
     }
-    modeManager->RestartCurrentMode();
+    modeManager->RefreshCurrentMode();
     if (PCreature.Get()->GetPlayer().IsMainPlayer())
         PCreature.Get()->GetPlayer().SetAggressiveMode(false);
 }

@@ -1,0 +1,26 @@
+## HEAD set: H_004afa60.obj H_004afb00.obj H_004b26b0.obj H_0080fd30.obj H_0096e540.obj H_0065935e.obj H_006cd970.obj H_006cd990.obj H_0077b1c0.obj H_00730070.obj H_00729bc0.obj H_00779340.obj H_00800460.obj H_0098ec40.obj H_0098ec70.obj H_00991450.obj H_00751c70.obj H_00751e80.obj H_00752930.obj H_007a9960.obj H_0069f670.obj H_0069fc40.obj H_00848ae0.obj H_00cb7d60.obj H_007fdf60.obj H_006d5ab0.obj H_0051ed80.obj H_00661540.obj H_00754e70.obj H_00a043a0.obj H_006925a0.obj
+duplicates 0
+
+UNRESOLVED 3 ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z
+UNRESOLVED 1 ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z
+UNRESOLVED 3 ?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z
+UNRESOLVED 1 ?FindPosZ@CThingCreatureBase@@QAEMABVC3DVector@@H_N@Z
+UNRESOLVED 1 ?FindPosZAt@CThingCreatureBase@@QAEMABVC3DVector@@_N1@Z
+UNRESOLVED 1 ?FindThingByUID@CThingManager@@QAEPAVCThing@@_K@Z
+UNRESOLVED 1 ?GetAnaloguePosition@CInputEvent@@QBE?AVC2DVector@@XZ
+UNRESOLVED 1 ?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ
+UNRESOLVED 2 ?GetMaxCreatureCount@CTCAISummon@@QAEJXZ
+UNRESOLVED 1 ?GetPerformedAction@CCreatureActionBase@@QAE_NXZ
+UNRESOLVED 1 ?GetPerformedAction@CCreatureActionBase@@QBE_NXZ
+UNRESOLVED 4 ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z
+UNRESOLVED 1 ?RemovePending@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+UNRESOLVED 2 ?RemovePendingRequests@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+UNRESOLVED 1 ?ResetBrain@CThingAICreature@@QAEXXZ
+## new set: N_004afa60.obj N_004afb00.obj N_004b26b0.obj N_0080fd30.obj N_0096e540.obj N_0065935e.obj N_006cd970.obj N_006cd990.obj N_0077b1c0.obj N_00730070.obj N_00729bc0.obj N_00779340.obj N_00800460.obj N_0098ec40.obj N_0098ec70.obj N_00991450.obj N_00751c70.obj N_00751e80.obj N_00752930.obj N_007a9960.obj N_0069f670.obj N_0069fc40.obj N_00848ae0.obj H_00cb7d60.obj H_007fdf60.obj H_006d5ab0.obj H_0051ed80.obj H_00661540.obj H_00754e70.obj H_00a043a0.obj H_006925a0.obj
+duplicates 0
+
+UNRESOLVED 3 ?CloseAllStreamsForFile@CThreadedFileManager@@QAEXPAVCThreadedFile@@@Z
+UNRESOLVED 2 ?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
+UNRESOLVED 3 ?HasPerformedAction@CCreatureActionBase@@QBE_NXZ
+UNRESOLVED 3 ?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z
+LK_DONE

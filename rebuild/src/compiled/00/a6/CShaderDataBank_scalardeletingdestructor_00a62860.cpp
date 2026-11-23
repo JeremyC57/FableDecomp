@@ -46,10 +46,10 @@ class CShaderDataBank : public CBankFile { public:                              
     CShaderEntryVector Shaders;                                           // +0x110
     CBankStateBlock    StateBlock;                                        // +0x11c
     CShaderDataBank() {}
-    void DeleteShaderEntries();                                           // 0x00A62050
+    private: void CloseShaders(); public:                                           // 0x00A62050; NF296: PDB name, was DeleteShaderEntries
     FABLE_FORCEINLINE virtual ~CShaderDataBank()
     {
-        DeleteShaderEntries();
+        CloseShaders();
     }
 };
 

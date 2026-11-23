@@ -51,7 +51,7 @@ class CThing { public:
     }
 };
 class CTCCreatureModeManager { public:                      // interface type 0x31
-    bool HasMode(unsigned long mode);                // 0x0073A8A0
+    bool IsModeActive(unsigned long mode) const;                // 0x0073A8A0; NF296: PDB name, was HasMode
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -103,7 +103,7 @@ bool CTCKrakenTentacle::GetShouldStrike()
     if (CanStrike && PKraken.GetPItem() && !PKraken.GetPItem()->Dead) {
         CTCCreatureModeManager* modes;
         ParentThing->GetInterface(&modes, 0x31);
-        if (!modes->HasMode(0x54) && !modes->HasMode(0x53)) {
+        if (!modes->IsModeActive(0x54) && !modes->IsModeActive(0x53)) {
             CThing* kraken = PKraken.GetPItem();
             long framesPerSecond = CMainGameComponent::GetConstantFPS();
             CKrakenTentacleDef* def = PTentacleDef.Object;

@@ -15,10 +15,10 @@ protected:
 class CEngineLandscapeMeshBuilder : public CBaseClassNonCopyable { public:
     unsigned long m_state[0x121];                       // +0x04 .. +0x487, zero-filled
     CEngineLandscapeMeshBuilder();
-    void Initialise();                                  // 0x00BE3110
+    private: void BuildSharedIndexBuffers(); public:                                  // 0x00BE3110; NF296: PDB name, was Initialise
 };
 CEngineLandscapeMeshBuilder::CEngineLandscapeMeshBuilder()
 {
     memset(m_state, 0, sizeof(m_state));
-    Initialise();
+    BuildSharedIndexBuffers();
 }

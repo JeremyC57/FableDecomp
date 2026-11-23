@@ -17,7 +17,7 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
     SMeshBuffer   m_normal[4];                     // +0x40 .. +0x60
     SMeshBuffer   m_shadow[4];                     // +0x60 .. +0x80
     SMeshBuffer*  m_pCurrent[4];                   // +0x80 .. +0x90
-    void FrameStartCommon();                       // 0x00B99860
+    private: void CalcFrameConstantSIMDVars(); public:                       // 0x00B99860; NF296: PDB name, was FrameStartCommon
     void FrameStart();
 };
 
@@ -34,5 +34,5 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes::FrameStart()
         m_pCurrent[2] = &m_normal[2];
         m_pCurrent[3] = &m_normal[3];
     }
-    FrameStartCommon();
+    CalcFrameConstantSIMDVars();
 }

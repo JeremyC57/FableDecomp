@@ -48,7 +48,7 @@ namespace NGraphicAppearance {
 enum EAppearanceMeshEffectPriority { };
 class CTCGraphicAppearance { public:
     void SetAsHighlighted(float, float, const CRGBColour&, bool, bool, EAppearanceMeshEffectPriority, void*);   // 0x004C04C0
-    void ClearMeshEffect_004bffc0(void* key);                                                                  // 0x004BFFC0
+    void ClearHighlighted(void* key);                                                                  // 0x004BFFC0; NF296: PDB name, was ClearMeshEffect_004bffc0
 };
 }
 
@@ -150,7 +150,7 @@ void CTCTavernGameSpotTheAddition::FrameUpdate()
             for (unsigned long i = 0; i < KnickKnacks.size(); ++i) {
                 NGraphicAppearance::CTCGraphicAppearance* appearance;
                 ((CThing*)KnickKnacks[i].Thing)->GetTC(TCI_GRAPHIC_APPEARANCE_NEW, &appearance);
-                appearance->ClearMeshEffect_004bffc0(this);
+                appearance->ClearHighlighted(this);
             }
             if (Selected < KnickKnacks.size() && Selected >= 0 && KnickKnacks[Selected].Thing) {
                 NGraphicAppearance::CTCGraphicAppearance* appearance;

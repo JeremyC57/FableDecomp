@@ -60,8 +60,8 @@ FABLE_FORCEINLINE float WrapAngle(float angle)
     return angle;
 }
 
-float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);     // 0x00661540
-float __fastcall AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00754E70
+float __fastcall GFGetAngleXYTo(const C3DVector& from, const C3DVector& to);     // 0x00661540; NF296: PDB name, was AngleBetweenPositions
+float __fastcall GFGetAngleYZTo(const C3DVector& from, const C3DVector& to);   // 0x00754E70; NF296: PDB name, was AngleYZBetweenPositions
 float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
@@ -107,8 +107,8 @@ void CTCLook::SetEyesLooking(const C3DVector& pos)
         C3DVector headPos = GetHeadPos();
         float eyeXY, eyeYZ;
         if (pos != headPos) {
-            eyeXY = AngleDifference(headXY, AngleBetweenPositions(headPos, pos));
-            eyeYZ = AngleDifference(headYZ, AngleYZBetweenPositions(headPos, pos));
+            eyeXY = AngleDifference(headXY, GFGetAngleXYTo(headPos, pos));
+            eyeYZ = AngleDifference(headYZ, GFGetAngleYZTo(headPos, pos));
         } else {
             eyeXY = AngleDifference(headXY, RecoveryAngleToLookAtXY);
             eyeYZ = AngleDifference(headYZ, RecoveryAngleToLookAtYZ);

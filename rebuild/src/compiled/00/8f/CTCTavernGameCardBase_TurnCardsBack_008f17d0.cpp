@@ -31,7 +31,7 @@ struct CCardVector {                            // STLport vector<CCard*> (12 by
 
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
-    void ClearMeshEffect_004bffc0(void* key);            // 0x004BFFC0
+    void ClearHighlighted(void* key);            // 0x004BFFC0; NF296: PDB name, was ClearMeshEffect_004bffc0
 };
 }
 
@@ -93,7 +93,7 @@ void CTCTavernGameCardBase::TurnCardsBack()
         NGraphicAppearance::CTCGraphicAppearance* appearance = 0;
         if (thing->HasTC(TCI_GRAPHIC_APPEARANCE_NEW))
             appearance = (NGraphicAppearance::CTCGraphicAppearance*)((NGraphicAppearance::CTCGraphicAppearance*)&thing->GetTC(TCI_GRAPHIC_APPEARANCE_NEW));
-        appearance->ClearMeshEffect_004bffc0(this);
+        appearance->ClearHighlighted(this);
         if (!(*it)->Turning && !(*it)->FaceDown) {
             {
                 CCharString sound("TAVERN_GAME_CARD_FLIP");

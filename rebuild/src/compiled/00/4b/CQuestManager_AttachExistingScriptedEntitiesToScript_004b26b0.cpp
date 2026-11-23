@@ -118,7 +118,7 @@ class CWorld { public:
     CThingSearchTools* PThingSearchTools;                // +0x20 scoped_ptr<CThingSearchTools>
 };
 class CScriptBase { public:
-    bool BindsEntityScript(const CCharString& name);                              // 0x00CB7D60
+    bool IsEntityScriptBound(const CCharString& name) const;                              // 0x00CB7D60; NF296: PDB name, was BindsEntityScript
     void ActivateEntity(unsigned __int64 uid, const CScriptThing& thing);         // 0x00CB8960
 };
 
@@ -133,7 +133,7 @@ void CQuestManager::AttachExistingScriptedEntitiesToScript(CScriptBase& script)
     World->PThingSearchTools->GetAllThings(CThingFilter_HasAnyScriptName(), things);
     for (SThingNode* node = things._M_node->_M_next; node != things._M_node; node = node->_M_next) {
         CThing* thing = node->_M_data;
-        if (script.BindsEntityScript(thing->ScriptName)) {
+        if (script.IsEntityScriptBound(thing->ScriptName)) {
             CScriptThing scriptThing = thing->GetScriptThing();
             script.ActivateEntity(thing->UID, scriptThing);
         }

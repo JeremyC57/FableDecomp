@@ -60,7 +60,7 @@ extern bool g_bAutoSaveProgressShown;                                    // 0x01
 extern CWideString GResetProgressTipText;                                // 0x013B89D8
 extern CWideString GResetProgressTipTitleText;                           // 0x013B89DC
 namespace NResourceDirectoryNames { CWideString __fastcall GetMiscDir(); }   // 0x0041A0A0
-CWideString __fastcall LongToWideString(long value);                    // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);                    // 0x00405F00; NF296: PDB name, was LongToWideString
 float __fastcall GFFloatRandom(float range, unsigned long* seed);       // 0x004978A0
 
 struct RandFunc {
@@ -115,7 +115,7 @@ void CProgressDisplay::InitialiseTextures(bool single_background, bool reduced)
                 CTexture texture(size, 1, format, 0, (ESurfacePool)1);
                 for (long i = 0; i < count; ++i) {
                     CWideString name = NResourceDirectoryNames::GetMiscDir() + L"LoadProgress\\Fable_BG_PC_0";
-                    name += LongToWideString(backgrounds[i]);
+                    name += GFIntToWideString(backgrounds[i]);
                     name += L".dds";
                     texture.GetSurfaceLevel(0).LoadFromBitmapFileToPreallocatedSurface(name, 2);
                     LoadingScreenTextures.push_back(texture);
@@ -132,7 +132,7 @@ void CProgressDisplay::InitialiseTextures(bool single_background, bool reduced)
                     CWideString name(L"LoadProgress\\guild_seal_");
                     if (i + 1 < 10)
                         name += L"0";
-                    name += LongToWideString(i + 1);
+                    name += GFIntToWideString(i + 1);
                     name += L".dds";
                     GuildSealTextures[i].GetSurfaceLevel(0).LoadFromBitmapFileToPreallocatedSurface(
                         CAFile::ConvertPathToFullPath(NResourceDirectoryNames::GetMiscDir() + name), 2);

@@ -56,7 +56,7 @@ class CGameDefinitionManager { public:
 };
 
 class CTCOverheadDisplay { public:
-    void AddRenownEntry(float renown);               // 0x007B7CD0
+    void AddRenownChange(float renown);               // 0x007B7CD0; NF296: PDB name, was AddRenownEntry
 };
 
 #include "engine/CCountedPointer.h"
@@ -104,7 +104,7 @@ void CTCHeroStats::AddRenown(long renown)
     if (renown != 0) {
         CTCOverheadDisplay* display;
         if (ParentThing->GetTC(TCI_OVERHEAD_DISPLAY, &display))
-            display->AddRenownEntry((float)renown);
+            display->AddRenownChange((float)renown);
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetRenownChange_00437920(renown);
     }
 }

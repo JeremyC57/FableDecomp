@@ -31,7 +31,7 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    bool UsesCreatureModes();                   // 0x006621A0 (descriptive)
+    bool IsAbleToStrafe() const;                   // 0x006621A0 NF296: PDB name, was UsesCreatureModes
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -91,7 +91,7 @@ void CAIStateGroup_MeleeCombatNearby2::Cleanup()
         CWorld* world = &GetWorld();
         world->m_pCombatManager->DeregisterCombatant(*creature);
     }
-    if (PBrain->PCreature->UsesCreatureModes()) {
+    if (PBrain->PCreature->IsAbleToStrafe()) {
         CTCCreatureModeManager* modes;
         PBrain->PCreature->GetInterface(&modes, 0x31);
         modes->RemoveMode(0x19);

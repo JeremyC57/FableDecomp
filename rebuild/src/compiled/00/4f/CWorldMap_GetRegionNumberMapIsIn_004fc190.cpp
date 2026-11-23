@@ -22,7 +22,7 @@ template <class T> struct CRetailVector {
 };
 // Shape: region 0 is skipped; the element address is start (re-read each pass) + a strength-reduced 0x58 offset.
 class CRegion { public:
-    bool ContainsMap(long map) const;           // 0x006BBFA0
+    bool IsMapIncluded(long map) const;           // 0x006BBFA0; NF296: PDB name, was ContainsMap
     unsigned char _body[0x58];
 };
 
@@ -35,7 +35,7 @@ class CWorldMap { public:
 long CWorldMap::GetRegionNumberMapIsIn(long map) const
 {
     for (unsigned long i = 1; i < Regions.size(); ++i)
-        if (Regions[i].ContainsMap(map))
+        if (Regions[i].IsMapIncluded(map))
             return i;
     return 0;
 }

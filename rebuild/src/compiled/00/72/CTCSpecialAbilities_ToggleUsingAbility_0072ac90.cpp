@@ -17,7 +17,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCPhysicalShieldSpell { public:
-    bool IsMoveActive();                                    // 0x0079DCB0
+    bool IsShieldActive();                                    // 0x0079DCB0; NF296: PDB name, was IsMoveActive
     void CancelMove();                                      // 0x0079E300
 };
 
@@ -32,7 +32,7 @@ bool CTCSpecialAbilities::ToggleUsingAbility(long ability)
     if (ability == 4) {
         CTCPhysicalShieldSpell* shield;
         if (ParentThing->GetTC(TCI_PHYSICAL_SHIELD_SPELL, &shield)) {
-            if (shield->IsMoveActive()) {
+            if (shield->IsShieldActive()) {
                 shield->CancelMove();
                 return true;
             }

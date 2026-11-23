@@ -7,7 +7,7 @@
 // false exits sharing `xor al,al`; the count test is a `return count > 0;` bool (`xor ecx,ecx ; setg cl ; mov al,cl`).
 #include "fable_compiler.h"
 class CTCAISummon { public:
-    long GetMaxCreatureCount();                     // 0x007FDF60
+    long GetNumberCanSummon() const;                     // 0x007FDF60; NF296: PDB name, was GetMaxCreatureCount
 };
 
 class CTCBase;
@@ -51,7 +51,7 @@ bool CTCNymph::GetShouldSummon()
     if (ReadyToSummon) {
         CTCAISummon* summon;
         if (ParentThing->GetInterface(&summon, 0xfa))
-            return summon->GetMaxCreatureCount() > 0;
+            return summon->GetNumberCanSummon() > 0;
     }
     return false;
 }

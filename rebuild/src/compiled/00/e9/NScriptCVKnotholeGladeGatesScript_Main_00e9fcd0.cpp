@@ -76,14 +76,14 @@ public:
     };
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44
-    void ResetMissionState();                           // 0x00E9FEC0
+    void InitialiseVariables();                           // 0x00E9FEC0; NF296: PDB name, was ResetMissionState
     void WatchForTermination();                         // 0x00E9FEF0
     void DoMission();                                   // 0x00EA1090
     void Main();
 };
 void CV_KnotholeGladeGatesScript::Main()
 {
-    ResetMissionState();
+    InitialiseVariables();
     AddEntityScriptBinding(new CEntityScriptBinding<CV_KnotholeGladeGatesScript>("KGG_VillagerOutside", this, &CKGG_VillagerOutside::Alloc, 1));
     AddEntityScriptBinding(new CEntityScriptBinding<CV_KnotholeGladeGatesScript>("KGG_SurpriseBalverine", this, &CKGG_SurpriseBalverine::Alloc, 1));
     PostAddScriptedEntities();

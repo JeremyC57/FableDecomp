@@ -100,7 +100,7 @@ class CTCKrakenTentacle : public CTCBase { public:
     long          QueuedStrikeTick;                  // +0x2c
     unsigned char _pad30[0x4c - 0x30];
     bool          DoneDeathStuff;                    // +0x4c
-    void CreateHeadEffect();                         // 0x007F0B10
+    void DoDieFX();                         // 0x007F0B10; NF296: PDB name, was CreateHeadEffect
     void RemoveObstruction();                        // 0x007F0810
     private: void TrackTarget(); public:                              // 0x007F0C70
     private: void ReturnToDesiredPos(bool immediately); public:       // 0x007F0F40
@@ -121,7 +121,7 @@ void CTCKrakenTentacle::FrameUpdate()
                 CTCCreatureFlags9* flags;
                 if (thing->GetInterface(&flags, 9))
                     flags->m_canBeTargeted = 0;
-                CreateHeadEffect();
+                DoDieFX();
                 RemoveObstruction();
                 DoneDeathStuff = true;
             } else if (!IsStriking) {

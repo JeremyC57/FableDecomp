@@ -117,7 +117,7 @@ class CEngineOcclusionManager : public CEngineComponent { public:   // vtable 0x
     CPixelShader       OcclusionBoxPixelShader;    // +0x240b8
     CEngineOcclusionManager();
     virtual ~CEngineOcclusionManager();
-    void InitializeOcclusionBuffers();             // 0x00B8D0D0
+    private: void BuildUnitBox(); public:             // 0x00B8D0D0; NF296: PDB name, was InitializeOcclusionBuffers
 };
 
 CEngineOcclusionManager::CEngineOcclusionManager()
@@ -130,7 +130,7 @@ CEngineOcclusionManager::CEngineOcclusionManager()
     EntriesSize = 0;
     PrevFrameEntriesSize = 0;
     VertexShaderFlareTest = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)1)->GetVertexShader("VSHADER_STATIC_UNLIT");
-    InitializeOcclusionBuffers();
+    BuildUnitBox();
     OcclusionBoxVShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)20)->GetVertexShader("VSHADER_OCCLUSION_BOX");
     OcclusionBoxPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_DIFFUSE_ONLY");
 }

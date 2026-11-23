@@ -1,0 +1,112 @@
+##### 004b4490 renames: ?UpdateScript@CScriptBase@@QAEXXZ=?RunSubThreads@CScriptBase@@QAEXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00665260 renames: ?GetHeadAngleOffset@CTCLook@@QAEMXZ=?GetLookAngleRelToBodyXY@CTCLook@@QBEMXZ
+sections head 20 new 20
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 0072ac90 renames: ?IsMoveActive@CTCPhysicalShieldSpell@@QAE_NXZ=?IsShieldActive@CTCPhysicalShieldSpell@@QAE_NXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 007363a0 renames: ?GetCombatTypeIndex@CThingCreatureBase@@QBEJXZ=?GetCombatType@CThingCreatureBase@@QBEJXZ
+sections head 25 new 25
+ALL_EQ text_sections_equal=22
+tables H=0 N=0
+##### 008c55b0 renames: ?IsCollidingWithLandscape@CThingCreatureBase@@QBE_NXZ=?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ
+sections head 27 new 27
+ALL_EQ text_sections_equal=23
+tables H=0 N=0
+##### 0093d180 renames: ?IsInCombatMode@CThingCreatureBase@@QAE_NXZ=?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 0093e240 renames: ?UsesCreatureModes@CThingCreatureBase@@QAE_NXZ=?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0096edb0 renames: ?IsInCombatMode@CThingCreatureBase@@QAE_NXZ=?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 00972110 renames: ?UsesCreatureModes@CThingCreatureBase@@QAE_NXZ=?IsAbleToStrafe@CThingCreatureBase@@QBE_NXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 00490927 renames: ?IsInSpecialMode@CWorld@@QAE_NXZ=?IsPerformingRegionLoad@CWorld@@QBE_NXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 007d8e20 renames: ?ClearMeshEffect_004bffc0@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z=?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z
+sections head 77 new 77
+ALL_EQ text_sections_equal=72
+tables H=0 N=0
+##### 008f17d0 renames: ?ClearMeshEffect_004bffc0@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z=?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z
+sections head 20 new 20
+ALL_EQ text_sections_equal=17
+tables H=0 N=0
+##### 0069f4f0 renames: ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 19 new 19
+ALL_EQ text_sections_equal=17
+tables H=0 N=0
+##### 0078c860 renames: ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 0078c8b0 renames: ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 0078e9c0 renames: ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 31 new 31
+ALL_EQ text_sections_equal=29
+tables H=0 N=0
+##### 00793ec0 renames: ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 31 new 31
+ALL_EQ text_sections_equal=29
+tables H=0 N=0
+##### 008ba3c0 renames: ?IsPrimarySlotEmpty@CTCCarrying@@QAE_NXZ=?IsPrimarySlotFree@CTCCarrying@@QBE_NXZ ?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 37 new 37
+ALL_EQ text_sections_equal=34
+tables H=1 N=1
+##### 008ed850 renames: ?RestartCurrentMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 16 new 16
+ALL_EQ text_sections_equal=14
+tables H=0 N=0
+##### 007f1410 renames: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z=?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z
+sections head 10 new 10
+ALL_EQ text_sections_equal=8
+tables H=0 N=0
+##### 008c2490 renames: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z=?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z
+sections head 18 new 18
+ALL_EQ text_sections_equal=16
+tables H=0 N=0
+##### 00684210 renames: ?IsCrimeHandled@CTCVillage@@QAE_NJ@Z=?HasCrimeBeenReported@CTCVillage@@QAE_NJ@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=12
+tables H=0 N=0
+##### 00958cb0 renames: ?IsDeedHandled@CTCVillage@@QAE_NJ@Z=?HasCrimeBeenReported@CTCVillage@@QAE_NJ@Z
+sections head 14 new 14
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 0065c36e renames: ?ProcessCrimeDeeds@CTCVillage@@QAEXXZ=?ClearCrimes@CTCVillage@@QAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00838bc0 renames: ?HasDamage@CTCWeapon@@QBE_NXZ=?IsMeleeWeapon@CTCWeapon@@QBE_NXZ
+sections head 17 new 17
+ALL_EQ text_sections_equal=16
+tables H=0 N=0
+##### 004e1537 renames: ?Reset@CTCIdleScheduler@@QAEXXZ=?Clear@CTCIdleScheduler@@QAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=1 N=1
+##### 0069f670 renames: ?GetPerformedAction@CCreatureActionBase@@QBE_NXZ=?HasPerformedAction@CCreatureActionBase@@QBE_NXZ ?UpdateFrontMode@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0069fc40 renames: ?GetPerformedAction@CCreatureActionBase@@QAE_NXZ=?HasPerformedAction@CCreatureActionBase@@QBE_NXZ ?OnUnsheatheFinished@CTCCreatureModeManager@@QAEXXZ=?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0

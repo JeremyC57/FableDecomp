@@ -10,7 +10,7 @@ class CCharString
 
 class CQuestManager
 { public:
-    void DeactivateQuestLater(
+    void AddPendingQuestToDeactivate(
         const CCharString& questName,
         unsigned long delay);
 };
@@ -31,7 +31,7 @@ static const CCharString* g_seenQuestName;
 static unsigned long g_seenDelay;
 static int g_callCount;
 
-void CQuestManager::DeactivateQuestLater(
+void CQuestManager::AddPendingQuestToDeactivate(
     const CCharString& questName,
     unsigned long delay)
 {

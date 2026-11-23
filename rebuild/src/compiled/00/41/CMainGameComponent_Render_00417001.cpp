@@ -151,7 +151,7 @@ public:
     bool                                 Rendered;                  // +0x161e2
     long                                 DebugNoFramesUnableToRender;   // +0x161e4
     protected: double GetCurrentGameTime() const; public:                  // 0x00416231
-    double GetTimeSinceLastRenderFrameStart();    // 0x00416258
+    protected: double GetPredictedTimeSinceLastRenderFrame() const; public:    // 0x00416258; NF296: PDB name, was GetTimeSinceLastRenderFrameStart
     double GetGameTimeOfNextPresentCompletion();  // 0x004166E2
 protected:
     void ForceRender(long frames);                // 0x004164E0
@@ -181,7 +181,7 @@ void CMainGameComponent::Render()
                 info.WFServerCurrentTime = CurrentServerFrame;
                 double interpolate = GetServerFrameInterpolate(GetGameTimeOfNextPresentCompletion());
                 info.Current.WFInterpolate = (float)GFLimitReturn(interpolate, zero, one);
-                info.Current.GTPredictedTimeSinceLastRenderFrame = (float)GetTimeSinceLastRenderFrameStart();
+                info.Current.GTPredictedTimeSinceLastRenderFrame = (float)GetPredictedTimeSinceLastRenderFrame();
                 info.PausedCurrent = info.Current;
                 info.BulletTimeCurrent = info.Current;
                 CBulletTimeManager* bulletTime = PWorld->PBulletTimeManager;
@@ -199,7 +199,7 @@ void CMainGameComponent::Render()
                 info.WFServerCurrentTime = CurrentServerFrame;
                 double interpolate = GetServerFrameInterpolate(GetGameTimeOfNextPresentCompletion());
                 info.PausedCurrent.WFInterpolate = (float)GFLimitReturn(interpolate, zero, one);
-                info.PausedCurrent.GTPredictedTimeSinceLastRenderFrame = (float)GetTimeSinceLastRenderFrameStart();
+                info.PausedCurrent.GTPredictedTimeSinceLastRenderFrame = (float)GetPredictedTimeSinceLastRenderFrame();
             }
             LastInterpolationInfo = info;
             PWorld->RenderUpdate(&info);

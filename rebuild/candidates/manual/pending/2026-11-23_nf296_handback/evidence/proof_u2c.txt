@@ -1,0 +1,36 @@
+##### 004afa60 renames: ?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z=?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 004afb00 renames: ?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z=?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 004b26b0 renames: ?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z=?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z
+sections head 11 new 11
+ALL_EQ text_sections_equal=9
+tables H=1 N=1
+##### 0080fd30 renames: ?GetMaxCreatureCount@CTCAISummon@@QAEJXZ=?GetNumberCanSummon@CTCAISummon@@QBEJXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 0096e540 renames: ?GetMaxCreatureCount@CTCAISummon@@QAEJXZ=?GetNumberCanSummon@CTCAISummon@@QBEJXZ
+sections head 12 new 12
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 006cd970 renames: ?FindPosZ@CThingCreatureBase@@QAEMABVC3DVector@@H_N@Z=?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 006cd990 renames: ?FindPosZAt@CThingCreatureBase@@QAEMABVC3DVector@@_N1@Z=?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0069fc40 renames: ?GetPerformedAction@CCreatureActionBase@@QAE_NXZ=?HasPerformedAction@CCreatureActionBase@@QBE_NXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 00848ae0 renames: ?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ=?HasPerformedAction@CCreatureActionBase@@QBE_NXZ
+sections head 18 new 18
+ALL_EQ text_sections_equal=16
+tables H=0 N=0

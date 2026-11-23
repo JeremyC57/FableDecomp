@@ -81,7 +81,7 @@ class CTCVillage { public:
     unsigned char _pad_0x30[0x82];
     bool          Limbo;                        // +0xb2
     bool          LaggyLimbo;                   // +0xb3
-    void ProcessCrimeDeeds();                   // 0x0065C2D0
+    void ClearCrimes();                   // 0x0065C2D0; NF296: PDB name, was ProcessCrimeDeeds
     void SetVillageLimbo(bool limbo);
 };
 
@@ -107,6 +107,6 @@ void CTCVillage::SetVillageLimbo(bool limbo)
                 ((CThingBuilding*)building.GetPItem())->LockAllDoors(true, false);
             }
         }
-        ProcessCrimeDeeds();
+        ClearCrimes();
     }
 }

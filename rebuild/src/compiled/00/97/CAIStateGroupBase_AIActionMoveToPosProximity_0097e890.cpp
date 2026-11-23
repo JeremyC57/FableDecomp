@@ -193,8 +193,8 @@ class CAIStateGroupBase { public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
-    void SetNavigationIgnoreThing(const CThing* thing);   // 0x0097E270
-    void SetNavigationSpeedScale(float scale);            // 0x0097E2D0
+    protected: void SetThingToNotAvoid(const CThing* thing); public:   // 0x0097E270; NF296: PDB name, was SetNavigationIgnoreThing
+    protected: void SetProximityForDirectApproach(float scale); public:            // 0x0097E2D0; NF296: PDB name, was SetNavigationSpeedScale
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
                                                 EMovementType anim, bool lookAround, bool b7, bool b8, const CThing* ignoreThing,
                                                 bool b10, float speedScale);
@@ -204,8 +204,8 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat r
                                                                EMovementType anim, bool lookAround, bool b7, bool b8,
                                                                const CThing* ignoreThing, bool b10, float speedScale)
 {
-    SetNavigationIgnoreThing(ignoreThing);
-    SetNavigationSpeedScale(speedScale);
+    SetThingToNotAvoid(ignoreThing);
+    SetProximityForDirectApproach(speedScale);
     if (IsStopping())
         return AI_ACTION_STOPPING;
     EAIActionReturn result = AI_ACTION_RUNNING;

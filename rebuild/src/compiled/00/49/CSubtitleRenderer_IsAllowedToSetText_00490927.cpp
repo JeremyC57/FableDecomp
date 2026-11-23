@@ -79,7 +79,7 @@ class CWorld {
 public:
     CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
 private: public:
-    bool IsInSpecialMode();                        // 0x0048DB13
+    bool IsPerformingRegionLoad() const;                        // 0x0048DB13; NF296: PDB name, was IsInSpecialMode
 };
 struct CFrontEnd {
     unsigned char _pad[0xbc];
@@ -125,7 +125,7 @@ bool CSubtitleRenderer::IsAllowedToSetText(bool force)
         if (game->m_pFrontEnd->m_blocking != 0 && !force)
             break;
         CWorld* world = game->PWorld;
-        if (world->IsInSpecialMode())
+        if (world->IsPerformingRegionLoad())
             break;
         if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->IsOpen())
             break;

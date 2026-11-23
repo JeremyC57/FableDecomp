@@ -24,7 +24,7 @@ class CBaseObjectPointer;
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.Get() && !p.Get()->IsDead(); }
 
 class CThingManager { public:
-    CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80; NF296: PDB name, was GetThingByUID
 };
 class CMainGameComponent { public:             // [0x013B8A1C]+0x1C: CTCBase::PeekComponent's const CMainGameComponent& (Ego_r.pdb)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -68,7 +68,7 @@ public:
 
 void CTCDRegionExit::SetUpPEntranceConnectedToFromUID()
 {
-    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetThingByUID(EntranceConnectedToUID));
+    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(EntranceConnectedToUID));
     if (IsThingAlive(PEntranceConnectedTo))
         return;
     if (!PeekComponent().IsSuppressed())

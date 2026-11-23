@@ -18,7 +18,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingManager { public:
-    CThing* GetThingByUID(unsigned __int64 uid);    // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);    // 0x0051ED80; NF296: PDB name, was GetThingByUID
 };
 class CTCActivationTrigger;
 class CTCActivationReceptorBase {
@@ -46,7 +46,7 @@ public:
 void CTCActivationTrigger::OnInitialActivate()
 {
     if (ReceptorUID > 0) {
-        CThing* receptor = GetThingManager().GetThingByUID(ReceptorUID);
+        CThing* receptor = GetThingManager().GetPThingWithUID(ReceptorUID);
         receptor->GetTC(TCI_ACTIVATION_RECEPTOR, &PTCReceptor);
         PTCReceptor->RegisterTrigger(this);
     }

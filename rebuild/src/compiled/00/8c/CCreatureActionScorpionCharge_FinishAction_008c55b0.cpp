@@ -22,7 +22,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool IsCollidingWithLandscape() const;            // 0x00661E70 (manifest: CanCollideWithLandscape)
+    bool IsAbortingCurrentAction() const;            // 0x00661E70 (manifest: CanCollideWithLandscape); NF296: PDB name, was IsCollidingWithLandscape
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CTCPhysicalShieldSpell { public:
@@ -76,11 +76,11 @@ void CCreatureAction_ScorpionCharge::FinishAction()
     }
     if (IsTargetAlive()) {
         if (remaining > 0.0f && travelled > 0.1f) {
-            if (!GetCreature()->IsCollidingWithLandscape())
+            if (!GetCreature()->IsAbortingCurrentAction())
                 GetCreature()->SetCurrentAction(CCreatureAction_ScorpionCharge(*GetCreature(), *PTarget.Get(), remaining));
         } else {
             GetCreature()->RemoveTC((ETCInterfaceType)(0xc8));
-            if (!GetCreature()->IsCollidingWithLandscape())
+            if (!GetCreature()->IsAbortingCurrentAction())
                 GetCreature()->SetCurrentAction(CCreatureAction_ScorpionChargeStrike(GetCreature(), PTarget.Get()));
         }
     }

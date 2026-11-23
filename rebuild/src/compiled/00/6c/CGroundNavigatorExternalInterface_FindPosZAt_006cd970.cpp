@@ -3,9 +3,9 @@
 #include "engine/CGroundNavigatorExternalInterface.h"
 
 #include "engine/C3DVector.h"
-class CThingCreatureBase { public: float FindPosZ(const C3DVector& pos, int flag, bool b); };
+class CThingCreatureBase { public: float GetHeightZBelowAt(const C3DVector& pos, bool flag, bool b) const; };
 
 float __fastcall CGroundNavigatorExternalInterface_FindPosZAt(CGroundNavigatorExternalInterface* self, void* /*edx*/, const C3DVector& pos, bool b)
 {
-    return self->Creature->FindPosZ(pos, 0, b);
+    return self->Creature->GetHeightZBelowAt(pos, 0, b);
 }

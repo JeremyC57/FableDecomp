@@ -48,7 +48,7 @@ class CInputEvent { public:
     unsigned char _body[0x34];
     CInputEvent();                                          // 0x00A04410
     ~CInputEvent();                                         // 0x00A03B30
-    C2DVector GetAnaloguePosition() const;                  // 0x00A043A0
+    C2DVector GetJoystickPosition() const;                  // 0x00A043A0; NF296: PDB name, was GetAnaloguePosition
 };
 class CInputManager { public:
     bool IsJoystickEventInQueue(long type, long a, CInputEvent* event, long player);   // 0x009F4C60
@@ -85,7 +85,7 @@ void CTCAssassinRush::UpdateDirectionOverride()
     CThingPlayerCreature* thing = ParentThing;
     CInputManager* input = GFGetSystemManager()->InputManager;
     if (input->IsJoystickEventInQueue(0x11, 0, &event, thing->GetPlayer().GetJoystickDeviceNumber())) {
-        C2DVector stick = event.GetAnaloguePosition();
+        C2DVector stick = event.GetJoystickPosition();
         if (stick.GetLength() > 0.05f) {
             DirectionOverrideVector.X = stick.X;
             DirectionOverrideVector.Y = -stick.Y;
