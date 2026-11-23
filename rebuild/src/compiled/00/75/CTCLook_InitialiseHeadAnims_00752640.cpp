@@ -48,7 +48,7 @@ class CThingCreatureBase { public:
     virtual bool HasAnimation(const CCharString& name, bool currentModeOnly) const;   // slot 73 (+0x124)
     unsigned char _pad04[0x91 - 0x04];
     unsigned char Flags91;                                 // +0x91 (bit 0: dead)
-    const CAnimationEntry* GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
+    const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
 };
 template<class T> inline bool IS_THING_ALIVE(T* const& p)
 {
@@ -94,9 +94,9 @@ void CTCLook::InitialiseHeadAnims()
 {
     if (IS_THING_ALIVE(PParentCreature)) {
         if (PParentCreature->HasAnimation(ST_HEAD_TURN_V, false))
-            PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PParentCreature->GetAnimFromName(ST_HEAD_TURN_V, 0)));
+            PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_V, 0)));
         if (PParentCreature->HasAnimation(ST_HEAD_TURN_H, false))
-            PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PParentCreature->GetAnimFromName(ST_HEAD_TURN_H, 0)));
+            PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_H, 0)));
     } else {
         if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_V, CAnimFilterNoGroup()))
             PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_V, 0, CAnimFilterNoGroup())));

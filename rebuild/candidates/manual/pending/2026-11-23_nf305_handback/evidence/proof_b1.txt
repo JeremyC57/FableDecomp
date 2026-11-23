@@ -1,0 +1,68 @@
+##### 00644179 renames: ?IsOpen@CFadeInFadeOutBase@@QAE_NXZ=?IsOpen@CFadeInFadeOutBase@@QBE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 006d7cb0 renames: ?IsAbilityPotentiallyAvailable@CTCInventoryAbilities@@QAE_NW4EHeroAbility@@@Z=?IsAbilityPotentiallyAvailable@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=11
+tables H=0 N=0
+##### 006d8b50 renames: ?OnStatLevelChange@CTCHeroExperience@@QAEX_N@Z=?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z ?UpdateAbilitiesForStat@CTCHeroExperience@@QAEXW4EHeroTrainableStatType@@_N@Z=?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 006e9d90 renames: ?GetCombatTypeDef@CThingCreatureBase@@QBEPAVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 21 new 21
+ALL_EQ text_sections_equal=19
+tables H=0 N=0
+##### 006ebee0 renames: ?GetCombatTypeDef@CThingCreatureBase@@QAEPAVCCombatTypeDef@@XZ=?GetCombatTypeDef@CThingCreatureBase@@QBEABVCCombatTypeDef@@XZ
+sections head 3 new 3
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00730f90 renames: ?Open@CTCDoor@@QAEX_N@Z=?Open@CTCDoor@@IAEX_N@Z
+sections head 10 new 10
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 00788555 renames: ?Reset@CTCTrapBase@@QAEXXZ=?Reset@CTCTrapBase@@IAEXXZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 0079e3a0 renames: ?StopSound@CTCPhysicalShieldSpell@@QAEXK@Z=?StopSound@CTCPhysicalShieldSpell@@IAEXK@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00872050 renames: ?GetCamTools@CBase@NCameraModes@@QBEABVCTools@2@XZ=?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 00892f40 renames: ?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z=?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 008e9080 renames: ?GetAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@J@Z=?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00904ee0 renames: ?IsActionListEmpty@CTCScriptedControl@@QAE_NXZ=?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 009189c0 renames: ?FindFreeGazePos@CAIStateGroup_Gaze@@QAEPAVCThingGameObject@@XZ=?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
+sections head 15 new 15
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 0094fe30 renames: ?AIAction_DoNothing@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@XZ=?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 009a06b0 renames: ?ExtendData@?$CBasicString@D@@QAEXK@Z=?ExtendData@?$CBasicString@D@@IAEXK@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00b8ff70 renames: ?InvalidateAll@CEngineSceneGridCell@@QAEXXZ=?InvalidateAll@CEngineSceneGridCell@@AAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00bdda80 renames: ?ClipSphere@CEngineCamera@@QAE_NABVC3DVector@@MPAK@Z=?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0

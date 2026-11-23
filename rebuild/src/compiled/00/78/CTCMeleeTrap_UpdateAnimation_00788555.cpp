@@ -65,7 +65,7 @@ class CFadeInFadeOutBase { public:                             // 0x1c
     float         OpenTimer;                            // +0x10
     float         CloseTimer;                           // +0x14
     unsigned long ToColour;                             // +0x18 CRGBColour
-    bool IsOpen();                                      // 0x0048DA30
+    bool IsOpen() const;                                      // 0x0048DA30
 };
 class CTCBase
 {
@@ -84,7 +84,7 @@ class CTCTrapBase : public CTCBase { public:
     bool          Triggered;                            // +0x59
     bool          LastTriggerOnProximity;               // +0x5a
     long          TrapType;                             // +0x5c ETrapType
-    void Reset();                                       // 0x00787BF1
+    protected: void Reset(); public:                                       // 0x00787BF1
 };
 struct CTCMeleeTrap : CTCTrapBase {
     bool PlayingContinuous;                             // +0x60

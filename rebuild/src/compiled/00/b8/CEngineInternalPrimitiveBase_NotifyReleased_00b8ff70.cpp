@@ -5,8 +5,8 @@
 // engine/CEngineInternalPrimitiveBase.h (PDB): GridCell +0x20, GridPos_Level +0x24, PostRenderEnable (flag group) +0x34. The handle argument is unused.
 class CEnginePrimitiveHandle;
 
-class CEngineSceneGridCell { public:
-    void InvalidateAll();                          // 0x00B91710
+class CEngineSceneGridCell { friend class CEngineInternalPrimitiveBase; public:
+    private: void InvalidateAll(); public:                          // 0x00B91710
 };
 
 class CEngineInternalPrimitiveBase { public:

@@ -21,7 +21,7 @@ class CWorld { public:
 class CFadeInFadeOutBase { public:
     unsigned char Active;                          // +0x00
     unsigned char _rest[0x1b];
-    bool IsOpen();                                 // 0x0048DA30
+    bool IsOpen() const;                                 // 0x0048DA30
 };
 
 namespace NPlayerGui {

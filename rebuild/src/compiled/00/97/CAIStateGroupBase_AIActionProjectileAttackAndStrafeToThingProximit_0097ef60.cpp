@@ -87,7 +87,7 @@ class CThing { public:
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;         // 0x00666D10
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -152,7 +152,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
 {
     bool useStrafe = false;
     CDefPointer<const CCombatAbilityUseProjectileWeaponDef> indicator;
-    if (GetCreature()->GetCombatTypeDef()->GetSubDef(&indicator))
+    if (GetCreature()->GetCombatTypeDef().GetSubDef(&indicator))
         useStrafe = indicator->CombatAbility.AbleToStrafeAndShoot;
     CTCCreatureModeManager* modes;
     GetCreature()->GetInterfaceT(&modes, 0x31);

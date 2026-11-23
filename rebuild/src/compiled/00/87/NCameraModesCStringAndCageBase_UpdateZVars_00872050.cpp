@@ -43,7 +43,7 @@ public:
     unsigned char       _pad44[0xa0 - 0x44];
     bool                ViewOccluded;                      // +0xa0
     const CThingGameObject* GetObservedThing() const;      // 0x0084F1B0
-    const CTools& GetCamTools() const;                     // 0x0084D080
+    protected: const CTools& GetCamTools() const;                     // 0x0084D080
 };
 class CStringAndCageBase : public CBase {
 public:

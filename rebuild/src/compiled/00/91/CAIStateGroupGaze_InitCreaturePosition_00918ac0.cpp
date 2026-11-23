@@ -66,7 +66,7 @@ struct CAIStateGroup_Gaze : CAIStateGroupBase {
     float MaxDistanceForCreaturesToLookAt;                  // +0x24
     long PrimaryMarkerDef;                                  // +0x28
     long SecondaryMarkerDef;                                // +0x2c
-    CThingGameObject* FindFreeGazePos();                    // 0x00918880
+    protected: CThingGameObject* FindFreeGazePos(); public:                    // 0x00918880
     bool InitCreaturePosition();
 };
 

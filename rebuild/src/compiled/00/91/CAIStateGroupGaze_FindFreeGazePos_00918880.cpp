@@ -1,5 +1,6 @@
 // CAIStateGroup_Gaze::FindFreeGazePos() -- a free gaze marker of the primary definition (else of the secondary one when it differs), preferring by whether the time of day is inside the creature's sleep window
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00918880, length 116 bytes (+ int3 padding).
+// Leaf: ?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
 // Callees: `this`'s virtual slot 15 (+0x3c), the state group's world accessor @ 0x008FCFC0 (game time at +0x1c),
 // CThingAICreature::GetSleepTimes(long*, long*) @ 0x00833390, the game time's IsTimeOfDayInRange(long, long)
 // @ 0x006BB390 (thiscall; the manifest's "_global" label is a propagated guess),
@@ -58,7 +59,7 @@ struct CAIStateGroup_Gaze : CAIStateGroupBase {
     long PrimaryMarkerDef;                                  // +0x28
     long SecondaryMarkerDef;                                // +0x2c
     protected: CThingGameObject* FindFreeParticularGazePos(long markerDef, bool inSleepTime); public:   // 0x00918640
-    CThingGameObject* FindFreeGazePos();
+    protected: CThingGameObject* FindFreeGazePos(); public:
 };
 
 CThingGameObject* CAIStateGroup_Gaze::FindFreeGazePos()

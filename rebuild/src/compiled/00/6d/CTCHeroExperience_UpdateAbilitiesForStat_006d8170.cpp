@@ -1,5 +1,5 @@
 // CTCHeroExperience::UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool silent) -- after a trainable stat changes, refresh what it drives: for stat 1 the creature's max health (per-level table + the hero stats' extra max health), for stat 9 the hero stats' max stamina (per-level table + extra max stamina); unless silent, the gain in the maximum is also added to the current value
-// Leaf: UpdateAbilitiesForStat
+// Leaf: ?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z
 //
 // Retail 0x006D8170, 383 bytes (+17 int3 padding, `ret 8`). Ego_r.pdb `?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z`;
 // called for every stat by the landed UpdateAbilitiesForAllStats 0x006D8AD0.
@@ -145,7 +145,7 @@ public:
     CRetailVector<long> TrainableStatLevels;                // +0x24
     unsigned char _pad30[0x5c - 0x30];
     CHeroStatsDef* PHeroStatsDef;                           // +0x5c
-    void UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool silent);
+    private: void UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool silent); public:
 };
 
 void CTCHeroExperience::UpdateAbilitiesForStat(EHeroTrainableStatType stat, bool silent)

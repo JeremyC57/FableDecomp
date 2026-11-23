@@ -17,7 +17,7 @@ template<class T> class CBasicString { public:
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08
     bool UseFastExtend : 1;
-    void ExtendData(unsigned long newLength);                       // 0x009A01C0
+    protected: void ExtendData(unsigned long newLength); public:                       // 0x009A01C0
     void AppendData(const T* data, unsigned long length);           // 0x009A04E0
     static unsigned long Length(const T* text)
     {

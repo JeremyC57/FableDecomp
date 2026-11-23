@@ -24,7 +24,7 @@ class CTCPhysicalShieldSpell { public:
     bool    Pausable;                           // +0x44
     bool    Paused;                             // +0x45
     bool    CutSceneCancelled;                  // +0x46
-    void StopSound(unsigned long sound);        // 0x0079DDB0
+    protected: void StopSound(unsigned long sound); public:        // 0x0079DDB0
     void Pause();
 };
 

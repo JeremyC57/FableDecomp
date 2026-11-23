@@ -44,7 +44,7 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_Gaze : CAIStateGroupBase {
     unsigned char _gaze[0x1c];                  // +0x08 priority/name/flags, GazeMarker, running parameters
-    CThingGameObject* FindFreeGazePos();        // 0x00918880
+    protected: CThingGameObject* FindFreeGazePos(); public:        // 0x00918880
 };
 
 struct CAIStateGroup_GazeAtWork : CAIStateGroup_Gaze {

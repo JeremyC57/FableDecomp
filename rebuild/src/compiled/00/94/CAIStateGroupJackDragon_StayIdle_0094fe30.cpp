@@ -45,7 +45,7 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x0c];                   // +0x08..+0x13
 protected:
     CWorld& GetWorld() const;                        protected: // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
-public:
+protected:
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)

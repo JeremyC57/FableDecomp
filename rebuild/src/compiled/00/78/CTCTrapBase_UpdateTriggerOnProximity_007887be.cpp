@@ -33,7 +33,7 @@ struct CTriggerThingVector {                    // STLport vector<CIntelligentPo
 };
 class CFadeInFadeOutBase { public:                     // 0x1c bytes
     unsigned char _data[0x1c];
-    bool IsOpen();                              // 0x0048DA30
+    bool IsOpen() const;                              // 0x0048DA30
 };
 class CTrapDef { public:
     unsigned char _pad[0x34];
@@ -53,7 +53,7 @@ class CTCTrapBase { public:
     bool          Triggered;                    // +0x59
     bool          LastTriggerOnProximity;       // +0x5a
     long          TrapType;                     // +0x5c ETrapType
-    void Reset();                               // 0x00787BF1
+    protected: void Reset(); public:                               // 0x00787BF1
     void Trigger();                             // 0x00788229
     void UpdateTriggerOnProximity();
 };

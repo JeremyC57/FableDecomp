@@ -39,7 +39,7 @@ class CFadeInFadeOutBase { public:                        // PDB 0x1c bytes
     float         CloseTimer;                      // +0x14
     unsigned long ToColour;                        // +0x18
     void Start(float fadeInTime, float fadeOutTime, CRGBColour colour);   // 0x00434840
-    bool IsOpen();                                 // 0x0048DA30
+    bool IsOpen() const;                                 // 0x0048DA30
 };
 
 class CWorldMap { public:

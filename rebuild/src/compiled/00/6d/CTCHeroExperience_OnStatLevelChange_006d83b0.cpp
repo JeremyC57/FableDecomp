@@ -1,4 +1,5 @@
 // CTCHeroExperience::OnStatLevelChange(bool) -- pushes the clamped strength and skill level fractions into the hero morph, refreshes the will morph and (optionally) the expression list, and updates the creature's front mode
+// Leaf: ?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D83B0, 447 bytes (+ int3 padding), `ret 4`.
 // Callees: CTCHeroExperience::GetTotalStatLevel 0x006D6660 and GetTotalStatMaxLevel 0x006D66E0 (both landed; their real
@@ -103,7 +104,7 @@ public:
     CDefPointer<CHeroStatsDef> PHeroStatsDef;   // +0x5c
     long GetTotalStatLevel(EHeroExperienceStatCategory category) const;     // 0x006D6660
     long GetTotalStatMaxLevel(EHeroExperienceStatCategory category) const;  // 0x006D66E0
-    void OnStatLevelChange(bool checkExpressions);
+    private: void OnStatLevelChange(bool checkExpressions); public:
 };
 
 #pragma auto_inline(off)

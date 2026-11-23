@@ -85,7 +85,7 @@ struct CActionBase {                               // vtable 0x01265504
 extern CSuspendableProcessMicrothread* g_pScriptRunner;   // 0x013D2838
 
 class CTCScriptedControl { public:                      // interface 0x1f component
-    bool IsActionListEmpty();                     // 0x007122C0
+    bool IsActionListEmpty() const;                     // 0x007122C0
 };
 
 struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {

@@ -25,7 +25,7 @@ class CCombatManager;
 class CThingCreatureBase { public:
     unsigned char _pad[0x60];
     SCollisionData* m_pCollision;          // +0x60
-    CCombatTypeDef* GetCombatTypeDef();    // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;    // 0x00666D10
     CCombatManager& GetCombatManager();    // 0x00661ED0
 };
 
@@ -62,7 +62,7 @@ void CCombatRing::AssignAttackerToProng(CProng* prong, CThingCreatureBase* attac
         if (size > RingThickness)
             RingThickness = size * 1.5f;
     } else {
-        float size = attacker->GetCombatTypeDef()->m_ringDistance;
+        float size = attacker->GetCombatTypeDef().m_ringDistance;
         if (size > RingThickness)
             RingThickness = size;
     }

@@ -56,7 +56,7 @@ class CCreatureAction_GeneralInterruptedAttack : public CCombatActionBase { publ
     CCreatureAction_GeneralInterruptedAttack(CThingCreatureBase* owner, CThing* target, CCharString animName);   // 0x0087CF90
 };
 class CThingCreatureBase : public CThing { public:
-    CCombatTypeDef* GetCombatTypeDef();          // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;          // 0x00666D10
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
@@ -72,7 +72,7 @@ void CCombatActionBase::OnBlowBlocked(bool flag)
                 canRecoil = false;
         }
         CThing* item = PCreature.Get();
-        if ((item->GetType() == 2 || ((CThingCreatureBase*)PCreature.Get())->GetCombatTypeDef()->BlockedResponse != 2) && canRecoil) {
+        if ((item->GetType() == 2 || ((CThingCreatureBase*)PCreature.Get())->GetCombatTypeDef().BlockedResponse != 2) && canRecoil) {
             CThing* target = PTarget.Get();
             CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.Get();
             FinishAction();

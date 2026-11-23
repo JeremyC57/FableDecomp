@@ -34,7 +34,7 @@ class C3DBoundingSphere { public:
 class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     Position;                            // +0x54
-    bool ClipSphere(const C3DVector& centre, float radius, unsigned long* flags);   // 0x00B30480
+    bool ClipSphere(const C3DVector& centre, float radius, unsigned long* flags) const;   // 0x00B30480
 };
 class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long primitiveTypeMask, float fadeDistance);   // 0x00B597E0

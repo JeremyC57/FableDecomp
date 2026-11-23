@@ -44,7 +44,7 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
-    CCombatTypeDef* GetCombatTypeDef() const;   // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;   // 0x00666D10
 public:
     bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
@@ -111,7 +111,7 @@ void CCombatManager::SetAttackerRingAsRotating(const CThingCreatureBase& attacke
         return;
     CCombatantInfo& info = GetCombatantInfo(attacker);
     const CThingCreatureBase* victim = info.AttackerInfo.Attacked;
-    if (victim->GetCombatTypeDef()->RotatesCombatRings) {
+    if (victim->GetCombatTypeDef().RotatesCombatRings) {
         CCombatantInfo& victimInfo = GetCombatantInfo(*victim);
         if (victimInfo.PAttackPattern->AttackPattern[victimInfo.AttackPatternIndex] == 0 && info.AttackerInfo.CombatWheelRingIndex == 0)
             victimInfo.CombatWheel.GetRing(0)->DeltaRotation = degreesPerSecond * (1.0f / 360.0f) / CMainGameComponent::GetConstantFPS();

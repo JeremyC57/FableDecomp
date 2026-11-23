@@ -1,0 +1,18 @@
+N 004b4490 CQuestManager::Update RELOCATION_MATCH flags= [] leaf=?Update@CQuestManager@@QAEXXZ
+N 0064e019 NPlayerGui::CDrawMiniMap::ToggleCentering RELOCATION_MATCH flags= [] leaf=
+N 006d8170 CTCHeroExperience::UpdateAbilitiesForStat RELOCATION_MATCH flags= [] leaf=?UpdateAbilitiesForStat@CTCHeroExperience@@AAEXW4EHeroTrainableStatType@@_N@Z
+N 006d83b0 CTCHeroExperience::OnStatLevelChange RELOCATION_MATCH flags= [] leaf=?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z
+N 006d8ca0 CTCHeroExperience::Copy RELOCATION_MATCH flags= [] leaf=Copy
+N 006ea2c0 CCombatManager::PerformSequenceReset RELOCATION_MATCH flags= [] leaf=PerformSequenceReset
+N 00752640 CTCLook::InitialiseHeadAnims RELOCATION_MATCH flags= [] leaf=InitialiseHeadAnims
+N 00788555 CTCMeleeTrap::UpdateAnimation RELOCATION_MATCH flags= [] leaf=UpdateAnimation
+N 007887be CTCTrapBase::UpdateTriggerOnProximity RELOCATION_MATCH flags= [] leaf=UpdateTriggerOnProximity
+N 00858cc0 CCombatActionBase::OnBlowBlocked RELOCATION_MATCH flags= [] leaf=?OnBlowBlocked@CCombatActionBase
+N 00904380 CScriptGameResourceObjectScriptedThing::WaitWhilePerformingTasks RELOCATION_MATCH flags= [] leaf=WaitWhilePerformingTasks
+N 00918880 CAIStateGroup_Gaze::FindFreeGazePos RELOCATION_MATCH flags= [] leaf=?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ
+N 00918900 CAIStateGroup_GazeOutside::IsRunnable RELOCATION_MATCH flags= [] leaf=?IsRunnable@CAIStateGroup_GazeOutside@@UAE_NXZ
+N 00918ac0 CAIStateGroup_Gaze::InitCreaturePosition RELOCATION_MATCH flags= [] leaf=?InitCreaturePosition@CAIStateGroup_Gaze@@QAE_NXZ
+N 00918b50 CAIStateGroup_GazeAtWork::InitCreaturePosition RELOCATION_MATCH flags= [] leaf=?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ
+N 0097ef60 CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProximity RELOCATION_MATCH flags= [] leaf=
+N 0097f3a0 CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos RELOCATION_MATCH flags= [] leaf=?AIAction_ProjectileAttackAndStrafeToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@V?$CIntelligentPointer@$$CBVCThing@@@@AA_NW4EMovementType@@_N@Z
+GR_DONE

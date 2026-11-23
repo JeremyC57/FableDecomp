@@ -111,7 +111,7 @@ class CQuestManager { public:
     CActiveQuest*            PQuestCurrentlyRunning;   // +0x88
     unsigned char            _pad8c[4];                // DayActive .. QuestCardsNeedUpdating
     long                     HeroMapNumber;            // +0x90
-    bool IsQuestActive(const CCharString& name);       // 0x004AF610
+    bool IsQuestActive(const CCharString& name) const;       // 0x004AF610
     void DeactivateQuest(const CCharString& name, unsigned long reason);   // 0x004B43D0
     void ResetPositionOfAllQuestCards();               // 0x004AFCA0
     void Update();

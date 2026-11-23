@@ -1353,3 +1353,30 @@ nf304	0x0098B860	port	binder 0x00B3B5D0 returns the stand-in CShaderResourcePoin
 nf304	0x00A5D7C0	port	binder 0x00B3B6D0 line 18 OpenShaderBank(const CShaderDataBankNative*) on the stand-in CShaderDataBankNative (PDB const CShaderDataBank*): stand-in type, T3. Not compiled
 nf304	0x00783730	port	binder 0x0095E790 line 56 / 72 GetCrowdGroup(CThing*, CCrowdGroup**) on the stand-in struct CCrowdGroup (PDB CTCCreatureGroupBoastingCrowd**): stand-in type, T3. Not compiled
 nf304	0x00B32000	identity research	stand-in callee respelled by the 0x00BF9FA0 re-scope (NF304 entry 4); probable PDB name CEnginePrimitiveRenderer::UpdateRepeatedZSprite, unproven: prove the name, then port with entry 4
+nf305	0x005BDB4D	port	binder 0x00582944 / 0x0057713f / 0x0059c8f2 / 0x005c3057 / 0x005cd33f / 0x005f4a86 / 0x00602e30 / 0x0072dc70: 0x00582944 models CTCInventoryBase as a global polymorphic local base: moving it into NInventory also re-scopes the qualified OnCreate call (0x005C0121, an NF303 witness) onto a still-wrong non-virtual NInventory form, and making OnCreate virtual turns the self CTCInventory::OnCreate virtual (self rename); the other seven binders reach SetPDef through derived-name stand-in bases (CTCInventoryBase_Experience / _Trade / ...): base ports
+nf305	0x004DC991	port	binder 0x004dca3a: global ctor taking CThing* for the PDB NThingShot:: ctor taking CThing&: namespace + parameter port
+nf305	0x0072ABD0	port	binder 0x00794c10: free __fastcall FadeOrKillEffect(CBaseIntelligentPointer&) for the static CTCSpecialAbilities member taking CIntelligentPointer<CThing>&: class + parameter port
+nf305	0x0072B940	port	binder 0x0072c680: free CalculateWeaponState(CThingCreatureBase*) for the static member taking CThingCreatureBase&: class + parameter port
+nf305	0x007B8AA0	port	binder 0x0096cfc0: FreeSeat declared on a stand-in class CTCSeatTable: class port
+nf305	0x006D18A0	port	binder 0x006d1de0 / 0x00897940: Marry on the stand-in classes CTCWife_Confirm (derived) and CTCWife_Retail: class ports
+nf305	0x007E4040	port	binder 0x008cc9c0: free __fastcall stand-in for the static CTCWillResponse member: class port
+nf305	0x00EEEC00	port	binder 0x00eeed20: moving the local CTestTheInventoryScript into NScript renames the row's own TestForLampOff definition and the emitted ??_7CSpawnedFunc0<CTestTheInventoryScript> vftable (NF300 Q2 excludes both): T3
+nf305	0x0054F4B0	port	binder 0x0054fb10 / 0x0054f8e0: needs native wchar_t (_W in both PDBs) in 0x0054F8E0: a compile-flag change, T3 (NF305 Q3). 0x0054FB10 free stub; 0x0054F8E0 already NUISystem::CText but takes unsigned short where both PDBs give native wchar_t (_W): the parameter needs /Zc:wchar_t or a wchar_t model (Decision 3)
+nf305	0x009FA620	port	binder 0x00a697a0: free __fastcall stand-in for the static CTexture member: class port
+nf305	0x006B6010	port	binder 0x006b6590: re-scoping CThemeChannel into CIDrawEnvironmentParams renames the row's own uninitialized_fill_n<CThemeChannel*> instance (self leaf): T3
+nf305	0x004C79D0	port	binder 0x006a4d60: GetWorldMap on a local CThingPhysical returning CWorldMap* for the protected CThing member returning CWorldMap&: class + return port
+nf305	0x004C7A60	port	binder 0x00834760: PeekThingSearchTools on CThingCreatureBase for the protected CThing member: class port
+nf305	0x004C9B80	port	binder 0x008d7730 / 0x0066fb50 (0x006e11f0 NF303 witness): 0x008D7730 keeps CThing, CBaseIntelligentPointer and CModeBase in its own NCreatureMode stand-in namespace: moving CThing out also re-scopes GetPItem's return type (namespace port); 0x0066FB50: CThing_0066fb50 stand-in class
+nf305	0x0082D000	port	binder 0x0091cdc0 (0x00969470 NF304 witness): IsPointInside on CThing (non-const) for the PDB const CThingBuilding member: class + const port
+nf305	0x00661CD0	port	binder 0x00713ee0: GetCurrentSpeed on CThing for the CThingCreatureBase member: class port
+nf305	0x00661ED0	port	binder 0x008b0610 / 0x0093e2d0 / 0x00856b10: free GetCombatManager, CThing::GetCombatManager returning a pointer, and an address-named stub: ports
+nf305	0x00661F70	port	binder 0x008902b0: extern "C" @Hero_CheckChild@4 stub: port
+nf305	0x006624F0	port	binder 0x00911c20: SetAttackedByCreature on CThing taking CThing* for the CThingCreatureBase member taking CThingCreatureBase*: class + parameter port
+nf305	0x00662650	port	binder 0x007a71b0 / 0x00890ba0: FinishCurrentAction on CThing / CThing_Retail for the CThingCreatureBase member: class ports
+nf305	0x00662EF0	port	binder 0x0090f830: GetRandomAnimFromNameWithFilter on CThing (non-const, pointer return): class + const + return port
+nf305	0x00662FA0	port	binder 0x0097fa00 / 0x008d6da0: 0x0097FA00: CThingAICreature class port; 0x008D6DA0: the const-pointer return forces its entry local const, and the entry calls the non-const stand-in GetTimeToBlendIn(CThing*) (both PDBs: const, const CThing&): a second stand-in fix, port
+nf305	0x00663990	port	binder 0x00664680: free __fastcall CreateWeaponForThingFromDef(CThing*, long) for the static member taking CThing&: class + parameter port
+nf305	0x00665DF0	port	binder 0x0094c850 / 0x00783380 / 0x00918b50 / 0x009460c0: AutoPlaceNear on stand-in classes (CCreaturePlacementMethods, CThingAICreature, CThingCreature), pointer parameters for the PDB const C3DVector&: class ports
+nf305	0x00666EF0	port	binder 0x00917330 / 0x0090fc50: AutoPlaceNearBuilding on CThingAICreature / CThingCreatureHome for the CThingCreatureBase member: class ports
+nf305	0x0099EAF0	port	binder 0x0099f0a0 / 0x0099f390: 0x0099F0A0 calls MakeOwnCopyOfData from an extern "C" free stub (a protected member cannot be reached from it): self port; 0x0099F390 free stub
+nf305	0x00838A40	port	binder 0x0083b610 / 0x0083ba20 (class stand-ins): 0x0083B610: the PDB member is protected virtual (MAE); the local CThing / CThingPhysical are empty non-polymorphic bases, so a vfptr in CThingGameObject would sit ahead of them (this-adjust on AddTC), and the self CThingVillage::OnCreate would turn virtual (self rename): base port

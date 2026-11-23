@@ -61,7 +61,7 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
-    CCombatTypeDef* GetCombatTypeDef() const;   // 0x00666D10
+    const CCombatTypeDef& GetCombatTypeDef() const;   // 0x00666D10
 };
 class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -126,7 +126,7 @@ void CCombatManager::PerformSequenceReset(CThingCreatureBase& creature)
                 IncrementDefenderAttackPattern(victim->second);
                 CDefPointer<const CCombatAbilityStrafeDef> rotation;
                 if (!IsCreatureOnOuterRing(creature)) {
-                    if (creature.GetCombatTypeDef()->GetSubDef(&rotation)) {
+                    if (creature.GetCombatTypeDef().GetSubDef(&rotation)) {
                         long roll = WorldRandom(*World->GetWorldSeed()) % 100;
                         if (roll <= rotation->CombatAbility.PercentageChance) {
                             float speed = rotation->CombatAbility.RotationSpeed;

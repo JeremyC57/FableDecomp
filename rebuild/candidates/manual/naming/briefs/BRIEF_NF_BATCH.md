@@ -128,3 +128,7 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   pick-any copies of the type's implicit members or local inline getters, now in the PDB spelling, lands when each copy's body equals the
   landed PDB definition or no landed strong definition of that symbol exists; otherwise T3. Q2: a local `long` member / parameter retyped to
   the shared 4-byte enum lands under NF300 Q1.
+- NF305 Q1: a respell that moves another call onto a DIFFERENT wrong form is a port (a binder may stay unresolved only on the PDB name).
+  Q2: `cl /Zs` counts as the precheck of a CHANGED source only when the same clang error (outside the toolchain headers) also fires on
+  its unchanged HEAD source; record both logs. Q3: a native `wchar_t` (`_W`) need is a compile-flag change: T3. Q5: a `friend` the retail
+  access forces, naming the real class, lands under R1.

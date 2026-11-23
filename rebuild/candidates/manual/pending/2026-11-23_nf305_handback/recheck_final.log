@@ -1,0 +1,36 @@
+# NF305 recheck (vland --recheck-landed; new sources from rows/; repo tests except 00892f40). Run 1, 32 rows (work/rf1.log):
+004b4490   RELOCATION_MATCH PASS   Update
+00644179   RELOCATION_MATCH PASS   IsFinishedOpening
+0064e019   RELOCATION_MATCH PASS   ToggleCentering
+006d7cb0   RELOCATION_MATCH PASS   IsReadyToLevelUp
+006d8170   RELOCATION_MATCH PASS   UpdateAbilitiesForStat
+006d83b0   RELOCATION_MATCH PASS   OnStatLevelChange
+006d8b50   RELOCATION_MATCH PASS   SetExperienceStatus
+006e9d90   RELOCATION_MATCH PASS   SetAttackerRingAsRotating
+006ea2c0   RELOCATION_MATCH PASS   PerformSequenceReset
+006ebee0   RELOCATION_MATCH PASS   AssignAttackerToProng
+00730f90   RELOCATION_MATCH PASS   UpdateOpenStatusTriggerTypePerson
+00752640   RELOCATION_MATCH PASS   InitialiseHeadAnims
+00788555   RELOCATION_MATCH PASS   UpdateAnimation
+007887be   RELOCATION_MATCH PASS   UpdateTriggerOnProximity
+0079e3a0   RELOCATION_MATCH PASS   Pause
+00858cc0   RELOCATION_MATCH PASS   OnBlowBlocked
+00872050   RELOCATION_MATCH PASS   UpdateZVars
+00892f40   RELOCATION_MATCH LINK_FAIL IsQuestActive
+008e9080   RELOCATION_MATCH PASS   GetAnimDistanceAndIndexFromAnimName
+00904380   RELOCATION_MATCH PASS   WaitWhilePerformingTasks
+00904ee0   RELOCATION_MATCH PASS   IsPerformingScriptTask
+00918880   RELOCATION_MATCH PASS   FindFreeGazePos
+00918900   RELOCATION_MATCH PASS   IsRunnable
+009189c0   RELOCATION_MATCH PASS   IsRunnable
+00918ac0   RELOCATION_MATCH PASS   InitCreaturePosition
+00918b50   RELOCATION_MATCH PASS   InitCreaturePosition
+0094fe30   RELOCATION_MATCH PASS   StayIdle
+0097ef60   RELOCATION_MATCH PASS   AIAction_ProjectileAttackAndStrafeToThingProximity
+0097f3a0   RELOCATION_MATCH PASS   AIAction_ProjectileAttackAndStrafeToPos
+009a06b0   RELOCATION_MATCH PASS   Insert
+00b8ff70   RELOCATION_MATCH PASS   NotifyReleased
+00bdda80   RELOCATION_MATCH PASS   RenderUpdate
+# Run 2, 00892f40 with rows/00892f40_test.cpp (callee stub const) (work/rf2.log):
+00892f40   RELOCATION_MATCH PASS   IsQuestActive
+# 161 WARN SHARED_HEADER_AVAILABLE lines in run 1: local models the rows already had at HEAD (no class newly modelled).

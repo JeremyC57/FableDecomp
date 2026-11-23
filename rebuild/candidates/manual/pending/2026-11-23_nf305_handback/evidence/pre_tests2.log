@@ -1,0 +1,16 @@
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/97/CAIStateGroupBase_AIActionDoNothing_0097e200_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/91/CAIStateGroupGaze_FindFreeGazePos_00918880_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/84/NCameraModesCBase_GetCamTools_0084d080_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/b3/CEngineCamera_ClipSphere_00b30480_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/b9/CEngineSceneGridCell_InvalidateAll_00b91710_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/48/CFadeInFadeOutBase_IsOpen_0048da30_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/4a/CQuestManager_IsQuestActive_004af610_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/73/CTCDoor_Open_00730c00_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCHeroExperience_UpdateAbilitiesForStat_006d8170_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCHeroExperience_OnStatLevelChange_006d83b0_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/5e/CTCInventoryAbilities_IsAbilityPotentiallyAvailable_005ee02e_test.cpp
+04:20:44 PASS /home/user/FableDecomp/rebuild/tests/00/79/CTCPhysicalShieldSpell_StopSound_0079ddb0_test.cpp
+04:20:45 PASS /home/user/FableDecomp/rebuild/tests/00/71/CTCScriptedControl_IsActionListEmpty_007122c0_test.cpp
+04:20:45 PASS /home/user/FableDecomp/rebuild/tests/00/78/CTCTrapBase_Reset_00787bf1_test.cpp
+04:20:45 PASS /home/user/FableDecomp/rebuild/tests/00/66/CThingCreatureBase_GetAnimFromName_00662a00_test.cpp
+04:20:45 PASS /home/user/FableDecomp/rebuild/tests/00/66/CThingCreatureBase_GetCombatTypeDef_00666d10_test.cpp
