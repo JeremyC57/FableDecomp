@@ -24,6 +24,7 @@
 //   (Ego_r.pdb 0x00B15970 + FableWin.pdb 0x02F6EB80; CWideString&, the self row's leaf and what the other 13 landed callers bind), was
 //   the global ?ConstructString@@YI_NPAVCWideString@@J@Z (pointer; same bytes).
 #include <stddef.h>
+#define FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_GETPRICE   // NF302: ?GetPrice@CTCBuyableHouse@@QBEJXZ (both PDBs) from the header
 #include "engine/CTCBuyableHouse.h"
 
 class CTCBase;
@@ -84,9 +85,8 @@ class CPlayerGui { public:
     CSubtitleRenderer SubtitleRenderer;                      // +0x18
 };
 
-struct CTCBuyableHouseCalls : CTCBuyableHouse {
-    long GetPrice();                                         // 0x006C0120
-};
+// GetPrice is CTCBuyableHouse::GetPrice() const 0x006C0120 (header opt-in above; NF302: was the stand-in
+// struct CTCBuyableHouseCalls, reached through casts of `house`).
 
 enum EHouseQuestion { HOUSE_QUESTION_NONE = 0, HOUSE_QUESTION_BUY = 1, HOUSE_QUESTION_RENT = 2 };
 class CTCActionUseBuyHouse : public CTCBase {
@@ -111,7 +111,7 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
     CWideString text;
     bool confirm = true;
     if (!house->OwnedByPlayer) {
-        long price = ((CTCBuyableHouseCalls*)house)->GetPrice();
+        long price = house->GetPrice();
         if (price != -1 && price <= money) {
             if (house->MaxDressLevel > 0)
                 text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_BUY");
@@ -130,7 +130,7 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
         else
             text = CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_SELL");
     }
-    NGameText::ConstructString(text, ((CTCBuyableHouseCalls*)house)->GetPrice());
+    NGameText::ConstructString(text, house->GetPrice());
     if (text != L"") {
         if (confirm) {
             WaitingForConfirmation = true;

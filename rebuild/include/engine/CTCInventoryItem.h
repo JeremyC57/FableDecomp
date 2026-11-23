@@ -289,6 +289,24 @@ public:
     unsigned __int64  InventoryUIDToAttachTo;                // +0x18
     bool              DefaultItem;                           // +0x20
     unsigned char     _pad_0x21[0x7];                        // +0x21
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETENGINEGRAPHIC
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binders 0x00581CFD / 0x00581FA4): Ego_r.pdb / FableWin.pdb
+    // ?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z (static __fastcall, by value; retail 0x005D96A0), as the retail
+    // branch declares it (FABLE_RETAIL_CTCINVENTORYITEM_STATICENGINEGRAPHIC). Declaration only: no layout change.
+    static class CEngineGraphic __fastcall GetEngineGraphic(long defIndex);               // 0x005D96A0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETSTARTINGRIGHTHANDEDSET
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x005BCD2D): Ego_r.pdb / FableWin.pdb
+    // ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z (static __fastcall, by value; retail 0x005D9730), as the
+    // retail branch declares it. Declaration only: no layout change.
+    static class CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);     // 0x005D9730
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETCONTEXTSENSITIVETYPE
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00581D8E): Ego_r.pdb / FableWin.pdb
+    // ?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z (static __fastcall; retail 0x005D9B90). The includer
+    // defines enum EContextSensitiveType before it includes this header. Declaration only: no layout change.
+    static EContextSensitiveType __fastcall GetContextSensitiveType(long defIndex);       // 0x005D9B90
+#endif
 };
 #pragma pack(pop)
 

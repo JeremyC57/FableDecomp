@@ -1,0 +1,26 @@
+005d9b90	call	00581db4	00581d8eL CTCInventory::IsContextSensitiveOpinionExpressionAvailable
+004bf920	call	006413b0	006412b0L CTCLight::SetActive
+004bf920	call	006413d0	006412b0L CTCLight::SetActive
+004bf920	call	0070748a	-
+00eb0700	call	00eb01be	00eaf810L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoA
+00eb07d0	call	00eb0708	00eb0700L NScript::CV_MurderTwistFinalScript::WaitForEnflameReactionIf
+00eb0700	call	00eb0aa2	00eb0830L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoR
+00eb0700	call	00eb0f41	00eb0830L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoR
+00eb0700	call	00eb1483	00eb10c0L CMurderTwistSheriff::DoBecomingSuspiciousOfHero
+00eb0700	call	00eb184a	00eb15c0L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoG
+00eb0700	call	00eb1d83	00eb19c0L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoS
+00eb07d0	call	00eb26c8	00eb23e0L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard
+00eb07d0	call	00eb2b89	00eb2900L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard
+00eb07d0	call	00eb3049	00eb2dc0L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard
+00eb07d0	call	00eb3509	00eb3280L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard
+00eb07d0	call	00eb39c4	00eb3740L NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard
+00eb0700	call	00eb46ed	00eb40c0L NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::Do
+00eb0700	call	00eb5245	00eb4f80L NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::Do
+00eb07d0	call	00eb5b59	-
+00eb07d0	call	00eb5feb	00eb5d50L CMurderTwistAssassinGuard::DoSayingThankYouToHero
+00edaad0	call	00ed9a0e	00ed99d0L NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech
+00eda9b0	call	00ed9a16	00ed99d0L NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech
+00eda8c0	call	00ed9a1e	00ed99d0L NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech
+00edaba0	call	00ed9a26	00ed99d0L NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech
+00ed9bb0	call	00ed9a2e	00ed99d0L NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech
+00ed9b40	call	00ed9a36	00ed99d0L NScript::CV_TalentlessBardScript::CTB_Bard::GetRandomSpeech

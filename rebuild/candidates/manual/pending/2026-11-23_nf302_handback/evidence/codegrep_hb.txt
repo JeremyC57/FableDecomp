@@ -1,0 +1,5 @@
+CPixelFormat_Calls	1	src/compiled/00/99/CDataOutputStream_WritePixelFormat_00993f60.cpp
+CPlayer_Calls	1	src/compiled/00/44/CPlayerManager_PrepareForLoad_00449c30.cpp
+ResourceMethods	2	src/compiled/00/9c/NGameTextCGroupEntry_ReadFromDataStream_009c8470.cpp tests/00/9c/NGameTextCGroupEntry_ReadFromDataStream_009c8470_test.cpp
+CResourceList_Methods	7	src/compiled/00/9f/CResourceList_MakeFreeSpace_009fc4f0.cpp src/compiled/00/9f/CResourceList_ShrinkResources_009fc210.cpp src/compiled/00/9f/CResourceList_AddResource_009fbfe0.cpp src/compiled/00/9f/CResourceBank_FrameEnd_009fc430.cpp src/compiled/00/9f/CResourceBank_AddToLoadingQueue_009fc3d0.cpp src/compiled/00/9f/CResourceBank_AddResource_009fc380.cpp tests/00/9f/CResourceList_MakeFreeSpace_009fc4f0_test.cpp
+CTCBuyableHouseCalls	1	src/compiled/00/72/CTCActionUseBuyHouse_OnActionUseMain_0072e940.cpp

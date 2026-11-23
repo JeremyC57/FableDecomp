@@ -1,0 +1,37 @@
+00487550	call	00449c49	00449c30L CPlayerManager::PrepareForLoad
+00487550	call	004a023f	004a0220L CWorld::PrepareForLoad
+006c0120	call	0072e9ce	0072e940L CTCActionUseBuyHouse::OnActionUseMain
+006c0120	call	0072eacd	0072e940L CTCActionUseBuyHouse::OnActionUseMain
+006c0120	call	0072ec40	0072eb40L CTCActionUseBuyHouse::ReceivedConfirmation
+006c0120	call	0072ecc5	0072eb40L CTCActionUseBuyHouse::ReceivedConfirmation
+009e3870	call	00993f6f	00993f60L CDataOutputStream::WritePixelFormat
+009fbf20	call	009ad86c	009ad6e0L CDefinitionManager::LoadDef
+009fbf20	call	009c80be	009c8060L NGameText::CGroupEntry::CGroupEntry
+009fbf20	call	009c80d6	009c8060L NGameText::CGroupEntry::CGroupEntry
+009fbf20	call	009c82af	009c8250L NGameText::CTextEntry::CTextEntry
+009fbf20	call	009c8585	009c8470L ReadFromDataStream
+009fbf20	call	009c8f81	009c8de0L NGameText::CTextEntry::ReadFromDataStream
+009e3870	call	009fb191	-
+009fc170	call	009fc235	009fc210L CResourceList_Methods::ShrinkResources
+009fc170	jmp	009fc548	009fc540L CResourceList::HandleFailedAllocation
+009fbf20	call	009fdc9e	009fdc20L CFrameData::StopLoading
+009fbf20	call	009fe2da	009fde80L CGraphicInfoFrame::CFrameData::BeginLoading
+009fbf20	call	009fe415	009fe380L CGraphicInfoFrame::CFrameData::CFrameData
+009fbf20	call	009fe4de	009fe460L CGraphicInfoFrame::CFrameData::FreeTextureMemory
+009fbf20	call	009fe539	009fe460L CGraphicInfoFrame::CFrameData::FreeTextureMemory
+009fbf20	call	009ff414	009ff220L CGraphicInfoFrame::CFrameData::UploadFrame
+009fbf20	call	00a2484c	00a24520L C3DMeshLODInfo::BuildMesh
+009fbf20	call	00a248bc	00a24870L C3DMeshLODInfo::ConvertToMeshStats
+009fbf20	call	00a24c90	00a24a80L C3DMeshInfo::BeginLoadingStats
+009fbf20	call	00a25938	00a256f0L C3DMeshInfo::BeginLoading
+009fbf20	call	00a25cdf	00a25bd0L CPhysicsMeshInfo::BeginLoading
+009fbf20	call	00a25e0f	00a25d20L CPhysicsMeshData::BuildMesh
+009fbf20	call	00a2629b	00a26290L CThingFilter_IsInBuilding::operator()
+009fbf20	call	00a267e3	00a26730L C3DAnimationInfo::BeginLoading
+009fbf20	call	00a42f6c	00a42ea0L CLipSyncDataBankEntry::CData::BuildLipSync
+009e3870	call	00a68b7d	-
+009fbf20	call	00af140e	00af1360L NParticleEngine::CParticleEmitterInfo::CEmitterData::BeginLo
+009fbf20	call	00b2afe5	00b2afd0L CCompositeSurfaceCache::UpdateResourceSize
+009fbf20	call	00b2aff4	00b2afd0L CCompositeSurfaceCache::UpdateResourceSize
+009fbf20	call	00b2b166	00b2b120L CCompositeSurfaceCache::ReleaseTexture
+009fbf20	call	00b2b176	00b2b120L CCompositeSurfaceCache::ReleaseTexture

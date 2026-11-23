@@ -1,0 +1,6 @@
+H 009e3870 CPixelFormat::GetInit RELOCATION_MATCH flags= [] leaf=?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ
+H 00487550 CPlayer::PrepareForLoad RELOCATION_MATCH flags= [] leaf=?PrepareForLoad@CPlayer@@QAEXXZ
+H 009fbf20 CResource::SetResourceSize MATCH flags= [] leaf=?SetResourceSize@CResource@@QAEXK@Z
+H 009fc170 CResourceList::UnloadNextResource RELOCATION_MATCH flags= [] leaf=?UnloadNextResource@CResourceList@@QAE_NK@Z
+H 006c0120 CTCBuyableHouse::GetPrice RELOCATION_MATCH flags= [] leaf=
+GR_DONE

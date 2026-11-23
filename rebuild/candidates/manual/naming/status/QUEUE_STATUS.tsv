@@ -603,7 +603,7 @@ line	tag	address	correct_symbol	status	other_spellings
 608	539	0053fde0	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z	closed	
 609	539	0053fdb0	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z	closed	
 610	539	0042b646	?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z	closed	
-611	539	005d96a0	?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z	partial	?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z
+611	539	005d96a0	?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z	closed	
 612	538	00658603	?CreateDummyVillagersIfNecessary@CTCVillage@@QAEXXZ	partial	?M@C00658603@@QAEXXZ
 613	538	004acd70	??$GetAllThings@VCThing@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	partial	GetAllThings
 614	538	0049c770	?PeekClassList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@XZ	partial	?PeekAllThings@CThingSearchTools@@QBEPAUCThingList@@XZ || ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ
@@ -2275,7 +2275,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2647	c656	007f7700	?Deactivate@CTCActivationReceptorBase@@UAEXXZ	partial	?ClearCutFade@CTCInterface@@QAEXXZ
 2648	c656	0078adf0	??1CCreatureAction_FireMissileWeapon@@UAE@XZ	closed	
 2649	c656	0086d530	??$__uninitialized_copy@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@PAV1@@std@@YIPAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@PAV1@00ABU__false_type@0@@Z	partial	?UninitCopy@@YIPAUElement_0086e4b0@@PAU1@00ABUTag_0086e4b0@@@Z
-2650	c656	00487550	?PrepareForLoad@CPlayer@@QAEXXZ	partial	?PrepareForLoad@CPlayer_Calls@@QAEXXZ
+2650	c656	00487550	?PrepareForLoad@CPlayer@@QAEXXZ	closed	
 2651	c656	00634870	?ResetModes@CPlayer@@QAEXXZ	closed	
 2652	c656	00833a10	?SuspendAI@CThingAICreature@@QAEX_NPAX@Z	closed	
 2653	c656	00861d00	?OnDeactivate@CModeStandBase@@UAEXXZ	partial	?BaseActivate@CModeChargeForcePush@@QAEXXZ || ?CMode_Base_OnActivate@@YIXPAX@Z || ?DragonRearUpBase_861d00@@YIXPAUCModeDragonRearUp@@@Z || ?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z || ?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ || ?StandDeactivate@ModeScreamer@@QAEXXZ
@@ -2460,7 +2460,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2833	c666	009fe440	?ResetTexture@CFrameData@CGraphicInfoFrame@@QAEXXZ	closed	
 2834	c666	009fcba0	?Uninitialise@CGraphicFrameData@@QAEXXZ	closed	
 2835	c666	009fc550	??1CResource@@UAE@XZ	partial	??1CMemoryBlock@@QAE@XZ || ?BaseDestructor@CMemoryBlockOverlay@@QAEXXZ || ?Destroy@WaypointTemp@@QAEXXZ
-2836	c666	009e3870	?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ	partial	?GetInit@CPixelFormat_Calls@@QAE?AVCPixelFormatInit@@XZ
+2836	c666	009e3870	?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ	closed	
 2837	c666	0043314a	??$Transfer@_N@CPersistContext@@QAEXAA_N@Z	partial	?Transfer@CPersistContext@@QAEXAA_N@Z
 2838	c666	00431102	??$Transfer@J@CPersistContext@@QAEXAAJ@Z	closed	
 2839	c666	0099eae0	??1CCharString@@QAE@XZ	partial	??1CCharString2@@QAE@XZ || ??1CCharString@N006d41f0@@QAE@XZ || ??1CCharString@NErase005dcf70@@QAE@XZ || ??1CCharString@NFactory007f1b70@@QAE@XZ || ??1CCharString@NManager00820e20@@QAE@XZ || ??1CCharString@NUISystem@@QAE@XZ || ??1CCharString@X_006e11f0@@QAE@XZ || ??1CCharString@X_009eb590@@QAE@XZ || ??1CCharString@std@@QAE@XZ || ??1CDeedReactionName@@QAE@XZ || ??1CInstanceCountedBase@@UAE@XZ || ??1
@@ -4271,8 +4271,8 @@ line	tag	address	correct_symbol	status	other_spellings
 4817	land0411i	00eb23e0	?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ	closed	
 4818	land0411i	00eb3740	?DoSayingThankYouToHero@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@AAEXXZ	closed	
 4819	land0411i	00eb4f80	?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	closed	
-4820	land0411i	00eb07d0	?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z	partial	?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@@QAE_NABVCScriptThing@@@Z
-4821	land0411i	00eb0700	?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z	partial	?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@@QAEXABVCScriptThing@@@Z
+4820	land0411i	00eb07d0	?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z	closed	
+4821	land0411i	00eb0700	?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z	closed	
 4822	land0411j	006378e0	?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z	closed	
 4823	land0411j	0048dae0	??$GFLimit@MMM@@YIXAAMABM1@Z	closed	
 4824	land0411j	00aeaa00	?GetOneOverTickRate@NParticleEngine@@YIMXZ	partial	?GetParticleFrameTime@@YAMXZ || ?GetParticleFrameTime_00aeaa00@@YAMXZ || ?GetParticleUpdatePeriod@@YAMXZ
@@ -5107,7 +5107,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7030	land1011u	00429160	?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ	closed	
 7031	land1011u	0042b646	?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z	closed	
 7032	land1011u	0059350c	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z	closed	
-7033	land1011u	005d96a0	?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z	partial	?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z
+7033	land1011u	005d96a0	?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z	closed	
 7034	land1011u	0042af9e	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z	closed	
 7035	land1011u	005be8d3	?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z	closed	
 7036	land1011v	00405f00	?GFIntToWideString@@YI?AVCWideString@@J@Z	partial	?LongToWideString@@YI?AVCWideString@@J@Z
@@ -5457,7 +5457,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7414	land1011aq	009d49b0	?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z	partial	?GetString@CDefStringTable@NErase005dcf70@@QAE?AUCCharString@2@H@Z
 7415	land1011aq	009d5df0	??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z	closed	
 7416	land1011aq	009de3f0	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z	partial	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z
-7417	land1011aq	009fbf20	?SetResourceSize@CResource@@QAEXK@Z	partial	?SetResourceSize@CCompositeSurfaceCache_Retail@@QAEXK@Z || ?SetResourceSize@CResourceNative@@QAEXK@Z || ?SetResourceSize@ResourceMethods@@QAEXK@Z || ?h2@OP@@QAEHH@Z
+7417	land1011aq	009fbf20	?SetResourceSize@CResource@@QAEXK@Z	partial	?SetResourceSize@CCompositeSurfaceCache_Retail@@QAEXK@Z || ?SetResourceSize@CResourceNative@@QAEXK@Z || ?h2@OP@@QAEHH@Z
 7418	land1011aq	009fbf70	?GetUnusedFrames@CResource@@QBEKXZ	partial	?GetUnusedFrames@CManagedTextureData_Calls@@QBEKXZ || ?GetUnusedFrames@ResourceNative@@QBEKXZ
 7419	land1011aq	009fcbf0	?Sizeof@CGraphicFrameData@@QBEKXZ	closed	
 7420	land1011aq	00a00680	?ReleaseData@CGraphicInfoFrame@@ABEXXZ	closed	
@@ -10553,3 +10553,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13390	land1123nf300	007e3820	?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCDefString@@@Z	partial	TransferIn
 13391	land1123nf300	00a03c20	?SetAsKeyboardKeyHeld@CInputEvent@@QAEXW4EInputKey@@NN@Z	closed	
 13392	land1123nf300	00a03bf0	?SetAsKeyboardKeyPressed@CInputEvent@@QAEXW4EInputKey@@N@Z	closed	
+13393	land1123nf302	007c21a0	?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ	partial	?Update@CTCShotDefinitionBase || ?Update@CTCShotDefinitionBase@@QAEXXZ
+13394	land1123nf302	005bcae3	?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	partial	?GetHighlightedItem@CTCInventory@@QAEPAUCItem@@XZ || ?GetHighlightedItem@CTCInventoryBase_Retail@@QAEJXZ

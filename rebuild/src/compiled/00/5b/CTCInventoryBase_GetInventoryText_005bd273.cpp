@@ -1,4 +1,5 @@
 // CTCInventoryBase::GetInventoryText(long textIndex) -- the wide text of game-text entry `textIndex` (looked up in the main component's text bank), or the empty wide string when the index is not positive or the bank has no text entry for it
+// Leaf: ?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD273, length 181 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
@@ -73,9 +74,9 @@ private: public:
 
 namespace NInventory {
 class CTCInventoryBase { public:
-    CWideString GetInventoryText(long textIndex);
+    CWideString GetInventoryText(long textIndex) const;   // both PDBs QBE: const (NF302)
 };
-CWideString CTCInventoryBase::GetInventoryText(long textIndex)
+CWideString CTCInventoryBase::GetInventoryText(long textIndex) const
 {
     if (textIndex > 0) {
         CDataBank* bank = CMainGameComponent::Get()->TextBank;

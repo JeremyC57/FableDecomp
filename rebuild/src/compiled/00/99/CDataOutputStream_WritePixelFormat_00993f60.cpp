@@ -7,6 +7,7 @@
 // Serialises a pixel format: CPixelFormat::GetInit @ 0x009E3870 fills an 8-byte init record
 // (returned through a hidden pointer, hence the local), of which the first 6 bytes are written
 // through the stream's virtual slot 4 (WriteBytes(const void*, long)).
+#define FABLE_RETAIL_CPIXELFORMAT_FLAT_GETINIT   // NF302: ?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ (both PDBs) from the header
 #include "engine/CPixelFormat.h"
 
 class CPixelFormatInit { public:
@@ -14,8 +15,7 @@ class CPixelFormatInit { public:
     CPixelFormatInit();
 };
 
-struct CPixelFormat_Calls : CPixelFormat {
-    CPixelFormatInit GetInit();     // 0x009E3870
+struct CPixelFormat_Calls : CPixelFormat {   // GetInit is CPixelFormat::GetInit() const 0x009E3870 (header opt-in above; NF302)
 };
 
 struct CDataOutputStreamVirtuals {

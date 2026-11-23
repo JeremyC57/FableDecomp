@@ -1,0 +1,6 @@
+H 005bd4ea NInventory::CTCInventoryBase::OpenInventory RELOCATION_MATCH flags= [] leaf=
+H 005bda1d NInventory::CCategory::GetHighlightedItemText RELOCATION_MATCH flags= [] leaf=?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z
+H 0056eccb CTCInventoryExperience::ProcessInventoryInputDown RELOCATION_MATCH flags= [] leaf=?ProcessInventoryInputDown@CTCInventoryExperience@@UAEXXZ
+H 005bcae3 NInventory::CTCInventoryBase::GetHighlightedItem RELOCATION_MATCH flags= [] leaf=
+H 005bd273 CTCInventoryBase::GetInventoryText RELOCATION_MATCH flags= [] leaf=
+GR_DONE

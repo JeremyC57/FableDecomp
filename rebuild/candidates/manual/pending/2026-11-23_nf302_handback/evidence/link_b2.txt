@@ -1,0 +1,17 @@
+## HEAD set: H_006412b0.obj H_00ed99d0.obj H_00581cfd.obj H_00581fa4.obj H_005bcd2d.obj H_00581d8e.obj H_005d96a0.obj H_005d9730.obj H_005d9b90.obj H_004bf920.obj H_00ed9b40.obj H_00ed9bb0.obj H_00eda8c0.obj H_00eda9b0.obj H_00edaba0.obj H_00edaad0.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetContextSensitiveType@@YI?AW4EContextSensitiveType@@J@Z
+UNRESOLVED 2 ?GetEngineGraphic@@YI?AVCEngineGraphic@@J@Z
+UNRESOLVED 1 ?GetStartingRightHandedSet@@YI?AVCRightHandedSet@@J@Z
+UNRESOLVED 1 ?ProcessSongsAge@CV_TalentlessBardScript@@QAEXXZ
+UNRESOLVED 1 ?ProcessSongsClothes@CV_TalentlessBardScript@@QAEXXZ
+UNRESOLVED 1 ?ProcessSongsMarriage@CV_TalentlessBardScript@@QAEXXZ
+UNRESOLVED 1 ?ProcessSongsMorality@CV_TalentlessBardScript@@QAEXXZ
+UNRESOLVED 1 ?ProcessSongsQuestComplete@CV_TalentlessBardScript@@QAEXXZ
+UNRESOLVED 1 ?ProcessSongsRenown@CV_TalentlessBardScript@@QAEXXZ
+UNRESOLVED 1 ?RemovePrimitive@CTCGraphicAppearance@@QAEXPAVCPrimitive@NGraphicAppearance@@@Z
+## new set: N_006412b0.obj N_00ed99d0.obj N_00581cfd.obj N_00581fa4.obj N_005bcd2d.obj N_00581d8e.obj H_005d96a0.obj H_005d9730.obj H_005d9b90.obj H_004bf920.obj H_00ed9b40.obj H_00ed9bb0.obj H_00eda8c0.obj H_00eda9b0.obj H_00edaba0.obj H_00edaad0.obj
+duplicates 0
+
+LK_DONE

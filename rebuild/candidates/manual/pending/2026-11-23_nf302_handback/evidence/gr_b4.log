@@ -1,0 +1,3 @@
+H 00704150 CThingObject::WorldUpdate RELOCATION_MATCH flags= [] leaf=?WorldUpdate@CThingObject
+H 007c21a0 NThingShot::CTCShotDefinitionBase::Update RELOCATION_MATCH flags= [] leaf=?Update@CTCShotDefinitionBase
+GR_DONE

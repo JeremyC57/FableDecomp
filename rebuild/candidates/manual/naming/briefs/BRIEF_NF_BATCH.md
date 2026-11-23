@@ -116,3 +116,7 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   when the TU emits no vftable / RTTI for it, none of the TU's own definitions change name, and objsec is ALL_EQ; otherwise a port.
 - NF300 D1 extension: a clang failure only on MSVC-only syntax in an UNCHANGED landed source (e.g. the `unsigned int(...)` functional
   cast) is covered by D1: a passing `cl /Zs` in an earlier call is the precheck.
+- NF302 Q2: a binder respelled onto the PDB name whose owner row still defines a stand-in lands (unresolved before and after); queue the
+  owner in NAME_FIXES. Q5: an owner's own const / access self fix is in place when objsec is ALL_EQ and every landed binder of the old
+  spelling moves in the same landing (NF282 D2 is about re-scoping a self, not this). Q1: giving a flat shared-header class a base it lacks is a
+  layout change, so a port.

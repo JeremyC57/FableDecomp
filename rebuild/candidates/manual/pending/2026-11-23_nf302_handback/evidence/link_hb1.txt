@@ -1,0 +1,12 @@
+## HEAD set: H_00993f60.obj H_00449c30.obj H_009c8470.obj H_009fc210.obj H_0072e940.obj H_009e3870.obj H_00487550.obj H_009fbf20.obj H_009fc170.obj H_006c0120.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetInit@CPixelFormat_Calls@@QAE?AVCPixelFormatInit@@XZ
+UNRESOLVED 1 ?GetPrice@CTCBuyableHouseCalls@@QAEJXZ
+UNRESOLVED 1 ?PrepareForLoad@CPlayer_Calls@@QAEXXZ
+UNRESOLVED 1 ?SetResourceSize@ResourceMethods@@QAEXK@Z
+UNRESOLVED 1 ?UnloadNextResource@CResourceList_Methods@@QAE_NK@Z
+## new set: N_00993f60.obj N_00449c30.obj N_009c8470.obj N_009fc210.obj N_0072e940.obj H_009e3870.obj H_00487550.obj H_009fbf20.obj H_009fc170.obj H_006c0120.obj
+duplicates 0
+
+LK_DONE

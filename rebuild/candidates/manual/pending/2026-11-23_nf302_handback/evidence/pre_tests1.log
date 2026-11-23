@@ -1,0 +1,5 @@
+03:38:21 PASS /home/user/FableDecomp/rebuild/tests/00/99/CDataOutputStream_WritePixelFormat_00993f60_test.cpp
+03:38:21 PASS /home/user/FableDecomp/rebuild/tests/00/44/CPlayerManager_PrepareForLoad_00449c30_test.cpp
+03:38:21 PASS /home/user/FableDecomp/rebuild/tests/00/9c/NGameTextCGroupEntry_ReadFromDataStream_009c8470_test.cpp
+03:38:21 PASS /home/user/FableDecomp/rebuild/tests/00/9f/CResourceList_ShrinkResources_009fc210_test.cpp
+03:38:21 PASS /home/user/FableDecomp/rebuild/tests/00/72/CTCActionUseBuyHouse_OnActionUseMain_0072e940_test.cpp

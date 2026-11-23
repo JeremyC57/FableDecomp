@@ -7,10 +7,10 @@
 // the PDB offsets, so the class is modelled locally.
 // Shape: `for (unsigned i = 0; i < Players.size(); ++i) Players[i]->PrepareForLoad();` -- size re-derived
 // (`sub ; sar 2`) after every call, unsigned `jb`.
+#define FABLE_RETAIL_CPLAYER_PREPAREFORLOAD   // NF302: ?PrepareForLoad@CPlayer@@QAEXXZ (both PDBs) from the header
 #include "engine/CPlayer.h"
 
-struct CPlayer_Calls : CPlayer {
-    void PrepareForLoad();                                  // 0x00487550
+struct CPlayer_Calls : CPlayer {   // PrepareForLoad is CPlayer::PrepareForLoad 0x00487550 (header opt-in above; NF302)
 };
 
 struct CPlayerVector {                                      // retail std::vector<CPlayer*>, 12 bytes

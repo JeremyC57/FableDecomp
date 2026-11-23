@@ -65,7 +65,7 @@ public:
     void RemoveFromResourceList();                                       // 0x009FC440
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(CResource) == 0x1c);
+FABLE_STATIC_ASSERT_AT(68, sizeof(CResource) == 0x1c);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -82,16 +82,21 @@ public:
     CResource*     NextResource;                             // +0x10
     unsigned long  ResourceSize;                             // +0x14
     unsigned long  LastUsedFrame;                            // +0x18
+#ifdef FABLE_RETAIL_CRESOURCE_FLAT_SETRESOURCESIZE
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x009C8470 NGameText::CGroupEntry::ReadFromDataStream): Ego_r.pdb /
+    // FableWin.pdb ?SetResourceSize@CResource@@QAEXK@Z (retail 0x009FBF20, landed), as the DEF_CLASS_BASE branch declares it. Declaration only.
+    void SetResourceSize(unsigned long);                     // 0x009FBF20
+#endif
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CResource) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CResource, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CResource, ResourceList) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CResource, PrevResource) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CResource, NextResource) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CResource, ResourceSize) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
+FABLE_STATIC_ASSERT_AT(88, sizeof(CResource) == 0x1c);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CResource, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CResource, ResourceList) == 0x8);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CResource, PrevResource) == 0xc);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CResource, NextResource) == 0x10);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CResource, ResourceSize) == 0x14);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CResource, LastUsedFrame) == 0x18);
 
 #endif // FABLE_RETAIL_DEF_CLASS_BASE
 

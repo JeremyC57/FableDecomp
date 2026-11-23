@@ -1,0 +1,63 @@
+addr       parity           behav  name
+00449c30   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00449c30   RELOCATION_MATCH PASS   PrepareForLoad
+00581cfd   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+00581cfd   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00581cfd   RELOCATION_MATCH PASS   GetContextSensitiveItemGraphicIndex
+00581d8e   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00581d8e   RELOCATION_MATCH PASS   IsContextSensitiveOpinionExpressionAvailable
+00581fa4   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+00581fa4   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00581fa4   RELOCATION_MATCH PASS   GetQuickAccessItemGraphicIndex
+005bcd2d   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005bcd2d   RELOCATION_MATCH PASS   ResetInventoryAnim
+005bd273   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+005bd273   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+005bd273   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bd273   RELOCATION_MATCH PASS   GetInventoryText
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005bd4ea   RELOCATION_MATCH PASS   OpenInventory
+005bda1d   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bda1d   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005bda1d   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+005bda1d   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+005bda1d   RELOCATION_MATCH PASS   GetHighlightedItemText
+006412b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006412b0   WARN SHARED_HEADER_AVAILABLE CTCLight (engine/CTCLight.h)
+006412b0   RELOCATION_MATCH PASS   SetActive
+0072e940   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0072e940   RELOCATION_MATCH PASS   OnActionUseMain
+00993f60   WARN SHARED_HEADER_AVAILABLE CPixelFormatInit (engine/CPixelFormatInit.h)
+00993f60   RELOCATION_MATCH PASS   WritePixelFormat
+009c8470   RELOCATION_MATCH PASS   ReadFromDataStream
+009fc210   RELOCATION_MATCH PASS   ShrinkResources
+00ed99d0   RELOCATION_MATCH PASS   GetRandomSpeech
+
+WINS: 14
+  00449c30 RELOCATION_MATCH CPlayerManager::PrepareForLoad
+  00581cfd RELOCATION_MATCH CTCInventory::GetContextSensitiveItemGraphicIndex
+  00581d8e RELOCATION_MATCH CTCInventory::IsContextSensitiveOpinionExpressionAvailable
+  00581fa4 RELOCATION_MATCH CTCInventory::GetQuickAccessItemGraphicIndex
+  005bcd2d RELOCATION_MATCH NInventory::CTCInventoryBase::?ResetInventoryAnim@CTCInventoryBase@NInventory@@QAEXJ@Z
+  005bd273 RELOCATION_MATCH CTCInventoryBase::?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z
+  005bd4ea RELOCATION_MATCH NInventory::CTCInventoryBase::OpenInventory
+  005bda1d RELOCATION_MATCH NInventory::CCategory::?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z
+  006412b0 RELOCATION_MATCH CTCLight::?SetActive@CTCLight@@QAEX_N@Z
+  0072e940 RELOCATION_MATCH CTCActionUseBuyHouse::?OnActionUseMain@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@J@Z
+  00993f60 RELOCATION_MATCH CDataOutputStream::WritePixelFormat
+  009c8470 RELOCATION_MATCH NGameText_CGroupEntry::ReadFromDataStream
+  009fc210 RELOCATION_MATCH CResourceList::?ShrinkResources@CResourceList_Methods@@QAEXK@Z
+  00ed99d0 RELOCATION_MATCH CTB_Bard::GetRandomSpeech
+RF_DONE

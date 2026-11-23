@@ -14,7 +14,8 @@ enum EContextSensitiveType {
     CONTEXT_SENSITIVE_TYPE_OPINION_EXPRESSION = 6
 };
 
-EContextSensitiveType __fastcall GetContextSensitiveType(long itemType);   // 0x005D9B90
+#define FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETCONTEXTSENSITIVETYPE   // NF302: ?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z (both PDBs), was a free stand-in
+#include "engine/CTCInventoryItem.h"
 
 struct CLongVector {
     long* first;                                     // +0x00
@@ -35,7 +36,7 @@ bool CTCInventory::IsContextSensitiveOpinionExpressionAvailable()
 {
     for (unsigned long i = 0; i < ContextSensitiveItems.size(); ++i) {
         if (ContextSensitiveItems[i] > 0 &&
-            GetContextSensitiveType(ContextSensitiveItems[i]) == CONTEXT_SENSITIVE_TYPE_OPINION_EXPRESSION)
+            CTCInventoryItem::GetContextSensitiveType(ContextSensitiveItems[i]) == CONTEXT_SENSITIVE_TYPE_OPINION_EXPRESSION)
             return true;
     }
     return false;

@@ -1,0 +1,20 @@
+##### 00993f60 renames: ?GetInit@CPixelFormat_Calls@@QAE?AVCPixelFormatInit@@XZ=?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00449c30 renames: ?PrepareForLoad@CPlayer_Calls@@QAEXXZ=?PrepareForLoad@CPlayer@@QAEXXZ
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 009c8470 renames: ?SetResourceSize@ResourceMethods@@QAEXK@Z=?SetResourceSize@CResource@@QAEXK@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=18
+tables H=0 N=0
+##### 009fc210 renames: ?UnloadNextResource@CResourceList_Methods@@QAE_NK@Z=?UnloadNextResource@CResourceList@@QAE_NK@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 0072e940 renames: ?GetPrice@CTCBuyableHouseCalls@@QAEJXZ=?GetPrice@CTCBuyableHouse@@QBEJXZ
+sections head 27 new 27
+ALL_EQ text_sections_equal=18
+tables H=0 N=0

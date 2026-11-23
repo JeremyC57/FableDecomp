@@ -626,6 +626,12 @@ public:
     bool                                                         KeepAbilitiesDuringCutscenes; // +0x224
     unsigned char                                                _pad_0x225[0x3]; // +0x225
     long                                                         JoystickDeviceNumber; // +0x228
+#ifdef FABLE_RETAIL_CPLAYER_PREPAREFORLOAD
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00449C30 CPlayerManager::PrepareForLoad): Ego_r.pdb / FableWin.pdb
+    // ?PrepareForLoad@CPlayer@@QAEXXZ (public; retail 0x00487550, landed; also called by 0x004A0220). Declaration only: no layout change.
+public:
+    void PrepareForLoad();                                                // 0x00487550
+#endif
 };
 #pragma pack(pop)
 

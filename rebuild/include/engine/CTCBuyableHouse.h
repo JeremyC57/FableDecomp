@@ -176,6 +176,11 @@ public:
     void SetRented(bool rented);                                         // 0x006C1150
     void SetOwnedByPlayer(bool owned);                                   // 0x006C17B0
 #endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_GETPRICE
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x0072E940 CTCActionUseBuyHouse::OnActionUseMain): Ego_r.pdb / FableWin.pdb
+    // ?GetPrice@CTCBuyableHouse@@QBEJXZ (retail 0x006C0120), as the retail branch declares it. Declaration only: no layout change.
+    long GetPrice() const;                                               // 0x006C0120
+#endif
 };
 #pragma pack(pop)
 

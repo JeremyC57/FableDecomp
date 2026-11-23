@@ -141,6 +141,11 @@ public:
 class CPixelFormat {
 public:
     long FormatIndex;                                        // +0x00
+#ifdef FABLE_RETAIL_CPIXELFORMAT_FLAT_GETINIT
+    // Add-only opt-in (naming agent NF302, 2026-11-23, binder 0x00993F60 CDataOutputStream::WritePixelFormat): Ego_r.pdb / FableWin.pdb
+    // ?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ (const, CPixelFormatInit by value; retail 0x009E3870, landed). Declaration only.
+    class CPixelFormatInit GetInit() const;                  // 0x009E3870
+#endif
 };
 #pragma pack(pop)
 

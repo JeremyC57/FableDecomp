@@ -82,7 +82,7 @@ class CGameDefinitionManager;
 namespace NInventory {
 class CTCInventoryBase {
 public:
-    CWideString GetInventoryText(long textId);          // 0x005BD273
+    CWideString GetInventoryText(long textId) const;    // 0x005BD273 (both PDBs QBE: const; NF302)
 };
 class CItemText : public CItem {                        // NInventory::CItem's text accessor
 public:

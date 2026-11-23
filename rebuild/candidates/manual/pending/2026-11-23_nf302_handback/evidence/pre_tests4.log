@@ -1,0 +1,5 @@
+03:55:49 PASS /home/user/FableDecomp/rebuild/tests/00/5b/NInventoryCTCInventoryBase_OpenInventory_005bd4ea_test.cpp
+03:55:49 PASS /home/user/FableDecomp/rebuild/tests/00/5b/NInventoryCCategory_GetHighlightedItemText_005bda1d_test.cpp
+03:55:49 PASS /home/user/FableDecomp/rebuild/tests/00/56/CTCInventoryExperience_ProcessInventoryInputDown_0056eccb_test.cpp
+03:55:49 PASS /home/user/FableDecomp/rebuild/tests/00/5b/CTCInventoryBase_GetHighlightedItem_005bcae3_test.cpp
+03:55:49 PASS /home/user/FableDecomp/rebuild/tests/00/5b/CTCInventoryBase_GetInventoryText_005bd273_test.cpp

@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x007c21a0	?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ	PORT: Ego_r.pdb + FableWin.pdb (pdbq egor=1 fablewin=1); landed caller 0x006666A0 binds it; the owner row HEAD object defines the global stand-in (evidence/objdump_readouts.txt)	?Update@CTCShotDefinitionBase@@QAEXXZ (self, 0x007C21A0; binder 0x00704150)
+0x005bcae3	?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	PORT: Ego_r.pdb + FableWin.pdb (pdbq egor=1 fablewin=1); landed callers 0x00583E26 and (this batch) 0x005BD4EA bind it; the owner row HEAD object defines the global stand-in (placeholder row with InvItem::GetHandle)	?GetHighlightedItem@CTCInventoryBase@@QAEJXZ (self, 0x005BCAE3)

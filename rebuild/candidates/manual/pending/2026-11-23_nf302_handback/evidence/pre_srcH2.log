@@ -1,0 +1,5 @@
+03:44:19 PASS /home/user/FableDecomp/rebuild/src/compiled/00/9e/CPixelFormat_GetInit_009e3870.cpp
+03:44:19 PASS /home/user/FableDecomp/rebuild/src/compiled/00/48/CPlayer_PrepareForLoad_00487550.cpp
+03:44:19 PASS /home/user/FableDecomp/rebuild/src/compiled/00/9f/CResource_SetResourceSize_009fbf20.cpp
+03:44:19 PASS /home/user/FableDecomp/rebuild/src/compiled/00/9f/CResourceList_UnloadNextResource_009fc170.cpp
+03:44:19 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6c/CTCBuyableHouse_GetPrice_006c0120.cpp

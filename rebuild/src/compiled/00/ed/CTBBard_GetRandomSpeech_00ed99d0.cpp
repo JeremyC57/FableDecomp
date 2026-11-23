@@ -29,7 +29,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
     bool operator!=(const CCharString& other) const;       // 0x0099E900
 };
-struct CV_TalentlessBardScript {
+namespace NScript { class CV_TalentlessBardScript { public:   // NF302: the PDB owner script (both PDBs ?ProcessSongs*@CV_TalentlessBardScript@NScript@@QAEXXZ); was a global stand-in struct
     unsigned char     _pad00[0x68];
     std::vector<CCharString> SongItems;                           // +0x68
     void ProcessSongsRenown();                             // 0x00EDAAD0
@@ -38,7 +38,7 @@ struct CV_TalentlessBardScript {
     void ProcessSongsMarriage();                           // 0x00EDABA0
     void ProcessSongsClothes();                            // 0x00ED9BB0
     void ProcessSongsQuestComplete();                      // 0x00ED9B40
-};
+}; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -54,7 +54,7 @@ struct CQ_SunnyvaleMasterData;
 
 class CTB_Bard : public CEntityScriptBase {
 public:
-        CV_TalentlessBardScript* ParentClass;                  // +0x14
+        NScript::CV_TalentlessBardScript* ParentClass;                  // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;                  // +0x18
     bool                     first_time_talked_to;         // +0x1c
     bool                     given_gold;                   // +0x1d

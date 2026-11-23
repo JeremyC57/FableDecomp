@@ -27,7 +27,8 @@ class CEngineGraphic { public:
 };
 #pragma pack(pop)
 
-CEngineGraphic __fastcall GetEngineGraphic(long itemType);   // 0x005D96A0
+#define FABLE_RETAIL_CTCINVENTORYITEM_FLAT_GETENGINEGRAPHIC   // NF302: ?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z (both PDBs), was a free stand-in
+#include "engine/CTCInventoryItem.h"
 
 struct CLongVector {
     long* first;                                     // +0x00
@@ -47,6 +48,6 @@ class CTCInventory { public:
 long CTCInventory::GetQuickAccessItemGraphicIndex(long index)
 {
     if (QuickAccessItems[index] > 0)
-        return GetEngineGraphic(QuickAccessItems[index]).BankIndex;
+        return CTCInventoryItem::GetEngineGraphic(QuickAccessItems[index]).BankIndex;
     return 0;
 }
