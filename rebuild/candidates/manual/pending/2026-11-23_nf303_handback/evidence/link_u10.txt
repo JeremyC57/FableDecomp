@@ -1,0 +1,10 @@
+## HEAD set: H_00921630.obj H_00910100.obj H_006bbf20.obj H_0056d050.obj H_00910740.obj H_0099e960.obj
+duplicates 0
+
+UNRESOLVED 1 ?Compare@CCharString@@QBE_NPBD@Z
+UNRESOLVED 1 ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z
+UNRESOLVED 1 ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+## new set: N_00921630.obj N_00910100.obj N_006bbf20.obj H_0056d050.obj H_00910740.obj H_0099e960.obj
+duplicates 0
+
+LK_DONE

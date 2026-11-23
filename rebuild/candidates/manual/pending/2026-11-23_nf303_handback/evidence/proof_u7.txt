@@ -1,0 +1,28 @@
+##### 006f5b50 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=4
+tables H=2 N=2
+##### 00867950 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=4
+tables H=2 N=2
+##### 008b8560 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 008b9110 renames: ??0CCombatActionBase@@QAE@J@Z=??0CCombatActionBase@@IAE@J@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=5
+tables H=2 N=2
+##### 009d2160 renames: ?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ=?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 009d2660 renames: ?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ=?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ
+sections head 7 new 7
+ALL_EQ text_sections_equal=6
+tables H=0 N=0
+##### 006650e0 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0

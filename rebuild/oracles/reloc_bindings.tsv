@@ -2298,7 +2298,6 @@ _HEALTH_UNSET	0122dedc	006a98f0
 ?g_dayStart_0125d640@@3MB	0125d640	006bb1e0
 ?Erase@CStopperSet_006bbe30@@QAEXPBJ@Z	00639590	006bbe30
 ?Insert@CStopperSet_006bbe30@@QAEPAUSSetIterator_006bbe30@@PAU2@PBJ@Z	00512da0	006bbe30
-?Compare@CCharString@@QBE_NPBD@Z	0099e960	006bbf20
 ?kEmptyDisplayNameTag@@3QBDB	0122d70e	006bbf20
 ?InsertionSort_006bf2c0@@YIXPAUSElement24@@0USCompare@@@Z	006bf2c0	006bf480
 ?UnguardedInsertionSortAux_006beb80@@YIXPAUSElement24@@00USCompare@@@Z	006beb80	006bf480
@@ -2424,7 +2423,6 @@ N_008bfce0	008bfce0	006f5610
 ??_7CCreatureAction_HobbeSpellcasterFire@@6B@	01263e3c	006f5ac0
 ??_7CCreatureAction_NymphGetHit@@6B@	01263f84	006f5b00
 ??_7CCreatureAction_NymphGetHitDie@@6B@	012640cc	006f5b20
-??0CCombatActionBase@@QAE@J@Z	00857e40	006f5b50
 ??_7CCreatureAction_SummonerFlameSlice@@6B@	01264214	006f5b50
 ??0CBase_0062f3b0@@QAE@ABU0@@Z	0062f3b0	006f8280
 ??_7CCreatureAction_CastWillDrainLifeSpell@@6B@	012645ec	006f8280
@@ -9623,7 +9621,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z	008273d0	008275b0
 ?GetMaxSize@COldFileFormatHeightMapCell6@@SIJJJ@Z	00826560	008275b0
 ?Allocate@?$CSmallVector@VCCharString@@$07@@QAEXK@Z	009d2160	009d21d0
-?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ	009d2110	009d2660
 ??0CScriptProcessBase@@QAE@_NJM@Z	00a44740	00cdd450
 ?TransferBinaryIn@?$CPersistTraits@J@@QBEXAAUCMemoryDataInputStreamReader@@PAJ@Z	0040fe60	0043151d
 ?TransferBinaryIn@?$CPersistTraits@W4EGameAction@@@@QBEXAAUCMemoryDataInputStreamReader@@PAW4EGameAction@@@Z	00475b93	00475aa6
@@ -17539,7 +17536,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Alloc@CSummonerToKill@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d88420	00d87cb0
 ?Alloc@CUndeadSoldier@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d88ec0	00d87cb0
 ?DealWithCreatureGeneration@CQ_HeroSoulsNostroScript@NScript@@QAEXXZ	00d89710	00d87cb0
-?PlayCutScene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z	00d89ad0	00d87cb0
 ?WatchForNostroHit@CQ_HeroSoulsNostroScript@NScript@@QAEXXZ	00d88260	00d87cb0
 ??_7?$CEntityScriptBinding@VCQ_WizardBattleScript@NScript@@@@6B@	012e0fcc	00e1a990
 ?Alloc@CChasingScreamer@CQ_WizardBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e1ae50	00e1a990
@@ -32210,7 +32206,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?DrawButton@CDrawAbilityButtonsPC@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@PAVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z	00645099	00658020
 ?GetExpressionButtonTypes@CDrawAbilityButtonsPC@NPlayerGui@@QAEXAAULongVector@@@Z	00657c80	00658020
 ?size@ButtonVector@@QBEJXZ	0043cac0	00658020
-?AngleDifference@@YGMMM@Z	00a441e0	006650e0
 ?IsCarryingTooHeavyWeapon@@YI_NPAVCThing@@@Z	0085ef70	006a99d0
 ?GetRunningNumHits@CTCHeroExperience@@QBEJXZ	006d63a0	006d7f20
 ?PlayCombatMultiplierSound@@YIXPAVCThing@@ABUCComboMultiplierSounds@@J@Z	006d7640	006d7f20
@@ -32242,7 +32237,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?g_CCharString_013bace8@@3VCCharString@@A	013bace8	00753ba0
 ?g_zero@@3MB	0122dedc	00753ba0
 ?find@CStockMap@@QBE?AUiterator@1@ABJ@Z	00777170	007726b0
-?DestroyObject@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z	007a4120	007a1870
 ?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	005ea000	007d0850
 ?GivePrize@CTCTavernGame@@QAEXXZ	005eb590	007d0850
 ?UpdateValues@CTCTavernGame@@QAE_NXZ	005ea010	007d0850
@@ -36493,7 +36487,6 @@ _time	00bfed22	008405f0
 ?SetDirection@CTC93@@QAEXPAVCThing@@_N@Z	0079e580	008c44b0
 ??_7CCreatureAction_ScorpionCharge@@6B@	01281024	008c4ea0
 ??_7CCreatureAction_ScorpionChargeStrike@@6B@	01281184	008c4f50
-?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	008c4f50
 ?ClearAttachments_006e0de0@CTCDParticleEmitter@@QAEXXZ	006e0de0	008c52c0
 ?FinishAction@CCombatActionBase@@QAEXXZ	00859a20	008c52c0
 ??0CCreatureAction_BanditKingStuck@@QAE@PAVCThingCreatureBase@@PAVCThing@@J11@Z	008c94d0	008c8c30
@@ -38567,7 +38560,7 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ	006a1440	008d9530
 ?GetWeaponClass@WeaponMethods@@QBEJXZ	005da7f0	008d9530
 ?IsThingCarryingMeleeWeapon@@YI_NPBUThingNative@@@Z	006a15a0	008d9530
-?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z	008e9710	008e9850
+?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z	008e9710	008e9850
 ?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@QAEXXZ	008e9190	008e9850
 ?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z	006e97f0	006ea050
 ?GetCombatSequences@CCombatManager@@QAEXPAVCThingCreatureBase@@0PAUCSequenceVector@@@Z	006ec4f0	006eda80
@@ -39260,3 +39253,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	00996610	004b64e0
 ?GetFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z	00aecd70	00aed2f0
 ?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ	008137e0	00813860
+?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z	00d89ad0	00d87cb0
+?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	00859ef0	00923cd0

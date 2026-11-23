@@ -55,7 +55,7 @@ void __fastcall SetProgressDisplay(const CCountedProgressDisplayPointer& display
 class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                   // +4
-    bool Init();                                  // 0x0099A350
+    protected: bool Initialise(); public:                                  // 0x0099A350; NF303: PDB name, was Init
 };
 
 struct CGameInitialiser : CInitBaseClass {
@@ -67,7 +67,7 @@ struct CGameInitialiser : CInitBaseClass {
 
 bool CGameInitialiser::SetupProgressDisplay()
 {
-    if (Init())
+    if (Initialise())
     {
         m_startupFlag = 0;
         m_startupValue = 0;

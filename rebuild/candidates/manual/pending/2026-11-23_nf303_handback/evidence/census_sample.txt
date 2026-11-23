@@ -1,0 +1,499 @@
+#19 00654b36 - ??$?0VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQue
+  WRONGCLASS 0064f885  ??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@
+     (no declaring line found)
+#29 00ac27a0 - ?WriteToFile@C3DMeshPartitionElement@@QBEXAAVCDataOutputStream@@@Z
+  SAME_TYPEDIFF 00ac2920  C3DMeshPartitionElement::N
+     L2: class C3DMeshPartitionElement { public: void N(void* stream); };
+     L2: class C3DMeshPartitionElement { public: void N(void* stream); };
+#41 0094a3b0 - ?ChooseAction@CAIStateGroup_GoToPub@@IAE_N_N@Z
+  WRONGCLASS 0094c7d0  CAIStateGroup_GameMaster::Method
+     L10: struct CAIStateGroup_GameMaster {
+     L11: void Method(long value);
+#52 00739db0 - ??1CAnimFilterOfGroup@@UAE@XZ
+  FREE 0073ed20  DestructMember_00739db0
+     L6: extern void __fastcall DestructMember_00739db0(void* member);
+  FREE 00741490  DestructSecondMember
+     L11: extern void __fastcall DestructSecondMember(void* member);
+#63 009d67e0 - ?DiscardAsyncData@CBankFileAsync@@QAEXAAV?$CCountedPointer@VCBankFileAsyncData@@@@@Z
+  STANDIN 009d68a0  SubObj::M
+     L1: struct SubObj { void M(void* arg); };
+     L1: struct SubObj { void M(void* arg); };
+#73 00453c58 - ??4CBonusItemDef@@QAEAAV0@ABV0@@Z
+  FREE 00453c53  CBonusItemDef_CopyImpl
+     L2: extern void __fastcall CBonusItemDef_CopyImpl(CBonusItemDef* self, const CBonusItemDef* src);
+#84 0099eb40 - ?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ
+  WRONGCLASS 0099f3b0  CThingMapManager::Prepare
+     (no declaring line found)
+#96 006e92c0 - ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+  STANDIN 00662410  Sub::Add
+     (no declaring line found)
+#110 00403d20 - ??0?$CCountedPointer@VCAProgressDisplay@@@@QAE@PAVCAProgressDisplay@@@Z
+  STANDIN 00413120  CCountedProgressDisplayPointer::CCountedProgressDisplayPointer
+     L35: struct CCountedProgressDisplayPointer {
+     L35: struct CCountedProgressDisplayPointer {
+  STANDIN 0049e7c0  ProgressPointer::ProgressPointer
+     L9: struct ProgressPointer{CAProgressDisplay*data;ProgressControl*info;ProgressPointer():data(0),info(0){}Progress
+     L9: struct ProgressPointer{CAProgressDisplay*data;ProgressControl*info;ProgressPointer():data(0),info(0){}Progress
+#120 00654b0a HDRFLAG ?ReleaseData@?$CCountedPointer@VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ
+  WRONGCLASS 0064f7fc  NPlayerGui::CCountedPointer<struct NPlayerGui::CQuestInfoElementBar>::~CCountedPointer
+     L49: void AddElement(CCountedPointer<CQuestInfoElement> element);
+#130 008ed440 - ??RCCreateIndicesFromItemNames@@QAEXABVCCharString@@@Z
+  STANDIN 008ed510  CDefNameInserter4::operator=
+     L21: struct CDefNameInserter4 {
+#140 008ed650 - ??0CCreatureAction_Die@@QAE@AAVCThingCreatureBase@@_N@Z
+  WRONGCLASS 00891720  CCreatureAction_StabbedToDeath::CCreatureAction_StabbedToDeath
+     L71: class CCreatureAction_StabbedToDeath : public CCreatureActionBase
+     L74: CCreatureAction_StabbedToDeath(CThingCreatureBase& creature, bool unknown);
+#150 00842a80 - ??0CCreatureAction_StartFillingTankard@@QAE@AAVCThingCreatureBase@@@Z
+  STANDIN 00967b40  CCreatureAction_FillTankardFromJug::CCreatureAction_FillTankardFromJug
+     L61: struct CCreatureAction_FillTankardFromJug : CCreatureActionBase {
+     L61: struct CCreatureAction_FillTankardFromJug : CCreatureActionBase {
+#162 00995030 - ?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ
+  STANDIN 004568bc  ObjA::Fetch
+     L17: struct ObjA { int* Fetch(SVec2* out); };
+     L17: struct ObjA { int* Fetch(SVec2* out); };
+  WRONGCLASS 005dbda0  CMemoryDataInputStream::ReadC2DVector
+     L27: class CDataInputStream { friend class CMemoryDataInputStream;
+     L30: class CMemoryDataInputStream : public CDataInputStream { public:
+     L37: C2DVector ReadC2DVector();
+  WRONGCLASS 006bc510  CMemoryDataInputStream::Read
+     L24: class CDataInputStream { friend class CMemoryDataInputStream;
+     L27: class CMemoryDataInputStream : public CDataInputStream { public:
+     L35: void Read(C2DVector* vector);
+#172 00af8ad0 HDRFLAG ??3CDecal@NParticleEngine@@SIXPAX@Z
+  WRONGCLASS 00af7c80  CEngineSubPrimitiveGameMesh::free_helper
+     L7: struct CEngineSubPrimitiveGameMesh {
+     L9: void free_helper();
+  FREE 00af7ca0  CDecal_OpDelete
+     L4: void __fastcall CDecal_OpDelete(CDecal* decal);
+#183 009c05c0 - ?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z
+  SAME_TYPEDIFF 00409140  CDisplayManager::GetSupportedAntialiasingLevels
+     L26: class CDisplayManager { public:
+     L27: void GetSupportedAntialiasingLevels(CLongVector& levels);
+#193 00b59710 - ??0CEngineComponent@@QAE@XZ
+  STANDIN 00b28bc0  CStateBlocksBase_00b59710::CStateBlocksBase_00b59710
+     L6: struct CStateBlocksBase_00b59710 {
+     L6: struct CStateBlocksBase_00b59710 {
+  STANDIN 00b59b60  CEngineBaseGenerator::CEngineBaseGenerator
+     L11: struct CEngineBaseGenerator {
+     L11: struct CEngineBaseGenerator {
+  STANDIN 00b8cee0  CEnvironmentBase::CEnvironmentBase
+     L16: struct CEnvironmentBase {
+     L16: struct CEnvironmentBase {
+#205 00bebc30 - ??0CEnginePrimitiveManagerMeshBase@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  WRONGCLASS 00b99d90  CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager
+     L70: class CEnginePrimitiveGroupManager : public CEnginePrimitiveManager { public:
+     L72: CEnginePrimitiveGroupManager(CEngineSceneArray* scenes);
+#215 006ca950 - ?AddTextureMorph@CEngineTextureMorphSet@@QAEXJABVCCompositeBlendDesc@@@Z
+  STANDIN 0071de80  CTextureMapSet::Set
+     L182: class CTextureMapSet {
+     L185: void Set(long key, const unsigned char* data);
+#227 006b94e0 - ?SetAsAlliedWithFaction@CFaction@@QAEXABV1@@Z
+  STANDIN 00890870  Faction::AddAlly
+     L2: struct Faction {
+     L3: void AddAlly(Faction* other);
+#237 004d9861 - ??1CFireheartMinigameDef@@UAE@XZ
+  FREE 004d9845  CFireheartMinigameDef_Destruct
+     L2: extern void __fastcall CFireheartMinigameDef_Destruct(void* def);
+#248 00851bd0 - ?GetParameter@CHeroAbilityStatWeight@@QBEMABVCTCHeroExperience@@@Z
+  STANDIN 00868b40  Row00868b40::Scale::Get
+     L13: struct Component;struct Scale{float Get(Component*);};
+     L13: struct Component;struct Scale{float Get(Component*);};
+#259 004ad3d0 - ??RCInsertNameInSet@@QBEXPBVCThing@@@Z
+  STANDIN 004ad890  CDisplayRentFunctor::operator()
+     L18: class CDisplayRentFunctor {
+#270 00a42830 - ?PeekLipSyncInfo@CLipSyncDataBank@@QBEPBVCLipSyncDataBankEntry@@K@Z
+  SAME_TYPEDIFF 006e2940  CLipSyncDataBank::GetPEntry
+     L29: class CLipSyncDataBank {
+     L31: const CLipSyncEntry* GetPEntry(unsigned long index) const;
+#280 00739e20 - ??1CModeBase@CTCCreatureModeManager@@UAE@XZ
+  FREE 00868100  CModeExplosiveForcePushed_Destruct
+     L8: extern void __fastcall CModeExplosiveForcePushed_Destruct(void* mode);
+  FREE 0073fe70  CModeCrouch_Destruct
+     L6: extern void __fastcall CModeCrouch_Destruct(void* mode);
+  FREE 007408c0  CModeKnockedDown_Destruct
+     L3: extern void __fastcall CModeKnockedDown_Destruct(void* mode);
+#291 006bdf40 - ?SetCinematicOverridingMusicSet@CMusicManager@@QAEXJ@Z
+  STANDIN 00891220  CGSIOverrideMusicEvent::AddUBYTE
+     L10: struct CGSIOverrideMusicEvent {
+     L11: void AddUBYTE(unsigned char musicSetType);
+#301 00af7ed0 - ?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ
+  FREE 00b15b00  GetDrawableObject
+     L31: extern IDrawableBase* __fastcall GetDrawableObject(CPSCEmitterGeneric* self);
+#313 00af56e0 - ?DeleteAllParticles@CParticleSystem@NParticleEngine@@QAEXXZ
+  WRONGCLASS 00af5870  CParticleSystem::Stop
+     L3: struct CParticleSystem {
+     L7: void Stop();
+#325 00487dd0 - ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  STANDIN 00935160  NCondition00935160::CPlayer::GetControlledCreature
+     L19: struct Context {char pad[24];CThing* thing;};struct CPlayer {CThing* GetControlledCreature();};struct CPlayerM
+     L19: struct Context {char pad[24];CThing* thing;};struct CPlayer {CThing* GetControlledCreature();};struct CPlayerM
+#337 0086bc10 - ?AddTextureToTextureMorph@CRandomAppearanceMorph@@IAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppeara
+  SAME_TYPEDIFF 0086bcc0  CRandomAppearanceMorph::AddTextureMorph
+     L23: class CRandomAppearanceMorph { public:
+     L36: void AddTextureMorph(CTextureMorphMap& morphs, unsigned long originalTexture, const CTextureMorph& morph);
+#348 009fc410 - ?ProcessLoadingQueue@CResourceBank@@QAEX_NN@Z
+  STANDIN 00a23b00  CLoadingQueue_00a23b00::Process
+     L5: struct CLoadingQueue_00a23b00 {
+     L7: void Process(void* context, double time);
+  STANDIN 00b2ad90  CGraphicDataBank_Calls::ProcessLoading
+     L14: struct CGraphicDataBank_Calls {
+     L16: void ProcessLoading(bool force, double time);
+#358 007e72a0 - ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+  STANDIN 00ddd030  CScriptedThingStorage::Construct
+     L90: struct CScriptedThingStorage {
+     L92: void Construct();
+#369 00457936 - ??1CSpecialAbilitiesDrainLifeDef@@UAE@XZ
+  FREE 0045791a  CSpecialAbilitiesDrainLifeDef_dtor
+     L4: extern void __fastcall CSpecialAbilitiesDrainLifeDef_dtor(CSpecialAbilitiesDrainLifeDef* def);
+#383 008ae660 - ?AddGossip@CTCAIScratchpad@@SIXVCCharString@@@Z
+  FREE 008a9db0  CGameScriptInterface_FindOrCreateRumourCategory
+     L7: extern void __stdcall CGameScriptInterface_FindOrCreateRumourCategory(CCharString category);
+  FREE 008aa0d0  Inner
+     L22: void __fastcall Inner(CCharString byval);
+#394 006867f0 - ?OnRemove@CTCBase@@UAEXXZ
+  STANDIN 007e93c0  CTCBase_Calls::vfunc_2
+     (no declaring line found)
+#405 006a1620 - ?IsThingCarryingRangedWeapon@CTCCarrying@@SI_NABVCThing@@@Z
+  FREE 00890250  EntityWieldsRanged
+     L10: extern bool __fastcall EntityWieldsRanged(Entity* e);
+#415 004de6ed - ??1CTCCreatureItemLevitationBase@@UAE@XZ
+  FREE 004e09a1  CTCCreatureItemLevitationNymph_Destruct
+     L7: extern void __fastcall CTCCreatureItemLevitationNymph_Destruct(void* nymph);
+  FREE 004e0968  CTCCreatureItemLevitationBase_Destruct
+     L2: extern void __fastcall CTCCreatureItemLevitationBase_Destruct(void* levitation);
+  FREE 004e09e4  CTCCreatureItemLevitationHero_Destruct
+     L2: extern void __fastcall CTCCreatureItemLevitationHero_Destruct(void* hero);
+#425 004dcbce - ??1CTCDecapitation@@UAE@XZ
+  FREE 004dcbb2  CTCDecapitation_Destruct
+     L2: extern void __fastcall CTCDecapitation_Destruct(void* decapitation);
+#437 004bd200 - ?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ
+  WRONGCLASS 0092bf30  M::Check
+     L2: struct M { bool Check(); };
+     L2: struct M { bool Check(); };
+  WRONGCLASS 00751bc0  CTCGraphicAppearance::WasRenderedLastFrame
+     L23: struct CTCGraphicAppearance {
+     L24: bool WasRenderedLastFrame() const;
+#447 00789a60 - ?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ
+  FREE 00899c10  IsPCReady_GetReadiness
+     L85: float readiness = IsPCReady_GetReadiness(((void*)node->second));
+#458 005bc499 - ?RemoveItemFromInventory@CTCInventoryBase@NInventory@@IAEXAAVCThing@@@Z
+  STANDIN 005d8e20  COwner::Release
+     L4: struct COwner
+     L7: void Release(int slot);
+#468 005c00a0 - ??1CTCInventoryBase@NInventory@@UAE@XZ
+  STANDIN 005cd2fe  CTCInventoryBase_Retail::~CTCInventoryBase_Retail
+     L18: struct CTCInventoryBase_Retail {
+     L18: struct CTCInventoryBase_Retail {
+  FREE 005c2d16  CTCInventoryBase_Destruct
+     L2: extern void __fastcall CTCInventoryBase_Destruct(void* inventory);
+#478 004537e9 - ??4CTCNoiseDef@@QAEAAV0@ABV0@@Z
+  FREE 004537e4  CTCNoiseDef_Copy_impl
+     L3: extern void __fastcall CTCNoiseDef_Copy_impl(CTCNoiseDef* def, void* edx, const CDefClassBase* other);
+  STANDIN 00463923  SubMember::Copy
+     L4: struct SubMember {
+     L6: void Copy(const CDefClassBase* src);
+#488 006aeba0 - ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z
+  STANDIN 006d56e0  CTCFollowActionHandler::HandleFollowerQuit
+     L82: struct CTCFollowActionHandler {
+     L83: void HandleFollowerQuit(CThing* follower);
+#499 0066ae60 - ?IsAttachedSoundLoadedAndPlaying@CTCSoundPlayer@@QBE_NK@Z
+  STANDIN 006e2dc0  CSpeechEmitter::IsSampleLoadedAndPlaying
+     L21: struct CSpeechEmitter {
+     L22: bool IsSampleLoadedAndPlaying(unsigned long sampleID);
+#511 004ddf6f - ??1CTCUserActionPointBase@@UAE@XZ
+  FREE 004e037c  CTCSingleUserActionPoints_Destruct
+     L2: extern void __fastcall CTCSingleUserActionPoints_Destruct(void* points);
+  FREE 004e241c  CTCNamedUserActionPoints_Destruct
+     L3: extern void __fastcall CTCNamedUserActionPoints_Destruct(void* points);
+#522 004c7990 - ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+  WRONGCLASS 00833a70  CThingCreatureBase::GetDefinitionManager
+     L83: class CThingCreatureBase { public:
+     L89: CDefinitionManager* GetDefinitionManager();
+  STANDIN 008d1130  CThingNative::GetDefinitionManager
+     L63: struct CThingNative {
+     L70: CDefinitionManager* GetDefinitionManager() const;
+  SAME_TYPEDIFF 0083cc10  CThing::GetDefinitionManager
+     L46: class CThing;
+     L110: class CThing { public:
+     L119: CDefinitionManager* GetDefinitionManager() const;
+#535 0082d920 - ?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z
+  FREE 0072df50  CreateBuildingThing
+     L65: CThing* __fastcall CreateBuildingThing(long defIndex, const C3DVector* position, long player, const CCharStrin
+#547 004536ae - ??4CThingMultiArrowShotDef@@QAEAAV0@ABV0@@Z
+  FREE 004536a9  CThingMultiArrowShotDef_CopyBase
+     L3: extern void __fastcall CThingMultiArrowShotDef_CopyBase(CThingMultiArrowShotDef* self, void* edx, const CThing
+#558 00433670 - ?Alloc@CUIDef@NUISystem@@SIPAVCDefClassBase@@XZ
+  FREE 004336bc  CreateUIDef
+     L56: void* CreateUIDef();
+#568 00e96c30 - ?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z
+  STANDIN 00e96660  CHauntedHouseScript::DoMission_BodyGuardSimple
+     L111: struct CHauntedHouseScript {
+     L116: void DoMission_BodyGuardSimple(CCharString guard1, CCharString guard2);
+#579 004fb490 - ?GetRegion@CWorldMap@@QAEAAVCRegion@@J@Z
+  WRONGCLASS 0088e0b0  NInventory::CTCInventoryBase::GetCategoryWithIndex
+     L9: class CTCInventoryBase
+     L12: CCategory* GetCategoryWithIndex(long index);
+#592 00466a75 - ??$GFSerialiseVectorBinaryOut@J@@YIXAAVCDataOutputStream@@AAV?$vector@JV?$allocator@J@std@@@std@@@Z
+  SAME_TYPEDIFF 0074c5f0  GFSerialiseVectorBinaryOutLong
+     L32: void __fastcall GFSerialiseVectorBinaryOutLong(CDataOutputStream* stream, CLongVector* value);
+#609 006af520 - ??$GetPTarget@VCThingCreatureBase@@@CMessageEvent@@QBEPAVCThingCreatureBase@@XZ
+  WRONGCLASS 00744d00  CGameScriptThing::GetPThing
+     L84: class CGameScriptThing { public:
+     L85: CThing* GetPThing();
+#627 00722d30 - ??$GetSubDef@VCSmokeGeneratorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSmokeGeneratorDef@@@@@
+  SAME_TYPEDIFF 00722590  CDefClassBase::GetSubDef
+     L75: class CDefClassBase { public: bool GetSubDef(CSmokeDefPtr* out); };
+     L75: class CDefClassBase { public: bool GetSubDef(CSmokeDefPtr* out); };
+#646 007be7ea - ??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowSh
+  SAME_TYPEDIFF 007bd2a7  CDefClassBase::GetSubDef
+     L44: class CDefClassBase { public:
+     L45: bool GetSubDef(CDefPointer<const CMultiArrowDef>* out);
+#665 008c79b0 - ??$GetSubDef@VCAreaOfEffectAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAreaOfEffectAttack
+  SAME_TYPEDIFF 008c6b20  CDefClassBase::GetSubDef
+     L41: class CDefClassBase { public:
+     L42: bool GetSubDef(CDefPointer<CTrollGroundPoundDef>* out);
+#678 008e8e50 - ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z
+  FREE 008e9110  GetStrafeAnimationName
+     L26: CCharString __fastcall GetStrafeAnimationName(const C3DVector& a, const C3DVector& b, EMovementType type);
+#688 008f5ba0 - ?GetPerpendicularDistanceFromFiniteLine@NPhysicsHelpers@@YIMABVC3DVector@@00@Z
+  FREE 0080ca20  Geometry_DistancePointToLineSegment
+     L156: return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPos()) / DamageRadius;
+#699 005d8978 - ??$TransferMap@JK@CPersistContext@@QAEXPBDAAV?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@
+  FREE 005d8c6a  CPersistContext_TransferHelper
+     L11: void __stdcall CPersistContext_TransferHelper(char* name, long* value, long* def);
+#710 00430345 - ??0?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3
+  STANDIN 004e380e  CMember_00430345::CMember_00430345
+     L16: struct CMember_00430345 {
+     L16: struct CMember_00430345 {
+  STANDIN 004e3e2a  CTrapTrigger::CTrapTrigger
+     L18: struct CTrapTrigger {
+     L18: struct CTrapTrigger {
+  STANDIN 00459bb6  CScriptSpriteMap::CScriptSpriteMap
+     L41: struct CScriptSpriteMap {
+     L41: struct CScriptSpriteMap {
+#720 004d9d2f - ??0?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@QAE@ABVCCharString@@ABVCRegisteredTCInfo@C
+  STANDIN 004e6d8a  SPair::SPair
+     L28: struct SPair {
+     L28: struct SPair {
+#730 00451b07 - ??1?$set@W4EWeaponClass@@U?$less@W4EWeaponClass@@@std@@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ
+  STANDIN 00465c54  ??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClas
+     (no declaring line found)
+#743 0045c64d - ??4?$vector@W4ECreatureGeneratorGenerateType@@V?$allocator@W4ECreatureGeneratorGenerateType@@@std@@@
+  STANDIN 0045c614  CGenerateTypeVector::operator=
+     L35: struct CGenerateTypeVector {
+#753 004cc290 - ??0?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@P
+  STANDIN 004c97b0  CInterfaceVector::CInterfaceVector
+     L42: struct CInterfaceVector {
+     L42: struct CInterfaceVector {
+  STANDIN 004cd2b0  CPairVector::CPairVector
+     L9: struct CPairVector {
+     L9: struct CPairVector {
+  STANDIN 004c9560  CComponentVector::CComponentVector
+     L52: struct CComponentVector {
+     L52: struct CComponentVector {
+#763 00535470 - ??0?$vector@KV?$allocator@K@std@@@std@@QAE@ABV01@@Z
+  STANDIN 009b0ac0  CRetailVector<unsigned long>::CRetailVector
+     L35: template <class T> struct CRetailVector {
+     L35: template <class T> struct CRetailVector {
+#773 006a3c70 - ?push_back@?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@U
+  STANDIN 008a99f0  PointerVector::PushBack
+     L138: struct PointerVector{IntelligentPointer *Start,*Finish,*End;PointerVector():Start(0),Finish(0),End(0){}~Pointe
+     L138: struct PointerVector{IntelligentPointer *Start,*Finish,*End;PointerVector():Start(0),Finish(0),End(0){}~Pointe
+#783 00787340 - ??1?$vector@VCSkeletalMorph@CTCSkeletalMorph@@V?$allocator@VCSkeletalMorph@CTCSkeletalMorph@@@std@@@
+  STANDIN 007874c0  CSkeletalMorphArray::~CSkeletalMorphArray
+     L26: struct CSkeletalMorphArray {
+     L26: struct CSkeletalMorphArray {
+#793 00d34f00 - ??0?$vector@_NV?$allocator@_N@std@@@std@@QAE@ABV01@@Z
+  STANDIN 00d34ec0  CByteVector::CByteVector
+     L21: struct CByteVector {
+     L21: struct CByteVector {
+#61 009ccdc0 HDRFLAG ?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z
+  WRONGCLASS 00546140  NUISystem::CFontBank::GetFont
+     L43: struct CFontBank {
+     L44: CFont* GetFont(const CCharString& name);
+  STANDIN 00b90270  CBankFileCallView::FindIndexBySymbol
+     L153: struct CBankFileCallView : CBankFile_PDB {
+     L154: unsigned long FindIndexBySymbol(const CCharString&) const;
+  WRONGCLASS 00b2c4e0  CGraphicDataBank::FindEntry
+     L84: class CGraphicDataBank { public:
+     L96: unsigned long FindEntry(const CCharString& symbol);
+#66 0099a2d0 HDRFLAG ??0CBaseClass@@QAE@XZ
+  FREE 00404720  N_0099a2d0
+     L22: namespace N_0099a2d0 { class CBase {
+  STANDIN 009fe380  CBaseNative::CBaseNative
+     L16: struct CBaseNative {void* Vtable;CBaseNative();};
+     L16: struct CBaseNative {void* Vtable;CBaseNative();};
+  STANDIN 006e24d0  N_0099a2d0::CBase::CBase
+     (no declaring line found)
+#111 0041915a HDRFLAG ?ReleaseData@?$CCountedPointer@VCPlayerGui@@@@QAEXXZ
+  STANDIN 004175e5  CCountedPointer41915a::Release
+     (no declaring line found)
+#121 00654c63 HDRFLAG ?ReleaseData@?$CCountedPointer@VCQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ
+  WRONGCLASS 0064fc23  NPlayerGui::CCountedPointer<struct NPlayerGui::CQuestInfoElementMiniGameBar>::~CCountedPointer
+     L131: void AddElement(CCountedPointer<CQuestInfoElement> element);
+#164 00993eb0 HDRFLAG ?WriteSLONG@CDataOutputStream@@QAEXJ@Z
+  STANDIN 00431020  Sink::Take
+     (no declaring line found)
+  STANDIN 004522f4  CShadowSink::Consume
+     L6: struct CShadowSink {
+     L7: void Consume(CShadowArg* a);
+  STANDIN 0046c2d2  Serialiser::Serialise
+     L19: struct Serialiser {
+     L20: void Serialise(int v);
+#165 00993ee0 HDRFLAG ?WriteFloat@CDataOutputStream@@QAEXM@Z
+  STANDIN 0046c2d2  Serialiser::Serialise
+     L19: struct Serialiser {
+     L20: void Serialise(int v);
+  STANDIN 00b17f70  CDataOutputStream_Methods::WriteFloat
+     L38: out->WriteFloat(AttractorInfluenceRadius);
+#177 009ad410 HDRFLAG ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+  STANDIN 008981c0  CDefinitionManager_Retail::GetDefGlobalIndexFromName
+     L29: struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharString& name) const; };
+     L29: struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharString& name) const; };
+  WRONGCLASS 0082a9b0  CGameDefinitionManager::GetDefGlobalIndexFromName
+     L26: class CGameDefinitionManager : public CDefinitionManager { public:
+     L24: long GetDefGlobalIndexFromName(const CCharString& name) const;
+  STANDIN 008902e0  ObjContainer::CountObjects
+     L38: struct ObjContainer { int  CountObjects(int objDefId); };            /* 0x11d130 */
+#231 004348d0 HDRFLAG ?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ
+  STANDIN 00581d2a  CFadeInFadeOutBaseCalls::GetAlpha
+     L34: struct CFadeInFadeOutBaseCalls {
+     L37: float GetAlpha();
+  FREE 00643e52  Ring_GetValue
+     L9: extern float __fastcall Ring_GetValue(void* self);
+  STANDIN 00434a00  CFadeInFadeOutBase_Methods::GetFadeInOutAlpha
+     L13: struct CFadeInFadeOutBase_Methods : CFadeInFadeOutBase {
+     L14: float GetFadeInOutAlpha() const;
+#242 006e7510 HDRFLAG ?GetMinWorldFrameForMessages@CGameScriptInterface@@IBEJXZ
+  FREE 00893f80  GetA
+     L13: extern void* __fastcall GetA(const void* thisptr);
+  STANDIN 008942c0  CGameScriptInterface_Methods::GSI_PreMsg
+     L3: struct CGameScriptInterface_Methods : CGameScriptInterface { void GSI_PreMsg(); void GSI_PostMsg(); };
+     L3: struct CGameScriptInterface_Methods : CGameScriptInterface { void GSI_PreMsg(); void GSI_PostMsg(); };
+  FREE 00894300  Gsi_A
+     L49: extern "C" void* __fastcall Gsi_A(void* thisptr);
+#243 006e7530 HDRFLAG ?GetMaxWorldFrameForMessages@CGameScriptInterface@@IBEJXZ
+  FREE 00893f80  GetB
+     L14: extern void* __fastcall GetB(const void* thisptr);
+  STANDIN 008942c0  CGameScriptInterface_Methods::GSI_PostMsg
+     L3: struct CGameScriptInterface_Methods : CGameScriptInterface { void GSI_PreMsg(); void GSI_PostMsg(); };
+     L3: struct CGameScriptInterface_Methods : CGameScriptInterface { void GSI_PreMsg(); void GSI_PostMsg(); };
+  FREE 00894300  Gsi_B
+     L50: extern "C" void* __fastcall Gsi_B(void* thisptr);
+#260 004a96f0 HDRFLAG ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z
+  WRONGCLASS 006592e2  CIntelligentPointer::CIntelligentPointer
+     L47: struct CIntelligentPointer {
+     L47: struct CIntelligentPointer {
+  STANDIN 004db15e  NThingShot::CIntelligentPointer_CThing::CIntelligentPointer_CThing
+     L25: struct CIntelligentPointer_CThing {
+     L25: struct CIntelligentPointer_CThing {
+  STANDIN 00961e80  CIntelligentPointerConstThing::CIntelligentPointerConstThing
+     L193: struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+     L193: struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+#262 0050f380 HDRFLAG ??0?$CIntelligentPointer@VCThingBuilding@@@@QAE@PAVCThingBuilding@@@Z
+  STANDIN 00931010  CIntelligentPointerBuilding::CIntelligentPointerBuilding
+     L57: struct CIntelligentPointerBuilding : CBaseIntelligentPointer {
+     L57: struct CIntelligentPointerBuilding : CBaseIntelligentPointer {
+#263 00668b60 HDRFLAG ??0?$CIntelligentPointer@VCThingCreatureBase@@@@QAE@PAVCThingCreatureBase@@@Z
+  STANDIN 0080fad0  CIntelligentPointerConstThing::CIntelligentPointerConstThing
+     L180: struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+     L180: struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+  STANDIN 0094bca0  N_00668b60::CIntelligentPointerConstThing::CIntelligentPointerConstThing
+     L63: namespace N_00668b60 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+     L63: namespace N_00668b60 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+#277 00a24280 HDRFLAG ?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z
+  STANDIN 00b90270  CMeshDataBankCallView::MeshInfoAtIndex
+     L156: struct CMeshDataBankCallView {
+     L157: C3DMeshInfo_PDB* MeshInfoAtIndex(unsigned long);
+#285 00861d00 HDRFLAG ?OnDeactivate@CModeStandBase@@UAEXXZ
+  FREE 008d6900  CMode_Base_OnActivate
+     L19: extern void __fastcall CMode_Base_OnActivate(void* self);
+  WRONGCLASS 008d6980  CModeChargeForcePush::BaseActivate
+     L21: struct CModeChargeForcePush {
+     L25: void BaseActivate();
+  FREE 008d69d0  DragonRear_BaseActivate
+     L15: void __fastcall DragonRear_BaseActivate(CModeDragonRearUp* self);
+#306 00430370 HDRFLAG ??0CParentDefClassBase@@QAE@XZ
+  WRONGCLASS 004550ac  CDefClassBase::CDefClassBase
+     (no declaring line found)
+#339 00677620 HDRFLAG ??0CReactionMatch_AsymmetricPyramid@@QAE@W4EOpinionReactionType@@W4EOpinion@@1MMMMMM@Z
+  STANDIN 00677760  CReactionMatch_AsymmetricPyramidRetail::CReactionMatch_AsymmetricPyramidRetail
+     L27: class CReactionMatch_AsymmetricPyramidRetail : public CReactionMatch {
+     L27: class CReactionMatch_AsymmetricPyramidRetail : public CReactionMatch {
+#342 0066c6a0 HDRFLAG ?GetRegionMapExtents@CRegionMinimap@@QBEXAAVC2DCoordI@@AAVC2DExtentsI@@@Z
+  STANDIN 00829c70  MapSizeProvider::GetSize
+     (no declaring line found)
+  STANDIN 00829ce0  MapSub::GetBounds
+     (no declaring line found)
+#345 009fbec0 HDRFLAG ??0CResource@@QAE@XZ
+  STANDIN 009fe380  CResourceNative::CResourceNative
+     L22: struct CResourceNative : CResource {CResourceNative();void SetResourceSize(unsigned long);};
+     L22: struct CResourceNative : CResource {CResourceNative();void SetResourceSize(unsigned long);};
+#360 004abe90 HDRFLAG ??0CScriptThing@@QAE@ABV0@@Z
+  STANDIN 00cd2757  CScriptThingRetail::CScriptThingRetail
+     L14: struct CScriptThingRetail {
+     L14: struct CScriptThingRetail {
+  SAME_TYPEDIFF 00cdf430  CScriptThing::CScriptThing
+     L71: class CScriptThing { public:
+     L73: CScriptThing(void* thing);
+  STANDIN 00d169e0  CScriptThingStored::CScriptThingStored
+     L34: CScriptThingRuntime(const struct CScriptThingStored& other);
+     L42: struct CScriptThingStored {
+     L34: CScriptThingRuntime(const struct CScriptThingStored& other);
+#375 009ba790 HDRFLAG ?ReadAsSymbol@CStringParser@@QAE?AVCCharString@@XZ
+  STANDIN 006d41f0  N006d41f0::Parser::ReadAsString
+     L24: struct Parser:CStringParser {::N006d41f0::CCharString ReadAsString();};
+     L24: struct Parser:CStringParser {::N006d41f0::CCharString ReadAsString();};
+#486 006b0780 HDRFLAG ?OnCreate@CTCPhysicsBase@@UAEXXZ
+  STANDIN 007232e0  CTCPhysicsBase_Calls::OnCreate
+     L15: struct CTCPhysicsBase_Calls {
+     L16: void  OnCreate();
+  WRONGCLASS 00724010  CTCPhysicsStandard::BaseOnCreate
+     L105: struct CTCPhysicsStandard : public CTCPhysicsBase {
+     L148: void BaseOnCreate();
+#502 007f4fc0 HDRFLAG ?GetShopTC@CTCStockItem@@QBEPAVCTCShop@@XZ
+  STANDIN 007f5050  CTCStockItem_Methods::Check
+     L6: struct CTCStockItem_Methods : CTCStockItem {
+     L9: int Check();
+  STANDIN 007f5070  CTCStockItem_Methods::GetStockHolder
+     L18: struct CTCStockItem_Methods : CTCStockItem {
+     L19: void* GetStockHolder();
+  STANDIN 00809d60  N00809d60::CTCStockItem::GetShopTC
+     L54: struct CTCStockItem {
+     L60: CTCShop* GetShopTC() const;
+#520 004c73d0 HDRFLAG ?GetPos@CThing@@QBEABVC3DVector@@XZ
+  STANDIN 00935160  NCondition00935160::CThing::GetPosition
+     L12: struct C3DVector {float x,y,z;};struct CThing;
+     L18: struct CThing {char pad[36];unsigned mask24;char gap28[12];unsigned mask34;char gap38[12];Map map;const C3DVec
+     L18: struct CThing {char pad[36];unsigned mask24;char gap28[12];unsigned mask34;char gap38[12];Map map;const C3DVec
+  STANDIN 008f7bd0  NFoot008f7bd0::CThingCreatureBase::GetPosition
+     L9: struct C3DVector {float x,y,z;};extern bool Enabled;struct CThingCreatureBase;struct SVectorParam {unsigned ha
+     L31: struct CThingCreatureBase {const C3DVector& GetPosition()const;};
+     L31: struct CThingCreatureBase {const C3DVector& GetPosition()const;};
+  STANDIN 00957f20  CThingPos::GetPosition
+     L86: struct CThingPos {
+     L87: const C3DVector& GetPosition();
+#526 004c7e50 HDRFLAG ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ
+  STANDIN 00891d50  CGSIGetThingWithUID_Thing::WrapForScript
+     L50: class CGSIGetThingWithUID_Thing
+     L53: CScriptThing WrapForScript() const;
+  STANDIN 008976f0  CThingNative::GetScriptThing
+     L20: class CThing{ public:void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Compon
+  STANDIN 00904540  CThing_Retail::GetScriptThing
+     L31: class CThing_Retail { public:
+     L32: CScriptThing GetScriptThing() const;
+#555 0049c770 HDRFLAG ?PeekClassList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@XZ
+  STANDIN 004a9da0  CThingSearchToolsMethods::PeekAllThings
+     L86: struct CThingSearchToolsMethods : CThingSearchTools {
+     L87: CThingList* PeekAllThings();
+  SAME_TYPEDIFF 0056d050  CThingSearchTools::PeekAllThings
+     L59: class CThingSearchTools {
+     L61: CThingList* PeekAllThings() const;
+#576 0049d810 HDRFLAG ?GetWorldSeed@CWorld@@QBEPAKXZ
+  STANDIN 00699560  CQuakeWorld::GetRandom
+     L15: struct CQuakeWorld {CQuakeRandom& GetRandom();};
+     L15: struct CQuakeWorld {CQuakeRandom& GetRandom();};
+#583 00502620 HDRFLAG ?LoadLevel@CWorldMap@@IAEXJW4ELoadType@1@@Z
+  FREE 005063d0  fl_helper
+     L2: extern void __stdcall fl_helper(long x, int z);

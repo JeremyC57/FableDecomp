@@ -30,7 +30,7 @@ public:
     void resize(long n, const T& fill);
     void push_back(const T& value);
     T* erase(T* where);
-    void Clear();
+    protected: void Clear(); public:
     void Allocate(unsigned long n);                       // 0x009D2160 (this row)
     void Copy(const CSmallVector& other);
 };

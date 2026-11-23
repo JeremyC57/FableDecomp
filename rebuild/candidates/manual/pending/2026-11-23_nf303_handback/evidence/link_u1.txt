@@ -1,0 +1,13 @@
+## HEAD set: H_008c4f50.obj H_008e46d0.obj H_0095cb80.obj H_00976fc0.obj H_00977060.obj H_0097c760.obj H_0097c830.obj H_0097c920.obj H_007a1870.obj H_00413120.obj H_0048a210.obj H_00a6c170.obj H_00d87cb0.obj H_0099a350.obj H_00d89ad0.obj
+duplicates 0
+
+UNRESOLVED 1 ?DestroyObject@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z
+UNRESOLVED 3 ?Init@CInitBaseClass@@QAE_NXZ
+UNRESOLVED 1 ?PlayCutScene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z
+UNRESOLVED 8 ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z
+## new set: N_008c4f50.obj N_008e46d0.obj N_0095cb80.obj N_00976fc0.obj N_00977060.obj N_0097c760.obj N_0097c830.obj N_0097c920.obj N_007a1870.obj N_00413120.obj N_0048a210.obj N_00a6c170.obj N_00d87cb0.obj H_0099a350.obj H_00d89ad0.obj
+duplicates 0
+
+UNRESOLVED 1 ?DeleteData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z
+UNRESOLVED 8 ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+LK_DONE

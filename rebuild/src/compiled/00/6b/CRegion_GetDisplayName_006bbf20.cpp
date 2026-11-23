@@ -2,7 +2,7 @@ extern const char kEmptyDisplayNameTag[];
 
 class CCharString { public:
     char* data;
-    bool Compare(const char* s) const;
+    bool operator!=(const char* s) const;   // 0x0099E960; NF303: PDB name, was Compare
 };
 
 class CRegion { public:
@@ -14,7 +14,7 @@ class CRegion { public:
 CCharString* __fastcall CRegion_GetDisplayName(CRegion* region)
 {
     CCharString* pB = &region->nameB;
-    if (pB->Compare(kEmptyDisplayNameTag))
+    if (*pB != kEmptyDisplayNameTag)
         return pB;
     return &region->nameA;
 }

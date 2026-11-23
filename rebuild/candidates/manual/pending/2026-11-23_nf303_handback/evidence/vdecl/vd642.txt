@@ -1,0 +1,1 @@
+007dfb20 - CTCFish_CTCFish_007dfb20.cpp | L43:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CFishDef>* out) const;

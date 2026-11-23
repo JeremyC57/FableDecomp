@@ -1,0 +1,1 @@
+007aefd0 - CTCBoss_CTCBoss_007aefd0.cpp | L88:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CBossDef>* out) const;

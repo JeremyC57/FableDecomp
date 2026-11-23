@@ -17,7 +17,7 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(long actionCode);                                                                         // 0x00857E40
+    protected: CCombatActionBase(long actionCode); public:                                                                         // 0x00857E40
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 };

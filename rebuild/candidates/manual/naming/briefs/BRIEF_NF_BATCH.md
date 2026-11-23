@@ -120,3 +120,6 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   owner in NAME_FIXES. Q5: an owner's own const / access self fix is in place when objsec is ALL_EQ and every landed binder of the old
   spelling moves in the same landing (NF282 D2 is about re-scoping a self, not this). Q1: giving a flat shared-header class a base it lacks is a
   layout change, so a port.
+- NF303 Q1: `virtual` on a local base that also flips the binder's own override leaf QAE -> UAE (the PDB spelling) is allowed per row under
+  NF299 Q3 + NF302 Q5, recorded in RENAMES section 1. Q2: a member-template declaration that adds a `/alternatename` line to `.drectve` is
+  T3 (a `.drectve` change is T3). Q4: held entries are taken once their locks are free, after re-reading the landed rows.

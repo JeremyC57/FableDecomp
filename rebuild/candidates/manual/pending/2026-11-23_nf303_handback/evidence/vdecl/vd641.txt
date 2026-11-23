@@ -1,0 +1,1 @@
+007b0800 - CTCFishing_CTCFishing_007b0800.cpp | L42:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CFishingDef>* out);

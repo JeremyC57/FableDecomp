@@ -1,0 +1,1 @@
+007e5f00 - CTCOracleMinigame_CTCOracleMinigame_007e5f00.cpp | L21:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const COracleMinigameDef>* out) const;

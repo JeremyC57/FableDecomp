@@ -7,7 +7,7 @@
 #pragma optimize("s", on)
 class CCombatActionBase {
 public:
-    CCombatActionBase(long type);                                  // 0x00857E40
+    protected: CCombatActionBase(long type); public:                                  // 0x00857E40
     virtual ~CCombatActionBase();
 };
 class CCreatureAction_TentacleStrikeGetHit : public CCombatActionBase {

@@ -1,0 +1,10 @@
+## HEAD set: H_008cf7d0.obj H_00924880.obj H_00923cd0.obj H_00859a20.obj
+duplicates 0
+
+UNRESOLVED 2 ?FinishAction@CCombatActionBase@@UAEXXZ
+UNRESOLVED 1 ?OnAnimationLoaded@CCombatActionBase@@UAEXXZ
+## new set: N_008cf7d0.obj N_00924880.obj N_00923cd0.obj H_00859a20.obj
+duplicates 0
+
+UNRESOLVED 1 ?OnAnimationLoaded@CCombatActionBase@@MAEXXZ
+LK_DONE

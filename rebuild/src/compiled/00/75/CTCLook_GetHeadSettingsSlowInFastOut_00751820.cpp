@@ -14,7 +14,7 @@
 //   else-if velocity clamp); the overshoot test compares Sign of the old and the new difference; the limit clamp
 //   re-tests `angle > maxRight` inside the combined range test.
 #include <math.h>
-float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
@@ -27,7 +27,7 @@ class CTCLook { private:
 void CTCLook::GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed,
                                            float targetAngle, float maxLeft, float maxRight) const
 {
-    float difference = AngleDifference(angle, targetAngle);
+    float difference = GFGetSignedAngleDifference(angle, targetAngle);
     if ((float)fabs(difference) > DELTA_NOTIONAL_ZERO) {
         velocity += Sign(difference) * acceleration;
         if (velocity < -maxSpeed)
@@ -35,7 +35,7 @@ void CTCLook::GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float 
         else if (velocity > maxSpeed)
             velocity = maxSpeed;
         float newAngle = angle + velocity;
-        float newDifference = AngleDifference(newAngle, targetAngle);
+        float newDifference = GFGetSignedAngleDifference(newAngle, targetAngle);
         if (Sign(difference) != Sign(newDifference)) {
             angle = targetAngle;
             velocity = 0.0f;

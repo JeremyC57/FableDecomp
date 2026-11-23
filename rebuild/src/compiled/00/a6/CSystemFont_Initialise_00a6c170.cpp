@@ -39,7 +39,7 @@ extern const SGlyph GlyphPercent;      // 0x013984AC
 class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                // +0x04
-    bool Init();                               // 0x0099A350
+    protected: bool Initialise(); public:                               // 0x0099A350; NF303: PDB name, was Init
 };
 
 struct CSystemFont : CInitBaseClass {
@@ -51,7 +51,7 @@ struct CSystemFont : CInitBaseClass {
 
 bool CSystemFont::Initialise()
 {
-    if (Init() == true)
+    if (CInitBaseClass::Initialise() == true)
     {
         if (!Initialised)
         {

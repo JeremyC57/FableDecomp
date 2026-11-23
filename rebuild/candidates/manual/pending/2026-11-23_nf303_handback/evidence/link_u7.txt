@@ -1,0 +1,10 @@
+## HEAD set: H_006f5b50.obj H_00867950.obj H_008b8560.obj H_008b9110.obj H_009d2160.obj H_009d2660.obj H_006650e0.obj H_00857e40.obj H_009d2110.obj H_00a441e0.obj
+duplicates 0
+
+UNRESOLVED 4 ??0CCombatActionBase@@QAE@J@Z
+UNRESOLVED 1 ?AngleDifference@@YGMMM@Z
+## new set: N_006f5b50.obj N_00867950.obj N_008b8560.obj N_008b9110.obj N_009d2160.obj N_009d2660.obj N_006650e0.obj H_00857e40.obj N_009d2110.obj H_00a441e0.obj
+duplicates 0
+
+UNRESOLVED 4 ??0CCombatActionBase@@IAE@J@Z
+LK_DONE

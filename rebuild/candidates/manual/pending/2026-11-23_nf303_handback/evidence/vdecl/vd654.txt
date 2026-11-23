@@ -1,0 +1,6 @@
+007ea510 - CTCTargeted_OnCreate_007ea510.cpp | L22:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CTargetingDef>* out);
+007f59c0 - CTCTargetingAI_OnInitialActivate_007f59c0.cpp | L21:CDefClassBase:public:plain:bool GetSubDef(CSubDef** out);
+007f98e0 - CTCTargetingSpirit_OnInitialActivate_007f98e0.cpp | L49:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<CTargetingSpiritDef>* out) const;
+00802b60 - anonymousnamespace_GetTargetingRangeForTarget_00802b60.cpp | NODECL
+00802d10 INC NPlayerTargeting_IsThingInTargetingRangeForTargetType_00802d | NODECL
+008039a0 - CTCTargetingPlayer_IsTargetedThingOfTypeInRange_008039a0.cpp | L41:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<CTargetingDef>* out);

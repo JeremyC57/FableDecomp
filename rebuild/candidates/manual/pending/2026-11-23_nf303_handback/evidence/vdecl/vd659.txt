@@ -1,0 +1,1 @@
+0080fd90 - CTCNymph_OnInitialActivate_0080fd90.cpp | L27:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CNymphDef>* out) const;

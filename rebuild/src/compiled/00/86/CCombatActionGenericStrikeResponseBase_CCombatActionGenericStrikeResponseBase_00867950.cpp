@@ -20,7 +20,7 @@ class CBaseObjectPointer;
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
-    CCombatActionBase(long actionCode);         // 0x00857E40
+    protected: CCombatActionBase(long actionCode); public:         // 0x00857E40
 };
 
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:

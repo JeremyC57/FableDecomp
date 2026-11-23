@@ -1,0 +1,56 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 1 (self renames / leaf changes)
+0x008e9710	NCreatureMode::CModeStrafe	ClearStrafingCombinationAnims	?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z	NCreatureMode::CModeStrafe::ClearStrafingCombinationAnims	ClearStrafingCombinationAnims (defined ?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z)	Ego_r + FableWin AAE; access fix in place (private), Leaf line written in full
+0x009d2110	CSmallVector<CCharString,8>	Clear	?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ	CSmallVector<CCharString,8>::Clear	?Clear@ (defined ?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ)	Ego_r + FableWin IAE; access fix in place (protected), Leaf line written in full
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x008c4f50	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x008e46d0	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x0095cb80	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x00976fc0	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x00977060	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x0097c760	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x0097c830	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x0097c920	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	0x008574d0
+0x007a1870	?DestroyObject@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z	?DeleteData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z	0x007a4120
+0x00413120	?Init@CInitBaseClass@@QAE_NXZ	?Initialise@CInitBaseClass@@IAE_NXZ	0x0099a350
+0x0048a210	?Init@CInitBaseClass@@QAE_NXZ	?Initialise@CInitBaseClass@@IAE_NXZ	0x0099a350
+0x00a6c170	?Init@CInitBaseClass@@QAE_NXZ	?Initialise@CInitBaseClass@@IAE_NXZ	0x0099a350
+0x00d87cb0	?PlayCutScene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z	?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z	0x00d89ad0
+0x008cf7d0	?FinishAction@CCombatActionBase@@UAEXXZ	?FinishAction@CCombatActionBase@@MAEXXZ	0x00859a20
+0x00924880	?FinishAction@CCombatActionBase@@UAEXXZ	?FinishAction@CCombatActionBase@@MAEXXZ	0x00859a20
+0x00923cd0	?OnAnimationLoaded@CCombatActionBase@@UAEXXZ	?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	0x00859ef0
+0x008e9850	?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@QAEX_N@Z	?ClearStrafingCombinationAnims@CModeStrafe@NCreatureMode@@AAEX_N@Z	0x008e9710
+0x00731e20	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z	??$GetSubDef@VCSpotLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z	0x007325d0
+0x00747820	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStealthDef@@@@@Z	??$GetSubDef@VCStealthDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStealthDef@@@@@Z	0x00748900
+0x007aefd0	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBossDef@@@@@Z	??$GetSubDef@VCBossDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBossDef@@@@@Z	0x007afa90
+0x007b0800	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCFishingDef@@@@@Z	??$GetSubDef@VCFishingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishingDef@@@@@Z	0x007b2540
+0x007dfb20	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z	??$GetSubDef@VCFishDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z	0x007b2600
+0x007e5f00	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOracleMinigameDef@@@@@Z	??$GetSubDef@VCOracleMinigameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOracleMinigameDef@@@@@Z	0x007e6e00
+0x007e7640	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCFireheartMinigameDef@@@@@Z	??$GetSubDef@VCFireheartMinigameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFireheartMinigameDef@@@@@Z	0x007e7d80
+0x007ea510	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z	??$GetSubDef@VCTargetingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z	0x007ea960
+0x0080fd90	?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z	??$GetSubDef@VCNymphDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z	0x0080fe60
+0x0096f6f0	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z	??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z	0x008cbff0
+0x0096f730	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z	??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z	0x008cbff0
+0x006f5b50	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x00867950	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x008b8560	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x008b9110	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x008c91b0	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x008ce3c0	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x008cf8f0	??0CCombatActionBase@@QAE@J@Z	??0CCombatActionBase@@IAE@J@Z	0x00857e40
+0x009d2160	?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ	?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ	0x009d2110
+0x009d2660	?Clear@?$CSmallVector@VCCharString@@$07@@QAEXXZ	?Clear@?$CSmallVector@VCCharString@@$07@@IAEXXZ	0x009d2110
+0x006650e0	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00725060	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00751820	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00751970	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00751c70	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00752300	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00752930	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x007faf60	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x007fb270	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x00856b20	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x008c7e50	?AngleDifference@@YGMMM@Z	?GFGetSignedAngleDifference@@YIMMM@Z	0x00a441e0
+0x006bbf20	?Compare@CCharString@@QBE_NPBD@Z	??9CCharString@@QBE_NPBD@Z	0x0099e960
+0x00921630	?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	??$GetPFirstThing@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	0x0056d050
+0x00910100	?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z	??$GetPFirstThing@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z	0x00910740

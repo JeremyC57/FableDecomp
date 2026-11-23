@@ -1,0 +1,1 @@
+00747820 - CTCStealth_CTCStealth_00747820.cpp | L18:CDefClassBase:public:plain:bool GetSubDef(CDefPointer<const CStealthDef>* out) const;

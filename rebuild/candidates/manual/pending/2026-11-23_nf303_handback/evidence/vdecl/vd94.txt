@@ -1,0 +1,27 @@
+006f5b50 - CCreatureActionSummonerFlameSlice_CCreatureActionSummonerFla | L20:CCombatActionBase:public:plain:CCombatActionBase(long actionCode);
+006f5c10 INC CCreatureActionBase_StatRegisterClass_006f5c10.cpp | NODECL
+00867950 - CCombatActionGenericStrikeResponseBase_CCombatActionGenericS | L23:CCombatActionBase:public:plain:CCombatActionBase(long actionCode);
+008b81e0 - CCreatureActionMidAttackSide_CCreatureActionMidAttackSide_00 | NODECL
+008b83c0 INC CCreatureActionSummonCreatures_CCreatureActionSummonCreature | NODECL
+008b84e0 - CCreatureActionCharge_CCreatureActionCharge_008b84e0.cpp | NODECL
+008b8540 - CCreatureActionChargeStrike_CCreatureActionChargeStrike_008b | NODECL
+008b8560 - CCreatureActionUnsheatheWeapons_CCreatureActionUnsheatheWeap | L8:CCombatActionBase:public:plain:CCombatActionBase(long actionCode);
+008b9110 - CCreatureActionScreamerDie_CCreatureActionScreamerDie_008b91 | L14:CCombatActionBase:public:plain:CCombatActionBase(long actionCode); || L15:CCombatActionBase:public:plain:CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CS || L16:CCombatActionBase:public:plain:CCombatActionBase(CThingCreatureBase* owner, CThing* target, long acti
+008bbb10 - CCreatureActionCastWillDrainLifeSpell_CCreatureActionCastWil | NODECL
+008bfa40 - CCreatureActionGenericFireProjectileWeapon_CCreatureActionGe | NODECL
+008bfaa0 - CCreatureActionGenericLoadProjectileWeapon_CCreatureActionGe | NODECL
+008bfb00 - CCreatureActionGenericAimProjectileWeapon_CCreatureActionGen | NODECL
+008bfb60 - CCreatureActionGenericLeaderCommand_CCreatureActionGenericLe | NODECL
+008bfbc0 - CCreatureActionUnblockableMidAttack_CCreatureActionUnblockab | NODECL
+008bfc20 - CCreatureActionDiagonalStrafeBL_CCreatureActionDiagonalStraf | NODECL
+008bfc80 - CCreatureActionDiagonalStrafeBR_CCreatureActionDiagonalStraf | NODECL
+008bfce0 T3 - CCreatureActionStrafeForward_CCreatureActionStrafeForward_00 | NODECL
+008bfd40 - CCreatureActionStrafeBackward_CCreatureActionStrafeBackward_ | NODECL
+008bfe00 - CCreatureActionBodgeSideStrike_CCreatureActionBodgeSideStrik | NODECL
+008c91b0 - CCreatureActionBanditKingStuckGetHit_CCreatureActionBanditKi | L20:CCombatActionBase:public:plain:CCombatActionBase(long actionCode);
+008c9d20 - CCreatureActionHobbeLungeAttack_CCreatureActionHobbeLungeAtt | NODECL
+008ccc50 - CCreatureActionBalverineLungeAttack_CCreatureActionBalverine | NODECL
+008cccb0 - CCreatureActionBalverineBreakOffFromCombat_CCreatureActionBa | NODECL
+008ccd10 - CCreatureActionBalverineBreakOffFromCombatLong_CCreatureActi | NODECL
+008ce3c0 - CCreatureActionCastBattleCharge_CCreatureActionCastBattleCha | L20:CCombatActionBase:public:plain:CCombatActionBase(long actionCode); || L21:CCombatActionBase:public:plain:CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CS || L22:CCombatActionBase:public:plain:CCombatActionBase(CThingCreatureBase* owner, CThing* target, long acti
+008cf8f0 - CCreatureActionTentacleStrikeGetHit_CCreatureActionTentacleS | L10:CCombatActionBase:public:plain:CCombatActionBase(long type); || L11:CCombatActionBase:public:virtual:virtual ~CCombatActionBase();

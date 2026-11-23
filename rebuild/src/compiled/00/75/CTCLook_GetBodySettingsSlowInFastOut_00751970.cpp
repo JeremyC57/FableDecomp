@@ -12,7 +12,7 @@
 // pair through the velocity pointer.
 #include <math.h>
 #pragma intrinsic(fmod)
-float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
@@ -23,7 +23,7 @@ class CTCLook { public:
 
 void CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const
 {
-    float difference = AngleDifference(angle, targetAngle);
+    float difference = GFGetSignedAngleDifference(angle, targetAngle);
     if ((float)fabs(difference) > DELTA_NOTIONAL_ZERO) {
         velocity += Sign(difference) * acceleration;
         if (velocity < -maxSpeed)
@@ -36,7 +36,7 @@ void CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float 
             if (newAngle < 0.0f)
                 newAngle += 1.0f;
         }
-        AngleDifference(newAngle, targetAngle);
+        GFGetSignedAngleDifference(newAngle, targetAngle);
         angle = targetAngle;
         velocity = 0.0f;
     }

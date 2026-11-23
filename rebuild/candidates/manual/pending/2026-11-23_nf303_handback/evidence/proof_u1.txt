@@ -1,0 +1,52 @@
+##### 008c4f50 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 008e46d0 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 0095cb80 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 00976fc0 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 00977060 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 0097c760 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 0097c830 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 0097c920 renames: ?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z=?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=1
+tables H=1 N=1
+##### 007a1870 renames: ?DestroyObject@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z=?DeleteData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z
+sections head 22 new 22
+ALL_EQ text_sections_equal=20
+tables H=0 N=0
+##### 00413120 renames: ?Init@CInitBaseClass@@QAE_NXZ=?Initialise@CInitBaseClass@@IAE_NXZ
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 0048a210 renames: ?Init@CInitBaseClass@@QAE_NXZ=?Initialise@CInitBaseClass@@IAE_NXZ
+sections head 11 new 11
+ALL_EQ text_sections_equal=9
+tables H=1 N=1
+##### 00a6c170 renames: ?Init@CInitBaseClass@@QAE_NXZ=?Initialise@CInitBaseClass@@IAE_NXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00d87cb0 renames: ?PlayCutScene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z=?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z
+sections head 28 new 28
+ALL_EQ text_sections_equal=9
+tables H=2 N=2

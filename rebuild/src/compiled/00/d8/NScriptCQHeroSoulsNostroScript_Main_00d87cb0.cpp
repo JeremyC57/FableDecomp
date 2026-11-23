@@ -75,7 +75,7 @@ public:
     unsigned char         _pad_0x48[5];
     bool                  QuestStartScreenShown;         // +0x4D
     void Main();
-    void PlayCutScene(CCharString name);                 // 0x00D89AD0
+    void PlayCutscene(CCharString name);                 // 0x00D89AD0; NF303: PDB name, was PlayCutScene
     void DealWithCreatureGeneration();                   // 0x00D89710
     void WatchForNostroHit();                            // 0x00D88260
 };
@@ -98,7 +98,7 @@ void NScript::CQ_HeroSoulsNostroScript::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    PlayCutScene("CS_HEROSOULS_SOUL3_NOSTRO_START");
+    PlayCutscene("CS_HEROSOULS_SOUL3_NOSTRO_START");
     Game->GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_HERO_SOULS_NOSTRO", Game->GetActiveQuestName(), true);
     Game->KickOffQuestStartScreen(Game->GetActiveQuestName(), true, false);
     QuestStartScreenShown = true;
@@ -114,7 +114,7 @@ void NScript::CQ_HeroSoulsNostroScript::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->Pause(1.0f);
-    PlayCutScene("CS_HEROSOULS_SOUL3_NOSTRO_SUCCESS");
+    PlayCutscene("CS_HEROSOULS_SOUL3_NOSTRO_SUCCESS");
     AddLogbookStoryEntryString("TEXT_QST_LOG_STORY_PLATINUM_370");
     Game->SetQuestAsCompleted(Game->GetActiveQuestName(), true, true, true);
     Game->FadeScreenIn();

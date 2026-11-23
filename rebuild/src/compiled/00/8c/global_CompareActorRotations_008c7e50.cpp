@@ -47,7 +47,7 @@ public:
 class CThingCreatureBase : public CThing {
 };
 
-float __stdcall AngleDifference(float from, float to);  // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float from, float to);  // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
 static const float INV_TWO_PI = 0.15915494f;            // 0x01237F08
 static const float MAX_FACING_DIFFERENCE = 0.19444445f; // 70 / 360, 0x012817F0
@@ -71,7 +71,7 @@ bool __fastcall CompareActorRotations(CThingCreatureBase* creature, CThing* targ
     CPhysicsBody* body = creature->GetBody();
     float angle = (float)atan2(to.X - from.X, to.Y - from.Y) * INV_TWO_PI;
     angle = WrapTurnFraction(angle);
-    float difference = AngleDifference(body->GetFacingAngleXY(), angle);
+    float difference = GFGetSignedAngleDifference(body->GetFacingAngleXY(), angle);
     if (fabsf(difference) > MAX_FACING_DIFFERENCE)
         return true;
     return false;

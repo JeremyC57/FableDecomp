@@ -1,0 +1,3 @@
+H_00894490.obj .drectve: /DEFAULTLIB:"libcp" /alternatename:??$GetPFirstThing@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z=?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z /DEFAULTLIB:"LIBC" /DEFAULTLIB:"OLDNAMES" 
+H_00731e20.obj .drectve: /DEFAULTLIB:"LIBC" /DEFAULTLIB:"OLDNAMES" 
+N_00731e20.obj .drectve: /alternatename:??$GetSubDef@VCSpotLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z=?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z /DEFAULTLIB:"LIBC" /DEFAULTLIB:"OLDNAMES" 

@@ -51,7 +51,7 @@ float __fastcall GFGetAngleXYTo(const C3DVector& from, const C3DVector& to);    
 // NF95 (2026-11-19, q11255): Ego_r.pdb 0x00767040 / FableWin.pdb 0x025B0370 ?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z (its landed self row
 //   and caller 0x00753E90 use it); was the stand-in AngleYZBetweenPositions.
 float __fastcall GFGetAngleYZTo(const C3DVector& from, const C3DVector& to);   // 0x00754E70
-float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);                                      // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
@@ -87,11 +87,11 @@ void CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& a
             (float)fabs(pos.Z - headPos.Z) > DELTA_NOTIONAL_ZERO) {
             float xy = GFGetAngleXYTo(headPos, pos);
             float yz = GFGetAngleYZTo(headPos, pos);
-            angleXY = AngleDifference(bodyXY, xy);
-            angleYZ = AngleDifference(bodyYZ, yz);
+            angleXY = GFGetSignedAngleDifference(bodyXY, xy);
+            angleYZ = GFGetSignedAngleDifference(bodyYZ, yz);
             return;
         }
     }
-    angleXY = AngleDifference(bodyXY, RecoveryAngleToLookAtXY);
-    angleYZ = AngleDifference(bodyYZ, RecoveryAngleToLookAtYZ);
+    angleXY = GFGetSignedAngleDifference(bodyXY, RecoveryAngleToLookAtXY);
+    angleYZ = GFGetSignedAngleDifference(bodyYZ, RecoveryAngleToLookAtYZ);
 }

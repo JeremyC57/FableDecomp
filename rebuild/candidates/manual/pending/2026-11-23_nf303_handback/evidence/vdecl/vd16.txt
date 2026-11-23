@@ -1,0 +1,18 @@
+0069f480 - CCreatureActionSheatheItemToInventory_Initialise_0069f480.cp | L37:CCreatureActionBase:public:virtual:virtual void Initialise(); || L43:CCreatureAction_SheatheItemToInventory:public:virtual:virtual void Initialise();
+0069f910 - CCreatureActionUnsheatheItemFromInventory_Initialise_0069f91 | L41:CCreatureActionBase:public:virtual:virtual void Initialise(); || L45:CCreatureAction_UnsheatheItemFromInventory:public:plain:void Initialise();
+0078b410 - CCreatureActionHeroLoadRangedWeapon_Initialise_0078b410.cpp | L144:CCreatureActionBase:public:plain:void Initialise(); || L150:CCreatureAction_HeroLoadRangedWeapon:public:plain:void Initialise();
+00842140 - CCreatureActionUseWallMount_Initialise_00842140.cpp | NODECL
+00842f70 - CCreatureActionGiveItemToThing_Initialise_00842f70.cpp | L54:CCreatureActionBase:public:virtual:virtual void Initialise(); || L66:CCreatureAction_GiveItemToThing:public:virtual:virtual void Initialise();
+00845350 - CCreatureActionShowTrophy_Initialise_00845350.cpp | L144:CCreatureActionBase:public:virtual:virtual void Initialise(); || L156:CCreatureAction_ShowTrophy:public:virtual:virtual void Initialise();
+00845b10 INC CCreatureActionTavernGameMasterInteraction_Initialise_00845b | L112:CCreatureActionBase:public:virtual:virtual void Initialise(); || L136:CCreatureAction_TavernGameMasterInteraction:public:virtual:public:virtual void Initialise();
+00847ac0 INC CCreatureActionDrink_Initialise_00847ac0.cpp | L100:__declspec:public:virtual:virtual void Initialise(); || L207:CCreatureAction_Drink:public:virtual:virtual void Initialise();
+00847df0 INC CCreatureActionUseLamp_Initialise_00847df0.cpp | NODECL
+008545f0 - CCreatureActionSpiritAttack_Initialise_008545f0.cpp | L15:CCreatureAction_SpiritAttack_Methods:public:virtual:virtual void Initialise();
+008546a0 - CCreatureActionSpiritReturnToHero_Initialise_008546a0.cpp | NODECL
+00854810 - CCreatureActionSpiritHitResponse_Initialise_00854810.cpp | L45:CCreatureActionBase:public:virtual:virtual void Initialise(); || L53:CCreatureAction_SpiritHitResponse:public:virtual:virtual void Initialise();
+00857520 - CCombatActionBase_Initialise_00857520.cpp | L43:CCreatureActionBase:public:virtual:virtual void Initialise(); || L57:CCombatActionBase:public:virtual:virtual void Initialise();
+0087f340 - CCreatureActionStabbedToDeath_Initialise_0087f340.cpp | L58:CCreatureActionBase:public:virtual:virtual void Initialise(); || L64:CCreatureAction_StabbedToDeath:public:virtual:virtual void Initialise();
+008d55a0 - CCreatureActionFireMissileWeapon_Initialise_008d55a0.cpp | NODECL
+008ed770 - CCreatureActionDie_Initialise_008ed770.cpp | L10:-:public:virtual:class CCreatureActionBase:public CBaseObject{public:CIntelligentPointe || L11:-:public:virtual:class CCreatureAction_Die:public CCreatureActionBase{public:virtual vo
+008ed850 - CCreatureActionBeDazed_Initialise_008ed850.cpp | L42:CCreatureActionBase:public:virtual:virtual void Initialise(); || L49:CCreatureAction_BeDazed:public:virtual:virtual void Initialise();
+008eda10 - CCreatureActionBeStunned_Initialise_008eda10.cpp | L41:CCreatureActionBase:public:virtual:virtual void Initialise(); || L48:CCreatureAction_BeStunned:public:virtual:virtual void Initialise();

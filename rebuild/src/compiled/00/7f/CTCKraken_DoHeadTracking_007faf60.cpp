@@ -68,7 +68,7 @@ class CKrakenDef { public:
     float TargetingTrackSpeed;                          // +0x5c
 };
 
-float __stdcall AngleDifference(float a, float b);      // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);      // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
 FABLE_FORCEINLINE float WrapAngle(float angle)
 {
@@ -120,7 +120,7 @@ void CTCKraken::DoHeadTracking()
         const C3DVector& targetPos = target->GetPos();
         float angle = WrapAngle((float)atan2(targetPos.X - ownPos.X, targetPos.Y - ownPos.Y) * 0.15915494f);
         float facing = ParentThing->PhysicsTC->GetFacingAngleXY();
-        ParentThing->PhysicsTC->SetFacingAngleXY(WrapAngle(facing + Clamp(AngleDifference(facing, angle),
+        ParentThing->PhysicsTC->SetFacingAngleXY(WrapAngle(facing + Clamp(GFGetSignedAngleDifference(facing, angle),
                                                                           -(speed * (1.0f / 360.0f)),
                                                                           speed * (1.0f / 360.0f))));
     }

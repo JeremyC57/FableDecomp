@@ -238,7 +238,7 @@ line	tag	address	correct_symbol	status	other_spellings
 240	525	00705cc0	?GetCarrySlotActive@CTCCarryable@@QBEJXZ	partial	?GetCarrySlot@CTCCarriedObject@@QBEJXZ
 241	525	0070b460	?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	partial	?GetAnimateThing@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ || ?GetAnimation@CTCAnimation@@QAEPAVCAnimateThing@@XZ || ?GetAnimation@CTCAnimationComplex@@QAEPAVCAnimateThing@@XZ || ?GetAnimation@CTCBaseAny@@QAEAAVCAnimateThing@@XZ || ?GetControlFlags@CTCInterface5A@@QAEPAUCControlFlags@@XZ || ?GetPCurrentAnim@CTCAnim@@QAEPAUCAnimInstance@@XZ
 242	525	0070d8c0	?RemoveCombinationAnimsOfType@CAnimateThing@@QAEXJ@Z	partial	?DisableFlag@CControlFlags@@QAEXJ@Z
-243	525	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	partial	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z || SetCombatAnimation
+243	525	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	partial	SetCombatAnimation
 244	525	0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z	partial	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z || ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCThing@@JJPAVCCreatureActionBase@@@Z
 245	525	005cc091	??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ	partial	??1CAggregate_005cc091@ || ??1CBase_005cc091@@QAE@XZ || ??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ
 246	525	006644f0	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z	partial	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z
@@ -252,7 +252,7 @@ line	tag	address	correct_symbol	status	other_spellings
 254	526	00669580	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	partial	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z || ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
 255	526	008c9a40	?AttachEffectToStaff@?A0x13e2aa0e@@YIPAVCThing@@AAVCThingCreatureBase@@ABVCCharString@@@Z	partial	?AttachEffectToStaff@?A0x || ?AttachEffectToStaff@@YIPAVCThing@@PAVCThingCreatureBase@@ABVCCharString@@@Z
 256	526	008c9fe0	?DoEffect@CCreatureAction_NymphTeleportLimboBase@@IAEXXZ	partial	DoEffect
-257	526	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	partial	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z || SetCombatAnimation
+257	526	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	partial	SetCombatAnimation
 258	526	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	partial	?GetHomeId@HomeObj@@QAEHXZ || ?GetId@Subobject@@QAEHXZ || ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ || ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00810fe0@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00811040@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAVCThing@@XZ 
 259	526	00723630	?EnablePhysics@CTCPhysicsStandard@@UAEX_N@Z	open	SetPhysicsEnabled
 260	526	00929fc0	?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z	partial	?FindDummy@CAIStateGroupApprenticeHeroMethods@@QAEPAVCThingGameObject@@ABVCCharString@@@Z
@@ -1005,7 +1005,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1011	572	0091a6f0	?IsInWorkHours@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IBE_NXZ	closed	
 1012	573	00ee71a0	?HilightGuildTeleporter@CV_TrophyDealerScript@NScript@@QAEXXZ	closed	
 1013	573	00cb7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	partial	?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_BanditCampScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAEEXZ || ?IsActiveThreadTerminating@CScriptBase_Retail@@QAE_NXZ || ?IsActiveThreadTerminating@CV_BordelloScript@NScript@@QAE_NXZ || ?IsActiveThre
-1014	574	0099e960	??9CCharString@@QBE_NPBD@Z	partial	??9CCharStringCmp@@QBE_NPBD@Z || ??9CCharStringMethods@@QBE_NPBD@Z || ?Compare@CCharString@@QBE_NPBD@Z || ?check@Str@@QAEDH@Z
+1014	574	0099e960	??9CCharString@@QBE_NPBD@Z	partial	??9CCharStringCmp@@QBE_NPBD@Z || ??9CCharStringMethods@@QBE_NPBD@Z || ?check@Str@@QAEDH@Z
 1015	574	0099f830	?GFIntToCharString@@YI?AVCCharString@@J@Z	closed	
 1016	574	0099f690	??H@YI?AVCCharString@@PBDABV0@@Z	partial	??H@YI?AVCCharString
 1017	574	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	partial	??4CCharString@@QAEAAV0@ABV0@@Z || ??4CCharString@std@@QAEAAU01@ABU01@@Z || ??4SymbolString@@QAEAAU0@ABU0@@Z
@@ -1757,7 +1757,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1989	c615	0049d9d0	?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ	closed	
 1990	c615	00692940	?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ	partial	?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ || ?GetPWorld@CCreatureAction_TrollWhackGroundBase@@QBEPAVCWorld@@XZ
 1991	c615	00800020	?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ	partial	UpdateActionSpeedMultiplier
-1992	c615	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	partial	?SetName@CCombatActionBase@@QAEXABVCCharString@@@Z || SetCombatAnimation
+1992	c615	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	partial	SetCombatAnimation
 1993	c615	009d49b0	?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z	partial	?GetString@CDefStringTable@NErase005dcf70@@QAE?AUCCharString@2@H@Z
 1994	c615	0073eac0	??0CModeBase@CTCCreatureModeManager@@QAE@AAVCThing@@@Z	partial	??0CModeBase@@QAE@AAVCThing@@@Z || ??0CModeBase@@QAE@PAVCThing@@@Z
 1995	c615	00740820	??0CModeKnockedDown@NCreatureMode@@QAE@AAVCThing@@@Z	open	??0CClass_00740820@@QAE@PAUCThing@@@Z
@@ -2079,7 +2079,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2408	c641	004c7bc0	?CheckUID@CThing@@IBEXXZ	closed	
 2411	c642	00acd960	?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z	closed	
 2412	c642	00661540	?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z	closed	
-2413	c642	00a441e0	?GFGetSignedAngleDifference@@YIMMM@Z	partial	?AngleDifference@@YGMMM@Z
+2413	c642	00a441e0	?GFGetSignedAngleDifference@@YIMMM@Z	closed	
 2414	c642	0049eaf0	?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z	closed	
 2415	c642	013b86a0	?g_pMainGameComponent@@3PAVCMainGameComponent@@A	open	?PMainGameComponent@CMainGameComponent@@1PAV1@A || ?g_pApplication@@3PAUCApplication@@A || ?g_pWorld@@3PAVCWorld@@A
 2416	c642	005fad40	?TeleportHeroToGuildSealRecallLocation@CTCInventoryMap@@QBEXXZ	partial	TeleportHeroToGuildSealRecallLocation
@@ -4864,7 +4864,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6597	land0711i	013bafdc	?JACK_GLOW_START_FRAME@?A0x...@@	open	?JACK_GLOW_START_FRAME@?A0x49475d5d@@3JA || ?JACK_GLOW_START_FRAME@?A0x5d059014@@3JA
 6599	land0711k	008aa8e0	?ShareData@?$CCountedPointer@VCUnprovenPointee_008aa8e0@@@@...	open	?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z || ?ShareData@?$CCountedPointer@VCUnprovenPointee_008aa8e0@@@@QAEXPAVCUnprovenPointee_008aa8e0@@PAVCCPPointerInfo@@@Z
 6609	land0711u	007421c0	?push_front@CModeList@@QAEXABUCModePointer@@@Z	partial	?push_front@
-6610	land0711u	00a441e0	?AngleDifference@@YGMMM@Z	partial	?GFGetSignedAngleDifference@@YIMMM@Z
+6610	land0711u	00a441e0	?AngleDifference@@YGMMM@Z	open	?GFGetSignedAngleDifference@@YIMMM@Z
 6612	land0711v	00e55ce0	?AskForBook@CBS_Teacher@@QAE_NJVCCharString@@@Z	partial	?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z
 6613	land0711w	00527d80	?Find@Sub@@QAEPAUNode@@PAX@Z	partial	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@1@AB_K@Z || ?Find@Map@@QBEPAUNode@@PAX@Z || ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$
 6615	land0711w	00445950	?GetCount@CItemList@@QAEKXZ	open	?GetNumberOfQuickAccessItemButtons@CGamePlayerInterface@@QBEJXZ
@@ -10555,3 +10555,13 @@ line	tag	address	correct_symbol	status	other_spellings
 13392	land1123nf300	00a03bf0	?SetAsKeyboardKeyPressed@CInputEvent@@QAEXW4EInputKey@@N@Z	closed	
 13393	land1123nf302	007c21a0	?Update@CTCShotDefinitionBase@NThingShot@@QAEXXZ	partial	?Update@CTCShotDefinitionBase || ?Update@CTCShotDefinitionBase@@QAEXXZ
 13394	land1123nf302	005bcae3	?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ	partial	?GetHighlightedItem@CTCInventory@@QAEPAUCItem@@XZ || ?GetHighlightedItem@CTCInventoryBase_Retail@@QAEJXZ
+13395	land1123nf303	007a4120	?DeleteData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@SIXPAX@Z	partial	OnDie
+13396	land1123nf303	008e9850	?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@AAEXPBVCThing@@@Z	open	?SetChangeOfWeapon@CModeStrafe@NCreatureMode@@QAEXPAVCThing@@@Z
+13397	land1123nf303	00857e40	??0CCombatActionBase@@IAE@J@Z	partial	??0CBase_00857e40@@QAE@J@Z || ??0CCombatActionBase || ??0CCreatureActionBase@@QAE@J@Z
+13398	land1123nf303	008c4f50	??0CCreatureAction_ScorpionChargeStrike@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	open	??0CCreatureAction_ScorpionChargeStrike@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
+13399	land1123nf303	008e46d0	??0CCreatureAction_ScorpionSummon@@QAE@AAVCThingCreatureBase@@0@Z	closed	
+13400	land1123nf303	00976fc0	??0CCreatureAction_JackShotNear@@QAE@AAVCThingCreatureBase@@0@Z	no_binding	
+13401	land1123nf303	00977060	??0CCreatureAction_JackShotFar@@QAE@AAVCThingCreatureBase@@0@Z	no_binding	
+13402	land1123nf303	0097c760	??0CCreatureAction_ScorpionUnblockableLeftTurnAttack@@QAE@AAVCThingCreatureBase@@0@Z	closed	
+13403	land1123nf303	0097c830	??0CCreatureAction_ScorpionUnblockableRightTurnAttack@@QAE@AAVCThingCreatureBase@@0@Z	closed	
+13404	land1123nf303	0097c920	??0CCreatureAction_ScorpionPrepareTailPlunge@@QAE@AAVCThingCreatureBase@@0@Z	closed	

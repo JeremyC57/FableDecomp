@@ -74,8 +74,8 @@ class CCPPointerInfo { public:                         // counted-pointer info b
 template <class T> class CCountedPointer { public:
     T* Data;                                    // +0
     CCPPointerInfo* Info;                       // +4
-    static void __fastcall DestroyObject(void* object);   // 0x007A4120
-    CCountedPointer(T* data) : Data(data) { Info = data ? new CCPPointerInfo(&DestroyObject, data) : 0; }
+    static void __fastcall DeleteData(void* object);   // 0x007A4120; NF303: PDB name, was DestroyObject
+    CCountedPointer(T* data) : Data(data) { Info = data ? new CCPPointerInfo(&DeleteData, data) : 0; }
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
     ~CCountedPointer()
     {

@@ -1,0 +1,40 @@
+##### 00725060 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 21 new 21
+ALL_EQ text_sections_equal=13
+tables H=0 N=0
+##### 00751820 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00751970 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00751c70 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00752300 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00752930 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=9
+tables H=0 N=0
+##### 007faf60 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 007fb270 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 30 new 30
+ALL_EQ text_sections_equal=23
+tables H=0 N=0
+##### 00856b20 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 12 new 12
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 008c7e50 renames: ?AngleDifference@@YGMMM@Z=?GFGetSignedAngleDifference@@YIMMM@Z
+sections head 9 new 9
+ALL_EQ text_sections_equal=4
+tables H=0 N=0

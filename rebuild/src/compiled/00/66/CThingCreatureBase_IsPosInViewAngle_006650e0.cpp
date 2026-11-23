@@ -41,7 +41,7 @@ class CTCLook { public:
 };
 
 float __fastcall GFGetAngleXYTo(const C3DVector& from, const C3DVector& to);   // 0x00661540
-float __stdcall AngleDifference(float a, float b);                                    // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);                                    // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
 class CThing {
 public:
@@ -73,7 +73,7 @@ bool CThingCreatureBase::IsPosInViewAngle(const C3DVector& position, float field
     if (UsingComponents[0x43 >> 5] & (1UL << (0x43 & 31)))
         return GetTC<CTCLook>(0x43)->IsPosInViewRange(position, fieldOfView, checkRange, checkObstruction);
     float facing = PhysicsTC->GetFacingAngleXY();
-    if (fabs(AngleDifference(facing, GFGetAngleXYTo(GetHeadPos(true), position))) * 2.0f <= fieldOfView)
+    if (fabs(GFGetSignedAngleDifference(facing, GFGetAngleXYTo(GetHeadPos(true), position))) * 2.0f <= fieldOfView)
         return true;
     return false;
 }

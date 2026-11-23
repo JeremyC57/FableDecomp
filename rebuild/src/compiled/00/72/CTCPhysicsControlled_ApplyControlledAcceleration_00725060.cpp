@@ -17,7 +17,7 @@
 
 #include "engine/C3DVector.h"
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + (a.Y * b.Y + a.Z * b.Z); }
-float __stdcall AngleDifference(float a, float b);      // 0x00A441E0
+float __fastcall GFGetSignedAngleDifference(float a, float b);      // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 
 FABLE_FORCEINLINE float WrapAngle(float angle)
 {
@@ -52,7 +52,7 @@ void CTCPhysicsControlled::ApplyControlledAcceleration(const C3DVector& accelera
     } else {
         float accelerationAngle = WrapAngle((float)atan2(acceleration.X, acceleration.Y) * 0.15915494f);
         float velocityAngle = WrapAngle((float)atan2(velocity.X, velocity.Y) * 0.15915494f);
-        float turn = AngleDifference(velocityAngle, accelerationAngle);
+        float turn = GFGetSignedAngleDifference(velocityAngle, accelerationAngle);
         if (turn < -0.007f)
             turn = -0.007f;
         else if (turn > 0.007f)

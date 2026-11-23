@@ -108,7 +108,7 @@ struct CModeStrafe : CTCCreatureModeManager::CModeBase {               // vtable
     bool               ForceAnimNoBlendIn;     // +0x4c
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectileAim;   // +0x50
     void SetUpCombinationAnims();              // 0x008E9190
-    void ClearStrafingCombinationAnims(bool force);   // 0x008E9710
+    private: void ClearStrafingCombinationAnims(bool force); public:   // 0x008E9710
     void SetChangeOfWeapon(CThing* weapon);
 };
 

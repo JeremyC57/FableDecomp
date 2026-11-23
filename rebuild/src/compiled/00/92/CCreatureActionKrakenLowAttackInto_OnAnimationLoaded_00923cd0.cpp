@@ -7,7 +7,7 @@ class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
-    virtual void OnAnimationLoaded();       // 0x00859EF0 (retail slot 68; the slot is immaterial to this direct call)
+    protected: virtual void OnAnimationLoaded(); public:       // 0x00859EF0 (retail slot 68; the slot is immaterial to this direct call)
     unsigned char _pad04[0x0c];             // +0x04
     long TotalTime;                         // +0x10
     long ActionTime;                        // +0x14
