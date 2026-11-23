@@ -155,3 +155,15 @@ acceptance falls well below the local route's 86% or the 180 s compile timeouts 
 
   Ego_r class sizes do not confirm the `GetSizeofClass` constants: Ego_r runs 4-60 bytes larger, being a different build. The 9
   non-virtual pilot-1 rows rest on the flattened label plus a unique PDB member.
+
+## Measurement pass, part 2 (16,200 rows) and the switch landing
+
+- **Measured to date:** 12,966 RELOCATION_MATCH, 2,888 MATCH, 312 NOT_GRADED (retry pending), 21 LIBRARY_MATCH and 10 DIFFER.
+- **None of the 10 DIFFER rows comes from today's work.** All 10 sources are unchanged since the tree import (7633233c4).
+  - 0x0082E3D0, 0x0082E420 and 0x008ED590 already grade DIFFER in the committed gate.
+  - 0x0056C840 was RELOCATION_MATCH in the gate but grades DIFFER(30v28) on this lane.
+  - 0x00647308 and five `IsThingAlive` copies grade DIFFER on this lane and are not in the gate. The `IsThingAlive` copies are
+    0x007FB120, 0x008D04B0, 0x0093A890, 0x009445C0 and 0x00944CE0, all DIFFER(40v39) with one shape, so they likely share one root cause.
+  - They are listed for a grade-repair pass, not naming work.
+- **Flatten switch 1 landed 51 rows** (`batches/2026-11-23_landing_flatten_switch1/`). Together with pilot 1, the script has landed 130
+  rows today.
