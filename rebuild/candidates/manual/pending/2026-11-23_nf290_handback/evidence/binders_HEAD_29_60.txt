@@ -1,0 +1,183 @@
+#29 00a56c80 ?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z
+   00a56c80(self) - DEF=OK:?IntersectsWith@C2DLineF@@QBE_NABV1@AAVC2DVector@@M@Z
+   00760020 NOOBJ
+   00a39fe0 WRONG ?IntersectsWith@C2DLineF@@QAE_NABV1@PAVC2DVector@@M@Z x4
+   00a57ad0 WRONG ?IntersectsWith@C2DLineF@@QAE_NPBV1@PAVC2DVector@@M@Z x4
+   00a57bd0 WRONG ?IntersectsWith@C2DLineF@@QAE_NPBV1@PAVC2DVector@@M@Z x4
+#30 00a4d920 ?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+   00a4d920(self) - DEF=OK:?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXAAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+   00aa0c50 WRONG ?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z x1
+   00aa0dc0 WRONG ?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z x1
+#31 00a25970 ??1C3DAnimationInfo@@UAE@XZ
+   00a25970(self) - DEF=OK:??1C3DAnimationInfo@@UAE@XZ
+   00a26d40 WRONG ??1C3DAnimationInfo@@QAE@XZ x1
+   00a2bd70 WRONG ?Dtor@C3DAnimationInfo@@QAEXXZ x1
+#32 00a269c0 ?GetAnimationStats@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ
+   00a269c0(self) NOOBJ
+   005db6b0 NOOBJ
+   006f90d0 NOOBJ
+   006f9130 OK ?GetAnimationStats@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ x1
+   006f91e0 NOOBJ
+   006f9240 NOOBJ
+   006f9790 NOOBJ
+   006f9820 OK ?GetAnimationStats@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ x1
+   008575c0 NOOBJ
+   00867b40 NOOBJ
+   00867d20 NOOBJ
+   00a36df0 WRONG ?GetAnimationStats@C3DAnimationInfo@@QAE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ x1
+#33 00a4eae0 ?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z
+   00a4eae0(self) - DEF=OK:?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z
+   006f9130 OK ?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z x1
+   006f9820 OK ?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z x1
+   00a36df0 WRONG ?GetEventTime@C3DAnimationStats@@QBEMJ@Z x1
+#34 00a3be70 ??0C3DAnimationTransitionState@@QAE@ABV?$CIVCountedPointer@VC3DAnimationStateBase@@@@0M@Z
+   00a3be70(self) NOOBJ
+   0070c900 NOOBJ
+   0070cad0 NOOBJ
+   0070cc70 NOOBJ
+#35 00a8f770 ?ConvertToVBFormatRepeatingMesh@C3DPrimitive2@@AAEXPAVCTVertexMatrixIndexedNormTex1@@@Z
+   00a8f770(self) - DEF=OK:?ConvertToVBFormatRepeatingMesh@C3DPrimitive2@@AAEXPAVCTVertexMatrixIndexedNormTex1@@@Z
+   00a92740 WRONG ?ConvertToVBFormatRepeatingMesh@C3DPrimitive2@@QAEXPAX@Z x1
+#36 008fcff0 ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ
+   008fcff0(self) - DEF=
+   00912700 OK ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ x3
+   00912840 OK ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ x2
+   0091d930 WRONG ?PeekWorldMap@CAIStateGroupBase@@QAEPAVCWorldMap@@XZ x1
+   0091ddd0 OK ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ x1
+   00920a00 OK ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ x1
+   00929650 OK ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ x2
+   0092fab0 OK ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ x2
+   0093d720 WRONG ?PeekWorldMap@CAIStateGroupBase@@QAEPAVCWorldMap@@XZ x2
+#37 00980bd0 ?AIAction_SpeakToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ3@Z
+   00980bd0(self) NOOBJ
+   0092fab0 OK ?AIAction_SpeakToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ3@Z x1
+   009352c0 WRONG ?AIAction_SpeakToTarget@CAIStateGroupBase@@QAEJJUCIntelligentPointerCreature@@UCIntelligentPointerConstThing@@K_NJ2@Z x1
+   009812c0 WRONG ?AIAction_SpeakToTarget@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerCreature@@UCIntelligentPointerThing@@K_NJ3@Z x1
+   00981350 OK ?AIAction_SpeakToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ3@Z x1
+#38 009812c0 ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ@Z
+   009812c0(self) - DEF=WRONG:?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerCreature@@UCIntelligentPointerThing@@K_NJ@Z
+   00929820 WRONG ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@QAEJJUCIntelligentPointerCreature@@UCIntelligentPointerConstThing@@K_NJ@Z x1
+   0092fab0 OK ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ@Z x1
+   0094bb20 WRONG ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@QAEJJV?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ@Z x1
+   0094c050 OK ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$CIntelligentPointer@$$CBVCThing@@@@K_NJ@Z x3
+   0094ce60 WRONG ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerCreature@@UCIntelligentPointerConstThing@@K_NJ@Z x1
+   009857d0 WRONG ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerCreature@@UCIntelligentPointerConstThing@@K_NJ@Z x1
+   009859a0 WRONG ?AIAction_SpeakAISpeechToTarget@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerCreature@@UCIntelligentPointerConstThing@@K_NJ@Z x1
+#39 0092edc0 ?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@ABEPBVCMessageEvent@@XZ
+   0092edc0(self) - DEF=OK:?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@ABEPBVCMessageEvent@@XZ
+   00930a70 WRONG ?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@QAEPAVCMessageEvent@@XZ x1
+#40 0092fab0 ?TestOrDoInteraction@CAIStateGroup_MinionReactToPlayerInteraction@@AAE_N_NPAVCThingPlayerCreature@@@Z
+   0092fab0(self) - DEF=OK:?TestOrDoInteraction@CAIStateGroup_MinionReactToPlayerInteraction@@AAE_N_NPAVCThingPlayerCreature@@@Z
+   00930a70 WRONG ?TestOrDoInteraction@CAIStateGroup_MinionReactToPlayerInteraction@@QAE_N_NPAVCThing@@@Z x1
+#41 00915b60 ?PlaceGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z
+   00915b60(self) - DEF=OK:?PlaceGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z
+   00917130 WRONG ?PlaceGoods@CAIStateGroup_MoveGoodsBase@@QAE_NV?$CIntelligentPointer@VCThing@@@@MU?$vector@PBVCCharString@@@@ABVCAIFilterBase@CAIStateGroupBase@@PAVCThing@@@Z x1
+#42 0095d4c0 ?GetFirePointList@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+   0095d4c0(self) NOOBJ
+   0095d590 NOOBJ
+#43 009652c0 ?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@ABEPBVCThing@@XZ
+   009652c0(self) - DEF=OK:?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@ABEPBVCThing@@XZ
+   00965320 WRONG ?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@QAEPAVCThing@@XZ x1
+#44 00968230 ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z
+   00968230(self) - DEF=WRONG:?WalkToPoint@CAIStateGroupTavernKeeperMethods@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z
+   009689c0 WRONG ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@@Z x1
+   009692c0 OK ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z x1
+   00969470 WRONG ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@@Z x1
+#45 009387c0 ?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@IAE_NW4EMovementType@@@Z
+   009387c0(self) - DEF=WRONG:?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@QAE_NJ@Z
+   0090f740 OK ?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@IAE_NW4EMovementType@@@Z x1
+   00945bd0 OK ?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@IAE_NW4EMovementType@@@Z x1
+   0094b740 WRONG ?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@QAE_NJ@Z x1
+#46 00938a10 ?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ
+   00938a10(self) - DEF=OK:?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ
+   0090fdb0 WRONG ?GetUpFromSeat@CAIStateGroup_UsesSeat@@QAEXXZ x1
+#47 0054dae0 ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z
+   0054dae0(self) - DEF=WRONG:??0CActionParamString@@QAE@ABVCWideString@@@Z
+   0056ad40 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0056f615 WRONG ??0CActionParamString@NUISystem@@QAE@ABVCWideString@@@Z x1
+   00582ace OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0058315b OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0058a0c7 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0058e208 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0058f9bc OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   00596cce OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   00597006 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   00598463 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0059cb90 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0059d270 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0059ed42 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0059f51e OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   0059fee3 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   005a6ca1 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   005b76d1 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   005b8743 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   005c3e91 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+   005c47d5 OK ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z x1
+#48 00712340 ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z
+   00712340(self) - DEF=OK:?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z
+   00713010 WRONG ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@QBEXABUCCameraTag@CSubtitledMessage@2@AAPBVCThing@@AAVC3DVector@@12@Z x1
+   00715a70 OK ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z x1
+#49 0070d030 ?Update@CAnimSet@@AAEXABVCAnimateThingUpdate@@@Z
+   0070d030(self) NOOBJ
+   0070d390 NOOBJ
+   0070e8b0 NOOBJ
+#50 0070d8e0 ?RemoveCombinationAnim@CAnimateThing@@QAEXPBVCAnimSet@@@Z
+   0070d8e0(self) NOOBJ
+   00728ff0 NOOBJ
+   00729200 NOOBJ
+#51 005dbfd0 ?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z
+   005dbfd0(self) - DEF=OK:?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z
+   00754050 OK ?GetRotationInAnimation@CAnimationEntry@@QBEXAAM@Z x1
+   00856b20 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x1
+   0085b8f0 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x1
+   0087c660 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x2
+   0087c6b0 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x1
+   0087da90 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x2
+   0087dc30 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x2
+   0087dca0 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x2
+   0087de50 NOOBJ
+   0087dfa0 WRONG ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z x4
+   0087e250 NOOBJ
+   0087e450 NOOBJ
+#52 005dd090 ?TransferBinaryIn@CAnimationEntry@@QAEXAAVCMemoryDataInputStream@@@Z
+   005dd090(self) - DEF=OK:?TransferBinaryIn@CAnimationEntry@@QAEXAAVCMemoryDataInputStream@@@Z
+   005dd440 -
+#53 009cc1d0 ?GetEntrySymbol@CBankFile@@QBE?AVCCharString@@K@Z
+   009cc1d0(self) NOOBJ
+   004cea60 NOOBJ
+   00692c80 NOOBJ
+   0075e4c0 NOOBJ
+   009cec60 NOOBJ
+   00a24520 NOOBJ
+   00a39c40 NOOBJ
+   00a5d510 NOOBJ
+   00a5d620 NOOBJ
+   00bf9150 NOOBJ
+#54 009cc530 ?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z
+   009cc530(self) - DEF=WRONG:?CreateSymbolMap@CBankFile@@QAEXAAVCSymbolMap@@_N@Z
+   009e2e30 OK ?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z x2
+   00ae8980 WRONG ?CreateSymbolMap@CBankFile@@QAEXPAVCSymbolMap@@_N@Z x1
+#55 009d5d30 ??0CBankFileAsyncData@@AAE@PAXKAAVCBankFileAsync@@@Z
+   009d5d30(self) - DEF=OK:??0CBankFileAsyncData@@AAE@PAXKAAVCBankFileAsync@@@Z
+   009d6060 WRONG ??0CBankFileAsyncData@@QAE@PAXKAAVCBankFileAsync@@@Z x1
+#56 009d5df0 ??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z
+   009d5df0(self) - DEF=OK:??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z
+   009d6100 WRONG ??0CBankFileAsyncData@@QAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z x1
+#57 00824c50 ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatBrush@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatBrush@@@@PBX@Z
+   00824c50(self) - DEF=OK:?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatBrush@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatBrush@@@@PBX@Z
+   00825590 WRONG ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatBrush@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatBrush@@@@PAX@Z x1
+#58 00824d30 ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatHeightMapCell1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell1@@@@PBX@Z
+   00824d30(self) - DEF=OK:?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatHeightMapCell1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell1@@@@PBX@Z
+   00825700 WRONG ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatHeightMapCell1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell1@@@@PAX@Z x1
+#59 0067c6d0 ??0CBlurredAttitudesDef@@QAE@ABV0@@Z
+   0067c6d0(self) - DEF=OK:??0CBlurredAttitudesDef@@QAE@ABV0@@Z
+   0067cb20 OK ??0CBlurredAttitudesDef@@QAE@ABV0@@Z x1
+   0067cc50 WRONG ??0CBlurredAttitudesDef@@QAE@ABU0@@Z x1
+   0067d450 OK ??0CBlurredAttitudesDef@@QAE@ABV0@@Z x1
+   0067d5c0 OK ??0CBlurredAttitudesDef@@QAE@ABV0@@Z x1
+#60 0093e760 ?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z
+   0093e760(self) - DEF=WRONG:?SetAsLookAtThing@CBrainOutput@@QAEXPBVCThing@@J@Z
+   00955620 OK ?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z x1
+   0097d6f0 OK ?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z x1
+   0097e890 WRONG ?SetAsLookAtThing@CBrainOutput@@QAEXPBVCThing@@J@Z x1
+   0097ec00 WRONG ?SetAsLookAtThing@CBrainOutput@@QAEXPBVCThing@@J@Z x1

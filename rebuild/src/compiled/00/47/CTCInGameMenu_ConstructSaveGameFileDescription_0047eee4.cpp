@@ -94,7 +94,7 @@ FABLE_FORCEINLINE CDataBank* GetTextBank() { return CMainGameComponent::Get()->T
 class CUserProfileManager { public:
     long        _pad00[2];
     CWideString ProfileName;                            // +0x08
-    CWideString GetPathNameFromFileName(const CWideString& name, bool full);   // 0x00408120
+    CWideString GetPathNameFromFileName(const CWideString& name, bool full) const;   // 0x00408120
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
 };
 class CThing { public:

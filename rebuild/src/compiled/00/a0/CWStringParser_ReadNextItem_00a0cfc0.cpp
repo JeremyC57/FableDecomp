@@ -26,7 +26,7 @@ struct CWStringParser {                            // Ego_r.pdb, 16 bytes
     wchar16*      String;                          // +0x04
     unsigned long StringPos;                       // +0x08
     unsigned long Line;                            // +0x0c
-    bool ReadNextNumber(CWParsedItem* item);       // 0x00A0CDD0
+    private: bool ReadNextNumber(CWParsedItem* item); public:       // 0x00A0CDD0
     bool ReadNextString(CWParsedItem* item);       // 0x00A0CE90
     bool ReadNextSymbol(CWParsedItem* item);
     bool ReadNextItem(CWParsedItem* item);

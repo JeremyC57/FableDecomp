@@ -22,7 +22,7 @@ extern "C" double __cdecl fabs(double x);
 
 class CAnimationEntry {
 public:
-    void GetRotationInAnimation(float* rotation) const; // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const; // 0x005DBFD0
 };
 
 namespace {
@@ -32,8 +32,8 @@ struct CTurningAnimCompare {                            // Ego_r.pdb, 4 bytes
     {
         float rotation_a;
         float rotation_b;
-        a->GetRotationInAnimation(&rotation_a);
-        a->GetRotationInAnimation(&rotation_b);
+        a->GetRotationInAnimation(rotation_a);
+        a->GetRotationInAnimation(rotation_b);
         float delta_a = (float)fabs(RotationAngle - rotation_a);
         float delta_b = (float)fabs(RotationAngle - rotation_b);
         return delta_a < delta_b;

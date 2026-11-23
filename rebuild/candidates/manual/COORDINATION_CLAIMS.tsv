@@ -359,3 +359,4 @@ date	account	item	kind	status	note
 2026-11-23	A	tracker batch T1-access + T2 continuation 4	naming	done	agent NF288 landed 70 rows (batches/2026-11-23_landing_nf288); continuation NF290 (+ T1 signature)
 2026-11-23	A	tracker batch T1 standin_alias continuation 4	naming	done	agent NF289 landed 4 rows + 1 header opt-in + 13 table lines (batches/2026-11-23_landing_nf289); continuation NF291
 2026-11-23	A	tracker batch T1 standin_alias, last entries	naming	done	agent NF291 landed 1 row + 1 header opt-in + 3 table lines (batches/2026-11-23_landing_nf291); 107 ports queued T3
+2026-11-23	A	tracker batches T1-access tail + T1 signature 1	naming	done	agent NF290 landed 58 rows (batches/2026-11-23_landing_nf290); continuation NF293

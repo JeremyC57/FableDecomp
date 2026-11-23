@@ -49,9 +49,9 @@ class CWorld { public:
     bool          AutoSaveLocked;                       // +0x100
     bool          SerialisingAboutToLoadHeroState;      // +0x101
     CWideString GetPathNameForFileName(const CWideString& fileName) const;   // 0x0049EF50
-    bool IsHeroStateFileValid(const CWideString& name) const;   // 0x0049D4E0
-    bool LoadGameStateInternal(const CWideString& path, bool b);   // 0x004A21F0
-    bool LoadHeroStateInternal(const CWideString& name);   // 0x004A2D70
+    protected: bool IsHeroStateFileValid(const CWideString& name) const; public:   // 0x0049D4E0
+    protected: bool LoadGameStateInternal(const CWideString& path, bool b); public:   // 0x004A21F0
+    protected: bool LoadHeroStateInternal(const CWideString& name); public:   // 0x004A2D70
     bool LoadGameState(const CWideString& name, bool loadNow);
 };
 

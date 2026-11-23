@@ -164,7 +164,7 @@ class CBrainOutput { public:
     C3DVector               LookAtPos;          // +0x34
     CBaseIntelligentPointer LookAtThing;        // +0x40
     CBrainOutput();                             // 0x00835620
-    void SetAsLookAtThing(const CThing* thing, long lookFlags);   // 0x0093E760
+    void SetAsLookAtThing(const CThing& thing, long lookFlags);   // 0x0093E760
     void SetAsMoveToPos(const C3DVector& pos, const CNavigationInput& input)
     {
         Types |= 1;
@@ -234,7 +234,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPosProximity(EAIActionRepeat r
                 CBrainOutput brainOutput;
                 brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->PeekPos(), input);
                 if (faceTarget && !IsDead(faceTarget))
-                    brainOutput.SetAsLookAtThing(faceTarget, 0x97);
+                    brainOutput.SetAsLookAtThing(*faceTarget, 0x97);
                 else if (lookAround) {
                     brainOutput.Types |= 0x10;
                     brainOutput.LookFlags = 0x51;

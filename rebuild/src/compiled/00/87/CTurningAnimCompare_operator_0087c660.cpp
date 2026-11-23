@@ -17,7 +17,7 @@ extern "C" double __cdecl fabs(double x);
 
 class CAnimationEntry {
 public:
-    void GetRotationInAnimation(float* rotation) const; // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const; // 0x005DBFD0
 };
 
 namespace {
@@ -31,8 +31,8 @@ bool CTurningAnimCompare::operator()(const CAnimationEntry* a, const CAnimationE
 {
     float rotation_a;
     float rotation_b;
-    a->GetRotationInAnimation(&rotation_a);
-    a->GetRotationInAnimation(&rotation_b);
+    a->GetRotationInAnimation(rotation_a);
+    a->GetRotationInAnimation(rotation_b);
     float delta_a = (float)fabs(RotationAngle - rotation_a);
     float delta_b = (float)fabs(RotationAngle - rotation_b);
     if (delta_a < delta_b)

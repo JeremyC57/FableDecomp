@@ -38,7 +38,7 @@ class CThingMap : public CBaseClassNonCopyable { public:
     C2DBoxI                                       Area;              // +0x20
     long                                          NoThings;          // +0x30
     CThingMap(CThingMapManager* manager, const C2DBoxI& area);
-    void InitMapwhoLevels();                       // 0x0085D180
+    protected: void InitMapwhoLevels(); public:                       // 0x0085D180
     void Clear();                                  // 0x0085CEC0
 };
 

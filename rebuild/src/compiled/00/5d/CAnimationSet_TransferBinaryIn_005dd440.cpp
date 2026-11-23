@@ -79,7 +79,7 @@ class CAnimationEntry { public:                   // 16 bytes
     CDefString AnimName;                   // +0x04
     CDefString GroupName;                  // +0x08
     CIVCountedPointerAnimComponentMap Components;   // +0x0c
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x005DD090
+    void TransferBinaryIn(CMemoryDataInputStream& stream);   // 0x005DD090
 };
 struct CAnimPair {                         // pair<unsigned long, CAnimationEntry>, 20 bytes
     unsigned long first;
@@ -124,7 +124,7 @@ void CAnimationSet::TransferBinaryIn(CMemoryDataInputStream* stream)
     Anims.resize(count, CAnimPair());
     for (unsigned long i = 0; i < count; ++i) {
         Anims._M_start[i].first = PersistRead<unsigned long>(stream);
-        Anims._M_start[i].second.TransferBinaryIn(stream);
+        Anims._M_start[i].second.TransferBinaryIn(*stream);
     }
     PersistTransferBinaryIn(stream, &DefaultFlags);
     PersistTransferBinaryIn(stream, &DefaultTransitionTime);

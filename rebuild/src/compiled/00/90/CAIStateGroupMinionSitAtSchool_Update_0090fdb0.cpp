@@ -122,7 +122,7 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
 protected:
     bool SitInSeat();                           // 0x00938380
 public:
-    void GetUpFromSeat();                       // 0x00938A10
+    protected: bool GetUpFromSeat(); public:    // 0x00938A10
 };
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_UsesSeat {
     virtual void Update();

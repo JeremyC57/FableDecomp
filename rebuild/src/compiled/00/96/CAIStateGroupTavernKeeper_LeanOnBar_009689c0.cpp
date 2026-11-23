@@ -84,7 +84,7 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     C3DVector JugPos;                           // +0x38
     CRightHandedSet JugRHSet;                   // +0x44
     long JugSlot;                               // +0x5c
-    bool WalkToPoint(C3DVector* pos, CRightHandedSet* rh);   // 0x00968230
+    bool WalkToPoint(const C3DVector& pos, const CRightHandedSet& rh);   // 0x00968230
     bool GetPaymentRequest();                   // 0x009683A0
     void FreeBarPoint();                        // 0x00968950
     bool LeanOnBar();
@@ -96,7 +96,7 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
     CTCTavernBar* bar;
     PBar.Get()->GetTC(TCI_TAVERN_BAR, &bar);
     bar->GetRandomBarSlot(*PBrain->PCreature, JugPos, JugRHSet, JugActionPointIndex, JugSlot);
-    if (!WalkToPoint(&JugPos, &JugRHSet)) {
+    if (!WalkToPoint(JugPos, JugRHSet)) {
         FreeBarPoint();
         SetPushableByHero(true);
         Terminate();

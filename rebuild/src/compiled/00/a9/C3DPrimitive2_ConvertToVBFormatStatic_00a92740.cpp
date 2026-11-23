@@ -46,7 +46,7 @@ struct CStaticVertex { unsigned char bytes[32]; };
 struct CArrayStaticVertex { CStaticVertex* first; CStaticVertex* last; CStaticVertex* end; };
 struct CDeviceIndependent { long pad; CArrayStaticVertex Vertices; };
 class CTVertexNormTex1;
-class CTVertexNormTex1Bump;
+class CTVertexNormTex1Bump; class CTVertexMatrixIndexedNormTex1;
 class C3DPrimitive2 { public:
     unsigned char pad0[8];
     long RepeatingMeshReps;
@@ -54,7 +54,7 @@ class C3DPrimitive2 { public:
     CDeviceIndependent* Data;
     unsigned char pad30[0x28];
     unsigned long VertexCount;
-    void ConvertToVBFormatRepeatingMesh(void*); // 0x00A8F770
+    private: void ConvertToVBFormatRepeatingMesh(CTVertexMatrixIndexedNormTex1* dest); public: // 0x00A8F770
 private:
     // NF93 (q11422 / q11423): Ego_r.pdb / FableWin.pdb private ?ConvertToVBFormatStaticBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1Bump@@@Z
     //   (0x00A8F1B0) and ?ConvertToVBFormatStaticNonBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1@@@Z (0x00A8EFA0); were the made-up
@@ -69,7 +69,7 @@ void C3DPrimitive2::ConvertToVBFormatStatic(void* destination, unsigned long sou
                                             unsigned long flags, CVertexCompressionParams* params)
 {
     if (RepeatingMeshReps > 0) {
-        ConvertToVBFormatRepeatingMesh(destination);
+        ConvertToVBFormatRepeatingMesh(static_cast<CTVertexMatrixIndexedNormTex1*>(destination));
         return;
     }
     unsigned long convertedFormat = flags & ~4;

@@ -52,7 +52,7 @@ class CThingGameObject : public CThingPhysical { public:
     bool OnCreate();                                   // 0x00838A40
 };
 class CThingVillage : public CThingGameObject { public:
-    const CEngineGraphic* GetCurrentGraphic();         // 0x0083B520
+    protected: const CEngineGraphic* GetCurrentGraphic() const; public:         // 0x0083B520
     bool OnCreate();
 };
 

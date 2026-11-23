@@ -106,7 +106,7 @@ public:
 struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
     unsigned long NextReactionFrame[5];                 // +0x14
     long ReactionType;                                  // +0x28
-    CMessageEvent* FindPlayerInteractionEvent();        // 0x0092EDC0
+    private: const CMessageEvent* FindPlayerInteractionEvent() const; public:        // 0x0092EDC0
     bool IsTooFarFromThePlayer(CThing* player);         // 0x0092ECD0
     bool IsTooNearToThePlayer(CThing* player);          // 0x0092ED40
     bool TestOrDoInteraction(bool test, CThing* player);   // 0x0092FAB0
@@ -119,7 +119,7 @@ bool CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable()
     CThing* player = ((CPlayer*)((CWorld*)((&GetWorld())))->PeekMyPlayer())->GetPControlledCreature();
     if (!player || (player->m_flags91 & 1))
         return false;
-    CMessageEvent* event = FindPlayerInteractionEvent();
+    const CMessageEvent* event = FindPlayerInteractionEvent();
     if (!event)
         return false;
     CTCVillageMember* member;

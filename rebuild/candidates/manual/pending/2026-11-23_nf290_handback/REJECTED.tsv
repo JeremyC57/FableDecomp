@@ -1,0 +1,4 @@
+idx	address	class	reason
+2	0x006628E0	CThingCreatureBase	T3 (prefix ruling, virtual): the only QAE binder 0x006A98F0 has a vptr-less local CThingCreatureBase model (pad from +0); `virtual` adds a vptr and moves every member
+6	0x006A4E90	CThingPhysical	T3 (prefix ruling, virtual): the self and binders 0x008374F0 / 0x0083D070 model CThing with placeholder slot runs; `virtual` means replacing slot v025 (real slot 25) in each local table model
+31	0x00A25970	C3DAnimationInfo	T3 (prefix ruling, virtual dtor): binder 0x00A26D40 constructs the class (emits its table) from a local model whose dtor is non-virtual; 0x00A2BD70 binds the stand-in ?Dtor@C3DAnimationInfo@@QAEXXZ

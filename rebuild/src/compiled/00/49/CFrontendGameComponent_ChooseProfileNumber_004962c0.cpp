@@ -1,5 +1,5 @@
 // CFrontendGameComponent::ChooseProfileNumber(long) -- load the chosen debug-front-end profile (row 11 = default profile, row 12 = a new profile, else a listed one) and switch mode
-// Leaf: ?ChooseProfileNumber@CFrontendGameComponent@@QAEXJ@Z (Ego_r.pdb AAEXJ @ 0x0049F070, private; modelled public)
+// Leaf: ?ChooseProfileNumber@CFrontendGameComponent@@AAEXJ@Z (Ego_r.pdb AAEXJ @ 0x0049F070 and FableWin.pdb: private)
 // Retail: Fable.exe @ 0x004962C0, 219 bytes, `ret 4`.
 // Body: index = ProfileNamesOffset + number - 1. Row 11: LoadProfile(Get().GetDefaultProfileName() (0x004065D0), true);
 // row 12: LoadProfile(CreateNewProfile() (0x004945B0), false); otherwise if 0 <= index < ProfileNames.size():
@@ -75,7 +75,7 @@ public:
     {
         CUserProfileManager::Get().SetProfileName(name, load);
     }
-    void ChooseProfileNumber(long number);
+    private: void ChooseProfileNumber(long number); public:
 private:
     void GetWorldNames();   // 0x00495890
 };

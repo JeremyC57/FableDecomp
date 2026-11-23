@@ -31,7 +31,7 @@ class CUserProfileManager { public:
 
 class CWorld : public CWorldDonor {
  public:
-    bool SaveGameStateInternal(const CWideString& path, bool b);   // 0x0049F4C0
+    protected: bool SaveGameStateInternal(const CWideString& path, bool b); public:   // 0x0049F4C0
 protected:
     bool SaveHeroStateInternal(const CWideString& name, bool b);
 public:

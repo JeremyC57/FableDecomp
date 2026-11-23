@@ -17,10 +17,10 @@ class CPlayerGui { public: char pad[0xf6]; bool suppressMiniMap; };
 class CWorld { public:
     char pad[0x12f];
     bool bDisplayMiniMapOnRegionLoad;  // +0x12f
-    bool IsDisplayingMiniMapOnRegionLoad();
+    bool IsDisplayingMiniMapOnRegionLoad() const;
 };
 
-bool CWorld::IsDisplayingMiniMapOnRegionLoad()
+bool CWorld::IsDisplayingMiniMapOnRegionLoad() const
 {
     if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().suppressMiniMap)
         return false;

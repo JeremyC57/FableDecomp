@@ -1,0 +1,47 @@
+## HEAD set: H_0056f615.obj H_005dd440.obj H_00825590.obj H_00825700.obj H_0085b8f0.obj H_0090fdb0.obj H_00930a70.obj H_009689c0.obj H_0097e890.obj H_009d6060.obj H_009d6100.obj H_00a39fe0.obj H_00a57ad0.obj H_00aa0c50.obj H_00ae8980.obj H_00856b20.obj H_0087c660.obj H_0087c6b0.obj H_0087da90.obj H_0087dc30.obj H_0087dca0.obj H_0087dfa0.obj H_0093e760.obj H_00969470.obj H_0097ec00.obj H_00a57bd0.obj H_00aa0dc0.obj H_0087de50.obj H_0087e250.obj H_0087e450.obj H_00a92740.obj 0054dae0.obj 0056ad40.obj 00582ace.obj 0058315b.obj 0058a0c7.obj 0058e208.obj 0058f9bc.obj 00596cce.obj 00597006.obj 00598463.obj 0059cb90.obj 0059d270.obj 0059ed42.obj 0059f51e.obj 0059fee3.obj 005a6ca1.obj 005b76d1.obj 005b8743.obj 005c3e91.obj 005c47d5.obj 005dbfd0.obj 005dd090.obj 0067c6d0.obj 0067cb20.obj 0067cc50.obj 0067d450.obj 0067d5c0.obj 006f9130.obj 006f9820.obj 00712340.obj 00713010.obj 00715a70.obj 00754050.obj 00824c50.obj 00824d30.obj 008fcff0.obj 0090f740.obj 00912700.obj 00912840.obj 00915b60.obj 00917130.obj 0091d930.obj 0091ddd0.obj 00920a00.obj 00929650.obj 00929820.obj 0092edc0.obj 0092fab0.obj 009352c0.obj 009387c0.obj 00938a10.obj 0093d720.obj 00945bd0.obj 0094b740.obj 0094bb20.obj 0094c050.obj 0094ce60.obj 00955620.obj 009652c0.obj 00965320.obj 00968230.obj 009692c0.obj 0097d6f0.obj 009812c0.obj 00981350.obj 009857d0.obj 009859a0.obj 009cc530.obj 009d5d30.obj 009d5df0.obj 009e2e30.obj 00a25970.obj 00a26d40.obj 00a2bd70.obj 00a36df0.obj 00a4d920.obj 00a4eae0.obj 00a56c80.obj 00a8f770.obj
+duplicates 2
+  DUP 00715a70.obj ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z in 00712340.obj;
+  DUP 0094c050.obj ??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z in 0094bb20.obj;
+UNRESOLVED 19 ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z
+UNRESOLVED 1 ??0CActionParamString@NUISystem@@QAE@ABVCWideString@@@Z
+UNRESOLVED 1 ??0CBankFileAsyncData@@QAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z
+UNRESOLVED 1 ??0CBankFileAsyncData@@QAE@PAXKAAVCBankFileAsync@@@Z
+UNRESOLVED 2 ??1CBankFileAsyncData@@UAE@XZ
+UNRESOLVED 2 ?CalcLocalBoneTransformationRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z
+UNRESOLVED 2 ?CanRelocateData@CBankFileAsyncData@@UBE_NJ@Z
+UNRESOLVED 1 ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatBrush@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatBrush@@@@PAX@Z
+UNRESOLVED 1 ?ConvertPreviousUnknownVersionUp@?$CBaseSerialise@VCOldFileFormatHeightMapCell1@@$00@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell1@@@@PAX@Z
+UNRESOLVED 1 ?ConvertToVBFormatRepeatingMesh@C3DPrimitive2@@QAEXPAX@Z
+UNRESOLVED 1 ?CreateSymbolMap@CBankFile@@QAEXPAVCSymbolMap@@_N@Z
+UNRESOLVED 1 ?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z
+UNRESOLVED 1 ?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@QAEPAVCMessageEvent@@XZ
+UNRESOLVED 11 ?GetRotationInAnimation@CAnimationEntry@@QBEXPAM@Z
+UNRESOLVED 1 ?GetUpFromSeat@CAIStateGroup_UsesSeat@@QAEXXZ
+UNRESOLVED 1 ?IntersectsWith@C2DLineF@@QAE_NABV1@PAVC2DVector@@M@Z
+UNRESOLVED 2 ?IntersectsWith@C2DLineF@@QAE_NPBV1@PAVC2DVector@@M@Z
+UNRESOLVED 2 ?OnFileReadBegin@CBankFileAsyncData@@UAE_NPAPAXW4EThreadedFilePriority@@@Z
+UNRESOLVED 2 ?OnFileReadCompletion@CBankFileAsyncData@@UAEX_N@Z
+UNRESOLVED 2 ?RelocateData@CBankFileAsyncData@@UAEXJPAX0J@Z
+UNRESOLVED 2 ?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z
+UNRESOLVED 2 ?SetupRead@CBankFileAsyncEntry@@QAEXKPAVCBankFileAsyncData@@KKKW4EThreadedFilePriority@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@CAnimationEntry@@QAEXPAVCMemoryDataInputStream@@@Z
+UNRESOLVED 1 ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z
+UNRESOLVED 2 ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NPAVC3DVector@@PAVCRightHandedSet@@@Z
+UNRESOLVED 2 ?insert_unique@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@_N@2@ABQAVCBankFileAsyncData@@@Z
+UNRESOLVED 1 ?v00@CActionParamString@@UAEXXZ
+## new set: 0056f615.obj 005dd440.obj 00825590.obj 00825700.obj 0085b8f0.obj 0090fdb0.obj 00930a70.obj 009689c0.obj 0097e890.obj 009d6060.obj 009d6100.obj 00a39fe0.obj 00a57ad0.obj 00aa0c50.obj 00ae8980.obj 00856b20.obj 0087c660.obj 0087c6b0.obj 0087da90.obj 0087dc30.obj 0087dca0.obj 0087dfa0.obj 0093e760.obj 00969470.obj 0097ec00.obj 00a57bd0.obj 00aa0dc0.obj 0087de50.obj 0087e250.obj 0087e450.obj 00a92740.obj 0054dae0.obj 0056ad40.obj 00582ace.obj 0058315b.obj 0058a0c7.obj 0058e208.obj 0058f9bc.obj 00596cce.obj 00597006.obj 00598463.obj 0059cb90.obj 0059d270.obj 0059ed42.obj 0059f51e.obj 0059fee3.obj 005a6ca1.obj 005b76d1.obj 005b8743.obj 005c3e91.obj 005c47d5.obj 005dbfd0.obj 005dd090.obj 0067c6d0.obj 0067cb20.obj 0067cc50.obj 0067d450.obj 0067d5c0.obj 006f9130.obj 006f9820.obj 00712340.obj 00713010.obj 00715a70.obj 00754050.obj 00824c50.obj 00824d30.obj 008fcff0.obj 0090f740.obj 00912700.obj 00912840.obj 00915b60.obj 00917130.obj 0091d930.obj 0091ddd0.obj 00920a00.obj 00929650.obj 00929820.obj 0092edc0.obj 0092fab0.obj 009352c0.obj 009387c0.obj 00938a10.obj 0093d720.obj 00945bd0.obj 0094b740.obj 0094bb20.obj 0094c050.obj 0094ce60.obj 00955620.obj 009652c0.obj 00965320.obj 00968230.obj 009692c0.obj 0097d6f0.obj 009812c0.obj 00981350.obj 009857d0.obj 009859a0.obj 009cc530.obj 009d5d30.obj 009d5df0.obj 009e2e30.obj 00a25970.obj 00a26d40.obj 00a2bd70.obj 00a36df0.obj 00a4d920.obj 00a4eae0.obj 00a56c80.obj 00a8f770.obj
+duplicates 2
+  DUP 00715a70.obj ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z in 00712340.obj;
+  DUP 0094c050.obj ??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z in 0094bb20.obj;
+UNRESOLVED 20 ??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z
+UNRESOLVED 2 ??1CBankFileAsyncData@@UAE@XZ
+UNRESOLVED 2 ?CanRelocateData@CBankFileAsyncData@@UBE_NJ@Z
+UNRESOLVED 2 ?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z
+UNRESOLVED 2 ?OnFileReadBegin@CBankFileAsyncData@@UAE_NPAPAXW4EThreadedFilePriority@@@Z
+UNRESOLVED 2 ?OnFileReadCompletion@CBankFileAsyncData@@UAEX_N@Z
+UNRESOLVED 2 ?RelocateData@CBankFileAsyncData@@UAEXJPAX0J@Z
+UNRESOLVED 2 ?SetupRead@CBankFileAsyncEntry@@QAEXKPAVCBankFileAsyncData@@KKKW4EThreadedFilePriority@@@Z
+UNRESOLVED 3 ?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z
+UNRESOLVED 2 ?insert_unique@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@_N@2@ABQAVCBankFileAsyncData@@@Z
+UNRESOLVED 1 ?v00@CActionParamString@@UAEXXZ
+LK_DONE

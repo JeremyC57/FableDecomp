@@ -22,7 +22,7 @@ struct CTCPhysicsBase {                                 // the thing's physics b
 };
 
 class CAnimationEntry { public:
-    void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const;   // 0x005DBFD0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -64,7 +64,7 @@ void CCreatureActionHero180RunningTurn::Initialise()
         sign = 1;
     CCombatActionBase::Initialise();
     float rotation;
-    PAnimEntry->GetRotationInAnimation(&rotation);
+    PAnimEntry->GetRotationInAnimation(rotation);
     float turn = acos(dot) * 0.15915494f;
     float angle = rotation - turn * sign;
     C3DVector forward = PCreature.Get()->GetPhysicsTC()->GetFacing();

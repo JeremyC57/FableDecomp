@@ -1,0 +1,3 @@
+#29 00a56c80 binder 00a57ad0 DEF ?IntersectsWith@C2DLineF@@QAEHPBVC2DBoxI@@@Z
+#29 00a56c80 binder 00a57bd0 DEF ?IntersectsWith@C2DLineF@@QAEHPBVC2DBoxF@@@Z
+#48 00712340 binder 00715a70 DEF ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z

@@ -13,7 +13,7 @@ class CMainGameComponent { public:
     CDisplayEngine* m_pDisplayEngine;              // +0x28
 };
 class CWorld { public:
-    bool IsDisplayingMiniMapOnRegionLoad();        // 0x0049E9F0
+    bool IsDisplayingMiniMapOnRegionLoad() const;        // 0x0049E9F0
 };
 class CFadeInFadeOutBase { public:
     unsigned char Active;                          // +0x00

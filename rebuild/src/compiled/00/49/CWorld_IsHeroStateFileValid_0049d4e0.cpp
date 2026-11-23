@@ -31,7 +31,7 @@ public:
 };
 class CWorld {
 public:
-    bool IsHeroStateFileValid(const CWideString& file_name) const;
+    protected: bool IsHeroStateFileValid(const CWideString& file_name) const; public:
 };
 bool CWorld::IsHeroStateFileValid(const CWideString& file_name) const
 {

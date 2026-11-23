@@ -28,7 +28,7 @@ class C3DAnimation2 { public:
     void* __vftable;
     long _04;
     unsigned long AnimType;                 // +0x08 (C3DAnimationStats)
-    void CalcLocalBoneTransformationRelative(C3DKeyframe* out, unsigned long bone, float time, const C3DMesh2& mesh) const;   // 0x00A4D920
+    void CalcLocalBoneTransformationRelative(C3DKeyframe& out, unsigned long bone, float time, const C3DMesh2& mesh) const;   // 0x00A4D920
     void CalcLocalBoneTransformation(C3DKeyframe* out, unsigned long bone, float time) const;   // 0x00A4D330
     bool IsRelative() const { return (AnimType & 4) != 0; }
 };
@@ -76,7 +76,7 @@ void C3DAnimationManager::CombineBaseAnimationsBoneList(const C3DAnimationStateB
         float time = single.AnimationTime;
         if (animation->IsRelative()) {
             for (unsigned long i = 0; i < count; ++i)
-                animation->CalcLocalBoneTransformationRelative(&out[i], bones[i], time, mesh);
+                animation->CalcLocalBoneTransformationRelative(out[i], bones[i], time, mesh);
         }
         else {
             for (unsigned long i = 0; i < count; ++i)

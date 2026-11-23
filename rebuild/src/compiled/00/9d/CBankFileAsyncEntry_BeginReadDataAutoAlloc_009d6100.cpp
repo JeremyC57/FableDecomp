@@ -45,7 +45,7 @@ class CBankFileAsync;
 class CBankFileAsyncData {
 public:
     unsigned char _body[0x48];
-    CBankFileAsyncData(unsigned long length, unsigned long skipBytes, CMovableResourceMemoryPool* pool, CBankFileAsync& bank);   // 0x009D5DF0
+    private: CBankFileAsyncData(unsigned long length, unsigned long skipBytes, CMovableResourceMemoryPool* pool, CBankFileAsync& bank); friend class CBankFileAsyncEntry; public:   // 0x009D5DF0
 };
 class CBankFileAsync {
 public:

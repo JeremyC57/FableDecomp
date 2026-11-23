@@ -16,7 +16,7 @@ class CSymbolMap { public:
 class CBankFile { public:                                                      // polymorphic root: vptr at +0
     virtual void v00();
     virtual void Open(const CCharString& fileName, long mode);          // slot 1 (+0x04)
-    void CreateSymbolMap(CSymbolMap* symbolMap, bool reportDuplicates);   // 0x009CC530
+    void CreateSymbolMap(CSymbolMap& symbolMap, bool reportDuplicates) const;   // 0x009CC530
 };
 
 namespace NParticleEngine {
@@ -46,5 +46,5 @@ void CParticleEmitterDatabase::OpenBank(const CCharString& fileName)
 {
     EmitterBank.Reset(new NParticleEngine::CParticleDataBank);
     EmitterBank->Open(fileName, 0x48);
-    EmitterBank->CreateSymbolMap(&SymbolMap, false);
+    EmitterBank->CreateSymbolMap(SymbolMap, false);
 }

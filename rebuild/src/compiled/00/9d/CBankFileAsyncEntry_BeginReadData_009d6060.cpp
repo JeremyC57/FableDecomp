@@ -46,7 +46,7 @@ class CBankFileAsync;
 class CBankFileAsyncData {
 public:
     unsigned char _body[0x48];
-    CBankFileAsyncData(void* buffer, unsigned long size, CBankFileAsync& bank);   // 0x009D5D30
+    private: CBankFileAsyncData(void* buffer, unsigned long size, CBankFileAsync& bank); friend class CBankFileAsyncEntry; public:   // 0x009D5D30
 };
 
 class CBankFileAsyncEntry {

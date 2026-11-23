@@ -1,5 +1,5 @@
 // CThingPlayerCreature::UpdatePlayerControl() -- updates the thing's scripted-control component (interface 0x1f) when it is flagged or its script task is not running, then performs the controlled move
-// Leaf: ?UpdatePlayerControl@CThingPlayerCreature@@AAEXXZ
+// Leaf: ?UpdatePlayerControl@CThingPlayerCreature@@QAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe 0x006AD970, 88 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inlined interface lookup;
@@ -24,7 +24,7 @@ class CTCScriptedControl { public:                              // interface typ
 };
 
 class CThingPlayerCreature : public CThing { protected: void ControlledMove(); private:                               // 0x006AD700
-    void UpdatePlayerControl();
+    public: void UpdatePlayerControl(); private:
 };
 
 void CThingPlayerCreature::UpdatePlayerControl()

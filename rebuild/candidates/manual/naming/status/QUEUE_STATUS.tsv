@@ -257,7 +257,7 @@ line	tag	address	correct_symbol	status	other_spellings
 259	526	00723630	?EnablePhysics@CTCPhysicsStandard@@UAEX_N@Z	open	SetPhysicsEnabled
 260	526	00929fc0	?GetObjectWithScriptName@CAIStateGroup_ApprenticeHero@@IAEPAVCThingGameObject@@ABVCCharString@@@Z	partial	?FindDummy@CAIStateGroupApprenticeHeroMethods@@QAEPAVCThingGameObject@@ABVCCharString@@@Z
 261	526	00947eb0	?GetObjectWithScriptName@CAIStateGroup_GoToPub@@IAEPAVCThingObject@@ABVCCharString@@@Z	closed	
-262	526	00938a10	?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ	partial	?GetUpFromSeat@CAIStateGroup_UsesSeat@@QAEXXZ
+262	526	00938a10	?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ	closed	
 263	526	00946f90	?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ	closed	
 264	526	00947110	?FindPrettyThingInShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@PAV2@@Z	partial	?SelectPrettyThing@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@PAV2@@Z
 265	526	0091b010	?AcquireWorkSpot@CAIStateGroup_HandyMan@@AAE_NXZ	closed	
@@ -463,7 +463,7 @@ line	tag	address	correct_symbol	status	other_spellings
 468	534	00a61360	?insert_unique@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@2@@Z	open	?insert_unique@
 469	534	00a61270	?_M_insert@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@2@0@Z	closed	
 470	534	00a60890	??F?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@2@@std@@QAEAAU01@XZ	partial	??F?$_Rb_tree_iterator@V?$pair@$$CBVCWideString@@UCEntry@CChecksumCacheFile@@@std@@@std@@QAEAAU01@XZ
-471	534	00a67ff0	?CalcByteLength@CVolumeTexture@@IAEXXZ	partial	?CalcByteLength@CVolumeTexture@@ || ?CalcByteLength@CVolumeTexture@@QAEXXZ
+471	534	00a67ff0	?CalcByteLength@CVolumeTexture@@IAEXXZ	partial	?CalcByteLength@CVolumeTexture@@
 472	534	00a68250	?CreateTexture@CVolumeTexture@@IAE_NABVC3DExtentsI@@JKABVCPixelFormat@@W4EVolumePool@@_N@Z	open	CreateTexture
 473	534	00a67460	?Uninitialise@CVolume@@QAEX_N@Z	partial	?ReleaseResources@CVolume@@QAEXH@Z || ?ReleaseVolume@CVolume@@QAEXJ@Z || ?ReleaseVolume@CVolume@@QAEX_N@Z
 474	534	0099af00	??BCWideString@@QBEPB_WXZ	partial	??BCWideString@@QBEPBGXZ || @FableWideStringGetBuffer_0099AF00@8
@@ -658,9 +658,9 @@ line	tag	address	correct_symbol	status	other_spellings
 663	538	00999760	?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z	open	?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z
 664	538	0041a1a0	?GetDebugSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	partial	?GetProfileDirectory@@YI?AVCWideString@@XZ
 665	538	009e4bc0	?DeleteFileW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z	partial	?DeleteFile@CDriveManager@@QAEJABVCWideString@@@Z
-666	538	0049d4e0	?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z	partial	?IsHeroStateFileValid@CWorld@@QBE_NABVCWideString@@@Z
-667	538	004a21f0	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	partial	?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z
-668	538	004a2d70	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	partial	?LoadHeroStateInternal@CWorld@@QAE_NABVCWideString@@@Z
+666	538	0049d4e0	?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z	closed	
+667	538	004a21f0	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	closed	
+668	538	004a2d70	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	closed	
 669	538	00515ad0	??0?$CArray@VCMapInfo@@@@QAE@I@Z	partial	??0?$vector@
 670	538	00993b10	??1CMemoryDataInputStream@@UAE@XZ	open	??1CDataInputStream@@UAE@XZ || ??1CDataStream@@UAE@XZ
 671	540	009e2560	?TransferOut@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCCharString@@ABJ@Z	partial	?AppendIntegerText_009e2560@@YIXPAVCPersistContext@@AAVCCharString@@ABH@Z || ?TransferOutLong@@YIXAAVCPersistContext@@AAVCCharString@@PAJ@Z || ?TransferOutLong@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z || ?TransferOutLong_009e2560@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z || ?TransferOut_009e2560@@YIXPAVCPersistContext@@JPAJ@Z || @Transfer_9e2560@12 || AppendLongToString
@@ -754,9 +754,9 @@ line	tag	address	correct_symbol	status	other_spellings
 759	561	0044b890	?TransferBinaryIn@?$CPersistTraits@_K@@QAEXAAVCMemoryDataInputStream@@AA_K@Z	partial	?TransferBinaryIn@?$CPersistTraits@_K@@QBEXAAUCMemoryDataInputStreamReader@@PA_K@Z
 760	561	0044bb00	??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z	closed	
 761	561	00487dc0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	closed	
-762	561	0049d4e0	?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z	partial	?IsHeroStateFileValid@CWorld@@QBE_NABVCWideString@@@Z
-763	561	004a21f0	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	partial	?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z
-764	561	004a2d70	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	partial	?LoadHeroStateInternal@CWorld@@QAE_NABVCWideString@@@Z
+762	561	0049d4e0	?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z	closed	
+763	561	004a21f0	?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	closed	
+764	561	004a2d70	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	closed	
 765	561	004a9210	?IsScreenFullyFadedOut@CDisplayEngine@@QBE_NXZ	partial	?CDisplayEngine_IsScreenFullyFadedOut@@YIHPAVCDisplayEngine@@@Z || ?IsScreenFullyFadedOut@CDisplayEngine@@QAE_NXZ
 766	561	004ab640	??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z	closed	
 767	561	004c8310	??1CThing@@MAE@XZ	partial	??1CThing@@UAE@XZ
@@ -4273,7 +4273,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4819	land0411i	00eb4f80	?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAEXXZ	closed	
 4820	land0411i	00eb07d0	?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z	partial	?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@@QAE_NABVCScriptThing@@@Z
 4821	land0411i	00eb0700	?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@NScript@@QAEXABVCScriptThing@@@Z	partial	?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@@QAEXABVCScriptThing@@@Z
-4822	land0411j	006378e0	?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z	partial	?GetThingMapwhoLevel@CThingMapManager@NThingMap@@QBEEM@Z
+4822	land0411j	006378e0	?GetThingMapwhoLevel@CThingMapManager@NThingMap@@IBEEM@Z	closed	
 4823	land0411j	0048dae0	??$GFLimit@MMM@@YIXAAMABM1@Z	closed	
 4824	land0411j	00aeaa00	?GetOneOverTickRate@NParticleEngine@@YIMXZ	partial	?GetParticleFrameTime@@YAMXZ || ?GetParticleFrameTime_00aeaa00@@YAMXZ || ?GetParticleUpdatePeriod@@YAMXZ
 4825	land0411j	00b84580	?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@AAVCEngineSubPrimitiveChain@@@Z	closed	
@@ -5455,7 +5455,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7412	land1011aq	0099ec30	??0CCharString@@QAE@ABV0@@Z	partial	??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z || ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z || ??0CCharString@FableCons_009edfe0@@QAE@ABV01@@Z || ??0CCharString@FableCons_009ee180@@QAE@ABV01@@Z || ??0CCharString@FableCons_00a31e70@@QAE@ABV01@@Z || ??0CCharString@FableCons_00a49b70@@QAE@ABV01@@Z || ??0CCharString@FableCopy_00527bb0@@QAE@ABU01@@Z || ??0CCharString@FableCopy_00566430@@QAE@ABU0
 7413	land1011aq	0099efe0	??4CCharString@@QAEABV0@PBD@Z	partial	?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z || ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z || ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z
 7414	land1011aq	009d49b0	?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z	partial	?GetString@CDefStringTable@NErase005dcf70@@QAE?AUCCharString@2@H@Z
-7415	land1011aq	009d5df0	??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z	partial	??0CBankFileAsyncData@@QAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z
+7415	land1011aq	009d5df0	??0CBankFileAsyncData@@AAE@KKPAVCMovableResourceMemoryPool@@AAVCBankFileAsync@@@Z	closed	
 7416	land1011aq	009de3f0	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z	partial	?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@J@Z
 7417	land1011aq	009fbf20	?SetResourceSize@CResource@@QAEXK@Z	partial	?SetResourceSize@CCompositeSurfaceCache_Retail@@QAEXK@Z || ?SetResourceSize@CResourceNative@@QAEXK@Z || ?SetResourceSize@ResourceMethods@@QAEXK@Z || ?h2@OP@@QAEHH@Z
 7418	land1011aq	009fbf70	?GetUnusedFrames@CResource@@QBEKXZ	partial	?GetUnusedFrames@CManagedTextureData_Calls@@QBEKXZ || ?GetUnusedFrames@ResourceNative@@QBEKXZ
@@ -10501,3 +10501,11 @@ line	tag	address	correct_symbol	status	other_spellings
 13337	land1123nf289	00449b60	?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z	partial	GetMultiplayerColour
 13338	land1123nf291	007022e0	?IsVignette@CTCQuestCard@@QBE_NXZ	closed	
 13339	land1123nf291	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CUIDef@@QAE@XZ
+13340	land1123nf290	00f3b970	?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z	partial	?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z
+13341	land1123nf290	0049d8f0	?SetAsPaused@CWorld@@IAEX_N@Z	closed	
+13343	land1123nf290	004fb310	?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ	closed	
+13344	land1123nf290	00968230	?WalkToPoint@CAIStateGroup_TavernKeeper@@QAE_NABVC3DVector@@ABVCRightHandedSet@@@Z	closed	
+13345	land1123nf290	0054dae0	??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z	partial	??0CActionParamString@
+13346	land1123nf290	009cc530	?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z	closed	
+13347	land1123nf290	00a36df0	?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z	no_binding	
+13348	land1123nf290	0093e760	?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z	closed	

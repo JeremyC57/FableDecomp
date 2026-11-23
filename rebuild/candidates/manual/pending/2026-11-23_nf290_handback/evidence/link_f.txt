@@ -1,0 +1,6 @@
+## HEAD set: H_0093e760.obj 00972cc0.obj
+duplicates 0
+## new set: 0093e760.obj 00972cc0.obj
+duplicates 1
+  DUP 00972cc0.obj ?SetAsLookAtThing@CBrainOutput@@QAEXABVCThing@@J@Z in 0093e760.obj;
+LK_DONE

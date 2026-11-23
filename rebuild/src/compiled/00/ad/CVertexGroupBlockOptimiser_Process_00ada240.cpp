@@ -157,7 +157,7 @@ public:
 private:
     unsigned long CountRemainingGroups() const;                // 0x00AD8ED0
 public:
-    void AddBlocks(unsigned long block);                       // 0x00AD9F10
+    private: void AddBlocks(unsigned long block); public:                       // 0x00AD9F10
     void Process(CVertexGroupBlockList& output, bool exhaustive);
 };
 

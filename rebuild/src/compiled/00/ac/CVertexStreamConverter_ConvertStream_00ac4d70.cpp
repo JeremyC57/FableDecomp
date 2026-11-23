@@ -31,8 +31,8 @@ class CVertexCompressionParams { public:
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
 };
 struct CVertexStreamConverter {
-    void ConvertFrom(const char* data, EVertexStreamDataType type, C4DVector& v, const CVertexCompressionParams& params);   // 0x00AC44D0
-    void ConvertTo(char* data, EVertexStreamDataType type, const C4DVector& v, const CVertexCompressionParams& params);     // 0x00AC4910
+    private: void ConvertFrom(const char* data, EVertexStreamDataType type, C4DVector& v, const CVertexCompressionParams& params); public:   // 0x00AC44D0
+    private: void ConvertTo(char* data, EVertexStreamDataType type, const C4DVector& v, const CVertexCompressionParams& params); public:     // 0x00AC4910
     static unsigned long __fastcall GetDataTypeSize(EVertexStreamDataType type);                                           // 0x00AB3740
     void ConvertStream(const void* src, long srcStride, const CVertexStreamFormat& srcFormat, void* dst, long dstStride,
                        const CVertexStreamFormat& dstFormat, unsigned long count, const CVertexCompressionParams& params);

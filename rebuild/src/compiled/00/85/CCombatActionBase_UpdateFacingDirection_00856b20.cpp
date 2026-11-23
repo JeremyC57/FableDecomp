@@ -32,7 +32,7 @@ struct CTCPhysicsBase {
 };
 #include "engine/CThing.h"
 class CAnimationEntry { public:
-    void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
+    void GetRotationInAnimation(float& rotation) const;   // 0x005DBFD0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -83,7 +83,7 @@ void CCombatActionBase::UpdateFacingDirection()
         return;
     if (PAnimEntry) {
         float rotation;
-        PAnimEntry->GetRotationInAnimation(&rotation);
+        PAnimEntry->GetRotationInAnimation(rotation);
         if (fabs(rotation) > 0.0001f)
             return;
     }

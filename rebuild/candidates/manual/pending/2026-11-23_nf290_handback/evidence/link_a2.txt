@@ -1,0 +1,39 @@
+## HEAD set: H_0047eee4.obj H_004962c0.obj H_0049d4e0.obj H_0049e9f0.obj H_004a00e0.obj H_004a05c0.obj H_004a2d70.obj H_004a3200.obj H_006292d0.obj H_0063e3c0.obj H_0064401c.obj H_00644179.obj H_006441be.obj H_006ac390.obj H_006ad970.obj H_006ad9d0.obj H_00761740.obj H_00805890.obj H_0082fd90.obj H_00834760.obj H_0083b610.obj H_0085d370.obj H_008af780.obj H_008afc40.obj H_00a0cfc0.obj H_00a67ff0.obj H_00a682e0.obj H_00ac4d70.obj H_00ada240.obj H_00f3b970.obj 00408120.obj 004082d0.obj 004091c0.obj 0040bca0.obj 0040d350.obj 0040d400.obj 0047e196.obj 0047fe83.obj 004804de.obj 004830a1.obj 004963a0.obj 0049d8f0.obj 0049f4c0.obj 004a0780.obj 004a21f0.obj 004a2f10.obj 004a34f0.obj 004a3740.obj 004a5e90.obj 004fb310.obj 004fce20.obj 00506f30.obj 00507c30.obj 00550dc0.obj 00556470.obj 00595cc1.obj 0059686d.obj 00597bf2.obj 00597df7.obj 00598463.obj 00629da0.obj 006378e0.obj 00637f40.obj 00637fc0.obj 0063dd70.obj 0063eb20.obj 006495a8.obj 00665860.obj 006ac430.obj 00760e70.obj 0083b520.obj 0083b6b0.obj 0085d180.obj 0088fc90.obj 008af500.obj 0098ecd0.obj 0098f2a0.obj 00a0cdd0.obj 00a68370.obj 00ac44d0.obj 00ac4910.obj 00ad9f10.obj 00f3d830.obj
+duplicates 4
+  DUP 004a34f0.obj ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z in H_004a3200.obj;
+  DUP 004a5e90.obj ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z in H_004a3200.obj;
+  DUP 004a5e90.obj ?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z in 004a34f0.obj;
+  DUP 00f3d830.obj ?StripUnusedVerts@CTriangleStripifier2@@QAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z in H_00f3b970.obj;
+UNRESOLVED 1 ?AddBlocks@CVertexGroupBlockOptimiser@@QAEXK@Z
+UNRESOLVED 2 ?AttemptToSpeak@CombatDialogueManager@@QAEXXZ
+UNRESOLVED 1 ?CalcByteLength@CVolumeTexture@@IAEXXZ
+UNRESOLVED 1 ?ChooseProfileNumber@CFrontendGameComponent@@AAEXJ@Z
+UNRESOLVED 1 ?ConvertFrom@CVertexStreamConverter@@QAEXPBDW4EVertexStreamDataType@@AAVC4DVector@@ABVCVertexCompressionParams@@@Z
+UNRESOLVED 1 ?ConvertTo@CVertexStreamConverter@@QAEXPADW4EVertexStreamDataType@@ABVC4DVector@@ABVCVertexCompressionParams@@@Z
+UNRESOLVED 1 ?GetCurrentGraphic@CThingVillage@@QAEPBVCEngineGraphic@@XZ
+UNRESOLVED 1 ?GetMinDistanceToTrack@CTrack@NShape@@QBE_NABVC3DVector@@AAM@Z
+UNRESOLVED 1 ?GetPathNameFromFileName@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z
+UNRESOLVED 1 ?InitMapwhoLevels@CThingMap@NThingMap@@QAEXXZ
+UNRESOLVED 2 ?IsDisplayingMiniMapOnRegionLoad@CWorld@@QBE_NXZ
+UNRESOLVED 2 ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z
+UNRESOLVED 3 ?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z
+UNRESOLVED 1 ?Load@CUserProfileManager@@AAEXXZ
+UNRESOLVED 2 ?LoadGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z
+UNRESOLVED 1 ?LoadHeroStateInternal@CWorld@@QAE_NABVCWideString@@@Z
+UNRESOLVED 2 ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ
+UNRESOLVED 1 ?PeekDefinitionManager@CWorldMap@@QBEABVCGameDefinitionManager@@XZ
+UNRESOLVED 1 ?ProcessObjects@CThreadedFileManager@@AAEXXZ
+UNRESOLVED 1 ?ReadNextNumber@CWStringParser@@QAE_NPAVCWParsedItem@@@Z
+UNRESOLVED 2 ?SaveGameStateInternal@CWorld@@QAE_NABVCWideString@@_N@Z
+UNRESOLVED 1 ?SetAsPaused@CWorld@@QAEX_N@Z
+UNRESOLVED 3 ?UpdateAnimation@CThingCreatureBase@@QAEXM@Z
+UNRESOLVED 1 ?UpdatePlayerControl@CThingPlayerCreature@@QAEXXZ
+## new set: 0047eee4.obj 004962c0.obj 0049d4e0.obj 0049e9f0.obj 004a00e0.obj 004a05c0.obj 004a2d70.obj 004a3200.obj 006292d0.obj 0063e3c0.obj 0064401c.obj 00644179.obj 006441be.obj 006ac390.obj 006ad970.obj 006ad9d0.obj 00761740.obj 00805890.obj 0082fd90.obj 00834760.obj 0083b610.obj 0085d370.obj 008af780.obj 008afc40.obj 00a0cfc0.obj 00a67ff0.obj 00a682e0.obj 00ac4d70.obj 00ada240.obj 00f3b970.obj 00408120.obj 004082d0.obj 004091c0.obj 0040bca0.obj 0040d350.obj 0040d400.obj 0047e196.obj 0047fe83.obj 004804de.obj 004830a1.obj 004963a0.obj 0049d8f0.obj 0049f4c0.obj 004a0780.obj 004a21f0.obj 004a2f10.obj 004a34f0.obj 004a3740.obj 004a5e90.obj 004fb310.obj 004fce20.obj 00506f30.obj 00507c30.obj 00550dc0.obj 00556470.obj 00595cc1.obj 0059686d.obj 00597bf2.obj 00597df7.obj 00598463.obj 00629da0.obj 006378e0.obj 00637f40.obj 00637fc0.obj 0063dd70.obj 0063eb20.obj 006495a8.obj 00665860.obj 006ac430.obj 00760e70.obj 0083b520.obj 0083b6b0.obj 0085d180.obj 0088fc90.obj 008af500.obj 0098ecd0.obj 0098f2a0.obj 00a0cdd0.obj 00a68370.obj 00ac44d0.obj 00ac4910.obj 00ad9f10.obj 00f3d830.obj
+duplicates 3
+  DUP 004a34f0.obj ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z in 004a3200.obj;
+  DUP 004a5e90.obj ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z in 004a3200.obj;
+  DUP 004a5e90.obj ?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z in 004a34f0.obj;
+UNRESOLVED 1 ?Load@CUserProfileManager@@AAEXXZ
+UNRESOLVED 3 ?PeekDefinitionManager@CWorldMap@@IBEABVCGameDefinitionManager@@XZ
+UNRESOLVED 1 ?ProcessObjects@CThreadedFileManager@@AAEXXZ
+LK_DONE

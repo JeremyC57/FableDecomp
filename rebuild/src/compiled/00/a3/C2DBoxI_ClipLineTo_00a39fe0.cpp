@@ -13,7 +13,7 @@ class C2DVector { public: float x; float y; };
 class C2DLineF { public:
     float x1; float y1; float x2; float y2;
     C2DLineF(float ax, float ay, float bx, float by) : x1(ax), y1(ay), x2(bx), y2(by) {}
-    bool IntersectsWith(const C2DLineF& other, C2DVector* point, float tolerance);   // 0x00A56C80
+    bool IntersectsWith(const C2DLineF& other, C2DVector& point, float tolerance) const;   // 0x00A56C80
 };
 class C2DBoxI { public:
     long minX; long minY; long maxX; long maxY;
@@ -26,25 +26,25 @@ void C2DBoxI::ClipLineTo(C2DLineF& line) const
     C2DVector hit;
     bool first = true;
     C2DLineF top((float)minX, (float)minY, (float)maxX, (float)minY);
-    if (line.IntersectsWith(top, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(top, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF right((float)maxX, (float)minY, (float)maxX, (float)maxY);
-    if (line.IntersectsWith(right, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(right, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF bottom((float)minX, (float)maxY, (float)maxX, (float)maxY);
-    if (line.IntersectsWith(bottom, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(bottom, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF left((float)minX, (float)minY, (float)minX, (float)maxY);
-    if (line.IntersectsWith(left, &hit, DELTA_NOTIONAL_ZERO)) {
+    if (line.IntersectsWith(left, hit, DELTA_NOTIONAL_ZERO)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
     }
