@@ -1,5 +1,5 @@
 // CCreatureAction_FireMissileWeapon::ResetCreatureUseProjectileWeaponState() -- for a live creature, release any missile still held, then cancel the hero's weapon aiming (ranged-attacks component 0x81)
-// Leaf: ?ResetCreatureUseProjectileWeaponState@CCreatureAction_FireMissileWeapon@@QAEXXZ
+// Leaf: ?ResetCreatureUseProjectileWeaponState@CCreatureAction_FireMissileWeapon@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D58D0, length 134 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CCreatureAction_FireMissileWeapon::ReleaseMissile
@@ -45,7 +45,9 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:
     void ReleaseMissile(CThing** missile, CThing** target, long* globalIndex);   // 0x008D5790
+    private:
     void ResetCreatureUseProjectileWeaponState();
+    public:
 };
 
 void CCreatureAction_FireMissileWeapon::ResetCreatureUseProjectileWeaponState()

@@ -1,5 +1,5 @@
 // CAIStateGroup_MazeTutorialBattleRespondToLightning::FindHitEvent() -- true when the creature's entity-event component holds an event of type 0x1b created after FrameOfLastHit
-// Leaf: ?FindHitEvent@CAIStateGroup_MazeTutorialBattleRespondToLightning@@QAE_NXZ
+// Leaf: ?FindHitEvent@CAIStateGroup_MazeTutorialBattleRespondToLightning@@IAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954C60, length 105 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (the const instantiation of the inlined interface lookup, type
@@ -44,7 +44,9 @@ class CAIStateGroupBase { public:
 struct CAIStateGroup_MazeTutorialBattleRespondToLightning : CAIStateGroupBase {
     unsigned char _base14[0x0c];                // +0x14..+0x1f (base state)
     long FrameOfLastHit;                        // +0x20
+    protected:
     bool FindHitEvent();
+    public:
 };
 
 bool CAIStateGroup_MazeTutorialBattleRespondToLightning::FindHitEvent()

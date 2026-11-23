@@ -1,5 +1,5 @@
 // CAIStateGroup_LightHomeCandle::ShouldBeLit() -- a villager's candle should be lit while the time of day lies in its village def's lighting window
-// Leaf: ?ShouldBeLit@CAIStateGroup_LightHomeCandle@@UAE_NXZ
+// Leaf: ?ShouldBeLit@CAIStateGroup_LightHomeCandle@@MBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946690, length 157 bytes (+ int3 padding). Vtable slot 15 of
 // CAIStateGroup_LightHomeCandle (0x0128BDBC).
@@ -71,10 +71,12 @@ public:
 
 class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
     unsigned char PCandle[8];                   // +0x14 CIntelligentPointer<CThing>
-    virtual bool ShouldBeLit();
+    protected:
+    virtual bool ShouldBeLit() const;
+    public:
 };
 
-bool CAIStateGroup_LightHomeCandle::ShouldBeLit()
+bool CAIStateGroup_LightHomeCandle::ShouldBeLit() const
 {
     const CTCVillageMember* villager;
     PBrain->PCreature->PeekTC(TCI_VILLAGE_MEMBER, &villager);

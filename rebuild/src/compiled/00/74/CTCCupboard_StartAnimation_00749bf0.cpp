@@ -1,5 +1,5 @@
 // CTCCupboard::StartAnimation(long anim) -- start the cupboard's open/close animation: mark it animating and play `anim` as the main anim (update mode 1, priority 100)
-// Leaf: ?StartAnimation@CTCCupboard@@QAEXJ@Z
+// Leaf: ?StartAnimation@CTCCupboard@@AAEXJ@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model assigned into an UNINITIALISED local (the miss arm reads the slot, `mov ecx,[esp+34h]`): both arms load the component straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749BF0, length 138 bytes (`ret 4`).
@@ -53,7 +53,9 @@ class CTCAnimationComplex { public:
 };
 class CTCCupboard : public CTCBase { public:
     bool Animating;                             // +0x0c
+    private:
     void StartAnimation(long anim);
+    public:
 };
 
 void CTCCupboard::StartAnimation(long anim)

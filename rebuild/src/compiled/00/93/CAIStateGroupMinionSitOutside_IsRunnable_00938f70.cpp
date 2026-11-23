@@ -1,6 +1,6 @@
 // CAIStateGroup_MinionSitOutside::IsRunnable() -- runnable when the idle scheduler prefers this state group and (for a
 // NF127 (2026-11-20, q5141): the stand-in GetPWorldSeed declaration moved onto the row-local CAIStateGroupBase model as the PDB protected const member ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ (0x008FCFD0).
-// Leaf: ?IsRunnable@CAIStateGroup_MinionSitOutside@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_MinionSitOutside@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // villager with a village) it is the village's sit-outside time; then pick a sitting duration of 225..374 frames and
 // defer to CAIStateGroup_MinionSitOnSeatBase::IsRunnable.
@@ -103,7 +103,9 @@ struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_MinionSitOutside : CAIStateGroup_MinionSitOnSeatBase {
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_MinionSitOutside::IsRunnable()

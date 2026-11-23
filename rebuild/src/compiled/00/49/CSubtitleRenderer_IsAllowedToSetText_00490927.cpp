@@ -2,7 +2,7 @@
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?IsAllowedToSetText@CSubtitleRenderer@@QAE_N_N@Z
+// Leaf: ?IsAllowedToSetText@CSubtitleRenderer@@QBE_N_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad1[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -113,10 +113,10 @@ class CPlayerGui { public:
 
 class CSubtitleRenderer {
 public:
-    bool IsAllowedToSetText(bool force);
+    bool IsAllowedToSetText(bool force) const;
 };
 
-bool CSubtitleRenderer::IsAllowedToSetText(bool force)
+bool CSubtitleRenderer::IsAllowedToSetText(bool force) const
 {
     do {
         CMainGameComponent* game = CMainGameComponent::Get();

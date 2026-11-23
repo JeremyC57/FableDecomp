@@ -1,5 +1,5 @@
 // CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const -- the XY / YZ angle differences from the body facing to the direction head->pos, or to the recovery angles when there is no live parent creature or pos is the head position
-// Leaf: ?GetAnglesFromBodyToPos@CTCLook@@QBEXABVC3DVector@@_NAAM2@Z
+// Leaf: ?GetAnglesFromBodyToPos@CTCLook@@ABEXABVC3DVector@@_NAAM2@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751C70, length 297 bytes (+ int3 padding), `ret 10h`; the second argument
@@ -73,7 +73,9 @@ class CTCLook { public:
             return PParentCreature->GetHeadPos(false);
         return CachedHeadPos;
     }
+    private:
     void GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const;
+    public:
 };
 #pragma pack(pop)
 

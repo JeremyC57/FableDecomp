@@ -1,4 +1,4 @@
-// Leaf: ?Transfer@CBedDef@@QAEXAAVCPersistContext@@@Z
+// Leaf: ?Transfer@CBedDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 class CDefString;
@@ -6,13 +6,13 @@ class CPersistContext { public:                       // typed transfer helpers:
     template <class T> void Transfer(T& value);            // 0x0045228F Transfer(CDefString&): dword write / CDefString read 0x0044FC00
 };
 class CBedDef { public:
-    unsigned char _pad[0x28];
+    unsigned char _pad[0x24];
     Field f0; // 0x28
     Field f1; // 0x2c
     Field f2; // 0x30
     Field f3; // 0x34
     Field f4; // 0x38
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
 };
 
 void CBedDef::Transfer(CPersistContext& ctx)

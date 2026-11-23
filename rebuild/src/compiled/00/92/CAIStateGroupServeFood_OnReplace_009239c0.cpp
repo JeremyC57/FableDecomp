@@ -1,5 +1,5 @@
 // CAIStateGroup_ServeFood::OnReplace() -- give up the table: release our place at it, and if the creature still carries
-// Leaf: ?OnReplace@CAIStateGroup_ServeFood@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_ServeFood@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // live food, drop it, destroy it and tell the table; then forget the table, place and task slot.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009239C0, length 214 bytes (+ int3 padding).
@@ -83,7 +83,9 @@ struct CAIStateGroup_ServeFood : CAIStateGroupBase {
     long TaskIndex;                             // +0x1c
     unsigned char _pad_0x20[0x24];              // +0x20..+0x43
     long PlaceIndex;                            // +0x44
+    protected:
     virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_ServeFood::OnReplace()

@@ -1,5 +1,5 @@
 // Retry 10b (B-12 sweep): the random delay is bound to a const REFERENCE (`const unsigned long& extraSeconds = Random(120);`, an address-taken temporary): the `% 120` div stays before the GFGetCurrentFrame call with the remainder in edi and the frame rate in ebx (a value local lets VC7.1 sink the div below the call).
-// Leaf: ?OnReplace@CAIStateGroup_LookAtInterestingThings@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_LookAtInterestingThings@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -68,7 +68,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBase {
     long FrameToLook;                           // +0x14
+    protected:
     virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_LookAtInterestingThings::OnReplace()

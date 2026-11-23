@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionSitAtSchool::IsRunnable() -- runnable when the villager's village says it is time to go to
-// Leaf: ?IsRunnable@CAIStateGroup_MinionSitAtSchool@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // school and the seat base agrees.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090FD20, length 132 bytes (+ int3 padding). Vtable slot 11.
@@ -93,7 +93,9 @@ struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBaseW {
 };
 
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase {
+    protected:
     virtual bool IsRunnable();
+    public:
     // the creature is a NAMED local taken before the argument pushes (it rides in esi across the world call)
     FABLE_FORCEINLINE bool IsTimeForSchool(CTCVillager* villager)
     {

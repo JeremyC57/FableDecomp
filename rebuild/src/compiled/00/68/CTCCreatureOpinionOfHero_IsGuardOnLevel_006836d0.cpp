@@ -1,5 +1,5 @@
 // CTCCreatureOpinionOfHero::IsGuardOnLevel() -- true when the creature's village has a living guard member (a thing holding interface 0xB4)
-// Leaf: ?IsGuardOnLevel@CTCCreatureOpinionOfHero@@QAE_NXZ
+// Leaf: ?IsGuardOnLevel@CTCCreatureOpinionOfHero@@QBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006836D0, length 152 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface for type 0x23 = CTCVillageMember),
@@ -48,10 +48,10 @@ class CTCVillage { public:
 class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    bool IsGuardOnLevel();
+    bool IsGuardOnLevel() const;
 };
 
-bool CTCCreatureOpinionOfHero::IsGuardOnLevel()
+bool CTCCreatureOpinionOfHero::IsGuardOnLevel() const
 {
     const CTCVillageMember* member;
     if (ParentThing->PeekTC(TCI_VILLAGE_MEMBER, &member)) {

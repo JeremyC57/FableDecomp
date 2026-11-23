@@ -1,5 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby::Cleanup() -- settle the creature's combat-manager state (attack query, then
-// Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearby@@UAEXXZ
+// Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearby@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // deregistration while still registered) and drop creature mode 0x19 when it is in combat mode.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096EDB0, length 222 bytes (+ int3 padding). Vtable slot 9.
@@ -166,7 +166,9 @@ struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
     EAIActionReturn AIAction_PumpCombatActions();   // 0x0097D980
     bool IsEnemyCreatureNearCombatPosition();   // 0x0096E830
     void AttackEnemy();
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_MeleeCombatNearby::Cleanup()

@@ -1,4 +1,4 @@
-// Leaf: ?Transfer@CFlammableDef@@QAEXAAVCPersistContext@@@Z
+// Leaf: ?Transfer@CFlammableDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
@@ -6,13 +6,13 @@ class CPersistContext { public:                       // typed transfer helpers:
     void Transfer_004e59e1(void* value);            // 0x004E59E1 per-type transfer instantiation, element type not attributed
 };
 class CFlammableDef { public:
-    unsigned char _pad[0x28];
+    unsigned char _pad[0x24];
     Field f0; // 0x28
     Field f1; // 0x2c
     Field f2; // 0x30
     Field f3; // 0x34
     Field f4; // 0x38
-    void Transfer(CPersistContext& ctx);
+    virtual void Transfer(CPersistContext& ctx);
 };
 
 void CFlammableDef::Transfer(CPersistContext& ctx)

@@ -5,7 +5,7 @@
 //   propagated twin), CCharString(const char*, long) 0x0099EBF0 for the by-value name argument, the screen's virtual
 //   slot 5 (+0x14) entry search, and the entry's second-base virtual slot 2 (+0x08) state query.
 // Local model: the CTCInventory screen vector sits at +0x0c (retail); no engine/ header declares these members.
-// Leaf: ?IsSaveMenuReceivingInput@CTCInventory@@QAE_NXZ
+// Leaf: ?IsSaveMenuReceivingInput@CTCInventory@@QBE_NXZ
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NF156 (2026-11-20, q4776): the local CEntryList / CListAllocator / CMenuEntry / CStateQuery / CComponentBase / CMenuScreen /
@@ -30,9 +30,9 @@ struct CScreenVector {
 class CTCInventory { public:
     unsigned char _pad[0x0c];
     CScreenVector Screens;
-    bool IsSaveMenuReceivingInput();
+    bool IsSaveMenuReceivingInput() const;
 };
-bool CTCInventory::IsSaveMenuReceivingInput()
+bool CTCInventory::IsSaveMenuReceivingInput() const
 {
     unsigned long i = 0;
     for (; i < Screens.size(); ++i) {

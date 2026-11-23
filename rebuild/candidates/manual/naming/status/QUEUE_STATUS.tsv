@@ -10299,7 +10299,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13104	land1122nf270	00a96da0	??1CVertexGroupBlock@@QAE@XZ	closed	
 13106	land1122nf270	00ad94f0	??1CVertexGroupBlock@@QAE@XZ	open	?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ
 13108	land1122nf272	00beaa30	?OnPostRelocation@CWaterPatchMesh@@QAEXXZ	closed	
-13109	land1122nf272	00beab20	?RelocateData@CWaterPatchMesh@@EAEXJPAX0J@Z	open	?RelocateData@CWaterPatchMesh@@UAEXJPAX0J@Z
+13109	land1122nf272	00beab20	?RelocateData@CWaterPatchMesh@@EAEXJPAX0J@Z	closed	
 13110	land1122nf272	00beaa50	?CanRelocateData@CWaterPatchMesh@@EBE_NJ@Z	no_binding	
 13111	land1122nf272	009d5100	?Verify@CMovableResource@@UBEKXZ	no_binding	
 13112	land1122nf272	009d50f0	?CanRelocateData@CMovableResource@@UBE_NJ@Z	no_binding	

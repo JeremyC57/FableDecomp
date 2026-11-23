@@ -1,5 +1,5 @@
 // CWaterPatchMesh::RelocateData(long handle, void* oldData, void* newData, long size) -- the landscape memory manager moved a block: rebase the vertex buffer pointer when it referred to the old address
-// Leaf: ?RelocateData@CWaterPatchMesh@@UAEXJPAX0J@Z
+// Leaf: ?RelocateData@CWaterPatchMesh@@EAEXJPAX0J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BEAB20, 27 bytes (+5 int3 padding), thiscall, `ret 10h`.
 // Identity: slot 1 of the CWaterPatchMesh vtable 0x012A8134 (rtti-vtables.tsv; slot 2 is the landed CanRelocateData
 //   0x00BEAA50, slot 0 the deleting destructor 0x00BEB4D0). The (long, void*, void*, long) signature is the one every
@@ -24,7 +24,9 @@ template <class T> inline void RelocatePointer(T*& p, void* oldData, void* newDa
 class CWaterPatchMesh {                                  // vtable 0x012A8134, 0x20 bytes
 public:
     virtual ~CWaterPatchMesh();
+    private:
     virtual void RelocateData(long handle, void* oldData, void* newData, long size);
+    public:
     virtual bool CanRelocateData(long handle) const;
     CEngineLandscapeMap* Map;                            // +0x04
     C2DCoordI            Offset;                         // +0x08

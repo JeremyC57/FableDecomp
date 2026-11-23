@@ -1,5 +1,5 @@
 // CAIStateGroup_LookAtInterestingThings::IsRunnable() -- runnable when the idle scheduler (if any) prefers this
-// Leaf: ?IsRunnable@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_LookAtInterestingThings@@MAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // group, a villager is not outside curfew time, and an interesting thing exists.
@@ -169,7 +169,9 @@ public:
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         return creature->AutoPlaceNear(((CThingPositioned*)FindInterestingThing())->GetPos(), 2.0f);
     }
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_LookAtInterestingThings::IsRunnable()

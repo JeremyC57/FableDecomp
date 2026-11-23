@@ -1,5 +1,5 @@
 // CAIStateGroup_GazeAtHome::IsRunnable() -- runnable when the idle scheduler prefers this group, the creature has a home and a free gaze position exists
-// Leaf: ?IsRunnable@CAIStateGroup_GazeAtHome@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_GazeAtHome@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009189C0, length 114 bytes (+ int3 padding). Vtable slot 11
 // of CAIStateGroup_GazeAtHome (0x0128FE7C).
@@ -58,7 +58,9 @@ struct CAIStateGroup_Gaze : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_GazeAtHome : CAIStateGroup_Gaze {
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_GazeAtHome::IsRunnable()

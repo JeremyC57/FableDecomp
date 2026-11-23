@@ -1,5 +1,5 @@
 // CTCUnholyPower::UnsheatheWeapon() -- when the item the spell took out of the hero's hand is still alive: clear the primary carry slot (dropping a weapon, letting a 0x1a component react when no longer carried), put the item back in its carry slot, refresh the sheathes, cancel the melee flourish, restart the current creature mode and put the player in aggressive mode
-// Leaf: ?UnsheatheWeapon@CTCUnholyPower@@QAEXXZ
+// Leaf: ?UnsheatheWeapon@CTCUnholyPower@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x00793EC0, 545 bytes, plain `ret`. Catalog label CTCDivineWrath::UnsheatheWeapon is propagated: the callers are CTCUnholyPower::FrameUpdate (vtable 0x0126BFDC slot 9, 0x00795300); a byte-identical copy is CTCDivineWrath::UnsheatheWeapon at 0x0078E9C0.
@@ -114,7 +114,9 @@ class CTCUnholyPower { public:
     void*   PDef;                                            // +0x0c CDefPointer<CSpecialAbilitiesUnholyPowerDef const>
     CIntelligentPointer<CThing> PItemRemoved;                    // +0x10
     CThing* GetItemRemoved() const { return PItemRemoved.GetPItem(); }
+    private:
     void UnsheatheWeapon();
+    public:
 };
 
 void CTCUnholyPower::UnsheatheWeapon()

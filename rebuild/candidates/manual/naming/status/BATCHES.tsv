@@ -81,6 +81,7 @@ T1	standin_alias	CRenderStateManager	2	1	engine/CRenderStateManager.h	00a04630 0
 T1	standin_alias	CSubtitleRenderer	2	2	engine/CSubtitleRenderer.h	00492ed1 00492fb4
 T1	standin_alias	CTCCarrying	2	2	engine/CTCCarrying.h	006a22d0 006a2520
 T1	standin_alias	CTCContainer	2	2	engine/CTCContainer.h	008ed040 008ed1f0
+T1	standin_alias	CTCDoor	2	1	engine/CTCDoor.h	007308f0 00730f90
 T1	standin_alias	CTCHeroExperience	2	2	engine/CTCHeroExperience.h	006d8170 006d83b0
 T1	standin_alias	CTCHeroOpinionDeedLog	2	1	engine/CTCHeroOpinionDeedLog.h	006c59e0 006c5f80
 T1	standin_alias	CTCInventoryClothing	2	2	engine/CTCInventoryClothing.h	005b43a2 005b4a95
@@ -98,6 +99,7 @@ T1	standin_alias	CAFile	1	1	engine/CAFile.h	00997f80
 T1	standin_alias	CAIScratchpadDef	1	1	engine/CAIScratchpadDef.h	007adf00
 T1	standin_alias	CAIStateGroup_ApprenticeHero	1	1	engine/CAIStateGroup_ApprenticeHero.h	00929fc0
 T1	standin_alias	CAIStateGroup_Clean	1	1		008fdb27
+T1	standin_alias	CAIStateGroup_MazeTutorialBattleRespondToLightning	1	1	engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h	00954c60
 T1	standin_alias	CAIStateGroup_MinionReactToCrime	1	1	engine/CAIStateGroup_MinionReactToCrime.h	00958770
 T1	standin_alias	CAIStateGroup_MinionReactToTrespassing	1	1	engine/CAIStateGroup_MinionReactToTrespassing.h	009580e0
 T1	standin_alias	CAIStateGroup_OpinionReactionRoot	1	1	engine/CAIStateGroup_OpinionReactionRoot.h	009852c0
@@ -260,6 +262,7 @@ T1	signature	SaveVerts	3	1		00bfcf00 00bfcf90 00bfd020
 T1	signature	map	3	2		007aebe0 00ad4210 00ad5920
 T1	signature	CAIStateGroupBase	2	3	engine/CAIStateGroupBase.h	00980770 00980bd0
 T1	signature	CAIStateGroup_HoverHornetQueen	2	1	engine/CAIStateGroup_HoverHornetQueen.h	0095b020 0095c0b0
+T1	signature	CAIStateGroup_MinionReactToUnconsciousPerson	2	1		00937b10 00937c20
 T1	signature	CCharString	2	2		0099e5f0 0099fa50
 T1	signature	CCombatManager	2	7	engine/CCombatManager.h	006e9360 006edc50
 T1	signature	CDisplayManager	2	3	engine/CDisplayManager.h	009bf7e0 009c0e50
@@ -352,6 +355,7 @@ T1	signature	CTCFollowed	1	1	engine/CTCFollowed.h	006d4e60
 T1	signature	CTCForcePushPower	1	1		007a54a0
 T1	signature	CTCForcePushed	1	1	engine/CTCForcePushed.h	00798570
 T1	signature	CTCGhostSword	1	1	engine/CTCGhostSword.h	007c5560
+T1	signature	CTCGuard	1	1	engine/CTCGuard.h	007b2c70
 T1	signature	CTCHealLife	1	1	engine/CTCHealLife.h	007c4bd0
 T1	signature	CTCHeroMorph	1	1	engine/CTCHeroMorph.h	0071bcd0
 T1	signature	CTCIdleScheduler	1	1	engine/CTCIdleScheduler.h	00801920
@@ -359,6 +363,7 @@ T1	signature	CTCInventory	1	1	engine/CTCInventory.h	00584b86
 T1	signature	CTCInventoryBase	1	1		005bf482
 T1	signature	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	004daea9
 T1	signature	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fb140
+T1	signature	CTCLook	1	1	engine/CTCLook.h	00753840
 T1	signature	CTCOpinionSource	1	1	engine/CTCOpinionSource.h	00771540
 T1	signature	CTCPhysicalShieldSpell	1	1	engine/CTCPhysicalShieldSpell.h	0079deb0
 T1	signature	CTCPhysicsBase	1	1	engine/CTCPhysicsBase.h	006b0460
@@ -465,6 +470,7 @@ T1	other	CThingManager	4	8	engine/CThingManager.h	0051e530 0051ed80 00521eb0 005
 T1	other	CThingPhysical	4	5	engine/CThingPhysical.h	005296b0 006a4d00 006a4d60 006a6880
 T1	other	GFSerialiseMapBinaryOut	4	1		0045df1e 0067b8b0 0067b930 0067b9b0
 T1	other	set	4	11		00514400 00738dc0 00826000 00ad3a10
+T1	other	CAIStateGroup_GoToPub	3	4	engine/CAIStateGroup_GoToPub.h	008fdcca 009498b0 0094a3b0
 T1	other	CBaseIntelligentPointer	3	50		00a01b10 00a01b50 00a01b90
 T1	other	CBaseObject	3	3	engine/CBaseObject.h	0099a380 0099a3b0 0099a430
 T1	other	CCodeSectionManager	3	3		009f0320 009f0500 009f1560
@@ -502,7 +508,6 @@ T1	other	LSocket	3	3	engine/LSocket.h	008f86f0 008f8a80 008fa120
 T1	other	NCreatureAI	3	5	engine/NCreatureAI.h	00864840 008648a0 00864cb0
 T1	other	NThingShot	3	5		007bf000 007c0ad0 007c0e80
 T1	other	Process	3	1		00883530 00883640 00883750
-T1	other	CAIStateGroup_GoToPub	2	3	engine/CAIStateGroup_GoToPub.h	008fdcca 0094a3b0
 T1	other	CAIStateGroup_ThrowLogsOnFire	2	2	engine/CAIStateGroup_ThrowLogsOnFire.h	00917050 009170b0
 T1	other	CAnimSet	2	1	engine/CAnimSet.h	0070c280 0070d2f0
 T1	other	CAnimateThing	2	3	engine/CAnimateThing.h	0070d580 0070e8b0
@@ -563,6 +568,7 @@ T1	other	CSpecialAbilitiesUnholyPowerDef	2	2	engine/CSpecialAbilitiesUnholyPower
 T1	other	CSphere	2	2	engine/CSphere.h	00a58790 00a58b50
 T1	other	CSplineRandomOffsetData	2	3		00b20630 00b206b0
 T1	other	CStatBar	2	2		00646a46 0065431d
+T1	other	CSubtitleRenderer	2	2	engine/CSubtitleRenderer.h	004908da 00490927
 T1	other	CSubtitledMessage	2	2		004cdb70 004d1db0
 T1	other	CSymbolMap	2	3	engine/CSymbolMap.h	009e5170 009e5c90
 T1	other	CTBaseSingleton	2	5	engine/CTBaseSingleton.h	00414c90 00436fb0
@@ -631,6 +637,7 @@ T1	other	CAIStateGroup_FlyingThingBase	1	2	engine/CAIStateGroup_FlyingThingBase.
 T1	other	CAIStateGroup_Gaze	1	1	engine/CAIStateGroup_Gaze.h	00918880
 T1	other	CAIStateGroup_JackOfBladesBase	1	4	engine/CAIStateGroup_JackOfBladesBase.h	00903046
 T1	other	CAIStateGroup_LightHomeCandle	1	1	engine/CAIStateGroup_LightHomeCandle.h	00946ae0
+T1	other	CAIStateGroup_MinionBehaviourSad	1	1		0096f180
 T1	other	CAIStateGroup_MinionGossip	1	1	engine/CAIStateGroup_MinionGossip.h	0090ca60
 T1	other	CAIStateGroup_ScriptingBase	1	1	engine/CAIStateGroup_ScriptingBase.h	009350c0
 T1	other	CAIStateGroup_SummonerCharge	1	1	engine/CAIStateGroup_SummonerCharge.h	00902f49
@@ -884,12 +891,12 @@ T1	other	CSpecialAbilitiesTurncoatSpellDef	1	1	engine/CSpecialAbilitiesTurncoatS
 T1	other	CSplinePosParamData	1	1		00b20ba0
 T1	other	CStatBase	1	4		00442280
 T1	other	CStringParser	1	1	engine/CStringParser.h	009ba790
-T1	other	CSubtitleRenderer	1	1	engine/CSubtitleRenderer.h	004908da
 T1	other	CSummonerDef	1	1	engine/CSummonerDef.h	0045426c
 T1	other	CTCAISummon	1	1		004e1856
 T1	other	CTCActionUseBed	1	1	engine/CTCActionUseBed.h	007ebdd0
 T1	other	CTCActionUseReadable	1	1	engine/CTCActionUseReadable.h	004dc03d
 T1	other	CTCActivationReceptorBase	1	1	engine/CTCActivationReceptorBase.h	007f7700
+T1	other	CTCActivationReceptorRelay	1	2		007f8160
 T1	other	CTCAvoidRegionExit	1	1		007e9250
 T1	other	CTCBerserk	1	1	engine/CTCBerserk.h	0078c150
 T1	other	CTCBetting	1	1	engine/CTCBetting.h	007e51d0
@@ -1638,7 +1645,6 @@ T3	signature	CTCHeroReceiveItems	1	1	engine/CTCHeroReceiveItems.h	007ca9e0
 T3	signature	CTCInventoryQuests	1	2	engine/CTCInventoryQuests.h	0061a8a0
 T3	signature	CTCInventoryStats	1	1	engine/CTCInventoryStats.h	005cd6b7
 T3	signature	CTCKraken	1	2	engine/CTCKraken.h	007fc820
-T3	signature	CTCLook	1	2	engine/CTCLook.h	00753840
 T3	signature	CTCNymph	1	1	engine/CTCNymph.h	0080f210
 T3	signature	CTCOnHeroPush	1	1	engine/CTCOnHeroPush.h	007bba50
 T3	signature	CTCRegionDisplay	1	1	engine/CTCRegionDisplay.h	00639b70
@@ -5393,9 +5399,7 @@ T3	-	CAIStateGroupApprenticeHeroMethods	2	5		0092a0c0 0092a220
 T3	-	CAIStateGroupBase	2	4	engine/CAIStateGroupBase.h	00969760 00c1e260
 T3	-	CAIStateGroupBase_00c54090	2	3		00c54090 012b89c8
 T3	-	CAIStateGroup_BirdFlyToFood_00c48300	2	7		00c47f00 00c48300
-T3	-	CAIStateGroup_GoToPub	2	4	engine/CAIStateGroup_GoToPub.h	00949320 009498b0
 T3	-	CAIStateGroup_MinionReactToPlayerInteraction	2	3	engine/CAIStateGroup_MinionReactToPlayerInteraction.h	0092ecd0 0092ed40
-T3	-	CAIStateGroup_MinionReactToUnconsciousPerson	2	3		00937b10 00937c20
 T3	-	CAIStateGroup_ServeFood	2	3		00922fc0 00923510
 T3	-	CAIStateGroup_WorkAtSchool	2	4	engine/CAIStateGroup_WorkAtSchool.h	009425f0 00942c70
 T3	-	CAIStateGroup_WorkAtSchool_Methods	2	3		00942820 009428a0
@@ -5530,14 +5534,12 @@ T3	-	CSoundMixer	2	5		00c6ac90 00c6acc0
 T3	-	CSoundSystem	2	5		00c091f0 012b1e24
 T3	-	CSpawnedFunc	2	4	engine/CSpawnedFunc.h	012eba50 012ee648
 T3	-	CSplinePosParamData	2	4		00b20b10 00b21a00
-T3	-	CSubtitleRenderer	2	4	engine/CSubtitleRenderer.h	0048dc8b 00490927
 T3	-	CSurface	2	5	engine/CSurface.h	009f32a0 0122f84c
 T3	-	CTCAvoidRegionExit	2	7		013bae28 013baf00
 T3	-	CTCBerserk_Retail	2	5		0078be70 0078bfc0
 T3	-	CTCCreatureGroup	2	4	engine/CTCCreatureGroup.h	00812e20 00813100
 T3	-	CTCCreatureGroupBoastingCrowd	2	4	engine/CTCCreatureGroupBoastingCrowd.h	00784260 00784920
 T3	-	CTCDParticleEmitter	2	6	engine/CTCDParticleEmitter.h	006e0df0 006e1080
-T3	-	CTCDoor	2	3	engine/CTCDoor.h	007308f0 00730f90
 T3	-	CTCHeroAttachableAppearanceModifiers	2	4	engine/CTCHeroAttachableAppearanceModifiers.h	00706000 007066a0
 T3	-	CTCHeroExperience_Methods	2	4		006d6340 006d8ad0
 T3	-	CTCHeroMorph	2	3	engine/CTCHeroMorph.h	0071d3b0 0071dbd0
@@ -5711,10 +5713,9 @@ T3	-	CAIStateGroup_CreatureUseCoverBase	1	5	engine/CAIStateGroup_CreatureUseCove
 T3	-	CAIStateGroup_CreatureUseCoverBase_00c42d60	1	4		00c42d60
 T3	-	CAIStateGroup_Derived_00c44580	1	2		00c44580
 T3	-	CAIStateGroup_EnemyCreatureBase	1	2	engine/CAIStateGroup_EnemyCreatureBase.h	0091db50
+T3	-	CAIStateGroup_GoToPub	1	3	engine/CAIStateGroup_GoToPub.h	00949320
 T3	-	CAIStateGroup_HoverMovementBase	1	8	engine/CAIStateGroup_HoverMovementBase.h	0128a1dc
-T3	-	CAIStateGroup_MazeTutorialBattleRespondToLightning	1	2	engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h	00954c60
 T3	-	CAIStateGroup_MeleeCombatNearbyBase	1	2	engine/CAIStateGroup_MeleeCombatNearbyBase.h	006e8400
-T3	-	CAIStateGroup_MinionBehaviourSad	1	2		0096f180
 T3	-	CAIStateGroup_MinionFindPersonalSpace	1	2	engine/CAIStateGroup_MinionFindPersonalSpace.h	0092e890
 T3	-	CAIStateGroup_MinionKidCalledToMother	1	3	engine/CAIStateGroup_MinionKidCalledToMother.h	0090ee20
 T3	-	CAIStateGroup_MoveGoodsBase	1	2	engine/CAIStateGroup_MoveGoodsBase.h	00915890
@@ -6666,12 +6667,12 @@ T3	-	CString_00c73a00	1	2		00c73a00
 T3	-	CSubComponentBase	1	2		012758f4
 T3	-	CSubPrimitiveList_00c3abf0	1	2		00c3abf0
 T3	-	CSubPrimitiveList_00c3b180	1	2		00c3b180
+T3	-	CSubtitleRenderer	1	2	engine/CSubtitleRenderer.h	0048dc8b
 T3	-	CSurface_Methods	1	2		009f3520
 T3	-	CSuspendableProcessMicrothread	1	5	engine/CSuspendableProcessMicrothread.h	00a44740
 T3	-	CSymbolEntryVector	1	2		0052c300
 T3	-	CSymbolInfo___	1	2		008fecec
 T3	-	CTCAISummon	1	3		013baf14
-T3	-	CTCActivationReceptorRelay	1	3		007f8160
 T3	-	CTCActivationTrigger_00c37da0	1	2		00c37da0
 T3	-	CTCBase	1	2	engine/CTCBase.h	00686900
 T3	-	CTCBaseShell	1	2		012b27e0
@@ -6707,7 +6708,6 @@ T3	-	CTCGraphicAppearanceReplaceableMesh	1	2		007a66a0
 T3	-	CTCGraphicAppearanceSprite	1	2		0077c3e0
 T3	-	CTCGraphicAppearanceSprite_00c15b90	1	4		00c15b90
 T3	-	CTCGraphicAppearanceSprite_00c15c00	1	3		00c15c00
-T3	-	CTCGuard	1	2	engine/CTCGuard.h	007b2c70
 T3	-	CTCHearabilityManager	1	2		007475c0
 T3	-	CTCHeroExperience	1	3	engine/CTCHeroExperience.h	006d7e70
 T3	-	CTCHeroStats_Methods	1	2		0057de14

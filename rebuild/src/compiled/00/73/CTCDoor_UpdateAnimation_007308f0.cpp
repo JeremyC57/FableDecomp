@@ -1,5 +1,5 @@
 // CTCDoor::UpdateAnimation() -- once the door animation has (to within epsilon) finished, stop updating a proximity door that is not moving, else clear the opening/closing state; then advance the animation by one frame (slowed by bullet time when the door is affected by it)
-// Leaf: ?UpdateAnimation@CTCDoor@@QAEXXZ
+// Leaf: ?UpdateAnimation@CTCDoor@@IAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -85,7 +85,9 @@ class CTCDoor : public CTCBase { public:
     long UpdateID;                                      // +0x18
     long TriggerType;                                   // +0x1c
     const CDoorDef* PDef;                               // +0x20 CDefPointer<CDoorDef const>::Object
+    protected:
     void UpdateAnimation();
+    public:
 };
 
 void CTCDoor::UpdateAnimation()

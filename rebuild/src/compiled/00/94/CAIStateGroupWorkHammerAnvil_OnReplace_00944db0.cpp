@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkHammerAnvil::OnReplace() -- give back the anvil's action point (when it was taken and the anvil
-// Leaf: ?OnReplace@CAIStateGroup_WorkHammerAnvil@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_WorkHammerAnvil@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // is alive), stop the creature's current action, drop whatever is in both carry slots and make it pushable again.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944DB0, length 201 bytes (+ int3 padding).
@@ -79,7 +79,9 @@ struct CAIStateGroup_WorkHammerAnvil : CAIStateGroupBaseI {
     unsigned char ActionPointRHSet[0x1b];       // +0x29 CRightHandedSet
     long ActionPointIndex;                      // +0x44
     long NextFrameHammer;                       // +0x48
+    protected:
     virtual void OnReplace();
+    public:
 };
 #pragma pack(pop)
 

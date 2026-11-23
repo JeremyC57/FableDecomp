@@ -1,5 +1,5 @@
 // CAIStateGroup_StealthSeekEnemy::Cleanup() -- reset the creature's interface-0x45 state (mode 8, full weight, 0xFF),
-// Leaf: ?Cleanup@CAIStateGroup_StealthSeekEnemy@@UAEXXZ
+// Leaf: ?Cleanup@CAIStateGroup_StealthSeekEnemy@@EAEXXZ
 // Name fix (NF96 part 2, q11460): the call to 0x00747B80 went through a made-up stand-in class CTCSeekTarget::RemoveSeeker(CThing*, long);
 //   0x00747B80 is Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (status 0 =
 //   DANGER_STATUS_NULL, Ego_d LF_ENUM), declared by engine/CTCStealth.h, which the row now includes for that class.
@@ -75,7 +75,9 @@ struct CTCStealthState {                        // the interface-0x45 component
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     CIntelligentPointer<CThing> PEnemy;            // +0x14
+    private:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_StealthSeekEnemy::Cleanup()

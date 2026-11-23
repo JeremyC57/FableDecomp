@@ -1,5 +1,5 @@
 // CAIStateGroup_ApprenticeHero::Update() -- while the apprentice's village says it is cook time, keep doing random apprentice activities (practise skills, spar, library, leaderboard, map); stop when one fails or the group is stopping, else schedule the next practice a minute ahead; then terminate the current action
-// Leaf: ?Update@CAIStateGroup_ApprenticeHero@@UAEXXZ
+// Leaf: ?Update@CAIStateGroup_ApprenticeHero@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -117,7 +117,9 @@ struct CAIStateGroup_ApprenticeHero : CAIStateGroupBase {
     protected: bool GoToLibrary(); public:                              // 0x0092ACE0
     protected: bool LookAtLeaderBoard(); public:                        // 0x0092AE70
     protected: bool LookAtMap(); public:                                // 0x0092AFE0
+    protected:
     virtual void Update();
+    public:
 };
 
 void CAIStateGroup_ApprenticeHero::Update()

@@ -1,5 +1,5 @@
 // CCreatureAction_InterruptableMidAttackAutoTurn::IsToFaceTarget() const -- whether the creature's player has the auto-face flag (+0x20a) set
-// Leaf: ?IsToFaceTarget@CCreatureAction_InterruptableMidAttackAutoTurn@@QBE_NXZ
+// Leaf: ?IsToFaceTarget@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087C900, length 27 bytes. Vtable slot 73 of CCreatureAction_InterruptableMidAttackAutoTurn (0x012778CC).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (`add ecx,8`: PCreature at +8, this is never kept), CThing::GetPlayer
 // @ 0x004C7A10 (the player record for the thing's player index byte +0x90).
@@ -35,7 +35,7 @@ class CCreatureAction_InterruptableMidAttackAutoTurn { public:   // engine/CCrea
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThingCreatureBase_Calls> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    bool IsToFaceTarget() const;
+    virtual bool IsToFaceTarget() const;
 };
 
 bool CCreatureAction_InterruptableMidAttackAutoTurn::IsToFaceTarget() const

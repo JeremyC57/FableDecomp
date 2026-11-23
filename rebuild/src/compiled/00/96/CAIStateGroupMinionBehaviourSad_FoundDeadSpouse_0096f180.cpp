@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse() -- search a 10x10 box around the creature for a dead spouse
-// Leaf: ?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ
+// Leaf: ?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@AAE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // (first match of the spouse filter); on a hit remember it in PDeadSpouse.
@@ -89,7 +89,9 @@ class CWorld { public:
 struct CAIStateGroup_MinionBehaviourSad : CAIStateGroupBase {
     unsigned char _pad_0x14[0x20];              // +0x14..+0x33
     CIntelligentPointerThing PDeadSpouse;       // +0x34
+    private:
     bool FoundDeadSpouse();
+    public:
 };
 
 bool CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse()

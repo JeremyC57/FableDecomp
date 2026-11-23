@@ -1,5 +1,5 @@
 // CTCDoor::UpdateOpenStatusTriggerTypePerson() -- a person-triggered door is open while a creature stands within the trigger radius (and within one unit of height); it closes one second after the last creature was seen; open/close the door when the state changed
-// Leaf: ?UpdateOpenStatusTriggerTypePerson@CTCDoor@@QAEXXZ
+// Leaf: ?UpdateOpenStatusTriggerTypePerson@CTCDoor@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -84,7 +84,9 @@ class CTCDoor : public CTCBase { public:
     const CDoorDef* PDef;                       // +0x20
     protected: void Open(bool instant); public:                    // 0x00730C00
     protected: void Close(); public:                               // 0x00730DD0
+    protected:
     void UpdateOpenStatusTriggerTypePerson();
+    public:
 };
 
 void CTCDoor::UpdateOpenStatusTriggerTypePerson()

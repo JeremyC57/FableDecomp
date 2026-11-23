@@ -1,5 +1,5 @@
 // CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup() -- deregister the creature from its combat manager if it is a registered combatant, then drop creature mode 0x19
-// Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@UAEXXZ
+// Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E560, length 121 bytes (+ int3 padding).
 // Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (landed name),
@@ -67,7 +67,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroupBase {
+    protected:
     virtual void Cleanup();
+    public:
 };
 
 void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup()

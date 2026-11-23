@@ -1,5 +1,5 @@
 // CAIStateGroup_GameMaster::OnReplace() -- release the game-table component (interface 0xcf) of the tracked
-// Leaf: ?OnReplace@CAIStateGroup_GameMaster@@UAEXXZ
+// Leaf: ?OnReplace@CAIStateGroup_GameMaster@@MAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // thing, run the seat base's OnReplace, then clear the creature's interface-0xd2 component pointer at +0xc.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094CA80, length 180 bytes (+ int3 padding). Vtable slot 10.
@@ -147,7 +147,9 @@ struct CAIStateGroup_SeatBase : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_GameMaster : CAIStateGroup_SeatBase {
+    protected:
     virtual void OnReplace();
+    public:
 };
 
 void CAIStateGroup_GameMaster::OnReplace()

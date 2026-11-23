@@ -1,5 +1,5 @@
 // CAIStateGroup_GazeOutside::IsRunnable() -- runnable when the idle scheduler (if any) prefers this group, the
-// Leaf: ?IsRunnable@CAIStateGroup_GazeOutside@@UAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_GazeOutside@@MAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // creature's village reports the right time of day and a free gaze position exists.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00918900, length 186 bytes (+ int3 padding). Vtable slot 11.
@@ -144,7 +144,9 @@ struct CAIStateGroup_Gaze : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_GazeOutside : CAIStateGroup_Gaze {
+    protected:
     virtual bool IsRunnable();
+    public:
 };
 
 bool CAIStateGroup_GazeOutside::IsRunnable()
