@@ -91,7 +91,7 @@ class CTextEntry : public CResourceMethods { public:
     void* Tags[3];                                   // +0x2c retail CArray<CTextTag> (12 bytes)
     CCountedPointer<CBankFileAsyncData> PFileData;   // +0x38
     void* Owner;                                     // +0x40
-    void ReadFromDataStream(CMemoryDataInputStream* stream);   // 0x009C8DE0
+    void ReadFromDataStream(CDataInputStream& stream);         // 0x009C8DE0
 };
 
 class CDataBankTextEntry { public:
@@ -109,7 +109,7 @@ void NGameText::CDataBankTextEntry::BuildText() const
         if (!PText->PFileData->IsFinished())
             PText->PFileData->WaitUntilFinished();
         CMemoryDataInputStream stream(PText->PFileData->GetData(), PText->PFileData->GetDataSize());
-        PText->ReadFromDataStream(&stream);
+        PText->ReadFromDataStream(stream);
         PText->PFileData.Clear();
     }
 }

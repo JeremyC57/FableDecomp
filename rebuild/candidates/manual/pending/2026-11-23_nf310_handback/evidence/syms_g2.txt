@@ -1,0 +1,45 @@
+## 0079b650
+20c20
+< UND ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@0@Z
+---
+> UND ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+## 009689c0
+34c34
+< UND ?HasEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@@Z
+---
+> UND ?HasEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@@Z
+## 004d4acc
+2c2
+< UND ??0CTCUnholyPower@@QAE@PAVCThing@@@Z
+---
+> UND ??0CTCUnholyPower@@QAE@AAVCThing@@@Z
+## 007efe70
+26c26
+< UND ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NPAVCThingCreatureBase@@@Z
+---
+> UND ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z
+## 00a3b730
+3c3
+< UND ?Unlock@CTexture@@QAEXJ@Z
+---
+> UND ?Unlock@CTexture@@QAEXK@Z
+## 0051ec50
+1c1
+< DEF ?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z
+---
+> DEF ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
+## 004c7c60
+3c3
+< UND ?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z
+---
+> UND ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
+## 004c8da0
+8c8
+< UND ?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z
+---
+> UND ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
+## 004c9690
+11c11
+< UND ?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z
+---
+> UND ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z

@@ -14,6 +14,7 @@
 // is `T* p = 0; if (HasTC) p = GetTC;` on a fresh targeted-thing call; HasTC must be `__forceinline` (else the second use is
 // called out of line); the drink is a named local read before the pushes (an inline ParentThing read uses edx).
 #include "fable_compiler.h"
+#include "engine/ETargetingType.h"                 // PDB parameter type of IsTargetedThingOfType (NF310)
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -76,7 +77,7 @@ class CTCTargetingBase { public:                                   // interface 
     virtual CThing* GetTargetedThing();                     // slot 33 (+0x84)
     virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37();
     virtual bool CanInteractWithTarget(long type);          // slot 38 (+0x98)
-    bool IsTargetedThingOfType(long type);                  // 0x007F5A70
+    bool IsTargetedThingOfType(ETargetingType type) const;  // 0x007F5A70
 };
 extern float g_BeerDrunkennessUnit;                         // 0x0126DEAC
 struct CTCDrinker {                                         // interface 0xc3
@@ -103,7 +104,7 @@ void CTCCarriedActionUseGiveBeer::OnActionUse(CThing& thing)
     CTCCarriedActionUseBase::OnActionUse(thing);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
-        if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
+        if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)) {
             if (!targeting->GetTargetedThing()->HasTC(0xc3))
                 return;
             CThing* item = ParentThing;

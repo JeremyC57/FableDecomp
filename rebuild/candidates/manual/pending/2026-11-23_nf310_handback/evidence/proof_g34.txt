@@ -1,0 +1,17 @@
+##### 007f5a70 renames: ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NK@Z=?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+ALL_EQ sections=15 DEF=14 tables=-
+##### 007ed170 renames: ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z=?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+ALL_EQ sections=12 DEF=11 tables=-
+##### 007ed2c0 renames: ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z=?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+ALL_EQ sections=13 DEF=12 tables=-
+##### 007ed560 renames: ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z=?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+ALL_EQ sections=13 DEF=12 tables=-
+##### 007ed870 renames: ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z=?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z=?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+ALL_EQ sections=17 DEF=16 tables=-
+##### 00766050 renames: ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z=?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z
+ALL_EQ sections=10 DEF=9 tables=-
+##### 007660c0 renames: ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NJ@Z=?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z
+ALL_EQ sections=10 DEF=9 tables=-
+##### 00766480 renames: ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NJ@Z=?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z=?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+

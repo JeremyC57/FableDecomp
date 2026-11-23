@@ -1,0 +1,39 @@
+#12 00770fa0 ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+   00770fa0(self) NOOBJ
+   006a16a0 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+   0074e560 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x1
+   0074f350 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+   0074fbb0 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x1
+   007bf790 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x2
+   00844740 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+   00845ce0 NOOBJ
+   0087e860 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x2
+   008b76b0 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x1
+   008c0820 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x1
+   008f3e70 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x1
+   008f40b0 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+   0090e5d0 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+   00915b60 NOOBJ
+   009162f0 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x2
+   0095b3e0 WRONG ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z x1
+   009735d0 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+   00974110 OK ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z x1
+#48 006a7930 ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z
+   006a7930(self) - DEF=WRONG:??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z
+   00512ed0 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   00512f60 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   00615750 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   00617780 NOOBJ
+   00617a00 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   00617a90 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   00617bb0 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   006186f0 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   00618790 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   006c1dd0 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   008abdf0 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+   008adc30 OK ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z x1
+#70 0049e080 ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+   0049e080(self) NOOBJ
+   004164e0 WRONG ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z x1
+   00417001 WRONG ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z x1
+   00417747 OK ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z x1

@@ -53,7 +53,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CBonusItemD
 #pragma auto_inline(on)
 
 class CTCHeroStats { public:
-    void ApplyBonusItemEffects(const CBonusItemDef* def);   // 0x0057C4F1
+    void ApplyBonusItemEffects(const CBonusItemDef& def);   // 0x0057C4F1
 };
 
 class CThing { public:
@@ -103,7 +103,7 @@ void CTCCarriedActionUsePotion::OnActionUse(CThing& thing)
     if (found) {
         CTCHeroStats* stats;
         if (user->GetInterface(&stats, 4))
-            stats->ApplyBonusItemEffects((const CBonusItemDef*)bonus);
+            stats->ApplyBonusItemEffects(*(const CBonusItemDef*)bonus);
     }
     ParentThing->Kill(true);
     if (bonus && --bonus->m_refCount == 0)

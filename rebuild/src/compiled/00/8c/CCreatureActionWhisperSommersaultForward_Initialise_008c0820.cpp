@@ -12,7 +12,7 @@ class CTCBase;
 class CTCParamsBase;
 class CThing;
 class CTCSolidToThing { public:
-    void AddThingNotSolidTo(CThing* thing); // 0x00770FA0
+    void AddThingNotSolidTo(const CThing* thing); // 0x00770FA0
 };
 class CThing { public:
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z

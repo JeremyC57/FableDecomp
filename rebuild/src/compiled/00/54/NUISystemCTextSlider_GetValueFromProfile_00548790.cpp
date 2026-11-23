@@ -53,7 +53,7 @@ public:
     bool GetShowTargetingStatus() const;                         // 0x00548740
     bool IsSubtitlingEnabled() const;                         // 0x0048DB35
     long GetMaxResolution() const;                        // 0x00408900
-    long GetMaxAntialiasing() const;                      // 0x00409090
+    unsigned long GetMaxAntialiasing() const;             // 0x00409090
     long GetMaxRefreshRate() const;                       // 0x00406890
     bool GetOption17() const { return UseSecondProfile ? Profile2Option17 : Profile1Option17; }
 public:

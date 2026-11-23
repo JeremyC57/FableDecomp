@@ -15,6 +15,7 @@
 // copied out into a register-held holder released at the end) with a same-TU GetSubDef stand-in so the out slot is shared
 // with the interface keys; the stats come from the out-parameter GetInterface (component in eax), reusing the user map.
 #include "fable_compiler.h"
+#include "engine/ETargetingType.h"                 // PDB parameter type of IsTargetedThingOfType (NF310)
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -90,7 +91,7 @@ class CTCTargetingBase { public:                                   // interface 
     virtual CThing* GetTargetedThing();                     // slot 33 (+0x84)
     virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37();
     virtual bool CanInteractWithTarget(long type);          // slot 38 (+0x98)
-    bool IsTargetedThingOfType(long type);                  // 0x007F5A70
+    bool IsTargetedThingOfType(ETargetingType type) const;  // 0x007F5A70
 };
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
@@ -139,7 +140,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CBonusItemDef>* out)
 }
 #pragma auto_inline(on)
 class CTCHeroStats { public:
-    void ApplyBonusItemEffects(CBonusItemDef* def);         // 0x0057C4F1
+    void ApplyBonusItemEffects(const CBonusItemDef& def);         // 0x0057C4F1
 };
 struct CTCCarriedActionUseShow : CTCCarriedActionUseBase {
     virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingAICreature*))
@@ -152,7 +153,7 @@ void CTCCarriedActionUseShow::OnActionUse(CThing& thing)
     ParentThing->SetAsGameStatePersisted(false);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
-        if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
+        if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)) {
             CThing* item = ParentThing;
             user->SetCurrentAction(&CCreatureAction_ShowItem((CThingCreatureBase*)user, targeting->GetTargetedThing(), item));
             CDefClassBase* itemDef = ParentThing->PDef;
@@ -161,7 +162,7 @@ void CTCCarriedActionUseShow::OnActionUse(CThing& thing)
             CDefHolder<CBonusItemDef> def(out.Object);
             CTCHeroStats* stats;
             if (found && user->GetInterface(&stats, 4))
-                stats->ApplyBonusItemEffects(def.Object);
+                stats->ApplyBonusItemEffects(*def.Object);
             return;
         }
     }

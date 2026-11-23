@@ -1,0 +1,44 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+0x0051EC50	CThingManager	AddToUpdateList	?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z	CThingManager::AddToUpdateList	?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z	Ego_r + FableWin name sets (AAVCThing); the self parameter retyped CThing* -> CThing& with the body reading through the reference (bytes equal, MATCH both sides, ALL_EQ) and a full mangled Leaf (was the bare AddToUpdateList); every landed binder of the old PAV spelling (0x004C7C60, 0x004C8DA0, 0x004C9690: the full exe census) moves in the same landing (ruling NF304 Q6); 0x004C7C40 already bound the PDB spelling (unresolved at HEAD, resolved now)
+0x007F5A70	CTCTargetingBase	IsTargetedThingOfType	?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z	CTCTargetingBase::IsTargetedThingOfType	?IsTargetedThingOfType@CTCTargetingBase@@QBE_NK@Z	Ego_r + FableWin name sets (W4ETargetingType, const); engine/CTCTargetingBase.h lines 39 / 112 declare it so; the parameter retyped `unsigned long` -> the shared engine/ETargetingType.h enum (NF300 Q1 / NF304 Q6; bytes equal, RELOCATION_MATCH both sides, ALL_EQ) and a full mangled Leaf (was the bare IsTargetedThingOfType); no landed row bound the old QBE_NK spelling (exe census compiled); the four QAE_NJ binders move with it
+0x006A7930	CThingFilter_InMap	operator()	??RCThingFilter_InMap@@QBE_NABVCThing@@@Z	CThingFilter_InMap::operator()	??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z	Ego_r + FableWin name sets (ABVCThing); the self parameter retyped CThing* -> const CThing& (body through the reference, the const GetPhysicsTC overload of engine/CThing.h: FableWin ?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ, its pick-any copy byte-equal to 0x0050A650's, ruling NF304 Q1) and a full mangled Leaf (was the bare ??RCThingFilter_InMap); MATCH both sides, ALL_EQ; every compiled census binder already bound the PDB spelling at HEAD (the table's PAV witness 0x006186F0 is stale: its source and HEAD object take const CThing&); 0x00617780 (NF308 / NF309 row) source-read: const CThing&
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00713EE0	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z	?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	0x006CBAC0
+0x00713EE0	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z	0x00753E90
+0x007E1EB0	?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z	?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z	0x0057C4F1
+0x007ED870	?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z	?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z	0x0057C4F1
+0x007EDD60	?ApplyBonusItemEffects@CTCHeroStats@@QAEXPBVCBonusItemDef@@@Z	?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z	0x0057C4F1
+0x007F4D50	?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXJ_N@Z	?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z	0x005EEA9B
+0x0079B650	?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@0@Z	?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z	0x0079ACC0
+0x009689C0	?HasEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@@Z	?HasEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@@Z	0x007BA8C0
+0x004D4ACC	??0CTCUnholyPower@@QAE@PAVCThing@@@Z	??0CTCUnholyPower@@QAE@AAVCThing@@@Z	0x007941D0
+0x007EFE70	?OnWallMountUseAction@CTCWallMountEffects@@QAE_NPAVCThingCreatureBase@@@Z	?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z	0x007DF4B0
+0x00A3B730	?Unlock@CTexture@@QAEXJ@Z	?Unlock@CTexture@@QAEXK@Z	0x009F9DE0
+0x004C7C60	?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z	?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z	0x0051EC50
+0x004C8DA0	?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z	?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z	0x0051EC50
+0x004C9690	?AddToUpdateList@CThingManager@@QAEXPAVCThing@@@Z	?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z	0x0051EC50
+0x007ED170	?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z	?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z	0x007F5A70
+0x007ED2C0	?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z	?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z	0x007F5A70
+0x007ED560	?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z	?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z	0x007F5A70
+0x007ED870	?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z	?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z	0x007F5A70
+0x00766480	?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NJ@Z	?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z	0x007660C0
+0x00766480	?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z	?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z	0x00766050
+0x009C8FB0	?ReadFromDataStream@CTextEntry@NGameText@@QAEXPAVCMemoryDataInputStream@@@Z	?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z	0x009C8DE0
+0x00942A00	?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@PAVCWorld@@_N@Z	?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z	0x0065A8EE
+0x00842E80	?TriggerMe@CThingPhysicalSwitch@@QAEXPAVCThingCreatureBase@@@Z	?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z	0x0083DDC0
+0x00548790	?GetMaxAntialiasing@CUserProfileManager@@QBEJXZ	?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ	0x00409090
+0x004164E0	?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z	?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z	0x0049E080
+0x0088F920	?AutoSaveQuestStart@CWorld@@QAEXXZ	?AutoSaveQuestStart@CWorld@@QAE_NXZ	0x004A0CD0
+0x0065C781	?PopulateRegionWithVillagers@CWorldMap@@QAEXPAVCThing@@@Z	?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z	0x00502E90
+0x0050AF10	?GetMapNavigationAreaInit@CWorldMap@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z	?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z	0x0050A650
+0x004022B0	?GlobalRegisterPlayer@CXMVPlayer@@SAXXZ	?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ	0x009BD020
+0x0074E560	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x0074FBB0	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x0087E860	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x008B76B0	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x008C0820	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x008F3E70	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x009162F0	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x0095B3E0	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	0x00770FA0
+0x00417001	?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z	?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z	0x0049E080

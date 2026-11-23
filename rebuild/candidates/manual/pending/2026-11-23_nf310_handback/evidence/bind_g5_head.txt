@@ -1,0 +1,23 @@
+#28 0065a8ee ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+   0065a8ee(self) - DEF=OK:?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+   0090fd20 WRONG ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThing@@PAVCWorld@@_N@Z x1
+   00942a00 WRONG ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@PAVCWorld@@_N@Z x1
+#32 009c8de0 ?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z
+   009c8de0(self) - DEF=OK:?ReadFromDataStream@CTextEntry@NGameText@@QAEXAAVCDataInputStream@@@Z
+   009c8fb0 WRONG ?ReadFromDataStream@CTextEntry@NGameText@@QAEXPAVCMemoryDataInputStream@@@Z x1
+#36 004c8310 ??1CThing@@MAE@XZ
+   004c8310(self) - DEF=OK:??1CThing@@MAE@XZ
+   004cd3e0 WRONG ?CThing_dtor@@YIXPAVCThing@@@Z x1
+   006a5d50 WRONG ??1CThing@@UAE@XZ x1
+   00836a50 WRONG ??1CThing@@UAE@XZ x1
+   00838740 WRONG ?Destroy@CThingNoise@@QAEXXZ x1
+#37 004c9030 ??0CThing@@IAE@K@Z
+   004c9030(self) - DEF=WRONG:??0CThing@@QAE@K@Z
+   004ca1d0 NOOBJ
+   005296b0 NOOBJ
+   008367b0 WRONG ??0CThing@@QAE@K@Z x1
+   00838530 WRONG ??0CThing@N_004c9030@@QAE@J@Z x1
+   008385b0 WRONG ??0CThing@@QAE@K@Z x1
+#60 0083ddc0 ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+   0083ddc0(self) - DEF=OK:?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z
+   00842e80 WRONG ?TriggerMe@CThingPhysicalSwitch@@QAEXPAVCThingCreatureBase@@@Z x1

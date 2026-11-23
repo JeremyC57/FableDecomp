@@ -11,6 +11,7 @@
 // Shape: HasTC + one-ternary GetTC: the abilities component is a named local (esi) and the showable component lands in ecx;
 // the def is read from its out pointer right after GetSubDef into edi and released by hand inside the block.
 #include "fable_compiler.h"
+#include "engine/EHeroAbility.h"                 // PDB enum of CAbilityDef::Ability / OnSpecialAbilityUsed (NF310)
 struct CTCBaseInterface;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 class CTCBase;
@@ -27,7 +28,7 @@ template <class T> class CDefPointer { public:
 };
 class CAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
-    long Ability;                               // +0x28
+    EHeroAbility Ability;                       // +0x28 (PDB CAbilityDef::Ability is EHeroAbility; NF304 Q2)
 };
 class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAbilityDef>* out) const;   // 0x005936C2
@@ -68,7 +69,7 @@ public:
 };
 class CTCInventoryAbilities {
 public:
-    void OnSpecialAbilityUsed(long ability, bool used);   // 0x005EEA9B
+    void OnSpecialAbilityUsed(EHeroAbility ability, bool used);   // 0x005EEA9B
 };
 class CTCShowableItem {                         // interface type 0x1a
 public:

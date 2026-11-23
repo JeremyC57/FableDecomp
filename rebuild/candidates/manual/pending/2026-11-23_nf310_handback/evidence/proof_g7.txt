@@ -1,0 +1,21 @@
+##### 0074e560 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=21 DEF=20 tables=-
+##### 0074fbb0 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=8 DEF=7 tables=-
+##### 0087e860 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=29 DEF=28 tables=-
+##### 008b76b0 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=27 DEF=26 tables=-
+##### 008c0820 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=5 DEF=4 tables=-
+##### 008f3e70 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=23 DEF=22 tables=-
+##### 009162f0 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=14 DEF=13 tables=-
+##### 0095b3e0 renames: ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z=?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+ALL_EQ sections=26 DEF=25 tables=-
+##### 006a7930 renames: ??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z=??RCThingFilter_InMap@@QBE_NABVCThing@@@Z ?GetPhysicsTC@CThing@@QAEPAVCTCPhysicsBase@@XZ=?GetPhysicsTC@CThing@@QBEPBVCTCPhysicsBase@@XZ
+ALL_EQ sections=3 DEF=2 tables=-
+##### 00417001 renames: ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z=?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+ALL_EQ sections=8 DEF=7 tables=-
+

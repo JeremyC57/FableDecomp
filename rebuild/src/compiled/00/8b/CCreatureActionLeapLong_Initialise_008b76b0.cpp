@@ -32,7 +32,7 @@ class CTCCreatureNavigation { public:                        // interface 7
     bool IsPosNavLineOfSightTo(const C3DVector& pos) const; // 0x006CBA20
 };
 class CTCSolidToThing { public:
-    void AddThingNotSolidTo(CThing* thing);           // 0x00770FA0
+    void AddThingNotSolidTo(const CThing* thing);           // 0x00770FA0
 };
 
 class CBaseObject;

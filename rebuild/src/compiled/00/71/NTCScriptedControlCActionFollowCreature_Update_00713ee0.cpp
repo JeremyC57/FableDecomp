@@ -110,11 +110,11 @@ class CNavigationInput { public:
     long  MovementType;                         // +0x10
     float Speed;                                // +0x14
 };
-struct CCreatureNavOutput {
+class CTCCreatureNavigation { public: class CCreatureNavOutput { public:   // interface 7; PDB CTCCreatureNavigation::CCreatureNavOutput (class key V, nested; NF310 rider, as 0x00714900)
     long Status;                                // 0 arrived, 1 failed, 2 moving
     C3DVector Offset;
 };
-class CTCCreatureNavigation { public:                  // interface 7
+public:
     unsigned char _pad[0x56];
     bool Active;                                // +0x56
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
@@ -122,7 +122,7 @@ class CTCCreatureNavigation { public:                  // interface 7
     void SetNavigationTarget(const CNavigationInput& input);  // 0x006CB960 (PDB ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z)
 };
 class CTCLook { public:                                // interface 0x43
-    void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
+    void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b) const;// 0x007534B0  // NF35: Ego_r + FableWin ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z (const)
 };
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0001f)
@@ -232,7 +232,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     input.Proximity = radii;
     input.MovementType = 0;
     input.Speed = finalSpeed;
-    CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, false);
+    CTCCreatureNavigation::CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, false);
     nav->SetNavigationTarget(input);
     nav->Active = true;
     if (!static_cast<CThingCreatureBase*>(PTCScript->ParentThing)->IsPerformingAnyAction() && output.Status == 2
@@ -240,7 +240,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
         C3DVector lookPos = output.Offset + PTCScript->ParentThing->PPhysics->Position;
         CTCLook* look;
         if (PTCScript->ParentThing->GetInterface(&look, 0x43)) {
-            look->LookAtPos(&lookPos, 0x21);
+            look->LookAtPos(lookPos, 0x21);
             if (look->IsPosInViewRange(lookPos, 0.41666666f, false, false))
             {
                 CTCPhysicsBase* phys = PTCScript->ParentThing->PPhysics;

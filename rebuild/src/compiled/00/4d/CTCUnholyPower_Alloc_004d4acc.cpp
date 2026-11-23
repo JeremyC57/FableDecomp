@@ -13,10 +13,10 @@ class CThing;
 
 class CTCUnholyPower { public:
     unsigned char _body[0xd0];       // sizeof(CTCUnholyPower) = 0xd0
-    CTCUnholyPower(CThing* owner);                   // 0x007941D0
+    CTCUnholyPower(CThing& owner);                   // 0x007941D0
 };
 
 CTCUnholyPower* __fastcall CTCUnholyPower_Alloc(CThing* owner)
 {
-    return new CTCUnholyPower(owner);
+    return new CTCUnholyPower(*owner);
 }

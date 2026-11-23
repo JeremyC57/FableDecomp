@@ -27,7 +27,7 @@ struct CLockedRect {
 };
 class CTexture { public:
     CLockedRect Lock(long level, unsigned long flags);      // 0x009FA450
-    void Unlock(long level);                                // 0x009F9DE0
+    void Unlock(unsigned long level);                       // 0x009F9DE0
 };
 struct CVideoSys {
     unsigned char _pad00[0x64];

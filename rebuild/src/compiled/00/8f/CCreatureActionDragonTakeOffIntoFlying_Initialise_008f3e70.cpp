@@ -30,7 +30,7 @@ class CTCSolidToThing;
 class CThingPlayerCreature : public CThing { };
 
 class CTCSolidToThing { public:
-    void AddThingNotSolidTo(CThing* thing); // 0x00770FA0
+    void AddThingNotSolidTo(const CThing* thing); // 0x00770FA0
 };
 struct CTCCreatureFlags9 {                  // the interface-9 component: one byte at +0x10 cleared by this action
     unsigned char _pad[0x10];

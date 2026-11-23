@@ -9,7 +9,7 @@
 class CThing;
 
 class CThingManager { public:
-    void AddToUpdateList(CThing* thing);             // 0x0051EC50
+    void AddToUpdateList(CThing& thing);             // 0x0051EC50
 };
 
 #define FABLE_RETAIL_CTHING
@@ -21,5 +21,5 @@ void CThing::SetForceFrameUpdate(bool force)
 {
     ForceFrameUpdate = force;
     if (ForceFrameUpdate && !Dead)
-        CThing::GetPCurrentThingManager()->AddToUpdateList(this);
+        CThing::GetPCurrentThingManager()->AddToUpdateList(*this);
 }

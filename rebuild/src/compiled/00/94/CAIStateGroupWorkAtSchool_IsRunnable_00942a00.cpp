@@ -253,7 +253,7 @@ struct CThingSchoolKid : CThing {
 };
 class CThingAICreature;
 class CTCVillage { public:
-    bool IsTimeToGoToSchool(CThingAICreature* creature, CWorld* world, bool force);   // 0x0065A8EE
+    bool IsTimeToGoToSchool(CThingAICreature* creature, const CWorld& world, bool force);   // 0x0065A8EE
 };
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
     CThingSchoolKid* GetCreature() const { return (CThingSchoolKid*)PBrain->PCreature; }
@@ -272,7 +272,7 @@ bool CAIStateGroup_WorkAtSchool::IsRunnable()
                     CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->second;
                     if (((CTCVillageMember*)schoolVillager)->GetPVillage()) {
                         CThingAICreature* creature = (CThingAICreature*)PBrain->PCreature;
-                        bool result = ((CTCVillageMember*)schoolVillager)->GetPVillage()->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), false);
+                        bool result = ((CTCVillageMember*)schoolVillager)->GetPVillage()->IsTimeToGoToSchool(creature, PeekWorld(), false);
                         return result;
                     }
                 }

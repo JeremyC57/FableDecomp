@@ -36,7 +36,7 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 class CThingCreatureBase;
 class CTCTavernBar { public:                           // interface 0xb9
     bool GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot);  // 0x007BA3C0
-    bool HasEmptyJugSlot(CThing* creature);     // 0x007BA8C0
+    bool HasEmptyJugSlot(CThing& creature);     // 0x007BA8C0
 };
 class CCreatureActionBase { public:
     virtual void v00();
@@ -102,7 +102,7 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
         Terminate();
         return false;
     }
-    if (GetPaymentRequest() || bar->HasEmptyJugSlot(GetCreature())) {
+    if (GetPaymentRequest() || bar->HasEmptyJugSlot(*GetCreature())) {
         FreeBarPoint();
         SetPushableByHero(true);
         return true;
@@ -110,7 +110,7 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
     float loopTime = GFFloatRandom(9.0f, GetPWorldSeed()) + 1.0f;
     long result;
     do {
-        if (GetPaymentRequest() || bar->HasEmptyJugSlot(GetCreature())) {
+        if (GetPaymentRequest() || bar->HasEmptyJugSlot(*GetCreature())) {
             FreeBarPoint();
             SetPushableByHero(true);
             return true;

@@ -45,7 +45,7 @@ struct CDefPointer {                             // CDefPointer<const CThingBase
 };
 class CThing;
 class CThingManager { public:
-    void AddToUpdateList(CThing* thing);         // 0x0051EC50
+    void AddToUpdateList(CThing& thing);         // 0x0051EC50
 };
 class CMainGameComponent {
 protected:
@@ -140,7 +140,7 @@ void CThing::InitialActivate()
 {
     ++InitialisationStage;
     Activated = true;
-    CThing::GetPCurrentThingManager()->AddToUpdateList(this);
+    CThing::GetPCurrentThingManager()->AddToUpdateList(*this);
     CComponentVector components(Components);
     SComponentPair* end = components._M_finish;
     for (SComponentPair* it = components._M_start; it != end; ++it) {

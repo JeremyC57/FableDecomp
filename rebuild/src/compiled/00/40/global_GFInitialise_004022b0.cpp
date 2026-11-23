@@ -66,7 +66,7 @@ class CDisplayManager
 struct CXMVPlayer
 {
     // Registers the XMV movie player with the engine's video playback hooks.
-    static void GlobalRegisterPlayer();
+    static void __fastcall GlobalRegisterPlayer();   // PDB SIXXZ (static __fastcall; no arguments, same call bytes)
 };
 
 // Accessor for the engine root object.

@@ -1,0 +1,49 @@
+# out-of-line definitions (column-0 lines) of every touched Class::Method in rebuild/src/compiled (comments excluded)
+## CThingManager::AddToUpdateList(
+CThingManager_AddToUpdateList_0051ec50.cpp:29:void CThingManager::AddToUpdateList(CThing* thing)
+## CTCTargetingBase::IsTargetedThingOfType(
+CTCTargetingBase_IsTargetedThingOfType_007f5a70.cpp:32:bool CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const
+## CThingFilter_InMap::operator()(
+CThingFilterInMap_operator_006a7930.cpp:33:bool CThingFilter_InMap::operator()(CThing* thing) const
+## CTCHeroStats::ApplyBonusItemEffects(
+CTCHeroStats_ApplyBonusItemEffects_0057c4f1.cpp:84:void CTCHeroStats::ApplyBonusItemEffects(const CBonusItemDef& bonus_item_def)
+## CTCInventoryAbilities::OnSpecialAbilityUsed(
+CTCInventoryAbilities_OnSpecialAbilityUsed_005eea9b.cpp:140:void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool fromQuickAccess)
+## CTCSummonSpell::CreateMinion(
+CTCSummonSpell_CreateMinion_0079acc0.cpp:226:void CTCSummonSpell::CreateMinion(const C3DVector& pos, const C3DVector* direction)
+## CTCTavernBar::HasEmptyJugSlot(
+CTCTavernBar_HasEmptyJugSlot_007ba8c0.cpp:73:bool CTCTavernBar::HasEmptyJugSlot(CThing& user)
+## CTCUnholyPower::CTCUnholyPower(
+CTCUnholyPower_CTCUnholyPower_007941d0.cpp:169:CTCUnholyPower::CTCUnholyPower(CThing& thing)
+## CTCWallMountEffects::OnWallMountUseAction(
+CTCWallMountEffects_OnWallMountUseAction_007df4b0.cpp:122:bool CTCWallMountEffects::OnWallMountUseAction(CThingCreatureBase& creature)
+## CTexture::Unlock(
+CTexture_LoadFromDataStreamToPreallocatedSurface_009fb750.cpp:98:void CTexture::Unlock(unsigned long level)
+## CTextEntry::ReadFromDataStream(
+NGameTextCTextEntry_ReadFromDataStream_009c8de0.cpp:23:void NGameText::CTextEntry::ReadFromDataStream(CDataInputStream& info_stream)
+## CTCVillage::IsTimeToGoToSchool(
+CTCVillage_IsTimeToGoToSchool_0065a8ee.cpp:132:bool CTCVillage::IsTimeToGoToSchool(CThingAICreature* child, const CWorld& world, bool run)
+## CThingPhysicalSwitch::TriggerMe(
+CThingPhysicalSwitch_TriggerMe_0083ddc0.cpp:64:void CThingPhysicalSwitch::TriggerMe(CThingCreatureBase& triggerer)
+## CUserProfileManager::GetMaxAntialiasing(
+CUserProfileManager_GetMaxAntialiasing_00409090.cpp:56:unsigned long CUserProfileManager::GetMaxAntialiasing() const
+## CWorld::RenderUpdate(
+CWorld_RenderUpdate_0049e080.cpp:75:void CWorld::RenderUpdate(const CInterpolationInfo* info)
+## CWorld::AutoSaveQuestStart(
+CWorld_AutoSaveQuestStart_004a0cd0.cpp:46:bool CWorld::AutoSaveQuestStart()
+## CWorldMap::PopulateRegionWithVillagers(
+## CWorldMap::GetMapNavigationAreaInit(
+CWorldMap_GetMapNavigationAreaInit_0050a650.cpp:182:void CWorldMap::GetMapNavigationAreaInit(long map_no,const C2DBoxI* pworld_box,const CCharString& section_na
+## CXMVPlayer::GlobalRegisterPlayer(
+CXMVPlayer_GlobalRegisterPlayer_009bd020.cpp:70:void __fastcall CXMVPlayer::GlobalRegisterPlayer()
+## CTCSolidToThing::AddThingNotSolidTo(
+CTCSolidToThing_AddThingNotSolidTo_00770fa0.cpp:45:void CTCSolidToThing::AddThingNotSolidTo(const CThing* thing)
+## CTCLook::LookAtPos(
+CTCLook_LookAtPos_00753e90.cpp:46:void CTCLook::LookAtPos(const C3DVector& pos_to_look_at, long look_flags)
+CTCProjectileTrap_UpdateTrap_00787e12.cpp:43:__declspec(noinline) void CTCLook::LookAtPos(const C3DVector& position, long priority)
+## GetNextNavPosOnRoute(
+## CTCObjectAugmentations::HasCombinationOfAugmentations(
+CTCObjectAugmentations_HasCombinationOfAugmentations_00766050.cpp:74:bool CTCObjectAugmentations::HasCombinationOfAugmentations(long typeMask) const
+## CTCObjectAugmentations::HasAugmentationOfType(
+CTCObjectAugmentations_HasAugmentationOfType_007660c0.cpp:74:bool CTCObjectAugmentations::HasAugmentationOfType(long type) const
+## reading: each name is defined only by its own self row, except 0x00787E12 (pre-existing same-TU noinline LookAtPos in the PDB spelling, NF307) and 0x009FB750 (CTexture::Unlock(unsigned long), compiled: DEF ?Unlock@CTexture@@QAEXK@Z; queue nf86 / nf88)

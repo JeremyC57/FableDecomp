@@ -18,6 +18,7 @@
 //   local read before the targeted-thing vcall (frees eax for the vptr: `mov eax,[esi]`); the non-const GetTC forms the
 //   map pointer before the key local (`lea ecx,[key]` after `lea esi,[thing+44h]` order flips otherwise).
 #include "fable_compiler.h"
+#include "engine/ETargetingType.h"                 // PDB parameter type of IsTargetedThingOfType (NF310)
 class CTCBase;
 class CThing;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -71,7 +72,7 @@ class CTCTargetingBase { public:                                   // interface 
     virtual CThing* GetTargetedThing();                     // slot 33 (+0x84)
     virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37();
     virtual bool CanInteractWithTarget(long type);          // slot 38 (+0x98)
-    bool IsTargetedThingOfType(long type);                  // 0x007F5A70
+    bool IsTargetedThingOfType(ETargetingType type) const;  // 0x007F5A70
 };
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
@@ -94,7 +95,7 @@ void CTCCarriedActionUseGive::OnActionUse(CThing& thing)
     CTCCarriedActionUseBase::OnActionUse(thing);
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
-        if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
+        if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)) {
             CThing* item = ParentThing;
             user->SetCurrentAction(&CCreatureAction_GiveItemToThing(*(CThingCreatureBase*)user,
                                                                     *targeting->GetTargetedThing(), *item));

@@ -1,0 +1,22 @@
+## HEAD set: H_0079b650.obj H_009689c0.obj H_004d4acc.obj H_007efe70.obj H_00a3b730.obj H_0051ec50.obj H_004c7c60.obj H_004c8da0.obj H_004c9690.obj 0079acc0.obj 0079b9d0.obj 007ba8c0.obj 007941d0.obj 009f9de0.obj 0071bcd0.obj 00a68910.obj 00b3c5d0.obj 00b67270.obj 004c7c40.obj
+duplicates 2
+  DUP 007941d0.obj ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z in 0079acc0.obj;
+  DUP 007941d0.obj ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z in 0079acc0.obj;
+UNRESOLVED 1 ??0CTCUnholyPower@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??1CTCUnholyPower@@UAE@XZ
+UNRESOLVED 1 ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@0@Z
+UNRESOLVED 1 ?HasEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@@Z
+UNRESOLVED 1 ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NPAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?PlaySoundW@CTCUnholyPower@@AAEKABVCCharString@@_N@Z
+UNRESOLVED 1 ?Unlock@CTexture@@QAEXJ@Z
+UNRESOLVED 4 ?Unlock@CTexture@@QAEXK@Z
+## new set: 0079b650.obj 009689c0.obj 004d4acc.obj 007efe70.obj 00a3b730.obj 0051ec50.obj 004c7c60.obj 004c8da0.obj 004c9690.obj 0079acc0.obj 0079b9d0.obj 007ba8c0.obj 007941d0.obj 009f9de0.obj 0071bcd0.obj 00a68910.obj 00b3c5d0.obj 00b67270.obj 004c7c40.obj
+duplicates 2
+  DUP 007941d0.obj ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z in 0079acc0.obj;
+  DUP 007941d0.obj ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z in 0079acc0.obj;
+UNRESOLVED 1 ??1CTCUnholyPower@@UAE@XZ
+UNRESOLVED 1 ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ?PlaySoundW@CTCUnholyPower@@AAEKABVCCharString@@_N@Z
+UNRESOLVED 5 ?Unlock@CTexture@@QAEXK@Z
+LK_DONE

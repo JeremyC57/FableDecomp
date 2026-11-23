@@ -33,7 +33,7 @@ class CInterpolationInfo { public:                        // 0x34 bytes
     long                  WFServerCurrentTime;     // +0x30
     CInterpolationInfo();                          // 0x00415A60
 };
-class CWorld { public: void RenderUpdate(CInterpolationInfo* info); };                          // 0x0049E080
+class CWorld { public: void RenderUpdate(const CInterpolationInfo* info); };                          // 0x0049E080
 class CDisplayEngine { public: void Render(const CInterpolationInfo* info, bool worldUpdateTurn, bool b); };   // 0x00435F70 (NF166 q10180: Ego_r.pdb / FableWin.pdb public Render; was DoRender)
 class CGameEventPackageSet { public: long _body[0x13a14 / 4]; CGameEventPackageSet(); };   // 0x009F1A80
 struct CNetworkClient { long _body[0x2680 / 4]; CNetworkClient(); };                // 0x00419323

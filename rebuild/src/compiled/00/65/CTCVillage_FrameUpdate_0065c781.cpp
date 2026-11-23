@@ -120,7 +120,7 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 class CWorldMap { public:
-    void PopulateRegionWithVillagers(CThing* village);   // 0x00502E90
+    void PopulateRegionWithVillagers(CThing& village);   // 0x00502E90
 };
 class CTCLight { public:
     unsigned char _pad00[0x1c];
@@ -198,7 +198,7 @@ void CTCVillage::FrameUpdate()
     ReleaseInvalidTasks();
     UpdateCrowds();
     if (g_RepopulateVillages) {
-        GetWorldMap().PopulateRegionWithVillagers(ParentThing);
+        GetWorldMap().PopulateRegionWithVillagers(*ParentThing);
         g_RepopulateVillages = false;
     }
     bool torchesUpdated = false;

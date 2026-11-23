@@ -1,0 +1,29 @@
+## 00713ee0
+28c28
+< UND ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z
+---
+> UND ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+33c33
+< UND ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z
+---
+> UND ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+## 007e1eb0
+12c12
+< UND ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z
+---
+> UND ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+## 007ed870
+20c20
+< UND ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z
+---
+> UND ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+## 007edd60
+7c7
+< UND ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPBVCBonusItemDef@@@Z
+---
+> UND ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+## 007f4d50
+13c13
+< UND ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXJ_N@Z
+---
+> UND ?OnSpecialAbilityUsed@CTCInventoryAbilities@@QAEXW4EHeroAbility@@_N@Z

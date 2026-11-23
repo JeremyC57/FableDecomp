@@ -1,0 +1,142 @@
+idx	address	class	tier	status	rows_changed	spellings_before_after	note
+1	0x0076CC00	CTCEnemy	T1	skipped-held		2 (unchanged)	the only wrong binder 0x0065A852 (PAV declaration, NF307 source read) witnesses NF309 entry 0x0076D1B0 (AddEnemyThing), and the self 0x0076CC00 witnesses NF308 entry 0x0076D7B0: stayed off; census 0x0089C080
+2	0x0057C4F1	CTCHeroStats	T1	done	007e1eb0,007ed870,007edd60	3 -> 1	binders 0x007E1EB0 / 0x007ED870 (the UNTABLED second PAV binder, compiled census): `CBonusItemDef* def` -> `const CBonusItemDef& def` + `*def.Object` at the call; 0x007EDD60: `const CBonusItemDef*` -> `const CBonusItemDef&` + `*(const CBonusItemDef*)bonus` (its pre-existing cast kept, the class is forward-declared there): RELOCATION_MATCH, ALL_EQ; census 0x007EDBE0 / 0x00847BE0 and the self 0x0057C4F1 bind / define the PDB spelling (compiled, bind_g1). NF307's held entry 22 (its binders were NF305 / NF306 witnesses; both landed)
+3	0x005EEA9B	CTCInventoryAbilities	T1	done	007f4d50	2 -> 1	binder 0x007F4D50: includes the shared engine/EHeroAbility.h (+1 line), `long Ability` member of its local CAbilityDef model -> EHeroAbility (Ego_r struct layout: CAbilityDef +0x28 Ability is EHeroAbility; ruling NF304 Q2), declaration (EHeroAbility, bool): RELOCATION_MATCH, ALL_EQ, ppdiff_g1 shows only the enum, the member and the parameter type; census 0x005EED4C and the self 0x005EEA9B bind / define the PDB spelling (compiled). NF307's held entry 29
+4	0x005D8E90	CTCInventoryItem	T1	skipped-held		2 (unchanged)	the only wrong binder 0x00522880 witnesses NF308 entry 0x00521EB0 (SaveEntitiesToScript): stayed off (fix: `const CThing* GetInventoryOwner() const`, NF307 source read); census 0x006DEEE0 / 0x00897FA0
+5	0x00766050	CTCObjectAugmentations	T1	done-partial	00766480	2 -> 2	ruling NF307 D3 unit tried in full (held/00766050.cpp, held/007660c0.cpp: selves retyped to the shared engine/EObjectAugmentationType.h enum with full Leaf lines, RELOCATION_MATCH, ALL_EQ) but the link shows NEW duplicates: 0x00839100 and 0x007677E0 include engine/CTCObjectAugmentations.h (FABLE_RETAIL_AUGMENTATION_PARTICLES branch) and emit pick-any COMDAT copies of both PDB names (bytes equal to the selves; relocations differ only in the GetSubDef spelling: the selves call their same-TU stand-in CThingBaseDef::GetSubDef, the includers the header's CDefClassBase::GetSubDef<CAugmentationDef>), so a strong self under the PDB name clashes (GOTCHAS 427). Landed instead (NF302 Q2): binder 0x00766480 alone: includes the enum header (+1 line), both declarations take EObjectAugmentationType, `(EObjectAugmentationType)(FLAME | LIGHTNING)` for 0xC and FLAME / LIGHTNING for 4 / 8 (D3): RELOCATION_MATCH, ALL_EQ; it now resolves to the includers' COMDATs (link_g4b: no new duplicate, nothing unresolved). The selves keep their QBE_NJ stand-in leaves with no binder left: queued T3 (nf86 / nf88 pick-any self port). Decision D1
+6	0x007660C0	CTCObjectAugmentations	T1	done-partial	00766480	2 -> 2	as entry 5 (same binder row, same held self variant 0x007660C0; census 0x007677E0 / 0x007BFA90 bind the PDB spelling, compiled)
+7	0x006B0210	CTCPhysicsBase	T1	skipped-held		2 (unchanged)	the only PAV binder 0x00846100 (`ApplyAcceleration(C3DVector*)`, `&velocity`) witnesses an NF308 / NF309 entry: stayed off (fix: `const C3DVector&` + drop the `&`; source read); the other 19 census rows declare / call the PDB reference form (source read, not compiled)
+8	0x006B0460	CTCPhysicsBase	T1	skipped-held		2 (unchanged)	the only wrong binder 0x006E1620 (QAE + pointer) witnesses an NF308 / NF309 entry; census 0x004BE4E0 (off limits) and 0x00703590 (a witness too) declare the PDB form: stayed off
+9	0x00772120	CTCShop	T1	skipped-port		2 (unchanged)	binder 0x00946E70 declares RemoveShopper(CThing*) and passes PBrain->PCreature (a CThing* of its local brain model); the PDB takes CThingCreatureBase*: a cast or a brain / creature model port (NF307 entry 12 precedent)
+10	0x00773C00	CTCShop	T1	skipped-port		2 (unchanged)	PDB takes the NESTED enum CTCShop::ESTOCK_STATE (`W4ESTOCK_STATE@1@`); the self 0x00773C00 and binders 0x00773E10 / 0x007751A0 / 0x00927DF0 / 0x00927EA0 / 0x009685C0 declare `long` on local CTCShop models (0x00969470 is a witness of NF308 / NF309): each needs the nested enum (a new local enum model, beyond NF300 Q1) or the shared CTCShop header; 0x00927F30 already uses CTCShop::STOCKED_*
+11	0x007751A0	CTCShop	T1	skipped-port		2 (unchanged)	binder 0x00799790 declares SetShopKeeper(CThing*) and passes ParentThing (CThing*); the PDB takes CThingCreatureBase*: needs a cast or a model port
+12	0x00770FA0	CTCSolidToThing	T1	done-partial	0074e560,0074fbb0,0087e860,008b76b0,008c0820,008f3e70,009162f0,0095b3e0	2 -> 2	eight UNTABLED PAV binders (exe census, compiled): `CThing*` -> `const CThing*` in each declaration (the arguments convert implicitly): RELOCATION_MATCH, ALL_EQ; 0x006A16A0 / 0x0074F350 / 0x007BF790 / 0x00844740 / 0x008F40B0 / 0x0090E5D0 / 0x009735D0 / 0x00974110 bind the PDB spelling (compiled). The table's PAV witness 0x00845CE0 (and 0x00915B60) is off limits (T3 queue) and still binds PAV, so no table line changes; the self 0x00770FA0 is an NF308 / NF309 witness (source read: PDB signature)
+13	0x00746EC0	CTCStealth	T1	skipped-port		2 (unchanged)	binder 0x0087ED70 takes a stand-in `Creature&` (reinterpret_cast of the target): port
+14	0x00747B80	CTCStealth	T1	skipped-port		3 (unchanged)	binder 0x0096FF10 (CThing*, long; literal 3) needs NStealth::EDangerStatus, which only the full shared engine/CTCStealth.h or a new local enum copy carries (its local CTCStealth model would clash with the header); 0x006EDA80 has a GLOBAL `enum EDangerStatus { DANGER_STATUS_3 = 3 }` and passes `&attacker` of a local CThingCreatureBase model that has no CThing base (the PDB takes const CThing&): port
+15	0x0079ACC0	CTCSummonSpell	T1	done	0079b650	2 -> 1	binder 0x0079B650: CreateMinion(const C3DVector&, const C3DVector& direction) -> (const C3DVector&, const C3DVector* direction) + `&direction` at the call (PDB PBV2): RELOCATION_MATCH, ALL_EQ; census 0x0079B9D0 and the self 0x0079ACC0 bind / define the PDB spelling (compiled, bind_g2)
+16	0x006E3180	CTCTalk	T1	skipped-port		2 (unchanged)	the self 0x006E3180 (non-const) and binders 0x008D9220 / 0x008D92C0 / 0x008D9350 spell the enum as `typedef long EConversationAttitude;`, which also respells their own GetAnimGroupName binding and 0x008D92C0's own CModeConversation ctor leaf: self + binders + callee unit (NF307 D4 shape); engine/CTCTalk.h only forward-declares the enum
+17	0x007F5A70	CTCTargetingBase	T1	done	007f5a70,007ed170,007ed2c0,007ed560,007ed870	2 -> 1	self 0x007F5A70: `unsigned long typeMask` -> the shared engine/ETargetingType.h enum (include on a blank line, zero line delta) + full Leaf (RENAMES section 1; RELOCATION_MATCH both sides, ALL_EQ); binders 0x007ED170 / 0x007ED2C0 / 0x007ED560 / 0x007ED870 (the whole QAE_NJ set, exe census): include the enum header (+1 line), declaration (ETargetingType) const, literal 2 -> TARGETING_TALKABLE (NF300 Q1 / NF304 Q6): RELOCATION_MATCH, ALL_EQ; census 0x0064BFBA / 0x0068F470 / 0x007EF200 bind the PDB spelling (unresolved at HEAD, resolved now: link_g34)
+18	0x007B9F60	CTCTavernBar	T1	skipped-held		2 (unchanged)	the wrong binder 0x00967180 (stand-in CIntelligentPointerObject return) and 0x00969470 are NF308 / NF309 witnesses: stayed off (and the stand-in return is a port)
+19	0x007BA1D0	CTCTavernBar	T1	skipped-held		2 (unchanged)	the only wrong binder 0x00969470 (pointer out-parameters) witnesses an NF308 / NF309 entry: stayed off
+20	0x007BA8C0	CTCTavernBar	T1	done	009689c0	2 -> 1	binder 0x009689C0: HasEmptyJugSlot(CThing&) + `*GetCreature()` at both calls: RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x007BA8C0 defines the PDB spelling (compiled)
+21	0x005EB4B0	CTCTavernGame	T1	skipped-port		2 (unchanged)	binder 0x007D7BA0 passes a stand-in CHeroStats** (PDB CTCHeroStats**): port
+22	0x005ECA50	CTCTavernGame	T1	skipped-port		2 (unchanged)	binder 0x007D4A60 declares DrawPreparePrimitivesForRendering(CRenderContext*) non-virtual on a stand-in parameter (PDB virtual UAE, const CEnginePrimitivePrepareInfo&): port
+23	0x0078839A	CTCTrapBase	T1	skipped-held		2 (unchanged)	the wrong binders 0x007BDB66 (NF308 / NF309 witness) and 0x0080F240 (NF308 / NF309 entry) are off limits
+24	0x007941D0	CTCUnholyPower	T1	done	004d4acc	2 -> 1	binder 0x004D4ACC (CTCUnholyPower_Alloc): ctor declaration `CThing&`, `new CTCUnholyPower(*owner)`: RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x007941D0 defines the PDB ctor (compiled)
+25	0x00658620	CTCVillage	T1	skipped-port		2 (unchanged)	binder 0x0096D380 declares IsTimeBetween(void*, long) non-const (PDB const std::vector<long>&): stand-in parameter, port
+26	0x00658716	CTCVillage	T1	skipped-port		2 (unchanged)	binders take a stand-in CLongVector (PDB std::vector<long>) and the PDB is private (ABE): port
+27	0x00659EFC	CTCVillage	T1	skipped-port		2 (unchanged)	binders pass a stand-in CIntelligentPointerTask (PDB CIntelligentPointer<CVillageTaskBase>) by value: port
+28	0x0065A8EE	CTCVillage	T1	done-partial	00942a00	3 -> 2	binder 0x00942A00: IsTimeToGoToSchool(CThingAICreature*, const CWorld&, bool) + `PeekWorld()` at the call (its pre-existing `(CWorld*)&PeekWorld()` cast dropped): RELOCATION_MATCH, ALL_EQ; the self 0x0065A8EE defines the PDB spelling (compiled). 0x0090FD20 (the table witness of the other wrong spelling) passes a CThing* where the PDB takes CThingAICreature*: a cast / model port, left (compiled control, still binds PAVCThing@@PAVCWorld)
+29	0x007DF4B0	CTCWallMountEffects	T1	done	007efe70	2 -> 1	binder 0x007EFE70: OnWallMountUseAction(CThingCreatureBase&) + `*user`: RELOCATION_MATCH, ALL_EQ; the only exe caller. The self 0x007DF4B0 is an NF308 / NF309 witness: source read only (declares and defines the PDB signature, lines 119 / 122; it has no Leaf line), not compiled, so the new spelling is unresolved in the link set (as the HEAD spelling was)
+30	0x0076E4D0	CTCWeaponTrail	T1	skipped-port		3 (unchanged)	binders 0x0076E5F0 / 0x0076EA60 use stand-in CPointPairVector / CWeaponTrailList types: port
+31	0x007A0D90	CTCWillLightning	T1	skipped-port		2 (unchanged)	binder 0x007A16F0 (an NF308 / NF309 witness) uses stand-in CRetailList / CLightningBeam / CThingPtrList types: port and off limits
+32	0x009C8DE0	CTextEntry	T1	done	009c8fb0	2 -> 1	binder 0x009C8FB0: ReadFromDataStream(CDataInputStream&) + `stream` (its CMemoryDataInputStream local derives CDataInputStream through the shared engine/CMemoryDataInputStream.h opt-in it already defines): RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x009C8DE0 defines the PDB spelling (compiled)
+33	0x009F9DE0	CTexture	T1	done	00a3b730	2 -> 1	binder 0x00A3B730: Unlock(long) -> Unlock(unsigned long) (PDB K; its Lock stand-in, entry 34, left): RELOCATION_MATCH, ALL_EQ; census 0x0071BCD0 / 0x00A68910 / 0x00B3C5D0 / 0x00B67270 bind the PDB spelling (compiled). The self 0x009F9DE0 still DEFINES ?Unlock@CTexture_Methods@@QAEXK@Z (a stand-in class): unresolved before and after for every binder (NF302 Q2), queued in NAME_FIXES
+34	0x009FA450	CTexture	T1	skipped-port		2 (unchanged)	binder 0x00A3B730 returns a stand-in CLockedRect (PDB CSurfaceLockedRect) and passes long (PDB unsigned long): port (its Unlock half is entry 33, done)
+35	0x0081B0A0	CTextureMorphs	T1	skipped-port		2 (unchanged)	binder 0x0071DBD0 passes a stand-in CTextureMorphEntryVector*: port
+36	0x004C8310	CThing	T1	skipped-port		2 (unchanged)	probe (not kept): 0x00836A50 binds ??1CThing@@UAE@XZ to the implicit ~CThing it emits ITSELF as a COMDAT (engine/CThing.h's default branch declares no destructor); the existing FABLE_RETAIL_CTHING_DTOR opt-in gives the PDB MAE call but drops 23 COMDATs (the implicit dtor and its member destructors): RELOCATION_MATCH, objsec NOT_EQ, so not in place. 0x004CD3E0 binds a stand-in ?CThing_dtor@@YIXPAVCThing@@@Z, 0x00838740 a stand-in ?Destroy@CThingNoise@@QAEXXZ, 0x006A5D50 a local public virtual ~CThing: port
+37	0x004C9030	CThing	T1	skipped-held		3 (unchanged)	the self 0x004C9030 itself DEFINES ??0CThing@@QAE@K@Z (public; PDB protected IAE) and 0x005296B0 (an NF308 / NF309 entry) binds it: moving the binders 0x008367B0 / 0x008385B0 onto IAE (held/, RELOCATION_MATCH) would leave them unresolved where HEAD resolved them against the self; the unit is self + 0x005296B0 + both binders (0x00838530 binds a stand-in N_004c9030::CThing, 0x004CA1D0 is off limits and already binds IAE)
+38	0x00863750	CThingBodyReorienter	T1	skipped-port		2 (unchanged)	binder 0x00663490 constructs CThingBodyReorienter(this) from a local CThingCreatureBase model with no CThing base; the PDB ctor takes CThing&: giving the model a base is a layout change (NF302 Q1), a cast is debt: port
+39	0x008098B0	CThingCompare_BestForTargeting2	T1	skipped-port		3 (unchanged)	0x0080BAB0 / 0x0080BD30 define same-TU __declspec(noinline) copies of operator() NON-const (QAE); making them const would make each a second strong definition of the PDB name the self 0x008098B0 defines (NF281 D2: T3); 0x0080A140 takes CThing* pointers (PDB const CTargetPoint&): port
+40	0x006619F0	CThingCreatureBase	T1	skipped-held		2 (unchanged)	the only wrong binder 0x007339E0 witnesses an NF308 / NF309 entry
+41	0x00662B10	CThingCreatureBase	T1	skipped-port		2 (unchanged)	binder 0x008D6780 declares GetAnimFromName returning CAnimationEntry* (PDB const CAnimationEntry&, const member) with a const CAnimFilterBase* (PDB reference) and stores the result in a non-const CAnimationEntry*: the result type change needs a const local / cast: port
+42	0x00663260	CThingCreatureBase	T1	skipped-held		3 (unchanged)	the table witness 0x00733950 (QAE, non-const pointer) is an NF308 / NF309 witness; the other wrong binder 0x00733910 (QAE returning const CAnimationSet*) needs the result taken by const reference at each use (PDB QBE ABV): left with its sibling for one unit
+43	0x006644F0	CThingCreatureBase	T1	skipped-port		2 (unchanged)	binder 0x008C2810 declares SetCurrentAction(const CCombatActionBase&) on its local model (PDB const CCreatureActionBase&): the action class needs a base-class model: port
+44	0x006668A0	CThingCreatureBase	T1	skipped-port		4 (unchanged)	binders 0x00855500 / 0x008574D0 use a stand-in CAnimationEntryVector, 0x00733690 (NF308 / NF309 witness) a CRetailVector: port / off limits
+45	0x00835C80	CThingDeadCreature	T1	skipped-port		2 (unchanged)	binder 0x00663F50 passes pointers for the C3DVector / CCharString / filter references and a non-const filter: stand-in signature (witness of NF308 / NF309 too): port
+46	0x006A7550	CThingFilter_EnemyCreature	T1	skipped-port		2 (unchanged)	the only PAV binder 0x007F6DF0 models six sub-filters with pointer operator()s inside its OWN CThingFilter_IsValidAttackTargetForCreature::operator()(CThing*) (a made-up inline IsAICreatureAwareOfMoreGenerous stand-in among them); its entries 49 / 50 / 52 share the row and 50 / 52's table witnesses (0x0078971D / 0x0078954D) are NF308 / NF309 witnesses: one unit, left
+47	0x006A7E70	CThingFilter_HasScriptData	T1	skipped-held		2 (unchanged)	the only wrong binder 0x005800D6 witnesses an NF308 / NF309 entry
+48	0x006A7930	CThingFilter_InMap	T1	done	006a7930	2 -> 1	self 0x006A7930: operator()(CThing*) const -> operator()(const CThing&) const, body through the reference and the const GetPhysicsTC overload (FableWin name; its pick-any copy byte-equal to 0x0050A650's: NF304 Q1) + full Leaf (MATCH both sides, ALL_EQ; RENAMES section 1); every compiled census binder (11 rows) binds the PDB spelling at HEAD already; the table's PAV witness 0x006186F0 is stale (HEAD object binds ABV): a hand delete line; 0x00617780 (NF308 / NF309) source-read
+49	0x006A76A0	CThingFilter_IsNot	T1	skipped-port		2 (unchanged)	binder 0x007F6DF0 (const CThing* pointer form): the entry 46 unit
+50	0x006A7EB0	CThingFilter_IsNotList	T1	skipped-held		2 (unchanged)	table witness 0x0078971D is an NF308 / NF309 witness; 0x007F6DF0 is the entry 46 unit
+51	0x00799E30	CThingFilter_IsPotentialCustomer	T1	open			not started
+52	0x006A7580	CThingFilter_IsThingAbleToBeEngagedInCombat	T1	skipped-held		2 (unchanged)	table witness 0x0078954D is an NF308 / NF309 witness; 0x007F6DF0 is the entry 46 unit
+53	0x006A7590	CThingFilter_ObjectHasProperty	T1	open			not started
+54	0x006A7B20	CThingFilter_PosInContainmentVolume	T1	open			not started
+55	0x0051E210	CThingManager	T1	skipped-held		2 (unchanged)	the only wrong binder 0x005FAE90 witnesses an NF308 / NF309 entry
+56	0x0051EC50	CThingManager	T1	done	0051ec50,004c7c60,004c8da0,004c9690	2 -> 1	self 0x0051EC50: AddToUpdateList(CThing*) -> (CThing&) with the body through the reference + full Leaf (MATCH both sides, ALL_EQ; RENAMES section 1); binders 0x004C7C60 / 0x004C8DA0 / 0x004C9690 (the whole PAV binder set, exe census): `CThing&` + `*this` (RELOCATION_MATCH, ALL_EQ) in the same landing (ruling NF304 Q6); 0x004C7C40 bound the PDB spelling (unresolved at HEAD, resolves now: link_g2)
+57	0x00520D00	CThingManager	T1	skipped-port		3 (unchanged)	binder 0x00521AE0 uses stand-in CCharStringSet / CThingVector: port
+58	0x00525CD0	CThingManager	T1	skipped-port		2 (unchanged)	binder 0x004FEEC0 (an NF308 / NF309 witness) passes a stand-in CLongArray: port / off limits
+59	0x006A5AF0	CThingPhysical	T1	skipped-port		2 (unchanged)	PDB virtual UAE (CPersistContext&); the binders 0x0083C230 / 0x00837CE0 / 0x0083D940 are themselves overrides declared non-virtual with CPersistContext* (their own self leaves would change), 0x006628E0 is off limits: self + vtable unit, port
+60	0x0083DDC0	CThingPhysicalSwitch	T1	done	00842e80	2 -> 1	binder 0x00842E80 (CCreatureAction_UseSwitch::PerformAction): TriggerMe declared protected with `friend class CCreatureAction_UseSwitch;` (both PDB name sets: ?TriggerMe@CThingPhysicalSwitch@@IAEXAAVCThingCreatureBase@@@Z is protected, and its only retail caller is this real PDB class, so the friend is the access retail forces: NF305 Q5) and `CThingCreatureBase&` + `*(CThingCreatureBase*)PCreature.GetPItem()` (its pre-existing cast kept): RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x0083DDC0 defines the PDB spelling (compiled)
+61	0x00877840	CTools	T1	skipped-port		2 (unchanged)	binder 0x00877C40 (off limits) passes a stand-in CThingConstVector; census 0x006EAE20 off limits
+62	0x00409090	CUserProfileManager	T1	done	00548790	2 -> 1	binder 0x00548790: GetMaxAntialiasing() const returns `unsigned long` (PDB K; the value is stored straight into the `unsigned long MaxChild` member): RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x00409090 defines the PDB spelling (compiled)
+63	0x00409FD0	CUserProfileManager	T1	skipped-held		2 (unchanged)	the only wrong binder 0x0040A740 is off limits (T3 queue and an NF308 / NF309 entry)
+64	0x0040BCA0	CUserProfileManager	T1	skipped-held		2 (unchanged)	the only wrong binder 0x0040D350 witnesses an NF308 / NF309 entry
+65	0x00AD89B0	CVertexGroupBlockOptimiser	T1	skipped-held		2 (unchanged)	binder 0x00AD9D70 (an NF308 / NF309 witness) passes stand-in CRemainderArray / CBoolArray types
+66	0x00A3B0F0	CVideoSys	T1	skipped-port		2 (unchanged)	binder 0x00A3B1C0 passes the literal 1 through `long`; the PDB takes the DirectShow enum _FilterState, which engine/CVideoSys.h only forward-declares (no enumerators anywhere in rebuild/include): a cast through a forward enum or a new enum model, beyond NF300 Q1
+67	0x00A0CCD0	CWStringParser	T1	skipped-port		2 (unchanged)	binder 0x0048F50C takes `unsigned short` (G) where the PDB takes native wchar_t (_W): a compile-flag change (ruling NF305 Q3), T3
+68	0x0099B800	CWideString	T1	skipped-port		2 (unchanged)	binder 0x00997620 (and the census) use `unsigned short` for the PDB native wchar_t (PB_W): NF305 Q3, T3
+69	0x0049D930	CWorld	T1	open			not started
+70	0x0049E080	CWorld	T1	done	004164e0,00417001	2 -> 1	binders 0x004164E0 (the witness) and 0x00417001 (UNTABLED, found by the compiled census): RenderUpdate(CInterpolationInfo*) -> (const CInterpolationInfo*) (PDB PBV): RELOCATION_MATCH, ALL_EQ; census 0x00417747 binds the PDB spelling (compiled); the self 0x0049E080 is an NF308 / NF309 witness: source read (defines `CWorld::RenderUpdate(const CInterpolationInfo*)`), not compiled
+71	0x004A0CD0	CWorld	T1	done	0088f920	2 -> 1	binder 0x0088F920 (CGameScriptInterface::AutoSaveQuestStart): its CWorld model's AutoSaveQuestStart returns bool (PDB _N, ruling R1: a return type both PDBs give; the result is discarded): RELOCATION_MATCH, ALL_EQ; census 0x004A3740 / 0x00896B60 and the self 0x004A0CD0 bind / define the PDB spelling (compiled)
+72	0x00500EB0	CWorldMap	T1	skipped-port		2 (unchanged)	binder 0x004B2510 passes a stand-in CSectionSet and a bool for the PDB nested enum CWorldMap::ELoadType: port
+73	0x00501990	CWorldMap	T1	skipped-port		2 (unchanged)	as entry 72 (0x004B2510; 0x004B3A20 off limits)
+74	0x00501D30	CWorldMap	T1	skipped-held		2 (unchanged)	the only wrong binder 0x00502170 witnesses an NF308 / NF309 entry
+75	0x00502E90	CWorldMap	T1	done	0065c781	2 -> 1	binder 0x0065C781: PopulateRegionWithVillagers(CThing&) + `*ParentThing`: RELOCATION_MATCH, ALL_EQ; census 0x005064C0 / 0x008A1C50 bind the PDB spelling (compiled); the self 0x00502E90 has no landed row (unresolved before and after on the PDB name)
+76	0x0050A650	CWorldMap	T1	done	0050af10	2 -> 1	binder 0x0050AF10 (CWorldMap::ActivateNavMap, a member): GetMapNavigationAreaInit declared `protected:` and const with the box by pointer (PDB IBE, PBVC2DBoxI) + `&Maps[map].Area` at the call: RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x0050A650 defines the PDB spelling (compiled)
+77	0x0063D4A0	CWorldMap	T1	skipped-held		2 (unchanged)	the only wrong binder 0x0063DB30 witnesses an NF308 / NF309 entry
+78	0x009BD020	CXMVPlayer	T1	done	004022b0	2 -> 1	binder 0x004022B0: `static void __fastcall GlobalRegisterPlayer();` (PDB SIXXZ; no arguments, so the call bytes are the same as the cdecl stand-in): RELOCATION_MATCH, ALL_EQ; the only exe caller; the self 0x009BD020 defines the PDB spelling (compiled); its landed test rows/004022b0_test.cpp follows (the CXMVPlayer::GlobalRegisterPlayer stub declared and defined __fastcall, else the test link fails: vland LINK_FAIL before, PASS after; orig/004022b0_test.cpp saved; PassPattern unchanged)
+79	0x00493EAB	FindAllMessages	T1	open			not started
+80	0x00632830	GFSerialiseMapBinaryIn	T1	open			not started
+81	0x00632B90	GFSerialiseMapBinaryIn	T1	open			not started
+82	0x00412C70	GFSerialiseVectorBinaryIn	T1	open			not started
+83	0x0040FCA0	GFSerialiseVectorBinaryOut	T1	open			not started
+84	0x0052B270	GetAllThings	T1	open			not started
+85	0x008786E0	GetAllThingsInRoughArea	T1	open			not started
+86	0x007510D0	GetSubDef	T1	open			not started
+87	0x0083EBD0	LHNetworkLib	T1	open			not started
+88	0x00BFC880	LoadVerts	T1	open			not started
+89	0x00BFCA20	LoadVerts	T1	open			not started
+90	0x00BFCBC0	LoadVerts	T1	open			not started
+91	0x00BFCD60	LoadVerts	T1	open			not started
+92	0x0085F830	NCreatureMode	T1	open			not started
+93	0x009EA060	NProgressDisplay	T1	open			not started
+94	0x006E2B70	NSpeechGainManager	T1	open			not started
+95	0x00660AE2	RemoveThingFromTask	T1	open			not started
+96	0x00660B5D	RemoveThingFromTask	T1	open			not started
+97	0x00660BD8	RemoveThingFromTask	T1	open			not started
+98	0x00660C53	RemoveThingFromTask	T1	open			not started
+99	0x00660CCE	RemoveThingFromTask	T1	open			not started
+100	0x00660D49	RemoveThingFromTask	T1	open			not started
+101	0x00660787	RemoveThingFromTaskList	T1	open			not started
+102	0x00660894	RemoveThingFromTaskList	T1	open			not started
+103	0x0066090A	RemoveThingFromTaskList	T1	open			not started
+104	0x00660980	RemoveThingFromTaskList	T1	open			not started
+105	0x006609F6	RemoveThingFromTaskList	T1	open			not started
+106	0x00660A6C	RemoveThingFromTaskList	T1	open			not started
+107	0x00BFCF00	SaveVerts	T1	open			not started
+108	0x00BFCF90	SaveVerts	T1	open			not started
+109	0x00BFD020	SaveVerts	T1	open			not started
+110	0x0059B4FE	deque	T1	open			not started
+111	0x00479449	list	T1	open			not started
+112	0x0053CB20	list	T1	open			not started
+113	0x0042D1B7	map	T1	open			not started
+114	0x007AEBE0	map	T1	open			not started
+115	0x005E0E20	pair	T1	open			not started
+116	0x0046ACA8	vector	T1	open			not started
+117	0x004E9F20	vector	T1	open			not started
+118	0x00581284	vector	T1	open			not started
+119	0x006C9D50	vector	T1	open			not started
+120	0x006D4A20	vector	T1	open			not started
+121	0x006DD4A0	vector	T1	open			not started
+122	0x00721240	vector	T1	open			not started
+123	0x007B5210	vector	T1	open			not started
+124	0x00F33D90	vector	T1	open			not started
+125	0x00F34BF0	vector	T1	open			not started
+126	0x00F353F0	vector	T1	open			not started
+127	0x00405220		T1	open			not started
+128	0x00497890		T1	open			not started
+129	0x005578A0		T1	open			not started
+130	0x00778610		T1	open			not started
+131	0x0088AE40		T1	open			not started
+132	0x00942B30		T1	open			not started
+133	0x009E1E70		T1	open			not started
+134	0x009E21D0		T1	open			not started
+135	0x00CBE0C7		T1	open			not started
+136	0x00CBE7AA		T1	open			not started
+137	0x00CBE814		T1	open			not started
+138	0x00CBED00		T1	open			not started
+139	0x00CBED82		T1	open			not started
+140	0x00CBEED2		T1	open			not started
+R	0x00713EE0	CTCCreatureNavigation / CTCLook (rider, NF307 D2)	T1	done	00713ee0	2 -> 1 (x2)	rider, not an ENTRIES line: CCreatureNavOutput nested into the local CTCCreatureNavigation model (class key V, NF300 Q2) and LookAtPos(const C3DVector&, long) with `lookPos` at the call, the 0x00714900 edits: RELOCATION_MATCH, ALL_EQ; NF307's two rewitness lines (GetNextNavPosOnRoute AU on 0x006CBAC0, LookAtPos PBV on 0x00753E90) become deletes (every census binder compiled, except 0x0097EC00 / 0x00787E12: NF308 / NF309 rows, source read)

@@ -1,7 +1,7 @@
 class CWorld
 {
 public:
-    void AutoSaveQuestStart();
+    bool AutoSaveQuestStart();                  // 0x004A0CD0 (PDB returns bool; NF310)
 };
 
 class CGameScriptInterface

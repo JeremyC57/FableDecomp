@@ -1,5 +1,5 @@
-// CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const -- true when there is a targeted thing whose CTCTargeted component has any of the given targeting flags
-// Leaf: IsTargetedThingOfType
+// CTCTargetingBase::IsTargetedThingOfType(ETargetingType typeMask) const -- true when there is a targeted thing whose CTCTargeted component has any of the given targeting flags
+// Leaf: ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F5A70, length 99 bytes (`ret 4`).
 // Callees: CTCTargetingBase virtual slot 33 GetPTargetedThing() (+0x84; CTCTargetingPlayer's override is 0x00802610) twice,
@@ -13,7 +13,7 @@ class CTCBase;
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
+#include "engine/ETargetingType.h"               // PDB parameter type (NF310)
 class CTCTargeted { public:
     unsigned char _pad00[0x0c];
     unsigned long TargetingFlags;               // +0x0c
@@ -26,10 +26,10 @@ class CTCTargetingBase { public:
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void v30(); virtual void v31(); virtual void v32();
     virtual const CThing* GetPTargetedThing() const;   // slot 33 (+0x84)
-    bool IsTargetedThingOfType(unsigned long typeMask) const;
+    bool IsTargetedThingOfType(ETargetingType typeMask) const;
 };
 
-bool CTCTargetingBase::IsTargetedThingOfType(unsigned long typeMask) const
+bool CTCTargetingBase::IsTargetedThingOfType(ETargetingType typeMask) const
 {
     if (GetPTargetedThing()) {
         const const CTCTargeted* targeted;

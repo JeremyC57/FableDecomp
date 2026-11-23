@@ -208,13 +208,12 @@ T1	standin_alias	set	1	1		00513700
 T1	signature	CPersistTraits	15	18	engine/CPersistTraits.h	00403ff0 0040efb0 0040fe60 0044b890 0045e011 0045ed25 00464030 00475b93 004e959d 0057f9e9 005c0a98 005c19a3 0067aa40 006dc6a0 007e3930
 T1	signature	(none)	14	17		00405220 00497890 005578a0 00778610 0088ae40 00942b30 009e1e70 009e21d0 00cbe0c7 00cbe7aa 00cbe814 00cbed00 00cbed82 00cbeed2
 T1	signature	vector	11	11		0046aca8 004e9f20 00581284 006c9d50 006d4a20 006dd4a0 00721240 007b5210 00f33d90 00f34bf0 00f353f0
-T1	signature	CWorldMap	6	5	engine/CWorldMap.h	00500eb0 00501990 00501d30 00502e90 0050a650 0063d4a0
 T1	signature	RemoveThingFromTask	6	1		00660ae2 00660b5d 00660bd8 00660c53 00660cce 00660d49
 T1	signature	RemoveThingFromTaskList	6	1		00660787 00660894 0066090a 00660980 006609f6 00660a6c
 T1	signature	CEnvironmentSpellEffectInterface	5	2	engine/CEnvironmentSpellEffectInterface.h	00884e90 00884f60 00884fe0 008854a0 00885680
 T1	signature	CThingCreatureBase	5	8	engine/CThingCreatureBase.h	006619f0 00662b10 00663260 006644f0 006668a0
-T1	signature	CTCVillage	4	5	engine/CTCVillage.h	00658620 00658716 00659efc 0065a8ee
-T1	signature	CThingManager	4	4	engine/CThingManager.h	0051e210 0051ec50 00520d00 00525cd0
+T1	signature	CTCVillage	4	4	engine/CTCVillage.h	00658620 00658716 00659efc 0065a8ee
+T1	signature	CWorldMap	4	3	engine/CWorldMap.h	00500eb0 00501990 00501d30 0063d4a0
 T1	signature	LoadVerts	4	1		00bfc880 00bfca20 00bfcbc0 00bfcd60
 T1	signature	CAIStateGroupBase	3	6	engine/CAIStateGroupBase.h	008fcff0 00980bd0 009812c0
 T1	signature	CCombatManager	3	8	engine/CCombatManager.h	006e8c30 006e9360 006edc50
@@ -222,12 +221,8 @@ T1	signature	CCreatureAction_PlayAnimation	3	4	engine/CCreatureAction_PlayAnimat
 T1	signature	CFileInstaller	3	2	engine/CFileInstaller.h	009c3330 009c3a60 009c4440
 T1	signature	CManager	3	3	engine/CManager.h	0041db1d 0041db84 0066e9e9
 T1	signature	CScriptedMapBrush	3	3	engine/CScriptedMapBrush.h	0082e600 0082e910 0082e9c0
-T1	signature	CTCHeroStats	3	4	engine/CTCHeroStats.h	0057a6b8 0057bc6e 0057c4f1
-T1	signature	CTCInventoryAbilities	3	3	engine/CTCInventoryAbilities.h	005eea9b 005f0dc5 005f1320
 T1	signature	CTCShop	3	3	engine/CTCShop.h	00772120 00773c00 007751a0
-T1	signature	CTCTavernBar	3	3		007b9f60 007ba1d0 007ba8c0
-T1	signature	CUserProfileManager	3	3	engine/CUserProfileManager.h	00409090 00409fd0 0040bca0
-T1	signature	CWorld	3	3	engine/CWorld.h	0049d930 0049e080 004a0cd0
+T1	signature	CThingManager	3	3	engine/CThingManager.h	0051e210 00520d00 00525cd0
 T1	signature	SaveVerts	3	1		00bfcf00 00bfcf90 00bfd020
 T1	signature	C3DAnimationInfo	2	2	engine/C3DAnimationInfo.h	00a25970 00a269c0
 T1	signature	CDefinitionManager	2	2	engine/CDefinitionManager.h	009adae0 009b02e0
@@ -239,13 +234,15 @@ T1	signature	CFileDataInputStream	2	1	engine/CFileDataInputStream.h	00994700 009
 T1	signature	CGameTimeManager	2	1	engine/CGameTimeManager.h	006bb860 006bb940
 T1	signature	CQ_AmbushTradersScript	2	2	engine/CQ_AmbushTradersScript.h	00f07b80 00f09950
 T1	signature	CQ_BountyHuntScript	2	2	engine/CQ_BountyHuntScript.h	00d16920 00d16d00
+T1	signature	CTCHeroStats	2	2	engine/CTCHeroStats.h	0057a6b8 0057bc6e
 T1	signature	CTCInventory	2	2	engine/CTCInventory.h	00581ddb 00584b86
-T1	signature	CTCObjectAugmentations	2	1	engine/CTCObjectAugmentations.h	00766050 007660c0
+T1	signature	CTCInventoryAbilities	2	2	engine/CTCInventoryAbilities.h	005f0dc5 005f1320
 T1	signature	CTCPhysicsBase	2	2	engine/CTCPhysicsBase.h	006b0210 006b0460
 T1	signature	CTCStealth	2	3	engine/CTCStealth.h	00746ec0 00747b80
+T1	signature	CTCTavernBar	2	2		007b9f60 007ba1d0
 T1	signature	CTCTavernGame	2	2	engine/CTCTavernGame.h	005eb4b0 005eca50
-T1	signature	CTexture	2	1	engine/CTexture.h	009f9de0 009fa450
 T1	signature	CThing	2	3	engine/CThing.h	004c8310 004c9030
+T1	signature	CUserProfileManager	2	2	engine/CUserProfileManager.h	00409fd0 0040bca0
 T1	signature	GFSerialiseMapBinaryIn	2	2		00632830 00632b90
 T1	signature	list	2	2		00479449 0053cb20
 T1	signature	map	2	2		0042d1b7 007aebe0
@@ -308,7 +305,6 @@ T1	signature	CShaderRenderManager	1	1	engine/CShaderRenderManager.h	0098b860
 T1	signature	CShaderResource	1	1	engine/CShaderResource.h	00a5d7c0
 T1	signature	CSubtitleRenderer	1	1	engine/CSubtitleRenderer.h	00492e4b
 T1	signature	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	00783730
-T1	signature	CTCCreatureNavigation	1	1	engine/CTCCreatureNavigation.h	006cbac0
 T1	signature	CTCCreatureOpinionOfHero	1	1	engine/CTCCreatureOpinionOfHero.h	00681ae0
 T1	signature	CTCDivineWrath	1	1	engine/CTCDivineWrath.h	0078ecd0
 T1	signature	CTCEmoteIcon	1	2	engine/CTCEmoteIcon.h	0071ac70
@@ -322,25 +318,19 @@ T1	signature	CTCInventoryBase	1	1		005bf482
 T1	signature	CTCInventoryItem	1	1	engine/CTCInventoryItem.h	005d8e90
 T1	signature	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fb140
 T1	signature	CTCInventoryQuests	1	1	engine/CTCInventoryQuests.h	0061a8a0
-T1	signature	CTCLook	1	1	engine/CTCLook.h	00753e90
 T1	signature	CTCPhysicalShieldSpell	1	1	engine/CTCPhysicalShieldSpell.h	0079deb0
 T1	signature	CTCSolidToThing	1	1	engine/CTCSolidToThing.h	00770fa0
-T1	signature	CTCSummonSpell	1	1	engine/CTCSummonSpell.h	0079acc0
 T1	signature	CTCTalk	1	1	engine/CTCTalk.h	006e3180
-T1	signature	CTCTargetingBase	1	1	engine/CTCTargetingBase.h	007f5a70
 T1	signature	CTCTrapBase	1	1	engine/CTCTrapBase.h	0078839a
-T1	signature	CTCUnholyPower	1	1	engine/CTCUnholyPower.h	007941d0
-T1	signature	CTCWallMountEffects	1	1	engine/CTCWallMountEffects.h	007df4b0
 T1	signature	CTCWeaponTrail	1	2	engine/CTCWeaponTrail.h	0076e4d0
 T1	signature	CTCWillLightning	1	1	engine/CTCWillLightning.h	007a0d90
-T1	signature	CTextEntry	1	1		009c8de0
+T1	signature	CTexture	1	1	engine/CTexture.h	009fa450
 T1	signature	CTextureMorphs	1	1		0081b0a0
 T1	signature	CThingBodyReorienter	1	1		00863750
 T1	signature	CThingCompare_BestForTargeting2	1	2	engine/CThingCompare_BestForTargeting2.h	008098b0
 T1	signature	CThingDeadCreature	1	1	engine/CThingDeadCreature.h	00835c80
 T1	signature	CThingFilter_EnemyCreature	1	1	engine/CThingFilter_EnemyCreature.h	006a7550
 T1	signature	CThingFilter_HasScriptData	1	1	engine/CThingFilter_HasScriptData.h	006a7e70
-T1	signature	CThingFilter_InMap	1	1	engine/CThingFilter_InMap.h	006a7930
 T1	signature	CThingFilter_IsNot	1	1	engine/CThingFilter_IsNot.h	006a76a0
 T1	signature	CThingFilter_IsNotList	1	1	engine/CThingFilter_IsNotList.h	006a7eb0
 T1	signature	CThingFilter_IsPotentialCustomer	1	1		00799e30
@@ -348,13 +338,12 @@ T1	signature	CThingFilter_IsThingAbleToBeEngagedInCombat	1	1	engine/CThingFilter
 T1	signature	CThingFilter_ObjectHasProperty	1	1		006a7590
 T1	signature	CThingFilter_PosInContainmentVolume	1	1	engine/CThingFilter_PosInContainmentVolume.h	006a7b20
 T1	signature	CThingPhysical	1	1	engine/CThingPhysical.h	006a5af0
-T1	signature	CThingPhysicalSwitch	1	1	engine/CThingPhysicalSwitch.h	0083ddc0
 T1	signature	CTools	1	1		00877840
 T1	signature	CVertexGroupBlockOptimiser	1	1		00ad89b0
 T1	signature	CVideoSys	1	1	engine/CVideoSys.h	00a3b0f0
 T1	signature	CWStringParser	1	1	engine/CWStringParser.h	00a0ccd0
 T1	signature	CWideString	1	1		0099b800
-T1	signature	CXMVPlayer	1	1	engine/CXMVPlayer.h	009bd020
+T1	signature	CWorld	1	1	engine/CWorld.h	0049d930
 T1	signature	FindAllMessages	1	1		00493eab
 T1	signature	GFSerialiseVectorBinaryIn	1	1		00412c70
 T1	signature	GFSerialiseVectorBinaryOut	1	1		0040fca0

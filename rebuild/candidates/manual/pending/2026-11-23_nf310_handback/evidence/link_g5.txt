@@ -1,0 +1,10 @@
+## HEAD set: H_009c8fb0.obj H_00942a00.obj H_00842e80.obj 009c8de0.obj 0065a8ee.obj 0090fd20.obj 0083ddc0.obj
+duplicates 0
+UNRESOLVED 1 ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThing@@PAVCWorld@@_N@Z
+UNRESOLVED 1 ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@PAVCWorld@@_N@Z
+UNRESOLVED 1 ?ReadFromDataStream@CTextEntry@NGameText@@QAEXPAVCMemoryDataInputStream@@@Z
+UNRESOLVED 1 ?TriggerMe@CThingPhysicalSwitch@@QAEXPAVCThingCreatureBase@@@Z
+## new set: 009c8fb0.obj 00942a00.obj 00842e80.obj 009c8de0.obj 0065a8ee.obj 0090fd20.obj 0083ddc0.obj
+duplicates 0
+UNRESOLVED 1 ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThing@@PAVCWorld@@_N@Z
+LK_DONE

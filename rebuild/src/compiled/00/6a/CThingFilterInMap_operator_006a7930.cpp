@@ -1,5 +1,5 @@
-// CThingFilter_InMap::operator()(CThing* thing) -- true when the thing has a physics component and the world map reports its position as lying in map MapNo
-// Leaf: ??RCThingFilter_InMap
+// CThingFilter_InMap::operator()(const CThing& thing) const -- true when the thing has a physics component and the world map reports its position as lying in map MapNo
+// Leaf: ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7930, length 43 bytes (+ int3 padding).
 // Callees: CWorldMap virtual slot 16 (`call [edx+40h]`, the map number at a position).
@@ -27,12 +27,12 @@ class CWorldMap { public:
 class CThingFilter_InMap { public:
     CWorldMap* WorldMap;                            // +0x00
     long       MapNo;                               // +0x04
-    bool operator()(CThing* thing) const;
+    bool operator()(const CThing& thing) const;
 };
 
-bool CThingFilter_InMap::operator()(CThing* thing) const
+bool CThingFilter_InMap::operator()(const CThing& thing) const
 {
-    CTCPhysicsBase* physics = thing->GetPhysicsTC();
+    const CTCPhysicsBase* physics = thing.GetPhysicsTC();
     if (physics)
         return WorldMap->GetMapNumberAt(&physics->m_position) == MapNo;
     return false;

@@ -1,0 +1,16 @@
+05:12:38 ZS_PASS T0057c4f1 test /home/user/FableDecomp/rebuild/tests/00/57/CTCHeroStats_ApplyBonusItemEffects_0057c4f1_test.cpp /Od /W3
+05:19:29 ZS_PASS T0064bfba test /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Draw_0064bfba_test.cpp /Od /W3
+05:19:29 ZS_PASS T007ef200 test /home/user/FableDecomp/rebuild/tests/00/7e/CTCCarriedActionUseExpression_OnActionUse_007ef200_test.cpp /Od /W3
+05:19:30 ZS_PASS T00766c00 test /home/user/FableDecomp/rebuild/tests/00/76/CTCObjectAugmentations_SetupAugmentationSounds_00766c00_test.cpp /Od /W3
+05:19:30 ZS_PASS T007677e0 test /home/user/FableDecomp/rebuild/tests/00/76/CTCObjectAugmentations_AttachAugmentationParticles_007677e0_test.cpp /Od /W3
+05:19:31 ZS_PASS T007bfa90 test /home/user/FableDecomp/rebuild/tests/00/7b/NThingShotCTCShotDefinitionBase_GetWeaponTrailGraphic_007bfa90_test.cpp /Od /W3
+05:20:23 ZS_PASS H00839100 src /home/user/FableDecomp/rebuild/src/compiled/00/83/CThingGameObject_GetWeaponTrailGraphicIndex_00839100.cpp /O2 /Oy /W3
+05:20:24 ZS_PASS H007677e0 src /home/user/FableDecomp/rebuild/src/compiled/00/76/CTCObjectAugmentations_AttachAugmentationParticles_007677e0.cpp /O2 /Oy /W3 /O2 /Oy /W3 /d2inlT59
+05:26:30 ZS_PASS T008385b0 test /home/user/FableDecomp/rebuild/tests/00/83/CThingNoise_Create_008385b0_test.cpp /Od /W3
+05:26:30 ZS_PASS T009c8de0 test /home/user/FableDecomp/rebuild/tests/00/9c/NGameTextCTextEntry_ReadFromDataStream_009c8de0_test.cpp /Od /W3
+05:29:17 ZS_PASS T004a3740 test /home/user/FableDecomp/rebuild/tests/00/4a/CWorld_UpdateRegionLoad_004a3740_test.cpp /Od /W3
+05:29:17 ZS_PASS T0050a650 test /home/user/FableDecomp/rebuild/tests/00/50/CWorldMap_GetMapNavigationAreaInit_0050a650_test.cpp /Od /W3
+05:31:43 ZS_PASS T006a16a0 test /home/user/FableDecomp/rebuild/tests/00/6a/CTCCarrying_RemoveThingInCarrySlot_006a16a0_test.cpp /Od /W3
+05:31:44 ZS_PASS T0090e5d0 test /home/user/FableDecomp/rebuild/tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp /Od /W3
+05:31:44 ZS_PASS T00617a00 test /home/user/FableDecomp/rebuild/tests/00/61/CThingSearchTools_GetAllLeafThings_00617a00_test.cpp /Od /W3
+05:31:44 ZS_PASS T00617a90 test /home/user/FableDecomp/rebuild/tests/00/61/CThingSearchTools_GetAllLeafThings_00617a90_test.cpp /Od /W3

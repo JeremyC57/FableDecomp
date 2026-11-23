@@ -53,7 +53,7 @@ class CTCPhysicsBase { public:
 };
 class CThing;
 class CTCSolidToThing { public:
-    void AddThingNotSolidTo(CThing* thing);             // 0x00770FA0
+    void AddThingNotSolidTo(const CThing* thing);             // 0x00770FA0
 };
 class CTCParamsBase;
 

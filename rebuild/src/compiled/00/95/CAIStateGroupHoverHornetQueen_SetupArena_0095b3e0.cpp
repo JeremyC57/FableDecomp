@@ -62,7 +62,7 @@ class CThingCreatureBase : public CThing { public:
 #include "engine/CThingSearchTools.h"
 class CThingObject;   // the search type of the GetAllThingsInRoughArea instance (FableWin.pdb)
 class CTCSolidToThing { public:                        // interface 0x4d
-    void AddThingNotSolidTo(CThing* thing);     // 0x00770FA0
+    void AddThingNotSolidTo(const CThing* thing);     // 0x00770FA0
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

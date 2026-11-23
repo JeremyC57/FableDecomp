@@ -82,14 +82,14 @@ public:
     CWorld*       World;                               // +0x08
     unsigned char _pad0c[0x14];
     CMapInfo*     Maps;                                // +0x20 (CArray<CMapInfo> start)
-    void GetMapNavigationAreaInit(long map, const C2DBoxI& area, const CCharString& name, CNavigationAreaInit& init);   // 0x0050A650
+protected: void GetMapNavigationAreaInit(long map, const C2DBoxI* area, const CCharString& name, CNavigationAreaInit& init) const; public:   // 0x0050A650 (PDB protected const IBE, area by pointer)
     void ActivateNavMap(long map);
 };
 void CWorldMap::ActivateNavMap(long map)
 {
     if (!World->PNavigationManager->IsNavigationMapLoaded(map)) {
         CNavigationAreaInit init;
-        GetMapNavigationAreaInit(map, Maps[map].Area, "NULL", init);
+        GetMapNavigationAreaInit(map, &Maps[map].Area, "NULL", init);
         World->PNavigationManager->AddNavigationMap(map, init);
     }
     World->PNavigationManager->ActivateNavigationMap(map);

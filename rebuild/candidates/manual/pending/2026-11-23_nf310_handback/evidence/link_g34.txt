@@ -1,0 +1,18 @@
+## HEAD set: H_007f5a70.obj H_007ed170.obj H_007ed2c0.obj H_007ed560.obj H_007ed870.obj H_00766050.obj H_007660c0.obj H_00766480.obj 0064bfba.obj 0068f470.obj 007ef200.obj 00839100.obj 00766c00.obj 007677e0.obj 007bfa90.obj
+duplicates 3
+  DUP H_007660c0.obj ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAugmentationDef@@@@@Z in H_00766050.obj;
+  DUP 0064bfba.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_007ed170.obj;
+  DUP 0064bfba.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in H_007f5a70.obj;
+UNRESOLVED 1 ?ApplyBonusItemEffects@CTCHeroStats@@QAEXPAVCBonusItemDef@@@Z
+UNRESOLVED 4 ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z
+UNRESOLVED 3 ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+## new set: 007f5a70.obj 007ed170.obj 007ed2c0.obj 007ed560.obj 007ed870.obj 00766050.obj 007660c0.obj 00766480.obj 0064bfba.obj 0068f470.obj 007ef200.obj 00839100.obj 00766c00.obj 007677e0.obj 007bfa90.obj
+duplicates 6
+  DUP 007660c0.obj ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAugmentationDef@@@@@Z in 00766050.obj;
+  DUP 0064bfba.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 007ed170.obj;
+  DUP 0064bfba.obj ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z in 007f5a70.obj;
+  DUP 00839100.obj ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z in 00766050.obj;
+  DUP 007677e0.obj ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z in 007660c0.obj;
+  DUP 007677e0.obj ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z in 00766050.obj;
+UNRESOLVED 1 ?ApplyBonusItemEffects@CTCHeroStats@@QAEXABVCBonusItemDef@@@Z
+LK_DONE

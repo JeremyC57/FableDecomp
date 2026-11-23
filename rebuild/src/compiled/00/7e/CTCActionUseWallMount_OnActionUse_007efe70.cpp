@@ -36,7 +36,7 @@ class CTCWallMount { public:                           // interface 0xDA
 };
 class CTCWallMountEffects { public:                    // interface 0xDB
     bool IsUsable();                            // 0x007DF3D0
-    bool OnWallMountUseAction(CThingCreatureBase* user);   // 0x007DF4B0
+    bool OnWallMountUseAction(CThingCreatureBase& user);   // 0x007DF4B0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -74,7 +74,7 @@ void CTCActionUseWallMount::OnActionUse(CThing& thing)
                 CThing* mounted = mount->GetObjectAttached();
                 if (IsThingAlive(mounted) && mounted->HasTC(TCI_WALL_MOUNT_EFFECTS)) {
                     CTCWallMountEffects* effects = ((CTCWallMountEffects*)&mounted->GetTC(TCI_WALL_MOUNT_EFFECTS));
-                    if (effects->IsUsable() && effects->OnWallMountUseAction(user))
+                    if (effects->IsUsable() && effects->OnWallMountUseAction(*user))
                         return;
                 }
             }

@@ -1,0 +1,20 @@
+#17 007f5a70 ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z
+   007f5a70(self) - DEF=WRONG:?IsTargetedThingOfType@CTCTargetingBase@@QBE_NK@Z
+   0064bfba OK ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z x1
+   0068f470 OK ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z x3
+   007ed170 WRONG ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z x1
+   007ed2c0 WRONG ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z x1
+   007ed560 WRONG ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z x1
+   007ed870 WRONG ?IsTargetedThingOfType@CTCTargetingBase@@QAE_NJ@Z x1
+   007ef200 OK ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z x2
+#5 00766050 ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z
+   00766050(self) - DEF=WRONG:?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z
+   00766480 WRONG ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NJ@Z x1
+   00766c00 OK ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z x2
+   007677e0 OK ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z x1
+   00839100 OK ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z x1
+#6 007660c0 ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z
+   007660c0(self) - DEF=WRONG:?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NJ@Z
+   00766480 WRONG ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NJ@Z x2
+   007677e0 OK ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z x1
+   007bfa90 OK ?HasAugmentationOfType@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z x10

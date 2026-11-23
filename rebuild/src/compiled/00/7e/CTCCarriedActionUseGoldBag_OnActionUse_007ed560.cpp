@@ -13,6 +13,7 @@
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
 // Name fix (agentNF7 2026-11-10): the local CInterfaceMap stand-in replaced by the shared CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> > (engine/CVectorMap.h), so LowerBound binds the PDB spelling (0x0040F020 / const 0x004365B0).
 #include "fable_compiler.h"
+#include "engine/ETargetingType.h"                 // PDB parameter type of IsTargetedThingOfType (NF310)
 class CTCBase;
 class CThing;
 #include "engine/ETCInterfaceType.h"
@@ -88,7 +89,7 @@ class CTCTargetingBase { public:                                   // interface 
     virtual CThing* GetTargetedThing();                     // slot 33 (+0x84)
     virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37();
     virtual bool CanInteractWithTarget(long type);          // slot 38 (+0x98)
-    bool IsTargetedThingOfType(long type);                  // 0x007F5A70
+    bool IsTargetedThingOfType(ETargetingType type) const;  // 0x007F5A70
 };
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
@@ -120,7 +121,7 @@ void CTCCarriedActionUseGoldBag::OnActionUse(CThing& thing)
     if (user->HasTC(8)) {
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
         CTCHeroStats* stats;
-        if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)
+        if (targeting->IsTargetedThingOfType(TARGETING_TALKABLE) && targeting->CanInteractWithTarget(2)
             && user->GetInterface(&stats, 4) && stats->Gold > 0) {
             long amount = GetDefaultGoldGift();
             CThing* receiver = targeting->GetTargetedThing();

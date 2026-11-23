@@ -1,0 +1,13 @@
+##### 00548790 renames: ?GetMaxAntialiasing@CUserProfileManager@@QBEJXZ=?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ
+ALL_EQ sections=3 DEF=2 tables=-
+##### 004164e0 renames: ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z=?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+ALL_EQ sections=6 DEF=5 tables=-
+##### 0088f920 renames: ?AutoSaveQuestStart@CWorld@@QAEXXZ=?AutoSaveQuestStart@CWorld@@QAE_NXZ
+ALL_EQ sections=2 DEF=1 tables=-
+##### 0065c781 renames: ?PopulateRegionWithVillagers@CWorldMap@@QAEXPAVCThing@@@Z=?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z
+ALL_EQ sections=20 DEF=19 tables=-
+##### 0050af10 renames: ?GetMapNavigationAreaInit@CWorldMap@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z=?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+ALL_EQ sections=15 DEF=14 tables=-
+##### 004022b0 renames: ?GlobalRegisterPlayer@CXMVPlayer@@SAXXZ=?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ
+ALL_EQ sections=3 DEF=2 tables=-
+

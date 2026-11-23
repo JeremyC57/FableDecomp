@@ -142,3 +142,5 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   carries the spelling its witness object binds; a Dinkumware `U?$char_traits` line whose witness binds the STLport `V` form is respelled
   after compiling the witness. Q4: an owner free function moving into its PDB namespace (all binders with it, catalog Module updated by the
   coordinator) lands in place.
+- NF310 D1: a binder may land alone on the PDB name when it resolves to byte-equal pick-any COMDATs other rows emit, while the strong self
+  would collide (LNK2005); queue the self for the nf86 / nf88 pick-any form. Helpers: copy nf310's nf.py (clean.py, not rmtree / unlink).

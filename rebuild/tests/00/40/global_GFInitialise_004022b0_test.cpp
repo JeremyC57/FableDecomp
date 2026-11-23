@@ -40,7 +40,7 @@ class CDisplayManager
 
 struct CXMVPlayer
 {
-    static void GlobalRegisterPlayer();
+    static void __fastcall GlobalRegisterPlayer();   // PDB SIXXZ, as the row (NF310)
 };
 
 extern bool FABLE_FASTCALL GFInitialise();
@@ -114,7 +114,7 @@ bool CDisplayManager::IsTextureBitDepthSupported(unsigned long bitDepth)
     return bitDepth == g_supportedBitDepth;
 }
 
-void CXMVPlayer::GlobalRegisterPlayer()
+void __fastcall CXMVPlayer::GlobalRegisterPlayer()
 {
     ++g_xmvCalls;
 }

@@ -1,0 +1,20 @@
+## HEAD set: H_00548790.obj H_004164e0.obj H_0088f920.obj H_0065c781.obj H_0050af10.obj H_004022b0.obj 00409090.obj 00417001.obj 00417747.obj 004a0cd0.obj 004a3740.obj 00896b60.obj 005064c0.obj 008a1c50.obj 0050a650.obj 009bd020.obj
+duplicates 0
+UNRESOLVED 1 ?AutoSaveQuestStart@CWorld@@QAEXXZ
+UNRESOLVED 1 ?GetAutoSaveQuestStartFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetAutoSaveQuestStartPathName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetMapNavigationAreaInit@CWorldMap@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+UNRESOLVED 1 ?GetMaxAntialiasing@CUserProfileManager@@QBEJXZ
+UNRESOLVED 1 ?GlobalRegisterPlayer@CXMVPlayer@@SAXXZ
+UNRESOLVED 2 ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?PopulateRegionWithVillagers@CWorldMap@@QAEXPAVCThing@@@Z
+UNRESOLVED 2 ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z
+UNRESOLVED 1 ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+## new set: 00548790.obj 004164e0.obj 0088f920.obj 0065c781.obj 0050af10.obj 004022b0.obj 00409090.obj 00417001.obj 00417747.obj 004a0cd0.obj 004a3740.obj 00896b60.obj 005064c0.obj 008a1c50.obj 0050a650.obj 009bd020.obj
+duplicates 0
+UNRESOLVED 1 ?GetAutoSaveQuestStartFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetAutoSaveQuestStartPathName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 3 ?PopulateRegionWithVillagers@CWorldMap@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?RenderUpdate@CWorld@@QAEXPAVCInterpolationInfo@@@Z
+UNRESOLVED 2 ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+LK_DONE
