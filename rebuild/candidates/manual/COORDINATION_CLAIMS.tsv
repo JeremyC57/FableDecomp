@@ -395,3 +395,5 @@ date	account	item	kind	status	note
 2026-11-23	A	binders 1 (scripted)	naming	done	16 callers by access_fix.py --binders (batches/2026-11-23_landing_binders1)
 2026-11-23	A	scripted-route in-place rejects (access1-4, binders1; 112 entries)	naming	done	agent NF317 landed 45 rows + 7 table lines (batches/2026-11-23_landing_nf317)
 2026-11-23	A	scripted-route header rejects (alias1, flatten-switch1; 122 entries)	naming	done	agent NF318 landed 88 rows (batches/2026-11-23_landing_nf318)
+2026-11-23	A	alias rows with the member absent from engine/X.h (190 entries)	naming	claimed	agent NF319 (scratchpad w22/agentNF319)
+2026-11-23	A	alias signature ports (144) and the CCreatureAction Clone header ports (23)	naming	claimed	agent NF320 (scratchpad w22/agentNF320)
