@@ -1,0 +1,9 @@
+## HEAD set: H_00895ed0.obj H_006c1150.obj H_006c17b0.obj
+duplicates 0
+
+UNRESOLVED 1 ?SetOwnedByPlayer@BuyableHouseMethods@@QAEX_N@Z
+UNRESOLVED 1 ?SetRented@BuyableHouseMethods@@QAEX_N@Z
+## new set: N_00895ed0.obj H_006c1150.obj H_006c17b0.obj
+duplicates 0
+
+LK_DONE

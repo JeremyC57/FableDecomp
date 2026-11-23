@@ -19,7 +19,7 @@ class CDataOutputStream {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size);    // slot 4 (+0x10)
-    void WriteUShort(unsigned short value);              // 0x00993E80
+    void WriteUWORD(unsigned short value);              // 0x00993E80
 public:
     void WriteSLONG(long);   // 0x00993EB0
 };
@@ -60,8 +60,8 @@ struct CEngineWaterBackgroundSubPatch_Methods : CEngineWaterBackgroundSubPatch {
 
 void CEngineWaterBackgroundSubPatch_Methods::Save(CDataOutputStream& stream, unsigned short a, unsigned short b, long c, long d)
 {
-    stream.WriteUShort(VertexCount);
-    stream.WriteUShort(PolyCount);
+    stream.WriteUWORD(VertexCount);
+    stream.WriteUWORD(PolyCount);
     stream.WriteSLONG(GetWaterType());
     long stride;
     switch (GetWaterType()) {

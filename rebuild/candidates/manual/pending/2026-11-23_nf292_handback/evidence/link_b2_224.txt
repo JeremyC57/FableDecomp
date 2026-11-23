@@ -1,0 +1,9 @@
+## HEAD set: H_00b2a010.obj H_00b59760.obj
+duplicates 0
+
+UNRESOLVED 1 ?Announce@CEngineComponent@@QAEXXZ
+## new set: N_00b2a010.obj H_00b59760.obj
+duplicates 0
+
+UNRESOLVED 1 ?SetupEnableConsoleVariable@CEngineComponent@@QAEXXZ
+LK_DONE

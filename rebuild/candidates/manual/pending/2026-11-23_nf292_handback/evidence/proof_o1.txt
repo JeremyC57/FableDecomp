@@ -1,0 +1,20 @@
+##### 006e11f0 explicit renames: ?IsLoadingAnyMap@CWorldMapAdapter@X_006e11f0@@QBE_NXZ=?IsLoadingAnyMap@CWorldMap@@QBE_NXZ
+sections head 33 new 33
+ALL_EQ text_sections_equal=29
+##### 00a99840 explicit renames: ?GetLength@CMemoryDataOutputStreamMethods@X_00a99840@@QBEKXZ=?GetLength@CMemoryDataOutputStream@@QBEKXZ ?PeekData@CMemoryDataOutputStreamMethods@X_00a99840@@QBEPBXXZ=?PeekData@CMemoryDataOutputStream@@QBEPBXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+##### 00a9ba70 explicit renames: ?GetLength@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEKXZ=?GetLength@CMemoryDataOutputStream@@QBEKXZ ?PeekData@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEPBXXZ=?PeekData@CMemoryDataOutputStream@@QBEPBXXZ
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+##### 00895ed0 explicit renames: ?SetOwnedByPlayer@BuyableHouseMethods@@QAEX_N@Z=?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z ?SetRented@BuyableHouseMethods@@QAEX_N@Z=?SetRented@CTCBuyableHouse@@QAEX_N@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+##### 007311f0 explicit renames: ?UpdateOpenStatusTriggerTypeScript@CTCDoor_Methods@@QAEXXZ=?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables 006e11f0 H=2 N=2
+tables 00a99840 H=0 N=0
+tables 00a9ba70 H=0 N=0
+tables 00895ed0 H=0 N=0
+tables 007311f0 H=0 N=0

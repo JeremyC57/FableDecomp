@@ -28,7 +28,7 @@ class CAIStateGroupBase { public:
     bool          Enabled;                               // +0x12
     void Terminate();                                    // 0x008FCF40 (Terminated = true)
     void CleanupMain();                                  // 0x008FD050
-    bool IsEnabledAndRunnable();                         // 0x008FCF10
+    bool IsRunnableMain();                               // 0x008FCF10 (Ego_r + FableWin; NF292, was IsEnabledAndRunnable)
     void Activate();                                     // 0x008FCF50
 };
 struct CStateGroupEntry {
@@ -87,7 +87,7 @@ bool CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan(long priority,
         return false;
     for (CStateGroupEntry* it = StateGroupBegin; it != StateGroupEnd; ++it) {
         CAIStateGroupBase* group = it->Group;
-        if (group->ScriptAIPriority > priority && group->IsEnabledAndRunnable()) {
+        if (group->ScriptAIPriority > priority && group->IsRunnableMain()) {
             if (PActiveStateGroup == 0) {
                 PActiveStateGroup = group;
                 group->Activate();

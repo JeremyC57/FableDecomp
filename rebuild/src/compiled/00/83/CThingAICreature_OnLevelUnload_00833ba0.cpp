@@ -32,7 +32,7 @@ struct CSuspenderSet {                              // STLport set<void*>: {head
 };
 
 class CAIBrain { public:
-    void OnLevelUnload();                           // 0x0088B6F0
+    void OnKill();                                  // 0x0088B6F0 (Ego_r + FableWin; NF292, was OnLevelUnload)
 };
 
 class CThing { public:
@@ -61,5 +61,5 @@ void CThingAICreature::OnLevelUnload()
     CThing::OnLevelUnload();
     AddSuspender(0);
     if (PBrain_Data)
-        PBrain_Data->OnLevelUnload();
+        PBrain_Data->OnKill();
 }

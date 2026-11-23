@@ -31,8 +31,8 @@ public:
 public:
     unsigned char _pad[0x14];
     bool m_retailMode;                             // +0x14
-    CWideString GetRetailBankPath(const CCharString& bankHandle);   // 0x009A7D40
-    void RegisterRetailBank(const CCharString& bankHandle, CBankFile* bank);   // 0x009A8090
+    CWideString GetRetailBankFilePath(const CCharString& bankHandle);   // 0x009A7D40 (Ego_r + FableWin; NF292, was GetRetailBankPath)
+    void RegisterBank(const CCharString& bankHandle, CBankFile* bank);   // 0x009A8090 (Ego_r + FableWin; NF292, was RegisterRetailBank)
 };
 extern CBankFileManager g_bankFileManager;         // 0x013CA79C
 
@@ -72,8 +72,8 @@ void CBankFile::OpenReadWrite(const CCharString& bankHandle, unsigned long flags
     if (g_bankFileManager.m_retailMode && !(flags & 4)) {
         RetailMode = true;
         Solid = true;
-        Filename = g_bankFileManager.GetRetailBankPath(bankHandle);
-        g_bankFileManager.RegisterRetailBank(bankHandle, this);
+        Filename = g_bankFileManager.GetRetailBankFilePath(bankHandle);
+        g_bankFileManager.RegisterBank(bankHandle, this);
         OpenRetail();
         return;
     }

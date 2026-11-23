@@ -17,7 +17,7 @@ class CCharString { public: void* m_pStringData; };
 class CMatrix3x4 { public: float m_row[3][4]; };
 
 class CDataOutputStream { public:
-    void WriteUShort(unsigned short value);               // 0x00993E80
+    void WriteUWORD(unsigned short value);               // 0x00993E80
     void WriteFloat(float value);                         // 0x00993EE0
     void Write3DVector(const C3DVector& value);           // 0x00993FD0
     void WriteMatrix3x4(const CMatrix3x4& m);             // 0x00994070
@@ -98,11 +98,11 @@ void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
     out.WriteFloat(BoundingSphere.Radius);
     out.Write3DVector(BoundingBox.MinCoord);
     out.Write3DVector(BoundingBox.MaxCoord);
-    out.WriteUShort((unsigned short)HelperPoints.m_count);
-    out.WriteUShort((unsigned short)DummyObjects.m_count);
-    out.WriteUShort(PackedNamesSize);
-    out.WriteUShort((unsigned short)MeshVolumes.size());
-    out.WriteUShort((unsigned short)MeshGenerators.size());
+    out.WriteUWORD((unsigned short)HelperPoints.m_count);
+    out.WriteUWORD((unsigned short)DummyObjects.m_count);
+    out.WriteUWORD(PackedNamesSize);
+    out.WriteUWORD((unsigned short)MeshVolumes.size());
+    out.WriteUWORD((unsigned short)MeshGenerators.size());
     out.WriteBuffer(HelperPoints.m_pData, HelperPoints.m_count * sizeof(C3DHelperPoint));
     out.WriteBuffer(DummyObjects.m_pData, DummyObjects.m_count * sizeof(C3DDummyObject));
     out.WriteBuffer(PackedNames, PackedNamesSize);

@@ -517,6 +517,11 @@ public:
  // Retail opt-in (Codex pass23): original const-reference query, no data-layout change.
  float GetHeightZBelowPos(const C3DVector& pos) const;
 #endif
+#ifdef FABLE_RETAIL_CWORLDMAP_FLAT_ISLOADINGANYMAP
+ // Add-only opt-in (naming agent NF292, 2026-11-23, binder 0x006E11F0 CTCDParticleEmitter::Create): Ego_r.pdb / FableWin.pdb
+ // ?IsLoadingAnyMap@CWorldMap@@QBE_NXZ (retail 0x004FB4A0), as the retail branch declares it. Declaration only: no layout change.
+ bool IsLoadingAnyMap() const;                                      // 0x004FB4A0
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    f4;                              // +0x04 retail-only long (previous header)
     CWorld*                 World;                           // +0x08

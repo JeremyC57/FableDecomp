@@ -1,0 +1,51 @@
+action	symbol	target	witness	note
+delete	?IsLoadingAnyMap@CWorldMapAdapter@X_006e11f0@@QBE_NXZ	004fb4a0	006e11f0	sole binder(s) 006e11f0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?GetLength@CMemoryDataOutputStreamMethods@X_00a99840@@QBEKXZ	00994b40	00a99840	sole binder(s) 00a99840 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?PeekData@CMemoryDataOutputStreamMethods@X_00a99840@@QBEPBXXZ	00995e70	00a99840	sole binder(s) 00a99840 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?GetLength@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEKXZ	00994b40	00a9ba70	sole binder(s) 00a9ba70 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?PeekData@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEPBXXZ	00995e70	00a9ba70	sole binder(s) 00a9ba70 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?SetOwnedByPlayer@BuyableHouseMethods@@QAEX_N@Z	006c17b0	00895ed0	sole binder(s) 00895ed0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?SetRented@BuyableHouseMethods@@QAEX_N@Z	006c1150	00895ed0	sole binder(s) 00895ed0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?UpdateOpenStatusTriggerTypeScript@CTCDoor_Methods@@QAEXXZ	007310c0	007311f0	sole binder(s) 007311f0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ	007310c0	007311f0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?GetFirstSequence@C3DAnimFileObjectChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileSequenceChunk@@@@XZ	00ab03d0	00a99610	sole binder(s) 00a99610 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?FindFirstSequence@C3DAnimFileObjectChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileSequenceChunk@@@@XZ	00ab03d0	00a99610	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?CalcLocalBoneTransformations@C3DAnimation2@@QBEXPAVC3DKeyframe@@KM@Z	00a4cec0	00a9f2f0	sole binder(s) 00a9f2f0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?CalcLocalBoneTransformationsRelative@C3DAnimation2@@QBEXPAVC3DKeyframe@@KMABVC3DMesh2@@@Z	00a4d770	00a9f2f0	sole binder(s) 00a9f2f0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?ApplyParameters@C3DSkeletalMorph@@QAEXXZ	00a45330	007864c0	sole binder(s) 007864c0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?NotifyParamUpdate@C3DSkeletalMorph@@QAEXXZ	00a45330	007864c0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?ResetCombinedMorph@C3DSkeletalMorph@@QAEXXZ	00a45330	00786700	sole binder(s) 00786700 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?OnLevelUnload@CAIBrain@@QAEXXZ	0088b6f0	00833ba0	sole binder(s) 00833ba0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?IsEnabledAndRunnable@CAIStateGroupBase@@QAE_NXZ	008fcf10	0088bac0	sole binder(s) 0088bac0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?IsRunnableMain@CAIStateGroupBase@@QAE_NXZ	008fcf10	0088bac0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?SetGroups@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z	0073e040	0073e9d0	sole binder(s) 0073e9d0,0073ea70,0073fdb0,0073fea0,008d89c0,009380e0,009381b0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z	0073e040	0073e9d0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?Reset@CAnimateThing@@QAEXXZ	0070ec30	007306c0	sole binder(s) 007306c0,007502d0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?SetBlocking@CTCSwitchableNavigation@@QAEX_N@Z	00787580	007306c0	sole binder(s) 007306c0,00730c00,00730dd0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@@Z	0070d920	007306c0	sole binder(s) 007306c0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?GetRetailBankPath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z	009a7d40	009cb960	sole binder(s) 009cb960 respelled by NF292 (exe callers read: no other landed row binds this stand-in) | CONDITIONAL on decision 1 (0x009CB960 is a T3_PORT_QUEUE address)
+add	?GetRetailBankFilePath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z	009a7d40	009cb960	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder | CONDITIONAL on decision 1 (0x009CB960 is a T3_PORT_QUEUE address)
+delete	?RegisterRetailBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z	009a8090	009cb960	sole binder(s) 009cb960 respelled by NF292 (exe callers read: no other landed row binds this stand-in) | CONDITIONAL on decision 1 (0x009CB960 is a T3_PORT_QUEUE address)
+add	?RegisterBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z	009a8090	009cb960	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder | CONDITIONAL on decision 1 (0x009CB960 is a T3_PORT_QUEUE address)
+delete	?SetOwner@CCategory@NInventory@@QAEXPAVCThing@@@Z	005bd183	005c024a	sole binder(s) 005c024a respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?SetCategoryThingAssociation@CCategory@NInventory@@QAEXPAVCThing@@@Z	005bd183	005c024a	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?Announce@CEngineComponent@@QAEXXZ	00b59760	00b2a010	sole binder(s) 00b2a010 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?Initialize@CFrontEndButton@NUISystem@@QAEXXZ	0054df50	0054e0b0	sole binder(s) 0054e0b0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?GetDataFromDef@CFrontEndButton@NUISystem@@QAEXXZ	0054df50	0054e0b0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?HasDamageAttribute4@CHitParameters@@QBE_NXZ	008688c0	00811760	sole binder(s) 00811760 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?IsShotStrike@CHitParameters@@QBE_NXZ	008688c0	00811760	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?CalcCameraRangeState@CLandscapeBackgroundTreeNode@@QAEJXZ	00bf7df0	00bf7f70	sole binder(s) 00bf7f70 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ	00bf7df0	00bf7f70	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?AddBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z	009d6420	009d66a0	sole binder(s) 009d66a0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?RegisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z	009d6420	009d66a0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?RemoveBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z	009d5a30	009d66a0	CONDITIONAL: 009d6490 (T3-queued, not compiled) declares RemoveBank on its own model; delete only if its object does not bind this exact spelling
+add	?UnregisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z	009d5a30	009d66a0	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?IsPassableAtBlock@CMap@@QBE_NABVC2DCoordI@@@Z	0081f630	0063a760	sole binder(s) 0063a760 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?GetNavPreferredAt@CMap@@QBE_NABVC2DCoordI@@@Z	0081f630	0063a760	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?Reset@CMemoryDataOutputStream@@QAEXXZ	00996b60	00adfdc0	sole binder(s) 00adfdc0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+rewitness	?WriteUShort@CDataOutputStream@@QAEXG@Z	00993e80	00bfc770	stand-in still bound by 00bfc770 (NF290 binder row, not changed; CONDITIONAL: not compiled, its scope unverified -- rewitness only if its object binds this exact spelling, else delete); old witness 009b0200 respelled by NF292
+delete	?WriteUSHORT@CDataOutputStream@@QAEXG@Z	00993e80	00abaee0	sole binder(s) 00abaee0 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?SetCameraDesc@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z	00b30b50	00be1e70	sole binder(s) 00be1e70 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+delete	?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z	00687d40	00690030	sole binder(s) 00690030 respelled by NF292 (exe callers read: no other landed row binds this stand-in)
+add	?GetMouseWheelMovement@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z	00687d40	00690030	PDB spelling (Ego_r/FableWin name sets, evidence/pdbq.txt) had no table line; witness = NF292 respelled binder
+delete	?GetProgressRatio@CCreatureActionBase@@QAEMXZ	006925e0	007dd270	sole binder(s) 007dd270 respelled by NF292 (exe callers read: no other landed row binds this stand-in)

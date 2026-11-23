@@ -1,0 +1,8 @@
+## HEAD set: H_007311f0.obj H_007310c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?UpdateOpenStatusTriggerTypeScript@CTCDoor_Methods@@QAEXXZ
+## new set: N_007311f0.obj H_007310c0.obj
+duplicates 0
+
+LK_DONE

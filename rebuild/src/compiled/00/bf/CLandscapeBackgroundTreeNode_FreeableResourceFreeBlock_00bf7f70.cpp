@@ -88,7 +88,7 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
     unsigned char                    _pad0e7;
     CLandscapeBackgroundPatch* GetPatch();                    // 0x00BF6130
     CLandscapeBackgroundSubNodeSplitBranch* GetSplitBranch(); // 0x00BF6160
-    long CalcCameraRangeState();                              // 0x00BF7DF0
+    long GetDesiredLODBand();                              // 0x00BF7DF0
     bool FreeableResourceFreeBlock();
 };
 
@@ -106,7 +106,7 @@ bool CLandscapeBackgroundTreeNode::FreeableResourceFreeBlock()
         return false;
     CLandscapeBackgroundPatch* patch = GetPatch();
     GetSplitBranch();
-    if (CalcCameraRangeState() == 1)
+    if (GetDesiredLODBand() == 1)
         return false;
     if (patch && patch->LODBand >= LODLoadInfo[LastBand].OptimizedBandRemap)
         return false;

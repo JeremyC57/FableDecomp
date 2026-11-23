@@ -102,6 +102,14 @@ public:
     long             UpdateID;                               // +0x18
     unsigned char    TriggerType[0x4];                       // +0x1c EDoorTriggerType
     CDefPointeeBase* PDef_Object;                            // +0x20 CDefPointer<CDoorDef_const_>::Object
+#ifdef FABLE_RETAIL_CTCDOOR_FLAT_UPDATEOPENSTATUSTRIGGERTYPESCRIPT
+    // Add-only opt-in (naming agent NF292, 2026-11-23, binder 0x007311F0 CTCDoor::FrameUpdate): Ego_r.pdb / FableWin.pdb
+    // ?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ (retail 0x007310C0, protected), as FABLE_RETAIL_CTCDOOR_OPENCLOSE declares it
+    // in the retail branch. Declaration only: no layout change.
+protected:
+    void UpdateOpenStatusTriggerTypeScript();                            // 0x007310C0
+public:
+#endif
 };
 #pragma pack(pop)
 

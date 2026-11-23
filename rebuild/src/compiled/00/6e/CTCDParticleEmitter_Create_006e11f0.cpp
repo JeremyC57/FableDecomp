@@ -4,7 +4,7 @@
 // Fidelity: cast, not retail: CreateInterpolatedEmitter gets this row's stand-in C3DVector / CRightHandedSet through casts to the global
 // types, and its NParticleEngine emitter result is cast to the row's ::CParticleEmitter (no code). The port onto the shared C3DVector /
 // CRightHandedSet / NParticleEngine::CParticleEmitter headers is queued.
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members data->Data, info->Info are the header CCountedPointer's (same offsets).
+#define FABLE_RETAIL_CWORLDMAP_FLAT_ISLOADINGANYMAP // NF292: IsLoadingAnyMap 0x004FB4A0 from CWorldMap.h (Ego_r + FableWin QBE). Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members data->Data, info->Info are the header CCountedPointer's (same offsets).
 #include "fable_compiler.h"
 #include <stdlib.h>
 #include <string.h>
@@ -62,7 +62,7 @@ virtual void v13()=0;
 virtual void v14()=0;
 virtual void v15()=0;
 virtual int GetMapNumberAt(const C3DVector&)const=0;};struct CThingManager {char pad[40];::CWorldMap*WorldMap;};extern CThingManager* g_pThingManager;
-struct CWorldMapAdapter: ::CWorldMap {bool IsLoadingAnyMap()const;};struct CWorldVirtualSlots {virtual void v0()=0;
+struct CWorldMapAdapter: ::CWorldMap {}; /* IsLoadingAnyMap 0x004FB4A0: the CWorldMap.h member (NF292) */struct CWorldVirtualSlots {virtual void v0()=0;
 virtual void v1()=0;
 virtual void v2()=0;
 virtual void v3()=0;

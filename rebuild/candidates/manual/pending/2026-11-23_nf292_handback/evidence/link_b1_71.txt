@@ -1,0 +1,11 @@
+## HEAD set: H_009cb960.obj H_009a7d40.obj H_009a8090.obj
+duplicates 0
+
+UNRESOLVED 1 ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z
+UNRESOLVED 1 ?GetRetailBankPath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z
+UNRESOLVED 1 ?RegisterRetailBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z
+## new set: N_009cb960.obj H_009a7d40.obj H_009a8090.obj
+duplicates 0
+
+UNRESOLVED 1 ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z
+LK_DONE

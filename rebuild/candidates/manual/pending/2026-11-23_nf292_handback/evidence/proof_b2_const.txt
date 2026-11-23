@@ -1,0 +1,6 @@
+##### 00690030 explicit (name + const, PDB QBE): ?GetEventScrollAmount@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z=?GetMouseWheelMovement@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z
+sections head 17 new 17
+ALL_EQ text_sections_equal=13
+##### 007dd270 explicit (name + const, PDB QBE): ?GetProgressRatio@CCreatureActionBase@@QAEMXZ=?GetPercentageComplete@CCreatureActionBase@@QBEMXZ
+sections head 12 new 12
+ALL_EQ text_sections_equal=8

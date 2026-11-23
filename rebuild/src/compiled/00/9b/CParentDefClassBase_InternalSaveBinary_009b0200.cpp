@@ -15,7 +15,7 @@
 // value, whose two longs are written through a reference.
 class CDataOutputStream { public:
     void WriteCBYTE(char value);                   // 0x00993E50
-    void WriteUShort(unsigned short value);        // 0x00993E80
+    void WriteUWORD(unsigned short value);        // 0x00993E80
 public:
     void WriteSLONG(long);   // 0x00993EB0
     void WriteULONG(unsigned long);   // 0x00993EA0
@@ -84,7 +84,7 @@ void CParentDefClassBase::InternalSaveBinary(CDataOutputStream& stream)
     CDefClassBase::InternalSaveBinary(stream);
     SubDefInfoMap.Sort();
     unsigned long count = SubDefInfoMap.size();
-    stream.WriteUShort((unsigned short)count);
+    stream.WriteUWORD((unsigned short)count);
     for (unsigned long i = 0; i < count; ++i) {
         stream.WriteULONG(SubDefInfoMap[i].first);
         SubDefInfoMap[i].second.Save(stream);

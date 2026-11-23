@@ -1,0 +1,11 @@
+## HEAD set: H_00a99840.obj H_00a9ba70.obj H_00994b40.obj H_00995e70.obj
+duplicates 0
+
+UNRESOLVED 1 ?GetLength@CMemoryDataOutputStreamMethods@X_00a99840@@QBEKXZ
+UNRESOLVED 1 ?GetLength@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEKXZ
+UNRESOLVED 1 ?PeekData@CMemoryDataOutputStreamMethods@X_00a99840@@QBEPBXXZ
+UNRESOLVED 1 ?PeekData@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEPBXXZ
+## new set: N_00a99840.obj N_00a9ba70.obj H_00994b40.obj H_00995e70.obj
+duplicates 0
+
+LK_DONE

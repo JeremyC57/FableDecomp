@@ -1,0 +1,9 @@
+## HEAD set: H_007864c0.obj H_00786700.obj H_00a45330.obj
+duplicates 0
+
+UNRESOLVED 1 ?ApplyParameters@C3DSkeletalMorph@@QAEXXZ
+UNRESOLVED 1 ?ResetCombinedMorph@C3DSkeletalMorph@@QAEXXZ
+## new set: N_007864c0.obj N_00786700.obj H_00a45330.obj
+duplicates 0
+
+LK_DONE

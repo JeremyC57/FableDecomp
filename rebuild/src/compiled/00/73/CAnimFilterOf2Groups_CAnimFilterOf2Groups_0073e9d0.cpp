@@ -20,12 +20,12 @@ struct CAnimFilterOf2Groups : CAnimFilterBase {    // vtable 0x01267578
     CCharString m_groupA;                   // +0x4
     CCharString m_groupB;                   // +0x8
     CAnimFilterOf2Groups(const CCharString& groupA, const CCharString& groupB);
-    void SetGroups(const CCharString& groupA, const CCharString& groupB);   // 0x0073E040
+    void SetCurrentGroupNames(const CCharString& groupA, const CCharString& groupB);   // 0x0073E040 (FableWin; NF292, was SetGroups)
 };
 
 CAnimFilterOf2Groups::CAnimFilterOf2Groups(const CCharString& groupA, const CCharString& groupB)
     : m_groupA()
     , m_groupB()
 {
-    SetGroups(groupA, groupB);
+    SetCurrentGroupNames(groupA, groupB);
 }

@@ -1,0 +1,8 @@
+## HEAD set: H_00adfdc0.obj H_00996b60.obj
+duplicates 0
+
+UNRESOLVED 1 ?Reset@CMemoryDataOutputStream@@QAEXXZ
+## new set: N_00adfdc0.obj H_00996b60.obj
+duplicates 0
+
+LK_DONE

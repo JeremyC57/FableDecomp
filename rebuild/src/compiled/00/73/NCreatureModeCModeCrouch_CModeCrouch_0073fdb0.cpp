@@ -34,9 +34,9 @@ struct CAnimFilterOf2Groups : CAnimFilterBase {    // vtable 0x01267578
         : m_groupA()
         , m_groupB()
     {
-        SetGroups(groupA, groupB);
+        SetCurrentGroupNames(groupA, groupB);
     }
-    void SetGroups(const CCharString& groupA, const CCharString& groupB);   // 0x0073E040
+    void SetCurrentGroupNames(const CCharString& groupA, const CCharString& groupB);   // 0x0073E040 (FableWin; NF292, was SetGroups)
 };
 
 namespace NCreatureMode {

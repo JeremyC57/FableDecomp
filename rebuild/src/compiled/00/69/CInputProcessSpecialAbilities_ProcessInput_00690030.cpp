@@ -133,7 +133,7 @@ protected:
 public:
     bool IsEventAssignableSpecialMoveButton(const CInputEvent& event);   // 0x00687C70
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
-    float GetEventScrollAmount(const CInputEvent& event);             // 0x00687D40 (descriptive)
+    float GetMouseWheelMovement(const CInputEvent& event) const;             // 0x00687D40 (Ego_r + FableWin QBE; NF292, was GetEventScrollAmount)
 };
 class CInputProcessSpecialAbilities : public CInputProcessGameBase {
 public:
@@ -157,7 +157,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
         } else if (IsEventGameAction((EGameAction)(0x39), event)) {
             if (state && !state->IsChargingUpAbility()) {
                 if (event.Type == 0xe) {
-                    float amount = GetEventScrollAmount(event);
+                    float amount = GetMouseWheelMovement(event);
                     float size = Abs(amount);
                     if (size > 0.0001f) {
                         long steps = (long)size / 120;

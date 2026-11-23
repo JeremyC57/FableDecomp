@@ -15,7 +15,7 @@ class CDataOutputStream { public:
     virtual unsigned long GetPosition();                       // slot 2 (+0x08)
     virtual void v3();
     virtual void WriteData(const void* data, unsigned long size); // slot 4 (+0x10)
-    void WriteUShort(unsigned short value);                    // 0x00993E80
+    void WriteUWORD(unsigned short value);                    // 0x00993E80
     void WriteBuffer(const void* data, long size);             // 0x00996610 (compressed block)
 public:
     void WriteEBOOL(bool);   // 0x00993E30
@@ -82,8 +82,8 @@ unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out) const
         staticBlocks += Primitives[p].StaticBlockCount;
         animatedBlocks += Primitives[p].AnimatedBlockCount;
     }
-    out.WriteUShort((unsigned short)staticBlocks);
-    out.WriteUShort((unsigned short)animatedBlocks);
+    out.WriteUWORD((unsigned short)staticBlocks);
+    out.WriteUWORD((unsigned short)animatedBlocks);
     out.WriteData(BoneNameIndices, BoneCount * sizeof(unsigned short));
     out.WriteBuffer(BoneNameData, BoneNameDataSize);
     out.WriteBuffer(Bones, BoneCount * sizeof(C3DBone2));

@@ -1,0 +1,8 @@
+## HEAD set: H_00811760.obj H_008688c0.obj
+duplicates 0
+
+UNRESOLVED 1 ?HasDamageAttribute4@CHitParameters@@QBE_NXZ
+## new set: N_00811760.obj H_008688c0.obj
+duplicates 0
+
+LK_DONE

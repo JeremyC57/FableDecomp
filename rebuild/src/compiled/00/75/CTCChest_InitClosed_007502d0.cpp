@@ -96,7 +96,7 @@ class CAnimSet { public:
 };
 class CAnimateThing { public:
     CAnimSet MainAnimSet;                                      // +0x00 (CurrentAnim.MainAnimSet)
-    void Reset();                                              // 0x0070EC30
+    void ClearAllAnims();                                      // 0x0070EC30 (Ego_r + FableWin; NF292, was Reset)
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
 class CTCAnimationComplex { public:
@@ -193,7 +193,7 @@ void CTCChest::InitClosed()
     if (ParentThing->HasTC(0x5a))
         complex = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
     CAnimateThing& animator = complex->GetAnimation();
-    animator.Reset();
+    animator.ClearAllAnims();
     CDefPointer<CThingBaseDef> thingDef(ParentThing->PBaseDef);
     CDefPointer<CAppearanceDef> appearance;
     thingDef->GetSubDef(&appearance);

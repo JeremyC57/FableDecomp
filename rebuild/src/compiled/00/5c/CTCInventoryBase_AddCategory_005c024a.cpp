@@ -54,7 +54,7 @@ class CCategory { public:
     unsigned char _body[0x2C];
     CCategory(CDefPointer def, CTCInventoryBase_Retail* inventory, long defIndex);   // 0x005BFCD9
     ~CCategory();                                                 // 0x005C2739
-    void SetOwner(CThing* owner);                                 // 0x005BD183
+    void SetCategoryThingAssociation(CThing* owner);              // 0x005BD183 (Ego_r + FableWin; NF292, was SetOwner)
 };
 }
 struct CCategoryVector {
@@ -78,7 +78,7 @@ void CTCInventoryBase_Retail::AddCategory(CTCInventoryBase_Retail* inventory, lo
     CInventoryCategoryDef* object = def.Object;
     if (found) {
         Categories.push_back(NInventory::CCategory(CDefPointer(object), inventory, defIndex));
-        Categories.back().SetOwner(owner);
+        Categories.back().SetCategoryThingAssociation(owner);
     }
     if (object) {
         if (--object->RefCount == 0)

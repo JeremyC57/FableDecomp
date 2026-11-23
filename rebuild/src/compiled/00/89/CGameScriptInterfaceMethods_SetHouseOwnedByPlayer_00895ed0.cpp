@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetHouseOwnedByPlayer -- update house ownership/rental state and hero property count
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail00895ED0,289 bytes;0040F020 lower_bound,0099A2E0 base destructor,00BFE9BC delete; CTCAIScratchpad donor layout.
+#define FABLE_RETAIL_CTCBUYABLEHOUSE_FLAT_SETRENTED_SETOWNED // NF292: SetRented 0x006C1150 / SetOwnedByPlayer 0x006C17B0 from CTCBuyableHouse.h (Ego_r + FableWin QAE). Retail00895ED0,289 bytes;0040F020 lower_bound,0099A2E0 base destructor,00BFE9BC delete; CTCAIScratchpad donor layout.
 #include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
@@ -129,7 +129,7 @@ class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
 // Donor stats counts +E8/+EC differ from native +E0/+E4. No other stats fields are accessed here.
 struct HeroStatsRetail{unsigned char BeforeCounts[0xe0];long NumberOfShopsOwned,NumberOfHousesOwned;};
-struct BuyableHouseMethods:CTCBuyableHouse{void SetOwnedByPlayer(bool);void SetRented(bool);}; //006C17B0,006C1150
+struct BuyableHouseMethods:CTCBuyableHouse{}; //006C17B0 SetOwnedByPlayer,006C1150 SetRented: the CTCBuyableHouse.h members (NF292; were declared on this stand-in)
 // Real CThing component lookup; result is deliberately unspecified when HasTC is false, as in native.
 template<int Key,class T> FABLE_FORCEINLINE T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[Key>>5]&(1u<<(Key&31))){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)Key);ComponentEntry* end=map->_M_finish;result=(T*)((it==end||it->first>Key?end:it)->second);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetHouseOwnedByPlayer(const ScriptMethods&,bool,bool)const;};

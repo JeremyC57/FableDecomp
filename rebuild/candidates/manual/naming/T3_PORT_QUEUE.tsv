@@ -365,3 +365,10 @@ nf294	0x004cd9c0	entry 57: `typedef long EConversationAttitude` and a free fastc
 nf294	0x00413590	entry 58: pointer stand-in classes CCountedCodeSectionManagerPointer / CCodeSectionManagerPointer (0x004B3A20 is an NF293 ENTRIES target) / CParticleMorphManagerPointer: CCountedPointer<T> port	NF294 skipped-port
 nf294	0x005c1946	entry 59: stand-in CCountedPointer_PerItemData with a global CPerItemData (PDB NInventory::CPerItemData): port	NF294 skipped-port
 nf294	0x00641eb0	entry 60: local CCountedPointer<T> template over a global struct CLightInfo (PDB CTCLight::CLightInfo, class): element port	NF294 skipped-port
+nf292	0x00a99110	entry 14: order 2. The binder defines a same-TU strong body C3DAnimFileRootChunk::GetFirstObject (0x00A99110) under the made-up name; renaming it onto the PDB FindFirstObject would add a second strong definition beside the self row (NF281 D2 / NF283 D3): T3.	NF292 skipped-port
+nf292	0x00a9b030	entry 20: order 2 (read). GetFirstSubMesh is defined as a same-TU body in 0x00A9B460 and 0x00A9B550 (filter DEF): T3 as entry 14.	NF292 skipped-port
+nf292	0x00a9b0c0	entry 21: order 2 (read). As entry 20 (GetNextSubMesh).	NF292 skipped-port
+nf292	0x0070D920	owner self row defines ?op_del@@YGXPAX@Z (in neither PDB set); self port	NF292 Q2
+nf292	0x006925E0	owner self row defines GetMovementRatio (in neither PDB set); self port	NF292 Q2
+nf292	0x00B59760	20-byte body with two PDB names (SetupEnableConsoleVariable in the table; self defines a non-virtual GetControlAngleXY, PDBs only the virtual const form): identity research	NF292 Q3
+nf292	0x00996B60	CMemoryDataOutputStream::Clear defined by four landed rows (owner 0x00996B60 + 0x00A66860, 0x00A66C00, 0x009E42C0): check strong v pick-any	NF292 Q4

@@ -65,7 +65,7 @@ class CAnimateThing { public:
 class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
-class CTCSwitchableNavigation { public: void SetBlocking(bool blocking); };   // 0x00787580
+class CTCSwitchableNavigation { public: void SetAsBlockingNavigation(bool blocking); };   // 0x00787580 (Ego_r + FableWin; NF292, was SetBlocking)
 class CTCObstacle { public:                            // interface 9
     unsigned char _pad00[0x10];
     bool          Enabled;                      // +0x10
@@ -196,7 +196,7 @@ void CTCDoor_Methods::Open(bool fireEvent)
     animate.SetMainAnim(init, 1, 0);
     CTCSwitchableNavigation* navigation;
     if (Parent()->GetInterface(&navigation, 0x79))
-        navigation->SetBlocking(false);
+        navigation->SetAsBlockingNavigation(false);
     CTCObstacle* obstacle;
     if (Parent()->GetInterface(&obstacle, 9))
         obstacle->Enabled = false;

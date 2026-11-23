@@ -52,7 +52,7 @@ class C3DAnimFileSequenceChunk { public:
 };
 
 class C3DAnimFileObjectChunk { public:
-    CCountedPointer<const C3DAnimFileSequenceChunk> GetFirstSequence() const;   // 0x00AB03D0
+    CCountedPointer<const C3DAnimFileSequenceChunk> FindFirstSequence() const;   // 0x00AB03D0 (Ego_r + FableWin; NF292, was GetFirstSequence)
 };
 
 class CChunkedFileChunk;
@@ -79,7 +79,7 @@ CCountedPointer<const C3DAnimFileObjectChunk> C3DAnimFileRootChunk::GetFirstObje
 float C3DAnimFileRootChunk::GetNonLoopingDuration() const
 {
     CCountedPointer<const C3DAnimFileObjectChunk> object = GetFirstObject();
-    CCountedPointer<const C3DAnimFileSequenceChunk> sequence = object->GetFirstSequence();
+    CCountedPointer<const C3DAnimFileSequenceChunk> sequence = object->FindFirstSequence();
     float duration = ((float)sequence->Matrices.size() - 1.0f) / sequence->SamplesPerSecond;
     return duration;
 }

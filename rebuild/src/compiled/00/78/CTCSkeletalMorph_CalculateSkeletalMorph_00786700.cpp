@@ -31,7 +31,7 @@ class C3DSkeletalMorphParameter { public:
 class C3DSkeletalMorph { public:
     void ClearMorphParameters();                    // 0x00A45410
     void AddMorphParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);   // 0x00A45470
-    void ResetCombinedMorph();                      // 0x00A45330
+    void NotifyParamUpdate();                       // 0x00A45330 (Ego_r + FableWin; NF292, was ResetCombinedMorph)
 };
 struct CSkeletalMorphEntry {                        // CTCSkeletalMorph::CSkeletalMorph, 12 bytes
     long        _00;
@@ -58,5 +58,5 @@ void CTCSkeletalMorph::CalculateSkeletalMorph()
         PSkeletalMorph->AddMorphParameter(parameter);
         parameter->SetCurrentValue(morph->Value);
     }
-    PSkeletalMorph->ResetCombinedMorph();
+    PSkeletalMorph->NotifyParamUpdate();
 }

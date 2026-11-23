@@ -34,7 +34,7 @@ public:
     CMemoryDataOutputStream();                                         // 0x00996AF0
     virtual ~CMemoryDataOutputStream();                                        // 0x00996B30
     virtual void Write(const void* data, long length);                 // 0x00996CC0
-    void Reset();                                                      // 0x00996B60
+    void Clear();                                                      // 0x00996B60
     void const* PeekData() const;                                                  // 0x00995E70
 };
 #define FABLE_RETAIL_CDATAINPUTSTREAM
@@ -77,7 +77,7 @@ void CParticleProgram::OptimiseConstraints()
             lastType = type;
             totalCount = count;
             totalSize = size;
-            data.Reset();
+            data.Clear();
         }
         in.CopyTo(data, size);
     }
@@ -87,6 +87,6 @@ void CParticleProgram::OptimiseConstraints()
         merged.WriteULONG(totalSize);
         merged.Write(((void*)data.PeekData()), ((CMemoryDataOutputStream*)&data)->GetLength());
     }
-    constraints.Reset();
+    constraints.Clear();
     constraints.Write(((void*)merged.PeekData()), ((CMemoryDataOutputStream*)&merged)->GetLength());
 }

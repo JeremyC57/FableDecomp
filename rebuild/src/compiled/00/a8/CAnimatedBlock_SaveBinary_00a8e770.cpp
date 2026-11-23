@@ -16,7 +16,7 @@ public:
     virtual void v03();
     virtual void Write(const void* data, long size);   // slot 4
     void WriteUChar(unsigned char value);       // 0x00993E50
-    void WriteUShort(unsigned short value);     // 0x00993E80
+    void WriteUWORD(unsigned short value);     // 0x00993E80
 public:
     void WriteEBOOL(bool);   // 0x00993E30
     void WriteULONG(unsigned long);   // 0x00993EA0
@@ -45,7 +45,7 @@ void CAnimatedBlock::SaveBinary(CDataOutputStream* stream) const
     stream->WriteUChar(m_type);
     stream->WriteEBOOL(m_flagB);
     stream->WriteULONG(VertexCount);
-    stream->WriteUShort(BonesPerVertex);
+    stream->WriteUWORD(BonesPerVertex);
     stream->WriteEBOOL(PalettedFlag);
     stream->WriteUChar(GroupCount);
     stream->Write(Groups, GroupCount);

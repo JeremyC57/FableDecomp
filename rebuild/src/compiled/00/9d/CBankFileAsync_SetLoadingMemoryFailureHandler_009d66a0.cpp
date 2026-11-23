@@ -19,8 +19,8 @@ class CBankFileAsync;
 
 class CLoadingMemoryFailureHandler {
 public:
-    void RemoveBank(CBankFileAsync* bank);          // 0x009D5A30
-    void AddBank(CBankFileAsync* bank);             // 0x009D6420
+    void UnregisterBank(CBankFileAsync* bank);          // 0x009D5A30
+    void RegisterBank(CBankFileAsync* bank);             // 0x009D6420
 };
 
 class CBankFileAsync {
@@ -34,8 +34,8 @@ public:
 void CBankFileAsync::SetLoadingMemoryFailureHandler(CCountedPointer<CLoadingMemoryFailureHandler> handler)
 {
     if (MemoryFailureHandler.Data)
-        MemoryFailureHandler->RemoveBank(this);
+        MemoryFailureHandler->UnregisterBank(this);
     if (handler.Data)
-        handler->AddBank(this);
+        handler->RegisterBank(this);
     MemoryFailureHandler = handler;
 }

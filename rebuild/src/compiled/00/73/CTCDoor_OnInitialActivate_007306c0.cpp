@@ -77,13 +77,13 @@ class CAnimateThing { public:
     unsigned char _pad00[0x1c];
     float CurrentPercentageComplete;            // +0x1c
     float LastPercentageComplete;               // +0x20
-    void Reset();                               // 0x0070EC30
-    void SetMainAnim(const CAnimInit& init);    // 0x0070D920 (forwards to the 3-argument SetMainAnim 0x0070D580 with 1, 0)
+    void ClearAllAnims();                       // 0x0070EC30 (Ego_r + FableWin; NF292, was Reset)
+    void Init(const CAnimInit& init);           // 0x0070D920 (Ego_r + FableWin; NF292, was SetMainAnim) (forwards to the 3-argument SetMainAnim 0x0070D580 with 1, 0)
 };
 class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
-class CTCSwitchableNavigation { public: void SetBlocking(bool blocking); };   // 0x00787580
+class CTCSwitchableNavigation { public: void SetAsBlockingNavigation(bool blocking); };   // 0x00787580 (Ego_r + FableWin; NF292, was SetBlocking)
 class CTCObstacle { public:                            // interface 9
     unsigned char _pad00[0x10];
     bool          Enabled;                      // +0x10
@@ -272,26 +272,26 @@ void CTCDoor_Methods::OnInitialActivate()
 {
     CCharString defName = Parent()->GetDefNameString();
     CAnimateThing& animate = GetAnimationComplex()->GetAnimation();
-    animate.Reset();
+    animate.ClearAllAnims();
     CThingBaseDef* baseDef = Parent()->GetPBaseDef();
     CDefPointer<CAnimatingObjectDef> def;
     baseDef->GetSubDef(&def);
     const CAnimationEntry* entry = def->Animation.GetAnimation(CurrentOpen ? SDoorOpenAnim : SDoorCloseAnim, 0, CAnimFilterNoGroup());
     CAnimInit init(6, 0, entry->AnimIndex, 1, false, 0, 100);
-    animate.SetMainAnim(init);
+    animate.Init(init);
     animate.CurrentPercentageComplete = 1.0f;
     animate.LastPercentageComplete = 1.0f;
     if (CurrentOpen) {
         CTCSwitchableNavigation* navigation;
         if (Parent()->GetInterface(&navigation, 0x79))
-            navigation->SetBlocking(false);
+            navigation->SetAsBlockingNavigation(false);
         long event = Def()->OpenEvent;
         if (event)
             Parent()->PEventSink->TriggerEvent(event);
     } else {
         CTCSwitchableNavigation* navigation;
         if (Parent()->GetInterface(&navigation, 0x79))
-            navigation->SetBlocking(true);
+            navigation->SetAsBlockingNavigation(true);
         long event = Def()->CloseEvent;
         if (event)
             Parent()->PEventSink->TriggerEvent(event);

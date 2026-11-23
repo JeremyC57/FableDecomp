@@ -7,7 +7,7 @@
 // engine/CTCDoor.h (PDB): +0x20 PDef_Object (CDefPointer<CDoorDef>). Per frame: advance the door
 // animation (0x007308F0), then dispatch on the def's trigger type (+0x28 of CDoorDef): 0 = opened
 // by nearby people (0x00730F90), 1 = opened by script (0x007310C0); other types do nothing. The
-// callee names are the manifest's (CTCDoor::UpdateAnimation / UpdateOpenStatusTriggerType*).
+#define FABLE_RETAIL_CTCDOOR_FLAT_UPDATEOPENSTATUSTRIGGERTYPESCRIPT // NF292: 0x007310C0 from CTCDoor.h (Ego_r + FableWin IAE); the other two callee names are the manifest's (CTCDoor::UpdateAnimation / UpdateOpenStatusTriggerTypePerson).
 #include "engine/CTCDoor.h"
 
 struct CDoorDefCalls {
@@ -18,7 +18,7 @@ struct CDoorDefCalls {
 struct CTCDoor_Methods : CTCDoor {
     void UpdateAnimation();                       // 0x007308F0
     void UpdateOpenStatusTriggerTypePerson();     // 0x00730F90
-    void UpdateOpenStatusTriggerTypeScript();     // 0x007310C0
+    // UpdateOpenStatusTriggerTypeScript 0x007310C0: the CTCDoor.h member (protected; NF292, was declared on this stand-in)
     void FrameUpdate();
 };
 

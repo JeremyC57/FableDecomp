@@ -1,0 +1,8 @@
+## HEAD set: H_00bf7f70.obj H_00bf7df0.obj
+duplicates 0
+
+UNRESOLVED 1 ?CalcCameraRangeState@CLandscapeBackgroundTreeNode@@QAEJXZ
+## new set: N_00bf7f70.obj H_00bf7df0.obj
+duplicates 0
+
+LK_DONE

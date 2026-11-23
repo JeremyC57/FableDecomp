@@ -1,7 +1,7 @@
 // 00a99840 C3DAnimFileSaver::SaveAnimFileCompressed
 // Flags: /O2 /Oy /W3
 // Leaf: SaveAnimFileCompressed
-// NF42 (round 5): WriteULONG binds CDataOutputStream::WriteULONG (0x00993EA0, engine/CDataOutputStream.h); the method adapter no longer redeclares it.
+#define FABLE_RETAIL_CMEMORYDATAOUTPUTSTREAM_FLAT_GETLENGTH_PEEKDATA // NF292: GetLength 0x00994B40 / PeekData 0x00995E70 from CMemoryDataOutputStream.h (Ego_r + FableWin QBE); NF42 (round 5): WriteULONG binds CDataOutputStream::WriteULONG (0x00993EA0, engine/CDataOutputStream.h); the method adapter no longer redeclares it.
 #include "fable_compiler.h"
 #define FABLE_RETAIL_MEMORY_OUTPUT_STREAM
 #include "engine/CMemoryDataOutputStream.h"
@@ -12,7 +12,7 @@ namespace X_00a99840{
 // Layout: active retail opt-in header owns all24 bytes. Method-only adapters add no fields. Actual base storage is8 bytes; virtual slot2 position, slot4 write.
 struct CDataOutputStreamSlots{virtual void Slot0()=0;virtual void Slot1()=0;virtual unsigned long GetPosition()const=0;virtual void Slot3()=0;virtual void Write(const void*,long)=0;};
 struct CDataOutputStreamMethods: ::CDataOutputStream{FABLE_FORCEINLINE unsigned long GetPosition()const{return ((const CDataOutputStreamSlots*)this)->GetPosition();}FABLE_FORCEINLINE void Write(const void*p,long n){((CDataOutputStreamSlots*)this)->Write(p,n);}};
-struct CMemoryDataOutputStreamMethods: ::CMemoryDataOutputStream{CMemoryDataOutputStreamMethods();~CMemoryDataOutputStreamMethods();unsigned long GetLength()const;const void*PeekData()const;};
+struct CMemoryDataOutputStreamMethods: ::CMemoryDataOutputStream{CMemoryDataOutputStreamMethods();~CMemoryDataOutputStreamMethods();}; // GetLength / PeekData: the CMemoryDataOutputStream.h members (NF292; were declared on this stand-in)
 // Layout: retail CArray<char> has three pointers, copies bytes and releases storage through free.
 template<class T>FABLE_FORCEINLINE T*uninitialized_fill_n(T*first,unsigned n,const T&v){memset(first,v,n*sizeof(T));return first+n;}
 template<class T>struct CArray{T*Start,*Finish,*Storage;FABLE_FORCEINLINE CArray(unsigned n):Start(0),Finish(0),Storage(0){Start=n?(T*)malloc(n*sizeof(T)):0;Storage=Start+n;Finish=uninitialized_fill_n(Start,n,T());}FABLE_FORCEINLINE ~CArray(){if(Start)free(Start);}FABLE_FORCEINLINE T*GetData(){return Finish-Start?Start:(T*)this;}};

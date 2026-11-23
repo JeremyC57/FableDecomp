@@ -24,8 +24,8 @@ class C3DAnimation2 { public:
     void* __vftable;
     long _04;
     unsigned long AnimType;                 // +0x08 (C3DAnimationStats)
-    void CalcLocalBoneTransformationsRelative(C3DKeyframe* out, unsigned long count, float time, const C3DMesh2& mesh) const;   // 0x00A4D770
-    void CalcLocalBoneTransformations(C3DKeyframe* out, unsigned long count, float time) const;   // 0x00A4CEC0
+    void CalcLocalTransformationsRelative(C3DKeyframe* out, unsigned long count, float time, const C3DMesh2& mesh) const;   // 0x00A4D770 (PDB; NF292, was CalcLocalBoneTransformationsRelative)
+    void CalcLocalTransformations(C3DKeyframe* out, unsigned long count, float time) const;   // 0x00A4CEC0 (PDB; NF292, was CalcLocalBoneTransformations)
     bool IsRelative() const { return (AnimType & 4) != 0; }
 };
 class C3DAnimationInfo { public:
@@ -74,9 +74,9 @@ void C3DAnimationManager::CombineBlendedBaseAnimations(const C3DAnimationStateBa
         const C3DAnimationInfo* info = MeshBank->PeekAnimation(index);
         CCountedPointer<const C3DAnimation2> animation = info->GetAnimation(mesh);
         if (animation->IsRelative())
-            animation->CalcLocalBoneTransformationsRelative(out, count, time, mesh);
+            animation->CalcLocalTransformationsRelative(out, count, time, mesh);
         else
-            animation->CalcLocalBoneTransformations(out, count, time);
+            animation->CalcLocalTransformations(out, count, time);
     }
     else if (type == 2) {
         const C3DAnimationTransitionState& transitionA = static_cast<const C3DAnimationTransitionState&>(stateA);
