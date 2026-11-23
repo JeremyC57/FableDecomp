@@ -1,0 +1,296 @@
+diff --git a/ghidra_out/labels_landing_2026-11-23_tavernkeeper.tsv b/ghidra_out/labels_landing_2026-11-23_tavernkeeper.tsv
+new file mode 100644
+index 000000000..eaf181905
+--- /dev/null
++++ b/ghidra_out/labels_landing_2026-11-23_tavernkeeper.tsv
+@@ -0,0 +1,3 @@
++address	symbol	evidence
++009687B0	?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	Ego_r.pdb 0098d4e0 + FableWin.pdb 02c47ab0; 16 of TavernKeeper's 18 PDB members map to other retail rows; Ego_r size 193 = TavernServer::IsCarryingJug twin; caller OnReplace 0x00968BC0; was CAIStateGroup_TavernServer::IsCarryingJug (one name at two addresses)
++00968860	?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	Ego_r.pdb 0098d5b0 + FableWin.pdb; the last unmapped TavernKeeper member; Ego_r 245 B v TavernServer::GetOldJugPoint 249 B twin; Update 0x00969470 calls it between GetPaymentRequest and ReceivePayment; was the descriptive GetOldJugPoint (no TavernKeeper GetOldJugPoint in either PDB)
+diff --git a/rebuild/build_candidates.ps1 b/rebuild/build_candidates.ps1
+index f30d31182..1a3e99101 100644
+--- a/rebuild/build_candidates.ps1
++++ b/rebuild/build_candidates.ps1
+@@ -235888,8 +235888,8 @@ $catalog = @(
+     [pscustomobject]@{
+         Address = '00968860'
+         Module = 'CAIStateGroup_TavernKeeper'
+-        Source = '00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860.cpp'
+-        TestSource = '00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860_test.cpp'
++        Source = '00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860.cpp'
++        TestSource = '00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860_test.cpp'
+         PassPattern = '00968860_TEST PASS'
+     }
+     [pscustomobject]@{
+@@ -255015,9 +255015,9 @@ $catalog = @(
+     }
+     [pscustomobject]@{
+         Address = '009687b0'
+-        Module = 'CAIStateGroup_TavernServer'
+-        Source = '00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0.cpp'
+-        TestSource = '00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0_test.cpp'
++        Module = 'CAIStateGroup_TavernKeeper'
++        Source = '00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0.cpp'
++        TestSource = '00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0_test.cpp'
+         PassPattern = '009687b0_TEST PASS'
+     }
+     [pscustomobject]@{
+diff --git a/rebuild/oracles/reloc_bindings.tsv b/rebuild/oracles/reloc_bindings.tsv
+index 82b8b07d7..26a5c8eed 100644
+--- a/rebuild/oracles/reloc_bindings.tsv
++++ b/rebuild/oracles/reloc_bindings.tsv
+@@ -33508,7 +33508,7 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
+ ?TOTAL_FRAMES_TO_RUN@?A0x39d7b2b6@@3JB	013bb738	0095e470
+ ?FillJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968fa0	00969470
+ ?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z	007ba1d0	00969470
+-?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968860	00969470
++?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968860	00969470
+ ?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ	004c7950	00969470
+ ?IsPointInside@CThingBuildingModel@@QAE_NABVC3DVector@@@Z	0082d000	00969470
+ ?LeanOnBar@CAIStateGroup_TavernKeeper@@QAE_NXZ	009689c0	00969470
+@@ -37843,7 +37843,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
+ ?SetForceVisible@CTCBob@@QAEXXZ	00787740	008a7f60
+ ?DrunkennessDeltaPerFrameOfDrinking@CTCDrunkenness@@0MB	013bae70	0093a8c0
+ ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ	00683b00	00960070
+-?IsCarryingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	009687b0	00968bc0
++?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	009687b0	00968bc0
+ ?GetScreenFadeOutAlpha@CDisplayEngine@@QBEEXZ	004364c0	006495a8
+ ?IsOverridingScreenFade@CTCQuestCompletionUI@@QBE_NXZ	005e3e70	006495a8
+ ?GetExperienceSpentOnAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ee136	005724cd
+diff --git a/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860.cpp b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860.cpp
+similarity index 88%
+rename from rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860.cpp
+rename to rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860.cpp
+index af65f8c0b..ff95a4827 100644
+--- a/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860.cpp
++++ b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860.cpp
+@@ -1,5 +1,9 @@
+-// CAIStateGroup_TavernKeeper::GetOldJugPoint() -- with the bar alive, ask its named-action-point component
+-// Leaf: ?GetOldJugPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
++// CAIStateGroup_TavernKeeper::GetPaymentPoint() -- with the bar alive, ask its named-action-point component
++// Leaf: ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ
++// Name (2026-11-23): Ego_r.pdb + FableWin.pdb ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ (was the descriptive GetOldJugPoint,
++//   the TavernServer twin's name; TavernKeeper has no GetOldJugPoint in either PDB): the one TavernKeeper member left after 16 of 18 map to
++//   other rows; Ego_r 245 B v TavernServer::GetOldJugPoint 249 B (retail 229 v 233); Update 0x00969470 calls it between GetPaymentRequest
++//   and ReceivePayment.
+ // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+ // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+ // (interface 0x2E) for the free point "ACTION_POINT_BARMAN_0<JugSlot+1>" and store it as the jug point.
+@@ -76,10 +80,10 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
+     C3DVector JugPos;                           // +0x38
+     CRightHandedSet JugRHSet;                   // +0x44
+     long JugSlot;                               // +0x5c
+-    bool GetOldJugPoint();
++    bool GetPaymentPoint();
+ };
+ 
+-bool CAIStateGroup_TavernKeeper::GetOldJugPoint()
++bool CAIStateGroup_TavernKeeper::GetPaymentPoint()
+ {
+     if (!IS_THING_ALIVE(PBar))
+         return false;
+diff --git a/rebuild/src/compiled/00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0.cpp b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0.cpp
+similarity index 86%
+rename from rebuild/src/compiled/00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0.cpp
+rename to rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0.cpp
+index fb59ae3e9..d61459d2a 100644
+--- a/rebuild/src/compiled/00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0.cpp
++++ b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0.cpp
+@@ -1,7 +1,10 @@
+-// CAIStateGroup_TavernServer::IsCarryingJug() -- with the jug alive, ask the creature's inventory component
++// CAIStateGroup_TavernKeeper::IsHoldingJug() -- with the jug alive, ask the creature's inventory component
+ // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+ // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+-// Leaf: ?IsCarryingJug@CAIStateGroup_TavernServer@@QAE_NXZ
++// Leaf: ?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ
++// Name (2026-11-23): Ego_r.pdb + FableWin.pdb ?IsHoldingJug@CAIStateGroup_TavernKeeper@@QAE_NXZ. The row was the TavernServer twin's name
++//   (IsCarryingJug 0x00966CF0, same body); of TavernKeeper's 18 PDB members 16 map to other retail rows, leaving IsHoldingJug / GetPaymentPoint
++//   for 0x009687B0 / 0x00968860; Ego_r sizes 193 = TavernServer::IsCarryingJug 193 (retail 172 v 174); caller OnReplace 0x00968BC0.
+ // agentNF25b (2026-11-12): GetSubDef<CCarryableDef> const 0x005CC10E (the body pushes 'CCarryableDef'; was a local CJugDef) from
+ //   engine/CDefClassBase_GetSubDef.h under the per-TU no-inline opt-in; the +0x30 word is Ego_r CCarryableDef::PassiveCarrySlot, read into a named
+ //   local (the earlier made-up GetItemID() getter); 0x006A1230 is CTCCarrying::IsCarrySlotFree(long) const (Ego_r + FableWin; landed row,
+@@ -107,17 +110,16 @@ class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
+ #define FABLE_RETAIL_CTCCARRYING_SLOTFREE   // ?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z 0x006A1230 (agentNF25b)
+ #include "engine/CTCCarrying.h"                 // interface 0x46
+ 
+-struct CAIStateGroup_TavernServer : CAIStateGroupBase {
++struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {   // Ego_r layout (engine/CAIStateGroup_TavernKeeper.h); only PJug is used here
+     CIntelligentPointer<CThing> PJug;               // +0x14 CIntelligentPointer<CThingObject>
+     CIntelligentPointer<CThing> PBar;               // +0x1c CIntelligentPointer<CThingObject>
+-    CIntelligentPointer<CThing> PTable;             // +0x24 CIntelligentPointer<CThingObject>
+-    CIntelligentPointer<CThing> PTankard;           // +0x2c CIntelligentPointer<CThingObject>
+-    CIntelligentPointer<CThing> PPub;               // +0x34 CIntelligentPointer<CThingBuilding>
+-    long JugIndex;                              // +0x3c
+-    bool IsCarryingJug();
++    CIntelligentPointer<CThing> PPub;               // +0x24 CIntelligentPointer<CThingBuilding>
++    CIntelligentPointer<CThing> PPayee;             // +0x2c CIntelligentPointer<CThingAICreature>
++    long JugActionPointIndex;                       // +0x34
++    bool IsHoldingJug();
+ };
+ 
+-bool CAIStateGroup_TavernServer::IsCarryingJug()
++bool CAIStateGroup_TavernKeeper::IsHoldingJug()
+ {
+     if (!IS_THING_ALIVE(PJug))
+         return false;
+diff --git a/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp
+index 22564eef5..202285f68 100644
+--- a/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp
++++ b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0.cpp
+@@ -3,8 +3,8 @@
+ // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+ // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+ // Retail: Fable.exe (TLC, VC7.1) function @ 0x00968BC0, length 570 bytes (plain `ret`, virtual slot 10).
+-// Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0 / FinishCurrentAction @ 0x00662650, IsCarryingJug
+-//   @ 0x009687B0 (manifest names it CAIStateGroup_TavernServer; called on the keeper, PJug +0x14 in both), CVectorMap::
++// Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0 / FinishCurrentAction @ 0x00662650, IsHoldingJug
++//   @ 0x009687B0 (was filed as CAIStateGroup_TavernServer::IsCarryingJug; called on the keeper, PJug +0x14 in both), CVectorMap::
+ //   LowerBound @ 0x0040F020 (inlined ternary GetInterface: 0x47 on the jug, 0x46 carrying, 0xbb tavern jug, 0x31 mode
+ //   manager, 0xb9 bar), 0x00705D00 (the jug's item id; manifest "CTCTavernGame::GetBanter" is propagated), CTCCarrying
+ //   0x006A11F0 (find by id) / RemoveThingInCarrySlot 0x006A16A0, CTCTavernJug::ReplaceJug (landed 0x00968090, inlined
+@@ -156,7 +156,7 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
+     CRightHandedSet JugRHSet;                   // +0x44
+     long JugSlot;                               // +0x5c
+     CThingCreatureBase* GetAICreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
+-    bool IsCarryingJug();                       // 0x009687B0 (manifest CAIStateGroup_TavernServer::IsCarryingJug)
++    bool IsHoldingJug();                        // 0x009687B0 (Ego_r + FableWin)
+     void FreeBarPoint();                        // 0x00968950
+     virtual void OnReplace();
+ };
+@@ -165,7 +165,7 @@ void CAIStateGroup_TavernKeeper::OnReplace()
+ {
+     if (GetAICreature()->IsPerformingAnyAction())
+         GetAICreature()->FinishCurrentAction();
+-    if (IsCarryingJug()) {
++    if (IsHoldingJug()) {
+         CTCCarryable* carryable;
+         ((CThing*)PJug.GetPItem())->GetTC(TCI_CARRYABLE, &carryable);
+         long id = carryable->GetCarrySlotPassive();
+diff --git a/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_Update_00969470.cpp b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_Update_00969470.cpp
+index c2d354db2..7770f9e50 100644
+--- a/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_Update_00969470.cpp
++++ b/rebuild/src/compiled/00/96/CAIStateGroupTavernKeeper_Update_00969470.cpp
+@@ -7,7 +7,7 @@
+ //   CTCShopKeeper::GetShopTC @ 0x00798F50 (x2), CTCShop::SetStockState @ 0x00773C00, the 0x23 component's 0x007EE540
+ //   (manifest IS_THING_ALIVE<...> label is propagated), CThingBuilding::IsPointInside @ 0x0082D000, CThing::GetPosition
+ //   @ 0x004C73D0 / GetPhysPos @ 0x004C7950, AIAction_MoveToPosProximity @ 0x0097E890, GetPaymentRequest 0x009683A0,
+-//   GetOldJugPoint 0x00968860, ReceivePayment 0x009692C0, the brain's slot 2, IsStopping 0x008FD010, Terminate
++//   GetPaymentPoint 0x00968860, ReceivePayment 0x009692C0, the brain's slot 2, IsStopping 0x008FD010, Terminate
+ //   0x008FCF40, CTCTavernBar::GetEmptyJugSlot 0x007BA1D0 / GetJug 0x007B9F60 (returns the jug pointer by value),
+ //   WalkToPoint 0x00968230, FillJug 0x00968FA0, FreeBarPoint 0x00968950, GetPWorldSeed 0x008FCFD0 + GFROR13
+ //   0x00497890 (inline random step), AIAction_DoNothing 0x0097E200, LeanOnBar 0x009689C0, CBaseIntelligentPointer.
+@@ -110,7 +110,7 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
+     long JugSlot;                               // +0x5c
+     bool WalkToPoint(C3DVector* pos, CRightHandedSet* rh);   // 0x00968230
+     bool GetPaymentRequest();                   // 0x009683A0
+-    bool GetOldJugPoint();                      // 0x00968860
++    bool GetPaymentPoint();                     // 0x00968860
+     void FreeBarPoint();                        // 0x00968950
+     bool LeanOnBar();                           // 0x009689C0
+     bool FillJug();                             // 0x00968FA0
+@@ -142,7 +142,7 @@ void CAIStateGroup_TavernKeeper::Update()
+     ((CThing*)PBar.GetPItem())->GetTC(TCI_TAVERN_BAR, &bar);
+     for (;;) {
+         if (GetPaymentRequest()) {
+-            if (!GetOldJugPoint()) {
++            if (!GetPaymentPoint()) {
+                 PBrain->WaitForNextUpdate();
+                 if (IsStopping()) {
+                     Terminate();
+diff --git a/rebuild/tests/00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860_test.cpp b/rebuild/tests/00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860_test.cpp
+similarity index 78%
+rename from rebuild/tests/00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860_test.cpp
+rename to rebuild/tests/00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860_test.cpp
+index ac44242ac..e7da60339 100644
+--- a/rebuild/tests/00/96/CAIStateGroupTavernKeeper_GetOldJugPoint_00968860_test.cpp
++++ b/rebuild/tests/00/96/CAIStateGroupTavernKeeper_GetPaymentPoint_00968860_test.cpp
+@@ -1,4 +1,4 @@
+-// Behaviour test for 00968860 (see src/00968860.cpp): TavernKeeper::GetOldJugPoint: "ACTION_POINT_BARMAN_0<JugSlot+1>" from the live bar; plain C++98, member access only.
++// Behaviour test for 00968860 (see src/00968860.cpp): TavernKeeper::GetPaymentPoint: "ACTION_POINT_BARMAN_0<JugSlot+1>" from the live bar; plain C++98, member access only.
+ #include <cstdio>
+ #include <cstring>
+ // shared test model: a thing with an interface table (sorted type -> component), a dead bit, and an
+@@ -29,7 +29,7 @@ struct TPoints { char lastName[64]; long lastSlot; bool result;
+     bool GetFreeNamedActionPoint(TThing*, float*, float*, const char* name, long* ap, long slot, bool) { std::strcpy(lastName, name); lastSlot = slot; *ap = 5; return result; } };
+ static void BuildName(char* out, const char* base, long n) { std::sprintf(out, "%s_0%ld", base, n); }
+ struct TGroup { TThing* creature; TPtr PBar; long Index; long ApIndex;
+-    bool GetOldJugPoint(const char* base) {
++    bool GetPaymentPoint(const char* base) {
+         if (!Alive(PBar)) return false;
+         TPoints* p = 0; PBar.GetPItem()->GetInterface(&p, 0x2E);
+         char name[64]; BuildName(name, base, Index + 1);
+@@ -37,9 +37,9 @@ struct TGroup { TThing* creature; TPtr PBar; long Index; long ApIndex;
+ int main() {
+     TThing me, bar; TPoints pts; pts.result = true; pts.lastSlot = -1; bar.Add(0x2E, &pts);
+     TGroup g; g.creature = &me; g.Index = 2; g.ApIndex = 0;
+-    CHECK(!g.GetOldJugPoint("ACTION_POINT_BARMAN"), "00968860");
++    CHECK(!g.GetPaymentPoint("ACTION_POINT_BARMAN"), "00968860");
+     g.PBar.SetPItem(&bar);
+-    CHECK(g.GetOldJugPoint("ACTION_POINT_BARMAN") && std::strcmp(pts.lastName, "ACTION_POINT_BARMAN_03") == 0 && pts.lastSlot == 0 && g.ApIndex == 5, "00968860");
+-    pts.result = false; CHECK(!g.GetOldJugPoint("ACTION_POINT_BARMAN"), "00968860");
+-    bar.flags91 = 1; pts.result = true; CHECK(!g.GetOldJugPoint("ACTION_POINT_BARMAN"), "00968860");
++    CHECK(g.GetPaymentPoint("ACTION_POINT_BARMAN") && std::strcmp(pts.lastName, "ACTION_POINT_BARMAN_03") == 0 && pts.lastSlot == 0 && g.ApIndex == 5, "00968860");
++    pts.result = false; CHECK(!g.GetPaymentPoint("ACTION_POINT_BARMAN"), "00968860");
++    bar.flags91 = 1; pts.result = true; CHECK(!g.GetPaymentPoint("ACTION_POINT_BARMAN"), "00968860");
+     std::printf("00968860_TEST PASS\n"); return 0; }
+\ No newline at end of file
+diff --git a/rebuild/tests/00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0_test.cpp b/rebuild/tests/00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0_test.cpp
+similarity index 92%
+rename from rebuild/tests/00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0_test.cpp
+rename to rebuild/tests/00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0_test.cpp
+index d79a244bb..81715ffd0 100644
+--- a/rebuild/tests/00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0_test.cpp
++++ b/rebuild/tests/00/96/CAIStateGroupTavernKeeper_IsHoldingJug_009687b0_test.cpp
+@@ -7,7 +7,7 @@
+ static int fails = 0;
+ #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+ // ---- source (verbatim) ----
+-// CAIStateGroup_TavernServer::IsCarryingJug() -- with the jug alive, ask the creature's inventory component
++// CAIStateGroup_TavernKeeper::IsHoldingJug() -- with the jug alive, ask the creature's inventory component
+ // Retry 10b (getsw sweep, FIXES B-15): the item id is read through an inline getter `GetItemID()`; the plain member read gives the parked register/scheduling difference.
+ // (interface 0x46) whether the jug's item id is absent; the result is that negation.
+ // Retail: Fable.exe (TLC, VC7.1) function @ 0x009687B0, length 172 bytes (+ int3 padding).
+@@ -150,17 +150,17 @@ class CTCInventory { public:                           // interface 0x46
+     bool HasItemWithID(long id);                // 0x006A1230
+ };
+ 
+-struct CAIStateGroup_TavernServer : CAIStateGroupBase {
++struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
+     CBaseIntelligentPointer PJug;               // +0x14 CIntelligentPointer<CThingObject>
+     CBaseIntelligentPointer PBar;               // +0x1c CIntelligentPointer<CThingObject>
+     CBaseIntelligentPointer PTable;             // +0x24 CIntelligentPointer<CThingObject>
+     CBaseIntelligentPointer PTankard;           // +0x2c CIntelligentPointer<CThingObject>
+     CBaseIntelligentPointer PPub;               // +0x34 CIntelligentPointer<CThingBuilding>
+     long JugIndex;                              // +0x3c
+-    bool IsCarryingJug();
++    bool IsHoldingJug();
+ };
+ 
+-bool CAIStateGroup_TavernServer::IsCarryingJug()
++bool CAIStateGroup_TavernKeeper::IsHoldingJug()
+ {
+     if (!IS_THING_ALIVE(PJug))
+         return false;
+@@ -198,15 +198,15 @@ int main()
+     creature.m_interfaces.first = entries; creature.m_interfaces.last = entries + 1; creature.m_presentBits[0x46 >> 5] |= 1UL << (0x46 & 31);
+     static unsigned char classRaw[sizeof(CDefClassBase)]; jug.PDef.Object = (CDefPointeeBase*)classRaw;
+     static CAIBrain brain; brain.PCreature = &creature;
+-    static unsigned char raw[sizeof(CAIStateGroup_TavernServer)]; memset(raw, 0, sizeof(raw));
+-    CAIStateGroup_TavernServer* s = (CAIStateGroup_TavernServer*)raw; s->PBrain = &brain;
+-    CHECK(s->IsCarryingJug() == false && g_askedId == -1);                  // no jug
++    static unsigned char raw[sizeof(CAIStateGroup_TavernKeeper)]; memset(raw, 0, sizeof(raw));
++    CAIStateGroup_TavernKeeper* s = (CAIStateGroup_TavernKeeper*)raw; s->PBrain = &brain;
++    CHECK(s->IsHoldingJug() == false && g_askedId == -1);                  // no jug
+     s->PJug.m_pItem = &jug;
+-    CHECK(s->IsCarryingJug() == false && g_askedId == 42 && g_jugDef->m_refCount == 1 && g_deletes == 0);
++    CHECK(s->IsHoldingJug() == false && g_askedId == 42 && g_jugDef->m_refCount == 1 && g_deletes == 0);
+     g_has = false;
+-    CHECK(s->IsCarryingJug() == true);
++    CHECK(s->IsHoldingJug() == true);
+     jug.m_flags91 = 1; g_askedId = -1;
+-    CHECK(s->IsCarryingJug() == false && g_askedId == -1);                  // dead jug
++    CHECK(s->IsHoldingJug() == false && g_askedId == -1);                  // dead jug
+     if (fails == 0) printf("009687b0_TEST PASS\n"); else printf("009687b0_TEST FAIL\n");
+     return fails;
+ }
+\ No newline at end of file
