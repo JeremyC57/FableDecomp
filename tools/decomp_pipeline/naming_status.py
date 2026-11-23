@@ -203,6 +203,14 @@ def main():
     cat = {r[0].lower(): r[1] for r in read_tsv(P("rebuild", "oracles", "auto-re-candidates.tsv"))[1:] if len(r) > 1}
     by = table_spellings(open(P("rebuild", "oracles", "reloc_bindings.tsv"), encoding="utf-8", errors="replace").read())
     leaf = {ad: leaf_of(e["Source"]) for ad, e in ent.items()}
+    # the measurement pass (lane_tools/self_symbols.py -> rebuild/oracles/self_symbols.tsv, ROADMAP NF302 Q3): the symbol each landed row's
+    # own object defines, read from the grade's own comparison. Trusted only when the grade matched (a DIFFER row may have graded another
+    # function); used when the row's Leaf line is not a usable full spelling. Last line per address wins.
+    measured = {}
+    msp = P("rebuild", "oracles", "self_symbols.tsv")
+    if os.path.exists(msp):
+        for r in read_tsv(msp)[1:]:
+            if len(r) > 2: measured[r[0].lower()] = r[1] if (r[1] and r[2] in ("MATCH", "RELOCATION_MATCH")) else ""
 
     status, rec = {}, {}
     unmeasured = collections.Counter()
@@ -210,6 +218,8 @@ def main():
         sp = {}
         for s, c in by.get(t, {}).items(): sp.setdefault(norm(s), set()).update(c)
         self_leaf, self_how = resolve_leaf(leaf.get(t, ""), sp)
+        if t in ent and self_how != "full" and measured.get(t):
+            self_leaf, self_how = norm(measured[t]), "full"     # what the object defines (measurement pass)
         if self_leaf: sp.setdefault(self_leaf, set()).add("self")
         if t in ent and self_how != "full": unmeasured[self_how] += 1
         if not sp:

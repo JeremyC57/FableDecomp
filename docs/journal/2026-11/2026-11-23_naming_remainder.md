@@ -167,3 +167,31 @@ acceptance falls well below the local route's 86% or the 180 s compile timeouts 
   - They are listed for a grade-repair pass, not naming work.
 - **Flatten switch 1 landed 51 rows** (`batches/2026-11-23_landing_flatten_switch1/`). Together with pilot 1, the script has landed 130
   rows today.
+
+## Measurement pass complete; the tracker reads it (ROADMAP NF302 Q3)
+
+- **`rebuild/oracles/self_symbols.tsv`:** one line per address, covering all 26,617 landed rows the pass measured.
+  - 26,113 have a trusted symbol: 20,947 RELOCATION_MATCH and 5,166 MATCH.
+  - The rest: 350 LIBRARY_MATCH and 101 LIBRARY_MISMATCH (library rows, no symbol), 47 DIFFER, 5 NOT_GRADED and 1 NOT_GENUINE.
+- **`naming_status.py` now uses the measured symbol.** When a row's `// Leaf:` is not a usable full spelling, it takes the symbol the row's
+  own object defines, if the grade matched.
+- **The real remainder, measured:**
+
+  | Bucket | Without measurement | With measurement |
+  |---|---:|---:|
+  | unmeasured | 15,176 | 351 |
+  | agree_pdb | 22,324 | 22,203 |
+  | agree_std | 9,599 | 9,267 |
+  | agree_unverified | 6,943 | 13,007 |
+  | open: standin / split_unknown / split_fixable / split_pdb_multi / catalog_standin | 3,907 / 3,699 / 2,357 / 55 / 16 | 6,972 / 7,242 / 4,912 / 96 / 26 |
+  | T1 / T2 / T3 / T0 | 1,946 / 3 / 8,030 / 0 | 1,994 / 258 / 16,874 / 26 |
+
+  So done is 31,470 (49.1%), open 19,248 and not judged 13,007.
+- **agree_pdb went down: 564 prefix or plain Leaf lines had been read as agreeing.** They matched the callers' table spelling, but the
+  object defines another symbol. Examples:
+  - `DeleteData` rows that compile to the `AutoTinyVirtualObject` stand-in (the NF284 case);
+  - `ChooseWorldNumber` public where the PDB has it private;
+  - `GetMass` without its `const`;
+  - map / vector instances spelled without the allocator argument.
+
+  Those were never done. They are now `split_*` rows with the measured spelling listed, and 258 of them are T2, access-only fixes.
