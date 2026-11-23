@@ -150,7 +150,9 @@ acceptance falls well below the local route's 86% or the 180 s compile timeouts 
 - **Identity for tiny shared-body virtuals.** The bytes cannot tell these members apart (NF306 Q2), so a second source is needed.
   `ghidra_out/labels_rtti_port.tsv`, the retail RTTI vftable placement slot by slot, is that source:
   - it names the PDB symbol at the same address for 490 of the 498 candidates, and for all 70 virtual rows of flatten pilot 1;
-  - no landed row or candidate address carries two RTTI names, so nothing is folded;
+  - the fold guard is in the generator: `tools/rtti_port_all.py` drops any address given two names by two vftables. The file is one line
+    per address by construction, so the coordinator's "no address carries two names" check on it was empty (correction by the planning
+    agent, `2026-11-23_naming_finish_plan.md`);
   - `flatten_pilot.py` now requires it for every virtual target.
 
   Ego_r class sizes do not confirm the `GetSizeofClass` constants: Ego_r runs 4-60 bytes larger, being a different build. The 9

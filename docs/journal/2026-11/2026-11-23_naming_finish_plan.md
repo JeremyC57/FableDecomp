@@ -1,0 +1,86 @@
+# Plan to finish naming (Account A, 2026-11-23)
+
+Owner request: "have the fable advisor plan the rest of the steps to finish naming as fast and accurately as possible". A read-only
+planning agent on the Fable model wrote it from the files. Its counts come from re-running `naming_status.py`'s classification in memory
+and joining `ghidra_out/labels_rtti_port.tsv`, the PDB name sets and `rebuild/oracles/self_symbols.tsv`. The coordinator checked the
+claims marked (v) before recording them.
+
+## Corrections to the earlier picture
+
+- **`agree_std` (9,267) is overstated (v).** `naming_status.is_std()` returns true for any name that does not start with `?`. So 1,270
+  made-up C names (`_Construct`, `@VecDelDtor@12`), 276 flattened C names whose class is in a PDB, and 213 rows with an RTTI PDB name they
+  do not spell all count as done.
+- **`agree_pdb` has conflicts.** 88 non-std PDB names sit on 222 addresses, and 8 rows disagree with RTTI (e.g. 0x00865E20, 0x0088E080).
+- **The RTTI file is one line per address by construction (v).** `tools/rtti_port_all.py` drops any retail address that gets two
+  different names from two vftables (its ICF guard) and ports only slots whose donor name belongs to the class itself. So the fold guard
+  lives in the generator, not in a "no address carries two names" check on its output; the latter is empty.
+  - RTTI agrees with 2,646 of 2,654 `agree_pdb` rows.
+- **Family sizes in OPEN.tsv T3:** CCountedPointer 1,072, `T` 954 (+179 hidden in agree_unverified), vector 708, _Rb_tree 420.
+- **STLport-only reclassification:** 911 rows, not 748.
+- **About 2,500 non-done addresses have no landed row.** Only their callers can be fixed until the row lands.
+- **Unusable as sources:** the FSE manifest has no addresses to join, and `ghidra_out/egod_pdb_names.tsv` has 24 lines (Ego_d effectively
+  unused).
+
+## Routes, in run order
+
+| # | Route | Addresses | Tool | Identity source | Main risk |
+|---|---|---:|---|---|---|
+| 0 | Tracker fixes, no code | reclassifies ~6,000 | script | - | none; makes later numbers real |
+| 1 | Access / const script, widened | ~2,090 | script (`access_fix.py`) | unique PDB symbol with the same `?name@scope@@`; RTTI for 622 | a virtual emitting a vftable; binders that must move with the row |
+| 2 | RTTI-named, label agrees (flatten residue) | 2,481 | script (`flatten_pilot.py`) | RTTI slot plus the label's class and member | header opt-ins; acceptance well under 86% |
+| 3 | Signature respell, unique target | ~1,530 | script first, agents for the rejects | unique PDB symbol; RTTI for 503 | stand-in parameter types turn into ports |
+| 4 | Compiler-generated shapes (`??_G` / `??_E`, `Dest_val`, `Alloc_*`) | 2,705 | scripted census, then family agents | class from the label plus the vftable slot | propagated labels (e.g. one scalar-deleting-destructor name on 235 addresses) |
+| 5 | Template families (CCountedPointer, `T`, vector, _Rb_tree, PKCTRList) | ~3,700 | family agents with the header lane | typed callers, Ego_r layouts | unknown pointee |
+| 6 | Rulings and identity research | ~700 | agents / owner | per case | - |
+| 7 | Non-PDB residue | 5,157 | class-level judgment | a second source per class | calling a stand-in "descriptive" |
+
+- **Route 0, three changes to `naming_status.py`:**
+  - add an RTTI column and status;
+  - treat a non-std name on more than one address as a stand-in. That moves 3,158 `agree_unverified` rows (576 names, e.g.
+    `AutoTinyCountedHandle::Reset` on 341 addresses) and 923 `agree_std` rows, and puts 155 `agree_pdb` rows up for audit;
+  - extend `STANDIN` to the `??1T@@` / `@S@@` forms, tighten `is_std`, and apply the STLport equivalence (911 rows).
+- **Route 1:**
+  - sources: T2 258, plus `agree_unverified` rows with RTTI and an access-only difference (618), plus non-RTTI unique-PDB access-only rows
+    (995), plus split_unknown (215);
+  - for a non-RTTI row that turns virtual, both PDB name sets must agree.
+- **Route 3:** the 503 RTTI same-name signature differences include many `GetSizeofClass` `QAEHXZ` -> `UAEKXZ` rows (one template edit).
+- **Route 6:** hold the 250 rows where RTTI contradicts the label; they are not mechanical. Also split_pdb_multi 96, the 222
+  multi-claimed addresses, `*_CLAIMED` 385 and overloads 446.
+- **Route 7 (`agree_unverified` has 5,157 unique names with no RTTI and no PDB candidate):** judge them per class, not per row. That is
+  530 classes; the classes with 20 or more addresses cover 2,297.
+  - Third-party code (DirectShow `CBase*` / `CPosPassThru`, `CEAX*`, about 450) is checked against vendor source.
+  - Audio / PKC classes absent from both PDBs get descriptive names, marked in NOTES.
+  - For the 815 whose class is in a PDB but whose member is not, check a full Ego_d.pdb export before ruling.
+
+## Agents
+
+- Keep them off T1 batches: 1,830 of the 1,994 T1 addresses turned out to be ports.
+- Use them for one family or one header each (routes 4-5), for route 3's script rejects, and for route 6.
+- Each brief is a pre-computed ENTRIES list:
+  - target symbol, evidence source and binder list for each entry;
+  - an expected in-place yield;
+  - a stop rule: hand back after 20 consecutive ports.
+
+## Safeguards for every scaled route
+
+- **Proof:** keep the five-step proof (HEAD / new compile, objsec ALL_EQ, the graded symbol equals the PDB symbol, a passing grade,
+  binders that agree).
+- **Identity:**
+  - keep the claim guard (catalog, Leaf, definition, file name, table);
+  - never rename onto a PDB symbol another address holds;
+  - virtual targets need RTTI;
+  - non-virtual targets need a unique member in both PDB sets, or one PDB plus a call site;
+  - trust only MATCH / RELOCATION_MATCH self symbols.
+- **Kill:** stop a route when acceptance falls below about 60%, or when any accepted row fails its landing recheck.
+- **Audit:**
+  - check 1 landed row in 20 against a donor call site;
+  - add a planted wrong-name control to each batch;
+  - run a full-tree regrade before bulk header changes (ROADMAP line 85).
+
+## Effort (the planner's assumptions)
+
+- **Routes 0-3:** about 6,100 addresses. With acceptance falling from 86% to about 50%, that is 3-5 coordinator days, landing roughly
+  3,500-4,500.
+- **Routes 4-7:** about 12,000 addresses plus the script rejects. At 47 rows per agent-hour that is about 250-300 agent-hours, or 2-3
+  weeks with 3-4 family agents, if deriving the pointee type from typed callers works.
+- **Floor:** if it does not, about 2,000-3,000 addresses stay as documented descriptive names.
