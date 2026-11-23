@@ -1,0 +1,6 @@
+H 0057b9d7 CTCHeroStats::GetRandomBeardName RELOCATION_MATCH flags= [] leaf=GetRandomBeardName
+H 00999230 CAFile::PathExists RELOCATION_MATCH flags= [] leaf=?PathExists@CAFile@@SI_NABVCWideString@@@Z
+H 00bdc180 CEngineLandscapeMap::UpdateBackgroundLOD RELOCATION_MATCH flags= [] leaf=
+H 008976f0 CGameScriptInterface::EntityGetThingInPrimarySlot RELOCATION_MATCH flags= [] leaf=?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+H 005299a0 CThingBuilding::`scalar_deleting_destructor' RELOCATION_MATCH flags= [] leaf=
+GR_DONE

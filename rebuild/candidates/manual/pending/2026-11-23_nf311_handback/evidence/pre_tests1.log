@@ -1,0 +1,12 @@
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCFollowed_RemoveEmoteIcon_006d5050_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCFollowed_RemoveFollower_006d5180_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCFollowed_FrameUpdate_006d53c0_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/97/CAIStateGroupBase_SetPushableByHero_0097e330_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernServer_PickUpJug_00967930_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernServer_FillTankard_00967b40_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernKeeper_OnReplace_00968bc0_test.cpp
+05:21:56 FAIL /home/user/FableDecomp/rebuild/tests/00/94/CAIStateGroupWorkHammerAnvil_Update_00945060_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/96/CAIStateGroupTavernKeeper_ReceivePayment_009692c0_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/77/CTCShop_AddSaleItemPlacesFromThing_007748e0_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/84/basicstringchar_find_00841790_test.cpp
+05:21:56 PASS /home/user/FableDecomp/rebuild/tests/00/99/STLbasicstringunsignedshort_resize_0099cd60_test.cpp

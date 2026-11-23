@@ -1,0 +1,6 @@
+HDRFLAG	#87	00a25e70	00b90270	engine/C3DMeshInfo.h	MADEUP:C3DMeshInfoCallView,CCountedPoint
+HDRFLAG	#106	00b8ff00	00baba70	engine/CEngineInternalPrimitiveBase.h	MADEUP:CEngineInternalPrimitiveNative
+HDRFLAG	#114	0082a500	0082add0	engine/CMiniMapDisplay.h	SIG
+HDRFLAG	#118	00449960	00702810	engine/CPlayerManager.h	OPEN
+HDRFLAG	#134	00661ec0	006eba60	engine/CThingCreatureBase.h	MADEUP:CombatLists
+HDRFLAG	#139	0049c780	005800d6	engine/CThingSearchTools.h	MADEUP:CThingSearchToolsMethods,CThingLi

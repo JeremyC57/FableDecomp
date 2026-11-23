@@ -30,8 +30,8 @@ struct CCountedPointer {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class C3DAnimationInterpolator { public:
-    unsigned char _body[0x14];
-    ~C3DAnimationInterpolator();                // 0x004C2E90
+    unsigned char _body[0x10];                  // +0x04 (NF311: the vptr is +0x00)
+    virtual ~C3DAnimationInterpolator();        // 0x004C2E90 (UAE, Ego_r.pdb + FableWin.pdb)
 };
 
 struct CAnimationInterpolatorOwner_00708a30 {

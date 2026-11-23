@@ -1,0 +1,47 @@
+0097e380	call	0090c62e	0090c540L CAIStateGroup_MinionGuardFollowPlayer::Update
+0097e380	call	0090e95d	0090e5d0L CAIStateGroup_BanditGossip::Update
+0097e380	call	0090f072	0090eec0L CAIStateGroup_MinionKidCalledToMother::Update
+0097e380	call	00910f60	00910df0L CAIStateGroup_MinionGuardHeardYellForHelp::Update
+0097e380	call	00911484	00911300L CAIStateGroup_MinionGuardReactToBodyFoundMessage::Update
+0097e380	call	009116ea	00911630L CAIStateGroup_Guard::Update
+0097e380	call	00915577	00915350L CAIStateGroup_KidHurtSelfRunToMother::Update
+0097e380	call	00916a1b	00916910L CAIStateGroup_StayNearSchool::Update
+0097e380	call	0091ee87	0091ec30L CAIStateGroup_CreatureRangedCombat2::Update
+0097e380	call	00921cd6	-
+0097e380	call	00921fe4	-
+0097e380	call	009221ce	00922010L CAIStateGroup_MinionWalkToMarker::Update
+0097e380	call	0092615e	00926060L CAIStateGroup_WifeGiveYouGift::Update
+0097e380	call	0093169f	-
+0097e380	call	00932d1b	-
+0097e380	call	009337de	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+0097e380	call	00933e81	00933db0L CAIStateGroup_MinionKidAnnoy::Update
+0097e380	call	0093422a	009341c0L CAIStateGroup_MinionKidGroupTag::TagTarget
+0097e380	call	0093468d	00934410L CAIStateGroup_MinionKidGroupTag::EvadeTarget
+0097e380	call	00935dc8	-
+0097e380	call	00936ceb	00936c70L CAIStateGroup_MinionReactToCorpse::Update
+0097e380	call	00937964	009378f0L CAIStateGroup_MinionReactToUnconsciousPerson::Update
+0097e380	call	0093a27a	0093a080L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update
+0097e380	call	0093c1fc	0093c030L CAIStateGroup_SeekScriptTarget::Update
+0097e380	call	00940439	00940310L CAIStateGroup_VillageTaskPickCrops::Update
+0097e380	call	009458ae	-
+0097e380	call	0094bbd9	0094bb20L CAIStateGroup_MinionHawkingFromStall::Update
+0097e380	call	0094f05e	0094f000L CAIStateGroup_FollowPlayer::Update
+0097e380	call	00955421	-
+0097e380	call	00957914	009578a0L CAIStateGroupBehaviourBase::UpdateFocusAttentionOnThingActiv
+0097e380	call	009583ef	009582d0L CAIStateGroup_MinionReactToTrespassing::Update
+0097e380	call	0095babb	0095b9e0L CAIStateGroup_HoverHornetQueen::DiveBomb
+0097e380	call	009617fc	00961790L CAIStateGroup_BanditKingCharge::Update
+0097e380	call	00962f48	-
+0097e380	call	00963c0c	-
+0097e380	call	009667f1	-
+0097e380	call	00969cfc	00969cb0L CAIStateGroup_SleepOnFloor::Update
+0097e380	call	0096e31a	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+0097e380	call	0096ed6c	0096ec10L CAIStateGroup_MeleeCombatNearby::MoveToEnemyCreatureCombatPo
+0097e380	call	0096f0bc	0096f050L CAIStateGroup_MinionBehaviourSad::Update
+0097e380	call	00976644	-
+0097e380	call	00976a0d	-
+0097e380	call	0097f082	0097ef60L CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThing
+0097e380	call	00980083	0097fea0L CAIStateGroupBase::AIAction_FindAGuardAndYellForHelp
+0097e380	call	00980536	009804a0L CAIStateGroupBase::AIAction_FleeToThingProximity
+0097e380	call	00981955	-
+0097e380	call	0098562d	00985440L CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate

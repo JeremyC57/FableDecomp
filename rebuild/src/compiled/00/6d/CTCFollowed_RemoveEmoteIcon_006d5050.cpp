@@ -1,5 +1,5 @@
 // CTCFollowed::RemoveEmoteIcon(CThing& follower) -- clear the follower emote icon over a follower whose emote-icon component still shows the global follower icon
-// Leaf: ?RemoveEmoteIcon@
+// Leaf: ?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D5050, length 108 bytes (+ int3 padding), thiscall `ret 4`.
 // Ego_r.pdb `?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z`; callers 0x006D5242 (RemoveFollower 0x006D5180),
@@ -60,7 +60,7 @@ protected:
 
 class CTCFollowed : public CTCBase { public:
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    void RemoveEmoteIcon(CThing& follower);
+protected: void RemoveEmoteIcon(CThing& follower);      // NF311: IAE (Ego_r.pdb + FableWin.pdb)
 };
 
 void CTCFollowed::RemoveEmoteIcon(CThing& follower)

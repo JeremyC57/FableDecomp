@@ -91,7 +91,7 @@ class CTCFollowed { public:
     std::list< CIntelligentPointer<CThing> > Followers;              // +0x0C
     std::list< CIntelligentPointer<CThingAICreature> > AIFollowers;  // +0x10
     bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0 (Ego_r.pdb)
-    void RemoveEmoteIcon(CThing& thing);            // 0x006D5050
+    protected: void RemoveEmoteIcon(CThing& thing); public: // 0x006D5050 (NF311: IAE, both PDBs)
     void RemoveFollower(CThing& follower);
 };
 

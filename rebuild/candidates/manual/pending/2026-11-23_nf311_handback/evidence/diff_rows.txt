@@ -1,0 +1,86 @@
+### rows/006d5050.cpp v orig/006d5050.cpp (= HEAD)
+2c2
+< // Leaf: ?RemoveEmoteIcon@
+---
+> // Leaf: ?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+63c63
+<     void RemoveEmoteIcon(CThing& follower);
+---
+> protected: void RemoveEmoteIcon(CThing& follower);      // NF311: IAE (Ego_r.pdb + FableWin.pdb)
+### rows/006d5180.cpp v orig/006d5180.cpp (= HEAD)
+94c94
+<     void RemoveEmoteIcon(CThing& thing);            // 0x006D5050
+---
+>     protected: void RemoveEmoteIcon(CThing& thing); public: // 0x006D5050 (NF311: IAE, both PDBs)
+### rows/00701990.cpp v orig/00701990.cpp (= HEAD)
+12c12
+< // Leaf: TransferBinaryIn@CReactionMatch_Sphere
+---
+> // Leaf: ?TransferBinaryIn@CReactionMatch_Sphere@@UAEXAAVCMemoryDataInputStream@@@Z
+53c53
+<     void* __vftable;                                    // +0x00
+---
+>     // +0x00: the vptr (NF311: TransferBinaryIn is virtual, Ego_r.pdb + FableWin.pdb UAE)
+55c55
+<     void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x006FEFB0
+---
+>     virtual void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x006FEFB0
+61c61
+<     void TransferBinaryIn(CMemoryDataInputStream& stream);
+---
+>     virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+### rows/00835ac0.cpp v orig/00835ac0.cpp (= HEAD)
+2c2
+< // Leaf: DrawPreparePrimitivesForRendering
+---
+> // Leaf: ?DrawPreparePrimitivesForRendering@CThingDeadCreature@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z
+18c18
+<     unsigned char         _pad00[0x64];
+---
+>     unsigned char         _pad04[0x60];             // +0x04 (NF311: the vptr is +0x00; the member below is virtual)
+20c20
+<     bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
+---
+>     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0 (UAE, both PDBs)
+23,24c23,24
+< class CThingDeadCreature : public CThingPhysical { public:
+<     bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+---
+> class CThingDeadCreature : public CThingPhysical { protected:   // NF311: MAE (Ego_r.pdb + FableWin.pdb)
+>     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
+### rows/00709b10.cpp v orig/00709b10.cpp (= HEAD)
+28,29c28,29
+<     unsigned char _data[0x14];
+<     ~C3DAnimationInterpolator();                // 0x004C2E90
+---
+>     unsigned char _data[0x10];                  // +0x04 (NF311: the vptr is +0x00)
+>     virtual ~C3DAnimationInterpolator();        // 0x004C2E90 (UAE, Ego_r.pdb + FableWin.pdb)
+### rows/00708a30.cpp v orig/00708a30.cpp (= HEAD)
+33,34c33,34
+<     unsigned char _body[0x14];
+<     ~C3DAnimationInterpolator();                // 0x004C2E90
+---
+>     unsigned char _body[0x10];                  // +0x04 (NF311: the vptr is +0x00)
+>     virtual ~C3DAnimationInterpolator();        // 0x004C2E90 (UAE, Ego_r.pdb + FableWin.pdb)
+### evidence/held_18/0097e330.cpp v orig/0097e330.cpp (= HEAD)
+1a2
+> // Leaf: ?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z
+53c54
+<     void SetPushableByHero(bool pushable);
+---
+> protected: void SetPushableByHero(bool pushable);      // NF311: IAE (Ego_r.pdb + FableWin.pdb)
+### evidence/held_18/00967930.cpp v orig/00967930.cpp (= HEAD)
+74c74
+<     void SetPushableByHero(bool pushable);                              protected: // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable);                   protected: // 0x0097E330 (NF308: IAE, both PDBs)
+### evidence/held_18/00967b40.cpp v orig/00967b40.cpp (= HEAD)
+90c90
+<     void SetPushableByHero(bool pushable);      protected: // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable);      protected: // 0x0097E330 (NF308: IAE, both PDBs)
+### evidence/held_18/00968bc0.cpp v orig/00968bc0.cpp (= HEAD)
+80c80
+<     void SetPushableByHero(bool pushable);      // 0x0097E330
+---
+>     protected: void SetPushableByHero(bool pushable); public:      // 0x0097E330 (NF308: IAE, both PDBs)

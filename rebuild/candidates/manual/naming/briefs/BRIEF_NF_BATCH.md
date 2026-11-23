@@ -144,3 +144,6 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   coordinator) lands in place.
 - NF310 D1: a binder may land alone on the PDB name when it resolves to byte-equal pick-any COMDATs other rows emit, while the strong self
   would collide (LNK2005); queue the self for the nf86 / nf88 pick-any form. Helpers: copy nf310's nf.py (clean.py, not rmtree / unlink).
+- NF311 Q5 / Q6: NF299 Q3 also covers a `virtual` destructor on a local member model and the access label the PDB gives the override
+  (e.g. MAE), under the same conditions. Stale witnesses can hide behind access / const / pointer-v-reference differences: compile the
+  witness rather than screening identifiers, and read full spellings from the table (ENTRIES cuts them at 160 characters).

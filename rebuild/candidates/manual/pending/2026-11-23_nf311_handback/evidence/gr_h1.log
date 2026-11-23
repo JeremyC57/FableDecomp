@@ -1,0 +1,12 @@
+H 006d5050 CTCFollowed::RemoveEmoteIcon RELOCATION_MATCH flags= [] leaf=?RemoveEmoteIcon@
+H 006d5180 CTCFollowed::RemoveFollower RELOCATION_MATCH flags= [] leaf=
+H 006d53c0 CTCFollowed::FrameUpdate RELOCATION_MATCH flags= [] leaf=?FrameUpdate@CTCFollowed@@UAEXXZ
+H 0097e330 CAIStateGroupBase::SetPushableByHero RELOCATION_MATCH flags= [] leaf=
+H 00967930 CAIStateGroup_TavernServer::PickUpJug RELOCATION_MATCH flags= [] leaf=?PickUpJug@CAIStateGroup_TavernServer@@QAE_NXZ
+H 00967b40 CAIStateGroup_TavernServer::FillTankard RELOCATION_MATCH flags= [] leaf=FillTankard
+H 00968bc0 CAIStateGroup_TavernKeeper::OnReplace RELOCATION_MATCH flags= [] leaf=?OnReplace@CAIStateGroup_TavernKeeper
+H 009692c0 CAIStateGroup_TavernKeeper::ReceivePayment RELOCATION_MATCH flags= [] leaf=?ReceivePayment@CAIStateGroup_TavernKeeper@@QAE_NXZ
+H 007748e0 CTCShop::AddSaleItemPlacesFromThing RELOCATION_MATCH flags= [] leaf=?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z
+H 00841790 basic_string<char>::find RELOCATION_MATCH flags= [] leaf=?find@?$basic_string@
+H 0099cd60 std::basic_string<unsigned short>::resize RELOCATION_MATCH flags= [] leaf=resize
+GR_DONE

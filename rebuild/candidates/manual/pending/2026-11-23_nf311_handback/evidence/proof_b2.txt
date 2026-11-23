@@ -1,0 +1,8 @@
+##### 00701990 renames: ?TransferBinaryIn@CReactionMatch@@QAEXAAVCMemoryDataInputStream@@@Z=?TransferBinaryIn@CReactionMatch@@UAEXAAVCMemoryDataInputStream@@@Z ?TransferBinaryIn@CReactionMatch_Sphere@@QAEXAAVCMemoryDataInputStream@@@Z=?TransferBinaryIn@CReactionMatch_Sphere@@UAEXAAVCMemoryDataInputStream@@@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00835ac0 renames: ?DrawPreparePrimitivesForRendering@CThingDeadCreature@@QAE_NABVCEnginePrimitivePrepareInfo@@@Z=?DrawPreparePrimitivesForRendering@CThingDeadCreature@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z ?DrawPreparePrimitivesForRendering@CThingPhysical@@QAE_NABVCEnginePrimitivePrepareInfo@@@Z=?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0

@@ -1,0 +1,3 @@
+006d5050	call	006d5242	006d5180L CTCFollowed::RemoveFollower
+006d5050	call	006d556e	006d53c0L CTCFollowed::FrameUpdate
+006d5050	call	006d57f9	006d56e0L CTCFollowed::QuitAIFollower

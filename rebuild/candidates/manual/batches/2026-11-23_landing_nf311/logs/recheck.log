@@ -1,0 +1,80 @@
+addr       parity           behav  name
+006d5050   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CTCEmoteIcon (engine/CTCEmoteIcon.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006d5050   WARN SHARED_HEADER_AVAILABLE CTCFollowed (engine/CTCFollowed.h)
+006d5050   RELOCATION_MATCH PASS   RemoveEmoteIcon
+006d5180   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006d5180   WARN SHARED_HEADER_AVAILABLE CTCFollowed (engine/CTCFollowed.h)
+006d5180   RELOCATION_MATCH PASS   RemoveFollower
+00701990   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00701990   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream (engine/CMemoryDataInputStream.h)
+00701990   WARN SHARED_HEADER_AVAILABLE CReactionMatch (engine/CReactionMatch.h)
+00701990   WARN SHARED_HEADER_AVAILABLE CReactionMatch_Sphere (engine/CReactionMatch_Sphere.h)
+00701990   RELOCATION_MATCH PASS   TransferBinaryIn
+00835ac0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+00835ac0   WARN SHARED_HEADER_AVAILABLE CThingDeadCreature (engine/CThingDeadCreature.h)
+00835ac0   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+00709b10   WARN SHARED_HEADER_AVAILABLE C3DAnimationInterpolator (engine/C3DAnimationInterpolator.h)
+00709b10   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00709b10   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveAnimatingMesh (engine/CEnginePrimitiveAnimatingMesh.h)
+00709b10   WARN RELOC_NAME: ??1CThemeChannelVector@@QAE@XZ -> 007099e0 labelled '_unattributed::Destroy_CRetailVector_007099e0'
+00709b10   RELOCATION_MATCH PASS   ~CEnginePrimitiveMorphedAnimatingMesh
+00708a30   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00708a30   WARN SHARED_HEADER_AVAILABLE C3DAnimationInterpolator (engine/C3DAnimationInterpolator.h)
+  WARN leaf '??1CEnginePrimitiveAnimatingMesh@' matches no symbol in 00708a30.obj; graded the largest function
+  WARN leaf '??1CEnginePrimitiveAnimatingMesh@' matches no symbol in 00708a30.obj; graded the largest function
+00708a30   WARN STANDIN_LEAF ??1CAnimationInterpolatorOwner_00708a30@@QAE@XZ (catalog CEnginePrimitiveAnimatingMesh::~CEnginePrimitiveAnimatingMesh; address-only name)
+00708a30   RELOCATION_MATCH PASS   ~CEnginePrimitiveAnimatingMesh
+00bd9250   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveMeshBase (engine/CEngineInternalPrimitiveMeshBase.h)
+00bd9250   WARN SHARED_HEADER_AVAILABLE C3DAnimationInterpolator (engine/C3DAnimationInterpolator.h)
+00bd9250   WARN SHARED_HEADER_AVAILABLE C3DPositionInterpolator (engine/C3DPositionInterpolator.h)
+00bd9250   WARN SHARED_HEADER_AVAILABLE C3DOrientationInterpolator (engine/C3DOrientationInterpolator.h)
+00bd9250   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveAnimatedMesh (engine/CEngineInternalPrimitiveAnimatedMesh.h)
+00bd9250   RELOCATION_MATCH PASS   ~CEngineInternalPrimitiveAnimatedMesh
+00cdff50   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00cdff50   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00cdff50   RELOCATION_MATCH PASS   OnPredicateFail
+00d408b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00d408b0   WARN SHARED_HEADER_AVAILABLE CIsThingConscious (engine/CIsThingConscious.h)
+00d408b0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00d408b0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00d408b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00d408b0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d408b0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00d408b0   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00d408b0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00d408b0   RELOCATION_MATCH PASS   Main
+008976f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008976f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+008976f0   RELOCATION_MATCH PASS   EntityGetThingInPrimarySlot
+005f05e5   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005f05e5   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005f05e5   RELOCATION_MATCH PASS   OpenInventory
+
+WINS: 11
+  006d5050 RELOCATION_MATCH CTCFollowed::?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+  006d5180 RELOCATION_MATCH CTCFollowed::RemoveFollower
+  00701990 RELOCATION_MATCH CReactionMatch_Sphere::?TransferBinaryIn@CReactionMatch_Sphere@@UAEXAAVCMemoryDataInputStream@@@Z
+  00835ac0 RELOCATION_MATCH CThingDeadCreature::?DrawPreparePrimitivesForRendering@CThingDeadCreature@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z
+  00709b10 RELOCATION_MATCH CEnginePrimitiveMorphedAnimatingMesh::??1CEnginePrimitiveMorphedAnimatingMesh
+  00708a30 RELOCATION_MATCH CEnginePrimitiveAnimatingMesh::??1CEnginePrimitiveAnimatingMesh@
+  00bd9250 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::??1CEngineInternalPrimitiveAnimatedMesh@@UAE@XZ
+  00cdff50 RELOCATION_MATCH CEndGameBarrier::OnPredicateFail
+  00d408b0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSpeedFriend::?Main@CSpeedFriend@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  008976f0 RELOCATION_MATCH CGameScriptInterface::?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+  005f05e5 RELOCATION_MATCH CTCInventoryAbilities::OpenInventory@CTCInventoryAbilities

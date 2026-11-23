@@ -1,0 +1,12 @@
+## HEAD set: H_00701990.obj H_006fefb0.obj H_00835ac0.obj
+duplicates 0
+
+UNRESOLVED 1 ?DrawPreparePrimitivesForRendering@CThingPhysical@@QAE_NABVCEnginePrimitivePrepareInfo@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@COpinionSet@@QAEXAAVCMemoryDataInputStream@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@CReactionMatch@@QAEXAAVCMemoryDataInputStream@@@Z
+## new set: N_00701990.obj H_006fefb0.obj N_00835ac0.obj
+duplicates 0
+
+UNRESOLVED 1 ?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@COpinionSet@@QAEXAAVCMemoryDataInputStream@@@Z
+LK_DONE

@@ -1,0 +1,3 @@
+N 006d5050 CTCFollowed::RemoveEmoteIcon RELOCATION_MATCH flags= [] leaf=?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+N 006d5180 CTCFollowed::RemoveFollower RELOCATION_MATCH flags= [] leaf=
+GR_DONE

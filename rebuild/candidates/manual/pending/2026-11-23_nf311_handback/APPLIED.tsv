@@ -1,0 +1,7 @@
+row	entry	target	change	proof
+0x006d5050	20	0x006d5050	OWNER SELF: `protected:` on RemoveEmoteIcon (IAE, Ego_r + FableWin) + full mangled Leaf (was the prefix `?RemoveEmoteIcon@`)	HEAD/new RELOCATION_MATCH; objsec ALL_EQ under ?RemoveEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z=...IAE...; COMDATs 6 SAME; link_e20; vland PASS
+0x006d5180	20	0x006d5050	binder: `protected:` on its RemoveEmoteIcon declaration, `public:` after it (same line)	HEAD/new RELOCATION_MATCH; objsec ALL_EQ (the one rename), 2 tables unchanged; COMDATs 12 SAME; link_e20; vland PASS
+0x00701990	119	0x006fefb0 + self	local CReactionMatch base: `void* __vftable;` -> implicit vptr (comment line kept), TransferBinaryIn `virtual` (base and the row's own override, QAE -> UAE) + full Leaf	HEAD/new RELOCATION_MATCH; objsec ALL_EQ under the two renames; COMDATs 3 SAME; no ??_7 / ??_R; link_b2; vland PASS
+0x00835ac0	138	0x006a64d0 + self	local CThingPhysical base: DrawPreparePrimitivesForRendering `virtual`, pad 0x64 -> 0x60 (member +0x64 kept); own override `protected: virtual` (QAE -> MAE, the PDB) + full Leaf	HEAD/new RELOCATION_MATCH; objsec ALL_EQ under the two renames; COMDATs 1 SAME; no ??_7 / ??_R; link_b2; vland PASS
+0x00709b10	85	0x004c2e90	local C3DAnimationInterpolator member model: `virtual ~C3DAnimationInterpolator();` (UAE), pad 0x14 -> 0x10	HEAD/new RELOCATION_MATCH; objsec ALL_EQ (the one rename); COMDATs 8 SAME; link_b3; vland PASS
+0x00708a30	85	0x004c2e90	same as 0x00709B10	HEAD/new RELOCATION_MATCH; objsec ALL_EQ (the one rename); COMDATs 2 SAME; link_b3; vland PASS

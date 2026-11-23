@@ -410,7 +410,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CSpecialAbilitiesMultiStrikeDef@@6B@	0123412c	00457178
 ??_7CSpecialAbilitiesMultiArrowDef@@6B@	01234194	0045725b
 ??1CParentDefClassBase@@UAE@XZ	00430300	004573fd
-??1CParentDefClassBase@@QAE@XZ	00430300	004575fc
 ??_7CSpecialAbilitiesForcePushDef@@6B@	012342cc	0045767e
 ??_7CSpecialAbilitiesDrainLifeDef@@6B@	01234404	004578de
 ??_7CSpecialAbilitiesGhostSwordDef@@6B@	012344d4	004579f7
@@ -1252,7 +1251,7 @@ __stricmp	00bfeba8	004fb880
 ??0CThing@@QAE@K@Z	004c9030	005296b0
 ??_7CThingPhysical@@6B@	01244e84	005296b0
 ?DeleteHelper@CEngineSubPrimitiveGameMesh@@QAEXXZ	004c73b0	005299a0
-?ScalarDtor@CEngineSubPrimitiveGameMesh@@QAEXXZ	00838a00	005299a0
+?ScalarDtor@CThingBuilding@@QAEXXZ	00838a00	005299a0
 ??0CThing@@QAE@J@Z	005296b0	005299c0
 ??_7CThingGameObject@@6B@	01244f7c	005299c0
 ??_7CThingVillage@@6B@	012451bc	005299c0
@@ -1520,7 +1519,7 @@ _sub	004292c0	00578df1
 ?SetAge@CTCHeroMorph@@QAEXM@Z	0071bfa0	0057b05f
 ?SetFatness@CTCHeroMorph@@QAEXM@Z	0071c060	0057b169
 ??0CCharStringVector@@QAE@K@Z	0057fcdd	0057b9d7
-??1CCharStringVector@@QAE@XZ	00414ea0	0057b9d7
+??1CCharStringVector@@QAE@XZ	00414ea0	005f05e5
 ?GFRandom@@YIKKPAK@Z	004cdae0	0057b9d7
 ?push_back@CHousePositionVector@@QAEXABUCHousePosition@@@Z	00581132	0057cb4b
 ?Helper@CForwarder_0057f62d@@QAEPAXPAXABUSScalarTag@@J@Z	0057f188	0057f62d
@@ -3503,8 +3502,8 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00896df0
 ?Consume@@YIXPAX@Z	0057a5b6	008970f0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	008970f0
-??1ScriptMethods@@UAE@XZ	004aa840	008976f0
-??_7ScriptMethods@@6B@	01238c8c	008976f0
+??1ScriptMethods@@UAE@XZ	004aa840	00d408b0
+??_7ScriptMethods@@6B@	01238c8c	00d408b0
 ?GetScriptThing@CThingNative@@QAE?AUScriptMethods@@XZ	004c7e50	008976f0
 ?ApplyPenaltyForDeath@CTCHeroExperience_Retail@@QAEXXZ	006d6340	008977f0
 ?ApplyPenaltyForDeath@CTCHeroStats_Retail@@QAEXXZ	0057de14	008977f0
@@ -4306,7 +4305,6 @@ __imp__GlobalFree@4	0143fdf8	0098eb20
 ??_7CFileDataInputStream@@6B@	0129a728	009971a0
 ?Close@CFileDataInputStream@@UAEXXZ	00994300	009971a0
 ?ExpandPath@?A0x116aaba5@@YI?AVCWideString@@PAV2@0@Z	00998c90	00999110
-@FableExpandPath_00998C90@12	00998c90	00999230
 @FableGetCurrentPath_00997F80@8	00997f80	00999230
 @FableWideStringConstruct_0099AED0@8	0099aed0	00999230
 @FableWideStringGetBuffer_0099AF00@8	0099af00	00999230
@@ -7473,7 +7471,6 @@ __aullshr	00bfecf0	00779340
 ?AddEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z	006d4fd0	006d50c0
 ?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	006d4d70	006d50c0
 ?push_back@CAICreaturePointerList@@QAEXABUCIntelligentPointerAICreature@@@Z	006604eb	006d50c0
-?RemoveEmoteIcon@CTCFollowed@@QAEXAAVCThing@@@Z	006d5050	006d5180
 ?FindThingInList@@YI?AUCThingListIterator@@U1@0ABQAVCThing@@@Z	0076d6f0	0076cc00
 ?SetHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QAEX_N@Z	006815d0	0076cc00
 ??$GetDef@VCSpecialAbilitiesForcePushDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesForcePushDef@@@@@Z	00798c10	00798570
@@ -10462,7 +10459,6 @@ __imp__OutputDebugStringW@4	0143fe14	005472a0
 ??_7CReactionFrequencyTraits_PeriodicFrequency@@6B@	01264b7c	006fed30
 ??_7CReactionFrequencyTraits_ControlledCount@@6B@	01264b94	006ff930
 ??_7CReactionFrequencyTraits_LinearTime@@6B@	01264b64	006ff930
-?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ	00449960	00702810
 ??0CEngineTextureMorphArray@@QAE@ABU0@@Z	005bbdf1	00709c90
 ?clear@CAnimSetList@@QAEXXZ	0070b8a0	0070b9b0
 ?_M_insert_overflow@?$vector@PAVCAnimSet@@@@QAEXPAPAVCAnimSet@@ABQAV2@ABU__true_type@@I_N@Z	0066c3f0	0070d0a0
@@ -15346,7 +15342,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDef@CDefinitionManager@@QAE_NABVCCharString@@PAUCDefPointerReactionDef@@@Z	00701c90	007004b0
 ?PushNewSourceDef@CTCOpinionSource@@QAE_NABVCCharString@@@Z	00771620	00700780
 ?TransferBinaryIn@COpinionSet@@QAEXAAVCMemoryDataInputStream@@@Z	007020d0	00701990
-?TransferBinaryIn@CReactionMatch@@QAEXAAVCMemoryDataInputStream@@@Z	006fefb0	00701990
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCQuestCardDef@@@@@Z	00702930	007026a0
 ?DrawPreparePrimitivesForRendering@CTCWeaponTrail@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	0076e6a0	00703590
 ?GetCarriedPositionInfo@CTCCarryable@@QAE_NPAVC3DPositionInterpolator@@PAVC3DOrientationInterpolator@@M@Z	00705b00	00703590
@@ -15737,7 +15732,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@UCAIBrainDef@@@@@Z	0079bd80	00833a70
 ?GetDefinitionManager@CThingCreatureBase@@QAEPAVCDefinitionManager@@XZ	004c7990	00833a70
 ?GetCamera@CThingCreatureBase@@QBEPAVCCamera@@XZ	004c7aa0	00834760
-?DrawPreparePrimitivesForRendering@CThingPhysical@@QAE_NABVCEnginePrimitivePrepareInfo@@@Z	006a64d0	00835ac0
 ?PrepareForDraw@CTCGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	004be4e0	00835ac0
 ?ConstructFromParams@CThingSoundEmitter@@IAE_NABVC3DVector@@PBVCThing@@_N@Z	00836910	008369f0
 ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z	0049d150	00836ad0
@@ -33312,7 +33306,7 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ??4CBoastList@@QAEAAU0@ABU0@@Z	005e9630	005e4430
 ?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z	0041db1d	005e4430
 ?GetSuccessSummary@CTCQuestCard@@QAE?AVCWideString@@XZ	00702630	005e4430
-??1C3DAnimationInterpolator@@QAE@XZ	004c2e90	00709b10
+??1C3DAnimationInterpolator@@QAE@XZ	004c2e90	00bd9250
 ??1CThemeChannelVector@@QAE@XZ	007099e0	00709b10
 ?resize@CKeyedVectorVector_00728f80@@QAEXIABUSKeyedItems_00728f80@@@Z	00728f20	00728f80
 ?RemoveCombinationAnim@CAnimateThing@@QAEXPAUCCombinationAnim@@@Z	0070d8e0	00728ff0

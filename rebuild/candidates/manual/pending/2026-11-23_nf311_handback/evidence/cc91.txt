@@ -1,0 +1,34 @@
+0090c540 NODECL incl=engine/CThing.h,engine/CTCBase.h,engine/CIntelligentPointer.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engi
+0090e5d0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CDefPointer.h,engine/CIntelligentPointer.h,engine/CThingAICreature.h,engine/CTCCarrying.h,eng
+0090eec0 protected	nonconst	78	src/compiled/00/90/CAIStateGroupMinionKidCalledToMother_Update_0090eec0.cpp	protected: EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CTh
+00910df0 NODECL incl=engine/EAIAction.h,engine/EMovementType.h,engine/EMessageEventType.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CAIStateGroup_Mini
+00911300 NODECL incl=engine/fable_ai_action_enums.h,engine/CThingAICreature.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CAIStateGroup_MinionGuardReactToBodyFound
+00911630 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CIntelligentPointer.h
+00915350 NODECL incl=engine/fable_ai_action_enums.h,engine/CThingAICreature.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CAIStateGroup_KidHurtSelfRunToMother.h,en
+00916910 NODECL incl=engine/CVectorMap.h,engine/CIntelligentPointer.h,engine/CTCVillage.h
+0091ec30 NODECL incl=engine/CThingAICreature.h,engine/CAIStateGroup_CreatureRangedCombat2.h,engine/CAIBrain.h,engine/ThingAlive.h,engine/EAIAction.h,engine/EMovementType.h
+00922010 NODECL incl=engine/fable_ai_action_enums.h,engine/GFRandom.h,engine/C3DVector.h,engine/CThing.h,engine/CTCBase.h,engine/CIntelligentPointer.h,engine/CThingPhysica
+00926060 NODECL incl=engine/fable_ai_action_enums.h,engine/CThing.h,engine/CTCBase.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CPlayer.h,engine/CPlaye
+009334f0 NODECL incl=engine/CIntelligentPointer.h,engine/CIntelligentPointer_CreatureSizes.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CAIStateGroup_M
+00933db0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/GFWorldDistance.h,engine/CThing.h,engine/CTCBase.h,engine/CTCPhysicsBase.h,engine/CIntelligen
+009341c0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/C2DVector.h,engine/CThing.h,engine/CTCBase.h,engine/CTCPhysicsBase.h,engine/CIntelligentPoint
+00934410 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/C2DVector.h,engine/CThing.h,engine/CTCBase.h,engine/CTCPhysicsBase.h,engine/CIntelligentPoint
+00936c70 NODECL incl=engine/fable_ai_action_enums.h,engine/CDefClassBase.h,engine/CDefPointer.h,engine/CDefinitionManager.h,engine/CGameDefinitionManager.h,engine/CMessage
+009378f0 NODECL incl=engine/fable_ai_action_enums.h,engine/CDefClassBase.h,engine/CDefPointer.h,engine/CDefinitionManager.h,engine/CGameDefinitionManager.h,engine/CMessage
+0093a080 public	nonconst	94	src/compiled/00/93/CAIStateGroupMinionGuardReactToPlayerWithWeapon_Update_0093a080.cpp	long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerThing thing, float proximity, bool* arrived
+0093c030 NODECL incl=engine/fable_ai_action_enums.h,engine/EUnsheatheWeaponType.h,engine/GFRandom.h,engine/CIntelligentPointer.h,engine/ThingAlive.h,engine/CThingAICreatur
+00940310 NODECL incl=engine/fable_ai_action_enums.h,engine/CThing.h,engine/CTCBase.h,engine/CThingAICreature.h,engine/CThingObject.h,engine/CVillageTaskPickCrops.h,engine/
+0094bb20 protected	nonconst	142	src/compiled/00/94/CAIStateGroupMinionHawkingFromStall_Update_0094bb20.cpp	protected: EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CTh
+0094f000 protected	nonconst	37	src/compiled/00/94/CAIStateGroupFollowPlayer_Update_0094f000.cpp	protected: EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CTh
+009578a0 NODECL incl=engine/fable_ai_action_enums.h,engine/CThing.h,engine/CAIStateGroupBehaviourBase.h
+009582d0 NODECL incl=engine/fable_ai_action_enums.h,engine/CThing.h,engine/CTCBase.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CPlayer.h,engine/CPlaye
+0095b9e0 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CThingAICreature.h,engine/CAIStateGroupBase.h,engine/CAIBrain.h,engine/CAIStateGroup_HoverHor
+00961790 protected	nonconst	86	src/compiled/00/96/CAIStateGroupBanditKingCharge_Update_00961790.cpp	EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> target
+00969cb0 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CIntelligentPointer.h,engine/CTCCreatureModeManager.h,engine/fable_ai_action_enums.h,engine/CAIStateGroupBa
+0096df50 NODECL incl=engine/C3DVector.h,engine/CDefPointer.h,engine/CCountedPointer.h,engine/CThing.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CIntel
+0096ec10 NODECL incl=engine/fable_ai_action_enums.h,engine/C3DVector.h,engine/CTCPhysicsBase.h,engine/CThingAICreature.h,engine/CIntelligentPointer.h,engine/CCombatManager
+0096f050 NODECL incl=engine/CThing.h,engine/CVectorMap.h,engine/CIntelligentPointer.h,engine/fable_ai_action_enums.h,engine/CAIStateGroupBase.h
+0097ef60 protected	nonconst	138	src/compiled/00/97/CAIStateGroupBase_AIActionProjectileAttackAndStrafeToThingProximit_0097ef60.cpp	EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing,
+0097fea0 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CThingPlayerCreature.h,engine/CAIStateGroupBase.h,engi
+009804a0 public	nonconst	132	src/compiled/00/98/CAIStateGroupBase_AIActionFleeToThingProximity_009804a0.cpp	EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointerConstThing thing, flo
+00985440 NODECL incl=engine/C3DVector.h,engine/CThing.h,engine/CThingCreatureBase.h,engine/CThingAICreature.h,engine/CIntelligentPointer.h,engine/CTCPerceiveThing.h,engine

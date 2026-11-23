@@ -1,0 +1,12 @@
+## 0057b9d7
+??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@I@Z
+??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+?begin@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@XZ
+## 00999230
+?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
+## 00bdc180
+?AddRequest@CEngineStaticMapFileBlockManager@@QAEXJK_N@Z
+## 008976f0
+??1CScriptThing@@UAE@XZ
+## 005299a0
+?ScalarDtor@CThingBuilding@@QAEXXZ
