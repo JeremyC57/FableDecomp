@@ -1,11 +1,90 @@
 // Member getter at this+0x18. __fastcall this=ecx. pack(1) keeps the Critical at
-// Leaf: ?IsTimingCritical@CAIStateGroup_MinionGossip_Methods@@QAEDXZ
+// Leaf: ?IsTimingCritical@CAIStateGroup_MinionGossip@@UBE_NXZ
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CAIStateGroup_MinionGossip.h (class-model switch FABLE_RETAIL_CAISTATEGROUP_GOSSIP; was ?IsTimingCritical@CAIStateGroup_MinionGossip_Methods@@QAEDXZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
 // the retail byte offset (natural alignment would shift an odd one).
+// Preamble: the define / include block of the landed precedent CAIStateGroupBanditGossip_Update_0090e5d0.cpp.
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEALACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE_INTERACTWITH
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
+#define FABLE_RETAIL_CAISTATEGROUP_GOSSIP
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_FILTER_BIND3_FUNCTION
+#define FABLE_RETAIL_CMESSAGEEVENTFILTERS_ORIGINAL_GUARD
+#define FABLE_RETAIL_CMESSAGEEVENTMANAGER_ORIGINAL_LOCAL
+#define FABLE_RETAIL_CTHINGFILTER_ISVALIDGOSSIPEE_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CTCSOLIDTOTHING_ORIGINAL_MEMBERS
+#define FABLE_RETAIL_CMESSAGEEVENT
+#define FABLE_RETAIL_CMESSAGEEVENT_ORIGINATOR_ORIGINAL
+#define FABLE_RETAIL_CMESSAGEEVENTMANAGER_FINDRECENT
+#define FABLE_RETAIL_CMESSAGEEVENTMANAGER_REMOVE
+#define FABLE_RETAIL_CMESSAGEEVENTFILTERS
+#define FABLE_RETAIL_CMESSAGEEVENTFILTERS_ISOFTYPE_CTOR
+#define FABLE_RETAIL_CTHINGFILTER_IN2DRANGE_CTOR
+#define FABLE_RETAIL_CTCSOLIDTOTHING
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER
+#define FABLE_RETAIL_CINITBASECLASS
+#define FABLE_RETAIL_CGAMECOMPONENT
+#define FABLE_RETAIL_CMAINGAMECOMPONENT
+#define FABLE_RETAIL_CTCCARRYING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "fable_compiler.h"
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCCarrying.h"
+#include "engine/CTCSolidToThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/GFRandom.h"
+#include "engine/CMainGameComponent.h"
+#include "engine/CWorld.h"
+#include "engine/CMessageEvent.h"
+#include "engine/CMessageEventManager.h"
+#include "engine/CMessageEventFilters.h"
+#include "engine/CFilter_Bind3.h"
+#include "engine/CThingFilter_IsValidGossipee.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/EUnsheatheWeaponType.h"
+#include "engine/CCreatureAction_UnsheatheWeapons.h"
+#include "engine/CCreatureAction_SheatheWeapons.h"
+#include "engine/CTCGossip.h"
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CAIStateGroup_BanditGossip.h"
 #include "engine/CAIStateGroup_MinionGossip.h"  // retyped onto the PDB layout; byte parity re-verified
 #pragma pack(push,1)
-struct CAIStateGroup_MinionGossip_Methods : CAIStateGroup_MinionGossip {
-    char IsTimingCritical();
-};
 #pragma pack(pop)
-char CAIStateGroup_MinionGossip_Methods::IsTimingCritical() { return this->Critical; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsTimingCritical@CAIStateGroup_MinionGossip@@UBE_NXZ); evidence: RTTI vtable slot + PDB name set.
+bool CAIStateGroup_MinionGossip::IsTimingCritical() const { return Critical; }

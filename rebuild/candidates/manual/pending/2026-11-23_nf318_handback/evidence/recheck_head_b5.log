@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004aa940   RELOCATION_MATCH PASS   GetFocalPos
+004aa9a0   RELOCATION_MATCH PASS   GetHomePos
+004aa9e0   RELOCATION_MATCH PASS   GetCurrentMapName
+00ac62b0   RELOCATION_MATCH PASS   GetChunkInfo
+
+WINS: 4
+  004aa940 RELOCATION_MATCH CScriptThing::GetFocalPos
+  004aa9a0 RELOCATION_MATCH CScriptThing::GetHomePos
+  004aa9e0 RELOCATION_MATCH CScriptThing::GetCurrentMapName
+  00ac62b0 RELOCATION_MATCH C3DMeshFileClothChunk::?GetChunkInfo@C3DMeshFileClothChunk_Methods@@QAE?AVCCharString@@XZ

@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00ac6270   RELOCATION_MATCH PASS   GetChunkDescription
+00b28b40   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour (engine/CRGBFloatColour.h)
+00b28b40   MATCH            PASS   PeekGlobalDiffuseColour
+004aa940   RELOCATION_MATCH PASS   GetFocalPos
+004aa9a0   RELOCATION_MATCH PASS   GetHomePos
+004aa9e0   RELOCATION_MATCH PASS   GetCurrentMapName
+005db370   RELOCATION_MATCH PASS   TransferBinaryOut
+0088de90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0088de90   MATCH            PASS   EntitySetAsAllowedToFollowHero
+0088ded0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0088ded0   MATCH            PASS   EntitySetAsAllowedToChangeRegionFollowingState
+0088df20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0088df20   MATCH            PASS   EntitySetAsRespondingToFollowAndWaitExpressions
+0088dfd0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0088dfd0   RELOCATION_MATCH PASS   OpenHouseDoors
+0088e000   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0088e000   RELOCATION_MATCH PASS   CloseHouseDoors
+
+WINS: 11
+  00ac6270 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::?GetChunkDescription@C3DMeshFileEngineMaterialChunk@@UBE?BVCCharString@@XZ
+  00b28b40 MATCH CIEngine::?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ
+  004aa940 RELOCATION_MATCH CScriptThing::?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ
+  004aa9a0 RELOCATION_MATCH CScriptThing::?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ
+  004aa9e0 RELOCATION_MATCH CScriptThing::?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ
+  005db370 RELOCATION_MATCH CAnimComponentCombatMisc::?TransferBinaryOut@CAnimComponentCombatMisc@@UBEXAAVCDataOutputStream@@@Z
+  0088de90 MATCH CGameScriptInterface::?EntitySetAsAllowedToFollowHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088ded0 MATCH CGameScriptInterface::?EntitySetAsAllowedToChangeRegionFollowingState@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088df20 MATCH CGameScriptInterface::?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0088dfd0 RELOCATION_MATCH CGameScriptInterface::?OpenHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0088e000 RELOCATION_MATCH CGameScriptInterface::?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z

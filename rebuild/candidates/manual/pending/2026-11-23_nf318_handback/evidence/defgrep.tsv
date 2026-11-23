@@ -1,0 +1,23 @@
+33	004aa8d0	DEFLINE	00/e6/NScriptCVChapelOfEvilScript_WatchForInsideChapel_00e6a0b0.cpp	inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return CScriptThing::NullString; return PImp.Data-
+33	004aa8d0	DEFLINE	00/ed/NScriptCVTempleOfLightScript_WatchForInsideTemple_00edbd80.cpp	inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return CScriptThing::NullString; return PImp.Data-
+33	004aa8d0	DEFLINE	00/e9/NScriptCVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20.cpp	inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return CScriptThing::NullString; return PImp.Data-
+33	004aa8d0	DEFLINE	00/ee/NScriptCVTravellingHeroesScript_DoConversation_00ee2a80.cpp	inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return g_EmptyCharString; return PImp.Data->GetDef
+34	004aa900	DEFLINE	00/d7/NScriptCQHangingTreeGoodScript_FinalRound_00d75060.cpp	inline CCharString CScriptThing::GetDataString() const { if (PImp.IsNull()) return NullString; return PImp->GetDataStrin
+34	004aa900	DEFLINE	00/e2/NScriptCVAmbushScamScript_Main_00e2b090.cpp	inline CCharString CScriptThing::GetDataString() const { if (!PImp.Data) return NullString; return PImp.Data->GetDataStr
+34	004aa900	DEFLINE	00/df/NScriptCQTraderConflictEvilScript_Main_00df6010.cpp	FABLE_FORCEINLINE CCharString CScriptThing::GetDataString() const { if (!PImp.Data) return NullString; return PImp.Data-
+34	004aa900	DEFLINE	00/e5/NScriptCVBodyGuardScript_MakeHenchmanComment_00e5ebd0.cpp	inline CCharString CScriptThing::GetDataString() const { if(PImp.IsNull())return NullString;return PImp->GetDataString()
+35	004aa930	DEFLINE	00/d3/CPuzzleBlockSun_TurnIntoAMoonSign_00d387a0.cpp	inline void CScriptThing::SetDataString(const CCharString& data) { if (PImp.Data) PImp.Data->SetDataString(data); }
+35	004aa930	DEFLINE	00/d3/CPuzzleBlockMoon_TurnIntoASunSign_00d38000.cpp	inline void CScriptThing::SetDataString(const CCharString& data) { if (PImp.Data) PImp.Data->SetDataString(data); }
+35	004aa930	DEFLINE	00/d1/NScriptCQBountyHuntScript_SpawnBanditGangGrunts_00d17470.cpp	inline void CScriptThing::SetDataString(const CCharString& data) { if(!PImp.IsNull()) PImp->SetDataString(data); }
+35	004aa930	DEFLINE	00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_Main_00e338e0.cpp	inline void CScriptThing::SetDataString(const CCharString& data) { if (PImp.Data) PImp.Data->SetDataString(data); }
+39	004aaa40	DEFLINE	00/e0/NScriptCQTraderEscortScriptCMagicBarrier_Main_00e03f70.cpp	inline float CScriptThing::GetAngleXY() const
+39	004aaa40	DEFLINE	00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520.cpp	inline float CScriptThing::GetAngleXY() const { if (!PImp.Data) return 0.0f; return (PImp.Data->GetAngleXY()); }
+39	004aaa40	DEFLINE	00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Main_00ddb720.cpp	inline float CScriptThing::GetAngleXY() const
+39	004aaa40	DEFLINE	00/dd/NScriptCQPrisonRaceScript_Main_00ddae40.cpp	inline float CScriptThing::GetAngleXY() const { if (!PImp.Data) return 0.0f; return (PImp.Data->GetAngleXY()); }
+39	004aaa40	DEFLINE	00/e4/NScriptCVBanditTollScriptCTollBandit_SetUpBanditToll_00e4e0e0.cpp	inline float CScriptThing::GetAngleXY() const { return PImp.Data == 0 ? 0.0f : PImp.Data->GetAngleXY(); }
+40	004ab150	DEFLINE	00/e6/NScriptCVChapelOfEvilScript_WatchForInsideChapel_00e6a0b0.cpp	inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
+40	004ab150	DEFLINE	00/ed/NScriptCVTempleOfLightScript_WatchForInsideTemple_00edbd80.cpp	inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
+40	004ab150	DEFLINE	00/e0/CUndeadRisingZombieAttacker_OnPredicateFail_00e0de90.cpp	inline bool CScriptThing::IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }
+40	004ab150	DEFLINE	00/e9/NScriptCVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20.cpp	inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
+40	004ab150	DEFLINE	00/8a/CGameScriptInterface_GetAllThingsInLevel_008a8af0.cpp	inline bool CScriptThing::IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }
+40	004ab150	DEFLINE	00/ee/NScriptCVTravellingHeroesScript_DoConversation_00ee2a80.cpp	inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }

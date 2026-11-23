@@ -1,0 +1,11 @@
+00692460 LIBCP_OK renames=?CCreatureActionBase_GetAnimDelayTime@@YIJPBVCCreatureActionBase@@@Z=?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+006924d0 LIBCP_OK renames=?CCreatureActionBase_GetAnimExtraFlags@@YIKPBVCCreatureActionBase@@@Z=?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+006924f0 LIBCP_OK renames=?CCreatureActionBase_IsStrikeEventActive@@YI_NPBVCCreatureActionBase@@@Z=?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00692500 LIBCP_OK renames=?CCreatureActionBase_IsStrikeAction@@YI_NPBVCCreatureActionBase@@@Z=?IsStrikeAction@CCreatureActionBase@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+0049d970 LIBCP_OK renames=?PostLoadInit@CWorld_Methods@@QAEXXZ=?PostLoadInit@CWorld@@MAEXXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+0049e1b0 LIBCP_OK renames=?GetThingManager@CWorld_Methods@@QAEAAVCThingManager@@XZ=?GetThingManager@CWorld@@UAEAAVCThingManager@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+004ae8b0 LIBCP_OK renames=?GetWorldMap@CWorld_Methods@@QAEAAVCWorldMap@@XZ=?GetWorldMap@CWorld@@UAEAAVCWorldMap@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+004fb280 LIBCP_OK renames=?DrawGetFrame@CWorldMap_Methods@@QBEJXZ=?DrawGetFrame@CWorldMap@@UBEJXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+005063d0 LIBCP_OK renames=?ForceLoad@CWorldMap_Methods@@QAEXJ@Z=?ForceLoad@CWorldMap@@UAEXJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00a19ae0 LIBCP_OK renames=?CalculateNavigableWidthOfLine@CNavigatorBase_Methods@@QAEXABVC3DVector@@0AAM1@Z=?CalculateNavigableWidthOfLine@CNavigatorBase@@UAEXABVC3DVector@@0AAM1@Z ; .drectve EQUAL ; sections=2
+00b6ccf0 LIBCP_OK renames=?SetBridgeVertexBufferSize@CLandscapePatchTesselator_Methods@@QAEXJ@Z=?SetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEXJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2

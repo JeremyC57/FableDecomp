@@ -1,9 +1,82 @@
-// Leaf: ?GetStateGroupType@CAIStateGroup_EarthTroll_Methods@@QAEHXZ
+// Leaf: ?GetStateGroupType@CAIStateGroup_EarthTroll@@MBE?AW4EAIStateGroupType@@XZ
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CAIStateGroup_EarthTroll.h (class-model switch FABLE_RETAIL_CAISTATEGROUP_EARTHTROLL; was ?GetStateGroupType@CAIStateGroup_EarthTroll_Methods@@QAEHXZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
+// Preamble: the define / include block of the landed precedent CAIStateGroupEarthTroll_Update_0094e7b0.cpp.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_STLP_LIST
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_CCOMBATABILITY
+#define FABLE_RETAIL_CCOMBATABILITYDATA
+#define FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_DEREFERENCE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT_MUTABLE_OUTOFLINE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+#define FABLE_RETAIL_CTHINGCREATUREBASE_SETHANDEDNESS
+#define FABLE_RETAIL_CTHINGAICREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_GOTOBED_WORLD
+#define FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION_NOWAIT
+#define FABLE_RETAIL_CAIBRAIN_GETCREATURE
+#define FABLE_RETAIL_CAIBRAIN_SUSPENDABLE_BASE
+#define FABLE_RETAIL_CAISTATEGROUP_TROLLBASE
+#define FABLE_RETAIL_CAISTATEGROUP_EARTHTROLL
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTION_PLAYCOMBATANIMATION
+#define FABLE_RETAIL_CCREATUREACTION_TROLLGROUNDPOUND_CTOR
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_C3DVECTOR_NORMALISE_SQUARE_HELPER
+#define FABLE_RETAIL_GFFASTONEOVERSQRT_ORIGINAL_UNION
+#define FABLE_RETAIL_C3DVECTOR_MAGNITUDE2D
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFINITIONMANAGER
+#define FABLE_RETAIL_CRESOURCELIST
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CTCCOMBAT
+#define FABLE_RETAIL_CTCCOMBAT_RESETCOMBO
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_IS_THING_ALIVE
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CAIStateGroup_TrollBase.h"
+#include "engine/CAIStateGroup_EarthTroll.h"
+#include "engine/CCreatureAction_TrollGroundPound.h"
+#include "engine/CTCCombat.h"
+#include "engine/CTCPhysicsBase.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CThing.h"
+#include "engine/CVectorMap.h"
+#include "engine/CTCBase.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CThingBaseDef.h"
+#include "engine/CAIBrain.h"
+#include "engine/CDefPointer.h"
+#include "engine/CDefClassBase.h"
+#include "engine/CTrollBattleDef.h"
+#include "engine/CSubDefClassBase.h"
+#include "engine/CDefinitionManager.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_PlayCombatAnimation.h"
+#include "engine/CWorld.h"
+#include "engine/ThingAlive.h"
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
-#include "engine/CAIStateGroup_EarthTroll.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIStateGroup_EarthTroll_Methods : CAIStateGroup_EarthTroll {
-    int GetStateGroupType();
-};
-int CAIStateGroup_EarthTroll_Methods::GetStateGroupType() { return 1; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?GetStateGroupType@CAIStateGroup_EarthTroll@@MBE?AW4EAIStateGroupType@@XZ); evidence: RTTI vtable slot + PDB name set.
+EAIStateGroupType CAIStateGroup_EarthTroll::GetStateGroupType() const { return (EAIStateGroupType)1; }

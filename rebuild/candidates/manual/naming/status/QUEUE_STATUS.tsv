@@ -9890,7 +9890,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12310	land1120nf202	007a9580	??$GetAllThingsInRoughArea@VCThingPhysical@@V?$vector@PAVCThingPhysical@@V?$allocator@PAVCThingPhysical@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@VCThingFilter_IsNot@@VCThingFilter_HasInstantiationName@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@VCThingFilter_IsNot@@VCThingFilter_HasInstantiationName@@@@AAV?$vector@PAVCThingPhysical@@V?$allocator@PAVCThingPhysical@@@std@@@std@@@Z	closed	
 12311	land1120nf202	0065d507	?ReleaseData@?$CCountedPointer@VCVillageTaskPatrol@@@@QAEXXZ	open	??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ
 12312	land1120nf202	0088fb40	?SetBettingActive@CGameScriptInterface@@UAEX_N@Z	no_binding	
-12313	land1120nf202	0088fb50	?GetBettingActive@CGameScriptInterface@@UAE_NXZ	no_binding	
+12313	land1120nf202	0088fb50	?GetBettingActive@CGameScriptInterface@@UAE_NXZ	closed	
 12318	land1120nf205	00404310	?GetCRC@CCharString@@QBEKXZ	closed	
 12319	land1120nf205	00403a10	?GetAsCharArray@CCharString@@QBEPBDXZ	closed	
 12320	land1120nf205	00403a00	?GetLength@CCharString@@QBEJXZ	closed	
@@ -10606,3 +10606,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13446	nf317	0096d2d0	?IsStaffed@CAIStateGroup_EatAtTavern@@IBE_NXZ	closed	
 13447	nf317	006a4cf0	?OnDie@CThingPhysical@@MAEXXZ	partial	_Forward
 13448	nf317	008b0650	?OnCreate@CCombatSequenceBase@@UAEXXZ	partial	?M@C008b0650@@QAEXXZ || ?OnCreate@CCombatSequenceBase@@QAEXXZ || ?OnCreate@CCombatSequenceBase_008b0650@@UAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShield@@QAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXXZ
+13449	nf318	013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	partial	?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A || ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A || ?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A || ?g_MovieTransitionState@@3PAUMovieTransitionState@@A || ?g_cutscene@@3PAUInner@@A || ?g_gameObj@@3PAUGameObj@@A || ?g_hud@@3PAUCHud@@A || ?g_obj@@3PAUCObj@@A || ?g_pGameUI@@3PAUCGameUI@@A || ?g_pGameUI_013b8790@@3PAUCGameUI@@A || ?g_pGameUI

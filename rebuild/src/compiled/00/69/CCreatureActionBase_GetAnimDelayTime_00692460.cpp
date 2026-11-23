@@ -1,13 +1,18 @@
+// Leaf: ?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ
 // CCreatureActionBase::GetAnimDelayTime @ 0x00692460
 // Retail: 33 c0 c3  ->  xor eax,eax ; ret
 // Virtual const this-only accessor returning long 0.
-// Modeled as __fastcall with 'this' in ecx (byte-identical to __fastcall for a this-only accessor).
+// Identity: retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names ?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ at this
+//   address; the PDB member is public virtual const (Ego_r / FableWin).
+// Switch route (NF318, 2026-11-23): the class model is engine/CCreatureActionBase.h under FABLE_RETAIL_CCREATUREACTIONBASE (was the flattened
+//   free stand-in ?CCreatureActionBase_GetAnimDelayTime@@YIJPBVCCreatureActionBase@@@Z); preamble from the landed precedent
+//   CCreatureActionBase_RegisterActionEventTypes_006932b0.cpp. Bytes unchanged.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureActionBase.h"
+#include "engine/NCreatureActionEvents.h"
 
-
-// long GetAnimDelayTime() const  ->  xor eax,eax ; ret
-#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-long __fastcall CCreatureActionBase_GetAnimDelayTime(const CCreatureActionBase* action)
+long CCreatureActionBase::GetAnimDelayTime() const
 {
-    (void)action;
     return 0;
 }

@@ -1,0 +1,1 @@
+00aa7740 LIBCP_OK renames=?IsUnknownType@CChunkedFileRawDataChunk_Methods@@QAEKXZ=?IsUnknownType@CChunkedFileRawDataChunk@@UBEHXZ ; .drectve EQUAL ; sections=2

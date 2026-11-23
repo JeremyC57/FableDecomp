@@ -1,0 +1,43 @@
+00692460 LIBCP_OK renames=?CCreatureActionBase_GetAnimDelayTime@@YIJPBVCCreatureActionBase@@@Z=?GetAnimDelayTime@CCreatureActionBase@@UBEJXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+006924d0 LIBCP_OK renames=?CCreatureActionBase_GetAnimExtraFlags@@YIKPBVCCreatureActionBase@@@Z=?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+006924f0 LIBCP_OK renames=?CCreatureActionBase_IsStrikeEventActive@@YI_NPBVCCreatureActionBase@@@Z=?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00692500 LIBCP_OK renames=?CCreatureActionBase_IsStrikeAction@@YI_NPBVCCreatureActionBase@@@Z=?IsStrikeAction@CCreatureActionBase@@UBE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+0049d970 LIBCP_OK renames=?PostLoadInit@CWorld_Methods@@QAEXXZ=?PostLoadInit@CWorld@@MAEXXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+0049e1b0 LIBCP_OK renames=?GetThingManager@CWorld_Methods@@QAEAAVCThingManager@@XZ=?GetThingManager@CWorld@@UAEAAVCThingManager@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+004ae8b0 LIBCP_OK renames=?GetWorldMap@CWorld_Methods@@QAEAAVCWorldMap@@XZ=?GetWorldMap@CWorld@@UAEAAVCWorldMap@@XZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+004fb280 LIBCP_OK renames=?DrawGetFrame@CWorldMap_Methods@@QBEJXZ=?DrawGetFrame@CWorldMap@@UBEJXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+005063d0 LIBCP_OK renames=?ForceLoad@CWorldMap_Methods@@QAEXJ@Z=?ForceLoad@CWorldMap@@UAEXJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00a19ae0 LIBCP_OK renames=?CalculateNavigableWidthOfLine@CNavigatorBase_Methods@@QAEXABVC3DVector@@0AAM1@Z=?CalculateNavigableWidthOfLine@CNavigatorBase@@UAEXABVC3DVector@@0AAM1@Z ; .drectve EQUAL ; sections=2
+00b6ccf0 LIBCP_OK renames=?SetBridgeVertexBufferSize@CLandscapePatchTesselator_Methods@@QAEXJ@Z=?SetBridgeVertexBufferSize@CLandscapePatchTesselator@@EAEXJ@Z ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+0088e080 LIBCP_OK renames=?CGameScriptInterface_GetConstantFPS@@YIJPBVCGameScriptInterface@@@Z=?GetConstantFPS@CGameScriptInterface@@UBEJXZ ; .drectve EQUAL ; sections=3
+0088f3e0 LIBCP_OK renames=?CGameScriptInterface_IsTutorialSystemEnabled@@YIDPAX@Z=?IsTutorialSystemEnabled@CGameScriptInterface@@UBE_NXZ ; .drectve EQUAL ; sections=2
+0088fa90 LIBCP_OK renames=?CGameScriptInterface_GetPlayerUsingMeleeDummies@@YI_NPBVCGameScriptInterface@@@Z=?GetPlayerUsingMeleeDummies@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fab0 LIBCP_OK renames=?CGameScriptInterface_GetPlayerUsingRangedDummies@@YI_NPAVCGameScriptInterface@@@Z=?GetPlayerUsingRangedDummies@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088faf0 LIBCP_OK renames=?CGameScriptInterface_GetCheapHeadLooking@@YI_NPBVCGameScriptInterface@@@Z=?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fb10 LIBCP_OK renames=?CGameScriptInterface_GetQuitTavernGame@@YI_NPAVCGameScriptInterface@@@Z=?GetQuitTavernGame@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fb30 LIBCP_OK renames=?CGameScriptInterface_GetPrizeTavernTable@@YI_NPAX@Z=?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fb50 LIBCP_OK renames=?CGameScriptInterface_GetBettingActive@@YI_NPAX@Z=?GetBettingActive@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fb70 LIBCP_OK renames=?CGameScriptInterface_GetBettingAccept@@YI_NPAX@Z=?GetBettingAccept@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fb90 LIBCP_OK renames=?CGameScriptInterface_GetBettingAmount@@YIJPAVCGameScriptInterface@@@Z=?GetBettingAmount@CGameScriptInterface@@UAEJXZ ; .drectve EQUAL ; sections=2
+0088fbb0 LIBCP_OK renames=?CGameScriptInterface_GetCountBetMoneyDown@@YI_NPBVCGameScriptInterface@@@Z=?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fbd0 LIBCP_OK renames=?CGameScriptInterface_GetSpotTheAdditionBeaten@@YI_NPBVCGameScriptInterface@@@Z=?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+0088fbf0 LIBCP_OK renames=?CGameScriptInterface_GetGlobalTargetingDistanceOffset@@YIMPAX@Z=?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ ; .drectve EQUAL ; sections=2
+0088fc10 LIBCP_OK renames=?CGameScriptInterface_GetTradingPriceMult@@YIMPBVCGameScriptInterface@@@Z=?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ ; .drectve EQUAL ; sections=2
+0088fc30 LIBCP_OK renames=?CGameScriptInterface_GetBoastingEnabled@@YI_NPAX@Z=?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ ; .drectve EQUAL ; sections=2
+00891510 LIBCP_OK renames=?CGameScriptInterface_RemoveAllAvailableQuestCardsFromGuild@@YIXPAX@Z=?RemoveAllAvailableQuestCardsFromGuild@CGameScriptInterface@@UBEXXZ ; .drectve EQUAL ; sections=4
+00891870 LIBCP_OK renames=?CGameScriptInterface_IsHeroOnQuest@@YI_NPAX@Z=?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ ; .drectve EQUAL ; sections=4
+00891c30 LIBCP_OK renames=?CGameScriptInterface_RemoveAllQuestInfoElements@@YIXPAX@Z=?RemoveAllQuestInfoElements@CGameScriptInterface@@UBEXXZ ; .drectve EQUAL ; sections=2
+00892030 LIBCP_OK renames=?CGameScriptInterface_MiniMapRemoveAllMarkers@@YIXPAX@Z=?MiniMapRemoveAllMarkers@CGameScriptInterface@@UBEXXZ ; .drectve EQUAL ; sections=2
+00892270 LIBCP_OK renames=?CGameScriptInterface_IsInCutscene@@YIDPBVCGameScriptInterface@@@Z=?IsInCutscene@CGameScriptInterface@@UBE_NXZ ; .drectve EQUAL ; sections=4
+00892b30 LIBCP_OK renames=?CGameScriptInterface_IsSafeToDisplayGameInfo@@YI_NPAX@Z=?IsSafeToDisplayGameInfo@CGameScriptInterface@@UBE_NXZ ; .drectve EQUAL ; sections=4
+00893040 LIBCP_OK renames=?CGameScriptInterface_GetActiveGossipCategoriesSize@@YIHPBVCGameScriptInterface@@@Z=?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ ; .drectve EQUAL ; sections=2
+00893050 LIBCP_OK renames=?CGameScriptInterface_GetIsGossipForPlayerSize@@YIHPAX@Z=?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ ; .drectve EQUAL ; sections=2
+008fd27c LIBCP_OK renames=?CAIStateGroupBase_GetStateGroupType@@YIHXZ=?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ ; .drectve EQUAL ; sections=2
+0088de90 LIBCP_OK renames=?EntitySetAsAllowedToFollowHero@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z=?EntitySetAsAllowedToFollowHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z ; .drectve EQUAL ; sections=2
+0088ded0 LIBCP_OK renames=?EntitySetAsAllowedToChangeRegionFollowingState@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z=?EntitySetAsAllowedToChangeRegionFollowingState@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z ; .drectve EQUAL ; sections=2
+0088df20 LIBCP_OK renames=?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z=?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z ; .drectve EQUAL ; sections=2
+0088dfd0 LIBCP_OK renames=?OpenHouseDoors@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@@Z=?OpenHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z ; .drectve EQUAL ; sections=2
+0088e000 LIBCP_OK renames=?CloseHouseDoors@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@@Z=?CloseHouseDoors@CGameScriptInterface@@UBEXABVCScriptThing@@@Z ; .drectve EQUAL ; sections=2
+0088df80 LIBCP_OK renames=?HeroGoDigging@CGameScriptInterface_Methods@@QAEXXZ=?HeroGoDigging@CGameScriptInterface@@UBEXXZ ; .drectve EQUAL ; sections=2
+0088dfa0 LIBCP_OK renames=?HeroStopDigging@CGameScriptInterface_Methods@@QAEXXZ=?HeroStopDigging@CGameScriptInterface@@UBEXXZ ; .drectve EQUAL ; sections=2
+0088e9e0 LIBCP_OK renames=?IsInMovieSequence@CGameScriptInterface_Methods@@QAEEXZ=?IsInMovieSequence@CGameScriptInterface@@UBE_NXZ ; .drectve EQUAL ; sections=2

@@ -1,0 +1,7 @@
+## HEAD set: 00692460.obj 006924d0.obj 006924f0.obj 00692500.obj 0049d970.obj 0049e1b0.obj 004ae8b0.obj 004fb280.obj 005063d0.obj 00a19ae0.obj 00b6ccf0.obj 0088e080.obj 0088f3e0.obj 0088fa90.obj 0088fab0.obj 0088faf0.obj 0088fb10.obj 0088fb30.obj 0088fb50.obj 0088fb70.obj 0088fb90.obj 0088fbb0.obj 0088fbd0.obj 0088fbf0.obj 0088fc10.obj 0088fc30.obj 00891510.obj 00891870.obj 00891c30.obj 00892030.obj 00892270.obj 00892b30.obj 00893040.obj 00893050.obj 008fd27c.obj 0088de90.obj 0088ded0.obj 0088df20.obj 0088dfd0.obj 0088e000.obj 0088df80.obj 0088dfa0.obj 0088e9e0.obj
+duplicates 0
+UNRESOLVED 1 ?GetFrame@CWorld@@SIJXZ
+## new set: 00692460.obj 006924d0.obj 006924f0.obj 00692500.obj 0049d970.obj 0049e1b0.obj 004ae8b0.obj 004fb280.obj 005063d0.obj 00a19ae0.obj 00b6ccf0.obj 0088e080.obj 0088f3e0.obj 0088fa90.obj 0088fab0.obj 0088faf0.obj 0088fb10.obj 0088fb30.obj 0088fb50.obj 0088fb70.obj 0088fb90.obj 0088fbb0.obj 0088fbd0.obj 0088fbf0.obj 0088fc10.obj 0088fc30.obj 00891510.obj 00891870.obj 00891c30.obj 00892030.obj 00892270.obj 00892b30.obj 00893040.obj 00893050.obj 008fd27c.obj 0088de90.obj 0088ded0.obj 0088df20.obj 0088dfd0.obj 0088e000.obj 0088df80.obj 0088dfa0.obj 0088e9e0.obj
+duplicates 0
+UNRESOLVED 1 ?GetFrame@CWorld@@SIJXZ
+LK_DONE

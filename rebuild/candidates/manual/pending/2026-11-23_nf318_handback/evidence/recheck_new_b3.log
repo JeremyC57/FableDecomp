@@ -1,0 +1,44 @@
+addr       parity           behav  name
+004aa8d0   DIFFER(45v42)    PASS   GetDefName
+004aa900   DIFFER(45v42)    PASS   GetDataString
+004aa930   MATCH            PASS   SetDataString
+004aa940   DIFFER(60v57)    PASS   GetFocalPos
+004aa9a0   DIFFER(60v57)    PASS   GetHomePos
+004aa9e0   DIFFER(45v42)    PASS   GetCurrentMapName
+004aaa40   DIFFER(23v20)    PASS   GetAngleXY
+004ab150   DIFFER(30v28)    PASS   IsNull
+00aa4970   RELOCATION_MATCH PASS   GetChunkDescription
+00aae0f0   RELOCATION_MATCH PASS   GetChunkInfo
+00aaee90   RELOCATION_MATCH PASS   GetChunkDescription
+00ab9c30   RELOCATION_MATCH PASS   GetChunkInfo
+00abd3c0   RELOCATION_MATCH PASS   GetChunkDescription
+00abec90   RELOCATION_MATCH PASS   GetChunkDescription
+00ac6270   RELOCATION_MATCH PASS   GetChunkDescription
+00ac62b0   RELOCATION_MATCH PASS   GetChunkInfo
+00aa4500   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00aa4500   RELOCATION_MATCH PASS   WriteToFile
+00aa4d80   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00aa4d80   RELOCATION_MATCH PASS   ReadFromFile
+00aa77a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00aa77a0   RELOCATION_MATCH PASS   ReadFromFile
+00abfde0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00abfde0   RELOCATION_MATCH PASS   WriteToFile
+006926f0   RELOCATION_MATCH PASS   GetStrikeEventHelperName
+00842a10   MATCH            PASS   IsActionReadyForInterruption
+
+WINS: 15
+  004aa930 MATCH CScriptThing::?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z
+  00aa4970 RELOCATION_MATCH C3DAnimFileXAllocationSizeChunk::?GetChunkDescription@C3DAnimFileXAllocationSizeChunk@@UBE?BVCCharString@@XZ
+  00aae0f0 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::?GetChunkInfo@C3DAnimFileMovementVectorChunk@@UBE?BVCCharString@@XZ
+  00aaee90 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::?GetChunkDescription@C3DAnimFileMovementVectorChunk@@UBE?BVCCharString@@XZ
+  00ab9c30 RELOCATION_MATCH C3DMeshFileTransformationChunk::?GetChunkInfo@C3DMeshFileTransformationChunk@@UBE?BVCCharString@@XZ
+  00abd3c0 RELOCATION_MATCH C3DMeshFileSubMeshChunk::?GetChunkDescription@C3DMeshFileSubMeshChunk@@UBE?BVCCharString@@XZ
+  00abec90 RELOCATION_MATCH C3DMeshFileTrianglesChunk::?GetChunkDescription@C3DMeshFileTrianglesChunk@@UBE?BVCCharString@@XZ
+  00ac6270 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::?GetChunkDescription@C3DMeshFileEngineMaterialChunk@@UBE?BVCCharString@@XZ
+  00ac62b0 RELOCATION_MATCH C3DMeshFileClothChunk::?GetChunkInfo@C3DMeshFileClothChunk@@UBE?BVCCharString@@XZ
+  00aa4500 RELOCATION_MATCH C3DAnimFileXAllocationSizeChunk::?WriteToFile@C3DAnimFileXAllocationSizeChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+  00aa4d80 RELOCATION_MATCH C3DMeshFileXTextureIndexChunk::?ReadFromFile@C3DMeshFileXTextureIndexChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z
+  00aa77a0 RELOCATION_MATCH CChunkedFileRawDataChunk::?ReadFromFile@CChunkedFileRawDataChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z
+  00abfde0 RELOCATION_MATCH C3DMeshFileMaterialExtChunk::?WriteToFile@C3DMeshFileMaterialExtChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+  006926f0 RELOCATION_MATCH CCreatureActionBase::?GetStrikeEventHelperName@CCreatureActionBase@@UBE?AVCCharString@@XZ
+  00842a10 MATCH CCreatureAction_ActivateQuest::?IsActionReadyForInterruption@CCreatureAction_ActivateQuest@@UBE_NXZ

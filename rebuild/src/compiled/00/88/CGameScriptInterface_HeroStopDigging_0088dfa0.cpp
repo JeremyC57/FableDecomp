@@ -1,4 +1,7 @@
-// CGameScriptInterface::HeroStopDigging() -- removes the digging player mode (0x1e) from the main player when it is the current mode
+// Leaf: ?HeroStopDigging@CGameScriptInterface@@UBEXXZ
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CGameScriptInterface.h (class-model switch FABLE_RETAIL_NSCRIPT; was ?HeroStopDigging@CGameScriptInterface_Methods@@QAEXXZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
+// CGameScriptInterface::HeroStopDigging() const -- removes the digging player mode (0x1e) from the main player when it is the current mode
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088DFA0, length 48 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (`GetPlayer(MainPlayer)`), CPlayer::GetCurrentMode @ 0x00633BE0,
 // CPlayer::RemoveMode(EPlayerMode) @ 0x00634190.
@@ -7,6 +10,7 @@
 // in esi across the two calls.
 // Name fix (agentNF5 2026-11-10): CPlayer::RemoveMode 0x00634190 takes EPlayerMode (?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z, Ego_r.pdb / FableWin.pdb), was long.
 enum EPlayerMode;                                  // MS forward enum (CPlayer::RemoveMode 0x00634190 takes it)
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
 class CPlayer { public:
@@ -19,11 +23,7 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void HeroStopDigging();
-};
-
-void CGameScriptInterface_Methods::HeroStopDigging()
+void CGameScriptInterface::HeroStopDigging() const
 {
     CPlayer* player = &PlayerManager->GetMainPlayer();
     long mode = player->GetCurrentMode();

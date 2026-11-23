@@ -193,3 +193,10 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - **Q4:** when retail's bytes show an int / byte return width and the PDB says bool / void, the retail code wins. Record it as a PDB
     revision difference and do not respell.
   - **Gotcha:** HEAD and new must be compiled at ONE path, or `?A0x` anonymous-namespace hashes differ and objsec reports false diffs.
+- NF318:
+  - **Q1:** the coordinator's libcp `.drectve` exception covers every move of a row onto its class's shared header under an existing
+    class-model switch (the alias route as well as the flatten switch route), with the same conditions.
+  - **Q2:** a class-model switch no landed row defines yet stays out of these routes. Hold the row.
+  - **Q3:** an enum return written as a literal cast to the PDB enum is the NF307 D3 form, and allowed.
+  - **Q4:** respelling a callee during a move needs the callee's own second source; otherwise it is a T3 unit.
+  - **Q5:** a move that drops a COMDAT (even an unreferenced made-up one) fails "COMDAT sets SAME". Hold it.

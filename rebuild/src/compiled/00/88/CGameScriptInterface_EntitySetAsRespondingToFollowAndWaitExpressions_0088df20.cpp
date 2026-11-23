@@ -2,10 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088DF20, length 64 bytes.
 // Callees: CScriptThing virtual slot 75 (+0x12c, IsValid) and slot 11 (+0x2c, GetThing); then the thing's byte at +0x10 must be 1
 // (a creature) and bit 2 of the flag byte at +0x1c9 is assigned (`shl cl,2 ; xor ; and 4 ; xor`).
-// Oracle name: ?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z (`UBE` = virtual const; `this` is unused, so the
-// method is written on the PDB-header wrapper and selected by its leaf).
-// Leaf: EntitySetAsRespondingToFollowAndWaitExpressions
+// Oracle name: ?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z (`UBE` = virtual const; `this` is unused).
+// Leaf: ?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Switch route (NF318, 2026-11-23): defined on the real class of engine/CGameScriptInterface.h (class-model switch FABLE_RETAIL_NSCRIPT; was ?EntitySetAsRespondingToFollowAndWaitExpressions@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@_N@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member at this address. Bytes unchanged.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
 class CThing { public:
@@ -19,14 +21,9 @@ class CThing { public:
 
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
-#define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void EntitySetAsRespondingToFollowAndWaitExpressions(const CScriptThing& thing, bool flag) const;
-};
-
-void CGameScriptInterface_Methods::EntitySetAsRespondingToFollowAndWaitExpressions(const CScriptThing& thing, bool flag) const
+void CGameScriptInterface::EntitySetAsRespondingToFollowAndWaitExpressions(const CScriptThing& thing, bool flag) const
 {
     if (thing.IsAlive()) {
         CThing* object = thing.GetPThing();
