@@ -304,10 +304,11 @@ def main():
     # RTTI vftable placement (ghidra_out/labels_rtti_port.tsv, tools/rtti_port_all.py: own-class slots only, ICF-collided addresses dropped):
     # the retail second source for a virtual member's name (finish plan route 0).
     rtti = {}
-    rp = P("ghidra_out", "labels_rtti_port.tsv")
-    if os.path.exists(rp):
-        for r in read_tsv(rp):
-            if len(r) > 1: rtti[r[0].lower()] = r[1]
+    for fn in ("labels_rtti_port.tsv", "labels_rtti_port_dtors.tsv"):     # member slots; deleting destructors (tools/rtti_port_dtors.py)
+        rp = P("ghidra_out", fn)
+        if os.path.exists(rp):
+            for r in read_tsv(rp):
+                if len(r) > 1: rtti.setdefault(r[0].lower(), r[1])
     for t2, r2 in rec.items(): r2["rtti"] = rtti.get(t2, "")
     cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings", "rtti"]
     openst = ("standin", "split_fixable", "split_unknown", "split_pdb_multi", "catalog_standin")
