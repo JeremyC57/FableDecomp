@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Pilot: turn flattened `R __fastcall Class_Method(const Class* p)` rows back into `R Class::Method() const` in the row's own local model
 (docs/journal/2026-11/2026-11-23_naming_remainder.md, route 2). Generate-and-verify; writes candidate sources only under <work>.
-usage (repo root, lane env sourced, S set): python3 -u flatten_pilot.py <work> [--max N] [--symbols self_symbols.tsv]
+usage (repo root, lane env sourced, S set): python3 -u flatten_pilot.py <work> [--max N] [--symbols self_symbols.tsv] [--switch]
+       [--classes C1,C2]
 Candidates: the row's graded symbol (self_symbols.tsv, else the compile gate's object_symbol) is `?Class_Method@@YI...` with ONE pointer
 parameter, Class::Method has exactly one symbol in the PDB name sets and it takes no parameters (`...XZ`), the row defines or forward-declares
 Class locally (v2: the header route needs add-only opt-ins, a header-lane task), and no other landed source or test names Class_Method. A candidate is ACCEPTED only when, all compiled by vland on this lane:
@@ -175,8 +176,10 @@ def libcp_only(o, oh, on):
     if sorted(tn) != sorted(th + ['/DEFAULTLIB:"libcp"']): return False
     return uh == un
 head, new = [], []
+CLS = set(argv[argv.index("--classes") + 1].split(",")) if "--classes" in argv else None   # spread a pilot over several class headers
 for a, cls, meth, old, newsym in cands:
     if len(new) >= mx: break
+    if CLS and cls not in CLS: continue
     kv = ent[a]; path = "rebuild/src/compiled/" + kv["Source"]; src = open(path, encoding="utf-8").read()
     fn = f"{cls}_{meth}"
     others = mentions(fn, {os.path.basename(path), os.path.basename(kv.get("TestSource", "") or "x")})
