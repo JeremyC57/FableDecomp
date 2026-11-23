@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+replace	?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z -> ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z	00884e90	006b8640	witness now binds the PDB spelling; no line for it yet
+replace	?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z -> ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z	00884f60	006b8640	witness now binds the PDB spelling; no line for it yet
+replace	?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z -> ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z	00884fe0	006b8640	witness now binds the PDB spelling; no line for it yet

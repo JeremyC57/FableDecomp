@@ -134,3 +134,7 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   access forces, naming the real class, lands under R1.
 - NF306 Q2: a tiny stub target (GOTCHAS NF30 shape) is not named on one-step-indirect donor evidence (a callee the retail build inlined);
   hold it as identity research. Q3: a binder-only fix where the self row already carries the PDB Leaf lands.
+- NF307 D1: NF304 Q1 covers renamed pick-any copies only when the new names are the PDB names; a re-scope that renames getters of a
+  stand-in class onto other made-up names is held (port the stand-in). D3: a literal passed as the PDB enum (`(E)0xC` or an OR of
+  enumerators) lands as one unit with the selves retyped to the enum and every binder moving (NF304 Q6). D5: a binder may bind a PDB name
+  that a pre-existing TU emitter also defines strongly; queue the emitter for the nf86 / nf88 pick-any scaffolding.

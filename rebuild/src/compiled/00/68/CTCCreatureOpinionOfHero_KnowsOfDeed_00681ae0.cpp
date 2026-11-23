@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::KnowsOfDeed(long deedId, long deedType, bool includePending) const -- is the deed id in the pending
+// Leaf: ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // list (when asked) or in the known-deeds list of its type
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00681AE0, length 72 bytes (+8 int3). Nine callers (0x006836BC .. 0x008A00BF).
@@ -10,7 +11,7 @@
 // +0x54, KnownDeeds[92] at +0x1c8, HeroOpinionEnemy at +0x342 and PUnknownThreatOpinionSource at +0x344 (as the landed
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
 class CThing;
-
+#include "engine/EOpinionDeedType.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
@@ -68,10 +69,10 @@ class CTCCreatureOpinionOfHero { public:
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    bool KnowsOfDeed(long deedId, long deedType, bool includePending) const;
+    bool KnowsOfDeed(long deedId, EOpinionDeedType deedType, bool includePending) const;
 };
 
-bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedId, long deedType, bool includePending) const
+bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedId, EOpinionDeedType deedType, bool includePending) const
 {
     if (includePending) {
         SLongNode* end = PendingDeeds.Header;

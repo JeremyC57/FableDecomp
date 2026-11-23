@@ -33,7 +33,7 @@ class CThingCreatureBase : public CThing { public:
 };
 
 class CTCLook { public:                           // interface 0x43
-    void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
+    void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
 };
 
 class CAttackingCombatantInfo { public:
@@ -69,7 +69,7 @@ void NCreatureMode::CModeBlock::FrameUpdate()
             CCombatManager* combatManager = GetWorld().CombatManager;
             CCombatantInfo* info = combatManager->GetCombatantInfo(PCreature);
             if (info->AttackerInfo.Attacked != 0 && !info->AttackerInfo.Attacked->IsDead())
-                look->LookAtPos(&info->AttackerInfo.Attacked->GetPos(), 0x21);
+                look->LookAtPos(info->AttackerInfo.Attacked->GetPos(), 0x21);
         }
     }
     CModeBase::FrameUpdate();

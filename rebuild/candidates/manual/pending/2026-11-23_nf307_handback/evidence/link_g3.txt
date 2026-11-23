@@ -1,0 +1,41 @@
+## HEAD set: H_004d3d69.obj H_004d94ab.obj H_009212c0.obj H_00921870.obj H_007be0f9.obj H_006afd60.obj H_006d7960.obj 0076c8a0.obj 004d6292.obj 007986a0.obj 004bffd0.obj 006d6660.obj 004c9120.obj 004a3740.obj 006cf3b0.obj 008a7980.obj 006b0150.obj 0078c210.obj 00899390.obj 00899400.obj 00899470.obj
+duplicates 0
+UNRESOLVED 1 ??0CTCEnemy@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCFlashOnHit@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??1CTCEnemy@@UAE@XZ
+UNRESOLVED 1 ??1CTCFlashOnHit@@UAE@XZ
+UNRESOLVED 1 ?AddFollower@CTCFollowed@@QAEXPAVCThing@@_N@Z
+UNRESOLVED 1 ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?FrameUpdate@CTCFlashOnHit@@UAEXXZ
+UNRESOLVED 1 ?GetClassTypeName@CTCEnemy@@UBE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetClassTypeName@CTCFlashOnHit@@UBE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetInterfaceType@CTCEnemy@@UBE?AW4ETCInterfaceType@@XZ
+UNRESOLVED 1 ?GetInterfaceType@CTCFlashOnHit@@UBE?AW4ETCInterfaceType@@XZ
+UNRESOLVED 1 ?GetTotalStatLevel@CTCHeroExperience@@QBEJJ@Z
+UNRESOLVED 1 ?HasFrameUpdate@CTCFlashOnHit@@UBE_NXZ
+UNRESOLVED 1 ?IsComponentSerialisable@CTCEnemy@@UBE_NXZ
+UNRESOLVED 1 ?OnInitialActivate@CTCEnemy@@UAEXXZ
+UNRESOLVED 1 ?OnSerialise@CTCEnemy@@MAEXAAVCPersistContext@@_N@Z
+UNRESOLVED 3 ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?RemoveFollower@CTCFollowed@@QAEXPAVCThing@@@Z
+UNRESOLVED 2 ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXJ@Z
+UNRESOLVED 1 ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MPAVCThing@@@Z
+## new set: 004d3d69.obj 004d94ab.obj 009212c0.obj 00921870.obj 007be0f9.obj 006afd60.obj 006d7960.obj 0076c8a0.obj 004d6292.obj 007986a0.obj 004bffd0.obj 006d6660.obj 004c9120.obj 004a3740.obj 006cf3b0.obj 008a7980.obj 006b0150.obj 0078c210.obj 00899390.obj 00899400.obj 00899470.obj
+duplicates 0
+UNRESOLVED 1 ??1CTCEnemy@@UAE@XZ
+UNRESOLVED 1 ??1CTCFlashOnHit@@UAE@XZ
+UNRESOLVED 1 ?AddFollower@CTCFollowed@@QAEXAAVCThing@@_N@Z
+UNRESOLVED 1 ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z
+UNRESOLVED 1 ?FrameUpdate@CTCFlashOnHit@@UAEXXZ
+UNRESOLVED 1 ?GetClassTypeName@CTCEnemy@@UBE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetClassTypeName@CTCFlashOnHit@@UBE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetInterfaceType@CTCEnemy@@UBE?AW4ETCInterfaceType@@XZ
+UNRESOLVED 1 ?GetInterfaceType@CTCFlashOnHit@@UBE?AW4ETCInterfaceType@@XZ
+UNRESOLVED 1 ?HasFrameUpdate@CTCFlashOnHit@@UBE_NXZ
+UNRESOLVED 1 ?IsComponentSerialisable@CTCEnemy@@UBE_NXZ
+UNRESOLVED 1 ?OnInitialActivate@CTCEnemy@@UAEXXZ
+UNRESOLVED 1 ?OnSerialise@CTCEnemy@@MAEXAAVCPersistContext@@_N@Z
+UNRESOLVED 4 ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z
+UNRESOLVED 2 ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z
+LK_DONE

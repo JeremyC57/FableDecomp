@@ -108,7 +108,7 @@ class CEventHitBySpecialAbility : public NEntityEvents::CEventBase { public:    
 };
 }
 class CTCEntityEvents { public: void AddEvent(NEntityEvents::CEventBase* event); };   // 0x008113C0
-class CTCForcePushed { public: void SetUpForcePush(const C3DVector& dir, float force, CThing* pusher); };   // 0x007986A0
+class CTCForcePushed { public: void SetUpForcePush(const C3DVector& dir, float force, CThing& pusher); };   // 0x007986A0
 class CTCPerceiveThing { public:
     const CThing* GetPerceivedThing() const;                        // 0x007446A0 Ego_r/FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ (agentNF16)
     void SetAsIndirectlyAwareOfPerceivedThing();        // 0x007449E0
@@ -181,7 +181,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
                     hit.SetThingHitting(*shooter);
                     events->AddEvent(new NEntityEvents::CEventHitBySpecialAbility(hit, HERO_ABILITY_FORCE_PUSH));
                 }
-                pushed->SetUpForcePush(-away, PushForce, shooter);
+                pushed->SetUpForcePush(-away, PushForce, *shooter);
             }
             thing->SetAttackedByCreature(shooter);
             CDefPointer<const CMessageEventDef> def;

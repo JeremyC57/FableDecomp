@@ -13,10 +13,10 @@ class CThing;
 
 class CTCFlashOnHit { public:
     unsigned char _body[0x1c];       // sizeof(CTCFlashOnHit) = 0x1c
-    CTCFlashOnHit(CThing* owner);                   // 0x004D6292
+    CTCFlashOnHit(CThing& owner);                   // 0x004D6292
 };
 
 CTCFlashOnHit* __fastcall CTCFlashOnHit_Alloc(CThing* owner)
 {
-    return new CTCFlashOnHit(owner);
+    return new CTCFlashOnHit(*owner);
 }

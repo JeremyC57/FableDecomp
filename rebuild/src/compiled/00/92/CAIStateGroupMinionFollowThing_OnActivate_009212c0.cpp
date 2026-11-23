@@ -141,7 +141,7 @@ struct CTCFollowerState {                       // interface 0xAA
 };
 class CTCFollowed { public:                            // interface 0xBC
     bool IsCreatureValidFollower(CThing* creature, bool* addToFront);   // 0x006D4E60
-    void AddFollower(CThing* follower, bool addToFront);               // 0x006D50C0
+    void AddFollower(CThing& follower, bool addToFront);               // 0x006D50C0
 };
 // NF122 (2026-11-20, q6325): the 0x7A (TCI_REGION_FOLLOWER) component's 0x006AEDC0 is Ego_r.pdb / FableWin.pdb
 //   ?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z, declared by engine/CTCRegionFollower.h (partial mode FOLLOWERS_ONLY: this row
@@ -180,7 +180,7 @@ void CAIStateGroup_MinionFollowThing::OnActivate()
             {
                 bool addToFront = false;
                 bool valid = followed->IsCreatureValidFollower(GetCreature(), &addToFront);
-                followed->AddFollower(GetCreature(), addToFront);
+                followed->AddFollower(*GetCreature(), addToFront);
                 if (ExpressionUsed && valid && !(GetCreature()->m_flags1c9 & 2)) {
                     CTCRegionFollower* list;
                     if (((CThing*)PFollowee.GetPItem())->GetInterface(&list, 0x7a))

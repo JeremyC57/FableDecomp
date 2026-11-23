@@ -47,8 +47,9 @@ class CTCVillage { public:
 class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetVillage();                   // 0x007EE540 (the manifest's "IS_THING_ALIVE<...>" is propagated)
 };
+#include "engine/EOpinionDeedType.h"
 class COpinionDeed { public:
-    long Type;                                  // +0x00 EOpinionDeedType
+    EOpinionDeedType Type;                      // +0x00 EOpinionDeedType
 };
 class CTCHeroOpinionDeedLog { public: COpinionDeed const* GetDeedFromHandle(long a0) const; private:   // 0x006C58F0
 };
@@ -69,7 +70,7 @@ protected:
 
 class CTCCreatureOpinionOfHero : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    bool KnowsOfDeed(long deedHandle, long deedType, bool includePending);   // 0x00681AE0
+    bool KnowsOfDeed(long deedHandle, EOpinionDeedType deedType, bool includePending) const;   // 0x00681AE0
     bool KnowsOfDeed(long deedHandle, bool includePending);
 };
 

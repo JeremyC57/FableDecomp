@@ -1,0 +1,34 @@
+# DEF census of every new spelling over all compiled objects (HEAD controls + new rows)
+00487ef0.obj ?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+004bffd0.obj ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z
+004d6292.obj ??0CTCFlashOnHit@@QAE@AAVCThing@@@Z
+005ee49a.obj ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z
+00682810.obj ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z
+006d6660.obj ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z
+00753e90.obj ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+0076c8a0.obj ??0CTCEnemy@@QAE@AAVCThing@@@Z
+007986a0.obj ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z
+007cd390.obj ??0CTCMultiStrike@@QAE@AAVCThing@@@Z
+00884e90.obj ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z
+00884f60.obj ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z
+00884fe0.obj ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z
+00681ae0.obj ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z
+# source census: out-of-line definitions Class::Method( in landed sources
+CTCCreatureOpinionOfHero::KnowsOfDeed: 007b2c70 007b2e20 007bb150 00683650 00681ae0 006c5e90 
+CTCCreatureOpinionOfHero::InformOfDeed: 007b2e20 00683590 00682810 00684210 
+CEnvironmentSpellEffectInterface::SetRadialBlurParams: 00885070 00884e90 008853a0 
+CEnvironmentSpellEffectInterface::SetRadialBlurPositionParams: 00884f60 
+CEnvironmentSpellEffectInterface::SetScreenFilterParams: 00884fe0 00885420 
+CPlayer::InitCharacterFromSave: 00487ef0 
+CTCCreatureNavigation::GetNextNavPosOnRoute: 00849be0 
+CTCEnemy::CTCEnemy: 0076c8a0 
+CTCFlashOnHit::CTCFlashOnHit: 004d6292 
+CTCMultiStrike::CTCMultiStrike: 007cd390 007cd810 
+CTCFollowed::AddFollower: 006d50c0 
+CTCFollowed::RemoveFollower: 006d5180 006cf3b0 00921870 
+CTCForcePushed::SetUpForcePush: 007986a0 
+SetActivePersistenceFlags: 006afd60 004bffd0 006b0150 
+CTCHeroExperience::GetTotalStatLevel: 006d83b0 006d6660 
+CTCHitLocations::GetPCombatFirstHitLocationIntersectionWithFiniteLine: 00816aa0 008168b0 
+CTCInventoryAbilities::IsAbleToUseAbility: 0072c230 005ee49a 
+CTCLook::LookAtPos: 00849be0 00753020 00753e90 008da610 008db240 008d8ea0 008db460 00787e12 

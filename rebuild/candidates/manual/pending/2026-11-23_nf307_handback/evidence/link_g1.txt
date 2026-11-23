@@ -1,0 +1,23 @@
+## HEAD set: H_006b8640.obj H_00449e60.obj H_00681ae0.obj H_00683650.obj H_00683590.obj 00884e90.obj 00884f60.obj 00884fe0.obj 00487ef0.obj 00682810.obj 006c6040.obj 007993f0.obj 007b2c70.obj 007b2e20.obj 007bb150.obj 0089feb0.obj 00449f90.obj 006b84e0.obj 006b8550.obj 008809f0.obj 00880a10.obj 00880a40.obj 00880ae0.obj 00880e00.obj 00880ec0.obj 00880f60.obj 00881010.obj 008810c0.obj 00881150.obj 008811d0.obj 00881820.obj 00881860.obj 00882c90.obj 00885110.obj 008851a0.obj 00885210.obj 008852e0.obj
+duplicates 0
+UNRESOLVED 1 ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z
+UNRESOLVED 1 ?InitCharacterFromSave@CPlayer@@QAE_NPAUCPlayerSave@@@Z
+UNRESOLVED 1 ?InsertRadialBlurEntry@CScreenEffectPriorityStack@@QAEXMPBUCRadialBlurParams@@PBUCRadialBlurPositionParams@@W4ScreenEffectPriority@@@Z
+UNRESOLVED 1 ?Interpolate@CScreenFilterParams@@QBE?AU1@ABU1@M@Z
+UNRESOLVED 2 ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJJ_N@Z
+UNRESOLVED 5 ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z
+UNRESOLVED 1 ?LoadPlayerCharacterFromGameState@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+UNRESOLVED 1 ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABUCRadialBlurParams@@@Z
+UNRESOLVED 1 ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z
+UNRESOLVED 1 ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z
+UNRESOLVED 1 ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z
+UNRESOLVED 1 ?v00@CRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect@@UAEXXZ
+## new set: 006b8640.obj 00449e60.obj 00681ae0.obj 00683650.obj 00683590.obj 00884e90.obj 00884f60.obj 00884fe0.obj 00487ef0.obj 00682810.obj 006c6040.obj 007993f0.obj 007b2c70.obj 007b2e20.obj 007bb150.obj 0089feb0.obj 00449f90.obj 006b84e0.obj 006b8550.obj 008809f0.obj 00880a10.obj 00880a40.obj 00880ae0.obj 00880e00.obj 00880ec0.obj 00880f60.obj 00881010.obj 008810c0.obj 00881150.obj 008811d0.obj 00881820.obj 00881860.obj 00882c90.obj 00885110.obj 008851a0.obj 00885210.obj 008852e0.obj
+duplicates 0
+UNRESOLVED 1 ?InsertRadialBlurEntry@CScreenEffectPriorityStack@@QAEXMPBUCRadialBlurParams@@PBUCRadialBlurPositionParams@@W4ScreenEffectPriority@@@Z
+UNRESOLVED 1 ?Interpolate@CScreenFilterParams@@QBE?AU1@ABU1@M@Z
+UNRESOLVED 1 ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJJ_N@Z
+UNRESOLVED 1 ?LoadPlayerCharacterFromGameState@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+UNRESOLVED 1 ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABUCRadialBlurParams@@@Z
+UNRESOLVED 1 ?v00@CRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect@@UAEXXZ
+LK_DONE

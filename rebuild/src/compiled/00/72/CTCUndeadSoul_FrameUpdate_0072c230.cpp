@@ -58,8 +58,9 @@ public:
 };
 class CThingPlayerCreature : public CThing { };
 
+#include "engine/EHeroAbility.h"
 class CTCInventoryAbilities { public:
-    bool IsAbleToUseAbility(long ability, bool checkLevel) const;   // 0x005EE49A (EHeroAbility)
+    bool IsAbleToUseAbility(EHeroAbility ability, bool checkLevel) const;   // 0x005EE49A (EHeroAbility)
 };
 class CTCTargeted { public:
     unsigned char _pad_0x00[0x10];
@@ -90,7 +91,7 @@ void CTCUndeadSoul::FrameUpdate()
 {
     const CThing* hero = GetPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero && !(hero->m_flags & 1) && hero->HasTC(0x6f)
-        && ((const CTCInventoryAbilities*)hero->GetTC(0x6f))->IsAbleToUseAbility(7, true)) {
+        && ((const CTCInventoryAbilities*)hero->GetTC(0x6f))->IsAbleToUseAbility(HERO_ABILITY_RAISE_DEAD_SPELL, true)) {
         if (!ParentThing->DrawIsDrawable()) {
             ParentThing->SetAsDrawable(true);
             CTCTargeted* targeted = 0;

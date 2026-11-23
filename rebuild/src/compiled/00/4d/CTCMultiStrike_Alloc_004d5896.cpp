@@ -13,10 +13,10 @@ class CThing;
 
 class CTCMultiStrike { public:
     unsigned char _body[0x58];       // sizeof(CTCMultiStrike) = 0x58
-    CTCMultiStrike(CThing* owner);                   // 0x007CD390
+    CTCMultiStrike(CThing& owner);                   // 0x007CD390
 };
 
 CTCMultiStrike* __fastcall CTCMultiStrike_Alloc(CThing* owner)
 {
-    return new CTCMultiStrike(owner);
+    return new CTCMultiStrike(*owner);
 }

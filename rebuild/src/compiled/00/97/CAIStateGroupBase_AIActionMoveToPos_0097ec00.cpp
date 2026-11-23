@@ -60,16 +60,16 @@ class CNavigationInput { public:
     long  MovementType;                         // +0x10
     float Speed;                                // +0x14
 };
-struct CCreatureNavOutput {
+class CTCCreatureNavigation { public: class CCreatureNavOutput { public:   // PDB CTCCreatureNavigation::CCreatureNavOutput (class key V, nested; NF307)
     long Status;                                // 0 arrived, 1 failed, 2 moving
     C3DVector Offset;
+};
+    CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
 };
 class CTCLook { public:
     bool TrackNearestInterestingThing(bool track);   // 0x00753840
 };
-class CTCCreatureNavigation { public:
-    CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
-};
+// (CTCCreatureNavigation is declared above, with its nested CCreatureNavOutput)
 class CCreatureActionBase { public:
     virtual void v00();
     bool BlocksMovement();                      // virtual slot 49 (+0xc4), declared below
@@ -220,7 +220,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPos(EAIActionRepeat repeat, C3
             ((CTCLook*)GetCreature()->GetTC(0x43))->TrackNearestInterestingThing(true);
         CTCCreatureNavigation* navigation;
         GetCreature()->GetInterface(&navigation, 7);
-        CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, false, b6, b8, true, false);
+        CTCCreatureNavigation::CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, false, b6, b8, true, false);
         moving = output.Status == 0 || output.Offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
         if (!GetCreature()->IsPerformingAnyAction() || !GetCreature()->CurrentAction->BlocksMovement()) {
             switch (output.Status) {

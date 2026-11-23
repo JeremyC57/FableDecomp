@@ -1,0 +1,203 @@
+pH 006b8640 RELOCATION_MATCH leaf=FrameUpdate flags=
+pS 006b8640 RELOCATION_MATCH leaf=FrameUpdate flags=
+GRADE_DONE
+pH 00683590 RELOCATION_MATCH leaf=?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z flags=
+pS 00683590 RELOCATION_MATCH leaf=?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z flags=
+GRADE_DONE
+pH 00884e90 MATCH leaf=?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z flags=
+GRADE_DONE
+pH 00682810 RELOCATION_MATCH leaf=?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z flags=
+GRADE_DONE
+pH 007b2e20 RELOCATION_MATCH leaf=?ReportAllPendingCrimes@CTCGuard@@QAEXPAVCTCVillage@@@Z flags=
+GRADE_DONE
+pH 00449e60 RELOCATION_MATCH leaf=LoadGameState flags=
+pS 00449e60 RELOCATION_MATCH leaf=LoadGameState flags=
+GRADE_DONE
+pH 00884f60 MATCH leaf=?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z flags=
+GRADE_DONE
+pH 006c6040 RELOCATION_MATCH leaf=?InformRelevantThingsOfDeed@CTCHeroOpinionDeedLog@@AAE_NJPAVCThingAICreature@@W4EOpinionPostDeedType@@PBVCFaction@@_N@Z flags=/d2inlT80
+GRADE_DONE
+pH 007bb150 RELOCATION_MATCH leaf=SeeIfAnyOccupantsKnowAboutDeed flags=
+GRADE_DONE
+pH 00681ae0 MATCH leaf=KnowsOfDeed flags=
+pS 00681ae0 MATCH leaf=?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z flags=
+GRADE_DONE
+pH 00884fe0 MATCH leaf=?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z flags=
+GRADE_DONE
+pH 007993f0 RELOCATION_MATCH leaf=?WitnessedCrime@CTCShopKeeper@@QAEXABVCOpinionDeed@@J@Z flags=
+GRADE_DONE
+pH 0089feb0 RELOCATION_MATCH leaf=?AddCrimeCommitted@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECrime@@_NPBV2@3W4EOpinionPostDeedType@@@Z flags=
+GRADE_DONE
+pH 00683650 RELOCATION_MATCH leaf=?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJ_N@Z flags=
+pS 00683650 RELOCATION_MATCH leaf=?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJ_N@Z flags=
+GRADE_DONE
+pH 00487ef0 RELOCATION_MATCH leaf=?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z flags=
+GRADE_DONE
+pH 007b2c70 RELOCATION_MATCH leaf=?ReportCrime@CTCGuard@@QAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z flags=
+GRADE_DONE
+pH 00449f90 RELOCATION_MATCH leaf=?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z flags=
+GRADE_DONE
+pH 00880a10 MATCH leaf=ResetToDefault flags=
+GRADE_DONE
+pH 00880ec0 MATCH leaf=ResetToDefault flags=
+GRADE_DONE
+pH 00881150 RELOCATION_MATCH leaf=?SetAreaTrackPos@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 00882c90 RELOCATION_MATCH leaf=??0CRadialBlurEntry flags=
+GRADE_DONE
+pH 008852e0 MATCH leaf=??0CEnvironmentSpellEffectInterface@@QAE@PAVCEnvironment@@@Z flags=
+GRADE_DONE
+pH 006b84e0 RELOCATION_MATCH leaf=RadialBlurFadeTo flags=
+GRADE_DONE
+pH 00880a40 MATCH leaf=Reset flags=
+GRADE_DONE
+pH 00880f60 RELOCATION_MATCH leaf=?GetRadialBlurParam@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 008811d0 RELOCATION_MATCH leaf=?SetBlurTrackPos@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 00885110 MATCH leaf=SetRadialBlurCenterWorldPos flags=
+GRADE_DONE
+pH 006b8550 RELOCATION_MATCH leaf=?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABVC3DVector@@M1MMM@Z flags=
+GRADE_DONE
+pH 00880ae0 RELOCATION_MATCH leaf=Process@CRadialBlurProcess flags=
+GRADE_DONE
+pH 00881010 RELOCATION_MATCH leaf=?SetAreaCenter@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 00881820 RELOCATION_MATCH leaf=?DeleteRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 008851a0 MATCH leaf=SetRadialBlurCenterScreenPos flags=
+GRADE_DONE
+pH 008809f0 MATCH leaf=ResetToDefault flags=
+GRADE_DONE
+pH 00880e00 RELOCATION_MATCH leaf=?Process@CScreenFilterProcess@CScreenEffectPriorityStack@NScreenEffect@@UAEXMPBUCStackEntry@23@@Z flags=
+GRADE_DONE
+pH 008810c0 RELOCATION_MATCH leaf=?SetBlurCenter@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 00881860 RELOCATION_MATCH leaf=?DeleteDisplacementEntry@CScreenEffectPriorityStack@NScreenEffect flags=
+GRADE_DONE
+pH 00885210 MATCH leaf=SetRadialBlurCenterAreaScreenPos flags=
+GRADE_DONE
+pH 0091d510 RELOCATION_MATCH leaf=?AIAction_MoveToPosProximityAndFacePos@CAIStateGroup_HoverMovementBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@M1AA_NW4EMovementType@@@Z flags=
+pS 0091d510 RELOCATION_MATCH leaf=?AIAction_MoveToPosProximityAndFacePos@CAIStateGroup_HoverMovementBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@ABVC3DVector@@M1AA_NW4EMovementType@@@Z flags=
+GRADE_DONE
+pH 00849be0 RELOCATION_MATCH leaf=?FrameUpdate@CCreatureAction_NavToPos@@UAEXXZ flags=
+GRADE_DONE
+pH 00714900 RELOCATION_MATCH leaf=?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ flags=
+pS 00714900 RELOCATION_MATCH leaf=?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ flags=
+GRADE_DONE
+pH 0097e890 RELOCATION_MATCH leaf=AIAction_MoveToPosProximity flags=
+pS 0097e890 RELOCATION_MATCH leaf=AIAction_MoveToPosProximity flags=
+GRADE_DONE
+pH 0097ec00 RELOCATION_MATCH leaf=AIAction_MoveToPos flags=
+pS 0097ec00 RELOCATION_MATCH leaf=AIAction_MoveToPos flags=
+GRADE_DONE
+pH 004d3d69 RELOCATION_MATCH leaf=Alloc flags=
+pS 004d3d69 RELOCATION_MATCH leaf=Alloc flags=
+GRADE_DONE
+pH 007be0f9 RELOCATION_MATCH leaf=OnCollision flags=
+pS 007be0f9 RELOCATION_MATCH leaf=OnCollision flags=
+GRADE_DONE
+pH 0076c8a0 RELOCATION_MATCH leaf=??0CTCEnemy@@QAE@AAVCThing@@@Z flags=
+GRADE_DONE
+pH 006d6660 MATCH leaf=GetTotalStatLevel flags=
+GRADE_DONE
+pH 008a7980 RELOCATION_MATCH leaf=?EntityStopFollowing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z flags=
+GRADE_DONE
+pH 00899400 RELOCATION_MATCH leaf=GetHeroSkillLevel@CGameScriptInterface flags=
+GRADE_DONE
+pH 004d94ab RELOCATION_MATCH leaf=Alloc flags=
+pS 004d94ab RELOCATION_MATCH leaf=Alloc flags=
+GRADE_DONE
+pH 006afd60 RELOCATION_MATCH leaf=FrameUpdate flags=
+pS 006afd60 RELOCATION_MATCH leaf=FrameUpdate flags=
+GRADE_DONE
+pH 004d6292 RELOCATION_MATCH leaf=??0CTCFlashOnHit@@QAE@AAVCThing@@@Z flags=
+GRADE_DONE
+pH 004c9120 RELOCATION_MATCH leaf=?Save@CThing@@UAEXAAVCCharString@@@Z flags=
+GRADE_DONE
+pH 006b0150 RELOCATION_MATCH leaf=ClearGraphicPersistenceFlags flags=
+GRADE_DONE
+pH 00899470 RELOCATION_MATCH leaf=GetHeroWillLevel@CGameScriptInterface flags=
+GRADE_DONE
+pH 009212c0 RELOCATION_MATCH leaf=OnActivate flags=
+pS 009212c0 RELOCATION_MATCH leaf=OnActivate flags=
+GRADE_DONE
+pH 006d7960 RELOCATION_MATCH leaf=GetFullHeroTitle flags=
+pS 006d7960 RELOCATION_MATCH leaf=GetFullHeroTitle flags=
+GRADE_DONE
+pH 007986a0 RELOCATION_MATCH leaf=?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z flags=
+GRADE_DONE
+pH 004a3740 RELOCATION_MATCH leaf=?UpdateRegionLoad@CWorld@@IAEXXZ flags=
+GRADE_DONE
+pH 0078c210 RELOCATION_MATCH leaf=??0CTCBerserk@@QAE@AAVCThing@@@Z flags=
+GRADE_DONE
+pH 00921870 RELOCATION_MATCH leaf=Cleanup flags=
+pS 00921870 RELOCATION_MATCH leaf=Cleanup flags=
+GRADE_DONE
+pH 004bffd0 RELOCATION_MATCH leaf=SetActivePersistenceFlags flags=
+GRADE_DONE
+pH 006cf3b0 RELOCATION_MATCH leaf=InitWifeAtEndOfMarriageFrescoStartFadeIn flags=
+GRADE_DONE
+pH 00899390 RELOCATION_MATCH leaf=GetHeroStrengthLevel@CGameScriptInterface flags=
+GRADE_DONE
+pH 008587b0 RELOCATION_MATCH leaf=?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z flags=
+pS 008587b0 RELOCATION_MATCH leaf=?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z flags=
+GRADE_DONE
+pH 008168b0 RELOCATION_MATCH leaf=GetPCombatFirstHitLocationIntersectionWithFiniteLine flags=
+GRADE_DONE
+pH 0064ae80 RELOCATION_MATCH leaf=?DrawAbilityButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@AAV?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@V?$allocator@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@JJJM@Z flags=
+GRADE_DONE
+pH 006d5b50 RELOCATION_MATCH leaf=UpdateAITurning flags=
+GRADE_DONE
+pH 008d8ea0 RELOCATION_MATCH leaf=?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ flags=
+GRADE_DONE
+pH 007cd390 RELOCATION_MATCH leaf=??0CTCMultiStrike@@QAE@AAVCThing@@@Z flags=
+GRADE_DONE
+pH 0072c230 RELOCATION_MATCH leaf=?FrameUpdate@CTCUndeadSoul@@UAEXXZ flags=
+pS 0072c230 RELOCATION_MATCH leaf=?FrameUpdate@CTCUndeadSoul@@UAEXXZ flags=
+GRADE_DONE
+pH 00816aa0 RELOCATION_MATCH leaf=?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z flags=
+GRADE_DONE
+pH 00651b04 RELOCATION_MATCH leaf=?Draw@CDrawAbilityButtons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z flags=(size TU: `#pragma optimize("s", on)` only, as CDrawPerceivers::Draw 0x0064499C).
+GRADE_DONE
+pH 00714cc0 RELOCATION_MATCH leaf=?Update@CActionTurnToFacePosition@NTCScriptedControl@@UAEXXZ flags=
+GRADE_DONE
+pH 008da610 RELOCATION_MATCH leaf=?FrameUpdate@CModeScreamerAggressive flags=
+GRADE_DONE
+pH 008db460 RELOCATION_MATCH leaf=FrameUpdate flags=
+pS 008db460 RELOCATION_MATCH leaf=FrameUpdate flags=
+GRADE_DONE
+pH 005ee49a RELOCATION_MATCH leaf=?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z flags=
+GRADE_DONE
+pH 0072c430 RELOCATION_MATCH leaf=?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z flags=
+GRADE_DONE
+pH 00716de0 RELOCATION_MATCH leaf=?Update@CActionTalkBase@NTCScriptedControl@@UAEXXZ flags=
+GRADE_DONE
+pH 008db240 RELOCATION_MATCH leaf=?FrameUpdate@CModeDragonLanded flags=
+GRADE_DONE
+pH 004d5896 RELOCATION_MATCH leaf=Alloc flags=
+pS 004d5896 RELOCATION_MATCH leaf=Alloc flags=
+GRADE_DONE
+pH 005eea9b RELOCATION_MATCH leaf=OnSpecialAbilityUsed flags=
+GRADE_DONE
+pH 00753e90 RELOCATION_MATCH leaf=?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z flags=
+GRADE_DONE
+pH 0089bdf0 RELOCATION_MATCH leaf=?EntitySetFacingAngle@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z flags=
+GRADE_DONE
+pH 008dbc80 RELOCATION_MATCH leaf=?FrameUpdate@CModeDragonFlying@NCreatureMode@@UAEXXZ flags=
+GRADE_DONE
+pH 00714900 RELOCATION_MATCH leaf=?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ flags=
+pS 00714900 RELOCATION_MATCH leaf=?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ flags=
+GRADE_DONE
+pH 008db240 RELOCATION_MATCH leaf=?FrameUpdate@CModeDragonLanded flags=
+pS 008db240 RELOCATION_MATCH leaf=?FrameUpdate@CModeDragonLanded flags=
+GRADE_DONE
+pH 00714cc0 RELOCATION_MATCH leaf=?Update@CActionTurnToFacePosition@NTCScriptedControl@@UAEXXZ flags=
+pS 00714cc0 RELOCATION_MATCH leaf=?Update@CActionTurnToFacePosition@NTCScriptedControl@@UAEXXZ flags=
+GRADE_DONE
+pH 008d8ea0 RELOCATION_MATCH leaf=?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ flags=
+pS 008d8ea0 RELOCATION_MATCH leaf=?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ flags=
+GRADE_DONE
+pH 008da610 RELOCATION_MATCH leaf=?FrameUpdate@CModeScreamerAggressive flags=
+pS 008da610 RELOCATION_MATCH leaf=?FrameUpdate@CModeScreamerAggressive flags=
+GRADE_DONE

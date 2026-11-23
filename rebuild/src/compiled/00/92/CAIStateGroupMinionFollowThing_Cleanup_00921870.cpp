@@ -155,7 +155,7 @@ struct CTCFollowerState {                       // interface 0xAA
     bool m_followStopped;                       // +0x7b
 };
 class CTCFollowed { public:                            // interface 0xBC
-    void RemoveFollower(CThing* follower);      // 0x006D5180
+    void RemoveFollower(CThing& follower);      // 0x006D5180
 };
 class CTCCreatureNavigation { public:                  // interface 7
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
@@ -189,7 +189,7 @@ void CAIStateGroup_MinionFollowThing::Cleanup()
             if (followee->HasTC(0xbc)) {
                 CTCFollowed* followed;
                 followee->GetInterfaceV(&followed, 0xbc);
-                followed->RemoveFollower(PBrain->PCreature);
+                followed->RemoveFollower(*PBrain->PCreature);
             }
         }
         FollowerAdded = false;

@@ -1,0 +1,175 @@
+entry	address	status	binders_respelled	note
+1	0x00884E90	done	006b8640	NF304's held variant unchanged (CRadialBlurParams / CRadialBlurPositionParams / CScreenFilterParams nested in the local CEnvironmentSpellEffectInterface model, CDisplacementParams left global): HEAD + new RELOCATION_MATCH, objsec ALL_EQ, binds the three PDB setters (bind_g1). Ruling NF304 Q1, per copy (evidence/syms_g1.txt, pickany_g1.txt): 4 renamed pick-any DEFs, none referenced by the leaf (only .debug$F). (a) implicit copy ctor -> ??0CRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAE@ABU01@@Z (FableWin name), body byte-equal to the HEAD copy (55 bytes, no relocs), defined by no other compiled landed object (21 rows naming the types compiled, g1x), no strong (out-of-line) definition in any landed source; 0x00885680 (T3-queued, not compiled) has it as an in-class inline (pick-any). (b) three local inline getters on the stand-in global CScreenEffectPriorityStack, renamed only in their return type; the new names are NOT PDB spellings (PDB: NScreenEffect::CScreenEffectPriorityStack::GetCurrentRadialBlurParams / GetCurrentRadialBlurPosParams / GetCurrentScreenFilterParam); no landed source but this row names them. Decision D1
+2	0x00884F60	done	006b8640	as entry 1 (same row)
+3	0x00884FE0	done	006b8640	as entry 1 (same row)
+4	0x00487EF0	done	00449e60	NF304's held variant unchanged (namespace NPlayerManager { class CPlayerSave }, const reference): RELOCATION_MATCH, ALL_EQ, binds the PDB spelling. Ruling NF304 Q1: the 2 renamed pick-any DEFs ??0 / ??1CPlayerSave@NPlayerManager@@QAE@XZ (FableWin names) are byte- and relocation-equal to the copies the landed 0x00449F90 already defines under those names (cmpcomdat, compiled control); no strong definition anywhere; the leaf does not call them
+5	0x00681AE0	done-partial	00681ae0,00683650	self 0x00681AE0: `long deedType` -> the shared engine/EOpinionDeedType.h enum (include on the blank line, zero line delta) + new full Leaf (MATCH both sides, ALL_EQ; self rename QBE_NJJ_N -> PDB); binder 0x00683650: `long Type` member -> EOpinionDeedType (include above the deed model, +1 line) and the 3-argument declaration const (ruling NF304 Q2 / NF300 Q1). Census compiled (bind_g1): 0x006C6040 x3, 0x007993F0, 0x007B2C70, 0x007B2E20, 0x0089FEB0 already bind the PDB spelling (unresolved at HEAD, resolved now: link_g1); 0x007BB150 binds ?KnowsOfDeed@...@@QAE_NJJ_N@Z through `typedef long EOpinionDeedType;` in its TU, whose own self leaf (QAE_NJJ@Z) also uses it (PDB AAE_NJW4EOpinionDeedType@@@Z): left, table line rewitnessed, NAME_FIXES
+6	0x00682810	done	00683590	binder 0x00683590: `long Type` -> EOpinionDeedType (the TU already includes engine/EOpinionDeedType.h), declaration (EOpinionDeedType, long, const COpinionDeedEffectsDef&, bool), call `*...Object` (ruling NF304 Q2): RELOCATION_MATCH, ALL_EQ; self 0x00682810 already PDB; 0x006C6040 binds the PDB spelling x3
+7	0x006CBAC0	done-partial	0091d510,00714900,0097e890,0097ec00	CCreatureNavOutput re-scoped into each TU's CTCCreatureNavigation model as a nested class (PDB class key V; ruling NF300 Q2: no vftable / RTTI, no DEF changes, objsec ALL_EQ, zero line delta), the 00849BE0 model: 4 binders now bind the PDB spelling. 0x00713EE0 (the sixth row) is a witness of NF305's entry 46 (GetCurrentSpeed), so it was not touched (source read: global struct, line 113); it keeps the AU spelling, table line rewitnessed to it. The self 0x006CBAC0 has no landed row (unresolved before and after)
+8	0x0071AC70	skipped-port		the self 0x0071AC70 defines SetEmoteText(long priority, ...) (QAEXJ...; PDB the nested CTCEmoteIcon::EEmotePriority), binder 0x00714F60 passes a literal 7 through `long style`, 0x00864580 has a GLOBAL enum EEmotePriority: every row needs the nested enum, which only the shared engine/CTCEmoteIcon.h carries (under FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT); self + 4 binders onto that header is a port (no shared enum-only header, NF300 Q1 does not apply). Source read, not compiled
+9	0x0076C8A0	done	004d3d69	binder 0x004D3D69 (CTCEnemy_Alloc): ctor declaration `CThing&`, call `new CTCEnemy(*owner)`: RELOCATION_MATCH, ALL_EQ; the only exe caller (census 1)
+10	0x0076CC00	skipped-held		the only binder 0x0065A852 witnesses NF306's entry 0x0076D1B0 (AddEnemyThing), and the self 0x0076CC00 is a witness of NF306 too: stayed off; the fix is `const CThing*` in 0x0065A852's declaration (source read)
+11	0x004D6292	done	004d94ab	binder 0x004D94AB (CTCFlashOnHit_Alloc): `CThing&` + `*owner`: RELOCATION_MATCH, ALL_EQ; census 0x004C9120 holds the address only as a dword inside CThing::Save (no CTCFlashOnHit symbol in its object, compiled control)
+12	0x006D4E60	skipped-port		binder 0x009212C0 declares IsCreatureValidFollower(CThing*, bool*) and passes GetCreature() (a CThing* of its local brain model); the PDB takes const CThingAICreature& (const member): the TU has no CThingAICreature model, so the respell needs a cast or a model port. Census 0x006AEEA0 / 0x00846DD0 not compiled
+13	0x006D50C0	done	009212c0	binder 0x009212C0: AddFollower(CThing&, bool) + `*GetCreature()`: RELOCATION_MATCH, ALL_EQ (its IsCreatureValidFollower stays, entry 12); the only exe caller; the self 0x006D50C0 (an NF305 witness, read only) defines the PDB spelling (Leaf line 2)
+14	0x006D5180	done	00921870	binder 0x00921870: RemoveFollower(CThing&) + `*PBrain->PCreature`: RELOCATION_MATCH, ALL_EQ; census 0x004A3740 / 0x006CF3B0 / 0x008A7980 bind the PDB spelling (compiled); the self 0x006D5180 (an NF305 witness, read only) defines it
+15	0x007986A0	done	007be0f9	binder 0x007BE0F9: `CThing& pusher` + `*shooter`: RELOCATION_MATCH, ALL_EQ; the only exe caller
+16	0x004BFFD0	done	006afd60	binder 0x006AFD60: `unsigned long flags` (literals 0 / 2 unchanged): RELOCATION_MATCH, ALL_EQ; census 0x006B0150 binds the PDB spelling
+17	0x004C0240	skipped-port		the self 0x004C0240 defines SetPMeshEffect with a GLOBAL enum EAppearanceMeshEffectPriority (PDB NGraphicAppearance::, `@2@`); re-scoping it renames the self, and its binders (census 0x004C0430 / 0x004C04C0) reach the enum through the shared engine/NGraphicAppearance_CTCGraphicAppearance.h, which also models it globally (lines 75 / 84): a shared-header change, T3. Not compiled
+18	0x00706640	skipped-port		binder 0x005B406D declares RemoveAllAppearanceModifiers(long) and passes an ANONYMOUS local enumerator `APPEARANCE_MODIFIER_CLOTHING = 2`; no shared header carries EHeroAttachableAppearanceModifierType (naming the local enum after the PDB type is a new local model, beyond NF300 Q1); census 0x005B43A2 is off limits. Not compiled
+19	0x006D6660	done	006d7960	binder 0x006D7960: includes the shared engine/EHeroExperienceStatCategory.h above its model (+1 line), declaration (EHeroExperienceStatCategory) const and the literals 0 / 1 / 2 -> HERO_STAT_STRENGTH / SKILL / WILL (ruling NF300 Q1): RELOCATION_MATCH, ALL_EQ; census 0x0078C210, 0x00899390, 0x00899400, 0x00899470 bind the PDB spelling (compiled); 0x006D83B0 (NF305's entry, read only) declares and defines the PDB spelling itself
+20	0x0057A6B8	skipped-port		the self 0x0057A6B8 defines `EMoralityCategory GetMoralityCategory() const` on a LOCAL enum (PDB EMorality; no shared header for it), binder 0x0057BE71 declares `long GetMoralityCategory()`; both need a PDB-named local enum model: self + binder unit beyond NF300 Q1
+21	0x0057BC6E	skipped-port		PDB: private, (const CThingAICreature*, EMarriageState); binder 0x006D0180 declares SetMarriageState(CThing*, long) and passes ParentThing (a CThing*) and 5: needs a CThingAICreature model / cast and the enum; the self 0x0057BC6E is public with a non-const pointer (its own fix): port
+22	0x0057C4F1	skipped-held		both wrong binders 0x007E1EB0 and 0x007EDD60 (and census 0x007EDBE0) are witnesses of NF305 / NF306 entries: stayed off (fix would be `const CBonusItemDef&` + `*` at the call; source read)
+23	0x008168B0	done	008587b0	binder 0x008587B0: the two C3DVector out pointers -> references (PDB AAV4@ twice), `&hitPosition, &hitNormal` -> `hitPosition, hitNormal` at the 4 FiniteLine calls: RELOCATION_MATCH, ALL_EQ; census 0x00816AA0 binds the PDB spelling (compiled), 0x007BFE30 (NF305's entry, read only) passes references. The self 0x008168B0 still DEFINES its own stand-in (C3DVector*, C3DVector*, long flags: PAV4@1J; PDB references + float): unresolved before and after for the binders (NF302 Q2), NAME_FIXES. Spellings: the binder's PAV..M table line goes (the self's bare Leaf `GetPCombatFirstHitLocationIntersectionWithFiniteLine` still hides its stand-in definition)
+24	0x008169B0	skipped-port		the self 0x008169B0 defines (const CTriangle&, C3DVector*, C3DVector*, long) and binder 0x00858130 passes a stand-in CVector<C3DVector>: the vector type, the references and the float need a port of the self and the binder (0x00788617 is already close: std::vector + references). Not compiled
+25	0x00801920	skipped-port		binder 0x00917AF0 declares RegisterIdleStateGroup(CAIStateGroupBase*, long) and passes the literal 2; EIdleStateGroup has no shared header with enumerators (engine/CTCIdleScheduler.h only forward-declares it), so the literal needs a cast or a new enum model (beyond NF300 Q1). Not compiled
+26	0x00581DDB	skipped-port		binder 0x0064B5C1 returns a stand-in non-template `CDefPointer` struct (PDB CDefPointer<const CInventoryItemDef>); the self 0x00581DDB also takes `unsigned long` (PDB long): port
+27	0x00584B86	skipped-port		binder 0x00584EDC declares a global `struct CComponent;` (PDB NUISystem::CComponent) that its OWN signature AssignThingSwappingPC also takes: re-scoping it renames the binder's self leaf too (self + its callers unit); not compiled
+28	0x005EE49A	done	0072c230	binder 0x0072C230: includes the shared engine/EHeroAbility.h above its model (+1 line), declaration (EHeroAbility, bool) const and the literal 7 -> HERO_ABILITY_RAISE_DEAD_SPELL (= 7; ruling NF300 Q1; the pre-existing cast of GetTC unchanged): RELOCATION_MATCH, ALL_EQ; census 0x005EEA9B, 0x0064AE80, 0x00651B04, 0x0072C430 bind the PDB spelling (compiled), 0x00652FA4 (a witness of another agent, read only) includes engine/CTCInventoryAbilities.h (PDB)
+29	0x005EEA9B	skipped-held		the only wrong binder 0x007F4D50 is a witness of an NF305 / NF306 entry: stayed off (fix: `long Ability` member -> EHeroAbility, ruling NF304 Q2; source read)
+30	0x005F0DC5	skipped-port		binder 0x005F4519 declares a global `struct CComponent;` that its own self AssignAbilitySwappingPC takes (as entry 27); 0x0041E6D3 declares the ability as EHeroAbility where the PDB (and the self 0x005F0DC5) take long. Not compiled
+31	0x005F1320	skipped-port		as entry 30 (binder 0x005F4519, CComponent re-scope renames its own self)
+32	0x005BF482	skipped-port		binder 0x005BF77D takes a stand-in CItemVector (PDB std::vector<std::pair<long,long> >) in its own signature too: port
+33	0x005D8E90	skipped-held		the only wrong binder 0x00522880 is a witness of an NF305 / NF306 entry: stayed off (fix: `const CThing* GetInventoryOwner() const`; source read)
+34	0x005FB140	skipped-port		binder 0x0068AE30 passes a stand-in CMousePosition (PDB C2DVector by value): port
+35	0x0061A8A0	skipped-port		the self 0x0061A8A0 and binder 0x0061AB30 both use a stand-in CTestQuestVector* (PDB std::vector<CTestQuest>&): port
+36	0x00753E90	done-partial	008db460,00714900,00714cc0,008d8ea0,008da610,008db240	LookAtPos(const C3DVector*, long) -> (const C3DVector&, long) with the `&` dropped at each call in the witness 0x008DB460 and in five UNTABLED binders the compiled census found binding the same PBV spelling (0x00714900 with its entry-7 change, 0x00714CC0, 0x008D8EA0, 0x008DA610, 0x008DB240): all RELOCATION_MATCH, ALL_EQ. 0x00713EE0 (NF305 witness, read only) keeps the PBV spelling: table line rewitnessed to it. Census 0x006D5B50, 0x00716DE0, 0x00849BE0, 0x0089BDF0, 0x008DBC80 bind the PDB spelling; 0x00787E12 (a witness, read only) defines a same-TU noinline copy of LookAtPos under the PDB spelling (pre-existing)
+37	0x007CD390	done	004d5896	binder 0x004D5896 (CTCMultiStrike_Alloc): `CThing&` + `*owner`: RELOCATION_MATCH, ALL_EQ; the only exe caller. CONFLICT for decision D5: the landed 0x007CD810 (??_GCTCMultiStrike row) defines `CTCMultiStrike::CTCMultiStrike(CThing&) { }` STRONGLY under this PDB name (a pre-existing "TU emitter" with an empty body) beside the real self 0x007CD390; the binder bound an unresolved stand-in before and now binds the doubly defined name
+38	0x00766050	skipped-port		the self 0x00766050 defines HasCombinationOfAugmentations(long) (PDB the shared engine/EObjectAugmentationType.h enum) and binder 0x00766480 passes the literal 0xC, a combination that is no enumerator (a cast would be needed): self + binder unit beyond NF300 Q1. Decision D3
+39	0x007660C0	skipped-port		the self 0x007660C0 defines HasAugmentationOfType(long); binder 0x00766480 (literals 4 / 8 = FLAME / LIGHTNING) is the same row as entry 38: one unit with it. Decision D3
+40	0x0079DEB0	skipped-port		binder 0x0079E300 declares PlayEffect(long, const CCharString&, const CCharString&, CThing*, long) public; the PDB is protected (CIntelligentPointer<CThing>*, ..., CThingCreatureBase*, long): different types, port
+41	0x006B0210	open		not started
+42	0x006B0460	open		not started
+43	0x00772120	open		not started
+44	0x00773C00	open		not started
+45	0x007751A0	open		not started
+46	0x00770FA0	open		not started
+47	0x00746EC0	open		not started
+48	0x00747B80	open		not started
+49	0x0079ACC0	open		not started
+50	0x006E3180	open		not started
+51	0x007F5A70	open		not started
+52	0x007B9F60	open		not started
+53	0x007BA1D0	open		not started
+54	0x007BA8C0	open		not started
+55	0x005EB4B0	open		not started
+56	0x005ECA50	open		not started
+57	0x0078839A	open		not started
+58	0x007941D0	open		not started
+59	0x00658620	open		not started
+60	0x00658716	open		not started
+61	0x00659EFC	open		not started
+62	0x0065A8EE	open		not started
+63	0x007DF4B0	open		not started
+64	0x0076E4D0	open		not started
+65	0x007A0D90	open		not started
+66	0x009C8DE0	open		not started
+67	0x009F9DE0	open		not started
+68	0x009FA450	open		not started
+69	0x0081B0A0	open		not started
+70	0x004C8310	open		not started
+71	0x004C9030	open		not started
+72	0x00863750	open		not started
+73	0x008098B0	open		not started
+74	0x006619F0	open		not started
+75	0x00662B10	open		not started
+76	0x00663260	open		not started
+77	0x006644F0	open		not started
+78	0x006668A0	open		not started
+79	0x00835C80	open		not started
+80	0x006A7550	open		not started
+81	0x006A7E70	open		not started
+82	0x006A7930	open		not started
+83	0x006A76A0	open		not started
+84	0x006A7EB0	open		not started
+85	0x00799E30	open		not started
+86	0x006A7580	open		not started
+87	0x006A7590	open		not started
+88	0x006A7B20	open		not started
+89	0x0051E210	open		not started
+90	0x0051EC50	open		not started
+91	0x00520D00	open		not started
+92	0x00525CD0	open		not started
+93	0x006A5AF0	open		not started
+94	0x0083DDC0	open		not started
+95	0x00877840	open		not started
+96	0x00409090	open		not started
+97	0x00409FD0	open		not started
+98	0x0040BCA0	open		not started
+99	0x00AD89B0	open		not started
+100	0x00A3B0F0	open		not started
+101	0x00A0CCD0	open		not started
+102	0x0099B800	open		not started
+103	0x0049D930	open		not started
+104	0x0049E080	open		not started
+105	0x004A0CD0	open		not started
+106	0x00500EB0	open		not started
+107	0x00501990	open		not started
+108	0x00501D30	open		not started
+109	0x00502E90	open		not started
+110	0x0050A650	open		not started
+111	0x0063D4A0	open		not started
+112	0x009BD020	open		not started
+113	0x00493EAB	open		not started
+114	0x00632830	open		not started
+115	0x00632B90	open		not started
+116	0x00412C70	open		not started
+117	0x0040FCA0	open		not started
+118	0x0052B270	open		not started
+119	0x008786E0	open		not started
+120	0x007510D0	open		not started
+121	0x0083EBD0	open		not started
+122	0x00BFC880	open		not started
+123	0x00BFCA20	open		not started
+124	0x00BFCBC0	open		not started
+125	0x00BFCD60	open		not started
+126	0x0085F830	open		not started
+127	0x009EA060	open		not started
+128	0x006E2B70	open		not started
+129	0x00660AE2	open		not started
+130	0x00660B5D	open		not started
+131	0x00660BD8	open		not started
+132	0x00660C53	open		not started
+133	0x00660CCE	open		not started
+134	0x00660D49	open		not started
+135	0x00660787	open		not started
+136	0x00660894	open		not started
+137	0x0066090A	open		not started
+138	0x00660980	open		not started
+139	0x006609F6	open		not started
+140	0x00660A6C	open		not started
+141	0x00BFCF00	open		not started
+142	0x00BFCF90	open		not started
+143	0x00BFD020	open		not started
+144	0x0059B4FE	open		not started
+145	0x00479449	open		not started
+146	0x0053CB20	open		not started
+147	0x0042D1B7	open		not started
+148	0x007AEBE0	open		not started
+149	0x005E0E20	open		not started
+150	0x0046ACA8	open		not started
+151	0x004E9F20	open		not started
+152	0x00581284	open		not started
+153	0x006C9D50	open		not started
+154	0x006D4A20	open		not started
+155	0x006DD4A0	open		not started
+156	0x00721240	open		not started
+157	0x007B5210	open		not started
+158	0x00F33D90	open		not started
+159	0x00F34BF0	open		not started
+160	0x00F353F0	open		not started
+161	0x00405220	open		not started
+162	0x00497890	open		not started
+163	0x005578A0	open		not started
+164	0x00778610	open		not started
+165	0x0088AE40	open		not started
+166	0x00942B30	open		not started
+167	0x009E1E70	open		not started
+168	0x009E21D0	open		not started
+169	0x00CBE0C7	open		not started
+170	0x00CBE7AA	open		not started
+171	0x00CBE814	open		not started
+172	0x00CBED00	open		not started
+173	0x00CBED82	open		not started
+174	0x00CBEED2	open		not started

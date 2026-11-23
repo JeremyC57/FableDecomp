@@ -19,7 +19,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCLook { public:                                   // interface 0x43
-    void LookAtPos(const C3DVector* position, long priority);           // 0x00753E90
+    void LookAtPos(const C3DVector& position, long priority);           // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b) const;// 0x007534B0  // NF35: Ego_r + FableWin ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z (const)
 };
 class CTCScriptedControl { public:
@@ -48,7 +48,7 @@ void CActionTurnToFacePosition::Update()
 {
     CTCLook* look;
     if (PTCScript->ParentThing->GetTC(TCI_LOOK, &look)) {
-        look->LookAtPos(&Position, 0x21);
+        look->LookAtPos(Position, 0x21);
         if (look->IsPosInViewRange(Position, Angle, false, false))
             Terminated = true;
     } else

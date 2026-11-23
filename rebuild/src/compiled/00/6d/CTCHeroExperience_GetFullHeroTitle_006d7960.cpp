@@ -162,11 +162,12 @@ public:
     unsigned char _pad0c[0x70 - 0x0c];
     long Age;                                           // +0x70
 };
+#include "engine/EHeroExperienceStatCategory.h"
 class CTCHeroExperience : public CTCBase {
 public:
     unsigned char _pad0c[0x54 - 0x0c];
     const CHeroExperienceDef* PDef;                     // +0x54
-    long GetTotalStatLevel(long category) const;        // 0x006D6660
+    long GetTotalStatLevel(EHeroExperienceStatCategory category) const;        // 0x006D6660
     CWideString GetFullHeroTitle() const;
 };
 
@@ -192,8 +193,8 @@ CWideString CTCHeroExperience::GetFullHeroTitle() const
         CDefPointer<const CDefClassBase> def = GetDefinitionManager().GetPDefFromGlobalIndex(PDef->Titles[i]);
         CDefPointer<const CHeroTitleDef> titleDef;
         def->GetSubDef(&titleDef);
-        if (titleDef.Object && titleDef->Enabled && age->Age >= titleDef->MinAge && GetTotalStatLevel(0) >= titleDef->MinStat[0]
-            && GetTotalStatLevel(1) >= titleDef->MinStat[1] && GetTotalStatLevel(2) >= titleDef->MinStat[2]) {
+        if (titleDef.Object && titleDef->Enabled && age->Age >= titleDef->MinAge && GetTotalStatLevel(HERO_STAT_STRENGTH) >= titleDef->MinStat[0]
+            && GetTotalStatLevel(HERO_STAT_SKILL) >= titleDef->MinStat[1] && GetTotalStatLevel(HERO_STAT_WILL) >= titleDef->MinStat[2]) {
             CIVCountedPointer<const CTextEntry> text = GetGameTextBank()->GetPTextEntry(titleDef->TextID, true);
             if (text.Object) {
                 if (title != (const unsigned short*)L"")

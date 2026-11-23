@@ -1,0 +1,31 @@
+#9 0076c8a0 ??0CTCEnemy@@QAE@AAVCThing@@@Z
+   0076c8a0(self) - DEF=OK:??0CTCEnemy@@QAE@AAVCThing@@@Z
+   004d3d69 WRONG ??0CTCEnemy@@QAE@PAVCThing@@@Z x1
+#11 004d6292 ??0CTCFlashOnHit@@QAE@AAVCThing@@@Z
+   004d6292(self) - DEF=OK:??0CTCFlashOnHit@@QAE@AAVCThing@@@Z
+   004c9120 -
+   004d94ab WRONG ??0CTCFlashOnHit@@QAE@PAVCThing@@@Z x1
+#13 006d50c0 ?AddFollower@CTCFollowed@@QAEXAAVCThing@@_N@Z
+   006d50c0(self) NOOBJ
+   009212c0 WRONG ?AddFollower@CTCFollowed@@QAEXPAVCThing@@_N@Z x1
+#14 006d5180 ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z
+   006d5180(self) NOOBJ
+   004a3740 OK ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z x1
+   006cf3b0 OK ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z x1
+   008a7980 OK ?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z x1
+   00921870 WRONG ?RemoveFollower@CTCFollowed@@QAEXPAVCThing@@@Z x1
+#15 007986a0 ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z
+   007986a0(self) - DEF=OK:?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z
+   007be0f9 WRONG ?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MPAVCThing@@@Z x1
+#16 004bffd0 ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z
+   004bffd0(self) - DEF=OK:?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z
+   006afd60 WRONG ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXJ@Z x2
+   006b0150 OK ?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z x1
+#19 006d6660 ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z
+   006d6660(self) - DEF=OK:?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z
+   006d7960 WRONG ?GetTotalStatLevel@CTCHeroExperience@@QBEJJ@Z x3
+   006d83b0 NOOBJ
+   0078c210 OK ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z x1
+   00899390 OK ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z x2
+   00899400 OK ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z x2
+   00899470 OK ?GetTotalStatLevel@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z x2

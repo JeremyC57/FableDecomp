@@ -1,0 +1,31 @@
+#23 008168b0 ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z
+   008168b0(self) - DEF=WRONG:?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0PAV4@1J@Z
+   007bfe30 NOOBJ
+   00816aa0 OK ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z x1
+   008587b0 WRONG ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0PAV4@1M@Z x4
+#28 005ee49a ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z
+   005ee49a(self) - DEF=OK:?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z
+   005eea9b OK ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z x1
+   0064ae80 OK ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z x1
+   00651b04 OK ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z x1
+   00652fa4 NOOBJ
+   0072c230 WRONG ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NJ_N@Z x1
+   0072c430 OK ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z x1
+#36 00753e90 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+   00753e90(self) - DEF=OK:?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+   006d5b50 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+   00713ee0 NOOBJ
+   00714900 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   00714cc0 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   00716de0 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x2
+   00787e12 NOOBJ
+   00849be0 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+   0089bdf0 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+   008d8ea0 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   008da610 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   008db240 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x2
+   008db460 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   008dbc80 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+#37 007cd390 ??0CTCMultiStrike@@QAE@AAVCThing@@@Z
+   007cd390(self) - DEF=OK:??0CTCMultiStrike@@QAE@AAVCThing@@@Z
+   004d5896 WRONG ??0CTCMultiStrike@@QAE@PAVCThing@@@Z x1

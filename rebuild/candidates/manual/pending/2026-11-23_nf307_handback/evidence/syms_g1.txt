@@ -1,0 +1,47 @@
+## 006b8640
+2c2
+< DEF ??0CRadialBlurPositionParams@@QAE@ABU0@@Z
+---
+> DEF ??0CRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAE@ABU01@@Z
+5,7c5,7
+< DEF ?GetCurrentRadialBlurParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurParams@@XZ
+< DEF ?GetCurrentRadialBlurPositionParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurPositionParams@@XZ
+< DEF ?GetCurrentScreenFilterParams@CScreenEffectPriorityStack@@QBE?AUCScreenFilterParams@@XZ
+---
+> DEF ?GetCurrentRadialBlurParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurParams@CEnvironmentSpellEffectInterface@@XZ
+> DEF ?GetCurrentRadialBlurPositionParams@CScreenEffectPriorityStack@@QBE?AUCRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@XZ
+> DEF ?GetCurrentScreenFilterParams@CScreenEffectPriorityStack@@QBE?AUCScreenFilterParams@CEnvironmentSpellEffectInterface@@XZ
+10,12c10,12
+< UND ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z
+< UND ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z
+< UND ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z
+---
+> UND ?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@1@_N@Z
+> UND ?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@1@_N@Z
+> UND ?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@1@_N@Z
+## 00449e60
+1,2c1,2
+< DEF ??0CPlayerSave@@QAE@XZ
+< DEF ??1CPlayerSave@@QAE@XZ
+---
+> DEF ??0CPlayerSave@NPlayerManager@@QAE@XZ
+> DEF ??1CPlayerSave@NPlayerManager@@QAE@XZ
+18c18
+< UND ?InitCharacterFromSave@CPlayer@@QAE_NPAUCPlayerSave@@@Z
+---
+> UND ?InitCharacterFromSave@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z
+## 00681ae0
+1c1
+< DEF ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJJ_N@Z
+---
+> DEF ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z
+## 00683650
+9c9
+< UND ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJJ_N@Z
+---
+> UND ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z
+## 00683590
+16c16
+< UND ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z
+---
+> UND ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z

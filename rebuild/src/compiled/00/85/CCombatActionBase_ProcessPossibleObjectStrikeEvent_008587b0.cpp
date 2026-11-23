@@ -131,7 +131,7 @@ class CThingGameObject : public CThing { public:
 };
 class CTCHitLocations { public:                        // interface type 0x7F
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector& start,
-        const C3DVector& end, C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008168B0
+        const C3DVector& end, C3DVector& hitPosition, C3DVector& hitNormal, float tolerance);   // 0x008168B0
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CVector<C3DVector>& triangle,
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
@@ -257,13 +257,13 @@ void CCombatActionBase::ProcessPossibleObjectStrikeEvent(float time, const std::
         return;
     C3DVector hitPosition;
     C3DVector hitNormal;
-    NHitLocations::CHitLocation* hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.first, &hitPosition, &hitNormal, 0.25f);
+    NHitLocations::CHitLocation* hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.first, hitPosition, hitNormal, 0.25f);
     if (!hit)
-        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.second, &hitPosition, &hitNormal, 0.25f);
+        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.second, hitPosition, hitNormal, 0.25f);
     if (!hit)
-        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.second, &hitPosition, &hitNormal, 0.25f);
+        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.first, current.second, hitPosition, hitNormal, 0.25f);
     if (!hit)
-        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.first, &hitPosition, &hitNormal, 0.25f);
+        hit = hitLocations->GetPCombatFirstHitLocationIntersectionWithFiniteLine(previous.second, current.first, hitPosition, hitNormal, 0.25f);
     if (hit) {
         GetPActiveStrikeEvent()->StruckThingList.push_back_inline(&thing);
         C3DVector direction;

@@ -834,7 +834,7 @@ line	tag	address	correct_symbol	status	other_spellings
 840	564	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	partial	?GetHomeId@HomeObj@@QAEHXZ || ?GetId@Subobject@@QAEHXZ || ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ || ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00810fe0@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00811040@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAVCThing@@XZ 
 841	564	004c9b80	?Kill@CThing@@QAEX_N@Z	partial	?Kill@CThing@NCreatureMode@@QAEX_N@Z || ?Kill@CThing@X_006e11f0@@QAEX_N@Z || ?Kill@CThing_0066fb50@@QAEX_N@Z
 842	564	0077fd10	?TransferBinaryIn@?$CPersistTraits@W4EHeroCentreDoorType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EHeroCentreDoorType@@@Z	closed	
-843	564	005ee49a	?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z	partial	?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NJ_N@Z
+843	564	005ee49a	?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z	closed	
 844	564	006b3950	?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z	partial	?Method@CInner@@QAEXHH@Z
 845	564	00686a70	?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	partial	?GetWorld@CTCCarrying@NRemap006a23e0@@QAEPAUCWorld@2@XZ || ?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ
 846	564	004c0000	?UnregisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z	closed	
@@ -5428,7 +5428,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7385	land1011aq	007137d0	?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z	open	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@@@Z || ?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z || ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@NTCScriptedControl@@@Z || ?AddAction@CTCScriptedControl@@QAEXPAX@Z || AddAction
 7386	land1011aq	00761280	?DrawPrimitiveLineOverLandscape@NShape@@YIXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@22ABVCRGBColour@@@Z	closed	
 7387	land1011aq	00761560	?EditorDrawPreparePrimitivesForRendering@CClosedShapeBase@NShape@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@ABVCRGBColour@@@Z	closed	
-7388	land1011aq	0076c8a0	??0CTCEnemy@@QAE@AAVCThing@@@Z	partial	??0CTCEnemy@@QAE@PAVCThing@@@Z
+7388	land1011aq	0076c8a0	??0CTCEnemy@@QAE@AAVCThing@@@Z	closed	
 7389	land1011aq	007e5820	??$GetSubDef@VCBettingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBettingDef@@@@@Z	partial	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCBettingDef@@@@@Z || ?GetSubDef_007e5820@CDefClassBase@@QAE_NAAV?$CDefPointer@VCBettingDef@@@@@Z
 7390	land1011aq	00800020	?UpdateActionSpeedMultiplier@CTCHaste@@AAEXXZ	partial	UpdateActionSpeedMultiplier
 7391	land1011aq	00814c70	?GetSphereBase@CPhysicalPrimitiveSphere@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@@Z	partial	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@@QBE?AVC3DVector@@PAVCThing@@@Z
@@ -10356,7 +10356,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13188	land1122p28	0143e90c	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	partial	?pGlobalScriptDef@@3PAVCScriptDef@@A
 13189	land1122p28	013b8af8	?EASY_KEY@?A0x9aa6450b@@3VCCharString@@A	open	?EASY_KEY@?A0x77018dd4@@3VCCharString@@A
 13190	land1122p28	006c7830	??$find@J@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Const_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@1@ABJ@Z	open	?find@COpinionDeedMap@@QBE?AUCOpinionDeedIterator@@ABJ@Z
-13191	land1122p28	00682810	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z	partial	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJJPBVCOpinionDeedEffectsDef@@_N@Z
+13191	land1122p28	00682810	?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z	closed	
 13192	land1122p28	00867f60	??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFollowingOnAnimFilter@@@Z	open	??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QAEXPAPAVCAnimComponentFollowingOnAnimFilter@@@Z
 13193	land1122p28	008e8bb0	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@AAVCThingCreatureBase@@0_N@Z	open	??0CCreatureAction_BriarRoseConcentrateInto@@QAE@PAVCThingCreatureBase@@PAVCBaseObject@@_N@Z
 13194	land1122p28	00bca950	?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z	closed	
@@ -10579,3 +10579,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13417	land1123nf306	00b8d0b0	?GetResult@CEngineOcclusionManager@@QAEKK_N@Z	partial	?GetQueryResult@CEngineOcclusionManager@@QAEKJ_N@Z || ?IsQueryVisible@CEngineOcclusionManager@@QAEJK_N@Z || AddChildPrimitive
 13418	land1123nf306	00bacdd0	?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z	partial	?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z
 13419	land1123nf306	00437ce0	?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ	partial	?GetMiniMapDisplay@CGameUI@@QAEPAVCMiniMapDisplay@@J@Z || ?GetMiniMapDisplay@CGameUI_Retail@@QAEPAUCMiniMapDisplay_Retail@@XZ || @get_sub@4
+13420	land1123nf307	007bb150	?SeeIfAnyOccupantsKnowAboutDeed@CTCTrespasser@@AAE_NJW4EOpinionDeedType@@@Z	open	SeeIfAnyOccupantsKnowAboutDeed
+13421	land1123nf307	008168b0	?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z	partial	GetPCombatFirstHitLocationIntersectionWithFiniteLine

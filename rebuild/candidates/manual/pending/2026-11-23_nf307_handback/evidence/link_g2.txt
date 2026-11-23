@@ -1,0 +1,8 @@
+## HEAD set: H_0091d510.obj H_00714900.obj H_0097e890.obj H_0097ec00.obj 00849be0.obj
+duplicates 0
+UNRESOLVED 4 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AUCCreatureNavOutput@@ABVCNavigationInput@@_N1111@Z
+UNRESOLVED 1 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+## new set: 0091d510.obj 00714900.obj 0097e890.obj 0097ec00.obj 00849be0.obj
+duplicates 0
+UNRESOLVED 5 ?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z
+LK_DONE

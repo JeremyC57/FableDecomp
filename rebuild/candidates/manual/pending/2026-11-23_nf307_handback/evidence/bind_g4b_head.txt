@@ -1,0 +1,15 @@
+#36 00753e90 ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+   00753e90(self) - DEF=OK:?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
+   006d5b50 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+   00713ee0 NOOBJ
+   00714900 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   00714cc0 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   00716de0 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x2
+   00787e12 NOOBJ
+   00849be0 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+   0089bdf0 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
+   008d8ea0 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   008da610 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   008db240 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x2
+   008db460 WRONG ?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z x1
+   008dbc80 OK ?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z x1
