@@ -10,7 +10,8 @@ Steps, in order (nothing is committed; the coordinator writes the README / HANDO
      symbol; any failure restores that row's HEAD source and holds it;
   4. a binder run (access_fix.py --binders) also applies its TABLE_CHANGES.tsv for the landed callers (apply_table.py);
   5. write rebuild/candidates/manual/batches/<batch>/ (RESULTS.tsv, rows.txt, rows_held.txt, logs/recheck.log), append the run's REJECT
-     rows to T3_PORT_QUEUE.tsv as <queue tag>, release the locks (naming_batch/clean.py)."""
+     rows to T3_PORT_QUEUE.tsv as <queue tag>, release the locks (naming_batch/clean.py).
+A unit_fix.py run carries UNITS.tsv (address, unit): a unit lands whole or not at all (held or failed member -> every member restored / held)."""
 import os, re, sys, json, shutil, subprocess, contextlib, io
 sys.path.insert(0, "tools/decomp_pipeline"); argv = sys.argv[1:]; sys.argv = ["x"]
 import naming_status as ns
@@ -35,6 +36,15 @@ for l in open("rebuild/candidates/manual/COORDINATION_CLAIMS.tsv").read().splitl
     if len(f) > 4 and f[4] not in ("done", "released"):
         for a in acc:
             if a in l.lower() and a not in held: held[a] = "open claim"
+# a unit run (unit_fix.py) lands whole or not at all: one held member holds its unit
+unit = {}
+if os.path.exists(f"{run}/UNITS.tsv"):
+    unit = {l.split("\t")[0]: l.split("\t")[1] for l in open(f"{run}/UNITS.tsv").read().splitlines()[1:] if l}
+def hold_units(why_of):
+    for u in {unit[a] for a in why_of if a in unit}:
+        for a in acc:
+            if unit.get(a) == u and a not in held: held[a] = f"unit {u} member held"
+hold_units(dict(held))
 land = sorted(a for a in acc if a not in held)
 orig = {}
 for a in land:
@@ -59,10 +69,15 @@ for a in land:
     g = st.get(a, ("NOT_GRADED", "-")); o = f"{W}/wd/{a[:2]}/{a[2:4]}/{a}/{a}.obj"; sym = ""
     if os.path.exists(o):
         with contextlib.redirect_stderr(io.StringIO()): sym = V.obj_text(o, acc[a][3])[2]
-    binder = "; target " in acc[a][4]          # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
+    binder = "; target " in acc[a][4] or (a in unit and unit[a] != a)          # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
     if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and (binder or sym == acc[a][3])):
         bad.append(a); held[a] = f"landing recheck {g} symbol {sym}"
         open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
+for u in {unit[a] for a in bad if a in unit}:
+    for a in land:
+        if unit.get(a) == u and a not in bad:
+            bad.append(a); held[a] = f"unit {u}: a member failed the landing recheck"
+            open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
 land = [a for a in land if a not in bad]
 B = f"rebuild/candidates/manual/batches/{batch}"; os.makedirs(f"{B}/logs", exist_ok=True)
 shutil.copyfile(f"{run}/RESULTS.tsv", f"{B}/RESULTS.tsv"); shutil.copyfile(f"{W}/recheck.log", f"{B}/logs/recheck.log")

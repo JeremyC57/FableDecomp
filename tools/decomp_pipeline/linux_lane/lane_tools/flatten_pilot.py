@@ -69,6 +69,7 @@ for a in sorted(ent):
 print("candidates", len(cands), flush=True)
 def vland(tag, rows):
     d = f"{work}/{tag}"; os.makedirs(d, exist_ok=True)
+    assert not os.path.exists(f"{work}/wd") and not os.path.exists(f"{d}/wd"), "stale work dir: use a fresh run directory"
     json.dump({"result": {"authored": rows}}, open(f"{d}/payload.json", "w"))
     orc = ["address\tname\tlength\tbytes"]
     cat = {l.split("\t")[0].lower(): l for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]}
@@ -76,7 +77,8 @@ def vland(tag, rows):
     open(f"{d}/oracle.tsv", "w").write("\n".join(orc) + "\n")
     with open(f"{d}/vland.log", "w") as lf:
         subprocess.run(["timeout", "900", "python3", "-u", f"{LT}/vland.py", f"{d}/payload.json", f"{d}/oracle.tsv", "--recheck-landed"],
-                       stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, LANDVERIFY_WORK=f"{d}/wd"))
+                       stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, LANDVERIFY_WORK=f"{work}/wd"))
+    os.rename(f"{work}/wd", f"{d}/wd")   # HEAD and new compile at ONE path (the `?A0x` anonymous-namespace hash follows it), then move aside
     st = {}
     for l in open(f"{d}/vland.log", errors="replace"):
         m = re.match(r"([0-9a-f]{8})\s+(\S+)\s+(\S+)\s", l)

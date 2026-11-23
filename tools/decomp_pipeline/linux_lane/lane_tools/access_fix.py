@@ -2,7 +2,7 @@
 """Scripted T2 route: a landed row whose own compiled symbol differs from the PDB symbol only in the member's access letter and / or its
 `const` (naming tracker tier T2, fix `access`; docs/journal/2026-11/2026-11-23_naming_remainder.md). Generate-and-verify; writes candidate
 sources only under <work>.
-usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret] [--alias] [--binders]
+usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret] [--alias] [--binders] [--rename] [--unit-self] [--pairs FILE]
 Edits, in the row's own local class model only (a declaration in a shared header is skipped: that is a header opt-in):
   - access: the declaration statement is wrapped as `<new>:` ... `<old>:`, so no member moves and no vtable slot changes;
   - const: `const` is added to or removed from the declaration and from the out-of-line definition `Class::Method(...)`.
@@ -118,11 +118,16 @@ if "--wide" in argv:
         g = g[0]; virt = ACC[SPLIT.match(g).group(3)][1] == "v"
         if virt and rtti.get(a) != g: why["virtual without RTTI agreement"] += 1; continue
         if not virt and not (g in egor and g in fwin): why["non-virtual not in both PDB sets"] += 1; continue
-        if s in oldbind.get(a, set()): why["a table binder uses the old spelling (unit)"] += 1; continue
+        if (s in oldbind.get(a, set())) != ("--unit-self" in argv):
+            why["a table binder uses the old spelling (unit)" if "--unit-self" not in argv else "no table binder on the old spelling"] += 1; continue
         wide.append([a, "", "T2", "access", "", "1", g, s, alias])
     print("wide candidates", len(wide), dict(why), flush=True)
+    if "--unit-self" in argv:
+        # unit route (unit_fix.py): the self respell of a row whose old spelling callers still bind; unit_fix.py adds the callers
+        open(f"{work}/UNITS.tsv", "w").write("address\told\tnew\n" + "".join(f"{w[0]}\t{w[7]}\t{w[6]}\n" for w in wide))
     rows = wide
-BINDERS = "--binders" in argv
+BINDERS = "--binders" in argv or "--rename" in argv or "--pairs" in argv
+RENAME = "--rename" in argv
 if BINDERS:
     # T1 binder respell: the target's own row already defines the PDB symbol P; a caller (table witness) still references a near-miss
     # spelling W (access / const only). Edit the CALLER's local model declaration so its reference becomes P. Proof: the caller's
@@ -140,13 +145,27 @@ if BINDERS:
             if not mm or mm.group(1) == P: continue
             W = mm.group(1)
             a1, b1 = SPLIT.match(W), SPLIT.match(P)
-            if not (a1 and b1 and a1.group(1) == b1.group(1)): continue
-            td = tail_diff(a1.group(3), a1.group(4), b1.group(3), b1.group(4))
-            if td is None or td[1] or td[2]: continue      # access / const only for callers
+            ren = ""
+            if RENAME:
+                # --rename: same scope, same access letter and tail; only the member identifier differs (the caller's local model
+                # misnamed the member it calls). Identity: the table binds W to T by relocation, and T's own row defines P.
+                nw, np_ = re.match(r'\?([^@?]+)@', W), re.match(r'\?([^@?]+)@', P)
+                if not (a1 and b1 and nw and np_ and nw.group(1) != np_.group(1) and a1.group(2) == b1.group(2)
+                        and a1.group(3) + a1.group(4) == b1.group(3) + b1.group(4)): continue
+                ren = nw.group(1) + "=" + np_.group(1)
+            else:
+                if not (a1 and b1 and a1.group(1) == b1.group(1)): continue
+                td = tail_diff(a1.group(3), a1.group(4), b1.group(3), b1.group(4))
+                if td is None or td[1] or td[2]: continue      # access / const only for callers
             for B in mm.group(2).split(","):
                 B = B.strip().lower()
                 if B in ("self", "...") or B not in ent or B in t3q or B in seen: continue
-                seen.add(B); pool.append([B, "", "T2", "access", "", "1", P, W, "", T])
+                seen.add(B); pool.append([B, "", "T2", "access", "", "1", P, W, "", T, ren])
+    if "--pairs" in argv:
+        pool = []
+        for l in open(argv[argv.index("--pairs") + 1]).read().splitlines()[1:]:
+            B, P, W, T = l.split("\t")[:4]
+            if B in ent: pool.append([B, "", "T2", "access", "", "1", P, W, "", T])
     print("binder candidates", len(pool), flush=True)
     rows = pool
 res, head, new = [], [], []
@@ -163,6 +182,27 @@ for r in rows:
     if only and a not in only: continue
     if len(new) >= mx: break
     if selfsym.get(a) and selfsym[a] != old and "--wide" not in argv and not BINDERS: res.append((a, "SKIP", old, good, "the measured self symbol is " + selfsym[a])); continue
+    if RENAME:
+        wn, pn = r[10].split("=")
+        path = "rebuild/src/compiled/" + ent[a]["Source"]; src_head = open(path, encoding="utf-8").read()
+        if re.search(r'(?<![\w])' + re.escape(pn) + r'(?![\w])', src_head): res.append((a, "SKIP", old, good, f"the caller already uses the identifier {pn}")); continue
+        if not re.search(r'(?<![\w])' + re.escape(wn) + r'(?![\w])', src_head): res.append((a, "SKIP", old, good, f"identifier {wn} not in the caller source")); continue
+        if re.search(r'#\s*include\s*"engine/', src_head) and SPLIT.match(good).group(2).rstrip("@") and \
+           f'engine/{SPLIT.match(good).group(2).rstrip("@").split("@")[-1]}.h' in src_head:
+            res.append((a, "SKIP", old, good, "the callee's class comes from a shared header (a header respell, not a caller edit)")); continue
+        # every whole-word use of the identifier is renamed; objsec ALL_EQ under the one rename W -> P proves nothing else moved
+        ns_src = re.sub(r'(?<![\w])' + re.escape(wn) + r'(?![\w])', pn, src_head)
+        kv = ent[a]
+        tst = open("rebuild/tests/" + kv["TestSource"], encoding="utf-8").read() if kv.get("TestSource") else ""
+        bn = os.path.basename(kv["Source"])[:-4]; nm = bn[len(kv.get("Module", "")) + 1:-9] if bn.startswith(kv.get("Module", "") + "_") else bn[:-9]
+        base = dict(address=a, module=kv.get("Module", ""), name=nm or a, test_cpp=tst, pass_pattern=kv.get("PassPattern", f"{a}_TEST PASS"))
+        extra = [f for f in kv.get("CompilerFlags", "").split() if f not in ("/O2", "/Oy", "/W3")]
+        if extra: base["flags"] = extra
+        own = ns.leaf_of(kv["Source"]) or ""
+        if wn in own: res.append((a, "SKIP", old, good, "the caller's own symbol contains the identifier")); continue
+        head.append(dict(base, source_cpp=src_head, leaf=own, ren=(old, good), target=r[9]))
+        new.append(dict(base, source_cpp=ns_src, leaf=own, ren=(old, good), target=r[9]))
+        open(f"{work}/rows/{a}.cpp", "w").write(ns_src); continue
     old_eff = old
     if alias:
         old_eff = old.replace("@" + alias + "@@", "@" + SPLIT.match(good).group(2)[:-1] + "@@", 1)
@@ -271,12 +311,14 @@ for r in rows:
 print("generated", len(new), flush=True)
 def vland(tag, rs):
     d = f"{work}/{tag}"; os.makedirs(d, exist_ok=True)
+    assert not os.path.exists(f"{work}/wd") and not os.path.exists(f"{d}/wd"), "stale work dir: use a fresh run directory"
     json.dump({"result": {"authored": rs}}, open(f"{d}/payload.json", "w"))
     cat = {l.split("\t")[0].lower(): l for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]}
     open(f"{d}/oracle.tsv", "w").write("address\tname\tlength\tbytes\n" + "".join("\t".join(cat[x["address"]].split("\t")[:4]) + "\n" for x in rs))
     with open(f"{d}/vland.log", "w") as lf:
         subprocess.run(["timeout", "900", "python3", "-u", f"{LT}/vland.py", f"{d}/payload.json", f"{d}/oracle.tsv", "--recheck-landed"],
-                       stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, LANDVERIFY_WORK=f"{d}/wd"))
+                       stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, LANDVERIFY_WORK=f"{work}/wd"))
+    os.rename(f"{work}/wd", f"{d}/wd")   # HEAD and new compile at ONE path (the `?A0x` anonymous-namespace hash follows it), then move aside
     st = {}
     for l in open(f"{d}/vland.log", errors="replace"):
         m = re.match(r"([0-9a-f]{8})\s+(\S+)\s+(\S+)\s", l)
