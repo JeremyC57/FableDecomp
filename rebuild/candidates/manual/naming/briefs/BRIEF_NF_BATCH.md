@@ -1,0 +1,99 @@
+# Naming batch agent brief (tracker batches T1 / T2), consolidated 2026-11-23
+
+This is the standing brief for the naming-tracker batch agents (NF28x and later). It replaces the scratch-only chain (NF214_BRIEF.md,
+NF278 / NF282 / NF283 briefs) that the 2026-11-23 container restart wiped. Each agent's own `BRIEF.md` is a short prefix (scope, order,
+new rulings) plus a pointer here; where the prefix and this file disagree, the prefix wins.
+
+Owner (2026-11-22): "make it easier to track our naming progress ... and batch items that are easier to work together".
+Owner (2026-11-23): "continue where the naming queue batches left off before reset".
+
+## Paths
+- `S=/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad`; `source $S/wine/env.sh` in every Bash call
+  (Wine prefix, `FABLE_VC71` = cl 13.10.3077, `FABLE_EXE` = retail Fable.exe, `/run/user/0`, a persistent wineserver).
+- Your folder: `$S/w22/agentNF<nn>/` (rows/, hdr/, orig/, evidence/, work/, tools/). Locks: `$S/w22/nflocks/<addr>/owner`.
+- Shared toolkit (repo, read-only for you; copy into your tools/ if you change it): `tools/decomp_pipeline/linux_lane/lane_tools/naming_batch/`:
+  `lock.sh <AGENT> <addr> [release]`, `clean.py <your folder> <paths...>`. Write every other helper you need (precheck, objsec /
+  cmpobj object diff, link check, vtable map, census, xsites) into YOUR `tools/` and hand it back: the coordinator commits useful ones
+  to the toolkit so the next reset does not lose them.
+- Donor debug builds are on the lane since 2026-11-23: `$S/pdb/debug tlc/` (FableWin.exe/.pdb, Ego_d.exe/.pdb, ego_r.exe, Ego_r.pdb).
+  Read them for evidence (call order, call counts, which overload a caller binds); NEVER copy, commit or quote their bytes or the PDBs.
+- PDB name sets in the repo: `ghidra_out/egor_pdb_names.tsv`, `ghidra_out/fablewin_pdb_names.tsv`; per-object function lists
+  `ghidra_out/egor_obj_functions.tsv`, `ghidra_out/fablewin_obj_functions.tsv`; types `ghidra_out/struct_layouts_egor.tsv`.
+- Tracker: `tools/decomp_pipeline/naming_status.py`, output `rebuild/candidates/manual/naming/status/` (SUMMARY.md, OPEN.tsv columns:
+  target status tier fix klass n_spellings pdb_spelling self_leaf landed catalog source spellings). Table: `rebuild/oracles/reloc_bindings.tsv`
+  (symbol, target, witness). Catalog: `rebuild/build_candidates.ps1` (find a row's files BY ADDRESS there, never by a remembered path).
+- Queues: `rebuild/candidates/manual/naming/NAME_FIXES_QUEUE.tsv`, `rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv` (ports: not yours).
+
+## Reading list (in full, before your first compile)
+This file; your BRIEF.md prefix; CLAUDE.md; docs/pipeline/ASM_RULES.md; tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md;
+docs/COORDINATION.md; docs/pipeline/GOTCHAS.md (all of it); the landing READMEs of the batches before you
+(`rebuild/candidates/manual/batches/2026-11-22_landing_nf281_282/`, `_nf283/`, `_nf284/`, `_nf285/`) and the hand-backs they point to
+(`rebuild/candidates/manual/pending/2026-11-22_nf28x_handback/`: NOTES.md, LESSONS.md, STATUS.tsv, evidence/).
+
+## Hard rules
+- Never write into /home/user/FableDecomp; never run git, not even read-only. Write only inside your folder.
+- NEVER any sleep and NO foreground waits or links: launch grades / links / `cl /Zs` in the background (`nohup ... &`, save the PID),
+  check them with `kill -0 <pid>` in a LATER call. Never `pgrep -f`, `pkill`, `killall`, `wineserver -k`; kill only PIDs you started.
+- Every grade has `timeout 900` ON ITS OWN LAUNCH LINE (no outer timeout around a batch).
+- Every source a grade compiles (unchanged HEAD sources and tests included) has its own passing precheck in an EARLIER call, after its
+  lock is yours. Precheck = clang `-fsyntax-only` (write your own `tools/pre.sh`; `NOWCHAR=1` / `-Xclang -fno-wchar` matches VC7.1's
+  default wchar_t and is accepted). Ruling D1: when clang fails ONLY inside toolchain headers (VC7.1 CRT / STLport / `<cwchar>` /
+  iostream / `_assert` / `short wchar_t`) or on a shared-header FABLE_STATIC_ASSERT typedef redefinition, a VC7.1 syntax-only compile
+  (`cl /Zs` with the row's flags and includes, background, `timeout 900`) passing in an earlier call counts. Record which check each source
+  passed in work/pre_*.log. Precheck a row's landed test BEFORE you claim its lock.
+- Claim a lock with `lock.sh` before ANY compile of that row (controls included); claim only rows you will compile; a lock held by
+  another agent means skip that address and note it. Release every lock you no longer need (`lock.sh <AGENT> <addr> release`).
+- NEVER `rm` / `rm -f` / `rm -rf` any variable path, not even a symlink in your own folder: use `clean.py`.
+- Quote every heredoc delimiter (`<<'EOF'`). Absolute paths in every precheck.
+- No `__asm`, `naked`, `_emit`; `volatile` only where retail used it. Any edit to an existing SHARED HEADER line goes under an opt-in macro
+  with an equiv_check proof (`tools/decomp_pipeline/linux_lane/lane_tools/lane_merge/equiv_check.py old_tree new_tree out.tsv`, with S
+  pointing INTO your folder, plus a planted-token control that must flag). Add-only opt-ins: declarations only, both PDB name sets agree,
+  0 differing includers.
+- No retail byte dumps (or donor-build bytes) in hand-back files. Names from two sources (both PDB name sets, or one PDB plus the retail
+  call site / donor call); one retail address, one name, in the exact PDB spelling. Census every new symbol NAME (grep the landed sources
+  and objects) before handing back: a same-TU helper under the new name with another body is a conflict.
+- Stay off: other agents' entries and locks; the Codex pass 28 reserved rows (`pending/2026-11-22_codex_pass28/RESERVED.tsv`); held rows
+  0x00B4D370 / 0x00BD3070, 0x00890250, 0x0091C080, 0x0052C7E0, 0x00A254A0, 0x00ADC190 / 0x00ADC250 / 0x00ADC4E0 / 0x00ADCB90 /
+  0x00ADCE60, 0x00BE8E60 / 0x00BFBD80 / 0x00BE6090 / 0x00BFB590; everything in T3_PORT_QUEUE.tsv (unless your prefix sends you there to re-read).
+- Disk is a fixed allowance: keep work/ small, delete build dirs with clean.py when done.
+
+## What a fix is
+An entry is an address whose PDB spelling (`pdb_spelling`) differs from what some landed row binds or defines. Fix in place, in each
+row's OWN local model, the smallest change that makes the row bind / define the PDB spelling with the object bytes unchanged:
+- T1 access / T2: `private:` / `protected:` labels, `virtual`, `const`, an existing `// Leaf:` line. Wider fixes are allowed when
+  byte-identical, evidence-backed and recorded per row (ruling R1 examples: a const slot the PDB-const body forces; `virtual` on a
+  non-polymorphic local model with the leading pad shrunk to keep every offset; a return type both PDBs give; a `friend` naming the real class).
+- T1 standin_alias: a caller binds a stand-in alias (`Foo_<addr>`, `...Methods` / `_Retail` class, `struct T`, `Native::`): declare the
+  real member (PDB signature) in the caller's local model, or use the shared header / an existing opt-in. The CCountedPointer DeleteData form
+  is the landed `FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY` + `engine/CCountedPointer.h` hybrid (NF282).
+- A stand-in that is a DIFFERENT function, or needs a port (stand-in class or parameter types, a new class header, a table change, a
+  same-TU strong copy that already carries the PDB spelling, `mutable`): REJECTED.tsv or STATUS `skipped-port` with the reason (T3).
+- If a vtable appears or changes, stop on that address and hand it back as a decision.
+
+## Proof per changed row
+- objsec / cmpobj HEAD v new object: every non-debug section, bytes and relocation lists equal under the respelled names (ALL_EQ),
+  `.drectve` included; both function COMDAT sets SAME; vtmap of any emitted table unchanged.
+- Link check: HEAD leaves the wrong spelling unresolved where the new set resolves it; never leave unresolved a reference HEAD resolved;
+  no new duplicate definition with a different body.
+- Recheck every changed row through vland (`python3 tools/decomp_pipeline/linux_lane/lane_tools/recheck.py <dir> <bare lowercase addrs>`
+  then `nohup env LANDVERIFY_WORK=<your work dir> timeout 900 python3 -u tools/decomp_pipeline/linux_lane/lane_tools/vland.py
+  <dir>/payload.json <dir>/oracle.tsv --recheck-landed > ... &` with FABLE_ROOT pointing at a copy of the repo tree that has your rows,
+  or hand the recheck to the coordinator with a note). The oracle file holds retail bytes: keep it in work/, never in a hand-back file.
+- E1: a row whose own precheck passes but whose unchanged landed test fails clang only in VC7.1 headers may be handed back with that noted
+  (the landing recheck compiles the test with VC7.1).
+
+## Hand-back (after about 60 addresses, or sooner when context gets heavy)
+NOTES.md, LESSONS.md, STATUS.tsv (one line per ENTRIES address reached: done / done-partial / skipped-held / skipped-port / rejected +
+reason), APPLIED.tsv, REJECTED.tsv, RENAMES.tsv (self renames + caller respellings), TABLE_CHANGES.tsv (action symbol target witness note;
+actions delete / add / replace `old -> new` / rewitness), NAME_FIXES.tsv (address correct_symbol evidence wrong_spellings_seen), rows/
+(`<addr>.cpp`, `<addr>_test.cpp`), hdr/ + orig/ for any header change, evidence/, recheck_final.log, rows.txt (one bare lowercase address
+per changed row), tools/ (every helper you wrote), and the decisions you need. Keep every file current as you go: a restart can stop you.
+
+## Standing rulings (accumulated)
+- NF281 D2 / NF283 D3: a self move that would duplicate another row's strong same-TU copy is T3. NF281 D4: 0x0052C7E0 held until
+  0x005367F3 is fixed (RELOC_CONFLICT). D1 (NF281): a `friend` naming a stand-in is held; a friend naming the real class lands.
+- NF282 D1: the hybrid CCountedPointer form is accepted; D2: binder / owner self names are T3 ports; D3: pinned `// Leaf:` lines stay.
+- NF284 D1: 0x00B94F90's self row is a T3 port with 0x0067F650 / 0x00A110D0 / 0x00A99FE0 / 0x00A9CB20; D2: standalone tests with stub
+  definitions under stand-in names stay; D3: one address bound under two stand-in spellings is one entry, fix both.
+- NF285 E2: in-place-shaped entries may be pulled first, but open every binder before classifying; record the order in STATUS.
+- Identical-body equal-copy LNK4006 from folds is accepted; a RELOC_CONFLICT (one symbol, two targets) is held.
