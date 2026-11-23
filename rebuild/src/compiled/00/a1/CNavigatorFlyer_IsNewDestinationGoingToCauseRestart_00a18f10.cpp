@@ -1,7 +1,7 @@
-// Leaf: ?IsNewDestinationGoingToCauseRestart@CNavigatorFlyer_Methods@@QAE_NHH@Z
-#include "engine/CNavigatorFlyer.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CNavigatorFlyer_Methods : CNavigatorFlyer {
-    bool IsNewDestinationGoingToCauseRestart(int pos, int x1);
-};
-bool CNavigatorFlyer_Methods::IsNewDestinationGoingToCauseRestart(int pos, int x1) { return true; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsNewDestinationGoingToCauseRestart@CNavigatorFlyer@@UBE_NABVC3DVector@@M@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?IsNewDestinationGoingToCauseRestart@CNavigatorFlyer@@UBE_NABVC3DVector@@M@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CNavigatorFlyer.h under FABLE_RETAIL_CNAVIGATORFLYER with the PDB parameter / return types (was ?IsNewDestinationGoingToCauseRestart@CNavigatorFlyer_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CNAVIGATORFLYER
+#define FABLE_RETAIL_CNAVIGATORBASE
+#include "engine/CNavigatorFlyer.h"
+bool CNavigatorFlyer::IsNewDestinationGoingToCauseRestart(const C3DVector& pos, float x1) const { return true; }

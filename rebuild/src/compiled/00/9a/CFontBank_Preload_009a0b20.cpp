@@ -1,7 +1,6 @@
-// Leaf: ?Preload@CFontBank_Methods@@QAE_NHH@Z
-#include "engine/CFontBank.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CFontBank_Methods : CFontBank {
-    bool Preload(int text, int x1);
-};
-bool CFontBank_Methods::Preload(int text, int x1) { return true; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CFontBank.h under FABLE_RETAIL_CFONTBANK with the PDB parameter / return types (was ?Preload@CFontBank_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CFONTBANK
+#include "engine/CFontBank.h"
+bool CFontBank::Preload(const CWideString& text, bool x1) const { return true; }

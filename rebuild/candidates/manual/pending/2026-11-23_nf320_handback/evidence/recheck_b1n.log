@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0042d970   MATCH            PASS   CanAbortResourceLoad
+0042da20   MATCH            PASS   SetInstantiationName
+0042da30   MATCH            PASS   AddSubDef
+0042da40   MATCH            PASS   RemoveSubDef
+0042da90   MATCH            PASS   Validate
+004303c0   MATCH            PASS   SetInstantiationName
+
+WINS: 6
+  0042d970 MATCH CResource::?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+  0042da20 MATCH CDefClassBase::?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z
+  0042da30 MATCH CDefClassBase::?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+  0042da40 MATCH CDefClassBase::?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z
+  0042da90 MATCH CDefClassBase::?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  004303c0 MATCH CParentDefClassBase::?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z

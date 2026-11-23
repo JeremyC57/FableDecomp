@@ -1,0 +1,2 @@
+004aa8b0 ?GetName@CScriptThing@@UBEABVCCharString@@XZ 00cbfb7d
+004aaf60 ?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z 00cbfb7d

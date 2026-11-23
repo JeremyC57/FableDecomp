@@ -1,0 +1,3 @@
+SLIP 22:58: used 'rm -f work/pre_err_D_$a.txt' (variable path, own folder) in one call; clean.py from now on
+SLIP 23:00: a launch line contained 'sleep 0' (no wait, but the literal sleep); and the batch b2 launch PID was not recorded (backgrounded AND-list) -> completion read from work/rp_b2.done
+SLIP 23:34: one foreground 'tail --pid' wait on the equiv_check (not a grade/link/cl, but a foreground wait)

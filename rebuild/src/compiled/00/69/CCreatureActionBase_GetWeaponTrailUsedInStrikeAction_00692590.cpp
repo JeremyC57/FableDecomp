@@ -1,7 +1,7 @@
-// Leaf: ?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase_Methods@@QAEHH@Z
-#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCreatureActionBase_Methods : CCreatureActionBase {
-    int GetWeaponTrailUsedInStrikeAction(int a0);
-};
-int CCreatureActionBase_Methods::GetWeaponTrailUsedInStrikeAction(int a0) { return 0; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase@@UBEPAVCTCWeaponTrail@@AAJ@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase@@UBEPAVCTCWeaponTrail@@AAJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CCreatureActionBase.h under FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE with the PDB parameter / return types (was ?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase_Methods@@QAEHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureActionBase.h"
+CTCWeaponTrail * CCreatureActionBase::GetWeaponTrailUsedInStrikeAction(long & a0) const { return 0; }

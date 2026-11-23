@@ -35,6 +35,12 @@ private:
     mutable bool HeroInsideHouse;                                        // +0x2d
     mutable bool MeInsideHouse;                                          // +0x2e
     mutable bool GuardInsideHouse;                                       // +0x2f
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOCRIMINAL_INITSTATEGROUP_DECL
+    // Opt-in (NF320, 2026-11-23): declaration only, no layout change: Ego_r.pdb + FableWin.pdb ?InitStateGroup@CAIStateGroup_MinionReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z,
+    // named at 0x00930D70 by the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv); overrides CAIStateGroupBase::InitStateGroup (slot 13), no new slot.
+public:
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(36, sizeof(CAIStateGroup_MinionReactToCriminal) == 0x30);
 #else

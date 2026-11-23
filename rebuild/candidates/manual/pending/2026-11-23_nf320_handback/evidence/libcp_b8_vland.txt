@@ -1,0 +1,4 @@
+004de33e LIBCP_OK renames=?Transfer@CEnemyDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CEnemyDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004de881 LIBCP_OK renames=?Transfer@CExpressionSubDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CExpressionSubDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+004debc4 LIBCP_OK renames=?Transfer@CGoldDef_Methods@@QAEXPAVCPersistContext@@@Z=?Transfer@CGoldDef@@UAEXAAVCPersistContext@@@Z ; .drectve EQUAL ; sections=2
+00930d70 LIBCP_OK renames=?InitStateGroup@CAIStateGroup_MinionReactToCriminal_Methods@@QAEXHH@Z=?InitStateGroup@CAIStateGroup_MinionReactToCriminal@@UAEXABVCWorld@@AAVCThingAICreature@@@Z ; .drectve EQUAL ; sections=2

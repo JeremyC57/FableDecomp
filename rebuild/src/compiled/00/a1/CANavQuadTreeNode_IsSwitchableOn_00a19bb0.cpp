@@ -1,8 +1,7 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-// Leaf: ?IsSwitchableOn@CANavQuadTreeNode_Methods@@QAE_NHH@Z
-#include "engine/CANavQuadTreeNode.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CANavQuadTreeNode_Methods : CANavQuadTreeNode {
-    bool IsSwitchableOn(int a0, int a1);
-};
-bool CANavQuadTreeNode_Methods::IsSwitchableOn(int a0, int a1) { return false; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsSwitchableOn@CANavQuadTreeNode@@UBE_N_K@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?IsSwitchableOn@CANavQuadTreeNode@@UBE_N_K@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CANavQuadTreeNode.h under FABLE_RETAIL_CANAVQUADTREENODE with the PDB parameter / return types (was ?IsSwitchableOn@CANavQuadTreeNode_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CANAVQUADTREENODE
+#include "engine/CANavQuadTreeNode.h"
+bool CANavQuadTreeNode::IsSwitchableOn(unsigned __int64 a0) const { return false; }

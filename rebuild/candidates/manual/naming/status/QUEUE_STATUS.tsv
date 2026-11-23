@@ -1790,7 +1790,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2033	c617	004c1060	?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	closed	
 2034	c617	00661b40	?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z	partial	?GetHeadPos@CThing@@QAE?AVC3DVector@@_N@Z
 2035	c617	0051e480	?PeekThingSearchTools@CThingManager@@QBEABVCThingSearchTools@@XZ	closed	
-2036	c617	0049e1c0	?PeekThingManager@CWorld@@UBEABVCThingManager@@XZ	open	?PeekThingManager@CWorld_Methods@@QAEAAVCThingManager@@XZ
+2036	c617	0049e1c0	?PeekThingManager@CWorld@@UBEABVCThingManager@@XZ	closed	
 2037	c617	0049c6f0	?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z	closed	
 2038	c617	0049c700	?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z	closed	
 2039	c617	00788ffc	?_M_insert_overflow@?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@IAEXPAPAVCThingGameObject@@ABQAV3@ABU__true_type@2@I_N@Z	partial	?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z || ?_M_insert_overflow@?$vector@PAVCThingGameObject@@
@@ -7925,7 +7925,7 @@ line	tag	address	correct_symbol	status	other_spellings
 10031	land1115gb	00927dd0	??1CCreatureAction_ShopkeeperPutAway@@UAE@XZ	partial	?DestVal_A8_D@@YIXPAUObj@@PAX@Z
 10032	land1115gb	00988290	?ResetWorldTransform@CShaderRenderManager@@QAEXXZ	closed	
 10033	land1115gb	0099a400	?Validate@CBaseObject@@UBEXXZ	closed	
-10034	land1115gb	009a0b20	?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z	open	?Preload@CFontBank_Methods@@QAE_NHH@Z
+10034	land1115gb	009a0b20	?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z	closed	
 10035	land1115gb	009a0b30	??_ECFontBank@@UAEPAXI@Z	open	??_GCFontBank
 10036	land1115gb	009a0ea0	?GetFontMaxHeight@CStreamingFontBank@@UBEMXZ	open	?CStreamingFontBank_GetFontMaxHeight@@YIMPAUCStreamingFontBank@@@Z
 10037	land1115gb	009a0f00	?InitializeStreamingFontCacheEntries@?A0xfe46a155@@YIXAAUStreamingFontCacheBufferData@1@@Z	open	?InitializeStreamingFontCacheEntries@ || ?InitializeStreamingFontCacheEntries@?A0x3f209476@@YIXAAUStreamingFontCacheBufferData@1@@Z
@@ -10607,3 +10607,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13447	nf317	006a4cf0	?OnDie@CThingPhysical@@MAEXXZ	partial	_Forward
 13448	nf317	008b0650	?OnCreate@CCombatSequenceBase@@UAEXXZ	partial	?M@C008b0650@@QAEXXZ || ?OnCreate@CCombatSequenceBase@@QAEXXZ || ?OnCreate@CCombatSequenceBase_008b0650@@UAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShield@@QAEXXZ || ?OnCreateBase@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXXZ
 13449	nf318	013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	partial	?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A || ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A || ?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A || ?g_MovieTransitionState@@3PAUMovieTransitionState@@A || ?g_cutscene@@3PAUInner@@A || ?g_gameObj@@3PAUGameObj@@A || ?g_hud@@3PAUCHud@@A || ?g_obj@@3PAUCObj@@A || ?g_pGameUI@@3PAUCGameUI@@A || ?g_pGameUI_013b8790@@3PAUCGameUI@@A || ?g_pGameUI
+13450	nf320	00463bdb	?Copy@CCombatAbilityBlockUnarmedAttackDef@@UAEXPBVCDefClassBase@@@Z	no_binding	

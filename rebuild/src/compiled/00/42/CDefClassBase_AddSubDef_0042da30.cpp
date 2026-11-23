@@ -1,8 +1,7 @@
 // Empty member hook. __fastcall this=ecx.
-// Leaf: ?AddSubDef@CDefClassBase_Methods@@QAEXHHH@Z
-#include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefClassBase_Methods : CDefClassBase {
-    void AddSubDef(int name, int a1, int a2);
-};
-void CDefClassBase_Methods::AddSubDef(int name, int a1, int a2) {}
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CDefClassBase.h under FABLE_RETAIL_DEF_CLASS_BASE with the PDB parameter / return types (was ?AddSubDef@CDefClassBase_Methods@@QAEXHHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"
+void CDefClassBase::AddSubDef(const CCharString& name, long a1, long a2) {}

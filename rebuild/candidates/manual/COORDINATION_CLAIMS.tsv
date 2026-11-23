@@ -396,4 +396,4 @@ date	account	item	kind	status	note
 2026-11-23	A	scripted-route in-place rejects (access1-4, binders1; 112 entries)	naming	done	agent NF317 landed 45 rows + 7 table lines (batches/2026-11-23_landing_nf317)
 2026-11-23	A	scripted-route header rejects (alias1, flatten-switch1; 122 entries)	naming	done	agent NF318 landed 88 rows (batches/2026-11-23_landing_nf318)
 2026-11-23	A	alias rows with the member absent from engine/X.h (190 entries)	naming	done	agent NF319 landed 44 rows + 31 header opt-ins (batches/2026-11-23_landing_nf319)
-2026-11-23	A	alias signature ports (144) and the CCreatureAction Clone header ports (23)	naming	claimed	agent NF320 (scratchpad w22/agentNF320)
+2026-11-23	A	alias signature ports (144) and the CCreatureAction Clone header ports (23)	naming	done	agent NF320 landed 61 rows + 4 header opt-ins (batches/2026-11-23_landing_nf320)

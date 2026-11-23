@@ -1,8 +1,11 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-// Leaf: ?GetKeyName@CKeyboard_Methods@@QAE_NHH@Z
-#include "engine/CKeyboard.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CKeyboard_Methods : CKeyboard {
-    bool GetKeyName(int a0, int text);
-};
-bool CKeyboard_Methods::GetKeyName(int a0, int text) { return false; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?GetKeyName@CKeyboard@@UBE_NW4EInputKey@@AAVCWideString@@@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?GetKeyName@CKeyboard@@UBE_NW4EInputKey@@AAVCWideString@@@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CKeyboard.h under FABLE_RETAIL_CKEYBOARD with the PDB parameter / return types (was ?GetKeyName@CKeyboard_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CKEYBOARD
+#include "stlport/fable_containers.h"
+#include "engine/CBaseClass.h"
+#include "engine/CInputEvent.h"
+#include "engine/CMaintainedEvent.h"
+#include "engine/CKeyboard.h"
+bool CKeyboard::GetKeyName(EInputKey a0, CWideString& text) const { return false; }

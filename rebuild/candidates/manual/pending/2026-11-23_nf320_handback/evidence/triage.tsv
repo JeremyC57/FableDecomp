@@ -1,0 +1,170 @@
+1	0042d970	CResource	CanAbortResourceLoad	L52	DECL	#ifdef FABLE_RETAIL_DEF_CLASS_BASE	virtual bool CanAbortResourceLoad(long) const;
+2	0042da20	CDefClassBase	SetInstantiationName	L101	DECL	#ifdef FABLE_RETAIL_DEF_CLASS_BASE	virtual void SetInstantiationName(CDefString);
+3	0042da30	CDefClassBase	AddSubDef	L102	DECL	#ifdef FABLE_RETAIL_DEF_CLASS_BASE	virtual void AddSubDef(const CCharString&, long, long);
+4	0042da40	CDefClassBase	RemoveSubDef	L103	DECL	#ifdef FABLE_RETAIL_DEF_CLASS_BASE	virtual void RemoveSubDef(const CCharString&);
+5	0042da90	CDefClassBase	Validate	L113	DECL	#ifdef FABLE_RETAIL_DEF_CLASS_BASE	virtual void Validate(const CValidateDefinitionInitBase&, const CCharString&) const;
+6	004303c0	CParentDefClassBase	SetInstantiationName	L79	DECL	#ifdef FABLE_RETAIL_DEF_CLASS_BASE	virtual void SetInstantiationName(CDefString);
+7	00445650	CInputTypeXboxPadButtonEvent	IsInputTypeWithMouseButton	ABSENT
+8	00445680	CInputTypeXboxPadLeftStickEvent	IsInputTypeWithButton	ABSENT
+9	00445690	CInputTypeXboxPadLeftStickEvent	IsInputTypeWithMouseButton	ABSENT
+10	004456c0	CInputTypeXboxPadRightStickEvent	IsInputTypeWithButton	ABSENT
+11	00445700	CInputTypeMouseMovementEvent	IsInputTypeWithButton	ABSENT
+12	00445710	CInputTypeMouseMovementEvent	IsInputTypeWithMouseButton	ABSENT
+13	00445740	CInputTypeMouseWheelMovementEvent	IsInputTypeWithButton	ABSENT
+14	00445750	CInputTypeMouseWheelMovementEvent	IsInputTypeWithMouseButton	ABSENT
+15	00445780	CInputTypeMouseWheelMovementUpEvent	IsInputTypeWithButton	ABSENT
+16	00445790	CInputTypeMouseWheelMovementUpEvent	IsInputTypeWithMouseButton	ABSENT
+17	004457c0	CInputTypeMouseWheelMovementDownEvent	IsInputTypeWithButton	ABSENT
+18	004457d0	CInputTypeMouseWheelMovementDownEvent	IsInputTypeWithMouseButton	ABSENT
+19	00447a00	CInputTypeKeyboardKeyEvent	IsInputTypeWithButton	ABSENT
+20	00447a10	CInputTypeKeyboardKeyEvent	IsInputTypeWithMouseButton	ABSENT
+21	00453ed2	CCombatAbilityFlourishCounterAttackDef	Copy	ABSENT
+22	0049e1a0	CWorld	DrawGetWorldMap	L105	DECL	#ifdef FABLE_RETAIL_CWORLD & #ifndef FABLE_RETAIL_CIDRAWWORLD_DEFINED	virtual const CIDrawWorldMap* DrawGetWorldMap() const = 0;
+22	0049e1a0	CWorld	DrawGetWorldMap	L169	DECL	#ifdef FABLE_RETAIL_CWORLD	virtual const CIDrawWorldMap* DrawGetWorldMap() const;
+23	0049e1c0	CWorld	PeekThingManager	L151	DECL	#ifdef FABLE_RETAIL_CWORLD	virtual const CThingManager& PeekThingManager() const;
+24	0049e220	CWorld	LoadWorldFromFile	L149	DECL	#ifdef FABLE_RETAIL_CWORLD	virtual void LoadWorldFromFile(CAFile& file, long version);
+25	004aa8b0	CScriptThing	GetName	L29	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual const CCharString& GetName() const;
+26	004aa980	CScriptThing	GetPos	L34	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual const C3DVector& GetPos() const;
+27	004aac20	CScriptThing	MsgIsKnockedOutBy	L60	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgIsKnockedOutBy(const CCharString&) const;
+28	004aac40	CScriptThing	MsgReceivedMoney	L62	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgReceivedMoney(long&) const;
+29	004aac60	CScriptThing	MsgIsPresentedWithItem	L63	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgIsPresentedWithItem(CCharString&) const;
+30	004aaca0	CScriptThing	MsgPerformedSpecialAbility	L65	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgPerformedSpecialAbility(EHeroAbility) const;
+31	004aad20	CScriptThing	MsgIsHitBySpecialAbilityFrom	L69	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility, const CCharString&) const;
+32	004aad40	CScriptThing	MsgIsHitByAnySpecialAbilityFrom	L70	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString&) const;
+33	004aad60	CScriptThing	MsgIsHitByAnyAggressiveSpecialAbilityFrom	L71	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString&) const;
+34	004aad80	CScriptThing	MsgIsHitByAnyNonAggressiveSpecialAbilityFrom	L72	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString&) const;
+35	004aaee0	CScriptThing	MsgGetThingsKilled	L83	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgGetThingsKilled(std::vector<unsigned long,std::allocator<unsigned long> >&) const;
+36	004aaf40	CScriptThing	MsgOnMoralityChanged	L86	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgOnMoralityChanged(long&) const;
+37	004aaf60	CScriptThing	MsgOnCutSceneAnimEvent	L87	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool MsgOnCutSceneAnimEvent(CCharString&) const;
+38	004aafe0	CScriptThing	IsBeingCarriedBy	L91	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual bool IsBeingCarriedBy(const CCharString&) const;
+39	004ae8c0	CWorld	PeekWorldMap	L160	DECL	#ifdef FABLE_RETAIL_CWORLD	virtual const CWorldMap& PeekWorldMap() const;
+40	004dd989	CVillageMemberDef	Transfer	ABSENT
+41	004ddb56	CBuyHouseDef	Transfer	ABSENT
+42	004de33e	CEnemyDef	Transfer	ABSENT
+43	004de881	CExpressionSubDef	Transfer	ABSENT
+44	004de8b2	COccupiableDef	Transfer	ABSENT
+45	004de916	CInterestingToVillagersDef	Transfer	L15	DECL	#ifdef FABLE_RETAIL_FIND_INTERESTING	virtual void Transfer(CPersistContext & p0);
+46	004de9f3	CTavernDef	Transfer	L16	DECL	#ifdef FABLE_RETAIL_BED_USE_PASS28	virtual void Transfer(CPersistContext&);
+47	004dea03	CFireballSpellLevelDef	Transfer	ABSENT
+48	004debc4	CGoldDef	Transfer	ABSENT
+49	004def76	CResurrectionItemDef	Transfer	ABSENT
+50	004df0f7	CAICreatureWillPowerIndicatorDef	Transfer	ABSENT
+51	004df31c	CCameraCollisionDef	Transfer	ABSENT
+52	004fb2e0	CWorldMap	IsMapChangeable	L95	DECL	#ifdef FABLE_RETAIL_CWORLDMAP	virtual bool IsMapChangeable(long) const;
+53	004fc130	CWorldMap	GetMapAt	L82	DECL	#ifdef FABLE_RETAIL_CWORLDMAP	virtual CMap& GetMapAt(const C2DCoordI&);
+54	004fc150	CWorldMap	PeekMapAt	L83	DECL	#ifdef FABLE_RETAIL_CWORLDMAP	virtual const CMap& PeekMapAt(const C2DCoordI&) const;
+55	005dba80	CAnimComponentCombatHandedness	TransferBinaryIn	L21	DECL	#ifdef FABLE_RETAIL_ANIMCOMPONENT	virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+56	005dbb60	CAnimComponentCombatComboChain	TransferBinaryIn	L21	DECL	#ifdef FABLE_RETAIL_ANIMCOMPONENT	virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+57	005dbcd0	CAnimComponentCombatMisc	TransferBinaryIn	L21	DECL	#ifdef FABLE_RETAIL_ANIMCOMPONENT	virtual void TransferBinaryIn(CMemoryDataInputStream& stream);
+58	0066f580	CInputTypeMouseWheelMovementUpEvent	IsEventOfThisTypeInQueue	ABSENT
+59	0066f600	CInputTypeMouseWheelMovementDownEvent	IsEventOfThisTypeInQueue	ABSENT
+60	00692590	CCreatureActionBase	GetWeaponTrailUsedInStrikeAction	L156	DECL	#ifdef FABLE_RETAIL_CCREATUREACTIONBASE	virtual CTCWeaponTrail * GetWeaponTrailUsedInStrikeAction(long &) const;
+61	00697050	CAIGameCameraBase	Is2DAreaInViewingFrustrum	L31	DECL	#ifdef FABLE_RETAIL_CAIGAMECAMERABASE	virtual bool Is2DAreaInViewingFrustrum(const C3DVector& pos, float radius) const;
+62	00697060	CAIGameCameraBase	IsVolumeInViewingFrustrum	L32	DECL	#ifdef FABLE_RETAIL_CAIGAMECAMERABASE	virtual bool IsVolumeInViewingFrustrum(const C3DVector& pos, float radius) const;
+63	006cd9b0	CGroundNavigatorExternalInterface	GetTerrainDesirabilityAt	ABSENT
+64	006cda00	CGroundNavigatorExternalInterface	GetNavigationLevelAt	ABSENT
+65	006cdae0	CGroundNavigatorExternalInterface	PeekNavigatorMaxSpeed	ABSENT
+66	006cdbd0	CGroundNavigatorExternalInterface	GetNavigatorObstacles	ABSENT
+67	006cdc20	CGroundNavigatorExternalInterface	GetNavigatorObstacles	ABSENT
+68	006cdc70	CGroundNavigatorExternalInterface	GetPThingToNotAvoid	ABSENT
+69	006e7d30	CGameScriptInterface	SetCreatureCreationDelayFrames	L141	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual void SetCreatureCreationDelayFrames(long);
+70	006feed0	CReactionFrequencyTraits_ControlledCount	LogReaction	L23	DECL	#ifdef FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24	virtual void LogReaction(const CThingAICreature& creature, bool happened);
+71	007adef0	CAIScratchpadDef	Copy	ABSENT
+72	0081e220	CIDrawMap	DrawGetEngineThemeAt	L28	DECL	#ifdef FABLE_RETAIL_CIDRAWMAP & #ifdef FABLE_RETAIL_CIDRAWMAP_DRAW	virtual long DrawGetEngineThemeAt(long x, long y, long layer) const;
+73	0081e230	CIDrawMap	DrawGetEngineBlendAt	L29	DECL	#ifdef FABLE_RETAIL_CIDRAWMAP & #ifdef FABLE_RETAIL_CIDRAWMAP_DRAW	virtual unsigned char DrawGetEngineBlendAt(long x, long y, long layer) const;
+74	0081e240	CIDrawMap	DrawFindLastUnblockedPosition	L31	DECL	#ifdef FABLE_RETAIL_CIDRAWMAP & #ifdef FABLE_RETAIL_CIDRAWMAP_DRAW	virtual bool DrawFindLastUnblockedPosition(const C3DVector* from, const C3DVector* to, C3DVector* out) const;
+75	0088ec60	CGameScriptInterface	SetHeroGuideToShowQuestCardsWhenSpokenTo	L590	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual void SetHeroGuideToShowQuestCardsWhenSpokenTo(bool);
+76	0088f810	CGameScriptInterface	EntitySetOpinionReactionsEnabled	L640	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual void EntitySetOpinionReactionsEnabled(const CScriptThing&, bool) const;
+77	00891320	CGameScriptInterface	EnableDangerMusic	L745	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual void EnableDangerMusic(bool) const;
+78	00892ec0	CGameScriptInterface	ActivateQuestWithoutLoadingResources	L324	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual void ActivateQuestWithoutLoadingResources(const CCharString&) const;
+79	00896e60	CGameScriptInterface	SetPreferredQuickAccessItem	L358	DECL	#ifdef FABLE_RETAIL_NSCRIPT	virtual void SetPreferredQuickAccessItem(const CCharString&, long, long) const;
+80	008b3810	CCombatSequence_BanditAttackSide	GetName	ABSENT
+81	008b42e0	CCombatSequence_TrollRockPursue	GetName	ABSENT
+82	008fd860	CAIStateGroup_BirdFlyToFood	Initialise	NOHEADER
+83	008fd892	CAIStateGroup_BirdGroundWander	Initialise	ABSENT
+84	00904cd0	CScriptGameResourceObjectScriptedThing	MoveToAndPickUpGenericBox	ABSENT
+85	00917300	CAIStateGroup_IdleAtHome	InitStateGroup	ABSENT
+86	0091cc90	CAIStateGroup_MinionReactToNoise	Initialise	ABSENT
+87	00922530	CAIStateGroup_Drunk	InitStateGroup	ABSENT
+88	00930d70	CAIStateGroup_MinionReactToCriminal	InitStateGroup	ABSENT
+89	00933300	CAIStateGroup_MinionGuardReactToBribe	InitStateGroup	L18	DECL	#ifdef FABLE_RETAIL_GUARD_REACT_TO_BRIBE_PASS27	virtual void InitStateGroup(const CWorld&, CThingAICreature&);
+90	009445b0	CAIStateGroup_WorkSawingWood	InitStateGroup	ABSENT
+91	0094f080	CAIStateGroup_BalverineCornered	InitStateGroup	L25	DECL	#ifdef FABLE_RETAIL_CAISTATEGROUP_BALVERINECORNERED	virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+92	0094f170	CAIStateGroup_BalverineJumpAtFleeingEnemy	InitStateGroup	L23	DECL	#ifdef FABLE_RETAIL_CAISTATEGROUP_BALVERINEJUMPATFLEEINGENEMY	virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
+93	009943b0	CFileDataInputStream	NeedsBufferedRead	L18	DECL	#ifdef FABLE_RETAIL_CFILEDATAINPUTSTREAM	virtual bool NeedsBufferedRead(long);
+94	00994590	CCompressedMemoryDataInputStream	NeedsBufferedRead	L13	DECL	#ifdef FABLE_RETAIL_CCOMPRESSEDMEMORYDATAINPUTSTREAM	virtual bool NeedsBufferedRead(long);
+95	009949f0	CCompressedMemoryDataInputStream	InternalReadNextSourceChunk	L12	DECL	#ifdef FABLE_RETAIL_CCOMPRESSEDMEMORYDATAINPUTSTREAM	virtual void InternalReadNextSourceChunk(const unsigned char*&,long&);
+96	009a0b20	CFontBank	Preload	L56	DECL	#ifdef FABLE_RETAIL_CFONTBANK	virtual bool Preload(const CWideString& text, bool) const;
+97	009cbc40	CBankFile	IsDiskFile	L133	DECL	#ifdef FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS	virtual bool IsDiskFile(unsigned long,unsigned long);
+98	00a03a40	CHandleBasedMemoryPool	CanMoveResource	L56	DECL	#if defined(FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_DEFRAG)	virtual bool CanMoveResource(void*, long);
+98	00a03a40	CHandleBasedMemoryPool	CanMoveResource	L147	DECL	#if defined(FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_DEFRAG) |ELSE:#elif defined(FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL)	virtual bool CanMoveResource(void *,long);
+99	00a0d2b0	CAInputProcess	AddToInterface	L21	DECL	#ifdef FABLE_RETAIL_INPUTPROCESS & #ifdef FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE	virtual bool AddToInterface(CInputProcessManager& manager);
+100	00a18ef0	CNavigatorFlyer	GetNearestNavigablePosTo	L15	DECL	#ifdef FABLE_RETAIL_CNAVIGATORFLYER	virtual bool GetNearestNavigablePosTo(const C3DVector&,float,C3DVector&) const;
+101	00a18f00	CNavigatorFlyer	MoveToNavLineOfSightProximity	L12	DECL	#ifdef FABLE_RETAIL_CNAVIGATORFLYER	virtual ENavigatorReturn MoveToNavLineOfSightProximity(const C3DVector&,const C3DVector&,float,float,C3DVector
+102	00a18f10	CNavigatorFlyer	IsNewDestinationGoingToCauseRestart	L18	DECL	#ifdef FABLE_RETAIL_CNAVIGATORFLYER	virtual bool IsNewDestinationGoingToCauseRestart(const C3DVector&,float) const;
+103	00a19bb0	CANavQuadTreeNode	IsSwitchableOn	L71	DECL	#ifdef FABLE_RETAIL_CANAVQUADTREENODE	virtual bool IsSwitchableOn(unsigned __int64) const;
+104	00a24410	CMeshDataBank	PrepareDataForInclusion	ABSENT
+105	00a39bb0	CWADFile	Read	L16	DECL	#ifdef FABLE_RETAIL_CWADFILE	virtual void Read(void*, long, CASuspendableProcess*);
+106	00a39bf0	CWADFile	SetPosition	L18	DECL	#ifdef FABLE_RETAIL_CWADFILE	virtual void SetPosition(long);
+107	00a3abe0	CCompressorZlib	Decompress	L33	DECL	#ifdef FABLE_RETAIL_CCOMPRESSORZLIB	virtual void Decompress(const void*,unsigned long,void*,unsigned long,CCompressionInfo&);
+108	00a5f9c0	CStreamingFontDataBank	IsDiskFile	ABSENT
+109	00a63ac0	CFontDataBank	IsDiskFile	ABSENT
+110	00a66ad0	CKeyboard	GetKeyName	L29	DECL	#ifdef FABLE_RETAIL_CKEYBOARD	virtual bool GetKeyName(EInputKey, CWideString&) const;
+111	00a7d950	CNavBlockedQuadTreeNode	MakeRegion	ABSENT
+112	00a7d960	CNavBlockedQuadTreeNode	AddNavigableNodeNeighbouringSwitchableNodeToRegion	ABSENT
+113	00a84e20	CNavSwitchableLeafNode	AddNavigableNodeNeighbouringSwitchableNodeToRegion	ABSENT
+114	00a86030	CPhysicsFacesSegmentBranch	GetPossibleCollisionSet	ABSENT
+115	00aa7850	CChunkedFileRawDataChunk	CreateNewInstance	L17	DECL	#ifdef FABLE_RETAIL_CCHUNKEDFILERAWDATACHUNK	virtual CChunkedFileChunk* CreateNewInstance() const;
+116	00aa8460	CChunkedFileSuperChunk	InitNewInstance	L45	DECL	#ifdef FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK	virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*) const;
+117	00ab7910	CJoystickDX	GetRumbleWithID	ABSENT
+118	00ab7920	CJoystickDX	PeekRumbleWithID	ABSENT
+119	00ac2920	C3DMeshFilePartitionChunk	WriteToFile	ABSENT
+120	00ac2970	C3DMeshFilePartitionChunk	ReadFromFile	ABSENT
+121	00b23a10	CEngine	CutscenePreload	L173	DECL	#ifdef FABLE_RETAIL_CENGINE & #ifdef FABLE_RETAIL_CENGINE_OVERRIDES	virtual void CutscenePreload(bool,bool);
+122	00b23b50	CEngine	SetCamera	L117	DECL	#ifdef FABLE_RETAIL_CENGINE & #ifdef FABLE_RETAIL_CENGINE_OVERRIDES	virtual void SetCamera(const CCamera*);
+123	00b2aee0	CEngineSurfaceCompositionManager	LoadNewScene	ABSENT
+124	00b2f5c0	CEngineSurfaceCompositionManager	PeekSceneFilterFlags	L55	DECL	#ifdef FABLE_RETAIL_CENGINESURFACECOMPOSITIONMANAGER	virtual unsigned long PeekSceneFilterFlags() const;
+125	00b3aa10	CEngineInternalPrimitiveBase	IsInsideFrustum	L61	DECL	#if defined(FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED)	virtual bool IsInsideFrustum(const CEngineCamera&,bool);
+126	00b3aac0	CEnginePrimitiveAttachmentManager	PeekSceneFilterFlags	L54	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEATTACHMENTMANAGER	virtual unsigned long PeekSceneFilterFlags() const;
+127	00b4b6b0	CEnginePrimitiveManager2DParticleGroup	RenderPrimitive	L35	DECL	#if defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_RENDER) |ELSE:#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGER2DPARTICLEGROUP_MANAGER)	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+128	00b98de0	CEngineInternalPrimitiveRepeatedStaticMesh	CollectStats	ABSENT
+129	00b98e00	CEnginePrimitiveManagerRepeatedStaticMeshes	CreateInternalPrimitive	L56	DECL	#if defined(FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES) || defined(FABLE_RETAIL_PASS22_REPEATED_MESH_CLIP_SIMD) & #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_OVERRIDES	virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+130	00b9d060	CEngineInternalPrimitive2DStaticMesh	IsInsideFrustum	L137	DECL	#ifndef FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DSTATICMESH |ELSE:#else	virtual bool IsInsideFrustum(const CEngineCamera& camera, bool flag);
+131	00b9d0f0	CEngineInternalPrimitiveStaticMeshFromFile	Update	ABSENT
+132	00bacbc0	CEnginePrimitiveOcclusionGroupManager	CreateInternalPrimitive	L14	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_CLASS	virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+133	00bacc50	CEnginePrimitiveOcclusionGroupManager	RenderPrimitive	L16	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEOCCLUSIONGROUPMANAGER_CLASS	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+134	00bb6de0	CEnginePrimitiveManagerParticleDecalGroup	RenderPrimitive	L29	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEDECALGROUP & #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEDECALGROUP_OVERRIDES	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+135	00bbddb0	CEngineInternalPrimitiveParticleSpriteTrailGroup	PrimTypeMatchesGroup	ABSENT
+136	00bbea70	CEnginePrimitiveManagerParticleSpriteTrailGroup	CreateInternalPrimitive	L16	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITETRAILGROUP_CLASS	virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+137	00bbf370	CEnginePrimitiveManagerParticleSpriteGroup	RenderPrimitive	L41	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+138	00bc2460	CEngineInternalPrimitiveParticleMeshGroup	PrimTypeMatchesGroup	ABSENT
+139	00bc2470	CEnginePrimitiveManagerParticleMeshGroup	RenderPrimitive	L72	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP |ELSE:#else & #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_CLASS	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+140	00bc3410	CEnginePrimitiveManagerParticleMeshGroup	CreateInternalPrimitive	L70	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP |ELSE:#else & #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_CLASS	virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
+141	00bc3af0	CEngineInternalPrimitiveParticleMesh	PeekRenderInfoMeshBase	L23	DECL	#ifdef FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEMESH_CLASS	virtual const CEngineRenderInfoMeshBase* PeekRenderInfoMeshBase() const;
+142	00bc3e00	CEnginePrimitiveManagerParticleLineGroup	RenderPrimitive	L16	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_CLASS	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+142	00bc3e00	CEnginePrimitiveManagerParticleLineGroup	RenderPrimitive	L35	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLELINEGROUP_CLASS |ELSE:#else & #ifdef FABLE_RETAIL_PASS22_PARTICLE_LINE_RENDER	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
+143	00bcdf10	CEnginePrimitiveManagerFlareSprites	RenderPrimitive	L16	DECL	#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERFLARESPRITES_CLASS	virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrim
+144	00bcea40	CEngineInternalPrimitive2DAnimatedMesh	IsInsideFrustum	ABSENT
+145	0062f230	CCreatureAction_StartSneaking	Clone	ABSENT
+146	0062f260	CCreatureAction_StopSneaking	Clone	ABSENT
+147	007ebb30	CCreatureAction_LookThroughWindow	Clone	NOHEADER
+148	007ed140	CCreatureAction_DropWeapon	Clone	NOHEADER
+149	0084c010	CCreatureAction_ActivateZTarget	Clone	NOHEADER
+150	0084c460	CCreatureAction_PlayAnimationFromIndex	Clone	ABSENT
+151	0084c6c0	CCreatureAction_DropGenericBox	Clone	L13	DECL	#ifdef FABLE_RETAIL_CCREATUREACTION_GENERICBOX	virtual CCreatureActionBase* Clone() const;
+152	0084c6f0	CCreatureAction_ShowFear	Clone	L21	DECL	#ifdef FABLE_RETAIL_CCREATUREACTION_SHOWFEAR_DERIVED	virtual CCreatureActionBase* Clone() const;
+153	0084c7a0	CCreatureAction_YellOverHere	Clone	ABSENT
+154	0084c7d0	CCreatureAction_AlertToPlayer	Clone	L10	DECL	-	virtual CCreatureActionBase* Clone()const;
+155	0084ca30	CCreatureAction_StartFillingTankard	Clone	NOHEADER
+156	0084ca60	CCreatureAction_StopFillingTankard	Clone	NOHEADER
+157	00855200	CCreatureAction_SpiritReturnToHero	Clone	ABSENT
+158	00860290	CCreatureAction_GetUpFromSitting	Clone	L22	DECL	-	virtual CCreatureActionBase* Clone() const;
+159	008683d0	CCreatureAction_BeDazed	Clone	L22	DECL	#ifdef FABLE_RETAIL_CCREATUREACTION_BEDAZED_CLASS	virtual CCreatureActionBase* Clone() const;
+160	008800c0	CCreatureAction_StabbedToDeath	Clone	ABSENT
+161	008e6f50	CCreatureAction_CastStrengthMultiStrikeProper	Clone	ABSENT
+162	009115a0	CCreatureAction_OrderSecuritySweep	Clone	L12	DECL	-	virtual CCreatureActionBase* Clone() const;
+163	009115d0	CCreatureAction_Curiosity	Clone	L13	DECL	#ifdef FABLE_RETAIL_CCREATUREACTION_CURIOSITY	virtual CCreatureActionBase* Clone() const;
+164	00916760	CCreatureAction_PutGoodsDown	Clone	L18	DECL	#ifdef FABLE_RETAIL_CCREATUREACTION_PUTGOODSDOWN	virtual CCreatureActionBase* Clone() const;
+165	00933d50	CCreatureAction_CallSpouseHome	Clone	NOHEADER
+166	00941cc0	CCreatureAction_PlayHopscotch	Clone	L21	DECL	#ifdef FABLE_RETAIL_CCREATUREACTION_PLAYHOPSCOTCH	virtual CCreatureActionBase* Clone() const;
+167	009680d0	CCreatureAction_PickUpJug	Clone	NOHEADER

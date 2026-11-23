@@ -1,8 +1,7 @@
-// Leaf: ?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface_Methods@@QAEXE@Z
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+// Leaf: ?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface@@UAEX_N@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT with the PDB parameter / return types (was ?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface_Methods@@QAEXE@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CWorld { public: char pad[0xda]; unsigned char b_da; };
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void SetHeroGuideToShowQuestCardsWhenSpokenTo(unsigned char v);
-};
-void CGameScriptInterface_Methods::SetHeroGuideToShowQuestCardsWhenSpokenTo(unsigned char v){ this->World->b_da = v; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface@@UAEX_N@Z); evidence: RTTI vtable slot + PDB name set.
+void CGameScriptInterface::SetHeroGuideToShowQuestCardsWhenSpokenTo(bool v) { this->World->b_da = v; }

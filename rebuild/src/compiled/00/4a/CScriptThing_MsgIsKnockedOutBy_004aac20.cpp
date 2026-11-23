@@ -1,47 +1,22 @@
-#include "rebuild_abi.h"
-#include "engine/CScriptThing.h"
+// CScriptThing::MsgIsKnockedOutBy -- forwards to the implementation object through the private PImp (null -> false)
+// Leaf: ?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT with the PDB parameter
+//   type (was ?MsgIsKnockedOutBy@CScriptThing_Methods@@QAE_NH@Z); the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+//   The body forwards through the private PImp (CCountedPointer<CScriptThing>, Data at +0x04) as the landed NScript in-TU copies spell
+//   it; the forwarded call is the pointee's own virtual (vtable slot / address: 32 0x004AAC20).
 // CScriptThing::MsgIsKnockedOutBy @ 0x004aac20
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0x80]
-// Proxy: forward to the wrapped implementation object at this->f4; false when absent.
-struct CScriptThingInner {
-  virtual bool m0(int name);
-  virtual bool m1(int name);
-  virtual bool m2(int name);
-  virtual bool m3(int name);
-  virtual bool m4(int name);
-  virtual bool m5(int name);
-  virtual bool m6(int name);
-  virtual bool m7(int name);
-  virtual bool m8(int name);
-  virtual bool m9(int name);
-  virtual bool m10(int name);
-  virtual bool m11(int name);
-  virtual bool m12(int name);
-  virtual bool m13(int name);
-  virtual bool m14(int name);
-  virtual bool m15(int name);
-  virtual bool m16(int name);
-  virtual bool m17(int name);
-  virtual bool m18(int name);
-  virtual bool m19(int name);
-  virtual bool m20(int name);
-  virtual bool m21(int name);
-  virtual bool m22(int name);
-  virtual bool m23(int name);
-  virtual bool m24(int name);
-  virtual bool m25(int name);
-  virtual bool m26(int name);
-  virtual bool m27(int name);
-  virtual bool m28(int name);
-  virtual bool m29(int name);
-  virtual bool m30(int name);
-  virtual bool m31(int name);
-  virtual bool m32(int name);
-};
-struct CScriptThing_Methods : CScriptThing { bool MsgIsKnockedOutBy(int name); };
-bool CScriptThing_Methods::MsgIsKnockedOutBy(int name)
+// Preamble: the landed precedent CThingSwitch_vectordeletingdestructor_00ea86c0.cpp (CCountedPointer before the NScript class model).
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_NSCRIPT
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CScriptThing.h"
+
+bool CScriptThing::MsgIsKnockedOutBy(const CCharString& name) const
 {
-    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
-    if (!p) return false;
-    return p->m32(name);
+    const CScriptThing* imp = PImp.Data;
+    if (imp == 0)
+        return false;
+    return imp->MsgIsKnockedOutBy(name);
 }

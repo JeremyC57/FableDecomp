@@ -1,7 +1,6 @@
-// Leaf: ?IsDiskFile@CBankFile_Methods@@QAE_NHH@Z
-#include "engine/CBankFile.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CBankFile_Methods : CBankFile {
-    bool IsDiskFile(int x0, int x1);
-};
-bool CBankFile_Methods::IsDiskFile(int x0, int x1) { return true; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsDiskFile@CBankFile@@MAE_NKK@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?IsDiskFile@CBankFile@@MAE_NKK@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CBankFile.h under FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS with the PDB parameter / return types (was ?IsDiskFile@CBankFile_Methods@@QAE_NHH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#include "engine/CBankFile.h"
+bool CBankFile::IsDiskFile(unsigned long x0, unsigned long x1) { return true; }

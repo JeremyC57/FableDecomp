@@ -1,8 +1,8 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-// Leaf: ?CanAbortResourceLoad@CResource_Methods@@QAE_NH@Z
-#include "engine/CResource.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CResource_Methods : CResource {
-    bool CanAbortResourceLoad(int a0);
-};
-bool CResource_Methods::CanAbortResourceLoad(int a0) { return false; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?CanAbortResourceLoad@CResource@@UBE_NJ@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?CanAbortResourceLoad@CResource@@UBE_NJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CResource.h under FABLE_RETAIL_DEF_CLASS_BASE with the PDB parameter / return types (was ?CanAbortResourceLoad@CResource_Methods@@QAE_NH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"
+#include "engine/CResource.h"
+bool CResource::CanAbortResourceLoad(long a0) const { return false; }

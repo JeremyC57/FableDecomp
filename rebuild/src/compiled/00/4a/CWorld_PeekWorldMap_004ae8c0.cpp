@@ -1,8 +1,7 @@
-// Leaf: ?PeekWorldMap@CWorld_Methods@@QAEAAVCWorldMap@@XZ
-#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
+// Leaf: ?PeekWorldMap@CWorld@@UBEABVCWorldMap@@XZ
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CWorld.h under FABLE_RETAIL_CWORLD with the PDB parameter / return types (was ?PeekWorldMap@CWorld_Methods@@QAEAAVCWorldMap@@XZ);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CWORLD
+#include "engine/CWorld.h"
 class CWorldMap;
-struct CWorld_Methods : CWorld {
-    CWorldMap& PeekWorldMap();
-};
-CWorldMap& CWorld_Methods::PeekWorldMap(){ return *this->PWorldMap_ptr; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?PeekWorldMap@CWorld@@UBEABVCWorldMap@@XZ); evidence: RTTI vtable slot + PDB name set.
+const CWorldMap& CWorld::PeekWorldMap() const { return *this->PWorldMap_ptr; }

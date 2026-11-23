@@ -1,0 +1,9 @@
+004aa8b0 LIBCP_OK renames=?GetName@CScriptThing_Methods@@QAEPAXXZ=?GetName@CScriptThing@@UBEABVCCharString@@XZ ; .drectve EQUAL ; sections=2
+004aac20 LIBCP_OK renames=?MsgIsKnockedOutBy@CScriptThing_Methods@@QAE_NH@Z=?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z ; .drectve EQUAL ; sections=2
+004aac40 LIBCP_OK renames=?MsgReceivedMoney@CScriptThing_Methods@@QAE_NH@Z=?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z ; .drectve EQUAL ; sections=2
+004aac60 LIBCP_OK renames=?MsgIsPresentedWithItem@CScriptThing_Methods@@QAE_NH@Z=?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z ; .drectve EQUAL ; sections=2
+004aaca0 LIBCP_OK renames=?MsgPerformedSpecialAbility@CScriptThing_Methods@@QAE_NH@Z=?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z ; .drectve EQUAL ; sections=2
+004aad80 LIBCP_OK renames=?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing_Methods@@QAE_NH@Z=?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z ; .drectve EQUAL ; sections=2
+004aaee0 LIBCP_OK renames=?MsgGetThingsKilled@CScriptThing_Methods@@QAE_NH@Z=?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z ; .drectve EQUAL ; sections=2
+004aaf40 LIBCP_OK renames=?MsgOnMoralityChanged@CScriptThing_Methods@@QAE_NH@Z=?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z ; .drectve EQUAL ; sections=2
+004aaf60 LIBCP_OK renames=?MsgOnCutSceneAnimEvent@CScriptThing_Methods@@QAE_NH@Z=?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z ; .drectve EQUAL ; sections=2

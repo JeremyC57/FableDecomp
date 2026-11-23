@@ -206,3 +206,8 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - **Q3:** adding a declaration to a class written on one line edits that existing line, so it is a class-model change (hold).
   - **Landed precedent:** `FABLE_RETAIL_<CLASS>_RTTI_DECLS` add-only opt-ins, each declaration overriding a base virtual at the RTTI slot
     (clang `override` probe plus a made-up-name control), with `FABLE_STATIC_ASSERT_AT` pins.
+- NF320:
+  - **Q1:** a TU that faithfully emits a class vftable (a Clone constructs a copy) may land only when the emitted `??_7` matches retail
+    slot for slot. Missing overrides are added as add-only declarations first, and `??_G` / `??_E` pick-any is fine.
+  - **Q2:** a move that ADDS unreferenced pick-any COMDATs fails "COMDAT sets SAME" (the mirror of NF318 Q5). Hold it.
+  - **Q3:** the retail RTTI placement plus ONE PDB name set count as two sources.

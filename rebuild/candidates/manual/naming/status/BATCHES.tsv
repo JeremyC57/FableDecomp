@@ -1085,10 +1085,10 @@ T3	standin_alias	CRenderManagerCore	10	10	engine/CRenderManagerCore.h	00a0aa30 0
 T3	standin_alias	GetPBestThing	10	10		004a9da0 004a9e50 004ac2c0 0065f6da 00782670 00783110 009223a0 0093b640 00941450 00986d90
 T3	standin_alias	GetPFirstThing	10	10		00512ed0 00512f60 00615750 006d3fb0 00777000 00783090 00799c40 007ee660 008abdf0 00986e30
 T3	standin_alias	CTCInventoryBase	9	9		005bc4b6 005bc4df 005bc505 005bc6b3 005bc9c8 005bca87 005bccf1 005bce49 005c024a
-T3	standin_alias	CScriptThing	8	8	engine/CScriptThing.h	004aa8b0 004aa8d0 004aa900 004aa930 004aa980 004aaa40 004aaf60 004ab150
 T3	standin_alias	CUserProfileManager	8	8	engine/CUserProfileManager.h	00437470 00437490 00548630 00548650 00548690 00548740 0054a4f0 0054a570
 T3	standin_alias	CBankFile	7	8	engine/CBankFile.h	009cbe10 009cbf10 009cc210 009cc350 009cc3b0 009ccb20 009cccd0
 T3	standin_alias	fill	7	7		00526d70 00819280 008192b0 0086a3f0 0086a4f0 0086ef60 009fff90
+T3	standin_alias	CScriptThing	6	6	engine/CScriptThing.h	004aa8d0 004aa900 004aa930 004aa980 004aaa40 004ab150
 T3	standin_alias	CSurface	6	6	engine/CSurface.h	009f2ec0 009f2f10 009f2f60 009f3470 009f35d0 009f3ff0
 T3	standin_alias	CTCPhysicsBase	6	6	engine/CTCPhysicsBase.h	006af790 006afcb0 006afe20 006aff00 006b0130 006b0210
 T3	standin_alias	CWorld	6	6	engine/CWorld.h	0049d4b0 0049d910 0049ddd0 0049dec0 0049e200 0049e740
@@ -10155,8 +10155,6 @@ T3	emit ?SuspendableProcess@CAIBrain@@EAEXXZ	CAIBrain	1	1	engine/CAIBrain.h	0088
 T3	emit ?Transfer@CAICreatureWillPowerIndicatorDef@@UAEXAAVCPersistContext@@@Z	CAICreatureWillPowerIndicatorDef_Methods	1	1		004df0f7
 T3	emit ?GetControlAngleXY@CAIGameCameraBase@@UBEMXZ	CAIGameCameraBase	1	1	engine/CAIGameCameraBase.h	00697080
 T3	emit ?PeekCurrentPos@CAIGameCameraBase@@UBE?BVC3DVector@@XZ	CAIGameCameraBase	1	1	engine/CAIGameCameraBase.h	0069c1b0
-T3	emit ?Is2DAreaInViewingFrustrum@CAIGameCameraBase@@UBE_NABVC3DVector@@M@Z	CAIGameCameraBase_Methods	1	1		00697050
-T3	emit ?IsVolumeInViewingFrustrum@CAIGameCameraBase@@UBE_NABVC3DVector@@M@Z	CAIGameCameraBase_Methods	1	1		00697060
 T3	emit ?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z	CAIScratchpadDef_Methods	1	1		007adef0
 T3	emit ?Initialise@CAIStateGroupBehaviourBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW	CAIStateGroupBehaviourBase	1	1	engine/CAIStateGroupBehaviourBase.h	00957940
 T3	emit ?OnActivate@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ	CAIStateGroupCreatureUseCoverBaseMethods	1	1		00970610
@@ -10168,8 +10166,6 @@ T3	emit ?IsRunnable@CAIStateGroup_SeekEnemy@@UAE_NXZ	CAIStateGroupSeekEnemyMetho
 T3	emit ?InitStateGroup@CAIStateGroup_TavernServer@@MAEXABVCWorld@@AAVCThingAICreature@@	CAIStateGroupTavernServerMethods	1	1		00966930
 T3	emit ?IsRunnable@CAIStateGroup_TavernServer@@MAE_NXZ	CAIStateGroupTavernServerMethods	1	1		00967650
 T3	emit ?PracticeSkills@CAIStateGroup_ApprenticeHero@@MAE_NXZ	CAIStateGroup_ApprenticeHero	1	1	engine/CAIStateGroup_ApprenticeHero.h	0092a8a0
-T3	emit ?InitStateGroup@CAIStateGroup_BalverineCornered@@MAEXABVCWorld@@AAVCThingAICreat	CAIStateGroup_BalverineCornered_Methods	1	1		0094f080
-T3	emit ?InitStateGroup@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAEXABVCWorld@@AAVCTh	CAIStateGroup_BalverineJumpAtFleeingEnemy_Methods	1	1		0094f170
 T3	emit ?Update@CAIStateGroup_BanditKingCharge@@MAEXXZ	CAIStateGroup_BanditKingCharge	1	1	engine/CAIStateGroup_BanditKingCharge.h	00961790
 T3	emit ?GetStateGroupType@CAIStateGroup_BanditKingCharge@@MBE?AW4EAIStateGroupType@@XZ	CAIStateGroup_BanditKingCharge_Methods	1	1		0090124a
 T3	emit ?OnReplace@CAIStateGroup_BanditPlayDice@@MAEXXZ	CAIStateGroup_BanditPlayDice	1	1	engine/CAIStateGroup_BanditPlayDice.h	00928e20
@@ -10286,7 +10282,6 @@ T3	emit ?Update@CAIStateGroup_MinionLeaveRegion@@MAEXXZ	CAIStateGroup_MinionLeav
 T3	emit ?Initialise@CAIStateGroup_MinionReactToAlert@@UAEXAAVCAIBrain@@AAVCThingAICreatu	CAIStateGroup_MinionReactToAlert	1	1		0090f0d0
 T3	emit ?Update@CAIStateGroup_MinionReactToBurglary@@UAEXXZ	CAIStateGroup_MinionReactToBurglary	1	1		00958000
 T3	emit ?IsRunnable@CAIStateGroup_MinionReactToCriminal@@UAE_NXZ	CAIStateGroup_MinionReactToCriminal	1	1	engine/CAIStateGroup_MinionReactToCriminal.h	00931010
-T3	emit ?InitStateGroup@CAIStateGroup_MinionReactToCriminal@@UAEXABVCWorld@@AAVCThingAIC	CAIStateGroup_MinionReactToCriminal_Methods	1	1		00930d70
 T3	emit ?Initialise@CAIStateGroup_MinionReactToNoise@@UAEXAAVCAIBrain@@AAVCThingAICreatu	CAIStateGroup_MinionReactToNoise_Methods	1	1		0091cc90
 T3	emit ?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ	CAIStateGroup_MinionReactToPlayerInteraction_Methods	1	1		0092ecc0
 T3	emit ?IsRunnable@CAIStateGroup_MinionReactToTrespassing@@UAE_NXZ	CAIStateGroup_MinionReactToTrespassing_Methods	1	1		00958720
@@ -10341,16 +10336,12 @@ T3	emit ?InitStateGroup@CAIStateGroup_WorkSawingWood@@MAEXABVCWorld@@AAVCThingAI
 T3	emit ?OnActivate@CAIStateGroup_WorkSawingWood@@MAEXXZ	CAIStateGroup_WorkSawingWood_Methods	1	1		009445f0
 T3	emit ?OnReplace@CAIStateGroup_WorkSawingWood@@MAEXXZ	CAIStateGroup_WorkSawingWood_Methods	1	1		00944690
 T3	RTTI names ??_ECNavBlockedQuadTreeNode@@UAEPAXI@Z	CANavQuadTreeNode	1	1	engine/CANavQuadTreeNode.h	00a7d990
-T3	emit ?IsSwitchableOn@CANavQuadTreeNode@@UBE_N_K@Z	CANavQuadTreeNode_Methods	1	1		00a19bb0
 T3	emit ??_ECAbilityDef@@UAEPAXI@Z	CAbilityDef	1	1		0044ff77
 T3	emit ??_GCActionUseDef@@UAEPAXI@Z	CActionUseDef	1	1	engine/CActionUseDef.h	0044f7c3
 T3	emit ?Transfer@CActionUseDef@@UAEXAAVCPersistContext@@@Z	CActionUseDef_Transfer	1	1		006773f0
 T3	emit ?Transfer@CActivateQuestDef@@UAEXAAVCPersistContext@@@Z	CActivateQuestDef_Transfer	1	1		007b5740
-T3	emit ?TransferBinaryIn@CAnimComponentCombatComboChain@@UAEXAAVCMemoryDataInputStream@	CAnimComponentCombatComboChain_Transfer	1	1		005dbb60
 T3	emit ?Clone@CAnimComponentCombatFlourishTargetOffset@@UBEPAVCAnimComponentBase@@XZ	CAnimComponentCombatFlourishTargetOffset	1	1	engine/CAnimComponentCombatFlourishTargetOffset.h	005db3b0
 T3	emit ?TransferBinaryIn@CAnimComponentCombatFlourishTargetOffset@@UAEXAAVCMemoryDataIn	CAnimComponentCombatFlourishTargetOffset_Methods	1	1		005dbda0
-T3	emit ?TransferBinaryIn@CAnimComponentCombatHandedness@@UAEXAAVCMemoryDataInputStream@	CAnimComponentCombatHandedness_Transfer	1	1		005dba80
-T3	emit ?TransferBinaryIn@CAnimComponentCombatMisc@@UAEXAAVCMemoryDataInputStream@@@Z	CAnimComponentCombatMisc_Transfer	1	1		005dbcd0
 T3	emit ?Clone@CAnimComponentStrikeResponseAnim@@UBEPAVCAnimComponentBase@@XZ	CAnimComponentStrikeResponseAnim	1	1	engine/CAnimComponentStrikeResponseAnim.h	005db4a0
 T3	emit ?TransferBinaryIn@CAnimComponentStrikeResponseAnim@@UAEXAAVCMemoryDataInputStrea	CAnimComponentStrikeResponseAnim	1	1	engine/CAnimComponentStrikeResponseAnim.h	005dbf50
 T3	emit ?SetDefaultValue@CAnimComponentStrikeSpeedMultiplier@@UAEXXZ	CAnimComponentStrikeSpeedMultiplier	1	1	engine/CAnimComponentStrikeSpeedMultiplier.h	005db410
@@ -10370,7 +10361,6 @@ T3	emit ?PrepareDataForInclusion@CBankFile@@MAEXKABV?$CArray@VCCharString@@@@KV?
 T3	emit ??_ECBankFileAsync@@UAEPAXI@Z	CBankFileAsync	1	1	engine/CBankFileAsync.h	009d81a0
 T3	emit ?OnFileReadBegin@CBankFileAsyncData@@UAE_NPAPAXW4EThreadedFilePriority@@@Z	CBankFileAsyncData	1	1	engine/CBankFileAsyncData.h	009d5440
 T3	emit ??_ECBankFileManager@@UAEPAXI@Z	CBankFileManager	1	1		009ac870
-T3	emit ?IsDiskFile@CBankFile@@MAE_NKK@Z	CBankFile_Methods	1	1		009cbc40
 T3	RTTI names ??_GCGraphicBankStateBlock@@UAEPAXI@Z	CBankStateBlock	1	1	engine/CBankStateBlock.h	00a00920
 T3	RTTI names ??_GCWADBankStateBlock@@UAEPAXI@Z	CBankStateBlock	1	1	engine/CBankStateBlock.h	00a3a360
 T3	RTTI names ??_GCStreamingFontBankStateBlock@@UAEPAXI@Z	CBankStateBlock	1	1	engine/CBankStateBlock.h	00a5ee70
@@ -10577,8 +10567,6 @@ T3	emit ?IsValid@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ	CCombatSequ
 T3	emit ?GetName@CCombatSequence_WillPhysicalShield@@UBE?AVCCharString@@XZ	CCombatSequence_WillPhysicalShield_Methods	1	1		008b5410
 T3	emit ?IsValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ	CCombatSequence_WillPhysicalShield_Retail	1	1		00909780
 T3	emit ??_ECCombatTypeDef@@UAEPAXI@Z	CCombatTypeDef	1	1	engine/CCombatTypeDef.h	00455de3
-T3	emit ?NeedsBufferedRead@CCompressedMemoryDataInputStream@@EAE_NJ@Z	CCompressedMemoryDataInputStream_Methods	1	1		00994590
-T3	emit ?InternalReadNextSourceChunk@CCompressedMemoryDataInputStream@@EAEXAAPBEAAJ@Z	CCompressedMemoryDataInputStream_Retail	1	1		009949f0
 T3	emit ?InternalReadUnbuffered@CCompressedMemoryDataInputStream@@EAEXPAEJ@Z	CCompressedMemoryDataInputStream_Retail	1	1		00994a40
 T3	emit ??_ECCompressedMemoryDataInputStream@@UAEPAXI@Z	CCompressedMemoryDataInputStream_Retail	1	1		00997240
 T3	emit ??_ECCompressorZlib@@UAEPAXI@Z	CCompressorZlib	1	1	engine/CCompressorZlib.h	0052ae40
@@ -10611,7 +10599,6 @@ T3	emit ?GetAnimationIndex@CCreatureActionBase@@UBEJXZ	CCreatureActionBase	1	1	e
 T3	emit ?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	00692c80
 T3	emit ?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ	CCreatureActionBase_Methods	1	1		006923a0
 T3	emit ?UpdateActionRunningTime@CCreatureActionBase@@UAEXXZ	CCreatureActionBase_Methods	1	2		00692480
-T3	emit ?GetWeaponTrailUsedInStrikeAction@CCreatureActionBase@@UBEPAVCTCWeaponTrail@@AAJ	CCreatureActionBase_Methods	1	1		00692590
 T3	emit ?Clone@CCreatureActionHero180RunningTurn@@UBEPAVCCreatureActionBase@@XZ	CCreatureActionHero180RunningTurn	1	1	engine/CCreatureActionHero180RunningTurn.h	0085bcb0
 T3	emit ?Clone@CCreatureActionHeroJump@@UBEPAVCCreatureActionBase@@XZ	CCreatureActionHeroJump	1	1		0085bc80
 T3	emit ?Clone@CCreatureActionHeroRunningStop@@UBEPAVCCreatureActionBase@@XZ	CCreatureActionHeroRunningStop	1	1	engine/CCreatureActionHeroRunningStop.h	0085bd20
@@ -11024,10 +11011,6 @@ T3	emit ?ReadCompressed@CDataInputStream@@UAEXPAXJ@Z	CDataInputStream_Methods	1	
 T3	RTTI names ??_ECDataInputStream@@UAEPAXI@Z	CDataStream	1	1	engine/CDataStream.h	00996ed0
 T3	emit ?Copy@CDecapitationDef@@UAEXPBVCDefClassBase@@@Z	CDecapitationDef	1	1	engine/CDecapitationDef.h	004e1225
 T3	emit ??_GCDefClassBase@@UAEPAXI@Z	CDefClassBase	1	1	engine/CDefClassBase.h	0042dab0
-T3	emit ?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z	CDefClassBase_Methods	1	1		0042da20
-T3	emit ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z	CDefClassBase_Methods	1	1		0042da30
-T3	emit ?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z	CDefClassBase_Methods	1	1		0042da40
-T3	emit ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	CDefClassBase_Methods	1	1		0042da90
 T3	emit ??_ECDefPointeeBase@@UAEPAXI@Z	CDefPointeeBase	1	1	engine/CDefPointeeBase.h	0042d9a0
 T3	emit ?MovePosition@CDiskFileWin32@@UAEXJ@Z	CDiskFileMover	1	1		0099ac90
 T3	emit ?GetPathname@CDiskFileWin32@@UBE?AVCWideString@@XZ	CDiskFileWin32	1	1	engine/CDiskFileWin32.h	00401690
@@ -11037,7 +11020,6 @@ T3	emit ??_GCDisplayManager@@UAEPAXI@Z	CDisplayManager	1	1	engine/CDisplayManage
 T3	emit ??_ECDragonActionHoverDef@@UAEPAXI@Z	CDragonActionHoverDef	1	1		0044feeb
 T3	emit ??_GCDragonActionNapalmDef@@UAEPAXI@Z	CDragonActionNapalmDef	1	1		0044fea5
 T3	emit ??_ECDragonActionSwoopDef@@UAEPAXI@Z	CDragonActionSwoopDef	1	1	engine/CDragonActionSwoopDef.h	0044fe5f
-T3	emit ?Transfer@CEnemyDef@@UAEXAAVCPersistContext@@@Z	CEnemyDef_Methods	1	1		004de33e
 T3	emit ?GetPrimitiveDrawDistanceFactor@CEngine@@UBEMXZ	CEngine	1	1	engine/CEngine.h	00b23d00
 T3	emit ?SetScreenColourFilter@CEngine@@UAEXABVCEngineColourFilterSettings@@@Z	CEngine	1	1	engine/CEngine.h	00b23ec0
 T3	emit ?SetSeaBodyToRender@CEngine@@UAEXVCCharString@@@Z	CEngine	1	1	engine/CEngine.h	00b23f00
@@ -11063,7 +11045,6 @@ T3	emit ?SetChildPrimitive@CEngineInternalPrimitive2DViewport@@UAEXKABVCEnginePr
 T3	emit ?SetAnimation@CEngineInternalPrimitiveAnimatedMesh@@UAEXABVCEnginePrimitiveAnima	CEngineInternalPrimitiveAnimatedMesh	1	1	engine/CEngineInternalPrimitiveAnimatedMesh.h	00bcfc50
 T3	emit ?PeekRenderInfoMeshBase@CEngineInternalPrimitiveAnimatedMesh@@UBEPBVCEngineRende	CEngineInternalPrimitiveAnimatedMesh	1	1	engine/CEngineInternalPrimitiveAnimatedMesh.h	00bd93c0
 T3	emit ?InitialiseSimulation@CEngineInternalPrimitiveAnimatedMesh@@UAEXPBVC3DMeshInfo@@	CEngineInternalPrimitiveAnimatedMesh_Methods	1	1		00bcfcb0
-T3	emit ?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z	CEngineInternalPrimitiveBase_Methods	1	1		00b3aa10
 T3	emit ?GetChildPrimitive@CEngineInternalPrimitiveChanger@@UAEPAVCEnginePersistentPrimi	CEngineInternalPrimitiveChanger	1	1		00bc55b0
 T3	emit ?GetAsOcclusionPrimitive@CEngineInternalPrimitiveChanger@@UAEPAVCEngineInternalP	CEngineInternalPrimitiveChanger	1	1		00bc57f0
 T3	emit ?SetChildPrimitive@CEngineInternalPrimitiveChanger@@UAEXKABVCEnginePrimitive@@K@	CEngineInternalPrimitiveChanger	1	1		00bc5c50
@@ -11089,7 +11070,6 @@ T3	emit ?Update@CEngineInternalPrimitiveParticleLineGroup@@UAEXABVCEnginePrimiti
 T3	emit ?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleLineGroup@@UAE_NJ@Z	CEngineInternalPrimitiveParticleLineGroup	1	1		00bc3df0
 T3	emit ?Update@CEngineInternalPrimitiveParticleMeshGroup@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleMeshGroup	1	1	engine/CEngineInternalPrimitiveParticleMeshGroup.h	00bc2400
 T3	emit ?PrimTypeMatchesGroup@CEngineInternalPrimitiveParticleMeshGroup@@UAE_NJ@Z	CEngineInternalPrimitiveParticleMeshGroup_Methods	1	1		00bc2460
-T3	emit ?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh@@UBEPBVCEngineRende	CEngineInternalPrimitiveParticleMesh_Methods	1	1		00bc3af0
 T3	emit ?Update@CEngineInternalPrimitiveParticleSprite@@UAEXABVCEnginePrimitive@@K@Z	CEngineInternalPrimitiveParticleSprite	1	1	engine/CEngineInternalPrimitiveParticleSprite.h	00bbf2b0
 T3	emit ?GetWorldPosition@CEngineInternalPrimitiveParticleSprite@@UAE_NAAVC3DVector@@@Z	CEngineInternalPrimitiveParticleSprite	1	1	engine/CEngineInternalPrimitiveParticleSprite.h	00bbf300
 T3	emit ?Update@CEngineInternalPrimitiveParticleSpriteGroup@@UAEXABVCEnginePrimitive@@K@	CEngineInternalPrimitiveParticleSpriteGroup	1	1	engine/CEngineInternalPrimitiveParticleSpriteGroup.h	00bbf320
@@ -11125,7 +11105,6 @@ T3	emit ??_ECEngineManager@@UAEPAXI@Z	CEngineManager	1	1	engine/CEngineManager.h
 T3	emit ?FrameStart@CEngineOcclusionManager@@UAEXABVCEngineComponentParams@@@Z	CEngineOcclusionManager_FrameStart	1	1		00b8dbe0
 T3	emit ?IsBusy@CEngineParticleSimulationRenderData@@UBE_NXZ	CEngineParticleSimulationRenderData	1	1	engine/CEngineParticleSimulationRenderData.h	00bb6420
 T3	emit ?Render2DPrimitive@CEnginePrimitive2DViewportManager@@UAEXAAVCEngineInternalPrim	CEnginePrimitive2DViewportManager	1	1	engine/CEnginePrimitive2DViewportManager.h	00be1ba0
-T3	emit ?PeekSceneFilterFlags@CEnginePrimitiveAttachmentManager@@UBEKXZ	CEnginePrimitiveAttachmentManager_Methods	1	1		00b3aac0
 T3	emit ?RenderPrimitive@CEnginePrimitiveChangerManager@@UAE?AW4ERendered@@AAVCEngineInt	CEnginePrimitiveChangerManager	1	1		00bc5970
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveChangerManager@@UAEPAVCEngineInternalPr	CEnginePrimitiveChangerManager	1	1		00bc5b70
 T3	emit ??_GCEnginePrimitiveChangerManager@@UAEPAXI@Z	CEnginePrimitiveChangerManager	1	1		00bc5e10
@@ -11149,20 +11128,14 @@ T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerDecal@@UAEPAVCEngineInte
 T3	emit ?RenderSubPrimitive@CEnginePrimitiveManagerDecal@@UAEXAAVCEngineSubPrimitiveBase	CEnginePrimitiveManagerDecal	1	1		00bbbb00
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerFlareSprites@@UAEPAVCEngineInter	CEnginePrimitiveManagerFlareSprites	1	1	engine/CEnginePrimitiveManagerFlareSprites.h	00bcdf50
 T3	emit ??_GCEnginePrimitiveManagerFlareSprites@@UAEPAXI@Z	CEnginePrimitiveManagerFlareSprites	1	1	engine/CEnginePrimitiveManagerFlareSprites.h	00bce630
-T3	emit ?RenderPrimitive@CEnginePrimitiveManagerFlareSprites@@UAE?AW4ERendered@@AAVCEngi	CEnginePrimitiveManagerFlareSprites_Methods	1	1		00bcdf10
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerLines@@UAEPAVCEngineInternalPrim	CEnginePrimitiveManagerLines	1	1		00bc7e50
 T3	emit ??_ECEnginePrimitiveManagerMeshBase@@UAEPAXI@Z	CEnginePrimitiveManagerMeshBase	1	1	engine/CEnginePrimitiveManagerMeshBase.h	00beda90
 T3	emit ?RenderBoundingVolume@CEnginePrimitiveManagerOcclusionBase@@UAEXAAVCEngineSubPri	CEnginePrimitiveManagerOcclusionBase	1	1	engine/CEnginePrimitiveManagerOcclusionBase.h	00b91340
-T3	emit ?RenderPrimitive@CEnginePrimitiveManagerParticleDecalGroup@@UAE?AW4ERendered@@AA	CEnginePrimitiveManagerParticleDecalGroup_Methods	1	1		00bb6de0
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEPAVCEngineInte	CEnginePrimitiveManagerParticleGroup	1	1	engine/CEnginePrimitiveManagerParticleGroup.h	00bbceb0
 T3	emit ??_GCEnginePrimitiveManagerParticleGroup@@UAEPAXI@Z	CEnginePrimitiveManagerParticleGroup	1	1	engine/CEnginePrimitiveManagerParticleGroup.h	00bbd660
-T3	emit ?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup@@UAE?AW4ERendered@@AAV	CEnginePrimitiveManagerParticleLineGroup_Methods	1	1		00bc3e00
-T3	emit ?RenderPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAE?AW4ERendered@@AAV	CEnginePrimitiveManagerParticleMeshGroup_Methods	1	1		00bc2470
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAEPAVCEngine	CEnginePrimitiveManagerParticleMeshGroup_Methods	1	1		00bc3410
-T3	emit ?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteGroup@@UAE?AW4ERendered@@A	CEnginePrimitiveManagerParticleSpriteGroup_Methods	1	1		00bbf370
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAEPAV	CEnginePrimitiveManagerParticleSpriteTrailGroup_Methods	1	1		00bbea70
 T3	emit ?GetSupportedTypes@CEnginePrimitiveManagerRepeatedStaticMeshes@@UBEXAAVCEnginePr	CEnginePrimitiveManagerRepeatedStaticMeshes	1	1	engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h	00b9bfa0
-T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEPAVCEng	CEnginePrimitiveManagerRepeatedStaticMeshes_Methods	1	1		00b98e00
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerRepeatedZSprites@@UAEPAVCEngineI	CEnginePrimitiveManagerRepeatedZSprites	1	1	engine/CEnginePrimitiveManagerRepeatedZSprites.h	00baa820
 T3	emit ?RenderPrimitive@CEnginePrimitiveManagerRepeatedZSprites@@UAE?AW4ERendered@@AAVC	CEnginePrimitiveManagerRepeatedZSprites	1	1	engine/CEnginePrimitiveManagerRepeatedZSprites.h	00babf70
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEPAVCEngineInter	CEnginePrimitiveManagerSpriteTrails	1	1	engine/CEnginePrimitiveManagerSpriteTrails.h	00bca8b0
@@ -11175,7 +11148,6 @@ T3	emit ?RenderSubPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAEXAAVCEngineS
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAEPAVCEngineInter	CEnginePrimitiveManagerWeaponTrails	1	1		00bcd600
 T3	emit ?CreateInternalPrimitive@CEnginePrimitiveManagerWeatherMask@@UAEPAVCEngineIntern	CEnginePrimitiveManagerWeatherMask	1	1		00bb6a50
 T3	emit ?RenderSubPrimitive@CEnginePrimitiveManagerWeatherMask@@UAEXAAVCEngineSubPrimiti	CEnginePrimitiveManagerWeatherMask	1	1		00bb6b50
-T3	emit ?CreateInternalPrimitive@CEnginePrimitiveOcclusionGroupManager@@UAEPAVCEngineInt	CEnginePrimitiveOcclusionGroupManager_Methods	1	1		00bacbc0
 T3	emit ?RenderPrimitive@CEnginePrimitiveOcclusionGroupManager@@UAE?AW4ERendered@@AAVCEn	CEnginePrimitiveOcclusionGroupManager_Methods	1	1		00bacc50
 T3	emit ?FrameStart@CEnginePrimitiveOcclusionManager@@UAEXABVCEngineComponentParams@@@Z	CEnginePrimitiveOcclusionManager_Methods	1	1		00b2f7c0
 T3	emit ??_ECEnginePrimitiveRenderUtil@@UAEPAXI@Z	CEnginePrimitiveRenderUtil	1	1	engine/CEnginePrimitiveRenderUtil.h	00b8b600
@@ -11207,7 +11179,6 @@ T3	emit ??_ECEngineSubPrimitiveStaticMesh@@UAEPAXI@Z	CEngineSubPrimitiveStaticMe
 T3	emit ??_ECEngineSubPrimitiveWeaponTrail@@UAEPAXI@Z	CEngineSubPrimitiveWeaponTrail	1	1		00bcc4f0
 T3	emit ??_ECEngineSubPrimitiveWeatherMask@@UAEPAXI@Z	CEngineSubPrimitiveWeatherMask	1	1		00bb6c20
 T3	emit ?LoadNewScene@CEngineSurfaceCompositionManager@@UAE_NABVCEngineComponentLoadNewS	CEngineSurfaceCompositionManager_Methods	1	1		00b2aee0
-T3	emit ?PeekSceneFilterFlags@CEngineSurfaceCompositionManager@@UBEKXZ	CEngineSurfaceCompositionManager_Methods	1	1		00b2f5c0
 T3	emit ?PeekName@CEngineVSConstantLayoutBasic@@UBE?AVCCharString@@XZ	CEngineVSConstantLayoutBasic	1	1	engine/CEngineVSConstantLayoutBasic.h	00bdbf00
 T3	emit ??_ECEngineVSConstantLayoutBasic@@UAEPAXI@Z	CEngineVSConstantLayoutBasic	1	1	engine/CEngineVSConstantLayoutBasic.h	00bdbf20
 T3	emit ?PeekName@CEngineVSConstantLayoutLights@@UBE?AVCCharString@@XZ	CEngineVSConstantLayoutLights	1	1	engine/CEngineVSConstantLayoutLights.h	00bdb580
@@ -11223,19 +11194,15 @@ T3	emit ?GetConsoleEnableFunctionName@CEngineWaterRenderer@@UAE?AVCCharString@@X
 T3	emit ??_ECEngineWaterSettings@@UAEPAXI@Z	CEngineWaterSettings	1	1	engine/CEngineWaterSettings.h	00bea760
 T3	emit ??_GCEngineWeatherRenderer@@UAEPAXI@Z	CEngineWeatherRenderer	1	1	engine/CEngineWeatherRenderer.h	00b56690
 T3	emit ??_GCEngineWorldMap@@UAEPAXI@Z	CEngineWorldMap	1	1	engine/CEngineWorldMap.h	00b44440
-T3	emit ?CutscenePreload@CEngine@@UAEX_N0@Z	CEngine_Methods	1	1		00b23a10
 T3	emit ?ChangeCameraAngle@CEngine@@UAEXXZ	CEngine_Methods	1	1		00b23a50
 T3	emit ?SetCamera@CEngine@@UAEXPBVCCamera@@@Z	CEngine_Methods	1	1		00b23b50
 T3	emit ??_GCEnvironmentDef@@UAEPAXI@Z	CEnvironmentDef	1	1	engine/CEnvironmentDef.h	00455c1d
 T3	emit ??_ECExplosiveTrailDef@@UAEPAXI@Z	CExplosiveTrailDef	1	1	engine/CExplosiveTrailDef.h	0045011b
 T3	emit ?Transfer@CExplosiveTrailDef@@UAEXAAVCPersistContext@@@Z	CExplosiveTrailDefPersist	1	1		00453178
-T3	emit ?Transfer@CExpressionSubDef@@UAEXAAVCPersistContext@@@Z	CExpressionSubDef_Methods	1	1		004de881
 T3	emit ??_ECFactionDef@@UAEPAXI@Z	CFactionDef	1	1		00456515
-T3	emit ?NeedsBufferedRead@CFileDataInputStream@@EAE_NJ@Z	CFileDataInputStream_Methods	1	1		009943b0
 T3	emit ??_GCFileInstaller@@UAEPAXI@Z	CFileInstaller	1	1	engine/CFileInstaller.h	009c7900
 T3	emit ?Transfer@CFireballSpellLevelDef@@UAEXAAVCPersistContext@@@Z	CFireballSpellLevelDef_Methods	1	1		004dea03
 T3	emit ?CreateCRC@CFontBankStateBlock@@UAEKXZ	CFontBankStateBlock	1	1	engine/CFontBankStateBlock.h	00a63890
-T3	emit ?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z	CFontBank_Methods	1	1		009a0b20
 T3	emit ?CanUnload@CFontDataBankEntry@@UBE_NXZ	CFontDataBankEntry_Methods	1	1		00a63560
 T3	emit ?IsDiskFile@CFontDataBank@@MAE_NKK@Z	CFontDataBank_Methods	1	1		00a63ac0
 T3	emit ??_GCFrameRateSmoother@@UAEPAXI@Z	CFrameRateSmoother	1	1	engine/CFrameRateSmoother.h	0041977d
@@ -11300,12 +11267,9 @@ T3	emit ?GetRandomThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@
 T3	emit ?ForceShipsVisible@CGameScriptInterface@@UBEXXZ	CGameScriptInterfaceMethods	1	1		008a7f60
 T3	emit ?CreatureGeneratorSetFamily@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharS	CGameScriptInterfaceMethods	1	1		008a9020
 T3	emit ?SetThingAndCarriedItemsNotAffectedByScreenFilter@CGameScriptInterface@@UBEXAAVC	CGameScriptInterfaceMethods	1	1		008a99f0
-T3	emit ?SetCreatureCreationDelayFrames@CGameScriptInterface@@UAEXJ@Z	CGameScriptInterface_Methods	1	1		006e7d30
 T3	emit ?EndCutFade@CGameScriptInterface@@UAEXXZ	CGameScriptInterface_Methods	1	1		0088e520
-T3	emit ?SetHeroGuideToShowQuestCardsWhenSpokenTo@CGameScriptInterface@@UAEX_N@Z	CGameScriptInterface_Methods	1	1		0088ec60
 T3	emit ?EntitySetOpinionReactionsEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@_N@	CGameScriptInterface_Methods	1	1		0088f810
 T3	emit ?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z	CGameScriptInterface_Methods	1	1		00891320
-T3	emit ?ActivateQuestWithoutLoadingResources@CGameScriptInterface@@UBEXABVCCharString@@	CGameScriptInterface_Methods	1	1		00892ec0
 T3	emit ?MsgOnHeroSlept@CGameScriptInterface@@UBE_NAA_N@Z	CGameScriptInterface_Methods	1	1		00893ec0
 T3	emit ?SetPreferredQuickAccessItem@CGameScriptInterface@@UBEXABVCCharString@@JJ@Z	CGameScriptInterface_Methods	1	1		00896e60
 T3	emit ?SetToKillOnLevelUnload@CGameScriptThing@@UAEX_N@Z	CGameScriptThing	1	1	engine/CGameScriptThing.h	008d03a0
@@ -11350,7 +11314,6 @@ T3	emit ?MsgOnCutSceneAnimEvent@CGameScriptThing@@UBE_NAAVCCharString@@@Z	CGameS
 T3	emit ?MsgIsKicked@CGameScriptThing@@UBE_NXZ	CGameScriptThingMethods	1	1		008d3cf0
 T3	emit ?Init@CGenericVar@@UAEXABVCCharString@@@Z	CGenericVar	1	1	engine/CGenericVar.h	009ea210
 T3	emit ?Copy@CGiftDef@@UAEXPBVCDefClassBase@@@Z	CGiftDef	1	1	engine/CGiftDef.h	004e077d
-T3	emit ?Transfer@CGoldDef@@UAEXAAVCPersistContext@@@Z	CGoldDef_Methods	1	1		004debc4
 T3	emit ?Set@CGraphicBankStateBlock@@MAEXPBVCBankStateBlock@@@Z	CGraphicBankStateBlock	1	1	engine/CGraphicBankStateBlock.h	009fd020
 T3	emit ?GetDefault@CGraphicBankStateBlock@@UAEXAAVCBankStateBlock@@@Z	CGraphicBankStateBlockMethods	1	1		009fcef0
 T3	emit ?IsUsingSurfaces@CGraphicDataBank@@UBE_NXZ	CGraphicDataBank	1	1	engine/CGraphicDataBank.h	00a013c0
@@ -11370,7 +11333,6 @@ T3	emit ?GetProximityForDirectApproach@CGroundNavigatorExternalInterface@@UBEMXZ
 T3	emit ?Clone@CGroundNavigatorExternalInterface@@UBEPAVCNavigatorExternalInterface@@XZ	CGroundNavigatorExternalInterface_Methods	1	1		006ce650
 T3	emit ??_ECGuildMasterDef@@UAEPAXI@Z	CGuildMasterDef	1	1		0045008f
 T3	emit ?Copy@CGuildMasterDef@@UAEXPBVCDefClassBase@@@Z	CGuildMasterDef	1	1		00454248
-T3	emit ?CanMoveResource@CHandleBasedMemoryPool@@MAE_NPAXJ@Z	CHandleBasedMemoryPool_Methods	1	1		00a03a40
 T3	emit ??_ECHeroAbilityDef@@UAEPAXI@Z	CHeroAbilityDef	1	1	engine/CHeroAbilityDef.h	0045608d
 T3	emit ??_GCHeroMarriageDef@@UAEPAXI@Z	CHeroMarriageDef	1	1	engine/CHeroMarriageDef.h	0044f7fe
 T3	emit ?Transfer@CHeroMarriageDef@@UAEXAAVCPersistContext@@@Z	CHeroMarriageDef_Transfer	1	1		00452398
@@ -11379,9 +11341,6 @@ T3	emit ??_GCHeroTitleDef@@UAEPAXI@Z	CHeroTitleDef	1	1	engine/CHeroTitleDef.h	00
 T3	emit ??_GCHitLocationsDef@@UAEPAXI@Z	CHitLocationsDef	1	1		00453ba8
 T3	emit ??_GCTavernGameShoveHaPennyDef@@UAEPAXI@Z	CHoverWanderAroundThingGroup_004e2d89	1	1		004e2d89
 T3	emit ??_ECIDrawEnvironment@@UAEPAXI@Z	CIDrawEnvironment	1	1	engine/CIDrawEnvironment.h	006b2ad0
-T3	emit ?DrawGetEngineThemeAt@CIDrawMap@@UBEJJJJ@Z	CIDrawMap_Methods	1	1		0081e220
-T3	emit ?DrawGetEngineBlendAt@CIDrawMap@@UBEEJJJ@Z	CIDrawMap_Methods	1	1		0081e230
-T3	emit ?DrawFindLastUnblockedPosition@CIDrawMap@@UBE_NPBVC3DVector@@0PAV2@@Z	CIDrawMap_Methods	1	1		0081e240
 T3	emit ?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ	CIEngine	1	1	engine/CIEngine.h	00b28b60
 T3	emit ?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z	CIEngine_Methods	1	1		00b23610
 T3	RTTI names ??_ECEngineMeshEffect@@UAEPAXI@Z	CIVCountedPointeeBase	1	1	engine/CIVCountedPointeeBase.h	004c2f50
@@ -11503,7 +11462,6 @@ T3	emit ?PeekRumbleWithID@CJoystickDX@@UBEPBVCActiveRumble@CJoystick@@J@Z	CJoyst
 T3	emit ?Update@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAEXXZ	CJumpAtFleeingMethods	1	1		0094f730
 T3	emit ?GetKeyName@CKeyboardDX@@UBE_NW4EInputKey@@AAVCWideString@@@Z	CKeyboardDX	1	1		00ab6180
 T3	emit ?IsKeyPressed@CKeyboardDX@@UAE_NW4EInputKey@@@Z	CKeyboardDX	1	1		00ab6220
-T3	emit ?GetKeyName@CKeyboard@@UBE_NW4EInputKey@@AAVCWideString@@@Z	CKeyboard_Methods	1	1		00a66ad0
 T3	emit ??_GCMessageEventDef@@UAEPAXI@Z	CLBP_Vtbl	1	1		0045585a
 T3	emit ?OnPostRelocation@CLandscapeBackgroundPatch@@UAEXXZ	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be5d80
 T3	emit ?RelocateData@CLandscapeBackgroundPatch@@UAEXJPAX0J@Z	CLandscapeBackgroundPatch_RelocateData	1	1		00be65a0
@@ -11592,9 +11550,7 @@ T3	emit ?GetNextNeighbour@CNavigatorBase@@UAEPBVCANavQuadTreeNode@@ABV2@PBV2@ABV
 T3	emit ??_ECNavigatorBase@@UAEPAXI@Z	CNavigatorBase	1	1	engine/CNavigatorBase.h	00a47e80
 T3	emit ?MoveToPos@CNavigatorFlyer@@UAE?AW4ENavigatorReturn@@ABVC3DVector@@0MAAV3@_N2222	CNavigatorFlyer	1	1	engine/CNavigatorFlyer.h	00a18ea0
 T3	emit ??_ECNavigatorFlyer@@UAEPAXI@Z	CNavigatorFlyer	1	1	engine/CNavigatorFlyer.h	00a19b20
-T3	emit ?GetNearestNavigablePosTo@CNavigatorFlyer@@UBE_NABVC3DVector@@MAAV2@@Z	CNavigatorFlyer_Methods	1	1		00a18ef0
 T3	emit ?MoveToNavLineOfSightProximity@CNavigatorFlyer@@UAE?AW4ENavigatorReturn@@ABVC3DV	CNavigatorFlyer_Methods	1	1		00a18f00
-T3	emit ?IsNewDestinationGoingToCauseRestart@CNavigatorFlyer@@UBE_NABVC3DVector@@M@Z	CNavigatorFlyer_Methods	1	1		00a18f10
 T3	RTTI names ??_GCGameNavigatorManagerExternalInterface@@UAEPAXI@Z	CNavigatorManagerExternalInterface	1	1		004a9260
 T3	emit ??_ECNetworkClient@@UAEPAXI@Z	CNetworkClient	1	1	engine/CNetworkClient.h	00419365
 T3	emit ??_GCNetworkServer@@UAEPAXI@Z	CNetworkServer	1	1		00415e67
@@ -11612,7 +11568,6 @@ T3	emit ?Transfer@COpinionSourceDef@@UAEXAAVCPersistContext@@@Z	COpinionSourceDe
 T3	emit ?Transfer@COverheadDisplayDef@@UAEXAAVCPersistContext@@@Z	COverheadDisplayDef_Transfer	1	1		007b7d20
 T3	emit ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharSt	CParentDefClassBase	1	1	engine/CParentDefClassBase.h	009ad4a0
 T3	emit ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharSt	CParentDefClassBase	1	1	engine/CParentDefClassBase.h	009ad510
-T3	emit ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z	CParentDefClassBase_Methods	1	1		004303c0
 T3	emit ?Copy@CParticleAttacherDef@@UAEXPBVCDefClassBase@@@Z	CParticleAttacherDef	1	1		004e299b
 T3	emit ?Transfer@CParticleAttacherDef@@UAEXAAVCPersistContext@@@Z	CParticleAttacherDef	1	1		004e9caa
 T3	emit ?GetCameraPos@CParticleEnvironmentInteraction@@UBEXAAVC3DVector@@@Z	CParticleEnvironmentInteraction	1	1		0049bdc0
@@ -11660,7 +11615,6 @@ T3	emit ?TransferBinaryIn@CReactionMatch_SecondaryAxisMRShifted@@UAEXAAVCMemoryD
 T3	emit ?Transfer@CReadableDef@@UAEXAAVCPersistContext@@@Z	CReadableDef_Transfer	1	1		007e81b0
 T3	emit ?Transfer@CReplaceableMeshDef@@UAEXAAVCPersistContext@@@Z	CReplaceableMeshDef	1	1	engine/CReplaceableMeshDef.h	004ea20e
 T3	emit ??_ECResourceBank@@UAEPAXI@Z	CResourceBank	1	1	engine/CResourceBank.h	009fc750
-T3	emit ?CanAbortResourceLoad@CResource@@UBE_NJ@Z	CResource_Methods	1	1		0042d970
 T3	emit ?Transfer@CResurrectionItemDef@@UAEXAAVCPersistContext@@@Z	CResurrectionItemDef_Methods	1	1		004def76
 T3	RTTI names ??_GCSBGoal@@UAEPAXI@Z	CSB	1	1	engine/CSB.h	00a20870
 T3	RTTI names ??_ECSBInput@@UAEPAXI@Z	CSB	1	1	engine/CSB.h	00a208a0
@@ -11698,16 +11652,9 @@ T3	emit ?IsNull@CScriptGameResourceObjectScriptedThing@@UBE_NXZ	CScriptGameResou
 T3	emit ?IsOpenDoor@CScriptThing@@UBE_NXZ	CScriptThing	1	1	engine/CScriptThing.h	004ab000
 T3	emit ?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z	CScriptThing	1	1	engine/CScriptThing.h	004ab0c0
 T3	emit ?MsgWhoKilledMe@CScriptThing@@UBE?AV1@XZ	CScriptThing	1	1	engine/CScriptThing.h	004abe60
-T3	emit ?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing_Methods	1	1		004aac20
-T3	emit ?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z	CScriptThing_Methods	1	1		004aac40
-T3	emit ?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z	CScriptThing_Methods	1	1		004aac60
-T3	emit ?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z	CScriptThing_Methods	1	1		004aaca0
 T3	emit ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@	CScriptThing_Methods	1	1		004aad20
 T3	emit ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing_Methods	1	1		004aad40
 T3	emit ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing_Methods	1	1		004aad60
-T3	emit ?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@	CScriptThing_Methods	1	1		004aad80
-T3	emit ?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z	CScriptThing_Methods	1	1		004aaee0
-T3	emit ?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z	CScriptThing_Methods	1	1		004aaf40
 T3	emit ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing_Methods	1	1		004aafe0
 T3	emit ?Set@CShaderBankStateBlock@@MAEXPBVCBankStateBlock@@@Z	CShaderBankStateBlock	1	1		00a61f40
 T3	emit ?CreateCRC@CShaderBankStateBlock@@UAEKXZ	CShaderBankStateBlock	1	1		00a62580
@@ -11788,8 +11735,6 @@ T3	emit ?IsTaskAvailable@CVillageTaskTorch@@UBE_NXZ	CVillageTaskTorch_Methods	1	
 T3	emit ?Copy@CVillagerInteractionsDef@@UAEXPBVCDefClassBase@@@Z	CVillagerInteractionsDef	1	1		0045e620
 T3	emit ?Set@CWADBankStateBlock@@MAEXPBVCBankStateBlock@@@Z	CWADBankStateBlock	1	1	engine/CWADBankStateBlock.h	00a3a2e0
 T3	emit ?Clone@CWADFile@@UBEPAVCAFile@@XZ	CWADFile	1	1	engine/CWADFile.h	00a39c80
-T3	emit ?Read@CWADFile@@UAEXPAXJPAVCASuspendableProcess@@@Z	CWADFile_Methods	1	1		00a39bb0
-T3	emit ?SetPosition@CWADFile@@UAEXJ@Z	CWADFile_Methods	1	1		00a39bf0
 T3	emit ?GetAlignment@CWADFile@@UBEJXZ	CWADFile_Methods	1	1		00a39c70
 T3	emit ??_GCWStringParser@@UAEPAXI@Z	CWStringParser	1	1	engine/CWStringParser.h	0043e520
 T3	emit ?DrawGetEnvironment@CWorld@@UBEPBVCIDrawEnvironment@@XZ	CWorld	1	1	engine/CWorld.h	0049e350
@@ -11799,14 +11744,10 @@ T3	emit ?GetMapPos@CWorldMap@@UBE?AVC2DCoordI@@J@Z	CWorldMap	1	1	engine/CWorldMa
 T3	emit ?GetAllLoadedMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@s	CWorldMap	1	1	engine/CWorldMap.h	004ff310
 T3	shared name (2 addresses)	CWorldMap	1	1	engine/CWorldMap.h	00a73cf0
 T3	emit ?GetLoadableSections@CWorldMap@@UBE?AV?$set@VCCharString@@U?$less@VCCharString@@	CWorldMapSectionView	1	1		004ff490
-T3	emit ?IsMapChangeable@CWorldMap@@UBE_NJ@Z	CWorldMap_Methods	1	1		004fb2e0
 T3	emit ?GetMapAt@CWorldMap@@UAEAAVCMap@@ABVC2DCoordI@@@Z	CWorldMap_Methods	1	1		004fc130
 T3	emit ?PeekMapAt@CWorldMap@@UBEABVCMap@@ABVC2DCoordI@@@Z	CWorldMap_Methods	1	1		004fc150
 T3	emit ?ForceUnload@CWorldMap@@UAEXJ@Z	CWorldMap_Methods	1	1		004ff8a0
-T3	emit ?DrawGetWorldMap@CWorld@@UBEPBVCIDrawWorldMap@@XZ	CWorld_Methods	1	1		0049e1a0
-T3	emit ?PeekThingManager@CWorld@@UBEABVCThingManager@@XZ	CWorld_Methods	1	1		0049e1c0
 T3	emit ?LoadWorldFromFile@CWorld@@UAEXAAVCAFile@@J@Z	CWorld_Methods	1	1		0049e220
-T3	emit ?PeekWorldMap@CWorld@@UBEABVCWorldMap@@XZ	CWorld_Methods	1	1		004ae8c0
 T3	emit ??_GCXMVPlayer@@UAEPAXI@Z	CXMVPlayer	1	1	engine/CXMVPlayer.h	009be1b0
 T3	emit ??_GCXMVPlayerBuffers@@UAEPAXI@Z	CXMVPlayerBuffers	1	1	engine/CXMVPlayerBuffers.h	0042db60
 T3	emit ?IsOpen@CMemoryFile@@UBE_NXZ	C_00405d30	1	1		00405d30

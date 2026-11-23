@@ -11,38 +11,29 @@
 // NF176 (2026-11-20, q5003): the CCompressorZlib_Calls stand-in is gone: the compressor is the shared engine/CCompressorZlib.h class
 //   (FABLE_RETAIL_CACOMPRESSOR / _CCOMPRESSORZLIB / _STREAM), whose Ego_r.pdb / FableWin.pdb DecompressStream takes the end-of-stream flag
 //   by reference: 0x00A3A840 binds ?DecompressStream@CCompressorZlib@@QAEKPAXKAA_N@Z (was ?DecompressStream@CCompressorZlib_Calls@@QAEKPAXKPA_N@Z).
+// Leaf: ?InternalReadNextSourceChunk@CCompressedMemoryDataInputStream@@EAEXAAPBEAAJ@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CCompressedMemoryDataInputStream.h under
+//   FABLE_RETAIL_CCOMPRESSEDMEMORYDATAINPUTSTREAM with the PDB parameter types (was
+//   ?InternalReadNextSourceChunk@CCompressedMemoryDataInputStream_Retail@@QAEXPAPAEPAK@Z); the retail RTTI vftable placement
+//   (ghidra_out/labels_rtti_port.tsv) names this PDB member here. The local _Retail view and its CScopedPointer stand-in are replaced by
+//   the header's members (Buffer +0x18, BufferSize +0x1C, boost::scoped_ptr<CCompressorZlib> Compressor +0x20).
+// Preamble: the landed precedent CCompressedMemoryDataInputStream_SetPosition_00994a80.cpp.
+#define FABLE_RETAIL_CDATAINPUTSTREAM
+#define FABLE_RETAIL_CCOMPRESSEDMEMORYDATAINPUTSTREAM
 #define FABLE_RETAIL_CACOMPRESSOR
 #define FABLE_RETAIL_CCOMPRESSORZLIB
 #define FABLE_RETAIL_CCOMPRESSORZLIB_STREAM
-#include "engine/CCompressorZlib.h"
+#define FABLE_RETAIL_SCOPED_PTR
 #define FABLE_RETAIL_CAFILE_ERRORCALLBACK   // NF37: CAFile::m_errorCallback 0x013BC9FC (FableWin/Ego_r ?m_errorCallback@CAFile@@0P6IXXZA)
-#include "engine/CAFile.h"
+#include "engine/CCompressorZlib.h"
 #include "engine/CCompressedMemoryDataInputStream.h"
-
-
-template<class T> struct CScopedPointer {                       // scoped_ptr<T>: one owning pointer
-    T* ptr;
-    T* operator->() const { return ptr; }
-};
-
+#include "engine/CAFile.h"
 #define FABLE_ASSERT(cond) do { if (!(cond)) { CAFile::DoErrorCallback(); } } while (0)
-
-struct CCompressedMemoryDataInputStream_Retail {
-    virtual void v00();
-    unsigned char          _state[0x14];                        // +0x04..+0x17 (CDataStream)
-    unsigned char*         Buffer;                              // +0x18
-    long                   BufferSize;                          // +0x1c
-    CScopedPointer<CCompressorZlib> Compressor;           // +0x20 (scoped_ptr: ptr)
-    void InternalReadNextSourceChunk(unsigned char** chunkData, unsigned long* chunkSize);
-};
-
-FABLE_STATIC_ASSERT(sizeof(CCompressedMemoryDataInputStream_Retail) == sizeof(CCompressedMemoryDataInputStream));
-
-void CCompressedMemoryDataInputStream_Retail::InternalReadNextSourceChunk(unsigned char** chunkData, unsigned long* chunkSize)
+void CCompressedMemoryDataInputStream::InternalReadNextSourceChunk(const unsigned char*& chunkData, long& chunkSize)
 {
     bool endOfStream = false;
     unsigned long bytesProduced = Compressor->DecompressStream(Buffer, BufferSize, endOfStream);
     FABLE_ASSERT(bytesProduced > 0);
-    *chunkData = Buffer;
-    *chunkSize = bytesProduced;
+    chunkData = Buffer;
+    chunkSize = bytesProduced;
 }

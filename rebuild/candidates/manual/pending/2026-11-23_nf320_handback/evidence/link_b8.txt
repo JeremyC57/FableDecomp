@@ -1,0 +1,7 @@
+## HEAD set: 004de33e.obj 004de881.obj 004debc4.obj 00930d70.obj
+duplicates 0
+UNRESOLVED 3 ??$Transfer@J@CPersistContext@@QAEXAAJ@Z
+## new set: 004de33e.obj 004de881.obj 004debc4.obj 00930d70.obj
+duplicates 0
+UNRESOLVED 3 ??$Transfer@J@CPersistContext@@QAEXAAJ@Z
+LK_DONE

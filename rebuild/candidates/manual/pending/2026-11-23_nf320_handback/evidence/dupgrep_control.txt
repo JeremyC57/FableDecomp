@@ -1,0 +1,8 @@
+004aa980 /home/user/FableDecomp/rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_Conclusion_00d6d670.cpp:60:inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+004aa980 /home/user/FableDecomp/rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Main_00d6a560.cpp:45:FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+004aa980 /home/user/FableDecomp/rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Main_00d524a0.cpp:48:FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+GetPos hits: 86
+004de33e CEnemyDef Transfer hits: 0
+004de881 CExpressionSubDef Transfer hits: 0
+004debc4 CGoldDef Transfer hits: 0
+00930d70 CAIStateGroup_MinionReactToCriminal InitStateGroup hits: 0

@@ -1,7 +1,11 @@
-// Leaf: ?CreateInternalPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes_Methods@@QAEPAXH@Z
-#include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CEnginePrimitiveManagerRepeatedStaticMeshes_Methods : CEnginePrimitiveManagerRepeatedStaticMeshes {
-    void* CreateInternalPrimitive(int a0);
-};
-void* CEnginePrimitiveManagerRepeatedStaticMeshes_Methods::CreateInternalPrimitive(int a0) { return 0; }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?CreateInternalPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z); evidence: RTTI vtable slot + PDB name set.
+// Leaf: ?CreateInternalPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z
+// Signature port (NF320, 2026-11-23): defined on the real class of engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h under FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES, FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_OVERRIDES with the PDB parameter / return types (was ?CreateInternalPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes_Methods@@QAEPAXH@Z);
+//   the retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names this PDB member here.
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES
+#define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERREPEATEDSTATICMESHES_OVERRIDES
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
+#include "engine/CArray.h"
+#include "engine/CEnginePrimitiveManager.h"
+#include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
+CEngineInternalPrimitiveBase* CEnginePrimitiveManagerRepeatedStaticMeshes::CreateInternalPrimitive(EEnginePrimitiveType a0) { return 0; }
