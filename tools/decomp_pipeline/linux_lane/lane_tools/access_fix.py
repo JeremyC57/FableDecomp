@@ -54,18 +54,17 @@ def tail_diff(lo, ro, lg, rg):
     if a1 and b1 and a1.group(2) == b1.group(2): return (cv_new, b1.group(1), virt_add)
     return None
 VTBL = re.compile(r'^(\s*(?:(?:public|protected|private)\s*:\s*)*)(?:void\s*\*|const\s+void\s*\*|void\s*\*\s*const|void\s*\*\*|const\s+void\s*\*\*|unsigned\s+(?:int|long)|int|long|const\s+\w+\s*\*|\w+\s*\*)\s*(?:vtbl|__vftable|vtable|vft|vptr|m_vtbl|_vtbl|vfptr|m_vftable|m_pVtbl|vtbl_|pVtbl|m_vfptr)\s*;[^\n]*\n?')
-PAD = re.compile(r'^(\s*(?:(?:public|protected|private)\s*:\s*)*)(?:unsigned\s+)?char\s+(\w+)\s*\[\s*(0x[0-9a-fA-F]+|\d+)\s*\]\s*;')
+PAD = re.compile(r'^(\s*(?:(?:public|protected|private)\s*:\s*)*)((?:unsigned\s+)?char)\s+(\w+)\s*\[\s*(0x[0-9a-fA-F]+|\d+)\s*\]\s*;')
 def make_room_for_vptr(body):
     """the class body with its leading 4-byte vptr stand-in removed (a `void* vtbl`-like member, or 4 bytes off a leading char pad), or None"""
-    b = re.sub(r'^(\s*(?://[^\n]*\n|/\*.*?\*/))+', lambda q: q.group(0), body, flags=re.S)
     lead = re.match(r'(\s*(?://[^\n]*\n\s*|/\*.*?\*/\s*)*)', body, re.S).group(0); rest = body[len(lead):]
     m = VTBL.match(rest)
     if m: return lead + m.group(1) + rest[m.end():]
     m = PAD.match(rest)
     if m:
-        n = int(m.group(3), 0) - 4
+        n = int(m.group(4), 0) - 4
         if n < 0: return None
-        return lead + m.group(1) + (f"char {m.group(2)}[{hex(n)}];" if n else "") + rest[m.end():]
+        return lead + m.group(1) + (f"{m.group(2)} {m.group(3)}[{hex(n)}];" if n else "") + rest[m.end():]   # keep the element type
     return None
 rows = [l.split("\t") for l in open("rebuild/candidates/manual/naming/status/OPEN.tsv").read().splitlines()[1:]]
 if "--wide" in argv:
