@@ -25,6 +25,7 @@ T1	access	CThingPhysical	1	1	engine/CThingPhysical.h	006a4e90
 T1	access	CThingPlayerCreature	1	1	engine/CThingPlayerCreature.h	006ac390
 T1	access	CTriangleStripifier2	1	1	engine/CTriangleStripifier2.h	00f3b970
 T1	access	CWideString	1	2		0099b4d0
+T1	access	CWorldMap	1	1	engine/CWorldMap.h	0063e480
 T1	standin_alias	vector	19	18		00411910 004df88a 004e34b2 0056d490 005bba94 005e3040 006753b0 006755e0 006fcf10 00708ca0 00722eb0 0082c620 0082c8a0 0086b2a0 00ad83a0 00b83df0 00b97af0 00cdbc90 00f25ce0
 T1	standin_alias	CCountedPointer	13	14	engine/CCountedPointer.h	004850f9 0048afb0 0056c0f0 005ed2c0 006174f0 0065d5a0 006e46f0 007180b0 007222b0 0085a5a0 009a4400 00ac3a10 00b230e0
 T1	standin_alias	pair	12	12		00448380 004d6902 004d788d 004dd728 005799fd 005f8736 006b8e20 00825090 00827f80 00a7faf0 00ae98e0 00cd27b4
@@ -149,6 +150,7 @@ T1	standin_alias	CLODStateBlock	1	1		00a2cf50
 T1	standin_alias	CMainGameComponent	1	1	engine/CMainGameComponent.h	00415fbc
 T1	standin_alias	CMemoryAreaChunk	1	1		00a658e0
 T1	standin_alias	CMemoryDataOutputStream	1	2	engine/CMemoryDataOutputStream.h	00996af0
+T1	standin_alias	CMessageEventFilter_IsOriginatedByThing	1	1		006af2b0
 T1	standin_alias	CMiniMapDisplay	1	1	engine/CMiniMapDisplay.h	0082a890
 T1	standin_alias	CMinimapData	1	1		0082cac0
 T1	standin_alias	CNavigationLayer	1	1		00a851e0
@@ -157,6 +159,7 @@ T1	standin_alias	COpinionSet	1	1		00477428
 T1	standin_alias	CPersistTraits	1	1	engine/CPersistTraits.h	004ddf0c
 T1	standin_alias	CPlayerGui	1	1	engine/CPlayerGui.h	0043a2a0
 T1	standin_alias	CRegion	1	1	engine/CRegion.h	0051a110
+T1	standin_alias	CResourceBank	1	1	engine/CResourceBank.h	009fc380
 T1	standin_alias	CScreenFilterSThingByPass	1	1	engine/CScreenFilterSThingByPass.h	00cd2ae2
 T1	standin_alias	CScriptConversation	1	3	engine/CScriptConversation.h	004ae0e0
 T1	standin_alias	CScriptGameResourceObjectScriptedThingBase	1	1	engine/CScriptGameResourceObjectScriptedThingBase.h	00905330
@@ -231,7 +234,6 @@ T1	signature	CFileDataInputStream	2	1	engine/CFileDataInputStream.h	00994700 009
 T1	signature	CGameTimeManager	2	1	engine/CGameTimeManager.h	006bb860 006bb940
 T1	signature	CQ_AmbushTradersScript	2	2	engine/CQ_AmbushTradersScript.h	00f07b80 00f09950
 T1	signature	CQ_BountyHuntScript	2	2	engine/CQ_BountyHuntScript.h	00d16920 00d16d00
-T1	signature	CTCFollowed	2	2	engine/CTCFollowed.h	006d4e60 006d5050
 T1	signature	CTCHeroStats	2	2	engine/CTCHeroStats.h	0057a6b8 0057bc6e
 T1	signature	CTCInventory	2	2	engine/CTCInventory.h	00581ddb 00584b86
 T1	signature	CTCInventoryAbilities	2	2	engine/CTCInventoryAbilities.h	005f0dc5 005f1320
@@ -303,6 +305,7 @@ T1	signature	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	007837
 T1	signature	CTCCreatureOpinionOfHero	1	1	engine/CTCCreatureOpinionOfHero.h	00681ae0
 T1	signature	CTCEmoteIcon	1	2	engine/CTCEmoteIcon.h	0071ac70
 T1	signature	CTCEnemy	1	1	engine/CTCEnemy.h	0076cc00
+T1	signature	CTCFollowed	1	1	engine/CTCFollowed.h	006d4e60
 T1	signature	CTCGraphicAppearance	1	1		004c0240
 T1	signature	CTCHeroAttachableAppearanceModifiers	1	1	engine/CTCHeroAttachableAppearanceModifiers.h	00706640
 T1	signature	CTCHitLocations	1	1	engine/CTCHitLocations.h	008169b0
@@ -362,9 +365,9 @@ T1	other	GetDef	11	14		0043ff30 00528760 00593666 005c0c99 006a3060 0078b230 007
 T1	other	LSocket	10	9	engine/LSocket.h	008f8210 008f82e0 008f86f0 008f87a0 008f8870 008f8a80 008f8bb0 008f8c70 008f9780 008fa120
 T1	other	CCharString	9	144		0099e4b0 0099e960 0099eae0 0099eaf0 0099eb40 0099ebf0 0099ec30 0099ed10 0099efb0
 T1	other	CUserProfileManager	9	9	engine/CUserProfileManager.h	00406cc0 004071c0 00407370 00407cd0 00408340 004085f0 00409730 0040a740 0040d2a0
-T1	other	CWorldMap	9	12	engine/CWorldMap.h	004faff0 004fb490 004fc180 004fc560 004fe5b0 00502620 0063a300 0063b7f0 0063e480
 T1	other	CBankFile	8	12	engine/CBankFile.h	009cbb90 009cc190 009cc270 009ccdc0 009cd620 009ce360 009ce8d0 009cea70
 T1	other	CDataOutputStream	8	12	engine/CDataOutputStream.h	00993e80 00993eb0 00993ee0 00993f30 00993f90 00993fd0 00994230 009959f0
+T1	other	CWorldMap	8	10	engine/CWorldMap.h	004faff0 004fb490 004fc180 004fc560 004fe5b0 00502620 0063a300 0063b7f0
 T1	other	pair	8	13		004d9d2f 0059256c 00592dfb 005930f3 00a825d0 00bed640 00cba520 00cba700
 T1	other	CAFile	7	6	engine/CAFile.h	00998570 00998c90 00998f60 009994a0 00999ab0 00999c50 00999cb0
 T1	other	NParticleEngine	7	11		00aeaa00 00aeaa80 00aeaad0 00aeaae0 00aeab00 00aeab10 00aebea0
@@ -405,7 +408,6 @@ T1	other	CParticleProgram	4	4	engine/CParticleProgram.h	00adf460 00ae0540 00ae06
 T1	other	CPlayerGui	4	10	engine/CPlayerGui.h	00437ce0 00438010 00438310 00438570
 T1	other	CPlayerManager	4	7	engine/CPlayerManager.h	004498c0 00449910 00449960 0044a140
 T1	other	CQuestManager	4	4	engine/CQuestManager.h	004b0160 004b02f0 004b1d30 004b4260
-T1	other	CResourceBank	4	6	engine/CResourceBank.h	009fc380 009fc410 009fc430 009fc690
 T1	other	CScriptBase	4	22	engine/CScriptBase.h	00cb7940 00cb7e50 00cb7f60 00cb8110
 T1	other	CTCCarrying	4	7	engine/CTCCarrying.h	006a1440 006a15a0 006a1620 006a2220
 T1	other	CTCHeroStats	4	5	engine/CTCHeroStats.h	0057a57a 0057a753 0057c2e6 005814e5
@@ -416,7 +418,7 @@ T1	other	CAnimateThing	3	4	engine/CAnimateThing.h	0070d580 0070d8c0 0070e8b0
 T1	other	CArray	3	3	engine/CArray.h	009b4b80 009b7b10 009e7c70
 T1	other	CBaseIntelligentPointer	3	50		00a01b10 00a01b50 00a01b90
 T1	other	CBaseObject	3	3	engine/CBaseObject.h	0099a380 0099a3b0 0099a430
-T1	other	CCombatManager	3	5	engine/CCombatManager.h	006e92c0 006ea2c0 006ebdd0
+T1	other	CCombatManager	3	4	engine/CCombatManager.h	006e92c0 006ea2c0 006ebdd0
 T1	other	CCompressorZlib	3	4	engine/CCompressorZlib.h	00a3a7d0 00a3a9c0 00a3aa00
 T1	other	CDefString	3	9	engine/CDefString.h	0044fc00 004b7980 005fa740
 T1	other	CDefinitionManager	3	6	engine/CDefinitionManager.h	009ad2e0 009ad410 009b0ac0
@@ -434,6 +436,7 @@ T1	other	CParticleEmitterDatabase	3	3	engine/CParticleEmitterDatabase.h	00ae85b0
 T1	other	CParticleSystem	3	8	engine/CParticleSystem.h	00af5090 00af5430 00af56e0
 T1	other	CPersistContext	3	11	engine/CPersistContext.h	00404500 009baa70 009bc120
 T1	other	CPlayer	3	3	engine/CPlayer.h	00487510 00487dd0 00634160
+T1	other	CResourceBank	3	4	engine/CResourceBank.h	009fc410 009fc430 009fc690
 T1	other	CScriptGameResourceObjectScriptedThingBase	3	4	engine/CScriptGameResourceObjectScriptedThingBase.h	007e72a0 007e74d0 008abd10
 T1	other	CScriptThing	3	14	engine/CScriptThing.h	004aa840 004abe90 007046d0
 T1	other	CSmallVector	3	11	engine/CSmallVector.h	006fade0 006fb5c0 009d2110
@@ -607,7 +610,6 @@ T1	other	CContainmentVolume	1	1	engine/CContainmentVolume.h	00a75430
 T1	other	CConversationAttitude	1	1		004cd9c0
 T1	other	CCreateIndicesFromItemNames	1	1		008ed440
 T1	other	CCreateItemNamesFromIndices	1	1		008ed3b0
-T1	other	CCreatureAction_ActivateQuest	1	2	engine/CCreatureAction_ActivateQuest.h	00843f50
 T1	other	CCreatureAction_AddFoodToTable	1	1		00922f50
 T1	other	CCreatureAction_Die	1	1	engine/CCreatureAction_Die.h	008ed650
 T1	other	CCreatureAction_GiveItemToThing	1	1	engine/CCreatureAction_GiveItemToThing.h	0062eb50
@@ -724,7 +726,6 @@ T1	other	CMeleeCombatKnockdownEffects	1	1		004625fd
 T1	other	CMemoryAllocator	1	1	engine/CMemoryAllocator.h	009f2be0
 T1	other	CMemoryDataOutputStream	1	3	engine/CMemoryDataOutputStream.h	00996b30
 T1	other	CMemoryFile	1	2	engine/CMemoryFile.h	009e9390
-T1	other	CMessageEventFilter_IsOriginatedByThing	1	2		006af2b0
 T1	other	CModeGuildmasterPowerUpSpeed	1	1		00742e60
 T1	other	CModeIntangible	1	1		008e72d0
 T1	other	CModeOutOfActionBase	1	2		008d7580

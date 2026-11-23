@@ -1,0 +1,14 @@
+# SetPItem(CThing*) declarer scan (NF313 Q4 / landing nf313 Q4). tools/setpscan.py: 76 landed sources declare SetPItem(CThing*); enclosing class:
+{'None': 1, 'CBaseIntelligentPointerCtor': 30, 'CBaseIntelligentPointer': 43, 'N00807b70::CBaseIntelligentPointer': 1, 'N00809d60::CBaseIntelligentPointer': 1}
+# of the 43 global CBaseIntelligentPointer declarers, the rows that contain a retail E8/E9 call to 0x00A01B90 (evidence/xsites_00a01b90.tsv):
+007fdeb0	-	-
+007fdf60	-	released
+008c0900	-	-
+# HEAD objects compiled (gr_P / gr_P2): references to ?SetPItem@CBaseIntelligentPointer@@...
+0080f270 
+008c8180 
+0090c1a0 
+007fdeb0 ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z 
+007fdf60 ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z 
+008c0900 ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z 
+# the table witness 0x0089E540 binds the PDB PAVCBaseObject form (NF313 evidence/und_stale.txt): stale. Rewitness onto 0x007FDEB0.

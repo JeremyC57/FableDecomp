@@ -87,8 +87,8 @@ public:
     CCharString ScriptName;                         // +0xa8
     bool        LoadResources;                      // +0xac
     CBaseIntelligentPointer PObjectToUse;           // +0xad
-    CCreatureAction_ActivateQuest(CThingCreatureBase& creature, CThing& objectToUse,
-                                  const CCharString& scriptName, bool loadResources);   // 0x00843F50
+    CCreatureAction_ActivateQuest(CThingCreatureBase& creature, CThing* objectToUse,
+                                  const CCharString& scriptName, bool loadResources);   // 0x00843F50 (NF315: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z, Ego_r + FableWin; engine/CCreatureAction_ActivateQuest.h)
 };
 
 class CTCBase {
@@ -124,7 +124,7 @@ void CTCActionUseActivateQuest::OnActionUse(CThing& user)
     if (creature && !creature->IsDead()) {
         CCharString scriptName = GDefStringTable.GetString(def->ScriptName);
         CThing* parent = ParentThing;
-        creature->SetCurrentAction(CCreatureAction_ActivateQuest(*creature, *parent, scriptName, def->LoadResources));
+        creature->SetCurrentAction(CCreatureAction_ActivateQuest(*creature, parent, scriptName, def->LoadResources));
     }
     if (--def->m_refCount == 0)
         def->Delete();

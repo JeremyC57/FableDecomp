@@ -29,10 +29,10 @@ class CThingCreatureBase { public:
     CCombatManager& GetCombatManager();    // 0x00661ED0
 };
 
-enum EUnsheatheWeaponType { UNSHEATHE_INNER_RING = 4, UNSHEATHE_OUTER_RING = 5 };
+#include "engine/EUnsheatheWeaponType.h"   // NF315: the PDB parameter enum of CreatureUnsheathWeapon
 
 class CCombatManager { public:
-    void CreatureUnsheathWeapon(CThingCreatureBase* creature, EUnsheatheWeaponType type);   // 0x006EBDD0
+    void CreatureUnsheathWeapon(CThingCreatureBase& creature, EUnsheatheWeaponType type);   // 0x006EBDD0 (NF315: ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z, Ego_r + FableWin; engine/CCombatManager.h)
 };
 
 struct CProng {
@@ -67,7 +67,7 @@ void CCombatRing::AssignAttackerToProng(CProng* prong, CThingCreatureBase* attac
             RingThickness = size;
     }
     if (outerRing)
-        attacker->GetCombatManager().CreatureUnsheathWeapon(attacker, UNSHEATHE_OUTER_RING);
+        attacker->GetCombatManager().CreatureUnsheathWeapon(*attacker, UNSHEATHE_RANGED_WEAPON);
     else
-        attacker->GetCombatManager().CreatureUnsheathWeapon(attacker, UNSHEATHE_INNER_RING);
+        attacker->GetCombatManager().CreatureUnsheathWeapon(*attacker, UNSHEATHE_MELEE_WEAPON);
 }

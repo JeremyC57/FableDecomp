@@ -6,7 +6,7 @@
 // the entity events component 0x42 and the hero component 0x29), operator new 0x00BFEA1A, CTCEntityEvents::AddEvent
 // (NEntityEvents::CEventBase*) 0x008113C0, the item-kind tests 0x005D9830 (manifest "IsAugmentation") and 0x005D98B0 (same manifest
 // label; a second sub-def test, named from use), GetInventoryCategory(long) 0x005D9B70 (all three __fastcall on the def
-// index), CTCHero::GiveTutorialForCategory(long, bool) 0x006C9FA0.
+// index), CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) 0x006C9FA0.
 // Shape: the events component starts at 0 (`xor ebx,ebx`) and is set only when present: an inline QueryTC<T> whose
 // `T* p = 0; if (test) p = <ternary end/hit pick>->component;` keeps p in ebx (so `this` is the one spilled, [ebp-8])
 // and loads ParentThing once (an if-assign pick, a ternary-returning QueryTC or the out-parameter GetInterface put p in
@@ -74,8 +74,10 @@ struct CEventReceivedItemInInventory : NEntityEvents::CEventBase {  // vtable 0x
 class CTCEntityEvents { public:                             // interface type 0x42
     void AddEvent(NEntityEvents::CEventBase* event);                // 0x008113C0
 };
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:                                     // interface type 0x29
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 class CWideString;                     // NF285: the KINDS block also declares GetDescription (CWideString by value)
 #define FABLE_RETAIL_CTCINVENTORYITEM_KINDS   // NF285: 0x005D9830 is the static ?IsExpression@CTCInventoryItem@@SI_NJ@Z (Ego_r + FableWin; was the free stand-in IsAugmentation_005d9830)
@@ -101,10 +103,10 @@ void CTCInventoryBase::OnItemAdded(long itemDefIndex, bool unused, bool suppress
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29)) {
             if (!CTCInventoryItem::IsExpression(itemDefIndex))
-                hero->GiveTutorialForCategory(3, false);
+                hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_BASIC_OBJECTS, false);
             if (IsTutorialSubDefItem(itemDefIndex))
-                hero->GiveTutorialForCategory(0x20, false);
-            long category = CTCInventoryItem::GetTutorialCategory(itemDefIndex);
+                hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_TRADE_ITEM, false);
+            ETutorialCategory category = CTCInventoryItem::GetTutorialCategory(itemDefIndex);   // NF315: the PDB return type (NF304 Q2)
             if (category)
                 hero->GiveTutorialForCategory(category, false);
         }

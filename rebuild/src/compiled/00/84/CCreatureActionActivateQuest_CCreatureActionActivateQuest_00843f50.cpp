@@ -1,4 +1,5 @@
-// CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest(CThingCreatureBase*, CThing*, const CCharString&, bool) -- base CCreatureActionBase(owner, zeroed CSoundPair, 0, 0), own vtable (0x012752C4), ScriptName copied from the string, LoadResources from the flag, PObjectToUse set to the thing
+// CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest(CThingCreatureBase&, CThing*, const CCharString&, bool) -- base CCreatureActionBase(owner, zeroed CSoundPair, 0, 0), own vtable (0x012752C4), ScriptName copied from the string, LoadResources from the flag, PObjectToUse set to the thing
+// Leaf: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00843F50, length 109 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, const CSoundPair&, long, long) @ 0x00693C70,
 // CCharString::CCharString(const CCharString&) @ 0x0099EC30, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
@@ -49,12 +50,12 @@ class CCreatureAction_ActivateQuest : public CCreatureActionBase { public:   // 
     bool                LoadResources;      // +0xac (PDB +0xb8)
     CIntelligentPointer PObjectToUse;       // +0xad (PDB +0xb9), unaligned
     virtual void v00();
-    CCreatureAction_ActivateQuest(CThingCreatureBase* owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources);
+    CCreatureAction_ActivateQuest(CThingCreatureBase& owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources);   // 0x00843F50 (NF315: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z, Ego_r + FableWin; engine/CCreatureAction_ActivateQuest.h)
 };
 #pragma pack(pop)
 
-CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest(CThingCreatureBase* owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources)
-    : CCreatureActionBase(*owner, CSoundPair(), 0, 0)
+CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest(CThingCreatureBase& owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources)
+    : CCreatureActionBase(owner, CSoundPair(), 0, 0)
     , ScriptName(scriptName)
     , LoadResources(loadResources)
     , PObjectToUse(objectToUse)

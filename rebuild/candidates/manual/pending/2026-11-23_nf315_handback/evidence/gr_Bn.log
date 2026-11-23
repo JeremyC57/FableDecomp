@@ -1,0 +1,11 @@
+N 00919a70 CAIStateGroup_BuyFromSeller::GetSellersReply RELOCATION_MATCH flags= [] leaf=
+N 00934920 CAIStateGroup_MinionKidGroupTag::IsRunnable RELOCATION_MATCH flags= [] leaf=?IsRunnable@CAIStateGroup_MinionKidGroupTag@@QAE_NXZ
+N 008c9f40 CCreatureAction_NymphGetHitDie::FrameUpdate RELOCATION_MATCH flags= [] leaf=?FrameUpdate@CCreatureAction_NymphGetHitDie@@QAEXXZ
+N 008ca4a0 CCreatureAction_NymphGetHitDie::Initialise RELOCATION_MATCH flags= [] leaf=?Initialise@CCreatureAction_NymphGetHitDie@@UAEXXZ
+N 006d56e0 CTCFollowed::QuitAIFollower RELOCATION_MATCH flags= [] leaf=QuitAIFollower
+N 00738f90 CAnimationSet::IsAppropriateEntryExisting<CIsCombatAnimAppropriateFollowingCombo> RELOCATION_MATCH flags= [] leaf=IsAppropriateEntryExisting
+N 0091e050 CAIStateGroup_HoverAttack::Update RELOCATION_MATCH flags= [] leaf=?Update@CAIStateGroup_HoverAttack@@UAEXXZ
+N 009621f0 CAIStateGroup_IceTrollIcicleAttack::Update RELOCATION_MATCH flags= [] leaf=?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+N 009624d0 CAIStateGroup_IceTrollPoundGroundAttack::Update RELOCATION_MATCH flags= [] leaf=?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
+N 00b2c460 CEngineSurfaceCompositionManager::AddSurface RELOCATION_MATCH flags= [] leaf=?AddSurface@CEngineSurfaceCompositionManager_Methods@@
+GR_DONE

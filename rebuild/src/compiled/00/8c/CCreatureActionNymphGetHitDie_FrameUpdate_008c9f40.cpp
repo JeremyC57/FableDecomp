@@ -26,7 +26,7 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 class CWorldMap { public:
-    float GetHeightZBelowPos(const C3DVector* position);   // 0x0063E480
+    float GetHeightZBelowPos(const C3DVector& position) const;   // 0x0063E480 (NF315: the PDB signature, Ego_r + FableWin)
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
@@ -49,6 +49,6 @@ void CCreatureAction_NymphGetHitDie::FrameUpdate()
     CCombatActionBase::FrameUpdate();
     C3DVector position = PCreature.Get()->GetPos();
     float height = HeightOnInit * (1.0f - GetProgress());
-    position.Z = GetWorldMap()->GetHeightZBelowPos(&position) + height;
+    position.Z = GetWorldMap()->GetHeightZBelowPos(position) + height;
     PCreature.Get()->GetPhysicsTC()->SetPositionOnGround(position);
 }

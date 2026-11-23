@@ -1,0 +1,4 @@
+# NF315: in-place or awaiting-a-ruling entries (STATUS skipped-held), for the next batch; not T3 ports
+008fcec0 0091d820 0044c3ee 007008c0 00681ae0 00998c90 006a64d0
+# held set (proven, pending the T3_PORT_QUEUE ruling): held_t3q/README.md
+00934920 009624d0 007ef600 006ebdd0 0092b3e0 006ed510

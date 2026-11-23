@@ -1,0 +1,9 @@
+007008c0	call	00780d08	00780c80L CTCFlammable::ExtinguishFire
+007008c0	call	0078429d	00784260L CTCCreatureGroupBoastingCrowd::EnterCrowdState
+007008c0	call	0078458c	00784500L CTCCreatureGroupBoastingCrowd::FrameUpdate
+007008c0	call	007847aa	007846b0L CTCCreatureGroupBoastingCrowd::OnHeroLeaveBoastingArea
+007008c0	call	00784a36	007849c0L CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember
+007008c0	call	00784c28	00784bd0L CTCCreatureGroupBoastingCrowd::~CTCCreatureGroupBoastingCrow
+007008c0	call	0078d1e7	-
+007008c0	call	007bb056	007baf00L CTCTrespasser::LeavingRegion
+007008c0	call	00890a9c	00890a80L CGameScriptInterface::EntityUnsetAsOpinionSource

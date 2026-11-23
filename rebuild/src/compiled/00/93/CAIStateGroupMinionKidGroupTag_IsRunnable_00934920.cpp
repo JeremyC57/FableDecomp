@@ -85,7 +85,7 @@ class CMessageEventFilter_IsOfType { public:
 class CMessageEventFilter_IsOriginatedByThing { public:
     CThing* Thing;
     long ID;
-    CMessageEventFilter_IsOriginatedByThing(CThing* thing);    // 0x006AF2B0
+    CMessageEventFilter_IsOriginatedByThing(const CThing& thing);    // 0x006AF2B0 (NF315: the PDB signature, Ego_r + FableWin)
 };
 struct CThingFilter_IsNotThing {
     CThing* Thing;
@@ -237,7 +237,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
         }
     }
     if (!GetWorld().GetPMessageManager()->FindMostRecentMessage(
-            CMessageEventFilter_IsOfType(0x2e) && CMessageEventFilter_IsOriginatedByThing(GetCreature())
+            CMessageEventFilter_IsOfType(0x2e) && CMessageEventFilter_IsOriginatedByThing(*GetCreature())
             && TSFRange(CThingFilter_In2DRange(GetCreature(), 8.0f)))) {
         CThingAICreature* creature = GetCreature();
         long fps = CMainGameComponent::GetConstantFPS();

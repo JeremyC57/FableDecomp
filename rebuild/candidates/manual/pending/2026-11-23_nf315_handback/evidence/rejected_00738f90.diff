@@ -1,0 +1,8 @@
+33c33
+<     template <class T> void GetComponent(T** out) const;   // <CAnimComponentCombatComboChain>: 0x00738980
+---
+>     template <class T> void GetComponent(const T** out) const;   // <CAnimComponentCombatComboChain>: 0x00738980 (NF315: the PDB signature, Ego_r + FableWin)
+42c42
+<         CAnimComponentCombatComboChain* combo;
+---
+>         const CAnimComponentCombatComboChain* combo;

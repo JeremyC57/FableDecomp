@@ -46,8 +46,10 @@ class CPlayer { public:
 class CTCBase { protected:
     CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
 };
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 
 namespace NGameText { bool __fastcall ConstructString(CWideString& text, long value); }   // 0x009C7B70
@@ -104,7 +106,7 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead()) {
         CTCHero* heroTC;
-        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(0x23, false))
+        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_BUILDING_OWNERSHIP, false))
             return;
     }
     HouseQuestion = HOUSE_QUESTION_BUY;

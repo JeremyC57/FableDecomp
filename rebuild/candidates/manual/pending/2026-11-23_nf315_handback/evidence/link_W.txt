@@ -1,0 +1,8 @@
+## HEAD set: H_006ebdd0.obj H_0092b3e0.obj H_006ed510.obj H_006ebee0.obj
+duplicates 0
+
+UNRESOLVED 1 ?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+## new set: N_006ebdd0.obj N_0092b3e0.obj N_006ed510.obj N_006ebee0.obj
+duplicates 0
+
+LK_DONE

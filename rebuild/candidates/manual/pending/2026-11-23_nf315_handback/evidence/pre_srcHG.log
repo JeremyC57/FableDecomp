@@ -1,0 +1,8 @@
+06:34:08 PASS /home/user/FableDecomp/rebuild/src/compiled/00/5b/NInventoryCTCInventoryBase_OnItemAdded_005be028.cpp
+06:34:08 PASS /home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCInventoryAbilities_FrameUpdate_005ee418.cpp
+06:34:08 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCHeroExperience_AddExperience_006d77c0.cpp
+06:34:08 PASS /home/user/FableDecomp/rebuild/src/compiled/00/72/CTCActionUseBuyHouse_OnActionUseMain_0072e940.cpp
+06:34:09 PASS /home/user/FableDecomp/rebuild/src/compiled/00/77/CTCHeroCentre_OpenTrainingScreen_0077d4b0.cpp
+06:34:09 PASS /home/user/FableDecomp/rebuild/src/compiled/00/78/CTCCreatureGroupBoastingCrowd_OnHeroApproachBoastingArea_00784600.cpp
+06:34:09 PASS /home/user/FableDecomp/rebuild/src/compiled/00/7e/CTCTeleporter_FrameUpdate_007e00d0.cpp
+06:34:09 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6c/CTCHero_GiveTutorialForCategory_006c9fa0.cpp

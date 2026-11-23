@@ -1,0 +1,15 @@
+H 00919a70 CAIStateGroup_BuyFromSeller::GetSellersReply RELOCATION_MATCH flags= [] leaf=
+H 00934920 CAIStateGroup_MinionKidGroupTag::IsRunnable RELOCATION_MATCH flags= [] leaf=?IsRunnable@CAIStateGroup_MinionKidGroupTag@@QAE_NXZ
+H 008c9f40 CCreatureAction_NymphGetHitDie::FrameUpdate RELOCATION_MATCH flags= [] leaf=?FrameUpdate@CCreatureAction_NymphGetHitDie@@QAEXXZ
+H 008ca4a0 CCreatureAction_NymphGetHitDie::Initialise RELOCATION_MATCH flags= [] leaf=?Initialise@CCreatureAction_NymphGetHitDie@@UAEXXZ
+H 006d56e0 CTCFollowed::QuitAIFollower RELOCATION_MATCH flags= [] leaf=QuitAIFollower
+H 00738f90 CAnimationSet::IsAppropriateEntryExisting<CIsCombatAnimAppropriateFollowingCombo> RELOCATION_MATCH flags= [] leaf=IsAppropriateEntryExisting
+H 0091e050 CAIStateGroup_HoverAttack::Update RELOCATION_MATCH flags= [] leaf=?Update@CAIStateGroup_HoverAttack@@UAEXXZ
+H 00b2c460 CEngineSurfaceCompositionManager::AddSurface RELOCATION_MATCH flags= [] leaf=?AddSurface@CEngineSurfaceCompositionManager_Methods@@
+H 006af2b0 CMessageEventFilter_IsOriginatedByThing::CMessageEventFilter_IsOriginatedByThing MATCH flags= [] leaf=??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z
+H 0063e480 CWorldMap::GetHeightZBelowPos RELOCATION_MATCH flags= [] leaf=?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+H 006d5050 CTCFollowed::RemoveEmoteIcon RELOCATION_MATCH flags= [] leaf=?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+H 00738980 CAnimationEntry::GetComponent<CAnimComponentCombatComboChain> RELOCATION_MATCH flags= [] leaf=??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z
+H 0097da40 CAIStateGroupBase::AIAction_CombatPerformActionAndWait RELOCATION_MATCH flags= [] leaf=AIAction_CombatPerformActionAndWait
+H 009fc380 CResourceBank::AddResource MATCH flags= [] leaf=
+GR_DONE

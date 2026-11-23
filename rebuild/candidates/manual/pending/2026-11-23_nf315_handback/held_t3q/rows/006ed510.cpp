@@ -1,0 +1,299 @@
+// CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker) -- take an attacker out of its fight: clear the defender's last-attacker pointer when it is this attacker (and advance the defender's attack pattern if the attacker's current sequence is melee or ranged), trace the deregistration, drop the attacker from the defender's attacker map (deregister the defender when none are left, else refresh its attacker list), clear the attacker's sequences and target, and for an attacker that is no longer a combatant erase its entry, reset a projectile weapon held in its primary slot and unsheathe when its def asks; finally clear the defender's stealth danger
+// Leaf: ?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, EDangerStatus status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006ED510, 941 bytes, `ret 4`, frame 0x30.
+// Callees: the combatant map's find 0x006F0250 and erase(key) 0x006F50B0, the defender's attacker-map erase(key) 0x006F3200
+//   (STLport map<unsigned __int64, ...> members of stlport/fable_map.h), CBaseIntelligentPointer ctor/GetPItem/SetPItem/
+//   dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10, IncrementDefenderAttackPattern 0x006E8600, UpdateAttackingCombatantsList
+//   0x006ED030, DeregisterAttackedCombatant 0x006ED8C0, CreatureUnsheathWeapon 0x006EBDD0, CThingCreatureBase::IsInMeleeAsAttacked
+//   0x00662430, CThing::GetDefName 0x004C7CC0, CDefStringTable::GetString 0x009D49B0 (table 0x013CA828), `__fastcall` CCharString
+//   operator+ 0x0099F690/0x0099F600/0x0099F570, GFIntToCharString 0x0099F830, ~CCharString 0x0099EAE0 (manifest label is a
+//   propagated _Cons_val twin), the sequence vector's __copy 0x006F1410 and _Destroy_range 0x006F2300, CVectorMap LowerBound
+//   0x0040F020 (interfaces 0x48, 0x36) and its const twin 0x004365B0 (interface 0x46), CTCCarrying::GetThingInPrimarySlot
+//   0x006A1440, CTCWeapon 0x005DAA40/0x005DA4E0, CTCStealth::SetAsInDanger 0x00747B80.
+// Shape (rescue R282s4): (1) the first trace is two nested __forceinline helpers that take the names BY VALUE (outer:
+//   attackedName by value + the attacker; inner: attackerName by value + attackedName by const ref), so VC7.1 builds GetString
+//   straight into each parameter in retail's order (attacked first), keeps both GetDefName results alive across the
+//   concatenation (slots esp+34h/38h, read through the returned pointer) and destroys F..A, intStr, attackerName,
+//   attackedName; the declared out-of-line copy ctor (0x0099EC30, never called) is what allows the in-place build.
+//   (2) vector clear() as STLport `erase(begin(), end())` (the iterator plumbing fixes the post-trace scratch registers).
+//   (3) the def release through an inline `Release()` member (ecx inc temp). (4) the stealth lookup as HasTC + a returned
+//   GetTC (component lands in ecx). (5) the 0x46 carrying lookup goes through the const LowerBound 0x004365B0, as retail.
+//   Both traces are built and dropped (the debug output is compiled out).
+// Layout: local model (no engine header for CCombatManager): RegisteredCombatSequences +0x04 (12 bytes), Combatants +0x10;
+//   map node value CCombatantInfo at +0x18 (retail 0x70 bytes: AttackerInfo +0x04, DefenderInfo +0x34); retail CThing
+//   UniqueID +0x18, component bits +0x20, interface map +0x44, def +0x70, dead flag +0x91 bit 0, combat flags +0x15c.
+// Name fix (agentNF5 2026-11-10): CDefStringTable::GetString 0x009D49B0 is ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z (Ego_r.pdb / FableWin.pdb): const, takes the long table index (the CDefString's one word).
+// Name fix (NF210, 2026-11-20, q4389, family FP-COMBATMAP): the invented CCombatantMap / SCombatantNode / CAttackerMap stand-ins and their
+//   same-TU TmplSink stand-in bodies are replaced in place by the STLport map<unsigned __int64, CCombatantInfo> and
+//   map<unsigned __int64, CThingCreatureBase*> (stlport/fable_map.h): _M_find<unsigned __int64> 0x006F0250 visible but out of line
+//   (FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE), erase(const key_type&) declared only (FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY): the calls
+//   bind the self Leaves of 0x006F0250, 0x006F50B0 and 0x006F3200.
+// Name fix (NF211, 2026-11-21, q4389, with row 0x006EAC50): 0x00662430 was the stand-in CThingCreatureBase::IsCombatant() (?IsCombatant@
+//   CThingCreatureBase@@QAE_NXZ); it is Ego_r.pdb (0x0053D2C0) + FableWin.pdb (0x01DA3370) ?IsInMeleeAsAttacked@CThingCreatureBase@@QBE_NXZ
+//   (public, const; the landed self row's Leaf). Respelled in place inside the row's existing local CThingCreatureBase model.
+#define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE
+#define FABLE_RETAIL_STLP_TREE_ERASE_KEY_DECL_ONLY
+#include "stlport/fable_map.h"
+#include "fable_compiler.h"
+class CCharString { public:
+    void* m_pData;
+    CCharString(const CCharString& other);         // 0x0099EC30
+    ~CCharString();                                // 0x0099EAE0
+};
+CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
+CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
+CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
+CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
+class CDefString { public:
+    long m_index;
+};
+class CDefStringTable { public:
+    CCharString GetString(long name) const;        // 0x009D49B0
+};
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
+inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
+
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+struct CDefVirtual {
+    virtual void v00();
+    virtual void Destroy();                        // slot 1
+};
+class CCreatureDef : public CDefVirtual { public:
+    long          RefCount;                        // +0x04
+    void Release() { if (--RefCount == 0) Destroy(); }
+    unsigned char _pad08[0x148 - 0x08];
+    unsigned char Flags148;                        // +0x148 bit 5: unsheathe after combat
+};
+template<class T> class CDefPointer { public:
+    T* Object;
+    CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
+    ~CDefPointer() { if (Object) Object->Release(); }
+    T* Get() const { return Object; }
+};
+class CThing { public:
+    unsigned char    _pad0[0x18];
+    unsigned __int64 UniqueID;                     // +0x18
+    unsigned long    m_presentBits[9];             // +0x20
+    CInterfaceMap    m_interfaces;                 // +0x44
+    unsigned char    _pad54[0x1c];
+    CCreatureDef*    m_pDef;                       // +0x70
+    unsigned char    _pad74[0x91 - 0x74];
+    unsigned char    m_flags91;                    // +0x91 bit 0: dead
+    unsigned char    _pad92[0x15c - 0x92];
+    unsigned char    CombatFlags0 : 2;             // +0x15c
+    unsigned char    IsAttackingCombatant : 1;     //        bit 2
+    unsigned char    IsAttackedCombatant : 1;      //        bit 3
+    unsigned char    CombatFlags4 : 4;
+    CDefString GetDefName() const;                 // 0x004C7CC0
+    unsigned __int64 GetUID() const { return UniqueID; }
+    FABLE_FORCEINLINE bool HasTC(long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
+            return true;
+        return false;
+    }
+    template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
+    {
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+        CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
+    }
+    template<class T> FABLE_FORCEINLINE bool GetConstInterface(T** ppOut, long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
+            return true;
+        }
+        return false;
+    }
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
+            return true;
+        }
+        return false;
+    }
+};
+class CThingCreatureBase : public CThing { public:
+    bool IsInMeleeAsAttacked() const;              // 0x00662430
+};
+class CTCCarrying { public:                               // interface 0x46
+    CThing* GetThingInPrimarySlot() const;               // 0x006A1440
+};
+class CTCWeapon { public:                                 // interface 0x48
+    bool IsProjectileWeapon() const;                     // 0x005DAA40
+    void ResetAiming();                            // 0x005DA4E0 (AimingTime +0x14 = -1, AimingTimeOverride +0x18 = false)
+};
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
+class CTCStealth { public:                                // interface 0x36
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
+};
+
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+
+class CCombatSequenceBase { public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06();
+    virtual bool IsMeleeSequence();                // slot 7 (+0x1c)
+    virtual bool IsRangedSequence();               // slot 8 (+0x20)
+};
+struct SCountBlock;
+struct CSequencePointer {                          // CCountedPointer<CCombatSequenceBase>
+    CCombatSequenceBase* Object;
+    SCountBlock*         Count;
+};
+struct random_access_iterator_tag {
+    random_access_iterator_tag() { }
+};
+struct CRetailAllocator {
+    CRetailAllocator() { }
+};
+CSequencePointer* __fastcall __copy(CSequencePointer* first, CSequencePointer* last, CSequencePointer* result,
+                                    const random_access_iterator_tag& tag, int* distance);         // 0x006F1410
+void __fastcall _Destroy_range(CSequencePointer* first, CSequencePointer* last, const CRetailAllocator& al);   // 0x006F2300
+struct CSequenceVector {                           // retail vector<CCountedPointer<CCombatSequenceBase>>, 12 bytes
+    CSequencePointer* _M_start;
+    CSequencePointer* _M_finish;
+    CSequencePointer* _M_end_of_storage;
+    CSequencePointer& operator[](unsigned long n) { return _M_start[n]; }
+    CSequencePointer* begin() { return _M_start; }
+    CSequencePointer* end() { return _M_finish; }
+    CSequencePointer* erase(CSequencePointer* first, CSequencePointer* last)
+    {
+        CSequencePointer* i = __copy(last, _M_finish, first, random_access_iterator_tag(), (int*)0);
+        _Destroy_range(i, _M_finish, CRetailAllocator());
+        _M_finish = i;
+        return first;
+    }
+    void clear() { erase(begin(), end()); }
+};
+class CAttackingCombatantInfo { public:                   // retail 0x30 bytes
+    CThingCreatureBase* Attacked;                  // +0x00
+    long  AttackerNumber;                          // +0x04
+    long  CombatWheelRingIndex;                    // +0x08
+    bool  PreferredAttackDollySet;                 // +0x0c
+    long  PreferredAttackDollyTimer;               // +0x10
+    float PreferredAttackDollyVector[2];           // +0x14
+    bool  UsingCombatWheel;                        // +0x1c
+    long  CurrentSequence;                         // +0x20
+    CSequenceVector CombatSequences;               // +0x24
+};
+class CDefendingCombatantInfo { public:                   // retail 0x3c bytes
+    std::map<unsigned __int64, CThingCreatureBase*> Attackers;   // +0x00
+    unsigned char CombatWheel[0x0c];               // +0x0c
+    float         LastVictimWheelUpdatePos[3];     // +0x18
+    long          LastWheelUpdateWorldFrame;       // +0x24
+    CIntelligentPointer<CThing> PLastAttacker;        // +0x28
+    void*         PAttackPattern;                  // +0x30
+    long          AttackPatternIndex;              // +0x34
+    long          FrameForNextInstruction;         // +0x38
+};
+struct CCombatantInfo {                            // retail 0x70 bytes
+    CThingCreatureBase*     Parent;                // +0x00
+    CAttackingCombatantInfo AttackerInfo;          // +0x04
+    CDefendingCombatantInfo DefenderInfo;          // +0x34
+};
+FABLE_FORCEINLINE void TraceDeregister(CCharString attackerName, const CCharString& attackedName, const CCombatantInfo& attackedInfo)
+{
+    CombatTrace("Deregistering combatant " + attackerName + " was attacking " + attackedName + " (who has " +
+                GFIntToCharString(attackedInfo.DefenderInfo.Attackers.size() - 1) + " things still attacking)");
+}
+FABLE_FORCEINLINE void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
+{
+    TraceDeregister(GDefStringTable.GetString((attacker->GetDefName()).m_index), attackedName, attackedInfo);
+}
+#include "engine/EUnsheatheWeaponType.h"   // NF315: the PDB parameter enum of CreatureUnsheathWeapon
+class CCombatManager {
+public:
+    virtual void v00();
+    unsigned char _sequences[0x0c];                // +0x04 RegisteredCombatSequences
+    std::map<unsigned __int64, CCombatantInfo> Combatants;   // +0x10
+    void IncrementDefenderAttackPattern(CCombatantInfo& info);                    // 0x006E8600
+    void CreatureUnsheathWeapon(CThingCreatureBase& creature, EUnsheatheWeaponType weapon);   // 0x006EBDD0 (NF315: ?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z, Ego_r + FableWin; engine/CCombatManager.h)
+    private: void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force); public:         // 0x006ED030
+    void DeregisterAttackedCombatant(CThingCreatureBase* attacked);               // 0x006ED8C0
+    private: void DeregisterAttackingCombatant(CThingCreatureBase& attacker); public:   // Ego_r.pdb 0x00716DB0 + FableWin.pdb 0x024145F0 (private, by reference)
+};
+
+void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase& attacker)
+{
+    CCombatantInfo& info = Combatants.find(attacker.GetUID())->second;
+    CThingCreatureBase* attacked = info.AttackerInfo.Attacked;
+    CCombatantInfo& attackedInfo = Combatants.find(attacked->GetUID())->second;
+    if (attackedInfo.DefenderInfo.PLastAttacker.GetPItem() == &attacker) {
+        attackedInfo.DefenderInfo.PLastAttacker = 0;
+        if (info.AttackerInfo.CurrentSequence >= 0) {
+            CCombatSequenceBase* sequence = info.AttackerInfo.CombatSequences[info.AttackerInfo.CurrentSequence].Object;
+            if (sequence->IsMeleeSequence() || sequence->IsRangedSequence())
+                IncrementDefenderAttackPattern(attackedInfo);
+        }
+    }
+    TraceDeregister(&attacker, GDefStringTable.GetString((info.AttackerInfo.Attacked->GetDefName()).m_index), attackedInfo);
+    attackedInfo.DefenderInfo.Attackers.erase(attacker.GetUID());
+    if (attackedInfo.DefenderInfo.Attackers.size() == 0) {
+        DeregisterAttackedCombatant(attacked);
+    } else {
+        CombatTrace("deregistered guy but defender is still has " + GFIntToCharString(attackedInfo.DefenderInfo.Attackers.size()) +
+                    " attackers");
+        UpdateAttackingCombatantsList(attackedInfo, true);
+    }
+    info.AttackerInfo.CombatSequences.clear();
+    info.AttackerInfo.Attacked = 0;
+    attacker.IsAttackingCombatant = 0;
+    if (!attacker.IsInMeleeAsAttacked()) {
+        Combatants.erase(attacker.GetUID());
+        CTCCarrying* carrying;
+        if (attacker.GetConstInterface(&carrying, 0x46)) {
+            CThing* item = carrying->GetThingInPrimarySlot();
+            CTCWeapon* weapon;
+            if (item && !(item->m_flags91 & 1) && item->GetInterface(&weapon, 0x48)) {
+                if (weapon->IsProjectileWeapon())
+                    weapon->ResetAiming();
+            }
+        }
+        CCreatureDef* def = CDefPointer<CCreatureDef>(attacker.m_pDef).Get();
+        if (def->Flags148 & 0x20)
+            CreatureUnsheathWeapon(attacker, UNSHEATHE_DEFAULT_WEAPON);
+    }
+    if (attacked->HasTC(0x36))
+        attacked->GetTC<CTCStealth>(0x36)->SetAsInDanger(attacker, NStealth::DANGER_STATUS_NULL);
+}

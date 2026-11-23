@@ -45,6 +45,7 @@ class CAIBrain { public:
     unsigned char _pad[0x14];
     CThingCreatureBase* PCreature;              // +0x18
 };
+#include "engine/EAIAction.h"
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -65,7 +66,7 @@ class CAIStateGroupBase { public:
 protected:
     CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
 public:
-    long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
+    protected: EAIActionReturn AIAction_CombatPerformActionAndWait(const CCombatActionBase& action, bool wait); public:   // 0x0097DA40 (NF315: the PDB signature, Ego_r + FableWin)
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase {
@@ -121,7 +122,7 @@ void CAIStateGroup_HoverAttack::Update()
             Terminate();
             return;
         }
-        if (AIAction_CombatPerformActionAndWait(action, false) != 2) {
+        if (AIAction_CombatPerformActionAndWait(*action, false) != 2) {
             Terminate();
             return;
         }

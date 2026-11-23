@@ -25,8 +25,10 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingPlayerCreature : public CThing { };
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0 (ETutorialCategory)
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
@@ -80,7 +82,7 @@ void CTCHeroCentre::OpenTrainingScreen()
     CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead()) {
         CTCHero* heroTC;
-        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {
+        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC && heroTC->GiveTutorialForCategory(TUTORIAL_CATEGORY_EXPERIENCE_SPENDING, false)) {
             WaitingForTutorialToFinish = true;
             return;
         }

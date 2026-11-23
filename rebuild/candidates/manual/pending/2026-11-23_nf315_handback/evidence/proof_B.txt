@@ -1,0 +1,41 @@
+##### 00919a70 renames: ??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z=??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 00934920 renames: ??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z=??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z
+sections head 44 new 44
+ALL_EQ text_sections_equal=38
+tables H=0 N=0
+##### 008c9f40 renames: ?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z=?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=4
+tables H=0 N=0
+##### 008ca4a0 renames: ?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z=?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=16
+tables H=0 N=0
+##### 006d56e0 renames: ?RemoveEmoteIcon@CTCFollowed@@QAEXPAVCThingAICreature@@@Z=?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+sections head 19 new 19
+ALL_EQ text_sections_equal=16
+tables H=2 N=2
+##### 00738f90 renames: ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPAVCAnimComponentCombatComboChain@@@Z=??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z
+sections head 3 new 3
+DIFF 0 .drectve .drectve bytes False relocs True 243 243
+bad 1 text_sections_equal=2
+tables H=0 N=0
+##### 0091e050 renames: ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z=?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+sections head 8 new 8
+ALL_EQ text_sections_equal=7
+tables H=0 N=0
+##### 00b2c460 renames: ?AddResource@CResourceBank@@QAEXPAVCResource@@@Z=?AddResource@CResourceBank@@QAEXAAVCResource@@@Z
+sections head 13 new 13
+ALL_EQ text_sections_equal=12
+tables H=0 N=0
+##### 009621f0 renames: ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z=?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+sections head 35 new 35
+ALL_EQ text_sections_equal=30
+tables H=2 N=2
+##### 009624d0 renames: ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z=?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+sections head 30 new 30
+ALL_EQ text_sections_equal=25
+tables H=0 N=0

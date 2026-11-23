@@ -1,0 +1,8 @@
+## HEAD set: H_00843f50.obj H_007f03d0.obj H_007ef600.obj H_007f01f0.obj
+duplicates 0
+
+UNRESOLVED 2 ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z
+## new set: N_00843f50.obj N_007f03d0.obj N_007ef600.obj N_007f01f0.obj
+duplicates 0
+
+LK_DONE

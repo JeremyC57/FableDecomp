@@ -129,7 +129,7 @@ class CAIStateGroupBase { public:
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
+    protected: EAIActionReturn AIAction_CombatPerformActionAndWait(const CCombatActionBase& action, bool wait); public:   // 0x0097DA40 (NF315: the PDB signature, Ego_r + FableWin)
     protected: EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long flags, float turnSpeed); // 0x0097D6F0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
@@ -180,7 +180,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
                 }
             }
             long result = AIAction_CombatPerformActionAndWait(
-                &CCreatureAction_PlayCombatAnimation(*GetCreature(), "ICICLE_BOAST", true), false);
+                CCreatureAction_PlayCombatAnimation(*GetCreature(), "ICICLE_BOAST", true), false);
             if (result == 1) {
                 Terminate();
                 return;

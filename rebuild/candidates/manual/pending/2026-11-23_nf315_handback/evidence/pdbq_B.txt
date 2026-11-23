@@ -1,0 +1,6 @@
+egor=1 fablewin=1 ??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z
+egor=1 fablewin=1 ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+egor=1 fablewin=1 ?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+egor=1 fablewin=1 ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z
+egor=1 fablewin=1 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+egor=1 fablewin=1 ?AddResource@CResourceBank@@QAEXAAVCResource@@@Z

@@ -102,7 +102,7 @@ public:
     std::list<CIntelligentPointer<CThing> >           Followers;     // +0x0c
     std::list<CIntelligentPointer<CThingAICreature> > AIFollowers;   // +0x10
     bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0
-    void RemoveEmoteIcon(CThingAICreature* creature);       // 0x006D5050
+    protected: void RemoveEmoteIcon(CThing& thing); public:       // 0x006D5050 (NF315: the PDB signature, Ego_r + FableWin)
     void QuitAIFollower(CThingAICreature* creature);
 };
 
@@ -118,7 +118,7 @@ void CTCFollowed::QuitAIFollower(CThingAICreature* creature)
         CTCHeroOpinionDeedLog* deeds;
         thing->GetInterface(&deeds, 0x51);
         deeds->PostDeed(OPINION_DEED_TYPE_FOLLOWER_QUIT, thing->GetPos(), creature, creature, (EOpinionPostDeedType)1, false, false, 0, false, 0);
-        RemoveEmoteIcon(creature);
+        RemoveEmoteIcon(*creature);
         if (!IsAlive(creature->HomeBuilding.GetPItem()) && !IsAlive(creature->WorkBuilding.GetPItem())) {
             creature->SetAsGameStatePersisted(false);
             creature->LevelPersistent = false;

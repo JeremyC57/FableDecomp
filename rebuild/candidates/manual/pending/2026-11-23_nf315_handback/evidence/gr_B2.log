@@ -1,0 +1,3 @@
+H 009621f0 CAIStateGroup_IceTrollIcicleAttack::Update RELOCATION_MATCH flags= [] leaf=?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ
+H 009624d0 CAIStateGroup_IceTrollPoundGroundAttack::Update RELOCATION_MATCH flags= [] leaf=?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
+GR_DONE

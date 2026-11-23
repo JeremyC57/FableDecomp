@@ -11284,7 +11284,6 @@ _lzo1x_999_compress_internal	00c07af0	00c08130
 ??$__uninitialized_copy@PAVCCamera@@PAV1@@std@@YIPAVCCamera@@PAV1@00ABU__false_type@0@@Z	00b28ed0	00b29840
 ??$__uninitialized_fill_n@PAVCCamera@@IV1@@std@@YIPAVCCamera@@PAV1@IABV1@ABU__false_type@0@@Z	00b28f60	00b29840
 ?_M_insert_overflow@?$vector@PAVCEngineComponent@@V?$allocator@PAVCEngineComponent@@@std@@@std@@QAEXPAPAVCEngineComponent@@ABQAV3@ABU__true_type@2@I_N@Z	00b292b0	00b2ac80
-?AddResource@CResourceBank@@QAEXPAVCResource@@@Z	009fc380	00b2c460
 ?Reset@?$CCountedPointer@VCCompositeSurfaceCache@@@@QAEXPAVCCompositeSurfaceCache@@@Z	00b2e290	00b2c460
 ?_M_decrement@_Rb_tree_base_iterator@std@@QAEXXZ	00b2e5e0	00b2f130
 ??$__uninitialized_copy@PAUCDebugScriptElement@CEngineCamera@@PAU12@@std@@YIPAUCDebugScriptElement@CEngineCamera@@PAU12@00ABU__false_type@0@@Z	00b31a30	00b31b10
@@ -15290,7 +15289,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?IsIncapacitated@@YI_NPAVCThingCreatureBase@@@Z	0085f0c0	006ebdd0
 ?IsKnockedDown@NCreatureMode@@YI_NABVCThing@@@Z	0085f010	006ebdd0
 ?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThingCreatureBase@@JPA_N1@Z	008b7cf0	006ebdd0
-?CreatureUnsheathWeapon@CCombatManager@@QAEXPAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z	006ebdd0	006ebee0
 ?SetPOccupyingAttacker@CProng@@QAEXPAVCThingCreatureBase@@@Z	006f17a0	006ebee0
 ??0CCombatRing@@QAE@JABVCCombatTypeDef@@@Z	006ec380	006ec7d0
 ??0?$CRetailVector@VC3DVector@@@@QAE@ABU0@@Z	006f0810	006f3000
@@ -15599,7 +15597,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_DeclarePlayerACriminal@@QAE@PAVCThingCreatureBase@@PAVCThingPlayerCreature@@@Z	00843610	007edcd0
 ?IsWallMountTargeted@CTCCarriedActionUseFish@@QAE_NPAVCThingCreatureBase@@@Z	007edb80	007edcd0
 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z	0065b854	007ee5a0
-??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z	00843f50	007ef600
 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@VCActivateQuestDef@@@@@Z	007b5680	007ef600
 ?Construct@CTCDRumble@@AAEXABVC3DVector@@@Z	007f18b0	007f1ac0
 ?GetNPCShortName@CTCHasName@@QAE?AVCWideString@@XZ	007f4990	007f4b60
@@ -15876,7 +15873,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_BanditKingAttack@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@JJ@Z	008c9410	008c92c0
 ?IsHitFromBehind@@YI_NPAVCThingCreatureBase@@PAVCThing@@@Z	008c7e50	008c92c0
 ?AttachEffectToStaff@@YIPAVCThing@@PAVCThingCreatureBase@@ABVCCharString@@@Z	008c9a40	008c9c80
-?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z	0063e480	008c9f40
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSummonerDef@@@@@Z	008cbff0	008cb940
 ?GetWorld@CCombatActionBase@@QBEPAVCWorld@@XZ	00692950	008cb940
 ?SetThingAsNotBloodyWillableAtAll@@YIXPAVCThing@@_N@Z	007e4040	008cc9c0
@@ -16015,7 +16011,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AutoPlaceNear@CThingAICreature@@QAE_NPAVC3DVector@@M@Z	00665df0	00918b50
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	00918b50
 ??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z	006af290	00919a70
-??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z	006af2b0	00919a70
 ?AIAction_WaitForMessage@CAIStateGroupBase@@QAEJW4EAIActionRepeat@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@PAPAVCMessageEvent@@@Z	0091a670	00919a70
 ?IsTargetInLineOfSight@CAIStateGroup_NymphAttack@@QAE_NPAVCThing@@@Z	0091c220	0091c640
 ?GetValidPositions@@YIXAAUCPositionVector@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z	0074a5d0	0091d930
@@ -17276,7 +17271,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$__uninitialized_copy@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PBV1@0PAV1@ABU__false_type@0@@Z	00737750	00739550
 ??$__uninitialized_fill_n@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@IABV1@ABU__false_type@0@@Z	007377a0	00739550
 ?SetPItem@CBaseIntelligentPointer@@QAEXPBX@Z	00a01b90	00739550
-?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z	00a01b90	0089e540
+?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z	00a01b90	007fdeb0
 ??1CBase@NCameraModes@@UAE@XZ	0056e0e0	0056e2d0
 @CSoundDef_dtor@4	00458476	0045845a
 ?CAttackPatternDef_dtor@@YIXPAVCLandscapeBackgroundPatch@@@Z	00458504	004584e8
@@ -26615,7 +26610,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?AttachOpinionSource@COpinionReactionManager@@QAE_NPAVCThing@@ABVCCharString@@PAPAVCTCOpinionSource@@@Z	00700780	006ca400
 ?HandleFollowerQuit@CTCFollowActionHandler@@QAEXPAVCThing@@@Z	006aeba0	006d56e0
 ?IsAIFollower@CTCFollowed@@QBE_NPBVCThingAICreature@@@Z	006d4db0	006d56e0
-?RemoveEmoteIcon@CTCFollowed@@QAEXPAVCThingAICreature@@@Z	006d5050	006d56e0
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCHeroExperienceDef@@@@@Z	006daa90	006d6ee0
 ?SetMaxHealth@CThingPhysical@@QAEXM_N@Z	006a5260	006d8170
 ?SetMaxStamina@CTCHeroStats@@QAEXJ@Z	0057a730	006d8170
@@ -33582,7 +33576,6 @@ __imp__recvfrom@24	01440518	008f9320
 ?ClearParameters@C3DSkeletalMorph@@QAEXXZ	00a45410	007864c0
 ?SetCurrentValue@C3DSkeletalMorphParameter@@QAEXM@Z	00a45370	007864c0
 ??_7CTCBetting@@6B@	01270624	007e57c0
-??0CCreatureAction_ActivateQuest@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	00843f50	007f03d0
 ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z	007f0300	007f03d0
 ?IsAvailableForAttack@CTCStealth@@QBE_NXZ	00747b00	007f69b0
 ?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@@QAEX_N@Z	007f6200	007f69b0

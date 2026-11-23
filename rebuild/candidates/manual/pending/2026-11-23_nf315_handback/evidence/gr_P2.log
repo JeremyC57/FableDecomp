@@ -1,0 +1,4 @@
+H 007fdeb0 CTCAISummon::GetAllSummonedCreatures RELOCATION_MATCH flags= [] leaf=?GetAllSummonedCreatures@CTCAISummon@@
+H 007fdf60 CTCAISummon::GetNumberCanSummon RELOCATION_MATCH flags= [] leaf=?GetNumberCanSummon@CTCAISummon@@QBEJXZ
+H 008c0900 CCreatureAction_BriarRoseShotFarOutof::PerformAction RELOCATION_MATCH flags= [] leaf=?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ
+GR_DONE

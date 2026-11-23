@@ -1,0 +1,224 @@
+// CAIStateGroup_IceTrollPoundGroundAttack::Update() -- with a live target: mark the target's stealth component in danger, rise up if knocked down, then with the target still alive play LOOK_BACKWARD when it is more than 60 degrees off the creature's XY facing (LOOK_FORWARD otherwise) and, still runnable, perform the pound attack; terminate at the end or on any failure
+// Leaf: ?Update@CAIStateGroup_IceTrollPoundGroundAttack@@QAEXXZ
+// Name fix (NF96 part 2, q11460): the local CTCStealth declared SetAsInDanger (CThing* source, long status) and bound a stand-in spelling of 0x00747B80;
+//   now the Ego_r.pdb + FableWin.pdb ?SetAsInDanger@CTCStealth@@QAEXABVCThing@@W4EDangerStatus@NStealth@@@Z (engine/CTCStealth.h signature;
+//   the reference and the enum push the same words).
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local MagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009624D0, length 738 bytes (+ int3 padding).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, CTCStealth::SetAsInDanger
+// @ 0x00747B80, CTCCreatureModeManager::HasMode @ 0x0073A8A0, CCreatureAction_RiseUp ctor @ 0x008BD880, ~CCombatActionBase
+// @ 0x0062E900, AIAction_CombatPerformActionAndWait @ 0x0097DA40, CThing::GetPos @ 0x004C73D0, C3DVector::Normalise
+// @ 0x00A14440, the physics body's GetFacing (virtual slot 70 on CThing+0x60), CCharString ctor @ 0x0099EBF0 / dtor
+// @ 0x0099EAE0, CCreatureAction_PlayCombatAnimation ctor @ 0x008B7FF0, AIAction_PerformActionAndWait @ 0x0097DB70,
+// IsStillRunnable @ 0x00961C50, action ctor @ 0x0094E5F0 (manifest CCombatAction_StabThing), Terminate @ 0x008FCF40.
+// Shape: the target position is a frame copy (user copy ctor; its dead Z copy drops out); the direction takes the full
+// 3D difference and then zeroes Z, which fixes the x87 operand order of the Z product in the dot; the facing is the
+// physics body's GetFacing with Z cleared; both are normalised only above the 1e-4 epsilon squared.
+// Layout: Ego_r.pdb CAIStateGroup_IceTrollPoundGroundAttack PTarget +0x14.
+#include <math.h>
+#pragma intrinsic(cos)
+#include "engine/C3DVector.h"
+inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
+struct CTCPhysicsBase {                           // the thing's physics body at +0x60
+#define VF(n) virtual void v##n();
+#define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
+    VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
+#undef VF10
+#undef VF
+    virtual C3DVector GetFacing();              // slot 70 (+0x118)
+};
+class CThing;
+class CThingCreatureBase;
+class CTCBase;
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
+    bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
+    bool IsPerformingAnyAction();               // 0x006622A0
+};
+namespace NStealth {   // Ego_d.pdb LF_ENUM NStealth::EDangerStatus (the enumerators of engine/CTCStealth.h FABLE_RETAIL_NSTEALTH_EDANGERSTATUS)
+enum EDangerStatus { DANGER_STATUS_NULL=0, DANGER_STATUS_INVESTIGATING=1, DANGER_STATUS_CHASING=2, DANGER_STATUS_COMBAT=3, DANGER_STATUS_RANGED_COMBAT=4 };
+}
+class CTCStealth { public:                             // interface 0x36
+    void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
+};
+class CTCCreatureModeManager { public:                 // interface 0x31
+    bool HasMode(long mode);                    // 0x0073A8A0
+};
+class CBaseObject;
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* m_pItem;
+    CBaseIntelligentPointer();                  // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    void SetPItem(const CThing* item);          // 0x00A01B90
+};
+struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
+    virtual void v00();
+    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
+};
+inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+{
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
+            return true;
+    }
+    return false;
+}
+
+class CSoundPair { public:
+    long m_first;
+    long m_second;
+    CSoundPair() : m_first(0), m_second(0) { }
+};
+struct CCountBlock {
+    long Count;
+    void (__fastcall* Destroy)(void* object);
+    void* Object;
+};
+struct CCountedPointer {
+    void* Object;
+    CCountBlock* Block;
+    void Reset(void* object);                   // 0x00668D90
+    ~CCountedPointer()
+    {
+        if (Block) {
+            --Block->Count;
+            if (Block->Count == 0) {
+                Block->Destroy(Block->Object);
+                delete Block;
+            }
+        }
+        Object = 0;
+        Block = 0;
+    }
+};
+class CBrainOutput { public:                           // 0x48 bytes
+    unsigned long Flags;                        // +0x00 (8: perform action)
+    unsigned char _pad04[0x20 - 0x04];
+    CCountedPointer PAction;                    // +0x20
+    unsigned char _pad28[0x40 - 0x28];
+    CBaseIntelligentPointer PTarget;            // +0x40
+    CBrainOutput();                             // 0x00835620
+};
+class CCreatureActionBase { public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
+    virtual void v10();
+    virtual void* Clone() const;                // slot 11 (+0x2c)
+    unsigned char _body[0xa4];
+};
+class CCombatActionBase : public CCreatureActionBase { public:
+    unsigned char _combat[0x6c];
+    CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
+    virtual ~CCombatActionBase();                       // 0x0062E900
+};
+class CCreatureAction_IceTrollIcicleAttack : public CCombatActionBase { public:   // vtable 0x012960C4
+    virtual void v00();
+    CCreatureAction_IceTrollIcicleAttack(CThingCreatureBase* owner, CThing* target)
+        : CCombatActionBase(owner, target, 0x96, CSoundPair()) { }
+};
+class CCombatAction_StabThing : public CCombatActionBase { public:   // manifest label (propagated?) for 0x0094E5F0
+    unsigned char _stab[4];
+    CCombatAction_StabThing(CThingCreatureBase* owner, CThing* target);   // 0x0094E5F0
+};
+class CCreatureAction_RiseUp : public CCombatActionBase { public:
+    long m_riseState;
+    CCreatureAction_RiseUp(CThingCreatureBase& creature);   // 0x008BD880
+};
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
+    long m_loop;                                // retail sizeof 0x118 (frame)
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool loop);   // 0x008B7FF0
+};
+inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
+{
+    output.Flags |= 8;
+    output.PAction.Reset(action->Clone());
+}
+class CAIBrain { public:
+    virtual void v00(); virtual void v01();
+    virtual bool SuspendSuspendableProcess();                       // slot 2 (+0x08) 0x00A44840 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ (Ego_r.pdb + FableWin.pdb, inherited; was the stand-in Yield; name-fix 2026-11-12)
+    unsigned char _pad04[0x18 - 0x04];
+    CThingCreatureBase* PCreature;              // +0x18
+    void SetOutput(const CBrainOutput& output);   // 0x0088B8F0 ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z (Ego_r.pdb + FableWin.pdb; was the stand-in SetOutput; name-fix 2026-11-12)
+};
+enum EAIActionReturn { };
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    unsigned char _pad08[0x0c];
+    CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
+    bool IsStopping();                          protected: // 0x008FD010
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
+    long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
+    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   protected: // 0x0097D6F0
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
+    void Terminate();                           // 0x008FCF40
+};
+struct CAIStateGroup_IceTrollPoundGroundAttack : CAIStateGroupBase {
+    CBaseIntelligentPointer PTarget;            // +0x14
+    private: bool IsStillRunnable() const; public:                     // 0x00961C50
+    void Update();
+};
+
+void CAIStateGroup_IceTrollPoundGroundAttack::Update()
+{
+    if (IS_THING_ALIVE(PTarget)) {
+        CTCStealth* stealth;
+        if (((CThing*)PTarget.GetPItem())->GetTC(TCI_STEALTH, &stealth))
+            stealth->SetAsInDanger(*GetCreature(), NStealth::DANGER_STATUS_COMBAT);
+        CTCCreatureModeManager* modes;
+        if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
+            long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_RiseUp(*GetCreature()), true);
+            if (result == 1) {
+                Terminate();
+                return;
+            }
+        }
+        if (IS_THING_ALIVE(PTarget)) {
+            C3DVector targetPos = ((CThing*)PTarget.GetPItem())->GetPos();
+            const C3DVector& myPos = GetCreature()->GetPos();
+            C3DVector toTarget(targetPos.X - myPos.X, targetPos.Y - myPos.Y, targetPos.Z - myPos.Z);
+            toTarget.Z = 0.0f;
+            if (toTarget.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+                toTarget.AccurateNormalise();
+            C3DVector facing = GetCreature()->GetPhysicsTC()->GetFacing();
+            facing.Z = 0.0f;
+            if (facing.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+                facing.AccurateNormalise();
+            if (Dot(facing, toTarget) < cos(1.0471976115464443)) {
+                long result = AIAction_PerformActionAndWait(
+                    CCreatureAction_PlayCombatAnimation(*GetCreature(), "LOOK_BACKWARD", true), false);
+                if (result == 1) {
+                    Terminate();
+                    return;
+                }
+            } else {
+                long result = AIAction_PerformActionAndWait(
+                    CCreatureAction_PlayCombatAnimation(*GetCreature(), "LOOK_FORWARD", true), false);
+                if (result == 1) {
+                    Terminate();
+                    return;
+                }
+            }
+            if (IsStillRunnable()) {
+                CThing* target = ((CThing*)PTarget.GetPItem());
+                long result = AIAction_CombatPerformActionAndWait(&CCombatAction_StabThing(GetCreature(), target), true);
+                if (result == 1) {
+                    Terminate();
+                    return;
+                }
+            }
+        }
+    }
+    Terminate();
+}

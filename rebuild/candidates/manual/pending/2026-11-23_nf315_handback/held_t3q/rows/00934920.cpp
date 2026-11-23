@@ -1,0 +1,248 @@
+//   (reads the Bind3, all three bound filters and the range filter), and the Bind2&&C operator builds the Bind3 straight from
+// Leaf: ?IsRunnable@CAIStateGroup_MinionKidGroupTag@@QAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+//   the bound operands (*ab.PF1, *ab.PF2, c); together they hoist the &type store above the IsOriginatedByThing ctor as in retail
+// CAIStateGroup_MinionKidGroupTag::IsRunnable() -- after seven seconds out of the game: join the nearest kid tag group whose nearest member is within 8, else answer a nearby tag invitation (0x2e) by creating a marker-light group and joining it as the initiator, else post the creature's own invitation unless one is queued
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00934920, length 853 bytes (+ int3 padding), plain `ret`, frame 0x30.
+// Callees: CWorld::GetFrame @ 0x0049D870, CThing::PeekPos @ 0x004C73D0, CThingCreatureBase::PeekPos @ 0x006A4D00,
+// CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000 / GetPWorld @ 0x008FCFC0, CThingSearchTools::GetPBestThing<HasDefGlobalIndex,
+// Nearest> @ 0x00935040, CVectorMap::LowerBound @ 0x0040F020 (interface 0xA4 = CTCCreatureGroupTag), CTCCreatureGroup::GetNearestMember
+// @ 0x008128F0, the group's virtual slot 28 (+0x70, add member), CMessageEventManager::FindMostRecentMessage @ 0x00934E50 /
+// @ 0x0090E090, CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF2B0, CCharString ctor @ 0x0099EBF0 / dtor @ 0x0099EAE0,
+// CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, Create @ 0x00870BB0 (__fastcall), CThing::AddTC @ 0x004C9D60,
+// RemoveMessage @ 0x00493B5B, AddMessage @ 0x00687540, __ftol2 @ 0x00BFEA70.
+// Layout: CAIStateGroup_MinionKidGroupTag members as the landed Cleanup 0x009347B0 (InitiatedTag +0x14, PTCGroupTag +0x18,
+// InitialTagPos +0x1c, FrameLastPlayedIn +0x2c); world definition manager +0x10, message manager +0x60.
+// Shape: the distance is sqrt(dz*dz + dy*dy + dx*dx) of component locals; InitialTagPos takes the implicit operator=.
+// Name fix (agentNF5 2026-11-10): CMessageEventManager::AddMessage 0x00687540 is ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z (Ego_r.pdb / FableWin.pdb): EMessageEventType, a const C3DVector reference, CMessageEvent* result.
+enum EMessageEventType;                            // MS forward enum (CMessageEventManager::AddMessage 0x00687540 takes it)
+#include "fable_compiler.h"
+extern "C" double __cdecl sqrt(double);
+#pragma intrinsic(sqrt)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
+#include "engine/C3DVector.h"
+inline float GetDistance(const C3DVector& a, const C3DVector& b)
+{
+    float dx = a.X - b.X;
+    float dy = a.Y - b.Y;
+    float dz = a.Z - b.Z;
+    return (float)sqrt(dz * dz + dy * dy + dx * dx);
+}
+class CTCBase;
+
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CTCParamsBase;
+
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
+};
+class CThingAICreature : public CThingCreatureBase { public: };
+CThing* __fastcall Create(long defGlobalIndex, const C3DVector& pos);   // 0x00870BB0
+class CTCCreatureGroupTag { public:                    // interface 0xA4
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
+    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
+    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
+    virtual void v25(); virtual void v26(); virtual void v27();
+    virtual bool AddMember(CThing* creature);   // slot 28 (+0x70)
+    CThing* GetNearestMember(const C3DVector& pos);   // 0x008128F0
+};
+class CThingFilter_HasDefGlobalIndex { public:
+    long DefGlobalIndex;
+    CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) { }
+};
+class CThingCompare_Nearest { public:
+    C3DVector Pos;
+    CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
+};
+bool SearchFilterPasses1(const CThingFilter_HasDefGlobalIndex& filter, const CThing* thing);
+float SearchDistanceTo(const CThingCompare_Nearest& compare, const CThing* thing);
+class CThingSearchTools { public:
+    CThing** m_things;                          // candidate list (stand-in model)
+    CThing** m_thingsEnd;
+    bool GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** best) const;   // 0x00935040
+};
+class CMessageEvent;
+class CMessageEventFilter_IsOfType { public:
+    long Type;
+    CMessageEventFilter_IsOfType(long type) : Type(type) { }
+};
+class CMessageEventFilter_IsOriginatedByThing { public:
+    CThing* Thing;
+    long ID;
+    CMessageEventFilter_IsOriginatedByThing(const CThing& thing);    // 0x006AF2B0 (NF315: the PDB signature, Ego_r + FableWin)
+};
+struct CThingFilter_IsNotThing {
+    CThing* Thing;
+    CThingFilter_IsNotThing(CThing* thing) : Thing(thing) { }
+};
+class CThingFilter_In2DRange { public:
+    C3DVector Pos;
+    float Range;
+    FABLE_FORCEINLINE CThingFilter_In2DRange(const CThing* thing, float range) : Pos(thing->GetPos()), Range(range) { }
+};
+template<class F> class CMessageEventFilter_ThingSearchFilter { public:
+    const F* Filter;
+    CMessageEventFilter_ThingSearchFilter(const F& filter) : Filter(&filter) { }
+};
+template<class F1, class F2> class CFilter_Bind2 { public:
+    const F1* PF1; const F2* PF2;
+    CFilter_Bind2(const F1& f1, const F2& f2) : PF1(&f1), PF2(&f2) { }
+};
+template<class F1, class F2, class F3> class CFilter_Bind3 { public:
+    const F1* PF1; const F2* PF2; const F3* PF3;
+    CFilter_Bind3(const CFilter_Bind2<F1, F2>& f12, const F3& f3) : PF1(f12.PF1), PF2(f12.PF2), PF3(&f3) { }
+    CFilter_Bind3(const F1& f1, const F2& f2, const F3& f3) : PF1(&f1), PF2(&f2), PF3(&f3) { }
+};
+template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
+template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(const CFilter_Bind2<A, B>& ab, const C& c) { return CFilter_Bind3<A, B, C>(*ab.PF1, *ab.PF2, c); }
+typedef CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNotThing> TSFNotMe;
+typedef CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange> TSFRange;
+typedef CFilter_Bind3<CMessageEventFilter_IsOfType, TSFNotMe, TSFRange> CInvitationFilter;
+typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing, TSFRange> COwnMessageFilter;
+class CMessageEventManager { public:
+    const CMessageEvent* FindMostRecentMessage(const CInvitationFilter& filter) const;      // 0x00934E50
+    const CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter) const;      // 0x0090E090
+    void RemoveMessage(const CMessageEvent* message);                                      // 0x00493B5B
+    CMessageEvent* AddMessage(EMessageEventType type, unsigned long lifetime, const C3DVector& pos, CThing* from, CThing* to, float range, float radius, long data);                                 // 0x00687540
+};
+class CDefinitionManager { public:
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CWorld { public:
+    unsigned char _pad[0x10];
+    CDefinitionManager* PDefinitionManager;     // +0x10
+    unsigned char _pad14[0x4c];
+    CMessageEventManager* PMessageEventManager; // +0x60
+    CDefinitionManager* GetPDefinitionManager() { return PDefinitionManager; }
+    CMessageEventManager* GetPMessageManager() { return PMessageEventManager; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};
+class CAIBrain { public:
+    unsigned char _pad[0x18];
+    CThingAICreature* Creature;                 // +0x18
+};
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    unsigned char _pad08[0x0c];
+    CThingAICreature* GetCreature() const { return PBrain->Creature; }
+protected:
+    CWorld& GetWorld() const;                        // 0x008FCFC0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (Ego_r/FableWin, protected; agentNF16: was GetPWorld)
+public:
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
+};
+struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase {
+    bool InitiatedTag;                          // +0x14
+    CTCCreatureGroupTag* PTCGroupTag;           // +0x18
+    C3DVector InitialTagPos;                    // +0x1c
+    bool StandModeAddedToCreature;              // +0x28
+    long FrameLastPlayedIn;                     // +0x2c
+    bool IsRunnable();
+};
+
+// GetPBestThing stand-in: the nearest candidate passing the filters.
+#pragma auto_inline(off)
+bool CThingSearchTools::GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** arg2) const
+{
+    CThing* best = 0;
+    float bestDistance = 0.0f;
+    for (CThing* const* it = m_things; it != m_thingsEnd; ++it) {
+        CThing* thing = *it;
+        if (!SearchFilterPasses1(filter, thing))
+            continue;
+        float distance = SearchDistanceTo(compare, thing);
+        if (!best || distance < bestDistance) {
+            best = thing;
+            bestDistance = distance;
+        }
+    }
+    *arg2 = (CThing*)best;
+    return best != 0;
+}
+#pragma auto_inline(on)
+
+extern "C" int StandInSink(int, int);
+#pragma auto_inline(off)
+const CMessageEvent* CMessageEventManager::FindMostRecentMessage(const COwnMessageFilter& filter) const
+{
+    int hc = 0;
+    { const unsigned char* b = (const unsigned char*)&filter; for (unsigned i = 0; i < sizeof(COwnMessageFilter); ++i) hc += b[i]; }
+    { const unsigned char* b = (const unsigned char*)filter.PF1; for (unsigned i = 0; i < sizeof(CMessageEventFilter_IsOfType); ++i) hc += b[i]; }
+    { const unsigned char* b = (const unsigned char*)filter.PF2; for (unsigned i = 0; i < sizeof(CMessageEventFilter_IsOriginatedByThing); ++i) hc += b[i]; }
+    { const unsigned char* b = (const unsigned char*)filter.PF3; for (unsigned i = 0; i < sizeof(TSFRange); ++i) hc += b[i]; }
+    { const unsigned char* b = (const unsigned char*)filter.PF3->Filter; for (unsigned i = 0; i < sizeof(CThingFilter_In2DRange); ++i) hc += b[i]; }
+    return (const CMessageEvent*)StandInSink(hc, 11);
+}
+#pragma auto_inline(on)
+bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
+{
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
+    if (CWorld::GetFrame() - FrameLastPlayedIn < framesPerSecond * 7)
+        return false;
+    InitiatedTag = false;
+    {
+    CThing* group;
+    if (PeekThingSearchTools().GetPBestThing_00935040(CThingFilter_HasDefGlobalIndex(0xa4),
+                                              CThingCompare_Nearest(GetCreature()->GetPos()), &group)) {
+        group->GetTC(TCI_CREATURE_GROUP_TAG, &PTCGroupTag);
+        CTCCreatureGroupTag* tag = PTCGroupTag;
+        CThing* nearest = tag->GetNearestMember(GetCreature()->GetPos());
+        if (nearest && GetDistance(nearest->GetPos(), GetCreature()->GetPos()) < 8.0f
+                && PTCGroupTag->AddMember(GetCreature())) {
+            InitialTagPos = GetCreature()->PeekPos();
+            return true;
+        }
+    }
+    }
+    {
+        const CMessageEvent* invitation = GetWorld().GetPMessageManager()->FindMostRecentMessage(
+            CMessageEventFilter_IsOfType(0x2e) && TSFNotMe(CThingFilter_IsNotThing(GetCreature()))
+            && TSFRange(CThingFilter_In2DRange(GetCreature(), 8.0f)));
+        if (invitation) {
+            long markerIndex;
+            {
+                CCharString markerName("INTERNAL_MARKER_LIGHT");
+                markerIndex = GetWorld().GetPDefinitionManager()->GetDefGlobalIndexFromName(markerName);
+            }
+            CThing* marker = Create(markerIndex, GetCreature()->GetPos());
+            {
+                CCharString componentName("CTCCreatureGroupTag");
+                PTCGroupTag = (CTCCreatureGroupTag*)marker->AddTC(componentName, false, 0);
+            }
+            if (PTCGroupTag && PTCGroupTag->AddMember(GetCreature())) {
+                GetWorld().GetPMessageManager()->RemoveMessage(invitation);
+                InitialTagPos = GetCreature()->PeekPos();
+                InitiatedTag = true;
+                return true;
+            }
+        }
+    }
+    if (!GetWorld().GetPMessageManager()->FindMostRecentMessage(
+            CMessageEventFilter_IsOfType(0x2e) && CMessageEventFilter_IsOriginatedByThing(*GetCreature())
+            && TSFRange(CThingFilter_In2DRange(GetCreature(), 8.0f)))) {
+        CThingAICreature* creature = GetCreature();
+        long fps = CMainGameComponent::GetConstantFPS();
+        CMessageEventManager* manager = GetWorld().PMessageEventManager;
+        manager->AddMessage((EMessageEventType)(0x2e), (long)(fps * 4.0f), creature->PeekPos(), creature, 0, 8.0f, 8.0f, 0);
+    }
+    return false;
+}

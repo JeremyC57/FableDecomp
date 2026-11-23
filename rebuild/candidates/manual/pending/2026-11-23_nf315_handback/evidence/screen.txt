@@ -1,0 +1,183 @@
+L1 004bfae0 other off=- leaf=none
+   PDB ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z
+        ?RemoveTintColour@CTCGraphicAppearance@@QAEXPAX@Z  W=007cc120 
+   ==PDB ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z  W=007ce390 
+L2 00a5b850 other off=- leaf=self
+   PDB ?GFInitVectorMath@NVectorMath@@YAXXZ
+        ?GFInitVectorMath@@YAXXZ  W=009a6610 [009a6610:NF314-witness]
+L3 0063e480 other off=- leaf=self
+   PDB ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+        ?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z  W=008c9f40 
+   ==PDB ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z  W=0074a260 
+        ?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z  W=007bdb66 [007bdb66:NF312-witness]
+L4 008fcec0 other off=- leaf=none
+   PDB ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+        @FableReactBaseInit_91cc90@4  W=0091cc90 
+   ==PDB ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z  W=009580d0 
+        @CAIStateGroupBase_Initialise@28  W=009612e0 
+        ?Initialise@CAIStateGroupBase_Retail@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z  W=008fd860 
+        ?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z  W=00902045 
+        ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z  W=0090f0d0 
+        ?Initialise@CAIStateGroupBaseI@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z  W=0090f690 
+L5 0097da40 other off=- leaf=none
+   PDB ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z
+        ?PerformActionAndWait@CCorneredMethods@@QAEJPBVCCombatActionBase@@_N@Z  W=0094f640 
+        ?PerformActionAndWait@CJumpAtFleeingMethods@@QAEJPBVCCombatActionBase@@_N@Z  W=0094f730 [0094f730:NF314-witness]
+        ?AIAction_CombatPerformActionAndWait@CAIStateGroup_SummonerSummon_Methods@@QAEJPAVCCombatActionBase@@_N@Z  W=0096e610 
+   ==PDB ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z  W=00924c70 
+        ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z  W=0091e050 
+        ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatureActionBase@@_N@Z  W=0096fcd0 [0096fcd0:NF314-witness]
+        ?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@QAEJPAVCCreatureActionBase@@_N@Z  W=00961790 
+        ?AIAction_CombatPerformActionAndWait@CAIStateGroupHoverHornetQueenTakeDamageMethods@@QAEJPAVCCreatureActionBase@@_N@Z  W=0095b280 
+L6 0091d820 other off=- leaf=none
+   PDB ?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+        ?base_init@@YIXPAUC@@@Z  W=0096a250 
+        ?Initialise@CAIStateGroup_EnemyCreatureBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z  W=0095a890 
+   ==PDB ?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z  W=0095a380 
+L7 00a01b90 other off=- leaf=self
+   PDB ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z
+        ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z  W=006e1080 
+   ==PDB ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z  W=006ca4e0 
+        ?SetPItem@CBaseIntelligentPointer@NRemap006a23e0@@QAEXPAUObject@2@@Z  W=006a23e0 
+        ?SetPItem@CBaseIntelligentPointer@N0082c5e0@@QAEXPAUCBaseObject@2@@Z  W=0082c5e0 
+        ?SetPItem@CBaseIntelligentPointer@FableHeap_006a3300@@QAEXPAVCBaseObject@2@@Z  W=006a3300 
+        ?SetPItem@CBaseIntelligentPointer@FableCopy_006a3130@@QAEXPAVCBaseObject@2@@Z  W=006a3130 
+        ?SetPItem@CBaseIntelligentPointer@FableCopy_006a31d0@@QAEXPAVCBaseObject@2@@Z  W=006a31d0 
+        ?SetPItem@CBaseIntelligentPointer@N006a2e20@@QAEXPAVCBaseObject@2@@Z  W=006a2e20 
+        ?SetPItem@CBaseIntelligentPointer@N00737ad0@@QAEXPBVCThing@2@@Z  W=00737ad0 
+        ?SetPItem@CBaseIntelligentPointer@N00748d80@@QAEXPBUCThing@2@@Z  W=00748d80 
+        ?SetPItem@CBaseIntelligentPointer@N0074ce40@@QAEXPBVCThing@2@@Z  W=0074ce40 
+        ?SetPItem@CBaseIntelligentPointer@N00807b70@@QAEXPAUCThing@2@@Z  W=00807b70 
+        ?SetPItem@CBaseIntelligentPointer@N00809d60@@QAEXPAUCThing@2@@Z  W=00809d60 
+        ?SetPItem@CBaseIntelligentPointer@N0080df90@@QAEXPAVCBaseObject@2@@Z  W=0080df90 
+        ?SetPItem@CBaseIntelligentPointer@FableFill_006a3180@@QAEXPAVCBaseObject@2@@Z  W=006a3180 
+        ?SetPItem@CBaseIntelligentPointer@FableFill_006a3220@@QAEXPAVCBaseObject@2@@Z  W=006a3220 
+        ?SetPItem@CBaseIntelligentPointer@@QAEXPBX@Z  W=00739550 
+        ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z  W=0089e540 
+        ?SetPItem@CBaseIntelligentPointerCtor@@QAEXPAVCThing@@@Z  W=00933c10 
+        ?SetPItem@CBaseIntelligentPointer@NCreatureMode@@QAEXPAUCBaseObject@2@@Z  W=008d74b0 
+        ?SetPItem@CBaseIntelligentPointer@N006e4bd0@@QAEXPAUCBaseObject@2@@Z  W=006e4bd0 
+L8 0044c3ee other off=- leaf=none
+   PDB ??0CCombatAbilityData@@QAE@W4ECombatAbilityInterfaceType@@@Z
+        ??0CCombatAbilityData@@QAE@J@Z  W=0044c47b 
+        ?init@ScopeGuard@@QAEXH@Z  W=00452b4d 
+        ??0CCombatAbilityData_Calls@@QAE@J@Z  W=00453de0 
+   ==PDB ??0CCombatAbilityData@@QAE@W4ECombatAbilityInterfaceType@@@Z  W=0044c4ab [0044c4ab:t3q]
+L9 00843f50 other off=- leaf=none
+   PDB ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z
+        ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@_N@Z  W=007ef600 
+   ==PDB ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z  W=006299c0 
+        ??0CCreatureAction_ActivateQuest@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z  W=007f03d0 
+L10 00820b80 other off=NF314-witness leaf=none
+   PDB ?ApplyScriptedMapBrush@CMap@@QAEXABVCCharString@@_N@Z
+        ?ApplyScriptedMapBrush@CMapBrushApplier_00820c90@@QAEXPAX@Z  W=00820c90 [00820c90:NF314-witness]
+   ==PDB ?ApplyScriptedMapBrush@CMap@@QAEXABVCCharString@@_N@Z  W=004fe550 [004fe550:NF314-witness]
+        ?ApplyScriptedMapBrush@CMap@@QAEXABVCCharString@@J@Z  W=004fe510 
+L11 006af2b0 other off=- leaf=self
+   PDB ??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z
+        ??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z  W=00919a70 
+        ??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z  W=0090ee20 
+   ==PDB ??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z  W=00947e20 
+L12 007008c0 other off=- leaf=none
+   PDB ?ClearOpinionSource@COpinionReactionManager@@QAEXAAVCThing@@_N@Z
+        ?ClearOpinionSource@COpinionReactionManager_Retail@@QAEXPAUCThing_Retail@@_N@Z  W=00890a80 
+        ?ClearOpinionSource@COpinionReactionManager@@QAEXPAVCThing@@_N@Z  W=00784bd0 
+   ==PDB ?ClearOpinionSource@COpinionReactionManager@@QAEXAAVCThing@@_N@Z  W=007baf00 [007baf00:NF314-witness]
+L13 009fc380 other off=- leaf=none
+   PDB ?AddResource@CResourceBank@@QAEXAAVCResource@@@Z
+        ?AddResource@CResourceBank@@QAEXPAVCResource@@@Z  W=00b2c460 
+        ?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z  W=009fe380 [009fe380:NF314-witness]
+   ==PDB ?AddResource@CResourceBank@@QAEXAAVCResource@@@Z  W=009c80f0 
+L14 006c9fa0 other off=- leaf=none
+   PDB ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z
+        ?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z  W=005ee418 
+        ?GiveTutorialForCategory@CTCTutorialGiver@@QAEXJ_N@Z  W=00960760 
+   ==PDB ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z  W=00584157 [00584157:t3q]
+L15 00738980 other off=- leaf=self
+   PDB ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z
+        ?GetComboDef@CDefClassBase@@QAEXPAPBUCComboDef@@@Z  W=00734570 
+        ?GetComboDef@CAnimationEntry@@QBEXPAPBUCComboDef@@@Z  W=00738f30 
+        ?GetComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentCombatComboChain@@@Z  W=00733950 [00733950:NF312-witness]
+   ==PDB ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z  W=007345d0 
+        ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPAVCAnimComponentCombatComboChain@@@Z  W=00738f90 
+L16 00681ae0 signature off=- leaf=self
+   PDB ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z
+        ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJJ_N@Z  W=007bb150 
+   ==PDB ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z  W=007b2e20 
+L17 004c2e90 other off=- leaf=self
+   PDB ??1C3DAnimationInterpolator@@UAE@XZ
+        @SymbolPair_Dtor@4  W=004c3360 
+   ==PDB ??1C3DAnimationInterpolator@@UAE@XZ  W=004c0560 
+        ??1C3DAnimationInterpolator@@QAE@XZ  W=00bd9250 [00bd9250:t3q]
+L18 00998c90 other off=- leaf=self
+   PDB ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
+        ?ExpandPath@?A0x116aaba5@@YI?AVCWideString@@PAV2@0@Z  W=00999110 
+   ==PDB ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z  W=009990b0 
+L19 008fcf90 other off=- leaf=none
+   PDB ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ
+        ?f1@@YIPAUChickenBegStageA@@PAX@Z  W=00911f00 [00911f00:NF314-witness]
+        ?GetPPlayerManager@CAIStateGroupMinionGuardReactToBribeMethods@@QAEPAVCPlayerManager@@XZ  W=00933310 
+        ?GetPPlayerManager@CAIStateGroup_HoverHornetQueenTakeDamage@@QAEPAVCPlayerManager@@XZ  W=0095aa60 
+        ?GetPPlayerManager@CAIStateGroup_HoverHornetQueen@@QAEPAVCPlayerManager@@XZ  W=0095b5a0 
+        ?GetPPlayerManager@CAIStateGroup_BanditKingCharge@@QAEPAVCPlayerManager@@XZ  W=009612f0 
+        ?GetPPlayerManager@CAIStateGroup_BanditKingThrowWeapons@@QAEPAVCPlayerManager@@XZ  W=00961550 
+        ?GetPPlayerManager@CAIStateGroup_JackOfBladesBase@@QAEPAVCPlayerManager@@XZ  W=00972280 
+   ==PDB ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ  W=009162f0 
+        ?GetPPlayerManager@CAIStateGroupMinionReactToCrimeMethods@@QAEPAVCPlayerManager@@XZ  W=00958cb0 
+        ?GetPPlayerManager@CAIStateGroup_BanditKingLunge@@QAEPAVCPlayerManager@@XZ  W=009614a0 
+        ?GetPPlayerManager@CAIStateGroup_ShopkeeperWatchPlayer@@QAEPAVCPlayerManager@@XZ  W=00927c80 
+L20 0084d080 standin_alias off=- leaf=self
+   PDB ?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ
+   ==PDB ?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ  W=00872110 
+        ?Refresh_0084d080@CTrack@NCameraModes@@QAEXXZ  W=0087b910 
+L21 0052cf40 other off=- leaf=self
+   PDB ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z
+   ==PDB ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z  W=0042d6b2 
+        ?BaseChangeState@CMenuEntry@NUISystem@@QAEXK@Z  W=0053d3b0 
+        ?ChangeState@CChangingStateComponent_0054c270@@QAEXJ@Z  W=0054c270 
+        ?ChangeState@CChangingStateComponent@@QAEXK@Z  W=0054a990 
+L22 00694d10 other off=NF314-witness leaf=self
+   PDB ?Initialise@CCreatureActionBase@@UAEXXZ
+        _SpiritHelper  W=008545f0 
+        ?CCreatureActionBase_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z  W=008546a0 
+   ==PDB ?Initialise@CCreatureActionBase@@UAEXXZ  W=0069f480 
+L23 00b30480 signature off=- leaf=self
+   PDB ?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z
+   ==PDB ?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z  W=00bdda80 
+        ?ClipSphere@CEngineCamera@@QAEXABVC3DVector@@MAAK@Z  W=00b99710 [00b99710:t3q]
+L24 00bacd80 other off=- leaf=self
+   PDB ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z
+   ==PDB ?AddEnableConsoleVariable@CEnginePrimitiveManager@@QAEXABVCCharString@@@Z  W=00b99d90 
+        ?RegisterEnable@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCCharString@@@Z  W=00babb50 
+L25 0099a350 other off=- leaf=self
+   PDB ?Initialise@CInitBaseClass@@IAE_NXZ
+        ?InitialiseNetworkBase@CNetworkClient@@QAE_NXZ  W=004ae940 
+   ==PDB ?Initialise@CInitBaseClass@@IAE_NXZ  W=0049ba70 
+        ?Initialise@CInitBaseClass@@QAE_NXZ  W=009a6610 [009a6610:NF314-witness]
+L26 00430300 other off=- leaf=self
+   PDB ??1CParentDefClassBase@@UAE@XZ
+        ?dtor@Pair@@QAEXXZ  W=00454b4c 
+   ==PDB ??1CParentDefClassBase@@UAE@XZ  W=004573fd [004573fd:t3q]
+L27 006fefb0 other off=- leaf=self
+   PDB ?TransferBinaryIn@CReactionMatch@@UAEXAAVCMemoryDataInputStream@@@Z
+        ?TransferBinaryIn@CReactionMatch_TransferBinaryIn@@QAEXAAVCMemoryDataInputStream@@@Z  W=006ff040 
+L28 006d5050 signature off=- leaf=self
+   PDB ?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z
+        ?RemoveEmoteIcon@CTCFollowed@@QAEXPAVCThingAICreature@@@Z  W=006d56e0 
+   ==PDB ?RemoveEmoteIcon@CTCFollowed@@IAEXAAVCThing@@@Z  W=006d53c0 
+L29 007122c0 other off=- leaf=self
+   PDB ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+   ==PDB ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ  W=007e76b0 
+        ?IsTaskRunning@CTCScriptControl@@QAE_NXZ  W=004c8c90 
+        ?IsRunning@CTC1F@@QBE_NXZ  W=008508b0 
+        ?IsRunning@CScriptTask@@QAE_NXZ  W=00747da0 
+L30 00838ba0 other off=- leaf=none
+   PDB ?WorldUpdate@CThingGameObject@@UAE_NXZ
+        ?GetState@CThingHolySite@@QAEEXZ  W=0083b9e0 
+        ?GetState@CThingMarker@@QAEEXZ  W=0083d060 
+        ?GetState@CThingPhysicalSwitch@@QAEEXZ  W=0083d700 
+   ==PDB ?WorldUpdate@CThingGameObject@@UAE_NXZ  W=006666a0 
+L31 006a64d0 signature off=- leaf=none
+   PDB ?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+        ?DrawPreparePrimitivesForRendering@CThingPhysical@@QAE_NPAVCEnginePrimitivePrepareInfo@@@Z  W=0082d080 
+   ==PDB ?DrawPreparePrimitivesForRendering@CThingPhysical@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z  W=0083ba70 

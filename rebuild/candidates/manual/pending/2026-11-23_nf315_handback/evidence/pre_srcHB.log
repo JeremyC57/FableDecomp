@@ -1,0 +1,16 @@
+06:30:00 PASS /home/user/FableDecomp/rebuild/src/compiled/00/91/CAIStateGroupBuyFromSeller_GetSellersReply_00919a70.cpp
+06:30:00 PASS /home/user/FableDecomp/rebuild/src/compiled/00/93/CAIStateGroupMinionKidGroupTag_IsRunnable_00934920.cpp
+06:30:00 PASS /home/user/FableDecomp/rebuild/src/compiled/00/8c/CCreatureActionNymphGetHitDie_FrameUpdate_008c9f40.cpp
+06:30:00 PASS /home/user/FableDecomp/rebuild/src/compiled/00/8c/CCreatureActionNymphGetHitDie_Initialise_008ca4a0.cpp
+06:30:00 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCFollowed_QuitAIFollower_006d56e0.cpp
+06:30:00 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CAnimationSet_IsAppropriateEntryExistingCIsCombatAnimAppropria_00738f90.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/91/CAIStateGroupHoverAttack_Update_0091e050.cpp
+06:30:01 FAIL /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupIceTrollIcicleAttack_Update_009621f0.cpp
+06:30:01 FAIL /home/user/FableDecomp/rebuild/src/compiled/00/96/CAIStateGroupIceTrollPoundGroundAttack_Update_009624d0.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/b2/CEngineSurfaceCompositionManager_AddSurface_00b2c460.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6a/CMessageEventFilterIsOriginatedByThing_CMessageEventFilterIsOriginatedByThing_006af2b0.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/63/CWorldMap_GetHeightZBelowPos_0063e480.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCFollowed_RemoveEmoteIcon_006d5050.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/73/CAnimationEntry_GetComponent_00738980.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionCombatPerformActionAndWait_0097da40.cpp
+06:30:01 PASS /home/user/FableDecomp/rebuild/src/compiled/00/9f/CResourceBank_AddResource_009fc380.cpp

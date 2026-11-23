@@ -48,8 +48,8 @@ public:
     CCharString ScriptName;                         // +0xa8
     bool        LoadResources;                      // +0xac
     CBaseIntelligentPointer PObjectToUse;           // +0xad
-    CCreatureAction_ActivateQuest(CThingCreatureBase& creature, CThing& objectToUse,
-                                  const CCharString& scriptName, bool loadResources);   // 0x00843F50
+    CCreatureAction_ActivateQuest(CThingCreatureBase& creature, CThing* objectToUse,
+                                  const CCharString& scriptName, bool loadResources);   // 0x00843F50 (NF315: ??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z, Ego_r + FableWin; engine/CCreatureAction_ActivateQuest.h)
 };
 
 struct CTCBaseInterface;
@@ -101,7 +101,7 @@ void CTCCarriedActionUseFishingRod::OnActionUse(CThing& user)
     CThingCreatureBase& creature = (CThingCreatureBase&)user;
     if (IsThingAbleToFish(creature)) {
         CCharString expression("Expression_Fish");
-        creature.SetCurrentAction(CCreatureAction_ActivateQuest(creature, GetParentThing(), expression, false));
+        creature.SetCurrentAction(CCreatureAction_ActivateQuest(creature, &GetParentThing(), expression, false));
     }
     if (GetParentComponents()->HasTC(0x1a))
         GetParentComponents()->GetTC<CTCShowableItem>(0x1a)->OnShowEnded();

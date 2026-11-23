@@ -1,0 +1,5 @@
+N 006ebdd0 CreatureUnsheathWeapon RELOCATION_MATCH flags= [] leaf=?CreatureUnsheathWeapon@CCombatManager@@QAEXAAVCThingCreatureBase@@W4EUnsheatheWeaponType@@@Z
+N 0092b3e0 CAIStateGroup_SkillPractice::PracticeSkills RELOCATION_MATCH flags= [] leaf=
+N 006ed510 CCombatManager::DeregisterAttackingCombatant RELOCATION_MATCH flags= [] leaf=?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z
+N 006ebee0 CCombatRing::AssignAttackerToProng RELOCATION_MATCH flags= [] leaf=
+GR_DONE

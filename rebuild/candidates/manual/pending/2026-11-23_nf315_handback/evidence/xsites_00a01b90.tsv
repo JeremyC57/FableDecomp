@@ -1,0 +1,2760 @@
+00a01b90	call	00487b35	00487af0L CPlayer::Uninitialise
+00a01b90	call	00487b46	00487af0L CPlayer::Uninitialise
+00a01b90	call	00487ba0	00487b80L CPlayer::SetPlayerCharacter
+00a01b90	call	00487bb2	00487b80L CPlayer::SetPlayerCharacter
+00a01b90	call	00487cac	00487c20L CPlayer::LoadPlayerCharacterFromGameState
+00a01b90	call	00487cbe	00487c20L CPlayer::LoadPlayerCharacterFromGameState
+00a01b90	call	00487d11	00487cf0L CPlayer::SetControlledCreature
+00a01b90	call	00487d23	00487cf0L CPlayer::SetControlledCreature
+00a01b90	call	00487d47	00487cf0L CPlayer::SetControlledCreature
+00a01b90	call	00487d59	00487cf0L CPlayer::SetControlledCreature
+00a01b90	call	0048895b	004888c0L CPlayer::SwitchPlayerCharactersWith
+00a01b90	call	0048896a	004888c0L CPlayer::SwitchPlayerCharactersWith
+00a01b90	call	0048898a	004888c0L CPlayer::SwitchPlayerCharactersWith
+00a01b90	call	0048899b	004888c0L CPlayer::SwitchPlayerCharactersWith
+00a01b90	call	004889bf	004888c0L CPlayer::SwitchPlayerCharactersWith
+00a01b90	call	004889d5	004888c0L CPlayer::SwitchPlayerCharactersWith
+00a01b90	call	0048a018	00489d40L CPlayer::CreateCharacter
+00a01b90	call	0048a02a	00489d40L CPlayer::CreateCharacter
+00a01b90	call	0048a2ce	0048a210L CPlayer::PlayerInit
+00a01b90	call	0048a2e0	0048a210L CPlayer::PlayerInit
+00a01b90	jmp	0048a510	-
+00a01b90	call	0048bd15	0048bd00L CIntelligentPointer<CThingPlayerCreature>::CIntelligentPoint
+00a01b90	call	0048bd2f	0048bd20L CIntelligentPointer<CThingPlayerCreature>::operator=
+00a01b90	jmp	004a7ef0	-
+00a01b90	call	004a9705	004a96f0L CIntelligentPointer<class CThing>::CIntelligentPointer
+00a01b90	call	004a974a	004a9730L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	004a976f	004a9760L CIntelligentPointer<CThing>::operator=
+00a01b90	call	004aa04f	004aa030L std::_Construct
+00a01b90	call	004aa16b	004aa140L std::__uninitialized_copy<CIntelligentPointer<CThing> *, CIn
+00a01b90	call	004aa1bb	004aa190L _global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+00a01b90	call	004aa62e	004aa610L std::__copy
+00a01b90	call	004ab290	004ab270L CTCHero::SetTeleportParticle
+00a01b90	call	004ab2a2	004ab270L CTCHero::SetTeleportParticle
+00a01b90	call	004ac9c8	004ac940L _global::Std_Vector_Insert_Range_SmartPtr
+00a01b90	call	004ad549	004ad520L std::vector<CIntelligentPointer<CThing>, std::allocator<CInt
+00a01b90	call	004b5815	004b5500L CQuestManager::LoadGameState
+00a01b90	call	004b584d	004b5500L CQuestManager::LoadGameState
+00a01b90	call	004b5c6f	004b5500L CQuestManager::LoadGameState
+00a01b90	call	004b5ca7	004b5500L CQuestManager::LoadGameState
+00a01b90	call	004b8a7e	-
+00a01b90	call	004b9a8e	-
+00a01b90	call	004ba511	004ba4e0L std::list<class CIntelligentPointer<class CThing>,class std:
+00a01b90	call	004c98a8	004c9840L CThing::RemoveTC
+00a01b90	call	004c98cc	004c9840L CThing::RemoveTC
+00a01b90	call	004cbb9a	004cbb80L std::pair<CIntelligentPointer<CThing>, int>::pair
+00a01b90	call	004cbbcd	004cbbb0L std::pair<CIntelligentPointer<CThing>, CUnprovenDword_004cbb
+00a01b90	call	004cbfd7	004cbfb0L CTCAssassinRush::SetThingCollisionPtr
+00a01b90	call	004cbfe9	004cbfb0L CTCAssassinRush::SetThingCollisionPtr
+00a01b90	call	004cc020	004cc000L CTCCollisionHandler_0xA8::OnThingCollision
+00a01b90	call	004cc032	004cc000L CTCCollisionHandler_0xA8::OnThingCollision
+00a01b90	call	004cc32e	-
+00a01b90	call	004cc3df	004cc3c0L _global::Construct_PairIntelligentPointerThingTCBase_004cc3c
+00a01b90	call	004cc901	-
+00a01b90	call	004cccb1	004ccc80L std::list<std::pair<CIntelligentPointer<CThing>, CTCBase *>,
+00a01b90	call	004ddad3	004ddab4L CTCTargetingBase::SetPTargetedThing
+00a01b90	call	005006c2	-
+00a01b90	call	005006d3	-
+00a01b90	call	005007e1	-
+00a01b90	call	005007f2	-
+00a01b90	call	00502cc8	00502b00L _global::AddToRelevantBuilding
+00a01b90	call	00502ce1	00502b00L _global::AddToRelevantBuilding
+00a01b90	call	005030e8	-
+00a01b90	call	005052cf	-
+00a01b90	call	005052e9	-
+00a01b90	jmp	0050bdc0	-
+00a01b90	jmp	0050bdd0	-
+00a01b90	call	0050f395	0050f380L CIntelligentPointer<class CThingBuilding>::CIntelligentPoint
+00a01b90	call	0050f3df	0050f3d0L _global::CIntelligentPointer_Assign_0050f3d0
+00a01b90	call	0050f405	0050f3f0L CIntelligentPointer<class CThingAICreature>::CIntelligentPoi
+00a01b90	call	0050f42a	0050f410L CIntelligentPointer<CThingAICreature>::CIntelligentPointer
+00a01b90	call	0050f44f	0050f440L CIntelligentPointer<CThingAICreature>::operator=
+00a01b90	call	00511f6f	00511f50L std::_Construct
+00a01b90	call	00512230	00512210L _unattributed::AssignTarget_00512210
+00a01b90	call	00512245	00512210L _unattributed::AssignTarget_00512210
+00a01b90	call	00512280	00512260L _unattributed::AssignTarget_00512260
+00a01b90	call	00512295	00512260L _unattributed::AssignTarget_00512260
+00a01b90	call	005122d0	005122b0L _unattributed::AssignTarget_005122b0
+00a01b90	call	005122e5	005122b0L _unattributed::AssignTarget_005122b0
+00a01b90	call	00512320	00512300L _unattributed::AssignTarget_00512300
+00a01b90	call	00512335	00512300L _unattributed::AssignTarget_00512300
+00a01b90	call	00512370	00512350L _unattributed::AssignTarget_00512350
+00a01b90	call	00512385	00512350L _unattributed::AssignTarget_00512350
+00a01b90	call	00513d2e	-
+00a01b90	call	005151fe	005151d0L std::list<CIntelligentPointer<CThingAICreature>,std::allocat
+00a01b90	call	0051716f	00517130L list<CIntelligentPointer<CThingAICreature> >::_M_insert_disp
+00a01b90	call	00529900	005298e0L _unattributed::AssignTarget_005298e0
+00a01b90	call	00529915	005298e0L _unattributed::AssignTarget_005298e0
+00a01b90	jmp	0056c0d0	-
+00a01b90	call	0056c875	0056c860L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	0056e245	-
+00a01b90	call	0056e365	0056e330L NCameraModes::CSnapToPoint::CSnapToPoint
+00a01b90	call	005ea67a	005ea650L CTCTavernGame::OnInitialActivate
+00a01b90	call	005ea68f	005ea650L CTCTavernGame::OnInitialActivate
+00a01b90	call	005eaadd	005ea9b0L CTCTavernGame::CreateGamePiece
+00a01b90	call	005eaaef	005ea9b0L CTCTavernGame::CreateGamePiece
+00a01b90	call	005ed30f	005ed300L CIntelligentPointer<const CThing>::operator=
+00a01b90	call	005ed460	005ed440L CTCCreatedEntity::SetPCreator
+00a01b90	call	005ed472	005ed440L CTCCreatedEntity::SetPCreator
+00a01b90	call	005edc2b	005edc00L CTCGamePlayer::SetGame
+00a01b90	call	005edc3d	005edc00L CTCGamePlayer::SetGame
+00a01b90	call	005edc66	005edc00L CTCGamePlayer::SetGame
+00a01b90	call	005edc78	005edc00L CTCGamePlayer::SetGame
+00a01b90	call	0061813f	00618100L std::list<CIntelligentPointer<CThing> >::_M_insert_dispatch
+00a01b90	call	0061c026	0061b610L CTCInventoryQuests::ConstructQuestList
+00a01b90	call	0061c063	0061b610L CTCInventoryQuests::ConstructQuestList
+00a01b90	call	0061f15a	0061e6d0L CTCInventoryQuests::ConstructQuestListPC
+00a01b90	call	0061f197	0061e6d0L CTCInventoryQuests::ConstructQuestListPC
+00a01b90	call	00621ab0	00621a20L CTCInventoryQuests::InitialiseQuestCardList
+00a01b90	call	00621adc	00621a20L CTCInventoryQuests::InitialiseQuestCardList
+00a01b90	call	006255c2	006255b0L NInventory::CCategory::operator=
+00a01b90	call	0062da53	0062d9e0L CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToT
+00a01b90	call	0062da72	0062d9e0L CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToT
+00a01b90	call	0062db48	0062dad0L CCreatureAction_PlayerInteractionGreet::CCreatureAction_Play
+00a01b90	call	0062dc38	0062dbc0L CCreatureAction_PlayerInteractionInsult::CCreatureAction_Pla
+00a01b90	call	0062dd18	0062dca0L CCreatureAction_PlayerInteractionThreaten::CCreatureAction_P
+00a01b90	call	0062ddf8	0062dd80L CCreatureAction_PlayerInteractionBribe::CCreatureAction_Play
+00a01b90	call	0062ded8	0062de60L CCreatureAction_PlayerInteractionFlirt::CCreatureAction_Play
+00a01b90	call	0062dfb8	0062df40L CCreatureAction_TavernGameMasterInteraction::CCreatureAction
+00a01b90	call	0062e098	0062e020L CCreatureAction_Talk::CCreatureAction_Talk
+00a01b90	call	0062eb86	0062eb50L CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToT
+00a01b90	call	0062ebac	0062eb50L CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToT
+00a01b90	call	0062ebf0	0062ebc0L CCreatureActionBase::CCreatureActionBase(const CCreatureActi
+00a01b90	call	0062ec3a	0062ebc0L CCreatureActionBase::CCreatureActionBase(const CCreatureActi
+00a01b90	call	0062ef96	0062ef60L CCreatureAction_PlayerInteractionGreet::CCreatureAction_Play
+00a01b90	call	0062f016	0062efe0L CCreatureAction_PlayerInteractionInsult::CCreatureAction_Pla
+00a01b90	call	0062f096	0062f060L CCreatureAction_PlayerInteractionThreaten::CCreatureAction_P
+00a01b90	call	0062f116	0062f0e0L CCreatureAction_PlayerInteractionBribe::CCreatureAction_Play
+00a01b90	call	0062f196	0062f160L CCreatureAction_PlayerInteractionFlirt::CCreatureAction_Play
+00a01b90	call	0062f216	0062f1e0L CCreatureAction_TavernGameMasterInteraction::CCreatureAction
+00a01b90	call	0062f366	0062f330L CCreatureAction_Talk::CCreatureAction_Talk
+00a01b90	call	0062f3e6	0062f3b0L CCombatActionBase::CCombatActionBase(const CCombatActionBase
+00a01b90	call	0062f40c	0062f3b0L CCombatActionBase::CCombatActionBase(const CCombatActionBase
+00a01b90	call	0062f559	0062f3b0L CCombatActionBase::CCombatActionBase(const CCombatActionBase
+00a01b90	jmp	00654858	-
+00a01b90	jmp	0065488e	-
+00a01b90	call	00654d72	00654d58L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	00654dc9	00654dafL CIntelligentPointer<NParticleEngine::CParticleEmitter>::CInt
+00a01b90	call	00655159	00655145L CIntelligentPointer<const CThingPhysical>::CIntelligentPoint
+00a01b90	call	0065518f	00655180L _global::CIntelligentPointer_Assign_00655180
+00a01b90	call	0065532c	00655318L CIntelligentPointer<NParticleEngine::CParticleEmitter>::CInt
+00a01b90	call	0065534b	0065533cL CIntelligentPointer<NParticleEngine::CParticleEmitter>::oper
+00a01b90	jmp	0065d1e6	-
+00a01b90	jmp	0065d1eb	-
+00a01b90	jmp	0065d253	-
+00a01b90	jmp	0065d273	-
+00a01b90	jmp	0065d2ef	-
+00a01b90	call	0065d7af	0065d795L CIntelligentPointer<CThingObject>::CIntelligentPointer
+00a01b90	call	0065d7f0	0065d7d6L CIntelligentPointer<CThingBuilding>::CIntelligentPointer
+00a01b90	call	0065d858	0065d83eL CIntelligentPointer<CThingMarker>::CIntelligentPointer
+00a01b90	call	0065e10c	0065e0f8L CIntelligentPointer<const CThingTrackNode>::CIntelligentPoin
+00a01b90	call	0065e147	0065e133L CIntelligentPointer<class CThingObject>::CIntelligentPointer
+00a01b90	call	0065e171	0065e15dL CIntelligentPointer<class CThingTrackNode>::CIntelligentPoin
+00a01b90	call	0065e232	0065e21eL CIntelligentPointer<class CThingMarker>::CIntelligentPointer
+00a01b90	call	0065e398	0065e37eL CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	0065e679	0065e65fL CIntelligentPointer<CThingTrackNode>::CIntelligentPointer
+00a01b90	call	00662470	00662450L CThingCreatureBase::SetPItemToUnsheatheAfterCutscene
+00a01b90	call	00662485	00662450L CThingCreatureBase::SetPItemToUnsheatheAfterCutscene
+00a01b90	call	0066251b	006624f0L CThingCreatureBase::SetAttackedByCreature
+00a01b90	call	00662530	006624f0L CThingCreatureBase::SetAttackedByCreature
+00a01b90	call	006667f5	006666a0L CThingCreatureBase::WorldUpdate
+00a01b90	call	00666806	006666a0L CThingCreatureBase::WorldUpdate
+00a01b90	jmp	00668500	-
+00a01b90	jmp	00668540	-
+00a01b90	call	00668b75	00668b60L CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer
+00a01b90	call	00668b8f	00668b80L _global::CIntelligentPointer_Assign_00668b80
+00a01b90	call	00668c45	00668c30L CIntelligentPointer<const CThingCreatureBase>::CIntelligentP
+00a01b90	call	00668c7f	00668c70L _global::CIntelligentPointer_Assign_00668c70
+00a01b90	call	006691dd	006691c0L CThingCreatureBase::ClearAttackedByCreature
+00a01b90	call	006691f2	006691c0L CThingCreatureBase::ClearAttackedByCreature
+00a01b90	call	00669250	00669230L CThingDeadCreature::SetKiller
+00a01b90	call	00669265	00669230L CThingDeadCreature::SetKiller
+00a01b90	call	00669328	00669300L NEntityEvents::CEventDied::CEventDied
+00a01b90	call	00669344	00669300L NEntityEvents::CEventDied::CEventDied
+00a01b90	call	0066a5fd	0066a5b0L CCombatAction_GenericResponseToExplosion::CCombatAction_Gene
+00a01b90	call	0066a816	0066a7e0L CCombatAction_GenericResponseToExplosion::CCombatAction_Gene
+00a01b90	call	0066aca8	0066ac80L CTCSoundPlayer::CTCSoundPlayer
+00a01b90	call	0066af5d	0066aef0L CTCSoundPlayer::CreatePAttachedEmitter
+00a01b90	call	0066af6e	0066aef0L CTCSoundPlayer::CreatePAttachedEmitter
+00a01b90	jmp	0066bfd0	-
+00a01b90	call	0066c0d5	0066c0c0L CIntelligentPointer<CThingSoundEmitter>::CIntelligentPointer
+00a01b90	call	0066c11f	0066c110L _global::CIntelligentPointer_Assign_0066c110
+00a01b90	call	0067010f	006700f0L CTCCoopSpirit::OnCreate
+00a01b90	call	00670121	006700f0L CTCCoopSpirit::OnCreate
+00a01b90	call	00670653	006705f0L CTCCoopSpirit::SetAppearanceParticle
+00a01b90	call	00670664	006705f0L CTCCoopSpirit::SetAppearanceParticle
+00a01b90	call	006845b4	00684420L CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero
+00a01b90	call	006873a0	00687310L CMessageEvent::CMessageEvent
+00a01b90	call	006873c0	00687310L CMessageEvent::CMessageEvent
+00a01b90	call	006873f0	006873d0L _unattributed::AssignTarget_006873d0
+00a01b90	call	00687402	006873d0L _unattributed::AssignTarget_006873d0
+00a01b90	call	00687440	00687420L _unattributed::AssignTarget_00687420
+00a01b90	call	00687452	00687420L _unattributed::AssignTarget_00687420
+00a01b90	call	006875dc	00687540L CMessageEventManager::AddMessage
+00a01b90	call	006875ef	00687540L CMessageEventManager::AddMessage
+00a01b90	call	00687616	00687540L CMessageEventManager::AddMessage
+00a01b90	call	00687629	00687540L CMessageEventManager::AddMessage
+00a01b90	call	006877b9	00687730L CMessageEventManager::AddMessage
+00a01b90	call	006877cc	00687730L CMessageEventManager::AddMessage
+00a01b90	call	006877f3	00687730L CMessageEventManager::AddMessage
+00a01b90	call	00687806	00687730L CMessageEventManager::AddMessage
+00a01b90	call	00688d67	00688d40L CInputProcessZTarget::AddToInterface
+00a01b90	call	00688d7b	00688d40L CInputProcessZTarget::AddToInterface
+00a01b90	call	00688e6d	00688d40L CInputProcessZTarget::AddToInterface
+00a01b90	call	00688e7f	00688d40L CInputProcessZTarget::AddToInterface
+00a01b90	call	00688f66	00688eb0L CInputProcessZTarget::ProcessInput
+00a01b90	call	00688f78	00688eb0L CInputProcessZTarget::ProcessInput
+00a01b90	jmp	00689260	-
+00a01b90	call	006892b5	006892a0L CIntelligentPointer<const CThingPlayerCreature>::CIntelligen
+00a01b90	call	006892cf	006892c0L _global::CIntelligentPointer_Assign_006892c0
+00a01b90	call	00691d47	00691d20L CInputProcessCreatureMovement::Init
+00a01b90	call	00691d59	00691d20L CInputProcessCreatureMovement::Init
+00a01b90	call	00692007	00691fe0L CInputProcessDebugControls::Init
+00a01b90	call	00692019	00691fe0L CInputProcessDebugControls::Init
+00a01b90	call	006928e0	006928c0L CCreatureActionBase::SetCreature
+00a01b90	call	006928f2	006928c0L CCreatureActionBase::SetCreature
+00a01b90	call	00692fa0	00692f30L GetPrecedingAction
+00a01b90	call	00692fb2	00692f30L GetPrecedingAction
+00a01b90	call	00693b57	00693b30L CCreatureActionBase::CCreatureActionBase
+00a01b90	call	00693c97	00693c70L CCreatureActionBase::CCreatureActionBase
+00a01b90	call	00697c30	00697c10L CGameCameraManager::AssignTarget_00697c10
+00a01b90	call	00697c45	00697c10L CGameCameraManager::AssignTarget_00697c10
+00a01b90	call	006984c1	006984a0L CGameCameraManager::RemoveCameraPoint
+00a01b90	call	00699212	006991f0L CGameCameraManager::AddCameraPoint
+00a01b90	call	00699277	006991f0L CGameCameraManager::AddCameraPoint
+00a01b90	call	0069a516	-
+00a01b90	call	0069a6bb	-
+00a01b90	jmp	0069bb20	-
+00a01b90	call	0069c465	0069c450L CIntelligentPointer<const CThingGameObject>::CIntelligentPoi
+00a01b90	call	0069c48f	0069c480L _global::CIntelligentPointer_Assign_0069c480
+00a01b90	call	0069df15	-
+00a01b90	call	0069dfb5	0069df80L NCameraModes::CTrack::CTrack
+00a01b90	call	0069e0a5	-
+00a01b90	call	0069e264	-
+00a01b90	call	0069e554	-
+00a01b90	call	0069f17f	0069f0f0L CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_
+00a01b90	call	0069f275	0069f230L CCreatureAction_UseObject::CCreatureAction_UseObject
+00a01b90	call	0069ff02	0069fe60L CCreatureAction_UseObject::PerformAction
+00a01b90	call	006a01f2	006a0150L CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_
+00a01b90	call	006a0778	006a0750L NEntityEvents::CEventItemUsed::CEventItemUsed
+00a01b90	call	006a0d86	006a0d50L CCreatureAction_UseObject::CCreatureAction_UseObject
+00a01b90	call	006a0eb6	006a0e80L CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_
+00a01b90	call	006a13ca	006a1370L CTCCarrying::SetAsDrawable
+00a01b90	call	006a14b2	006a1490L CTCCarrying::IsCarriedThingInPrimarySlot
+00a01b90	call	006a16c4	006a16a0L CTCCarrying::RemoveThingInCarrySlot
+00a01b90	call	006a177b	006a16a0L CTCCarrying::RemoveThingInCarrySlot
+00a01b90	call	006a178c	006a16a0L CTCCarrying::RemoveThingInCarrySlot
+00a01b90	call	006a17c1	006a16a0L CTCCarrying::RemoveThingInCarrySlot
+00a01b90	call	006a200a	006a1f80L CTCCarrying::PutThingInCarrySlot
+00a01b90	call	006a201c	006a1f80L CTCCarrying::PutThingInCarrySlot
+00a01b90	call	006a2087	006a1f80L CTCCarrying::PutThingInCarrySlot
+00a01b90	call	006a20fa	006a1f80L CTCCarrying::PutThingInCarrySlot
+00a01b90	call	006a2438	006a23e0L NRemap006a23e0::CTCCarrying::ResetAllCarriedThingsAsBypassFi
+00a01b90	call	006a2469	006a23e0L NRemap006a23e0::CTCCarrying::ResetAllCarriedThingsAsBypassFi
+00a01b90	call	006a2599	006a2540L CTCCarrying::OnCreate
+00a01b90	call	006a25c3	006a2540L CTCCarrying::OnCreate
+00a01b90	call	006a25f6	006a2540L CTCCarrying::OnCreate
+00a01b90	call	006a2a98	-
+00a01b90	call	006a2bba	006a2ba0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	006a2bed	006a2bd0L std::pair<CIntelligentPointer<CThing>, CUnprovenByte_006a2bd
+00a01b90	call	006a2c28	-
+00a01b90	call	006a2d27	-
+00a01b90	call	006a2d70	006a2d40L std::iter_swap
+00a01b90	call	006a2d86	006a2d40L std::iter_swap
+00a01b90	call	006a2d9d	006a2d40L std::iter_swap
+00a01b90	call	006a2de0	006a2dc0L std::__unguarded_linear_insert
+00a01b90	call	006a2e04	006a2dc0L std::__unguarded_linear_insert
+00a01b90	call	006a2e65	006a2e20L std::_Push_heap
+00a01b90	call	006a2e93	006a2e20L std::_Push_heap
+00a01b90	call	006a2ee8	006a2eb0L _global::CopyBackward_PairLongThing_006a2eb0
+00a01b90	call	006a2f15	006a2f00L NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgP
+00a01b90	call	006a30ef	006a30d0L _global::Construct_PairIntelligentPointerThingObjectBool_006
+00a01b90	call	006a3127	-
+00a01b90	call	006a315b	006a3130L std::__uninitialized_copy
+00a01b90	call	006a31ab	006a3180L std::__uninitialized_fill_n
+00a01b90	call	006a3203	006a31d0L std::__uninitialized_copy
+00a01b90	call	006a3253	006a3220L std::__uninitialized_fill_n
+00a01b90	call	006a32e5	006a32b0L std::__unguarded_insertion_sort_aux
+00a01b90	call	006a3350	006a3300L _global::_Adjust_heap
+00a01b90	call	006a3382	006a3300L _global::_Adjust_heap
+00a01b90	call	006a33b6	006a3300L _global::_Adjust_heap
+00a01b90	call	006a34bd	006a34a0L std::__pop_heap
+00a01b90	call	006a34ee	006a34a0L std::__pop_heap
+00a01b90	call	006a3579	006a3520L std::__make_heap
+00a01b90	call	006a35f4	-
+00a01b90	call	006a3754	-
+00a01b90	call	006a3863	006a3830L std::__linear_insert
+00a01b90	call	006a389e	006a3830L std::__linear_insert
+00a01b90	call	006a391b	006a38c0L std::sort_heap
+00a01b90	call	006a39e3	006a3950L std::vector::_M_insert_overflow
+00a01b90	call	006a3b0d	006a3a70L std::vector<std::pair<long,CIntelligentPointer<CThing> > >::
+00a01b90	call	006a3bcc	006a3b90L std::__insertion_sort
+00a01b90	call	006a3c3c	006a3bf0L std::__partial_sort
+00a01b90	call	006a3c9c	006a3c70L std::vector<CScreenFilterSThingByPass>::push_back
+00a01b90	call	006a3d04	006a3cd0L std::vector<pair<long,CIntelligentPointer<CThing> > >::push_
+00a01b90	call	006a3dcf	006a3da0L CVectorMap_Things::Add
+00a01b90	call	006a3eb4	006a3e00L std::__introsort_loop<std::pair<long, CIntelligentPointer<CT
+00a01b90	call	006a59c7	006a5950L CThingPhysical::ConstructFromParams
+00a01b90	call	006a59dc	006a5950L CThingPhysical::ConstructFromParams
+00a01b90	call	006a5a04	006a5950L CThingPhysical::ConstructFromParams
+00a01b90	call	006a5a19	006a5950L CThingPhysical::ConstructFromParams
+00a01b90	call	006a5b40	006a5af0L CThingPhysical::SerialiseGameState
+00a01b90	call	006a5b55	006a5af0L CThingPhysical::SerialiseGameState
+00a01b90	call	006a5b76	006a5af0L CThingPhysical::SerialiseGameState
+00a01b90	call	006a5b8b	006a5af0L CThingPhysical::SerialiseGameState
+00a01b90	call	006a6021	006a5d90L CThingPhysical::ConstructFromLevelScript
+00a01b90	call	006a6036	006a5d90L CThingPhysical::ConstructFromLevelScript
+00a01b90	call	006a6057	006a5d90L CThingPhysical::ConstructFromLevelScript
+00a01b90	call	006a606c	006a5d90L CThingPhysical::ConstructFromLevelScript
+00a01b90	jmp	006a69f0	-
+00a01b90	call	006a6ac5	006a6ab0L CIntelligentPointer<CThingPhysical>::CIntelligentPointer
+00a01b90	call	006a6adf	006a6ad0L _global::CIntelligentPointer_Assign_006a6ad0
+00a01b90	call	006a91a7	006a9180L CInputProcessControlSpirit::Init
+00a01b90	call	006a91b9	006a9180L CInputProcessControlSpirit::Init
+00a01b90	call	006ac19b	006ac140L CThingPlayerCreature::ResetThingReactions
+00a01b90	call	006ac1b0	006ac140L CThingPlayerCreature::ResetThingReactions
+00a01b90	call	006aebc0	006aeba0L CTCRegionFollower::RemoveFollower
+00a01b90	call	006aed30	006aecf0L CTCRegionFollower::CullNullFollowers
+00a01b90	call	006aede2	006aedc0L CTCRegionFollower::AddFollower
+00a01b90	call	006aee16	006aedc0L CTCRegionFollower::AddFollower
+00a01b90	call	006b231c	006b2260L CAtmosProcess::Update
+00a01b90	call	006b232d	006b2260L CAtmosProcess::Update
+00a01b90	call	006b255f	006b2550L _global::CIntelligentPointer_Assign_006b2550
+00a01b90	call	006b4207	006b3ff0L CEnvironment::Update
+00a01b90	call	006b4218	006b3ff0L CEnvironment::Update
+00a01b90	call	006c0f47	006c0f00L CTCBuyableHouse::CreateMainSignPost
+00a01b90	call	006c0f59	006c0f00L CTCBuyableHouse::CreateMainSignPost
+00a01b90	call	006c0f9b	006c0f70L CTCBuyableHouse::CreateDressingSignPost
+00a01b90	call	006c0fad	006c0f70L CTCBuyableHouse::CreateDressingSignPost
+00a01b90	call	006c1641	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c1653	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c1679	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c168b	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c16ae	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c16c0	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c16e3	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c16f5	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c175b	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c176c	006c14d0L CTCBuyableHouse::OnInitialActivate
+00a01b90	call	006c1ea7	006c1e70L back_insert_iterator<list<CIntelligentPointer<CThingAICreatu
+00a01b90	call	006c1f76	006c1ed0L std::copy_if<std::_List_iterator<CIntelligentPointer<CThingA
+00a01b90	call	006c3c7b	006c3c30L CTCFadeOutAndIn::CTCFadeOutAndIn
+00a01b90	call	006c3d3c	006c3ca0L CTCFadeOutAndIn::AddCarriedThingsOfThingToFadeList
+00a01b90	call	006c3d96	006c3ca0L CTCFadeOutAndIn::AddCarriedThingsOfThingToFadeList
+00a01b90	call	006c3e13	006c3df0L CTCFadeOutAndIn::AddThingToFade
+00a01b90	call	006c3e5a	006c3df0L CTCFadeOutAndIn::AddThingToFade
+00a01b90	call	006c41ab	-
+00a01b90	call	006c4245	006c4210L std::remove_copy_if
+00a01b90	call	006c5140	006c5110L COwner_006c5110::COwner_006c5110
+00a01b90	call	006c5438	006c5410L CWitnessesSearchingDeed::CWitnessesSearchingDeed
+00a01b90	call	006c548e	006c5460L CWitnessesSearchingDeed::CWitnessesSearchingDeed
+00a01b90	call	006c5505	006c54c0L COpinionDeed::COpinionDeed
+00a01b90	call	006c5600	006c55e0L CTCHeroOpinionDeedLog::SetVillageForCrimes
+00a01b90	call	006c5612	006c55e0L CTCHeroOpinionDeedLog::SetVillageForCrimes
+00a01b90	call	006c889a	006c8780L CPersistTraits<CIntelligentPointer<CThing> >::TransferBinary
+00a01b90	call	006c88ad	006c8780L CPersistTraits<CIntelligentPointer<CThing> >::TransferBinary
+00a01b90	call	006c99c7	006c9900L CPersistTraits<CIntelligentPointer<CThing> >::TransferIn
+00a01b90	call	006c99da	006c9900L CPersistTraits<CIntelligentPointer<CThing> >::TransferIn
+00a01b90	call	006c9a4a	006c9a10L CPersistContext::Transfer<CIntelligentPointer<CThing>>
+00a01b90	call	006c9c96	006c9c60L _global::Transfer
+00a01b90	call	006ca51b	006ca4e0L CTCHero::OnInitialActivate
+00a01b90	call	006ca52d	006ca4e0L CTCHero::OnInitialActivate
+00a01b90	call	006cbe50	006cbe30L CTCCreatureNavigation::SetThingToIgnore
+00a01b90	call	006cbe62	006cbe30L CTCCreatureNavigation::SetThingToIgnore
+00a01b90	call	006d1cbc	006d18a0L CTCWife::Marry
+00a01b90	call	006d1cd7	006d18a0L CTCWife::Marry
+00a01b90	call	006d3c60	006d3c40L CTCBuyableHouse::SetWifeLivingHere
+00a01b90	call	006d3c72	006d3c40L CTCBuyableHouse::SetWifeLivingHere
+00a01b90	call	006d4d2a	006d4d10L CIntelligentPointer<CThingAICreature>::CIntelligentPointer
+00a01b90	call	006d50eb	006d50c0L CTCFollowed::AddFollower
+00a01b90	call	006d514b	006d50c0L CTCFollowed::AddFollower
+00a01b90	call	006d51a1	006d5180L CTCFollowed::RemoveFollower
+00a01b90	call	006d5224	006d5180L CTCFollowed::RemoveFollower
+00a01b90	call	006d52a0	006d5260L CTCFollowed::CullNullFollowers
+00a01b90	call	006d5343	006d5260L CTCFollowed::CullNullFollowers
+00a01b90	call	006d54df	006d53c0L CTCFollowed::FrameUpdate
+00a01b90	call	006d5711	006d56e0L CTCFollowed::QuitAIFollower
+00a01b90	call	006d5742	006d56e0L CTCFollowed::QuitAIFollower
+00a01b90	call	006d6198	006d6110L CBrainOutput::CBrainOutput
+00a01b90	call	006deb95	006de8c0L CTCTrophy::OnShowTrophyPerformAction
+00a01b90	call	006df790	006df730L CCreatureAction_ShowTrophy::CCreatureAction_ShowTrophy
+00a01b90	call	006df847	006df800L CCreatureAction_UnsheatheToShowToSheatheTrophy::CCreatureAct
+00a01b90	call	006dfb07	006dfa50L CThingSearchTools::GetAllThings<CThingAICreature,std::list<C
+00a01b90	call	006dfbc6	006dfb90L CCreatureAction_ShowTrophy::CCreatureAction_ShowTrophy
+00a01b90	call	006dfc04	006dfb90L CCreatureAction_ShowTrophy::CCreatureAction_ShowTrophy
+00a01b90	call	006dfc98	006dfc50L CCreatureAction_UnsheatheToShowToSheatheTrophy::CCreatureAct
+00a01b90	call	006e0b87	006e0af0L CTCDParticleEmitter::ClearAttachments
+00a01b90	call	006e0b98	006e0af0L CTCDParticleEmitter::ClearAttachments
+00a01b90	call	006e0c2c	006e0be0L CTCDParticleEmitter::AttachToThing
+00a01b90	call	006e0c3e	006e0be0L CTCDParticleEmitter::AttachToThing
+00a01b90	call	006e10ca	006e1080L CTCDParticleEmitter::SetPEmitter
+00a01b90	call	006e10db	006e1080L CTCDParticleEmitter::SetPEmitter
+00a01b90	call	006e2b02	006e2af0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	006e2b45	006e2b30L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	006e33b8	006e31e0L _global::OnDialogueStart
+00a01b90	call	006e491d	006e4900L NSpeechGainManager::CActiveDialogueInfo::CActiveDialogueInfo
+00a01b90	call	006e4bef	006e4bd0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	006e4ce1	006e4cb0L std::list<NSpeechGainManager::CActiveDialogueInfo>::_M_creat
+00a01b90	call	006e57d1	006e5790L CScriptConversation::AddPersonToConversation
+00a01b90	call	006e8b2d	006e8b10L CDefendingCombatantInfo::CProng::Reset
+00a01b90	call	006e8b3f	006e8b10L CDefendingCombatantInfo::CProng::Reset
+00a01b90	call	006e8b97	006e8b60L CCombatRing::Reset
+00a01b90	call	006e8ba9	006e8b60L CCombatRing::Reset
+00a01b90	call	006e9199	006e9140L CProng::SetBlocked
+00a01b90	call	006e91aa	006e9140L CProng::SetBlocked
+00a01b90	call	006eb564	006eb390L CCombatManager::SetupNextSequenceForAttacker
+00a01b90	call	006eb576	006eb390L CCombatManager::SetupNextSequenceForAttacker
+00a01b90	call	006ed58c	006ed510L CCombatManager::DeregisterAttackingCombatant
+00a01b90	call	006ed59d	006ed510L CCombatManager::DeregisterAttackingCombatant
+00a01b90	call	006ed934	006ed8c0L CCombatManager::DeregisterAttackedCombatant
+00a01b90	call	006ed946	006ed8c0L CCombatManager::DeregisterAttackedCombatant
+00a01b90	call	006ef42a	006ef410L CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer
+00a01b90	call	006effa0	006eff60L CDefendingCombatantInfo::CProng::CProng
+00a01b90	call	006f05e4	-
+00a01b90	call	006f0692	006f0640L _global::Copy_FlaggedPosEmitter_006f0640
+00a01b90	call	006f114a	006f10f0L _global::UninitCopy_CProng_006f10f0
+00a01b90	call	006f11d1	006f1180L std::__uninitialized_fill_n
+00a01b90	call	006f14fa	006f14a0L _global::UninitCopy_CProng_006f14a0
+00a01b90	call	006f162d	006f15e0L std::swap
+00a01b90	call	006f165f	006f15e0L std::swap
+00a01b90	call	006f1691	006f15e0L std::swap
+00a01b90	call	006f17bd	006f17a0L CProng::SetPOccupyingAttacker
+00a01b90	call	006f17d1	006f17a0L CProng::SetPOccupyingAttacker
+00a01b90	call	006f17f9	006f17a0L CProng::SetPOccupyingAttacker
+00a01b90	call	006f180a	006f17a0L CProng::SetPOccupyingAttacker
+00a01b90	call	006f471e	006f46d0L CDefendingCombatantInfo::CDefendingCombatantInfo
+00a01b90	call	006f5740	006f5720L CCombatAction_GenericStrikeResponseBase::SetHitter
+00a01b90	call	006f5755	006f5720L CCombatAction_GenericStrikeResponseBase::SetHitter
+00a01b90	call	006f83f6	006f83c0L CCombatAction_GenericStrikeResponseBase::CCombatAction_Gener
+00a01b90	call	006f8596	006f8560L CCreatureAction_WaspQueenDeath::CCreatureAction_WaspQueenDea
+00a01b90	call	006f88c6	006f8890L CCreatureAction_HobbeSpellcasterAim::CCreatureAction_HobbeSp
+00a01b90	call	006f8a26	006f89f0L CCreatureAction_SummonerFlameSlice::CCreatureAction_Summoner
+00a01b90	jmp	00700776	00700770L COpinionReactionManager::SetThingOpinionSource
+00a01b90	call	0070092f	007008c0L COpinionReactionManager::ClearOpinionSource
+00a01b90	jmp	00701b60	-
+00a01b90	call	00712c40	00712c20L CTCScriptedControl::SetLocked
+00a01b90	call	00712c52	00712c20L CTCScriptedControl::SetLocked
+00a01b90	call	00712c9d	00712c80L CTCScriptedControl::ClearLocked
+00a01b90	call	00712caf	00712c80L CTCScriptedControl::ClearLocked
+00a01b90	call	00712e21	00712df0L CActionTalkedTo::CActionTalkedTo
+00a01b90	call	007138a3	00713850L CTCScriptedControl::InterruptControl
+00a01b90	call	007138b5	00713850L CTCScriptedControl::InterruptControl
+00a01b90	jmp	00718050	-
+00a01b90	jmp	007180a0	-
+00a01b90	call	00718875	00718860L CIntelligentPointer<CScriptGameResourceObjectScriptedThing>:
+00a01b90	call	0071889f	00718890L _global::CIntelligentPointer_Assign_00718890
+00a01b90	call	007189d5	007189c0L CIntelligentPointer<NTCScriptedControl::CScriptConversation>
+00a01b90	call	00719d86	00719d50L CCreatureAction_AimMissileWeapon::CCreatureAction_AimMissile
+00a01b90	call	00719e06	00719dd0L CCreatureAction_ReloadMissileWeapon::CCreatureAction_ReloadM
+00a01b90	call	0071a910	0071a8f0L CTCParticleAttachmentTracker::SetParticleAsDetached
+00a01b90	call	0071a962	0071a940L CTCParticleAttachmentTracker::SetParticleAsAttached
+00a01b90	call	0071a996	0071a940L CTCParticleAttachmentTracker::SetParticleAsAttached
+00a01b90	call	0071b1d0	0071b1b0L CTCThingOwner::RemoveOwnedObject
+00a01b90	call	0071b322	0071b300L CTCThingOwner::AddOwnedObject
+00a01b90	call	0071b356	0071b300L CTCThingOwner::AddOwnedObject
+00a01b90	call	0071c986	0071c7c0L CTCHeroMorph::AddParticles
+00a01b90	call	007226a5	00722590L CTCSmokeGenerator::CreatePositions
+00a01b90	call	007227d1	00722740L CTCSmokeGenerator::FrameUpdate
+00a01b90	call	007227e2	00722740L CTCSmokeGenerator::FrameUpdate
+00a01b90	call	00722a04	007229d0L CTCSmokeGenerator::CGenerationPos::CGenerationPos
+00a01b90	call	00722a88	-
+00a01b90	call	00722adf	-
+00a01b90	call	00722b63	-
+00a01b90	call	00722baf	00722b70L std::__uninitialized_copy<CTCSmokeGenerator::CGenerationPos 
+00a01b90	call	00722c0f	00722bd0L std::__uninitialized_fill_n<CTCSmokeGenerator::CGenerationPo
+00a01b90	call	00722c6f	00722c30L std::__uninitialized_copy<CTCSmokeGenerator::CGenerationPos 
+00a01b90	call	00722cd2	00722c90L _global::Copy_GenerationPos_00722c90
+00a01b90	call	007231ba	00723110L std::vector<CTCSmokeGenerator::CGenerationPos>::_M_insert_ov
+00a01b90	call	007232b0	00723270L std::vector::push_back
+00a01b90	call	00729ad0	00729a90L CTCActionUseScriptedHook::CTCActionUseScriptedHook
+00a01b90	call	00729af1	00729a90L CTCActionUseScriptedHook::CTCActionUseScriptedHook
+00a01b90	call	00729bf5	00729bc0L CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID
+00a01b90	call	00729c09	00729bc0L CTCActionUseScriptedHook::SetUpPEntranceConnectedToFromUID
+00a01b90	call	0072a05c	00729f60L CTCActionUseScriptedHook::OnInitialActivate
+00a01b90	call	0072a06e	00729f60L CTCActionUseScriptedHook::OnInitialActivate
+00a01b90	call	0072a4c0	0072a4a0L NCameraModes::CScriptModuleBase::SetPCameraPoint
+00a01b90	call	0072a4d2	0072a4a0L NCameraModes::CScriptModuleBase::SetPCameraPoint
+00a01b90	call	0072a663	0072a630L CTCActionUseBuyOrSteal::CTCActionUseBuyOrSteal
+00a01b90	call	0072c89d	0072c790L CTCSpecialAbilities::SetupEnflameSpell
+00a01b90	call	0072c8af	0072c790L CTCSpecialAbilities::SetupEnflameSpell
+00a01b90	call	0072cd98	0072cd00L CTCSpecialAbilities::SetupDivineWrath
+00a01b90	call	0072cdaa	0072cd00L CTCSpecialAbilities::SetupDivineWrath
+00a01b90	call	0072ceb8	0072ce20L CTCSpecialAbilities::SetupUnholyPower
+00a01b90	call	0072ceca	0072ce20L CTCSpecialAbilities::SetupUnholyPower
+00a01b90	call	0072d370	0072d360L CCreatureActionBase::SetPItemRemoved
+00a01b90	call	0072e204	0072e130L CTCMeshAutomaticEntityCreator::CreateParticle
+00a01b90	call	0072e216	0072e130L CTCMeshAutomaticEntityCreator::CreateParticle
+00a01b90	call	0072f199	0072f170L CTCDummyVillager::SetupFromData
+00a01b90	call	0072f1ab	0072f170L CTCDummyVillager::SetupFromData
+00a01b90	call	0072f1cf	0072f170L CTCDummyVillager::SetupFromData
+00a01b90	call	0072f1e1	0072f170L CTCDummyVillager::SetupFromData
+00a01b90	call	0072f313	0072f2f0L CTCDummyVillager::SetupFromVillager
+00a01b90	call	0072f325	0072f2f0L CTCDummyVillager::SetupFromVillager
+00a01b90	call	0072f834	0072f750L CTCDummyVillager::CreateVillager
+00a01b90	call	0072f848	0072f750L CTCDummyVillager::CreateVillager
+00a01b90	call	007300b9	00730070L CTCDummyVillager::OnInitialActivate
+00a01b90	call	007300cb	00730070L CTCDummyVillager::OnInitialActivate
+00a01b90	call	00730118	00730070L CTCDummyVillager::OnInitialActivate
+00a01b90	call	0073012a	00730070L CTCDummyVillager::OnInitialActivate
+00a01b90	call	00730188	00730070L CTCDummyVillager::OnInitialActivate
+00a01b90	call	0073019c	00730070L CTCDummyVillager::OnInitialActivate
+00a01b90	call	0073164e	00731610L CTCJackShield::CTCJackShield
+00a01b90	call	0073165f	00731610L CTCJackShield::CTCJackShield
+00a01b90	call	00731767	00731680L CTCJackShield::EnableShield
+00a01b90	call	00731778	00731680L CTCJackShield::EnableShield
+00a01b90	call	007341b5	00734190L CTCCombat::RemoveThingToAlwaysBlock
+00a01b90	call	007348fc	-
+00a01b90	call	007352f1	007352d0L CTCCombat::AddThingToAlwaysBlock
+00a01b90	call	00736159	00735fd0L CTCCombat::AttemptToStartParticle
+00a01b90	call	00736174	00735fd0L CTCCombat::AttemptToStartParticle
+00a01b90	call	0073777b	00737750L std::__uninitialized_copy<CIntelligentPointer<CThing const> 
+00a01b90	call	007377cb	007377a0L _global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+00a01b90	call	00737b00	00737ad0L std::remove_copy
+00a01b90	call	00737d6e	00737d50L std::__copy<CIntelligentPointer<CThing const> *, CIntelligen
+00a01b90	call	007395d8	00739550L std::vector::_M_insert_overflow
+00a01b90	call	007398d9	007398b0L std::vector<CIntelligentPointer<CThing const>, std::allocato
+00a01b90	call	0074143f	007413c0L NCreatureMode::CModeDrained::CModeDrained
+00a01b90	call	0074460a	007445e0L CTCPerceiveThing::CTCPerceiveThing
+00a01b90	call	007446d1	007446b0L CTCPerceiveThing::SetPerceivedThing
+00a01b90	call	007446e5	007446b0L CTCPerceiveThing::SetPerceivedThing
+00a01b90	call	00747bc0	00747b80L CTCStealth::SetAsInDanger
+00a01b90	call	00748549	00748530L SThingRecord_00748530::SThingRecord_00748530
+00a01b90	call	0074858d	00748570L std::pair<CIntelligentPointer<CThing const>, NStealth::CDang
+00a01b90	call	00748742	-
+00a01b90	call	00748a1f	00748a00L _global::Construct_PairIntelligentPointerThingDangerStatus_0
+00a01b90	call	00748a6e	00748a40L std::__uninitialized_copy
+00a01b90	call	00748acb	00748aa0L std::__uninitialized_fill_n
+00a01b90	call	00748b1a	00748af0L _global::Copy_SThingPointerRecord10_00748af0
+00a01b90	call	00748dca	00748d80L std::remove_copy_if
+00a01b90	call	007494a0	00749420L std::vector::_M_insert_overflow
+00a01b90	call	0074964e	00749620L std::vector::push_back
+00a01b90	call	007498a0	00749880L CTCNoise::SetCreator
+00a01b90	call	007498b2	00749880L CTCNoise::SetCreator
+00a01b90	call	0074a205	0074a1e0L CTCCreatureGenerator::RemoveCreatureTriggerer
+00a01b90	call	0074aab1	0074aa00L CTCCreatureGenerator::CTCCreatureGenerator
+00a01b90	call	0074ab55	0074ab00L CTCCreatureGenerator::Destroy
+00a01b90	call	0074ab66	0074ab00L CTCCreatureGenerator::Destroy
+00a01b90	call	0074aca1	0074ac80L CTCShop::AddShopper
+00a01b90	call	0074c323	-
+00a01b90	call	0074c35b	-
+00a01b90	call	0074ccaf	0074cc90L std::_Construct
+00a01b90	call	0074cceb	0074ccc0L std::__uninitialized_copy<CIntelligentPointer<CThingCreature
+00a01b90	call	0074cd3b	0074cd10L _global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+00a01b90	call	0074ce70	0074ce40L std::remove_copy
+00a01b90	call	0074cffe	0074cfe0L std::__copy<CIntelligentPointer<CThingCreatureBase> *, CInte
+00a01b90	call	0074d0f0	0074d0d0L CTCGeneratedCreature::SetGenerator
+00a01b90	call	0074d102	0074d0d0L CTCGeneratedCreature::SetGenerator
+00a01b90	call	0074d688	0074d600L _global::Vector_Resize_WithElements
+00a01b90	call	0074da69	0074da40L std::vector<CIntelligentPointer<CThingCreatureBase>, std::al
+00a01b90	call	007505f0	00750540L CTCChest::Open
+00a01b90	call	00750604	00750540L CTCChest::Open
+00a01b90	call	00750a02	007509d0L CTCDiscovery::SetDiscovered
+00a01b90	call	00750a14	007509d0L CTCDiscovery::SetDiscovered
+00a01b90	call	00766529	007664e0L CTCObjectAugmentations::StopTrailEffect
+00a01b90	call	0076653a	007664e0L CTCObjectAugmentations::StopTrailEffect
+00a01b90	call	00766681	00766660L CTCObjectAugmentations::AttemptToStartParticle
+00a01b90	call	00766696	00766660L CTCObjectAugmentations::AttemptToStartParticle
+00a01b90	call	00766769	00766660L CTCObjectAugmentations::AttemptToStartParticle
+00a01b90	call	0076677a	00766660L CTCObjectAugmentations::AttemptToStartParticle
+00a01b90	call	00766aea	00766a60L CTCObjectAugmentations::FireCombatAugEffect
+00a01b90	call	00766fc5	-
+00a01b90	call	00766fd6	-
+00a01b90	call	0076746d	007673c0L CTCObjectAugmentations::CTCObjectAugmentations
+00a01b90	call	007674f2	007674a0L CTCObjectAugmentations::ClearAllParticleEffects
+00a01b90	call	00767503	007674a0L CTCObjectAugmentations::ClearAllParticleEffects
+00a01b90	call	007679ea	007677e0L CTCObjectAugmentations::AttachAugmentationParticles
+00a01b90	call	00767a00	007677e0L CTCObjectAugmentations::AttachAugmentationParticles
+00a01b90	call	00767c0a	007677e0L CTCObjectAugmentations::AttachAugmentationParticles
+00a01b90	call	00767c1d	007677e0L CTCObjectAugmentations::AttachAugmentationParticles
+00a01b90	call	00769082	00769040L AttackParticleAndEndPoints::AttackParticleAndEndPoints
+00a01b90	call	00769412	-
+00a01b90	call	0076972f	007696e0L std::__uninitialized_copy
+00a01b90	call	0076979f	00769750L std::__uninitialized_fill_n
+00a01b90	call	0076990f	007698c0L std::__uninitialized_copy
+00a01b90	call	00769c4e	00769c00L _global::Copy_StringStringThing_00769c00
+00a01b90	call	0076c870	0076c850L CTCEnemy::RemoveAllyThing
+00a01b90	call	0076ccaf	0076cc00L CTCEnemy::RemoveEnemyThing
+00a01b90	call	0076d1fc	0076d1b0L CTCEnemy::AddEnemyThing
+00a01b90	call	0076d292	0076d270L CTCEnemy::AddAllyThing
+00a01b90	call	0076d2c6	0076d270L CTCEnemy::AddAllyThing
+00a01b90	call	00770e12	00770de0L CTCSolidToThing::IsSolidToThing
+00a01b90	call	00770ed6	00770e80L CTCSolidToThing::FrameUpdate
+00a01b90	call	00770f45	00770f20L CTCSolidToThing::RemoveThingNotSolidTo
+00a01b90	call	00770fcb	00770fa0L CTCSolidToThing::AddThingNotSolidTo
+00a01b90	call	00771706	00771660L CTCOpinionSource::OnCreate
+00a01b90	call	00771747	00771660L CTCOpinionSource::OnCreate
+00a01b90	call	0077217d	00772120L CTCShop::RemoveShopper
+00a01b90	call	007734a7	00772bb0L CTCShop::AddSaleItem
+00a01b90	call	007734b9	00772bb0L CTCShop::AddSaleItem
+00a01b90	call	00773de7	00773dc0L CTCShop::AddShopper
+00a01b90	call	0077525d	007751a0L CTCShop::SetShopKeeper
+00a01b90	call	0077526e	007751a0L CTCShop::SetShopKeeper
+00a01b90	call	00779375	00779340L CTCDRegionExit::SetUpPEntranceConnectedToFromUID
+00a01b90	call	00779389	00779340L CTCDRegionExit::SetUpPEntranceConnectedToFromUID
+00a01b90	call	0077cc58	0077cbe0L CTCHighlightItem::DoStartRunning
+00a01b90	call	0077cc6a	0077cbe0L CTCHighlightItem::DoStartRunning
+00a01b90	call	0077da27	0077d5b0L CTCHeroCentre::FrameUpdate
+00a01b90	call	0077da56	0077d5b0L CTCHeroCentre::FrameUpdate
+00a01b90	call	0077dafa	0077d5b0L CTCHeroCentre::FrameUpdate
+00a01b90	call	0077dc13	0077dbc0L CTCHeroCentre::GetQuestCards
+00a01b90	call	0077f612	0077f5c0L CTCHeroCentreDoorMarker::~CTCHeroCentreDoorMarker
+00a01b90	call	0077f623	0077f5c0L CTCHeroCentreDoorMarker::~CTCHeroCentreDoorMarker
+00a01b90	call	0077f7ab	0077f750L CTCHeroCentreDoorMarker::OnInitialActivate
+00a01b90	call	0077f7bd	0077f750L CTCHeroCentreDoorMarker::OnInitialActivate
+00a01b90	call	0077f841	0077f7e0L CTCHeroCentreDoorMarker::UpdateParticleTeleporter
+00a01b90	call	0077f852	0077f7e0L CTCHeroCentreDoorMarker::UpdateParticleTeleporter
+00a01b90	call	0077f8b9	0077f7e0L CTCHeroCentreDoorMarker::UpdateParticleTeleporter
+00a01b90	call	0077f8ca	0077f7e0L CTCHeroCentreDoorMarker::UpdateParticleTeleporter
+00a01b90	call	0077f9d1	0077f970L CTCHeroCentreDoorMarker::UpdateParticleExperience
+00a01b90	call	0077f9e2	0077f970L CTCHeroCentreDoorMarker::UpdateParticleExperience
+00a01b90	call	0077fa49	0077f970L CTCHeroCentreDoorMarker::UpdateParticleExperience
+00a01b90	call	0077fa5a	0077f970L CTCHeroCentreDoorMarker::UpdateParticleExperience
+00a01b90	call	007805aa	00780540L CFirePoint::SetAsBurning
+00a01b90	call	007805bc	00780540L CFirePoint::SetAsBurning
+00a01b90	call	007806c1	007805d0L NFire::CFirePoint::SetAsSmoldering
+00a01b90	call	007806d2	007805d0L NFire::CFirePoint::SetAsSmoldering
+00a01b90	call	0078141e	007813d0L CFirePoint::CFirePoint
+00a01b90	call	0078143e	007813d0L CFirePoint::CFirePoint
+00a01b90	call	0078151e	-
+00a01b90	call	0078152f	-
+00a01b90	call	0078177a	00781720L _global::Copy_Record2C_00781720
+00a01b90	call	0078178b	00781720L _global::Copy_Record2C_00781720
+00a01b90	call	00781f63	00781f10L CTCBoastingPosition::ActivatePosition
+00a01b90	call	00781f75	00781f10L CTCBoastingPosition::ActivatePosition
+00a01b90	call	00782df9	-
+00a01b90	call	00782f1e	-
+00a01b90	call	007831fd	-
+00a01b90	call	00783b82	00783a30L CTCBoastingCrowdControl::GetCrowd
+00a01b90	call	00783e0f	00783dd0L std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 c
+00a01b90	call	00784210	007841f0L CTCCreatureGroupBoastingCrowd::SetHero
+00a01b90	call	00784222	007841f0L CTCCreatureGroupBoastingCrowd::SetHero
+00a01b90	call	00785700	00785620L CTCVolumeContainmentTracker::Update
+00a01b90	call	00785711	00785620L CTCVolumeContainmentTracker::Update
+00a01b90	call	0078576f	00785620L CTCVolumeContainmentTracker::Update
+00a01b90	call	00785780	00785620L CTCVolumeContainmentTracker::Update
+00a01b90	call	0078aeab	0078ae30L CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLo
+00a01b90	call	0078aec7	0078ae30L CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLo
+00a01b90	call	0078b1bc	0078b070L CCreatureAction_HeroLoadRangedWeapon::PerformAction
+00a01b90	call	0078bd96	0078bd60L CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLo
+00a01b90	call	0078bdbc	0078bd60L CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLo
+00a01b90	call	0078c54c	0078c4c0L CTCBerserk::CreateStartingEffect
+00a01b90	call	0078c560	0078c4c0L CTCBerserk::CreateStartingEffect
+00a01b90	call	0078cb60	-
+00a01b90	call	0078cb74	-
+00a01b90	call	0078e4be	0078e4a0L SIcicleRecord_0078e4a0::SIcicleRecord_0078e4a0
+00a01b90	call	0078e4e4	0078e4a0L SIcicleRecord_0078e4a0::SIcicleRecord_0078e4a0
+00a01b90	call	0078e5ca	0078e5b0L CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer
+00a01b90	call	0078e634	0078e600L CTCDivineWrath::PerEffectInfo::PerEffectInfo
+00a01b90	call	0078e83e	0078e820L CTCDivineWrath::SetPTarget
+00a01b90	call	0078e852	0078e820L CTCDivineWrath::SetPTarget
+00a01b90	call	0078e8d7	0078e820L CTCDivineWrath::SetPTarget
+00a01b90	call	0078ed05	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078ed46	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078edb2	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f14d	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f164	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f2f9	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f310	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f347	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f35e	0078ecd0L CTCDivineWrath::CTCDivineWrath
+00a01b90	call	0078f535	0078f4d0L CTCDivineWrath::OnCreate
+00a01b90	call	0078f566	0078f4d0L CTCDivineWrath::OnCreate
+00a01b90	call	0078f57b	0078f4d0L CTCDivineWrath::OnCreate
+00a01b90	call	0078f85e	0078f820L CTCDivineWrath::CancelMove
+00a01b90	call	0078f881	0078f820L CTCDivineWrath::CancelMove
+00a01b90	call	0078f92e	0078f8f0L CTCDivineWrath::CancelForCutscene
+00a01b90	call	0078f951	0078f8f0L CTCDivineWrath::CancelForCutscene
+00a01b90	call	0078fbc0	0078faf0L CTCDivineWrath::FinalCleanup
+00a01b90	call	0078fc6d	0078faf0L CTCDivineWrath::FinalCleanup
+00a01b90	call	00790c15	-
+00a01b90	call	00790d53	-
+00a01b90	call	00790ee7	-
+00a01b90	call	00790ef8	-
+00a01b90	call	00790f51	-
+00a01b90	call	00791880	-
+00a01b90	call	007924e3	-
+00a01b90	call	0079252f	007924f0L std::__uninitialized_copy<CTCDivineWrath::PerEffectInfo *, C
+00a01b90	call	0079258f	00792550L std::__uninitialized_fill_n<CTCDivineWrath::PerEffectInfo *,
+00a01b90	call	0079341a	-
+00a01b90	call	00793610	007935d0L std::vector<CTCDivineWrath::PerEffectInfo>::push_back
+00a01b90	call	00793a9e	00793a80L CTCUnholyPower::PerCreatureInfo::PerCreatureInfo
+00a01b90	call	00793ac4	00793a80L CTCUnholyPower::PerCreatureInfo::PerCreatureInfo
+00a01b90	call	00793b94	00793b60L CTCUnholyPower::PerEffectInfo::PerEffectInfo
+00a01b90	call	00793d3e	00793d20L CTCUnholyPower::SetPTarget
+00a01b90	call	00793d52	00793d20L CTCUnholyPower::SetPTarget
+00a01b90	call	00793dd7	00793d20L CTCUnholyPower::SetPTarget
+00a01b90	call	00794205	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	00794246	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	007942b3	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	007942ce	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	00794675	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	00794686	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	00794790	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	007947a7	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	007947de	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	007947f5	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	0079493a	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	0079494f	007941d0L CTCUnholyPower::CTCUnholyPower
+00a01b90	call	00794a55	007949f0L CTCUnholyPower::OnCreate
+00a01b90	call	00794a86	007949f0L CTCUnholyPower::OnCreate
+00a01b90	call	00794a9b	007949f0L CTCUnholyPower::OnCreate
+00a01b90	call	00794dce	00794d90L CTCUnholyPower::CancelMove
+00a01b90	call	00794df1	00794d90L CTCUnholyPower::CancelMove
+00a01b90	call	00794e9e	00794e60L CTCUnholyPower::CancelForCutscene
+00a01b90	call	00794ec1	00794e60L CTCUnholyPower::CancelForCutscene
+00a01b90	call	00795160	00795090L CTCUnholyPower::FinalCleanup
+00a01b90	call	0079520d	00795090L CTCUnholyPower::FinalCleanup
+00a01b90	call	007961b5	-
+00a01b90	call	007962f3	-
+00a01b90	call	00796487	-
+00a01b90	call	00796498	-
+00a01b90	call	007964f1	-
+00a01b90	call	00796e20	-
+00a01b90	call	00797943	-
+00a01b90	call	0079798f	00797950L std::__uninitialized_copy<CTCUnholyPower::PerEffectInfo *, C
+00a01b90	call	007979ef	007979b0L std::__uninitialized_fill_n<CTCUnholyPower::PerEffectInfo *,
+00a01b90	call	0079825a	-
+00a01b90	call	00798450	00798410L std::vector<CTCUnholyPower::PerEffectInfo>::push_back
+00a01b90	call	0079871f	007986a0L CTCForcePushed::SetUpForcePush
+00a01b90	call	00798731	007986a0L CTCForcePushed::SetUpForcePush
+00a01b90	call	00798d60	00798d50L _unattributed::SetItem_CItemOwner_00798d50
+00a01b90	call	00798dae	00798d90L CTCShopKeeper::AddNewCustomer
+00a01b90	call	00798e37	00798e10L CTCShopKeeper::EmptyCustomerList
+00a01b90	call	00798e4c	00798e10L CTCShopKeeper::EmptyCustomerList
+00a01b90	call	00798f00	00798e70L CTCShopKeeper::CTCShopKeeper
+00a01b90	call	0079907f	00799000L CTCShopKeeper::DetachFromShop
+00a01b90	call	00799090	00799000L CTCShopKeeper::DetachFromShop
+00a01b90	call	007997be	00799790L CTCShopKeeper::OnInitialActivate
+00a01b90	call	007997d0	00799790L CTCShopKeeper::OnInitialActivate
+00a01b90	call	007998a1	00799790L CTCShopKeeper::OnInitialActivate
+00a01b90	call	007998b3	00799790L CTCShopKeeper::OnInitialActivate
+00a01b90	call	007999cc	00799900L CTCShopKeeper::AcquireNewCustomer
+00a01b90	call	007999e0	00799900L CTCShopKeeper::AcquireNewCustomer
+00a01b90	call	00799a15	00799900L CTCShopKeeper::AcquireNewCustomer
+00a01b90	call	0079a731	0079a6e0L CTCSummonSpell::CTCSummonSpell
+00a01b90	call	0079adfc	0079acc0L CTCSummonSpell::CreateMinion
+00a01b90	call	0079ae10	0079acc0L CTCSummonSpell::CreateMinion
+00a01b90	call	0079b0af	0079acc0L CTCSummonSpell::CreateMinion
+00a01b90	call	0079b0c1	0079acc0L CTCSummonSpell::CreateMinion
+00a01b90	call	0079bca0	0079bc80L CTCSummonableCreature::SetSummoner
+00a01b90	call	0079bcb2	0079bc80L CTCSummonableCreature::SetSummoner
+00a01b90	call	0079c773	0079c750L CTCBulletTime::PlayCreatureOnHitEffect
+00a01b90	call	0079c787	0079c750L CTCBulletTime::PlayCreatureOnHitEffect
+00a01b90	call	0079c9e4	0079c880L CTCBulletTime::FrameUpdate
+00a01b90	call	0079c9f5	0079c880L CTCBulletTime::FrameUpdate
+00a01b90	call	0079cbfe	0079c880L CTCBulletTime::FrameUpdate
+00a01b90	call	0079cc0f	0079c880L CTCBulletTime::FrameUpdate
+00a01b90	call	0079cdb5	0079cc80L CTCBulletTime::PlayEffect
+00a01b90	call	0079cdc6	0079cc80L CTCBulletTime::PlayEffect
+00a01b90	call	0079cf9f	0079cf30L CTCBulletTime::Pause
+00a01b90	call	0079cfb0	0079cf30L CTCBulletTime::Pause
+00a01b90	call	0079d0d4	0079d020L CTCBulletTime::ImmediateCancel
+00a01b90	call	0079d0e5	0079d020L CTCBulletTime::ImmediateCancel
+00a01b90	call	0079d225	0079d110L CTCBulletTime::~CTCBulletTime
+00a01b90	call	0079d236	0079d110L CTCBulletTime::~CTCBulletTime
+00a01b90	call	0079d3c1	0079d360L CTCBulletTime::CTCBulletTime
+00a01b90	call	0079d3da	0079d360L CTCBulletTime::CTCBulletTime
+00a01b90	call	0079d458	0079d360L CTCBulletTime::CTCBulletTime
+00a01b90	call	0079d469	0079d360L CTCBulletTime::CTCBulletTime
+00a01b90	call	0079d6a0	0079d360L CTCBulletTime::CTCBulletTime
+00a01b90	call	0079d967	0079d7e0L CTCBulletTime::UnPause
+00a01b90	call	0079d9c1	0079d7e0L CTCBulletTime::UnPause
+00a01b90	call	0079dfa9	0079deb0L CTCPhysicalShieldSpell::PlayEffect
+00a01b90	call	0079e63c	-
+00a01b90	call	0079e655	-
+00a01b90	call	0079f930	0079f910L _unattributed::AssignTarget_0079f910
+00a01b90	call	0079f945	0079f910L _unattributed::AssignTarget_0079f910
+00a01b90	call	0079ff01	0079fe90L CTCWillLightning::CLightningBeam::Deactivate
+00a01b90	call	007a0143	007a00e0L CTCWillLightning::StartHandEffects
+00a01b90	call	007a015a	007a00e0L CTCWillLightning::StartHandEffects
+00a01b90	call	007a01a9	007a00e0L CTCWillLightning::StartHandEffects
+00a01b90	call	007a01c0	007a00e0L CTCWillLightning::StartHandEffects
+00a01b90	call	007a01fe	007a00e0L CTCWillLightning::StartHandEffects
+00a01b90	call	007a0212	007a00e0L CTCWillLightning::StartHandEffects
+00a01b90	call	007a036e	007a0310L CTCWillLightning::Deactivate
+00a01b90	call	007a058e	-
+00a01b90	call	007a059f	-
+00a01b90	call	007a05c3	-
+00a01b90	call	007a05d4	-
+00a01b90	call	007a06d2	007a0630L CTCWillLightning::CLightningBeam::CLightningBeam
+00a01b90	call	007a06e3	007a0630L CTCWillLightning::CLightningBeam::CLightningBeam
+00a01b90	call	007a070b	007a0630L CTCWillLightning::CLightningBeam::CLightningBeam
+00a01b90	call	007a071c	007a0630L CTCWillLightning::CLightningBeam::CLightningBeam
+00a01b90	call	007a09e5	007a09b0L CTCWillLightning::CTCWillLightning
+00a01b90	call	007a0c52	007a09b0L CTCWillLightning::CTCWillLightning
+00a01b90	call	007a0c63	007a09b0L CTCWillLightning::CTCWillLightning
+00a01b90	call	007a10bd	007a0d90L CTCWillLightning::GetTargets
+00a01b90	call	007a10d4	007a0d90L CTCWillLightning::GetTargets
+00a01b90	call	007a10fb	007a0d90L CTCWillLightning::GetTargets
+00a01b90	call	007a1112	007a0d90L CTCWillLightning::GetTargets
+00a01b90	call	007a14b8	007a1380L CTCWillLightning::CLightningBeam::Activate
+00a01b90	call	007a14c9	007a1380L CTCWillLightning::CLightningBeam::Activate
+00a01b90	call	007a25b5	007a1b20L CTCWillLightning::CLightningBeam::FrameUpdate
+00a01b90	call	007a2c05	-
+00a01b90	call	007a4370	007a4350L CTCWillEnflame::SetPTarget
+00a01b90	call	007a4382	007a4350L CTCWillEnflame::SetPTarget
+00a01b90	call	007a43da	007a43a0L CTCWillEnflame::CTCWillEnflame
+00a01b90	call	007a43f5	007a43a0L CTCWillEnflame::CTCWillEnflame
+00a01b90	call	007a54d4	007a54a0L CTCForcePushPower::CTCForcePushPower
+00a01b90	call	007a6f3b	007a6f00L CTCBattleCharge::Reset
+00a01b90	call	007a6f4d	007a6f00L CTCBattleCharge::Reset
+00a01b90	call	007a6fc4	007a6f00L CTCBattleCharge::Reset
+00a01b90	call	007a6fd6	007a6f00L CTCBattleCharge::Reset
+00a01b90	call	007a7170	007a7150L CTCBattleCharge::SetPTarget
+00a01b90	call	007a7182	007a7150L CTCBattleCharge::SetPTarget
+00a01b90	call	007a721a	007a71b0L CTCBattleCharge::CTCBattleCharge
+00a01b90	call	007a7232	007a71b0L CTCBattleCharge::CTCBattleCharge
+00a01b90	call	007a724a	007a71b0L CTCBattleCharge::CTCBattleCharge
+00a01b90	call	007a7889	-
+00a01b90	call	007a789d	-
+00a01b90	call	007a79b1	-
+00a01b90	call	007a79c5	-
+00a01b90	call	007a7ad9	-
+00a01b90	call	007a7aed	-
+00a01b90	call	007a7c9f	007a7bf0L CTCBattleCharge::FinishMove
+00a01b90	call	007a7cc1	007a7bf0L CTCBattleCharge::FinishMove
+00a01b90	call	007a7ee5	007a7d20L CTCBattleCharge::CreateHitEffect
+00a01b90	call	007a9ad0	007a9ab0L CTCAssassinRush::SetPTarget
+00a01b90	call	007a9ae2	007a9ab0L CTCAssassinRush::SetPTarget
+00a01b90	call	007a9bae	007a9b70L CTCAssassinRush::Reset
+00a01b90	call	007a9bc0	007a9b70L CTCAssassinRush::Reset
+00a01b90	call	007aa100	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+00a01b90	call	007aa114	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+00a01b90	call	007aa220	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+00a01b90	call	007aa234	007a9fe0L CTCAssassinRush::CreateTrailingEffect
+00a01b90	call	007aa42c	007aa370L CTCAssassinRush::CleanUpEffects
+00a01b90	call	007aa795	007aa6b0L CTCAssassinRush::OnInitialActivate
+00a01b90	call	007af3d0	007af310L CTCBoss::SetHelperCreature
+00a01b90	call	007af3fe	007af310L CTCBoss::SetHelperCreature
+00a01b90	call	007af439	007af310L CTCBoss::SetHelperCreature
+00a01b90	call	007af44d	007af310L CTCBoss::SetHelperCreature
+00a01b90	call	007af675	007af490L CTCBoss::KillHelpers
+00a01b90	call	007af68a	007af490L CTCBoss::KillHelpers
+00a01b90	call	007af6e0	007af6c0L CTCBoss::AddEffect
+00a01b90	call	007af91b	007af8f0L std::__uninitialized_copy<CIntelligentPointer<CThingAICreatu
+00a01b90	call	007af96b	007af940L std::__uninitialized_fill_n
+00a01b90	call	007af99a	007af980L std::fill<CIntelligentPointer<CThingAICreature> *, CIntellig
+00a01b90	call	007afa2e	007afa10L std::__copy
+00a01b90	call	007afa76	007afa50L std::__copy_backward
+00a01b90	call	007afd98	007afd10L _global::vector_insert_range_CBaseIntelligentPointer
+00a01b90	call	007afe65	-
+00a01b90	call	007b0029	007b0000L std::vector<CIntelligentPointer<CThingAICreature>, std::allo
+00a01b90	call	007b0178	007b0150L CTCFishingSpot::CTCFishingSpot
+00a01b90	call	007b0191	007b0150L CTCFishingSpot::CTCFishingSpot
+00a01b90	call	007b01aa	007b0150L CTCFishingSpot::CTCFishingSpot
+00a01b90	call	007b020c	007b01c0L CTCFishingSpot::RemoveParticles
+00a01b90	call	007b021d	007b01c0L CTCFishingSpot::RemoveParticles
+00a01b90	call	007b0270	007b01c0L CTCFishingSpot::RemoveParticles
+00a01b90	call	007b0281	007b01c0L CTCFishingSpot::RemoveParticles
+00a01b90	call	007b02d4	007b01c0L CTCFishingSpot::RemoveParticles
+00a01b90	call	007b02e5	007b01c0L CTCFishingSpot::RemoveParticles
+00a01b90	call	007b03c2	007b0360L CTCFishingSpot::FrameUpdate
+00a01b90	call	007b03d3	007b0360L CTCFishingSpot::FrameUpdate
+00a01b90	call	007b04b5	007b0360L CTCFishingSpot::FrameUpdate
+00a01b90	call	007b04c6	007b0360L CTCFishingSpot::FrameUpdate
+00a01b90	call	007b05a8	007b0360L CTCFishingSpot::FrameUpdate
+00a01b90	call	007b05b9	007b0360L CTCFishingSpot::FrameUpdate
+00a01b90	call	007b1c81	-
+00a01b90	call	007b1c95	-
+00a01b90	call	007b5b68	007b5b40L CTCWaterWader::CTCWaterWader
+00a01b90	call	007b5b81	007b5b40L CTCWaterWader::CTCWaterWader
+00a01b90	call	007b5bf4	007b5ba0L CTCWaterWader::~CTCWaterWader
+00a01b90	call	007b5c05	007b5ba0L CTCWaterWader::~CTCWaterWader
+00a01b90	call	007b5c58	007b5ba0L CTCWaterWader::~CTCWaterWader
+00a01b90	call	007b5c69	007b5ba0L CTCWaterWader::~CTCWaterWader
+00a01b90	call	007b5f36	-
+00a01b90	call	007b5f46	-
+00a01b90	call	007b5f9f	-
+00a01b90	call	007b5faf	-
+00a01b90	call	007b619b	-
+00a01b90	call	007b61ab	-
+00a01b90	call	007b6207	-
+00a01b90	call	007b6217	-
+00a01b90	call	007b66ef	007b66c0L CTCCrateStack::AddCrate
+00a01b90	call	007b6729	007b66c0L CTCCrateStack::AddCrate
+00a01b90	call	007b673a	007b66c0L CTCCrateStack::AddCrate
+00a01b90	call	007b67d6	007b6790L CTCCrateStack::RemoveNextCrate
+00a01b90	call	007b67e7	007b6790L CTCCrateStack::RemoveNextCrate
+00a01b90	call	007b6916	007b6810L CTCCrateStack::FillStack
+00a01b90	call	007b6928	007b6810L CTCCrateStack::FillStack
+00a01b90	call	007b6a4d	007b6810L CTCCrateStack::FillStack
+00a01b90	call	007b6a5f	007b6810L CTCCrateStack::FillStack
+00a01b90	call	007b6d4b	007b6d20L std::__uninitialized_copy<CIntelligentPointer<CThingMarker> 
+00a01b90	call	007b6d9b	007b6d70L _global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+00a01b90	call	007b6f78	007b6ef0L std::vector::_M_insert_overflow
+00a01b90	call	007b7079	007b7050L std::vector<CIntelligentPointer<CThingMarker>, std::allocato
+00a01b90	call	007b7184	007b7140L std::copy_if
+00a01b90	call	007b723f	007b7140L std::copy_if
+00a01b90	call	007b825b	007b8230L _global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+00a01b90	call	007b82cf	007b82c0L CIntelligentPointer<CThingObject>::operator=
+00a01b90	call	007b83ab	007b8380L std::__uninitialized_copy<CIntelligentPointer<CThingObject> 
+00a01b90	call	007b83ea	007b83d0L std::fill
+00a01b90	call	007b847e	007b8460L std::__copy<CIntelligentPointer<CThingObject> *, CIntelligen
+00a01b90	call	007b84e6	007b84c0L std::__copy_backward
+00a01b90	call	007b8610	007b85f0L CSeatTable_007b85f0::SetOccupant
+00a01b90	call	007b8629	007b85f0L CSeatTable_007b85f0::SetOccupant
+00a01b90	call	007b93e7	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b9406	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b94c1	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b94d7	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b9538	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b9557	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b957c	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b9595	007b90f0L CTCTavernTable::OnInitialActivate
+00a01b90	call	007b9a68	007b99e0L _global::Vector_InsertRange_SmartPtr
+00a01b90	call	007b9b85	-
+00a01b90	call	007b9f89	007b9f60L CTCTavernBar::GetJug
+00a01b90	call	007b9fb1	007b9f60L CTCTavernBar::GetJug
+00a01b90	call	007ba25b	007ba1d0L CTCTavernBar::GetEmptyJugSlot
+00a01b90	call	007ba27f	007ba1d0L CTCTavernBar::GetEmptyJugSlot
+00a01b90	call	007ba655	007ba550L CTCTavernBar::OnInitialActivate
+00a01b90	call	007ba685	007ba550L CTCTavernBar::OnInitialActivate
+00a01b90	call	007ba7fe	007ba550L CTCTavernBar::OnInitialActivate
+00a01b90	call	007ba814	007ba550L CTCTavernBar::OnInitialActivate
+00a01b90	call	007ba95f	007ba8c0L CTCTavernBar::HasEmptyJugSlot
+00a01b90	call	007bab89	007bab60L std::vector<CIntelligentPointer<CThingObject>, std::allocato
+00a01b90	call	007bb020	007baf00L CTCTrespasser::LeavingRegion
+00a01b90	call	007bb031	007baf00L CTCTrespasser::LeavingRegion
+00a01b90	call	007bb3d9	-
+00a01b90	call	007bb3ed	-
+00a01b90	call	007bb6e1	007bb660L CThingSearchTools::GetAllThings
+00a01b90	call	007bf4ed	007bf460L NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase
+00a01b90	call	007bf54a	007bf510L NThingShot::CTCShotDefinitionBase::OnCollision
+00a01b90	call	007bf6c6	007bf510L NThingShot::CTCShotDefinitionBase::OnCollision
+00a01b90	call	007bf6f9	007bf510L NThingShot::CTCShotDefinitionBase::OnCollision
+00a01b90	call	007bf70e	007bf510L NThingShot::CTCShotDefinitionBase::OnCollision
+00a01b90	call	007bf80a	007bf790L NThingShot::CTCShotDefinitionBase::Init
+00a01b90	call	007bf81e	007bf790L NThingShot::CTCShotDefinitionBase::Init
+00a01b90	call	007bf842	007bf790L NThingShot::CTCShotDefinitionBase::Init
+00a01b90	call	007bf854	007bf790L NThingShot::CTCShotDefinitionBase::Init
+00a01b90	call	007c0208	007bfe30L NThingShot::CTCShotDefinitionBase::UpdateCollision
+00a01b90	call	007c06b3	007c0690L NThingShot::CTCShotDefinitionBase::Init
+00a01b90	call	007c06c7	007c0690L NThingShot::CTCShotDefinitionBase::Init
+00a01b90	call	007c0fd0	007c0fb0L NThingShot::CTCShotDefinitionBase::AddThingToAvoid
+00a01b90	call	007c120c	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+00a01b90	call	007c2168	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+00a01b90	call	007c217d	007c1000L NThingShot::CTCShotDefinitionBase::OnCollisionProper
+00a01b90	call	007c21f5	007c21a0L NThingShot::CTCShotDefinitionBase::Update
+00a01b90	call	007c235d	-
+00a01b90	call	007c2372	-
+00a01b90	call	007c25f7	007c25a0L CTCShotDefinitionBase::InitAttachedEffects
+00a01b90	call	007c2609	007c25a0L CTCShotDefinitionBase::InitAttachedEffects
+00a01b90	call	007c294a	007c2930L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	007c3113	007c30e0L CTCDrainLife::CTCDrainLife
+00a01b90	call	007c3626	-
+00a01b90	call	007c4034	007c3fb0L CTCHealLife::FrameUpdate
+00a01b90	call	007c457b	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c458f	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c460f	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c4620	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c4658	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c4669	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c46c0	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c46f4	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c496e	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c49a5	007c4430L CTCHealLife::StartHealingEffect
+00a01b90	call	007c4c0a	007c4bd0L CTCHealLife::CTCHealLife
+00a01b90	call	007c4c49	007c4bd0L CTCHealLife::CTCHealLife
+00a01b90	call	007c4f6e	-
+00a01b90	call	007c505e	-
+00a01b90	call	007c50b1	007c5080L std::list<CIntelligentPointer<CThingCreatureBase>, std::allo
+00a01b90	call	007c52b8	-
+00a01b90	call	007c52ee	-
+00a01b90	call	007c55b3	007c5560L CTCGhostSword::CTCGhostSword
+00a01b90	call	007c5906	007c57c0L CTCGhostSword::AddSword
+00a01b90	call	007c5be5	007c57c0L CTCGhostSword::AddSword
+00a01b90	call	007c67b5	007c6760L CTCTurncoatSpell::CTCTurncoatSpell
+00a01b90	call	007c67f6	007c6760L CTCTurncoatSpell::CTCTurncoatSpell
+00a01b90	call	007c6961	007c6940L CTCTurncoatSpell::SetPTarget
+00a01b90	call	007c6975	007c6940L CTCTurncoatSpell::SetPTarget
+00a01b90	call	007c6bb4	007c6aa0L CTCTurncoatSpell::StartTurncoatingEffects
+00a01b90	call	007c6bc8	007c6aa0L CTCTurncoatSpell::StartTurncoatingEffects
+00a01b90	call	007c6cc9	007c6aa0L CTCTurncoatSpell::StartTurncoatingEffects
+00a01b90	call	007c6cdd	007c6aa0L CTCTurncoatSpell::StartTurncoatingEffects
+00a01b90	call	007c76f0	007c76d0L CTCTurncoat::SetTurncoatOriginator
+00a01b90	call	007c7702	007c76d0L CTCTurncoat::SetTurncoatOriginator
+00a01b90	call	007c78f3	007c78c0L CTCTurncoat::CTCTurncoat
+00a01b90	call	007c7ad5	007c7a00L CTCTurncoat::ModifyTurncoatedness
+00a01b90	call	007c7ea8	007c7c40L CTCTurncoat::FrameUpdate
+00a01b90	call	007c8848	007c87f0L CTCFireballSpell::CTCFireballSpell
+00a01b90	call	007c8860	007c87f0L CTCFireballSpell::CTCFireballSpell
+00a01b90	call	007c922c	007c9180L CTCFireballSpell::FinishSpell
+00a01b90	call	007c923e	007c9180L CTCFireballSpell::FinishSpell
+00a01b90	call	007c9327	007c9180L CTCFireballSpell::FinishSpell
+00a01b90	call	007c933a	007c9180L CTCFireballSpell::FinishSpell
+00a01b90	call	007c9479	007c93b0L CTCFireballSpell::FrameUpdate
+00a01b90	call	007c948d	007c93b0L CTCFireballSpell::FrameUpdate
+00a01b90	call	007c9961	007c9920L CTCCreatureGeneratorCreator::OnInitialActivate
+00a01b90	call	007c9975	007c9920L CTCCreatureGeneratorCreator::OnInitialActivate
+00a01b90	call	007c99c7	007c9920L CTCCreatureGeneratorCreator::OnInitialActivate
+00a01b90	call	007c99d8	007c9920L CTCCreatureGeneratorCreator::OnInitialActivate
+00a01b90	call	007ca53d	007ca520L std::pair<CIntelligentPointer<CThingObject>, CUnprovenByte_0
+00a01b90	call	007ca5ba	007ca5a0L std::pair<CIntelligentPointer<CThingObject>, bool>::pair
+00a01b90	call	007ca61f	007ca600L _global::Construct_PairIntelligentPointerThingObjectBool_007
+00a01b90	call	007ca7d5	007ca670L CTCHeroReceiveItems::PrepareToShowItems
+00a01b90	call	007ca7e7	007ca670L CTCHeroReceiveItems::PrepareToShowItems
+00a01b90	call	007caa5e	007ca9e0L CTCHeroReceiveItems::GiveItems
+00a01b90	call	007caa82	007ca9e0L CTCHeroReceiveItems::GiveItems
+00a01b90	call	007caaed	007ca9e0L CTCHeroReceiveItems::GiveItems
+00a01b90	call	007cab01	007ca9e0L CTCHeroReceiveItems::GiveItems
+00a01b90	call	007cab5a	007cab30L CTCHeroReceiveItems::GiveItem
+00a01b90	call	007cab7e	007cab30L CTCHeroReceiveItems::GiveItem
+00a01b90	call	007cadba	007cacb0L CTCHeroReceiveItems::GlobalUpdate
+00a01b90	call	007cadcb	007cacb0L CTCHeroReceiveItems::GlobalUpdate
+00a01b90	call	007cafb8	007cacb0L CTCHeroReceiveItems::GlobalUpdate
+00a01b90	call	007cbb61	-
+00a01b90	call	007cbbf1	007cbbc0L std::list<std::pair<CIntelligentPointer<CThingObject>, bool>
+00a01b90	call	007cc343	007cc2b0L CTCMultiArrow::CreateAmmoEffect
+00a01b90	call	007cc75e	007cc710L CTCMultiArrow::ReleaseShot
+00a01b90	call	007cc815	007cc7d0L CTCMultiArrow::CTCMultiArrow
+00a01b90	call	007ccb29	007ccb00L CTCMultiStrike::StartMultiHit
+00a01b90	call	007ccb3b	007ccb00L CTCMultiStrike::StartMultiHit
+00a01b90	call	007ccb73	007ccb00L CTCMultiStrike::StartMultiHit
+00a01b90	call	007ccb85	007ccb00L CTCMultiStrike::StartMultiHit
+00a01b90	call	007cd3d3	007cd390L CTCMultiStrike::CTCMultiStrike
+00a01b90	call	007cd3eb	007cd390L CTCMultiStrike::CTCMultiStrike
+00a01b90	call	007cdf4e	007cdd10L CTCBurntEffect::Reset
+00a01b90	call	007cdf7d	007cdd10L CTCBurntEffect::Reset
+00a01b90	call	007cdfa9	007cdd10L CTCBurntEffect::Reset
+00a01b90	call	007ce238	007ce1f0L std::__copy
+00a01b90	call	007ce262	007ce1f0L std::__copy
+00a01b90	call	007cea04	007ce7a0L CTCElectrocutedEffect::Reset
+00a01b90	call	007cea15	007ce7a0L CTCElectrocutedEffect::Reset
+00a01b90	call	007ceb40	007ceb00L CTCElectrocutedEffect::CTCElectrocutedEffect
+00a01b90	call	007dd931	-
+00a01b90	call	007dd961	-
+00a01b90	call	007dd973	-
+00a01b90	call	007dda53	007dda30L CTCCreatureFlyInCircles::QueueSwoop
+00a01b90	call	007dda67	007dda30L CTCCreatureFlyInCircles::QueueSwoop
+00a01b90	call	007de60f	007de5d0L CTCWallMount::OnInitialActivate
+00a01b90	call	007de623	007de5d0L CTCWallMount::OnInitialActivate
+00a01b90	call	007de748	007de710L CTCWallMount::AttachObject
+00a01b90	call	007de761	007de710L CTCWallMount::AttachObject
+00a01b90	call	007df278	007df130L CTCWallMount::UnattachObject
+00a01b90	call	007df289	007df130L CTCWallMount::UnattachObject
+00a01b90	call	007df5ba	007df4b0L CTCWallMountEffects::OnWallMountUseAction
+00a01b90	call	007df5cc	007df4b0L CTCWallMountEffects::OnWallMountUseAction
+00a01b90	call	007df7e2	007df770L CTCWallMountEffects::FrameUpdate
+00a01b90	call	007df7f4	007df770L CTCWallMountEffects::FrameUpdate
+00a01b90	call	007dfe62	007dfe20L CTCTeleporter::~CTCTeleporter
+00a01b90	call	007dfe73	007dfe20L CTCTeleporter::~CTCTeleporter
+00a01b90	call	007e3478	007e3450L CTCDeadShotInThingTracker::CTCDeadShotInThingTracker
+00a01b90	call	007e34b0	007e3490L CTCDeadShotInThingTracker::SetThingStuckIn
+00a01b90	call	007e34c2	007e3490L CTCDeadShotInThingTracker::SetThingStuckIn
+00a01b90	call	007e8650	007e8590L CTCOwnedEntity::SetPOwner
+00a01b90	call	007e8661	007e8590L CTCOwnedEntity::SetPOwner
+00a01b90	call	007e959e	-
+00a01b90	call	007e95b0	-
+00a01b90	call	007e95d0	-
+00a01b90	call	007e95e2	-
+00a01b90	call	007e98eb	-
+00a01b90	call	007ea0b1	007ea040L CThingSearchTools::GetAllThings
+00a01b90	call	007ea145	007ea0e0L CThingSearchTools::GetAllThings
+00a01b90	call	007eb0a3	007eb030L CCreatureAction_PickupGameObject::CCreatureAction_PickupGame
+00a01b90	call	007eb296	007eb260L CCreatureAction_PickupGameObject::CCreatureAction_PickupGame
+00a01b90	call	007eb345	007eb2d0L CCreatureAction_AddRealObjectToInventory::CCreatureAction_Ad
+00a01b90	call	007eb456	007eb420L CCreatureAction_AddRealObjectToInventory::CCreatureAction_Ad
+00a01b90	call	007eb508	007eb490L CCreatureAction_PlayerInteractionViewQuests::CCreatureAction
+00a01b90	call	007eb636	007eb600L CCreatureAction_PlayerInteractionViewQuests::CCreatureAction
+00a01b90	call	007ebecc	007ebea0L CTCActionUseBed::OnActionUse
+00a01b90	call	007ebede	007ebea0L CTCActionUseBed::OnActionUse
+00a01b90	call	007ec024	007ebea0L CTCActionUseBed::OnActionUse
+00a01b90	call	007ec038	007ebea0L CTCActionUseBed::OnActionUse
+00a01b90	call	007ed4c3	007ed450L CCreatureAction_GiveMoneyToThing::CCreatureAction_GiveMoneyT
+00a01b90	call	007ed736	007ed700L CCreatureAction_GiveMoneyToThing::CCreatureAction_GiveMoneyT
+00a01b90	call	007ed7f3	007ed780L CCreatureAction_ShowItemToThing::CCreatureAction_ShowItemToT
+00a01b90	call	007ed812	007ed780L CCreatureAction_ShowItemToThing::CCreatureAction_ShowItemToT
+00a01b90	call	007eda56	007eda20L CCreatureAction_ShowItemToThing::CCreatureAction_ShowItemToT
+00a01b90	call	007eda7c	007eda20L CCreatureAction_ShowItemToThing::CCreatureAction_ShowItemToT
+00a01b90	call	007ee083	007ee010L CCreatureAction_UseSwitch::CCreatureAction_UseSwitch
+00a01b90	call	007ee196	007ee160L CCreatureAction_UseSwitch::CCreatureAction_UseSwitch
+00a01b90	call	007ee28f	007ee270L CTCVillageMember::SetPVillage
+00a01b90	call	007ee2a3	007ee270L CTCVillageMember::SetPVillage
+00a01b90	call	007ee2d3	007ee270L CTCVillageMember::SetPVillage
+00a01b90	call	007ee2e4	007ee270L CTCVillageMember::SetPVillage
+00a01b90	call	007ee83a	007ee7e0L CCreatureAction_OpenChest::CCreatureAction_OpenChest
+00a01b90	call	007eeab6	007eea80L CCreatureAction_OpenChest::CCreatureAction_OpenChest
+00a01b90	call	007f07e9	007f07a0L CTCKrakenTentacle::KillRippleFX
+00a01b90	call	007f07fa	007f07a0L CTCKrakenTentacle::KillRippleFX
+00a01b90	call	007f085c	007f0810L CTCKrakenTentacle::RemoveObstruction
+00a01b90	call	007f086d	007f0810L CTCKrakenTentacle::RemoveObstruction
+00a01b90	call	007f0a3c	007f08b0L CTCKrakenTentacle::OnInitialActivate
+00a01b90	call	007f0a50	007f08b0L CTCKrakenTentacle::OnInitialActivate
+00a01b90	call	007f0ba6	007f0b10L CTCKrakenTentacle::DoDieFX
+00a01b90	call	007f0bba	007f0b10L CTCKrakenTentacle::DoDieFX
+00a01b90	call	007f13d5	007f11d0L CTCKrakenTentacle::PerformStrikeDamage
+00a01b90	call	007f13e7	007f11d0L CTCKrakenTentacle::PerformStrikeDamage
+00a01b90	call	007f26da	007f26b0L CTCLightningOrb::Initialise
+00a01b90	call	007f26ec	007f26b0L CTCLightningOrb::Initialise
+00a01b90	call	007f2713	007f26b0L CTCLightningOrb::Initialise
+00a01b90	call	007f2727	007f26b0L CTCLightningOrb::Initialise
+00a01b90	call	007f39c0	007f39a0L CTCLightningNode::SetPParent
+00a01b90	call	007f39d2	007f39a0L CTCLightningNode::SetPParent
+00a01b90	call	007f3a10	007f39f0L CTCLightningNode::SetPSourceOfFaction
+00a01b90	call	007f3a22	007f39f0L CTCLightningNode::SetPSourceOfFaction
+00a01b90	call	007f3a60	007f3a40L CTCLightningNode::SetPSourceOfHit
+00a01b90	call	007f3a72	007f3a40L CTCLightningNode::SetPSourceOfHit
+00a01b90	call	007f3ae6	007f3ad0L CTCLightningNode::CLightningBranch::CLightningBranch
+00a01b90	call	007f3b30	007f3b10L _unattributed::AssignTarget_007f3b10
+00a01b90	call	007f3b42	007f3b10L _unattributed::AssignTarget_007f3b10
+00a01b90	call	007f3b80	007f3b60L _unattributed::AssignTarget_007f3b60
+00a01b90	call	007f3b92	007f3b60L _unattributed::AssignTarget_007f3b60
+00a01b90	call	007f5830	007f5810L CTCTargetingBase::SetPNearestInterestingThing
+00a01b90	call	007f5842	007f5810L CTCTargetingBase::SetPNearestInterestingThing
+00a01b90	call	007f58b8	007f5890L CTCTargetingBase::SetPScriptOverrideInterestingThing
+00a01b90	call	007f58ca	007f5890L CTCTargetingBase::SetPScriptOverrideInterestingThing
+00a01b90	call	007f61db	007f61b0L CTCTargetingAI::AddThingToNotAttack
+00a01b90	call	007f62d4	-
+00a01b90	call	007f65f7	-
+00a01b90	call	007f6608	-
+00a01b90	call	007f6697	-
+00a01b90	call	007f8412	007f83f0L CTCCreatureItemLevitationNymph::SetTarget
+00a01b90	call	007f8424	007f83f0L CTCCreatureItemLevitationNymph::SetTarget
+00a01b90	call	007f899d	007f8890L CTCParticleAttacher::AttachParticles
+00a01b90	call	007f8a96	007f8890L CTCParticleAttacher::AttachParticles
+00a01b90	call	007fb199	007fb150L CTCKraken::EndHeadEffects
+00a01b90	call	007fb1aa	007fb150L CTCKraken::EndHeadEffects
+00a01b90	call	007fb51f	007fb500L CTCKraken::HasTargetBeenHitByKraken
+00a01b90	call	007fb7ad	007fb6a0L CTCKraken::StartBeamEffect
+00a01b90	call	007fb7c1	007fb6a0L CTCKraken::StartBeamEffect
+00a01b90	call	007fba43	007fba20L CTCKraken::AddStrikeExplosion
+00a01b90	call	007fba77	007fba20L CTCKraken::AddStrikeExplosion
+00a01b90	call	007fbb6d	007fbb00L CTCKraken::CreateHeadEffect
+00a01b90	call	007fbb81	007fbb00L CTCKraken::CreateHeadEffect
+00a01b90	call	007fbd50	007fbc90L CTCKraken::GetCentreMarker
+00a01b90	call	007fbd62	007fbc90L CTCKraken::GetCentreMarker
+00a01b90	call	007fbdd3	007fbc90L CTCKraken::GetCentreMarker
+00a01b90	call	007fbde5	007fbc90L CTCKraken::GetCentreMarker
+00a01b90	call	007fbe1c	007fbc90L CTCKraken::GetCentreMarker
+00a01b90	call	007fbe2e	007fbc90L CTCKraken::GetCentreMarker
+00a01b90	call	007fc51a	007fc210L CTCKraken::CreateTentacles
+00a01b90	call	007fc52c	007fc210L CTCKraken::CreateTentacles
+00a01b90	call	007fc617	007fc210L CTCKraken::CreateTentacles
+00a01b90	call	007fc64f	007fc210L CTCKraken::CreateTentacles
+00a01b90	call	007fca3e	007fc9d0L CTCKraken::FrameUpdate
+00a01b90	call	007fca4f	007fc9d0L CTCKraken::FrameUpdate
+00a01b90	call	007fca74	007fc9d0L CTCKraken::FrameUpdate
+00a01b90	call	007fcb1f	007fc9d0L CTCKraken::FrameUpdate
+00a01b90	call	007fcb30	007fc9d0L CTCKraken::FrameUpdate
+00a01b90	call	007fcd20	007fcd00L _unattributed::AssignTarget_007fcd00
+00a01b90	call	007fcd32	007fcd00L _unattributed::AssignTarget_007fcd00
+00a01b90	call	007fdec9	007fdeb0L CTCAISummon::GetAllSummonedCreatures
+00a01b90	call	007fdf0d	007fdef0L CTCAISummon::FrameUpdate
+00a01b90	call	007fdf8a	007fdf60L CTCAISummon::GetNumberCanSummon
+00a01b90	call	007fe456	-
+00a01b90	call	007fe483	-
+00a01b90	call	007fe9b1	-
+00a01b90	call	007fe9c3	-
+00a01b90	call	007fee19	007fede0L CTCUserActionPointBase::GetFreeActionPoint
+00a01b90	call	007fee2b	007fede0L CTCUserActionPointBase::GetFreeActionPoint
+00a01b90	call	007ff002	007fefe0L CTCNamedUserActionPoints::GetFullNamedActionPoint
+00a01b90	call	007ff014	007fefe0L CTCNamedUserActionPoints::GetFullNamedActionPoint
+00a01b90	call	007ff1b3	007ff190L CTCNamedUserActionPoints::GetFreeNamedActionPoint
+00a01b90	call	007ff1c7	007ff190L CTCNamedUserActionPoints::GetFreeNamedActionPoint
+00a01b90	call	007ff310	-
+00a01b90	call	007ff322	-
+00a01b90	call	007ffdd1	007ffdb0L CTCGatherPointBase::RemoveAsUser
+00a01b90	call	007ffed3	007ffeb0L CTCGatherPointBase::AddAsUser
+00a01b90	call	007fff27	007ffeb0L CTCGatherPointBase::AddAsUser
+00a01b90	call	0080049b	00800460L CTCPreCalculatedNavigationRoute::OnInitialActivate
+00a01b90	call	008004ad	00800460L CTCPreCalculatedNavigationRoute::OnInitialActivate
+00a01b90	call	0080266d	00802650L CTCTargetingPlayer::ClearLockedTarget
+00a01b90	call	00802682	00802650L CTCTargetingPlayer::ClearLockedTarget
+00a01b90	call	00802fe1	00802e00L CTCTargetingPlayer::SetPTargetedThing
+00a01b90	call	00802ff6	00802e00L CTCTargetingPlayer::SetPTargetedThing
+00a01b90	call	0080347f	00803280L CTCTargetingPlayer::UpdateTargetThreatening
+00a01b90	call	00803494	00803280L CTCTargetingPlayer::UpdateTargetThreatening
+00a01b90	call	00804087	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	008043ec	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00804405	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00804470	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	0080453b	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00804554	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	008045bf	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00804c5a	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00805019	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	0080534e	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	008053e1	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	008053f9	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	0080547b	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00805493	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	008054d8	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	008054ea	00804020L CTCTargetingPlayer::UpdateTargetList
+00a01b90	call	00805710	00805600L CTCTargetingPlayer::FrameUpdate
+00a01b90	call	00805722	00805600L CTCTargetingPlayer::FrameUpdate
+00a01b90	call	008057d5	00805600L CTCTargetingPlayer::FrameUpdate
+00a01b90	call	008057ea	00805600L CTCTargetingPlayer::FrameUpdate
+00a01b90	call	00806955	00806910L std::__unguarded_linear_insert
+00a01b90	call	0080696d	00806910L std::__unguarded_linear_insert
+00a01b90	call	008069e9	00806990L _global::_Push_heap
+00a01b90	call	00806a0f	00806990L _global::_Push_heap
+00a01b90	call	00806ac9	-
+00a01b90	call	00806afd	00806ae0L SIcicleRecord_00806ae0::SIcicleRecord_00806ae0
+00a01b90	call	00806b42	-
+00a01b90	call	00806c3b	00806c00L _global::UninitCopy_CTargetPoint_00806c00
+00a01b90	call	00806cae	00806c80L std::__uninitialized_fill_n<NPlayerTargeting::CTargetPoint *
+00a01b90	call	00806d28	00806cf0L std::remove_copy_if
+00a01b90	call	00806dc2	00806d80L std::remove_copy
+00a01b90	call	00806e4a	00806e10L _global::Copy_CTargetPoint_00806e10
+00a01b90	call	00806eda	00806ea0L _global::Copy_CTargetPoint_00806ea0
+00a01b90	call	0080734d	00807320L std::__unguarded_insertion_sort_aux
+00a01b90	call	00807396	00807370L std::swap
+00a01b90	call	008073a5	00807370L std::swap
+00a01b90	call	008073b6	00807370L std::swap
+00a01b90	call	008073f7	008073d0L std::swap
+00a01b90	call	00807429	008073d0L std::swap
+00a01b90	call	0080745c	008073d0L std::swap
+00a01b90	call	00807581	00807520L _global::_Adjust_heap
+00a01b90	call	008075a8	00807520L _global::_Adjust_heap
+00a01b90	call	008075d3	00807520L _global::_Adjust_heap
+00a01b90	call	00807716	008076d0L std::__copy_backward
+00a01b90	call	008079bb	00807980L _global::UninitCopy_CTargetPoint_00807980
+00a01b90	call	00807b1d	00807a90L std::remove_copy_if
+00a01b90	call	00807bcb	00807b70L std::remove_copy_if
+00a01b90	call	008081c1	008081b0L _global::__pop_heap
+00a01b90	call	008081e9	008081b0L _global::__pop_heap
+00a01b90	call	00808273	00808230L std::__make_heap
+00a01b90	call	0080842d	-
+00a01b90	call	008089df	00808950L std::__unguarded_partition
+00a01b90	call	008089ee	00808950L std::__unguarded_partition
+00a01b90	call	008089ff	00808950L std::__unguarded_partition
+00a01b90	call	00808cad	-
+00a01b90	call	008096a8	00809650L std::__linear_insert
+00a01b90	call	008096e0	00809650L std::__linear_insert
+00a01b90	call	00809741	00809700L std::sort_heap
+00a01b90	call	00809750	00809700L std::sort_heap
+00a01b90	call	00809777	00809700L std::sort_heap
+00a01b90	call	008099ea	008099b0L std::_Transform
+00a01b90	call	00809a14	008099b0L std::_Transform
+00a01b90	call	00809de6	00809d60L std::remove_copy_if
+00a01b90	call	00809f64	00809f30L std::__insertion_sort
+00a01b90	call	0080a2bd	0080a240L std::__partial_sort
+00a01b90	call	0080a2cc	0080a240L std::__partial_sort
+00a01b90	call	0080a2f3	0080a240L std::__partial_sort
+00a01b90	call	0080a36a	0080a340L std::__unguarded_linear_insert
+00a01b90	call	0080a3b8	0080a340L std::__unguarded_linear_insert
+00a01b90	call	0080a4ca	0080a480L _global::_Push_heap
+00a01b90	call	0080a515	0080a480L _global::_Push_heap
+00a01b90	call	0080a896	0080a850L std::remove_copy_if
+00a01b90	call	0080aa99	0080aa60L _global::__linear_insert<CTargetPoint*, CTargetPoint, CThing
+00a01b90	call	0080aafe	0080aa60L _global::__linear_insert<CTargetPoint*, CTargetPoint, CThing
+00a01b90	call	0080abcf	0080ab40L std::__unguarded_insertion_sort_aux
+00a01b90	call	0080ade0	0080ad90L std::__adjust_heap
+00a01b90	call	0080ae31	0080ad90L std::__adjust_heap
+00a01b90	call	0080aef0	0080ad90L std::__adjust_heap
+00a01b90	call	0080afdd	0080af70L std::__introsort_loop
+00a01b90	call	0080b0ec	0080b050L std::__insertion_sort
+00a01b90	call	0080b223	0080b210L std::__pop_heap
+00a01b90	call	0080b2d9	0080b210L std::__pop_heap
+00a01b90	call	0080b3ec	0080b330L std::__make_heap
+00a01b90	call	0080b4b5	0080b430L std::__pop_heap_aux
+00a01b90	call	0080bbee	0080bab0L std::__partial_sort
+00a01b90	call	0080bf01	0080bd30L std::__introsort_loop
+00a01b90	call	0080c947	-
+00a01b90	call	0080c97e	-
+00a01b90	call	0080cb3d	0080ca20L CTCDExplosion::GiveDamageToThing
+00a01b90	call	0080cc10	0080cbf0L CTCDExplosion::SetThingAsImmune
+00a01b90	call	0080cc78	0080cc40L CTCDExplosion::SetSpecificThingsToHit
+00a01b90	call	0080cca2	0080cc40L CTCDExplosion::SetSpecificThingsToHit
+00a01b90	call	0080cd10	0080ccf0L CTCDExplosion::SetSpecificThingToHit
+00a01b90	call	0080d231	0080d0b0L CTCDExplosion::CreateStaticExplosion
+00a01b90	call	0080d255	0080d0b0L CTCDExplosion::CreateStaticExplosion
+00a01b90	call	0080d4eb	-
+00a01b90	call	0080d50f	-
+00a01b90	call	0080d542	-
+00a01b90	call	0080d6b0	-
+00a01b90	call	0080d6d0	-
+00a01b90	call	0080d6f8	-
+00a01b90	call	0080d7ad	0080d750L CTCDExplosion::FrameUpdate
+00a01b90	call	0080d7d1	0080d750L CTCDExplosion::FrameUpdate
+00a01b90	call	0080dead	0080de90L std::pair<CIntelligentPointer<CThing>, long>::pair<CIntellig
+00a01b90	call	0080deda	0080dec0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	0080df0a	0080def0L std::pair<CIntelligentPointer<CThing>,int>::pair
+00a01b90	call	0080df3a	0080df20L std::pair<CIntelligentPointer<CThing>,long>::pair
+00a01b90	call	0080dfc0	0080df90L std::remove_copy_if
+00a01b90	call	0080e021	0080dff0L _global::CopyBackward_PairIntelligentPointerInt_0080dff0
+00a01b90	call	0080e1ba	0080e1a0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	0080e1ee	-
+00a01b90	call	0080e21e	0080e200L std::make_pair<CIntelligentPointer<CThing>,int>
+00a01b90	call	0080e2ca	0080e2a0L std::find_if
+00a01b90	call	0080e31a	0080e2f0L std::remove_if
+00a01b90	call	0080e342	0080e2f0L std::remove_if
+00a01b90	call	0080e380	0080e2f0L std::remove_if
+00a01b90	call	0080efa4	0080ef50L std::vector::insert
+00a01b90	call	0080efe7	0080ef50L std::vector::insert
+00a01b90	call	0080f01c	0080ef50L std::vector::insert
+00a01b90	call	0080f04c	0080ef50L std::vector::insert
+00a01b90	call	0080f717	0080f5e0L CTCNymph::StartFlyingAround
+00a01b90	call	0080f728	0080f5e0L CTCNymph::StartFlyingAround
+00a01b90	call	0080f75b	0080f5e0L CTCNymph::StartFlyingAround
+00a01b90	call	0080f76c	0080f5e0L CTCNymph::StartFlyingAround
+00a01b90	call	0080f919	0080f870L CTCNymph::StopFlyingAround
+00a01b90	call	0080f94a	0080f870L CTCNymph::StopFlyingAround
+00a01b90	call	0080f95b	0080f870L CTCNymph::StopFlyingAround
+00a01b90	call	0080fa87	0080f870L CTCNymph::StopFlyingAround
+00a01b90	call	0080fa98	0080f870L CTCNymph::StopFlyingAround
+00a01b90	call	0080fcf4	0080fad0L CTCNymph::FrameUpdate
+00a01b90	call	0080fd05	0080fad0L CTCNymph::FrameUpdate
+00a01b90	call	0081012c	-
+00a01b90	call	0081013e	-
+00a01b90	call	00810990	00810970L CTCDExplosiveTrail::AddThingToIgnore
+00a01b90	call	00810bc1	-
+00a01b90	call	00810c51	00810c20L std::list<std::pair<CIntelligentPointer<CThing>, long>, std:
+00a01b90	call	008110c8	008110a0L NEntityEvents::CEventHitThing::CEventHitThing
+00a01b90	call	0081224d	00812170L CHitParameters::CHitParameters
+00a01b90	call	0081226d	00812170L CHitParameters::CHitParameters
+00a01b90	jmp	008123e0	-
+00a01b90	call	008124ba	008124a0L CIntelligentPointer<const CThingAICreature>::CIntelligentPoi
+00a01b90	call	00812565	00812550L CIntelligentPointer<const CThingAICreature>::CIntelligentPoi
+00a01b90	call	008126cd	008126b0L CGroupMemberData::CGroupMemberData
+00a01b90	call	00812771	-
+00a01b90	call	00812870	00812840L SGroupMemberPair_00812840::SGroupMemberPair_00812840
+00a01b90	call	008128a5	00812890L CGroupMemberData::CGroupMemberData
+00a01b90	call	0081308c	00813010L CTCCreatureGroup::AddNewMember
+00a01b90	call	008132b3	00813280L _global::MakePair_GroupMemberData_00813280
+00a01b90	call	00813300	008132d0L SGroupMemberPair_008132d0::SGroupMemberPair_008132d0
+00a01b90	call	0081449e	00814260L CTCBoastingPodium::OnInitialActivate
+00a01b90	call	008144c5	00814260L CTCBoastingPodium::OnInitialActivate
+00a01b90	call	008147f0	008147d0L CTCBoastingPosition::SetBoastingPodium
+00a01b90	call	00814802	008147d0L CTCBoastingPosition::SetBoastingPodium
+00a01b90	call	0082a529	0082a500L CMiniMapDisplay::AddAutoMarker
+00a01b90	call	0082a8ea	0082a890L CMiniMapDisplay::AddMarker
+00a01b90	call	0082a92b	0082a890L CMiniMapDisplay::AddMarker
+00a01b90	call	0082b3b5	-
+00a01b90	call	0082c38d	0082c370L CMiniMapDisplay::CMarkerInfo::CMarkerInfo
+00a01b90	call	0082c4d5	0082c4c0L CMiniMapDisplay::CMarkerInfo::CMarkerInfo
+00a01b90	call	0082c5ff	0082c5e0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	0082c831	-
+00a01b90	call	0082c951	0082c920L list::insert
+00a01b90	call	00830408	00830360L CThingAICreature::ConstructFromParams
+00a01b90	call	0083041d	00830360L CThingAICreature::ConstructFromParams
+00a01b90	call	00830444	00830360L CThingAICreature::ConstructFromParams
+00a01b90	call	00830459	00830360L CThingAICreature::ConstructFromParams
+00a01b90	call	00831659	008315c0L CThingAICreature::ConstructFromLevelScript
+00a01b90	call	0083166e	008315c0L CThingAICreature::ConstructFromLevelScript
+00a01b90	call	0083168e	008315c0L CThingAICreature::ConstructFromLevelScript
+00a01b90	call	008316a3	008315c0L CThingAICreature::ConstructFromLevelScript
+00a01b90	call	0083231f	-
+00a01b90	call	00832334	-
+00a01b90	call	008323a8	-
+00a01b90	call	008323bd	-
+00a01b90	call	0083243e	-
+00a01b90	call	00832455	-
+00a01b90	call	00832524	-
+00a01b90	call	0083253b	-
+00a01b90	call	00832602	-
+00a01b90	call	00832619	-
+00a01b90	call	00836189	00835fd0L CThingDeadCreature::OnCreate
+00a01b90	call	0083619e	00835fd0L CThingDeadCreature::OnCreate
+00a01b90	call	0083695e	00836910L CThingSoundEmitter::ConstructFromParams
+00a01b90	call	00836973	00836910L CThingSoundEmitter::ConstructFromParams
+00a01b90	call	0083698c	00836910L CThingSoundEmitter::ConstructFromParams
+00a01b90	call	008369a1	00836910L CThingSoundEmitter::ConstructFromParams
+00a01b90	call	00836a8a	00836a50L CThingSoundEmitter::~CThingSoundEmitter
+00a01b90	call	00836aa1	00836a50L CThingSoundEmitter::~CThingSoundEmitter
+00a01b90	call	00838a66	00838a40L CThingGameObject::OnCreate
+00a01b90	call	00838a7b	00838a40L CThingGameObject::OnCreate
+00a01b90	call	0083cf48	0083cf20L NEntityEvents::CEventTriggered::CEventTriggered
+00a01b90	call	00842f54	00842ec0L CCreatureAction_BlowHorn::CCreatureAction_BlowHorn
+00a01b90	call	00843141	008430b0L CCreatureAction_PerformExpression::CCreatureAction_PerformEx
+00a01b90	call	008433a4	00843310L CCreatureAction_PerformExpressionExtended::CCreatureAction_P
+00a01b90	call	008434dc	00843470L CCreatureAction_LearnExpression::CCreatureAction_LearnExpres
+00a01b90	call	008434fb	00843470L CCreatureAction_LearnExpression::CCreatureAction_LearnExpres
+00a01b90	call	00843588	00843510L CCreatureAction_Drink::CCreatureAction_Drink
+00a01b90	call	008435f4	008435b0L CCreatureAction_UseLamp::CCreatureAction_UseLamp
+00a01b90	call	00843654	00843610L CCreatureAction_UseWallMount::CCreatureAction_UseWallMount
+00a01b90	call	008436e3	00843670L CCreatureAction_ShopkeeperPutAway::CCreatureAction_Shopkeepe
+00a01b90	call	00843778	00843700L CCreatureAction_PickUpGenericBox::CCreatureAction_PickUpGene
+00a01b90	call	00843800	00843790L CCreatureAction_DowseFire::CCreatureAction_DowseFire
+00a01b90	call	0084381f	00843790L CCreatureAction_DowseFire::CCreatureAction_DowseFire
+00a01b90	call	008438b0	00843840L CCreatureAction_FillBucket::CCreatureAction_FillBucket
+00a01b90	call	0084392c	008438c0L CCreatureAction_ShowLove::CCreatureAction_ShowLove
+00a01b90	call	00843f33	-
+00a01b90	call	00843fae	00843f50L CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest
+00a01b90	call	00843ff4	00843fc0L CCreatureAction_ActivateQuest::Initialise
+00a01b90	call	00844009	00843fc0L CCreatureAction_ActivateQuest::Initialise
+00a01b90	call	0084411a	008440c0L CCreatureAction_PickUpThingAtTable::CCreatureAction_PickUpTh
+00a01b90	call	008441b8	00844140L CCreatureAction_PickUpJugToFill::CCreatureAction_PickUpJugTo
+00a01b90	call	00844243	008441d0L CCreatureAction_PutDownJugFromFilling::CCreatureAction_PutDo
+00a01b90	call	00844a09	008448e0L CCreatureAction_OpenChest::PerformAction
+00a01b90	call	0084551e	00845350L CCreatureAction_ShowTrophy::Initialise
+00a01b90	call	00845539	00845350L CCreatureAction_ShowTrophy::Initialise
+00a01b90	call	00845768	008455c0L CCreatureAction_ShowTrophy::PerformAction
+00a01b90	call	00845779	008455c0L CCreatureAction_ShowTrophy::PerformAction
+00a01b90	call	00846f0e	00846dd0L CCreatureAction_PerformExpression::FinishAction
+00a01b90	call	00846f20	00846dd0L CCreatureAction_PerformExpression::FinishAction
+00a01b90	call	00847b7e	00847ac0L CCreatureAction_Drink::Initialise
+00a01b90	call	00847b93	00847ac0L CCreatureAction_Drink::Initialise
+00a01b90	call	0084ae28	0084ae00L NEntityEvents::CEventReceivedMoney::CEventReceivedMoney
+00a01b90	call	0084aea8	0084ae80L NEntityEvents::CEventReceivedItem::CEventReceivedItem
+00a01b90	call	0084aec4	0084ae80L NEntityEvents::CEventReceivedItem::CEventReceivedItem
+00a01b90	call	0084af08	0084aee0L NEntityEvents::CEventShownItem::CEventShownItem
+00a01b90	call	0084af24	0084aee0L NEntityEvents::CEventShownItem::CEventShownItem
+00a01b90	call	0084af58	0084af30L NEntityEvents::CEventSoldItem::CEventSoldItem
+00a01b90	call	0084af74	0084af30L NEntityEvents::CEventSoldItem::CEventSoldItem
+00a01b90	call	0084afb8	0084af90L NEntityEvents::CEventTalkedTo::CEventTalkedTo
+00a01b90	call	0084b038	0084b010L NEntityEvents::CEventExpressionPerformedTo::CEventExpression
+00a01b90	call	0084b0a8	0084b080L NEntityEvents::CEventOpenedChest::CEventOpenedChest
+00a01b90	call	0084b128	0084b100L NEntityEvents::CEventTalkedToAnyone::CEventTalkedToAnyone
+00a01b90	call	0084b1e0	0084b1c0L _unattributed::AssignTarget_0084b1c0
+00a01b90	call	0084b1f5	0084b1c0L _unattributed::AssignTarget_0084b1c0
+00a01b90	call	0084bd89	0084bd40L CCreatureAction_PerformExpression::CCreatureAction_PerformEx
+00a01b90	call	0084be79	0084be30L CCreatureAction_PerformExpressionExtended::CCreatureAction_P
+00a01b90	call	0084bf36	0084bf00L CCreatureAction_LearnExpression::CCreatureAction_LearnExpres
+00a01b90	call	0084bf5c	0084bf00L CCreatureAction_LearnExpression::CCreatureAction_LearnExpres
+00a01b90	call	0084bfd6	0084bfa0L CCreatureAction_Drink::CCreatureAction_Drink
+00a01b90	call	0084bffc	0084bfa0L CCreatureAction_Drink::CCreatureAction_Drink
+00a01b90	call	0084c0a6	0084c070L CCreatureAction_UseLamp::CCreatureAction_UseLamp
+00a01b90	call	0084c126	0084c0f0L CCreatureAction_UseWallMount::CCreatureAction_UseWallMount
+00a01b90	call	0084c276	0084c240L CCreatureAction_ShopkeeperPutAway::CCreatureAction_Shopkeepe
+00a01b90	call	0084c2f6	0084c2c0L CCreatureAction_BlowHorn::CCreatureAction_BlowHorn
+00a01b90	call	0084c576	0084c540L CCreatureAction_DowseFire::CCreatureAction_DowseFire
+00a01b90	call	0084c59c	0084c540L CCreatureAction_DowseFire::CCreatureAction_DowseFire
+00a01b90	call	0084c626	0084c5f0L CCreatureAction_FillBucket::CCreatureAction_FillBucket
+00a01b90	call	0084c6a6	0084c670L CCreatureAction_PickUpGenericBox::CCreatureAction_PickUpGene
+00a01b90	call	0084c786	0084c750L CCreatureAction_ShowLove::CCreatureAction_ShowLove
+00a01b90	call	0084c8b6	0084c880L CCreatureAction_Hammer::CCreatureAction_Hammer
+00a01b90	call	0084c954	0084c900L CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest
+00a01b90	call	0084c9d6	0084c9a0L CCreatureAction_PickUpThingAtTable::CCreatureAction_PickUpTh
+00a01b90	call	0084caf6	0084cac0L CCreatureAction_PickUpJugToFill::CCreatureAction_PickUpJugTo
+00a01b90	call	0084cb76	0084cb40L CCreatureAction_PutDownJugFromFilling::CCreatureAction_PutDo
+00a01b90	call	00852771	00852750L NCameraModes::CScriptModuleBase::SetPThingOrigin
+00a01b90	call	00852785	00852750L NCameraModes::CScriptModuleBase::SetPThingOrigin
+00a01b90	call	00852d39	00852d10L NCameraModes::CScriptModuleGoToLookAt::CScriptModuleGoToLook
+00a01b90	call	00852db9	00852d90L NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptM
+00a01b90	call	00852e64	00852e10L NCameraModes::CScriptModuleFOVZoomStayRelative::CScriptModul
+00a01b90	call	008530ee	008530b0L NCameraModes::CScriptModuleOpenChest::CScriptModuleOpenChest
+00a01b90	call	0085310a	008530b0L NCameraModes::CScriptModuleOpenChest::CScriptModuleOpenChest
+00a01b90	call	0085315e	00853120L NCameraModes::CScriptModuleUseLamp::CScriptModuleUseLamp
+00a01b90	call	0085317a	00853120L NCameraModes::CScriptModuleUseLamp::CScriptModuleUseLamp
+00a01b90	call	008531ce	00853190L NCameraModes::CScriptModuleOpenGate::CScriptModuleOpenGate
+00a01b90	call	008549b6	008548b0L CCreatureAction_SpiritAttack::CreateAttackEffect
+00a01b90	call	008549cd	008548b0L CCreatureAction_SpiritAttack::CreateAttackEffect
+00a01b90	call	00854e3d	00854dd0L CCreatureAction_SpiritAttack::PerformAction
+00a01b90	call	00854e52	00854dd0L CCreatureAction_SpiritAttack::PerformAction
+00a01b90	call	00855296	00855260L CCreatureAction_SpiritAttack::CCreatureAction_SpiritAttack
+00a01b90	call	008552bc	00855260L CCreatureAction_SpiritAttack::CCreatureAction_SpiritAttack
+00a01b90	call	00857ee3	00857e40L CCombatActionBase::CCombatActionBase
+00a01b90	call	00857efe	00857e40L CCombatActionBase::CCombatActionBase
+00a01b90	call	00857f0f	00857e40L CCombatActionBase::CCombatActionBase
+00a01b90	call	00857fdf	00857f30L CCombatActionBase::CCombatActionBase
+00a01b90	call	00857ffe	00857f30L CCombatActionBase::CCombatActionBase
+00a01b90	call	0085800f	00857f30L CCombatActionBase::CCombatActionBase
+00a01b90	call	008580d9	00858030L CCombatActionBase::CCombatActionBase
+00a01b90	call	008580f4	00858030L CCombatActionBase::CCombatActionBase
+00a01b90	call	00858105	00858030L CCombatActionBase::CCombatActionBase
+00a01b90	call	0085aab0	0085aa90L CCombatActionBase::SetTarget
+00a01b90	call	0085aac5	0085aa90L CCombatActionBase::SetTarget
+00a01b90	call	0085ab20	0085ab00L CTCFlourishTarget::SetAttacker
+00a01b90	call	0085ab32	0085ab00L CTCFlourishTarget::SetAttacker
+00a01b90	call	0085ae00	0085adb0L CCombatActionBase::CStrikeEvent::CStrikeEvent
+00a01b90	call	008600bc	00860060L CCreatureAction_GetOutOfBed::CCreatureAction_GetOutOfBed
+00a01b90	call	00860276	00860240L CCreatureAction_GetOutOfBed::CCreatureAction_GetOutOfBed
+00a01b90	call	00860580	00860560L CVillageTaskTorch::AssignCreatureToTask
+00a01b90	call	00860592	00860560L CVillageTaskTorch::AssignCreatureToTask
+00a01b90	call	008605de	008605b0L CVillageTaskTorch::RemoveThingFromTask
+00a01b90	call	008605ef	008605b0L CVillageTaskTorch::RemoveThingFromTask
+00a01b90	call	0086061f	008605b0L CVillageTaskTorch::RemoveThingFromTask
+00a01b90	call	00860631	008605b0L CVillageTaskTorch::RemoveThingFromTask
+00a01b90	call	00860770	00860750L CVillageTaskHorn::AssignCreatureToTask
+00a01b90	call	00860782	00860750L CVillageTaskHorn::AssignCreatureToTask
+00a01b90	call	008607ce	008607a0L CVillageTaskHorn::RemoveThingFromTask
+00a01b90	call	008607df	008607a0L CVillageTaskHorn::RemoveThingFromTask
+00a01b90	call	0086080f	008607a0L CVillageTaskHorn::RemoveThingFromTask
+00a01b90	call	00860821	008607a0L CVillageTaskHorn::RemoveThingFromTask
+00a01b90	call	00860982	00860950L CVillageTaskPatrol::RemoveThingFromTask
+00a01b90	call	00860993	00860950L CVillageTaskPatrol::RemoveThingFromTask
+00a01b90	call	008609c3	00860950L CVillageTaskPatrol::RemoveThingFromTask
+00a01b90	call	008609d5	00860950L CVillageTaskPatrol::RemoveThingFromTask
+00a01b90	call	00860a24	00860a00L CVillageTaskPatrol::AssignCreatureToTask
+00a01b90	call	00860a36	00860a00L CVillageTaskPatrol::AssignCreatureToTask
+00a01b90	call	00860c20	00860c00L CVillageTaskPickCrops::AssignCreatureToTask
+00a01b90	call	00860c32	00860c00L CVillageTaskPickCrops::AssignCreatureToTask
+00a01b90	call	00860c8e	00860c60L CVillageTaskPickCrops::RemoveThingFromTask
+00a01b90	call	00860c9f	00860c60L CVillageTaskPickCrops::RemoveThingFromTask
+00a01b90	call	00860ccf	00860c60L CVillageTaskPickCrops::RemoveThingFromTask
+00a01b90	call	00860ce1	00860c60L CVillageTaskPickCrops::RemoveThingFromTask
+00a01b90	call	00860e40	00860e20L CVillageTaskSecuritySweep::AssignCreatureToTask
+00a01b90	call	00860e52	00860e20L CVillageTaskSecuritySweep::AssignCreatureToTask
+00a01b90	call	00860e9b	00860e70L CVillageTaskSecuritySweep::RemoveThingFromTask
+00a01b90	call	00860eac	00860e70L CVillageTaskSecuritySweep::RemoveThingFromTask
+00a01b90	call	00860ff0	00860fd0L CVillageTaskCarryCrate::AssignCreatureToTask
+00a01b90	call	00861002	00860fd0L CVillageTaskCarryCrate::AssignCreatureToTask
+00a01b90	call	0086105e	00861030L CVillageTaskCarryCrate::RemoveThingFromTask
+00a01b90	call	0086106f	00861030L CVillageTaskCarryCrate::RemoveThingFromTask
+00a01b90	call	0086109f	00861030L CVillageTaskCarryCrate::RemoveThingFromTask
+00a01b90	call	008610b1	00861030L CVillageTaskCarryCrate::RemoveThingFromTask
+00a01b90	call	0086180f	00861800L _global::CIntelligentPointer_Assign_00861800
+00a01b90	call	00863d79	00863ca0L CThingBodyReorienter::FillBodyReorientationPossibleIntersect
+00a01b90	call	00863da3	00863ca0L CThingBodyReorienter::FillBodyReorientationPossibleIntersect
+00a01b90	call	00867632	-
+00a01b90	call	008678f7	008678b0L CCombatAction_GenericStrikeResponseBase::CCombatAction_Gener
+00a01b90	call	00867a12	008679c0L CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_
+00a01b90	call	00867ac8	00867a70L CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_
+00a01b90	call	008680c8	-
+00a01b90	call	008682a3	00868220L NCreatureMode::CModeDrained::CModeDrained
+00a01b90	call	00868478	00868430L CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_
+00a01b90	call	00868610	008685f0L CHitParameters::SetThingHitting
+00a01b90	call	00868622	008685f0L CHitParameters::SetThingHitting
+00a01b90	call	00868d04	00868ce0L CHitParameters::SetWeapon
+00a01b90	call	00868d18	00868ce0L CHitParameters::SetWeapon
+00a01b90	call	00871ce0	00871cc0L CCreatureActionBase::AddDependentThing
+00a01b90	call	00873007	00872ec0L NCameraModes::CZTargetNew::UpdateCoordSystem
+00a01b90	call	00873018	00872ec0L NCameraModes::CZTargetNew::UpdateCoordSystem
+00a01b90	call	00878864	008786e0L CThingSearchTools::GetAllThingsInRoughArea
+00a01b90	call	0087888e	008786e0L CThingSearchTools::GetAllThingsInRoughArea
+00a01b90	call	0087c3b0	0087c390L CTCSinglePersonOccupiable::SetOccupier
+00a01b90	call	0087c3c2	0087c390L CTCSinglePersonOccupiable::SetOccupier
+00a01b90	call	0087ce5b	0087cdf0L CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAct
+00a01b90	call	0087cf26	0087cec0L CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAct
+00a01b90	call	0087e6ea	0087e690L CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAct
+00a01b90	call	0087fef8	0087fed0L NEntityEvents::CEventKillLocked::CEventKillLocked
+00a01b90	call	0087ffef	0087ff60L CHitParameters::CHitParameters
+00a01b90	call	0088000b	0087ff60L CHitParameters::CHitParameters
+00a01b90	call	00881bd5	00881a40L NScreenEffect::CScreenEffectPriorityStack::ScreenFilterSetFl
+00a01b90	call	00881bee	00881a40L NScreenEffect::CScreenEffectPriorityStack::ScreenFilterSetFl
+00a01b90	call	00881c2b	00881a40L NScreenEffect::CScreenEffectPriorityStack::ScreenFilterSetFl
+00a01b90	call	00881d46	-
+00a01b90	call	00881d5f	-
+00a01b90	call	00881d99	-
+00a01b90	call	008828ed	008828d0L std::pair<CIntelligentPointer<CThing>, CUnprovenByte_008828d
+00a01b90	call	00882fca	-
+00a01b90	call	00883192	00883180L SThingPointerWithFlag_00883180::SThingPointerWithFlag_008831
+00a01b90	call	008831b2	-
+00a01b90	call	008833ab	-
+00a01b90	call	00883a42	00883a30L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	00883a87	-
+00a01b90	call	008840c2	008840b0L CIntelligentPointer<CThing>::CIntelligentPointer
+00a01b90	call	0088410b	008840d0L std::_Rb_tree::_M_create_node
+00a01b90	call	0088415d	00884120L std::_Rb_tree::_M_clone_node
+00a01b90	call	00884505	00884490L std::_Rb_tree::_M_copy
+00a01b90	call	00884cca	00884c70L std::map::operator[]
+00a01b90	call	00884cfa	00884c70L std::map::operator[]
+00a01b90	call	0088afc5	0088ae40L _global::GFSerialisePointer
+00a01b90	call	0088afd8	0088ae40L _global::GFSerialisePointer
+00a01b90	call	0088b08b	0088aff0L _global::GFRemapToThingAfterSerialisation
+00a01b90	call	0088b09c	0088aff0L _global::GFRemapToThingAfterSerialisation
+00a01b90	call	0088c8ed	0088c840L CBrainOutput::operator=
+00a01b90	call	0089b5f0	0089b5b0L CGameScriptInterface::StartScriptingEntity
+00a01b90	call	0089e56f	0089e540L CGameScriptInterface::GiveHeroYesNoQuestion
+00a01b90	call	008a7b4d	008a7a70L CGameScriptInterface::TeleportAllFollowersToHeroPosition
+00a01b90	call	008a82e8	008a8260L CGameScriptInterface::GetHeroSummonedCreaturesList
+00a01b90	call	008a98e5	-
+00a01b90	call	008a9915	-
+00a01b90	call	008a9a31	008a99f0L CGameScriptInterface::SetThingAndCarriedItemsNotAffectedBySc
+00a01b90	call	008ab7d8	008ab7b0L NEntityEvents::CEventHeroHasBeenSpottedPickpocketing::CEvent
+00a01b90	call	008ab7f4	008ab7b0L NEntityEvents::CEventHeroHasBeenSpottedPickpocketing::CEvent
+00a01b90	call	008ab868	008ab840L NEntityEvents::CEventHeroHasBeenSpottedPickingLock::CEventHe
+00a01b90	call	008ab884	008ab840L NEntityEvents::CEventHeroHasBeenSpottedPickingLock::CEventHe
+00a01b90	call	008ab8f8	008ab8d0L NEntityEvents::CEventHeroHasBeenSpottedStealing::CEventHeroH
+00a01b90	call	008ab914	008ab8d0L NEntityEvents::CEventHeroHasBeenSpottedStealing::CEventHeroH
+00a01b90	call	008abb70	008abb50L CTCTargetingBase::SetPScriptOverrideRangedTarget
+00a01b90	call	008abb82	008abb50L CTCTargetingBase::SetPScriptOverrideRangedTarget
+00a01b90	call	008abbc0	008abba0L CTCTargetingAI::SetScriptTargetOverride
+00a01b90	call	008abbd2	008abba0L CTCTargetingAI::SetScriptTargetOverride
+00a01b90	call	008abcb0	008abc90L _unattributed::AssignTarget_008abc90
+00a01b90	call	008abcc5	008abc90L _unattributed::AssignTarget_008abc90
+00a01b90	call	008abd00	-
+00a01b90	call	008ac0fb	008ac0d0L std::__uninitialized_copy<CIntelligentPointer<CThingAICreatu
+00a01b90	call	008ac472	008ac3f0L NCreatureMode::CModeScreamerSuperAttack::CModeScreamerSuperA
+00a01b90	call	008af27b	008af220L CombatDialogueManager::CombatDialogueManager
+00a01b90	call	008af28c	008af220L CombatDialogueManager::CombatDialogueManager
+00a01b90	call	008af819	008af780L CombatDialogueManager::Update
+00a01b90	call	008af82a	008af780L CombatDialogueManager::Update
+00a01b90	call	008afc71	008afc40L CombatDialogueManager::SaySpeech
+00a01b90	call	008afc83	008afc40L CombatDialogueManager::SaySpeech
+00a01b90	call	008b8e4e	008b8d30L CCreatureAction_ScreamerDie::Initialise
+00a01b90	call	008b8e65	008b8d30L CCreatureAction_ScreamerDie::Initialise
+00a01b90	call	008b913b	008b9110L CCreatureAction_ScreamerDie::CCreatureAction_ScreamerDie
+00a01b90	call	008b9276	008b9240L CCreatureAction_ScreamerDie::CCreatureAction_ScreamerDie
+00a01b90	call	008b952f	008b94a0L CCreatureAction_CastWillForceSpell::Initialise
+00a01b90	call	008b956e	008b94a0L CCreatureAction_CastWillForceSpell::Initialise
+00a01b90	call	008b9580	008b94a0L CCreatureAction_CastWillForceSpell::Initialise
+00a01b90	call	008b962a	008b95a0L CCreatureAction_CastWillTurncoatSpell::PerformAction
+00a01b90	call	008b9669	008b95a0L CCreatureAction_CastWillTurncoatSpell::PerformAction
+00a01b90	call	008b967b	008b95a0L CCreatureAction_CastWillTurncoatSpell::PerformAction
+00a01b90	call	008b9857	008b97e0L CCreatureAction_CastWillHealLifeSpell::PerformAction
+00a01b90	call	008b9896	008b97e0L CCreatureAction_CastWillHealLifeSpell::PerformAction
+00a01b90	call	008b98a8	008b97e0L CCreatureAction_CastWillHealLifeSpell::PerformAction
+00a01b90	call	008b99ec	008b9970L CCreatureAction_CastWillGhostSwordSpell::Initialise
+00a01b90	call	008b9a2b	008b9970L CCreatureAction_CastWillGhostSwordSpell::Initialise
+00a01b90	call	008b9a3d	008b9970L CCreatureAction_CastWillGhostSwordSpell::Initialise
+00a01b90	call	008b9b77	008b9b00L CCreatureAction_CastWillSummonSpell::Initialise
+00a01b90	call	008b9bb6	008b9b00L CCreatureAction_CastWillSummonSpell::Initialise
+00a01b90	call	008b9bc8	008b9b00L CCreatureAction_CastWillSummonSpell::Initialise
+00a01b90	call	008b9d5d	008b9c90L CCreatureAction_CastWillLightningSpell::Initialise
+00a01b90	call	008b9d9c	008b9c90L CCreatureAction_CastWillLightningSpell::Initialise
+00a01b90	call	008b9dae	008b9c90L CCreatureAction_CastWillLightningSpell::Initialise
+00a01b90	call	008ba2f4	008ba220L CCreatureAction_CastWillEnflameSpell::Initialise
+00a01b90	call	008ba333	008ba220L CCreatureAction_CastWillEnflameSpell::Initialise
+00a01b90	call	008ba345	008ba220L CCreatureAction_CastWillEnflameSpell::Initialise
+00a01b90	call	008ba3ee	008ba3c0L CCreatureAction_CastWillEnflameSpell::FinishAction
+00a01b90	call	008ba8f8	008ba7f0L CCreatureAction_CastWillDrainLifeSpell::PerformAction
+00a01b90	call	008ba936	008ba7f0L CCreatureAction_CastWillDrainLifeSpell::PerformAction
+00a01b90	call	008ba948	008ba7f0L CCreatureAction_CastWillDrainLifeSpell::PerformAction
+00a01b90	call	008baead	008bae10L CCreatureAction_CastDivineWrathSpell::Initialise
+00a01b90	call	008baef0	008bae10L CCreatureAction_CastDivineWrathSpell::Initialise
+00a01b90	call	008baf02	008bae10L CCreatureAction_CastDivineWrathSpell::Initialise
+00a01b90	call	008bafbd	008baf20L CCreatureAction_CastUnholyPowerSpell::Initialise
+00a01b90	call	008bb000	008baf20L CCreatureAction_CastUnholyPowerSpell::Initialise
+00a01b90	call	008bb012	008baf20L CCreatureAction_CastUnholyPowerSpell::Initialise
+00a01b90	call	008bb4aa	008bb450L CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWi
+00a01b90	call	008bb4bf	008bb450L CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWi
+00a01b90	call	008bb55a	008bb500L CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWi
+00a01b90	call	008bb56f	008bb500L CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWi
+00a01b90	call	008bb946	008bb8f0L CCreatureAction_CastWillTurncoatSpell::CCreatureAction_CastW
+00a01b90	call	008bb95b	008bb8f0L CCreatureAction_CastWillTurncoatSpell::CCreatureAction_CastW
+00a01b90	call	008bb9f0	008bb9a0L CCreatureAction_CastWillTurncoatSpell::CCreatureAction_CastW
+00a01b90	call	008bba05	008bb9a0L CCreatureAction_CastWillTurncoatSpell::CCreatureAction_CastW
+00a01b90	call	008bbb84	008bbb40L CCreatureAction_CastWillDrainLifeSpell::CCreatureAction_Cast
+00a01b90	call	008bbbeb	008bbba0L CCreatureAction_CastWillDrainLifeSpell::CCreatureAction_Cast
+00a01b90	call	008bbd17	008bbcc0L CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastW
+00a01b90	call	008bbd2c	008bbcc0L CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastW
+00a01b90	call	008bbdd7	008bbd80L CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastW
+00a01b90	call	008bbdec	008bbd80L CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastW
+00a01b90	call	008bc579	008bc1a0L CCreatureAction_CastWillRaiseDeadSpell::PerformAction
+00a01b90	call	008bc590	008bc1a0L CCreatureAction_CastWillRaiseDeadSpell::PerformAction
+00a01b90	call	008bc627	008bc5e0L CCreatureAction_CastWillReclaimUndeadFollower::CCreatureActi
+00a01b90	call	008bcb3f	008bca00L CCreatureAction_CastWillLightningSpell::CCreatureAction_Cast
+00a01b90	call	008bcb54	008bca00L CCreatureAction_CastWillLightningSpell::CCreatureAction_Cast
+00a01b90	jmp	008bd530	-
+00a01b90	call	008bd565	008bd550L CIntelligentPointer<CThingGameObject>::CIntelligentPointer
+00a01b90	call	008bd5d0	-
+00a01b90	call	008bd5f0	008bd5e0L _unattributed::SetItem_CItemOwner_008bd5e0
+00a01b90	call	008bd620	008bd610L CTCWillLightning::SetPItemRemoved
+00a01b90	call	008bd650	008bd640L _unattributed::SetItem_CItemOwner_008bd640
+00a01b90	call	008bd680	008bd670L _unattributed::SetItem_CItemOwner_008bd670
+00a01b90	call	008bd6b0	008bd6a0L _unattributed::SetItem_CItemOwner_008bd6a0
+00a01b90	call	008bd6e0	008bd6d0L _unattributed::SetItem_CItemOwner_008bd6d0
+00a01b90	call	008bd710	008bd700L _unattributed::SetItem_CItemOwner_008bd700
+00a01b90	call	008bd740	008bd730L _unattributed::SetItem_CItemOwner_008bd730
+00a01b90	call	008bd770	008bd760L _unattributed::SetItem_CItemOwner_008bd760
+00a01b90	call	008bd7a0	008bd790L _unattributed::SetItem_CItemOwner_008bd790
+00a01b90	call	008be856	008be820L CCreatureAction_CastWillReclaimUndeadFollower::CCreatureActi
+00a01b90	call	008bfe48	008bfe20L NEntityEvents::CEventFiredShot::CEventFiredShot
+00a01b90	call	008c0a0e	008c0900L CCreatureAction_BriarRoseShotFarOutof::PerformAction
+00a01b90	call	008c0a25	008c0900L CCreatureAction_BriarRoseShotFarOutof::PerformAction
+00a01b90	call	008c3652	008c35d0L NCreatureMode::CModeBriarRoseTeleportInvulnerable::CModeBria
+00a01b90	call	008c3784	008c3700L NCreatureMode::CModeBriarRoseTeleportIntangible::CModeBriarR
+00a01b90	call	008c3d46	008c3d10L CCreatureAction_BriarRoseShotFarOutof::CCreatureAction_Briar
+00a01b90	call	008c4642	008c44b0L CCreatureAction_ScorpionChargeInto::Initialise
+00a01b90	call	008c4657	008c44b0L CCreatureAction_ScorpionChargeInto::Initialise
+00a01b90	call	008c4da3	008c4cb0L CCreatureAction_WaspQueenDeath::Initialise
+00a01b90	call	008c4db8	008c4cb0L CCreatureAction_WaspQueenDeath::Initialise
+00a01b90	call	008c5d82	008c5d40L CCreatureAction_ScorpionChargeInto::CCreatureAction_Scorpion
+00a01b90	call	008c65d2	008c64f0L CCreatureAction_TrollThrowProjectile::Initialise
+00a01b90	call	008c65e7	008c64f0L CCreatureAction_TrollThrowProjectile::Initialise
+00a01b90	call	008c7c2b	008c7c00L NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CModeI
+00a01b90	call	008c7db6	008c7d80L CCreatureAction_TrollThrowProjectile::CCreatureAction_TrollT
+00a01b90	call	008c8056	008c7fd0L CCreatureAction_BanditKingThrowWeapons::CCreatureAction_Band
+00a01b90	call	008c8067	008c7fd0L CCreatureAction_BanditKingThrowWeapons::CCreatureAction_Band
+00a01b90	call	008c8482	008c8380L CCreatureAction_BanditKingStuck::Initialise
+00a01b90	call	008c8493	008c8380L CCreatureAction_BanditKingStuck::Initialise
+00a01b90	call	008c8883	008c87a0L CCreatureAction_BanditKingStuckGetHit::Initialise
+00a01b90	call	008c889a	008c87a0L CCreatureAction_BanditKingStuckGetHit::Initialise
+00a01b90	call	008c914d	008c8f70L CCreatureAction_BanditKingStuck::FinishAction
+00a01b90	call	008c915e	008c8f70L CCreatureAction_BanditKingStuck::FinishAction
+00a01b90	call	008c917f	008c8f70L CCreatureAction_BanditKingStuck::FinishAction
+00a01b90	call	008c9190	008c8f70L CCreatureAction_BanditKingStuck::FinishAction
+00a01b90	call	008c9291	008c91e0L CCreatureAction_BanditKingStuckGetHit::FinishAction
+00a01b90	call	008c92a2	008c91e0L CCreatureAction_BanditKingStuckGetHit::FinishAction
+00a01b90	call	008c9526	008c94d0L CCreatureAction_BanditKingStuck::CCreatureAction_BanditKingS
+00a01b90	call	008c9545	008c94d0L CCreatureAction_BanditKingStuck::CCreatureAction_BanditKingS
+00a01b90	call	008c97c6	008c9790L CCreatureAction_BanditKingThrowWeapons::CCreatureAction_Band
+00a01b90	call	008c98a2	008c9860L CCreatureAction_BanditKingStuck::CCreatureAction_BanditKingS
+00a01b90	call	008c98c8	008c9860L CCreatureAction_BanditKingStuck::CCreatureAction_BanditKingS
+00a01b90	call	008c9a13	008c99c0L CCreatureAction_HobbeSpellcasterAim::FinishAction
+00a01b90	call	008c9a24	008c99c0L CCreatureAction_HobbeSpellcasterAim::FinishAction
+00a01b90	call	008c9bf4	008c9ba0L CCreatureAction_HobbeSpellcasterAim::Initialise
+00a01b90	call	008c9c05	008c9ba0L CCreatureAction_HobbeSpellcasterAim::Initialise
+00a01b90	call	008c9c4e	008c9ba0L CCreatureAction_HobbeSpellcasterAim::Initialise
+00a01b90	call	008c9c5f	008c9ba0L CCreatureAction_HobbeSpellcasterAim::Initialise
+00a01b90	call	008cbc23	008cbb90L CCreatureAction_SummonerFlameSlice::Initialise
+00a01b90	call	008cbc3a	008cbb90L CCreatureAction_SummonerFlameSlice::Initialise
+00a01b90	call	008cbc7b	008cbb90L CCreatureAction_SummonerFlameSlice::Initialise
+00a01b90	call	008cbe6a	008cbe10L CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_S
+00a01b90	call	008cbe7f	008cbe10L CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_S
+00a01b90	call	008cc135	008cc0b0L NCreatureMode::CModeSummonerSummon::CModeSummonerSummon
+00a01b90	call	008cc202	008cc180L NCreatureMode::CModeSummonerLightningOrb::CModeSummonerLight
+00a01b90	call	008cd6ba	008cd5a0L CCreatureAction_CastBattleCharge::Initialise
+00a01b90	call	008cd6f9	008cd5a0L CCreatureAction_CastBattleCharge::Initialise
+00a01b90	call	008cd70b	008cd5a0L CCreatureAction_CastBattleCharge::Initialise
+00a01b90	call	008cd7a3	008cd730L CCreatureAction_CastTimeSpell::Initialise
+00a01b90	call	008cd7e6	008cd730L CCreatureAction_CastTimeSpell::Initialise
+00a01b90	call	008cd7f8	008cd730L CCreatureAction_CastTimeSpell::Initialise
+00a01b90	call	008ce4fc	008ce4b0L CCreatureAction_BattleChargeImpact::CCreatureAction_BattleCh
+00a01b90	call	008ce520	008ce4b0L CCreatureAction_BattleChargeImpact::CCreatureAction_BattleCh
+00a01b90	call	008ce5bc	008ce570L CCreatureAction_BattleChargeMiss::CCreatureAction_BattleChar
+00a01b90	call	008ce5e0	008ce570L CCreatureAction_BattleChargeMiss::CCreatureAction_BattleChar
+00a01b90	call	008ceac0	008ceab0L _unattributed::SetItem_CItemOwner_008ceab0
+00a01b90	call	008ceb60	008ceb50L CTCBulletTime::SetPItemRemoved
+00a01b90	call	008cf126	008cf0f0L CCreatureAction_BattleChargeImpact::CCreatureAction_BattleCh
+00a01b90	call	008cf14c	008cf0f0L CCreatureAction_BattleChargeImpact::CCreatureAction_BattleCh
+00a01b90	call	008cf1c6	008cf190L CCreatureAction_BattleChargeMiss::CCreatureAction_BattleChar
+00a01b90	call	008cf1ec	008cf190L CCreatureAction_BattleChargeMiss::CCreatureAction_BattleChar
+00a01b90	call	008cff8b	008cff60L CGameScriptThing::CGameScriptThing
+00a01b90	call	008d0001	008cffe0L InitFromThing
+00a01b90	call	008d0015	008cffe0L InitFromThing
+00a01b90	call	008d509e	008d5020L CCreatureAction_FireMissileWeapon::CCreatureAction_FireMissi
+00a01b90	call	008d5180	008d5110L CCreatureAction_FireMissileWeapon::CCreatureAction_FireMissi
+00a01b90	call	008d525b	008d5200L CCreatureAction_FireMissileTest::CCreatureAction_FireMissile
+00a01b90	call	008d52de	008d5280L CCreatureAction_FireMissileTest::CCreatureAction_FireMissile
+00a01b90	call	008d5521	008d5480L CCreatureAction_ReloadMissileWeapon::FinishAction
+00a01b90	call	008d5532	008d5480L CCreatureAction_ReloadMissileWeapon::FinishAction
+00a01b90	call	008d6356	008d6320L CCreatureAction_FireMissileWeapon::CCreatureAction_FireMissi
+00a01b90	call	008d6426	008d63f0L CCreatureAction_FireMissileTest::CCreatureAction_FireMissile
+00a01b90	call	008d72e7	008d7270L NCreatureMode::CModeOutOfActionBase::OnActivate
+00a01b90	call	008d72f9	008d7270L NCreatureMode::CModeOutOfActionBase::OnActivate
+00a01b90	call	008d7340	008d7320L CMode::SetTarget
+00a01b90	call	008d7355	008d7320L CMode::SetTarget
+00a01b90	call	008d7391	008d7370L NCreatureMode::CModeJackOfBladesScream::SetSwordObject
+00a01b90	call	008d73a5	008d7370L NCreatureMode::CModeJackOfBladesScream::SetSwordObject
+00a01b90	call	008d7400	008d73e0L NCreatureMode::CModeScorpionKingVulnerable::SetTarget
+00a01b90	call	008d7412	008d73e0L NCreatureMode::CModeScorpionKingVulnerable::SetTarget
+00a01b90	call	008d7451	008d7430L NCreatureMode::CModeScorpionKingTailPlunge::SetTarget
+00a01b90	call	008d7468	008d7430L NCreatureMode::CModeScorpionKingTailPlunge::SetTarget
+00a01b90	call	008d74e8	008d74b0L NCreatureMode::CModeDragonLanded::OnActivate
+00a01b90	call	008d74fa	008d74b0L NCreatureMode::CModeDragonLanded::OnActivate
+00a01b90	call	008d7548	008d7510L NCreatureMode::CModeDragonGetHit::OnActivate
+00a01b90	call	008d755a	008d7510L NCreatureMode::CModeDragonGetHit::OnActivate
+00a01b90	call	008d7bfc	008d7bb0L NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect
+00a01b90	call	008d7c0d	008d7bb0L NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect
+00a01b90	call	008d8083	008d7f10L NCreatureMode::CModeJackOfBladesFlash::OnActivate
+00a01b90	call	008d8098	008d7f10L NCreatureMode::CModeJackOfBladesFlash::OnActivate
+00a01b90	call	008d8415	008d8330L NCreatureMode::CModeScreamerSuperAttack::OnActivate
+00a01b90	call	008d8427	008d8330L NCreatureMode::CModeScreamerSuperAttack::OnActivate
+00a01b90	call	008d8604	008d8580L NCreatureMode::CModeDragonHover::CModeDragonHover
+00a01b90	call	008d97f6	008d9740L NCreatureMode::CModeJackOfBladesFloat::OnActivate
+00a01b90	call	008d9808	008d9740L NCreatureMode::CModeJackOfBladesFloat::OnActivate
+00a01b90	call	008d9936	008d9870L NCreatureMode::CModeJackOfBladesScream::OnActivate
+00a01b90	call	008d994b	008d9870L NCreatureMode::CModeJackOfBladesScream::OnActivate
+00a01b90	call	008d9fa6	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+00a01b90	call	008d9fbb	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+00a01b90	call	008da099	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+00a01b90	call	008da0ae	008d9e30L NCreatureMode::CModeScorpionKingTailPlunge::OnActivate
+00a01b90	call	008da4bd	008da410L NCreatureMode::CModeScreamerAggressive::OnActivate
+00a01b90	call	008da4ce	008da410L NCreatureMode::CModeScreamerAggressive::OnActivate
+00a01b90	call	008da50b	008da410L NCreatureMode::CModeScreamerAggressive::OnActivate
+00a01b90	call	008da51c	008da410L NCreatureMode::CModeScreamerAggressive::OnActivate
+00a01b90	call	008da6dc	008da690L NCreatureMode::CModeScreamerAggressive::OnDeactivate
+00a01b90	call	008da6ed	008da690L NCreatureMode::CModeScreamerAggressive::OnDeactivate
+00a01b90	call	008da712	008da690L NCreatureMode::CModeScreamerAggressive::OnDeactivate
+00a01b90	call	008da724	008da690L NCreatureMode::CModeScreamerAggressive::OnDeactivate
+00a01b90	call	008da856	008da7a0L NCreatureMode::CModeDrained::OnDeactivate
+00a01b90	call	008da867	008da7a0L NCreatureMode::CModeDrained::OnDeactivate
+00a01b90	call	008da927	008da890L NCreatureMode::CModeDrained::FrameUpdate
+00a01b90	call	008da938	008da890L NCreatureMode::CModeDrained::FrameUpdate
+00a01b90	call	008dab2c	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+00a01b90	call	008dab41	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+00a01b90	call	008dabd1	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+00a01b90	call	008dabe6	008daa80L NCreatureMode::CModeThunderLightningStorm::CreateSkyBeam
+00a01b90	call	008dad62	008dacb0L NCreatureMode::CModeThunderLightningStorm::CreateHandGlow
+00a01b90	call	008dad77	008dacb0L NCreatureMode::CModeThunderLightningStorm::CreateHandGlow
+00a01b90	call	008daecf	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+00a01b90	call	008daee6	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+00a01b90	call	008dafb3	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+00a01b90	call	008dafc5	008dae10L NCreatureMode::CModeSummonerLightningOrb::OnActivate
+00a01b90	call	008db73b	008db620L CModeDragonFireBeam::StartBeamEffect
+00a01b90	call	008db752	008db620L CModeDragonFireBeam::StartBeamEffect
+00a01b90	call	008dc838	008dc720L NCreatureMode::CModeDragonStrafeBurninate::StartBeamEffect
+00a01b90	call	008dc84f	008dc720L NCreatureMode::CModeDragonStrafeBurninate::StartBeamEffect
+00a01b90	call	008dd2bb	-
+00a01b90	call	008dd35c	-
+00a01b90	call	008dd4cd	-
+00a01b90	call	008dd4e2	-
+00a01b90	call	008dd628	-
+00a01b90	call	008dd63d	-
+00a01b90	call	008dd8fd	008dd7e0L CModeThunderLightningStorm::UpdateDamage
+00a01b90	call	008dda5f	008dd7e0L CModeThunderLightningStorm::UpdateDamage
+00a01b90	call	008ddb97	008ddad0L NCreatureMode::CModeThunderLightningStorm::CreateLightningBe
+00a01b90	call	008ddcd9	008ddad0L NCreatureMode::CModeThunderLightningStorm::CreateLightningBe
+00a01b90	call	008ddd11	008ddad0L NCreatureMode::CModeThunderLightningStorm::CreateLightningBe
+00a01b90	call	008deb82	-
+00a01b90	call	008deb94	-
+00a01b90	call	008dee1b	-
+00a01b90	call	008deea7	-
+00a01b90	call	008df70a	008df680L CModeThunderLightningStorm::OnDeactivate
+00a01b90	call	008df7c1	008df680L CModeThunderLightningStorm::OnDeactivate
+00a01b90	call	008df92a	008df680L CModeThunderLightningStorm::OnDeactivate
+00a01b90	call	008e0252	008e0060L NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate
+00a01b90	call	008e027c	008e0060L NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate
+00a01b90	call	008e0305	008e0060L NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate
+00a01b90	call	008e0337	008e0060L NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate
+00a01b90	call	008e0589	008e03b0L NCreatureMode::CModeGuildmasterPowerUpSpeed::OnActivate
+00a01b90	call	008e05c1	008e03b0L NCreatureMode::CModeGuildmasterPowerUpSpeed::OnActivate
+00a01b90	call	008e063f	008e03b0L NCreatureMode::CModeGuildmasterPowerUpSpeed::OnActivate
+00a01b90	call	008e0671	008e03b0L NCreatureMode::CModeGuildmasterPowerUpSpeed::OnActivate
+00a01b90	call	008e2fde	008e2fc0L CIcicleData::CIcicleData
+00a01b90	call	008e2ffe	008e2fc0L CIcicleData::CIcicleData
+00a01b90	call	008e3102	-
+00a01b90	call	008e3113	-
+00a01b90	call	008e34ec	008e34c0L std::__copy<CIcicleData*>
+00a01b90	call	008e34fd	008e34c0L std::__copy<CIcicleData*>
+00a01b90	call	008e6a1c	008e6940L CCreatureAction_ReleaseStrengthBerserk::FinishAction
+00a01b90	call	008e6db0	008e6d90L CTCBerserk::AddDependentThing
+00a01b90	call	008e7945	008e78c0L NCreatureMode::CModeBriarRoseConcentrate::CModeBriarRoseConc
+00a01b90	call	008e7b4c	008e7a00L NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnActivat
+00a01b90	call	008e7b61	008e7a00L NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnActivat
+00a01b90	call	008e838e	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+00a01b90	call	008e85fd	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+00a01b90	call	008e8612	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+00a01b90	call	008e8718	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+00a01b90	call	008e872d	008e8060L NCreatureMode::CModeBriarRoseConcentrate::OnActivate
+00a01b90	call	008e8bfe	008e8bb0L CCreatureAction_BriarRoseConcentrateInto::CCreatureAction_Br
+00a01b90	call	008e8c97	008e8c50L CCreatureAction_BriarRoseInvulnerableTeleport::CCreatureActi
+00a01b90	call	008e8da2	008e8d60L CCreatureAction_BriarRoseConcentrateInto::CCreatureAction_Br
+00a01b90	call	008e8e16	008e8de0L CCreatureAction_BriarRoseInvulnerableTeleport::CCreatureActi
+00a01b90	call	008eb60a	008eacb0L NCreatureMode::CModeHoverBase::OnActivate
+00a01b90	call	008eb61e	008eacb0L NCreatureMode::CModeHoverBase::OnActivate
+00a01b90	call	008ee018	008edff0L CWillButtonHelperTimer::CWillButtonHelperTimer
+00a01b90	call	008ef282	008ef200L Coin::Coin
+00a01b90	call	008ef293	008ef200L Coin::Coin
+00a01b90	call	008ef7da	008ef520L CTCTavernGameCoinBase::UpdateCoins
+00a01b90	call	008ef7f8	008ef520L CTCTavernGameCoinBase::UpdateCoins
+00a01b90	call	008efca7	008efb00L CTCTavernGameCoinBase::FindObstacles
+00a01b90	call	008efcba	008efb00L CTCTavernGameCoinBase::FindObstacles
+00a01b90	call	008effa6	008eff40L Coin::Coin
+00a01b90	call	008f00ca	008f0080L Coin::operator=
+00a01b90	call	008f0350	008f02e0L std::__copy
+00a01b90	call	008f218a	008f20f0L CTCTavernGameCardBase::LeaveGame
+00a01b90	call	008f25cc	008f2580L CTCTavernGameCardBase::AddPointerParticleEffect
+00a01b90	call	008f320e	008f3100L CCreatureAction_DragonLandFireball::PerformAction
+00a01b90	call	008f3225	008f3100L CCreatureAction_DragonLandFireball::PerformAction
+00a01b90	call	008f341e	008f3310L CCreatureAction_DragonFireBlastBase::PerformAction
+00a01b90	call	008f3435	008f3310L CCreatureAction_DragonFireBlastBase::PerformAction
+00a01b90	call	008f3734	008f3630L CCreatureAction_DragonRearUpFull::PerformAction
+00a01b90	call	008f374b	008f3630L CCreatureAction_DragonRearUpFull::PerformAction
+00a01b90	call	008f513a	008f5060L CCreatureAction_SnapDragon::PerformAction
+00a01b90	call	008f534d	008f5220L CCreatureAction_SnapDragonFast::PerformAction
+00a01b90	call	008f55b0	008f5490L CCreatureAction_DragonRoar::PerformAction
+00a01b90	call	00902061	00902045L CAIStateGroup_MinionFaceHero::Initialise
+00a01b90	call	00902072	00902045L CAIStateGroup_MinionFaceHero::Initialise
+00a01b90	call	0090225b	00902233L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Initialise
+00a01b90	call	0090226c	00902233L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Initialise
+00a01b90	call	00903742	00903710L CScriptGameResourceObjectScriptedThing::CScriptGameResourceO
+00a01b90	call	00903a06	009039d0L CScriptGameResourceObjectScriptedThing::CScriptGameResourceO
+00a01b90	call	0090c625	0090c540L CAIStateGroup_MinionGuardFollowPlayer::Update
+00a01b90	call	0090c64f	0090c540L CAIStateGroup_MinionGuardFollowPlayer::Update
+00a01b90	call	0090c6cf	0090c670L CAIStateGroup_MinionGuardFollowPlayer::OnReplace
+00a01b90	call	0090c6e4	0090c670L CAIStateGroup_MinionGuardFollowPlayer::OnReplace
+00a01b90	call	0090c7a0	0090c780L CTCVillage::SetGuardFollowingPlayer
+00a01b90	call	0090c7b5	0090c780L CTCVillage::SetGuardFollowingPlayer
+00a01b90	call	0090cb0b	0090ca60L CAIStateGroup_MinionGossip::OnReplace
+00a01b90	call	0090cb1d	0090ca60L CAIStateGroup_MinionGossip::OnReplace
+00a01b90	call	0090d1cb	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090d1e2	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090d268	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090d27f	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090d423	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090d745	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090d8fe	0090d030L CAIStateGroup_MinionGossip::Update
+00a01b90	call	0090deba	0090dea0L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	0090e602	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e71a	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e72d	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e7c9	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e7ee	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e802	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e8c5	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e90a	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	call	0090e954	0090e5d0L CAIStateGroup_BanditGossip::Update
+00a01b90	jmp	0090ecc0	-
+00a01b90	call	0090ed55	0090ed40L CIntelligentPointer<const CMessageEvent>::CIntelligentPointe
+00a01b90	call	0090eeec	0090eec0L CAIStateGroup_MinionKidCalledToMother::Update
+00a01b90	call	0090efe5	0090eec0L CAIStateGroup_MinionKidCalledToMother::Update
+00a01b90	call	0090f069	0090eec0L CAIStateGroup_MinionKidCalledToMother::Update
+00a01b90	call	0090f4cd	0090f470L CAIStateGroup_MinionHasInformation::Update
+00a01b90	call	0090fbc4	0090fb60L CAIStateGroup_MinionSitAtInn::GetSeat
+00a01b90	call	0090fbd6	0090fb60L CAIStateGroup_MinionSitAtInn::GetSeat
+00a01b90	call	00910700	009106e0L CAIStateGroup_UsesSeat::SetSeat
+00a01b90	call	00910712	009106e0L CAIStateGroup_UsesSeat::SetSeat
+00a01b90	call	00910bca	00910bb0L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	00910c74	00910c30L CCreatureAction_DeclarePlayerACriminal::CCreatureAction_Decl
+00a01b90	call	00910e8c	00910df0L CAIStateGroup_MinionGuardHeardYellForHelp::Update
+00a01b90	call	00910edb	00910df0L CAIStateGroup_MinionGuardHeardYellForHelp::Update
+00a01b90	call	00910f57	00910df0L CAIStateGroup_MinionGuardHeardYellForHelp::Update
+00a01b90	call	00911056	00911020L CCreatureAction_DeclarePlayerACriminal::CCreatureAction_Decl
+00a01b90	call	00911362	00911300L CAIStateGroup_MinionGuardReactToBodyFoundMessage::Update
+00a01b90	call	0091147b	00911300L CAIStateGroup_MinionGuardReactToBodyFoundMessage::Update
+00a01b90	call	0091161a	00911600L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	0091165a	00911630L CAIStateGroup_Guard::Update
+00a01b90	call	00911695	00911630L CAIStateGroup_Guard::Update
+00a01b90	call	009116e1	00911630L CAIStateGroup_Guard::Update
+00a01b90	call	00915327	00915290L CAIStateGroup_KidHurtSelfRunToMother::SendMessageToMother
+00a01b90	call	0091556e	00915350L CAIStateGroup_KidHurtSelfRunToMother::Update
+00a01b90	call	00915654	00915350L CAIStateGroup_KidHurtSelfRunToMother::Update
+00a01b90	call	009156e8	009156c0L NEntityEvents::CEventChildHurtGoToMother::CEventChildHurtGoT
+00a01b90	call	009158c0	00915890L CAIStateGroup_MoveGoodsBase::FetchGoods
+00a01b90	call	0091592e	00915890L CAIStateGroup_MoveGoodsBase::FetchGoods
+00a01b90	call	00915941	00915890L CAIStateGroup_MoveGoodsBase::FetchGoods
+00a01b90	call	00915986	00915890L CAIStateGroup_MoveGoodsBase::FetchGoods
+00a01b90	call	00915bec	00915b60L CAIStateGroup_MoveGoodsBase::PlaceGoods
+00a01b90	call	009165ef	00916590L CCreatureAction_PickUpGoods::CCreatureAction_PickUpGoods
+00a01b90	call	00916660	00916640L CTCExclusiveUse::SetUser
+00a01b90	call	00916672	00916640L CTCExclusiveUse::SetUser
+00a01b90	call	00916a12	00916910L CAIStateGroup_StayNearSchool::Update
+00a01b90	call	00917237	00917130L CAIStateGroup_ThrowLogsOnFire::Update
+00a01b90	call	009172c8	00917130L CAIStateGroup_ThrowLogsOnFire::Update
+00a01b90	call	0091836d	00918350L CAIStateGroup_Gaze::InitStateGroup
+00a01b90	call	0091837f	00918350L CAIStateGroup_Gaze::InitStateGroup
+00a01b90	call	0091841a	009183a0L CAIStateGroup_Gaze::OnReplace
+00a01b90	call	0091842c	009183a0L CAIStateGroup_Gaze::OnReplace
+00a01b90	call	00918452	009183a0L CAIStateGroup_Gaze::OnReplace
+00a01b90	call	00918463	009183a0L CAIStateGroup_Gaze::OnReplace
+00a01b90	call	0091849d	00918480L CAIStateGroup_GazeOutside::InitStateGroup
+00a01b90	call	009184af	00918480L CAIStateGroup_GazeOutside::InitStateGroup
+00a01b90	call	0091857d	00918560L CAIStateGroup_GazeAtHome::InitStateGroup
+00a01b90	call	0091858f	00918560L CAIStateGroup_GazeAtHome::InitStateGroup
+00a01b90	call	00918bb6	00918b90L CAIStateGroup_Gaze::Update
+00a01b90	call	00918bca	00918b90L CAIStateGroup_Gaze::Update
+00a01b90	call	00918fbf	00918fb0L _global::CIntelligentPointer_Assign_00918fb0
+00a01b90	call	009195fa	009195d0L CAIStateGroup_LookAtInterestingThings::Update
+00a01b90	call	00919b3a	-
+00a01b90	call	00919b4d	-
+00a01b90	call	00919efe	-
+00a01b90	call	00919f1e	-
+00a01b90	call	0091a2fd	-
+00a01b90	call	0091a31d	-
+00a01b90	call	0091b736	-
+00a01b90	call	0091c04d	0091c030L CTCNymph::ClearTarget
+00a01b90	call	0091c05f	0091c030L CTCNymph::ClearTarget
+00a01b90	call	0091c0a5	0091c080L CTCNymph::ClearReadyToAttackFlags
+00a01b90	call	0091c0b7	0091c080L CTCNymph::ClearReadyToAttackFlags
+00a01b90	call	0091c185	0091c130L CAIStateGroup_NymphFloatAround::OnReplace
+00a01b90	call	0091c196	0091c130L CAIStateGroup_NymphFloatAround::OnReplace
+00a01b90	call	0091c43b	0091c3d0L CAIStateGroup_NymphFloatAround::Update
+00a01b90	call	0091c44f	0091c3d0L CAIStateGroup_NymphFloatAround::Update
+00a01b90	call	0091c71e	0091c6a0L CAIStateGroup_NymphAttack::Update
+00a01b90	call	0091d23b	0091d190L CAIStateGroup_MinionReactToApology::Update
+00a01b90	call	0091d262	0091d190L CAIStateGroup_MinionReactToApology::Update
+00a01b90	call	0091d282	0091d190L CAIStateGroup_MinionReactToApology::Update
+00a01b90	call	0091d89b	0091d850L CAIStateGroup_EnemyCreatureBase::Cleanup
+00a01b90	call	0091d8ad	0091d850L CAIStateGroup_EnemyCreatureBase::Cleanup
+00a01b90	call	0091dd58	0091dd30L CAIStateGroup_EnemyCreatureBase::IsRunnable
+00a01b90	call	0091dd6a	0091dd30L CAIStateGroup_EnemyCreatureBase::IsRunnable
+00a01b90	call	0091de0c	0091ddd0L CAIStateGroup_HoverAllAroundTest::Update
+00a01b90	call	0091e818	0091e750L CAIStateGroup_MinionMotherConsoleChild::Update
+00a01b90	call	0091ebfd	0091eb60L CAIStateGroup_CreatureRangedCombat2::IsRunnable
+00a01b90	call	0091ee7e	0091ec30L CAIStateGroup_CreatureRangedCombat2::Update
+00a01b90	call	0091f9aa	0091f990L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	0092089c	009207a0L CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable
+00a01b90	call	009208b2	009207a0L CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable
+00a01b90	call	009209ad	00920990L CAIStateGroup_CreatureSeekEnemyUnderground::OnActivate
+00a01b90	call	009209bf	00920990L CAIStateGroup_CreatureSeekEnemyUnderground::OnActivate
+00a01b90	call	00920ad4	00920a00L CAIStateGroup_CreatureSeekEnemyUnderground::Update
+00a01b90	call	00920ae5	00920a00L CAIStateGroup_CreatureSeekEnemyUnderground::Update
+00a01b90	call	00921590	00921440L CAIStateGroup_MinionFollowThing::IsExpressionPerfomedTo
+00a01b90	call	00921ccd	-
+00a01b90	call	00921fdb	-
+00a01b90	call	009221c5	00922010L CAIStateGroup_MinionWalkToMarker::Update
+00a01b90	call	00923613	00923510L CAIStateGroup_ServeFood::MakeFood
+00a01b90	call	00923625	00923510L CAIStateGroup_ServeFood::MakeFood
+00a01b90	call	00923798	009236c0L CAIStateGroup_ServeFood::Update
+00a01b90	call	00926155	00926060L CAIStateGroup_WifeGiveYouGift::Update
+00a01b90	call	00926414	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926435	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926466	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926487	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	009264b6	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	009264d7	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926506	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926527	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926552	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	00926573	009263f0L _Med3<CIntelligentPointer<const CThing>>
+00a01b90	call	009265ec	009265c0L std::__unguarded_linear_insert
+00a01b90	call	0092660f	009265c0L std::__unguarded_linear_insert
+00a01b90	call	00926624	009265c0L std::__unguarded_linear_insert
+00a01b90	call	0092663c	009265c0L std::__unguarded_linear_insert
+00a01b90	call	0092667a	00926660L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	009266d1	00926690L std::__push_heap
+00a01b90	call	009266f6	00926690L std::__push_heap
+00a01b90	call	00926713	00926690L std::__push_heap
+00a01b90	call	00926740	00926690L std::__push_heap
+00a01b90	call	00926786	00926760L std::__copy_backward
+00a01b90	call	009267cc	009267a0L std::__unguarded_insertion_sort_aux
+00a01b90	call	00926816	009267f0L std::swap
+00a01b90	call	00926825	009267f0L std::swap
+00a01b90	call	00926836	009267f0L std::swap
+00a01b90	call	00926890	00926850L _Adjust_heap<CIntelligentPointer<const CThing>*>
+00a01b90	call	009268b1	00926850L _Adjust_heap<CIntelligentPointer<const CThing>*>
+00a01b90	call	009268d1	00926850L _Adjust_heap<CIntelligentPointer<const CThing>*>
+00a01b90	call	009268fd	00926850L _Adjust_heap<CIntelligentPointer<const CThing>*>
+00a01b90	call	0092692c	00926850L _Adjust_heap<CIntelligentPointer<const CThing>*>
+00a01b90	call	00926f08	-
+00a01b90	call	00927052	-
+00a01b90	call	00927461	00927450L _global::__pop_heap
+00a01b90	call	00927489	00927450L _global::__pop_heap
+00a01b90	call	009274f3	009274b0L std::__make_heap
+00a01b90	call	0092756d	-
+00a01b90	call	009275be	00927590L std::__unguarded_partition
+00a01b90	call	009275df	00927590L std::__unguarded_partition
+00a01b90	call	0092760e	00927590L std::__unguarded_partition
+00a01b90	call	00927631	00927590L std::__unguarded_partition
+00a01b90	call	0092765d	00927590L std::__unguarded_partition
+00a01b90	call	0092766c	00927590L std::__unguarded_partition
+00a01b90	call	0092767d	00927590L std::__unguarded_partition
+00a01b90	call	0092771d	-
+00a01b90	call	00927764	00927740L std::__linear_insert
+00a01b90	call	00927787	00927740L std::__linear_insert
+00a01b90	call	009277b6	00927740L std::__linear_insert
+00a01b90	call	009277e9	00927740L std::__linear_insert
+00a01b90	call	00927851	00927810L std::sort_heap
+00a01b90	call	00927860	00927810L std::sort_heap
+00a01b90	call	00927887	00927810L std::sort_heap
+00a01b90	call	009278f4	009278c0L std::__insertion_sort
+00a01b90	call	0092795c	-
+00a01b90	call	0092797d	-
+00a01b90	call	009279a8	-
+00a01b90	call	009279b7	-
+00a01b90	call	009279db	-
+00a01b90	call	00927b0d	00927aa0L std::__introsort_loop
+00a01b90	call	009286f0	009285d0L CAIStateGroup_BanditPlayDice::Act
+00a01b90	call	00928702	009285d0L CAIStateGroup_BanditPlayDice::Act
+00a01b90	call	009288a5	009285d0L CAIStateGroup_BanditPlayDice::Act
+00a01b90	call	009288b7	009285d0L CAIStateGroup_BanditPlayDice::Act
+00a01b90	call	00928caf	009289b0L CAIStateGroup_BanditPlot::Act
+00a01b90	call	00928cc1	009289b0L CAIStateGroup_BanditPlot::Act
+00a01b90	call	00928e51	00928e20L CAIStateGroup_BanditPlayDice::OnReplace
+00a01b90	call	00928e63	00928e20L CAIStateGroup_BanditPlayDice::OnReplace
+00a01b90	call	00929570	00929550L CTCDiceGame::SetCurrentPlayer
+00a01b90	call	00929582	00929550L CTCDiceGame::SetCurrentPlayer
+00a01b90	call	00929a15	00929820L CAIStateGroup_MinionGuardGreetPlayer::Update
+00a01b90	call	00929a35	00929820L CAIStateGroup_MinionGuardGreetPlayer::Update
+00a01b90	call	00929b4b	00929b10L CAIStateGroup_MinionGuardBribed::Update
+00a01b90	call	0092a75c	-
+00a01b90	call	0092aa44	0092a8a0L CAIStateGroup_ApprenticeHero::PracticeSkills
+00a01b90	call	0092b0a5	0092afe0L CAIStateGroup_ApprenticeHero::LookAtMap
+00a01b90	call	0092b51f	0092b3e0L CAIStateGroup_SkillPractice::PracticeSkills
+00a01b90	call	0092c874	0092c740L CAIStateGroup_GoToBed::OnReplace
+00a01b90	call	0092c886	0092c740L CAIStateGroup_GoToBed::OnReplace
+00a01b90	call	0092c92b	0092c8a0L CAIStateGroup_GoToBed::FindFreeBanditBed
+00a01b90	call	0092c93f	0092c8a0L CAIStateGroup_GoToBed::FindFreeBanditBed
+00a01b90	call	0092ca1a	0092c8a0L CAIStateGroup_GoToBed::FindFreeBanditBed
+00a01b90	call	0092cb05	0092c8a0L CAIStateGroup_GoToBed::FindFreeBanditBed
+00a01b90	call	0092cb17	0092c8a0L CAIStateGroup_GoToBed::FindFreeBanditBed
+00a01b90	call	0092d2d8	-
+00a01b90	call	0092d2ec	-
+00a01b90	call	0092d3bc	-
+00a01b90	call	0092d5cb	-
+00a01b90	call	0092d5dd	-
+00a01b90	call	0092e351	0092e300L CCreatureAction_GetInBed::CCreatureAction_GetInBed
+00a01b90	call	0092e846	0092e810L CCreatureAction_GetInBed::CCreatureAction_GetInBed
+00a01b90	call	0092ea4d	0092e950L CAIStateGroup_MinionFindPersonalSpace::IsRunnable
+00a01b90	call	0092ea5f	0092e950L CAIStateGroup_MinionFindPersonalSpace::IsRunnable
+00a01b90	call	0092f1f8	-
+00a01b90	call	0092fad3	0092fab0L CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoIntera
+00a01b90	call	0093051a	-
+00a01b90	call	009308f5	-
+00a01b90	call	00930d3a	00930d20L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	00931044	00931010L CAIStateGroup_MinionReactToCriminal::IsRunnable
+00a01b90	call	00931058	00931010L CAIStateGroup_MinionReactToCriminal::IsRunnable
+00a01b90	call	0093108f	00931010L CAIStateGroup_MinionReactToCriminal::IsRunnable
+00a01b90	call	009310a3	00931010L CAIStateGroup_MinionReactToCriminal::IsRunnable
+00a01b90	call	00931140	00931010L CAIStateGroup_MinionReactToCriminal::IsRunnable
+00a01b90	call	00931527	-
+00a01b90	call	00931696	-
+00a01b90	call	00931abd	-
+00a01b90	call	00931c37	-
+00a01b90	call	00931d54	-
+00a01b90	call	009321db	-
+00a01b90	call	00932a5b	00932990L CAIStateGroup_MinionGuardReactToCriminal::IsRunnable
+00a01b90	call	00932a6f	00932990L CAIStateGroup_MinionGuardReactToCriminal::IsRunnable
+00a01b90	call	00932d12	-
+00a01b90	call	00932eb4	-
+00a01b90	call	00932f97	-
+00a01b90	call	00932fb7	-
+00a01b90	call	00933195	-
+00a01b90	call	009332a0	00933280L _unattributed::AssignTarget_00933280
+00a01b90	call	009332b5	00933280L _unattributed::AssignTarget_00933280
+00a01b90	call	0093338a	00933310L CAIStateGroup_MinionGuardReactToBribe::IsRunnable
+00a01b90	call	0093339e	00933310L CAIStateGroup_MinionGuardReactToBribe::IsRunnable
+00a01b90	call	00933421	00933310L CAIStateGroup_MinionGuardReactToBribe::IsRunnable
+00a01b90	call	00933435	00933310L CAIStateGroup_MinionGuardReactToBribe::IsRunnable
+00a01b90	call	0093356b	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	00933601	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	009336b9	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	009336d9	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	009337d5	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	0093380d	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	00933879	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	00933899	009334f0L CAIStateGroup_MinionGuardReactToBribe::Update
+00a01b90	call	00933c85	00933c10L CAIStateGroup_MinionMotherProtectFamily::IsRunnable
+00a01b90	call	00933c97	00933c10L CAIStateGroup_MinionMotherProtectFamily::IsRunnable
+00a01b90	call	00933e78	00933db0L CAIStateGroup_MinionKidAnnoy::Update
+00a01b90	call	00933f83	00933f10L CCreatureAction_KickCreature::CCreatureAction_KickCreature
+00a01b90	call	00934036	00934000L CCreatureAction_KickCreature::CCreatureAction_KickCreature
+00a01b90	call	00934221	009341c0L CAIStateGroup_MinionKidGroupTag::TagTarget
+00a01b90	call	009342c1	009341c0L CAIStateGroup_MinionKidGroupTag::TagTarget
+00a01b90	call	00934586	00934410L CAIStateGroup_MinionKidGroupTag::EvadeTarget
+00a01b90	call	0093463a	00934410L CAIStateGroup_MinionKidGroupTag::EvadeTarget
+00a01b90	call	00934684	00934410L CAIStateGroup_MinionKidGroupTag::EvadeTarget
+00a01b90	call	009346d4	00934410L CAIStateGroup_MinionKidGroupTag::EvadeTarget
+00a01b90	call	009353c0	009352c0L CAIStateGroup_PerformAction::Update
+00a01b90	call	00935455	009352c0L CAIStateGroup_PerformAction::Update
+00a01b90	call	00935475	009352c0L CAIStateGroup_PerformAction::Update
+00a01b90	call	0093551a	00935500L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	0093554d	00935530L CAIStateGroup_MinionFaceHero::Cleanup
+00a01b90	call	0093555f	00935530L CAIStateGroup_MinionFaceHero::Cleanup
+00a01b90	call	009357c7	-
+00a01b90	call	00935867	009357f0L CAIStateGroup_MinionFaceHero::Update
+00a01b90	call	00935a5a	00935a40L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	00935a9d	00935a80L CAIStateGroup_MinionPutOutFires::Cleanup
+00a01b90	call	00935aaf	00935a80L CAIStateGroup_MinionPutOutFires::Cleanup
+00a01b90	call	00935b32	00935ad0L CAIStateGroup_MinionPutOutFires::IsRunnable
+00a01b90	call	00935b46	00935ad0L CAIStateGroup_MinionPutOutFires::IsRunnable
+00a01b90	call	00935bf1	00935ad0L CAIStateGroup_MinionPutOutFires::IsRunnable
+00a01b90	call	00935c02	00935ad0L CAIStateGroup_MinionPutOutFires::IsRunnable
+00a01b90	call	00935cbf	-
+00a01b90	call	00935dbf	-
+00a01b90	call	009361dd	009361c0L CAIStateGroup_MinionWatchFires::Cleanup
+00a01b90	call	009361ef	009361c0L CAIStateGroup_MinionWatchFires::Cleanup
+00a01b90	call	009362bc	00936210L CAIStateGroup_MinionWatchFires::IsRunnable
+00a01b90	call	009362d0	00936210L CAIStateGroup_MinionWatchFires::IsRunnable
+00a01b90	call	0093637b	00936210L CAIStateGroup_MinionWatchFires::IsRunnable
+00a01b90	call	0093638c	00936210L CAIStateGroup_MinionWatchFires::IsRunnable
+00a01b90	jmp	009366a0	-
+00a01b90	call	00936765	00936750L CIntelligentPointer<CThingDeadCreature>::CIntelligentPointer
+00a01b90	call	0093677f	00936770L _global::CIntelligentPointer_Assign_00936770
+00a01b90	call	0093687a	00936860L CIntelligentPointer<const CThing>::CIntelligentPointer
+00a01b90	call	00936ace	00936a60L CAIStateGroup_MinionReactToCorpse::IsRunnable
+00a01b90	call	00936ae2	00936a60L CAIStateGroup_MinionReactToCorpse::IsRunnable
+00a01b90	call	00936ce2	00936c70L CAIStateGroup_MinionReactToCorpse::Update
+00a01b90	call	0093795c	009378f0L CAIStateGroup_MinionReactToUnconsciousPerson::Update
+00a01b90	call	00937d6a	00937d20L CAIStateGroup_MinionReactToUnconsciousPerson::IsRunnable
+00a01b90	call	00937d7c	00937d20L CAIStateGroup_MinionReactToUnconsciousPerson::IsRunnable
+00a01b90	call	00937f33	00937da0L CAIStateGroup_MinionReactToEnemy::Update
+00a01b90	call	00937fee	00937f70L CAIStateGroup_MinionReactToEnemy::IsRunnable
+00a01b90	call	00938000	00937f70L CAIStateGroup_MinionReactToEnemy::IsRunnable
+00a01b90	call	0093974b	-
+00a01b90	call	0093975f	-
+00a01b90	call	0093978c	-
+00a01b90	call	0093979d	-
+00a01b90	call	00939f5e	00939ed0L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable
+00a01b90	call	00939f6f	00939ed0L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable
+00a01b90	call	0093a0e5	0093a080L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update
+00a01b90	call	0093a2a3	0093a080L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update
+00a01b90	call	0093a364	0093a080L CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update
+00a01b90	call	0093af20	0093ae80L CAIStateGroup_BanditSitRoundCampfire::IsRunnable
+00a01b90	call	0093af34	0093ae80L CAIStateGroup_BanditSitRoundCampfire::IsRunnable
+00a01b90	call	0093af5d	0093ae80L CAIStateGroup_BanditSitRoundCampfire::IsRunnable
+00a01b90	call	0093af6e	0093ae80L CAIStateGroup_BanditSitRoundCampfire::IsRunnable
+00a01b90	call	0093b70d	0093b6f0L CAIStateGroup_SeekEnemy::InitStateGroup
+00a01b90	call	0093b71f	0093b6f0L CAIStateGroup_SeekEnemy::InitStateGroup
+00a01b90	call	0093b884	0093b740L CAIStateGroup_SeekEnemy::IsRunnable
+00a01b90	call	0093be74	0093bdf0L CAIStateGroup_SeekEnemy::Cleanup
+00a01b90	call	0093be85	0093bdf0L CAIStateGroup_SeekEnemy::Cleanup
+00a01b90	call	0093bebd	0093bea0L CAIStateGroup_SeekScriptTarget::InitStateGroup
+00a01b90	call	0093becf	0093bea0L CAIStateGroup_SeekScriptTarget::InitStateGroup
+00a01b90	call	0093bf6a	0093bef0L CAIStateGroup_SeekScriptTarget::IsRunnable
+00a01b90	call	0093bf7c	0093bef0L CAIStateGroup_SeekScriptTarget::IsRunnable
+00a01b90	call	0093c1f3	0093c030L CAIStateGroup_SeekScriptTarget::Update
+00a01b90	call	0093c2b4	0093c230L CAIStateGroup_SeekScriptTarget::Cleanup
+00a01b90	call	0093c2c5	0093c230L CAIStateGroup_SeekScriptTarget::Cleanup
+00a01b90	call	0093ca7d	0093ca60L CAIStateGroup_NonVillageGuardPatrol::Cleanup
+00a01b90	call	0093ca8f	0093ca60L CAIStateGroup_NonVillageGuardPatrol::Cleanup
+00a01b90	call	0093caf3	0093cab0L CAIStateGroup_NonVillageGuardPatrol::FindNextGuardPatrolPosi
+00a01b90	call	0093cb04	0093cab0L CAIStateGroup_NonVillageGuardPatrol::FindNextGuardPatrolPosi
+00a01b90	call	0093cbdf	0093cb20L CAIStateGroup_NonVillageGuardPatrol::Update
+00a01b90	call	0093cbf0	0093cb20L CAIStateGroup_NonVillageGuardPatrol::Update
+00a01b90	call	0093cc0d	0093cb20L CAIStateGroup_NonVillageGuardPatrol::Update
+00a01b90	call	0093cc1e	0093cb20L CAIStateGroup_NonVillageGuardPatrol::Update
+00a01b90	call	0093cd76	0093cc60L CAIStateGroup_NonVillageGuardPatrol::IsRunnable
+00a01b90	call	0093cd88	0093cc60L CAIStateGroup_NonVillageGuardPatrol::IsRunnable
+00a01b90	call	0093d2e5	0093d270L CAIStateGroup_MeleeCombatNearbyBase::IsRunnable
+00a01b90	call	0093d2f7	0093d270L CAIStateGroup_MeleeCombatNearbyBase::IsRunnable
+00a01b90	call	0093df11	0093dde0L CAIStateGroup_MeleeCombatNearby2::AttackEnemy
+00a01b90	call	0093df24	0093dde0L CAIStateGroup_MeleeCombatNearby2::AttackEnemy
+00a01b90	call	0093e48d	0093e2d0L CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update
+00a01b90	call	0093e4a0	0093e2d0L CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update
+00a01b90	call	0093e787	0093e760L CBrainOutput::SetAsLookAtThing
+00a01b90	call	0093e799	0093e760L CBrainOutput::SetAsLookAtThing
+00a01b90	jmp	0093e7c0	-
+00a01b90	call	0093e7f5	0093e7e0L CIntelligentPointer<CVillageTaskTorch>::CIntelligentPointer
+00a01b90	call	0093e81a	0093e800L CIntelligentPointer<CVillageTaskTorch>::CIntelligentPointer
+00a01b90	call	0093e83f	0093e830L _global::CIntelligentPointer_Assign_0093e830
+00a01b90	call	0093e88a	0093e870L CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	0093e8de	0093e8c0L CAIStateGroup_VillageTaskTorch::IsRunnable
+00a01b90	call	0093e8f2	0093e8c0L CAIStateGroup_VillageTaskTorch::IsRunnable
+00a01b90	call	0093e936	0093e8c0L CAIStateGroup_VillageTaskTorch::IsRunnable
+00a01b90	call	0093e947	0093e8c0L CAIStateGroup_VillageTaskTorch::IsRunnable
+00a01b90	call	0093e9cc	0093e8c0L CAIStateGroup_VillageTaskTorch::IsRunnable
+00a01b90	call	0093e9dd	0093e8c0L CAIStateGroup_VillageTaskTorch::IsRunnable
+00a01b90	call	0093ea43	0093ea00L CAIStateGroup_VillageTaskTorch::Cleanup
+00a01b90	call	0093ea66	0093ea00L CAIStateGroup_VillageTaskTorch::Cleanup
+00a01b90	call	0093ea77	0093ea00L CAIStateGroup_VillageTaskTorch::Cleanup
+00a01b90	jmp	0093ece0	-
+00a01b90	call	0093ed45	0093ed30L CIntelligentPointer<CVillageTaskPatrol>::CIntelligentPointer
+00a01b90	call	0093ed6f	0093ed60L _global::CIntelligentPointer_Assign_0093ed60
+00a01b90	call	0093edca	0093edb0L CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	0093ee83	0093ee40L CAIStateGroup_VillageTaskPatrol::OnReplace
+00a01b90	call	0093eea6	0093ee40L CAIStateGroup_VillageTaskPatrol::OnReplace
+00a01b90	call	0093eeb7	0093ee40L CAIStateGroup_VillageTaskPatrol::OnReplace
+00a01b90	call	0093ef50	-
+00a01b90	call	0093ef64	-
+00a01b90	call	0093f295	-
+00a01b90	call	0093f2a6	-
+00a01b90	call	0093f402	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	call	0093f416	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	call	0093f4ba	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	call	0093f60e	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	call	0093f621	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	call	0093f649	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	call	0093f65c	0093f3c0L CAIStateGroup_VillageTaskPatrol::Update
+00a01b90	jmp	0093fa10	-
+00a01b90	call	0093fa45	0093fa30L CIntelligentPointer<CVillageTaskSecuritySweep>::CIntelligent
+00a01b90	call	0093fa5f	0093fa50L _global::CIntelligentPointer_Assign_0093fa50
+00a01b90	call	0093faaa	0093fa90L CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	0093fb73	0093fb30L CAIStateGroup_VillageTaskSecuritySweep::Cleanup
+00a01b90	call	0093fb96	0093fb30L CAIStateGroup_VillageTaskSecuritySweep::Cleanup
+00a01b90	call	0093fba7	0093fb30L CAIStateGroup_VillageTaskSecuritySweep::Cleanup
+00a01b90	call	0093fbde	0093fbc0L CAIStateGroup_VillageTaskSecuritySweep::IsRunnable
+00a01b90	call	0093fbf2	0093fbc0L CAIStateGroup_VillageTaskSecuritySweep::IsRunnable
+00a01b90	call	0093fc3b	0093fbc0L CAIStateGroup_VillageTaskSecuritySweep::IsRunnable
+00a01b90	call	0093fc4c	0093fbc0L CAIStateGroup_VillageTaskSecuritySweep::IsRunnable
+00a01b90	call	0093fddc	-
+00a01b90	call	00940206	00940180L CAIStateGroup_VillageTaskPickCrops::IsRunnable
+00a01b90	call	00940218	00940180L CAIStateGroup_VillageTaskPickCrops::IsRunnable
+00a01b90	call	009402c6	00940240L CAIStateGroup_VillageTaskPickCrops::Cleanup
+00a01b90	call	009402e9	00940240L CAIStateGroup_VillageTaskPickCrops::Cleanup
+00a01b90	call	009402fa	00940240L CAIStateGroup_VillageTaskPickCrops::Cleanup
+00a01b90	call	00940430	00940310L CAIStateGroup_VillageTaskPickCrops::Update
+00a01b90	call	009404d1	00940310L CAIStateGroup_VillageTaskPickCrops::Update
+00a01b90	call	009404e2	00940310L CAIStateGroup_VillageTaskPickCrops::Update
+00a01b90	jmp	00940510	-
+00a01b90	call	00940545	00940530L CIntelligentPointer<CVillageTaskPickCrops>::CIntelligentPoin
+00a01b90	call	0094055f	00940550L _global::CIntelligentPointer_Assign_00940550
+00a01b90	call	009405ba	009405a0L CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	00940663	009405f0L CCreatureAction_PickCrop::CCreatureAction_PickCrop
+00a01b90	call	00940716	009406e0L CCreatureAction_PickCrop::CCreatureAction_PickCrop
+00a01b90	jmp	00940730	-
+00a01b90	call	00940765	00940750L CIntelligentPointer<CVillageTaskHorn>::CIntelligentPointer
+00a01b90	call	0094078a	00940770L CIntelligentPointer<CVillageTaskHorn>::CIntelligentPointer
+00a01b90	call	009407af	009407a0L _global::CIntelligentPointer_Assign_009407a0
+00a01b90	call	009407fa	009407e0L CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	0094083e	00940820L CAIStateGroup_VillageTaskHorn::IsRunnable
+00a01b90	call	00940852	00940820L CAIStateGroup_VillageTaskHorn::IsRunnable
+00a01b90	call	00940892	00940820L CAIStateGroup_VillageTaskHorn::IsRunnable
+00a01b90	call	009408a3	00940820L CAIStateGroup_VillageTaskHorn::IsRunnable
+00a01b90	call	00940913	009408d0L CAIStateGroup_VillageTaskHorn::Cleanup
+00a01b90	call	00940936	009408d0L CAIStateGroup_VillageTaskHorn::Cleanup
+00a01b90	call	00940947	009408d0L CAIStateGroup_VillageTaskHorn::Cleanup
+00a01b90	call	00940aef	00940960L CAIStateGroup_VillageTaskHorn::Update
+00a01b90	call	009411a8	-
+00a01b90	call	009412f2	00941210L CAIStateGroup_KidWatchHopscotch::IsRunnable
+00a01b90	call	00941306	00941210L CAIStateGroup_KidWatchHopscotch::IsRunnable
+00a01b90	call	00941adf	-
+00a01b90	call	00941af1	-
+00a01b90	call	009421d2	00941fc0L CAIStateGroup_KidReactToBlockage::IsRunnable
+00a01b90	call	009432fb	009432c0L CAIStateGroup_WorkAtSchool::Update
+00a01b90	jmp	009439f0	-
+00a01b90	call	00943a25	00943a10L CIntelligentPointer<CVillageTaskCarryCrate>::CIntelligentPoi
+00a01b90	call	00943a4a	00943a30L CIntelligentPointer<CVillageTaskCarryCrate>::CIntelligentPoi
+00a01b90	call	00943a6f	00943a60L _global::CIntelligentPointer_Assign_00943a60
+00a01b90	call	00943aba	00943aa0L CIntelligentPointer<CVillageTaskBase>::CIntelligentPointer
+00a01b90	call	00943bc6	00943b40L CAIStateGroup_WorkInWarehouse::Cleanup
+00a01b90	call	00943be9	00943b40L CAIStateGroup_WorkInWarehouse::Cleanup
+00a01b90	call	00943bfa	00943b40L CAIStateGroup_WorkInWarehouse::Cleanup
+00a01b90	call	00943cb1	00943c20L CAIStateGroup_WorkInWarehouse::IsRunnable
+00a01b90	call	00943cc5	00943c20L CAIStateGroup_WorkInWarehouse::IsRunnable
+00a01b90	call	00944022	-
+00a01b90	call	00944048	-
+00a01b90	call	00944080	-
+00a01b90	call	00944152	-
+00a01b90	call	009441e2	-
+00a01b90	call	00944208	-
+00a01b90	call	00944240	-
+00a01b90	call	009443ef	00944300L CAIStateGroup_WorkInWarehouse::Update
+00a01b90	call	00944425	00944300L CAIStateGroup_WorkInWarehouse::Update
+00a01b90	call	00944436	00944300L CAIStateGroup_WorkInWarehouse::Update
+00a01b90	call	0094449d	00944470L CAIFilter_ShouldStillBeWorkingInWarehouse::CAIFilter_ShouldS
+00a01b90	call	009444be	00944470L CAIFilter_ShouldStillBeWorkingInWarehouse::CAIFilter_ShouldS
+00a01b90	call	00944915	00944730L CAIStateGroup_WorkSawingWood::IsRunnable
+00a01b90	jmp	00944cc0	-
+00a01b90	call	0094501b	00944e80L CAIStateGroup_WorkHammerAnvil::IsRunnable
+00a01b90	call	009456dc	-
+00a01b90	call	00945766	-
+00a01b90	call	00945779	-
+00a01b90	call	009458a5	-
+00a01b90	call	00945c21	00945bd0L CAIStateGroup_SitForMeal::Update
+00a01b90	call	00945c33	00945bd0L CAIStateGroup_SitForMeal::Update
+00a01b90	jmp	00945d00	-
+00a01b90	call	00945d55	00945d40L CIntelligentPointer<const CThingBuilding>::CIntelligentPoint
+00a01b90	call	00945d8f	00945d80L _global::CIntelligentPointer_Assign_00945d80
+00a01b90	call	0094641f	00946400L CAIStateGroup_PrepareMeal::IsRunnable
+00a01b90	call	00946437	00946400L CAIStateGroup_PrepareMeal::IsRunnable
+00a01b90	call	00946be8	00946b50L CAIStateGroup_LightHomeCandle::IsRunnable
+00a01b90	call	00946bfa	00946b50L CAIStateGroup_LightHomeCandle::IsRunnable
+00a01b90	call	009472ff	00947280L CAIStateGroup_WanderAroundShops::IsRunnable
+00a01b90	call	00947313	00947280L CAIStateGroup_WanderAroundShops::IsRunnable
+00a01b90	call	00947361	00947280L CAIStateGroup_WanderAroundShops::IsRunnable
+00a01b90	call	0094738d	00947280L CAIStateGroup_WanderAroundShops::IsRunnable
+00a01b90	call	009473a1	00947280L CAIStateGroup_WanderAroundShops::IsRunnable
+00a01b90	call	00947447	009473e0L CAIStateGroup_WanderAroundShops::InitCreaturePosition
+00a01b90	call	00947460	009473e0L CAIStateGroup_WanderAroundShops::InitCreaturePosition
+00a01b90	call	0094782a	00947810L CIntelligentPointer<const CThingBuilding>::CIntelligentPoint
+00a01b90	call	009478c2	-
+00a01b90	call	009478d6	-
+00a01b90	call	0094796a	-
+00a01b90	call	0094797b	-
+00a01b90	call	00947ddc	00947db0L CAIStateGroup_GoToPub::InitStateGroup
+00a01b90	call	00947dee	00947db0L CAIStateGroup_GoToPub::InitStateGroup
+00a01b90	call	00948165	00948060L CAIStateGroup_GoToPub::InitCreaturePosition
+00a01b90	call	00948179	00948060L CAIStateGroup_GoToPub::InitCreaturePosition
+00a01b90	call	009481f4	00948060L CAIStateGroup_GoToPub::InitCreaturePosition
+00a01b90	call	00948208	00948060L CAIStateGroup_GoToPub::InitCreaturePosition
+00a01b90	call	009482d7	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	009482eb	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	0094837c	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	009484b2	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	009484c4	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	00948548	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	0094855a	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	00948665	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	00948677	009482a0L CAIStateGroup_GoToPub::GetSeat
+00a01b90	call	0094881f	009486d0L CAIStateGroup_GoToPub::FreeSeat
+00a01b90	call	00948830	009486d0L CAIStateGroup_GoToPub::FreeSeat
+00a01b90	call	00948855	009486d0L CAIStateGroup_GoToPub::FreeSeat
+00a01b90	call	00948867	009486d0L CAIStateGroup_GoToPub::FreeSeat
+00a01b90	call	009491c7	009490d0L CAIStateGroup_GoToPub::GetBar
+00a01b90	call	009491df	009490d0L CAIStateGroup_GoToPub::GetBar
+00a01b90	call	0094924c	009490d0L CAIStateGroup_GoToPub::GetBar
+00a01b90	call	0094925e	009490d0L CAIStateGroup_GoToPub::GetBar
+00a01b90	call	009494d2	00949380L CAIStateGroup_GoToPub::ThankBarmaid
+00a01b90	call	0094999a	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	009499ac	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	009499d2	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	009499e4	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949a05	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949a17	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949a3c	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949a4e	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949a73	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949a85	009498b0L CAIStateGroup_GoToPub::OnReplace
+00a01b90	call	00949bc3	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949bd7	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949c5a	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949c6c	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949e81	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949e99	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949f67	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	00949f78	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	0094a051	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	0094a063	00949ab0L CAIStateGroup_GoToPub::IsRunnable
+00a01b90	call	0094a8bd	0094a840L CAIStateGroup_GoToPub::PayMoney
+00a01b90	call	0094a8ce	0094a840L CAIStateGroup_GoToPub::PayMoney
+00a01b90	call	0094ac1e	-
+00a01b90	call	0094ac34	-
+00a01b90	call	0094acb8	-
+00a01b90	call	0094acca	-
+00a01b90	call	0094ade7	-
+00a01b90	call	0094adf9	-
+00a01b90	call	0094b420	0094b400L CTCTavernTankard::SetBarmaid
+00a01b90	call	0094b432	0094b400L CTCTavernTankard::SetBarmaid
+00a01b90	call	0094b480	-
+00a01b90	call	0094baed	0094bad0L CAIStateGroup_MinionHawkingFromStall::OnReplace
+00a01b90	call	0094baff	0094bad0L CAIStateGroup_MinionHawkingFromStall::OnReplace
+00a01b90	call	0094bbd0	0094bb20L CAIStateGroup_MinionHawkingFromStall::Update
+00a01b90	call	0094bc0b	0094bb20L CAIStateGroup_MinionHawkingFromStall::Update
+00a01b90	call	0094bc2b	0094bb20L CAIStateGroup_MinionHawkingFromStall::Update
+00a01b90	call	0094c0d7	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c0eb	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c24f	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c26f	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c53e	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c5fd	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c61d	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c6de	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c6fe	0094c050L CAIStateGroup_SellToBuyer::Update
+00a01b90	call	0094c81f	0094c7e0L CAIStateGroup_GameMaster::InitStateGroup
+00a01b90	call	0094c831	0094c7e0L CAIStateGroup_GameMaster::InitStateGroup
+00a01b90	call	0094c880	0094c850L CAIStateGroup_GameMaster::InitCreaturePosition
+00a01b90	call	0094c894	0094c850L CAIStateGroup_GameMaster::InitCreaturePosition
+00a01b90	call	0094c930	0094c900L CAIStateGroup_GameMaster::IsRunnable
+00a01b90	call	0094c942	0094c900L CAIStateGroup_GameMaster::IsRunnable
+00a01b90	call	0094cc66	0094cb40L CAIStateGroup_GameMaster::GetSeat
+00a01b90	call	0094cc7e	0094cb40L CAIStateGroup_GameMaster::GetSeat
+00a01b90	call	0094ccca	0094cb40L CAIStateGroup_GameMaster::GetSeat
+00a01b90	call	0094ccdb	0094cb40L CAIStateGroup_GameMaster::GetSeat
+00a01b90	call	0094cdbc	0094cb40L CAIStateGroup_GameMaster::GetSeat
+00a01b90	call	0094cdce	0094cb40L CAIStateGroup_GameMaster::GetSeat
+00a01b90	call	0094cf7a	0094ce60L CAIStateGroup_GameMaster::OfferPlayerAGame
+00a01b90	call	0094cf9a	0094ce60L CAIStateGroup_GameMaster::OfferPlayerAGame
+00a01b90	call	0094d050	0094d020L CAIStateGroup_GameMaster::Update
+00a01b90	call	0094d064	0094d020L CAIStateGroup_GameMaster::Update
+00a01b90	call	0094d450	0094d430L CTCTavernGame::RegisterGameMaster
+00a01b90	call	0094d465	0094d430L CTCTavernGame::RegisterGameMaster
+00a01b90	call	0094d49d	0094d480L CAIStateGroupWithBuilding_0094d480::Cleanup
+00a01b90	call	0094d4b2	0094d480L CAIStateGroupWithBuilding_0094d480::Cleanup
+00a01b90	call	0094db72	0094dac0L CAIStateGroup_RockTroll::IsRunnable
+00a01b90	call	0094db84	0094dac0L CAIStateGroup_RockTroll::IsRunnable
+00a01b90	call	0094e762	0094e6b0L CAIStateGroup_EarthTroll::IsRunnable
+00a01b90	call	0094e774	0094e6b0L CAIStateGroup_EarthTroll::IsRunnable
+00a01b90	call	0094efcf	0094ef90L CAIStateGroup_FollowPlayer::IsRunnable
+00a01b90	call	0094efe1	0094ef90L CAIStateGroup_FollowPlayer::IsRunnable
+00a01b90	call	0094f055	0094f000L CAIStateGroup_FollowPlayer::Update
+00a01b90	call	0094f42b	0094f180L CAIStateGroup_BalverineCornered::IsRunnable
+00a01b90	call	0094f450	0094f180L CAIStateGroup_BalverineCornered::IsRunnable
+00a01b90	call	0094fdbb	0094fc00L CAIStateGroup_JackDragon::CreateIBC
+00a01b90	call	0094fdcd	0094fc00L CAIStateGroup_JackDragon::CreateIBC
+00a01b90	call	009501b3	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	009501c7	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	0095024a	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	0095025e	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	009502ca	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	009502dc	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	00950348	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	0095035a	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	009503c6	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	009503d8	009500e0L CAIStateGroup_JackDragon::OnActivate
+00a01b90	call	00952eb4	00952e80L CAIStateGroup_JackDragon::Update
+00a01b90	call	00952ec8	00952e80L CAIStateGroup_JackDragon::Update
+00a01b90	call	00953d96	00953d60L CCreatureAction_DragonFireBlastBase::CCreatureAction_DragonF
+00a01b90	call	00954599	00954470L CAIStateGroup_MazeRangedCombat::IsRunnable
+00a01b90	call	0095470a	00954690L CAIStateGroup_MazeShieldedChase::IsRunnable
+00a01b90	call	0095471c	00954690L CAIStateGroup_MazeShieldedChase::IsRunnable
+00a01b90	call	0095489f	009547d0L CAIStateGroup_MazeShieldedChase::OnActivate
+00a01b90	call	009548b1	009547d0L CAIStateGroup_MazeShieldedChase::OnActivate
+00a01b90	call	00954957	00954900L CAIStateGroup_MazeShieldedChase::Cleanup
+00a01b90	call	00954969	00954900L CAIStateGroup_MazeShieldedChase::Cleanup
+00a01b90	call	009549ed	00954980L CAIStateGroup_MazeDefensiveMeleeCombat::IsRunnable
+00a01b90	call	009549ff	00954980L CAIStateGroup_MazeDefensiveMeleeCombat::IsRunnable
+00a01b90	call	00954b1d	00954ab0L CAIStateGroup_MazeTutorialBattle::IsRunnable
+00a01b90	call	00954b2f	00954ab0L CAIStateGroup_MazeTutorialBattle::IsRunnable
+00a01b90	call	00954c12	00954b50L CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+00a01b90	call	00954c24	00954b50L CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+00a01b90	call	00954dec	00954cd0L CAIStateGroup_MazeTutorialBattleUseShield::IsRunnable
+00a01b90	call	00954dfe	00954cd0L CAIStateGroup_MazeTutorialBattleUseShield::IsRunnable
+00a01b90	call	00954f06	00954e30L CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnab
+00a01b90	call	00954f18	00954e30L CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnab
+00a01b90	call	00955418	-
+00a01b90	call	009557b6	00955620L CAIStateGroup_MazeDefensiveMeleeCombat::Update
+00a01b90	call	009563e3	00956380L CAIStateGroup_MazeTutorialBattleRespondToLightning::Update
+00a01b90	call	00956bbe	00956b00L CAIStateGroup_BriarRose::IsRunnable
+00a01b90	call	00956bd0	00956b00L CAIStateGroup_BriarRose::IsRunnable
+00a01b90	call	00956d5a	00956ce0L CAIStateGroup_BriarRoseWillUse::IsRunnable
+00a01b90	call	00956d6c	00956ce0L CAIStateGroup_BriarRoseWillUse::IsRunnable
+00a01b90	call	00957257	00957210L CCreatureAction_BriarRoseIntoInvulnerable::CCreatureAction_B
+00a01b90	call	009572e7	009572a0L CCreatureAction_BriarRoseForcePush::CCreatureAction_BriarRos
+00a01b90	call	00957436	00957400L CCreatureAction_BriarRoseIntoInvulnerable::CCreatureAction_B
+00a01b90	call	009574b6	00957480L CCreatureAction_BriarRoseForcePush::CCreatureAction_BriarRos
+00a01b90	call	00957524	009574d0L CAIStateGroup_MinionBehaviourGreetCreature::Update
+00a01b90	call	0095763a	009575c0L CAIStateGroup_MinionBehaviourGreetCreature::IsRunnable
+00a01b90	call	0095764c	009575c0L CAIStateGroup_MinionBehaviourGreetCreature::IsRunnable
+00a01b90	call	00957778	00957750L CAIStateGroupBehaviourBase::TurnToFace
+00a01b90	call	009577ad	00957790L CAIStateGroupBehaviourBase::Cleanup
+00a01b90	call	009577bf	00957790L CAIStateGroupBehaviourBase::Cleanup
+00a01b90	call	009577fe	009577e0L CAIStateGroupBehaviourBase::IsRunnable
+00a01b90	call	00957812	009577e0L CAIStateGroupBehaviourBase::IsRunnable
+00a01b90	call	00957866	009577e0L CAIStateGroupBehaviourBase::IsRunnable
+00a01b90	call	00957877	009577e0L CAIStateGroupBehaviourBase::IsRunnable
+00a01b90	call	0095790b	009578a0L CAIStateGroupBehaviourBase::UpdateFocusAttentionOnThingActiv
+00a01b90	call	00957d11	-
+00a01b90	call	00957e94	00957db0L CAIStateGroup_MinionBehaviourCrowdBase::Update
+00a01b90	call	00958035	00958000L CAIStateGroup_MinionReactToBurglary::Update
+00a01b90	call	0095833f	009582d0L CAIStateGroup_MinionReactToTrespassing::Update
+00a01b90	call	00958353	009582d0L CAIStateGroup_MinionReactToTrespassing::Update
+00a01b90	call	009583e6	009582d0L CAIStateGroup_MinionReactToTrespassing::Update
+00a01b90	call	0095859b	009582d0L CAIStateGroup_MinionReactToTrespassing::Update
+00a01b90	call	00958872	00958840L CAIStateGroup_MinionReactToCrime::Update
+00a01b90	call	00958886	00958840L CAIStateGroup_MinionReactToCrime::Update
+00a01b90	call	0095995c	00959800L CAIStateGroup_HoverWanderAroundThing::IsRunnable
+00a01b90	call	0095996f	00959800L CAIStateGroup_HoverWanderAroundThing::IsRunnable
+00a01b90	call	009599ea	00959800L CAIStateGroup_HoverWanderAroundThing::IsRunnable
+00a01b90	call	009599fd	00959800L CAIStateGroup_HoverWanderAroundThing::IsRunnable
+00a01b90	call	00959b27	00959a60L CAIStateGroup_HoverWanderAroundThing::Update
+00a01b90	call	0095a2ec	0095a2c0L CAIStateGroup_HoverAttackArea::IsRunnable
+00a01b90	call	0095a300	0095a2c0L CAIStateGroup_HoverAttackArea::IsRunnable
+00a01b90	call	0095aa92	0095aa60L CAIStateGroup_HoverHornetQueenTakeDamage::IsRunnable
+00a01b90	call	0095aaa4	0095aa60L CAIStateGroup_HoverHornetQueenTakeDamage::IsRunnable
+00a01b90	call	0095ac8e	0095ab50L CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+00a01b90	call	0095acbd	0095ab50L CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+00a01b90	call	0095b621	0095b5a0L CAIStateGroup_HoverHornetQueen::IsRunnable
+00a01b90	call	0095b635	0095b5a0L CAIStateGroup_HoverHornetQueen::IsRunnable
+00a01b90	call	0095bab2	0095b9e0L CAIStateGroup_HoverHornetQueen::DiveBomb
+00a01b90	call	0095d265	0095d200L CAIStateGroup_RangedCombatUsePreferredFirePoint::Update
+00a01b90	call	0095d428	0095d3a0L CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace
+00a01b90	call	0095d439	0095d3a0L CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace
+00a01b90	call	0095d5ff	0095d590L CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable
+00a01b90	call	0095d613	0095d590L CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable
+00a01b90	call	0095d639	0095d590L CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable
+00a01b90	call	0095d64d	0095d590L CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable
+00a01b90	call	0095d6f0	0095d590L CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable
+00a01b90	call	0095d701	0095d590L CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable
+00a01b90	call	0095e112	0095e0b0L CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Upd
+00a01b90	call	0095e134	0095e0b0L CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Upd
+00a01b90	call	0095e18a	0095e0b0L CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Upd
+00a01b90	call	0095e2f7	0095e260L CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsR
+00a01b90	call	0095e309	0095e260L CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsR
+00a01b90	call	0095e3f4	0095e350L CAIStateGroup_ReactToDeadLeader::IsRunnable
+00a01b90	call	0095e406	0095e350L CAIStateGroup_ReactToDeadLeader::IsRunnable
+00a01b90	call	0095e5c6	0095e470L CAIStateGroup_ReactToDeadLeader::Update
+00a01b90	call	0095e5d7	0095e470L CAIStateGroup_ReactToDeadLeader::Update
+00a01b90	call	0095e693	0095e470L CAIStateGroup_ReactToDeadLeader::Update
+00a01b90	call	0095e6a4	0095e470L CAIStateGroup_ReactToDeadLeader::Update
+00a01b90	call	0095eb6c	0095e900L CAIStateGroup_BoastingCrowdMember::Update
+00a01b90	call	0095ee18	0095edf0L CAIStateGroup_OpinionReactionRoot::TurnToFace
+00a01b90	call	0095eee2	0095ee70L CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo
+00a01b90	call	0095ef02	0095ee70L CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo
+00a01b90	call	0095ef37	0095ee70L CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo
+00a01b90	call	0095ef57	0095ee70L CAIStateGroup_OpinionReactionRoot::SayToThingReactingTo
+00a01b90	call	0095f025	0095ef80L CAIStateGroup_OpinionReactionRoot::IsRunnable
+00a01b90	call	0095f145	0095ef80L CAIStateGroup_OpinionReactionRoot::IsRunnable
+00a01b90	call	0095f1e9	0095ef80L CAIStateGroup_OpinionReactionRoot::IsRunnable
+00a01b90	call	0095fbbf	0095fb40L CIsOpinionSourceWithReaction::operator()
+00a01b90	call	0095fbd5	0095fb40L CIsOpinionSourceWithReaction::operator()
+00a01b90	call	0095fe85	0095fe60L CAIStateGroup_DeedReactionRoot::InitStateGroup
+00a01b90	call	0095fe97	0095fe60L CAIStateGroup_DeedReactionRoot::InitStateGroup
+00a01b90	call	009604cb	00960120L CAIStateGroup_DeedReactionRoot::Update
+00a01b90	call	00960a05	009609b0L CAIStateGroup_DeedReactionRoot::IsRunnable
+00a01b90	call	00960ba0	009609b0L CAIStateGroup_DeedReactionRoot::IsRunnable
+00a01b90	call	00960bb1	009609b0L CAIStateGroup_DeedReactionRoot::IsRunnable
+00a01b90	call	00960f95	00960f80L CThingFilter_IsOpinionSourceWithFreshDeed::CThingFilter_IsOp
+00a01b90	call	0096136e	009612f0L CAIStateGroup_BanditKingCharge::IsRunnable
+00a01b90	call	00961380	009612f0L CAIStateGroup_BanditKingCharge::IsRunnable
+00a01b90	call	00961519	009614a0L CAIStateGroup_BanditKingLunge::IsRunnable
+00a01b90	call	0096152b	009614a0L CAIStateGroup_BanditKingLunge::IsRunnable
+00a01b90	call	009616a5	00961640L CAIStateGroup_BanditKingThrowWeapons::Update
+00a01b90	call	009617f3	00961790L CAIStateGroup_BanditKingCharge::Update
+00a01b90	call	009618ea	00961880L CAIStateGroup_BanditKingLunge::Update
+00a01b90	call	00961dc9	-
+00a01b90	call	00961ddb	-
+00a01b90	call	00961f13	00961e80L CAIStateGroup_IceTrollPoundGroundAttack::IsRunnable
+00a01b90	call	00962072	00961fb0L CAIStateGroup_IceTrollIcicleAssault::IsRunnable
+00a01b90	call	00962135	00961fb0L CAIStateGroup_IceTrollIcicleAssault::IsRunnable
+00a01b90	call	00962309	009621f0L CAIStateGroup_IceTrollIcicleAttack::Update
+00a01b90	call	00962cf9	00962c10L CAIStateGroup_VersusRockTroll::IsRunnable
+00a01b90	call	00962d0b	00962c10L CAIStateGroup_VersusRockTroll::IsRunnable
+00a01b90	call	00962f3f	-
+00a01b90	call	0096332e	-
+00a01b90	call	00963344	-
+00a01b90	call	00963745	00963640L CAIStateGroup_VersusScorpionKing::IsRunnable
+00a01b90	call	00963757	00963640L CAIStateGroup_VersusScorpionKing::IsRunnable
+00a01b90	call	009637b8	00963640L CAIStateGroup_VersusScorpionKing::IsRunnable
+00a01b90	call	009637ca	00963640L CAIStateGroup_VersusScorpionKing::IsRunnable
+00a01b90	call	00964789	009644f0L CAIStateGroup_StealStealableItem::OnReplace
+00a01b90	call	0096479b	009644f0L CAIStateGroup_StealStealableItem::OnReplace
+00a01b90	call	00964e2f	00964da0L CAIStateGroup_StealStealableItem::IsRunnable
+00a01b90	call	00964e43	00964da0L CAIStateGroup_StealStealableItem::IsRunnable
+00a01b90	call	00964e79	00964da0L CAIStateGroup_StealStealableItem::IsRunnable
+00a01b90	call	00964e8d	00964da0L CAIStateGroup_StealStealableItem::IsRunnable
+00a01b90	call	009653a5	00965320L CAIStateGroup_RecoverStealableItem::IsRunnable
+00a01b90	call	009653b9	00965320L CAIStateGroup_RecoverStealableItem::IsRunnable
+00a01b90	call	009653e6	00965320L CAIStateGroup_RecoverStealableItem::IsRunnable
+00a01b90	call	009653fa	00965320L CAIStateGroup_RecoverStealableItem::IsRunnable
+00a01b90	call	0096549f	00965320L CAIStateGroup_RecoverStealableItem::IsRunnable
+00a01b90	call	009654b0	00965320L CAIStateGroup_RecoverStealableItem::IsRunnable
+00a01b90	call	0096587a	00965640L CAIStateGroup_RecoverStealableItem::OnReplace
+00a01b90	call	0096588c	00965640L CAIStateGroup_RecoverStealableItem::OnReplace
+00a01b90	call	00965fe1	00965fb0L CAIStateGroup_CarryCrateAndFollow::IsRunnable
+00a01b90	call	00965ff5	00965fb0L CAIStateGroup_CarryCrateAndFollow::IsRunnable
+00a01b90	call	0096625f	00966030L CAIStateGroup_CarryCrateAndFollow::OnReplace
+00a01b90	call	00966271	00966030L CAIStateGroup_CarryCrateAndFollow::OnReplace
+00a01b90	call	0096635b	00966290L CAIStateGroup_CarryCrateAndFollow::IsExpressionPerfomedTo
+00a01b90	call	0096636e	00966290L CAIStateGroup_CarryCrateAndFollow::IsExpressionPerfomedTo
+00a01b90	call	00966986	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	00966998	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	009669b9	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	009669cb	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	009669ec	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	009669fe	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	00966a23	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	00966a35	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	00966a56	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	00966a68	00966930L CAIStateGroup_TavernServer::InitStateGroup
+00a01b90	call	00966c11	00966af0L CAIStateGroup_TavernServer::GetBar
+00a01b90	call	00966c25	00966af0L CAIStateGroup_TavernServer::GetBar
+00a01b90	call	00966e8e	00966da0L CAIStateGroup_TavernServer::GetServingPoint
+00a01b90	call	00966ea0	00966da0L CAIStateGroup_TavernServer::GetServingPoint
+00a01b90	call	00966f57	00966da0L CAIStateGroup_TavernServer::GetServingPoint
+00a01b90	call	00966f6d	00966da0L CAIStateGroup_TavernServer::GetServingPoint
+00a01b90	call	00967042	00966da0L CAIStateGroup_TavernServer::GetServingPoint
+00a01b90	call	00967058	00966da0L CAIStateGroup_TavernServer::GetServingPoint
+00a01b90	call	0096722c	00967180L CAIStateGroup_TavernServer::GetJug
+00a01b90	call	00967540	-
+00a01b90	call	00967552	-
+00a01b90	call	00967573	-
+00a01b90	call	00967585	-
+00a01b90	call	009675a6	-
+00a01b90	call	009675b8	-
+00a01b90	call	009675dd	-
+00a01b90	call	009675ef	-
+00a01b90	call	00967610	-
+00a01b90	call	00967622	-
+00a01b90	call	009676df	00967650L CAIStateGroup_TavernServer::IsRunnable
+00a01b90	call	009676f0	00967650L CAIStateGroup_TavernServer::IsRunnable
+00a01b90	call	00967b0e	00967a20L CAIStateGroup_TavernServer::PutDownJug
+00a01b90	call	00967b1f	00967a20L CAIStateGroup_TavernServer::PutDownJug
+00a01b90	call	00968425	009683a0L CAIStateGroup_TavernKeeper::GetPaymentRequest
+00a01b90	call	00968437	009683a0L CAIStateGroup_TavernKeeper::GetPaymentRequest
+00a01b90	call	00968760	-
+00a01b90	call	00968776	-
+00a01b90	call	00968dcb	00968bc0L CAIStateGroup_TavernKeeper::OnReplace
+00a01b90	call	00968ddd	00968bc0L CAIStateGroup_TavernKeeper::OnReplace
+00a01b90	call	00968e8f	00968e00L CAIStateGroup_TavernKeeper::IsRunnable
+00a01b90	call	00968ea0	00968e00L CAIStateGroup_TavernKeeper::IsRunnable
+00a01b90	call	00968f63	00968e00L CAIStateGroup_TavernKeeper::IsRunnable
+00a01b90	call	00968f75	00968e00L CAIStateGroup_TavernKeeper::IsRunnable
+00a01b90	call	00969674	00969470L CAIStateGroup_TavernKeeper::Update
+00a01b90	call	00969740	00969730L _unattributed::SetItem_CItemOwner_00969730
+00a01b90	call	00969b64	00969ae0L CAIStateGroup_SleepOnFloor::OnReplace
+00a01b90	call	00969b75	00969ae0L CAIStateGroup_SleepOnFloor::OnReplace
+00a01b90	call	00969cf3	00969cb0L CAIStateGroup_SleepOnFloor::Update
+00a01b90	call	00969f70	00969e70L CAIStateGroup_SleepOnFloor::IsRunnable
+00a01b90	call	00969f82	00969e70L CAIStateGroup_SleepOnFloor::IsRunnable
+00a01b90	call	0096a866	0096a7a0L CAIStateGroup_WhisperRetreat::IsRunnableLeaf
+00a01b90	call	0096a878	0096a7a0L CAIStateGroup_WhisperRetreat::IsRunnableLeaf
+00a01b90	call	0096aa4c	-
+00a01b90	call	0096aa7b	-
+00a01b90	call	0096c3d0	0096c2e0L CAIStateGroup_Thunder::IsRunnable
+00a01b90	call	0096c3e2	0096c2e0L CAIStateGroup_Thunder::IsRunnable
+00a01b90	call	0096c417	0096c2e0L CAIStateGroup_Thunder::IsRunnable
+00a01b90	call	0096c4a0	0096c2e0L CAIStateGroup_Thunder::IsRunnable
+00a01b90	call	0096c4b2	0096c2e0L CAIStateGroup_Thunder::IsRunnable
+00a01b90	call	0096dd8d	0096dd10L NCreatureMode::CModeScreamerAggressive::CModeScreamerAggress
+00a01b90	call	0096e08f	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+00a01b90	call	0096e0a3	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+00a01b90	call	0096e311	0096df50L CAIStateGroup_ScreamerPursueTarget::Update
+00a01b90	call	0096e5f0	0096e540L CAIStateGroup_SummonerSummon::IsRunnable
+00a01b90	call	0096ed63	0096ec10L CAIStateGroup_MeleeCombatNearby::MoveToEnemyCreatureCombatPo
+00a01b90	call	0096ef2e	0096ee90L CAIStateGroup_MeleeCombatNearby::Update
+00a01b90	call	0096f0b3	0096f050L CAIStateGroup_MinionBehaviourSad::Update
+00a01b90	call	0096f0e9	0096f050L CAIStateGroup_MinionBehaviourSad::Update
+00a01b90	call	0096f20a	0096f180L CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse
+00a01b90	call	0096f21c	0096f180L CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse
+00a01b90	call	0096f8bf	0096f770L CAIStateGroup_SummonerLightningAttack::IsRunnable
+00a01b90	call	0096f8d1	0096f770L CAIStateGroup_SummonerLightningAttack::IsRunnable
+00a01b90	call	009708ed	009708a0L CAIStateGroup_CreatureUseCoverBase::RemoveThingFromCoverList
+00a01b90	call	00970b23	00970ab0L CAIStateGroup_CreatureUseCoverBase::IsRunnable
+00a01b90	call	00970b35	00970ab0L CAIStateGroup_CreatureUseCoverBase::IsRunnable
+00a01b90	call	00970be2	00970b60L CAIStateGroup_CreatureUseCoverBase::ClearCoverThing
+00a01b90	call	00970bf3	00970b60L CAIStateGroup_CreatureUseCoverBase::ClearCoverThing
+00a01b90	call	00970ca7	00970c10L CAIStateGroup_CreatureUseCoverBase::CleanupLeaf
+00a01b90	call	00970cb8	00970c10L CAIStateGroup_CreatureUseCoverBase::CleanupLeaf
+00a01b90	call	00970dad	00970cd0L CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetU
+00a01b90	call	0097100b	00970f30L CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf
+00a01b90	call	00971035	00970f30L CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf
+00a01b90	call	00971154	009710d0L CAIStateGroup_CreatureUseCoverBase::RefreshCoverList
+00a01b90	call	0097117a	009710d0L CAIStateGroup_CreatureUseCoverBase::RefreshCoverList
+00a01b90	call	00971370	009711d0L CAIStateGroup_CreatureUseCoverBase::MoveIntoCover
+00a01b90	call	00972302	00972280L CAIStateGroup_JackOfBladesStage1::IsRunnable
+00a01b90	call	00972314	00972280L CAIStateGroup_JackOfBladesStage1::IsRunnable
+00a01b90	call	00972453	009723d0L CAIStateGroup_JackOfBladesStage2::IsRunnable
+00a01b90	call	00972465	009723d0L CAIStateGroup_JackOfBladesStage2::IsRunnable
+00a01b90	call	00972633	009725b0L CAIStateGroup_JackOfBladesStage3::IsRunnable
+00a01b90	call	00972645	009725b0L CAIStateGroup_JackOfBladesStage3::IsRunnable
+00a01b90	call	009728e1	00972830L CAIStateGroup_JackOfBladesBase::SetupArena
+00a01b90	call	009728f3	00972830L CAIStateGroup_JackOfBladesBase::SetupArena
+00a01b90	call	00972bf9	00972990L CAIStateGroup_JackOfBladesStage1::OnActivate
+00a01b90	call	00972c0b	00972990L CAIStateGroup_JackOfBladesStage1::OnActivate
+00a01b90	call	00972de4	00972cc0L CAIStateGroup_JackOfBladesStage1::MeleeCombat
+00a01b90	call	00972df7	00972cc0L CAIStateGroup_JackOfBladesStage1::MeleeCombat
+00a01b90	call	0097302a	00972f30L CAIStateGroup_JackOfBladesStage2::SetupArena
+00a01b90	call	00973059	00972f30L CAIStateGroup_JackOfBladesStage2::SetupArena
+00a01b90	call	0097315c	00972f30L CAIStateGroup_JackOfBladesStage2::SetupArena
+00a01b90	call	00973186	00972f30L CAIStateGroup_JackOfBladesStage2::SetupArena
+00a01b90	call	00973274	00972f30L CAIStateGroup_JackOfBladesStage2::SetupArena
+00a01b90	call	00973286	00972f30L CAIStateGroup_JackOfBladesStage2::SetupArena
+00a01b90	call	00974584	00974110L CAIStateGroup_JackOfBladesBase::Summon
+00a01b90	call	0097459a	00974110L CAIStateGroup_JackOfBladesBase::Summon
+00a01b90	call	0097519e	00974aa0L CAIStateGroup_JackOfBladesStage2::Update
+00a01b90	call	00975f19	-
+00a01b90	call	0097663b	-
+00a01b90	call	00976883	-
+00a01b90	call	00976a04	-
+00a01b90	call	009777d3	009777a0L CAIStateGroup_Guildmaster::IsRunnable
+00a01b90	call	009777e7	009777a0L CAIStateGroup_Guildmaster::IsRunnable
+00a01b90	call	00977961	00977820L CAIStateGroup_Guildmaster::GetBetterTeleportPos
+00a01b90	call	00977972	00977820L CAIStateGroup_Guildmaster::GetBetterTeleportPos
+00a01b90	call	00977d22	00977c40L CAIStateGroup_Guildmaster::OnActivate
+00a01b90	call	00977d4c	00977c40L CAIStateGroup_Guildmaster::OnActivate
+00a01b90	call	00979caa	-
+00a01b90	call	00979fc6	00979f70L CAIStateGroup_CreatureTakeCover::AttackTargetThing
+00a01b90	call	0097a02f	00979f70L CAIStateGroup_CreatureTakeCover::AttackTargetThing
+00a01b90	call	0097a58b	-
+00a01b90	call	0097b971	0097b900L CAIStateGroup_ScorpionKing::IsRunnable
+00a01b90	call	0097b983	0097b900L CAIStateGroup_ScorpionKing::IsRunnable
+00a01b90	call	0097ba06	0097b900L CAIStateGroup_ScorpionKing::IsRunnable
+00a01b90	call	0097ba1a	0097b900L CAIStateGroup_ScorpionKing::IsRunnable
+00a01b90	call	0097ba72	0097b900L CAIStateGroup_ScorpionKing::IsRunnable
+00a01b90	call	0097ba84	0097b900L CAIStateGroup_ScorpionKing::IsRunnable
+00a01b90	call	0097bcce	0097bb30L CAIStateGroup_ScorpionKing::Initialise
+00a01b90	call	0097bcfd	0097bb30L CAIStateGroup_ScorpionKing::Initialise
+00a01b90	call	0097c1fc	0097bda0L CAIStateGroup_ScorpionKing::UpdateCombat
+00a01b90	call	0097de0b	0097dcb0L CAIStateGroupBase::AIAction_PerformActionTargetFaceAndWait
+00a01b90	call	0097de1e	0097dcb0L CAIStateGroupBase::AIAction_PerformActionTargetFaceAndWait
+00a01b90	call	0097e022	0097df60L CAIStateGroupBase::AIAction_PerformActionTargetFace
+00a01b90	call	0097e035	0097df60L CAIStateGroupBase::AIAction_PerformActionTargetFace
+00a01b90	call	0097f077	0097ef60L CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThing
+00a01b90	call	0097fc45	0097fbe0L CAIStateGroupBase::AIAction_RunAwayFrom
+00a01b90	call	0097ffb0	0097fea0L CAIStateGroupBase::AIAction_FindAGuardAndYellForHelp
+00a01b90	call	0098007a	0097fea0L CAIStateGroupBase::AIAction_FindAGuardAndYellForHelp
+00a01b90	call	0098052d	009804a0L CAIStateGroupBase::AIAction_FleeToThingProximity
+00a01b90	call	009806ad	009804a0L CAIStateGroupBase::AIAction_FleeToThingProximity
+00a01b90	call	00980c7a	-
+00a01b90	call	00980d17	-
+00a01b90	call	00980e4b	-
+00a01b90	call	00981003	-
+00a01b90	call	0098114b	009810b0L CAIStateGroupBase::AIAction_FindAGuardAndGiveMessage
+00a01b90	call	0098119c	009810b0L CAIStateGroupBase::AIAction_FindAGuardAndGiveMessage
+00a01b90	call	009812f3	009812c0L CAIStateGroupBase::AIAction_SpeakAISpeechToTarget
+00a01b90	call	00981316	009812c0L CAIStateGroupBase::AIAction_SpeakAISpeechToTarget
+00a01b90	call	009813b6	00981350L CAIStateGroupBase::AIAction_SpeakAISpeechToTarget
+00a01b90	call	009813d9	00981350L CAIStateGroupBase::AIAction_SpeakAISpeechToTarget
+00a01b90	call	00981685	-
+00a01b90	call	009817e8	-
+00a01b90	call	0098194c	-
+00a01b90	call	00981b84	-
+00a01b90	call	00981d8e	-
+00a01b90	call	00981ed3	00981ea0L CAIStateGroupBase::AIAction_SpeakAISpeechToTarget
+00a01b90	call	00981ef6	00981ea0L CAIStateGroupBase::AIAction_SpeakAISpeechToTarget
+00a01b90	call	0098209a	00982080L CIntelligentPointer<const CThingCreatureBase>::CIntelligentP
+00a01b90	call	009821c3	00982150L CCreatureAction_MagicBlast::CCreatureAction_MagicBlast
+00a01b90	call	009822b9	00982210L CCreatureAction_SendMessage::CCreatureAction_SendMessage
+00a01b90	call	0098234c	00982320L NEntityEvents::CEventVillagerInteraction::CEventVillagerInte
+00a01b90	call	00982706	009826d0L CCreatureAction_MagicBlast::CCreatureAction_MagicBlast
+00a01b90	call	009827bd	00982750L CCreatureAction_SendMessage::CCreatureAction_SendMessage
+00a01b90	call	00983191	-
+00a01b90	call	009832d1	-
+00a01b90	call	00983411	-
+00a01b90	call	009834f1	-
+00a01b90	call	009835d1	-
+00a01b90	call	009836b1	-
+00a01b90	call	009837f6	-
+00a01b90	call	009839c1	-
+00a01b90	call	00983aa1	-
+00a01b90	call	00983b81	-
+00a01b90	call	00983cad	-
+00a01b90	call	00983dc7	-
+00a01b90	call	00983e04	-
+00a01b90	call	00984015	-
+00a01b90	call	00984051	-
+00a01b90	call	00984131	-
+00a01b90	call	00984211	-
+00a01b90	call	009842f1	-
+00a01b90	call	009843d1	-
+00a01b90	call	00984511	-
+00a01b90	call	00984663	-
+00a01b90	call	00984741	-
+00a01b90	call	00984881	-
+00a01b90	call	009849c1	-
+00a01b90	call	00984a83	00984a20L CAIStateGroup_OpinionReactionRoot::WatchUpdate
+00a01b90	call	00985624	00985440L CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate
+00a01b90	call	0098584b	009857d0L CAIStateGroup_OpinionReactionRoot::HeroTitleAtHeroUpdate
+00a01b90	call	0098586b	009857d0L CAIStateGroup_OpinionReactionRoot::HeroTitleAtHeroUpdate
+00a01b90	call	00985a1b	009859a0L CAIStateGroup_OpinionReactionRoot::HeroTitleToSelfUpdate
+00a01b90	call	00985a3b	009859a0L CAIStateGroup_OpinionReactionRoot::HeroTitleToSelfUpdate
+00a01b90	call	00985cad	-
+00a01b90	call	00985e11	-
+00a01b90	call	009867cf	-
+00a01b90	call	00a50c8d	00a50c20L C3DAnimation2::InitialiseAnimationInstance
+00a01b90	call	00a50cc1	00a50c20L C3DAnimation2::InitialiseAnimationInstance
+00a01b90	jmp	00a511f0	-
+00a01b90	call	00a51d7a	00a51d60L CIntelligentPointer<C3DAnimation2>::CIntelligentPointer
+00a01b90	call	00a53095	00a53080L CIntelligentPointer<C3DAnimation2>::CIntelligentPointer
+00a01b90	call	00a5353f	00a53520L std::_Construct
+00a01b90	call	00a541be	-
+00a01b90	call	00a5454e	-
+00a01b90	call	00a54921	-
+00a01b90	call	00b0f7de	-
+00a01b90	call	00b0f85e	-
+00a01b90	call	00b0f951	00b0f920L std::list<CIntelligentPointer<NParticleEngine::CParticleEmit

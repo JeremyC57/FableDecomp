@@ -83,7 +83,7 @@ public:
 class CResource;
 class CResourceBank {
 public:
-    void AddResource(CResource* resource);                  // 0x009FC380
+    void AddResource(CResource& resource);                  // 0x009FC380 (NF315: the PDB signature, Ego_r + FableWin)
 };
 
 class CCompositeSurfaceCache;
@@ -112,6 +112,6 @@ void CEngineSurfaceCompositionManager_Methods::AddSurface(CCompositeSurfaceInfo&
     if (!info.Cache) {
         info.Cache.Reset(new CCompositeSurfaceCache(*this));
         Surfaces().push_back(info.Cache);
-        Bank().AddResource(info.Cache.Data->AsResource());
+        Bank().AddResource(*info.Cache.Data->AsResource());
     }
 }

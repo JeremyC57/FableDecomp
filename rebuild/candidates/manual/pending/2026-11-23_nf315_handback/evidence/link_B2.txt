@@ -1,0 +1,8 @@
+## HEAD set: H_008c9f40.obj H_008ca4a0.obj H_0063e480.obj
+duplicates 0
+
+UNRESOLVED 2 ?GetHeightZBelowPos@CWorldMap@@QAEMPBVC3DVector@@@Z
+## new set: N_008c9f40.obj N_008ca4a0.obj H_0063e480.obj
+duplicates 0
+
+LK_DONE

@@ -1,0 +1,6 @@
+06:28:58 PASS /home/user/FableDecomp/rebuild/tests/00/6a/CMessageEventFilterIsOriginatedByThing_CMessageEventFilterIsOriginatedByThing_006af2b0_test.cpp
+06:28:58 PASS_NOWCHAR /home/user/FableDecomp/rebuild/tests/00/63/CWorldMap_GetHeightZBelowPos_0063e480_test.cpp
+06:28:58 PASS /home/user/FableDecomp/rebuild/tests/00/6d/CTCFollowed_RemoveEmoteIcon_006d5050_test.cpp
+06:28:58 PASS /home/user/FableDecomp/rebuild/tests/00/73/CAnimationEntry_GetComponent_00738980_test.cpp
+06:28:58 PASS /home/user/FableDecomp/rebuild/tests/00/97/CAIStateGroupBase_AIActionCombatPerformActionAndWait_0097da40_test.cpp
+06:28:58 PASS /home/user/FableDecomp/rebuild/tests/00/9f/CResourceBank_AddResource_009fc380_test.cpp

@@ -1772,7 +1772,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2004	c615	00a4fe60	?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z	closed	
 2005	c615	009cc210	?GetEntryDataType@CBankFile@@QBEKK@Z	closed	
 2006	c615	009fc210	?ShrinkResources@CResourceList@@QAEXK@Z	partial	?EvictForSpace@CResourceList_Methods@@QAEXK@Z || ?Helper@C@@QAEXPAX@Z || ?ShrinkResources@CResourceList_Methods@@QAEXK@Z
-2007	c615	009fc380	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	partial	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z || ?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z
+2007	c615	009fc380	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	partial	?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z
 2008	c615	00a02730	?Defragment@CHandleBasedMemoryPool@@QAEXXZ	partial	Defragment
 2014	c616	00c11d00	??0CSoundEventManager@@QAE@PAUCAudioOwner@@MMMMMPAUCSteeringWorldEntry@@@Z	open	??0CSoundEventManager@@QAE@PAUCSoundSystem@@MMMMMPAUCSteeringWorldEntry@@@Z
 2015	c616	005ea000	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	partial	?GetTavernGameDef@CTCTavernGameCardBase@@QAEXPAUCDefPointer@@@Z
@@ -1929,7 +1929,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2210	c629	00ad8af0	?SharesGroupWith@CVertexGroupBlock@@QBE_NABV1@@Z	open	?HasIntersection@CVertexGroupBlock@@QBE_NABV1@@Z
 2211	c629	00a358f0	?GetPositionMatrixFromRHSet@C3DMeshObject@@SI?AVCMatrix3x4@@ABVCRightHandedSet@@@Z	partial	?GetMatrixFromRHSet@@YIABVC3DMatrix@@AAV1@ABVCRightHandedSet@@@Z
 2214	c630	006af290	??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@@QAE@PBVCThing@@@Z
-2215	c630	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z || ??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
+2215	c630	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
 2216	c630	006af1e0	??RCMessageEventFilter_IsTargettedAtThing@@QBE_NABVCMessageEvent@@@Z	closed	
 2217	c630	006af1c0	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z	closed	
 2218	c630	008d46d0	??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	partial	??$FindMostRecentMessage@U?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABU?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z || ?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOr
@@ -2966,7 +2966,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3364	c682	004a96f0	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	partial	??0?$CIntelligentPointer@ || ??0CIntelligentPointer@@QAE@PAVCThing@@@Z || ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointerConstThing@N_004a96f0@@QAE@PBVCThing@@@Z || ??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointer_CThing@NThingShot@@QAE@PAVCThing@@@Z
 3365	c682	004a9730	??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z	partial	??0?$CIntelligentPointer@
 3379	c680	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?GetPFrameWorld@CAIStateGroup_GoToBed@@QAEPAUCThingWorld@@XZ || ?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
-3380	c680	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z || ??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
+3380	c680	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
 3381	c680	0090dee0	??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z	partial	?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z
 3382	c680	006af1c0	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z	closed	
 3383	c680	006af200	??RCMessageEventFilter_IsOriginatedByThing@@QBE_NABVCMessageEvent@@@Z	closed	
@@ -5604,7 +5604,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7576	land1011bb	0069f230	??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z	closed	
 7577	land1011bb	006a1440	?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ	partial	?GetThingInPrimarySlot@CTCCarrying@@QAEPAUCThingB@@XZ || ?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ || ?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ
 7578	land1011bb	006a4d00	?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ	partial	?Compute@CNavHelper@@QAIHPBUCPos@@0@Z
-7579	land1011bb	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@@QAE@PAVCThing@@@Z || ??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
+7579	land1011bb	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
 7580	land1011bb	006af3f0	??RCMessageEventFilter_IsMyDeadLeader@@QBE_NABVCMessageEvent@@@Z	closed	
 7581	land1011bb	006cba20	?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z	closed	
 7582	land1011bb	006d4d70	?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	partial	?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z || IsFollower
@@ -5671,7 +5671,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7643	land1011bb	009e4cb0	?GetItemFromPath@CDriveManager@@AAE_NPB_WKPA_W@Z	open	?GetItemFromPath@CDriveManager@@AAE_NPBGKPAG@Z
 7644	land1011bb	009e9f40	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	partial	?DisplayProgress@@YIXABVCCharString@@_NM1@Z || ?DisplayProgress@NFactory006ac910@@YIXABVCCharString@@_NMH@Z || ?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z || @DisplayProgress@16
 7645	land1011bb	009fc210	?ShrinkResources@CResourceList@@QAEXK@Z	partial	?EvictForSpace@CResourceList_Methods@@QAEXK@Z || ?Helper@C@@QAEXPAX@Z || ?ShrinkResources@CResourceList_Methods@@QAEXK@Z
-7646	land1011bb	009fc380	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	partial	?AddResource@CResourceBank@@QAEXPAVCResource@@@Z || ?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z
+7646	land1011bb	009fc380	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	partial	?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z
 7647	land1011bb	009fc440	?RemoveFromResourceList@CResource@@QAEXXZ	partial	?CompleteLoad@CFrameData@@QAEXXZ || ?CompleteLoad@CFrameData_009ff6b0@@QAEXXZ || ?RemoveFromList@C3DMeshLODInfo_Methods@@QAEXXZ
 7648	land1011bb	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ	partial	??0BaseIntelligentPointer@@QAE@XZ || ??0CBaseIntelligentPointer@FableCopy_006a3130@@QAE@XZ || ??0CBaseIntelligentPointer@FableCopy_006a31d0@@QAE@XZ || ??0CBaseIntelligentPointer@FableFill_006a3180@@QAE@XZ || ??0CBaseIntelligentPointer@FableFill_006a3220@@QAE@XZ || ??0CBaseIntelligentPointer@FableHeap_006a3300@@QAE@XZ || ??0CBaseIntelligentPointer@N006e4bd0@@QAE@XZ || ??0CBaseIntelligentPointer@N00
 7649	land1011bb	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	partial	?GetHomeId@HomeObj@@QAEHXZ || ?GetId@Subobject@@QAEHXZ || ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ || ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00810fe0@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00811040@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAVCThing@@XZ 
@@ -10600,3 +10600,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13440	land1123nf314	00a24a80	?BeginLoadingStats@C3DMeshInfo@@QBEX_N@Z	partial	?BeginLoadingStats@C3DMeshInfo@@QAEX_N@Z || BeginLoadingStats
 13441	land1123nf314	00861e00	??0CModeStandBase@@QAE@AAVCThing@@@Z	partial	??0CBase_00861e00@@QAE@PAVCThing@@@Z || ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z || ??0CModeStandBase@@QAE@PAVCThing@@@Z || CModeStandBase
 13442	land1123nf314	00640430	?SetMapAsUnloaded@CEngineManager@@QAEXJ@Z	partial	?RemoveMap@CEngineManager@@QAEXJ@Z
+13443	land1123nf315	0097da40	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	partial	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCombatActionBase@@_N@Z || ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatureActionBase@@_N@Z || ?AIAction_CombatPerformActionAndWait@CAIStateGroupHoverHornetQueenTakeDamageMethods@@QAEJPAVCCreatureActionBase@@_N@Z || ?AIAction_CombatPerformActionAndWait@CAIStateGroup_BanditKingCharge@@QAEJPAVCCreatureActionBase@@
+13444	land1123nf315	009fc380	?AddResource@CResourceBank@@QAEXAAVCResource@@@Z	partial	?AddResource_009fc380@CResourceBank@@QAEXPAVCResource@@@Z

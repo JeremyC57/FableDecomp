@@ -59,7 +59,9 @@ public:
 };
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 
-class CTCHero { public: bool GiveTutorialForCategory(long category, bool force); };   // 0x006C9FA0
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
+class CTCHero { public: bool GiveTutorialForCategory(ETutorialCategory category, bool force); };   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 #include "engine/EHeroExperienceStatCategory.h"
 // NF113 (PRIORITY q4948): the row-local CTCHeroStats declaration respelled in place to the Ego_r.pdb + FableWin.pdb member
 //   ?AddHeroStatExperience@CTCHeroStats@@QAEXW4EHeroExperienceStatCategory@@J@Z (was QAEXJJ); the call passes category value 3 as before.
@@ -174,7 +176,7 @@ void CTCHeroExperience::AddExperience(long amount)
         && !((CThingCreatureBase*)ParentThing)->IsInMelee()) {
         CTCHero* hero;
         if (ParentThing->GetTC(TCI_HERO, &hero))
-            hero->GiveTutorialForCategory(0x18, false);
+            hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_LEVELLING_UP, false);
     }
     Pickups.push_back(SPickup((long)(CMainGameComponent::GetConstantFPS() * 2.0f), added));
     CTCHeroStats* stats;

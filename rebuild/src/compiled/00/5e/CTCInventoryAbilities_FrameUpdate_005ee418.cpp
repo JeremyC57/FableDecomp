@@ -9,7 +9,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE418, 130 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
 // Callees: CTCBase::PeekWorld() @ 0x00686A80 (+0xA4 Paused), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
-//          @ 0x0040F020, CTCHero::GiveTutorialForCategory(long, bool) @ 0x006C9FA0 (result dropped).
+//          @ 0x0040F020, CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0 (result dropped).
 // Globals: the player GUI @ 0x013B8790 (+0xFD, an unidentified blocking flag).
 // Shape: four nested early-outs (pending flag, InventoryOpen, the GUI flag, the world's Paused byte); the parent's
 // presence test plus a `__forceinline` GetTCUnchecked<CTCHero>(0x29) returning the component (loaded straight into
@@ -43,8 +43,10 @@ class CThing { public:
     }
 };
 
+#define FABLE_RETAIL_TUTORIAL_CATEGORIES_PASS26   // NF315: the shared ETutorialCategory enum (Ego_d TPI 0xCE58) for the PDB parameter type
+#include "engine/ETutorialCategory.h"
 class CTCHero { public:                                     // interface type 0x29
-    bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
+    bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0 (NF315: ?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z, Ego_r + FableWin)
 };
 
 class CWorld { public:
@@ -94,7 +96,7 @@ void CTCInventoryAbilities::FrameUpdate()
         if (thing->HasTC(0x29)) {
             CTCHero* hero = thing->GetTCUnchecked<CTCHero>(0x29);
             if (hero)
-                hero->GiveTutorialForCategory(2, false);
+                hero->GiveTutorialForCategory(TUTORIAL_CATEGORY_ABILITY_CYCLING, false);
         }
         WaitingToGiveTutorial = false;
     }
