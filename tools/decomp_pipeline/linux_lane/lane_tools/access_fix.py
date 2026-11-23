@@ -2,7 +2,7 @@
 """Scripted T2 route: a landed row whose own compiled symbol differs from the PDB symbol only in the member's access letter and / or its
 `const` (naming tracker tier T2, fix `access`; docs/journal/2026-11/2026-11-23_naming_remainder.md). Generate-and-verify; writes candidate
 sources only under <work>.
-usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide]
+usage (repo root, lane env sourced, S set): python3 -u access_fix.py <work> [--max N] [--only addr,addr] [--wide] [--virtual] [--ret]
 Edits, in the row's own local class model only (a declaration in a shared header is skipped: that is a header opt-in):
   - access: the declaration statement is wrapped as `<new>:` ... `<old>:`, so no member moves and no vtable slot changes;
   - const: `const` is added to or removed from the declaration and from the out-of-line definition `Class::Method(...)`.
@@ -34,6 +34,39 @@ for a, s in selfsym.items(): symaddr[s].add(a)
 catname = collections.defaultdict(set)
 for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]:
     q = l.split("\t"); catname[q[1]].add(q[0].lower())
+RET = {"_N": "bool", "D": "char", "E": "unsigned char", "F": "short", "G": "unsigned short", "H": "int", "I": "unsigned int", "J": "long",
+       "K": "unsigned long", "M": "float", "N": "double", "X": "void"}
+def tail_diff(lo, ro, lg, rg):
+    """(cv_new or None, ret_code or None, virt_add) when the self tail (letter lo, rest ro) reaches the PDB tail (lg, rg) by the allowed
+    edits, else None. Always: access letter, const. With --virtual: non-virtual -> virtual (RTTI-confirmed upstream). With --ret: a simple
+    return type (RET) on a member."""
+    if lo not in ACC or lg not in ACC: return None
+    ko, kg = ACC[lo][1], ACC[lg][1]
+    virt_add = ko == "n" and kg == "v"
+    if ko != kg and not (virt_add and "--virtual" in argv): return None
+    if ro == rg: return (None, None, virt_add)
+    if kg == "s": return None
+    cv_new = None if ro[:1] == rg[:1] else (rg[:1] == "B" if {ro[:1], rg[:1]} == {"A", "B"} else "bad")
+    if cv_new == "bad" or ro[1:2] != rg[1:2]: return None
+    if ro[2:] == rg[2:]: return (cv_new, None, virt_add)
+    if "--ret" not in argv: return None
+    a1, b1 = re.match(r'(_N|[DEFGHIJKMNX])(.*)$', ro[2:]), re.match(r'(_N|[DEFGHIJKMNX])(.*)$', rg[2:])
+    if a1 and b1 and a1.group(2) == b1.group(2): return (cv_new, b1.group(1), virt_add)
+    return None
+VTBL = re.compile(r'^(\s*(?:(?:public|protected|private)\s*:\s*)*)(?:void\s*\*|const\s+void\s*\*|void\s*\*\s*const|void\s*\*\*|const\s+void\s*\*\*|unsigned\s+(?:int|long)|int|long|const\s+\w+\s*\*|\w+\s*\*)\s*(?:vtbl|__vftable|vtable|vft|vptr|m_vtbl|_vtbl|vfptr|m_vftable|m_pVtbl|vtbl_|pVtbl|m_vfptr)\s*;[^\n]*\n?')
+PAD = re.compile(r'^(\s*(?:(?:public|protected|private)\s*:\s*)*)(?:unsigned\s+)?char\s+(\w+)\s*\[\s*(0x[0-9a-fA-F]+|\d+)\s*\]\s*;')
+def make_room_for_vptr(body):
+    """the class body with its leading 4-byte vptr stand-in removed (a `void* vtbl`-like member, or 4 bytes off a leading char pad), or None"""
+    b = re.sub(r'^(\s*(?://[^\n]*\n|/\*.*?\*/))+', lambda q: q.group(0), body, flags=re.S)
+    lead = re.match(r'(\s*(?://[^\n]*\n\s*|/\*.*?\*/\s*)*)', body, re.S).group(0); rest = body[len(lead):]
+    m = VTBL.match(rest)
+    if m: return lead + m.group(1) + rest[m.end():]
+    m = PAD.match(rest)
+    if m:
+        n = int(m.group(3), 0) - 4
+        if n < 0: return None
+        return lead + m.group(1) + (f"char {m.group(2)}[{hex(n)}];" if n else "") + rest[m.end():]
+    return None
 rows = [l.split("\t") for l in open("rebuild/candidates/manual/naming/status/OPEN.tsv").read().splitlines()[1:]]
 if "--wide" in argv:
     # finish plan route 1 widened: any landed row whose trusted measured self symbol is not a PDB name and differs from exactly ONE PDB
@@ -58,12 +91,16 @@ if "--wide" in argv:
     def near(s, g):
         a1, b1 = SPLIT.match(s), SPLIT.match(g)
         if not (a1 and b1 and a1.group(1) == b1.group(1)): return False
-        la, lb = a1.group(3), b1.group(3)
-        if la not in ACC or lb not in ACC or ACC[la][1] != ACC[lb][1]: return False
-        ra, rb = a1.group(4), b1.group(4)
-        return ra == rb or (ACC[la][1] != "s" and ra[1:] == rb[1:] and {ra[:1], rb[:1]} == {"A", "B"})
+        return tail_diff(a1.group(3), a1.group(4), b1.group(3), b1.group(4)) is not None
+    # an address in T3_PORT_QUEUE.tsv's address column or a unit column is reserved (NF316 Q3); earlier runs' rejects are queued there
+    t3q = set()
+    for l in open("rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv", encoding="utf-8", errors="replace").read().splitlines()[1:]:
+        q = l.split("\t")
+        if len(q) > 2:
+            t3q.add(q[1].lower().replace("0x", "")); t3q.update(x.lower() for x in re.findall(r'0x([0-9a-fA-F]{8})', q[2]))
     wide, why = [], collections.Counter()
     for a in sorted(ent):
+        if a in t3q: why["reserved in T3_PORT_QUEUE"] += 1; continue
         s = selfsym.get(a)
         if not s or s in pdb: continue
         m = SPLIT.match(s)
@@ -93,14 +130,9 @@ for r in rows:
     mg, ms = SPLIT.match(good), SPLIT.match(old)
     if not (mg and ms and mg.group(1) == ms.group(1)): res.append((a, "SKIP", old, good, "names differ beyond the access / cv letters")); continue
     lg, lo = mg.group(3), ms.group(3)
-    if lg not in ACC or lo not in ACC or ACC[lg][1] != ACC[lo][1]:
-        res.append((a, "SKIP", old, good, f"access letter {lo}->{lg} changes virtuality or is not a member")); continue
-    rg, ro = mg.group(4), ms.group(4)
-    cv_new = None
-    if rg != ro:
-        if ACC[lg][1] == "s" or not (rg[1:] == ro[1:] and {rg[:1], ro[:1]} == {"A", "B"}):
-            res.append((a, "SKIP", old, good, "the difference is not only access / const")); continue
-        cv_new = rg[:1] == "B"
+    td = tail_diff(lo, ms.group(4), lg, mg.group(4))
+    if td is None: res.append((a, "SKIP", old, good, f"{lo}->{lg}: the difference is not an allowed access / const / virtual / return edit")); continue
+    cv_new, ret_new, virt_add = td
     meth = re.match(r'\?([^@]+)@', good).group(1); scope = mg.group(2).rstrip("@").split("@"); cls = scope[0]
     if len(scope) != 1 or meth.startswith("?"): res.append((a, "SKIP", old, good, "nested scope or operator / special member")); continue
     if (catname.get(cls + "::" + meth, set()) - {a}) or (symaddr.get(good, set()) - {a}):
@@ -145,11 +177,27 @@ for r in rows:
             mc = re.match(r'(\s*)const\b', tail)
             if not mc: res.append((a, "SKIP", old, good, "declaration has no const to remove")); continue
             nd = nd[:rel] + tail[mc.end():]
+    if ret_new or virt_add:
+        md = re.match(r'([ \t]*)((?:(?:virtual|inline|static)\s+)*)(.*?)\b' + re.escape(meth) + r'\s*\(', nd, re.S)
+        if not md or "static" in md.group(2): res.append((a, "SKIP", old, good, "declaration head not recognised for a return / virtual edit")); continue
+        quals = md.group(2) + ("virtual " if virt_add and "virtual" not in md.group(2) else "")
+        rtxt = (RET[ret_new] + " ") if ret_new else md.group(3)
+        nd = md.group(1) + quals + rtxt + nd[md.end(3):]
     if want_acc != acc_now:
         ind = re.match(r'[ \t]*', nd).group(0)
         nd = f"{ind}{want_acc}:\n{nd}" + ("" if nd.endswith("\n") else "\n") + f"{ind}{acc_now}:" + ("" if body[de:].startswith("\n") else "\n")
-    elif cv_new is None: res.append((a, "SKIP", old, good, f"access in the local model is already {acc_now}")); continue
-    ns_src = src[:b0] + body[:ds] + nd + body[de:] + src[b1:]
+    elif cv_new is None and not ret_new and not virt_add: res.append((a, "SKIP", old, good, f"access in the local model is already {acc_now}")); continue
+    nbody = body[:ds] + nd + body[de:]
+    if virt_add and not re.search(r'\bvirtual\b', body):
+        if ":" in re.sub(r'::', '', cd[0].group(0)): res.append((a, "SKIP", old, good, "virtual target, local model has a base clause")); continue
+        nb = make_room_for_vptr(nbody)
+        if nb is None: res.append((a, "SKIP", old, good, "virtual target, local model has no leading vptr slot")); continue
+        nbody = nb
+    ns_src = src[:b0] + nbody + src[b1:]
+    if ret_new:
+        od = [q for q in re.finditer(r'^([ \t]*)((?:inline\s+)?)([^\n;{}()]*?)\b' + cls + r'\s*::\s*' + re.escape(meth) + r'\s*\([^;{]*\)\s*(?:const\s*)?\{', ns_src, re.M)]
+        if len(od) > 1: res.append((a, "SKIP", old, good, "several out-of-line definitions")); continue
+        if od: ns_src = ns_src[:od[0].start(3)] + RET[ret_new] + " " + ns_src[od[0].end(3):]
     if cv_new is not None:
         od = [q for q in re.finditer(r'^[^\n;/]*?\b' + cls + r'\s*::\s*' + re.escape(meth) + r'\s*\([^;{]*\)\s*(?:const\s*)?\{', ns_src, re.M)]   # definitions, not calls
         if len(od) > 1: res.append((a, "SKIP", old, good, "several out-of-line definitions")); continue
