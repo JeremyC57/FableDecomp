@@ -133,3 +133,25 @@ acceptance falls well below the local route's 86% or the 180 s compile timeouts 
   - 0x0056C840 (`_Dest_val` for `pair<CCharString, CSymbolInfo>`) grades DIFFER(30v28), though the 2026-11-22 gate had it as
     RELOCATION_MATCH;
   - 0x00647308 (`GetElementCount`) grades DIFFER(18v17) and is not in the gate.
+
+## Header route: the switch route, and identity by RTTI (same day)
+
+- **The 498 header-route candidates are almost all virtual.** 491 are virtual (U/M/E), and 420 have 8 bytes or less with a body that other
+  catalog addresses share.
+- **292 need no header edit.** The member is already declared in the header behind an existing class-model switch, so the row only defines
+  the switch, as thousands of landed rows already do:
+  - `FABLE_RETAIL_NSCRIPT` 59, used by 6,288 landed rows;
+  - `FABLE_RETAIL_CCREATUREACTIONBASE` 37;
+  - `FABLE_RETAIL_CIENGINE` 15;
+  - `FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS` 9.
+
+  205 are absent from their header, mostly `GetSizeofClass` overrides. The advisor reconciled its earlier "non-virtual only" condition:
+  that applied to adding virtual declarations to shared headers, not to defining an existing switch.
+- **Identity for tiny shared-body virtuals.** The bytes cannot tell these members apart (NF306 Q2), so a second source is needed.
+  `ghidra_out/labels_rtti_port.tsv`, the retail RTTI vftable placement slot by slot, is that source:
+  - it names the PDB symbol at the same address for 490 of the 498 candidates, and for all 70 virtual rows of flatten pilot 1;
+  - no landed row or candidate address carries two RTTI names, so nothing is folded;
+  - `flatten_pilot.py` now requires it for every virtual target.
+
+  Ego_r class sizes do not confirm the `GetSizeofClass` constants: Ego_r runs 4-60 bytes larger, being a different build. The 9
+  non-virtual pilot-1 rows rest on the flattened label plus a unique PDB member.

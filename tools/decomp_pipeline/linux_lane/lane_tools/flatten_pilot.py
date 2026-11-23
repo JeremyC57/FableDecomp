@@ -45,6 +45,10 @@ res = [];  cands = []
 catname = {}
 for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]:
     q = l.split("\t"); catname.setdefault(q[1], set()).add(q[0].lower())
+rtti = {}
+for l in open("ghidra_out/labels_rtti_port.tsv", encoding="utf-8", errors="replace"):
+    q = l.rstrip("\n").split("\t")
+    if len(q) > 1: rtti.setdefault(q[0].lower(), set()).add(q[1])
 tbl = {}
 for l in open("rebuild/oracles/reloc_bindings.tsv", encoding="utf-8", errors="replace").read().splitlines()[1:]:
     q = l.split("\t")
@@ -96,6 +100,10 @@ for a, cls, meth, old, newsym in cands:
     claim += [f for f in alltext if re.match(fn + r'_[0-9a-f]{8}(_test)?\.cpp$', os.path.basename(f), re.I) and os.path.basename(f) not in own]
     claim += ["reloc_bindings.tsv -> " + g for g in sorted(tbl.get(newsym, set()) - {a})]   # the table binds the PDB name to another address
     if claim: res.append((a, "SKIP", old, newsym, "identity: another landed source spells " + cls + "::" + meth + ": " + ",".join(sorted({os.path.basename(o) if "/" in o else o for o in claim})[:3]))); continue
+    # virtual targets need a second identity source (advisor, 2026-11-23): the retail RTTI vftable placement in labels_rtti_port.tsv must
+    # name this address with exactly this PDB symbol and nothing else (pilot 1: all 70 virtual rows agree, no address carries two names).
+    if re.match(r'\?[^@]+@[^@]+@@[UME]', newsym) and rtti.get(a, set()) != {newsym}:
+        res.append((a, "SKIP", old, newsym, "identity: RTTI vftable placement does not confirm " + newsym + " (" + ",".join(sorted(rtti.get(a, {"none"}))) + ")")); continue
     # v3 parameter forms: (const C* p), (C* p), (C* const p), (struct / class C* p), (void* p), (const void* p), ()
     rx = re.compile(r'^(?P<ret>[^\n;{}()]*?)\b__fastcall\s+' + fn + r'\s*\(\s*(?:(?P<c>const\s+)?(?:class\s+|struct\s+)?(?P<t>' + cls +
                     r'|void)\s*\*\s*(?:const\s+)?(?P<p>\w+)|(?P<none>(?:void)?))\s*\)\s*\n?\s*\{', re.M)
