@@ -95,7 +95,7 @@ struct CIntelligentPointerObject : CBaseIntelligentPointer {     // CIntelligent
     virtual void v00();
 };
 class CTCTavernBar { public:                           // interface 0xb9
-    bool GetEmptyJugSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rh, long* actionPoint, long* slot);   // 0x007BA1D0
+    bool GetEmptyJugSlot(CThing& creature, C3DVector& pos, CRightHandedSet& rh, long& actionPoint, long& slot);   // 0x007BA1D0 (Ego_r / FableWin QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z)
     CIntelligentPointerObject GetJug(long slot);   // 0x007B9F60
 };
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
@@ -163,7 +163,7 @@ void CAIStateGroup_TavernKeeper::Update()
                 continue;
             }
         }
-        if (bar->GetEmptyJugSlot(GetCreature(), &JugPos, &JugRHSet, &JugActionPointIndex, &JugSlot)) {
+        if (bar->GetEmptyJugSlot(*GetCreature(), JugPos, JugRHSet, JugActionPointIndex, JugSlot)) {
             PJug = bar->GetJug(JugSlot);
             if (!WalkToPoint(JugPos, JugRHSet)) {
                 FreeBarPoint();

@@ -1,0 +1,29 @@
+# name census (NF316): source definitions of each respelled method name (grep rebuild/src/compiled + rebuild/include)
+rebuild/src/compiled/00/5d/CTCInventoryItem_GetInventoryOwner_005d8e90.cpp:71:const CThing* CTCInventoryItem::GetInventoryOwner() const
+rebuild/src/compiled/00/6b/CTCPhysicsBase_ApplyAcceleration_006b0210.cpp:29:void CTCPhysicsBase_Methods::ApplyAcceleration(const C3DVector& acceleration)
+rebuild/src/compiled/00/7b/CTCTavernBar_GetEmptyJugSlot_007ba1d0.cpp:72:bool CTCTavernBar::GetEmptyJugSlot(CThing& user, C3DVector& pos, CRightHandedSet& rh, long& pointIndex, long& slot)
+rebuild/src/compiled/00/cb/CScriptBase_LoadGameState_00cb8690.cpp:77:void CScriptBase::LoadGameState(const CCharString& state)
+rebuild/src/compiled/00/4a/CWorld_AutoLoadRespawn_004a5e90.cpp:40:bool CWorld::LoadGameState(const CWideString& name, bool loadNow)
+rebuild/src/compiled/00/4a/CWorld_AutoLoadRegionLeaving_004a34f0.cpp:32:bool CWorld::LoadGameState(const CWideString& name, bool loadNow)
+rebuild/src/compiled/00/4a/CWorld_LoadGameState_004a3200.cpp:58:bool CWorld::LoadGameState(const CWideString& name, bool loadNow)
+rebuild/src/compiled/00/4b/CQuestManager_LoadGameState_004b5500.cpp:60:void CQuestManager::LoadGameState(CStringParser& parser)
+rebuild/src/compiled/00/4b/CQuestManager_LoadGameState_004b6380.cpp:102:void CQuestManager::LoadGameState(CPersistContext& context)
+rebuild/src/compiled/00/52/CThingManager_LoadGameState_005253f0.cpp:39:void CThingManager::LoadGameState(CPersistContext& context)
+rebuild/src/compiled/00/44/CPlayerManager_LoadGameState_00449e60.cpp:70:void CPlayerManager::LoadGameState(CPersistContext& context)
+rebuild/src/compiled/00/50/CWorldMap_LoadGameState_005079c0.cpp:178:void CWorldMap::LoadGameState(CPersistContext& context)
+rebuild/src/compiled/00/6b/CFactionManager_LoadGameState_006b9610.cpp:17:void CFactionManager::LoadGameState(CPersistContext& context)
+rebuild/src/compiled/00/40/CUserProfileManager_LoadGameState_0040bca0.cpp:130:void CUserProfileManager::LoadGameState(CAFile& file)
+rebuild/src/compiled/00/51/CThingManager_RemapUIDForSerialisation_0051e210.cpp:34:unsigned __int64 CThingManager::RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid
+# DEF of each new / old symbol in every compiled object (HEAD hb/ and new nb/)
+hb/0040bca0.obj DEF ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z
+hb/0051e210.obj DEF ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+hb/005d8e90.obj DEF ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ
+hb/006a7e70.obj DEF ??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z
+hb/006b0210.obj DEF ?ApplyAcceleration@CTCPhysicsBase_Methods@@QAEXABVC3DVector@@@Z
+hb/007ba1d0.obj DEF ?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z
+nb/0040bca0.obj DEF ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z
+nb/0051e210.obj DEF ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+nb/005d8e90.obj DEF ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ
+nb/006a7e70.obj DEF ??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z
+nb/006b0210.obj DEF ?ApplyAcceleration@CTCPhysicsBase_Methods@@QAEXABVC3DVector@@@Z
+nb/007ba1d0.obj DEF ?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z

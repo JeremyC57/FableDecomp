@@ -1,0 +1,30 @@
+entry	address	status	binders_respelled	note
+1	0x005D8E90	done	0x00522880	binder 0x00522880 (local CTCInventoryItem model) declares the PDB `const CThing* GetInventoryOwner() const` (the `== hero` compare takes the const pointer, no code); exe census 0x00522880 / 0x006DEEE0 / 0x00897FA0 all compiled: the other two already bind the PDB form; self defines it; RELOCATION_MATCH HEAD / new, ALL_EQ; table: delete the QAE PAV line (witness moved)
+2	0x006B0210	done-partial	0x00846100	binder 0x00846100 takes `const C3DVector&` (call `ApplyAcceleration(velocity)`, NF313 Q2); RELOCATION_MATCH in vland (recheck_final.log; the scratch nf.py grader reports DIFFER(687v686) for HEAD and new alike, a grader quirk: vland's catalog oracle matches), ALL_EQ; the full exe census (20 rows) compiled: 18 bind the PDB form, 0x006A4DC0 binds a made-up `?Run_006b0210@Sub@@QAEXXZ` through a placeholder forwarder `struct T` / `Sub` (its own identity is unproven: candidate in NOTES, identity / T3); the self 0x006B0210 still defines the stand-in CTCPhysicsBase_Methods::ApplyAcceleration (T3 self port, NAME_FIXES), so the PDB name stays unresolved before and after (NF302 Q2); table: delete the PAV line (witness moved)
+3	0x006B0460	skipped-held		the only wrong binder 0x006E1620 (QAE PAV) is in NF314's spellings column (NF314#5, witness of 0x006DFDA0); 0x00703590 (PDB form) is NF314#54's witness; census 0x004BE4E0 off limits (T3 queue nf303)
+4	0x007B9F60	skipped-held		wrong binder 0x00967180 (stand-in CIntelligentPointerObject return: a port anyway) is NF314#53's witness; census 0x007BA000 is NF314#53's target
+5	0x007BA1D0	done	0x00969470	binder 0x00969470 (local CTCTavernBar model) takes the PDB reference parameters (call `GetEmptyJugSlot(*GetCreature(), JugPos, JugRHSet, JugActionPointIndex, JugSlot)`, NF313 Q2); the only exe caller; self defines the PDB form; RELOCATION_MATCH HEAD / new, ALL_EQ; table: replace the PAV line (no line for the PDB form yet)
+6	0x0078839A	skipped-held		wrong binders 0x007BDB66 (NF315#3 witness, of 0x0063E480) and 0x0080F240 (T3 queue nf311: free stand-in of the CTCNymph static, a port)
+7	0x004C9030	skipped-held		NF310 D2 unit (self 0x004C9030 + binders 0x008367B0 / 0x008385B0) still waits for 0x005296B0, which is NF314#14's target (NF309 entry 33 carried over); 0x004CA1D0 off limits (T3 queue nf291)
+8	0x006619F0	skipped-held		the self 0x006619F0 is NF314#67's witness (of 0x004C7AB0 GetWorld) and the only wrong binder 0x007339E0 is NF314#6's witness (of 0x007338A0); census 0x00859EF0 is NF314#77 (locked by NF314)
+9	0x00663260	skipped-held		one unit (NF310): wrong binders 0x00733950 (QAE PAV; NF315#15 witness, of 0x00738980) and 0x00733910 (QAE PBV, free); 0x008E7040 (PDB form) is in the T3 queue (nf293 / nf311)
+10	0x006A7E70	done	-	table-only (NF309 Q4): the only exe caller 0x005800D6, compiled at HEAD, binds only the PDB ABV form (its source was fixed in naming wave 23); the PAV line is stale: delete
+11	0x0051E210	done	0x0051E210 0x006CA120 0x00729CF0 0x0075D320 0x00779430 0x0077B0D0 0x007C9770 0x007E8460 0x007EE3D0 0x00800A60	self fix (NF304 Q6): the self takes the PDB signature (const, unsigned long level; full Leaf) and its 9 local-model binders of the old QAE `long` form move with it; the other 12 exe callers (compiled) already bind the PDB form (engine/CThingManager.h:157 or a local PDB declaration); all 10 RELOCATION_MATCH HEAD / new, ALL_EQ, .drectve equal; the new set resolves the 12 PDB-form binders HEAD left unresolved; table: delete the stale QAE line (witness 0x005FAE90 binds the PDB form)
+12	0x00409FD0	skipped-held		the only wrong binder 0x0040A740 is in the T3 queue (nf297 SAVE_PUBLIC opt-in unit, nf311 port)
+13	0x0040BCA0	done	0x0040D350	binder 0x0040D350 (local CUserProfileManager model) declares the PDB `protected: void LoadGameState(CAFile& file)` (called from the class's own Load; call `LoadGameState(file)`, NF313 Q2); the only exe caller; self defines the PDB IAE form; RELOCATION_MATCH HEAD / new, ALL_EQ (its CDiskFileWin32 vftable unchanged); table: replace the QAE PAV line
+14	0x00AD89B0	skipped-port		no longer tied (NF311 landed); binder 0x00AD9D70 opened: it passes the stand-in structs CRemainderArray / CBoolArray (local models of CArray<unsigned long> / CArray<bool>, in neither PDB name set) for the PDB CArray parameters: a port (stand-in parameter types)
+15	0x0063D4A0	skipped-held		the only wrong binder 0x0063DB30 is NF314#11's witness (of 0x0063B7F0)
+16	0x007510D0	skipped-port		no longer tied (NF309 / NF311 landed); binder 0x00750BE0 opened: it calls through the stand-in class CThingDefClass (neither PDB name set) and carries a same-TU stand-in body of CThingBaseDef::GetSubDef over a made-up Find_CThingBaseDef_GetSubDef: a port
+17	0x00660AE2	skipped-held		the only wrong binder 0x00659EFC is in the T3 queue (nf310: stand-in CIntelligentPointerTask by value; stand-in CTaskList)
+18	0x00660B5D	skipped-held		as entry 17 (0x00659EFC T3 queue)
+19	0x00660BD8	skipped-held		as entry 17 (0x00659EFC T3 queue)
+20	0x00660C53	skipped-held		as entry 17 (0x00659EFC T3 queue)
+21	0x00660CCE	skipped-held		as entry 17 (0x00659EFC T3 queue)
+22	0x00660D49	skipped-held		as entry 17 (0x00659EFC T3 queue)
+23	0x00BFCF00	skipped-held		the only wrong binder 0x00BFC770 is NF314#41's witness (of 0x00993E80 WriteUShort)
+24	0x00BFCF90	skipped-held		as entry 23 (0x00BFC770, NF314#41)
+25	0x00BFD020	skipped-held		as entry 23 (0x00BFC770, NF314#41)
+26	0x00581284	skipped-held		binder 0x00581404 is NF314#27's witness (of 0x0057F9E9); it defines a local `namespace std` vector<T> (a port anyway)
+27	0x006DD4A0	skipped-held		binder 0x006DD580 is NF314#31's witness (of 0x006DC6A0); local `namespace std` vector<T> (a port anyway)
+28	0x00F33D90	skipped-held		binder 0x00F33B90 is NF314#3's witness (of 0x009BC120); global stand-in `template <class T> struct vector` (QAEXJ, a port anyway)
+29	0x009E21D0	skipped-held		the only wrong binder 0x0043A2A0 is in the T3 queue (nf289: stand-in class CGameUI_Retail); 0x00646A46 (PDB spelling) is in the T3 queue (nf311)

@@ -100,7 +100,7 @@ public:
     }
 };
 class CTCInventoryItem { public:
-    CThing* GetInventoryOwner();                        // 0x005D8E90
+    const CThing* GetInventoryOwner() const;            // 0x005D8E90 (Ego_r / FableWin ?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ)
 };
 class CThingCreature : public CThing { };
 class CThingPlayerCreature : public CThingCreature { };

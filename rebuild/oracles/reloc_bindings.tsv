@@ -1786,7 +1786,6 @@ _MAX_ABILITY_LEVEL	01256188	005edea3
 ?h_005fa0c3@@YGHHHH@Z	005f9d4e	005fa0c3
 ?h_005fa0d5@@YGHHHH@Z	005f9da3	005fa0d5
 ?Helper_5fa3dd@@YIXPAUGuiTarget@@H_N@Z	005fa3dd	005fa47d
-?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z	0051e210	005fae90
 ?TeleportHero@CTCTeleporter@@QAEXXZ	007dfcf0	005fbd20
 ?ProcessButtonBReleased@CTCInventoryBase_Retail@@QAEXXZ	005bc66f	005fd0b0
 ?Erase@CRetailTree_erase00613ae0@@QAEXPAUnode@1@@Z	00613ae0	00616970
@@ -8564,7 +8563,6 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?clear@CMeshList@@QAEXXZ	008fbab0	008faf70
 ?remove_if@CThingList@@QAEXU?$unary_negate@UCGetThingsWithCollisionMesh@NCameraModes@@@@@Z	008fbdd0	008faf70
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00522880
-?GetInventoryOwner@CTCInventoryItem@@QAEPAVCThing@@XZ	005d8e90	00522880
 ?InsertGrow@?$CRetailPtrVector@PAVCThing@@@@QAEXPAPAVCThing@@ABQAV2@ABUSScalarTag@@K_N@Z	00436ac0	00522880
 ??0CBuildingList@@QAE@ABUCEmptyAllocator@@@Z	0065f1ad	0065b400
 ??0CCrateTaskList@@QAE@ABUCEmptyAllocator@@@Z	0065f2ca	0065b400
@@ -14266,7 +14264,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Populate@@YIXPAVCUserProfileManager@@@Z	004085f0	004088e0
 ??0CMemoryFile@@QAE@ABVCWideString@@W4FileAccessType@@K@Z	009e97b0	0040a740
 ?SaveGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z	00409fd0	0040a740
-?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z	0040bca0	0040d350
+?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z	0040bca0	0040d350
 ?VerifySignature@@YI_NABVCWideString@@@Z	00409730	0040d350
 ?TransferOut@?$CPersistTraits@VCActionInputControl@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVCActionInputControl@@@Z	0040fa20	0040f9d0
 ?TransferOut@?$CPersistTraits@VC2DVector@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVC2DVector@@@Z	009e7f00	0040fa20
@@ -14841,7 +14839,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??ACCrimeStatusMap@@QAEAAUMirroredCriminalStatus@@ABVCCharString@@@Z	005812df	0057d990
 ?TransferBinaryOut@?$CPersistTraits@VCHeroMarriageInfo@@@@QAEXPAVCDataOutputStream@@PBVCHeroMarriageInfo@@@Z	0057a3cd	0057f109
 ?TransferOut@?$CPersistTraits@VCHeroMarriageInfo@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVCHeroMarriageInfo@@@Z	0057f78f	0057f754
-??RCThingFilter_HasScriptData@@QBE_NPAVCThing@@@Z	006a7e70	005800d6
 ?TransferIn@?$CPersistTraits@VCHeroMarriageInfo@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAVCHeroMarriageInfo@@@Z	00580194	00580159
 ??_7?$CPersistContext_TransferableComponent@VCDefIndex@@@@6B@	0124f2f4	00580371
 ?TransferBinaryIn_004ddf0c@?$CPersistTraits@VCDefIndex@@@@QAEXPAVCDataInputStream@@AAVCDefIndex@@@Z	004ddf0c	00580371
@@ -33117,7 +33114,7 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?g_firePointToleranceSquared@@3MB	0129531c	0095d070
 ?TOTAL_FRAMES_TO_RUN@?A0x39d7b2b6@@3JB	013bb738	0095e470
 ?FillJug@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968fa0	00969470
-?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z	007ba1d0	00969470
+?GetEmptyJugSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z	007ba1d0	00969470
 ?GetPaymentPoint@CAIStateGroup_TavernKeeper@@QAE_NXZ	00968860	00969470
 ?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ	004c7950	00969470
 ?IsPointInside@CThingBuildingModel@@QAE_NABVC3DVector@@@Z	0082d000	00969470
@@ -37280,7 +37277,6 @@ __imp__VirtualAlloc@16	0143fd44	009f2870
 ?push_back@CActionEventVector@@QAEXABV?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@Z	00696fe0	006946c0
 ?IsChestOpen@CCreatureAction_OpenChest@@QAE_NXZ	006925a0	00842b60
 ??0CEventTalkedToBy@NEntityEvents@@QAE@PAVCThing@@@Z	0084b100	00845900
-?ApplyAcceleration@CTCPhysicsBase@@QAEXPAVC3DVector@@@Z	006b0210	00846100
 ?GetHeadPos@CThing@@QAE?AVC3DVector@@_N@Z	00661b40	00846100
 ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ	00692910	00846100
 ?remove@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z	0084ace0	00846100

@@ -1,0 +1,6 @@
+## HEAD set: H_0051e210.obj H_006ca120.obj H_00729cf0.obj H_0075d320.obj H_00779430.obj H_0077b0d0.obj H_007c9770.obj H_007e8460.obj H_007ee3d0.obj H_00800a60.obj 004b5500.obj 004b5ee0.obj 004c84b0.obj 004c9120.obj 004caa00.obj 0051fd80.obj 005fae90.obj 00606300.obj 0072f380.obj 008304a0.obj 00837e40.obj 0088ae40.obj
+duplicates 0
+UNRESOLVED 12 ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z
+## new set: 0051e210.obj 006ca120.obj 00729cf0.obj 0075d320.obj 00779430.obj 0077b0d0.obj 007c9770.obj 007e8460.obj 007ee3d0.obj 00800a60.obj 004b5500.obj 004b5ee0.obj 004c84b0.obj 004c9120.obj 004caa00.obj 0051fd80.obj 005fae90.obj 00606300.obj 0072f380.obj 008304a0.obj 00837e40.obj 0088ae40.obj
+duplicates 0
+LK_DONE

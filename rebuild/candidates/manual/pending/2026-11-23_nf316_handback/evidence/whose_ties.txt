@@ -1,0 +1,15 @@
+006e1620 lock=none NF314#5:witness(of 006dfda0)
+00703590 lock=none NF314#54:witness(of 0076e6a0)
+007ba000 lock=none NF314#53:target
+00967180 lock=none NF314#53:witness(of 007ba000)
+007bdb66 lock=none NF315#3:witness(of 0063e480)
+005296b0 lock=none NF314#14:target
+006619f0 lock=none NF314#67:witness(of 004c7ab0)
+007339e0 lock=none NF314#6:witness(of 007338a0)
+00859ef0 lock=released NF314#77:target
+00733950 lock=none NF315#15:witness(of 00738980)
+0063db30 lock=none NF314#11:witness(of 0063b7f0)
+00bfc770 lock=none NF314#41:witness(of 00993e80)
+00581404 lock=none NF314#27:witness(of 0057f9e9)
+006dd580 lock=none NF314#31:witness(of 006dc6a0)
+00f33b90 lock=none NF314#3:witness(of 009bc120)

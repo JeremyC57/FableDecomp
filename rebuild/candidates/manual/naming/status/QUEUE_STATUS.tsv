@@ -589,7 +589,7 @@ line	tag	address	correct_symbol	status	other_spellings
 594	539	005800d6	??$GetPFirstLeafThing@V?$CFilter_Bind2@VCThingFilter_HasDefName@@VCThingFilter_HasScriptData@@@@VCThingMarker@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasDefName@@VCThingFilter_HasScriptData@@@@PAPAVCThingMarker@@@Z	partial	GetPFirstLeafThing
 595	539	0049c780	?PeekTypeList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@J@Z	partial	?PeekTypeList@CThingSearchTools@@QBEPAUCThingList@@J@Z || ?PeekTypeList@CThingSearchToolsMethods@@QAEPAUCThingList@@J@Z
 596	539	006a7be0	??RCThingFilter_HasDefName@@QBE_NABVCThing@@@Z	closed	
-597	539	006a7e70	??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z	partial	??RCThingFilter_HasScriptData@@QBE_NPAVCThing@@@Z
+597	539	006a7e70	??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z	closed	
 598	539	0049eaf0	?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z	closed	
 599	539	009f1760	?AddData@CGameEvent@@QAEXJPBX@Z	partial	?Copy@CGameEventData@@QAEXJPBX@Z || ?Copy@CMemoryBuffer@@QAEXKPBX@Z
 600	539	004292c0	?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z	partial	?GetNoAllocatedAreas@@YAPAXPAX@Z || ?Helper@@YAHPAX@Z || ?Increment@SRbGlobal@@SAPAUSReactionNode@@PAU2@@Z || ?RbIncrement@@YAPAUSRbNode@@PAU1@@Z || ?RegionExitTextHelper@@YAHH@Z || ?RegionHelper_4292c0@@YAHH@Z || ?Region_ExitTextOffsetX_Alloc@@YAPAXPAX@Z || ?Successor@@YAPAUSNode@@PAU1@@Z || ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z || ?_M_increment@@YAPAUSMapNode@@PAU1@@Z || ?_M_increment@@YAPAUSN
@@ -1705,7 +1705,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1922	c613	004197b0	?IsEditorActive@CMainGameComponent@@UBE_NXZ	closed	
 1923	c613	0049d810	?GetWorldSeed@CWorld@@QBEPAKXZ	partial	?GetRandom@CQuakeWorld@@QAEAAUCQuakeRandom@@XZ || GetWorldSeed
 1924	c613	00a14440	?AccurateNormalise@C3DVector@@QAEAAV1@XZ	closed	
-1925	c613	006b0210	?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	partial	?ApplyAcceleration@CTCPhysicsBase@@QAEXPAVC3DVector@@@Z || ApplyAcceleration
+1925	c613	006b0210	?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	partial	ApplyAcceleration
 1926	c613	004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	partial	?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
 1933	c612	004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	partial	?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
 1934	c612	00a55a30	?ToC2DBoxI@C2DBoxF@@QBE?AVC2DBoxI@@XZ	closed	
@@ -1746,7 +1746,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1978	c615	004c7ab0	?PeekWorld@CThing@@IBEABVCWorld@@XZ	partial	?CThingCreatureBase_GetCombatManagerHelper@@YIPAUCThingCreatureHelperResult@@PAX@Z || ?Call_004c7ab0@CThingCreatureBase_Calls@@QAEPAXXZ || ?GFGetDisplayEngine@@YAPAUCDisplayEngineCalls@@XZ || ?GetDisplayEngine@CThingPlayerCreature@@QAEPAVCDisplayEngine@@XZ || ?GetWorld@CThing@@QAEPAVCWorld@@XZ || ?GetWorld@CThing@@QBEPAVCWorld@@XZ || ?GetWorld@CThingBuilding@@QBEPAVCWorld@@XZ || ?GetWorld@CThingCr
 1979	c615	004c7a10	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ	partial	?dv_h2_004c7a10@@YIXPAX@Z
 1980	c615	004c7a30	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ	closed	
-1981	c615	0051e210	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	partial	?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+1981	c615	0051e210	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	closed	
 1982	c615	0044bb00	??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z	closed	
 1983	c615	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	partial	?GetHomeId@HomeObj@@QAEHXZ || ?GetId@Subobject@@QAEHXZ || ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ || ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00810fe0@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAUCThing_00811040@@XZ || ?GetPItem@CBaseIntelligentPointer@@QAEPAVCThing@@XZ 
 1984	c615	00a229e0	??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z	closed	
@@ -5267,7 +5267,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7195	land1011ae	00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	closed	
 7196	land1011ae	006a1230	?IsCarrySlotFree@CTCCarrying@@QBE_NJ@Z	partial	IsCarrySlotFree
 7197	land1011ae	005d9030	?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ	partial	GetInventoryType@CTCInventoryItem
-7198	land1011ae	005d8e90	?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ	partial	?GetInventoryOwner@CTCInventoryItem@@QAEPAVCThing@@XZ
+7198	land1011ae	005d8e90	?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ	closed	
 7199	land1011ae	004c9b80	?Kill@CThing@@QAEX_N@Z	partial	?Kill@CThing@NCreatureMode@@QAEX_N@Z || ?Kill@CThing@X_006e11f0@@QAEX_N@Z || ?Kill@CThing_0066fb50@@QAEX_N@Z
 7200	land1011ae	009ad410	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	partial	?CountObjects@ObjContainer@@QAEHH@Z || ?GetDefGlobalIndexFromName@CDefinitionManagerAdapter@X_006e11f0@@QAEHABUCCharString@2@@Z || ?GetDefGlobalIndexFromName@CDefinitionManager_Retail@@QBEJABVCCharString@@@Z || ?GetDefGlobalIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@@Z || GetDefGlobalIndexFromName
 7201	land1011ae	00487dc0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	closed	
@@ -10593,3 +10593,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13432	land1123nf313	0097e330	?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z	partial	?SetPushableByHero@CAIStateGroupBaseI@@QAEX_N@Z
 13433	land1123nf312	006af640	?GetBoundingInfo@CTCPhysicsBase@@QBEXAAVC3DVector@@AAM@Z	closed	
 13434	land1123nf312	00497890	?GFROR13@@YIJK@Z	partial	?GFROR13@@YIKK@Z || GFROR13
+13436	land1123nf316	006b0210	?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	partial	ApplyAcceleration

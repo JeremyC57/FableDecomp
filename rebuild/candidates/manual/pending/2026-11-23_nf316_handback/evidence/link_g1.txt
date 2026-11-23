@@ -1,0 +1,11 @@
+## HEAD set: H_00522880.obj H_00846100.obj H_00969470.obj H_0040d350.obj 005d8e90.obj 006deee0.obj 00897fa0.obj 006b0210.obj 0066fb80.obj 0066fc90.obj 006701a0.obj 006702e0.obj 00670470.obj 006a4dc0.obj 00725060.obj 0074e560.obj 0077a430.obj 007bbb3b.obj 007bbe34.obj 007bc004.obj 007bc15a.obj 007bc6fa.obj 00844740.obj 00846090.obj 00854810.obj 008e5670.obj 008e5f00.obj 007ba1d0.obj 005800d6.obj 006a7e70.obj 0040bca0.obj
+duplicates 0
+UNRESOLVED 18 ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+UNRESOLVED 1 ?ApplyAcceleration@CTCPhysicsBase@@QAEXPAVC3DVector@@@Z
+UNRESOLVED 1 ?GetEmptyJugSlot@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3@Z
+UNRESOLVED 1 ?GetInventoryOwner@CTCInventoryItem@@QAEPAVCThing@@XZ
+UNRESOLVED 1 ?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z
+## new set: 00522880.obj 00846100.obj 00969470.obj 0040d350.obj 005d8e90.obj 006deee0.obj 00897fa0.obj 006b0210.obj 0066fb80.obj 0066fc90.obj 006701a0.obj 006702e0.obj 00670470.obj 006a4dc0.obj 00725060.obj 0074e560.obj 0077a430.obj 007bbb3b.obj 007bbe34.obj 007bc004.obj 007bc15a.obj 007bc6fa.obj 00844740.obj 00846090.obj 00854810.obj 008e5670.obj 008e5f00.obj 007ba1d0.obj 005800d6.obj 006a7e70.obj 0040bca0.obj
+duplicates 0
+UNRESOLVED 19 ?ApplyAcceleration@CTCPhysicsBase@@QAEXABVC3DVector@@@Z
+LK_DONE

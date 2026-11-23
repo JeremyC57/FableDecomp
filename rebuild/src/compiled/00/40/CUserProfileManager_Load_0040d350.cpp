@@ -4,7 +4,7 @@
 // Callees: the profile path builder @ 0x004082D0 (CWideString by hidden pointer; manifest "GetDefaultVal<...>" is
 // propagated), CWideString::operator!=(const wchar_t*) @ 0x0099B150, PathExists @ 0x00999230 and VerifySignature
 // @ 0x00409730 (`__fastcall`), CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, unsigned long)
-// @ 0x0099AD80 (landed), CUserProfileManager::LoadGameState(CAFile*) @ 0x0040BCA0, CDiskFileWin32::Close @ 0x0099A920
+// @ 0x0099AD80 (landed), CUserProfileManager::LoadGameState(CAFile&) @ 0x0040BCA0, CDiskFileWin32::Close @ 0x0099A920
 // (landed), ~CWideString @ 0x0099B510, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300. Literal L"" @ 0x0122D70C.
 // Layout: Ego_r.pdb CUserProfileManager ProfileName (CWideString) +0x08; CDiskFileWin32 (0x1c bytes, vtable 0x0122D06C)
 // Opened +0x14, Pathname +0x18 (as the landed constructor 0x0099AD80).
@@ -46,7 +46,7 @@ class CUserProfileManager { public:
     CWideString ProfileName;                                // +0x08
     bool        UseNewProfileValues;                        // +0x0c
     CWideString GetProfilePathname(const CWideString& name, bool forSaving);   // 0x004082D0 (descriptive)
-    void LoadGameState(CAFile* file);                       // 0x0040BCA0
+protected: void LoadGameState(CAFile& file); public:      // 0x0040BCA0 (Ego_r / FableWin ?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z)
     void Load();
 };
 
@@ -56,7 +56,7 @@ void CUserProfileManager::Load()
     if (path != (const wchar16*)L"" && CAFile::PathExists(path) && VerifySignature(path)) {
         CDiskFileWin32 file(path, FILE_ACCESS_READ, 2);
         if (file.Opened) {
-            LoadGameState(&file);
+            LoadGameState(file);
             file.Close();
         }
     }

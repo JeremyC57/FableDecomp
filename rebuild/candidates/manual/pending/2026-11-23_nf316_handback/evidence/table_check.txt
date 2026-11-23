@@ -1,0 +1,9 @@
+# NF316 table check: every delete / replace line v the FULL exe caller list of its target (nf.py census: calls, jumps and absolute
+# dwords in landed code, so vtable / data references are included), each caller compiled at HEAD and new (evidence/bind_head.txt,
+# bind_new.txt). None of the six targets is virtual (QAE / QBE / IAE non-virtual leaves; no absolute-dword reference in the census).
+delete  ?GetInventoryOwner@CTCInventoryItem@@QAEPAVCThing@@XZ 005d8e90: callers 00522880 006deee0 00897fa0 -> after: all bind QBEPBV (0x00522880 moved); none binds QAEPAV
+delete  ?ApplyAcceleration@CTCPhysicsBase@@QAEXPAVC3DVector@@@Z 006b0210: 20 callers -> after: 19 bind QAEXABV (0x00846100 moved), 0x006A4DC0 binds ?Run_006b0210@Sub@@QAEXXZ (stand-in, not PAV); none binds PAV
+replace ?GetEmptyJugSlot@...PAJ3@Z -> ...AAJ3@Z 007ba1d0: sole caller 00969470 -> after: binds AAJ3 (no line for it yet)
+replace ?LoadGameState@CUserProfileManager@@QAEXPAVCAFile@@@Z -> ...IAEXAAVCAFile@@@Z 0040bca0: sole caller 0040d350 -> after: binds IAEXAAV (no line for it yet)
+delete  ??RCThingFilter_HasScriptData@@QBE_NPAVCThing@@@Z 006a7e70: sole caller 005800d6 binds QBE_NABV at HEAD already (stale line)
+delete  ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z 0051e210: 21 callers -> HEAD: 9 QAE (the 9 moved binders) + 12 QBE (witness 005fae90 among them: stale); after: all 21 QBE, self DEFs QBE; none binds or defines QAE
