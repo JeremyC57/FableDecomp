@@ -114,3 +114,25 @@ Result (64,076 addresses):
 | standin | 6,972 | 10,841 |
 
 The other buckets are unchanged. Done is 29,936 (46.7%), down from 49.1%: the old count included names that were never real.
+
+## Progress on the routes (coordinator, same evening)
+
+| Batch | Route | Rows | Acceptance | Notes |
+|---|---|---:|---:|---|
+| access 1 | 1 (T2) | 170 | 88% | |
+| access 2 | 1 widened | 188 | 84% | |
+| access 3 | 3a | 140 | 77% | `--virtual --ret`: RTTI-confirmed virtuals take their vptr from a leading vtbl member / pad |
+| access 4 | 3a | 72 | 91% | full-Leaf rows added to the pool |
+| alias 1 | 2b | 29 | 24% | **stopped** under the 60% rule: alias bodies use stand-in parameter types and members the real model names otherwise (ports, queued) |
+| binders 1 | T1 | 16 callers | 73% | caller-side access / const |
+
+- **agree_pdb:** 22,205 after route 0, 22,769 now.
+- **New tooling:**
+  - `land_scripted.py` lands any run directory: reservation check, recheck on the landed tree, symbol check, batch folder, queue lines,
+    and table changes for binder runs;
+  - `alias_header.py`;
+  - `access_fix.py --wide --virtual --ret --alias --binders`.
+- **Route 4 (deleting destructors, 1,997 `scalar_deleting_destructor` and 274 `vector_deleting_destructor` rows) needs a retail identity
+  source first.** `tools/rtti_port_all.py` walks every retail / donor vftable pair, but its `class_of()` cannot parse `??_G` / `??_E`
+  names, so it never ported them; that is why the RTTI file has no deleting destructors. A dtor-only port with a `??_G` / `??_E`-aware
+  class filter is being run on the lane's binaries (evidence only, never committed).
