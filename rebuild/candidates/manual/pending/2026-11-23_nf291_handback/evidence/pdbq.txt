@@ -1,0 +1,2 @@
+egor=1 fablewin=1 ?IsVignette@CTCQuestCard@@QBE_NXZ
+egor=1 fablewin=1 ??0CUIDef@NUISystem@@QAE@XZ

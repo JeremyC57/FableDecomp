@@ -97,3 +97,6 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   definitions under stand-in names stay; D3: one address bound under two stand-in spellings is one entry, fix both.
 - NF285 E2: in-place-shaped entries may be pulled first, but open every binder before classifying; record the order in STATUS.
 - Identical-body equal-copy LNK4006 from folds is accepted; a RELOC_CONFLICT (one symbol, two targets) is held.
+- NF291 Q4: a flat branch marked "GENERATED ... do not edit by hand" may take an add-only declaration opt-in (gen_class_headers.py keeps
+  any header with a `FABLE_RETAIL_` mark, so a regenerate cannot drop it), with the usual equiv_check and planted control.
+- NF289 / NF291 Q1: a table-only fix whose witness fails the clang precheck: compile the witness's HEAD object (D1 / D1b) and read what it binds.

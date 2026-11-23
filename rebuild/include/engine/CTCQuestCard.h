@@ -157,6 +157,11 @@ public:
     CCharStringData* ScriptQuestName_PStringData;            // +0x28 CCharString::PStringData
     long             GoldReward;                             // +0x2c
     long             RenownReward;                           // +0x30
+#ifdef FABLE_RETAIL_CTCQUESTCARD_FLAT_ISVIGNETTE
+    // Add-only opt-in (naming agent NF291, 2026-11-23, binder 0x00896A30 CGameScriptInterface::SetQuestCardObjective): Ego_r.pdb /
+    // FableWin.pdb ?IsVignette@CTCQuestCard@@QBE_NXZ (retail 0x007022E0, called at 0x00896AC4). Declaration only: no layout change.
+    bool IsVignette() const;                                             // 0x007022E0
+#endif
 };
 #pragma pack(pop)
 

@@ -1,0 +1,4 @@
+#27	0062fe60	binder 00433670	standin_in_obj=False	pdb_in_obj=False	??0CClass_0062fe60@@QAE@XZ
+??0CUIDef@@QAE@XZ
+??2@YAPAXI@Z
+?CUIDef_Alloc@@YAPAUCUIDef@@XZ

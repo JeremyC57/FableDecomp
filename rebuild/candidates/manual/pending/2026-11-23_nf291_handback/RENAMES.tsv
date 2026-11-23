@@ -1,0 +1,3 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2 (caller	old_symbol	new_symbol	callee)
+0x00896a30	?IsVignette@QuestCardMethods@@QBE_NXZ	?IsVignette@CTCQuestCard@@QBE_NXZ	0x007022e0

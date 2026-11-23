@@ -1,0 +1,8 @@
+0062fe60	jmp	00433683	00433670L NUISystem::CUIDef::Alloc
+007022e0	call	004b0f66	004b0f10L CQuestManager::PrepareQuestsWhenFinalQuestIsActivated
+007022e0	call	004b1170	004b1110L CQuestManager::IsBetweenQuestStartAndFinishScreensIgnoringVi
+007022e0	call	004b12e2	004b1270L CQuestManager::IsActiveQuestStartedInRegion
+007022e0	call	004b13c9	004b1340L CQuestManager::IsActiveQuestBetweenQuestStartAndFinishScreen
+007022e0	call	005ff53f	005ff190L CTCInventoryMap::CreateMapMarkers
+007022e0	call	008969c4	008968c0L CGameScriptInterface::GiveHeroQuestCardDirectly
+007022e0	call	00896ac4	00896a30L CGameScriptInterface::SetQuestCardObjective

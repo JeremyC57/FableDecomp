@@ -142,7 +142,7 @@ _helper_5b155a	0042a8bd	0042b44a
 _BeginProfile@4	00404500	00431020
 ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z	004292c0	00431277
 @Ring_reset@4	0099eae0	00433040
-??0CClass_0062fe60@@QAE@XZ	0062fe60	00433670
+??0CUIDef@@QAE@XZ	0062fe60	00433670
 ??0CDefinitionManager@@QAE@ABVCWideString@@P6IXABVCCharString@@@Z@Z	009b0470	00433693
 ??_7CStartupDefinitionManager@@6B@	0123117c	00433693
 ?ErrorCallback@CStartupDefinitionManager@@KIXABVCCharString@@@Z	0043368c	00433693
@@ -3005,7 +3005,7 @@ _g_actionName	0123d724	007df2c0
 @Mapwho_Cleanup@4	007f2360	007f3f00
 ?Check@CTCStockItem_Methods@@QAEHXZ	007f4fc0	007f5050
 ?GetStockHolder@CTCStockItem_Methods@@QAEPAXXZ	007f4fc0	007f5070
-?Method_007f5560@CSubobject_007f5560@@QAE_NPAX@Z	007f5560	007f53a0
+?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@$$CBVCSoundAtmospheresDef@@@@@Z	007f5560	007f53a0
 ??_7CTCTargetingBase@@6B@	01271e74	007f58e0
 ?GetSubDef@CDefClassBase@@QAE_NPAPAUCSubDef@@@Z	007ea960	007f59c0
 ?push_back@CThingPointerList@@QAEXABUCIntelligentPointer@@@Z	004ba4e0	007f61b0
@@ -26466,7 +26466,6 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?GetRegisteredQuestFromIndex@CQuestManager_Retail@@QAEABVCCharString@@J@Z	004af3c0	00893610
 ?GetActiveQuestCardFromScriptName@QuestManagerMethods@@QBEPAUCThingNative@@ABVCCharString@@@Z	004b0c80	00896a30
 ?IsQuestCardActive@QuestManagerMethods@@QBE_NABVCCharString@@@Z	004af610	00896a30
-?IsVignette@QuestCardMethods@@QBE_NXZ	007022e0	00896a30
 ?SetQuestCardObjective@QuestManagerMethods@@QAE_NABVCCharString@@000@Z	004b0d30	00896a30
 ??0CCreatureAction_AttackThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008ae160	008a8eb0
 ?GetEvent@EntityEventsMethods@@QBE_NPAPAUHitByEvent@@ABUBind4@@@Z	008d4a90	008d1330

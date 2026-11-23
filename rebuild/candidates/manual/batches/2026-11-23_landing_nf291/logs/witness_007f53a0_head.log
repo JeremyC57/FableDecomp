@@ -1,0 +1,9 @@
+addr       parity           behav  name
+007f53a0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007f53a0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+007f53a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007f53a0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007f53a0   RELOCATION_MATCH PASS   OnInitialActivate
+
+WINS: 1
+  007f53a0 RELOCATION_MATCH CTCSoundAtmosphere::?OnInitialActivate@CTCSoundAtmosphere@@UAEXXZ

@@ -10485,7 +10485,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13321	land1123nf286	005955ab	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	partial	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
 13322	land1123nf286	00be6f70	?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	partial	?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z
 13323	land1123nf287	009e1da0	?GFAXToVX@@YIMM@Z	closed	
-13324	land1123nf287	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CClass_0062fe60@@QAE@XZ
+13324	land1123nf287	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CUIDef@@QAE@XZ
 13325	land1123nf288	004be000	?GetNoDummyObjects@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	partial	GetNoDummyObjects
 13326	land1123nf288	006d7f20	?UpdateComboMultiplier@CTCHeroExperience@@AAEX_N@Z	partial	?helper_6d7f20@@YGXH@Z
 13327	land1123nf288	0057aad9	?GetPercentageThroughRenownLevel@CTCHeroStats@@QBEMXZ	closed	
@@ -10499,3 +10499,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13335	land1123nf288	0066bc10	?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	partial	?GetPotentialCriteriaStrings@CTCSoundPlayer@@QAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
 13336	land1123nf288	005e9aa0	?EndRound@CTCTavernGame@@UAEXXZ	partial	?EndRound@CTCTavernGame@@QAEXXZ
 13337	land1123nf289	00449b60	?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z	partial	GetMultiplayerColour
+13338	land1123nf291	007022e0	?IsVignette@CTCQuestCard@@QBE_NXZ	closed	
+13339	land1123nf291	0062fe60	??0CUIDef@NUISystem@@QAE@XZ	partial	??0CUIDef@@QAE@XZ

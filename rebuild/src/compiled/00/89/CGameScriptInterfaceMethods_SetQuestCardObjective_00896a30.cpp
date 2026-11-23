@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetQuestCardObjective -- update objective and play the hero log-entry cue
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
-// Retail00896A30,294 bytes.
+#define FABLE_RETAIL_CTCQUESTCARD_FLAT_ISVIGNETTE   // NF291: IsVignette 0x007022E0 from CTCQuestCard.h (Ego_r + FableWin QBE). Retail00896A30,294 bytes.
 // Name fix (agentNF7 2026-11-10): 0x013B89FC bound as the PDB's CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass through the shared engine/CTBaseSingletonNoDefaultAlloc.h (was a private stand-in global).
 #include "fable_compiler.h"
 #include "engine/CGameScriptInterface.h"
@@ -26,7 +26,7 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct QuestManagerMethods:CQuestManager{bool SetQuestCardObjective(const CCharString&,const CCharString&,const CCharString&,const CCharString&);bool IsQuestCardActive(const CCharString&)const;CThingNative* GetActiveQuestCardFromScriptName(const CCharString&)const;}; //004B0D30,004AF610,004B0C80
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
-struct QuestCardMethods:CTCQuestCard{bool IsVignette()const;}; //007022E0 reads native Def+59; donor+5D differs due vector stride
+struct QuestCardMethods:CTCQuestCard{}; //007022E0 IsVignette: the CTCQuestCard.h member (NF291; was declared on this stand-in); reads native Def+59, donor+5D differs due vector stride
 class CCharString;
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)

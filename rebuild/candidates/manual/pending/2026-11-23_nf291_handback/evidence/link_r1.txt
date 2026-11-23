@@ -1,0 +1,9 @@
+## HEAD set: H_00896a30.obj H_007022e0.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsVignette@QuestCardMethods@@QBE_NXZ
+## new set: N_00896a30.obj H_007022e0.obj
+duplicates 0
+
+UNRESOLVED 1 ?IsVignette@CTCQuestCard@@QBE_NXZ
+LK_DONE

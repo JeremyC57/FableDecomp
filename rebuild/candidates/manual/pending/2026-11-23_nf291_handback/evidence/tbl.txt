@@ -1,0 +1,282 @@
+#1 007022e0 self=-
+   PDB 004b1110 ?IsVignette@CTCQuestCard@@QBE_NXZ
+   SI  00896a30 ?IsVignette@QuestCardMethods@@QBE_NXZ
+#2 005e4740 self=Y
+   SI  00896d20 ?Activate@CTCQuestCompletionUIMethods@@QAEXJABVCCharString@@_NABVCWideString@@1@Z
+   PDB 004b2280 ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@ABVCCharString@@_NABVCWideString@@2@Z
+#3 004d2b17 self=-
+   SI  004d2b67 ?Init_004d2b17@T@@QAEXXZ
+   PDB 004ee23f ?StatGetClassTypeName@CTCRotate@@SI?AVCCharString@@XZ
+#4 0074ac80 self=Y
+   SI  0089ec60 ?consume_0074ac80@BObj@@QAEXPAU1@@Z
+#5 0066aeb0 self=Y
+   SI  008337b0 ?ResumeForCutscene_0066aeb0@CTCSummonSpell@@QAEXXZ
+   PDB 00773c90 ?StopAllAttachedSounds@CTCSoundPlayer@@QAEXXZ
+#6 0072acf0 self=Y
+   SI  0089d750 ?CancelUsingAbility@CTCSpecialAbilities_Retail@@QAE_NJ@Z
+#7 007f5890 self=-
+   SI  0089d830 ?SetPScriptOverrideInterestingThing@CTCTargetingBase_Retail@@QAEXPAUCThing_Retail@@@Z
+   SI  0089d970 ?SetPScriptOverrideInterestingThing@CTCTargetingBase_Retail@@QAEXPAX@Z
+   PDB 006e5690 ?SetPScriptOverrideInterestingThing@CTCTargetingBase@@QAEXPAVCThing@@@Z
+#8 008abb50 self=Y
+   SI  008a04c0 ?SetRangedTarget@CTCTargeting_Retail@@QAEXPAUCThing_Retail@@@Z
+   PDB 008a0540 ?SetPScriptOverrideRangedTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z
+#9 004d5853 self=Y
+   SI  004dec09 ??0CTargetingResult_Retail@@QAE@XZ
+   PDB 004ee23f ?StatGetClassTypeName@CTCTargetingSpirit@@SI?AVCCharString@@XZ
+#10 00787bfe self=Y
+   SI  00895130 ?Deactivate@CTCTrap_Retail@@QAEXXZ
+#11 007c7890 self=-
+   SI  008a19b0 ?IsTurncoated@CTCTurncoat_Retail@@QAE_NXZ
+   PDB 0076cfe0 ?IsTurncoated@CTCTurncoat@@QBE_NXZ
+#12 0065b349 self=Y
+   SI  00896120 ?TryToRespawnDefNamed@CTCVillage_Retail@@QAEPAVCThing@@ABVCCharString@@J@Z
+#13 0065bffa self=Y
+   SI  008985a0 ?IsReportedOrUnreportedCrimeKnown@CTCVillage_Retail@@QAE_NXZ
+#14 00806ae0 self=-
+   SI  00809970 ??0CElement28_00806ae0@@QAE@ABU0@@Z
+   PDB 008092d0 ??0CTargetPoint@NPlayerTargeting@@QAE@ABV01@@Z
+#15 004a89d0 self=Y
+   SI  004adf40 ??0CElement28_004a89d0@@QAE@ABU0@@Z
+   PDB 00624800 ??0CTestQuest@@QAE@ABV0@@Z
+#16 00a69f70 self=-
+   SI  00b2b120 ?ReduceMipmapLevel@CTextureManager_Calls@@QAE_NAAUCGraphicFrame_Retail@@AAUCManagedTexture_Retail@@K@Z
+   PDB 009fe460 ?ReduceMipmapLevel@CTextureManager@@QAE_NAAVCGraphicFrame@@AAVCManagedTexture@@K@Z
+#17 004c78a0 self=Y
+   SI  0088ea20 ?SetCutscenePauseBehaviour@CThing_Retail@@QAEXJ@Z
+   PDB 00730630 ?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z
+#18 004c7a10 self=Y
+   SI  00692920 ?dv_h2_004c7a10@@YIXPAX@Z
+   PDB 0078e820 ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
+#19 004c9c40 self=Y
+   PDB 008367b0 ?SetToKillOnLevelUnload@CThing@@QAEX_N@Z
+   SI  008d03a0 ?SetToKillOnLevelUnload@CThing_Retail@@QAEXJ@Z
+#20 004ca1d0 self=Y
+   PDB 00779e90 ?Create@CThing@@SIPAV1@JJJ_N@Z
+   SI  006e11f0 ?Create@X_006e11f0@@YIPAUCThing@1@HHH_N@Z
+#21 00830eb0 self=-
+   SI  0088e440 ?SetHasInformation@CThing_Retail@@QAEXJ_N00@Z
+   PDB 00846660 ?SetHasInformation@CThingAICreature@@QAEX_N000@Z
+#22 00663610 self=Y
+   SI  0088f530 ?PreloadBasicAnimations@CThing_Retail@@QAEXXZ
+#23 006647f0 self=-
+   PDB 006649c0 ?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ
+   SI  00890ba0 ?SheatheAllWeapons@CThing_Retail@@QAEXXZ
+#24 00666830 self=-
+   SI  00890c10 ?UnsheatheAllWeapons@CThing_Retail@@QAEXXZ
+   PDB 008b7ba0 ?UnsheatheAllWeapons@CThingCreatureBase@@QAEXXZ
+#25 0051efc0 self=Y
+   SI  00890ab0 ?SetNonScriptedEntitesPaused@CThingManager_Retail@@QAEX_N@Z
+#26 00cd4470 self=-
+   SI  00d1cbd0 ??1CMember_00cd4470@@QAE@XZ
+   PDB 00daabd0 ??1CTimer@@QAE@XZ
+#27 0062fe60 self=Y
+   SI  00433670 ??0CClass_0062fe60@@QAE@XZ
+#28 00429e29 self=Y
+   SI  0042a944 ??0CSecond_00429e29@@QAE@ABU0@@Z
+   PDB 0042aa96 ??0CUIState@NUISystem@@QAE@ABV01@@Z
+#29 0052e5d0 self=-
+   SI  004294d1 ?Initialise@CClass_004294d1@@QAEXXZ
+   SI  0042a33f ??0CMember_0052e5d0Member@@QAE@XZ
+   PDB 0060c900 ??0CUIState@NUISystem@@QAE@XZ
+#30 006250b0 self=Y
+   SI  00631560 ??0CElement124_006250b0@@QAE@ABU0@@Z
+   PDB 00631590 ??0CUIStateDef@NUISystem@@QAE@ABV01@@Z
+#31 00edc980 self=Y
+   SI  00edc720 ?WatchForAcolyteDeath_00edc980@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z
+#32 00edcb80 self=Y
+   SI  00edc720 ?WatchForAcolyteHit_00edcb80@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z
+#33 00ac20c0 self=-
+   SI  00bb6420 ?IsInUse@SSimulationSlot_00bb6420@@QAE_NXZ
+   PDB 00bca950 ?IsBusy@CVertexBufferBase@@QBE_NXZ
+#34 004fb4a0 self=Y
+   PDB 004a3740 ?IsLoadingAnyMap@CWorldMap@@QBE_NXZ
+   SI  006e11f0 ?IsLoadingAnyMap@CWorldMapAdapter@X_006e11f0@@QBE_NXZ
+#35 004fb880 self=-
+   SI  0088e2a0 ?GetMapNumberFromScriptName@CWorldMap_Retail@@QAEJABVCCharString@@@Z
+   PDB 008931b0 ?GetMapNumberFromScriptName@CWorldMap@@QBEJABVCCharString@@@Z
+#36 004fc970 self=Y
+   SI  0088e3d0 ?SetRegionsAsConnectedInGraph@CWorldMap_Retail@@QAEXJJJ@Z
+#37 008eff40 self=Y
+   SI  008f0280 ??0CElement60_008eff40@@QAE@ABU0@@Z
+   PDB 008f0450 ??0Coin@@QAE@ABV0@@Z
+#38 008abf20 self=Y
+   SI  00893960 ?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter
+#39 0090edc0 self=Y
+   SI  0090ee20 ?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedB
+#40 00939cb0 self=Y
+   SI  00939d70 ?FindMostRecentMessage_00939cb0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanB
+#41 0043151d self=-
+   PDB 00431493 ??$GFSerialiseMapBinaryIn@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@VCCharString@@JU?$less@VCCharString@@@st
+   SI  00475026 ?TransferMapIn_0043151d@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z
+#42 004314c8 self=Y
+   PDB 00431493 ??$GFSerialiseMapBinaryOut@JVCCharString@@U?$less@VCCharString@@@std@@@@YIXAAVCDataOutputStream@@ABV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V
+   SI  00475026 ?TransferMapOut_004314c8@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z
+#43 00475a51 self=Y
+   SI  0047550f ?TransferMapOut_00475a51@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z
+#44 0046367a self=Y
+   SI  00463334 ?TransferMapOut_0046367a@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z
+#45 00463f9c self=Y
+   SI  00463f3c ?GFSerialiseVectorBinaryIn_CRGBColour_00463f9c@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z
+#46 0046caf4 self=Y
+   SI  0046ca94 ?GFSerialiseVectorBinaryIn_CRGBColour_0046caf4@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z
+#47 00472123 self=Y
+   SI  004720c3 ?GFSerialiseVectorBinaryIn_CRGBColour_00472123@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z
+#48 004e89f7 self=Y
+   SI  004e8997 ?GFSerialiseVectorBinaryIn_CRGBColour_004e89f7@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z
+#49 004acf90 self=-
+   SI  006c5e90 ??$GetAllThings@VCThing@@UCThingList@N_004ab4f0@@V?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_HasTC@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind
+   PDB 004a3740 ??$GetAllThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@
+#50 005ed860 self=-
+   SI  008a7e00 ?GetAllWithScriptName@ThingSearchMethods@@QBEXABUHasScriptName@@AAUThingVector@@@Z
+   SI  008a7d60 ?FindThingsWithScriptName@CThingScriptNameSearch_Retail@@QAEXABVCCharString@@AAU?$vector@PAUCThing_Retail@@@@@Z
+   PDB 008a8570 ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasScriptName@@@CThingSearchTools@@QBEXABVCThingFilter
+#51 0065f856 self=Y
+   SI  00658e90 ?Apply@CClass_00658e90@@QAEXPAX0@Z
+#52 0065f884 self=Y
+   SI  00658ea0 ?FindBestCrateTaskForThing@CTCVillage_Retail@@QAEPAUCVillageTaskCarryCrateCalls@@PAVCThing@@PAPAUCVillageTaskListNode@@@Z
+#53 00660034 self=Y
+   SI  006590c4 ?Apply@CClass_006590c4@@QAEXPAX0@Z
+#54 00660062 self=Y
+   SI  006590d4 ?Apply@CClass_006590d4@@QAEXPAX0@Z
+#55 00660090 self=Y
+   SI  006590e4 ?Apply@CClass_006590e4@@QAEXPAX0@Z
+#56 006600be self=Y
+   SI  006590f4 ?Apply@CClass_006590f4@@QAEXPAX0@Z
+#57 006b2660 self=-
+   SI  006b1900 ?GetDef_006b2660@CDefinitionManager@@QAE_NABVCCharString@@AAUCDefPointer@@@Z
+   PDB 006b1d30 ??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z
+#58 008af0a0 self=Y
+   SI  00911c20 ?GetEvent_008af0a0@CTCEntityEvents@@QAE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z
+#59 00935040 self=Y
+   SI  00934920 ?GetPBestThing_00935040@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+#60 007086f0 self=Y
+   SI  007275c0 ?GetSubDef_007086f0@CDefClassBase@@QAE_NAAV?$CDefPointer@VCTextureReplacementDef@@@@@Z
+#61 0077e430 self=Y
+   SI  0077d3d0 ?Register_0077e430@CRegistry@@QAEXPAUSEntry@@@Z
+#62 007a6ca0 self=Y
+   SI  007a6740 ?GetSubDef_007a6ca0@CDefClassBase@@QAE_NAAUCDefPointer@@@Z
+#63 007c8000 self=Y
+   SI  007c78c0 ?GetSubDef_007c8000@CDefClassBase@@QAE_NPAUCDefPointer@@@Z
+#64 007e0540 self=Y
+   SI  007dfee0 ?GetSubDef_007e0540@CDefClassBase@@QAE_NPAUCDefPointer@@@Z
+#65 007e1400 self=Y
+   SI  007e1570 ?GetSubDef_007e1400@CDefClassBase@@QAE_NAAUCDefPointer@@@Z
+#66 007f5560 self=Y
+   SI  007f53a0 ?Method_007f5560@CSubobject_007f5560@@QAE_NPAX@Z
+#67 007f9330 self=Y
+   SI  007f90b0 ?GetSubDef_007f9330@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z
+   PDB 007f8c20 ??$GetSubDef@VCAnimatingObjectDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAnimatingObjectDef@@@@@Z
+#68 007fe5b0 self=Y
+   SI  007fde70 ?GetSubDef@CDefClassBase_Retail@@QBE_NPAV?$CDefPointer@UCSummonDef_Retail@@@@@Z
+#69 00810c80 self=Y
+   SI  008100a0 ?GetSubDef@CDefClassBase_Retail@@QBE_NPAV?$CDefPointer@UCExplosiveTrailDef_Retail@@@@@Z
+#70 00516180 self=Y
+   SI  004fe630 ?ReadVar@CAFile@X_004fe630@@QAEXPAHPAX@Z
+   PDB 00a7af60 ??$ReadVar@H@CAFile@@QAEXAAHPAVCASuspendableProcess@@@Z
+#71 007e39d0 self=Y
+   PDB 00f2d330 ??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@ABV1@@Z
+   SI  007e36a0 ?Transfer_007e39d0@CPersistContext@@QAEXPBDAAJABJ@Z
+#72 009ac310 self=Y
+   SI  00d7c6d0 ?AutoTinyMemberDestructor_009ac310@@YIXPAX@Z
+   SI  00d84b20 ?AutoTinySecondMemberDestructor_009ac310@@YIXPAX@Z
+   PDB 00e55ce0 ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ
+#73 00ad64c0 self=Y
+   SI  00aca450 ??A?$map@IUCContractionReference@QuadricOptimiserInternals@X_00aca450@@@std@X_00aca450@@QAEAAUCContractionReference@QuadricOptimiserInternals@2@ABI@Z
+   PDB 00aca830 ??A?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@
+#74 00448380 self=-
+   PDB 00448e90 ??4?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@QAEAAU01@ABU01@@Z
+   SI  00448950 ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@FableHeap_00448950@@QAEAAU01@ABU01@@Z
+#75 004d6902 self=-
+   SI  004dbe8e ?DestroyPair_004d6902@@YIXPAUAnimPair@@@Z
+   PDB 004ee23f ??1?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@QAE@XZ
+#76 004d788d self=Y
+   SI  004da4fa ??0CElement16_004d788d@@QAE@ABU0@@Z
+   PDB 004da6fc ??0?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@QAE@ABU01@@Z
+#77 004dd728 self=Y
+   PDB 005bbfd6 ??1?$pair@$$CBJVCEnginePrimitiveHandle@@@std@@QAE@XZ
+   SI  004e35d4 ?Cleanup_004dd728@SubObject@@QAEXXZ
+#78 005799fd self=Y
+   PDB 00579d55 ??_G?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@QAEPAXI@Z
+   SI  00579dce ?Destroy_005799fd@CInner@@QAEXH@Z
+#79 005f8736 self=Y
+   SI  005f8d31 ?AutoTinyScalarDestructor_005f8736@@YIXPAX@Z
+   PDB 005f3bcf ??1?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@QAE@XZ
+#80 006b8e20 self=Y
+   SI  006b9f10 ??4?$Pair_006b9f10@IU?$CountedPointer_006b9f10@UObject_006b9f10@@@@@@QAEAAU0@ABU0@@Z
+   PDB 006ba7b0 ??4?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@QAEAAU01@ABU01@@Z
+#81 00825090 self=-
+   PDB 00826dd0 ??4?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@QAEAAU01@ABU01@@Z
+   SI  00825b80 ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@FableHeap_00825b80@@QAEAAU01@ABU01@@Z
+#82 00827f80 self=-
+   PDB 008293b0 ??4?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@QAEAAU01@ABU01@@Z
+   SI  00828dc0 ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@FableHeap_00828dc0@@QAEAAU01@ABU01@@Z
+#83 00a7faf0 self=-
+   PDB 00a834b0 ??4?$pair@JV?$CCountedPointer@VCNavConnectorNode@@@@@std@@QAEAAU01@ABU01@@Z
+   SI  00a81170 ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@FableHeap_00a81170@@QAEAAU01@ABU01@@Z
+#84 00ae98e0 self=-
+   PDB 00aea270 ??4?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@QAEAAU01@ABU01@@Z
+   SI  00ae9df0 ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@QAEAAU01@ABU01@@Z
+#85 00cd27b4 self=-
+   PDB 00cd344a ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+   SI  00cd2c1e ?AutoTinyScalarDestructor_00cd27b4@@YIXPAX@Z
+#86 006603a0 self=Y
+   SI  0066106d ?Method_006603a0@CSelfTarget_006603a0@@QAEXPAU1@@Z
+#87 006603dd self=Y
+   SI  0066107f ?Method_006603dd@CSelfTarget_006603dd@@QAEXPAU1@@Z
+#88 0066041a self=Y
+   SI  00661091 ?Method_0066041a@CSelfTarget_0066041a@@QAEXPAU1@@Z
+#89 00660457 self=Y
+   SI  006610a3 ?Method_00660457@CSelfTarget_00660457@@QAEXPAU1@@Z
+#90 00660494 self=Y
+   SI  006610b5 ?Method_00660494@CSelfTarget_00660494@@QAEXPAU1@@Z
+#91 00513700 self=Y
+   SI  00518f30 ??0CElement12_00513700@@QAE@ABU0@@Z
+   PDB 0051c470 ??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z
+#92 00411910 self=Y
+   PDB 009ec890 ??0?$vector@DV?$allocator@D@std@@@std@@QAE@I@Z
+   SI  004b6380 ??0CByteArray@N_00411910@@QAE@K@Z
+#93 004df88a self=-
+   SI  00771030 ?DestructMember_004df88a@@YIXPAX@Z
+   PDB 004e0ae8 ??1?$vector@V?$CIntelligentPointer@$$CBVCThing@@@@V?$allocator@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@QAE@XZ
+#94 004e34b2 self=Y
+   SI  004e3c6e ??1CMap_004e34b2@@QAE@XZ
+   PDB 00ce1af0 ??1?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@XZ
+#95 0056d490 self=Y
+   SI  0056dab0 ??0CSecond_0056d490@@QAE@ABU0@@Z
+   PDB 0056deb0 ??0?$vector@PAVCMenuEntry@NUISystem@@V?$allocator@PAVCMenuEntry@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+#96 005bba94 self=Y
+   PDB 005b76d1 ?push_back@?$vector@W4EClothingSuitPart@@V?$allocator@W4EClothingSuitPart@@@std@@@std@@QAEXABW4EClothingSuitPart@@@Z
+   SI  005b43a2 ?push_back_005bba94@CLongVector@@QAEXABJ@Z
+#97 005e3040 self=Y
+   SI  005e35f0 ??1CListMember_005e3040@@QAE@XZ
+#98 006753b0 self=-
+   SI  00675b10 ??1CMember_006753b0@@QAE@XZ
+   PDB 00676740 ??1?$vector@V?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@V?$allocator@V?$C
+#99 006755e0 self=Y
+   SI  00675790 ??4CElement12_006755e0@@QAEAAU0@ABU0@@Z
+#100 006fcf10 self=Y
+   SI  009e7bd0 ?DestructSecondMember_006fcf10@@YIXPAX@Z
+#101 00708ca0 self=Y
+   SI  00709090 ??4CElement12_00708ca0@@QAEAAU0@ABU0@@Z
+#102 00722eb0 self=Y
+   SI  00723240 ?DestructMember_00722eb0@@YIXPAX@Z
+#103 0082c620 self=Y
+   SI  0082cac0 ??0CRetailVector_0082c620@@QAE@ABU0@@Z
+   PDB 0082cb70 ??0?$vector@W4MinimapTheme@CMinimapData@@V?$allocator@W4MinimapTheme@CMinimapData@@@std@@@std@@QAE@ABV01@@Z
+#104 0082c8a0 self=Y
+   SI  0082cac0 ??0CRetailVector_0082c8a0@@QAE@ABU0@@Z
+#105 0086b2a0 self=Y
+   SI  0086d4a0 ??0CSecond_0086b2a0@@QAE@ABU0@@Z
+   PDB 0086e7c0 ??0?$vector@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetTextureMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@
+#106 00ad83a0 self=Y
+   SI  00ad88c0 ??1CMember_00ad83a0@@QAE@XZ
+#107 00b83df0 self=Y
+   SI  00b84070 ??1CListMember_00b83df0@@QAE@XZ
+#108 00b97af0 self=Y
+   SI  00b98560 ?DestructMember_00b97af0@@YIXPAX@Z
+#109 00cdbc90 self=Y
+   SI  00d1cbd0 ??1CMember_00cdbc90@@QAE@XZ
+#110 00f25ce0 self=-
+   SI  00f25cb0 ??1CUnprovenMember_00f25cb0@@QAE@XZ
+   PDB 00f280a0 ??1?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@QAE@XZ
