@@ -18,7 +18,7 @@ class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00 (PDB: CPersistTraits<T> is { T DefaultVal; })
     CPersistTraits() {}                           // user ctor: DefaultVal is left unset, nothing is stored
-    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x004CBC70 for T = short
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);   // 0x004CBC70 for T = short
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -57,7 +57,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         break;
     case 2: {
         CPersistTraits<T> traits;
-        traits.TransferBinaryIn(PLoadStream, &value);
+        traits.TransferBinaryIn(*PLoadStream, value);
         break;
     }
     case 1: {

@@ -23,7 +23,7 @@ public:
 template <class T> struct CPersistTraits {
     T DefaultVal;
     void TransferOut(CPersistContext& context, CCharString& out, T* value);       // 0x009E7F00 for C2DVector
-    void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x009E81E0 for C2DVector
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x009E81E0 for C2DVector
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -41,7 +41,7 @@ template <class T>
 void CPersistContext_TransferableComponent<T>::TransferIn(CPersistContext& context, CStringParser& parser)
 {
     CPersistTraits<T> traits;
-    traits.TransferIn(context, parser, TransferableValue);
+    traits.TransferIn(context, parser, *TransferableValue);
 }
 
 template void CPersistContext_TransferableComponent<C2DVector>::TransferIn(CPersistContext& context, CStringParser& parser);

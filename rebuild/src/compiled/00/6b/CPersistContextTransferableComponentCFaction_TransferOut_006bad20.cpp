@@ -31,7 +31,7 @@ public:
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
-    void TransferOut(CPersistContext& context, CCharString& out, const T* value);   // 0x006B91A0 for CFaction
+    void TransferOut(CPersistContext& context, CCharString& out, const T& value);   // 0x006B91A0 for CFaction
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -49,7 +49,7 @@ template <class T>
 void CPersistContext_TransferableComponent<T>::TransferOut(CPersistContext& context, CCharString& out)
 {
     CPersistTraits<T> traits;
-    traits.TransferOut(context, out, TransferableValue);
+    traits.TransferOut(context, out, *TransferableValue);
 }
 
 template void CPersistContext_TransferableComponent<CFaction>::TransferOut(CPersistContext& context, CCharString& out);

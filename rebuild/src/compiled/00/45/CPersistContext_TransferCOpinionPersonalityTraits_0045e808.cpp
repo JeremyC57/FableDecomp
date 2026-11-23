@@ -25,7 +25,7 @@ public:
     float BaseOffset, HeroStatScaling, VillageOpinionScaling, TimeScalingRunIn, TimeScalingRunOut;
     float PeakScalingIfPos, PeakScalingIfNeg, PersistScalingIfPos, PersistScalingIfNeg;   // 0x24 bytes
     void TransferBinaryOut(CDataOutputStream* stream) const;    // 0x0045E863
-    void TransferBinaryIn(CMemoryDataInputStream* stream);      // 0x0045E8ED
+    void TransferBinaryIn(CMemoryDataInputStream& stream);      // 0x0045E8ED
 };
 
 const unsigned long OPINION_PERSONALITY_TRAITS_COUNT = 5;   // entries in COpinionPersonalityDef::PersonalityTraits (bound 0xB4 / 0x24)
@@ -41,7 +41,7 @@ template <> struct CPersistTraits<COpinionPersonalityTraits*> {
     FABLE_FORCEINLINE void TransferBinaryIn(CMemoryDataInputStream* stream, COpinionPersonalityTraits** value)
     {
         for (unsigned long i = 0; i < OPINION_PERSONALITY_TRAITS_COUNT; ++i)
-            (*value)[i].TransferBinaryIn(stream);
+            (*value)[i].TransferBinaryIn(*stream);
     }
 };
 

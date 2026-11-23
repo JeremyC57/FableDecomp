@@ -1,0 +1,20 @@
+##### 00bbc130 renames: ??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z=??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z
+ALL_EQ sections=9 DEF=8 tables=??_7CEngineSubPrimitiveBase@@6B@
+##### 00bbbf70 renames: ??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z=??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z ??0CEngineSubPrimitiveParticleGroup@@QAE@AAVCEngineInternalPrimitiveBase@@@Z=??0CEngineSubPrimitiveParticleGroup@@QAE@PAVCEngineInternalPrimitiveBase@@@Z
+ALL_EQ sections=12 DEF=11 tables=??_7CEngineSubPrimitiveParticleGroup@@6B@
+##### 00be0cd0 renames: ??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z=??0CEngineSubPrimitiveBase@@QAE@PAVCEngineInternalPrimitiveBase@@@Z ??0CEngineSubPrimitiveParticleGroup@@QAE@AAVCEngineInternalPrimitiveBase@@@Z=??0CEngineSubPrimitiveParticleGroup@@QAE@PAVCEngineInternalPrimitiveBase@@@Z
+ALL_EQ sections=7 DEF=6 tables=??_7CEngineSubPrimitiveParticleGroup@@6B@
+##### 005140a0 renames: ??RCIsHouseLargerThan@@QBE_NPAVCThingBuilding@@0@Z=??RCIsHouseLargerThan@@QBE_NPBVCThingBuilding@@0@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00514050 renames: ??RCIsHouseLargerThan@@QBE_NPAVCThingBuilding@@0@Z=??RCIsHouseLargerThan@@QBE_NPBVCThingBuilding@@0@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 007be0f9 renames: ??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@J@Z=??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z
+ALL_EQ sections=32 DEF=31 tables=-
+##### 008eddd0 renames: ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJJJ@Z=?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z
+ALL_EQ sections=9 DEF=8 tables=-
+##### 00a6da40 renames: ?Create@CIPhysicsFacesSegmentBase@@SIPAV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z=?Create@CIPhysicsFacesSegmentBase@@SIPBV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z
+ALL_EQ sections=37 DEF=36 tables=??_7CIVCountedBase@@6B@,??_7CPhysicsMesh@@6B@
+##### 00a6c850 renames: ?Create@CIPhysicsFacesSegmentBase@@SIPAV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z=?Create@CIPhysicsFacesSegmentBase@@SIPBV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z ?Reset@?$CCountedPointer@VCIPhysicsFacesSegmentBase@@@@QAEXPAVCIPhysicsFacesSegmentBase@@@Z=?Reset@?$CCountedPointer@$$CBVCIPhysicsFacesSegmentBase@@@@QAEXPBVCIPhysicsFacesSegmentBase@@@Z
+ALL_EQ sections=3 DEF=2 tables=-
+##### 00a669e0 renames: ?SetAsKeyboardKeyHeld@CInputEvent@@QAEXJNN@Z=?SetAsKeyboardKeyHeld@CInputEvent@@QAEXW4EInputKey@@NN@Z
+ALL_EQ sections=5 DEF=4 tables=-

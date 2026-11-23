@@ -35,6 +35,7 @@
 #define FABLE_RETAIL_CCREATUREDEF_SCREENINVENTORIES
 #define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER
 #define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER
+#define FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER_REFERENCE   // NF300: the PDB reference form (0x0066EB11)
 #define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
 #define FABLE_RETAIL_CPLAYERGUI
 #include "fable_string.h"
@@ -72,7 +73,7 @@ enum { QUEST_CARD_SELECT_PRIMITIVE_COUNT = 4, QUEST_CARD_ITEM_COUNT = 6 };
 
 void CTCInventoryQuests::OnCreate()
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(*this);
     CDefPointer<const CCreatureDef> creature_def;
     GetParentThing().GetPBaseDef()->GetSubDef(&creature_def);
     SetPDef(creature_def->QuestsScreenInventory);

@@ -14,7 +14,7 @@ class C3DTriangle2 { public: unsigned short m_index[3]; };
 #include "engine/C3DVector.h"
 #include "engine/CArray.h"
 class CIPhysicsFacesSegmentBase { public:
-    static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& triangles, const CArray<C3DVector>& vertices);   // 0x00A86CD0
+    static const CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& triangles, const CArray<C3DVector>& vertices);   // 0x00A86CD0
 };
 template <class T> class CCountedPointer { public:
     T* m_pObject;
@@ -27,7 +27,7 @@ class CPhysicsMesh { public:
     CArray<C3DTriangle2>              TotalFaceIndices;   // +0x30
     CArray<C3DVector>                 TotalPoints;        // +0x3c
     unsigned char                     _pad48[0xb4 - 0x48];
-    CCountedPointer<CIPhysicsFacesSegmentBase> RootSegment;   // +0xb4
+    CCountedPointer<const CIPhysicsFacesSegmentBase> RootSegment;   // +0xb4
     void CalculateSegmentation();
 };
 

@@ -110,3 +110,9 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
 - NF299 Q4: entries whose every binder binds through a class or scope found in neither PDB name set (or the wrong class) may be marked
   `skipped-port (census)` from a census script without opening each binder; commit the script in tools/, open 1 in 10 of them (and every
   entry where a binder includes a shared header that already declares the PDB member) and record the sample in STATUS.
+- NF300 Q1: including an existing shared enum header above a local model and replacing a literal by its enumerator lands when objsec is
+  ALL_EQ and the preprocessed diff shows only the enum, the parameter type and the literal changing.
+- NF300 Q2: re-scoping a local model of a nested or namespaced PDB type (global `struct T` -> `NFoo::T` / `COuter::T`) is in place (T1)
+  when the TU emits no vftable / RTTI for it, none of the TU's own definitions change name, and objsec is ALL_EQ; otherwise a port.
+- NF300 D1 extension: a clang failure only on MSVC-only syntax in an UNCHANGED landed source (e.g. the `unsigned int(...)` functional
+  cast) is covered by D1: a passing `cl /Zs` in an earlier call is the precheck.

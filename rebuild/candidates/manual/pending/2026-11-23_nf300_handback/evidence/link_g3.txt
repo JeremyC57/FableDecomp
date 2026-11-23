@@ -1,0 +1,23 @@
+## HEAD set: H_0045e808.obj H_00ae3a30.obj H_00ac3bd0.obj H_00aeefe0.obj H_007b45a0.obj H_004cc3f0.obj H_006bad20.obj H_006ba030.obj H_006bace0.obj H_007ad6d0.obj H_00816150.obj H_00800400.obj 0045e8ed.obj 00ae3920.obj 00ae3c30.obj 00af4ee0.obj 0047926c.obj 004cbc70.obj 006b91a0.obj 006ba480.obj 007ad7f0.obj 007e3820.obj 009e81e0.obj 00ae2d20.obj 00ae1320.obj
+duplicates 0
+UNRESOLVED 1 ?DatabaseCopy@CParticleSystem@NParticleEngine@@QAEXPAV12@@Z
+UNRESOLVED 1 ?ReadFromFile@CParticleProgram@@QAE_NPAVCDataInputStream@@PAVCMovableResourceMemoryPool@@@Z
+UNRESOLVED 1 ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@?$CPersistTraits@F@@QAEXPAVCMemoryDataInputStream@@PAF@Z
+UNRESOLVED 1 ?TransferBinaryIn@?$CPersistTraits@W4ECrimeSeverity@@@@QAEXPAVCMemoryDataInputStream@@PAW4ECrimeSeverity@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@?$CPersistTraits@W4EScriptingStateGroups@@@@QAEXPAVCMemoryDataInputStream@@PAW4EScriptingStateGroups@@@Z
+UNRESOLVED 1 ?TransferBinaryIn@COpinionPersonalityTraits@@QAEXPAVCMemoryDataInputStream@@@Z
+UNRESOLVED 1 ?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVC2DVector@@@Z
+UNRESOLVED 1 ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z
+UNRESOLVED 1 ?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVCDefString@@@Z
+UNRESOLVED 1 ?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVCFaction@@@Z
+UNRESOLVED 1 ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z
+UNRESOLVED 1 ?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCCharString@@PBVCFaction@@@Z
+UNRESOLVED 1 ?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBVCFaction@@@Z
+## new set: 0045e808.obj 00ae3a30.obj 00ac3bd0.obj 00aeefe0.obj 007b45a0.obj 004cc3f0.obj 006bad20.obj 006ba030.obj 006bace0.obj 007ad6d0.obj 00816150.obj 00800400.obj 0045e8ed.obj 00ae3920.obj 00ae3c30.obj 00af4ee0.obj 0047926c.obj 004cbc70.obj 006b91a0.obj 006ba480.obj 007ad7f0.obj 007e3820.obj 009e81e0.obj 00ae2d20.obj 00ae1320.obj
+duplicates 0
+UNRESOLVED 1 ?TransferBinaryIn@?$CPersistTraits@F@@QAEXAAVCMemoryDataInputStream@@AAF@Z
+UNRESOLVED 1 ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z
+UNRESOLVED 1 ?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCDefString@@@Z
+UNRESOLVED 1 ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z
+LK_DONE

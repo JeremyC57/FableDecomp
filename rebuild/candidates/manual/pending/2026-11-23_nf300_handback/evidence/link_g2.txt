@@ -1,0 +1,22 @@
+## HEAD set: H_00bf6f80.obj H_00522160.obj H_0095e6d0.obj H_0082be60.obj H_00891330.obj H_0057713f.obj H_0059c8f2.obj H_005b36e9.obj H_005c3057.obj H_005cd33f.obj H_005f4a86.obj H_00602e30.obj H_00582944.obj H_0061a6a0.obj 00be5e70.obj 00996cc0.obj 006af3f0.obj 0082b7e0.obj 006bd840.obj 0066eb11.obj
+duplicates 4
+  DUP H_005cd33f.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in H_005b36e9.obj;
+  DUP H_005f4a86.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in H_005b36e9.obj;
+  DUP H_00582944.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in H_005b36e9.obj;
+  DUP H_0061a6a0.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in H_005b36e9.obj;
+UNRESOLVED 1 ??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MMJJJJJJJPAVCSubPatchTreeLODLockElement@@1JJJ@Z
+UNRESOLVED 1 ??RCMessageEventFilter_IsMyDeadLeader@@QBE_NPAVCMessageEvent@@@Z
+UNRESOLVED 1 ?BuildDefaultSection@CLandscapeBackgroundPatch@@QAEXXZ
+UNRESOLVED 1 ?DrawMarkers@CMiniMapDisplay@@QAEXAAVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z
+UNRESOLVED 1 ?IsDangerMusicEnabled@CMusicManager@@QBI_NXZ
+UNRESOLVED 9 ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@2@@Z
+UNRESOLVED 1 ?Write@CMemoryDataOutputStream@@UAEXPBXK@Z
+## new set: 00bf6f80.obj 00522160.obj 0095e6d0.obj 0082be60.obj 00891330.obj 0057713f.obj 0059c8f2.obj 005b36e9.obj 005c3057.obj 005cd33f.obj 005f4a86.obj 00602e30.obj 00582944.obj 0061a6a0.obj 00be5e70.obj 00996cc0.obj 006af3f0.obj 0082b7e0.obj 006bd840.obj 0066eb11.obj
+duplicates 4
+  DUP 005cd33f.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in 005b36e9.obj;
+  DUP 005f4a86.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in 005b36e9.obj;
+  DUP 00582944.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in 005b36e9.obj;
+  DUP 0061a6a0.obj ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z in 005b36e9.obj;
+UNRESOLVED 1 ?BuildDefaultSection@CLandscapeBackgroundPatch@@QAEXXZ
+UNRESOLVED 1 ?Write@CMemoryDataOutputStream@@UAEXPBXJ@Z
+LK_DONE

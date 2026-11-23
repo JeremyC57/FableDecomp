@@ -43,8 +43,8 @@ template <class T> struct CRetailVector {
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
-    void TransferOut(CPersistContext* context, CCharString* out, T* value);       // 0x005C0E81 for CItem
-    void TransferIn(CPersistContext* context, CStringParser* parser, T* value);   // 0x005C2118 for CItem
+    void TransferOut(CPersistContext& context, CCharString& out, const T& value); // 0x005C0E81 for CItem
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x005C2118 for CItem
 };
 
 struct CPersistContext_TransferableVector {
@@ -58,5 +58,5 @@ struct CPersistContext_TransferableVector {
 void CPersistContext_TransferableVector::TransferOut(CPersistContext* context, CCharString* out, long index)
 {
     CPersistTraits<NInventory::CItem> traits;
-    traits.TransferOut(context, out, &(*TransVector)[index]);
+    traits.TransferOut(*context, *out, (*TransVector)[index]);
 }

@@ -119,7 +119,7 @@ class CBase { public:                                  // vtable 0x0123A3E0 (its
     virtual void v00();
 };
 class CManager { public:
-    void RegisterScreen(const CBase* screen);   // 0x0066EB11
+    void RegisterScreen(const CBase& screen);   // 0x0066EB11
 };
 }
 #include "engine/CCountedPointer.h"
@@ -152,7 +152,7 @@ public:
 
 void CTCInventoryStats::OnCreate()
 {
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(*this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<const CCreatureDef> def;
     def.Object = 0;

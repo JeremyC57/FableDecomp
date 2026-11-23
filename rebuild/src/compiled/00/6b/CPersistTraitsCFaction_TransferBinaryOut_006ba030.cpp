@@ -60,7 +60,7 @@ class CFaction { public:
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CFaction> {
     CFaction DefaultVal;
-    void TransferOut(CPersistContext* context, CCharString* out, const CFaction* value);   // 0x006B91A0
+    void TransferOut(CPersistContext& context, CCharString& out, const CFaction& value);   // 0x006B91A0
     void TransferBinaryOut(CDataOutputStream* stream, const CFaction* value);
 };
 
@@ -68,7 +68,7 @@ void CPersistTraits<CFaction>::TransferBinaryOut(CDataOutputStream* stream, cons
 {
     CCharString text;
     CPersistContext context(text);
-    TransferOut(&context, &text, value);
+    TransferOut(context, text, *value);
     CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteULONG(text.GetLength());
     out->WriteData(text.GetString(), text.GetLength());

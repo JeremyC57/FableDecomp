@@ -261,7 +261,7 @@ public:
     virtual void v01();
     virtual void v02();
     virtual void v03();
-    virtual void Write(const void* data, unsigned long length);                       // slot 4 (+0x10)
+    virtual void Write(const void* data, long length);                                // slot 4 (+0x10)
     void WriteULONG(unsigned long value);                                              // 0x00993EA0
     void WriteNullTerminatedString(const CCharString& text);                           // 0x00995AE0
     void Write(const CMemoryDataOutputStream& stream);
@@ -274,7 +274,7 @@ public:
     CMemoryDataOutputStream();                                                         // 0x00996AF0
     ~CMemoryDataOutputStream();                                                        // 0x00996B30
     using CDataOutputStream::Write;
-    virtual void Write(const void* data, unsigned long length);                       // 0x00996CC0
+    virtual void Write(const void* data, long length);                                // 0x00996CC0
     unsigned long GetLength() const;                                                   // 0x00994B40
     const void* PeekData() const;                                                      // 0x00995E70
 };

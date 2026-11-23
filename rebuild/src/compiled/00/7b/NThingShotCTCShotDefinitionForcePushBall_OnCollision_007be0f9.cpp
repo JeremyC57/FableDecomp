@@ -100,10 +100,11 @@ class CHitParameters { public:                                 // 0x60 bytes
 namespace NEntityEvents {
 class CEventBase { public: virtual ~CEventBase(); };
 }
+#include "engine/EHeroAbility.h"            // NF300: the PDB parameter type of the 0x00811830 ctor (Ego_r TPI enum; was `long`)
 namespace NEntityEvents {
 class CEventHitBySpecialAbility : public NEntityEvents::CEventBase { public:         // 0x18 bytes
     unsigned char _pad04[0x18 - 0x04];
-    CEventHitBySpecialAbility(const CHitParameters& params, long ability);   // 0x00811830
+    CEventHitBySpecialAbility(const CHitParameters& params, EHeroAbility ability);   // 0x00811830
 };
 }
 class CTCEntityEvents { public: void AddEvent(NEntityEvents::CEventBase* event); };   // 0x008113C0
@@ -178,7 +179,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
                     CTCEntityEvents* events = thing->GetTC<CTCEntityEvents>(0x42);
                     CHitParameters hit;
                     hit.SetThingHitting(*shooter);
-                    events->AddEvent(new NEntityEvents::CEventHitBySpecialAbility(hit, 1));
+                    events->AddEvent(new NEntityEvents::CEventHitBySpecialAbility(hit, HERO_ABILITY_FORCE_PUSH));
                 }
                 pushed->SetUpForcePush(-away, PushForce, shooter);
             }

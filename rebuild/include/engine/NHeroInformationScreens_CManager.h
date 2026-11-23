@@ -32,7 +32,13 @@ public:
 #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER
     // Retail opt-in (chunk 1023, row 0x0061A6A0): Ego_r.pdb / FableWin.pdb ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@2@@Z,
     // out of line at 0x0066EB11 (every inventory screen's OnCreate registers itself; the landed bound spelling). Declaration only.
+#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER_REFERENCE
+    // NF300 add-only opt-in (2026-11-23): Ego_r.pdb + FableWin.pdb spell it ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z
+    //   (a const reference; the self row 0x0066EB11 defines that), so the pointer line below is not the PDB spelling. Declaration only.
+    void RegisterScreen(const CBase& screen);           // 0x0066EB11
+#else
     void RegisterScreen(const CBase* screen);           // 0x0066EB11
+#endif
 #endif
 #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_DEREGISTERALL
     // NF79 opt-in (round 7, row 0x0089F4A0 CGameScriptInterface::TurnCreatureInto): Ego_r.pdb + FableWin.pdb

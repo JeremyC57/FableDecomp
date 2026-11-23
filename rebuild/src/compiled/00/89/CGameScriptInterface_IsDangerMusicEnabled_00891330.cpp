@@ -1,7 +1,7 @@
 class CMusicManager
 {
 public:
-    bool __fastcall IsDangerMusicEnabled() const;
+    bool IsDangerMusicEnabled() const;
 };
 
 struct CGSI_Inner

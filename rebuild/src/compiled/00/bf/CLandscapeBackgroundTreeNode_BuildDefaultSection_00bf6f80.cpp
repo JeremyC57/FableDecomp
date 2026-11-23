@@ -43,8 +43,8 @@ class CLandscapeBackgroundTreeNode;
 class CLandscapeBackgroundPatch { public:
     static void* __fastcall operator new(unsigned int size, CLandscapeBackgroundTreeNode* owner);   // 0x00BE5BB0
     CLandscapeBackgroundPatch(CLandscapeBackgroundTreeNode* parent, float minZ, float maxZ, long mapX, long mapY, long width,
-                              long height, long lodBand, long a, long b, CSubPatchTreeLODLockElement* lockU,
-                              CSubPatchTreeLODLockElement* lockV, long c, long d, long e);   // 0x00BE5E70
+                              long height, long lodBand, long a, long b, const CSubPatchTreeLODLockElement* lockU,
+                              const CSubPatchTreeLODLockElement* lockV, long c, long d, long e);   // 0x00BE5E70
     void BuildDefaultSection();                    // 0x00BE6880
     unsigned char _body[0x11c];
 };

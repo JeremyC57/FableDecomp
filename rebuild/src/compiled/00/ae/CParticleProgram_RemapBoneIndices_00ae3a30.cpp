@@ -1,6 +1,6 @@
 // CParticleProgram::RemapBoneIndices(std::map<unsigned long, unsigned long>& remap) -- rewrite the bone indices of the simulated groups, then of the non-simulated groups, through the remap table
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE3A30, length 39 bytes (padded to 48).
-// Leaf: RemapBoneIndices
+// Leaf: ?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
 // Label correction: the catalog "_Dest_val<..., std::pair<long, CMusicManager::CRegisteredMusicEntry>>" is propagated.
 // Ego_r.pdb lists the pair ?RemapBoneIndices@CParticleProgram@@QAEXAAV?$map@KK...@@@Z (this row) and the private
 // static __fastcall ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KK...@@AAV?$CArray@VC3DGroup2@@@@@Z (0x00AE3920,
@@ -13,7 +13,7 @@
 // knowledge needed here, unlike GetUsedBones).
 namespace std {
 template <class T> struct less {};
-template <class T> struct allocator {};
+template <class T> class allocator {};
 template <class K, class V> struct pair {};
 template <class K, class V, class C, class A> class map;
 }

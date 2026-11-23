@@ -55,7 +55,7 @@ class CCircle { public: float X, Y, Radius; };
 
 class CIPhysicsFacesSegmentBase {
 public:
-    static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& faces, const CArray<C3DVector>& points);   // 0x00A86CD0
+    static const CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& faces, const CArray<C3DVector>& points);   // 0x00A86CD0
 };
 #include "engine/CCountedPointer.h"
 

@@ -58,7 +58,7 @@ namespace N3DMeshAllocators { extern CMovableResourceMemoryPool* ClothMemoryPool
 
 class CParticleProgram { public:
     CParticleProgram();                                            // 0x00AE3550
-    bool ReadFromFile(CDataInputStream* in, CMovableResourceMemoryPool* pool);   // 0x00AE3C30
+    bool ReadFromFile(CDataInputStream& in, CMovableResourceMemoryPool& pool);   // 0x00AE3C30
     unsigned char _body[0x140];
 };
 
@@ -83,7 +83,7 @@ bool C3DClothPrimitive::LoadBinary(CMemoryDataInputStream& in, CMovableResourceM
     in.ReadCompressed(data, size);
     CMemoryDataInputStream stream(data, size);
     ParticleProgram.Reset(new CParticleProgram);
-    if (!ParticleProgram->ReadFromFile(&stream, N3DMeshAllocators::ClothMemoryPool)) {
+    if (!ParticleProgram->ReadFromFile(stream, *N3DMeshAllocators::ClothMemoryPool)) {
         ParticleProgram.Release();
         return false;
     }

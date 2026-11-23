@@ -3447,7 +3447,7 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?CGSIStopMusic_ResumeEvent@@YIXPAUCGSIStopMusicEvent@@@Z	006bdef0	008912a0
 ?CGSIStopMusic_StopEvent@@YIXPAUCGSIStopMusicEvent@@@Z	006bdf90	008912a0
 ?CacheMusicSet@CMusicTarget@@QAEXW4EMusicSetType@@@Z	006bd890	00891310
-?IsDangerMusicEnabled@CMusicManager@@QBI_NXZ	006bd840	00891330
+?IsDangerMusicEnabled@CMusicManager@@QBE_NXZ	006bd840	00891330
 ?SetObjectiveAsCompleted@CQuestManager@@QAEXK@Z	004af960	00891800
 ?SetObjectiveAsFailed@CQuestManager@@QAEXK@Z	004af990	00891810
 ?GetRegion@CWorldMap@@QAEAAVCRegion@@J@Z	004fb490	00747110
@@ -7368,7 +7368,6 @@ __wcsupr	00f3fb8a	00557a10
 ?Initialise@CRegionMinimap@@QAEXXZ	0066dbb0	0082ba00
 ?IsIdentity@CMatrix3x4@@QBE_NXZ	00a560a0	00a56180
 ?InsertIntoTree@CMemoryAllocatorVariableSize@@QAEXPAUCMemoryArea@@0@Z	00a64e70	00a650f0
-?SetAsKeyboardKeyHeld@CInputEvent@@QAEXJNN@Z	00a03c20	00a669e0
 ?insert@CMaintainedEventList@@QAE?AUiterator@1@U21@@Z	009e4a20	00a669e0
 ??0CPatchTesselationEdgeStrip@@QAE@XZ	00bfc370	00be5fa0
 ??_7CModeThunderLightningStorm@NCreatureMode@@6B@	01267df4	00740640
@@ -8086,7 +8085,7 @@ __imp__WaitMessage@0	01440380	009a6370
 ?ApplyForces@CParticleSimulation@@QAEXPAUCParticleContext@@@Z	00adf760	00ae2cb0
 ?ExecuteLooped@CParticleProgram@@QAEXPAUCParticleSimulation@@J@Z	00ae2510	00ae2cb0
 ?GFInterpolateVectors@@YAXPAUC4DVector@@K0K0KPAMKK@Z	00a5bef0	00ae2cb0
-?ClingToMesh@CParticleProgram@@QAEXPAUCParticleSimulation@@PAUC3DAnimationBlendState@@PAUC3DAnimationManager@@PAUC3DVector@@PAUC3DMesh2@@@Z	00ae1320	00ae2d20
+?ClingToMesh@CParticleProgram@@ABEXAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z	00ae1320	00ae2d20
 ??_7CPSCLight@NParticleEngine@@6B@	012a0624	00b1a640
 ?InsertGrow@?$CArray@G@@QAEXPAGABGABUSScalarTag@@K_N@Z	005135d0	00f3f5a0
 ??2CLandscapeBackgroundPatch@@SIPAXIPAVCLandscapeBackgroundTreeNode@@@Z	00be5bb0	00bf6f80
@@ -9916,7 +9915,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?LinearInsert_0081bda0@@YIXPAUSPair@@0U1@USCompare@@@Z	0081bda0	0081c490
 ?LinearInsert_0086c620@@YIXPAUSPair@@0U1@USCompare@@@Z	0086c620	0086c830
 ?LinearInsert_00a33780@@YIXPAUSPair@@0U1@USCompare@@@Z	00a33780	00a340f0
-??RCIsHouseLargerThan@@QBE_NPAVCThingBuilding@@0@Z	00512410	005140a0
 ?__linear_insert@@YIXPAUSULongKeyedRecord@@0U1@USULongKeyLess@@@Z	00470e08	00470dbc
 ?__copy_backward@@YIPAUCMeshInfo@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	004c2070	004c5190
 ??_7?$CParticleUpdateParamDesc@KK@@6B@	0125fee4	0076bb70
@@ -12644,7 +12642,6 @@ _fclose	00bfea20	00402130
 ?insert_unique@?$_Rb_tree@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCCharString@@@std@@_N@2@ABVCCharString@@@Z	004ac380	00521eb0
 ?GetLength@CMemoryDataOutputStream@@QBEKXZ	00994b40	00522160
 ?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z	004c84b0	00522160
-?Write@CMemoryDataOutputStream@@UAEXPBXK@Z	00996cc0	00522160
 ??0CClassFactory@@IAE@E@Z	00a373b0	00523540
 ??_7CThingManager@@6B@	01245c44	00523540
 ?InitThingTypes@CThingManager@@QAEXXZ	00522a20	00523540
@@ -14416,7 +14413,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?COpinionDeedMaskDef_Copy_impl@@YIXPAVCOpinionDeedMaskDef@@PAX@Z	0045e187	0045e182
 ?CCombatDialogueDef_Copy_impl@@YIXPAVCCombatDialogueDef@@PAX@Z	0045e55a	0045e555
 ?COpinionPersonalityDef_Copy_impl@@YIXPAVCOpinionPersonalityDef@@PAX0@Z	0045e660	0045e65b
-?TransferBinaryIn@COpinionPersonalityTraits@@QAEXPAVCMemoryDataInputStream@@@Z	0045e8ed	0045e808
+?TransferBinaryIn@COpinionPersonalityTraits@@QAEXAAVCMemoryDataInputStream@@@Z	0045e8ed	0045e808
 ?TransferBinaryOut@COpinionPersonalityTraits@@QBEXPAVCDataOutputStream@@@Z	0045e863	0045e808
 ?CSpecialAbilitiesBattleChargeDef_Copy_impl@@YIXPAVCSpecialAbilitiesBattleChargeDef@@PAX@Z	0045f635	0045f630
 ?CSpecialAbilitiesMultiStrikeDef_Copy_impl@@YIXPAVCSpecialAbilitiesMultiStrikeDef@@PBVCDefClassBase@@@Z	0045f716	0045f711
@@ -15306,13 +15303,12 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Do@CopyHelper@@QAEPAVCCharString@@UTreeIter@@PAV2@0@Z	00881780	006b8370
 ?LowerBound@CFactionMap@@QBEPBU?$pair@KV?$CCountedPointer@VCFaction@@@@@@ABK@Z	006b8ae0	006b93a0
 ?LowerBound@CFactionMap@@QAEPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@@ABK@Z	006b8ae0	006b93d0
-?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBVCFaction@@@Z	006b91a0	006ba030
+?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCFaction@@@Z	006b91a0	006ba030
 ??$iter_swap@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@PAU12@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0@Z	006b8e70	006ba100
 ??$__copy_backward@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@PAU12@H@std@@YIPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	006b9100	006ba7b0
 ??$__unguarded_linear_insert@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@U12@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@U10@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@Z	006b8f40	006ba7b0
 ??4?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@QAEAAU01@ABU01@@Z	006b8e20	006ba7b0
-?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVCFaction@@@Z	006ba480	006bace0
-?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCCharString@@PBVCFaction@@@Z	006b91a0	006bad20
+?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCFaction@@@Z	006b91a0	006bad20
 ??$__make_heap@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@U12@H@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@0PAH@Z	006ba230	006badb0
 ??$__pop_heap@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@U12@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@H@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@00U10@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@PAH@Z	006ba180	006badb0
 ??$sort_heap@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@Z	006ba830	006badb0
@@ -15637,7 +15633,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPFishingRodDef@CTCFishing@@QBEPBVCFishingRodDef@@XZ	007b0880	007b0ba0
 ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	00703210	007b2ab0
 ?_M_initialize_map@?$CRetailDeque@VCCrimeWaitingForBribe@@@@QAEXI@Z	007b4420	007b2db0
-?TransferBinaryIn@?$CPersistTraits@W4ECrimeSeverity@@@@QAEXPAVCMemoryDataInputStream@@PAW4ECrimeSeverity@@@Z	0047926c	007b45a0
 ?_M_fill_insert@CCrimeWaitingForBribeVector@@QAEXPAVCCrimeWaitingForBribe@@KABV2@@Z	007b4e00	007b5310
 ?erase@CCrimeWaitingForBribeVector@@QAEPAVCCrimeWaitingForBribe@@PAV2@0@Z	007b48e0	007b5310
 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThingMarker@@@@V?$allocator@V?$CIntelligentPointer@VCThingMarker@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThingMarker@@@@ABV3@ABU__false_type@2@I_N@Z	007b6ef0	007b7140
@@ -15727,7 +15722,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$GetAllThingsInRoughArea@VCThingCreatureBase@@U?$CRetailVector@PAVCThingCreatureBase@@@@V?$CFilter_Bind3@VCThingFilter_IsNotList@@VCThingFilter_IsWithinArea@@UCThingFilter_IsAffectedByObstructions@@@@@CThingSearchTools@@QAEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsNotList@@VCThingFilter_IsWithinArea@@UCThingFilter_IsAffectedByObstructions@@@@AAU?$CRetailVector@PAVCThingCreatureBase@@@@@Z	007fdb10	007fd580
 ?ForEach@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z	007fda80	007fd580
 ?GetLineThingSearchArea@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z	008f58c0	007fd580
-?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVC2DVector@@@Z	009e81e0	00800400
+?TransferIn@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC2DVector@@@Z	009e81e0	00800400
 ?TransferOut@?$CPersistTraits@VC2DVector@@@@QAEXAAVCPersistContext@@AAVCCharString@@PAVC2DVector@@@Z	009e7f00	00800430
 ?LoadRoute@CTCPreCalculatedNavigationRoute@@AAEXAAVCPersistContext@@J@Z	008008b0	00800a60
 ?SaveRoute@CTCPreCalculatedNavigationRoute@@QAEXAAVCPersistContext@@@Z	008006d0	00800a60
@@ -15768,7 +15763,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDummyObjectOriginTransformed@CPhysicalPrimitiveCylinder@@QBEXPAVCThing@@AAVC3DVector@@1@Z	008158d0	00815ba0
 ?GetFirstIntersectionWithFiniteLine@CCylinder@@QBE_NABVC3DVector@@0PAV2@1@Z	00a59fd0	00815ba0
 ?GetFirstIntersectionWithTriangle@CCylinder@@QBE_NPBXPAVC3DVector@@1@Z	00a593f0	00815c40
-?TransferIn@?$CPersistTraits@VCDefString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@PAVCDefString@@@Z	007e3820	00816150
 ?GetPBestHitLocationFromList@@YIPAVCHitLocation@NHitLocations@@PAUTHitLocationIntersectionElement@@KPBVC3DVector@@PAV4@2@Z	00815f00	008168b0
 ?GetPBestHitLocationFromList@@YIPAVCHitLocation@NHitLocations@@PAUTHitLocationIntersectionElement@@KPAVC3DVector@@11@Z	00815f00	008169b0
 ?_Push_heap@@YIXPAU?$pair@W4EHeroMorphType@@VCTextureMorphEntry@@@@JJU1@V?$CKeyPairCompareLess@W4EHeroMorphType@@VCTextureMorphEntry@@@@@Z	00819b10	0081aa50
@@ -16215,7 +16209,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z	006edc50	0095b5a0
 ?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABUCMessageEventFilter_IsLeaderDeath@@@Z	0095e6d0	0095e350
 ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	008fcfa0	0095e350
-??RCMessageEventFilter_IsMyDeadLeader@@QBE_NPAVCMessageEvent@@@Z	006af3f0	0095e6d0
+??RCMessageEventFilter_IsMyDeadLeader@@QBE_NABVCMessageEvent@@@Z	006af3f0	0095e6d0
 ?GetCrowdGroup@CTCBoastingCrowdControl@@QAE_NPAVCThing@@PAPAUCCrowdGroup@@@Z	00783730	0095e790
 ?GetDeedEffectsDef@CTCDeedEffects@@QBE?AV?$CDefPointer@UCDeedEffectsDef@@@@J@Z	006c5630	00960760
 ?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ	00686a70	00960760
@@ -16437,8 +16431,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	009fa280	00a697a0
 ?Reset@?$CCountedPointer@VCTexture@@@@QAEXPAVCTexture@@@Z	005669c0	00a6a540
 ?resize@?$CArray@V?$CIVCountedPointer@VCManagedTextureData@@@@@@QAEXIABV?$CIVCountedPointer@VCManagedTextureData@@@@@Z	00a6c020	00a6a540
-?Create@CIPhysicsFacesSegmentBase@@SIPAV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z	00a86cd0	00a6c850
-?Reset@?$CCountedPointer@VCIPhysicsFacesSegmentBase@@@@QAEXPAVCIPhysicsFacesSegmentBase@@@Z	00a6e9a0	00a6c850
+?Create@CIPhysicsFacesSegmentBase@@SIPBV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z	00a86cd0	00a6c850
 ??$for_each@PAVC3DVector@@V?$CAddElements@VC3DVector@@@@@@YI?AV?$CAddElements@VC3DVector@@@@PAVC3DVector@@0V0@@Z	00a6ece0	00a6c890
 ?_Push_heap@@YIXPAU?$pair@VCCharString@@VC3DDummyObject@@@@JJU1@V?$CCompareString@VC3DDummyObject@@@@@Z	00a6f1d0	00a6fb40
 ??MCCharString@@QBE_NABV0@@Z	009e6530	00a70ff0
@@ -16552,7 +16545,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?WriteGroups@@YIXAAVCDataOutputStream@@PBV?$CArray@VC3DGroup2@@@@@Z	00ae0680	00ae2230
 ?AddVertexBlend@C3DGroup2@@QAEXABVC3DVertexBlend2@@@Z	00ac4110	00ae37d0
 ?push_back@?$CArray@VC3DGroup2@@@@QAEXABVC3DGroup2@@@Z	00ae83d0	00ae37d0
-?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z	00ae3920	00ae3a30
+?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z	00ae3920	00ae3a30
 ?_M_clear@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@IAEXXZ	00ae7fa0	00ae80f0
 ??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z	00ae7480	00ae81f0
 ??$__uninitialized_fill_n@PAVC3DGroup2@@IV1@@std@@YIPAVC3DGroup2@@PAV1@IABV1@ABU__false_type@0@@Z	00ae74c0	00ae81f0
@@ -16580,7 +16573,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?InsertGrow@?$CRetailVector@V?$CCountedPointer@VCGuiVarTransferBase@@@@@@QAEXPAV?$CCountedPointer@VCGuiVarTransferBase@@@@ABV2@ABUSScalarTag@@K_N@Z	00af0fa0	00aeef40
 ?AddParticleSystem@CParticleEmitter@@QAEXPAVCParticleSystem@NParticleEngine@@@Z	00aeef40	00aeefe0
 ?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ	00af5960	00aeefe0
-?DatabaseCopy@CParticleSystem@NParticleEngine@@QAEXPAV12@@Z	00af4ee0	00aeefe0
 ?GetPParticleSystemFromName@CParticleEmitter@@QAEPAVCParticleSystem@NParticleEngine@@ABVCCharString@@@Z	00aee180	00aeefe0
 ?GetPParticleSystemFromName@CParticleEmitter@@QBEPBVCParticleSystem@NParticleEngine@@ABVCCharString@@@Z	00aee1e0	00aeefe0
 ??4?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z	00ae96e0	00af1480
@@ -16712,7 +16704,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__uninitialized_copy@@YIPAVCCompositeBlendDesc@@PBV1@0PAV1@ABU__false_type@@@Z	005baf28	00bef350
 ?_M_insert_overflow@?$CRetailVector@PAVCWaterPatchMesh@@@@QAEXPAPAVCWaterPatchMesh@@ABQAV2@ABU__true_type@@I_N@Z	00bf5db0	00bf44a0
 ?push_back@?$CRetailVector@PAVCWaterPatchMesh@@@@QAEXABQAVCWaterPatchMesh@@@Z	00bf5ea0	00bf44a0
-??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MMJJJJJJJPAVCSubPatchTreeLODLockElement@@1JJJ@Z	00be5e70	00bf6f80
+??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MMJJJJJJJPBVCSubPatchTreeLODLockElement@@1JJJ@Z	00be5e70	00bf6f80
 ?GetPatch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundPatch@@XZ	00bf6130	00bf7f70
 ?GetSplitBranch@CLandscapeBackgroundTreeNode@@QAEPAVCLandscapeBackgroundSubNodeSplitBranch@@XZ	00bf6160	00bf7f70
 ?ProcessBackgroundLoading@CLandscapeBackgroundTreeNode@@QAE?AW4LS_LOADING_STATUS@@N_NPAVCEngineStaticMapFileBlockManager@@00@Z	00bf8030	00bf8430
@@ -16920,7 +16912,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Clear@CGameEventPackage@@QAEXXZ	009f16c0	004aeaa0
 ?Clear@CGameEventPackageSet@@QAEXXZ	009f1720	004aeaa0
 ??_7?$CPersistContext_TransferableComponent@F@@6B@	01239a74	004cc3f0
-?TransferBinaryIn@?$CPersistTraits@F@@QAEXPAVCMemoryDataInputStream@@PAF@Z	004cbc70	004cc3f0
 ??9@YA_NABULHString@@PBD@Z	00566ea0	00561980
 ??_7?$CPersistContext_TransferableComponent@VCRGBColour@@@@6B@	0125a188	006420f0
 ?GetMoralityMax@CTCHeroStats@@QBEJXZ	0057a67e	007009d0
@@ -16928,7 +16919,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z	00713d50	007158f0
 ?GFGetSignedAngleDifference@@YIMMM@Z	00a441e0	00751e80
 ??_7?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@@@6B@	0126d3ac	007ad6d0
-?TransferBinaryIn@?$CPersistTraits@W4EScriptingStateGroups@@@@QAEXPAVCMemoryDataInputStream@@PAW4EScriptingStateGroups@@@Z	007ad7f0	007ad6d0
+?TransferBinaryIn@?$CPersistTraits@W4EScriptingStateGroups@@@@QAEXAAVCMemoryDataInputStream@@AAW4EScriptingStateGroups@@@Z	007ad7f0	007ad6d0
 ??_7?$CIntelligentPointer@VCThingPhysical@@@@6B@	01244dcc	006a5af0
 ??0CBaseObject@@IAE@ABV0@@Z	0099a390	0062ebc0
 ??0CBaseObject@@IAE@XZ	0099a380	00658301
@@ -26671,7 +26662,7 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?Close@CDiskFileWin32@@UAEXXZ	0099a920	0049dd50
 ?AddToUpdateList@CThingManager@@QAEXAAVCThing@@@Z	0051ec50	004c7c40
 ?OnCreate@CTCInventoryBase_Experience@@UAEXXZ	005c0121	0057713f
-?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@2@@Z	0066eb11	0057713f
+?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z	0066eb11	0057713f
 ?SetPDef@CTCInventoryBase_Experience@@QAEXJ@Z	005bdb4d	0057713f
 ?resize@SSpendInfoVector@@QAEXK@Z	00579f8a	0057713f
 ?FilesAreIdentical@@YI_NAAVCDiskFileWin32@@0@Z	00998f60	00581765
@@ -34010,7 +34001,6 @@ __imp__recvfrom@24	01440518	008f9320
 ?SetThingLineOfSight@CTCPerceiveThing@@QAEX_N@Z	00744a00	00745120
 ?reserve@?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEXI@Z	007463e0	00745120
 ?SetLifeTime@CTCLifeTimer@@QAEXM@Z	007e5950	0074e560
-??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@J@Z	00811830	007be0f9
 ??0CHitParameters@@QAE@XZ	007a3bc0	007be0f9
 ?AddEvent@CTCEntityEvents@@QAEXPAVCEventBase@NEntityEvents@@@Z	008113c0	007be0f9
 ?OnCollision@CTCShotDefinitionBase@NThingShot@@UAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	007bf510	007be0f9
@@ -35443,7 +35433,7 @@ _MAX_NODE_SIZE	01230894	00a770b0
 ?ClearQuickAccessState@CTCInventoryAbilities@@QAEXXZ	005edcef	008eddd0
 ?GetButtonAbilityIsSetTo@CTCInventoryAbilities@@QAE_NJPAJ@Z	005edf33	008eddd0
 ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z	005ee99d	008eddd0
-?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJJJ@Z	00445e90	008eddd0
+?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z	00445e90	008eddd0
 __imp__WaitForSingleObjectEx@12	0143fe08	009c31e0
 ?AllocateBuffer@CFileInstaller@@QAEPAUCBufferChunk@@_N@Z	009c3a60	009c3ae0
 ?FreeBuffer@CFileInstaller@@QAEXPAUCBufferChunk@@@Z	009c3330	009c3ae0
@@ -35968,7 +35958,7 @@ _sc_fDefaultLongReverbInputDelay	012bf138	00c78150
 ?PeekComponent@CThing@@QAEPAUCMainGameComponentFontView@@XZ	004c7a70	007132c0
 ?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@KM_N2@Z	00492e4b	007132c0
 ?Transfer_007e39d0@CPersistContext@@QAEXPBDAAJABJ@Z	007e39d0	007e36a0
-?DrawMarkers@CMiniMapDisplay@@QAEXAAVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z	0082b7e0	0082be60
+?DrawMarkers@CMiniMapDisplay@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z	0082b7e0	0082be60
 ?Find@CMinimapMap@@QAEPAUCMinimapNode@@ABVCCharString@@@Z	0042b467	0082be60
 ?ToScreenBox@@YI?AVC2DBoxF@@ABV1@@Z	00643bef	0082be60
 ?LowerBound@CNameCRCToIndexMap@@QBEPAUSNameIndex@@ABK@Z	009b21f0	009ad410
@@ -37239,8 +37229,8 @@ _ONE_OVER_360	01238e00	00878b60
 ?DressedAsGoodKnight@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ	00e730a0	00e72630
 ?Initialise@CChangingStateComponent@NUISystem@@UAEXXZ	0052c730	00543d30
 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXJ@Z	0052cf40	00543df0
-?TransferOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAVCItem@NInventory@@@Z	005c0e81	005c0e41
-?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAVCItem@NInventory@@@Z	005c2118	005c20d8
+?TransferOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCItem@NInventory@@@Z	005c0e81	005c0e41
+?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCItem@NInventory@@@Z	005c2118	005c20d8
 ?SetAt@CSoundPairArray@@QAEXJABUSSoundPairEntry@@@Z	005c2a13	005c2a5c
 ?RemoveAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ	005bf969	005c2e68
 ?SetUpdateParameters@CParticleEmitter@NParticleEngine@@QAEXABUCParticleUpdateParameters@@@Z	00af0610	006e14e0
@@ -37663,7 +37653,6 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	00b5bd70	00b5ea30
 ?ShowBlurTexture@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	00b5e700	00b5ea30
 ?UpdateWorldPositionTracking@CEngineScreenEffectRadialBlurRenderer@@AAE_NXZ	00b5c120	00b5ea30
-??0CEngineSubPrimitiveBase@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00b98a50	00bbc130
 ?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bc04f0	00bbc130
 ?RenderSingleSpriteTrail@CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	00bbe090	00bbc130
 ?insert_unique@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@2@@Z	00be0bf0	00be06b0
@@ -38104,7 +38093,7 @@ __imp__CompareStringA@24	0143fef4	00cb28f0
 ?LoadMeshFile@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@AAVCDataInputStream@@@Z	00a9b640	00a9b740
 ??0CParticleProgram@@QAE@XZ	00ae3550	00ac3bd0
 ?Allocate@CHandleBasedMemoryPool@@QAE_NPAVCScopedMemoryHandle@@KK@Z	00a032f0	00ac3bd0
-?ReadFromFile@CParticleProgram@@QAE_NPAVCDataInputStream@@PAVCMovableResourceMemoryPool@@@Z	00ae3c30	00ac3bd0
+?ReadFromFile@CParticleProgram@@QAE_NAAVCDataInputStream@@AAVCMovableResourceMemoryPool@@@Z	00ae3c30	00ac3bd0
 ?Reset@?$CCountedPointer@VCParticleProgram@@@@QAEXPAVCParticleProgram@@@Z	00ac3ff0	00ac3bd0
 ??0C3DGroup2@@QAE@ABVC3DMeshFileGroupChunk@@@Z	00ac4150	00ac3e00
 ??_7C3DClothPrimitive@@6B@	0129df74	00ac3e00

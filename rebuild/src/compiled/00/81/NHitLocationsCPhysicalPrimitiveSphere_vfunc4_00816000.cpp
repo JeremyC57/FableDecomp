@@ -60,7 +60,7 @@ template<> __declspec(noinline) void CPersistTraits<float>::TransferIn(
 #pragma auto_inline(on)
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
-    void TransferIn(CPersistContext&, CStringParser&, CDefString*);
+    void TransferIn(CPersistContext&, CStringParser&, CDefString&);
 };
 
 namespace NHitLocations {
@@ -79,7 +79,7 @@ bool CPhysicalPrimitiveSphere::Init(CPersistContext& context,
         return true;
     }
     CStringParser parser(text, 0, CCharString("", -1), 0);
-    CPersistTraits<CDefString>().TransferIn(context, parser, &BaseName);
+    CPersistTraits<CDefString>().TransferIn(context, parser, BaseName);
     bool notFound;
     { CCharString marker(",", -1); notFound = !parser.SkipPastNextItemIfIs(marker); }
     if (notFound) return false;

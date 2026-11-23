@@ -9,7 +9,7 @@
 class CThingBuilding;
 class CIsHouseLargerThan {                               // empty (passed as one stack word)
 public:
-    bool operator()(CThingBuilding* a, CThingBuilding* b) const;   // 0x00512410
+    bool operator()(const CThingBuilding* a, const CThingBuilding* b) const;   // 0x00512410
 };
 namespace std {
 template <class _RandomAccessIter, class _Tp, class _Compare>

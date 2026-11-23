@@ -1,0 +1,13 @@
+# name census: landed sources naming each respelled member (qualified or inline-ctor form); comment mentions included
+CEngineSubPrimitiveBase\(CEngineInternalPrimitiveBase\* *[a-z]*\) *:: 00b98b10 00b98b40 00bace50 00bb1780 00bb6950 00bba260 00bbbdb0 00bc7a80 00bc9c30 00bcc400 00be1b50 
+CIsHouseLargerThan::operator\(\)|operator\(\)\(const CThingBuilding: 00511710 00512410 00513d90 00513e20 00514050 005140a0 005154c0 00515570 00517500 005176d0 00519fa0 0051acf0 0051baf0 00669110 00877fd0 
+CInputEvent::SetAsKeyboardKeyHeld: 00a03bf0 00a669e0 
+CManager::RegisterScreen: 00582944 0059c8f2 005b36e9 005c3057 005cd33f 005f4a86 00602e30 0061a6a0 0066eb11 
+CParticleProgram::RemapBoneIndices: 00ac3af0 00ae3920 00ae3a30 
+CPersistTraits<short>::TransferBinaryIn: 004c84b0 004ca390 004cbc70 004cc3f0 
+CPersistTraits<CDefString>::TransferIn: 007e37f0 007e3820 00816150 00f33480 
+CPersistTraits<NInventory::CItem>::Transfer(In|Out): 005c0e41 005c0e81 005c20d8 005c2118 006421c0 
+# inline PAV CEngineSubPrimitiveBase ctor rows: 00bb1780 00bb6950 00bba260 00be1b50 00bace50 00b98b40 00b98b10 carry no novtable (grep): their copies match the shared header body
+# 0x00A03BF0 defines SetAsKeyboardKeyHeld(long, double) = ?..JN@Z, not the moved ?..W4EInputKey@@NN@Z (swapped self names, NAME_FIXES)
+# 0x004C84B0 / 0x004CA390 define template<> CPersistTraits<short>::TransferBinaryIn(CMemoryDataInputStream&, short&) strongly (pre-existing; entry 57 note)
+# 0x00F33480 defines CPersistTraits<CDefString>::TransferIn(..., CDefString*) strongly (entry 69, left T3)

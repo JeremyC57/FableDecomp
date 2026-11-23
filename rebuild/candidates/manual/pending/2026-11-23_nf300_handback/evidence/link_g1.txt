@@ -1,0 +1,14 @@
+## HEAD set: H_00bbc130.obj H_005140a0.obj H_00514050.obj H_007be0f9.obj H_008eddd0.obj H_00a6da40.obj H_00a6c850.obj H_00a669e0.obj 00b98a50.obj 00bbddd0.obj 00bbbdb0.obj 00512410.obj 00811830.obj 00994780.obj 00445e90.obj 00a86cd0.obj 00a6e9a0.obj 00a03c20.obj
+duplicates 1
+  DUP H_00a6c850.obj ?CalculateSegmentation@CPhysicsMesh@@QAEXXZ in H_00a6da40.obj;
+UNRESOLVED 1 ??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@J@Z
+UNRESOLVED 2 ??RCIsHouseLargerThan@@QBE_NPAVCThingBuilding@@0@Z
+UNRESOLVED 2 ?Create@CIPhysicsFacesSegmentBase@@SIPAV1@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@@Z
+UNRESOLVED 1 ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJJJ@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VCIPhysicsFacesSegmentBase@@@@QAEXPAVCIPhysicsFacesSegmentBase@@@Z
+UNRESOLVED 1 ?SetAsKeyboardKeyHeld@CInputEvent@@QAEXJNN@Z
+## new set: 00bbc130.obj 005140a0.obj 00514050.obj 007be0f9.obj 008eddd0.obj 00a6da40.obj 00a6c850.obj 00a669e0.obj 00b98a50.obj 00bbddd0.obj 00bbbdb0.obj 00512410.obj 00811830.obj 00994780.obj 00445e90.obj 00a86cd0.obj 00a6e9a0.obj 00a03c20.obj
+duplicates 1
+  DUP 00a6c850.obj ?CalculateSegmentation@CPhysicsMesh@@QAEXXZ in 00a6da40.obj;
+UNRESOLVED 1 ?SetAsKeyboardKeyHeld@CInputEvent@@QAEXW4EInputKey@@NN@Z
+LK_DONE

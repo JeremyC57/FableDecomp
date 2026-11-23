@@ -67,7 +67,7 @@ template<> __declspec(noinline) void CPersistTraits<float>::TransferIn(CPersistC
 
 template<> struct CPersistTraits<CDefString> {   // DefaultVal not modelled: retail never initialises it here
     CPersistTraits() {}
-    void TransferIn(CPersistContext&, CStringParser&, CDefString*);   // 0x007E3820
+    void TransferIn(CPersistContext&, CStringParser&, CDefString&);   // 0x007E3820
 };
 namespace NHitLocations {
 struct CPhysicalPrimitiveCylinder {
@@ -86,7 +86,7 @@ bool CPhysicalPrimitiveCylinder::Init(CPersistContext& context, const CCharStrin
         return true;
     }
     CStringParser parser(text, 0, CCharString("", -1), 0);
-    CPersistTraits<CDefString>().TransferIn(context, parser, &BaseName);
+    CPersistTraits<CDefString>().TransferIn(context, parser, BaseName);
     bool notFound;
     { CCharString marker(",", -1); notFound = !parser.SkipPastNextItemIfIs(marker); }
     if (notFound) return false;

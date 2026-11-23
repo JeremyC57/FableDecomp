@@ -200,7 +200,7 @@ T1	standin_alias	LTimer	1	1		008f9ca0
 T1	standin_alias	ReadVar	1	1		00516180
 T1	standin_alias	Transfer	1	1		007e39d0
 T1	standin_alias	set	1	1		00513700
-T1	signature	CPersistTraits	24	28	engine/CPersistTraits.h	00403ff0 0040efb0 0040fe60 0044b890 0045e011 0045ed25 00464030 00475b93 0047926c 004cbc70 004e959d 0057f9e9 005c0a98 005c0e81 005c19a3 005c2118 0067aa40 006b91a0 006ba480 006dc6a0 007ad7f0 007e3820 007e3930 009e81e0
+T1	signature	CPersistTraits	15	18	engine/CPersistTraits.h	00403ff0 0040efb0 0040fe60 0044b890 0045e011 0045ed25 00464030 00475b93 004e959d 0057f9e9 005c0a98 005c19a3 0067aa40 006dc6a0 007e3930
 T1	signature	(none)	14	17		00405220 00497890 005578a0 00778610 0088ae40 00942b30 009e1e70 009e21d0 00cbe0c7 00cbe7aa 00cbe814 00cbed00 00cbed82 00cbeed2
 T1	signature	vector	11	11		0046aca8 004e9f20 00581284 006c9d50 006d4a20 006dd4a0 00721240 007b5210 00f33d90 00f34bf0 00f353f0
 T1	signature	CSurface	6	5	engine/CSurface.h	009f3230 009f35d0 009f36e0 009f37e0 009f4120 009f4590
@@ -209,7 +209,6 @@ T1	signature	RemoveThingFromTask	6	1		00660ae2 00660b5d 00660bd8 00660c53 00660c
 T1	signature	RemoveThingFromTaskList	6	1		00660787 00660894 0066090a 00660980 006609f6 00660a6c
 T1	signature	CEnvironmentSpellEffectInterface	5	2	engine/CEnvironmentSpellEffectInterface.h	00884e90 00884f60 00884fe0 008854a0 00885680
 T1	signature	CThingCreatureBase	5	8	engine/CThingCreatureBase.h	006619f0 00662b10 00663260 006644f0 006668a0
-T1	signature	CManager	4	4	engine/CManager.h	0041db1d 0041db84 0066e9e9 0066eb11
 T1	signature	CScriptedMapBrush	4	3	engine/CScriptedMapBrush.h	0082e600 0082e780 0082e910 0082e9c0
 T1	signature	CSubtitleRenderer	4	6	engine/CSubtitleRenderer.h	00492973 00492e4b 00492f69 00493049
 T1	signature	CTCInventoryAbilities	4	4	engine/CTCInventoryAbilities.h	005ee49a 005eea9b 005f0dc5 005f1320
@@ -220,7 +219,7 @@ T1	signature	CAIStateGroupBase	3	6	engine/CAIStateGroupBase.h	008fcff0 00980bd0 
 T1	signature	CCombatManager	3	8	engine/CCombatManager.h	006e8c30 006e9360 006edc50
 T1	signature	CCreatureAction_PlayAnimation	3	4	engine/CCreatureAction_PlayAnimation.h	008424f0 00842570 00843a80
 T1	signature	CFileInstaller	3	2	engine/CFileInstaller.h	009c3330 009c3a60 009c4440
-T1	signature	CParticleProgram	3	3	engine/CParticleProgram.h	00ae1320 00ae3920 00ae3c30
+T1	signature	CManager	3	3	engine/CManager.h	0041db1d 0041db84 0066e9e9
 T1	signature	CRenderManager2D	3	3	engine/CRenderManager2D.h	009dbff0 009dd210 009de3f0
 T1	signature	CTCFollowed	3	2	engine/CTCFollowed.h	006d4e60 006d50c0 006d5180
 T1	signature	CTCHeroStats	3	4	engine/CTCHeroStats.h	0057a6b8 0057bc6e 0057c4f1
@@ -236,9 +235,7 @@ T1	signature	CEnginePrimitiveManagerOcclusionBase	2	3	engine/CEnginePrimitiveMan
 T1	signature	CEngineSceneGrid	2	2		00b92250 00b939e0
 T1	signature	CFileDataInputStream	2	1	engine/CFileDataInputStream.h	00994700 00994780
 T1	signature	CGameTimeManager	2	1	engine/CGameTimeManager.h	006bb860 006bb940
-T1	signature	CLandscapeBackgroundPatch	2	1	engine/CLandscapeBackgroundPatch.h	00be5bb0 00be5e70
 T1	signature	CParticleEmitter	2	2	engine/CParticleEmitter.h	00aee940 00af0610
-T1	signature	CParticleSystem	2	2	engine/CParticleSystem.h	00af4ee0 00af5330
 T1	signature	CPlayer	2	2	engine/CPlayer.h	00487ef0 004888c0
 T1	signature	CPlayerGui	2	3	engine/CPlayerGui.h	00437ae0 0043b570
 T1	signature	CQ_AmbushTradersScript	2	2	engine/CQ_AmbushTradersScript.h	00f07b80 00f09950
@@ -298,31 +295,22 @@ T1	signature	CEnginePrimitiveManagerRepeatedStaticMeshes	1	1	engine/CEnginePrimi
 T1	signature	CEnginePrimitiveRenderer	1	1	engine/CEnginePrimitiveRenderer.h	00b32ad0
 T1	signature	CEngineSceneMap	1	1	engine/CEngineSceneMap.h	00b93b30
 T1	signature	CEngineScenePrimitiveStatsEnumerator	1	1		00baca20
-T1	signature	CEngineSubPrimitiveBase	1	1	engine/CEngineSubPrimitiveBase.h	00b98a50
 T1	signature	CEngineSubPrimitiveParticleGroup	1	1		00bbbdb0
 T1	signature	CEngineSubPrimitiveRenderer	1	1	engine/CEngineSubPrimitiveRenderer.h	00b84990
 T1	signature	CEventExpressionPerformedTo	1	2		0084b010
-T1	signature	CEventHitBySpecialAbility	1	1		00811830
 T1	signature	CEventShownItem	1	1		0084aee0
 T1	signature	CEventTalkedTo	1	1		0084af90
 T1	signature	CGameCameraManager	1	2	engine/CGameCameraManager.h	00698840
-T1	signature	CGamePlayerInterface	1	1	engine/CGamePlayerInterface.h	00445e90
-T1	signature	CIPhysicsFacesSegmentBase	1	1	engine/CIPhysicsFacesSegmentBase.h	00a86cd0
-T1	signature	CInputEvent	1	1	engine/CInputEvent.h	00a03c20
 T1	signature	CInputManager	1	2	engine/CInputManager.h	009f4c60
 T1	signature	CInputProcessManager	1	1	engine/CInputProcessManager.h	00a0d810
-T1	signature	CIsHouseLargerThan	1	1		00512410
+T1	signature	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be5bb0
 T1	signature	CLocalDetailPrimitiveMeshZSpriteBatch	1	1		00bf9fa0
 T1	signature	CMemoryAllocatorVariableSize	1	1	engine/CMemoryAllocatorVariableSize.h	00a64e70
-T1	signature	CMemoryDataOutputStream	1	1	engine/CMemoryDataOutputStream.h	00996cc0
 T1	signature	CMemoryFile	1	1	engine/CMemoryFile.h	009e97b0
-T1	signature	CMessageEventFilter_IsMyDeadLeader	1	1	engine/CMessageEventFilter_IsMyDeadLeader.h	006af3f0
-T1	signature	CMiniMapDisplay	1	1	engine/CMiniMapDisplay.h	0082b7e0
-T1	signature	CMusicManager	1	1	engine/CMusicManager.h	006bd840
 T1	signature	CNavigatorAStar	1	1	engine/CNavigatorAStar.h	00a1cbf0
 T1	signature	CNavigatorFlyer	1	1	engine/CNavigatorFlyer.h	00a18f70
-T1	signature	COpinionPersonalityTraits	1	1		0045e8ed
 T1	signature	CPSCSplineBase	1	1	engine/CPSCSplineBase.h	00b21940
+T1	signature	CParticleSystem	1	1	engine/CParticleSystem.h	00af5330
 T1	signature	CPhysicsMeshObject	1	3	engine/CPhysicsMeshObject.h	00a12450
 T1	signature	CRangeCompressor	1	1	engine/CRangeCompressor.h	00f3afc0
 T1	signature	CRenderTarget	1	1	engine/CRenderTarget.h	00a10dc0
@@ -402,7 +390,7 @@ T1	signature	deque	1	1		0059b4fe
 T1	signature	pair	1	1		005e0e20
 T1	other	vector	118	186		00410460 00412a50 00414ea0 00431f90 00440c40 004433f0 00454886 00456263 0045baaa 0045c64d 00460c41 00461da1 004624c6 00462cb0 00462e78 0046eabd 0046f565 00471e44 004772a7 0047ba50 0047bb90 00486024 004ad520 004ae040 004c46c0 004cc290 004d07a0 004e201f 004e24ba 004ea398 004eb6e7 004ebe1a 004f9408 00514160 00514eb0 0051b4c0 0051be20 0052c6a0 00535470 00535ad0 0057fcdd 005947b6 005b3325 005bb346 005bba5b 005c1e30 005e24d0 005fa3a5 00624a30 0062ed40 00639810 00656806 0066e630 0066e6d0 0066eda6 00673e10 006741e0 00674300 00674400 0067d450 00681340 00696fe0 006a3c70 006b58f0 006cb010 006e22f0 006e6a30 006f19f0 006f20a0 006fc2d0 007101a0 00710700 00719470 007398b0 00739b40 0074da40 0075b8d0 0076fb00 0077e580 00787340 0078915c 0081df50 00824dd0 0086ea80 008ac970 008adf90 009b4030 009b4f30 009b8350 009cb1f0 009cb2a0 009f9930 00a01820 00a2b970 00a2c210 00a2c2b0 00a2c360 00a38150 00a5ae00 00a5e9c0 00a80b80 00a80ee0 00a83170 00a83a30 00a83d70 00a84940 00a8d750 00aa9330 00ad26d0 00ad2730 00aeca80 00bbdd40 00bcc3b0 00d34f00 00f25d20 00f25f90 00f280a0 00f28810
 T1	other	GetSubDef	69	102		0042b0a2 0042b248 004dc858 00580034 005936c2 005da180 005da300 0065f604 0065f7b4 00669580 00685c00 00696130 006a2fa0 006cd2f0 006d3d00 006d3dc0 006d3ef0 006daa90 00702930 0071f930 00722d30 0072ef60 007325d0 0073dbe0 00748900 0074d160 0074f7d0 00751190 00778900 0077d080 007815a0 00787060 00788e53 0079c4b0 007ad9c0 007afa90 007b2540 007b2600 007b44e0 007b5680 007bb920 007be7ea 007df9e0 007e1230 007e1d30 007e5820 007e6e00 007e7d80 007e8200 007ea960 007f16b0 007f1ee0 007f5560 007f87a0 007fcd50 0080fe60 0087c490 008c33e0 008c3510 008c5a50 008c78f0 008c79b0 008c7a70 008cbff0 008cd0d0 008e3240 008e3300 008f00f0 00956590
-T1	other	CCountedPointer	36	81	engine/CCountedPointer.h	00403d20 00413590 0041915a 00429c15 00450142 0048c5c0 004b6ad0 0056c050 0056c880 005c07e4 005c0800 005c1946 00641eb0 00654b0a 00654c63 006570fa 00657176 00695880 0069c2f0 006e7ab0 006ee3d0 007044b0 00704580 007222f0 007a4120 008ab1e0 00905fd0 00a36ec0 00a6e9a0 00ae9450 00ae94a0 00b2e340 00b3e4a0 00cb8d30 00ce1000 00ce10b0
+T1	other	CCountedPointer	35	80	engine/CCountedPointer.h	00403d20 00413590 0041915a 00429c15 00450142 0048c5c0 004b6ad0 0056c050 0056c880 005c07e4 005c0800 005c1946 00641eb0 00654b0a 00654c63 006570fa 00657176 00695880 0069c2f0 006e7ab0 006ee3d0 007044b0 00704580 007222f0 007a4120 008ab1e0 00905fd0 00a36ec0 00ae9450 00ae94a0 00b2e340 00b3e4a0 00cb8d30 00ce1000 00ce10b0
 T1	other	CThingCreatureBase	26	54	engine/CThingCreatureBase.h	00661b40 00661cd0 00661d20 00661e70 00661ec0 00661ed0 00661f70 00661ff0 006621a0 00662410 006624f0 00662650 006627f0 00662a00 00662ef0 00662fa0 00663990 00663b10 00664490 00664d40 00665190 00665260 00665df0 00666d10 00666d40 00666ef0
 T1	other	CTCInventoryBase	24	51		005bc499 005bc58f 005bc638 005bc649 005bc65b 005bc65c 005bc68e 005bc68f 005bc692 005bc693 005bc6ed 005bcae3 005bcafe 005bce2f 005bd1eb 005bd273 005bd4ea 005bd597 005bdb4d 005bdd8c 005bddb8 005bff07 005c00a0 005c0121
 T1	other	CThing	20	56	engine/CThing.h	004c7380 004c73d0 004c74f0 004c7820 004c7950 004c7990 004c79d0 004c79e0 004c79f0 004c7a00 004c7a60 004c7aa0 004c7ab0 004c7ac0 004c7e50 004c8050 004c9840 004c9b80 004c9ca0 004c9d60
@@ -3446,7 +3434,7 @@ T3	-	iterator	1	3		0041c7b0
 T3	-	remove_copy_if	1	2		00807a90
 T3	-	search	1	3		00567120
 T3	-	transform	1	2		00a5a9d0
-T3	self	CCountedPointer	9	9	engine/CCountedPointer.h	0041bd80 0067f650 0073d180 00863090 00a110d0 00a8cb70 00a99fe0 00a9cb20 00b94f90
+T3	self	CCountedPointer	10	10	engine/CCountedPointer.h	0041bd80 0067f650 0073d180 00863090 00a110d0 00a6e9a0 00a8cb70 00a99fe0 00a9cb20 00b94f90
 T3	self	vector	2	2		004942c3 00dfde30
 T3	self	CCreatureAction_UseObject	1	1	engine/CCreatureAction_UseObject.h	006290e0
 T3	self	CThingCreatureBase	1	1	engine/CThingCreatureBase.h	00662170

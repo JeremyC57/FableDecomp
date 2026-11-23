@@ -1,0 +1,8 @@
+# NF300 lessons (one line each)
+- sigdiff's STANDIN flag (class absent from the name sets) misfires on real classes the regex misses: open the binder before classing (entries 16, 17 were real classes; 16 was a one-word const fix).
+- Compile every self as a control even when the binder looks settled: two self rows had swapped names (0x00A03BF0 / 0x00A03C20 SetAsKeyboardKeyPressed / Held), and the table witness of entry 43 was stale (its HEAD object already bound the PDB spelling).
+- A pick-any respell of an inline local ctor drags every inline base ctor of that model along: a `__declspec(novtable)` base model emits a different-bodied base copy that would join the owner's COMDAT group under the PDB name (entry 2). Run pickany on every COMDAT the respelled object defines, not only the one named in the entry.
+- `virtual` on a destructor of a class already polymorphic through a shared base can still change code (0x009B08C0: DIFFER 506v506); grade before calling it in place.
+- Making a counted pointer member `CCountedPointer<const T>` to take a const factory result also respells its Reset binding: check the Reset self (0x00A6E9A0 is a stand-in, so both spellings stay unresolved) before counting it free.
+- Tracker pdb_spellings for STL-typed members are VC10 Dinkumware instances (_List_iterator<_List_val<...> >); retail is STLport: such entries are rejects, not respells (entry 47).
+- An add-only `#ifdef NEW / new decl / #else / unchanged line / #endif` inside an existing opt-in block gives a planted control that separates the block's definers from the header's other includers (7 flagged, 3 not).

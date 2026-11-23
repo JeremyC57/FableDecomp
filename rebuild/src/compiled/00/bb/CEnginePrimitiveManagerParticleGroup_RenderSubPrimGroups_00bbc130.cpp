@@ -37,7 +37,7 @@ public:
     CEngineInternalPrimitiveBase* Parent;           // +0x0c
     CEngineSubPrimitiveBase*      NextSubPrimitive; // +0x10
     CEnginePrimitiveManager*      Manager;          // +0x14
-    CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase& parent) : Parent(&parent), NextSubPrimitive(0) { }
+    CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase* parent) : Parent(parent), NextSubPrimitive(0) { }
 };
 
 // NF46 (round 7): the 0x01436E84 global is NEngineInternal::GPPrimitiveTypeInfo (Ego_r.pdb / FableWin.pdb
@@ -118,13 +118,13 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
     }
     case 7: {
         CEnginePrimitiveManagerParticleSpriteGroup* manager = (CEnginePrimitiveManagerParticleSpriteGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(27);
-        CEngineSubPrimitiveBase subPrimitive(primitive);
+        CEngineSubPrimitiveBase subPrimitive(&primitive);
         manager->RenderSingleSprite(subPrimitive, pass);
         break;
     }
     case 20: {
         CEnginePrimitiveManagerParticleSpriteTrailGroup* manager = (CEnginePrimitiveManagerParticleSpriteTrailGroup*)NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(29);
-        CEngineSubPrimitiveBase subPrimitive(primitive);
+        CEngineSubPrimitiveBase subPrimitive(&primitive);
         manager->RenderSingleSpriteTrail(subPrimitive, pass);
         long layout = CShaderRenderManager::Get().PeekVertexShaderConstantLayout();
         CShaderRenderManager::Get().SetVertexShaderConstantLayout(5);
@@ -134,14 +134,14 @@ void CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPr
     case 30: {
         if (NEngineInternal::GPVideoOptions && NEngineInternal::GPVideoOptions->EffectsQuality >= ENGINE_VIDEO_OPTION_QUALITY_HIGH) {
             CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
-            CEngineSubPrimitiveBase subPrimitive(primitive);
+            CEngineSubPrimitiveBase subPrimitive(&primitive);
             manager->RenderSubPrimitive(subPrimitive, pass);
         }
         break;
     }
     default: {
         CEnginePrimitiveManager* manager = NEngineInternal::GPPrimitiveTypeInfo->GetPrimitiveManager(primitive.Type);
-        CEngineSubPrimitiveBase subPrimitive(primitive);
+        CEngineSubPrimitiveBase subPrimitive(&primitive);
         manager->RenderSubPrimitive(subPrimitive, pass);
         break;
     }

@@ -1,0 +1,17 @@
+--- /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF300/orig/hdr/engine/NHeroInformationScreens_CManager.h	2026-11-23 03:26:51.974219078 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/agentNF300/hdr/engine/NHeroInformationScreens_CManager.h	2026-11-23 03:26:51.986935887 +0000
+@@ -32,8 +32,14 @@
+ #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER
+     // Retail opt-in (chunk 1023, row 0x0061A6A0): Ego_r.pdb / FableWin.pdb ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXPBVCBase@2@@Z,
+     // out of line at 0x0066EB11 (every inventory screen's OnCreate registers itself; the landed bound spelling). Declaration only.
++#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_REGISTER_REFERENCE
++    // NF300 add-only opt-in (2026-11-23): Ego_r.pdb + FableWin.pdb spell it ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z
++    //   (a const reference; the self row 0x0066EB11 defines that), so the pointer line below is not the PDB spelling. Declaration only.
++    void RegisterScreen(const CBase& screen);           // 0x0066EB11
++#else
+     void RegisterScreen(const CBase* screen);           // 0x0066EB11
+ #endif
++#endif
+ #ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_DEREGISTERALL
+     // NF79 opt-in (round 7, row 0x0089F4A0 CGameScriptInterface::TurnCreatureInto): Ego_r.pdb + FableWin.pdb
+     // ?DeregisterAllScreens@CManager@NHeroInformationScreens@@QAEXXZ, out of line at 0x0066EBE0. Declaration only.

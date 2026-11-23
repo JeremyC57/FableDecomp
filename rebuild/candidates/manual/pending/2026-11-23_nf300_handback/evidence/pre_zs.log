@@ -1,0 +1,11 @@
+03:21:25 ZS_PASS zsT_00445e90 test /home/user/FableDecomp/rebuild/tests/00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_00445e90_test.cpp /Od /W3
+03:21:25 ZS_PASS zsH_00445e90 src /home/user/FableDecomp/rebuild/src/compiled/00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_00445e90.cpp /O2 /Oy /W3
+03:21:25 ZS_PASS zsT_00a86cd0 test /home/user/FableDecomp/rebuild/tests/00/a8/CIPhysicsFacesSegmentBase_Create_00a86cd0_test.cpp /Od /W3
+03:27:36 ZS_PASS zsT_00522160 test /home/user/FableDecomp/rebuild/tests/00/52/CThingManager_SaveEntitiesBinary_00522160_test.cpp /Od /W3
+03:27:37 ZS_PASS zsT_0061a6a0 test /home/user/FableDecomp/rebuild/tests/00/61/CTCInventoryQuests_OnCreate_0061a6a0_test.cpp /Od /W3
+03:27:37 ZS_PASS zsT_0082b7e0 test /home/user/FableDecomp/rebuild/tests/00/82/CMiniMapDisplay_DrawMarkers_0082b7e0_test.cpp /Od /W3
+03:27:37 ZS_PASS zsT_0066eb11 test /home/user/FableDecomp/rebuild/tests/00/66/NHeroInformationScreensCManager_RegisterScreen_0066eb11_test.cpp /Od /W3
+03:27:56 ZS_PASS zsH_0066eb11 src /home/user/FableDecomp/rebuild/src/compiled/00/66/NHeroInformationScreensCManager_RegisterScreen_0066eb11.cpp /O2 /Oy /W3
+03:30:35 ZS_PASS zsT_00ae3920 test /home/user/FableDecomp/rebuild/tests/00/ae/CParticleProgram_RemapBoneIndices_00ae3920_test.cpp /Od /W3
+03:30:36 ZS_PASS zsT_006b91a0 test /home/user/FableDecomp/rebuild/tests/00/6b/CPersistTraitsCFaction_TransferOut_006b91a0_test.cpp /Od /W3
+03:30:36 ZS_PASS zsT_009e81e0 test /home/user/FableDecomp/rebuild/tests/00/9e/CPersistTraitsC2DVector_TransferIn_009e81e0_test.cpp /Od /W3

@@ -19,7 +19,7 @@ enum ECrimeSeverity { ECrimeSeverity_Default };
 
 template <class T> struct CPersistTraits {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x0047926C for this T
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);   // 0x0047926C for this T
 };
 
 class CPersistContext_TransferableComponentGenericType { public:
@@ -57,7 +57,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         PSaveStream->WriteSLONG(value);
         break;
     case 2:
-        CPersistTraits<T>().TransferBinaryIn(PLoadStream, &value);
+        CPersistTraits<T>().TransferBinaryIn(*PLoadStream, value);
         break;
     case 1: {
         CPersistContext_TransferableComponent<T> item(value);

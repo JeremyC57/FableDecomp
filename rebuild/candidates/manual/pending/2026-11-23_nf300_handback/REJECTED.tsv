@@ -1,0 +1,2 @@
+idx	address	class	reason
+47	0x00AF5330	CParticleSystem	the pdb_spelling is the VC10 Dinkumware list-iterator instance (_List_iterator<_List_val<...> >) from the donor PDBs; retail is STLport 4.6 and binder 0x00B0DC20 already spells the STLport iterator (_Nonconst_traits): nothing to move toward; the self row is the one that needs the STLport spelling (NAME_FIXES)
