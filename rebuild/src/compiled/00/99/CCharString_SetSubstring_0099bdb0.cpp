@@ -19,7 +19,7 @@ class CWideString
     CWideString* SetSubstring(CWideString* retVal, unsigned long start, unsigned long len);
 protected:
     CWideStringData* AllocStringData(const unsigned short* s, long n);   // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
-    void UnassignString_0099b4d0();
+    void UnassignString();// NF299: PDB name, was UnassignString_0099b4d0
 protected:
     static long NoStrings;                              // 0x013BCA20 ?NoStrings@CWideString@@1JA (protected static instance counter)
 };
@@ -65,7 +65,7 @@ skipAlloc:
         {
             if (oldRetStorage != 0)
             {
-                retVal->UnassignString_0099b4d0();
+                retVal->UnassignString();
             }
             if (newStorage != 0)
             {

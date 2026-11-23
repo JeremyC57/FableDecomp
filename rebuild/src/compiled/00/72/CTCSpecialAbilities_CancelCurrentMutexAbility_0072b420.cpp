@@ -64,8 +64,8 @@ class CTCAssassinRush        { public: void CancelMove(); };       // 0x007AA480
 class CTCHealLife            { public: void CancelMove(); };       // 0x007C3E90
 class CTCGhostSword          { public: void CancelMove(); };       // 0x007C5710
 class CTCFireballSpell       { public: void CancelMove(); };       // 0x007C8FD0
-class CTCDivineWrath         { public: void CancelAbilities(); };  // 0x0078F820
-class CTCUnholyPower         { public: void CancelAbilities(); };  // 0x00794D90
+class CTCDivineWrath         { public: void CancelMove(); };  // 0x0078F820; NF299: PDB name, was CancelAbilities
+class CTCUnholyPower         { public: void CancelMove(); };  // 0x00794D90; NF299: PDB name, was CancelAbilities (NF296 entry 571 missed this binder)
 
 class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
@@ -95,7 +95,7 @@ void CTCSpecialAbilities::CancelCurrentMutexAbility()
     case 14: { CThing* t = ParentThing; if (t->HasTC(0x99)) t->GetTC(0x99, (CTCHealLife*)0)->CancelMove(); break; }
     case 15: { CThing* t = ParentThing; if (t->HasTC(0x9a)) t->GetTC(0x9a, (CTCGhostSword*)0)->CancelMove(); break; }
     case 16: { CThing* t = ParentThing; if (t->HasTC(0x9d)) t->GetTC(0x9d, (CTCFireballSpell*)0)->CancelMove(); break; }
-    case 18: { CThing* t = ParentThing; if (t->HasTC(0x85)) t->GetTC(0x85, (CTCDivineWrath*)0)->CancelAbilities(); break; }
-    case 19: { CThing* t = ParentThing; if (t->HasTC(0x86)) t->GetTC(0x86, (CTCUnholyPower*)0)->CancelAbilities(); break; }
+    case 18: { CThing* t = ParentThing; if (t->HasTC(0x85)) t->GetTC(0x85, (CTCDivineWrath*)0)->CancelMove(); break; }
+    case 19: { CThing* t = ParentThing; if (t->HasTC(0x86)) t->GetTC(0x86, (CTCUnholyPower*)0)->CancelMove(); break; }
     }
 }

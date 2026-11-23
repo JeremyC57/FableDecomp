@@ -1,0 +1,65 @@
+1	0077cca0	0077d140	DoStopRunning	CTCHighlightItem	HDR:engine/CTCHighlightItem.h DEF:0077cca0 PRIV	DoStopRunning
+37	0070c4e0	008e9710	FindCombinationAnim	CAnimateThing	STALE	GetFirstCombinationAnimFromType
+65	0052ccf0	00549a00	?1CDraggableInto	NUISystem	STALE VIRT	?1CChangingStateComponent
+66	0052cf40	005469e0	ChangeState	CChangingStateComponent	HDR:engine/NUISystem_CIconText.h,engine/NUISystem_CTextSlider.h DEF:00547010,00544350,0054a990 VIRT	ChangeState
+71	0099f1f0	0099f930	Format	CCharString	STALE	Sprintf
+79	008574d0	008c4f50	SetName	CCombatActionBase	CLEAN	SetCombatAnimation
+82	00859a20	0085c120	FinishAction	CCombatActionBase	HDR:engine/CCombatAction_GenericResponseToExplosion.h,engine/CCreatureAction_TrollGroundPound.h DEF:008c48a0,008cb5c0,008c99c0	FinishAction
+82	00859a20	008c52c0	FinishAction	CCombatActionBase	HDR:engine/CCombatAction_GenericResponseToExplosion.h,engine/CCreatureAction_TrollGroundPound.h DEF:008c48a0,008cb5c0,008c99c0 VIRT	FinishAction
+83	00859ef0	00923cd0	OnAnimationLoaded	CCombatActionBase	HDR:engine/CCreatureActionBase.h,engine/CCombatActionBase.h DEF:008ec260,00859ef0,00923cd0	OnAnimationLoaded
+83	00859ef0	008ec260	OnAnimationLoaded	CCombatActionBase	HDR:engine/CCreatureActionBase.h,engine/CCombatActionBase.h DEF:008ec260,00859ef0,00923cd0 VIRT	OnAnimationLoaded
+96	00a3a9c0	00a3aa40	ZAlloc	CCompressorZlib	PRIV	Alloc
+97	00a3aa00	00a3aa40	ZFree	CCompressorZlib	PRIV	Free
+98	00a3aa10	00996230	Init	CCompressorZlib	PRIV	Initialise
+118	007a4120	007a1870	DestroyObject	?$CCountedPointer	CLEAN	DeleteData
+133	00694d10	0078b410	Initialise	CCreatureActionBase	HDR:engine/CCreatureActionBase.h,engine/CCreatureAction_BriarRoseIntoInvulnerable.h DEF:00842f70,00845b10,00847df0 VIRT	Initialise
+135	008ed650	00891720	?0CCreatureAction_StabbedToDeath		STALE	?0CCreatureAction_Die
+150	008c61c0	008c63c0	WhackGround	CCreatureAction_TrollWhackGroundBase	HDR:engine/CCreatureAction_TrollWhackGroundBase.h DEF:008c61c0 PRIV	WhackGround
+166	00996610	004b64e0	WriteBuffer	CDataOutputStream	CLEAN	WriteCompressed
+170	00431f10	004ed2f1	?4CRecordHead		STALE	?4CDefClassBase
+182	00657ba0	00657d90	GetExpressionSlotOffsets	CDrawAbilityButtonsPC	DEF:00657d90 PRIV	GetExpressionPositionMapping
+222	00810fd0	008d48f0	GetPWeapon	CEventHitBase	HDR:engine/CHitParameters.h	GetPWeaponUsed
+237	00f36f40	00f37030	FreeTextureSlot	CGPUScratchBufferTextureManager	STALE PRIV	FreeResourceEntry
+238	006988b0	00699090	Extra	CGameCameraManager	CLEAN	PushCurrentManualMode
+245	006e77f0	008918c0	GetTextIDFromSymbol	CGameScriptInterface	STALE	GetScriptSpriteBySymbol
+258	0099a350	009f4910	Init	CInitBaseClass	HDR:engine/CRenderManagerCore.h PRIV	Initialise
+258	0099a350	009a6610	Initialise	CInitBaseClass	HDR:fable_gfuninitialise.h,engine/CIEngine.h DEF:0099a350,009a6610 PRIV	Initialise
+268	00ef7ab0	00ef7800	?1CIsThingStored	NScript	STALE	?1CIsThingConscious
+275	00416225	0049dbe0	GetFrame	CMainGameComponent	HDR:engine/CGamePlayerInterface.h,engine/CTCWife_Marry_bodies.h	GetCurrentServerFrame
+275	00416225	006e37d0	GetWorldFrame	CMainGameComponent	HDR:engine/CGameScriptInterface.h	GetCurrentServerFrame
+291	008621a0	008d87c0	OnActivate	CModeStandBase	HDR:engine/NCreatureMode_CModeJackOfBladesFlash.h,engine/NCreatureMode_CModeScorpionKingVulnerable.h DEF:008e7b90,008e0060,008e8060 VIRT	OnActivate
+311	00a629d0	009cd850	DeallocateMemory	CPackedUIntArray	CLEAN	Clear
+316	006dfda0	006e1620	SetHidden	CParticleEmitter	CLEAN	SetParticleCreationDisabled
+317	00aecd70	00aed2f0	CalcFadeAlpha	CParticleEmitter	STALE	GetFadeAlpha
+325	009bc120	00f33b90	TransferVectorOfSubComponentsLoadText	CPersistContext	HDR:engine/CPersistContext.h DEF:009bc120 PRIV	TransferVectorOfSubComponentsLoadText
+331	008fa9f0	008fadb0	Finalise	CPhysicsCollisionPointsObject	CLEAN	GetPointsList
+342	00d89ad0	00d87cb0	PlayCutScene	CQ_HeroSoulsNostroScript	CLEAN	PlayCutscene
+350	00f3ae50	00f3afc0	CompressToBuffer	CRangeCompressor	CLEAN	Compress
+406	007e9250	007e9360	UpdateMaxExitWeight	CTCAvoidRegionExit	DEF:007e9360,007e9410	UpdateBestDist
+419	007338a0	007339e0	OnBlockHoldExpired	CTCCombat	CLEAN	UnsetBlocking
+429	008137e0	00813860	ChooseNewTagger	CTCCreatureGroupTag	STALE PRIV	FindNewTagger
+442	0078f820	0072ba40	CancelAbilities	CTCDivineWrath	CLEAN	CancelMove
+463	006c5920	007baf00	EndDeed	CTCHeroOpinionDeedLog	CLEAN	RemoveDeedStillSearchingForWitnesses
+486	0056f03d	0056f497	Prepare	CTCInventoryExperience	STALE	ResetExperienceSpendValues
+492	005fc510	00602f30	ReleaseMapScreenPrimitives	CTCInventoryMap	CLEAN	ResetPrimitiveHandles
+499	007714b0	00771620	PushSourceDefIndex	CTCOpinionSource	CLEAN	PushNewSourceDef
+501	007e60f0	007e61b0	PlaySound	CTCOracleMinigame	CLEAN	PlaySoundW
+508	00702470	005e4430	GetQuestName	CTCQuestCard	HDR:engine/CTCQuestCard.h DEF:00702310	GetQuestObjective
+521	0066add0	007c6da0	StopSample	CTCSoundPlayer	CLEAN	StopAttachedSound
+537	007ee540	0093ae80	GetVillage	CTCVillageMember	CLEAN	GetPVillage
+539	005daa70	006a1e00	IsMeleeWeapon	CTCWeapon	HDR:engine/CTCWeapon.h	IsProjectile
+548	004c79e0	00666ea0	PeekWorldMap	CThing	HDR:engine/CTCBase.h,engine/CAIStateGroupBase.h DEF:004c79e0 PRIV	PeekWorldMap
+550	004c7aa0	00692c10	GetWorld	CThing	HDR:engine/CGameCameraManager.h,engine/CCreatureActionBase.h PRIV	GetWorld
+565	00662410	006ea770	IsRegisteredCombatant	CThingCreatureBase	STALE	IsInMeleeAsAttacker
+571	006a8a80	00936070	?RCThingFilter_OnFire		STALE	?RCThingFilter_IsOnFire
+572	00838ba0	0082d810	WorldUpdate	CThingGameObject	HDR:engine/CThingCreatureBase.h,engine/CThingGameObject.h DEF:00836260,00704150,006666a0 VIRT	WorldUpdate
+585	0098f380	0098f3a0	ThreadProc	CThreadedFileManager	PRIV	BeginThread
+601	00a67460	009fcd40	ReleaseVolume	CVolume	DEF:00a67460,00a67420	Uninitialise
+606	0099b2c0	009cbe10	ConvertToCharString	CWideString	STALE	ToCharString
+607	0099b4d0	0099b560	UnassignString	CWideString	HDR:fable_string.h DEF:0099bf30,0099be70,0099bff0 PRIV	UnassignString
+607	0099b4d0	0099b7d0	Release	CWideString	HDR:engine/CIEngine.h,engine/CSurface.h PRIV	UnassignString
+607	0099b4d0	0099b720	UnassignString	CWideString	HDR:fable_string.h DEF:0099bf30,0099be70,0099bff0 PRIV	UnassignString
+607	0099b4d0	0099bdb0	UnassignString_0099b4d0	CWideString	PRIV	UnassignString
+767	0081c7d0	0081d580	?$__sort_heap	PAU?$pair	STALE	?$sort_heap
+768	0086c890	0086d0c0	?$__sort_heap	PAU?$pair	STALE	?$sort_heap
+769	009b5af0	009b6ad0	?$__sort_heap	PAU?$pair	STALE	?$sort_heap

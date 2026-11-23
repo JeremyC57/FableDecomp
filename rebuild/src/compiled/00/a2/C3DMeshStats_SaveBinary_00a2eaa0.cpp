@@ -22,7 +22,7 @@ class CDataOutputStream { public:
     void Write3DVector(const C3DVector& value);           // 0x00993FD0
     void WriteMatrix3x4(const CMatrix3x4& m);             // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
-    void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
+    void WriteCompressed(const void* data, long size);      // 0x00996610 (compressed block); NF299: PDB name, was WriteBuffer
 public:
     void WriteEBOOL(bool);   // 0x00993E30
     void WriteSLONG(long);   // 0x00993EB0
@@ -103,9 +103,9 @@ void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
     out.WriteUWORD(PackedNamesSize);
     out.WriteUWORD((unsigned short)MeshVolumes.size());
     out.WriteUWORD((unsigned short)MeshGenerators.size());
-    out.WriteBuffer(HelperPoints.m_pData, HelperPoints.m_count * sizeof(C3DHelperPoint));
-    out.WriteBuffer(DummyObjects.m_pData, DummyObjects.m_count * sizeof(C3DDummyObject));
-    out.WriteBuffer(PackedNames, PackedNamesSize);
+    out.WriteCompressed(HelperPoints.m_pData, HelperPoints.m_count * sizeof(C3DHelperPoint));
+    out.WriteCompressed(DummyObjects.m_pData, DummyObjects.m_count * sizeof(C3DDummyObject));
+    out.WriteCompressed(PackedNames, PackedNamesSize);
     for (unsigned long i = 0; i < MeshVolumes.size(); ++i) {
         out.WriteULONG(MeshVolumes[i].first);
         const C3DMeshVolume& volume = MeshVolumes[i].second;

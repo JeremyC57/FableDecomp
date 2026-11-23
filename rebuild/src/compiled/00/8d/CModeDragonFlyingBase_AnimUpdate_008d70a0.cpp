@@ -49,7 +49,7 @@ class CAnimateThing { public:
     unsigned char CurrentAnimType;             // +0x50 (main CAnimSet)
     unsigned char CurrentAnimFlags;            // +0x51
     void SetMainAnim(const CAnimInit& init, long blendIn, long delay);   // 0x0070D580
-    CAnimSet* FindCombinationAnim(long type);  // 0x0070C4E0
+    CAnimSet* GetFirstCombinationAnimFromType(long type);  // 0x0070C4E0; NF299: PDB name, was FindCombinationAnim
     void AddCombinationAnim(const CAnimInit& init, long a, long b, bool c, bool d);   // 0x0070D780
 };
 struct CModeBase {                             // CTCCreatureModeManager::CModeBase
@@ -71,9 +71,9 @@ void CModeDragonFlyingBase::AnimUpdate(CAnimateThing& animate)
     }
     CCharString legPose("FLYING_LEG_POSE");
     CAnimationEntry* pose = creature->GetAnimFromName(legPose, 0);
-    if (pose->Index != -1 && animate.FindCombinationAnim(0x22) == 0) {
+    if (pose->Index != -1 && animate.GetFirstCombinationAnimFromType(0x22) == 0) {
         animate.AddCombinationAnim(CAnimInit(0x22, 0, pose->Index, 0, true, 0, 100), 0, 0, false, false);
-        CAnimSet* combination = animate.FindCombinationAnim(0x22);
+        CAnimSet* combination = animate.GetFirstCombinationAnimFromType(0x22);
         combination->SetInternalAlpha(0, 0.0f, false);
     }
 }

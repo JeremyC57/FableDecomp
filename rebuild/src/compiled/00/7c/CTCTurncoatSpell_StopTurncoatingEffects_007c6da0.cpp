@@ -48,7 +48,7 @@ class CThing { public:
 #include "engine/CTCSpecialAbilities.h"
 
 class CTCSoundPlayer { public:                         // interface 0x10
-    void StopSample(unsigned long sampleID);    // 0x0066ADD0
+    void StopAttachedSound(unsigned long sampleID);    // 0x0066ADD0; NF299: PDB name, was StopSample
 };
 
 class CBaseObject;
@@ -81,7 +81,7 @@ void CTCTurncoatSpell::StopTurncoatingEffects()
 {
     CTCSoundPlayer* sound;
     if (ParentThing->GetInterface(&sound, 0x10)) {
-        sound->StopSample(LoopingSound);
+        sound->StopAttachedSound(LoopingSound);
         LoopingSound = 0;
     }
     if (IS_THING_ALIVE(TurncoatingEffectOnMe))

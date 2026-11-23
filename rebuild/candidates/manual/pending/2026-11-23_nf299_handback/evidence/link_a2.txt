@@ -1,0 +1,21 @@
+## HEAD set: H_004b64e0.obj H_00a2eaa0.obj H_00a75400.obj H_00a89450.obj H_00a8fd40.obj H_00ac3b00.obj H_009fccf0.obj H_009fcd10.obj H_009fcd40.obj H_00a68130.obj H_00a69550.obj H_00a67ea0.obj H_00996610.obj H_00a67460.obj
+duplicates 5
+H_009fcd40.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in H_009fccf0.obj; second definition ignored
+H_00a68130.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in H_009fccf0.obj; second definition ignored
+H_00a69550.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in H_009fccf0.obj; second definition ignored
+H_00a69550.obj : warning LNK4006: "public: void __thiscall CVolumeTexture::ForwardToVolumeLevel(unsigned long,void *)" (?ForwardToVolumeLevel@CVolumeTexture@@QAEXKPAX@Z) already defined in H_009fcd40.obj; second definition ignored
+H_00a67ea0.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in H_009fccf0.obj; second definition ignored
+UNRESOLVED 1 ?ReleaseResources@CVolume@@QAEXH@Z
+UNRESOLVED 1 ?ReleaseVolume@CVolume@@QAEXJ@Z
+UNRESOLVED 4 ?ReleaseVolume@CVolume@@QAEX_N@Z
+UNRESOLVED 5 ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z
+UNRESOLVED 1 ?WriteData@CDataOutputStream@@QAEXPBXK@Z
+## new set: N_004b64e0.obj N_00a2eaa0.obj N_00a75400.obj N_00a89450.obj N_00a8fd40.obj N_00ac3b00.obj N_009fccf0.obj N_009fcd10.obj N_009fcd40.obj N_00a68130.obj N_00a69550.obj N_00a67ea0.obj H_00996610.obj H_00a67460.obj
+duplicates 5
+N_009fcd40.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in N_009fccf0.obj; second definition ignored
+N_00a68130.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in N_009fccf0.obj; second definition ignored
+N_00a69550.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in N_009fccf0.obj; second definition ignored
+N_00a69550.obj : warning LNK4006: "public: void __thiscall CVolumeTexture::ForwardToVolumeLevel(unsigned long,void *)" (?ForwardToVolumeLevel@CVolumeTexture@@QAEXKPAX@Z) already defined in N_009fcd40.obj; second definition ignored
+N_00a67ea0.obj : warning LNK4006: "public: virtual __thiscall CVolume::~CVolume(void)" (??1CVolume@@UAE@XZ) already defined in N_009fccf0.obj; second definition ignored
+UNRESOLVED 6 ?Uninitialise@CVolume@@QAEX_N@Z
+LK_DONE

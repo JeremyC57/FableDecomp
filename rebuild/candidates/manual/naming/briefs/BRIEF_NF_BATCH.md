@@ -100,3 +100,13 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
 - NF291 Q4: a flat branch marked "GENERATED ... do not edit by hand" may take an add-only declaration opt-in (gen_class_headers.py keeps
   any header with a `FABLE_RETAIL_` mark, so a regenerate cannot drop it), with the usual equiv_check and planted control.
 - NF289 / NF291 Q1: a table-only fix whose witness fails the clang precheck: compile the witness's HEAD object (D1 / D1b) and read what it binds.
+- NF301: a tracker PDB spelling in the VC10 Dinkumware form (`_List_val`, `_Vector_val`, `_Tree_val`, ...) where the binders bind the
+  STLport form is `done-equivalent`, not a fix target; a table-less global base may move into its PDB namespace in place when objsec is ALL_EQ.
+- NF299 Q1 / Q2: a `friend` naming the real class after an alias-pattern `#undef` lands (NF281 D1); a full mangled `// Leaf:` replacing a
+  bare one lands when the recheck payload follows it.
+- NF299 Q3: `virtual` on a local base model (the PDB member is virtual, the binder calls it qualified) is allowed under R1 when the binder's
+  TU emits no vftable / RTTI COMDAT for that class (no new `??_7` / `??_R` symbol), every member offset is kept (leading pad shrunk where
+  the model was non-polymorphic) and objsec is ALL_EQ with the COMDAT sets SAME; anything else stops and is handed back.
+- NF299 Q4: entries whose every binder binds through a class or scope found in neither PDB name set (or the wrong class) may be marked
+  `skipped-port (census)` from a census script without opening each binder; commit the script in tools/, open 1 in 10 of them (and every
+  entry where a binder includes a shared header that already declares the PDB member) and record the sample in STATUS.

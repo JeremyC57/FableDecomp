@@ -1,0 +1,14 @@
+## HEAD set: H_009cd850.obj H_00666ea0.obj H_0099b560.obj H_0099b7d0.obj H_0099bdb0.obj H_008d48f0.obj H_008d49b0.obj H_00810fd0.obj H_004c79e0.obj H_00a629d0.obj H_0099b4d0.obj
+duplicates 0
+
+UNRESOLVED 1 ?DeallocateMemory@CPackedUIntArray@@QAEXXZ
+UNRESOLVED 2 ?GetPWeapon@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ
+UNRESOLVED 1 ?PeekWorldMap@CThing@@QBEABVCWorldMap@@XZ
+UNRESOLVED 1 ?Release@CWideString@@AAEXXZ
+UNRESOLVED 1 ?UnassignString@CWideString@@QAEXXZ
+UNRESOLVED 1 ?UnassignString_0099b4d0@CWideString@@IAEXXZ
+## new set: N_009cd850.obj N_00666ea0.obj N_0099b560.obj N_0099b7d0.obj N_0099bdb0.obj N_008d48f0.obj N_008d49b0.obj H_00810fd0.obj H_004c79e0.obj H_00a629d0.obj H_0099b4d0.obj
+duplicates 0
+
+UNRESOLVED 1 ?Clear@CPackedUIntArray@@QAEXXZ
+LK_DONE

@@ -38,9 +38,9 @@ class CACompressor { public:                               // landed 0x00A3AEA0 
 class CCompressorZlib : public CACompressor { public:             // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
     static long GetWorkspaceSize();                 // 0x00A3A7D0
-    void Init();                                    // 0x00A3AA10
+    private: void Initialise(); public:                                    // 0x00A3AA10; NF299: PDB name, was Init
     virtual void v00();
-    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Initialise(); }
 };
 
 template<unsigned int NodeSize> struct CSentinelList {   // STLport list: the sentinel pointer only

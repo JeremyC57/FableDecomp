@@ -81,7 +81,7 @@ class CTCVillage { public:
     bool IsSociableTime() const;                // 0x00658D5D
 };
 class CTCVillageMember { public:
-    CTCVillage* GetVillage();                   // 0x007EE540
+    CTCVillage* GetPVillage() const;                   // 0x007EE540; NF299: PDB name, was GetVillage
 };
 class CThingObject;
 
@@ -125,7 +125,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
         return false;
     CTCVillageMember* member;
     if (creature->GetTC(TCI_VILLAGE_MEMBER, &member)) {
-        if (member->GetVillage() && !member->GetVillage()->IsSociableTime())
+        if (member->GetPVillage() && !member->GetPVillage()->IsSociableTime())
             return false;
     }
     GotSeatPos = false;

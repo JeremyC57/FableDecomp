@@ -47,7 +47,7 @@ class CAnimSet;
 class CAnimateThing { public:
     unsigned char _pad00[0x50];
     unsigned char CurrentAnimType;         // +0x50 (main CAnimSet)
-    CAnimSet* FindCombinationAnim(long type);   // 0x0070C4E0
+    CAnimSet* GetFirstCombinationAnimFromType(long type);   // 0x0070C4E0; NF299: PDB name, was FindCombinationAnim
     void AddCombinationAnim(const CAnimInit& init, long a, long b, bool c, bool d);   // 0x0070D780
     void RemoveCombinationAnimsOfType(long type);   // 0x0070D8C0
 };
@@ -86,7 +86,7 @@ void CModeCarryingStandBase::FrameUpdate()
     CAnimateThing& animate = animation->GetAnimation();
     if (animate.CurrentAnimType != 1) {
         long index = GetCarryingAnimIndex();
-        if (index != -1 && animate.FindCombinationAnim(0x18) == 0) {
+        if (index != -1 && animate.GetFirstCombinationAnimFromType(0x18) == 0) {
             CAnimInit init(0x18, 0, index, 1, true, 0, 100);
             animate.AddCombinationAnim(init, 0, 0, false, false);
         }

@@ -1,0 +1,82 @@
+#98 00996230 NO leaf=?ReadZlibCompressed@* 
+#98 0052ada0 YES leaf=??0CCompressorZlib* 
+#98 009967e0 NO leaf=?WriteZlibCompressed@CDataOutputStream@* 
+#98 00996a40 NO leaf=?OpenMemorySource@CCompressedMemoryDataInputStream@* 
+#98 009c4330 NO leaf=??0CActiveFile* 
+#166 004b64e0 YES leaf=?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z 
+#166 00a2eaa0 YES leaf=?SaveBinary@C3DMeshStats@* 
+#166 00a75400 YES leaf=?SaveBinary@CContainmentVolume@* 
+#166 00a89450 YES leaf=?SaveBinary@C3DMesh2@* 
+#166 00a8fd40 YES leaf=?SaveBinary@C3DPrimitive2@* 
+#166 00ac3b00 YES leaf=?SaveBinary@C3DClothPrimitive@* 
+#311 009cd850 NOTINFW ['?InternalClose@CBankFile@*']
+#311 009cd740 YES leaf=?PackRuntimeData@CBankFile@@AAEXXZ 
+#442 0072ba40 YES leaf=?CancelAllAbilities@CTCSpecialAbilities@* 
+#442 0072b420 YES leaf=?CancelCurrentMutexAbility@CTCSpecialAbilities@* 
+#499 00771620 YES leaf=?PushNewSourceDef@CTCOpinionSource@* 
+#501 007e61b0 YES leaf=?FireOutput@CTCOracleMinigame@* 
+#537 0093ae80 NOTINFW []
+#585 0098f3a0 NO leaf=??0CThreadedFileManager* 
+#150 008c63c0 NO leaf=?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ 
+#548 00666ea0 YES leaf=?IsThingInLOSAndFOV@CThingCreatureBase@@QBE_NABVCThing@@@Z 
+#550 00692c10 NO leaf=?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ similar=?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ
+#539 006a1e00 YES leaf=?RemoveThingFromPrimarySlot@CTCCarrying@* 
+#601 009fccf0 YES leaf=??1CVolume@@UAE@XZ 
+#601 009fcd10 NO leaf=??_GCVolume@@UAEPAXI@Z 
+#601 009fcd40 NOTINFW ['?ForwardToVolumeLevel@CVolumeTexture@*']
+#601 00a67ea0 NO leaf=?GetVolumeLevel@CVolumeTexture@* 
+#601 00a68130 NO leaf=?CopyFromVolumeTexture@CVolumeTexture@* 
+#601 00a69550 NOTINFW ['?ForwardToVolumeLevel@CVolumeTexture@*']
+## dchk (later units)
+#607 0099b560 YES leaf=?MakeOwnCopyOfData@CWideString@* 
+#607 0099b7d0 NOTINFW ['?operatorassign@CWideString@*']
+#607 0099bdb0 NOTINFW ['?SetSubstring@CWideString@@*']
+#222 008d48f0 NOTINFW ['?GetEvent@CTCEntityEvents@*']
+#222 008d49b0 NOTINFW ['?GetEvent@CTCEntityEvents@*']
+#521 007c6da0 YES leaf=?StopTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ 
+#521 0078f6e0 NO leaf=?FinishMove@CTCDivineWrath@@QAEXXZ 
+#521 0079d020 NO leaf=?ImmediateCancel@CTCBulletTime@* 
+#521 0079d110 NO leaf=??1CTCBulletTime* 
+#521 007b0950 YES leaf=?FinishFishing@CTCFishing@@IAEX_N@Z 
+#37 008d70a0 YES leaf=?AnimUpdate@CModeDragonFlyingBase@* 
+#37 008d88a0 NOTINFW []
+#37 008e97b0 YES leaf=?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAE 
+#150 008c63c0 NO leaf=?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ 
+## donor chains
+## ?Initialise@CCompressorZlib@@AAEXXZ callers=1
+    ??0CCompressorZlib@@QAE@XZ
+## ?Clear@CPackedUIntArray@@QAEXXZ callers=4
+    ??1CPackedUIntArray@@QAE@XZ
+    ?CloseEntries@CBankFile@@AAEXXZ
+    ?Initialise@CPackedUIntArray@@QAEXPBXKJK@Z
+    ?PackRuntimeData@CBankFile@@AAEXXZ
+## ?GetPWeaponUsed@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ callers=2
+    ??RCEventFilter_HitEventWithNoWeapon@?A0x70a0c557@@QBE_NPAVCEventHitBase@NEntityEvents@@@Z
+    ??RCEventFilter_HitEventWithWeapon@?A0x70a0c557@@QBE_NPAVCEventHitBase@NEntityEvents@@@Z
+## ?Uninitialise@CVolume@@QAEX_N@Z callers=3
+    ??1CVolume@@UAE@XZ
+    ??4CVolume@@QAEABV0@ABV0@@Z
+    ?InitialiseFromVolumeTextureMipmap@CVolume@@QAEXPAUIDirect3DVolume9@@@Z
+## ?UnassignString@CWideString@@IAEXXZ callers=5
+    ??1CWideString@@QAE@XZ
+    ?MakeOwnCopyOfData@CWideString@@IAEXXZ
+    ?MakeOwnCopyOfDataOrEmptyString@CWideString@@IAEXXZ
+    ?SetString@CWideString@@IAEXABV1@@Z
+    ?SetString@CWideString@@IAEXPB_WJ@Z
+YES ?BeginThread@CThreadedFileManager@@CAXPAX@Z in ??0CThreadedFileManager@@QAE@XZ
+## ?CancelAllAbilities@CTCSpecialAbilities@@QAEXXZ @0254fa90 len=480
+    ?CancelMove@CTCDivineWrath@@QAEXXZ
+    ?CancelMove@CTCUnholyPower@@QAEXXZ
+## ?CancelCurrentMutexAbility@CTCSpecialAbilities@@QAEXXZ @0254f280 len=1056
+    ?CancelMove@CTCDivineWrath@@QAEXXZ
+    ?CancelMove@CTCUnholyPower@@QAEXXZ
+## ?RemoveThingFromPrimarySlot@CTCCarrying@@QAEPAVCThing@@_N@Z @022183f0 len=944
+    ?IsProjectile@CTCWeapon@@QBE_NXZ
+    ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ
+## ?IsRunnable@CAIStateGroup_BanditSitRoundCampfire@@UAE_NXZ @02b7d1b0 len=432
+    ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ
+## ?FireOutput@CTCOracleMinigame@@QAEXXZ @027a3700 len=240
+    ?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z
+## ?PushNewSourceDef@CTCOpinionSource@@QAE_NABVCCharString@@@Z @01f3b100 len=384
+    ?PushNewSourceDef@CTCOpinionSource@@QAE_NJ@Z
+## ?PushNewSourceDef@CTCOpinionSource@@QAE_NJ@Z @01f3b280 len=80

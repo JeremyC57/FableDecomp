@@ -31,10 +31,10 @@ class CACompressor { public:                                        // landed 0x
 class CCompressorZlib : public CACompressor { public:                      // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
     static long GetWorkspaceSize();                          // 0x00A3A7D0
-    void Init();                                             // 0x00A3AA10
+    private: void Initialise(); public:                                             // 0x00A3AA10; NF299: PDB name, was Init
     unsigned long InternalDecompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize);   // 0x00A3AB00
     virtual ~CCompressorZlib();                              // 0x00A3ACC0
-    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Initialise(); }
 };
 // NF93 (q11297): the local CByteArray model replaced by engine/CArray.h: CArray<unsigned char> (FableWin ??0?$CArray@E@@QAE@I@Z 0x00514E20,
 //   out of line; Ego_d types these buffers CArray<unsigned char>), the null-tested release, GetAsCArray (the start, or its own address).

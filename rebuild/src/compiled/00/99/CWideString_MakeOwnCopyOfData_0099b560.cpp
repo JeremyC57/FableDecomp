@@ -51,7 +51,7 @@ class CWideStringData { public:                      // 16 bytes
 class CWideString {
 public:
     CWideStringData* PStringData;             // +0x00
-    void UnassignString();                    // 0x0099B4D0
+    protected: void UnassignString(); public:                    // 0x0099B4D0; NF299: PDB access (Ego_r + FableWin IAE), was public
     void MakeOwnCopyOfData();
 };
 

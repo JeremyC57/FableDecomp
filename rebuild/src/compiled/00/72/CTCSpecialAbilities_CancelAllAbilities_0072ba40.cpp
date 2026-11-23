@@ -50,8 +50,8 @@ class CTCSummonSpell         { public: void CancelMove(); };       // 0x0079A820
 class CTCGhostSword          { public: void CancelMove(); };       // 0x007C5710
 class CTCMultiStrike         { public: void CancelMove(); };       // 0x007CC9B0
 class CTCMultiArrow          { public: void CancelMove(); };       // 0x007CBEE0
-class CTCDivineWrath         { public: void CancelAbilities(); };  // 0x0078F820
-class CTCUnholyPower         { public: void CancelAbilities(); };  // 0x00794D90
+class CTCDivineWrath         { public: void CancelMove(); };  // 0x0078F820; NF299: PDB name, was CancelAbilities
+class CTCUnholyPower         { public: void CancelMove(); };  // 0x00794D90; NF299: PDB name, was CancelAbilities (NF296 entry 571 missed this binder)
 
 class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
@@ -68,6 +68,6 @@ void CTCSpecialAbilities::CancelAllAbilities()
     if (ParentThing->HasTC(0x9a)) ParentThing->GetTC(0x9a, (CTCGhostSword*)0)->CancelMove();
     if (ParentThing->HasTC(0x87)) ParentThing->GetTC(0x87, (CTCMultiStrike*)0)->CancelMove();
     if (ParentThing->HasTC(0x88)) ParentThing->GetTC(0x88, (CTCMultiArrow*)0)->CancelMove();
-    if (ParentThing->HasTC(0x85)) ParentThing->GetTC(0x85, (CTCDivineWrath*)0)->CancelAbilities();
-    if (ParentThing->HasTC(0x86)) ParentThing->GetTC(0x86, (CTCUnholyPower*)0)->CancelAbilities();
+    if (ParentThing->HasTC(0x85)) ParentThing->GetTC(0x85, (CTCDivineWrath*)0)->CancelMove();
+    if (ParentThing->HasTC(0x86)) ParentThing->GetTC(0x86, (CTCUnholyPower*)0)->CancelMove();
 }

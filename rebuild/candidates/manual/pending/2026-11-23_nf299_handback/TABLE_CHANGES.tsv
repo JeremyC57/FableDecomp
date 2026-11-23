@@ -1,0 +1,34 @@
+action	symbol	target	witness	note
+delete	?DoStopRunning@CTCHighlightItem@@QAEXXZ	0077cca0	0077d140	no landed binder left (NF299)
+delete	?Init@CCompressorZlib@@QAEXXZ	00a3aa10	00996230	no landed binder left (NF299)
+delete	?CancelAbilities@CTCDivineWrath@@QAEXXZ	0078f820	0072ba40	no landed binder left (NF299)
+delete	?PushSourceDefIndex@CTCOpinionSource@@QAE_NJ@Z	007714b0	00771620	no landed binder left (NF299)
+delete	?PlaySound@CTCOracleMinigame@@QAEKABVCCharString@@@Z	007e60f0	007e61b0	no landed binder left (NF299)
+delete	?GetVillage@CTCVillageMember@@QAEPAVCTCVillage@@XZ	007ee540	0093ae80	no landed binder left (NF299)
+delete	?ThreadProc@CThreadedFileManager@@SAXPAX@Z	0098f380	0098f3a0	no landed binder left (NF299)
+add	?BeginThread@CThreadedFileManager@@CAXPAX@Z	0098f380	0098f3a0	binder respelled by NF299
+delete	?IsMeleeWeapon@CTCWeapon@@QAE_NXZ	005daa70	006a1e00	no landed binder left (NF299)
+delete	?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z	00996610	004b64e0	no landed binder left (NF299)
+add	?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z	00996610	004b64e0	binder respelled by NF299
+rewitness	?WriteData@CDataOutputStream@@QAEXPBXK@Z	00996610	006ba030	CONDITIONAL: was 00ac3b00 (respelled by NF299); 006ba030 (stay-off: NF297/NF298 set, not compiled here) names WriteData in its code (bk.py source scan)
+delete	?ReleaseResources@CVolume@@QAEXH@Z	00a67460	009fccf0	no landed binder left (NF299)
+delete	?ReleaseVolume@CVolume@@QAEXJ@Z	00a67460	009fcd10	no landed binder left (NF299)
+delete	?ReleaseVolume@CVolume@@QAEX_N@Z	00a67460	009fcd40	no landed binder left (NF299)
+delete	?DeallocateMemory@CPackedUIntArray@@QAEXXZ	00a629d0	009cd850	no landed binder left (NF299)
+delete	?PeekWorldMap@CThing@@QBEABVCWorldMap@@XZ	004c79e0	00666ea0	no landed binder left (NF299)
+rewitness	?UnassignString@CWideString@@QAEXXZ	0099b4d0	0099be70	CONDITIONAL: was 0099b560 (respelled by NF299); the landed rows 0x0099BE70 / 0x0099BF30 / 0x0099BFF0 (global operator rows) still declare CWideString::UnassignString public and define it as a same-TU noinline callee body (source read, not compiled): their own calls bind QAE
+delete	?Release@CWideString@@AAEXXZ	0099b4d0	0099b7d0	no landed binder left (NF299)
+delete	?UnassignString_0099b4d0@CWideString@@IAEXXZ	0099b4d0	0099bdb0	no landed binder left (NF299)
+delete	?GetPWeapon@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	00810fd0	008d48f0	no landed binder left (NF299)
+delete	?GetWorld@CThing@@QAEAAVCWorld@@XZ	004c7aa0	00692c10	table only (NF299): the witness HEAD object binds ?GetWorld@CThing@@IAEAAVCWorld@@XZ (stale line); no landed caller declares a public CThing::GetWorld (acc.py scan; engine/CThing.h has it protected)
+delete	?FindCombinationAnim@CAnimateThing@@QAEPAVCAnimSet@@J@Z	0070c4e0	008e9710	no landed binder left (NF299)
+delete	?StopSample@CTCSoundPlayer@@QAEXK@Z	0066add0	007c6da0	no landed binder left (NF299)
+delete	?Format@CCharString@@QAAXPBDZZ	0099f1f0	0099f930	table only (NF299): witness HEAD object binds ?Sprintf@CCharString@@QAAXPBDZZ, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+delete	?GetTextIDFromSymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z	006e77f0	008918c0	table only (NF299): witness HEAD object binds ?GetScriptSpriteBySymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+delete	?CalcFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z	00aecd70	00aed2f0	table only (NF299): witness HEAD object binds ?GetFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+add	?GetFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z	00aecd70	00aed2f0	table only (NF299): the witness binds it (HEAD object); no line yet
+delete	?Prepare@CTCInventoryExperience@@QAEXXZ	0056f03d	0056f497	table only (NF299): witness HEAD object binds ?ResetExperienceSpendValues@CTCInventoryExperience@@QAEXXZ, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+delete	?ConvertToCharString@CWideString@@QBE?AVCCharString@@XZ	0099b2c0	009cbe10	table only (NF299): witness HEAD object binds ?ToCharString@CWideString@@QBE?AVCCharString@@XZ, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+delete	?FreeTextureSlot@CGPUScratchBufferTextureManager@@QAEXJ@Z	00f36f40	00f37030	table only (NF299): witness HEAD object binds ?FreeResourceEntry@CGPUScratchBufferTextureManager@@AAEXJ@Z, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+delete	?ChooseNewTagger@CTCCreatureGroupTag@@QAE_NXZ	008137e0	00813860	table only (NF299): witness HEAD object binds ?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ, not this spelling (stale line); bk.py: every landed caller names the PDB identifier
+add	?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ	008137e0	00813860	table only (NF299): the witness binds it (HEAD object); no line yet

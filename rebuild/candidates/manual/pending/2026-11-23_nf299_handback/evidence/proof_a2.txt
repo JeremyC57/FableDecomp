@@ -1,0 +1,48 @@
+##### 004b64e0 renames: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00a2eaa0 renames: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=5
+tables H=0 N=0
+##### 00a75400 renames: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00a89450 renames: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+sections head 2 new 2
+ALL_EQ text_sections_equal=1
+tables H=0 N=0
+##### 00a8fd40 renames: ?WriteBuffer@CDataOutputStream@@QAEXPBXJ@Z=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=3
+tables H=0 N=0
+##### 00ac3b00 renames: ?WriteData@CDataOutputStream@@QAEXPBXK@Z=?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
+sections head 3 new 3
+ALL_EQ text_sections_equal=2
+tables H=0 N=0
+##### 009fccf0 renames: ?ReleaseResources@CVolume@@QAEXH@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 4 new 4
+ALL_EQ text_sections_equal=2
+tables H=1 N=1
+##### 009fcd10 renames: ?ReleaseVolume@CVolume@@QAEXJ@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=3
+tables H=1 N=1
+##### 009fcd40 renames: ?ReleaseVolume@CVolume@@QAEX_N@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=3
+tables H=1 N=1
+##### 00a68130 renames: ?ReleaseVolume@CVolume@@QAEX_N@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 7 new 7
+ALL_EQ text_sections_equal=5
+tables H=1 N=1
+##### 00a69550 renames: ?ReleaseVolume@CVolume@@QAEX_N@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 5 new 5
+ALL_EQ text_sections_equal=3
+tables H=1 N=1
+##### 00a67ea0 renames: ?ReleaseVolume@CVolume@@QAEX_N@Z=?Uninitialise@CVolume@@QAEX_N@Z
+sections head 6 new 6
+ALL_EQ text_sections_equal=4
+tables H=1 N=1

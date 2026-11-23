@@ -11,7 +11,7 @@
 class CDataOutputStream { public:
     virtual void v00();
     void WriteULONG(unsigned long value);                       // 0x00993EA0
-    void WriteData(const void* data, unsigned long size);       // 0x00996610
+    void WriteCompressed(const void* data, long size);       // 0x00996610; NF299: PDB name, was WriteData (parameter long per the PDB, was unsigned long)
 };
 
 class CMemoryDataOutputStream : public CDataOutputStream {
@@ -46,5 +46,5 @@ void C3DClothPrimitive::SaveBinary(CDataOutputStream& out) const
     CMemoryDataOutputStream stream;
     ParticleProgram->WriteToFile(stream);
     out.WriteULONG(((CMemoryDataOutputStream*)&stream)->GetLength());
-    out.WriteData(((void*)stream.PeekData()), ((CMemoryDataOutputStream*)&stream)->GetLength());
+    out.WriteCompressed(((void*)stream.PeekData()), ((CMemoryDataOutputStream*)&stream)->GetLength());
 }

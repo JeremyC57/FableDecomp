@@ -59,7 +59,7 @@ public:
     const CWideString& operator=(const CWideString& rhs);
 
 private:
-    void Release();             // 0x0099B7D0-adjacent helper; masked callee
+    protected: void UnassignString(); private:   // 0x0099B4D0 (the callee; the row is 0x0099B7D0); NF299: PDB name and access (Ego_r + FableWin IAE), was private Release
 
     CWideStringData* data;      // +0x00
 };
@@ -72,7 +72,7 @@ const CWideString& CWideString::operator=(const CWideString& rhs)
         if (rhs.data != oldData)
         {
             if (oldData != 0)
-                Release();
+                UnassignString();
             CWideStringData* newData = rhs.data;
             if (newData != 0)
             {

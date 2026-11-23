@@ -30,9 +30,9 @@ class CVolume : public CBaseClass { public:                                    /
     CVolume() : m_pVolume(0) { }
     CVolume(IDirect3DVolume9* volume) : m_pVolume(0) { InitialiseFromVolumeTextureMipmap(volume); }
     CVolume(const CVolume& other);                          // 0x00A673E0
-    ~CVolume() { ReleaseVolume(true); }
+    ~CVolume() { Uninitialise(true); }
     void InitialiseFromVolumeTextureMipmap(IDirect3DVolume9* volume);    // 0x00A67770; NF296: PDB name, was InitialiseFromVolume
-    void ReleaseVolume(bool flag);                          // 0x00A67460
+    void Uninitialise(bool flag);                          // 0x00A67460; NF299: PDB name, was ReleaseVolume
 };
 
 class CVolumeTexture { public:

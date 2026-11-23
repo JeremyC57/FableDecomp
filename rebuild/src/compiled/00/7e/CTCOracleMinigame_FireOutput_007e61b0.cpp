@@ -52,7 +52,7 @@ class CTCOracleMinigame : public CTCBase { public:
     CThing* Symbols[4];                             // +0xb0
     long  SymbolsFiring[4];                         // +0xc0
     long  FramesFired[4];                           // +0xd0
-    unsigned long PlaySound(const CCharString& name);   // 0x007E60F0
+    unsigned long PlaySoundW(const CCharString& name);   // 0x007E60F0; NF299: PDB name, was PlaySound
     void FireOutput();
 };
 
@@ -64,5 +64,5 @@ void CTCOracleMinigame::FireOutput()
     FramesFired[symbol] = CWorld::GetFrame();
     ++NumOutputsFired;
     CCharString sound("SND_MM_COLOURED_FLARE");
-    PlaySound(sound);
+    PlaySoundW(sound);
 }

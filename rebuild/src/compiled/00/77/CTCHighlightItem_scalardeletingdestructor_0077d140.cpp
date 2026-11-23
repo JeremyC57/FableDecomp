@@ -36,7 +36,7 @@ struct CTCHighlightItem : CTCBase {
     long                LifeTimer;                       // +0x10
     C3DVector           StartPos;                        // +0x14
     CIntelligentPointer<CThing> PParticleEmitter;                // +0x20
-    void DoStopRunning();                                // 0x0077CCA0
+    protected: void DoStopRunning(); public:             // 0x0077CCA0; NF299: PDB access (Ego_r + FableWin IAE), was public
     virtual ~CTCHighlightItem() { DoStopRunning(); }
 };
 

@@ -8,10 +8,10 @@ class CVolume : public CBaseClass {
 public:
     CVolume();
     ~CVolume();
-    void ReleaseResources(int flag);   // 0x00a67460 (member helper, __fastcall + stack arg)
+    void Uninitialise(bool flag);   // 0x00a67460 (member helper, __fastcall + stack arg); NF299: PDB name, was ReleaseResources (parameter bool per the PDB, was int)
 };
 
 CVolume::~CVolume()
 {
-    ReleaseResources(1);
+    Uninitialise(1);
 }

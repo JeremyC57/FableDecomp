@@ -20,9 +20,9 @@ struct IDirect3DVolume9;
 
 class CVolume : public CBaseClass { public:                            // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                    // +0x04
-    void ReleaseVolume(bool release);               // 0x00A67460
+    void Uninitialise(bool release);               // 0x00A67460; NF299: PDB name, was ReleaseVolume
     void Helper_00a67450(void* argument);                    // 0x00A67450 (empty)
-    virtual ~CVolume() { ReleaseVolume(true); }
+    virtual ~CVolume() { Uninitialise(true); }
 };
 
 class CVolumeTexture { public:

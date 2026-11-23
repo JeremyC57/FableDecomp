@@ -36,8 +36,8 @@ extern unsigned long g_VolumeTextureMemoryBytes;   // 0x013D28E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
-    ~CVolume() { ReleaseVolume(true); }
-    void ReleaseVolume(bool flag);                 // 0x00A67460
+    ~CVolume() { Uninitialise(true); }
+    void Uninitialise(bool flag);                 // 0x00A67460; NF299: PDB name, was ReleaseVolume
     unsigned long GetByteLength() const;           // 0x00A674E0
 };
 class CVolumeTexture { public:                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)

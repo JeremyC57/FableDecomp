@@ -1,5 +1,5 @@
 // CTCHighlightItem::DoStopRunning() -- kills the particle emitter, spawns the def's end effect at the thing and clears Running
-// Leaf: DoStopRunning
+// Leaf: ?DoStopRunning@CTCHighlightItem@@IAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CCA0, 117 bytes; default /O2 TU, no frame.
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (twice), CThing::Kill(bool) @ 0x004C9B80,
@@ -105,7 +105,7 @@ struct CTCHighlightItem {
     void DoStartRunning();                           // 0x0077CBE0
     void DoMovement();                               // 0x0077C960
     void OnInitialActivate();
-    void DoStopRunning();
+    protected: void DoStopRunning(); public:          // NF299: PDB access (Ego_r + FableWin IAE), was public
     void FrameUpdate();
 };
 
