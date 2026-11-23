@@ -5,6 +5,7 @@ T1	access	C3DMeshInfo	1	1	engine/C3DMeshInfo.h	00a24a80
 T1	access	CBankFileAsyncData	1	1	engine/CBankFileAsyncData.h	009d54e0
 T1	access	CCharString	1	1		0099ea60
 T1	access	CComponent	1	1		00531ec0
+T1	access	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	006924c0
 T1	access	CDefinitionManager	1	1	engine/CDefinitionManager.h	009ad950
 T1	access	CEngineClothSimulationMeshBase	1	1	engine/CEngineClothSimulationMeshBase.h	00b80ad0
 T1	access	CEnginePrimitiveOcclusionInfo	1	1	engine/CEnginePrimitiveOcclusionInfo.h	00b2f8b0
