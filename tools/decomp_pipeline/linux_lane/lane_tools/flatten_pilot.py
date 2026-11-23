@@ -81,6 +81,99 @@ def vland(tag, rows):
         m = re.match(r"([0-9a-f]{8})\s+(\S+)\s+(\S+)\s", l)
         if m and m.group(2) != "WARN": st.setdefault(m.group(1), (m.group(2), m.group(3)))
     return d, st
+# --switch (advisor, 2026-11-23): a class whose shared header already declares the member behind a landed class-model switch takes the
+# switch route: the row defines the switch and includes the header (the preamble of the smallest landed precedent that defines a member of
+# that class out of line under the same switch), drops its local model and defines the member with the header's own return type. No header
+# edit. Only these class-model switches (pass-specific ones such as *_PASS27 stay out):
+SWITCHES = {"FABLE_RETAIL_NSCRIPT", "FABLE_RETAIL_CCREATUREACTIONBASE", "FABLE_RETAIL_CIENGINE", "FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS"}
+_prec = {}
+def header_switch(cls, meth):
+    """(switch, declaration match) when engine/<cls>.h declares meth() with no parameters inside `class cls`, under exactly one #ifdef of SWITCHES."""
+    h = f"rebuild/include/engine/{cls}.h"
+    if not os.path.exists(h): return None
+    t = open(h, encoding="utf-8", errors="replace").read()
+    found = []
+    for d in re.finditer(r'^[ \t]*(?:virtual\s+)?(?P<r>[^;(){}\n]*?)\b' + meth + r'\s*\(\s*(?:void)?\s*\)\s*(?P<c>const)?\s*(?:=\s*0\s*)?;', t, re.M):
+        stack = []
+        for ln in t[:d.start()].splitlines():
+            s = ln.strip()
+            if re.match(r'#\s*if', s): stack.append(s)
+            elif re.match(r'#\s*else|#\s*elif', s) and stack: stack[-1] = "ELSE " + stack[-1]
+            elif re.match(r'#\s*endif', s) and stack: stack.pop()
+        inner = [x for x in stack if not re.match(r'#\s*ifndef\s+(FABLE_RETAIL_HEADER_\w+|\w+_H|\w+_HPP|\w+_INCLUDED)\s*$', x)]
+        sw = [re.match(r'#\s*ifdef\s+(\w+)\s*$', x) for x in inner]
+        if inner and all(sw) and any(q.group(1) in SWITCHES for q in sw):
+            cl = [q for q in re.finditer(r'^\s*(?:class|struct)\s+' + cls + r'\b[^;{]*\{', t[:d.start()], re.M)]
+            if cl: found.append(([q.group(1) for q in sw], d))
+    return found[0] if len(found) == 1 else None
+def precedent(cls, sws):
+    key = (cls, tuple(sws))
+    if key in _prec: return _prec[key]
+    best = None
+    for f in glob.glob("rebuild/src/compiled/*/*/*.cpp"):
+        tx = alltext.get(f) if alltext else None
+        if tx is None: tx = open(f, encoding="utf-8", errors="replace").read()
+        if not all(re.search(r'^#define\s+' + s + r'\b', tx, re.M) for s in sws): continue
+        md = re.search(r'^[A-Za-z_][^;(\n]*\b' + cls + r'::\w+\s*\([^;]*\)\s*(?:const\s*)?\n?\s*\{', tx, re.M)
+        if not md or ('#include "engine/' + cls + '.h"') not in tx[:md.start()]: continue
+        pre = [l for l in tx[:md.start()].splitlines() if re.match(r'\s*#\s*(define|include|undef|pragma)\b', l)
+               and not re.match(r'\s*#\s*define\s+__(fastcall|stdcall|cdecl|thiscall)\b', l)]
+        if best is None or len(pre) < len(best[0]): best = (pre, os.path.basename(f))
+    _prec[key] = best; return best
+def switch_source(src, m, cls, meth, newsym, is_const):
+    hs = header_switch(cls, meth)
+    if not hs: return None, "no single class-model switch declares " + cls + "::" + meth + " in engine/" + cls + ".h"
+    sws, d = hs
+    if bool(d.group("c")) != is_const: return None, "header constness differs from the PDB symbol"
+    pr = precedent(cls, sws)
+    if not pr: return None, "no landed precedent defines a " + cls + " member under " + ",".join(sws)
+    ret = re.sub(r'^(?:virtual\s+|static\s+|inline\s+)+', '', d.group("r").strip())
+    if not ret: return None, "header return type not found"
+    if re.fullmatch(r'E\w+|\w+Type|\w+Enum', ret) and '::' not in ret: ret = cls + "::" + ret   # a nested type needs the class scope outside it
+    i = m.end(); depth = 1
+    while depth and i < len(src):
+        depth += {"{": 1, "}": -1}.get(src[i], 0); i += 1
+    body = src[m.end():i - 1]
+    pconst = 'const ' if m.group('c') else ''
+    if m.group('p') is None: alias = ""
+    elif m.group('t') == 'void': alias = f"\n    {pconst}void* {m.group('p')} = (void*)this;"
+    else: alias = f"\n    {pconst}{cls}* {m.group('p')} = {'const_cast<' + cls + '*>(this)' if (is_const and not pconst) else 'this'};"
+    lead = re.match(r'(?:\s*//[^\n]*\n)*', src).group(0)
+    lead = re.sub(r'^//\s*Leaf:.*\n', '', lead, flags=re.M)
+    out = ("// Leaf: " + newsym + "\n" + lead.lstrip("\n") +
+           "// Switch route (flatten pilot --switch): the class model is engine/" + cls + ".h under " + ", ".join(sws) +
+           "; preamble copied from the landed precedent " + pr[1] + ".\n" + "\n".join(pr[0]) + "\n\n" +
+           f"{ret} {cls}::{meth}(){' const' if is_const else ''}\n{{{alias}{body}}}\n")
+    return out, None
+import struct
+def coff_info(obj):
+    """(.drectve text, set of undefined external symbols) of a COFF object."""
+    d = open(obj, "rb").read(); ns, = struct.unpack_from("<H", d, 2); symp, nsym = struct.unpack_from("<II", d, 8)
+    drv = ""
+    for i in range(ns):
+        o = 20 + i * 40
+        if d[o:o + 8].rstrip(b"\0") == b".drectve":
+            sz, ptr = struct.unpack_from("<II", d, o + 16); drv += d[ptr:ptr + sz].decode("latin-1")
+    strt = symp + nsym * 18; und = set(); i = 0
+    while i < nsym:
+        o = symp + i * 18; nm = d[o:o + 8]
+        if nm[:4] == b"\0\0\0\0":
+            off, = struct.unpack_from("<I", nm, 4); e = d.index(b"\0", strt + off); name = d[strt + off:e].decode("latin-1")
+        else: name = nm.rstrip(b"\0").decode("latin-1")
+        val, sec, typ, cls, aux = struct.unpack_from("<IhHBB", d, o + 8)
+        if sec == 0 and cls == 2 and val == 0: und.add(name)
+        i += 1 + aux
+    return drv, und
+def libcp_only(o, oh, on):
+    """Switch-route `.drectve` exception (coordinator ruling, advisor 2026-11-23): every non-.drectve section ALL_EQ, the new .drectve is
+    HEAD's tokens plus exactly /DEFAULTLIB:"libcp", and the undefined-symbol sets are equal (so libcp can resolve nothing HEAD lacked)."""
+    diffs = [l for l in o.splitlines() if l.startswith("DIFF")]
+    if not diffs or any(" .drectve .drectve " not in l for l in diffs): return False
+    if any(l.startswith(("ONLY", "MISSING", "EXTRA")) for l in o.splitlines()): return False
+    dh, uh = coff_info(oh); dn, un = coff_info(on)
+    th, tn = dh.split(), dn.split()
+    if sorted(tn) != sorted(th + ['/DEFAULTLIB:"libcp"']): return False
+    return uh == un
 head, new = [], []
 for a, cls, meth, old, newsym in cands:
     if len(new) >= mx: break
@@ -146,14 +239,22 @@ for a, cls, meth, old, newsym in cands:
             body = b2
         ns_src = ns_src[:md.end()] + body.rstrip() + "\n    " + decl + "\n" + ns_src[i - 1:]
     elif fwd.search(ns_src) and os.path.exists(f"rebuild/include/engine/{cls}.h"):
-        res.append((a, "SKIP", old, newsym, "forward declaration only and engine/" + cls + ".h exists: needs a header opt-in (shared-header rule)")); continue
+        if "--switch" not in argv:
+            res.append((a, "SKIP", old, newsym, "forward declaration only and engine/" + cls + ".h exists: needs a header opt-in (shared-header rule)")); continue
+        ns_src, why = switch_source(src, m, cls, meth, newsym, is_const)
+        if why: res.append((a, "SKIP", old, newsym, "switch route: " + why)); continue
     elif fwd.search(ns_src):
         ns_src = fwd.sub(lambda q: q.group(1) + f"class {cls} {{ {decl} }};", ns_src, count=1)
     elif not os.path.exists(f"rebuild/include/engine/{cls}.h") and not re.search(r'\b' + cls + r'\b', src[:m.start()]):
         ns_src = ns_src[:m.start()] + f"class {cls} {{ {decl} }};\n" + ns_src[m.start():]
+    elif "--switch" in argv and os.path.exists(f"rebuild/include/engine/{cls}.h"):
+        ns_src, why = switch_source(src, m, cls, meth, newsym, is_const)
+        if why: res.append((a, "SKIP", old, newsym, "switch route: " + why)); continue
     else:
         res.append((a, "SKIP", old, newsym, "no local definition or forward declaration of " + cls + (" and engine/" + cls + ".h exists: needs a header opt-in" if os.path.exists(f"rebuild/include/engine/{cls}.h") else ""))); continue
-    if "// Leaf:" in ns_src: ns_src = re.sub(r'^//\s*Leaf:.*$', lambda q: "// Leaf: " + newsym, ns_src, count=1, flags=re.M)
+    if "--switch" in argv and "// Switch route" not in ns_src: res.append((a, "SKIP", old, newsym, "local route (not run in --switch mode)")); continue
+    if "// Switch route" in ns_src: pass
+    elif "// Leaf:" in ns_src: ns_src = re.sub(r'^//\s*Leaf:.*$', lambda q: "// Leaf: " + newsym, ns_src, count=1, flags=re.M)
     elif ns_src.startswith('//'): ns_src = re.sub(r'^(//[^\n]*\n)', lambda q: q.group(1) + '// Leaf: ' + newsym + '\n', ns_src, count=1)
     else: ns_src = '// Leaf: ' + newsym + '\n' + ns_src   # landing pilot 1: 73 of 79 rows began with code, so the Leaf was never written
     tst = open("rebuild/tests/" + kv["TestSource"], encoding="utf-8").read() if kv.get("TestSource") else ""
@@ -172,9 +273,10 @@ for h, n in zip(head, new):
     with contextlib.redirect_stderr(io.StringIO()): g = V.obj_text(on, n["leaf"])[2]
     if g != n["leaf"]: res.append((a, "REJECT", h["leaf"], n["leaf"], f"graded symbol {g}")); continue
     o = subprocess.run(["python3", OBJSEC, oh, on, f"{h['leaf']}={n['leaf']}"], capture_output=True, text=True).stdout
-    if "ALL_EQ" not in o: res.append((a, "REJECT", h["leaf"], n["leaf"], "objsec " + " / ".join(o.strip().splitlines()[-3:]))); continue
+    sw_lib = "ALL_EQ" not in o and "// Switch route" in n["source_cpp"] and libcp_only(o, oh, on)
+    if "ALL_EQ" not in o and not sw_lib: res.append((a, "REJECT", h["leaf"], n["leaf"], "objsec " + " / ".join(o.strip().splitlines()[-3:]))); continue
     if not (gst[0].startswith(("MATCH", "RELOCATION_MATCH")) and gst[1] == "PASS"): res.append((a, "REJECT", h["leaf"], n["leaf"], f"grade {gst}")); continue
-    res.append((a, "ACCEPT", h["leaf"], n["leaf"], f"objsec ALL_EQ, {gst[0]} {gst[1]}"))
+    res.append((a, "ACCEPT", h["leaf"], n["leaf"], ("objsec ALL_EQ but .drectve +libcp (undefined sets equal)" if sw_lib else "objsec ALL_EQ") + f", {gst[0]} {gst[1]}"))
 acc = {r[0] for r in res if r[1] == "ACCEPT"}
 for f in glob.glob(f"{work}/rows/*.cpp"):
     if os.path.basename(f)[:8] not in acc: os.replace(f, f + ".rejected")

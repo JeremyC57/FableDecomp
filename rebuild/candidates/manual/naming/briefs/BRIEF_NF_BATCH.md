@@ -159,3 +159,14 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   the old spelling. D5: an object's UND symbol proves the binding for a rewitness whatever the row's grade. Write a rewitness's witness
   column as the NEW bare address only (not `old -> new`).
 - NF316 Q3: a binder named only in a T3_PORT_QUEUE reason column is not reserved; an address in column 2 or listed in a unit's column 3 is.
+- Coordinator, 2026-11-23 (flatten switch route; scripted coordinator route only, NOT the T1 agent standard above, which keeps
+  `.drectve` in ALL_EQ):
+  - Scope: a flattened row moved onto its class header under an existing landed class-model switch (`flatten_pilot.py --switch`).
+  - The move may add exactly `/DEFAULTLIB:"libcp"` to `.drectve`, under these conditions:
+    - every other section is ALL_EQ;
+    - the new `.drectve` tokens are HEAD's plus that one token;
+    - the undefined-symbol sets are equal;
+    - the grade is MATCH / RELOCATION_MATCH PASS.
+  - Why: NF303 Q2 covers `/alternatename`, which changes symbol resolution. libcp only extends the library search, comes from the shared
+    header the header rule requires, and is already carried by about 17% of landed objects. It is not a claim that retail linked libcp.
+  - Virtual targets also need the RTTI vftable placement (`labels_rtti_port.tsv`) to name the same symbol at that address.
