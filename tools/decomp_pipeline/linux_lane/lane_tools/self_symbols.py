@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Measure each landed row's own compiled symbol (the naming tracker's "unmeasured" rows; docs/journal/2026-11/2026-11-23_naming_remainder.md).
-usage (repo root, lane env sourced, S set):  python3 -u self_symbols.py <out.tsv> <workdir> [--chunk 600] [--all] [--max N]
+usage (repo root, lane env sourced, S set):  python3 -u self_symbols.py <out.tsv> <workdir> [--chunk 600] [--all] [--max N] [--retry]
 Picks the landed rows whose `// Leaf:` is not a full mangled symbol (all landed rows with --all), runs recheck.py + vland --recheck-landed
 in chunks (each under `timeout 900`), reads the graded symbol of every row's object with verify_and_land.obj_text (the symbol the
 grade itself compared: the Leaf's match, else the largest function), appends `address  symbol  status  leaf_given` and cleans the chunk's
 build dir with naming_batch/clean.py. Resumable: addresses already in <out.tsv> are skipped. Writes nothing under the repo but <out.tsv>
-if that path is in the repo."""
+if that path is in the repo. --retry measures again the rows a chunk timeout left NOT_GRADED with no symbol (a chunk that
+runs past its 900 s limit leaves the rest of its rows ungraded); readers take the last line per address."""
 import os, re, subprocess, sys, contextlib, io
 sys.path.insert(0, "tools/decomp_pipeline"); argv = sys.argv[1:]; sys.argv = ["x"]
 import naming_status as ns
@@ -23,7 +24,10 @@ for t in sorted(ent):
     if "--all" in argv or how != "full": want.append(t)
 done = set()
 if os.path.exists(out):
-    done = {l.split("\t")[0] for l in open(out).read().splitlines()[1:]}
+    last = {}
+    for l in open(out).read().splitlines()[1:]:
+        f = l.split("\t"); last[f[0]] = f
+    done = {a for a, f in last.items() if not ("--retry" in argv and len(f) > 2 and not f[1] and f[2] == "NOT_GRADED")}
 else:
     open(out, "w").write("address\tsymbol\tstatus\tleaf_given\n")
 todo = [t for t in want if t not in done]
