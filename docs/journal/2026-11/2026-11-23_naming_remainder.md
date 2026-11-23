@@ -75,3 +75,26 @@ These are separate problems; a proposal is sized by the addresses it closes and 
    batches.
 3. Give 3 dedicated family agents with the header lane: CCountedPointer, the STLport instance rows and the `T` placeholder class.
 4. Keep the T1 batch agents only until the current three report.
+
+## Pilot results (route 2, same day)
+
+- **Measurement pass.** `tools/decomp_pipeline/linux_lane/lane_tools/self_symbols.py` records the compiled self symbol of the 26,666 landed
+  rows without a full Leaf. It runs in chunks of 600 at about 5-6 minutes a chunk (longer when a compile hits vland's 180 s limit), with
+  output in the scratchpad.
+- **Scripted fix.** `tools/decomp_pipeline/linux_lane/lane_tools/flatten_pilot.py`, the flattened `Class_Method` -> member conversion.
+  - v1 (shared-header route) failed. The headers do not declare these members in the branch a row compiles (e.g. CVillagePeopleDef.h is
+    wrapped in `FABLE_RETAIL_CREATE_VILLAGER_PASS27`), so the header route needs generated add-only opt-ins.
+  - v2 / v3 (the row's own local model): the byte oracle accepted 28 of 30, then 89 of 103 generated candidates (86%).
+  - Review found 10 identity conflicts: the PDB name is already claimed by another address in the catalog or by a landed self. They are
+    held as T3 identity research, and the script now rejects that case itself.
+  - **79 rows landed** (`batches/2026-11-23_landing_flatten_pilot1/`, recheck WINS 79) in about an hour of coordinator time, against about
+    47 rows per agent-hour for the T1 batches.
+- **Where the rest of the 987 candidates went:**
+  - 498 need a header opt-in (the class has a shared header and no local model);
+  - 271 are named by other landed files (the binders must move in the same unit);
+  - 75 have other definition shapes;
+  - 40 are virtual with no vptr slot in the local model.
+- **Next, in order of yield:**
+  1. Generate add-only opt-in declarations for the 498, with equiv_check and a planted control per header.
+  2. Move the 271 together with their binders.
+  3. Rerun the candidate scan once the measurement pass finishes (it adds the rows the gate never covered).
