@@ -1,0 +1,86 @@
+#37 00843a80 CCreatureAction_PlayAnimation [??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z]
+  00843a80(self) leaf=??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPai inc=3
+      L63: CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName, float transitionInTime,
+      L74: CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName,
+  0056a980 leaf=BoastTaken inc=2
+      L279: CCreatureAction_PlayAnimation(CThing* creature, const CCharString& animation, float blend,
+      L410: ((CThingCreatureBase*)(creature))->SetCurrentAction(CCreatureAction_PlayAnimation(creature, animation, 0.0f,
+  00911710 leaf=- inc=3
+      L79: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+      L142: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+  009118a0 leaf=- inc=3
+      L79: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+      L138: failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+  00922860 leaf=?Update@CAIStateGroup_Drunk@@UAEXXZ inc=29
+      L146: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L149: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+      L189: ret = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(),
+  009574d0 leaf=- inc=2
+      L44: CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+      L83: long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+#40 008427e0 CCreatureAction_PlayIntoLoopOutOfAnimation [??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z]
+  008427e0(self) leaf=??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@ inc=3
+      L68: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L71: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L75: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& loopAnimName,
+      ... 2 more
+  0057b783 leaf=Vomit inc=5
+      L53: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+  0093a5c0 leaf=Eat@CAIStateGroup_BanditSitRoundCampfire inc=1
+      L40: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+      L76: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+      L86: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, eatDuration,
+  0093a7a0 leaf=?Singsong@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ inc=9
+      L78: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, singsong_time, false, 0, 0), false);
+  0093a8c0 leaf=- inc=5
+      L74: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+      L111: CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+  009689c0 leaf=LeanOnBar inc=4
+      L50: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+      L118: result = AIAction_PerformAction(CCreatureAction_PlayIntoLoopOutOfAnimation(
+#41 008428b0 CCreatureAction_PlayIntoLoopOutOfAnimation [??0CCreatureAction_PlayIntoLoopOutOfAnimation@@AAE@AAVCThingCreatureBase@@ABVCCharString@@1JM_NJJ@Z]
+  008428b0(self) leaf=??0CCreatureAction_PlayIntoLoopOutOfAnimation@@AAE@AAVCThingCreatureBase@@ABVCCharString@@ inc=2
+      L51: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L54: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& intoAnimName,
+      L58: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& loopAnimName,
+      ... 2 more
+  00843c10 leaf=?FinishAction@CCreatureAction_PlayIntoLoopOutOfAnimation@@UAEXXZ inc=0
+      L59: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* owner, const CCharString& loopAnimName,
+      L61: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* owner, const CCharString& animName,
+      L73: GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(GetCreature(), LoopAnimName, OutOfAnimName,
+      ... 2 more
+#56 009ad5f0 DecompressDefinitionData [?DecompressDefinitionData@CDefinitionManager@@IBEXAAVCMemoryDataInputStream@@K@Z]
+  009ad5f0(self) leaf=?DecompressDefinitionData@CDefinitionManager@@IBEXAAVCMemoryDataInputStream@@K@Z inc=4
+      L45: void DecompressDefinitionData(CMemoryDataInputStream& stream, unsigned long defIndex) const;
+      L48: void CDefinitionManager::DecompressDefinitionData(CMemoryDataInputStream& stream, unsigned long defIndex) const
+  009ad6e0 leaf=?LoadDef@CDefinitionManager@@IBEXK@Z inc=1
+      L128: void DecompressDefinitionData(CMemoryDataInputStream* stream, unsigned long globalIndex);
+#66 009c0880 CDisplayManager [??0CDisplayManager@@QAE@AAVCSystemManager@@@Z]
+  009c0880(self) leaf=??0CDisplayManager@@QAE@AAVCSystemManager@@@Z inc=2
+      L8: CDisplayManager::CDisplayManager(CSystemManager& systemManager)
+  009a6610 leaf=Initialise inc=3
+      L79: CDisplayManager(CSystemManager* owner);
+      L241: PDisplayManager.Reset(new CDisplayManager(this));
+#71 00bd2a90 InitialiseBoneScalings [?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z]
+  00bd2a90(self) leaf=?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QBEXABVC3DMesh2@@@Z inc=8
+      L78: void CEngineInternalPrimitiveAnimatedMesh::InitialiseBoneScalings(const C3DMesh2& mesh) const
+  00b83750 leaf=- inc=1
+      L86: void InitialiseBoneScalings(C3DMesh2* mesh);
+      L97: InitialiseBoneScalings(mesh);
+#73 00b59870 UpdateLoadingDistanceVideoOptions [?UpdateLoadingDistanceVideoOptions@CEngineLocalDetailGenerator@@QAEXABVCEngineVideoOptionsDef@@@Z]
+  00b59870(self) leaf=?UpdateLoadingDistanceVideoOptions@CEngineLocalDetailGenerator@@QAEXABVCEngineVideoOptions inc=1
+      L28: void UpdateLoadingDistanceVideoOptions(const CEngineVideoOptionsDef& def);
+      L47: void CEngineLocalDetailGenerator::UpdateLoadingDistanceVideoOptions(const CEngineVideoOptionsDef& def)
+  00b24690 leaf=SetVideoOptions inc=3
+      L59: class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(CEngineVideoOptionsDef* def); };
+#74 00b8d420 RenderOcclusionBox [?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z]
+  00b8d420(self) leaf=?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z inc=7
+      L304: public:unsigned long AllocateOccluderHandle(){if(EntriesSize<8192){unsigned long handle=EntriesSize;reinterpret_cast<COccluderEntry*>(Entries)[handle]
+      L307: unsigned long CEngineOcclusionManager::RenderOcclusionBox(const CMatrix3x4&transform){
+  00b6e260 leaf=?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPa inc=2
+      L29: long RenderOcclusionBox(const CMatrix3x4& box);
+  00be79d0 leaf=- inc=2
+      L32: long RenderOcclusionBox(const CMatrix3x4& box);
+  00bf7100 leaf=?RenderOcclusionBox@Tree@Native inc=9
+      L94: void RenderOcclusionBox(long&);
+      L111: void Tree::RenderOcclusionBox(long& handle){

@@ -53,7 +53,7 @@ public:
 class __declspec(novtable) CCreatureAction_PickUpGenericBox : public CCreatureActionBase {
 public:
     CBaseIntelligentPointer PThingToPickUp;        // +0xa8 CIntelligentPointer<CThing>
-    CCreatureAction_PickUpGenericBox(CThingCreatureBase* creature, CThing* thing);   // 0x00843700
+    CCreatureAction_PickUpGenericBox(CThingCreatureBase& creature, CThing& thing);   // 0x00843700
 };
 
 inline CThingCreatureBase* CastToCreature(CThing* thing) { return (CThingCreatureBase*)thing; }
@@ -82,7 +82,7 @@ void CTCActionUsePickUpGenericBox::OnActionUse(CThing& user)
         CDefPointer<const CCarryableDef> def;
         ParentThing->PBaseDef->GetSubDef(&def);
         if (creature->IsUsingComponent(70)) {
-            creature->SetCurrentAction(CCreatureAction_PickUpGenericBox(creature, (CThing*)ParentThing));
+            creature->SetCurrentAction(CCreatureAction_PickUpGenericBox(*creature, *(CThing*)ParentThing));
         }
     }
 }

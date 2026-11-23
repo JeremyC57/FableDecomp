@@ -47,7 +47,7 @@ class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { 
     unsigned char _anim[0x14];
     CCharString LoopAnimName;                   // +0xbc
     CCharString OutOfAnimName;                  // +0xc0
-    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& creature, const CCharString& into,
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
 class CAIBrain { public:
@@ -116,7 +116,7 @@ bool CAIStateGroup_TavernKeeper::LeanOnBar()
             return true;
         }
         result = AIAction_PerformAction(CCreatureAction_PlayIntoLoopOutOfAnimation(
-            GetCreatureBase(), "BARMAN_LEAN_INTO", "BARMAN_LEAN_LOOP",
+            *GetCreatureBase(), "BARMAN_LEAN_INTO", "BARMAN_LEAN_LOOP",
             "BARMAN_LEAN_OUTOF", loopTime, false, 0, 0));
     } while (result == 4);
     FreeBarPoint();

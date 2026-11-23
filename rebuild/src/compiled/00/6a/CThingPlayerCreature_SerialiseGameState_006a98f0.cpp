@@ -21,7 +21,7 @@ class CPersistContext { public:
 };
 
 class CThingCreatureBase { public:
-    unsigned char _pad_0x00[0x92];
+    unsigned char _pad_0x04[0x92 - 0x04];             // +0x04 (the vptr is +0x00)
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;  // +0x92 bit 0
     unsigned char Drawable : 1;                       // +0x92 bit 1
     unsigned char _bits_0x92 : 6;
@@ -30,13 +30,13 @@ class CThingCreatureBase { public:
     float Health;                                     // +0xb4
     unsigned char _pad_0xb8[0xe0 - 0xb8];
     const CThingCreatureDef* PDef;                    // +0xe0 CDefPointer<const CThingCreatureDef>::Object
-    bool SerialiseGameState(CPersistContext& context);    // 0x006628E0
+    virtual bool SerialiseGameState(CPersistContext& context);    // 0x006628E0 (Ego_r + FableWin UAE: virtual, slot 3)
 };
 
 static const float HEALTH_UNSET = 0.0f;               // 0x0122DEDC (0.0f)
 
 class CThingPlayerCreature : public CThingCreatureBase { public:
-    bool SerialiseGameState(CPersistContext& context);
+    virtual bool SerialiseGameState(CPersistContext& context);   // Ego_r + FableWin UAE (vtable 0x012457FC slot 3)
 };
 
 bool CThingPlayerCreature::SerialiseGameState(CPersistContext& context)

@@ -33,7 +33,7 @@ class CThingCreatureBase { public:
 };
 
 class CCreatureAction_DragonFireBeamOutOf : public CCombatActionBase { public:
-    CCreatureAction_DragonFireBeamOutOf(CThingCreatureBase* owner);   // 0x008E4A60
+    CCreatureAction_DragonFireBeamOutOf(CThingCreatureBase& owner);   // 0x008E4A60
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -68,6 +68,6 @@ void NCreatureMode::CModeDragonFireBeam::FrameUpdate()
     UpdateBeam();
     if (Timer <= 0) {
         CThingCreatureBase* creature = ParentThing;
-        creature->SetCurrentAction(CCreatureAction_DragonFireBeamOutOf(creature));
+        creature->SetCurrentAction(CCreatureAction_DragonFireBeamOutOf(*creature));
     }
 }

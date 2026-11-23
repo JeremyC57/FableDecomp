@@ -46,7 +46,7 @@ class CCreatureAction_AimMissileWeapon : public CCreatureActionBase { public:   
 };
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // retail sizeof 0xc8
     unsigned char _fire[0xc8 - 0xa8];
-    CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
+    CCreatureAction_FireMissileWeapon(CThingCreatureBase& creature, const CThing* target);   // 0x008D5110
     ~CCreatureAction_FireMissileWeapon();       // 0x0078ADF0
 };
 class CCombatActionBase : public CCreatureActionBase { public:    // retail sizeof 0x114
@@ -137,7 +137,7 @@ bool CAIStateGroup_ApprenticeHero::PracticeSkills()
             if (stepFailed)
                 goto failed;
             stepFailed = secondAnim != ""
-                && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PDummy), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(*GetCreature(), PDummy), false) != 2;
         } else {
             stepFailed = firstAnim != ""
                 && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;

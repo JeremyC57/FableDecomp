@@ -1,0 +1,4 @@
+##### 006a98f0 renames: ?SerialiseGameState@CThingCreatureBase@@QAE_NAAVCPersistContext@@@Z=?SerialiseGameState@CThingCreatureBase@@UAE_NAAVCPersistContext@@@Z ?SerialiseGameState@CThingPlayerCreature@@QAE_NAAVCPersistContext@@@Z=?SerialiseGameState@CThingPlayerCreature@@UAE_NAAVCPersistContext@@@Z
+ALL_EQ sections=3 DEF=1 tables=-
+##### 009cc530 renames: ??A?$CArray@VCCharString@@@@QAEAAVCCharString@@I@Z=??A?$CArray@VCCharString@@@@QBEABVCCharString@@I@Z ?CreateSymbolMap@CBankFile@@QAEXAAVCSymbolMap@@_N@Z=?CreateSymbolMap@CBankFile@@QBEXAAVCSymbolMap@@_N@Z ?GetSymbol@CBankFile@@QAE?AVCCharString@@K@Z=?GetSymbol@CBankFile@@QBE?AVCCharString@@K@Z
+ALL_EQ sections=9 DEF=8 tables=-

@@ -56,7 +56,7 @@ struct CEngineVideoOptionsListener {
     virtual void SetEffectQuality(CEngineVideoOptionsDef* def);   // slot 13 (+0x34)
 };
 class CEngineResourceManager { public: bool ResizeHiresTextureMemory(long size); };        // 0x00B3B4F0
-class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(CEngineVideoOptionsDef* def); };   // 0x00B59870
+class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(const CEngineVideoOptionsDef& def); };   // 0x00B59870
 struct CEngineVideoOptionsSink { void OnVideoOptionsChanged(); };                 // 0x00B2F740
 
 enum ESmartRestoreComponentVideoMemoryResult { SMART_RESTORE_OK = 0 };
@@ -119,7 +119,7 @@ bool CEngine::SetVideoOptions(const CEngineVideoOptions& options)
     CEngineVideoOptionsDef* meshDef = NEngineInternal::GPEngine->PEngineVideoOptionsDefs[VideoOptions.MeshDetail];
     NEngineInternal::GPPrimitiveRenderer->SetDrawDistanceQuality(VideoOptions.MeshDetail, *meshDef);
     if (g_pLocalDetailGenerator)
-        g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(meshDef);
+        g_pLocalDetailGenerator->UpdateLoadingDistanceVideoOptions(*meshDef);
     g_pVideoOptionsSink->OnVideoOptionsChanged();
     if (SmartRestoreComponentVideoMemory() != SMART_RESTORE_OK)
         result = false;

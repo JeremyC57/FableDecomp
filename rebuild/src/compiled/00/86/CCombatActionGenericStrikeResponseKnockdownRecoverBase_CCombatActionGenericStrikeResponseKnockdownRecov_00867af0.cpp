@@ -24,10 +24,10 @@ class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatAc
     bool CanBeHit;                              // +0x114
     bool Flip;                                  // +0x115
     virtual void v00();                         // own vtable 0x01271BAC
-    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);
+    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& owner, bool flip);   // Ego_r + FableWin AAV
 };
 
-CCombatAction_GenericStrikeResponseKnockdownRecoverBase::CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip)
-    : CCombatActionBase(*owner, 250, CSoundPair()), CanBeHit(false), Flip(flip)
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase::CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& owner, bool flip)
+    : CCombatActionBase(owner, 250, CSoundPair()), CanBeHit(false), Flip(flip)
 {
 }

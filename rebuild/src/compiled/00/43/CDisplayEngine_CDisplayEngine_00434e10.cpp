@@ -43,7 +43,7 @@ struct CLetterBoxModeInfo : CFadeInFadeOutBase {   // 0x20 bytes
 };
 class CCamera { public:                                // 0x38 bytes
     unsigned char _body[0x38];
-    CCamera(const C3DVector& position, const C3DVector& direction, float fov, long flags);   // 0x00A0BF20
+    CCamera(const C3DVector& position, const C3DVector& direction, float fov, bool is_2d);   // 0x00A0BF20 (Ego_r + FableWin _N)
 };
 class CMainGameComponent; class CPlayerManager; class CGameDefinitionManager; class CGraphicDataBank; class CMeshDataBank;
 class CIEngine; class CDisplayViewManager; class CCPPointerInfo; class CWorld;

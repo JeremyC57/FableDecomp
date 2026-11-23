@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC   // NF293: the row's Load spelling (QAE), so the stub below defines it
 #include "fable_user_profile.h"
 
 namespace

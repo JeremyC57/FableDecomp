@@ -84,7 +84,7 @@ class CThingCreatureBase { public:
 
 class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:   // 0xB8 bytes in retail
     unsigned char _data_0xa8[0x10];
-    CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase* creature, CThing* weapon);   // 0x0078AE30
+    CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase& creature, CThing& weapon);   // 0x0078AE30
     ~CCreatureAction_HeroLoadRangedWeapon();         // 0x0078AB20
 };
 
@@ -109,6 +109,6 @@ void CTCHeroRangedAttacks::LoadRangedWeapon()
     if (IS_THING_ALIVE(weapon) && weapon->HasTC(0x48)) {
         CTCWeapon* tc = weapon->FindTC<CTCWeapon>(0x48);
         if (tc->IsProjectileWeapon() && !tc->IsProjectileWeaponLoaded() && !Loading)
-            PParentCreature->SetCurrentAction(CCreatureAction_HeroLoadRangedWeapon(PParentCreature, weapon));
+            PParentCreature->SetCurrentAction(CCreatureAction_HeroLoadRangedWeapon(*PParentCreature, *weapon));
     }
 }

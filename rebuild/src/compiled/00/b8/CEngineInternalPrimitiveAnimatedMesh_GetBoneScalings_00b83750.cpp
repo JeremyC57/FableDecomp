@@ -83,7 +83,7 @@ public:
     SAnimationState* m_pAnimationState;            // +0x78 (inside the PDB C3DAnimationInterpolator Anim at +0x70)
     unsigned char    _pad7c[0x58];
     CCache           Cache;                        // +0xd4
-    void InitialiseBoneScalings(C3DMesh2* mesh);   // 0x00BD2A90
+    void InitialiseBoneScalings(const C3DMesh2& mesh) const;   // 0x00BD2A90 (Ego_r + FableWin QBE ... ABV)
     C3DVector* GetBoneScalings(C3DMesh2* mesh);
 };
 
@@ -94,7 +94,7 @@ C3DVector* CEngineInternalPrimitiveAnimatedMesh::GetBoneScalings(C3DMesh2* mesh)
     unsigned long key = mesh->m_meshID;
     CCache::iterator it = Cache.find(key);
     if (it.m_pNode == Cache.end()) {
-        InitialiseBoneScalings(mesh);
+        InitialiseBoneScalings(*mesh);
         key = mesh->m_meshID;
         it = Cache.find(key);
     }

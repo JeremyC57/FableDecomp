@@ -41,7 +41,7 @@ class CCreatureActionBase { public:
 
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                      // +0xa8..+0xb3
-    CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
+    CCreatureAction_PlayAnimation(CThingCreatureBase& creature, const CCharString& animation, float blend,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00843A80
 };
 
@@ -80,7 +80,7 @@ void CAIStateGroup_MinionBehaviourGreetCreature::Update()
 {
     if (IS_THING_ALIVE(PCreatureToGreet) && AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PCreatureToGreet, 0xb, 0.013888889f) == 2) {
         CCharString animation("SG_CHICKEN_WANDER");
-        long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+        long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(*GetCreature(), animation, 0.0f,
                 CSoundPair(), false, true, false, 0, 0), false);
         if (result != 2) {
             FinishUpdate();

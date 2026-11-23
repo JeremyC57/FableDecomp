@@ -9,7 +9,15 @@ struct _OVERLAPPED;
 enum EFileLoadingStatus { FILE_LOADING_PENDING, FILE_LOADING_READING, FILE_LOADING_READ_ISSUED, FILE_LOADING_READ_COMPLETE };
 class CThreadedFileManager {
 public:
+#ifdef FABLE_RETAIL_CTHREADEDFILEMANAGER_PROCESSOBJECTS_PRIVATE
+    // Add-only opt-in (NF293, 2026-11-23; row 0x0098ECD0): Ego_r.pdb + FableWin.pdb ?ProcessObjects@CThreadedFileManager@@AAEXXZ (private);
+    // the landed binder 0x0098F2A0 binds AAE. Declaration only.
+private:
+#endif
     void ProcessObjects();
+#ifdef FABLE_RETAIL_CTHREADEDFILEMANAGER_PROCESSOBJECTS_PRIVATE
+public:
+#endif
     static void __fastcall DoHardDiskErrorCallback(const char* message) {
         if (HardDiskErrorCallback) HardDiskErrorCallback(message);
     }
@@ -35,8 +43,8 @@ private:
         std::map<CPendingObjectSortKey, CFileObject*> Objects;
         std::map<CPendingObjectSortKey, CFileObject*>::iterator CurrentPosition;
     };
-    FABLE_STATIC_ASSERT(sizeof(CFileObject) == 0x40);
-    FABLE_STATIC_ASSERT(sizeof(CPendingObjectMap) == 0x10);
+    FABLE_STATIC_ASSERT_AT(38, sizeof(CFileObject) == 0x40);
+    FABLE_STATIC_ASSERT_AT(39, sizeof(CPendingObjectMap) == 0x10);
     void OnFinishObject(CFileObject*);
     void RemoveObjectFromPendingMap(CFileObject*);
     static void __stdcall OnFileReadCompletion(unsigned long, unsigned long, _OVERLAPPED*);
@@ -56,6 +64,6 @@ private:
     long BlockPendingObjectProcessingRefCount;
     float DeviceTimeSlice[THREADED_FILE_DEVICE_COUNT];
 };
-FABLE_STATIC_ASSERT(sizeof(CThreadedFileManager)==0x178);
+FABLE_STATIC_ASSERT_AT(59, sizeof(CThreadedFileManager)==0x178);
 #endif
 #endif

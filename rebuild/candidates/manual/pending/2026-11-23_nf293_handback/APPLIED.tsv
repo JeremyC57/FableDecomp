@@ -1,0 +1,391 @@
+entry	address	status	binders_respelled	note
+1	0x006628E0	done	0x006A98F0	NF290 entry 2, prefix ruling R1 (no table in the binder's TU, every member offset kept): binder 0x006A98F0's local CThingCreatureBase model takes `virtual` on SerialiseGameState (line 33) and its leading pad shrinks on its own line (`_pad_0x04[0x92 - 0x04]`, line 24: the vptr is +0x00, every member stays at its offset); the override in CThingPlayerCreature (line 39) is spelled `virtual` too, so the row's own DEF moves QAE -> UAE (Ego_r + FableWin ?SerialiseGameState@CThingPlayerCreature@@UAE_NAAVCPersistContext@@@Z; self rename). objsec ALL_EQ, tables=- (no table emitted). Link: HEAD leaves the base QAE unresolved, the new set resolves it against the self 0x006628E0 (UAE). Test standalone, unchanged
+2	0x0098ECD0	done	0x0098ECD0	NF290 entry 10 (add-only opt-in): engine/CThreadedFileManager.h FABLE_RETAIL_CTHREADEDFILEMANAGER_PROCESSOBJECTS_PRIVATE (`private:` before / `public:` after the declaration, default path unchanged; its 3 asserts pinned FABLE_STATIC_ASSERT_AT(38/39/59)); the self 0x0098ECD0 defines the macro (one added line) and its Leaf respells AAE. Binder 0x0098F2A0 already AAE. equiv_check over every landed row: see NOTES; planted control flags. objsec ALL_EQ; link: HEAD leaves AAE unresolved, the new set resolves it. Landed test unchanged (D1b cl /Zs PASS)
+3	0x0040D350	done	0x0040D400	NF290 entry 14 (add-only opt-in): fable_user_profile.h FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC in the #else (non-FABLE_RETAIL_CUSERPROFILEMANAGER) class, `public:` before / `private:` after `void Load();` (Save stays private there; asserts already _AT-pinned); binder 0x0040D400 defines the macro (one added line) and binds QAE like the self 0x0040D350 and 0x00556470 / 0x0059686D / 0x00597BF2. Its landed test defines the Load / Save stubs through the same header, so rows/0040d400_test.cpp defines the macro too (one added line). objsec ALL_EQ; link: HEAD leaves AAE unresolved, the new set resolves QAE against 0x0040D350. Note: the same copy keeps ?Save@CUserProfileManager@@AAEXXZ (PDB QAE, 0x0040A740, not in my ENTRIES)
+4	0x004FCE20	done	0x004FCE20,0x00506F30,0x00507C30	NF290 entry 27 (one unit): engine/CWorldMap.h FABLE_RETAIL_CWORLDMAP_LOADFROMFILE branch gets the add-only nested FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED (`protected:` / `public:` round AllocateMapUID; asserts already pinned); binder 0x00507C30 defines it (one added line); the self 0x004FCE20 (line 29, Leaf already IAE) and binder 0x00506F30 (line 50) take `protected: ... public:` (both CWorldMap members). The branch's other users 0x004FE2A0 / 0x00506E30 do not define the new macro (equiv_check: unchanged). objsec ALL_EQ x3 (0x00507C30's two tables unchanged); link HEAD v new: no unresolved AllocateMapUID either side, no duplicate
+5	0x009CC530	done	0x009CC530	NF290 entry 54, prefix ruling (object equal, only unreferenced local pick-any copies renamed): the self's const definition (lines 58 / 60) forces `const` on its local inline GetSymbol (line 50, COMDAT ?GetSymbol@CBankFile@@QAE -> QBE, inlined: no relocation to it) and moves the inlined CArray<CCharString> accessor to the shared header's const overload (??A?$CArray@VCCharString@@@@QAE -> QBE, pick-any, unreferenced); the slot-19 virtual it calls is respelled from the made-up GetBankHandle to the real `protected: virtual CCharString GetEnumerationType(unsigned long) const;` (0x009CBD10, Ego_r + FableWin ?GetEnumerationType@CBankFile@@MBE?AVCCharString@@K@Z, engine/CBankFile.h slot 19; a virtual call, no symbol). objsec ALL_EQ tables=-; link: HEAD leaves the binder 0x00AE8980's QBE unresolved, the new set resolves it. Test standalone, unchanged
+6	0x00A0BF20	done	0x00434E10	binder 0x00434E10 (CDisplayEngine ctor): local CCamera ctor `long flags` -> `bool is_2d` (line 46; Ego_r + FableWin ??0CCamera@@QAE@ABVC3DVector@@0M_N@Z; the call passes `false`, `push 0` either way); 0x00435530 already binds _N through engine/CCamera.h. objsec ALL_EQ (CDisplayEngine table unchanged). The self 0x00A0BF20 (Leaf = the PDB spelling) was not compiled: its landed test fails clang in its own lines (no D1), so the link shows the new spelling unresolved in my set, as HEAD's old one was
+7	0x00A567A0	done-already		the only wrong witness 0x007DCFD0 binds QBE ...AAV at HEAD (VC7.1 HEAD object, line 20 already `C3DVector& ... const`); other census rows declare it const& or use engine/CCardinalSpline.h. TABLE_CHANGES delete of the stale QAE ...PAV line. No source change
+8	0x0099E5F0	skipped-port		T3: the only wrong binder 0x00AE8810 models SaveToFile(const CCharString& filename) and passes a CCharString; both PDBs have only SaveToFile(CAFile&) const: the call needs the real CAFile argument (the file object the original built), not a respell
+9	0x0099F2E0	done-partial	0x00521AE0	binder 0x00521AE0 (line 22 `CAFile& file`, call line 130 `*file.Object`); the table witness 0x00506D40 already binds AAV at HEAD (stale line: TABLE_CHANGES delete); 0x004FE630 defines and calls its own same-TU strong stand-in CCharString::LoadFromFile(X_004fe630::CAFile*, void*, int) (namespace stand-in types): T3. objsec ALL_EQ; link: HEAD leaves PAV unresolved, the new set resolves AAV against the self
+10	0x00857F30	open		deferred, not started: all-or-nothing family. The self 0x00857F30 defines the stand-in PAV/PAV ctor and ~45 census rows bind it through local pointer models (decl.py, work/decl_10.txt); moving any binder alone would unresolve a reference HEAD resolves. Needs one unit: self + every PAV binder (and the derived stand-in ctors that forward to it)
+11	0x00867AF0	done	0x00867AF0,0x007F04C0,0x008DE650,0x008E08C0	self 0x00867AF0 (`CThingCreatureBase& owner` on decl line 27 + definition line 30, base call line 31 `owner`; no Leaf line); binders 0x007F04C0 (line 62 + mem-initializer line 66 `*owner`), 0x008DE650 (lines 33 / 39), 0x008E08C0 (lines 80 / 86): each carries a local inline derived ctor that forwards its pointer, so only the base declaration and `*owner` change (the derived stand-in signatures are inlined, no symbol). 0x007F05C0 / 0x008AE1B0 already AAV. objsec ALL_EQ x4 (tables unchanged); link: HEAD left the AAV references of 0x007F05C0 / 0x008AE1B0 unresolved (self PAV), the new set resolves all
+12	0x008E4860	done	0x008DFFD0	binder 0x008DFFD0 (line 56 `CThingCreatureBase& owner`, call line 85 `*creature`, a CThingCreatureBase*); self AAV. objsec ALL_EQ; link resolves
+13	0x008AE1B0	done	0x008A9610	binder 0x008A9610 (line 37: second parameter `bool flip`, Ego_r + FableWin _N; the call passes 0 -> `false`, line 62, `push 0` either way); self _N. objsec ALL_EQ; link resolves
+14	0x008C38B0	done	0x008C2810	binder 0x008C2810 (line 122 + call line 150 `*creature`); self AAV. objsec ALL_EQ; link resolves
+15	0x00956760	done	0x00956460	binder 0x00956460 (line 49 + call line 86 `*GetCreature()`, a CThingCreatureBase*); 0x00955620 / 0x00977E00 already AAV (shared header). objsec ALL_EQ; link resolves
+16	0x006E8C30	skipped-port		T3 (sigdiff STANDIN): binder 0x006ED270 passes the stand-in UCAttackPatternPointer (PDB CDefPointer<const CAttackPatternDef> by value)
+17	0x006E9360	skipped-port		T3: 0x00663B10 passes `const CThing&` where the PDB takes `const CThingCreatureBase&` (base for derived: a cast); 0x008E7040 / 0x008D8EA0 model a non-const pointer-returning GetCombatantInfo(const CThingCreatureBase*); the PDB const& result would need 0x008E7040's local `CAttackerIterator` retyped to a const iterator (a port of its local map model)
+18	0x006EB600	done	0x007E5B90,0x0091E050	binders 0x007E5B90 (line 92 + call line 137 `*creature`, a CThingCreatureBase*) and 0x0091E050 (line 30 + call line 119 `*GetCreature()`); self AAV. objsec ALL_EQ x2; link: HEAD leaves PAV unresolved, the new set resolves AAV against the self
+19	0x006EDC50	open		deferred, not started: 24 census rows; the wrong binders pass the stand-in MazeThing (0x009547D0), CThing* for a CThingCreatureBase& (0x0095B5A0 / 0x00954190 / 0x00962A90: a cast, T3), only 0x0095D200 looks in-place. Needs every binder opened (NF285 E2) before classifying
+20	0x008B0AB0	open		deferred, not started: ~60 census rows (CCombatSequenceBase ctor family, local pointer models); same all-or-nothing shape as entry 10 if the self is a stand-in
+21	0x00A3AB90	done-partial	0x009967E0,0x00996990,0x00996A40	binders 0x009967E0 / 0x00996990 / 0x00996A40: `unsigned long sourceSize` (lines 25 / 25 / 24; Ego_r + FableWin ?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z; engine/CCompressorZlib.h agrees). The self 0x00A3AB90 defines `void*` (PAX) on a local pad model whose +0x1C member is z_stream::next_in: its const respell needs the port onto engine/CCompressorZlib.h (T3). objsec ALL_EQ x3; link: unresolved before (PBXJ) and after (PBXK) alike, no new unresolved
+22	0x009ED190	skipped-port		T3: binder 0x004175E5 models Initialise(long width, long height, void* font); the PDB is (char, EInputKey, const CFontBank*): an enum and a class pointer the row's model lacks (the binder passes literals for the enum)
+23	0x009EBB30	done	0x00419D90	binder 0x00419D90: `CConsoleCommandParameters(EGenericVarType type);` (line 52; the row already declares enum EGenericVarType and passes GENERIC_VAR_TYPE_STRING); self W4. objsec ALL_EQ; link: HEAD leaves J unresolved, the new set resolves it
+24	0x00693B30	open		deferred, not started: all-or-nothing family. The self 0x00693B30 defines a stand-in (CThingCreatureBase*, ..., const CAnimationEntry&) ctor and ~30 binders model (CThingCreatureBase*, ..., CAnimationEntry*) (work/decl_d.txt)
+25	0x00855AF0	done-partial	0x00855B50	binder 0x00855B50 (line 14 `CThingCreatureBase& creature, CThingCreatureBase& target` + mem-initializer line 25 `*creature, *target`). The self 0x00855AF0 (`CThing* target`) calls the entry-10 stand-in base ctor CCombatActionBase(CThingCreatureBase*, CThing*, ...) that 0x00857F30 defines: respelling it alone would unresolve that reference (entry 10's unit). objsec ALL_EQ; link: unresolved before and after alike
+26	0x008BB6F0	skipped-port		T3 (sigdiff STANDIN): binder 0x009092C0 passes the stand-in CRetailString (PDB CCharString)
+27	0x008BB200	done	0x008BB200,0x00909520	self 0x008BB200 (decl line 63 + definition line 66 `CThingCreatureBase& owner`, base call line 68 `owner`; no Leaf line) and binder 0x00909520 (line 32 + call line 79 `*GetCreature()`). objsec ALL_EQ x2 (the self's table unchanged); link: HEAD resolved PAV between them, the new set resolves AAV
+28	0x008E4A60	done	0x008E0780	binder 0x008E0780 (line 36 + call line 71 `*creature`); self AAV. objsec ALL_EQ; link: HEAD PAV unresolved, new resolves
+29	0x008E4AD0	done	0x008E07F0	binder 0x008E07F0 (line 59 + call line 94 `*creature`); self AAV. objsec ALL_EQ; link resolves
+30	0x008D5110	done-partial	0x0092A8A0,0x0092B3E0,0x0097EF60,0x0097F3A0	binders 0x0092A8A0 (49 / 140), 0x0092B3E0 (60 / 148), 0x0097EF60 (121 / 174), 0x0097F3A0 (134 / 183): `CThingCreatureBase& creature`, first argument `*`. 0x00715110 models the class on a stand-in CCreatureAction base and passes CThing* (PAVCThing@@0): T3. objsec ALL_EQ x4; link: HEAD PAV unresolved x4, new resolves against the self 0x008D5110
+31	0x0062D9E0	done	0x007ED170,0x007ED2C0	binders 0x007ED170 (59 / 99-100) and 0x007ED2C0 (55 / 110-111): all three parameters references (Ego_r + FableWin), arguments `*`; 0x007ED170's existing `(CThingCreatureBase*)user` cast is HEAD text. objsec ALL_EQ x2; link resolves against the self 0x0062D9E0
+32	0x0078AE30	done	0x0078A2C0	binder 0x0078A2C0 (line 87 + call line 112 `*PParentCreature, *weapon`). objsec ALL_EQ; link resolves against the self 0x0078AE30
+33	0x007EBA20	done	0x007EBAB0	binder 0x007EBAB0: ctor parameter `CThingCreatureBase& creature` (line 46; the row's local CThingAICreature derives CThingCreatureBase at +0, the call `*creature` converts implicitly). objsec ALL_EQ; link: HEAD unresolved, the new set resolves against the self 0x007EBA20
+34	0x00843700	done	0x007EB1A0	binder 0x007EB1A0 (line 56 + call line 85 `*creature, *(CThing*)ParentThing`; the cast is HEAD text); 0x009658B0 uses the shared header. objsec ALL_EQ; link resolves against the self 0x00843700
+35	0x008424F0	open		deferred, not started: all-or-nothing family (the self 0x008424F0 defines a stand-in PAV ctor, ~28 binders model it with pointers; work/decl_e.txt)
+36	0x00842570	open		not started (self 0x008424F0-style stand-in: 0x00842570 defines PAV + CAnimationEntry*)
+37	0x00843A80	done-partial	0x00911710,0x009118A0,0x009574D0	binders 0x00911710 / 0x009118A0 (line 79 + call 142 / 138) and 0x009574D0 (44 / 83): `CThingCreatureBase& creature`, `*GetCreature()`. 0x0056A980 passes a CThing* (base for derived: a cast) -> T3. objsec ALL_EQ x3; link: HEAD PAV x3 unresolved, the new set resolves against the self 0x00843A80
+38	0x008B7F80	open		not started
+39	0x008B7FF0	open		not started
+40	0x008427E0	done	0x0057B783,0x0093A5C0,0x0093A8C0,0x009689C0	binders 0x0057B783 (53 / 139 `*hero`), 0x009689C0 (50 / 119 `*GetCreatureBase()`), 0x0093A5C0 and 0x0093A8C0 (decl lines 40-42 / 74-76: reference first parameter and `bool a, long b, long c` for the PDB _NJJ, the calls keep their `false, false, false`, `push 0` either way; calls 76 / 86 and 111 `*creature`); 0x0093A7A0 binds through engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h. objsec ALL_EQ x4; link resolves against the self 0x008427E0
+41	0x008428B0	done	0x00843C10	binder 0x00843C10 (CCreatureAction_PlayIntoLoopOutOfAnimation::FinishAction, a member: `private: ... public:` on the 8-argument ctor, lines 59-60, reference first parameter; both calls lines 73 / 82 `*GetCreature()`). Its 5-argument overload (0x00842960, PDB AAE AAV too) stays QAE PAV: not in my ENTRIES (NAME_FIXES). objsec ALL_EQ; link resolves against the self 0x008428B0
+42	0x008BD880	open		not started
+43	0x0069F090	open		not started
+44	0x0072D3E0	open		not started
+45	0x0069F0C0	open		not started
+46	0x0072D430	open		not started
+47	0x006DF730	open		not started
+48	0x008AB9D0	open		not started
+49	0x008ABAA0	open		not started
+50	0x008CBD90	open		not started
+51	0x0069F0F0	open		not started
+52	0x006290E0	open		not started
+53	0x0069F230	open		not started
+54	0x00994DC0	open		not started
+55	0x009E9A70	open		not started
+56	0x009AD5F0	done	0x009AD6E0	binder 0x009AD6E0 (CDefinitionManager::LoadDef, a const member): `protected: void DecompressDefinitionData(CMemoryDataInputStream& stream, unsigned long) const; public:` (line 128) and the call line 146 loses its HEAD `const_cast<CDefinitionManager*>(this)->` and `&` (the PDB-const callee needs neither). objsec ALL_EQ; link: HEAD unresolved, new resolves against the self 0x009AD5F0
+57	0x009ADAE0	open		not started
+58	0x009B02E0	open		not started
+59	0x00401630	open		not started
+60	0x0099A6A0	open		not started
+61	0x009BE2D0	open		not started
+62	0x009BE530	open		not started
+63	0x009BF160	open		not started
+64	0x009BF600	open		not started
+65	0x009BF7E0	open		not started
+66	0x009C0880	done	0x009A6610	binder 0x009A6610 (CSystemManager::Initialise): `CDisplayManager(CSystemManager& owner)` (line 79), `new CDisplayManager(*this)` (line 241). objsec ALL_EQ. The self 0x009C0880 (Leaf = the PDB spelling) was not compiled (its landed test fails clang in its own lines), so my link set shows AAV unresolved
+67	0x0064A3ED	open		not started
+68	0x009E4DA0	open		not started
+69	0x00AF88A0	open		not started
+70	0x00B83750	open		not started
+71	0x00BD2A90	done	0x00B83750	binder 0x00B83750 (GetBoneScalings): `void InitialiseBoneScalings(const C3DMesh2& mesh) const;` (line 86), call `*mesh` (line 97). 0x00B83750's own entry 70 (GetBoneScalings const) is not done: its const body would need the local CCache iterator retyped. objsec ALL_EQ; link resolves against the self 0x00BD2A90 (test D1b cl /Zs)
+72	0x00BDCBB0	open		not started
+73	0x00B59870	done	0x00B24690	binder 0x00B24690: `UpdateLoadingDistanceVideoOptions(const CEngineVideoOptionsDef& def)` (line 59), call `*meshDef` (line 122). objsec ALL_EQ; link resolves against the self 0x00B59870
+74	0x00B8D420	done	0x00B6E260,0x00BE79D0	binders 0x00B6E260 (line 29) and 0x00BE79D0 (line 32): `unsigned long RenderOcclusionBox(...)` (Ego_r + FableWin K return); 0x00BF7100 (Native Tree::RenderOcclusionBox) already binds QAEK through engine/CEngineOcclusionManager.h. objsec ALL_EQ x2; link resolves against the self 0x00B8D420
+75	0x0041BF60	open		not started
+76	0x00BACDB0	open		not started
+77	0x00BBAC60	open		not started
+78	0x00B90270	open		not started
+79	0x00B903D0	open		not started
+80	0x00BC04F0	open		not started
+81	0x00B99710	open		not started
+82	0x00BCA950	open		not started
+83	0x00B2FAC0	open		not started
+84	0x00B32AD0	open		not started
+85	0x00B812C0	open		not started
+86	0x00B94BF0	open		not started
+87	0x00B92250	open		not started
+88	0x00B939E0	open		not started
+89	0x00B935C0	open		not started
+90	0x00B93B30	open		not started
+91	0x00BACA20	open		not started
+92	0x00B98A50	open		not started
+93	0x00BBBDB0	open		not started
+94	0x00B84990	open		not started
+95	0x00884E90	open		not started
+96	0x00884F60	open		not started
+97	0x00884FE0	open		not started
+98	0x008854A0	open		not started
+99	0x00885680	open		not started
+100	0x0084B010	open		not started
+101	0x00811830	open		not started
+102	0x0084AEE0	open		not started
+103	0x00994700	open		not started
+104	0x00994780	open		not started
+105	0x009C3330	open		not started
+106	0x009C3A60	open		not started
+107	0x009C4440	open		not started
+108	0x00698840	open		not started
+109	0x009F1650	open		not started
+110	0x00445E90	open		not started
+111	0x00446EF0	open		not started
+112	0x006BB860	open		not started
+113	0x006BB940	open		not started
+114	0x006BBE30	open		not started
+115	0x009FF8D0	open		not started
+116	0x00A86CD0	open		not started
+117	0x00A03C20	open		not started
+118	0x009F4C60	open		not started
+119	0x009F4F70	open		not started
+120	0x00A0D810	open		not started
+121	0x00512410	open		not started
+122	0x00BE5BB0	open		not started
+123	0x00BE5E70	open		not started
+124	0x00BF9FA0	open		not started
+125	0x0041DB1D	open		not started
+126	0x0041DB84	open		not started
+127	0x0066E9E9	open		not started
+128	0x0066EB11	open		not started
+129	0x00A64E70	open		not started
+130	0x00996CC0	open		not started
+131	0x009E97B0	open		not started
+132	0x006AF3F0	open		not started
+133	0x0082B7E0	open		not started
+134	0x006BD840	open		not started
+135	0x00A1CBF0	open		not started
+136	0x00A18F70	open		not started
+137	0x0045E8ED	open		not started
+138	0x00B21940	open		not started
+139	0x00AEE940	open		not started
+140	0x00AF0610	open		not started
+141	0x00AE1320	open		not started
+142	0x00AE3920	open		not started
+143	0x00AE3C30	open		not started
+144	0x00AF4EE0	open		not started
+145	0x00AF5330	open		not started
+146	0x00403FF0	open		not started
+147	0x0040EFB0	open		not started
+148	0x0040FE60	open		not started
+149	0x0044B890	open		not started
+150	0x0045E011	open		not started
+151	0x0045ED25	open		not started
+152	0x00464030	open		not started
+153	0x00475B93	open		not started
+154	0x0047926C	open		not started
+155	0x004CBC70	open		not started
+156	0x004E959D	open		not started
+157	0x0057F9E9	open		not started
+158	0x005C0A98	open		not started
+159	0x005C0E81	open		not started
+160	0x005C19A3	open		not started
+161	0x005C2118	open		not started
+162	0x0067AA40	open		not started
+163	0x006B91A0	open		not started
+164	0x006BA480	open		not started
+165	0x006DC6A0	open		not started
+166	0x007AD7F0	open		not started
+167	0x007E3820	open		not started
+168	0x007E3930	open		not started
+169	0x009E81E0	open		not started
+170	0x00A12450	open		not started
+171	0x00487EF0	open		not started
+172	0x004888C0	open		not started
+173	0x00437AE0	open		not started
+174	0x0043B570	open		not started
+175	0x00F07B80	open		not started
+176	0x004AFBB0	open		not started
+177	0x004B3A20	open		not started
+178	0x00F3AFC0	open		not started
+179	0x009DBFF0	open		not started
+180	0x009DD210	open		not started
+181	0x009DE3F0	open		not started
+182	0x00A10DC0	open		not started
+183	0x009FC5C0	open		not started
+184	0x009F4910	open		not started
+185	0x00CB7920	open		not started
+186	0x0082E600	open		not started
+187	0x0082E780	open		not started
+188	0x0082E910	open		not started
+189	0x0082E9C0	open		not started
+190	0x00555440	open		not started
+191	0x005556F0	open		not started
+192	0x0098B860	open		not started
+193	0x00A5D7C0	open		not started
+194	0x00A7DB10	open		not started
+195	0x00872110	open		not started
+196	0x00414E30	open		not started
+197	0x009BA110	open		not started
+198	0x00492973	open		not started
+199	0x00492E4B	open		not started
+200	0x00492F69	open		not started
+201	0x00493049	open		not started
+202	0x009F3230	open		not started
+203	0x009F35D0	open		not started
+204	0x009F36E0	open		not started
+205	0x009F37E0	open		not started
+206	0x009F4120	open		not started
+207	0x009F4590	open		not started
+208	0x009E5090	open		not started
+209	0x00729B20	open		not started
+210	0x007F7710	open		not started
+211	0x0078C210	open		not started
+212	0x007827D0	open		not started
+213	0x00782860	open		not started
+214	0x00783730	open		not started
+215	0x0079D360	open		not started
+216	0x007055D0	open		not started
+217	0x006CB780	open		not started
+218	0x006CBAC0	open		not started
+219	0x00681AE0	open		not started
+220	0x00682810	open		not started
+221	0x007E4B60	open		not started
+222	0x006E0480	open		not started
+223	0x00730630	open		not started
+224	0x0071AC70	open		not started
+225	0x0076C8A0	open		not started
+226	0x0076CC00	open		not started
+227	0x004D6292	open		not started
+228	0x006D4E60	open		not started
+229	0x006D50C0	open		not started
+230	0x006D5180	open		not started
+231	0x007986A0	open		not started
+232	0x004BFFD0	open		not started
+233	0x004C0240	open		not started
+234	0x00706640	open		not started
+235	0x006D6660	open		not started
+236	0x0057A6B8	open		not started
+237	0x0057BC6E	open		not started
+238	0x0057C4F1	open		not started
+239	0x008168B0	open		not started
+240	0x008169B0	open		not started
+241	0x00801920	open		not started
+242	0x00581DDB	open		not started
+243	0x00584B86	open		not started
+244	0x005EE49A	open		not started
+245	0x005EEA9B	open		not started
+246	0x005F0DC5	open		not started
+247	0x005F1320	open		not started
+248	0x005BF482	open		not started
+249	0x005D8E90	open		not started
+250	0x005FB140	open		not started
+251	0x0061A8A0	open		not started
+252	0x00753E90	open		not started
+253	0x007CD390	open		not started
+254	0x00766050	open		not started
+255	0x007660C0	open		not started
+256	0x0079DEB0	open		not started
+257	0x006B0210	open		not started
+258	0x006B0460	open		not started
+259	0x00772120	open		not started
+260	0x00773C00	open		not started
+261	0x007751A0	open		not started
+262	0x00770FA0	open		not started
+263	0x00746EC0	open		not started
+264	0x00747B80	open		not started
+265	0x0079ACC0	open		not started
+266	0x006E3180	open		not started
+267	0x007F5A70	open		not started
+268	0x007B9F60	open		not started
+269	0x007BA1D0	open		not started
+270	0x007BA8C0	open		not started
+271	0x005EB4B0	open		not started
+272	0x005ECA50	open		not started
+273	0x0078839A	open		not started
+274	0x007941D0	open		not started
+275	0x00658620	open		not started
+276	0x00658716	open		not started
+277	0x00659EFC	open		not started
+278	0x0065A8EE	open		not started
+279	0x007DF4B0	open		not started
+280	0x0076E4D0	open		not started
+281	0x007A0D90	open		not started
+282	0x009C8DE0	open		not started
+283	0x009F9DE0	open		not started
+284	0x009FA450	open		not started
+285	0x0081B0A0	open		not started
+286	0x004C8310	open		not started
+287	0x004C9030	open		not started
+288	0x00863750	open		not started
+289	0x008098B0	open		not started
+290	0x006619F0	open		not started
+291	0x00662B10	open		not started
+292	0x00663260	open		not started
+293	0x006644F0	open		not started
+294	0x006668A0	open		not started
+295	0x00835C80	open		not started
+296	0x006A7550	open		not started
+297	0x006A7E70	open		not started
+298	0x006A7930	open		not started
+299	0x006A76A0	open		not started
+300	0x006A7EB0	open		not started
+301	0x00799E30	open		not started
+302	0x006A7580	open		not started
+303	0x006A7590	open		not started
+304	0x006A7B20	open		not started
+305	0x0051E210	open		not started
+306	0x0051EC50	open		not started
+307	0x00520D00	open		not started
+308	0x00525CD0	open		not started
+309	0x006A5AF0	open		not started
+310	0x0083DDC0	open		not started
+311	0x00877840	open		not started
+312	0x00409090	open		not started
+313	0x00409FD0	open		not started
+314	0x0040BCA0	open		not started
+315	0x00AD89B0	open		not started
+316	0x00A3B0F0	open		not started
+317	0x00A0CCD0	open		not started
+318	0x0099B800	open		not started
+319	0x0049D930	open		not started
+320	0x0049E080	open		not started
+321	0x004A0CD0	open		not started
+322	0x00500EB0	open		not started
+323	0x00501990	open		not started
+324	0x00501D30	open		not started
+325	0x00502E90	open		not started
+326	0x0050A650	open		not started
+327	0x0063D4A0	open		not started
+328	0x009BD020	open		not started
+329	0x00493EAB	open		not started
+330	0x00632830	open		not started
+331	0x00632B90	open		not started
+332	0x00412C70	open		not started
+333	0x0040FCA0	open		not started
+334	0x0052B270	open		not started
+335	0x008786E0	open		not started
+336	0x007510D0	open		not started
+337	0x0083EBD0	open		not started
+338	0x00BFC880	open		not started
+339	0x00BFCA20	open		not started
+340	0x00BFCBC0	open		not started
+341	0x00BFCD60	open		not started
+342	0x0085F830	open		not started
+343	0x009EA060	open		not started
+344	0x006E2B70	open		not started
+345	0x00660AE2	open		not started
+346	0x00660B5D	open		not started
+347	0x00660BD8	open		not started
+348	0x00660C53	open		not started
+349	0x00660CCE	open		not started
+350	0x00660D49	open		not started
+351	0x00660787	open		not started
+352	0x00660894	open		not started
+353	0x0066090A	open		not started
+354	0x00660980	open		not started
+355	0x006609F6	open		not started
+356	0x00660A6C	open		not started
+357	0x00BFCF00	open		not started
+358	0x00BFCF90	open		not started
+359	0x00BFD020	open		not started
+360	0x0059B4FE	open		not started
+361	0x00479449	open		not started
+362	0x0053CB20	open		not started
+363	0x0042D1B7	open		not started
+364	0x007AEBE0	open		not started
+365	0x005E0E20	open		not started
+366	0x0046ACA8	open		not started
+367	0x004E9F20	open		not started
+368	0x00581284	open		not started
+369	0x006C9D50	open		not started
+370	0x006D4A20	open		not started
+371	0x006DD4A0	open		not started
+372	0x00721240	open		not started
+373	0x007B5210	open		not started
+374	0x00F33D90	open		not started
+375	0x00F34BF0	open		not started
+376	0x00F353F0	open		not started
+377	0x00405220	open		not started
+378	0x00497890	open		not started
+379	0x005578A0	open		not started
+380	0x00778610	open		not started
+381	0x0088AE40	open		not started
+382	0x00942B30	open		not started
+383	0x009E1E70	open		not started
+384	0x009E21D0	open		not started
+385	0x00CBE0C7	open		not started
+386	0x00CBE7AA	open		not started
+387	0x00CBE814	open		not started
+388	0x00CBED00	open		not started
+389	0x00CBED82	open		not started
+390	0x00CBEED2	open		not started

@@ -11,7 +11,7 @@ class CThingCreatureBase;
 class CCreatureAction_BlockBase { public:
     virtual ~CCreatureAction_BlockBase();
     unsigned char _body[0x120];                     // +0x04 .. +0x124 (block-base state)
-    CCreatureAction_BlockBase(CThingCreatureBase* creature, CThingCreatureBase* target, long actionId, long param);   // 0x00855AF0
+    CCreatureAction_BlockBase(CThingCreatureBase& creature, CThingCreatureBase& target, long actionId, long param);   // Ego_r + FableWin AAV0JJ   // 0x00855AF0
 };
 
 class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase { public:
@@ -22,6 +22,6 @@ class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase { public:
 };
 
 CCreatureAction_BlockRespond::CCreatureAction_BlockRespond(CThingCreatureBase* creature, CThingCreatureBase* target, long param)
-    : CCreatureAction_BlockBase(creature, target, 0x96, param), m_useHitPos(false), m_faceTargetAtStart(false)
+    : CCreatureAction_BlockBase(*creature, *target, 0x96, param), m_useHitPos(false), m_faceTargetAtStart(false)
 {
 }

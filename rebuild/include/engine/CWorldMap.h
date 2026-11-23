@@ -316,7 +316,15 @@ public:
     // 0x004FBDE0, ?CompileLoadableGlobalThingsToSingleFile@CWorldMap@@IAEXABVCWideString@@@Z 0x004FE030,
     // ?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@IAEXABVCWideString@@@Z 0x004FE2A0, ?LoadLoadableGlobalThings@CWorldMap@@IAEXXZ 0x004FDBC0,
     // ?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z 0x00506D40. Declarations only.
+#ifdef FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED
+    // Add-only nested opt-in (NF293, 2026-11-23; row 0x00507C30): Ego_r.pdb + FableWin.pdb ?AllocateMapUID@CWorldMap@@IAEKJ@Z (protected,
+    // 0x004FCE20). Declaration only.
+protected:
+#endif
     unsigned long AllocateMapUID(long map);
+#ifdef FABLE_RETAIL_CWORLDMAP_ALLOCATEMAPUID_PROTECTED
+public:
+#endif
     bool IsMapPlacementPositionFree(const C2DBoxI& area);
     C2DBoxI GetLevelDimensions(const CCharString& levelName) const;
     void SaveWorldToBinaryFile(CWideString& filename);

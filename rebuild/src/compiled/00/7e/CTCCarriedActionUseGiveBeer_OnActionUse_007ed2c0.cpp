@@ -52,7 +52,7 @@ class CThingCreatureBase;
 class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:   // 0xb8 bytes
     CBaseIntelligentPointer PItem;                          // +0xa8
     CBaseIntelligentPointer PReceiver;                      // +0xb0
-    CCreatureAction_GiveItemToThing(CThingCreatureBase* giver, CThing* receiver, CThing* item);   // 0x0062D9E0
+    CCreatureAction_GiveItemToThing(CThingCreatureBase& giver, CThing& receiver, CThing& item);   // 0x0062D9E0
     ~CCreatureAction_GiveItemToThing();                     // 0x00628EE0 (out of line in this TU)
 };
 class CCreatureAction_Drink : public CCreatureActionBase { public:        // 0xb8 bytes, implicit destructor
@@ -107,8 +107,8 @@ void CTCCarriedActionUseGiveBeer::OnActionUse(CThing& thing)
             if (!targeting->GetTargetedThing()->HasTC(0xc3))
                 return;
             CThing* item = ParentThing;
-            user->SetCurrentAction(CCreatureAction_GiveItemToThing(user,
-                                                                    targeting->GetTargetedThing(), item));
+            user->SetCurrentAction(CCreatureAction_GiveItemToThing(*user,
+                                                                    *targeting->GetTargetedThing(), *item));
             CTCDrinker* drinker = 0;
             CThing* target = targeting->GetTargetedThing();
             if (target->HasTC(0xc3))

@@ -119,7 +119,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCombatAction_WillForcePushInto : public CCombatActionBase { public:   // vtable 0x012804FC
-    CCombatAction_WillForcePushInto(CThingCreatureBase* owner);   // 0x008C38B0
+    CCombatAction_WillForcePushInto(CThingCreatureBase& owner);   // 0x008C38B0 (Ego_r + FableWin AAV)
 };
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     virtual void FinishAction();                // 0x008663D0 (Ego_r.pdb / FableWin.pdb ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ)
@@ -147,7 +147,7 @@ void CCombatAction_StrikeResponseMazeDoForcePush::FinishAction()
         C3DVector offset(position.X - attackerPosition.X, position.Y - attackerPosition.Y, position.Z - attackerPosition.Z);
         if (boss->GetBossPhase() > 0 && offset.Get2DLength() < 4.0f) {
             if (hits > battleDef->TutorialNumGetHits || boss->GetBossPhase() == 2)
-                creature->SetCurrentAction(CCombatAction_WillForcePushInto(creature));
+                creature->SetCurrentAction(CCombatAction_WillForcePushInto(*creature));
             else
                 boss->GenericCounter = hits;
         }

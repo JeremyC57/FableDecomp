@@ -49,7 +49,7 @@ public:
 }
 class CConsoleCommandParameters {                        // retail 12 bytes: STLport vector<EGenericVarType>
 public:
-    CConsoleCommandParameters(long type);                // 0x009EBB30
+    CConsoleCommandParameters(EGenericVarType type);     // 0x009EBB30 (Ego_r + FableWin W4EGenericVarType@@)
     CConsoleCommandParameters(const CConsoleCommandParameters& other);   // 0x00419F50
     ~CConsoleCommandParameters() { if (_M_start) free(_M_start); }
     long* _M_start;

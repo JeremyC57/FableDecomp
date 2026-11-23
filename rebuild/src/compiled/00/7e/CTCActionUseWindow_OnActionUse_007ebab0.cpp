@@ -43,7 +43,7 @@ public:
 };
 class __declspec(novtable) CCreatureAction_LookThroughWindow : public CCreatureActionBase {
 public:
-    CCreatureAction_LookThroughWindow(CThingAICreature& creature);   // 0x007EBA20
+    CCreatureAction_LookThroughWindow(CThingCreatureBase& creature);   // 0x007EBA20 (Ego_r + FableWin AAVCThingCreatureBase)
 };
 class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

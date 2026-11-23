@@ -1,0 +1,10 @@
+304a305,309
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC
+>     // Add-only opt-in (NF293, 2026-11-23; row 0x0040D400 CUserProfileManager::SetProfileName): Ego_r.pdb + FableWin.pdb
+>     // ?Load@CUserProfileManager@@QAEXXZ (public, 0x0040D350; the self and 0x00556470 / 0x0059686D / 0x00597BF2 bind QAE). Declaration only.
+> public:
+> #endif
+305a311,313
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC
+> private:
+> #endif

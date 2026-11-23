@@ -77,13 +77,13 @@ class CTCCreatureModeManager { public:            // interface type 0x31
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:   // vtable 0x01271BAC
     bool CanBeHit;                         // +0x114
     bool Flip;                             // +0x115
-    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
+    CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase& owner, bool flip);   // 0x00867AF0 (Ego_r + FableWin AAV)
 };
 
 class CCombatAction_GenericStrikeResponseKnockdownRecover : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x0127191C
     virtual void v00();
     CCombatAction_GenericStrikeResponseKnockdownRecover(CThingCreatureBase* owner, bool flip)
-        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, flip)
+        : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(*owner, flip)
     {
     }
 };

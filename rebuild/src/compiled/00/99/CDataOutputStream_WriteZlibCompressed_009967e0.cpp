@@ -22,7 +22,7 @@ class CCompressorZlib : public CACompressor { public:                      // vt
     unsigned char _zlib[0x58 - 0x1c];
     static long GetWorkspaceSize();                          // 0x00A3A7D0
     void Init();                                             // 0x00A3AA10
-    void SetStreamInput(const void* source, long sourceSize);   // 0x00A3AB90
+    void SetStreamInput(const void* source, unsigned long sourceSize);   // 0x00A3AB90 (Ego_r + FableWin PBXK)
     long CompressStream(unsigned char* dest, long destSize); // 0x00A3A7F0
     long FinishCompressStream(unsigned char* dest, long destSize, bool* finished);   // 0x00A3A8C0
     virtual ~CCompressorZlib();                              // 0x00A3ACC0

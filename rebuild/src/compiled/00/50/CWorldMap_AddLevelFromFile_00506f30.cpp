@@ -47,7 +47,7 @@ class CWorldMap {
 public:
     unsigned char  _pad00[0x20];
     CArray<CMapInfo> Maps;                             // +0x20
-    unsigned long AllocateMapUID(long map);            // 0x004FCE20
+protected: unsigned long AllocateMapUID(long map); public:   // 0x004FCE20 (Ego_r + FableWin IAEKJ, protected)
     void LoadLoadableGlobalThingsForLevel(long map);   // 0x004FBF60
     C2DBoxI GetLevelDimensions(const CCharString& levelName) const;   // 0x00506E30 (Ego_r.pdb / FableWin.pdb const overload; NF70 q10744)
     long AddLevelFromFile(const C2DCoordI& position, const CCharString& levelName);

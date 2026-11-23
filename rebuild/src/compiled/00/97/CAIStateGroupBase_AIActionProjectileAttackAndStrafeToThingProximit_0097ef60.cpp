@@ -118,7 +118,7 @@ class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:  
     bool Decapitate;                                        // +0xbc
     long DelayTimer;                                        // +0xc0
     CDefPointer<const CMeleeCombatAbilityDef> PSpecialShotDef;    // +0xc4
-    CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
+    CCreatureAction_FireMissileWeapon(CThingCreatureBase& creature, const CThing* target);   // 0x008D5110
 };
 
 class CAIBrain { public:
@@ -171,7 +171,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
             modes->RemoveMode(0x19);
         if (IS_THING_ALIVE(target)) {
             CThingCreatureBase* creature = GetCreature();
-            creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
+            creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(*creature, ((CThing*)target.GetPItem())));
         }
     }
     return result;

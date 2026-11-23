@@ -56,7 +56,7 @@ class CThingCreatureBase;
 class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:   // 0xb8 bytes
     CBaseIntelligentPointer PItem;                          // +0xa8
     CBaseIntelligentPointer PReceiver;                      // +0xb0
-    CCreatureAction_GiveItemToThing(CThingCreatureBase* giver, CThing* receiver, CThing* item);   // 0x0062D9E0
+    CCreatureAction_GiveItemToThing(CThingCreatureBase& giver, CThing& receiver, CThing& item);   // 0x0062D9E0
 };
 class CThingAICreature : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0 (CThingCreatureBase)
@@ -96,8 +96,8 @@ void CTCCarriedActionUseGive::OnActionUse(CThing& thing)
         CTCTargetingBase* targeting = user->GetTCConst<CTCTargetingBase>(8);
         if (targeting->IsTargetedThingOfType(2) && targeting->CanInteractWithTarget(2)) {
             CThing* item = ParentThing;
-            user->SetCurrentAction(&CCreatureAction_GiveItemToThing((CThingCreatureBase*)user,
-                                                                    targeting->GetTargetedThing(), item));
+            user->SetCurrentAction(&CCreatureAction_GiveItemToThing(*(CThingCreatureBase*)user,
+                                                                    *targeting->GetTargetedThing(), *item));
             return;
         }
     }

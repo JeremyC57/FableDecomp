@@ -76,7 +76,7 @@ class CDeviceResetCallback { public: virtual void OnDeviceReset(); };
 class CSystemManager;
 class CDisplayManager { public:                       // 0x2c8 bytes
     unsigned char _body[0x2c8];
-    CDisplayManager(CSystemManager* owner);        // 0x009C0880
+    CDisplayManager(CSystemManager& owner);        // 0x009C0880 (Ego_r + FableWin AAV)
     void AddDeviceResetCallback(CDeviceResetCallback* callback);   // 0x009C0190
     bool Init(const CDisplayManagerInit& init, bool exclusive);    // 0x009C0E50
 };
@@ -238,7 +238,7 @@ long CSystemManager::Initialise(const CSystemManagerInit& init)
             CDisplayManagerInit displayInit(init.DisplayManagerInit);
             displayInit.WindowHandle = ApplicationWinHandle;
             displayInit.SkipConfigDetection = init.SkipConfigDetection;
-            PDisplayManager.Reset(new CDisplayManager(this));
+            PDisplayManager.Reset(new CDisplayManager(*this));
             PDisplayManager.Data->Init(displayInit, ExclusiveMode);
         }
         if (init.Flags & 1)

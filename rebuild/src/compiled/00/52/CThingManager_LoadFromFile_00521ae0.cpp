@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString();                                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
-    void LoadFromFile(CAFile* file, CASuspendableProcess* process, long size);   // 0x0099F2E0
+    void LoadFromFile(CAFile& file, CASuspendableProcess* process, long size);   // 0x0099F2E0 (Ego_r + FableWin AAV)
 };
 namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
@@ -127,7 +127,7 @@ void CThingManager::LoadFromFile(CCountedPointer<CAFile> file, long version, CCh
     }
     NProgressDisplay::DisplayProgress("Thing Manager: Load From File", -1.0f, false, false);
     CCharString text;
-    text.LoadFromFile(file.Object, process, -1);
+    text.LoadFromFile(*file.Object, process, -1);
     CStringParser parser(text, 0, CCharString("", -1), 0);
     NProgressDisplay::DisplayProgress("Thing Manager: Load From File End", -1.0f, false, false);
     long fileVersion = 0;

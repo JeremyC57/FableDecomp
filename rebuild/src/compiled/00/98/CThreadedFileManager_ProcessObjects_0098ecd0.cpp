@@ -1,10 +1,11 @@
 // Process pending asynchronous file transfers in priority and device order.
-// Leaf: ?ProcessObjects@CThreadedFileManager@@QAEXXZ
+// Leaf: ?ProcessObjects@CThreadedFileManager@@AAEXXZ
 // Flags:
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_CTHREADEDFILE
 #define FABLE_RETAIL_CTHREADEDFILE_PROCESS_PASS27
+#define FABLE_RETAIL_CTHREADEDFILEMANAGER_PROCESSOBJECTS_PRIVATE   // NF293: Ego_r + FableWin AAE (private)
 #define FABLE_RETAIL_WIN32_OVERLAPPED_FILE_API_PASS27
 #define FABLE_RETAIL_CTBASESINGLETON_ISALLOCATED
 #define FABLE_RETAIL_CTBASESINGLETON_GET_DECL

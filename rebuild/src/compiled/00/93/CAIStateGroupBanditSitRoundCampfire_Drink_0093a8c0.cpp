@@ -71,9 +71,9 @@ class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureAction_PlayAn
 { public:
     CCharString LoopAnim;                           // +0xbc
     CCharString OutAnim;                            // +0xc0
-    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
+    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& creature, const CCharString& into,
                                                const CCharString& loop, const CCharString& out, float duration,
-                                               bool a, bool b, bool c);   // 0x008427E0
+                                               bool a, long b, long c);   // 0x008427E0 (Ego_r + FableWin AAV ... M_NJJ)
 };
 class CAIBrain
 { public:
@@ -108,7 +108,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::Drink()
         CCharString intoAnim("ST_SITTING_TAKE_BOTTLE_FROM_POCKET");
         CThingCreatureBase* creature = PBrain->Creature;
         result = AIAction_PerformActionAndWait(
-            CCreatureAction_PlayIntoLoopOutOfAnimation(creature, intoAnim, loopAnim, outAnim, duration,
+            CCreatureAction_PlayIntoLoopOutOfAnimation(*creature, intoAnim, loopAnim, outAnim, duration,
                                                         false, false, false), false);
     }
     DestroyItem("CARRY_SLOT_RIGHT_HAND");

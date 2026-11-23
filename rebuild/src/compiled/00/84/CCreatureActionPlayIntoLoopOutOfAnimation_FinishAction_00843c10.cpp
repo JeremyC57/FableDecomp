@@ -56,8 +56,8 @@ class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { 
     bool        UseAnimationMovement;                 // +0xb8
     CCharString LoopAnimName;                         // +0xbc
     CCharString OutOfAnimName;                        // +0xc0
-    CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* owner, const CCharString& loopAnimName,
-        const CCharString& outOfAnimName, long loops, float time, bool useAnimationMovement, long group, long priority);   // 0x008428B0
+private: CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase& owner, const CCharString& loopAnimName,
+        const CCharString& outOfAnimName, long loops, float time, bool useAnimationMovement, long group, long priority); public:   // 0x008428B0 (Ego_r + FableWin AAE ... AAV)
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* owner, const CCharString& animName,
         bool useAnimationMovement, long group, long priority);   // 0x00842960
     void FinishAction();
@@ -70,7 +70,7 @@ void CCreatureAction_PlayIntoLoopOutOfAnimation::FinishAction()
         return;
     switch (Stage) {
     case 0:
-        GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(GetCreature(), LoopAnimName, OutOfAnimName,
+        GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(*GetCreature(), LoopAnimName, OutOfAnimName,
             NumberOfTimesToLoop, (float)FrameToFinish, UseAnimationMovement, InterruptionGroupID, InterruptionPriority));
         break;
     case 1:
@@ -79,7 +79,7 @@ void CCreatureAction_PlayIntoLoopOutOfAnimation::FinishAction()
                 UseAnimationMovement, InterruptionGroupID, InterruptionPriority));
         else {
             long loops = NumberOfTimesToLoop - 1;
-            GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(GetCreature(), LoopAnimName, OutOfAnimName,
+            GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(*GetCreature(), LoopAnimName, OutOfAnimName,
                 loops, (float)FrameToFinish, UseAnimationMovement, InterruptionGroupID, InterruptionPriority));
         }
         break;

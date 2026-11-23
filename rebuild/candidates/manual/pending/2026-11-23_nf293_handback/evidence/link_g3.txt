@@ -1,0 +1,25 @@
+## HEAD set: H_00434e10.obj H_00867af0.obj H_007f04c0.obj H_008de650.obj H_008e08c0.obj H_008dffd0.obj H_008a9610.obj H_008c2810.obj H_00956460.obj H_00521ae0.obj 008e4860.obj 008ae1b0.obj 008c38b0.obj 00956760.obj 0099f2e0.obj 007dcfd0.obj 00a567a0.obj 007f05c0.obj 00506d40.obj
+duplicates 0
+UNRESOLVED 1 ??0CCamera@@QAE@ABVC3DVector@@0MJ@Z
+UNRESOLVED 1 ??0CCombatAction_FallStunned@@QAE@AAVCThingCreatureBase@@PAV1@ABVCCharString@@@Z
+UNRESOLVED 2 ??0CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@QAE@AAVCThingCreatureBase@@_N@Z
+UNRESOLVED 1 ??0CCombatAction_Guildmaster_HealFollowersRelease@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCombatAction_RecoverFromStunned@@QAE@AAVCThingCreatureBase@@PAV1@@Z
+UNRESOLVED 1 ??0CCombatAction_WillForcePushInto@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCombatAction_WillShieldInto@@QAE@PAVCThingCreatureBase@@MM@Z
+UNRESOLVED 1 ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ
+UNRESOLVED 1 ?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z
+UNRESOLVED 1 ?v00@CCombatAction_GenericStrikeResponseKnockdownRecover@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_RecoverFromStunned@@UAEXXZ
+## new set: 00434e10.obj 00867af0.obj 007f04c0.obj 008de650.obj 008e08c0.obj 008dffd0.obj 008a9610.obj 008c2810.obj 00956460.obj 00521ae0.obj 008e4860.obj 008ae1b0.obj 008c38b0.obj 00956760.obj 0099f2e0.obj 007dcfd0.obj 00a567a0.obj 007f05c0.obj 00506d40.obj
+duplicates 0
+UNRESOLVED 1 ??0CCamera@@QAE@ABVC3DVector@@0M_N@Z
+UNRESOLVED 1 ??0CCombatAction_FallStunned@@QAE@AAVCThingCreatureBase@@PAV1@ABVCCharString@@@Z
+UNRESOLVED 1 ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_GenericStrikeResponseKnockdownRecover@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UAEXXZ
+UNRESOLVED 1 ?v00@CCombatAction_RecoverFromStunned@@UAEXXZ
+LK_DONE

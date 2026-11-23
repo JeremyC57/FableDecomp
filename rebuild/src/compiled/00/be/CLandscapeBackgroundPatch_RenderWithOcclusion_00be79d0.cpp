@@ -29,7 +29,7 @@ class CEngineOcclusionManager { public:
     void StartOcclusionTest();                     // 0x00B8D090 (NF34: Ego_r + FableWin)
     void EndOcclusionTest(unsigned long handle);         // 0x00B8D0A0 (NF34: Ego_r + FableWin)
     unsigned long GetQueryResult(long handle, bool wait);   // 0x00B8D0B0
-    long RenderOcclusionBox(const CMatrix3x4& box); // 0x00B8D420
+    unsigned long RenderOcclusionBox(const CMatrix3x4& box); // 0x00B8D420 (Ego_r + FableWin QAEK)
     FABLE_FORCEINLINE long AddQuery()
     {
         unsigned long index = QueryCount;

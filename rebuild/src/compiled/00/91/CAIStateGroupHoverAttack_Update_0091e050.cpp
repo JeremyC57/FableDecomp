@@ -27,7 +27,7 @@ class CCombatActionBase;
 class CCombatManager { public:
     void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);    // 0x006EA450 (NF34: Ego_r + FableWin const&)
     C3DVector GetPreferredPos(const CThingCreatureBase& creature) const;                       // 0x006EA770
-    CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);    // 0x006EB600
+    CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);    // 0x006EB600 (Ego_r + FableWin AAV)
 };
 class CWorld { public:
     unsigned char _pad0[0x4c];
@@ -116,7 +116,7 @@ void CAIStateGroup_HoverAttack::Update()
             Terminate();
             return;
         }
-        CCombatActionBase* action = combat->GetNextActionForCreature(GetCreature());
+        CCombatActionBase* action = combat->GetNextActionForCreature(*GetCreature());
         if (action == 0) {
             Terminate();
             return;

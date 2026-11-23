@@ -125,7 +125,7 @@ class CDefinitionManager : public CResourceList { public:
     CInstantiatedDefInfo** InstantiatedDefs;                 // +0xa4
     unsigned char          _pada8[0xc0 - 0xa8];
     bool                   PersistFlag;                      // +0xc0
-    void DecompressDefinitionData(CMemoryDataInputStream* stream, unsigned long globalIndex);   // 0x009AD5F0
+protected: void DecompressDefinitionData(CMemoryDataInputStream& stream, unsigned long globalIndex) const; public:   // 0x009AD5F0 (Ego_r + FableWin IBE ... AAV)
     CDefClassInfo* FindClassInfo(const CCharString& className);   // 0x009AD2E0
     // Name-fix 2026-11-12: Ego_r.pdb 00b05680 + FableWin.pdb 0305cb30 ?LoadDef@CDefinitionManager@@IBEXK@Z (protected const); the
     //   non-const callees go through const_cast<CDefinitionManager*>(this), which emits no code.
@@ -143,7 +143,7 @@ void CDefinitionManager::LoadDef(unsigned long globalIndex) const
     }
     NProgressDisplay::DisplayProgress("CDefinitionManager::LoadDef 1", -1.0f, false, false);
     CMemoryDataInputStream stream;
-    const_cast<CDefinitionManager*>(this)->DecompressDefinitionData(&stream, globalIndex);
+    DecompressDefinitionData(stream, globalIndex);
     CDefClassInfo* classInfo;
     {
         CCharString className = GDefStringTable.GetString(info->ClassName);
