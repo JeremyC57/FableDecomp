@@ -1,0 +1,8 @@
+00449b60	call	00644480	00644424L Draw
+00449b60	call	0064c9a7	0064c869L NPlayerGui::CDrawSpiritTargetingCursor::Draw
+00415bd0	call	009f366d	009f35d0L CSurface::CanDoProperSignedConversion
+00415bd0	call	009f3c5c	009f3b00L CSurface::CopyFromMemory
+00b4ced0	call	00b920c8	00b92070L CEngineSceneGrid::PreloadPrimitives
+00b4ced0	call	00b926d3	00b92660L RenderCellClippedShadowBuffer
+004498c0	call	0064445e	00644424L Draw
+0044a530	call	004166b4	004166a8L CMainGameComponent::CreatePlayers

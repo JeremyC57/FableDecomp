@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00449B60	?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z	Ego_r + FableWin name sets; exe callers 0x0064C869 / 0x00644424 bind this spelling; the self row's object defines only the stand-in (work/obj/H_00449b60.obj)	?GetMultiplayerColour@CPlayerManager_Methods@@QBE?AVCRGBColour@@J@Z (self row 0x00449B60's own definition: owner self port, T3, NF282 D2)

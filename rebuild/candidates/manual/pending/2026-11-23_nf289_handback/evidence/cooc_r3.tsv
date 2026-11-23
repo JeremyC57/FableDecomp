@@ -1,0 +1,3 @@
+src/compiled/00/9f/CSurface_CanDoProperSignedConversion_009f35d0.cpp	CSurface_Methods	GetWidth	unsigned long GetWidth() const; || && sourceBox->right == GetWidth() && sourceBox->bottom == GetHeight())) {
+src/compiled/00/9f/CSurface_GetPitch_009f3390.cpp	CSurface_Methods	GetWidth	unsigned long GetWidth() const || return GetPixelFormat().GetColourDepth() * GetWidth() / 8;
+tests/00/41/CMainGameComponent_AppReinitFunc_004167da_test.cpp	CSurface_Methods	GetWidth	FABLE_FORCEINLINE unsigned long GetWidth() const { return GetDimensions().X; } || game->PostChangeResolution(surface.GetWidth(), surface.GetHeight(), g_pDisplayManager->Ba

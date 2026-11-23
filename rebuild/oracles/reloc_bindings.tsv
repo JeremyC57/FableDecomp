@@ -3850,7 +3850,6 @@ _kName	012786ac	008b34d0
 ?g_Sockets@@3UCSocketList@@A	013bb000	008f9780
 ?CheckAndTrigger@CTimedTrigger_008f9e60@@QAEXXZ	008f9ca0	008f9e60
 __imp__GetTickCount@0	0143fdfc	008f9e60
-?CheckAndTrigger@CMusicTimer_008fa000@@QAEXXZ	008f9ca0	008fa000
 ?Method@CClass_008fa2f0@@QAEXJ@Z	008fa280	008fa2f0
 ?Method@CClass_008fa300@@QAEXJ@Z	008fa280	008fa300
 ??_7CAIStateGroupBase@@6B@	01288c60	008fd255
@@ -7435,7 +7434,6 @@ __wcsupr	00f3fb8a	00557a10
 ?ManualReset@CTCTrapBase@@QAEXXZ	00787c0c	008d9650
 ?__copy@@YIPAUCIcicleData@NCreatureMode@@PAU12@00ABUrandom_access_iterator_tag@@PAH@Z	008e34c0	008d9650
 ?ContractSubPair_00accbf0@COptimisedPrimitive@@QAEXABUCSubContraction@QuadricOptimiserInternals@@AAUCVertexPairContraction@3@@Z	00accbf0	00acd840
-?UpdateSubPair_00ac96e0@COptimisedPrimitive@@QAEXABUCSubContraction@QuadricOptimiserInternals@@@Z	00ac96e0	00acd840
 ??4?$map@KMU?$less@K@std@@U?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAEAAU01@ABU01@@Z	00ad3e30	00ad7050
 ??4?$set@KU?$less@K@std@@U?$allocator@K@2@@std@@QAEAAU01@ABU01@@Z	00ad3720	00ad7050
 ??0?$map@KMU?$less@K@std@@U?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABU01@@Z	00ad4210	00ad77f0
@@ -7612,8 +7610,6 @@ _s_oneOver360	01238e00	00878ce0
 ??0CTCTargetingBase@@QAE@AAVCThing@@@Z	007f58e0	004e2250
 ??0CTargetPoint@NPlayerTargeting@@QAE@XZ	004d7a76	004e2250
 ??_7CTCTargetingPlayer@@6B@	0124280c	004e2250
-?GetSoundBank_004c7a80@CThing@@QAEPAUCASoundBank@@XZ	004c7a80	0066b1d0
-?PlayAttachedSampleByName_0066b120@CTCSoundPlayer@@QAEKPAUCASoundBank@@ABVCCharString@@PAUCSoundInit@@JJJ@Z	0066b120	0066b1d0
 ?GetPLocalSeed@CTCBase@@QAEPAKXZ	00686db0	00731bf0
 ?SetShopKeeper@CTCShop@@QAEXPAVCThingCreatureBase@@@Z	007751a0	00799000
 ?SetOpinionDeedMask@CTCCreatureOpinionOfHero@@QAEXABVCCharString@@@Z	006822e0	007996b0
@@ -7652,7 +7648,6 @@ __imp__SleepEx@8	0143fddc	0098f1e0
 ?RandomiseMovementSpeed@CThingAICreature@@QAEXPAM@Z	00830260	00830dd0
 ?Stop@CBaseFilter@@UAGJXZ	00caab30	00ca66d0
 ?WaitForReceiveToComplete@CBaseRenderer@@QAEXXZ	00ca47d0	00ca66d0
-?OnRoseQuestCutscene_00ee2db0@CV_TravellingHeroesScript@@QAEXVCCharString@@@Z	00ee2db0	00ee3ee0
 ?GetFrame@CMainGameComponent@@QAEJXZ	00416225	0049dbe0
 ?Open@CManager@NHeroInformationScreens@@QAEXXZ	0066ea46	0049f3f0
 ??0CVertexStreamFormat@@QAE@XZ	00ab37f0	00a90560
@@ -7916,7 +7911,6 @@ __imp__GetCommandLineW@0	0143fd74	009a5340
 _wcslen	00bfed94	009a5340
 _wcsncpy	00bfeb04	009a5340
 _wcsrchr	00bfedb2	009a5340
-?GetWidth@CSurface_Methods@@QBEKXZ	00415bd0	009f35d0
 ?IsSigned@CPixelFormat@@QBE_NXZ	009e3970	009f35d0
 ?RemoveAgentFromLists@@YIXPAVCSteeringAgent@@@Z	00a47d10	00a1c950
 ?Uninitialise@CTexture@@QAEXXZ	009f9f70	00499fb0
@@ -15196,8 +15190,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Method_0082b7c0@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ	0082b7c0	00643e9a
 ?DrawBox@@YIXPAVCEnginePrimitivePrepareInfo@@PAUCRetailHandleVector@@ABVC2DBoxF@@W4EEngine2DLayer@@@Z	0048e0a2	00643eb2
 ?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	00644424
-?GetMultiplayerColour@PlayerManagerMethods@@QBE?AVCRGBColour@@J@Z	00449b60	00644424
-?GetPlayer@PlayerManagerMethods@@QAEAAVCPlayer@@J@Z	004498c0	00644424
 ?find@@YI?AUCThingListIterator@@U1@0ABQAVCThing@@@Z	00655cdc	0064639c
 ??0?$CIntelligentPointer@VCThingPhysical@@@@QAE@PAVCThing@@@Z	00655145	006463ff
 ??4?$CIntelligentPointer@VCThingPhysical@@@@QAEAAV0@ABV0@@Z	00655180	006463ff
@@ -20095,7 +20087,6 @@ _IID_IEnumMediaTypes	012a9ae4	00ca7bb0
 ?_M_clear@?$vector@VCArenaWaveDef@@V?$allocator@VCArenaWaveDef@@@std@@@std@@IAEXXZ	00f26aa0	00f26920
 ?g_UnprovenDynamicHeap_013D2E38@@3V?$CDynamicObjectHeap@$0BI@$0DFF@@@A	013d2e38	012244f0
 ?g_UnprovenDynamicHeap_01427E20@@3V?$CDynamicObjectHeap@$0HE@$0CBB@@@A	01427e20	01224590
-??0?$map@VCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@U?$less@VCUnprovenMapKey_00CD3640@@@std@@V?$allocator@U?$pair@$$CBVCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@@std@@@4@@std@@QAE@XZ	00cd3640	01224c6d
 ?Audio_RenderMultichannelData@@YAXPBUSUnprovenImpulse52@@KPAFK@Z	00c78970	00c705b0
 ?Audio_RenderMultichannelData_Alt@@YAXPBUSUnprovenImpulse52@@KPAFK@Z	00c7ba00	00c70f80
 ??$_M_allocate_and_copy@PBVCBrainUpdateZone@@@?$vector@VCBrainUpdateZone@@V?$allocator@VCBrainUpdateZone@@@std@@@std@@IAEPAVCBrainUpdateZone@@IPBV2@0@Z	00462dc1	00462cb0
@@ -32654,7 +32645,6 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ?ClipWorldSpaceBoundingBox@CEngineCameraMethods@@QBE_NABVC3DBoundingBox@@MAA_N@Z	00b308e0	00b91f50
 ?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAVC3DBoundingBox@@AAMKK@Z	00b919c0	00b91f50
 ?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABVCEngineCamera@@K@Z	00b91f50	00b91f50
-?ClipBoundingBox@CShadowClipVolumeMethods@@QBE_NABVC3DBoundingBox@@AA_N@Z	00b4ced0	00b92070
 ?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABVCShadowClipVolume@@ABVC3DVector@@K@Z	00b92070	00b92070
 ?ClipWorldSpaceBoundingBox@CEngineCamera@@QBE_NABVC3DBoundingBox@@MAA_N@Z	00b308e0	00b92500
 ?RenderCellClipped@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z	00b92500	00b92500
@@ -36996,7 +36986,6 @@ _time	00bfed22	008405f0
 ?g_pPrimitiveOcclusionManager@@3PAVCEnginePrimitiveOcclusionManager@@A	01436e58	00b26360
 ?Write@CDiskFileWin32@@QAEXPBXJPAVCASuspendableProcess@@@Z	0099aa90	00b2c8e0
 ?SetRenderTarget@CDisplayManager@@QAEXPAVCRenderTarget@@@Z	009bf160	00b4f510
-?CreatePlayers@CPlayerManager_Methods@@QAEXXZ	0044a530	004166a8
 ?InitialiseAsLocal@CNetworkClient@@QAE_NPAVCMainGameComponent@@@Z	004ae940	004166a8
 ?Uninitialise@CNetworkClient@@QAEXXZ	004ae990	004166a8
 ?GetHelperPointNamesFromStrikeEventName@?A0x18bdb817@@YIXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N22@Z	00858e00	00859040
@@ -39473,3 +39462,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ??$GetComponent@VCAnimComponentDelayTime@@@CAnimationEntry@@QBEXPAPBVCAnimComponentDelayTime@@@Z	005e0300	005dc1f0
 ?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z	00874ee0	008754a0
 ?IsThemeToBlockPassabilityBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z	00874f10	008754a0
+?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z	00ac96e0	00acd840
+?CreatePlayers@CPlayerManager@@QAEXXZ	0044a530	004166a8

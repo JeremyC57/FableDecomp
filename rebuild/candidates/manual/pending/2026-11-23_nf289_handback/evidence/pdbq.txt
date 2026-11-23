@@ -1,0 +1,6 @@
+egor=1 fablewin=1 ?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z
+egor=1 fablewin=1 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+egor=1 fablewin=1 ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z
+egor=1 fablewin=1 ?GetWidth@CSurface@@QBEKXZ
+egor=1 fablewin=1 ?CreatePlayers@CPlayerManager@@QAEXXZ
+egor=1 fablewin=1 ?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z

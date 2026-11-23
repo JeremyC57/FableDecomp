@@ -990,7 +990,7 @@ line	tag	address	correct_symbol	status	other_spellings
 996	571	00d905c0	?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z	partial	?MakeBanditComment@CQ_HobbeCaveScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z
 997	571	00e241b0	??1CIsThingAlive@NScript@@UAE@XZ	closed	
 998	571	00ee07e0	?GossipSetup@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@000@Z	partial	GossipSetup
-999	571	00ee2db0	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z	partial	?OnRoseQuestCutscene_00ee2db0@CV_TravellingHeroesScript@@QAEXVCCharString@@@Z
+999	571	00ee2db0	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z	closed	
 1000	571	00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	partial	?WatchForEnemyDeath@CQ_AmbushTradersScript@@QAEXUCScriptThingRuntime@@@Z || ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z
 1001	571	00f35b10	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z	partial	?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z || ?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z || ?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z || ?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z
 1002	571	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	closed	
@@ -4908,7 +4908,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6667	land0811d	0066b370	?UpdateSounds@CTCSoundPlayer@@QAEXXZ	partial	?PlayAllSoundEvents@CTCSoundPlayer@@QAEXXZ
 6668	land0811d	0050a650	?GetMapNavigationAreaInit@CWorldMap@@QAEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z	partial	?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
 6669	land0811d	0063adf0	?GetStrongestEngineThemeAt@CWorldMap@@QAEJABVC3DVector@@PAJ@Z;	open	?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z
-6670	land0811d	0066b120	?PlayAttachedSampleByName_0066b120@CTCSoundPlayer@@QAEKPAUCASoundBank@@ABVCCharString@@PAUCSoundInit@@JJJ@Z	partial	?InternalPlaySoundEvent@CTCSoundPlayer || ?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z
+6670	land0811d	0066b120	?PlayAttachedSampleByName_0066b120@CTCSoundPlayer@@QAEKPAUCASoundBank@@ABVCCharString@@PAUCSoundInit@@JJJ@Z	open	?InternalPlaySoundEvent@CTCSoundPlayer || ?InternalPlaySoundEvent@CTCSoundPlayer@@AAEKAAVCASoundBank@@ABVCCharString@@_N22J@Z
 6671	land0811d	013b878c	?PGuiDef@CPlayerGui@@2V?$CDefPointer@VCPlayerGuiDef@@@@A;	open	?PGuiDef@CPlayerGui@@2V?$CDefPointer@$$CBVCPlayerGuiDef@@@@A || ?PGuiDef@CPlayerGui@@2V?$CDefPointer@VCPlayerGuiDef@@@@A || ?g_PlayerGuiDef@@3UCPlayerGuiDefPointer@@A || ?g_playerGuiDef@@3PAVCPlayerGuiDef@@A
 6672	land0811d	01231720	??_7CTBaseSingletonNoDefaultAlloc@@6B@	partial	??_7?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@6B@
 6675	land0811d	01375748	?g_PlayAnimationDefaultFlag@@3_NA;	open	?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA
@@ -5947,7 +5947,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7931	land1011bu	004b9250	??$remove_if@VCIsQuestCardWithDefName@@@?$list@VCQuestCard@CQuestManager@@V?$allocator@VCQuestCard@CQuestManager@@@std@@@std@@QAEXVCIsQuestCardWithDefName@@@Z	partial	??$remove_if@VCIsQuestCardWithDefName@@@?$list@ || ?Remove@SubList@@QAEXPAVCCharString@@@Z
 7932	land1011bu	004c11f0	?GetStaticFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@@Z	partial	?GetStaticFocalPosIfLoaded@CTCGraphicAppearance@@QAE_NPAVC3DVector@@@Z || GetStaticFocalPosIfLoaded
 7933	land1011bu	004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	partial	?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
-7934	land1011bu	004c7a80	?GetSampleBank@CThing@@QBEAAVCASoundBank@@XZ	partial	?GetSoundBank_004c7a80@CThing@@QAEPAUCASoundBank@@XZ || GetMeshBank
+7934	land1011bu	004c7a80	?GetSampleBank@CThing@@QBEAAVCASoundBank@@XZ	partial	GetMeshBank
 7935	land1011bu	004c9d60	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z	partial	?AddTC@CThing@@QAEXABVCCharString@@_NABVCPhysicsSnapshot@@@Z || ?AddTC@CThingNative@@QAEPAVCTCBase@@ABVCCharString@@_NPAVCTCParamsBase@@@Z
 7936	land1011bu	004fc600	?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z	closed	
 7937	land1011bu	005812df	??A?$map@VCCharString@@UMirroredCriminalStatus@CTCHeroStats@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@5@@std@@QAEAAUMirroredCriminalStatus@CTCHeroStats@@ABVCCharString@@@Z	partial	??A?$map || ??ACCrimeStatusMap@@QAEAAUMirroredCriminalStatus@@ABVCCharString@@@Z
@@ -10498,3 +10498,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13334	land1123nf288	007280c0	?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ	closed	
 13335	land1123nf288	0066bc10	?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	partial	?GetPotentialCriteriaStrings@CTCSoundPlayer@@QAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
 13336	land1123nf288	005e9aa0	?EndRound@CTCTavernGame@@UAEXXZ	partial	?EndRound@CTCTavernGame@@QAEXXZ
+13337	land1123nf289	00449b60	?GetMultiplayerColour@CPlayerManager@@QBE?AVCRGBColour@@J@Z	partial	GetMultiplayerColour

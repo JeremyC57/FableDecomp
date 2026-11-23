@@ -113,6 +113,11 @@ public:
     void FreezePlayerControls(long number);                          // 0x00449A30
     void UnfreezePlayerControls(long number);                        // 0x00449A50
 #endif
+#ifdef FABLE_RETAIL_CPLAYERMANAGER_FLAT_CREATEPLAYERS
+    // Add-only opt-in (naming agent NF289, 2026-11-23, binder 0x004166A8 CMainGameComponent::CreatePlayers): Ego_r.pdb / FableWin.pdb
+    // ?CreatePlayers@CPlayerManager@@QAEXXZ (out of line at 0x0044A530, the landed self row). Declaration only: no layout change.
+    void CreatePlayers();                                            // 0x0044A530
+#endif
 };
 #pragma pack(pop)
 

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CV_TravellingHeroesScript (engine/CV_TravellingHeroesScript.h)
+00ee3ee0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ee3ee0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ee3ee0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose::?Main@CTH_Trigger_Guild_Rose@CV_TravellingHeroesScript@NScript@@EAEXXZ

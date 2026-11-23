@@ -1,0 +1,8 @@
+## HEAD set: H_00b92070.obj H_00b4ced0.obj
+duplicates 0
+
+UNRESOLVED 1 ?ClipBoundingBox@CShadowClipVolumeMethods@@QBE_NABVC3DBoundingBox@@AA_N@Z
+## new set: N_00b92070.obj H_00b4ced0.obj
+duplicates 0
+
+LK_DONE
