@@ -5,11 +5,13 @@ T1	access	C3DMeshInfo	1	1	engine/C3DMeshInfo.h	00a24a80
 T1	access	CBankFileAsyncData	1	1	engine/CBankFileAsyncData.h	009d54e0
 T1	access	CCharString	1	1		0099ea60
 T1	access	CComponent	1	1		00531ec0
+T1	access	CDefinitionManager	1	1	engine/CDefinitionManager.h	009ad950
 T1	access	CEngineClothSimulationMeshBase	1	1	engine/CEngineClothSimulationMeshBase.h	00b80ad0
 T1	access	CEnginePrimitiveOcclusionInfo	1	1	engine/CEnginePrimitiveOcclusionInfo.h	00b2f8b0
 T1	access	CFrontEndManager	1	1	engine/CFrontEndManager.h	005955ab
 T1	access	CKeyboardDX	1	1		00ab6450
 T1	access	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be6f70
+T1	access	CMiniMapDisplay	1	1	engine/CMiniMapDisplay.h	0082a2a0
 T1	access	CMouseDX	1	1	engine/CMouseDX.h	00ab5710
 T1	access	CParticleSimulation	1	1	engine/CParticleSimulation.h	00adf2a0
 T1	access	CTCBase	1	1	engine/CTCBase.h	00686db0
@@ -374,6 +376,7 @@ T1	other	NParticleEngine	7	11		00aeaa00 00aeaa80 00aeaad0 00aeaae0 00aeab00 00ae
 T1	other	sort_heap	7	7		00497570 007590c0 0081c7d0 0086c890 009b5af0 00a81d90 00a81e80
 T1	other	CBasicString	6	11		00411570 004115a0 009a0080 009a01c0 009a0390 009a0460
 T1	other	CManager	6	6	engine/CManager.h	0041d122 0041d21b 006f90d0 006f96c0 006f9720 006f9790
+T1	other	CTCCombat	6	5	engine/CTCCombat.h	007331c0 007338a0 00733cf0 007340b0 00734190 007352d0
 T1	other	CTCDParticleEmitter	6	5	engine/CTCDParticleEmitter.h	006e0880 006e0970 006e0be0 006e0e80 006e0f10 006e11a0
 T1	other	CTCInventoryItem	6	9	engine/CTCInventoryItem.h	004dc600 005d8e50 005d9630 005d97f0 005d98b0 005d9aa0
 T1	other	CTCShotDefinitionBase	6	9		007beff0 007bf2b0 007bfe30 007c0690 007c1000 007c21a0
@@ -387,7 +390,6 @@ T1	other	CModeBase	5	14		00739e20 0073a760 0073a7d0 0073ac50 0073eac0
 T1	other	CPersistTraits	5	7	engine/CPersistTraits.h	0040f8a0 0040fef0 00452335 004b85d0 00615e70
 T1	other	CResource	5	11	engine/CResource.h	009fbec0 009fbf20 009fbf70 009fc440 009fc550
 T1	other	CTCAIScratchpad	5	6	engine/CTCAIScratchpad.h	008ae5e0 008ae660 008ae810 008ae890 008aea40
-T1	other	CTCCombat	5	4	engine/CTCCombat.h	007338a0 00733cf0 007340b0 00734190 007352d0
 T1	other	CTCHeroExperience	5	7	engine/CTCHeroExperience.h	006d63a0 006d6570 006d72d0 006d7f20 006d8830
 T1	other	CTCTavernGame	5	4	engine/CTCTavernGame.h	005ea000 005ea650 005ea9b0 005eda50 0094d430
 T1	other	CThingPhysical	5	6	engine/CThingPhysical.h	005296b0 006a4d00 006a4d60 006a4df0 006a6880
@@ -524,6 +526,7 @@ T1	other	CTCInGameMenu	2	2	engine/CTCInGameMenu.h	0047dbb8 0047e07f
 T1	other	CTCInventoryStats	2	2	engine/CTCInventoryStats.h	005ccc91 005cdbbe
 T1	other	CTCMeleeTrap	2	2	engine/CTCMeleeTrap.h	00787dbc 0078809b
 T1	other	CTCParticleAttachmentTracker	2	2		0071a8f0 0071a940
+T1	other	CTCPerceiveThing	2	3	engine/CTCPerceiveThing.h	00744730 007449b0
 T1	other	CTCPhysicalShieldSpell	2	2	engine/CTCPhysicalShieldSpell.h	0079ddb0 0079e580
 T1	other	CTCPhysicsBase	2	3	engine/CTCPhysicsBase.h	006af630 006b0780
 T1	other	CTCShapeManager	2	2	engine/CTCShapeManager.h	00761b50 007624e0
@@ -835,7 +838,6 @@ T1	other	CTCObstacle	1	1		004d95eb
 T1	other	CTCOracleMinigame	1	1	engine/CTCOracleMinigame.h	007e5f70
 T1	other	CTCParamsPhysicsBase	1	2	engine/CTCParamsPhysicsBase.h	006a06e0
 T1	other	CTCParticleAttacher	1	1		004e0bf6
-T1	other	CTCPerceiveThing	1	1	engine/CTCPerceiveThing.h	007449b0
 T1	other	CTCPhotojournalCapture	1	1	engine/CTCPhotojournalCapture.h	0055dc00
 T1	other	CTCRegionDisplay	1	1	engine/CTCRegionDisplay.h	00639ba0
 T1	other	CTCRegionFollower	1	1	engine/CTCRegionFollower.h	006aeba0
@@ -1022,7 +1024,6 @@ T3	other	list	4	12		004046b0 004ba4e0 008f9f50 0090b8e0
 T3	other	pair	4	4		004da6a9 00695d90 006f5260 00cd22c0
 T3	other	CHitLocation	3	3		00815290 008152a0 008152b0
 T3	other	CTCCreatureGenerator	3	3	engine/CTCCreatureGenerator.h	00749d60 00749dc0 00749e20
-T3	other	CTCPerceiveThing	3	7	engine/CTCPerceiveThing.h	00744440 00744730 00744d00
 T3	other	CThingManager	3	3	engine/CThingManager.h	0051df60 0051df70 0051dff0
 T3	other	Transfer	3	6		00410be0 004859ad 00800b90
 T3	other	CArray	2	2	engine/CArray.h	00410f30 00ad5ce0
@@ -1037,6 +1038,7 @@ T3	other	CTCCombat	2	3	engine/CTCCombat.h	007330f0 007331e0
 T3	other	CTCGraphicAppearance	2	2		004bc180 004bff60
 T3	other	CTCInventoryAbilities	2	3	engine/CTCInventoryAbilities.h	005ede7f 005edeeb
 T3	other	CTCInventoryItem	2	4	engine/CTCInventoryItem.h	005d9050 005d92d0
+T3	other	CTCPerceiveThing	2	4	engine/CTCPerceiveThing.h	00744440 00744d00
 T3	other	CTCTargeted	2	2	engine/CTCTargeted.h	007ea290 007ea2b0
 T3	other	CTCWeapon	2	2	engine/CTCWeapon.h	005da540 005da5a0
 T3	other	CTCWife	2	2	engine/CTCWife.h	006cec80 006ced30

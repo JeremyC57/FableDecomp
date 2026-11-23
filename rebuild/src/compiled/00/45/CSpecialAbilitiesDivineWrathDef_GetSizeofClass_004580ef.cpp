@@ -1,7 +1,11 @@
-class CSpecialAbilitiesDivineWrathDef { public: char pad[4]; };
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesDivineWrathDef@@UAEKXZ
+class CSpecialAbilitiesDivineWrathDef { public:
+    public: virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CSpecialAbilitiesDivineWrathDef_GetSizeofClass(const CSpecialAbilitiesDivineWrathDef* self)
+unsigned long CSpecialAbilitiesDivineWrathDef::GetSizeofClass()
 {
+    const CSpecialAbilitiesDivineWrathDef* self = this;
     (void)self;
     return 0xfc;
 }

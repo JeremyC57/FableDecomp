@@ -1,5 +1,5 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Leaf: ?CTCPerceiveThing_SetLastAwareInfo@@YIXPAVCTCPerceiveThing@@@Z
+// Leaf: ?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ
 struct CObj34 { char pad[0x44]; float f44; };
 
 class CTCBase;
@@ -15,6 +15,7 @@ class CTCPerceiveThing { public:
     C3DVector v20;     // +0x20 (12 bytes -> +0x2c)
     char pad2c[8];     // +0x2c
     CObj34* p34;       // +0x34
+    private: void SetLastAwareInfo();
 };
 
 // NF51 (round 7): the player GUI comes from the shared engine/CPlayerGui.h (was a made-up GObj with NotifyA / NotifyB members and an
@@ -35,8 +36,9 @@ class CBaseObject;
 // was the free stand-in Getter_d82ca0), called on the perceived thing the intelligent pointer at +0x0C holds.
 #include "engine/CThing.h"
 
-void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
+void CTCPerceiveThing::SetLastAwareInfo()
 {
+    CTCPerceiveThing* self = this;
     const CThing* sub = static_cast<const CThing*>(((CBaseIntelligentPointer*)(self->field_c))->GetPItem());
     self->v20 = sub->GetPos();
 

@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CShoveHaPennyRegionDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CShoveHaPennyRegionDef_GetSizeofClass()
+class CShoveHaPennyRegionDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CShoveHaPennyRegionDef::GetSizeofClass()
 {
     return 48;
 }

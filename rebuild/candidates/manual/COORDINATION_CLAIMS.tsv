@@ -385,3 +385,4 @@ date	account	item	kind	status	note
 2026-11-23	A	tracker batch T1 signature held	naming	done	agent NF316 landed 14 rows + 6 table lines (batches/2026-11-23_landing_nf316)
 2026-11-23	A	tracker batch T1 leftovers 2	naming	done	agent NF314 landed 25 rows + 1 header opt-in + 26 table lines (batches/2026-11-23_landing_nf314)
 2026-11-23	A	tracker batch T1 in-place tail	naming	done	agent NF315 landed 20 rows + 8 table lines (batches/2026-11-23_landing_nf315)
+2026-11-23	A	flatten pilot 1 (scripted)	naming	done	79 rows by flatten_pilot.py (batches/2026-11-23_landing_flatten_pilot1)

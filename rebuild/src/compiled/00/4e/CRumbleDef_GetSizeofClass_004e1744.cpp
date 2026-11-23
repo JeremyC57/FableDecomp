@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CRumbleDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CRumbleDef_GetSizeofClass()
+class CRumbleDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CRumbleDef::GetSizeofClass()
 {
     return 64;
 }

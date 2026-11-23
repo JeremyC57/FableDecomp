@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CSoundAtmospheresDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CSoundAtmospheresDef_GetSizeofClass()
+class CSoundAtmospheresDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSoundAtmospheresDef::GetSizeofClass()
 {
     return 52;
 }

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Pilot: turn flattened `R __fastcall Class_Method(const Class* p)` rows back into `R Class::Method() const` on the shared header
+"""Pilot: turn flattened `R __fastcall Class_Method(const Class* p)` rows back into `R Class::Method() const` in the row's own local model
 (docs/journal/2026-11/2026-11-23_naming_remainder.md, route 2). Generate-and-verify; writes candidate sources only under <work>.
 usage (repo root, lane env sourced, S set): python3 -u flatten_pilot.py <work> [--max N] [--symbols self_symbols.tsv]
 Candidates: the row's graded symbol (self_symbols.tsv, else the compile gate's object_symbol) is `?Class_Method@@YI...` with ONE pointer
-parameter, Class::Method has exactly one symbol in the PDB name sets and it takes no parameters (`...XZ`), engine/<Class>.h declares
-Method, and no other landed source or test names Class_Method. A candidate is ACCEPTED only when, all compiled by vland on this lane:
+parameter, Class::Method has exactly one symbol in the PDB name sets and it takes no parameters (`...XZ`), the row defines or forward-declares
+Class locally (v2: the header route needs add-only opt-ins, a header-lane task), and no other landed source or test names Class_Method. A candidate is ACCEPTED only when, all compiled by vland on this lane:
   - the new object's graded symbol is exactly the PDB symbol;
   - the HEAD and new objects are equal section by section (bytes and relocations) under the one rename old -> PDB (objsec);
   - the new grade is MATCH / RELOCATION_MATCH with the test passing.
@@ -40,6 +40,13 @@ def mentions(name, own):
             alltext[f] = open(f, encoding="utf-8", errors="replace").read()
     return [f for f, t in alltext.items() if name in t and os.path.basename(f) not in own]
 res = [];  cands = []
+# identity guard (landing pilot 1): the PDB name must belong to this address alone. Reject when the catalog names another address
+# Class::Method, or another landed row's graded symbol already is the PDB symbol (0x00408360 v 0x00438440 ForceClose, ...).
+catname = {}
+for l in open("rebuild/oracles/auto-re-candidates.tsv").read().splitlines()[1:]:
+    q = l.split("\t"); catname.setdefault(q[1], set()).add(q[0].lower())
+symaddr = {}
+for k, v in sym.items(): symaddr.setdefault(v, set()).add(k)
 for a in sorted(ent):
     s = sym.get(a, "")
     m = re.match(r'\?([A-Za-z0-9]+)_([A-Za-z0-9]+)@@YI', s)
@@ -47,8 +54,8 @@ for a in sorted(ent):
     cls, meth = m.group(1), m.group(2)
     c = bymeth.get((meth, cls), [])
     if len(c) != 1 or not c[0].endswith("XZ"): continue
-    hdr = f"rebuild/include/engine/{cls}.h"
-    if not os.path.exists(hdr) or not re.search(r'\b' + meth + r'\s*\(', open(hdr, errors="replace").read()): continue
+    if catname.get(cls + "::" + meth, set()) - {a} or symaddr.get(c[0], set()) - {a}:
+        res.append((a, "SKIP", s, c[0], "identity: the PDB name is claimed by another address " + ",".join(sorted((catname.get(cls + "::" + meth, set()) | symaddr.get(c[0], set())) - {a})[:4]))); continue
     cands.append((a, cls, meth, s, c[0]))
 print("candidates", len(cands), flush=True)
 def vland(tag, rows):
@@ -73,21 +80,58 @@ for a, cls, meth, old, newsym in cands:
     fn = f"{cls}_{meth}"
     others = mentions(fn, {os.path.basename(path), os.path.basename(kv.get("TestSource", "") or "x")})
     if others: res.append((a, "SKIP", old, newsym, "other landed files name " + fn + ": " + ",".join(os.path.basename(o) for o in others[:3]))); continue
-    rx = re.compile(r'^(?P<ret>[^\n;{}()]*?)\b__fastcall\s+' + fn + r'\s*\(\s*(?P<c>const\s+)?(?:class\s+|struct\s+)?' + cls +
-                    r'\s*\*\s*(?P<p>\w+)\s*\)\s*\n?\s*\{', re.M)
+    # v3 parameter forms: (const C* p), (C* p), (C* const p), (struct / class C* p), (void* p), (const void* p), ()
+    rx = re.compile(r'^(?P<ret>[^\n;{}()]*?)\b__fastcall\s+' + fn + r'\s*\(\s*(?:(?P<c>const\s+)?(?:class\s+|struct\s+)?(?P<t>' + cls +
+                    r'|void)\s*\*\s*(?:const\s+)?(?P<p>\w+)|(?P<none>(?:void)?))\s*\)\s*\n?\s*\{', re.M)
     m = rx.search(src)
     if not m or len(rx.findall(src)) != 1: res.append((a, "SKIP", old, newsym, "definition shape not recognised")); continue
     acc = re.match(r'\?[^@]+@[^@]+@@([A-Z])([AB])E', newsym)
     if not acc: res.append((a, "SKIP", old, newsym, "PDB symbol is not a thiscall member")); continue
-    is_const = acc.group(2) == "B"
-    body_alias = f"{'const ' if is_const else ''}{cls}* {m.group('p')} = this;"
-    head_txt = f"{m.group('ret').strip()} {cls}::{meth}(){' const' if is_const else ''}\n{{\n    {body_alias}"
+    letter, is_const = acc.group(1), acc.group(2) == "B"
+    access = {"Q": "public", "U": "public", "I": "protected", "M": "protected", "A": "private", "E": "private"}.get(letter)
+    if not access: res.append((a, "SKIP", old, newsym, "access letter " + letter)); continue
+    virt = letter in "UME"
+    ret = m.group('ret').strip()
+    rc = re.match(r'\?[^@]+@[^@]+@@[A-Z][AB]E(_N|[DEFGHIJKMNX])XZ$', newsym)   # simple return codes: take the PDB's type
+    if rc: ret = {"_N": "bool", "D": "char", "E": "unsigned char", "F": "short", "G": "unsigned short", "H": "int", "I": "unsigned int",
+                  "J": "long", "K": "unsigned long", "M": "float", "N": "double", "X": "void"}[rc.group(1)]
+    ret = re.sub(r'^(?:static\s+|inline\s+|extern\s+"C"\s+)+', '', ret)
+    decl = f"{access}: {'virtual ' if virt else ''}{ret} {meth}(){' const' if is_const else ''};"
+    pconst = 'const ' if m.group('c') else ''
+    if m.group('p') is None: alias = ""
+    elif m.group('t') == 'void': alias = f"\n    {pconst}void* {m.group('p')} = (void*)this;"
+    else: alias = f"\n    {pconst}{cls}* {m.group('p')} = {'' if (is_const and not pconst) else ''}{'const_cast<' + cls + '*>(this)' if (is_const and not pconst) else 'this'};"
+    head_txt = f"{ret} {cls}::{meth}(){' const' if is_const else ''}\n{{{alias}"
     ns_src = src[:m.start()] + head_txt + src[m.end():]
-    fwd = re.compile(r'^\s*class\s+' + cls + r'\s*;\s*$', re.M)
-    inc = f'#include "engine/{cls}.h"'
-    ns_src = fwd.sub(inc, ns_src, count=1) if fwd.search(ns_src) else re.sub(r'^(?!//)', inc + "\n", ns_src, count=1, flags=re.M)
-    if "// Leaf:" in ns_src: ns_src = re.sub(r'^//\s*Leaf:.*$', "// Leaf: " + newsym, ns_src, count=1, flags=re.M)
-    else: ns_src = re.sub(r'^(//[^\n]*\n)', r'\1// Leaf: ' + newsym.replace('\\', '\\\\') + '\n', ns_src, count=1)
+    fwd = re.compile(r'^(\s*)class\s+' + cls + r'\s*;\s*$', re.M)
+    dfn = re.compile(r'^\s*(?:class|struct)\s+' + cls + r'\b[^;{]*\{', re.M)
+    md = dfn.search(ns_src)
+    if md:
+        i = md.end(); depth = 1
+        while depth and i < len(ns_src):
+            depth += {"{": 1, "}": -1}.get(ns_src[i], 0); i += 1
+        body = ns_src[md.end():i - 1]
+        if virt and not re.search(r'\bvirtual\b', body):
+            b2 = re.sub(r'^(\s*(?:public:\s*)?)(?:void\s*\*|const\s+void\s*\*|void\s*\*\s*const)\s*(?:vtbl|__vftable|vtable|vft|vptr|m_vtbl|_vtbl)\s*;', r'\1', body, count=1)
+            if b2 == body:
+                mp = re.search(r'char\s+(\w+)\s*\[\s*(0x[0-9a-fA-F]+|\d+)\s*\]\s*;', body)
+                if not mp or body.index(mp.group(0)) > body.find(';') or int(mp.group(2), 0) < 4:
+                    res.append((a, "SKIP", old, newsym, "virtual target, local model has no leading vptr slot")); continue
+                n = int(mp.group(2), 0) - 4
+                b2 = body.replace(mp.group(0), (f"char {mp.group(1)}[{hex(n)}];" if n else ""), 1)
+            body = b2
+        ns_src = ns_src[:md.end()] + body.rstrip() + "\n    " + decl + "\n" + ns_src[i - 1:]
+    elif fwd.search(ns_src) and os.path.exists(f"rebuild/include/engine/{cls}.h"):
+        res.append((a, "SKIP", old, newsym, "forward declaration only and engine/" + cls + ".h exists: needs a header opt-in (shared-header rule)")); continue
+    elif fwd.search(ns_src):
+        ns_src = fwd.sub(lambda q: q.group(1) + f"class {cls} {{ {decl} }};", ns_src, count=1)
+    elif not os.path.exists(f"rebuild/include/engine/{cls}.h") and not re.search(r'\b' + cls + r'\b', src[:m.start()]):
+        ns_src = ns_src[:m.start()] + f"class {cls} {{ {decl} }};\n" + ns_src[m.start():]
+    else:
+        res.append((a, "SKIP", old, newsym, "no local definition or forward declaration of " + cls + (" and engine/" + cls + ".h exists: needs a header opt-in" if os.path.exists(f"rebuild/include/engine/{cls}.h") else ""))); continue
+    if "// Leaf:" in ns_src: ns_src = re.sub(r'^//\s*Leaf:.*$', lambda q: "// Leaf: " + newsym, ns_src, count=1, flags=re.M)
+    elif ns_src.startswith('//'): ns_src = re.sub(r'^(//[^\n]*\n)', lambda q: q.group(1) + '// Leaf: ' + newsym + '\n', ns_src, count=1)
+    else: ns_src = '// Leaf: ' + newsym + '\n' + ns_src   # landing pilot 1: 73 of 79 rows began with code, so the Leaf was never written
     tst = open("rebuild/tests/" + kv["TestSource"], encoding="utf-8").read() if kv.get("TestSource") else ""
     base = dict(address=a, module=kv.get("Module", cls), name=meth, test_cpp=tst, pass_pattern=kv.get("PassPattern", f"{a}_TEST PASS"))
     fl = kv.get("CompilerFlags", "").split()
@@ -110,6 +154,13 @@ for h, n in zip(head, new):
 acc = {r[0] for r in res if r[1] == "ACCEPT"}
 for f in glob.glob(f"{work}/rows/*.cpp"):
     if os.path.basename(f)[:8] not in acc: os.replace(f, f + ".rejected")
+tbl = [l.split("\t") for l in open("rebuild/oracles/reloc_bindings.tsv", encoding="utf-8", errors="replace").read().splitlines()[1:]]
+with open(f"{work}/TABLE_CHANGES.tsv", "w") as o:
+    o.write("action\tsymbol\ttarget\twitness\tnote\n")
+    for r in res:
+        if r[1] != "ACCEPT": continue
+        for c in tbl:
+            if len(c) > 2 and c[0] == r[2] and c[1] == r[0]: o.write(f"delete\t{c[0]}\t{c[1]}\t{c[2]}\tflatten pilot: the self now defines {r[3]}\n")
 with open(f"{work}/RESULTS.tsv", "w") as o:
     o.write("address\tverdict\told\tnew\treason\n" + "\n".join("\t".join(r) for r in res) + "\n")
 import collections

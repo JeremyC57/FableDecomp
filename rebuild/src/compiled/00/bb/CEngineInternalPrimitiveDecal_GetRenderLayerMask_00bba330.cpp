@@ -1,4 +1,6 @@
-int __fastcall CEngineInternalPrimitiveDecal_GetRenderLayerMask()
+// Leaf: ?GetRenderLayerMask@CEngineInternalPrimitiveDecal@@UBEKXZ
+class CEngineInternalPrimitiveDecal { public: virtual unsigned long GetRenderLayerMask() const; };
+unsigned long CEngineInternalPrimitiveDecal::GetRenderLayerMask() const
 {
     return 16384;
 }

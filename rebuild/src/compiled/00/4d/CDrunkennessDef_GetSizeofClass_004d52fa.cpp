@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CDrunkennessDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CDrunkennessDef_GetSizeofClass()
+class CDrunkennessDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CDrunkennessDef::GetSizeofClass()
 {
     return 44;
 }

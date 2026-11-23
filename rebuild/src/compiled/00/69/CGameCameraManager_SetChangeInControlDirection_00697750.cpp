@@ -1,9 +1,12 @@
+// Leaf: ?SetChangeInControlDirection@CGameCameraManager@@UAEXXZ
 class CGameCameraManager { public:
-    char pad[0xb1];
+    char pad[0xad];
     unsigned char changeInControlDirection;
+    public: virtual void SetChangeInControlDirection();
 };
 
-void __fastcall CGameCameraManager_SetChangeInControlDirection(CGameCameraManager* manager)
+void CGameCameraManager::SetChangeInControlDirection()
 {
+    CGameCameraManager* manager = this;
     manager->changeInControlDirection = 1;
 }

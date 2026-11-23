@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CTeleporterDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CTeleporterDef_GetSizeofClass()
+class CTeleporterDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CTeleporterDef::GetSizeofClass()
 {
     return 52;
 }

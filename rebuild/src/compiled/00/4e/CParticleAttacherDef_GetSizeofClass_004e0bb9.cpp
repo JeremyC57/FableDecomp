@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CParticleAttacherDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CParticleAttacherDef_GetSizeofClass()
+class CParticleAttacherDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CParticleAttacherDef::GetSizeofClass()
 {
     return 52;
 }

@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CCreatureModeDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CCreatureModeDef_GetSizeofClass()
+class CCreatureModeDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CCreatureModeDef::GetSizeofClass()
 {
     return 64;
 }

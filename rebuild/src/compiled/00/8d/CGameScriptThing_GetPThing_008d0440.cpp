@@ -1,4 +1,5 @@
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Leaf: ?GetPThing@CGameScriptThing@@UBEPAVCThing@@XZ
 class CThing;
 
 class CBaseObject;
@@ -8,12 +9,14 @@ struct CThingRef {
 };
 
 class CGameScriptThing { public:
-    char pad[0xc];
+    char pad[0x8];
     CThingRef ref;
+    public: virtual CThing* GetPThing() const;
 };
 
-CThing* __fastcall CGameScriptThing_GetPThing(const CGameScriptThing* self)
+CThing* CGameScriptThing::GetPThing() const
 {
+    const CGameScriptThing* self = this;
     CThingRef* r = (CThingRef*)&self->ref;
     if (((CThing*)((CBaseIntelligentPointer*)r)->GetPItem()) != 0) {
         if ((*((unsigned char*)((CThing*)((CBaseIntelligentPointer*)r)->GetPItem()) + 0x91) & 1) == 0)

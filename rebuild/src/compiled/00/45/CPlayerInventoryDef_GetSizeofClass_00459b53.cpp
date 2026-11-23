@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CPlayerInventoryDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CPlayerInventoryDef_GetSizeofClass()
+class CPlayerInventoryDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CPlayerInventoryDef::GetSizeofClass()
 {
     return 112;
 }

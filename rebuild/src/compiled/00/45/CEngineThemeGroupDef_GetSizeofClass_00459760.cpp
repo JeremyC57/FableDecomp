@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CEngineThemeGroupDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CEngineThemeGroupDef_GetSizeofClass()
+class CEngineThemeGroupDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CEngineThemeGroupDef::GetSizeofClass()
 {
     return 58;
 }

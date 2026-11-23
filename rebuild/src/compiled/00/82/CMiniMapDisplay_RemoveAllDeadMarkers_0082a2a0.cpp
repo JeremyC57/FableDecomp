@@ -1,4 +1,5 @@
 // CMiniMapDisplay::RemoveAllDeadMarkers  0x0082a2a0  __fastcall(void)
+// Leaf: ?RemoveAllDeadMarkers@CMiniMapDisplay@@IAEXXZ
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Circular doubly-linked list of marker nodes: node+0=next, node+4=prev,
 // node+8 = embedded marker object.
@@ -20,10 +21,12 @@ extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 class CMiniMapDisplay { public:
     char pad[0x20];
     Node* head;   // +0x20 : sentinel node pointer
+    protected: void RemoveAllDeadMarkers();
 };
 
-void __fastcall CMiniMapDisplay_RemoveAllDeadMarkers(CMiniMapDisplay* self)
+void CMiniMapDisplay::RemoveAllDeadMarkers()
 {
+    CMiniMapDisplay* self = this;
     Node* head = self->head;
     Node* n = head->next;
     while (n != self->head)

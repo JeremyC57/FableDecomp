@@ -1,7 +1,11 @@
-class CSpecialAbilitiesEnflameDef { public: char pad[0xa8]; };
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesEnflameDef@@UAEKXZ
+class CSpecialAbilitiesEnflameDef { public: char pad[0xa4];
+    public: virtual unsigned long GetSizeofClass();
+};
 
-unsigned long __fastcall CSpecialAbilitiesEnflameDef_GetSizeofClass(const CSpecialAbilitiesEnflameDef* self)
+unsigned long CSpecialAbilitiesEnflameDef::GetSizeofClass()
 {
+    const CSpecialAbilitiesEnflameDef* self = this;
     (void)self;
     return 0xa8;
 }

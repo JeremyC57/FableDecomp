@@ -1701,7 +1701,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1918	c613	007ee540	?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ	closed	
 1919	c613	007bee40	?UpdateFacingDirection@CTCShotDefinitionBase@NThingShot@@MAEXXZ	no_binding	
 1920	c613	00744d00	?ReactToAlerts@CTCPerceiveThing@@AAEXXZ	partial	?FindAlertEvent@CTCPerceiveAlert@@QAEXXZ
-1921	c613	00744730	?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ	partial	?CTCPerceiveThing_SetLastAwareInfo@@YIXPAVCTCPerceiveThing@@@Z || ?Do_744730@@YIXPAVCTCPerceiveThing@@@Z || ?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ
+1921	c613	00744730	?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ	partial	?Do_744730@@YIXPAVCTCPerceiveThing@@@Z || ?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ
 1922	c613	004197b0	?IsEditorActive@CMainGameComponent@@UBE_NXZ	closed	
 1923	c613	0049d810	?GetWorldSeed@CWorld@@QBEPAKXZ	partial	?GetRandom@CQuakeWorld@@QAEAAUCQuakeRandom@@XZ || GetWorldSeed
 1924	c613	00a14440	?AccurateNormalise@C3DVector@@QAEAAV1@XZ	closed	
@@ -5612,7 +5612,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7584	land1011bb	006e9700	?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	partial	?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z
 7585	land1011bb	006ea770	?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z	partial	?GetPreferredPos@CCombatPositionMethods@@QAE?AVC3DVector@@PAVCThingAICreature@@@Z
 7586	land1011bb	0073a6e0	?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ	partial	?GetCurrentMode@CModeComponent@@QAEPAUCMode@@XZ || ?GetCurrentMode@CTCModeOwner@@QAEPAUCMode@@XZ || ?GetCurrentMode@ModeManager@@QBEAAUModeInterface@@XZ || ?GetKindObject@CTC31@@QBEPAUCKindObject@@XZ || ?GetObject@CTCEpicSpellTarget@@QBEPAUCTypedObject@@XZ || ?GetObject@CTCInterface31@@QBEPAUCTypedObject@@XZ
-7587	land1011bb	00744730	?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ	partial	?CTCPerceiveThing_SetLastAwareInfo@@YIXPAVCTCPerceiveThing@@@Z || ?Do_744730@@YIXPAVCTCPerceiveThing@@@Z || ?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ
+7587	land1011bb	00744730	?SetLastAwareInfo@CTCPerceiveThing@@AAEXXZ	partial	?Do_744730@@YIXPAVCTCPerceiveThing@@@Z || ?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ
 7588	land1011bb	00744b50	?UpdateSmell@CTCPerceiveThing@@AAEXXZ	closed	
 7589	land1011bb	00746db0	?GetStabPosOnThing@NStealth@@YI?AVC3DVector@@AAVCThing@@@Z	closed	
 7590	land1011bb	00746ec0	?GetPositionToMoveToForStabOn@CTCStealth@@QBE?AVC3DVector@@AAVCThing@@AAM@Z	partial	?GetPositionToMoveToForStabOn@CTCStealth@@QBE?AVC3DVector@@AAUCreature@@AAM@Z

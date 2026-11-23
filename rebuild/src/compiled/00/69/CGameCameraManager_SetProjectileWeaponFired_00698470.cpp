@@ -1,3 +1,4 @@
+// Leaf: ?SetProjectileWeaponFired@CGameCameraManager@@QAEXXZ
 struct Inner;
 struct InnerVtbl {
     int (__fastcall *slot0)(Inner*);
@@ -10,12 +11,14 @@ struct Inner {
 class CGameCameraManager { public:
     char pad[0x98];
     Inner* inner;
+    public: void SetProjectileWeaponFired();
 };
 
 extern void __fastcall Handle(Inner* p);
 
-void __fastcall CGameCameraManager_SetProjectileWeaponFired(CGameCameraManager* manager)
+void CGameCameraManager::SetProjectileWeaponFired()
 {
+    CGameCameraManager* manager = this;
     Inner* p = manager->inner;
     int r = p->vptr->slot2(p);
     if (r == 0xf) {

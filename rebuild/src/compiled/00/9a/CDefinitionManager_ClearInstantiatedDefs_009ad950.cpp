@@ -1,4 +1,5 @@
 // CDefinitionManager::ClearInstantiatedDefs @ 009ad950
+// Leaf: ?ClearInstantiatedDefs@CDefinitionManager@@IAEXXZ
 struct CRef {                       // vtbl@+0, refcount@+4
     virtual void slot0();
     virtual void OnZeroRefs();       // vtable slot +4 -> called via thiscall
@@ -31,12 +32,14 @@ class CDefinitionManager { public:
     char pad2[0xa4 - 0x80];
     CDef** d_first;  // +0xa4
     CDef** d_last;   // +0xa8
+    protected: void ClearInstantiatedDefs();
 };
 
 void operator delete(void*);
 
-void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* manager)
+void CDefinitionManager::ClearInstantiatedDefs()
 {
+    CDefinitionManager* manager = this;
     CDef** p = manager->d_first;
     if (p != manager->d_last) {
         do {

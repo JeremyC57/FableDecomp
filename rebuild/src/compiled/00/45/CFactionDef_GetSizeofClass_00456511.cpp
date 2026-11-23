@@ -1,6 +1,9 @@
+// Leaf: ?GetSizeofClass@CFactionDef@@UAEKXZ
 #pragma optimize("s",on)
-unsigned long __fastcall CFactionDef_GetSizeofClass(const void* self)
+class CFactionDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CFactionDef::GetSizeofClass()
 {
+    const void* self = (void*)this;
     (void)self;
     return 0x54;
 }

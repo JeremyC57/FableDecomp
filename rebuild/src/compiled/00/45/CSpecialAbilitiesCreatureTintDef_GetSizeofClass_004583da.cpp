@@ -1,5 +1,7 @@
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesCreatureTintDef@@UAEKXZ
 #pragma optimize("s",on)
-int __fastcall CSpecialAbilitiesCreatureTintDef_GetSizeofClass()
+class CSpecialAbilitiesCreatureTintDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSpecialAbilitiesCreatureTintDef::GetSizeofClass()
 {
     return 80;
 }

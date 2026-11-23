@@ -1,8 +1,11 @@
+// Leaf: ?GetSizeofClass@CSpecialAbilitiesSummonSpellDef@@UAEKXZ
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-ulong __fastcall CSpecialAbilitiesSummonSpellDef_GetSizeofClass(void* self)
+class CSpecialAbilitiesSummonSpellDef { public: virtual unsigned long GetSizeofClass(); };
+unsigned long CSpecialAbilitiesSummonSpellDef::GetSizeofClass()
 {
+    void* self = (void*)this;
     (void)self;
     return 0x6c;
 }
