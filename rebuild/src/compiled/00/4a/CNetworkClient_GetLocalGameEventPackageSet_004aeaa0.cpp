@@ -14,7 +14,7 @@ class CGameEventPackage
     unsigned long sequence;
     unsigned long eventCount;
     CGameEvent events[40];
-    void AddEvent(CGameEvent* event);
+    void AddEvent(const CGameEvent* event);
     void Clear();
 };
 class CGameEventPackageSet

@@ -69,8 +69,8 @@ class CCreatureActionBase { public:
 };
 class CCreatureAction_UseObject : public CCreatureActionBase { public:
     unsigned char _padA8[0x38];
-    CCreatureAction_UseObject(CThingCreatureBase* creature, CThing* usedThing, bool allowTurn);   // 0x0069F230
-    ~CCreatureAction_UseObject();               // 0x006290E0
+    CCreatureAction_UseObject(CThingCreatureBase& creature, CThing& usedThing, bool allowTurn);   // 0x0069F230
+    virtual ~CCreatureAction_UseObject();               // 0x006290E0
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -145,7 +145,7 @@ void CAIStateGroup_LightHomeCandle::Update()
         ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
         return;
     }
-    AIAction_PerformActionAndWait(CCreatureAction_UseObject(GetCreature(), PCandle.GetPItem(), false), false);
+    AIAction_PerformActionAndWait(CCreatureAction_UseObject(*GetCreature(), *PCandle.GetPItem(), false), false);
     ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
     {
         CIntelligentPointer<CThing> none(0);

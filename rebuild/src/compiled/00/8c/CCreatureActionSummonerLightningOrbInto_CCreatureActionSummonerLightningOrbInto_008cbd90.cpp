@@ -31,11 +31,11 @@ public:
 class CCreatureAction_SummonerLightningOrbInto : public CCombatActionBase { public:   // vtable 0x012830EC
     CIntelligentPointer<CThing> POrb;               // +0x114 CIntelligentPointer<CThing>
     virtual void v00();
-    CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase* owner, CThing* thing);
+    CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase& owner, CThing& thing);
 };
 
-CCreatureAction_SummonerLightningOrbInto::CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase* owner, CThing* thing)
-    : CCombatActionBase(owner, thing, 150, CSoundPair())
+CCreatureAction_SummonerLightningOrbInto::CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase& owner, CThing& thing)
+    : CCombatActionBase(&owner, &thing, 150, CSoundPair())
 {
     {
         CCharString name("LIGHTNING_ORB_INTO", -1);   // scoped named local (a bare temporary would reuse eax, GOTCHAS)

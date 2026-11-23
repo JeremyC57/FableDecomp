@@ -1,0 +1,6 @@
+## HEAD set: H_0040d400.obj H_0040c790.obj 0040a740.obj
+duplicates 0
+UNRESOLVED 2 ?Save@CUserProfileManager@@AAEXXZ
+## new set: 0040d400.obj 0040c790.obj 0040a740.obj
+duplicates 0
+LK_DONE

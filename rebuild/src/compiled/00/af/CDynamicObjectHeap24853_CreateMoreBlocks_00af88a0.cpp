@@ -38,7 +38,7 @@ struct CDynamicObjectHeap : CDynamicObjectHeapBase {
         entry->NextEntry = FreeList;
         FreeList = entry;
     }
-    void CreateMoreBlocks();
+private: void CreateMoreBlocks();
 };
 
 template<long ObjectSize, long BlockCount>

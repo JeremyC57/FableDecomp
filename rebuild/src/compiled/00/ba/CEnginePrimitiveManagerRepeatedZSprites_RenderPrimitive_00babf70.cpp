@@ -34,8 +34,8 @@ class CEnginePrimitiveOcclusionManager {
 public:
     unsigned char _pad00[0xc];
     unsigned long MaxOccludedFrames;               // +0x0c
-    unsigned long GetOccludedFrames(CEnginePrimitiveOcclusionInfo* info);   // 0x00B2FAC0
-    FABLE_FORCEINLINE bool IsRecentlyVisible(CEnginePrimitiveOcclusionInfo* info) { return GetOccludedFrames(info) <= MaxOccludedFrames; }
+    long GetOccludedFrames(CEnginePrimitiveOcclusionInfo& info);   // 0x00B2FAC0
+    FABLE_FORCEINLINE bool IsRecentlyVisible(CEnginePrimitiveOcclusionInfo* info) { return GetOccludedFrames(*info) <= MaxOccludedFrames; }
 };
 extern CEnginePrimitiveOcclusionManager* g_pPrimitiveOcclusionManager;   // 0x01436E58
 

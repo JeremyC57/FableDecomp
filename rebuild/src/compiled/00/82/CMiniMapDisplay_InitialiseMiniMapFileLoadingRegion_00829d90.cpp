@@ -47,8 +47,8 @@ void __fastcall CreateDirectory(const CWideString& path);                // 0x00
 
 class CDateAndTime { public:
     long Fields[7];
-    CDateAndTime(long year = 0, long month = 0, long day = 0, long hour = 0, long minute = 0, long second = 0,
-                 long millisecond = 0);                 // 0x009E9A70
+    CDateAndTime(long year = 0, unsigned long month = 0, unsigned long day = 0, unsigned long hour = 0, unsigned long minute = 0, unsigned long second = 0,
+                 unsigned long millisecond = 0);                 // 0x009E9A70
     bool operator>(const CDateAndTime& other) const;    // 0x009E9BE0
 };
 // NF75 (round 7, land1117fu q10941): GetFileModifiedTime is CAFile's static member (engine/CAFile.h MODIFIEDTIME; Ego_r / FableWin

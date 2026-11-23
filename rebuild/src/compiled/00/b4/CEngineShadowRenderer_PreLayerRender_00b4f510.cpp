@@ -37,7 +37,7 @@ class CRGBColour { public:
 };
 class CRenderTarget;
 class CDisplayManager { public:
-    void SetRenderTarget(CRenderTarget* target);        // 0x009BF160
+    bool SetRenderTarget(CRenderTarget& target);        // 0x009BF160
     void ClearRenderTarget(const CRGBColour& colour, unsigned long flags);   // 0x009BE420 (Ego_r.pdb / FableWin.pdb: by const reference)
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
@@ -71,7 +71,7 @@ void CEngineShadowRenderer_Methods::PreLayerRender(const CEngineComponentRenderP
         ShadowBufferRenderStateCaptureBlock.Capture();
         NEngineInternal::GPRenderManager->SetDepthOffset(NEngineInternal::GPShadowRenderer->ShadowProjectionZOffset);
         NEngineInternal::GPRenderManager->SetSlopeScaledDepthOffset(NEngineInternal::GPShadowRenderer->ShadowProjectionZSlopeOffset);
-        NEngineInternal::GPDisplayManager->SetRenderTarget((CRenderTarget*)RenderTarget);
+        NEngineInternal::GPDisplayManager->SetRenderTarget(*(CRenderTarget*)RenderTarget);
         if (*(long*)RenderingTechnique == 1) {
             CRGBColour white;
             white.R = 0xff;

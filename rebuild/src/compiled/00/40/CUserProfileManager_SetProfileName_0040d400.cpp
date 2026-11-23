@@ -1,4 +1,5 @@
 #define FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC   // NF293: Ego_r + FableWin ?Load@CUserProfileManager@@QAEXXZ (public)
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC   // NF297: Ego_r + FableWin ?Save@CUserProfileManager@@QAEXXZ (public)
 #include "fable_user_profile.h"
 
 void CUserProfileManager::SetProfileName(

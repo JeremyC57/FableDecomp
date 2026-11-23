@@ -33,7 +33,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     long m_loop;                                    // +0x114 (descriptive)
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 
 class CAIBrain { public:
@@ -62,7 +62,7 @@ void CAIStateGroup_HoverHornetQueen::PlayIdle()
 {
     {
         CCharString animation("SPECIAL_BOAST", -1);
-        AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), animation, true), false);
+        AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(*GetCreature(), animation, true), false);
     }
     if (!IsStillRunnable())
         Terminate();

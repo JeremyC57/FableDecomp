@@ -25,7 +25,7 @@ class CCombatActionBase { public:
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     unsigned char _body2[4];                // sizeof 0x118
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, CThingCreatureBase* target, const CCharString& anim, bool flag); // 0x008B7F80
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& owner, CThingCreatureBase& target, const CCharString& anim, bool flag); // 0x008B7F80
 };
 class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:
     unsigned char _body2[8];                // sizeof 0x11c
@@ -74,7 +74,7 @@ struct CCombatSequence_WillForcePushLongRange : CCombatSequenceBase {
 void CCombatSequence_WillForcePushLongRange::OnCreate()
 {
     CCountedPointer action;
-    action = new CCreatureAction_PlayCombatAnimation(GetCreature(), GetTarget(), "ST_FORCE_PUSH_INTO", true);
+    action = new CCreatureAction_PlayCombatAnimation(*GetCreature(), *GetTarget(), "ST_FORCE_PUSH_INTO", true);
     AddAction(action);
     action = new CCreatureAction_CastWillForceSpell(*GetCreature(), 1, true, "ST_FORCE_PUSH_RELEASE");
     AddAction(action);

@@ -1,0 +1,46 @@
+## HEAD set: H_008b7ff0.obj H_0092a8a0.obj H_0092b3e0.obj H_0095b680.obj H_009621f0.obj H_009624d0.obj H_008bd880.obj H_00909520.obj H_009352c0.obj H_0072cd00.obj H_0072ce20.obj H_006df730.obj H_0090f830.obj H_008cbd90.obj H_0096fcd0.obj H_007a7bf0.obj H_00946850.obj H_0069f230.obj 0069f090.obj 0069f0c0.obj 0072d3e0.obj 0072d430.obj 008abaa0.obj 0069f0f0.obj 006290e0.obj
+duplicates 0
+UNRESOLVED 2 ??0CCreatureAction_PlayCombatAnimation@@QAE@PAVCThingCreatureBase@@0ABVCCharString@@_N@Z
+UNRESOLVED 2 ??0CCreatureAction_SheatheItemToInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z
+UNRESOLVED 1 ??0CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z
+UNRESOLVED 1 ??0CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z
+UNRESOLVED 1 ??0CCreatureAction_SitDown@@QAE@PAVCThing@@PAVCAnimationEntry@@V?$CCountedPointer@UCModeSitBase@@@@@Z
+UNRESOLVED 1 ??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCThing@@JJPAVCCreatureActionBase@@@Z
+UNRESOLVED 1 ??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_SitDown@@QAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_SummonerLightningOrbInto@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_UseObject@@QAE@XZ
+UNRESOLVED 1 ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+UNRESOLVED 1 ?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?Initialise@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_PlayCombatAnimation@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_RiseUp@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_ShowTrophy@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_UseObject@@UAEXXZ
+## new set: 008b7ff0.obj 0092a8a0.obj 0092b3e0.obj 0095b680.obj 009621f0.obj 009624d0.obj 008bd880.obj 00909520.obj 009352c0.obj 0072cd00.obj 0072ce20.obj 006df730.obj 0090f830.obj 008cbd90.obj 0096fcd0.obj 007a7bf0.obj 00946850.obj 0069f230.obj 0069f090.obj 0069f0c0.obj 0072d3e0.obj 0072d430.obj 008abaa0.obj 0069f0f0.obj 006290e0.obj
+duplicates 0
+UNRESOLVED 2 ??0CCreatureAction_PlayCombatAnimation@@QAE@AAVCThingCreatureBase@@0ABVCCharString@@_N@Z
+UNRESOLVED 2 ??0CCreatureAction_SheatheItemToInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z
+UNRESOLVED 1 ??0CCreatureAction_SitDown@@QAE@PAVCThing@@PAVCAnimationEntry@@V?$CCountedPointer@UCModeSitBase@@@@@Z
+UNRESOLVED 1 ??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z
+UNRESOLVED 1 ??1CCreatureAction_SitDown@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_SummonerLightningOrbInto@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_UnsheatheItemFromInventory@@QAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ
+UNRESOLVED 1 ??1CCreatureAction_UseObject@@UAE@XZ
+UNRESOLVED 1 ?Clone@CCreatureAction_UnsheatheItemFromInventory@@EBEPAVCCreatureActionBase@@XZ
+UNRESOLVED 1 ?FinishAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?Initialise@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_PlayCombatAnimation@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_RiseUp@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_ShowTrophy@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ
+UNRESOLVED 1 ?v00@CCreatureAction_UseObject@@UAEXXZ
+LK_DONE

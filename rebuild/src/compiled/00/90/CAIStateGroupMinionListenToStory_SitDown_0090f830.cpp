@@ -122,13 +122,13 @@ struct CCountBlock {
     CCountBlock(void* object) { Object = object; Count = 1; Deleter = &CCountedPointer<NCreatureMode::CModeSitFloor>::DeleteData; }
 };
 class CCreatureActionBase { public:
-    void* __vftable;
+    virtual void v00();
     unsigned char _body[0xa4];
 };
 class CCreatureAction_SitDown : public CCreatureActionBase { public:
     unsigned char _own[0x08];
     CCreatureAction_SitDown(CThing* creature, CAnimationEntry* anim, CCountedPointer<CModeSitBase> mode);   // 0x008AB9D0
-    ~CCreatureAction_SitDown();                 // 0x008ABAA0
+    virtual ~CCreatureAction_SitDown();                 // 0x008ABAA0
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

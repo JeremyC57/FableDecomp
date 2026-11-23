@@ -1,0 +1,14 @@
+## HEAD set: H_004aeaa0.obj H_00447390.obj H_006bbe30.obj H_0065b0b4.obj H_0041e10d.obj H_00bcb800.obj 009f1650.obj 009f4f70.obj
+duplicates 0
+UNRESOLVED 1 ?AddEvent@CGameEventPackage@@QAEXPAVCGameEvent@@@Z
+UNRESOLVED 1 ?GetFrame@CGraphicInfo@@QAE_NPAVCGraphicFrame@@KKK@Z
+UNRESOLVED 1 ?RemoveEventFromQueue@CInputManager@@QAEXPAVCInputEvent@@@Z
+UNRESOLVED 1 ?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXPAVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+UNRESOLVED 1 ?SetControlScheme@CGamePlayerInterface@@QAEXH@Z
+## new set: 004aeaa0.obj 00447390.obj 006bbe30.obj 0065b0b4.obj 0041e10d.obj 00bcb800.obj 009f1650.obj 009f4f70.obj
+duplicates 0
+UNRESOLVED 1 ?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z
+UNRESOLVED 1 ?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z
+UNRESOLVED 1 ?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z
+UNRESOLVED 1 ?SetControlScheme@CGamePlayerInterface@@QAEXJ@Z
+LK_DONE

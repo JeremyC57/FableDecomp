@@ -24,11 +24,11 @@ class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:  
     unsigned char m_flag;                   // +0x115 (argument)
     unsigned char m_started;                // +0x116
     virtual void v00();
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, const CCharString& name, bool flag);
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& owner, const CCharString& name, bool flag);
 };
 
-CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, const CCharString& name, bool flag)
-    : CCombatActionBase(*owner, 50, CSoundPair())
+CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingCreatureBase& owner, const CCharString& name, bool flag)
+    : CCombatActionBase(owner, 50, CSoundPair())
     , m_looping(0)
     , m_flag(flag)
     , m_started(0)

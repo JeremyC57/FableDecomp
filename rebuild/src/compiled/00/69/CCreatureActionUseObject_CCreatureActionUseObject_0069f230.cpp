@@ -55,12 +55,12 @@ class CCreatureAction_UseObject : public CCreatureActionBase { public:
     bool TurningToDummy;                    // +0xde
     bool AllowTurn;                         // +0xdf
     virtual void v00();
-    CCreatureAction_UseObject(CThingCreatureBase* creature, CThing* usedThing, bool allowTurn);
+    CCreatureAction_UseObject(CThingCreatureBase& creature, CThing& usedThing, bool allowTurn);
 };
 
-CCreatureAction_UseObject::CCreatureAction_UseObject(CThingCreatureBase* creature, CThing* usedThing, bool allowTurn)
-    : CCreatureActionBase(*creature, CSoundPair(), 0, 0)
-    , PUsedThing(usedThing)
+CCreatureAction_UseObject::CCreatureAction_UseObject(CThingCreatureBase& creature, CThing& usedThing, bool allowTurn)
+    : CCreatureActionBase(creature, CSoundPair(), 0, 0)
+    , PUsedThing(&usedThing)
     , PreviousPhysicsComponent(0)
     , Proximity(0)
     , UsingDummy(false)

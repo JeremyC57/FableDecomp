@@ -66,7 +66,7 @@ class CCombatActionBase : public CCreatureActionBase { public:    // retail size
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // retail sizeof 0x118
     long Loop;                                  // +0x114
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CAIBrain { public:
@@ -148,11 +148,11 @@ bool CAIStateGroup_SkillPractice::PracticeSkills()
                 && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(*GetCreature(), PDummy), false) != 2;
         } else {
             stepFailed = firstAnim != ""
-                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(*GetCreature(), firstAnim, true), false) != 2;
             if (stepFailed)
                 goto failed;
             stepFailed = secondAnim != ""
-                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), secondAnim, true), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(*GetCreature(), secondAnim, true), false) != 2;
         }
         if (stepFailed)
             goto failed;

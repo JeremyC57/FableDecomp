@@ -53,7 +53,7 @@ class CDisplayManager { public:
     CSurface      CurrentZBufferSurface;           // +0x1c
     unsigned char _pad02c[0x1f4 - 0x2c];
     C2DBoxI       Viewport;                        // +0x1f4
-    void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
+    bool SetRenderTarget(CRenderTarget& target);   // 0x009BF160
 };
 namespace NEngineInternal { extern CDisplayManager* GPDisplayManager; }   // 0x01436E1C ?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A
 
@@ -137,7 +137,7 @@ bool CEngineScreenEffectDisplacementRenderer_Begin::BeginDisplacementRendering()
     *(C2DBoxI*)&OldViewport_TLX = NEngineInternal::GPDisplayManager->Viewport;
     CRenderTarget target;
     target.AttachTarget(DisplacementTexture->GetSurfaceLevel(0));
-    NEngineInternal::GPDisplayManager->SetRenderTarget(&target);
+    NEngineInternal::GPDisplayManager->SetRenderTarget(target);
     if (!HasContent) {
         g_pRenderManagerCore->Clear(CRGBColour(0xff, (unsigned char)ClearY, (unsigned char)ClearX, 0), 4);
         HasContent = true;

@@ -26,7 +26,7 @@ class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB lay
     unsigned char                 HasOcclusionResults : 1;  //        bit 4
     unsigned char                 OccludedFrames;  // +0x45
     unsigned char                 PreloadFrames;   // +0x46
-    CEngineSceneGridCell(CEngineSceneGridCell* parent);   // 0x00B935C0
+    private: CEngineSceneGridCell(CEngineSceneGridCell* parent); friend class CEngineSceneGrid;   // 0x00B935C0
 };
 
 template <class T> class CArray { public:                 // retail CArray: data pointer first

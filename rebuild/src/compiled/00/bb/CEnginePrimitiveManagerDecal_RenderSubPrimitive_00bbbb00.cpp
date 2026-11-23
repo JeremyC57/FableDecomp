@@ -12,7 +12,7 @@ class CEngineSubPrimitiveBase { public:
 };
 
 class CEnginePrimitiveManagerDecal { public:
-    void RenderLandscapeDecal(CEngineInternalPrimitiveDecal* decal);   // 0x00BBAC60
+    protected: void RenderLandscapeDecal(CEngineInternalPrimitiveDecal& decal); public:   // 0x00BBAC60
     void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass);
 };
 
@@ -20,5 +20,5 @@ void CEnginePrimitiveManagerDecal::RenderSubPrimitive(CEngineSubPrimitiveBase& s
 {
     CEngineInternalPrimitiveDecal* decal = sub.m_pPrimitive;
     if (decal->m_landscape)
-        RenderLandscapeDecal(decal);
+        RenderLandscapeDecal(*decal);
 }

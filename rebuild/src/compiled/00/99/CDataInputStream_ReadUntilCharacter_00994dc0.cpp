@@ -54,23 +54,23 @@ class CDataInputStream : public CDataStream { public:
         } else ReadWithSrcChunkOverflow((unsigned char*)dest, n);
     }
     FABLE_FORCEINLINE char ReadChar() { char value; Read(&value, 1); return value; }
-    CCharString ReadUntilCharacter(char terminator, bool* found);
+    CCharString ReadUntilCharacter(char terminator, bool& found);
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
-CCharString CDataInputStream::ReadUntilCharacter(char terminator, bool* found)
+CCharString CDataInputStream::ReadUntilCharacter(char terminator, bool& found)
 {
     CCharString result;
     for (;;) {
         if (StreamPos == (unsigned long)StreamSize) {
-            *found = false;
+            found = false;
             break;
         }
         char c = ReadChar();
         if (c == terminator) {
             SetPosition(GetPosition() - 1);
-            *found = true;
+            found = true;
             break;
         }
         result += c;

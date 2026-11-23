@@ -59,7 +59,7 @@ class CDisplayManager
     fable_i32 displayWidth1C8;                  // current mode width, halved for UI centring
 
     // Can the device create textures at this bit depth?
-    bool IsTextureBitDepthSupported(int bitDepth);
+    bool IsTextureBitDepthSupported(unsigned long bitDepth);
 };
 #pragma pack(pop)
 

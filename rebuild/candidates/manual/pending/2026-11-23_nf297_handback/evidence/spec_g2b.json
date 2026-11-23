@@ -1,0 +1,2 @@
+{"007a7bf0": [["CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, const CCharString& animation, CThing* item,", "CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,", 1],
+              ["CCreatureAction_UnsheatheItemFromInventory(creature, animation, ((CThing*)PItemRemoved.GetPItem()), 100, 250, 0)", "CCreatureAction_UnsheatheItemFromInventory(*creature, animation, *((CThing*)PItemRemoved.GetPItem()), 100, 250, 0)", 1]]}

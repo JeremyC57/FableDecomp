@@ -70,7 +70,7 @@ class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB lay
     unsigned char                 HasOcclusionResults : 1;  //        bit 4
     unsigned char                 OccludedFrames;  // +0x45
     unsigned char                 PreloadFrames;   // +0x46
-    CEngineSceneGridCell(CEngineSceneGridCell* parent);
+    private: CEngineSceneGridCell(CEngineSceneGridCell* parent);   // Ego_r + FableWin AAE (private)
 };
 
 long __fastcall GFROR13(unsigned long);   // 0x00497890

@@ -203,7 +203,6 @@ T1	signature	CSurface	6	5	engine/CSurface.h	009f3230 009f35d0 009f36e0 009f37e0 
 T1	signature	CWorldMap	6	5	engine/CWorldMap.h	00500eb0 00501990 00501d30 00502e90 0050a650 0063d4a0
 T1	signature	RemoveThingFromTask	6	1		00660ae2 00660b5d 00660bd8 00660c53 00660cce 00660d49
 T1	signature	RemoveThingFromTaskList	6	1		00660787 00660894 0066090a 00660980 006609f6 00660a6c
-T1	signature	CDisplayManager	5	5	engine/CDisplayManager.h	009be2d0 009be530 009bf160 009bf600 009bf7e0
 T1	signature	CEnvironmentSpellEffectInterface	5	2	engine/CEnvironmentSpellEffectInterface.h	00884e90 00884f60 00884fe0 008854a0 00885680
 T1	signature	CThingCreatureBase	5	8	engine/CThingCreatureBase.h	006619f0 00662b10 00663260 006644f0 006668a0
 T1	signature	CManager	4	4	engine/CManager.h	0041db1d 0041db84 0066e9e9 0066eb11
@@ -217,7 +216,6 @@ T1	signature	CAIStateGroupBase	3	6	engine/CAIStateGroupBase.h	008fcff0 00980bd0 
 T1	signature	CCombatManager	3	8	engine/CCombatManager.h	006e8c30 006e9360 006edc50
 T1	signature	CCreatureAction_PlayAnimation	3	4	engine/CCreatureAction_PlayAnimation.h	008424f0 00842570 00843a80
 T1	signature	CFileInstaller	3	2	engine/CFileInstaller.h	009c3330 009c3a60 009c4440
-T1	signature	CGameTimeManager	3	2	engine/CGameTimeManager.h	006bb860 006bb940 006bbe30
 T1	signature	CParticleProgram	3	3	engine/CParticleProgram.h	00ae1320 00ae3920 00ae3c30
 T1	signature	CRenderManager2D	3	3	engine/CRenderManager2D.h	009dbff0 009dd210 009de3f0
 T1	signature	CTCFollowed	3	2	engine/CTCFollowed.h	006d4e60 006d50c0 006d5180
@@ -228,18 +226,12 @@ T1	signature	CUserProfileManager	3	3	engine/CUserProfileManager.h	00409090 00409
 T1	signature	CWorld	3	3	engine/CWorld.h	0049d930 0049e080 004a0cd0
 T1	signature	SaveVerts	3	1		00bfcf00 00bfcf90 00bfd020
 T1	signature	C3DAnimationInfo	2	2	engine/C3DAnimationInfo.h	00a25970 00a269c0
-T1	signature	CCreatureAction_PlayCombatAnimation	2	4	engine/CCreatureAction_PlayCombatAnimation.h	008b7f80 008b7ff0
-T1	signature	CCreatureAction_SheatheItemToInventory_ForDivineWrath	2	1	engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h	0069f090 0072d3e0
-T1	signature	CCreatureAction_SheatheItemToInventory_ForUnholyPower	2	1	engine/CCreatureAction_SheatheItemToInventory_ForUnholyPower.h	0069f0c0 0072d430
-T1	signature	CCreatureAction_SitDown	2	1	engine/CCreatureAction_SitDown.h	008ab9d0 008abaa0
-T1	signature	CCreatureAction_UseObject	2	1	engine/CCreatureAction_UseObject.h	006290e0 0069f230
 T1	signature	CDefinitionManager	2	2	engine/CDefinitionManager.h	009adae0 009b02e0
-T1	signature	CDiskFileWin32	2	2	engine/CDiskFileWin32.h	00401630 0099a6a0
+T1	signature	CDisplayManager	2	3	engine/CDisplayManager.h	009be2d0 009bf7e0
 T1	signature	CEnginePrimitiveManagerOcclusionBase	2	3	engine/CEnginePrimitiveManagerOcclusionBase.h	00b90270 00b903d0
 T1	signature	CEngineSceneGrid	2	2		00b92250 00b939e0
 T1	signature	CFileDataInputStream	2	1	engine/CFileDataInputStream.h	00994700 00994780
-T1	signature	CGamePlayerInterface	2	2	engine/CGamePlayerInterface.h	00445e90 00446ef0
-T1	signature	CInputManager	2	3	engine/CInputManager.h	009f4c60 009f4f70
+T1	signature	CGameTimeManager	2	1	engine/CGameTimeManager.h	006bb860 006bb940
 T1	signature	CLandscapeBackgroundPatch	2	1	engine/CLandscapeBackgroundPatch.h	00be5bb0 00be5e70
 T1	signature	CParticleEmitter	2	2	engine/CParticleEmitter.h	00aee940 00af0610
 T1	signature	CParticleSystem	2	2	engine/CParticleSystem.h	00af4ee0 00af5330
@@ -284,29 +276,20 @@ T1	signature	CConsoleCommandParameters	1	1		009ebb30
 T1	signature	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	00693b30
 T1	signature	CCreatureAction_CastPhysicalShieldSpell	1	1	engine/CCreatureAction_CastPhysicalShieldSpell.h	008bb6f0
 T1	signature	CCreatureAction_FireMissileWeapon	1	1	engine/CCreatureAction_FireMissileWeapon.h	008d5110
-T1	signature	CCreatureAction_RiseUp	1	1	engine/CCreatureAction_RiseUp.h	008bd880
+T1	signature	CCreatureAction_PlayCombatAnimation	1	2	engine/CCreatureAction_PlayCombatAnimation.h	008b7f80
 T1	signature	CCreatureAction_ShowTrophy	1	1	engine/CCreatureAction_ShowTrophy.h	006df730
-T1	signature	CCreatureAction_SummonerLightningOrbInto	1	1	engine/CCreatureAction_SummonerLightningOrbInto.h	008cbd90
+T1	signature	CCreatureAction_SitDown	1	1	engine/CCreatureAction_SitDown.h	008ab9d0
 T1	signature	CCreatureAction_UnsheatheItemFromInventory	1	2	engine/CCreatureAction_UnsheatheItemFromInventory.h	0069f0f0
-T1	signature	CDataInputStream	1	1	engine/CDataInputStream.h	00994dc0
-T1	signature	CDateAndTime	1	1	engine/CDateAndTime.h	009e9a70
+T1	signature	CDiskFileWin32	1	1	engine/CDiskFileWin32.h	0099a6a0
 T1	signature	CDrawQuestInfo	1	1		0064a3ed
 T1	signature	CDriveManager	1	1	engine/CDriveManager.h	009e4da0
-T1	signature	CDynamicObjectHeap	1	1	engine/CDynamicObjectHeap.h	00af88a0
 T1	signature	CEngineCamera	1	1	engine/CEngineCamera.h	00b30b50
 T1	signature	CEngineInternalPrimitiveAnimatedMesh	1	1	engine/CEngineInternalPrimitiveAnimatedMesh.h	00b83750
 T1	signature	CEngineLandscapeMap	1	1		00bdcbb0
 T1	signature	CEnginePrimitive2DSprite	1	1	engine/CEnginePrimitive2DSprite.h	0041bf60
 T1	signature	CEnginePrimitiveManager	1	2	engine/CEnginePrimitiveManager.h	00bacdb0
-T1	signature	CEnginePrimitiveManagerDecal	1	1		00bbac60
-T1	signature	CEnginePrimitiveManagerParticleSpriteGroup	1	1	engine/CEnginePrimitiveManagerParticleSpriteGroup.h	00bc04f0
 T1	signature	CEnginePrimitiveManagerRepeatedStaticMeshes	1	1	engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h	00b99710
-T1	signature	CEnginePrimitiveManagerSpriteTrails	1	1	engine/CEnginePrimitiveManagerSpriteTrails.h	00bca950
-T1	signature	CEnginePrimitiveOcclusionManager	1	1	engine/CEnginePrimitiveOcclusionManager.h	00b2fac0
 T1	signature	CEnginePrimitiveRenderer	1	1	engine/CEnginePrimitiveRenderer.h	00b32ad0
-T1	signature	CEnginePrimitiveSimulationInfo	1	1	engine/CEnginePrimitiveSimulationInfo.h	00b812c0
-T1	signature	CEngineScene	1	1	engine/CEngineScene.h	00b94bf0
-T1	signature	CEngineSceneGridCell	1	1	engine/CEngineSceneGridCell.h	00b935c0
 T1	signature	CEngineSceneMap	1	1	engine/CEngineSceneMap.h	00b93b30
 T1	signature	CEngineScenePrimitiveStatsEnumerator	1	1		00baca20
 T1	signature	CEngineSubPrimitiveBase	1	1	engine/CEngineSubPrimitiveBase.h	00b98a50
@@ -317,10 +300,10 @@ T1	signature	CEventHitBySpecialAbility	1	1		00811830
 T1	signature	CEventShownItem	1	1		0084aee0
 T1	signature	CEventTalkedTo	1	1		0084af90
 T1	signature	CGameCameraManager	1	2	engine/CGameCameraManager.h	00698840
-T1	signature	CGameEventPackage	1	1	engine/CGameEventPackage.h	009f1650
-T1	signature	CGraphicInfo	1	1	engine/CGraphicInfo.h	009ff8d0
+T1	signature	CGamePlayerInterface	1	1	engine/CGamePlayerInterface.h	00445e90
 T1	signature	CIPhysicsFacesSegmentBase	1	1	engine/CIPhysicsFacesSegmentBase.h	00a86cd0
 T1	signature	CInputEvent	1	1	engine/CInputEvent.h	00a03c20
+T1	signature	CInputManager	1	2	engine/CInputManager.h	009f4c60
 T1	signature	CInputProcessManager	1	1	engine/CInputProcessManager.h	00a0d810
 T1	signature	CIsHouseLargerThan	1	1		00512410
 T1	signature	CLocalDetailPrimitiveMeshZSpriteBatch	1	1		00bf9fa0
@@ -432,7 +415,7 @@ T1	other	CWorldMap	10	12	engine/CWorldMap.h	004faff0 004fb490 004fc180 004fc210 
 T1	other	LSocket	10	9	engine/LSocket.h	008f8210 008f82e0 008f86f0 008f87a0 008f8870 008f8a80 008f8bb0 008f8c70 008f9780 008fa120
 T1	other	CDataOutputStream	9	14	engine/CDataOutputStream.h	00993e80 00993eb0 00993ee0 00993f30 00993f90 00993fd0 00994230 009959f0 00996610
 T1	other	CTCInventoryItem	9	12	engine/CTCInventoryItem.h	004dc600 005d8e50 005d9630 005d96a0 005d9730 005d97f0 005d98b0 005d9aa0 005d9b90
-T1	other	CUserProfileManager	9	10	engine/CUserProfileManager.h	00406cc0 004071c0 00407370 00407cd0 00408340 004085f0 00409730 0040a740 0040d2a0
+T1	other	CUserProfileManager	9	9	engine/CUserProfileManager.h	00406cc0 004071c0 00407370 00407cd0 00408340 004085f0 00409730 0040a740 0040d2a0
 T1	other	CBankFile	8	12	engine/CBankFile.h	009cbb90 009cc190 009cc270 009ccdc0 009cd620 009ce360 009ce8d0 009cea70
 T1	other	pair	8	13		004d9d2f 0059256c 00592dfb 005930f3 00a825d0 00bed640 00cba520 00cba700
 T1	other	CAFile	7	7	engine/CAFile.h	00998570 00998c90 00998f60 009994a0 00999ab0 00999c50 00999cb0
@@ -3496,5 +3479,6 @@ T3	-	search	1	3		00567120
 T3	-	transform	1	2		00a5a9d0
 T3	self	CCountedPointer	9	9	engine/CCountedPointer.h	0041bd80 0067f650 0073d180 00863090 00a110d0 00a8cb70 00a99fe0 00a9cb20 00b94f90
 T3	self	vector	2	2		004942c3 00dfde30
+T3	self	CCreatureAction_UseObject	1	1	engine/CCreatureAction_UseObject.h	006290e0
 T3	self	CThingCreatureBase	1	1	engine/CThingCreatureBase.h	00662170
 T3	self	map	1	1		00cd3640

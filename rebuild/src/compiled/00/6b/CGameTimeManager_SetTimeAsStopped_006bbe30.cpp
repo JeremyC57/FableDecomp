@@ -14,16 +14,16 @@ class CGameTimeManager { public:
     unsigned char          _pad[0x2c];
     CStopperSet_006bbe30   m_stoppers;             // +0x2c
     long                   m_nextStopperHandle;    // +0x38
-    void SetTimeAsStopped(bool stopped, long* handle);
+    void SetTimeAsStopped(bool stopped, long& handle);
 };
 
-void CGameTimeManager::SetTimeAsStopped(bool stopped, long* handle)
+void CGameTimeManager::SetTimeAsStopped(bool stopped, long& handle)
 {
     if (stopped) {
-        *handle = m_nextStopperHandle++;
+        handle = m_nextStopperHandle++;
         SSetIterator_006bbe30 where;
-        m_stoppers.Insert(&where, handle);
+        m_stoppers.Insert(&where, &handle);
     } else {
-        m_stoppers.Erase(handle);
+        m_stoppers.Erase(&handle);
     }
 }

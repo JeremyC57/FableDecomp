@@ -6,7 +6,7 @@
 class CCharString;
 class CDateAndTime { public:
     unsigned char _body[16];
-    CDateAndTime(long year, long month, long day, long hour, long minute, long second, long millisecond);   // 0x009E9A70
+    CDateAndTime(long year, unsigned long month, unsigned long day, unsigned long hour, unsigned long minute, unsigned long second, unsigned long millisecond);   // 0x009E9A70
 };
 
 class CFontDataBank { public:

@@ -28,7 +28,7 @@ Owner (2026-11-23): "continue where the naming queue batches left off before res
 This file; your BRIEF.md prefix; CLAUDE.md; docs/pipeline/ASM_RULES.md; tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md;
 docs/COORDINATION.md; docs/pipeline/GOTCHAS.md (all of it); the landing READMEs of the batches before you
 (`rebuild/candidates/manual/batches/2026-11-22_landing_nf281_282/`, `_nf283/`, `_nf284/`, `_nf285/`) and the hand-backs they point to
-(`rebuild/candidates/manual/pending/2026-11-22_nf28x_handback/`: NOTES.md, LESSONS.md, STATUS.tsv, evidence/).
+(`rebuild/candidates/manual/pending/<date>_nf<NNN>_handback/`, e.g. `2026-11-23_nf296_handback/`: NOTES.md, LESSONS.md, STATUS.tsv, evidence/).
 
 ## Hard rules
 - Never write into /home/user/FableDecomp; never run git, not even read-only. Write only inside your folder.

@@ -133,11 +133,11 @@ class CCombatAction_StabThing : public CCombatActionBase { public:   // manifest
 };
 class CCreatureAction_RiseUp : public CCombatActionBase { public:
     long m_riseState;
-    CCreatureAction_RiseUp(CThingCreatureBase* creature);   // 0x008BD880
+    CCreatureAction_RiseUp(CThingCreatureBase& creature);   // 0x008BD880
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     long m_loop;                                // retail sizeof 0x118 (frame)
-    CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
+    CCreatureAction_PlayCombatAnimation(CThingCreatureBase& creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
 {
@@ -178,7 +178,7 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             stealth->SetAsInDanger(*GetCreature(), NStealth::DANGER_STATUS_COMBAT);
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
-            long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_RiseUp(GetCreature()), true);
+            long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_RiseUp(*GetCreature()), true);
             if (result == 1) {
                 Terminate();
                 return;
@@ -197,14 +197,14 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
                 facing.AccurateNormalise();
             if (Dot(facing, toTarget) < cos(1.0471976115464443)) {
                 long result = AIAction_PerformActionAndWait(
-                    CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_BACKWARD", true), false);
+                    CCreatureAction_PlayCombatAnimation(*GetCreature(), "LOOK_BACKWARD", true), false);
                 if (result == 1) {
                     Terminate();
                     return;
                 }
             } else {
                 long result = AIAction_PerformActionAndWait(
-                    CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_FORWARD", true), false);
+                    CCreatureAction_PlayCombatAnimation(*GetCreature(), "LOOK_FORWARD", true), false);
                 if (result == 1) {
                     Terminate();
                     return;

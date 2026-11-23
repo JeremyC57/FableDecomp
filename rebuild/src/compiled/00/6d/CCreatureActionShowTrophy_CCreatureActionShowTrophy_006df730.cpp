@@ -52,13 +52,13 @@ class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:      // 
     unsigned char Shown;                    // +0xb4
     CIntelligentPointer<CThing> PTrophyObject;      // +0xb5 CIntelligentPointer<CThing> (unaligned)
     virtual void v00();
-    CCreatureAction_ShowTrophy(CThingCreatureBase* owner, CThing* trophy, const CCharString& animation, long last);
+    CCreatureAction_ShowTrophy(CThingCreatureBase& owner, CThing& trophy, const CCharString& animation, long last);
 };
 #pragma pack(pop)
 
-CCreatureAction_ShowTrophy::CCreatureAction_ShowTrophy(CThingCreatureBase* owner, CThing* trophy, const CCharString& animation, long last)
-    : CCreatureActionBase(owner, -1.0f, 0.95f, GetTableAnimation(owner, animation), CSoundPair(), 100, last)
-    , PTrophy(trophy)
+CCreatureAction_ShowTrophy::CCreatureAction_ShowTrophy(CThingCreatureBase& owner, CThing& trophy, const CCharString& animation, long last)
+    : CCreatureActionBase(&owner, -1.0f, 0.95f, GetTableAnimation(&owner, animation), CSoundPair(), 100, last)
+    , PTrophy(&trophy)
     , TrophyState(0)
     , Shown(0)
     , PTrophyObject()

@@ -34,11 +34,11 @@ public:
 class CCreatureAction_RiseUp : public CCombatActionBase { public:   // vtable 0x01268C9C
     bool m_hasTarget;                       // +0x114 (descriptive: 1 from the (owner, thing) overload, 0 here)
     virtual void v00();
-    CCreatureAction_RiseUp(CThingCreatureBase* owner);
+    CCreatureAction_RiseUp(CThingCreatureBase& owner);
 };
 
-CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 240, GetSoundPair(*owner, 0))
+CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 240, GetSoundPair(owner, 0))
 {
     {
         CCharString name("RISE_UP", -1);

@@ -1,0 +1,4 @@
+##### 0040d400 renames: ?Save@CUserProfileManager@@AAEXXZ=?Save@CUserProfileManager@@QAEXXZ
+ALL_EQ sections=2 DEF=1 tables=-
+##### 0040c790 renames: ?Save@CUserProfileManager@@AAEXXZ=?Save@CUserProfileManager@@QAEXXZ
+ALL_EQ sections=67 DEF=66 tables=-

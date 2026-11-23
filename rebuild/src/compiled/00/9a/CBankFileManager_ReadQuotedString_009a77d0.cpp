@@ -48,7 +48,7 @@ class CDataInputStream : public CDataStream { public:
         } else ReadWithSrcChunkOverflow((unsigned char*)dest, n);
     }
     FABLE_FORCEINLINE char ReadChar() { char value; Read(&value, 1); return value; }
-    CCharString ReadUntilCharacter(char terminator, bool* found);   // 0x00994DC0
+    CCharString ReadUntilCharacter(char terminator, bool& found);   // 0x00994DC0
 private:
     void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
@@ -61,10 +61,10 @@ public:
 bool CBankFileManager::ReadQuotedString(CCharString* out, CDataInputStream* stream)
 {
     bool found;
-    stream->ReadUntilCharacter('"', &found);
+    stream->ReadUntilCharacter('"', found);
     if (found) {
         stream->ReadChar();
-        *out = stream->ReadUntilCharacter('"', &found);
+        *out = stream->ReadUntilCharacter('"', found);
         if (found)
             stream->ReadChar();
         return true;

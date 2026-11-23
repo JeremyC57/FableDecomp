@@ -1,0 +1,9 @@
+NF297 name census (2026-11-23) of the 11 self respellings + every moved callee spelling, over rebuild/src (*.cpp, *.pre.cpp excluded):
+1. Qualified definitions `Class::Method(` outside comments: only the selves plus other overloads at other addresses (copy ctors 0x006A0D50 /
+   0x006DFB90, RiseUp(owner, thing) 0x0074DAC0, PlayCombatAnimation(&, const CAnimationEntry&, bool) 0x008B8050, CDateAndTime(_SYSTEMTIME) 0x009E9A30 /
+   (_FILETIME) 0x009E9DB0, the other CDynamicObjectHeap<..>::CreateMoreBlocks template instances 0x00AF88F0 / 0x00AF8C00 / 0x00B48F20 / 0x00B48F90 /
+   0x00B49010): none defines a new spelling.
+2. In-class inline bodies (`Name(params) {` or `Name(params) :` on a line not ending in `;`, not qualified) for the 11 self names: one hit, a call
+   (0x0093EA90 line 66, a temporary inside `if (...)`), no body.
+3. Leaf lines of the 11 self-renamed rows: 7 have none, 3 are bare method names (ReadUntilCharacter, GetClosestMode, CreateMoreBlocks), 1 the
+   prefix ??0CEngineSceneGridCell: none carries a stale full mangled spelling.

@@ -150,7 +150,15 @@ protected:
     virtual bool OnPostDeviceReset();                                    // ?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ
 private:
     void Load();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+    // Add-only opt-in (NF297, 2026-11-23; row 0x0040C790 CUserProfileManager::SetDefaultValues): Ego_r.pdb + FableWin.pdb
+    // ?Save@CUserProfileManager@@QAEXXZ (public, 0x0040A740; the self and 0x0040B690 / 0x0041E6D3 bind QAE). Declaration only.
+public:
+#endif
     void Save();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+private:
+#endif
     CWideString   ProfileName;                                           // +0x08
     bool          UseNewProfileValues;                                   // +0x0C
     bool          SubtitlingEnabled;                                     // +0x0D
@@ -311,7 +319,15 @@ public:
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_LOAD_PUBLIC
 private:
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+    // Add-only opt-in (NF297, 2026-11-23; row 0x0040D400 CUserProfileManager::SetProfileName): Ego_r.pdb + FableWin.pdb
+    // ?Save@CUserProfileManager@@QAEXXZ (public, 0x0040A740; the self and 0x0040B690 / 0x0041E6D3 bind QAE). Declaration only.
+public:
+#endif
     void Save();
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SAVE_PUBLIC
+private:
+#endif
 
     void* primaryVTable_;
     void* secondaryVTable_;
