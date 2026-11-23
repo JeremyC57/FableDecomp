@@ -55,8 +55,8 @@ class CPlayer { public:
     SModeListNode* PlayerModes;                         // +0x210 list<EPlayerMode> (sentinel)
     bool           SuppressFullModeRemoval;             // +0x214
     bool           DisallowModeChanges;                 // +0x215
-    void UnInitActiveMode(EPlayerMode mode);            // 0x00633BF0
-    void InitActiveMode(EPlayerMode mode);              // 0x00633CB0
+    private: void UnInitActiveMode(EPlayerMode mode); public:            // 0x00633BF0
+    private: void InitActiveMode(EPlayerMode mode); public:              // 0x00633CB0
     void RemoveMode(EPlayerMode mode);
 };
 

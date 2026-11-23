@@ -58,8 +58,8 @@ class CParsedItem { public:                                   // 12 bytes
     long        Type;                                  // 1 = symbol, 2 = identifier
     long        Value;
     CCharString Text;
-    const CCharString& GetString();                    // 0x009B9880
-    const CCharString& GetSymbol();                    // 0x009B9870
+    const CCharString& GetString() const;                    // 0x009B9880
+    const CCharString& GetSymbol() const;                    // 0x009B9870
 };
 class CStringParser { public:                                 // retail 0x28 bytes
     void*         vfptr;                               // +0x00

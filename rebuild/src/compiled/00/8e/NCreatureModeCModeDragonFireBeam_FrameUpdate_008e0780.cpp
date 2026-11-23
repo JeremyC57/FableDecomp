@@ -54,7 +54,7 @@ struct CModeDragonFireBeam : CModeDragonHover {   // vtable 0x01285900
     long          Timer;                   // +0x80
     unsigned char PBeamWeaponEffect[8];    // +0x84 CIntelligentPointer<CThing>
     void StartBeamEffect();                // 0x008DB620
-    void UpdateBeam();                     // 0x008DB810
+    private: void UpdateBeam(); public:                     // 0x008DB810
     void FrameUpdate();
 };
 }

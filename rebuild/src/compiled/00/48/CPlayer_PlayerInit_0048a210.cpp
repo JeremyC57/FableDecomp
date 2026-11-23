@@ -146,7 +146,7 @@ class CPlayer : public CInitBaseClass { public:
             JoystickDeviceNumber = Number;
     }
     void InitPlayerHeroLogBook();                // 0x0048A1A0
-    void InitInterfaces();                       // 0x00488D10
+    private: void InitInterfaces(); public:                       // 0x00488D10
     void InitModes();                            // 0x00636E50
     void InitPlayerGui();                        // 0x00487FB0
     bool PlayerInit(const CPlayerInit* init);

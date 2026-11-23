@@ -54,7 +54,7 @@ class CPlayerManager { public:
     vector<CPlayer*> Players;                          // +0x0c
     long             PlayerNeutral;                    // +0x18
     long             MainPlayer;                       // +0x1c
-    bool IsPlayerAssociatedWithJoystickDeviceNumber(long device);   // 0x004499E0
+    bool IsPlayerAssociatedWithJoystickDeviceNumber(long device) const;   // 0x004499E0
     CPlayer* GetPlayer(long id);                       // 0x004498C0
     FABLE_FORCEINLINE CPlayer* FindPlayer(long id)         // GetPlayer's body, expanded inline
     {

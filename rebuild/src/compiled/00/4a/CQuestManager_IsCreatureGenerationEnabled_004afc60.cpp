@@ -1,7 +1,7 @@
 // CQuestManager::IsCreatureGenerationEnabled() -- false while any quest named in CreatureGenerationDisabledQuests is active, true otherwise
 // Grade: RELOCATION_MATCH -- the loop written as a guarded do-while with the running element pointer declared inside the guard: VC7.1 then reads Last before First (`mov eax,[esi+44h] ; mov ebx,[esi+40h] ; sub eax,ebx`) and keeps First in ebx; the parked for-loop (pointer declared before the loop) loaded First first and copied it (65v63)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFC60, length 63 bytes.
-// Leaf: ?IsCreatureGenerationEnabled@CQuestManager@@QAE_NXZ
+// Leaf: ?IsCreatureGenerationEnabled@CQuestManager@@QBE_NXZ
 // Callees: CQuestManager::IsQuestActive(const CCharString&) @ 0x004AF610 (walks the ActiveQuests list at +0x38
 // comparing each quest's name; manifest label "CQuest_Array_FindByName").
 // Identity: the manifest label "COptimisedPrimitive::DetectFoldOver" is propagated and rejected: both callers
@@ -28,11 +28,11 @@ struct CCharStringVector {                  // retail std::vector<CCharString> (
 class CQuestManager { public:
     unsigned char     _pad[0x40];
     CCharStringVector CreatureGenerationDisabledQuests;     // +0x40
-    bool IsQuestActive(const CCharString& name);            // 0x004AF610
-    bool IsCreatureGenerationEnabled();
+    bool IsQuestActive(const CCharString& name) const;      // 0x004AF610
+    bool IsCreatureGenerationEnabled() const;
 };
 
-bool CQuestManager::IsCreatureGenerationEnabled()
+bool CQuestManager::IsCreatureGenerationEnabled() const
 {
     unsigned long i = 0;
     if (i < CreatureGenerationDisabledQuests.size()) {

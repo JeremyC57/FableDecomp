@@ -59,7 +59,7 @@ public:
     bool          ToBeRemoved;                     // +0x08
     bool          IsInGlobalUpdateTCs;             // +0x09
     bool BeginSerialising(bool saving, CCharString& data, CStringParser& parser, CPersistContext& context);   // 0x00686B00
-    void EndSerialising(bool saving, CCharString& data);                                                       // 0x006869E0
+    private: void EndSerialising(bool saving, CCharString& data); public:                                                       // 0x006869E0
     void SerialiseLevelState(bool saving, CCharString& data, bool arg);
 };
 

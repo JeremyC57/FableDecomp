@@ -60,7 +60,7 @@ public:
     bool          CutsceneActionMode;           // +0xe2
     bool          Button1TextOverridden;        // +0xe3
     bool          Button2TextOverridden;        // +0xe4
-    bool GetTextFromTextTag(const CWideString& tag, CWideString& text);   // 0x0048F6BD
+    private: bool GetTextFromTextTag(const CWideString& tag, CWideString& text); public:   // 0x0048F6BD
     void SetButton2OverrideText(const CCharString& text);
 };
 

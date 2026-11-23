@@ -1,0 +1,29 @@
+# name census (2026-11-23): landed sources with an out-of-class body of each NEW self spelling's Class::Method, lines spelling an in-class body of the method, and the DEF lines of the new objects
+## 0x00858A20 CCombatActionBase::SetupCombatInterrupts out-of-class: ./00/85/CCombatActionBase_SetupCombatInterrupts_00858a20.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?SetupCombatInterrupts@CCombatActionBase@@IAEXXZ 
+## 0x00B81050 CEngineClothSimulationMeshBase::UpdateTransform out-of-class: ./00/b8/CEngineClothSimulationMeshBase_UpdateTransform_00b81050.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?UpdateTransform@CEngineClothSimulationMeshBase@@IAEXXZ 
+## 0x00416C8A CMainGameComponent::InitGraphics out-of-class: ./00/41/CMainGameComponent_InitGraphics_00416c8a.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?InitGraphics@CMainGameComponent@@IAE_NXZ 
+## 0x0042E98F CNewFrontendGameComponent::Init2 out-of-class: ./00/42/CNewFrontendGameComponent_Init2_0042e98f.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?Init2@CNewFrontendGameComponent@@AAEXXZ 
+## 0x0042E3EE CNewFrontendGameComponent::Input out-of-class: ./00/42/CNewFrontendGameComponent_Input_0042e3ee.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?Input@CNewFrontendGameComponent@@AAEXXZ 
+## 0x004AFC60 CQuestManager::IsCreatureGenerationEnabled out-of-class: ./00/4a/CQuestManager_IsCreatureGenerationEnabled_004afc60.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?IsCreatureGenerationEnabled@CQuestManager@@QBE_NXZ 
+## 0x0077D190 CTCCreatureHive::UpdateAnimation out-of-class: ./00/77/CTCCreatureHive_UpdateAnimation_0077d190.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?UpdateAnimation@CTCCreatureHive@@AAEXXZ 
+## 0x006827A0 CTCCreatureOpinionOfHero::IsHeroOpinionEnemy out-of-class: ./00/68/CTCCreatureOpinionOfHero_IsHeroOpinionEnemy_006827a0.cpp 
+   in-class bodies: ./00/76/CTCEnemy_RemoveEnemyThing_0076cc00.cpp 
+   DEF in new object: DEF ?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QBE_NXZ 
+## 0x0048F6BD CSubtitleRenderer::GetTextFromTextTag out-of-class: ./00/48/CSubtitleRenderer_GetTextFromTextTag_0048f6bd.cpp 
+   in-class bodies: 
+   DEF in new object: DEF ?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z 
+## note: 0x0076CC00's hit is a declaration (line 62) plus a call on the same line pattern; its VC7.1 HEAD object has the symbol UND only: UND ?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QBE_NXZ

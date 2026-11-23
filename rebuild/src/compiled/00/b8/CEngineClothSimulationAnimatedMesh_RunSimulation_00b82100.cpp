@@ -133,7 +133,7 @@ public:
     C3DMeshInfo*  MeshInfo;                             // +0xa8
     unsigned long PrimitiveIndex;                       // +0xac
     CEngineInternalPrimitiveAnimatedMesh* Owner;        // +0xb0
-    void UpdateTransform();                             // 0x00B81050
+    protected: void UpdateTransform(); public:                             // 0x00B81050
     void ClearParticleSims();                           // 0x00B81D60
     CParticleContext* GetContext() { return (CParticleContext*)this; }
 };

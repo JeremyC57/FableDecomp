@@ -44,8 +44,8 @@ class CAnimateThing { public:
 };
 class CTCAnimationComplex { public:                // the type-0x5a component
     CAnimateThing* GetAnimateThing();       // 0x0070B460
-    long GetAnimIndex();                    // 0x0070B490
-    float GetAnimDuration(long animIndex);  // 0x0070B4A0
+    long GetAnimIndex() const;                    // 0x0070B490
+    float GetAnimDuration(long animIndex) const;  // 0x0070B4A0
 };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 

@@ -11,8 +11,8 @@ class CEngineScreenEffectGlowRenderer { public:
     unsigned char _pad0d[0x20b];
     void*         m_pGlowTexture;                  // +0x218
     void ComputeGlowColor();                       // 0x00B5F8C0
-    void CaptureBackBuffer();                      // 0x00B5FAB0
-    void ApplyGlow();                              // 0x00B60F70
+    private: void CaptureBackBuffer(); public:                      // 0x00B5FAB0
+    private: void ApplyGlow(); public:                              // 0x00B60F70
     void ShowGlowTexture();                        // 0x00B61690
     void FinishRender();                           // 0x00B5EC90
     void Render(const void* params);

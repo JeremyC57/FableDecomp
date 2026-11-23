@@ -54,8 +54,8 @@ class CParticleEmitter { public:
     unsigned short Sleeping : 1;
     unsigned short Emitter2D : 1;                  // bit 11
     bool Is2D() const { return Emitter2D; }
-    bool ShouldSpawn(const C3DVector& position);                                    // 0x00AECF90
-    CParticleEmitter* DatabaseClone();                                              // 0x00AF0650
+    bool ShouldSpawn(const C3DVector& position) const;                                    // 0x00AECF90
+    CParticleEmitter* DatabaseClone() const;                                              // 0x00AF0650
     void InterpolateTo(CParticleEmitter* target, float interpolate);                // 0x00AED600
     void Set2DPosition(const C2DVector* position, EEngine2DLayer layer);            // 0x00AED090
     void SetPosition(const C3DPositionInterpolator& position);                      // 0x00AEDDC0

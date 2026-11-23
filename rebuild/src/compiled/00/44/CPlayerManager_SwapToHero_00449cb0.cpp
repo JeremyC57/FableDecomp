@@ -27,7 +27,7 @@ class CPlayerManager { public:
     void*         Players[3];                               // +0x0c vector<CPlayer*> (12 bytes in retail)
     long          PlayerNeutral;                            // +0x18
     long          MainPlayer;                               // +0x1c
-    bool IsPlayer(long player);                             // 0x00449880
+    bool IsPlayer(long player) const;                             // 0x00449880
     CPlayer* GetPlayer(long player);                  // 0x004498C0
     void SwapToHero(long player);
 };

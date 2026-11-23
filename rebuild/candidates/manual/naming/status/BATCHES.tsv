@@ -2,24 +2,13 @@ tier	fix	klass	n_targets	n_rows_touched	header	targets
 T0	catalog	CCountedPointer	7	7	engine/CCountedPointer.h	0041bd80 0067f650 00a110d0 00a8cb70 00a99fe0 00a9cb20 00b94f90
 T0	catalog	vector	2	2		004942c3 00dfde30
 T1	access	CWorld	6	5	engine/CWorld.h	0049d4e0 0049d8f0 0049e9f0 0049f4c0 004a21f0 004a2d70
-T1	access	CMainGameComponent	4	3	engine/CMainGameComponent.h	004160a6 00416122 00416231 0041674a
-T1	access	CPlayer	4	3	engine/CPlayer.h	00487520 00488d10 00633bf0 00633cb0
 T1	access	CTCHeroOnlineScoreboard	4	2	engine/CTCHeroOnlineScoreboard.h	0055fb80 00560d00 00563480 00563920
-T1	access	CScriptGameResourceObjectScriptedThingBase	3	3	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7310 007e7360 007e7450
 T1	access	CTCKrakenTentacle	3	3	engine/CTCKrakenTentacle.h	007f07a0 007f0c70 007f0f40
 T1	access	CThingBodyReorienter	3	2		00863250 00863280 00863ca0
 T1	access	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00662880 006628e0 00665860
 T1	access	CDiskFileWin32	2	2	engine/CDiskFileWin32.h	0099a960 0099aa90
-T1	access	CEngineClothSimulationMeshBase	2	2	engine/CEngineClothSimulationMeshBase.h	00b80ad0 00b81050
-T1	access	CEngineScreenEffectGlowRenderer	2	1	engine/CEngineScreenEffectGlowRenderer.h	00b5fab0 00b60f70
 T1	access	CFrontEndManager	2	2	engine/CFrontEndManager.h	005955ab 00598463
-T1	access	CParsedItem	2	2	engine/CParsedItem.h	009b9870 009b9880
-T1	access	CParticleEmitter	2	1	engine/CParticleEmitter.h	00aecf90 00af0650
-T1	access	CPlayerGui	2	1	engine/CPlayerGui.h	004385f0 00439bb0
-T1	access	CPlayerManager	2	2	engine/CPlayerManager.h	00449880 004499e0
-T1	access	CTCAnimationComplex	2	2	engine/CTCAnimationComplex.h	0070b490 0070b4a0
-T1	access	CTCBase	2	2	engine/CTCBase.h	006869e0 00686db0
-T1	access	CTCCreatureFlyInCircles	2	1	engine/CTCCreatureFlyInCircles.h	007dd270 007ddda0
+T1	access	CScriptGameResourceObjectScriptedThingBase	2	2	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7310 007e7450
 T1	access	CTCGraphicAppearance	2	2		004bc4f0 004be000
 T1	access	CTCHeroStats	2	2	engine/CTCHeroStats.h	0057a89d 0057aad9
 T1	access	CTCPreCalculatedNavigationRoute	2	2	engine/CTCPreCalculatedNavigationRoute.h	008004d0 008008b0
@@ -30,34 +19,16 @@ T1	access	CVertexStreamConverter	2	1		00ac44d0 00ac4910
 T1	access	CWorldMap	2	2	engine/CWorldMap.h	004fb310 004fce20
 T1	access	C3DMeshInfo	1	1	engine/C3DMeshInfo.h	00a24a80
 T1	access	CBankFileAsyncData	1	1	engine/CBankFileAsyncData.h	009d54e0
-T1	access	CCachedFile	1	1	engine/CCachedFile.h	00a5b650
 T1	access	CCharString	1	1		0099ea60
-T1	access	CCombatActionBase	1	1	engine/CCombatActionBase.h	00858a20
 T1	access	CComponent	1	1		00531ec0
 T1	access	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	00692aa0
 T1	access	CDeviceIndependent	1	1		00a90900
-T1	access	CEngineClothSimulation2DAnimatedMesh	1	1		00b81f00
-T1	access	CEngineClothSimulationAnimatedMesh	1	1		00b81ed0
-T1	access	CEngineClothSimulationStaticMesh	1	1		00b81ea0
+T1	access	CEngineClothSimulationMeshBase	1	1	engine/CEngineClothSimulationMeshBase.h	00b80ad0
 T1	access	CEnginePrimitiveOcclusionInfo	1	1	engine/CEnginePrimitiveOcclusionInfo.h	00b2f8b0
-T1	access	CGameCameraManager	1	1	engine/CGameCameraManager.h	00699130
 T1	access	CKeyboardDX	1	1		00ab6450
 T1	access	CLandscapeBackgroundPatch	1	1	engine/CLandscapeBackgroundPatch.h	00be6f70
-T1	access	CModeDragonFireBeam	1	1		008db810
 T1	access	CMouseDX	1	1	engine/CMouseDX.h	00ab5710
-T1	access	CNewFrontendGameComponent	1	1	engine/CNewFrontendGameComponent.h	0042e17c
-T1	access	CPhysicsMeshObject	1	1	engine/CPhysicsMeshObject.h	00a128e0
-T1	access	CRedefinerList	1	1		005567b0
-T1	access	CShaderRenderManager	1	1	engine/CShaderRenderManager.h	00988290
-T1	access	CStringAndCageBase	1	1		00871fd0
-T1	access	CSubtitleRenderer	1	1	engine/CSubtitleRenderer.h	0048f6bd
-T1	access	CSuspendableProcessMicrothread	1	1	engine/CSuspendableProcessMicrothread.h	00a44660
-T1	access	CTCContainerRewardHero	1	1	engine/CTCContainerRewardHero.h	0074ec50
-T1	access	CTCCrateStack	1	1	engine/CTCCrateStack.h	007b6660
-T1	access	CTCDPhysicalObstruction	1	1	engine/CTCDPhysicalObstruction.h	007fd430
-T1	access	CTCDRumble	1	1		007f18b0
-T1	access	CTCDoor	1	1	engine/CTCDoor.h	00730dd0
-T1	access	CTCEmoteIcon	1	1	engine/CTCEmoteIcon.h	0071ad20
+T1	access	CTCBase	1	1	engine/CTCBase.h	00686db0
 T1	access	CTCEnemy	1	1	engine/CTCEnemy.h	0076cce0
 T1	access	CTCFadeOutAndIn	1	1	engine/CTCFadeOutAndIn.h	006c3ca0
 T1	access	CTCFireballSpell	1	1	engine/CTCFireballSpell.h	007c86f0
@@ -114,6 +85,7 @@ T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e8
 T1	standin_alias	CArray	3	3	engine/CArray.h	00675230 006755a0 00af7210
 T1	standin_alias	CMemoryDataOutputStream	3	2	engine/CMemoryDataOutputStream.h	00994b40 00995e70 00996af0
 T1	standin_alias	CPlayer	3	2	engine/CPlayer.h	00487cf0 00489d40 006345c0
+T1	standin_alias	CQuestManager	3	3	engine/CQuestManager.h	004af3c0 004afc60 004b0c80
 T1	standin_alias	CTCBuyableHouse	3	2	engine/CTCBuyableHouse.h	006c0330 006c1150 006c17b0
 T1	standin_alias	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00663610 006647f0 00666830
 T1	standin_alias	CWorldMap	3	3	engine/CWorldMap.h	004fb4a0 004fb880 004fc970
@@ -133,7 +105,6 @@ T1	standin_alias	CItem	2	3	engine/CItem.h	005bc450 005bd82e
 T1	standin_alias	CLandscapeBackgroundTreeNode	2	1	engine/CLandscapeBackgroundTreeNode.h	00bf6130 00bf6160
 T1	standin_alias	CMapInfo	2	2	engine/CMapInfo.h	005110b0 00513bf0
 T1	standin_alias	CPlayerManager	2	2	engine/CPlayerManager.h	00449b60 0044a530
-T1	standin_alias	CQuestManager	2	2	engine/CQuestManager.h	004af3c0 004b0c80
 T1	standin_alias	CRenderStateManager	2	1	engine/CRenderStateManager.h	00a04630 00a059e0
 T1	standin_alias	CTCCarrying	2	2	engine/CTCCarrying.h	006a22d0 006a2520
 T1	standin_alias	CTCContainer	2	2	engine/CTCContainer.h	008ed040 008ed1f0
@@ -1194,13 +1165,9 @@ T1	other	deque	1	1		0059b039
 T1	other	fill	1	1		00a95b00
 T1	other	queue	1	1		00410ed0
 T1	other	sort	1	1		00a351b0
-T2	access	CNewFrontendGameComponent	2	2	engine/CNewFrontendGameComponent.h	0042e3ee 0042e98f
 T2	access	CTCKraken	2	3	engine/CTCKraken.h	007fb4a0 007fbc90
 T2	access	CAIStateGroup_JackDragon	1	1	engine/CAIStateGroup_JackDragon.h	0094fbb0
 T2	access	CFrontendGameComponent	1	1	engine/CFrontendGameComponent.h	004962c0
-T2	access	CMainGameComponent	1	1	engine/CMainGameComponent.h	00416c8a
-T2	access	CTCCreatureHive	1	1	engine/CTCCreatureHive.h	0077d190
-T2	access	CTCCreatureOpinionOfHero	1	1	engine/CTCCreatureOpinionOfHero.h	006827a0
 T2	access	CTCInventoryMap	1	1	engine/CTCInventoryMap.h	005fc840
 T2	access	CTCObjectAugmentations	1	1	engine/CTCObjectAugmentations.h	007674a0
 T2	access	CTCPhysicsBase	1	1	engine/CTCPhysicsBase.h	006afa40
@@ -1208,7 +1175,6 @@ T2	access	CThingCreatureBase	1	1	engine/CThingCreatureBase.h	006626e0
 T2	access	CThingPlayerCreature	1	1	engine/CThingPlayerCreature.h	006ad970
 T2	access	CThreadedFileManager	1	1	engine/CThreadedFileManager.h	0098ecd0
 T2	other	CFactionManager	1	4	engine/CFactionManager.h	006b93d0
-T2	other	CQuestManager	1	2	engine/CQuestManager.h	004afc60
 T2	other	CTCHeroExperience	1	2	engine/CTCHeroExperience.h	006d7f20
 T3	standin_alias	CCountedPointer	89	89	engine/CCountedPointer.h	00403db0 0041956c 004366b0 004441a0 00444210 00444280 004442f0 00444360 004443d0 00444440 004444b0 00444520 004446e0 00444830 004448a0 00444a60 00444ad0 00444d00 00445190 00445200 0049bce0 004a9a10 004a9a80 004adf80 0050f2b0 0050faa0 0050fb90 0051cea0 00535ebb 00578a8d 0065e198 0065e2e0 00673500 00675060 006fd460 00704430 007044d0 00718940 00771b60 00786bf0 008aa8e0 008ab230 008ab2b0 00992170 009b1f50 009e3090 009e3100 00a16640 00a29c50 00a44170 00a52be0 00a6ae60 00a9a420 00a9ced0 00ac38a0 00ac3ff0 00ae93e0 00b2e290 00b37470 00b37520 00b375d0 00b37680 00b37730 00b377e0 00b37890 00b37940 00b379f0 00b37aa0 00b37b90 00b37c40 00b37cf0 00b37da0 00b37e50 00b37f00 00b37fb0 00b38060 00b38110 00b381c0 00b38270 00b38320 00b4b360 00b4b410 00b4b4c0 00b4b570 00b4b620 00b95a30 00b95aa0 00bb64a0 00cdd4f0
 T3	standin_alias	CPlayerGui	11	11	engine/CPlayerGui.h	00437660 00437830 00437840 00437860 00437880 004378b0 004378d0 00437990 00437a00 00437d00 00438000

@@ -1,0 +1,145 @@
+idx	address	class	tier	status	rows_changed	spellings_before_after	note
+1	0x00A5B650	CCachedFile	T1	done	0x00A5B710,0x00A5B760	2 -> 1 (QAE -> AAE)	binders 0x00A5B710 (line 59) / 0x00A5B760 (line 66) `private:`; self 0x00A5B650 AAE (VC7.1 HEAD object). Precheck: the sources fail plain clang only on their row-local `typedef unsigned short wchar_t;`; they pass clang NOWCHAR (accepted at landing nf285) and D1 cl /Zs (new + HEAD)
+2	0x00858A20	CCombatActionBase	T1	done	0x00858A20	2 -> 1 (QAE -> IAE)	T1 with a QAE self: self 0x00858A20 `protected:` (line 138; no Leaf at HEAD, none added); binders 0x00859EC0 / 0x00859EF0 bind IAE through engine/CCombatActionBase.h (VC7.1 HEAD objects; the table's QAE witness 0x00859EC0 is stale: TABLE_CHANGES delete); D1: both controls fail clang only on the CTCFlourishTarget.h FABLE_STATIC_ASSERT typedef, cl /Zs PASS
+3	0x00B81F00	CEngineClothSimulation2DAnimatedMesh	T1	done	0x00BCFDE0	2 -> 1 (I -> K)	signature split: binder 0x00BCFDE0 ctor parameter `unsigned int` -> `unsigned long` (line 43; Ego_r + FableWin K; self 0x00B81F00 defines K, VC7.1 HEAD object); landed test (standalone copy with its own ctor stub) unchanged, D1 cl /Zs PASS (clang: `_assert` only)
+4	0x00B81ED0	CEngineClothSimulationAnimatedMesh	T1	done	0x00BCFCB0	2 -> 1 (I -> K)	as entry 3 (line 41; self 0x00B81ED0 defines K); 0x00B84190 keeps an unreferenced same-TU copy spelled I and 0x00B81F00 a strong K copy (NAME_FIXES)
+5	0x00B81050	CEngineClothSimulationMeshBase	T1	done	0x00B81050,0x00B82100	2 -> 1 (QAE -> IAE)	self 0x00B81050 (line 54, no Leaf) and binder 0x00B82100 (line 136) `protected:`; 0x00B81F30 already IAE; 0x00B82100 test D1 cl /Zs PASS (clang: VC7.1 <cwchar>)
+6	0x00B81EA0	CEngineClothSimulationStaticMesh	T1	done	0x00B9DE90	2 -> 1 (I -> K)	as entry 3 (line 41; self 0x00B81EA0 defines K)
+7	0x00B5FAB0	CEngineScreenEffectGlowRenderer	T1	done	0x00B619B0	2 -> 1 (QAE -> AAE)	binder 0x00B619B0 `private:` (line 14); self AAE; test D1 cl /Zs PASS (clang: VC7.1 <cwchar> / iostream)
+8	0x00B60F70	CEngineScreenEffectGlowRenderer	T1	done	0x00B619B0	2 -> 1 (QAE -> AAE)	same row, line 15; self AAE
+9	0x005955AB	CFrontEndManager	T1	rejected		2 (unchanged)	T3 (D3 pattern): the only QAE binder 0x00599D5C declares GetProfileNames public (line 109) and defines a same-TU strong `__declspec(noinline)` copy (line 130); respelling it IAE adds a second strong IAE definer beside the self 0x005955AB (LNK2005). Not compiled
+10	0x00598463	CFrontEndManager	T1	skipped-precheck		2 (unchanged)	the only binder 0x0059A238: its landed test fails clang in its own lines 473-474 (explicit specialization after instantiation), not D1 / E1 (not a VC7.1-header failure)
+11	0x004962C0	CFrontendGameComponent	T2	skipped-precheck		2 (unchanged)	T2 self 0x004962C0: its landed test fails clang in its own line 24 (`unsigned int(...)` functional cast), not D1 / E1
+12	0x00699130	CGameCameraManager	T1	done	0x0069A990	2 -> 1 (QAE -> AAE)	binder 0x0069A990 `private:` (line 140); self AAE; test D1 cl /Zs PASS (clang: VC7.1 <cwchar> / iostream)
+13	0x00AB6450	CKeyboardDX	T1	rejected		2 (unchanged)	T3 (D2 pattern): the only binder 0x00AB64E0 is the CKeyboardDX ctor; its local model emits ??_7CKeyboardDX and its CKeyboard base has no SetExclusiveMode slot: `virtual` adds a slot (table change; retail has the override in the table at .rdata 0x0129EA68). Not compiled
+14	0x00BE6F70	CLandscapeBackgroundPatch	T1	rejected		2 (unchanged)	T3: the self 0x00BE6F70 takes its declaration from rebuild/include/candidates/landscape_background_patch_render_compiled.h line 67 (public, its only includer): a shared-header access change; binder 0x00BE79D0 public local model; 0x00BE7BE0 already AAE (engine/CLandscapeBackgroundPatch.h). Not compiled
+15	0x004160A6	CMainGameComponent	T1	done	0x004175E5	2 -> 1 (QAE -> IAE)	binder 0x004175E5 `protected:` (line 149); self IAE
+16	0x00416122	CMainGameComponent	T1	done	0x004175E5	2 -> 1 (QAE -> IAE)	same row, line 150; self IAE
+17	0x00416231	CMainGameComponent	T1	done	0x00417001,0x004189C2	2 -> 1 (QAE -> IBE)	binders 0x00417001 (line 153) / 0x004189C2 (line 137): `protected: double GetCurrentGameTime() const; public:`; 0x00416258 / 0x004164E0 / 0x004167A7 / 0x00417747 already IBE (VC7.1 HEAD objects)
+18	0x0041674A	CMainGameComponent	T1	done	0x004AEAA0	2 -> 1 (QAE -> QBE)	binder 0x004AEAA0 `const` (line 30); 0x00418289 / 0x004AEA70 already QBE
+19	0x00416C8A	CMainGameComponent	T2	done	0x00416C8A	2 -> 1 (QAE -> IAE)	T2 self: `protected:` (line 91), Leaf respelled; binders 0x0041799B / 0x004179EE already IAE
+20	0x008DB810	CModeDragonFireBeam	T1	done	0x008E0780	2 -> 1 (QAE -> AAE)	binder 0x008E0780 `private:` (struct model, line 57); self AAE
+21	0x00AB5710	CMouseDX	T1	rejected		2 (unchanged)	T3 (D2 pattern): as entry 13, the only binder 0x00AB5D00 is the CMouseDX ctor (emits ??_7CMouseDX; retail table entry .rdata 0x0129EA2C). Not compiled
+22	0x0042E17C	CNewFrontendGameComponent	T1	done	0x0042E98F	2 -> 1 (QAE -> AAE)	binder 0x0042E98F `private:` (line 100); self AAE
+23	0x0042E3EE	CNewFrontendGameComponent	T2	done	0x0042E3EE	2 -> 1 (UAE -> AAE)	T2 self, DECISION (a `virtual` removal, not one of R1's kinds): `virtual void Input();` (the local model's last virtual, slot 1; no ctor / table in the TU) -> `private: void Input(); public:`, Leaf respelled; objsec ALL_EQ, no ??_7 in either object; Fable.exe holds no absolute reference to 0x0042E3EE (in no vtable), matching both PDBs' non-virtual AAE; binder 0x0042EC7C binds AAE by source (engine/CNewFrontendGameComponent.h line 125; its HEAD source fails clang in its own lines). Drop the row if the removal is not accepted
+24	0x0042E98F	CNewFrontendGameComponent	T2	done	0x0042E98F	2 -> 1 (QAE -> AAE)	T2 self: `private:` (line 102), Leaf respelled; binder 0x0042EC7C binds AAE by source (header line 123)
+25	0x009B9870	CParsedItem	T1	done	0x00A38670	2 -> 1 (QAE -> QBE)	binder 0x00A38670 `const` (line 62); the other 7 referencing rows bind QBE (VC7.1 HEAD objects); self QBE
+26	0x009B9880	CParsedItem	T1	done	0x00A38670,0x009EB430,0x009EC710	2 -> 1 (QAE -> QBE)	binders 0x00A38670 (61) / 0x009EB430 (66) / 0x009EC710 (76) `const`; the others QBE; 0x009EB430 test D1 cl /Zs PASS. Finding: 0x00A64230 calls GetSymbol where retail calls 0x009B9880 GetString (NAME_FIXES)
+27	0x00AECF90	CParticleEmitter	T1	done	0x00AEB6D0	2 -> 1 (QAE -> QBE)	binder 0x00AEB6D0 `const` (line 57); 0x00AEABE0 / 0x00AEB600 bind QBE (the table's QAE witness 0x00AEABE0 is stale: delete); the self 0x00AECF90 defines a stand-in (NAME_FIXES), so QBE stays unresolved in the link as at HEAD
+28	0x00AF0650	CParticleEmitter	T1	done	0x00AEB6D0	2 -> 1 (QAE -> QBE)	same row, line 58; 0x00AEABE0 / 0x00AEB600 / 0x00AEB790 bind QBE (stale QAE witness deleted); self is a stand-in (NAME_FIXES)
+29	0x00A128E0	CPhysicsMeshObject	T1	done	0x006A7B20,0x0082D000	2 -> 1 (QAE -> QBE)	binders 0x006A7B20 (line 19) / 0x0082D000 (line 22) `const`; self QBE
+30	0x00487520	CPlayer	T1	done	0x0069F9E0,0x008BA3C0	2 -> 1 (QAE -> QBE)	binders 0x0069F9E0 (line 25) / 0x008BA3C0 (line 38) `const`; the 14 other referencing rows bind QBE (VC7.1 HEAD objects); the self 0x00487520 is the stand-in CPlayer_Methods::IsMainPlayer (NAME_FIXES). QBE resolves in both link sets only through 0x0048A210's in-class inline body (line 133), a pick-any COMDAT differing from the owner (HEAD debt, NAME_FIXES)
+31	0x00488D10	CPlayer	T1	done	0x0048A210	2 -> 1 (QAE -> AAE)	binder 0x0048A210 `private:` (line 149); self AAE; its emitted ??_7CIntelligentPointer unchanged (objsec)
+32	0x00633BF0	CPlayer	T1	done	0x00634190	2 -> 1 (QAE -> AAE)	binder 0x00634190 `private:` (line 58); 0x006345C0 already AAE by source (NF287's entry, not compiled); the self 0x00633BF0 defines ?UnInitActiveMode@CPlayer@@QAEXJ@Z (`typedef long EPlayerMode`): a signature stand-in, T3 (NAME_FIXES); self not changed
+33	0x00633CB0	CPlayer	T1	done	0x00634190	2 -> 1 (QAE -> AAE)	as entry 32 (line 59; self 0x00633CB0 ...QAEXJ@Z, NAME_FIXES); test D1 cl /Zs PASS
+34	0x004385F0	CPlayerGui	T1	done	0x0043A080	2 -> 1 (QAE -> AAE)	binder 0x0043A080 `private:` (line 140); self AAE; test D1 cl /Zs PASS
+35	0x00439BB0	CPlayerGui	T1	done	0x0043A080	2 -> 1 (QAE -> AAE)	same row, line 137; self AAE
+36	0x00449880	CPlayerManager	T1	done	0x00407370,0x00449CB0	2 -> 1 (QAE -> QBE)	binders 0x00407370 (line 40) / 0x00449CB0 (line 30) `const`; 0x0044A1A0 QBE; self QBE
+37	0x004499E0	CPlayerManager	T1	done	0x00449E60	2 -> 1 (QAE -> QBE)	binder 0x00449E60 `const` (line 57); self QBE
+38	0x004AFC60	CQuestManager	T2	done	0x004AFC60	3 -> 2 (QAE -> QBE; the CQuestManager_Retail stand-in of 0x00892D80 stays)	T2 self: `const` on decl + definition, Leaf respelled; the const body forces `const` on the local model's callee IsQuestActive (line 29: both PDBs QBE, 0x004AF610 already bound QBE by 0x0049EA40, count-neutral); 0x0049EA40 binds QBE
+39	0x005567B0	CRedefinerList	T1	done	0x00557080	2 -> 1 (QAE -> IAE)	binder 0x00557080 `protected:` (line 27); 0x00557000 and self IAE
+40	0x007E7310	CScriptGameResourceObjectScriptedThingBase	T1	decision		2 (unchanged)	not compiled: (a) the self 0x007E7310 is an int-parameter stand-in (defines ...QAEXHHHH@Z, T3); (b) the only QAE binder 0x00DDC980's local CScriptGameResourceObjectScriptedThingBase model has an inline ctor used on locals (emits ??_7) and ClearCommands as its one virtual: `virtual` adds a slot to that table. Port the script rows onto a shared model with the retail slots (T3)?
+41	0x007E7360	CScriptGameResourceObjectScriptedThingBase	T1	done-already		2 -> 1 (table only, by source)	the QAE witness 0x00E11DC0 declares `virtual void ClearCommands();` (line 1032) and calls it on a local by name (UAE); its source fails clang in its own line 1054 (not compiled). Source census of all 66 referencing rows: 7 local models virtual, 58 include engine/CScriptGameResourceObjectScriptedThingBase.h (line 76, virtual), 2 (0x00E3EB10, 0x00E44EA0) reach it through engine/CV_BordelloScript.h. No object proof: TABLE_CHANGES deletes the stale QAE line
+42	0x007E7450	CScriptGameResourceObjectScriptedThingBase	T1	decision		2 (unchanged)	not compiled: the three QBE binders 0x00D2C810 / 0x00DD6440 / 0x00DDC980 keep local models (0x00DDC980's emits ??_7 through an inline ctor); `virtual` on IsPerformingScriptTask (PDB UBE) adds a table slot. Same decision as entry 40
+43	0x00988290	CShaderRenderManager	T1	done	0x00B63010	2 -> 1 (AAE -> QAE)	DECISION (access widened, private -> public): binder 0x00B63010 `public: void ResetWorldTransform(); private:` (line 132; both PDBs QAE; self QAE). Census of all 54 referencing rows: 42 through engine/CShaderRenderManager.h (lines 181 / 530, public), 11 other public local models, 0x00B63010 the only private one; VC7.1 HEAD objects of 0x009E1280 / 0x00B5FAB0 / 0x00B60F70 bind QAE
+44	0x00871FD0	CStringAndCageBase	T1	done-already		2 -> 1 (table only)	the VC7.1 HEAD object of the table's only witness 0x008728C0 binds AAE (its model declares UpdateXYVars private, line 69); self AAE: TABLE_CHANGES replaces the stale QAE line
+45	0x0048F6BD	CSubtitleRenderer	T1	done	0x0048F6BD,0x0048F7C0,0x0048F881	2 -> 1 (QAE -> AAE)	T1 with a QAE self: self 0x0048F6BD `private:` (line 95; its HEAD object defines QAE) and binders 0x0048F7C0 (64) / 0x0048F881 (63); 0x0048F939 / 0x00492973 / 0x00493281 already AAE (VC7.1 HEAD objects)
+46	0x00A44660	CSuspendableProcessMicrothread	T1	done	0x00A44880	2 -> 1 (SIX -> KIX)	binder 0x00A44880 `protected: static ...; public:` (line 45); self KIX
+47	0x0070B490	CTCAnimationComplex	T1	done	0x008DBB30	2 -> 1 (QAE -> QBE)	binder 0x008DBB30 `const` (line 47); 0x008DBC80 QBE; self QBE
+48	0x0070B4A0	CTCAnimationComplex	T1	done	0x008DBB30,0x00753930	2 -> 1 (QAE -> QBE)	binders 0x008DBB30 (48) / 0x00753930 (51) `const`; 0x008DBC80 QBE; self QBE
+49	0x006869E0	CTCBase	T1	done	0x00686E10	2 -> 1 (QAE -> AAE)	binder 0x00686E10 `private:` (line 62); self AAE; its emitted ??_7CStringParser unchanged (objsec)
+50	0x00686DB0	CTCBase	T1	rejected		2 (unchanged)	T3 (D1 pattern): the only binder 0x00731BF0 is the free stand-in CTCSpotLight_FrameUpdate calling `light->GetPLocalSeed()`; a protected callee needs a friend naming the stand-in. Not compiled
+51	0x0074EC50	CTCContainerRewardHero	T1	done	0x0074F080	2 -> 1 (QAE -> IAE)	binder 0x0074F080 `protected:` (line 32); self IAE
+52	0x007B6660	CTCCrateStack	T1	done	0x00659C7E,0x00915890	2 -> 1 (QAE -> QBE)	binders 0x00659C7E (70) / 0x00915890 (27) `const`; 0x00861430 / 0x00915B60 QBE; self QBE; 0x00659C7E test D1 cl /Zs PASS
+53	0x007DD270	CTCCreatureFlyInCircles	T1	done	0x007DE030	2 -> 1 (QAE -> IAE)	binder 0x007DE030 `protected:` (struct model, line 91); self IAE
+54	0x007DDDA0	CTCCreatureFlyInCircles	T1	done	0x007DE030	2 -> 1 (QAE -> IAE)	same row, line 88; self IAE
+55	0x0077D190	CTCCreatureHive	T2	done	0x0077D190	2 -> 1 (QAE -> AAE)	T2 self: `private:` (line 56), Leaf respelled; 0x0077D330 binds AAE
+56	0x006827A0	CTCCreatureOpinionOfHero	T2	done	0x006827A0	2 -> 1 (QAE -> QBE)	T2 self: `const` on decl + definition, Leaf respelled; 0x0076CC00 / 0x008648A0 bind QBE
+57	0x007FD430	CTCDPhysicalObstruction	T1	done	0x007FD4B0	2 -> 1 (QAE -> AAE)	binder 0x007FD4B0 (static Create) `private:` (line 95); self AAE
+58	0x007F18B0	CTCDRumble	T1	done	0x007F1AC0	2 -> 1 (QAE -> AAE)	binder 0x007F1AC0 (static Create) `private:` (line 90); self AAE
+59	0x00730DD0	CTCDoor	T1	done	0x00730F90	2 -> 1 (QAE -> IAE)	binder 0x00730F90 `protected:` (line 86); 0x007310C0 IAE by source (NF287's entry, not compiled: engine/CTCDoor.h line 49 protected); the self 0x00730DD0 is the stand-in CTCDoor_Methods::Close (NAME_FIXES), so IAE stays unresolved in the link as at HEAD
+60	0x0071AD20	CTCEmoteIcon	T1	done	0x0071AE90	2 -> 1 (QAE -> AAE)	binder 0x0071AE90 `private:` (line 100); self AAE
+61	0x0076CCE0	CTCEnemy	T1	open			not started
+62	0x006C3CA0	CTCFadeOutAndIn	T1	open			not started
+63	0x007C86F0	CTCFireballSpell	T1	open			not started
+64	0x007E7580	CTCFireheartMinigame	T1	open			not started
+65	0x006D5260	CTCFollowed	T1	open			not started
+66	0x004BC4F0	CTCGraphicAppearance	T1	open			not started
+67	0x004BE000	CTCGraphicAppearance	T1	open			not started
+68	0x006D7F20	CTCHeroExperience	T2	open			not started
+69	0x0055FB80	CTCHeroOnlineScoreboard	T1	open			not started
+70	0x00560D00	CTCHeroOnlineScoreboard	T1	open			not started
+71	0x00563480	CTCHeroOnlineScoreboard	T1	open			not started
+72	0x00563920	CTCHeroOnlineScoreboard	T1	open			not started
+73	0x0057A89D	CTCHeroStats	T1	open			not started
+74	0x0057AAD9	CTCHeroStats	T1	open			not started
+75	0x0077C960	CTCHighlightItem	T1	open			not started
+76	0x00582027	CTCInventory	T1	open			not started
+77	0x005BDD39	CTCInventoryBase	T1	open			not started
+78	0x005D9070	CTCInventoryItem	T1	open			not started
+79	0x005FBFA0	CTCInventoryMap	T1	open			not started
+80	0x005FC840	CTCInventoryMap	T2	open			not started
+81	0x005A8C66	CTCInventoryTrade	T1	open			not started
+82	0x005CA68E	CTCInventoryWeapons	T1	open			not started
+83	0x007FB4A0	CTCKraken	T2	open			not started
+84	0x007FBB00	CTCKraken	T1	open			not started
+85	0x007FBC90	CTCKraken	T2	open			not started
+86	0x007F07A0	CTCKrakenTentacle	T1	open			not started
+87	0x007F0C70	CTCKrakenTentacle	T1	open			not started
+88	0x007F0F40	CTCKrakenTentacle	T1	open			not started
+89	0x00751DA0	CTCLook	T1	open			not started
+90	0x00766660	CTCObjectAugmentations	T1	open			not started
+91	0x007674A0	CTCObjectAugmentations	T2	open			not started
+92	0x00744830	CTCPerceiveThing	T1	open			not started
+93	0x0079E420	CTCPhysicalShieldSpell	T1	open			not started
+94	0x006AFA40	CTCPhysicsBase	T2	open			not started
+95	0x0075B000	CTCPhysicsRigidBody	T1	open			not started
+96	0x008004D0	CTCPreCalculatedNavigationRoute	T1	open			not started
+97	0x008008B0	CTCPreCalculatedNavigationRoute	T1	open			not started
+98	0x00702400	CTCQuestCard	T1	open			not started
+99	0x007280C0	CTCRandomAppearanceMorph	T1	open			not started
+100	0x007F53A0	CTCSoundAtmosphere	T1	open			not started
+101	0x0066BC10	CTCSoundPlayer	T1	open			not started
+102	0x006E2840	CTCTalk	T1	open			not started
+103	0x007F9960	CTCTargetingSpirit	T1	open			not started
+104	0x005E9AA0	CTCTavernGame	T1	open			not started
+105	0x005EA3C0	CTCTavernGame	T1	open			not started
+106	0x008F1D40	CTCTavernGameCardBase	T1	open			not started
+107	0x007D46D0	CTCTavernGameCoinGolf	T1	open			not started
+108	0x007881AD	CTCTrapBase	T1	open			not started
+109	0x00659EA9	CTCVillage	T1	open			not started
+110	0x004C8280	CThing	T1	open			not started
+111	0x004C8C00	CThing	T1	open			not started
+112	0x008338D0	CThingAICreature	T1	open			not started
+113	0x00863250	CThingBodyReorienter	T1	open			not started
+114	0x00863280	CThingBodyReorienter	T1	open			not started
+115	0x00863CA0	CThingBodyReorienter	T1	open			not started
+116	0x006626E0	CThingCreatureBase	T2	open			not started
+117	0x00662880	CThingCreatureBase	T1	open			not started
+118	0x006628E0	CThingCreatureBase	T1	open			not started
+119	0x00665860	CThingCreatureBase	T1	open			not started
+120	0x0085D180	CThingMap	T1	open			not started
+121	0x006378E0	CThingMapManager	T1	open			not started
+122	0x006A4E90	CThingPhysical	T1	open			not started
+123	0x006AC390	CThingPlayerCreature	T1	open			not started
+124	0x006AD970	CThingPlayerCreature	T2	open			not started
+125	0x0083B520	CThingVillage	T1	open			not started
+126	0x0098ECD0	CThreadedFileManager	T2	open			not started
+127	0x00760E70	CTrack	T1	open			not started
+128	0x00F3B970	CTriangleStripifier2	T1	open			not started
+129	0x00408120	CUserProfileManager	T1	open			not started
+130	0x0040D350	CUserProfileManager	T1	open			not started
+131	0x00AD9F10	CVertexGroupBlockOptimiser	T1	open			not started
+132	0x00AC44D0	CVertexStreamConverter	T1	open			not started
+133	0x00AC4910	CVertexStreamConverter	T1	open			not started
+134	0x00A67FF0	CVolumeTexture	T1	open			not started
+135	0x00A0CDD0	CWStringParser	T1	open			not started
+136	0x0049D4E0	CWorld	T1	open			not started
+137	0x0049D8F0	CWorld	T1	open			not started
+138	0x0049E9F0	CWorld	T1	open			not started
+139	0x0049F4C0	CWorld	T1	open			not started
+140	0x004A21F0	CWorld	T1	open			not started
+141	0x004A2D70	CWorld	T1	open			not started
+142	0x004FB310	CWorldMap	T1	open			not started
+143	0x004FCE20	CWorldMap	T1	open			not started
+144	0x008AF500	CombatDialogueManager	T1	open			not started

@@ -1,5 +1,5 @@
 // CTCCreatureOpinionOfHero::IsHeroOpinionEnemy() -- the hero is this creature's enemy: either flagged directly or, for a creature with interface 0xB4, when its village treats the hero as an enemy of the guards
-// Leaf: ?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QAE_NXZ
+// Leaf: ?IsHeroOpinionEnemy@CTCCreatureOpinionOfHero@@QBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006827A0, length 99 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface for type 0x23 = CTCVillageMember,
@@ -29,10 +29,10 @@ class CTCCreatureOpinionOfHero { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x342 - 0x08];
     bool HeroOpinionEnemy;                      // +0x342 (PDB +0x64e)
-    bool IsHeroOpinionEnemy();
+    bool IsHeroOpinionEnemy() const;
 };
 
-bool CTCCreatureOpinionOfHero::IsHeroOpinionEnemy()
+bool CTCCreatureOpinionOfHero::IsHeroOpinionEnemy() const
 {
     if (HeroOpinionEnemy)
         return true;

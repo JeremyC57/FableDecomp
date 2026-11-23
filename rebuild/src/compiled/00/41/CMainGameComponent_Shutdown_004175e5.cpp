@@ -146,8 +146,8 @@ public:
     unsigned char          _pad161d0[0x161e0 - 0x161d0];
     bool                   Running;                  // +0x161e0
 
-    void UninitEventPackageLoading();                // 0x004160A6
-    void UninitEventPackageSaving();                 // 0x00416122
+    protected: void UninitEventPackageLoading(); public:                // 0x004160A6
+    protected: void UninitEventPackageSaving(); public:                 // 0x00416122
     void Shutdown();
 };
 

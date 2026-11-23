@@ -73,7 +73,7 @@ class CParsedItem { public:                        // 12 bytes
     long        Type;                       // +0x00 (1 = symbol, 2 = identifier, 3 = number)
     long        Value;                      // +0x04
     CCharString Text;                       // +0x08
-    const CCharString& GetString();         // 0x009B9880
+    const CCharString& GetString() const;         // 0x009B9880
     const CCharString& GetSymbol();         // 0x009B9870
 };
 class CConsoleInputBase { public:

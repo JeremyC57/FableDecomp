@@ -29,7 +29,7 @@ struct CTCRewardsHandled {                          // the interface-0xA0 compon
 class CTCContainerRewardHero : public CTCBase { public:
     unsigned char _pad0c[0xc];
     bool          Enabled;                          // +0x18 (PDB +0x1c)
-    void CreateItemPickupContainer();               // 0x0074EC50
+    protected: void CreateItemPickupContainer(); public:               // 0x0074EC50
     void OnDie();
 };
 

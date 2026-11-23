@@ -48,7 +48,7 @@ class CAnimateThing { public:                                 // CurrentAnim.Mai
 };
 class CTCAnimationComplex { public:                           // interface 0x5A
     CAnimateThing& GetAnimation();                     // 0x0070B460
-    float GetAnimDuration(long index);                 // 0x0070B4A0
+    float GetAnimDuration(long index) const;                 // 0x0070B4A0
 };
 class CAnimationEntry { public:
     void GetTurnBetween(float from, float to, float* turn) const;   // 0x005DC000 (name descriptive)

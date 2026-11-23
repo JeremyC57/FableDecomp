@@ -56,7 +56,7 @@ class CCachedFile : public CAFile { public:
     {
         Copy(other);
     }
-    void Copy(const CCachedFile& other);        // 0x00A5B650
+    private: void Copy(const CCachedFile& other); public:        // 0x00A5B650
 };
 
 CAFile* CCachedFile::Clone() const

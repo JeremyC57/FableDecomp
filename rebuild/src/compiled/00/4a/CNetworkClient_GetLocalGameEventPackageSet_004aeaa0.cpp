@@ -27,7 +27,7 @@ class CGameEventPackageSet
 class CMainGameComponent
 {
 public:
-    bool IsTimeForServerUpdate(long frame);
+    bool IsTimeForServerUpdate(long frame) const;
 };
 class CNetworkClient
 {

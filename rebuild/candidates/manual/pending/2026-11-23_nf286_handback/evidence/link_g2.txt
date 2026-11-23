@@ -1,0 +1,37 @@
+## HEAD set: H_00a38670.obj H_009eb430.obj H_009ec710.obj H_00aeb6d0.obj H_006a7b20.obj H_0082d000.obj H_0069f9e0.obj H_008ba3c0.obj H_0048a210.obj H_00634190.obj H_0043a080.obj H_00407370.obj H_00449cb0.obj H_00449e60.obj H_004afc60.obj H_00557080.obj 009b9870.obj 00615e70.obj 00997da0.obj 00997e90.obj 00998170.obj 009acee0.obj 009eb2c0.obj 00a63ee0.obj 009b9880.obj 00998250.obj 00998570.obj 00a63db0.obj 00a64230.obj 00aecf90.obj 00af0650.obj 00aeabe0.obj 00aeb600.obj 00aeb790.obj 00a128e0.obj 00487520.obj 0044a2a0.obj 0062cf90.obj 00636e50.obj 0064c869.obj 0069f4f0.obj 006a9590.obj 006ab300.obj 00747090.obj 00747b80.obj 007a7d20.obj 007ccb00.obj 0084d910.obj 00854030.obj 0085f200.obj 00488d10.obj 004385f0.obj 00439bb0.obj 00449880.obj 0044a1a0.obj 004499e0.obj 0049ea40.obj 005567b0.obj 00557000.obj 00633bf0.obj 00633cb0.obj
+duplicates 3
+  DUP 00aeb600.obj ??0CEmitterPointer@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z in H_00aeb6d0.obj;
+  DUP 00aeb600.obj ??1CEmitterPointer@@QAE@XZ in H_00aeb6d0.obj;
+  DUP 00aeb600.obj ?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z in H_00aeb6d0.obj;
+UNRESOLVED 1 ?ClearList@CRedefinerList@NUISystem@@QAEXXZ
+UNRESOLVED 1 ?DatabaseClone@CParticleEmitter@NParticleEngine@@QAEPAV12@XZ
+UNRESOLVED 3 ?DatabaseClone@CParticleEmitter@NParticleEngine@@QBEPAV12@XZ
+UNRESOLVED 3 ?GetString@CParsedItem@@QAEABVCCharString@@XZ
+UNRESOLVED 1 ?GetSymbol@CParsedItem@@QAEABVCCharString@@XZ
+UNRESOLVED 1 ?InitActiveMode@CPlayer@@QAEXW4EPlayerMode@@@Z
+UNRESOLVED 1 ?InitInterfaces@CPlayer@@QAEXXZ
+UNRESOLVED 1 ?IsCreatureGenerationEnabled@CQuestManager@@QBE_NXZ
+UNRESOLVED 1 ?IsInContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@ABVC3DVector@@M@Z
+UNRESOLVED 2 ?IsInContainmentVolume@CPhysicsMeshObject@@QAE_NABVCCharString@@ABVC3DVector@@M@Z
+UNRESOLVED 2 ?IsMainPlayer@CPlayer@@QAE_NXZ
+UNRESOLVED 2 ?IsPlayer@CPlayerManager@@QAE_NJ@Z
+UNRESOLVED 1 ?IsPlayerAssociatedWithJoystickDeviceNumber@CPlayerManager@@QAE_NJ@Z
+UNRESOLVED 1 ?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z
+UNRESOLVED 1 ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z
+UNRESOLVED 1 ?ShouldSpawn@CParticleEmitter@NParticleEngine@@QAE_NABVC3DVector@@@Z
+UNRESOLVED 2 ?ShouldSpawn@CParticleEmitter@NParticleEngine@@QBE_NABVC3DVector@@@Z
+UNRESOLVED 1 ?UnInitActiveMode@CPlayer@@QAEXW4EPlayerMode@@@Z
+UNRESOLVED 1 ?UpdateCrime@CPlayerGui@@QAEXXZ
+UNRESOLVED 1 ?UpdateMoney@CPlayerGui@@QAEXXZ
+## new set: 00a38670.obj 009eb430.obj 009ec710.obj 00aeb6d0.obj 006a7b20.obj 0082d000.obj 0069f9e0.obj 008ba3c0.obj 0048a210.obj 00634190.obj 0043a080.obj 00407370.obj 00449cb0.obj 00449e60.obj 004afc60.obj 00557080.obj 009b9870.obj 00615e70.obj 00997da0.obj 00997e90.obj 00998170.obj 009acee0.obj 009eb2c0.obj 00a63ee0.obj 009b9880.obj 00998250.obj 00998570.obj 00a63db0.obj 00a64230.obj 00aecf90.obj 00af0650.obj 00aeabe0.obj 00aeb600.obj 00aeb790.obj 00a128e0.obj 00487520.obj 0044a2a0.obj 0062cf90.obj 00636e50.obj 0064c869.obj 0069f4f0.obj 006a9590.obj 006ab300.obj 00747090.obj 00747b80.obj 007a7d20.obj 007ccb00.obj 0084d910.obj 00854030.obj 0085f200.obj 00488d10.obj 004385f0.obj 00439bb0.obj 00449880.obj 0044a1a0.obj 004499e0.obj 0049ea40.obj 005567b0.obj 00557000.obj 00633bf0.obj 00633cb0.obj
+duplicates 3
+  DUP 00aeb600.obj ??0CEmitterPointer@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z in 00aeb6d0.obj;
+  DUP 00aeb600.obj ??1CEmitterPointer@@QAE@XZ in 00aeb6d0.obj;
+  DUP 00aeb600.obj ?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z in 00aeb6d0.obj;
+UNRESOLVED 4 ?DatabaseClone@CParticleEmitter@NParticleEngine@@QBEPAV12@XZ
+UNRESOLVED 1 ?InitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z
+UNRESOLVED 1 ?IsInContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@ABVC3DVector@@M@Z
+UNRESOLVED 2 ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z
+UNRESOLVED 3 ?ShouldSpawn@CParticleEmitter@NParticleEngine@@QBE_NABVC3DVector@@@Z
+UNRESOLVED 1 ?UnInitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z
+LK_DONE

@@ -83,7 +83,7 @@ class CTCDoor : public CTCBase { public:
     long TriggerType;                           // +0x1c
     const CDoorDef* PDef;                       // +0x20
     void Open(bool instant);                    // 0x00730C00
-    void Close();                               // 0x00730DD0
+    protected: void Close(); public:                               // 0x00730DD0
     void UpdateOpenStatusTriggerTypePerson();
 };
 

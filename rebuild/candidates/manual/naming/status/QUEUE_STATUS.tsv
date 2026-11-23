@@ -17,7 +17,7 @@ line	tag	address	correct_symbol	status	other_spellings
 16	521	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	closed	
 17	521	0099b720	??0CWideString@@QAE@ABV0@@Z	partial	??0CWideString@@QAE@ABVCWideStringText@@@Z || ??0CWideString@FableCopy_006be700@@QAE@ABU01@@Z || ??0CWideString@N0047b5c0@@QAE@ABU01@@Z || ??0CWideString@N00566180@@QAE@ABU01@@Z || ??0CWideString@N005661c0@@QAE@ABU01@@Z || ??0value_type@CRetailList_node0xc@@QAE@ABU01@@Z || ??4CBaseTableDef@@QAEAAV0@ABV0@@Z || ??4CBase_0099b720@@QAEAAU0@ABU0@@Z || ?Assign@ULSlot@@QAEXK@Z || ?Init@CResult@@QAEXPAX@Z
 18	521	0099b510	??1CWideString@@QAE@XZ	partial	?Cleanup_0099b510@SubObject@@QAEXXZ || @FableMemberDtor_006568bb@4 || @NodeSub_Dtor@4 || @SubMemberDtor@4 || @dtorA_0099b510@4
-19	521	00449880	?IsPlayer@CPlayerManager@@QBE_NJ@Z	partial	?IsPlayer@CPlayerManager@@QAE_NJ@Z
+19	521	00449880	?IsPlayer@CPlayerManager@@QBE_NJ@Z	closed	
 20	521	004497e0	?GetPlayerDefIndexFromNumber@CPlayerManager@@ABEJJ@Z	closed	
 21	521	00416359	?GetPPlayerInterface@CMainGameComponent@@QAEPAVCGamePlayerInterface@@XZ	closed	
 22	521	0044be80	?_M_insert_overflow@?$vector@PAVCPlayer@@V?$allocator@PAVCPlayer@@@std@@@std@@IAEXPAPAVCPlayer@@ABQAV3@ABU__true_type@2@I_N@Z	partial	?_M_insert_overflow@?$vector@PAVCUnprovenElement_0044be80@@V?$allocator@PAVCUnprovenElement_0044be80@@@std@@@std@@IAEX
@@ -47,7 +47,7 @@ line	tag	address	correct_symbol	status	other_spellings
 46	521	004e25f1	??1CObjectAugmentationParticleSet@@QAE@XZ	closed	
 47	521	00452d8e	?TransferBinaryIn@?$CPersistTraits@W4EObjectAugmentationType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EObjectAugmentationType@@@Z	closed	
 48	521	00404280	??$?8GU?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z	open	??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z
-49	521	0048f6bd	?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z	partial	?GetTextFromTextTag@CSubtitleRenderer@@QAE_NABVCWideString@@AAV2@@Z || GetTextFromTextTag
+49	521	0048f6bd	?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z	partial	GetTextFromTextTag
 50	521	006345c0	?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z	partial	?AddMode@CPlayer_Methods@@QAEXJ_N@Z
 51	521	00634190	?RemoveMode@CPlayer@@QAEXW4EPlayerMode@@@Z	closed	
 52	521	00449970	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	partial	@Sub_ResolveA@4
@@ -1258,7 +1258,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1276	asmre	0099b940	??YCWideString@@QAEABV0@PBG@Z	closed	
 1277	asmre	005bd993	?GetHighlightedItemMaxInCategory@CCategory@NInventory@@QBEJXZ	closed	
 1278	asmre	005bd931	?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ	closed	
-1279	asmre	00416231	?GetCurrentGameTime@CMainGameComponent@@IBENXZ	partial	?GetCurrentGameTime@CMainGameComponent@@QAENXZ
+1279	asmre	00416231	?GetCurrentGameTime@CMainGameComponent@@IBENXZ	closed	
 1280	asmre	0066ff20	?SwapToHero@CTCCoopSpirit@@AAEXXZ	closed	
 1281	asmre	00686d40	?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ	partial	?GetPlayerManager@CTCOracleMinigame@@QAEPAVCPlayerManager@@XZ
 1282	asmre	00414c90	?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ	partial	?Get@CConsole@@SAPAV1@XZ
@@ -1952,8 +1952,8 @@ line	tag	address	correct_symbol	status	other_spellings
 2237	c631	00ae9450	??0?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z	partial	??0CEmitterPointer@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z
 2238	c631	00ae94a0	??1?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@XZ	partial	??1CEmitterPointer@@QAE@XZ || ?DestructFirstMember_00ae94a0@@YIXPAX@Z
 2239	c631	00aeb060	?Insert@CParticleEmitterList@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z	partial	?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z
-2240	c631	00aecf90	?ShouldSpawn@CParticleEmitter@NParticleEngine@@QBE_NABVC3DVector@@@Z	partial	?ShouldSpawn@CParticleEmitter@NParticleEngine@@QAE_NABVC3DVector@@@Z || ShouldSpawn
-2241	c631	00af0650	?DatabaseClone@CParticleEmitter@NParticleEngine@@QBEPAV12@XZ	partial	?DatabaseClone@CParticleEmitter@NParticleEngine@@QAEPAV12@XZ || DatabaseClone
+2240	c631	00aecf90	?ShouldSpawn@CParticleEmitter@NParticleEngine@@QBE_NABVC3DVector@@@Z	partial	ShouldSpawn
+2241	c631	00af0650	?DatabaseClone@CParticleEmitter@NParticleEngine@@QBEPAV12@XZ	partial	DatabaseClone
 2242	c631	00aeb600	?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@0MABVC3DVector@@ABVCRightHandedSet@@@Z	closed	
 2243	c631	005693b0	?assign@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD0@Z	partial	?Assign@CRetailString@@QAEAAU1@PBD0@Z || ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD0@Z || ?assign@basic_string@std@@QAEAAV12@PBD0@Z
 2244	c631	0099e4b0	??0CCharString@@QAE@XZ	partial	??0CCharString@N006d41f0@@QAE@XZ || ?HelperReset@C3DAnimationBlendState@@QAEXXZ || ?Init@SubInit@@QAEXXZ || ?Release@SubB@@QAE_JXZ
@@ -2111,7 +2111,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2451	c644	013ca828	?GDefStringTable@@3VCDefStringTable@@A	partial	?g_DefStringTable@NErase005dcf70@@3UCDefStringTable@1@A
 2457	codex50	006f50b0	?erase@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAEIAB_K@Z	closed	
 2458	codex50	005bc58f	?SetInventoryAnimRenderBox@CTCInventoryBase@NInventory@@QAEXABVC2DBoxF@@@Z	partial	?SetInventoryAnimRenderBox@CTCInventoryBase_Stats@@QAEXABVC2DBoxF@@@Z || ?SetInventoryAnimRenderBox@CTCInventoryBase_Weapons@@QAEXABVC2DBoxF@@@Z
-2459	codex50	00871fd0	?UpdateXYVars@CStringAndCageBase@NCameraModes@@AAEXXZ	partial	?UpdateXYVars@CStringAndCageBase@NCameraModes@@QAEXXZ
+2459	codex50	00871fd0	?UpdateXYVars@CStringAndCageBase@NCameraModes@@AAEXXZ	closed	
 2460	codex50	0084d080	?GetCamTools@CBase@NCameraModes@@IBEABVCTools@2@XZ	partial	?GetCamTools@CBase@NCameraModes@@QBEABVCTools@2@XZ || ?Refresh_0084d080@CTrack@NCameraModes@@QAEXXZ
 2461	codex50	006b01d0	?ResetPosition@CTCPhysicsBase@@UAEXABVC3DVector@@@Z	open	?ResetPosition@CTCPhysicsBase_Calls@@QAEXABVC3DVector@@@Z || ResetPosition
 2462	codex50	013d28d4	?CurrentAlignment@CMemoryAllocatorBase@@1KA	partial	?g_AllocatorAlignment@@3KA || ?g_CurrentAlignment@@3KA || ?g_LastAllocatorUsage_013d28d4@@3JA || ?g_LastAllocatorUsage_013d28d4@@3KA
@@ -3375,7 +3375,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3863	c707	0084cf40	?SetRightStickLookAround@CBase@NCameraModes@@QAEXABVC2DVector@@@Z	closed	
 3864	c707	006925e0	?GetPercentageComplete@CCreatureActionBase@@QBEMXZ	partial	?GetAnimationFraction@CCombatActionBase@@QAEMXZ || ?GetProgress@CCombatActionBase@@QAEMXZ || ?GetProgressRatio@CCombatActionBase@@QAEMXZ || ?GetProgressRatio@CCreatureActionBase@@QAEMXZ
 3865	c707	006925a0	?HasPerformedAction@CCreatureActionBase@@QBE_NXZ	partial	?Check@CCreatureAction_SummonerLightningOrbInto@@QAE_NXZ || ?CreatureForcePush_Check@@YI_NPAVCCreatureAction_ForcePushOutOf@@@Z || ?GetCanItemBeQuickAssigned@CCreatureActionBase@@QAE_NXZ || ?GetPerformedAction@CCreatureActionBase@@QAE_NXZ || ?GetPerformedAction@CCreatureActionBase@@QBE_NXZ || ?HasPerformedAction@CCombatActionBase@@QBE_NXZ || ?IsChestOpen@CCreatureAction_OpenChest@@QAE_NXZ || ?Unsh
-3866	c708	005567b0	?ClearList@CRedefinerList@NUISystem@@IAEXXZ	partial	?ClearList@CRedefinerList@NUISystem@@QAEXXZ
+3866	c708	005567b0	?ClearList@CRedefinerList@NUISystem@@IAEXXZ	closed	
 3867	c708	00557840	?ResetButtonCounts@CKeyRedefiner@NUISystem@@SIXXZ	closed	
 3868	c708	006627f0	?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z	partial	?Convert@TimeConverter@@QAEMH@Z || ?GetAnimDuration@CThing@@QAEMJ@Z || ?GetAnimDuration@CThingCreatureBase_Calls@@QAEMJ@Z
 3869	c708	009e4710	?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	partial	?helper@CActiveFile@@QAEXXZ
@@ -4086,7 +4086,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4620	cx13	006bbf70	?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ	closed	
 4621	cx13	006e7b60	??0CScriptGameResourceObjectMovieBase@@QAE@XZ	closed	
 4622	cx13	007e72a0	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	partial	?Construct@CScriptedThingStorage@@QAEXXZ
-4623	cx13	007e7360	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	partial	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+4623	cx13	007e7360	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	closed	
 4624	cx13	007e7390	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	closed	
 4625	cx13	007e73d0	?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z	closed	
 4626	cx13	007e7410	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	closed	
@@ -4855,8 +4855,8 @@ line	tag	address	correct_symbol	status	other_spellings
 6574	land0711f	0065f8ca	??$IS_THING_ALIVE@UCIntelligentPointerBuilding@@@@YI_NABUCIntelligentPointerBuilding@@@Z;	open	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z
 6589	land0711i	00446b10	?IsGameActionEventInQueue@CGamePlayerInterface@@QAE_NJJJ@Z	open	?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z
 6590	land0711i	0084e1a0	?AddAttractorGoTo@CBase@NCameraModes@@QAEXABVC3DVector@@M@Z	open	?AddAttractorGoTo@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z
-6591	land0711i	0070b490	?GetAnimIndex@CTCAnimationComplex@@QAEJXZ	partial	?GetAnimIndex@CTCAnimationComplex@@QBEJXZ
-6592	land0711i	0070b4a0	?GetAnimDuration@CTCAnimationComplex@@QAEMJ@Z	partial	?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z || GetAnimDuration
+6591	land0711i	0070b490	?GetAnimIndex@CTCAnimationComplex@@QAEJXZ	open	?GetAnimIndex@CTCAnimationComplex@@QBEJXZ
+6592	land0711i	0070b4a0	?GetAnimDuration@CTCAnimationComplex@@QAEMJ@Z	open	?GetAnimDuration@CTCAnimationComplex@@QBEMJ@Z || GetAnimDuration
 6593	land0711i	00753e90	?LookAtPos@CTCLook@@QAEXPBVC3DVector@@J@Z	partial	?LookAtPos@CTCLook@@QAEXABVC3DVector@@J@Z
 6594	land0711i	00664670	?SetCurrentAction@CThingCreatureBase@NCreatureMode@@QAEXABUCCountedActionPointer@2@@Z	open	?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z
 6595	land0711i	01388a7c	?g_01388a7c@@3JA	closed	
@@ -4953,7 +4953,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6747	land0811u	00c770b0	?Blend@StageOne@@QAEXPAX0PBMPAMKK@Z	open	?Process@CFloatPitch@@QAEXPAUCFloatPitchShiftParams@@PBU2@PBMPAMII@Z
 6748	land0811u	00c45f30	??0CPart_00c364a0@@QAE@PAX@Z	partial	??0CAmbientCube@@QAE@M@Z
 6815	land0811v	00449970	?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ	open	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ || @Sub_ResolveA@4
-6816	land0811w	00488d10	?InitInterfaces@CPlayer@@QAEXXZ	partial	?InitInterfaces@CPlayer@@AAEXXZ
+6816	land0811w	00488d10	?InitInterfaces@CPlayer@@QAEXXZ	open	?InitInterfaces@CPlayer@@AAEXXZ
 6817	land0811w	013b8c1c	?g_tree_013b8c1c@@3UCRetailTree_node0x18@@A	partial	?RegisteredComponentsByToken@CAnimationEntry@@2V?$map@VCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@4@@std@@A || _g_BinaryTree_RefcountedNode_Deleter_012290c0
 6818	land0811w	013b8c28	?g_AnimComponentPrototypes@@3UCProtoMap@@A	partial	?RegisteredComponentsByType@CAnimationEntry@@2V?$CVectorMap@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@V?$CKeyPairCompareLess@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@@A
 6819	land0811w	005e29d0	?Insert@CAnimComponentVectorMap@@QAEXPAUCAnimComponentEntry@@PBU2@PBUCComponentCompare@@KK@Z	partial	?InsertOverflow@CEntryVector@@QAEXPAUSKeyedEntry@@ABU2@ABUSScalarTag@@K_N@Z || ?_M_insert_overflow@?$vector@U?$pair@W4EAnimComponent@@ || ?_M_insert_overflow@?$vector@U?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@@@QAEXPAU?$pair@W4EAnimComponent@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@@ABU2@ABU__false_type@@I_N@Z || ?_M_insert_overflow@?$vector@U?$pair@W4EAnimCompon
@@ -7923,7 +7923,7 @@ line	tag	address	correct_symbol	status	other_spellings
 10029	land1115gb	008d8120	??0CModeScorpionKingVulnerable@NCreatureMode@@QAE@AAVCThing@@@Z	partial	??0CModeScorpionKingVulnerable
 10030	land1115gb	0090ebe0	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@@@@Z	closed	
 10031	land1115gb	00927dd0	??1CCreatureAction_ShopkeeperPutAway@@UAE@XZ	partial	?DestVal_A8_D@@YIXPAUObj@@PAX@Z
-10032	land1115gb	00988290	?ResetWorldTransform@CShaderRenderManager@@QAEXXZ	partial	?ResetWorldTransform@CShaderRenderManager@@AAEXXZ
+10032	land1115gb	00988290	?ResetWorldTransform@CShaderRenderManager@@QAEXXZ	closed	
 10033	land1115gb	0099a400	?Validate@CBaseObject@@UBEXXZ	closed	
 10034	land1115gb	009a0b20	?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z	open	?Preload@CFontBank_Methods@@QAE_NHH@Z
 10035	land1115gb	009a0b30	??_ECFontBank@@UAEPAXI@Z	open	??_GCFontBank
@@ -9571,8 +9571,8 @@ line	tag	address	correct_symbol	status	other_spellings
 11831	landB1120b11	00a79680	?ConnectVerticalMapEdge@CNavQuadTree@@AAEXMMABVCNavigatorManager@@@Z	closed	
 11834	landB1120b11	009e1da0	?GFAXToVX@@YIMM@Z	closed	
 11835	landB1120b11	009ac9f0	?Error@CDefinitionManager@@IAEXABVCStringParser@@ABVCCharString@@@Z	partial	Error
-11836	landB1120b11	009b9870	?GetSymbol@CParsedItem@@QBEABVCCharString@@XZ	partial	?GetSymbol@CParsedItem@@QAEABVCCharString@@XZ
-11837	landB1120b11	009b9880	?GetString@CParsedItem@@QBEABVCCharString@@XZ	partial	?GetString@CParsedItem@@QAEABVCCharString@@XZ
+11836	landB1120b11	009b9870	?GetSymbol@CParsedItem@@QBEABVCCharString@@XZ	closed	
+11837	landB1120b11	009b9880	?GetString@CParsedItem@@QBEABVCCharString@@XZ	closed	
 11838	landB1120b11	00a52760	?InlineGetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXAAVC3DKeyframe@@KM@Z	closed	
 11839	landB1120b11	00a53860	?InlineGetKeyframeInterpolate@C3DAnimationSequence@@QBEXAAVC3DKeyframe@@KM@Z	closed	
 11840	landB1120b11	004194b5	??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ	closed	
@@ -10471,3 +10471,16 @@ line	tag	address	correct_symbol	status	other_spellings
 13306	land1122nf283	00692aa0	?UpdateActionMovement@CCreatureActionBase@@IAEXXZ	partial	?UpdateActionMovement@CCreatureActionBase@@QAEXXZ
 13307	land1122nf283	005955ab	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	partial	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
 13308	land1122nf285	009e1e40	?GFVYToAY@@YIMM@Z	partial	?GFAYToVY@@YGMM@Z || ?GFVYToAY@@YGMM@Z
+13310	land1123nf286	009b9880	?GetString@CParsedItem@@QBEABVCCharString@@XZ	closed	
+13311	land1123nf286	00b81ed0	??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	closed	
+13312	land1123nf286	00aecf90	?ShouldSpawn@CParticleEmitter@NParticleEngine@@QBE_NABVC3DVector@@@Z	partial	ShouldSpawn
+13313	land1123nf286	00af0650	?DatabaseClone@CParticleEmitter@NParticleEngine@@QBEPAV12@XZ	partial	DatabaseClone
+13314	land1123nf286	00487520	?IsMainPlayer@CPlayer@@QBE_NXZ	closed	
+13315	land1123nf286	00633bf0	?UnInitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z	closed	
+13316	land1123nf286	00633cb0	?InitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z	closed	
+13317	land1123nf286	004af610	?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z	partial	?IsQuestActive@CQuestManager@@QAE_NABVCCharString@@@Z || ?IsQuestCardActive@QuestManagerMethods@@QBE_NABVCCharString@@@Z
+13318	land1123nf286	004afc60	?IsCreatureGenerationEnabled@CQuestManager@@QBE_NXZ	partial	?IsCreatureGenerationAllowed@CQuestManager_Retail@@QAE_NXZ
+13319	land1123nf286	00730dd0	?Close@CTCDoor@@IAEXXZ	partial	Close
+13320	land1123nf286	007e7310	?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z	partial	?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z
+13321	land1123nf286	005955ab	?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z	partial	?GetProfileNames@CFrontEndManager@NUISystem@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+13322	land1123nf286	00be6f70	?Render@CLandscapeBackgroundPatch@@AAE_N_N@Z	partial	?Render@CLandscapeBackgroundPatch@@QAE_N_N@Z

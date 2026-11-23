@@ -1,0 +1,12 @@
+# NF286 lessons (one line each)
+- A source census (each row's declaration line + the access in effect, or the shared-header line for call-only rows) plus locked VC7.1 HEAD controls replaces the unlocked clang census: nothing compiles without a lock.
+- Table witnesses go stale: 0x00859EC0, 0x00AEABE0 (x2) and 0x008728C0 bind the PDB spelling in their HEAD objects; read the object before treating a witness as a wrong binder.
+- A "T1" self without a Leaf line can still define a wrong spelling (0x0048F6BD QAE; 0x00633BF0 / 0x00633CB0 QAEXJ): compile the self as a control and link HEAD v new before handing back.
+- Compare a self's whole parameter list with the PDB before an access move: `typedef long EPlayerMode` (J) v the PDB enum (W4) makes an access-only self move pointless.
+- A /Zs precheck must mirror the grade: vc71() text, the row's catalog flags, /Od /W3 for tests; validate it once with a planted syntax error.
+- A const self body can force `const` on a local model's callee; when that is the callee's PDB spelling and already bound at its address it is count-neutral (0x004AFC60 -> IsQuestActive).
+- `virtual` on a local model is a table change whenever the TU emits that class's ??_7 (a ctor, or an inline ctor used on locals), even when the calls themselves (on by-value locals) would not change.
+- Dropping `virtual` is byte-neutral when the method is the model's last virtual and no table is emitted; check the exe has no absolute reference to the address (not in a vtable).
+- Pair objsec renames and RENAMES lines automatically (object DEF/UND diff v the recorded old -> new pairs): 0 mismatches is a cheap guard against a missed binder or a stray symbol change.
+- Standalone host-model tests (their own copy of the row and stubs) need no change when a callee spelling moves.
+- After a restart, one compact multi-command helper (nf.py) plus four parallel grade lanes redid 52 rows + 95 controls in minutes.

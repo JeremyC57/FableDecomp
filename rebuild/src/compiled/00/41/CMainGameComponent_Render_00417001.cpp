@@ -150,7 +150,7 @@ public:
     bool                                 AllowRender;               // +0x161e1
     bool                                 Rendered;                  // +0x161e2
     long                                 DebugNoFramesUnableToRender;   // +0x161e4
-    double GetCurrentGameTime();                  // 0x00416231
+    protected: double GetCurrentGameTime() const; public:                  // 0x00416231
     double GetTimeSinceLastRenderFrameStart();    // 0x00416258
     double GetGameTimeOfNextPresentCompletion();  // 0x004166E2
 protected:

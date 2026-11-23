@@ -35,7 +35,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
-    bool IsMainPlayer();                              // 0x00487520
+    bool IsMainPlayer() const;                              // 0x00487520
     void SetAggressiveMode(bool aggressive);          // 0x00487EB0
 };
 class CThing { public:

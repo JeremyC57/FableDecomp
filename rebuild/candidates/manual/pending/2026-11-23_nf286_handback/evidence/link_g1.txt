@@ -1,0 +1,30 @@
+## HEAD set: H_00a5b710.obj H_00a5b760.obj H_00858a20.obj H_00bcfde0.obj H_00bcfcb0.obj H_00b9de90.obj H_00b81050.obj H_00b82100.obj H_00b619b0.obj H_0069a990.obj H_004175e5.obj H_00417001.obj H_004189c2.obj H_004aeaa0.obj H_00416c8a.obj H_008e0780.obj H_0042e98f.obj H_0042e3ee.obj 00a5b650.obj 00859ec0.obj 00859ef0.obj 00b81f00.obj 00b81ed0.obj 00b81ea0.obj 00b81f30.obj 00b5fab0.obj 00b60f70.obj 00699130.obj 00b84190.obj 004160a6.obj 00416122.obj 00416231.obj 00416258.obj 004164e0.obj 004167a7.obj 00417747.obj 0041674a.obj 00418289.obj 004aea70.obj 0041799b.obj 004179ee.obj 008db810.obj 0042e17c.obj
+duplicates 3
+  DUP H_00a5b760.obj ??0CCachedFile@@QAE@ABV0@@Z in H_00a5b710.obj;
+  DUP 00859ef0.obj ?SetUpCombatAnimationNotes@CCombatActionBase@@IAEXXZ in 00859ec0.obj;
+  DUP 00b81ed0.obj ??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z in 00b81f00.obj;
+UNRESOLVED 1 ??0CEngineClothSimulation2DAnimatedMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveAnimatedMesh@@@Z
+UNRESOLVED 4 ??0CEngineClothSimulationMeshBase@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveMeshBase@@@Z
+UNRESOLVED 1 ??0CEngineClothSimulationStaticMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveStaticMesh@@@Z
+UNRESOLVED 1 ?ApplyGlow@CEngineScreenEffectGlowRenderer@@QAEXXZ
+UNRESOLVED 1 ?CaptureBackBuffer@CEngineScreenEffectGlowRenderer@@QAEXXZ
+UNRESOLVED 2 ?Copy@CCachedFile@@QAEXABV1@@Z
+UNRESOLVED 2 ?GetCurrentGameTime@CMainGameComponent@@QAENXZ
+UNRESOLVED 2 ?InitGraphics@CMainGameComponent@@IAE_NXZ
+UNRESOLVED 1 ?InitialiseInput@CNewFrontendGameComponent@@QAEXXZ
+UNRESOLVED 1 ?InitialiseSounds@CNewFrontendGameComponent@@QAEXXZ
+UNRESOLVED 1 ?IsTimeForServerUpdate@CMainGameComponent@@QAE_NJ@Z
+UNRESOLVED 1 ?ResetFlags@CGameCameraManager@@QAEXXZ
+UNRESOLVED 2 ?SetupCombatInterrupts@CCombatActionBase@@IAEXXZ
+UNRESOLVED 1 ?UninitEventPackageLoading@CMainGameComponent@@QAEXXZ
+UNRESOLVED 1 ?UninitEventPackageSaving@CMainGameComponent@@QAEXXZ
+UNRESOLVED 1 ?UpdateBeam@CModeDragonFireBeam@NCreatureMode@@QAEXXZ
+UNRESOLVED 1 ?UpdateTransform@CEngineClothSimulationMeshBase@@IAEXXZ
+## new set: 00a5b710.obj 00a5b760.obj 00858a20.obj 00bcfde0.obj 00bcfcb0.obj 00b9de90.obj 00b81050.obj 00b82100.obj 00b619b0.obj 0069a990.obj 004175e5.obj 00417001.obj 004189c2.obj 004aeaa0.obj 00416c8a.obj 008e0780.obj 0042e98f.obj 0042e3ee.obj 00a5b650.obj 00859ec0.obj 00859ef0.obj 00b81f00.obj 00b81ed0.obj 00b81ea0.obj 00b81f30.obj 00b5fab0.obj 00b60f70.obj 00699130.obj 00b84190.obj 004160a6.obj 00416122.obj 00416231.obj 00416258.obj 004164e0.obj 004167a7.obj 00417747.obj 0041674a.obj 00418289.obj 004aea70.obj 0041799b.obj 004179ee.obj 008db810.obj 0042e17c.obj
+duplicates 3
+  DUP 00a5b760.obj ??0CCachedFile@@QAE@ABV0@@Z in 00a5b710.obj;
+  DUP 00859ef0.obj ?SetUpCombatAnimationNotes@CCombatActionBase@@IAEXXZ in 00859ec0.obj;
+  DUP 00b81ed0.obj ??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z in 00b81f00.obj;
+UNRESOLVED 4 ??0CEngineClothSimulationMeshBase@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveMeshBase@@@Z
+UNRESOLVED 1 ?InitialiseInput@CNewFrontendGameComponent@@QAEXXZ
+LK_DONE
